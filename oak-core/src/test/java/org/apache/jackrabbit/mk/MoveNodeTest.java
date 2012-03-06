@@ -1560,6 +1560,8 @@ argument_list|(
 name|journalRevision
 argument_list|,
 name|head
+argument_list|,
+literal|null
 argument_list|)
 decl_stmt|;
 name|JsopTokenizer

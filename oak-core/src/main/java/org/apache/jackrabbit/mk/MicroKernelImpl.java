@@ -802,6 +802,9 @@ name|fromRevisionId
 parameter_list|,
 name|String
 name|toRevisionId
+parameter_list|,
+name|String
+name|filter
 parameter_list|)
 throws|throws
 name|MicroKernelException
@@ -1116,7 +1119,7 @@ operator|.
 name|getId
 argument_list|()
 argument_list|,
-literal|"/"
+name|filter
 argument_list|)
 expr_stmt|;
 name|diffCache
@@ -1169,23 +1172,17 @@ name|String
 name|toRevisionId
 parameter_list|,
 name|String
-name|path
+name|filter
 parameter_list|)
 throws|throws
 name|MicroKernelException
 block|{
-if|if
-condition|(
+comment|// TODO extract and evaluate filter criteria (such as e.g. 'path') specified in 'filter' parameter
+name|String
 name|path
-operator|==
-literal|null
-condition|)
-block|{
-name|path
-operator|=
+init|=
 literal|"/"
-expr_stmt|;
-block|}
+decl_stmt|;
 name|toRevisionId
 operator|=
 name|toRevisionId
@@ -2339,6 +2336,8 @@ literal|0
 argument_list|,
 operator|-
 literal|1
+argument_list|,
+literal|null
 argument_list|)
 return|;
 block|}
@@ -2360,6 +2359,9 @@ name|offset
 parameter_list|,
 name|int
 name|count
+parameter_list|,
+name|String
+name|filter
 parameter_list|)
 throws|throws
 name|MicroKernelException
@@ -2390,6 +2392,7 @@ argument_list|()
 else|:
 name|revisionId
 expr_stmt|;
+comment|// TODO extract and evaluate filter criteria (such as e.g. ':hash') specified in 'filter' parameter
 try|try
 block|{
 name|JsopBuilder

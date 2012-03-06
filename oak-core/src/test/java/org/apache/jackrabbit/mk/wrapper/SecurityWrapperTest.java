@@ -595,6 +595,8 @@ argument_list|(
 name|fromRevision
 argument_list|,
 name|toRevision
+argument_list|,
+literal|null
 argument_list|)
 decl_stmt|;
 name|assertEquals
@@ -632,6 +634,8 @@ argument_list|(
 name|fromRevision
 argument_list|,
 name|toRevision
+argument_list|,
+literal|null
 argument_list|)
 decl_stmt|;
 name|assertEquals
@@ -658,6 +662,8 @@ argument_list|(
 name|fromRevision
 argument_list|,
 name|toRevision
+argument_list|,
+literal|null
 argument_list|)
 decl_stmt|;
 name|assertEquals

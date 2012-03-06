@@ -92,6 +92,9 @@ name|fromRevisionId
 parameter_list|,
 name|String
 name|toRevisionId
+parameter_list|,
+name|String
+name|filter
 parameter_list|)
 throws|throws
 name|MicroKernelException
@@ -125,6 +128,9 @@ name|offset
 parameter_list|,
 name|int
 name|count
+parameter_list|,
+name|String
+name|filter
 parameter_list|)
 throws|throws
 name|MicroKernelException
@@ -157,7 +163,7 @@ name|String
 name|toRevisionId
 parameter_list|,
 name|String
-name|path
+name|filter
 parameter_list|)
 function_decl|;
 block|}

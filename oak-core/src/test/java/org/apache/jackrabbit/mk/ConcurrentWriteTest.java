@@ -365,6 +365,8 @@ literal|0
 argument_list|,
 operator|-
 literal|1
+argument_list|,
+literal|null
 argument_list|)
 expr_stmt|;
 comment|// System.out.println(json);
@@ -431,6 +433,8 @@ argument_list|(
 name|oldHead
 argument_list|,
 name|head
+argument_list|,
+literal|null
 argument_list|)
 expr_stmt|;
 comment|// System.out.println("Journal:");

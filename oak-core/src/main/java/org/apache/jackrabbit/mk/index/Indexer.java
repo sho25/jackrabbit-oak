@@ -446,6 +446,8 @@ argument_list|,
 name|Integer
 operator|.
 name|MAX_VALUE
+argument_list|,
+literal|null
 argument_list|)
 decl_stmt|;
 name|JsopTokenizer
@@ -991,6 +993,8 @@ argument_list|,
 literal|0
 argument_list|,
 literal|0
+argument_list|,
+literal|null
 argument_list|)
 decl_stmt|;
 if|if
@@ -1642,6 +1646,8 @@ argument_list|(
 name|readRevision
 argument_list|,
 name|toRevision
+argument_list|,
+literal|null
 argument_list|)
 decl_stmt|;
 name|JsopTokenizer
@@ -2563,6 +2569,8 @@ argument_list|,
 name|Integer
 operator|.
 name|MAX_VALUE
+argument_list|,
+literal|null
 argument_list|)
 decl_stmt|;
 name|JsopTokenizer
@@ -2782,6 +2790,8 @@ argument_list|,
 name|Integer
 operator|.
 name|MAX_VALUE
+argument_list|,
+literal|null
 argument_list|)
 decl_stmt|;
 name|JsopTokenizer
@@ -2954,6 +2964,8 @@ argument_list|,
 name|Integer
 operator|.
 name|MAX_VALUE
+argument_list|,
+literal|null
 argument_list|)
 decl_stmt|;
 name|JsopTokenizer

@@ -258,6 +258,8 @@ argument_list|(
 name|lastRev
 argument_list|,
 name|headRev
+argument_list|,
+literal|null
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -382,6 +384,7 @@ argument_list|(
 name|path
 argument_list|)
 decl_stmt|;
+comment|// todo use filter parameter for specifying the property?
 name|JsopObject
 name|props
 init|=
@@ -410,6 +413,8 @@ literal|0
 argument_list|,
 operator|-
 literal|1
+argument_list|,
+literal|null
 argument_list|)
 argument_list|)
 decl_stmt|;

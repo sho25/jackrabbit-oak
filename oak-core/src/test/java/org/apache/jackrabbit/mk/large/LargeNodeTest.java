@@ -292,6 +292,8 @@ literal|0
 argument_list|,
 operator|-
 literal|1
+argument_list|,
+literal|null
 argument_list|)
 expr_stmt|;
 name|Assert
@@ -319,6 +321,8 @@ literal|0
 argument_list|,
 operator|-
 literal|1
+argument_list|,
+literal|null
 argument_list|)
 expr_stmt|;
 name|Assert
@@ -345,6 +349,8 @@ argument_list|,
 literal|0
 argument_list|,
 literal|0
+argument_list|,
+literal|null
 argument_list|)
 expr_stmt|;
 name|Assert
@@ -769,6 +775,8 @@ argument_list|,
 literal|0
 argument_list|,
 literal|0
+argument_list|,
+literal|null
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -919,6 +927,8 @@ literal|0
 argument_list|,
 operator|-
 literal|1
+argument_list|,
+literal|null
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -945,6 +955,8 @@ argument_list|,
 literal|1
 argument_list|,
 literal|2
+argument_list|,
+literal|null
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -971,6 +983,8 @@ argument_list|,
 literal|10
 argument_list|,
 literal|2
+argument_list|,
+literal|null
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -997,6 +1011,8 @@ argument_list|,
 literal|20
 argument_list|,
 literal|2
+argument_list|,
+literal|null
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1023,6 +1039,8 @@ argument_list|,
 literal|40
 argument_list|,
 literal|2
+argument_list|,
+literal|null
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1049,6 +1067,8 @@ argument_list|,
 literal|90
 argument_list|,
 literal|2
+argument_list|,
+literal|null
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1093,6 +1113,8 @@ literal|0
 argument_list|,
 operator|-
 literal|1
+argument_list|,
+literal|null
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1119,6 +1141,8 @@ argument_list|,
 literal|1
 argument_list|,
 literal|2
+argument_list|,
+literal|null
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1145,6 +1169,8 @@ argument_list|,
 literal|10
 argument_list|,
 literal|2
+argument_list|,
+literal|null
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1171,6 +1197,8 @@ argument_list|,
 literal|20
 argument_list|,
 literal|2
+argument_list|,
+literal|null
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1197,6 +1225,8 @@ argument_list|,
 literal|40
 argument_list|,
 literal|2
+argument_list|,
+literal|null
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1223,6 +1253,8 @@ argument_list|,
 literal|90
 argument_list|,
 literal|2
+argument_list|,
+literal|null
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1410,6 +1442,8 @@ argument_list|,
 name|offset
 argument_list|,
 name|count
+argument_list|,
+literal|null
 argument_list|)
 decl_stmt|;
 name|s

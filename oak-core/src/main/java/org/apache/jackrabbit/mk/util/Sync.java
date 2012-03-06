@@ -302,6 +302,8 @@ argument_list|,
 literal|0
 argument_list|,
 name|childNodesPerBatch
+argument_list|,
+literal|null
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -341,6 +343,8 @@ argument_list|,
 literal|0
 argument_list|,
 name|childNodesPerBatch
+argument_list|,
+literal|null
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -812,6 +816,8 @@ argument_list|,
 name|offset
 argument_list|,
 name|batchSize
+argument_list|,
+literal|null
 argument_list|)
 argument_list|)
 decl_stmt|;

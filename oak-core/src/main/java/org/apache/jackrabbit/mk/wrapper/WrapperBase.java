@@ -146,6 +146,9 @@ name|fromRevisionId
 parameter_list|,
 name|String
 name|toRevisionId
+parameter_list|,
+name|String
+name|filter
 parameter_list|)
 block|{
 return|return
@@ -154,6 +157,8 @@ argument_list|(
 name|fromRevisionId
 argument_list|,
 name|toRevisionId
+argument_list|,
+name|filter
 argument_list|)
 operator|.
 name|toString
@@ -203,6 +208,9 @@ name|offset
 parameter_list|,
 name|int
 name|count
+parameter_list|,
+name|String
+name|filter
 parameter_list|)
 block|{
 return|return
@@ -217,6 +225,8 @@ argument_list|,
 name|offset
 argument_list|,
 name|count
+argument_list|,
+name|filter
 argument_list|)
 operator|.
 name|toString
@@ -235,7 +245,7 @@ name|String
 name|toRevisionId
 parameter_list|,
 name|String
-name|path
+name|filter
 parameter_list|)
 block|{
 return|return
@@ -245,7 +255,7 @@ name|fromRevisionId
 argument_list|,
 name|toRevisionId
 argument_list|,
-name|path
+name|filter
 argument_list|)
 operator|.
 name|toString
@@ -354,6 +364,9 @@ name|fromRevisionId
 parameter_list|,
 name|String
 name|toRevisionId
+parameter_list|,
+name|String
+name|filter
 parameter_list|)
 block|{
 return|return
@@ -367,6 +380,8 @@ argument_list|(
 name|fromRevisionId
 argument_list|,
 name|toRevisionId
+argument_list|,
+name|filter
 argument_list|)
 argument_list|)
 return|;
@@ -415,6 +430,9 @@ name|offset
 parameter_list|,
 name|int
 name|count
+parameter_list|,
+name|String
+name|filter
 parameter_list|)
 block|{
 return|return
@@ -434,6 +452,8 @@ argument_list|,
 name|offset
 argument_list|,
 name|count
+argument_list|,
+name|filter
 argument_list|)
 argument_list|)
 return|;
@@ -588,6 +608,9 @@ name|fromRevisionId
 parameter_list|,
 name|String
 name|toRevisionId
+parameter_list|,
+name|String
+name|filter
 parameter_list|)
 block|{
 return|return
@@ -598,6 +621,8 @@ argument_list|(
 name|fromRevisionId
 argument_list|,
 name|toRevisionId
+argument_list|,
+name|filter
 argument_list|)
 return|;
 block|}
@@ -658,6 +683,9 @@ name|offset
 parameter_list|,
 name|int
 name|count
+parameter_list|,
+name|String
+name|filter
 parameter_list|)
 block|{
 return|return
@@ -674,6 +702,8 @@ argument_list|,
 name|offset
 argument_list|,
 name|count
+argument_list|,
+name|filter
 argument_list|)
 return|;
 block|}

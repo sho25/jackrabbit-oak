@@ -1626,6 +1626,9 @@ name|fromRevisionId
 parameter_list|,
 name|String
 name|toRevisionId
+parameter_list|,
+name|String
+name|filter
 parameter_list|)
 block|{
 return|return
@@ -1636,6 +1639,8 @@ argument_list|(
 name|fromRevisionId
 argument_list|,
 name|toRevisionId
+argument_list|,
+name|filter
 argument_list|)
 return|;
 block|}
@@ -1709,6 +1714,8 @@ literal|0
 argument_list|,
 operator|-
 literal|1
+argument_list|,
+literal|null
 argument_list|)
 return|;
 block|}
@@ -1730,6 +1737,9 @@ name|offset
 parameter_list|,
 name|int
 name|count
+parameter_list|,
+name|String
+name|filter
 parameter_list|)
 block|{
 name|String
@@ -1792,6 +1802,8 @@ argument_list|,
 name|offset
 argument_list|,
 name|count
+argument_list|,
+name|filter
 argument_list|)
 return|;
 block|}

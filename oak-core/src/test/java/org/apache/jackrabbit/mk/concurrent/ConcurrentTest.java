@@ -256,6 +256,8 @@ argument_list|(
 name|rev
 argument_list|,
 name|newRev
+argument_list|,
+literal|null
 argument_list|)
 expr_stmt|;
 name|mk
@@ -293,6 +295,8 @@ argument_list|,
 literal|0
 argument_list|,
 literal|0
+argument_list|,
+literal|null
 argument_list|)
 expr_stmt|;
 name|Assert

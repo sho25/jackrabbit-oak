@@ -2824,6 +2824,9 @@ name|fromRevisionId
 parameter_list|,
 name|String
 name|toRevisionId
+parameter_list|,
+name|String
+name|filter
 parameter_list|)
 block|{
 name|long
@@ -3270,7 +3273,7 @@ name|String
 name|toRevisionId
 parameter_list|,
 name|String
-name|path
+name|filter
 parameter_list|)
 block|{
 comment|// TODO implement if required
@@ -3305,6 +3308,8 @@ literal|0
 argument_list|,
 operator|-
 literal|1
+argument_list|,
+literal|null
 argument_list|)
 return|;
 block|}
@@ -3326,6 +3331,9 @@ name|offset
 parameter_list|,
 name|int
 name|count
+parameter_list|,
+name|String
+name|filter
 parameter_list|)
 block|{
 comment|// TODO offset> 0 should mean the properties are not included

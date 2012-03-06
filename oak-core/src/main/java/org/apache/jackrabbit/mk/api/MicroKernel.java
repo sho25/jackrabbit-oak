@@ -78,7 +78,7 @@ name|MicroKernelException
 throws|,
 name|InterruptedException
 function_decl|;
-comment|/**      * Returns a revision journal, starting with<code>fromRevisionId</code>      * and ending with<code>toRevisionId</code>.      *<p/>      * Format:      *<pre>      * [ { "id" : "&lt;revisionId&gt;", "ts" : "&lt;revisionTimestamp&gt;", "msg" : "&lt;commitMessage&gt;", "changes" : "&lt;JSON diff&gt;" }, ... ]      *</pre>      *      * @param fromRevisionId first revision to be returned in journal      * @param toRevisionId   last revision to be returned in journal, if null the current head revision is assumed      * @return a chronological list of revisions in JSON format      * @throws MicroKernelException if an error occurs      */
+comment|/**      * Returns a revision journal, starting with<code>fromRevisionId</code>      * and ending with<code>toRevisionId</code>.      *<p/>      * Format:      *<pre>      * [ { "id" : "&lt;revisionId&gt;", "ts" : "&lt;revisionTimestamp&gt;", "msg" : "&lt;commitMessage&gt;", "changes" : "&lt;JSON diff&gt;" }, ... ]      *</pre>      *      * @param fromRevisionId first revision to be returned in journal      * @param toRevisionId   last revision to be returned in journal, if null the current head revision is assumed      * @param filter         (optional) filter criteria      *                       (e.g. path, property names, etc);      *                       TODO specify format and semantics      * @return a chronological list of revisions in JSON format      * @throws MicroKernelException if an error occurs      */
 name|String
 comment|/* jsonArray */
 name|getJournal
@@ -88,11 +88,14 @@ name|fromRevisionId
 parameter_list|,
 name|String
 name|toRevisionId
+parameter_list|,
+name|String
+name|filter
 parameter_list|)
 throws|throws
 name|MicroKernelException
 function_decl|;
-comment|/**      * Returns the JSON diff representation of the changes between the specified      * revisions. The changes will be consolidated if the specified range      * covers intermediary revisions. The revisions need not be in a specified      * chronological order.      *      *<p/>      * Format:      *<pre>      * [ { "id" : "&lt;revisionId&gt;", "ts" : "&lt;revisionTimestamp&gt;", "msg" : "&lt;commitMessage&gt;", "changes" : "&lt;JSON diff&gt;" }, ... ]      *</pre>      *      * @param fromRevisionId a revision      * @param toRevisionId   another revision, if null the current head revision is assumed      * @param path consider only changes that affected the specified subtree at<code>path</code>;      *        if null the default "/" is assumed      * @return JSON diff representation of the changes      * @throws MicroKernelException if an error occurs      */
+comment|/**      * Returns the JSON diff representation of the changes between the specified      * revisions. The changes will be consolidated if the specified range      * covers intermediary revisions. The revisions need not be in a specified      * chronological order.      *      *<p/>      * Format:      *<pre>      * [ { "id" : "&lt;revisionId&gt;", "ts" : "&lt;revisionTimestamp&gt;", "msg" : "&lt;commitMessage&gt;", "changes" : "&lt;JSON diff&gt;" }, ... ]      *</pre>      *      * @param fromRevisionId a revision      * @param toRevisionId   another revision, if null the current head revision is assumed      * @param filter         (optional) filter criteria      *                       (e.g. path, property names, etc);      *                       TODO specify format and semantics      * @return JSON diff representation of the changes      * @throws MicroKernelException if an error occurs      */
 name|String
 comment|/* JSON diff */
 name|diff
@@ -104,7 +107,7 @@ name|String
 name|toRevisionId
 parameter_list|,
 name|String
-name|path
+name|filter
 parameter_list|)
 throws|throws
 name|MicroKernelException
@@ -136,7 +139,7 @@ parameter_list|)
 throws|throws
 name|MicroKernelException
 function_decl|;
-comment|/**      * Returns the node tree rooted at the specified parent node with depth 1.      * Depth 1 means all properties of the node are returned, including the list      * of child nodes and their properties (including      *<code>:childNodeCount</code>). Example:      *<pre>      * {      *     "someprop": "someval",      *     ":childNodeCount": 2,      *     "child1" : {      *          "prop1": "foo",      *          ":childNodeCount": 2      *      },      *      "child2": {      *          "prop1": "bar"      *          ":childNodeCount": 0      *      }      * }      *</pre>      * The collection of name/value pairs denoting child nodes is assumed to be      * ordered.      *<p/>      * Remarks:      *<ul>      *<li>If the property<code>:childNodeCount</code> equals 0, then the      * node does not have any child nodes.      *<li>If the value of<code>:childNodeCount</code> is larger than the list      * of returned child nodes, then the node has more child nodes than those      * included in the tree. Large number of child nodes can be retrieved in      * chunks using {@link #getNodes(String, String, int, long, int)}</li>      *</ul>      * This method is a convenience method for      *<code>getNodes(path, revisionId, 1, 0, -1)</code>      *      * @param path       path denoting root of node tree to be retrieved      * @param revisionId revision, if null the current head revision is assumed      * @return node tree in JSON format      * @throws MicroKernelException if an error occurs      */
+comment|/**      * Returns the node tree rooted at the specified parent node with depth 1.      * Depth 1 means all properties of the node are returned, including the list      * of child nodes and their properties (including      *<code>:childNodeCount</code>). Example:      *<pre>      * {      *     "someprop": "someval",      *     ":childNodeCount": 2,      *     "child1" : {      *          "prop1": "foo",      *          ":childNodeCount": 2      *      },      *      "child2": {      *          "prop1": "bar"      *          ":childNodeCount": 0      *      }      * }      *</pre>      * The collection of name/value pairs denoting child nodes is assumed to be      * ordered.      *<p/>      * Remarks:      *<ul>      *<li>If the property<code>:childNodeCount</code> equals 0, then the      * node does not have any child nodes.      *<li>If the value of<code>:childNodeCount</code> is larger than the list      * of returned child nodes, then the node has more child nodes than those      * included in the tree. Large number of child nodes can be retrieved in      * chunks using {@link #getNodes(String, String, int, long, int, String)}</li>      *</ul>      * This method is a convenience method for      *<code>getNodes(path, revisionId, 1, 0, -1, null)</code>      *      * @param path       path denoting root of node tree to be retrieved      * @param revisionId revision, if null the current head revision is assumed      * @return node tree in JSON format      * @throws MicroKernelException if an error occurs      */
 name|String
 comment|/* jsonTree */
 name|getNodes
@@ -150,7 +153,7 @@ parameter_list|)
 throws|throws
 name|MicroKernelException
 function_decl|;
-comment|/**      * Returns the node tree rooted at the specified parent node with the      * specified depth, maximum child node count and offset. The depth of the      * returned tree is governed by the<code>depth</code> parameter:      *<table>      *<tr>      *<td>depth = 0</td>      *<td>properties, including<code>:childNodeCount</code> and the list      * of child node names (as empty objects)</td>      *</tr>      *<tr>      *<td>depth = 1</td>      *<td>properties, child nodes and their properties (including      *<code>:childNodeCount</code>)</td>      *</tr>      *<tr>      *<td>depth = 2</td>      *<td>[and so on...]</td>      *</tr>      *</table>      * Offset and count only affect the returned child node list of this node.      *      * @param path       path denoting root of node tree to be retrieved      * @param revisionId revision, if null the current head revision is assumed      * @param depth      maximum depth of returned tree      * @param offset     start position in child node list (0 to start at the      *                   beginning)      * @param count      maximum number of child nodes to retrieve (-1 for as many as      *                   possible)      * @return node tree in JSON format      * @throws MicroKernelException if an error occurs      */
+comment|/**      * Returns the node tree rooted at the specified parent node with the      * specified depth, maximum child node count and offset. The depth of the      * returned tree is governed by the<code>depth</code> parameter:      *<table>      *<tr>      *<td>depth = 0</td>      *<td>properties, including<code>:childNodeCount</code> and the list      * of child node names (as empty objects)</td>      *</tr>      *<tr>      *<td>depth = 1</td>      *<td>properties, child nodes and their properties (including      *<code>:childNodeCount</code>)</td>      *</tr>      *<tr>      *<td>depth = 2</td>      *<td>[and so on...]</td>      *</tr>      *</table>      * Offset and count only affect the returned child node list of this node.      *      * @param path       path denoting root of node tree to be retrieved      * @param revisionId revision, if null the current head revision is assumed      * @param depth      maximum depth of returned tree      * @param offset     start position in child node list (0 to start at the      *                   beginning)      * @param count      maximum number of child nodes to retrieve (-1 for as many as      *                   possible)      * @param filter     (optional) filter criteria      *                   (e.g. names of properties to be included, etc);      *                   TODO specify format and semantics      * @return node tree in JSON format      * @throws MicroKernelException if an error occurs      */
 name|String
 comment|/* jsonTree */
 name|getNodes
@@ -169,6 +172,9 @@ name|offset
 parameter_list|,
 name|int
 name|count
+parameter_list|,
+name|String
+name|filter
 parameter_list|)
 throws|throws
 name|MicroKernelException

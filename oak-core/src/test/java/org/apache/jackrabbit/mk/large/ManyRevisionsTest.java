@@ -393,6 +393,8 @@ argument_list|(
 name|last
 argument_list|,
 name|rev
+argument_list|,
+literal|null
 argument_list|)
 decl_stmt|;
 name|JsopArray
