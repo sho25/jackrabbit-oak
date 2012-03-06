@@ -60,7 +60,7 @@ name|long
 name|getChildNodeCount
 parameter_list|()
 function_decl|;
-comment|/**      * Returns an iterable of the child node entries starting from the      * given offset. Multiple iterations are guaranteed to return the      * child nodes in the same order, but the specific order used is      * implementation-dependent and may change across different states      * of the same node. An empty iterable is returned if the given      * offset is greater than the offset of the last child node entry.      *      * @param offset zero-based offset of the first entry to return      * @return requested child node entries in some stable order      */
+comment|/**      * Returns an iterable of the child node entries starting from the      * given offset. Multiple iterations are guaranteed to return the      * child nodes in the same order, but the specific order used is      * implementation-dependent and may change across different states      * of the same node. An empty iterable is returned if the given      * offset is greater than the offset of the last child node entry.      *      * @param offset zero-based offset of the first entry to return      * @param length maximum number of entries to return,      *               or -1 for all remaining entries      * @return requested child node entries in some stable order      */
 name|Iterable
 argument_list|<
 name|ChildNodeEntry
@@ -69,6 +69,9 @@ name|getChildNodeEntries
 parameter_list|(
 name|long
 name|offset
+parameter_list|,
+name|long
+name|length
 parameter_list|)
 function_decl|;
 block|}
