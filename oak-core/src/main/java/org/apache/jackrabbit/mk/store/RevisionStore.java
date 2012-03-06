@@ -61,7 +61,7 @@ name|mk
 operator|.
 name|model
 operator|.
-name|Node
+name|MutableNode
 import|;
 end_import
 
@@ -90,7 +90,7 @@ name|String
 comment|/*id*/
 name|putNode
 parameter_list|(
-name|Node
+name|MutableNode
 name|node
 parameter_list|)
 throws|throws
