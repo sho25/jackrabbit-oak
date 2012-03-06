@@ -142,7 +142,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Use-case: start off a new revision store that contains just the head revision  * and its nodes.  *   * TODO: if copying starts at some point in time and ends some time later, copy  *       all revisions that are accessed in the meantime to the new store.  *       This must be done in a way that ensures the integrity of the parental  *       relationship (because there may be missing intermediate commits).  */
+comment|/**  * Use-case: start off a new revision store that contains just the head revision  * and its nodes.  *   * TODO: make the test concurrent  */
 end_comment
 
 begin_class

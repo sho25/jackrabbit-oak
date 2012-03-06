@@ -160,7 +160,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Revision garbage collector that copies reachable revisions from a "from" revision  * store to a "to" revision store.   */
+comment|/**  * Revision garbage collector that copies reachable revisions from a "from" revision  * store to a "to" revision store. It assumes that both stores share the same blob  * store.  *   * TODO: Ensure the integrity of the parental relationship when copying revisions  *       in a GC cycle (because there may be missing intermediate commits).  */
 end_comment
 
 begin_class
@@ -243,7 +243,7 @@ name|running
 operator|=
 literal|false
 expr_stmt|;
-comment|// TODO: swap rsFrom/rsTo and re-initialize
+comment|// TODO: swap rsFrom/rsTo and reset them
 name|rsFrom
 operator|=
 name|rsTo
