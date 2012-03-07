@@ -159,7 +159,7 @@ name|store
 operator|.
 name|persistence
 operator|.
-name|H2PersistenceManager
+name|H2Persistence
 import|;
 end_import
 
@@ -177,7 +177,7 @@ name|store
 operator|.
 name|persistence
 operator|.
-name|PersistenceManager
+name|Persistence
 import|;
 end_import
 
@@ -294,7 +294,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Default revision store implementation, passing calls to a<code>PersistenceManager</code>  * and a<code>BlobStore</code>, respectively and providing caching.   */
+comment|/**  * Default revision store implementation, passing calls to a<code>Persistence</code>  * and a<code>BlobStore</code>, respectively and providing caching.   */
 end_comment
 
 begin_class
@@ -344,7 +344,7 @@ name|ReentrantReadWriteLock
 argument_list|()
 decl_stmt|;
 specifier|private
-name|PersistenceManager
+name|Persistence
 name|pm
 decl_stmt|;
 specifier|private
@@ -410,13 +410,13 @@ expr_stmt|;
 name|pm
 operator|=
 operator|new
-name|H2PersistenceManager
+name|H2Persistence
 argument_list|()
 expr_stmt|;
-comment|//pm = new InMemPersistenceManager();
-comment|//pm = new MongoPersistenceManager();
-comment|//pm = new BDbPersistenceManager();
-comment|//pm = new FSPersistenceManager();
+comment|//pm = new InMemPersistence();
+comment|//pm = new MongoPersistence();
+comment|//pm = new BDbPersistence();
+comment|//pm = new FSPersistence();
 name|pm
 operator|.
 name|initialize

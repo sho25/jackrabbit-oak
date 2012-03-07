@@ -418,9 +418,9 @@ end_comment
 begin_class
 specifier|public
 class|class
-name|MongoPersistenceManager
+name|MongoPersistence
 implements|implements
-name|PersistenceManager
+name|Persistence
 implements|,
 name|BlobStore
 block|{

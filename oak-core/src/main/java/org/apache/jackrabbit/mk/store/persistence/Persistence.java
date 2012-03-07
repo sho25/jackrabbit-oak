@@ -148,7 +148,7 @@ end_comment
 begin_interface
 specifier|public
 interface|interface
-name|PersistenceManager
+name|Persistence
 block|{
 name|void
 name|initialize
