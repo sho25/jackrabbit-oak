@@ -199,6 +199,22 @@ end_import
 
 begin_import
 import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|tree
+operator|.
+name|NodeState
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|io
@@ -1172,6 +1188,24 @@ argument_list|)
 return|;
 block|}
 comment|//-----------------------------------------------------< RevisionProvider>
+specifier|public
+name|NodeState
+name|getNodeState
+parameter_list|(
+name|StoredNode
+name|node
+parameter_list|)
+block|{
+return|return
+operator|new
+name|StoredNodeAsState
+argument_list|(
+name|node
+argument_list|,
+name|this
+argument_list|)
+return|;
+block|}
 specifier|public
 name|StoredNode
 name|getNode

@@ -65,6 +65,22 @@ name|StoredNode
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|tree
+operator|.
+name|NodeState
+import|;
+end_import
+
 begin_comment
 comment|/**  *  */
 end_comment
@@ -74,6 +90,14 @@ specifier|public
 interface|interface
 name|RevisionProvider
 block|{
+comment|/**      * Adapts the given {@link StoredNode} to a corresponding      * {@link NodeState} instance.      *      * @param node stored node instance      * @return node state adapter      */
+name|NodeState
+name|getNodeState
+parameter_list|(
+name|StoredNode
+name|node
+parameter_list|)
+function_decl|;
 name|StoredNode
 name|getNode
 parameter_list|(
