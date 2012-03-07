@@ -15,7 +15,7 @@ name|mk
 operator|.
 name|store
 operator|.
-name|pm
+name|persistence
 package|;
 end_package
 

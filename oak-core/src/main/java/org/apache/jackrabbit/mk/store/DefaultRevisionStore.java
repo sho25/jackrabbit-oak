@@ -157,7 +157,7 @@ name|mk
 operator|.
 name|store
 operator|.
-name|pm
+name|persistence
 operator|.
 name|H2PersistenceManager
 import|;
@@ -175,7 +175,7 @@ name|mk
 operator|.
 name|store
 operator|.
-name|pm
+name|persistence
 operator|.
 name|PersistenceManager
 import|;
