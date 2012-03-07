@@ -95,6 +95,22 @@ name|mk
 operator|.
 name|model
 operator|.
+name|Id
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|mk
+operator|.
+name|model
+operator|.
 name|Node
 import|;
 end_import
@@ -604,7 +620,7 @@ name|root
 return|;
 block|}
 comment|//return root.getNode(path.substring(1), pm);
-name|String
+name|Id
 index|[]
 name|ids
 init|=
@@ -793,7 +809,7 @@ argument_list|)
 return|;
 block|}
 comment|/**      *      * @param revId      * @param nodePath      * @return      * @throws IllegalArgumentException if the specified path is not absolute      * @throws NotFoundException if either path or revision doesn't exist      * @throws Exception if another error occurs      */
-name|String
+name|Id
 index|[]
 comment|/* array of node id's */
 name|resolvePath
@@ -848,7 +864,7 @@ condition|)
 block|{
 return|return
 operator|new
-name|String
+name|Id
 index|[]
 block|{
 name|commit
@@ -869,12 +885,12 @@ argument_list|(
 name|nodePath
 argument_list|)
 decl_stmt|;
-name|String
+name|Id
 index|[]
 name|ids
 init|=
 operator|new
-name|String
+name|Id
 index|[
 name|names
 operator|.

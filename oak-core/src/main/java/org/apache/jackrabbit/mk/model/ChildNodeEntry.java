@@ -33,7 +33,7 @@ name|name
 decl_stmt|;
 specifier|private
 specifier|final
-name|String
+name|Id
 name|id
 decl_stmt|;
 specifier|public
@@ -42,7 +42,7 @@ parameter_list|(
 name|String
 name|name
 parameter_list|,
-name|String
+name|Id
 name|id
 parameter_list|)
 block|{
@@ -69,7 +69,7 @@ name|name
 return|;
 block|}
 specifier|public
-name|String
+name|Id
 name|getId
 parameter_list|()
 block|{

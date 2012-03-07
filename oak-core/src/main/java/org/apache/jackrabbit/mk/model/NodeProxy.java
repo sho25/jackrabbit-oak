@@ -61,7 +61,7 @@ name|NodeProxy
 block|{
 specifier|private
 specifier|final
-name|String
+name|Id
 name|id
 decl_stmt|;
 specifier|private
@@ -72,7 +72,7 @@ decl_stmt|;
 specifier|public
 name|NodeProxy
 parameter_list|(
-name|String
+name|Id
 name|id
 parameter_list|)
 block|{
@@ -110,7 +110,7 @@ literal|null
 expr_stmt|;
 block|}
 specifier|public
-name|String
+name|Id
 name|getId
 parameter_list|()
 block|{

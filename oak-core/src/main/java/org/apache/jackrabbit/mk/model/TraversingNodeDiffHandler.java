@@ -275,7 +275,7 @@ parameter_list|(
 name|ChildNodeEntry
 name|changed
 parameter_list|,
-name|String
+name|Id
 name|newId
 parameter_list|)
 block|{

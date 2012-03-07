@@ -42,7 +42,7 @@ specifier|public
 interface|interface
 name|Commit
 block|{
-name|String
+name|Id
 name|getRootNodeId
 parameter_list|()
 function_decl|;

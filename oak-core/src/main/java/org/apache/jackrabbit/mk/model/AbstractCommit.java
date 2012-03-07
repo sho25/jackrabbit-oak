@@ -47,7 +47,7 @@ name|Commit
 block|{
 comment|// id of root node associated with this commit
 specifier|protected
-name|String
+name|Id
 name|rootNodeId
 decl_stmt|;
 comment|// commit timestamp
@@ -123,7 +123,7 @@ name|parentId
 return|;
 block|}
 specifier|public
-name|String
+name|Id
 name|getRootNodeId
 parameter_list|()
 block|{
@@ -166,6 +166,9 @@ argument_list|(
 literal|"rootNodeId"
 argument_list|,
 name|rootNodeId
+operator|.
+name|getBytes
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|binding

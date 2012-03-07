@@ -124,7 +124,7 @@ name|AbstractNode
 block|{
 specifier|private
 specifier|final
-name|String
+name|Id
 name|id
 decl_stmt|;
 specifier|public
@@ -132,7 +132,7 @@ specifier|static
 name|StoredNode
 name|deserialize
 parameter_list|(
-name|String
+name|Id
 name|id
 parameter_list|,
 name|RevisionProvider
@@ -255,7 +255,7 @@ block|}
 specifier|private
 name|StoredNode
 parameter_list|(
-name|String
+name|Id
 name|id
 parameter_list|,
 name|RevisionProvider
@@ -277,7 +277,7 @@ block|}
 specifier|public
 name|StoredNode
 parameter_list|(
-name|String
+name|Id
 name|id
 parameter_list|,
 name|RevisionProvider
@@ -341,7 +341,7 @@ block|}
 specifier|public
 name|StoredNode
 parameter_list|(
-name|String
+name|Id
 name|id
 parameter_list|,
 name|Node
@@ -366,7 +366,7 @@ name|id
 expr_stmt|;
 block|}
 specifier|public
-name|String
+name|Id
 name|getId
 parameter_list|()
 block|{

@@ -2883,7 +2883,7 @@ index|[
 name|i
 index|]
 decl_stmt|;
-name|String
+name|Id
 name|id
 init|=
 name|store
@@ -2945,7 +2945,7 @@ specifier|protected
 name|ChildNodeEntriesMap
 name|retrieveBucket
 parameter_list|(
-name|String
+name|Id
 name|id
 parameter_list|)
 block|{
@@ -2987,6 +2987,7 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
+comment|// TODO use binary instead of string serialization
 name|binding
 operator|.
 name|write
@@ -3213,6 +3214,7 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
+comment|// TODO use binary instead of string serialization
 name|ChildNodeEntriesTree
 name|newInstance
 init|=
@@ -3388,7 +3390,12 @@ name|NodeInfo
 argument_list|(
 name|name
 argument_list|,
+name|Id
+operator|.
+name|fromString
+argument_list|(
 name|id
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -3457,7 +3464,12 @@ operator|=
 operator|new
 name|BucketInfo
 argument_list|(
+name|Id
+operator|.
+name|fromString
+argument_list|(
 name|id
+argument_list|)
 argument_list|,
 name|count
 argument_list|)
@@ -3490,7 +3502,7 @@ block|{
 comment|// bucket id
 specifier|private
 specifier|final
-name|String
+name|Id
 name|id
 decl_stmt|;
 comment|// number of bucket entries
@@ -3502,7 +3514,7 @@ decl_stmt|;
 specifier|protected
 name|BucketInfo
 parameter_list|(
-name|String
+name|Id
 name|id
 parameter_list|,
 name|int
@@ -3523,7 +3535,7 @@ name|size
 expr_stmt|;
 block|}
 specifier|public
-name|String
+name|Id
 name|getId
 parameter_list|()
 block|{
@@ -3711,7 +3723,7 @@ parameter_list|(
 name|String
 name|name
 parameter_list|,
-name|String
+name|Id
 name|id
 parameter_list|)
 block|{

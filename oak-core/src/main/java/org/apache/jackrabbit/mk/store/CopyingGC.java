@@ -91,6 +91,22 @@ name|mk
 operator|.
 name|model
 operator|.
+name|Id
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|mk
+operator|.
+name|model
+operator|.
 name|MutableCommit
 import|;
 end_import
@@ -311,7 +327,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Copy a commit and all the nodes belonging to it, starting at the root node.      *       * @param from source provider      * @param to target store      * @throws Exception if an error occurs      */
+comment|/**      * Copy a commit and all the nodes belonging to it, starting at the root node.      *       * @param commit commit to be copied      * @throws Exception if an error occurs      */
 specifier|public
 name|void
 name|copy
@@ -377,7 +393,7 @@ name|revId
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Copy a node and all its descendants into a target store      * @param node source node      * @param store target store      * @throws Exception if an error occurs      */
+comment|/**      * Copy a node and all its descendants into a target store      * @param node source node      * @throws Exception if an error occurs      */
 specifier|private
 name|void
 name|copy
@@ -488,7 +504,7 @@ specifier|public
 name|StoredNode
 name|getNode
 parameter_list|(
-name|String
+name|Id
 name|id
 parameter_list|)
 throws|throws
@@ -606,7 +622,7 @@ specifier|public
 name|ChildNodeEntriesMap
 name|getCNEMap
 parameter_list|(
-name|String
+name|Id
 name|id
 parameter_list|)
 throws|throws
@@ -737,7 +753,7 @@ argument_list|()
 return|;
 block|}
 specifier|public
-name|String
+name|Id
 name|putNode
 parameter_list|(
 name|MutableNode
@@ -793,7 +809,7 @@ argument_list|)
 return|;
 block|}
 specifier|public
-name|String
+name|Id
 name|putCNEMap
 parameter_list|(
 name|ChildNodeEntriesMap

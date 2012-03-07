@@ -106,7 +106,7 @@ specifier|public
 name|void
 name|setRootNodeId
 parameter_list|(
-name|String
+name|Id
 name|rootNodeId
 parameter_list|)
 block|{

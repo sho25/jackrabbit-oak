@@ -339,7 +339,7 @@ name|ChildNodeEntry
 argument_list|(
 name|nodeName
 argument_list|,
-literal|""
+literal|null
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1048,7 +1048,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-name|String
+name|Id
 name|rootNodeId
 init|=
 name|persistStagedNodes
@@ -1617,7 +1617,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-name|String
+name|Id
 comment|/* new id of root node */
 name|persistStagedNodes
 parameter_list|()
@@ -1713,7 +1713,7 @@ block|}
 argument_list|)
 expr_stmt|;
 comment|// iterate over staged entries in depth-descending order
-name|String
+name|Id
 name|rootNodeId
 init|=
 literal|null
@@ -1727,7 +1727,7 @@ name|orderedPaths
 control|)
 block|{
 comment|// persist node
-name|String
+name|Id
 name|id
 init|=
 name|store
@@ -1809,7 +1809,7 @@ name|rootNodeId
 return|;
 block|}
 comment|/**      * Performs a three-way merge of the trees rooted at<code>ourRoot</code>,      *<code>theirRoot</code>, using the tree at<code>baseRoot</code> as reference.      *      * @param baseRoot      * @param ourRoot      * @param theirRoot      * @return id of merged root node      * @throws Exception      */
-name|String
+name|Id
 comment|/* id of merged root node */
 name|mergeTree
 parameter_list|(
@@ -1969,7 +1969,7 @@ name|Entry
 argument_list|<
 name|String
 argument_list|,
-name|String
+name|Id
 argument_list|>
 name|entry
 range|:
@@ -2010,7 +2010,7 @@ name|Entry
 argument_list|<
 name|String
 argument_list|,
-name|String
+name|Id
 argument_list|>
 name|entry
 range|:

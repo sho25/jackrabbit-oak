@@ -139,6 +139,22 @@ name|mk
 operator|.
 name|model
 operator|.
+name|Id
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|mk
+operator|.
+name|model
+operator|.
 name|StoredCommit
 import|;
 end_import
@@ -1216,7 +1232,7 @@ comment|// to detect 'move' operations
 specifier|final
 name|HashMap
 argument_list|<
-name|String
+name|Id
 argument_list|,
 name|String
 argument_list|>
@@ -1225,7 +1241,7 @@ init|=
 operator|new
 name|HashMap
 argument_list|<
-name|String
+name|Id
 argument_list|,
 name|String
 argument_list|>
@@ -1234,7 +1250,7 @@ decl_stmt|;
 specifier|final
 name|HashMap
 argument_list|<
-name|String
+name|Id
 argument_list|,
 name|String
 argument_list|>
@@ -1243,7 +1259,7 @@ init|=
 operator|new
 name|HashMap
 argument_list|<
-name|String
+name|Id
 argument_list|,
 name|String
 argument_list|>
@@ -2139,7 +2155,7 @@ name|Map
 operator|.
 name|Entry
 argument_list|<
-name|String
+name|Id
 argument_list|,
 name|String
 argument_list|>

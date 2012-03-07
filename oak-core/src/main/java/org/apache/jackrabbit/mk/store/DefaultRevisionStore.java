@@ -77,6 +77,22 @@ name|mk
 operator|.
 name|model
 operator|.
+name|Id
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|mk
+operator|.
+name|model
+operator|.
 name|MutableCommit
 import|;
 end_import
@@ -342,7 +358,7 @@ decl_stmt|;
 specifier|private
 name|Map
 argument_list|<
-name|String
+name|Id
 argument_list|,
 name|Object
 argument_list|>
@@ -380,7 +396,7 @@ argument_list|(
 name|SimpleLRUCache
 operator|.
 expr|<
-name|String
+name|Id
 argument_list|,
 name|Object
 operator|>
@@ -489,7 +505,7 @@ argument_list|(
 name|rawHeadId
 argument_list|)
 expr_stmt|;
-name|String
+name|Id
 name|rootNodeId
 init|=
 name|pm
@@ -788,7 +804,7 @@ return|;
 block|}
 comment|//--------------------------------------------------------< RevisionStore>
 specifier|public
-name|String
+name|Id
 name|putNode
 parameter_list|(
 name|MutableNode
@@ -827,7 +843,7 @@ name|this
 argument_list|)
 expr_stmt|;
 block|}
-name|String
+name|Id
 name|id
 init|=
 name|pm
@@ -874,7 +890,7 @@ name|id
 return|;
 block|}
 specifier|public
-name|String
+name|Id
 name|putCNEMap
 parameter_list|(
 name|ChildNodeEntriesMap
@@ -913,7 +929,7 @@ name|this
 argument_list|)
 expr_stmt|;
 block|}
-name|String
+name|Id
 name|id
 init|=
 name|pm
@@ -1071,11 +1087,17 @@ name|this
 argument_list|)
 expr_stmt|;
 block|}
+comment|// TODO fixme, String -> Id
 name|cache
 operator|.
 name|put
 argument_list|(
+name|Id
+operator|.
+name|fromString
+argument_list|(
 name|id
+argument_list|)
 argument_list|,
 operator|new
 name|StoredCommit
@@ -1210,7 +1232,7 @@ specifier|public
 name|StoredNode
 name|getNode
 parameter_list|(
-name|String
+name|Id
 name|id
 parameter_list|)
 throws|throws
@@ -1285,7 +1307,7 @@ specifier|public
 name|ChildNodeEntriesMap
 name|getCNEMap
 parameter_list|(
-name|String
+name|Id
 name|id
 parameter_list|)
 throws|throws
@@ -1357,6 +1379,7 @@ block|{
 name|verifyInitialized
 argument_list|()
 expr_stmt|;
+comment|// TODO fixme, String -> Id
 name|StoredCommit
 name|commit
 init|=
@@ -1367,7 +1390,12 @@ name|cache
 operator|.
 name|get
 argument_list|(
+name|Id
+operator|.
+name|fromString
+argument_list|(
 name|id
+argument_list|)
 argument_list|)
 decl_stmt|;
 if|if
@@ -1394,7 +1422,12 @@ name|cache
 operator|.
 name|put
 argument_list|(
+name|Id
+operator|.
+name|fromString
+argument_list|(
 name|id
+argument_list|)
 argument_list|,
 name|commit
 argument_list|)
