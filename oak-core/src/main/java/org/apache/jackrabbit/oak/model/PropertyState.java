@@ -13,7 +13,7 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|tree
+name|model
 package|;
 end_package
 
@@ -24,16 +24,16 @@ end_comment
 begin_interface
 specifier|public
 interface|interface
-name|ChildNodeEntry
+name|PropertyState
 block|{
 comment|/**      * TODO: document      */
 name|String
 name|getName
 parameter_list|()
 function_decl|;
-comment|/**      * TODO: document      */
-name|NodeState
-name|getNode
+comment|/**      * FIXME: replace with type-specific accessors      */
+name|String
+name|getEncodedValue
 parameter_list|()
 function_decl|;
 block|}

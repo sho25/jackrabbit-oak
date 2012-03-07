@@ -249,7 +249,7 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|tree
+name|model
 operator|.
 name|NodeState
 import|;
@@ -265,7 +265,7 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|tree
+name|model
 operator|.
 name|PropertyState
 import|;
@@ -3671,7 +3671,7 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|tree
+name|model
 operator|.
 name|ChildNodeEntry
 name|entry

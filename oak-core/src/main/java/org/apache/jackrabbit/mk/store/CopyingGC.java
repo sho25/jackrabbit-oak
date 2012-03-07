@@ -169,7 +169,7 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|tree
+name|model
 operator|.
 name|NodeState
 import|;
