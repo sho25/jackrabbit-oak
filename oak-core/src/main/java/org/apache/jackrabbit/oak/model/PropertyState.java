@@ -18,7 +18,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * TODO: document  */
+comment|/**  * Immutable property state. A property consists of a name and  * a JSON-encoded value.  */
 end_comment
 
 begin_interface
