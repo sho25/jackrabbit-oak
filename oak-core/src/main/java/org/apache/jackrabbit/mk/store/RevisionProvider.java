@@ -114,6 +114,14 @@ name|StoredNode
 name|node
 parameter_list|)
 function_decl|;
+comment|/**      * Adapts the given {@link NodeState} to the corresponding identifier.      *      * @param node node state      * @return node identifier      */
+name|Id
+name|getId
+parameter_list|(
+name|NodeState
+name|node
+parameter_list|)
+function_decl|;
 name|StoredNode
 name|getNode
 parameter_list|(

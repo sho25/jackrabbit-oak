@@ -151,16 +151,6 @@ throws|,
 name|Exception
 function_decl|;
 name|void
-name|diff
-parameter_list|(
-name|Node
-name|other
-parameter_list|,
-name|NodeDiffHandler
-name|handler
-parameter_list|)
-function_decl|;
-name|void
 name|serialize
 parameter_list|(
 name|Binding
