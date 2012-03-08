@@ -47,7 +47,7 @@ name|getRootNodeId
 parameter_list|()
 function_decl|;
 specifier|public
-name|String
+name|Id
 name|getParentId
 parameter_list|()
 function_decl|;

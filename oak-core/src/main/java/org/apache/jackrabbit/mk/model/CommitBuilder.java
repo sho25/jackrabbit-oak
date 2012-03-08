@@ -1184,7 +1184,12 @@ name|newCommit
 operator|.
 name|setParentId
 argument_list|(
+name|Id
+operator|.
+name|fromString
+argument_list|(
 name|baseRevId
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|newCommit

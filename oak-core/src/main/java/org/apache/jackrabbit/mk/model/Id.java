@@ -51,7 +51,11 @@ begin_class
 specifier|public
 class|class
 name|Id
-comment|/* implements Comparable<Id> */
+implements|implements
+name|Comparable
+argument_list|<
+name|Id
+argument_list|>
 block|{
 comment|// the raw bytes making up this identifier
 specifier|private
@@ -176,18 +180,92 @@ name|raw
 argument_list|)
 return|;
 block|}
-comment|//    @Override
-comment|//    public int compareTo(Id o) {
-comment|//        byte[] other = o.getBytes();
-comment|//        int len = Math.min(raw.length, other.length);
-comment|//
-comment|//        for (int i = 0; i< len; i++) {
-comment|//            if (raw[i] != other[i]) {
-comment|//                return raw[i] - other[i];
-comment|//            }
-comment|//        }
-comment|//        return raw.length - other.length;
-comment|//    }
+annotation|@
+name|Override
+specifier|public
+name|int
+name|compareTo
+parameter_list|(
+name|Id
+name|o
+parameter_list|)
+block|{
+name|byte
+index|[]
+name|other
+init|=
+name|o
+operator|.
+name|getBytes
+argument_list|()
+decl_stmt|;
+name|int
+name|len
+init|=
+name|Math
+operator|.
+name|min
+argument_list|(
+name|raw
+operator|.
+name|length
+argument_list|,
+name|other
+operator|.
+name|length
+argument_list|)
+decl_stmt|;
+for|for
+control|(
+name|int
+name|i
+init|=
+literal|0
+init|;
+name|i
+operator|<
+name|len
+condition|;
+name|i
+operator|++
+control|)
+block|{
+if|if
+condition|(
+name|raw
+index|[
+name|i
+index|]
+operator|!=
+name|other
+index|[
+name|i
+index|]
+condition|)
+block|{
+return|return
+name|raw
+index|[
+name|i
+index|]
+operator|-
+name|other
+index|[
+name|i
+index|]
+return|;
+block|}
+block|}
+return|return
+name|raw
+operator|.
+name|length
+operator|-
+name|other
+operator|.
+name|length
+return|;
+block|}
 comment|/**      * Returns the raw byte representation of this identifier.      *<p/>      * The returned<code>byte[]</code><i>MUST NOT</i> be modified!      *      * @return the raw byte representation      */
 specifier|public
 name|byte

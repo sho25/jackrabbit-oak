@@ -91,7 +91,7 @@ specifier|public
 name|void
 name|setParentId
 parameter_list|(
-name|String
+name|Id
 name|parentId
 parameter_list|)
 block|{

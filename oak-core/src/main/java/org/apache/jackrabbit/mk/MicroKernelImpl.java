@@ -646,7 +646,7 @@ argument_list|(
 name|commit
 argument_list|)
 expr_stmt|;
-name|String
+name|Id
 name|commitId
 init|=
 name|commit
@@ -670,6 +670,9 @@ operator|.
 name|getCommit
 argument_list|(
 name|commitId
+operator|.
+name|toString
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -957,7 +960,7 @@ condition|)
 block|{
 break|break;
 block|}
-name|String
+name|Id
 name|commitId
 init|=
 name|commit
@@ -981,6 +984,9 @@ operator|.
 name|getCommit
 argument_list|(
 name|commitId
+operator|.
+name|toString
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}

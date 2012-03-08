@@ -242,7 +242,7 @@ name|running
 decl_stmt|;
 comment|/**      * First commit id of "to" store.      */
 specifier|private
-name|String
+name|Id
 name|firstCommitId
 decl_stmt|;
 comment|/**      * Map of commits that have been accessed while a GC cycle is running; these      * need to be "re-linked" with a preceding, possibly not adjacent parent      * commit before saving them back to the "to" revision store.      */
@@ -284,17 +284,11 @@ operator|.
 name|getId
 argument_list|()
 operator|.
-name|toString
-argument_list|()
-operator|.
 name|compareTo
 argument_list|(
 name|o2
 operator|.
 name|getId
-argument_list|()
-operator|.
-name|toString
 argument_list|()
 argument_list|)
 return|;
@@ -345,9 +339,6 @@ name|rsTo
 operator|.
 name|getHeadCommitId
 argument_list|()
-operator|.
-name|toString
-argument_list|()
 expr_stmt|;
 comment|// Copy the head commit
 name|MutableCommit
@@ -368,9 +359,6 @@ argument_list|(
 name|rsTo
 operator|.
 name|getHeadCommitId
-argument_list|()
-operator|.
-name|toString
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -426,7 +414,7 @@ operator|>
 literal|1
 condition|)
 block|{
-name|String
+name|Id
 name|parentId
 init|=
 name|firstCommitId
@@ -458,9 +446,6 @@ operator|=
 name|commit
 operator|.
 name|getId
-argument_list|()
-operator|.
-name|toString
 argument_list|()
 expr_stmt|;
 block|}

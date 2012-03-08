@@ -62,7 +62,7 @@ name|msg
 decl_stmt|;
 comment|// id of parent commit
 specifier|protected
-name|String
+name|Id
 name|parentId
 decl_stmt|;
 specifier|protected
@@ -114,7 +114,7 @@ argument_list|()
 expr_stmt|;
 block|}
 specifier|public
-name|String
+name|Id
 name|getParentId
 parameter_list|()
 block|{

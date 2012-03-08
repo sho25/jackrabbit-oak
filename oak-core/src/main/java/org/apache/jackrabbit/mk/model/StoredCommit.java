@@ -122,7 +122,12 @@ argument_list|)
 condition|?
 literal|null
 else|:
+name|Id
+operator|.
+name|fromString
+argument_list|(
 name|parentId
+argument_list|)
 argument_list|,
 name|commitTS
 argument_list|,
@@ -147,7 +152,7 @@ parameter_list|(
 name|Id
 name|id
 parameter_list|,
-name|String
+name|Id
 name|parentId
 parameter_list|,
 name|long
