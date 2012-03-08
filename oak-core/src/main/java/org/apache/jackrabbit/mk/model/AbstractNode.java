@@ -149,16 +149,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|LinkedHashMap
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|Map
 import|;
 end_import
@@ -244,9 +234,7 @@ name|childEntries
 operator|=
 operator|new
 name|ChildNodeEntriesMap
-argument_list|(
-literal|true
-argument_list|)
+argument_list|()
 expr_stmt|;
 block|}
 specifier|protected
@@ -352,9 +340,7 @@ name|childEntries
 operator|=
 operator|new
 name|ChildNodeEntriesMap
-argument_list|(
-literal|true
-argument_list|)
+argument_list|()
 expr_stmt|;
 block|}
 else|else
@@ -1119,7 +1105,7 @@ argument_list|>
 name|oldEntries
 init|=
 operator|new
-name|LinkedHashMap
+name|HashMap
 argument_list|<
 name|String
 argument_list|,
@@ -1183,7 +1169,7 @@ argument_list|>
 name|newEntries
 init|=
 operator|new
-name|LinkedHashMap
+name|HashMap
 argument_list|<
 name|String
 argument_list|,

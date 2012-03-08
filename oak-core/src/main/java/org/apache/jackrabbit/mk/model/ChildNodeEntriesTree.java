@@ -1721,9 +1721,7 @@ name|bucket1
 operator|=
 operator|new
 name|ChildNodeEntriesMap
-argument_list|(
-literal|false
-argument_list|)
+argument_list|()
 expr_stmt|;
 name|bucket1
 operator|.
@@ -1788,9 +1786,7 @@ name|bucket2
 operator|=
 operator|new
 name|ChildNodeEntriesMap
-argument_list|(
-literal|false
-argument_list|)
+argument_list|()
 expr_stmt|;
 name|bucket2
 operator|.
@@ -2204,9 +2200,7 @@ name|bucket1
 operator|=
 operator|new
 name|ChildNodeEntriesMap
-argument_list|(
-literal|false
-argument_list|)
+argument_list|()
 expr_stmt|;
 name|bucket1
 operator|.
@@ -2271,9 +2265,7 @@ name|bucket2
 operator|=
 operator|new
 name|ChildNodeEntriesMap
-argument_list|(
-literal|false
-argument_list|)
+argument_list|()
 expr_stmt|;
 name|bucket2
 operator|.
@@ -2604,9 +2596,7 @@ name|bucket1
 operator|=
 operator|new
 name|ChildNodeEntriesMap
-argument_list|(
-literal|false
-argument_list|)
+argument_list|()
 expr_stmt|;
 name|bucket1
 operator|.
@@ -2671,9 +2661,7 @@ name|bucket2
 operator|=
 operator|new
 name|ChildNodeEntriesMap
-argument_list|(
-literal|false
-argument_list|)
+argument_list|()
 expr_stmt|;
 name|bucket2
 operator|.
@@ -2970,9 +2958,7 @@ comment|// todo log error and gracefully handle exception
 return|return
 operator|new
 name|ChildNodeEntriesMap
-argument_list|(
-literal|false
-argument_list|)
+argument_list|()
 return|;
 block|}
 block|}
@@ -3634,13 +3620,7 @@ block|{
 specifier|protected
 name|Bucket
 parameter_list|()
-block|{
-name|super
-argument_list|(
-literal|false
-argument_list|)
-expr_stmt|;
-block|}
+block|{         }
 specifier|protected
 name|Bucket
 parameter_list|(
