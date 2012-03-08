@@ -79,7 +79,7 @@ name|mk
 operator|.
 name|model
 operator|.
-name|ChildNode
+name|ChildNodeEntriesMap
 import|;
 end_import
 
@@ -95,7 +95,7 @@ name|mk
 operator|.
 name|model
 operator|.
-name|ChildNodeEntriesMap
+name|ChildNodeEntry
 import|;
 end_import
 
@@ -587,13 +587,13 @@ argument_list|)
 expr_stmt|;
 name|Iterator
 argument_list|<
-name|ChildNode
+name|ChildNodeEntry
 argument_list|>
 name|iter
 init|=
 name|node
 operator|.
-name|getChildNodes
+name|getChildNodeEntries
 argument_list|(
 literal|0
 argument_list|,
@@ -609,7 +609,7 @@ name|hasNext
 argument_list|()
 condition|)
 block|{
-name|ChildNode
+name|ChildNodeEntry
 name|c
 init|=
 name|iter
@@ -619,10 +619,15 @@ argument_list|()
 decl_stmt|;
 name|copy
 argument_list|(
-name|c
+name|rsFrom
 operator|.
 name|getNode
+argument_list|(
+name|c
+operator|.
+name|getId
 argument_list|()
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
