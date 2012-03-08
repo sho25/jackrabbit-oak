@@ -167,22 +167,6 @@ begin_import
 import|import
 name|org
 operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|mk
-operator|.
-name|util
-operator|.
-name|StringUtils
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
 name|h2
 operator|.
 name|jdbcx
@@ -407,21 +391,21 @@ name|stmt
 operator|.
 name|execute
 argument_list|(
-literal|"create table if not exists REVS (ID binary primary key, DATA binary)"
+literal|"create table if not exists REVS(ID binary primary key, DATA binary)"
 argument_list|)
 expr_stmt|;
 name|stmt
 operator|.
 name|execute
 argument_list|(
-literal|"create table if not exists head(id varchar) as select ''"
+literal|"create table if not exists HEAD(ID binary) as select null"
 argument_list|)
 expr_stmt|;
 name|stmt
 operator|.
 name|execute
 argument_list|(
-literal|"create sequence if not exists datastore_id"
+literal|"create sequence if not exists DATASTORE_ID"
 argument_list|)
 expr_stmt|;
 comment|/*             DbBlobStore store = new DbBlobStore();             store.setConnectionPool(cp);             blobStore = store; */
@@ -447,7 +431,7 @@ argument_list|()
 expr_stmt|;
 block|}
 specifier|public
-name|String
+name|Id
 name|readHead
 parameter_list|()
 throws|throws
@@ -470,7 +454,7 @@ name|con
 operator|.
 name|prepareStatement
 argument_list|(
-literal|"select * from head"
+literal|"select * from HEAD"
 argument_list|)
 decl_stmt|;
 name|ResultSet
@@ -481,8 +465,9 @@ operator|.
 name|executeQuery
 argument_list|()
 decl_stmt|;
-name|String
-name|headId
+name|byte
+index|[]
+name|rawId
 init|=
 literal|null
 decl_stmt|;
@@ -494,11 +479,11 @@ name|next
 argument_list|()
 condition|)
 block|{
-name|headId
+name|rawId
 operator|=
 name|rs
 operator|.
-name|getString
+name|getBytes
 argument_list|(
 literal|1
 argument_list|)
@@ -510,7 +495,17 @@ name|close
 argument_list|()
 expr_stmt|;
 return|return
-name|headId
+name|rawId
+operator|==
+literal|null
+condition|?
+literal|null
+else|:
+operator|new
+name|Id
+argument_list|(
+name|rawId
+argument_list|)
 return|;
 block|}
 finally|finally
@@ -526,7 +521,7 @@ specifier|public
 name|void
 name|writeHead
 parameter_list|(
-name|String
+name|Id
 name|id
 parameter_list|)
 throws|throws
@@ -549,16 +544,19 @@ name|con
 operator|.
 name|prepareStatement
 argument_list|(
-literal|"update head set id=?"
+literal|"update HEAD set ID=?"
 argument_list|)
 decl_stmt|;
 name|stmt
 operator|.
-name|setString
+name|setBytes
 argument_list|(
 literal|1
 argument_list|,
 name|id
+operator|.
+name|getBytes
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|stmt
@@ -763,7 +761,7 @@ name|con
 operator|.
 name|prepareStatement
 argument_list|(
-literal|"insert into REVS (ID, DATA) select ?, ? where not exists (select 1 from revs where ID = ?)"
+literal|"insert into REVS (ID, DATA) select ?, ? where not exists (select 1 from REVS where ID = ?)"
 argument_list|)
 decl_stmt|;
 try|try
@@ -830,7 +828,7 @@ specifier|public
 name|StoredCommit
 name|readCommit
 parameter_list|(
-name|String
+name|Id
 name|id
 parameter_list|)
 throws|throws
@@ -866,12 +864,10 @@ name|setBytes
 argument_list|(
 literal|1
 argument_list|,
-name|StringUtils
-operator|.
-name|convertHexToBytes
-argument_list|(
 name|id
-argument_list|)
+operator|.
+name|getBytes
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|ResultSet
@@ -910,6 +906,9 @@ operator|.
 name|deserialize
 argument_list|(
 name|id
+operator|.
+name|toString
+argument_list|()
 argument_list|,
 operator|new
 name|BinaryBinding
@@ -926,6 +925,9 @@ operator|new
 name|NotFoundException
 argument_list|(
 name|id
+operator|.
+name|toString
+argument_list|()
 argument_list|)
 throw|;
 block|}
@@ -952,9 +954,8 @@ specifier|public
 name|void
 name|writeCommit
 parameter_list|(
-name|byte
-index|[]
-name|rawId
+name|Id
+name|id
 parameter_list|,
 name|Commit
 name|commit
@@ -1006,7 +1007,7 @@ name|con
 operator|.
 name|prepareStatement
 argument_list|(
-literal|"insert into REVS (ID, DATA) select ?, ? where not exists (select 1 from revs where ID = ?)"
+literal|"insert into REVS (ID, DATA) select ?, ? where not exists (select 1 from REVS where ID = ?)"
 argument_list|)
 decl_stmt|;
 try|try
@@ -1017,7 +1018,10 @@ name|setBytes
 argument_list|(
 literal|1
 argument_list|,
-name|rawId
+name|id
+operator|.
+name|getBytes
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|stmt
@@ -1035,7 +1039,10 @@ name|setBytes
 argument_list|(
 literal|3
 argument_list|,
-name|rawId
+name|id
+operator|.
+name|getBytes
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|stmt
@@ -1248,7 +1255,7 @@ name|con
 operator|.
 name|prepareStatement
 argument_list|(
-literal|"insert into REVS (ID, DATA) select ?, ? where not exists (select 1 from revs where ID = ?)"
+literal|"insert into REVS (ID, DATA) select ?, ? where not exists (select 1 from REVS where ID = ?)"
 argument_list|)
 decl_stmt|;
 try|try

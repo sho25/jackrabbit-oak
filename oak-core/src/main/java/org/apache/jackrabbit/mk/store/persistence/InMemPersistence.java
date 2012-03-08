@@ -265,22 +265,6 @@ name|NotFoundException
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|mk
-operator|.
-name|util
-operator|.
-name|StringUtils
-import|;
-end_import
-
 begin_comment
 comment|/**  *  */
 end_comment
@@ -324,7 +308,7 @@ specifier|private
 specifier|final
 name|Map
 argument_list|<
-name|String
+name|Id
 argument_list|,
 name|StoredCommit
 argument_list|>
@@ -337,7 +321,7 @@ argument_list|(
 operator|new
 name|HashMap
 argument_list|<
-name|String
+name|Id
 argument_list|,
 name|StoredCommit
 argument_list|>
@@ -378,7 +362,7 @@ name|MemoryBlobStore
 argument_list|()
 decl_stmt|;
 specifier|private
-name|String
+name|Id
 name|head
 decl_stmt|;
 comment|// TODO: make this configurable
@@ -412,7 +396,7 @@ name|close
 parameter_list|()
 block|{     }
 specifier|public
-name|String
+name|Id
 name|readHead
 parameter_list|()
 throws|throws
@@ -426,7 +410,7 @@ specifier|public
 name|void
 name|writeHead
 parameter_list|(
-name|String
+name|Id
 name|id
 parameter_list|)
 throws|throws
@@ -573,7 +557,7 @@ specifier|public
 name|StoredCommit
 name|readCommit
 parameter_list|(
-name|String
+name|Id
 name|id
 parameter_list|)
 throws|throws
@@ -609,6 +593,9 @@ operator|new
 name|NotFoundException
 argument_list|(
 name|id
+operator|.
+name|toString
+argument_list|()
 argument_list|)
 throw|;
 block|}
@@ -617,9 +604,8 @@ specifier|public
 name|void
 name|writeCommit
 parameter_list|(
-name|byte
-index|[]
-name|rawId
+name|Id
+name|id
 parameter_list|,
 name|Commit
 name|commit
@@ -654,16 +640,6 @@ operator|.
 name|toByteArray
 argument_list|()
 decl_stmt|;
-name|String
-name|id
-init|=
-name|StringUtils
-operator|.
-name|convertBytesToHex
-argument_list|(
-name|rawId
-argument_list|)
-decl_stmt|;
 if|if
 condition|(
 operator|!
@@ -686,6 +662,9 @@ operator|.
 name|deserialize
 argument_list|(
 name|id
+operator|.
+name|toString
+argument_list|()
 argument_list|,
 operator|new
 name|BinaryBinding

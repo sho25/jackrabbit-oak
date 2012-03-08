@@ -163,7 +163,7 @@ name|void
 name|close
 parameter_list|()
 function_decl|;
-name|String
+name|Id
 name|readHead
 parameter_list|()
 throws|throws
@@ -172,7 +172,7 @@ function_decl|;
 name|void
 name|writeHead
 parameter_list|(
-name|String
+name|Id
 name|id
 parameter_list|)
 throws|throws
@@ -221,7 +221,7 @@ function_decl|;
 name|StoredCommit
 name|readCommit
 parameter_list|(
-name|String
+name|Id
 name|id
 parameter_list|)
 throws|throws
@@ -232,9 +232,8 @@ function_decl|;
 name|void
 name|writeCommit
 parameter_list|(
-name|byte
-index|[]
-name|rawId
+name|Id
+name|id
 parameter_list|,
 name|Commit
 name|commit

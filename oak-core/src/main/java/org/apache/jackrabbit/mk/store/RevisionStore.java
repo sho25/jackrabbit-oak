@@ -112,7 +112,7 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
-name|String
+name|Id
 comment|/*id*/
 name|putCommit
 parameter_list|(
@@ -135,7 +135,7 @@ function_decl|;
 name|void
 name|setHeadCommitId
 parameter_list|(
-name|String
+name|Id
 name|commitId
 parameter_list|)
 throws|throws

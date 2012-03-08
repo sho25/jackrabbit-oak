@@ -136,7 +136,7 @@ function_decl|;
 name|StoredCommit
 name|getCommit
 parameter_list|(
-name|String
+name|Id
 name|id
 parameter_list|)
 throws|throws
@@ -158,7 +158,7 @@ function_decl|;
 name|StoredNode
 name|getRootNode
 parameter_list|(
-name|String
+name|Id
 name|commitId
 parameter_list|)
 throws|throws
@@ -172,7 +172,7 @@ parameter_list|()
 throws|throws
 name|Exception
 function_decl|;
-name|String
+name|Id
 name|getHeadCommitId
 parameter_list|()
 throws|throws

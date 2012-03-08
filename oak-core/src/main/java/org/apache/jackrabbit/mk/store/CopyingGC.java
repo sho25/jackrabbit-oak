@@ -339,6 +339,9 @@ name|rsTo
 operator|.
 name|getHeadCommitId
 argument_list|()
+operator|.
+name|toString
+argument_list|()
 expr_stmt|;
 comment|// Copy the head commit
 name|MutableCommit
@@ -360,9 +363,12 @@ name|rsTo
 operator|.
 name|getHeadCommitId
 argument_list|()
+operator|.
+name|toString
+argument_list|()
 argument_list|)
 expr_stmt|;
-name|String
+name|Id
 name|revId
 init|=
 name|rsTo
@@ -721,7 +727,7 @@ specifier|public
 name|StoredCommit
 name|getCommit
 parameter_list|(
-name|String
+name|Id
 name|id
 parameter_list|)
 throws|throws
@@ -813,7 +819,7 @@ specifier|public
 name|StoredNode
 name|getRootNode
 parameter_list|(
-name|String
+name|Id
 name|commitId
 parameter_list|)
 throws|throws
@@ -907,7 +913,7 @@ argument_list|()
 return|;
 block|}
 specifier|public
-name|String
+name|Id
 name|getHeadCommitId
 parameter_list|()
 throws|throws
@@ -956,7 +962,7 @@ argument_list|)
 return|;
 block|}
 specifier|public
-name|String
+name|Id
 name|putCommit
 parameter_list|(
 name|MutableCommit
@@ -1041,7 +1047,7 @@ specifier|public
 name|void
 name|setHeadCommitId
 parameter_list|(
-name|String
+name|Id
 name|commitId
 parameter_list|)
 throws|throws
