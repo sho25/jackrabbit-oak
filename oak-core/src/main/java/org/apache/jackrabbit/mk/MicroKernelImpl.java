@@ -744,6 +744,9 @@ name|commit
 operator|.
 name|getId
 argument_list|()
+operator|.
+name|toString
+argument_list|()
 argument_list|)
 operator|.
 name|key
@@ -943,6 +946,9 @@ operator|.
 name|getId
 argument_list|()
 operator|.
+name|toString
+argument_list|()
+operator|.
 name|equals
 argument_list|(
 name|fromRevisionId
@@ -1063,6 +1069,9 @@ name|commit
 operator|.
 name|getId
 argument_list|()
+operator|.
+name|toString
+argument_list|()
 argument_list|)
 operator|.
 name|key
@@ -1102,6 +1111,9 @@ name|commit
 operator|.
 name|getId
 argument_list|()
+operator|.
+name|toString
+argument_list|()
 argument_list|)
 decl_stmt|;
 if|if
@@ -1119,10 +1131,16 @@ name|commit
 operator|.
 name|getParentId
 argument_list|()
+operator|.
+name|toString
+argument_list|()
 argument_list|,
 name|commit
 operator|.
 name|getId
+argument_list|()
+operator|.
+name|toString
 argument_list|()
 argument_list|,
 name|filter
@@ -1135,6 +1153,9 @@ argument_list|(
 name|commit
 operator|.
 name|getId
+argument_list|()
+operator|.
+name|toString
 argument_list|()
 argument_list|,
 name|diff

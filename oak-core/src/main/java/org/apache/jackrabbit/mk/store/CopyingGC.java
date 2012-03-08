@@ -284,11 +284,17 @@ operator|.
 name|getId
 argument_list|()
 operator|.
+name|toString
+argument_list|()
+operator|.
 name|compareTo
 argument_list|(
 name|o2
 operator|.
 name|getId
+argument_list|()
+operator|.
+name|toString
 argument_list|()
 argument_list|)
 return|;
@@ -452,6 +458,9 @@ operator|=
 name|commit
 operator|.
 name|getId
+argument_list|()
+operator|.
+name|toString
 argument_list|()
 expr_stmt|;
 block|}

@@ -1149,9 +1149,6 @@ operator|.
 name|deserialize
 argument_list|(
 name|id
-operator|.
-name|toString
-argument_list|()
 argument_list|,
 operator|new
 name|BinaryBinding
@@ -1173,9 +1170,6 @@ operator|.
 name|deserialize
 argument_list|(
 name|id
-operator|.
-name|toString
-argument_list|()
 argument_list|,
 operator|new
 name|DBObjectBinding

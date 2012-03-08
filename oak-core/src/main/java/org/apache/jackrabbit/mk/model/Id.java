@@ -51,6 +51,7 @@ begin_class
 specifier|public
 class|class
 name|Id
+comment|/* implements Comparable<Id> */
 block|{
 comment|// the raw bytes making up this identifier
 specifier|private
@@ -175,6 +176,18 @@ name|raw
 argument_list|)
 return|;
 block|}
+comment|//    @Override
+comment|//    public int compareTo(Id o) {
+comment|//        byte[] other = o.getBytes();
+comment|//        int len = Math.min(raw.length, other.length);
+comment|//
+comment|//        for (int i = 0; i< len; i++) {
+comment|//            if (raw[i] != other[i]) {
+comment|//                return raw[i] - other[i];
+comment|//            }
+comment|//        }
+comment|//        return raw.length - other.length;
+comment|//    }
 comment|/**      * Returns the raw byte representation of this identifier.      *<p/>      * The returned<code>byte[]</code><i>MUST NOT</i> be modified!      *      * @return the raw byte representation      */
 specifier|public
 name|byte

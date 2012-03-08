@@ -30,7 +30,7 @@ name|AbstractCommit
 block|{
 comment|/**      * Commit id.      */
 specifier|private
-name|String
+name|Id
 name|id
 decl_stmt|;
 specifier|public
@@ -149,7 +149,7 @@ expr_stmt|;
 block|}
 comment|/**      * Return the commit id.      *       * @return commit id      */
 specifier|public
-name|String
+name|Id
 name|getId
 parameter_list|()
 block|{

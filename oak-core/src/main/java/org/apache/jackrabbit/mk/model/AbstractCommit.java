@@ -208,6 +208,9 @@ condition|?
 literal|""
 else|:
 name|parentId
+operator|.
+name|toString
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
