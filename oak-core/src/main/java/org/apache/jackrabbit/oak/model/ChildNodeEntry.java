@@ -18,7 +18,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * TODO: document  */
+comment|/**  * TODO: document  *  *<h2>Equality and hash codes</h2>  *<p>  * Two child node entries are considered equal if and only if their names  * and referenced node states match. The {@link Object#equals(Object)}  * method needs to be implemented so that it complies with this definition.  * And while child node entries are not meant for use as hash keys, the  * {@link Object#hashCode()} method should still be implemented according  * to this equality contract.  */
 end_comment
 
 begin_interface
