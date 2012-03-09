@@ -197,7 +197,7 @@ decl_stmt|;
 specifier|public
 name|CommitBuilder
 parameter_list|(
-name|String
+name|Id
 name|baseRevId
 parameter_list|,
 name|String
@@ -213,12 +213,7 @@ name|this
 operator|.
 name|baseRevId
 operator|=
-name|Id
-operator|.
-name|fromString
-argument_list|(
 name|baseRevId
-argument_list|)
 expr_stmt|;
 name|this
 operator|.
@@ -972,7 +967,7 @@ argument_list|)
 expr_stmt|;
 block|}
 specifier|public
-name|String
+name|Id
 comment|/* new revId */
 name|doCommit
 parameter_list|()
@@ -990,9 +985,6 @@ block|{
 comment|// nothing to commit
 return|return
 name|baseRevId
-operator|.
-name|toString
-argument_list|()
 return|;
 block|}
 name|Id
@@ -1160,9 +1152,6 @@ comment|// the commit didn't cause any changes,
 comment|// no need to create new commit object/update head revision
 return|return
 name|currentHead
-operator|.
-name|toString
-argument_list|()
 return|;
 block|}
 name|MutableCommit
@@ -1241,9 +1230,6 @@ argument_list|()
 expr_stmt|;
 return|return
 name|newRevId
-operator|.
-name|toString
-argument_list|()
 return|;
 block|}
 name|MutableNode

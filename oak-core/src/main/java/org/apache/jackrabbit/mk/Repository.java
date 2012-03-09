@@ -446,7 +446,7 @@ name|rs
 return|;
 block|}
 specifier|public
-name|String
+name|Id
 name|getHeadRevision
 parameter_list|()
 throws|throws
@@ -470,9 +470,6 @@ return|return
 name|rs
 operator|.
 name|getHeadCommitId
-argument_list|()
-operator|.
-name|toString
 argument_list|()
 return|;
 block|}
@@ -508,7 +505,7 @@ specifier|public
 name|StoredCommit
 name|getCommit
 parameter_list|(
-name|String
+name|Id
 name|id
 parameter_list|)
 throws|throws
@@ -535,12 +532,7 @@ name|rs
 operator|.
 name|getCommit
 argument_list|(
-name|Id
-operator|.
-name|fromString
-argument_list|(
 name|id
-argument_list|)
 argument_list|)
 return|;
 block|}
@@ -548,7 +540,7 @@ specifier|public
 name|NodeState
 name|getNodeState
 parameter_list|(
-name|String
+name|Id
 name|revId
 parameter_list|,
 name|String
@@ -578,7 +570,7 @@ specifier|public
 name|StoredNode
 name|getNode
 parameter_list|(
-name|String
+name|Id
 name|revId
 parameter_list|,
 name|String
@@ -610,12 +602,7 @@ name|rs
 operator|.
 name|getRootNode
 argument_list|(
-name|Id
-operator|.
-name|fromString
-argument_list|(
 name|revId
-argument_list|)
 argument_list|)
 decl_stmt|;
 if|if
@@ -664,7 +651,7 @@ specifier|public
 name|boolean
 name|nodeExists
 parameter_list|(
-name|String
+name|Id
 name|revId
 parameter_list|,
 name|String
@@ -724,12 +711,7 @@ name|rs
 operator|.
 name|getRootNode
 argument_list|(
-name|Id
-operator|.
-name|fromString
-argument_list|(
 name|revId
-argument_list|)
 argument_list|)
 decl_stmt|;
 for|for
@@ -805,7 +787,7 @@ specifier|public
 name|CommitBuilder
 name|getCommitBuilder
 parameter_list|(
-name|String
+name|Id
 name|revId
 parameter_list|,
 name|String
@@ -832,7 +814,7 @@ index|[]
 comment|/* array of node id's */
 name|resolvePath
 parameter_list|(
-name|String
+name|Id
 name|revId
 parameter_list|,
 name|String
@@ -867,12 +849,7 @@ name|rs
 operator|.
 name|getCommit
 argument_list|(
-name|Id
-operator|.
-name|fromString
-argument_list|(
 name|revId
-argument_list|)
 argument_list|)
 decl_stmt|;
 if|if
