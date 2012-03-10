@@ -316,7 +316,7 @@ condition|)
 block|{
 name|dbDir
 operator|.
-name|mkdir
+name|mkdirs
 argument_list|()
 expr_stmt|;
 block|}

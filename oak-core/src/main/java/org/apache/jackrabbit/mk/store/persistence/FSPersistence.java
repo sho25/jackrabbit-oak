@@ -289,7 +289,7 @@ condition|)
 block|{
 name|dataDir
 operator|.
-name|mkdir
+name|mkdirs
 argument_list|()
 expr_stmt|;
 block|}
