@@ -180,17 +180,7 @@ argument_list|,
 literal|null
 argument_list|)
 decl_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"new HEAD: "
-operator|+
-name|head
-argument_list|)
-expr_stmt|;
+comment|//System.out.println("new HEAD: " + head);
 name|mk
 operator|.
 name|dispose
