@@ -112,7 +112,7 @@ return|return
 name|this
 return|;
 block|}
-comment|/**      * Append a Jsop tag character.      *      * @param string the string to append      * @return this      */
+comment|/**      * Append a Jsop tag character.      *      * @param tag the string to append      * @return this      */
 specifier|public
 name|JsopBuilder
 name|tag

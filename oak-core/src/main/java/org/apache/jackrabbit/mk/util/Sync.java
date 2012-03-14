@@ -920,7 +920,7 @@ name|String
 name|path
 parameter_list|)
 function_decl|;
-comment|/**          * The given node needs to be removed from the target.          *          * @param path the path          */
+comment|/**          * The given node needs to be removed from the target.          *          * @param target the path          */
 name|void
 name|removeNode
 parameter_list|(
@@ -928,7 +928,7 @@ name|String
 name|target
 parameter_list|)
 function_decl|;
-comment|/**          * The given property needs to be set on the target.          *          * @param path the path          * @param property the property name          * @param value the new value, or null to remove it          */
+comment|/**          * The given property needs to be set on the target.          *          * @param target the path          * @param property the property name          * @param value the new value, or null to remove it          */
 name|void
 name|setProperty
 parameter_list|(

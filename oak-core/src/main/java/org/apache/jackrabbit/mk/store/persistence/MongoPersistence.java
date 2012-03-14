@@ -1841,7 +1841,7 @@ name|ENCODED_DOLLAR_SIGN
 init|=
 literal|"_x36_"
 decl_stmt|;
-comment|/**      * see http://www.mongodb.org/display/DOCS/Legal+Key+Names      *      * @param name      * @return      */
+comment|/**      * see<a href="http://www.mongodb.org/display/DOCS/Legal+Key+Names">http://www.mongodb.org/display/DOCS/Legal+Key+Names</a>      *      * @param name      */
 specifier|protected
 specifier|static
 name|String

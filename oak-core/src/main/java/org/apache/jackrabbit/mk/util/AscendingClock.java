@@ -41,7 +41,7 @@ specifier|private
 name|long
 name|lastNanos
 decl_stmt|;
-comment|/**      * Create a new clock.      *      * @param last the time (the next returned value will be at least one      *            bigger)      */
+comment|/**      * Create a new clock.      *      * @param lastMillis the time (the next returned value will be at least one      *            bigger)      */
 specifier|public
 name|AscendingClock
 parameter_list|(

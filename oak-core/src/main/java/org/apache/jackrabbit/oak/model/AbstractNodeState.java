@@ -18,7 +18,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * Abstract base class for {@link NodeState} implementations.  * This base class contains default implementations of the  * {@link #equals(Object)} and {@link #hashCode()} methods based on  * the implemented interface.  *<p>  * This class also implements trivial (and potentially very slow) versions of  * the {@link #getProperty(String)} and {@link #getPropertyCount()} methods  * based on {@link #getProperties()}. The {@link #getChildNode(String)} and  * {@link #getChildNodeCount()} methods are similarly implemented based on  * {@link #getChildNodeEntries(long, long)}. Subclasses should normally  * override these method with a more efficient alternatives.  */
+comment|/**  * Abstract base class for {@link NodeState} implementations.  * This base class contains default implementations of the  * {@link #equals(Object)} and {@link #hashCode()} methods based on  * the implemented interface.  *<p>  * This class also implements trivial (and potentially very slow) versions of  * the {@link #getProperty(String)} and {@link #getPropertyCount()} methods  * based on {@link #getProperties()}. The {@link #getChildNode(String)} and  * {@link #getChildNodeCount()} methods are similarly implemented based on  * {@link #getChildNodeEntries(long, int)}. Subclasses should normally  * override these method with a more efficient alternatives.  */
 end_comment
 
 begin_class

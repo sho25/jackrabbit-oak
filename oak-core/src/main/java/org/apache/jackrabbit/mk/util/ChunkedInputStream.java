@@ -685,7 +685,7 @@ return|return
 name|result
 return|;
 block|}
-comment|/**      * Recycle this input stream.      *       * @param out new underlying input stream      */
+comment|/**      * Recycle this input stream.      *       * @param in new underlying input stream      */
 specifier|public
 name|void
 name|recycle

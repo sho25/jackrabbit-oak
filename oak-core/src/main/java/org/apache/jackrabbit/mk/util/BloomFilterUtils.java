@@ -68,7 +68,7 @@ argument_list|,
 literal|2
 argument_list|)
 decl_stmt|;
-comment|/**      * Create a bloom filter array for the given number of elements.      *      * @param count the number of entries      * @param maxBytes the maximum number of bytes      * @return the empty bloom filter      */
+comment|/**      * Create a bloom filter array for the given number of elements.      *      * @param elementCount the number of entries      * @param maxBytes the maximum number of bytes      * @return the empty bloom filter      */
 specifier|public
 specifier|static
 name|byte
