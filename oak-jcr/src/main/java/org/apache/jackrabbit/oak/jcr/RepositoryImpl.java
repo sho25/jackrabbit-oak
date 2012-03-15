@@ -431,6 +431,7 @@ name|NoSuchWorkspaceException
 throws|,
 name|RepositoryException
 block|{
+comment|// TODO: needs complete refactoring
 name|SessionFactory
 name|sessionFactory
 init|=

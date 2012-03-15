@@ -1387,6 +1387,7 @@ return|return
 literal|null
 return|;
 block|}
+comment|/**      * @see javax.jcr.Session#addLockToken(String)      */
 annotation|@
 name|Override
 specifier|public
@@ -1432,6 +1433,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+comment|/**      * @see javax.jcr.Session#getLockTokens()      */
 annotation|@
 name|Override
 specifier|public
@@ -1482,6 +1484,7 @@ index|]
 return|;
 block|}
 block|}
+comment|/**      * @see javax.jcr.Session#removeLockToken(String)      */
 annotation|@
 name|Override
 specifier|public
