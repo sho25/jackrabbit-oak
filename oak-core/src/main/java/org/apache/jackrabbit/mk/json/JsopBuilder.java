@@ -17,20 +17,6 @@ name|json
 package|;
 end_package
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|mk
-operator|.
-name|Constants
-import|;
-end_import
-
 begin_comment
 comment|/**  * A builder for Json and Jsop strings. It encodes string values, and knows when  * a comma is needed. A comma is appended before '{', '[', a value, or a key;  * but only if the last appended token was '}', ']', or a value. There is no  * limit to the number of nesting levels.  */
 end_comment
@@ -42,6 +28,14 @@ name|JsopBuilder
 implements|implements
 name|JsopWriter
 block|{
+specifier|private
+specifier|static
+specifier|final
+name|boolean
+name|JSON_NEWLINES
+init|=
+literal|false
+decl_stmt|;
 specifier|private
 name|StringBuilder
 name|buff
@@ -211,8 +205,6 @@ parameter_list|()
 block|{
 if|if
 condition|(
-name|Constants
-operator|.
 name|JSON_NEWLINES
 condition|)
 block|{
@@ -308,8 +300,6 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|Constants
-operator|.
 name|JSON_NEWLINES
 condition|)
 block|{

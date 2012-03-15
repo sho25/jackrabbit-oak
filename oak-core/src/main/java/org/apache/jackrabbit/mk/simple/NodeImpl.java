@@ -87,20 +87,6 @@ name|jackrabbit
 operator|.
 name|mk
 operator|.
-name|Constants
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|mk
-operator|.
 name|json
 operator|.
 name|JsopBuilder
@@ -264,6 +250,14 @@ name|Cache
 operator|.
 name|Value
 block|{
+specifier|private
+specifier|static
+specifier|final
+name|boolean
+name|NODE_NAME_AS_PROPERTY
+init|=
+literal|false
+decl_stmt|;
 comment|/**      * The child node count.      */
 specifier|public
 specifier|static
@@ -1883,8 +1877,6 @@ throw|;
 block|}
 if|if
 condition|(
-name|Constants
-operator|.
 name|NODE_NAME_AS_PROPERTY
 condition|)
 block|{
