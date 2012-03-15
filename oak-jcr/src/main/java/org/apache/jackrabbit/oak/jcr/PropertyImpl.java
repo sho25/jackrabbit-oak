@@ -2457,6 +2457,7 @@ argument_list|()
 return|;
 block|}
 block|}
+comment|/**      * @see javax.jcr.Property#isMultiple()      */
 annotation|@
 name|Override
 specifier|public
