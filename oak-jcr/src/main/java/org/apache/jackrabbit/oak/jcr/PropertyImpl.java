@@ -2481,9 +2481,23 @@ throws|throws
 name|RepositoryException
 block|{
 comment|// check type according to definition of this property
+name|PropertyDefinition
+name|def
+init|=
+name|getDefinition
+argument_list|()
+decl_stmt|;
 name|int
 name|reqType
 init|=
+name|def
+operator|==
+literal|null
+condition|?
+name|PropertyType
+operator|.
+name|UNDEFINED
+else|:
 name|getDefinition
 argument_list|()
 operator|.
