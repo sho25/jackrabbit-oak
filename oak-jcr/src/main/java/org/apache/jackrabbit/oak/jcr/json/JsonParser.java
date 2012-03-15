@@ -408,7 +408,7 @@ name|END_ARRAY
 argument_list|)
 expr_stmt|;
 block|}
-comment|//------------------------------------------< private>---
+comment|//------------------------------------------------------------< private>---
 specifier|private
 name|boolean
 name|tryParsePair
