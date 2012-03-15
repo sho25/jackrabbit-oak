@@ -210,6 +210,11 @@ return|return
 literal|null
 return|;
 block|}
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unchecked"
+argument_list|)
 specifier|private
 specifier|static
 name|Repository
@@ -224,6 +229,7 @@ parameter_list|)
 throws|throws
 name|RepositoryException
 block|{
+comment|// todo correctly interpret uri
 name|parameters
 operator|.
 name|put
