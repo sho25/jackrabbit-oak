@@ -594,6 +594,21 @@ return|return
 literal|false
 return|;
 block|}
+comment|/**      * @see javax.jcr.Item#getName()      */
+annotation|@
+name|Override
+specifier|public
+name|String
+name|getName
+parameter_list|()
+throws|throws
+name|RepositoryException
+block|{
+return|return
+name|name
+return|;
+block|}
+comment|/**      * @see javax.jcr.Property#getPath() ()      */
 annotation|@
 name|Override
 specifier|public
@@ -618,43 +633,28 @@ name|toJcrPath
 argument_list|()
 return|;
 block|}
+comment|/**      * @see javax.jcr.Item#getParent()      */
 annotation|@
 name|Override
 specifier|public
-name|String
-name|getName
+name|Node
+name|getParent
 parameter_list|()
 throws|throws
 name|RepositoryException
 block|{
 return|return
-name|name
+name|NodeImpl
+operator|.
+name|create
+argument_list|(
+name|sessionContext
+argument_list|,
+name|parentState
+argument_list|)
 return|;
 block|}
-comment|/**      * @see javax.jcr.Item#accept(javax.jcr.ItemVisitor)      */
-annotation|@
-name|Override
-specifier|public
-name|void
-name|accept
-parameter_list|(
-name|ItemVisitor
-name|visitor
-parameter_list|)
-throws|throws
-name|RepositoryException
-block|{
-name|checkStatus
-argument_list|()
-expr_stmt|;
-name|visitor
-operator|.
-name|visit
-argument_list|(
-name|this
-argument_list|)
-expr_stmt|;
-block|}
+comment|/**      * @see Item#getAncestor(int)      */
 annotation|@
 name|Override
 specifier|public
@@ -695,26 +695,7 @@ argument_list|)
 return|;
 block|}
 block|}
-annotation|@
-name|Override
-specifier|public
-name|Node
-name|getParent
-parameter_list|()
-throws|throws
-name|RepositoryException
-block|{
-return|return
-name|NodeImpl
-operator|.
-name|create
-argument_list|(
-name|sessionContext
-argument_list|,
-name|parentState
-argument_list|)
-return|;
-block|}
+comment|/**      * @see javax.jcr.Item#getDepth()      */
 annotation|@
 name|Override
 specifier|public
@@ -736,6 +717,7 @@ operator|+
 literal|1
 return|;
 block|}
+comment|/**      * @see javax.jcr.Item#isNew()      */
 annotation|@
 name|Override
 specifier|public
@@ -752,6 +734,7 @@ name|name
 argument_list|)
 return|;
 block|}
+comment|/**      * @see javax.jcr.Item#isModified() ()      */
 annotation|@
 name|Override
 specifier|public
@@ -768,6 +751,7 @@ name|name
 argument_list|)
 return|;
 block|}
+comment|/**      * @see javax.jcr.Item#isNew()      */
 annotation|@
 name|Override
 specifier|public
@@ -782,6 +766,30 @@ operator|.
 name|removeProperty
 argument_list|(
 name|name
+argument_list|)
+expr_stmt|;
+block|}
+comment|/**      * @see javax.jcr.Item#accept(javax.jcr.ItemVisitor)      */
+annotation|@
+name|Override
+specifier|public
+name|void
+name|accept
+parameter_list|(
+name|ItemVisitor
+name|visitor
+parameter_list|)
+throws|throws
+name|RepositoryException
+block|{
+name|checkStatus
+argument_list|()
+expr_stmt|;
+name|visitor
+operator|.
+name|visit
+argument_list|(
+name|this
 argument_list|)
 expr_stmt|;
 block|}

@@ -860,6 +860,36 @@ name|state
 expr_stmt|;
 block|}
 comment|//---------------------------------------------------------------< Item>---
+comment|/**      * @see javax.jcr.Item#isNode()      */
+annotation|@
+name|Override
+specifier|public
+name|boolean
+name|isNode
+parameter_list|()
+block|{
+return|return
+literal|true
+return|;
+block|}
+comment|/**      * @see javax.jcr.Item#getName()      */
+annotation|@
+name|Override
+specifier|public
+name|String
+name|getName
+parameter_list|()
+throws|throws
+name|RepositoryException
+block|{
+return|return
+name|state
+operator|.
+name|getName
+argument_list|()
+return|;
+block|}
+comment|/**      * @see javax.jcr.Item#getPath()      */
 annotation|@
 name|Override
 specifier|public
@@ -877,22 +907,46 @@ name|toJcrPath
 argument_list|()
 return|;
 block|}
+comment|/**      * @see javax.jcr.Item#getParent()      */
 annotation|@
 name|Override
 specifier|public
-name|String
-name|getName
+name|Node
+name|getParent
 parameter_list|()
 throws|throws
 name|RepositoryException
 block|{
-return|return
+if|if
+condition|(
 name|state
 operator|.
-name|getName
+name|isRoot
 argument_list|()
+condition|)
+block|{
+throw|throw
+operator|new
+name|ItemNotFoundException
+argument_list|(
+literal|"Root has no parent"
+argument_list|)
+throw|;
+block|}
+return|return
+name|create
+argument_list|(
+name|sessionContext
+argument_list|,
+name|path
+argument_list|()
+operator|.
+name|getParent
+argument_list|()
+argument_list|)
 return|;
 block|}
+comment|/**      * @see Item#getAncestor(int)      */
 annotation|@
 name|Override
 specifier|public
@@ -948,44 +1002,7 @@ name|parent
 argument_list|)
 return|;
 block|}
-annotation|@
-name|Override
-specifier|public
-name|Node
-name|getParent
-parameter_list|()
-throws|throws
-name|RepositoryException
-block|{
-if|if
-condition|(
-name|state
-operator|.
-name|isRoot
-argument_list|()
-condition|)
-block|{
-throw|throw
-operator|new
-name|ItemNotFoundException
-argument_list|(
-literal|"Root has no parent"
-argument_list|)
-throw|;
-block|}
-return|return
-name|create
-argument_list|(
-name|sessionContext
-argument_list|,
-name|path
-argument_list|()
-operator|.
-name|getParent
-argument_list|()
-argument_list|)
-return|;
-block|}
+comment|/**      * @see javax.jcr.Item#getDepth()      */
 annotation|@
 name|Override
 specifier|public
@@ -1003,6 +1020,7 @@ name|getDepth
 argument_list|()
 return|;
 block|}
+comment|/**      * @see javax.jcr.Item#isNew()      */
 annotation|@
 name|Override
 specifier|public
@@ -1017,6 +1035,7 @@ name|isNew
 argument_list|()
 return|;
 block|}
+comment|/**      * @see javax.jcr.Item#isModified()      */
 annotation|@
 name|Override
 specifier|public
@@ -1031,17 +1050,21 @@ name|isModified
 argument_list|()
 return|;
 block|}
-comment|/**      * @see javax.jcr.Item#isNode()      */
+comment|/**      * @see javax.jcr.Item#remove()      */
 annotation|@
 name|Override
 specifier|public
-name|boolean
-name|isNode
+name|void
+name|remove
 parameter_list|()
+throws|throws
+name|RepositoryException
 block|{
-return|return
-literal|true
-return|;
+name|state
+operator|.
+name|remove
+argument_list|()
+expr_stmt|;
 block|}
 comment|/**      * @see Item#accept(javax.jcr.ItemVisitor)      */
 annotation|@
@@ -1188,21 +1211,6 @@ expr_stmt|;
 return|return
 name|childNode
 return|;
-block|}
-annotation|@
-name|Override
-specifier|public
-name|void
-name|remove
-parameter_list|()
-throws|throws
-name|RepositoryException
-block|{
-name|state
-operator|.
-name|remove
-argument_list|()
-expr_stmt|;
 block|}
 annotation|@
 name|Override
