@@ -79,6 +79,16 @@ name|javax
 operator|.
 name|jcr
 operator|.
+name|Credentials
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|jcr
+operator|.
 name|InvalidItemStateException
 import|;
 end_import
@@ -100,6 +110,16 @@ operator|.
 name|jcr
 operator|.
 name|ItemNotFoundException
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|jcr
+operator|.
+name|LoginException
 import|;
 end_import
 
@@ -150,6 +170,16 @@ operator|.
 name|jcr
 operator|.
 name|RepositoryException
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|jcr
+operator|.
+name|Session
 import|;
 end_import
 
@@ -294,13 +324,6 @@ argument_list|)
 decl_stmt|;
 specifier|private
 specifier|final
-name|Repository
-name|repository
-init|=
-literal|null
-decl_stmt|;
-specifier|private
-specifier|final
 name|Workspace
 name|workspace
 init|=
@@ -325,8 +348,9 @@ name|Repository
 name|getRepository
 parameter_list|()
 block|{
+comment|// TODO
 return|return
-name|repository
+literal|null
 return|;
 block|}
 annotation|@
@@ -580,6 +604,7 @@ return|return
 literal|false
 return|;
 block|}
+comment|/**      * @see javax.jcr.Session#checkPermission(String, String)      */
 annotation|@
 name|Override
 specifier|public
@@ -709,6 +734,29 @@ comment|// ignore
 return|return;
 block|}
 comment|// TODO
+block|}
+comment|/**      * @see javax.jcr.Session#impersonate(Credentials)      */
+annotation|@
+name|Override
+specifier|public
+name|Session
+name|impersonate
+parameter_list|(
+name|Credentials
+name|credentials
+parameter_list|)
+throws|throws
+name|LoginException
+throws|,
+name|RepositoryException
+block|{
+name|checkIsAlive
+argument_list|()
+expr_stmt|;
+comment|// TODO
+return|return
+literal|null
+return|;
 block|}
 annotation|@
 name|Override
@@ -923,7 +971,8 @@ block|{
 name|String
 name|desc
 init|=
-name|repository
+name|getRepository
+argument_list|()
 operator|.
 name|getDescriptor
 argument_list|(
