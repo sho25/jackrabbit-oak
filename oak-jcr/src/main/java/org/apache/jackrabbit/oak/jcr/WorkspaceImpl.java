@@ -438,7 +438,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *<code>WorkspaceImpl</code>...  */
+comment|/**  * {@code WorkspaceImpl}...  */
 end_comment
 
 begin_class

@@ -240,7 +240,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * ItemImpl...  */
+comment|/**  * {@code ItemImpl}...  */
 end_comment
 
 begin_class

@@ -502,7 +502,7 @@ name|hasChanges
 argument_list|()
 return|;
 block|}
-comment|/**      * {@code NodeDelta} instances record changes to a node. {@code NodeDelta}'s      * subclasses correspond to these changes:      *      *<ul>      *<li>{@link org.apache.jackrabbit.state.ChangeTree.Added} represents a transiently      *      added node.</li>      *<li>{@link org.apache.jackrabbit.state.ChangeTree.Removed} represents a transiently      *      removed node.</li>      *<li>{@link org.apache.jackrabbit.state.ChangeTree.Existing} represents a node which      *      is otherwise touched. That is, which either has property modifications or a has a      *      child node which is touched.</li>      *</ul>      */
+comment|/**      * {@code NodeDelta} instances record changes to a node. {@code NodeDelta}'s      * subclasses correspond to these changes:      *      *<ul>      *<li>{@link org.apache.jackrabbit.oak.jcr.state.ChangeTree.Added} represents a transiently      *      added node.</li>      *<li>{@link org.apache.jackrabbit.oak.jcr.state.ChangeTree.Removed} represents a transiently      *      removed node.</li>      *<li>{@link org.apache.jackrabbit.oak.jcr.state.ChangeTree.Existing} represents a node which      *      is otherwise touched. That is, which either has property modifications or a has a      *      child node which is touched.</li>      *</ul>      */
 specifier|public
 specifier|abstract
 class|class
@@ -614,7 +614,7 @@ return|return
 name|name
 return|;
 block|}
-comment|/**          * @return persistent path to this node or {@code null} if this node is not          * an {@link org.apache.jackrabbit.state.ChangeTree.Existing existing} node.          */
+comment|/**          * @return persistent path to this node or {@code null} if this node is not          * an {@link org.apache.jackrabbit.oak.jcr.state.ChangeTree.Existing existing} node.          */
 specifier|public
 name|Path
 name|getPersistentPath

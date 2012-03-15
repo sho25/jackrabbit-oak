@@ -156,7 +156,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * {@code TransientSpace} instances use a {@link org.apache.jackrabbit.state.ChangeTree} to  * record transient changes in a JCR hierarchy. Changes can be persisted by calling  * {@link #save()}. A transient space is bound to a specific revision. Calling  * {@link #refresh(boolean)} updates the revision to the latest.  */
+comment|/**  * {@code TransientSpace} instances use a {@link org.apache.jackrabbit.oak.jcr.state.ChangeTree} to  * record transient changes in a JCR hierarchy. Changes can be persisted by calling  * {@link #save()}. A transient space is bound to a specific revision. Calling  * {@link #refresh(boolean)} updates the revision to the latest.  */
 end_comment
 
 begin_class

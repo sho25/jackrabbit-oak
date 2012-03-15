@@ -710,7 +710,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *<code>NodeImpl</code>...  */
+comment|/**  * {@code NodeImpl}...  */
 end_comment
 
 begin_class

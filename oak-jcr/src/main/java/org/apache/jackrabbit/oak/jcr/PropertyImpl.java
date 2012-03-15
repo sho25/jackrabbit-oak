@@ -348,7 +348,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *<code>PropertyImpl</code>...  */
+comment|/**  * {@code PropertyImpl}...  */
 end_comment
 
 begin_class

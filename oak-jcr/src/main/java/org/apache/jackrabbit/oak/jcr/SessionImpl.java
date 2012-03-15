@@ -430,7 +430,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *<code>SessionImpl</code>...  */
+comment|/**  * {@code SessionImpl}...  */
 end_comment
 
 begin_class

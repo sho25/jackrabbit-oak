@@ -60,7 +60,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *<code>LogUtil</code>...  */
+comment|/**  * {@code LogUtil}...  */
 end_comment
 
 begin_class

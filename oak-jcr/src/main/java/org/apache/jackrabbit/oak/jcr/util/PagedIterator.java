@@ -40,7 +40,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A {@code PagedIterator} is an iterator of several pages. A page itself is  * an iterator. The abstract {@code getPage} method is called whenever this  * iterator needs to fetch another page.<p/>  *  * Lazy flattening (e.g. with {@link org.apache.jackrabbit.utils.Iterators#flatten(java.util.Iterator)}  * results in an iterator which does batch reading from its back end.  *  * @param<T>  */
+comment|/**  * A {@code PagedIterator} is an iterator of several pages. A page itself is  * an iterator. The abstract {@code getPage} method is called whenever this  * iterator needs to fetch another page.<p/>  *  * Lazy flattening (e.g. with {@link org.apache.jackrabbit.oak.jcr.util.Iterators#flatten(java.util.Iterator)}  * results in an iterator which does batch reading from its back end.  *  * @param<T>  */
 end_comment
 
 begin_class

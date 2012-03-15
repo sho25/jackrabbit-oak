@@ -132,7 +132,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *<code>RepositoryImpl</code>...  */
+comment|/**  * {@code RepositoryImpl}...  */
 end_comment
 
 begin_class
