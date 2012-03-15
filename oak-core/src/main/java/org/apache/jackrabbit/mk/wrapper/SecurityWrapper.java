@@ -226,13 +226,13 @@ specifier|public
 class|class
 name|SecurityWrapper
 extends|extends
-name|WrapperBase
+name|MicroKernelWrapperBase
 implements|implements
 name|MicroKernel
 block|{
 specifier|private
 specifier|final
-name|Wrapper
+name|MicroKernelWrapper
 name|mk
 decl_stmt|;
 specifier|private
@@ -294,7 +294,7 @@ name|this
 operator|.
 name|mk
 operator|=
-name|WrapperBase
+name|MicroKernelWrapperBase
 operator|.
 name|wrap
 argument_list|(

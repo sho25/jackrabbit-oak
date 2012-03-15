@@ -242,7 +242,7 @@ specifier|public
 class|class
 name|VirtualRepositoryWrapper
 extends|extends
-name|WrapperBase
+name|MicroKernelWrapperBase
 implements|implements
 name|MicroKernel
 block|{
@@ -265,7 +265,7 @@ decl_stmt|;
 comment|/**      * The 'main' (wrapped) implementation.      */
 specifier|private
 specifier|final
-name|Wrapper
+name|MicroKernelWrapper
 name|mk
 decl_stmt|;
 comment|/**      * Path map.      * Key: path, value: mount name      */
@@ -315,7 +315,7 @@ name|HashMap
 argument_list|<
 name|String
 argument_list|,
-name|Wrapper
+name|MicroKernelWrapper
 argument_list|>
 name|mounts
 init|=
@@ -324,7 +324,7 @@ name|HashMap
 argument_list|<
 name|String
 argument_list|,
-name|Wrapper
+name|MicroKernelWrapper
 argument_list|>
 argument_list|()
 decl_stmt|;
@@ -368,7 +368,7 @@ name|this
 operator|.
 name|mk
 operator|=
-name|WrapperBase
+name|MicroKernelWrapperBase
 operator|.
 name|wrap
 argument_list|(
@@ -635,7 +635,7 @@ name|put
 argument_list|(
 name|mount
 argument_list|,
-name|WrapperBase
+name|MicroKernelWrapperBase
 operator|.
 name|wrap
 argument_list|(
@@ -1508,7 +1508,7 @@ name|Entry
 argument_list|<
 name|String
 argument_list|,
-name|Wrapper
+name|MicroKernelWrapper
 argument_list|>
 name|e
 range|:
@@ -1778,7 +1778,7 @@ argument_list|,
 name|revisionId
 argument_list|)
 decl_stmt|;
-name|Wrapper
+name|MicroKernelWrapper
 name|mk
 init|=
 name|mounts

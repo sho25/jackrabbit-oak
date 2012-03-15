@@ -269,7 +269,7 @@ name|mk
 operator|.
 name|wrapper
 operator|.
-name|WrapperBase
+name|MicroKernelWrapperBase
 import|;
 end_import
 
@@ -336,7 +336,7 @@ specifier|public
 class|class
 name|SimpleKernelImpl
 extends|extends
-name|WrapperBase
+name|MicroKernelWrapperBase
 implements|implements
 name|MicroKernel
 block|{

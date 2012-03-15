@@ -65,10 +65,14 @@ name|JsopReader
 import|;
 end_import
 
+begin_comment
+comment|/**  * This interface allows a MicroKernel client to use a JsopReader instead of  * having to use strings.  */
+end_comment
+
 begin_interface
 specifier|public
 interface|interface
-name|Wrapper
+name|MicroKernelWrapper
 extends|extends
 name|MicroKernel
 block|{

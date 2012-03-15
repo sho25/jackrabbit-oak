@@ -91,15 +91,19 @@ name|JsopTokenizer
 import|;
 end_import
 
+begin_comment
+comment|/**  * A MicroKernel implementation that extends this interface can use a JsopReader  * instead of having to use strings.  */
+end_comment
+
 begin_class
 specifier|public
 specifier|abstract
 class|class
-name|WrapperBase
+name|MicroKernelWrapperBase
 implements|implements
 name|MicroKernel
 implements|,
-name|Wrapper
+name|MicroKernelWrapper
 block|{
 specifier|public
 specifier|final
@@ -286,9 +290,10 @@ name|toString
 argument_list|()
 return|;
 block|}
+comment|/**      * Wrap a MicroKernel implementation so that the MicroKernelWrapper      * interface can be used.      *      * @param mk the MicroKernel implementation to wrap      * @return the wrapped instance      */
 specifier|public
 specifier|static
-name|Wrapper
+name|MicroKernelWrapper
 name|wrap
 parameter_list|(
 specifier|final
@@ -300,19 +305,19 @@ if|if
 condition|(
 name|mk
 operator|instanceof
-name|Wrapper
+name|MicroKernelWrapper
 condition|)
 block|{
 return|return
 operator|(
-name|Wrapper
+name|MicroKernelWrapper
 operator|)
 name|mk
 return|;
 block|}
 return|return
 operator|new
-name|Wrapper
+name|MicroKernelWrapper
 argument_list|()
 block|{
 name|MicroKernel
