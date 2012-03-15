@@ -114,16 +114,6 @@ name|Exception
 function_decl|;
 name|Id
 comment|/*id*/
-name|putCommit
-parameter_list|(
-name|MutableCommit
-name|commit
-parameter_list|)
-throws|throws
-name|Exception
-function_decl|;
-name|Id
-comment|/*id*/
 name|putCNEMap
 parameter_list|(
 name|ChildNodeEntriesMap
@@ -132,19 +122,23 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
-name|void
-name|setHeadCommitId
-parameter_list|(
-name|Id
-name|commitId
-parameter_list|)
-throws|throws
-name|Exception
-function_decl|;
+comment|/**      * Lock the head. Must be called prior to putting a new head commit.      *       * @see #putHeadCommit(MutableCommit)      */
 name|void
 name|lockHead
 parameter_list|()
 function_decl|;
+comment|/**      * Put a new head commit. Must be called while holding a      * lock on the head.      *       * @param commit commit      * @return head commit id      * @throws Exception if an error occurs      * @see #lockHead()      */
+name|Id
+comment|/*id*/
+name|putHeadCommit
+parameter_list|(
+name|MutableCommit
+name|commit
+parameter_list|)
+throws|throws
+name|Exception
+function_decl|;
+comment|/**      * Unlock the head.      */
 name|void
 name|unlockHead
 parameter_list|()

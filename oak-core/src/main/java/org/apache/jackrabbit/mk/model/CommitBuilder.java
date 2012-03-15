@@ -1196,16 +1196,9 @@ name|newRevId
 operator|=
 name|store
 operator|.
-name|putCommit
+name|putHeadCommit
 argument_list|(
 name|newCommit
-argument_list|)
-expr_stmt|;
-name|store
-operator|.
-name|setHeadCommitId
-argument_list|(
-name|newRevId
 argument_list|)
 expr_stmt|;
 block|}
