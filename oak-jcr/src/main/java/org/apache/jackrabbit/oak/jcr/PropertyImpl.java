@@ -2391,6 +2391,7 @@ return|return
 literal|null
 return|;
 block|}
+comment|/**      * @see javax.jcr.Property#getType()      */
 annotation|@
 name|Override
 specifier|public
@@ -2422,10 +2423,14 @@ operator|==
 literal|0
 condition|)
 block|{
+comment|// retrieve the type from the property definition
 return|return
+name|getRequiredType
+argument_list|(
 name|PropertyType
 operator|.
 name|UNDEFINED
+argument_list|)
 return|;
 block|}
 else|else
@@ -2490,9 +2495,11 @@ decl_stmt|;
 name|int
 name|reqType
 init|=
+operator|(
 name|def
 operator|==
 literal|null
+operator|)
 condition|?
 name|PropertyType
 operator|.
