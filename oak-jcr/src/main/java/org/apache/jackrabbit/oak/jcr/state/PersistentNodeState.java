@@ -340,7 +340,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A {@code NodeState} implementation on top of a {@code MicroKernel}.  */
+comment|/**  * A {@code NodeState} implementation on top of a {@code MicroKernel}.  * todo this class should probably go into oak-core  */
 end_comment
 
 begin_class
