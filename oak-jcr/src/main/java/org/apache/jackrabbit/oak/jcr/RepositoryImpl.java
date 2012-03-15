@@ -159,6 +159,11 @@ name|class
 argument_list|)
 decl_stmt|;
 specifier|private
+specifier|final
+name|GlobalContext
+name|context
+decl_stmt|;
+specifier|private
 name|Map
 argument_list|<
 name|String
@@ -168,6 +173,20 @@ index|[]
 argument_list|>
 name|descriptors
 decl_stmt|;
+specifier|public
+name|RepositoryImpl
+parameter_list|(
+name|GlobalContext
+name|context
+parameter_list|)
+block|{
+name|this
+operator|.
+name|context
+operator|=
+name|context
+expr_stmt|;
+block|}
 comment|//---------------------------------------------------------< Repository>---
 comment|/**      * @see javax.jcr.Repository#getDescriptorKeys()      */
 annotation|@
@@ -412,9 +431,29 @@ name|NoSuchWorkspaceException
 throws|,
 name|RepositoryException
 block|{
-comment|// TODO -> SPI
+name|SessionFactory
+name|sessionFactory
+init|=
+name|context
+operator|.
+name|getInstance
+argument_list|(
+name|SessionFactory
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 return|return
-literal|null
+name|sessionFactory
+operator|.
+name|createSession
+argument_list|(
+name|context
+argument_list|,
+name|credentials
+argument_list|,
+name|workspaceName
+argument_list|)
 return|;
 block|}
 comment|//------------------------------------------------------------< private>---
