@@ -75,7 +75,7 @@ name|mk
 operator|.
 name|model
 operator|.
-name|ChildNodeEntry
+name|ChildNode
 import|;
 end_import
 
@@ -449,7 +449,7 @@ argument_list|)
 expr_stmt|;
 name|Iterator
 argument_list|<
-name|ChildNodeEntry
+name|ChildNode
 argument_list|>
 name|iter
 init|=
@@ -471,7 +471,7 @@ name|hasNext
 argument_list|()
 condition|)
 block|{
-name|ChildNodeEntry
+name|ChildNode
 name|c
 init|=
 name|iter

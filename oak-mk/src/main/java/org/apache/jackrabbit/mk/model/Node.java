@@ -87,7 +87,7 @@ argument_list|>
 name|getProperties
 parameter_list|()
 function_decl|;
-name|ChildNodeEntry
+name|ChildNode
 name|getChildNodeEntry
 parameter_list|(
 name|String
@@ -113,7 +113,7 @@ parameter_list|()
 function_decl|;
 name|Iterator
 argument_list|<
-name|ChildNodeEntry
+name|ChildNode
 argument_list|>
 name|getChildNodeEntries
 parameter_list|(

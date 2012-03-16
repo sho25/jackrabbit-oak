@@ -266,7 +266,7 @@ for|for
 control|(
 name|Iterator
 argument_list|<
-name|ChildNodeEntry
+name|ChildNode
 argument_list|>
 name|it
 init|=
@@ -287,7 +287,7 @@ argument_list|()
 condition|;
 control|)
 block|{
-name|ChildNodeEntry
+name|ChildNode
 name|cne
 init|=
 name|it
@@ -322,7 +322,7 @@ name|properties
 return|;
 block|}
 specifier|public
-name|ChildNodeEntry
+name|ChildNode
 name|getChildNodeEntry
 parameter_list|(
 name|String
@@ -378,7 +378,7 @@ block|}
 specifier|public
 name|Iterator
 argument_list|<
-name|ChildNodeEntry
+name|ChildNode
 argument_list|>
 name|getChildNodeEntries
 parameter_list|(

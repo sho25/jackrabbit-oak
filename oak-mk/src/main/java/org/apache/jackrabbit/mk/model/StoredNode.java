@@ -277,7 +277,7 @@ name|properties
 parameter_list|,
 name|Iterator
 argument_list|<
-name|ChildNodeEntry
+name|ChildNode
 argument_list|>
 name|cneIt
 parameter_list|)
@@ -380,7 +380,7 @@ block|}
 specifier|public
 name|Iterator
 argument_list|<
-name|ChildNodeEntry
+name|ChildNode
 argument_list|>
 name|getChildNodeEntries
 parameter_list|(
@@ -395,7 +395,7 @@ return|return
 operator|new
 name|UnmodifiableIterator
 argument_list|<
-name|ChildNodeEntry
+name|ChildNode
 argument_list|>
 argument_list|(
 name|super

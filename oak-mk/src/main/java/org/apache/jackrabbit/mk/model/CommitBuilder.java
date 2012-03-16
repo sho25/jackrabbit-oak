@@ -337,7 +337,7 @@ operator|.
 name|add
 argument_list|(
 operator|new
-name|ChildNodeEntry
+name|ChildNode
 argument_list|(
 name|nodeName
 argument_list|,
@@ -604,7 +604,7 @@ block|}
 block|}
 else|else
 block|{
-name|ChildNodeEntry
+name|ChildNode
 name|srcCNE
 init|=
 name|srcParent
@@ -664,7 +664,7 @@ operator|.
 name|add
 argument_list|(
 operator|new
-name|ChildNodeEntry
+name|ChildNode
 argument_list|(
 name|destNodeName
 argument_list|,
@@ -762,7 +762,7 @@ argument_list|(
 name|srcParentPath
 argument_list|)
 decl_stmt|;
-name|ChildNodeEntry
+name|ChildNode
 name|srcCNE
 init|=
 name|srcParent
@@ -800,7 +800,7 @@ operator|.
 name|add
 argument_list|(
 operator|new
-name|ChildNodeEntry
+name|ChildNode
 argument_list|(
 name|destNodeName
 argument_list|,
@@ -1357,7 +1357,7 @@ condition|)
 block|{
 comment|// not yet staged, resolve id using staged parent
 comment|// to allow for staged move operations
-name|ChildNodeEntry
+name|ChildNode
 name|cne
 init|=
 name|parent
@@ -1769,7 +1769,7 @@ operator|.
 name|add
 argument_list|(
 operator|new
-name|ChildNodeEntry
+name|ChildNode
 argument_list|(
 name|PathUtils
 operator|.
@@ -2006,7 +2006,7 @@ operator|.
 name|add
 argument_list|(
 operator|new
-name|ChildNodeEntry
+name|ChildNode
 argument_list|(
 name|entry
 operator|.
@@ -2047,7 +2047,7 @@ operator|.
 name|add
 argument_list|(
 operator|new
-name|ChildNodeEntry
+name|ChildNode
 argument_list|(
 name|entry
 operator|.

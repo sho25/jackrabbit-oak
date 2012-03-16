@@ -74,7 +74,7 @@ name|int
 name|getCount
 parameter_list|()
 function_decl|;
-name|ChildNodeEntry
+name|ChildNode
 name|get
 parameter_list|(
 name|String
@@ -96,7 +96,7 @@ parameter_list|)
 function_decl|;
 name|Iterator
 argument_list|<
-name|ChildNodeEntry
+name|ChildNode
 argument_list|>
 name|getEntries
 parameter_list|(
@@ -108,21 +108,21 @@ name|count
 parameter_list|)
 function_decl|;
 comment|//------------------------------------------------------------< write ops>
-name|ChildNodeEntry
+name|ChildNode
 name|add
 parameter_list|(
-name|ChildNodeEntry
+name|ChildNode
 name|entry
 parameter_list|)
 function_decl|;
-name|ChildNodeEntry
+name|ChildNode
 name|remove
 parameter_list|(
 name|String
 name|name
 parameter_list|)
 function_decl|;
-name|ChildNodeEntry
+name|ChildNode
 name|rename
 parameter_list|(
 name|String
@@ -136,7 +136,7 @@ comment|//-------------------------------------------------------------< diff op
 comment|/**      * Returns those entries that exist in<code>other</code> but not in      *<code>this</code>.      *      * @param other      * @return      */
 name|Iterator
 argument_list|<
-name|ChildNodeEntry
+name|ChildNode
 argument_list|>
 name|getAdded
 parameter_list|(
@@ -148,7 +148,7 @@ function_decl|;
 comment|/**      * Returns those entries that exist in<code>this</code> but not in      *<code>other</code>.      *      * @param other      * @return      */
 name|Iterator
 argument_list|<
-name|ChildNodeEntry
+name|ChildNode
 argument_list|>
 name|getRemoved
 parameter_list|(
@@ -160,7 +160,7 @@ function_decl|;
 comment|/**      * Returns<code>this</code> instance's entries that have namesakes in      *<code>other</code> but with different<code>id</code>s.      *      * @param other      * @return      */
 name|Iterator
 argument_list|<
-name|ChildNodeEntry
+name|ChildNode
 argument_list|>
 name|getModified
 parameter_list|(

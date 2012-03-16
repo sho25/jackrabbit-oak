@@ -120,14 +120,14 @@ argument_list|)
 expr_stmt|;
 block|}
 specifier|public
-name|ChildNodeEntry
+name|ChildNode
 name|add
 parameter_list|(
-name|ChildNodeEntry
+name|ChildNode
 name|newEntry
 parameter_list|)
 block|{
-name|ChildNodeEntry
+name|ChildNode
 name|existing
 init|=
 name|childEntries
@@ -165,7 +165,7 @@ argument_list|)
 decl_stmt|;
 name|Iterator
 argument_list|<
-name|ChildNodeEntry
+name|ChildNode
 argument_list|>
 name|iter
 init|=
@@ -208,7 +208,7 @@ name|existing
 return|;
 block|}
 specifier|public
-name|ChildNodeEntry
+name|ChildNode
 name|remove
 parameter_list|(
 name|String
@@ -225,7 +225,7 @@ argument_list|)
 return|;
 block|}
 specifier|public
-name|ChildNodeEntry
+name|ChildNode
 name|rename
 parameter_list|(
 name|String

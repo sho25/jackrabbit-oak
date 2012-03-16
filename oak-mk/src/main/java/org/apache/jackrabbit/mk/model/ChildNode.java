@@ -24,7 +24,7 @@ end_comment
 begin_class
 specifier|public
 class|class
-name|ChildNodeEntry
+name|ChildNode
 block|{
 specifier|private
 specifier|final
@@ -37,7 +37,7 @@ name|Id
 name|id
 decl_stmt|;
 specifier|public
-name|ChildNodeEntry
+name|ChildNode
 parameter_list|(
 name|String
 name|name
@@ -102,14 +102,14 @@ if|if
 condition|(
 name|obj
 operator|instanceof
-name|ChildNodeEntry
+name|ChildNode
 condition|)
 block|{
-name|ChildNodeEntry
+name|ChildNode
 name|other
 init|=
 operator|(
-name|ChildNodeEntry
+name|ChildNode
 operator|)
 name|obj
 decl_stmt|;

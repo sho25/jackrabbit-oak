@@ -496,7 +496,7 @@ name|mk
 operator|.
 name|model
 operator|.
-name|ChildNodeEntry
+name|ChildNode
 name|entry
 init|=
 name|node
@@ -628,7 +628,7 @@ name|mk
 operator|.
 name|model
 operator|.
-name|ChildNodeEntry
+name|ChildNode
 argument_list|>
 name|iterator
 init|=
@@ -712,7 +712,7 @@ name|mk
 operator|.
 name|model
 operator|.
-name|ChildNodeEntry
+name|ChildNode
 name|entry
 parameter_list|)
 block|{
