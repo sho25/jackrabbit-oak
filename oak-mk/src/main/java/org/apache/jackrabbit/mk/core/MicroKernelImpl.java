@@ -12,6 +12,8 @@ operator|.
 name|jackrabbit
 operator|.
 name|mk
+operator|.
+name|core
 package|;
 end_package
 

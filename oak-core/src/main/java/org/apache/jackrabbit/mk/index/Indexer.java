@@ -27,6 +27,8 @@ name|jackrabbit
 operator|.
 name|mk
 operator|.
+name|core
+operator|.
 name|MicroKernelImpl
 import|;
 end_import
