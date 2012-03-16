@@ -67,26 +67,6 @@ name|javax
 operator|.
 name|jcr
 operator|.
-name|LoginException
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|jcr
-operator|.
-name|NoSuchWorkspaceException
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|jcr
-operator|.
 name|RepositoryException
 import|;
 end_import
@@ -425,10 +405,6 @@ name|String
 name|workspaceName
 parameter_list|)
 throws|throws
-name|LoginException
-throws|,
-name|NoSuchWorkspaceException
-throws|,
 name|RepositoryException
 block|{
 comment|// TODO: needs complete refactoring

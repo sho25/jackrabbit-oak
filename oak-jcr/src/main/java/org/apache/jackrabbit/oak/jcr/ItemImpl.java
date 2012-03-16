@@ -460,8 +460,6 @@ comment|/**      * Returns the value factory associated with the editing session
 name|ValueFactory
 name|getValueFactory
 parameter_list|()
-throws|throws
-name|RepositoryException
 block|{
 return|return
 name|sessionContext
