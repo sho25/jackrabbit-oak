@@ -5397,7 +5397,6 @@ annotation|@
 name|Test
 annotation|@
 name|Ignore
-comment|// todo implement value coding in ValueConverter
 specifier|public
 name|void
 name|addEmptyMultiValuedProperty_JCR_2992_WorkaroundTest
@@ -7808,7 +7807,7 @@ annotation|@
 name|Test
 annotation|@
 name|Ignore
-comment|// todo implement orderBefore
+comment|// todo implement orderBefore, orderable child nodes
 specifier|public
 name|void
 name|reorderTest
@@ -7859,30 +7858,7 @@ operator|.
 name|getNodes
 argument_list|()
 decl_stmt|;
-while|while
-condition|(
-name|it
-operator|.
-name|hasNext
-argument_list|()
-condition|)
-block|{
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-name|it
-operator|.
-name|nextNode
-argument_list|()
-operator|.
-name|getPath
-argument_list|()
-argument_list|)
-expr_stmt|;
-block|}
+comment|// todo: check order
 name|testNode
 operator|.
 name|orderBefore
@@ -7905,30 +7881,7 @@ operator|.
 name|getNodes
 argument_list|()
 expr_stmt|;
-while|while
-condition|(
-name|it
-operator|.
-name|hasNext
-argument_list|()
-condition|)
-block|{
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-name|it
-operator|.
-name|nextNode
-argument_list|()
-operator|.
-name|getPath
-argument_list|()
-argument_list|)
-expr_stmt|;
-block|}
+comment|// todo: check order
 block|}
 annotation|@
 name|Test
