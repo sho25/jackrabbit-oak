@@ -916,7 +916,7 @@ argument_list|(
 name|this
 argument_list|)
 operator|+
-literal|")"
+literal|')'
 decl_stmt|;
 name|log
 operator|.
