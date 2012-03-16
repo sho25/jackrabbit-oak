@@ -456,7 +456,7 @@ name|checkHasPendingChanges
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * Returns the value factory associated with the editing session.      *      * @return the value factory      * @throws RepositoryException      */
+comment|/**      * Returns the value factory associated with the editing session.      *      * @return the value factory      */
 name|ValueFactory
 name|getValueFactory
 parameter_list|()
