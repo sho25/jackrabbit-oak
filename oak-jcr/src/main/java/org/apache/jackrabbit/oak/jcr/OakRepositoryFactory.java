@@ -114,11 +114,6 @@ import|;
 end_import
 
 begin_class
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"rawtypes"
-argument_list|)
 specifier|public
 class|class
 name|OakRepositoryFactory
@@ -133,6 +128,15 @@ name|REPOSITORY_URI
 init|=
 literal|"org.apache.jackrabbit.repository.uri"
 decl_stmt|;
+annotation|@
+name|SuppressWarnings
+argument_list|(
+block|{
+literal|"rawtypes"
+block|,
+literal|"unchecked"
+block|}
+argument_list|)
 annotation|@
 name|Override
 specifier|public
@@ -210,11 +214,6 @@ return|return
 literal|null
 return|;
 block|}
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"unchecked"
-argument_list|)
 specifier|private
 specifier|static
 name|Repository
@@ -224,6 +223,11 @@ name|URI
 name|uri
 parameter_list|,
 name|Map
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
 name|parameters
 parameter_list|)
 throws|throws
