@@ -13,7 +13,7 @@ name|jackrabbit
 operator|.
 name|mk
 operator|.
-name|util
+name|large
 package|;
 end_package
 
@@ -64,10 +64,6 @@ init|=
 literal|30
 decl_stmt|,
 name|count
-decl_stmt|;
-specifier|private
-name|StopWatch
-name|timer
 decl_stmt|;
 specifier|private
 name|String
@@ -206,12 +202,6 @@ argument_list|,
 literal|""
 argument_list|)
 expr_stmt|;
-name|timer
-operator|=
-operator|new
-name|StopWatch
-argument_list|()
-expr_stmt|;
 name|count
 operator|=
 literal|0
@@ -257,22 +247,6 @@ argument_list|)
 expr_stmt|;
 name|log
 argument_list|(
-literal|"created  "
-operator|+
-name|count
-operator|+
-literal|" nodes in "
-operator|+
-name|timer
-operator|.
-name|operationsPerSecond
-argument_list|(
-name|count
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|log
-argument_list|(
 literal|""
 argument_list|)
 expr_stmt|;
@@ -282,12 +256,6 @@ name|void
 name|traverse
 parameter_list|()
 block|{
-name|timer
-operator|=
-operator|new
-name|StopWatch
-argument_list|()
-expr_stmt|;
 name|count
 operator|=
 literal|0
@@ -329,22 +297,6 @@ argument_list|(
 name|nodeName
 argument_list|,
 name|depth
-argument_list|)
-expr_stmt|;
-name|log
-argument_list|(
-literal|"read  "
-operator|+
-name|count
-operator|+
-literal|" nodes in "
-operator|+
-name|timer
-operator|.
-name|operationsPerSecond
-argument_list|(
-name|count
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -470,37 +422,6 @@ argument_list|(
 literal|"}\n"
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|count
-operator|%
-literal|1000
-operator|==
-literal|0
-operator|&&
-name|timer
-operator|.
-name|log
-argument_list|()
-condition|)
-block|{
-name|log
-argument_list|(
-literal|"  "
-operator|+
-name|count
-operator|+
-literal|" nodes in "
-operator|+
-name|timer
-operator|.
-name|operationsPerSecond
-argument_list|(
-name|count
-argument_list|)
-argument_list|)
-expr_stmt|;
-block|}
 block|}
 name|head
 operator|=
@@ -655,37 +576,6 @@ expr_stmt|;
 name|count
 operator|++
 expr_stmt|;
-if|if
-condition|(
-name|count
-operator|%
-literal|1000
-operator|==
-literal|0
-operator|&&
-name|timer
-operator|.
-name|log
-argument_list|()
-condition|)
-block|{
-name|log
-argument_list|(
-literal|"  "
-operator|+
-name|count
-operator|+
-literal|" nodes in "
-operator|+
-name|timer
-operator|.
-name|operationsPerSecond
-argument_list|(
-name|count
-argument_list|)
-argument_list|)
-expr_stmt|;
-block|}
 if|if
 condition|(
 name|depth
