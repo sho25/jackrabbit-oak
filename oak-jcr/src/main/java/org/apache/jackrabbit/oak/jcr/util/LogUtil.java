@@ -70,6 +70,7 @@ name|LogUtil
 block|{
 specifier|private
 specifier|static
+specifier|final
 name|Logger
 name|log
 init|=
