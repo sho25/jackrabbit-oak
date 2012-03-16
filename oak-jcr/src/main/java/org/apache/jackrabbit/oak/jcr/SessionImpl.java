@@ -1527,7 +1527,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**      * Checks if this nodes session has pending changes.      *      * @throws InvalidItemStateException if this nodes session has pending changes      * @throws RepositoryException      */
+comment|/**      * Checks if this session has pending changes.      *      * @throws InvalidItemStateException if this nodes session has pending changes      * @throws RepositoryException      */
 name|void
 name|checkHasPendingChanges
 parameter_list|()
