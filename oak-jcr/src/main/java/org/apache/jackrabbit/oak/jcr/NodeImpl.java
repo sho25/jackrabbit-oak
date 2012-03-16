@@ -3416,7 +3416,7 @@ literal|"Lifecycle Management is not supported"
 argument_list|)
 throw|;
 block|}
-comment|/**      * @see javax.jcr.Node#getAllowedLifecycleTransistions() ()      */
+comment|/**      * @see javax.jcr.Node#getAllowedLifecycleTransistions()      */
 annotation|@
 name|Override
 specifier|public
@@ -3436,7 +3436,7 @@ argument_list|)
 throw|;
 block|}
 comment|//------------------------------------------------------------< private>---
-comment|/**      * Shortcut to retrieve the version manager from the workspace associated      * with the editing session.      *      * @return the version manager associated with the editing session.      * @throws RepositoryException      */
+comment|/**      * Shortcut to retrieve the version manager from the workspace associated      * with the editing session.      *      * @return the version manager associated with the editing session.      * @throws RepositoryException If an error occurs while retrieving the version manager.      */
 specifier|private
 name|VersionManager
 name|getVersionManager
