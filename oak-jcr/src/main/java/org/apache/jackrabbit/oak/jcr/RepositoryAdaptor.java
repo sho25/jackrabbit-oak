@@ -53,26 +53,6 @@ name|javax
 operator|.
 name|jcr
 operator|.
-name|LoginException
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|jcr
-operator|.
-name|NoSuchWorkspaceException
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|jcr
-operator|.
 name|Repository
 import|;
 end_import
@@ -168,7 +148,7 @@ name|repository
 operator|=
 name|repository
 expr_stmt|;
-comment|// TODO: define if descriptiors are being retrieved from oak-api.
+comment|// TODO: define if descriptors are being retrieved from oak-api.
 comment|// TODO: in this case the 'sessionInfo' needs to be passed to the constructor as well.
 name|this
 operator|.
@@ -347,10 +327,6 @@ name|String
 name|workspaceName
 parameter_list|)
 throws|throws
-name|LoginException
-throws|,
-name|NoSuchWorkspaceException
-throws|,
 name|RepositoryException
 block|{
 return|return
@@ -375,8 +351,6 @@ name|Credentials
 name|credentials
 parameter_list|)
 throws|throws
-name|LoginException
-throws|,
 name|RepositoryException
 block|{
 return|return
@@ -399,10 +373,6 @@ name|String
 name|workspaceName
 parameter_list|)
 throws|throws
-name|LoginException
-throws|,
-name|NoSuchWorkspaceException
-throws|,
 name|RepositoryException
 block|{
 return|return
@@ -422,8 +392,6 @@ name|Session
 name|login
 parameter_list|()
 throws|throws
-name|LoginException
-throws|,
 name|RepositoryException
 block|{
 return|return
