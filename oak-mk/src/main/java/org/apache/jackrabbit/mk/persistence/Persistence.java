@@ -13,8 +13,6 @@ name|jackrabbit
 operator|.
 name|mk
 operator|.
-name|store
-operator|.
 name|persistence
 package|;
 end_package

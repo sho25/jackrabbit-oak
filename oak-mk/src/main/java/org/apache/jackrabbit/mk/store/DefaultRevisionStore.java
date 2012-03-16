@@ -155,8 +155,6 @@ name|jackrabbit
 operator|.
 name|mk
 operator|.
-name|store
-operator|.
 name|persistence
 operator|.
 name|H2Persistence
@@ -172,8 +170,6 @@ operator|.
 name|jackrabbit
 operator|.
 name|mk
-operator|.
-name|store
 operator|.
 name|persistence
 operator|.
