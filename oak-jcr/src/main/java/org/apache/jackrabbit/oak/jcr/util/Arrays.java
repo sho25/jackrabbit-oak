@@ -219,6 +219,11 @@ name|copy
 return|;
 block|}
 comment|/**      * Create a new array with all occurrences of {@code value} removed.      * @param array      * @param value      * @param<T>      * @return an array containing all elements of {@code array} except for {@code value}.      */
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unchecked"
+argument_list|)
 specifier|public
 specifier|static
 parameter_list|<
