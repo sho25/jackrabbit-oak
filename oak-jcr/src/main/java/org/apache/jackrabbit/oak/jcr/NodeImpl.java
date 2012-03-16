@@ -3562,7 +3562,7 @@ name|PropertyState
 name|state
 parameter_list|)
 block|{
-comment|// fixme don't cast
+comment|// fixme don't cast, see OAK-16
 name|JsonValue
 name|value
 init|=

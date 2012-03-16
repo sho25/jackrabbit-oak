@@ -1205,7 +1205,7 @@ operator|.
 name|getValue
 argument_list|()
 return|;
-comment|// fixme: don't cast
+comment|// fixme: don't cast, see OAK-16
 block|}
 block|}
 specifier|private
