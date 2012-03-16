@@ -87,7 +87,7 @@ specifier|private
 name|LogUtil
 parameter_list|()
 block|{}
-comment|/**      * Failsafe retrieval of the JCR path for a given item. This is intended      * to be used in log output, error messages etc.      *      * @param item The target item.      * @return The JCR path of that item or some implementation specific      * string representation of the item.      */
+comment|/**      * Fail safe retrieval of the JCR path for a given item. This is intended      * to be used in log output, error messages etc.      *      * @param item The target item.      * @return The JCR path of that item or some implementation specific      * string representation of the item.      */
 specifier|public
 specifier|static
 name|String
