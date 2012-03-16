@@ -114,6 +114,8 @@ specifier|public
 name|void
 name|tearDown
 parameter_list|()
+throws|throws
+name|RepositoryException
 block|{
 name|logout
 argument_list|()
