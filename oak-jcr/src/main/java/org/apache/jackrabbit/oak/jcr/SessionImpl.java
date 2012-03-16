@@ -847,6 +847,47 @@ return|return
 name|workspace
 return|;
 block|}
+comment|/**      * @see javax.jcr.Session#impersonate(Credentials)      */
+annotation|@
+name|Override
+specifier|public
+name|Session
+name|impersonate
+parameter_list|(
+name|Credentials
+name|credentials
+parameter_list|)
+throws|throws
+name|RepositoryException
+block|{
+name|checkIsAlive
+argument_list|()
+expr_stmt|;
+comment|// TODO
+return|return
+literal|null
+return|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|ValueFactory
+name|getValueFactory
+parameter_list|()
+throws|throws
+name|RepositoryException
+block|{
+name|checkIsAlive
+argument_list|()
+expr_stmt|;
+return|return
+name|sessionContext
+operator|.
+name|getValueFactory
+argument_list|()
+return|;
+block|}
+comment|//------------------------------------------------------------< Reading>---
 annotation|@
 name|Override
 specifier|public
@@ -915,6 +956,7 @@ return|return
 literal|null
 return|;
 block|}
+comment|//------------------------------------------------------------< Writing>---
 annotation|@
 name|Override
 specifier|public
@@ -993,6 +1035,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+comment|//------------------------------------------------------------< state>---
 annotation|@
 name|Override
 specifier|public
@@ -1067,142 +1110,7 @@ name|isDirty
 argument_list|()
 return|;
 block|}
-annotation|@
-name|Override
-specifier|public
-name|ValueFactory
-name|getValueFactory
-parameter_list|()
-throws|throws
-name|RepositoryException
-block|{
-name|checkIsAlive
-argument_list|()
-expr_stmt|;
-return|return
-name|sessionContext
-operator|.
-name|getValueFactory
-argument_list|()
-return|;
-block|}
-annotation|@
-name|Override
-specifier|public
-name|boolean
-name|hasPermission
-parameter_list|(
-name|String
-name|absPath
-parameter_list|,
-name|String
-name|actions
-parameter_list|)
-throws|throws
-name|RepositoryException
-block|{
-name|checkIsAlive
-argument_list|()
-expr_stmt|;
-comment|// TODO
-return|return
-literal|false
-return|;
-block|}
-comment|/**      * @see javax.jcr.Session#checkPermission(String, String)      */
-annotation|@
-name|Override
-specifier|public
-name|void
-name|checkPermission
-parameter_list|(
-name|String
-name|absPath
-parameter_list|,
-name|String
-name|actions
-parameter_list|)
-throws|throws
-name|AccessControlException
-throws|,
-name|RepositoryException
-block|{
-if|if
-condition|(
-operator|!
-name|hasPermission
-argument_list|(
-name|absPath
-argument_list|,
-name|actions
-argument_list|)
-condition|)
-block|{
-throw|throw
-operator|new
-name|AccessControlException
-argument_list|(
-literal|"Access control violation: path = "
-operator|+
-name|absPath
-operator|+
-literal|", actions = "
-operator|+
-name|actions
-argument_list|)
-throw|;
-block|}
-block|}
-annotation|@
-name|Override
-specifier|public
-name|boolean
-name|hasCapability
-parameter_list|(
-name|String
-name|methodName
-parameter_list|,
-name|Object
-name|target
-parameter_list|,
-name|Object
-index|[]
-name|arguments
-parameter_list|)
-throws|throws
-name|RepositoryException
-block|{
-name|checkIsAlive
-argument_list|()
-expr_stmt|;
-comment|// TODO
-return|return
-literal|false
-return|;
-block|}
-annotation|@
-name|Override
-specifier|public
-name|ContentHandler
-name|getImportContentHandler
-parameter_list|(
-name|String
-name|parentAbsPath
-parameter_list|,
-name|int
-name|uuidBehavior
-parameter_list|)
-throws|throws
-name|RepositoryException
-block|{
-name|checkIsAlive
-argument_list|()
-expr_stmt|;
-comment|// TODO
-return|return
-literal|null
-return|;
-block|}
+comment|//------------------------------------------------------------< Lifecycle>---
 annotation|@
 name|Override
 specifier|public
@@ -1236,15 +1144,18 @@ literal|false
 expr_stmt|;
 comment|// TODO
 block|}
-comment|/**      * @see javax.jcr.Session#impersonate(Credentials)      */
+comment|//------------------------------------------------------------< Import / Export>---
 annotation|@
 name|Override
 specifier|public
-name|Session
-name|impersonate
+name|ContentHandler
+name|getImportContentHandler
 parameter_list|(
-name|Credentials
-name|credentials
+name|String
+name|parentAbsPath
+parameter_list|,
+name|int
+name|uuidBehavior
 parameter_list|)
 throws|throws
 name|RepositoryException
@@ -1257,6 +1168,7 @@ return|return
 literal|null
 return|;
 block|}
+comment|//------------------------------------------------------------< Locking>---
 comment|/**      * @see javax.jcr.Session#addLockToken(String)      */
 annotation|@
 name|Override
@@ -1400,6 +1312,101 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+comment|//------------------------------------------------------------< AccessControl>---
+annotation|@
+name|Override
+specifier|public
+name|boolean
+name|hasPermission
+parameter_list|(
+name|String
+name|absPath
+parameter_list|,
+name|String
+name|actions
+parameter_list|)
+throws|throws
+name|RepositoryException
+block|{
+name|checkIsAlive
+argument_list|()
+expr_stmt|;
+comment|// TODO
+return|return
+literal|false
+return|;
+block|}
+comment|/**      * @see javax.jcr.Session#checkPermission(String, String)      */
+annotation|@
+name|Override
+specifier|public
+name|void
+name|checkPermission
+parameter_list|(
+name|String
+name|absPath
+parameter_list|,
+name|String
+name|actions
+parameter_list|)
+throws|throws
+name|AccessControlException
+throws|,
+name|RepositoryException
+block|{
+if|if
+condition|(
+operator|!
+name|hasPermission
+argument_list|(
+name|absPath
+argument_list|,
+name|actions
+argument_list|)
+condition|)
+block|{
+throw|throw
+operator|new
+name|AccessControlException
+argument_list|(
+literal|"Access control violation: path = "
+operator|+
+name|absPath
+operator|+
+literal|", actions = "
+operator|+
+name|actions
+argument_list|)
+throw|;
+block|}
+block|}
+annotation|@
+name|Override
+specifier|public
+name|boolean
+name|hasCapability
+parameter_list|(
+name|String
+name|methodName
+parameter_list|,
+name|Object
+name|target
+parameter_list|,
+name|Object
+index|[]
+name|arguments
+parameter_list|)
+throws|throws
+name|RepositoryException
+block|{
+name|checkIsAlive
+argument_list|()
+expr_stmt|;
+comment|// TODO
+return|return
+literal|false
+return|;
+block|}
 annotation|@
 name|Override
 specifier|public
@@ -1417,6 +1424,7 @@ return|return
 literal|null
 return|;
 block|}
+comment|//------------------------------------------------------------< Retention>---
 annotation|@
 name|Override
 specifier|public
@@ -1434,7 +1442,7 @@ literal|"Retention Management is not supported."
 argument_list|)
 throw|;
 block|}
-comment|//------------------------------------------------------< check methods>---
+comment|//------------------------------------------------------------< check methods>---
 comment|/**      * Performs a sanity check on this session.      *      * @throws RepositoryException if this session has been rendered invalid      * for some reason (e.g. if this session has been closed explicitly by logout)      */
 name|void
 name|checkIsAlive
@@ -1562,7 +1570,6 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|//------------------------------------------------------------< private>---
 block|}
 end_class
 
