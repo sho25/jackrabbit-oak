@@ -3395,7 +3395,7 @@ name|RepositoryException
 block|{
 comment|// TODO
 block|}
-comment|/**      * @see javax.jcr.Node#followLifecycleTransition() ()      */
+comment|/**      * @see javax.jcr.Node#followLifecycleTransition(String)      */
 annotation|@
 name|Override
 specifier|public
