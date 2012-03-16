@@ -95,20 +95,6 @@ begin_import
 import|import
 name|org
 operator|.
-name|json
-operator|.
-name|simple
-operator|.
-name|parser
-operator|.
-name|ParseException
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
 name|junit
 operator|.
 name|Test
@@ -516,10 +502,6 @@ specifier|public
 name|void
 name|fixedPoint
 parameter_list|()
-throws|throws
-name|IOException
-throws|,
-name|ParseException
 block|{
 name|InputStream
 name|one
@@ -581,10 +563,6 @@ parameter_list|(
 name|Reader
 name|reader
 parameter_list|)
-throws|throws
-name|IOException
-throws|,
-name|ParseException
 block|{
 name|StringWriter
 name|sw
@@ -593,6 +571,8 @@ operator|new
 name|StringWriter
 argument_list|()
 decl_stmt|;
+try|try
+block|{
 operator|new
 name|JSONParser
 argument_list|()
@@ -613,6 +593,21 @@ argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|Exception
+name|e
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|RuntimeException
+argument_list|(
+name|e
+argument_list|)
+throw|;
+block|}
 return|return
 name|sw
 operator|.
@@ -628,10 +623,6 @@ parameter_list|(
 name|String
 name|string
 parameter_list|)
-throws|throws
-name|IOException
-throws|,
-name|ParseException
 block|{
 return|return
 name|fix
@@ -681,10 +672,6 @@ specifier|public
 name|void
 name|startJSON
 parameter_list|()
-throws|throws
-name|ParseException
-throws|,
-name|IOException
 block|{
 comment|// ignore
 block|}
@@ -692,10 +679,6 @@ specifier|public
 name|void
 name|endJSON
 parameter_list|()
-throws|throws
-name|ParseException
-throws|,
-name|IOException
 block|{
 comment|// ignore
 block|}
@@ -704,8 +687,6 @@ name|boolean
 name|startObject
 parameter_list|()
 throws|throws
-name|ParseException
-throws|,
 name|IOException
 block|{
 if|if
@@ -734,8 +715,6 @@ name|boolean
 name|endObject
 parameter_list|()
 throws|throws
-name|ParseException
-throws|,
 name|IOException
 block|{
 name|objectBuilder
@@ -757,8 +736,6 @@ name|String
 name|key
 parameter_list|)
 throws|throws
-name|ParseException
-throws|,
 name|IOException
 block|{
 name|currentKey
@@ -774,8 +751,6 @@ name|boolean
 name|endObjectEntry
 parameter_list|()
 throws|throws
-name|ParseException
-throws|,
 name|IOException
 block|{
 return|return
@@ -787,8 +762,6 @@ name|boolean
 name|startArray
 parameter_list|()
 throws|throws
-name|ParseException
-throws|,
 name|IOException
 block|{
 name|arrayBuilder
@@ -809,8 +782,6 @@ name|boolean
 name|endArray
 parameter_list|()
 throws|throws
-name|ParseException
-throws|,
 name|IOException
 block|{
 name|objectBuilder
@@ -836,8 +807,6 @@ name|Object
 name|value
 parameter_list|)
 throws|throws
-name|ParseException
-throws|,
 name|IOException
 block|{
 if|if
