@@ -11,7 +11,7 @@ name|apache
 operator|.
 name|jackrabbit
 operator|.
-name|oak
+name|mk
 operator|.
 name|model
 package|;

@@ -59,7 +59,7 @@ name|mk
 operator|.
 name|model
 operator|.
-name|ChildNodeEntriesMap
+name|ChildNode
 import|;
 end_import
 
@@ -75,7 +75,7 @@ name|mk
 operator|.
 name|model
 operator|.
-name|ChildNode
+name|ChildNodeEntriesMap
 import|;
 end_import
 
@@ -139,6 +139,22 @@ name|mk
 operator|.
 name|model
 operator|.
+name|NodeState
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|mk
+operator|.
+name|model
+operator|.
 name|StoredCommit
 import|;
 end_import
@@ -172,22 +188,6 @@ operator|.
 name|util
 operator|.
 name|IOUtils
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|model
-operator|.
-name|NodeState
 import|;
 end_import
 
