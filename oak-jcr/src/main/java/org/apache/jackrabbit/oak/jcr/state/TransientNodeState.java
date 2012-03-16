@@ -430,7 +430,7 @@ name|isTransient
 argument_list|()
 return|;
 block|}
-comment|/**      * Transiently add a node with the given {@code name}.      * @param name      * @return the added node      * @throws javax.jcr.ItemExistsException if a node with that name exists already.      */
+comment|/**      * Transiently add a node with the given {@code name}.      *      * @param name The name of the new node.      * @return the added node      * @throws javax.jcr.ItemExistsException if a node with that name exists already.      */
 specifier|public
 name|TransientNodeState
 name|addNode
@@ -489,7 +489,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Transiently move this node.      * @param name  name of this node at its {@code destination}      * @param destination      * @throws javax.jcr.ItemExistsException  {@code name} exists at {@code destination}      * @throws javax.jcr.PathNotFoundException  {@code destination} does not exist      * @throws javax.jcr.ItemNotFoundException  {@code name} does not exist      */
+comment|/**      * Transiently move this node.      *      * @param name  name of this node at its {@code destination}      * @param destination The destination of the move.      * @throws javax.jcr.ItemExistsException  {@code name} exists at {@code destination}      * @throws javax.jcr.PathNotFoundException  {@code destination} does not exist      * @throws javax.jcr.ItemNotFoundException  {@code name} does not exist      */
 specifier|public
 name|void
 name|move
