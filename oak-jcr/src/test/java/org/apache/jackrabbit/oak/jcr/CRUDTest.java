@@ -18,26 +18,22 @@ package|;
 end_package
 
 begin_import
-import|import static
+import|import
+name|org
+operator|.
 name|junit
 operator|.
-name|framework
-operator|.
-name|Assert
-operator|.
-name|assertEquals
+name|After
 import|;
 end_import
 
 begin_import
-import|import static
+import|import
+name|org
+operator|.
 name|junit
 operator|.
-name|framework
-operator|.
-name|Assert
-operator|.
-name|assertTrue
+name|Test
 import|;
 end_import
 
@@ -82,36 +78,26 @@ import|;
 end_import
 
 begin_import
-import|import
-name|org
+import|import static
+name|junit
 operator|.
-name|apache
+name|framework
 operator|.
-name|jackrabbit
+name|Assert
 operator|.
-name|commons
-operator|.
-name|JcrUtils
+name|assertEquals
 import|;
 end_import
 
 begin_import
-import|import
-name|org
-operator|.
+import|import static
 name|junit
 operator|.
-name|Ignore
-import|;
-end_import
-
-begin_import
-import|import
-name|org
+name|framework
 operator|.
-name|junit
+name|Assert
 operator|.
-name|Test
+name|assertTrue
 import|;
 end_import
 
@@ -119,9 +105,20 @@ begin_class
 specifier|public
 class|class
 name|CRUDTest
+extends|extends
+name|AbstractRepositoryTest
 block|{
 annotation|@
-name|Ignore
+name|After
+specifier|public
+name|void
+name|tearDown
+parameter_list|()
+block|{
+name|logout
+argument_list|()
+expr_stmt|;
+block|}
 annotation|@
 name|Test
 specifier|public
@@ -134,12 +131,8 @@ block|{
 name|Repository
 name|repository
 init|=
-name|JcrUtils
-operator|.
 name|getRepository
-argument_list|(
-literal|"jcr-oak://inmemory/CRUDTest"
-argument_list|)
+argument_list|()
 decl_stmt|;
 name|Session
 name|session
