@@ -2373,6 +2373,7 @@ argument_list|)
 throw|;
 block|}
 block|}
+comment|/**      * @see javax.jcr.Node#getUUID()      */
 annotation|@
 name|Override
 specifier|public
@@ -2385,10 +2386,42 @@ block|{
 name|checkStatus
 argument_list|()
 expr_stmt|;
-comment|// TODO
+if|if
+condition|(
+name|hasProperty
+argument_list|(
+name|JcrConstants
+operator|.
+name|JCR_UUID
+argument_list|)
+operator|&&
+name|isNodeType
+argument_list|(
+name|JcrConstants
+operator|.
+name|MIX_REFERENCEABLE
+argument_list|)
+condition|)
+block|{
 return|return
-literal|null
+name|getProperty
+argument_list|(
+name|JcrConstants
+operator|.
+name|JCR_UUID
+argument_list|)
+operator|.
+name|getString
+argument_list|()
 return|;
+block|}
+throw|throw
+operator|new
+name|UnsupportedRepositoryOperationException
+argument_list|(
+literal|"Node is not referenceable."
+argument_list|)
+throw|;
 block|}
 annotation|@
 name|Override
