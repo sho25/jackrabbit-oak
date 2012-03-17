@@ -580,6 +580,13 @@ name|count
 init|=
 literal|5000
 decl_stmt|;
+name|StopWatch
+name|timer
+init|=
+operator|new
+name|StopWatch
+argument_list|()
+decl_stmt|;
 name|StringBuilder
 name|buff
 init|=
@@ -602,6 +609,37 @@ name|i
 operator|++
 control|)
 block|{
+if|if
+condition|(
+name|i
+operator|%
+literal|100
+operator|==
+literal|0
+operator|&&
+name|timer
+operator|.
+name|log
+argument_list|()
+condition|)
+block|{
+name|log
+argument_list|(
+literal|"added "
+operator|+
+name|i
+operator|+
+literal|" nodes "
+operator|+
+name|timer
+operator|.
+name|operationsPerSecond
+argument_list|(
+name|i
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
 name|buff
 operator|.
 name|append
@@ -653,6 +691,22 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+name|log
+argument_list|(
+literal|"added "
+operator|+
+name|count
+operator|+
+literal|" nodes "
+operator|+
+name|timer
+operator|.
+name|operationsPerSecond
+argument_list|(
+name|count
+argument_list|)
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|buff
