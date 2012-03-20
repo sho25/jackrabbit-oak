@@ -173,22 +173,6 @@ name|mk
 operator|.
 name|persistence
 operator|.
-name|H2Persistence
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|mk
-operator|.
-name|persistence
-operator|.
 name|Persistence
 import|;
 end_import
@@ -354,6 +338,9 @@ name|initialize
 parameter_list|(
 name|File
 name|homeDir
+parameter_list|,
+name|Persistence
+name|persistence
 parameter_list|)
 throws|throws
 name|Exception
@@ -399,14 +386,8 @@ argument_list|)
 expr_stmt|;
 name|pm
 operator|=
-operator|new
-name|H2Persistence
-argument_list|()
+name|persistence
 expr_stmt|;
-comment|//pm = new InMemPersistence();
-comment|//pm = new MongoPersistence();
-comment|//pm = new BDbPersistence();
-comment|//pm = new FSPersistence();
 name|pm
 operator|.
 name|initialize
