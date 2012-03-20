@@ -238,7 +238,7 @@ name|propertyName
 argument_list|,
 name|Operator
 operator|.
-name|NE
+name|NOT_EQUAL
 argument_list|,
 operator|(
 name|Value

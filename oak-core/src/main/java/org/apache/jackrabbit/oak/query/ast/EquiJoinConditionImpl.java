@@ -376,7 +376,7 @@ name|property1Name
 argument_list|,
 name|Operator
 operator|.
-name|EQ
+name|EQUAL
 argument_list|,
 name|v2
 argument_list|)
@@ -404,7 +404,7 @@ name|property2Name
 argument_list|,
 name|Operator
 operator|.
-name|EQ
+name|EQUAL
 argument_list|,
 name|v1
 argument_list|)

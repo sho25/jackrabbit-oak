@@ -198,7 +198,7 @@ name|operator
 condition|)
 block|{
 case|case
-name|EQ
+name|EQUAL
 case|:
 return|return
 name|v1
@@ -209,16 +209,16 @@ name|v2
 argument_list|)
 return|;
 case|case
-name|GE
+name|GREATER_OR_EQUAL
 case|:
 case|case
-name|GT
+name|GREATER_THAN
 case|:
 case|case
-name|LE
+name|LESS_OR_EQUAL
 case|:
 case|case
-name|LT
+name|LESS_THAN
 case|:
 return|return
 name|operand1
@@ -235,7 +235,7 @@ argument_list|()
 argument_list|)
 return|;
 case|case
-name|NE
+name|NOT_EQUAL
 case|:
 return|return
 operator|!
@@ -1228,7 +1228,7 @@ name|f
 argument_list|,
 name|Operator
 operator|.
-name|GE
+name|GREATER_OR_EQUAL
 argument_list|,
 name|vf
 operator|.
@@ -1254,7 +1254,7 @@ name|f
 argument_list|,
 name|Operator
 operator|.
-name|LE
+name|LESS_OR_EQUAL
 argument_list|,
 name|vf
 operator|.

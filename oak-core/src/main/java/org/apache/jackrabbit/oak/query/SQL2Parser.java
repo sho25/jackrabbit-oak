@@ -1588,7 +1588,7 @@ name|left
 argument_list|,
 name|Operator
 operator|.
-name|EQ
+name|EQUAL
 argument_list|,
 name|parseStaticOperand
 argument_list|()
@@ -1614,7 +1614,7 @@ name|left
 argument_list|,
 name|Operator
 operator|.
-name|NE
+name|NOT_EQUAL
 argument_list|,
 name|parseStaticOperand
 argument_list|()
@@ -1640,7 +1640,7 @@ name|left
 argument_list|,
 name|Operator
 operator|.
-name|LT
+name|LESS_THAN
 argument_list|,
 name|parseStaticOperand
 argument_list|()
@@ -1666,7 +1666,7 @@ name|left
 argument_list|,
 name|Operator
 operator|.
-name|GT
+name|GREATER_THAN
 argument_list|,
 name|parseStaticOperand
 argument_list|()
@@ -1692,7 +1692,7 @@ name|left
 argument_list|,
 name|Operator
 operator|.
-name|LE
+name|LESS_OR_EQUAL
 argument_list|,
 name|parseStaticOperand
 argument_list|()
@@ -1718,7 +1718,7 @@ name|left
 argument_list|,
 name|Operator
 operator|.
-name|GE
+name|GREATER_OR_EQUAL
 argument_list|,
 name|parseStaticOperand
 argument_list|()

@@ -310,16 +310,16 @@ return|return
 literal|true
 return|;
 block|}
-comment|/**      * Calls accept on the following contained QOM nodes:      *<ul>      *<li>Source</li>      *<li>Constraints</li>      *<li>Orderings</li>      *<li>Columns</li>      *</ul>      */
+comment|/**      * Calls accept on the following contained QOM nodes:      *<ul>      *<li>Source</li>      *<li>Constraints</li>      *<li>Orderings</li>      *<li>Columns</li>      *</ul>      *      * @param query the query to visit      */
 specifier|public
-name|boolean
+name|void
 name|visit
 parameter_list|(
 name|Query
-name|node
+name|query
 parameter_list|)
 block|{
-name|node
+name|query
 operator|.
 name|getSource
 argument_list|()
@@ -332,7 +332,7 @@ expr_stmt|;
 name|ConstraintImpl
 name|constraint
 init|=
-name|node
+name|query
 operator|.
 name|getConstraint
 argument_list|()
@@ -356,7 +356,7 @@ name|OrderingImpl
 index|[]
 name|orderings
 init|=
-name|node
+name|query
 operator|.
 name|getOrderings
 argument_list|()
@@ -389,7 +389,7 @@ name|ColumnImpl
 index|[]
 name|columns
 init|=
-name|node
+name|query
 operator|.
 name|getColumns
 argument_list|()
@@ -410,9 +410,6 @@ name|this
 argument_list|)
 expr_stmt|;
 block|}
-return|return
-literal|true
-return|;
 block|}
 comment|/**      * Calls accept on the dynamic operand in the lower-case node.      */
 annotation|@
