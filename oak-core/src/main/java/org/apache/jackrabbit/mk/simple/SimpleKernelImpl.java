@@ -444,7 +444,7 @@ specifier|private
 name|boolean
 name|disposed
 decl_stmt|;
-specifier|private
+specifier|public
 name|SimpleKernelImpl
 parameter_list|(
 name|String
