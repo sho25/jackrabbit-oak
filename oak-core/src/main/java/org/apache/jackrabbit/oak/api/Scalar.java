@@ -27,16 +27,6 @@ name|InputStream
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|math
-operator|.
-name|BigDecimal
-import|;
-end_import
-
 begin_comment
 comment|/**  * An immutable, typed scalar value.  */
 end_comment
@@ -61,10 +51,6 @@ parameter_list|()
 function_decl|;
 name|double
 name|getDouble
-parameter_list|()
-function_decl|;
-name|BigDecimal
-name|getDecimal
 parameter_list|()
 function_decl|;
 name|InputStream
