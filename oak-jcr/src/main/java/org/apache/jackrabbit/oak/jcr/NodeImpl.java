@@ -69,13 +69,11 @@ name|apache
 operator|.
 name|jackrabbit
 operator|.
-name|oak
+name|mk
 operator|.
-name|jcr
+name|model
 operator|.
-name|SessionImpl
-operator|.
-name|Context
+name|PropertyState
 import|;
 end_import
 
@@ -276,22 +274,6 @@ operator|.
 name|util
 operator|.
 name|ValueConverter
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|mk
-operator|.
-name|model
-operator|.
-name|PropertyState
 import|;
 end_import
 
@@ -629,7 +611,10 @@ specifier|static
 name|boolean
 name|exist
 parameter_list|(
-name|Context
+name|SessionContext
+argument_list|<
+name|SessionImpl
+argument_list|>
 name|sessionContext
 parameter_list|,
 name|Path
@@ -651,7 +636,10 @@ specifier|static
 name|Node
 name|create
 parameter_list|(
-name|Context
+name|SessionContext
+argument_list|<
+name|SessionImpl
+argument_list|>
 name|sessionContext
 parameter_list|,
 name|Path
@@ -702,7 +690,10 @@ specifier|static
 name|Node
 name|create
 parameter_list|(
-name|Context
+name|SessionContext
+argument_list|<
+name|SessionImpl
+argument_list|>
 name|sessionContext
 parameter_list|,
 name|TransientNodeState
@@ -722,7 +713,10 @@ block|}
 specifier|private
 name|NodeImpl
 parameter_list|(
-name|Context
+name|SessionContext
+argument_list|<
+name|SessionImpl
+argument_list|>
 name|sessionContext
 parameter_list|,
 name|TransientNodeState
