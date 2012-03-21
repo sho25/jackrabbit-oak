@@ -47,10 +47,6 @@ specifier|final
 name|String
 name|bindVariableName
 decl_stmt|;
-specifier|private
-name|Value
-name|value
-decl_stmt|;
 specifier|public
 name|BindVariableValueImpl
 parameter_list|(
@@ -112,7 +108,12 @@ name|currentValue
 parameter_list|()
 block|{
 return|return
-name|value
+name|query
+operator|.
+name|getBindVariableValue
+argument_list|(
+name|bindVariableName
+argument_list|)
 return|;
 block|}
 block|}

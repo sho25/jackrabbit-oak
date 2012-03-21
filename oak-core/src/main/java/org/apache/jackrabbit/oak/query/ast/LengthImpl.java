@@ -148,6 +148,7 @@ return|return
 literal|null
 return|;
 block|}
+comment|// TODO LENGTH(..) is the length of the string representation?
 name|String
 name|value
 init|=

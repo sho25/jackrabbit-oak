@@ -171,7 +171,7 @@ name|Map
 argument_list|<
 name|String
 argument_list|,
-name|String
+name|Value
 argument_list|>
 name|bindings
 parameter_list|)
@@ -273,7 +273,7 @@ name|Entry
 argument_list|<
 name|String
 argument_list|,
-name|String
+name|Value
 argument_list|>
 name|e
 range|:
@@ -292,15 +292,10 @@ operator|.
 name|getKey
 argument_list|()
 argument_list|,
-name|vf
-operator|.
-name|createValue
-argument_list|(
 name|e
 operator|.
 name|getValue
 argument_list|()
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

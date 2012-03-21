@@ -108,7 +108,7 @@ name|paths
 operator|.
 name|length
 operator|>
-literal|0
+literal|1
 condition|)
 block|{
 throw|throw
