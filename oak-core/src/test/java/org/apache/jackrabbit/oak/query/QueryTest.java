@@ -313,7 +313,7 @@ name|HashMap
 argument_list|<
 name|String
 argument_list|,
-name|Value
+name|ScalarImpl
 argument_list|>
 name|sv
 init|=
@@ -322,15 +322,15 @@ name|HashMap
 argument_list|<
 name|String
 argument_list|,
-name|Value
+name|ScalarImpl
 argument_list|>
 argument_list|()
 decl_stmt|;
-name|ValueFactory
+name|ScalarFactory
 name|vf
 init|=
 operator|new
-name|ValueFactory
+name|ScalarFactory
 argument_list|()
 decl_stmt|;
 name|sv
@@ -437,6 +437,19 @@ argument_list|()
 operator|.
 name|getPath
 argument_list|()
+argument_list|)
+expr_stmt|;
+name|qe
+operator|.
+name|executeQuery
+argument_list|(
+name|QueryEngine
+operator|.
+name|SQL2
+argument_list|,
+literal|"explain select * from [nt:base] where id = 1 order by id"
+argument_list|,
+literal|null
 argument_list|)
 expr_stmt|;
 block|}
@@ -962,7 +975,7 @@ operator|new
 name|StringBuilder
 argument_list|()
 decl_stmt|;
-name|Value
+name|ScalarImpl
 index|[]
 name|values
 init|=
@@ -1003,7 +1016,7 @@ literal|", "
 argument_list|)
 expr_stmt|;
 block|}
-name|Value
+name|ScalarImpl
 name|v
 init|=
 name|values

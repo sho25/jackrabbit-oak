@@ -87,7 +87,7 @@ name|oak
 operator|.
 name|query
 operator|.
-name|Value
+name|ScalarImpl
 import|;
 end_import
 
@@ -103,7 +103,7 @@ name|oak
 operator|.
 name|query
 operator|.
-name|ValueFactory
+name|ScalarFactory
 import|;
 end_import
 
@@ -171,11 +171,11 @@ name|void
 name|propertyRestriction
 parameter_list|()
 block|{
-name|Value
+name|ScalarImpl
 name|one
 init|=
 operator|new
-name|ValueFactory
+name|ScalarFactory
 argument_list|()
 operator|.
 name|createValue
@@ -183,11 +183,11 @@ argument_list|(
 literal|"1"
 argument_list|)
 decl_stmt|;
-name|Value
+name|ScalarImpl
 name|two
 init|=
 operator|new
-name|ValueFactory
+name|ScalarFactory
 argument_list|()
 operator|.
 name|createValue
