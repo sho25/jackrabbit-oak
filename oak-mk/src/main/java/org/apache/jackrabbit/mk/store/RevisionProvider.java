@@ -98,7 +98,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *  */
+comment|/**  * Read operations.  */
 end_comment
 
 begin_interface
@@ -176,41 +176,6 @@ name|Id
 name|getHeadCommitId
 parameter_list|()
 throws|throws
-name|Exception
-function_decl|;
-name|int
-name|getBlob
-parameter_list|(
-name|String
-name|blobId
-parameter_list|,
-name|long
-name|pos
-parameter_list|,
-name|byte
-index|[]
-name|buff
-parameter_list|,
-name|int
-name|off
-parameter_list|,
-name|int
-name|length
-parameter_list|)
-throws|throws
-name|NotFoundException
-throws|,
-name|Exception
-function_decl|;
-name|long
-name|getBlobLength
-parameter_list|(
-name|String
-name|blobId
-parameter_list|)
-throws|throws
-name|NotFoundException
-throws|,
 name|Exception
 function_decl|;
 block|}

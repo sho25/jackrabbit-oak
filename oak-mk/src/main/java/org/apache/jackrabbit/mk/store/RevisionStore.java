@@ -81,18 +81,8 @@ name|MutableNode
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|InputStream
-import|;
-end_import
-
 begin_comment
-comment|/**  *  */
+comment|/**  * Write operations.  */
 end_comment
 
 begin_interface
@@ -142,16 +132,6 @@ comment|/**      * Unlock the head.      */
 name|void
 name|unlockHead
 parameter_list|()
-function_decl|;
-name|String
-comment|/*id*/
-name|putBlob
-parameter_list|(
-name|InputStream
-name|in
-parameter_list|)
-throws|throws
-name|Exception
 function_decl|;
 block|}
 end_interface

@@ -19,16 +19,6 @@ end_package
 
 begin_import
 import|import
-name|java
-operator|.
-name|io
-operator|.
-name|File
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -148,19 +138,6 @@ specifier|public
 interface|interface
 name|Persistence
 block|{
-name|void
-name|initialize
-parameter_list|(
-name|File
-name|homeDir
-parameter_list|)
-throws|throws
-name|Exception
-function_decl|;
-name|void
-name|close
-parameter_list|()
-function_decl|;
 name|Id
 name|readHead
 parameter_list|()

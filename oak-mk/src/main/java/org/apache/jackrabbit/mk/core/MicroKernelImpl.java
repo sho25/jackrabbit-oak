@@ -3474,7 +3474,7 @@ block|{
 return|return
 name|rep
 operator|.
-name|getRevisionStore
+name|getBlobStore
 argument_list|()
 operator|.
 name|getBlobLength
@@ -3541,10 +3541,10 @@ block|{
 return|return
 name|rep
 operator|.
-name|getRevisionStore
+name|getBlobStore
 argument_list|()
 operator|.
-name|getBlob
+name|readBlob
 argument_list|(
 name|blobId
 argument_list|,
@@ -3603,10 +3603,10 @@ block|{
 return|return
 name|rep
 operator|.
-name|getRevisionStore
+name|getBlobStore
 argument_list|()
 operator|.
-name|putBlob
+name|writeBlob
 argument_list|(
 name|in
 argument_list|)

@@ -43,7 +43,7 @@ name|java
 operator|.
 name|io
 operator|.
-name|File
+name|Closeable
 import|;
 end_import
 
@@ -410,7 +410,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *  */
+comment|/**  *   */
 end_comment
 
 begin_class
@@ -419,6 +419,8 @@ class|class
 name|MongoPersistence
 implements|implements
 name|Persistence
+implements|,
+name|Closeable
 implements|,
 name|BlobStore
 block|{
@@ -515,10 +517,7 @@ decl_stmt|;
 specifier|public
 name|void
 name|initialize
-parameter_list|(
-name|File
-name|homeDir
-parameter_list|)
+parameter_list|()
 throws|throws
 name|Exception
 block|{
