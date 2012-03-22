@@ -95,7 +95,7 @@ name|oak
 operator|.
 name|query
 operator|.
-name|Value
+name|ScalarImpl
 import|;
 end_import
 
@@ -178,6 +178,7 @@ name|SelectorImpl
 extends|extends
 name|SourceImpl
 block|{
+comment|// TODO jcr:path isn't an official feature, support it?
 specifier|private
 specifier|static
 specifier|final
@@ -465,7 +466,7 @@ argument_list|()
 return|;
 block|}
 specifier|public
-name|Value
+name|ScalarImpl
 name|currentProperty
 parameter_list|(
 name|String

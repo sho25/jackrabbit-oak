@@ -47,7 +47,7 @@ name|oak
 operator|.
 name|query
 operator|.
-name|PropertyType
+name|ScalarImpl
 import|;
 end_import
 
@@ -63,7 +63,7 @@ name|oak
 operator|.
 name|query
 operator|.
-name|Value
+name|ScalarType
 import|;
 end_import
 
@@ -76,13 +76,13 @@ name|StaticOperandImpl
 block|{
 specifier|private
 specifier|final
-name|Value
+name|ScalarImpl
 name|value
 decl_stmt|;
 specifier|public
 name|LiteralImpl
 parameter_list|(
-name|Value
+name|ScalarImpl
 name|value
 parameter_list|)
 block|{
@@ -94,7 +94,7 @@ name|value
 expr_stmt|;
 block|}
 specifier|public
-name|Value
+name|ScalarImpl
 name|getLiteralValue
 parameter_list|()
 block|{
@@ -136,7 +136,7 @@ argument_list|()
 condition|)
 block|{
 case|case
-name|PropertyType
+name|ScalarType
 operator|.
 name|BINARY
 case|:
@@ -147,7 +147,7 @@ literal|"BINARY"
 argument_list|)
 return|;
 case|case
-name|PropertyType
+name|ScalarType
 operator|.
 name|BOOLEAN
 case|:
@@ -158,7 +158,7 @@ literal|"BOOLEAN"
 argument_list|)
 return|;
 case|case
-name|PropertyType
+name|ScalarType
 operator|.
 name|DATE
 case|:
@@ -169,7 +169,7 @@ literal|"DATE"
 argument_list|)
 return|;
 case|case
-name|PropertyType
+name|ScalarType
 operator|.
 name|DECIMAL
 case|:
@@ -180,12 +180,12 @@ literal|"DECIMAL"
 argument_list|)
 return|;
 case|case
-name|PropertyType
+name|ScalarType
 operator|.
 name|DOUBLE
 case|:
 case|case
-name|PropertyType
+name|ScalarType
 operator|.
 name|LONG
 case|:
@@ -196,7 +196,7 @@ name|getString
 argument_list|()
 return|;
 case|case
-name|PropertyType
+name|ScalarType
 operator|.
 name|NAME
 case|:
@@ -207,7 +207,7 @@ literal|"NAME"
 argument_list|)
 return|;
 case|case
-name|PropertyType
+name|ScalarType
 operator|.
 name|PATH
 case|:
@@ -218,7 +218,7 @@ literal|"PATH"
 argument_list|)
 return|;
 case|case
-name|PropertyType
+name|ScalarType
 operator|.
 name|REFERENCE
 case|:
@@ -229,7 +229,7 @@ literal|"REFERENCE"
 argument_list|)
 return|;
 case|case
-name|PropertyType
+name|ScalarType
 operator|.
 name|STRING
 case|:
@@ -238,7 +238,7 @@ name|escape
 argument_list|()
 return|;
 case|case
-name|PropertyType
+name|ScalarType
 operator|.
 name|URI
 case|:
@@ -249,7 +249,7 @@ literal|"URI"
 argument_list|)
 return|;
 case|case
-name|PropertyType
+name|ScalarType
 operator|.
 name|WEAKREFERENCE
 case|:
@@ -306,7 +306,7 @@ return|;
 block|}
 annotation|@
 name|Override
-name|Value
+name|ScalarImpl
 name|currentValue
 parameter_list|()
 block|{

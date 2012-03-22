@@ -460,7 +460,7 @@ name|boolean
 name|currentTokenQuoted
 decl_stmt|;
 specifier|private
-name|Value
+name|ScalarImpl
 name|currentValue
 decl_stmt|;
 specifier|private
@@ -512,14 +512,14 @@ argument_list|()
 decl_stmt|;
 specifier|private
 specifier|final
-name|ValueFactory
+name|ScalarFactory
 name|valueFactory
 decl_stmt|;
 comment|/**      * Create a new parser. A parser can be re-used, but it is not thread safe.      *      * @param valueFactory the value factory      */
 specifier|public
 name|SQL2Parser
 parameter_list|(
-name|ValueFactory
+name|ScalarFactory
 name|valueFactory
 parameter_list|)
 block|{
@@ -785,7 +785,7 @@ operator|==
 name|VALUE
 condition|)
 block|{
-name|Value
+name|ScalarImpl
 name|value
 init|=
 name|readString
@@ -2651,7 +2651,7 @@ name|valueType
 condition|)
 block|{
 case|case
-name|PropertyType
+name|ScalarType
 operator|.
 name|LONG
 case|:
@@ -2670,7 +2670,7 @@ argument_list|)
 expr_stmt|;
 break|break;
 case|case
-name|PropertyType
+name|ScalarType
 operator|.
 name|DOUBLE
 case|:
@@ -2689,7 +2689,7 @@ argument_list|)
 expr_stmt|;
 break|break;
 case|case
-name|PropertyType
+name|ScalarType
 operator|.
 name|BOOLEAN
 case|:
@@ -2708,7 +2708,7 @@ argument_list|)
 expr_stmt|;
 break|break;
 case|case
-name|PropertyType
+name|ScalarType
 operator|.
 name|DECIMAL
 case|:
@@ -2933,7 +2933,7 @@ name|LiteralImpl
 operator|)
 name|op
 decl_stmt|;
-name|Value
+name|ScalarImpl
 name|value
 init|=
 name|literal
@@ -2987,7 +2987,7 @@ specifier|private
 name|LiteralImpl
 name|getUncastLiteral
 parameter_list|(
-name|Value
+name|ScalarImpl
 name|value
 parameter_list|)
 throws|throws
@@ -3003,10 +3003,10 @@ argument_list|)
 return|;
 block|}
 specifier|private
-name|Value
+name|ScalarImpl
 name|parseCastAs
 parameter_list|(
-name|Value
+name|ScalarImpl
 name|value
 parameter_list|)
 throws|throws
@@ -3177,7 +3177,7 @@ operator|.
 name|getString
 argument_list|()
 argument_list|,
-name|PropertyType
+name|ScalarType
 operator|.
 name|NAME
 argument_list|)
@@ -3202,7 +3202,7 @@ operator|.
 name|getString
 argument_list|()
 argument_list|,
-name|PropertyType
+name|ScalarType
 operator|.
 name|PATH
 argument_list|)
@@ -3227,7 +3227,7 @@ operator|.
 name|getString
 argument_list|()
 argument_list|,
-name|PropertyType
+name|ScalarType
 operator|.
 name|REFERENCE
 argument_list|)
@@ -3252,7 +3252,7 @@ operator|.
 name|getString
 argument_list|()
 argument_list|,
-name|PropertyType
+name|ScalarType
 operator|.
 name|WEAKREFERENCE
 argument_list|)
@@ -3277,7 +3277,7 @@ operator|.
 name|getString
 argument_list|()
 argument_list|,
-name|PropertyType
+name|ScalarType
 operator|.
 name|URI
 argument_list|)
@@ -3930,7 +3930,7 @@ name|s
 return|;
 block|}
 specifier|private
-name|Value
+name|ScalarImpl
 name|readString
 parameter_list|()
 throws|throws
@@ -3950,7 +3950,7 @@ literal|"string value"
 argument_list|)
 throw|;
 block|}
-name|Value
+name|ScalarImpl
 name|value
 init|=
 name|currentValue

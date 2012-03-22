@@ -31,7 +31,7 @@ name|oak
 operator|.
 name|query
 operator|.
-name|Value
+name|ScalarImpl
 import|;
 end_import
 
@@ -399,7 +399,7 @@ specifier|public
 name|LiteralImpl
 name|literal
 parameter_list|(
-name|Value
+name|ScalarImpl
 name|literalValue
 parameter_list|)
 block|{

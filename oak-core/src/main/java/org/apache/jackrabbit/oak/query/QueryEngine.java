@@ -103,11 +103,11 @@ name|mk
 decl_stmt|;
 specifier|private
 specifier|final
-name|ValueFactory
+name|ScalarFactory
 name|vf
 init|=
 operator|new
-name|ValueFactory
+name|ScalarFactory
 argument_list|()
 decl_stmt|;
 specifier|private
@@ -171,7 +171,7 @@ name|Map
 argument_list|<
 name|String
 argument_list|,
-name|Value
+name|ScalarImpl
 argument_list|>
 name|bindings
 parameter_list|)
@@ -273,7 +273,7 @@ name|Entry
 argument_list|<
 name|String
 argument_list|,
-name|Value
+name|ScalarImpl
 argument_list|>
 name|e
 range|:
