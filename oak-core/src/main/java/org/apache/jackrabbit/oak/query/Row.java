@@ -132,16 +132,6 @@ name|orderValues
 operator|=
 name|orderValues
 expr_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-name|toString
-argument_list|()
-argument_list|)
-expr_stmt|;
 block|}
 specifier|public
 name|String
