@@ -34,11 +34,13 @@ import|;
 end_import
 
 begin_class
+specifier|public
 class|class
 name|KernelPropertyState
 extends|extends
 name|AbstractPropertyState
 block|{
+comment|// fixme make package private
 specifier|private
 specifier|final
 name|String

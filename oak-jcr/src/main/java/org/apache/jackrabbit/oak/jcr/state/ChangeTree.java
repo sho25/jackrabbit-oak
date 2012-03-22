@@ -59,6 +59,22 @@ name|apache
 operator|.
 name|jackrabbit
 operator|.
+name|mk
+operator|.
+name|model
+operator|.
+name|PropertyState
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
 name|oak
 operator|.
 name|jcr
@@ -169,11 +185,11 @@ name|apache
 operator|.
 name|jackrabbit
 operator|.
-name|mk
+name|oak
 operator|.
-name|model
+name|kernel
 operator|.
-name|PropertyState
+name|KernelPropertyState
 import|;
 end_import
 
@@ -933,7 +949,7 @@ parameter_list|)
 block|{
 return|return
 operator|new
-name|PropertyStateImpl
+name|KernelPropertyState
 argument_list|(
 name|entry
 operator|.
@@ -943,6 +959,9 @@ argument_list|,
 name|entry
 operator|.
 name|getValue
+argument_list|()
+operator|.
+name|toJson
 argument_list|()
 argument_list|)
 return|;

@@ -200,11 +200,13 @@ comment|/**  * Basic {@link NodeState} implementation based on the {@link MicroK
 end_comment
 
 begin_class
+specifier|public
 class|class
 name|KernelNodeState
 extends|extends
 name|AbstractNodeState
 block|{
+comment|// fixme make package private
 comment|/**      * Maximum number of child nodes kept in memory.      */
 specifier|static
 specifier|final
@@ -474,7 +476,30 @@ name|JsopTokenizer
 operator|.
 name|NUMBER
 argument_list|)
-operator|||
+condition|)
+block|{
+name|properties
+operator|.
+name|put
+argument_list|(
+name|name
+argument_list|,
+operator|new
+name|KernelPropertyState
+argument_list|(
+name|name
+argument_list|,
+name|reader
+operator|.
+name|getToken
+argument_list|()
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+elseif|else
+if|if
+condition|(
 name|reader
 operator|.
 name|matches
@@ -496,10 +521,14 @@ name|KernelPropertyState
 argument_list|(
 name|name
 argument_list|,
+literal|'"'
+operator|+
 name|reader
 operator|.
 name|getToken
 argument_list|()
+operator|+
+literal|'"'
 argument_list|)
 argument_list|)
 expr_stmt|;
