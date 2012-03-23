@@ -1290,7 +1290,7 @@ case|:
 return|return
 name|ScalarImpl
 operator|.
-name|createString
+name|stringScalar
 argument_list|(
 name|value
 operator|.
@@ -1307,7 +1307,7 @@ case|:
 return|return
 name|ScalarImpl
 operator|.
-name|createNumber
+name|numberScalar
 argument_list|(
 name|value
 operator|.
@@ -1324,7 +1324,7 @@ case|:
 return|return
 name|ScalarImpl
 operator|.
-name|createBoolean
+name|booleanScalar
 argument_list|(
 name|value
 operator|.

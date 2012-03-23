@@ -61,6 +61,11 @@ name|STRING
 init|=
 literal|4
 decl_stmt|;
+name|int
+name|NULL
+init|=
+literal|5
+decl_stmt|;
 name|String
 index|[]
 name|typeNames
@@ -75,6 +80,8 @@ block|,
 literal|"binary"
 block|,
 literal|"string"
+block|,
+literal|"null"
 block|}
 decl_stmt|;
 comment|/**      * Returns the value type.      *<p>      * TODO: Define value types      *      * @return value type      */

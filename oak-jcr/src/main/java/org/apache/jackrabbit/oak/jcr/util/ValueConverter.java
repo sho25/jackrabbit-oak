@@ -227,7 +227,7 @@ block|{
 return|return
 name|ScalarImpl
 operator|.
-name|createString
+name|stringScalar
 argument_list|(
 name|value
 operator|.
@@ -245,7 +245,7 @@ block|{
 return|return
 name|ScalarImpl
 operator|.
-name|createDouble
+name|doubleScalar
 argument_list|(
 name|value
 operator|.
@@ -263,7 +263,7 @@ block|{
 return|return
 name|ScalarImpl
 operator|.
-name|createLong
+name|longScalar
 argument_list|(
 name|value
 operator|.
@@ -281,7 +281,7 @@ block|{
 return|return
 name|ScalarImpl
 operator|.
-name|createBoolean
+name|booleanScalar
 argument_list|(
 name|value
 operator|.

@@ -519,7 +519,7 @@ name|name
 argument_list|,
 name|ScalarImpl
 operator|.
-name|createNumber
+name|numberScalar
 argument_list|(
 name|reader
 operator|.
@@ -556,7 +556,7 @@ name|name
 argument_list|,
 name|ScalarImpl
 operator|.
-name|createString
+name|stringScalar
 argument_list|(
 name|reader
 operator|.
@@ -593,7 +593,7 @@ name|name
 argument_list|,
 name|ScalarImpl
 operator|.
-name|createBoolean
+name|booleanScalar
 argument_list|(
 literal|true
 argument_list|)
@@ -627,7 +627,7 @@ name|name
 argument_list|,
 name|ScalarImpl
 operator|.
-name|createBoolean
+name|booleanScalar
 argument_list|(
 literal|false
 argument_list|)
@@ -1285,7 +1285,7 @@ name|add
 argument_list|(
 name|ScalarImpl
 operator|.
-name|createNumber
+name|numberScalar
 argument_list|(
 name|reader
 operator|.
@@ -1314,7 +1314,7 @@ name|add
 argument_list|(
 name|ScalarImpl
 operator|.
-name|createString
+name|stringScalar
 argument_list|(
 name|reader
 operator|.
@@ -1343,7 +1343,7 @@ name|add
 argument_list|(
 name|ScalarImpl
 operator|.
-name|createBoolean
+name|booleanScalar
 argument_list|(
 literal|true
 argument_list|)
@@ -1369,7 +1369,7 @@ name|add
 argument_list|(
 name|ScalarImpl
 operator|.
-name|createBoolean
+name|booleanScalar
 argument_list|(
 literal|false
 argument_list|)
