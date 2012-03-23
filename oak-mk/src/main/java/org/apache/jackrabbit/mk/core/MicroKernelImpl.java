@@ -426,6 +426,19 @@ name|homeDir
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * Argument-less constructor, used for in-memory kernel.      */
+specifier|public
+name|MicroKernelImpl
+parameter_list|()
+block|{
+name|this
+argument_list|(
+operator|new
+name|Repository
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
 comment|/**      * Alternate constructor, used for testing.      *       * @param rep repository, already initialized      */
 specifier|public
 name|MicroKernelImpl
