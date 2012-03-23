@@ -2251,7 +2251,7 @@ operator|)
 name|state
 operator|)
 operator|.
-name|isMultiValues
+name|isMultiValued
 argument_list|()
 return|;
 comment|// fixme don't cast
@@ -2396,7 +2396,7 @@ argument_list|()
 argument_list|,
 name|ValueConverter
 operator|.
-name|toJsonValue
+name|toScalar
 argument_list|(
 name|value
 argument_list|)
@@ -2470,7 +2470,7 @@ argument_list|()
 argument_list|,
 name|ValueConverter
 operator|.
-name|toJsonValue
+name|toScalar
 argument_list|(
 name|values
 argument_list|)

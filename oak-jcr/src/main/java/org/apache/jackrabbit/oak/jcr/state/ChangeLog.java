@@ -27,13 +27,7 @@ name|apache
 operator|.
 name|jackrabbit
 operator|.
-name|oak
-operator|.
-name|jcr
-operator|.
-name|json
-operator|.
-name|JsonValue
+name|ScalarImpl
 import|;
 end_import
 
@@ -45,15 +39,11 @@ name|apache
 operator|.
 name|jackrabbit
 operator|.
-name|oak
+name|mk
 operator|.
-name|jcr
+name|model
 operator|.
-name|json
-operator|.
-name|JsonValue
-operator|.
-name|JsonAtom
+name|PropertyState
 import|;
 end_import
 
@@ -72,6 +62,22 @@ operator|.
 name|util
 operator|.
 name|Path
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|kernel
+operator|.
+name|KernelPropertyState
 import|;
 end_import
 
@@ -218,7 +224,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Add a set property operation to this change log      * @param parent  parent of the property      * @param name  name of the property      * @param value  value of the property      */
+comment|/**      * Add a set property operation to this change log      * @param parent  parent of the property      * @param state  state of the property      */
 specifier|public
 name|void
 name|setProperty
@@ -226,27 +232,10 @@ parameter_list|(
 name|Path
 name|parent
 parameter_list|,
-name|String
-name|name
-parameter_list|,
-name|JsonValue
-name|value
+name|PropertyState
+name|state
 parameter_list|)
 block|{
-if|if
-condition|(
-name|value
-operator|==
-literal|null
-condition|)
-block|{
-name|value
-operator|=
-name|JsonAtom
-operator|.
-name|NULL
-expr_stmt|;
-block|}
 name|addOperation
 argument_list|(
 name|Operation
@@ -255,9 +244,12 @@ name|setProperty
 argument_list|(
 name|parent
 argument_list|,
-name|name
+name|state
+operator|.
+name|getName
+argument_list|()
 argument_list|,
-name|value
+name|state
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -278,11 +270,16 @@ name|setProperty
 argument_list|(
 name|parent
 argument_list|,
+operator|new
+name|KernelPropertyState
+argument_list|(
 name|name
 argument_list|,
-name|JsonAtom
+name|ScalarImpl
 operator|.
-name|NULL
+name|nullScalar
+argument_list|()
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -547,7 +544,7 @@ name|to
 argument_list|)
 return|;
 block|}
-comment|/**      * Instances of this class represent operations in the change log.      * The underlying abstraction models operations as a moves: remove      * node is represented as move to {@code NIL} and add node and add      * property are represented as move from {@code NIL}. Add property      * operations carry a value and the property names is disambiguated      * (leading star) in order to avoid conflicts with node names.      */
+comment|/**      * Instances of this class represent operations in the change log.      * The underlying abstraction models operations as a moves: remove      * node is represented as move to {@code NIL} and add node and add      * property are represented as move from {@code NIL}. Add property      * operations carry the property state and the property names is      * disambiguated (leading star) in order to avoid conflicts with node      * names.      */
 specifier|static
 specifier|final
 class|class
@@ -581,8 +578,8 @@ name|to
 decl_stmt|;
 specifier|private
 specifier|final
-name|JsonValue
-name|value
+name|PropertyState
+name|state
 decl_stmt|;
 specifier|private
 name|Operation
@@ -593,8 +590,8 @@ parameter_list|,
 name|Path
 name|to
 parameter_list|,
-name|JsonValue
-name|value
+name|PropertyState
+name|state
 parameter_list|)
 block|{
 if|if
@@ -630,9 +627,9 @@ name|to
 expr_stmt|;
 name|this
 operator|.
-name|value
+name|state
 operator|=
-name|value
+name|state
 expr_stmt|;
 block|}
 comment|/**          * Create a new move node operation.          * @param from  source of the move          * @param to  target of the move          * @return  new move node operation or {@code ID} if {@code from} and {@code to}          * are the same path.          * @throws IllegalArgumentException  if {@code from} an {@code to} conflict: moving          * a node to its own ancestor/descendant is not possible.          */
@@ -764,7 +761,7 @@ literal|null
 argument_list|)
 return|;
 block|}
-comment|/**          * Create a new set property operation.          * @param parent  parent of the property          * @param name  name of the property          * @param value  value of the property          * @return  new set property operation          */
+comment|/**          * Create a new set property operation.          * @param parent  parent of the property          * @param name  name of the property          * @param state  state of the property          * @return  new set property operation          */
 specifier|public
 specifier|static
 name|Operation
@@ -776,8 +773,8 @@ parameter_list|,
 name|String
 name|name
 parameter_list|,
-name|JsonValue
-name|value
+name|PropertyState
+name|state
 parameter_list|)
 block|{
 return|return
@@ -793,7 +790,7 @@ argument_list|,
 name|name
 argument_list|)
 argument_list|,
-name|value
+name|state
 argument_list|)
 return|;
 block|}
@@ -831,7 +828,7 @@ argument_list|,
 name|to
 argument_list|)
 argument_list|,
-name|value
+name|state
 argument_list|)
 return|;
 block|}
@@ -859,7 +856,7 @@ block|}
 elseif|else
 if|if
 condition|(
-name|value
+name|state
 operator|!=
 literal|null
 condition|)
@@ -877,9 +874,9 @@ argument_list|()
 operator|+
 literal|"\":"
 operator|+
-name|value
+name|state
 operator|.
-name|toJson
+name|getEncodedValue
 argument_list|()
 return|;
 block|}
@@ -1004,23 +1001,23 @@ operator|.
 name|to
 argument_list|)
 operator|&&
-name|value
+name|state
 operator|==
 literal|null
 condition|?
 name|that
 operator|.
-name|value
+name|state
 operator|==
 literal|null
 else|:
-name|value
+name|state
 operator|.
 name|equals
 argument_list|(
 name|that
 operator|.
-name|value
+name|state
 argument_list|)
 return|;
 block|}
@@ -1049,13 +1046,13 @@ argument_list|()
 operator|)
 operator|+
 operator|(
-name|value
+name|state
 operator|==
 literal|null
 condition|?
 literal|0
 else|:
-name|value
+name|state
 operator|.
 name|hashCode
 argument_list|()
@@ -1087,7 +1084,7 @@ block|}
 elseif|else
 if|if
 condition|(
-name|value
+name|state
 operator|!=
 literal|null
 condition|)
@@ -1105,9 +1102,9 @@ argument_list|()
 operator|+
 literal|':'
 operator|+
-name|value
+name|state
 operator|.
-name|toJson
+name|getEncodedValue
 argument_list|()
 return|;
 block|}
@@ -2021,13 +2018,13 @@ if|if
 condition|(
 name|m
 operator|.
-name|value
+name|state
 operator|!=
 literal|null
 operator|&&
 name|n
 operator|.
-name|value
+name|state
 operator|!=
 literal|null
 operator|&&
