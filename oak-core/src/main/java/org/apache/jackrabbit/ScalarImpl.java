@@ -77,7 +77,7 @@ name|Scalar
 block|{
 specifier|private
 specifier|final
-name|int
+name|Type
 name|type
 decl_stmt|;
 specifier|public
@@ -292,7 +292,7 @@ block|}
 specifier|private
 name|ScalarImpl
 parameter_list|(
-name|int
+name|Type
 name|type
 parameter_list|)
 block|{
@@ -306,7 +306,7 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|int
+name|Type
 name|getType
 parameter_list|()
 block|{
@@ -413,12 +413,7 @@ argument_list|()
 operator|+
 literal|": "
 operator|+
-name|Scalar
-operator|.
-name|typeNames
-index|[
 name|type
-index|]
 return|;
 block|}
 comment|//------------------------------------------------------------< private>---
@@ -468,7 +463,7 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
-name|Scalar
+name|Type
 operator|.
 name|BOOLEAN
 argument_list|)
@@ -560,7 +555,7 @@ operator|.
 name|getType
 argument_list|()
 operator|==
-name|Scalar
+name|Type
 operator|.
 name|BOOLEAN
 operator|&&
@@ -614,7 +609,7 @@ parameter_list|()
 block|{
 name|super
 argument_list|(
-name|Scalar
+name|Type
 operator|.
 name|NULL
 argument_list|)
@@ -684,7 +679,7 @@ operator|.
 name|getType
 argument_list|()
 operator|==
-name|Scalar
+name|Type
 operator|.
 name|NULL
 return|;
@@ -723,7 +718,7 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
-name|Scalar
+name|Type
 operator|.
 name|LONG
 argument_list|)
@@ -815,7 +810,7 @@ operator|.
 name|getType
 argument_list|()
 operator|==
-name|Scalar
+name|Type
 operator|.
 name|LONG
 operator|&&
@@ -872,7 +867,7 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
-name|Scalar
+name|Type
 operator|.
 name|DOUBLE
 argument_list|)
@@ -964,7 +959,7 @@ operator|.
 name|getType
 argument_list|()
 operator|==
-name|Scalar
+name|Type
 operator|.
 name|DOUBLE
 operator|&&
@@ -1044,7 +1039,7 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
-name|Scalar
+name|Type
 operator|.
 name|STRING
 argument_list|)
@@ -1120,7 +1115,7 @@ operator|.
 name|getType
 argument_list|()
 operator|==
-name|Scalar
+name|Type
 operator|.
 name|STRING
 operator|&&
@@ -1172,7 +1167,7 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
-name|Scalar
+name|Type
 operator|.
 name|BINARY
 argument_list|)
@@ -1248,7 +1243,7 @@ operator|.
 name|getType
 argument_list|()
 operator|==
-name|Scalar
+name|Type
 operator|.
 name|BINARY
 operator|&&
@@ -1306,7 +1301,7 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
-name|Scalar
+name|Type
 operator|.
 name|BINARY
 argument_list|)
@@ -1411,7 +1406,7 @@ operator|.
 name|getType
 argument_list|()
 operator|==
-name|Scalar
+name|Type
 operator|.
 name|BINARY
 operator|&&

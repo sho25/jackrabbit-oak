@@ -357,8 +357,6 @@ argument_list|()
 condition|)
 block|{
 case|case
-name|Scalar
-operator|.
 name|BOOLEAN
 case|:
 return|return
@@ -373,8 +371,6 @@ argument_list|()
 argument_list|)
 return|;
 case|case
-name|Scalar
-operator|.
 name|LONG
 case|:
 return|return
@@ -389,8 +385,6 @@ argument_list|()
 argument_list|)
 return|;
 case|case
-name|Scalar
-operator|.
 name|DOUBLE
 case|:
 return|return
@@ -405,8 +399,6 @@ argument_list|()
 argument_list|)
 return|;
 case|case
-name|Scalar
-operator|.
 name|STRING
 case|:
 return|return

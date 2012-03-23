@@ -67,6 +67,24 @@ end_import
 
 begin_import
 import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|api
+operator|.
+name|Scalar
+operator|.
+name|Type
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|util
@@ -319,7 +337,7 @@ operator|.
 name|getType
 argument_list|()
 operator|==
-name|Scalar
+name|Type
 operator|.
 name|STRING
 condition|)
