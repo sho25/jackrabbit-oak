@@ -185,6 +185,16 @@ name|javax
 operator|.
 name|jcr
 operator|.
+name|UnsupportedRepositoryOperationException
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|jcr
+operator|.
 name|Workspace
 import|;
 end_import
@@ -664,9 +674,11 @@ name|checkIsAlive
 argument_list|()
 expr_stmt|;
 comment|// TODO
-return|return
-literal|null
-return|;
+throw|throw
+operator|new
+name|UnsupportedRepositoryOperationException
+argument_list|()
+throw|;
 block|}
 annotation|@
 name|Override
@@ -694,9 +706,11 @@ name|checkIsAlive
 argument_list|()
 expr_stmt|;
 comment|// TODO
-return|return
-literal|null
-return|;
+throw|throw
+operator|new
+name|UnsupportedRepositoryOperationException
+argument_list|()
+throw|;
 block|}
 annotation|@
 name|Override
@@ -724,9 +738,11 @@ name|OPTION_VERSIONING_SUPPORTED
 argument_list|)
 expr_stmt|;
 comment|// TODO
-return|return
-literal|null
-return|;
+throw|throw
+operator|new
+name|UnsupportedRepositoryOperationException
+argument_list|()
+throw|;
 block|}
 annotation|@
 name|Override
