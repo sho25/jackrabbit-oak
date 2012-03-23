@@ -25,6 +25,8 @@ name|apache
 operator|.
 name|jackrabbit
 operator|.
+name|oak
+operator|.
 name|ScalarImpl
 import|;
 end_import

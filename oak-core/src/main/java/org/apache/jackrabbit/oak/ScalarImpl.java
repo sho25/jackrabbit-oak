@@ -6,6 +6,8 @@ operator|.
 name|apache
 operator|.
 name|jackrabbit
+operator|.
+name|oak
 package|;
 end_package
 
