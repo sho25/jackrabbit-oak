@@ -5616,7 +5616,7 @@ argument_list|()
 operator|.
 name|createValue
 argument_list|(
-literal|"string value"
+literal|"string \" value"
 argument_list|)
 argument_list|)
 expr_stmt|;

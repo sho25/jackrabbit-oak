@@ -25,13 +25,11 @@ name|apache
 operator|.
 name|jackrabbit
 operator|.
-name|oak
+name|mk
 operator|.
-name|jcr
+name|model
 operator|.
-name|json
-operator|.
-name|JsonValue
+name|PropertyState
 import|;
 end_import
 
@@ -104,6 +102,22 @@ operator|.
 name|util
 operator|.
 name|ValueConverter
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|kernel
+operator|.
+name|KernelPropertyState
 import|;
 end_import
 
@@ -329,13 +343,8 @@ name|parentState
 decl_stmt|;
 specifier|private
 specifier|final
-name|String
-name|name
-decl_stmt|;
-specifier|private
-specifier|final
-name|JsonValue
-name|value
+name|PropertyState
+name|state
 decl_stmt|;
 specifier|static
 name|Property
@@ -394,12 +403,12 @@ operator|.
 name|getName
 argument_list|()
 decl_stmt|;
-name|JsonValue
-name|value
+name|PropertyState
+name|state
 init|=
 name|parentState
 operator|.
-name|getPropertyValue
+name|getPropertyState
 argument_list|(
 name|name
 argument_list|)
@@ -412,9 +421,7 @@ name|sessionContext
 argument_list|,
 name|parentState
 argument_list|,
-name|name
-argument_list|,
-name|value
+name|state
 argument_list|)
 return|;
 block|}
@@ -431,11 +438,8 @@ parameter_list|,
 name|TransientNodeState
 name|parentState
 parameter_list|,
-name|String
-name|name
-parameter_list|,
-name|JsonValue
-name|value
+name|PropertyState
+name|state
 parameter_list|)
 block|{
 return|return
@@ -446,9 +450,7 @@ name|sessionContext
 argument_list|,
 name|parentState
 argument_list|,
-name|name
-argument_list|,
-name|value
+name|state
 argument_list|)
 return|;
 block|}
@@ -508,11 +510,8 @@ parameter_list|,
 name|TransientNodeState
 name|parentState
 parameter_list|,
-name|String
-name|name
-parameter_list|,
-name|JsonValue
-name|value
+name|PropertyState
+name|state
 parameter_list|)
 block|{
 name|super
@@ -528,15 +527,9 @@ name|parentState
 expr_stmt|;
 name|this
 operator|.
-name|name
+name|state
 operator|=
-name|name
-expr_stmt|;
-name|this
-operator|.
-name|value
-operator|=
-name|value
+name|state
 expr_stmt|;
 block|}
 comment|//---------------------------------------------------------------< Item>---
@@ -563,7 +556,10 @@ throws|throws
 name|RepositoryException
 block|{
 return|return
-name|name
+name|state
+operator|.
+name|getName
+argument_list|()
 return|;
 block|}
 comment|/**      * @see javax.jcr.Property#getPath() ()      */
@@ -584,7 +580,10 @@ argument_list|()
 operator|.
 name|concat
 argument_list|(
-name|name
+name|state
+operator|.
+name|getName
+argument_list|()
 argument_list|)
 operator|.
 name|toJcrPath
@@ -688,7 +687,10 @@ name|parentState
 operator|.
 name|isPropertyNew
 argument_list|(
-name|name
+name|state
+operator|.
+name|getName
+argument_list|()
 argument_list|)
 return|;
 block|}
@@ -705,7 +707,10 @@ name|parentState
 operator|.
 name|isPropertyModified
 argument_list|(
-name|name
+name|state
+operator|.
+name|getName
+argument_list|()
 argument_list|)
 return|;
 block|}
@@ -723,7 +728,10 @@ name|parentState
 operator|.
 name|removeProperty
 argument_list|(
-name|name
+name|state
+operator|.
+name|getName
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -1516,12 +1524,18 @@ argument_list|(
 name|getValueFactory
 argument_list|()
 argument_list|,
-name|value
+operator|(
+operator|(
+name|KernelPropertyState
+operator|)
+name|state
+operator|)
 operator|.
-name|asAtom
+name|getValue
 argument_list|()
 argument_list|)
 return|;
+comment|// fixme don't cast
 block|}
 annotation|@
 name|Override
@@ -1561,17 +1575,23 @@ block|}
 return|return
 name|ValueConverter
 operator|.
-name|toValue
+name|toValues
 argument_list|(
 name|getValueFactory
 argument_list|()
 argument_list|,
-name|value
+operator|(
+operator|(
+name|KernelPropertyState
+operator|)
+name|state
+operator|)
 operator|.
-name|asArray
+name|getValues
 argument_list|()
 argument_list|)
 return|;
+comment|// fixme don't cast
 block|}
 comment|/**      * @see Property#getString()      */
 annotation|@
@@ -2224,11 +2244,17 @@ throws|throws
 name|RepositoryException
 block|{
 return|return
-name|value
+operator|(
+operator|(
+name|KernelPropertyState
+operator|)
+name|state
+operator|)
 operator|.
-name|isArray
+name|isMultiValues
 argument_list|()
 return|;
+comment|// fixme don't cast
 block|}
 comment|//------------------------------------------------------------< private>---
 comment|/**      *      * @param defaultType      * @return the required type for this property.      */
@@ -2363,7 +2389,10 @@ name|parentState
 operator|.
 name|setProperty
 argument_list|(
-name|name
+name|state
+operator|.
+name|getName
+argument_list|()
 argument_list|,
 name|ValueConverter
 operator|.
@@ -2419,7 +2448,7 @@ throw|;
 block|}
 if|if
 condition|(
-name|value
+name|values
 operator|==
 literal|null
 condition|)
@@ -2434,7 +2463,10 @@ name|parentState
 operator|.
 name|setProperty
 argument_list|(
-name|name
+name|state
+operator|.
+name|getName
+argument_list|()
 argument_list|,
 name|ValueConverter
 operator|.
