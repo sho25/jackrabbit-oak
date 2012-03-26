@@ -23,9 +23,9 @@ name|apache
 operator|.
 name|jackrabbit
 operator|.
-name|oak
+name|mk
 operator|.
-name|api
+name|model
 operator|.
 name|Scalar
 import|;
