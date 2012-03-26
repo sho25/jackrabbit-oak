@@ -1621,6 +1621,14 @@ operator|=
 literal|1
 expr_stmt|;
 block|}
+else|else
+block|{
+name|comp
+operator|=
+operator|-
+literal|1
+expr_stmt|;
+block|}
 block|}
 else|else
 block|{
