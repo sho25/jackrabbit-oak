@@ -1103,12 +1103,9 @@ name|String
 name|name
 parameter_list|)
 block|{
-name|KernelPropertyState
+name|PropertyState
 name|state
 init|=
-operator|(
-name|KernelPropertyState
-operator|)
 name|getNodeDelta
 argument_list|()
 operator|.
@@ -1117,7 +1114,6 @@ argument_list|(
 name|name
 argument_list|)
 decl_stmt|;
-comment|// fixme don't cast
 if|if
 condition|(
 name|state
@@ -1254,12 +1250,9 @@ name|String
 name|name
 parameter_list|)
 block|{
-name|KernelPropertyState
+name|PropertyState
 name|state
 init|=
-operator|(
-name|KernelPropertyState
-operator|)
 name|getNodeDelta
 argument_list|()
 operator|.
@@ -1268,7 +1261,6 @@ argument_list|(
 name|name
 argument_list|)
 decl_stmt|;
-comment|// fixme don't cast
 if|if
 condition|(
 name|state

@@ -833,12 +833,7 @@ parameter_list|)
 block|{
 return|return
 operator|!
-operator|(
-operator|(
-name|KernelPropertyState
-operator|)
 name|state
-operator|)
 operator|.
 name|getValue
 argument_list|()
@@ -851,7 +846,6 @@ name|nullScalar
 argument_list|()
 argument_list|)
 return|;
-comment|// fixme don't cast
 block|}
 block|}
 argument_list|)
@@ -1118,12 +1112,9 @@ name|String
 name|name
 parameter_list|)
 block|{
-name|KernelPropertyState
+name|PropertyState
 name|state
 init|=
-operator|(
-name|KernelPropertyState
-operator|)
 name|properties
 operator|.
 name|get
@@ -1131,7 +1122,6 @@ argument_list|(
 name|name
 argument_list|)
 decl_stmt|;
-comment|// fixme don't cast
 if|if
 condition|(
 name|state

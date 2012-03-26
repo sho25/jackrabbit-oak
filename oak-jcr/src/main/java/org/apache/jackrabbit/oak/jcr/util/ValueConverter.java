@@ -117,6 +117,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Collection
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|List
 import|;
 end_import
@@ -436,7 +446,7 @@ parameter_list|(
 name|ValueFactory
 name|valueFactory
 parameter_list|,
-name|List
+name|Collection
 argument_list|<
 name|Scalar
 argument_list|>

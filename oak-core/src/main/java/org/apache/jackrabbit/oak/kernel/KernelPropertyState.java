@@ -288,6 +288,8 @@ argument_list|)
 return|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isMultiValued
@@ -299,6 +301,8 @@ operator|==
 literal|null
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Scalar
 name|getValue
@@ -308,6 +312,8 @@ return|return
 name|value
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|List
 argument_list|<

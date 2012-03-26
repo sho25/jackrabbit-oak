@@ -113,22 +113,6 @@ name|apache
 operator|.
 name|jackrabbit
 operator|.
-name|oak
-operator|.
-name|kernel
-operator|.
-name|KernelPropertyState
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
 name|value
 operator|.
 name|ValueHelper
@@ -1524,18 +1508,12 @@ argument_list|(
 name|getValueFactory
 argument_list|()
 argument_list|,
-operator|(
-operator|(
-name|KernelPropertyState
-operator|)
 name|state
-operator|)
 operator|.
 name|getValue
 argument_list|()
 argument_list|)
 return|;
-comment|// fixme don't cast
 block|}
 annotation|@
 name|Override
@@ -1580,18 +1558,12 @@ argument_list|(
 name|getValueFactory
 argument_list|()
 argument_list|,
-operator|(
-operator|(
-name|KernelPropertyState
-operator|)
 name|state
-operator|)
 operator|.
 name|getValues
 argument_list|()
 argument_list|)
 return|;
-comment|// fixme don't cast
 block|}
 comment|/**      * @see Property#getString()      */
 annotation|@
@@ -2244,17 +2216,11 @@ throws|throws
 name|RepositoryException
 block|{
 return|return
-operator|(
-operator|(
-name|KernelPropertyState
-operator|)
 name|state
-operator|)
 operator|.
 name|isMultiValued
 argument_list|()
 return|;
-comment|// fixme don't cast
 block|}
 comment|//------------------------------------------------------------< private>---
 comment|/**      *      * @param defaultType      * @return the required type for this property.      */

@@ -17,6 +17,16 @@ name|model
 package|;
 end_package
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Collection
+import|;
+end_import
+
 begin_comment
 comment|/**  * Immutable property state. A property consists of a name and  * a JSON-encoded value.  *  *<h2>Equality and hash codes</h2>  *<p>  * Two property states are considered equal if and only if their names and  * encoded values match. The {@link Object#equals(Object)} method needs to  * be implemented so that it complies with this definition. And while  * property states are not meant for use as hash keys, the  * {@link Object#hashCode()} method should still be implemented according  * to this equality contract.  */
 end_comment
@@ -34,6 +44,24 @@ function_decl|;
 comment|/**      * FIXME: replace with type-specific accessors      */
 name|String
 name|getEncodedValue
+parameter_list|()
+function_decl|;
+comment|/**      * Determine whether this is a multi valued property      * @return  {@code true} if and only if this is a multi valued property.      */
+name|boolean
+name|isMultiValued
+parameter_list|()
+function_decl|;
+comment|/**      * @return  the single value of this property or {@code null} if this is a multi      * valued property.      */
+name|Scalar
+name|getValue
+parameter_list|()
+function_decl|;
+comment|/**      * @return  an immutable collection of the values of this multi valued property or      * {@code null} if this is not a multi valued property.      */
+name|Collection
+argument_list|<
+name|Scalar
+argument_list|>
+name|getValues
 parameter_list|()
 function_decl|;
 block|}
