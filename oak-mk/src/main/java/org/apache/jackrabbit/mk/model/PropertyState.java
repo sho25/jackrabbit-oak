@@ -46,7 +46,7 @@ name|Scalar
 name|getScalar
 parameter_list|()
 function_decl|;
-comment|/**      * @return  an immutable collection of the values of this multi valued property or      * {@code null} if this is not a multi valued property.      */
+comment|/**      * @return  an iterable of the values of this multi valued property or      * {@code null} if this is not a multi valued property.      */
 name|Iterable
 argument_list|<
 name|Scalar
