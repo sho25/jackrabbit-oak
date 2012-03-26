@@ -292,7 +292,7 @@ annotation|@
 name|Override
 specifier|public
 name|boolean
-name|isMultiValued
+name|isArray
 parameter_list|()
 block|{
 return|return
@@ -305,7 +305,7 @@ annotation|@
 name|Override
 specifier|public
 name|Scalar
-name|getValue
+name|getScalar
 parameter_list|()
 block|{
 return|return
@@ -315,18 +315,18 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|List
+name|Iterable
 argument_list|<
 name|Scalar
 argument_list|>
-name|getValues
+name|getArray
 parameter_list|()
 block|{
 return|return
 name|values
 return|;
 block|}
-comment|//------------------------------------------------------------< private>---
+comment|//------------------------------------------------------------< private>
 specifier|private
 specifier|static
 name|String

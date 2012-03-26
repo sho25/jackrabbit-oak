@@ -1129,7 +1129,7 @@ if|if
 condition|(
 name|state
 operator|.
-name|isMultiValued
+name|isArray
 argument_list|()
 condition|)
 block|{
@@ -1149,7 +1149,7 @@ name|value
 init|=
 name|state
 operator|.
-name|getValue
+name|getScalar
 argument_list|()
 decl_stmt|;
 return|return
@@ -1281,7 +1281,7 @@ if|if
 condition|(
 name|state
 operator|.
-name|isMultiValued
+name|isArray
 argument_list|()
 condition|)
 block|{
@@ -1296,7 +1296,7 @@ name|value
 init|=
 name|state
 operator|.
-name|getValue
+name|getScalar
 argument_list|()
 decl_stmt|;
 return|return

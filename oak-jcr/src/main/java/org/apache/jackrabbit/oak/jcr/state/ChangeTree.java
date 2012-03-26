@@ -835,7 +835,7 @@ return|return
 operator|!
 name|state
 operator|.
-name|getValue
+name|getScalar
 argument_list|()
 operator|.
 name|equals
@@ -1131,13 +1131,13 @@ operator|&&
 operator|!
 name|state
 operator|.
-name|isMultiValued
+name|isArray
 argument_list|()
 operator|&&
 operator|!
 name|state
 operator|.
-name|getValue
+name|getScalar
 argument_list|()
 operator|.
 name|equals

@@ -1510,7 +1510,7 @@ argument_list|()
 argument_list|,
 name|state
 operator|.
-name|getValue
+name|getScalar
 argument_list|()
 argument_list|)
 return|;
@@ -1560,7 +1560,7 @@ argument_list|()
 argument_list|,
 name|state
 operator|.
-name|getValues
+name|getArray
 argument_list|()
 argument_list|)
 return|;
@@ -2218,7 +2218,7 @@ block|{
 return|return
 name|state
 operator|.
-name|isMultiValued
+name|isArray
 argument_list|()
 return|;
 block|}
