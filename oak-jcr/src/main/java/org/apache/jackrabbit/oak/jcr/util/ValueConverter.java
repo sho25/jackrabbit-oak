@@ -45,6 +45,8 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
+name|kernel
+operator|.
 name|ScalarImpl
 import|;
 end_import
