@@ -157,9 +157,9 @@ name|jackrabbit
 operator|.
 name|mk
 operator|.
-name|store
+name|model
 operator|.
-name|BinaryBinding
+name|StoredNode
 import|;
 end_import
 
@@ -175,7 +175,7 @@ name|mk
 operator|.
 name|store
 operator|.
-name|Binding
+name|BinaryBinding
 import|;
 end_import
 
@@ -333,15 +333,25 @@ name|id
 expr_stmt|;
 block|}
 specifier|public
-name|Binding
-name|readNodeBinding
+name|void
+name|readNode
 parameter_list|(
-name|Id
-name|id
+name|StoredNode
+name|node
 parameter_list|)
 throws|throws
 name|NotFoundException
+throws|,
+name|Exception
 block|{
+name|Id
+name|id
+init|=
+name|node
+operator|.
+name|getId
+argument_list|()
+decl_stmt|;
 name|byte
 index|[]
 name|bytes
@@ -360,7 +370,10 @@ operator|!=
 literal|null
 condition|)
 block|{
-return|return
+name|node
+operator|.
+name|deserialize
+argument_list|(
 operator|new
 name|BinaryBinding
 argument_list|(
@@ -370,7 +383,8 @@ argument_list|(
 name|bytes
 argument_list|)
 argument_list|)
-return|;
+argument_list|)
+expr_stmt|;
 block|}
 else|else
 block|{

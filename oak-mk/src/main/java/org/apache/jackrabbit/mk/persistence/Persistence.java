@@ -107,9 +107,9 @@ name|jackrabbit
 operator|.
 name|mk
 operator|.
-name|store
+name|model
 operator|.
-name|Binding
+name|StoredNode
 import|;
 end_import
 
@@ -130,7 +130,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Defines the methods exposed by a persistence manager, that stores head  * revision id, nodes, child node entries and blobs.  *   * TODO: instead of deserializing objects on their own, return Binding  *       instances, such as in #readNodeBinding.  */
+comment|/**  * Defines the methods exposed by a persistence manager, that stores head  * revision id, nodes, child node entries and blobs.  */
 end_comment
 
 begin_interface
@@ -153,11 +153,12 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
-name|Binding
-name|readNodeBinding
+comment|/**      * Read a node from storage.      *       * @param node node to read, with id given in {@link StoredNode#getId()}      * @throws NotFoundException if no such node is found      * @throws Exception if some other error occurs      */
+name|void
+name|readNode
 parameter_list|(
-name|Id
-name|id
+name|StoredNode
+name|node
 parameter_list|)
 throws|throws
 name|NotFoundException
