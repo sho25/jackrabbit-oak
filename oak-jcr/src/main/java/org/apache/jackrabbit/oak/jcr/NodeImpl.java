@@ -37,9 +37,9 @@ name|apache
 operator|.
 name|jackrabbit
 operator|.
-name|oak
+name|mk
 operator|.
-name|kernel
+name|model
 operator|.
 name|ScalarImpl
 import|;
