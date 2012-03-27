@@ -1319,7 +1319,7 @@ name|float
 name|value
 parameter_list|)
 block|{
-comment|// TODO silently losing data, should probably throw an exception instead
+comment|// FIXME silently losing data, should probably throw an exception instead
 return|return
 name|Float
 operator|.
@@ -1354,7 +1354,7 @@ name|double
 name|value
 parameter_list|)
 block|{
-comment|// TODO silently losing data, should probably throw an exception instead
+comment|// FIXME silently losing data, should probably throw an exception instead
 return|return
 name|Double
 operator|.

@@ -26,7 +26,7 @@ specifier|public
 interface|interface
 name|PropertyState
 block|{
-comment|/**      * TODO: document      */
+comment|/**      * @return the name of this property state      */
 name|String
 name|getName
 parameter_list|()
