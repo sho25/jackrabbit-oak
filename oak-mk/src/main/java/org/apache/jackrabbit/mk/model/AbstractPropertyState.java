@@ -17,6 +17,22 @@ name|model
 package|;
 end_package
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|mk
+operator|.
+name|json
+operator|.
+name|JsonBuilder
+import|;
+end_import
+
 begin_comment
 comment|/**  * Abstract base class for {@link PropertyState} implementations.  * This base class contains default implementations of the  * {@link #equals(Object)} and {@link #hashCode()} methods based on  * the implemented interface.  */
 end_comment
@@ -29,7 +45,36 @@ name|AbstractPropertyState
 implements|implements
 name|PropertyState
 block|{
-comment|/**      * Checks whether the given object is equal to this one. Two property      * states are considered equal if both their names and encoded values      * match. Subclasses may override this method with a more efficient      * equality check if one is available.      *      * @param that target of the comparison      * @return<code>true</code> if the objects are equal,      *<code>false</code> otherwise      */
+comment|/**      * Default implementation delegating to {@link JsonBuilder#encode(Scalar)}.      * Derived classes may override this with more efficient implementations.      */
+annotation|@
+name|Override
+specifier|public
+name|String
+name|getEncodedValue
+parameter_list|()
+block|{
+return|return
+name|isArray
+argument_list|()
+condition|?
+name|JsonBuilder
+operator|.
+name|encode
+argument_list|(
+name|getArray
+argument_list|()
+argument_list|)
+else|:
+name|JsonBuilder
+operator|.
+name|encode
+argument_list|(
+name|getScalar
+argument_list|()
+argument_list|)
+return|;
+block|}
+comment|/**      * Checks whether the given object is equal to this one. Two property      * states are considered equal if both their names and encoded values      * match. Subclasses may override this method with a more efficient      * equality check if one is available.      *      * @param that target of the comparison      * @return {@code true} if the objects are equal, {@code false} otherwise      */
 annotation|@
 name|Override
 specifier|public

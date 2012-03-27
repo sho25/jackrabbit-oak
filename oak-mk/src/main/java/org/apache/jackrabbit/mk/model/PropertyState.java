@@ -31,7 +31,7 @@ name|String
 name|getName
 parameter_list|()
 function_decl|;
-comment|/**      * FIXME: replace with type-specific accessors      */
+comment|/**      * @return the JSON encoded value of this property state.      */
 name|String
 name|getEncodedValue
 parameter_list|()
