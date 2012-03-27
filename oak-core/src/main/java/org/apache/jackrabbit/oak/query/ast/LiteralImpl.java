@@ -47,23 +47,7 @@ name|oak
 operator|.
 name|query
 operator|.
-name|ScalarImpl
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|query
-operator|.
-name|ScalarType
+name|CoreValue
 import|;
 end_import
 
@@ -76,13 +60,13 @@ name|StaticOperandImpl
 block|{
 specifier|private
 specifier|final
-name|ScalarImpl
+name|CoreValue
 name|value
 decl_stmt|;
 specifier|public
 name|LiteralImpl
 parameter_list|(
-name|ScalarImpl
+name|CoreValue
 name|value
 parameter_list|)
 block|{
@@ -94,7 +78,7 @@ name|value
 expr_stmt|;
 block|}
 specifier|public
-name|ScalarImpl
+name|CoreValue
 name|getLiteralValue
 parameter_list|()
 block|{
@@ -136,7 +120,7 @@ argument_list|()
 condition|)
 block|{
 case|case
-name|ScalarType
+name|CoreValue
 operator|.
 name|BINARY
 case|:
@@ -147,7 +131,7 @@ literal|"BINARY"
 argument_list|)
 return|;
 case|case
-name|ScalarType
+name|CoreValue
 operator|.
 name|BOOLEAN
 case|:
@@ -158,7 +142,7 @@ literal|"BOOLEAN"
 argument_list|)
 return|;
 case|case
-name|ScalarType
+name|CoreValue
 operator|.
 name|DATE
 case|:
@@ -169,7 +153,7 @@ literal|"DATE"
 argument_list|)
 return|;
 case|case
-name|ScalarType
+name|CoreValue
 operator|.
 name|DECIMAL
 case|:
@@ -180,12 +164,12 @@ literal|"DECIMAL"
 argument_list|)
 return|;
 case|case
-name|ScalarType
+name|CoreValue
 operator|.
 name|DOUBLE
 case|:
 case|case
-name|ScalarType
+name|CoreValue
 operator|.
 name|LONG
 case|:
@@ -196,7 +180,7 @@ name|getString
 argument_list|()
 return|;
 case|case
-name|ScalarType
+name|CoreValue
 operator|.
 name|NAME
 case|:
@@ -207,7 +191,7 @@ literal|"NAME"
 argument_list|)
 return|;
 case|case
-name|ScalarType
+name|CoreValue
 operator|.
 name|PATH
 case|:
@@ -218,7 +202,7 @@ literal|"PATH"
 argument_list|)
 return|;
 case|case
-name|ScalarType
+name|CoreValue
 operator|.
 name|REFERENCE
 case|:
@@ -229,7 +213,7 @@ literal|"REFERENCE"
 argument_list|)
 return|;
 case|case
-name|ScalarType
+name|CoreValue
 operator|.
 name|STRING
 case|:
@@ -238,7 +222,7 @@ name|escape
 argument_list|()
 return|;
 case|case
-name|ScalarType
+name|CoreValue
 operator|.
 name|URI
 case|:
@@ -249,7 +233,7 @@ literal|"URI"
 argument_list|)
 return|;
 case|case
-name|ScalarType
+name|CoreValue
 operator|.
 name|WEAKREFERENCE
 case|:
@@ -306,7 +290,7 @@ return|;
 block|}
 annotation|@
 name|Override
-name|ScalarImpl
+name|CoreValue
 name|currentValue
 parameter_list|()
 block|{

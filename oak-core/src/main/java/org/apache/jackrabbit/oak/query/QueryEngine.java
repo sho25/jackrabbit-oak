@@ -171,7 +171,7 @@ name|Map
 argument_list|<
 name|String
 argument_list|,
-name|ScalarImpl
+name|CoreValue
 argument_list|>
 name|bindings
 parameter_list|)
@@ -273,7 +273,7 @@ name|Entry
 argument_list|<
 name|String
 argument_list|,
-name|ScalarImpl
+name|CoreValue
 argument_list|>
 name|e
 range|:

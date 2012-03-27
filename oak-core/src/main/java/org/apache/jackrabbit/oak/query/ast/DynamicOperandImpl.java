@@ -31,7 +31,7 @@ name|oak
 operator|.
 name|query
 operator|.
-name|ScalarImpl
+name|CoreValue
 import|;
 end_import
 
@@ -63,7 +63,7 @@ name|AstElement
 block|{
 specifier|public
 specifier|abstract
-name|ScalarImpl
+name|CoreValue
 name|currentValue
 parameter_list|()
 function_decl|;
@@ -78,7 +78,7 @@ parameter_list|,
 name|Operator
 name|operator
 parameter_list|,
-name|ScalarImpl
+name|CoreValue
 name|v
 parameter_list|)
 function_decl|;

@@ -31,7 +31,7 @@ name|oak
 operator|.
 name|query
 operator|.
-name|ScalarImpl
+name|CoreValue
 import|;
 end_import
 
@@ -160,7 +160,7 @@ name|boolean
 name|evaluate
 parameter_list|()
 block|{
-name|ScalarImpl
+name|CoreValue
 name|v1
 init|=
 name|operand1
@@ -168,7 +168,7 @@ operator|.
 name|currentValue
 argument_list|()
 decl_stmt|;
-name|ScalarImpl
+name|CoreValue
 name|v2
 init|=
 name|operand2
@@ -274,10 +274,10 @@ specifier|static
 name|boolean
 name|evaluateLike
 parameter_list|(
-name|ScalarImpl
+name|CoreValue
 name|v1
 parameter_list|,
-name|ScalarImpl
+name|CoreValue
 name|v2
 parameter_list|)
 block|{
@@ -1131,7 +1131,7 @@ name|Filter
 name|f
 parameter_list|)
 block|{
-name|ScalarImpl
+name|CoreValue
 name|v
 init|=
 name|operand2

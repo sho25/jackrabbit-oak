@@ -31,7 +31,7 @@ name|oak
 operator|.
 name|query
 operator|.
-name|ScalarImpl
+name|CoreValue
 import|;
 end_import
 
@@ -279,7 +279,7 @@ name|boolean
 name|evaluate
 parameter_list|()
 block|{
-name|ScalarImpl
+name|CoreValue
 name|v1
 init|=
 name|selector1
@@ -301,7 +301,7 @@ literal|false
 return|;
 block|}
 comment|// TODO data type mapping
-name|ScalarImpl
+name|CoreValue
 name|v2
 init|=
 name|selector2
@@ -334,7 +334,7 @@ name|Filter
 name|f
 parameter_list|)
 block|{
-name|ScalarImpl
+name|CoreValue
 name|v1
 init|=
 name|selector1
@@ -344,7 +344,7 @@ argument_list|(
 name|property1Name
 argument_list|)
 decl_stmt|;
-name|ScalarImpl
+name|CoreValue
 name|v2
 init|=
 name|selector2

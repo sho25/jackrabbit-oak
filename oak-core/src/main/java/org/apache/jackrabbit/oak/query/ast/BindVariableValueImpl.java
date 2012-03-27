@@ -31,7 +31,7 @@ name|oak
 operator|.
 name|query
 operator|.
-name|ScalarImpl
+name|CoreValue
 import|;
 end_import
 
@@ -103,7 +103,7 @@ return|;
 block|}
 annotation|@
 name|Override
-name|ScalarImpl
+name|CoreValue
 name|currentValue
 parameter_list|()
 block|{

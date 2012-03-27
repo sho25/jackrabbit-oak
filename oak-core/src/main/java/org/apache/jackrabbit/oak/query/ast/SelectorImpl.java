@@ -95,7 +95,7 @@ name|oak
 operator|.
 name|query
 operator|.
-name|ScalarImpl
+name|CoreValue
 import|;
 end_import
 
@@ -466,7 +466,7 @@ argument_list|()
 return|;
 block|}
 specifier|public
-name|ScalarImpl
+name|CoreValue
 name|currentProperty
 parameter_list|(
 name|String

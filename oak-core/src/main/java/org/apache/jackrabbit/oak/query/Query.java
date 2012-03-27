@@ -547,7 +547,7 @@ name|HashMap
 argument_list|<
 name|String
 argument_list|,
-name|ScalarImpl
+name|CoreValue
 argument_list|>
 name|bindVariableMap
 init|=
@@ -556,7 +556,7 @@ name|HashMap
 argument_list|<
 name|String
 argument_list|,
-name|ScalarImpl
+name|CoreValue
 argument_list|>
 argument_list|()
 decl_stmt|;
@@ -1289,7 +1289,7 @@ parameter_list|(
 name|String
 name|varName
 parameter_list|,
-name|ScalarImpl
+name|CoreValue
 name|value
 parameter_list|)
 block|{
@@ -1431,7 +1431,7 @@ literal|0
 index|]
 argument_list|,
 operator|new
-name|ScalarImpl
+name|CoreValue
 index|[]
 block|{
 name|valueFactory
@@ -1533,11 +1533,11 @@ specifier|public
 name|int
 name|compareRows
 parameter_list|(
-name|ScalarImpl
+name|CoreValue
 index|[]
 name|orderValues
 parameter_list|,
-name|ScalarImpl
+name|CoreValue
 index|[]
 name|orderValues2
 parameter_list|)
@@ -1568,7 +1568,7 @@ name|i
 operator|++
 control|)
 block|{
-name|ScalarImpl
+name|CoreValue
 name|a
 init|=
 name|orderValues
@@ -1576,7 +1576,7 @@ index|[
 name|i
 index|]
 decl_stmt|;
-name|ScalarImpl
+name|CoreValue
 name|b
 init|=
 name|orderValues2
@@ -1957,12 +1957,12 @@ name|columns
 operator|.
 name|length
 decl_stmt|;
-name|ScalarImpl
+name|CoreValue
 index|[]
 name|values
 init|=
 operator|new
-name|ScalarImpl
+name|CoreValue
 index|[
 name|columnCount
 index|]
@@ -2001,7 +2001,7 @@ name|currentValue
 argument_list|()
 expr_stmt|;
 block|}
-name|ScalarImpl
+name|CoreValue
 index|[]
 name|orderValues
 decl_stmt|;
@@ -2029,7 +2029,7 @@ decl_stmt|;
 name|orderValues
 operator|=
 operator|new
-name|ScalarImpl
+name|CoreValue
 index|[
 name|size
 index|]
@@ -2228,14 +2228,14 @@ name|offset
 return|;
 block|}
 specifier|public
-name|ScalarImpl
+name|CoreValue
 name|getBindVariableValue
 parameter_list|(
 name|String
 name|bindVariableName
 parameter_list|)
 block|{
-name|ScalarImpl
+name|CoreValue
 name|v
 init|=
 name|bindVariableMap

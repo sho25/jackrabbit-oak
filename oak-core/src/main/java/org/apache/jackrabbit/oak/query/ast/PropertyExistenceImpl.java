@@ -31,7 +31,7 @@ name|oak
 operator|.
 name|query
 operator|.
-name|ScalarImpl
+name|CoreValue
 import|;
 end_import
 
@@ -122,7 +122,7 @@ name|boolean
 name|evaluate
 parameter_list|()
 block|{
-name|ScalarImpl
+name|CoreValue
 name|v
 init|=
 name|selector
@@ -241,7 +241,7 @@ operator|.
 name|NOT_EQUAL
 argument_list|,
 operator|(
-name|ScalarImpl
+name|CoreValue
 operator|)
 literal|null
 argument_list|)

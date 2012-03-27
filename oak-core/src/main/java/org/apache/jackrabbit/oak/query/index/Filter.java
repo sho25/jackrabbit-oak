@@ -69,7 +69,7 @@ name|oak
 operator|.
 name|query
 operator|.
-name|ScalarImpl
+name|CoreValue
 import|;
 end_import
 
@@ -242,7 +242,7 @@ name|propertyName
 decl_stmt|;
 comment|/**          * The first value to read, or null to read from the beginning.          */
 specifier|public
-name|ScalarImpl
+name|CoreValue
 name|first
 decl_stmt|;
 comment|/**          * Whether values that match the first should be returned.          */
@@ -252,7 +252,7 @@ name|firstIncluding
 decl_stmt|;
 comment|/**          * The last value to read, or null to read until the end.          */
 specifier|public
-name|ScalarImpl
+name|CoreValue
 name|last
 decl_stmt|;
 comment|/**          * Whether values that match the last should be returned.          */
@@ -611,7 +611,7 @@ parameter_list|,
 name|Operator
 name|op
 parameter_list|,
-name|ScalarImpl
+name|CoreValue
 name|value
 parameter_list|)
 block|{
@@ -654,7 +654,7 @@ name|x
 argument_list|)
 expr_stmt|;
 block|}
-name|ScalarImpl
+name|CoreValue
 name|oldFirst
 init|=
 name|x
@@ -935,13 +935,13 @@ block|}
 block|}
 block|}
 specifier|static
-name|ScalarImpl
+name|CoreValue
 name|maxValue
 parameter_list|(
-name|ScalarImpl
+name|CoreValue
 name|a
 parameter_list|,
-name|ScalarImpl
+name|CoreValue
 name|b
 parameter_list|)
 block|{
@@ -972,13 +972,13 @@ name|a
 return|;
 block|}
 specifier|static
-name|ScalarImpl
+name|CoreValue
 name|minValue
 parameter_list|(
-name|ScalarImpl
+name|CoreValue
 name|a
 parameter_list|,
-name|ScalarImpl
+name|CoreValue
 name|b
 parameter_list|)
 block|{

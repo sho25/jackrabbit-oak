@@ -87,7 +87,7 @@ name|oak
 operator|.
 name|query
 operator|.
-name|ScalarImpl
+name|CoreValue
 import|;
 end_import
 
@@ -171,7 +171,7 @@ name|void
 name|propertyRestriction
 parameter_list|()
 block|{
-name|ScalarImpl
+name|CoreValue
 name|one
 init|=
 operator|new
@@ -183,7 +183,7 @@ argument_list|(
 literal|"1"
 argument_list|)
 decl_stmt|;
-name|ScalarImpl
+name|CoreValue
 name|two
 init|=
 operator|new

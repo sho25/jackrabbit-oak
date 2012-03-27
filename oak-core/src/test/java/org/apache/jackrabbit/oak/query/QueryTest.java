@@ -313,7 +313,7 @@ name|HashMap
 argument_list|<
 name|String
 argument_list|,
-name|ScalarImpl
+name|CoreValue
 argument_list|>
 name|sv
 init|=
@@ -322,7 +322,7 @@ name|HashMap
 argument_list|<
 name|String
 argument_list|,
-name|ScalarImpl
+name|CoreValue
 argument_list|>
 argument_list|()
 decl_stmt|;
@@ -975,7 +975,7 @@ operator|new
 name|StringBuilder
 argument_list|()
 decl_stmt|;
-name|ScalarImpl
+name|CoreValue
 index|[]
 name|values
 init|=
@@ -1016,7 +1016,7 @@ literal|", "
 argument_list|)
 expr_stmt|;
 block|}
-name|ScalarImpl
+name|CoreValue
 name|v
 init|=
 name|values
