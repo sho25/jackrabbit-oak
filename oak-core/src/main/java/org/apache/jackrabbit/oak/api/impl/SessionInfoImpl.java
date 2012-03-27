@@ -217,7 +217,7 @@ block|{
 comment|// TODO
 block|}
 comment|//--------------------------------------------------------------------------
-comment|// TODO: tmp solution as long as oak-jcr still writes to MK directly
+comment|// FIXME: tmp solution as long as oak-jcr still writes to MK directly
 specifier|public
 name|void
 name|setRevision
