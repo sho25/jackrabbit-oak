@@ -45,12 +45,12 @@ name|String
 name|attributeName
 parameter_list|)
 function_decl|;
-comment|/**      * Returns the current revision the associated session is operating on.      * Upon creation of a given {@code SessionInfo} instance the initial      * revision is always set to the head revision. Upon successful commit      * of changes the revision is reset to match the latest state.      *      * TODO: define how the desired initial revision is passed to the oak-api / mk      * TODO: define how and when the revision is updated (would a setRevision required? and who would use it?)      * TODO: define default value (head-revision?)      *      * @return the revision.      */
+comment|/**      * Returns the current revision the associated session is operating on.      * Unless otherwise specified the revision is set to the current head      * revision upon {@code SessionInfo} creation. Later on in the lifecycle      * of this {@code SessionInfo} the revision will be reset to match the      * latest state after successful commit of modifications or if the associated      * session is being refreshed.      *      * @return the revision The current revision.      */
 name|String
 name|getRevision
 parameter_list|()
 function_decl|;
-comment|/**      * The immutable name of the workspace this instance has been created for.      *      * @return name of the workspace this instance has been created for.      */
+comment|/**      * The immutable name of the workspace this {@code SessionInfo} instance has      * been created for. If no workspace name has been specified during      * repository login this method will return the name of the default      * workspace.      *      * @return name of the workspace this instance has been created for.      */
 name|String
 name|getWorkspaceName
 parameter_list|()
