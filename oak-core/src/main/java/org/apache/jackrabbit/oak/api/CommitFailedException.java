@@ -18,7 +18,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * Main exception thrown by methods defined on the {@code Connection} interface  * indicating that commiting a given set of changes failed.  *  * TODO: define mechanism to inform the oak-jcr level about the specific type of exception  *       possible ways:  *       - CommitFailedException contains nested jcr exceptions  *       - CommitFailedException extends from repository exception  *       - CommitFailedException transports status code that are then converted to jcr exceptions  */
+comment|/**  * Main exception thrown by methods defined on the {@code Connection} interface  * indicating that committing a given set of changes failed.  *  * TODO: define mechanism to inform the oak-jcr level about the specific type of exception  *       possible ways:  *       - CommitFailedException contains nested jcr exceptions  *       - CommitFailedException extends from repository exception  *       - CommitFailedException transports status code that are then converted to jcr exceptions  */
 end_comment
 
 begin_class
