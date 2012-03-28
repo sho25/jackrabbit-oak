@@ -1393,6 +1393,7 @@ expr_stmt|;
 block|}
 else|else
 block|{
+comment|// TODO: use oak-api here in order to avoid reading directly from MK
 name|persistentNodeState
 operator|=
 operator|new
