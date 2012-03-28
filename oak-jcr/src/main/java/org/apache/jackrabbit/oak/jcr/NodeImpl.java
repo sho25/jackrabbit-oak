@@ -3332,6 +3332,7 @@ name|getVersionManager
 argument_list|()
 return|;
 block|}
+comment|/**      * Shortcut to retrieve the lock manager from the workspace associated      * with the editing session.      *      * @return the lock manager associated with the editing session.      * @throws RepositoryException If an error occurs while retrieving the lock manager.      */
 specifier|private
 name|LockManager
 name|getLockManager
