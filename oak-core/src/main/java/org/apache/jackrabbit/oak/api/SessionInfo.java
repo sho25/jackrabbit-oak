@@ -45,7 +45,7 @@ name|String
 name|attributeName
 parameter_list|)
 function_decl|;
-comment|/**      * Returns the current revision the associated session is operating on.      * Unless otherwise specified the revision is set to the current head      * revision upon {@code SessionInfo} creation. Later on in the lifecycle      * of this {@code SessionInfo} the revision will be reset to match the      * latest state after successful commit of modifications or if the associated      * session is being refreshed.      *      * @return the revision The current revision.      */
+comment|/**      * Returns the current revision the associated session is operating on.      * Unless otherwise specified the revision is set to the current head      * revision upon {@code SessionInfo} creation. Later on in the lifecycle      * of this {@code SessionInfo} the revision will be reset to match the      * latest state after successful commit of modifications or if the associated      * session is being refreshed.      *      * TODO: review. maybe this isn't needed any more in oak-jcr once we got rid of all mk-dependencies.      *      * @return the revision The current revision.      */
 name|String
 name|getRevision
 parameter_list|()

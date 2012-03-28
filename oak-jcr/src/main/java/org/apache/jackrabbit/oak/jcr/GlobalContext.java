@@ -59,7 +59,7 @@ name|oak
 operator|.
 name|api
 operator|.
-name|AuthenticationService
+name|RepositoryService
 import|;
 end_import
 
@@ -73,11 +73,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|api
+name|core
 operator|.
-name|impl
-operator|.
-name|AuthenticationServiceImpl
+name|TmpRepositoryService
 import|;
 end_import
 
@@ -225,11 +223,11 @@ name|getMicrokernelUrl
 argument_list|()
 argument_list|)
 decl_stmt|;
-name|AuthenticationService
-name|authenticationService
+name|RepositoryService
+name|repositoryService
 init|=
 operator|new
-name|AuthenticationServiceImpl
+name|TmpRepositoryService
 argument_list|(
 name|mk
 argument_list|)
@@ -245,11 +243,11 @@ argument_list|)
 expr_stmt|;
 name|put
 argument_list|(
-name|AuthenticationService
+name|RepositoryService
 operator|.
 name|class
 argument_list|,
-name|authenticationService
+name|repositoryService
 argument_list|)
 expr_stmt|;
 name|put

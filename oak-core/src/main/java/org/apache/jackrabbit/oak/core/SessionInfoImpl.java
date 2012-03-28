@@ -13,9 +13,7 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|api
-operator|.
-name|impl
+name|core
 package|;
 end_package
 
@@ -215,23 +213,6 @@ name|dispose
 parameter_list|()
 block|{
 comment|// TODO
-block|}
-comment|//--------------------------------------------------------------------------
-comment|// FIXME: tmp solution as long as oak-jcr still writes to MK directly
-specifier|public
-name|void
-name|setRevision
-parameter_list|(
-name|String
-name|revision
-parameter_list|)
-block|{
-name|this
-operator|.
-name|revision
-operator|=
-name|revision
-expr_stmt|;
 block|}
 block|}
 end_class

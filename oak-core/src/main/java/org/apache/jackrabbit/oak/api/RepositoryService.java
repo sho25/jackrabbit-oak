@@ -42,15 +42,14 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * AuthenticationService... TODO: WORK IN PROGRESS  */
+comment|/**  * TODO:  * The {@code RepositoryService} is the main access point of the oak-api. It  * serves the following purposes:  *  * - validating a given login request and providing SessionInfo object  *   that is used for further communication with the persistent layer (MK).  *  * - retrieving information from persistent layer (MK) that are accessible to  *   a given session  *  * - validate information being written back to the persistent layer. this includes  *   permission evaluation, node type and name constraints etc.  *  * - update the revision ID a given session is operating on.  *  * The implementation of this and all related interfaces are intended to only  * hold the state of the persistent layer at a given revision without any  * session-related state modifications.  */
 end_comment
 
 begin_interface
 specifier|public
 interface|interface
-name|AuthenticationService
+name|RepositoryService
 block|{
-comment|/**      *      * @param credentials      * @param workspaceName      * @return      * @throws javax.security.auth.login.LoginException      * @throws javax.jcr.NoSuchWorkspaceException      */
 name|SessionInfo
 name|login
 parameter_list|(
@@ -64,6 +63,13 @@ throws|throws
 name|LoginException
 throws|,
 name|NoSuchWorkspaceException
+function_decl|;
+name|Connection
+name|getConnection
+parameter_list|(
+name|SessionInfo
+name|sessionInfo
+parameter_list|)
 function_decl|;
 block|}
 end_interface

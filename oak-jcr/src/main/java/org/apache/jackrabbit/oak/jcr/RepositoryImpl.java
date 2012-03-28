@@ -29,7 +29,7 @@ name|oak
 operator|.
 name|api
 operator|.
-name|AuthenticationService
+name|RepositoryService
 import|;
 end_import
 
@@ -298,14 +298,14 @@ throws|throws
 name|RepositoryException
 block|{
 comment|// TODO: needs complete refactoring
-name|AuthenticationService
-name|authentication
+name|RepositoryService
+name|service
 init|=
 name|context
 operator|.
 name|getInstance
 argument_list|(
-name|AuthenticationService
+name|RepositoryService
 operator|.
 name|class
 argument_list|)
@@ -315,7 +315,7 @@ block|{
 name|SessionInfo
 name|sessionInfo
 init|=
-name|authentication
+name|service
 operator|.
 name|login
 argument_list|(

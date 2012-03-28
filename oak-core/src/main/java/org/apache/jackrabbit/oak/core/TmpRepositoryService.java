@@ -13,9 +13,7 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|api
-operator|.
-name|impl
+name|core
 package|;
 end_package
 
@@ -47,7 +45,23 @@ name|oak
 operator|.
 name|api
 operator|.
-name|AuthenticationService
+name|Connection
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|api
+operator|.
+name|RepositoryService
 import|;
 end_import
 
@@ -132,15 +146,15 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * AuthenticationServiceImpl...  */
+comment|/**  * TmpRepositoryService...  */
 end_comment
 
 begin_class
 specifier|public
 class|class
-name|AuthenticationServiceImpl
+name|TmpRepositoryService
 implements|implements
-name|AuthenticationService
+name|RepositoryService
 block|{
 comment|/**      * logger instance      */
 specifier|private
@@ -153,7 +167,7 @@ name|LoggerFactory
 operator|.
 name|getLogger
 argument_list|(
-name|AuthenticationServiceImpl
+name|TmpRepositoryService
 operator|.
 name|class
 argument_list|)
@@ -173,7 +187,7 @@ name|MicroKernel
 name|mk
 decl_stmt|;
 specifier|public
-name|AuthenticationServiceImpl
+name|TmpRepositoryService
 parameter_list|(
 name|MicroKernel
 name|mk
@@ -354,7 +368,22 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**      * @param credentials The credentials object used for authentication.      * @return The microkernel revision. If the give credentials don't specify      * a specific revision number the current head revision is returned.      */
+annotation|@
+name|Override
+specifier|public
+name|Connection
+name|getConnection
+parameter_list|(
+name|SessionInfo
+name|sessionInfo
+parameter_list|)
+block|{
+comment|// TODO
+return|return
+literal|null
+return|;
+block|}
+comment|/**      * @param credentials The credentials object used for authentication.      * @return The microkernal revision. If the give credentials don't specify      * a specific revision number the current head revision is returned.      */
 specifier|private
 name|String
 name|getRevision
