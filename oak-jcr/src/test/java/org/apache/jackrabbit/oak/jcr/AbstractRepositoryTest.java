@@ -102,6 +102,7 @@ comment|/**  * Abstract base class for repository tests providing methods for ac
 end_comment
 
 begin_class
+specifier|public
 specifier|abstract
 class|class
 name|AbstractRepositoryTest
