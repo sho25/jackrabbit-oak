@@ -103,7 +103,7 @@ name|oak
 operator|.
 name|query
 operator|.
-name|ScalarFactory
+name|CoreValueFactory
 import|;
 end_import
 
@@ -175,7 +175,7 @@ name|CoreValue
 name|one
 init|=
 operator|new
-name|ScalarFactory
+name|CoreValueFactory
 argument_list|()
 operator|.
 name|createValue
@@ -187,7 +187,7 @@ name|CoreValue
 name|two
 init|=
 operator|new
-name|ScalarFactory
+name|CoreValueFactory
 argument_list|()
 operator|.
 name|createValue

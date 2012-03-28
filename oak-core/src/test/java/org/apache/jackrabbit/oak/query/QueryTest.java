@@ -234,9 +234,8 @@ argument_list|()
 expr_stmt|;
 name|qe
 operator|=
+operator|new
 name|QueryEngine
-operator|.
-name|getInstance
 argument_list|(
 name|mk
 argument_list|)
@@ -326,11 +325,11 @@ name|CoreValue
 argument_list|>
 argument_list|()
 decl_stmt|;
-name|ScalarFactory
+name|CoreValueFactory
 name|vf
 init|=
 operator|new
-name|ScalarFactory
+name|CoreValueFactory
 argument_list|()
 decl_stmt|;
 name|sv
@@ -349,7 +348,7 @@ argument_list|)
 expr_stmt|;
 name|Iterator
 argument_list|<
-name|Row
+name|ResultRow
 argument_list|>
 name|result
 decl_stmt|;
@@ -359,14 +358,17 @@ name|qe
 operator|.
 name|executeQuery
 argument_list|(
+literal|"select * from [nt:base] where id = $id"
+argument_list|,
 name|QueryEngine
 operator|.
 name|SQL2
 argument_list|,
-literal|"select * from [nt:base] where id = $id"
-argument_list|,
 name|sv
 argument_list|)
+operator|.
+name|getRows
+argument_list|()
 expr_stmt|;
 name|assertTrue
 argument_list|(
@@ -409,14 +411,17 @@ name|qe
 operator|.
 name|executeQuery
 argument_list|(
+literal|"select * from [nt:base] where id = $id"
+argument_list|,
 name|QueryEngine
 operator|.
 name|SQL2
 argument_list|,
-literal|"select * from [nt:base] where id = $id"
-argument_list|,
 name|sv
 argument_list|)
+operator|.
+name|getRows
+argument_list|()
 expr_stmt|;
 name|assertTrue
 argument_list|(
@@ -443,11 +448,11 @@ name|qe
 operator|.
 name|executeQuery
 argument_list|(
+literal|"explain select * from [nt:base] where id = 1 order by id"
+argument_list|,
 name|QueryEngine
 operator|.
 name|SQL2
-argument_list|,
-literal|"explain select * from [nt:base] where id = 1 order by id"
 argument_list|,
 literal|null
 argument_list|)
@@ -708,7 +713,7 @@ argument_list|)
 expr_stmt|;
 name|Iterator
 argument_list|<
-name|Row
+name|ResultRow
 argument_list|>
 name|result
 init|=
@@ -716,14 +721,17 @@ name|qe
 operator|.
 name|executeQuery
 argument_list|(
+name|line
+argument_list|,
 name|QueryEngine
 operator|.
 name|SQL2
 argument_list|,
-name|line
-argument_list|,
 literal|null
 argument_list|)
+operator|.
+name|getRows
+argument_list|()
 decl_stmt|;
 name|boolean
 name|readEnd
@@ -738,7 +746,7 @@ name|hasNext
 argument_list|()
 condition|)
 block|{
-name|Row
+name|ResultRow
 name|row
 init|=
 name|result
@@ -964,7 +972,7 @@ parameter_list|(
 name|String
 name|query
 parameter_list|,
-name|Row
+name|ResultRow
 name|row
 parameter_list|)
 block|{

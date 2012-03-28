@@ -30,7 +30,7 @@ end_import
 begin_class
 specifier|public
 class|class
-name|ScalarFactory
+name|CoreValueFactory
 block|{
 specifier|public
 name|CoreValue

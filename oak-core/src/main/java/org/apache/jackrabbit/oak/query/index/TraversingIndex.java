@@ -54,9 +54,9 @@ end_import
 begin_class
 specifier|public
 class|class
-name|TraversingReader
+name|TraversingIndex
 implements|implements
-name|NodeReader
+name|QueryIndex
 block|{
 specifier|private
 specifier|final
@@ -70,7 +70,7 @@ init|=
 literal|2000
 decl_stmt|;
 specifier|public
-name|TraversingReader
+name|TraversingIndex
 parameter_list|(
 name|MicroKernel
 name|mk

@@ -60,11 +60,11 @@ end_comment
 begin_class
 specifier|public
 class|class
-name|Row
+name|ResultRow
 implements|implements
 name|Comparable
 argument_list|<
-name|Row
+name|ResultRow
 argument_list|>
 block|{
 specifier|private
@@ -90,7 +90,7 @@ name|CoreValue
 index|[]
 name|orderValues
 decl_stmt|;
-name|Row
+name|ResultRow
 parameter_list|(
 name|Query
 name|query
@@ -269,7 +269,7 @@ specifier|public
 name|int
 name|compareTo
 parameter_list|(
-name|Row
+name|ResultRow
 name|o
 parameter_list|)
 block|{

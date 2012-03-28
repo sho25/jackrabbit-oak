@@ -512,14 +512,14 @@ argument_list|()
 decl_stmt|;
 specifier|private
 specifier|final
-name|ScalarFactory
+name|CoreValueFactory
 name|valueFactory
 decl_stmt|;
 comment|/**      * Create a new parser. A parser can be re-used, but it is not thread safe.      *      * @param valueFactory the value factory      */
 specifier|public
 name|SQL2Parser
 parameter_list|(
-name|ScalarFactory
+name|CoreValueFactory
 name|valueFactory
 parameter_list|)
 block|{

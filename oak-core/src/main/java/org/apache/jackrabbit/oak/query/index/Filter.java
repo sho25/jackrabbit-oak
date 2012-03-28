@@ -110,7 +110,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * An index filter / lookup condition.  */
+comment|/**  * A filter or lookup condition.  */
 end_comment
 
 begin_class

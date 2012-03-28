@@ -47,7 +47,7 @@ name|oak
 operator|.
 name|query
 operator|.
-name|ScalarFactory
+name|CoreValueFactory
 import|;
 end_import
 
@@ -1205,7 +1205,7 @@ comment|// ignore
 block|}
 else|else
 block|{
-name|ScalarFactory
+name|CoreValueFactory
 name|vf
 init|=
 name|query

@@ -20,15 +20,15 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * A node reader. The reader should use the data in the filter if possible to  * speed up reading.  */
+comment|/**  * Represents an index. The index should use the data in the filter if possible  * to speed up reading.  */
 end_comment
 
 begin_interface
 specifier|public
 interface|interface
-name|NodeReader
+name|QueryIndex
 block|{
-comment|/**      * Estimate the cost to use this reader with the given filter. The returned      * cost is a value between 1 (very fast; lookup of a unique node) and the      * estimated number of nodes to traverse.      *      * @param filter the filter      * @return the estimated cost in number of read nodes      */
+comment|/**      * Estimate the cost to query with the given filter. The returned      * cost is a value between 1 (very fast; lookup of a unique node) and the      * estimated number of nodes to traverse.      *      * @param filter the filter      * @return the estimated cost in number of read nodes      */
 name|double
 name|getCost
 parameter_list|(
@@ -36,7 +36,7 @@ name|Filter
 name|filter
 parameter_list|)
 function_decl|;
-comment|/**      * Start reading nodes.      *      * @param filter the filter      * @param revisionId the revision      * @return a cursor to iterate over the result      */
+comment|/**      * Start a query.      *      * @param filter the filter      * @param revisionId the revision      * @return a cursor to iterate over the result      */
 name|Cursor
 name|query
 parameter_list|(
@@ -47,7 +47,7 @@ name|String
 name|revisionId
 parameter_list|)
 function_decl|;
-comment|/**      * Get the query plan for the given reader.      *      * @param filter the filter      * @return the query plan      */
+comment|/**      * Get the query plan for the given filter.      *      * @param filter the filter      * @return the query plan      */
 name|String
 name|getPlan
 parameter_list|(

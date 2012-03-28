@@ -149,7 +149,7 @@ name|query
 operator|.
 name|index
 operator|.
-name|NodeReader
+name|QueryIndex
 import|;
 end_import
 
@@ -167,7 +167,7 @@ name|query
 operator|.
 name|index
 operator|.
-name|TraversingReader
+name|TraversingIndex
 import|;
 end_import
 
@@ -188,8 +188,8 @@ init|=
 literal|"jcr:path"
 decl_stmt|;
 specifier|protected
-name|NodeReader
-name|reader
+name|QueryIndex
+name|index
 decl_stmt|;
 specifier|private
 specifier|final
@@ -288,10 +288,10 @@ name|MicroKernel
 name|mk
 parameter_list|)
 block|{
-name|reader
+name|index
 operator|=
 operator|new
-name|TraversingReader
+name|TraversingIndex
 argument_list|(
 name|mk
 argument_list|)
@@ -309,7 +309,7 @@ parameter_list|)
 block|{
 name|cursor
 operator|=
-name|reader
+name|index
 operator|.
 name|query
 argument_list|(
@@ -337,7 +337,7 @@ argument_list|()
 operator|+
 literal|" /* "
 operator|+
-name|reader
+name|index
 operator|.
 name|getPlan
 argument_list|(
