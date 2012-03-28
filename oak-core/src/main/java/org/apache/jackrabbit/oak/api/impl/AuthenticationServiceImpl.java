@@ -354,7 +354,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**      * @param credentials The credentials object used for authentication.      * @return The microkernal revision. If the give credentials don't specify      * a specific revision number the current head revision is returned.      */
+comment|/**      * @param credentials The credentials object used for authentication.      * @return The microkernel revision. If the give credentials don't specify      * a specific revision number the current head revision is returned.      */
 specifier|private
 name|String
 name|getRevision
