@@ -29,7 +29,7 @@ name|oak
 operator|.
 name|api
 operator|.
-name|RepositoryService
+name|Connection
 import|;
 end_import
 
@@ -45,7 +45,7 @@ name|oak
 operator|.
 name|api
 operator|.
-name|SessionInfo
+name|RepositoryService
 import|;
 end_import
 
@@ -312,8 +312,8 @@ argument_list|)
 decl_stmt|;
 try|try
 block|{
-name|SessionInfo
-name|sessionInfo
+name|Connection
+name|connection
 init|=
 name|service
 operator|.
@@ -330,7 +330,7 @@ name|SessionImpl
 argument_list|(
 name|context
 argument_list|,
-name|sessionInfo
+name|connection
 argument_list|)
 return|;
 block|}

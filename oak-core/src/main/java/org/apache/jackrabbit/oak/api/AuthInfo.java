@@ -18,13 +18,13 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * The {@code SessionInfo} TODO... describe how obtained, when disposed, used for communication with oak-api, identification, authorization....  */
+comment|/**  * The {@code AuthInfo} TODO... used for identification, authorization....  */
 end_comment
 
 begin_interface
 specifier|public
 interface|interface
-name|SessionInfo
+name|AuthInfo
 block|{
 comment|/**      * Return the user ID to be exposed on the JCR Session object. It refers      * to the ID of the user associated with the Credentials passed to the      * repository login.      *      * @return the user ID such as exposed on the JCR Session object.      */
 name|String
@@ -44,21 +44,6 @@ parameter_list|(
 name|String
 name|attributeName
 parameter_list|)
-function_decl|;
-comment|/**      * Returns the current revision the associated session is operating on.      * Unless otherwise specified the revision is set to the current head      * revision upon {@code SessionInfo} creation. Later on in the lifecycle      * of this {@code SessionInfo} the revision will be reset to match the      * latest state after successful commit of modifications or if the associated      * session is being refreshed.      *      * TODO: review. maybe this isn't needed any more in oak-jcr once we got rid of all mk-dependencies.      *      * @return the revision The current revision.      */
-name|String
-name|getRevision
-parameter_list|()
-function_decl|;
-comment|/**      * The immutable name of the workspace this {@code SessionInfo} instance has      * been created for. If no workspace name has been specified during      * repository login this method will return the name of the default      * workspace.      *      * @return name of the workspace this instance has been created for.      */
-name|String
-name|getWorkspaceName
-parameter_list|()
-function_decl|;
-comment|/**      * Dispose this instance of {@code SessionInfo} as the associated      * JCR Session instance was logged out. This method allows an implementation      * to free any resources that may possibly be associated with this instance.      */
-name|void
-name|dispose
-parameter_list|()
 function_decl|;
 block|}
 end_interface
