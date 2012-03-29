@@ -60,7 +60,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * The {@code Connection} interface ...  *  * - retrieving information from persistent layer (MK) that are accessible to  *   a given session  *  * - validate information being written back to the persistent layer. this includes  *   permission evaluation, node type and name constraints etc.  *  * - update the revision ID a given session is operating on when certain actions  *   take place (save, refresh, TBD)  *  * - Provide access to authentication and authorization related information  *  * - Connection instances are not thread safe.  *  * - The implementation of this and all related interfaces are intended to only  *   hold the state of the persistent layer at a given revision without any  *   session-related state modifications.  *  * TODO: define whether this is a repository-level connection or just bound to a single workspace.  * TODO: describe how this interface is intended to handle validation: nt, names, ac, constraints...  */
+comment|/**  * The {@code Connection} interface ...  *  * - retrieving information from persistent layer (MK) that are accessible to  *   a given session  *  * - validate information being written back to the persistent layer. this includes  *   permission evaluation, node type and name constraints etc.  *  * - update the revision ID a given session is operating on when certain actions  *   take place (save, refresh, TBD)  *  * - Provide access to authentication and authorization related information  *  * - Connection instances are not thread safe.  *  * - The implementation of this and all related interfaces are intended to only  *   hold the state of the persistent layer at a given revision without any  *   session-related state modifications.  *  * - Whether this connection is bound to a workspace or to the whole repository  *   is determined by how the connection was acquired: connections acquired by  *   {@link RepositoryService#login(Object, String)} are bound to the workspace  *   passed to the login method. Connections acquired by  *   {@link Connection#getRepositoryConnection()} are bound to the whole repository.  *  * TODO: describe how this interface is intended to handle validation: nt, names, ac, constraints...  */
 end_comment
 
 begin_interface
@@ -75,9 +75,14 @@ name|AuthInfo
 name|getAuthInfo
 parameter_list|()
 function_decl|;
-comment|/**      * The immutable name of the workspace this {@code SessionInfo} instance has      * been created for. If no workspace name has been specified during      * repository login this method will return the name of the default      * workspace.      *      * @return name of the workspace this instance has been created for.      */
+comment|/**      * The immutable name of the workspace this {@code Connection} instance has      * been created for. If no workspace name has been specified during      * repository login this method will return the name of the default      * workspace.      *      * @return name of the workspace this instance has been created for.      */
 name|String
 name|getWorkspaceName
+parameter_list|()
+function_decl|;
+comment|/**      * Provide access to the whole repository (i.e. all workspaces) respecting      * the access rights of the current connection. This method returns the      * same connection instance on every invocation.      *      * @return a {@code Connection} which covers the whole repository.      */
+name|Connection
+name|getRepositoryConnection
 parameter_list|()
 function_decl|;
 name|NodeState
