@@ -117,11 +117,7 @@ name|MicroKernel
 name|getMicrokernel
 parameter_list|()
 function_decl|;
-name|String
-name|getRevision
-parameter_list|()
-function_decl|;
-comment|// TODO: this should be superfluous if SessionInfo is used for communication
+comment|// TODO: this should be superfluous when Connection is used for communication
 name|ValueFactory
 name|getValueFactory
 parameter_list|()

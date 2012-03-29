@@ -320,21 +320,15 @@ specifier|private
 name|String
 name|revision
 decl_stmt|;
-comment|/**      * Create a new transient space for the given {@code workspace}, {@code microkernel}      * and {@code revision}.      * @param workspace      * @param microkernel      * @param revision      */
+comment|/**      * Create a new transient space for the given {@code workspace}, {@code microkernel}      * and {@code revision}.      * @param workspace      * @param microkernel      */
 specifier|public
 name|TransientSpace
 parameter_list|(
-specifier|final
 name|String
 name|workspace
 parameter_list|,
-specifier|final
 name|MicroKernel
 name|microkernel
-parameter_list|,
-specifier|final
-name|String
-name|revision
 parameter_list|)
 block|{
 name|this
@@ -353,7 +347,10 @@ name|this
 operator|.
 name|revision
 operator|=
-name|revision
+name|microkernel
+operator|.
+name|getHeadRevision
+argument_list|()
 expr_stmt|;
 name|changeTree
 operator|=

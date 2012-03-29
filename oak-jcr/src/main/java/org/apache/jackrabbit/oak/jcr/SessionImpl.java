@@ -420,11 +420,6 @@ name|NodeStateProvider
 name|nodeStateProvider
 decl_stmt|;
 specifier|private
-name|String
-name|revision
-decl_stmt|;
-comment|// TODO: revision should be kept with sessionINFO and adjusted upon calls on oak-core API
-specifier|private
 name|boolean
 name|isAlive
 init|=
@@ -463,23 +458,6 @@ name|connection
 operator|=
 name|connection
 expr_stmt|;
-name|this
-operator|.
-name|revision
-operator|=
-name|globalContext
-operator|.
-name|getInstance
-argument_list|(
-name|MicroKernel
-operator|.
-name|class
-argument_list|)
-operator|.
-name|getHeadRevision
-argument_list|()
-expr_stmt|;
-comment|// fixme: this is a hack and creates a race. however we will get rid of tracking the revision here anyway
 name|valueFactory
 operator|=
 operator|new
@@ -525,8 +503,6 @@ name|sessionContext
 operator|.
 name|getMicrokernel
 argument_list|()
-argument_list|,
-name|revision
 argument_list|)
 expr_stmt|;
 name|nodeStateProvider
@@ -1064,8 +1040,6 @@ argument_list|()
 expr_stmt|;
 try|try
 block|{
-name|revision
-operator|=
 name|transientSpace
 operator|.
 name|save
@@ -1081,7 +1055,7 @@ name|getCurrentRoot
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|// todo: need a way to update a connection to head
+comment|// todo: need a better way to update a connection to head
 name|nodeStateProvider
 operator|.
 name|clear
@@ -1120,8 +1094,6 @@ argument_list|()
 expr_stmt|;
 try|try
 block|{
-name|revision
-operator|=
 name|transientSpace
 operator|.
 name|refresh
@@ -1139,7 +1111,7 @@ name|getCurrentRoot
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|// todo: need a way to update a connection to head
+comment|// todo: need a better way to update a connection to head
 name|nodeStateProvider
 operator|.
 name|clear
@@ -1739,17 +1711,6 @@ name|MicroKernel
 operator|.
 name|class
 argument_list|)
-return|;
-block|}
-annotation|@
-name|Override
-specifier|public
-name|String
-name|getRevision
-parameter_list|()
-block|{
-return|return
-name|revision
 return|;
 block|}
 annotation|@
