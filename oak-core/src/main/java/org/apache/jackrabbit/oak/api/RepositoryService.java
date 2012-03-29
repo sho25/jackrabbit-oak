@@ -42,7 +42,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * TODO:  * The {@code RepositoryService} is the main access point of the oak-api. It  * serves the following purposes:  *  * - validating a given login request and providing a connection  *   that is used for further communication with the persistent layer (MK).  *  * The implementation of this and all related interfaces are intended to only  * hold the state of the persistent layer at a given revision without any  * session-related state modifications.  */
+comment|/**  * The {@code RepositoryService} is the main access point of the oak-api. It  * serves the following purposes:  *  *<ul>  *<li> validating a given login request and providing a {@link Connection}  *   that is used for further communication with the persistent layer (i.e.  *   Microkernel).</li>  *</ul>  */
 end_comment
 
 begin_interface
@@ -50,6 +50,7 @@ specifier|public
 interface|interface
 name|RepositoryService
 block|{
+comment|/**      * Try to login a user identified by the passed {@code credentials}. On success      * this method returns a {@link Connection} to the given {@code workspace}.      *      * @param credentials      * @param workspaceName      * @return      * @throws LoginException      * @throws NoSuchWorkspaceException      */
 name|Connection
 name|login
 parameter_list|(

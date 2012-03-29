@@ -60,7 +60,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * The {@code Connection} interface ...  *  * - retrieving information from persistent layer (MK) that are accessible to  *   a given session  *  * - validate information being written back to the persistent layer. this includes  *   permission evaluation, node type and name constraints etc.  *  * - update the revision ID a given session is operating on.  *  * TODO: define whether this is a repository-level connection or just bound to a single workspace.  * TODO: describe how this interface is intended to handle validation: nt, names, ac, constraints...  */
+comment|/**  * The {@code Connection} interface ...  *  * - retrieving information from persistent layer (MK) that are accessible to  *   a given session  *  * - validate information being written back to the persistent layer. this includes  *   permission evaluation, node type and name constraints etc.  *  * - update the revision ID a given session is operating on when certain actions  *   take place (save, refresh, TBD)  *  * - Provide access to authentication and authorization related information  *  * - Connection instances are not thread safe.  *  * - The implementation of this and all related interfaces are intended to only  *   hold the state of the persistent layer at a given revision without any  *   session-related state modifications.  *  * TODO: define whether this is a repository-level connection or just bound to a single workspace.  * TODO: describe how this interface is intended to handle validation: nt, names, ac, constraints...  */
 end_comment
 
 begin_interface
@@ -70,6 +70,7 @@ name|Connection
 extends|extends
 name|Closeable
 block|{
+comment|/**      * This methods provides access to information related to authentication      * and authorization of this connection. Multiple calls to this method      * may return different instances which are guaranteed to be equal wrt.      * to {@link Object#equals(Object)}.      *      * @return  immutable {@link AuthInfo} instance      */
 name|AuthInfo
 name|getAuthInfo
 parameter_list|()
