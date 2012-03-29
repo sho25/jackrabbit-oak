@@ -330,12 +330,15 @@ literal|null
 condition|)
 block|{
 return|return
-operator|new
 name|ConnectionImpl
+operator|.
+name|createWorkspaceConnection
 argument_list|(
 name|sc
 argument_list|,
 name|wspName
+argument_list|,
+name|mk
 argument_list|,
 name|revision
 argument_list|)

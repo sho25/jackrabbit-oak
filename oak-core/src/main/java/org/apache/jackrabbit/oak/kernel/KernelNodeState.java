@@ -232,13 +232,11 @@ comment|/**  * Basic {@link NodeState} implementation based on the {@link MicroK
 end_comment
 
 begin_class
-specifier|public
 class|class
 name|KernelNodeState
 extends|extends
 name|AbstractNodeState
 block|{
-comment|// fixme make package private
 comment|/**      * Maximum number of child nodes kept in memory.      */
 specifier|static
 specifier|final
