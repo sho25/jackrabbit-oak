@@ -348,6 +348,18 @@ return|return
 name|workspaceName
 return|;
 block|}
+annotation|@
+name|Override
+specifier|public
+name|Connection
+name|getRepositoryConnection
+parameter_list|()
+block|{
+return|return
+literal|null
+return|;
+comment|// todo implement getRepositoryConnection
+block|}
 block|}
 end_class
 
