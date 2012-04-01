@@ -1051,8 +1051,13 @@ name|commit
 argument_list|(
 name|connection
 operator|.
+name|getNodeStateEditor
+argument_list|(
+name|connection
+operator|.
 name|getCurrentRoot
 argument_list|()
+argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// todo: need a better way to update a connection to head
@@ -1107,8 +1112,13 @@ name|commit
 argument_list|(
 name|connection
 operator|.
+name|getNodeStateEditor
+argument_list|(
+name|connection
+operator|.
 name|getCurrentRoot
 argument_list|()
+argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// todo: need a better way to update a connection to head

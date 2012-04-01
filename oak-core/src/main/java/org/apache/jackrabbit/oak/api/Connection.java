@@ -29,7 +29,7 @@ name|mk
 operator|.
 name|model
 operator|.
-name|NodeBuilder
+name|NodeState
 import|;
 end_import
 
@@ -45,7 +45,7 @@ name|mk
 operator|.
 name|model
 operator|.
-name|NodeState
+name|NodeStateEditor
 import|;
 end_import
 
@@ -92,14 +92,14 @@ function_decl|;
 name|NodeState
 name|commit
 parameter_list|(
-name|NodeState
-name|newRoot
+name|NodeStateEditor
+name|editor
 parameter_list|)
 throws|throws
 name|CommitFailedException
 function_decl|;
-name|NodeBuilder
-name|getNodeBuilder
+name|NodeStateEditor
+name|getNodeStateEditor
 parameter_list|(
 name|NodeState
 name|state

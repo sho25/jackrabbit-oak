@@ -45,7 +45,7 @@ name|mk
 operator|.
 name|model
 operator|.
-name|NodeBuilder
+name|NodeState
 import|;
 end_import
 
@@ -61,7 +61,7 @@ name|mk
 operator|.
 name|model
 operator|.
-name|NodeState
+name|NodeStateEditor
 import|;
 end_import
 
@@ -136,36 +136,35 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|void
-name|setRoot
-parameter_list|(
-name|NodeState
-name|newRoot
-parameter_list|)
-block|{
-throw|throw
-operator|new
-name|UnsupportedOperationException
-argument_list|()
-throw|;
-comment|// FIXME
-block|}
-annotation|@
-name|Override
-specifier|public
-name|NodeBuilder
-name|getNodeBuilder
+name|NodeStateEditor
+name|branch
 parameter_list|(
 name|NodeState
 name|base
 parameter_list|)
 block|{
-throw|throw
-operator|new
-name|UnsupportedOperationException
-argument_list|()
-throw|;
-comment|// FIXME
+return|return
+literal|null
+return|;
+comment|// todo implement branch
+block|}
+annotation|@
+name|Override
+specifier|public
+name|NodeState
+name|merge
+parameter_list|(
+name|NodeStateEditor
+name|branch
+parameter_list|,
+name|NodeState
+name|base
+parameter_list|)
+block|{
+return|return
+literal|null
+return|;
+comment|// todo implement merge
 block|}
 block|}
 end_class

@@ -45,7 +45,7 @@ name|mk
 operator|.
 name|model
 operator|.
-name|NodeBuilder
+name|NodeState
 import|;
 end_import
 
@@ -61,7 +61,7 @@ name|mk
 operator|.
 name|model
 operator|.
-name|NodeState
+name|NodeStateEditor
 import|;
 end_import
 
@@ -434,8 +434,8 @@ specifier|public
 name|NodeState
 name|commit
 parameter_list|(
-name|NodeState
-name|newRoot
+name|NodeStateEditor
+name|editor
 parameter_list|)
 throws|throws
 name|CommitFailedException
@@ -447,7 +447,7 @@ operator|==
 literal|null
 condition|)
 block|{
-comment|// todo            store.setRoot(newRoot);
+comment|// todo            merge changes from editor into base
 return|return
 name|root
 operator|=
@@ -459,8 +459,7 @@ return|;
 block|}
 else|else
 block|{
-comment|// todo            NodeBuilder builder = store.getNodeBuilder(store.getRoot());
-comment|//            builder.setChildNode(workspaceName, newRoot);
+comment|// todo            merge changes from editor into base
 return|return
 name|root
 operator|=
@@ -479,8 +478,8 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|NodeBuilder
-name|getNodeBuilder
+name|NodeStateEditor
+name|getNodeStateEditor
 parameter_list|(
 name|NodeState
 name|state
@@ -489,7 +488,7 @@ block|{
 return|return
 name|store
 operator|.
-name|getNodeBuilder
+name|branch
 argument_list|(
 name|state
 argument_list|)

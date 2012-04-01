@@ -18,7 +18,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * Storage abstraction for content trees. At any given point in time  * the stored content tree is rooted at a single immutable node state.  * Changes in the tree are constructed using {@link NodeBuilder} instances  * based on the root and other node states in the tree. The state of the  * entire tree can then be changed by setting the resulting modified root  * node state as the new root of the tree.  *<p>  * This is a low-level interface that doesn't cover functionality like  * merging concurrent changes or rejecting new tree states based on some  * higher-level consistency constraints.  */
+comment|/**  * Storage abstraction for content trees. At any given point in time  * the stored content tree is rooted at a single immutable node state.  * Changes in the tree are constructed by branching off a private copy  * using the {@link #branch(NodeState)} method which can be modified  * and merged back using the {@link #merge(NodeStateEditor, NodeState)}  * method.  *<p>  * This is a low-level interface that doesn't cover functionality like  * merging concurrent changes or rejecting new tree states based on some  * higher-level consistency constraints.  */
 end_comment
 
 begin_interface
@@ -31,18 +31,21 @@ name|NodeState
 name|getRoot
 parameter_list|()
 function_decl|;
-comment|/**      * Updates the state of the content tree.      *      * @param newRoot new root node state      */
-name|void
-name|setRoot
+comment|/**      * Creates a private branch from a {@code base} node state      * for editing. The branch can later be merged back into      * the node store using the {@link #merge(NodeStateEditor, NodeState) merge}      * method.      *      * @param base base node state      * @return a private branch rooted at {@code base}      */
+name|NodeStateEditor
+name|branch
 parameter_list|(
 name|NodeState
-name|newRoot
+name|base
 parameter_list|)
 function_decl|;
-comment|/**      * Returns a builder for constructing a new or modified node state.      * The builder is initialized with all the properties and child nodes      * from the given base node state, or with no properties or child nodes      * if no base node state is given.      *      * @param base base node state,      *             or<code>null</code> to construct a new node state      * @return builder instance      */
-name|NodeBuilder
-name|getNodeBuilder
+comment|/**      * Atomically merges the changes from {@code branch} back      * into the sub-tree rooted at {@code base}.      *      * @param branch branch to merge into {@code base}      * @param base base of the sub-tree for merging      * @return result of the merge operation: the new node state of the      *         sub tree rooted at {@code base}.      */
+name|NodeState
+name|merge
 parameter_list|(
+name|NodeStateEditor
+name|branch
+parameter_list|,
 name|NodeState
 name|base
 parameter_list|)
