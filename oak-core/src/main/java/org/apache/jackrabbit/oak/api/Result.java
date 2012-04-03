@@ -19,51 +19,41 @@ end_package
 
 begin_import
 import|import
-name|javax
+name|java
 operator|.
-name|jcr
+name|util
 operator|.
-name|NoSuchWorkspaceException
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|security
-operator|.
-name|auth
-operator|.
-name|login
-operator|.
-name|LoginException
+name|Iterator
 import|;
 end_import
 
 begin_comment
-comment|/**  * The {@code RepositoryService} is the main access point of the oak-api. It  * serves the following purposes:  *  *<ul>  *<li> validating a given login request and providing a {@link Connection}  *   that is used for further communication with the persistent layer (i.e.  *   Microkernel).</li>  *</ul>  */
+comment|/**  * A result from executing a query.  */
 end_comment
 
 begin_interface
 specifier|public
 interface|interface
-name|RepositoryService
+name|Result
 block|{
-comment|/**      * Try to login a user identified by the passed {@code credentials}. On success      * this method returns a {@link Connection} to the given {@code workspace}.      *      * @param credentials      * @param workspaceName      * @return the connection      * @throws LoginException      * @throws NoSuchWorkspaceException      */
-name|Connection
-name|login
-parameter_list|(
-name|Object
-name|credentials
-parameter_list|,
 name|String
-name|workspaceName
-parameter_list|)
-throws|throws
-name|LoginException
-throws|,
-name|NoSuchWorkspaceException
+index|[]
+name|getColumnNames
+parameter_list|()
+function_decl|;
+name|String
+index|[]
+name|getSelectorNames
+parameter_list|()
+function_decl|;
+name|Iterator
+argument_list|<
+name|?
+extends|extends
+name|ResultRow
+argument_list|>
+name|getRows
+parameter_list|()
 function_decl|;
 block|}
 end_interface

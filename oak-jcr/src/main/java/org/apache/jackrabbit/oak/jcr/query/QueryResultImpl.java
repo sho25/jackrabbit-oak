@@ -99,7 +99,7 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|query
+name|api
 operator|.
 name|Result
 import|;
@@ -115,7 +115,7 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|query
+name|api
 operator|.
 name|ResultRow
 import|;
@@ -209,6 +209,8 @@ block|{
 specifier|private
 name|Iterator
 argument_list|<
+name|?
+extends|extends
 name|ResultRow
 argument_list|>
 name|it

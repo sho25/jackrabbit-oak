@@ -81,9 +81,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|query
+name|api
 operator|.
-name|CoreValue
+name|ResultRow
 import|;
 end_import
 
@@ -99,7 +99,7 @@ name|oak
 operator|.
 name|query
 operator|.
-name|ResultRow
+name|CoreValue
 import|;
 end_import
 

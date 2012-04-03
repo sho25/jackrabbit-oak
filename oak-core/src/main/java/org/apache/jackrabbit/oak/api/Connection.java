@@ -105,8 +105,12 @@ name|NodeState
 name|state
 parameter_list|)
 function_decl|;
+comment|/**      * Get the query engine.      *      * @return the query engine      */
+name|QueryEngine
+name|getQueryEngine
+parameter_list|()
+function_decl|;
 comment|// TODO : add versioning operations
-comment|// TODO : add query execution operations
 block|}
 end_interface
 

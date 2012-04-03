@@ -1373,7 +1373,7 @@ name|explain
 expr_stmt|;
 block|}
 specifier|public
-name|Result
+name|ResultImpl
 name|executeQuery
 parameter_list|(
 name|String
@@ -1385,7 +1385,7 @@ argument_list|()
 expr_stmt|;
 name|Iterator
 argument_list|<
-name|ResultRow
+name|ResultRowImpl
 argument_list|>
 name|it
 decl_stmt|;
@@ -1419,11 +1419,11 @@ literal|"plan"
 argument_list|)
 block|}
 expr_stmt|;
-name|ResultRow
+name|ResultRowImpl
 name|r
 init|=
 operator|new
-name|ResultRow
+name|ResultRowImpl
 argument_list|(
 name|this
 argument_list|,
@@ -1482,14 +1482,14 @@ comment|// TODO "order by" is not necessary if the used index returns
 comment|// rows in the same order
 name|ArrayList
 argument_list|<
-name|ResultRow
+name|ResultRowImpl
 argument_list|>
 name|list
 init|=
 operator|new
 name|ArrayList
 argument_list|<
-name|ResultRow
+name|ResultRowImpl
 argument_list|>
 argument_list|()
 decl_stmt|;
@@ -1501,7 +1501,7 @@ name|hasNext
 argument_list|()
 condition|)
 block|{
-name|ResultRow
+name|ResultRowImpl
 name|r
 init|=
 name|it
@@ -1535,7 +1535,7 @@ block|}
 block|}
 return|return
 operator|new
-name|Result
+name|ResultImpl
 argument_list|(
 name|this
 argument_list|,
@@ -1712,7 +1712,7 @@ name|RowIterator
 implements|implements
 name|Iterator
 argument_list|<
-name|ResultRow
+name|ResultRowImpl
 argument_list|>
 block|{
 specifier|private
@@ -1721,7 +1721,7 @@ name|String
 name|revisionId
 decl_stmt|;
 specifier|private
-name|ResultRow
+name|ResultRowImpl
 name|current
 decl_stmt|;
 specifier|private
@@ -1855,7 +1855,7 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|ResultRow
+name|ResultRowImpl
 name|next
 parameter_list|()
 block|{
@@ -1879,7 +1879,7 @@ name|fetchNext
 argument_list|()
 expr_stmt|;
 block|}
-name|ResultRow
+name|ResultRowImpl
 name|r
 init|=
 name|current
@@ -1906,7 +1906,7 @@ argument_list|()
 throw|;
 block|}
 block|}
-name|ResultRow
+name|ResultRowImpl
 name|currentRow
 parameter_list|()
 block|{
@@ -2083,7 +2083,7 @@ block|}
 block|}
 return|return
 operator|new
-name|ResultRow
+name|ResultRowImpl
 argument_list|(
 name|this
 argument_list|,
