@@ -205,6 +205,10 @@ name|Set
 import|;
 end_import
 
+begin_comment
+comment|/**  * This {@code NodeStateEditor} implementation accumulates all changes into a json diff  * and applies them to the microkernel on  * {@link org.apache.jackrabbit.mk.model.NodeStore#merge(NodeStateEditor, NodeState)}.  *  * TODO: review/rewrite when OAK-45 is resolved  * When the MicroKernel has support for branching and merging private working copies,  * this implementation could:  * - directly write every operation through to the private working copy  * - batch write operations through to the private working copy when the  *   transient space gets too big.  * - spool write operations through to the private working copy on a background thread  */
+end_comment
+
 begin_class
 specifier|public
 class|class
