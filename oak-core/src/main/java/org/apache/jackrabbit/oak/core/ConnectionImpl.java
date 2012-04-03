@@ -504,7 +504,6 @@ operator|==
 literal|null
 condition|)
 block|{
-comment|// todo            merge changes from editor into base
 return|return
 name|root
 operator|=
@@ -516,7 +515,6 @@ return|;
 block|}
 else|else
 block|{
-comment|// todo            merge changes from editor into base
 return|return
 name|root
 operator|=
@@ -531,6 +529,7 @@ name|workspaceName
 argument_list|)
 return|;
 block|}
+comment|// todo return store.merge(editor, editor.getBaseNodeState());
 block|}
 annotation|@
 name|Override

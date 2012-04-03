@@ -39,7 +39,7 @@ name|NodeState
 name|base
 parameter_list|)
 function_decl|;
-comment|/**      * Atomically merges the changes from {@code branch} back      * into the sub-tree rooted at {@code base}.      *      * @param branch branch to merge into {@code base}      * @param base base of the sub-tree for merging      * @return result of the merge operation: the new node state of the      *         sub tree rooted at {@code base}.      */
+comment|/**      * Atomically merges the changes from {@code branch} back into the      * {@code target}.      *      * @param branch branch for merging into {@code target}      * @param target target of the merge operation      * @return node state resulting from merging {@code branch} into      *         {@code target}.      */
 name|NodeState
 name|merge
 parameter_list|(
@@ -47,7 +47,7 @@ name|NodeStateEditor
 name|branch
 parameter_list|,
 name|NodeState
-name|base
+name|target
 parameter_list|)
 function_decl|;
 block|}

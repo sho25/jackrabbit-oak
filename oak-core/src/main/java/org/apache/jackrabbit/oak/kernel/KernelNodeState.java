@@ -1198,6 +1198,23 @@ return|return
 name|entries
 return|;
 block|}
+comment|//------------------------------------------------------------< internal>---
+name|String
+name|getRevision
+parameter_list|()
+block|{
+return|return
+name|revision
+return|;
+block|}
+name|String
+name|getPath
+parameter_list|()
+block|{
+return|return
+name|path
+return|;
+block|}
 specifier|private
 name|String
 name|getChildPath

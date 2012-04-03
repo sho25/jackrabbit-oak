@@ -26,15 +26,15 @@ specifier|public
 interface|interface
 name|NodeStateEditor
 block|{
-comment|/**      * Add or replace the child node state with the given {@code name}.      * @param name name of the new node state      * @return editor for the added node state      */
-name|NodeStateEditor
+comment|/**      * Add the child node state with the given {@code name}. Does nothing      * if such a child node already exists.      * @param name name of the new node state      */
+name|void
 name|addNode
 parameter_list|(
 name|String
 name|name
 parameter_list|)
 function_decl|;
-comment|/**      * Remove the child node state with the given {@code name}.      * @param name  name of the node state to remove      */
+comment|/**      * Remove the child node state with the given {@code name}. Does nothing      * if no such child node exists.      * @param name  name of the node state to remove      */
 name|void
 name|removeNode
 parameter_list|(
@@ -42,15 +42,12 @@ name|String
 name|name
 parameter_list|)
 function_decl|;
-comment|/**      * Set a property on this node state      * @param name name of the property      * @param value value of the property      */
+comment|/**      * Set a property on this node state      * @param state property state to set      */
 name|void
 name|setProperty
 parameter_list|(
-name|String
-name|name
-parameter_list|,
-name|Scalar
-name|value
+name|PropertyState
+name|state
 parameter_list|)
 function_decl|;
 comment|/**      * Remove a property from this node state      * @param name name of the property      */
