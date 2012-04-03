@@ -165,6 +165,10 @@ name|Set
 import|;
 end_import
 
+begin_comment
+comment|// fixme: this should be immutable as mandated by the NodeState interface
+end_comment
+
 begin_class
 specifier|public
 class|class
