@@ -507,6 +507,10 @@ name|contains
 argument_list|(
 name|name
 argument_list|)
+operator|||
+name|persistentState
+operator|==
+literal|null
 condition|?
 literal|null
 else|:
@@ -648,6 +652,7 @@ operator|.
 name|getProperties
 argument_list|()
 decl_stmt|;
+comment|// fixme check for null
 return|return
 operator|new
 name|Iterable
@@ -910,6 +915,7 @@ argument_list|,
 name|count
 argument_list|)
 decl_stmt|;
+comment|// fixme check for null
 return|return
 operator|new
 name|Iterable
@@ -1332,6 +1338,17 @@ name|String
 name|name
 parameter_list|)
 block|{
+if|if
+condition|(
+name|persistentState
+operator|==
+literal|null
+condition|)
+block|{
+return|return
+literal|null
+return|;
+block|}
 name|NodeState
 name|state
 init|=
