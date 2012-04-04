@@ -490,6 +490,8 @@ name|TransientNodeState
 argument_list|>
 name|existing
 range|:
+name|state
+operator|.
 name|existingChildNodes
 operator|.
 name|entrySet
@@ -538,6 +540,8 @@ name|TransientNodeState
 argument_list|>
 name|added
 range|:
+name|state
+operator|.
 name|addedNodes
 operator|.
 name|entrySet
