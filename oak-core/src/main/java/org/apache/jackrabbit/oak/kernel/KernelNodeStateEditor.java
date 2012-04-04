@@ -82,7 +82,7 @@ import|;
 end_import
 
 begin_import
-import|import
+import|import static
 name|org
 operator|.
 name|apache
@@ -94,6 +94,44 @@ operator|.
 name|util
 operator|.
 name|PathUtils
+operator|.
+name|elements
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|mk
+operator|.
+name|util
+operator|.
+name|PathUtils
+operator|.
+name|getName
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|mk
+operator|.
+name|util
+operator|.
+name|PathUtils
+operator|.
+name|getParentPath
 import|;
 end_import
 
@@ -108,21 +146,25 @@ name|KernelNodeStateEditor
 implements|implements
 name|NodeStateEditor
 block|{
+comment|/** Base node state of this private branch */
 specifier|private
 specifier|final
 name|NodeState
 name|base
 decl_stmt|;
+comment|/** Transient state this editor is acting upon */
 specifier|private
 specifier|final
 name|TransientNodeState
 name|transientState
 decl_stmt|;
+comment|/** Json diff of this private branch */
 specifier|private
 specifier|final
 name|StringBuilder
 name|jsop
 decl_stmt|;
+comment|/**      * Create a new node state editor representing the root of a fresh      * private branch.      * @param base  base node state of the private branch      */
 name|KernelNodeStateEditor
 parameter_list|(
 name|NodeState
@@ -156,6 +198,7 @@ name|StringBuilder
 argument_list|()
 expr_stmt|;
 block|}
+comment|/**      * Create a new node state editor for a given transient node state.      * @param parentEditor  editor of the parent of {@code state}      * @param state  transient node state for which to create the node state editor      */
 name|KernelNodeStateEditor
 parameter_list|(
 name|KernelNodeStateEditor
@@ -386,21 +429,15 @@ name|sourceParent
 init|=
 name|getTransientState
 argument_list|(
-name|PathUtils
-operator|.
-name|getAncestorPath
+name|getParentPath
 argument_list|(
 name|sourcePath
-argument_list|,
-literal|1
 argument_list|)
 argument_list|)
 decl_stmt|;
 name|String
 name|sourceName
 init|=
-name|PathUtils
-operator|.
 name|getName
 argument_list|(
 name|sourcePath
@@ -428,21 +465,15 @@ name|destParent
 init|=
 name|getTransientState
 argument_list|(
-name|PathUtils
-operator|.
-name|getAncestorPath
+name|getParentPath
 argument_list|(
-name|destPath
-argument_list|,
-literal|1
+name|sourcePath
 argument_list|)
 argument_list|)
 decl_stmt|;
 name|String
 name|destName
 init|=
-name|PathUtils
-operator|.
 name|getName
 argument_list|(
 name|destPath
@@ -527,21 +558,15 @@ name|sourceParent
 init|=
 name|getTransientState
 argument_list|(
-name|PathUtils
-operator|.
-name|getAncestorPath
+name|getParentPath
 argument_list|(
 name|sourcePath
-argument_list|,
-literal|1
 argument_list|)
 argument_list|)
 decl_stmt|;
 name|String
 name|sourceName
 init|=
-name|PathUtils
-operator|.
 name|getName
 argument_list|(
 name|sourcePath
@@ -569,21 +594,15 @@ name|destParent
 init|=
 name|getTransientState
 argument_list|(
-name|PathUtils
-operator|.
-name|getAncestorPath
+name|getParentPath
 argument_list|(
-name|destPath
-argument_list|,
-literal|1
+name|sourcePath
 argument_list|)
 argument_list|)
 decl_stmt|;
 name|String
 name|destName
 init|=
-name|PathUtils
-operator|.
 name|getName
 argument_list|(
 name|destPath
@@ -695,6 +714,7 @@ name|base
 return|;
 block|}
 comment|//------------------------------------------------------------< internal>---
+comment|/**      * Atomically merges the changes from this branch back into the      * {@code target}.      *      * @param microkernel Microkernel instance for applying the changes      * @param target target of the merge operation      * @return node state resulting from merging      */
 name|NodeState
 name|mergeInto
 parameter_list|(
@@ -752,6 +772,7 @@ name|rev
 argument_list|)
 return|;
 block|}
+comment|/**      * @return the {@link TransientNodeState} instance this editor is      *         acting upon.      */
 name|TransientNodeState
 name|getTransientState
 parameter_list|()
@@ -760,6 +781,7 @@ return|return
 name|transientState
 return|;
 block|}
+comment|/**      * Get a transient node state for the node identified by      * {@code path}      * @param path  the path to the node state      * @return  a {@link TransientNodeState} instance for the item      *          at {@code path} or {@code null} if no such item exits.      */
 specifier|private
 name|TransientNodeState
 name|getTransientState
@@ -778,8 +800,6 @@ control|(
 name|String
 name|name
 range|:
-name|PathUtils
-operator|.
 name|elements
 argument_list|(
 name|path
@@ -811,6 +831,7 @@ return|return
 name|state
 return|;
 block|}
+comment|/**      * Path of the item {@code name}      * @param name      * @return relative path of the item {@code name}      */
 specifier|private
 name|String
 name|path
