@@ -687,18 +687,6 @@ annotation|@
 name|Override
 specifier|public
 name|NodeState
-name|getNodeState
-parameter_list|()
-block|{
-comment|// todo implement getNodeState
-return|return
-literal|null
-return|;
-block|}
-annotation|@
-name|Override
-specifier|public
-name|NodeState
 name|getBaseNodeState
 parameter_list|()
 block|{

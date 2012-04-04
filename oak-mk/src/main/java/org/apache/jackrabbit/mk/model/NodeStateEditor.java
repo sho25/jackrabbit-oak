@@ -88,11 +88,6 @@ name|String
 name|name
 parameter_list|)
 function_decl|;
-comment|/**      * Returns an immutable node state that matches the current state of      * the editor.      *      * @return immutable node state      */
-name|NodeState
-name|getNodeState
-parameter_list|()
-function_decl|;
 comment|/**      * Return the base node state of this private branch      * @return base node state      */
 name|NodeState
 name|getBaseNodeState
