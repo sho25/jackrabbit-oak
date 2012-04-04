@@ -185,10 +185,6 @@ argument_list|(
 name|base
 argument_list|,
 name|this
-argument_list|,
-literal|null
-argument_list|,
-literal|""
 argument_list|)
 expr_stmt|;
 name|jsop
