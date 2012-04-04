@@ -726,7 +726,7 @@ name|targetPath
 init|=
 name|target
 operator|.
-name|getRevision
+name|getPath
 argument_list|()
 decl_stmt|;
 name|String
@@ -734,7 +734,7 @@ name|targetRevision
 init|=
 name|target
 operator|.
-name|getPath
+name|getRevision
 argument_list|()
 decl_stmt|;
 name|String
