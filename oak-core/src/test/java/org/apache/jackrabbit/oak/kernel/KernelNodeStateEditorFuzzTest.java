@@ -2391,12 +2391,7 @@ range|:
 name|state1
 operator|.
 name|getChildNodes
-argument_list|(
-literal|0
-argument_list|,
-operator|-
-literal|1
-argument_list|)
+argument_list|()
 control|)
 block|{
 name|checkEqual
