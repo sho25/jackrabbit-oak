@@ -1249,6 +1249,15 @@ return|return
 name|editor
 return|;
 block|}
+comment|/**      * @return  the name of this transient node state      */
+name|String
+name|getName
+parameter_list|()
+block|{
+return|return
+name|name
+return|;
+block|}
 comment|/**      * @return  relative path of this transient node state      */
 name|String
 name|getPath
@@ -1356,6 +1365,28 @@ name|PropertyState
 name|state
 parameter_list|)
 block|{
+if|if
+condition|(
+name|hasExistingProperty
+argument_list|(
+name|state
+operator|.
+name|getName
+argument_list|()
+argument_list|)
+condition|)
+block|{
+name|removedProperties
+operator|.
+name|add
+argument_list|(
+name|state
+operator|.
+name|getName
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
 name|addedProperties
 operator|.
 name|put

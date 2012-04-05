@@ -711,7 +711,7 @@ return|;
 block|}
 comment|//------------------------------------------------------------< internal>---
 comment|/**      * Atomically merges the changes from this branch back into the      * {@code target}.      *      * @param microkernel Microkernel instance for applying the changes      * @param target target of the merge operation      * @return node state resulting from merging      */
-name|NodeState
+name|KernelNodeState
 name|mergeInto
 parameter_list|(
 name|MicroKernel
