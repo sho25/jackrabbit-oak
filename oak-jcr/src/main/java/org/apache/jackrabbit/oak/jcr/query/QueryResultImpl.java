@@ -219,6 +219,9 @@ name|result
 operator|.
 name|getRows
 argument_list|()
+operator|.
+name|iterator
+argument_list|()
 decl_stmt|;
 annotation|@
 name|Override
