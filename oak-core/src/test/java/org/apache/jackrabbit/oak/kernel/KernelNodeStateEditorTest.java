@@ -1664,7 +1664,7 @@ name|getChildNodeCount
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|transientState
+name|editor
 operator|.
 name|removeNode
 argument_list|(
@@ -1681,7 +1681,7 @@ name|getChildNodeCount
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|transientState
+name|editor
 operator|.
 name|addNode
 argument_list|(
@@ -1698,7 +1698,7 @@ name|getChildNodeCount
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|transientState
+name|editor
 operator|.
 name|addNode
 argument_list|(
@@ -1760,7 +1760,7 @@ argument_list|(
 literal|"foo"
 argument_list|)
 decl_stmt|;
-name|transientState
+name|editor
 operator|.
 name|setProperty
 argument_list|(
@@ -1783,7 +1783,7 @@ name|getPropertyCount
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|transientState
+name|editor
 operator|.
 name|removeProperty
 argument_list|(
@@ -1800,7 +1800,7 @@ name|getPropertyCount
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|transientState
+name|editor
 operator|.
 name|setProperty
 argument_list|(
@@ -1823,7 +1823,7 @@ name|getPropertyCount
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|transientState
+name|editor
 operator|.
 name|setProperty
 argument_list|(
