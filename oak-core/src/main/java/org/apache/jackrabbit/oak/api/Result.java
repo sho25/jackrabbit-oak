@@ -17,16 +17,6 @@ name|api
 package|;
 end_package
 
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Iterator
-import|;
-end_import
-
 begin_comment
 comment|/**  * A result from executing a query.  */
 end_comment
@@ -46,7 +36,7 @@ index|[]
 name|getSelectorNames
 parameter_list|()
 function_decl|;
-name|Iterator
+name|Iterable
 argument_list|<
 name|?
 extends|extends

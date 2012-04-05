@@ -64,7 +64,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * The query engine allows to parse and execute queries.  *<p>  * At least the query languages {@code QueryEngine.XPATH} and {@code  * QueryEngine.SQL2} are supported. Other query languages might be supported  * depending on the configured query parsers.  */
+comment|/**  * The query engine allows to parse and execute queries.  *<p>  * What query languages are supported depends on the registered query parsers.  */
 end_comment
 
 begin_interface
@@ -72,18 +72,6 @@ specifier|public
 interface|interface
 name|QueryEngine
 block|{
-comment|/**      * The XPath query language.      */
-name|String
-name|XPATH
-init|=
-literal|"xpath"
-decl_stmt|;
-comment|/**      * The SQL-2 query language.      */
-name|String
-name|SQL2
-init|=
-literal|"sql2"
-decl_stmt|;
 comment|/**      * Parse the query (check if it's valid) and get the list of bind variable names.      *      * @param statement      * @param language      * @return the list of bind variable names      * @throws ParseException      */
 name|List
 argument_list|<
