@@ -173,22 +173,6 @@ name|oak
 operator|.
 name|api
 operator|.
-name|QueryEngine
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|api
-operator|.
 name|ResultRow
 import|;
 end_import
@@ -394,7 +378,7 @@ name|executeQuery
 argument_list|(
 literal|"select * from [nt:base] where id = $id"
 argument_list|,
-name|QueryEngine
+name|QueryEngineImpl
 operator|.
 name|SQL2
 argument_list|,
@@ -402,6 +386,9 @@ name|sv
 argument_list|)
 operator|.
 name|getRows
+argument_list|()
+operator|.
+name|iterator
 argument_list|()
 expr_stmt|;
 name|assertTrue
@@ -447,7 +434,7 @@ name|executeQuery
 argument_list|(
 literal|"select * from [nt:base] where id = $id"
 argument_list|,
-name|QueryEngine
+name|QueryEngineImpl
 operator|.
 name|SQL2
 argument_list|,
@@ -455,6 +442,9 @@ name|sv
 argument_list|)
 operator|.
 name|getRows
+argument_list|()
+operator|.
+name|iterator
 argument_list|()
 expr_stmt|;
 name|assertTrue
@@ -486,7 +476,7 @@ name|executeQuery
 argument_list|(
 literal|"explain select * from [nt:base] where id = 1 order by id"
 argument_list|,
-name|QueryEngine
+name|QueryEngineImpl
 operator|.
 name|SQL2
 argument_list|,
@@ -494,6 +484,9 @@ literal|null
 argument_list|)
 operator|.
 name|getRows
+argument_list|()
+operator|.
+name|iterator
 argument_list|()
 expr_stmt|;
 name|assertTrue
@@ -790,7 +783,7 @@ name|executeQuery
 argument_list|(
 name|line
 argument_list|,
-name|QueryEngine
+name|QueryEngineImpl
 operator|.
 name|SQL2
 argument_list|,
@@ -798,6 +791,9 @@ literal|null
 argument_list|)
 operator|.
 name|getRows
+argument_list|()
+operator|.
+name|iterator
 argument_list|()
 decl_stmt|;
 name|boolean
