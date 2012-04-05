@@ -39,7 +39,7 @@ name|jackrabbit
 operator|.
 name|mk
 operator|.
-name|MicroKernelFactory
+name|MultiMkTestBase
 import|;
 end_import
 
@@ -53,7 +53,9 @@ name|jackrabbit
 operator|.
 name|mk
 operator|.
-name|MultiMkTestBase
+name|index
+operator|.
+name|IndexWrapper
 import|;
 end_import
 
@@ -151,23 +153,11 @@ name|setUp
 argument_list|()
 expr_stmt|;
 name|mk
-operator|.
-name|dispose
-argument_list|()
-expr_stmt|;
-name|url
 operator|=
-literal|"index:"
-operator|+
-name|url
-expr_stmt|;
-name|mk
-operator|=
-name|MicroKernelFactory
-operator|.
-name|getInstance
+operator|new
+name|IndexWrapper
 argument_list|(
-name|url
+name|mk
 argument_list|)
 expr_stmt|;
 block|}
