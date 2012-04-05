@@ -1901,7 +1901,7 @@ return|return
 name|revision
 return|;
 block|}
-comment|/**      * Update the index with the given changes.      *      * @param t the changes      * @param lastRevision      */
+comment|/**      * Update the index with the given changes.      *      * @param rootPath the root path      * @param t the changes      * @param lastRevision      */
 specifier|public
 name|void
 name|updateIndex
@@ -1954,6 +1954,9 @@ operator|.
 name|readString
 argument_list|()
 argument_list|)
+decl_stmt|;
+name|String
+name|target
 decl_stmt|;
 switch|switch
 condition|(
@@ -2089,11 +2092,45 @@ block|}
 break|break;
 block|}
 case|case
-literal|'-'
+literal|'*'
 case|:
-name|moveNode
+comment|// TODO support and test copy operation ("*"),
+comment|// specially in combination with other operations
+comment|// possibly split up the commit in this case
+name|t
+operator|.
+name|read
+argument_list|(
+literal|':'
+argument_list|)
+expr_stmt|;
+name|target
+operator|=
+name|t
+operator|.
+name|readString
+argument_list|()
+expr_stmt|;
+name|moveOrCopyNode
 argument_list|(
 name|path
+argument_list|,
+literal|false
+argument_list|,
+name|target
+argument_list|,
+name|lastRevision
+argument_list|)
+expr_stmt|;
+break|break;
+case|case
+literal|'-'
+case|:
+name|moveOrCopyNode
+argument_list|(
+name|path
+argument_list|,
+literal|true
 argument_list|,
 literal|null
 argument_list|,
@@ -2159,6 +2196,9 @@ block|}
 case|case
 literal|'>'
 case|:
+comment|// TODO does move work correctly
+comment|// in combination with other operations?
+comment|// possibly split up the commit in this case
 name|t
 operator|.
 name|read
@@ -2177,8 +2217,6 @@ name|path
 argument_list|)
 decl_stmt|;
 name|String
-name|target
-decl_stmt|,
 name|position
 decl_stmt|;
 if|if
@@ -2325,9 +2363,11 @@ name|position
 argument_list|)
 throw|;
 block|}
-name|moveNode
+name|moveOrCopyNode
 argument_list|(
 name|path
+argument_list|,
+literal|true
 argument_list|,
 name|target
 argument_list|,
@@ -2733,10 +2773,13 @@ block|}
 block|}
 specifier|private
 name|void
-name|moveNode
+name|moveOrCopyNode
 parameter_list|(
 name|String
 name|sourcePath
+parameter_list|,
+name|boolean
+name|remove
 parameter_list|,
 name|String
 name|targetPath
@@ -2835,6 +2878,11 @@ argument_list|,
 name|sourcePath
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|remove
+condition|)
+block|{
 name|addOrRemoveRecursive
 argument_list|(
 name|n
@@ -2844,6 +2892,7 @@ argument_list|,
 literal|false
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|targetPath
