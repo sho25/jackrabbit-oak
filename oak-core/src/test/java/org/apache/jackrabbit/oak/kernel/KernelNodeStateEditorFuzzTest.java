@@ -1681,10 +1681,21 @@ break|break;
 case|case
 literal|5
 case|:
-comment|// todo: copy is currently broken due to OAK-47
-comment|// op = createCopyNode();
+comment|// Too many copy ops make the test way slow
 name|op
 operator|=
+name|random
+operator|.
+name|nextInt
+argument_list|(
+literal|10
+argument_list|)
+operator|==
+literal|0
+condition|?
+name|createCopyNode
+argument_list|()
+else|:
 literal|null
 expr_stmt|;
 break|break;
