@@ -25,6 +25,20 @@ name|apache
 operator|.
 name|jackrabbit
 operator|.
+name|commons
+operator|.
+name|SimpleValueFactory
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
 name|mk
 operator|.
 name|core
@@ -181,6 +195,19 @@ specifier|final
 name|GlobalContext
 name|context
 decl_stmt|;
+specifier|private
+specifier|final
+name|Descriptors
+name|descriptors
+init|=
+operator|new
+name|Descriptors
+argument_list|(
+operator|new
+name|SimpleValueFactory
+argument_list|()
+argument_list|)
+decl_stmt|;
 comment|/**      * Utility constructor that creates a JCR binding for an initially empty,      * newly constructed Oak repository.      */
 specifier|public
 name|RepositoryImpl
@@ -213,6 +240,7 @@ name|context
 expr_stmt|;
 block|}
 comment|//---------------------------------------------------------< Repository>---
+comment|/**      * @see javax.jcr.Repository#getDescriptorKeys()      */
 annotation|@
 name|Override
 specifier|public
@@ -221,13 +249,14 @@ index|[]
 name|getDescriptorKeys
 parameter_list|()
 block|{
-comment|// TODO
-throw|throw
-operator|new
-name|UnsupportedOperationException
+return|return
+name|descriptors
+operator|.
+name|getKeys
 argument_list|()
-throw|;
+return|;
 block|}
+comment|/**      * @see Repository#isStandardDescriptor(String)      */
 annotation|@
 name|Override
 specifier|public
@@ -238,13 +267,16 @@ name|String
 name|key
 parameter_list|)
 block|{
-comment|// TODO
-throw|throw
-operator|new
-name|UnsupportedOperationException
-argument_list|()
-throw|;
+return|return
+name|descriptors
+operator|.
+name|isStandardDescriptor
+argument_list|(
+name|key
+argument_list|)
+return|;
 block|}
+comment|/**      * @see javax.jcr.Repository#getDescriptor(String)      */
 annotation|@
 name|Override
 specifier|public
@@ -255,13 +287,50 @@ name|String
 name|key
 parameter_list|)
 block|{
-comment|// TODO
-throw|throw
-operator|new
-name|UnsupportedOperationException
+try|try
+block|{
+name|Value
+name|v
+init|=
+name|getDescriptorValue
+argument_list|(
+name|key
+argument_list|)
+decl_stmt|;
+return|return
+name|v
+operator|==
+literal|null
+condition|?
+literal|null
+else|:
+name|v
+operator|.
+name|getString
 argument_list|()
-throw|;
+return|;
 block|}
+catch|catch
+parameter_list|(
+name|RepositoryException
+name|e
+parameter_list|)
+block|{
+name|log
+operator|.
+name|debug
+argument_list|(
+literal|"Error converting value for descriptor with key {} to string"
+argument_list|,
+name|key
+argument_list|)
+expr_stmt|;
+return|return
+literal|null
+return|;
+block|}
+block|}
+comment|/**      * @see javax.jcr.Repository#getDescriptorValue(String)      */
 annotation|@
 name|Override
 specifier|public
@@ -272,13 +341,16 @@ name|String
 name|key
 parameter_list|)
 block|{
-comment|// TODO
-throw|throw
-operator|new
-name|UnsupportedOperationException
-argument_list|()
-throw|;
+return|return
+name|descriptors
+operator|.
+name|getValue
+argument_list|(
+name|key
+argument_list|)
+return|;
 block|}
+comment|/**      * @see javax.jcr.Repository#getDescriptorValues(String)      */
 annotation|@
 name|Override
 specifier|public
@@ -290,13 +362,16 @@ name|String
 name|key
 parameter_list|)
 block|{
-comment|// TODO
-throw|throw
-operator|new
-name|UnsupportedOperationException
-argument_list|()
-throw|;
+return|return
+name|descriptors
+operator|.
+name|getValues
+argument_list|(
+name|key
+argument_list|)
+return|;
 block|}
+comment|/**      * @see javax.jcr.Repository#isSingleValueDescriptor(String)      */
 annotation|@
 name|Override
 specifier|public
@@ -307,12 +382,14 @@ name|String
 name|key
 parameter_list|)
 block|{
-comment|// TODO
-throw|throw
-operator|new
-name|UnsupportedOperationException
-argument_list|()
-throw|;
+return|return
+name|descriptors
+operator|.
+name|isSingleValueDescriptor
+argument_list|(
+name|key
+argument_list|)
+return|;
 block|}
 comment|/**      * @see javax.jcr.Repository#login(javax.jcr.Credentials, String)      */
 annotation|@
@@ -362,6 +439,8 @@ operator|new
 name|SessionImpl
 argument_list|(
 name|context
+argument_list|,
+name|this
 argument_list|,
 name|connection
 argument_list|)
