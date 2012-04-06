@@ -1532,7 +1532,9 @@ name|diffHandler
 init|=
 operator|new
 name|TraversingNodeDiffHandler
-argument_list|()
+argument_list|(
+name|rp
+argument_list|)
 block|{
 annotation|@
 name|Override
@@ -1883,7 +1885,9 @@ name|diffHandler
 operator|=
 operator|new
 name|TraversingNodeDiffHandler
-argument_list|()
+argument_list|(
+name|rp
+argument_list|)
 block|{
 annotation|@
 name|Override

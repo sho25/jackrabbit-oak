@@ -50,6 +50,20 @@ name|NodeState
 name|target
 parameter_list|)
 function_decl|;
+comment|/**      * Compares the given two node states. Any found differences are      * reported by calling the relevant added, changed or deleted methods      * of the given handler.      *      * @param before node state before changes      * @param after node state after changes      * @param diff handler of node state differences      */
+name|void
+name|compare
+parameter_list|(
+name|NodeState
+name|before
+parameter_list|,
+name|NodeState
+name|after
+parameter_list|,
+name|NodeStateDiff
+name|diff
+parameter_list|)
+function_decl|;
 block|}
 end_interface
 

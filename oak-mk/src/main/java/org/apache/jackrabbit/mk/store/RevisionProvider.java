@@ -77,6 +77,22 @@ name|mk
 operator|.
 name|model
 operator|.
+name|NodeStore
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|mk
+operator|.
+name|model
+operator|.
 name|StoredCommit
 import|;
 end_import
@@ -105,6 +121,8 @@ begin_interface
 specifier|public
 interface|interface
 name|RevisionProvider
+extends|extends
+name|NodeStore
 block|{
 comment|/**      * Adapts the given {@link StoredNode} to a corresponding      * {@link NodeState} instance.      *      * @param node stored node instance      * @return node state adapter      */
 name|NodeState
