@@ -51,6 +51,22 @@ name|MicroKernel
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|mk
+operator|.
+name|core
+operator|.
+name|MicroKernelImpl
+import|;
+end_import
+
 begin_class
 specifier|public
 class|class
@@ -76,17 +92,6 @@ decl_stmt|;
 specifier|private
 specifier|static
 specifier|final
-name|String
-name|URL
-init|=
-literal|"fs:{homeDir}/target;clean"
-decl_stmt|;
-comment|// private static final String URL = "fs:{homeDir}/target";
-comment|// private static final String URL = "simple:";
-comment|//private static final String URL = "simple:fs:target/temp;clean";
-specifier|private
-specifier|static
-specifier|final
 name|int
 name|NUM_THREADS
 init|=
@@ -100,8 +105,13 @@ name|NUM_CHILDNODES
 init|=
 literal|1000
 decl_stmt|;
+specifier|final
 name|MicroKernel
 name|mk
+init|=
+operator|new
+name|MicroKernelImpl
+argument_list|()
 decl_stmt|;
 specifier|public
 name|void
@@ -110,15 +120,6 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|mk
-operator|=
-name|MicroKernelFactory
-operator|.
-name|getInstance
-argument_list|(
-name|URL
-argument_list|)
-expr_stmt|;
 name|mk
 operator|.
 name|commit
@@ -143,48 +144,6 @@ argument_list|()
 argument_list|,
 literal|null
 argument_list|)
-expr_stmt|;
-block|}
-specifier|public
-name|void
-name|tearDown
-parameter_list|()
-throws|throws
-name|InterruptedException
-block|{
-name|String
-name|head
-init|=
-name|mk
-operator|.
-name|commit
-argument_list|(
-literal|"/"
-argument_list|,
-literal|"- \""
-operator|+
-name|TEST_PATH
-operator|.
-name|substring
-argument_list|(
-literal|1
-argument_list|)
-operator|+
-literal|"\""
-argument_list|,
-name|mk
-operator|.
-name|getHeadRevision
-argument_list|()
-argument_list|,
-literal|null
-argument_list|)
-decl_stmt|;
-comment|//System.out.println("new HEAD: " + head);
-name|mk
-operator|.
-name|dispose
-argument_list|()
 expr_stmt|;
 block|}
 comment|/**      * Runs the test.      */

@@ -426,7 +426,7 @@ name|homeDir
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Argument-less constructor, used for in-memory kernel.      */
+comment|/**      * Creates a new in-memory kernel instance that doesn't need to be      * explicitly closed, i.e. standard Java garbage collection will take      * care of releasing any acquired resources when no longer needed.      * Useful especially for test cases and other similar scenarios.      */
 specifier|public
 name|MicroKernelImpl
 parameter_list|()
