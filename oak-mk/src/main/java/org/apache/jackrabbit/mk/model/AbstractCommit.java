@@ -60,6 +60,11 @@ specifier|protected
 name|String
 name|msg
 decl_stmt|;
+comment|// changes
+specifier|protected
+name|String
+name|changes
+decl_stmt|;
 comment|// id of parent commit
 specifier|protected
 name|Id
@@ -101,6 +106,15 @@ operator|=
 name|other
 operator|.
 name|getMsg
+argument_list|()
+expr_stmt|;
+name|this
+operator|.
+name|changes
+operator|=
+name|other
+operator|.
+name|getChanges
 argument_list|()
 expr_stmt|;
 name|this
@@ -150,6 +164,15 @@ name|msg
 return|;
 block|}
 specifier|public
+name|String
+name|getChanges
+parameter_list|()
+block|{
+return|return
+name|changes
+return|;
+block|}
+specifier|public
 name|void
 name|serialize
 parameter_list|(
@@ -193,6 +216,21 @@ condition|?
 literal|""
 else|:
 name|msg
+argument_list|)
+expr_stmt|;
+name|binding
+operator|.
+name|write
+argument_list|(
+literal|"changes"
+argument_list|,
+name|changes
+operator|==
+literal|null
+condition|?
+literal|""
+else|:
+name|changes
 argument_list|)
 expr_stmt|;
 name|binding

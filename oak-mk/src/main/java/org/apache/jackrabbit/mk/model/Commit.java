@@ -61,6 +61,11 @@ name|String
 name|getMsg
 parameter_list|()
 function_decl|;
+specifier|public
+name|String
+name|getChanges
+parameter_list|()
+function_decl|;
 name|void
 name|serialize
 parameter_list|(
