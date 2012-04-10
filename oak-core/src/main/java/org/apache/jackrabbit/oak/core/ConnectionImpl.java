@@ -374,7 +374,7 @@ argument_list|(
 name|microKernelUrl
 argument_list|)
 decl_stmt|;
-comment|// FIXME: workspace must be done elsewhere...
+comment|// FIXME: workspace setup must be done elsewhere...
 if|if
 condition|(
 name|create

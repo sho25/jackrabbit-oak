@@ -199,9 +199,12 @@ parameter_list|()
 block|{
 name|context
 operator|=
-literal|null
+operator|new
+name|GlobalContext
+argument_list|(
+literal|"mem:oak"
+argument_list|)
 expr_stmt|;
-comment|// fixme this(new GlobalContext(new MicroKernelImpl()));
 block|}
 specifier|public
 name|RepositoryImpl
