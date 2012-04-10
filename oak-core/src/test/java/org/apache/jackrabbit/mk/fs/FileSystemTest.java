@@ -206,16 +206,8 @@ name|void
 name|testAbsoluteRelative
 parameter_list|()
 block|{
-name|assertTrue
-argument_list|(
-name|FileUtils
-operator|.
-name|isAbsolute
-argument_list|(
-literal|"/test/abc"
-argument_list|)
-argument_list|)
-expr_stmt|;
+comment|// for Windows, this is not absolute as the drive letter is missing
+comment|// assertTrue(FileUtils.isAbsolute("/test/abc"));
 name|assertFalse
 argument_list|(
 name|FileUtils
