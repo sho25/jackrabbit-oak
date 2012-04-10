@@ -83,6 +83,10 @@ name|ValueFactory
 name|getValueFactory
 parameter_list|()
 function_decl|;
+name|ItemStateProvider
+name|getItemStateProvider
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 

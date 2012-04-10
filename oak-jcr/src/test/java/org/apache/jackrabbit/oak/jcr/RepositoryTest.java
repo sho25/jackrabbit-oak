@@ -5600,12 +5600,6 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-annotation|@
-name|Ignore
-argument_list|(
-literal|"WIP"
-argument_list|)
-comment|// fixme
 specifier|public
 name|void
 name|setStringProperty
@@ -5799,12 +5793,6 @@ block|}
 block|}
 annotation|@
 name|Test
-annotation|@
-name|Ignore
-argument_list|(
-literal|"WIP"
-argument_list|)
-comment|// fixme
 specifier|public
 name|void
 name|setMultiValuedProperty
@@ -6330,12 +6318,6 @@ block|}
 block|}
 annotation|@
 name|Test
-annotation|@
-name|Ignore
-argument_list|(
-literal|"WIP"
-argument_list|)
-comment|// fixme
 specifier|public
 name|void
 name|sessionSave
@@ -6924,12 +6906,6 @@ block|}
 block|}
 annotation|@
 name|Test
-annotation|@
-name|Ignore
-argument_list|(
-literal|"WIP"
-argument_list|)
-comment|// fixme
 specifier|public
 name|void
 name|sessionRefreshFalse
