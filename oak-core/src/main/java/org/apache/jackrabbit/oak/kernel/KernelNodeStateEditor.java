@@ -709,6 +709,16 @@ return|return
 name|base
 return|;
 block|}
+comment|/**      * @return the {@link TransientNodeState} instance this editor is      *         acting upon.      */
+specifier|public
+name|TransientNodeState
+name|getTransientState
+parameter_list|()
+block|{
+return|return
+name|transientState
+return|;
+block|}
 comment|//------------------------------------------------------------< internal>---
 comment|/**      * Atomically merges the changes from this branch back into the      * {@code target}.      *      * @param microkernel Microkernel instance for applying the changes      * @param target target of the merge operation      * @return node state resulting from merging      */
 name|KernelNodeState
@@ -766,15 +776,6 @@ name|targetPath
 argument_list|,
 name|rev
 argument_list|)
-return|;
-block|}
-comment|/**      * @return the {@link TransientNodeState} instance this editor is      *         acting upon.      */
-name|TransientNodeState
-name|getTransientState
-parameter_list|()
-block|{
-return|return
-name|transientState
 return|;
 block|}
 comment|/**      * Get a transient node state for the node identified by      * {@code path}      * @param path  the path to the node state      * @return  a {@link TransientNodeState} instance for the item      *          at {@code path} or {@code null} if no such item exits.      */

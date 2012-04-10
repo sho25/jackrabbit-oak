@@ -204,7 +204,7 @@ operator|!
 operator|(
 name|target
 operator|instanceof
-name|KernelNodeStore
+name|KernelNodeState
 operator|)
 condition|)
 block|{

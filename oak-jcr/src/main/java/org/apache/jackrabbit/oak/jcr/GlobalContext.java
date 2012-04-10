@@ -260,15 +260,6 @@ argument_list|)
 expr_stmt|;
 name|put
 argument_list|(
-name|MicroKernel
-operator|.
-name|class
-argument_list|,
-name|mk
-argument_list|)
-expr_stmt|;
-name|put
-argument_list|(
 name|Repository
 operator|.
 name|class
