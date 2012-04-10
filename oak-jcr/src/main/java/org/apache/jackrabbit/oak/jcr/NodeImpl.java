@@ -1084,9 +1084,6 @@ name|editor
 operator|.
 name|setProperty
 argument_list|(
-operator|new
-name|KernelPropertyState
-argument_list|(
 name|name
 argument_list|,
 name|ValueConverter
@@ -1094,7 +1091,6 @@ operator|.
 name|toScalar
 argument_list|(
 name|value
-argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1202,9 +1198,6 @@ name|editor
 operator|.
 name|setProperty
 argument_list|(
-operator|new
-name|KernelPropertyState
-argument_list|(
 name|name
 argument_list|,
 name|ValueConverter
@@ -1212,7 +1205,6 @@ operator|.
 name|toScalar
 argument_list|(
 name|values
-argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -2679,9 +2671,6 @@ name|editor
 operator|.
 name|setProperty
 argument_list|(
-operator|new
-name|KernelPropertyState
-argument_list|(
 name|JcrConstants
 operator|.
 name|JCR_PRIMARYTYPE
@@ -2691,7 +2680,6 @@ operator|.
 name|stringScalar
 argument_list|(
 name|nodeTypeName
-argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -3318,6 +3306,16 @@ argument_list|(
 literal|"Lifecycle Management is not supported"
 argument_list|)
 throw|;
+block|}
+comment|//-----------------------------------------------------< implementation>---
+specifier|public
+name|NodeStateEditor
+name|getEditor
+parameter_list|()
+block|{
+return|return
+name|editor
+return|;
 block|}
 comment|//------------------------------------------------------------< private>---
 comment|/**      * Shortcut to retrieve the version manager from the workspace associated      * with the editing session.      *      * @return the version manager associated with the editing session.      * @throws RepositoryException If an error occurs while retrieving the version manager.      */

@@ -17,6 +17,16 @@ name|model
 package|;
 end_package
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
 begin_comment
 comment|/**  * An editor for modifying existing and creating new  * {@link NodeState node states}.  */
 end_comment
@@ -42,12 +52,29 @@ name|String
 name|name
 parameter_list|)
 function_decl|;
-comment|/**      * Set a property on this node state      * @param state property state to set      */
+comment|/**      * Set a single valued property state on this node state.      *      * @param name The name of this property      * @param value The value of this property      */
 name|void
 name|setProperty
 parameter_list|(
-name|PropertyState
-name|state
+name|String
+name|name
+parameter_list|,
+name|Scalar
+name|value
+parameter_list|)
+function_decl|;
+comment|/**      * Set a multivalued valued property state on this node state.      *      * @param name The name of this property      * @param values The value of this property      */
+name|void
+name|setProperty
+parameter_list|(
+name|String
+name|name
+parameter_list|,
+name|List
+argument_list|<
+name|Scalar
+argument_list|>
+name|values
 parameter_list|)
 function_decl|;
 comment|/**      * Remove a property from this node state      * @param name name of the property      */
