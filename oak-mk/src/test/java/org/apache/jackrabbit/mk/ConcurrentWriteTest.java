@@ -124,7 +124,7 @@ name|getProperty
 argument_list|(
 literal|"homeDir"
 argument_list|,
-literal|"."
+literal|"target"
 argument_list|)
 decl_stmt|;
 name|mk
