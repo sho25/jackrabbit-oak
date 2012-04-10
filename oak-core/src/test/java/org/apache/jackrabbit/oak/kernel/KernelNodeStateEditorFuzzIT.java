@@ -259,7 +259,7 @@ name|oak
 operator|.
 name|kernel
 operator|.
-name|KernelNodeStateEditorFuzzTest
+name|KernelNodeStateEditorFuzzIT
 operator|.
 name|Operation
 operator|.
@@ -279,7 +279,7 @@ name|oak
 operator|.
 name|kernel
 operator|.
-name|KernelNodeStateEditorFuzzTest
+name|KernelNodeStateEditorFuzzIT
 operator|.
 name|Operation
 operator|.
@@ -299,7 +299,7 @@ name|oak
 operator|.
 name|kernel
 operator|.
-name|KernelNodeStateEditorFuzzTest
+name|KernelNodeStateEditorFuzzIT
 operator|.
 name|Operation
 operator|.
@@ -319,7 +319,7 @@ name|oak
 operator|.
 name|kernel
 operator|.
-name|KernelNodeStateEditorFuzzTest
+name|KernelNodeStateEditorFuzzIT
 operator|.
 name|Operation
 operator|.
@@ -339,7 +339,7 @@ name|oak
 operator|.
 name|kernel
 operator|.
-name|KernelNodeStateEditorFuzzTest
+name|KernelNodeStateEditorFuzzIT
 operator|.
 name|Operation
 operator|.
@@ -359,7 +359,7 @@ name|oak
 operator|.
 name|kernel
 operator|.
-name|KernelNodeStateEditorFuzzTest
+name|KernelNodeStateEditorFuzzIT
 operator|.
 name|Operation
 operator|.
@@ -379,7 +379,7 @@ name|oak
 operator|.
 name|kernel
 operator|.
-name|KernelNodeStateEditorFuzzTest
+name|KernelNodeStateEditorFuzzIT
 operator|.
 name|Operation
 operator|.
@@ -409,7 +409,7 @@ name|class
 argument_list|)
 specifier|public
 class|class
-name|KernelNodeStateEditorFuzzTest
+name|KernelNodeStateEditorFuzzIT
 block|{
 specifier|static
 specifier|final
@@ -420,7 +420,7 @@ name|LoggerFactory
 operator|.
 name|getLogger
 argument_list|(
-name|KernelNodeStateEditorFuzzTest
+name|KernelNodeStateEditorFuzzIT
 operator|.
 name|class
 argument_list|)
@@ -646,7 +646,7 @@ argument_list|)
 return|;
 block|}
 specifier|public
-name|KernelNodeStateEditorFuzzTest
+name|KernelNodeStateEditorFuzzIT
 parameter_list|(
 name|int
 name|seed
