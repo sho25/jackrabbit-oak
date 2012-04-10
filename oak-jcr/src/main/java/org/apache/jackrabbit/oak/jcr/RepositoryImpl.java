@@ -196,6 +196,8 @@ comment|/**      * Utility constructor that creates a JCR binding for an initial
 specifier|public
 name|RepositoryImpl
 parameter_list|()
+throws|throws
+name|RepositoryException
 block|{
 name|context
 operator|=

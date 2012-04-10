@@ -19,21 +19,29 @@ end_package
 
 begin_import
 import|import
-name|java
+name|org
 operator|.
-name|security
+name|apache
 operator|.
-name|Principal
+name|jackrabbit
+operator|.
+name|test
+operator|.
+name|NotExecutableException
 import|;
 end_import
 
 begin_import
 import|import
-name|java
+name|org
 operator|.
-name|util
+name|apache
 operator|.
-name|Properties
+name|jackrabbit
+operator|.
+name|test
+operator|.
+name|RepositoryStub
 import|;
 end_import
 
@@ -79,29 +87,21 @@ end_import
 
 begin_import
 import|import
-name|org
+name|java
 operator|.
-name|apache
+name|security
 operator|.
-name|jackrabbit
-operator|.
-name|test
-operator|.
-name|NotExecutableException
+name|Principal
 import|;
 end_import
 
 begin_import
 import|import
-name|org
+name|java
 operator|.
-name|apache
+name|util
 operator|.
-name|jackrabbit
-operator|.
-name|test
-operator|.
-name|RepositoryStub
+name|Properties
 import|;
 end_import
 
@@ -116,10 +116,6 @@ specifier|private
 specifier|final
 name|Repository
 name|repository
-init|=
-operator|new
-name|RepositoryImpl
-argument_list|()
 decl_stmt|;
 comment|/**      * Constructor as required by the JCR TCK.      *      * @param settings repository settings      */
 specifier|public
@@ -128,14 +124,24 @@ parameter_list|(
 name|Properties
 name|settings
 parameter_list|)
+throws|throws
+name|RepositoryException
 block|{
 name|super
 argument_list|(
 name|settings
 argument_list|)
 expr_stmt|;
+name|repository
+operator|=
+operator|new
+name|RepositoryImpl
+argument_list|()
+expr_stmt|;
 block|}
 comment|/**      * Returns the configured repository instance.      *      * @return the configured repository instance.      */
+annotation|@
+name|Override
 specifier|public
 specifier|synchronized
 name|Repository
@@ -173,6 +179,8 @@ operator|new
 name|Principal
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|String
 name|getName
