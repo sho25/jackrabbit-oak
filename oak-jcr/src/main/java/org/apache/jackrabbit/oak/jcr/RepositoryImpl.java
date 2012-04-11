@@ -423,8 +423,6 @@ name|SessionImpl
 argument_list|(
 name|context
 argument_list|,
-name|this
-argument_list|,
 name|connection
 argument_list|)
 return|;
