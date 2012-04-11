@@ -719,6 +719,12 @@ argument_list|()
 argument_list|)
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+operator|!
+name|keepChanges
+condition|)
+block|{
 name|editor
 operator|=
 name|connection
@@ -739,6 +745,7 @@ name|getTransientState
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 catch|catch
 parameter_list|(

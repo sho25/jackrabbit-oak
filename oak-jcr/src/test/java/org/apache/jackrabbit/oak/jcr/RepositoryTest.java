@@ -561,18 +561,6 @@ name|assertTrue
 import|;
 end_import
 
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|fail
-import|;
-end_import
-
 begin_class
 specifier|public
 class|class
@@ -6632,12 +6620,6 @@ expr_stmt|;
 block|}
 block|}
 annotation|@
-name|Ignore
-argument_list|(
-literal|"WIP"
-argument_list|)
-comment|// fixme
-annotation|@
 name|Test
 specifier|public
 name|void
@@ -6988,13 +6970,14 @@ expr_stmt|;
 block|}
 block|}
 annotation|@
-name|Ignore
-argument_list|(
-literal|"WIP"
-argument_list|)
-comment|// fixme
-annotation|@
 name|Test
+argument_list|(
+name|expected
+operator|=
+name|RepositoryException
+operator|.
+name|class
+argument_list|)
 specifier|public
 name|void
 name|refreshConflict
@@ -7054,25 +7037,11 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
-try|try
-block|{
 name|session2
 operator|.
 name|save
 argument_list|()
 expr_stmt|;
-name|fail
-argument_list|()
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|RepositoryException
-name|e
-parameter_list|)
-block|{
-comment|// expected
-block|}
 block|}
 finally|finally
 block|{
@@ -7089,13 +7058,14 @@ expr_stmt|;
 block|}
 block|}
 annotation|@
-name|Ignore
-argument_list|(
-literal|"WIP"
-argument_list|)
-comment|// fixme
-annotation|@
 name|Test
+argument_list|(
+name|expected
+operator|=
+name|RepositoryException
+operator|.
+name|class
+argument_list|)
 specifier|public
 name|void
 name|refreshConflict2
@@ -7167,25 +7137,11 @@ operator|.
 name|save
 argument_list|()
 expr_stmt|;
-try|try
-block|{
 name|session2
 operator|.
 name|save
 argument_list|()
 expr_stmt|;
-name|fail
-argument_list|()
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|RepositoryException
-name|e
-parameter_list|)
-block|{
-comment|// expected
-block|}
 block|}
 finally|finally
 block|{
