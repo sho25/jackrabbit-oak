@@ -38,7 +38,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *  */
+comment|/**  * For now this class contains copies of some methods from PathUtils in  * oak-mk.  * TODO: Implement JCR path handling. See OAK-61  */
 end_comment
 
 begin_class
