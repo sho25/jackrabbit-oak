@@ -565,7 +565,7 @@ parameter_list|(
 name|TransientKernelNodeState
 name|state
 parameter_list|,
-name|TransientNodeState
+name|TransientKernelNodeState
 name|parent
 parameter_list|,
 name|String

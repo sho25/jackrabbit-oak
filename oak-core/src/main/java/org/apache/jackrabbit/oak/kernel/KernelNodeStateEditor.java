@@ -813,7 +813,7 @@ name|String
 name|name
 parameter_list|)
 block|{
-name|TransientNodeState
+name|TransientKernelNodeState
 name|childState
 init|=
 name|transientState

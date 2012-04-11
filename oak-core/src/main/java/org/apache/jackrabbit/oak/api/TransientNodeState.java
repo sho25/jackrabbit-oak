@@ -13,38 +13,6 @@ name|api
 package|;
 end_package
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|kernel
-operator|.
-name|KernelNodeStateEditor
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|kernel
-operator|.
-name|TransientKernelNodeState
-import|;
-end_import
-
 begin_comment
 comment|/**  * A transient node state represents a node being edited. All edit operations are  * done through an associated {@link org.apache.jackrabbit.oak.api.NodeStateEditor}.  *<p>  * A transient node state contains the current state of a node and is  * in contrast to {@link org.apache.jackrabbit.mk.model.NodeState} instances  * mutable and not thread safe.  *<p>  * The various accessors on this class mirror these of {@code NodeState}. However,  * since instances of this class are mutable return values may change between  * invocations.  */
 end_comment
@@ -70,7 +38,7 @@ name|getParent
 parameter_list|()
 function_decl|;
 comment|/**      * @return  editor acting upon this instance      */
-name|KernelNodeStateEditor
+name|NodeStateEditor
 name|getEditor
 parameter_list|()
 function_decl|;
@@ -96,7 +64,7 @@ name|getPropertyCount
 parameter_list|()
 function_decl|;
 comment|/**      * Get a child node state      * @param name  name of the child node state      * @return  the child node state with the given {@code name} or {@code null}      *          if no such child node state exists.      */
-name|TransientKernelNodeState
+name|TransientNodeState
 name|getChildNode
 parameter_list|(
 name|String
