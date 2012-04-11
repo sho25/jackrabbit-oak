@@ -114,21 +114,24 @@ specifier|public
 specifier|static
 name|Collection
 argument_list|<
-name|MicroKernelFixture
+name|Object
+index|[]
 argument_list|>
 name|loadFixtures
 parameter_list|()
 block|{
 name|Collection
 argument_list|<
-name|MicroKernelFixture
+name|Object
+index|[]
 argument_list|>
 name|fixtures
 init|=
 operator|new
 name|ArrayList
 argument_list|<
-name|MicroKernelFixture
+name|Object
+index|[]
 argument_list|>
 argument_list|()
 decl_stmt|;
@@ -172,7 +175,12 @@ name|fixtures
 operator|.
 name|add
 argument_list|(
+operator|new
+name|Object
+index|[]
+block|{
 name|fixture
+block|}
 argument_list|)
 expr_stmt|;
 block|}
@@ -253,7 +261,16 @@ index|[
 literal|0
 index|]
 expr_stmt|;
+name|addInitialTestContent
+argument_list|()
+expr_stmt|;
 block|}
+comment|/**      * Adds initial content used by the test case. This method is      * called by the {@link #setUp()} method after the {@link MicroKernel}      * cluster has been set up and before the actual test is run.      * The default implementation does nothing, but subclasses can      * override this method to perform extra initialization.      */
+specifier|protected
+name|void
+name|addInitialTestContent
+parameter_list|()
+block|{     }
 comment|/**      * Releases the {@link MicroKernel} cluster used by this test case.      */
 annotation|@
 name|After
