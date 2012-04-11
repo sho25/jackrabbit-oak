@@ -83,6 +83,40 @@ name|ScalarImpl
 implements|implements
 name|Scalar
 block|{
+specifier|private
+specifier|static
+specifier|final
+name|NullScalar
+name|NULL_SCALAR
+init|=
+operator|new
+name|NullScalar
+argument_list|()
+decl_stmt|;
+specifier|private
+specifier|static
+specifier|final
+name|BooleanScalar
+name|TRUE_SCALAR
+init|=
+operator|new
+name|BooleanScalar
+argument_list|(
+literal|true
+argument_list|)
+decl_stmt|;
+specifier|private
+specifier|static
+specifier|final
+name|BooleanScalar
+name|FALSE_SCALAR
+init|=
+operator|new
+name|BooleanScalar
+argument_list|(
+literal|false
+argument_list|)
+decl_stmt|;
 specifier|public
 specifier|static
 name|Scalar
@@ -92,7 +126,7 @@ name|String
 name|value
 parameter_list|)
 block|{
-comment|// todo improve
+comment|// TODO don't use exception handling for flow control
 try|try
 block|{
 return|return
@@ -372,10 +406,14 @@ name|UnsupportedEncodingException
 name|e
 parameter_list|)
 block|{
-comment|// todo handle UnsupportedEncodingException
-return|return
-literal|null
-return|;
+comment|// TODO handle UnsupportedEncodingException
+throw|throw
+operator|new
+name|RuntimeException
+argument_list|(
+name|e
+argument_list|)
+throw|;
 block|}
 block|}
 annotation|@
@@ -396,30 +434,6 @@ argument_list|()
 return|;
 block|}
 comment|//------------------------------------------------------------< private>---
-specifier|private
-specifier|static
-specifier|final
-name|BooleanScalar
-name|TRUE_SCALAR
-init|=
-operator|new
-name|BooleanScalar
-argument_list|(
-literal|true
-argument_list|)
-decl_stmt|;
-specifier|private
-specifier|static
-specifier|final
-name|BooleanScalar
-name|FALSE_SCALAR
-init|=
-operator|new
-name|BooleanScalar
-argument_list|(
-literal|false
-argument_list|)
-decl_stmt|;
 specifier|private
 specifier|static
 specifier|final
@@ -560,27 +574,14 @@ name|hashCode
 parameter_list|()
 block|{
 return|return
-operator|(
 name|value
 condition|?
 literal|1
 else|:
 literal|0
-operator|)
 return|;
 block|}
 block|}
-specifier|private
-specifier|static
-specifier|final
-name|NullScalar
-name|NULL_SCALAR
-init|=
-operator|new
-name|NullScalar
-argument_list|()
-decl_stmt|;
-specifier|private
 specifier|static
 specifier|final
 class|class
@@ -1351,10 +1352,14 @@ name|Exception
 name|e
 parameter_list|)
 block|{
-comment|// todo handle Exception
-return|return
-literal|null
-return|;
+comment|// TODO handle Exception
+throw|throw
+operator|new
+name|RuntimeException
+argument_list|(
+name|e
+argument_list|)
+throw|;
 block|}
 block|}
 annotation|@
@@ -1364,10 +1369,10 @@ name|String
 name|getString
 parameter_list|()
 block|{
+comment|// TODO implement getString
 return|return
 literal|""
 return|;
-comment|// todo implement getString
 block|}
 annotation|@
 name|Override
