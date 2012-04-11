@@ -27,9 +27,9 @@ name|jackrabbit
 operator|.
 name|mk
 operator|.
-name|model
+name|util
 operator|.
-name|PropertyState
+name|PathUtils
 import|;
 end_import
 
@@ -41,11 +41,11 @@ name|apache
 operator|.
 name|jackrabbit
 operator|.
-name|mk
+name|oak
 operator|.
-name|util
+name|api
 operator|.
-name|PathUtils
+name|PropertyState
 import|;
 end_import
 

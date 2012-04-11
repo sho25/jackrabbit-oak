@@ -27,9 +27,9 @@ name|apache
 operator|.
 name|jackrabbit
 operator|.
-name|mk
+name|oak
 operator|.
-name|model
+name|api
 operator|.
 name|Scalar
 import|;
@@ -43,13 +43,17 @@ name|apache
 operator|.
 name|jackrabbit
 operator|.
-name|mk
+name|oak
 operator|.
-name|model
+name|kernel
 operator|.
 name|ScalarImpl
 import|;
 end_import
+
+begin_comment
+comment|// FIXME: Use only the API
+end_comment
 
 begin_import
 import|import

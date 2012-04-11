@@ -11,9 +11,9 @@ name|apache
 operator|.
 name|jackrabbit
 operator|.
-name|mk
+name|oak
 operator|.
-name|model
+name|api
 package|;
 end_package
 

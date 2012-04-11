@@ -11,9 +11,9 @@ name|apache
 operator|.
 name|jackrabbit
 operator|.
-name|mk
+name|oak
 operator|.
-name|model
+name|kernel
 package|;
 end_package
 
@@ -56,6 +56,22 @@ operator|.
 name|concurrent
 operator|.
 name|Callable
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|api
+operator|.
+name|Scalar
 import|;
 end_import
 

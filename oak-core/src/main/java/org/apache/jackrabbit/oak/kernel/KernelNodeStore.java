@@ -41,9 +41,9 @@ name|apache
 operator|.
 name|jackrabbit
 operator|.
-name|mk
+name|oak
 operator|.
-name|model
+name|api
 operator|.
 name|NodeState
 import|;
@@ -57,9 +57,9 @@ name|apache
 operator|.
 name|jackrabbit
 operator|.
-name|mk
+name|oak
 operator|.
-name|model
+name|api
 operator|.
 name|NodeStateDiff
 import|;
@@ -73,9 +73,9 @@ name|apache
 operator|.
 name|jackrabbit
 operator|.
-name|mk
+name|oak
 operator|.
-name|model
+name|api
 operator|.
 name|NodeStateEditor
 import|;
@@ -89,9 +89,9 @@ name|apache
 operator|.
 name|jackrabbit
 operator|.
-name|mk
+name|oak
 operator|.
-name|model
+name|api
 operator|.
 name|NodeStore
 import|;

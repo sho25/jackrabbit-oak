@@ -11,14 +11,14 @@ name|apache
 operator|.
 name|jackrabbit
 operator|.
-name|mk
+name|oak
 operator|.
-name|model
+name|api
 package|;
 end_package
 
 begin_comment
-comment|/**  * Storage abstraction for content trees. At any given point in time  * the stored content tree is rooted at a single immutable node state.  *<p>  * This is a low-level interface that doesn't cover functionality like  * merging concurrent changes or rejecting new tree states based on some  * higher-level consistency constraints.  */
+comment|/**  * Storage abstraction for content trees. At any given point in time  * the stored content tree is rooted at a single immutable node state.  * Changes in the tree are constructed by branching off a private copy  * using the {@link #branch(NodeState)} method which can be modified  * and merged back using the {@link #merge(NodeStateEditor, NodeState)}  * method.  *<p>  * This is a low-level interface that doesn't cover functionality like  * merging concurrent changes or rejecting new tree states based on some  * higher-level consistency constraints.  */
 end_comment
 
 begin_interface
@@ -30,6 +30,25 @@ comment|/**      * Returns the latest state of the content tree.      *      * @
 name|NodeState
 name|getRoot
 parameter_list|()
+function_decl|;
+comment|/**      * Creates a private branch from a {@code base} node state      * for editing. The branch can later be merged back into      * the node store using the {@link #merge(NodeStateEditor, NodeState) merge}      * method.      *      * @param base base node state      * @return a private branch rooted at {@code base}      */
+name|NodeStateEditor
+name|branch
+parameter_list|(
+name|NodeState
+name|base
+parameter_list|)
+function_decl|;
+comment|/**      * Atomically merges the changes from {@code branch} back into the      * {@code target}.      *      * @param branch branch for merging into {@code target}      * @param target target of the merge operation      * @return node state resulting from merging {@code branch} into      *         {@code target}.      */
+name|NodeState
+name|merge
+parameter_list|(
+name|NodeStateEditor
+name|branch
+parameter_list|,
+name|NodeState
+name|target
+parameter_list|)
 function_decl|;
 comment|/**      * Compares the given two node states. Any found differences are      * reported by calling the relevant added, changed or deleted methods      * of the given handler.      *      * @param before node state before changes      * @param after node state after changes      * @param diff handler of node state differences      */
 name|void

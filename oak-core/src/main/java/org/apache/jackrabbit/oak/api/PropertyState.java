@@ -11,9 +11,9 @@ name|apache
 operator|.
 name|jackrabbit
 operator|.
-name|mk
+name|oak
 operator|.
-name|model
+name|api
 package|;
 end_package
 
@@ -31,9 +31,22 @@ name|String
 name|getName
 parameter_list|()
 function_decl|;
-comment|/**      * @return the JSON encoded value of this property state.      */
-name|String
-name|getEncodedValue
+comment|/**      * Determine whether this is a multi valued property      * @return  {@code true} if and only if this is a multi valued property.      */
+name|boolean
+name|isArray
+parameter_list|()
+function_decl|;
+comment|/**      * @return  the single value of this property or {@code null} if this is a multi      * valued property.      */
+name|Scalar
+name|getScalar
+parameter_list|()
+function_decl|;
+comment|/**      * @return  an iterable of the values of this multi valued property or      * {@code null} if this is not a multi valued property.      */
+name|Iterable
+argument_list|<
+name|Scalar
+argument_list|>
+name|getArray
 parameter_list|()
 function_decl|;
 block|}

@@ -89,9 +89,9 @@ name|apache
 operator|.
 name|jackrabbit
 operator|.
-name|mk
+name|oak
 operator|.
-name|model
+name|api
 operator|.
 name|ChildNodeEntry
 import|;
@@ -105,9 +105,9 @@ name|apache
 operator|.
 name|jackrabbit
 operator|.
-name|mk
+name|oak
 operator|.
-name|model
+name|api
 operator|.
 name|NodeState
 import|;
@@ -121,9 +121,9 @@ name|apache
 operator|.
 name|jackrabbit
 operator|.
-name|mk
+name|oak
 operator|.
-name|model
+name|api
 operator|.
 name|PropertyState
 import|;
