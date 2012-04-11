@@ -85,7 +85,7 @@ name|String
 name|name
 parameter_list|)
 function_decl|;
-comment|/**      * Move the node state located at {@code sourcePath} to a node      * state at {@code destPath}. Do noting if either the source      * does not exist, the parent of the destination does not exist      * of the destination exists already.      *      * @param sourcePath source path relative to this node state      * @param destPath destination path relative to this node state      */
+comment|/**      * Move the node state located at {@code sourcePath} to a node      * state at {@code destPath}. Do noting if either the source      * does not exist, the parent of the destination does not exist      * or the destination exists already. Both paths must resolve      * to node states located in the subtree below the transient      * state this editor is acting upon.      *      * @param sourcePath source path relative to this node state      * @param destPath destination path relative to this node state      */
 name|void
 name|move
 parameter_list|(
@@ -96,7 +96,7 @@ name|String
 name|destPath
 parameter_list|)
 function_decl|;
-comment|/**      * Copy the node state located at {@code sourcePath} to a node      * state at {@code destPath}. Do noting if either the source      * does not exist, the parent of the destination does not exist      * of the destination exists already.      *      * @param sourcePath source path relative to this node state      * @param destPath destination path relative to this node state      */
+comment|/**      * Copy the node state located at {@code sourcePath} to a node      * state at {@code destPath}. Do noting if either the source      * does not exist, the parent of the destination does not exist      * or the destination exists already. Both paths must resolve      * to node states located in the subtree below the transient      * state this editor is acting upon.      *      * @param sourcePath source path relative to this node state      * @param destPath destination path relative to this node state      */
 name|void
 name|copy
 parameter_list|(
