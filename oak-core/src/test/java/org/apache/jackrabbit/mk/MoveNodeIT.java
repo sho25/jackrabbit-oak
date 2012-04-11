@@ -127,7 +127,7 @@ name|class
 argument_list|)
 specifier|public
 class|class
-name|MoveNodeTest
+name|MoveNodeIT
 extends|extends
 name|MultiMkTestBase
 block|{
@@ -140,7 +140,7 @@ name|String
 name|journalRevision
 decl_stmt|;
 specifier|public
-name|MoveNodeTest
+name|MoveNodeIT
 parameter_list|(
 name|String
 name|url

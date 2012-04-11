@@ -143,12 +143,12 @@ name|class
 argument_list|)
 specifier|public
 class|class
-name|MicroKernelTest
+name|MicroKernelIT
 extends|extends
 name|MultiMkTestBase
 block|{
 specifier|public
-name|MicroKernelTest
+name|MicroKernelIT
 parameter_list|(
 name|String
 name|url
