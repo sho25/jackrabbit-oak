@@ -48,7 +48,7 @@ end_comment
 begin_class
 specifier|public
 class|class
-name|CommitGateTest
+name|CommitGateIT
 extends|extends
 name|TestCase
 block|{
@@ -323,51 +323,9 @@ name|join
 argument_list|()
 expr_stmt|;
 block|}
-name|assertTrue
-argument_list|(
-literal|"ticks: "
-operator|+
-name|tick
-operator|.
-name|get
-argument_list|()
-operator|+
-literal|" min: "
-operator|+
-name|threadCount
-operator|*
-name|commitCount
-operator|+
-literal|" spurious: "
-operator|+
-name|spurious
-operator|.
-name|get
-argument_list|()
-argument_list|,
-name|tick
-operator|.
-name|get
-argument_list|()
-operator|>=
-name|threadCount
-operator|*
-name|commitCount
-operator|*
-literal|0.2
-operator|&&
-name|tick
-operator|.
-name|get
-argument_list|()
-operator|<=
-name|threadCount
-operator|*
-name|commitCount
-operator|*
-literal|1.2
-argument_list|)
-expr_stmt|;
+comment|// disabled: depends on timing
+comment|// assertTrue("ticks: " + tick.get() + " min: " + threadCount * commitCount + " spurious: " + spurious.get(),
+comment|//         tick.get()>= threadCount * commitCount * 0.2&& tick.get()<= threadCount * commitCount * 1.2);
 block|}
 block|}
 end_class
