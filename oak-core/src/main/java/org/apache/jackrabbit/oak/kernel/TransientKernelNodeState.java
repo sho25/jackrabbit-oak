@@ -139,9 +139,25 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|kernel
+name|api
 operator|.
 name|TransientNodeState
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|kernel
+operator|.
+name|TransientKernelNodeState
 operator|.
 name|Iterators
 operator|.
@@ -233,7 +249,7 @@ name|oak
 operator|.
 name|kernel
 operator|.
-name|TransientNodeState
+name|TransientKernelNodeState
 operator|.
 name|Iterators
 operator|.
@@ -253,7 +269,7 @@ name|oak
 operator|.
 name|kernel
 operator|.
-name|TransientNodeState
+name|TransientKernelNodeState
 operator|.
 name|Iterators
 operator|.
@@ -273,7 +289,7 @@ name|oak
 operator|.
 name|kernel
 operator|.
-name|TransientNodeState
+name|TransientKernelNodeState
 operator|.
 name|Iterators
 operator|.
@@ -293,7 +309,7 @@ name|oak
 operator|.
 name|kernel
 operator|.
-name|TransientNodeState
+name|TransientKernelNodeState
 operator|.
 name|Iterators
 operator|.
@@ -313,7 +329,7 @@ name|oak
 operator|.
 name|kernel
 operator|.
-name|TransientNodeState
+name|TransientKernelNodeState
 operator|.
 name|Iterators
 operator|.
@@ -321,13 +337,11 @@ name|map
 import|;
 end_import
 
-begin_comment
-comment|/**  * A transient node state represents a node being edited. All edit operations are  * done through an associated {@link org.apache.jackrabbit.oak.api.NodeStateEditor}.  *<p>  * A transient node state contains the current state of a node and is  * in contrast to {@link org.apache.jackrabbit.mk.model.NodeState} instances  * mutable and not thread safe.  *<p>  * The various accessors on this class mirror these of {@code NodeState}. However,  * since instances of this class are mutable return values may change between  * invocations.  */
-end_comment
-
 begin_class
 specifier|public
 class|class
+name|TransientKernelNodeState
+implements|implements
 name|TransientNodeState
 block|{
 comment|/** Editor acting upon this instance */
@@ -349,7 +363,7 @@ name|Map
 argument_list|<
 name|String
 argument_list|,
-name|TransientNodeState
+name|TransientKernelNodeState
 argument_list|>
 name|existingChildNodes
 init|=
@@ -358,7 +372,7 @@ name|HashMap
 argument_list|<
 name|String
 argument_list|,
-name|TransientNodeState
+name|TransientKernelNodeState
 argument_list|>
 argument_list|()
 decl_stmt|;
@@ -369,7 +383,7 @@ name|Map
 argument_list|<
 name|String
 argument_list|,
-name|TransientNodeState
+name|TransientKernelNodeState
 argument_list|>
 name|addedNodes
 init|=
@@ -378,7 +392,7 @@ name|HashMap
 argument_list|<
 name|String
 argument_list|,
-name|TransientNodeState
+name|TransientKernelNodeState
 argument_list|>
 argument_list|()
 decl_stmt|;
@@ -445,7 +459,7 @@ name|TransientNodeState
 name|parent
 decl_stmt|;
 comment|/**      * Create a new instance representing the root of a sub-tree.      * @param persistentState  underlying persistent state      * @param editor  editor acting upon the transient node state      */
-name|TransientNodeState
+name|TransientKernelNodeState
 parameter_list|(
 name|NodeState
 name|persistentState
@@ -481,7 +495,7 @@ expr_stmt|;
 block|}
 comment|/**      * Create a new instance representing a added node state      * @param parentEditor  editor of the parent state      * @param name  name of the state      */
 specifier|private
-name|TransientNodeState
+name|TransientKernelNodeState
 parameter_list|(
 name|KernelNodeStateEditor
 name|parentEditor
@@ -502,7 +516,7 @@ expr_stmt|;
 block|}
 comment|/**      * Create a new instance with an underlying persistent state      * @param parentEditor  editor of the parent state      * @param name  name of the state      * @param persistedState  underlying persistent state      */
 specifier|private
-name|TransientNodeState
+name|TransientKernelNodeState
 parameter_list|(
 name|KernelNodeStateEditor
 name|parentEditor
@@ -546,9 +560,9 @@ expr_stmt|;
 block|}
 comment|/**      * Copy constructor: create a deep copy of the passed {@code state} with      * the given {@code name} and {@code parent}.      * @param state  state to copy      * @param parent  parent of the copied state      * @param name  name of the copied state      */
 specifier|private
-name|TransientNodeState
+name|TransientKernelNodeState
 parameter_list|(
-name|TransientNodeState
+name|TransientKernelNodeState
 name|state
 parameter_list|,
 name|TransientNodeState
@@ -596,7 +610,7 @@ name|Entry
 argument_list|<
 name|String
 argument_list|,
-name|TransientNodeState
+name|TransientKernelNodeState
 argument_list|>
 name|existing
 range|:
@@ -625,7 +639,7 @@ argument_list|(
 name|existingName
 argument_list|,
 operator|new
-name|TransientNodeState
+name|TransientKernelNodeState
 argument_list|(
 name|existing
 operator|.
@@ -646,7 +660,7 @@ name|Entry
 argument_list|<
 name|String
 argument_list|,
-name|TransientNodeState
+name|TransientKernelNodeState
 argument_list|>
 name|added
 range|:
@@ -675,7 +689,7 @@ argument_list|(
 name|addedName
 argument_list|,
 operator|new
-name|TransientNodeState
+name|TransientKernelNodeState
 argument_list|(
 name|added
 operator|.
@@ -723,7 +737,8 @@ name|removedProperties
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * @return  the name of this transient node state      */
+annotation|@
+name|Override
 specifier|public
 name|String
 name|getName
@@ -733,7 +748,8 @@ return|return
 name|name
 return|;
 block|}
-comment|/**      * @return  relative path of this transient node state      */
+annotation|@
+name|Override
 specifier|public
 name|String
 name|getPath
@@ -776,6 +792,8 @@ name|name
 return|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|TransientNodeState
 name|getParent
@@ -785,7 +803,8 @@ return|return
 name|parent
 return|;
 block|}
-comment|/**      * @return  editor acting upon this instance      */
+annotation|@
+name|Override
 specifier|public
 name|KernelNodeStateEditor
 name|getEditor
@@ -795,7 +814,8 @@ return|return
 name|editor
 return|;
 block|}
-comment|/**      * Get a property state      * @param name name of the property state      * @return  the property state with the given {@code name} or {@code null}      *          if no such property state exists.      */
+annotation|@
+name|Override
 specifier|public
 name|PropertyState
 name|getProperty
@@ -849,7 +869,8 @@ name|name
 argument_list|)
 return|;
 block|}
-comment|/**      * Determine if a property state exists      * @param name  name of the property state      * @return  {@code true} if and only if a property with the given {@code name}      *          exists.      */
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|hasProperty
@@ -867,7 +888,8 @@ operator|!=
 literal|null
 return|;
 block|}
-comment|/**      * Determine the number of properties.      * @return  number of properties      */
+annotation|@
+name|Override
 specifier|public
 name|long
 name|getPropertyCount
@@ -901,16 +923,17 @@ name|size
 argument_list|()
 return|;
 block|}
-comment|/**      * Get a child node state      * @param name  name of the child node state      * @return  the child node state with the given {@code name} or {@code null}      *          if no such child node state exists.      */
+annotation|@
+name|Override
 specifier|public
-name|TransientNodeState
+name|TransientKernelNodeState
 name|getChildNode
 parameter_list|(
 name|String
 name|name
 parameter_list|)
 block|{
-name|TransientNodeState
+name|TransientKernelNodeState
 name|state
 init|=
 name|addedNodes
@@ -949,7 +972,8 @@ name|name
 argument_list|)
 return|;
 block|}
-comment|/**      * Determine if a child node state exists      * @param name  name of the child node state      * @return  {@code true} if and only if a child node with the given {@code name}      *          exists.      */
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|hasNode
@@ -967,7 +991,8 @@ operator|!=
 literal|null
 return|;
 block|}
-comment|/**      * Determine the number of child nodes.      * @return  number of child nodes.      */
+annotation|@
+name|Override
 specifier|public
 name|long
 name|getChildNodeCount
@@ -1001,7 +1026,8 @@ name|size
 argument_list|()
 return|;
 block|}
-comment|/**      * All property states. The returned {@code Iterable} has snapshot semantics. That      * is, it reflect the state of this transient node state instance at the time of the      * call. Later changes to this instance are no visible to iterators obtained from      * the returned iterable.      * @return  An {@code Iterable} for all property states      */
+annotation|@
+name|Override
 specifier|public
 name|Iterable
 argument_list|<
@@ -1184,7 +1210,8 @@ block|}
 block|}
 return|;
 block|}
-comment|/**      * All child node states. The returned {@code Iterable} has snapshot semantics. That      * is, it reflect the state of this transient node state instance at the time of the      * call. Later changes to this instance are no visible to iterators obtained from      * the returned iterable.      * @return  An {@code Iterable} for all child node states      */
+annotation|@
+name|Override
 specifier|public
 name|Iterable
 argument_list|<
@@ -1395,7 +1422,7 @@ argument_list|(
 name|name
 argument_list|,
 operator|new
-name|TransientNodeState
+name|TransientKernelNodeState
 argument_list|(
 name|editor
 argument_list|,
@@ -1520,14 +1547,14 @@ parameter_list|(
 name|String
 name|name
 parameter_list|,
-name|TransientNodeState
+name|TransientKernelNodeState
 name|destParent
 parameter_list|,
 name|String
 name|destName
 parameter_list|)
 block|{
-name|TransientNodeState
+name|TransientKernelNodeState
 name|state
 init|=
 name|getChildNode
@@ -1571,7 +1598,7 @@ parameter_list|(
 name|String
 name|name
 parameter_list|,
-name|TransientNodeState
+name|TransientKernelNodeState
 name|destParent
 parameter_list|,
 name|String
@@ -1587,7 +1614,7 @@ argument_list|(
 name|destName
 argument_list|,
 operator|new
-name|TransientNodeState
+name|TransientKernelNodeState
 argument_list|(
 name|getChildNode
 argument_list|(
@@ -1603,7 +1630,7 @@ expr_stmt|;
 block|}
 comment|/**      * Get a transient node state for a child node state which has      * an existing underlying persistent node date.      *      * @param name  name of the child node state      * @return  transient node state or {@code null} if this transient      *          node state does not have an underlying persistent state      *          or the underlying persistent state does not have a child      *          node state with the given {@code name}.      */
 specifier|private
-name|TransientNodeState
+name|TransientKernelNodeState
 name|getExistingChildNode
 parameter_list|(
 name|String
@@ -1621,7 +1648,7 @@ return|return
 literal|null
 return|;
 block|}
-name|TransientNodeState
+name|TransientKernelNodeState
 name|transientState
 init|=
 name|existingChildNodes
@@ -1662,7 +1689,7 @@ block|}
 name|transientState
 operator|=
 operator|new
-name|TransientNodeState
+name|TransientKernelNodeState
 argument_list|(
 name|editor
 argument_list|,

@@ -99,22 +99,6 @@ begin_import
 import|import
 name|org
 operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|kernel
-operator|.
-name|KernelNodeStateEditor
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
 name|slf4j
 operator|.
 name|Logger
@@ -407,7 +391,6 @@ name|getCurrentRoot
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|// fixme: don't cast to implementation
 name|this
 operator|.
 name|itemStateProvider
@@ -415,12 +398,7 @@ operator|=
 operator|new
 name|ItemStateProvider
 argument_list|(
-operator|(
-operator|(
-name|KernelNodeStateEditor
-operator|)
 name|editor
-operator|)
 operator|.
 name|getTransientState
 argument_list|()
@@ -678,18 +656,12 @@ argument_list|(
 name|newState
 argument_list|)
 expr_stmt|;
-comment|// fixme: don't cast to implementation
 name|itemStateProvider
 operator|=
 operator|new
 name|ItemStateProvider
 argument_list|(
-operator|(
-operator|(
-name|KernelNodeStateEditor
-operator|)
 name|editor
-operator|)
 operator|.
 name|getTransientState
 argument_list|()
@@ -756,18 +728,12 @@ argument_list|(
 name|newState
 argument_list|)
 expr_stmt|;
-comment|// fixme: don't cast to implementation
 name|itemStateProvider
 operator|=
 operator|new
 name|ItemStateProvider
 argument_list|(
-operator|(
-operator|(
-name|KernelNodeStateEditor
-operator|)
 name|editor
-operator|)
 operator|.
 name|getTransientState
 argument_list|()

@@ -55,7 +55,7 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|kernel
+name|api
 operator|.
 name|TransientNodeState
 import|;

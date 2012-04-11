@@ -115,6 +115,22 @@ end_import
 
 begin_import
 import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|api
+operator|.
+name|TransientNodeState
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|util
@@ -197,7 +213,7 @@ decl_stmt|;
 comment|/** Transient state this editor is acting upon */
 specifier|private
 specifier|final
-name|TransientNodeState
+name|TransientKernelNodeState
 name|transientState
 decl_stmt|;
 comment|/** Json diff of this private branch */
@@ -222,7 +238,7 @@ expr_stmt|;
 name|transientState
 operator|=
 operator|new
-name|TransientNodeState
+name|TransientKernelNodeState
 argument_list|(
 name|base
 argument_list|,
@@ -242,7 +258,7 @@ parameter_list|(
 name|KernelNodeStateEditor
 name|parentEditor
 parameter_list|,
-name|TransientNodeState
+name|TransientKernelNodeState
 name|state
 parameter_list|)
 block|{
@@ -542,7 +558,7 @@ name|String
 name|destPath
 parameter_list|)
 block|{
-name|TransientNodeState
+name|TransientKernelNodeState
 name|sourceParent
 init|=
 name|getTransientState
@@ -578,7 +594,7 @@ condition|)
 block|{
 return|return;
 block|}
-name|TransientNodeState
+name|TransientKernelNodeState
 name|destParent
 init|=
 name|getTransientState
@@ -671,7 +687,7 @@ name|String
 name|destPath
 parameter_list|)
 block|{
-name|TransientNodeState
+name|TransientKernelNodeState
 name|sourceParent
 init|=
 name|getTransientState
@@ -707,7 +723,7 @@ condition|)
 block|{
 return|return;
 block|}
-name|TransientNodeState
+name|TransientKernelNodeState
 name|destParent
 init|=
 name|getTransientState
@@ -831,7 +847,8 @@ return|return
 name|base
 return|;
 block|}
-comment|/**      * @return the {@link TransientNodeState} instance this editor is      *         acting upon.      */
+annotation|@
+name|Override
 specifier|public
 name|TransientNodeState
 name|getTransientState
@@ -900,16 +917,16 @@ name|rev
 argument_list|)
 return|;
 block|}
-comment|/**      * Get a transient node state for the node identified by      * {@code path}      * @param path  the path to the node state      * @return  a {@link TransientNodeState} instance for the item      *          at {@code path} or {@code null} if no such item exits.      */
+comment|/**      * Get a transient node state for the node identified by      * {@code path}      * @param path  the path to the node state      * @return  a {@link TransientKernelNodeState} instance for the item      *          at {@code path} or {@code null} if no such item exits.      */
 specifier|private
-name|TransientNodeState
+name|TransientKernelNodeState
 name|getTransientState
 parameter_list|(
 name|String
 name|path
 parameter_list|)
 block|{
-name|TransientNodeState
+name|TransientKernelNodeState
 name|state
 init|=
 name|transientState

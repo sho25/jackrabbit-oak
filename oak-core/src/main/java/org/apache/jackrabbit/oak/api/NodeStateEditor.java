@@ -120,6 +120,11 @@ name|NodeState
 name|getBaseNodeState
 parameter_list|()
 function_decl|;
+comment|/**      * Return the transient state which this editor is acting upon      * @return transient node state      */
+name|TransientNodeState
+name|getTransientState
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 
