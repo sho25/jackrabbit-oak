@@ -285,12 +285,13 @@ name|store
 decl_stmt|;
 specifier|private
 specifier|final
-name|QueryEngine
-name|queryEngine
-decl_stmt|;
-specifier|private
 name|NodeState
 name|root
+decl_stmt|;
+specifier|private
+specifier|final
+name|QueryEngine
+name|queryEngine
 decl_stmt|;
 specifier|public
 name|ConnectionImpl

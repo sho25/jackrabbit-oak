@@ -322,7 +322,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A transient node state represents a node being edited. All edit operations are  * done through an associated {@link org.apache.jackrabbit.mk.model.NodeStateEditor}.  *<p>  * A transient node state contains the current state of a node and is  * in contrast to {@link org.apache.jackrabbit.mk.model.NodeState} instances  * mutable and not thread safe.  *<p>  * The various accessors on this class mirror these of {@code NodeState}. However,  * since instances of this class are mutable return values may change between  * invocations.  */
+comment|/**  * A transient node state represents a node being edited. All edit operations are  * done through an associated {@link org.apache.jackrabbit.oak.api.NodeStateEditor}.  *<p>  * A transient node state contains the current state of a node and is  * in contrast to {@link org.apache.jackrabbit.mk.model.NodeState} instances  * mutable and not thread safe.  *<p>  * The various accessors on this class mirror these of {@code NodeState}. However,  * since instances of this class are mutable return values may change between  * invocations.  */
 end_comment
 
 begin_class

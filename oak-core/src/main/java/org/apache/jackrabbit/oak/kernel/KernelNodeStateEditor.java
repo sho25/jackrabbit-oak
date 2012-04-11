@@ -178,7 +178,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This {@code NodeStateEditor} implementation accumulates all changes into a json diff  * and applies them to the microkernel on  * {@link org.apache.jackrabbit.mk.model.NodeStore#merge(NodeStateEditor, NodeState)}.  *  * TODO: review/rewrite when OAK-45 is resolved  * When the MicroKernel has support for branching and merging private working copies,  * this implementation could:  * - directly write every operation through to the private working copy  * - batch write operations through to the private working copy when the  *   transient space gets too big.  * - spool write operations through to the private working copy on a background thread  */
+comment|/**  * This {@code NodeStateEditor} implementation accumulates all changes into a json diff  * and applies them to the microkernel on  * {@link org.apache.jackrabbit.oak.api.NodeStore#merge(NodeStateEditor, NodeState)}  *  * TODO: review/rewrite when OAK-45 is resolved  * When the MicroKernel has support for branching and merging private working copies,  * this implementation could:  * - directly write every operation through to the private working copy  * - batch write operations through to the private working copy when the  *   transient space gets too big.  * - spool write operations through to the private working copy on a background thread  */
 end_comment
 
 begin_class
@@ -983,6 +983,7 @@ name|name
 return|;
 block|}
 specifier|private
+specifier|static
 name|String
 name|encode
 parameter_list|(
@@ -1022,6 +1023,7 @@ return|;
 block|}
 block|}
 specifier|private
+specifier|static
 name|String
 name|encode
 parameter_list|(
@@ -1117,6 +1119,7 @@ throw|;
 comment|// Make javac happy
 block|}
 specifier|private
+specifier|static
 name|String
 name|encode
 parameter_list|(
@@ -1167,6 +1170,16 @@ literal|','
 argument_list|)
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|sb
+operator|.
+name|length
+argument_list|()
+operator|>
+literal|1
+condition|)
+block|{
 name|sb
 operator|.
 name|deleteCharAt
@@ -1179,6 +1192,7 @@ operator|-
 literal|1
 argument_list|)
 expr_stmt|;
+block|}
 name|sb
 operator|.
 name|append

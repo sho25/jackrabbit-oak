@@ -289,10 +289,7 @@ argument_list|)
 argument_list|,
 name|microKernelUrl
 argument_list|,
-name|getRevision
-argument_list|(
-name|credentials
-argument_list|)
+name|revision
 argument_list|)
 return|;
 block|}
