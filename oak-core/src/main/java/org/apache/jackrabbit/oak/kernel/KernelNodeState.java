@@ -238,6 +238,7 @@ argument_list|>
 name|childNodes
 decl_stmt|;
 comment|// TODO: WeakReference?
+comment|/**      * Create a new instance of this class representing the node at the      * given {@code path} and {@code revision}. It is an error if the      * underlying Microkernel does not contain such a node.      *      * @param kernel      * @param path      * @param revision      */
 specifier|public
 name|KernelNodeState
 parameter_list|(
