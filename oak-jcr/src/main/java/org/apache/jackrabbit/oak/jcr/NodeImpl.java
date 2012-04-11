@@ -135,8 +135,6 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|jcr
-operator|.
 name|util
 operator|.
 name|Function1
@@ -171,8 +169,6 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|jcr
-operator|.
 name|util
 operator|.
 name|Iterators
@@ -206,8 +202,6 @@ operator|.
 name|jackrabbit
 operator|.
 name|oak
-operator|.
-name|jcr
 operator|.
 name|util
 operator|.
@@ -546,8 +540,6 @@ operator|.
 name|jackrabbit
 operator|.
 name|oak
-operator|.
-name|jcr
 operator|.
 name|util
 operator|.

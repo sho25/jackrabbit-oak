@@ -13,30 +13,30 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|jcr
-operator|.
 name|util
 package|;
 end_package
 
 begin_comment
-comment|/**  * Type safe counter part of {@link org.apache.commons.collections.Predicate}.  *  * @param<T> type of values this predicate is defined on  */
+comment|/**  * Type safe counter part of {@link org.apache.commons.collections.Transformer}.  *  * @param<S>  argument type to transform from  * @param<T>  result type to transform to  */
 end_comment
 
 begin_interface
 specifier|public
 interface|interface
-name|Predicate
+name|Function1
 parameter_list|<
+name|S
+parameter_list|,
 name|T
 parameter_list|>
 block|{
-comment|/**      * Use the specified parameter to perform a test that returns true or false.      *      * @param arg  the predicate to evaluate, should not be changed      * @return true or false      */
-name|boolean
-name|evaluate
-parameter_list|(
+comment|/**      * Apply this function to its argument.      *      * @param argument      * @return      */
 name|T
-name|arg
+name|apply
+parameter_list|(
+name|S
+name|argument
 parameter_list|)
 function_decl|;
 block|}
