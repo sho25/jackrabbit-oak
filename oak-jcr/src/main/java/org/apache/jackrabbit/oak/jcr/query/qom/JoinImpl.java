@@ -54,14 +54,17 @@ name|JoinConditionImpl
 name|joinCondition
 decl_stmt|;
 specifier|private
+specifier|final
 name|JoinType
 name|joinType
 decl_stmt|;
 specifier|private
+specifier|final
 name|SourceImpl
 name|left
 decl_stmt|;
 specifier|private
+specifier|final
 name|SourceImpl
 name|right
 decl_stmt|;

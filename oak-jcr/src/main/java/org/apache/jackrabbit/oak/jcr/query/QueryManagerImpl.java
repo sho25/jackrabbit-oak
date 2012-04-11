@@ -540,6 +540,7 @@ throw|;
 block|}
 block|}
 specifier|private
+specifier|static
 name|HashMap
 argument_list|<
 name|String

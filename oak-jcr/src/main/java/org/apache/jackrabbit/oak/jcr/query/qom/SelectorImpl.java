@@ -78,6 +78,8 @@ operator|=
 name|selectorName
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|getNodeTypeName
@@ -87,6 +89,8 @@ return|return
 name|nodeTypeName
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|getSelectorName

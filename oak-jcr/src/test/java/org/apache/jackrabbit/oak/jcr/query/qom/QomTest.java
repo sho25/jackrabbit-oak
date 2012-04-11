@@ -22,14 +22,26 @@ package|;
 end_package
 
 begin_import
-import|import static
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|commons
+operator|.
+name|SimpleValueFactory
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|junit
 operator|.
-name|Assert
-operator|.
-name|assertEquals
+name|Test
 import|;
 end_import
 
@@ -498,36 +510,14 @@ import|;
 end_import
 
 begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|commons
-operator|.
-name|SimpleValueFactory
-import|;
-end_import
-
-begin_import
-import|import
+import|import static
 name|org
 operator|.
 name|junit
 operator|.
-name|Before
-import|;
-end_import
-
-begin_import
-import|import
-name|org
+name|Assert
 operator|.
-name|junit
-operator|.
-name|Test
+name|assertEquals
 import|;
 end_import
 
@@ -540,6 +530,8 @@ specifier|public
 class|class
 name|QomTest
 block|{
+specifier|private
+specifier|final
 name|QueryObjectModelFactory
 name|f
 init|=
@@ -548,23 +540,14 @@ name|QueryObjectModelFactoryImpl
 argument_list|()
 decl_stmt|;
 specifier|private
+specifier|final
 name|ValueFactory
 name|vf
-decl_stmt|;
-annotation|@
-name|Before
-specifier|public
-name|void
-name|setup
-parameter_list|()
-block|{
-name|vf
-operator|=
+init|=
 operator|new
 name|SimpleValueFactory
 argument_list|()
-expr_stmt|;
-block|}
+decl_stmt|;
 annotation|@
 name|Test
 specifier|public

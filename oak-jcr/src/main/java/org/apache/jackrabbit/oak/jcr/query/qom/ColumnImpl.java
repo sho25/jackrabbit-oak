@@ -89,6 +89,8 @@ operator|=
 name|columnName
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|getColumnName
@@ -98,6 +100,8 @@ return|return
 name|columnName
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|getPropertyName
@@ -107,6 +111,8 @@ return|return
 name|propertyName
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|getSelectorName

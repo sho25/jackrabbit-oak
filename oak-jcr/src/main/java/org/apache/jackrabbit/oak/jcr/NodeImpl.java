@@ -1385,6 +1385,11 @@ return|;
 block|}
 comment|/**      * @see Node#setProperty(String, InputStream)      */
 annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"deprecation"
+argument_list|)
+annotation|@
 name|Override
 specifier|public
 name|Property

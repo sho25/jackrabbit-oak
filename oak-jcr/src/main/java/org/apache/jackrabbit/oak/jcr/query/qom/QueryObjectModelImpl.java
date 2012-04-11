@@ -23,21 +23,15 @@ end_package
 
 begin_import
 import|import
-name|java
+name|org
 operator|.
-name|util
+name|apache
 operator|.
-name|ArrayList
-import|;
-end_import
-
-begin_import
-import|import
-name|java
+name|jackrabbit
 operator|.
-name|util
+name|commons
 operator|.
-name|HashMap
+name|SimpleValueFactory
 import|;
 end_import
 
@@ -78,18 +72,6 @@ operator|.
 name|jcr
 operator|.
 name|ValueFactory
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|jcr
-operator|.
-name|query
-operator|.
-name|InvalidQueryException
 import|;
 end_import
 
@@ -191,15 +173,21 @@ end_import
 
 begin_import
 import|import
-name|org
+name|java
 operator|.
-name|apache
+name|util
 operator|.
-name|jackrabbit
+name|ArrayList
+import|;
+end_import
+
+begin_import
+import|import
+name|java
 operator|.
-name|commons
+name|util
 operator|.
-name|SimpleValueFactory
+name|HashMap
 import|;
 end_import
 
@@ -500,8 +488,6 @@ name|QueryResult
 name|execute
 parameter_list|()
 throws|throws
-name|InvalidQueryException
-throws|,
 name|RepositoryException
 block|{
 comment|// TODO Auto-generated method stub

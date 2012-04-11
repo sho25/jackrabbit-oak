@@ -476,6 +476,8 @@ name|QueryObjectModelFactoryImpl
 implements|implements
 name|QueryObjectModelFactory
 block|{
+annotation|@
+name|Override
 specifier|public
 name|AndImpl
 name|and
@@ -503,6 +505,8 @@ name|constraint2
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|OrderingImpl
 name|ascending
@@ -526,6 +530,8 @@ name|ASCENDING
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|BindVariableValueImpl
 name|bindVariable
@@ -542,6 +548,8 @@ name|bindVariableName
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|ChildNode
 name|childNode
@@ -563,6 +571,8 @@ name|path
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|ChildNodeJoinCondition
 name|childNodeJoinCondition
@@ -584,6 +594,8 @@ name|parentSelectorName
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Column
 name|column
@@ -610,6 +622,8 @@ name|columnName
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Comparison
 name|comparison
@@ -647,6 +661,8 @@ name|operand2
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|DescendantNode
 name|descendantNode
@@ -668,6 +684,8 @@ name|path
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|DescendantNodeJoinCondition
 name|descendantNodeJoinCondition
@@ -689,6 +707,8 @@ name|ancestorSelectorName
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Ordering
 name|descending
@@ -712,6 +732,8 @@ name|DESCENDING
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|EquiJoinCondition
 name|equiJoinCondition
@@ -743,6 +765,8 @@ name|property2Name
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|FullTextSearch
 name|fullTextSearch
@@ -772,6 +796,8 @@ name|fullTextSearchExpression
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|FullTextSearchScore
 name|fullTextSearchScore
@@ -788,6 +814,8 @@ name|selectorName
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Join
 name|join
@@ -833,6 +861,8 @@ name|joinCondition
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Length
 name|length
@@ -852,6 +882,8 @@ name|propertyValue
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Literal
 name|literal
@@ -868,6 +900,8 @@ name|literalValue
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|LowerCase
 name|lowerCase
@@ -887,6 +921,8 @@ name|operand
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|NodeLocalName
 name|nodeLocalName
@@ -903,6 +939,8 @@ name|selectorName
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|NodeName
 name|nodeName
@@ -919,6 +957,8 @@ name|selectorName
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Not
 name|not
@@ -938,6 +978,8 @@ name|constraint
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Or
 name|or
@@ -965,6 +1007,8 @@ name|constraint2
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|PropertyExistence
 name|propertyExistence
