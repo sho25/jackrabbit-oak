@@ -57,6 +57,12 @@ name|NodeState
 name|getCurrentRoot
 parameter_list|()
 function_decl|;
+comment|/**      * Refresh this connection to the latest revision of the underlying Microkernel.      */
+name|void
+name|refresh
+parameter_list|()
+function_decl|;
+comment|/**      * Atomically apply all changes in the passed {@code editor} to the underlying      * Microkernel. On success this connection is implicitly refreshed to the state      * created by applying the editor.      *      * @param editor  editor carrying the changes to be applies      * @return  node state resulting from applying the changed      * @throws CommitFailedException      */
 name|NodeState
 name|commit
 parameter_list|(
@@ -66,6 +72,7 @@ parameter_list|)
 throws|throws
 name|CommitFailedException
 function_decl|;
+comment|/**      * Get an node state editor for the given state. Use {@link #commit(NodeStateEditor)}      * to atomically apply the changes made in this editor to the underlying Microkernel.      *      * @param state  node state to edit      * @return  editor for the passed {@code state}      */
 name|NodeStateEditor
 name|getNodeStateEditor
 parameter_list|(
