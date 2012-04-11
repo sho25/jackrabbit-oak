@@ -7364,9 +7364,6 @@ expr_stmt|;
 block|}
 block|}
 annotation|@
-name|Ignore
-comment|// TODO implement move
-annotation|@
 name|Test
 specifier|public
 name|void
