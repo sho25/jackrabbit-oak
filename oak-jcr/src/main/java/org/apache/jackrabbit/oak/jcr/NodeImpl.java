@@ -2734,7 +2734,7 @@ block|{
 name|checkStatus
 argument_list|()
 expr_stmt|;
-name|checkSessionHasPendingChanges
+name|ensureNoPendingSessionChanges
 argument_list|()
 expr_stmt|;
 comment|// TODO
@@ -3306,6 +3306,7 @@ argument_list|()
 return|;
 block|}
 specifier|private
+specifier|synchronized
 name|TransientNodeState
 name|getNodeState
 parameter_list|()

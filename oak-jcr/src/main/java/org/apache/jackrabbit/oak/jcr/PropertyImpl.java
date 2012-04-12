@@ -2384,6 +2384,7 @@ argument_list|()
 return|;
 block|}
 specifier|private
+specifier|synchronized
 name|void
 name|resolve
 parameter_list|()

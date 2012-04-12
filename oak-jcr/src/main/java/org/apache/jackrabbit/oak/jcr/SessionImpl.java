@@ -483,7 +483,7 @@ parameter_list|)
 throws|throws
 name|RepositoryException
 block|{
-name|checkIsAlive
+name|ensureIsAlive
 argument_list|()
 expr_stmt|;
 comment|// TODO
@@ -500,7 +500,7 @@ parameter_list|()
 throws|throws
 name|RepositoryException
 block|{
-name|checkIsAlive
+name|ensureIsAlive
 argument_list|()
 expr_stmt|;
 return|return
@@ -520,7 +520,7 @@ parameter_list|()
 throws|throws
 name|RepositoryException
 block|{
-name|checkIsAlive
+name|ensureIsAlive
 argument_list|()
 expr_stmt|;
 return|return
@@ -550,7 +550,7 @@ parameter_list|)
 throws|throws
 name|RepositoryException
 block|{
-name|checkIsAlive
+name|ensureIsAlive
 argument_list|()
 expr_stmt|;
 comment|// TODO
@@ -570,7 +570,7 @@ parameter_list|)
 throws|throws
 name|RepositoryException
 block|{
-name|checkIsAlive
+name|ensureIsAlive
 argument_list|()
 expr_stmt|;
 comment|// TODO
@@ -594,7 +594,7 @@ parameter_list|)
 throws|throws
 name|RepositoryException
 block|{
-name|checkIsAlive
+name|ensureIsAlive
 argument_list|()
 expr_stmt|;
 name|String
@@ -641,7 +641,7 @@ parameter_list|()
 throws|throws
 name|RepositoryException
 block|{
-name|checkIsAlive
+name|ensureIsAlive
 argument_list|()
 expr_stmt|;
 try|try
@@ -709,7 +709,7 @@ parameter_list|)
 throws|throws
 name|RepositoryException
 block|{
-name|checkIsAlive
+name|ensureIsAlive
 argument_list|()
 expr_stmt|;
 name|connection
@@ -757,7 +757,7 @@ parameter_list|()
 throws|throws
 name|RepositoryException
 block|{
-name|checkIsAlive
+name|ensureIsAlive
 argument_list|()
 expr_stmt|;
 comment|// todo implement hasPendingChanges
@@ -839,7 +839,7 @@ parameter_list|)
 throws|throws
 name|RepositoryException
 block|{
-name|checkIsAlive
+name|ensureIsAlive
 argument_list|()
 expr_stmt|;
 comment|// TODO
@@ -1007,7 +1007,7 @@ parameter_list|)
 throws|throws
 name|RepositoryException
 block|{
-name|checkIsAlive
+name|ensureIsAlive
 argument_list|()
 expr_stmt|;
 comment|// TODO
@@ -1078,7 +1078,7 @@ parameter_list|)
 throws|throws
 name|RepositoryException
 block|{
-name|checkIsAlive
+name|ensureIsAlive
 argument_list|()
 expr_stmt|;
 comment|// TODO
@@ -1095,7 +1095,7 @@ parameter_list|()
 throws|throws
 name|RepositoryException
 block|{
-name|checkIsAlive
+name|ensureIsAlive
 argument_list|()
 expr_stmt|;
 comment|// TODO
@@ -1122,9 +1122,9 @@ argument_list|)
 throw|;
 block|}
 comment|//--------------------------------------------------------------------------
-comment|/**      * Performs a sanity check on this session.      *      * @throws RepositoryException if this session has been rendered invalid      * for some reason (e.g. if this session has been closed explicitly by logout)      */
+comment|/**      * Ensure that this session is alive and throw an exception otherwise.      *      * @throws RepositoryException if this session has been rendered invalid      * for some reason (e.g. if this session has been closed explicitly by logout)      */
 name|void
-name|checkIsAlive
+name|ensureIsAlive
 parameter_list|()
 throws|throws
 name|RepositoryException
@@ -1184,9 +1184,9 @@ name|desc
 argument_list|)
 return|;
 block|}
-comment|/**      * Make sure the repository supports the option indicated by the given string.      *      * @param option Any of the option constants defined by {@link Repository}      * that either returns 'true' or 'false'. I.e.      *<ul>      *<li>{@link Repository#LEVEL_1_SUPPORTED}</li>      *<li>{@link Repository#LEVEL_2_SUPPORTED}</li>      *<li>{@link Repository#OPTION_ACCESS_CONTROL_SUPPORTED}</li>      *<li>{@link Repository#OPTION_ACTIVITIES_SUPPORTED}</li>      *<li>{@link Repository#OPTION_BASELINES_SUPPORTED}</li>      *<li>{@link Repository#OPTION_JOURNALED_OBSERVATION_SUPPORTED}</li>      *<li>{@link Repository#OPTION_LIFECYCLE_SUPPORTED}</li>      *<li>{@link Repository#OPTION_LOCKING_SUPPORTED}</li>      *<li>{@link Repository#OPTION_NODE_AND_PROPERTY_WITH_SAME_NAME_SUPPORTED}</li>      *<li>{@link Repository#OPTION_NODE_TYPE_MANAGEMENT_SUPPORTED}</li>      *<li>{@link Repository#OPTION_OBSERVATION_SUPPORTED}</li>      *<li>{@link Repository#OPTION_QUERY_SQL_SUPPORTED}</li>      *<li>{@link Repository#OPTION_RETENTION_SUPPORTED}</li>      *<li>{@link Repository#OPTION_SHAREABLE_NODES_SUPPORTED}</li>      *<li>{@link Repository#OPTION_SIMPLE_VERSIONING_SUPPORTED}</li>      *<li>{@link Repository#OPTION_TRANSACTIONS_SUPPORTED}</li>      *<li>{@link Repository#OPTION_UNFILED_CONTENT_SUPPORTED}</li>      *<li>{@link Repository#OPTION_UPDATE_MIXIN_NODE_TYPES_SUPPORTED}</li>      *<li>{@link Repository#OPTION_UPDATE_PRIMARY_NODE_TYPE_SUPPORTED}</li>      *<li>{@link Repository#OPTION_VERSIONING_SUPPORTED}</li>      *<li>{@link Repository#OPTION_WORKSPACE_MANAGEMENT_SUPPORTED}</li>      *<li>{@link Repository#OPTION_XML_EXPORT_SUPPORTED}</li>      *<li>{@link Repository#OPTION_XML_IMPORT_SUPPORTED}</li>      *<li>{@link Repository#WRITE_SUPPORTED}</li>      *</ul>      * @throws UnsupportedRepositoryOperationException If the given option is      * not supported.      * @throws RepositoryException If another error occurs.      * @see javax.jcr.Repository#getDescriptorKeys()      */
+comment|/**      * Make sure the repository supports the option indicated by the given string      * and throw an exception otherwise.      *      * @param option Any of the option constants defined by {@link Repository}      * that either returns 'true' or 'false'. I.e.      *<ul>      *<li>{@link Repository#LEVEL_1_SUPPORTED}</li>      *<li>{@link Repository#LEVEL_2_SUPPORTED}</li>      *<li>{@link Repository#OPTION_ACCESS_CONTROL_SUPPORTED}</li>      *<li>{@link Repository#OPTION_ACTIVITIES_SUPPORTED}</li>      *<li>{@link Repository#OPTION_BASELINES_SUPPORTED}</li>      *<li>{@link Repository#OPTION_JOURNALED_OBSERVATION_SUPPORTED}</li>      *<li>{@link Repository#OPTION_LIFECYCLE_SUPPORTED}</li>      *<li>{@link Repository#OPTION_LOCKING_SUPPORTED}</li>      *<li>{@link Repository#OPTION_NODE_AND_PROPERTY_WITH_SAME_NAME_SUPPORTED}</li>      *<li>{@link Repository#OPTION_NODE_TYPE_MANAGEMENT_SUPPORTED}</li>      *<li>{@link Repository#OPTION_OBSERVATION_SUPPORTED}</li>      *<li>{@link Repository#OPTION_QUERY_SQL_SUPPORTED}</li>      *<li>{@link Repository#OPTION_RETENTION_SUPPORTED}</li>      *<li>{@link Repository#OPTION_SHAREABLE_NODES_SUPPORTED}</li>      *<li>{@link Repository#OPTION_SIMPLE_VERSIONING_SUPPORTED}</li>      *<li>{@link Repository#OPTION_TRANSACTIONS_SUPPORTED}</li>      *<li>{@link Repository#OPTION_UNFILED_CONTENT_SUPPORTED}</li>      *<li>{@link Repository#OPTION_UPDATE_MIXIN_NODE_TYPES_SUPPORTED}</li>      *<li>{@link Repository#OPTION_UPDATE_PRIMARY_NODE_TYPE_SUPPORTED}</li>      *<li>{@link Repository#OPTION_VERSIONING_SUPPORTED}</li>      *<li>{@link Repository#OPTION_WORKSPACE_MANAGEMENT_SUPPORTED}</li>      *<li>{@link Repository#OPTION_XML_EXPORT_SUPPORTED}</li>      *<li>{@link Repository#OPTION_XML_IMPORT_SUPPORTED}</li>      *<li>{@link Repository#WRITE_SUPPORTED}</li>      *</ul>      * @throws UnsupportedRepositoryOperationException If the given option is      * not supported.      * @throws RepositoryException If another error occurs.      * @see javax.jcr.Repository#getDescriptorKeys()      */
 name|void
-name|checkSupportedOption
+name|ensureSupportsOption
 parameter_list|(
 name|String
 name|option
@@ -1214,9 +1214,9 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**      * Checks if this session has pending changes.      *      * @throws InvalidItemStateException if this nodes session has pending changes      * @throws RepositoryException      */
+comment|/**      * Ensure that this session has no pending changes and throw an exception      * otherwise.      *      * @throws InvalidItemStateException if this nodes session has pending changes      * @throws RepositoryException      */
 name|void
-name|checkHasPendingChanges
+name|ensureNoPendingChanges
 parameter_list|()
 throws|throws
 name|RepositoryException

@@ -387,14 +387,14 @@ operator|.
 name|getSession
 argument_list|()
 operator|.
-name|checkIsAlive
+name|ensureIsAlive
 argument_list|()
 expr_stmt|;
 comment|// TODO: validate item state.
 block|}
-comment|/**      * Checks if the associated session has pending changes.      *      * @throws InvalidItemStateException if this nodes session has pending changes      * @throws RepositoryException      */
+comment|/**      * Ensure that the associated session has no pending changes and throw an      * exception otherwise.      *      * @throws InvalidItemStateException if this nodes session has pending changes      * @throws RepositoryException      */
 name|void
-name|checkSessionHasPendingChanges
+name|ensureNoPendingSessionChanges
 parameter_list|()
 throws|throws
 name|RepositoryException
@@ -404,7 +404,7 @@ operator|.
 name|getSession
 argument_list|()
 operator|.
-name|checkHasPendingChanges
+name|ensureNoPendingChanges
 argument_list|()
 expr_stmt|;
 block|}
