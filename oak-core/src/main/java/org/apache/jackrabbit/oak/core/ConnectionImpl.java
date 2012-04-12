@@ -470,7 +470,7 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|NodeState
+name|void
 name|commit
 parameter_list|(
 name|NodeStateEditor
@@ -481,9 +481,6 @@ name|CommitFailedException
 block|{
 try|try
 block|{
-return|return
-name|root
-operator|=
 name|store
 operator|.
 name|merge
@@ -495,7 +492,7 @@ operator|.
 name|getBaseNodeState
 argument_list|()
 argument_list|)
-return|;
+expr_stmt|;
 block|}
 catch|catch
 parameter_list|(

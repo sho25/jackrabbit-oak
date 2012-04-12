@@ -62,8 +62,8 @@ name|void
 name|refresh
 parameter_list|()
 function_decl|;
-comment|/**      * Atomically apply all changes in the passed {@code editor} to the underlying      * Microkernel. On success this connection is implicitly refreshed to the state      * created by applying the editor.      *      * @param editor  editor carrying the changes to be applies      * @return  node state resulting from applying the changed      * @throws CommitFailedException      */
-name|NodeState
+comment|/**      * Atomically apply all changes in the passed {@code editor} to the underlying      * Microkernel.      *      * @param editor  editor carrying the changes to be applies      * @throws CommitFailedException      */
+name|void
 name|commit
 parameter_list|(
 name|NodeStateEditor
