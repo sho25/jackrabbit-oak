@@ -55,14 +55,14 @@ operator|.
 name|SuiteClasses
 argument_list|(
 block|{
-name|MicroKernelTestSuite
+name|MicroKernelIT
 operator|.
 name|class
 block|}
 argument_list|)
 specifier|public
 class|class
-name|EverythingIT
+name|MicroKernelTestSuite
 block|{ }
 end_class
 
