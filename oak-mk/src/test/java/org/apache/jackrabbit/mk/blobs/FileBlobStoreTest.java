@@ -26,7 +26,7 @@ specifier|public
 class|class
 name|FileBlobStoreTest
 extends|extends
-name|DbBlobStoreTest
+name|AbstractBlobStoreTest
 block|{
 specifier|public
 name|void
