@@ -1254,6 +1254,23 @@ operator|.
 name|clearCache
 argument_list|()
 expr_stmt|;
+comment|// https://issues.apache.org/jira/browse/OAK-60
+try|try
+block|{
+name|Thread
+operator|.
+name|sleep
+argument_list|(
+literal|1
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|InterruptedException
+name|e
+parameter_list|)
+block|{          }
 name|store
 operator|.
 name|startMark
@@ -1349,11 +1366,6 @@ operator|>
 literal|0
 argument_list|)
 expr_stmt|;
-comment|//        try {
-comment|//            Thread.sleep(10);
-comment|//        } catch (InterruptedException e) {
-comment|//
-comment|//        }
 block|}
 specifier|private
 name|void
