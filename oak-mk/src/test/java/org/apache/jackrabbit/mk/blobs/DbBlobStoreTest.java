@@ -256,6 +256,10 @@ specifier|private
 name|Connection
 name|sentinel
 decl_stmt|;
+specifier|private
+name|JdbcConnectionPool
+name|cp
+decl_stmt|;
 specifier|public
 name|void
 name|setUp
@@ -270,9 +274,8 @@ argument_list|(
 literal|"org.h2.Driver"
 argument_list|)
 expr_stmt|;
-name|JdbcConnectionPool
 name|cp
-init|=
+operator|=
 name|JdbcConnectionPool
 operator|.
 name|create
@@ -283,7 +286,7 @@ literal|""
 argument_list|,
 literal|""
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 name|sentinel
 operator|=
 name|cp
@@ -349,6 +352,11 @@ block|}
 name|store
 operator|.
 name|close
+argument_list|()
+expr_stmt|;
+name|cp
+operator|.
+name|dispose
 argument_list|()
 expr_stmt|;
 block|}
@@ -1255,6 +1263,7 @@ name|clearCache
 argument_list|()
 expr_stmt|;
 comment|// https://issues.apache.org/jira/browse/OAK-60
+comment|// endure there is at least one old entry (with age 1 ms)
 try|try
 block|{
 name|Thread
@@ -1270,7 +1279,9 @@ parameter_list|(
 name|InterruptedException
 name|e
 parameter_list|)
-block|{          }
+block|{
+comment|// ignore
+block|}
 name|store
 operator|.
 name|startMark
