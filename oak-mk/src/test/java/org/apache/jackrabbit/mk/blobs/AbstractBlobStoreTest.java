@@ -220,6 +220,7 @@ comment|/**  * Tests a BlobStore implementation.  */
 end_comment
 
 begin_class
+specifier|public
 specifier|abstract
 class|class
 name|AbstractBlobStoreTest
