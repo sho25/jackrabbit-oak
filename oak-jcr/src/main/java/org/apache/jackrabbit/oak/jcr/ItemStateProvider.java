@@ -68,7 +68,7 @@ name|root
 expr_stmt|;
 block|}
 name|TransientNodeState
-name|getNodeState
+name|getTransientNodeState
 parameter_list|(
 name|String
 name|path
@@ -127,7 +127,7 @@ block|{
 name|TransientNodeState
 name|parentState
 init|=
-name|getNodeState
+name|getTransientNodeState
 argument_list|(
 name|Paths
 operator|.

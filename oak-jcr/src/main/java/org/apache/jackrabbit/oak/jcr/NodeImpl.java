@@ -564,7 +564,7 @@ argument_list|)
 decl_stmt|;
 specifier|private
 name|TransientNodeState
-name|nodeState
+name|transientNodeState
 decl_stmt|;
 name|NodeImpl
 parameter_list|(
@@ -575,7 +575,7 @@ argument_list|>
 name|sessionContext
 parameter_list|,
 name|TransientNodeState
-name|nodeState
+name|transientNodeState
 parameter_list|)
 block|{
 name|super
@@ -585,9 +585,9 @@ argument_list|)
 expr_stmt|;
 name|this
 operator|.
-name|nodeState
+name|transientNodeState
 operator|=
-name|nodeState
+name|transientNodeState
 expr_stmt|;
 block|}
 comment|//---------------------------------------------------------------< Item>---
@@ -614,7 +614,7 @@ throws|throws
 name|RepositoryException
 block|{
 return|return
-name|getNodeState
+name|getTransientNodeState
 argument_list|()
 operator|.
 name|getName
@@ -650,7 +650,7 @@ name|RepositoryException
 block|{
 if|if
 condition|(
-name|getNodeState
+name|getTransientNodeState
 argument_list|()
 operator|.
 name|getParent
@@ -673,7 +673,7 @@ name|NodeImpl
 argument_list|(
 name|sessionContext
 argument_list|,
-name|getNodeState
+name|getTransientNodeState
 argument_list|()
 operator|.
 name|getParent
@@ -755,7 +755,7 @@ parameter_list|()
 throws|throws
 name|RepositoryException
 block|{
-name|getNodeState
+name|getTransientNodeState
 argument_list|()
 operator|.
 name|getParent
@@ -836,7 +836,7 @@ init|=
 name|getItemStateProvider
 argument_list|()
 operator|.
-name|getNodeState
+name|getTransientNodeState
 argument_list|(
 name|parentPath
 argument_list|)
@@ -1780,7 +1780,7 @@ name|TransientNodeState
 argument_list|>
 name|childNodeStates
 init|=
-name|getNodeState
+name|getTransientNodeState
 argument_list|()
 operator|.
 name|getChildNodes
@@ -1824,7 +1824,7 @@ name|childNodeStates
 init|=
 name|filter
 argument_list|(
-name|getNodeState
+name|getTransientNodeState
 argument_list|()
 operator|.
 name|getChildNodes
@@ -1903,7 +1903,7 @@ name|childNodeStates
 init|=
 name|filter
 argument_list|(
-name|getNodeState
+name|getTransientNodeState
 argument_list|()
 operator|.
 name|getChildNodes
@@ -2020,7 +2020,7 @@ name|PropertyState
 argument_list|>
 name|properties
 init|=
-name|getNodeState
+name|getTransientNodeState
 argument_list|()
 operator|.
 name|getProperties
@@ -2064,7 +2064,7 @@ name|properties
 init|=
 name|filter
 argument_list|(
-name|getNodeState
+name|getTransientNodeState
 argument_list|()
 operator|.
 name|getProperties
@@ -2140,7 +2140,7 @@ name|propertyNames
 init|=
 name|filter
 argument_list|(
-name|getNodeState
+name|getTransientNodeState
 argument_list|()
 operator|.
 name|getProperties
@@ -2508,7 +2508,7 @@ name|checkStatus
 argument_list|()
 expr_stmt|;
 return|return
-name|getNodeState
+name|getTransientNodeState
 argument_list|()
 operator|.
 name|getChildNodeCount
@@ -2530,7 +2530,7 @@ name|checkStatus
 argument_list|()
 expr_stmt|;
 return|return
-name|getNodeState
+name|getTransientNodeState
 argument_list|()
 operator|.
 name|getPropertyCount
@@ -3335,7 +3335,7 @@ name|getEditor
 parameter_list|()
 block|{
 return|return
-name|getNodeState
+name|getTransientNodeState
 argument_list|()
 operator|.
 name|getEditor
@@ -3396,18 +3396,18 @@ block|}
 specifier|private
 specifier|synchronized
 name|TransientNodeState
-name|getNodeState
+name|getTransientNodeState
 parameter_list|()
 block|{
 return|return
-name|nodeState
+name|transientNodeState
 operator|=
 name|getItemStateProvider
 argument_list|()
 operator|.
-name|getNodeState
+name|getTransientNodeState
 argument_list|(
-name|nodeState
+name|transientNodeState
 operator|.
 name|getPath
 argument_list|()
@@ -3420,7 +3420,7 @@ name|path
 parameter_list|()
 block|{
 return|return
-name|getNodeState
+name|getTransientNodeState
 argument_list|()
 operator|.
 name|getPath
@@ -3527,7 +3527,7 @@ name|PropertyImpl
 argument_list|(
 name|sessionContext
 argument_list|,
-name|getNodeState
+name|getTransientNodeState
 argument_list|()
 argument_list|,
 name|propertyState
@@ -3565,7 +3565,7 @@ init|=
 name|getItemStateProvider
 argument_list|()
 operator|.
-name|getNodeState
+name|getTransientNodeState
 argument_list|(
 name|absPath
 argument_list|)
@@ -3618,7 +3618,7 @@ init|=
 name|getItemStateProvider
 argument_list|()
 operator|.
-name|getNodeState
+name|getTransientNodeState
 argument_list|(
 name|absPath
 argument_list|)

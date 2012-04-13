@@ -2394,7 +2394,7 @@ operator|=
 name|getItemStateProvider
 argument_list|()
 operator|.
-name|getNodeState
+name|getTransientNodeState
 argument_list|(
 name|parentState
 operator|.

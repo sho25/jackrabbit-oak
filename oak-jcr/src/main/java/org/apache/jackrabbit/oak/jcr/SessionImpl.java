@@ -531,7 +531,7 @@ name|sessionContext
 argument_list|,
 name|itemStateProvider
 operator|.
-name|getNodeState
+name|getTransientNodeState
 argument_list|(
 literal|"/"
 argument_list|)
