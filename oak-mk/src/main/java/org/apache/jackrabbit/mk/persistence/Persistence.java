@@ -205,7 +205,7 @@ name|NotFoundException
 throws|,
 name|Exception
 function_decl|;
-comment|/**      * Persist a commit, with an id that is selected by the caller.      *       * @param id commit id      * @param commit commit      * @throws Exception if an error occurs      */
+comment|/**      * Persist a commit with an id provided by the caller.      *       * @param id commit id      * @param commit commit      * @throws Exception if an error occurs      */
 name|void
 name|writeCommit
 parameter_list|(

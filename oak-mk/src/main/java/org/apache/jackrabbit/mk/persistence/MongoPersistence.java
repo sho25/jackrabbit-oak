@@ -23,6 +23,16 @@ name|java
 operator|.
 name|io
 operator|.
+name|BufferedInputStream
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
 name|ByteArrayInputStream
 import|;
 end_import
@@ -1650,9 +1660,13 @@ block|{
 name|in
 operator|=
 operator|new
+name|BufferedInputStream
+argument_list|(
+operator|new
 name|FileInputStream
 argument_list|(
 name|file
+argument_list|)
 argument_list|)
 expr_stmt|;
 return|return
@@ -1664,19 +1678,6 @@ return|;
 block|}
 finally|finally
 block|{
-if|if
-condition|(
-name|in
-operator|!=
-literal|null
-condition|)
-block|{
-name|in
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-block|}
 name|file
 operator|.
 name|delete
@@ -1727,6 +1728,13 @@ name|f
 operator|.
 name|save
 argument_list|()
+expr_stmt|;
+name|IOUtils
+operator|.
+name|closeQuietly
+argument_list|(
+name|in
+argument_list|)
 expr_stmt|;
 return|return
 name|f
@@ -1790,7 +1798,8 @@ name|blobId
 argument_list|)
 throw|;
 block|}
-comment|// todo provide a more efficient implementation
+comment|// todo provide a more efficient implementation (gridfs stores the data in chunks)
+comment|//long nChunk = pos / f.getChunkSize();
 name|InputStream
 name|in
 init|=
