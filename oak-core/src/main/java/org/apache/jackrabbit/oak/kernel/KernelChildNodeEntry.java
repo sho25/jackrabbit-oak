@@ -87,7 +87,7 @@ annotation|@
 name|Override
 specifier|public
 name|NodeState
-name|getNode
+name|getNodeState
 parameter_list|()
 block|{
 return|return

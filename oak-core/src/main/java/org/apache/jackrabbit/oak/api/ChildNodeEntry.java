@@ -33,7 +33,7 @@ parameter_list|()
 function_decl|;
 comment|/**      * TODO: document      */
 name|NodeState
-name|getNode
+name|getNodeState
 parameter_list|()
 function_decl|;
 block|}

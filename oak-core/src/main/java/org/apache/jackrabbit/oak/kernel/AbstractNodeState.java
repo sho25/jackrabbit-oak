@@ -192,7 +192,7 @@ block|{
 return|return
 name|entry
 operator|.
-name|getNode
+name|getNodeState
 argument_list|()
 return|;
 block|}
@@ -368,7 +368,7 @@ condition|(
 operator|!
 name|entry
 operator|.
-name|getNode
+name|getNodeState
 argument_list|()
 operator|.
 name|equals
