@@ -306,6 +306,10 @@ specifier|private
 name|QueryManagerImpl
 name|queryManager
 decl_stmt|;
+specifier|private
+name|NamespaceRegistry
+name|nsRegistry
+decl_stmt|;
 specifier|public
 name|WorkspaceImpl
 parameter_list|(
@@ -754,9 +758,22 @@ block|{
 name|ensureIsAlive
 argument_list|()
 expr_stmt|;
-comment|// TODO
-return|return
+if|if
+condition|(
+name|nsRegistry
+operator|==
 literal|null
+condition|)
+block|{
+name|nsRegistry
+operator|=
+operator|new
+name|NamespaceRegistryImpl
+argument_list|()
+expr_stmt|;
+block|}
+return|return
+name|nsRegistry
 return|;
 block|}
 annotation|@
