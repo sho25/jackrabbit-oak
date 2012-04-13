@@ -110,12 +110,11 @@ name|DEFAULT_ITERATIONS
 init|=
 literal|10000
 decl_stmt|;
-comment|/**      * Avoid instanciation      */
+comment|/**      * Avoid instantiation      */
 specifier|private
 name|PasswordUtility
 parameter_list|()
 block|{}
-empty_stmt|;
 specifier|public
 specifier|static
 name|boolean

@@ -71,24 +71,6 @@ name|security
 operator|.
 name|user
 operator|.
-name|AuthorizableExistsException
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|api
-operator|.
-name|security
-operator|.
-name|user
-operator|.
 name|Group
 import|;
 end_import
@@ -192,6 +174,22 @@ operator|.
 name|jcr
 operator|.
 name|SessionContext
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|jcr
+operator|.
+name|SessionImpl
 import|;
 end_import
 
@@ -373,6 +371,9 @@ decl_stmt|;
 specifier|private
 specifier|final
 name|SessionContext
+argument_list|<
+name|SessionImpl
+argument_list|>
 name|sessionContext
 decl_stmt|;
 specifier|private
@@ -389,6 +390,9 @@ specifier|public
 name|UserManagerImpl
 parameter_list|(
 name|SessionContext
+argument_list|<
+name|SessionImpl
+argument_list|>
 name|sessionContext
 parameter_list|,
 name|UserManagerConfig
@@ -658,8 +662,6 @@ name|String
 name|path
 parameter_list|)
 throws|throws
-name|UnsupportedRepositoryOperationException
-throws|,
 name|RepositoryException
 block|{
 comment|// TODO
@@ -750,8 +752,6 @@ name|String
 name|password
 parameter_list|)
 throws|throws
-name|AuthorizableExistsException
-throws|,
 name|RepositoryException
 block|{
 name|Principal
@@ -806,8 +806,6 @@ name|String
 name|intermediatePath
 parameter_list|)
 throws|throws
-name|AuthorizableExistsException
-throws|,
 name|RepositoryException
 block|{
 name|checkValidID
@@ -818,9 +816,6 @@ expr_stmt|;
 name|NodeImpl
 name|userNode
 init|=
-operator|(
-name|NodeImpl
-operator|)
 name|nodeCreator
 operator|.
 name|createUserNode
@@ -895,8 +890,6 @@ name|String
 name|groupID
 parameter_list|)
 throws|throws
-name|AuthorizableExistsException
-throws|,
 name|RepositoryException
 block|{
 name|Principal
@@ -940,8 +933,6 @@ name|Principal
 name|principal
 parameter_list|)
 throws|throws
-name|AuthorizableExistsException
-throws|,
 name|RepositoryException
 block|{
 return|return
@@ -966,8 +957,6 @@ name|String
 name|intermediatePath
 parameter_list|)
 throws|throws
-name|AuthorizableExistsException
-throws|,
 name|RepositoryException
 block|{
 name|String
@@ -1008,8 +997,6 @@ name|String
 name|intermediatePath
 parameter_list|)
 throws|throws
-name|AuthorizableExistsException
-throws|,
 name|RepositoryException
 block|{
 name|checkValidID
@@ -1020,9 +1007,6 @@ expr_stmt|;
 name|NodeImpl
 name|groupNode
 init|=
-operator|(
-name|NodeImpl
-operator|)
 name|nodeCreator
 operator|.
 name|createGroupNode
@@ -1098,8 +1082,6 @@ name|boolean
 name|enable
 parameter_list|)
 throws|throws
-name|UnsupportedRepositoryOperationException
-throws|,
 name|RepositoryException
 block|{
 throw|throw
@@ -1111,7 +1093,7 @@ argument_list|)
 throw|;
 block|}
 comment|//--------------------------------------------------------------------------
-comment|/**      * Let the configured<code>AuthorizableAction</code>s perform additional      * tasks associated with the creation of the new user before the      * corresponding new node is persisted.      *      * @param user The new user.      * @param pw The password.      * @throws RepositoryException If an exception occurs.      */
+comment|/**      * Let the configured {@code AuthorizableAction}s perform additional      * tasks associated with the creation of the new user before the      * corresponding new node is persisted.      *      * @param user The new user.      * @param pw The password.      * @throws RepositoryException If an exception occurs.      */
 name|void
 name|onCreate
 parameter_list|(
@@ -1126,7 +1108,7 @@ name|RepositoryException
 block|{
 comment|// TODO
 block|}
-comment|/**      * Let the configured<code>AuthorizableAction</code>s perform additional      * tasks associated with the creation of the new group before the      * corresponding new node is persisted.      *      * @param group The new group.      * @throws RepositoryException If an exception occurs.      */
+comment|/**      * Let the configured {@code AuthorizableAction}s perform additional      * tasks associated with the creation of the new group before the      * corresponding new node is persisted.      *      * @param group The new group.      * @throws RepositoryException If an exception occurs.      */
 name|void
 name|onCreate
 parameter_list|(
@@ -1138,7 +1120,7 @@ name|RepositoryException
 block|{
 comment|// TODO
 block|}
-comment|/**      * Let the configured<code>AuthorizableAction</code>s perform any clean      * up tasks related to the authorizable removal (before the corresponding      * node gets removed).      *      * @param authorizable The authorizable to be removed.      * @throws RepositoryException If an exception occurs.      */
+comment|/**      * Let the configured {@code AuthorizableAction}s perform any clean      * up tasks related to the authorizable removal (before the corresponding      * node gets removed).      *      * @param authorizable The authorizable to be removed.      * @throws RepositoryException If an exception occurs.      */
 name|void
 name|onRemove
 parameter_list|(
@@ -1150,7 +1132,7 @@ name|RepositoryException
 block|{
 comment|// TODO
 block|}
-comment|/**      * Let the configured<code>AuthorizableAction</code>s perform additional      * tasks associated with password changing of a given user before the      * corresponding property is being changed.      *      * @param user The target user.      * @param password The new password.      * @throws RepositoryException If an exception occurs.      */
+comment|/**      * Let the configured {@code AuthorizableAction}s perform additional      * tasks associated with password changing of a given user before the      * corresponding property is being changed.      *      * @param user The target user.      * @param password The new password.      * @throws RepositoryException If an exception occurs.      */
 name|void
 name|onPasswordChange
 parameter_list|(
@@ -1492,19 +1474,10 @@ argument_list|)
 decl_stmt|;
 for|for
 control|(
-name|int
-name|i
-init|=
-literal|0
-init|;
-name|i
-operator|<
+name|String
+name|value
+range|:
 name|values
-operator|.
-name|length
-condition|;
-name|i
-operator|++
 control|)
 block|{
 name|scalarList
@@ -1515,10 +1488,7 @@ name|ValueConverter
 operator|.
 name|toScalar
 argument_list|(
-name|values
-index|[
-name|i
-index|]
+name|value
 argument_list|,
 name|PropertyType
 operator|.

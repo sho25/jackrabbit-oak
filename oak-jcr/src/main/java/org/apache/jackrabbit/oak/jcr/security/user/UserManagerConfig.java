@@ -316,6 +316,9 @@ argument_list|()
 expr_stmt|;
 block|}
 name|Class
+argument_list|<
+name|?
+argument_list|>
 name|targetClass
 init|=
 operator|(

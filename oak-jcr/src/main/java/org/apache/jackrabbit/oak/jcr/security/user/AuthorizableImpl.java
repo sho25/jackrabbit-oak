@@ -195,16 +195,6 @@ name|javax
 operator|.
 name|jcr
 operator|.
-name|UnsupportedRepositoryOperationException
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|jcr
-operator|.
 name|Value
 import|;
 end_import
@@ -1038,8 +1028,6 @@ name|String
 name|getPath
 parameter_list|()
 throws|throws
-name|UnsupportedRepositoryOperationException
-throws|,
 name|RepositoryException
 block|{
 return|return

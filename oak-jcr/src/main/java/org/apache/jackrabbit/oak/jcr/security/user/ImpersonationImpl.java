@@ -296,8 +296,6 @@ parameter_list|(
 name|UserImpl
 name|user
 parameter_list|)
-throws|throws
-name|RepositoryException
 block|{
 name|this
 operator|.

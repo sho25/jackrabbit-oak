@@ -73,6 +73,16 @@ end_import
 
 begin_import
 import|import
+name|javax
+operator|.
+name|jcr
+operator|.
+name|RangeIterator
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|security
@@ -139,6 +149,20 @@ operator|.
 name|EMPTY
 argument_list|)
 decl_stmt|;
+comment|/**      * Creates an adapter for the given {@link javax.jcr.RangeIterator}.      *      * @param iterator iterator of {@link java.security.Principal}s      */
+specifier|public
+name|PrincipalIteratorAdapter
+parameter_list|(
+name|RangeIterator
+name|iterator
+parameter_list|)
+block|{
+name|super
+argument_list|(
+name|iterator
+argument_list|)
+expr_stmt|;
+block|}
 comment|/**      * Creates an adapter for the given {@link java.util.Iterator} of principals.      *      * @param iterator iterator of {@link java.security.Principal}s      */
 specifier|public
 name|PrincipalIteratorAdapter
@@ -162,7 +186,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Creates an iterator for the given collection of<code>Principal</code>s.      *      * @param collection collection of {@link Principal} objects.      */
+comment|/**      * Creates an iterator for the given collection of {@code Principal}s.      *      * @param collection collection of {@link Principal} objects.      */
 specifier|public
 name|PrincipalIteratorAdapter
 parameter_list|(
@@ -187,6 +211,8 @@ expr_stmt|;
 block|}
 comment|//----------------------------------------< AccessControlPolicyIterator>---
 comment|/**      * Returns the next policy.      *      * @return next policy.      * @throws java.util.NoSuchElementException if there is no next policy.      */
+annotation|@
+name|Override
 specifier|public
 name|Principal
 name|nextPrincipal
