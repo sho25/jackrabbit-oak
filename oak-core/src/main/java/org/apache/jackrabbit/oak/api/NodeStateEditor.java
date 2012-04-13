@@ -107,12 +107,12 @@ name|String
 name|destPath
 parameter_list|)
 function_decl|;
-comment|/**      * Edit the child node state with the given {@code name}.      * @param name name of the child node state to edit.      * @return editor for the child node state of the given name or      *         {@code null} if no such node state exists.      * TODO broaden to accept a path instead of a name      */
+comment|/**      * Edit the child node state at the given {@code path}.      * The path must resolve to a node state located in the subtree      * below the transient state this editor is acting upon.      *      * @param path path of the child node state to edit.      * @return editor for the child node state at the given path or      *         {@code null} if no such node state exists.      */
 name|NodeStateEditor
 name|edit
 parameter_list|(
 name|String
-name|name
+name|path
 parameter_list|)
 function_decl|;
 comment|/**      * Return the transient state which this editor is acting upon      * @return transient node state      */
