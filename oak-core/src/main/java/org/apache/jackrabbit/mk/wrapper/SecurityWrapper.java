@@ -1728,6 +1728,10 @@ decl_stmt|;
 if|if
 condition|(
 name|admin
+operator|||
+name|t
+operator|==
+literal|null
 condition|)
 block|{
 return|return
