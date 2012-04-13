@@ -1395,6 +1395,11 @@ name|dispose
 argument_list|()
 expr_stmt|;
 block|}
+name|mk
+operator|.
+name|dispose
+argument_list|()
+expr_stmt|;
 block|}
 specifier|public
 name|String
