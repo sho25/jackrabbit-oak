@@ -3328,7 +3328,7 @@ argument_list|)
 throw|;
 block|}
 comment|//--------------------------------------------------------------------------
-comment|/**      * Access to KernelNodeStateEditor to allow code in other packages to      * access item states.      *      * @return The node state editor.      */
+comment|/**      * Access to KernelNodeStateEditor to allow code in other packages to      * access item states.      *      * @return The node state editor.      * FIXME this should not be public in order to avoid clients to access internals through casting to the implementation      */
 specifier|public
 name|NodeStateEditor
 name|getEditor
