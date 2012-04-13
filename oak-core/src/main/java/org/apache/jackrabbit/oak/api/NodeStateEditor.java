@@ -36,7 +36,7 @@ specifier|public
 interface|interface
 name|NodeStateEditor
 block|{
-comment|/**      * Add the child node state with the given {@code name}. Does nothing      * if such a child node already exists.      *      * @param name name of the new node state      * @return the transient state of the child node with that name.      */
+comment|/**      * Add the child node state with the given {@code name}. Does nothing      * if such a child node already exists.      *      * @param name name of the new node state      * @return the transient state of the child node with that name or {@code null}      * if no such node exists.      */
 name|TransientNodeState
 name|addNode
 parameter_list|(
