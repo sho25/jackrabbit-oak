@@ -61,22 +61,6 @@ name|oak
 operator|.
 name|api
 operator|.
-name|NodeState
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|api
-operator|.
 name|NodeStateEditor
 import|;
 end_import
@@ -194,7 +178,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This {@code NodeStateEditor} implementation accumulates all changes into a json diff  * and applies them to the microkernel on  * {@link org.apache.jackrabbit.oak.api.NodeStore#merge(NodeStateEditor, NodeState)}  *  * TODO: review/rewrite when OAK-45 is resolved  * When the MicroKernel has support for branching and merging private working copies,  * this implementation could:  * - directly write every operation through to the private working copy  * - batch write operations through to the private working copy when the  *   transient space gets too big.  * - spool write operations through to the private working copy on a background thread  */
+comment|/**  * This {@code NodeStateEditor} implementation accumulates all changes into a json diff  * and applies them to the microkernel on  * {@link NodeStore#merge(org.apache.jackrabbit.oak.api.NodeStateEditor)}  *  * TODO: review/rewrite when OAK-45 is resolved  * When the MicroKernel has support for branching and merging private working copies,  * this implementation could:  * - directly write every operation through to the private working copy  * - batch write operations through to the private working copy when the  *   transient space gets too big.  * - spool write operations through to the private working copy on a background thread  */
 end_comment
 
 begin_class
@@ -847,17 +831,6 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|NodeState
-name|getBaseNodeState
-parameter_list|()
-block|{
-return|return
-name|base
-return|;
-block|}
-annotation|@
-name|Override
-specifier|public
 name|TransientNodeState
 name|getTransientState
 parameter_list|()
@@ -867,6 +840,15 @@ name|transientState
 return|;
 block|}
 comment|//------------------------------------------------------------< internal>---
+comment|/**      * Return the base node state of this private branch      * @return base node state      */
+name|NodeState
+name|getBaseNodeState
+parameter_list|()
+block|{
+return|return
+name|base
+return|;
+block|}
 comment|/**      * Atomically merges the changes from this branch back into the      * {@code target}.      *      * @param microkernel Microkernel instance for applying the changes      * @param target target of the merge operation      * @return node state resulting from merging      */
 name|KernelNodeState
 name|mergeInto

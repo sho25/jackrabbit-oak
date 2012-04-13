@@ -17,22 +17,6 @@ name|kernel
 package|;
 end_package
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|api
-operator|.
-name|NodeState
-import|;
-end_import
-
 begin_class
 class|class
 name|KernelChildNodeEntry

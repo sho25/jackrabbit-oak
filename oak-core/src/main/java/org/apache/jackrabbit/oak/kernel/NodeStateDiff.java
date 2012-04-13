@@ -13,12 +13,28 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|api
+name|kernel
 package|;
 end_package
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|api
+operator|.
+name|PropertyState
+import|;
+end_import
+
 begin_comment
-comment|/**  * Handler of node state differences.  * The {@link NodeStore#compare(NodeState, NodeState, NodeStateDiff)} reports  * detected node state differences by calling methods of a handler instance  * that implements this interface. The compare method will go through all  * properties and child nodes of the two states, calling the relevant  * added, changed or deleted methods where appropriate. Differences in  * the ordering of properties or child nodes do not affect the comparison,  * and the order in which such differences are reported is unspecified.  */
+comment|/**  * Handler of node state differences.  * The {@link NodeStore#compare(NodeState, NodeState, NodeStateDiff)} reports  * detected node state differences by calling methods of a handler instance  * that implements this interface. The compare method will go through all  * properties and child nodes of the two states, calling the relevant  * added, changed or deleted methods where appropriate. Differences in  * the ordering of properties or child nodes do not affect the comparison,  * and the order in which such differences are reported is unspecified.  *  * TODO: check if can be replaced by mk.model.NodeStateDiff  */
 end_comment
 
 begin_interface

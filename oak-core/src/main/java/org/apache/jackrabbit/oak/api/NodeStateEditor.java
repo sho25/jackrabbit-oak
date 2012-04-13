@@ -28,7 +28,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * An editor for modifying existing and creating new  * {@link NodeState node states}.  */
+comment|/**  * An editor for modifying existing and creating new node states.  */
 end_comment
 
 begin_interface
@@ -114,11 +114,6 @@ parameter_list|(
 name|String
 name|name
 parameter_list|)
-function_decl|;
-comment|/**      * Return the base node state of this private branch      * @return base node state      */
-name|NodeState
-name|getBaseNodeState
-parameter_list|()
 function_decl|;
 comment|/**      * Return the transient state which this editor is acting upon      * @return transient node state      */
 name|TransientNodeState

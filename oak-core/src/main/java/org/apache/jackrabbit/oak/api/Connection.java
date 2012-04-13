@@ -53,10 +53,6 @@ name|Connection
 name|getRepositoryConnection
 parameter_list|()
 function_decl|;
-name|NodeState
-name|getCurrentRoot
-parameter_list|()
-function_decl|;
 comment|/**      * Refresh this connection to the latest revision of the underlying Microkernel.      */
 name|void
 name|refresh
@@ -72,13 +68,10 @@ parameter_list|)
 throws|throws
 name|CommitFailedException
 function_decl|;
-comment|/**      * Get an node state editor for the given state. Use {@link #commit(NodeStateEditor)}      * to atomically apply the changes made in this editor to the underlying Microkernel.      *      * @param state  node state to edit      * @return  editor for the passed {@code state}      */
+comment|/**      * Get an node state editor for the current root. Use {@link #commit(NodeStateEditor)}      * to atomically apply the changes made in this editor to the underlying Microkernel.      *      * @return editor for the current root.      */
 name|NodeStateEditor
 name|getNodeStateEditor
-parameter_list|(
-name|NodeState
-name|state
-parameter_list|)
+parameter_list|()
 function_decl|;
 comment|/**      * Get the query engine.      *      * @return the query engine      */
 name|QueryEngine

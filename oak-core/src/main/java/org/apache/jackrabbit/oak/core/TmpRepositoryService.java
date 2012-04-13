@@ -73,7 +73,7 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|api
+name|kernel
 operator|.
 name|NodeState
 import|;
@@ -463,11 +463,6 @@ operator|.
 name|merge
 argument_list|(
 name|editor
-argument_list|,
-name|editor
-operator|.
-name|getBaseNodeState
-argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
