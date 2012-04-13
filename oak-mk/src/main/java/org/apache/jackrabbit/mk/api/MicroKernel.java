@@ -63,12 +63,12 @@ parameter_list|)
 throws|throws
 name|MicroKernelException
 function_decl|;
-comment|/**      * Wait for a commit to occur that is newer than the given revision number.      *<p/>      * This method is useful efficient polling. The method will return the current head revision      * if it is newer than the given old revision number, or wait until the given number of      * milliseconds passed or a new head revision is available.      *      * @param maxWaitMillis the maximum number of milliseconds to wait (0 if the      *                      method should not wait).      * @return the current head revision      * @throws MicroKernelException if an error occurs      * @throws InterruptedException if the thread was interrupted      */
+comment|/**      * Wait for a commit to occur that is newer than the given revision number.      *<p/>      * This method is useful efficient polling. The method will return the current head revision      * if it is newer than the given revision ID, or wait until the given number of      * milliseconds passed or a new head revision is available.      *      * @param oldHeadRevisionId A revision Id      * @param maxWaitMillis the maximum number of milliseconds to wait (0 if the      *                      method should not wait).      * @return the current head revision Id      * @throws MicroKernelException if an error occurs      * @throws InterruptedException if the thread was interrupted      */
 name|String
 name|waitForCommit
 parameter_list|(
 name|String
-name|oldHeadRevision
+name|oldHeadRevisionId
 parameter_list|,
 name|long
 name|maxWaitMillis

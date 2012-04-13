@@ -961,7 +961,7 @@ name|String
 name|waitForCommit
 parameter_list|(
 name|String
-name|oldHeadRevision
+name|oldHeadRevisionId
 parameter_list|,
 name|long
 name|maxWaitMillis
@@ -975,7 +975,7 @@ name|logMethod
 argument_list|(
 literal|"waitForCommit"
 argument_list|,
-name|oldHeadRevision
+name|oldHeadRevisionId
 argument_list|,
 name|maxWaitMillis
 argument_list|)
@@ -987,7 +987,7 @@ name|mk
 operator|.
 name|waitForCommit
 argument_list|(
-name|oldHeadRevision
+name|oldHeadRevisionId
 argument_list|,
 name|maxWaitMillis
 argument_list|)

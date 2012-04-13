@@ -2584,7 +2584,7 @@ name|String
 name|waitForCommit
 parameter_list|(
 name|String
-name|oldHeadRevision
+name|oldHeadRevisionId
 parameter_list|,
 name|long
 name|maxWaitMillis
@@ -2597,7 +2597,7 @@ name|gate
 operator|.
 name|waitForCommit
 argument_list|(
-name|oldHeadRevision
+name|oldHeadRevisionId
 argument_list|,
 name|maxWaitMillis
 argument_list|)

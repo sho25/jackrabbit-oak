@@ -477,7 +477,7 @@ name|String
 name|waitForCommit
 parameter_list|(
 name|String
-name|oldHeadRevision
+name|oldHeadRevisionId
 parameter_list|,
 name|long
 name|maxWaitMillis
@@ -507,7 +507,7 @@ name|addParameter
 argument_list|(
 literal|"revision_id"
 argument_list|,
-name|oldHeadRevision
+name|oldHeadRevisionId
 argument_list|)
 expr_stmt|;
 name|request
