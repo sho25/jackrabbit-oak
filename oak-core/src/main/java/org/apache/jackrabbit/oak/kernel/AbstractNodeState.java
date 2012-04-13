@@ -240,7 +240,7 @@ return|return
 name|count
 return|;
 block|}
-comment|/**      * Checks whether the given object is equal to this one. Two node states      * are considered equal if all their properties and child nodes match,      * regardless of ordering. Subclasses may override this method with a      * more efficient equality check if one is available.      *      * @param that target of the comparison      * @return<code>true</code> if the objects are equal,      *<code>false</code> otherwise      */
+comment|/**      * Checks whether the given object is equal to this one. Two node states      * are considered equal if all their properties and child nodes match,      * regardless of ordering. Subclasses may override this method with a      * more efficient equality check if one is available.      *      * @param that target of the comparison      * @return {@code true} if the objects are equal,      *         {@code false} otherwise      */
 annotation|@
 name|Override
 specifier|public
@@ -393,22 +393,13 @@ name|childNodeCount
 operator|++
 expr_stmt|;
 block|}
-if|if
-condition|(
+return|return
 name|childNodeCount
-operator|!=
+operator|==
 name|other
 operator|.
 name|getChildNodeCount
 argument_list|()
-condition|)
-block|{
-return|return
-literal|false
-return|;
-block|}
-return|return
-literal|true
 return|;
 block|}
 comment|/**      * Returns a hash code that's compatible with how the      * {@link #equals(Object)} method is implemented. The current      * implementation simply returns zero for everything since      * {@link NodeState} instances are not intended for use as hash keys.      *      * @return hash code      */
