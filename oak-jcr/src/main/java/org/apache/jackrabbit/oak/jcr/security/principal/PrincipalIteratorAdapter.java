@@ -144,6 +144,14 @@ init|=
 operator|new
 name|PrincipalIteratorAdapter
 argument_list|(
+operator|(
+name|Iterator
+argument_list|<
+name|?
+extends|extends
+name|Principal
+argument_list|>
+operator|)
 name|RangeIteratorAdapter
 operator|.
 name|EMPTY
