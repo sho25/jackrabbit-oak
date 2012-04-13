@@ -241,6 +241,14 @@ name|getId
 argument_list|()
 return|;
 block|}
+name|StoredNode
+name|unwrap
+parameter_list|()
+block|{
+return|return
+name|node
+return|;
+block|}
 specifier|private
 specifier|static
 class|class
