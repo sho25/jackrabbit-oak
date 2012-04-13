@@ -12,10 +12,24 @@ operator|.
 name|jackrabbit
 operator|.
 name|mk
-operator|.
-name|test
 package|;
 end_package
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|mk
+operator|.
+name|test
+operator|.
+name|MicroKernelTestSuite
+import|;
+end_import
 
 begin_import
 import|import
@@ -55,18 +69,14 @@ operator|.
 name|SuiteClasses
 argument_list|(
 block|{
-name|MicroKernelIT
-operator|.
-name|class
-block|,
-name|DataStoreIT
+name|MicroKernelTestSuite
 operator|.
 name|class
 block|}
 argument_list|)
 specifier|public
 class|class
-name|MicroKernelTestSuite
+name|EverythingIT
 block|{ }
 end_class
 
