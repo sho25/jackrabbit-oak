@@ -1323,6 +1323,19 @@ argument_list|,
 name|filter
 argument_list|)
 decl_stmt|;
+comment|// OAK-48: MicroKernel.getNodes() should return null for not existing nodes instead of throwing an exception
+if|if
+condition|(
+name|json
+operator|==
+literal|null
+condition|)
+block|{
+name|json
+operator|=
+literal|"null"
+expr_stmt|;
+block|}
 if|if
 condition|(
 name|request

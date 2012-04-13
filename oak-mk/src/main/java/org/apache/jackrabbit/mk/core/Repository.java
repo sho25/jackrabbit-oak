@@ -448,6 +448,7 @@ argument_list|(
 name|homeDir
 argument_list|)
 decl_stmt|;
+comment|//org.apache.jackrabbit.mk.persistence.MongoPersistence pm = new org.apache.jackrabbit.mk.persistence.MongoPersistence();
 name|pm
 operator|.
 name|initialize
@@ -723,8 +724,6 @@ name|String
 name|path
 parameter_list|)
 throws|throws
-name|NotFoundException
-throws|,
 name|Exception
 block|{
 if|if
@@ -805,19 +804,7 @@ operator|==
 literal|null
 condition|)
 block|{
-throw|throw
-operator|new
-name|NotFoundException
-argument_list|(
-literal|"Path "
-operator|+
-name|path
-operator|+
-literal|" not found in revision "
-operator|+
-name|revId
-argument_list|)
-throw|;
+break|break;
 block|}
 block|}
 return|return
@@ -834,6 +821,8 @@ parameter_list|,
 name|String
 name|path
 parameter_list|)
+throws|throws
+name|Exception
 block|{
 if|if
 condition|(
@@ -869,8 +858,6 @@ literal|"illegal path"
 argument_list|)
 throw|;
 block|}
-try|try
-block|{
 name|NodeState
 name|node
 init|=
@@ -923,29 +910,6 @@ block|}
 return|return
 literal|true
 return|;
-block|}
-catch|catch
-parameter_list|(
-name|Exception
-name|e
-parameter_list|)
-block|{
-throw|throw
-operator|new
-name|RuntimeException
-argument_list|(
-literal|"Failed to check for existence of path "
-operator|+
-name|path
-operator|+
-literal|" in revision "
-operator|+
-name|revId
-argument_list|,
-name|e
-argument_list|)
-throw|;
-block|}
 block|}
 specifier|public
 name|CommitBuilder

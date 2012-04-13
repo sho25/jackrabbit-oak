@@ -250,7 +250,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**      * Create a new instance of this class.      *       * @param addr socket address      */
+comment|/**      * Create a new instance of this class.      *       * @param url socket address      */
 specifier|public
 name|Client
 parameter_list|(
@@ -1008,11 +1008,26 @@ argument_list|,
 name|filter
 argument_list|)
 expr_stmt|;
-return|return
+comment|// OAK-48: MicroKernel.getNodes() should return null for not existing nodes instead of throwing an exception
+name|String
+name|result
+init|=
 name|request
 operator|.
 name|getString
 argument_list|()
+decl_stmt|;
+return|return
+name|result
+operator|.
+name|equals
+argument_list|(
+literal|"null"
+argument_list|)
+condition|?
+literal|null
+else|:
+name|result
 return|;
 block|}
 catch|catch
