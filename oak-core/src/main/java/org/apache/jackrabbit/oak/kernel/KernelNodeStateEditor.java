@@ -282,7 +282,7 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|void
+name|TransientNodeState
 name|addNode
 parameter_list|(
 name|String
@@ -328,6 +328,14 @@ literal|"\":{}"
 argument_list|)
 expr_stmt|;
 block|}
+return|return
+name|transientState
+operator|.
+name|getChildNode
+argument_list|(
+name|name
+argument_list|)
+return|;
 block|}
 annotation|@
 name|Override
@@ -967,7 +975,7 @@ return|return
 name|state
 return|;
 block|}
-comment|/**      * Path of the item {@code name}      * @param name      * @return relative path of the item {@code name}      */
+comment|/**      * Path of the item {@code name}      * @param name The item name.      * @return relative path of the item {@code name}      */
 specifier|private
 name|String
 name|path
