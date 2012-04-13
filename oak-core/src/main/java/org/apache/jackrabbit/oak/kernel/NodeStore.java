@@ -55,7 +55,7 @@ name|NodeState
 name|base
 parameter_list|)
 function_decl|;
-comment|/**      * Atomically merges the changes from {@code branch} back into the      * {@code target}.      *      *      * @param branch branch for merging into {@code target}      * @return node state resulting from merging {@code branch} into      *         {@code target}.      */
+comment|/**      * Atomically merges the changes from {@code branch} back into the      * {@code target}.      *      *      * @param branch branch for merging.      * @return node state resulting from merging {@code branch}.      */
 name|NodeState
 name|merge
 parameter_list|(
