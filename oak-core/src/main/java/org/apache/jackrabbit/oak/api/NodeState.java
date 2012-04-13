@@ -26,7 +26,7 @@ specifier|public
 interface|interface
 name|NodeState
 block|{
-comment|/**      * Returns the named property. The name is an opaque string and      * is not parsed or otherwise interpreted by this method.      *<p>      * The namespace of properties and child nodes is shared, so if      * this method returns a non-<code>null</code> value for a given      * name, then {@link #getChildNode(String)} is guaranteed to return      *<code>null</code> for the same name.      *      * @param name name of the property to return      * @return named property, or<code>null</code> if not found      */
+comment|/**      * Returns the named property. The name is an opaque string and      * is not parsed or otherwise interpreted by this method.      *<p>      * The namespace of properties and child nodes is shared, so if      * this method returns a non-{@code null} value for a given      * name, then {@link #getChildNode(String)} is guaranteed to return      * {@code null} for the same name.      *      * @param name name of the property to return      * @return named property, or {@code null} if not found      */
 name|PropertyState
 name|getProperty
 parameter_list|(
@@ -49,7 +49,7 @@ argument_list|>
 name|getProperties
 parameter_list|()
 function_decl|;
-comment|/**      * Returns the named child node. The name is an opaque string and      * is not parsed or otherwise interpreted by this method.      *<p>      * The namespace of properties and child nodes is shared, so if      * this method returns a non-<code>null</code> value for a given      * name, then {@link #getProperty(String)} is guaranteed to return      *<code>null</code> for the same name.      *      * @param name name of the child node to return      * @return named child node, or<code>null</code> if not found      */
+comment|/**      * Returns the named child node. The name is an opaque string and      * is not parsed or otherwise interpreted by this method.      *<p>      * The namespace of properties and child nodes is shared, so if      * this method returns a non-{@code null} value for a given      * name, then {@link #getProperty(String)} is guaranteed to return      * {@code null} for the same name.      *      * @param name name of the child node to return      * @return named child node, or {@code null} if not found      */
 name|NodeState
 name|getChildNode
 parameter_list|(
