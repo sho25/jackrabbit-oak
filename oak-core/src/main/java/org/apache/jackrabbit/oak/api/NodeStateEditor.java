@@ -107,7 +107,7 @@ name|String
 name|destPath
 parameter_list|)
 function_decl|;
-comment|/**      * Edit the child node state with the given {@code name}.      * @param name name of the child node state to edit.      * @return editor for the child node state of the given name or      *         {@code null} if no such node state exists.      */
+comment|/**      * Edit the child node state with the given {@code name}.      * @param name name of the child node state to edit.      * @return editor for the child node state of the given name or      *         {@code null} if no such node state exists.      * TODO broaden to accept a path instead of a name      */
 name|NodeStateEditor
 name|edit
 parameter_list|(
