@@ -91,7 +91,7 @@ name|oak
 operator|.
 name|api
 operator|.
-name|NodeStateEditor
+name|Branch
 import|;
 end_import
 
@@ -441,8 +441,8 @@ operator|==
 literal|null
 condition|)
 block|{
-name|NodeStateEditor
-name|editor
+name|Branch
+name|branch
 init|=
 name|nodeStore
 operator|.
@@ -451,7 +451,12 @@ argument_list|(
 name|root
 argument_list|)
 decl_stmt|;
-name|editor
+name|branch
+operator|.
+name|getNode
+argument_list|(
+literal|"/"
+argument_list|)
 operator|.
 name|addNode
 argument_list|(
@@ -462,7 +467,7 @@ name|nodeStore
 operator|.
 name|merge
 argument_list|(
-name|editor
+name|branch
 argument_list|)
 expr_stmt|;
 block|}

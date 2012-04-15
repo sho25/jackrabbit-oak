@@ -61,7 +61,7 @@ name|oak
 operator|.
 name|api
 operator|.
-name|NodeStateEditor
+name|Branch
 import|;
 end_import
 
@@ -445,12 +445,12 @@ operator|.
 name|getConnection
 argument_list|()
 decl_stmt|;
-name|NodeStateEditor
-name|editor
+name|Branch
+name|branch
 init|=
 name|connection
 operator|.
-name|getNodeStateEditor
+name|branchRoot
 argument_list|()
 decl_stmt|;
 name|String
@@ -477,7 +477,7 @@ argument_list|,
 name|destAbsPath
 argument_list|)
 decl_stmt|;
-name|editor
+name|branch
 operator|.
 name|copy
 argument_list|(
@@ -490,7 +490,7 @@ name|connection
 operator|.
 name|commit
 argument_list|(
-name|editor
+name|branch
 argument_list|)
 expr_stmt|;
 block|}
@@ -587,12 +587,12 @@ operator|.
 name|getConnection
 argument_list|()
 decl_stmt|;
-name|NodeStateEditor
-name|editor
+name|Branch
+name|branch
 init|=
 name|connection
 operator|.
-name|getNodeStateEditor
+name|branchRoot
 argument_list|()
 decl_stmt|;
 name|String
@@ -619,7 +619,7 @@ argument_list|,
 name|destAbsPath
 argument_list|)
 decl_stmt|;
-name|editor
+name|branch
 operator|.
 name|move
 argument_list|(
@@ -632,7 +632,7 @@ name|connection
 operator|.
 name|commit
 argument_list|(
-name|editor
+name|branch
 argument_list|)
 expr_stmt|;
 block|}

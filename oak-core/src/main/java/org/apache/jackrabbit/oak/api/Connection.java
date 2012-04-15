@@ -58,19 +58,19 @@ name|void
 name|refresh
 parameter_list|()
 function_decl|;
-comment|/**      * Atomically apply all changes in the passed {@code editor} to the underlying      * Microkernel.      *      * @param editor  editor carrying the changes to be applies      * @throws CommitFailedException      */
+comment|/**      * Atomically apply all changes in the passed {@code branch} to the underlying      * Microkernel.      *      * @param branch  branch carrying the changes to be applies      * @throws CommitFailedException      */
 name|void
 name|commit
 parameter_list|(
-name|NodeStateEditor
-name|editor
+name|Branch
+name|branch
 parameter_list|)
 throws|throws
 name|CommitFailedException
 function_decl|;
-comment|/**      * Get an node state editor for the current root. Use {@link #commit(NodeStateEditor)}      * to atomically apply the changes made in this editor to the underlying Microkernel.      *      * @return editor for the current root.      */
-name|NodeStateEditor
-name|getNodeStateEditor
+comment|/**      * Branch the current root. Use {@link #commit(Branch)} to atomically apply the      * changes made in this branch to the underlying Microkernel.      *      * @return branch of the current root.      */
+name|Branch
+name|branchRoot
 parameter_list|()
 function_decl|;
 comment|/**      * Get the query engine.      *      * @return the query engine      */

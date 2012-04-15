@@ -73,7 +73,7 @@ name|oak
 operator|.
 name|api
 operator|.
-name|NodeStateEditor
+name|Branch
 import|;
 end_import
 
@@ -761,9 +761,6 @@ operator|.
 name|getParent
 argument_list|()
 operator|.
-name|getEditor
-argument_list|()
-operator|.
 name|removeNode
 argument_list|(
 name|getName
@@ -833,10 +830,10 @@ decl_stmt|;
 name|TransientNodeState
 name|parentState
 init|=
-name|getItemStateProvider
+name|getBranch
 argument_list|()
 operator|.
-name|getTransientNodeState
+name|getNode
 argument_list|(
 name|parentPath
 argument_list|)
@@ -867,9 +864,6 @@ name|relPath
 argument_list|)
 decl_stmt|;
 name|parentState
-operator|.
-name|getEditor
-argument_list|()
 operator|.
 name|addNode
 argument_list|(
@@ -1019,7 +1013,7 @@ block|{
 name|checkStatus
 argument_list|()
 expr_stmt|;
-name|getEditor
+name|getState
 argument_list|()
 operator|.
 name|setProperty
@@ -1134,7 +1128,7 @@ block|{
 name|checkStatus
 argument_list|()
 expr_stmt|;
-name|getEditor
+name|getState
 argument_list|()
 operator|.
 name|setProperty
@@ -2686,7 +2680,7 @@ block|{
 name|checkStatus
 argument_list|()
 expr_stmt|;
-name|getEditor
+name|getState
 argument_list|()
 operator|.
 name|setProperty
@@ -3328,17 +3322,14 @@ argument_list|)
 throw|;
 block|}
 comment|//--------------------------------------------------------------------------
-comment|/**      * Access to KernelNodeStateEditor to allow code in other packages to      * access item states.      *      * @return The node state editor.      * FIXME this should not be public in order to avoid clients to access internals through casting to the implementation      */
+comment|/**      * Access to TransientNodeState to allow code in other packages to      * access item states.      *      * @return The node state.      * FIXME this should not be public in order to avoid clients to access internals through casting to the implementation      */
 specifier|public
-name|NodeStateEditor
-name|getEditor
+name|TransientNodeState
+name|getState
 parameter_list|()
 block|{
 return|return
 name|getTransientNodeState
-argument_list|()
-operator|.
-name|getEditor
 argument_list|()
 return|;
 block|}
@@ -3382,14 +3373,14 @@ argument_list|()
 return|;
 block|}
 specifier|private
-name|ItemStateProvider
-name|getItemStateProvider
+name|Branch
+name|getBranch
 parameter_list|()
 block|{
 return|return
 name|sessionContext
 operator|.
-name|getItemStateProvider
+name|getBranch
 argument_list|()
 return|;
 block|}
@@ -3402,10 +3393,10 @@ block|{
 return|return
 name|transientNodeState
 operator|=
-name|getItemStateProvider
+name|getBranch
 argument_list|()
 operator|.
-name|getTransientNodeState
+name|getNode
 argument_list|(
 name|transientNodeState
 operator|.
@@ -3562,10 +3553,10 @@ decl_stmt|;
 name|TransientNodeState
 name|nodeState
 init|=
-name|getItemStateProvider
+name|getBranch
 argument_list|()
 operator|.
-name|getTransientNodeState
+name|getNode
 argument_list|(
 name|absPath
 argument_list|)
@@ -3615,10 +3606,10 @@ decl_stmt|;
 name|TransientNodeState
 name|parentState
 init|=
-name|getItemStateProvider
+name|getBranch
 argument_list|()
 operator|.
-name|getTransientNodeState
+name|getNode
 argument_list|(
 name|absPath
 argument_list|)

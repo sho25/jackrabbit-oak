@@ -35,6 +35,22 @@ end_import
 
 begin_import
 import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|api
+operator|.
+name|Branch
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|jcr
@@ -83,8 +99,8 @@ name|ValueFactory
 name|getValueFactory
 parameter_list|()
 function_decl|;
-name|ItemStateProvider
-name|getItemStateProvider
+name|Branch
+name|getBranch
 parameter_list|()
 function_decl|;
 block|}

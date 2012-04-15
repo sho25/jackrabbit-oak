@@ -1424,7 +1424,7 @@ argument_list|)
 decl_stmt|;
 name|userNode
 operator|.
-name|getEditor
+name|getState
 argument_list|()
 operator|.
 name|setProperty
@@ -1499,7 +1499,7 @@ expr_stmt|;
 block|}
 name|userNode
 operator|.
-name|getEditor
+name|getState
 argument_list|()
 operator|.
 name|setProperty
@@ -1523,7 +1523,7 @@ block|{
 comment|// TODO: check again if this really makes a transient modification with marking the property modified
 name|userNode
 operator|.
-name|getEditor
+name|getState
 argument_list|()
 operator|.
 name|removeProperty

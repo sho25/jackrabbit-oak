@@ -45,7 +45,7 @@ name|oak
 operator|.
 name|api
 operator|.
-name|NodeStateEditor
+name|Branch
 import|;
 end_import
 
@@ -104,7 +104,7 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|NodeStateEditor
+name|Branch
 name|branch
 parameter_list|(
 name|NodeState
@@ -113,7 +113,7 @@ parameter_list|)
 block|{
 return|return
 operator|new
-name|KernelNodeStateEditor
+name|KernelBranch
 argument_list|(
 name|base
 argument_list|)
@@ -125,7 +125,7 @@ specifier|public
 name|NodeState
 name|merge
 parameter_list|(
-name|NodeStateEditor
+name|Branch
 name|branch
 parameter_list|)
 block|{
@@ -135,7 +135,7 @@ operator|!
 operator|(
 name|branch
 operator|instanceof
-name|KernelNodeStateEditor
+name|KernelBranch
 operator|)
 condition|)
 block|{
@@ -147,11 +147,11 @@ literal|"Branch does not belong to this store"
 argument_list|)
 throw|;
 block|}
-name|KernelNodeStateEditor
+name|KernelBranch
 name|kne
 init|=
 operator|(
-name|KernelNodeStateEditor
+name|KernelBranch
 operator|)
 name|branch
 decl_stmt|;
@@ -184,7 +184,7 @@ block|}
 return|return
 operator|(
 operator|(
-name|KernelNodeStateEditor
+name|KernelBranch
 operator|)
 name|branch
 operator|)

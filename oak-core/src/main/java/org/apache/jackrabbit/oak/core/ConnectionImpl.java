@@ -109,7 +109,7 @@ name|oak
 operator|.
 name|api
 operator|.
-name|NodeStateEditor
+name|Branch
 import|;
 end_import
 
@@ -462,8 +462,8 @@ specifier|public
 name|void
 name|commit
 parameter_list|(
-name|NodeStateEditor
-name|editor
+name|Branch
+name|branch
 parameter_list|)
 throws|throws
 name|CommitFailedException
@@ -474,7 +474,7 @@ name|store
 operator|.
 name|merge
 argument_list|(
-name|editor
+name|branch
 argument_list|)
 expr_stmt|;
 block|}
@@ -496,8 +496,8 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|NodeStateEditor
-name|getNodeStateEditor
+name|Branch
+name|branchRoot
 parameter_list|()
 block|{
 return|return
