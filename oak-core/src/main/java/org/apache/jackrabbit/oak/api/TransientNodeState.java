@@ -51,11 +51,6 @@ name|TransientNodeState
 name|getParent
 parameter_list|()
 function_decl|;
-comment|/**      * @return  the branch this state belongs to      */
-name|Branch
-name|getBranch
-parameter_list|()
-function_decl|;
 comment|/**      * Get a property state      * @param name name of the property state      * @return  the property state with the given {@code name} or {@code null}      *          if no such property state exists.      */
 name|PropertyState
 name|getProperty
