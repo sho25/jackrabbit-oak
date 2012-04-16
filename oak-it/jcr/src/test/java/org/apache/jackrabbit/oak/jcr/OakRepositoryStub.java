@@ -117,7 +117,7 @@ specifier|final
 name|Repository
 name|repository
 decl_stmt|;
-comment|/**      * Constructor as required by the JCR TCK.      *      * @param settings repository settings      */
+comment|/**      * Constructor as required by the JCR TCK.      *       * @param settings      *            repository settings      */
 specifier|public
 name|OakRepositoryStub
 parameter_list|(
@@ -138,8 +138,43 @@ operator|new
 name|RepositoryImpl
 argument_list|()
 expr_stmt|;
+name|Session
+name|session
+init|=
+name|repository
+operator|.
+name|login
+argument_list|(
+name|superuser
+argument_list|)
+decl_stmt|;
+try|try
+block|{
+name|TestContentLoader
+name|loader
+init|=
+operator|new
+name|TestContentLoader
+argument_list|()
+decl_stmt|;
+name|loader
+operator|.
+name|loadTestContent
+argument_list|(
+name|session
+argument_list|)
+expr_stmt|;
 block|}
-comment|/**      * Returns the configured repository instance.      *      * @return the configured repository instance.      */
+finally|finally
+block|{
+name|session
+operator|.
+name|logout
+argument_list|()
+expr_stmt|;
+block|}
+block|}
+comment|/**      * Returns the configured repository instance.      *       * @return the configured repository instance.      */
 annotation|@
 name|Override
 specifier|public
