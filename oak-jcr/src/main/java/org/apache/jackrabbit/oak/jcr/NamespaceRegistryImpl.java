@@ -167,6 +167,15 @@ argument_list|,
 name|NAMESPACE_XML
 argument_list|)
 expr_stmt|;
+name|map
+operator|.
+name|put
+argument_list|(
+literal|"sv"
+argument_list|,
+literal|"http://www.jcp.org/jcr/sv/1.0"
+argument_list|)
+expr_stmt|;
 block|}
 annotation|@
 name|Override
