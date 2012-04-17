@@ -229,26 +229,6 @@ name|Test
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|File
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
 begin_comment
 comment|/**  * Use-case: start off a new revision store that contains just the head revision  * and its nodes.  *   * TODO: fix concurrent GC, fails because of missing nodes in the "to" store.  */
 end_comment

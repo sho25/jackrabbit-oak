@@ -538,13 +538,6 @@ operator|.
 name|clear
 argument_list|()
 expr_stmt|;
-if|if
-condition|(
-name|pm
-operator|instanceof
-name|Closeable
-condition|)
-block|{
 name|IOUtils
 operator|.
 name|closeQuietly
@@ -555,7 +548,6 @@ operator|)
 name|pm
 argument_list|)
 expr_stmt|;
-block|}
 name|initialized
 operator|=
 literal|false

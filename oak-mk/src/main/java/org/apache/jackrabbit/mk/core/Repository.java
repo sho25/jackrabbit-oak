@@ -444,15 +444,15 @@ name|pm
 init|=
 operator|new
 name|H2Persistence
-argument_list|(
-name|homeDir
-argument_list|)
+argument_list|()
 decl_stmt|;
 comment|//org.apache.jackrabbit.mk.persistence.MongoPersistence pm = new org.apache.jackrabbit.mk.persistence.MongoPersistence();
 name|pm
 operator|.
 name|initialize
-argument_list|()
+argument_list|(
+name|homeDir
+argument_list|)
 expr_stmt|;
 name|DefaultRevisionStore
 name|rs

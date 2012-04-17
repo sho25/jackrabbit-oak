@@ -53,16 +53,6 @@ name|java
 operator|.
 name|io
 operator|.
-name|Closeable
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
 name|File
 import|;
 end_import
@@ -450,8 +440,6 @@ name|MongoPersistence
 implements|implements
 name|Persistence
 implements|,
-name|Closeable
-implements|,
 name|BlobStore
 block|{
 specifier|private
@@ -547,7 +535,10 @@ decl_stmt|;
 specifier|public
 name|void
 name|initialize
-parameter_list|()
+parameter_list|(
+name|File
+name|homeDir
+parameter_list|)
 throws|throws
 name|Exception
 block|{
