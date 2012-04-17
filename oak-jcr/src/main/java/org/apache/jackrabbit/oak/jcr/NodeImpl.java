@@ -2409,9 +2409,9 @@ parameter_list|()
 throws|throws
 name|RepositoryException
 block|{
-comment|// TODO
+comment|// as long as we don not support same name siblings, index always is 1
 return|return
-literal|0
+literal|1
 return|;
 block|}
 comment|/**      * @see javax.jcr.Node#getReferences()      */
