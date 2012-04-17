@@ -138,7 +138,6 @@ comment|/**  * GroupImpl...  */
 end_comment
 
 begin_class
-specifier|public
 class|class
 name|GroupImpl
 extends|extends
@@ -181,6 +180,7 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|//-------------------------------------------------------< Authorizable>---
+comment|/**      * @see org.apache.jackrabbit.api.security.user.Authorizable#isGroup()      */
 annotation|@
 name|Override
 specifier|public
@@ -192,6 +192,7 @@ return|return
 literal|true
 return|;
 block|}
+comment|/**      * @see org.apache.jackrabbit.api.security.user.Authorizable#getPrincipal()      */
 annotation|@
 name|Override
 specifier|public

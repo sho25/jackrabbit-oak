@@ -125,6 +125,16 @@ end_import
 
 begin_import
 import|import
+name|javax
+operator|.
+name|jcr
+operator|.
+name|UnsupportedRepositoryOperationException
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|security
@@ -138,7 +148,6 @@ comment|/**  * UserImpl...  */
 end_comment
 
 begin_class
-specifier|public
 class|class
 name|UserImpl
 extends|extends
@@ -180,6 +189,7 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|//-------------------------------------------------------< Authorizable>---
+comment|/**      * @see org.apache.jackrabbit.api.security.user.Authorizable#isGroup()      */
 annotation|@
 name|Override
 specifier|public
@@ -191,6 +201,7 @@ return|return
 literal|false
 return|;
 block|}
+comment|/**      * @see org.apache.jackrabbit.api.security.user.Authorizable#getPrincipal()      */
 annotation|@
 name|Override
 specifier|public
@@ -218,6 +229,7 @@ argument_list|)
 return|;
 block|}
 comment|//---------------------------------------------------------------< User>---
+comment|/**      * @see org.apache.jackrabbit.api.security.user.User#isAdmin()      */
 annotation|@
 name|Override
 specifier|public
@@ -259,6 +271,7 @@ literal|false
 return|;
 block|}
 block|}
+comment|/**      * Always throws {@code UnsupportedRepositoryOperationException}      *      * @see org.apache.jackrabbit.api.security.user.User#getCredentials()      */
 annotation|@
 name|Override
 specifier|public
@@ -270,12 +283,13 @@ name|RepositoryException
 block|{
 throw|throw
 operator|new
-name|UnsupportedOperationException
+name|UnsupportedRepositoryOperationException
 argument_list|(
 literal|"Not implemented."
 argument_list|)
 throw|;
 block|}
+comment|/**      * @see org.apache.jackrabbit.api.security.user.User#getImpersonation()      */
 annotation|@
 name|Override
 specifier|public
@@ -293,6 +307,7 @@ name|this
 argument_list|)
 return|;
 block|}
+comment|/**      * @see org.apache.jackrabbit.api.security.user.User#changePassword(String)      */
 annotation|@
 name|Override
 specifier|public
@@ -333,6 +348,7 @@ literal|true
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * @see org.apache.jackrabbit.api.security.user.User#changePassword(String, String)      */
 annotation|@
 name|Override
 specifier|public
@@ -406,6 +422,7 @@ name|password
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * @see org.apache.jackrabbit.api.security.user.User#disable(String)      */
 annotation|@
 name|Override
 specifier|public
@@ -481,6 +498,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+comment|/**      * @see org.apache.jackrabbit.api.security.user.User#isDisabled()      */
 annotation|@
 name|Override
 specifier|public
@@ -500,6 +518,7 @@ name|REP_DISABLED
 argument_list|)
 return|;
 block|}
+comment|/**      * @see org.apache.jackrabbit.api.security.user.User#getDisabledReason()      */
 annotation|@
 name|Override
 specifier|public

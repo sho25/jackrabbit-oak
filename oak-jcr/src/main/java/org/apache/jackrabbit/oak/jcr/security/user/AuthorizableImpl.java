@@ -83,20 +83,6 @@ name|apache
 operator|.
 name|jackrabbit
 operator|.
-name|commons
-operator|.
-name|JcrUtils
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
 name|oak
 operator|.
 name|jcr
@@ -421,6 +407,7 @@ return|return
 literal|null
 return|;
 block|}
+comment|/**      * @see org.apache.jackrabbit.api.security.user.Authorizable#remove()      */
 annotation|@
 name|Override
 specifier|public
@@ -478,6 +465,7 @@ name|remove
 argument_list|()
 expr_stmt|;
 block|}
+comment|/**      * @see org.apache.jackrabbit.api.security.user.Authorizable#getPropertyNames()      */
 annotation|@
 name|Override
 specifier|public
@@ -497,6 +485,7 @@ literal|"."
 argument_list|)
 return|;
 block|}
+comment|/**      * @see Authorizable#getPropertyNames(String)      */
 annotation|@
 name|Override
 specifier|public
@@ -625,6 +614,7 @@ argument_list|)
 throw|;
 block|}
 block|}
+comment|/**      * @see org.apache.jackrabbit.api.security.user.Authorizable#hasProperty(String)      */
 annotation|@
 name|Override
 specifier|public
@@ -658,6 +648,7 @@ literal|true
 argument_list|)
 return|;
 block|}
+comment|/**      * @see org.apache.jackrabbit.api.security.user.Authorizable#getProperty(String)      */
 annotation|@
 name|Override
 specifier|public
@@ -744,6 +735,7 @@ return|return
 name|values
 return|;
 block|}
+comment|/**      * @see org.apache.jackrabbit.api.security.user.Authorizable#setProperty(String, javax.jcr.Value)      */
 annotation|@
 name|Override
 specifier|public
@@ -848,6 +840,7 @@ name|value
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * @see org.apache.jackrabbit.api.security.user.Authorizable#setProperty(String, javax.jcr.Value[])      */
 annotation|@
 name|Override
 specifier|public
@@ -954,6 +947,7 @@ name|values
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * @see org.apache.jackrabbit.api.security.user.Authorizable#removeProperty(String)      */
 annotation|@
 name|Override
 specifier|public
@@ -1021,6 +1015,7 @@ return|return
 literal|false
 return|;
 block|}
+comment|/**      * @see org.apache.jackrabbit.api.security.user.Authorizable#getPath()      */
 annotation|@
 name|Override
 specifier|public
@@ -1038,6 +1033,7 @@ argument_list|()
 return|;
 block|}
 comment|//-------------------------------------------------------------< Object>---
+comment|/**      * @see Object#hashCode()      */
 annotation|@
 name|Override
 specifier|public
@@ -1128,6 +1124,7 @@ return|return
 name|hashCode
 return|;
 block|}
+comment|/**      * @see Object#equals(Object)      */
 annotation|@
 name|Override
 specifier|public
@@ -1187,6 +1184,7 @@ return|return
 literal|false
 return|;
 block|}
+comment|/**      * @see Object#toString()      */
 annotation|@
 name|Override
 specifier|public
@@ -1248,7 +1246,7 @@ return|;
 block|}
 block|}
 comment|//--------------------------------------------------------------------------
-comment|/**      * @return node The node associated with this authorizable instance.      */
+comment|/**      * @return The node associated with this authorizable instance.      */
 name|NodeImpl
 name|getNode
 parameter_list|()
@@ -1257,6 +1255,7 @@ return|return
 name|node
 return|;
 block|}
+comment|/**      * @return The user manager associated with this authorizable.      */
 name|UserManagerImpl
 name|getUserManager
 parameter_list|()
@@ -1265,6 +1264,7 @@ return|return
 name|userManager
 return|;
 block|}
+comment|/**      * @return The principal name of this authorizable.      * @throws RepositoryException If no principal name can be retrieved.      */
 name|String
 name|getPrincipalName
 parameter_list|()
@@ -1425,7 +1425,7 @@ literal|true
 return|;
 block|}
 block|}
-comment|/**      *      * @param relPath A relative path.      * @return The corresponding node.      * @throws RepositoryException If an error occurs.      */
+comment|/**      * Retrieves the node at {@code relPath} relative to node associated with      * this authorizable. If no such node exist it and any missing intermediate      * nodes are created.      *      * @param relPath A relative path.      * @return The corresponding node.      * @throws RepositoryException If an error occurs or if {@code relPath} refers      * to a node that is outside of the scope of this authorizable.      */
 specifier|private
 name|Node
 name|getOrCreateTargetNode
@@ -1446,23 +1446,31 @@ operator|!=
 literal|null
 condition|)
 block|{
+name|String
+name|userPath
+init|=
+name|node
+operator|.
+name|getPath
+argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|node
+operator|.
+name|hasNode
+argument_list|(
+name|relPath
+argument_list|)
+condition|)
+block|{
 name|n
 operator|=
-name|JcrUtils
-operator|.
-name|getOrCreateByPath
-argument_list|(
 name|node
-argument_list|,
+operator|.
+name|getNode
+argument_list|(
 name|relPath
-argument_list|,
-literal|false
-argument_list|,
-literal|null
-argument_list|,
-literal|null
-argument_list|,
-literal|false
 argument_list|)
 expr_stmt|;
 if|if
@@ -1472,10 +1480,7 @@ name|Text
 operator|.
 name|isDescendantOrEqual
 argument_list|(
-name|node
-operator|.
-name|getPath
-argument_list|()
+name|userPath
 argument_list|,
 name|n
 operator|.
@@ -1484,13 +1489,6 @@ argument_list|()
 argument_list|)
 condition|)
 block|{
-name|node
-operator|.
-name|refresh
-argument_list|(
-literal|false
-argument_list|)
-expr_stmt|;
 throw|throw
 operator|new
 name|RepositoryException
@@ -1504,6 +1502,94 @@ operator|+
 name|this
 argument_list|)
 throw|;
+block|}
+block|}
+else|else
+block|{
+name|n
+operator|=
+name|node
+expr_stmt|;
+for|for
+control|(
+name|String
+name|segment
+range|:
+name|Text
+operator|.
+name|explode
+argument_list|(
+name|relPath
+argument_list|,
+literal|'/'
+argument_list|)
+control|)
+block|{
+if|if
+condition|(
+name|n
+operator|.
+name|hasNode
+argument_list|(
+name|segment
+argument_list|)
+condition|)
+block|{
+name|n
+operator|=
+name|n
+operator|.
+name|getNode
+argument_list|(
+name|segment
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+if|if
+condition|(
+name|Text
+operator|.
+name|isDescendantOrEqual
+argument_list|(
+name|userPath
+argument_list|,
+name|n
+operator|.
+name|getPath
+argument_list|()
+argument_list|)
+condition|)
+block|{
+name|n
+operator|=
+name|n
+operator|.
+name|addNode
+argument_list|(
+name|segment
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+throw|throw
+operator|new
+name|RepositoryException
+argument_list|(
+literal|"Relative path "
+operator|+
+name|relPath
+operator|+
+literal|" outside of scope of "
+operator|+
+name|this
+argument_list|)
+throw|;
+block|}
+block|}
+block|}
 block|}
 block|}
 else|else
