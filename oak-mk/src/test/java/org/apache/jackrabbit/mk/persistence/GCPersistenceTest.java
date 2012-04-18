@@ -408,6 +408,13 @@ argument_list|(
 name|node
 argument_list|)
 decl_stmt|;
+name|Thread
+operator|.
+name|sleep
+argument_list|(
+literal|1
+argument_list|)
+expr_stmt|;
 name|pm
 operator|.
 name|start
