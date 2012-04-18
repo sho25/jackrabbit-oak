@@ -112,7 +112,7 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
-comment|/**      * Lock the head. Must be called prior to putting a new head commit.      *       * @see #putHeadCommit(MutableCommit)      */
+comment|/**      * Lock the head. Must be called prior to putting a new head commit.      *       * @see #putHeadCommit(MutableCommit)      * @see #unlockHead()      */
 name|void
 name|lockHead
 parameter_list|()
@@ -128,10 +128,21 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
-comment|/**      * Unlock the head.      */
+comment|/**      * Unlock the head.      *      * @see #lockHead()      */
 name|void
 name|unlockHead
 parameter_list|()
+function_decl|;
+comment|/**      * Store a new commit.      *<p/>      * Unlike {@code putHeadCommit(MutableCommit)}, this method      * does not affect the current head commit and therefore doesn't      * require a lock on the head.      *      * @param commit commit      * @return new commit id      * @throws Exception if an error occurs      */
+name|Id
+comment|/*id*/
+name|putCommit
+parameter_list|(
+name|MutableCommit
+name|commit
+parameter_list|)
+throws|throws
+name|Exception
 function_decl|;
 block|}
 end_interface

@@ -85,6 +85,14 @@ name|getChanges
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|setBranchRootId
+argument_list|(
+name|other
+operator|.
+name|getBranchRootId
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|this
 operator|.
 name|id
@@ -168,6 +176,21 @@ operator|.
 name|changes
 operator|=
 name|changes
+expr_stmt|;
+block|}
+specifier|public
+name|void
+name|setBranchRootId
+parameter_list|(
+name|Id
+name|branchRootId
+parameter_list|)
+block|{
+name|this
+operator|.
+name|branchRootId
+operator|=
+name|branchRootId
 expr_stmt|;
 block|}
 comment|/**      * Return the commit id.      *       * @return commit id      */
