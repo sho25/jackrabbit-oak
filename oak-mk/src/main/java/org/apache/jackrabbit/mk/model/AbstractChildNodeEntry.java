@@ -29,7 +29,7 @@ name|AbstractChildNodeEntry
 implements|implements
 name|ChildNodeEntry
 block|{
-comment|/**      * Checks whether the given object is equal to this one. Two child node      * entries are considered equal if both their names and referenced node      * states match. Subclasses may override this method with a more efficient      * equality check if one is available.      *      * @param that target of the comparison      * @return<code>true</code> if the objects are equal,      *<code>false</code> otherwise      */
+comment|/**      * Checks whether the given object is equal to this one. Two child node      * entries are considered equal if both their names and referenced node      * states match. Subclasses may override this method with a more efficient      * equality check if one is available.      *      * @param that target of the comparison      * @return {@code true} if the objects are equal,      *         {@code false} otherwise      */
 annotation|@
 name|Override
 specifier|public

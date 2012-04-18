@@ -18,7 +18,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * Exception thrown by methods of the<code>MicroKernel</code> API  */
+comment|/**  * Exception thrown by methods of the {@code MicroKernel} API  */
 end_comment
 
 begin_class

@@ -127,7 +127,7 @@ specifier|private
 name|int
 name|offset
 decl_stmt|;
-comment|/**      * Create a new instance of this class.      *      * @param out underlying output stream.      * @param size internal buffer size      * @throws IllegalArgumentException if<code>size</code> is smaller than 1      *         or bigger than<code>65535</code>      */
+comment|/**      * Create a new instance of this class.      *      * @param out underlying output stream.      * @param size internal buffer size      * @throws IllegalArgumentException if {@code size} is smaller than 1      *         or bigger than {@code 65535}      */
 specifier|public
 name|ChunkedOutputStream
 parameter_list|(
@@ -502,7 +502,7 @@ operator|=
 literal|0
 expr_stmt|;
 block|}
-comment|/**      * Close this output stream. Flush the contents of the internal buffer      * and writes the last chunk to the underlying output stream. Sets      * the internal reference to the underlying output stream to       *<code>null</code>. Does<b>not</b> close the underlying output stream.      *      * @see java.io.FilterOutputStream#close()      */
+comment|/**      * Close this output stream. Flush the contents of the internal buffer      * and writes the last chunk to the underlying output stream. Sets      * the internal reference to the underlying output stream to       * {@code null}. Does<b>not</b> close the underlying output stream.      *      * @see java.io.FilterOutputStream#close()      */
 specifier|public
 name|void
 name|close

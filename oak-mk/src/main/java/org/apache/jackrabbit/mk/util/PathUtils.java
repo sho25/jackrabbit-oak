@@ -1201,7 +1201,7 @@ name|ancestor
 argument_list|)
 return|;
 block|}
-comment|/**      * Relativize a path wrt. a parent path such that      *<code>relativize(parentPath, concat(parentPath, path)) == paths</code>      * holds.      *      * @param parentPath parent pth      * @param path path to relativize      * @return relativized path      */
+comment|/**      * Relativize a path wrt. a parent path such that      * {@code relativize(parentPath, concat(parentPath, path)) == paths}      * holds.      *      * @param parentPath parent pth      * @param path path to relativize      * @return relativized path      */
 specifier|public
 specifier|static
 name|String

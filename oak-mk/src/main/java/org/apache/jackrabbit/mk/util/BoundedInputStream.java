@@ -48,7 +48,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Implementation of an<code>InputStream</code> that is bounded by a limit  * and will return<code>-1</code> on reads when this limit is exceeded.  */
+comment|/**  * Implementation of an {@code InputStream} that is bounded by a limit  * and will return {@code -1} on reads when this limit is exceeded.  */
 end_comment
 
 begin_class

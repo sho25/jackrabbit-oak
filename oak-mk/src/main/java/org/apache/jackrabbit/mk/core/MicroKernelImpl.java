@@ -468,7 +468,7 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/**      * Same as<code>getHeadRevisionId</code>, with typed<code>Id</code> return value instead of string.      *       * @see #getHeadRevision()      */
+comment|/**      * Same as {@code getHeadRevisionId}, with typed {@code Id} return value instead of string.      *       * @see #getHeadRevision()      */
 specifier|private
 name|Id
 name|getHeadRevisionId

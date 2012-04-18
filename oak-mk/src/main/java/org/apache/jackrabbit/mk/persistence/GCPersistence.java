@@ -49,7 +49,7 @@ name|void
 name|start
 parameter_list|()
 function_decl|;
-comment|/**      * Mark a commit.      *       * @param id      *            commit id      * @return<code>true</code> if the commit was not marked before;      *<code>false</code> otherwise      *       * @throws Exception if an error occurs      */
+comment|/**      * Mark a commit.      *       * @param id      *            commit id      * @return {@code true} if the commit was not marked before;      *         {@code false} otherwise      *       * @throws Exception if an error occurs      */
 name|boolean
 name|markCommit
 parameter_list|(
@@ -59,7 +59,7 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
-comment|/**      * Mark a node.      *       * @param id      *            node id      * @return<code>true</code> if the node was not marked before;      *<code>false</code> otherwise      *       * @throws Exception if an error occurs      */
+comment|/**      * Mark a node.      *       * @param id      *            node id      * @return {@code true} if the node was not marked before;      *         {@code false} otherwise      *       * @throws Exception if an error occurs      */
 name|boolean
 name|markNode
 parameter_list|(
@@ -69,7 +69,7 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
-comment|/**      * Mark a child node entry map.      *       * @param id      *            child node entry map id      * @return<code>true</code> if the child node entry map was not marked before;      *<code>false</code> otherwise      *       * @throws Exception if an error occurs      */
+comment|/**      * Mark a child node entry map.      *       * @param id      *            child node entry map id      * @return {@code true} if the child node entry map was not marked before;      *         {@code false} otherwise      *       * @throws Exception if an error occurs      */
 name|boolean
 name|markCNEMap
 parameter_list|(

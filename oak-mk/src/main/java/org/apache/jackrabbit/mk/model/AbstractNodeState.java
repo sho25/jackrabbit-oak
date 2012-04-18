@@ -192,7 +192,7 @@ return|return
 name|count
 return|;
 block|}
-comment|/**      * Checks whether the given object is equal to this one. Two node states      * are considered equal if all their properties and child nodes match,      * regardless of ordering. Subclasses may override this method with a      * more efficient equality check if one is available.      *      * @param that target of the comparison      * @return<code>true</code> if the objects are equal,      *<code>false</code> otherwise      */
+comment|/**      * Checks whether the given object is equal to this one. Two node states      * are considered equal if all their properties and child nodes match,      * regardless of ordering. Subclasses may override this method with a      * more efficient equality check if one is available.      *      * @param that target of the comparison      * @return {@code true} if the objects are equal,      *         {@code false} otherwise      */
 annotation|@
 name|Override
 specifier|public

@@ -300,7 +300,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Default revision store implementation, passing calls to a<code>Persistence</code>  * and a<code>BlobStore</code>, respectively and providing caching.   */
+comment|/**  * Default revision store implementation, passing calls to a {@code Persistence}  * and a {@code BlobStore}, respectively and providing caching.  */
 end_comment
 
 begin_class

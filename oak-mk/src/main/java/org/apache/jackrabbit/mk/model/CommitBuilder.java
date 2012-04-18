@@ -1881,7 +1881,7 @@ return|return
 name|rootNodeId
 return|;
 block|}
-comment|/**      * Performs a three-way merge of the trees rooted at<code>ourRoot</code>,      *<code>theirRoot</code>, using the tree at<code>baseRoot</code> as reference.      *      * @param baseRoot      * @param ourRoot      * @param theirRoot      * @return id of merged root node      * @throws Exception      */
+comment|/**      * Performs a three-way merge of the trees rooted at {@code ourRoot},      * {@code theirRoot}, using the tree at {@code baseRoot} as reference.      *      * @param baseRoot      * @param ourRoot      * @param theirRoot      * @return id of merged root node      * @throws Exception      */
 name|Id
 comment|/* id of merged root node */
 name|mergeTree
