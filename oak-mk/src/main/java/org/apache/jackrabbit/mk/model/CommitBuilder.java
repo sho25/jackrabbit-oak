@@ -482,6 +482,26 @@ argument_list|(
 name|baseRevId
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|createBranch
+operator|&&
+name|baseCommit
+operator|.
+name|getBranchRootId
+argument_list|()
+operator|!=
+literal|null
+condition|)
+block|{
+throw|throw
+operator|new
+name|Exception
+argument_list|(
+literal|"cannot branch off a private branch"
+argument_list|)
+throw|;
+block|}
 name|boolean
 name|privateCommit
 init|=
