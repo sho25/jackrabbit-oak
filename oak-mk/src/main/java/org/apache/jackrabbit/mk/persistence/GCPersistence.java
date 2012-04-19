@@ -34,7 +34,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Advanced persistence implementation offering GC support.  *<p>  * The persistence implementation must ensure that objects written after {@link #start()}  * was invoked are not swept.  */
+comment|/**  * Advanced persistence implementation offering GC support.  *<p>  * The persistence implementation must ensure that objects written between {@link #start()}  * and {@link #sweep()} are not swept, in other words, they must be marked implicitely.  */
 end_comment
 
 begin_interface
