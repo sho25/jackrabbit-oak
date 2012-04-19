@@ -2063,6 +2063,7 @@ name|Exception
 block|{
 if|if
 condition|(
+operator|!
 name|gcpm
 operator|.
 name|markCommit
@@ -2100,6 +2101,7 @@ name|Exception
 block|{
 if|if
 condition|(
+operator|!
 name|gcpm
 operator|.
 name|markNode
