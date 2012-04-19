@@ -78,7 +78,7 @@ name|MicroKernelException
 throws|,
 name|InterruptedException
 function_decl|;
-comment|/**      * Returns a revision journal, starting with {@code fromRevisionId}      * and ending with @code toRevisionId}.      *<p/>      * Format:      *<pre>      * [ { "id" : "&lt;revisionId&gt;", "ts" : "&lt;revisionTimestamp&gt;", "msg" : "&lt;commitMessage&gt;", "changes" : "&lt;JSON diff&gt;" }, ... ]      *</pre>      *      * @param fromRevisionId id of first revision to be returned in journal      * @param toRevisionId   id of last revision to be returned in journal, if {@code null} the current head revision is assumed      * @param filter         (optional) filter criteria      *                       (e.g. path, property names, etc);      *                       TODO specify format and semantics      * @return a chronological list of revisions in JSON format      * @throws MicroKernelException if an error occurs      */
+comment|/**      * Returns a revision journal, starting with {@code fromRevisionId}      * and ending with @code toRevisionId}.      *<p/>      * Format:      *<pre>      * [ { "id" : "&lt;revisionId&gt;", "ts" : "&lt;revisionTimestamp&gt;", "msg" : "&lt;commitMessage&gt;", "changes" : "&lt;JSON diff&gt;" }, ... ]      *</pre>      *      * @param fromRevisionId id of first revision to be returned in journal      * @param toRevisionId   id of last revision to be returned in journal,      *                       if {@code null} the current head revision is assumed      * @param filter         (optional) filter criteria      *                       (e.g. path, property names, etc);      *                       TODO specify format and semantics      * @return a chronological list of revisions in JSON format      * @throws MicroKernelException if an error occurs      */
 name|String
 comment|/* jsonArray */
 name|getJournal
@@ -180,7 +180,7 @@ throws|throws
 name|MicroKernelException
 function_decl|;
 comment|//------------------------------------------------------------< WRITE ops>
-comment|/**      * Applies the specified changes on the specified target node.      *<p>      * If {@code path.length() == 0} the paths specified in the      * {@code jsonDiff} are expected to be absolute.      *<p>      * The implementation tries to merge changes if the revision id of the      * commit is set accordingly. As an example, deleting a node is allowed if      * the node existed in the given revision, even if it was deleted in the      * meantime.      *      * @param path path denoting target node      * @param jsonDiff changes to be applied in JSON diff format.      * @param revisionId id of revision the changes are based on, if {@code null} the current head revision is assumed      * @param message commit message      * @return id of newly created revision      * @throws MicroKernelException if an error occurs      */
+comment|/**      * Applies the specified changes on the specified target node.      *<p>      * If {@code path.length() == 0} the paths specified in the      * {@code jsonDiff} are expected to be absolute.      *<p>      * The implementation tries to merge changes if the revision id of the      * commit is set accordingly. As an example, deleting a node is allowed if      * the node existed in the given revision, even if it was deleted in the      * meantime.      *      * @param path path denoting target node      * @param jsonDiff changes to be applied in JSON diff format.      * @param revisionId id of revision the changes are based on,      *                   if {@code null} the current head revision is assumed      * @param message commit message      * @return id of newly created revision      * @throws MicroKernelException if an error occurs      */
 name|String
 comment|/* revisionId */
 name|commit
@@ -193,6 +193,31 @@ name|jsonDiff
 parameter_list|,
 name|String
 name|revisionId
+parameter_list|,
+name|String
+name|message
+parameter_list|)
+throws|throws
+name|MicroKernelException
+function_decl|;
+comment|/**      * Creates a<i>private</i> branch revision off the specified<i>public</i>      * trunk revision.      *<p/>      * A {@code MicroKernelException} is thrown if {@code trunkRevisionId} doesn't      * exist, if it's not a<i>trunk</i> revision (i.e. it's not reachable      * by traversing the revision history backwards starting from the current      * head revision) or if another error occurs.      *      * @param trunkRevisionId id of public trunk revision to base branch on,      *                        if {@code null} the current head revision is assumed      * @return id of newly created private branch revision      * @throws MicroKernelException if {@code trunkRevisionId} doesn't exist,      *                              if it's not a<i>trunk</i> revision      *                              or if another error occurs      * @see #merge(String, String)      */
+name|String
+comment|/* revisionId */
+name|branch
+parameter_list|(
+name|String
+name|trunkRevisionId
+parameter_list|)
+throws|throws
+name|MicroKernelException
+function_decl|;
+comment|/**      * Merges the specified<i>private</i> branch revision with the current      * head revision.      *<p/>      * A {@code MicroKernelException} is thrown if {@code branchRevisionId} doesn't      * exist, if it's not a branch revision, if the merge fails because of      * conflicting changes or if another error occurs.      *      * @param branchRevisionId id of private branch revision      * @param message commit message      * @return id of newly created head revision      * @throws MicroKernelException if {@code branchRevisionId} doesn't exist,      *                              if it's not a branch revision, if the merge      *                              fails because of conflicting changes or if      *                              another error occurs.      * @see #branch(String)      */
+name|String
+comment|/* revisionId */
+name|merge
+parameter_list|(
+name|String
+name|branchRevisionId
 parameter_list|,
 name|String
 name|message

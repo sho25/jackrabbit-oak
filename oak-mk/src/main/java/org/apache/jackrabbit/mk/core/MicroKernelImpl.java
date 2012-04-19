@@ -2429,7 +2429,7 @@ name|String
 name|branch
 parameter_list|(
 name|String
-name|publicRevisionId
+name|trunkRevisionId
 parameter_list|)
 throws|throws
 name|MicroKernelException
@@ -2453,7 +2453,7 @@ block|}
 name|Id
 name|revId
 init|=
-name|publicRevisionId
+name|trunkRevisionId
 operator|==
 literal|null
 condition|?
@@ -2464,7 +2464,7 @@ name|Id
 operator|.
 name|fromString
 argument_list|(
-name|publicRevisionId
+name|trunkRevisionId
 argument_list|)
 decl_stmt|;
 try|try
@@ -2513,12 +2513,15 @@ name|String
 name|merge
 parameter_list|(
 name|String
-name|privateRevisionId
+name|branchRevisionId
+parameter_list|,
+name|String
+name|message
 parameter_list|)
 throws|throws
 name|MicroKernelException
 block|{
-comment|// create a private branch
+comment|// merge a private branch with current head revision
 if|if
 condition|(
 name|rep
@@ -2541,25 +2544,20 @@ name|Id
 operator|.
 name|fromString
 argument_list|(
-name|privateRevisionId
+name|branchRevisionId
 argument_list|)
 decl_stmt|;
 try|try
 block|{
-name|CommitBuilder
-name|cb
-init|=
+return|return
 name|rep
 operator|.
 name|getCommitBuilder
 argument_list|(
 name|revId
 argument_list|,
-literal|""
+name|message
 argument_list|)
-decl_stmt|;
-return|return
-name|cb
 operator|.
 name|doMerge
 argument_list|()
