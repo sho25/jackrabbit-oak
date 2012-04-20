@@ -530,6 +530,17 @@ operator|/
 literal|1000000
 argument_list|)
 operator|.
+name|key
+argument_list|(
+literal|"msg"
+argument_list|)
+operator|.
+name|value
+argument_list|(
+name|getMsg
+argument_list|()
+argument_list|)
+operator|.
 name|endObject
 argument_list|()
 operator|.

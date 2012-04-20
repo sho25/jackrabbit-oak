@@ -307,7 +307,7 @@ block|}
 specifier|public
 specifier|final
 name|String
-name|getRevisions
+name|getRevisionHistory
 parameter_list|(
 name|long
 name|since
@@ -556,7 +556,7 @@ name|JsopTokenizer
 argument_list|(
 name|wrapped
 operator|.
-name|getRevisions
+name|getRevisionHistory
 argument_list|(
 name|since
 argument_list|,
@@ -829,7 +829,7 @@ return|;
 block|}
 specifier|public
 name|String
-name|getRevisions
+name|getRevisionHistory
 parameter_list|(
 name|long
 name|since
@@ -841,7 +841,7 @@ block|{
 return|return
 name|wrapped
 operator|.
-name|getRevisions
+name|getRevisionHistory
 argument_list|(
 name|since
 argument_list|,

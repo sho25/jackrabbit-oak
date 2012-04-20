@@ -49,10 +49,10 @@ parameter_list|()
 throws|throws
 name|MicroKernelException
 function_decl|;
-comment|/**      * Returns a chronological list of all revisions since a specific point      * in time.      *<p/>      * Format:      *<pre>      * [ { "id" : "<revisionId>", "ts" :<revisionTimestamp> }, ... ]      *</pre>      *      * @param since      timestamp (ms) of earliest revision to be returned      * @param maxEntries maximum #entries to be returned;      *                   if< 0, no limit will be applied.      * @return a chronological list of revisions in JSON format.      * @throws MicroKernelException if an error occurs      */
+comment|/**      * Returns a list of all currently available (historical) head revisions in      * chronological order since a specific point.<i>Private</i> branch      * revisions won't be included in the result.      *<p/>      * Format:      *<pre>      * [      *   {      *     "id" : "&lt;revisionId&gt;",      *     "ts" :&lt;revisionTimestamp&gt;,      *     "msg" : "&lt;commitMessage&gt;"      *   },      *   ...      * ]      *</pre>      *      * @param since      timestamp (ms) of earliest revision to be returned      * @param maxEntries maximum #entries to be returned;      *                   if< 0, no limit will be applied.      * @return a list of revisions in chronological order in JSON format.      * @throws MicroKernelException if an error occurs      */
 name|String
 comment|/* jsonArray */
-name|getRevisions
+name|getRevisionHistory
 parameter_list|(
 name|long
 name|since
@@ -63,7 +63,7 @@ parameter_list|)
 throws|throws
 name|MicroKernelException
 function_decl|;
-comment|/**      * Waits for a commit to occur that is more recent than {@code oldHeadRevisionId}.      *<p/>      * This method allows for efficient polling for new revisions. The method      * will return the id of the current head revision if it is more recent than      * {@code oldHeadRevisionId}, or waits if either the specified amount of time      * has elapsed or a new head revision has become available.      *<p/>      * if a zero or negative {@code timeout} value has been specified the method      * will return immediately, i.e. calling {@code waitForCommit(0)} is      * equivalent to calling {@code getHeadRevision()}.      *      * @param oldHeadRevisionId id of previous head revision      * @param timeout the maximum time to wait in milliseconds      * @return the id of the head revision      * @throws MicroKernelException if an error occurs      * @throws InterruptedException if the thread was interrupted      */
+comment|/**      * Waits for a commit to occur that is more recent than {@code oldHeadRevisionId}.      *<p/>      * This method allows for efficient polling for new revisions. The method      * will return the id of the current head revision if it is more recent than      * {@code oldHeadRevisionId}, or waits if either the specified amount of time      * has elapsed or a new head revision has become available.      *<p/>      * if a zero or negative {@code timeout} value has been specified the method      * will return immediately, i.e. calling {@code waitForCommit(0)} is      * equivalent to calling {@code getHeadRevision()}.      *      * @param oldHeadRevisionId id of earlier head revision      * @param timeout the maximum time to wait in milliseconds      * @return the id of the head revision      * @throws MicroKernelException if an error occurs      * @throws InterruptedException if the thread was interrupted      */
 name|String
 name|waitForCommit
 parameter_list|(
@@ -78,7 +78,7 @@ name|MicroKernelException
 throws|,
 name|InterruptedException
 function_decl|;
-comment|/**      * Returns a revision journal, starting with {@code fromRevisionId}      * and ending with {@code toRevisionId} in ascending chronological order      * the revision denoted by {@code fromRevisionId} is expected to be older      * i.e. than the one denoted by {@code toRevisionId});      *<p/>      * Format:      *<pre>      * [      *   {      *     "id" : "&lt;revisionId&gt;",      *     "ts" : "&lt;revisionTimestamp&gt;",      *     "msg" : "&lt;commitMessage&gt;",      *     "changes" : "&lt;JSON diff&gt;"      *   },      *   ...      * ]      *</pre>      *      * @param fromRevisionId id of first revision to be returned in journal      * @param toRevisionId   id of last revision to be returned in journal,      *                       if {@code null} the current head revision is assumed      * @param filter         (optional) filter criteria      *                       (e.g. path, property names, etc);      *                       TODO specify format and semantics      * @return a chronological list of revisions in JSON format      * @throws MicroKernelException if an error occurs      */
+comment|/**      * Returns a revision journal, starting with {@code fromRevisionId}      * and ending with {@code toRevisionId} in chronological order.      *<p/>      * The revision denoted by {@code fromRevisionId} is expected to be older      * i.e. than the one denoted by {@code toRevisionId});      *<p/>      * Format:      *<pre>      * [      *   {      *     "id" : "&lt;revisionId&gt;",      *     "ts" :&lt;revisionTimestamp&gt;,      *     "msg" : "&lt;commitMessage&gt;",      *     "changes" : "&lt;JSON diff&gt;"      *   },      *   ...      * ]      *</pre>      *      * @param fromRevisionId id of first revision to be returned in journal      * @param toRevisionId   id of last revision to be returned in journal,      *                       if {@code null} the current head revision is assumed      * @param filter         (optional) filter criteria      *                       (e.g. path, property names, etc);      *                       TODO specify format and semantics      * @return a chronological list of revisions in JSON format      * @throws MicroKernelException if an error occurs      */
 name|String
 comment|/* jsonArray */
 name|getJournal
@@ -200,7 +200,7 @@ parameter_list|)
 throws|throws
 name|MicroKernelException
 function_decl|;
-comment|/**      * Creates a<i>private</i> branch revision off the specified<i>public</i>      * trunk revision.      *<p/>      * A {@code MicroKernelException} is thrown if {@code trunkRevisionId} doesn't      * exist, if it's not a<i>trunk</i> revision (i.e. it's not reachable      * by traversing the revision history backwards starting from the current      * head revision) or if another error occurs.      *      * @param trunkRevisionId id of public trunk revision to base branch on,      *                        if {@code null} the current head revision is assumed      * @return id of newly created private branch revision      * @throws MicroKernelException if {@code trunkRevisionId} doesn't exist,      *                              if it's not a<i>trunk</i> revision      *                              or if another error occurs      * @see #merge(String, String)      */
+comment|/**      * Creates a<i>private</i> branch revision off the specified<i>public</i>      * trunk revision.      *<p/>      * A {@code MicroKernelException} is thrown if {@code trunkRevisionId} doesn't      * exist, if it's not a<i>trunk</i> revision (i.e. it's not reachable      * by traversing the revision history in reverse chronological order starting      * from the current head revision) or if another error occurs.      *      * @param trunkRevisionId id of public trunk revision to base branch on,      *                        if {@code null} the current head revision is assumed      * @return id of newly created private branch revision      * @throws MicroKernelException if {@code trunkRevisionId} doesn't exist,      *                              if it's not a<i>trunk</i> revision      *                              or if another error occurs      * @see #merge(String, String)      */
 name|String
 comment|/* revisionId */
 name|branch

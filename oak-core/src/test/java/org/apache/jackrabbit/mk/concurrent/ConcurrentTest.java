@@ -230,7 +230,7 @@ argument_list|)
 expr_stmt|;
 name|mk
 operator|.
-name|getRevisions
+name|getRevisionHistory
 argument_list|(
 name|start
 argument_list|,

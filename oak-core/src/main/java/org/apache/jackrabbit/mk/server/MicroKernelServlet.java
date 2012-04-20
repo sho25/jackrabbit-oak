@@ -412,10 +412,10 @@ name|COMMANDS
 operator|.
 name|put
 argument_list|(
-literal|"getRevisions"
+literal|"getRevisionHistory"
 argument_list|,
 operator|new
-name|GetRevisions
+name|GetRevisionHistory
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -597,7 +597,7 @@ block|}
 block|}
 specifier|static
 class|class
-name|GetRevisions
+name|GetRevisionHistory
 implements|implements
 name|Command
 block|{
@@ -655,7 +655,7 @@ name|json
 init|=
 name|mk
 operator|.
-name|getRevisions
+name|getRevisionHistory
 argument_list|(
 name|since
 argument_list|,

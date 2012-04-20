@@ -342,7 +342,7 @@ name|history
 init|=
 name|mk
 operator|.
-name|getRevisions
+name|getRevisionHistory
 argument_list|(
 name|t0
 argument_list|,

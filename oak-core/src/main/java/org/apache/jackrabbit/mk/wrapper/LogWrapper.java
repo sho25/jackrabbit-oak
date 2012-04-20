@@ -673,7 +673,7 @@ block|}
 block|}
 specifier|public
 name|String
-name|getRevisions
+name|getRevisionHistory
 parameter_list|(
 name|long
 name|since
@@ -686,7 +686,7 @@ try|try
 block|{
 name|logMethod
 argument_list|(
-literal|"getRevisions"
+literal|"getRevisionHistory"
 argument_list|,
 name|since
 argument_list|,
@@ -698,7 +698,7 @@ name|result
 init|=
 name|mk
 operator|.
-name|getRevisions
+name|getRevisionHistory
 argument_list|(
 name|since
 argument_list|,

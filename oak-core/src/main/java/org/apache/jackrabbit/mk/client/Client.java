@@ -397,7 +397,7 @@ block|}
 specifier|public
 specifier|synchronized
 name|String
-name|getRevisions
+name|getRevisionHistory
 parameter_list|(
 name|long
 name|since
@@ -419,7 +419,7 @@ name|request
 operator|=
 name|createRequest
 argument_list|(
-literal|"getRevisions"
+literal|"getRevisionHistory"
 argument_list|)
 expr_stmt|;
 name|request
