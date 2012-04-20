@@ -3529,7 +3529,7 @@ argument_list|()
 return|;
 block|}
 comment|//------------------------------------------------------------< private>---
-comment|/**      * Access to TransientNodeState to allow code in other packages to      * access item states.      *      * @return The node state.      */
+comment|/**      * @return The node state associated with this node      */
 specifier|private
 name|TransientNodeState
 name|getState
