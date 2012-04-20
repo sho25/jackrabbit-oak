@@ -43,6 +43,22 @@ name|oak
 operator|.
 name|api
 operator|.
+name|Branch
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|api
+operator|.
 name|CommitFailedException
 import|;
 end_import
@@ -75,7 +91,7 @@ name|oak
 operator|.
 name|api
 operator|.
-name|Branch
+name|TransientNodeState
 import|;
 end_import
 
@@ -89,9 +105,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|api
+name|namepath
 operator|.
-name|TransientNodeState
+name|Paths
 import|;
 end_import
 

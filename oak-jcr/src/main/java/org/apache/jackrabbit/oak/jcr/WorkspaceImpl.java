@@ -29,6 +29,22 @@ name|oak
 operator|.
 name|api
 operator|.
+name|Branch
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|api
+operator|.
 name|CommitFailedException
 import|;
 end_import
@@ -59,9 +75,11 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|api
+name|jcr
 operator|.
-name|Branch
+name|query
+operator|.
+name|QueryManagerImpl
 import|;
 end_import
 
@@ -75,11 +93,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|jcr
+name|namepath
 operator|.
-name|query
-operator|.
-name|QueryManagerImpl
+name|Paths
 import|;
 end_import
 
