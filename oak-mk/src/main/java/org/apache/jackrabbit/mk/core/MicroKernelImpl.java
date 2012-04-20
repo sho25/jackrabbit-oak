@@ -843,6 +843,26 @@ argument_list|(
 name|toRevisionId
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|toCommit
+operator|.
+name|getBranchRootId
+argument_list|()
+operator|!=
+literal|null
+condition|)
+block|{
+throw|throw
+operator|new
+name|MicroKernelException
+argument_list|(
+literal|"branch revisions are not supported: "
+operator|+
+name|toRevisionId
+argument_list|)
+throw|;
+block|}
 name|Commit
 name|fromCommit
 decl_stmt|;
@@ -885,11 +905,31 @@ name|getCommitTS
 argument_list|()
 condition|)
 block|{
-comment|// negative range, return empty array
+comment|// negative range, return empty journal
 return|return
 literal|"[]"
 return|;
 block|}
+block|}
+if|if
+condition|(
+name|fromCommit
+operator|.
+name|getBranchRootId
+argument_list|()
+operator|!=
+literal|null
+condition|)
+block|{
+throw|throw
+operator|new
+name|MicroKernelException
+argument_list|(
+literal|"branch revisions are not supported: "
+operator|+
+name|fromRevisionId
+argument_list|)
+throw|;
 block|}
 comment|// collect commits, starting with toRevisionId
 comment|// and traversing parent commit links until we've reached
@@ -943,6 +983,7 @@ operator|==
 literal|null
 condition|)
 block|{
+comment|// shouldn't get here, ignore
 break|break;
 block|}
 name|commit
@@ -954,6 +995,22 @@ argument_list|(
 name|commitId
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|commit
+operator|.
+name|getCommitTS
+argument_list|()
+operator|<
+name|fromCommit
+operator|.
+name|getCommitTS
+argument_list|()
+condition|)
+block|{
+comment|// shouldn't get here, ignore
+break|break;
+block|}
 block|}
 block|}
 catch|catch
