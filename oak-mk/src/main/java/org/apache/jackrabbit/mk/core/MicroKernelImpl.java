@@ -983,7 +983,7 @@ operator|==
 literal|null
 condition|)
 block|{
-comment|// shouldn't get here, ignore
+comment|// inconsistent revision history, ignore silently...
 break|break;
 block|}
 name|commit
@@ -1008,7 +1008,7 @@ name|getCommitTS
 argument_list|()
 condition|)
 block|{
-comment|// shouldn't get here, ignore
+comment|// inconsistent revision history, ignore silently...
 break|break;
 block|}
 block|}

@@ -170,7 +170,7 @@ literal|""
 operator|.
 name|equals
 argument_list|(
-name|parentId
+name|branchRootId
 argument_list|)
 condition|?
 literal|null
