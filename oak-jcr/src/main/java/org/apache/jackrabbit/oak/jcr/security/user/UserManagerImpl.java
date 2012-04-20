@@ -1422,10 +1422,12 @@ argument_list|,
 name|type
 argument_list|)
 decl_stmt|;
-name|userNode
+name|sessionContext
 operator|.
 name|getState
-argument_list|()
+argument_list|(
+name|userNode
+argument_list|)
 operator|.
 name|setProperty
 argument_list|(
@@ -1497,10 +1499,12 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-name|userNode
+name|sessionContext
 operator|.
 name|getState
-argument_list|()
+argument_list|(
+name|userNode
+argument_list|)
 operator|.
 name|setProperty
 argument_list|(
@@ -1521,10 +1525,12 @@ name|name
 parameter_list|)
 block|{
 comment|// TODO: check again if this really makes a transient modification with marking the property modified
-name|userNode
+name|sessionContext
 operator|.
 name|getState
-argument_list|()
+argument_list|(
+name|userNode
+argument_list|)
 operator|.
 name|removeProperty
 argument_list|(

@@ -620,8 +620,6 @@ throws|throws
 name|RepositoryException
 block|{
 return|return
-literal|'/'
-operator|+
 name|path
 argument_list|()
 return|;
@@ -3515,9 +3513,24 @@ literal|"Lifecycle Management is not supported"
 argument_list|)
 throw|;
 block|}
-comment|//--------------------------------------------------------------------------
-comment|/**      * Access to TransientNodeState to allow code in other packages to      * access item states.      *      * @return The node state.      * FIXME this should not be public in order to avoid clients to access internals through casting to the implementation      */
-specifier|public
+comment|//------------------------------------------------------------< package>---
+name|String
+name|path
+parameter_list|()
+block|{
+return|return
+literal|'/'
+operator|+
+name|getTransientNodeState
+argument_list|()
+operator|.
+name|getPath
+argument_list|()
+return|;
+block|}
+comment|//------------------------------------------------------------< private>---
+comment|/**      * Access to TransientNodeState to allow code in other packages to      * access item states.      *      * @return The node state.      */
+specifier|private
 name|TransientNodeState
 name|getState
 parameter_list|()
@@ -3527,7 +3540,6 @@ name|getTransientNodeState
 argument_list|()
 return|;
 block|}
-comment|//------------------------------------------------------------< private>---
 specifier|private
 name|Branch
 name|getBranch
@@ -3559,19 +3571,6 @@ operator|.
 name|getPath
 argument_list|()
 argument_list|)
-return|;
-block|}
-specifier|private
-name|String
-name|path
-parameter_list|()
-block|{
-return|return
-name|getTransientNodeState
-argument_list|()
-operator|.
-name|getPath
-argument_list|()
 return|;
 block|}
 specifier|private

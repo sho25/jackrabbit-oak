@@ -51,6 +51,22 @@ end_import
 
 begin_import
 import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|api
+operator|.
+name|TransientNodeState
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|jcr
@@ -166,6 +182,13 @@ function_decl|;
 name|Branch
 name|getBranch
 parameter_list|()
+function_decl|;
+name|TransientNodeState
+name|getState
+parameter_list|(
+name|NodeImpl
+name|node
+parameter_list|)
 function_decl|;
 block|}
 end_interface
