@@ -1941,6 +1941,7 @@ operator|.
 name|printStackTrace
 argument_list|()
 expr_stmt|;
+return|return;
 block|}
 name|gcState
 operator|.
