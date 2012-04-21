@@ -128,7 +128,7 @@ specifier|private
 name|FileUtils
 parameter_list|()
 block|{     }
-comment|/**      * Checks if a file exists.      * This method is similar to Java 7<code>java.nio.file.Path.exists</code>.      *      * @param fileName the file name      * @return true if it exists      */
+comment|/**      * Checks if a file exists.      * This method is similar to Java 7 {@code java.nio.file.Path.exists}.      *      * @param fileName the file name      * @return true if it exists      */
 specifier|public
 specifier|static
 name|boolean
@@ -150,7 +150,7 @@ name|exists
 argument_list|()
 return|;
 block|}
-comment|/**      * Create a directory (all required parent directories must already exist).      * This method is similar to Java 7<code>java.nio.file.Path.createDirectory</code>.      *      * @param directoryName the directory name      */
+comment|/**      * Create a directory (all required parent directories must already exist).      * This method is similar to Java 7 {@code java.nio.file.Path.createDirectory}.      *      * @param directoryName the directory name      */
 specifier|public
 specifier|static
 name|void
@@ -173,7 +173,7 @@ name|createDirectory
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * Create a new file.      * This method is similar to Java 7<code>java.nio.file.Path.createFile</code>, but returns      * false instead of throwing a exception if the file already existed.      *      * @param fileName the file name      * @return true if creating was successful      */
+comment|/**      * Create a new file.      * This method is similar to Java 7 {@code java.nio.file.Path.createFile}, but returns      * false instead of throwing a exception if the file already existed.      *      * @param fileName the file name      * @return true if creating was successful      */
 specifier|public
 specifier|static
 name|boolean
@@ -195,7 +195,7 @@ name|createFile
 argument_list|()
 return|;
 block|}
-comment|/**      * Delete a file or directory if it exists.      * Directories may only be deleted if they are empty.      * This method is similar to Java 7<code>java.nio.file.Path.deleteIfExists</code>.      *      * @param path the file or directory name      */
+comment|/**      * Delete a file or directory if it exists.      * Directories may only be deleted if they are empty.      * This method is similar to Java 7 {@code java.nio.file.Path.deleteIfExists}.      *      * @param path the file or directory name      */
 specifier|public
 specifier|static
 name|void
@@ -218,7 +218,7 @@ name|delete
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * Get the canonical file or directory name.      * This method is similar to Java 7<code>java.nio.file.Path.toRealPath</code>.      *      * @param fileName the file name      * @return the normalized file name      */
+comment|/**      * Get the canonical file or directory name.      * This method is similar to Java 7 {@code java.nio.file.Path.toRealPath}.      *      * @param fileName the file name      * @return the normalized file name      */
 specifier|public
 specifier|static
 name|String
@@ -245,7 +245,7 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/**      * Get the parent directory of a file or directory.      * This method returns null if there is no parent.      * This method is similar to Java 7<code>java.nio.file.Path.getParent</code>.      *      * @param fileName the file or directory name      * @return the parent directory name      */
+comment|/**      * Get the parent directory of a file or directory.      * This method returns null if there is no parent.      * This method is similar to Java 7 {@code java.nio.file.Path.getParent}.      *      * @param fileName the file or directory name      * @return the parent directory name      */
 specifier|public
 specifier|static
 name|String
@@ -281,7 +281,7 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/**      * Check if the file name includes a path.      * This method is similar to Java 7<code>java.nio.file.Path.isAbsolute</code>.      *      * @param fileName the file name      * @return if the file name is absolute      */
+comment|/**      * Check if the file name includes a path.      * This method is similar to Java 7 {@code java.nio.file.Path.isAbsolute}.      *      * @param fileName the file name      * @return if the file name is absolute      */
 specifier|public
 specifier|static
 name|boolean
@@ -303,7 +303,7 @@ name|isAbsolute
 argument_list|()
 return|;
 block|}
-comment|/**      * Rename a file if this is allowed.      * This method is similar to Java 7<code>java.nio.file.Path.moveTo</code>.      *      * @param oldName the old fully qualified file name      * @param newName the new fully qualified file name      */
+comment|/**      * Rename a file if this is allowed.      * This method is similar to Java 7 {@code java.nio.file.Path.moveTo}.      *      * @param oldName the old fully qualified file name      * @param newName the new fully qualified file name      */
 specifier|public
 specifier|static
 name|void
@@ -336,7 +336,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Get the file or directory name (the last element of the path).      * This method is similar to Java 7<code>java.nio.file.Path.getName</code>.      *      * @param path the directory and file name      * @return just the file name      */
+comment|/**      * Get the file or directory name (the last element of the path).      * This method is similar to Java 7 {@code java.nio.file.Path.getName}.      *      * @param path the directory and file name      * @return just the file name      */
 specifier|public
 specifier|static
 name|String
@@ -358,7 +358,7 @@ name|getName
 argument_list|()
 return|;
 block|}
-comment|/**      * List the files and directories in the given directory.      * This method is similar to Java 7<code>java.nio.file.Path.newDirectoryStream</code>.      *      * @param path the directory      * @return the list of fully qualified file names      */
+comment|/**      * List the files and directories in the given directory.      * This method is similar to Java 7 {@code java.nio.file.Path.newDirectoryStream}.      *      * @param path the directory      * @return the list of fully qualified file names      */
 specifier|public
 specifier|static
 name|List
@@ -447,7 +447,7 @@ return|return
 name|result
 return|;
 block|}
-comment|/**      * Get the last modified date of a file.      * This method is similar to Java 7      *<code>java.nio.file.attribute.Attributes.readBasicFileAttributes(file).lastModified().toMillis()</code>      *      * @param fileName the file name      * @return the last modified date      */
+comment|/**      * Get the last modified date of a file.      * This method is similar to Java 7      * {@code java.nio.file.attribute.Attributes.readBasicFileAttributes(file).lastModified().toMillis()}      *      * @param fileName the file name      * @return the last modified date      */
 specifier|public
 specifier|static
 name|long
@@ -469,7 +469,7 @@ name|lastModified
 argument_list|()
 return|;
 block|}
-comment|/**      * Get the size of a file in bytes      * This method is similar to Java 7      *<code>java.nio.file.attribute.Attributes.readBasicFileAttributes(file).size()</code>      *      * @param fileName the file name      * @return the size in bytes      */
+comment|/**      * Get the size of a file in bytes      * This method is similar to Java 7      * {@code java.nio.file.attribute.Attributes.readBasicFileAttributes(file).size()}      *      * @param fileName the file name      * @return the size in bytes      */
 specifier|public
 specifier|static
 name|long
@@ -491,7 +491,7 @@ name|size
 argument_list|()
 return|;
 block|}
-comment|/**      * Check if it is a file or a directory.      *<code>java.nio.file.attribute.Attributes.readBasicFileAttributes(file).isDirectory()</code>      *      * @param fileName the file or directory name      * @return true if it is a directory      */
+comment|/**      * Check if it is a file or a directory.      * {@code java.nio.file.attribute.Attributes.readBasicFileAttributes(file).isDirectory()}      *      * @param fileName the file or directory name      * @return true if it is a directory      */
 specifier|public
 specifier|static
 name|boolean
@@ -513,7 +513,7 @@ name|isDirectory
 argument_list|()
 return|;
 block|}
-comment|/**      * Open a random access file object.      * This method is similar to Java 7<code>java.nio.channels.FileChannel.open</code>.      *      * @param fileName the file name      * @param mode the access mode. Supported are r, rw, rws, rwd      * @return the file object      */
+comment|/**      * Open a random access file object.      * This method is similar to Java 7 {@code java.nio.channels.FileChannel.open}.      *      * @param fileName the file name      * @param mode the access mode. Supported are r, rw, rws, rwd      * @return the file object      */
 specifier|public
 specifier|static
 name|FileChannel
@@ -542,7 +542,7 @@ name|mode
 argument_list|)
 return|;
 block|}
-comment|/**      * Create an input stream to read from the file.      * This method is similar to Java 7<code>java.nio.file.Path.newInputStream</code>.      *      * @param fileName the file name      * @return the input stream      */
+comment|/**      * Create an input stream to read from the file.      * This method is similar to Java 7 {@code java.nio.file.Path.newInputStream}.      *      * @param fileName the file name      * @return the input stream      */
 specifier|public
 specifier|static
 name|InputStream
@@ -566,7 +566,7 @@ name|newInputStream
 argument_list|()
 return|;
 block|}
-comment|/**      * Create an output stream to write into the file.      * This method is similar to Java 7<code>java.nio.file.Path.newOutputStream</code>.      *      * @param fileName the file name      * @param append if true, the file will grow, if false, the file will be      *            truncated first      * @return the output stream      */
+comment|/**      * Create an output stream to write into the file.      * This method is similar to Java 7 {@code java.nio.file.Path.newOutputStream}.      *      * @param fileName the file name      * @param append if true, the file will grow, if false, the file will be      *            truncated first      * @return the output stream      */
 specifier|public
 specifier|static
 name|OutputStream
@@ -595,7 +595,7 @@ name|append
 argument_list|)
 return|;
 block|}
-comment|/**      * Check if the file is writable.      * This method is similar to Java 7      *<code>java.nio.file.Path.checkAccess(AccessMode.WRITE)</code>      *      * @param fileName the file name      * @return if the file is writable      */
+comment|/**      * Check if the file is writable.      * This method is similar to Java 7      * {@code java.nio.file.Path.checkAccess(AccessMode.WRITE)}      *      * @param fileName the file name      * @return if the file is writable      */
 specifier|public
 specifier|static
 name|boolean

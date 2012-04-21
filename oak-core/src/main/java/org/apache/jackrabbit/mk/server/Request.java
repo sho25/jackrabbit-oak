@@ -464,7 +464,7 @@ operator|=
 name|in
 expr_stmt|;
 block|}
-comment|/**      * Read a single line, terminated by a CR LF combination from an<code>InputStream</code>.      *       * @return line      * @throws IOException if an I/O error occurs      */
+comment|/**      * Read a single line, terminated by a CR LF combination from an {@code InputStream}.      *      * @return line      * @throws IOException if an I/O error occurs      */
 specifier|private
 specifier|static
 name|String

@@ -289,7 +289,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Process a single request.      *       * @param requestNum number of this request on the same persistent connection      * @return<code>true</code> if the connection should be kept alive;      *<code>false</code> otherwise      *               * @throws IOException if an I/O error occurs      */
+comment|/**      * Process a single request.      *      * @param requestNum number of this request on the same persistent connection      * @return {@code true} if the connection should be kept alive;      *         {@code false} otherwise      *      * @throws IOException if an I/O error occurs      */
 specifier|private
 name|boolean
 name|process

@@ -770,7 +770,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Internal<code>OutputStream</code> passed to servlet handlers.      */
+comment|/**      * Internal {@code OutputStream} passed to servlet handlers.      */
 class|class
 name|BodyOutputStream
 extends|extends

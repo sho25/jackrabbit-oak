@@ -158,7 +158,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Servlet handling requests directed at a<code>MicroKernel</code> instance.   */
+comment|/**  * Servlet handling requests directed at a {@code MicroKernel} instance.  */
 end_comment
 
 begin_class

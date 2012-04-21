@@ -126,7 +126,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A path to a file. It similar to the Java 7<code>java.nio.file.Path</code>,  * but simpler, and works with older versions of Java. It also implements the  * relevant methods found in<code>java.nio.file.FileSystem</code> and  *<code>FileSystems</code>  */
+comment|/**  * A path to a file. It similar to the Java 7 {@code java.nio.file.Path},  * but simpler, and works with older versions of Java. It also implements the  * relevant methods found in {@code java.nio.file.FileSystem} and  * {@code FileSystems}  */
 end_comment
 
 begin_class
@@ -171,7 +171,7 @@ specifier|protected
 name|String
 name|name
 decl_stmt|;
-comment|/**      * Get the file path object for the given path.      * This method is similar to Java 7<code>java.nio.file.FileSystem.getPath</code>.      * Windows-style '\' is replaced with '/'.      *      * @param path the path      * @return the file path object      */
+comment|/**      * Get the file path object for the given path.      * This method is similar to Java 7 {@code java.nio.file.FileSystem.getPath}.      * Windows-style '\' is replaced with '/'.      *      * @param path the path      * @return the file path object      */
 specifier|public
 specifier|static
 name|FilePath
@@ -749,14 +749,14 @@ return|return
 name|name
 return|;
 block|}
-comment|/**      * Get the scheme (prefix) for this file provider.      * This is similar to<code>java.nio.file.spi.FileSystemProvider.getScheme</code>.      *      * @return the scheme      */
+comment|/**      * Get the scheme (prefix) for this file provider.      * This is similar to {@code java.nio.file.spi.FileSystemProvider.getScheme}.      *      * @return the scheme      */
 specifier|public
 specifier|abstract
 name|String
 name|getScheme
 parameter_list|()
 function_decl|;
-comment|/**      * Convert a file to a path. This is similar to      *<code>java.nio.file.spi.FileSystemProvider.getPath</code>, but may      * return an object even if the scheme doesn't match in case of the the      * default file provider.      *      * @param path the path      * @return the file path object      */
+comment|/**      * Convert a file to a path. This is similar to      * {@code java.nio.file.spi.FileSystemProvider.getPath}, but may      * return an object even if the scheme doesn't match in case of the the      * default file provider.      *      * @param path the path      * @return the file path object      */
 specifier|public
 specifier|abstract
 name|FilePath
@@ -766,7 +766,7 @@ name|String
 name|path
 parameter_list|)
 function_decl|;
-comment|/**      * Append an element to the path.      * This is similar to<code>java.nio.file.spi.FileSystemProvider.resolve</code>.      *      * @param other the relative path (might be null)      * @return the resolved path      */
+comment|/**      * Append an element to the path.      * This is similar to {@code java.nio.file.spi.FileSystemProvider.resolve}.      *      * @param other the relative path (might be null)      * @return the resolved path      */
 specifier|public
 specifier|abstract
 name|FilePath

@@ -108,7 +108,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Contains the details of a request to some remote<code>MicroKernel</code>  * implementation.  */
+comment|/**  * Contains the details of a request to some remote {@code MicroKernel}  * implementation.  */
 end_comment
 
 begin_class
@@ -186,7 +186,7 @@ operator|=
 name|command
 expr_stmt|;
 block|}
-comment|/**      * Add a string parameter.      *       * @param name name      * @param value value, if<code>null</code> the call is ignored      */
+comment|/**      * Add a string parameter.      *      * @param name name      * @param value value, if {@code null} the call is ignored      */
 specifier|public
 name|Request
 name|addParameter
@@ -219,7 +219,7 @@ return|return
 name|this
 return|;
 block|}
-comment|/**      * Add an integer parameter, equivalent to       *<code>addParameter(name, String.valueOf(value))</code>.      *       * @param name name      * @param value value      */
+comment|/**      * Add an integer parameter, equivalent to       * {@code addParameter(name, String.valueOf(value))}.      *      * @param name name      * @param value value      */
 specifier|public
 name|Request
 name|addParameter
@@ -249,7 +249,7 @@ return|return
 name|this
 return|;
 block|}
-comment|/**      * Add a long parameter, equivalent to       *<code>addParameter(name, String.valueOf(value))</code>.      *       * @param name name      * @param value value      */
+comment|/**      * Add a long parameter, equivalent to       * {@code addParameter(name, String.valueOf(value))}.      *      * @param name name      * @param value value      */
 specifier|public
 name|Request
 name|addParameter
@@ -362,7 +362,7 @@ literal|"8859_1"
 argument_list|)
 return|;
 block|}
-comment|/**      * Return a boolean from the result stream, equivalent to       *<code>Boolean.parseBoolean(getString())</code>.      * Automatically executes the request first.      *       * @return boolean      * @throws IOException if an I/O error occurs      */
+comment|/**      * Return a boolean from the result stream, equivalent to       * {@code Boolean.parseBoolean(getString())}.      * Automatically executes the request first.      *      * @return boolean      * @throws IOException if an I/O error occurs      */
 specifier|public
 name|boolean
 name|getBoolean
@@ -383,7 +383,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-comment|/**      * Return a long from the result stream, equivalent to       *<code>Long.parseLong(getString())</code>.      * Automatically executes the request first.      *       * @return boolean      * @throws IOException if an I/O error occurs      */
+comment|/**      * Return a long from the result stream, equivalent to       * {@code Long.parseLong(getString())}.      * Automatically executes the request first.      *      * @return boolean      * @throws IOException if an I/O error occurs      */
 specifier|public
 name|long
 name|getLong
@@ -404,7 +404,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-comment|/**      * Read bytes from the result stream. Automatically executes the      * request first.      *       * @param b buffer      * @param off offset      * @param len length      * @return number of bytes or<code>-1</code> if no more bytes are available      *       * @throws IOException if an I/O error occurs      */
+comment|/**      * Read bytes from the result stream. Automatically executes the      * request first.      *      * @param b buffer      * @param off offset      * @param len length      * @return number of bytes or {@code -1} if no more bytes are available      *      * @throws IOException if an I/O error occurs      */
 specifier|public
 name|int
 name|read

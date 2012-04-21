@@ -200,7 +200,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Server exposing a<code>MicroKernel</code>.  */
+comment|/**  * Server exposing a {@code MicroKernel}.  */
 end_comment
 
 begin_class
@@ -708,7 +708,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Return the server's local socket address.      *      * @return socket address or<code>null</code> if the server is not started      */
+comment|/**      * Return the server's local socket address.      *      * @return socket address or {@code null} if the server is not started      */
 specifier|public
 name|InetSocketAddress
 name|getAddress

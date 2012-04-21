@@ -50,7 +50,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A tree allows to query a value for a given key, similar to  *<code>java.util.SortedMap</code>.  */
+comment|/**  * A tree allows to query a value for a given key, similar to  * {@code java.util.SortedMap}.  */
 end_comment
 
 begin_class
