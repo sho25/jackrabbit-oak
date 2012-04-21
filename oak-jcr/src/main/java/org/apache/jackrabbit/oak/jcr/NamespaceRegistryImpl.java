@@ -19,36 +19,6 @@ end_package
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|HashMap
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Map
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|jcr
-operator|.
-name|AccessDeniedException
-import|;
-end_import
-
-begin_import
-import|import
 name|javax
 operator|.
 name|jcr
@@ -79,11 +49,21 @@ end_import
 
 begin_import
 import|import
-name|javax
+name|java
 operator|.
-name|jcr
+name|util
 operator|.
-name|UnsupportedRepositoryOperationException
+name|HashMap
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Map
 import|;
 end_import
 
@@ -99,6 +79,7 @@ implements|implements
 name|NamespaceRegistry
 block|{
 specifier|private
+specifier|final
 name|Map
 argument_list|<
 name|String
@@ -190,12 +171,6 @@ name|String
 name|uri
 parameter_list|)
 throws|throws
-name|NamespaceException
-throws|,
-name|UnsupportedRepositoryOperationException
-throws|,
-name|AccessDeniedException
-throws|,
 name|RepositoryException
 block|{
 comment|// TODO
@@ -215,12 +190,6 @@ name|String
 name|prefix
 parameter_list|)
 throws|throws
-name|NamespaceException
-throws|,
-name|UnsupportedRepositoryOperationException
-throws|,
-name|AccessDeniedException
-throws|,
 name|RepositoryException
 block|{
 comment|// TODO
@@ -298,8 +267,6 @@ name|String
 name|prefix
 parameter_list|)
 throws|throws
-name|NamespaceException
-throws|,
 name|RepositoryException
 block|{
 name|String
@@ -339,8 +306,6 @@ name|String
 name|uri
 parameter_list|)
 throws|throws
-name|NamespaceException
-throws|,
 name|RepositoryException
 block|{
 for|for

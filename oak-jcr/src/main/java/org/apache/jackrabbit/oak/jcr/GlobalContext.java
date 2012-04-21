@@ -95,16 +95,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|jcr
-operator|.
-name|RepositoryException
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|util
@@ -175,8 +165,6 @@ parameter_list|(
 name|MicroKernel
 name|mk
 parameter_list|)
-throws|throws
-name|RepositoryException
 block|{
 name|put
 argument_list|(

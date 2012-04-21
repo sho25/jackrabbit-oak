@@ -243,6 +243,11 @@ comment|//    public AuthorizableAction[] getAuthorizableActions() {
 comment|//        return actions;
 comment|//    }
 comment|//--------------------------------------------------------< private>---
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unchecked"
+argument_list|)
 specifier|private
 specifier|static
 parameter_list|<
