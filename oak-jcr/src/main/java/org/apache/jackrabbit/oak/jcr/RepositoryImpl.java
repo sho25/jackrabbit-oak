@@ -411,7 +411,7 @@ name|RepositoryException
 block|{
 comment|// TODO: needs complete refactoring
 name|ContentRepository
-name|service
+name|contentRepository
 init|=
 name|context
 operator|.
@@ -427,7 +427,7 @@ block|{
 name|ContentSession
 name|connection
 init|=
-name|service
+name|contentRepository
 operator|.
 name|login
 argument_list|(
