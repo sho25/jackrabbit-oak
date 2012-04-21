@@ -75,11 +75,11 @@ name|void
 name|nameSpaceRegistry
 parameter_list|()
 block|{
-name|NamespaceRegistry
+name|NamespaceMappings
 name|r
 init|=
 operator|new
-name|NamespaceRegistry
+name|NamespaceMappings
 argument_list|()
 decl_stmt|;
 name|r
