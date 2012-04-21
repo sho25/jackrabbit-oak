@@ -19,6 +19,18 @@ end_package
 
 begin_import
 import|import
+name|org
+operator|.
+name|h2
+operator|.
+name|util
+operator|.
+name|Profiler
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|util
@@ -69,18 +81,6 @@ name|AtomicReference
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|h2
-operator|.
-name|util
-operator|.
-name|Profiler
-import|;
-end_import
-
 begin_comment
 comment|/**  * A concurrency test tool.  */
 end_comment
@@ -98,6 +98,10 @@ name|PROFILE
 init|=
 literal|false
 decl_stmt|;
+specifier|private
+name|Concurrent
+parameter_list|()
+block|{     }
 comment|/**      * Run a task concurrently in 2 threads for 1 second.      *      * @param message the message      * @param task the task      * @throws Exception the first exception that is thrown (if any)      */
 specifier|public
 specifier|static

@@ -19,6 +19,22 @@ end_package
 
 begin_import
 import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|mk
+operator|.
+name|util
+operator|.
+name|IOUtils
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|io
@@ -99,22 +115,6 @@ name|List
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|mk
-operator|.
-name|util
-operator|.
-name|IOUtils
-import|;
-end_import
-
 begin_comment
 comment|/**  * This utility class contains utility functions that use the file system  * abstraction.  */
 end_comment
@@ -124,6 +124,10 @@ specifier|public
 class|class
 name|FileUtils
 block|{
+specifier|private
+name|FileUtils
+parameter_list|()
+block|{     }
 comment|/**      * Checks if a file exists.      * This method is similar to Java 7<code>java.nio.file.Path.exists</code>.      *      * @param fileName the file name      * @return true if it exists      */
 specifier|public
 specifier|static

@@ -17,36 +17,6 @@ end_package
 
 begin_import
 import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|HashMap
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Map
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -237,6 +207,36 @@ name|VirtualRepositoryWrapper
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|HashMap
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Map
+import|;
+end_import
+
 begin_comment
 comment|/**  * A factory to create a MicroKernel instance.  */
 end_comment
@@ -266,6 +266,10 @@ name|SimpleKernelImpl
 argument_list|>
 argument_list|()
 decl_stmt|;
+specifier|private
+name|MicroKernelFactory
+parameter_list|()
+block|{     }
 comment|/**      * Get an instance. Supported URLs:      *<ul>      *<li>fs:target/mk-test (using the directory ./target/mk-test)</li>      *<li>fs:target/mk-test;clean (same, but delete the old repository first)</li>      *<li>fs:{homeDir} (use the system property homeDir or '.' if not set)</li>      *<li>simple: (in-memory implementation)</li>      *<li>simple:fs:target/temp (using the directory ./target/temp)</li>      *</ul>      *      * @param url the repository URL      * @return a new instance      */
 specifier|public
 specifier|static

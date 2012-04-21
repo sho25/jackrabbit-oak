@@ -54,6 +54,10 @@ specifier|public
 class|class
 name|HelloWorld
 block|{
+specifier|private
+name|HelloWorld
+parameter_list|()
+block|{     }
 specifier|public
 specifier|static
 name|void
