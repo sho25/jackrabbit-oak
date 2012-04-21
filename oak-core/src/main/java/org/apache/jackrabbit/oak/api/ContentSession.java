@@ -28,7 +28,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * The {@code Connection} interface ...  *  * - retrieving information from persistent layer (MK) that are accessible to  *   a given JCR session  *  * - validate information being written back to the persistent layer. this includes  *   permission evaluation, node type and name constraints etc.  *  * - update the revision ID a given session is operating on when certain actions  *   take place (save, refresh, TBD)  *  * - Provide access to authentication and authorization related information  *  * - Connection instances are not thread safe.  *  * - The implementation of this and all related interfaces are intended to only  *   hold the state of the persistent layer at a given revision without any  *   session-related state modifications.  *  * - Whether this connection is bound to a workspace or to the whole repository  *   is determined by how the connection was acquired: connections acquired by  *   {@link ContentRepository#login(Object, String)} are bound to the workspace  *   passed to the login method. Connections acquired by  *   {@link ContentSession#getRepositoryConnection()} are bound to the whole repository.  *   TODO: check if that is really necessary, desirable and feasible.  *  * TODO: describe how this interface is intended to handle validation: nt, names, ac, constraints...  */
+comment|/**  * Authentication session for accessing (TODO: a workspace inside) a content  * repository.  *<p>  * - retrieving information from persistent layer (MK) that are accessible to  *   a given JCR session  *  * - validate information being written back to the persistent layer. this includes  *   permission evaluation, node type and name constraints etc.  *  * - update the revision ID a given session is operating on when certain actions  *   take place (save, refresh, TBD)  *  * - Provide access to authentication and authorization related information  *  * - The implementation of this and all related interfaces are intended to only  *   hold the state of the persistent layer at a given revision without any  *   session-related state modifications.  *<p>  * TODO: describe how this interface is intended to handle validation:  * nt, names, ac, constraints...  *<p>  * This interface is thread-safe.  */
 end_comment
 
 begin_interface
@@ -46,11 +46,6 @@ function_decl|;
 comment|/**      * The immutable name of the workspace this {@code Connection} instance has      * been created for. If no workspace name has been specified during      * repository login this method will return the name of the default      * workspace.      *      * @return name of the workspace this instance has been created for or      * {@code null} if this connection is repository bound.      */
 name|String
 name|getWorkspaceName
-parameter_list|()
-function_decl|;
-comment|/**      * Provide access to the whole repository (i.e. all workspaces) respecting      * the access rights of the current connection. This method returns the      * same connection instance on every invocation.      *      * @return a {@code Connection} which covers the whole repository.      */
-name|ContentSession
-name|getRepositoryConnection
 parameter_list|()
 function_decl|;
 comment|/**      * Refresh this connection to the latest revision of the underlying Microkernel.      */
