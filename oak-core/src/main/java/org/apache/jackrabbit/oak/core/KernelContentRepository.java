@@ -27,20 +27,6 @@ name|jackrabbit
 operator|.
 name|mk
 operator|.
-name|MicroKernelFactory
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|mk
-operator|.
 name|api
 operator|.
 name|MicroKernel
@@ -224,17 +210,17 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * TmpRepositoryService...  */
+comment|/**  * {@link MicroKernel}-based implementation of  * the {@link ContentRepository} interface.  */
 end_comment
 
 begin_class
 specifier|public
 class|class
-name|TmpRepositoryService
+name|KernelContentRepository
 implements|implements
 name|ContentRepository
 block|{
-comment|/**      * logger instance      */
+comment|/** Logger instance */
 specifier|private
 specifier|static
 specifier|final
@@ -245,7 +231,7 @@ name|LoggerFactory
 operator|.
 name|getLogger
 argument_list|(
-name|TmpRepositoryService
+name|KernelContentRepository
 operator|.
 name|class
 argument_list|)
@@ -270,20 +256,15 @@ name|KernelNodeStore
 name|nodeStore
 decl_stmt|;
 specifier|public
-name|TmpRepositoryService
+name|KernelContentRepository
 parameter_list|(
-name|String
-name|microKernelUrl
+name|MicroKernel
+name|mk
 parameter_list|)
 block|{
 name|microKernel
 operator|=
-name|MicroKernelFactory
-operator|.
-name|getInstance
-argument_list|(
-name|microKernelUrl
-argument_list|)
+name|mk
 expr_stmt|;
 name|nodeStore
 operator|=

@@ -192,22 +192,6 @@ name|SimpleValueFactory
 argument_list|()
 argument_list|)
 decl_stmt|;
-comment|/**      * Utility constructor that creates a JCR binding for an initially empty,      * newly constructed Oak repository.      */
-specifier|public
-name|RepositoryImpl
-parameter_list|()
-throws|throws
-name|RepositoryException
-block|{
-name|context
-operator|=
-operator|new
-name|GlobalContext
-argument_list|(
-literal|"mem:oak"
-argument_list|)
-expr_stmt|;
-block|}
 specifier|public
 name|RepositoryImpl
 parameter_list|(
