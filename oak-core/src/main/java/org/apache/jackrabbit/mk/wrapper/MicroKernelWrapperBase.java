@@ -105,6 +105,8 @@ name|MicroKernel
 implements|,
 name|MicroKernelWrapper
 block|{
+annotation|@
+name|Override
 specifier|public
 specifier|final
 name|String
@@ -140,6 +142,8 @@ name|message
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 specifier|final
 name|String
@@ -169,6 +173,8 @@ name|toString
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 specifier|final
 name|String
@@ -212,6 +218,8 @@ literal|null
 return|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 specifier|final
 name|String
@@ -275,6 +283,8 @@ literal|null
 return|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 specifier|final
 name|String
@@ -304,6 +314,8 @@ name|toString
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 specifier|final
 name|String
@@ -363,6 +375,8 @@ name|wrapped
 init|=
 name|mk
 decl_stmt|;
+annotation|@
+name|Override
 specifier|public
 name|String
 name|commitStream
@@ -398,6 +412,8 @@ name|message
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|JsopReader
 name|getJournalStream
@@ -429,6 +445,8 @@ argument_list|)
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|JsopReader
 name|getNodesStream
@@ -474,6 +492,8 @@ literal|null
 return|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|JsopReader
 name|getNodesStream
@@ -539,6 +559,8 @@ literal|null
 return|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|JsopReader
 name|getRevisionsStream
@@ -565,6 +587,8 @@ argument_list|)
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|JsopReader
 name|diffStream
@@ -596,6 +620,8 @@ argument_list|)
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|commit
@@ -628,6 +654,8 @@ name|message
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|branch
@@ -645,6 +673,8 @@ name|trunkRevisionId
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|merge
@@ -667,6 +697,8 @@ name|message
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|diff
@@ -694,6 +726,8 @@ name|path
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|dispose
@@ -705,6 +739,8 @@ name|dispose
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|getHeadRevision
@@ -719,6 +755,8 @@ name|getHeadRevision
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|getJournal
@@ -746,6 +784,8 @@ name|filter
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|long
 name|getLength
@@ -763,6 +803,8 @@ name|blobId
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|getNodes
@@ -785,6 +827,8 @@ name|revisionId
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|getNodes
@@ -827,6 +871,8 @@ name|filter
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|getRevisionHistory
@@ -849,6 +895,8 @@ name|maxEntries
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|nodeExists
@@ -871,6 +919,8 @@ name|revisionId
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|long
 name|getChildNodeCount
@@ -893,6 +943,8 @@ name|revisionId
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|int
 name|read
@@ -931,6 +983,8 @@ name|length
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|waitForCommit
@@ -955,6 +1009,8 @@ name|maxWaitMillis
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|write
