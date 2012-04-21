@@ -281,6 +281,8 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Object
 name|get
@@ -555,6 +557,8 @@ return|return
 literal|null
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|containsKey
@@ -577,6 +581,8 @@ name|key
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isEmpty
@@ -591,6 +597,8 @@ operator|==
 name|EMPTY_MAP
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|int
 name|size
@@ -811,6 +819,8 @@ name|start
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|clear
@@ -825,6 +835,8 @@ name|clear
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Object
 name|put
@@ -863,6 +875,8 @@ name|old
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|containsValue
@@ -877,6 +891,8 @@ name|UnsupportedOperationException
 argument_list|()
 throw|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Set
 argument_list|<
@@ -896,6 +912,8 @@ name|UnsupportedOperationException
 argument_list|()
 throw|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Set
 argument_list|<
@@ -910,6 +928,8 @@ name|UnsupportedOperationException
 argument_list|()
 throw|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|putAll
@@ -933,6 +953,8 @@ name|UnsupportedOperationException
 argument_list|()
 throw|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Object
 name|remove
@@ -947,6 +969,8 @@ name|UnsupportedOperationException
 argument_list|()
 throw|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Collection
 argument_list|<

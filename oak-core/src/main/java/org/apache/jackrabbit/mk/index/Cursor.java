@@ -54,6 +54,8 @@ specifier|private
 name|String
 name|currentValue
 decl_stmt|;
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|hasNext
@@ -65,6 +67,8 @@ operator|!=
 literal|null
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|next
@@ -173,6 +177,8 @@ return|return;
 block|}
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|remove
@@ -307,6 +313,8 @@ expr_stmt|;
 block|}
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|hasNext
@@ -318,6 +326,8 @@ operator|!=
 literal|null
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|next
@@ -335,6 +345,8 @@ return|return
 name|v
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|remove

@@ -190,6 +190,8 @@ argument_list|>
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Object
 name|get
@@ -398,6 +400,8 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isEmpty
@@ -412,6 +416,8 @@ operator|==
 name|EMPTY_LIST
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|int
 name|size
@@ -500,6 +506,8 @@ name|start
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|add
@@ -525,6 +533,8 @@ return|return
 literal|true
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|clear
@@ -565,6 +575,8 @@ name|MAX_VALUE
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|add
@@ -582,6 +594,8 @@ name|UnsupportedOperationException
 argument_list|()
 throw|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|addAll
@@ -601,6 +615,8 @@ name|UnsupportedOperationException
 argument_list|()
 throw|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|addAll
@@ -623,6 +639,8 @@ name|UnsupportedOperationException
 argument_list|()
 throw|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|contains
@@ -637,6 +655,8 @@ name|UnsupportedOperationException
 argument_list|()
 throw|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|containsAll
@@ -654,6 +674,8 @@ name|UnsupportedOperationException
 argument_list|()
 throw|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|int
 name|indexOf
@@ -668,6 +690,8 @@ name|UnsupportedOperationException
 argument_list|()
 throw|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Iterator
 argument_list|<
@@ -732,6 +756,8 @@ block|}
 block|}
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|int
 name|lastIndexOf
@@ -746,6 +772,8 @@ name|UnsupportedOperationException
 argument_list|()
 throw|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|ListIterator
 argument_list|<
@@ -760,6 +788,8 @@ name|UnsupportedOperationException
 argument_list|()
 throw|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|ListIterator
 argument_list|<
@@ -777,6 +807,8 @@ name|UnsupportedOperationException
 argument_list|()
 throw|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|remove
@@ -791,6 +823,8 @@ name|UnsupportedOperationException
 argument_list|()
 throw|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Object
 name|remove
@@ -805,6 +839,8 @@ name|UnsupportedOperationException
 argument_list|()
 throw|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|removeAll
@@ -822,6 +858,8 @@ name|UnsupportedOperationException
 argument_list|()
 throw|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|retainAll
@@ -839,6 +877,8 @@ name|UnsupportedOperationException
 argument_list|()
 throw|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Object
 name|set
@@ -856,6 +896,8 @@ name|UnsupportedOperationException
 argument_list|()
 throw|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|List
 argument_list|<
@@ -876,6 +918,8 @@ name|UnsupportedOperationException
 argument_list|()
 throw|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Object
 index|[]
@@ -888,6 +932,8 @@ name|UnsupportedOperationException
 argument_list|()
 throw|;
 block|}
+annotation|@
+name|Override
 specifier|public
 parameter_list|<
 name|T

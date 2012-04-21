@@ -283,6 +283,8 @@ operator|=
 name|size
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|long
 name|size
@@ -292,6 +294,8 @@ return|return
 name|size
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|containsKey
@@ -447,6 +451,8 @@ literal|1
 operator|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|NodeId
 name|get
@@ -491,6 +497,8 @@ index|]
 index|]
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|add
@@ -587,6 +595,8 @@ name|size
 operator|++
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|replace
@@ -641,6 +651,8 @@ name|x
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|getName
@@ -667,6 +679,8 @@ name|pos
 index|]
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Iterator
 argument_list|<
@@ -704,6 +718,8 @@ name|remaining
 init|=
 name|maxCount
 decl_stmt|;
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|hasNext
@@ -719,6 +735,8 @@ argument_list|>
 literal|0
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|next
@@ -735,6 +753,8 @@ operator|++
 index|]
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|remove
@@ -749,6 +769,8 @@ block|}
 block|}
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|NodeId
 name|remove
@@ -950,6 +972,8 @@ name|toString
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|NodeList
 name|createClone
@@ -1004,6 +1028,8 @@ return|return
 name|result
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|visit
@@ -1029,6 +1055,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|append
@@ -1112,6 +1140,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|int
 name|getMemory
@@ -1291,6 +1321,8 @@ return|return
 literal|false
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|updateHash

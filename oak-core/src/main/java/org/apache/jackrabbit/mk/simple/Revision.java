@@ -463,6 +463,8 @@ return|return
 literal|""
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|int
 name|compareTo
@@ -786,6 +788,8 @@ name|newline
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|int
 name|getMemory

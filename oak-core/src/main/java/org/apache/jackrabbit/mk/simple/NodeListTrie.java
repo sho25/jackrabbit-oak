@@ -564,6 +564,8 @@ name|c
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|containsKey
@@ -685,6 +687,8 @@ name|getNodeList
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|NodeId
 name|get
@@ -743,6 +747,8 @@ name|name
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|getName
@@ -824,6 +830,8 @@ return|return
 literal|null
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Iterator
 argument_list|<
@@ -939,6 +947,8 @@ name|String
 argument_list|>
 name|it
 decl_stmt|;
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|hasNext
@@ -1011,6 +1021,8 @@ return|return
 literal|false
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|next
@@ -1039,6 +1051,8 @@ literal|null
 return|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|remove
@@ -1174,6 +1188,8 @@ literal|1
 operator|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|add
@@ -1267,6 +1283,8 @@ name|size
 operator|++
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|replace
@@ -1335,6 +1353,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|NodeId
 name|remove
@@ -1396,6 +1416,8 @@ name|name
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|long
 name|size
@@ -1426,6 +1448,8 @@ name|prefix
 return|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|NodeList
 name|createClone
@@ -1647,6 +1671,8 @@ return|return
 name|result
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|visit
@@ -1674,6 +1700,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|append
@@ -2014,6 +2042,8 @@ return|return
 name|list
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|int
 name|getMemory
@@ -2028,6 +2058,8 @@ operator|*
 literal|100
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|updateHash

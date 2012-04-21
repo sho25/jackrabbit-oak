@@ -525,6 +525,8 @@ argument_list|)
 throw|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 specifier|synchronized
 name|NodeId
@@ -635,6 +637,8 @@ return|return
 name|x
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|NodeImpl
 name|getNode
@@ -663,6 +667,8 @@ name|x
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|NodeImpl
 name|load
@@ -742,6 +748,8 @@ argument_list|)
 throw|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 specifier|synchronized
 name|NodeId
@@ -788,6 +796,8 @@ operator|new
 name|ChildVisitor
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|accept
@@ -1049,6 +1059,8 @@ name|getId
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|NodeId
 name|getId
@@ -1095,6 +1107,8 @@ argument_list|)
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|NodeId
 name|getRootId
@@ -1107,6 +1121,8 @@ name|getId
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|NodeImpl
 name|getInfo
@@ -1245,6 +1261,8 @@ return|return
 name|n
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 specifier|synchronized
 name|void

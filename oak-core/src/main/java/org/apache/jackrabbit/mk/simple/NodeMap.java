@@ -571,6 +571,8 @@ operator|new
 name|ChildVisitor
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|accept

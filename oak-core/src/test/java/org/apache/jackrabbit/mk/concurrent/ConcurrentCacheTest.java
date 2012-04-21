@@ -136,6 +136,8 @@ operator|.
 name|Task
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|call
@@ -177,6 +179,8 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Data
 name|load
@@ -261,6 +265,8 @@ operator|=
 name|value
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|int
 name|getMemory

@@ -453,6 +453,8 @@ operator|=
 name|canWrite
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|commitStream
@@ -510,11 +512,15 @@ name|message
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|dispose
 parameter_list|()
 block|{     }
+annotation|@
+name|Override
 specifier|public
 name|String
 name|getHeadRevision
@@ -527,6 +533,8 @@ name|getHeadRevision
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|JsopReader
 name|getJournalStream
@@ -794,6 +802,8 @@ return|return
 name|buff
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|JsopReader
 name|diffStream
@@ -1609,6 +1619,8 @@ return|return
 literal|false
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|long
 name|getLength
@@ -1626,6 +1638,8 @@ name|blobId
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|JsopReader
 name|getNodesStream
@@ -1655,6 +1669,8 @@ literal|null
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|JsopReader
 name|getNodesStream
@@ -1821,6 +1837,8 @@ return|return
 name|buff
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|JsopReader
 name|getRevisionsStream
@@ -1843,6 +1861,8 @@ name|maxEntries
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|nodeExists
@@ -1885,6 +1905,8 @@ name|revisionId
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|long
 name|getChildNodeCount
@@ -1934,6 +1956,8 @@ name|revisionId
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|int
 name|read
@@ -1972,6 +1996,8 @@ name|length
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|waitForCommit
@@ -1996,6 +2022,8 @@ name|maxWaitMillis
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|write
@@ -2025,6 +2053,8 @@ name|in
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|branch
@@ -2043,6 +2073,8 @@ name|trunkRevisionId
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|merge

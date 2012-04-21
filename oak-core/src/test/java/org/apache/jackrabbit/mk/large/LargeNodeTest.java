@@ -131,6 +131,8 @@ argument_list|)
 expr_stmt|;
 block|}
 annotation|@
+name|Override
+annotation|@
 name|Before
 specifier|public
 name|void
@@ -159,6 +161,8 @@ literal|"+ \"t\": {\"a\":{}, \"b\":{}, \"c\":{}}"
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 annotation|@
 name|After
 specifier|public

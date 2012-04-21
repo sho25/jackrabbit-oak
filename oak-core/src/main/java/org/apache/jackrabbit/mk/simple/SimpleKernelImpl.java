@@ -791,6 +791,8 @@ expr_stmt|;
 block|}
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 specifier|synchronized
 name|String
@@ -2344,6 +2346,8 @@ name|nodeMap
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|getHeadRevision
@@ -2353,6 +2357,8 @@ return|return
 name|headRevision
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|JsopReader
 name|getRevisionsStream
@@ -2605,6 +2611,8 @@ name|endArray
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|waitForCommit
@@ -2629,6 +2637,8 @@ name|maxWaitMillis
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|JsopReader
 name|getJournalStream
@@ -3096,6 +3106,8 @@ block|}
 block|}
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|JsopReader
 name|diffStream
@@ -3138,6 +3150,8 @@ argument_list|()
 return|;
 block|}
 comment|/**      * Get the nodes. The following prefixes are supported:      *<ul><li>:root - get the root node (including all old revisions)      *</li><li>:info - get internal info such as the node count      *</li></ul>      *      * @param path the path      * @param revisionId the revision      * @return the json string      */
+annotation|@
+name|Override
 specifier|public
 name|JsopReader
 name|getNodesStream
@@ -3167,6 +3181,8 @@ literal|null
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|JsopReader
 name|getNodesStream
@@ -3546,6 +3562,8 @@ return|;
 block|}
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|nodeExists
@@ -3635,6 +3653,8 @@ argument_list|)
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|long
 name|getChildNodeCount
@@ -3693,6 +3713,8 @@ name|getChildNodeCount
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|long
 name|getLength
@@ -3710,6 +3732,8 @@ name|blobId
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|int
 name|read
@@ -3748,6 +3772,8 @@ name|length
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|write
@@ -3765,6 +3791,8 @@ name|in
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 specifier|synchronized
 name|void
@@ -3830,6 +3858,8 @@ operator|+
 name|name
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|branch
@@ -3857,6 +3887,8 @@ name|UnsupportedOperationException
 argument_list|()
 throw|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|merge

@@ -354,6 +354,8 @@ name|mk
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|getHeadRevision
@@ -366,6 +368,8 @@ name|getHeadRevision
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|long
 name|getLength
@@ -383,6 +387,8 @@ name|blobId
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|nodeExists
@@ -405,6 +411,8 @@ name|revisionId
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|long
 name|getChildNodeCount
@@ -427,6 +435,8 @@ name|revisionId
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|int
 name|read
@@ -465,6 +475,8 @@ name|length
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|waitForCommit
@@ -491,6 +503,8 @@ name|maxWaitMillis
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|write
@@ -508,6 +522,8 @@ name|in
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|branch
@@ -525,6 +541,8 @@ name|trunkRevisionId
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|merge
@@ -547,6 +565,8 @@ name|message
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|commitStream
@@ -916,6 +936,8 @@ return|return
 literal|null
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|JsopReader
 name|getNodesStream
@@ -1338,6 +1360,8 @@ return|return
 name|s
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|JsopReader
 name|diffStream
@@ -1365,6 +1389,8 @@ name|filter
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|JsopReader
 name|getJournalStream
@@ -1392,6 +1418,8 @@ name|filter
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|JsopReader
 name|getNodesStream
@@ -1421,6 +1449,8 @@ literal|null
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|JsopReader
 name|getRevisionsStream
@@ -1443,6 +1473,8 @@ name|maxEntries
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|dispose

@@ -3143,6 +3143,8 @@ operator|new
 name|OutputStream
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|write
@@ -3160,6 +3162,8 @@ parameter_list|)
 block|{
 comment|// ignore
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|write
@@ -3171,6 +3175,8 @@ parameter_list|)
 block|{
 comment|// ignore
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|write
@@ -4085,6 +4091,8 @@ name|childId
 parameter_list|)
 function_decl|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|int
 name|getMemory
