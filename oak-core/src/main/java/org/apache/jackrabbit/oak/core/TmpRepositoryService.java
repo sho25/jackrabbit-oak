@@ -59,7 +59,7 @@ name|oak
 operator|.
 name|api
 operator|.
-name|Connection
+name|ContentSession
 import|;
 end_import
 
@@ -123,7 +123,7 @@ name|oak
 operator|.
 name|api
 operator|.
-name|RepositoryService
+name|ContentRepository
 import|;
 end_import
 
@@ -232,7 +232,7 @@ specifier|public
 class|class
 name|TmpRepositoryService
 implements|implements
-name|RepositoryService
+name|ContentRepository
 block|{
 comment|/**      * logger instance      */
 specifier|private
@@ -297,7 +297,7 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|Connection
+name|ContentSession
 name|login
 parameter_list|(
 name|Object

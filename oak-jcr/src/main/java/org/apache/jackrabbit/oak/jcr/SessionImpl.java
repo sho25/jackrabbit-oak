@@ -75,7 +75,7 @@ name|oak
 operator|.
 name|api
 operator|.
-name|Connection
+name|ContentSession
 import|;
 end_import
 
@@ -347,7 +347,7 @@ name|globalContext
 decl_stmt|;
 specifier|private
 specifier|final
-name|Connection
+name|ContentSession
 name|connection
 decl_stmt|;
 specifier|private
@@ -387,7 +387,7 @@ parameter_list|(
 name|GlobalContext
 name|globalContext
 parameter_list|,
-name|Connection
+name|ContentSession
 name|connection
 parameter_list|)
 block|{
@@ -1314,7 +1314,7 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|Connection
+name|ContentSession
 name|getConnection
 parameter_list|()
 block|{

@@ -77,7 +77,7 @@ name|oak
 operator|.
 name|api
 operator|.
-name|Connection
+name|ContentSession
 import|;
 end_import
 
@@ -204,7 +204,7 @@ specifier|public
 class|class
 name|ConnectionImpl
 implements|implements
-name|Connection
+name|ContentSession
 block|{
 comment|/**      * logger instance      */
 specifier|private
@@ -297,7 +297,7 @@ name|root
 expr_stmt|;
 block|}
 specifier|static
-name|Connection
+name|ContentSession
 name|createWorkspaceConnection
 parameter_list|(
 name|SimpleCredentials
@@ -534,7 +534,7 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|Connection
+name|ContentSession
 name|getRepositoryConnection
 parameter_list|()
 block|{

@@ -43,7 +43,7 @@ name|oak
 operator|.
 name|api
 operator|.
-name|Connection
+name|ContentSession
 import|;
 end_import
 
@@ -59,7 +59,7 @@ name|oak
 operator|.
 name|api
 operator|.
-name|RepositoryService
+name|ContentRepository
 import|;
 end_import
 
@@ -391,21 +391,21 @@ throws|throws
 name|RepositoryException
 block|{
 comment|// TODO: needs complete refactoring
-name|RepositoryService
+name|ContentRepository
 name|service
 init|=
 name|context
 operator|.
 name|getInstance
 argument_list|(
-name|RepositoryService
+name|ContentRepository
 operator|.
 name|class
 argument_list|)
 decl_stmt|;
 try|try
 block|{
-name|Connection
+name|ContentSession
 name|connection
 init|=
 name|service

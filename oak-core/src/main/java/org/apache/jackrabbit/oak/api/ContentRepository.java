@@ -42,16 +42,16 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * The {@code RepositoryService} is the main access point of the oak-api. It  * serves the following purposes:  *  *<ul>  *<li> validating a given login request and providing a {@link Connection}  *   that is used for further communication with the persistent layer (i.e.  *   Microkernel).</li>  *</ul>  */
+comment|/**  * The {@code RepositoryService} is the main access point of the oak-api. It  * serves the following purposes:  *  *<ul>  *<li> validating a given login request and providing a {@link ContentSession}  *   that is used for further communication with the persistent layer (i.e.  *   Microkernel).</li>  *</ul>  */
 end_comment
 
 begin_interface
 specifier|public
 interface|interface
-name|RepositoryService
+name|ContentRepository
 block|{
-comment|/**      * Try to login a user identified by the passed {@code credentials}. On success      * this method returns a {@link Connection} to the given {@code workspace}.      *      * @param credentials      * @param workspaceName      * @return the connection      * @throws LoginException      * @throws NoSuchWorkspaceException      */
-name|Connection
+comment|/**      * Try to login a user identified by the passed {@code credentials}. On success      * this method returns a {@link ContentSession} to the given {@code workspace}.      *      * @param credentials      * @param workspaceName      * @return the connection      * @throws LoginException      * @throws NoSuchWorkspaceException      */
+name|ContentSession
 name|login
 parameter_list|(
 name|Object

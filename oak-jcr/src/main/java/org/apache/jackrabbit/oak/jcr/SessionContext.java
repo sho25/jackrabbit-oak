@@ -29,7 +29,7 @@ name|oak
 operator|.
 name|api
 operator|.
-name|Connection
+name|ContentSession
 import|;
 end_import
 
@@ -153,7 +153,7 @@ name|String
 name|getWorkspaceName
 parameter_list|()
 function_decl|;
-name|Connection
+name|ContentSession
 name|getConnection
 parameter_list|()
 function_decl|;

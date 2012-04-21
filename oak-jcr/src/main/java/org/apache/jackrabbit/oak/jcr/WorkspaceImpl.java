@@ -61,7 +61,7 @@ name|oak
 operator|.
 name|api
 operator|.
-name|Connection
+name|ContentSession
 import|;
 end_import
 
@@ -453,7 +453,7 @@ throw|;
 block|}
 try|try
 block|{
-name|Connection
+name|ContentSession
 name|connection
 init|=
 name|sessionContext
@@ -595,7 +595,7 @@ argument_list|()
 expr_stmt|;
 try|try
 block|{
-name|Connection
+name|ContentSession
 name|connection
 init|=
 name|sessionContext

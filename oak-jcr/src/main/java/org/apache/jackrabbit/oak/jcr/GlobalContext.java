@@ -29,7 +29,7 @@ name|oak
 operator|.
 name|api
 operator|.
-name|RepositoryService
+name|ContentRepository
 import|;
 end_import
 
@@ -219,7 +219,7 @@ argument_list|)
 expr_stmt|;
 name|put
 argument_list|(
-name|RepositoryService
+name|ContentRepository
 operator|.
 name|class
 argument_list|,
