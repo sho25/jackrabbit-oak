@@ -374,15 +374,6 @@ parameter_list|()
 block|{
 name|root
 operator|=
-name|workspaceName
-operator|==
-literal|null
-condition|?
-name|store
-operator|.
-name|getRoot
-argument_list|()
-else|:
 name|store
 operator|.
 name|getRoot
