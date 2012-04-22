@@ -311,7 +311,7 @@ name|queryEngine
 operator|=
 name|sessionContext
 operator|.
-name|getConnection
+name|getContentSession
 argument_list|()
 operator|.
 name|getQueryEngine

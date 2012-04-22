@@ -154,7 +154,7 @@ name|getWorkspaceName
 parameter_list|()
 function_decl|;
 name|ContentSession
-name|getConnection
+name|getContentSession
 parameter_list|()
 function_decl|;
 name|ValueFactory

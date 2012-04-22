@@ -348,7 +348,7 @@ decl_stmt|;
 specifier|private
 specifier|final
 name|ContentSession
-name|connection
+name|contentSession
 decl_stmt|;
 specifier|private
 specifier|final
@@ -388,7 +388,7 @@ name|GlobalContext
 name|globalContext
 parameter_list|,
 name|ContentSession
-name|connection
+name|contentSession
 parameter_list|)
 block|{
 name|this
@@ -399,9 +399,9 @@ name|globalContext
 expr_stmt|;
 name|this
 operator|.
-name|connection
+name|contentSession
 operator|=
-name|connection
+name|contentSession
 expr_stmt|;
 name|this
 operator|.
@@ -423,7 +423,7 @@ name|this
 operator|.
 name|branch
 operator|=
-name|connection
+name|contentSession
 operator|.
 name|branchRoot
 argument_list|()
@@ -456,7 +456,7 @@ name|getUserID
 parameter_list|()
 block|{
 return|return
-name|connection
+name|contentSession
 operator|.
 name|getAuthInfo
 argument_list|()
@@ -474,7 +474,7 @@ name|getAttributeNames
 parameter_list|()
 block|{
 return|return
-name|connection
+name|contentSession
 operator|.
 name|getAuthInfo
 argument_list|()
@@ -494,7 +494,7 @@ name|name
 parameter_list|)
 block|{
 return|return
-name|connection
+name|contentSession
 operator|.
 name|getAuthInfo
 argument_list|()
@@ -692,21 +692,21 @@ argument_list|()
 expr_stmt|;
 try|try
 block|{
-name|connection
+name|contentSession
 operator|.
 name|commit
 argument_list|(
 name|branch
 argument_list|)
 expr_stmt|;
-name|connection
+name|contentSession
 operator|.
 name|refresh
 argument_list|()
 expr_stmt|;
 name|branch
 operator|=
-name|connection
+name|contentSession
 operator|.
 name|branchRoot
 argument_list|()
@@ -742,7 +742,7 @@ block|{
 name|ensureIsAlive
 argument_list|()
 expr_stmt|;
-name|connection
+name|contentSession
 operator|.
 name|refresh
 argument_list|()
@@ -755,7 +755,7 @@ condition|)
 block|{
 name|branch
 operator|=
-name|connection
+name|contentSession
 operator|.
 name|branchRoot
 argument_list|()
@@ -814,7 +814,7 @@ expr_stmt|;
 comment|// TODO
 try|try
 block|{
-name|connection
+name|contentSession
 operator|.
 name|close
 argument_list|()
@@ -1305,7 +1305,7 @@ name|getWorkspaceName
 parameter_list|()
 block|{
 return|return
-name|connection
+name|contentSession
 operator|.
 name|getWorkspaceName
 argument_list|()
@@ -1315,11 +1315,11 @@ annotation|@
 name|Override
 specifier|public
 name|ContentSession
-name|getConnection
+name|getContentSession
 parameter_list|()
 block|{
 return|return
-name|connection
+name|contentSession
 return|;
 block|}
 annotation|@

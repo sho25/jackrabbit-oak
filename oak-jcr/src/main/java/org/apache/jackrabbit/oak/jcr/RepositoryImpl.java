@@ -425,7 +425,7 @@ decl_stmt|;
 try|try
 block|{
 name|ContentSession
-name|connection
+name|contentSession
 init|=
 name|contentRepository
 operator|.
@@ -442,7 +442,7 @@ name|SessionImpl
 argument_list|(
 name|context
 argument_list|,
-name|connection
+name|contentSession
 argument_list|)
 return|;
 block|}
