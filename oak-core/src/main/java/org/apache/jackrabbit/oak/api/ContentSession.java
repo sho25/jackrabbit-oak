@@ -38,17 +38,17 @@ name|ContentSession
 extends|extends
 name|Closeable
 block|{
-comment|/**      * This methods provides access to information related to authentication      * and authorization of this connection. Multiple calls to this method      * may return different instances which are guaranteed to be equal wrt.      * to {@link Object#equals(Object)}.      *      * @return  immutable {@link AuthInfo} instance      */
+comment|/**      * This methods provides access to information related to authentication      * and authorization of this content session. Multiple calls to this method      * may return different instances which are guaranteed to be equal wrt.      * to {@link Object#equals(Object)}.      *      * @return  immutable {@link AuthInfo} instance      */
 name|AuthInfo
 name|getAuthInfo
 parameter_list|()
 function_decl|;
-comment|/**      * The immutable name of the workspace this {@code Connection} instance has      * been created for. If no workspace name has been specified during      * repository login this method will return the name of the default      * workspace.      *      * @return name of the workspace this instance has been created for or      * {@code null} if this connection is repository bound.      */
+comment|/**      * The name of the workspace this {@code ContentSession} instance has      * been created for. If no workspace name has been specified during      * repository login this method will return the name of the default      * workspace.      *      * @return name of the workspace this instance has been created for or      * {@code null} if this content session is repository bound.      */
 name|String
 name|getWorkspaceName
 parameter_list|()
 function_decl|;
-comment|/**      * Refresh this connection to the latest revision of the underlying Microkernel.      */
+comment|/**      * Refresh this content session to the latest revision of the underlying Microkernel.      */
 name|void
 name|refresh
 parameter_list|()

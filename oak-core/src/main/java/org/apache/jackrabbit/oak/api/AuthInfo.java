@@ -18,7 +18,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * {@code AuthInfo} instances provide access to information related  * to authentication and authorization of a given connection.  * {@code AuthInfo} instances are guaranteed to be immutable.  */
+comment|/**  * {@code AuthInfo} instances provide access to information related  * to authentication and authorization of a given content session.  * {@code AuthInfo} instances are guaranteed to be immutable.  */
 end_comment
 
 begin_interface
