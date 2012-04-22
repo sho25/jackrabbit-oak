@@ -1493,7 +1493,7 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|void
+name|boolean
 name|removeNode
 parameter_list|(
 name|String
@@ -1530,6 +1530,15 @@ name|name
 argument_list|)
 expr_stmt|;
 block|}
+return|return
+literal|true
+return|;
+block|}
+else|else
+block|{
+return|return
+literal|false
+return|;
 block|}
 block|}
 annotation|@

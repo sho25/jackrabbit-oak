@@ -26,8 +26,8 @@ specifier|public
 interface|interface
 name|Branch
 block|{
-comment|/**      * Move the node state located at {@code sourcePath} to a node      * state at {@code destPath}. Do nothing if either the source      * does not exist, the parent of the destination does not exist      * or the destination exists already. Both paths must resolve      * to node states located in this branch.      *      * @param sourcePath source path relative to this node state      * @param destPath destination path relative to this node state      */
-name|void
+comment|/**      * Move the node state located at {@code sourcePath} to a node      * state at {@code destPath}. Do nothing if either the source      * does not exist, the parent of the destination does not exist      * or the destination exists already. Both paths must resolve      * to node states located in this branch.      *      * @param sourcePath source path relative to this node state      * @param destPath destination path relative to this node state      * @return  {@code true} on success, {@code false} otherwise.      */
+name|boolean
 name|move
 parameter_list|(
 name|String
@@ -37,8 +37,8 @@ name|String
 name|destPath
 parameter_list|)
 function_decl|;
-comment|/**      * Copy the node state located at {@code sourcePath} to a node      * state at {@code destPath}. Do nothing if either the source      * does not exist, the parent of the destination does not exist      * or the destination exists already. Both paths must resolve      * to node states located in this branch.      *      * @param sourcePath source path relative to this node state      * @param destPath destination path relative to this node state      */
-name|void
+comment|/**      * Copy the node state located at {@code sourcePath} to a node      * state at {@code destPath}. Do nothing if either the source      * does not exist, the parent of the destination does not exist      * or the destination exists already. Both paths must resolve      * to node states located in this branch.      *      * @param sourcePath source path relative to this node state      * @param destPath destination path relative to this node state      * @return  {@code true} on success, {@code false} otherwise.      */
+name|boolean
 name|copy
 parameter_list|(
 name|String

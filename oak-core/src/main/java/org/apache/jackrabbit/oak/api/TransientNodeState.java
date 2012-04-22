@@ -117,8 +117,8 @@ name|String
 name|name
 parameter_list|)
 function_decl|;
-comment|/**      * Remove the child node state with the given {@code name}. Does nothing      * if no such child node exists.      * @param name  name of the node state to remove      */
-name|void
+comment|/**      * Remove the child node state with the given {@code name}. Does nothing      * if no such child node exists.      * @param name  name of the node state to remove      * @return  {@code false} iff no such child node exists.      */
+name|boolean
 name|removeNode
 parameter_list|(
 name|String
