@@ -66,7 +66,7 @@ end_import
 begin_class
 specifier|public
 class|class
-name|NameSpaceRegistryTest
+name|NamespaceMappingsTest
 block|{
 annotation|@
 name|Test
