@@ -45,7 +45,7 @@ name|oak
 operator|.
 name|api
 operator|.
-name|PropertyState
+name|ContentTree
 import|;
 end_import
 
@@ -61,7 +61,7 @@ name|oak
 operator|.
 name|api
 operator|.
-name|TransientNodeState
+name|PropertyState
 import|;
 end_import
 
@@ -333,8 +333,8 @@ name|class
 argument_list|)
 decl_stmt|;
 specifier|private
-name|TransientNodeState
-name|parentState
+name|ContentTree
+name|parent
 decl_stmt|;
 specifier|private
 name|PropertyState
@@ -348,8 +348,8 @@ name|SessionImpl
 argument_list|>
 name|sessionContext
 parameter_list|,
-name|TransientNodeState
-name|parentState
+name|ContentTree
+name|parent
 parameter_list|,
 name|PropertyState
 name|propertyState
@@ -362,9 +362,9 @@ argument_list|)
 expr_stmt|;
 name|this
 operator|.
-name|parentState
+name|parent
 operator|=
-name|parentState
+name|parent
 expr_stmt|;
 name|this
 operator|.
@@ -414,7 +414,7 @@ block|{
 return|return
 literal|'/'
 operator|+
-name|getParentState
+name|getParentContentTree
 argument_list|()
 operator|.
 name|getPath
@@ -442,7 +442,7 @@ name|NodeImpl
 argument_list|(
 name|sessionContext
 argument_list|,
-name|getParentState
+name|getParentContentTree
 argument_list|()
 argument_list|)
 return|;
@@ -544,7 +544,7 @@ parameter_list|()
 throws|throws
 name|RepositoryException
 block|{
-name|getParentState
+name|getParentContentTree
 argument_list|()
 operator|.
 name|removeProperty
@@ -2199,7 +2199,7 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|getParentState
+name|getParentContentTree
 argument_list|()
 operator|.
 name|setProperty
@@ -2272,7 +2272,7 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|getParentState
+name|getParentContentTree
 argument_list|()
 operator|.
 name|setProperty
@@ -2350,15 +2350,15 @@ argument_list|()
 return|;
 block|}
 specifier|private
-name|TransientNodeState
-name|getParentState
+name|ContentTree
+name|getParentContentTree
 parameter_list|()
 block|{
 name|resolve
 argument_list|()
 expr_stmt|;
 return|return
-name|parentState
+name|parent
 return|;
 block|}
 specifier|private
@@ -2392,14 +2392,14 @@ name|void
 name|resolve
 parameter_list|()
 block|{
-name|parentState
+name|parent
 operator|=
 name|getBranch
 argument_list|()
 operator|.
-name|getNode
+name|getContentTree
 argument_list|(
-name|parentState
+name|parent
 operator|.
 name|getPath
 argument_list|()
@@ -2412,7 +2412,7 @@ name|Paths
 operator|.
 name|concat
 argument_list|(
-name|parentState
+name|parent
 operator|.
 name|getPath
 argument_list|()
@@ -2425,7 +2425,7 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|parentState
+name|parent
 operator|==
 literal|null
 condition|)
@@ -2439,7 +2439,7 @@ else|else
 block|{
 name|propertyState
 operator|=
-name|parentState
+name|parent
 operator|.
 name|getProperty
 argument_list|(

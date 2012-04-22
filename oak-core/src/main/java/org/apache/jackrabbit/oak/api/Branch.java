@@ -26,7 +26,7 @@ specifier|public
 interface|interface
 name|Branch
 block|{
-comment|/**      * Move the node state located at {@code sourcePath} to a node      * state at {@code destPath}. Do nothing if either the source      * does not exist, the parent of the destination does not exist      * or the destination exists already. Both paths must resolve      * to node states located in this branch.      *      * @param sourcePath source path relative to this node state      * @param destPath destination path relative to this node state      * @return  {@code true} on success, {@code false} otherwise.      */
+comment|/**      * Move the child located at {@code sourcePath} to a child      * at {@code destPath}. Do nothing if either the source      * does not exist, the parent of the destination does not exist      * or the destination exists already. Both paths must resolve      * to a child located in this branch.      *      * @param sourcePath source path relative to this branch      * @param destPath destination path relative to this branch      * @return  {@code true} on success, {@code false} otherwise.      */
 name|boolean
 name|move
 parameter_list|(
@@ -37,7 +37,7 @@ name|String
 name|destPath
 parameter_list|)
 function_decl|;
-comment|/**      * Copy the node state located at {@code sourcePath} to a node      * state at {@code destPath}. Do nothing if either the source      * does not exist, the parent of the destination does not exist      * or the destination exists already. Both paths must resolve      * to node states located in this branch.      *      * @param sourcePath source path relative to this node state      * @param destPath destination path relative to this node state      * @return  {@code true} on success, {@code false} otherwise.      */
+comment|/**      * Copy the child located at {@code sourcePath} to a child      * at {@code destPath}. Do nothing if either the source      * does not exist, the parent of the destination does not exist      * or the destination exists already. Both paths must resolve      * to a child located in this branch.      *      * @param sourcePath source path relative to this branch      * @param destPath destination path relative to this branch      * @return  {@code true} on success, {@code false} otherwise.      */
 name|boolean
 name|copy
 parameter_list|(
@@ -48,9 +48,9 @@ name|String
 name|destPath
 parameter_list|)
 function_decl|;
-comment|/**      * Retrieve the child node state at the given {@code path}.      * The path must resolve to a node state located in this branch.      *      * @param path path of the child node state to getNode.      * @return transient node state at the given path or {@code null} if no      * such node state exists.      */
-name|TransientNodeState
-name|getNode
+comment|/**      * Retrieve the {@code ContentTree} at the given {@code path}.      * The path must resolve to a content tree in this branch.      *      * @param path path to the content tree      * @return content tree at the given path or {@code null} if no      * such tree exists      */
+name|ContentTree
+name|getContentTree
 parameter_list|(
 name|String
 name|path

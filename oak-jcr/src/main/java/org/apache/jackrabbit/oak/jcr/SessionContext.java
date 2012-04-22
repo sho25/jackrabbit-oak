@@ -61,7 +61,7 @@ name|oak
 operator|.
 name|api
 operator|.
-name|TransientNodeState
+name|ContentTree
 import|;
 end_import
 
@@ -183,8 +183,8 @@ name|Branch
 name|getBranch
 parameter_list|()
 function_decl|;
-name|TransientNodeState
-name|getState
+name|ContentTree
+name|getContentTree
 parameter_list|(
 name|NodeImpl
 name|node

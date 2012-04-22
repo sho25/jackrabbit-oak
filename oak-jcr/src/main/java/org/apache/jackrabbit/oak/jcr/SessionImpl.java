@@ -91,7 +91,7 @@ name|oak
 operator|.
 name|api
 operator|.
-name|TransientNodeState
+name|ContentTree
 import|;
 end_import
 
@@ -577,7 +577,7 @@ name|sessionContext
 argument_list|,
 name|branch
 operator|.
-name|getNode
+name|getContentTree
 argument_list|(
 literal|"/"
 argument_list|)
@@ -1398,8 +1398,8 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|TransientNodeState
-name|getState
+name|ContentTree
+name|getContentTree
 parameter_list|(
 name|NodeImpl
 name|node
@@ -1408,7 +1408,7 @@ block|{
 return|return
 name|branch
 operator|.
-name|getNode
+name|getContentTree
 argument_list|(
 name|node
 operator|.

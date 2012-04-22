@@ -1424,7 +1424,7 @@ argument_list|)
 decl_stmt|;
 name|sessionContext
 operator|.
-name|getState
+name|getContentTree
 argument_list|(
 name|userNode
 argument_list|)
@@ -1501,7 +1501,7 @@ expr_stmt|;
 block|}
 name|sessionContext
 operator|.
-name|getState
+name|getContentTree
 argument_list|(
 name|userNode
 argument_list|)
@@ -1527,7 +1527,7 @@ block|{
 comment|// TODO: check again if this really makes a transient modification with marking the property modified
 name|sessionContext
 operator|.
-name|getState
+name|getContentTree
 argument_list|(
 name|userNode
 argument_list|)

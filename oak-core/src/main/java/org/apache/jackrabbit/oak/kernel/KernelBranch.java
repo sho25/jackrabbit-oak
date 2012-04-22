@@ -77,7 +77,7 @@ name|oak
 operator|.
 name|api
 operator|.
-name|Scalar
+name|ContentTree
 import|;
 end_import
 
@@ -93,7 +93,7 @@ name|oak
 operator|.
 name|api
 operator|.
-name|TransientNodeState
+name|Scalar
 import|;
 end_import
 
@@ -109,7 +109,7 @@ name|oak
 operator|.
 name|kernel
 operator|.
-name|TransientKernelNodeState
+name|KernelContentTree
 operator|.
 name|Listener
 import|;
@@ -209,7 +209,7 @@ decl_stmt|;
 comment|/** Root state of this branch */
 specifier|private
 specifier|final
-name|TransientKernelNodeState
+name|KernelContentTree
 name|root
 decl_stmt|;
 comment|/**      * Create a new branch for the given base node state      * @param base  base node state of the private branch      */
@@ -228,7 +228,7 @@ expr_stmt|;
 name|root
 operator|=
 operator|new
-name|TransientKernelNodeState
+name|KernelContentTree
 argument_list|(
 name|base
 argument_list|,
@@ -249,8 +249,8 @@ name|String
 name|destPath
 parameter_list|)
 block|{
-name|TransientKernelNodeState
-name|sourceNode
+name|KernelContentTree
+name|source
 init|=
 name|getTransientState
 argument_list|(
@@ -259,7 +259,7 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|sourceNode
+name|source
 operator|==
 literal|null
 condition|)
@@ -268,7 +268,7 @@ return|return
 literal|false
 return|;
 block|}
-name|TransientKernelNodeState
+name|KernelContentTree
 name|destParent
 init|=
 name|getTransientState
@@ -295,7 +295,7 @@ literal|null
 operator|||
 name|destParent
 operator|.
-name|hasNode
+name|hasChild
 argument_list|(
 name|destName
 argument_list|)
@@ -305,7 +305,7 @@ return|return
 literal|false
 return|;
 block|}
-name|sourceNode
+name|source
 operator|.
 name|move
 argument_list|(
@@ -331,7 +331,7 @@ name|String
 name|destPath
 parameter_list|)
 block|{
-name|TransientKernelNodeState
+name|KernelContentTree
 name|sourceNode
 init|=
 name|getTransientState
@@ -350,7 +350,7 @@ return|return
 literal|false
 return|;
 block|}
-name|TransientKernelNodeState
+name|KernelContentTree
 name|destParent
 init|=
 name|getTransientState
@@ -377,7 +377,7 @@ literal|null
 operator|||
 name|destParent
 operator|.
-name|hasNode
+name|hasChild
 argument_list|(
 name|destName
 argument_list|)
@@ -403,8 +403,8 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|TransientNodeState
-name|getNode
+name|ContentTree
+name|getContentTree
 parameter_list|(
 name|String
 name|path
@@ -485,16 +485,16 @@ name|rev
 argument_list|)
 return|;
 block|}
-comment|/**      * Get a transient node state for the node identified by      * {@code path}      * @param path  the path to the node state      * @return  a {@link TransientKernelNodeState} instance for the item      *          at {@code path} or {@code null} if no such item exits.      */
+comment|/**      * Get a transient node state for the node identified by      * {@code path}      * @param path  the path to the node state      * @return  a {@link KernelContentTree} instance for the item      *          at {@code path} or {@code null} if no such item exits.      */
 specifier|private
-name|TransientKernelNodeState
+name|KernelContentTree
 name|getTransientState
 parameter_list|(
 name|String
 name|path
 parameter_list|)
 block|{
-name|TransientKernelNodeState
+name|KernelContentTree
 name|state
 init|=
 name|root
@@ -514,7 +514,7 @@ name|state
 operator|=
 name|state
 operator|.
-name|getChildNode
+name|getChild
 argument_list|(
 name|name
 argument_list|)
@@ -541,7 +541,7 @@ specifier|static
 name|String
 name|path
 parameter_list|(
-name|TransientNodeState
+name|ContentTree
 name|state
 parameter_list|,
 name|String
@@ -777,10 +777,10 @@ annotation|@
 name|Override
 specifier|public
 name|void
-name|addNode
+name|addChild
 parameter_list|(
-name|TransientKernelNodeState
-name|state
+name|KernelContentTree
+name|tree
 parameter_list|,
 name|String
 name|name
@@ -797,7 +797,7 @@ name|append
 argument_list|(
 name|path
 argument_list|(
-name|state
+name|tree
 argument_list|,
 name|name
 argument_list|)
@@ -813,10 +813,10 @@ annotation|@
 name|Override
 specifier|public
 name|void
-name|removeNode
+name|removeChild
 parameter_list|(
-name|TransientKernelNodeState
-name|state
+name|KernelContentTree
+name|tree
 parameter_list|,
 name|String
 name|name
@@ -833,7 +833,7 @@ name|append
 argument_list|(
 name|path
 argument_list|(
-name|state
+name|tree
 argument_list|,
 name|name
 argument_list|)
@@ -851,8 +851,8 @@ specifier|public
 name|void
 name|setProperty
 parameter_list|(
-name|TransientKernelNodeState
-name|state
+name|KernelContentTree
+name|tree
 parameter_list|,
 name|String
 name|name
@@ -872,7 +872,7 @@ name|append
 argument_list|(
 name|path
 argument_list|(
-name|state
+name|tree
 argument_list|,
 name|name
 argument_list|)
@@ -898,8 +898,8 @@ specifier|public
 name|void
 name|setProperty
 parameter_list|(
-name|TransientKernelNodeState
-name|state
+name|KernelContentTree
+name|tree
 parameter_list|,
 name|String
 name|name
@@ -922,7 +922,7 @@ name|append
 argument_list|(
 name|path
 argument_list|(
-name|state
+name|tree
 argument_list|,
 name|name
 argument_list|)
@@ -948,8 +948,8 @@ specifier|public
 name|void
 name|removeProperty
 parameter_list|(
-name|TransientKernelNodeState
-name|state
+name|KernelContentTree
+name|tree
 parameter_list|,
 name|String
 name|name
@@ -966,7 +966,7 @@ name|append
 argument_list|(
 name|path
 argument_list|(
-name|state
+name|tree
 argument_list|,
 name|name
 argument_list|)
@@ -984,13 +984,13 @@ specifier|public
 name|void
 name|move
 parameter_list|(
-name|TransientKernelNodeState
-name|state
+name|KernelContentTree
+name|tree
 parameter_list|,
 name|String
 name|name
 parameter_list|,
-name|TransientKernelNodeState
+name|KernelContentTree
 name|moved
 parameter_list|)
 block|{
@@ -1005,7 +1005,7 @@ name|append
 argument_list|(
 name|path
 argument_list|(
-name|state
+name|tree
 argument_list|,
 name|name
 argument_list|)
@@ -1036,13 +1036,13 @@ specifier|public
 name|void
 name|copy
 parameter_list|(
-name|TransientKernelNodeState
+name|KernelContentTree
 name|state
 parameter_list|,
 name|String
 name|name
 parameter_list|,
-name|TransientKernelNodeState
+name|KernelContentTree
 name|copied
 parameter_list|)
 block|{

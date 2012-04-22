@@ -29,6 +29,22 @@ name|oak
 operator|.
 name|api
 operator|.
+name|ContentTree
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|api
+operator|.
 name|PropertyState
 import|;
 end_import
@@ -46,22 +62,6 @@ operator|.
 name|api
 operator|.
 name|Scalar
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|api
-operator|.
-name|TransientNodeState
 import|;
 end_import
 
@@ -294,80 +294,80 @@ end_import
 begin_class
 specifier|public
 class|class
-name|TransientKernelNodeState
+name|KernelContentTree
 implements|implements
-name|TransientNodeState
+name|ContentTree
 block|{
-comment|/**      * Underlying persistent state or {@code null} if this instance represents an      * added node state      */
+comment|/**      * Underlying persistent state or {@code null} if this instance represents an      * added content tree      */
 specifier|private
 specifier|final
 name|NodeState
 name|persistentState
 decl_stmt|;
-comment|/** Parent of this state */
+comment|/** Parent of this content tree */
 specifier|private
-name|TransientKernelNodeState
+name|KernelContentTree
 name|parent
 decl_stmt|;
-comment|/** Name of this state */
+comment|/** Name of this content tree */
 specifier|private
 name|String
 name|name
 decl_stmt|;
-comment|/** Listener for changes on this node state */
+comment|/** Listener for changes on this content tree */
 specifier|private
 specifier|final
 name|Listener
 name|listener
 decl_stmt|;
-comment|/** Resolved persistent child states */
+comment|/** Children with underlying persistent child states */
 specifier|private
 specifier|final
 name|Map
 argument_list|<
 name|String
 argument_list|,
-name|TransientKernelNodeState
+name|KernelContentTree
 argument_list|>
-name|existingChildNodes
+name|existingChildren
 init|=
 operator|new
 name|HashMap
 argument_list|<
 name|String
 argument_list|,
-name|TransientKernelNodeState
+name|KernelContentTree
 argument_list|>
 argument_list|()
 decl_stmt|;
-comment|/** Transiently added node states */
+comment|/** Transiently added children */
 specifier|private
 specifier|final
 name|Map
 argument_list|<
 name|String
 argument_list|,
-name|TransientKernelNodeState
+name|KernelContentTree
 argument_list|>
-name|addedNodes
+name|addedTrees
 init|=
 operator|new
 name|HashMap
 argument_list|<
 name|String
 argument_list|,
-name|TransientKernelNodeState
+name|KernelContentTree
 argument_list|>
 argument_list|()
 decl_stmt|;
-comment|/** Transiently removed node stated */
+comment|/** Transiently removed children */
 specifier|private
 specifier|final
 name|Set
 argument_list|<
 name|String
 argument_list|>
-name|removedNodes
+name|removedTrees
 init|=
 operator|new
 name|HashSet
@@ -412,38 +412,38 @@ name|String
 argument_list|>
 argument_list|()
 decl_stmt|;
-comment|/**      * Listener for changes on {@code TransientKernelNodeState}s      */
+comment|/**      * Listener for changes on {@code ContentTree}s      */
 interface|interface
 name|Listener
 block|{
-comment|/**          * The node of the given {@code name} has been added to {@code state}.          * @param state  parent state to which a node was added          * @param name  name of the added node          */
+comment|/**          * The child of the given {@code name} has been added to {@code tree}.          * @param tree  parent to which a child was added          * @param name  name of the added child          */
 name|void
-name|addNode
+name|addChild
 parameter_list|(
-name|TransientKernelNodeState
-name|state
+name|KernelContentTree
+name|tree
 parameter_list|,
 name|String
 name|name
 parameter_list|)
 function_decl|;
-comment|/**          * The node of the given {@code name} has been removed from {@code state}          * @param state  parent state from which a node was removed          * @param name  name of the removed node          */
+comment|/**          * The child of the given {@code name} has been removed from {@code tree}          * @param tree  parent from which a child was removed          * @param name  name of the removed child          */
 name|void
-name|removeNode
+name|removeChild
 parameter_list|(
-name|TransientKernelNodeState
-name|state
+name|KernelContentTree
+name|tree
 parameter_list|,
 name|String
 name|name
 parameter_list|)
 function_decl|;
-comment|/**          * The property of the given {@code name} and {@code value} has been set.          * @param state  state on which the property was set.          * @param name  name of the property          * @param value  value of the property          */
+comment|/**          * The property of the given {@code name} and {@code value} has been set.          * @param tree  parent on which the property was set.          * @param name  name of the property          * @param value  value of the property          */
 name|void
 name|setProperty
 parameter_list|(
-name|TransientKernelNodeState
-name|state
+name|KernelContentTree
+name|tree
 parameter_list|,
 name|String
 name|name
@@ -452,12 +452,12 @@ name|Scalar
 name|value
 parameter_list|)
 function_decl|;
-comment|/**          * The property of the given {@code name} and {@code values} has been set.          * @param state  state on which the property was set.          * @param name  name of the property          * @param values  values of the property          */
+comment|/**          * The property of the given {@code name} and {@code values} has been set.          * @param tree  parent on which the property was set.          * @param name  name of the property          * @param values  values of the property          */
 name|void
 name|setProperty
 parameter_list|(
-name|TransientKernelNodeState
-name|state
+name|KernelContentTree
+name|tree
 parameter_list|,
 name|String
 name|name
@@ -469,48 +469,48 @@ argument_list|>
 name|values
 parameter_list|)
 function_decl|;
-comment|/**          * The property of the given {@code name} has been removed.          * @param state  state on which the property was removed.          * @param name  name of the property          */
+comment|/**          * The property of the given {@code name} has been removed.          * @param tree  parent on which the property was removed.          * @param name  name of the property          */
 name|void
 name|removeProperty
 parameter_list|(
-name|TransientKernelNodeState
-name|state
+name|KernelContentTree
+name|tree
 parameter_list|,
 name|String
 name|name
 parameter_list|)
 function_decl|;
-comment|/**          * The node of the given {@code name} has been moved.          * @param state  parent state from which the property was moved          * @param name  name of the moved property          * @param moved  moved property          */
+comment|/**          * The child with the given {@code name} has been moved.          * @param tree  parent from which the child was moved          * @param name  name of the moved child          * @param moved  moved child          */
 name|void
 name|move
 parameter_list|(
-name|TransientKernelNodeState
-name|state
+name|KernelContentTree
+name|tree
 parameter_list|,
 name|String
 name|name
 parameter_list|,
-name|TransientKernelNodeState
+name|KernelContentTree
 name|moved
 parameter_list|)
 function_decl|;
-comment|/**          * The node of the given {@code name} been copies.          * @param state  parent state from which the property way copies          * @param name  name of the copied property          * @param copied  copied property          */
+comment|/**          * The child with the given {@code name} been copied.          * @param state  parent from which the child way copied          * @param name  name of the copied child          * @param copied  copied child          */
 name|void
 name|copy
 parameter_list|(
-name|TransientKernelNodeState
+name|KernelContentTree
 name|state
 parameter_list|,
 name|String
 name|name
 parameter_list|,
-name|TransientKernelNodeState
+name|KernelContentTree
 name|copied
 parameter_list|)
 function_decl|;
 block|}
 comment|/**      * Create a new instance representing the root of a branch.      * @param persistentState  underlying persistent state      * @param listener  change listener      */
-name|TransientKernelNodeState
+name|KernelContentTree
 parameter_list|(
 name|NodeState
 name|persistentState
@@ -531,11 +531,11 @@ name|listener
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Create a new instance representing a added node state      * @param parent  the parent state of the state      * @param name  name of the state      * @param listener  change listener      */
+comment|/**      * Create a new instance representing an added child      * @param parent  the parent of the child      * @param name  name of the child      * @param listener  change listener      */
 specifier|private
-name|TransientKernelNodeState
+name|KernelContentTree
 parameter_list|(
-name|TransientKernelNodeState
+name|KernelContentTree
 name|parent
 parameter_list|,
 name|String
@@ -557,14 +557,14 @@ name|listener
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Create a new instance with an underlying persistent state      * @param persistedState  underlying persistent state      * @param parent  the parent state of the state      * @param name  name of the state      * @param listener  change listener      */
+comment|/**      * Create a new instance with an underlying persistent state      * @param persistedState  underlying persistent state      * @param parent  the parent of this content tree      * @param name  name of this content tree      * @param listener  change listener      */
 specifier|private
-name|TransientKernelNodeState
+name|KernelContentTree
 parameter_list|(
 name|NodeState
 name|persistedState
 parameter_list|,
-name|TransientKernelNodeState
+name|KernelContentTree
 name|parent
 parameter_list|,
 name|String
@@ -599,14 +599,14 @@ operator|=
 name|listener
 expr_stmt|;
 block|}
-comment|/**      * Copy constructor: create a deep copy of the passed {@code state} with      * the given {@code name} and {@code parent}.      * @param state  state to copy      * @param parent  parent of the copied state      * @param name  name of the copied state      */
+comment|/**      * Copy constructor: create a deep copy of the passed {@code ContentTree} with      * the given {@code name} and {@code parent}.      * @param tree  content tree to copy      * @param parent  parent of the copied tree      * @param name  name of the copied tree      */
 specifier|private
-name|TransientKernelNodeState
+name|KernelContentTree
 parameter_list|(
-name|TransientKernelNodeState
-name|state
+name|KernelContentTree
+name|tree
 parameter_list|,
-name|TransientKernelNodeState
+name|KernelContentTree
 name|parent
 parameter_list|,
 name|String
@@ -615,13 +615,13 @@ parameter_list|)
 block|{
 name|listener
 operator|=
-name|state
+name|tree
 operator|.
 name|listener
 expr_stmt|;
 name|persistentState
 operator|=
-name|state
+name|tree
 operator|.
 name|persistentState
 expr_stmt|;
@@ -637,20 +637,20 @@ name|name
 operator|=
 name|name
 expr_stmt|;
-comment|// recursively copy all existing node states
+comment|// recursively copy all existing children
 for|for
 control|(
 name|Entry
 argument_list|<
 name|String
 argument_list|,
-name|TransientKernelNodeState
+name|KernelContentTree
 argument_list|>
 name|existing
 range|:
-name|state
+name|tree
 operator|.
-name|existingChildNodes
+name|existingChildren
 operator|.
 name|entrySet
 argument_list|()
@@ -666,14 +666,14 @@ argument_list|()
 decl_stmt|;
 name|this
 operator|.
-name|existingChildNodes
+name|existingChildren
 operator|.
 name|put
 argument_list|(
 name|existingName
 argument_list|,
 operator|new
-name|TransientKernelNodeState
+name|KernelContentTree
 argument_list|(
 name|existing
 operator|.
@@ -687,20 +687,20 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|// recursively copy all added node states
+comment|// recursively copy all added children
 for|for
 control|(
 name|Entry
 argument_list|<
 name|String
 argument_list|,
-name|TransientKernelNodeState
+name|KernelContentTree
 argument_list|>
 name|added
 range|:
-name|state
+name|tree
 operator|.
-name|addedNodes
+name|addedTrees
 operator|.
 name|entrySet
 argument_list|()
@@ -716,14 +716,14 @@ argument_list|()
 decl_stmt|;
 name|this
 operator|.
-name|addedNodes
+name|addedTrees
 operator|.
 name|put
 argument_list|(
 name|addedName
 argument_list|,
 operator|new
-name|TransientKernelNodeState
+name|KernelContentTree
 argument_list|(
 name|added
 operator|.
@@ -739,13 +739,13 @@ expr_stmt|;
 block|}
 name|this
 operator|.
-name|removedNodes
+name|removedTrees
 operator|.
 name|addAll
 argument_list|(
-name|state
+name|tree
 operator|.
-name|removedNodes
+name|removedTrees
 argument_list|)
 expr_stmt|;
 name|this
@@ -754,7 +754,7 @@ name|addedProperties
 operator|.
 name|putAll
 argument_list|(
-name|state
+name|tree
 operator|.
 name|addedProperties
 argument_list|)
@@ -765,7 +765,7 @@ name|removedProperties
 operator|.
 name|addAll
 argument_list|(
-name|state
+name|tree
 operator|.
 name|removedProperties
 argument_list|)
@@ -829,7 +829,7 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|TransientNodeState
+name|ContentTree
 name|getParent
 parameter_list|()
 block|{
@@ -949,17 +949,17 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|TransientKernelNodeState
-name|getChildNode
+name|KernelContentTree
+name|getChild
 parameter_list|(
 name|String
 name|name
 parameter_list|)
 block|{
-name|TransientKernelNodeState
+name|KernelContentTree
 name|state
 init|=
-name|addedNodes
+name|addedTrees
 operator|.
 name|get
 argument_list|(
@@ -973,14 +973,14 @@ operator|!=
 literal|null
 condition|)
 block|{
-comment|// Added or removed and re-added child node
+comment|// Added or removed and re-added child
 return|return
 name|state
 return|;
 block|}
-comment|// Existing child node unless removed
+comment|// Existing child unless removed
 return|return
-name|removedNodes
+name|removedTrees
 operator|.
 name|contains
 argument_list|(
@@ -989,7 +989,7 @@ argument_list|)
 condition|?
 literal|null
 else|:
-name|getExistingChildNode
+name|getExistingChild
 argument_list|(
 name|name
 argument_list|)
@@ -999,14 +999,14 @@ annotation|@
 name|Override
 specifier|public
 name|boolean
-name|hasNode
+name|hasChild
 parameter_list|(
 name|String
 name|name
 parameter_list|)
 block|{
 return|return
-name|getChildNode
+name|getChild
 argument_list|(
 name|name
 argument_list|)
@@ -1018,7 +1018,7 @@ annotation|@
 name|Override
 specifier|public
 name|long
-name|getChildNodeCount
+name|getChildrenCount
 parameter_list|()
 block|{
 name|long
@@ -1038,12 +1038,12 @@ decl_stmt|;
 return|return
 name|persistentCount
 operator|+
-name|addedNodes
+name|addedTrees
 operator|.
 name|size
 argument_list|()
 operator|-
-name|removedNodes
+name|removedTrees
 operator|.
 name|size
 argument_list|()
@@ -1238,12 +1238,12 @@ name|Override
 specifier|public
 name|Iterable
 argument_list|<
-name|TransientNodeState
+name|ContentTree
 argument_list|>
-name|getChildNodes
+name|getChildren
 parameter_list|()
 block|{
-comment|// Copy od removed child node states
+comment|// Copy of removed children
 specifier|final
 name|Set
 argument_list|<
@@ -1262,21 +1262,21 @@ name|removed
 operator|.
 name|addAll
 argument_list|(
-name|removedNodes
+name|removedTrees
 argument_list|)
 expr_stmt|;
-comment|// Copy od added and re-added child node states
+comment|// Copy od added and re-added children
 specifier|final
 name|Set
 argument_list|<
-name|TransientNodeState
+name|ContentTree
 argument_list|>
 name|added
 init|=
 operator|new
 name|HashSet
 argument_list|<
-name|TransientNodeState
+name|ContentTree
 argument_list|>
 argument_list|()
 decl_stmt|;
@@ -1284,20 +1284,19 @@ name|added
 operator|.
 name|addAll
 argument_list|(
-name|addedNodes
+name|addedTrees
 operator|.
 name|values
 argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// Filter removed child node entries from persisted child node entries,
-comment|// map remaining child node entries to child node states and add added
-comment|// child node states
+comment|// map remaining child node entries to content trees and add added children.
 return|return
 operator|new
 name|Iterable
 argument_list|<
-name|TransientNodeState
+name|ContentTree
 argument_list|>
 argument_list|()
 block|{
@@ -1306,7 +1305,7 @@ name|Override
 specifier|public
 name|Iterator
 argument_list|<
-name|TransientNodeState
+name|ContentTree
 argument_list|>
 name|iterator
 parameter_list|()
@@ -1321,7 +1320,7 @@ name|ChildNodeEntry
 argument_list|>
 name|persisted
 init|=
-name|getPersistedChildNodeEntries
+name|getPersistedChildren
 argument_list|(
 name|persistentState
 argument_list|)
@@ -1370,10 +1369,10 @@ block|}
 block|}
 argument_list|)
 decl_stmt|;
-comment|// persisted states - removed states
+comment|// persisted trees - removed trees
 name|Iterator
 argument_list|<
-name|TransientNodeState
+name|ContentTree
 argument_list|>
 name|persistedMinusRemoved
 init|=
@@ -1386,14 +1385,14 @@ name|Function1
 argument_list|<
 name|ChildNodeEntry
 argument_list|,
-name|TransientNodeState
+name|ContentTree
 argument_list|>
 argument_list|()
 block|{
 annotation|@
 name|Override
 specifier|public
-name|TransientNodeState
+name|ContentTree
 name|apply
 parameter_list|(
 name|ChildNodeEntry
@@ -1401,7 +1400,7 @@ name|entry
 parameter_list|)
 block|{
 return|return
-name|getExistingChildNode
+name|getExistingChild
 argument_list|(
 name|entry
 operator|.
@@ -1413,7 +1412,7 @@ block|}
 block|}
 argument_list|)
 decl_stmt|;
-comment|// persisted states - removed states + added states
+comment|// persisted trees - removed trees + added trees
 return|return
 name|chain
 argument_list|(
@@ -1432,8 +1431,8 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|TransientNodeState
-name|addNode
+name|ContentTree
+name|addChild
 parameter_list|(
 name|String
 name|name
@@ -1442,20 +1441,20 @@ block|{
 if|if
 condition|(
 operator|!
-name|hasNode
+name|hasChild
 argument_list|(
 name|name
 argument_list|)
 condition|)
 block|{
-name|addedNodes
+name|addedTrees
 operator|.
 name|put
 argument_list|(
 name|name
 argument_list|,
 operator|new
-name|TransientKernelNodeState
+name|KernelContentTree
 argument_list|(
 name|this
 argument_list|,
@@ -1474,7 +1473,7 @@ condition|)
 block|{
 name|listener
 operator|.
-name|addNode
+name|addChild
 argument_list|(
 name|this
 argument_list|,
@@ -1484,7 +1483,7 @@ expr_stmt|;
 block|}
 block|}
 return|return
-name|getChildNode
+name|getChild
 argument_list|(
 name|name
 argument_list|)
@@ -1494,7 +1493,7 @@ annotation|@
 name|Override
 specifier|public
 name|boolean
-name|removeNode
+name|removeChild
 parameter_list|(
 name|String
 name|name
@@ -1502,13 +1501,13 @@ parameter_list|)
 block|{
 if|if
 condition|(
-name|hasNode
+name|hasChild
 argument_list|(
 name|name
 argument_list|)
 condition|)
 block|{
-name|markNodeRemoved
+name|markTreeRemoved
 argument_list|(
 name|name
 argument_list|)
@@ -1522,7 +1521,7 @@ condition|)
 block|{
 name|listener
 operator|.
-name|removeNode
+name|removeChild
 argument_list|(
 name|this
 argument_list|,
@@ -1694,12 +1693,12 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Move this node state to the parent node state at {@code destParent}      * with the new name {@code destName}.      *      * @param destParent  new parent for this node state      * @param destName  new name for this node state      */
+comment|/**      * Move this tree to the parent at {@code destParent} with the new name      * {@code destName}.      *      * @param destParent  new parent for this tree      * @param destName  new name for this tree      */
 specifier|public
 name|void
 name|move
 parameter_list|(
-name|TransientKernelNodeState
+name|KernelContentTree
 name|destParent
 parameter_list|,
 name|String
@@ -1708,12 +1707,12 @@ parameter_list|)
 block|{
 name|parent
 operator|.
-name|markNodeRemoved
+name|markTreeRemoved
 argument_list|(
 name|name
 argument_list|)
 expr_stmt|;
-name|TransientKernelNodeState
+name|KernelContentTree
 name|oldParent
 init|=
 name|parent
@@ -1733,7 +1732,7 @@ name|destParent
 expr_stmt|;
 name|destParent
 operator|.
-name|addedNodes
+name|addedTrees
 operator|.
 name|put
 argument_list|(
@@ -1762,23 +1761,23 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Copy this node state to the parent node state at {@code destParent}      * with the name {@code destName}.      *      * @param destParent  parent for the copied node state      * @param destName  name for the copied node state      */
+comment|/**      * Copy this tree to the parent at {@code destParent} with the name {@code destName}.      *      * @param destParent  parent for the copied tree      * @param destName  name for the copied tree      */
 specifier|public
 name|void
 name|copy
 parameter_list|(
-name|TransientKernelNodeState
+name|KernelContentTree
 name|destParent
 parameter_list|,
 name|String
 name|destName
 parameter_list|)
 block|{
-name|TransientKernelNodeState
+name|KernelContentTree
 name|copy
 init|=
 operator|new
-name|TransientKernelNodeState
+name|KernelContentTree
 argument_list|(
 name|this
 argument_list|,
@@ -1789,7 +1788,7 @@ argument_list|)
 decl_stmt|;
 name|destParent
 operator|.
-name|addedNodes
+name|addedTrees
 operator|.
 name|put
 argument_list|(
@@ -1821,13 +1820,13 @@ block|}
 comment|//------------------------------------------------------------< internal>---
 specifier|private
 name|void
-name|markNodeRemoved
+name|markTreeRemoved
 parameter_list|(
 name|String
 name|name
 parameter_list|)
 block|{
-name|addedNodes
+name|addedTrees
 operator|.
 name|remove
 argument_list|(
@@ -1836,14 +1835,14 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|hasExistingNode
+name|hasExistingChild
 argument_list|(
 name|name
 argument_list|)
 condition|)
 block|{
 comment|// Mark as removed if removing existing
-name|removedNodes
+name|removedTrees
 operator|.
 name|add
 argument_list|(
@@ -1895,10 +1894,10 @@ name|state
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Get a transient node state for a child node state which has      * an existing underlying persistent node date.      *      * @param name  name of the child node state      * @return  transient node state or {@code null} if this transient      *          node state does not have an underlying persistent state      *          or the underlying persistent state does not have a child      *          node state with the given {@code name}.      */
+comment|/**      * Get a content tree for a child which has an existing underlying persistent      * node date.      *      * @param name  name of the child      * @return  content tree or {@code null} if this instance node state      *          does not have an underlying persistent state or the underlying      *          persistent state does not have a child with the given {@code name}.      */
 specifier|private
-name|TransientKernelNodeState
-name|getExistingChildNode
+name|KernelContentTree
+name|getExistingChild
 parameter_list|(
 name|String
 name|name
@@ -1915,10 +1914,10 @@ return|return
 literal|null
 return|;
 block|}
-name|TransientKernelNodeState
+name|KernelContentTree
 name|transientState
 init|=
-name|existingChildNodes
+name|existingChildren
 operator|.
 name|get
 argument_list|(
@@ -1956,7 +1955,7 @@ block|}
 name|transientState
 operator|=
 operator|new
-name|TransientKernelNodeState
+name|KernelContentTree
 argument_list|(
 name|state
 argument_list|,
@@ -1967,7 +1966,7 @@ argument_list|,
 name|listener
 argument_list|)
 expr_stmt|;
-name|existingChildNodes
+name|existingChildren
 operator|.
 name|put
 argument_list|(
@@ -1981,10 +1980,10 @@ return|return
 name|transientState
 return|;
 block|}
-comment|/**      * Determine whether there is an underling persistent state which has      * a child node state with the given {@code name}.      * @param name  name of the child node state.      * @return  {@code true} if and only if this transient node state has an      *          underlying persistent state which has a child node state with      *          the given {@code name}.      */
+comment|/**      * Determine whether there is an underling persistent state which has      * a child with the given {@code name}.      * @param name  name of the child.      * @return  {@code true} if and only if this instance has an underlying persistent      *          state which has a child with the given {@code name}.      */
 specifier|private
 name|boolean
-name|hasExistingNode
+name|hasExistingChild
 parameter_list|(
 name|String
 name|name
@@ -2005,7 +2004,7 @@ operator|!=
 literal|null
 return|;
 block|}
-comment|/**      * Determine whether there is an underling persistent state which has      * a property state with the given {@code name}.      * @param name  name of the property state.      * @return  {@code true} if and only if this transient node state has an      *          underlying persistent state which has a property state with      *          the given {@code name}.      */
+comment|/**      * Determine whether there is an underling persistent state which has      * a property state with the given {@code name}.      * @param name  name of the property state.      * @return  {@code true} if and only if this instance has an underlying persistent      *          state which has a property state with the given {@code name}.      */
 specifier|private
 name|boolean
 name|hasExistingProperty
@@ -2038,7 +2037,7 @@ name|?
 extends|extends
 name|ChildNodeEntry
 argument_list|>
-name|getPersistedChildNodeEntries
+name|getPersistedChildren
 parameter_list|(
 specifier|final
 name|NodeState

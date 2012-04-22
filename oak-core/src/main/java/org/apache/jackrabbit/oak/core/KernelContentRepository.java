@@ -312,12 +312,12 @@ argument_list|)
 decl_stmt|;
 name|branch
 operator|.
-name|getNode
+name|getContentTree
 argument_list|(
 literal|"/"
 argument_list|)
 operator|.
-name|addNode
+name|addChild
 argument_list|(
 name|DEFAULT_WORKSPACE_NAME
 argument_list|)
