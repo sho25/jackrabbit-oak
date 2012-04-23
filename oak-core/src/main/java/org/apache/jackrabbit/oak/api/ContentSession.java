@@ -73,6 +73,10 @@ name|QueryEngine
 name|getQueryEngine
 parameter_list|()
 function_decl|;
+name|CoreValueFactory
+name|getCoreValueFactory
+parameter_list|()
+function_decl|;
 comment|// TODO : add versioning operations
 block|}
 end_interface
