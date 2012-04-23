@@ -36,15 +36,20 @@ specifier|public
 interface|interface
 name|ContentTree
 block|{
+comment|/**      * Status of an item in a {@code ContentTree}      */
 enum|enum
 name|Status
 block|{
+comment|/**          * Item is persisted          */
 name|EXISTING
 block|,
+comment|/**          * Item is new          */
 name|NEW
 block|,
+comment|/**          * Item is modified: has added or removed children or added, removed or modified          * properties.          */
 name|MODIFIED
 block|,
+comment|/**          * Item is removed          */
 name|REMOVED
 block|}
 comment|/**      * @return  the name of this {@code ContentTree} instance.      */
@@ -70,6 +75,7 @@ name|String
 name|name
 parameter_list|)
 function_decl|;
+comment|/**      * Get the {@code Status} of a property state      * @param name  name of the property state      * @return  the status of the property state with the given {@code name}      *          or {@code null} in no such property state exists.      */
 name|Status
 name|getPropertyStatus
 parameter_list|(
@@ -106,6 +112,7 @@ name|String
 name|name
 parameter_list|)
 function_decl|;
+comment|/**      * Get the {@code Status} of a child tree      * @param name  name of the child      * @return  the status of the child with the given {@code name} or {@code null} in      *          no such child exists.      */
 name|Status
 name|getChildStatus
 parameter_list|(
