@@ -250,14 +250,6 @@ name|Cache
 operator|.
 name|Value
 block|{
-specifier|private
-specifier|static
-specifier|final
-name|boolean
-name|NODE_NAME_AS_PROPERTY
-init|=
-literal|false
-decl_stmt|;
 comment|/**      * The child node count.      */
 specifier|public
 specifier|static
@@ -326,6 +318,14 @@ name|String
 name|COUNT
 init|=
 literal|":childCount"
+decl_stmt|;
+specifier|private
+specifier|static
+specifier|final
+name|boolean
+name|NODE_NAME_AS_PROPERTY
+init|=
+literal|false
 decl_stmt|;
 comment|/**      * The node name.      */
 specifier|private
@@ -787,13 +787,24 @@ name|String
 name|name
 parameter_list|)
 block|{
-return|return
+name|NodeId
+name|id
+init|=
 name|childNodes
 operator|.
 name|get
 argument_list|(
 name|name
 argument_list|)
+decl_stmt|;
+return|return
+name|id
+operator|==
+literal|null
+condition|?
+literal|null
+else|:
+name|id
 operator|.
 name|getNode
 argument_list|(
@@ -3077,6 +3088,8 @@ literal|1
 index|]
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|toString
@@ -4169,6 +4182,8 @@ return|return
 name|memory
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|int
 name|hashCode
@@ -4203,6 +4218,8 @@ return|return
 name|hash
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|equals

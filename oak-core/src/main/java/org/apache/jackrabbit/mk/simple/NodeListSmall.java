@@ -476,16 +476,9 @@ operator|<
 literal|0
 condition|)
 block|{
-throw|throw
-name|ExceptionFactory
-operator|.
-name|get
-argument_list|(
-literal|"Node not found: "
-operator|+
-name|name
-argument_list|)
-throw|;
+return|return
+literal|null
+return|;
 block|}
 return|return
 name|children
@@ -906,6 +899,8 @@ return|return
 name|result
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|toString
@@ -1188,6 +1183,8 @@ return|return
 name|memory
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|int
 name|hashCode
@@ -1227,6 +1224,8 @@ name|sort
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|equals

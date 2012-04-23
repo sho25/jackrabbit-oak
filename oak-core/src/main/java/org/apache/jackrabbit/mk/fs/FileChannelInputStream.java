@@ -90,7 +90,7 @@ specifier|final
 name|boolean
 name|closeChannel
 decl_stmt|;
-comment|/**      * Create a new file object input stream from the file channel.      *      * @param channel the file channel      */
+comment|/**      * Create a new file object input stream from the file channel.      *      * @param channel the file channel      * @param closeChannel close the channel when done      */
 specifier|public
 name|FileChannelInputStream
 parameter_list|(

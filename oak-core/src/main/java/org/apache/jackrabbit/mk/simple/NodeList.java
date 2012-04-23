@@ -197,7 +197,7 @@ name|int
 name|getMemory
 parameter_list|()
 function_decl|;
-comment|/**      * Write the data into the output stream in order to calculate the content      * hash.      *      * @param map the node map      * @param out the output stream      */
+comment|/**      * Write the data into the output stream in order to calculate the content      * hash.      *      * @param map the node map      * @param out the output stream      * @throws IOException if writing to the stream failed      */
 name|void
 name|updateHash
 parameter_list|(

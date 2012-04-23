@@ -114,6 +114,8 @@ name|x
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|toString
@@ -218,6 +220,8 @@ return|return
 name|node
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|toString

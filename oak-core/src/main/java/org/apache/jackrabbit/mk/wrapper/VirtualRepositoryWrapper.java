@@ -1702,16 +1702,10 @@ operator|==
 literal|null
 condition|)
 block|{
-throw|throw
-name|ExceptionFactory
-operator|.
-name|get
-argument_list|(
-literal|"Not mapped: "
-operator|+
-name|path
-argument_list|)
-throw|;
+comment|// not mapped
+return|return
+literal|null
+return|;
 block|}
 name|String
 name|rev

@@ -1020,16 +1020,10 @@ operator|<
 literal|0
 condition|)
 block|{
-throw|throw
-name|ExceptionFactory
-operator|.
-name|get
-argument_list|(
-literal|"Invalid query. Expected: /index/prefix:x?y, got: "
-operator|+
-name|path
-argument_list|)
-throw|;
+comment|// invalid query - expected: /index/prefix:x?y
+return|return
+literal|null
+return|;
 block|}
 name|String
 name|data

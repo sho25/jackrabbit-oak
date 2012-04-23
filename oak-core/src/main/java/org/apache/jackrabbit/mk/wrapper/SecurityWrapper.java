@@ -248,7 +248,7 @@ specifier|private
 name|String
 name|rightsRevision
 decl_stmt|;
-comment|/**      * Decorates the given {@link MicroKernel} with authentication and      * authorization. The responsibility of properly disposing the given      * MikroKernel instance remains with the caller.      */
+comment|/**      * Decorates the given {@link MicroKernel} with authentication and      * authorization. The responsibility of properly disposing the given      * MikroKernel instance remains with the caller.      *      * @param mk the wrapped kernel      * @param user the user name      * @param pass the password      */
 specifier|public
 name|SecurityWrapper
 parameter_list|(
@@ -518,7 +518,9 @@ specifier|public
 name|void
 name|dispose
 parameter_list|()
-block|{     }
+block|{
+comment|// do nothing
+block|}
 annotation|@
 name|Override
 specifier|public
@@ -1710,16 +1712,9 @@ literal|false
 argument_list|)
 condition|)
 block|{
-throw|throw
-name|ExceptionFactory
-operator|.
-name|get
-argument_list|(
-literal|"Node not found: "
-operator|+
-name|path
-argument_list|)
-throw|;
+return|return
+literal|null
+return|;
 block|}
 name|JsopReader
 name|t
@@ -1798,16 +1793,9 @@ operator|==
 literal|null
 condition|)
 block|{
-throw|throw
-name|ExceptionFactory
-operator|.
-name|get
-argument_list|(
-literal|"Node not found: "
-operator|+
-name|path
-argument_list|)
-throw|;
+return|return
+literal|null
+return|;
 block|}
 else|else
 block|{
