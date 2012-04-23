@@ -79,7 +79,7 @@ specifier|private
 name|boolean
 name|eos
 decl_stmt|;
-comment|/**      * Create a new instance of this class.      *       * @param in base input      * @param boundary boundary      */
+comment|/**      * Create a new instance of this class.      *      * @param in base input      * @param boundary boundary      */
 specifier|public
 name|BoundaryInputStream
 parameter_list|(
@@ -100,7 +100,7 @@ literal|8192
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Create a new instance of this class.      *       * @param in base input      * @param boundary boundary      * @param size size of internal read-ahead buffer      */
+comment|/**      * Create a new instance of this class.      *      * @param in base input      * @param boundary boundary      * @param size size of internal read-ahead buffer      */
 specifier|public
 name|BoundaryInputStream
 parameter_list|(
@@ -455,10 +455,8 @@ name|i
 expr_stmt|;
 name|count
 operator|+=
-operator|(
 operator|-
 name|i
-operator|)
 expr_stmt|;
 name|i
 operator|=

@@ -240,7 +240,7 @@ specifier|private
 name|InputStream
 name|reqIn
 decl_stmt|;
-comment|/**      * Parse a request. This automatically resets any internal state, so it can be      * used multiple times      *       * @param in input stream      * @throws IOException if an I/O error occurs      */
+comment|/**      * Parse a request. This automatically resets any internal state, so it can be      * used multiple times      *      * @param in input stream      * @throws IOException if an I/O error occurs      */
 name|void
 name|parse
 parameter_list|(

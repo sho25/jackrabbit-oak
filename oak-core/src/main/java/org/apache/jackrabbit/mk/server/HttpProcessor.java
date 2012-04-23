@@ -161,7 +161,7 @@ operator|new
 name|Response
 argument_list|()
 decl_stmt|;
-comment|/**      * Create a new instance of this class.      *       * @param socket socket      * @param servlet servlet to invoke for incoming requests      */
+comment|/**      * Create a new instance of this class.      *      * @param socket socket      * @param servlet servlet to invoke for incoming requests      */
 specifier|public
 name|HttpProcessor
 parameter_list|(
@@ -185,7 +185,7 @@ operator|=
 name|servlet
 expr_stmt|;
 block|}
-comment|/**      * Process all requests on a single socket.      *       * @throws IOException if an I/O error occurs      */
+comment|/**      * Process all requests on a single socket.      *      * @throws IOException if an I/O error occurs      */
 specifier|public
 name|void
 name|process

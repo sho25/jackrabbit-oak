@@ -171,7 +171,7 @@ name|String
 argument_list|>
 argument_list|()
 decl_stmt|;
-comment|/**      * Recycle this instance, using another output stream and a keep-alive flag.      *       * @param out output stream      * @param keepAlive whether to keep alive the connection      */
+comment|/**      * Recycle this instance, using another output stream and a keep-alive flag.      *      * @param out output stream      * @param keepAlive whether to keep alive the connection      */
 name|void
 name|recycle
 parameter_list|(
@@ -225,7 +225,7 @@ name|clear
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * Return the status message associated with a status code.      *       * @param sc status code      * @return associated status message      */
+comment|/**      * Return the status message associated with a status code.      *      * @param sc status code      * @return associated status message      */
 specifier|private
 specifier|static
 name|String
@@ -793,7 +793,7 @@ specifier|private
 name|int
 name|offset
 decl_stmt|;
-comment|/**          * Return the number of valid bytes in the buffer.          *           * @return number of bytes           */
+comment|/**          * Return the number of valid bytes in the buffer.          *          * @return number of bytes          */
 specifier|public
 name|int
 name|getCount
