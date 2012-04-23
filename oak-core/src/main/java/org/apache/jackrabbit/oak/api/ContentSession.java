@@ -53,7 +53,7 @@ name|void
 name|refresh
 parameter_list|()
 function_decl|;
-comment|/**      * Atomically apply all changes in the passed {@code branch} to the underlying      * Microkernel.      *      * @param branch  branch carrying the changes to be applies      * @throws CommitFailedException      */
+comment|/**      * Atomically apply all changes in the passed {@code branch} to the underlying      * Microkernel.      *      * @param branch  branch carrying the changes to be applies      * @throws CommitFailedException TODO: add description and clarify how JCR exception can be generated from this generic exception      */
 name|void
 name|commit
 parameter_list|(
