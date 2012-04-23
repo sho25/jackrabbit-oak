@@ -36,6 +36,17 @@ specifier|public
 interface|interface
 name|ContentTree
 block|{
+enum|enum
+name|Status
+block|{
+name|EXISTING
+block|,
+name|NEW
+block|,
+name|MODIFIED
+block|,
+name|REMOVED
+block|}
 comment|/**      * @return  the name of this {@code ContentTree} instance.      */
 name|String
 name|getName
@@ -54,6 +65,13 @@ function_decl|;
 comment|/**      * Get a property state      * @param name name of the property state      * @return  the property state with the given {@code name} or {@code null}      *          if no such property state exists.      */
 name|PropertyState
 name|getProperty
+parameter_list|(
+name|String
+name|name
+parameter_list|)
+function_decl|;
+name|Status
+name|getPropertyStatus
 parameter_list|(
 name|String
 name|name
@@ -83,6 +101,13 @@ function_decl|;
 comment|/**      * Get a child of this {@code ContentTree} instance      * @param name  name of the child      * @return  the child with the given {@code name} or {@code null} if no such child      * exists.      */
 name|ContentTree
 name|getChild
+parameter_list|(
+name|String
+name|name
+parameter_list|)
+function_decl|;
+name|Status
+name|getChildStatus
 parameter_list|(
 name|String
 name|name

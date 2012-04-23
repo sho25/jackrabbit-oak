@@ -105,6 +105,24 @@ name|oak
 operator|.
 name|api
 operator|.
+name|ContentTree
+operator|.
+name|Status
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|api
+operator|.
 name|PropertyState
 import|;
 end_import
@@ -618,10 +636,7 @@ throws|throws
 name|RepositoryException
 block|{
 return|return
-name|getContentTree
-argument_list|()
-operator|.
-name|getName
+name|name
 argument_list|()
 return|;
 block|}
@@ -788,9 +803,22 @@ name|boolean
 name|isNew
 parameter_list|()
 block|{
-comment|// todo implement isNew
 return|return
-literal|false
+name|getContentTree
+argument_list|()
+operator|.
+name|getParent
+argument_list|()
+operator|.
+name|getChildStatus
+argument_list|(
+name|name
+argument_list|()
+argument_list|)
+operator|==
+name|Status
+operator|.
+name|NEW
 return|;
 block|}
 comment|/**      * @see javax.jcr.Item#isModified()      */
@@ -801,9 +829,22 @@ name|boolean
 name|isModified
 parameter_list|()
 block|{
-comment|// todo implement isModified
 return|return
-literal|false
+name|getContentTree
+argument_list|()
+operator|.
+name|getParent
+argument_list|()
+operator|.
+name|getChildStatus
+argument_list|(
+name|name
+argument_list|()
+argument_list|)
+operator|==
+name|Status
+operator|.
+name|MODIFIED
 return|;
 block|}
 comment|/**      * @see javax.jcr.Item#remove()      */
@@ -3530,6 +3571,18 @@ argument_list|)
 throw|;
 block|}
 comment|//------------------------------------------------------------< package>---
+name|String
+name|name
+parameter_list|()
+block|{
+return|return
+name|getContentTree
+argument_list|()
+operator|.
+name|getName
+argument_list|()
+return|;
+block|}
 name|String
 name|path
 parameter_list|()
