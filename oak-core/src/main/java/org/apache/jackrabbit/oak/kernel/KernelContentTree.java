@@ -1693,9 +1693,9 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Move this tree to the parent at {@code destParent} with the new name      * {@code destName}.      *      * @param destParent  new parent for this tree      * @param destName  new name for this tree      */
+comment|/**      * Move this tree to the parent at {@code destParent} with the new name      * {@code destName}.      *      * @param destParent  new parent for this tree      * @param destName  new name for this tree      * @return  {@code true} if successful, {@code false otherwise}. I.e.      * when {@code destName} already exists at {@code destParent}      */
 specifier|public
-name|void
+name|boolean
 name|move
 parameter_list|(
 name|KernelContentTree
@@ -1705,6 +1705,20 @@ name|String
 name|destName
 parameter_list|)
 block|{
+if|if
+condition|(
+name|destParent
+operator|.
+name|hasChild
+argument_list|(
+name|destName
+argument_list|)
+condition|)
+block|{
+return|return
+literal|false
+return|;
+block|}
 name|parent
 operator|.
 name|markTreeRemoved
@@ -1760,10 +1774,13 @@ name|this
 argument_list|)
 expr_stmt|;
 block|}
+return|return
+literal|true
+return|;
 block|}
-comment|/**      * Copy this tree to the parent at {@code destParent} with the name {@code destName}.      *      * @param destParent  parent for the copied tree      * @param destName  name for the copied tree      */
+comment|/**      * Copy this tree to the parent at {@code destParent} with the name {@code destName}.      *      * @param destParent  parent for the copied tree      * @param destName  name for the copied tree      * @return  {@code true} if successful, {@code false otherwise}. I.e.      * when {@code destName} already exists at {@code destParent}      */
 specifier|public
-name|void
+name|boolean
 name|copy
 parameter_list|(
 name|KernelContentTree
@@ -1773,6 +1790,20 @@ name|String
 name|destName
 parameter_list|)
 block|{
+if|if
+condition|(
+name|destParent
+operator|.
+name|hasChild
+argument_list|(
+name|destName
+argument_list|)
+condition|)
+block|{
+return|return
+literal|false
+return|;
+block|}
 name|KernelContentTree
 name|copy
 init|=
@@ -1816,6 +1847,9 @@ name|copy
 argument_list|)
 expr_stmt|;
 block|}
+return|return
+literal|true
+return|;
 block|}
 comment|//------------------------------------------------------------< internal>---
 specifier|private
