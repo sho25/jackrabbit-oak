@@ -916,7 +916,13 @@ argument_list|()
 expr_stmt|;
 comment|// TODO -> SPI
 return|return
-literal|null
+operator|new
+name|String
+index|[]
+block|{
+name|getName
+argument_list|()
+block|}
 return|;
 block|}
 annotation|@
