@@ -8124,7 +8124,7 @@ annotation|@
 name|Test
 specifier|public
 name|void
-name|nameSpaceRegistry
+name|testNamespaceRegistry
 parameter_list|()
 throws|throws
 name|RepositoryException

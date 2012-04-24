@@ -825,7 +825,12 @@ name|nsRegistry
 operator|=
 operator|new
 name|NamespaceRegistryImpl
+argument_list|(
+name|sessionContext
+operator|.
+name|getContentSession
 argument_list|()
+argument_list|)
 expr_stmt|;
 block|}
 return|return

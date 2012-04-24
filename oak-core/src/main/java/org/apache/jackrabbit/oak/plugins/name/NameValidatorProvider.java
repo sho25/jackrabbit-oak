@@ -158,6 +158,13 @@ argument_list|(
 literal|"mix"
 argument_list|)
 expr_stmt|;
+name|prefixes
+operator|.
+name|add
+argument_list|(
+literal|"sv"
+argument_list|)
+expr_stmt|;
 comment|// Jackrabbit 2.x prefixes are always available
 name|prefixes
 operator|.
