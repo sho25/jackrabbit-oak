@@ -136,18 +136,7 @@ name|length
 argument_list|()
 expr_stmt|;
 block|}
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-name|timer
-operator|.
-name|seconds
-argument_list|()
-argument_list|)
-expr_stmt|;
+comment|// System.out.println(timer.seconds());
 block|}
 comment|// old: not escaped: 5691 ms; escaped: 10609 ms
 comment|// new: not escaped: 3931 ms; escaped: 11001 ms

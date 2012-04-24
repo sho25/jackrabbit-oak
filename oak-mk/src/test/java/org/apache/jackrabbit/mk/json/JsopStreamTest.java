@@ -153,25 +153,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-name|w
-operator|.
-name|getClass
-argument_list|()
-operator|+
-literal|": "
-operator|+
-name|timer
-operator|.
-name|seconds
-argument_list|()
-argument_list|)
-expr_stmt|;
+comment|// System.out.println(w.getClass() + ": " + timer.seconds());
 block|}
 comment|// JsopStream: 20
 comment|// JsopBuilder: 1150
