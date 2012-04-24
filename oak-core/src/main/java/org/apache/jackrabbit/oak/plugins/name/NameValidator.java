@@ -157,6 +157,26 @@ decl_stmt|;
 if|if
 condition|(
 name|colon
+operator|==
+name|name
+operator|.
+name|length
+argument_list|()
+operator|-
+literal|1
+condition|)
+block|{
+throw|throw
+operator|new
+name|CommitFailedException
+argument_list|(
+literal|"Local name most not be empty"
+argument_list|)
+throw|;
+block|}
+if|if
+condition|(
+name|colon
 operator|!=
 operator|-
 literal|1
@@ -193,6 +213,7 @@ name|prefix
 operator|==
 literal|null
 operator|||
+operator|!
 name|prefixes
 operator|.
 name|contains
@@ -212,7 +233,9 @@ throw|throw
 operator|new
 name|CommitFailedException
 argument_list|(
-literal|"Self or parent paths (. or ..) are not valid as names"
+literal|"Invalid name: "
+operator|+
+name|name
 argument_list|)
 throw|;
 block|}
