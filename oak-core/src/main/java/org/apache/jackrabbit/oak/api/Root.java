@@ -56,7 +56,7 @@ name|String
 name|path
 parameter_list|)
 function_decl|;
-comment|/**      * Refresh this root to the latest revision. After a call to this method,      * all trees obtained through {@link #getTree(String)} are invalid and fresh      * instances must be obtained.      */
+comment|/**      * Refresh this root to the latest revision.      */
 name|void
 name|refresh
 parameter_list|()

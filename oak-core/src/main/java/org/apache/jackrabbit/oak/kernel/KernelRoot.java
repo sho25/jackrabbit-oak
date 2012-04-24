@@ -478,18 +478,6 @@ name|workspaceName
 argument_list|)
 expr_stmt|;
 comment|// FIXME don't cast to implementation
-name|this
-operator|.
-name|root
-operator|=
-operator|new
-name|KernelTree
-argument_list|(
-name|base
-argument_list|,
-name|changeLog
-argument_list|)
-expr_stmt|;
 block|}
 annotation|@
 name|Override
