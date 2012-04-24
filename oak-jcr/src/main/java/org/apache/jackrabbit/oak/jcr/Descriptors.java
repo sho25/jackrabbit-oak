@@ -732,7 +732,7 @@ name|valueFactory
 operator|.
 name|createValue
 argument_list|(
-literal|true
+literal|false
 argument_list|)
 decl_stmt|;
 name|put
@@ -1183,7 +1183,7 @@ name|Descriptor
 argument_list|(
 name|OPTION_OBSERVATION_SUPPORTED
 argument_list|,
-name|trueValue
+name|falseValue
 argument_list|,
 literal|true
 argument_list|,

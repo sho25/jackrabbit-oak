@@ -96,6 +96,26 @@ name|Main
 block|{
 specifier|public
 specifier|static
+specifier|final
+name|int
+name|PORT
+init|=
+literal|8080
+decl_stmt|;
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|URI
+init|=
+literal|"http://localhost:"
+operator|+
+name|PORT
+operator|+
+literal|"/"
+decl_stmt|;
+specifier|public
+specifier|static
 name|void
 name|main
 parameter_list|(
@@ -151,7 +171,9 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"http://localhost:8080/ -> [memory]"
+name|URI
+operator|+
+literal|" -> [memory]"
 argument_list|)
 expr_stmt|;
 name|Servlet
@@ -202,7 +224,9 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"http://localhost:8080/ -> "
+name|URI
+operator|+
+literal|" -> "
 operator|+
 name|args
 index|[
@@ -271,7 +295,9 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"http://localhost:8080/node"
+name|URI
+operator|+
+literal|"/node"
 operator|+
 name|i
 operator|+
@@ -320,7 +346,7 @@ init|=
 operator|new
 name|Server
 argument_list|(
-literal|8080
+name|PORT
 argument_list|)
 decl_stmt|;
 name|server
