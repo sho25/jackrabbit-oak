@@ -627,6 +627,13 @@ argument_list|,
 literal|false
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|namespaces
+operator|!=
+literal|null
+condition|)
+block|{
 for|for
 control|(
 name|PropertyState
@@ -660,6 +667,7 @@ operator|.
 name|getName
 argument_list|()
 return|;
+block|}
 block|}
 block|}
 return|return
