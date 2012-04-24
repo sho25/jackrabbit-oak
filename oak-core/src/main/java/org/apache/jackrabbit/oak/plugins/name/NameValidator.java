@@ -71,9 +71,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|kernel
+name|commit
 operator|.
-name|NodeState
+name|Validator
 import|;
 end_import
 
@@ -89,7 +89,7 @@ name|oak
 operator|.
 name|kernel
 operator|.
-name|Validator
+name|NodeState
 import|;
 end_import
 

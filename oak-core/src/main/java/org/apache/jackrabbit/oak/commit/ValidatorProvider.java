@@ -13,7 +13,7 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|kernel
+name|commit
 package|;
 end_package
 
