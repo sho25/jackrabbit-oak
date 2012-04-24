@@ -212,7 +212,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * TODO update javadoc  * This {@code Branch} implementation accumulates all changes into a json diff  * and applies them to the microkernel on  * {@link NodeStore#merge(org.apache.jackrabbit.oak.api.Root)}  *  * TODO: review/rewrite when OAK-45 is resolved  * When the MicroKernel has support for branching and merging private working copies,  * this implementation could:  * - directly write every operation through to the private working copy  * - batch write operations through to the private working copy when the  *   transient space gets too big.  * - spool write operations through to the private working copy on a background thread  */
+comment|/**  * This {@code Root} implementation accumulates all changes into a json diff  * and applies them to the microkernel on {@link #commit()}  *  * TODO: review/rewrite when OAK-45 is resolved  * When the MicroKernel has support for branching and merging private working copies,  * this implementation could:  * - directly write every operation through to the private working copy  * - batch write operations through to the private working copy when the  *   transient space gets too big.  * - spool write operations through to the private working copy on a background thread  */
 end_comment
 
 begin_class
@@ -232,17 +232,17 @@ specifier|final
 name|String
 name|workspaceName
 decl_stmt|;
-comment|/** Base node state of this private branch */
+comment|/** Base node state of this tree */
 specifier|private
 name|KernelNodeState
 name|base
 decl_stmt|;
-comment|/** Root state of this branch */
+comment|/** Root state of tree */
 specifier|private
 name|KernelTree
 name|root
 decl_stmt|;
-comment|/** Log of changes to this branch */
+comment|/** Log of changes to tree */
 specifier|private
 name|ChangeLog
 name|changeLog
@@ -500,7 +500,6 @@ parameter_list|()
 throws|throws
 name|CommitFailedException
 block|{
-comment|// TODO implicit refresh, doc in contract
 name|MicroKernel
 name|kernel
 init|=
@@ -549,7 +548,7 @@ throw|;
 block|}
 block|}
 comment|//------------------------------------------------------------< internal>---
-comment|/**      * Return the base node state of this private branch      * @return base node state      */
+comment|/**      * Return the base node state of this tree      * @return base node state      */
 name|NodeState
 name|getBaseNodeState
 parameter_list|()
@@ -558,7 +557,7 @@ return|return
 name|base
 return|;
 block|}
-comment|/**      * Atomically merges the changes from this branch back into the      * {@code target}.      *      * @param microkernel Microkernel instance for applying the changes      * @param target target of the merge operation      * @return node state resulting from merging      */
+comment|/**      * Atomically merges the changes from this tree back into the {@code target}.      *      * @param microkernel Microkernel instance for applying the changes      * @param target target of the merge operation      * @return node state resulting from merging      */
 name|KernelNodeState
 name|mergeInto
 parameter_list|(
@@ -888,7 +887,7 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/**      * This {@code Listener} implementation records all changes to      * a associated branch as JSOP.      */
+comment|/**      * This {@code Listener} implementation records all changes to      * a associated tree as JSOP.      */
 specifier|private
 specifier|static
 class|class

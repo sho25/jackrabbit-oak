@@ -28,7 +28,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Authentication session for accessing (TODO: a workspace inside) a content  * repository.  *<p>  * - retrieving information from persistent layer (MK) that are accessible to  *   a given JCR session  *  * - validate information being written back to the persistent layer. this includes  *   permission evaluation, node type and name constraints etc.  *  * - update the revision ID a given session is operating on when certain actions  *   take place (save, refresh, TBD)  *  * - Provide access to authentication and authorization related information  *  * - The implementation of this and all related interfaces are intended to only  *   hold the state of the persistent layer at a given revision without any  *   session-related state modifications.  *<p>  * TODO: describe how this interface is intended to handle validation:  * nt, names, ac, constraints...  *<p>  * This interface is thread-safe.  */
+comment|/**  * Authentication session for accessing (TODO: a workspace inside) a content  * repository.  *<p>  * - retrieving information from persistent layer (MK) that are accessible to  *   a given JCR session  *  * - validate information being written back to the persistent layer. this includes  *   permission evaluation, node type and name constraints etc.  *  * - Provide access to authentication and authorization related information  *  * - The implementation of this and all related interfaces are intended to only  *   hold the state of the persistent layer at a given revision without any  *   session-related state modifications.  *<p>  * TODO: describe how this interface is intended to handle validation:  * nt, names, ac, constraints...  *<p>  * This interface is thread-safe.  */
 end_comment
 
 begin_interface
@@ -48,7 +48,7 @@ name|String
 name|getWorkspaceName
 parameter_list|()
 function_decl|;
-comment|/**      * TODO update javadoc      * Branch the current root. Use {@link #commit(Root)} to atomically apply the      * changes made in this branch to the underlying Microkernel.      *      * @return branch of the current root.      */
+comment|/**      * The current root as seen by this content session. Use {@link Root#commit()} to      * atomically apply the changes made in that subtree the underlying Microkernel.      *      * @return  the current root      */
 name|Root
 name|getCurrentRoot
 parameter_list|()

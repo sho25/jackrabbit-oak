@@ -452,7 +452,6 @@ literal|"login failed"
 argument_list|)
 throw|;
 block|}
-comment|// TODO set revision!?
 name|NodeState
 name|wspRoot
 init|=

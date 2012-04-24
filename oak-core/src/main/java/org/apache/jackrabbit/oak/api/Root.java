@@ -18,7 +18,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * An branch for modifying existing and creating new node states.  */
+comment|/**  * The root of a {@link Tree}.  */
 end_comment
 
 begin_interface
@@ -26,7 +26,7 @@ specifier|public
 interface|interface
 name|Root
 block|{
-comment|/**      * Move the child located at {@code sourcePath} to a child      * at {@code destPath}. Do nothing if either the source      * does not exist, the parent of the destination does not exist      * or the destination exists already. Both paths must resolve      * to a child located in this branch.      *      * @param sourcePath source path relative to this branch      * @param destPath destination path relative to this branch      * @return  {@code true} on success, {@code false} otherwise.      */
+comment|/**      * Move the child located at {@code sourcePath} to a child      * at {@code destPath}. Do nothing if either the source      * does not exist, the parent of the destination does not exist      * or the destination exists already. Both paths must resolve      * to a child located beneath this root.      *      * @param sourcePath source path relative to this root      * @param destPath destination path relative to this root      * @return  {@code true} on success, {@code false} otherwise.      */
 name|boolean
 name|move
 parameter_list|(
@@ -37,7 +37,7 @@ name|String
 name|destPath
 parameter_list|)
 function_decl|;
-comment|/**      * Copy the child located at {@code sourcePath} to a child      * at {@code destPath}. Do nothing if either the source      * does not exist, the parent of the destination does not exist      * or the destination exists already. Both paths must resolve      * to a child located in this branch.      *      * @param sourcePath source path relative to this branch      * @param destPath destination path relative to this branch      * @return  {@code true} on success, {@code false} otherwise.      */
+comment|/**      * Copy the child located at {@code sourcePath} to a child      * at {@code destPath}. Do nothing if either the source      * does not exist, the parent of the destination does not exist      * or the destination exists already. Both paths must resolve      * to a child located in this root.      *      * @param sourcePath source path relative to this root      * @param destPath destination path relative to this root      * @return  {@code true} on success, {@code false} otherwise.      */
 name|boolean
 name|copy
 parameter_list|(
@@ -48,7 +48,7 @@ name|String
 name|destPath
 parameter_list|)
 function_decl|;
-comment|/**      * Retrieve the {@code ContentTree} at the given {@code path}.      * The path must resolve to a content tree in this branch.      *      * @param path path to the content tree      * @return content tree at the given path or {@code null} if no      * such tree exists      */
+comment|/**      * Retrieve the {@code ContentTree} at the given {@code path}.      * The path must resolve to a content tree in this root.      *      * @param path path to the content tree      * @return content tree at the given path or {@code null} if no      * such tree exists      */
 name|Tree
 name|getTree
 parameter_list|(
@@ -56,12 +56,12 @@ name|String
 name|path
 parameter_list|)
 function_decl|;
-comment|/**      * Refresh this content session to the latest revision of the underlying Microkernel.      */
+comment|/**      * Refresh this root to the latest revision. After a call to this method,      * all trees obtained through {@link #getTree(String)} are invalid and fresh      * instances must be obtained.      */
 name|void
 name|refresh
 parameter_list|()
 function_decl|;
-comment|/**      * Atomically apply all changes in the passed {@code branch} to the underlying      * Microkernel.      *      * @throws CommitFailedException TODO: add description and clarify how JCR exception can be generated from this generic exception      */
+comment|/**      * Atomically apply all changes made to the tree beneath this root to the      * underlying store and refreshes this root. After a call to this method,      * all trees obtained through {@link #getTree(String)} are invalid and fresh      * instances must be obtained.      *      * @throws CommitFailedException TODO: add description and clarify how JCR exception can be generated from this generic exception      */
 name|void
 name|commit
 parameter_list|()

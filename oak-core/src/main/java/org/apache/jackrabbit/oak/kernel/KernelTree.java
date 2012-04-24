@@ -509,7 +509,7 @@ name|copied
 parameter_list|)
 function_decl|;
 block|}
-comment|/**      * Create a new instance representing the root of a branch.      * @param persistentState  underlying persistent state      * @param listener  change listener      */
+comment|/**      * Create a new instance representing the root of a tree      * @param persistentState  underlying persistent state      * @param listener  change listener      */
 name|KernelTree
 parameter_list|(
 name|NodeState

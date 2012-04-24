@@ -18,7 +18,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * TODO update javadoc  * Storage abstraction for content trees. At any given point in time  * the stored content tree is rooted at a single immutable node state.  * Changes in the tree are constructed by branching off a private copy  * using the {@link #branch(NodeState)} method which can be modified  * and merged back using the {@link #merge(org.apache.jackrabbit.oak.api.Root)}  * method.  *<p>  * This is a low-level interface that doesn't cover functionality like  * merging concurrent changes or rejecting new tree states based on some  * higher-level consistency constraints.  *  * TODO: check if can be replaced by mk.model.NodeStore  */
+comment|/**  * TODO update javadoc  * Storage abstraction for content trees. At any given point in time  * the stored content tree is rooted at a single immutable node state.  *<p>  * This is a low-level interface that doesn't cover functionality like  * merging concurrent changes or rejecting new tree states based on some  * higher-level consistency constraints.  *  * TODO: check if can be replaced by mk.model.NodeStore  */
 end_comment
 
 begin_interface
