@@ -48,24 +48,9 @@ name|String
 name|getWorkspaceName
 parameter_list|()
 function_decl|;
-comment|/**      * Refresh this content session to the latest revision of the underlying Microkernel.      */
-name|void
-name|refresh
-parameter_list|()
-function_decl|;
-comment|/**      * Atomically apply all changes in the passed {@code branch} to the underlying      * Microkernel.      *      * @param branch  branch carrying the changes to be applies      * @throws CommitFailedException TODO: add description and clarify how JCR exception can be generated from this generic exception      */
-name|void
-name|commit
-parameter_list|(
-name|Branch
-name|branch
-parameter_list|)
-throws|throws
-name|CommitFailedException
-function_decl|;
-comment|/**      * Branch the current root. Use {@link #commit(Branch)} to atomically apply the      * changes made in this branch to the underlying Microkernel.      *      * @return branch of the current root.      */
-name|Branch
-name|branchRoot
+comment|/**      * TODO update javadoc      * Branch the current root. Use {@link #commit(Root)} to atomically apply the      * changes made in this branch to the underlying Microkernel.      *      * @return branch of the current root.      */
+name|Root
+name|getCurrentRoot
 parameter_list|()
 function_decl|;
 comment|/**      * Get the query engine.      *      * @return the query engine      */

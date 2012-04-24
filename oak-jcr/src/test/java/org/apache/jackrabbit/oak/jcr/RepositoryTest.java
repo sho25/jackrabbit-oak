@@ -6731,6 +6731,12 @@ block|}
 block|}
 annotation|@
 name|Test
+annotation|@
+name|Ignore
+argument_list|(
+literal|"WIP"
+argument_list|)
+comment|// FIXME session.refresh
 specifier|public
 name|void
 name|sessionRefresh

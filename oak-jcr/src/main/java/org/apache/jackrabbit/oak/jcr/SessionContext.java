@@ -45,7 +45,7 @@ name|oak
 operator|.
 name|api
 operator|.
-name|Branch
+name|Root
 import|;
 end_import
 
@@ -169,7 +169,7 @@ parameter_list|()
 throws|throws
 name|RepositoryException
 function_decl|;
-name|Branch
+name|Root
 name|getBranch
 parameter_list|()
 function_decl|;

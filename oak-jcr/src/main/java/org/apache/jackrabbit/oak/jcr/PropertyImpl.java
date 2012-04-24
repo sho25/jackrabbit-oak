@@ -29,7 +29,7 @@ name|oak
 operator|.
 name|api
 operator|.
-name|Branch
+name|Root
 import|;
 end_import
 
@@ -2366,7 +2366,7 @@ return|;
 block|}
 block|}
 specifier|private
-name|Branch
+name|Root
 name|getBranch
 parameter_list|()
 block|{

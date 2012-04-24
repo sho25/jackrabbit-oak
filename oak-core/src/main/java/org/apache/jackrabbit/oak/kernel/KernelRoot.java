@@ -43,6 +43,22 @@ name|jackrabbit
 operator|.
 name|mk
 operator|.
+name|api
+operator|.
+name|MicroKernelException
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|mk
+operator|.
 name|json
 operator|.
 name|JsonBuilder
@@ -61,7 +77,7 @@ name|oak
 operator|.
 name|api
 operator|.
-name|Branch
+name|Root
 import|;
 end_import
 
@@ -77,7 +93,7 @@ name|oak
 operator|.
 name|api
 operator|.
-name|Tree
+name|CommitFailedException
 import|;
 end_import
 
@@ -94,6 +110,22 @@ operator|.
 name|api
 operator|.
 name|Scalar
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|api
+operator|.
+name|Tree
 import|;
 end_import
 
@@ -180,19 +212,38 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This {@code Branch} implementation accumulates all changes into a json diff  * and applies them to the microkernel on  * {@link NodeStore#merge(org.apache.jackrabbit.oak.api.Branch)}  *  * TODO: review/rewrite when OAK-45 is resolved  * When the MicroKernel has support for branching and merging private working copies,  * this implementation could:  * - directly write every operation through to the private working copy  * - batch write operations through to the private working copy when the  *   transient space gets too big.  * - spool write operations through to the private working copy on a background thread  */
+comment|/**  * TODO update javadoc  * This {@code Branch} implementation accumulates all changes into a json diff  * and applies them to the microkernel on  * {@link NodeStore#merge(org.apache.jackrabbit.oak.api.Root)}  *  * TODO: review/rewrite when OAK-45 is resolved  * When the MicroKernel has support for branching and merging private working copies,  * this implementation could:  * - directly write every operation through to the private working copy  * - batch write operations through to the private working copy when the  *   transient space gets too big.  * - spool write operations through to the private working copy on a background thread  */
 end_comment
 
 begin_class
 specifier|public
 class|class
-name|KernelBranch
+name|KernelRoot
 implements|implements
-name|Branch
+name|Root
 block|{
-comment|/** Log of changes to this branch */
 specifier|private
 specifier|final
+name|NodeStore
+name|store
+decl_stmt|;
+specifier|private
+specifier|final
+name|String
+name|workspaceName
+decl_stmt|;
+comment|/** Base node state of this private branch */
+specifier|private
+name|KernelNodeState
+name|base
+decl_stmt|;
+comment|/** Root state of this branch */
+specifier|private
+name|KernelTree
+name|root
+decl_stmt|;
+comment|/** Log of changes to this branch */
+specifier|private
 name|ChangeLog
 name|changeLog
 init|=
@@ -200,31 +251,48 @@ operator|new
 name|ChangeLog
 argument_list|()
 decl_stmt|;
-comment|/** Base node state of this private branch */
-specifier|private
-specifier|final
-name|NodeState
-name|base
-decl_stmt|;
-comment|/** Root state of this branch */
-specifier|private
-specifier|final
-name|KernelTree
-name|root
-decl_stmt|;
-comment|/**      * Create a new branch for the given base node state      * @param base  base node state of the private branch      */
-name|KernelBranch
+specifier|public
+name|KernelRoot
 parameter_list|(
-name|NodeState
-name|base
+name|NodeStore
+name|store
+parameter_list|,
+name|String
+name|workspaceName
 parameter_list|)
 block|{
 name|this
 operator|.
+name|store
+operator|=
+name|store
+expr_stmt|;
+name|this
+operator|.
+name|workspaceName
+operator|=
+name|workspaceName
+expr_stmt|;
+name|this
+operator|.
 name|base
 operator|=
-name|base
+operator|(
+name|KernelNodeState
+operator|)
+name|store
+operator|.
+name|getRoot
+argument_list|()
+operator|.
+name|getChildNode
+argument_list|(
+name|workspaceName
+argument_list|)
 expr_stmt|;
+comment|// FIXME don't cast to implementation
+name|this
+operator|.
 name|root
 operator|=
 operator|new
@@ -385,6 +453,101 @@ name|path
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
+specifier|public
+name|void
+name|refresh
+parameter_list|()
+block|{
+name|this
+operator|.
+name|base
+operator|=
+operator|(
+name|KernelNodeState
+operator|)
+name|store
+operator|.
+name|getRoot
+argument_list|()
+operator|.
+name|getChildNode
+argument_list|(
+name|workspaceName
+argument_list|)
+expr_stmt|;
+comment|// FIXME don't cast to implementation
+name|this
+operator|.
+name|root
+operator|=
+operator|new
+name|KernelTree
+argument_list|(
+name|base
+argument_list|,
+name|changeLog
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|void
+name|commit
+parameter_list|()
+throws|throws
+name|CommitFailedException
+block|{
+comment|// TODO implicit refresh, doc in contract
+name|MicroKernel
+name|kernel
+init|=
+operator|(
+operator|(
+name|KernelNodeStore
+operator|)
+name|store
+operator|)
+operator|.
+name|kernel
+decl_stmt|;
+comment|// FIXME don't cast to implementation
+try|try
+block|{
+name|mergeInto
+argument_list|(
+name|kernel
+argument_list|,
+name|base
+argument_list|)
+expr_stmt|;
+name|changeLog
+operator|=
+operator|new
+name|ChangeLog
+argument_list|()
+expr_stmt|;
+name|refresh
+argument_list|()
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|MicroKernelException
+name|e
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|CommitFailedException
+argument_list|(
+name|e
+argument_list|)
+throw|;
+block|}
+block|}
 comment|//------------------------------------------------------------< internal>---
 comment|/**      * Return the base node state of this private branch      * @return base node state      */
 name|NodeState
@@ -406,6 +569,7 @@ name|KernelNodeState
 name|target
 parameter_list|)
 block|{
+comment|// TODO refactor into commit
 name|String
 name|targetPath
 init|=

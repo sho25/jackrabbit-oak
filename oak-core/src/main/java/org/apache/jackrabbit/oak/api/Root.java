@@ -24,7 +24,7 @@ end_comment
 begin_interface
 specifier|public
 interface|interface
-name|Branch
+name|Root
 block|{
 comment|/**      * Move the child located at {@code sourcePath} to a child      * at {@code destPath}. Do nothing if either the source      * does not exist, the parent of the destination does not exist      * or the destination exists already. Both paths must resolve      * to a child located in this branch.      *      * @param sourcePath source path relative to this branch      * @param destPath destination path relative to this branch      * @return  {@code true} on success, {@code false} otherwise.      */
 name|boolean
@@ -55,6 +55,18 @@ parameter_list|(
 name|String
 name|path
 parameter_list|)
+function_decl|;
+comment|/**      * Refresh this content session to the latest revision of the underlying Microkernel.      */
+name|void
+name|refresh
+parameter_list|()
+function_decl|;
+comment|/**      * Atomically apply all changes in the passed {@code branch} to the underlying      * Microkernel.      *      * @throws CommitFailedException TODO: add description and clarify how JCR exception can be generated from this generic exception      */
+name|void
+name|commit
+parameter_list|()
+throws|throws
+name|CommitFailedException
 function_decl|;
 block|}
 end_interface
