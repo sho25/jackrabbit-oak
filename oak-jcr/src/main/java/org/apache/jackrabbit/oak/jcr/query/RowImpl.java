@@ -126,6 +126,7 @@ name|ResultRow
 name|row
 decl_stmt|;
 specifier|private
+specifier|final
 name|ValueFactoryImpl
 name|valueFactory
 decl_stmt|;

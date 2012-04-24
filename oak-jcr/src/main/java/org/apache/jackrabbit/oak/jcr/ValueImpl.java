@@ -240,7 +240,7 @@ operator|.
 name|DummyNamePathResolver
 name|resolver
 decl_stmt|;
-comment|/**      * Constructs a<code>ValueImpl</code> object representing an SPI      *<codeQValue</code>.      *      * @param value the value object this<code>ValueImpl</code> should represent      * @param resolver      */
+comment|/**      * Constructs a {@code ValueImpl} object representing an SPI      *<codeQValue</code>.      *      * @param value the value object this {@code ValueImpl} should represent      * @param resolver      */
 specifier|public
 name|ValueImpl
 parameter_list|(
@@ -276,6 +276,8 @@ return|;
 block|}
 comment|//--------------------------------------------------------------< Value>---
 comment|/**      * @see javax.jcr.Value#getType()      */
+annotation|@
+name|Override
 specifier|public
 name|int
 name|getType
@@ -289,6 +291,8 @@ argument_list|()
 return|;
 block|}
 comment|/**      * @see javax.jcr.Value#getBoolean()      */
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|getBoolean
@@ -347,6 +351,8 @@ throw|;
 block|}
 block|}
 comment|/**      * @see javax.jcr.Value#getDate()      */
+annotation|@
+name|Override
 specifier|public
 name|Calendar
 name|getDate
@@ -436,6 +442,8 @@ name|cal
 return|;
 block|}
 comment|/**      * @see javax.jcr.Value#getDecimal()      */
+annotation|@
+name|Override
 specifier|public
 name|BigDecimal
 name|getDecimal
@@ -476,6 +484,8 @@ throw|;
 block|}
 block|}
 comment|/**      * @see javax.jcr.Value#getDouble()      */
+annotation|@
+name|Override
 specifier|public
 name|double
 name|getDouble
@@ -516,6 +526,8 @@ throw|;
 block|}
 block|}
 comment|/**      * @see javax.jcr.Value#getLong()      */
+annotation|@
+name|Override
 specifier|public
 name|long
 name|getLong
@@ -556,6 +568,8 @@ throw|;
 block|}
 block|}
 comment|/**      * @see javax.jcr.Value#getString()      */
+annotation|@
+name|Override
 specifier|public
 name|String
 name|getString
@@ -661,6 +675,8 @@ return|;
 block|}
 block|}
 comment|/**      * @see javax.jcr.Value#getStream()      */
+annotation|@
+name|Override
 specifier|public
 name|InputStream
 name|getStream
@@ -737,6 +753,8 @@ name|stream
 return|;
 block|}
 comment|/**      * @see javax.jcr.Value#getBinary()      */
+annotation|@
+name|Override
 specifier|public
 name|Binary
 name|getBinary

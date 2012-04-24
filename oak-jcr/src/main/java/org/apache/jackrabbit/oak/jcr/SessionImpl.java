@@ -93,22 +93,6 @@ name|oak
 operator|.
 name|api
 operator|.
-name|Root
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|api
-operator|.
 name|CommitFailedException
 import|;
 end_import
@@ -126,6 +110,22 @@ operator|.
 name|api
 operator|.
 name|ContentSession
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|api
+operator|.
+name|Root
 import|;
 end_import
 
@@ -190,16 +190,6 @@ operator|.
 name|sax
 operator|.
 name|ContentHandler
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|jcr
-operator|.
-name|AccessDeniedException
 import|;
 end_import
 
@@ -1218,10 +1208,6 @@ name|PrincipalManager
 name|getPrincipalManager
 parameter_list|()
 throws|throws
-name|AccessDeniedException
-throws|,
-name|UnsupportedRepositoryOperationException
-throws|,
 name|RepositoryException
 block|{
 comment|// TODO
@@ -1240,10 +1226,6 @@ name|UserManager
 name|getUserManager
 parameter_list|()
 throws|throws
-name|AccessDeniedException
-throws|,
-name|UnsupportedRepositoryOperationException
-throws|,
 name|RepositoryException
 block|{
 comment|// TODO
