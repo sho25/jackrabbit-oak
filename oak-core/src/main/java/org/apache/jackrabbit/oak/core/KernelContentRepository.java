@@ -344,6 +344,12 @@ operator|+
 name|DEFAULT_WORKSPACE_NAME
 operator|+
 literal|"\":{}"
+operator|+
+literal|"^\""
+operator|+
+name|DEFAULT_WORKSPACE_NAME
+operator|+
+literal|"/jcr:primaryType\":\"nt:unstructured\" "
 argument_list|,
 literal|null
 argument_list|,
