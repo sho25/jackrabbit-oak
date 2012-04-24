@@ -763,10 +763,13 @@ operator|.
 name|OPTION_LOCKING_SUPPORTED
 argument_list|)
 expr_stmt|;
-comment|// TODO
-return|return
-literal|null
-return|;
+throw|throw
+operator|new
+name|UnsupportedRepositoryOperationException
+argument_list|(
+literal|"TODO"
+argument_list|)
+throw|;
 block|}
 annotation|@
 name|Override
@@ -849,10 +852,13 @@ block|{
 name|ensureIsAlive
 argument_list|()
 expr_stmt|;
-comment|// TODO
-return|return
-literal|null
-return|;
+throw|throw
+operator|new
+name|UnsupportedRepositoryOperationException
+argument_list|(
+literal|"TODO"
+argument_list|)
+throw|;
 block|}
 annotation|@
 name|Override
@@ -873,10 +879,13 @@ expr_stmt|;
 name|ensureIsAlive
 argument_list|()
 expr_stmt|;
-comment|// TODO
-return|return
-literal|null
-return|;
+throw|throw
+operator|new
+name|UnsupportedRepositoryOperationException
+argument_list|(
+literal|"TODO"
+argument_list|)
+throw|;
 block|}
 annotation|@
 name|Override
@@ -897,10 +906,13 @@ operator|.
 name|OPTION_VERSIONING_SUPPORTED
 argument_list|)
 expr_stmt|;
-comment|// TODO
-return|return
-literal|null
-return|;
+throw|throw
+operator|new
+name|UnsupportedRepositoryOperationException
+argument_list|(
+literal|"TODO"
+argument_list|)
+throw|;
 block|}
 annotation|@
 name|Override
@@ -956,10 +968,13 @@ expr_stmt|;
 name|ensureIsAlive
 argument_list|()
 expr_stmt|;
-comment|// TODO
-return|return
-literal|null
-return|;
+throw|throw
+operator|new
+name|UnsupportedRepositoryOperationException
+argument_list|(
+literal|"TODO"
+argument_list|)
+throw|;
 block|}
 annotation|@
 name|SuppressWarnings

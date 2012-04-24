@@ -599,10 +599,13 @@ block|{
 name|ensureIsAlive
 argument_list|()
 expr_stmt|;
-comment|// TODO
-return|return
-literal|null
-return|;
+throw|throw
+operator|new
+name|UnsupportedRepositoryOperationException
+argument_list|(
+literal|"TODO"
+argument_list|)
+throw|;
 block|}
 annotation|@
 name|Override
@@ -666,10 +669,13 @@ block|{
 name|ensureIsAlive
 argument_list|()
 expr_stmt|;
-comment|// TODO
-return|return
-literal|null
-return|;
+throw|throw
+operator|new
+name|UnsupportedRepositoryOperationException
+argument_list|(
+literal|"TODO"
+argument_list|)
+throw|;
 block|}
 annotation|@
 name|Override
@@ -686,10 +692,13 @@ block|{
 name|ensureIsAlive
 argument_list|()
 expr_stmt|;
-comment|// TODO
-return|return
-literal|null
-return|;
+throw|throw
+operator|new
+name|UnsupportedRepositoryOperationException
+argument_list|(
+literal|"TODO"
+argument_list|)
+throw|;
 block|}
 comment|//------------------------------------------------------------< Writing>---
 annotation|@
@@ -916,10 +925,13 @@ block|{
 name|ensureIsAlive
 argument_list|()
 expr_stmt|;
-comment|// TODO
-return|return
-literal|null
-return|;
+throw|throw
+operator|new
+name|UnsupportedRepositoryOperationException
+argument_list|(
+literal|"TODO"
+argument_list|)
+throw|;
 block|}
 comment|//------------------------------------------------------------< Locking>---
 comment|/**      * @see javax.jcr.Session#addLockToken(String)      */
@@ -1172,10 +1184,13 @@ block|{
 name|ensureIsAlive
 argument_list|()
 expr_stmt|;
-comment|// TODO
-return|return
-literal|null
-return|;
+throw|throw
+operator|new
+name|UnsupportedRepositoryOperationException
+argument_list|(
+literal|"TODO"
+argument_list|)
+throw|;
 block|}
 comment|//----------------------------------------------------------< Retention>---
 annotation|@

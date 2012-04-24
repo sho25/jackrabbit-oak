@@ -2506,10 +2506,13 @@ block|{
 name|checkStatus
 argument_list|()
 expr_stmt|;
-comment|// TODO
-return|return
-literal|null
-return|;
+throw|throw
+operator|new
+name|UnsupportedRepositoryOperationException
+argument_list|(
+literal|"TODO"
+argument_list|)
+throw|;
 block|}
 comment|/**      * @see javax.jcr.Node#getWeakReferences()      */
 annotation|@
@@ -2543,10 +2546,13 @@ block|{
 name|checkStatus
 argument_list|()
 expr_stmt|;
-comment|// TODO
-return|return
-literal|null
-return|;
+throw|throw
+operator|new
+name|UnsupportedRepositoryOperationException
+argument_list|(
+literal|"TODO"
+argument_list|)
+throw|;
 block|}
 annotation|@
 name|Override
@@ -2994,10 +3000,13 @@ block|{
 name|checkStatus
 argument_list|()
 expr_stmt|;
-comment|// TODO
-return|return
-literal|null
-return|;
+throw|throw
+operator|new
+name|UnsupportedRepositoryOperationException
+argument_list|(
+literal|"TODO"
+argument_list|)
+throw|;
 block|}
 annotation|@
 name|Override
@@ -3014,10 +3023,13 @@ block|{
 name|checkStatus
 argument_list|()
 expr_stmt|;
-comment|// TODO
-return|return
-literal|null
-return|;
+throw|throw
+operator|new
+name|UnsupportedRepositoryOperationException
+argument_list|(
+literal|"TODO"
+argument_list|)
+throw|;
 block|}
 annotation|@
 name|Override
@@ -3519,10 +3531,13 @@ parameter_list|()
 throws|throws
 name|RepositoryException
 block|{
-comment|// TODO
-return|return
-literal|null
-return|;
+throw|throw
+operator|new
+name|UnsupportedRepositoryOperationException
+argument_list|(
+literal|"TODO"
+argument_list|)
+throw|;
 block|}
 annotation|@
 name|Override
