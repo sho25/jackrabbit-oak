@@ -89,7 +89,7 @@ name|oak
 operator|.
 name|api
 operator|.
-name|ContentTree
+name|Tree
 import|;
 end_import
 
@@ -105,7 +105,7 @@ name|oak
 operator|.
 name|api
 operator|.
-name|ContentTree
+name|Tree
 operator|.
 name|Status
 import|;
@@ -585,8 +585,8 @@ name|class
 argument_list|)
 decl_stmt|;
 specifier|private
-name|ContentTree
-name|contentTree
+name|Tree
+name|tree
 decl_stmt|;
 name|NodeImpl
 parameter_list|(
@@ -596,8 +596,8 @@ name|SessionImpl
 argument_list|>
 name|sessionContext
 parameter_list|,
-name|ContentTree
-name|contentTree
+name|Tree
+name|tree
 parameter_list|)
 block|{
 name|super
@@ -607,9 +607,9 @@ argument_list|)
 expr_stmt|;
 name|this
 operator|.
-name|contentTree
+name|tree
 operator|=
-name|contentTree
+name|tree
 expr_stmt|;
 block|}
 comment|//---------------------------------------------------------------< Item>---
@@ -667,7 +667,7 @@ name|RepositoryException
 block|{
 if|if
 condition|(
-name|getContentTree
+name|getTree
 argument_list|()
 operator|.
 name|getParent
@@ -690,7 +690,7 @@ name|NodeImpl
 argument_list|(
 name|sessionContext
 argument_list|,
-name|getContentTree
+name|getTree
 argument_list|()
 operator|.
 name|getParent
@@ -740,10 +740,10 @@ literal|" does not exist"
 argument_list|)
 throw|;
 block|}
-name|ContentTree
+name|Tree
 name|ancestor
 init|=
-name|getContentTree
+name|getTree
 argument_list|()
 decl_stmt|;
 while|while
@@ -804,7 +804,7 @@ name|isNew
 parameter_list|()
 block|{
 return|return
-name|getContentTree
+name|getTree
 argument_list|()
 operator|.
 name|getParent
@@ -830,7 +830,7 @@ name|isModified
 parameter_list|()
 block|{
 return|return
-name|getContentTree
+name|getTree
 argument_list|()
 operator|.
 name|getParent
@@ -857,7 +857,7 @@ parameter_list|()
 throws|throws
 name|RepositoryException
 block|{
-name|getContentTree
+name|getTree
 argument_list|()
 operator|.
 name|getParent
@@ -929,7 +929,7 @@ name|relPath
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|ContentTree
+name|Tree
 name|parentState
 init|=
 name|getBranch
@@ -1872,11 +1872,11 @@ argument_list|()
 expr_stmt|;
 name|Iterable
 argument_list|<
-name|ContentTree
+name|Tree
 argument_list|>
 name|children
 init|=
-name|getContentTree
+name|getTree
 argument_list|()
 operator|.
 name|getChildren
@@ -1914,13 +1914,13 @@ argument_list|()
 expr_stmt|;
 name|Iterator
 argument_list|<
-name|ContentTree
+name|Tree
 argument_list|>
 name|children
 init|=
 name|filter
 argument_list|(
-name|getContentTree
+name|getTree
 argument_list|()
 operator|.
 name|getChildren
@@ -1932,7 +1932,7 @@ argument_list|,
 operator|new
 name|Predicate
 argument_list|<
-name|ContentTree
+name|Tree
 argument_list|>
 argument_list|()
 block|{
@@ -1942,7 +1942,7 @@ specifier|public
 name|boolean
 name|evaluate
 parameter_list|(
-name|ContentTree
+name|Tree
 name|state
 parameter_list|)
 block|{
@@ -1993,13 +1993,13 @@ argument_list|()
 expr_stmt|;
 name|Iterator
 argument_list|<
-name|ContentTree
+name|Tree
 argument_list|>
 name|children
 init|=
 name|filter
 argument_list|(
-name|getContentTree
+name|getTree
 argument_list|()
 operator|.
 name|getChildren
@@ -2011,7 +2011,7 @@ argument_list|,
 operator|new
 name|Predicate
 argument_list|<
-name|ContentTree
+name|Tree
 argument_list|>
 argument_list|()
 block|{
@@ -2021,7 +2021,7 @@ specifier|public
 name|boolean
 name|evaluate
 parameter_list|(
-name|ContentTree
+name|Tree
 name|state
 parameter_list|)
 block|{
@@ -2116,7 +2116,7 @@ name|PropertyState
 argument_list|>
 name|properties
 init|=
-name|getContentTree
+name|getTree
 argument_list|()
 operator|.
 name|getProperties
@@ -2160,7 +2160,7 @@ name|properties
 init|=
 name|filter
 argument_list|(
-name|getContentTree
+name|getTree
 argument_list|()
 operator|.
 name|getProperties
@@ -2236,7 +2236,7 @@ name|propertyNames
 init|=
 name|filter
 argument_list|(
-name|getContentTree
+name|getTree
 argument_list|()
 operator|.
 name|getProperties
@@ -2604,7 +2604,7 @@ name|checkStatus
 argument_list|()
 expr_stmt|;
 return|return
-name|getContentTree
+name|getTree
 argument_list|()
 operator|.
 name|getChildrenCount
@@ -2626,7 +2626,7 @@ name|checkStatus
 argument_list|()
 expr_stmt|;
 return|return
-name|getContentTree
+name|getTree
 argument_list|()
 operator|.
 name|getPropertyCount
@@ -3576,7 +3576,7 @@ name|name
 parameter_list|()
 block|{
 return|return
-name|getContentTree
+name|getTree
 argument_list|()
 operator|.
 name|getName
@@ -3590,7 +3590,7 @@ block|{
 return|return
 literal|'/'
 operator|+
-name|getContentTree
+name|getTree
 argument_list|()
 operator|.
 name|getPath
@@ -3600,12 +3600,12 @@ block|}
 comment|//------------------------------------------------------------< private>---
 comment|/**      * @return The node state associated with this node      */
 specifier|private
-name|ContentTree
+name|Tree
 name|getState
 parameter_list|()
 block|{
 return|return
-name|getContentTree
+name|getTree
 argument_list|()
 return|;
 block|}
@@ -3623,19 +3623,19 @@ return|;
 block|}
 specifier|private
 specifier|synchronized
-name|ContentTree
-name|getContentTree
+name|Tree
+name|getTree
 parameter_list|()
 block|{
 return|return
-name|contentTree
+name|tree
 operator|=
 name|getBranch
 argument_list|()
 operator|.
 name|getContentTree
 argument_list|(
-name|contentTree
+name|tree
 operator|.
 name|getPath
 argument_list|()
@@ -3651,7 +3651,7 @@ name|nodeIterator
 parameter_list|(
 name|Iterator
 argument_list|<
-name|ContentTree
+name|Tree
 argument_list|>
 name|childNodeStates
 parameter_list|)
@@ -3666,7 +3666,7 @@ argument_list|,
 operator|new
 name|Function1
 argument_list|<
-name|ContentTree
+name|Tree
 argument_list|,
 name|Node
 argument_list|>
@@ -3678,7 +3678,7 @@ specifier|public
 name|Node
 name|apply
 parameter_list|(
-name|ContentTree
+name|Tree
 name|state
 parameter_list|)
 block|{
@@ -3742,7 +3742,7 @@ name|PropertyImpl
 argument_list|(
 name|sessionContext
 argument_list|,
-name|getContentTree
+name|getTree
 argument_list|()
 argument_list|,
 name|propertyState
@@ -3774,7 +3774,7 @@ argument_list|,
 name|relPath
 argument_list|)
 decl_stmt|;
-name|ContentTree
+name|Tree
 name|tree
 init|=
 name|getBranch
@@ -3827,7 +3827,7 @@ name|relPath
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|ContentTree
+name|Tree
 name|parent
 init|=
 name|getBranch

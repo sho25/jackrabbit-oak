@@ -141,7 +141,7 @@ name|oak
 operator|.
 name|api
 operator|.
-name|ContentTree
+name|Tree
 import|;
 end_import
 
@@ -1510,7 +1510,7 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|ContentTree
+name|Tree
 name|getContentTree
 parameter_list|(
 name|NodeImpl

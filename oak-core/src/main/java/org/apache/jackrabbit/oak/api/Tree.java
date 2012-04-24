@@ -34,7 +34,7 @@ end_comment
 begin_interface
 specifier|public
 interface|interface
-name|ContentTree
+name|Tree
 block|{
 comment|/**      * Status of an item in a {@code ContentTree}      */
 enum|enum
@@ -63,7 +63,7 @@ name|getPath
 parameter_list|()
 function_decl|;
 comment|/**      * @return  the parent of this {@code ContentTree} instance.      */
-name|ContentTree
+name|Tree
 name|getParent
 parameter_list|()
 function_decl|;
@@ -105,7 +105,7 @@ name|getProperties
 parameter_list|()
 function_decl|;
 comment|/**      * Get a child of this {@code ContentTree} instance      * @param name  name of the child      * @return  the child with the given {@code name} or {@code null} if no such child      * exists.      */
-name|ContentTree
+name|Tree
 name|getChild
 parameter_list|(
 name|String
@@ -136,13 +136,13 @@ function_decl|;
 comment|/**      * All children of this {@code ContentTree} instance. The returned {@code Iterable}      * has snapshot semantics. That is, it reflect the state of this {@code ContentTree}      * instance. instance at the time of the call. Later changes to this instance are no      * visible to iterators obtained from the returned iterable.      * @return  An {@code Iterable} for all children      */
 name|Iterable
 argument_list|<
-name|ContentTree
+name|Tree
 argument_list|>
 name|getChildren
 parameter_list|()
 function_decl|;
 comment|/**      * Add a child with the given {@code name}. Does nothing if such a child      * already exists.      *      * @param name name of the child      * @return the {@code ContentTree} instance of the child with the given {@code name}.      */
-name|ContentTree
+name|Tree
 name|addChild
 parameter_list|(
 name|String

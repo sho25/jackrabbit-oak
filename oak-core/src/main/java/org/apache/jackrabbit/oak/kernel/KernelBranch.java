@@ -77,7 +77,7 @@ name|oak
 operator|.
 name|api
 operator|.
-name|ContentTree
+name|Tree
 import|;
 end_import
 
@@ -109,7 +109,7 @@ name|oak
 operator|.
 name|kernel
 operator|.
-name|KernelContentTree
+name|KernelTree
 operator|.
 name|Listener
 import|;
@@ -209,7 +209,7 @@ decl_stmt|;
 comment|/** Root state of this branch */
 specifier|private
 specifier|final
-name|KernelContentTree
+name|KernelTree
 name|root
 decl_stmt|;
 comment|/**      * Create a new branch for the given base node state      * @param base  base node state of the private branch      */
@@ -228,7 +228,7 @@ expr_stmt|;
 name|root
 operator|=
 operator|new
-name|KernelContentTree
+name|KernelTree
 argument_list|(
 name|base
 argument_list|,
@@ -249,7 +249,7 @@ name|String
 name|destPath
 parameter_list|)
 block|{
-name|KernelContentTree
+name|KernelTree
 name|source
 init|=
 name|getTransientState
@@ -268,7 +268,7 @@ return|return
 literal|false
 return|;
 block|}
-name|KernelContentTree
+name|KernelTree
 name|destParent
 init|=
 name|getTransientState
@@ -315,7 +315,7 @@ name|String
 name|destPath
 parameter_list|)
 block|{
-name|KernelContentTree
+name|KernelTree
 name|sourceNode
 init|=
 name|getTransientState
@@ -334,7 +334,7 @@ return|return
 literal|false
 return|;
 block|}
-name|KernelContentTree
+name|KernelTree
 name|destParent
 init|=
 name|getTransientState
@@ -371,7 +371,7 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|ContentTree
+name|Tree
 name|getContentTree
 parameter_list|(
 name|String
@@ -453,16 +453,16 @@ name|rev
 argument_list|)
 return|;
 block|}
-comment|/**      * Get a transient node state for the node identified by      * {@code path}      * @param path  the path to the node state      * @return  a {@link KernelContentTree} instance for the item      *          at {@code path} or {@code null} if no such item exits.      */
+comment|/**      * Get a transient node state for the node identified by      * {@code path}      * @param path  the path to the node state      * @return  a {@link KernelTree} instance for the item      *          at {@code path} or {@code null} if no such item exits.      */
 specifier|private
-name|KernelContentTree
+name|KernelTree
 name|getTransientState
 parameter_list|(
 name|String
 name|path
 parameter_list|)
 block|{
-name|KernelContentTree
+name|KernelTree
 name|state
 init|=
 name|root
@@ -509,7 +509,7 @@ specifier|static
 name|String
 name|path
 parameter_list|(
-name|ContentTree
+name|Tree
 name|state
 parameter_list|,
 name|String
@@ -747,7 +747,7 @@ specifier|public
 name|void
 name|addChild
 parameter_list|(
-name|KernelContentTree
+name|KernelTree
 name|tree
 parameter_list|,
 name|String
@@ -783,7 +783,7 @@ specifier|public
 name|void
 name|removeChild
 parameter_list|(
-name|KernelContentTree
+name|KernelTree
 name|tree
 parameter_list|,
 name|String
@@ -819,7 +819,7 @@ specifier|public
 name|void
 name|setProperty
 parameter_list|(
-name|KernelContentTree
+name|KernelTree
 name|tree
 parameter_list|,
 name|String
@@ -866,7 +866,7 @@ specifier|public
 name|void
 name|setProperty
 parameter_list|(
-name|KernelContentTree
+name|KernelTree
 name|tree
 parameter_list|,
 name|String
@@ -916,7 +916,7 @@ specifier|public
 name|void
 name|removeProperty
 parameter_list|(
-name|KernelContentTree
+name|KernelTree
 name|tree
 parameter_list|,
 name|String
@@ -952,13 +952,13 @@ specifier|public
 name|void
 name|move
 parameter_list|(
-name|KernelContentTree
+name|KernelTree
 name|tree
 parameter_list|,
 name|String
 name|name
 parameter_list|,
-name|KernelContentTree
+name|KernelTree
 name|moved
 parameter_list|)
 block|{
@@ -1004,13 +1004,13 @@ specifier|public
 name|void
 name|copy
 parameter_list|(
-name|KernelContentTree
+name|KernelTree
 name|state
 parameter_list|,
 name|String
 name|name
 parameter_list|,
-name|KernelContentTree
+name|KernelTree
 name|copied
 parameter_list|)
 block|{

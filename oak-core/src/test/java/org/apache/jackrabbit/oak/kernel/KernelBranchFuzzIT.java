@@ -77,7 +77,7 @@ name|oak
 operator|.
 name|api
 operator|.
-name|ContentTree
+name|Tree
 import|;
 end_import
 
@@ -2206,10 +2206,10 @@ specifier|static
 name|void
 name|checkEqual
 parameter_list|(
-name|ContentTree
+name|Tree
 name|child2
 parameter_list|,
-name|ContentTree
+name|Tree
 name|tree2
 parameter_list|)
 block|{
@@ -2281,7 +2281,7 @@ expr_stmt|;
 block|}
 for|for
 control|(
-name|ContentTree
+name|Tree
 name|child1
 range|:
 name|child2

@@ -45,7 +45,7 @@ name|oak
 operator|.
 name|api
 operator|.
-name|ContentTree
+name|Tree
 import|;
 end_import
 
@@ -61,7 +61,7 @@ name|oak
 operator|.
 name|api
 operator|.
-name|ContentTree
+name|Tree
 operator|.
 name|Status
 import|;
@@ -351,7 +351,7 @@ name|class
 argument_list|)
 decl_stmt|;
 specifier|private
-name|ContentTree
+name|Tree
 name|parent
 decl_stmt|;
 specifier|private
@@ -366,7 +366,7 @@ name|SessionImpl
 argument_list|>
 name|sessionContext
 parameter_list|,
-name|ContentTree
+name|Tree
 name|parent
 parameter_list|,
 name|PropertyState
@@ -2378,7 +2378,7 @@ argument_list|()
 return|;
 block|}
 specifier|private
-name|ContentTree
+name|Tree
 name|getParentContentTree
 parameter_list|()
 block|{

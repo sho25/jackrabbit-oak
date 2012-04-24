@@ -61,7 +61,7 @@ name|oak
 operator|.
 name|api
 operator|.
-name|ContentTree
+name|Tree
 import|;
 end_import
 
@@ -309,7 +309,7 @@ argument_list|(
 name|state
 argument_list|)
 decl_stmt|;
-name|ContentTree
+name|Tree
 name|tree
 init|=
 name|branch
@@ -319,7 +319,7 @@ argument_list|(
 literal|"/"
 argument_list|)
 decl_stmt|;
-name|ContentTree
+name|Tree
 name|child
 init|=
 name|tree
@@ -365,7 +365,7 @@ argument_list|(
 name|state
 argument_list|)
 decl_stmt|;
-name|ContentTree
+name|Tree
 name|tree
 init|=
 name|branch
@@ -459,7 +459,7 @@ argument_list|(
 name|state
 argument_list|)
 decl_stmt|;
-name|ContentTree
+name|Tree
 name|tree
 init|=
 name|branch
@@ -471,7 +471,7 @@ argument_list|)
 decl_stmt|;
 name|Iterable
 argument_list|<
-name|ContentTree
+name|Tree
 argument_list|>
 name|children
 init|=
@@ -508,7 +508,7 @@ argument_list|)
 expr_stmt|;
 for|for
 control|(
-name|ContentTree
+name|Tree
 name|child
 range|:
 name|children
@@ -563,7 +563,7 @@ argument_list|(
 name|state
 argument_list|)
 decl_stmt|;
-name|ContentTree
+name|Tree
 name|tree
 init|=
 name|branch
@@ -723,7 +723,7 @@ argument_list|(
 name|state
 argument_list|)
 decl_stmt|;
-name|ContentTree
+name|Tree
 name|tree
 init|=
 name|branch
@@ -743,7 +743,7 @@ literal|"new"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|ContentTree
+name|Tree
 name|added
 init|=
 name|tree
@@ -817,7 +817,7 @@ argument_list|(
 name|state
 argument_list|)
 decl_stmt|;
-name|ContentTree
+name|Tree
 name|tree
 init|=
 name|branch
@@ -883,7 +883,7 @@ literal|"new"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|ContentTree
+name|Tree
 name|added
 init|=
 name|tree
@@ -925,7 +925,7 @@ argument_list|(
 name|state
 argument_list|)
 decl_stmt|;
-name|ContentTree
+name|Tree
 name|tree
 init|=
 name|branch
@@ -1001,7 +1001,7 @@ argument_list|(
 name|state
 argument_list|)
 decl_stmt|;
-name|ContentTree
+name|Tree
 name|tree
 init|=
 name|branch
@@ -1138,7 +1138,7 @@ argument_list|(
 name|state
 argument_list|)
 decl_stmt|;
-name|ContentTree
+name|Tree
 name|tree
 init|=
 name|branch
@@ -1214,7 +1214,7 @@ argument_list|(
 name|state
 argument_list|)
 decl_stmt|;
-name|ContentTree
+name|Tree
 name|tree
 init|=
 name|branch
@@ -1224,7 +1224,7 @@ argument_list|(
 literal|"/"
 argument_list|)
 decl_stmt|;
-name|ContentTree
+name|Tree
 name|y
 init|=
 name|tree
@@ -1337,7 +1337,7 @@ argument_list|(
 name|state
 argument_list|)
 decl_stmt|;
-name|ContentTree
+name|Tree
 name|tree
 init|=
 name|branch
@@ -1435,7 +1435,7 @@ argument_list|(
 name|state
 argument_list|)
 decl_stmt|;
-name|ContentTree
+name|Tree
 name|tree
 init|=
 name|branch
@@ -1445,7 +1445,7 @@ argument_list|(
 literal|"/"
 argument_list|)
 decl_stmt|;
-name|ContentTree
+name|Tree
 name|y
 init|=
 name|tree
@@ -1558,7 +1558,7 @@ argument_list|(
 name|state
 argument_list|)
 decl_stmt|;
-name|ContentTree
+name|Tree
 name|tree
 init|=
 name|branch
@@ -1568,7 +1568,7 @@ argument_list|(
 literal|"/"
 argument_list|)
 decl_stmt|;
-name|ContentTree
+name|Tree
 name|y
 init|=
 name|tree
@@ -1740,7 +1740,7 @@ argument_list|(
 name|state
 argument_list|)
 decl_stmt|;
-name|ContentTree
+name|Tree
 name|tree
 init|=
 name|branch
@@ -1828,7 +1828,7 @@ argument_list|(
 name|state
 argument_list|)
 decl_stmt|;
-name|ContentTree
+name|Tree
 name|tree
 init|=
 name|branch
@@ -1949,7 +1949,7 @@ argument_list|(
 name|state
 argument_list|)
 decl_stmt|;
-name|ContentTree
+name|Tree
 name|tree
 init|=
 name|branch
@@ -2045,7 +2045,7 @@ literal|0
 decl_stmt|;
 for|for
 control|(
-name|ContentTree
+name|Tree
 name|q
 range|:
 name|tree

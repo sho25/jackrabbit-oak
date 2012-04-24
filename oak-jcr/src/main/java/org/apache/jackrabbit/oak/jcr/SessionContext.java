@@ -61,7 +61,7 @@ name|oak
 operator|.
 name|api
 operator|.
-name|ContentTree
+name|Tree
 import|;
 end_import
 
@@ -183,7 +183,7 @@ name|Branch
 name|getBranch
 parameter_list|()
 function_decl|;
-name|ContentTree
+name|Tree
 name|getContentTree
 parameter_list|(
 name|NodeImpl
