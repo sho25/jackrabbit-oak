@@ -43,16 +43,6 @@ name|java
 operator|.
 name|io
 operator|.
-name|Closeable
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
 name|File
 import|;
 end_import
@@ -319,8 +309,6 @@ class|class
 name|BDbPersistence
 implements|implements
 name|Persistence
-implements|,
-name|Closeable
 block|{
 specifier|private
 specifier|final
