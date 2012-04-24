@@ -61,22 +61,6 @@ name|oak
 operator|.
 name|api
 operator|.
-name|Root
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|api
-operator|.
 name|ContentSession
 import|;
 end_import
@@ -123,9 +107,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|kernel
+name|api
 operator|.
-name|KernelRoot
+name|Root
 import|;
 end_import
 
@@ -141,7 +125,23 @@ name|oak
 operator|.
 name|kernel
 operator|.
-name|NodeStore
+name|KernelNodeStore
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|kernel
+operator|.
+name|KernelRoot
 import|;
 end_import
 
@@ -223,7 +223,7 @@ name|workspaceName
 decl_stmt|;
 specifier|private
 specifier|final
-name|NodeStore
+name|KernelNodeStore
 name|store
 decl_stmt|;
 specifier|private
@@ -245,7 +245,7 @@ parameter_list|,
 name|String
 name|workspaceName
 parameter_list|,
-name|NodeStore
+name|KernelNodeStore
 name|store
 parameter_list|,
 name|QueryEngine

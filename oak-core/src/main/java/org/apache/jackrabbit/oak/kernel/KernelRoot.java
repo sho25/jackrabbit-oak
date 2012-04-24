@@ -29,22 +29,6 @@ name|mk
 operator|.
 name|api
 operator|.
-name|MicroKernel
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|mk
-operator|.
-name|api
-operator|.
 name|MicroKernelException
 import|;
 end_import
@@ -77,6 +61,22 @@ name|oak
 operator|.
 name|api
 operator|.
+name|CommitFailedException
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|api
+operator|.
 name|CoreValue
 import|;
 end_import
@@ -94,22 +94,6 @@ operator|.
 name|api
 operator|.
 name|Root
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|api
-operator|.
-name|CommitFailedException
 import|;
 end_import
 
@@ -234,7 +218,7 @@ name|Root
 block|{
 specifier|private
 specifier|final
-name|NodeStore
+name|KernelNodeStore
 name|store
 decl_stmt|;
 specifier|private
@@ -244,7 +228,7 @@ name|workspaceName
 decl_stmt|;
 comment|/** Base node state of this tree */
 specifier|private
-name|KernelNodeState
+name|NodeState
 name|base
 decl_stmt|;
 comment|/** Root state of this tree */
@@ -264,7 +248,7 @@ decl_stmt|;
 specifier|public
 name|KernelRoot
 parameter_list|(
-name|NodeStore
+name|KernelNodeStore
 name|store
 parameter_list|,
 name|String
@@ -287,9 +271,6 @@ name|this
 operator|.
 name|base
 operator|=
-operator|(
-name|KernelNodeState
-operator|)
 name|store
 operator|.
 name|getRoot
@@ -300,7 +281,6 @@ argument_list|(
 name|workspaceName
 argument_list|)
 expr_stmt|;
-comment|// FIXME don't cast to implementation
 name|this
 operator|.
 name|root
@@ -472,9 +452,6 @@ parameter_list|()
 block|{
 name|base
 operator|=
-operator|(
-name|KernelNodeState
-operator|)
 name|store
 operator|.
 name|getRoot
@@ -485,7 +462,6 @@ argument_list|(
 name|workspaceName
 argument_list|)
 expr_stmt|;
-comment|// FIXME don't cast to implementation
 block|}
 annotation|@
 name|Override
@@ -496,51 +472,15 @@ parameter_list|()
 throws|throws
 name|CommitFailedException
 block|{
-name|MicroKernel
-name|kernel
-init|=
-operator|(
-operator|(
-name|KernelNodeStore
-operator|)
-name|store
-operator|)
-operator|.
-name|kernel
-decl_stmt|;
-comment|// FIXME don't cast to implementation
 try|try
 block|{
-name|String
-name|targetPath
-init|=
-name|base
+name|store
 operator|.
-name|getPath
-argument_list|()
-decl_stmt|;
-name|String
-name|targetRevision
-init|=
-name|base
-operator|.
-name|getRevision
-argument_list|()
-decl_stmt|;
-name|kernel
-operator|.
-name|commit
+name|save
 argument_list|(
-name|targetPath
+name|this
 argument_list|,
-name|changeLog
-operator|.
-name|toJsop
-argument_list|()
-argument_list|,
-name|targetRevision
-argument_list|,
-literal|null
+name|base
 argument_list|)
 expr_stmt|;
 name|changeLog
@@ -551,9 +491,6 @@ argument_list|()
 expr_stmt|;
 name|base
 operator|=
-operator|(
-name|KernelNodeState
-operator|)
 name|store
 operator|.
 name|getRoot
@@ -564,7 +501,6 @@ argument_list|(
 name|workspaceName
 argument_list|)
 expr_stmt|;
-comment|// FIXME don't cast to implementation
 name|root
 operator|=
 operator|new
@@ -592,15 +528,19 @@ throw|;
 block|}
 block|}
 comment|//------------------------------------------------------------< internal>---
-comment|/**      * Return the base node state of this tree      * @return base node state      */
-name|NodeState
-name|getBaseNodeState
+comment|/**      * JSOP representation of the changes done to this tree      * @return  changes in JSOP representation      */
+name|String
+name|getChanges
 parameter_list|()
 block|{
 return|return
-name|base
+name|changeLog
+operator|.
+name|toJsop
+argument_list|()
 return|;
 block|}
+comment|//------------------------------------------------------------< private>---
 comment|/**      * Get a transient node state for the node identified by      * {@code path}      * @param path  the path to the node state      * @return  a {@link KernelTree} instance for the item      *          at {@code path} or {@code null} if no such item exits.      */
 specifier|private
 name|KernelTree
