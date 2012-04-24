@@ -1354,10 +1354,12 @@ name|String
 name|parentPath
 decl_stmt|;
 specifier|private
+specifier|final
 name|String
 name|propertyName
 decl_stmt|;
 specifier|private
+specifier|final
 name|CoreValue
 name|propertyValue
 decl_stmt|;
