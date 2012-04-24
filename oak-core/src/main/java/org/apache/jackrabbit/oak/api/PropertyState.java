@@ -37,16 +37,16 @@ name|isArray
 parameter_list|()
 function_decl|;
 comment|/**      * @return  the single value of this property or {@code null} if this is a multi      * valued property.      */
-name|Scalar
-name|getScalar
+name|CoreValue
+name|getValue
 parameter_list|()
 function_decl|;
 comment|/**      * @return  an iterable of the values of this multi valued property or      * {@code null} if this is not a multi valued property.      */
 name|Iterable
 argument_list|<
-name|Scalar
+name|CoreValue
 argument_list|>
-name|getArray
+name|getValues
 parameter_list|()
 function_decl|;
 block|}

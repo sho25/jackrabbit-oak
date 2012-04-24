@@ -67,7 +67,7 @@ name|oak
 operator|.
 name|api
 operator|.
-name|PropertyState
+name|CoreValue
 import|;
 end_import
 
@@ -83,7 +83,7 @@ name|oak
 operator|.
 name|api
 operator|.
-name|Scalar
+name|PropertyState
 import|;
 end_import
 
@@ -162,9 +162,9 @@ name|CommitFailedException
 block|{
 name|Iterable
 argument_list|<
-name|Scalar
+name|CoreValue
 argument_list|>
-name|scalars
+name|coreValues
 init|=
 name|Collections
 operator|.
@@ -184,7 +184,7 @@ argument_list|()
 argument_list|)
 condition|)
 block|{
-name|scalars
+name|coreValues
 operator|=
 name|Collections
 operator|.
@@ -192,7 +192,7 @@ name|singletonList
 argument_list|(
 name|after
 operator|.
-name|getScalar
+name|getValue
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -211,26 +211,26 @@ argument_list|()
 argument_list|)
 condition|)
 block|{
-name|scalars
+name|coreValues
 operator|=
 name|after
 operator|.
-name|getArray
+name|getValues
 argument_list|()
 expr_stmt|;
 block|}
 for|for
 control|(
-name|Scalar
-name|scalar
+name|CoreValue
+name|cv
 range|:
-name|scalars
+name|coreValues
 control|)
 block|{
 name|String
 name|value
 init|=
-name|scalar
+name|cv
 operator|.
 name|getString
 argument_list|()

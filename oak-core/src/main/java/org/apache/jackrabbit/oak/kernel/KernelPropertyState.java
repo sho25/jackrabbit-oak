@@ -49,7 +49,7 @@ name|oak
 operator|.
 name|api
 operator|.
-name|Scalar
+name|CoreValue
 import|;
 end_import
 
@@ -66,14 +66,14 @@ name|name
 decl_stmt|;
 specifier|private
 specifier|final
-name|Scalar
+name|CoreValue
 name|value
 decl_stmt|;
 specifier|private
 specifier|final
 name|List
 argument_list|<
-name|Scalar
+name|CoreValue
 argument_list|>
 name|values
 decl_stmt|;
@@ -83,7 +83,7 @@ parameter_list|(
 name|String
 name|name
 parameter_list|,
-name|Scalar
+name|CoreValue
 name|value
 parameter_list|)
 block|{
@@ -114,7 +114,7 @@ name|name
 parameter_list|,
 name|List
 argument_list|<
-name|Scalar
+name|CoreValue
 argument_list|>
 name|values
 parameter_list|)
@@ -170,8 +170,8 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|Scalar
-name|getScalar
+name|CoreValue
+name|getValue
 parameter_list|()
 block|{
 return|return
@@ -183,9 +183,9 @@ name|Override
 specifier|public
 name|Iterable
 argument_list|<
-name|Scalar
+name|CoreValue
 argument_list|>
-name|getArray
+name|getValues
 parameter_list|()
 block|{
 return|return

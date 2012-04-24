@@ -164,7 +164,7 @@ parameter_list|(
 name|String
 name|name
 parameter_list|,
-name|Scalar
+name|CoreValue
 name|value
 parameter_list|)
 function_decl|;
@@ -177,7 +177,7 @@ name|name
 parameter_list|,
 name|List
 argument_list|<
-name|Scalar
+name|CoreValue
 argument_list|>
 name|values
 parameter_list|)

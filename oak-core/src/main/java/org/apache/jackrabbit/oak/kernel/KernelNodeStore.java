@@ -33,6 +33,22 @@ name|MicroKernel
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|api
+operator|.
+name|CoreValueFactory
+import|;
+end_import
+
 begin_comment
 comment|/**  * {@link MicroKernel}-based {@link NodeStore} implementation.  */
 end_comment
@@ -48,12 +64,18 @@ specifier|final
 name|MicroKernel
 name|kernel
 decl_stmt|;
-comment|// FIXME make private
+specifier|final
+name|CoreValueFactory
+name|valueFactory
+decl_stmt|;
 specifier|public
 name|KernelNodeStore
 parameter_list|(
 name|MicroKernel
 name|kernel
+parameter_list|,
+name|CoreValueFactory
+name|valueFactory
 parameter_list|)
 block|{
 name|this
@@ -61,6 +83,12 @@ operator|.
 name|kernel
 operator|=
 name|kernel
+expr_stmt|;
+name|this
+operator|.
+name|valueFactory
+operator|=
+name|valueFactory
 expr_stmt|;
 block|}
 annotation|@
@@ -75,6 +103,8 @@ operator|new
 name|KernelNodeState
 argument_list|(
 name|kernel
+argument_list|,
+name|valueFactory
 argument_list|,
 literal|"/"
 argument_list|,

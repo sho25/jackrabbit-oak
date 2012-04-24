@@ -28,7 +28,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * An immutable, typed scalar value.  */
+comment|/**  * An immutable, typed scalar value.  *  * TODO: remove if really not needed any more  */
 end_comment
 
 begin_interface

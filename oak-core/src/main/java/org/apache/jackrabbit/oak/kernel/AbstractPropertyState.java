@@ -39,7 +39,7 @@ name|oak
 operator|.
 name|api
 operator|.
-name|PropertyState
+name|CoreValue
 import|;
 end_import
 
@@ -55,7 +55,7 @@ name|oak
 operator|.
 name|api
 operator|.
-name|Scalar
+name|PropertyState
 import|;
 end_import
 
@@ -166,13 +166,13 @@ condition|)
 block|{
 name|Iterator
 argument_list|<
-name|Scalar
+name|CoreValue
 argument_list|>
 name|iterator
 init|=
 name|other
 operator|.
-name|getArray
+name|getValues
 argument_list|()
 operator|.
 name|iterator
@@ -180,10 +180,10 @@ argument_list|()
 decl_stmt|;
 for|for
 control|(
-name|Scalar
-name|scalar
+name|CoreValue
+name|value
 range|:
-name|getArray
+name|getValues
 argument_list|()
 control|)
 block|{
@@ -196,7 +196,7 @@ name|hasNext
 argument_list|()
 operator|||
 operator|!
-name|scalar
+name|value
 operator|.
 name|equals
 argument_list|(
@@ -223,14 +223,14 @@ block|}
 else|else
 block|{
 return|return
-name|getScalar
+name|getValue
 argument_list|()
 operator|.
 name|equals
 argument_list|(
 name|other
 operator|.
-name|getScalar
+name|getValue
 argument_list|()
 argument_list|)
 return|;
