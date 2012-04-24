@@ -89,7 +89,7 @@ name|oak
 operator|.
 name|kernel
 operator|.
-name|NodeValidator
+name|Validator
 import|;
 end_import
 
@@ -97,7 +97,7 @@ begin_class
 class|class
 name|NameValidator
 implements|implements
-name|NodeValidator
+name|Validator
 block|{
 specifier|private
 specifier|final
@@ -349,7 +349,7 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|NodeValidator
+name|Validator
 name|childNodeAdded
 parameter_list|(
 name|String
@@ -373,7 +373,7 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|NodeValidator
+name|Validator
 name|childNodeChanged
 parameter_list|(
 name|String
@@ -395,7 +395,7 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|NodeValidator
+name|Validator
 name|childNodeDeleted
 parameter_list|(
 name|String

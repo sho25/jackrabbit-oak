@@ -40,10 +40,10 @@ end_comment
 begin_interface
 specifier|public
 interface|interface
-name|NodeValidatorProvider
+name|ValidatorProvider
 block|{
 comment|/**      * Returns a validator for checking the changes between the given      * two root states.      *      * @param before original root state      * @param after  modified root state      * @return validator for checking the modifications      */
-name|NodeValidator
+name|Validator
 name|getRootValidator
 parameter_list|(
 name|NodeState

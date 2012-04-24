@@ -83,7 +83,7 @@ name|oak
 operator|.
 name|kernel
 operator|.
-name|NodeValidator
+name|Validator
 import|;
 end_import
 
@@ -99,7 +99,7 @@ name|oak
 operator|.
 name|kernel
 operator|.
-name|NodeValidatorProvider
+name|ValidatorProvider
 import|;
 end_import
 
@@ -108,12 +108,12 @@ specifier|public
 class|class
 name|TypeValidatorProvider
 implements|implements
-name|NodeValidatorProvider
+name|ValidatorProvider
 block|{
 annotation|@
 name|Override
 specifier|public
-name|NodeValidator
+name|Validator
 name|getRootValidator
 parameter_list|(
 name|NodeState

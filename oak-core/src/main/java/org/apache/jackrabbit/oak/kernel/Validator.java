@@ -72,7 +72,7 @@ end_comment
 begin_interface
 specifier|public
 interface|interface
-name|NodeValidator
+name|Validator
 block|{
 name|void
 name|propertyAdded
@@ -104,7 +104,7 @@ parameter_list|)
 throws|throws
 name|CommitFailedException
 function_decl|;
-name|NodeValidator
+name|Validator
 name|childNodeAdded
 parameter_list|(
 name|String
@@ -116,7 +116,7 @@ parameter_list|)
 throws|throws
 name|CommitFailedException
 function_decl|;
-name|NodeValidator
+name|Validator
 name|childNodeChanged
 parameter_list|(
 name|String
@@ -131,7 +131,7 @@ parameter_list|)
 throws|throws
 name|CommitFailedException
 function_decl|;
-name|NodeValidator
+name|Validator
 name|childNodeDeleted
 parameter_list|(
 name|String
