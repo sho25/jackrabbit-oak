@@ -20,62 +20,6 @@ package|;
 end_package
 
 begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertEquals
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertTrue
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|fail
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|ArrayList
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Random
-import|;
-end_import
-
-begin_import
 import|import
 name|org
 operator|.
@@ -85,7 +29,7 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|query
+name|api
 operator|.
 name|CoreValue
 import|;
@@ -103,7 +47,7 @@ name|oak
 operator|.
 name|query
 operator|.
-name|CoreValueFactory
+name|AbstractQueryTest
 import|;
 end_import
 
@@ -155,6 +99,62 @@ name|Test
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|ArrayList
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Random
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertEquals
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertTrue
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|fail
+import|;
+end_import
+
 begin_comment
 comment|/**  * Tests the Filter class.  */
 end_comment
@@ -163,6 +163,8 @@ begin_class
 specifier|public
 class|class
 name|FilterTest
+extends|extends
+name|AbstractQueryTest
 block|{
 annotation|@
 name|Test
@@ -174,9 +176,7 @@ block|{
 name|CoreValue
 name|one
 init|=
-operator|new
-name|CoreValueFactory
-argument_list|()
+name|vf
 operator|.
 name|createValue
 argument_list|(
@@ -186,9 +186,7 @@ decl_stmt|;
 name|CoreValue
 name|two
 init|=
-operator|new
-name|CoreValueFactory
-argument_list|()
+name|vf
 operator|.
 name|createValue
 argument_list|(

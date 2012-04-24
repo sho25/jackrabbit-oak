@@ -447,6 +447,15 @@ literal|"login failed"
 argument_list|)
 throw|;
 block|}
+name|CoreValueFactory
+name|valueFactory
+init|=
+operator|new
+name|CoreValueFactoryImpl
+argument_list|(
+name|microKernel
+argument_list|)
+decl_stmt|;
 name|QueryEngine
 name|queryEngine
 init|=
@@ -454,6 +463,8 @@ operator|new
 name|QueryEngineImpl
 argument_list|(
 name|microKernel
+argument_list|,
+name|valueFactory
 argument_list|)
 decl_stmt|;
 comment|// TODO set revision!?
@@ -485,15 +496,6 @@ name|workspaceName
 argument_list|)
 throw|;
 block|}
-name|CoreValueFactory
-name|valueFactory
-init|=
-operator|new
-name|CoreValueFactoryImpl
-argument_list|(
-name|microKernel
-argument_list|)
-decl_stmt|;
 return|return
 operator|new
 name|KernelContentSession

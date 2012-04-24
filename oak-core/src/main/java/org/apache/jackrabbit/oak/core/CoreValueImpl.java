@@ -112,11 +112,6 @@ class|class
 name|CoreValueImpl
 implements|implements
 name|CoreValue
-implements|,
-name|Comparable
-argument_list|<
-name|CoreValue
-argument_list|>
 block|{
 comment|/**      * logger instance      */
 specifier|private

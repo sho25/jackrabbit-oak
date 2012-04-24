@@ -414,7 +414,7 @@ name|contentSession
 decl_stmt|;
 specifier|private
 specifier|final
-name|ValueFactory
+name|ValueFactoryImpl
 name|valueFactory
 decl_stmt|;
 specifier|private
@@ -1437,7 +1437,7 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|ValueFactory
+name|ValueFactoryImpl
 name|getValueFactory
 parameter_list|()
 block|{

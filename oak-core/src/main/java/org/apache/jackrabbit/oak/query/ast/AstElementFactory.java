@@ -29,7 +29,7 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|query
+name|api
 operator|.
 name|CoreValue
 import|;
@@ -264,9 +264,6 @@ return|return
 operator|new
 name|OrderingImpl
 argument_list|(
-operator|(
-name|DynamicOperandImpl
-operator|)
 name|operand
 argument_list|,
 name|Order
@@ -630,9 +627,6 @@ return|return
 operator|new
 name|UpperCaseImpl
 argument_list|(
-operator|(
-name|DynamicOperandImpl
-operator|)
 name|operand
 argument_list|)
 return|;

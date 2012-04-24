@@ -91,16 +91,6 @@ name|javax
 operator|.
 name|jcr
 operator|.
-name|ValueFactory
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|jcr
-operator|.
 name|lock
 operator|.
 name|LockManager
@@ -157,7 +147,7 @@ name|ContentSession
 name|getContentSession
 parameter_list|()
 function_decl|;
-name|ValueFactory
+name|ValueFactoryImpl
 name|getValueFactory
 parameter_list|()
 function_decl|;

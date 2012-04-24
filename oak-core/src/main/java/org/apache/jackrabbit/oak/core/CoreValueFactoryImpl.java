@@ -147,6 +147,8 @@ specifier|final
 name|MicroKernel
 name|mk
 decl_stmt|;
+comment|// TODO: currently public for query tests -> see todo there...
+specifier|public
 name|CoreValueFactoryImpl
 parameter_list|(
 name|MicroKernel
@@ -302,6 +304,37 @@ name|int
 name|type
 parameter_list|)
 block|{
+comment|// TODO check again...
+if|if
+condition|(
+name|type
+operator|==
+name|PropertyType
+operator|.
+name|BINARY
+condition|)
+block|{
+name|BinaryValue
+name|bv
+init|=
+operator|new
+name|BinaryValue
+argument_list|(
+name|value
+argument_list|,
+name|mk
+argument_list|)
+decl_stmt|;
+return|return
+operator|new
+name|CoreValueImpl
+argument_list|(
+name|bv
+argument_list|)
+return|;
+block|}
+else|else
+block|{
 return|return
 operator|new
 name|CoreValueImpl
@@ -311,6 +344,7 @@ argument_list|,
 name|type
 argument_list|)
 return|;
+block|}
 block|}
 block|}
 end_class

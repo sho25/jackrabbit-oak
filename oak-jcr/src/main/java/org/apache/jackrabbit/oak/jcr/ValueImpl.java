@@ -206,7 +206,6 @@ comment|/**  * ValueImpl...  */
 end_comment
 
 begin_class
-specifier|public
 class|class
 name|ValueImpl
 implements|implements
@@ -266,6 +265,14 @@ name|resolver
 operator|=
 name|resolver
 expr_stmt|;
+block|}
+name|CoreValue
+name|unwrap
+parameter_list|()
+block|{
+return|return
+name|value
+return|;
 block|}
 comment|//--------------------------------------------------------------< Value>---
 comment|/**      * @see javax.jcr.Value#getType()      */

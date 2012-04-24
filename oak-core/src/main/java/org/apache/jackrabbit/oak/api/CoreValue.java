@@ -45,6 +45,11 @@ begin_interface
 specifier|public
 interface|interface
 name|CoreValue
+extends|extends
+name|Comparable
+argument_list|<
+name|CoreValue
+argument_list|>
 block|{
 name|int
 name|getType

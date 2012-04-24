@@ -45,7 +45,7 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|query
+name|api
 operator|.
 name|CoreValue
 import|;

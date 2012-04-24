@@ -13,22 +13,6 @@ name|api
 package|;
 end_package
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|query
-operator|.
-name|CoreValue
-import|;
-end_import
-
 begin_comment
 comment|/**  * A query result row.  */
 end_comment
