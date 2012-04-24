@@ -247,12 +247,12 @@ specifier|private
 name|KernelNodeState
 name|base
 decl_stmt|;
-comment|/** Root state of tree */
+comment|/** Root state of this tree */
 specifier|private
 name|KernelTree
 name|root
 decl_stmt|;
-comment|/** Log of changes to tree */
+comment|/** Log of changes to this tree */
 specifier|private
 name|ChangeLog
 name|changeLog
