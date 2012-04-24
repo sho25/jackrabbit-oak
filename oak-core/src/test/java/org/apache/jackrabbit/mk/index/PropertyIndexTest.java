@@ -103,6 +103,11 @@ argument_list|,
 literal|"index"
 argument_list|)
 decl_stmt|;
+name|indexer
+operator|.
+name|init
+argument_list|()
+expr_stmt|;
 name|PropertyIndex
 name|index
 init|=
@@ -346,6 +351,11 @@ name|Indexer
 argument_list|(
 name|mk
 argument_list|)
+expr_stmt|;
+name|indexer
+operator|.
+name|init
+argument_list|()
 expr_stmt|;
 name|index
 operator|=

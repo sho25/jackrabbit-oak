@@ -248,6 +248,17 @@ operator|+
 literal|'"'
 return|;
 block|}
+annotation|@
+name|Override
+specifier|public
+name|String
+name|getIndexName
+parameter_list|()
+block|{
+return|return
+literal|"traverse"
+return|;
+block|}
 block|}
 end_class
 

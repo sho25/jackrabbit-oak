@@ -557,6 +557,8 @@ expr_stmt|;
 block|}
 block|}
 comment|/**      * Get an iterator over the paths for the given property value.      *      * @param value the value (including the prefix)      * @param revision the revision      * @return an iterator of the paths (an empty iterator if not found)      * @throws IllegalArgumentException if the value doesn't start with the prefix      */
+annotation|@
+name|Override
 specifier|public
 name|Iterator
 argument_list|<
@@ -636,6 +638,20 @@ name|c
 argument_list|,
 name|v
 argument_list|)
+return|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|boolean
+name|isUnique
+parameter_list|()
+block|{
+return|return
+name|tree
+operator|.
+name|isUnique
+argument_list|()
 return|;
 block|}
 block|}

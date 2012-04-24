@@ -55,6 +55,11 @@ name|Filter
 name|filter
 parameter_list|)
 function_decl|;
+comment|/**      * Get the unique index name.      *      * @return the index name      */
+name|String
+name|getIndexName
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 

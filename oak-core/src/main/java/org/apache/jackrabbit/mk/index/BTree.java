@@ -1454,6 +1454,14 @@ operator|+
 literal|1
 return|;
 block|}
+name|boolean
+name|isUnique
+parameter_list|()
+block|{
+return|return
+name|unique
+return|;
+block|}
 block|}
 end_class
 

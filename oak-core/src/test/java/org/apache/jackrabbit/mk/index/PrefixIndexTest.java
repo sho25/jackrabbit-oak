@@ -113,6 +113,11 @@ argument_list|,
 literal|"index"
 argument_list|)
 decl_stmt|;
+name|indexer
+operator|.
+name|init
+argument_list|()
+expr_stmt|;
 name|PrefixIndex
 name|index
 init|=

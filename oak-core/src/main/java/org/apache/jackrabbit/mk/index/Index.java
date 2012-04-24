@@ -19,6 +19,16 @@ end_package
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Iterator
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -74,6 +84,25 @@ parameter_list|,
 name|boolean
 name|add
 parameter_list|)
+function_decl|;
+comment|/**      * Get an iterator over the paths for the given value. For unique      * indexes, the iterator will contain at most one element.      *      * @param value the value, or null to return all indexed rows      * @param revision the revision      * @return an iterator of the paths (an empty iterator if not found)      */
+name|Iterator
+argument_list|<
+name|String
+argument_list|>
+name|getPaths
+parameter_list|(
+name|String
+name|value
+parameter_list|,
+name|String
+name|revision
+parameter_list|)
+function_decl|;
+comment|/**      * Whether each value may only appear once in the index.      *      * @return true if unique      */
+name|boolean
+name|isUnique
+parameter_list|()
 function_decl|;
 block|}
 end_interface

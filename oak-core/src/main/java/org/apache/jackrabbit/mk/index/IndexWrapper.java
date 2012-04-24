@@ -353,6 +353,11 @@ argument_list|(
 name|mk
 argument_list|)
 expr_stmt|;
+name|indexer
+operator|.
+name|init
+argument_list|()
+expr_stmt|;
 block|}
 annotation|@
 name|Override
