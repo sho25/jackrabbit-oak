@@ -155,6 +155,22 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
+name|kernel
+operator|.
+name|KernelRoot
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
 name|namepath
 operator|.
 name|Paths
@@ -593,7 +609,7 @@ throw|throw
 operator|new
 name|UnsupportedRepositoryOperationException
 argument_list|(
-literal|"TODO"
+literal|"TODO: Session.impersonate"
 argument_list|)
 throw|;
 block|}
@@ -663,7 +679,7 @@ throw|throw
 operator|new
 name|UnsupportedRepositoryOperationException
 argument_list|(
-literal|"TODO"
+literal|"TODO: Session.getNodeByUUID"
 argument_list|)
 throw|;
 block|}
@@ -686,7 +702,7 @@ throw|throw
 operator|new
 name|UnsupportedRepositoryOperationException
 argument_list|(
-literal|"TODO"
+literal|"TODO: Session.getNodeByIdentifier"
 argument_list|)
 throw|;
 block|}
@@ -833,9 +849,11 @@ block|{
 name|ensureIsAlive
 argument_list|()
 expr_stmt|;
-comment|// todo implement hasPendingChanges
 return|return
-literal|false
+name|root
+operator|.
+name|hasPendingChanges
+argument_list|()
 return|;
 block|}
 comment|//----------------------------------------------------------< Lifecycle>---
@@ -919,7 +937,7 @@ throw|throw
 operator|new
 name|UnsupportedRepositoryOperationException
 argument_list|(
-literal|"TODO"
+literal|"TODO: Session.getImportContentHandler"
 argument_list|)
 throw|;
 block|}
@@ -1178,7 +1196,7 @@ throw|throw
 operator|new
 name|UnsupportedRepositoryOperationException
 argument_list|(
-literal|"TODO"
+literal|"TODO: Session.getAccessControlManager"
 argument_list|)
 throw|;
 block|}

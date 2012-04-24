@@ -68,6 +68,11 @@ parameter_list|()
 throws|throws
 name|CommitFailedException
 function_decl|;
+comment|/**      * Determine whether there are changes on this tree      * @return  {@code true} iff this tree was modified      */
+name|boolean
+name|hasPendingChanges
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 

@@ -527,6 +527,19 @@ argument_list|)
 throw|;
 block|}
 block|}
+specifier|public
+name|boolean
+name|hasPendingChanges
+parameter_list|()
+block|{
+return|return
+operator|!
+name|changeLog
+operator|.
+name|isEmpty
+argument_list|()
+return|;
+block|}
 comment|//------------------------------------------------------------< internal>---
 comment|/**      * JSOP representation of the changes done to this tree      * @return  changes in JSOP representation      */
 name|String
@@ -1147,6 +1160,20 @@ argument_list|(
 literal|'"'
 argument_list|)
 expr_stmt|;
+block|}
+specifier|public
+name|boolean
+name|isEmpty
+parameter_list|()
+block|{
+return|return
+name|jsop
+operator|.
+name|length
+argument_list|()
+operator|==
+literal|0
+return|;
 block|}
 specifier|public
 name|String

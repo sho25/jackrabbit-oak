@@ -2510,7 +2510,7 @@ throw|throw
 operator|new
 name|UnsupportedRepositoryOperationException
 argument_list|(
-literal|"TODO"
+literal|"TODO: Node.getReferences"
 argument_list|)
 throw|;
 block|}
@@ -2550,7 +2550,7 @@ throw|throw
 operator|new
 name|UnsupportedRepositoryOperationException
 argument_list|(
-literal|"TODO"
+literal|"TODO: Node.getWeakReferences"
 argument_list|)
 throw|;
 block|}
@@ -3004,7 +3004,7 @@ throw|throw
 operator|new
 name|UnsupportedRepositoryOperationException
 argument_list|(
-literal|"TODO"
+literal|"TODO: Node.getDefinition"
 argument_list|)
 throw|;
 block|}
@@ -3027,7 +3027,7 @@ throw|throw
 operator|new
 name|UnsupportedRepositoryOperationException
 argument_list|(
-literal|"TODO"
+literal|"TODO: Node.getCorrespondingNodePath"
 argument_list|)
 throw|;
 block|}
@@ -3535,7 +3535,7 @@ throw|throw
 operator|new
 name|UnsupportedRepositoryOperationException
 argument_list|(
-literal|"TODO"
+literal|"TODO: Node.getSharedSet"
 argument_list|)
 throw|;
 block|}

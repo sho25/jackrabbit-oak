@@ -767,7 +767,7 @@ throw|throw
 operator|new
 name|UnsupportedRepositoryOperationException
 argument_list|(
-literal|"TODO"
+literal|"TODO: Workspace.getLockManager"
 argument_list|)
 throw|;
 block|}
@@ -856,7 +856,7 @@ throw|throw
 operator|new
 name|UnsupportedRepositoryOperationException
 argument_list|(
-literal|"TODO"
+literal|"TODO: Workspace.getNodeTypeManager"
 argument_list|)
 throw|;
 block|}
@@ -883,7 +883,7 @@ throw|throw
 operator|new
 name|UnsupportedRepositoryOperationException
 argument_list|(
-literal|"TODO"
+literal|"TODO: Workspace.getObservationManager"
 argument_list|)
 throw|;
 block|}
@@ -910,7 +910,7 @@ throw|throw
 operator|new
 name|UnsupportedRepositoryOperationException
 argument_list|(
-literal|"TODO"
+literal|"TODO: Workspace.getVersionManager"
 argument_list|)
 throw|;
 block|}
@@ -972,7 +972,7 @@ throw|throw
 operator|new
 name|UnsupportedRepositoryOperationException
 argument_list|(
-literal|"TODO"
+literal|"TODO: Workspace.getImportContentHandler"
 argument_list|)
 throw|;
 block|}
