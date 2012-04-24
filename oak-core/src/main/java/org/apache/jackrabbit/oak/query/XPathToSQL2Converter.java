@@ -3401,9 +3401,12 @@ return|return
 operator|new
 name|Literal
 argument_list|(
-literal|""
-operator|+
+name|String
+operator|.
+name|valueOf
+argument_list|(
 name|value
+argument_list|)
 argument_list|)
 return|;
 block|}

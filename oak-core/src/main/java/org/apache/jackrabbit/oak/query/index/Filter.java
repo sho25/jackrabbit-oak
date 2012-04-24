@@ -21,28 +21,6 @@ end_package
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|HashMap
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Map
-operator|.
-name|Entry
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -109,6 +87,28 @@ name|SelectorImpl
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|HashMap
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Map
+operator|.
+name|Entry
+import|;
+end_import
+
 begin_comment
 comment|/**  * A filter or lookup condition.  */
 end_comment
@@ -138,7 +138,6 @@ literal|"/"
 decl_stmt|;
 comment|/**      * The path restriction type.      */
 specifier|public
-specifier|static
 enum|enum
 name|PathRestriction
 block|{
@@ -167,6 +166,7 @@ literal|"//*"
 argument_list|)
 block|;
 specifier|private
+specifier|final
 name|String
 name|name
 decl_stmt|;
@@ -214,6 +214,7 @@ name|String
 name|valuePrefix
 decl_stmt|;
 specifier|private
+specifier|final
 name|HashMap
 argument_list|<
 name|String

@@ -105,10 +105,12 @@ name|class
 argument_list|)
 decl_stmt|;
 specifier|private
+specifier|final
 name|String
 name|binaryID
 decl_stmt|;
 specifier|private
+specifier|final
 name|MicroKernel
 name|mk
 decl_stmt|;

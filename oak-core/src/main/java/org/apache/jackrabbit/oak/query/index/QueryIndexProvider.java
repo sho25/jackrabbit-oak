@@ -68,7 +68,6 @@ name|listener
 parameter_list|)
 function_decl|;
 comment|/**      * A query index listener      */
-specifier|public
 interface|interface
 name|QueryIndexListener
 block|{

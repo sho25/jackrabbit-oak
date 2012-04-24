@@ -21,16 +21,6 @@ end_package
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Set
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -90,6 +80,16 @@ operator|.
 name|kernel
 operator|.
 name|NodeState
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Set
 import|;
 end_import
 
@@ -218,6 +218,7 @@ throw|;
 block|}
 block|}
 specifier|private
+specifier|static
 name|boolean
 name|isValidLocalName
 parameter_list|(
