@@ -644,7 +644,7 @@ name|sessionContext
 argument_list|,
 name|branch
 operator|.
-name|getContentTree
+name|getTree
 argument_list|(
 literal|"/"
 argument_list|)
@@ -1520,7 +1520,7 @@ block|{
 return|return
 name|branch
 operator|.
-name|getContentTree
+name|getTree
 argument_list|(
 name|node
 operator|.

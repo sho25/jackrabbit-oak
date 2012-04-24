@@ -50,7 +50,7 @@ parameter_list|)
 function_decl|;
 comment|/**      * Retrieve the {@code ContentTree} at the given {@code path}.      * The path must resolve to a content tree in this branch.      *      * @param path path to the content tree      * @return content tree at the given path or {@code null} if no      * such tree exists      */
 name|Tree
-name|getContentTree
+name|getTree
 parameter_list|(
 name|String
 name|path

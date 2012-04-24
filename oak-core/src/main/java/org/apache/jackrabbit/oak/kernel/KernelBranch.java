@@ -372,7 +372,7 @@ annotation|@
 name|Override
 specifier|public
 name|Tree
-name|getContentTree
+name|getTree
 parameter_list|(
 name|String
 name|path

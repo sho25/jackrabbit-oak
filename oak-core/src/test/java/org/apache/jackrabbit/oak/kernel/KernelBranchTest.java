@@ -314,7 +314,7 @@ name|tree
 init|=
 name|branch
 operator|.
-name|getContentTree
+name|getTree
 argument_list|(
 literal|"/"
 argument_list|)
@@ -370,7 +370,7 @@ name|tree
 init|=
 name|branch
 operator|.
-name|getContentTree
+name|getTree
 argument_list|(
 literal|"/"
 argument_list|)
@@ -464,7 +464,7 @@ name|tree
 init|=
 name|branch
 operator|.
-name|getContentTree
+name|getTree
 argument_list|(
 literal|"/"
 argument_list|)
@@ -568,7 +568,7 @@ name|tree
 init|=
 name|branch
 operator|.
-name|getContentTree
+name|getTree
 argument_list|(
 literal|"/"
 argument_list|)
@@ -728,7 +728,7 @@ name|tree
 init|=
 name|branch
 operator|.
-name|getContentTree
+name|getTree
 argument_list|(
 literal|"/"
 argument_list|)
@@ -822,7 +822,7 @@ name|tree
 init|=
 name|branch
 operator|.
-name|getContentTree
+name|getTree
 argument_list|(
 literal|"/"
 argument_list|)
@@ -868,7 +868,7 @@ name|tree
 operator|=
 name|branch
 operator|.
-name|getContentTree
+name|getTree
 argument_list|(
 literal|"/"
 argument_list|)
@@ -930,7 +930,7 @@ name|tree
 init|=
 name|branch
 operator|.
-name|getContentTree
+name|getTree
 argument_list|(
 literal|"/"
 argument_list|)
@@ -1006,7 +1006,7 @@ name|tree
 init|=
 name|branch
 operator|.
-name|getContentTree
+name|getTree
 argument_list|(
 literal|"/"
 argument_list|)
@@ -1143,7 +1143,7 @@ name|tree
 init|=
 name|branch
 operator|.
-name|getContentTree
+name|getTree
 argument_list|(
 literal|"/"
 argument_list|)
@@ -1219,7 +1219,7 @@ name|tree
 init|=
 name|branch
 operator|.
-name|getContentTree
+name|getTree
 argument_list|(
 literal|"/"
 argument_list|)
@@ -1342,7 +1342,7 @@ name|tree
 init|=
 name|branch
 operator|.
-name|getContentTree
+name|getTree
 argument_list|(
 literal|"/"
 argument_list|)
@@ -1440,7 +1440,7 @@ name|tree
 init|=
 name|branch
 operator|.
-name|getContentTree
+name|getTree
 argument_list|(
 literal|"/"
 argument_list|)
@@ -1563,7 +1563,7 @@ name|tree
 init|=
 name|branch
 operator|.
-name|getContentTree
+name|getTree
 argument_list|(
 literal|"/"
 argument_list|)
@@ -1580,7 +1580,7 @@ argument_list|)
 decl_stmt|;
 name|branch
 operator|.
-name|getContentTree
+name|getTree
 argument_list|(
 literal|"x"
 argument_list|)
@@ -1745,7 +1745,7 @@ name|tree
 init|=
 name|branch
 operator|.
-name|getContentTree
+name|getTree
 argument_list|(
 literal|"/"
 argument_list|)
@@ -1833,7 +1833,7 @@ name|tree
 init|=
 name|branch
 operator|.
-name|getContentTree
+name|getTree
 argument_list|(
 literal|"/"
 argument_list|)
@@ -1954,7 +1954,7 @@ name|tree
 init|=
 name|branch
 operator|.
-name|getContentTree
+name|getTree
 argument_list|(
 literal|"/"
 argument_list|)
@@ -2024,7 +2024,7 @@ name|tree
 operator|=
 name|branch
 operator|.
-name|getContentTree
+name|getTree
 argument_list|(
 literal|"/"
 argument_list|)

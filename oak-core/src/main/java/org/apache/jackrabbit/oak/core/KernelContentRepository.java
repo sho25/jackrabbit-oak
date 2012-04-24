@@ -328,7 +328,7 @@ argument_list|)
 decl_stmt|;
 name|branch
 operator|.
-name|getContentTree
+name|getTree
 argument_list|(
 literal|"/"
 argument_list|)

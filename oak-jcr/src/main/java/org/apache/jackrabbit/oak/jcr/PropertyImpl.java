@@ -2445,7 +2445,7 @@ operator|=
 name|getBranch
 argument_list|()
 operator|.
-name|getContentTree
+name|getTree
 argument_list|(
 name|parent
 operator|.

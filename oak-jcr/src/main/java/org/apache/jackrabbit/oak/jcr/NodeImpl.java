@@ -935,7 +935,7 @@ init|=
 name|getBranch
 argument_list|()
 operator|.
-name|getContentTree
+name|getTree
 argument_list|(
 name|parentPath
 argument_list|)
@@ -3633,7 +3633,7 @@ operator|=
 name|getBranch
 argument_list|()
 operator|.
-name|getContentTree
+name|getTree
 argument_list|(
 name|tree
 operator|.
@@ -3780,7 +3780,7 @@ init|=
 name|getBranch
 argument_list|()
 operator|.
-name|getContentTree
+name|getTree
 argument_list|(
 name|absPath
 argument_list|)
@@ -3833,7 +3833,7 @@ init|=
 name|getBranch
 argument_list|()
 operator|.
-name|getContentTree
+name|getTree
 argument_list|(
 name|absPath
 argument_list|)

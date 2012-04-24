@@ -791,14 +791,14 @@ name|checkEqual
 argument_list|(
 name|branch1
 operator|.
-name|getContentTree
+name|getTree
 argument_list|(
 literal|"/"
 argument_list|)
 argument_list|,
 name|branch2
 operator|.
-name|getContentTree
+name|getTree
 argument_list|(
 literal|"/"
 argument_list|)
@@ -1009,7 +1009,7 @@ parameter_list|)
 block|{
 name|branch
 operator|.
-name|getContentTree
+name|getTree
 argument_list|(
 name|parentPath
 argument_list|)
@@ -1098,7 +1098,7 @@ argument_list|)
 decl_stmt|;
 name|branch
 operator|.
-name|getContentTree
+name|getTree
 argument_list|(
 name|parentPath
 argument_list|)
@@ -1370,7 +1370,7 @@ parameter_list|)
 block|{
 name|branch
 operator|.
-name|getContentTree
+name|getTree
 argument_list|(
 name|parentPath
 argument_list|)
@@ -1457,7 +1457,7 @@ parameter_list|)
 block|{
 name|branch
 operator|.
-name|getContentTree
+name|getTree
 argument_list|(
 name|parentPath
 argument_list|)
