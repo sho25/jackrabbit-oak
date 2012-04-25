@@ -1151,9 +1151,6 @@ argument_list|)
 expr_stmt|;
 block|}
 annotation|@
-name|Ignore
-comment|// TODO implement getNodeByIdentifier
-annotation|@
 name|Test
 specifier|public
 name|void

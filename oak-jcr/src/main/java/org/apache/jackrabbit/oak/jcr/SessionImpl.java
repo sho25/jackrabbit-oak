@@ -700,6 +700,28 @@ block|{
 name|ensureIsAlive
 argument_list|()
 expr_stmt|;
+if|if
+condition|(
+name|id
+operator|.
+name|charAt
+argument_list|(
+literal|0
+argument_list|)
+operator|==
+literal|'/'
+condition|)
+block|{
+return|return
+name|getNode
+argument_list|(
+name|id
+argument_list|)
+return|;
+block|}
+else|else
+block|{
+comment|// TODO
 throw|throw
 operator|new
 name|UnsupportedRepositoryOperationException
@@ -707,6 +729,7 @@ argument_list|(
 literal|"TODO: Session.getNodeByIdentifier"
 argument_list|)
 throw|;
+block|}
 block|}
 comment|//------------------------------------------------------------< Writing>---
 annotation|@
