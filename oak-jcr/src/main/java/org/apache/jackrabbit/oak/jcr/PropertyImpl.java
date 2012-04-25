@@ -415,8 +415,11 @@ throws|throws
 name|RepositoryException
 block|{
 return|return
+name|toJcrPath
+argument_list|(
 name|name
 argument_list|()
+argument_list|)
 return|;
 block|}
 comment|/**      * @see javax.jcr.Property#getPath() ()      */

@@ -85,6 +85,22 @@ end_import
 
 begin_import
 import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|namepath
+operator|.
+name|NameMapper
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|jcr
@@ -167,6 +183,10 @@ parameter_list|()
 function_decl|;
 name|ValueFactoryImpl
 name|getValueFactory
+parameter_list|()
+function_decl|;
+name|NameMapper
+name|getNameMapper
 parameter_list|()
 function_decl|;
 name|LockManager

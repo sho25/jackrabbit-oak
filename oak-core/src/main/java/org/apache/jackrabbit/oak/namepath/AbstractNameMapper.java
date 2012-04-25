@@ -212,10 +212,17 @@ operator|==
 literal|null
 condition|)
 block|{
-comment|// TODO
-return|return
-literal|null
-return|;
+throw|throw
+operator|new
+name|IllegalArgumentException
+argument_list|(
+literal|"prefix '"
+operator|+
+name|pref
+operator|+
+literal|"' is not mapped"
+argument_list|)
+throw|;
 block|}
 else|else
 block|{
@@ -287,6 +294,26 @@ operator|+
 literal|1
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|pref
+operator|.
+name|startsWith
+argument_list|(
+literal|"{"
+argument_list|)
+condition|)
+block|{
+throw|throw
+operator|new
+name|IllegalStateException
+argument_list|(
+literal|"invalid oak name (maybe expanded name leaked out?): "
+operator|+
+name|oakName
+argument_list|)
+throw|;
+block|}
 name|String
 name|jcrPrefix
 init|=
@@ -302,10 +329,15 @@ operator|==
 literal|null
 condition|)
 block|{
-comment|// TODO
-return|return
-literal|null
-return|;
+throw|throw
+operator|new
+name|IllegalStateException
+argument_list|(
+literal|"invalid oak name: "
+operator|+
+name|oakName
+argument_list|)
+throw|;
 block|}
 else|else
 block|{
