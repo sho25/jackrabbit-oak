@@ -2100,7 +2100,7 @@ argument_list|()
 return|;
 block|}
 comment|//------------------------------------------------------------< private>---
-comment|/**      *      * @param defaultType      * @return the required type for this property.      */
+comment|/**      *      * @param defaultType      * @return the required type for this property.      * @throws javax.jcr.RepositoryException      */
 specifier|private
 name|int
 name|getRequiredType
@@ -2228,6 +2228,21 @@ expr_stmt|;
 block|}
 else|else
 block|{
+name|Value
+name|targetValue
+init|=
+name|ValueHelper
+operator|.
+name|convert
+argument_list|(
+name|value
+argument_list|,
+name|requiredType
+argument_list|,
+name|getValueFactory
+argument_list|()
+argument_list|)
+decl_stmt|;
 name|getParentContentTree
 argument_list|()
 operator|.
@@ -2240,7 +2255,7 @@ name|ValueConverter
 operator|.
 name|toCoreValue
 argument_list|(
-name|value
+name|targetValue
 argument_list|,
 name|sessionContext
 argument_list|)
@@ -2303,6 +2318,22 @@ expr_stmt|;
 block|}
 else|else
 block|{
+name|Value
+index|[]
+name|targetValues
+init|=
+name|ValueHelper
+operator|.
+name|convert
+argument_list|(
+name|values
+argument_list|,
+name|requiredType
+argument_list|,
+name|getValueFactory
+argument_list|()
+argument_list|)
+decl_stmt|;
 name|getParentContentTree
 argument_list|()
 operator|.
@@ -2315,7 +2346,7 @@ name|ValueConverter
 operator|.
 name|toCoreValues
 argument_list|(
-name|values
+name|targetValues
 argument_list|,
 name|sessionContext
 argument_list|)
