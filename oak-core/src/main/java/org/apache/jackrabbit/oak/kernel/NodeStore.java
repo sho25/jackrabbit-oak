@@ -17,6 +17,22 @@ name|kernel
 package|;
 end_package
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|api
+operator|.
+name|CommitFailedException
+import|;
+end_import
+
 begin_comment
 comment|/**  * TODO update javadoc  * Storage abstraction for content trees. At any given point in time  * the stored content tree is rooted at a single immutable node state.  *<p>  * This is a low-level interface that doesn't cover functionality like  * merging concurrent changes or rejecting new tree states based on some  * higher-level consistency constraints.  *  * TODO: check if can be replaced by mk.model.NodeStore  */
 end_comment
@@ -40,12 +56,14 @@ name|nodeState
 parameter_list|)
 function_decl|;
 comment|/**      * FIXME document      * @param builder      * @return      */
-name|boolean
+name|void
 name|apply
 parameter_list|(
 name|NodeStateBuilder
 name|builder
 parameter_list|)
+throws|throws
+name|CommitFailedException
 function_decl|;
 comment|/**      * Compares the given two node states. Any found differences are      * reported by calling the relevant added, changed or deleted methods      * of the given handler.      *      * @param before node state before changes      * @param after node state after changes      * @param diff handler of node state differences      */
 name|void

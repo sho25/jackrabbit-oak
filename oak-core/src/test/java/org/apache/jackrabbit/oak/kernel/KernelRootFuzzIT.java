@@ -43,9 +43,9 @@ name|jackrabbit
 operator|.
 name|mk
 operator|.
-name|simple
+name|core
 operator|.
-name|SimpleKernelImpl
+name|MicroKernelImpl
 import|;
 end_import
 
@@ -478,9 +478,9 @@ name|MicroKernel
 name|mk1
 init|=
 operator|new
-name|SimpleKernelImpl
+name|MicroKernelImpl
 argument_list|(
-literal|"mem:"
+literal|"./target/mk1"
 argument_list|)
 decl_stmt|;
 name|vf
@@ -531,9 +531,9 @@ name|MicroKernel
 name|mk2
 init|=
 operator|new
-name|SimpleKernelImpl
+name|MicroKernelImpl
 argument_list|(
-literal|"mem:"
+literal|"./target/mk2"
 argument_list|)
 decl_stmt|;
 name|store2

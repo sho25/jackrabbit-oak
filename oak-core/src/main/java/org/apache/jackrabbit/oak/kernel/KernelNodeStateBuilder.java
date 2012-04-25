@@ -77,6 +77,22 @@ name|oak
 operator|.
 name|api
 operator|.
+name|CommitFailedException
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|api
+operator|.
 name|CoreValueFactory
 import|;
 end_import
@@ -113,10 +129,6 @@ name|CoreValueUtil
 import|;
 end_import
 
-begin_comment
-comment|/**  * FIXME document  */
-end_comment
-
 begin_class
 specifier|public
 class|class
@@ -141,8 +153,10 @@ name|path
 decl_stmt|;
 specifier|private
 name|String
+index|[]
 name|revision
 decl_stmt|;
+comment|// FIXME: refactor
 specifier|public
 name|KernelNodeStateBuilder
 parameter_list|(
@@ -156,6 +170,7 @@ name|String
 name|path
 parameter_list|,
 name|String
+index|[]
 name|revision
 parameter_list|)
 block|{
@@ -205,6 +220,9 @@ argument_list|,
 name|path
 argument_list|,
 name|revision
+index|[
+literal|0
+index|]
 argument_list|)
 return|;
 block|}
@@ -238,6 +256,9 @@ argument_list|(
 name|targetPath
 argument_list|,
 name|revision
+index|[
+literal|0
+index|]
 argument_list|)
 condition|?
 operator|new
@@ -297,6 +318,9 @@ name|jsop
 argument_list|)
 expr_stmt|;
 name|revision
+index|[
+literal|0
+index|]
 operator|=
 name|kernel
 operator|.
@@ -310,6 +334,9 @@ name|toString
 argument_list|()
 argument_list|,
 name|revision
+index|[
+literal|0
+index|]
 argument_list|,
 literal|null
 argument_list|)
@@ -359,6 +386,9 @@ argument_list|(
 name|targetPath
 argument_list|,
 name|revision
+index|[
+literal|0
+index|]
 argument_list|)
 condition|)
 block|{
@@ -369,6 +399,9 @@ block|}
 else|else
 block|{
 name|revision
+index|[
+literal|0
+index|]
 operator|=
 name|kernel
 operator|.
@@ -383,6 +416,9 @@ operator|+
 literal|"\":{}"
 argument_list|,
 name|revision
+index|[
+literal|0
+index|]
 argument_list|,
 literal|null
 argument_list|)
@@ -433,10 +469,16 @@ argument_list|(
 name|targetPath
 argument_list|,
 name|revision
+index|[
+literal|0
+index|]
 argument_list|)
 condition|)
 block|{
 name|revision
+index|[
+literal|0
+index|]
 operator|=
 name|kernel
 operator|.
@@ -451,6 +493,9 @@ operator|+
 literal|'"'
 argument_list|,
 name|revision
+index|[
+literal|0
+index|]
 argument_list|,
 literal|null
 argument_list|)
@@ -520,6 +565,9 @@ argument_list|()
 argument_list|)
 decl_stmt|;
 name|revision
+index|[
+literal|0
+index|]
 operator|=
 name|kernel
 operator|.
@@ -536,6 +584,9 @@ operator|+
 name|value
 argument_list|,
 name|revision
+index|[
+literal|0
+index|]
 argument_list|,
 literal|null
 argument_list|)
@@ -564,6 +615,9 @@ name|name
 argument_list|)
 decl_stmt|;
 name|revision
+index|[
+literal|0
+index|]
 operator|=
 name|kernel
 operator|.
@@ -578,6 +632,9 @@ operator|+
 literal|"\":null"
 argument_list|,
 name|revision
+index|[
+literal|0
+index|]
 argument_list|,
 literal|null
 argument_list|)
@@ -659,6 +716,9 @@ name|destName
 argument_list|)
 decl_stmt|;
 name|revision
+index|[
+literal|0
+index|]
 operator|=
 name|kernel
 operator|.
@@ -677,6 +737,9 @@ operator|+
 literal|'"'
 argument_list|,
 name|revision
+index|[
+literal|0
+index|]
 argument_list|,
 literal|null
 argument_list|)
@@ -761,6 +824,9 @@ name|destName
 argument_list|)
 decl_stmt|;
 name|revision
+index|[
+literal|0
+index|]
 operator|=
 name|kernel
 operator|.
@@ -779,6 +845,9 @@ operator|+
 literal|'"'
 argument_list|,
 name|revision
+index|[
+literal|0
+index|]
 argument_list|,
 literal|null
 argument_list|)
@@ -796,9 +865,11 @@ return|return
 name|path
 return|;
 block|}
-name|boolean
+name|void
 name|apply
 parameter_list|()
+throws|throws
+name|CommitFailedException
 block|{
 name|assertNotStale
 argument_list|()
@@ -810,6 +881,9 @@ operator|.
 name|merge
 argument_list|(
 name|revision
+index|[
+literal|0
+index|]
 argument_list|,
 literal|null
 argument_list|)
@@ -818,9 +892,6 @@ name|revision
 operator|=
 literal|null
 expr_stmt|;
-return|return
-literal|true
-return|;
 block|}
 catch|catch
 parameter_list|(
@@ -828,10 +899,13 @@ name|MicroKernelException
 name|e
 parameter_list|)
 block|{
-comment|// TODO log
-return|return
-literal|false
-return|;
+throw|throw
+operator|new
+name|CommitFailedException
+argument_list|(
+name|e
+argument_list|)
+throw|;
 block|}
 block|}
 comment|//------------------------------------------------------------< private>---

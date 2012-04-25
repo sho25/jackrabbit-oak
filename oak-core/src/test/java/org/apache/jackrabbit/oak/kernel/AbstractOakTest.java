@@ -43,9 +43,9 @@ name|jackrabbit
 operator|.
 name|mk
 operator|.
-name|simple
+name|core
 operator|.
-name|SimpleKernelImpl
+name|MicroKernelImpl
 import|;
 end_import
 
@@ -160,16 +160,8 @@ block|{
 name|microKernel
 operator|=
 operator|new
-name|SimpleKernelImpl
-argument_list|(
-literal|"mem:"
-operator|+
-name|getClass
+name|MicroKernelImpl
 argument_list|()
-operator|.
-name|getName
-argument_list|()
-argument_list|)
 expr_stmt|;
 name|valueFactory
 operator|=

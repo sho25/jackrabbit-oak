@@ -494,12 +494,12 @@ name|KernelTree
 name|moved
 parameter_list|)
 function_decl|;
-comment|/**          * The child with the given {@code name} been copied.          * @param state  parent from which the child way copied          * @param name  name of the copied child          * @param copied  copied child          */
+comment|/**          * The child with the given {@code name} been copied.          * @param tree  parent from which the child way copied          * @param name  name of the copied child          * @param copied  copied child          */
 name|void
 name|copy
 parameter_list|(
 name|KernelTree
-name|state
+name|tree
 parameter_list|,
 name|String
 name|name
