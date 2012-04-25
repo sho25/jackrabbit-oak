@@ -422,7 +422,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-comment|/**      * @see javax.jcr.Property#getPath() ()      */
+comment|/**      * @see javax.jcr.Property#getPath()      */
 annotation|@
 name|Override
 specifier|public
