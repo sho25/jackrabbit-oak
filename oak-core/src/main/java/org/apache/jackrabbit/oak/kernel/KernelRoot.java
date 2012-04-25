@@ -453,7 +453,7 @@ name|void
 name|refresh
 parameter_list|()
 block|{
-comment|// TODO implement base = store.getRoot().getChildNode(workspaceName);
+comment|// TODO implement refresh base = store.getRoot().getChildNode(workspaceName);
 block|}
 annotation|@
 name|Override
@@ -572,42 +572,6 @@ block|}
 block|}
 return|return
 name|state
-return|;
-block|}
-comment|/**      * Path of the item {@code name} of the given {@code state}      *      * @param state      * @param name The item name.      * @return relative path of the item {@code name}      */
-specifier|private
-specifier|static
-name|String
-name|path
-parameter_list|(
-name|Tree
-name|state
-parameter_list|,
-name|String
-name|name
-parameter_list|)
-block|{
-name|String
-name|path
-init|=
-name|state
-operator|.
-name|getPath
-argument_list|()
-decl_stmt|;
-return|return
-name|path
-operator|.
-name|isEmpty
-argument_list|()
-condition|?
-name|name
-else|:
-name|path
-operator|+
-literal|'/'
-operator|+
-name|name
 return|;
 block|}
 specifier|private
