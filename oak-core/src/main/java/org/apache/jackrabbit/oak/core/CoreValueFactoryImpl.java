@@ -304,7 +304,6 @@ name|int
 name|type
 parameter_list|)
 block|{
-comment|// TODO check again...
 if|if
 condition|(
 name|type

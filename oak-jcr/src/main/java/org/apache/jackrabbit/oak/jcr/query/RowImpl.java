@@ -63,6 +63,8 @@ name|oak
 operator|.
 name|jcr
 operator|.
+name|value
+operator|.
 name|ValueFactoryImpl
 import|;
 end_import

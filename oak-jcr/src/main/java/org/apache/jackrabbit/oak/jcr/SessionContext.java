@@ -67,6 +67,24 @@ end_import
 
 begin_import
 import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|jcr
+operator|.
+name|value
+operator|.
+name|ValueFactoryImpl
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|jcr
