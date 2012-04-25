@@ -92,10 +92,29 @@ name|RevisionStore
 extends|extends
 name|RevisionProvider
 block|{
+comment|/**      * Token that must be created first before invoking any put operation.      */
+specifier|public
+specifier|abstract
+class|class
+name|PutToken
+block|{
+comment|/* Prevent other implementations. */
+name|PutToken
+parameter_list|()
+block|{}
+block|}
+comment|/**      * Create a put token.      *       * @return put token      */
+name|PutToken
+name|createPutToken
+parameter_list|()
+function_decl|;
 name|Id
 comment|/*id*/
 name|putNode
 parameter_list|(
+name|PutToken
+name|token
+parameter_list|,
 name|MutableNode
 name|node
 parameter_list|)
@@ -106,6 +125,9 @@ name|Id
 comment|/*id*/
 name|putCNEMap
 parameter_list|(
+name|PutToken
+name|token
+parameter_list|,
 name|ChildNodeEntriesMap
 name|map
 parameter_list|)
@@ -117,11 +139,14 @@ name|void
 name|lockHead
 parameter_list|()
 function_decl|;
-comment|/**      * Put a new head commit. Must be called while holding a      * lock on the head.      *       * @param commit commit      * @return head commit id      * @throws Exception if an error occurs      * @see #lockHead()      */
+comment|/**      * Put a new head commit. Must be called while holding a      * lock on the head.      *       * @param token put token      * @param commit commit      * @return head commit id      * @throws Exception if an error occurs      * @see #lockHead()      */
 name|Id
 comment|/*id*/
 name|putHeadCommit
 parameter_list|(
+name|PutToken
+name|token
+parameter_list|,
 name|MutableCommit
 name|commit
 parameter_list|)
@@ -133,11 +158,14 @@ name|void
 name|unlockHead
 parameter_list|()
 function_decl|;
-comment|/**      * Store a new commit.      *<p/>      * Unlike {@code putHeadCommit(MutableCommit)}, this method      * does not affect the current head commit and therefore doesn't      * require a lock on the head.      *      * @param commit commit      * @return new commit id      * @throws Exception if an error occurs      */
+comment|/**      * Store a new commit.      *<p/>      * Unlike {@code putHeadCommit(MutableCommit)}, this method      * does not affect the current head commit and therefore doesn't      * require a lock on the head.      *      * @param token put token      * @param commit commit      * @return new commit id      * @throws Exception if an error occurs      */
 name|Id
 comment|/*id*/
 name|putCommit
 parameter_list|(
+name|PutToken
+name|token
+parameter_list|,
 name|MutableCommit
 name|commit
 parameter_list|)

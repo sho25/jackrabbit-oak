@@ -31,6 +31,11 @@ name|prePersist
 parameter_list|(
 name|RevisionStore
 name|store
+parameter_list|,
+name|RevisionStore
+operator|.
+name|PutToken
+name|token
 parameter_list|)
 throws|throws
 name|Exception
@@ -40,6 +45,11 @@ name|postPersist
 parameter_list|(
 name|RevisionStore
 name|store
+parameter_list|,
+name|RevisionStore
+operator|.
+name|PutToken
+name|token
 parameter_list|)
 throws|throws
 name|Exception

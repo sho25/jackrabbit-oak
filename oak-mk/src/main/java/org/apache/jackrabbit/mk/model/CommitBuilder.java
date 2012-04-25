@@ -568,6 +568,16 @@ expr_stmt|;
 block|}
 block|}
 block|}
+name|RevisionStore
+operator|.
+name|PutToken
+name|token
+init|=
+name|store
+operator|.
+name|createPutToken
+argument_list|()
+decl_stmt|;
 name|Id
 name|rootNodeId
 init|=
@@ -582,7 +592,9 @@ name|getRootNodeId
 argument_list|()
 else|:
 name|persistStagedNodes
-argument_list|()
+argument_list|(
+name|token
+argument_list|)
 decl_stmt|;
 name|Id
 name|newRevId
@@ -658,6 +670,8 @@ argument_list|,
 name|ourRoot
 argument_list|,
 name|theirRoot
+argument_list|,
+name|token
 argument_list|)
 expr_stmt|;
 name|baseRevId
@@ -794,6 +808,8 @@ name|store
 operator|.
 name|putHeadCommit
 argument_list|(
+name|token
+argument_list|,
 name|newCommit
 argument_list|)
 expr_stmt|;
@@ -940,6 +956,8 @@ name|store
 operator|.
 name|putCommit
 argument_list|(
+name|token
+argument_list|,
 name|newCommit
 argument_list|)
 expr_stmt|;
@@ -1000,6 +1018,16 @@ literal|"can only merge a private branch commit"
 argument_list|)
 throw|;
 block|}
+name|RevisionStore
+operator|.
+name|PutToken
+name|token
+init|=
+name|store
+operator|.
+name|createPutToken
+argument_list|()
+decl_stmt|;
 name|Id
 name|rootNodeId
 init|=
@@ -1014,7 +1042,9 @@ name|getRootNodeId
 argument_list|()
 else|:
 name|persistStagedNodes
-argument_list|()
+argument_list|(
+name|token
+argument_list|)
 decl_stmt|;
 name|Id
 name|newRevId
@@ -1073,6 +1103,8 @@ argument_list|,
 name|ourRoot
 argument_list|,
 name|theirRoot
+argument_list|,
+name|token
 argument_list|)
 expr_stmt|;
 if|if
@@ -1188,6 +1220,8 @@ name|store
 operator|.
 name|putHeadCommit
 argument_list|(
+name|token
+argument_list|,
 name|newCommit
 argument_list|)
 expr_stmt|;
@@ -1713,7 +1747,12 @@ block|}
 name|Id
 comment|/* new id of root node */
 name|persistStagedNodes
-parameter_list|()
+parameter_list|(
+name|RevisionStore
+operator|.
+name|PutToken
+name|token
+parameter_list|)
 throws|throws
 name|Exception
 block|{
@@ -1827,6 +1866,8 @@ name|store
 operator|.
 name|putNode
 argument_list|(
+name|token
+argument_list|,
 name|staged
 operator|.
 name|get
@@ -1914,6 +1955,11 @@ name|ourRoot
 parameter_list|,
 name|StoredNode
 name|theirRoot
+parameter_list|,
+name|RevisionStore
+operator|.
+name|PutToken
+name|token
 parameter_list|)
 throws|throws
 name|Exception
@@ -1939,7 +1985,9 @@ argument_list|)
 expr_stmt|;
 return|return
 name|persistStagedNodes
-argument_list|()
+argument_list|(
+name|token
+argument_list|)
 return|;
 block|}
 name|void

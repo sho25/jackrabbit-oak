@@ -2796,6 +2796,11 @@ name|persistDirtyBuckets
 parameter_list|(
 name|RevisionStore
 name|store
+parameter_list|,
+name|RevisionStore
+operator|.
+name|PutToken
+name|token
 parameter_list|)
 throws|throws
 name|Exception
@@ -2846,6 +2851,8 @@ name|store
 operator|.
 name|putCNEMap
 argument_list|(
+name|token
+argument_list|,
 name|bucket
 argument_list|)
 decl_stmt|;
