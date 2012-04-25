@@ -218,6 +218,22 @@ name|NodeImpl
 name|node
 parameter_list|)
 function_decl|;
+name|String
+name|toOakPath
+parameter_list|(
+name|String
+name|jcrPath
+parameter_list|)
+throws|throws
+name|RepositoryException
+function_decl|;
+name|String
+name|toJcrPath
+parameter_list|(
+name|String
+name|oakPath
+parameter_list|)
+function_decl|;
 block|}
 end_interface
 
