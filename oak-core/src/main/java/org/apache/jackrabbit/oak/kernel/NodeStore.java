@@ -34,7 +34,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * TODO update javadoc  * Storage abstraction for content trees. At any given point in time  * the stored content tree is rooted at a single immutable node state.  *<p>  * This is a low-level interface that doesn't cover functionality like  * merging concurrent changes or rejecting new tree states based on some  * higher-level consistency constraints.  *  * TODO: check if can be replaced by mk.model.NodeStore  */
+comment|/**  * Storage abstraction for content trees. At any given point in time  * the stored content tree is rooted at a single immutable node state.  *<p>  * This is a low-level interface that doesn't cover functionality like  * merging concurrent changes or rejecting new tree states based on some  * higher-level consistency constraints.  */
 end_comment
 
 begin_interface
@@ -47,15 +47,15 @@ name|NodeState
 name|getRoot
 parameter_list|()
 function_decl|;
-comment|/**      * FIXME document      * @param nodeState      * @return      */
+comment|/**      * Returns a builder for constructing a new or modified node state.      * The builder is initialized with all the properties and child nodes      * from the given base node state.      *      * @param base  base node state      * @return  builder instance      */
 name|NodeStateBuilder
 name|getBuilder
 parameter_list|(
 name|NodeState
-name|nodeState
+name|base
 parameter_list|)
 function_decl|;
-comment|/**      * FIXME document      * @param builder      * @return      */
+comment|/**      * Updates the state of the content tree.      * @param builder  builder containing the new node state      */
 name|void
 name|apply
 parameter_list|(

@@ -34,7 +34,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * FIXME document  */
+comment|/**  * Builder interface for constructing new {@link NodeState node states}.  */
 end_comment
 
 begin_interface
@@ -42,10 +42,12 @@ specifier|public
 interface|interface
 name|NodeStateBuilder
 block|{
+comment|/**      * Returns an immutable node state that matches the current state of      * the builder.      *      * @return immutable node state      */
 name|NodeState
 name|getNodeState
 parameter_list|()
 function_decl|;
+comment|/**      * Get a builder for a child node      *      * @param name  name of the child node      * @return  builder for the {@code name}d child node      */
 name|NodeStateBuilder
 name|getChildBuilder
 parameter_list|(
@@ -53,6 +55,7 @@ name|String
 name|name
 parameter_list|)
 function_decl|;
+comment|/**      * Add a sub-tree      *      * @param name  name child node containing the sub-tree      * @param nodeState  sub-tree      * @return  builder for the added sub-tree      */
 name|NodeStateBuilder
 name|addNode
 parameter_list|(
@@ -63,6 +66,7 @@ name|NodeState
 name|nodeState
 parameter_list|)
 function_decl|;
+comment|/**      * Set or removes the named child node.      *      * @param name  name of the child node      */
 name|NodeStateBuilder
 name|addNode
 parameter_list|(
@@ -70,6 +74,7 @@ name|String
 name|name
 parameter_list|)
 function_decl|;
+comment|/**      * Remove a child node      * @param name  name of the child node      * @return  {@code true} iff the child node existed      */
 name|boolean
 name|removeNode
 parameter_list|(
@@ -77,6 +82,7 @@ name|String
 name|name
 parameter_list|)
 function_decl|;
+comment|/**      * Set a property.      *      * @param property  property to set      */
 name|void
 name|setProperty
 parameter_list|(
@@ -84,6 +90,7 @@ name|PropertyState
 name|property
 parameter_list|)
 function_decl|;
+comment|/**      * Remove the named property      * @param name  name of the property      */
 name|void
 name|removeProperty
 parameter_list|(
@@ -91,6 +98,7 @@ name|String
 name|name
 parameter_list|)
 function_decl|;
+comment|/**      * Move this node      * @param destParent  builder for the parent node of the destination      * @param destName  name of the moved node      * @return  {@code true} iff the move succeeded      */
 name|boolean
 name|moveTo
 parameter_list|(
@@ -101,6 +109,7 @@ name|String
 name|destName
 parameter_list|)
 function_decl|;
+comment|/**      * Copy this node      * @param destParent  builder for the parent node of the destination      * @param destName  name of the copied node      * @return  {@code true} iff the copy succeeded      */
 name|boolean
 name|copyTo
 parameter_list|(

@@ -174,14 +174,14 @@ name|NodeStateBuilder
 name|getBuilder
 parameter_list|(
 name|NodeState
-name|nodeState
+name|base
 parameter_list|)
 block|{
 if|if
 condition|(
 operator|!
 operator|(
-name|nodeState
+name|base
 operator|instanceof
 name|KernelNodeState
 operator|)
@@ -201,7 +201,7 @@ init|=
 operator|(
 name|KernelNodeState
 operator|)
-name|nodeState
+name|base
 decl_stmt|;
 name|String
 name|branchRevision
