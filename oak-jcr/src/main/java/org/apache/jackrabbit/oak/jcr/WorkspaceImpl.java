@@ -395,6 +395,7 @@ name|QueryManagerImpl
 name|queryManager
 decl_stmt|;
 specifier|private
+specifier|final
 name|NamespaceRegistry
 name|nsRegistry
 decl_stmt|;
@@ -406,6 +407,9 @@ argument_list|<
 name|SessionImpl
 argument_list|>
 name|sessionContext
+parameter_list|,
+name|NamespaceRegistry
+name|nsRegistry
 parameter_list|)
 block|{
 name|this
@@ -413,6 +417,12 @@ operator|.
 name|sessionContext
 operator|=
 name|sessionContext
+expr_stmt|;
+name|this
+operator|.
+name|nsRegistry
+operator|=
+name|nsRegistry
 expr_stmt|;
 block|}
 comment|//----------------------------------------------------------< Workspace>---
@@ -835,25 +845,6 @@ block|{
 name|ensureIsAlive
 argument_list|()
 expr_stmt|;
-if|if
-condition|(
-name|nsRegistry
-operator|==
-literal|null
-condition|)
-block|{
-name|nsRegistry
-operator|=
-operator|new
-name|NamespaceRegistryImpl
-argument_list|(
-name|sessionContext
-operator|.
-name|getContentSession
-argument_list|()
-argument_list|)
-expr_stmt|;
-block|}
 return|return
 name|nsRegistry
 return|;
