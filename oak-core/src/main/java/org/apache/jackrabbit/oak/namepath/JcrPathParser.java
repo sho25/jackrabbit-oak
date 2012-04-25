@@ -210,6 +210,7 @@ operator|.
 name|root
 argument_list|()
 expr_stmt|;
+return|return;
 block|}
 if|if
 condition|(

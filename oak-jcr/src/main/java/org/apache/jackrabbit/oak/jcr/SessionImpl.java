@@ -558,6 +558,8 @@ name|contentSession
 operator|.
 name|getCoreValueFactory
 argument_list|()
+argument_list|,
+name|nameMapper
 argument_list|)
 expr_stmt|;
 name|this

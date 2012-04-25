@@ -632,6 +632,21 @@ name|String
 argument_list|>
 argument_list|()
 decl_stmt|;
+if|if
+condition|(
+literal|"/"
+operator|.
+name|equals
+argument_list|(
+name|jcrPath
+argument_list|)
+condition|)
+block|{
+comment|// avoid the need to special case the root path later on
+return|return
+literal|"/"
+return|;
+block|}
 name|JcrPathParser
 operator|.
 name|Listener
@@ -890,6 +905,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+comment|// root path is special-cased early on so it does not need to
+comment|// be considered here
 name|oakPath
 operator|.
 name|deleteCharAt
@@ -936,6 +953,21 @@ name|String
 argument_list|>
 argument_list|()
 decl_stmt|;
+if|if
+condition|(
+literal|"/"
+operator|.
+name|equals
+argument_list|(
+name|oakPath
+argument_list|)
+condition|)
+block|{
+comment|// avoid the need to special case the root path later on
+return|return
+literal|"/"
+return|;
+block|}
 name|JcrPathParser
 operator|.
 name|Listener
