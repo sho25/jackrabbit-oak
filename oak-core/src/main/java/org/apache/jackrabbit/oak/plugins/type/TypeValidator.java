@@ -47,6 +47,18 @@ name|apache
 operator|.
 name|jackrabbit
 operator|.
+name|JcrConstants
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
 name|oak
 operator|.
 name|api
@@ -173,7 +185,9 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
-literal|"jcr:primaryType"
+name|JcrConstants
+operator|.
+name|JCR_PRIMARYTYPE
 operator|.
 name|equals
 argument_list|(
@@ -200,7 +214,9 @@ block|}
 elseif|else
 if|if
 condition|(
-literal|"jcr:mixinTypes"
+name|JcrConstants
+operator|.
+name|JCR_MIXINTYPES
 operator|.
 name|equals
 argument_list|(
@@ -246,6 +262,7 @@ name|value
 argument_list|)
 condition|)
 block|{
+comment|// TODO: make sure NodeSuchNodeTypeException can be extracted in oak-jcr
 throw|throw
 operator|new
 name|CommitFailedException
