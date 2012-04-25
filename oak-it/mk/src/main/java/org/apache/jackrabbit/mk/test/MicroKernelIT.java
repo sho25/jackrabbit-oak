@@ -19,16 +19,6 @@ end_package
 
 begin_import
 import|import
-name|junit
-operator|.
-name|framework
-operator|.
-name|Assert
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -40,6 +30,30 @@ operator|.
 name|api
 operator|.
 name|MicroKernelException
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|json
+operator|.
+name|simple
+operator|.
+name|JSONArray
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|json
+operator|.
+name|simple
+operator|.
+name|JSONObject
 import|;
 end_import
 
@@ -276,9 +290,11 @@ operator|.
 name|getHeadRevision
 argument_list|()
 decl_stmt|;
-name|String
-name|json
+name|JSONObject
+name|jsonObj
 init|=
+name|parseJSONObject
+argument_list|(
 name|mk
 operator|.
 name|getNodes
@@ -296,12 +312,13 @@ literal|1
 argument_list|,
 literal|null
 argument_list|)
+argument_list|)
 decl_stmt|;
 name|assertTrue
 argument_list|(
-name|json
+name|jsonObj
 operator|.
-name|contains
+name|containsKey
 argument_list|(
 literal|"stringProp"
 argument_list|)
@@ -390,8 +407,6 @@ argument_list|,
 name|nonExistingRev
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|fail
 argument_list|(
 literal|"Success with non-existing revision: "
@@ -428,8 +443,6 @@ argument_list|,
 literal|null
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|fail
 argument_list|(
 literal|"Success with non-existing revision: "
@@ -490,8 +503,6 @@ argument_list|,
 name|head
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|fail
 argument_list|(
 literal|"Success with invalid path: "
@@ -1604,6 +1615,7 @@ argument_list|,
 literal|""
 argument_list|)
 expr_stmt|;
+comment|// make sure branchRev doesn't show up in revision history
 name|String
 name|hist
 init|=
@@ -1617,17 +1629,53 @@ operator|-
 literal|1
 argument_list|)
 decl_stmt|;
-comment|// make sure branchRev doesn't show up in revision history
-name|assertFalse
+name|JSONArray
+name|ar
+init|=
+name|parseJSONArray
 argument_list|(
 name|hist
-operator|.
-name|contains
+argument_list|)
+decl_stmt|;
+for|for
+control|(
+name|Object
+name|entry
+range|:
+name|ar
+control|)
+block|{
+name|assertTrue
+argument_list|(
+name|entry
+operator|instanceof
+name|JSONObject
+argument_list|)
+expr_stmt|;
+name|JSONObject
+name|rev
+init|=
+operator|(
+name|JSONObject
+operator|)
+name|entry
+decl_stmt|;
+name|assertFalse
 argument_list|(
 name|branchRev
+operator|.
+name|equals
+argument_list|(
+name|rev
+operator|.
+name|get
+argument_list|(
+literal|"id"
+argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 comment|// add a node /test123 in head
 name|mk
 operator|.
