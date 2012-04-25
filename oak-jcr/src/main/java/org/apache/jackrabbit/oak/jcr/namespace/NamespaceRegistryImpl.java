@@ -14,6 +14,8 @@ operator|.
 name|oak
 operator|.
 name|jcr
+operator|.
+name|namespace
 package|;
 end_package
 
