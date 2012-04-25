@@ -63,6 +63,16 @@ name|javax
 operator|.
 name|jcr
 operator|.
+name|NamespaceException
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|jcr
+operator|.
 name|NamespaceRegistry
 import|;
 end_import
