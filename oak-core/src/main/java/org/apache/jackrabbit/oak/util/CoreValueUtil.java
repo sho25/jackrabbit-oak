@@ -232,6 +232,10 @@ name|Integer
 argument_list|>
 argument_list|()
 decl_stmt|;
+specifier|private
+name|CoreValueUtil
+parameter_list|()
+block|{     }
 static|static
 block|{
 for|for

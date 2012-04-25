@@ -25,8 +25,8 @@ name|AbstractNameMapper
 implements|implements
 name|NameMapper
 block|{
-specifier|abstract
 specifier|protected
+specifier|abstract
 name|String
 name|getJcrPrefix
 parameter_list|(
@@ -34,8 +34,8 @@ name|String
 name|oakPrefix
 parameter_list|)
 function_decl|;
-specifier|abstract
 specifier|protected
+specifier|abstract
 name|String
 name|getOakPrefix
 parameter_list|(
@@ -43,8 +43,8 @@ name|String
 name|jcrPrefix
 parameter_list|)
 function_decl|;
-specifier|abstract
 specifier|protected
+specifier|abstract
 name|String
 name|getOakPrefixFromURI
 parameter_list|(
@@ -69,7 +69,7 @@ name|jcrName
 operator|.
 name|indexOf
 argument_list|(
-literal|":"
+literal|':'
 argument_list|)
 decl_stmt|;
 if|if
@@ -165,7 +165,7 @@ block|{
 return|return
 name|oakPref
 operator|+
-literal|":"
+literal|':'
 operator|+
 name|name
 return|;
@@ -229,7 +229,7 @@ block|{
 return|return
 name|oakPrefix
 operator|+
-literal|":"
+literal|':'
 operator|+
 name|name
 return|;
@@ -253,7 +253,7 @@ name|oakName
 operator|.
 name|indexOf
 argument_list|(
-literal|":"
+literal|':'
 argument_list|)
 decl_stmt|;
 if|if
@@ -344,7 +344,7 @@ block|{
 return|return
 name|jcrPrefix
 operator|+
-literal|":"
+literal|':'
 operator|+
 name|name
 return|;
