@@ -168,7 +168,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * CoreValueUtil...  *  * TODO: review if this should be added to CoreValue/*Factory interfaces  */
+comment|/**  * CoreValueUtil...  *  * TODO: review if this should be added to CoreValue/*Factory interfaces/implementation  */
 end_comment
 
 begin_class
@@ -293,6 +293,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+comment|/**      * Returns the internal JSON representation of the specified {@code value}      * that is stored in the MicroKernel. All property types that are not      * reflected as JSON types are converted to strings and get a type prefix.      *      * @param value The core value to be converted.      * @return The encoded JSON string.      * @see JsonBuilder#encode(String)      * @see JsonBuilder#encode(long)      * @see JsonBuilder#encode(long)      */
 specifier|public
 specifier|static
 name|String
@@ -372,7 +373,7 @@ condition|)
 block|{
 name|jsonString
 operator|=
-name|buildJsonStringWithType
+name|buildJsonStringWithHint
 argument_list|(
 name|value
 argument_list|)
@@ -398,7 +399,7 @@ default|default:
 comment|// any other type
 name|jsonString
 operator|=
-name|buildJsonStringWithType
+name|buildJsonStringWithHint
 argument_list|(
 name|value
 argument_list|)
@@ -408,6 +409,7 @@ return|return
 name|jsonString
 return|;
 block|}
+comment|/**      * Returns an JSON array containing the JSON representation of the      * specified values.      *      * @param values      * @return JSON array containing the JSON representation of the specified      * values.      * @see #toJsonValue(org.apache.jackrabbit.oak.api.CoreValue)      */
 specifier|public
 specifier|static
 name|String
@@ -497,6 +499,7 @@ name|toString
 argument_list|()
 return|;
 block|}
+comment|/**      * Read a single value from the specified reader and convert it into a      * {@code CoreValue}. This method takes type-hint prefixes into account.      *      * @param reader The JSON reader.      * @param valueFactory The factory used to create the value.      * @return The value such as defined by the token obtained from the reader.      */
 specifier|public
 specifier|static
 name|CoreValue
@@ -688,6 +691,7 @@ return|return
 name|value
 return|;
 block|}
+comment|/**      * Read the list of values from the specified reader and convert them into      * {@link CoreValue}s. This method takes type-hint prefixes into account.      *      * @param reader The JSON reader.      * @param valueFactory The factory used to create the values.      * @return A list of values such as defined by the reader.      */
 specifier|public
 specifier|static
 name|List
@@ -702,17 +706,6 @@ parameter_list|,
 name|CoreValueFactory
 name|valueFactory
 parameter_list|)
-block|{
-if|if
-condition|(
-operator|!
-name|reader
-operator|.
-name|matches
-argument_list|(
-literal|'['
-argument_list|)
-condition|)
 block|{
 name|List
 argument_list|<
@@ -762,26 +755,10 @@ return|return
 name|values
 return|;
 block|}
-else|else
-block|{
-throw|throw
-operator|new
-name|IllegalArgumentException
-argument_list|(
-literal|"Unexpected token: "
-operator|+
-name|reader
-operator|.
-name|getToken
-argument_list|()
-argument_list|)
-throw|;
-block|}
-block|}
 specifier|private
 specifier|static
 name|String
-name|buildJsonStringWithType
+name|buildJsonStringWithHint
 parameter_list|(
 name|CoreValue
 name|value
