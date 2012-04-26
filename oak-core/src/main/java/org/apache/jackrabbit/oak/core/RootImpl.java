@@ -661,7 +661,7 @@ name|void
 name|rebase
 parameter_list|(
 name|boolean
-name|applyChanges
+name|mergeChanges
 parameter_list|)
 block|{
 name|TreeListener
@@ -710,10 +710,10 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|applyChanges
+name|mergeChanges
 condition|)
 block|{
-name|apply
+name|merge
 argument_list|(
 name|changes
 argument_list|)
@@ -722,7 +722,7 @@ block|}
 block|}
 specifier|private
 name|void
-name|apply
+name|merge
 parameter_list|(
 name|TreeListener
 name|changes
