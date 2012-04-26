@@ -231,6 +231,10 @@ name|flatten
 import|;
 end_import
 
+begin_comment
+comment|/**  * Implementation of tree based on {@link NodeStateBuilder}s. Each subtree  * has an associated node state builder which is used for building the new  * trees resulting from calling mutating methods.  */
+end_comment
+
 begin_class
 specifier|public
 class|class
@@ -238,6 +242,7 @@ name|TreeImpl
 implements|implements
 name|Tree
 block|{
+comment|/** Underlying store */
 specifier|private
 specifier|final
 name|NodeStore
@@ -329,6 +334,7 @@ operator|=
 name|parent
 expr_stmt|;
 block|}
+comment|/**      * Create a new instance which represents the root of a tree.      * @param store  underlying store to the tree      * @param nodeStateBuilder  builder for the root      * @param listener  change listener for the tree. May be {@code null} if      *                  listening to changes is not needed.      */
 name|TreeImpl
 parameter_list|(
 name|NodeStore
@@ -560,6 +566,7 @@ operator|==
 literal|null
 condition|)
 block|{
+comment|// This instance is NEW...
 if|if
 condition|(
 name|hasProperty
@@ -568,6 +575,7 @@ name|name
 argument_list|)
 condition|)
 block|{
+comment|// ...so all children are new
 return|return
 name|Status
 operator|.
@@ -576,6 +584,7 @@ return|;
 block|}
 else|else
 block|{
+comment|// ...unless they don't exist.
 return|return
 literal|null
 return|;
@@ -591,6 +600,7 @@ name|name
 argument_list|)
 condition|)
 block|{
+comment|// We have the property...
 if|if
 condition|(
 name|baseState
@@ -603,6 +613,7 @@ operator|==
 literal|null
 condition|)
 block|{
+comment|// ...but didn't have it before. So its NEW.
 return|return
 name|Status
 operator|.
@@ -611,6 +622,7 @@ return|;
 block|}
 else|else
 block|{
+comment|// ... and did have it before. So...
 name|PropertyState
 name|base
 init|=
@@ -639,6 +651,7 @@ name|head
 argument_list|)
 condition|)
 block|{
+comment|// ...it's EXISTING if it hasn't changed
 return|return
 name|Status
 operator|.
@@ -647,6 +660,7 @@ return|;
 block|}
 else|else
 block|{
+comment|// ...and MODIFIED otherwise.
 return|return
 name|Status
 operator|.
@@ -657,6 +671,7 @@ block|}
 block|}
 else|else
 block|{
+comment|// We don't have the property
 if|if
 condition|(
 name|baseState
@@ -669,12 +684,14 @@ operator|==
 literal|null
 condition|)
 block|{
+comment|// ...and didn't have it before. So it doesn't exist.
 return|return
 literal|null
 return|;
 block|}
 else|else
 block|{
+comment|// ...and didn't have it before. So it's REMOVED
 return|return
 name|Status
 operator|.
@@ -818,6 +835,7 @@ operator|==
 literal|null
 condition|)
 block|{
+comment|// This instance is NEW...
 if|if
 condition|(
 name|hasChild
@@ -826,6 +844,7 @@ name|name
 argument_list|)
 condition|)
 block|{
+comment|// ...so all children are new
 return|return
 name|Status
 operator|.
@@ -834,6 +853,7 @@ return|;
 block|}
 else|else
 block|{
+comment|// ...unless they don't exist.
 return|return
 literal|null
 return|;
@@ -849,6 +869,7 @@ name|name
 argument_list|)
 condition|)
 block|{
+comment|// We have the child...
 if|if
 condition|(
 name|baseState
@@ -861,6 +882,7 @@ operator|==
 literal|null
 condition|)
 block|{
+comment|// ...but didn't have it before. So its NEW.
 return|return
 name|Status
 operator|.
@@ -869,6 +891,7 @@ return|;
 block|}
 else|else
 block|{
+comment|// ... and did have it before. So...
 if|if
 condition|(
 name|isSame
@@ -890,6 +913,7 @@ argument_list|)
 argument_list|)
 condition|)
 block|{
+comment|// ...it's EXISTING if it hasn't changed
 return|return
 name|Status
 operator|.
@@ -898,6 +922,7 @@ return|;
 block|}
 else|else
 block|{
+comment|// ...and MODIFIED otherwise.
 return|return
 name|Status
 operator|.
@@ -908,6 +933,7 @@ block|}
 block|}
 else|else
 block|{
+comment|// We don't have the child
 if|if
 condition|(
 name|baseState
@@ -920,12 +946,14 @@ operator|==
 literal|null
 condition|)
 block|{
+comment|// ...and didn't have it before. So it doesn't exist.
 return|return
 literal|null
 return|;
 block|}
 else|else
 block|{
+comment|// ...and didn't have it before. So it's REMOVED
 return|return
 name|Status
 operator|.

@@ -212,7 +212,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This {@code Root} implementation listens on the root of the underlying  * {@link Tree} using a {@link Listener}. All changes are directly applied  * to the {@link NodeStateBuilder} for the relevant sub-tree.  *  * TODO: Refactor tree to be based on the individual NodeStateBuilders instead of NodeStates  */
+comment|/**  * This {@code Root} implementation listens on the root of the underlying  * {@link Tree} using a {@link Listener}. All changes are directly applied  * to the {@link NodeStateBuilder} for the relevant sub-tree.  */
 end_comment
 
 begin_class
@@ -222,25 +222,17 @@ name|RootImpl
 implements|implements
 name|Root
 block|{
+comment|/** The underlying store to which this root belongs */
 specifier|private
 specifier|final
 name|NodeStore
 name|store
 decl_stmt|;
+comment|/** The name of the workspace we are operating on */
 specifier|private
 specifier|final
 name|String
 name|workspaceName
-decl_stmt|;
-comment|/** Base node state of this tree */
-specifier|private
-name|NodeState
-name|base
-decl_stmt|;
-comment|/** Root state of this tree */
-specifier|private
-name|TreeImpl
-name|root
 decl_stmt|;
 comment|/** Listener for changes on the content tree */
 specifier|private
@@ -251,10 +243,22 @@ operator|new
 name|TreeListener
 argument_list|()
 decl_stmt|;
+comment|/** Base node state of this tree */
+specifier|private
+name|NodeState
+name|base
+decl_stmt|;
+comment|/** The builder for this root */
 specifier|private
 name|NodeStateBuilder
 name|nodeStateBuilder
 decl_stmt|;
+comment|/** Root state of this tree */
+specifier|private
+name|TreeImpl
+name|root
+decl_stmt|;
+comment|/**      * New instance bases on a given {@link NodeStore} and a workspace      * @param store  node store      * @param workspaceName  name of the workspace      */
 specifier|public
 name|RootImpl
 parameter_list|(
@@ -489,6 +493,12 @@ argument_list|(
 name|nodeStateBuilder
 argument_list|)
 expr_stmt|;
+name|treeListener
+operator|=
+operator|new
+name|TreeListener
+argument_list|()
+expr_stmt|;
 name|base
 operator|=
 name|store
@@ -509,12 +519,6 @@ name|getBuilder
 argument_list|(
 name|base
 argument_list|)
-expr_stmt|;
-name|treeListener
-operator|=
-operator|new
-name|TreeListener
-argument_list|()
 expr_stmt|;
 name|root
 operator|=
