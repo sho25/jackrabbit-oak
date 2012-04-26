@@ -452,6 +452,8 @@ argument_list|()
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 name|String
 name|getName
 parameter_list|()
