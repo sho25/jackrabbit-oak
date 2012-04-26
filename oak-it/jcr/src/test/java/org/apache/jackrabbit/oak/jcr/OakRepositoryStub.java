@@ -117,7 +117,7 @@ specifier|final
 name|Repository
 name|repository
 decl_stmt|;
-comment|/**      * Constructor as required by the JCR TCK.      *       * @param settings      *            repository settings      */
+comment|/**      * Constructor as required by the JCR TCK.      *       * @param settings repository settings      * @throws javax.jcr.RepositoryException If an error occurs.      */
 specifier|public
 name|OakRepositoryStub
 parameter_list|(
