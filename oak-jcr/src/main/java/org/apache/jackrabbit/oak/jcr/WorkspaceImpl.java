@@ -109,9 +109,9 @@ name|oak
 operator|.
 name|jcr
 operator|.
-name|namespace
+name|nodetype
 operator|.
-name|NamespaceRegistryImpl
+name|NodeTypeManagerImpl
 import|;
 end_import
 
@@ -399,6 +399,11 @@ specifier|final
 name|NamespaceRegistry
 name|nsRegistry
 decl_stmt|;
+specifier|private
+specifier|final
+name|NodeTypeManager
+name|nodeTypeManager
+decl_stmt|;
 specifier|public
 name|WorkspaceImpl
 parameter_list|(
@@ -423,6 +428,19 @@ operator|.
 name|nsRegistry
 operator|=
 name|nsRegistry
+expr_stmt|;
+name|this
+operator|.
+name|nodeTypeManager
+operator|=
+operator|new
+name|NodeTypeManagerImpl
+argument_list|(
+name|sessionContext
+operator|.
+name|getNameMapper
+argument_list|()
+argument_list|)
 expr_stmt|;
 block|}
 comment|//----------------------------------------------------------< Workspace>---
@@ -839,12 +857,7 @@ specifier|public
 name|NamespaceRegistry
 name|getNamespaceRegistry
 parameter_list|()
-throws|throws
-name|RepositoryException
 block|{
-name|ensureIsAlive
-argument_list|()
-expr_stmt|;
 return|return
 name|nsRegistry
 return|;
@@ -855,19 +868,10 @@ specifier|public
 name|NodeTypeManager
 name|getNodeTypeManager
 parameter_list|()
-throws|throws
-name|RepositoryException
 block|{
-name|ensureIsAlive
-argument_list|()
-expr_stmt|;
-throw|throw
-operator|new
-name|UnsupportedRepositoryOperationException
-argument_list|(
-literal|"TODO: Workspace.getNodeTypeManager"
-argument_list|)
-throw|;
+return|return
+name|nodeTypeManager
+return|;
 block|}
 annotation|@
 name|Override

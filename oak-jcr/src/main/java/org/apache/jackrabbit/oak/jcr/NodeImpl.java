@@ -2671,7 +2671,11 @@ comment|// TODO: check if transient changes to mixin-types are reflected here
 name|NodeTypeManager
 name|ntMgr
 init|=
-name|sessionContext
+name|getSession
+argument_list|()
+operator|.
+name|getWorkspace
+argument_list|()
 operator|.
 name|getNodeTypeManager
 argument_list|()
@@ -2726,7 +2730,11 @@ block|{
 name|NodeTypeManager
 name|ntMgr
 init|=
-name|sessionContext
+name|getSession
+argument_list|()
+operator|.
+name|getWorkspace
+argument_list|()
 operator|.
 name|getNodeTypeManager
 argument_list|()
