@@ -924,7 +924,7 @@ if|if
 condition|(
 name|r
 operator|==
-name|JsopTokenizer
+name|JsopReader
 operator|.
 name|END
 condition|)
@@ -1182,7 +1182,7 @@ name|t
 operator|.
 name|matches
 argument_list|(
-name|JsopTokenizer
+name|JsopReader
 operator|.
 name|NULL
 argument_list|)

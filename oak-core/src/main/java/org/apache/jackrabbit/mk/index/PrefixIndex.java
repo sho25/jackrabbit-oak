@@ -39,6 +39,22 @@ name|mk
 operator|.
 name|json
 operator|.
+name|JsopReader
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|mk
+operator|.
+name|json
+operator|.
 name|JsopTokenizer
 import|;
 end_import
@@ -305,7 +321,7 @@ name|t
 operator|.
 name|matches
 argument_list|(
-name|JsopTokenizer
+name|JsopReader
 operator|.
 name|STRING
 argument_list|)
@@ -372,7 +388,7 @@ name|t
 operator|.
 name|matches
 argument_list|(
-name|JsopTokenizer
+name|JsopReader
 operator|.
 name|STRING
 argument_list|)
@@ -416,7 +432,7 @@ name|t
 operator|.
 name|matches
 argument_list|(
-name|JsopTokenizer
+name|JsopReader
 operator|.
 name|FALSE
 argument_list|)
@@ -431,7 +447,7 @@ name|t
 operator|.
 name|matches
 argument_list|(
-name|JsopTokenizer
+name|JsopReader
 operator|.
 name|TRUE
 argument_list|)
@@ -446,7 +462,7 @@ name|t
 operator|.
 name|matches
 argument_list|(
-name|JsopTokenizer
+name|JsopReader
 operator|.
 name|NULL
 argument_list|)
@@ -461,7 +477,7 @@ name|t
 operator|.
 name|matches
 argument_list|(
-name|JsopTokenizer
+name|JsopReader
 operator|.
 name|NUMBER
 argument_list|)

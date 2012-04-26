@@ -674,7 +674,7 @@ if|if
 condition|(
 name|r
 operator|==
-name|JsopTokenizer
+name|JsopReader
 operator|.
 name|END
 condition|)
