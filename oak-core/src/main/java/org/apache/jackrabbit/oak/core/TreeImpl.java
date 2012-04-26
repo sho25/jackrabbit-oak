@@ -370,34 +370,34 @@ comment|/**      * Listener for changes on {@code Tree}s      */
 interface|interface
 name|Listener
 block|{
-comment|/**          * The child of the given {@code name} has been added to {@code tree}.          * @param tree  parent to which a child was added          * @param name  name of the added child          */
+comment|/**          * The child of the given {@code name} has been added to {@code tree}.          * @param parent  parent to which a child was added          * @param name  name of the added child          */
 name|void
 name|addChild
 parameter_list|(
 name|TreeImpl
-name|tree
+name|parent
 parameter_list|,
 name|String
 name|name
 parameter_list|)
 function_decl|;
-comment|/**          * The child of the given {@code name} has been removed from {@code tree}          * @param tree  parent from which a child was removed          * @param name  name of the removed child          */
+comment|/**          * The child of the given {@code name} has been removed from {@code tree}          * @param parent  parent from which a child was removed          * @param name  name of the removed child          */
 name|void
 name|removeChild
 parameter_list|(
 name|TreeImpl
-name|tree
+name|parent
 parameter_list|,
 name|String
 name|name
 parameter_list|)
 function_decl|;
-comment|/**          * The property of the given {@code name} and {@code value} has been set.          * @param tree  parent on which the property was set.          * @param name  name of the property          * @param value  value of the property          */
+comment|/**          * The property of the given {@code name} and {@code value} has been set.          * @param parent  parent on which the property was set.          * @param name  name of the property          * @param value  value of the property          */
 name|void
 name|setProperty
 parameter_list|(
 name|TreeImpl
-name|tree
+name|parent
 parameter_list|,
 name|String
 name|name
@@ -406,12 +406,12 @@ name|CoreValue
 name|value
 parameter_list|)
 function_decl|;
-comment|/**          * The property of the given {@code name} and {@code values} has been set.          * @param tree  parent on which the property was set.          * @param name  name of the property          * @param values  values of the property          */
+comment|/**          * The property of the given {@code name} and {@code values} has been set.          * @param parent  parent on which the property was set.          * @param name  name of the property          * @param values  values of the property          */
 name|void
 name|setProperty
 parameter_list|(
 name|TreeImpl
-name|tree
+name|parent
 parameter_list|,
 name|String
 name|name
@@ -423,40 +423,40 @@ argument_list|>
 name|values
 parameter_list|)
 function_decl|;
-comment|/**          * The property of the given {@code name} has been removed.          * @param tree  parent on which the property was removed.          * @param name  name of the property          */
+comment|/**          * The property of the given {@code name} has been removed.          * @param parent  parent on which the property was removed.          * @param name  name of the property          */
 name|void
 name|removeProperty
 parameter_list|(
 name|TreeImpl
-name|tree
+name|parent
 parameter_list|,
 name|String
 name|name
 parameter_list|)
 function_decl|;
-comment|/**          * The child with the given {@code name} has been moved.          * @param tree  parent from which the child was moved          * @param name  name of the moved child          * @param moved  moved child          */
+comment|/**          * The child with the given {@code name} has been moved.          * @param sourceParent  parent from which the child was moved          * @param sourceName  name of the moved child          * @param moved  moved child          */
 name|void
 name|move
 parameter_list|(
 name|TreeImpl
-name|tree
+name|sourceParent
 parameter_list|,
 name|String
-name|name
+name|sourceName
 parameter_list|,
 name|TreeImpl
 name|moved
 parameter_list|)
 function_decl|;
-comment|/**          * The child with the given {@code name} been copied.          * @param tree  parent from which the child way copied          * @param name  name of the copied child          * @param copied  copied child          */
+comment|/**          * The child with the given {@code name} been copied.          * @param sourceParent  parent from which the child way copied          * @param sourceName  name of the copied child          * @param copied  copied child          */
 name|void
 name|copy
 parameter_list|(
 name|TreeImpl
-name|tree
+name|sourceParent
 parameter_list|,
 name|String
-name|name
+name|sourceName
 parameter_list|,
 name|TreeImpl
 name|copied
@@ -1191,7 +1191,7 @@ name|listener
 operator|.
 name|addChild
 argument_list|(
-name|added
+name|this
 argument_list|,
 name|name
 argument_list|)
