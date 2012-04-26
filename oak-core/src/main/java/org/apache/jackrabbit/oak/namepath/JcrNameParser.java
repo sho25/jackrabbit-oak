@@ -31,6 +31,10 @@ name|XMLChar
 import|;
 end_import
 
+begin_comment
+comment|/**  * Parses and validates JCR names. Upon successful completion of  * {@link #parse(String, org.apache.jackrabbit.oak.namepath.JcrNameParser.Listener)}  * the specified listener is informed about the (resulting) JCR name.  * In case of failure {@link Listener#error(String)} is called indicating  * the reason.  */
+end_comment
+
 begin_class
 specifier|public
 class|class
@@ -85,9 +89,11 @@ name|STATE_URI
 init|=
 literal|5
 decl_stmt|;
+comment|/**      * Listener interface for this name parser.      */
 interface|interface
 name|Listener
 block|{
+comment|/**          * Informs this listener that parsing the jcr name failed.          *          * @param message Details about the error.          * @see JcrNameParser#parse(String, org.apache.jackrabbit.oak.namepath.JcrNameParser.Listener)          */
 name|void
 name|error
 parameter_list|(
@@ -95,6 +101,7 @@ name|String
 name|message
 parameter_list|)
 function_decl|;
+comment|/**          * Informs this listener about the result of {@link JcrNameParser#parse(String, org.apache.jackrabbit.oak.namepath.JcrNameParser.Listener)}          *          * @param name The resulting name upon successful completion of          * {@link JcrNameParser#parse(String, org.apache.jackrabbit.oak.namepath.JcrNameParser.Listener)}          */
 name|void
 name|name
 parameter_list|(
@@ -103,10 +110,12 @@ name|name
 parameter_list|)
 function_decl|;
 block|}
+comment|/**      * Avoid instantiation      */
 specifier|private
 name|JcrNameParser
 parameter_list|()
 block|{     }
+comment|/**      * Parse the specified jcr name and inform the specified {@code listener}      * about the result or any error that may occur during parsing.      *      * @param jcrName The jcr name to be parsed.      * @param listener The listener to be informed about success or failure.      */
 specifier|public
 specifier|static
 name|void
