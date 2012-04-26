@@ -109,16 +109,6 @@ name|javax
 operator|.
 name|jcr
 operator|.
-name|UnsupportedRepositoryOperationException
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|jcr
-operator|.
 name|ValueFactory
 import|;
 end_import
@@ -450,15 +440,21 @@ name|void
 name|save
 parameter_list|()
 throws|throws
-name|UnsupportedRepositoryOperationException
+name|RepositoryException
 block|{
-throw|throw
-operator|new
-name|UnsupportedRepositoryOperationException
+name|log
+operator|.
+name|warn
 argument_list|(
-literal|"Use Session#save"
+literal|"Item#save is no longer supported. Please use Session#save instead."
 argument_list|)
-throw|;
+expr_stmt|;
+name|getSession
+argument_list|()
+operator|.
+name|save
+argument_list|()
+expr_stmt|;
 block|}
 comment|/**      * @see Item#refresh(boolean)      */
 annotation|@
@@ -471,15 +467,23 @@ name|boolean
 name|keepChanges
 parameter_list|)
 throws|throws
-name|UnsupportedRepositoryOperationException
+name|RepositoryException
 block|{
-throw|throw
-operator|new
-name|UnsupportedRepositoryOperationException
+name|log
+operator|.
+name|warn
 argument_list|(
-literal|"Use Session#refresh"
+literal|"Item#refresh is no longer supported. Please use Session#refresh"
 argument_list|)
-throw|;
+expr_stmt|;
+name|getSession
+argument_list|()
+operator|.
+name|refresh
+argument_list|(
+name|keepChanges
+argument_list|)
+expr_stmt|;
 block|}
 comment|//--------------------------------------------------------------------------
 comment|/**      * Performs a sanity check on this item and the associated session.      *      * @throws RepositoryException if this item has been rendered invalid for some reason      */
