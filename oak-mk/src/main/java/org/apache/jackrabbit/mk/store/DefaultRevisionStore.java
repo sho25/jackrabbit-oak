@@ -2276,6 +2276,7 @@ operator|=
 name|firstBranchRootId
 expr_stmt|;
 block|}
+comment|/* repair dangling parent commit of first, preserved commit */
 name|StoredCommit
 name|commit
 init|=
@@ -2600,7 +2601,7 @@ return|return
 literal|null
 return|;
 block|}
-comment|/**      * Mark all commits and nodes in a garbage collection cycle. Can be      * customized by subclasses. If this method throws an exception, the cycle      * will be stopped without sweeping.      *       * @return first commit id that will be preserved      * @throws Exception      *             if an error occurs      */
+comment|/**      * Mark all commits and nodes in a garbage collection cycle. Can be      * customized by subclasses. The default implementation preserves all      * commits that were created within 60 minutes of the current head commit.      *<p/>      * If this method throws an exception, the cycle will be stopped without      * sweeping.      *       * @return first commit id that will be preserved      * @throws Exception      *             if an error occurs      */
 specifier|protected
 name|Id
 name|markCommits
