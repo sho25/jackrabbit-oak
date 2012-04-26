@@ -13,9 +13,7 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|query
-operator|.
-name|index
+name|spi
 package|;
 end_package
 

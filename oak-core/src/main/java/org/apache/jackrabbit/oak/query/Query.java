@@ -571,7 +571,7 @@ name|query
 operator|.
 name|index
 operator|.
-name|Filter
+name|FilterImpl
 import|;
 end_import
 
@@ -585,9 +585,7 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|query
-operator|.
-name|index
+name|spi
 operator|.
 name|QueryIndex
 import|;
@@ -2429,7 +2427,7 @@ specifier|public
 name|QueryIndex
 name|getBestIndex
 parameter_list|(
-name|Filter
+name|FilterImpl
 name|filter
 parameter_list|)
 block|{

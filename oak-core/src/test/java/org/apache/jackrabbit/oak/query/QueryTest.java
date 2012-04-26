@@ -235,9 +235,7 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|query
-operator|.
-name|index
+name|spi
 operator|.
 name|QueryIndexProvider
 import|;

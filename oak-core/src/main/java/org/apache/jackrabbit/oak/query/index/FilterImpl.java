@@ -89,6 +89,22 @@ end_import
 
 begin_import
 import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|Filter
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|util
@@ -116,6 +132,8 @@ end_comment
 begin_class
 specifier|public
 class|class
+name|FilterImpl
+implements|implements
 name|Filter
 block|{
 comment|/**      * The selector this filter applies to.      */
@@ -136,65 +154,6 @@ name|path
 init|=
 literal|"/"
 decl_stmt|;
-comment|/**      * The path restriction type.      */
-specifier|public
-enum|enum
-name|PathRestriction
-block|{
-comment|/**          * A parent of this node          */
-name|PARENT
-argument_list|(
-literal|"/.."
-argument_list|)
-block|,
-comment|/**          * This exact node only.          */
-name|EXACT
-argument_list|(
-literal|""
-argument_list|)
-block|,
-comment|/**          * All direct child nodes.          */
-name|DIRECT_CHILDREN
-argument_list|(
-literal|"/*"
-argument_list|)
-block|,
-comment|/**          * All direct and indirect child nodes.          */
-name|ALL_CHILDREN
-argument_list|(
-literal|"//*"
-argument_list|)
-block|;
-specifier|private
-specifier|final
-name|String
-name|name
-decl_stmt|;
-name|PathRestriction
-parameter_list|(
-name|String
-name|name
-parameter_list|)
-block|{
-name|this
-operator|.
-name|name
-operator|=
-name|name
-expr_stmt|;
-block|}
-annotation|@
-name|Override
-specifier|public
-name|String
-name|toString
-parameter_list|()
-block|{
-return|return
-name|name
-return|;
-block|}
-block|}
 specifier|private
 name|PathRestriction
 name|pathRestriction
@@ -232,85 +191,6 @@ name|PropertyRestriction
 argument_list|>
 argument_list|()
 decl_stmt|;
-specifier|static
-class|class
-name|PropertyRestriction
-block|{
-comment|/**          * The name of the property.          */
-specifier|public
-name|String
-name|propertyName
-decl_stmt|;
-comment|/**          * The first value to read, or null to read from the beginning.          */
-specifier|public
-name|CoreValue
-name|first
-decl_stmt|;
-comment|/**          * Whether values that match the first should be returned.          */
-specifier|public
-name|boolean
-name|firstIncluding
-decl_stmt|;
-comment|/**          * The last value to read, or null to read until the end.          */
-specifier|public
-name|CoreValue
-name|last
-decl_stmt|;
-comment|/**          * Whether values that match the last should be returned.          */
-specifier|public
-name|boolean
-name|lastIncluding
-decl_stmt|;
-annotation|@
-name|Override
-specifier|public
-name|String
-name|toString
-parameter_list|()
-block|{
-return|return
-operator|(
-name|first
-operator|==
-literal|null
-condition|?
-literal|""
-else|:
-operator|(
-operator|(
-name|firstIncluding
-condition|?
-literal|"["
-else|:
-literal|"("
-operator|)
-operator|+
-name|first
-operator|)
-operator|)
-operator|+
-literal|".."
-operator|+
-operator|(
-name|last
-operator|==
-literal|null
-condition|?
-literal|""
-else|:
-name|last
-operator|+
-operator|(
-name|lastIncluding
-condition|?
-literal|"]"
-else|:
-literal|")"
-operator|)
-operator|)
-return|;
-block|}
-block|}
 comment|/**      * Only return distinct values.      */
 specifier|private
 name|boolean
@@ -318,7 +198,7 @@ name|distinct
 decl_stmt|;
 comment|// TODO support "order by"
 specifier|public
-name|Filter
+name|FilterImpl
 parameter_list|(
 name|SelectorImpl
 name|selector

@@ -49,7 +49,7 @@ name|query
 operator|.
 name|index
 operator|.
-name|Filter
+name|FilterImpl
 import|;
 end_import
 
@@ -63,13 +63,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|query
-operator|.
-name|index
+name|spi
 operator|.
 name|Filter
-operator|.
-name|PathRestriction
 import|;
 end_import
 
@@ -243,7 +239,7 @@ specifier|public
 name|void
 name|apply
 parameter_list|(
-name|Filter
+name|FilterImpl
 name|f
 parameter_list|)
 block|{
@@ -263,6 +259,8 @@ name|restrictPath
 argument_list|(
 name|ancestorPath
 argument_list|,
+name|Filter
+operator|.
 name|PathRestriction
 operator|.
 name|ALL_CHILDREN

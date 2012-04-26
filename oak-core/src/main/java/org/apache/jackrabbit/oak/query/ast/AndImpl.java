@@ -33,7 +33,7 @@ name|query
 operator|.
 name|index
 operator|.
-name|Filter
+name|FilterImpl
 import|;
 end_import
 
@@ -156,7 +156,7 @@ specifier|public
 name|void
 name|apply
 parameter_list|(
-name|Filter
+name|FilterImpl
 name|f
 parameter_list|)
 block|{

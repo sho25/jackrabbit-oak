@@ -135,13 +135,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|query
-operator|.
-name|index
+name|spi
 operator|.
 name|Filter
-operator|.
-name|PathRestriction
 import|;
 end_import
 
@@ -193,11 +189,11 @@ argument_list|(
 literal|"2"
 argument_list|)
 decl_stmt|;
-name|Filter
+name|FilterImpl
 name|f
 init|=
 operator|new
-name|Filter
+name|FilterImpl
 argument_list|(
 literal|null
 argument_list|)
@@ -350,7 +346,7 @@ expr_stmt|;
 name|f
 operator|=
 operator|new
-name|Filter
+name|FilterImpl
 argument_list|(
 literal|null
 argument_list|)
@@ -491,7 +487,7 @@ expr_stmt|;
 name|f
 operator|=
 operator|new
-name|Filter
+name|FilterImpl
 argument_list|(
 literal|null
 argument_list|)
@@ -548,7 +544,7 @@ expr_stmt|;
 name|f
 operator|=
 operator|new
-name|Filter
+name|FilterImpl
 argument_list|(
 literal|null
 argument_list|)
@@ -826,9 +822,13 @@ argument_list|()
 argument_list|)
 argument_list|)
 decl_stmt|;
+name|Filter
+operator|.
 name|PathRestriction
 name|r1
 init|=
+name|Filter
+operator|.
 name|PathRestriction
 operator|.
 name|values
@@ -838,6 +838,8 @@ name|r
 operator|.
 name|nextInt
 argument_list|(
+name|Filter
+operator|.
 name|PathRestriction
 operator|.
 name|values
@@ -847,9 +849,13 @@ name|length
 argument_list|)
 index|]
 decl_stmt|;
+name|Filter
+operator|.
 name|PathRestriction
 name|r2
 init|=
+name|Filter
+operator|.
 name|PathRestriction
 operator|.
 name|values
@@ -859,6 +865,8 @@ name|r
 operator|.
 name|nextInt
 argument_list|(
+name|Filter
+operator|.
 name|PathRestriction
 operator|.
 name|values
@@ -868,11 +876,11 @@ name|length
 argument_list|)
 index|]
 decl_stmt|;
-name|Filter
+name|FilterImpl
 name|f1
 init|=
 operator|new
-name|Filter
+name|FilterImpl
 argument_list|(
 literal|null
 argument_list|)
@@ -886,11 +894,11 @@ argument_list|,
 name|r1
 argument_list|)
 expr_stmt|;
-name|Filter
+name|FilterImpl
 name|f2
 init|=
 operator|new
-name|Filter
+name|FilterImpl
 argument_list|(
 literal|null
 argument_list|)
@@ -904,11 +912,11 @@ argument_list|,
 name|r2
 argument_list|)
 expr_stmt|;
-name|Filter
+name|FilterImpl
 name|fc
 init|=
 operator|new
-name|Filter
+name|FilterImpl
 argument_list|(
 literal|null
 argument_list|)
@@ -992,7 +1000,7 @@ block|{
 name|fc
 operator|=
 operator|new
-name|Filter
+name|FilterImpl
 argument_list|(
 literal|null
 argument_list|)
@@ -1097,11 +1105,11 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|Filter
+name|FilterImpl
 name|f
 init|=
 operator|new
-name|Filter
+name|FilterImpl
 argument_list|(
 literal|null
 argument_list|)
@@ -1118,6 +1126,8 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
+name|Filter
+operator|.
 name|PathRestriction
 operator|.
 name|ALL_CHILDREN
@@ -1134,6 +1144,8 @@ name|restrictPath
 argument_list|(
 literal|"/test"
 argument_list|,
+name|Filter
+operator|.
 name|PathRestriction
 operator|.
 name|ALL_CHILDREN
@@ -1145,6 +1157,8 @@ name|restrictPath
 argument_list|(
 literal|"/test2"
 argument_list|,
+name|Filter
+operator|.
 name|PathRestriction
 operator|.
 name|ALL_CHILDREN
@@ -1161,7 +1175,7 @@ expr_stmt|;
 name|f
 operator|=
 operator|new
-name|Filter
+name|FilterImpl
 argument_list|(
 literal|null
 argument_list|)
@@ -1172,6 +1186,8 @@ name|restrictPath
 argument_list|(
 literal|"/test"
 argument_list|,
+name|Filter
+operator|.
 name|PathRestriction
 operator|.
 name|ALL_CHILDREN
@@ -1189,6 +1205,8 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
+name|Filter
+operator|.
 name|PathRestriction
 operator|.
 name|ALL_CHILDREN
@@ -1205,6 +1223,8 @@ name|restrictPath
 argument_list|(
 literal|"/test/x"
 argument_list|,
+name|Filter
+operator|.
 name|PathRestriction
 operator|.
 name|DIRECT_CHILDREN
@@ -1222,6 +1242,8 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
+name|Filter
+operator|.
 name|PathRestriction
 operator|.
 name|DIRECT_CHILDREN
@@ -1238,6 +1260,8 @@ name|restrictPath
 argument_list|(
 literal|"/test/x/y"
 argument_list|,
+name|Filter
+operator|.
 name|PathRestriction
 operator|.
 name|PARENT
@@ -1255,6 +1279,8 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
+name|Filter
+operator|.
 name|PathRestriction
 operator|.
 name|PARENT
@@ -1268,7 +1294,7 @@ expr_stmt|;
 name|f
 operator|=
 operator|new
-name|Filter
+name|FilterImpl
 argument_list|(
 literal|null
 argument_list|)
@@ -1279,6 +1305,8 @@ name|restrictPath
 argument_list|(
 literal|"/test"
 argument_list|,
+name|Filter
+operator|.
 name|PathRestriction
 operator|.
 name|DIRECT_CHILDREN
@@ -1290,6 +1318,8 @@ name|restrictPath
 argument_list|(
 literal|"/test/x/y"
 argument_list|,
+name|Filter
+operator|.
 name|PathRestriction
 operator|.
 name|PARENT
@@ -1307,6 +1337,8 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
+name|Filter
+operator|.
 name|PathRestriction
 operator|.
 name|PARENT
@@ -1323,6 +1355,8 @@ name|restrictPath
 argument_list|(
 literal|"/test/y"
 argument_list|,
+name|Filter
+operator|.
 name|PathRestriction
 operator|.
 name|DIRECT_CHILDREN
@@ -1339,7 +1373,7 @@ expr_stmt|;
 name|f
 operator|=
 operator|new
-name|Filter
+name|FilterImpl
 argument_list|(
 literal|null
 argument_list|)
@@ -1350,6 +1384,8 @@ name|restrictPath
 argument_list|(
 literal|"/test/x/y"
 argument_list|,
+name|Filter
+operator|.
 name|PathRestriction
 operator|.
 name|PARENT
@@ -1361,6 +1397,8 @@ name|restrictPath
 argument_list|(
 literal|"/test/x"
 argument_list|,
+name|Filter
+operator|.
 name|PathRestriction
 operator|.
 name|EXACT
@@ -1378,6 +1416,8 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
+name|Filter
+operator|.
 name|PathRestriction
 operator|.
 name|EXACT
@@ -1394,6 +1434,8 @@ name|restrictPath
 argument_list|(
 literal|"/test/y"
 argument_list|,
+name|Filter
+operator|.
 name|PathRestriction
 operator|.
 name|EXACT
@@ -1410,7 +1452,7 @@ expr_stmt|;
 name|f
 operator|=
 operator|new
-name|Filter
+name|FilterImpl
 argument_list|(
 literal|null
 argument_list|)
@@ -1421,6 +1463,8 @@ name|restrictPath
 argument_list|(
 literal|"/test"
 argument_list|,
+name|Filter
+operator|.
 name|PathRestriction
 operator|.
 name|ALL_CHILDREN
@@ -1432,6 +1476,8 @@ name|restrictPath
 argument_list|(
 literal|"/test"
 argument_list|,
+name|Filter
+operator|.
 name|PathRestriction
 operator|.
 name|PARENT
@@ -1448,7 +1494,7 @@ expr_stmt|;
 name|f
 operator|=
 operator|new
-name|Filter
+name|FilterImpl
 argument_list|(
 literal|null
 argument_list|)
@@ -1459,6 +1505,8 @@ name|restrictPath
 argument_list|(
 literal|"/test/x"
 argument_list|,
+name|Filter
+operator|.
 name|PathRestriction
 operator|.
 name|PARENT
@@ -1470,6 +1518,8 @@ name|restrictPath
 argument_list|(
 literal|"/test"
 argument_list|,
+name|Filter
+operator|.
 name|PathRestriction
 operator|.
 name|ALL_CHILDREN
@@ -1487,6 +1537,8 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
+name|Filter
+operator|.
 name|PathRestriction
 operator|.
 name|PARENT
@@ -1503,6 +1555,8 @@ name|restrictPath
 argument_list|(
 literal|"/test/x"
 argument_list|,
+name|Filter
+operator|.
 name|PathRestriction
 operator|.
 name|ALL_CHILDREN
@@ -1519,7 +1573,7 @@ expr_stmt|;
 name|f
 operator|=
 operator|new
-name|Filter
+name|FilterImpl
 argument_list|(
 literal|null
 argument_list|)
@@ -1530,6 +1584,8 @@ name|restrictPath
 argument_list|(
 literal|"/test"
 argument_list|,
+name|Filter
+operator|.
 name|PathRestriction
 operator|.
 name|ALL_CHILDREN
@@ -1541,6 +1597,8 @@ name|restrictPath
 argument_list|(
 literal|"/test"
 argument_list|,
+name|Filter
+operator|.
 name|PathRestriction
 operator|.
 name|EXACT
@@ -1557,7 +1615,7 @@ expr_stmt|;
 name|f
 operator|=
 operator|new
-name|Filter
+name|FilterImpl
 argument_list|(
 literal|null
 argument_list|)
@@ -1568,6 +1626,8 @@ name|restrictPath
 argument_list|(
 literal|"/test"
 argument_list|,
+name|Filter
+operator|.
 name|PathRestriction
 operator|.
 name|DIRECT_CHILDREN
@@ -1579,6 +1639,8 @@ name|restrictPath
 argument_list|(
 literal|"/test/x"
 argument_list|,
+name|Filter
+operator|.
 name|PathRestriction
 operator|.
 name|EXACT
@@ -1596,6 +1658,8 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
+name|Filter
+operator|.
 name|PathRestriction
 operator|.
 name|EXACT
@@ -1609,7 +1673,7 @@ expr_stmt|;
 name|f
 operator|=
 operator|new
-name|Filter
+name|FilterImpl
 argument_list|(
 literal|null
 argument_list|)
@@ -1620,6 +1684,8 @@ name|restrictPath
 argument_list|(
 literal|"/test"
 argument_list|,
+name|Filter
+operator|.
 name|PathRestriction
 operator|.
 name|DIRECT_CHILDREN
@@ -1631,6 +1697,8 @@ name|restrictPath
 argument_list|(
 literal|"/test/x/y"
 argument_list|,
+name|Filter
+operator|.
 name|PathRestriction
 operator|.
 name|EXACT
@@ -1647,7 +1715,7 @@ expr_stmt|;
 name|f
 operator|=
 operator|new
-name|Filter
+name|FilterImpl
 argument_list|(
 literal|null
 argument_list|)
@@ -1658,6 +1726,8 @@ name|restrictPath
 argument_list|(
 literal|"/test/x"
 argument_list|,
+name|Filter
+operator|.
 name|PathRestriction
 operator|.
 name|PARENT
@@ -1669,6 +1739,8 @@ name|restrictPath
 argument_list|(
 literal|"/"
 argument_list|,
+name|Filter
+operator|.
 name|PathRestriction
 operator|.
 name|ALL_CHILDREN
@@ -1686,6 +1758,8 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
+name|Filter
+operator|.
 name|PathRestriction
 operator|.
 name|PARENT
@@ -1702,6 +1776,8 @@ name|restrictPath
 argument_list|(
 literal|"/test/y"
 argument_list|,
+name|Filter
+operator|.
 name|PathRestriction
 operator|.
 name|EXACT
@@ -1718,7 +1794,7 @@ expr_stmt|;
 name|f
 operator|=
 operator|new
-name|Filter
+name|FilterImpl
 argument_list|(
 literal|null
 argument_list|)
@@ -1729,6 +1805,8 @@ name|restrictPath
 argument_list|(
 literal|"/test"
 argument_list|,
+name|Filter
+operator|.
 name|PathRestriction
 operator|.
 name|DIRECT_CHILDREN
@@ -1746,6 +1824,8 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
+name|Filter
+operator|.
 name|PathRestriction
 operator|.
 name|DIRECT_CHILDREN
@@ -1762,6 +1842,8 @@ name|restrictPath
 argument_list|(
 literal|"/"
 argument_list|,
+name|Filter
+operator|.
 name|PathRestriction
 operator|.
 name|ALL_CHILDREN
@@ -1779,6 +1861,8 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
+name|Filter
+operator|.
 name|PathRestriction
 operator|.
 name|DIRECT_CHILDREN
@@ -1795,6 +1879,8 @@ name|restrictPath
 argument_list|(
 literal|"/test"
 argument_list|,
+name|Filter
+operator|.
 name|PathRestriction
 operator|.
 name|ALL_CHILDREN
@@ -1812,6 +1898,8 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
+name|Filter
+operator|.
 name|PathRestriction
 operator|.
 name|DIRECT_CHILDREN
@@ -1828,6 +1916,8 @@ name|restrictPath
 argument_list|(
 literal|"/test/x/y"
 argument_list|,
+name|Filter
+operator|.
 name|PathRestriction
 operator|.
 name|PARENT
@@ -1845,6 +1935,8 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
+name|Filter
+operator|.
 name|PathRestriction
 operator|.
 name|PARENT
@@ -1861,6 +1953,8 @@ name|restrictPath
 argument_list|(
 literal|"/test2"
 argument_list|,
+name|Filter
+operator|.
 name|PathRestriction
 operator|.
 name|ALL_CHILDREN
@@ -1877,7 +1971,7 @@ expr_stmt|;
 name|f
 operator|=
 operator|new
-name|Filter
+name|FilterImpl
 argument_list|(
 literal|null
 argument_list|)
@@ -1888,6 +1982,8 @@ name|restrictPath
 argument_list|(
 literal|"/test/x"
 argument_list|,
+name|Filter
+operator|.
 name|PathRestriction
 operator|.
 name|EXACT
@@ -1905,6 +2001,8 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
+name|Filter
+operator|.
 name|PathRestriction
 operator|.
 name|EXACT
@@ -1921,6 +2019,8 @@ name|restrictPath
 argument_list|(
 literal|"/test"
 argument_list|,
+name|Filter
+operator|.
 name|PathRestriction
 operator|.
 name|ALL_CHILDREN
@@ -1932,6 +2032,8 @@ name|restrictPath
 argument_list|(
 literal|"/test"
 argument_list|,
+name|Filter
+operator|.
 name|PathRestriction
 operator|.
 name|DIRECT_CHILDREN
@@ -1943,6 +2045,8 @@ name|restrictPath
 argument_list|(
 literal|"/test/x/y"
 argument_list|,
+name|Filter
+operator|.
 name|PathRestriction
 operator|.
 name|PARENT
@@ -1954,6 +2058,8 @@ name|restrictPath
 argument_list|(
 literal|"/test/y"
 argument_list|,
+name|Filter
+operator|.
 name|PathRestriction
 operator|.
 name|DIRECT_CHILDREN
@@ -1970,7 +2076,7 @@ expr_stmt|;
 name|f
 operator|=
 operator|new
-name|Filter
+name|FilterImpl
 argument_list|(
 literal|null
 argument_list|)
@@ -1981,6 +2087,8 @@ name|restrictPath
 argument_list|(
 literal|"/test/x/y"
 argument_list|,
+name|Filter
+operator|.
 name|PathRestriction
 operator|.
 name|PARENT
@@ -1998,6 +2106,8 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
+name|Filter
+operator|.
 name|PathRestriction
 operator|.
 name|PARENT
@@ -2014,6 +2124,8 @@ name|restrictPath
 argument_list|(
 literal|"/test/x"
 argument_list|,
+name|Filter
+operator|.
 name|PathRestriction
 operator|.
 name|PARENT
@@ -2031,6 +2143,8 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
+name|Filter
+operator|.
 name|PathRestriction
 operator|.
 name|PARENT
@@ -2047,6 +2161,8 @@ name|restrictPath
 argument_list|(
 literal|"/test"
 argument_list|,
+name|Filter
+operator|.
 name|PathRestriction
 operator|.
 name|ALL_CHILDREN
@@ -2064,6 +2180,8 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
+name|Filter
+operator|.
 name|PathRestriction
 operator|.
 name|PARENT
@@ -2080,6 +2198,8 @@ name|restrictPath
 argument_list|(
 literal|"/test"
 argument_list|,
+name|Filter
+operator|.
 name|PathRestriction
 operator|.
 name|DIRECT_CHILDREN
@@ -2097,6 +2217,8 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
+name|Filter
+operator|.
 name|PathRestriction
 operator|.
 name|PARENT
@@ -2113,6 +2235,8 @@ name|restrictPath
 argument_list|(
 literal|"/test/x"
 argument_list|,
+name|Filter
+operator|.
 name|PathRestriction
 operator|.
 name|PARENT
@@ -2130,6 +2254,8 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
+name|Filter
+operator|.
 name|PathRestriction
 operator|.
 name|PARENT
@@ -2146,6 +2272,8 @@ name|restrictPath
 argument_list|(
 literal|"/test"
 argument_list|,
+name|Filter
+operator|.
 name|PathRestriction
 operator|.
 name|PARENT
@@ -2163,6 +2291,8 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
+name|Filter
+operator|.
 name|PathRestriction
 operator|.
 name|PARENT
@@ -2179,6 +2309,8 @@ name|restrictPath
 argument_list|(
 literal|"/test2"
 argument_list|,
+name|Filter
+operator|.
 name|PathRestriction
 operator|.
 name|EXACT
