@@ -304,6 +304,15 @@ name|Indexer
 implements|implements
 name|QueryIndexProvider
 block|{
+comment|// TODO discuss where to store index config data
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|INDEX_CONFIG_ROOT
+init|=
+literal|"/jcr:system/indexes"
+decl_stmt|;
 specifier|private
 specifier|static
 specifier|final
@@ -423,7 +432,7 @@ name|this
 argument_list|(
 name|mk
 argument_list|,
-literal|"/index"
+name|INDEX_CONFIG_ROOT
 argument_list|)
 expr_stmt|;
 block|}
