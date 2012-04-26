@@ -696,6 +696,8 @@ block|{
 name|CoreValue
 name|cv
 decl_stmt|;
+try|try
+block|{
 if|if
 condition|(
 name|type
@@ -797,8 +799,6 @@ expr_stmt|;
 block|}
 else|else
 block|{
-try|try
-block|{
 name|cv
 operator|=
 name|factory
@@ -810,6 +810,7 @@ argument_list|,
 name|type
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 catch|catch
 parameter_list|(
@@ -836,6 +837,58 @@ argument_list|)
 argument_list|)
 throw|;
 block|}
+catch|catch
+parameter_list|(
+name|IllegalArgumentException
+name|e
+parameter_list|)
+block|{
+comment|// TODO: review exception handling in path/name resolution again
+throw|throw
+operator|new
+name|ValueFormatException
+argument_list|(
+literal|"Invalid value "
+operator|+
+name|value
+operator|+
+literal|" for type "
+operator|+
+name|PropertyType
+operator|.
+name|nameFromValue
+argument_list|(
+name|type
+argument_list|)
+argument_list|)
+throw|;
+block|}
+catch|catch
+parameter_list|(
+name|Exception
+name|e
+parameter_list|)
+block|{
+comment|// TODO: review exception handling in path/name resolution again
+comment|// TODO: throws RuntimeException which is pretty ugly
+throw|throw
+operator|new
+name|ValueFormatException
+argument_list|(
+literal|"Invalid value "
+operator|+
+name|value
+operator|+
+literal|" for type "
+operator|+
+name|PropertyType
+operator|.
+name|nameFromValue
+argument_list|(
+name|type
+argument_list|)
+argument_list|)
+throw|;
 block|}
 return|return
 operator|new
