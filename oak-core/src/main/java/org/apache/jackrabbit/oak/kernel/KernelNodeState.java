@@ -743,6 +743,9 @@ block|{
 name|init
 argument_list|()
 expr_stmt|;
+name|boolean
+name|all
+decl_stmt|;
 if|if
 condition|(
 name|count
@@ -756,6 +759,10 @@ operator|=
 name|Integer
 operator|.
 name|MAX_VALUE
+expr_stmt|;
+name|all
+operator|=
+literal|true
 expr_stmt|;
 if|if
 condition|(
@@ -772,6 +779,13 @@ literal|"Too many child nodes"
 argument_list|)
 throw|;
 block|}
+block|}
+else|else
+block|{
+name|all
+operator|=
+literal|false
+expr_stmt|;
 block|}
 name|List
 argument_list|<
@@ -917,6 +931,11 @@ literal|0
 argument_list|,
 name|offset
 argument_list|,
+name|all
+condition|?
+operator|-
+literal|1
+else|:
 name|count
 argument_list|,
 literal|null
