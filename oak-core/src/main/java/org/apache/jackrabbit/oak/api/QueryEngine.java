@@ -98,11 +98,6 @@ parameter_list|)
 throws|throws
 name|ParseException
 function_decl|;
-comment|/**      * Close the query engine.      */
-name|void
-name|close
-parameter_list|()
-function_decl|;
 block|}
 end_interface
 

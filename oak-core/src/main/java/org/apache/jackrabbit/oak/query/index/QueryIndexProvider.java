@@ -29,6 +29,22 @@ name|List
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|mk
+operator|.
+name|api
+operator|.
+name|MicroKernel
+import|;
+end_import
+
 begin_comment
 comment|/**  * A mechanism to index data. Indexes might be added or removed at runtime,  * possibly by changing content in the repository. The provider knows about  * indexes, and informs the query engine about indexes that where added or  * removed at runtime.  */
 end_comment
@@ -43,51 +59,17 @@ name|void
 name|init
 parameter_list|()
 function_decl|;
-comment|/**      * Get the currently configured indexes.      *      * @return the list of indexes      */
+comment|/**      * Get the currently configured indexes for the given MicroKernel instance.      *      * @param mk the MicroKernel instance      * @return the list of indexes      */
 name|List
 argument_list|<
 name|QueryIndex
 argument_list|>
 name|getQueryIndexes
-parameter_list|()
-function_decl|;
-comment|/**      * Add a listener that is notified about added and removed indexes.      *      * @param listener the listener      */
-name|void
-name|addListener
 parameter_list|(
-name|QueryIndexListener
-name|listener
+name|MicroKernel
+name|mk
 parameter_list|)
 function_decl|;
-comment|/**      * Remove a listener.      *      * @param listener the listener      */
-name|void
-name|removeListener
-parameter_list|(
-name|QueryIndexListener
-name|listener
-parameter_list|)
-function_decl|;
-comment|/**      * A query index listener      */
-interface|interface
-name|QueryIndexListener
-block|{
-comment|/**          * The given index was added.          *          * @param index the index          */
-name|void
-name|added
-parameter_list|(
-name|QueryIndex
-name|index
-parameter_list|)
-function_decl|;
-comment|/**          * The given index was removed.          *          * @param index the index          */
-name|void
-name|removed
-parameter_list|(
-name|QueryIndex
-name|index
-parameter_list|)
-function_decl|;
-block|}
 block|}
 end_interface
 
