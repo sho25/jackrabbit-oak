@@ -731,6 +731,9 @@ return|return
 operator|new
 name|NodeImpl
 argument_list|(
+operator|new
+name|NodeDelegate
+argument_list|(
 name|sessionContext
 argument_list|,
 name|root
@@ -738,6 +741,7 @@ operator|.
 name|getTree
 argument_list|(
 literal|"/"
+argument_list|)
 argument_list|)
 argument_list|)
 return|;

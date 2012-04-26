@@ -133,6 +133,8 @@ begin_class
 specifier|public
 class|class
 name|PropertyDelegate
+extends|extends
+name|ItemDelegate
 block|{
 specifier|private
 specifier|final
