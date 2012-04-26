@@ -66,7 +66,7 @@ name|NodeState
 name|nodeState
 parameter_list|)
 function_decl|;
-comment|/**      * Set or removes the named child node.      *      * @param name  name of the child node      */
+comment|/**      * Add the named child node if it doesn't already exist.      *      * @param name  name of the child node      * @return  a builder for the added child or {@code null} if such a child      * already exists      */
 name|NodeStateBuilder
 name|addNode
 parameter_list|(
