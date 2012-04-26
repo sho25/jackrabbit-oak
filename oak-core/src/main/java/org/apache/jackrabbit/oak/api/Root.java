@@ -48,7 +48,7 @@ name|String
 name|destPath
 parameter_list|)
 function_decl|;
-comment|/**      * Retrieve the {@code ContentTree} at the given {@code path}.      * The path must resolve to a content tree in this root.      *      * @param path path to the content tree      * @return content tree at the given path or {@code null} if no      * such tree exists      */
+comment|/**      * Retrieve the {@code Tree} at the given {@code path}. The path must resolve to      * a tree in this root.      *      * @param path  path to the tree      * @return  tree at the given path or {@code null} if no such tree exists      */
 name|Tree
 name|getTree
 parameter_list|(

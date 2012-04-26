@@ -34,7 +34,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Storage abstraction for content trees. At any given point in time  * the stored content tree is rooted at a single immutable node state.  *<p>  * This is a low-level interface that doesn't cover functionality like  * merging concurrent changes or rejecting new tree states based on some  * higher-level consistency constraints.  */
+comment|/**  * Storage abstraction for trees. At any given point in time the stored  * tree is rooted at a single immutable node state.  *<p>  * This is a low-level interface that doesn't cover functionality like  * merging concurrent changes or rejecting new tree states based on some  * higher-level consistency constraints.  */
 end_comment
 
 begin_interface
@@ -42,7 +42,7 @@ specifier|public
 interface|interface
 name|NodeStore
 block|{
-comment|/**      * Returns the latest state of the content tree.      *      * @return root node state      */
+comment|/**      * Returns the latest state of the tree.      *      * @return root node state      */
 name|NodeState
 name|getRoot
 parameter_list|()
@@ -55,7 +55,7 @@ name|NodeState
 name|base
 parameter_list|)
 function_decl|;
-comment|/**      * Updates the state of the content tree.      * @param builder  builder containing the new node state      */
+comment|/**      * Updates the state of the tree.      * @param builder  builder containing the new node state      */
 name|void
 name|apply
 parameter_list|(

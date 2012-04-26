@@ -248,7 +248,7 @@ specifier|final
 name|NodeStore
 name|store
 decl_stmt|;
-comment|/**      * Underlying persistent state or {@code null} if this instance represents an      * added content tree      */
+comment|/**      * Underlying persistent state or {@code null} if this instance represents an      * added tree      */
 specifier|private
 specifier|final
 name|NodeState
@@ -259,18 +259,18 @@ specifier|final
 name|NodeStateBuilder
 name|builder
 decl_stmt|;
-comment|/** Listener for changes on this content tree */
+comment|/** Listener for changes on this tree */
 specifier|private
 specifier|final
 name|Listener
 name|listener
 decl_stmt|;
-comment|/** Name of this content tree */
+comment|/** Name of this tree */
 specifier|private
 name|String
 name|name
 decl_stmt|;
-comment|/** Parent of this content tree */
+comment|/** Parent of this tree */
 specifier|private
 name|TreeImpl
 name|parent
@@ -366,7 +366,7 @@ name|listener
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Listener for changes on {@code ContentTree}s      */
+comment|/**      * Listener for changes on {@code Tree}s      */
 interface|interface
 name|Listener
 block|{

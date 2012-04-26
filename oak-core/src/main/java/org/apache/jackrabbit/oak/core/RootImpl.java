@@ -234,7 +234,7 @@ specifier|final
 name|String
 name|workspaceName
 decl_stmt|;
-comment|/** Listener for changes on the content tree */
+comment|/** Listener for changes on the tree */
 specifier|private
 name|TreeListener
 name|treeListener
@@ -335,7 +335,7 @@ block|{
 name|TreeImpl
 name|source
 init|=
-name|getTransientState
+name|getChild
 argument_list|(
 name|sourcePath
 argument_list|)
@@ -354,7 +354,7 @@ block|}
 name|TreeImpl
 name|destParent
 init|=
-name|getTransientState
+name|getChild
 argument_list|(
 name|getParentPath
 argument_list|(
@@ -401,7 +401,7 @@ block|{
 name|TreeImpl
 name|sourceNode
 init|=
-name|getTransientState
+name|getChild
 argument_list|(
 name|sourcePath
 argument_list|)
@@ -420,7 +420,7 @@ block|}
 name|TreeImpl
 name|destParent
 init|=
-name|getTransientState
+name|getChild
 argument_list|(
 name|getParentPath
 argument_list|(
@@ -462,7 +462,7 @@ name|path
 parameter_list|)
 block|{
 return|return
-name|getTransientState
+name|getChild
 argument_list|(
 name|path
 argument_list|)
@@ -548,10 +548,10 @@ argument_list|()
 return|;
 block|}
 comment|//------------------------------------------------------------< private>---
-comment|/**      * Get a transient node state for the node identified by      * {@code path}      * @param path  the path to the node state      * @return  a {@link Tree} instance for the item      *          at {@code path} or {@code null} if no such item exits.      */
+comment|/**      * Get a tree for the child identified by {@code path}      * @param path  the path to the child      * @return  a {@link Tree} instance for the child      *          at {@code path} or {@code null} if no such item exits.      */
 specifier|private
 name|TreeImpl
-name|getTransientState
+name|getChild
 parameter_list|(
 name|String
 name|path

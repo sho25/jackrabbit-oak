@@ -28,7 +28,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A tree instance represents a snapshot of the {@code ContentRepository}  * content tree at the time the instance was acquired. Tree instances may  * become invalid over time due to garbage collection of old content, at  * which point an outdated snapshot will start throwing  * {@code IllegalStateException}s to indicate that the snapshot is no  * longer available.  *<p>  * A tree  instance belongs to the client and its state is only modified  * in response to method calls made by the client. The various accessors  * on this interface mirror these of the underlying {@code NodeState}  * interface. However, since instances of this class are mutable return  * values may change between invocations.  *<p>  * Tree instances are not thread-safe for write access, so writing clients  * need to ensure that they are not accessed concurrently from multiple  * threads. Instances are however thread-safe for read access, so  * implementations need to ensure that all reading clients see a  * coherent state.  */
+comment|/**  * A tree instance represents a snapshot of the {@code ContentRepository}  * tree at the time the instance was acquired. Tree instances may  * become invalid over time due to garbage collection of old content, at  * which point an outdated snapshot will start throwing  * {@code IllegalStateException}s to indicate that the snapshot is no  * longer available.  *<p>  * A tree  instance belongs to the client and its state is only modified  * in response to method calls made by the client. The various accessors  * on this interface mirror these of the underlying {@code NodeState}  * interface. However, since instances of this class are mutable return  * values may change between invocations.  *<p>  * Tree instances are not thread-safe for write access, so writing clients  * need to ensure that they are not accessed concurrently from multiple  * threads. Instances are however thread-safe for read access, so  * implementations need to ensure that all reading clients see a  * coherent state.  */
 end_comment
 
 begin_interface
@@ -36,7 +36,7 @@ specifier|public
 interface|interface
 name|Tree
 block|{
-comment|/**      * Status of an item in a {@code ContentTree}      */
+comment|/**      * Status of an item in a {@code Tree}      */
 enum|enum
 name|Status
 block|{
@@ -52,17 +52,17 @@ block|,
 comment|/**          * Item is removed          */
 name|REMOVED
 block|}
-comment|/**      * @return  the name of this {@code ContentTree} instance.      */
+comment|/**      * @return  the name of this {@code Tree} instance.      */
 name|String
 name|getName
 parameter_list|()
 function_decl|;
-comment|/**      * @return  path of this {@code ContentTree} instance.      */
+comment|/**      * @return  path of this {@code Tree} instance.      */
 name|String
 name|getPath
 parameter_list|()
 function_decl|;
-comment|/**      * @return  the parent of this {@code ContentTree} instance.      */
+comment|/**      * @return  the parent of this {@code Tree} instance.      */
 name|Tree
 name|getParent
 parameter_list|()
@@ -96,7 +96,7 @@ name|long
 name|getPropertyCount
 parameter_list|()
 function_decl|;
-comment|/**      * All property states. The returned {@code Iterable} has snapshot semantics. That      * is, it reflect the state of this {@code ContentTree} instance at the time of the      * call. Later changes to this instance are no visible to iterators obtained from      * the returned iterable.      * @return  An {@code Iterable} for all property states      */
+comment|/**      * All property states. The returned {@code Iterable} has snapshot semantics. That      * is, it reflect the state of this {@code Tree} instance at the time of the      * call. Later changes to this instance are no visible to iterators obtained from      * the returned iterable.      * @return  An {@code Iterable} for all property states      */
 name|Iterable
 argument_list|<
 name|?
@@ -106,7 +106,7 @@ argument_list|>
 name|getProperties
 parameter_list|()
 function_decl|;
-comment|/**      * Get a child of this {@code ContentTree} instance      * @param name  name of the child      * @return  the child with the given {@code name} or {@code null} if no such child      * exists.      */
+comment|/**      * Get a child of this {@code Tree} instance      * @param name  name of the child      * @return  the child with the given {@code name} or {@code null} if no such child      * exists.      */
 name|Tree
 name|getChild
 parameter_list|(
@@ -122,7 +122,7 @@ name|String
 name|name
 parameter_list|)
 function_decl|;
-comment|/**      * Determine if a child of this {@code ContentTree} instance exists.      * @param name  name of the child      * @return  {@code true} if and only if a child with the given {@code name}      *          exists.      */
+comment|/**      * Determine if a child of this {@code Tree} instance exists.      * @param name  name of the child      * @return  {@code true} if and only if a child with the given {@code name}      *          exists.      */
 name|boolean
 name|hasChild
 parameter_list|(
@@ -130,12 +130,12 @@ name|String
 name|name
 parameter_list|)
 function_decl|;
-comment|/**      * Determine the number of children of this {@code ContentTree} instance.      * @return  number of children      */
+comment|/**      * Determine the number of children of this {@code Tree} instance.      * @return  number of children      */
 name|long
 name|getChildrenCount
 parameter_list|()
 function_decl|;
-comment|/**      * All children of this {@code ContentTree} instance. The returned {@code Iterable}      * has snapshot semantics. That is, it reflect the state of this {@code ContentTree}      * instance. instance at the time of the call. Later changes to this instance are no      * visible to iterators obtained from the returned iterable.      * @return  An {@code Iterable} for all children      */
+comment|/**      * All children of this {@code Tree} instance. The returned {@code Iterable}      * has snapshot semantics. That is, it reflect the state of this {@code Tree}      * instance. instance at the time of the call. Later changes to this instance are no      * visible to iterators obtained from the returned iterable.      * @return  An {@code Iterable} for all children      */
 name|Iterable
 argument_list|<
 name|Tree
@@ -143,7 +143,7 @@ argument_list|>
 name|getChildren
 parameter_list|()
 function_decl|;
-comment|/**      * Add a child with the given {@code name}. Does nothing if such a child      * already exists.      *      * @param name name of the child      * @return the {@code ContentTree} instance of the child with the given {@code name}.      */
+comment|/**      * Add a child with the given {@code name}. Does nothing if such a child      * already exists.      *      * @param name name of the child      * @return the {@code Tree} instance of the child with the given {@code name}.      */
 name|Tree
 name|addChild
 parameter_list|(
