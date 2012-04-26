@@ -214,8 +214,8 @@ function_decl|;
 name|Tree
 name|getContentTree
 parameter_list|(
-name|NodeImpl
-name|node
+name|String
+name|path
 parameter_list|)
 function_decl|;
 name|String

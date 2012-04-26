@@ -326,6 +326,17 @@ name|getName
 argument_list|()
 return|;
 block|}
+name|SessionContext
+argument_list|<
+name|SessionImpl
+argument_list|>
+name|getSessionContext
+parameter_list|()
+block|{
+return|return
+name|sessionContext
+return|;
+block|}
 comment|//------------------------------------------------------------< private>---
 specifier|private
 name|Root

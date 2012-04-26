@@ -1772,8 +1772,8 @@ specifier|public
 name|Tree
 name|getContentTree
 parameter_list|(
-name|NodeImpl
-name|node
+name|String
+name|oakPath
 parameter_list|)
 block|{
 return|return
@@ -1781,10 +1781,7 @@ name|root
 operator|.
 name|getTree
 argument_list|(
-name|node
-operator|.
-name|path
-argument_list|()
+name|oakPath
 argument_list|)
 return|;
 block|}

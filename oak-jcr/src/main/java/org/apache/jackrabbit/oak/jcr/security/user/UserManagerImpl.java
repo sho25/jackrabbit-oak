@@ -1528,6 +1528,9 @@ operator|.
 name|getContentTree
 argument_list|(
 name|userNode
+operator|.
+name|getOakPath
+argument_list|()
 argument_list|)
 operator|.
 name|setProperty
@@ -1579,6 +1582,9 @@ operator|.
 name|getContentTree
 argument_list|(
 name|userNode
+operator|.
+name|getOakPath
+argument_list|()
 argument_list|)
 operator|.
 name|setProperty
@@ -1604,6 +1610,9 @@ operator|.
 name|getContentTree
 argument_list|(
 name|userNode
+operator|.
+name|getOakPath
+argument_list|()
 argument_list|)
 operator|.
 name|removeProperty

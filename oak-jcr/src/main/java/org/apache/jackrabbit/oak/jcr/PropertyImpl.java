@@ -337,7 +337,7 @@ decl_stmt|;
 specifier|private
 specifier|final
 name|PropertyDelegate
-name|pd
+name|dlg
 decl_stmt|;
 name|PropertyImpl
 parameter_list|(
@@ -361,7 +361,7 @@ argument_list|)
 expr_stmt|;
 name|this
 operator|.
-name|pd
+name|dlg
 operator|=
 operator|new
 name|PropertyDelegate
@@ -372,6 +372,27 @@ name|parent
 argument_list|,
 name|propertyState
 argument_list|)
+expr_stmt|;
+block|}
+name|PropertyImpl
+parameter_list|(
+name|PropertyDelegate
+name|dlg
+parameter_list|)
+block|{
+name|super
+argument_list|(
+name|dlg
+operator|.
+name|getSessionContext
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|dlg
+operator|=
+name|dlg
 expr_stmt|;
 block|}
 comment|//---------------------------------------------------------------< Item>---
@@ -400,7 +421,7 @@ block|{
 return|return
 name|toJcrPath
 argument_list|(
-name|pd
+name|dlg
 operator|.
 name|getName
 argument_list|()
@@ -420,7 +441,7 @@ block|{
 return|return
 name|toJcrPath
 argument_list|(
-name|pd
+name|dlg
 operator|.
 name|getPath
 argument_list|()
@@ -443,7 +464,7 @@ name|NodeImpl
 argument_list|(
 name|sessionContext
 argument_list|,
-name|pd
+name|dlg
 operator|.
 name|getParentContentTree
 argument_list|()
@@ -520,7 +541,7 @@ name|isNew
 parameter_list|()
 block|{
 return|return
-name|pd
+name|dlg
 operator|.
 name|getPropertyStatus
 argument_list|()
@@ -539,7 +560,7 @@ name|isModified
 parameter_list|()
 block|{
 return|return
-name|pd
+name|dlg
 operator|.
 name|getPropertyStatus
 argument_list|()
@@ -559,7 +580,7 @@ parameter_list|()
 throws|throws
 name|RepositoryException
 block|{
-name|pd
+name|dlg
 operator|.
 name|remove
 argument_list|()
@@ -1991,7 +2012,7 @@ throws|throws
 name|RepositoryException
 block|{
 return|return
-name|pd
+name|dlg
 operator|.
 name|getDefinition
 argument_list|()
@@ -2073,7 +2094,7 @@ throws|throws
 name|RepositoryException
 block|{
 return|return
-name|pd
+name|dlg
 operator|.
 name|getPropertyState
 argument_list|()
@@ -2209,7 +2230,7 @@ name|getPropertyState
 parameter_list|()
 block|{
 return|return
-name|pd
+name|dlg
 operator|.
 name|getPropertyState
 argument_list|()
@@ -2245,7 +2266,7 @@ operator|==
 literal|null
 condition|)
 block|{
-name|pd
+name|dlg
 operator|.
 name|remove
 argument_list|()
@@ -2270,7 +2291,7 @@ name|getValueFactory
 argument_list|()
 argument_list|)
 decl_stmt|;
-name|pd
+name|dlg
 operator|.
 name|setValue
 argument_list|(
@@ -2341,7 +2362,7 @@ name|getValueFactory
 argument_list|()
 argument_list|)
 decl_stmt|;
-name|pd
+name|dlg
 operator|.
 name|setValues
 argument_list|(
