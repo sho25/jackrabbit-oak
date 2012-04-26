@@ -468,10 +468,10 @@ annotation|@
 name|Override
 specifier|public
 name|void
-name|refresh
+name|rebase
 parameter_list|()
 block|{
-comment|// TODO implement refresh base = store.getRoot().getChildNode(workspaceName);
+comment|// TODO implement rebase base = store.getRoot().getChildNode(workspaceName);
 block|}
 annotation|@
 name|Override
