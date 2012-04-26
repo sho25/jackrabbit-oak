@@ -100,7 +100,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A naive implementation of {@link NamespaceRegistry}, hard-wiring the  * predefined namespaces for now.  * TODO use API only  */
+comment|/**  * Implementation of {@link NamespaceRegistry} based on {@link NamespaceMappings}.  */
 end_comment
 
 begin_class
@@ -133,6 +133,7 @@ name|session
 argument_list|)
 expr_stmt|;
 block|}
+comment|//--------------------------------------------------< NamespaceRegistry>---
 annotation|@
 name|Override
 specifier|public
