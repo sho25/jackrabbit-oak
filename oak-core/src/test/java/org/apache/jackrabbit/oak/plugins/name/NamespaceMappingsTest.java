@@ -20,18 +20,14 @@ package|;
 end_package
 
 begin_import
-import|import
+import|import static
 name|org
 operator|.
-name|apache
+name|junit
 operator|.
-name|jackrabbit
+name|Assert
 operator|.
-name|mk
-operator|.
-name|core
-operator|.
-name|MicroKernelImpl
+name|assertEquals
 import|;
 end_import
 
@@ -93,18 +89,6 @@ name|Test
 import|;
 end_import
 
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertEquals
-import|;
-end_import
-
 begin_class
 specifier|public
 class|class
@@ -124,11 +108,7 @@ name|repository
 init|=
 operator|new
 name|ContentRepositoryImpl
-argument_list|(
-operator|new
-name|MicroKernelImpl
 argument_list|()
-argument_list|)
 decl_stmt|;
 name|ContentSession
 name|session
