@@ -306,7 +306,7 @@ name|Pattern
 operator|.
 name|compile
 argument_list|(
-literal|"\\[(.*)?\\](.*?\n)\n"
+literal|"\\[(\\S*)?\\]([.\n]*?)\n\n"
 argument_list|)
 decl_stmt|;
 specifier|private
