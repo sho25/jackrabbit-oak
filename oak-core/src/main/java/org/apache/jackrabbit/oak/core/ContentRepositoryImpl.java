@@ -155,6 +155,22 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
+name|kernel
+operator|.
+name|NodeStore
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
 name|query
 operator|.
 name|QueryEngineImpl
@@ -232,7 +248,7 @@ end_comment
 begin_class
 specifier|public
 class|class
-name|KernelContentRepository
+name|ContentRepositoryImpl
 implements|implements
 name|ContentRepository
 block|{
@@ -247,7 +263,7 @@ name|LoggerFactory
 operator|.
 name|getLogger
 argument_list|(
-name|KernelContentRepository
+name|ContentRepositoryImpl
 operator|.
 name|class
 argument_list|)
@@ -278,12 +294,12 @@ name|queryEngine
 decl_stmt|;
 specifier|private
 specifier|final
-name|KernelNodeStore
+name|NodeStore
 name|nodeStore
 decl_stmt|;
 comment|/**      * Utility constructor that creates a new in-memory repository for use      * mostly in test cases.      */
 specifier|public
-name|KernelContentRepository
+name|ContentRepositoryImpl
 parameter_list|()
 block|{
 name|this
@@ -295,7 +311,7 @@ argument_list|)
 expr_stmt|;
 block|}
 specifier|public
-name|KernelContentRepository
+name|ContentRepositoryImpl
 parameter_list|(
 name|MicroKernel
 name|mk
@@ -519,7 +535,7 @@ throw|;
 block|}
 return|return
 operator|new
-name|KernelContentSession
+name|ContentSessionImpl
 argument_list|(
 name|sc
 argument_list|,

@@ -13,7 +13,7 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|kernel
+name|core
 package|;
 end_package
 
@@ -91,11 +91,59 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|kernel
+name|core
 operator|.
-name|KernelTree2
+name|TreeImpl2
 operator|.
 name|Listener
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|kernel
+operator|.
+name|NodeState
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|kernel
+operator|.
+name|NodeStateBuilder
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|kernel
+operator|.
+name|NodeStore
 import|;
 end_import
 
@@ -170,13 +218,13 @@ end_comment
 begin_class
 specifier|public
 class|class
-name|KernelRoot
+name|RootImpl
 implements|implements
 name|Root
 block|{
 specifier|private
 specifier|final
-name|KernelNodeStore
+name|NodeStore
 name|store
 decl_stmt|;
 specifier|private
@@ -191,7 +239,7 @@ name|base
 decl_stmt|;
 comment|/** Root state of this tree */
 specifier|private
-name|KernelTree2
+name|TreeImpl2
 name|root
 decl_stmt|;
 comment|/** Listener for changes on the content tree */
@@ -208,9 +256,9 @@ name|NodeStateBuilder
 name|nodeStateBuilder
 decl_stmt|;
 specifier|public
-name|KernelRoot
+name|RootImpl
 parameter_list|(
-name|KernelNodeStore
+name|NodeStore
 name|store
 parameter_list|,
 name|String
@@ -257,7 +305,7 @@ operator|.
 name|root
 operator|=
 operator|new
-name|KernelTree2
+name|TreeImpl2
 argument_list|(
 name|store
 argument_list|,
@@ -280,7 +328,7 @@ name|String
 name|destPath
 parameter_list|)
 block|{
-name|KernelTree2
+name|TreeImpl2
 name|source
 init|=
 name|getTransientState
@@ -299,7 +347,7 @@ return|return
 literal|false
 return|;
 block|}
-name|KernelTree2
+name|TreeImpl2
 name|destParent
 init|=
 name|getTransientState
@@ -346,7 +394,7 @@ name|String
 name|destPath
 parameter_list|)
 block|{
-name|KernelTree2
+name|TreeImpl2
 name|sourceNode
 init|=
 name|getTransientState
@@ -365,7 +413,7 @@ return|return
 literal|false
 return|;
 block|}
-name|KernelTree2
+name|TreeImpl2
 name|destParent
 init|=
 name|getTransientState
@@ -471,7 +519,7 @@ expr_stmt|;
 name|root
 operator|=
 operator|new
-name|KernelTree2
+name|TreeImpl2
 argument_list|(
 name|store
 argument_list|,
@@ -496,16 +544,16 @@ argument_list|()
 return|;
 block|}
 comment|//------------------------------------------------------------< private>---
-comment|/**      * Get a transient node state for the node identified by      * {@code path}      * @param path  the path to the node state      * @return  a {@link KernelTree} instance for the item      *          at {@code path} or {@code null} if no such item exits.      */
+comment|/**      * Get a transient node state for the node identified by      * {@code path}      * @param path  the path to the node state      * @return  a {@link Tree} instance for the item      *          at {@code path} or {@code null} if no such item exits.      */
 specifier|private
-name|KernelTree2
+name|TreeImpl2
 name|getTransientState
 parameter_list|(
 name|String
 name|path
 parameter_list|)
 block|{
-name|KernelTree2
+name|TreeImpl2
 name|state
 init|=
 name|root
@@ -563,7 +611,7 @@ specifier|public
 name|void
 name|addChild
 parameter_list|(
-name|KernelTree2
+name|TreeImpl2
 name|tree
 parameter_list|,
 name|String
@@ -581,7 +629,7 @@ specifier|public
 name|void
 name|removeChild
 parameter_list|(
-name|KernelTree2
+name|TreeImpl2
 name|tree
 parameter_list|,
 name|String
@@ -599,7 +647,7 @@ specifier|public
 name|void
 name|setProperty
 parameter_list|(
-name|KernelTree2
+name|TreeImpl2
 name|tree
 parameter_list|,
 name|String
@@ -620,7 +668,7 @@ specifier|public
 name|void
 name|setProperty
 parameter_list|(
-name|KernelTree2
+name|TreeImpl2
 name|tree
 parameter_list|,
 name|String
@@ -644,7 +692,7 @@ specifier|public
 name|void
 name|removeProperty
 parameter_list|(
-name|KernelTree2
+name|TreeImpl2
 name|tree
 parameter_list|,
 name|String
@@ -662,13 +710,13 @@ specifier|public
 name|void
 name|move
 parameter_list|(
-name|KernelTree2
+name|TreeImpl2
 name|tree
 parameter_list|,
 name|String
 name|name
 parameter_list|,
-name|KernelTree2
+name|TreeImpl2
 name|moved
 parameter_list|)
 block|{
@@ -683,13 +731,13 @@ specifier|public
 name|void
 name|copy
 parameter_list|(
-name|KernelTree2
+name|TreeImpl2
 name|tree
 parameter_list|,
 name|String
 name|name
 parameter_list|,
-name|KernelTree2
+name|TreeImpl2
 name|copied
 parameter_list|)
 block|{

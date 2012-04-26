@@ -125,23 +125,7 @@ name|oak
 operator|.
 name|kernel
 operator|.
-name|KernelNodeStore
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|kernel
-operator|.
-name|KernelRoot
+name|NodeStore
 import|;
 end_import
 
@@ -191,7 +175,7 @@ end_comment
 
 begin_class
 class|class
-name|KernelContentSession
+name|ContentSessionImpl
 implements|implements
 name|ContentSession
 block|{
@@ -206,7 +190,7 @@ name|LoggerFactory
 operator|.
 name|getLogger
 argument_list|(
-name|KernelContentSession
+name|ContentSessionImpl
 operator|.
 name|class
 argument_list|)
@@ -223,7 +207,7 @@ name|workspaceName
 decl_stmt|;
 specifier|private
 specifier|final
-name|KernelNodeStore
+name|NodeStore
 name|store
 decl_stmt|;
 specifier|private
@@ -237,7 +221,7 @@ name|CoreValueFactory
 name|valueFactory
 decl_stmt|;
 specifier|public
-name|KernelContentSession
+name|ContentSessionImpl
 parameter_list|(
 name|SimpleCredentials
 name|credentials
@@ -245,7 +229,7 @@ parameter_list|,
 name|String
 name|workspaceName
 parameter_list|,
-name|KernelNodeStore
+name|NodeStore
 name|store
 parameter_list|,
 name|QueryEngine
@@ -359,7 +343,7 @@ parameter_list|()
 block|{
 return|return
 operator|new
-name|KernelRoot
+name|RootImpl
 argument_list|(
 name|store
 argument_list|,

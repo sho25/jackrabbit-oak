@@ -79,7 +79,7 @@ name|oak
 operator|.
 name|core
 operator|.
-name|KernelContentRepository
+name|ContentRepositoryImpl
 import|;
 end_import
 
@@ -123,7 +123,7 @@ name|ContentRepository
 name|repository
 init|=
 operator|new
-name|KernelContentRepository
+name|ContentRepositoryImpl
 argument_list|(
 operator|new
 name|MicroKernelImpl

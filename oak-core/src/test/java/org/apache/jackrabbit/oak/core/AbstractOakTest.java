@@ -13,7 +13,7 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|kernel
+name|core
 package|;
 end_package
 
@@ -75,9 +75,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|core
+name|kernel
 operator|.
-name|CoreValueFactoryImpl
+name|NodeState
 import|;
 end_import
 
@@ -147,7 +147,7 @@ name|CoreValueFactory
 name|valueFactory
 decl_stmt|;
 specifier|protected
-name|KernelNodeState
+name|NodeState
 name|state
 decl_stmt|;
 annotation|@
@@ -177,8 +177,9 @@ name|createInitialState
 argument_list|()
 expr_stmt|;
 block|}
+specifier|protected
 specifier|abstract
-name|KernelNodeState
+name|NodeState
 name|createInitialState
 parameter_list|()
 function_decl|;

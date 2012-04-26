@@ -91,7 +91,7 @@ name|oak
 operator|.
 name|core
 operator|.
-name|KernelContentRepository
+name|ContentRepositoryImpl
 import|;
 end_import
 
@@ -207,7 +207,7 @@ name|ServiceRegistration
 argument_list|>
 argument_list|()
 decl_stmt|;
-comment|//-----------------------------------------------------< BundleActivator>--
+comment|//----------------------------------------------------< BundleActivator>---
 annotation|@
 name|Override
 specifier|public
@@ -265,7 +265,7 @@ name|open
 argument_list|()
 expr_stmt|;
 block|}
-comment|//--------------------------------------------< ServiceTrackerCustomizer>--
+comment|//-------------------------------------------< ServiceTrackerCustomizer>---
 annotation|@
 name|Override
 specifier|public
@@ -319,7 +319,7 @@ name|getName
 argument_list|()
 argument_list|,
 operator|new
-name|KernelContentRepository
+name|ContentRepositoryImpl
 argument_list|(
 name|kernel
 argument_list|)

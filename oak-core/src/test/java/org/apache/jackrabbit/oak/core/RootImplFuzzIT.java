@@ -13,7 +13,7 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|kernel
+name|core
 package|;
 end_package
 
@@ -139,9 +139,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|core
+name|kernel
 operator|.
-name|CoreValueFactoryImpl
+name|KernelNodeStore
 import|;
 end_import
 
@@ -215,9 +215,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|kernel
+name|core
 operator|.
-name|KernelRootFuzzIT
+name|RootImplFuzzIT
 operator|.
 name|Operation
 operator|.
@@ -235,9 +235,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|kernel
+name|core
 operator|.
-name|KernelRootFuzzIT
+name|RootImplFuzzIT
 operator|.
 name|Operation
 operator|.
@@ -255,9 +255,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|kernel
+name|core
 operator|.
-name|KernelRootFuzzIT
+name|RootImplFuzzIT
 operator|.
 name|Operation
 operator|.
@@ -275,9 +275,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|kernel
+name|core
 operator|.
-name|KernelRootFuzzIT
+name|RootImplFuzzIT
 operator|.
 name|Operation
 operator|.
@@ -295,9 +295,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|kernel
+name|core
 operator|.
-name|KernelRootFuzzIT
+name|RootImplFuzzIT
 operator|.
 name|Operation
 operator|.
@@ -315,9 +315,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|kernel
+name|core
 operator|.
-name|KernelRootFuzzIT
+name|RootImplFuzzIT
 operator|.
 name|Operation
 operator|.
@@ -335,9 +335,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|kernel
+name|core
 operator|.
-name|KernelRootFuzzIT
+name|RootImplFuzzIT
 operator|.
 name|Operation
 operator|.
@@ -364,7 +364,7 @@ end_comment
 begin_class
 specifier|public
 class|class
-name|KernelRootFuzzIT
+name|RootImplFuzzIT
 block|{
 specifier|static
 specifier|final
@@ -375,7 +375,7 @@ name|LoggerFactory
 operator|.
 name|getLogger
 argument_list|(
-name|KernelRootFuzzIT
+name|RootImplFuzzIT
 operator|.
 name|class
 argument_list|)
@@ -398,7 +398,7 @@ name|KernelNodeStore
 name|store1
 decl_stmt|;
 specifier|private
-name|KernelRoot
+name|RootImpl
 name|root1
 decl_stmt|;
 specifier|private
@@ -406,7 +406,7 @@ name|KernelNodeStore
 name|store2
 decl_stmt|;
 specifier|private
-name|KernelRoot
+name|RootImpl
 name|root2
 decl_stmt|;
 specifier|private
@@ -418,7 +418,7 @@ name|CoreValueFactory
 name|vf
 decl_stmt|;
 specifier|public
-name|KernelRootFuzzIT
+name|RootImplFuzzIT
 parameter_list|()
 block|{
 name|int
@@ -428,7 +428,7 @@ name|Integer
 operator|.
 name|getInteger
 argument_list|(
-name|KernelRootFuzzIT
+name|RootImplFuzzIT
 operator|.
 name|class
 operator|.
@@ -480,12 +480,7 @@ init|=
 operator|new
 name|MicroKernelImpl
 argument_list|(
-literal|"./target/mk1/"
-operator|+
-name|random
-operator|.
-name|nextInt
-argument_list|()
+literal|"./target/mk1"
 argument_list|)
 decl_stmt|;
 name|vf
@@ -525,7 +520,7 @@ expr_stmt|;
 name|root1
 operator|=
 operator|new
-name|KernelRoot
+name|RootImpl
 argument_list|(
 name|store1
 argument_list|,
@@ -538,12 +533,7 @@ init|=
 operator|new
 name|MicroKernelImpl
 argument_list|(
-literal|"./target/mk2/"
-operator|+
-name|random
-operator|.
-name|nextInt
-argument_list|()
+literal|"./target/mk2"
 argument_list|)
 decl_stmt|;
 name|store2
@@ -575,7 +565,7 @@ expr_stmt|;
 name|root2
 operator|=
 operator|new
-name|KernelRoot
+name|RootImpl
 argument_list|(
 name|store2
 argument_list|,
@@ -773,7 +763,7 @@ specifier|abstract
 name|void
 name|apply
 parameter_list|(
-name|KernelRoot
+name|RootImpl
 name|root
 parameter_list|)
 function_decl|;
@@ -820,7 +810,7 @@ name|Override
 name|void
 name|apply
 parameter_list|(
-name|KernelRoot
+name|RootImpl
 name|root
 parameter_list|)
 block|{
@@ -889,7 +879,7 @@ name|Override
 name|void
 name|apply
 parameter_list|(
-name|KernelRoot
+name|RootImpl
 name|root
 parameter_list|)
 block|{
@@ -991,7 +981,7 @@ name|Override
 name|void
 name|apply
 parameter_list|(
-name|KernelRoot
+name|RootImpl
 name|root
 parameter_list|)
 block|{
@@ -1084,7 +1074,7 @@ name|Override
 name|void
 name|apply
 parameter_list|(
-name|KernelRoot
+name|RootImpl
 name|root
 parameter_list|)
 block|{
@@ -1183,7 +1173,7 @@ name|Override
 name|void
 name|apply
 parameter_list|(
-name|KernelRoot
+name|RootImpl
 name|root
 parameter_list|)
 block|{
@@ -1270,7 +1260,7 @@ name|Override
 name|void
 name|apply
 parameter_list|(
-name|KernelRoot
+name|RootImpl
 name|root
 parameter_list|)
 block|{
@@ -1321,7 +1311,7 @@ name|Override
 name|void
 name|apply
 parameter_list|(
-name|KernelRoot
+name|RootImpl
 name|root
 parameter_list|)
 block|{

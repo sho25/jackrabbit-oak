@@ -13,7 +13,7 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|kernel
+name|core
 package|;
 end_package
 
@@ -62,6 +62,38 @@ operator|.
 name|api
 operator|.
 name|PropertyState
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|kernel
+operator|.
+name|ChildNodeEntry
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|kernel
+operator|.
+name|NodeState
 import|;
 end_import
 
@@ -298,7 +330,7 @@ end_comment
 begin_class
 specifier|public
 class|class
-name|KernelTree
+name|TreeImpl
 implements|implements
 name|Tree
 block|{
@@ -310,7 +342,7 @@ name|persistentState
 decl_stmt|;
 comment|/** Parent of this content tree */
 specifier|private
-name|KernelTree
+name|TreeImpl
 name|parent
 decl_stmt|;
 comment|/** Name of this content tree */
@@ -331,7 +363,7 @@ name|Map
 argument_list|<
 name|String
 argument_list|,
-name|KernelTree
+name|TreeImpl
 argument_list|>
 name|existingChildren
 init|=
@@ -340,7 +372,7 @@ name|HashMap
 argument_list|<
 name|String
 argument_list|,
-name|KernelTree
+name|TreeImpl
 argument_list|>
 argument_list|()
 decl_stmt|;
@@ -351,7 +383,7 @@ name|Map
 argument_list|<
 name|String
 argument_list|,
-name|KernelTree
+name|TreeImpl
 argument_list|>
 name|addedTrees
 init|=
@@ -360,7 +392,7 @@ name|HashMap
 argument_list|<
 name|String
 argument_list|,
-name|KernelTree
+name|TreeImpl
 argument_list|>
 argument_list|()
 decl_stmt|;
@@ -424,7 +456,7 @@ comment|/**          * The child of the given {@code name} has been added to {@c
 name|void
 name|addChild
 parameter_list|(
-name|KernelTree
+name|TreeImpl
 name|tree
 parameter_list|,
 name|String
@@ -435,7 +467,7 @@ comment|/**          * The child of the given {@code name} has been removed from
 name|void
 name|removeChild
 parameter_list|(
-name|KernelTree
+name|TreeImpl
 name|tree
 parameter_list|,
 name|String
@@ -446,7 +478,7 @@ comment|/**          * The property of the given {@code name} and {@code value} 
 name|void
 name|setProperty
 parameter_list|(
-name|KernelTree
+name|TreeImpl
 name|tree
 parameter_list|,
 name|String
@@ -460,7 +492,7 @@ comment|/**          * The property of the given {@code name} and {@code values}
 name|void
 name|setProperty
 parameter_list|(
-name|KernelTree
+name|TreeImpl
 name|tree
 parameter_list|,
 name|String
@@ -477,7 +509,7 @@ comment|/**          * The property of the given {@code name} has been removed. 
 name|void
 name|removeProperty
 parameter_list|(
-name|KernelTree
+name|TreeImpl
 name|tree
 parameter_list|,
 name|String
@@ -488,13 +520,13 @@ comment|/**          * The child with the given {@code name} has been moved.    
 name|void
 name|move
 parameter_list|(
-name|KernelTree
+name|TreeImpl
 name|tree
 parameter_list|,
 name|String
 name|name
 parameter_list|,
-name|KernelTree
+name|TreeImpl
 name|moved
 parameter_list|)
 function_decl|;
@@ -502,19 +534,19 @@ comment|/**          * The child with the given {@code name} been copied.       
 name|void
 name|copy
 parameter_list|(
-name|KernelTree
+name|TreeImpl
 name|tree
 parameter_list|,
 name|String
 name|name
 parameter_list|,
-name|KernelTree
+name|TreeImpl
 name|copied
 parameter_list|)
 function_decl|;
 block|}
 comment|/**      * Create a new instance representing the root of a tree      * @param persistentState  underlying persistent state      * @param listener  change listener      */
-name|KernelTree
+name|TreeImpl
 parameter_list|(
 name|NodeState
 name|persistentState
@@ -537,9 +569,9 @@ expr_stmt|;
 block|}
 comment|/**      * Create a new instance representing an added child      * @param parent  the parent of the child      * @param name  name of the child      * @param listener  change listener      */
 specifier|private
-name|KernelTree
+name|TreeImpl
 parameter_list|(
-name|KernelTree
+name|TreeImpl
 name|parent
 parameter_list|,
 name|String
@@ -563,12 +595,12 @@ expr_stmt|;
 block|}
 comment|/**      * Create a new instance with an underlying persistent state      * @param persistedState  underlying persistent state      * @param parent  the parent of this content tree      * @param name  name of this content tree      * @param listener  change listener      */
 specifier|private
-name|KernelTree
+name|TreeImpl
 parameter_list|(
 name|NodeState
 name|persistedState
 parameter_list|,
-name|KernelTree
+name|TreeImpl
 name|parent
 parameter_list|,
 name|String
@@ -605,12 +637,12 @@ expr_stmt|;
 block|}
 comment|/**      * Copy constructor: create a deep copy of the passed {@code ContentTree} with      * the given {@code name} and {@code parent}.      * @param tree  content tree to copy      * @param parent  parent of the copied tree      * @param name  name of the copied tree      */
 specifier|private
-name|KernelTree
+name|TreeImpl
 parameter_list|(
-name|KernelTree
+name|TreeImpl
 name|tree
 parameter_list|,
-name|KernelTree
+name|TreeImpl
 name|parent
 parameter_list|,
 name|String
@@ -648,7 +680,7 @@ name|Entry
 argument_list|<
 name|String
 argument_list|,
-name|KernelTree
+name|TreeImpl
 argument_list|>
 name|existing
 range|:
@@ -677,7 +709,7 @@ argument_list|(
 name|existingName
 argument_list|,
 operator|new
-name|KernelTree
+name|TreeImpl
 argument_list|(
 name|existing
 operator|.
@@ -698,7 +730,7 @@ name|Entry
 argument_list|<
 name|String
 argument_list|,
-name|KernelTree
+name|TreeImpl
 argument_list|>
 name|added
 range|:
@@ -727,7 +759,7 @@ argument_list|(
 name|addedName
 argument_list|,
 operator|new
-name|KernelTree
+name|TreeImpl
 argument_list|(
 name|added
 operator|.
@@ -1043,14 +1075,14 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|KernelTree
+name|TreeImpl
 name|getChild
 parameter_list|(
 name|String
 name|name
 parameter_list|)
 block|{
-name|KernelTree
+name|TreeImpl
 name|state
 init|=
 name|addedTrees
@@ -1134,7 +1166,7 @@ return|;
 block|}
 else|else
 block|{
-name|KernelTree
+name|TreeImpl
 name|child
 init|=
 name|getChild
@@ -1660,7 +1692,7 @@ argument_list|(
 name|name
 argument_list|,
 operator|new
-name|KernelTree
+name|TreeImpl
 argument_list|(
 name|this
 argument_list|,
@@ -1763,7 +1795,7 @@ name|PropertyState
 name|propertyState
 init|=
 operator|new
-name|KernelPropertyState
+name|PropertyStateImpl
 argument_list|(
 name|name
 argument_list|,
@@ -1815,7 +1847,7 @@ name|PropertyState
 name|propertyState
 init|=
 operator|new
-name|KernelPropertyState
+name|PropertyStateImpl
 argument_list|(
 name|name
 argument_list|,
@@ -1904,7 +1936,7 @@ specifier|public
 name|boolean
 name|move
 parameter_list|(
-name|KernelTree
+name|TreeImpl
 name|destParent
 parameter_list|,
 name|String
@@ -1932,7 +1964,7 @@ argument_list|(
 name|name
 argument_list|)
 expr_stmt|;
-name|KernelTree
+name|TreeImpl
 name|oldParent
 init|=
 name|parent
@@ -1989,7 +2021,7 @@ specifier|public
 name|boolean
 name|copy
 parameter_list|(
-name|KernelTree
+name|TreeImpl
 name|destParent
 parameter_list|,
 name|String
@@ -2010,11 +2042,11 @@ return|return
 literal|false
 return|;
 block|}
-name|KernelTree
+name|TreeImpl
 name|copy
 init|=
 operator|new
-name|KernelTree
+name|TreeImpl
 argument_list|(
 name|this
 argument_list|,
@@ -2136,7 +2168,7 @@ expr_stmt|;
 block|}
 comment|/**      * Get a content tree for a child which has an existing underlying persistent      * node date.      *      * @param name  name of the child      * @return  content tree or {@code null} if this instance node state      *          does not have an underlying persistent state or the underlying      *          persistent state does not have a child with the given {@code name}.      */
 specifier|private
-name|KernelTree
+name|TreeImpl
 name|getExistingChild
 parameter_list|(
 name|String
@@ -2154,7 +2186,7 @@ return|return
 literal|null
 return|;
 block|}
-name|KernelTree
+name|TreeImpl
 name|transientState
 init|=
 name|existingChildren
@@ -2195,7 +2227,7 @@ block|}
 name|transientState
 operator|=
 operator|new
-name|KernelTree
+name|TreeImpl
 argument_list|(
 name|state
 argument_list|,

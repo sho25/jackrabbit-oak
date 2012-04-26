@@ -84,7 +84,6 @@ comment|/**  * BinaryValue... TODO: review name (BlobValue? BlobCoreValue? Binar
 end_comment
 
 begin_class
-specifier|public
 class|class
 name|BinaryValue
 block|{

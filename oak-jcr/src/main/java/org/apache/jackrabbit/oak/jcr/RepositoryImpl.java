@@ -75,7 +75,7 @@ name|oak
 operator|.
 name|core
 operator|.
-name|KernelContentRepository
+name|ContentRepositoryImpl
 import|;
 end_import
 
@@ -238,7 +238,7 @@ block|{
 name|this
 argument_list|(
 operator|new
-name|KernelContentRepository
+name|ContentRepositoryImpl
 argument_list|()
 argument_list|)
 expr_stmt|;
