@@ -1617,14 +1617,7 @@ name|NodeState
 name|after
 parameter_list|)
 block|{
-name|isDirty
-index|[
-literal|0
-index|]
-operator|=
-literal|true
-expr_stmt|;
-comment|// FIXME cut transitivity here
+comment|// cut transitivity here
 block|}
 annotation|@
 name|Override
