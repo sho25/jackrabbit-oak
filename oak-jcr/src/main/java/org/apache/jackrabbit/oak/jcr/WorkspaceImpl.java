@@ -416,6 +416,8 @@ parameter_list|,
 name|NamespaceRegistry
 name|nsRegistry
 parameter_list|)
+throws|throws
+name|RepositoryException
 block|{
 name|this
 operator|.

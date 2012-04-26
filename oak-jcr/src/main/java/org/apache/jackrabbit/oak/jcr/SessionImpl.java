@@ -522,6 +522,8 @@ parameter_list|,
 name|ContentSession
 name|contentSession
 parameter_list|)
+throws|throws
+name|RepositoryException
 block|{
 name|this
 operator|.
