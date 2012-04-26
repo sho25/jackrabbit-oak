@@ -82,6 +82,20 @@ block|{
 comment|// no colon
 return|return
 name|jcrName
+operator|.
+name|startsWith
+argument_list|(
+literal|"{}"
+argument_list|)
+condition|?
+name|jcrName
+operator|.
+name|substring
+argument_list|(
+literal|2
+argument_list|)
+else|:
+name|jcrName
 return|;
 block|}
 else|else
