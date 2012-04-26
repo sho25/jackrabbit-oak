@@ -2721,7 +2721,7 @@ name|Ignore
 argument_list|(
 literal|"WIP"
 argument_list|)
-comment|// FIXME: causes OOME since the branch/merge feature from OAK-45 is used
+comment|// TODO: move to oak-bench
 specifier|public
 name|void
 name|largeChildList
