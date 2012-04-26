@@ -811,6 +811,8 @@ argument_list|(
 name|token
 argument_list|,
 name|newCommit
+argument_list|,
+literal|null
 argument_list|)
 expr_stmt|;
 block|}
@@ -1223,6 +1225,8 @@ argument_list|(
 name|token
 argument_list|,
 name|newCommit
+argument_list|,
+name|branchRootId
 argument_list|)
 expr_stmt|;
 block|}

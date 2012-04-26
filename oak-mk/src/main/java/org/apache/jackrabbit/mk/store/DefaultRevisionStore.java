@@ -1315,6 +1315,9 @@ name|token
 parameter_list|,
 name|MutableCommit
 name|commit
+parameter_list|,
+name|Id
+name|branchRootId
 parameter_list|)
 throws|throws
 name|Exception
