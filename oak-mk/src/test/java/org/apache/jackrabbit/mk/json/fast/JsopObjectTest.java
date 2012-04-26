@@ -222,7 +222,22 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|// System.out.println(timer.seconds() + " lengthIndex=" + lengthIndex);
+name|System
+operator|.
+name|out
+operator|.
+name|println
+argument_list|(
+name|timer
+operator|.
+name|seconds
+argument_list|()
+operator|+
+literal|" lengthIndex="
+operator|+
+name|lengthIndex
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 specifier|public

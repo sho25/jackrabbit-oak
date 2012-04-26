@@ -136,7 +136,18 @@ name|length
 argument_list|()
 expr_stmt|;
 block|}
-comment|// System.out.println(timer.seconds());
+name|System
+operator|.
+name|out
+operator|.
+name|println
+argument_list|(
+name|timer
+operator|.
+name|seconds
+argument_list|()
+argument_list|)
+expr_stmt|;
 block|}
 comment|// old: not escaped: 5691 ms; escaped: 10609 ms
 comment|// new: not escaped: 3931 ms; escaped: 11001 ms
@@ -298,7 +309,7 @@ name|t
 operator|.
 name|read
 argument_list|(
-name|JsopTokenizer
+name|JsopReader
 operator|.
 name|NULL
 argument_list|)
@@ -417,7 +428,7 @@ name|t
 operator|.
 name|read
 argument_list|(
-name|JsopTokenizer
+name|JsopReader
 operator|.
 name|NUMBER
 argument_list|)
@@ -438,7 +449,7 @@ name|t
 operator|.
 name|read
 argument_list|(
-name|JsopTokenizer
+name|JsopReader
 operator|.
 name|NUMBER
 argument_list|)
@@ -459,7 +470,7 @@ name|t
 operator|.
 name|read
 argument_list|(
-name|JsopTokenizer
+name|JsopReader
 operator|.
 name|NUMBER
 argument_list|)
@@ -504,7 +515,7 @@ name|t
 operator|.
 name|read
 argument_list|(
-name|JsopTokenizer
+name|JsopReader
 operator|.
 name|NUMBER
 argument_list|)
@@ -1028,7 +1039,7 @@ name|t
 operator|.
 name|read
 argument_list|(
-name|JsopTokenizer
+name|JsopReader
 operator|.
 name|STRING
 argument_list|)
@@ -1127,7 +1138,7 @@ operator|.
 name|getTokenType
 argument_list|()
 operator|==
-name|JsopTokenizer
+name|JsopReader
 operator|.
 name|END
 condition|)
@@ -1179,7 +1190,7 @@ argument_list|()
 condition|)
 block|{
 case|case
-name|JsopTokenizer
+name|JsopReader
 operator|.
 name|END
 case|:
@@ -1190,7 +1201,7 @@ name|toString
 argument_list|()
 return|;
 case|case
-name|JsopTokenizer
+name|JsopReader
 operator|.
 name|STRING
 case|:
@@ -1211,7 +1222,7 @@ argument_list|)
 expr_stmt|;
 break|break;
 case|case
-name|JsopTokenizer
+name|JsopReader
 operator|.
 name|NUMBER
 case|:
@@ -1227,7 +1238,7 @@ argument_list|)
 expr_stmt|;
 break|break;
 case|case
-name|JsopTokenizer
+name|JsopReader
 operator|.
 name|TRUE
 case|:
@@ -1240,7 +1251,7 @@ argument_list|)
 expr_stmt|;
 break|break;
 case|case
-name|JsopTokenizer
+name|JsopReader
 operator|.
 name|FALSE
 case|:
@@ -1253,7 +1264,7 @@ argument_list|)
 expr_stmt|;
 break|break;
 case|case
-name|JsopTokenizer
+name|JsopReader
 operator|.
 name|NULL
 case|:
@@ -1266,7 +1277,7 @@ argument_list|)
 expr_stmt|;
 break|break;
 case|case
-name|JsopTokenizer
+name|JsopReader
 operator|.
 name|ERROR
 case|:
@@ -1279,7 +1290,7 @@ argument_list|)
 expr_stmt|;
 break|break;
 case|case
-name|JsopTokenizer
+name|JsopReader
 operator|.
 name|IDENTIFIER
 case|:
@@ -1305,7 +1316,7 @@ argument_list|)
 expr_stmt|;
 break|break;
 case|case
-name|JsopTokenizer
+name|JsopReader
 operator|.
 name|COMMENT
 case|:

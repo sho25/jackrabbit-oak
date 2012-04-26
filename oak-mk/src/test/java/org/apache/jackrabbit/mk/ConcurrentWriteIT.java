@@ -233,14 +233,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-name|long
-name|t0
-init|=
-name|System
-operator|.
-name|currentTimeMillis
-argument_list|()
-decl_stmt|;
+comment|// long t0 = System.currentTimeMillis();
 for|for
 control|(
 name|TestThread
@@ -268,14 +261,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-name|long
-name|t1
-init|=
-name|System
-operator|.
-name|currentTimeMillis
-argument_list|()
-decl_stmt|;
+comment|// long t1 = System.currentTimeMillis();
 comment|// System.out.println("duration: " + (t1 - t0) + "ms");
 for|for
 control|(

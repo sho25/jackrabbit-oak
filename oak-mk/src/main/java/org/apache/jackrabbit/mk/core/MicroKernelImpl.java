@@ -107,6 +107,22 @@ name|mk
 operator|.
 name|json
 operator|.
+name|JsopReader
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|mk
+operator|.
+name|json
+operator|.
 name|JsopTokenizer
 import|;
 end_import
@@ -341,7 +357,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Alternate constructor, used for testing.      *       * @param rep repository, already initialized      */
+comment|/**      * Alternate constructor, used for testing.      *      * @param rep repository, already initialized      */
 specifier|public
 name|MicroKernelImpl
 parameter_list|(
@@ -468,7 +484,7 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/**      * Same as {@code getHeadRevisionId}, with typed {@code Id} return value instead of string.      *       * @see #getHeadRevision()      */
+comment|/**      * Same as {@code getHeadRevisionId}, with typed {@code Id} return value instead of string.      *      * @see #getHeadRevision()      */
 specifier|private
 name|Id
 name|getHeadRevisionId
@@ -1794,7 +1810,7 @@ if|if
 condition|(
 name|r
 operator|==
-name|JsopTokenizer
+name|JsopReader
 operator|.
 name|END
 condition|)
@@ -1929,7 +1945,7 @@ name|t
 operator|.
 name|matches
 argument_list|(
-name|JsopTokenizer
+name|JsopReader
 operator|.
 name|NULL
 argument_list|)
@@ -2124,7 +2140,7 @@ name|t
 operator|.
 name|matches
 argument_list|(
-name|JsopTokenizer
+name|JsopReader
 operator|.
 name|NULL
 argument_list|)

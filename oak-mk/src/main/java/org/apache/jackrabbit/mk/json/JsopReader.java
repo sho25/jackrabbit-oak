@@ -17,11 +17,97 @@ name|json
 package|;
 end_package
 
+begin_comment
+comment|/**  * A reader for Json and Jsop strings.  */
+end_comment
+
 begin_interface
 specifier|public
 interface|interface
 name|JsopReader
 block|{
+comment|/**      * The token type that signals the end of the stream.      */
+specifier|public
+specifier|static
+specifier|final
+name|int
+name|END
+init|=
+literal|0
+decl_stmt|;
+comment|/**      * The token type of a string value.      */
+specifier|public
+specifier|static
+specifier|final
+name|int
+name|STRING
+init|=
+literal|1
+decl_stmt|;
+comment|/**      * The token type of a number value.      */
+specifier|public
+specifier|static
+specifier|final
+name|int
+name|NUMBER
+init|=
+literal|2
+decl_stmt|;
+comment|/**      * The token type of the value "true".      */
+specifier|public
+specifier|static
+specifier|final
+name|int
+name|TRUE
+init|=
+literal|3
+decl_stmt|;
+comment|/**      * The token type of the value "false".      */
+specifier|public
+specifier|static
+specifier|final
+name|int
+name|FALSE
+init|=
+literal|4
+decl_stmt|;
+comment|/**      * The token type of "null".      */
+specifier|public
+specifier|static
+specifier|final
+name|int
+name|NULL
+init|=
+literal|5
+decl_stmt|;
+comment|/**      * The token type of a parse error.      */
+specifier|public
+specifier|static
+specifier|final
+name|int
+name|ERROR
+init|=
+literal|6
+decl_stmt|;
+comment|/**      * The token type of an identifier (an unquoted string), if supported by the reader.      */
+specifier|public
+specifier|static
+specifier|final
+name|int
+name|IDENTIFIER
+init|=
+literal|7
+decl_stmt|;
+comment|/**      * The token type of a comment, if supported by the reader.      */
+specifier|public
+specifier|static
+specifier|final
+name|int
+name|COMMENT
+init|=
+literal|8
+decl_stmt|;
+comment|/**      * Read a token which must match a given token type.      *      * @param type the token type      * @return the token (a null object when reading a null value)      * @throws IllegalStateException if the token type doesn't match      */
 name|String
 name|read
 parameter_list|(
@@ -29,14 +115,17 @@ name|int
 name|type
 parameter_list|)
 function_decl|;
+comment|/**      * Read a string.      *      * @return the de-escaped string      * @throws IllegalStateException if the token type doesn't match      */
 name|String
 name|readString
 parameter_list|()
 function_decl|;
+comment|/**      * Read a token and return the token type.      *      * @return the token type      */
 name|int
 name|read
 parameter_list|()
 function_decl|;
+comment|/**      * Read a token which must match a given token type.      *      * @param type the token type      * @return true if there was a match      */
 name|boolean
 name|matches
 parameter_list|(
@@ -48,14 +137,17 @@ name|String
 name|readRawValue
 parameter_list|()
 function_decl|;
+comment|/**      * Get the last token value if the the token type was STRING or NUMBER. For      * STRING, the text is decoded; for NUMBER, it is returned as parsed. In all      * other cases the result is undefined.      *      * @return the token      */
 name|String
 name|getToken
 parameter_list|()
 function_decl|;
+comment|/**      * Get the token type of the last token. The token type is one of the known      * types (END, STRING, NUMBER,...), or, for Jsop tags such as "+", "-",      * it is the Unicode character code of the tag.      *      * @return the token type      */
 name|int
 name|getTokenType
 parameter_list|()
 function_decl|;
+comment|/**      * Reset the position to 0, so that to restart reading.      */
 name|void
 name|resetReader
 parameter_list|()
