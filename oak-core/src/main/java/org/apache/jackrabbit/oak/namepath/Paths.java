@@ -143,7 +143,7 @@ name|path
 argument_list|)
 return|;
 block|}
-comment|/**      * Get the nth ancestor of a path. The 1st ancestor is the parent path,      * 2nd ancestor the grandparent path, and so on...      *<p/>      * If nth<= 0, the path argument is returned as is.      *      * @param path the path      * @return the ancestor path      */
+comment|/**      * Get the nth ancestor of a path. The 1st ancestor is the parent path,      * 2nd ancestor the grandparent path, and so on...      *<p/>      * If nth<= 0, the path argument is returned as is.      *      * @param path the path      * @param nth Integer indicating which ancestor path to retrieve.      * @return the ancestor path      */
 specifier|public
 specifier|static
 name|String
