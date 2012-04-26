@@ -480,7 +480,12 @@ init|=
 operator|new
 name|MicroKernelImpl
 argument_list|(
-literal|"./target/mk1"
+literal|"./target/mk1/"
+operator|+
+name|random
+operator|.
+name|nextInt
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|vf
@@ -533,7 +538,12 @@ init|=
 operator|new
 name|MicroKernelImpl
 argument_list|(
-literal|"./target/mk2"
+literal|"./target/mk2/"
+operator|+
+name|random
+operator|.
+name|nextInt
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|store2

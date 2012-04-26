@@ -99,6 +99,8 @@ function_decl|;
 comment|/**      * All property states. The returned {@code Iterable} has snapshot semantics. That      * is, it reflect the state of this {@code ContentTree} instance at the time of the      * call. Later changes to this instance are no visible to iterators obtained from      * the returned iterable.      * @return  An {@code Iterable} for all property states      */
 name|Iterable
 argument_list|<
+name|?
+extends|extends
 name|PropertyState
 argument_list|>
 name|getProperties
