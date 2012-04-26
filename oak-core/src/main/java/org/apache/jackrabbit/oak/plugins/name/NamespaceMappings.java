@@ -255,6 +255,16 @@ argument_list|,
 literal|"internal"
 argument_list|)
 expr_stmt|;
+comment|// test prefix TODO: remove again.
+name|defaults
+operator|.
+name|put
+argument_list|(
+literal|"test"
+argument_list|,
+literal|"http://apache.jackrabbit.org/oak/0.1"
+argument_list|)
+expr_stmt|;
 block|}
 specifier|private
 specifier|final
