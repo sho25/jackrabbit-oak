@@ -59,7 +59,7 @@ specifier|final
 name|int
 name|CAPACITY_THRESHOLD
 init|=
-literal|10000
+literal|1000
 decl_stmt|;
 name|Object
 name|clone
