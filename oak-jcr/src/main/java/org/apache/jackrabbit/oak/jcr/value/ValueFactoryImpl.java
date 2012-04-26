@@ -242,7 +242,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * ValueFactoryImpl...  */
+comment|/**  * Implementation of {@link ValueFactory} interface based on the  * {@link CoreValueFactory} exposed by the  * {@link org.apache.jackrabbit.oak.api.ContentSession#getCoreValueFactory()}  * being aware of namespaces remapped on the editing session.  */
 end_comment
 
 begin_class
@@ -278,7 +278,7 @@ specifier|final
 name|NameMapper
 name|nameMapper
 decl_stmt|;
-comment|/**      *      * @param factory      */
+comment|/**      * Creates a new instance of {@code ValueFactory}.      *      * @param factory The core value factory.      * @param nameMapper The name mapping used for converting JCR names/paths to      * the internal representation.      */
 specifier|public
 name|ValueFactoryImpl
 parameter_list|(
