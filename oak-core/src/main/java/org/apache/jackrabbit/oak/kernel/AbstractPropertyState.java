@@ -19,16 +19,6 @@ end_package
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Iterator
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -56,6 +46,16 @@ operator|.
 name|api
 operator|.
 name|PropertyState
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Iterator
 import|;
 end_import
 
@@ -249,6 +249,23 @@ name|getName
 argument_list|()
 operator|.
 name|hashCode
+argument_list|()
+return|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|String
+name|toString
+parameter_list|()
+block|{
+return|return
+name|getName
+argument_list|()
+operator|+
+literal|'='
+operator|+
+name|getValue
 argument_list|()
 return|;
 block|}
