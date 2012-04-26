@@ -212,6 +212,8 @@ name|selector
 expr_stmt|;
 block|}
 comment|/**      * Get the path.      *      * @return the path      */
+annotation|@
+name|Override
 specifier|public
 name|String
 name|getPath
@@ -221,6 +223,8 @@ return|return
 name|path
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|PathRestriction
 name|getPathRestriction
@@ -369,6 +373,8 @@ name|selector
 return|;
 block|}
 comment|/**      * Get the restriction for the given property, if any.      *      * @param propertyName the property name      * @return the restriction or null      */
+annotation|@
+name|Override
 specifier|public
 name|PropertyRestriction
 name|getPropertyRestriction

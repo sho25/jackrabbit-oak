@@ -61,7 +61,6 @@ name|getPath
 parameter_list|()
 function_decl|;
 comment|/**      * A restriction for a property.      */
-specifier|static
 class|class
 name|PropertyRestriction
 block|{
@@ -141,7 +140,6 @@ return|;
 block|}
 block|}
 comment|/**      * The path restriction type.      */
-specifier|public
 enum|enum
 name|PathRestriction
 block|{
