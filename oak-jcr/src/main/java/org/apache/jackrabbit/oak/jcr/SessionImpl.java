@@ -1451,7 +1451,7 @@ literal|"Implementation missing"
 argument_list|)
 throw|;
 block|}
-comment|//--------------------------------------------------< SessionNamespaceResolver>---
+comment|//-------------------------------------------< SessionNamespaceResolver>---
 specifier|private
 class|class
 name|SessionNameMapper
