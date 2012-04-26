@@ -273,6 +273,7 @@ name|value
 argument_list|)
 throw|;
 block|}
+comment|// TODO: make sure the specified node type isn't abstract
 block|}
 block|}
 comment|//-------------------------------------------------------< NodeValidator>
@@ -315,7 +316,6 @@ argument_list|(
 name|after
 argument_list|)
 expr_stmt|;
-comment|// TODO: validate changed property
 block|}
 annotation|@
 name|Override
