@@ -57,7 +57,7 @@ name|String
 name|getName
 parameter_list|()
 function_decl|;
-comment|/**      * @return  path of this {@code Tree} instance.      */
+comment|/**      * @return  path of this {@code Tree} instance relative to its {@link Root}.      */
 name|String
 name|getPath
 parameter_list|()
