@@ -1503,7 +1503,7 @@ argument_list|)
 decl_stmt|;
 name|sessionContext
 operator|.
-name|getContentTree
+name|getTree
 argument_list|(
 name|userNode
 operator|.
@@ -1557,7 +1557,7 @@ argument_list|)
 decl_stmt|;
 name|sessionContext
 operator|.
-name|getContentTree
+name|getTree
 argument_list|(
 name|userNode
 operator|.
@@ -1585,7 +1585,7 @@ parameter_list|)
 block|{
 name|sessionContext
 operator|.
-name|getContentTree
+name|getTree
 argument_list|(
 name|userNode
 operator|.

@@ -179,7 +179,7 @@ name|getRoot
 parameter_list|()
 function_decl|;
 name|Tree
-name|getContentTree
+name|getTree
 parameter_list|(
 name|String
 name|path
