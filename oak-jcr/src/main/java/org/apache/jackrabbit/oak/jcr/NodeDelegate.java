@@ -743,7 +743,7 @@ parameter_list|)
 throws|throws
 name|RepositoryException
 block|{
-name|getState
+name|getTree
 argument_list|()
 operator|.
 name|setProperty
@@ -775,7 +775,7 @@ parameter_list|)
 throws|throws
 name|RepositoryException
 block|{
-name|getState
+name|getTree
 argument_list|()
 operator|.
 name|setProperty
@@ -806,16 +806,6 @@ argument_list|()
 return|;
 block|}
 specifier|private
-name|Tree
-name|getState
-parameter_list|()
-block|{
-return|return
-name|getTree
-argument_list|()
-return|;
-block|}
-specifier|private
 specifier|synchronized
 name|Tree
 name|getTree
@@ -824,8 +814,7 @@ block|{
 return|return
 name|tree
 operator|=
-name|getRoot
-argument_list|()
+name|sessionContext
 operator|.
 name|getTree
 argument_list|(
