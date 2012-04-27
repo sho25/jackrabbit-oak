@@ -412,13 +412,6 @@ operator|.
 name|matcher
 argument_list|(
 name|cnd
-operator|.
-name|replace
-argument_list|(
-literal|"\r\n"
-argument_list|,
-literal|"\n"
-argument_list|)
 argument_list|)
 decl_stmt|;
 name|matcher
