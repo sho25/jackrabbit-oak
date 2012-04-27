@@ -143,7 +143,7 @@ name|oak
 operator|.
 name|jcr
 operator|.
-name|util
+name|value
 operator|.
 name|ValueConverter
 import|;
