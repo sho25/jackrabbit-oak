@@ -486,9 +486,6 @@ decl_stmt|;
 specifier|private
 specifier|final
 name|SessionContext
-argument_list|<
-name|SessionImpl
-argument_list|>
 name|sessionContext
 init|=
 operator|new
@@ -1710,9 +1707,6 @@ class|class
 name|Context
 implements|implements
 name|SessionContext
-argument_list|<
-name|SessionImpl
-argument_list|>
 block|{
 annotation|@
 name|Override

@@ -385,9 +385,6 @@ decl_stmt|;
 specifier|private
 specifier|final
 name|SessionContext
-argument_list|<
-name|SessionImpl
-argument_list|>
 name|sessionContext
 decl_stmt|;
 specifier|private
@@ -408,9 +405,6 @@ specifier|public
 name|WorkspaceImpl
 parameter_list|(
 name|SessionContext
-argument_list|<
-name|SessionImpl
-argument_list|>
 name|sessionContext
 parameter_list|,
 name|NamespaceRegistry

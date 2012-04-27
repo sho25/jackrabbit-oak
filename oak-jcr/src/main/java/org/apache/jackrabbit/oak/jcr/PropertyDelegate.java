@@ -161,9 +161,6 @@ block|{
 specifier|private
 specifier|final
 name|SessionContext
-argument_list|<
-name|SessionImpl
-argument_list|>
 name|sessionContext
 decl_stmt|;
 specifier|private
@@ -177,9 +174,6 @@ decl_stmt|;
 name|PropertyDelegate
 parameter_list|(
 name|SessionContext
-argument_list|<
-name|SessionImpl
-argument_list|>
 name|sessionContext
 parameter_list|,
 name|Tree
@@ -535,9 +529,6 @@ argument_list|()
 return|;
 block|}
 name|SessionContext
-argument_list|<
-name|SessionImpl
-argument_list|>
 name|getSessionContext
 parameter_list|()
 block|{

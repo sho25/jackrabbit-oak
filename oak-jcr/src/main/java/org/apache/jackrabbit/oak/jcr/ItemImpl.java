@@ -127,9 +127,6 @@ block|{
 specifier|protected
 specifier|final
 name|SessionContext
-argument_list|<
-name|SessionImpl
-argument_list|>
 name|sessionContext
 decl_stmt|;
 specifier|protected
@@ -157,9 +154,6 @@ specifier|protected
 name|ItemImpl
 parameter_list|(
 name|SessionContext
-argument_list|<
-name|SessionImpl
-argument_list|>
 name|sessionContext
 parameter_list|,
 name|ItemDelegate
