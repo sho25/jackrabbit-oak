@@ -93,9 +93,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|namepath
+name|commons
 operator|.
-name|Paths
+name|PathUtils
 import|;
 end_import
 
@@ -233,7 +233,7 @@ name|parentState
 init|=
 name|getTree
 argument_list|(
-name|Paths
+name|PathUtils
 operator|.
 name|getParentPath
 argument_list|(
@@ -259,7 +259,7 @@ block|}
 name|String
 name|name
 init|=
-name|Paths
+name|PathUtils
 operator|.
 name|getName
 argument_list|(
@@ -405,7 +405,7 @@ throws|throws
 name|RepositoryException
 block|{
 return|return
-name|Paths
+name|PathUtils
 operator|.
 name|getDepth
 argument_list|(
@@ -583,7 +583,7 @@ name|parent
 init|=
 name|getTree
 argument_list|(
-name|Paths
+name|PathUtils
 operator|.
 name|getParentPath
 argument_list|(
@@ -605,7 +605,7 @@ block|}
 name|String
 name|name
 init|=
-name|Paths
+name|PathUtils
 operator|.
 name|getName
 argument_list|(
@@ -728,7 +728,7 @@ name|oakName
 argument_list|)
 return|;
 block|}
-comment|// ------------------------------------------------------------< private>---
+comment|// -----------------------------------------------------------< private>---
 specifier|private
 name|Tree
 name|getTree
@@ -748,7 +748,7 @@ control|(
 name|String
 name|name
 range|:
-name|Paths
+name|PathUtils
 operator|.
 name|elements
 argument_list|(

@@ -251,9 +251,9 @@ name|jackrabbit
 operator|.
 name|mk
 operator|.
-name|util
+name|wrapper
 operator|.
-name|PathUtils
+name|MicroKernelWrapperBase
 import|;
 end_import
 
@@ -265,11 +265,11 @@ name|apache
 operator|.
 name|jackrabbit
 operator|.
-name|mk
+name|oak
 operator|.
-name|wrapper
+name|commons
 operator|.
-name|MicroKernelWrapperBase
+name|PathUtils
 import|;
 end_import
 

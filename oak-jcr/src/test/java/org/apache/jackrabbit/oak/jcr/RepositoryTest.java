@@ -495,11 +495,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|jcr
+name|commons
 operator|.
-name|util
-operator|.
-name|Arrays
+name|ArrayUtils
 operator|.
 name|contains
 import|;
@@ -515,11 +513,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|jcr
+name|commons
 operator|.
-name|util
-operator|.
-name|Arrays
+name|ArrayUtils
 operator|.
 name|toSet
 import|;

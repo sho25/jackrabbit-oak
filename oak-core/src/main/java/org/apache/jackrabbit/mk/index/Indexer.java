@@ -157,7 +157,7 @@ name|mk
 operator|.
 name|util
 operator|.
-name|PathUtils
+name|SimpleLRUCache
 import|;
 end_import
 
@@ -169,11 +169,11 @@ name|apache
 operator|.
 name|jackrabbit
 operator|.
-name|mk
+name|oak
 operator|.
-name|util
+name|commons
 operator|.
-name|SimpleLRUCache
+name|PathUtils
 import|;
 end_import
 

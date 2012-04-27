@@ -11,9 +11,9 @@ name|apache
 operator|.
 name|jackrabbit
 operator|.
-name|mk
+name|oak
 operator|.
-name|util
+name|commons
 package|;
 end_package
 
@@ -38,6 +38,22 @@ operator|.
 name|Assert
 operator|.
 name|assertFalse
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|commons
+operator|.
+name|ArrayUtils
 import|;
 end_import
 
