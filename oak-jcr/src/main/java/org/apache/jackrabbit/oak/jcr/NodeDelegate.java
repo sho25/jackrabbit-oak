@@ -265,7 +265,7 @@ decl_stmt|;
 name|Tree
 name|parentState
 init|=
-name|getBranch
+name|getRoot
 argument_list|()
 operator|.
 name|getTree
@@ -501,7 +501,7 @@ decl_stmt|;
 name|Tree
 name|tree
 init|=
-name|getBranch
+name|getRoot
 argument_list|()
 operator|.
 name|getTree
@@ -647,7 +647,7 @@ decl_stmt|;
 name|Tree
 name|parent
 init|=
-name|getBranch
+name|getRoot
 argument_list|()
 operator|.
 name|getTree
@@ -795,13 +795,13 @@ block|}
 comment|// ------------------------------------------------------------< private>---
 specifier|private
 name|Root
-name|getBranch
+name|getRoot
 parameter_list|()
 block|{
 return|return
 name|sessionContext
 operator|.
-name|getBranch
+name|getRoot
 argument_list|()
 return|;
 block|}
@@ -824,7 +824,7 @@ block|{
 return|return
 name|tree
 operator|=
-name|getBranch
+name|getRoot
 argument_list|()
 operator|.
 name|getTree

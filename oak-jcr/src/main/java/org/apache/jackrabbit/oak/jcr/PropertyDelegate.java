@@ -545,7 +545,7 @@ block|{
 return|return
 name|sessionContext
 operator|.
-name|getBranch
+name|getRoot
 argument_list|()
 return|;
 block|}

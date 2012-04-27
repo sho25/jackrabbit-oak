@@ -1817,7 +1817,7 @@ annotation|@
 name|Override
 specifier|public
 name|Root
-name|getBranch
+name|getRoot
 parameter_list|()
 block|{
 return|return

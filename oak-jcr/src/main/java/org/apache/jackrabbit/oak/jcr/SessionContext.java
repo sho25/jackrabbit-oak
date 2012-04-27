@@ -175,7 +175,7 @@ throws|throws
 name|RepositoryException
 function_decl|;
 name|Root
-name|getBranch
+name|getRoot
 parameter_list|()
 function_decl|;
 name|Tree
