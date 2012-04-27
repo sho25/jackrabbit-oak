@@ -2276,7 +2276,7 @@ operator|=
 name|firstBranchRootId
 expr_stmt|;
 block|}
-comment|/* repair dangling parent commit of first, preserved commit */
+comment|/* repair dangling parent commit of first preserved commit */
 name|StoredCommit
 name|commit
 init|=

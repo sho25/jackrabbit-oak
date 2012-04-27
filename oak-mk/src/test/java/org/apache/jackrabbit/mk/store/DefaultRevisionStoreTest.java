@@ -839,7 +839,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Verify garbage collection can run concurrently with commits.      *       * @throws Exception if an error occurs      */
+comment|/**      * Verify garbage collection can run concurrently with branch& merge.      *       * @throws Exception if an error occurs      */
 annotation|@
 name|Test
 specifier|public
@@ -937,6 +937,18 @@ name|getHeadRevision
 argument_list|()
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+operator|(
+name|i
+operator|&
+literal|1
+operator|)
+operator|==
+literal|0
+condition|)
+block|{
+comment|/* add some data in even runs */
 name|branchId
 operator|=
 name|mk
@@ -965,6 +977,25 @@ name|mk
 operator|.
 name|commit
 argument_list|(
+literal|"/a/b/c/d/e"
+argument_list|,
+literal|"+\"f\" : {}"
+argument_list|,
+name|branchId
+argument_list|,
+literal|null
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+comment|/* remove added data in odd runs */
+name|branchId
+operator|=
+name|mk
+operator|.
+name|commit
+argument_list|(
 literal|"/a/b/c/d"
 argument_list|,
 literal|"-\"e\""
@@ -974,6 +1005,7 @@ argument_list|,
 literal|null
 argument_list|)
 expr_stmt|;
+block|}
 name|Thread
 operator|.
 name|sleep
