@@ -83,22 +83,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|namepath
-operator|.
-name|Paths
-import|;
-end_import
-
-begin_import
-import|import
 name|javax
 operator|.
 name|jcr

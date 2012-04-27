@@ -95,7 +95,7 @@ name|oak
 operator|.
 name|namepath
 operator|.
-name|NameMapper
+name|NamePathMapper
 import|;
 end_import
 
@@ -158,10 +158,6 @@ name|ValueFactoryImpl
 name|getValueFactory
 parameter_list|()
 function_decl|;
-name|NameMapper
-name|getNameMapper
-parameter_list|()
-function_decl|;
 name|LockManager
 name|getLockManager
 parameter_list|()
@@ -185,21 +181,9 @@ name|String
 name|path
 parameter_list|)
 function_decl|;
-name|String
-name|toOakPath
-parameter_list|(
-name|String
-name|jcrPath
-parameter_list|)
-throws|throws
-name|RepositoryException
-function_decl|;
-name|String
-name|toJcrPath
-parameter_list|(
-name|String
-name|oakPath
-parameter_list|)
+name|NamePathMapper
+name|getNamePathMapper
+parameter_list|()
 function_decl|;
 block|}
 end_interface

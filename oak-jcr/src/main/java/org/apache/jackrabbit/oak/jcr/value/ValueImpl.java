@@ -61,23 +61,7 @@ name|oak
 operator|.
 name|namepath
 operator|.
-name|NameMapper
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|namepath
-operator|.
-name|Paths
+name|NamePathMapper
 import|;
 end_import
 
@@ -268,18 +252,18 @@ name|value
 decl_stmt|;
 specifier|private
 specifier|final
-name|NameMapper
-name|nameMapper
+name|NamePathMapper
+name|namePathMapper
 decl_stmt|;
-comment|/**      * Constructs a {@code ValueImpl} object based on a {@code CoreValue}      *      * @param value the value object this {@code ValueImpl} should represent      * @param nameMapper      */
+comment|/**      * Constructs a {@code ValueImpl} object based on a {@code CoreValue}      *      * @param value the value object this {@code ValueImpl} should represent      * @param namePathMapper      */
 specifier|public
 name|ValueImpl
 parameter_list|(
 name|CoreValue
 name|value
 parameter_list|,
-name|NameMapper
-name|nameMapper
+name|NamePathMapper
+name|namePathMapper
 parameter_list|)
 block|{
 name|this
@@ -290,9 +274,9 @@ name|value
 expr_stmt|;
 name|this
 operator|.
-name|nameMapper
+name|namePathMapper
 operator|=
-name|nameMapper
+name|namePathMapper
 expr_stmt|;
 block|}
 name|CoreValue
@@ -618,7 +602,7 @@ operator|.
 name|NAME
 case|:
 return|return
-name|nameMapper
+name|namePathMapper
 operator|.
 name|getJcrName
 argument_list|(
@@ -634,7 +618,7 @@ operator|.
 name|PATH
 case|:
 return|return
-name|Paths
+name|namePathMapper
 operator|.
 name|toJcrPath
 argument_list|(
@@ -642,8 +626,6 @@ name|value
 operator|.
 name|toString
 argument_list|()
-argument_list|,
-name|nameMapper
 argument_list|)
 return|;
 case|case
