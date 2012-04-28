@@ -35,6 +35,22 @@ name|CommitFailedException
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|api
+operator|.
+name|CoreValueFactory
+import|;
+end_import
+
 begin_comment
 comment|/**  * Storage abstraction for trees. At any given point in time the stored  * tree is rooted at a single immutable node state.  *<p>  * This is a low-level interface that doesn't cover functionality like  * merging concurrent changes or rejecting new tree states based on some  * higher-level consistency constraints.  */
 end_comment
@@ -56,6 +72,11 @@ parameter_list|(
 name|NodeState
 name|base
 parameter_list|)
+function_decl|;
+comment|/**      * Returns the factory for creating values used for building node states.      *      * @return value factory      */
+name|CoreValueFactory
+name|getValueFactory
+parameter_list|()
 function_decl|;
 comment|/**      * Updates the state of the tree.      * @param builder  builder containing the new node state      */
 name|void

@@ -1275,13 +1275,9 @@ name|builder
 operator|.
 name|setProperty
 argument_list|(
-operator|new
-name|PropertyStateImpl
-argument_list|(
 name|name
 argument_list|,
 name|value
-argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
@@ -1324,13 +1320,9 @@ name|builder
 operator|.
 name|setProperty
 argument_list|(
-operator|new
-name|PropertyStateImpl
-argument_list|(
 name|name
 argument_list|,
 name|values
-argument_list|)
 argument_list|)
 expr_stmt|;
 if|if

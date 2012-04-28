@@ -13,7 +13,7 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|core
+name|kernel
 package|;
 end_package
 

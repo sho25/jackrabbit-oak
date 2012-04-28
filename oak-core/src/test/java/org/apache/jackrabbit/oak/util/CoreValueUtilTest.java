@@ -123,9 +123,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|core
+name|kernel
 operator|.
-name|CoreValueFactoryImpl
+name|KernelNodeStore
 import|;
 end_import
 
@@ -362,10 +362,13 @@ expr_stmt|;
 name|valueFactory
 operator|=
 operator|new
-name|CoreValueFactoryImpl
+name|KernelNodeStore
 argument_list|(
 name|microKernel
 argument_list|)
+operator|.
+name|getValueFactory
+argument_list|()
 expr_stmt|;
 name|singleValueMap
 operator|=

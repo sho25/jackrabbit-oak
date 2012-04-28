@@ -21,6 +21,32 @@ end_package
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|api
+operator|.
+name|CoreValue
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -84,12 +110,28 @@ name|String
 name|name
 parameter_list|)
 function_decl|;
-comment|/**      * Set a property.      *      * @param property  property to set      */
+comment|/**      * Set a property.      *      * @param name property name      */
 name|void
 name|setProperty
 parameter_list|(
-name|PropertyState
-name|property
+name|String
+name|name
+parameter_list|,
+name|CoreValue
+name|values
+parameter_list|)
+function_decl|;
+name|void
+name|setProperty
+parameter_list|(
+name|String
+name|name
+parameter_list|,
+name|List
+argument_list|<
+name|CoreValue
+argument_list|>
+name|values
 parameter_list|)
 function_decl|;
 comment|/**      * Remove the named property      * @param name  name of the property      */

@@ -13,7 +13,7 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|core
+name|kernel
 package|;
 end_package
 
@@ -120,7 +120,6 @@ comment|/**  * CoreValueFactoryImpl... TODO javadoc  */
 end_comment
 
 begin_class
-specifier|public
 class|class
 name|CoreValueFactoryImpl
 implements|implements

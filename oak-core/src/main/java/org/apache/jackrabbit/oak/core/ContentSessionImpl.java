@@ -217,11 +217,6 @@ specifier|final
 name|QueryEngine
 name|queryEngine
 decl_stmt|;
-specifier|private
-specifier|final
-name|CoreValueFactory
-name|valueFactory
-decl_stmt|;
 specifier|public
 name|ContentSessionImpl
 parameter_list|(
@@ -236,9 +231,6 @@ name|store
 parameter_list|,
 name|QueryEngine
 name|queryEngine
-parameter_list|,
-name|CoreValueFactory
-name|valueFactory
 parameter_list|)
 block|{
 name|this
@@ -264,12 +256,6 @@ operator|.
 name|queryEngine
 operator|=
 name|queryEngine
-expr_stmt|;
-name|this
-operator|.
-name|valueFactory
-operator|=
-name|valueFactory
 expr_stmt|;
 block|}
 annotation|@
@@ -394,7 +380,10 @@ name|getCoreValueFactory
 parameter_list|()
 block|{
 return|return
-name|valueFactory
+name|store
+operator|.
+name|getValueFactory
+argument_list|()
 return|;
 block|}
 block|}

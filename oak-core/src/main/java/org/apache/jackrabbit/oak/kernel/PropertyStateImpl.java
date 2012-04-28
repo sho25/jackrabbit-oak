@@ -13,7 +13,7 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|core
+name|kernel
 package|;
 end_package
 
@@ -80,7 +80,6 @@ import|;
 end_import
 
 begin_class
-specifier|public
 class|class
 name|PropertyStateImpl
 implements|implements
