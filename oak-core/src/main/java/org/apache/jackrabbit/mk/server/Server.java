@@ -539,10 +539,8 @@ block|{
 return|return
 name|Executors
 operator|.
-name|newFixedThreadPool
-argument_list|(
-literal|10
-argument_list|)
+name|newCachedThreadPool
+argument_list|()
 return|;
 block|}
 comment|/**      * Process a connection attempt by a client.      *      * @param socket client socket      */

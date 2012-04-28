@@ -739,7 +739,7 @@ name|request
 operator|.
 name|getParameter
 argument_list|(
-literal|"old_revision_id"
+literal|"revision_id"
 argument_list|,
 name|headRevision
 argument_list|)
