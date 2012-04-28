@@ -75,7 +75,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|kernel
+name|spi
+operator|.
+name|state
 operator|.
 name|ChildNodeEntry
 import|;
@@ -91,7 +93,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|kernel
+name|spi
+operator|.
+name|state
 operator|.
 name|NodeState
 import|;
@@ -107,7 +111,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|kernel
+name|spi
+operator|.
+name|state
 operator|.
 name|NodeStateBuilder
 import|;
@@ -123,7 +129,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|kernel
+name|spi
+operator|.
+name|state
 operator|.
 name|NodeStateDiff
 import|;
@@ -139,7 +147,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|kernel
+name|spi
+operator|.
+name|state
 operator|.
 name|NodeStore
 import|;

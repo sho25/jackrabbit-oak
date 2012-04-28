@@ -125,7 +125,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|kernel
+name|spi
+operator|.
+name|state
 operator|.
 name|NodeState
 import|;

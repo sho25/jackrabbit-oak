@@ -13,7 +13,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|kernel
+name|spi
+operator|.
+name|state
 package|;
 end_package
 
@@ -47,7 +49,7 @@ name|NodeState
 name|getRoot
 parameter_list|()
 function_decl|;
-comment|/**      * Returns a builder for constructing a new or modified node state.      * The builder is initialized with all the properties and child nodes      * from the given base node state.      *      * @param base  base node state      * @return  builder instance      */
+comment|/**      * Returns a builder for constructing a new or modified node state.      * The builder is initialized with all the properties and child nodes      * from the given base node state.      *      * @param base  base node state, or {@code null} for building new nodes      * @return  builder instance      */
 name|NodeStateBuilder
 name|getBuilder
 parameter_list|(

@@ -13,7 +13,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|kernel
+name|spi
+operator|.
+name|state
 package|;
 end_package
 
