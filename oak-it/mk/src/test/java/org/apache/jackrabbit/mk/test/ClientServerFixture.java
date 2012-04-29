@@ -13,7 +13,7 @@ name|jackrabbit
 operator|.
 name|mk
 operator|.
-name|server
+name|test
 package|;
 end_package
 
@@ -82,6 +82,22 @@ operator|.
 name|core
 operator|.
 name|MicroKernelImpl
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|mk
+operator|.
+name|server
+operator|.
+name|Server
 import|;
 end_import
 
