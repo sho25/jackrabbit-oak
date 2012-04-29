@@ -97,6 +97,10 @@ index|[
 literal|0
 index|]
 decl_stmt|;
+specifier|private
+name|ArrayUtils
+parameter_list|()
+block|{     }
 comment|/**      * Replace an element in a clone of the array at the given position.      *      * @param values the values      * @param index the index      * @param x the value to add      * @return the new array      */
 specifier|public
 specifier|static
