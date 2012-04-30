@@ -246,6 +246,7 @@ argument_list|,
 literal|"http://www.jcp.org/jcr/sv/1.0"
 argument_list|)
 expr_stmt|;
+comment|// TODO: see OAK-74
 name|defaults
 operator|.
 name|put
