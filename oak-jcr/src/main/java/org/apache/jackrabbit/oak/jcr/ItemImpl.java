@@ -535,6 +535,8 @@ parameter_list|)
 throws|throws
 name|RepositoryException
 block|{
+try|try
+block|{
 return|return
 name|sessionContext
 operator|.
@@ -546,6 +548,22 @@ argument_list|(
 name|jcrPath
 argument_list|)
 return|;
+block|}
+catch|catch
+parameter_list|(
+name|IllegalArgumentException
+name|ex
+parameter_list|)
+block|{
+comment|// TODO we shouldn't have to catch this one
+throw|throw
+operator|new
+name|RepositoryException
+argument_list|(
+name|ex
+argument_list|)
+throw|;
+block|}
 block|}
 name|String
 name|toJcrPath
