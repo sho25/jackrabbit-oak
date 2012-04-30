@@ -150,7 +150,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Client exposing a {@code MicroKernel} interface, that "remotes" commands  * to a server.  *<p/>  * All public methods inside this class are completely synchronized because  * HttpExecutor is not thread-safe.  */
+comment|/**  * Client exposing a {@code MicroKernel} interface, that "remotes" commands  * to a server.  */
 end_comment
 
 begin_class
