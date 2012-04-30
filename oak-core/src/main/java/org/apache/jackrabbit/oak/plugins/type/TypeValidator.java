@@ -109,6 +109,8 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
+name|spi
+operator|.
 name|commit
 operator|.
 name|Validator
