@@ -429,6 +429,12 @@ argument_list|(
 name|DEFAULT_WORKSPACE_NAME
 argument_list|)
 decl_stmt|;
+comment|// FIXME: depends on CoreValue's name mangling
+name|String
+name|ntUnstructured
+init|=
+literal|"nam:nt:unstructured"
+decl_stmt|;
 if|if
 condition|(
 name|wspNode
@@ -452,7 +458,11 @@ literal|"^\""
 operator|+
 name|DEFAULT_WORKSPACE_NAME
 operator|+
-literal|"/jcr:primaryType\":\"nt:unstructured\" "
+literal|"/jcr:primaryType\":\""
+operator|+
+name|ntUnstructured
+operator|+
+literal|"\" "
 argument_list|,
 literal|null
 argument_list|,
