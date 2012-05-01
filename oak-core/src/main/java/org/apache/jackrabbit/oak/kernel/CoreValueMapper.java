@@ -13,7 +13,7 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|util
+name|kernel
 package|;
 end_package
 
@@ -99,26 +99,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
-begin_import
-import|import
 name|javax
 operator|.
 name|jcr
@@ -168,30 +148,13 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * CoreValueUtil provides methods to convert {@code CoreValue}s to the JSON  * representation passed to MicroKernel and vice versa.  *  * TODO: review if this should be added to CoreValue/*Factory interfaces/implementation  */
+comment|/**  * CoreValueUtil provides methods to convert {@code CoreValue}s to the JSON  * representation passed to MicroKernel and vice versa.  */
 end_comment
 
 begin_class
-specifier|public
 class|class
-name|CoreValueUtil
+name|CoreValueMapper
 block|{
-comment|/**      * logger instance      */
-specifier|private
-specifier|static
-specifier|final
-name|Logger
-name|log
-init|=
-name|LoggerFactory
-operator|.
-name|getLogger
-argument_list|(
-name|CoreValueUtil
-operator|.
-name|class
-argument_list|)
-decl_stmt|;
 specifier|private
 specifier|static
 specifier|final
@@ -233,7 +196,7 @@ argument_list|>
 argument_list|()
 decl_stmt|;
 specifier|private
-name|CoreValueUtil
+name|CoreValueMapper
 parameter_list|()
 block|{     }
 static|static

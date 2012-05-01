@@ -193,22 +193,6 @@ name|NodeStateBuilder
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|util
-operator|.
-name|CoreValueUtil
-import|;
-end_import
-
 begin_class
 specifier|public
 class|class
@@ -656,7 +640,7 @@ decl_stmt|;
 name|String
 name|json
 init|=
-name|CoreValueUtil
+name|CoreValueMapper
 operator|.
 name|toJsonValue
 argument_list|(
@@ -722,7 +706,7 @@ decl_stmt|;
 name|String
 name|json
 init|=
-name|CoreValueUtil
+name|CoreValueMapper
 operator|.
 name|toJsonArray
 argument_list|(
@@ -1167,7 +1151,7 @@ operator|.
 name|isArray
 argument_list|()
 condition|?
-name|CoreValueUtil
+name|CoreValueMapper
 operator|.
 name|toJsonArray
 argument_list|(
@@ -1177,7 +1161,7 @@ name|getValues
 argument_list|()
 argument_list|)
 else|:
-name|CoreValueUtil
+name|CoreValueMapper
 operator|.
 name|toJsonValue
 argument_list|(

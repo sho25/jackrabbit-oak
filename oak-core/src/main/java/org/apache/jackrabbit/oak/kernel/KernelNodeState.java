@@ -169,22 +169,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|util
-operator|.
-name|CoreValueUtil
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|util
@@ -540,7 +524,7 @@ name|PropertyStateImpl
 argument_list|(
 name|name
 argument_list|,
-name|CoreValueUtil
+name|CoreValueMapper
 operator|.
 name|listFromJsopReader
 argument_list|(
@@ -557,7 +541,7 @@ block|{
 name|CoreValue
 name|cv
 init|=
-name|CoreValueUtil
+name|CoreValueMapper
 operator|.
 name|fromJsopReader
 argument_list|(
@@ -1197,7 +1181,7 @@ name|values
 operator|.
 name|add
 argument_list|(
-name|CoreValueUtil
+name|CoreValueMapper
 operator|.
 name|fromJsopReader
 argument_list|(
