@@ -2909,6 +2909,46 @@ block|{
 name|checkStatus
 argument_list|()
 expr_stmt|;
+comment|// TODO: figure out the right place for this check
+name|NodeTypeManager
+name|ntm
+init|=
+name|sessionContext
+operator|.
+name|getNodeTypeManager
+argument_list|()
+decl_stmt|;
+name|NodeType
+name|nt
+init|=
+name|ntm
+operator|.
+name|getNodeType
+argument_list|(
+name|nodeTypeName
+argument_list|)
+decl_stmt|;
+comment|// throws on not found
+if|if
+condition|(
+name|nt
+operator|.
+name|isAbstract
+argument_list|()
+operator|||
+name|nt
+operator|.
+name|isMixin
+argument_list|()
+condition|)
+block|{
+throw|throw
+operator|new
+name|ConstraintViolationException
+argument_list|()
+throw|;
+block|}
+comment|// TODO: END
 name|CoreValue
 name|cv
 init|=
@@ -2955,6 +2995,24 @@ block|{
 name|checkStatus
 argument_list|()
 expr_stmt|;
+comment|// TODO: figure out the right place for this check
+name|NodeTypeManager
+name|ntm
+init|=
+name|sessionContext
+operator|.
+name|getNodeTypeManager
+argument_list|()
+decl_stmt|;
+name|ntm
+operator|.
+name|getNodeType
+argument_list|(
+name|mixinName
+argument_list|)
+expr_stmt|;
+comment|// throws on not found
+comment|// TODO: END
 comment|// todo implement addMixin
 block|}
 annotation|@
@@ -2986,7 +3044,24 @@ parameter_list|)
 throws|throws
 name|RepositoryException
 block|{
-comment|// TODO
+comment|// TODO: figure out the right place for this check
+name|NodeTypeManager
+name|ntm
+init|=
+name|sessionContext
+operator|.
+name|getNodeTypeManager
+argument_list|()
+decl_stmt|;
+name|ntm
+operator|.
+name|getNodeType
+argument_list|(
+name|mixinName
+argument_list|)
+expr_stmt|;
+comment|// throws on not found
+comment|// TODO: END
 return|return
 literal|false
 return|;
