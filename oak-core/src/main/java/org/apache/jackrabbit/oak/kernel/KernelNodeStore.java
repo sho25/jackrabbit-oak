@@ -123,24 +123,6 @@ name|spi
 operator|.
 name|state
 operator|.
-name|AbstractChildNodeEntry
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|spi
-operator|.
-name|state
-operator|.
 name|AbstractNodeState
 import|;
 end_import
@@ -275,6 +257,10 @@ name|Iterator
 import|;
 end_import
 
+begin_comment
+comment|/**  * {@code NodeStore} implementations which supports batching changes  * to the content tree up until a certain limit is reached and write them  * down to the Microkernel in a single operation. The batch size is controlled  * through {@link #PURGE_LIMIT} which is the number of characters on a commit  * (i.e. jsop string).  */
+end_comment
+
 begin_class
 specifier|public
 class|class
@@ -282,7 +268,17 @@ name|KernelNodeStore
 extends|extends
 name|AbstractNodeStore
 block|{
-comment|/**      * The {@link org.apache.jackrabbit.mk.api.MicroKernel} instance used to store the content tree.      */
+comment|/**      * Maximal size of size of a commit (number of characters of the corresponding      * jsop string). When the limit is reached, changes kept in memory are written      * back to the private branch in the Microkernel.      */
+specifier|private
+specifier|static
+specifier|final
+name|int
+name|PURGE_LIMIT
+init|=
+literal|1024
+decl_stmt|;
+comment|// TODO make configurable?
+comment|/**      * The {@link MicroKernel} instance used to store the content tree.      */
 specifier|private
 specifier|final
 name|MicroKernel
@@ -538,31 +534,27 @@ name|valueFactory
 return|;
 block|}
 comment|//------------------------------------------------------------< internal>---
+comment|/**      * {@code NodeStateBuilderContext} keeps track of all changes to a      * {@code KernelNodeStateBuilder} which have not yet been written back to the      * Microkernel. It transforms the tree rooted at {@link #root} to reflect these      * changes and writes these changes back to the Microkernel when      * {@link KernelNodeStore#PURGE_LIMIT} is exceeded.      */
 class|class
 name|NodeStateBuilderContext
 block|{
-specifier|private
-specifier|static
-specifier|final
-name|int
-name|PURGE_LIMIT
-init|=
-literal|1024
-decl_stmt|;
-comment|// TODO make configurable?
+comment|/** Path of the root of the whole subtree */
 specifier|private
 specifier|final
 name|String
 name|path
 decl_stmt|;
+comment|/** Root of the subtree */
 specifier|private
 name|NodeState
 name|root
 decl_stmt|;
+comment|/** Current branch revision */
 specifier|private
 name|String
 name|revision
 decl_stmt|;
+comment|/** Pending changes */
 specifier|private
 name|StringBuilder
 name|jsop
@@ -602,6 +594,7 @@ name|getRevision
 argument_list|()
 expr_stmt|;
 block|}
+comment|/**          * @return path of the root of the whole subtree          */
 name|String
 name|getPath
 parameter_list|()
@@ -610,6 +603,7 @@ return|return
 name|path
 return|;
 block|}
+comment|/**          * Get the node state located at {@code path}          * @param path  path relative to {@link #root}          * @return  node state at {@code path} or {@code null} if none.          */
 name|NodeState
 name|getNodeState
 parameter_list|(
@@ -649,6 +643,7 @@ return|return
 name|state
 return|;
 block|}
+comment|/**          * Add a new, empty node state at {@code path}. The changes to the subtree          * are reflected in {@link #root}.          * @param relPath  path relative to {@link #root}. All but the last element          *                 must resolve to existing node states.          */
 name|void
 name|addNode
 parameter_list|(
@@ -696,6 +691,7 @@ name|purgeOnLimit
 argument_list|()
 expr_stmt|;
 block|}
+comment|/**          * Add a new node state at {@code path}. The changes to the subtree are reflected          * in {@link #root}.          * @param node     node state to add          * @param relPath  path relative to {@link #root}. All but the last element          *                 must resolve to existing node states.          */
 name|void
 name|addNode
 parameter_list|(
@@ -736,6 +732,7 @@ name|purgeOnLimit
 argument_list|()
 expr_stmt|;
 block|}
+comment|/**          * Remove the node state at {@code path}. The changes to the subtree are reflected          * in {@link #root}.          * @param relPath  path relative to {@link #root}. All elements must resolve to          *                 existing node states.          */
 name|void
 name|removeNode
 parameter_list|(
@@ -781,6 +778,7 @@ name|purgeOnLimit
 argument_list|()
 expr_stmt|;
 block|}
+comment|/**          * Add a new property state. The changes to the subtree are reflected in {@link #root}.          * @param property     property state to add          * @param parentPath   path to the parent node state relative to {@link #root}.          *                     All elements must resolve to existing node states.          */
 name|void
 name|addProperty
 parameter_list|(
@@ -879,6 +877,7 @@ name|purgeOnLimit
 argument_list|()
 expr_stmt|;
 block|}
+comment|/**          * Set an existing property state. The changes to the subtree are reflected in          * {@link #root}.          * @param property     property state to set          * @param parentPath   path to the parent node state relative to {@link #root}.          *                     All elements must resolve to existing node states.          */
 name|void
 name|setProperty
 parameter_list|(
@@ -977,6 +976,7 @@ name|purgeOnLimit
 argument_list|()
 expr_stmt|;
 block|}
+comment|/**          * Remove an existing property state. The changes to the subtree are reflected in          * {@link #root}.          * @param relPath   path to the property state relative to {@link #root}. All          *                  elements must resolve to existing node states.          */
 name|void
 name|removeProperty
 parameter_list|(
@@ -1022,6 +1022,7 @@ name|purgeOnLimit
 argument_list|()
 expr_stmt|;
 block|}
+comment|/**          * Move the node from {@code sourcePath} to {@code destPath}. The changes to          * the subtree are reflected in {@link #root}.          * @param sourcePath  path to the node to move. All elements must resolve to          *                    existing node states.          * @param destPath    path to the new node. All but the last element must resolve          *                    to existing node states.          */
 name|void
 name|moveNode
 parameter_list|(
@@ -1064,8 +1065,6 @@ name|moveNode
 init|=
 name|getChildNode
 argument_list|(
-name|root
-argument_list|,
 name|sourcePath
 argument_list|)
 decl_stmt|;
@@ -1109,6 +1108,7 @@ name|purgeOnLimit
 argument_list|()
 expr_stmt|;
 block|}
+comment|/**          * Copy the node from {@code sourcePath} to {@code destPath}. The changes to          * the subtree are reflected in {@link #root}.          * @param sourcePath  path to the node to copy. All elements must resolve to          *                    existing node states.          * @param destPath    path to the new node. All but the last element must resolve          *                    to existing node states.          */
 name|void
 name|copyNode
 parameter_list|(
@@ -1151,8 +1151,6 @@ name|copyNode
 init|=
 name|getChildNode
 argument_list|(
-name|root
-argument_list|,
 name|sourcePath
 argument_list|)
 decl_stmt|;
@@ -1179,6 +1177,7 @@ name|purgeOnLimit
 argument_list|()
 expr_stmt|;
 block|}
+comment|/**          * Merge back into trunk          * @throws CommitFailedException  if merging fails          */
 name|void
 name|applyPendingChanges
 parameter_list|()
@@ -1220,6 +1219,7 @@ throw|;
 block|}
 block|}
 comment|//------------------------------------------------------------< private>---
+comment|/**          * Purge all changes kept in memory to the private branch if          * {@link KernelNodeStore#PURGE_LIMIT} is exceeded.          * @see #purgePendingChanges()          */
 specifier|private
 name|void
 name|purgeOnLimit
@@ -1240,6 +1240,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+comment|/**          * Purge all changes kept in memory to the private branch.          */
 specifier|private
 name|void
 name|purgePendingChanges
@@ -1310,6 +1311,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+comment|/**          * Build a jsop statement for adding a node state at a given path.          * @param path        path where {@code nodeState} should be added.          * @param nodeState   node state to add.          */
 specifier|private
 name|void
 name|buildJsop
@@ -1458,6 +1460,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+comment|/**          * Construct a new {@code NodeState} where {@code node} is added to          * {@code parent} at {@code path}.          * @param parent  parent where {@code node} should be added          * @param node    node state to add          * @param path    path from {@code parent} where {@code node} should be added          * @return  a new {@code NodeState} instance with the added node state.          */
 specifier|private
 name|NodeState
 name|addNode
@@ -1528,6 +1531,7 @@ argument_list|)
 return|;
 block|}
 block|}
+comment|/**          * Construct a new {@code NodeState} where the node state at {@code path} is          * removed from {@code parent}.          * @param parent  parent from which the node state should be removed          * @param path    path from {@code parent} for the node state to remove          * @return  a new {@code NodeState} instance with the remove node state.          */
 specifier|private
 name|NodeState
 name|removeNode
@@ -1591,6 +1595,7 @@ argument_list|)
 return|;
 block|}
 block|}
+comment|/**          * Construct a new {@code NodeState} where {@code property} is added to          * {@code parent} at {@code parentPath}.          * @param parent      parent where {@code node} should be added          * @param property    property state to add          * @param parentPath  path from {@code parent} where {@code property} should be          *                    added          * @return  a new {@code NodeState} instance with the added property state.          */
 specifier|private
 name|NodeState
 name|addProperty
@@ -1599,7 +1604,7 @@ name|NodeState
 name|parent
 parameter_list|,
 name|PropertyState
-name|added
+name|property
 parameter_list|,
 name|Iterator
 argument_list|<
@@ -1640,7 +1645,7 @@ argument_list|(
 name|name
 argument_list|)
 argument_list|,
-name|added
+name|property
 argument_list|,
 name|parentPath
 argument_list|)
@@ -1654,11 +1659,12 @@ name|addChildProperty
 argument_list|(
 name|parent
 argument_list|,
-name|added
+name|property
 argument_list|)
 return|;
 block|}
 block|}
+comment|/**          * Construct a new {@code NodeState} where {@code property} is set to          * {@code parent} at {@code parentPath}.          * @param parent      parent where {@code node} should be set          * @param property    property state to set          * @param parentPath  path from {@code parent} where {@code property} should be          *                    set          * @return  a new {@code NodeState} instance with the new property state.          */
 specifier|private
 name|NodeState
 name|setProperty
@@ -1727,6 +1733,7 @@ argument_list|)
 return|;
 block|}
 block|}
+comment|/**          * Construct a new {@code NodeState} where the property state at {@code path} is          * removed from {@code parent}.          * @param parent  parent from which the property state should be removed          * @param path    path from {@code parent} for the property state to remove          * @return  a new {@code NodeState} instance with the remove property state.          */
 specifier|private
 name|NodeState
 name|removeProperty
@@ -1790,17 +1797,20 @@ argument_list|)
 return|;
 block|}
 block|}
+comment|/**          * Get the node state located at {@code relPath} from {@link #root}.          * @param relPath  relative path          * @return  child node at {@code relPath} or {@code null} if none.          */
 specifier|private
 name|NodeState
 name|getChildNode
 parameter_list|(
-name|NodeState
-name|state
-parameter_list|,
 name|String
 name|relPath
 parameter_list|)
 block|{
+name|NodeState
+name|state
+init|=
+name|root
+decl_stmt|;
 for|for
 control|(
 name|String
@@ -1975,49 +1985,7 @@ return|;
 block|}
 block|}
 decl_stmt|;
-specifier|private
-name|ChildNodeEntry
-name|createCNE
-parameter_list|(
-specifier|final
-name|String
-name|name
-parameter_list|,
-specifier|final
-name|NodeState
-name|state
-parameter_list|)
-block|{
-return|return
-operator|new
-name|AbstractChildNodeEntry
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|String
-name|getName
-parameter_list|()
-block|{
-return|return
-name|name
-return|;
-block|}
-annotation|@
-name|Override
-specifier|public
-name|NodeState
-name|getNodeState
-parameter_list|()
-block|{
-return|return
-name|state
-return|;
-block|}
-block|}
-return|;
-block|}
+comment|/**          * Construct a new {@code NodeState} from {@code parent} with {@code node} added          * as new child with name {@code childName}.          * @param parent          * @param childName          * @param node          * @return          */
 specifier|private
 name|NodeState
 name|addChildNode
@@ -2247,7 +2215,8 @@ name|Iterators
 operator|.
 name|singleton
 argument_list|(
-name|createCNE
+operator|new
+name|KernelChildNodeEntry
 argument_list|(
 name|childName
 argument_list|,
@@ -2277,6 +2246,7 @@ block|}
 block|}
 return|;
 block|}
+comment|/**          * Construct a new {@code NodeState} from {@code parent} with child node state          * {@code childName} replaced with {@code node}.          * @param parent          * @param childName          * @param node          * @return          */
 specifier|private
 name|NodeState
 name|setChildNode
@@ -2478,7 +2448,8 @@ name|getName
 argument_list|()
 argument_list|)
 condition|?
-name|createCNE
+operator|new
+name|KernelChildNodeEntry
 argument_list|(
 name|childName
 argument_list|,
@@ -2498,6 +2469,7 @@ block|}
 block|}
 return|;
 block|}
+comment|/**          * Construct a new {@code NodeState} from {@code parent} with child node state          * {@code childName} removed.          * @param parent          * @param childName          * @return          */
 specifier|private
 name|NodeState
 name|removeChildNode
@@ -2708,6 +2680,7 @@ block|}
 block|}
 return|;
 block|}
+comment|/**          * Construct a new {@code NodeState} from {@code parent} with {@code property}          * added.          * @param parent          * @param property          * @return          */
 specifier|private
 name|NodeState
 name|addChildProperty
@@ -2893,6 +2866,7 @@ block|}
 block|}
 return|;
 block|}
+comment|/**          * Construct a new {@code NodeState} from {@code parent} with {@code property}          * replaced.          * @param parent          * @param property          * @return          */
 specifier|private
 name|NodeState
 name|setChildProperty
@@ -3109,6 +3083,7 @@ block|}
 block|}
 return|;
 block|}
+comment|/**          * Construct a new {@code NodeState} from {@code parent} with {@code propertyName}          * removed.          * @param parent          * @param propertyName          * @return          */
 specifier|private
 name|NodeState
 name|removeChildProperty
