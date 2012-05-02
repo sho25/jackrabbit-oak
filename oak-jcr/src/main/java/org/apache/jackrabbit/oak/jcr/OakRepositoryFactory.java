@@ -117,6 +117,12 @@ name|Object
 name|value
 init|=
 name|parameters
+operator|==
+literal|null
+condition|?
+literal|null
+else|:
+name|parameters
 operator|.
 name|get
 argument_list|(
