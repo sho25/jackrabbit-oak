@@ -125,7 +125,7 @@ name|oak
 operator|.
 name|kernel
 operator|.
-name|KernelNodeStore
+name|KernelNodeStore2
 import|;
 end_import
 
@@ -388,7 +388,7 @@ expr_stmt|;
 name|nodeStore
 operator|=
 operator|new
-name|KernelNodeStore
+name|KernelNodeStore2
 argument_list|(
 name|microKernel
 argument_list|)
