@@ -77,7 +77,7 @@ name|oak
 operator|.
 name|kernel
 operator|.
-name|KernelNodeStore2
+name|KernelNodeStore
 import|;
 end_import
 
@@ -125,7 +125,7 @@ name|NodeStore
 name|store
 init|=
 operator|new
-name|KernelNodeStore2
+name|KernelNodeStore
 argument_list|(
 name|mk
 argument_list|)

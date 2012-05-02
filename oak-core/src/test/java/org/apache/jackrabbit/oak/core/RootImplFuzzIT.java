@@ -161,7 +161,7 @@ name|oak
 operator|.
 name|kernel
 operator|.
-name|KernelNodeStore2
+name|KernelNodeStore
 import|;
 end_import
 
@@ -414,7 +414,7 @@ name|Random
 name|random
 decl_stmt|;
 specifier|private
-name|KernelNodeStore2
+name|KernelNodeStore
 name|store1
 decl_stmt|;
 specifier|private
@@ -422,7 +422,7 @@ name|RootImpl
 name|root1
 decl_stmt|;
 specifier|private
-name|KernelNodeStore2
+name|KernelNodeStore
 name|store2
 decl_stmt|;
 specifier|private
@@ -511,7 +511,7 @@ decl_stmt|;
 name|store1
 operator|=
 operator|new
-name|KernelNodeStore2
+name|KernelNodeStore
 argument_list|(
 name|mk1
 argument_list|)
@@ -566,7 +566,7 @@ decl_stmt|;
 name|store2
 operator|=
 operator|new
-name|KernelNodeStore2
+name|KernelNodeStore
 argument_list|(
 name|mk2
 argument_list|)
