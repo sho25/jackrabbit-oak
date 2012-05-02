@@ -36,7 +36,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Abstract base class for {@link NodeState} implementations.  * This base class contains default implementations of the  * {@link #equals(Object)} and {@link #hashCode()} methods based on  * the implemented interface.  *<p>  * This class also implements trivial (and potentially very slow) versions of  * the {@link #getProperty(String)} and {@link #getPropertyCount()} methods  * based on {@link #getProperties()}. The {@link #getChildNode(String)} and  * {@link #getChildNodeCount()} methods are similarly implemented based on  * {@link #getChildNodeEntries(long, int)}. Subclasses should normally  * override these method with a more efficient alternatives.  */
+comment|/**  * Abstract base class for {@link NodeState} implementations.  * This base class contains default implementations of the  * {@link #equals(Object)} and {@link #hashCode()} methods based on  * the implemented interface.  *<p>  * This class also implements trivial (and potentially very slow) versions of  * the {@link #getProperty(String)} and {@link #getPropertyCount()} methods  * based on {@link #getProperties()}. The {@link #getChildNode(String)} and  * {@link #getChildNodeCount()} methods are similarly implemented based on  * {@link #getChildNodeEntries()}. Subclasses should normally  * override these method with a more efficient alternatives.  */
 end_comment
 
 begin_class
@@ -138,12 +138,7 @@ name|ChildNodeEntry
 name|entry
 range|:
 name|getChildNodeEntries
-argument_list|(
-literal|0
-argument_list|,
-operator|-
-literal|1
-argument_list|)
+argument_list|()
 control|)
 block|{
 if|if
@@ -194,12 +189,7 @@ name|ChildNodeEntry
 name|entry
 range|:
 name|getChildNodeEntries
-argument_list|(
-literal|0
-argument_list|,
-operator|-
-literal|1
-argument_list|)
+argument_list|()
 control|)
 block|{
 name|count
@@ -325,12 +315,7 @@ name|ChildNodeEntry
 name|entry
 range|:
 name|getChildNodeEntries
-argument_list|(
-literal|0
-argument_list|,
-operator|-
-literal|1
-argument_list|)
+argument_list|()
 control|)
 block|{
 if|if

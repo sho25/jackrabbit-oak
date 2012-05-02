@@ -240,13 +240,7 @@ extends|extends
 name|ChildNodeEntry
 argument_list|>
 name|getChildNodeEntries
-parameter_list|(
-name|long
-name|offset
-parameter_list|,
-name|int
-name|count
-parameter_list|)
+parameter_list|()
 block|{
 return|return
 operator|new

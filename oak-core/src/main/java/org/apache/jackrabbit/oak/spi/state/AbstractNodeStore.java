@@ -273,12 +273,7 @@ range|:
 name|before
 operator|.
 name|getChildNodeEntries
-argument_list|(
-literal|0
-argument_list|,
-operator|-
-literal|1
-argument_list|)
+argument_list|()
 control|)
 block|{
 name|String
@@ -366,12 +361,7 @@ range|:
 name|after
 operator|.
 name|getChildNodeEntries
-argument_list|(
-literal|0
-argument_list|,
-operator|-
-literal|1
-argument_list|)
+argument_list|()
 control|)
 block|{
 name|String
