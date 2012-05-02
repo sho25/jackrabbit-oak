@@ -443,6 +443,20 @@ argument_list|(
 literal|"Item#save is no longer supported. Please use Session#save instead."
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|isNew
+argument_list|()
+condition|)
+block|{
+throw|throw
+operator|new
+name|RepositoryException
+argument_list|(
+literal|"Item.save() not allowed on new item"
+argument_list|)
+throw|;
+block|}
 name|getSession
 argument_list|()
 operator|.
