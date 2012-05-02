@@ -161,7 +161,7 @@ operator|=
 name|mk
 expr_stmt|;
 block|}
-comment|//-----------------------------------------< javax.jcr.CoreValueFactory>---
+comment|//-----------------------------------------< org.apache.jackrabbit.oak.api.CoreValueFactory>---
 annotation|@
 name|Override
 specifier|public
