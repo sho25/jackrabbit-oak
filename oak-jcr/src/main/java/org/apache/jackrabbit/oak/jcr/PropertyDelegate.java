@@ -252,7 +252,8 @@ parameter_list|()
 block|{
 comment|// TODO
 return|return
-name|propertyState
+name|getPropertyState
+argument_list|()
 operator|.
 name|isArray
 argument_list|()
@@ -320,7 +321,8 @@ parameter_list|()
 block|{
 comment|// TODO
 return|return
-name|propertyState
+name|getPropertyState
+argument_list|()
 operator|.
 name|getName
 argument_list|()
