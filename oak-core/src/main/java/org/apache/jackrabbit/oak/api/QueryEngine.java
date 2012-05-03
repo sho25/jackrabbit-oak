@@ -56,11 +56,6 @@ specifier|public
 interface|interface
 name|QueryEngine
 block|{
-comment|/**      * Initialize the query engine. This includes reading the list of indexes.      */
-name|void
-name|init
-parameter_list|()
-function_decl|;
 comment|/**      * Parse the query (check if it's valid) and get the list of bind variable names.      *      * @param statement      * @param language      * @return the list of bind variable names      * @throws ParseException      */
 name|List
 argument_list|<

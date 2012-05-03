@@ -44,7 +44,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A mechanism to index data. Indexes might be added or removed at runtime,  * possibly by changing content in the repository. The provider knows about  * indexes, and informs the query engine about indexes that where added or  * removed at runtime.  */
+comment|/**  * A mechanism to index data. Indexes might be added or removed at runtime,  * possibly by changing content in the repository. The provider knows about the  * indexes available at a given time.  */
 end_comment
 
 begin_interface
@@ -52,11 +52,6 @@ specifier|public
 interface|interface
 name|QueryIndexProvider
 block|{
-comment|/**      * Initialize the instance.      */
-name|void
-name|init
-parameter_list|()
-function_decl|;
 comment|/**      * Get the currently configured indexes for the given MicroKernel instance.      *      * @param mk the MicroKernel instance      * @return the list of indexes      */
 name|List
 argument_list|<

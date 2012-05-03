@@ -355,15 +355,6 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|void
-name|init
-parameter_list|()
-block|{
-comment|// nothing to do
-block|}
-annotation|@
-name|Override
-specifier|public
 name|List
 argument_list|<
 name|QueryIndex

@@ -100,6 +100,8 @@ name|Indexer
 argument_list|(
 name|mk
 argument_list|,
+name|mk
+argument_list|,
 literal|"index"
 argument_list|)
 decl_stmt|;

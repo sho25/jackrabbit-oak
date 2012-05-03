@@ -27,9 +27,9 @@ name|jackrabbit
 operator|.
 name|mk
 operator|.
-name|api
+name|core
 operator|.
-name|MicroKernel
+name|MicroKernelImpl
 import|;
 end_import
 
@@ -43,9 +43,9 @@ name|jackrabbit
 operator|.
 name|mk
 operator|.
-name|core
+name|index
 operator|.
-name|MicroKernelImpl
+name|IndexWrapper
 import|;
 end_import
 
@@ -112,12 +112,16 @@ block|{
 comment|// TODO improve: use ContentRepository here instead of creating mk instance.
 specifier|protected
 specifier|final
-name|MicroKernel
+name|IndexWrapper
 name|mk
 init|=
 operator|new
+name|IndexWrapper
+argument_list|(
+operator|new
 name|MicroKernelImpl
 argument_list|()
+argument_list|)
 decl_stmt|;
 specifier|protected
 specifier|final

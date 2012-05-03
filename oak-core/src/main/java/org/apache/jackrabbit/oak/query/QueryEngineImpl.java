@@ -294,20 +294,6 @@ name|vf
 argument_list|)
 expr_stmt|;
 block|}
-annotation|@
-name|Override
-specifier|public
-name|void
-name|init
-parameter_list|()
-block|{
-comment|// TODO the list of index providers should be configurable as well
-name|indexProvider
-operator|.
-name|init
-argument_list|()
-expr_stmt|;
-block|}
 comment|/**      * Parse the query (check if it's valid) and get the list of bind variable names.      *      * @param statement      * @param language      * @return the list of bind variable names      * @throws ParseException      */
 annotation|@
 name|Override

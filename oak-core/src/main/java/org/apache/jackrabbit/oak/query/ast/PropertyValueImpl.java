@@ -265,6 +265,17 @@ name|i
 operator|++
 control|)
 block|{
+if|if
+condition|(
+name|n
+operator|==
+literal|null
+condition|)
+block|{
+return|return
+literal|null
+return|;
+block|}
 name|String
 name|p
 init|=
