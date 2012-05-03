@@ -1338,15 +1338,10 @@ block|{
 name|String
 name|name
 init|=
-name|mapper
-operator|.
-name|getJcrName
-argument_list|(
 name|queue
 operator|.
 name|remove
 argument_list|()
-argument_list|)
 decl_stmt|;
 if|if
 condition|(
