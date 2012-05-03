@@ -759,7 +759,7 @@ block|}
 elseif|else
 if|if
 condition|(
-literal|"+"
+literal|"-"
 operator|.
 name|equals
 argument_list|(
