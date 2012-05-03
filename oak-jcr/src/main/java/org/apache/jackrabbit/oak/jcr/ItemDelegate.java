@@ -17,22 +17,6 @@ name|jcr
 package|;
 end_package
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|commons
-operator|.
-name|PathUtils
-import|;
-end_import
-
 begin_class
 specifier|public
 specifier|abstract
@@ -49,21 +33,6 @@ name|String
 name|getPath
 parameter_list|()
 function_decl|;
-specifier|public
-name|int
-name|getDepth
-parameter_list|()
-block|{
-return|return
-name|PathUtils
-operator|.
-name|getDepth
-argument_list|(
-name|getPath
-argument_list|()
-argument_list|)
-return|;
-block|}
 block|}
 end_class
 

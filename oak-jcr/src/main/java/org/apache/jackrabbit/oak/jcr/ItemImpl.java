@@ -21,6 +21,20 @@ begin_import
 import|import
 name|org
 operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|commons
+operator|.
+name|AbstractItem
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|slf4j
 operator|.
 name|Logger
@@ -105,8 +119,8 @@ begin_class
 specifier|abstract
 class|class
 name|ItemImpl
-implements|implements
-name|Item
+extends|extends
+name|AbstractItem
 block|{
 specifier|protected
 specifier|final
@@ -158,23 +172,6 @@ name|itemDelegate
 expr_stmt|;
 block|}
 comment|//---------------------------------------------------------------< Item>---
-comment|/**      * @see javax.jcr.Item#getDepth()      */
-annotation|@
-name|Override
-specifier|public
-name|int
-name|getDepth
-parameter_list|()
-throws|throws
-name|RepositoryException
-block|{
-return|return
-name|dlg
-operator|.
-name|getDepth
-argument_list|()
-return|;
-block|}
 comment|/**      * @see javax.jcr.Item#getName()      */
 annotation|@
 name|Override

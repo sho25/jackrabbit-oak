@@ -613,32 +613,6 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-comment|/**      * @see Item#getAncestor(int)      */
-annotation|@
-name|Override
-specifier|public
-name|Item
-name|getAncestor
-parameter_list|(
-name|int
-name|depth
-parameter_list|)
-throws|throws
-name|RepositoryException
-block|{
-return|return
-operator|new
-name|NodeImpl
-argument_list|(
-name|dlg
-operator|.
-name|getAncestor
-argument_list|(
-name|depth
-argument_list|)
-argument_list|)
-return|;
-block|}
 comment|/**      * @see javax.jcr.Item#isNew()      */
 annotation|@
 name|Override
