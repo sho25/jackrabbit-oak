@@ -47,7 +47,7 @@ name|oak
 operator|.
 name|jcr
 operator|.
-name|SessionContext
+name|SessionDelegate
 import|;
 end_import
 
@@ -116,8 +116,8 @@ parameter_list|,
 name|int
 name|propertyType
 parameter_list|,
-name|SessionContext
-name|sessionContext
+name|SessionDelegate
+name|sessionDelegate
 parameter_list|)
 throws|throws
 name|ValueFormatException
@@ -125,7 +125,7 @@ block|{
 return|return
 name|toCoreValue
 argument_list|(
-name|sessionContext
+name|sessionDelegate
 operator|.
 name|getValueFactory
 argument_list|()
@@ -137,7 +137,7 @@ argument_list|,
 name|propertyType
 argument_list|)
 argument_list|,
-name|sessionContext
+name|sessionDelegate
 argument_list|)
 return|;
 block|}
@@ -149,14 +149,14 @@ parameter_list|(
 name|Value
 name|value
 parameter_list|,
-name|SessionContext
-name|sessionContext
+name|SessionDelegate
+name|sessionDelegate
 parameter_list|)
 block|{
 name|ValueFactoryImpl
 name|vf
 init|=
-name|sessionContext
+name|sessionDelegate
 operator|.
 name|getValueFactory
 argument_list|()
@@ -185,8 +185,8 @@ parameter_list|,
 name|int
 name|propertyType
 parameter_list|,
-name|SessionContext
-name|sessionContext
+name|SessionDelegate
+name|sessionDelegate
 parameter_list|)
 throws|throws
 name|ValueFormatException
@@ -225,7 +225,7 @@ index|[
 name|i
 index|]
 operator|=
-name|sessionContext
+name|sessionDelegate
 operator|.
 name|getValueFactory
 argument_list|()
@@ -246,7 +246,7 @@ name|toCoreValues
 argument_list|(
 name|vs
 argument_list|,
-name|sessionContext
+name|sessionDelegate
 argument_list|)
 return|;
 block|}
@@ -262,8 +262,8 @@ name|Value
 index|[]
 name|values
 parameter_list|,
-name|SessionContext
-name|sessionContext
+name|SessionDelegate
+name|sessionDelegate
 parameter_list|)
 block|{
 name|List
@@ -306,7 +306,7 @@ name|toCoreValue
 argument_list|(
 name|jcrValue
 argument_list|,
-name|sessionContext
+name|sessionDelegate
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -324,12 +324,12 @@ parameter_list|(
 name|CoreValue
 name|coreValue
 parameter_list|,
-name|SessionContext
-name|sessionContext
+name|SessionDelegate
+name|sessionDelegate
 parameter_list|)
 block|{
 return|return
-name|sessionContext
+name|sessionDelegate
 operator|.
 name|getValueFactory
 argument_list|()
@@ -352,8 +352,8 @@ name|CoreValue
 argument_list|>
 name|coreValues
 parameter_list|,
-name|SessionContext
-name|sessionContext
+name|SessionDelegate
+name|sessionDelegate
 parameter_list|)
 block|{
 name|List
@@ -385,7 +385,7 @@ name|toValue
 argument_list|(
 name|cv
 argument_list|,
-name|sessionContext
+name|sessionDelegate
 argument_list|)
 argument_list|)
 expr_stmt|;

@@ -200,8 +200,8 @@ name|ItemDelegate
 block|{
 specifier|private
 specifier|final
-name|SessionContext
-name|sessionContext
+name|SessionDelegate
+name|sessionDelegate
 decl_stmt|;
 specifier|private
 name|Tree
@@ -209,8 +209,8 @@ name|tree
 decl_stmt|;
 name|NodeDelegate
 parameter_list|(
-name|SessionContext
-name|sessionContext
+name|SessionDelegate
+name|sessionDelegate
 parameter_list|,
 name|Tree
 name|tree
@@ -218,9 +218,9 @@ parameter_list|)
 block|{
 name|this
 operator|.
-name|sessionContext
+name|sessionDelegate
 operator|=
-name|sessionContext
+name|sessionDelegate
 expr_stmt|;
 name|this
 operator|.
@@ -287,7 +287,7 @@ return|return
 operator|new
 name|NodeDelegate
 argument_list|(
-name|sessionContext
+name|sessionDelegate
 argument_list|,
 name|parentState
 operator|.
@@ -365,7 +365,7 @@ return|return
 operator|new
 name|NodeDelegate
 argument_list|(
-name|sessionContext
+name|sessionDelegate
 argument_list|,
 name|ancestor
 argument_list|)
@@ -465,7 +465,7 @@ else|:
 operator|new
 name|NodeDelegate
 argument_list|(
-name|sessionContext
+name|sessionDelegate
 argument_list|,
 name|tree
 argument_list|)
@@ -503,7 +503,7 @@ return|return
 operator|new
 name|NodeDelegate
 argument_list|(
-name|sessionContext
+name|sessionDelegate
 argument_list|,
 name|getTree
 argument_list|()
@@ -629,7 +629,7 @@ else|:
 operator|new
 name|PropertyDelegate
 argument_list|(
-name|sessionContext
+name|sessionDelegate
 argument_list|,
 name|parent
 argument_list|,
@@ -637,12 +637,12 @@ name|propertyState
 argument_list|)
 return|;
 block|}
-name|SessionContext
-name|getSessionContext
+name|SessionDelegate
+name|getSessionDelegate
 parameter_list|()
 block|{
 return|return
-name|sessionContext
+name|sessionDelegate
 return|;
 block|}
 name|void
@@ -815,7 +815,7 @@ block|{
 return|return
 name|tree
 operator|=
-name|sessionContext
+name|sessionDelegate
 operator|.
 name|getTree
 argument_list|(
@@ -870,7 +870,7 @@ return|return
 operator|new
 name|NodeDelegate
 argument_list|(
-name|sessionContext
+name|sessionDelegate
 argument_list|,
 name|state
 argument_list|)
@@ -926,7 +926,7 @@ return|return
 operator|new
 name|PropertyDelegate
 argument_list|(
-name|sessionContext
+name|sessionDelegate
 argument_list|,
 name|tree
 argument_list|,

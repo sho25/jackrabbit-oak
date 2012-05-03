@@ -337,7 +337,7 @@ name|super
 argument_list|(
 name|dlg
 operator|.
-name|getSessionContext
+name|getSessionDelegate
 argument_list|()
 argument_list|,
 name|dlg
@@ -380,7 +380,7 @@ argument_list|(
 operator|new
 name|NodeDelegate
 argument_list|(
-name|sessionContext
+name|sessionDelegate
 argument_list|,
 name|dlg
 operator|.
@@ -1331,7 +1331,7 @@ operator|.
 name|getValue
 argument_list|()
 argument_list|,
-name|sessionContext
+name|sessionDelegate
 argument_list|)
 return|;
 block|}
@@ -1381,7 +1381,7 @@ operator|.
 name|getValues
 argument_list|()
 argument_list|,
-name|sessionContext
+name|sessionDelegate
 argument_list|)
 return|;
 block|}
@@ -2248,7 +2248,7 @@ name|value
 argument_list|,
 name|requiredType
 argument_list|,
-name|sessionContext
+name|sessionDelegate
 operator|.
 name|getValueFactory
 argument_list|()
@@ -2264,7 +2264,7 @@ name|toCoreValue
 argument_list|(
 name|targetValue
 argument_list|,
-name|sessionContext
+name|sessionDelegate
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -2335,7 +2335,7 @@ name|values
 argument_list|,
 name|requiredType
 argument_list|,
-name|sessionContext
+name|sessionDelegate
 operator|.
 name|getValueFactory
 argument_list|()
@@ -2351,7 +2351,7 @@ name|toCoreValues
 argument_list|(
 name|targetValues
 argument_list|,
-name|sessionContext
+name|sessionDelegate
 argument_list|)
 argument_list|)
 expr_stmt|;

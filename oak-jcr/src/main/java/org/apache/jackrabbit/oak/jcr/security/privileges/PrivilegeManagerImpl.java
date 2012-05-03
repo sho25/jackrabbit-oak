@@ -67,7 +67,7 @@ name|oak
 operator|.
 name|jcr
 operator|.
-name|SessionContext
+name|SessionDelegate
 import|;
 end_import
 
@@ -292,21 +292,21 @@ literal|"rep:contains"
 decl_stmt|;
 specifier|private
 specifier|final
-name|SessionContext
-name|sessionContext
+name|SessionDelegate
+name|sessionDelegate
 decl_stmt|;
 specifier|public
 name|PrivilegeManagerImpl
 parameter_list|(
-name|SessionContext
-name|sessionContext
+name|SessionDelegate
+name|sessionDelegate
 parameter_list|)
 block|{
 name|this
 operator|.
-name|sessionContext
+name|sessionDelegate
 operator|=
-name|sessionContext
+name|sessionDelegate
 expr_stmt|;
 comment|// TODO: add additional validation ??
 block|}
@@ -512,7 +512,7 @@ return|return
 operator|(
 name|NodeImpl
 operator|)
-name|sessionContext
+name|sessionDelegate
 operator|.
 name|getSession
 argument_list|()

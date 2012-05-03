@@ -173,7 +173,7 @@ name|oak
 operator|.
 name|jcr
 operator|.
-name|SessionContext
+name|SessionDelegate
 import|;
 end_import
 
@@ -366,8 +366,8 @@ argument_list|)
 decl_stmt|;
 specifier|private
 specifier|final
-name|SessionContext
-name|sessionContext
+name|SessionDelegate
+name|sessionDelegate
 decl_stmt|;
 specifier|private
 specifier|final
@@ -382,8 +382,8 @@ decl_stmt|;
 specifier|public
 name|UserManagerImpl
 parameter_list|(
-name|SessionContext
-name|sessionContext
+name|SessionDelegate
+name|sessionDelegate
 parameter_list|,
 name|UserManagerConfig
 name|config
@@ -391,9 +391,9 @@ parameter_list|)
 block|{
 name|this
 operator|.
-name|sessionContext
+name|sessionDelegate
 operator|=
-name|sessionContext
+name|sessionDelegate
 expr_stmt|;
 name|this
 operator|.
@@ -406,7 +406,7 @@ operator|=
 operator|new
 name|AuthorizableNodeCreator
 argument_list|(
-name|sessionContext
+name|sessionDelegate
 argument_list|)
 expr_stmt|;
 block|}
@@ -437,7 +437,7 @@ init|=
 operator|(
 name|NodeImpl
 operator|)
-name|sessionContext
+name|sessionDelegate
 operator|.
 name|getSession
 argument_list|()
@@ -494,7 +494,7 @@ block|{
 name|Session
 name|session
 init|=
-name|sessionContext
+name|sessionDelegate
 operator|.
 name|getSession
 argument_list|()
@@ -1107,7 +1107,7 @@ name|user
 argument_list|,
 name|password
 argument_list|,
-name|sessionContext
+name|sessionDelegate
 operator|.
 name|getSession
 argument_list|()
@@ -1142,7 +1142,7 @@ name|onCreate
 argument_list|(
 name|group
 argument_list|,
-name|sessionContext
+name|sessionDelegate
 operator|.
 name|getSession
 argument_list|()
@@ -1177,7 +1177,7 @@ name|onRemove
 argument_list|(
 name|authorizable
 argument_list|,
-name|sessionContext
+name|sessionDelegate
 operator|.
 name|getSession
 argument_list|()
@@ -1217,7 +1217,7 @@ name|user
 argument_list|,
 name|password
 argument_list|,
-name|sessionContext
+name|sessionDelegate
 operator|.
 name|getSession
 argument_list|()
@@ -1498,10 +1498,10 @@ name|value
 argument_list|,
 name|type
 argument_list|,
-name|sessionContext
+name|sessionDelegate
 argument_list|)
 decl_stmt|;
-name|sessionContext
+name|sessionDelegate
 operator|.
 name|getTree
 argument_list|(
@@ -1552,10 +1552,10 @@ name|values
 argument_list|,
 name|type
 argument_list|,
-name|sessionContext
+name|sessionDelegate
 argument_list|)
 decl_stmt|;
-name|sessionContext
+name|sessionDelegate
 operator|.
 name|getTree
 argument_list|(
@@ -1583,7 +1583,7 @@ name|String
 name|name
 parameter_list|)
 block|{
-name|sessionContext
+name|sessionDelegate
 operator|.
 name|getTree
 argument_list|(

@@ -144,8 +144,8 @@ name|ItemDelegate
 block|{
 specifier|private
 specifier|final
-name|SessionContext
-name|sessionContext
+name|SessionDelegate
+name|sessionDelegate
 decl_stmt|;
 specifier|private
 name|Tree
@@ -157,8 +157,8 @@ name|propertyState
 decl_stmt|;
 name|PropertyDelegate
 parameter_list|(
-name|SessionContext
-name|sessionContext
+name|SessionDelegate
+name|sessionDelegate
 parameter_list|,
 name|Tree
 name|parent
@@ -169,9 +169,9 @@ parameter_list|)
 block|{
 name|this
 operator|.
-name|sessionContext
+name|sessionDelegate
 operator|=
-name|sessionContext
+name|sessionDelegate
 expr_stmt|;
 name|this
 operator|.
@@ -529,12 +529,12 @@ name|getName
 argument_list|()
 return|;
 block|}
-name|SessionContext
-name|getSessionContext
+name|SessionDelegate
+name|getSessionDelegate
 parameter_list|()
 block|{
 return|return
-name|sessionContext
+name|sessionDelegate
 return|;
 block|}
 comment|//------------------------------------------------------------< private>---
@@ -546,7 +546,7 @@ parameter_list|()
 block|{
 name|parent
 operator|=
-name|sessionContext
+name|sessionDelegate
 operator|.
 name|getTree
 argument_list|(

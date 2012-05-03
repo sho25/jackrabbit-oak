@@ -553,7 +553,7 @@ name|super
 argument_list|(
 name|dlg
 operator|.
-name|getSessionContext
+name|getSessionDelegate
 argument_list|()
 argument_list|,
 name|dlg
@@ -777,7 +777,13 @@ comment|// TODO: figure out the right place for this check
 name|NodeTypeManager
 name|ntm
 init|=
-name|sessionContext
+name|sessionDelegate
+operator|.
+name|getSession
+argument_list|()
+operator|.
+name|getWorkspace
+argument_list|()
 operator|.
 name|getNodeTypeManager
 argument_list|()
@@ -1003,7 +1009,7 @@ name|toCoreValue
 argument_list|(
 name|targetValue
 argument_list|,
-name|sessionContext
+name|sessionDelegate
 argument_list|)
 decl_stmt|;
 return|return
@@ -1182,7 +1188,7 @@ name|toCoreValues
 argument_list|(
 name|targetValues
 argument_list|,
-name|sessionContext
+name|sessionDelegate
 argument_list|)
 decl_stmt|;
 return|return
@@ -2787,14 +2793,14 @@ comment|// TODO: might be expanded, need a better way for this
 name|String
 name|jcrName
 init|=
-name|sessionContext
+name|sessionDelegate
 operator|.
 name|getNamePathMapper
 argument_list|()
 operator|.
 name|getJcrName
 argument_list|(
-name|sessionContext
+name|sessionDelegate
 operator|.
 name|getNamePathMapper
 argument_list|()
@@ -2809,7 +2815,13 @@ comment|// TODO: figure out the right place for this check
 name|NodeTypeManager
 name|ntm
 init|=
-name|sessionContext
+name|sessionDelegate
+operator|.
+name|getSession
+argument_list|()
+operator|.
+name|getWorkspace
+argument_list|()
 operator|.
 name|getNodeTypeManager
 argument_list|()
@@ -2901,7 +2913,7 @@ comment|// TODO: figure out the right place for this check
 name|NodeTypeManager
 name|ntm
 init|=
-name|sessionContext
+name|sessionDelegate
 operator|.
 name|getNodeTypeManager
 argument_list|()
@@ -2950,7 +2962,7 @@ name|PropertyType
 operator|.
 name|NAME
 argument_list|,
-name|sessionContext
+name|sessionDelegate
 argument_list|)
 decl_stmt|;
 name|dlg
@@ -2987,7 +2999,7 @@ comment|// TODO: figure out the right place for this check
 name|NodeTypeManager
 name|ntm
 init|=
-name|sessionContext
+name|sessionDelegate
 operator|.
 name|getNodeTypeManager
 argument_list|()
@@ -3036,7 +3048,7 @@ comment|// TODO: figure out the right place for this check
 name|NodeTypeManager
 name|ntm
 init|=
-name|sessionContext
+name|sessionDelegate
 operator|.
 name|getNodeTypeManager
 argument_list|()
@@ -3255,7 +3267,7 @@ throws|throws
 name|RepositoryException
 block|{
 return|return
-name|sessionContext
+name|sessionDelegate
 operator|.
 name|getVersionManager
 argument_list|()
@@ -3277,7 +3289,7 @@ parameter_list|()
 throws|throws
 name|RepositoryException
 block|{
-name|sessionContext
+name|sessionDelegate
 operator|.
 name|getVersionManager
 argument_list|()
@@ -3302,7 +3314,7 @@ parameter_list|)
 throws|throws
 name|RepositoryException
 block|{
-name|sessionContext
+name|sessionDelegate
 operator|.
 name|getVersionManager
 argument_list|()
@@ -3329,7 +3341,7 @@ parameter_list|)
 throws|throws
 name|RepositoryException
 block|{
-name|sessionContext
+name|sessionDelegate
 operator|.
 name|getVersionManager
 argument_list|()
@@ -3360,7 +3372,7 @@ throws|throws
 name|RepositoryException
 block|{
 return|return
-name|sessionContext
+name|sessionDelegate
 operator|.
 name|getVersionManager
 argument_list|()
@@ -3387,7 +3399,7 @@ throws|throws
 name|RepositoryException
 block|{
 return|return
-name|sessionContext
+name|sessionDelegate
 operator|.
 name|getVersionManager
 argument_list|()
@@ -3415,7 +3427,7 @@ parameter_list|)
 throws|throws
 name|RepositoryException
 block|{
-name|sessionContext
+name|sessionDelegate
 operator|.
 name|getVersionManager
 argument_list|()
@@ -3447,7 +3459,7 @@ parameter_list|)
 throws|throws
 name|RepositoryException
 block|{
-name|sessionContext
+name|sessionDelegate
 operator|.
 name|getVersionManager
 argument_list|()
@@ -3523,7 +3535,7 @@ parameter_list|)
 throws|throws
 name|RepositoryException
 block|{
-name|sessionContext
+name|sessionDelegate
 operator|.
 name|getVersionManager
 argument_list|()
@@ -3550,7 +3562,7 @@ throws|throws
 name|RepositoryException
 block|{
 return|return
-name|sessionContext
+name|sessionDelegate
 operator|.
 name|getVersionManager
 argument_list|()
@@ -3573,7 +3585,7 @@ throws|throws
 name|RepositoryException
 block|{
 return|return
-name|sessionContext
+name|sessionDelegate
 operator|.
 name|getVersionManager
 argument_list|()
@@ -3602,7 +3614,7 @@ throws|throws
 name|RepositoryException
 block|{
 return|return
-name|sessionContext
+name|sessionDelegate
 operator|.
 name|getLockManager
 argument_list|()
@@ -3635,7 +3647,7 @@ throws|throws
 name|RepositoryException
 block|{
 return|return
-name|sessionContext
+name|sessionDelegate
 operator|.
 name|getLockManager
 argument_list|()
@@ -3657,7 +3669,7 @@ parameter_list|()
 throws|throws
 name|RepositoryException
 block|{
-name|sessionContext
+name|sessionDelegate
 operator|.
 name|getLockManager
 argument_list|()
@@ -3680,7 +3692,7 @@ throws|throws
 name|RepositoryException
 block|{
 return|return
-name|sessionContext
+name|sessionDelegate
 operator|.
 name|getLockManager
 argument_list|()
@@ -3703,7 +3715,7 @@ throws|throws
 name|RepositoryException
 block|{
 return|return
-name|sessionContext
+name|sessionDelegate
 operator|.
 name|getLockManager
 argument_list|()

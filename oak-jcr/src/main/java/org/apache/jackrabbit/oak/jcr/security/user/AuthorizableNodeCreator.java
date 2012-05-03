@@ -49,7 +49,7 @@ name|oak
 operator|.
 name|jcr
 operator|.
-name|SessionContext
+name|SessionDelegate
 import|;
 end_import
 
@@ -99,8 +99,8 @@ argument_list|)
 decl_stmt|;
 name|AuthorizableNodeCreator
 parameter_list|(
-name|SessionContext
-name|sessionContext
+name|SessionDelegate
+name|sessionDelegate
 parameter_list|)
 block|{
 comment|// TODO

@@ -110,8 +110,8 @@ name|Item
 block|{
 specifier|protected
 specifier|final
-name|SessionContext
-name|sessionContext
+name|SessionDelegate
+name|sessionDelegate
 decl_stmt|;
 specifier|protected
 specifier|final
@@ -137,8 +137,8 @@ decl_stmt|;
 specifier|protected
 name|ItemImpl
 parameter_list|(
-name|SessionContext
-name|sessionContext
+name|SessionDelegate
+name|sessionDelegate
 parameter_list|,
 name|ItemDelegate
 name|itemDelegate
@@ -146,9 +146,9 @@ parameter_list|)
 block|{
 name|this
 operator|.
-name|sessionContext
+name|sessionDelegate
 operator|=
-name|sessionContext
+name|sessionDelegate
 expr_stmt|;
 name|this
 operator|.
@@ -241,7 +241,7 @@ throws|throws
 name|RepositoryException
 block|{
 return|return
-name|sessionContext
+name|sessionDelegate
 operator|.
 name|getSession
 argument_list|()
@@ -481,14 +481,23 @@ throws|throws
 name|RepositoryException
 block|{
 comment|// check session status
-name|sessionContext
+if|if
+condition|(
+operator|!
+name|sessionDelegate
 operator|.
-name|getSession
+name|isAlive
 argument_list|()
-operator|.
-name|ensureIsAlive
-argument_list|()
-expr_stmt|;
+condition|)
+block|{
+throw|throw
+operator|new
+name|RepositoryException
+argument_list|(
+literal|"This session has been closed."
+argument_list|)
+throw|;
+block|}
 comment|// TODO: validate item state.
 block|}
 comment|/**      * Ensure that the associated session has no pending changes and throw an      * exception otherwise.      *      * @throws InvalidItemStateException if this nodes session has pending changes      * @throws RepositoryException      */
@@ -498,14 +507,35 @@ parameter_list|()
 throws|throws
 name|RepositoryException
 block|{
-name|sessionContext
+comment|// check for pending changes
+if|if
+condition|(
+name|sessionDelegate
 operator|.
-name|getSession
+name|hasPendingChanges
 argument_list|()
+condition|)
+block|{
+name|String
+name|msg
+init|=
+literal|"Unable to perform operation. Session has pending changes."
+decl_stmt|;
+name|log
 operator|.
-name|ensureNoPendingChanges
-argument_list|()
+name|debug
+argument_list|(
+name|msg
+argument_list|)
 expr_stmt|;
+throw|throw
+operator|new
+name|InvalidItemStateException
+argument_list|(
+name|msg
+argument_list|)
+throw|;
+block|}
 block|}
 comment|/**      * Returns the value factory associated with the editing session.      *      * @return the value factory      */
 name|ValueFactory
@@ -513,7 +543,7 @@ name|getValueFactory
 parameter_list|()
 block|{
 return|return
-name|sessionContext
+name|sessionDelegate
 operator|.
 name|getValueFactory
 argument_list|()
@@ -531,7 +561,7 @@ block|{
 try|try
 block|{
 return|return
-name|sessionContext
+name|sessionDelegate
 operator|.
 name|getNamePathMapper
 argument_list|()
@@ -566,7 +596,7 @@ name|oakPath
 parameter_list|)
 block|{
 return|return
-name|sessionContext
+name|sessionDelegate
 operator|.
 name|getNamePathMapper
 argument_list|()

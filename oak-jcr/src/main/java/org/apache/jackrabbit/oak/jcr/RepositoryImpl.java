@@ -232,8 +232,6 @@ comment|/**      * Utility constructor that creates a new in-memory repository f
 specifier|public
 name|RepositoryImpl
 parameter_list|()
-throws|throws
-name|RepositoryException
 block|{
 name|this
 argument_list|(
@@ -440,12 +438,15 @@ argument_list|)
 decl_stmt|;
 return|return
 operator|new
-name|SessionImpl
+name|SessionDelegate
 argument_list|(
 name|context
 argument_list|,
 name|contentSession
 argument_list|)
+operator|.
+name|getSession
+argument_list|()
 return|;
 block|}
 catch|catch
