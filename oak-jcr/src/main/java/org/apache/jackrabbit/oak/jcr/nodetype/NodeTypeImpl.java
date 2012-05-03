@@ -294,7 +294,7 @@ name|compile
 argument_list|(
 literal|"  ([\\+\\-]) (\\S+) \\((\\S+?)\\)( = (\\S+))?"
 operator|+
-literal|"(( (mandatory|autocreated|protected|multiple))*)"
+literal|"(( (mandatory|autocreated|protected|multiple|sns))*)"
 operator|+
 literal|"( ([A-Z]+))?(.*)"
 argument_list|)
@@ -453,7 +453,7 @@ name|matcher
 operator|.
 name|group
 argument_list|(
-literal|7
+literal|6
 argument_list|)
 operator|!=
 literal|null
@@ -466,7 +466,7 @@ name|matcher
 operator|.
 name|group
 argument_list|(
-literal|8
+literal|7
 argument_list|)
 expr_stmt|;
 name|String
@@ -665,6 +665,21 @@ argument_list|(
 literal|" multiple"
 argument_list|)
 decl_stmt|;
+name|boolean
+name|allowSNS
+init|=
+name|matcher
+operator|.
+name|group
+argument_list|(
+literal|6
+argument_list|)
+operator|.
+name|contains
+argument_list|(
+literal|" sns"
+argument_list|)
+decl_stmt|;
 name|int
 name|onParentVersionAction
 init|=
@@ -751,7 +766,7 @@ argument_list|(
 literal|5
 argument_list|)
 argument_list|,
-literal|false
+name|allowSNS
 argument_list|)
 argument_list|)
 expr_stmt|;
