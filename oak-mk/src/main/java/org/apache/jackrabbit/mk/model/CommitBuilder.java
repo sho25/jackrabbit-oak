@@ -3525,15 +3525,15 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|srcCNE
+name|staged
 operator|.
-name|getId
-argument_list|()
-operator|==
-literal|null
+name|containsKey
+argument_list|(
+name|srcPath
+argument_list|)
 condition|)
 block|{
-comment|// a 'new' node is being copied
+comment|// the copied subtree is modified
 comment|// update staging area
 name|copyStagedNodes
 argument_list|(
