@@ -129,16 +129,6 @@ name|javax
 operator|.
 name|jcr
 operator|.
-name|InvalidItemStateException
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|jcr
-operator|.
 name|Node
 import|;
 end_import
@@ -721,8 +711,7 @@ parameter_list|)
 block|{
 try|try
 block|{
-name|getWorkspace
-argument_list|()
+name|dlg
 operator|.
 name|getLockManager
 argument_list|()
@@ -767,8 +756,7 @@ block|{
 try|try
 block|{
 return|return
-name|getWorkspace
-argument_list|()
+name|dlg
 operator|.
 name|getLockManager
 argument_list|()
@@ -817,8 +805,7 @@ parameter_list|)
 block|{
 try|try
 block|{
-name|getWorkspace
-argument_list|()
+name|dlg
 operator|.
 name|getLockManager
 argument_list|()
@@ -1051,8 +1038,9 @@ literal|"Implementation missing"
 argument_list|)
 throw|;
 block|}
-comment|//--------------------------------------------------------------------------
+comment|//------------------------------------------------------------< private>---
 comment|/**      * Ensure that this session is alive and throw an exception otherwise.      *      * @throws RepositoryException if this session has been rendered invalid      * for some reason (e.g. if this session has been closed explicitly by logout)      */
+specifier|private
 name|void
 name|ensureIsAlive
 parameter_list|()
@@ -1074,110 +1062,6 @@ operator|new
 name|RepositoryException
 argument_list|(
 literal|"This session has been closed."
-argument_list|)
-throw|;
-block|}
-block|}
-comment|/**      * Returns true if the repository supports the given option. False otherwise.      *      * @param option Any of the option constants defined by {@link Repository}      * that either returns 'true' or 'false'. I.e.      *<ul>      *<li>{@link Repository#LEVEL_1_SUPPORTED}</li>      *<li>{@link Repository#LEVEL_2_SUPPORTED}</li>      *<li>{@link Repository#OPTION_ACCESS_CONTROL_SUPPORTED}</li>      *<li>{@link Repository#OPTION_ACTIVITIES_SUPPORTED}</li>      *<li>{@link Repository#OPTION_BASELINES_SUPPORTED}</li>      *<li>{@link Repository#OPTION_JOURNALED_OBSERVATION_SUPPORTED}</li>      *<li>{@link Repository#OPTION_LIFECYCLE_SUPPORTED}</li>      *<li>{@link Repository#OPTION_LOCKING_SUPPORTED}</li>      *<li>{@link Repository#OPTION_NODE_AND_PROPERTY_WITH_SAME_NAME_SUPPORTED}</li>      *<li>{@link Repository#OPTION_NODE_TYPE_MANAGEMENT_SUPPORTED}</li>      *<li>{@link Repository#OPTION_OBSERVATION_SUPPORTED}</li>      *<li>{@link Repository#OPTION_QUERY_SQL_SUPPORTED}</li>      *<li>{@link Repository#OPTION_RETENTION_SUPPORTED}</li>      *<li>{@link Repository#OPTION_SHAREABLE_NODES_SUPPORTED}</li>      *<li>{@link Repository#OPTION_SIMPLE_VERSIONING_SUPPORTED}</li>      *<li>{@link Repository#OPTION_TRANSACTIONS_SUPPORTED}</li>      *<li>{@link Repository#OPTION_UNFILED_CONTENT_SUPPORTED}</li>      *<li>{@link Repository#OPTION_UPDATE_MIXIN_NODE_TYPES_SUPPORTED}</li>      *<li>{@link Repository#OPTION_UPDATE_PRIMARY_NODE_TYPE_SUPPORTED}</li>      *<li>{@link Repository#OPTION_VERSIONING_SUPPORTED}</li>      *<li>{@link Repository#OPTION_WORKSPACE_MANAGEMENT_SUPPORTED}</li>      *<li>{@link Repository#OPTION_XML_EXPORT_SUPPORTED}</li>      *<li>{@link Repository#OPTION_XML_IMPORT_SUPPORTED}</li>      *<li>{@link Repository#WRITE_SUPPORTED}</li>      *</ul>      * @return true if the repository supports the given option. False otherwise.      */
-name|boolean
-name|isSupportedOption
-parameter_list|(
-name|String
-name|option
-parameter_list|)
-block|{
-name|String
-name|desc
-init|=
-name|getRepository
-argument_list|()
-operator|.
-name|getDescriptor
-argument_list|(
-name|option
-argument_list|)
-decl_stmt|;
-comment|// if the descriptors are not available return true. the missing
-comment|// functionality of the given SPI impl will in this case be detected
-comment|// upon the corresponding SPI call (see JCR-3143).
-return|return
-operator|(
-name|desc
-operator|==
-literal|null
-operator|)
-condition|?
-literal|true
-else|:
-name|Boolean
-operator|.
-name|valueOf
-argument_list|(
-name|desc
-argument_list|)
-return|;
-block|}
-comment|/**      * Make sure the repository supports the option indicated by the given string      * and throw an exception otherwise.      *      * @param option Any of the option constants defined by {@link Repository}      * that either returns 'true' or 'false'. I.e.      *<ul>      *<li>{@link Repository#LEVEL_1_SUPPORTED}</li>      *<li>{@link Repository#LEVEL_2_SUPPORTED}</li>      *<li>{@link Repository#OPTION_ACCESS_CONTROL_SUPPORTED}</li>      *<li>{@link Repository#OPTION_ACTIVITIES_SUPPORTED}</li>      *<li>{@link Repository#OPTION_BASELINES_SUPPORTED}</li>      *<li>{@link Repository#OPTION_JOURNALED_OBSERVATION_SUPPORTED}</li>      *<li>{@link Repository#OPTION_LIFECYCLE_SUPPORTED}</li>      *<li>{@link Repository#OPTION_LOCKING_SUPPORTED}</li>      *<li>{@link Repository#OPTION_NODE_AND_PROPERTY_WITH_SAME_NAME_SUPPORTED}</li>      *<li>{@link Repository#OPTION_NODE_TYPE_MANAGEMENT_SUPPORTED}</li>      *<li>{@link Repository#OPTION_OBSERVATION_SUPPORTED}</li>      *<li>{@link Repository#OPTION_QUERY_SQL_SUPPORTED}</li>      *<li>{@link Repository#OPTION_RETENTION_SUPPORTED}</li>      *<li>{@link Repository#OPTION_SHAREABLE_NODES_SUPPORTED}</li>      *<li>{@link Repository#OPTION_SIMPLE_VERSIONING_SUPPORTED}</li>      *<li>{@link Repository#OPTION_TRANSACTIONS_SUPPORTED}</li>      *<li>{@link Repository#OPTION_UNFILED_CONTENT_SUPPORTED}</li>      *<li>{@link Repository#OPTION_UPDATE_MIXIN_NODE_TYPES_SUPPORTED}</li>      *<li>{@link Repository#OPTION_UPDATE_PRIMARY_NODE_TYPE_SUPPORTED}</li>      *<li>{@link Repository#OPTION_VERSIONING_SUPPORTED}</li>      *<li>{@link Repository#OPTION_WORKSPACE_MANAGEMENT_SUPPORTED}</li>      *<li>{@link Repository#OPTION_XML_EXPORT_SUPPORTED}</li>      *<li>{@link Repository#OPTION_XML_IMPORT_SUPPORTED}</li>      *<li>{@link Repository#WRITE_SUPPORTED}</li>      *</ul>      * @throws UnsupportedRepositoryOperationException If the given option is      * not supported.      * @throws RepositoryException If another error occurs.      * @see javax.jcr.Repository#getDescriptorKeys()      */
-name|void
-name|ensureSupportsOption
-parameter_list|(
-name|String
-name|option
-parameter_list|)
-throws|throws
-name|RepositoryException
-block|{
-if|if
-condition|(
-operator|!
-name|isSupportedOption
-argument_list|(
-name|option
-argument_list|)
-condition|)
-block|{
-throw|throw
-operator|new
-name|UnsupportedRepositoryOperationException
-argument_list|(
-name|option
-operator|+
-literal|" is not supported by this repository."
-argument_list|)
-throw|;
-block|}
-block|}
-comment|/**      * Ensure that this session has no pending changes and throw an exception      * otherwise.      *      * @throws InvalidItemStateException if this nodes session has pending changes      * @throws RepositoryException      */
-name|void
-name|ensureNoPendingChanges
-parameter_list|()
-throws|throws
-name|RepositoryException
-block|{
-comment|// check for pending changes
-if|if
-condition|(
-name|hasPendingChanges
-argument_list|()
-condition|)
-block|{
-name|String
-name|msg
-init|=
-literal|"Unable to perform operation. Session has pending changes."
-decl_stmt|;
-name|log
-operator|.
-name|debug
-argument_list|(
-name|msg
-argument_list|)
-expr_stmt|;
-throw|throw
-operator|new
-name|InvalidItemStateException
-argument_list|(
-name|msg
 argument_list|)
 throw|;
 block|}
