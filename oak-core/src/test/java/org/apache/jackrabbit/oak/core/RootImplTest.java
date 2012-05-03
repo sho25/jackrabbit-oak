@@ -1642,12 +1642,6 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-annotation|@
-name|Ignore
-argument_list|(
-literal|"OAK-79"
-argument_list|)
-comment|// TODO depends on OAK-79
 specifier|public
 name|void
 name|deepCopy
