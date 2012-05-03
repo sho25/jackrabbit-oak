@@ -2051,6 +2051,7 @@ name|isArray
 argument_list|()
 return|;
 block|}
+comment|//------------------------------------------------------------< private>---
 comment|/**      * Return the length of the specified JCR value object.      *      * @param value The value.      * @return The length of the given value.      * @throws RepositoryException If an error occurs.      */
 specifier|private
 specifier|static
@@ -2317,6 +2318,8 @@ operator|==
 literal|null
 condition|)
 block|{
+name|dlg
+operator|.
 name|remove
 argument_list|()
 expr_stmt|;
