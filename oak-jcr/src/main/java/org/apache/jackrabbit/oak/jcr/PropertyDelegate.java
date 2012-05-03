@@ -385,7 +385,7 @@ parameter_list|()
 throws|throws
 name|RepositoryException
 block|{
-name|getParentContentTree
+name|getParentTree
 argument_list|()
 operator|.
 name|removeProperty
@@ -404,7 +404,7 @@ parameter_list|)
 throws|throws
 name|RepositoryException
 block|{
-name|getParentContentTree
+name|getParentTree
 argument_list|()
 operator|.
 name|setProperty
@@ -428,7 +428,7 @@ parameter_list|)
 throws|throws
 name|RepositoryException
 block|{
-name|getParentContentTree
+name|getParentTree
 argument_list|()
 operator|.
 name|setProperty
@@ -441,7 +441,7 @@ argument_list|)
 expr_stmt|;
 block|}
 name|Tree
-name|getParentContentTree
+name|getParentTree
 parameter_list|()
 block|{
 name|resolve
@@ -469,7 +469,7 @@ name|getPropertyStatus
 parameter_list|()
 block|{
 return|return
-name|getParentContentTree
+name|getParentTree
 argument_list|()
 operator|.
 name|getPropertyStatus
@@ -502,7 +502,7 @@ block|{
 name|String
 name|parentPath
 init|=
-name|getParentContentTree
+name|getParentTree
 argument_list|()
 operator|.
 name|getPath
@@ -514,16 +514,16 @@ operator|.
 name|isEmpty
 argument_list|()
 condition|?
-literal|"/"
+literal|'/'
 operator|+
 name|getName
 argument_list|()
 else|:
-literal|"/"
+literal|'/'
 operator|+
 name|parentPath
 operator|+
-literal|"/"
+literal|'/'
 operator|+
 name|getName
 argument_list|()
