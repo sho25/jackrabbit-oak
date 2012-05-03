@@ -431,6 +431,7 @@ literal|null
 decl_stmt|;
 try|try
 block|{
+comment|// FIXME use NodeDelegate instead od NodeImpl
 name|NodeImpl
 name|node
 init|=

@@ -327,6 +327,7 @@ specifier|final
 name|NodeImpl
 name|node
 decl_stmt|;
+comment|// FIXME use NodeDelegate instead of NodeImpl
 specifier|private
 specifier|final
 name|UserManagerImpl
@@ -1207,28 +1208,12 @@ else|:
 literal|"User '"
 decl_stmt|;
 return|return
-operator|new
-name|StringBuilder
-argument_list|()
-operator|.
-name|append
-argument_list|(
 name|typeStr
-argument_list|)
-operator|.
-name|append
-argument_list|(
+operator|+
 name|getID
 argument_list|()
-argument_list|)
-operator|.
-name|append
-argument_list|(
+operator|+
 literal|'\''
-argument_list|)
-operator|.
-name|toString
-argument_list|()
 return|;
 block|}
 catch|catch

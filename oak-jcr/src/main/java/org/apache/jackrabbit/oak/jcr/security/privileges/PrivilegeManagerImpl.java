@@ -508,6 +508,7 @@ parameter_list|()
 throws|throws
 name|RepositoryException
 block|{
+comment|// FIXME use NodeDelegate instead of NodeImpl
 return|return
 operator|(
 name|NodeImpl
