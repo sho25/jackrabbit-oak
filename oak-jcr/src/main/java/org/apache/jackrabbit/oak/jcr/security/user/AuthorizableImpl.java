@@ -87,7 +87,11 @@ name|oak
 operator|.
 name|jcr
 operator|.
-name|NodeImpl
+name|security
+operator|.
+name|principal
+operator|.
+name|EveryonePrincipal
 import|;
 end_import
 
@@ -324,10 +328,9 @@ literal|"rep:impersonators"
 decl_stmt|;
 specifier|private
 specifier|final
-name|NodeImpl
+name|Node
 name|node
 decl_stmt|;
-comment|// FIXME use NodeDelegate instead of NodeImpl
 specifier|private
 specifier|final
 name|UserManagerImpl
@@ -339,13 +342,20 @@ name|hashCode
 decl_stmt|;
 name|AuthorizableImpl
 parameter_list|(
-name|NodeImpl
+name|Node
 name|node
 parameter_list|,
 name|UserManagerImpl
 name|userManager
 parameter_list|)
+throws|throws
+name|RepositoryException
 block|{
+name|checkValidNode
+argument_list|(
+name|node
+argument_list|)
+expr_stmt|;
 name|this
 operator|.
 name|node
@@ -359,7 +369,32 @@ operator|=
 name|userManager
 expr_stmt|;
 block|}
+specifier|abstract
+name|void
+name|checkValidNode
+parameter_list|(
+name|Node
+name|node
+parameter_list|)
+throws|throws
+name|RepositoryException
+function_decl|;
+specifier|static
+name|boolean
+name|isValidAuthorizableImpl
+parameter_list|(
+name|Authorizable
+name|authorizable
+parameter_list|)
+block|{
+return|return
+name|authorizable
+operator|instanceof
+name|AuthorizableImpl
+return|;
+block|}
 comment|//-------------------------------------------------------< Authorizable>---
+comment|/**      * @see org.apache.jackrabbit.api.security.user.Authorizable#getID()      */
 annotation|@
 name|Override
 specifier|public
@@ -369,11 +404,20 @@ parameter_list|()
 throws|throws
 name|RepositoryException
 block|{
-comment|// TODO
 return|return
-literal|null
+name|Text
+operator|.
+name|unescapeIllegalJcrChars
+argument_list|(
+name|getNode
+argument_list|()
+operator|.
+name|getName
+argument_list|()
+argument_list|)
 return|;
 block|}
+comment|/**      * @see Authorizable#declaredMemberOf()      */
 annotation|@
 name|Override
 specifier|public
@@ -386,11 +430,14 @@ parameter_list|()
 throws|throws
 name|RepositoryException
 block|{
-comment|// TODO
 return|return
-literal|null
+name|collectMembership
+argument_list|(
+literal|false
+argument_list|)
 return|;
 block|}
+comment|/**      * @see Authorizable#memberOf()      */
 annotation|@
 name|Override
 specifier|public
@@ -403,9 +450,11 @@ parameter_list|()
 throws|throws
 name|RepositoryException
 block|{
-comment|// TODO
 return|return
-literal|null
+name|collectMembership
+argument_list|(
+literal|true
+argument_list|)
 return|;
 block|}
 comment|/**      * @see org.apache.jackrabbit.api.security.user.Authorizable#remove()      */
@@ -1208,12 +1257,28 @@ else|:
 literal|"User '"
 decl_stmt|;
 return|return
+operator|new
+name|StringBuilder
+argument_list|()
+operator|.
+name|append
+argument_list|(
 name|typeStr
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 name|getID
 argument_list|()
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 literal|'\''
+argument_list|)
+operator|.
+name|toString
+argument_list|()
 return|;
 block|}
 catch|catch
@@ -1232,7 +1297,7 @@ block|}
 block|}
 comment|//--------------------------------------------------------------------------
 comment|/**      * @return The node associated with this authorizable instance.      */
-name|NodeImpl
+name|Node
 name|getNode
 parameter_list|()
 block|{
@@ -1299,6 +1364,28 @@ expr_stmt|;
 block|}
 return|return
 name|principalName
+return|;
+block|}
+comment|/**      *      * @return      * @throws RepositoryException      */
+name|boolean
+name|isEveryone
+parameter_list|()
+throws|throws
+name|RepositoryException
+block|{
+return|return
+name|isGroup
+argument_list|()
+operator|&&
+name|EveryonePrincipal
+operator|.
+name|NAME
+operator|.
+name|equals
+argument_list|(
+name|getPrincipalName
+argument_list|()
+argument_list|)
 return|;
 block|}
 comment|/**      * Returns true if the given property of the authorizable node is one of the      * non-protected properties defined by the rep:Authorizable node type or a      * some other descendant of the authorizable node.      *      * @param prop Property to be tested.      * @param verifyAncestor If true the property is tested to be a descendant      * of the node of this authorizable; otherwise it is expected that this      * test has been executed by the caller.      * @return {@code true} if the given property is defined      * by the rep:authorizable node type or one of it's sub-node types;      * {@code false} otherwise.      * @throws RepositoryException If the property definition cannot be retrieved.      */
@@ -1587,6 +1674,53 @@ block|}
 return|return
 name|n
 return|;
+block|}
+specifier|private
+name|Iterator
+argument_list|<
+name|Group
+argument_list|>
+name|collectMembership
+parameter_list|(
+name|boolean
+name|includeIndirect
+parameter_list|)
+throws|throws
+name|RepositoryException
+block|{
+name|MembershipManager
+name|membershipManager
+init|=
+name|userManager
+operator|.
+name|getMembershipManager
+argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|includeIndirect
+condition|)
+block|{
+return|return
+name|membershipManager
+operator|.
+name|getMembership
+argument_list|(
+name|this
+argument_list|)
+return|;
+block|}
+else|else
+block|{
+return|return
+name|membershipManager
+operator|.
+name|getDeclaredMembership
+argument_list|(
+name|this
+argument_list|)
+return|;
+block|}
 block|}
 block|}
 end_class
