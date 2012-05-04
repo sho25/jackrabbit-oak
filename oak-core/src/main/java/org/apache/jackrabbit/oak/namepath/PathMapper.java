@@ -27,14 +27,14 @@ interface|interface
 name|PathMapper
 block|{
 name|String
-name|toOakPath
+name|getOakPath
 parameter_list|(
 name|String
 name|jcrPath
 parameter_list|)
 function_decl|;
 name|String
-name|toJcrPath
+name|getJcrPath
 parameter_list|(
 name|String
 name|oakPath

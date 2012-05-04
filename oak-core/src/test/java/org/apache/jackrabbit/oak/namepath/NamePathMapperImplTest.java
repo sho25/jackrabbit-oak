@@ -148,7 +148,7 @@ literal|']'
 decl_stmt|;
 name|npMapper
 operator|.
-name|toOakPath
+name|getOakPath
 argument_list|(
 name|idPath
 argument_list|)
@@ -217,7 +217,7 @@ try|try
 block|{
 name|npMapper
 operator|.
-name|toOakPath
+name|getOakPath
 argument_list|(
 name|jcrPath
 argument_list|)
@@ -251,7 +251,7 @@ literal|"/"
 argument_list|,
 name|npMapper
 operator|.
-name|toOakPath
+name|getOakPath
 argument_list|(
 literal|"/"
 argument_list|)
@@ -263,7 +263,7 @@ literal|"foo"
 argument_list|,
 name|npMapper
 operator|.
-name|toOakPath
+name|getOakPath
 argument_list|(
 literal|"{}foo"
 argument_list|)
@@ -275,7 +275,7 @@ literal|"/oak-foo:bar"
 argument_list|,
 name|npMapper
 operator|.
-name|toOakPath
+name|getOakPath
 argument_list|(
 literal|"/foo:bar"
 argument_list|)
@@ -287,7 +287,7 @@ literal|"/oak-foo:bar/oak-quu:qux"
 argument_list|,
 name|npMapper
 operator|.
-name|toOakPath
+name|getOakPath
 argument_list|(
 literal|"/foo:bar/quu:qux"
 argument_list|)
@@ -299,7 +299,7 @@ literal|"oak-foo:bar"
 argument_list|,
 name|npMapper
 operator|.
-name|toOakPath
+name|getOakPath
 argument_list|(
 literal|"foo:bar"
 argument_list|)
@@ -311,7 +311,7 @@ literal|"oak-nt:unstructured"
 argument_list|,
 name|npMapper
 operator|.
-name|toOakPath
+name|getOakPath
 argument_list|(
 literal|"{http://www.jcp.org/jcr/nt/1.0}unstructured"
 argument_list|)
@@ -323,7 +323,7 @@ literal|"foobar/oak-jcr:content"
 argument_list|,
 name|npMapper
 operator|.
-name|toOakPath
+name|getOakPath
 argument_list|(
 literal|"foobar/{http://www.jcp.org/jcr/1.0}content"
 argument_list|)
@@ -343,7 +343,7 @@ literal|"/jcr-foo:bar"
 argument_list|,
 name|npMapper
 operator|.
-name|toJcrPath
+name|getJcrPath
 argument_list|(
 literal|"/foo:bar"
 argument_list|)
@@ -355,7 +355,7 @@ literal|"/jcr-foo:bar/jcr-quu:qux"
 argument_list|,
 name|npMapper
 operator|.
-name|toJcrPath
+name|getJcrPath
 argument_list|(
 literal|"/foo:bar/quu:qux"
 argument_list|)
@@ -367,7 +367,7 @@ literal|"jcr-foo:bar"
 argument_list|,
 name|npMapper
 operator|.
-name|toJcrPath
+name|getJcrPath
 argument_list|(
 literal|"foo:bar"
 argument_list|)
@@ -377,7 +377,7 @@ try|try
 block|{
 name|npMapper
 operator|.
-name|toJcrPath
+name|getJcrPath
 argument_list|(
 literal|"{http://www.jcp.org/jcr/nt/1.0}unstructured"
 argument_list|)
@@ -398,7 +398,7 @@ try|try
 block|{
 name|npMapper
 operator|.
-name|toJcrPath
+name|getJcrPath
 argument_list|(
 literal|"foobar/{http://www.jcp.org/jcr/1.0}content"
 argument_list|)

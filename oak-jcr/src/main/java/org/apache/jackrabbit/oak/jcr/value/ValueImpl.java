@@ -620,7 +620,7 @@ case|:
 return|return
 name|namePathMapper
 operator|.
-name|toJcrPath
+name|getJcrPath
 argument_list|(
 name|value
 operator|.

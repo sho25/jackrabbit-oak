@@ -723,7 +723,7 @@ name|oakPath
 init|=
 name|namePathMapper
 operator|.
-name|toOakPath
+name|getOakPath
 argument_list|(
 name|value
 argument_list|)

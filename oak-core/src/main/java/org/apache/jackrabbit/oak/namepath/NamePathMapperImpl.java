@@ -147,7 +147,7 @@ annotation|@
 name|Override
 specifier|public
 name|String
-name|toOakPath
+name|getOakPath
 parameter_list|(
 name|String
 name|jcrPath
@@ -466,7 +466,7 @@ annotation|@
 name|Override
 specifier|public
 name|String
-name|toJcrPath
+name|getJcrPath
 parameter_list|(
 name|String
 name|oakPath

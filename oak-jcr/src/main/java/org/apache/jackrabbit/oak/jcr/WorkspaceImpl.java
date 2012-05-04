@@ -1086,7 +1086,7 @@ operator|.
 name|getNamePathMapper
 argument_list|()
 operator|.
-name|toOakPath
+name|getOakPath
 argument_list|(
 name|jcrPath
 argument_list|)

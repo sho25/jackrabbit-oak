@@ -962,7 +962,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|//-------------------------------------------< SessionNamespaceResolver>---
+comment|//--------------------------------------------------< SessionNameMapper>---
 specifier|private
 class|class
 name|SessionNameMapper
