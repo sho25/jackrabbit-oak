@@ -3517,6 +3517,28 @@ name|srcPath
 argument_list|)
 throw|;
 block|}
+if|if
+condition|(
+name|staged
+operator|.
+name|containsKey
+argument_list|(
+name|srcPath
+argument_list|)
+condition|)
+block|{
+comment|// the copied subtree is modified
+comment|// update staging area
+name|copyStagedNodes
+argument_list|(
+name|srcPath
+argument_list|,
+name|destPath
+argument_list|,
+name|destPath
+argument_list|)
+expr_stmt|;
+block|}
 name|MutableNode
 name|destParent
 init|=
@@ -3541,28 +3563,6 @@ argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|staged
-operator|.
-name|containsKey
-argument_list|(
-name|srcPath
-argument_list|)
-condition|)
-block|{
-comment|// the copied subtree is modified
-comment|// update staging area
-name|copyStagedNodes
-argument_list|(
-name|srcPath
-argument_list|,
-name|destPath
-argument_list|,
-name|destPath
-argument_list|)
-expr_stmt|;
-block|}
 block|}
 annotation|@
 name|Override
