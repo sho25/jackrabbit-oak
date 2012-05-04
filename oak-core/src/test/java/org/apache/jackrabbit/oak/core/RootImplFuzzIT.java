@@ -1478,11 +1478,6 @@ argument_list|()
 else|:
 literal|null
 expr_stmt|;
-name|op
-operator|=
-literal|null
-expr_stmt|;
-comment|// FIXME: depends on OAK-83
 break|break;
 case|case
 literal|6
