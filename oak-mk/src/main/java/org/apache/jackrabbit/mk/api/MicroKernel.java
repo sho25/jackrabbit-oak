@@ -49,7 +49,7 @@ parameter_list|()
 throws|throws
 name|MicroKernelException
 function_decl|;
-comment|/**      * Returns a list of all currently available (historical) head revisions in      * chronological order since a specific point.<i>Private</i> branch      * revisions won't be included in the result.      *<p/>      * Format:      *<pre>      * [      *   {      *     "id" : "&lt;revisionId&gt;",      *     "ts" :&lt;revisionTimestamp&gt;,      *     "msg" : "&lt;commitMessage&gt;"      *   },      *   ...      * ]      *</pre>      * The {@code path} parameter allows to filter the revisions by path, i.e.      * only those revisions that affected the subtree rooted at {@code path}      * will be included.      *      * @param since      timestamp (ms) of earliest revision to be returned      * @param maxEntries maximum #entries to be returned;      *                   if< 0, no limit will be applied.      * @param path       optional path filter; if {@code null} or {@code ""} the      *                   default ({@code"/"}) will be assumed, i.e. no filter      *                   will be applied      * @return a list of revisions in chronological order in JSON format.      * @throws MicroKernelException if an error occurs      */
+comment|/**      * Returns a list of all currently available (historical) head revisions in      * chronological order since a specific point.<i>Private</i> branch      * revisions won't be included in the result.      *<p/>      * Format:      *<pre>      * [      *   {      *     "id" : "&lt;revisionId&gt;",      *     "ts" :&lt;revisionTimestamp&gt;,      *     "msg" : "&lt;commitMessage&gt;"      *   },      *   ...      * ]      *</pre>      *      * @param since      timestamp (ms) of earliest revision to be returned      * @param maxEntries maximum #entries to be returned;      *                   if< 0, no limit will be applied.      * @return a list of revisions in chronological order in JSON format.      * @throws MicroKernelException if an error occurs      */
 name|String
 comment|/* jsonArray */
 name|getRevisionHistory
@@ -59,7 +59,6 @@ name|since
 parameter_list|,
 name|int
 name|maxEntries
-comment|/*, String path*/
 parameter_list|)
 throws|throws
 name|MicroKernelException
@@ -79,7 +78,7 @@ name|MicroKernelException
 throws|,
 name|InterruptedException
 function_decl|;
-comment|/**      * Returns a revision journal, starting with {@code fromRevisionId}      * and ending with {@code toRevisionId} in chronological order.      *<p/>      * Format:      *<pre>      * [      *   {      *     "id" : "&lt;revisionId&gt;",      *     "ts" :&lt;revisionTimestamp&gt;,      *     "msg" : "&lt;commitMessage&gt;",      *     "changes" : "&lt;JSON diff&gt;"      *   },      *   ...      * ]      *</pre>      * If {@code fromRevisionId} and {@code toRevisionId} are not in chronological      * order the returned journal will be empty (i.e. {@code []})      *<p/>      * The {@code path} parameter allows to filter the revisions by path, i.e.      * only those revisions that affected the subtree rooted at {@code path}      * will be included.      *<p/>      * A {@code MicroKernelException} is thrown if either {@code fromRevisionId}      * or {@code toRevisionId}  doesn't exist, denotes a<i>private</i> branch      * revision or if another error occurs.      *      * @param fromRevisionId id of first revision to be returned in journal      * @param toRevisionId   id of last revision to be returned in journal,      *                       if {@code null} the current head revision is assumed      * @param path           optional path filter; if {@code null} or {@code ""}      *                       the default ({@code"/"}) will be assumed, i.e. no      *                       filter will be applied      * @return a chronological list of revisions in JSON format      * @throws MicroKernelException if an error occurs      */
+comment|/**      * Returns a revision journal, starting with {@code fromRevisionId}      * and ending with {@code toRevisionId} in chronological order.      *<p/>      * Format:      *<pre>      * [      *   {      *     "id" : "&lt;revisionId&gt;",      *     "ts" :&lt;revisionTimestamp&gt;,      *     "msg" : "&lt;commitMessage&gt;",      *     "changes" : "&lt;JSON diff&gt;"      *   },      *   ...      * ]      *</pre>      * If {@code fromRevisionId} and {@code toRevisionId} are not in chronological      * order the returned journal will be empty (i.e. {@code []})      *<p/>      * A {@code MicroKernelException} is thrown if either {@code fromRevisionId}      * or {@code toRevisionId}  doesn't exist, denotes a<i>private</i> branch      * revision or if another error occurs.      *      * @param fromRevisionId id of first revision to be returned in journal      * @param toRevisionId   id of last revision to be returned in journal,      *                       if {@code null} the current head revision is assumed      * @param filter         (optional) filter criteria      *                       (e.g. path, property names, etc);      *                       TODO specify format and semantics      * @return a chronological list of revisions in JSON format      * @throws MicroKernelException if an error occurs      */
 name|String
 comment|/* jsonArray */
 name|getJournal
@@ -91,12 +90,12 @@ name|String
 name|toRevisionId
 parameter_list|,
 name|String
-name|path
+name|filter
 parameter_list|)
 throws|throws
 name|MicroKernelException
 function_decl|;
-comment|/**      * Returns the JSON diff representation of the changes between the specified      * revisions. The changes will be consolidated if the specified range      * covers intermediary revisions. {@code fromRevisionId} and {@code toRevisionId}      * don't need not be in a specific chronological order.      *<p/>      * The {@code path} parameter allows to filter the revisions by path, i.e.      * only those revisions that affected the subtree rooted at {@code path}      * will be included.      *      * @param fromRevisionId a revision id, if {@code null} the current head revision is assumed      * @param toRevisionId   another revision id, if {@code null} the current head revision is assumed      * @param path           optional path filter; if {@code null} or {@code ""}      *                       the default ({@code"/"}) will be assumed, i.e. no      *                       filter will be applied      * @return JSON diff representation of the changes      * @throws MicroKernelException if an error occurs      */
+comment|/**      * Returns the JSON diff representation of the changes between the specified      * revisions. The changes will be consolidated if the specified range      * covers intermediary revisions. {@code fromRevisionId} and {@code toRevisionId}      * don't need not be in a specific chronological order.      *      * @param fromRevisionId a revision id, if {@code null} the current head revision is assumed      * @param toRevisionId   another revision id, if {@code null} the current head revision is assumed      * @param filter         (optional) filter criteria      *                       (e.g. path, property names, etc);      *                       TODO specify format and semantics      * @return JSON diff representation of the changes      * @throws MicroKernelException if an error occurs      */
 name|String
 comment|/* JSON diff */
 name|diff
@@ -108,7 +107,7 @@ name|String
 name|toRevisionId
 parameter_list|,
 name|String
-name|path
+name|filter
 parameter_list|)
 throws|throws
 name|MicroKernelException
@@ -154,7 +153,7 @@ parameter_list|)
 throws|throws
 name|MicroKernelException
 function_decl|;
-comment|/**      * Returns the node tree rooted at the specified parent node with the      * specified depth, maximum child node count and offset. The depth of the      * returned tree is governed by the {@code depth} parameter:      *<table>      *<tr>      *<td>depth = 0</td>      *<td>properties, including {@code :childNodeCount} and      * child node names (i.e. empty child node objects)</td>      *</tr>      *<tr>      *<td>depth = 1</td>      *<td>properties, child nodes and their properties (including      * {@code :childNodeCount})</td>      *</tr>      *<tr>      *<td>depth = 2</td>      *<td>[and so on...]</td>      *</tr>      *</table>      *<p/>      * The {@code offset} and {@code count} parameters are only applied to the      * direct child nodes of the root of the returned node tree.      *<p/>      * The {@code filter} parameter allows to specify the names of properties      * to be included or excluded.      *<p/>      * Format:      *<pre>      * {      *   incl: [ "foo", "foo1" ],      *   excl: [ "bar", "tmp" ]      * }      *</pre>      * TODO clarify (globbing) syntax, semantics and implicit default filter (OAK-75)      *<p/>      * For more information see {@link #getNodes(String, String)}.      *      * @param path       path denoting root of node tree to be retrieved      * @param revisionId revision id, if {@code null} the current head revision is assumed      * @param depth      maximum depth of returned tree      * @param offset     start position in the iteration order of child nodes (0 to start at the      *                   beginning)      * @param count      maximum number of child nodes to retrieve (-1 for all)      * @param filter     optional filter on property names; if {@code null} or      *                   {@code ""} the default filter will be assumed      * @return node tree in JSON format or {@code null} if the specified node does not exist      * @throws MicroKernelException if the specified revision does not exist or if another error occurs      * @see #getNodes(String, String)      */
+comment|/**      * Returns the node tree rooted at the specified parent node with the      * specified depth, maximum child node count and offset. The depth of the      * returned tree is governed by the {@code depth} parameter:      *<table>      *<tr>      *<td>depth = 0</td>      *<td>properties, including {@code :childNodeCount} and      * child node names (i.e. empty child node objects)</td>      *</tr>      *<tr>      *<td>depth = 1</td>      *<td>properties, child nodes and their properties (including      * {@code :childNodeCount})</td>      *</tr>      *<tr>      *<td>depth = 2</td>      *<td>[and so on...]</td>      *</tr>      *</table>      *<p/>      * The {@code offset} and {@code count} parameters are only applied to the      * direct child nodes of the root of the returned node tree.      *      * @param path       path denoting root of node tree to be retrieved      * @param revisionId revision id, if {@code null} the current head revision is assumed      * @param depth      maximum depth of returned tree      * @param offset     start position in the iteration order of child nodes (0 to start at the      *                   beginning)      * @param count      maximum number of child nodes to retrieve (-1 for all)      * @param filter     (optional) filter criteria      *                   (e.g. names of properties to be included, etc);      *                   TODO specify format and semantics      * @return node tree in JSON format or {@code null} if the specified node does not exist      * @throws MicroKernelException if the specified revision does not exist or if another error occurs      */
 name|String
 comment|/* jsonTree */
 name|getNodes
