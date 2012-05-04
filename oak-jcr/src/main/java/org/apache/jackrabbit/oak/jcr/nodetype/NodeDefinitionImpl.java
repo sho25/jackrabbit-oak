@@ -113,6 +113,9 @@ decl_stmt|;
 specifier|protected
 name|NodeDefinitionImpl
 parameter_list|(
+name|NodeTypeManager
+name|manager
+parameter_list|,
 name|NodeType
 name|type
 parameter_list|,
@@ -133,9 +136,6 @@ name|onParentRevision
 parameter_list|,
 name|boolean
 name|isProtected
-parameter_list|,
-name|NodeTypeManager
-name|manager
 parameter_list|,
 name|String
 index|[]
