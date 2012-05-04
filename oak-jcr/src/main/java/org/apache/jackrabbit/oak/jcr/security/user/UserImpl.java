@@ -214,7 +214,7 @@ throw|throw
 operator|new
 name|IllegalArgumentException
 argument_list|(
-literal|"Invalid group node: node type rep:Group expected."
+literal|"Invalid user node: node type rep:User expected."
 argument_list|)
 throw|;
 block|}
