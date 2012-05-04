@@ -371,6 +371,11 @@ name|NodeTypeManagerImpl
 argument_list|(
 name|sessionDelegate
 operator|.
+name|getValueFactory
+argument_list|()
+argument_list|,
+name|sessionDelegate
+operator|.
 name|getNamePathMapper
 argument_list|()
 argument_list|)
