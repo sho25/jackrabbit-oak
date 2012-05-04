@@ -1572,10 +1572,26 @@ name|srcPath
 parameter_list|,
 name|String
 name|destPath
+parameter_list|,
+name|String
+name|breakAtSrcPath
 parameter_list|)
 throws|throws
 name|Exception
 block|{
+if|if
+condition|(
+name|srcPath
+operator|.
+name|equals
+argument_list|(
+name|breakAtSrcPath
+argument_list|)
+condition|)
+block|{
+comment|// OAK-83: prevent infinite recursion when copying to descendant path
+return|return;
+block|}
 name|MutableNode
 name|node
 init|=
@@ -1662,6 +1678,8 @@ name|destPath
 argument_list|,
 name|childName
 argument_list|)
+argument_list|,
+name|breakAtSrcPath
 argument_list|)
 expr_stmt|;
 block|}
@@ -3538,6 +3556,8 @@ comment|// update staging area
 name|copyStagedNodes
 argument_list|(
 name|srcPath
+argument_list|,
+name|destPath
 argument_list|,
 name|destPath
 argument_list|)
