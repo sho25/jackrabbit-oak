@@ -360,7 +360,6 @@ name|getWorkspace
 argument_list|()
 return|;
 block|}
-comment|/**      * @see javax.jcr.Session#impersonate(Credentials)      */
 annotation|@
 name|Override
 specifier|public
@@ -376,6 +375,7 @@ block|{
 name|ensureIsAlive
 argument_list|()
 expr_stmt|;
+comment|// TODO
 throw|throw
 operator|new
 name|UnsupportedRepositoryOperationException
@@ -403,7 +403,6 @@ name|getValueFactory
 argument_list|()
 return|;
 block|}
-comment|//------------------------------------------------------------< Reading>---
 annotation|@
 name|Override
 specifier|public
@@ -504,7 +503,6 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|//------------------------------------------------------------< Writing>---
 annotation|@
 name|Override
 specifier|public
@@ -527,12 +525,16 @@ name|dlg
 operator|.
 name|move
 argument_list|(
-name|toOakPath
+name|dlg
+operator|.
+name|getOakPath
 argument_list|(
 name|srcAbsPath
 argument_list|)
 argument_list|,
-name|toOakPath
+name|dlg
+operator|.
+name|getOakPath
 argument_list|(
 name|destAbsPath
 argument_list|)
@@ -541,7 +543,6 @@ literal|true
 argument_list|)
 expr_stmt|;
 block|}
-comment|//------------------------------------------------------------< state>---
 annotation|@
 name|Override
 specifier|public
@@ -602,7 +603,6 @@ name|hasPendingChanges
 argument_list|()
 return|;
 block|}
-comment|//----------------------------------------------------------< Lifecycle>---
 annotation|@
 name|Override
 specifier|public
@@ -630,7 +630,6 @@ name|logout
 argument_list|()
 expr_stmt|;
 block|}
-comment|//----------------------------------------------------< Import / Export>---
 annotation|@
 name|Override
 specifier|public
@@ -646,34 +645,20 @@ parameter_list|)
 throws|throws
 name|RepositoryException
 block|{
-return|return
-name|internalGetImportContentHandler
-argument_list|(
-name|toOakPath
-argument_list|(
-name|parentAbsPath
-argument_list|)
-argument_list|,
-name|uuidBehavior
-argument_list|)
-return|;
-block|}
-specifier|private
-name|ContentHandler
-name|internalGetImportContentHandler
-parameter_list|(
-name|String
-name|parentAbsPath
-parameter_list|,
-name|int
-name|uuidBehavior
-parameter_list|)
-throws|throws
-name|RepositoryException
-block|{
 name|ensureIsAlive
 argument_list|()
 expr_stmt|;
+comment|// TODO
+name|String
+name|internalPath
+init|=
+name|dlg
+operator|.
+name|getOakPath
+argument_list|(
+name|parentAbsPath
+argument_list|)
+decl_stmt|;
 throw|throw
 operator|new
 name|UnsupportedRepositoryOperationException
@@ -682,7 +667,6 @@ literal|"TODO: Session.getImportContentHandler"
 argument_list|)
 throw|;
 block|}
-comment|//------------------------------------------------------------< Locking>---
 comment|/**      * @see javax.jcr.Session#addLockToken(String)      */
 annotation|@
 name|Override
@@ -823,7 +807,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|//------------------------------------------------------< AccessControl>---
 annotation|@
 name|Override
 specifier|public
@@ -839,34 +822,19 @@ parameter_list|)
 throws|throws
 name|RepositoryException
 block|{
-return|return
-name|internalHasPermission
-argument_list|(
-name|toOakPath
-argument_list|(
-name|absPath
-argument_list|)
-argument_list|,
-name|actions
-argument_list|)
-return|;
-block|}
-specifier|private
-name|boolean
-name|internalHasPermission
-parameter_list|(
-name|String
-name|absPath
-parameter_list|,
-name|String
-name|actions
-parameter_list|)
-throws|throws
-name|RepositoryException
-block|{
 name|ensureIsAlive
 argument_list|()
 expr_stmt|;
+name|String
+name|internalPath
+init|=
+name|dlg
+operator|.
+name|getOakPath
+argument_list|(
+name|absPath
+argument_list|)
+decl_stmt|;
 comment|// TODO
 return|return
 literal|false
@@ -963,7 +931,7 @@ literal|"TODO: Session.getAccessControlManager"
 argument_list|)
 throw|;
 block|}
-comment|//----------------------------------------------------------< Retention>---
+comment|/**      * @see javax.jcr.Session#getRetentionManager()      */
 annotation|@
 name|Override
 specifier|public
@@ -1042,46 +1010,6 @@ operator|new
 name|RepositoryException
 argument_list|(
 literal|"This session has been closed."
-argument_list|)
-throw|;
-block|}
-block|}
-specifier|private
-name|String
-name|toOakPath
-parameter_list|(
-name|String
-name|jcrPath
-parameter_list|)
-throws|throws
-name|RepositoryException
-block|{
-try|try
-block|{
-return|return
-name|dlg
-operator|.
-name|getNamePathMapper
-argument_list|()
-operator|.
-name|getOakPath
-argument_list|(
-name|jcrPath
-argument_list|)
-return|;
-block|}
-catch|catch
-parameter_list|(
-name|IllegalArgumentException
-name|ex
-parameter_list|)
-block|{
-comment|// TODO we shouldn't have to catch this one
-throw|throw
-operator|new
-name|RepositoryException
-argument_list|(
-name|ex
 argument_list|)
 throw|;
 block|}

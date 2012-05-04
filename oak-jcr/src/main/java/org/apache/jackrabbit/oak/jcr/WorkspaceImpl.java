@@ -501,12 +501,16 @@ name|sessionDelegate
 operator|.
 name|copy
 argument_list|(
-name|toOakPath
+name|sessionDelegate
+operator|.
+name|getOakPath
 argument_list|(
 name|srcAbsPath
 argument_list|)
 argument_list|,
-name|toOakPath
+name|sessionDelegate
+operator|.
+name|getOakPath
 argument_list|(
 name|destAbsPath
 argument_list|)
@@ -585,12 +589,16 @@ name|sessionDelegate
 operator|.
 name|move
 argument_list|(
-name|toOakPath
+name|sessionDelegate
+operator|.
+name|getOakPath
 argument_list|(
 name|srcAbsPath
 argument_list|)
 argument_list|,
-name|toOakPath
+name|sessionDelegate
+operator|.
+name|getOakPath
 argument_list|(
 name|destAbsPath
 argument_list|)
@@ -700,6 +708,9 @@ parameter_list|()
 throws|throws
 name|RepositoryException
 block|{
+name|ensureIsAlive
+argument_list|()
+expr_stmt|;
 name|ensureSupportedOption
 argument_list|(
 name|Repository
@@ -707,9 +718,7 @@ operator|.
 name|OPTION_OBSERVATION_SUPPORTED
 argument_list|)
 expr_stmt|;
-name|ensureIsAlive
-argument_list|()
-expr_stmt|;
+comment|// TODO
 throw|throw
 operator|new
 name|UnsupportedRepositoryOperationException
@@ -737,6 +746,7 @@ operator|.
 name|OPTION_VERSIONING_SUPPORTED
 argument_list|)
 expr_stmt|;
+comment|// TODO
 throw|throw
 operator|new
 name|UnsupportedRepositoryOperationException
@@ -789,6 +799,9 @@ parameter_list|)
 throws|throws
 name|RepositoryException
 block|{
+name|ensureIsAlive
+argument_list|()
+expr_stmt|;
 name|ensureSupportedOption
 argument_list|(
 name|Repository
@@ -796,9 +809,7 @@ operator|.
 name|LEVEL_2_SUPPORTED
 argument_list|)
 expr_stmt|;
-name|ensureIsAlive
-argument_list|()
-expr_stmt|;
+comment|// TODO
 throw|throw
 operator|new
 name|UnsupportedRepositoryOperationException
@@ -832,15 +843,15 @@ name|IOException
 throws|,
 name|RepositoryException
 block|{
+name|ensureIsAlive
+argument_list|()
+expr_stmt|;
 name|ensureSupportedOption
 argument_list|(
 name|Repository
 operator|.
 name|LEVEL_2_SUPPORTED
 argument_list|)
-expr_stmt|;
-name|ensureIsAlive
-argument_list|()
 expr_stmt|;
 comment|// TODO -> SPI
 block|}
@@ -1064,46 +1075,6 @@ argument_list|(
 name|option
 operator|+
 literal|" is not supported by this repository."
-argument_list|)
-throw|;
-block|}
-block|}
-specifier|private
-name|String
-name|toOakPath
-parameter_list|(
-name|String
-name|jcrPath
-parameter_list|)
-throws|throws
-name|RepositoryException
-block|{
-try|try
-block|{
-return|return
-name|sessionDelegate
-operator|.
-name|getNamePathMapper
-argument_list|()
-operator|.
-name|getOakPath
-argument_list|(
-name|jcrPath
-argument_list|)
-return|;
-block|}
-catch|catch
-parameter_list|(
-name|IllegalArgumentException
-name|ex
-parameter_list|)
-block|{
-comment|// TODO we shouldn't have to catch this one
-throw|throw
-operator|new
-name|RepositoryException
-argument_list|(
-name|ex
 argument_list|)
 throw|;
 block|}
