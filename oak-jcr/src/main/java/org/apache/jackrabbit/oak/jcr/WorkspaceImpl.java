@@ -496,7 +496,6 @@ literal|"Not implemented."
 argument_list|)
 throw|;
 block|}
-comment|// FIXME: convert to oak paths
 name|sessionDelegate
 operator|.
 name|copy

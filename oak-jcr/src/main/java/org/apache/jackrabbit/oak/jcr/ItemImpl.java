@@ -579,9 +579,6 @@ block|{
 return|return
 name|sessionDelegate
 operator|.
-name|getNamePathMapper
-argument_list|()
-operator|.
 name|getOakPath
 argument_list|(
 name|jcrPath
