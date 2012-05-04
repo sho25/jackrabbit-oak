@@ -2008,6 +2008,11 @@ operator|new
 name|PathNotFoundException
 argument_list|(
 name|relPath
+operator|+
+literal|" not found on "
+operator|+
+name|getPath
+argument_list|()
 argument_list|)
 throw|;
 block|}
