@@ -229,6 +229,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Collections
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Iterator
 import|;
 end_import
@@ -431,7 +441,7 @@ throws|throws
 name|RepositoryException
 block|{
 return|return
-name|collectMembership
+name|getMembership
 argument_list|(
 literal|false
 argument_list|)
@@ -451,7 +461,7 @@ throws|throws
 name|RepositoryException
 block|{
 return|return
-name|collectMembership
+name|getMembership
 argument_list|(
 literal|true
 argument_list|)
@@ -1366,7 +1376,7 @@ return|return
 name|principalName
 return|;
 block|}
-comment|/**      *      * @return      * @throws RepositoryException      */
+comment|/**      * Returns {@code true} if this authorizable represents the 'everyone' group.      *      * @return {@code true} if this authorizable represents the group everyone      * is member of; {@code false} otherwise.      * @throws RepositoryException If an error occurs.      */
 name|boolean
 name|isEveryone
 parameter_list|()
@@ -1675,19 +1685,39 @@ return|return
 name|n
 return|;
 block|}
+comment|/**      * Retrieve the group membership of this authorizable.      *      * @param includeInherited Flag indicating whether the resulting iterator only      * contains groups this authorizable is declared member of or if inherited      * group membership is respected.      *      * @return Iterator of groups this authorizable is (declared) member of.      * @throws RepositoryException If an error occurs.      */
 specifier|private
 name|Iterator
 argument_list|<
 name|Group
 argument_list|>
-name|collectMembership
+name|getMembership
 parameter_list|(
 name|boolean
-name|includeIndirect
+name|includeInherited
 parameter_list|)
 throws|throws
 name|RepositoryException
 block|{
+if|if
+condition|(
+name|isEveryone
+argument_list|()
+condition|)
+block|{
+return|return
+name|Collections
+operator|.
+expr|<
+name|Group
+operator|>
+name|emptySet
+argument_list|()
+operator|.
+name|iterator
+argument_list|()
+return|;
+block|}
 name|MembershipManager
 name|membershipManager
 init|=
@@ -1698,7 +1728,7 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
-name|includeIndirect
+name|includeInherited
 condition|)
 block|{
 return|return
