@@ -330,8 +330,6 @@ name|NodeDelegate
 argument_list|>
 name|getChildren
 parameter_list|()
-throws|throws
-name|RepositoryException
 block|{
 return|return
 name|nodeDelegateIterator
@@ -350,8 +348,6 @@ block|}
 name|long
 name|getChildrenCount
 parameter_list|()
-throws|throws
-name|RepositoryException
 block|{
 return|return
 name|getTree
@@ -513,8 +509,6 @@ block|}
 name|long
 name|getPropertyCount
 parameter_list|()
-throws|throws
-name|RepositoryException
 block|{
 return|return
 name|getTree
@@ -530,8 +524,6 @@ parameter_list|(
 name|String
 name|relOakPath
 parameter_list|)
-throws|throws
-name|RepositoryException
 block|{
 name|Tree
 name|parent
@@ -606,8 +598,6 @@ block|}
 name|void
 name|remove
 parameter_list|()
-throws|throws
-name|RepositoryException
 block|{
 name|getTree
 argument_list|()
@@ -631,8 +621,6 @@ parameter_list|,
 name|CoreValue
 name|value
 parameter_list|)
-throws|throws
-name|RepositoryException
 block|{
 name|getTree
 argument_list|()
@@ -663,8 +651,6 @@ name|CoreValue
 argument_list|>
 name|value
 parameter_list|)
-throws|throws
-name|RepositoryException
 block|{
 name|getTree
 argument_list|()
