@@ -33,6 +33,11 @@ name|String
 name|getPath
 parameter_list|()
 function_decl|;
+specifier|abstract
+name|boolean
+name|isStale
+parameter_list|()
+function_decl|;
 block|}
 end_class
 

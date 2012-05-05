@@ -477,6 +477,22 @@ parameter_list|()
 throws|throws
 name|RepositoryException
 block|{
+if|if
+condition|(
+name|dlg
+operator|.
+name|isStale
+argument_list|()
+condition|)
+block|{
+throw|throw
+operator|new
+name|InvalidItemStateException
+argument_list|(
+literal|"stale"
+argument_list|)
+throw|;
+block|}
 comment|// check session status
 if|if
 condition|(
