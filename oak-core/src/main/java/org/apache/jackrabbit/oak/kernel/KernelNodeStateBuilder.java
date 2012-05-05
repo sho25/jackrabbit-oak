@@ -396,7 +396,7 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|void
+name|PropertyState
 name|setProperty
 parameter_list|(
 name|String
@@ -447,11 +447,14 @@ name|path
 argument_list|)
 expr_stmt|;
 block|}
+return|return
+name|property
+return|;
 block|}
 annotation|@
 name|Override
 specifier|public
-name|void
+name|PropertyState
 name|setProperty
 parameter_list|(
 name|String
@@ -505,6 +508,9 @@ name|path
 argument_list|)
 expr_stmt|;
 block|}
+return|return
+name|property
+return|;
 block|}
 annotation|@
 name|Override

@@ -21,16 +21,6 @@ end_package
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|List
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -58,6 +48,16 @@ operator|.
 name|api
 operator|.
 name|PropertyState
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
 import|;
 end_import
 
@@ -110,18 +110,19 @@ name|String
 name|name
 parameter_list|)
 function_decl|;
-comment|/**      * Set a property.      *      * @param name property name      */
-name|void
+comment|/**      * Set a property.      *      * @param name property name      * @param value      * @return the affected property state      */
+name|PropertyState
 name|setProperty
 parameter_list|(
 name|String
 name|name
 parameter_list|,
 name|CoreValue
-name|values
+name|value
 parameter_list|)
 function_decl|;
-name|void
+comment|/**      * Set a property.      *      * @param name property name      * @param values      * @return the affected property state      */
+name|PropertyState
 name|setProperty
 parameter_list|(
 name|String

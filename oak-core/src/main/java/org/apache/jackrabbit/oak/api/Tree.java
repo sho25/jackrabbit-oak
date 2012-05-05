@@ -159,8 +159,8 @@ name|String
 name|name
 parameter_list|)
 function_decl|;
-comment|/**      * Set a single valued property state      *      * @param name The name of this property      * @param value The value of this property      */
-name|void
+comment|/**      * Set a single valued property state      *      * @param name The name of this property      * @param value The value of this property      * @return the affected property state      */
+name|PropertyState
 name|setProperty
 parameter_list|(
 name|String
@@ -170,8 +170,8 @@ name|CoreValue
 name|value
 parameter_list|)
 function_decl|;
-comment|/**      * Set a multivalued valued property state      *      * @param name The name of this property      * @param values The value of this property      */
-name|void
+comment|/**      * Set a multivalued valued property state      *      * @param name The name of this property      * @param values The value of this property      * @return the affected property state      */
+name|PropertyState
 name|setProperty
 parameter_list|(
 name|String

@@ -1182,7 +1182,7 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|void
+name|PropertyState
 name|setProperty
 parameter_list|(
 name|String
@@ -1192,6 +1192,9 @@ name|CoreValue
 name|value
 parameter_list|)
 block|{
+name|PropertyState
+name|property
+init|=
 name|builder
 operator|.
 name|setProperty
@@ -1200,7 +1203,7 @@ name|name
 argument_list|,
 name|value
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 if|if
 condition|(
 name|listener
@@ -1220,11 +1223,14 @@ name|value
 argument_list|)
 expr_stmt|;
 block|}
+return|return
+name|property
+return|;
 block|}
 annotation|@
 name|Override
 specifier|public
-name|void
+name|PropertyState
 name|setProperty
 parameter_list|(
 name|String
@@ -1237,6 +1243,9 @@ argument_list|>
 name|values
 parameter_list|)
 block|{
+name|PropertyState
+name|property
+init|=
 name|builder
 operator|.
 name|setProperty
@@ -1245,7 +1254,7 @@ name|name
 argument_list|,
 name|values
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 if|if
 condition|(
 name|listener
@@ -1265,6 +1274,9 @@ name|values
 argument_list|)
 expr_stmt|;
 block|}
+return|return
+name|property
+return|;
 block|}
 annotation|@
 name|Override
