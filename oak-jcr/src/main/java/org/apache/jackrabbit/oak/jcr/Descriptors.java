@@ -794,7 +794,7 @@ name|Descriptor
 argument_list|(
 name|OPTION_NODE_TYPE_MANAGEMENT_SUPPORTED
 argument_list|,
-name|trueValue
+name|falseValue
 argument_list|,
 literal|true
 argument_list|,
