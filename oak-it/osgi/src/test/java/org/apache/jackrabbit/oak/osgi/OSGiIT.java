@@ -50,6 +50,22 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|org
+operator|.
+name|ops4j
+operator|.
+name|pax
+operator|.
+name|exam
+operator|.
+name|CoreOptions
+operator|.
+name|mavenBundle
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -266,6 +282,15 @@ name|options
 argument_list|(
 name|junitBundles
 argument_list|()
+argument_list|,
+name|mavenBundle
+argument_list|(
+literal|"org.apache.felix"
+argument_list|,
+literal|"org.apache.felix.scr"
+argument_list|,
+literal|"1.6.0"
+argument_list|)
 argument_list|,
 name|bundle
 argument_list|(
