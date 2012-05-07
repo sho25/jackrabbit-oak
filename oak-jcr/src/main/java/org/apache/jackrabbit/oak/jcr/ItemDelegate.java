@@ -35,37 +35,66 @@ name|Status
 import|;
 end_import
 
+begin_comment
+comment|/**  * Abstract base class for {@link NodeDelegate} and {@link PropertyDelegate}  */
+end_comment
+
 begin_class
 specifier|public
 specifier|abstract
 class|class
 name|ItemDelegate
 block|{
+specifier|protected
+specifier|final
+name|SessionDelegate
+name|sessionDelegate
+decl_stmt|;
+specifier|protected
+name|ItemDelegate
+parameter_list|(
+name|SessionDelegate
+name|sessionDelegate
+parameter_list|)
+block|{
+name|this
+operator|.
+name|sessionDelegate
+operator|=
+name|sessionDelegate
+expr_stmt|;
+block|}
+comment|/**      * Get the name of this item      * @return oak name of this item      */
 specifier|abstract
 name|String
 name|getName
 parameter_list|()
 function_decl|;
+comment|/**      * Get the path of this item      * @return oak path of this item      */
 specifier|abstract
 name|String
 name|getPath
 parameter_list|()
 function_decl|;
+comment|/**      * Get the parent of this item      * @return  parent of this item or {@code null} for root      */
 specifier|abstract
 name|NodeDelegate
 name|getParent
 parameter_list|()
 function_decl|;
+comment|/**      * Determine whether this item is stale      * @return  {@code true} iff stale      */
 specifier|abstract
 name|boolean
 name|isStale
 parameter_list|()
 function_decl|;
+comment|/**      * Get the status of this item      * @return  {@link Status} of this item      */
 specifier|abstract
 name|Status
 name|getStatus
 parameter_list|()
 function_decl|;
+comment|/**      * Get the session delegate with which this item is associated      * @return  {@link SessionDelegate} to which this item belongs      */
 specifier|abstract
 name|SessionDelegate
 name|getSessionDelegate

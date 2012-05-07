@@ -162,11 +162,7 @@ name|NodeDelegate
 extends|extends
 name|ItemDelegate
 block|{
-specifier|private
-specifier|final
-name|SessionDelegate
-name|sessionDelegate
-decl_stmt|;
+comment|/**      * The underlying {@link Tree} instance. In order to ensure the instance      * is up to date, this field<em>should not be accessed directly</em> but      * rather the {@link #getTree()} method should be used.      */
 specifier|private
 name|Tree
 name|tree
@@ -180,11 +176,10 @@ name|Tree
 name|tree
 parameter_list|)
 block|{
-name|this
-operator|.
+name|super
+argument_list|(
 name|sessionDelegate
-operator|=
-name|sessionDelegate
+argument_list|)
 expr_stmt|;
 name|this
 operator|.
@@ -193,7 +188,6 @@ operator|=
 name|tree
 expr_stmt|;
 block|}
-comment|/**      * Get the name of this node      * @return oak name of the node      */
 annotation|@
 name|Override
 name|String
@@ -208,7 +202,6 @@ name|getName
 argument_list|()
 return|;
 block|}
-comment|/**      * Get the path of this node      * @return oak path of the node      */
 annotation|@
 name|Override
 name|String
@@ -225,7 +218,6 @@ name|getPath
 argument_list|()
 return|;
 block|}
-comment|/**      * Get the parent of this node      * @return  parent of this node or {@code null} it this is the root      */
 annotation|@
 name|Override
 name|NodeDelegate
@@ -254,7 +246,6 @@ name|parent
 argument_list|)
 return|;
 block|}
-comment|/**      * Determine whether this node is stale      * @return  {@code true} iff stale      */
 annotation|@
 name|Override
 name|boolean
@@ -268,7 +259,6 @@ operator|==
 literal|null
 return|;
 block|}
-comment|/**      * Get the status of this node      * @return  {@link Status} of this node      */
 annotation|@
 name|Override
 name|Status
@@ -308,7 +298,6 @@ argument_list|)
 return|;
 block|}
 block|}
-comment|/**      * Get the session which with this node is associated      * @return  {@link SessionDelegate} to which this node belongs      */
 annotation|@
 name|Override
 name|SessionDelegate
@@ -331,7 +320,7 @@ operator|==
 literal|null
 return|;
 block|}
-comment|/**      * Get the number of properties of this node      * @return  number of properties of this node      */
+comment|/**      * Get the number of properties of the node      * @return  number of properties of the node      */
 name|long
 name|getPropertyCount
 parameter_list|()
@@ -414,7 +403,7 @@ name|propertyState
 argument_list|)
 return|;
 block|}
-comment|/**      * Get the properties of this node      * @return  properties of this node      */
+comment|/**      * Get the properties of the node      * @return  properties of the node      */
 name|Iterator
 argument_list|<
 name|PropertyDelegate
@@ -436,7 +425,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-comment|/**      * Get the number of child nodes      * @return  number of child nodes of this node      */
+comment|/**      * Get the number of child nodes      * @return  number of child nodes of the node      */
 name|long
 name|getChildCount
 parameter_list|()
@@ -481,7 +470,7 @@ name|tree
 argument_list|)
 return|;
 block|}
-comment|/**      * Get child nodes      * @return  child nodes of this node      */
+comment|/**      * Get child nodes      * @return  child nodes of the node      */
 name|Iterator
 argument_list|<
 name|NodeDelegate
@@ -618,7 +607,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-comment|/**      * Remove this node      */
+comment|/**      * Remove the node      */
 name|void
 name|remove
 parameter_list|()

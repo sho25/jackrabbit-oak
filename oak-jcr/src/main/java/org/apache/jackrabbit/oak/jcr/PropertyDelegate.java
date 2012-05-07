@@ -143,6 +143,10 @@ name|List
 import|;
 end_import
 
+begin_comment
+comment|/**  * {@code PropertyDelegate} serve as internal representations of {@code Property}s.  * The methods of this class do not throw checked exceptions. Instead clients  * are expected to inspect the return value and ensure that all preconditions  * hold before a method is invoked. Specifically the behaviour of all methods  * of this class but {@link #isStale()} is undefined if the instance is stale.  * An item is stale if the underlying items does not exist anymore.  */
+end_comment
+
 begin_class
 specifier|public
 class|class
@@ -150,15 +154,12 @@ name|PropertyDelegate
 extends|extends
 name|ItemDelegate
 block|{
-specifier|private
-specifier|final
-name|SessionDelegate
-name|sessionDelegate
-decl_stmt|;
+comment|/**      * The underlying {@link Tree} of the parent node. In order to ensure the      * instance is up to date, this field<em>should not be accessed directly</em>      * but rather the {@link #getParentTree()} Tree()} method should be used.      */
 specifier|private
 name|Tree
 name|parent
 decl_stmt|;
+comment|/**      * The underlying {@link PropertyState}. In order to ensure the instance is up      * to date, this field<em>should not be accessed directly</em> but rather the      * {@link #getPropertyState()} method should be used.      */
 specifier|private
 name|PropertyState
 name|propertyState
@@ -175,11 +176,10 @@ name|PropertyState
 name|propertyState
 parameter_list|)
 block|{
-name|this
-operator|.
+name|super
+argument_list|(
 name|sessionDelegate
-operator|=
-name|sessionDelegate
+argument_list|)
 expr_stmt|;
 name|this
 operator|.
@@ -214,29 +214,12 @@ name|String
 name|getPath
 parameter_list|()
 block|{
-name|String
-name|parentPath
-init|=
-name|getParentTree
+return|return
+name|getParent
 argument_list|()
 operator|.
 name|getPath
 argument_list|()
-decl_stmt|;
-return|return
-name|parentPath
-operator|.
-name|isEmpty
-argument_list|()
-condition|?
-literal|'/'
-operator|+
-name|getName
-argument_list|()
-else|:
-literal|'/'
-operator|+
-name|parentPath
 operator|+
 literal|'/'
 operator|+
@@ -250,25 +233,14 @@ name|NodeDelegate
 name|getParent
 parameter_list|()
 block|{
-name|Tree
-name|parent
-init|=
-name|getParentTree
-argument_list|()
-decl_stmt|;
 return|return
-name|parent
-operator|==
-literal|null
-condition|?
-literal|null
-else|:
 operator|new
 name|NodeDelegate
 argument_list|(
 name|sessionDelegate
 argument_list|,
-name|parent
+name|getParentTree
+argument_list|()
 argument_list|)
 return|;
 block|}
@@ -312,6 +284,7 @@ return|return
 name|sessionDelegate
 return|;
 block|}
+comment|/**      * Get the value of the property      * @return  value or {@code null} if multi values      */
 name|CoreValue
 name|getValue
 parameter_list|()
@@ -324,6 +297,7 @@ name|getValue
 argument_list|()
 return|;
 block|}
+comment|/**      * Get the value of the property      * @return  value or {@code null} if single valued      */
 name|Iterable
 argument_list|<
 name|CoreValue
@@ -339,6 +313,7 @@ name|getValues
 argument_list|()
 return|;
 block|}
+comment|/**      * Determine whether the property is multi valued      * @return  {@code true} if multi valued      */
 name|boolean
 name|isMultivalue
 parameter_list|()
@@ -351,6 +326,7 @@ name|isArray
 argument_list|()
 return|;
 block|}
+comment|/**      * Get the property definition of the property      * @return      */
 name|PropertyDefinition
 name|getDefinition
 parameter_list|()
@@ -542,6 +518,7 @@ block|}
 block|}
 return|;
 block|}
+comment|/**      * Set the value of the property      * @param value      */
 name|void
 name|setValue
 parameter_list|(
@@ -561,6 +538,7 @@ name|value
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * Set the values of the property      * @param values      */
 name|void
 name|setValues
 parameter_list|(
@@ -583,6 +561,7 @@ name|values
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * Remove the property      */
 name|void
 name|remove
 parameter_list|()
