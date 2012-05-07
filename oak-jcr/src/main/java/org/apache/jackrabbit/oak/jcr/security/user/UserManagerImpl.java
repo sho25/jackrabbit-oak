@@ -1532,7 +1532,7 @@ argument_list|)
 decl_stmt|;
 name|sessionDelegate
 operator|.
-name|getTree
+name|getNode
 argument_list|(
 name|getInternalPath
 argument_list|(
@@ -1586,7 +1586,7 @@ argument_list|)
 decl_stmt|;
 name|sessionDelegate
 operator|.
-name|getTree
+name|getNode
 argument_list|(
 name|getInternalPath
 argument_list|(
@@ -1616,7 +1616,7 @@ name|RepositoryException
 block|{
 name|sessionDelegate
 operator|.
-name|getTree
+name|getNode
 argument_list|(
 name|getInternalPath
 argument_list|(
@@ -1624,10 +1624,13 @@ name|userNode
 argument_list|)
 argument_list|)
 operator|.
-name|removeProperty
+name|getProperty
 argument_list|(
 name|name
 argument_list|)
+operator|.
+name|remove
+argument_list|()
 expr_stmt|;
 block|}
 name|Session
