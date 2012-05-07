@@ -807,11 +807,6 @@ name|child
 return|;
 block|}
 annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"unchecked"
-argument_list|)
-annotation|@
 name|Override
 specifier|public
 name|Iterable
@@ -824,18 +819,19 @@ name|getChildNodeEntries
 parameter_list|()
 block|{
 return|return
+operator|(
 operator|new
 name|Iterable
+argument_list|<
+name|ChildNodeEntry
+argument_list|>
 argument_list|()
 block|{
-comment|// Java's type system is too weak to express the exact type here
 annotation|@
 name|Override
 specifier|public
 name|Iterator
 argument_list|<
-name|?
-extends|extends
 name|ChildNodeEntry
 argument_list|>
 name|iterator
@@ -887,6 +883,7 @@ argument_list|)
 return|;
 block|}
 block|}
+operator|)
 return|;
 block|}
 comment|//------------------------------------------------------------< internal>---
