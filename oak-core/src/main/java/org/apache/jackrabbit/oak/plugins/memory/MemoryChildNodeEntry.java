@@ -13,9 +13,21 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|kernel
+name|plugins
+operator|.
+name|memory
 package|;
 end_package
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Map
+import|;
+end_import
 
 begin_import
 import|import
@@ -53,9 +65,14 @@ name|NodeState
 import|;
 end_import
 
+begin_comment
+comment|/**  * Basic JavaBean implementation of a child node entry.  */
+end_comment
+
 begin_class
+specifier|public
 class|class
-name|KernelChildNodeEntry
+name|MemoryChildNodeEntry
 extends|extends
 name|AbstractChildNodeEntry
 block|{
@@ -69,8 +86,9 @@ specifier|final
 name|NodeState
 name|node
 decl_stmt|;
+comment|/**      * Creates a child node entry with the given name and referenced      * child node state.      *      * @param name child node name      * @param node child node state      */
 specifier|public
-name|KernelChildNodeEntry
+name|MemoryChildNodeEntry
 parameter_list|(
 name|String
 name|name
@@ -90,6 +108,35 @@ operator|.
 name|node
 operator|=
 name|node
+expr_stmt|;
+block|}
+comment|/**      * Utility constructor that copies the name and referenced      * child node state from the given map entry.      *      * @param entry map entry      */
+specifier|public
+name|MemoryChildNodeEntry
+parameter_list|(
+name|Map
+operator|.
+name|Entry
+argument_list|<
+name|String
+argument_list|,
+name|NodeState
+argument_list|>
+name|entry
+parameter_list|)
+block|{
+name|this
+argument_list|(
+name|entry
+operator|.
+name|getKey
+argument_list|()
+argument_list|,
+name|entry
+operator|.
+name|getValue
+argument_list|()
+argument_list|)
 expr_stmt|;
 block|}
 annotation|@
