@@ -225,6 +225,35 @@ name|getPath
 argument_list|()
 return|;
 block|}
+comment|/**      * Get the parent of this node      * @return  parent of this node or {@code null} it this is the root      */
+annotation|@
+name|Override
+name|NodeDelegate
+name|getParent
+parameter_list|()
+block|{
+name|Tree
+name|parent
+init|=
+name|getParentTree
+argument_list|()
+decl_stmt|;
+return|return
+name|parent
+operator|==
+literal|null
+condition|?
+literal|null
+else|:
+operator|new
+name|NodeDelegate
+argument_list|(
+name|sessionDelegate
+argument_list|,
+name|parent
+argument_list|)
+return|;
+block|}
 comment|/**      * Determine whether this node is stale      * @return  {@code true} iff stale      */
 annotation|@
 name|Override
@@ -239,19 +268,9 @@ operator|==
 literal|null
 return|;
 block|}
-comment|/**      * Determine whether this is the root node      * @return  {@code true} iff this is the root node      */
-name|boolean
-name|isRoot
-parameter_list|()
-block|{
-return|return
-name|getParentTree
-argument_list|()
-operator|==
-literal|null
-return|;
-block|}
 comment|/**      * Get the status of this node      * @return  {@link Status} of this node      */
+annotation|@
+name|Override
 name|Status
 name|getStatus
 parameter_list|()
@@ -290,6 +309,8 @@ return|;
 block|}
 block|}
 comment|/**      * Get the session which with this node is associated      * @return  {@link SessionDelegate} to which this node belongs      */
+annotation|@
+name|Override
 name|SessionDelegate
 name|getSessionDelegate
 parameter_list|()
@@ -298,31 +319,16 @@ return|return
 name|sessionDelegate
 return|;
 block|}
-comment|/**      * Get the parent of this node      * @return  parent of this node or {@code null} it this is the root      */
-name|NodeDelegate
-name|getParent
+comment|/**      * Determine whether this is the root node      * @return  {@code true} iff this is the root node      */
+name|boolean
+name|isRoot
 parameter_list|()
 block|{
-name|Tree
-name|parent
-init|=
+return|return
 name|getParentTree
 argument_list|()
-decl_stmt|;
-return|return
-name|parent
 operator|==
 literal|null
-condition|?
-literal|null
-else|:
-operator|new
-name|NodeDelegate
-argument_list|(
-name|sessionDelegate
-argument_list|,
-name|parent
-argument_list|)
 return|;
 block|}
 comment|/**      * Get the number of properties of this node      * @return  number of properties of this node      */
