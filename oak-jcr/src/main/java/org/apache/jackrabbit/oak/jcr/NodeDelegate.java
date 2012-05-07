@@ -190,6 +190,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
+specifier|public
 name|String
 name|getName
 parameter_list|()
@@ -204,6 +205,7 @@ return|;
 block|}
 annotation|@
 name|Override
+specifier|public
 name|String
 name|getPath
 parameter_list|()
@@ -220,6 +222,7 @@ return|;
 block|}
 annotation|@
 name|Override
+specifier|public
 name|NodeDelegate
 name|getParent
 parameter_list|()
@@ -248,6 +251,7 @@ return|;
 block|}
 annotation|@
 name|Override
+specifier|public
 name|boolean
 name|isStale
 parameter_list|()
@@ -261,6 +265,7 @@ return|;
 block|}
 annotation|@
 name|Override
+specifier|public
 name|Status
 name|getStatus
 parameter_list|()
@@ -300,6 +305,7 @@ block|}
 block|}
 annotation|@
 name|Override
+specifier|public
 name|SessionDelegate
 name|getSessionDelegate
 parameter_list|()
@@ -309,6 +315,7 @@ name|sessionDelegate
 return|;
 block|}
 comment|/**      * Determine whether this is the root node      * @return  {@code true} iff this is the root node      */
+specifier|public
 name|boolean
 name|isRoot
 parameter_list|()
@@ -321,6 +328,7 @@ literal|null
 return|;
 block|}
 comment|/**      * Get the number of properties of the node      * @return  number of properties of the node      */
+specifier|public
 name|long
 name|getPropertyCount
 parameter_list|()
@@ -334,6 +342,7 @@ argument_list|()
 return|;
 block|}
 comment|/**      * Get a property      * @param relPath  oak path      * @return  property at the path given by {@code relPath} or {@code null} if      * no such property exists      */
+specifier|public
 name|PropertyDelegate
 name|getProperty
 parameter_list|(
@@ -404,6 +413,7 @@ argument_list|)
 return|;
 block|}
 comment|/**      * Get the properties of the node      * @return  properties of the node      */
+specifier|public
 name|Iterator
 argument_list|<
 name|PropertyDelegate
@@ -426,6 +436,7 @@ argument_list|)
 return|;
 block|}
 comment|/**      * Get the number of child nodes      * @return  number of child nodes of the node      */
+specifier|public
 name|long
 name|getChildCount
 parameter_list|()
@@ -439,6 +450,7 @@ argument_list|()
 return|;
 block|}
 comment|/**      * Get child node      * @param relPath  oak path      * @return  node at the path given by {@code relPath} or {@code null} if      * no such node exists      */
+specifier|public
 name|NodeDelegate
 name|getChild
 parameter_list|(
@@ -471,6 +483,7 @@ argument_list|)
 return|;
 block|}
 comment|/**      * Get child nodes      * @return  child nodes of the node      */
+specifier|public
 name|Iterator
 argument_list|<
 name|NodeDelegate
@@ -493,6 +506,7 @@ argument_list|)
 return|;
 block|}
 comment|/**      * Set a property      * @param name  oak name      * @param value      * @return  the set property      */
+specifier|public
 name|PropertyDelegate
 name|setProperty
 parameter_list|(
@@ -530,6 +544,7 @@ argument_list|)
 return|;
 block|}
 comment|/**      * Set a multi valued property      * @param name  oak name      * @param value      * @return  the set property      */
+specifier|public
 name|PropertyDelegate
 name|setProperty
 parameter_list|(
@@ -570,6 +585,7 @@ argument_list|)
 return|;
 block|}
 comment|/**      * Add a child node      * @param name  oak name      * @return  the added node or {@code null} if such a node already exists      */
+specifier|public
 name|NodeDelegate
 name|addChild
 parameter_list|(
@@ -608,6 +624,7 @@ argument_list|)
 return|;
 block|}
 comment|/**      * Remove the node      */
+specifier|public
 name|void
 name|remove
 parameter_list|()

@@ -196,6 +196,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
+specifier|public
 name|String
 name|getName
 parameter_list|()
@@ -210,6 +211,7 @@ return|;
 block|}
 annotation|@
 name|Override
+specifier|public
 name|String
 name|getPath
 parameter_list|()
@@ -229,6 +231,7 @@ return|;
 block|}
 annotation|@
 name|Override
+specifier|public
 name|NodeDelegate
 name|getParent
 parameter_list|()
@@ -246,6 +249,7 @@ return|;
 block|}
 annotation|@
 name|Override
+specifier|public
 name|boolean
 name|isStale
 parameter_list|()
@@ -259,6 +263,7 @@ return|;
 block|}
 annotation|@
 name|Override
+specifier|public
 name|Status
 name|getStatus
 parameter_list|()
@@ -276,6 +281,7 @@ return|;
 block|}
 annotation|@
 name|Override
+specifier|public
 name|SessionDelegate
 name|getSessionDelegate
 parameter_list|()
@@ -285,6 +291,7 @@ name|sessionDelegate
 return|;
 block|}
 comment|/**      * Get the value of the property      * @return  value or {@code null} if multi values      */
+specifier|public
 name|CoreValue
 name|getValue
 parameter_list|()
@@ -298,6 +305,7 @@ argument_list|()
 return|;
 block|}
 comment|/**      * Get the value of the property      * @return  value or {@code null} if single valued      */
+specifier|public
 name|Iterable
 argument_list|<
 name|CoreValue
@@ -314,6 +322,7 @@ argument_list|()
 return|;
 block|}
 comment|/**      * Determine whether the property is multi valued      * @return  {@code true} if multi valued      */
+specifier|public
 name|boolean
 name|isMultivalue
 parameter_list|()
@@ -327,6 +336,7 @@ argument_list|()
 return|;
 block|}
 comment|/**      * Get the property definition of the property      * @return      */
+specifier|public
 name|PropertyDefinition
 name|getDefinition
 parameter_list|()
@@ -519,6 +529,7 @@ block|}
 return|;
 block|}
 comment|/**      * Set the value of the property      * @param value      */
+specifier|public
 name|void
 name|setValue
 parameter_list|(
@@ -539,6 +550,7 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Set the values of the property      * @param values      */
+specifier|public
 name|void
 name|setValues
 parameter_list|(
@@ -562,6 +574,7 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Remove the property      */
+specifier|public
 name|void
 name|remove
 parameter_list|()

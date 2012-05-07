@@ -65,36 +65,42 @@ name|sessionDelegate
 expr_stmt|;
 block|}
 comment|/**      * Get the name of this item      * @return oak name of this item      */
+specifier|public
 specifier|abstract
 name|String
 name|getName
 parameter_list|()
 function_decl|;
 comment|/**      * Get the path of this item      * @return oak path of this item      */
+specifier|public
 specifier|abstract
 name|String
 name|getPath
 parameter_list|()
 function_decl|;
 comment|/**      * Get the parent of this item      * @return  parent of this item or {@code null} for root      */
+specifier|public
 specifier|abstract
 name|NodeDelegate
 name|getParent
 parameter_list|()
 function_decl|;
 comment|/**      * Determine whether this item is stale      * @return  {@code true} iff stale      */
+specifier|public
 specifier|abstract
 name|boolean
 name|isStale
 parameter_list|()
 function_decl|;
 comment|/**      * Get the status of this item      * @return  {@link Status} of this item      */
+specifier|public
 specifier|abstract
 name|Status
 name|getStatus
 parameter_list|()
 function_decl|;
 comment|/**      * Get the session delegate with which this item is associated      * @return  {@link SessionDelegate} to which this item belongs      */
+specifier|public
 specifier|abstract
 name|SessionDelegate
 name|getSessionDelegate
