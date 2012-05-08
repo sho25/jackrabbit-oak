@@ -1585,6 +1585,9 @@ name|nt
 argument_list|,
 name|mapper
 argument_list|,
+operator|new
+name|NodeDefinitionDelegate
+argument_list|(
 name|name
 argument_list|,
 name|autocreate
@@ -1612,6 +1615,7 @@ argument_list|,
 name|defaultPrimaryType
 argument_list|,
 name|allowSns
+argument_list|)
 argument_list|)
 return|;
 block|}
@@ -1833,6 +1837,9 @@ name|mapper
 argument_list|,
 name|vf
 argument_list|,
+operator|new
+name|PropertyDefinitionDelegate
+argument_list|(
 name|name
 argument_list|,
 name|autocreate
@@ -1848,6 +1855,7 @@ argument_list|,
 name|isMultiple
 argument_list|,
 name|defaultCoreValues
+argument_list|)
 argument_list|)
 return|;
 block|}
