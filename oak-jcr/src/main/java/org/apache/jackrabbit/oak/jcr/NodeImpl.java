@@ -3497,6 +3497,8 @@ parameter_list|()
 throws|throws
 name|RepositoryException
 block|{
+try|try
+block|{
 return|return
 name|sessionDelegate
 operator|.
@@ -3509,6 +3511,19 @@ name|getPath
 argument_list|()
 argument_list|)
 return|;
+block|}
+catch|catch
+parameter_list|(
+name|UnsupportedRepositoryOperationException
+name|ex
+parameter_list|)
+block|{
+comment|// when versioning is not supported all nodes are considered to be
+comment|// checked out
+return|return
+literal|true
+return|;
+block|}
 block|}
 comment|/**      * @see javax.jcr.Node#restore(String, boolean)      */
 annotation|@
@@ -3813,6 +3828,8 @@ parameter_list|()
 throws|throws
 name|RepositoryException
 block|{
+try|try
+block|{
 return|return
 name|sessionDelegate
 operator|.
@@ -3825,6 +3842,19 @@ name|getPath
 argument_list|()
 argument_list|)
 return|;
+block|}
+catch|catch
+parameter_list|(
+name|UnsupportedRepositoryOperationException
+name|ex
+parameter_list|)
+block|{
+comment|// when locking is not supported all nodes are considered not to be
+comment|// locked
+return|return
+literal|false
+return|;
+block|}
 block|}
 annotation|@
 name|Override
