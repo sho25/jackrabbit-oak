@@ -97,6 +97,15 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
+comment|/**      * If this parameter is present group members are collected in a node      * structure below a {@link AuthorizableImpl#REP_MEMBERS} node instead of the      * default multi valued property {@link AuthorizableImpl#REP_MEMBERS}.      * Its value determines the maximum number of member properties until      * additional intermediate nodes are inserted. Valid values are integers      *&gt; 4. The default value is 0 and indicates that the      * {@link AuthorizableImpl#REP_MEMBERS} property is used to record group members.      */
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|PARAM_GROUP_MEMBERSHIP_SPLIT_SIZE
+init|=
+literal|"groupMembershipSplitSize"
+decl_stmt|;
 comment|/**      * Configuration parameter to change the default algorithm used to generate      * password hashes. The default value is {@link PasswordUtility#DEFAULT_ALGORITHM}.      */
 specifier|public
 specifier|static
