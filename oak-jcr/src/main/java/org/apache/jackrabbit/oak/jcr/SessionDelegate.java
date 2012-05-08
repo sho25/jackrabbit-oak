@@ -805,7 +805,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|//------------------------------------------------------------< Workspace>---
+comment|//----------------------------------------------------------< Workspace>---
 specifier|public
 name|Workspace
 name|getWorkspace
