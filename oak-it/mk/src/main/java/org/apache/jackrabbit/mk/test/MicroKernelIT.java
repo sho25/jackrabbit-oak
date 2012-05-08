@@ -2185,7 +2185,7 @@ name|assertPropertyValue
 argument_list|(
 name|obj
 argument_list|,
-literal|"a/b/c:childNodeCount"
+literal|"a/b/c/:childNodeCount"
 argument_list|,
 literal|1l
 argument_list|)
@@ -2318,12 +2318,8 @@ name|tst
 argument_list|)
 expr_stmt|;
 comment|// 2nd pass
+operator|++
 name|tst
-operator|=
-name|System
-operator|.
-name|currentTimeMillis
-argument_list|()
 expr_stmt|;
 name|String
 name|oldHead
