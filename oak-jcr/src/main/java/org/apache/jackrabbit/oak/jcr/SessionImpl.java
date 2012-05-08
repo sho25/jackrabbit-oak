@@ -464,6 +464,7 @@ block|{
 name|ensureIsAlive
 argument_list|()
 expr_stmt|;
+comment|// TODO following line throws IndexOutOfBoundsException if id is empty
 if|if
 condition|(
 name|id
