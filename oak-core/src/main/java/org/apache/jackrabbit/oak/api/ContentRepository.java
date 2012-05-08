@@ -23,6 +23,16 @@ name|javax
 operator|.
 name|jcr
 operator|.
+name|Credentials
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|jcr
+operator|.
 name|NoSuchWorkspaceException
 import|;
 end_import
@@ -42,7 +52,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Oak content repository. The repository may be local or remote, or a cluster  * of any size. These deployment details are all hidden behind this interface.  *<p>  * All access to the repository happens through authenticated  * {@link ContentSession} instances acquired through the  * {@link #login(Object, String)} method, which is why that is the only  * method of this interface.  *<p>  * Starting and stopping ContentRepository instances is the responsibility  * of each particular deployment and not covered by this interface.  * Repository clients should use a deployment-specific mechanism (JNDI,  * OSGi service, etc.) to acquire references to ContentRepository instances.  *<p>  * This interface is thread-safe.  */
+comment|/**  * Oak content repository. The repository may be local or remote, or a cluster  * of any size. These deployment details are all hidden behind this interface.  *<p>  * All access to the repository happens through authenticated  * {@link ContentSession} instances acquired through the  * {@link #login(Credentials, String)} method, which is why that is the only  * method of this interface.  *<p>  * Starting and stopping ContentRepository instances is the responsibility  * of each particular deployment and not covered by this interface.  * Repository clients should use a deployment-specific mechanism (JNDI,  * OSGi service, etc.) to acquire references to ContentRepository instances.  *<p>  * This interface is thread-safe.  */
 end_comment
 
 begin_interface
@@ -54,7 +64,7 @@ comment|/**      * Authenticates a user based on the given credentials or availa
 name|ContentSession
 name|login
 parameter_list|(
-name|Object
+name|Credentials
 name|credentials
 parameter_list|,
 name|String
