@@ -197,7 +197,7 @@ condition|)
 block|{
 throw|throw
 operator|new
-name|RuntimeException
+name|IllegalArgumentException
 argument_list|(
 literal|"Unknown selector: "
 operator|+

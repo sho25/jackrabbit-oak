@@ -59,6 +59,22 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
+name|commons
+operator|.
+name|PathUtils
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
 name|query
 operator|.
 name|ast
@@ -1146,7 +1162,7 @@ name|selector1
 argument_list|,
 name|selector2
 argument_list|,
-name|readPath
+name|readAbsolutePath
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -2159,7 +2175,7 @@ name|sameNode
 argument_list|(
 name|name
 argument_list|,
-name|readPath
+name|readAbsolutePath
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -2213,7 +2229,7 @@ name|childNode
 argument_list|(
 name|name
 argument_list|,
-name|readPath
+name|readAbsolutePath
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -2267,7 +2283,7 @@ name|descendantNode
 argument_list|(
 name|name
 argument_list|,
-name|readPath
+name|readAbsolutePath
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -2301,6 +2317,41 @@ argument_list|)
 expr_stmt|;
 return|return
 name|c
+return|;
+block|}
+specifier|private
+name|String
+name|readAbsolutePath
+parameter_list|()
+throws|throws
+name|ParseException
+block|{
+name|String
+name|path
+init|=
+name|readPath
+argument_list|()
+decl_stmt|;
+if|if
+condition|(
+operator|!
+name|PathUtils
+operator|.
+name|isAbsolute
+argument_list|(
+name|path
+argument_list|)
+condition|)
+block|{
+throw|throw
+name|getSyntaxError
+argument_list|(
+literal|"absolute path"
+argument_list|)
+throw|;
+block|}
+return|return
+name|path
 return|;
 block|}
 specifier|private
@@ -3658,6 +3709,16 @@ name|ColumnImpl
 argument_list|>
 argument_list|()
 decl_stmt|;
+comment|//        for (SelectorImpl selector : selectors) {
+comment|//            String selectorName = selector.getSelectorName();
+comment|//            String columnName;
+comment|//            if (selectors.size()> 1) {
+comment|//                columnName = selectorName + "." + "jcr:path";
+comment|//            } else {
+comment|//                columnName = "jcr:path";
+comment|//            }
+comment|//            columns.add(factory.column(selectorName, "jcr:path", columnName));
+comment|//        }
 for|for
 control|(
 name|ColumnOrWildcard
@@ -5421,6 +5482,12 @@ name|index
 init|=
 name|Math
 operator|.
+name|max
+argument_list|(
+literal|0
+argument_list|,
+name|Math
+operator|.
 name|min
 argument_list|(
 name|parseIndex
@@ -5431,6 +5498,7 @@ name|length
 argument_list|()
 operator|-
 literal|1
+argument_list|)
 argument_list|)
 decl_stmt|;
 name|String

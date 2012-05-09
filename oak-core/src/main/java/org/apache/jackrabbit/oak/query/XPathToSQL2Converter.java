@@ -325,11 +325,14 @@ name|path
 operator|=
 literal|"/"
 expr_stmt|;
-name|read
+if|if
+condition|(
+name|readIf
 argument_list|(
 literal|"/"
 argument_list|)
-expr_stmt|;
+condition|)
+block|{
 if|if
 condition|(
 name|readIf
@@ -342,6 +345,12 @@ name|descendants
 operator|=
 literal|true
 expr_stmt|;
+block|}
+block|}
+else|else
+block|{
+comment|// expected end of statement
+break|break;
 block|}
 block|}
 else|else
@@ -373,6 +382,38 @@ if|if
 condition|(
 name|readIf
 argument_list|(
+literal|"text"
+argument_list|)
+condition|)
+block|{
+comment|// TODO support text() and jcr:xmltext?
+name|read
+argument_list|(
+literal|"("
+argument_list|)
+expr_stmt|;
+name|read
+argument_list|(
+literal|")"
+argument_list|)
+expr_stmt|;
+name|path
+operator|=
+name|PathUtils
+operator|.
+name|concat
+argument_list|(
+name|path
+argument_list|,
+literal|"jcr:xmltext"
+argument_list|)
+expr_stmt|;
+block|}
+elseif|else
+if|if
+condition|(
+name|readIf
+argument_list|(
 literal|"element"
 argument_list|)
 condition|)
@@ -382,6 +423,22 @@ argument_list|(
 literal|"("
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|readIf
+argument_list|(
+literal|")"
+argument_list|)
+condition|)
+block|{
+comment|// any
+name|children
+operator|=
+literal|true
+expr_stmt|;
+block|}
+else|else
+block|{
 if|if
 condition|(
 name|readIf
@@ -454,6 +511,7 @@ argument_list|(
 literal|")"
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 elseif|else
 if|if
@@ -818,6 +876,13 @@ argument_list|(
 literal|"select "
 argument_list|)
 decl_stmt|;
+name|buff
+operator|.
+name|append
+argument_list|(
+literal|"[jcr:path], "
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|columnList

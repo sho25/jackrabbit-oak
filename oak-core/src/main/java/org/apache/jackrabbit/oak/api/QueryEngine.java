@@ -56,6 +56,14 @@ specifier|public
 interface|interface
 name|QueryEngine
 block|{
+comment|/**      * Get the list of supported query languages.      *      * @return the supported query languages      */
+name|List
+argument_list|<
+name|String
+argument_list|>
+name|getSupportedQueryLanguages
+parameter_list|()
+function_decl|;
 comment|/**      * Parse the query (check if it's valid) and get the list of bind variable names.      *      * @param statement      * @param language      * @return the list of bind variable names      * @throws ParseException      */
 name|List
 argument_list|<
@@ -72,7 +80,7 @@ parameter_list|)
 throws|throws
 name|ParseException
 function_decl|;
-comment|/**      * Execute a query and get the result.      *      * @param statement the query statement      * @param language the language      * @param bindings the bind variable value bindings      * @return the result      * @throws ParseException if the statement could not be parsed      */
+comment|/**      * Execute a query and get the result.      *      * @param statement the query statement      * @param language the language      * @param bindings the bind variable value bindings      * @return the result      * @throws ParseException if the statement could not be parsed      * @throws IllegalArgumentException if there was an error executing the query      */
 name|Result
 name|executeQuery
 parameter_list|(
@@ -93,6 +101,8 @@ parameter_list|)
 throws|throws
 name|ParseException
 function_decl|;
+comment|// TODO pass namespace mapping
+comment|// TODO pass node type information (select * from [xyz] is supposed to return at least the mandatory columns for xyz)
 block|}
 end_interface
 

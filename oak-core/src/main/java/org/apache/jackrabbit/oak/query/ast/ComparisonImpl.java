@@ -264,10 +264,15 @@ name|v2
 argument_list|)
 return|;
 block|}
-comment|// TODO Auto-generated method stub
-return|return
-literal|false
-return|;
+throw|throw
+operator|new
+name|IllegalArgumentException
+argument_list|(
+literal|"Unknown operator: "
+operator|+
+name|operator
+argument_list|)
+throw|;
 block|}
 specifier|private
 specifier|static
@@ -632,7 +637,7 @@ return|;
 default|default:
 throw|throw
 operator|new
-name|RuntimeException
+name|IllegalArgumentException
 argument_list|(
 literal|"Internal error: "
 operator|+

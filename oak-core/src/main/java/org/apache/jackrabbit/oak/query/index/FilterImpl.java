@@ -341,7 +341,7 @@ literal|"none"
 expr_stmt|;
 name|path
 operator|=
-literal|"none"
+literal|"/"
 expr_stmt|;
 name|pathRestriction
 operator|=
@@ -479,7 +479,7 @@ return|;
 default|default:
 throw|throw
 operator|new
-name|RuntimeException
+name|IllegalArgumentException
 argument_list|(
 literal|"Unknown path restriction: "
 operator|+
