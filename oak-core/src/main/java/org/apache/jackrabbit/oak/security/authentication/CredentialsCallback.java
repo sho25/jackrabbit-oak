@@ -13,8 +13,6 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|spi
-operator|.
 name|security
 operator|.
 name|authentication
@@ -25,11 +23,9 @@ begin_import
 import|import
 name|javax
 operator|.
-name|security
+name|jcr
 operator|.
-name|auth
-operator|.
-name|Subject
+name|Credentials
 import|;
 end_import
 
@@ -47,47 +43,58 @@ name|Callback
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|Serializable
+import|;
+end_import
+
 begin_comment
-comment|/**  * Callback for a {@link javax.security.auth.callback.CallbackHandler} to ask  * for a the impersonating {@link javax.security.auth.Subject} to create a  * {@link javax.jcr.Session} to access the {@link javax.jcr.Repository}.  */
+comment|/**  * Callback implementation to retrieve {@code Credentials}  */
 end_comment
 
 begin_class
 specifier|public
 class|class
-name|ImpersonationCallback
+name|CredentialsCallback
 implements|implements
 name|Callback
+implements|,
+name|Serializable
 block|{
-comment|/**      * The impersonating {@link javax.security.auth.Subject}.      */
 specifier|private
-name|Subject
-name|impersonatingSubject
+name|Credentials
+name|credentials
 decl_stmt|;
-comment|/**      * Sets the impersonator in this callback.      *      * @param impersonatingSubject The impersonator to set on this callback.      */
+comment|/**      * Get the retrieved credentials.      *      * @return the retrieved credentials (which may be null)      */
+specifier|public
+name|Credentials
+name|getCredentials
+parameter_list|()
+block|{
+return|return
+name|credentials
+return|;
+block|}
+comment|/**      * Set the retrieved credentials.      *      * @param credentials the retrieved credentials (which may be null)      */
 specifier|public
 name|void
-name|setImpersonator
+name|setCredentials
 parameter_list|(
-name|Subject
-name|impersonatingSubject
+name|Credentials
+name|credentials
 parameter_list|)
 block|{
 name|this
 operator|.
-name|impersonatingSubject
+name|credentials
 operator|=
-name|impersonatingSubject
+name|credentials
 expr_stmt|;
-block|}
-comment|/**      * Returns the impersonator {@link Subject} set on this callback or      * {@code null} if not set.      *      * @return the impersonator {@link Subject} set on this callback or      * {@code null} if not set.      */
-specifier|public
-name|Subject
-name|getImpersonator
-parameter_list|()
-block|{
-return|return
-name|impersonatingSubject
-return|;
 block|}
 block|}
 end_class

@@ -139,11 +139,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|spi
+name|query
 operator|.
-name|commit
-operator|.
-name|EmptyCommitHook
+name|QueryEngineImpl
 import|;
 end_import
 
@@ -156,8 +154,6 @@ operator|.
 name|jackrabbit
 operator|.
 name|oak
-operator|.
-name|spi
 operator|.
 name|security
 operator|.
@@ -177,8 +173,6 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|spi
-operator|.
 name|security
 operator|.
 name|authentication
@@ -197,9 +191,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|query
+name|spi
 operator|.
-name|QueryEngineImpl
+name|QueryIndexProvider
 import|;
 end_import
 
@@ -215,7 +209,9 @@ name|oak
 operator|.
 name|spi
 operator|.
-name|QueryIndexProvider
+name|commit
+operator|.
+name|EmptyCommitHook
 import|;
 end_import
 
