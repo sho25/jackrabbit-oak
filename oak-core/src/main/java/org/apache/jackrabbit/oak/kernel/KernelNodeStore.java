@@ -161,6 +161,24 @@ name|oak
 operator|.
 name|spi
 operator|.
+name|commit
+operator|.
+name|CommitHook
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
 name|state
 operator|.
 name|AbstractNodeState
@@ -324,6 +342,12 @@ specifier|final
 name|MicroKernel
 name|kernel
 decl_stmt|;
+comment|/**      * Commit hook.      */
+specifier|private
+specifier|final
+name|CommitHook
+name|commitHook
+decl_stmt|;
 comment|/**      * Value factory backed by the {@link #kernel} instance.      */
 specifier|private
 specifier|final
@@ -340,6 +364,9 @@ name|KernelNodeStore
 parameter_list|(
 name|MicroKernel
 name|kernel
+parameter_list|,
+name|CommitHook
+name|commitHook
 parameter_list|)
 block|{
 name|this
@@ -347,6 +374,12 @@ operator|.
 name|kernel
 operator|=
 name|kernel
+expr_stmt|;
+name|this
+operator|.
+name|commitHook
+operator|=
+name|commitHook
 expr_stmt|;
 name|this
 operator|.
