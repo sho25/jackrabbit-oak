@@ -167,6 +167,14 @@ name|String
 argument_list|>
 argument_list|()
 decl_stmt|;
+specifier|final
+name|StringBuilder
+name|parseErrors
+init|=
+operator|new
+name|StringBuilder
+argument_list|()
+decl_stmt|;
 if|if
 condition|(
 literal|"/"
@@ -193,11 +201,10 @@ operator|.
 name|Listener
 argument_list|()
 block|{
-comment|// TODO: replace RuntimeException by something that oak-jcr can deal with (e.g. ValueFactory)
 annotation|@
 name|Override
 specifier|public
-name|void
+name|boolean
 name|root
 parameter_list|()
 block|{
@@ -210,13 +217,16 @@ name|isEmpty
 argument_list|()
 condition|)
 block|{
-throw|throw
-operator|new
-name|RuntimeException
+name|parseErrors
+operator|.
+name|append
 argument_list|(
 literal|"/ on non-empty path"
 argument_list|)
-throw|;
+expr_stmt|;
+return|return
+literal|false
+return|;
 block|}
 name|elements
 operator|.
@@ -225,11 +235,14 @@ argument_list|(
 literal|""
 argument_list|)
 expr_stmt|;
+return|return
+literal|true
+return|;
 block|}
 annotation|@
 name|Override
 specifier|public
-name|void
+name|boolean
 name|identifier
 parameter_list|(
 name|String
@@ -245,13 +258,16 @@ name|isEmpty
 argument_list|()
 condition|)
 block|{
-throw|throw
-operator|new
-name|RuntimeException
+name|parseErrors
+operator|.
+name|append
 argument_list|(
 literal|"[identifier] on non-empty path"
 argument_list|)
-throw|;
+expr_stmt|;
+return|return
+literal|false
+return|;
 block|}
 name|elements
 operator|.
@@ -261,21 +277,27 @@ name|identifier
 argument_list|)
 expr_stmt|;
 comment|// todo resolve identifier
-comment|// todo seal
+comment|// todo seal elements
+return|return
+literal|true
+return|;
 block|}
 annotation|@
 name|Override
 specifier|public
-name|void
+name|boolean
 name|current
 parameter_list|()
 block|{
 comment|// nothing to do here
+return|return
+literal|true
+return|;
 block|}
 annotation|@
 name|Override
 specifier|public
-name|void
+name|boolean
 name|parent
 parameter_list|()
 block|{
@@ -287,13 +309,16 @@ name|isEmpty
 argument_list|()
 condition|)
 block|{
-throw|throw
-operator|new
-name|RuntimeException
+name|parseErrors
+operator|.
+name|append
 argument_list|(
 literal|".. of empty path"
 argument_list|)
-throw|;
+expr_stmt|;
+return|return
+literal|false
+return|;
 block|}
 name|elements
 operator|.
@@ -307,11 +332,14 @@ operator|-
 literal|1
 argument_list|)
 expr_stmt|;
+return|return
+literal|true
+return|;
 block|}
 annotation|@
 name|Override
 specifier|public
-name|void
+name|boolean
 name|index
 parameter_list|(
 name|int
@@ -325,14 +353,20 @@ operator|>
 literal|1
 condition|)
 block|{
-throw|throw
-operator|new
-name|RuntimeException
+name|parseErrors
+operator|.
+name|append
 argument_list|(
 literal|"index> 1"
 argument_list|)
-throw|;
+expr_stmt|;
+return|return
+literal|false
+return|;
 block|}
+return|return
+literal|true
+return|;
 block|}
 annotation|@
 name|Override
@@ -344,18 +378,18 @@ name|String
 name|message
 parameter_list|)
 block|{
-throw|throw
-operator|new
-name|RuntimeException
+name|parseErrors
+operator|.
+name|append
 argument_list|(
 name|message
 argument_list|)
-throw|;
+expr_stmt|;
 block|}
 annotation|@
 name|Override
 specifier|public
-name|void
+name|boolean
 name|name
 parameter_list|(
 name|String
@@ -379,13 +413,21 @@ operator|==
 literal|null
 condition|)
 block|{
-name|error
+name|parseErrors
+operator|.
+name|append
 argument_list|(
 literal|"Invalid name: "
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 name|name
 argument_list|)
 expr_stmt|;
+return|return
+literal|false
+return|;
 block|}
 name|elements
 operator|.
@@ -394,11 +436,12 @@ argument_list|(
 name|p
 argument_list|)
 expr_stmt|;
+return|return
+literal|true
+return|;
 block|}
 block|}
 decl_stmt|;
-try|try
-block|{
 name|JcrPathParser
 operator|.
 name|parse
@@ -408,17 +451,35 @@ argument_list|,
 name|listener
 argument_list|)
 expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|RuntimeException
-name|e
-parameter_list|)
+if|if
+condition|(
+name|parseErrors
+operator|.
+name|length
+argument_list|()
+operator|!=
+literal|0
+condition|)
 block|{
+name|log
+operator|.
+name|debug
+argument_list|(
+literal|"Could not parser path "
+operator|+
+name|jcrPath
+operator|+
+literal|": "
+operator|+
+name|parseErrors
+operator|.
+name|toString
+argument_list|()
+argument_list|)
+expr_stmt|;
 return|return
 literal|null
 return|;
-comment|// TODO Avoid exceptions for control flow
 block|}
 name|StringBuilder
 name|oakPath
@@ -544,7 +605,7 @@ block|{
 annotation|@
 name|Override
 specifier|public
-name|void
+name|boolean
 name|root
 parameter_list|()
 block|{
@@ -559,7 +620,7 @@ condition|)
 block|{
 throw|throw
 operator|new
-name|RuntimeException
+name|IllegalArgumentException
 argument_list|(
 literal|"/ on non-empty path"
 argument_list|)
@@ -572,11 +633,14 @@ argument_list|(
 literal|""
 argument_list|)
 expr_stmt|;
+return|return
+literal|true
+return|;
 block|}
 annotation|@
 name|Override
 specifier|public
-name|void
+name|boolean
 name|identifier
 parameter_list|(
 name|String
@@ -594,7 +658,7 @@ condition|)
 block|{
 throw|throw
 operator|new
-name|RuntimeException
+name|IllegalArgumentException
 argument_list|(
 literal|"[identifier] on non-empty path"
 argument_list|)
@@ -608,21 +672,27 @@ name|identifier
 argument_list|)
 expr_stmt|;
 comment|// todo resolve identifier
-comment|// todo seal
+comment|// todo seal elements
+return|return
+literal|true
+return|;
 block|}
 annotation|@
 name|Override
 specifier|public
-name|void
+name|boolean
 name|current
 parameter_list|()
 block|{
 comment|// nothing to do here
+return|return
+literal|false
+return|;
 block|}
 annotation|@
 name|Override
 specifier|public
-name|void
+name|boolean
 name|parent
 parameter_list|()
 block|{
@@ -636,7 +706,7 @@ condition|)
 block|{
 throw|throw
 operator|new
-name|RuntimeException
+name|IllegalArgumentException
 argument_list|(
 literal|".. of empty path"
 argument_list|)
@@ -654,11 +724,14 @@ operator|-
 literal|1
 argument_list|)
 expr_stmt|;
+return|return
+literal|true
+return|;
 block|}
 annotation|@
 name|Override
 specifier|public
-name|void
+name|boolean
 name|index
 parameter_list|(
 name|int
@@ -674,12 +747,15 @@ condition|)
 block|{
 throw|throw
 operator|new
-name|RuntimeException
+name|IllegalArgumentException
 argument_list|(
 literal|"index> 1"
 argument_list|)
 throw|;
 block|}
+return|return
+literal|true
+return|;
 block|}
 annotation|@
 name|Override
@@ -693,7 +769,7 @@ parameter_list|)
 block|{
 throw|throw
 operator|new
-name|RuntimeException
+name|IllegalArgumentException
 argument_list|(
 name|message
 argument_list|)
@@ -702,7 +778,7 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|void
+name|boolean
 name|name
 parameter_list|(
 name|String
@@ -726,6 +802,9 @@ argument_list|(
 name|p
 argument_list|)
 expr_stmt|;
+return|return
+literal|true
+return|;
 block|}
 block|}
 decl_stmt|;

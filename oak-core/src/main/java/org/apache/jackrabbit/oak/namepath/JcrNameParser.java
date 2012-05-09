@@ -101,8 +101,8 @@ name|String
 name|message
 parameter_list|)
 function_decl|;
-comment|/**          * Informs this listener about the result of {@link JcrNameParser#parse(String, org.apache.jackrabbit.oak.namepath.JcrNameParser.Listener)}          *          * @param name The resulting name upon successful completion of          * {@link JcrNameParser#parse(String, org.apache.jackrabbit.oak.namepath.JcrNameParser.Listener)}          */
-name|void
+comment|/**          * Informs this listener about the result of {@link JcrNameParser#parse(String, org.apache.jackrabbit.oak.namepath.JcrNameParser.Listener)}          *          * @param name The resulting name upon successful completion of          * {@link org.apache.jackrabbit.oak.namepath.JcrNameParser#parse(String, org.apache.jackrabbit.oak.namepath.JcrNameParser.Listener)}          */
+name|boolean
 name|name
 parameter_list|(
 name|String
