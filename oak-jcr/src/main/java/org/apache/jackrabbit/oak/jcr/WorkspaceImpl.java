@@ -387,8 +387,6 @@ operator|=
 operator|new
 name|QueryManagerImpl
 argument_list|(
-name|this
-argument_list|,
 name|sessionDelegate
 argument_list|)
 expr_stmt|;

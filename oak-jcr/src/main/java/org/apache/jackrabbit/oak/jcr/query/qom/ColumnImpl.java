@@ -145,10 +145,11 @@ operator|+
 name|getPropertyName
 argument_list|()
 operator|+
-literal|" AS "
+literal|" AS ["
 operator|+
-name|getColumnName
-argument_list|()
+name|columnName
+operator|+
+literal|"]"
 return|;
 block|}
 else|else

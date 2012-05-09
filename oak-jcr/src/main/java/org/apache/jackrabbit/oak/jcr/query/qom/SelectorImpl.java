@@ -109,9 +109,11 @@ parameter_list|()
 block|{
 comment|// TODO quote nodeTypeName?
 return|return
+literal|"["
+operator|+
 name|nodeTypeName
 operator|+
-literal|" AS "
+literal|"] AS "
 operator|+
 name|getSelectorName
 argument_list|()

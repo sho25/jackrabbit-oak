@@ -585,6 +585,7 @@ specifier|final
 name|NodeDelegate
 name|dlg
 decl_stmt|;
+specifier|public
 name|NodeImpl
 parameter_list|(
 name|NodeDelegate
