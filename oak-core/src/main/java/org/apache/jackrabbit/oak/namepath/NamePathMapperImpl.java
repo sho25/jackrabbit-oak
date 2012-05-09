@@ -372,6 +372,21 @@ argument_list|(
 name|name
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|p
+operator|==
+literal|null
+condition|)
+block|{
+name|error
+argument_list|(
+literal|"Invalid name: "
+operator|+
+name|name
+argument_list|)
+expr_stmt|;
+block|}
 name|elements
 operator|.
 name|add

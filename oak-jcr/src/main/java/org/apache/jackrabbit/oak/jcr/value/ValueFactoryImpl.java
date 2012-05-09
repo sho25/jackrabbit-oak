@@ -691,18 +691,40 @@ operator|.
 name|NAME
 condition|)
 block|{
-name|cv
-operator|=
-name|factory
-operator|.
-name|createValue
-argument_list|(
+name|String
+name|oakName
+init|=
 name|namePathMapper
 operator|.
 name|getOakName
 argument_list|(
 name|value
 argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|oakName
+operator|==
+literal|null
+condition|)
+block|{
+throw|throw
+operator|new
+name|ValueFormatException
+argument_list|(
+literal|"Invalid name: "
+operator|+
+name|value
+argument_list|)
+throw|;
+block|}
+name|cv
+operator|=
+name|factory
+operator|.
+name|createValue
+argument_list|(
+name|oakName
 argument_list|,
 name|type
 argument_list|)
@@ -830,7 +852,7 @@ name|IllegalArgumentException
 name|e
 parameter_list|)
 block|{
-comment|// TODO: review exception handling in path/name resolution again
+comment|// TODO: review exception handling in path resolution again
 throw|throw
 operator|new
 name|ValueFormatException

@@ -226,17 +226,10 @@ operator|==
 literal|null
 condition|)
 block|{
-throw|throw
-operator|new
-name|IllegalArgumentException
-argument_list|(
-literal|"prefix '"
-operator|+
-name|pref
-operator|+
-literal|"' is not mapped"
-argument_list|)
-throw|;
+return|return
+literal|null
+return|;
+comment|// not a mapped name
 block|}
 else|else
 block|{
