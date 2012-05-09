@@ -102,7 +102,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * The {@code KernelPrincipalProvider} is a principal provider implementation  * that operates on data obtained from {@code MicroKernel} directly.  */
+comment|/**  * The {@code KernelPrincipalProvider} is a principal provider implementation  * that operates on principal information read from user information stored  * in the{@code MicroKernel}.  */
 end_comment
 
 begin_class
