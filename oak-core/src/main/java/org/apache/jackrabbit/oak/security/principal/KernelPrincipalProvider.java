@@ -139,7 +139,8 @@ name|String
 name|principalName
 parameter_list|)
 block|{
-comment|// TODO
+comment|// TODO: use user-defined query to search for a principalName property
+comment|// TODO  that is defined by a user/group node.
 return|return
 operator|new
 name|Principal
