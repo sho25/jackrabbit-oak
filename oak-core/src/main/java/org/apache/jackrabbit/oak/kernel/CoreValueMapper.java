@@ -195,10 +195,6 @@ name|Integer
 argument_list|>
 argument_list|()
 decl_stmt|;
-specifier|private
-name|CoreValueMapper
-parameter_list|()
-block|{     }
 static|static
 block|{
 for|for
@@ -260,6 +256,11 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+comment|/**      * Avoid instantiation.      */
+specifier|private
+name|CoreValueMapper
+parameter_list|()
+block|{     }
 comment|/**      * Returns the internal JSON representation of the specified {@code value}      * that is stored in the MicroKernel. All property types that are not      * reflected as JSON types are converted to strings and get a type prefix.      *      * @param value The core value to be converted.      * @return The encoded JSON string.      * @see JsonBuilder#encode(String)      * @see JsonBuilder#encode(long)      * @see JsonBuilder#encode(long)      */
 specifier|public
 specifier|static
@@ -376,7 +377,7 @@ return|return
 name|jsonString
 return|;
 block|}
-comment|/**      * Returns an JSON array containing the JSON representation of the      * specified values.      *      * @param values      * @return JSON array containing the JSON representation of the specified      * values.      * @see #toJsonValue(org.apache.jackrabbit.oak.api.CoreValue)      */
+comment|/**      * Returns an JSON array containing the JSON representation of the      * specified values.      *      * @param values The values to be converted to a JSON array.      * @return JSON array containing the JSON representation of the specified      * values.      * @see #toJsonValue(org.apache.jackrabbit.oak.api.CoreValue)      */
 specifier|public
 specifier|static
 name|String
@@ -722,6 +723,8 @@ return|return
 name|values
 return|;
 block|}
+comment|//--------------------------------------------------------------------------
+comment|/**      * Build the JSON representation of the specified value consisting of      * a leading type hint, followed by ':" and the String conversion of this      * value.      *      * @param value The value to be serialized.      * @return The string representation of the specified value including a      * leading type hint.      */
 specifier|private
 specifier|static
 name|String
@@ -782,6 +785,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
+comment|/**      * Returns {@code true} if the specified JSON String represents a value      * serialization that includes a leading type hint.      *      * @param jsonString The JSON String representation of a {@code CoreValue}      * @return {@code true} if the {@code jsonString} starts with a type      * hint; {@code false} otherwise.      * @see #buildJsonStringWithHint(org.apache.jackrabbit.oak.api.CoreValue)      */
 specifier|private
 specifier|static
 name|boolean
