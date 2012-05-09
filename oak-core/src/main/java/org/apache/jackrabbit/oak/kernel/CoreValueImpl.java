@@ -35,26 +35,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
-begin_import
-import|import
 name|javax
 operator|.
 name|jcr
@@ -104,7 +84,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * CoreValueImpl... TODO: javadoc  */
+comment|/**  * {@code CoreValueImpl} is the default implementation of the {@code CoreValue}  * interface. It keeps an object representing the value and the original  * property type used during creation. The value will be any of the following  * objects:  *  *<ul>  *<li>{@link PropertyType#STRING STRING} : a {@code String}</li>  *<li>{@link PropertyType#BINARY BINARY} : a {@code BinaryValue}</li>  *<li>{@link PropertyType#BOOLEAN BOOLEAN} : a {@code Boolean}</li>  *<li>{@link PropertyType#DECIMAL DECIMAL} : a {@code BigDecimal}</li>  *<li>{@link PropertyType#DATE DATE} : a {@code String}</li>  *<li>{@link PropertyType#DOUBLE DOUBLE} : a {@code Double}</li>  *<li>{@link PropertyType#LONG LONG} : a {@code Long}</li>  *<li>{@link PropertyType#NAME NAME} : a {@code String}</li>  *<li>{@link PropertyType#PATH PATH} : a {@code String}</li>  *<li>{@link PropertyType#REFERENCE REFERENCE} : a {@code String}</li>  *<li>{@link PropertyType#WEAKREFERENCE WEAKREFERENCE} : a {@code String}</li>  *<li>{@link PropertyType#URI URI} : a {@code String}</li>  *</ul>  */
 end_comment
 
 begin_class
@@ -113,22 +93,6 @@ name|CoreValueImpl
 implements|implements
 name|CoreValue
 block|{
-comment|/**      * logger instance      */
-specifier|private
-specifier|static
-specifier|final
-name|Logger
-name|log
-init|=
-name|LoggerFactory
-operator|.
-name|getLogger
-argument_list|(
-name|CoreValueImpl
-operator|.
-name|class
-argument_list|)
-decl_stmt|;
 specifier|private
 specifier|final
 name|Object
@@ -178,7 +142,7 @@ operator|=
 name|type
 expr_stmt|;
 block|}
-comment|/**      * Create a new instance.      *      * @param value      * @param type      * @throws IllegalArgumentException if the specified type cannot be created      * from a string value.      */
+comment|/**      * Create a new instance.      *      * @param value A string value. Depending on the specified type the value      * is being converted to the required target type.      * @param type The expected property type of this value.      * @throws IllegalArgumentException if the specified type cannot be created      * from a string value or if the type is invalid.      */
 name|CoreValueImpl
 parameter_list|(
 name|String
@@ -342,7 +306,7 @@ operator|=
 name|type
 expr_stmt|;
 block|}
-comment|/**      * Create a new instance.      *      * @param value      * @throws IllegalArgumentException if the passed {@code value}      * is {@code null}.      */
+comment|/**      * Create a new instance.      *      * @param value A {@code Long} to create a {@code CoreValue} of      * type {@link PropertyType#LONG}.      * @throws IllegalArgumentException if the passed {@code value}      * is {@code null}.      */
 name|CoreValueImpl
 parameter_list|(
 name|Long
@@ -359,7 +323,7 @@ name|LONG
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Create a new instance.      *      * @param value      * @throws IllegalArgumentException if the passed {@code value}      * is {@code null}.      */
+comment|/**      * Create a new instance.      *      * @param value A {@code Double} to create a {@code CoreValue} of      * type {@link PropertyType#DOUBLE}.      * @throws IllegalArgumentException if the passed {@code value}      * is {@code null}.      */
 name|CoreValueImpl
 parameter_list|(
 name|Double
@@ -376,7 +340,7 @@ name|DOUBLE
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Create a new instance.      *      * @param value      * @throws IllegalArgumentException if the passed {@code value}      * is {@code null}.      */
+comment|/**      * Create a new instance.      *      * @param value A {@code Boolean} to create a {@code CoreValue} of      * type {@link PropertyType#BOOLEAN}.      * @throws IllegalArgumentException if the passed {@code value}      * is {@code null}.      */
 name|CoreValueImpl
 parameter_list|(
 name|Boolean
@@ -393,7 +357,7 @@ name|BOOLEAN
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Create a new instance.      *      * @param value      * @throws IllegalArgumentException if the passed {@code value}      * is {@code null}.      */
+comment|/**      * Create a new instance.      *      * @param value A {@code BigDecimal} to create a {@code CoreValue} of      * type {@link PropertyType#DECIMAL}.      * @throws IllegalArgumentException if the passed {@code value}      * is {@code null}.      */
 name|CoreValueImpl
 parameter_list|(
 name|BigDecimal
@@ -410,7 +374,7 @@ name|DECIMAL
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Create a new instance.      *      * @param value      * @throws IllegalArgumentException if the passed {@code value}      * is {@code null}.      */
+comment|/**      * Create a new instance.      *      * @param value A {@code BinaryValue} to create a {@code CoreValue} of      * type {@link PropertyType#BINARY}.      * @throws IllegalArgumentException if the passed {@code value}      * is {@code null}.      */
 name|CoreValueImpl
 parameter_list|(
 name|BinaryValue

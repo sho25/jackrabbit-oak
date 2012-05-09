@@ -67,26 +67,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
-begin_import
-import|import
 name|javax
 operator|.
 name|jcr
@@ -116,7 +96,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * CoreValueFactoryImpl... TODO javadoc  */
+comment|/**  * {@code CoreValueFactoryImpl} is the default implementation of the  * {@code CoreValueFactory} interface.  */
 end_comment
 
 begin_class
@@ -125,22 +105,6 @@ name|CoreValueFactoryImpl
 implements|implements
 name|CoreValueFactory
 block|{
-comment|/**      * logger instance      */
-specifier|private
-specifier|static
-specifier|final
-name|Logger
-name|log
-init|=
-name|LoggerFactory
-operator|.
-name|getLogger
-argument_list|(
-name|CoreValueFactoryImpl
-operator|.
-name|class
-argument_list|)
-decl_stmt|;
 specifier|private
 specifier|final
 name|MicroKernel
@@ -161,7 +125,7 @@ operator|=
 name|mk
 expr_stmt|;
 block|}
-comment|//-----------------------------------------< org.apache.jackrabbit.oak.api.CoreValueFactory>---
+comment|//---------------------------------------------------< CoreValueFactory>---
 annotation|@
 name|Override
 specifier|public
