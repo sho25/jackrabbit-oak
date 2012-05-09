@@ -1078,6 +1078,14 @@ operator|.
 name|nextNodeType
 argument_list|()
 decl_stmt|;
+name|String
+name|name
+init|=
+name|type
+operator|.
+name|getName
+argument_list|()
+decl_stmt|;
 if|if
 condition|(
 name|type
@@ -1091,10 +1099,7 @@ operator|&&
 operator|!
 name|isNodeType
 argument_list|(
-name|type
-operator|.
-name|getName
-argument_list|()
+name|name
 argument_list|)
 condition|)
 block|{
@@ -1120,7 +1125,7 @@ name|declaredSuperTypeNames
 operator|.
 name|contains
 argument_list|(
-name|type
+name|name
 argument_list|)
 condition|)
 block|{
