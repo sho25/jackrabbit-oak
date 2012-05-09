@@ -58,6 +58,7 @@ name|QueryEngine
 name|getQueryEngine
 parameter_list|()
 function_decl|;
+comment|/**      * Returns the internal value factory.      *      * @return the internal value factory.      */
 name|CoreValueFactory
 name|getCoreValueFactory
 parameter_list|()
