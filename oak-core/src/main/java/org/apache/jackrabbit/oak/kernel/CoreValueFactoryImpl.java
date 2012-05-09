@@ -266,6 +266,7 @@ name|InputStream
 name|value
 parameter_list|)
 block|{
+comment|// TODO: mk.write throws MikrokernelException ... deal with this here.
 name|String
 name|binaryID
 init|=
