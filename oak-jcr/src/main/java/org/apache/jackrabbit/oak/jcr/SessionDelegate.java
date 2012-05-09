@@ -632,7 +632,7 @@ name|this
 argument_list|,
 name|getTree
 argument_list|(
-literal|"/"
+literal|""
 argument_list|)
 argument_list|)
 return|;
