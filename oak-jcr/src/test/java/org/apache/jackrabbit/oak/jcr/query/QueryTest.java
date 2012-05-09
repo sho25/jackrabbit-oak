@@ -253,9 +253,7 @@ decl_stmt|;
 name|Session
 name|session
 init|=
-name|repository
-operator|.
-name|login
+name|createAnonymousSession
 argument_list|()
 decl_stmt|;
 try|try

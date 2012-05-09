@@ -191,6 +191,24 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
+name|security
+operator|.
+name|principal
+operator|.
+name|KernelPrincipalProvider
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
 name|spi
 operator|.
 name|QueryIndexProvider
@@ -212,6 +230,26 @@ operator|.
 name|commit
 operator|.
 name|EmptyCommitHook
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|security
+operator|.
+name|principal
+operator|.
+name|PrincipalProvider
 import|;
 end_import
 
@@ -397,6 +435,11 @@ specifier|final
 name|Configuration
 name|authConfig
 decl_stmt|;
+specifier|private
+specifier|final
+name|PrincipalProvider
+name|principalProvider
+decl_stmt|;
 comment|/**      * Utility constructor that creates a new in-memory repository with default      * query index provider. This constructor is intended to be used within      * test cases only.      */
 specifier|public
 name|ContentRepositoryImpl
@@ -467,11 +510,17 @@ argument_list|,
 name|qip
 argument_list|)
 expr_stmt|;
-comment|// TODO: use configurable authentication config
+comment|// TODO: use configurable authentication config and principal provider
 name|authConfig
 operator|=
 operator|new
 name|ConfigurationImpl
+argument_list|()
+expr_stmt|;
+name|principalProvider
+operator|=
+operator|new
+name|KernelPrincipalProvider
 argument_list|()
 expr_stmt|;
 comment|// FIXME: workspace setup must be done elsewhere...
@@ -598,6 +647,8 @@ operator|new
 name|CallbackHandlerImpl
 argument_list|(
 name|credentials
+argument_list|,
+name|principalProvider
 argument_list|)
 argument_list|,
 name|authConfig

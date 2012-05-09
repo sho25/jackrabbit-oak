@@ -89,6 +89,16 @@ name|Test
 import|;
 end_import
 
+begin_import
+import|import
+name|javax
+operator|.
+name|jcr
+operator|.
+name|GuestCredentials
+import|;
+end_import
+
 begin_class
 specifier|public
 class|class
@@ -117,7 +127,9 @@ name|repository
 operator|.
 name|login
 argument_list|(
-literal|null
+operator|new
+name|GuestCredentials
+argument_list|()
 argument_list|,
 literal|"default"
 argument_list|)
