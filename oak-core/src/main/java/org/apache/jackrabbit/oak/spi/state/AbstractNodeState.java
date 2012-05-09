@@ -21,6 +21,22 @@ end_package
 
 begin_import
 import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|api
+operator|.
+name|PropertyState
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|util
@@ -40,22 +56,6 @@ operator|.
 name|atomic
 operator|.
 name|AtomicBoolean
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|api
-operator|.
-name|PropertyState
 import|;
 end_import
 
@@ -270,6 +270,7 @@ control|)
 block|{
 if|if
 condition|(
+operator|!
 name|first
 operator|.
 name|getAndSet
@@ -310,6 +311,7 @@ control|)
 block|{
 if|if
 condition|(
+operator|!
 name|first
 operator|.
 name|getAndSet
