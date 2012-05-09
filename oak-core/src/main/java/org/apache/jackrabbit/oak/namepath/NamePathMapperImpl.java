@@ -531,6 +531,21 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+comment|// empty path: map to "."
+if|if
+condition|(
+name|oakPath
+operator|.
+name|length
+argument_list|()
+operator|==
+literal|0
+condition|)
+block|{
+return|return
+literal|"."
+return|;
+block|}
 comment|// root path is special-cased early on so it does not need to
 comment|// be considered here
 name|oakPath
@@ -866,6 +881,21 @@ literal|'/'
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+comment|// empty path: map to "."
+if|if
+condition|(
+name|jcrPath
+operator|.
+name|length
+argument_list|()
+operator|==
+literal|0
+condition|)
+block|{
+return|return
+literal|"."
+return|;
 block|}
 name|jcrPath
 operator|.
