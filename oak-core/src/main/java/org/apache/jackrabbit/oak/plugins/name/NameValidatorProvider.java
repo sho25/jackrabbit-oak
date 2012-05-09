@@ -179,7 +179,7 @@ argument_list|(
 literal|"rep"
 argument_list|)
 expr_stmt|;
-comment|// Find any extra prefixes from /jcr:system/jcr:namespaceRegistry
+comment|// Find any extra prefixes from /jcr:system/jcr:namespaces
 name|NodeState
 name|system
 init|=
