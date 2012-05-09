@@ -31,20 +31,6 @@ name|MicroKernel
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|json
-operator|.
-name|simple
-operator|.
-name|parser
-operator|.
-name|ParseException
-import|;
-end_import
-
 begin_comment
 comment|/**  * A simple hello world app.  */
 end_comment
@@ -67,8 +53,6 @@ name|String
 modifier|...
 name|args
 parameter_list|)
-throws|throws
-name|ParseException
 block|{
 name|test
 argument_list|(
@@ -94,8 +78,6 @@ parameter_list|(
 name|String
 name|url
 parameter_list|)
-throws|throws
-name|ParseException
 block|{
 name|MicroKernel
 name|mk
