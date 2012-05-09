@@ -97,6 +97,30 @@ name|junit
 operator|.
 name|Assert
 operator|.
+name|assertNotNull
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertNull
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
 name|fail
 import|;
 end_import
@@ -146,11 +170,14 @@ argument_list|()
 operator|+
 literal|']'
 decl_stmt|;
+name|assertNotNull
+argument_list|(
 name|npMapper
 operator|.
 name|getOakPath
 argument_list|(
 name|idPath
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -216,29 +243,16 @@ range|:
 name|invalid
 control|)
 block|{
-try|try
-block|{
+name|assertNull
+argument_list|(
 name|npMapper
 operator|.
 name|getOakPath
 argument_list|(
 name|jcrPath
 argument_list|)
-expr_stmt|;
-name|fail
-argument_list|(
-literal|"Invalid identifier path"
 argument_list|)
 expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|Exception
-name|e
-parameter_list|)
-block|{
-comment|// success
-block|}
 block|}
 block|}
 annotation|@

@@ -1881,7 +1881,7 @@ block|{
 return|return
 name|sessionDelegate
 operator|.
-name|getOakPath
+name|getOakPathOrThrow
 argument_list|(
 name|node
 operator|.

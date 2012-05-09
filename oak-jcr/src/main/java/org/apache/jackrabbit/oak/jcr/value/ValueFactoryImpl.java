@@ -75,6 +75,22 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
+name|jcr
+operator|.
+name|SessionDelegate
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
 name|namepath
 operator|.
 name|NamePathMapper
@@ -750,6 +766,23 @@ argument_list|(
 name|value
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|oakPath
+operator|==
+literal|null
+condition|)
+block|{
+throw|throw
+operator|new
+name|ValueFormatException
+argument_list|(
+literal|"Invalid path: "
+operator|+
+name|value
+argument_list|)
+throw|;
+block|}
 name|cv
 operator|=
 name|factory
@@ -827,59 +860,6 @@ name|NumberFormatException
 name|e
 parameter_list|)
 block|{
-throw|throw
-operator|new
-name|ValueFormatException
-argument_list|(
-literal|"Invalid value "
-operator|+
-name|value
-operator|+
-literal|" for type "
-operator|+
-name|PropertyType
-operator|.
-name|nameFromValue
-argument_list|(
-name|type
-argument_list|)
-argument_list|)
-throw|;
-block|}
-catch|catch
-parameter_list|(
-name|IllegalArgumentException
-name|e
-parameter_list|)
-block|{
-comment|// TODO: review exception handling in path resolution again
-throw|throw
-operator|new
-name|ValueFormatException
-argument_list|(
-literal|"Invalid value "
-operator|+
-name|value
-operator|+
-literal|" for type "
-operator|+
-name|PropertyType
-operator|.
-name|nameFromValue
-argument_list|(
-name|type
-argument_list|)
-argument_list|)
-throw|;
-block|}
-catch|catch
-parameter_list|(
-name|Exception
-name|e
-parameter_list|)
-block|{
-comment|// TODO: review exception handling in path/name resolution again
-comment|// TODO: throws RuntimeException which is pretty ugly
 throw|throw
 operator|new
 name|ValueFormatException

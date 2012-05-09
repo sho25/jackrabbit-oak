@@ -397,6 +397,8 @@ expr_stmt|;
 block|}
 block|}
 decl_stmt|;
+try|try
+block|{
 name|JcrPathParser
 operator|.
 name|parse
@@ -406,6 +408,18 @@ argument_list|,
 name|listener
 argument_list|)
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|RuntimeException
+name|e
+parameter_list|)
+block|{
+return|return
+literal|null
+return|;
+comment|// TODO Avoid exceptions for control flow
+block|}
 name|StringBuilder
 name|oakPath
 init|=
