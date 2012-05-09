@@ -79,7 +79,7 @@ operator|=
 name|impersonatingSubject
 expr_stmt|;
 block|}
-comment|/**      * Returns the impersonator {@link Subject} set on this callback or      *<code>null</code> if not set.      *      * @return the impersonator {@link Subject} set on this callback or      *<code>null</code> if not set.      */
+comment|/**      * Returns the impersonator {@link Subject} set on this callback or      * {@code null} if not set.      *      * @return the impersonator {@link Subject} set on this callback or      * {@code null} if not set.      */
 specifier|public
 name|Subject
 name|getImpersonator
