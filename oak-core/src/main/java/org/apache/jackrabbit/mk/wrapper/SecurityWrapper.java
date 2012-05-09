@@ -19,16 +19,6 @@ end_package
 
 begin_import
 import|import
-name|java
-operator|.
-name|io
-operator|.
-name|InputStream
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -187,6 +177,16 @@ name|PathUtils
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|InputStream
+import|;
+end_import
+
 begin_comment
 comment|/**  * A microkernel prototype implementation that filters nodes based on simple  * access rights. Each user has a password, and (optionally) a list of rights,  * stored as follows: /:user/x { password: "123", rights: "a" } Each node can  * require the user has a certain right: /data { ":right": "a" } Access rights  * are recursive. There is a special right "admin" which means everything is  * allowed, and "write" meaning a user can write.  *<p>  * This implementation is not meant for production, it is only used to find  * (performance and other) problems when using such an approach.  */
 end_comment
@@ -248,7 +248,7 @@ specifier|private
 name|String
 name|rightsRevision
 decl_stmt|;
-comment|/**      * Decorates the given {@link MicroKernel} with authentication and      * authorization. The responsibility of properly disposing the given      * MikroKernel instance remains with the caller.      *      * @param mk the wrapped kernel      * @param user the user name      * @param pass the password      */
+comment|/**      * Decorates the given {@link MicroKernel} with authentication and      * authorization. The responsibility of properly disposing the given      * MicroKernel instance remains with the caller.      *      * @param mk the wrapped kernel      * @param user the user name      * @param pass the password      */
 specifier|public
 name|SecurityWrapper
 parameter_list|(
