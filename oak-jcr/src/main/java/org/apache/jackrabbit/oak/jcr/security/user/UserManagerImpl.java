@@ -1887,10 +1887,6 @@ name|node
 operator|.
 name|getPath
 argument_list|()
-argument_list|,
-operator|new
-name|RepositoryException
-argument_list|()
 argument_list|)
 return|;
 block|}
