@@ -93,6 +93,8 @@ operator|new
 name|EmptyCommitHook
 argument_list|()
 decl_stmt|;
+annotation|@
+name|Override
 specifier|public
 name|NodeState
 name|beforeCommit
@@ -113,6 +115,8 @@ return|return
 name|after
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|afterCommit

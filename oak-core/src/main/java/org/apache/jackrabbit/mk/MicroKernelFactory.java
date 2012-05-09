@@ -950,7 +950,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**      * Delete a directory or file and all subdirectories and files inside it.      *      * @param path the path      */
+comment|/**      * Delete a directory or file and all subdirectories and files inside it.      *      * @param file the file denoting the directory to delete      */
 specifier|private
 specifier|static
 name|void

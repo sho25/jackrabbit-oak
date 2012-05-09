@@ -169,6 +169,9 @@ name|invalid
 init|=
 operator|new
 name|ArrayList
+argument_list|<
+name|String
+argument_list|>
 argument_list|()
 decl_stmt|;
 name|invalid
@@ -504,10 +507,8 @@ if|if
 condition|(
 name|oakPrefix
 operator|.
-name|length
+name|isEmpty
 argument_list|()
-operator|==
-literal|0
 condition|)
 block|{
 return|return
@@ -537,10 +538,8 @@ if|if
 condition|(
 name|jcrPrefix
 operator|.
-name|length
+name|isEmpty
 argument_list|()
-operator|==
-literal|0
 condition|)
 block|{
 return|return
