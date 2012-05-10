@@ -417,11 +417,6 @@ literal|"jackrabbit.oak"
 decl_stmt|;
 specifier|private
 specifier|final
-name|MicroKernel
-name|microKernel
-decl_stmt|;
-specifier|private
-specifier|final
 name|QueryEngine
 name|queryEngine
 decl_stmt|;
@@ -455,21 +450,17 @@ literal|null
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Creates an Oak repository instance based on the given, already      * initialized components.      *      * @param mk underlying kernel instance      * @param indexProvider index provider      */
+comment|/**      * Creates an Oak repository instance based on the given, already      * initialized components.      *      * @param microKernel underlying kernel instance      * @param indexProvider index provider      */
 specifier|public
 name|ContentRepositoryImpl
 parameter_list|(
 name|MicroKernel
-name|mk
+name|microKernel
 parameter_list|,
 name|QueryIndexProvider
 name|indexProvider
 parameter_list|)
 block|{
-name|microKernel
-operator|=
-name|mk
-expr_stmt|;
 name|nodeStore
 operator|=
 operator|new
