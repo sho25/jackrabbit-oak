@@ -255,6 +255,12 @@ specifier|final
 name|NamePathMapper
 name|namePathMapper
 decl_stmt|;
+specifier|private
+name|InputStream
+name|stream
+init|=
+literal|null
+decl_stmt|;
 comment|/**      * Constructs a {@code ValueImpl} object based on a {@code CoreValue}      *      * @param value the value object this {@code ValueImpl} should represent      * @param namePathMapper      */
 specifier|public
 name|ValueImpl
@@ -779,9 +785,13 @@ name|IllegalStateException
 throws|,
 name|RepositoryException
 block|{
-name|InputStream
+if|if
+condition|(
 name|stream
-decl_stmt|;
+operator|==
+literal|null
+condition|)
+block|{
 switch|switch
 condition|(
 name|getType
@@ -840,6 +850,7 @@ operator|.
 name|getNewStream
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 return|return
 name|stream
