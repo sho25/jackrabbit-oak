@@ -89,6 +89,16 @@ begin_import
 import|import
 name|java
 operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|security
 operator|.
 name|Principal
@@ -117,7 +127,7 @@ specifier|final
 name|Repository
 name|repository
 decl_stmt|;
-comment|/**      * Constructor as required by the JCR TCK.      *       * @param settings repository settings      * @throws javax.jcr.RepositoryException If an error occurs.      */
+comment|/**      * Constructor as required by the JCR TCK.      *       * @param settings repository settings      * @throws javax.jcr.RepositoryException If an error occurs.      * @throws IOException       */
 specifier|public
 name|OakRepositoryStub
 parameter_list|(
@@ -126,6 +136,8 @@ name|settings
 parameter_list|)
 throws|throws
 name|RepositoryException
+throws|,
+name|IOException
 block|{
 name|super
 argument_list|(
