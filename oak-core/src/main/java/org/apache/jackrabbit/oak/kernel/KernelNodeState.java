@@ -333,6 +333,7 @@ init|=
 operator|-
 literal|1
 decl_stmt|;
+comment|// TODO: WeakReference?
 specifier|private
 name|Map
 argument_list|<
@@ -342,7 +343,6 @@ name|NodeState
 argument_list|>
 name|childNodes
 decl_stmt|;
-comment|// TODO: WeakReference?
 comment|/**      * Create a new instance of this class representing the node at the      * given {@code path} and {@code revision}. It is an error if the      * underlying Microkernel does not contain such a node.      *      * @param kernel      * @param valueFactory      * @param path      * @param revision      */
 specifier|public
 name|KernelNodeState
@@ -493,7 +493,7 @@ name|reader
 operator|.
 name|read
 argument_list|(
-name|JsopTokenizer
+name|JsopReader
 operator|.
 name|NUMBER
 argument_list|)
@@ -650,7 +650,7 @@ name|reader
 operator|.
 name|read
 argument_list|(
-name|JsopTokenizer
+name|JsopReader
 operator|.
 name|END
 argument_list|)
@@ -819,7 +819,6 @@ name|getChildNodeEntries
 parameter_list|()
 block|{
 return|return
-operator|(
 operator|new
 name|Iterable
 argument_list|<
@@ -883,7 +882,6 @@ argument_list|)
 return|;
 block|}
 block|}
-operator|)
 return|;
 block|}
 comment|//------------------------------------------------------------< internal>---
@@ -1216,7 +1214,7 @@ name|reader
 operator|.
 name|read
 argument_list|(
-name|JsopTokenizer
+name|JsopReader
 operator|.
 name|END
 argument_list|)
