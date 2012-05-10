@@ -1308,6 +1308,15 @@ name|getVersionManager
 argument_list|()
 return|;
 block|}
+specifier|public
+name|ContentSession
+name|getContentSession
+parameter_list|()
+block|{
+return|return
+name|contentSession
+return|;
+block|}
 comment|//------------------------------------------------------------< internal>---
 name|Tree
 name|getTree

@@ -221,6 +221,14 @@ operator|.
 name|currentPath
 argument_list|()
 decl_stmt|;
+name|String
+name|local
+init|=
+name|getLocalPath
+argument_list|(
+name|p
+argument_list|)
+decl_stmt|;
 comment|// the parent of the root is the root,
 comment|// so we need to special case this
 return|return
@@ -229,14 +237,14 @@ name|PathUtils
 operator|.
 name|denotesRoot
 argument_list|(
-name|p
+name|local
 argument_list|)
 operator|&&
 name|PathUtils
 operator|.
 name|getParentPath
 argument_list|(
-name|p
+name|local
 argument_list|)
 operator|.
 name|equals
@@ -265,11 +273,19 @@ name|getSelector
 argument_list|()
 condition|)
 block|{
+name|String
+name|path
+init|=
+name|getAbsolutePath
+argument_list|(
+name|parentPath
+argument_list|)
+decl_stmt|;
 name|f
 operator|.
 name|restrictPath
 argument_list|(
-name|parentPath
+name|path
 argument_list|,
 name|Filter
 operator|.
