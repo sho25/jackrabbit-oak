@@ -161,6 +161,20 @@ end_import
 
 begin_import
 import|import
+name|javax
+operator|.
+name|security
+operator|.
+name|auth
+operator|.
+name|login
+operator|.
+name|LoginException
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|io
@@ -405,7 +419,30 @@ parameter_list|()
 throws|throws
 name|IOException
 block|{
-comment|// todo implement close
+try|try
+block|{
+name|loginContext
+operator|.
+name|logout
+argument_list|()
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|LoginException
+name|e
+parameter_list|)
+block|{
+name|log
+operator|.
+name|error
+argument_list|(
+literal|"Error during logout."
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 annotation|@
 name|Override
