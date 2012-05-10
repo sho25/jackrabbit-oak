@@ -314,6 +314,25 @@ return|return
 name|sessionDelegate
 return|;
 block|}
+annotation|@
+name|Override
+specifier|public
+name|String
+name|toString
+parameter_list|()
+block|{
+comment|// don't disturb the state: avoid calling getTree()
+return|return
+literal|"NodeDelegate[/"
+operator|+
+name|tree
+operator|.
+name|getPath
+argument_list|()
+operator|+
+literal|']'
+return|;
+block|}
 comment|/**      * Determine whether this is the root node      * @return  {@code true} iff this is the root node      */
 specifier|public
 name|boolean

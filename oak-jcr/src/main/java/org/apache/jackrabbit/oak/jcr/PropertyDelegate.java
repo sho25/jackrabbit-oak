@@ -290,6 +290,32 @@ return|return
 name|sessionDelegate
 return|;
 block|}
+annotation|@
+name|Override
+specifier|public
+name|String
+name|toString
+parameter_list|()
+block|{
+comment|// don't disturb the state: avoid calling resolve()
+return|return
+literal|"PropertyDelegate[/"
+operator|+
+name|parent
+operator|.
+name|getPath
+argument_list|()
+operator|+
+literal|'/'
+operator|+
+name|propertyState
+operator|.
+name|getName
+argument_list|()
+operator|+
+literal|']'
+return|;
+block|}
 comment|/**      * Get the value of the property      * @return  value or {@code null} if multi values      */
 specifier|public
 name|CoreValue

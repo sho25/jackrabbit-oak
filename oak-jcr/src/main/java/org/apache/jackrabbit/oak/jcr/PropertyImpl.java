@@ -47,24 +47,6 @@ name|oak
 operator|.
 name|jcr
 operator|.
-name|util
-operator|.
-name|LogUtil
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|jcr
-operator|.
 name|value
 operator|.
 name|ValueConverter
@@ -573,12 +555,7 @@ name|msg
 init|=
 literal|"Inhomogeneous type of values ("
 operator|+
-name|LogUtil
-operator|.
-name|safeGetJCRPath
-argument_list|(
 name|this
-argument_list|)
 operator|+
 literal|')'
 decl_stmt|;
@@ -1222,12 +1199,7 @@ throw|throw
 operator|new
 name|ValueFormatException
 argument_list|(
-name|LogUtil
-operator|.
-name|safeGetJCRPath
-argument_list|(
 name|this
-argument_list|)
 operator|+
 literal|" is multi-valued."
 argument_list|)
@@ -1271,12 +1243,7 @@ throw|throw
 operator|new
 name|ValueFormatException
 argument_list|(
-name|LogUtil
-operator|.
-name|safeGetJCRPath
-argument_list|(
 name|this
-argument_list|)
 operator|+
 literal|" is not multi-valued."
 argument_list|)

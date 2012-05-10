@@ -469,6 +469,28 @@ name|keepChanges
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
+specifier|public
+name|String
+name|toString
+parameter_list|()
+block|{
+return|return
+operator|(
+name|isNode
+argument_list|()
+condition|?
+literal|"Node["
+else|:
+literal|"Property["
+operator|)
+operator|+
+name|dlg
+operator|+
+literal|']'
+return|;
+block|}
 comment|//------------------------------------------------------------< internal>---
 comment|/**      * Performs a sanity check on this item and the associated session.      *      * @throws RepositoryException if this item has been rendered invalid for some reason      */
 name|void

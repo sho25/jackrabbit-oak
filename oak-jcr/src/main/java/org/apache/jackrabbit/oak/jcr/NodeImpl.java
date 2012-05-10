@@ -125,24 +125,6 @@ name|oak
 operator|.
 name|jcr
 operator|.
-name|util
-operator|.
-name|LogUtil
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|jcr
-operator|.
 name|value
 operator|.
 name|ValueConverter
@@ -2431,12 +2413,7 @@ name|ItemNotFoundException
 argument_list|(
 literal|"No primary item present on node "
 operator|+
-name|LogUtil
-operator|.
-name|safeGetJCRPath
-argument_list|(
 name|this
-argument_list|)
 argument_list|)
 throw|;
 block|}
@@ -2483,12 +2460,7 @@ name|name
 operator|+
 literal|" does not exist on node "
 operator|+
-name|LogUtil
-operator|.
-name|safeGetJCRPath
-argument_list|(
 name|this
-argument_list|)
 argument_list|)
 throw|;
 block|}
