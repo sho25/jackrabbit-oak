@@ -1916,21 +1916,6 @@ argument_list|(
 name|relPath
 argument_list|)
 decl_stmt|;
-comment|// TODO: hack
-if|if
-condition|(
-literal|"."
-operator|.
-name|equals
-argument_list|(
-name|oakPath
-argument_list|)
-condition|)
-block|{
-return|return
-name|this
-return|;
-block|}
 name|NodeDelegate
 name|nd
 init|=

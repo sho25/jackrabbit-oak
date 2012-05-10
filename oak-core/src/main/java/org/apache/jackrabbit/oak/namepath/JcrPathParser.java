@@ -188,7 +188,7 @@ operator|.
 name|length
 argument_list|()
 decl_stmt|;
-comment|// shortcut
+comment|// shortcut for root path
 if|if
 condition|(
 name|len
@@ -212,6 +212,7 @@ argument_list|()
 expr_stmt|;
 return|return;
 block|}
+comment|// short cut for empty path
 if|if
 condition|(
 name|len
@@ -219,13 +220,6 @@ operator|==
 literal|0
 condition|)
 block|{
-name|listener
-operator|.
-name|error
-argument_list|(
-literal|"empty path"
-argument_list|)
-expr_stmt|;
 return|return;
 block|}
 comment|// check if absolute path
