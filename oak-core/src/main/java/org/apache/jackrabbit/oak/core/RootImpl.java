@@ -630,7 +630,7 @@ name|path
 parameter_list|)
 block|{
 name|TreeImpl
-name|state
+name|child
 init|=
 name|root
 decl_stmt|;
@@ -645,9 +645,9 @@ name|path
 argument_list|)
 control|)
 block|{
-name|state
+name|child
 operator|=
-name|state
+name|child
 operator|.
 name|getChild
 argument_list|(
@@ -656,7 +656,7 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|state
+name|child
 operator|==
 literal|null
 condition|)
@@ -667,7 +667,7 @@ return|;
 block|}
 block|}
 return|return
-name|state
+name|child
 return|;
 block|}
 specifier|private
