@@ -220,7 +220,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * ValueImpl...  */
+comment|/**  * The implementation of JCR values.  */
 end_comment
 
 begin_class
@@ -294,7 +294,6 @@ name|value
 return|;
 block|}
 comment|//--------------------------------------------------------------< Value>---
-comment|/**      * @see javax.jcr.Value#getType()      */
 annotation|@
 name|Override
 specifier|public
@@ -309,7 +308,6 @@ name|getType
 argument_list|()
 return|;
 block|}
-comment|/**      * @see javax.jcr.Value#getBoolean()      */
 annotation|@
 name|Override
 specifier|public
@@ -369,7 +367,6 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**      * @see javax.jcr.Value#getDate()      */
 annotation|@
 name|Override
 specifier|public
@@ -460,7 +457,6 @@ return|return
 name|cal
 return|;
 block|}
-comment|/**      * @see javax.jcr.Value#getDecimal()      */
 annotation|@
 name|Override
 specifier|public
@@ -532,7 +528,6 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**      * @see javax.jcr.Value#getDouble()      */
 annotation|@
 name|Override
 specifier|public
@@ -599,7 +594,6 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**      * @see javax.jcr.Value#getLong()      */
 annotation|@
 name|Override
 specifier|public
@@ -666,7 +660,6 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**      * @see javax.jcr.Value#getString()      */
 annotation|@
 name|Override
 specifier|public
@@ -773,7 +766,6 @@ argument_list|()
 return|;
 block|}
 block|}
-comment|/**      * @see javax.jcr.Value#getStream()      */
 annotation|@
 name|Override
 specifier|public
@@ -856,7 +848,6 @@ return|return
 name|stream
 return|;
 block|}
-comment|/**      * @see javax.jcr.Value#getBinary()      */
 annotation|@
 name|Override
 specifier|public
@@ -875,7 +866,6 @@ argument_list|)
 return|;
 block|}
 comment|//-------------------------------------------------------------< Object>---
-comment|/**      * @see Object#equals(Object)      */
 annotation|@
 name|Override
 specifier|public
@@ -916,7 +906,6 @@ literal|false
 return|;
 block|}
 block|}
-comment|/**      * @see Object#hashCode()      */
 annotation|@
 name|Override
 specifier|public
@@ -928,6 +917,20 @@ return|return
 name|value
 operator|.
 name|hashCode
+argument_list|()
+return|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|String
+name|toString
+parameter_list|()
+block|{
+return|return
+name|value
+operator|.
+name|toString
 argument_list|()
 return|;
 block|}
