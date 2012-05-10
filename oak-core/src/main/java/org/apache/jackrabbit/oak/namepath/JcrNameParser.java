@@ -190,8 +190,6 @@ block|}
 comment|// parse the name
 name|String
 name|prefix
-init|=
-literal|""
 decl_stmt|;
 name|int
 name|nameStart
