@@ -53,16 +53,6 @@ name|javax
 operator|.
 name|jcr
 operator|.
-name|Binary
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|jcr
-operator|.
 name|Node
 import|;
 end_import
@@ -390,7 +380,7 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Creates four nodes under the given node. Each node has a String      * property named "prop1" with some content set.      */
+comment|/**      * Creates four nodes under the given node. Each node has a String property      * named "prop1" with some content set.      */
 specifier|private
 name|void
 name|addQueryTestData
@@ -479,7 +469,7 @@ literal|"Apache Jackrabbit"
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Creates three nodes under the given node: one of type nt:resource      * and the other nodes referencing it.      */
+comment|/**      * Creates three nodes under the given node: one of type nt:resource and the      * other nodes referencing it.      */
 specifier|private
 name|void
 name|addNodeTestData
@@ -624,17 +614,17 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// TODO: re-add once we have referenceable nodes
-comment|//        Node resReference = getOrAddNode(node, "reference");
-comment|//        resReference.setProperty("ref", resource);
-comment|//        // make this node itself referenceable
-comment|//        resReference.addMixin("mix:referenceable");
+comment|// Node resReference = getOrAddNode(node, "reference");
+comment|// resReference.setProperty("ref", resource);
+comment|// // make this node itself referenceable
+comment|// resReference.addMixin("mix:referenceable");
 comment|//
-comment|//        Node multiReference = node.addNode("multiReference");
-comment|//        ValueFactory factory = node.getSession().getValueFactory();
-comment|//        multiReference.setProperty("ref", new Value[] {
-comment|//                factory.createValue(resource),
-comment|//                factory.createValue(resReference)
-comment|//            });
+comment|// Node multiReference = node.addNode("multiReference");
+comment|// ValueFactory factory = node.getSession().getValueFactory();
+comment|// multiReference.setProperty("ref", new Value[] {
+comment|// factory.createValue(resource),
+comment|// factory.createValue(resReference)
+comment|// });
 comment|// NodeDefTest requires a test node with a mandatory child node
 name|JcrUtils
 operator|.
@@ -820,7 +810,7 @@ literal|"Prop<>prop"
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * create nodes with following properties      * binary& single      * binary& multival      * notbinary& single      * notbinary& multival      */
+comment|/**      * create nodes with following properties binary& single binary& multival      * notbinary& single notbinary& multival      */
 specifier|private
 name|void
 name|addExportValues
