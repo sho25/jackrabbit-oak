@@ -13,6 +13,8 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
+name|spi
+operator|.
 name|security
 operator|.
 name|authentication
@@ -21,11 +23,41 @@ end_package
 
 begin_import
 import|import
-name|javax
+name|org
 operator|.
-name|jcr
+name|apache
 operator|.
-name|Credentials
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|security
+operator|.
+name|principal
+operator|.
+name|PrincipalProvider
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
 import|;
 end_import
 
@@ -43,57 +75,61 @@ name|Callback
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|Serializable
-import|;
-end_import
-
 begin_comment
-comment|/**  * Callback implementation to retrieve {@code Credentials}  */
+comment|/**  * Callback implementation used to pass a {@link PrincipalProvider} to the  * login module.  */
 end_comment
 
 begin_class
 specifier|public
 class|class
-name|CredentialsCallback
+name|PrincipalProviderCallback
 implements|implements
 name|Callback
-implements|,
-name|Serializable
 block|{
+comment|/**      * logger instance      */
 specifier|private
-name|Credentials
-name|credentials
+specifier|static
+specifier|final
+name|Logger
+name|log
+init|=
+name|LoggerFactory
+operator|.
+name|getLogger
+argument_list|(
+name|PrincipalProviderCallback
+operator|.
+name|class
+argument_list|)
 decl_stmt|;
-comment|/**      * Get the retrieved credentials.      *      * @return the retrieved credentials (which may be null)      */
+specifier|private
+name|PrincipalProvider
+name|principalProvider
+decl_stmt|;
+comment|/**      * Returns the principal provider as set using      * {@link #setPrincipalProvider(org.apache.jackrabbit.oak.spi.security.principal.PrincipalProvider)}      * or {@code null}.      *      * @return an instance of {@code PrincipalProvider} or {@code null} if no      * provider has been set before.      */
 specifier|public
-name|Credentials
-name|getCredentials
+name|PrincipalProvider
+name|getPrincipalProvider
 parameter_list|()
 block|{
 return|return
-name|credentials
+name|principalProvider
 return|;
 block|}
-comment|/**      * Set the retrieved credentials.      *      * @param credentials the retrieved credentials (which may be null)      */
+comment|/**      * Sets the {@code PrincipalProvider} that is being used during the      * authentication process.      *      * @param principalProvider The principal provider to use during the      * authentication process.      */
 specifier|public
 name|void
-name|setCredentials
+name|setPrincipalProvider
 parameter_list|(
-name|Credentials
-name|credentials
+name|PrincipalProvider
+name|principalProvider
 parameter_list|)
 block|{
 name|this
 operator|.
-name|credentials
+name|principalProvider
 operator|=
-name|credentials
+name|principalProvider
 expr_stmt|;
 block|}
 block|}

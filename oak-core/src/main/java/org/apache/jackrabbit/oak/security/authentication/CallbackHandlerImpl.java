@@ -33,6 +33,46 @@ name|spi
 operator|.
 name|security
 operator|.
+name|authentication
+operator|.
+name|CredentialsCallback
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|security
+operator|.
+name|authentication
+operator|.
+name|PrincipalProviderCallback
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|security
+operator|.
 name|principal
 operator|.
 name|PrincipalProvider
@@ -172,7 +212,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * CallbackHandlerImpl...  */
+comment|/**  * Default implementation of the {@link CallbackHandler} interface. It currently  * supports the following {@code Callback} implementations:  *  *<ul>  *<li>{@link CredentialsCallback}</li>  *<li>{@link NameCallback}</li>  *<li>{@link PasswordCallback}</li>  *<li>{@link ImpersonationCallback}</li>  *<li>{@link PrincipalProviderCallback}</li>  *</ul>  */
 end_comment
 
 begin_class
@@ -374,7 +414,7 @@ throw|;
 block|}
 block|}
 block|}
-comment|//--------------------------------------------------------------------------
+comment|//------------------------------------------------------------< private>---
 specifier|private
 name|String
 name|getName

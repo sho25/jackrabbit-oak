@@ -27,6 +27,66 @@ name|apache
 operator|.
 name|jackrabbit
 operator|.
+name|api
+operator|.
+name|security
+operator|.
+name|authentication
+operator|.
+name|token
+operator|.
+name|TokenCredentials
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|security
+operator|.
+name|authentication
+operator|.
+name|CredentialsCallback
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|security
+operator|.
+name|authentication
+operator|.
+name|PrincipalProviderCallback
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
 name|oak
 operator|.
 name|spi
@@ -222,7 +282,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Default login module implementation that authenticates JCR {@code Credentials}  * against the repository. Based on the credentials the {@link Principal}s  * associated with user are retrieved from a configurable {@link PrincipalProvider}.  *  *<h3>Credentials</h3>  *  * The {@code Credentials} are collected during {@link #login()} using the  * following logic:  *  *<ul>  *<li>{@code Credentials} as specified in {@link javax.jcr.Repository#login(javax.jcr.Credentials)}  *     in which case they are retrieved from the {@code CallbackHandler}.</li>  *<li>A {@link #SHARED_KEY_CREDENTIALS} entry in the shared state. The  *     expected value is a set of {@code Credentials}. Ffor backwards compatibility  *     with the Jackrabbit 2.x) the former {@link #SHARED_KEY_JR_CREDENTIALS}  *     entry in the shared state is also respected. In the latter case  *     the expected value is a single {@code Credentials} object.</li>  *<li>If neither of the above variants provides Credentials this module  *     tries to obtain them from the subject. See also  *     {@link Subject#getSubject(java.security.AccessControlContext)}</li>  *</ul>  *  * This implementation of the {@code LoginModule} currently supports the following  * types of JCR Credentials:  *  *<ul>  *<li>{@link SimpleCredentials}</li>  *<li>{@link GuestCredentials}</li>  *<li>// TODO {@link TokenCredentials}</li>  *</ul>  *  * The {@link Credentials} obtained during the {@link #login()} are added to  * the shared state and - upon successful {@link #commit()} to the {@link Subject}.  *  *<h3>Principals</h3>  *  * TODO  *  *<h3>Login vs. Impersonation</h3>  *  * TODO  *  *  *  *  */
+comment|/**  * Default login module implementation that authenticates JCR {@code Credentials}  * against the repository. Based on the credentials the {@link Principal}s  * associated with user are retrieved from a configurable {@link PrincipalProvider}.  *  *<h3>Credentials</h3>  *  * The {@code Credentials} are collected during {@link #login()} using the  * following logic:  *  *<ul>  *<li>{@code Credentials} as specified in {@link javax.jcr.Repository#login(javax.jcr.Credentials)}  *     in which case they are retrieved from the {@code CallbackHandler}.</li>  *<li>A {@link #SHARED_KEY_CREDENTIALS} entry in the shared state. The  *     expected value is a set of {@code Credentials}. Ffor backwards compatibility  *     with the Jackrabbit 2.x) the former {@link #SHARED_KEY_JR_CREDENTIALS}  *     entry in the shared state is also respected. In the latter case  *     the expected value is a single {@code Credentials} object.</li>  *<li>If neither of the above variants provides Credentials this module  *     tries to obtain them from the subject. See also  *     {@link Subject#getSubject(java.security.AccessControlContext)}</li>  *</ul>  *  * This implementation of the {@code LoginModule} currently supports the following  * types of JCR Credentials:  *  *<ul>  *<li>{@link SimpleCredentials}</li>  *<li>{@link GuestCredentials}</li>  *<li>{@link TokenCredentials}</li>  *</ul>  *  * The {@link Credentials} obtained during the {@link #login()} are added to  * the shared state and - upon successful {@link #commit()} to the {@link Subject}.  *  *<h3>Principals</h3>  *  * TODO  * - principal lookup -> principal provider  * - principal resolution based on credentials  *  *<h3>Impersonation</h3>  *  * TODO  *  *  *  *  */
 end_comment
 
 begin_class
@@ -232,7 +292,6 @@ name|LoginModuleImpl
 implements|implements
 name|LoginModule
 block|{
-comment|/**      * logger instance      */
 specifier|private
 specifier|static
 specifier|final
@@ -301,6 +360,15 @@ operator|.
 name|add
 argument_list|(
 name|GuestCredentials
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
+name|SUPPORTED_CREDENTIALS
+operator|.
+name|add
+argument_list|(
+name|TokenCredentials
 operator|.
 name|class
 argument_list|)
@@ -1032,6 +1100,16 @@ literal|"anonymous"
 argument_list|)
 expr_stmt|;
 comment|// FIXME
+block|}
+elseif|else
+if|if
+condition|(
+name|credentials
+operator|instanceof
+name|TokenCredentials
+condition|)
+block|{
+comment|// TODO
 block|}
 block|}
 return|return

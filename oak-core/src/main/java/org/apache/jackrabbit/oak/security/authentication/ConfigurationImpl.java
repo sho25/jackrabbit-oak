@@ -78,7 +78,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * ConfigurationImpl...  */
+comment|/**  * ConfigurationImpl... TODO  */
 end_comment
 
 begin_class
@@ -112,7 +112,7 @@ index|[]
 name|getAppConfigurationEntry
 parameter_list|(
 name|String
-name|s
+name|name
 parameter_list|)
 block|{
 comment|// TODO

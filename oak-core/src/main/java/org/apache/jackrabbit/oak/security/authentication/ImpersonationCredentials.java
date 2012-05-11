@@ -52,7 +52,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * ImpersonationCredentials...  */
+comment|/**  * ImpersonationCredentials...  TODO  */
 end_comment
 
 begin_class
