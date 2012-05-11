@@ -1522,6 +1522,13 @@ argument_list|(
 name|request
 argument_list|)
 expr_stmt|;
+name|IOUtils
+operator|.
+name|closeQuietly
+argument_list|(
+name|in
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 comment|/**      * Convert an I/O exception into a MicroKernelException, possibly by       * unwrapping an already wrapped MicroKernelException.      *       * @param e I/O exception       * @return MicroKernelException      */

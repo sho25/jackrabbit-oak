@@ -144,7 +144,7 @@ name|boundary
 operator|.
 name|length
 operator|+
-literal|1
+literal|2
 condition|)
 block|{
 name|size
@@ -155,7 +155,7 @@ name|boundary
 operator|.
 name|length
 operator|+
-literal|1
+literal|2
 expr_stmt|;
 block|}
 name|buf
@@ -354,6 +354,10 @@ operator|=
 literal|true
 expr_stmt|;
 block|}
+name|count
+operator|+=
+name|offset
+expr_stmt|;
 block|}
 specifier|private
 name|int
@@ -383,6 +387,8 @@ literal|0
 decl_stmt|;
 while|while
 condition|(
+name|offset
+operator|+
 name|i
 operator|<
 name|count
@@ -451,11 +457,6 @@ condition|)
 block|{
 name|offset
 operator|+=
-name|i
-expr_stmt|;
-name|count
-operator|+=
-operator|-
 name|i
 expr_stmt|;
 name|i
