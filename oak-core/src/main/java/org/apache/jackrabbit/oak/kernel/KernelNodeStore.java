@@ -560,6 +560,14 @@ throws|throws
 name|CommitFailedException
 block|{
 name|NodeState
+name|baseState
+init|=
+name|getBaseState
+argument_list|(
+name|newRoot
+argument_list|)
+decl_stmt|;
+name|NodeState
 name|toCommit
 init|=
 name|commitHook
@@ -568,10 +576,7 @@ name|beforeCommit
 argument_list|(
 name|this
 argument_list|,
-name|getBaseState
-argument_list|(
-name|newRoot
-argument_list|)
+name|baseState
 argument_list|,
 name|newRoot
 argument_list|)
@@ -621,7 +626,7 @@ name|afterCommit
 argument_list|(
 name|this
 argument_list|,
-name|toCommit
+name|baseState
 argument_list|,
 name|committed
 argument_list|)
