@@ -522,7 +522,16 @@ throw|throw
 operator|new
 name|IllegalArgumentException
 argument_list|(
-literal|"Alien node state"
+literal|"Alien node state "
+operator|+
+name|base
+operator|.
+name|getClass
+argument_list|()
+operator|+
+literal|": "
+operator|+
+name|root
 argument_list|)
 throw|;
 block|}
@@ -614,7 +623,14 @@ throw|throw
 operator|new
 name|CommitFailedException
 argument_list|(
-literal|"Alien node state: "
+literal|"Alien node state "
+operator|+
+name|newRoot
+operator|.
+name|getClass
+argument_list|()
+operator|+
+literal|": "
 operator|+
 name|newRoot
 argument_list|)
