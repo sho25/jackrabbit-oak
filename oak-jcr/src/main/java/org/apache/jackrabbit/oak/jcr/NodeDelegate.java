@@ -333,6 +333,17 @@ operator|+
 literal|']'
 return|;
 block|}
+specifier|public
+name|String
+name|getIdentifier
+parameter_list|()
+block|{
+comment|// TODO for now the identifier is the OAK path
+return|return
+name|getPath
+argument_list|()
+return|;
+block|}
 comment|/**      * Determine whether this is the root node      * @return  {@code true} iff this is the root node      */
 specifier|public
 name|boolean
