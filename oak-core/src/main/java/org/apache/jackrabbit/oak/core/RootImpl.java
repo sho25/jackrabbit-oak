@@ -594,9 +594,12 @@ name|CommitFailedException
 block|{
 name|store
 operator|.
-name|apply
+name|setRoot
 argument_list|(
 name|nodeStateBuilder
+operator|.
+name|getNodeState
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|rebase

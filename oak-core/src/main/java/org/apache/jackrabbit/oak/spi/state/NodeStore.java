@@ -78,12 +78,12 @@ name|CoreValueFactory
 name|getValueFactory
 parameter_list|()
 function_decl|;
-comment|/**      * Updates the state of the tree.      * @param builder  builder containing the new node state      */
+comment|/**      * Updates the state of the content tree.      *      * @param newRoot new root node state      */
 name|void
-name|apply
+name|setRoot
 parameter_list|(
-name|NodeStateBuilder
-name|builder
+name|NodeState
+name|newRoot
 parameter_list|)
 throws|throws
 name|CommitFailedException
