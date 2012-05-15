@@ -482,7 +482,7 @@ name|log
 operator|.
 name|debug
 argument_list|(
-literal|"Could not parser path "
+literal|"Could not parse path "
 operator|+
 name|jcrPath
 operator|+
