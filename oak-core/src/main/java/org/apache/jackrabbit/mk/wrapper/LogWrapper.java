@@ -342,7 +342,7 @@ name|String
 name|toRevisionId
 parameter_list|,
 name|String
-name|filter
+name|path
 parameter_list|)
 block|{
 try|try
@@ -367,7 +367,7 @@ name|fromRevisionId
 argument_list|,
 name|toRevisionId
 argument_list|,
-name|filter
+name|path
 argument_list|)
 decl_stmt|;
 name|logResult
@@ -411,7 +411,7 @@ name|String
 name|toRevisionId
 parameter_list|,
 name|String
-name|filter
+name|path
 parameter_list|)
 block|{
 try|try
@@ -424,7 +424,7 @@ name|fromRevisionId
 argument_list|,
 name|toRevisionId
 argument_list|,
-name|filter
+name|path
 argument_list|)
 expr_stmt|;
 name|String
@@ -438,7 +438,7 @@ name|fromRevisionId
 argument_list|,
 name|toRevisionId
 argument_list|,
-name|filter
+name|path
 argument_list|)
 decl_stmt|;
 name|logResult
@@ -698,6 +698,9 @@ name|since
 parameter_list|,
 name|int
 name|maxEntries
+parameter_list|,
+name|String
+name|path
 parameter_list|)
 block|{
 try|try
@@ -709,6 +712,8 @@ argument_list|,
 name|since
 argument_list|,
 name|maxEntries
+argument_list|,
+name|path
 argument_list|)
 expr_stmt|;
 name|String
@@ -721,6 +726,8 @@ argument_list|(
 name|since
 argument_list|,
 name|maxEntries
+argument_list|,
+name|path
 argument_list|)
 decl_stmt|;
 name|logResult

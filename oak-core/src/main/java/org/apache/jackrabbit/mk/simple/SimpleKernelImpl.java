@@ -2368,6 +2368,9 @@ name|since
 parameter_list|,
 name|int
 name|maxEntries
+parameter_list|,
+name|String
+name|path
 parameter_list|)
 block|{
 name|NodeImpl
@@ -2650,7 +2653,7 @@ name|String
 name|toRevisionId
 parameter_list|,
 name|String
-name|filter
+name|path
 parameter_list|)
 block|{
 name|fromRevisionId
@@ -3119,7 +3122,7 @@ name|String
 name|toRevisionId
 parameter_list|,
 name|String
-name|filter
+name|path
 parameter_list|)
 block|{
 name|fromRevisionId

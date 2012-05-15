@@ -84,6 +84,9 @@ name|since
 parameter_list|,
 name|int
 name|maxEntries
+parameter_list|,
+name|String
+name|path
 parameter_list|)
 throws|throws
 name|MicroKernelException
@@ -98,7 +101,7 @@ name|String
 name|toRevisionId
 parameter_list|,
 name|String
-name|filter
+name|path
 parameter_list|)
 throws|throws
 name|MicroKernelException
@@ -167,7 +170,7 @@ name|String
 name|toRevisionId
 parameter_list|,
 name|String
-name|filter
+name|path
 parameter_list|)
 function_decl|;
 block|}

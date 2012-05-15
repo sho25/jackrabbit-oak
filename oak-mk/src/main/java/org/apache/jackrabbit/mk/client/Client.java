@@ -386,6 +386,9 @@ name|since
 parameter_list|,
 name|int
 name|maxEntries
+parameter_list|,
+name|String
+name|path
 parameter_list|)
 throws|throws
 name|MicroKernelException
@@ -420,6 +423,15 @@ argument_list|(
 literal|"max_entries"
 argument_list|,
 name|maxEntries
+argument_list|)
+expr_stmt|;
+name|request
+operator|.
+name|addParameter
+argument_list|(
+literal|"path"
+argument_list|,
+name|path
 argument_list|)
 expr_stmt|;
 return|return
@@ -546,7 +558,7 @@ name|String
 name|toRevisionId
 parameter_list|,
 name|String
-name|filter
+name|path
 parameter_list|)
 throws|throws
 name|MicroKernelException
@@ -587,9 +599,9 @@ name|request
 operator|.
 name|addParameter
 argument_list|(
-literal|"filter"
+literal|"path"
 argument_list|,
-name|filter
+name|path
 argument_list|)
 expr_stmt|;
 return|return
@@ -636,7 +648,7 @@ name|String
 name|toRevisionId
 parameter_list|,
 name|String
-name|filter
+name|path
 parameter_list|)
 throws|throws
 name|MicroKernelException
@@ -677,9 +689,9 @@ name|request
 operator|.
 name|addParameter
 argument_list|(
-literal|"filter"
+literal|"path"
 argument_list|,
-name|filter
+name|path
 argument_list|)
 expr_stmt|;
 return|return

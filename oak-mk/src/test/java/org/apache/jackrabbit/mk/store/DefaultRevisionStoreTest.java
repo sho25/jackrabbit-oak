@@ -517,6 +517,8 @@ argument_list|,
 name|Integer
 operator|.
 name|MIN_VALUE
+argument_list|,
+literal|null
 argument_list|)
 decl_stmt|;
 name|assertEquals
@@ -658,6 +660,8 @@ argument_list|,
 name|Integer
 operator|.
 name|MIN_VALUE
+argument_list|,
+literal|null
 argument_list|)
 decl_stmt|;
 name|assertEquals

@@ -525,6 +525,9 @@ name|since
 parameter_list|,
 name|int
 name|maxEntries
+parameter_list|,
+name|String
+name|path
 parameter_list|)
 throws|throws
 name|MicroKernelException
@@ -544,6 +547,7 @@ literal|"this instance has already been disposed"
 argument_list|)
 throw|;
 block|}
+comment|// todo support path filter
 name|maxEntries
 operator|=
 name|maxEntries
@@ -787,7 +791,7 @@ name|String
 name|toRevision
 parameter_list|,
 name|String
-name|filter
+name|path
 parameter_list|)
 throws|throws
 name|MicroKernelException
@@ -807,6 +811,7 @@ literal|"this instance has already been disposed"
 argument_list|)
 throw|;
 block|}
+comment|// todo support path filter
 name|Id
 name|fromRevisionId
 init|=
@@ -1182,17 +1187,30 @@ name|String
 name|toRevision
 parameter_list|,
 name|String
-name|filter
+name|path
 parameter_list|)
 throws|throws
 name|MicroKernelException
 block|{
-comment|// TODO extract and evaluate filter criteria (such as e.g. 'path') specified in 'filter' parameter
-name|String
 name|path
-init|=
+operator|=
+operator|(
+name|path
+operator|==
+literal|null
+operator|||
+literal|""
+operator|.
+name|equals
+argument_list|(
+name|path
+argument_list|)
+operator|)
+condition|?
 literal|"/"
-decl_stmt|;
+else|:
+name|path
+expr_stmt|;
 name|Id
 name|fromRevisionId
 decl_stmt|,
@@ -1322,7 +1340,7 @@ operator|.
 name|getRevisionStore
 argument_list|()
 argument_list|,
-name|filter
+name|path
 argument_list|)
 operator|.
 name|build

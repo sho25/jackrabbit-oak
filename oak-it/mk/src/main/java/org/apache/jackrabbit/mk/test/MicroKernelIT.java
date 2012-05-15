@@ -399,6 +399,8 @@ name|now
 argument_list|,
 operator|-
 literal|1
+argument_list|,
+literal|null
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -425,6 +427,8 @@ argument_list|(
 literal|0
 argument_list|,
 literal|1
+argument_list|,
+literal|null
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -502,6 +506,8 @@ name|ts0
 argument_list|,
 operator|-
 literal|1
+argument_list|,
+literal|null
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -861,6 +867,7 @@ argument_list|,
 literal|0
 argument_list|)
 expr_stmt|;
+comment|// TODO test getRevisionHistory/getJournal path filter
 block|}
 annotation|@
 name|Test
@@ -957,6 +964,7 @@ argument_list|,
 literal|""
 argument_list|)
 expr_stmt|;
+comment|// TODO test path filter
 block|}
 annotation|@
 name|Test
@@ -4427,6 +4435,8 @@ literal|0
 argument_list|,
 operator|-
 literal|1
+argument_list|,
+literal|null
 argument_list|)
 decl_stmt|;
 name|JSONArray

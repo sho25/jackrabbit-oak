@@ -1565,7 +1565,7 @@ name|String
 name|toRevisionId
 parameter_list|,
 name|String
-name|filter
+name|path
 parameter_list|)
 block|{
 return|return
@@ -1577,7 +1577,7 @@ name|fromRevisionId
 argument_list|,
 name|toRevisionId
 argument_list|,
-name|filter
+name|path
 argument_list|)
 return|;
 block|}
@@ -1823,6 +1823,9 @@ name|since
 parameter_list|,
 name|int
 name|maxEntries
+parameter_list|,
+name|String
+name|path
 parameter_list|)
 block|{
 return|return
@@ -1833,6 +1836,8 @@ argument_list|(
 name|since
 argument_list|,
 name|maxEntries
+argument_list|,
+name|path
 argument_list|)
 return|;
 block|}
