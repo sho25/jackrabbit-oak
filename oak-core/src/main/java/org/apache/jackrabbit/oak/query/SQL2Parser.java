@@ -2043,6 +2043,43 @@ name|functionName
 argument_list|)
 condition|)
 block|{
+if|if
+condition|(
+name|readIf
+argument_list|(
+literal|"*"
+argument_list|)
+condition|)
+block|{
+comment|// strictly speaking, CONTAINS(*, ...) is not supported
+comment|// according to the spec:
+comment|// "If only one selector exists in this query, explicit
+comment|// specification of the selectorName preceding the
+comment|// propertyName is optional"
+comment|// but we anyway support it
+name|read
+argument_list|(
+literal|","
+argument_list|)
+expr_stmt|;
+name|c
+operator|=
+name|factory
+operator|.
+name|fullTextSearch
+argument_list|(
+name|getOnlySelectorName
+argument_list|()
+argument_list|,
+literal|null
+argument_list|,
+name|parseStaticOperand
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
 name|String
 name|name
 init|=
@@ -2140,6 +2177,7 @@ name|parseStaticOperand
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 elseif|else
