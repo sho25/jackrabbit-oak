@@ -91,6 +91,7 @@ specifier|protected
 name|boolean
 name|outerJoin
 decl_stmt|;
+comment|/**      * Set the complete constraint of the query (the WHERE ... condition).      *      * @param queryConstraint the constraint      */
 specifier|public
 name|void
 name|setQueryConstraint
@@ -106,6 +107,7 @@ operator|=
 name|queryConstraint
 expr_stmt|;
 block|}
+comment|/**      * Set the join condition (the ON ... condition).      *      * @param joinCondition the join condition      */
 specifier|public
 name|void
 name|setJoinCondition
@@ -121,6 +123,7 @@ operator|=
 name|joinCondition
 expr_stmt|;
 block|}
+comment|/**      * Set whether this source is the right hand side of a left outer join.      *      * @param outerJoin true if yes      */
 specifier|public
 name|void
 name|setOuterJoin
@@ -136,15 +139,17 @@ operator|=
 name|outerJoin
 expr_stmt|;
 block|}
+comment|/**      * Initialize the query. This will 'wire' the selectors with the      * constraints.      *      * @param query the query      */
 specifier|public
 specifier|abstract
 name|void
 name|init
 parameter_list|(
 name|Query
-name|qom
+name|query
 parameter_list|)
 function_decl|;
+comment|/**      * Get the selector with the given name, or null if not found.      *      * @param selectorName the selector name      * @return the selector, or null      */
 specifier|public
 specifier|abstract
 name|SelectorImpl
@@ -154,12 +159,14 @@ name|String
 name|selectorName
 parameter_list|)
 function_decl|;
+comment|/**      * Get the query plan.      *      * @return the query plan      */
 specifier|public
 specifier|abstract
 name|String
 name|getPlan
 parameter_list|()
 function_decl|;
+comment|/**      * Prepare executing the query. This method will decide which index to use.      *      * @param mk the MicroKernel      */
 specifier|public
 specifier|abstract
 name|void
@@ -169,6 +176,7 @@ name|MicroKernel
 name|mk
 parameter_list|)
 function_decl|;
+comment|/**      * Execute the query. The current node is set to before the first row.      *      * @param revisionId the revision to use      */
 specifier|public
 specifier|abstract
 name|void
@@ -178,18 +186,21 @@ name|String
 name|revisionId
 parameter_list|)
 function_decl|;
+comment|/**      * Go to the next node for the given source. This will also filter the      * result for the right node type if required.      *      * @return true if there is a next row      */
 specifier|public
 specifier|abstract
 name|boolean
 name|next
 parameter_list|()
 function_decl|;
+comment|/**      * Get the current absolute path (including workspace name)      *      * @return the path      */
 specifier|public
 specifier|abstract
 name|String
 name|currentPath
 parameter_list|()
 function_decl|;
+comment|/**      * Get the current node.      *      * @return the node      */
 specifier|public
 specifier|abstract
 name|NodeImpl

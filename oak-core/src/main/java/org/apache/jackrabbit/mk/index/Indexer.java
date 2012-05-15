@@ -301,6 +301,7 @@ implements|implements
 name|QueryIndexProvider
 block|{
 comment|// TODO discuss where to store index config data
+specifier|public
 specifier|static
 specifier|final
 name|String

@@ -300,7 +300,6 @@ return|return
 literal|false
 return|;
 block|}
-comment|// TODO data type mapping
 name|CoreValue
 name|v2
 init|=

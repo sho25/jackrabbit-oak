@@ -576,6 +576,10 @@ operator|.
 name|next
 argument_list|()
 expr_stmt|;
+name|currentNode
+operator|=
+literal|null
+expr_stmt|;
 return|return
 literal|true
 return|;

@@ -337,7 +337,7 @@ literal|"none"
 expr_stmt|;
 name|nodeType
 operator|=
-literal|"none"
+literal|""
 expr_stmt|;
 name|path
 operator|=

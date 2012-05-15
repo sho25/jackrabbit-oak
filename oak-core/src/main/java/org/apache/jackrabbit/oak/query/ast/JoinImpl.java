@@ -268,7 +268,7 @@ name|void
 name|init
 parameter_list|(
 name|Query
-name|qom
+name|query
 parameter_list|)
 block|{
 switch|switch
@@ -304,14 +304,14 @@ name|left
 operator|.
 name|init
 argument_list|(
-name|qom
+name|query
 argument_list|)
 expr_stmt|;
 name|right
 operator|.
 name|init
 argument_list|(
-name|qom
+name|query
 argument_list|)
 expr_stmt|;
 break|break;
@@ -350,14 +350,14 @@ name|left
 operator|.
 name|init
 argument_list|(
-name|qom
+name|query
 argument_list|)
 expr_stmt|;
 name|right
 operator|.
 name|init
 argument_list|(
-name|qom
+name|query
 argument_list|)
 expr_stmt|;
 break|break;
@@ -396,14 +396,14 @@ name|right
 operator|.
 name|init
 argument_list|(
-name|qom
+name|query
 argument_list|)
 expr_stmt|;
 name|left
 operator|.
 name|init
 argument_list|(
-name|qom
+name|query
 argument_list|)
 expr_stmt|;
 comment|// TODO right outer join: verify whether converting
@@ -676,7 +676,7 @@ name|String
 name|currentPath
 parameter_list|()
 block|{
-comment|// TODO
+comment|// TODO join: what is the path of a join? it this method ever called?
 return|return
 name|left
 operator|.

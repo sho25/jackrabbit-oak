@@ -229,6 +229,18 @@ argument_list|(
 name|p
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|local
+operator|==
+literal|null
+condition|)
+block|{
+comment|// not a local path
+return|return
+literal|false
+return|;
+block|}
 comment|// the parent of the root is the root,
 comment|// so we need to special case this
 return|return

@@ -52,7 +52,7 @@ name|boolean
 name|evaluate
 parameter_list|()
 function_decl|;
-comment|/**      * Apply the condition to the filter, further restricting the filter if possible.      *      * @param f the filter      */
+comment|/**      * Apply the condition to the filter, further restricting the filter if      * possible. This may also verify the data types are compatible, and that      * paths are valid.      *      * @param f the filter      */
 specifier|public
 specifier|abstract
 name|void

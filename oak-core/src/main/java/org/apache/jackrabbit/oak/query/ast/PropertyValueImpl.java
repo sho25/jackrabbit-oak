@@ -29,22 +29,6 @@ name|jackrabbit
 operator|.
 name|mk
 operator|.
-name|json
-operator|.
-name|JsopTokenizer
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|mk
-operator|.
 name|simple
 operator|.
 name|NodeImpl
@@ -61,9 +45,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|commons
+name|api
 operator|.
-name|PathUtils
+name|CoreValue
 import|;
 end_import
 
@@ -77,9 +61,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|api
+name|commons
 operator|.
-name|CoreValue
+name|PathUtils
 import|;
 end_import
 
@@ -334,7 +318,6 @@ return|return
 literal|null
 return|;
 block|}
-comment|// TODO data type mapping
 name|String
 name|value
 init|=
@@ -345,22 +328,8 @@ argument_list|(
 name|name
 argument_list|)
 decl_stmt|;
-name|value
-operator|=
-name|JsopTokenizer
-operator|.
-name|decodeQuoted
-argument_list|(
-name|value
-argument_list|)
-expr_stmt|;
 return|return
-name|query
-operator|.
-name|getValueFactory
-argument_list|()
-operator|.
-name|createValue
+name|getCoreValue
 argument_list|(
 name|value
 argument_list|)

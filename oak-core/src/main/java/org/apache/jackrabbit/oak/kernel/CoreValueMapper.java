@@ -136,6 +136,7 @@ comment|/**  * CoreValueUtil provides methods to convert {@code CoreValue}s to t
 end_comment
 
 begin_class
+specifier|public
 class|class
 name|CoreValueMapper
 block|{

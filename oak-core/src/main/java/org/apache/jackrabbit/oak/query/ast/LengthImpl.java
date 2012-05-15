@@ -21,6 +21,16 @@ end_package
 
 begin_import
 import|import
+name|javax
+operator|.
+name|jcr
+operator|.
+name|PropertyType
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -148,15 +158,6 @@ return|return
 literal|null
 return|;
 block|}
-comment|// TODO LENGTH(..) is the length of the string representation?
-name|String
-name|value
-init|=
-name|v
-operator|.
-name|getString
-argument_list|()
-decl_stmt|;
 return|return
 name|query
 operator|.
@@ -165,7 +166,7 @@ argument_list|()
 operator|.
 name|createValue
 argument_list|(
-name|value
+name|v
 operator|.
 name|length
 argument_list|()
@@ -188,8 +189,75 @@ name|CoreValue
 name|v
 parameter_list|)
 block|{
-comment|// ignore
-comment|// TODO LENGTH(x) conditions: can use IS NOT NULL?
+switch|switch
+condition|(
+name|v
+operator|.
+name|getType
+argument_list|()
+condition|)
+block|{
+case|case
+name|PropertyType
+operator|.
+name|LONG
+case|:
+case|case
+name|PropertyType
+operator|.
+name|DECIMAL
+case|:
+case|case
+name|PropertyType
+operator|.
+name|DOUBLE
+case|:
+comment|// ok - comparison with a number
+break|break;
+case|case
+name|PropertyType
+operator|.
+name|BINARY
+case|:
+case|case
+name|PropertyType
+operator|.
+name|STRING
+case|:
+case|case
+name|PropertyType
+operator|.
+name|DATE
+case|:
+comment|// ok - compare with a string literal
+break|break;
+default|default:
+throw|throw
+operator|new
+name|IllegalArgumentException
+argument_list|(
+literal|"Can not compare the length with a constant of type "
+operator|+
+name|PropertyType
+operator|.
+name|nameFromValue
+argument_list|(
+name|v
+operator|.
+name|getType
+argument_list|()
+argument_list|)
+operator|+
+literal|" and value "
+operator|+
+name|v
+operator|.
+name|toString
+argument_list|()
+argument_list|)
+throw|;
+block|}
+comment|// TODO LENGTH(x) conditions: can use IS NOT NULL as a condition?
 block|}
 block|}
 end_class

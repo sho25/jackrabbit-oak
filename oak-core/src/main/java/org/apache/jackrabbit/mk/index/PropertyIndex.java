@@ -225,9 +225,9 @@ name|nodeName
 operator|.
 name|substring
 argument_list|(
-literal|0
-argument_list|,
 name|index
+operator|+
+literal|1
 argument_list|)
 decl_stmt|;
 return|return
