@@ -225,6 +225,16 @@ decl_stmt|;
 if|if
 condition|(
 operator|!
+name|PathUtils
+operator|.
+name|isAncestor
+argument_list|(
+name|path
+argument_list|,
+name|pathFilter
+argument_list|)
+operator|&&
+operator|!
 name|path
 operator|.
 name|startsWith
@@ -368,7 +378,6 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-operator|!
 name|p
 operator|.
 name|startsWith
@@ -377,8 +386,6 @@ name|pathFilter
 argument_list|)
 condition|)
 block|{
-return|return;
-block|}
 name|buff
 operator|.
 name|tag
@@ -402,6 +409,7 @@ operator|.
 name|newline
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 annotation|@
 name|Override
@@ -434,7 +442,6 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-operator|!
 name|p
 operator|.
 name|startsWith
@@ -443,8 +450,6 @@ name|pathFilter
 argument_list|)
 condition|)
 block|{
-return|return;
-block|}
 name|buff
 operator|.
 name|tag
@@ -468,6 +473,7 @@ operator|.
 name|newline
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 annotation|@
 name|Override
@@ -497,7 +503,6 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-operator|!
 name|p
 operator|.
 name|startsWith
@@ -506,8 +511,6 @@ name|pathFilter
 argument_list|)
 condition|)
 block|{
-return|return;
-block|}
 comment|// since property and node deletions can't be distinguished
 comment|// using the "-<path>" notation we're representing
 comment|// property deletions as "^<path>:null"
@@ -531,6 +534,7 @@ operator|.
 name|newline
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 annotation|@
 name|Override
@@ -560,7 +564,6 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-operator|!
 name|p
 operator|.
 name|startsWith
@@ -569,8 +572,6 @@ name|pathFilter
 argument_list|)
 condition|)
 block|{
-return|return;
-block|}
 name|addedNodes
 operator|.
 name|put
@@ -611,6 +612,7 @@ name|newline
 argument_list|()
 expr_stmt|;
 block|}
+block|}
 annotation|@
 name|Override
 specifier|public
@@ -639,7 +641,6 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-operator|!
 name|p
 operator|.
 name|startsWith
@@ -648,8 +649,6 @@ name|pathFilter
 argument_list|)
 condition|)
 block|{
-return|return;
-block|}
 name|removedNodes
 operator|.
 name|put
@@ -678,6 +677,7 @@ operator|.
 name|newline
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 annotation|@
 name|Override
@@ -710,6 +710,15 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+name|PathUtils
+operator|.
+name|isAncestor
+argument_list|(
+name|p
+argument_list|,
+name|pathFilter
+argument_list|)
+operator|||
 name|p
 operator|.
 name|startsWith
@@ -826,7 +835,6 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-operator|!
 name|p
 operator|.
 name|startsWith
@@ -835,8 +843,6 @@ name|pathFilter
 argument_list|)
 condition|)
 block|{
-return|return;
-block|}
 name|buff
 operator|.
 name|tag
@@ -860,6 +866,7 @@ operator|.
 name|newline
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 annotation|@
 name|Override
@@ -892,7 +899,6 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-operator|!
 name|p
 operator|.
 name|startsWith
@@ -901,8 +907,6 @@ name|pathFilter
 argument_list|)
 condition|)
 block|{
-return|return;
-block|}
 name|buff
 operator|.
 name|tag
@@ -926,6 +930,7 @@ operator|.
 name|newline
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 annotation|@
 name|Override
@@ -955,7 +960,6 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-operator|!
 name|p
 operator|.
 name|startsWith
@@ -964,8 +968,6 @@ name|pathFilter
 argument_list|)
 condition|)
 block|{
-return|return;
-block|}
 comment|// since property and node deletions can't be distinguished
 comment|// using the "-<path>" notation we're representing
 comment|// property deletions as "^<path>:null"
@@ -989,6 +991,7 @@ operator|.
 name|newline
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 annotation|@
 name|Override
@@ -1031,7 +1034,6 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-operator|!
 name|p
 operator|.
 name|startsWith
@@ -1040,8 +1042,6 @@ name|pathFilter
 argument_list|)
 condition|)
 block|{
-return|return;
-block|}
 name|buff
 operator|.
 name|tag
@@ -1072,6 +1072,7 @@ operator|.
 name|newline
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 annotation|@
 name|Override
@@ -1114,7 +1115,6 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-operator|!
 name|p
 operator|.
 name|startsWith
@@ -1123,8 +1123,6 @@ name|pathFilter
 argument_list|)
 condition|)
 block|{
-return|return;
-block|}
 name|buff
 operator|.
 name|tag
@@ -1144,6 +1142,7 @@ operator|.
 name|newline
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 annotation|@
 name|Override
@@ -1176,6 +1175,15 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+name|PathUtils
+operator|.
+name|isAncestor
+argument_list|(
+name|p
+argument_list|,
+name|pathFilter
+argument_list|)
+operator|||
 name|p
 operator|.
 name|startsWith
