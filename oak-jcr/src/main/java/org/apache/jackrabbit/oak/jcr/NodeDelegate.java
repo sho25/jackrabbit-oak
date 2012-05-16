@@ -151,6 +151,16 @@ name|List
 import|;
 end_import
 
+begin_import
+import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|CheckForNull
+import|;
+end_import
+
 begin_comment
 comment|/**  * {@code NodeDelegate} serve as internal representations of {@code Node}s.  * The methods of this class do not throw checked exceptions. Instead clients  * are expected to inspect the return value and ensure that all preconditions  * hold before a method is invoked. Specifically the behaviour of all methods  * of this class but {@link #isStale()} is undefined if the instance is stale.  * An item is stale if the underlying items does not exist anymore.  */
 end_comment
@@ -372,6 +382,8 @@ argument_list|()
 return|;
 block|}
 comment|/**      * Get a property      * @param relPath  oak path      * @return  property at the path given by {@code relPath} or {@code null} if      * no such property exists      */
+annotation|@
+name|CheckForNull
 specifier|public
 name|PropertyDelegate
 name|getProperty

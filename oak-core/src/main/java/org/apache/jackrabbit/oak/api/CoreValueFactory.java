@@ -47,6 +47,16 @@ name|BigDecimal
 import|;
 end_import
 
+begin_import
+import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|Nonnull
+import|;
+end_import
+
 begin_comment
 comment|/**  * {@code CoreValueFactory} defines methods to create new instances of  * {@code CoreValue}.  */
 end_comment
@@ -110,6 +120,8 @@ comment|/**      * Creates a new value of the specified type.      *      * @par
 name|CoreValue
 name|createValue
 parameter_list|(
+annotation|@
+name|Nonnull
 name|String
 name|value
 parameter_list|,

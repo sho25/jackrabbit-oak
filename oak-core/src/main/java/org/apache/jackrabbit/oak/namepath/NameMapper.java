@@ -17,12 +17,24 @@ name|namepath
 package|;
 end_package
 
+begin_import
+import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|CheckForNull
+import|;
+end_import
+
 begin_interface
 specifier|public
 interface|interface
 name|NameMapper
 block|{
 comment|/**      * Returns the Oak name for the given JCR name, or {@code null} if no      * such mapping exists because the given JCR name contains an unknown      * namespace URI or prefix, or is otherwise invalid.      *      * @param jcrName JCR name      * @return Oak name, or {@code null}      */
+annotation|@
+name|CheckForNull
 name|String
 name|getOakName
 parameter_list|(
@@ -31,6 +43,8 @@ name|jcrName
 parameter_list|)
 function_decl|;
 comment|/**      * Returns the JCR name for the given Oak name. The given name is      * expected to have come from a valid Oak repository that contains      * only valid names with proper namespace mappings. If that's not      * the case, either a programming error or a repository corruption      * has occurred and an appropriate unchecked exception gets thrown.      *      * @param oakName Oak name      * @return JCR name      */
+annotation|@
+name|CheckForNull
 name|String
 name|getJcrName
 parameter_list|(
