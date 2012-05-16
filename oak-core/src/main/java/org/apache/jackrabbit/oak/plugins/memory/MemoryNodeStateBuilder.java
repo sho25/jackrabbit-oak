@@ -213,6 +213,26 @@ name|NodeState
 name|getNodeState
 parameter_list|()
 block|{
+if|if
+condition|(
+name|properties
+operator|.
+name|isEmpty
+argument_list|()
+operator|&&
+name|nodes
+operator|.
+name|isEmpty
+argument_list|()
+condition|)
+block|{
+return|return
+name|base
+return|;
+comment|// shortcut
+block|}
+else|else
+block|{
 return|return
 operator|new
 name|ModifiedNodeState
@@ -242,6 +262,7 @@ name|nodes
 argument_list|)
 argument_list|)
 return|;
+block|}
 block|}
 annotation|@
 name|Override
