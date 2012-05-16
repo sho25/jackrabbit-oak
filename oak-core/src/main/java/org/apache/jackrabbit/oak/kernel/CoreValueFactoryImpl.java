@@ -100,6 +100,7 @@ comment|/**  * {@code CoreValueFactoryImpl} is the default implementation of the
 end_comment
 
 begin_class
+specifier|public
 class|class
 name|CoreValueFactoryImpl
 implements|implements
