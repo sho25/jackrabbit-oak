@@ -298,15 +298,10 @@ return|;
 block|}
 else|else
 block|{
-throw|throw
-operator|new
-name|Exception
-argument_list|(
-literal|"path doesn't exist in the specified revisions: "
-operator|+
-name|path
-argument_list|)
-throw|;
+comment|// path doesn't exist in the specified revisions
+return|return
+literal|""
+return|;
 block|}
 block|}
 elseif|else
