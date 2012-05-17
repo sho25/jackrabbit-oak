@@ -1130,6 +1130,9 @@ argument_list|,
 name|destAbsPath
 argument_list|)
 decl_stmt|;
+comment|// FIXME: the following checks should be done against this session
+comment|// which might contain transient modifications but rather against
+comment|// the workspace. OAK-105
 comment|// check destination
 name|Tree
 name|dest
