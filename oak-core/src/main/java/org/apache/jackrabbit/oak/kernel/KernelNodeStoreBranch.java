@@ -604,11 +604,11 @@ argument_list|()
 decl_stmt|;
 name|String
 name|mergedRevision
-init|=
-literal|null
 decl_stmt|;
 try|try
 block|{
+name|mergedRevision
+operator|=
 name|kernel
 operator|.
 name|merge
