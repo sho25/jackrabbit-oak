@@ -31,22 +31,6 @@ name|oak
 operator|.
 name|api
 operator|.
-name|CommitFailedException
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|api
-operator|.
 name|CoreValueFactory
 import|;
 end_import
@@ -65,6 +49,11 @@ name|NodeState
 name|getRoot
 parameter_list|()
 function_decl|;
+comment|/**      * Creates a new branch of the tree to which transient changes can be applied.      *      * @return branch      */
+name|NodeStoreBranch
+name|branch
+parameter_list|()
+function_decl|;
 comment|/**      * Returns a builder for constructing a new or modified node state.      * The builder is initialized with all the properties and child nodes      * from the given base node state.      *      * @param base  base node state, or {@code null} for building new nodes      * @return  builder instance      */
 name|NodeStateBuilder
 name|getBuilder
@@ -77,16 +66,6 @@ comment|/**      * Returns the factory for creating values used for building nod
 name|CoreValueFactory
 name|getValueFactory
 parameter_list|()
-function_decl|;
-comment|/**      * Updates the state of the content tree.      *      * @param newRoot new root node state      */
-name|void
-name|setRoot
-parameter_list|(
-name|NodeState
-name|newRoot
-parameter_list|)
-throws|throws
-name|CommitFailedException
 function_decl|;
 comment|/**      * Compares the given two node states. Any found differences are      * reported by calling the relevant added, changed or deleted methods      * of the given handler.      *      * @param before node state before changes      * @param after node state after changes      * @param diff handler of node state differences      */
 name|void

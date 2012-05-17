@@ -31,85 +31,61 @@ name|oak
 operator|.
 name|api
 operator|.
-name|CoreValue
+name|CommitFailedException
 import|;
 end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|List
-import|;
-end_import
-
-begin_comment
-comment|/**  * Builder interface for constructing new {@link NodeState node states}.  */
-end_comment
 
 begin_interface
 specifier|public
 interface|interface
-name|NodeStateBuilder
+name|NodeStoreBranch
 block|{
-comment|/**      * Returns an immutable node state that matches the current state of      * the builder.      *      * @return immutable node state      */
+comment|/**      * Returns the latest state of the branch.      *      * @return root node state      */
 name|NodeState
-name|getNodeState
+name|getRoot
 parameter_list|()
 function_decl|;
-comment|/**      * Add a sub-tree      *      * @param name  name child node containing the sub-tree      * @param nodeState  sub-tree      */
-name|void
-name|setNode
-parameter_list|(
-name|String
-name|name
-parameter_list|,
+comment|/**      * Returns the base state of this branch.      *      * @return base node state      */
 name|NodeState
-name|nodeState
+name|getBase
+parameter_list|()
+function_decl|;
+comment|/**      * Updates the state of the content tree.      *      * @param newRoot new root node state      */
+name|void
+name|setRoot
+parameter_list|(
+name|NodeState
+name|newRoot
 parameter_list|)
 function_decl|;
-comment|/**      * Remove a child node      * @param name  name of the child node      */
-name|void
-name|removeNode
+comment|/**      * Moves a node.      *      * @param source source path      * @param target target path      * @return  {@code true} iff the move succeeded      */
+name|boolean
+name|move
 parameter_list|(
 name|String
-name|name
-parameter_list|)
-function_decl|;
-comment|/**      * Set a property.      *      * @param name property name      * @param value      */
-name|void
-name|setProperty
-parameter_list|(
-name|String
-name|name
+name|source
 parameter_list|,
-name|CoreValue
-name|value
+name|String
+name|target
 parameter_list|)
 function_decl|;
-comment|/**      * Set a property.      *      * @param name property name      * @param values      */
-name|void
-name|setProperty
+comment|/**      * Copies a node.      *      * @param source source path      * @param target target path      * @return  {@code true} iff the copy succeeded      */
+name|boolean
+name|copy
 parameter_list|(
 name|String
-name|name
+name|source
 parameter_list|,
-name|List
-argument_list|<
-name|CoreValue
-argument_list|>
-name|values
+name|String
+name|target
 parameter_list|)
 function_decl|;
-comment|/**      * Remove the named property      * @param name  name of the property      */
-name|void
-name|removeProperty
-parameter_list|(
-name|String
-name|name
-parameter_list|)
+comment|/**      * Merges the changes in this branch to the main content tree.      * @return the node state resulting from the merge.      *      * @throws CommitFailedException if the merge failed      */
+name|NodeState
+name|merge
+parameter_list|()
+throws|throws
+name|CommitFailedException
 function_decl|;
 block|}
 end_interface

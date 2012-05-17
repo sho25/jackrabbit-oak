@@ -72,7 +72,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Extension point for custom functionality to be performed before and  * after content changes are committed. The repository core will call  * all available commit hooks in sequence for all commits it makes or  * sees. The control flows roughly like this:  *<pre>  * NodeStore store = ...;  * NodeState before = ...;  * NodeState after = ...;  *  * for (CommitHook hook : hooks) {  *     after = hook.preCommit(store, before, after);  * }  *  * after = store.setRoot(after);  *  * for (CommitHook hook : hooks) {  *     hook.afterCommit(store, before, after);  * }  *</pre>  *<p>  * Note that instead of implementing this interface directly, most commit  * hooks are better expressed as implementations of the more specific  * extension interfaces defined in this package.  */
+comment|/**  * Extension point for custom functionality to be performed before and  * after content changes are committed. The repository core will call  * all available commit hooks in sequence for all commits it makes or  * sees. The control flows roughly like this:  *<pre>  * NodeStore store = ...;  * NodeState before = ...;  * NodeState after = ...;  *  * for (CommitHook hook : hooks) {  *     after = hook.preCommit(store, before, after);  * }  *  * after = branch.merge();  *  * for (CommitHook hook : hooks) {  *     hook.afterCommit(store, before, after);  * }  *</pre>  *<p>  * Note that instead of implementing this interface directly, most commit  * hooks are better expressed as implementations of the more specific  * extension interfaces defined in this package.  */
 end_comment
 
 begin_interface
