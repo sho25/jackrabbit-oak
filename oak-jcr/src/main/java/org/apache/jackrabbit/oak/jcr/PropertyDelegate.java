@@ -103,6 +103,16 @@ begin_import
 import|import
 name|javax
 operator|.
+name|annotation
+operator|.
+name|Nonnull
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
 name|jcr
 operator|.
 name|Value
@@ -231,6 +241,8 @@ return|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Nonnull
 specifier|public
 name|NodeDelegate
 name|getParent
