@@ -19,6 +19,26 @@ end_package
 
 begin_import
 import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|CheckForNull
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|Nonnull
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -65,6 +85,8 @@ name|sessionDelegate
 expr_stmt|;
 block|}
 comment|/**      * Get the name of this item      * @return oak name of this item      */
+annotation|@
+name|Nonnull
 specifier|public
 specifier|abstract
 name|String
@@ -72,6 +94,8 @@ name|getName
 parameter_list|()
 function_decl|;
 comment|/**      * Get the path of this item      * @return oak path of this item      */
+annotation|@
+name|Nonnull
 specifier|public
 specifier|abstract
 name|String
@@ -79,6 +103,8 @@ name|getPath
 parameter_list|()
 function_decl|;
 comment|/**      * Get the parent of this item      * @return  parent of this item or {@code null} for root      */
+annotation|@
+name|CheckForNull
 specifier|public
 specifier|abstract
 name|NodeDelegate
@@ -93,6 +119,8 @@ name|isStale
 parameter_list|()
 function_decl|;
 comment|/**      * Get the status of this item      * @return  {@link Status} of this item      */
+annotation|@
+name|Nonnull
 specifier|public
 specifier|abstract
 name|Status
@@ -100,6 +128,8 @@ name|getStatus
 parameter_list|()
 function_decl|;
 comment|/**      * Get the session delegate with which this item is associated      * @return  {@link SessionDelegate} to which this item belongs      */
+annotation|@
+name|Nonnull
 specifier|public
 specifier|abstract
 name|SessionDelegate

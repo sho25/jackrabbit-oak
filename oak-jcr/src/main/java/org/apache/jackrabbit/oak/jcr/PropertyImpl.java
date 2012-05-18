@@ -91,6 +91,16 @@ begin_import
 import|import
 name|javax
 operator|.
+name|annotation
+operator|.
+name|Nonnull
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
 name|jcr
 operator|.
 name|Binary
@@ -322,6 +332,8 @@ block|}
 comment|/**      * @see javax.jcr.Item#getParent()      */
 annotation|@
 name|Override
+annotation|@
+name|Nonnull
 specifier|public
 name|Node
 name|getParent
@@ -1179,6 +1191,8 @@ block|}
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Nonnull
 specifier|public
 name|Value
 name|getValue
@@ -1221,6 +1235,8 @@ return|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Nonnull
 specifier|public
 name|Value
 index|[]
@@ -1266,6 +1282,8 @@ block|}
 comment|/**      * @see Property#getString()      */
 annotation|@
 name|Override
+annotation|@
+name|Nonnull
 specifier|public
 name|String
 name|getString
@@ -1289,6 +1307,8 @@ literal|"deprecation"
 argument_list|)
 annotation|@
 name|Override
+annotation|@
+name|Nonnull
 specifier|public
 name|InputStream
 name|getStream
@@ -1307,6 +1327,8 @@ block|}
 comment|/**      * @see javax.jcr.Property#getBinary()      */
 annotation|@
 name|Override
+annotation|@
+name|Nonnull
 specifier|public
 name|Binary
 name|getBinary
@@ -1361,6 +1383,8 @@ block|}
 comment|/**      * @see Property#getDecimal()      */
 annotation|@
 name|Override
+annotation|@
+name|Nonnull
 specifier|public
 name|BigDecimal
 name|getDecimal
@@ -1379,6 +1403,8 @@ block|}
 comment|/**      * @see Property#getDate()      */
 annotation|@
 name|Override
+annotation|@
+name|Nonnull
 specifier|public
 name|Calendar
 name|getDate
@@ -1415,6 +1441,8 @@ block|}
 comment|/**      * @see javax.jcr.Property#getNode()      */
 annotation|@
 name|Override
+annotation|@
+name|Nonnull
 specifier|public
 name|Node
 name|getNode
@@ -1705,6 +1733,8 @@ block|}
 comment|/**      * @see javax.jcr.Property#getProperty()      */
 annotation|@
 name|Override
+annotation|@
+name|Nonnull
 specifier|public
 name|Property
 name|getProperty
@@ -1810,6 +1840,8 @@ block|}
 comment|/**      * @see javax.jcr.Property#getLengths()      */
 annotation|@
 name|Override
+annotation|@
+name|Nonnull
 specifier|public
 name|long
 index|[]
@@ -1874,6 +1906,8 @@ return|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Nonnull
 specifier|public
 name|PropertyDefinition
 name|getDefinition

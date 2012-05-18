@@ -263,6 +263,16 @@ begin_import
 import|import
 name|javax
 operator|.
+name|annotation
+operator|.
+name|Nonnull
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
 name|jcr
 operator|.
 name|ItemExistsException
@@ -556,6 +566,8 @@ return|return
 name|isAlive
 return|;
 block|}
+annotation|@
+name|Nonnull
 specifier|public
 name|Session
 name|getSession
@@ -577,6 +589,8 @@ name|getAuthInfo
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Nonnull
 specifier|public
 name|Repository
 name|getRepository
@@ -630,6 +644,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Nonnull
 specifier|public
 name|NodeDelegate
 name|getRoot
@@ -648,6 +664,8 @@ argument_list|)
 argument_list|)
 return|;
 block|}
+annotation|@
+name|CheckForNull
 specifier|public
 name|NodeDelegate
 name|getNode
@@ -680,6 +698,8 @@ name|tree
 argument_list|)
 return|;
 block|}
+annotation|@
+name|CheckForNull
 specifier|public
 name|NodeDelegate
 name|getNodeByIdentifier
@@ -713,6 +733,8 @@ name|tree
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Nonnull
 specifier|public
 name|ValueFactoryImpl
 name|getValueFactory
@@ -722,6 +744,8 @@ return|return
 name|valueFactory
 return|;
 block|}
+annotation|@
+name|Nonnull
 specifier|public
 name|NamePathMapper
 name|getNamePathMapper
@@ -802,6 +826,8 @@ expr_stmt|;
 block|}
 block|}
 comment|/**      * Shortcut for {@code SessionDelegate.getNamePathMapper().getOakPath(jcrPath)}.      *      * @param jcrPath JCR path      * @return Oak path, or {@code null}      */
+annotation|@
+name|CheckForNull
 specifier|public
 name|String
 name|getOakPathOrNull
@@ -821,6 +847,8 @@ argument_list|)
 return|;
 block|}
 comment|/**      * Returns the Oak path for the given JCR path, or throws a      * {@link PathNotFoundException} if the path can not be mapped.      *      * @param jcrPath JCR path      * @return Oak path      * @throws PathNotFoundException if the path can not be mapped      */
+annotation|@
+name|CheckForNull
 specifier|public
 name|String
 name|getOakPathOrThrowNotFound
@@ -862,6 +890,8 @@ throw|;
 block|}
 block|}
 comment|/**      * Returns the Oak path for the given JCR path, or throws a      * {@link RepositoryException} if the path can not be mapped.      *      * @param jcrPath JCR path      * @return Oak path      * @throws RepositoryException if the path can not be mapped      */
+annotation|@
+name|Nonnull
 specifier|public
 name|String
 name|getOakPathOrThrow
@@ -905,6 +935,8 @@ throw|;
 block|}
 block|}
 comment|//----------------------------------------------------------< Workspace>---
+annotation|@
+name|Nonnull
 specifier|public
 name|Workspace
 name|getWorkspace
@@ -914,6 +946,8 @@ return|return
 name|workspace
 return|;
 block|}
+annotation|@
+name|Nonnull
 specifier|public
 name|String
 name|getWorkspaceName
@@ -1278,6 +1312,8 @@ argument_list|)
 throw|;
 block|}
 block|}
+annotation|@
+name|Nonnull
 specifier|public
 name|LockManager
 name|getLockManager
@@ -1292,6 +1328,8 @@ name|getLockManager
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Nonnull
 specifier|public
 name|QueryEngine
 name|getQueryEngine
@@ -1304,6 +1342,8 @@ name|getQueryEngine
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Nonnull
 specifier|public
 name|QueryManager
 name|getQueryManager
@@ -1318,6 +1358,8 @@ name|getQueryManager
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Nonnull
 specifier|public
 name|NodeTypeManager
 name|getNodeTypeManager
@@ -1332,6 +1374,8 @@ name|getNodeTypeManager
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Nonnull
 specifier|public
 name|VersionManager
 name|getVersionManager
@@ -1346,6 +1390,8 @@ name|getVersionManager
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Nonnull
 specifier|public
 name|ContentSession
 name|getContentSession

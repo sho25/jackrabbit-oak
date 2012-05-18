@@ -617,6 +617,8 @@ block|}
 comment|/**      * @see javax.jcr.Item#getParent()      */
 annotation|@
 name|Override
+annotation|@
+name|Nonnull
 specifier|public
 name|Node
 name|getParent
@@ -755,6 +757,8 @@ comment|//---------------------------------------------------------------< Node>
 comment|/**      * @see Node#addNode(String)      */
 annotation|@
 name|Override
+annotation|@
+name|Nonnull
 specifier|public
 name|Node
 name|addNode
@@ -779,6 +783,8 @@ return|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Nonnull
 specifier|public
 name|Node
 name|addNode
@@ -979,6 +985,8 @@ block|}
 comment|/**      * @see Node#setProperty(String, javax.jcr.Value)      */
 annotation|@
 name|Override
+annotation|@
+name|Nonnull
 specifier|public
 name|Property
 name|setProperty
@@ -1028,6 +1036,8 @@ block|}
 comment|/**      * @see Node#setProperty(String, javax.jcr.Value, int)      */
 annotation|@
 name|Override
+annotation|@
+name|Nonnull
 specifier|public
 name|Property
 name|setProperty
@@ -1139,6 +1149,8 @@ block|}
 comment|/**      * @see Node#setProperty(String, javax.jcr.Value[])      */
 annotation|@
 name|Override
+annotation|@
+name|Nonnull
 specifier|public
 name|Property
 name|setProperty
@@ -1209,6 +1221,8 @@ return|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Nonnull
 specifier|public
 name|Property
 name|setProperty
@@ -1325,6 +1339,8 @@ block|}
 comment|/**      * @see Node#setProperty(String, String[])      */
 annotation|@
 name|Override
+annotation|@
+name|Nonnull
 specifier|public
 name|Property
 name|setProperty
@@ -1355,6 +1371,8 @@ block|}
 comment|/**      * @see Node#setProperty(String, String[], int)      */
 annotation|@
 name|Override
+annotation|@
+name|Nonnull
 specifier|public
 name|Property
 name|setProperty
@@ -1433,6 +1451,8 @@ block|}
 comment|/**      * @see Node#setProperty(String, String)      */
 annotation|@
 name|Override
+annotation|@
+name|Nonnull
 specifier|public
 name|Property
 name|setProperty
@@ -1485,6 +1505,8 @@ block|}
 comment|/**      * @see Node#setProperty(String, String, int)      */
 annotation|@
 name|Override
+annotation|@
+name|Nonnull
 specifier|public
 name|Property
 name|setProperty
@@ -1541,6 +1563,8 @@ literal|"deprecation"
 argument_list|)
 annotation|@
 name|Override
+annotation|@
+name|Nonnull
 specifier|public
 name|Property
 name|setProperty
@@ -1589,6 +1613,8 @@ block|}
 comment|/**      * @see Node#setProperty(String, Binary)      */
 annotation|@
 name|Override
+annotation|@
+name|Nonnull
 specifier|public
 name|Property
 name|setProperty
@@ -1637,6 +1663,8 @@ block|}
 comment|/**      * @see Node#setProperty(String, boolean)      */
 annotation|@
 name|Override
+annotation|@
+name|Nonnull
 specifier|public
 name|Property
 name|setProperty
@@ -1672,6 +1700,8 @@ block|}
 comment|/**      * @see Node#setProperty(String, double)      */
 annotation|@
 name|Override
+annotation|@
+name|Nonnull
 specifier|public
 name|Property
 name|setProperty
@@ -1707,6 +1737,8 @@ block|}
 comment|/**      * @see Node#setProperty(String, BigDecimal)      */
 annotation|@
 name|Override
+annotation|@
+name|Nonnull
 specifier|public
 name|Property
 name|setProperty
@@ -1755,6 +1787,8 @@ block|}
 comment|/**      * @see Node#setProperty(String, long)      */
 annotation|@
 name|Override
+annotation|@
+name|Nonnull
 specifier|public
 name|Property
 name|setProperty
@@ -1790,6 +1824,8 @@ block|}
 comment|/**      * @see Node#setProperty(String, Calendar)      */
 annotation|@
 name|Override
+annotation|@
+name|Nonnull
 specifier|public
 name|Property
 name|setProperty
@@ -1838,6 +1874,8 @@ block|}
 comment|/**      * @see Node#setProperty(String, Node)      */
 annotation|@
 name|Override
+annotation|@
+name|Nonnull
 specifier|public
 name|Property
 name|setProperty
@@ -1885,6 +1923,8 @@ return|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Nonnull
 specifier|public
 name|Node
 name|getNode
@@ -1946,6 +1986,8 @@ block|}
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Nonnull
 specifier|public
 name|NodeIterator
 name|getNodes
@@ -1980,6 +2022,8 @@ return|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Nonnull
 specifier|public
 name|NodeIterator
 name|getNodes
@@ -2057,6 +2101,8 @@ return|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Nonnull
 specifier|public
 name|NodeIterator
 name|getNodes
@@ -2203,6 +2249,8 @@ block|}
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Nonnull
 specifier|public
 name|PropertyIterator
 name|getProperties
@@ -2237,6 +2285,8 @@ return|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Nonnull
 specifier|public
 name|PropertyIterator
 name|getProperties
@@ -2314,6 +2364,8 @@ return|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Nonnull
 specifier|public
 name|PropertyIterator
 name|getProperties
@@ -2393,6 +2445,8 @@ block|}
 comment|/**      * @see javax.jcr.Node#getPrimaryItem()      */
 annotation|@
 name|Override
+annotation|@
+name|Nonnull
 specifier|public
 name|Item
 name|getPrimaryItem
@@ -2480,6 +2534,8 @@ block|}
 comment|/**      * @see javax.jcr.Node#getUUID()      */
 annotation|@
 name|Override
+annotation|@
+name|Nonnull
 specifier|public
 name|String
 name|getUUID
@@ -2515,6 +2571,8 @@ throw|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Nonnull
 specifier|public
 name|String
 name|getIdentifier
@@ -2549,6 +2607,8 @@ block|}
 comment|/**      * @see javax.jcr.Node#getReferences()      */
 annotation|@
 name|Override
+annotation|@
+name|Nonnull
 specifier|public
 name|PropertyIterator
 name|getReferences
@@ -2565,6 +2625,8 @@ return|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Nonnull
 specifier|public
 name|PropertyIterator
 name|getReferences
@@ -2589,6 +2651,8 @@ block|}
 comment|/**      * @see javax.jcr.Node#getWeakReferences()      */
 annotation|@
 name|Override
+annotation|@
+name|Nonnull
 specifier|public
 name|PropertyIterator
 name|getWeakReferences
@@ -2605,6 +2669,8 @@ return|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Nonnull
 specifier|public
 name|PropertyIterator
 name|getWeakReferences
@@ -2743,6 +2809,8 @@ block|}
 comment|/**      * @see javax.jcr.Node#getPrimaryNodeType()      */
 annotation|@
 name|Override
+annotation|@
+name|Nonnull
 specifier|public
 name|NodeType
 name|getPrimaryNodeType
@@ -2787,6 +2855,8 @@ block|}
 comment|/**      * @see javax.jcr.Node#getMixinNodeTypes()      */
 annotation|@
 name|Override
+annotation|@
+name|Nonnull
 specifier|public
 name|NodeType
 index|[]
@@ -3208,6 +3278,8 @@ return|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Nonnull
 specifier|public
 name|NodeDefinition
 name|getDefinition
@@ -3355,6 +3427,8 @@ return|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Nonnull
 specifier|public
 name|String
 name|getCorrespondingNodePath
@@ -3399,6 +3473,8 @@ block|}
 comment|/**      * @see javax.jcr.Node#checkin()      */
 annotation|@
 name|Override
+annotation|@
+name|Nonnull
 specifier|public
 name|Version
 name|checkin
@@ -3498,6 +3574,8 @@ block|}
 comment|/**      * @see javax.jcr.Node#merge(String, boolean)      */
 annotation|@
 name|Override
+annotation|@
+name|Nonnull
 specifier|public
 name|NodeIterator
 name|merge
@@ -3709,6 +3787,8 @@ block|}
 comment|/**      * @see javax.jcr.Node#getVersionHistory()      */
 annotation|@
 name|Override
+annotation|@
+name|Nonnull
 specifier|public
 name|VersionHistory
 name|getVersionHistory
@@ -3732,6 +3812,8 @@ block|}
 comment|/**      * @see javax.jcr.Node#getBaseVersion()      */
 annotation|@
 name|Override
+annotation|@
+name|Nonnull
 specifier|public
 name|Version
 name|getBaseVersion
@@ -3755,6 +3837,8 @@ block|}
 comment|/**      * @see javax.jcr.Node#lock(boolean, boolean)      */
 annotation|@
 name|Override
+annotation|@
+name|Nonnull
 specifier|public
 name|Lock
 name|lock
@@ -3794,6 +3878,8 @@ block|}
 comment|/**      * @see javax.jcr.Node#getLock()      */
 annotation|@
 name|Override
+annotation|@
+name|Nonnull
 specifier|public
 name|Lock
 name|getLock
@@ -3899,6 +3985,8 @@ block|}
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Nonnull
 specifier|public
 name|NodeIterator
 name|getSharedSet
@@ -3960,6 +4048,8 @@ block|}
 comment|/**      * @see javax.jcr.Node#getAllowedLifecycleTransistions()      */
 annotation|@
 name|Override
+annotation|@
+name|Nonnull
 specifier|public
 name|String
 index|[]
