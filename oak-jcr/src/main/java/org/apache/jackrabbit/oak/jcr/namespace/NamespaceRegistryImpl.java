@@ -33,6 +33,16 @@ begin_import
 import|import
 name|javax
 operator|.
+name|annotation
+operator|.
+name|Nonnull
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
 name|jcr
 operator|.
 name|NamespaceException
@@ -276,6 +286,8 @@ block|}
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Nonnull
 specifier|public
 name|String
 index|[]
@@ -312,6 +324,8 @@ block|}
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Nonnull
 specifier|public
 name|String
 index|[]
@@ -348,6 +362,8 @@ block|}
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Nonnull
 specifier|public
 name|String
 name|getURI
@@ -412,6 +428,8 @@ block|}
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Nonnull
 specifier|public
 name|String
 name|getPrefix
@@ -445,9 +463,9 @@ throw|throw
 operator|new
 name|NamespaceException
 argument_list|(
-literal|"No namespace registered for prefix "
+literal|"No namespace registered for uri: "
 operator|+
-name|prefix
+name|uri
 argument_list|)
 throw|;
 block|}
