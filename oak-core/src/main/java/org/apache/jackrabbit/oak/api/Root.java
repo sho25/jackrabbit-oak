@@ -61,9 +61,9 @@ name|void
 name|rebase
 parameter_list|()
 function_decl|;
-comment|/**      * Reverts all changes made to this root.      */
+comment|/**      * Reverts all changes made to this root and refreshed to the latest trunk      */
 name|void
-name|revert
+name|refresh
 parameter_list|()
 function_decl|;
 comment|/**      * Atomically apply all changes made to the tree beneath this root to the      * underlying store and refreshes this root. After a call to this method,      * all trees obtained through {@link #getTree(String)} are invalid and fresh      * instances must be obtained.      *      * @throws CommitFailedException TODO: add description and clarify how JCR exception can be generated from this generic exception      */
