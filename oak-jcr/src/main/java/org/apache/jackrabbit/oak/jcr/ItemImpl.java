@@ -55,6 +55,26 @@ begin_import
 import|import
 name|javax
 operator|.
+name|annotation
+operator|.
+name|CheckForNull
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|Nonnull
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
 name|jcr
 operator|.
 name|InvalidItemStateException
@@ -175,6 +195,8 @@ comment|//---------------------------------------------------------------< Item>
 comment|/**      * @see javax.jcr.Item#getName()      */
 annotation|@
 name|Override
+annotation|@
+name|Nonnull
 specifier|public
 name|String
 name|getName
@@ -211,6 +233,8 @@ block|}
 comment|/**      * @see javax.jcr.Property#getPath()      */
 annotation|@
 name|Override
+annotation|@
+name|Nonnull
 specifier|public
 name|String
 name|getPath
@@ -230,6 +254,8 @@ return|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Nonnull
 specifier|public
 name|Session
 name|getSession
@@ -573,6 +599,8 @@ throw|;
 block|}
 block|}
 comment|/**      * Returns the value factory associated with the editing session.      *      * @return the value factory      */
+annotation|@
+name|Nonnull
 name|ValueFactory
 name|getValueFactory
 parameter_list|()
@@ -584,6 +612,8 @@ name|getValueFactory
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Nonnull
 name|String
 name|toJcrPath
 parameter_list|(

@@ -27,6 +27,16 @@ name|CheckForNull
 import|;
 end_import
 
+begin_import
+import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|Nonnull
+import|;
+end_import
+
 begin_comment
 comment|/**  * TODO  */
 end_comment
@@ -48,7 +58,7 @@ parameter_list|)
 function_decl|;
 comment|/**      * Returns the JCR path for the given Oak path. The given path is      * expected to have come from a valid Oak repository that contains      * only valid paths whose name elements only use proper namespace      * mappings. If that's not the case, either a programming error or      * a repository corruption has occurred and an appropriate unchecked      * exception gets thrown.      *      * @param oakPath Oak path      * @return JCR path      */
 annotation|@
-name|CheckForNull
+name|Nonnull
 name|String
 name|getJcrPath
 parameter_list|(
