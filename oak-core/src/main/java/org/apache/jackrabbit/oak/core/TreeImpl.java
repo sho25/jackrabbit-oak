@@ -1419,69 +1419,6 @@ return|return
 literal|true
 return|;
 block|}
-comment|//------------------------------------------------------------< internal>---
-comment|/**      * Revert all changes to this instance and its child instances.      */
-specifier|public
-name|void
-name|revert
-parameter_list|()
-block|{
-for|for
-control|(
-name|TreeImpl
-name|child
-range|:
-name|children
-control|)
-block|{
-comment|// TODO revert changes done to this instance
-name|child
-operator|.
-name|revert
-argument_list|()
-expr_stmt|;
-block|}
-name|nodeStateBuilder
-operator|=
-literal|null
-expr_stmt|;
-name|children
-operator|.
-name|clear
-argument_list|()
-expr_stmt|;
-block|}
-comment|/**      * Remove revert info for this instance and all its child instances.      */
-specifier|public
-name|void
-name|saved
-parameter_list|()
-block|{
-for|for
-control|(
-name|TreeImpl
-name|child
-range|:
-name|children
-control|)
-block|{
-comment|// TODO clear records of changes done to this instance
-name|child
-operator|.
-name|saved
-argument_list|()
-expr_stmt|;
-block|}
-name|nodeStateBuilder
-operator|=
-literal|null
-expr_stmt|;
-name|children
-operator|.
-name|clear
-argument_list|()
-expr_stmt|;
-block|}
 comment|//------------------------------------------------------------< RootImpl.Listener>---
 annotation|@
 name|Override
