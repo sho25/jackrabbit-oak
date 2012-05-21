@@ -556,6 +556,13 @@ name|ensureIsAlive
 argument_list|()
 expr_stmt|;
 comment|// TODO -> SPI
+throw|throw
+operator|new
+name|UnsupportedRepositoryOperationException
+argument_list|(
+literal|"Not implemented."
+argument_list|)
+throw|;
 block|}
 annotation|@
 name|SuppressWarnings
@@ -856,6 +863,13 @@ name|LEVEL_2_SUPPORTED
 argument_list|)
 expr_stmt|;
 comment|// TODO -> SPI
+throw|throw
+operator|new
+name|UnsupportedRepositoryOperationException
+argument_list|(
+literal|"TODO: Workspace.importXML"
+argument_list|)
+throw|;
 block|}
 annotation|@
 name|Override
@@ -880,6 +894,13 @@ name|OPTION_WORKSPACE_MANAGEMENT_SUPPORTED
 argument_list|)
 expr_stmt|;
 comment|// TODO -> SPI
+throw|throw
+operator|new
+name|UnsupportedRepositoryOperationException
+argument_list|(
+literal|"TODO: Workspace.createWorkspace"
+argument_list|)
+throw|;
 block|}
 annotation|@
 name|Override
@@ -907,6 +928,13 @@ name|OPTION_WORKSPACE_MANAGEMENT_SUPPORTED
 argument_list|)
 expr_stmt|;
 comment|// TODO -> SPI
+throw|throw
+operator|new
+name|UnsupportedRepositoryOperationException
+argument_list|(
+literal|"TODO: Workspace.createWorkspace"
+argument_list|)
+throw|;
 block|}
 annotation|@
 name|Override
@@ -931,6 +959,13 @@ name|OPTION_WORKSPACE_MANAGEMENT_SUPPORTED
 argument_list|)
 expr_stmt|;
 comment|// TODO -> SPI
+throw|throw
+operator|new
+name|UnsupportedRepositoryOperationException
+argument_list|(
+literal|"TODO: Workspace.deleteWorkspace"
+argument_list|)
+throw|;
 block|}
 comment|//------------------------------------------------< JackrabbitWorkspace>---
 annotation|@
@@ -959,6 +994,13 @@ name|OPTION_WORKSPACE_MANAGEMENT_SUPPORTED
 argument_list|)
 expr_stmt|;
 comment|// TODO -> SPI
+throw|throw
+operator|new
+name|UnsupportedRepositoryOperationException
+argument_list|(
+literal|"TODO: Workspace.createWorkspace"
+argument_list|)
+throw|;
 block|}
 comment|/**      * @see org.apache.jackrabbit.api.JackrabbitWorkspace#getPrivilegeManager()      */
 annotation|@
