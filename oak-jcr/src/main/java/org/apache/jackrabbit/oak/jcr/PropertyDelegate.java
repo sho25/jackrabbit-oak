@@ -658,6 +658,7 @@ name|void
 name|resolve
 parameter_list|()
 block|{
+comment|// TODO: this should not be necessary anymore once TreeImpl.revert and TreeImpl.saved are implemented
 name|parent
 operator|=
 name|sessionDelegate

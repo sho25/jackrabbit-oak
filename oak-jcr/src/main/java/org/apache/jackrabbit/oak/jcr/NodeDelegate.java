@@ -133,26 +133,6 @@ end_import
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Iterator
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|List
-import|;
-end_import
-
-begin_import
-import|import
 name|javax
 operator|.
 name|annotation
@@ -168,6 +148,26 @@ operator|.
 name|annotation
 operator|.
 name|Nonnull
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Iterator
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
 import|;
 end_import
 
@@ -771,6 +771,7 @@ name|Tree
 name|getTree
 parameter_list|()
 block|{
+comment|// TODO: this should not be necessary anymore once TreeImpl.revert and TreeImpl.saved are implemented
 return|return
 name|tree
 operator|=

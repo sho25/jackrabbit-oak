@@ -245,15 +245,6 @@ name|KernelNodeStoreBranch
 implements|implements
 name|NodeStoreBranch
 block|{
-comment|/**      * Number of {@link #setRoot(NodeState)} for which changes are kept in memory.      */
-specifier|private
-specifier|static
-specifier|final
-name|int
-name|PURGE_LIMIT
-init|=
-literal|100
-decl_stmt|;
 comment|/** The underlying store to which this branch belongs */
 specifier|private
 specifier|final
@@ -280,11 +271,6 @@ comment|/** Last state which was committed to this branch */
 specifier|private
 name|NodeState
 name|committed
-decl_stmt|;
-comment|/** Number of {@link #setRoot(NodeState)} occurred so since the lase purge */
-specifier|private
-name|int
-name|modCount
 decl_stmt|;
 name|KernelNodeStoreBranch
 parameter_list|(
@@ -381,22 +367,12 @@ name|currentRoot
 operator|=
 name|newRoot
 expr_stmt|;
-name|modCount
-operator|++
-expr_stmt|;
-if|if
-condition|(
-name|needsPurging
-argument_list|()
-condition|)
-block|{
-name|purge
+name|save
 argument_list|(
 name|buildJsop
 argument_list|()
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 annotation|@
 name|Override
@@ -469,7 +445,7 @@ return|return
 literal|false
 return|;
 block|}
-name|purge
+name|save
 argument_list|(
 name|buildJsop
 argument_list|()
@@ -560,7 +536,7 @@ return|return
 literal|false
 return|;
 block|}
-name|purge
+name|save
 argument_list|(
 name|buildJsop
 argument_list|()
@@ -589,7 +565,7 @@ parameter_list|()
 throws|throws
 name|CommitFailedException
 block|{
-name|purge
+name|save
 argument_list|(
 name|buildJsop
 argument_list|()
@@ -735,7 +711,7 @@ return|;
 block|}
 specifier|private
 name|void
-name|purge
+name|save
 parameter_list|(
 name|String
 name|jsop
@@ -1283,34 +1259,6 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
-block|}
-comment|// TODO better way to determine purge limit
-specifier|private
-name|boolean
-name|needsPurging
-parameter_list|()
-block|{
-if|if
-condition|(
-name|modCount
-operator|>
-name|PURGE_LIMIT
-condition|)
-block|{
-name|modCount
-operator|=
-literal|0
-expr_stmt|;
-return|return
-literal|true
-return|;
-block|}
-else|else
-block|{
-return|return
-literal|false
-return|;
-block|}
 block|}
 block|}
 end_class
