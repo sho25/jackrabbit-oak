@@ -161,6 +161,16 @@ name|CheckForNull
 import|;
 end_import
 
+begin_import
+import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|Nonnull
+import|;
+end_import
+
 begin_comment
 comment|/**  * {@code NodeDelegate} serve as internal representations of {@code Node}s.  * The methods of this class do not throw checked exceptions. Instead clients  * are expected to inspect the return value and ensure that all preconditions  * hold before a method is invoked. Specifically the behaviour of all methods  * of this class but {@link #isStale()} is undefined if the instance is stale.  * An item is stale if the underlying items does not exist anymore.  */
 end_comment
@@ -492,6 +502,8 @@ argument_list|()
 return|;
 block|}
 comment|/**      * Get child node      * @param relPath  oak path      * @return  node at the path given by {@code relPath} or {@code null} if      * no such node exists      */
+annotation|@
+name|CheckForNull
 specifier|public
 name|NodeDelegate
 name|getChild
@@ -548,6 +560,8 @@ argument_list|)
 return|;
 block|}
 comment|/**      * Set a property      * @param name  oak name      * @param value      * @return  the set property      */
+annotation|@
+name|Nonnull
 specifier|public
 name|PropertyDelegate
 name|setProperty
@@ -586,6 +600,8 @@ argument_list|)
 return|;
 block|}
 comment|/**      * Set a multi valued property      * @param name  oak name      * @param value      * @return  the set property      */
+annotation|@
+name|Nonnull
 specifier|public
 name|PropertyDelegate
 name|setProperty
@@ -627,6 +643,8 @@ argument_list|)
 return|;
 block|}
 comment|/**      * Add a child node      * @param name  oak name      * @return  the added node or {@code null} if such a node already exists      */
+annotation|@
+name|CheckForNull
 specifier|public
 name|NodeDelegate
 name|addChild
