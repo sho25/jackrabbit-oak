@@ -138,7 +138,6 @@ comment|/**  * Basic in-memory node state builder.  */
 end_comment
 
 begin_class
-specifier|public
 class|class
 name|MemoryNodeStateBuilder
 implements|implements
