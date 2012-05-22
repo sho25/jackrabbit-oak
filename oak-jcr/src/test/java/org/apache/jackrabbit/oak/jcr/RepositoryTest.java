@@ -10522,6 +10522,18 @@ name|getType
 argument_list|()
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|value
+operator|.
+name|getType
+argument_list|()
+operator|==
+name|PropertyType
+operator|.
+name|BINARY
+condition|)
+block|{
 name|assertEqualStream
 argument_list|(
 name|value
@@ -10535,6 +10547,9 @@ name|getStream
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
+else|else
+block|{
 name|assertEquals
 argument_list|(
 name|value
@@ -10548,6 +10563,7 @@ name|getString
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|value2
