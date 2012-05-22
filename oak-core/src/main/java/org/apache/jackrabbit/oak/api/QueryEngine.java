@@ -80,7 +80,7 @@ parameter_list|)
 throws|throws
 name|ParseException
 function_decl|;
-comment|/**      * Execute a query and get the result.      *      * @param statement the query statement      * @param language the language      * @param session the content session to use      * @param bindings the bind variable value bindings      * @return the result      * @throws ParseException if the statement could not be parsed      * @throws IllegalArgumentException if there was an error executing the query      */
+comment|/**      * Execute a query and get the result.      *      * @param statement the query statement      * @param language the language      * @param session the content session to use      * @param limit the maximum result set size      * @param offset the number of rows to skip      * @param bindings the bind variable value bindings      * @return the result      * @throws ParseException if the statement could not be parsed      * @throws IllegalArgumentException if there was an error executing the query      */
 name|Result
 name|executeQuery
 parameter_list|(
@@ -92,6 +92,12 @@ name|language
 parameter_list|,
 name|ContentSession
 name|session
+parameter_list|,
+name|long
+name|limit
+parameter_list|,
+name|long
+name|offset
 parameter_list|,
 name|Map
 argument_list|<

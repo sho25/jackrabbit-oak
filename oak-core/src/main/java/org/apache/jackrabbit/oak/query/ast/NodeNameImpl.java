@@ -29,9 +29,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|commons
+name|api
 operator|.
-name|PathUtils
+name|CoreValue
 import|;
 end_import
 
@@ -45,9 +45,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|api
+name|commons
 operator|.
-name|CoreValue
+name|PathUtils
 import|;
 end_import
 
@@ -225,6 +225,79 @@ name|CoreValue
 name|v
 parameter_list|)
 block|{
+if|if
+condition|(
+operator|!
+name|isName
+argument_list|(
+name|v
+argument_list|)
+condition|)
+block|{
+throw|throw
+operator|new
+name|IllegalArgumentException
+argument_list|(
+literal|"Invalid name value: "
+operator|+
+name|v
+operator|.
+name|toString
+argument_list|()
+argument_list|)
+throw|;
+block|}
+name|String
+name|path
+init|=
+name|v
+operator|.
+name|getString
+argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|PathUtils
+operator|.
+name|isAbsolute
+argument_list|(
+name|path
+argument_list|)
+condition|)
+block|{
+throw|throw
+operator|new
+name|IllegalArgumentException
+argument_list|(
+literal|"NAME() comparison with absolute path are not allowed: "
+operator|+
+name|path
+argument_list|)
+throw|;
+block|}
+comment|// TODO normalize paths (./name> name)
+if|if
+condition|(
+name|PathUtils
+operator|.
+name|getDepth
+argument_list|(
+name|path
+argument_list|)
+operator|>
+literal|1
+condition|)
+block|{
+throw|throw
+operator|new
+name|IllegalArgumentException
+argument_list|(
+literal|"NAME() comparison with relative path are not allowed: "
+operator|+
+name|path
+argument_list|)
+throw|;
+block|}
 comment|// TODO support NAME(..) index conditions
 block|}
 block|}
