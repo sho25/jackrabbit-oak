@@ -207,6 +207,18 @@ name|junit
 operator|.
 name|Assert
 operator|.
+name|assertNull
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
 name|assertTrue
 import|;
 end_import
@@ -769,12 +781,8 @@ argument_list|,
 name|relPath
 argument_list|)
 decl_stmt|;
-name|assertNotNull
+name|assertNull
 argument_list|(
-literal|"not found: "
-operator|+
-name|relPath
-argument_list|,
 name|val
 argument_list|)
 expr_stmt|;

@@ -2523,8 +2523,6 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-annotation|@
-name|Ignore
 specifier|public
 name|void
 name|getNodesFiltered
@@ -2542,7 +2540,7 @@ comment|// verify initial content using filter
 name|String
 name|filter
 init|=
-literal|"{ properties : { \"\\\\*ntProp\" } "
+literal|"{ properties : [ \"\\\\*ntProp\", \"\\\\-mult\\\\*\" ] } "
 decl_stmt|;
 name|JSONObject
 name|obj
@@ -2564,7 +2562,7 @@ argument_list|,
 operator|-
 literal|1
 argument_list|,
-literal|null
+name|filter
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -2575,7 +2573,7 @@ argument_list|,
 literal|"test/intProp"
 argument_list|)
 expr_stmt|;
-name|assertPropertyExists
+name|assertPropertyNotExists
 argument_list|(
 name|obj
 argument_list|,
