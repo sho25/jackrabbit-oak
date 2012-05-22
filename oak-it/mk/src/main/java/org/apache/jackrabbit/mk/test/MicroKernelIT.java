@@ -2540,7 +2540,7 @@ comment|// verify initial content using filter
 name|String
 name|filter
 init|=
-literal|"{ properties : [ \"\\\\*ntProp\", \"\\\\-mult\\\\*\" ] } "
+literal|"{ properties : [ \"*ntProp\", \"-mult*\" ] } "
 decl_stmt|;
 name|JSONObject
 name|obj
