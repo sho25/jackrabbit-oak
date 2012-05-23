@@ -21,16 +21,6 @@ end_package
 
 begin_import
 import|import
-name|javax
-operator|.
-name|jcr
-operator|.
-name|PropertyType
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -138,6 +128,16 @@ operator|.
 name|query
 operator|.
 name|Query
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|jcr
+operator|.
+name|PropertyType
 import|;
 end_import
 
@@ -422,7 +422,7 @@ name|vf
 argument_list|)
 return|;
 block|}
-comment|/**      * Validate that the givne value can be converted to a JCR name.      *      * @param v the value      * @return true if it can be converted      */
+comment|/**      * Validate that the given value can be converted to a JCR name.      *      * @param v the value      * @return true if it can be converted      */
 specifier|protected
 name|boolean
 name|isName
