@@ -38,7 +38,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Simple name filter utility class.  *<ul>  *<li>a filter consists of one or more<i>globs</i></li>  *<li>a<i>glob</i> prefixed by {@code -} (dash) is treated as an exclusion pattern;  * all others are considered inclusion patterns</li>  *<li>{@code *} (asterisk) serves as a<i>wildcard</i>, i.e. it matches any substring in the target name</li>  *<li>a filter matches a target name if any of the inclusion patterns match but  * none of the exclusion patterns</li>  *</ul>  * Example:  *<p/>  * {@code ["foo*", "-foo99"]} matches {@code "foo"} and {@code "foo bar"}  * but not {@code "foo99"}.  */
+comment|/**  * Simple name filter utility class.  *<ul>  *<li>a filter consists of one or more<i>globs</i></li>  *<li>a<i>glob</i> prefixed by {@code -} (dash) is treated as an exclusion pattern;  * all others are considered inclusion patterns</li>  *<li>a leading {@code -} (dash) must be escaped by prepending {@code \} (backslash)  * if it should be interpreted as a literal</li>  *<li>{@code *} (asterisk) serves as a<i>wildcard</i>, i.e. it matches any  * substring in the target name</li>  *<li>{@code *} (asterisk) occurrences within the glob to be interpreted as  * literals must be escaped by prepending {@code \} (backslash)</li>  *<li>a filter matches a target name if any of the inclusion patterns match but  * none of the exclusion patterns</li>  *</ul>  * Examples:  *<p/>  * {@code ["foo*", "-foo99"]} matches {@code "foo"} and {@code "foo bar"}  * but not {@code "foo99"}.  *<p/>  * {@code ["foo\*"]} matches {@code "foo*"} but not {@code "foo99"}.  *<p/>  * {@code ["\-blah"]} matches {@code "-blah"}.  */
 end_comment
 
 begin_class
@@ -405,7 +405,7 @@ operator|<
 name|sLen
 condition|)
 block|{
-comment|// check for ESCAPE character
+comment|// check for escape sequences
 if|if
 condition|(
 name|pattern
@@ -418,6 +418,7 @@ operator|==
 name|ESCAPE
 condition|)
 block|{
+comment|// * to be interpreted as literal
 if|if
 condition|(
 name|pOff
@@ -426,7 +427,6 @@ name|pLen
 operator|-
 literal|1
 operator|&&
-operator|(
 name|pattern
 operator|.
 name|charAt
@@ -437,7 +437,23 @@ literal|1
 argument_list|)
 operator|==
 name|WILDCARD
-operator|||
+condition|)
+block|{
+operator|++
+name|pOff
+expr_stmt|;
+block|}
+comment|// leading - to be interpreted as literal
+if|if
+condition|(
+name|pOff
+operator|==
+literal|0
+operator|&&
+name|pLen
+operator|>
+literal|1
+operator|&&
 name|pattern
 operator|.
 name|charAt
@@ -448,7 +464,6 @@ literal|1
 argument_list|)
 operator|==
 name|EXCLUDE_PREFIX
-operator|)
 condition|)
 block|{
 operator|++
