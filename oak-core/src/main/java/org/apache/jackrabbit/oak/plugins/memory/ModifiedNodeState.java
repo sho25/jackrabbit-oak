@@ -298,6 +298,13 @@ operator|==
 literal|null
 condition|)
 block|{
+if|if
+condition|(
+name|after
+operator|!=
+literal|null
+condition|)
+block|{
 name|diff
 operator|.
 name|propertyAdded
@@ -305,6 +312,7 @@ argument_list|(
 name|after
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 elseif|else
 if|if
@@ -386,6 +394,13 @@ operator|==
 literal|null
 condition|)
 block|{
+if|if
+condition|(
+name|after
+operator|!=
+literal|null
+condition|)
+block|{
 name|diff
 operator|.
 name|childNodeAdded
@@ -395,6 +410,7 @@ argument_list|,
 name|after
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 elseif|else
 if|if
