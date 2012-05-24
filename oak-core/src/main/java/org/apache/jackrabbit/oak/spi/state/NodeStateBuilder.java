@@ -37,6 +37,16 @@ end_import
 
 begin_import
 import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|Nonnull
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|util
@@ -55,6 +65,8 @@ interface|interface
 name|NodeStateBuilder
 block|{
 comment|/**      * Returns an immutable node state that matches the current state of      * the builder.      *      * @return immutable node state      */
+annotation|@
+name|Nonnull
 name|NodeState
 name|getNodeState
 parameter_list|()
