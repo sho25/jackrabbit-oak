@@ -17,6 +17,16 @@ name|api
 package|;
 end_package
 
+begin_import
+import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|Nonnull
+import|;
+end_import
+
 begin_comment
 comment|/**  * Immutable property state. A property consists of a name and  * a JSON-encoded value.  *  *<h2>Equality and hash codes</h2>  *<p>  * Two property states are considered equal if and only if their names and  * encoded values match. The {@link Object#equals(Object)} method needs to  * be implemented so that it complies with this definition. And while  * property states are not meant for use as hash keys, the  * {@link Object#hashCode()} method should still be implemented according  * to this equality contract.  */
 end_comment
@@ -27,6 +37,8 @@ interface|interface
 name|PropertyState
 block|{
 comment|/**      * @return the name of this property state      */
+annotation|@
+name|Nonnull
 name|String
 name|getName
 parameter_list|()
