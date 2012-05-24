@@ -27,6 +27,16 @@ name|List
 import|;
 end_import
 
+begin_import
+import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|CheckForNull
+import|;
+end_import
+
 begin_comment
 comment|/**  * A tree instance represents a snapshot of the {@code ContentRepository}  * tree at the time the instance was acquired. Tree instances may  * become invalid over time due to garbage collection of old content, at  * which point an outdated snapshot will start throwing  * {@code IllegalStateException}s to indicate that the snapshot is no  * longer available.  *<p>  * A tree  instance belongs to the client and its state is only modified  * in response to method calls made by the client. The various accessors  * on this interface mirror these of the underlying {@code NodeState}  * interface. However, since instances of this class are mutable return  * values may change between invocations.  *<p>  * Tree instances are not thread-safe for write access, so writing clients  * need to ensure that they are not accessed concurrently from multiple  * threads. Instances are however thread-safe for read access, so  * implementations need to ensure that all reading clients see a  * coherent state.  */
 end_comment
@@ -68,6 +78,8 @@ name|getParent
 parameter_list|()
 function_decl|;
 comment|/**      * Get a property state      * @param name name of the property state      * @return  the property state with the given {@code name} or {@code null}      *          if no such property state exists.      */
+annotation|@
+name|CheckForNull
 name|PropertyState
 name|getProperty
 parameter_list|(
