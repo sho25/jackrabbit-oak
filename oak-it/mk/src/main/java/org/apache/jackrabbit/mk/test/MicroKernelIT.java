@@ -2846,7 +2846,8 @@ argument_list|,
 literal|0
 argument_list|)
 expr_stmt|;
-comment|// depth = 1: properties, child nodes and their properties (including :childNodeCount)
+comment|// depth = 1: properties, child nodes, their properties (including :childNodeCount)
+comment|// and their empty child node objects
 name|obj
 operator|=
 name|parseJSONObject
