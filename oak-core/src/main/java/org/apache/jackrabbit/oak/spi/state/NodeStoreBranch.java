@@ -35,17 +35,31 @@ name|CommitFailedException
 import|;
 end_import
 
+begin_import
+import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|Nonnull
+import|;
+end_import
+
 begin_interface
 specifier|public
 interface|interface
 name|NodeStoreBranch
 block|{
 comment|/**      * Returns the latest state of the branch.      *      * @return root node state      */
+annotation|@
+name|Nonnull
 name|NodeState
 name|getRoot
 parameter_list|()
 function_decl|;
 comment|/**      * Returns the base state of this branch.      *      * @return base node state      */
+annotation|@
+name|Nonnull
 name|NodeState
 name|getBase
 parameter_list|()
@@ -81,6 +95,8 @@ name|target
 parameter_list|)
 function_decl|;
 comment|/**      * Merges the changes in this branch to the main content tree.      * @return the node state resulting from the merge.      *      * @throws CommitFailedException if the merge failed      */
+annotation|@
+name|Nonnull
 name|NodeState
 name|merge
 parameter_list|()
