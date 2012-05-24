@@ -1185,6 +1185,7 @@ name|NodeTypeDelegate
 argument_list|>
 block|{
 specifier|private
+specifier|final
 name|List
 argument_list|<
 name|PropertyDefinitionDelegateBuilder
@@ -1199,6 +1200,7 @@ argument_list|>
 argument_list|()
 decl_stmt|;
 specifier|private
+specifier|final
 name|List
 argument_list|<
 name|NodeDefinitionDelegateBuilder
@@ -1222,6 +1224,7 @@ name|String
 name|primaryItemName
 decl_stmt|;
 specifier|private
+specifier|final
 name|List
 argument_list|<
 name|String
@@ -1472,6 +1475,7 @@ name|String
 name|defaultPrimaryType
 decl_stmt|;
 specifier|private
+specifier|final
 name|List
 argument_list|<
 name|String
@@ -1543,7 +1547,6 @@ name|allowSns
 argument_list|)
 return|;
 block|}
-empty_stmt|;
 annotation|@
 name|Override
 specifier|public
@@ -1638,6 +1641,7 @@ name|String
 name|declaringNodeType
 decl_stmt|;
 specifier|private
+specifier|final
 name|List
 argument_list|<
 name|String
@@ -1652,6 +1656,7 @@ argument_list|>
 argument_list|()
 decl_stmt|;
 specifier|private
+specifier|final
 name|List
 argument_list|<
 name|String
