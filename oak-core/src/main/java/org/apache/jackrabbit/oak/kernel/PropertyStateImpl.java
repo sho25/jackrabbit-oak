@@ -223,6 +223,21 @@ name|CoreValue
 name|getValue
 parameter_list|()
 block|{
+if|if
+condition|(
+name|value
+operator|==
+literal|null
+condition|)
+block|{
+throw|throw
+operator|new
+name|IllegalStateException
+argument_list|(
+literal|"Not a single valued property"
+argument_list|)
+throw|;
+block|}
 return|return
 name|value
 return|;
@@ -237,6 +252,21 @@ argument_list|>
 name|getValues
 parameter_list|()
 block|{
+if|if
+condition|(
+name|values
+operator|==
+literal|null
+condition|)
+block|{
+throw|throw
+operator|new
+name|IllegalStateException
+argument_list|(
+literal|"Not a multi valued property"
+argument_list|)
+throw|;
+block|}
 return|return
 name|values
 return|;

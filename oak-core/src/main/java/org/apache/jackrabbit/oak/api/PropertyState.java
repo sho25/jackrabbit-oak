@@ -48,12 +48,16 @@ name|boolean
 name|isArray
 parameter_list|()
 function_decl|;
-comment|/**      * @return  the single value of this property or {@code null} if this is a multi      * valued property.      */
+comment|/**      * Value of this property.      * @return  the single value of this property.      * @throws IllegalStateException  if {@code isArray()} is {@code true}.      */
+annotation|@
+name|Nonnull
 name|CoreValue
 name|getValue
 parameter_list|()
 function_decl|;
-comment|/**      * @return  an iterable of the values of this multi valued property or      * {@code null} if this is not a multi valued property.      */
+comment|/**      * Values of this property.      * @return  an iterable of the values of this multi valued property.      * @throws IllegalStateException  if {@code isArray()} is {@code false}.      */
+annotation|@
+name|Nonnull
 name|Iterable
 argument_list|<
 name|CoreValue
