@@ -35,6 +35,16 @@ name|CoreValueFactory
 import|;
 end_import
 
+begin_import
+import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|Nonnull
+import|;
+end_import
+
 begin_comment
 comment|/**  * Storage abstraction for trees. At any given point in time the stored  * tree is rooted at a single immutable node state.  *<p>  * This is a low-level interface that doesn't cover functionality like  * merging concurrent changes or rejecting new tree states based on some  * higher-level consistency constraints.  */
 end_comment
@@ -45,16 +55,22 @@ interface|interface
 name|NodeStore
 block|{
 comment|/**      * Returns the latest state of the tree.      *      * @return root node state      */
+annotation|@
+name|Nonnull
 name|NodeState
 name|getRoot
 parameter_list|()
 function_decl|;
 comment|/**      * Creates a new branch of the tree to which transient changes can be applied.      *      * @return branch      */
+annotation|@
+name|Nonnull
 name|NodeStoreBranch
 name|branch
 parameter_list|()
 function_decl|;
 comment|/**      * Returns a builder for constructing a new or modified node state.      * The builder is initialized with all the properties and child nodes      * from the given base node state.      *      * @param base  base node state, or {@code null} for building new nodes      * @return  builder instance      */
+annotation|@
+name|Nonnull
 name|NodeStateBuilder
 name|getBuilder
 parameter_list|(
@@ -63,6 +79,8 @@ name|base
 parameter_list|)
 function_decl|;
 comment|/**      * Returns the factory for creating values used for building node states.      *      * @return value factory      */
+annotation|@
+name|Nonnull
 name|CoreValueFactory
 name|getValueFactory
 parameter_list|()
