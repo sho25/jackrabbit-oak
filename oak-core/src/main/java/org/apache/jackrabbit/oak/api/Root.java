@@ -17,6 +17,16 @@ name|api
 package|;
 end_package
 
+begin_import
+import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|CheckForNull
+import|;
+end_import
+
 begin_comment
 comment|/**  * The root of a {@link Tree}.  */
 end_comment
@@ -49,6 +59,8 @@ name|destPath
 parameter_list|)
 function_decl|;
 comment|/**      * Retrieve the {@code Tree} at the given {@code path}. The path must resolve to      * a tree in this root.      *      * @param path  path to the tree      * @return  tree at the given path or {@code null} if no such tree exists      */
+annotation|@
+name|CheckForNull
 name|Tree
 name|getTree
 parameter_list|(
