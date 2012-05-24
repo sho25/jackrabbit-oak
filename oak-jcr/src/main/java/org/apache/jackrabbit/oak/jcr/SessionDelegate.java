@@ -858,11 +858,6 @@ comment|// referenceable
 return|return
 name|findByJcrUuid
 argument_list|(
-name|getTree
-argument_list|(
-literal|""
-argument_list|)
-argument_list|,
 name|id
 argument_list|)
 return|;
@@ -1560,9 +1555,6 @@ name|CheckForNull
 name|NodeDelegate
 name|findByJcrUuid
 parameter_list|(
-name|Tree
-name|tree
-parameter_list|,
 name|String
 name|id
 parameter_list|)
@@ -1726,22 +1718,29 @@ return|return
 literal|null
 return|;
 block|}
-comment|// Tree-walking implementation...
-comment|// PropertyState p = tree.getProperty("jcr:uuid");
-comment|// if (p != null&& id.equals(p.getValue().getString())) {
-comment|// return new NodeDelegate(this, tree);
-comment|// }
-comment|// else {
-comment|// for (Tree c : tree.getChildren()) {
-comment|// NodeDelegate found = findByJcrUuid(c, id);
-comment|// if (found != null) {
-comment|// return found;
-comment|// }
-comment|// }
-comment|// }
-comment|//
-comment|// return null;
 block|}
+comment|//    @CheckForNull
+comment|//    NodeDelegate slowFindByJcrUuid(String id) {
+comment|//        return slowFindByJcrUuid(getTree(""), id);
+comment|//    }
+comment|//
+comment|//    @CheckForNull
+comment|//    NodeDelegate slowFindByJcrUuid(Tree tree, String id) {
+comment|//        // Tree-walking implementation...
+comment|//        PropertyState p = tree.getProperty("jcr:uuid");
+comment|//        if (p != null&& id.equals(p.getValue().getString())) {
+comment|//            return new NodeDelegate(this, tree);
+comment|//        } else {
+comment|//            for (Tree c : tree.getChildren()) {
+comment|//                NodeDelegate found = slowFindByJcrUuid(c, id);
+comment|//                if (found != null) {
+comment|//                    return found;
+comment|//                }
+comment|//            }
+comment|//        }
+comment|//
+comment|//        return null;
+comment|//    }
 comment|//--------------------------------------------------< SessionNameMapper>---
 specifier|private
 class|class
