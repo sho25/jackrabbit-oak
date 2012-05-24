@@ -300,7 +300,9 @@ parameter_list|()
 throws|throws
 name|InvalidItemStateException
 block|{
-return|return
+name|Status
+name|propertyStatus
+init|=
 name|getParentTree
 argument_list|()
 operator|.
@@ -309,6 +311,24 @@ argument_list|(
 name|getName
 argument_list|()
 argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|propertyStatus
+operator|==
+literal|null
+condition|)
+block|{
+throw|throw
+operator|new
+name|InvalidItemStateException
+argument_list|(
+literal|"Property is stale"
+argument_list|)
+throw|;
+block|}
+return|return
+name|propertyStatus
 return|;
 block|}
 annotation|@

@@ -789,6 +789,22 @@ block|{
 name|checkStatus
 argument_list|()
 expr_stmt|;
+if|if
+condition|(
+name|dlg
+operator|.
+name|isRoot
+argument_list|()
+condition|)
+block|{
+throw|throw
+operator|new
+name|RepositoryException
+argument_list|(
+literal|"Cannot remove the root node"
+argument_list|)
+throw|;
+block|}
 name|dlg
 operator|.
 name|remove

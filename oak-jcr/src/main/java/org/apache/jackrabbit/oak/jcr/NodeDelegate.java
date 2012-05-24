@@ -332,7 +332,9 @@ comment|// FIXME: return correct status for root
 block|}
 else|else
 block|{
-return|return
+name|Status
+name|childStatus
+init|=
 name|parent
 operator|.
 name|getChildStatus
@@ -340,6 +342,24 @@ argument_list|(
 name|getName
 argument_list|()
 argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|childStatus
+operator|==
+literal|null
+condition|)
+block|{
+throw|throw
+operator|new
+name|InvalidItemStateException
+argument_list|(
+literal|"Node is stale"
+argument_list|)
+throw|;
+block|}
+return|return
+name|childStatus
 return|;
 block|}
 block|}
@@ -741,7 +761,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-comment|/**      * Remove the node      */
+comment|/**      * Remove the node if not root. Does nothing otherwise      */
 specifier|public
 name|void
 name|remove
@@ -749,8 +769,20 @@ parameter_list|()
 throws|throws
 name|InvalidItemStateException
 block|{
+name|Tree
+name|parentTree
+init|=
 name|getParentTree
 argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|parentTree
+operator|!=
+literal|null
+condition|)
+block|{
+name|parentTree
 operator|.
 name|removeChild
 argument_list|(
@@ -758,6 +790,7 @@ name|getName
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 comment|// -----------------------------------------------------------< private>---
 specifier|private
@@ -814,6 +847,8 @@ return|return
 name|tree
 return|;
 block|}
+annotation|@
+name|CheckForNull
 specifier|private
 name|Tree
 name|getParentTree

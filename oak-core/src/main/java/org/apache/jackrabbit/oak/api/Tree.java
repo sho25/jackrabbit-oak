@@ -19,11 +19,11 @@ end_package
 
 begin_import
 import|import
-name|java
+name|javax
 operator|.
-name|util
+name|annotation
 operator|.
-name|List
+name|CheckForNull
 import|;
 end_import
 
@@ -33,7 +33,17 @@ name|javax
 operator|.
 name|annotation
 operator|.
-name|CheckForNull
+name|Nonnull
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
 import|;
 end_import
 
@@ -63,16 +73,22 @@ comment|/**          * Item is removed          */
 name|REMOVED
 block|}
 comment|/**      * @return  the name of this {@code Tree} instance.      */
+annotation|@
+name|Nonnull
 name|String
 name|getName
 parameter_list|()
 function_decl|;
 comment|/**      * @return  path of this {@code Tree} instance relative to its {@link Root}.      */
+annotation|@
+name|Nonnull
 name|String
 name|getPath
 parameter_list|()
 function_decl|;
-comment|/**      * @return  the parent of this {@code Tree} instance.      */
+comment|/**      * @return  the parent of this {@code Tree} instance or {@code null} for the root.      */
+annotation|@
+name|CheckForNull
 name|Tree
 name|getParent
 parameter_list|()
@@ -88,6 +104,8 @@ name|name
 parameter_list|)
 function_decl|;
 comment|/**      * Get the {@code Status} of a property state      * @param name  name of the property state      * @return  the status of the property state with the given {@code name}      *          or {@code null} in no such property state exists.      */
+annotation|@
+name|CheckForNull
 name|Status
 name|getPropertyStatus
 parameter_list|(
@@ -109,6 +127,8 @@ name|getPropertyCount
 parameter_list|()
 function_decl|;
 comment|/**      * All property states. The returned {@code Iterable} has snapshot semantics. That      * is, it reflect the state of this {@code Tree} instance at the time of the      * call. Later changes to this instance are no visible to iterators obtained from      * the returned iterable.      * @return  An {@code Iterable} for all property states      */
+annotation|@
+name|Nonnull
 name|Iterable
 argument_list|<
 name|?
@@ -119,6 +139,8 @@ name|getProperties
 parameter_list|()
 function_decl|;
 comment|/**      * Get a child of this {@code Tree} instance      * @param name  name of the child      * @return  the child with the given {@code name} or {@code null} if no such child      * exists.      */
+annotation|@
+name|CheckForNull
 name|Tree
 name|getChild
 parameter_list|(
@@ -127,6 +149,8 @@ name|name
 parameter_list|)
 function_decl|;
 comment|/**      * Get the {@code Status} of a child tree      * @param name  name of the child      * @return  the status of the child with the given {@code name} or {@code null} in      *          no such child exists.      */
+annotation|@
+name|CheckForNull
 name|Status
 name|getChildStatus
 parameter_list|(
@@ -148,6 +172,8 @@ name|getChildrenCount
 parameter_list|()
 function_decl|;
 comment|/**      * All children of this {@code Tree} instance. The returned {@code Iterable}      * has snapshot semantics. That is, it reflect the state of this {@code Tree}      * instance. instance at the time of the call. Later changes to this instance are no      * visible to iterators obtained from the returned iterable.      * @return  An {@code Iterable} for all children      */
+annotation|@
+name|Nonnull
 name|Iterable
 argument_list|<
 name|Tree
@@ -156,6 +182,8 @@ name|getChildren
 parameter_list|()
 function_decl|;
 comment|/**      * Add a child with the given {@code name}. Does nothing if such a child      * already exists.      *      * @param name name of the child      * @return the {@code Tree} instance of the child with the given {@code name}.      */
+annotation|@
+name|Nonnull
 name|Tree
 name|addChild
 parameter_list|(
@@ -172,6 +200,8 @@ name|name
 parameter_list|)
 function_decl|;
 comment|/**      * Set a single valued property state      *      * @param name The name of this property      * @param value The value of this property      * @return the affected property state      */
+annotation|@
+name|Nonnull
 name|PropertyState
 name|setProperty
 parameter_list|(
@@ -183,6 +213,8 @@ name|value
 parameter_list|)
 function_decl|;
 comment|/**      * Set a multivalued valued property state      *      * @param name The name of this property      * @param values The value of this property      * @return the affected property state      */
+annotation|@
+name|Nonnull
 name|PropertyState
 name|setProperty
 parameter_list|(
