@@ -113,6 +113,16 @@ name|javax
 operator|.
 name|jcr
 operator|.
+name|InvalidItemStateException
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|jcr
+operator|.
 name|ItemNotFoundException
 import|;
 end_import
@@ -360,6 +370,8 @@ name|boolean
 name|isNew
 parameter_list|()
 block|{
+try|try
+block|{
 return|return
 name|dlg
 operator|.
@@ -371,6 +383,17 @@ operator|.
 name|NEW
 return|;
 block|}
+catch|catch
+parameter_list|(
+name|InvalidItemStateException
+name|e
+parameter_list|)
+block|{
+return|return
+literal|false
+return|;
+block|}
+block|}
 comment|/**      * @see javax.jcr.Item#isModified() ()      */
 annotation|@
 name|Override
@@ -378,6 +401,8 @@ specifier|public
 name|boolean
 name|isModified
 parameter_list|()
+block|{
+try|try
 block|{
 return|return
 name|dlg
@@ -389,6 +414,17 @@ name|Status
 operator|.
 name|MODIFIED
 return|;
+block|}
+catch|catch
+parameter_list|(
+name|InvalidItemStateException
+name|e
+parameter_list|)
+block|{
+return|return
+literal|false
+return|;
+block|}
 block|}
 comment|/**      * @see javax.jcr.Item#isNew()      */
 annotation|@

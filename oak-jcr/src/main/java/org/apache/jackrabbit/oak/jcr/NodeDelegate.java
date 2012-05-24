@@ -153,6 +153,16 @@ end_import
 
 begin_import
 import|import
+name|javax
+operator|.
+name|jcr
+operator|.
+name|InvalidItemStateException
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|util
@@ -172,7 +182,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * {@code NodeDelegate} serve as internal representations of {@code Node}s.  * The methods of this class do not throw checked exceptions. Instead clients  * are expected to inspect the return value and ensure that all preconditions  * hold before a method is invoked. Specifically the behaviour of all methods  * of this class but {@link #isStale()} is undefined if the instance is stale.  * An item is stale if the underlying items does not exist anymore.  */
+comment|/**  * {@code NodeDelegate} serve as internal representations of {@code Node}s.  * Most methods of this class throw an {@code InvalidItemStateException}  * exception if the instance is stale. An instance is stale if the underlying  * items does not exist anymore.  */
 end_comment
 
 begin_class
@@ -214,6 +224,8 @@ specifier|public
 name|String
 name|getName
 parameter_list|()
+throws|throws
+name|InvalidItemStateException
 block|{
 return|return
 name|getTree
@@ -229,6 +241,8 @@ specifier|public
 name|String
 name|getPath
 parameter_list|()
+throws|throws
+name|InvalidItemStateException
 block|{
 return|return
 literal|'/'
@@ -246,6 +260,8 @@ specifier|public
 name|NodeDelegate
 name|getParent
 parameter_list|()
+throws|throws
+name|InvalidItemStateException
 block|{
 name|Tree
 name|parent
@@ -276,9 +292,11 @@ name|boolean
 name|isStale
 parameter_list|()
 block|{
-return|return
-name|getTree
+name|resolve
 argument_list|()
+expr_stmt|;
+return|return
+name|tree
 operator|==
 literal|null
 return|;
@@ -289,6 +307,8 @@ specifier|public
 name|Status
 name|getStatus
 parameter_list|()
+throws|throws
+name|InvalidItemStateException
 block|{
 name|Tree
 name|parent
@@ -326,17 +346,6 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|SessionDelegate
-name|getSessionDelegate
-parameter_list|()
-block|{
-return|return
-name|sessionDelegate
-return|;
-block|}
-annotation|@
-name|Override
-specifier|public
 name|String
 name|toString
 parameter_list|()
@@ -357,6 +366,8 @@ specifier|public
 name|String
 name|getIdentifier
 parameter_list|()
+throws|throws
+name|InvalidItemStateException
 block|{
 name|PropertyDelegate
 name|pd
@@ -396,6 +407,8 @@ specifier|public
 name|boolean
 name|isRoot
 parameter_list|()
+throws|throws
+name|InvalidItemStateException
 block|{
 return|return
 name|getParentTree
@@ -409,6 +422,8 @@ specifier|public
 name|long
 name|getPropertyCount
 parameter_list|()
+throws|throws
+name|InvalidItemStateException
 block|{
 return|return
 name|getTree
@@ -428,6 +443,8 @@ parameter_list|(
 name|String
 name|relPath
 parameter_list|)
+throws|throws
+name|InvalidItemStateException
 block|{
 name|Tree
 name|parent
@@ -499,6 +516,8 @@ name|PropertyDelegate
 argument_list|>
 name|getProperties
 parameter_list|()
+throws|throws
+name|InvalidItemStateException
 block|{
 return|return
 name|propertyDelegateIterator
@@ -519,6 +538,8 @@ specifier|public
 name|long
 name|getChildCount
 parameter_list|()
+throws|throws
+name|InvalidItemStateException
 block|{
 return|return
 name|getTree
@@ -538,6 +559,8 @@ parameter_list|(
 name|String
 name|relPath
 parameter_list|)
+throws|throws
+name|InvalidItemStateException
 block|{
 name|Tree
 name|tree
@@ -571,6 +594,8 @@ name|NodeDelegate
 argument_list|>
 name|getChildren
 parameter_list|()
+throws|throws
+name|InvalidItemStateException
 block|{
 return|return
 name|nodeDelegateIterator
@@ -599,6 +624,8 @@ parameter_list|,
 name|CoreValue
 name|value
 parameter_list|)
+throws|throws
+name|InvalidItemStateException
 block|{
 name|PropertyState
 name|propertyState
@@ -642,6 +669,8 @@ name|CoreValue
 argument_list|>
 name|value
 parameter_list|)
+throws|throws
+name|InvalidItemStateException
 block|{
 name|PropertyState
 name|propertyState
@@ -679,6 +708,8 @@ parameter_list|(
 name|String
 name|name
 parameter_list|)
+throws|throws
+name|InvalidItemStateException
 block|{
 name|Tree
 name|tree
@@ -715,6 +746,8 @@ specifier|public
 name|void
 name|remove
 parameter_list|()
+throws|throws
+name|InvalidItemStateException
 block|{
 name|getParentTree
 argument_list|()
@@ -734,6 +767,8 @@ parameter_list|(
 name|String
 name|relPath
 parameter_list|)
+throws|throws
+name|InvalidItemStateException
 block|{
 name|Tree
 name|tree
@@ -783,6 +818,8 @@ specifier|private
 name|Tree
 name|getParentTree
 parameter_list|()
+throws|throws
+name|InvalidItemStateException
 block|{
 return|return
 name|getTree
@@ -797,9 +834,44 @@ specifier|synchronized
 name|Tree
 name|getTree
 parameter_list|()
+throws|throws
+name|InvalidItemStateException
 block|{
-comment|// TODO: this should not be necessary anymore once TreeImpl.revert and TreeImpl.saved are implemented
+name|resolve
+argument_list|()
+expr_stmt|;
+if|if
+condition|(
+name|tree
+operator|==
+literal|null
+condition|)
+block|{
+throw|throw
+operator|new
+name|InvalidItemStateException
+argument_list|(
+literal|"Node is stale"
+argument_list|)
+throw|;
+block|}
 return|return
+name|tree
+return|;
+block|}
+specifier|private
+specifier|synchronized
+name|void
+name|resolve
+parameter_list|()
+block|{
+if|if
+condition|(
+name|tree
+operator|!=
+literal|null
+condition|)
+block|{
 name|tree
 operator|=
 name|sessionDelegate
@@ -811,7 +883,8 @@ operator|.
 name|getPath
 argument_list|()
 argument_list|)
-return|;
+expr_stmt|;
+block|}
 block|}
 specifier|private
 name|Iterator

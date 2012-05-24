@@ -19,6 +19,24 @@ end_package
 
 begin_import
 import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|api
+operator|.
+name|Tree
+operator|.
+name|Status
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|annotation
@@ -39,19 +57,11 @@ end_import
 
 begin_import
 import|import
-name|org
+name|javax
 operator|.
-name|apache
+name|jcr
 operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|api
-operator|.
-name|Tree
-operator|.
-name|Status
+name|InvalidItemStateException
 import|;
 end_import
 
@@ -77,6 +87,11 @@ name|SessionDelegate
 name|sessionDelegate
 parameter_list|)
 block|{
+assert|assert
+name|sessionDelegate
+operator|!=
+literal|null
+assert|;
 name|this
 operator|.
 name|sessionDelegate
@@ -92,6 +107,8 @@ specifier|abstract
 name|String
 name|getName
 parameter_list|()
+throws|throws
+name|InvalidItemStateException
 function_decl|;
 comment|/**      * Get the path of this item      * @return oak path of this item      */
 annotation|@
@@ -101,6 +118,8 @@ specifier|abstract
 name|String
 name|getPath
 parameter_list|()
+throws|throws
+name|InvalidItemStateException
 function_decl|;
 comment|/**      * Get the parent of this item      * @return  parent of this item or {@code null} for root      */
 annotation|@
@@ -110,6 +129,8 @@ specifier|abstract
 name|NodeDelegate
 name|getParent
 parameter_list|()
+throws|throws
+name|InvalidItemStateException
 function_decl|;
 comment|/**      * Determine whether this item is stale      * @return  {@code true} iff stale      */
 specifier|public
@@ -126,16 +147,21 @@ specifier|abstract
 name|Status
 name|getStatus
 parameter_list|()
+throws|throws
+name|InvalidItemStateException
 function_decl|;
 comment|/**      * Get the session delegate with which this item is associated      * @return  {@link SessionDelegate} to which this item belongs      */
 annotation|@
 name|Nonnull
 specifier|public
-specifier|abstract
 name|SessionDelegate
 name|getSessionDelegate
 parameter_list|()
-function_decl|;
+block|{
+return|return
+name|sessionDelegate
+return|;
+block|}
 block|}
 end_class
 
