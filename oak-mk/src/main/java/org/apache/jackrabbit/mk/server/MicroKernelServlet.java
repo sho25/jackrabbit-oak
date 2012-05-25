@@ -1324,13 +1324,13 @@ literal|0L
 argument_list|)
 decl_stmt|;
 name|int
-name|count
+name|maxChildNodes
 init|=
 name|request
 operator|.
 name|getParameter
 argument_list|(
-literal|"count"
+literal|"maxChildNodes"
 argument_list|,
 operator|-
 literal|1
@@ -1370,7 +1370,7 @@ name|depth
 argument_list|,
 name|offset
 argument_list|,
-name|count
+name|maxChildNodes
 argument_list|,
 name|filter
 argument_list|)

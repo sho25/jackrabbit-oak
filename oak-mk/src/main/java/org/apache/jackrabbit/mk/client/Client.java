@@ -900,7 +900,7 @@ name|long
 name|offset
 parameter_list|,
 name|int
-name|count
+name|maxChildNodes
 parameter_list|,
 name|String
 name|filter
@@ -962,9 +962,9 @@ name|request
 operator|.
 name|addParameter
 argument_list|(
-literal|"count"
+literal|"maxChildNodes"
 argument_list|,
-name|count
+name|maxChildNodes
 argument_list|)
 expr_stmt|;
 name|request

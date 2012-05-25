@@ -193,7 +193,7 @@ name|long
 name|offset
 parameter_list|,
 name|int
-name|count
+name|maxChildNodes
 parameter_list|,
 name|String
 name|filter
@@ -212,7 +212,7 @@ name|depth
 argument_list|,
 name|offset
 argument_list|,
-name|count
+name|maxChildNodes
 argument_list|,
 name|filter
 argument_list|)
@@ -796,7 +796,7 @@ name|long
 name|offset
 parameter_list|,
 name|int
-name|count
+name|maxChildNodes
 parameter_list|,
 name|String
 name|filter
@@ -815,7 +815,7 @@ name|depth
 argument_list|,
 name|offset
 argument_list|,
-name|count
+name|maxChildNodes
 argument_list|,
 name|filter
 argument_list|)
