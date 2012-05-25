@@ -397,6 +397,15 @@ argument_list|(
 name|MOUNT
 argument_list|,
 name|head
+argument_list|,
+literal|1
+argument_list|,
+literal|0
+argument_list|,
+operator|-
+literal|1
+argument_list|,
+literal|null
 argument_list|)
 decl_stmt|;
 name|NodeMap

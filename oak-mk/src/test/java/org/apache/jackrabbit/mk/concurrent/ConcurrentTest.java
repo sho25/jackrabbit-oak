@@ -230,6 +230,15 @@ operator|+
 name|i
 argument_list|,
 name|newRev
+argument_list|,
+literal|1
+argument_list|,
+literal|0
+argument_list|,
+operator|-
+literal|1
+argument_list|,
+literal|null
 argument_list|)
 expr_stmt|;
 name|mk
