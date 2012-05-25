@@ -404,6 +404,7 @@ operator|==
 literal|null
 condition|)
 block|{
+comment|// TODO should find the closest referenceable parent, and build an identifier based on that and the relative path
 return|return
 name|getPath
 argument_list|()
