@@ -353,7 +353,7 @@ name|context
 operator|.
 name|registerService
 argument_list|(
-name|Repository
+name|SlingRepository
 operator|.
 name|class
 operator|.
