@@ -69,6 +69,16 @@ name|NodeState
 import|;
 end_import
 
+begin_import
+import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|Nonnull
+import|;
+end_import
+
 begin_comment
 comment|/**  * Content change validator. An instance of this interface is used to  * validate changes against a specific {@link NodeState}.  */
 end_comment
@@ -108,6 +118,8 @@ parameter_list|)
 throws|throws
 name|CommitFailedException
 function_decl|;
+annotation|@
+name|Nonnull
 name|Validator
 name|childNodeAdded
 parameter_list|(
@@ -120,6 +132,8 @@ parameter_list|)
 throws|throws
 name|CommitFailedException
 function_decl|;
+annotation|@
+name|Nonnull
 name|Validator
 name|childNodeChanged
 parameter_list|(
@@ -135,6 +149,8 @@ parameter_list|)
 throws|throws
 name|CommitFailedException
 function_decl|;
+annotation|@
+name|Nonnull
 name|Validator
 name|childNodeDeleted
 parameter_list|(

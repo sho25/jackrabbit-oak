@@ -19,6 +19,30 @@ end_package
 
 begin_import
 import|import
+name|com
+operator|.
+name|sun
+operator|.
+name|istack
+operator|.
+name|internal
+operator|.
+name|NotNull
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|Nonnull
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|io
@@ -39,26 +63,34 @@ extends|extends
 name|Closeable
 block|{
 comment|/**      * This methods provides access to information related to authentication      * and authorization of this content session. Multiple calls to this method      * may return different instances which are guaranteed to be equal wrt.      * to {@link Object#equals(Object)}.      *      * @return  immutable {@link AuthInfo} instance      */
+annotation|@
+name|Nonnull
 name|AuthInfo
 name|getAuthInfo
 parameter_list|()
 function_decl|;
-comment|/**      * The name of the workspace this {@code ContentSession} instance has      * been created for. If no workspace name has been specified during      * repository login this method will return the name of the default      * workspace.      *      * @return name of the workspace this instance has been created for or      * {@code null} if this content session is repository bound.      */
+comment|/**      * TODO clarify workspace handling      * The name of the workspace this {@code ContentSession} instance has      * been created for. If no workspace name has been specified during      * repository login this method will return the name of the default      * workspace.      *      * @return name of the workspace this instance has been created for or      * {@code null} if this content session is repository bound.      */
 name|String
 name|getWorkspaceName
 parameter_list|()
 function_decl|;
 comment|/**      * The current root as seen by this content session. Use {@link Root#commit()} to      * atomically apply the changes made in that subtree the underlying Microkernel.      *      * @return  the current root      */
+annotation|@
+name|NotNull
 name|Root
 name|getCurrentRoot
 parameter_list|()
 function_decl|;
 comment|/**      * Get the query engine.      *      * @return the query engine      */
+annotation|@
+name|NotNull
 name|QueryEngine
 name|getQueryEngine
 parameter_list|()
 function_decl|;
 comment|/**      * Returns the internal value factory.      *      * @return the internal value factory.      */
+annotation|@
+name|Nonnull
 name|CoreValueFactory
 name|getCoreValueFactory
 parameter_list|()

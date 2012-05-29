@@ -21,6 +21,16 @@ begin_import
 import|import
 name|javax
 operator|.
+name|annotation
+operator|.
+name|Nonnull
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
 name|jcr
 operator|.
 name|Credentials
@@ -61,6 +71,8 @@ interface|interface
 name|ContentRepository
 block|{
 comment|/**      * Authenticates a user based on the given credentials or available      * out-of-band information and, if successful, returns a      * {@link ContentSession} instance for accessing repository content      * inside the specified workspace as the authenticated user.      *<p>      * TODO: Determine whether ContentSessions should cover a single      * workspace or the entire repository.      *<p>      * The exact type of access credentials is undefined, as this method      * simply acts as a generic messenger between clients and pluggable      * login modules that take care of the actual authentication. See      * the documentation of relevant login modules for the kind of access      * credentials they expect.      *<p>      * TODO: Instead of the explicit access credentials, should this method      * rather take the arguments to be passed to the relevant      * JAAS {@link javax.security.auth.login.LoginContext} constructor?      *<p>      * The client should explicitly {@link ContentSession#close()} the      * returned session once it is no longer used. The recommended access      * pattern is:      *<pre>      * ContentRepository repository = ...;      * ContentSession session = repository.login(...);      * try {      *     ...; // Use the session      * } finally {      *     session.close();      * }      *</pre>      *      * @param credentials access credentials, or {@code null}      * @param workspaceName      * @return authenticated repository session      * @throws LoginException if authentication failed      * @throws NoSuchWorkspaceException      */
+annotation|@
+name|Nonnull
 name|ContentSession
 name|login
 parameter_list|(

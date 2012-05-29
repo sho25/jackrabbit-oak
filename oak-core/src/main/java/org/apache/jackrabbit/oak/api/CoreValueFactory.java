@@ -19,6 +19,16 @@ end_package
 
 begin_import
 import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|Nonnull
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|io
@@ -47,16 +57,6 @@ name|BigDecimal
 import|;
 end_import
 
-begin_import
-import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
 begin_comment
 comment|/**  * {@code CoreValueFactory} defines methods to create new instances of  * {@code CoreValue}.  */
 end_comment
@@ -67,6 +67,8 @@ interface|interface
 name|CoreValueFactory
 block|{
 comment|/**      * Creates a new value of type {@link javax.jcr.PropertyType#STRING}.      *      * @param value A non-null {@code String} defining the new value.      * @return a new value instance.      * @throws IllegalArgumentException if the specified {@code String}      * is {@code null}.      */
+annotation|@
+name|Nonnull
 name|CoreValue
 name|createValue
 parameter_list|(
@@ -75,6 +77,8 @@ name|value
 parameter_list|)
 function_decl|;
 comment|/**      * Creates a new value of type {@link javax.jcr.PropertyType#DOUBLE}.      *      * @param value The {@code double} that defines the new value.      * @return a new value instance.      */
+annotation|@
+name|Nonnull
 name|CoreValue
 name|createValue
 parameter_list|(
@@ -83,6 +87,8 @@ name|value
 parameter_list|)
 function_decl|;
 comment|/**      * Creates a new value of type {@link javax.jcr.PropertyType#DOUBLE}.      *      * @param value The {@code double} that defines the new value.      * @return a new value instance.      */
+annotation|@
+name|Nonnull
 name|CoreValue
 name|createValue
 parameter_list|(
@@ -91,6 +97,8 @@ name|value
 parameter_list|)
 function_decl|;
 comment|/**      * Creates a new value of type {@link javax.jcr.PropertyType#BOOLEAN}.      *      * @param value The {@code boolean} that defines the new value.      * @return a new value instance.      */
+annotation|@
+name|Nonnull
 name|CoreValue
 name|createValue
 parameter_list|(
@@ -99,6 +107,8 @@ name|value
 parameter_list|)
 function_decl|;
 comment|/**      * Creates a new value of type {@link javax.jcr.PropertyType#DECIMAL}.      *      * @param value A non-null {@code BigDecimal} that defines the new value.      * @return a new value instance.      * @throws IllegalArgumentException if the specified {@code BigDecimal} is {@code null}.      */
+annotation|@
+name|Nonnull
 name|CoreValue
 name|createValue
 parameter_list|(
@@ -107,6 +117,8 @@ name|value
 parameter_list|)
 function_decl|;
 comment|/**      * Creates a new value of type {@link javax.jcr.PropertyType#BINARY}.      *      * @param value A non-null {@code InputStream} that defines the new value.      * @return a new value instance.      * @throws IllegalArgumentException if the specified {@code InputStream} is {@code null}.      * @throws IOException If an error occurs while processing the stream.      * @throws //TODO define exceptions (currently impl. throws MicrokernelException)      */
+annotation|@
+name|Nonnull
 name|CoreValue
 name|createValue
 parameter_list|(
@@ -117,6 +129,8 @@ throws|throws
 name|IOException
 function_decl|;
 comment|/**      * Creates a new value of the specified type.      *      * @param value A non-null {@code String} that defines the new value.      * @param type The desired target type of the new value.      * @return a new value instance.      * @throws IllegalArgumentException if the specified {@code value} is {@code null}      * or if the given type is not supported.      * @throws NumberFormatException If the specified {@code type} requires      * conversion to any of the number types and the conversion fails.      * @throws //TODO define and consolidate exceptions      */
+annotation|@
+name|Nonnull
 name|CoreValue
 name|createValue
 parameter_list|(

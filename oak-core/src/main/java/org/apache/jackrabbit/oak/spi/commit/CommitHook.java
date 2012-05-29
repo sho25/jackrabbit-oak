@@ -71,6 +71,16 @@ name|NodeStore
 import|;
 end_import
 
+begin_import
+import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|Nonnull
+import|;
+end_import
+
 begin_comment
 comment|/**  * Extension point for custom functionality to be performed before and  * after content changes are committed. The repository core will call  * all available commit hooks in sequence for all commits it makes or  * sees. The control flows roughly like this:  *<pre>  * NodeStore store = ...;  * NodeState before = ...;  * NodeState after = ...;  *  * for (CommitHook hook : hooks) {  *     after = hook.preCommit(store, before, after);  * }  *  * after = branch.merge();  *  * for (CommitHook hook : hooks) {  *     hook.afterCommit(store, before, after);  * }  *</pre>  *<p>  * Note that instead of implementing this interface directly, most commit  * hooks are better expressed as implementations of the more specific  * extension interfaces defined in this package.  */
 end_comment
@@ -81,6 +91,8 @@ interface|interface
 name|CommitHook
 block|{
 comment|/**      * Before-commit hook. The implementation can validate, record or      * modify the staged commit. After all available before-commit hooks      * have been processed and none of them has thrown an exception the      * collected changes are committed to the underlying storage model.      *<p>      * Note that a before-commit hook can be executed multiple times for      * the same change, for example when a change needs to be retried      * after possible merge conflicts have been resolved. Use the      * after-commit hook if you need to be notified only once for each      * change.      *      * @param store the node store that contains the repository content      * @param before content tree before the commit      * @param after content tree prepared for the commit      * @return content tree to be committed      * @throws CommitFailedException if the commit should be rejected      */
+annotation|@
+name|Nonnull
 name|NodeState
 name|beforeCommit
 parameter_list|(

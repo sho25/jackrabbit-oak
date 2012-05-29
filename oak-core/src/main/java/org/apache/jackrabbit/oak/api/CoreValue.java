@@ -19,6 +19,16 @@ end_package
 
 begin_import
 import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|Nonnull
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|io
@@ -57,6 +67,8 @@ name|getType
 parameter_list|()
 function_decl|;
 comment|/**      * Returns a {@code String} representation of this value. Note that the      * string reflects the internal state and doesn't respect any session level      * namespace remapping.      *      * @return The string representation of this value.      */
+annotation|@
+name|Nonnull
 name|String
 name|getString
 parameter_list|()
@@ -77,11 +89,15 @@ name|getBoolean
 parameter_list|()
 function_decl|;
 comment|/**      * Returns a {@code BigDecimal} representation of this value.      *      * @return A {@code BigDecimal} representation of this value based on an      * internal conversion.      * @throws {@code NumberFormatException} If the value cannot be converted      * a {@code BigDecimal}.      */
+annotation|@
+name|Nonnull
 name|BigDecimal
 name|getDecimal
 parameter_list|()
 function_decl|;
 comment|/**      * Returns a new stream for this value object.      *      * @return a new stream for this value based on an internal conversion.      * @throws //TODO define exceptions      */
+annotation|@
+name|Nonnull
 name|InputStream
 name|getNewStream
 parameter_list|()

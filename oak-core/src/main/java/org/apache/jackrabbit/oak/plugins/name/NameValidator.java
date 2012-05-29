@@ -435,7 +435,7 @@ parameter_list|)
 block|{
 comment|// do nothing
 return|return
-literal|null
+name|this
 return|;
 block|}
 block|}

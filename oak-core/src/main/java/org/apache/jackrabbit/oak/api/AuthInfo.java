@@ -17,6 +17,26 @@ name|api
 package|;
 end_package
 
+begin_import
+import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|CheckForNull
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|Nonnull
+import|;
+end_import
+
 begin_comment
 comment|/**  * {@code AuthInfo} instances provide access to information related  * to authentication and authorization of a given content session.  * {@code AuthInfo} instances are guaranteed to be immutable.  */
 end_comment
@@ -77,17 +97,23 @@ block|}
 block|}
 decl_stmt|;
 comment|/**      * Return the user ID to be exposed on the JCR Session object. It refers      * to the ID of the user associated with the Credentials passed to the      * repository login.      *      * @return the user ID such as exposed on the JCR Session object.      */
+annotation|@
+name|CheckForNull
 name|String
 name|getUserID
 parameter_list|()
 function_decl|;
 comment|/**      * Returns the attribute names associated with this instance.      *      * @return The attribute names with that instance or an empty array if      * no attributes are present.      */
+annotation|@
+name|Nonnull
 name|String
 index|[]
 name|getAttributeNames
 parameter_list|()
 function_decl|;
 comment|/**      * Returns the attribute with the given name or {@code null} if no attribute      * with that {@code attributeName} exists.      *      * @param attributeName The attribute name.      * @return The attribute or {@code null}.      */
+annotation|@
+name|CheckForNull
 name|Object
 name|getAttribute
 parameter_list|(

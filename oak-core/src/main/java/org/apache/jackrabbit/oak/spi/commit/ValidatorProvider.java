@@ -37,6 +37,16 @@ name|NodeState
 import|;
 end_import
 
+begin_import
+import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|Nonnull
+import|;
+end_import
+
 begin_comment
 comment|/**  * Extension point for plugging in different kinds of validation rules  * for content changes.  */
 end_comment
@@ -47,6 +57,8 @@ interface|interface
 name|ValidatorProvider
 block|{
 comment|/**      * Returns a validator for checking the changes between the given      * two root states.      *      * @param before original root state      * @param after  modified root state      * @return validator for checking the modifications      */
+annotation|@
+name|Nonnull
 name|Validator
 name|getRootValidator
 parameter_list|(

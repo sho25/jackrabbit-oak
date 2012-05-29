@@ -139,6 +139,16 @@ name|NodeStoreBranch
 import|;
 end_import
 
+begin_import
+import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|Nonnull
+import|;
+end_import
+
 begin_comment
 comment|/**  * {@code NodeStore} implementations against {@link MicroKernel}.  */
 end_comment
@@ -200,6 +210,16 @@ name|CommitHook
 name|commitHook
 parameter_list|)
 block|{
+assert|assert
+name|kernel
+operator|!=
+literal|null
+assert|;
+assert|assert
+name|commitHook
+operator|!=
+literal|null
+assert|;
 name|this
 operator|.
 name|kernel
@@ -321,6 +341,8 @@ name|valueFactory
 return|;
 block|}
 comment|//------------------------------------------------------------< internal>---
+annotation|@
+name|Nonnull
 name|MicroKernel
 name|getKernel
 parameter_list|()
@@ -329,6 +351,8 @@ return|return
 name|kernel
 return|;
 block|}
+annotation|@
+name|Nonnull
 name|CommitHook
 name|getCommitHook
 parameter_list|()

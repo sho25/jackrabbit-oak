@@ -244,6 +244,11 @@ name|QueryEngine
 name|queryEngine
 parameter_list|)
 block|{
+assert|assert
+name|queryEngine
+operator|!=
+literal|null
+assert|;
 name|this
 operator|.
 name|loginContext

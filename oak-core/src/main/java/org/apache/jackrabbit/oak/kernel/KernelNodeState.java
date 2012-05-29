@@ -219,6 +219,16 @@ end_import
 
 begin_import
 import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|Nonnull
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|util
@@ -360,6 +370,26 @@ name|String
 name|revision
 parameter_list|)
 block|{
+assert|assert
+name|kernel
+operator|!=
+literal|null
+assert|;
+assert|assert
+name|valueFactory
+operator|!=
+literal|null
+assert|;
+assert|assert
+name|path
+operator|!=
+literal|null
+assert|;
+assert|assert
+name|revision
+operator|!=
+literal|null
+assert|;
 name|this
 operator|.
 name|kernel
@@ -885,6 +915,8 @@ block|}
 return|;
 block|}
 comment|//------------------------------------------------------------< internal>---
+annotation|@
+name|Nonnull
 name|String
 name|getRevision
 parameter_list|()
@@ -893,6 +925,8 @@ return|return
 name|revision
 return|;
 block|}
+annotation|@
+name|Nonnull
 name|String
 name|getPath
 parameter_list|()

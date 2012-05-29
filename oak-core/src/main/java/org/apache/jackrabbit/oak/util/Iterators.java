@@ -115,6 +115,16 @@ end_import
 
 begin_import
 import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|Nonnull
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|util
@@ -183,6 +193,8 @@ name|SuppressWarnings
 argument_list|(
 literal|"unchecked"
 argument_list|)
+annotation|@
+name|Nonnull
 specifier|public
 specifier|static
 parameter_list|<
@@ -212,6 +224,8 @@ name|SuppressWarnings
 argument_list|(
 literal|"unchecked"
 argument_list|)
+annotation|@
+name|Nonnull
 specifier|public
 specifier|static
 parameter_list|<
@@ -236,6 +250,8 @@ name|SuppressWarnings
 argument_list|(
 literal|"unchecked"
 argument_list|)
+annotation|@
+name|Nonnull
 specifier|public
 specifier|static
 parameter_list|<
@@ -280,6 +296,8 @@ name|SuppressWarnings
 argument_list|(
 literal|"unchecked"
 argument_list|)
+annotation|@
+name|Nonnull
 specifier|public
 specifier|static
 parameter_list|<
@@ -315,6 +333,8 @@ name|SuppressWarnings
 argument_list|(
 literal|"unchecked"
 argument_list|)
+annotation|@
+name|Nonnull
 specifier|public
 specifier|static
 parameter_list|<
@@ -349,6 +369,8 @@ name|SuppressWarnings
 argument_list|(
 literal|"unchecked"
 argument_list|)
+annotation|@
+name|Nonnull
 specifier|public
 specifier|static
 parameter_list|<
@@ -389,6 +411,8 @@ name|SuppressWarnings
 argument_list|(
 literal|"unchecked"
 argument_list|)
+annotation|@
+name|Nonnull
 specifier|public
 specifier|static
 parameter_list|<
@@ -468,6 +492,8 @@ name|SuppressWarnings
 argument_list|(
 literal|"unchecked"
 argument_list|)
+annotation|@
+name|Nonnull
 specifier|public
 specifier|static
 parameter_list|<
@@ -550,6 +576,8 @@ argument_list|)
 return|;
 block|}
 comment|/**      * Spool an iterator into an iterable      * @param iterator      * @param<T>      * @return iterable containing the values from {@code iterator}      */
+annotation|@
+name|Nonnull
 specifier|public
 specifier|static
 parameter_list|<
@@ -670,6 +698,8 @@ block|}
 return|;
 block|}
 comment|/**      * Flattens an iterator of iterators into a single iterator.      * @param iterators      * @param<T>      * @return      */
+annotation|@
+name|Nonnull
 specifier|public
 specifier|static
 parameter_list|<
