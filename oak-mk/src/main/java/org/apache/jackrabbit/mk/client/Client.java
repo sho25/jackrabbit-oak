@@ -53,16 +53,6 @@ name|java
 operator|.
 name|net
 operator|.
-name|Socket
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|net
-operator|.
 name|URI
 import|;
 end_import
@@ -310,9 +300,6 @@ operator|=
 name|socketFactory
 expr_stmt|;
 block|}
-comment|//-------------------------------------------------- implements MicroKernel
-annotation|@
-name|Override
 specifier|public
 name|void
 name|dispose
@@ -320,6 +307,7 @@ parameter_list|()
 block|{
 comment|// do nothing
 block|}
+comment|//-------------------------------------------------- implements MicroKernel
 annotation|@
 name|Override
 specifier|public
@@ -900,7 +888,7 @@ name|long
 name|offset
 parameter_list|,
 name|int
-name|maxChildNodes
+name|count
 parameter_list|,
 name|String
 name|filter
@@ -962,9 +950,9 @@ name|request
 operator|.
 name|addParameter
 argument_list|(
-literal|"maxChildNodes"
+literal|"count"
 argument_list|,
-name|maxChildNodes
+name|count
 argument_list|)
 expr_stmt|;
 name|request

@@ -117,6 +117,7 @@ argument_list|)
 expr_stmt|;
 return|return;
 block|}
+specifier|final
 name|MicroKernel
 name|mk
 init|=
@@ -230,6 +231,13 @@ name|server
 operator|.
 name|stop
 argument_list|()
+expr_stmt|;
+name|MicroKernelFactory
+operator|.
+name|disposeInstance
+argument_list|(
+name|mk
+argument_list|)
 expr_stmt|;
 block|}
 block|}

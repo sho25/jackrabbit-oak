@@ -36,11 +36,6 @@ specifier|public
 interface|interface
 name|MicroKernel
 block|{
-comment|/**      * Dispose this instance.      *      * TODO remove lifecycle method from MicroKernel API (OAK-32)      */
-name|void
-name|dispose
-parameter_list|()
-function_decl|;
 comment|//---------------------------------------------------------< REVISION ops>
 comment|/**      * Return the id of the current head revision.      *      * @return the id of the head revision      * @throws MicroKernelException if an error occurs      */
 name|String

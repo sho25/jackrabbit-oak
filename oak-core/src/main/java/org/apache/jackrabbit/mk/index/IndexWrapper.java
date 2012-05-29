@@ -1634,18 +1634,12 @@ name|path
 argument_list|)
 return|;
 block|}
-annotation|@
-name|Override
 specifier|public
 name|void
 name|dispose
 parameter_list|()
 block|{
-name|mk
-operator|.
-name|dispose
-argument_list|()
-expr_stmt|;
+comment|// do nothing
 block|}
 block|}
 end_class
