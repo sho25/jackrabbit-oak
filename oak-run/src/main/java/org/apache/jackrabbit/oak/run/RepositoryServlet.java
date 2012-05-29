@@ -113,7 +113,7 @@ name|String
 name|path
 decl_stmt|;
 specifier|private
-name|MicroKernelImpl
+name|MicroKernel
 name|kernel
 decl_stmt|;
 specifier|private

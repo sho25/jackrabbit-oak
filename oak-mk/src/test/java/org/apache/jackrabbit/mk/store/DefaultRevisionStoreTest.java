@@ -273,7 +273,7 @@ name|DefaultRevisionStore
 name|rs
 decl_stmt|;
 specifier|private
-name|MicroKernelImpl
+name|MicroKernel
 name|mk
 decl_stmt|;
 annotation|@
