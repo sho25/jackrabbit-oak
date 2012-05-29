@@ -19,20 +19,6 @@ end_package
 
 begin_import
 import|import
-name|com
-operator|.
-name|sun
-operator|.
-name|istack
-operator|.
-name|internal
-operator|.
-name|NotNull
-import|;
-end_import
-
-begin_import
-import|import
 name|javax
 operator|.
 name|annotation
@@ -76,14 +62,14 @@ parameter_list|()
 function_decl|;
 comment|/**      * The current root as seen by this content session. Use {@link Root#commit()} to      * atomically apply the changes made in that subtree the underlying Microkernel.      *      * @return  the current root      */
 annotation|@
-name|NotNull
+name|Nonnull
 name|Root
 name|getCurrentRoot
 parameter_list|()
 function_decl|;
 comment|/**      * Get the query engine.      *      * @return the query engine      */
 annotation|@
-name|NotNull
+name|Nonnull
 name|QueryEngine
 name|getQueryEngine
 parameter_list|()
