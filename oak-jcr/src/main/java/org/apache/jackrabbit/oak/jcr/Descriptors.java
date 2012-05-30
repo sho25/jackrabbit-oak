@@ -748,7 +748,7 @@ name|createValue
 argument_list|(
 name|Repository
 operator|.
-name|IDENTIFIER_STABILITY_INDEFINITE_DURATION
+name|IDENTIFIER_STABILITY_METHOD_DURATION
 argument_list|)
 argument_list|,
 literal|true
