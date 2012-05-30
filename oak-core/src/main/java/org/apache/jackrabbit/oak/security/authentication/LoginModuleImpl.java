@@ -1418,6 +1418,15 @@ name|userID
 init|=
 literal|null
 decl_stmt|;
+if|if
+condition|(
+operator|!
+name|credentials
+operator|.
+name|isEmpty
+argument_list|()
+condition|)
+block|{
 name|Credentials
 name|c
 init|=
@@ -1502,6 +1511,7 @@ operator|.
 name|getUserID
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 block|}
 return|return
