@@ -105,16 +105,6 @@ name|javax
 operator|.
 name|annotation
 operator|.
-name|CheckForNull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|annotation
-operator|.
 name|Nonnull
 import|;
 end_import
@@ -367,9 +357,9 @@ operator|+
 literal|']'
 return|;
 block|}
-comment|/**      * Get the value of the property      * @return  value or {@code null} if multi values      */
+comment|/**      * Get the value of the property      * @return  the value of the property      * @throws IllegalStateException  if {@code isMultivalue()} is {@code true}.      *      */
 annotation|@
-name|CheckForNull
+name|Nonnull
 specifier|public
 name|CoreValue
 name|getValue
@@ -377,29 +367,17 @@ parameter_list|()
 throws|throws
 name|InvalidItemStateException
 block|{
-name|PropertyState
-name|state
-init|=
+return|return
 name|getPropertyState
 argument_list|()
-decl_stmt|;
-return|return
-name|state
-operator|.
-name|isArray
-argument_list|()
-condition|?
-literal|null
-else|:
-name|state
 operator|.
 name|getValue
 argument_list|()
 return|;
 block|}
-comment|/**      * Get the value of the property      * @return  value or {@code null} if single valued      */
+comment|/**      * Get the value of the property      * @return  the values of the property      * @throws IllegalStateException  if {@code isMultivalue()} is {@code false}.      */
 annotation|@
-name|CheckForNull
+name|Nonnull
 specifier|public
 name|Iterable
 argument_list|<
@@ -410,20 +388,9 @@ parameter_list|()
 throws|throws
 name|InvalidItemStateException
 block|{
-name|PropertyState
-name|state
-init|=
+return|return
 name|getPropertyState
 argument_list|()
-decl_stmt|;
-return|return
-name|state
-operator|==
-literal|null
-condition|?
-literal|null
-else|:
-name|state
 operator|.
 name|getValues
 argument_list|()
@@ -736,6 +703,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|//------------------------------------------------------------< private>---
+annotation|@
+name|Nonnull
 specifier|private
 name|PropertyState
 name|getPropertyState
@@ -765,6 +734,8 @@ return|return
 name|propertyState
 return|;
 block|}
+annotation|@
+name|Nonnull
 specifier|private
 name|Tree
 name|getParentTree

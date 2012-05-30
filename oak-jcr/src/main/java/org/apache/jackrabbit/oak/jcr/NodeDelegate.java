@@ -414,22 +414,11 @@ return|;
 block|}
 else|else
 block|{
-name|CoreValue
-name|value
-init|=
+return|return
 name|pd
 operator|.
 name|getValue
 argument_list|()
-decl_stmt|;
-assert|assert
-name|value
-operator|!=
-literal|null
-assert|;
-comment|// since jcr:uuid is a single valued property
-return|return
-name|value
 operator|.
 name|toString
 argument_list|()
