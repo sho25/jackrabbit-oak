@@ -105,6 +105,16 @@ name|javax
 operator|.
 name|annotation
 operator|.
+name|CheckForNull
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|annotation
+operator|.
 name|Nonnull
 import|;
 end_import
@@ -358,6 +368,8 @@ literal|']'
 return|;
 block|}
 comment|/**      * Get the value of the property      * @return  value or {@code null} if multi values      */
+annotation|@
+name|CheckForNull
 specifier|public
 name|CoreValue
 name|getValue
@@ -386,6 +398,8 @@ argument_list|()
 return|;
 block|}
 comment|/**      * Get the value of the property      * @return  value or {@code null} if single valued      */
+annotation|@
+name|CheckForNull
 specifier|public
 name|Iterable
 argument_list|<
@@ -432,6 +446,8 @@ argument_list|()
 return|;
 block|}
 comment|/**      * Get the property definition of the property      * @return      */
+annotation|@
+name|Nonnull
 specifier|public
 name|PropertyDefinition
 name|getDefinition

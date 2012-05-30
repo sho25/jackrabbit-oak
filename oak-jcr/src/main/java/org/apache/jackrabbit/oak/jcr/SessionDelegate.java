@@ -578,6 +578,16 @@ parameter_list|)
 throws|throws
 name|RepositoryException
 block|{
+assert|assert
+name|repository
+operator|!=
+literal|null
+assert|;
+assert|assert
+name|contentSession
+operator|!=
+literal|null
+assert|;
 name|this
 operator|.
 name|repository
@@ -667,6 +677,8 @@ return|return
 name|session
 return|;
 block|}
+annotation|@
+name|Nonnull
 specifier|public
 name|AuthInfo
 name|getAuthInfo

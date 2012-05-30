@@ -382,6 +382,8 @@ operator|+
 literal|']'
 return|;
 block|}
+annotation|@
+name|Nonnull
 specifier|public
 name|String
 name|getIdentifier
@@ -412,11 +414,22 @@ return|;
 block|}
 else|else
 block|{
-return|return
+name|CoreValue
+name|value
+init|=
 name|pd
 operator|.
 name|getValue
 argument_list|()
+decl_stmt|;
+assert|assert
+name|value
+operator|!=
+literal|null
+assert|;
+comment|// since jcr:uuid is a single valued property
+return|return
+name|value
 operator|.
 name|toString
 argument_list|()
@@ -530,6 +543,8 @@ argument_list|)
 return|;
 block|}
 comment|/**      * Get the properties of the node      * @return  properties of the node      */
+annotation|@
+name|Nonnull
 specifier|public
 name|Iterator
 argument_list|<
@@ -608,6 +623,8 @@ argument_list|)
 return|;
 block|}
 comment|/**      * Get child nodes      * @return  child nodes of the node      */
+annotation|@
+name|Nonnull
 specifier|public
 name|Iterator
 argument_list|<
