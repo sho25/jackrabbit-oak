@@ -149,9 +149,7 @@ parameter_list|)
 throws|throws
 name|CommitFailedException
 function_decl|;
-annotation|@
-name|Nonnull
-name|Validator
+name|void
 name|childNodeDeleted
 parameter_list|(
 name|String
