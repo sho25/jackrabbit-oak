@@ -784,7 +784,7 @@ name|name
 range|:
 name|PathUtils
 operator|.
-name|split
+name|elements
 argument_list|(
 name|path
 argument_list|)
@@ -882,7 +882,7 @@ name|name
 range|:
 name|PathUtils
 operator|.
-name|split
+name|elements
 argument_list|(
 name|path
 argument_list|)
