@@ -75,7 +75,7 @@ name|javax
 operator|.
 name|annotation
 operator|.
-name|Nonnull
+name|CheckForNull
 import|;
 end_import
 
@@ -88,6 +88,7 @@ specifier|public
 interface|interface
 name|Validator
 block|{
+comment|/**      * Validate an added property      * @param after  the added property      * @throws CommitFailedException  if validation fails.      */
 name|void
 name|propertyAdded
 parameter_list|(
@@ -97,6 +98,7 @@ parameter_list|)
 throws|throws
 name|CommitFailedException
 function_decl|;
+comment|/**      * Validate a changed property      * @param before the original property      * @param after  the changed property      * @throws CommitFailedException  if validation fails.      */
 name|void
 name|propertyChanged
 parameter_list|(
@@ -109,6 +111,7 @@ parameter_list|)
 throws|throws
 name|CommitFailedException
 function_decl|;
+comment|/**      * Validate a deleted property      * @param before the original property      * @throws CommitFailedException  if validation fails.      */
 name|void
 name|propertyDeleted
 parameter_list|(
@@ -118,8 +121,9 @@ parameter_list|)
 throws|throws
 name|CommitFailedException
 function_decl|;
+comment|/**      * Validate an added node      * @param name the name of the added node      * @param after  the added node      * @return a {@code Validator} for {@code after} or {@code null} if validation      * should not decent into the subtree rooted at {@code after}.      * @throws CommitFailedException  if validation fails.      */
 annotation|@
-name|Nonnull
+name|CheckForNull
 name|Validator
 name|childNodeAdded
 parameter_list|(
@@ -132,8 +136,9 @@ parameter_list|)
 throws|throws
 name|CommitFailedException
 function_decl|;
+comment|/**      * Validate a changed node      * @param name the name of the changed node      * @param before the original node      * @param after  the changed node      * @return a {@code Validator} for {@code after} or {@code null} if validation      * should not decent into the subtree rooted at {@code after}.      * @throws CommitFailedException  if validation fails.      */
 annotation|@
-name|Nonnull
+name|CheckForNull
 name|Validator
 name|childNodeChanged
 parameter_list|(
@@ -149,6 +154,7 @@ parameter_list|)
 throws|throws
 name|CommitFailedException
 function_decl|;
+comment|/**      * Validate a deleted node      * @param before the original node      * @throws CommitFailedException  if validation fails.      */
 name|void
 name|childNodeDeleted
 parameter_list|(
