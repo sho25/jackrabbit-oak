@@ -82,7 +82,9 @@ decl_stmt|;
 specifier|private
 name|PathUtils
 parameter_list|()
-block|{     }
+block|{
+comment|// utility class
+block|}
 comment|/**      * Whether the path is the root path ("/").      *      * @param path the path      * @return whether this is the root      */
 specifier|public
 specifier|static
