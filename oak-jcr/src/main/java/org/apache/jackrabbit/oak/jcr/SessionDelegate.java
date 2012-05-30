@@ -1727,28 +1727,6 @@ literal|null
 return|;
 block|}
 block|}
-comment|//    @CheckForNull
-comment|//    NodeDelegate slowFindByJcrUuid(String id) {
-comment|//        return slowFindByJcrUuid(getTree(""), id);
-comment|//    }
-comment|//
-comment|//    @CheckForNull
-comment|//    NodeDelegate slowFindByJcrUuid(Tree tree, String id) {
-comment|//        // Tree-walking implementation...
-comment|//        PropertyState p = tree.getProperty("jcr:uuid");
-comment|//        if (p != null&& id.equals(p.getValue().getString())) {
-comment|//            return new NodeDelegate(this, tree);
-comment|//        } else {
-comment|//            for (Tree c : tree.getChildren()) {
-comment|//                NodeDelegate found = slowFindByJcrUuid(c, id);
-comment|//                if (found != null) {
-comment|//                    return found;
-comment|//                }
-comment|//            }
-comment|//        }
-comment|//
-comment|//        return null;
-comment|//    }
 comment|//--------------------------------------------------< SessionNameMapper>---
 specifier|private
 class|class
