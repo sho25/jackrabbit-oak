@@ -19,6 +19,16 @@ end_package
 
 begin_import
 import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|Nonnull
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|util
@@ -164,6 +174,8 @@ literal|'/'
 return|;
 block|}
 comment|/**      * Get the parent of a path. The parent of the root path ("/") is the root      * path.      *      * @param path the path      * @return the parent path      */
+annotation|@
+name|Nonnull
 specifier|public
 specifier|static
 name|String
@@ -183,6 +195,8 @@ argument_list|)
 return|;
 block|}
 comment|/**      * Get the nth ancestor of a path. The 1st ancestor is the parent path,      * 2nd ancestor the grandparent path, and so on...      *<p/>      * If nth<= 0, the path argument is returned as is.      *      * @param path the path      * @return the ancestor path      */
+annotation|@
+name|Nonnull
 specifier|public
 specifier|static
 name|String
@@ -302,6 +316,8 @@ argument_list|)
 return|;
 block|}
 comment|/**      * Get the last element of the (absolute or relative) path. The name of the      * root node ("/") and the name of the empty path ("") is the empty path.      *      * @param path the complete path      * @return the last element      */
+annotation|@
+name|Nonnull
 specifier|public
 specifier|static
 name|String
@@ -467,6 +483,8 @@ expr_stmt|;
 block|}
 block|}
 comment|/**      * Split a path into elements. The root path ("/") and the empty path ("")      * is zero elements.      *      * @param path the path      * @return the path elements      */
+annotation|@
+name|Nonnull
 specifier|public
 specifier|static
 name|String
@@ -628,6 +646,8 @@ name|array
 return|;
 block|}
 comment|/**      * Split a path into elements. The root path ("/") and the empty path ("")      * is zero elements.      *      * @param path the path      * @return an Iterable for the path elements      */
+annotation|@
+name|Nonnull
 specifier|public
 specifier|static
 name|Iterable
@@ -858,6 +878,8 @@ block|}
 return|;
 block|}
 comment|/**      * Concatenate path elements.      *      * @param parentPath the parent path      * @param relativePaths the relative path elements to add      * @return the concatenated path      */
+annotation|@
+name|Nonnull
 specifier|public
 specifier|static
 name|String
@@ -1000,6 +1022,8 @@ argument_list|()
 return|;
 block|}
 comment|/**      * Concatenate path elements.      *      * @param parentPath the parent path      * @param subPath the subPath path to add      * @return the concatenated path      */
+annotation|@
+name|Nonnull
 specifier|public
 specifier|static
 name|String
@@ -1175,6 +1199,8 @@ argument_list|)
 return|;
 block|}
 comment|/**      * Relativize a path wrt. a parent path such that      * {@code relativize(parentPath, concat(parentPath, path)) == paths}      * holds.      *      * @param parentPath parent pth      * @param path path to relativize      * @return relativized path      */
+annotation|@
+name|Nonnull
 specifier|public
 specifier|static
 name|String

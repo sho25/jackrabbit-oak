@@ -19,6 +19,16 @@ end_package
 
 begin_import
 import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|Nonnull
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|lang
@@ -102,6 +112,8 @@ name|ArrayUtils
 parameter_list|()
 block|{     }
 comment|/**      * Replace an element in a clone of the array at the given position.      *      * @param values the values      * @param index the index      * @param x the value to add      * @return the new array      */
+annotation|@
+name|Nonnull
 specifier|public
 specifier|static
 parameter_list|<
@@ -302,6 +314,8 @@ name|v2
 return|;
 block|}
 comment|/**      * Insert an element into a clone of the array at the given position.      *      * @param values the values      * @param index the index      * @param x the value to add      * @return the new array      */
+annotation|@
+name|Nonnull
 specifier|public
 specifier|static
 parameter_list|<
@@ -382,6 +396,8 @@ name|v2
 return|;
 block|}
 comment|/**      * Insert an element into a clone of the array at the given position.      *      * @param values the values      * @param index the index      * @param x the value to add      * @return the new array      */
+annotation|@
+name|Nonnull
 specifier|public
 specifier|static
 name|String
@@ -501,6 +517,8 @@ name|v2
 return|;
 block|}
 comment|/**      * Remove an element from a clone of the array at the given position.      *      * @param values the values      * @param index the index      * @return the new array      */
+annotation|@
+name|Nonnull
 specifier|public
 specifier|static
 parameter_list|<
@@ -631,6 +649,8 @@ name|v2
 return|;
 block|}
 comment|/**      * Remove an element from a clone of the array at the given position.      *      * @param values the values      * @param index the index      * @return the new array      */
+annotation|@
+name|Nonnull
 specifier|public
 specifier|static
 name|String
@@ -891,6 +911,8 @@ literal|false
 return|;
 block|}
 comment|/**      * Convert an array to a set.      * @param elements      * @param<T>      * @return      */
+annotation|@
+name|Nonnull
 specifier|public
 specifier|static
 parameter_list|<
