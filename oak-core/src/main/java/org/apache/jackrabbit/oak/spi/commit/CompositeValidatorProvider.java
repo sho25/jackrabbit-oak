@@ -53,6 +53,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Collection
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|List
 import|;
 end_import
@@ -70,7 +80,7 @@ name|ValidatorProvider
 block|{
 specifier|private
 specifier|final
-name|List
+name|Collection
 argument_list|<
 name|ValidatorProvider
 argument_list|>
@@ -79,7 +89,7 @@ decl_stmt|;
 specifier|public
 name|CompositeValidatorProvider
 parameter_list|(
-name|List
+name|Collection
 argument_list|<
 name|ValidatorProvider
 argument_list|>

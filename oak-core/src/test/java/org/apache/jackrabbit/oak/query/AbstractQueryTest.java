@@ -19,16 +19,6 @@ end_package
 
 begin_import
 import|import
-name|javax
-operator|.
-name|jcr
-operator|.
-name|GuestCredentials
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -152,6 +142,16 @@ operator|.
 name|core
 operator|.
 name|ContentRepositoryImpl
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|jcr
+operator|.
+name|GuestCredentials
 import|;
 end_import
 
@@ -229,6 +229,8 @@ argument_list|(
 name|mk
 argument_list|,
 name|indexer
+argument_list|,
+literal|null
 argument_list|)
 expr_stmt|;
 try|try
