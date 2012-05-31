@@ -856,16 +856,6 @@ name|diffHandler
 argument_list|)
 expr_stmt|;
 block|}
-comment|//------------------------------------------------------------< internal>---
-comment|// FIXME remove
-name|NodeStore
-name|getNodeStore
-parameter_list|()
-block|{
-return|return
-name|store
-return|;
-block|}
 comment|//------------------------------------------------------------< private>---
 comment|// TODO better way to determine purge limit
 specifier|private
