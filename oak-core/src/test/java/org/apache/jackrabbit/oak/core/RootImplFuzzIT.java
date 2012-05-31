@@ -529,7 +529,7 @@ name|commit
 argument_list|(
 literal|""
 argument_list|,
-literal|"+\"/test\":{} +\"/test/root\":{}"
+literal|"+\"/root\":{}"
 argument_list|,
 name|mk1
 operator|.
@@ -546,7 +546,7 @@ name|RootImpl
 argument_list|(
 name|store1
 argument_list|,
-literal|"test"
+literal|null
 argument_list|)
 expr_stmt|;
 name|MicroKernel
@@ -577,7 +577,7 @@ name|commit
 argument_list|(
 literal|""
 argument_list|,
-literal|"+\"/test\":{} +\"/test/root\":{}"
+literal|"+\"/root\":{}"
 argument_list|,
 name|mk2
 operator|.
@@ -594,7 +594,7 @@ name|RootImpl
 argument_list|(
 name|store2
 argument_list|,
-literal|"test"
+literal|null
 argument_list|)
 expr_stmt|;
 block|}

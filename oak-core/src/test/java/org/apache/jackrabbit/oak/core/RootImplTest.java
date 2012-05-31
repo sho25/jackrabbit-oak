@@ -283,9 +283,7 @@ block|{
 name|String
 name|jsop
 init|=
-literal|"+\"test\":{\"a\":1,\"b\":2,\"c\":3,"
-operator|+
-literal|"\"x\":{},\"y\":{},\"z\":{}}"
+literal|"^\"a\":1 ^\"b\":2 ^\"c\":3 +\"x\":{} +\"y\":{} +\"z\":{}"
 decl_stmt|;
 name|microKernel
 operator|.
@@ -308,11 +306,6 @@ name|store
 operator|.
 name|getRoot
 argument_list|()
-operator|.
-name|getChildNode
-argument_list|(
-literal|"test"
-argument_list|)
 return|;
 block|}
 annotation|@
@@ -330,7 +323,7 @@ name|RootImpl
 argument_list|(
 name|store
 argument_list|,
-literal|"test"
+literal|null
 argument_list|)
 decl_stmt|;
 name|Tree
@@ -588,7 +581,7 @@ name|RootImpl
 argument_list|(
 name|store
 argument_list|,
-literal|"test"
+literal|null
 argument_list|)
 decl_stmt|;
 name|Tree
@@ -754,7 +747,7 @@ name|RootImpl
 argument_list|(
 name|store
 argument_list|,
-literal|"test"
+literal|null
 argument_list|)
 decl_stmt|;
 name|Tree
@@ -881,7 +874,7 @@ name|RootImpl
 argument_list|(
 name|store
 argument_list|,
-literal|"test"
+literal|null
 argument_list|)
 decl_stmt|;
 name|Tree
@@ -978,7 +971,7 @@ name|RootImpl
 argument_list|(
 name|store
 argument_list|,
-literal|"test"
+literal|null
 argument_list|)
 decl_stmt|;
 name|Tree
@@ -1060,7 +1053,7 @@ name|RootImpl
 argument_list|(
 name|store
 argument_list|,
-literal|"test"
+literal|null
 argument_list|)
 decl_stmt|;
 name|Tree
@@ -1203,7 +1196,7 @@ name|RootImpl
 argument_list|(
 name|store
 argument_list|,
-literal|"test"
+literal|null
 argument_list|)
 decl_stmt|;
 name|Tree
@@ -1285,7 +1278,7 @@ name|RootImpl
 argument_list|(
 name|store
 argument_list|,
-literal|"test"
+literal|null
 argument_list|)
 decl_stmt|;
 name|Tree
@@ -1412,7 +1405,7 @@ name|RootImpl
 argument_list|(
 name|store
 argument_list|,
-literal|"test"
+literal|null
 argument_list|)
 decl_stmt|;
 name|Tree
@@ -1518,7 +1511,7 @@ name|RootImpl
 argument_list|(
 name|store
 argument_list|,
-literal|"test"
+literal|null
 argument_list|)
 decl_stmt|;
 name|Tree
@@ -1622,7 +1615,7 @@ name|RootImpl
 argument_list|(
 name|store
 argument_list|,
-literal|"test"
+literal|null
 argument_list|)
 decl_stmt|;
 name|Tree
@@ -1751,7 +1744,7 @@ name|RootImpl
 argument_list|(
 name|store
 argument_list|,
-literal|"test"
+literal|null
 argument_list|)
 decl_stmt|;
 name|Tree
@@ -1937,7 +1930,7 @@ name|RootImpl
 argument_list|(
 name|store
 argument_list|,
-literal|"test"
+literal|null
 argument_list|)
 decl_stmt|;
 name|Tree
@@ -2027,7 +2020,7 @@ name|RootImpl
 argument_list|(
 name|store
 argument_list|,
-literal|"test"
+literal|null
 argument_list|)
 decl_stmt|;
 name|Tree
@@ -2152,7 +2145,7 @@ name|RootImpl
 argument_list|(
 name|store
 argument_list|,
-literal|"test"
+literal|null
 argument_list|)
 decl_stmt|;
 name|Tree
@@ -2252,7 +2245,7 @@ name|RootImpl
 argument_list|(
 name|store
 argument_list|,
-literal|"test"
+literal|null
 argument_list|)
 decl_stmt|;
 name|Tree
@@ -2494,7 +2487,7 @@ name|RootImpl
 argument_list|(
 name|store
 argument_list|,
-literal|"test"
+literal|null
 argument_list|)
 decl_stmt|;
 name|Tree
@@ -2692,7 +2685,7 @@ name|RootImpl
 argument_list|(
 name|store
 argument_list|,
-literal|"test"
+literal|null
 argument_list|)
 decl_stmt|;
 name|Tree
@@ -2799,7 +2792,7 @@ name|RootImpl
 argument_list|(
 name|store
 argument_list|,
-literal|"test"
+literal|null
 argument_list|)
 decl_stmt|;
 name|RootImpl
@@ -2810,7 +2803,7 @@ name|RootImpl
 argument_list|(
 name|store
 argument_list|,
-literal|"test"
+literal|null
 argument_list|)
 decl_stmt|;
 name|checkEqual
@@ -2969,7 +2962,7 @@ name|RootImpl
 argument_list|(
 name|store
 argument_list|,
-literal|"test"
+literal|null
 argument_list|)
 decl_stmt|;
 name|Tree

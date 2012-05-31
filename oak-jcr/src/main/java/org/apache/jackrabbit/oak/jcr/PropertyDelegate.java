@@ -201,6 +201,16 @@ argument_list|(
 name|sessionDelegate
 argument_list|)
 expr_stmt|;
+assert|assert
+name|parent
+operator|!=
+literal|null
+assert|;
+assert|assert
+name|propertyState
+operator|!=
+literal|null
+assert|;
 name|this
 operator|.
 name|parent
