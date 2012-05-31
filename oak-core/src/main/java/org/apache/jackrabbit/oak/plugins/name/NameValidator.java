@@ -211,12 +211,11 @@ expr_stmt|;
 block|}
 if|if
 condition|(
-operator|!
 operator|(
 name|prefix
-operator|==
+operator|!=
 literal|null
-operator|||
+operator|&&
 operator|!
 name|prefixes
 operator|.

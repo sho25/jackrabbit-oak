@@ -21,26 +21,6 @@ end_package
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|HashSet
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Set
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -109,6 +89,26 @@ name|NodeState
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|HashSet
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Set
+import|;
+end_import
+
 begin_class
 specifier|public
 class|class
@@ -142,6 +142,7 @@ name|String
 argument_list|>
 argument_list|()
 decl_stmt|;
+comment|// FIXME don't hardcode these here but fetch them from the ns registry
 comment|// Default JCR prefixes are always available
 name|prefixes
 operator|.
@@ -177,6 +178,20 @@ operator|.
 name|add
 argument_list|(
 literal|"rep"
+argument_list|)
+expr_stmt|;
+name|prefixes
+operator|.
+name|add
+argument_list|(
+literal|"tst"
+argument_list|)
+expr_stmt|;
+name|prefixes
+operator|.
+name|add
+argument_list|(
+literal|"test"
 argument_list|)
 expr_stmt|;
 comment|// Find any extra prefixes from /jcr:system/jcr:namespaces
