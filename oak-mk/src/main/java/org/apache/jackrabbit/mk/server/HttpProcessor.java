@@ -19,6 +19,22 @@ end_package
 
 begin_import
 import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|mk
+operator|.
+name|util
+operator|.
+name|IOUtils
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|io
@@ -77,22 +93,6 @@ name|Socket
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|mk
-operator|.
-name|util
-operator|.
-name|IOUtils
-import|;
-end_import
-
 begin_comment
 comment|/**  * Process all HTTP requests on a single socket.  */
 end_comment
@@ -107,7 +107,7 @@ specifier|final
 name|int
 name|INITIAL_SO_TIMEOUT
 init|=
-literal|1000
+literal|10000
 decl_stmt|;
 specifier|private
 specifier|static
