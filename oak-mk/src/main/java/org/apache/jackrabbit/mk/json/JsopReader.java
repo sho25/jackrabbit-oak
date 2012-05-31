@@ -17,6 +17,16 @@ name|json
 package|;
 end_package
 
+begin_import
+import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|CheckForNull
+import|;
+end_import
+
 begin_comment
 comment|/**  * A reader for Json and Jsop strings.  */
 end_comment
@@ -27,7 +37,6 @@ interface|interface
 name|JsopReader
 block|{
 comment|/**      * The token type that signals the end of the stream.      */
-specifier|public
 specifier|static
 specifier|final
 name|int
@@ -107,7 +116,7 @@ name|COMMENT
 init|=
 literal|8
 decl_stmt|;
-comment|/**      * Read a token which must match a given token type.      *      * @param type the token type      * @return the token (a null object when reading a null value)      * @throws IllegalStateException if the token type doesn't match      */
+comment|/**      * Read a token which must match a given token type.      *      * @param type the token type      * @return the token (null when reading a null value)      * @throws IllegalStateException if the token type doesn't match      */
 name|String
 name|read
 parameter_list|(
@@ -115,7 +124,9 @@ name|int
 name|type
 parameter_list|)
 function_decl|;
-comment|/**      * Read a string.      *      * @return the de-escaped string      * @throws IllegalStateException if the token type doesn't match      */
+comment|/**      * Read a string.      *      * @return the de-escaped string (null when reading a null value)      * @throws IllegalStateException if the token type doesn't match      */
+annotation|@
+name|CheckForNull
 name|String
 name|readString
 parameter_list|()
@@ -133,11 +144,16 @@ name|int
 name|type
 parameter_list|)
 function_decl|;
+comment|/**      * Return the row (escaped) token.      *      * @return the escaped string (null when reading a null value)      */
+annotation|@
+name|CheckForNull
 name|String
 name|readRawValue
 parameter_list|()
 function_decl|;
 comment|/**      * Get the last token value if the the token type was STRING or NUMBER. For      * STRING, the text is decoded; for NUMBER, it is returned as parsed. In all      * other cases the result is undefined.      *      * @return the token      */
+annotation|@
+name|CheckForNull
 name|String
 name|getToken
 parameter_list|()

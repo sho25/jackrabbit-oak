@@ -942,6 +942,10 @@ name|s
 argument_list|)
 condition|)
 block|{
+name|currentToken
+operator|=
+literal|null
+expr_stmt|;
 return|return
 name|NULL
 return|;
@@ -957,6 +961,10 @@ name|s
 argument_list|)
 condition|)
 block|{
+name|currentToken
+operator|=
+name|s
+expr_stmt|;
 return|return
 name|TRUE
 return|;
@@ -972,6 +980,10 @@ name|s
 argument_list|)
 condition|)
 block|{
+name|currentToken
+operator|=
+name|s
+expr_stmt|;
 return|return
 name|FALSE
 return|;
