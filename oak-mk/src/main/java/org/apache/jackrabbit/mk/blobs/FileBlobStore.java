@@ -197,6 +197,7 @@ specifier|private
 name|boolean
 name|mark
 decl_stmt|;
+comment|// TODO file operations are not secure (return values not checked, no retry,...)
 specifier|public
 name|FileBlobStore
 parameter_list|(

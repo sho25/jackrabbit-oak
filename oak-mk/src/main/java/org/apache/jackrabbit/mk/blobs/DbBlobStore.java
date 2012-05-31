@@ -184,6 +184,11 @@ operator|+
 literal|"(id varchar primary key, data binary)"
 argument_list|)
 expr_stmt|;
+name|stat
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
 name|conn
 operator|.
 name|close
@@ -737,6 +742,11 @@ operator|.
 name|executeUpdate
 argument_list|()
 expr_stmt|;
+name|prep
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
 block|}
 finally|finally
 block|{
@@ -891,6 +901,16 @@ name|count
 operator|++
 expr_stmt|;
 block|}
+name|prepData
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
+name|prep
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
 block|}
 finally|finally
 block|{
