@@ -39,26 +39,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
-begin_import
-import|import
 name|javax
 operator|.
 name|jcr
@@ -68,7 +48,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * ImpersonationCredentials...  TODO  */
+comment|/**  * Implementation of the JCR {@code Credentials} interface used to distinguish  * a regular login request from {@link javax.jcr.Session#impersonate(javax.jcr.Credentials)}.  */
 end_comment
 
 begin_class
@@ -111,6 +91,7 @@ operator|=
 name|authInfo
 expr_stmt|;
 block|}
+comment|/**      * Returns the {@code Credentials} originally passed to      * {@link javax.jcr.Session#impersonate(javax.jcr.Credentials)}.      *      * @return the {@code Credentials} originally passed to      * {@link javax.jcr.Session#impersonate(javax.jcr.Credentials)}.      */
 specifier|public
 name|Credentials
 name|getBaseCredentials
@@ -120,6 +101,7 @@ return|return
 name|baseCredentials
 return|;
 block|}
+comment|/**      * Returns the {@code AuthInfo} present with the editing session that want      * to impersonate.      *      * @return {@code AuthInfo} present with the editing session that want      * to impersonate.      * @see org.apache.jackrabbit.oak.api.ContentSession#getAuthInfo()      */
 specifier|public
 name|AuthInfo
 name|getImpersonatorInfo
