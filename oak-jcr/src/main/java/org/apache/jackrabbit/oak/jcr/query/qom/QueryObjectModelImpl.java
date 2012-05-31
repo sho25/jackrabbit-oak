@@ -931,7 +931,7 @@ argument_list|()
 argument_list|,
 name|Query
 operator|.
-name|JCR_SQL2
+name|JCR_JQOM
 argument_list|)
 operator|.
 name|storeAsNode

@@ -1667,6 +1667,8 @@ argument_list|,
 literal|0
 argument_list|,
 name|bindings
+argument_list|,
+name|namePathMapper
 argument_list|)
 decl_stmt|;
 name|String

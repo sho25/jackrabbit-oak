@@ -285,6 +285,22 @@ name|QueryObjectModelFactoryImpl
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|namepath
+operator|.
+name|NamePathMapper
+import|;
+end_import
+
 begin_comment
 comment|/**  * The implementation of the corresponding JCR interface.  */
 end_comment
@@ -667,6 +683,14 @@ operator|.
 name|getContentSession
 argument_list|()
 decl_stmt|;
+name|NamePathMapper
+name|namePathMapper
+init|=
+name|sessionDelegate
+operator|.
+name|getNamePathMapper
+argument_list|()
+decl_stmt|;
 name|Result
 name|r
 init|=
@@ -685,6 +709,8 @@ argument_list|,
 name|offset
 argument_list|,
 name|bindMap
+argument_list|,
+name|namePathMapper
 argument_list|)
 decl_stmt|;
 return|return
