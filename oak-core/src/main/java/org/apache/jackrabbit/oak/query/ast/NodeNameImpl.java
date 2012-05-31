@@ -21,6 +21,16 @@ end_package
 
 begin_import
 import|import
+name|javax
+operator|.
+name|jcr
+operator|.
+name|PropertyType
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -197,7 +207,9 @@ name|currentPath
 argument_list|()
 argument_list|)
 decl_stmt|;
-return|return
+name|CoreValue
+name|v
+init|=
 name|query
 operator|.
 name|getValueFactory
@@ -206,6 +218,37 @@ operator|.
 name|createValue
 argument_list|(
 name|name
+argument_list|)
+decl_stmt|;
+name|String
+name|path
+init|=
+name|v
+operator|.
+name|getString
+argument_list|()
+decl_stmt|;
+comment|// normalize paths (./name> name)
+name|path
+operator|=
+name|getOakPath
+argument_list|(
+name|path
+argument_list|)
+expr_stmt|;
+return|return
+name|query
+operator|.
+name|getValueFactory
+argument_list|()
+operator|.
+name|createValue
+argument_list|(
+name|path
+argument_list|,
+name|PropertyType
+operator|.
+name|NAME
 argument_list|)
 return|;
 block|}
@@ -255,6 +298,14 @@ operator|.
 name|getString
 argument_list|()
 decl_stmt|;
+comment|// normalize paths (./name> name)
+name|path
+operator|=
+name|getOakPath
+argument_list|(
+name|path
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|PathUtils
@@ -275,7 +326,6 @@ name|path
 argument_list|)
 throw|;
 block|}
-comment|// TODO normalize paths (./name> name)
 if|if
 condition|(
 name|PathUtils
