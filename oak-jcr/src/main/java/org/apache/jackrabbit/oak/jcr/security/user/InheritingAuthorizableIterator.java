@@ -216,7 +216,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      *      */
+comment|/**      * Predicate to keep track of the IDs of those groups that have already      * been processed.      */
 specifier|private
 specifier|static
 specifier|final
@@ -282,7 +282,16 @@ name|RepositoryException
 name|e
 parameter_list|)
 block|{
-comment|// TODO
+name|log
+operator|.
+name|warn
+argument_list|(
+name|e
+operator|.
+name|getMessage
+argument_list|()
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 return|return

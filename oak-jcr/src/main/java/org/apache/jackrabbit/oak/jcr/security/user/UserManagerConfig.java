@@ -69,7 +69,27 @@ name|java
 operator|.
 name|util
 operator|.
+name|Collections
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Map
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Set
 import|;
 end_import
 
@@ -97,7 +117,52 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-comment|/**      * If this parameter is present group members are collected in a node      * structure below a {@link AuthorizableImpl#REP_MEMBERS} node instead of the      * default multi valued property {@link AuthorizableImpl#REP_MEMBERS}.      * Its value determines the maximum number of member properties until      * additional intermediate nodes are inserted. Valid values are integers      *&gt; 4. The default value is 0 and indicates that the      * {@link AuthorizableImpl#REP_MEMBERS} property is used to record group members.      */
+comment|/**      * Configuration option to define the path underneath which user nodes      * are being created.      */
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|PARAM_USER_PATH
+init|=
+literal|"usersPath"
+decl_stmt|;
+comment|/**      * Configuration option to define the path underneath which group nodes      * are being created.      */
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|PARAM_GROUP_PATH
+init|=
+literal|"groupsPath"
+decl_stmt|;
+comment|/**      * Parameter used to change the number of levels that are used by default      * store authorizable nodes.<br>The default number of levels is 2.      *<p/>      *<strong>NOTE:</strong> Changing the default depth once users and groups      * have been created in the repository will cause inconsistencies, due to      * the fact that the resolution of ID to an authorizable relies on the      * structure defined by the default depth.<br>      * It is recommended to remove all authorizable nodes that will not be      * reachable any more, before this config option is changed.      *<ul>      *<li>If default depth is increased:<br>      * All authorizables on levels&lt; default depth are not reachable any more.</li>      *<li>If default depth is decreased:<br>      * All authorizables on levels&gt; default depth aren't reachable any more      * unless the {@link #PARAM_AUTO_EXPAND_TREE} flag is set to {@code true}.</li>      *</ul>      */
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|PARAM_DEFAULT_DEPTH
+init|=
+literal|"defaultDepth"
+decl_stmt|;
+comment|/**      * If this parameter is present and its value is {@code true}, the trees      * containing user and group nodes will automatically created additional      * hierarchy levels if the number of nodes on a given level exceeds the      * maximal allowed {@link #PARAM_AUTO_EXPAND_SIZE size}.      */
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|PARAM_AUTO_EXPAND_TREE
+init|=
+literal|"autoExpandTree"
+decl_stmt|;
+comment|/**      * This parameter only takes effect if {@link #PARAM_AUTO_EXPAND_TREE} is      * enabled.      */
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|PARAM_AUTO_EXPAND_SIZE
+init|=
+literal|"autoExpandSize"
+decl_stmt|;
+comment|/**      * If this parameter is present group members are collected in a node      * structure below a {@link AuthorizableImpl#REP_MEMBERS} node instead of the      * default multi valued property {@link AuthorizableImpl#REP_MEMBERS}.      * Its value determines the maximum number of member properties until      * additional intermediate nodes are inserted.      */
 specifier|public
 specifier|static
 specifier|final
@@ -106,7 +171,7 @@ name|PARAM_GROUP_MEMBERSHIP_SPLIT_SIZE
 init|=
 literal|"groupMembershipSplitSize"
 decl_stmt|;
-comment|/**      * Configuration parameter to change the default algorithm used to generate      * password hashes. The default value is {@link PasswordUtility#DEFAULT_ALGORITHM}.      */
+comment|/**      * Configuration parameter to change the default algorithm used to generate      * password hashes.      */
 specifier|public
 specifier|static
 specifier|final
@@ -115,7 +180,7 @@ name|PARAM_PASSWORD_HASH_ALGORITHM
 init|=
 literal|"passwordHashAlgorithm"
 decl_stmt|;
-comment|/**      * Configuration parameter to change the number of iterations used for      * password hash generation. The default value is {@link PasswordUtility#DEFAULT_ITERATIONS}.      */
+comment|/**      * Configuration parameter to change the number of iterations used for      * password hash generation.      */
 specifier|public
 specifier|static
 specifier|final
@@ -124,7 +189,7 @@ name|PARAM_PASSWORD_HASH_ITERATIONS
 init|=
 literal|"passwordHashIterations"
 decl_stmt|;
-comment|/**      * Configuration parameter to change the number of iterations used for      * password hash generation. The default value is {@link PasswordUtility#DEFAULT_ITERATIONS}.      */
+comment|/**      * Configuration parameter to change the number of iterations used for      * password hash generation.      */
 specifier|public
 specifier|static
 specifier|final
@@ -150,10 +215,13 @@ name|adminId
 decl_stmt|;
 specifier|private
 specifier|final
+name|Set
+argument_list|<
 name|AuthorizableAction
-index|[]
+argument_list|>
 name|actions
 decl_stmt|;
+specifier|public
 name|UserManagerConfig
 parameter_list|(
 name|Map
@@ -167,8 +235,10 @@ parameter_list|,
 name|String
 name|adminId
 parameter_list|,
+name|Set
+argument_list|<
 name|AuthorizableAction
-index|[]
+argument_list|>
 name|actions
 parameter_list|)
 block|{
@@ -194,13 +264,20 @@ operator|==
 literal|null
 operator|)
 condition|?
-operator|new
+name|Collections
+operator|.
+expr|<
 name|AuthorizableAction
-index|[
-literal|0
-index|]
+operator|>
+name|emptySet
+argument_list|()
 else|:
+name|Collections
+operator|.
+name|unmodifiableSet
+argument_list|(
 name|actions
+argument_list|)
 expr_stmt|;
 block|}
 specifier|public
@@ -269,6 +346,18 @@ parameter_list|()
 block|{
 return|return
 name|actions
+operator|.
+name|toArray
+argument_list|(
+operator|new
+name|AuthorizableAction
+index|[
+name|actions
+operator|.
+name|size
+argument_list|()
+index|]
+argument_list|)
 return|;
 block|}
 comment|//--------------------------------------------------------< private>---

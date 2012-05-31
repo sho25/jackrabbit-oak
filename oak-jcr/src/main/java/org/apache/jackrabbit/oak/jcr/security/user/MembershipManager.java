@@ -430,14 +430,11 @@ name|memberSplitSize
 expr_stmt|;
 name|repMembers
 operator|=
-name|sessionDelegate
-operator|.
-name|getNamePathMapper
-argument_list|()
+name|userManager
 operator|.
 name|getJcrName
 argument_list|(
-name|AuthorizableImpl
+name|UserConstants
 operator|.
 name|REP_MEMBERS
 argument_list|)

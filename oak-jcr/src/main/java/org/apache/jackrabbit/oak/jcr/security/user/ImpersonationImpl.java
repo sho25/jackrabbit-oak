@@ -260,6 +260,8 @@ class|class
 name|ImpersonationImpl
 implements|implements
 name|Impersonation
+implements|,
+name|UserConstants
 block|{
 comment|/**      * logger instance      */
 specifier|private
@@ -276,14 +278,6 @@ name|ImpersonationImpl
 operator|.
 name|class
 argument_list|)
-decl_stmt|;
-specifier|private
-specifier|static
-specifier|final
-name|String
-name|P_IMPERSONATORS
-init|=
-literal|"rep:impersonators"
 decl_stmt|;
 specifier|private
 specifier|final
@@ -584,11 +578,6 @@ return|return
 literal|false
 return|;
 block|}
-name|boolean
-name|granted
-init|=
-literal|false
-decl_stmt|;
 name|Set
 argument_list|<
 name|String
@@ -613,14 +602,16 @@ argument_list|(
 name|impersonators
 argument_list|)
 expr_stmt|;
-name|granted
-operator|=
-literal|true
-expr_stmt|;
-block|}
 return|return
-name|granted
+literal|true
 return|;
+block|}
+else|else
+block|{
+return|return
+literal|false
+return|;
+block|}
 block|}
 comment|/**      * @see Impersonation#revokeImpersonation(java.security.Principal)      */
 annotation|@
@@ -636,11 +627,6 @@ parameter_list|)
 throws|throws
 name|RepositoryException
 block|{
-name|boolean
-name|revoked
-init|=
-literal|false
-decl_stmt|;
 name|String
 name|pName
 init|=
@@ -673,14 +659,16 @@ argument_list|(
 name|impersonators
 argument_list|)
 expr_stmt|;
-name|revoked
-operator|=
-literal|true
-expr_stmt|;
-block|}
 return|return
-name|revoked
+literal|true
 return|;
+block|}
+else|else
+block|{
+return|return
+literal|false
+return|;
+block|}
 block|}
 comment|/**      * @see Impersonation#allows(javax.security.auth.Subject)      */
 annotation|@
@@ -858,6 +846,16 @@ name|String
 argument_list|>
 argument_list|()
 decl_stmt|;
+name|String
+name|propName
+init|=
+name|user
+operator|.
+name|getJcrName
+argument_list|(
+name|REP_IMPERSONATORS
+argument_list|)
+decl_stmt|;
 if|if
 condition|(
 name|user
@@ -867,7 +865,7 @@ argument_list|()
 operator|.
 name|hasProperty
 argument_list|(
-name|P_IMPERSONATORS
+name|propName
 argument_list|)
 condition|)
 block|{
@@ -882,7 +880,7 @@ argument_list|()
 operator|.
 name|getProperty
 argument_list|(
-name|P_IMPERSONATORS
+name|propName
 argument_list|)
 operator|.
 name|getValues
@@ -964,7 +962,7 @@ operator|.
 name|getNode
 argument_list|()
 argument_list|,
-name|P_IMPERSONATORS
+name|REP_IMPERSONATORS
 argument_list|)
 expr_stmt|;
 block|}
@@ -982,7 +980,7 @@ operator|.
 name|getNode
 argument_list|()
 argument_list|,
-name|P_IMPERSONATORS
+name|REP_IMPERSONATORS
 argument_list|,
 name|pNames
 argument_list|,
