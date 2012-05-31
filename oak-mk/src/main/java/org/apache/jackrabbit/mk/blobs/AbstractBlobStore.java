@@ -1468,7 +1468,7 @@ name|String
 name|blobId
 parameter_list|)
 throws|throws
-name|Exception
+name|IOException
 block|{
 if|if
 condition|(
