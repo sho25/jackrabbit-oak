@@ -152,6 +152,20 @@ name|oakName
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
+specifier|public
+name|boolean
+name|hasSessionLocalMappings
+parameter_list|()
+block|{
+return|return
+name|nameMapper
+operator|.
+name|hasSessionLocalMappings
+argument_list|()
+return|;
+block|}
 comment|//---------------------------------------------------------< PathMapper>---
 annotation|@
 name|Override

@@ -1884,6 +1884,19 @@ literal|null
 return|;
 block|}
 block|}
+annotation|@
+name|Override
+specifier|public
+name|boolean
+name|hasSessionLocalMappings
+parameter_list|()
+block|{
+comment|// TODO OAK-61
+comment|// TODO right now we would have to check whether AbstractSession.namespaces is empty
+return|return
+literal|true
+return|;
+block|}
 block|}
 block|}
 end_class

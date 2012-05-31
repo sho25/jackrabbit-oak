@@ -746,6 +746,17 @@ name|uri
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
+specifier|public
+name|boolean
+name|hasSessionLocalMappings
+parameter_list|()
+block|{
+return|return
+literal|true
+return|;
+block|}
 block|}
 block|}
 end_class
