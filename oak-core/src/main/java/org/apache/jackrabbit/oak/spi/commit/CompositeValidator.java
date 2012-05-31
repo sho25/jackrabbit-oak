@@ -89,6 +89,10 @@ name|List
 import|;
 end_import
 
+begin_comment
+comment|/**  * This {@code Validator} aggregates a list of validators into  * a single validator.  */
+end_comment
+
 begin_class
 specifier|public
 class|class

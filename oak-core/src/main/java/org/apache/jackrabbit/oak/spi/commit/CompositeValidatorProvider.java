@@ -57,6 +57,10 @@ name|List
 import|;
 end_import
 
+begin_comment
+comment|/**  * This {@code ValidatorProvider} aggregates a list of validator providers into  * a single validator provider.  */
+end_comment
+
 begin_class
 specifier|public
 class|class

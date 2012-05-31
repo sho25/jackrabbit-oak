@@ -81,6 +81,10 @@ name|List
 import|;
 end_import
 
+begin_comment
+comment|/**  * This {@code CommitHook} aggregates a list of commit hooks into  * a single commit hook.  */
+end_comment
+
 begin_class
 specifier|public
 class|class
