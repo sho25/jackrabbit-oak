@@ -1431,7 +1431,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Move this tree to the parent at {@code destParent} with the new name      * {@code destName}.      *      * @param destParent  new parent for this tree      * @param destName  new name for this tree      */
+comment|/**      * Move this tree to the parent at {@code destParent} with the new name      * {@code destName}.      *      * @param destParent  new parent for this tree      * @param destName  new name for this tree      * @return {@code true} if this tree was moved.      */
 specifier|public
 name|boolean
 name|moveTo
@@ -1489,7 +1489,7 @@ return|return
 literal|true
 return|;
 block|}
-comment|//------------------------------------------------------------< RootImpl.Listener>---
+comment|//--------------------------------------------------< RootImpl.Listener>---
 annotation|@
 name|Override
 specifier|public
@@ -1502,7 +1502,7 @@ operator|=
 literal|null
 expr_stmt|;
 block|}
-comment|//------------------------------------------------------------< protected>---
+comment|//----------------------------------------------------------< protected>---
 annotation|@
 name|CheckForNull
 specifier|protected
