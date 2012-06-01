@@ -444,7 +444,7 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|void
+name|Validator
 name|childNodeDeleted
 parameter_list|(
 name|String
@@ -454,7 +454,9 @@ name|NodeState
 name|before
 parameter_list|)
 block|{
-comment|// do nothing
+return|return
+literal|null
+return|;
 block|}
 block|}
 end_class

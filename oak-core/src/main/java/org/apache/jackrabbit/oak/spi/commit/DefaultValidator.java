@@ -69,26 +69,20 @@ name|NodeState
 import|;
 end_import
 
-begin_import
-import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|CheckForNull
-import|;
-end_import
-
 begin_comment
-comment|/**  * Content change validator. An instance of this interface is used to  * validate changes against a specific {@link NodeState}.  */
+comment|/**  * Validator that does nothing by default and doesn't recurse into subtrees.  * Useful as a sentinel or as a base class for more complex validators.  *  * @since Oak 0.3  */
 end_comment
 
-begin_interface
+begin_class
 specifier|public
-interface|interface
+class|class
+name|DefaultValidator
+implements|implements
 name|Validator
 block|{
-comment|/**      * Validate an added property      * @param after  the added property      * @throws CommitFailedException  if validation fails.      */
+annotation|@
+name|Override
+specifier|public
 name|void
 name|propertyAdded
 parameter_list|(
@@ -97,8 +91,12 @@ name|after
 parameter_list|)
 throws|throws
 name|CommitFailedException
-function_decl|;
-comment|/**      * Validate a changed property      * @param before the original property      * @param after  the changed property      * @throws CommitFailedException  if validation fails.      */
+block|{
+comment|// do nothing
+block|}
+annotation|@
+name|Override
+specifier|public
 name|void
 name|propertyChanged
 parameter_list|(
@@ -110,8 +108,12 @@ name|after
 parameter_list|)
 throws|throws
 name|CommitFailedException
-function_decl|;
-comment|/**      * Validate a deleted property      * @param before the original property      * @throws CommitFailedException  if validation fails.      */
+block|{
+comment|// do nothing
+block|}
+annotation|@
+name|Override
+specifier|public
 name|void
 name|propertyDeleted
 parameter_list|(
@@ -120,10 +122,12 @@ name|before
 parameter_list|)
 throws|throws
 name|CommitFailedException
-function_decl|;
-comment|/**      * Validate an added node      * @param name the name of the added node      * @param after  the added node      * @return a {@code Validator} for {@code after} or {@code null} if validation      * should not decent into the subtree rooted at {@code after}.      * @throws CommitFailedException  if validation fails.      */
+block|{
+comment|// do nothing
+block|}
 annotation|@
-name|CheckForNull
+name|Override
+specifier|public
 name|Validator
 name|childNodeAdded
 parameter_list|(
@@ -135,10 +139,14 @@ name|after
 parameter_list|)
 throws|throws
 name|CommitFailedException
-function_decl|;
-comment|/**      * Validate a changed node      * @param name the name of the changed node      * @param before the original node      * @param after  the changed node      * @return a {@code Validator} for {@code after} or {@code null} if validation      * should not decent into the subtree rooted at {@code after}.      * @throws CommitFailedException  if validation fails.      */
+block|{
+return|return
+literal|null
+return|;
+block|}
 annotation|@
-name|CheckForNull
+name|Override
+specifier|public
 name|Validator
 name|childNodeChanged
 parameter_list|(
@@ -153,10 +161,14 @@ name|after
 parameter_list|)
 throws|throws
 name|CommitFailedException
-function_decl|;
-comment|/**      * Validate a deleted node      * @param before the original node      * @return a {@code Validator} for the removed subtree or      * {@code null} if validation should not decent into the subtree      * @throws CommitFailedException  if validation fails.      */
+block|{
+return|return
+literal|null
+return|;
+block|}
 annotation|@
-name|CheckForNull
+name|Override
+specifier|public
 name|Validator
 name|childNodeDeleted
 parameter_list|(
@@ -168,9 +180,13 @@ name|before
 parameter_list|)
 throws|throws
 name|CommitFailedException
-function_decl|;
+block|{
+return|return
+literal|null
+return|;
 block|}
-end_interface
+block|}
+end_class
 
 end_unit
 

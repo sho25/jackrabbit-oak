@@ -383,7 +383,7 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|void
+name|Validator
 name|childNodeDeleted
 parameter_list|(
 name|String
@@ -394,6 +394,9 @@ name|before
 parameter_list|)
 block|{
 comment|// TODO: validate removed child node
+return|return
+literal|null
+return|;
 block|}
 block|}
 end_class
