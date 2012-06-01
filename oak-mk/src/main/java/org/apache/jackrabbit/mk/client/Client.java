@@ -950,7 +950,7 @@ name|request
 operator|.
 name|addParameter
 argument_list|(
-literal|"count"
+literal|"max_child_nodes"
 argument_list|,
 name|count
 argument_list|)

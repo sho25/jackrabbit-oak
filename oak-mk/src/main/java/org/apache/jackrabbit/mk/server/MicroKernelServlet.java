@@ -1330,7 +1330,7 @@ name|request
 operator|.
 name|getParameter
 argument_list|(
-literal|"maxChildNodes"
+literal|"max_child_nodes"
 argument_list|,
 operator|-
 literal|1

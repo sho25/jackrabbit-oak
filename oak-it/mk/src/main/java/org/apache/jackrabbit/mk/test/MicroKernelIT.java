@@ -435,12 +435,12 @@ expr_stmt|;
 comment|// there should be exactly 1 revision
 name|assertEquals
 argument_list|(
+literal|1
+argument_list|,
 name|array
 operator|.
 name|size
 argument_list|()
-argument_list|,
-literal|1
 argument_list|)
 expr_stmt|;
 name|long
@@ -514,12 +514,12 @@ expr_stmt|;
 comment|// there should be exactly NUM_COMMITS revisions
 name|assertEquals
 argument_list|(
+name|NUM_COMMITS
+argument_list|,
 name|array
 operator|.
 name|size
 argument_list|()
-argument_list|,
-name|NUM_COMMITS
 argument_list|)
 expr_stmt|;
 name|long
@@ -696,12 +696,12 @@ expr_stmt|;
 comment|// there should be exactly NUM_COMMITS entries
 name|assertEquals
 argument_list|(
+name|NUM_COMMITS
+argument_list|,
 name|array
 operator|.
 name|size
 argument_list|()
-argument_list|,
-name|NUM_COMMITS
 argument_list|)
 expr_stmt|;
 comment|// verify that 1st and last rev match fromRev and toRev
@@ -859,12 +859,12 @@ expr_stmt|;
 comment|// there should be exactly 0 entries
 name|assertEquals
 argument_list|(
+literal|0
+argument_list|,
 name|array
 operator|.
 name|size
 argument_list|()
-argument_list|,
-literal|0
 argument_list|)
 expr_stmt|;
 block|}
@@ -1100,12 +1100,12 @@ expr_stmt|;
 comment|// journal should contain 2 commits: revFoo and revBar
 name|assertEquals
 argument_list|(
+literal|2
+argument_list|,
 name|array
 operator|.
 name|size
 argument_list|()
-argument_list|,
-literal|2
 argument_list|)
 expr_stmt|;
 name|assertPropertyValue
@@ -1156,12 +1156,12 @@ expr_stmt|;
 comment|// journal should contain 0 commits since filter doesn't match
 name|assertEquals
 argument_list|(
+literal|0
+argument_list|,
 name|array
 operator|.
 name|size
 argument_list|()
-argument_list|,
-literal|0
 argument_list|)
 expr_stmt|;
 comment|// get journal (filter on /test/bar)
@@ -1355,6 +1355,8 @@ expr_stmt|;
 comment|// diff of rev0->rev2 should be empty
 name|assertEquals
 argument_list|(
+literal|""
+argument_list|,
 name|mk
 operator|.
 name|diff
@@ -1365,8 +1367,6 @@ name|rev2
 argument_list|,
 literal|null
 argument_list|)
-argument_list|,
-literal|""
 argument_list|)
 expr_stmt|;
 block|}
@@ -3350,12 +3350,12 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
+literal|0
+argument_list|,
 name|child
 operator|.
 name|size
 argument_list|()
-argument_list|,
-literal|0
 argument_list|)
 expr_stmt|;
 comment|// depth = 1: properties, child nodes, their properties (including :childNodeCount)
@@ -3435,12 +3435,12 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
+literal|0
+argument_list|,
 name|child
 operator|.
 name|size
 argument_list|()
-argument_list|,
-literal|0
 argument_list|)
 expr_stmt|;
 comment|// depth = 2: [and so on...]
@@ -3537,12 +3537,12 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
+literal|0
+argument_list|,
 name|child
 operator|.
 name|size
 argument_list|()
-argument_list|,
-literal|0
 argument_list|)
 expr_stmt|;
 comment|// depth = 3: [and so on...]
@@ -3657,12 +3657,12 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
+literal|0
+argument_list|,
 name|child
 operator|.
 name|size
 argument_list|()
-argument_list|,
-literal|0
 argument_list|)
 expr_stmt|;
 comment|// getNodes(path, revId) must return same result as getNodes(path, revId, 1, 0, -1, null)
@@ -3905,6 +3905,11 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
+operator|(
+name|long
+operator|)
+name|NUM_SIBLINGS
+argument_list|,
 name|mk
 operator|.
 name|getChildNodeCount
@@ -3913,11 +3918,6 @@ literal|"/testRoot"
 argument_list|,
 name|head
 argument_list|)
-argument_list|,
-operator|(
-name|long
-operator|)
-name|NUM_SIBLINGS
 argument_list|)
 expr_stmt|;
 name|assertEquals
@@ -4010,12 +4010,12 @@ argument_list|)
 decl_stmt|;
 name|assertEquals
 argument_list|(
+literal|1
+argument_list|,
 name|set
 operator|.
 name|size
 argument_list|()
-argument_list|,
-literal|1
 argument_list|)
 expr_stmt|;
 name|orderedSiblingNames
@@ -4127,14 +4127,14 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
+name|NUM_SIBLINGS
+operator|/
+literal|10
+argument_list|,
 name|names
 operator|.
 name|size
 argument_list|()
-argument_list|,
-name|NUM_SIBLINGS
-operator|/
-literal|10
 argument_list|)
 expr_stmt|;
 name|List
@@ -4436,6 +4436,11 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
+operator|(
+name|long
+operator|)
+name|NUM_SIBLINGS
+argument_list|,
 name|mk
 operator|.
 name|getChildNodeCount
@@ -4444,11 +4449,6 @@ literal|"/testRoot"
 argument_list|,
 name|head
 argument_list|)
-argument_list|,
-operator|(
-name|long
-operator|)
-name|NUM_SIBLINGS
 argument_list|)
 expr_stmt|;
 name|Set
@@ -4560,6 +4560,11 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
+operator|(
+name|long
+operator|)
+name|NUM_SIBLINGS
+argument_list|,
 name|mk
 operator|.
 name|getChildNodeCount
@@ -4568,11 +4573,6 @@ literal|"/testRoot"
 argument_list|,
 name|head
 argument_list|)
-argument_list|,
-operator|(
-name|long
-operator|)
-name|NUM_SIBLINGS
 argument_list|)
 expr_stmt|;
 name|names
@@ -4582,14 +4582,14 @@ argument_list|(
 name|obj
 argument_list|)
 expr_stmt|;
-name|assertTrue
+name|assertEquals
 argument_list|(
+name|maxSiblings
+argument_list|,
 name|names
 operator|.
 name|size
 argument_list|()
-operator|==
-name|maxSiblings
 argument_list|)
 expr_stmt|;
 name|childName
@@ -4677,6 +4677,11 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
+operator|(
+name|long
+operator|)
+name|NUM_SIBLINGS
+argument_list|,
 name|mk
 operator|.
 name|getChildNodeCount
@@ -4685,11 +4690,6 @@ literal|"/testRoot"
 argument_list|,
 name|head
 argument_list|)
-argument_list|,
-operator|(
-name|long
-operator|)
-name|NUM_SIBLINGS
 argument_list|)
 expr_stmt|;
 name|names
