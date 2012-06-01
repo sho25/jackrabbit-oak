@@ -1153,13 +1153,8 @@ expr_stmt|;
 block|}
 else|else
 block|{
-throw|throw
-operator|new
-name|IllegalArgumentException
-argument_list|(
-literal|"instance was not created by this factory"
-argument_list|)
-throw|;
+comment|// FIXME ignore for now
+comment|//throw new IllegalArgumentException("instance was not created by this factory");
 block|}
 block|}
 comment|/**     * Delete a directory or file and all subdirectories and files inside it.     *     * @param file the file denoting the directory to delete     */
