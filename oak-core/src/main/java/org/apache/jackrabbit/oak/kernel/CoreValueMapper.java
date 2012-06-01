@@ -25,9 +25,9 @@ name|apache
 operator|.
 name|jackrabbit
 operator|.
-name|mk
+name|oak
 operator|.
-name|json
+name|util
 operator|.
 name|JsonBuilder
 import|;
