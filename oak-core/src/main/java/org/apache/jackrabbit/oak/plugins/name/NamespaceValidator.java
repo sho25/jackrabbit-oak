@@ -25,6 +25,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Locale
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Map
 import|;
 end_import
@@ -157,10 +167,10 @@ condition|)
 block|{
 throw|throw
 operator|new
-name|CommitFailedException
+name|NamespaceValidatorException
 argument_list|(
-literal|"Namespace mapping already registered: "
-operator|+
+literal|"Namespace mapping already registered"
+argument_list|,
 name|prefix
 argument_list|)
 throw|;
@@ -198,10 +208,38 @@ condition|)
 block|{
 throw|throw
 operator|new
-name|CommitFailedException
+name|NamespaceValidatorException
 argument_list|(
-literal|"Invalid namespace mapping: "
-operator|+
+literal|"Invalid namespace mapping"
+argument_list|,
+name|prefix
+argument_list|)
+throw|;
+block|}
+elseif|else
+if|if
+condition|(
+name|prefix
+operator|.
+name|toLowerCase
+argument_list|(
+name|Locale
+operator|.
+name|ENGLISH
+argument_list|)
+operator|.
+name|startsWith
+argument_list|(
+literal|"xml"
+argument_list|)
+condition|)
+block|{
+throw|throw
+operator|new
+name|NamespaceValidatorException
+argument_list|(
+literal|"XML prefixes are reserved"
+argument_list|,
 name|prefix
 argument_list|)
 throw|;
@@ -238,10 +276,10 @@ condition|)
 block|{
 throw|throw
 operator|new
-name|CommitFailedException
+name|NamespaceValidatorException
 argument_list|(
-literal|"Namespace modification not allowed: "
-operator|+
+literal|"Namespace modification not allowed"
+argument_list|,
 name|after
 operator|.
 name|getName
@@ -275,18 +313,7 @@ argument_list|()
 argument_list|)
 condition|)
 block|{
-throw|throw
-operator|new
-name|CommitFailedException
-argument_list|(
-literal|"Namespace removal not allowed: "
-operator|+
-name|before
-operator|.
-name|getName
-argument_list|()
-argument_list|)
-throw|;
+comment|// TODO: Check whether this namespace is still used in content
 block|}
 block|}
 block|}

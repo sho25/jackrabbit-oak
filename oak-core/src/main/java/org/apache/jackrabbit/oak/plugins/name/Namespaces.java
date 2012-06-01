@@ -91,11 +91,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|spi
+name|api
 operator|.
-name|state
-operator|.
-name|NodeState
+name|Tree
 import|;
 end_import
 
@@ -195,16 +193,6 @@ argument_list|,
 literal|"internal"
 argument_list|)
 expr_stmt|;
-comment|// test prefix TODO: remove again.
-name|defaults
-operator|.
-name|put
-argument_list|(
-literal|"test"
-argument_list|,
-literal|"http://apache.jackrabbit.org/oak/0.1"
-argument_list|)
-expr_stmt|;
 block|}
 specifier|public
 specifier|static
@@ -216,7 +204,7 @@ name|String
 argument_list|>
 name|getNamespaceMap
 parameter_list|(
-name|NodeState
+name|Tree
 name|root
 parameter_list|)
 block|{
@@ -239,12 +227,12 @@ argument_list|(
 name|defaults
 argument_list|)
 decl_stmt|;
-name|NodeState
+name|Tree
 name|system
 init|=
 name|root
 operator|.
-name|getChildNode
+name|getChild
 argument_list|(
 literal|"jcr:system"
 argument_list|)
@@ -256,12 +244,12 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|NodeState
+name|Tree
 name|namespaces
 init|=
 name|system
 operator|.
-name|getChildNode
+name|getChild
 argument_list|(
 literal|"jcr:namespaces"
 argument_list|)
