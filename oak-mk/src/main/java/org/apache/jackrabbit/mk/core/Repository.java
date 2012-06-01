@@ -448,7 +448,6 @@ operator|new
 name|H2Persistence
 argument_list|()
 decl_stmt|;
-comment|//org.apache.jackrabbit.mk.persistence.MongoPersistence pm = new org.apache.jackrabbit.mk.persistence.MongoPersistence();
 name|pm
 operator|.
 name|initialize
