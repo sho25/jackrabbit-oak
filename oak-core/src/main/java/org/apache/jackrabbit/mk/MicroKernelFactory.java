@@ -1080,6 +1080,25 @@ if|if
 condition|(
 name|mk
 operator|instanceof
+name|Client
+condition|)
+block|{
+operator|(
+operator|(
+name|Client
+operator|)
+name|mk
+operator|)
+operator|.
+name|dispose
+argument_list|()
+expr_stmt|;
+block|}
+elseif|else
+if|if
+condition|(
+name|mk
+operator|instanceof
 name|LogWrapper
 condition|)
 block|{
@@ -1153,8 +1172,13 @@ expr_stmt|;
 block|}
 else|else
 block|{
-comment|// FIXME ignore for now
-comment|//throw new IllegalArgumentException("instance was not created by this factory");
+throw|throw
+operator|new
+name|IllegalArgumentException
+argument_list|(
+literal|"instance was not created by this factory"
+argument_list|)
+throw|;
 block|}
 block|}
 comment|/**     * Delete a directory or file and all subdirectories and files inside it.     *     * @param file the file denoting the directory to delete     */
