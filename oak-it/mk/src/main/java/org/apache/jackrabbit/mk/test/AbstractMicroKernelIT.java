@@ -507,7 +507,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**      * Parses the provided string into a {@code JSONObject}.      *      * @param json string to be parsed      * @return a {@code JSONArray}      * @throws {@code AssertionError} if the string cannot be parsed into a {@code JSONArray}      */
+comment|/**      * Parses the provided string into a {@code JSONArray}.      *      * @param json string to be parsed      * @return a {@code JSONArray}      * @throws {@code AssertionError} if the string cannot be parsed into a {@code JSONArray}      */
 specifier|protected
 name|JSONArray
 name|parseJSONArray
