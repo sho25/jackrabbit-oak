@@ -210,6 +210,34 @@ throws|throws
 name|ParseException
 block|{
 comment|// TODO verify this is correct
+name|boolean
+name|explain
+init|=
+name|query
+operator|.
+name|startsWith
+argument_list|(
+literal|"explain "
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|explain
+condition|)
+block|{
+name|query
+operator|=
+name|query
+operator|.
+name|substring
+argument_list|(
+literal|"explain "
+operator|.
+name|length
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
 if|if
 condition|(
 operator|!
@@ -983,10 +1011,28 @@ name|buff
 init|=
 operator|new
 name|StringBuilder
+argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|explain
+condition|)
+block|{
+name|buff
+operator|.
+name|append
+argument_list|(
+literal|"explain "
+argument_list|)
+expr_stmt|;
+block|}
+name|buff
+operator|.
+name|append
 argument_list|(
 literal|"select "
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 name|buff
 operator|.
 name|append
