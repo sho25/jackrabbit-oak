@@ -56,11 +56,11 @@ name|String
 name|jcrPath
 parameter_list|)
 function_decl|;
-comment|/**      * Maps a JCR path to an Oak path, substituting JCR prefixes with      * Oak prefixes, and converting expanded names to Oak qualified form.      * Returns the converted path for the given JCR path, or {@code null} if no      * such mapping exists because the given JCR path contains a name element      * with an unknown namespace URI or prefix, or is otherwise invalid.      *      * @param jcrPath JCR path      * @return mapped path, or {@code null}      */
+comment|/**      * As {@link #getOakPath(String)}, but preserving the index information      *      * @param jcrPath JCR path      * @return mapped path, or {@code null}      */
 annotation|@
 name|CheckForNull
 name|String
-name|mapJcrToOakNamespaces
+name|getOakPathKeepIndex
 parameter_list|(
 name|String
 name|jcrPath
