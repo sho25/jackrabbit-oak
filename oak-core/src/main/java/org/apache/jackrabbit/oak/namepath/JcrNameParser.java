@@ -101,12 +101,15 @@ name|String
 name|message
 parameter_list|)
 function_decl|;
-comment|/**          * Informs this listener about the result of {@link JcrNameParser#parse(String, org.apache.jackrabbit.oak.namepath.JcrNameParser.Listener)}          *          * @param name The resulting name upon successful completion of          * {@link org.apache.jackrabbit.oak.namepath.JcrNameParser#parse(String, org.apache.jackrabbit.oak.namepath.JcrNameParser.Listener)}          */
+comment|/**          * Informs this listener about the result of {@link JcrNameParser#parse(String, org.apache.jackrabbit.oak.namepath.JcrNameParser.Listener)}          *          * @param name The resulting name upon successful completion of          * {@link org.apache.jackrabbit.oak.namepath.JcrNameParser#parse(String, org.apache.jackrabbit.oak.namepath.JcrNameParser.Listener)}          * @param index the index (or {@code 0} when not specified)          */
 name|boolean
 name|name
 parameter_list|(
 name|String
 name|name
+parameter_list|,
+name|int
+name|index
 parameter_list|)
 function_decl|;
 block|}
@@ -115,10 +118,10 @@ specifier|private
 name|JcrNameParser
 parameter_list|()
 block|{     }
-comment|/**      * Parse the specified jcr name and inform the specified {@code listener}      * about the result or any error that may occur during parsing.      *      * @param jcrName The jcr name to be parsed.      * @param listener The listener to be informed about success or failure.      */
+comment|/**      * Parse the specified jcr name and inform the specified {@code listener}      * about the result or any error that may occur during parsing.      *      * @param jcrName The jcr name to be parsed.      * @param listener The listener to be informed about success or failure.      * @param index index, or {@code 0} when not specified      * @return whether parsing was successful      */
 specifier|public
 specifier|static
-name|void
+name|boolean
 name|parse
 parameter_list|(
 name|String
@@ -126,6 +129,9 @@ name|jcrName
 parameter_list|,
 name|Listener
 name|listener
+parameter_list|,
+name|int
+name|index
 parameter_list|)
 block|{
 comment|// trivial check
@@ -157,7 +163,9 @@ argument_list|(
 literal|"Empty name"
 argument_list|)
 expr_stmt|;
-return|return;
+return|return
+literal|false
+return|;
 block|}
 if|if
 condition|(
@@ -185,7 +193,9 @@ operator|+
 name|jcrName
 argument_list|)
 expr_stmt|;
-return|return;
+return|return
+literal|false
+return|;
 block|}
 comment|// parse the name
 name|String
@@ -252,7 +262,9 @@ argument_list|(
 literal|"Prefix must not be empty"
 argument_list|)
 expr_stmt|;
-return|return;
+return|return
+literal|false
+return|;
 block|}
 elseif|else
 if|if
@@ -274,7 +286,9 @@ argument_list|(
 literal|"Trailing spaces not allowed"
 argument_list|)
 expr_stmt|;
-return|return;
+return|return
+literal|false
+return|;
 block|}
 name|prefix
 operator|=
@@ -307,7 +321,9 @@ operator|+
 name|prefix
 argument_list|)
 expr_stmt|;
-return|return;
+return|return
+literal|false
+return|;
 block|}
 name|state
 operator|=
@@ -337,7 +353,9 @@ operator|+
 literal|"' not allowed in name"
 argument_list|)
 expr_stmt|;
-return|return;
+return|return
+literal|false
+return|;
 block|}
 name|trailingSpaces
 operator|=
@@ -374,7 +392,9 @@ operator|+
 literal|"' not valid name start"
 argument_list|)
 expr_stmt|;
-return|return;
+return|return
+literal|false
+return|;
 block|}
 name|trailingSpaces
 operator|=
@@ -419,7 +439,9 @@ operator|+
 literal|"' not allowed in name"
 argument_list|)
 expr_stmt|;
-return|return;
+return|return
+literal|false
+return|;
 block|}
 elseif|else
 if|if
@@ -460,7 +482,9 @@ operator|+
 literal|"' not allowed in name"
 argument_list|)
 expr_stmt|;
-return|return;
+return|return
+literal|false
+return|;
 block|}
 name|trailingSpaces
 operator|=
@@ -649,7 +673,9 @@ operator|+
 literal|"neither a valid URI nor a valid part of a local name."
 argument_list|)
 expr_stmt|;
-return|return;
+return|return
+literal|false
+return|;
 block|}
 block|}
 elseif|else
@@ -777,7 +803,9 @@ argument_list|(
 literal|"Local name may not contain ':' nor '/'"
 argument_list|)
 expr_stmt|;
-return|return;
+return|return
+literal|false
+return|;
 block|}
 if|if
 condition|(
@@ -797,7 +825,9 @@ argument_list|(
 literal|"Local name must not be empty"
 argument_list|)
 expr_stmt|;
-return|return;
+return|return
+literal|false
+return|;
 block|}
 if|if
 condition|(
@@ -811,15 +841,20 @@ argument_list|(
 literal|"Trailing spaces not allowed"
 argument_list|)
 expr_stmt|;
-return|return;
+return|return
+literal|false
+return|;
 block|}
+return|return
 name|listener
 operator|.
 name|name
 argument_list|(
 name|jcrName
+argument_list|,
+name|index
 argument_list|)
-expr_stmt|;
+return|;
 block|}
 block|}
 end_class
