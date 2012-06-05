@@ -56,6 +56,16 @@ name|String
 name|jcrPath
 parameter_list|)
 function_decl|;
+comment|/**      * Maps a JCR path to an Oak path, substituting JCR prefixes with      * Oak prefixes, and converting expanded names to Oak qualified form.      * Returns the converted path for the given JCR path, or {@code null} if no      * such mapping exists because the given JCR path contains a name element      * with an unknown namespace URI or prefix, or is otherwise invalid.      *      * @param jcrPath JCR path      * @return mapped path, or {@code null}      */
+annotation|@
+name|CheckForNull
+name|String
+name|mapJcrToOakNamespaces
+parameter_list|(
+name|String
+name|jcrPath
+parameter_list|)
+function_decl|;
 comment|/**      * Returns the JCR path for the given Oak path. The given path is      * expected to have come from a valid Oak repository that contains      * only valid paths whose name elements only use proper namespace      * mappings. If that's not the case, either a programming error or      * a repository corruption has occurred and an appropriate unchecked      * exception gets thrown.      *      * @param oakPath Oak path      * @return JCR path      */
 annotation|@
 name|Nonnull
