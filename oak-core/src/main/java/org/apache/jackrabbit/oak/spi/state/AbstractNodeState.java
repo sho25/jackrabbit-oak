@@ -434,6 +434,7 @@ literal|false
 return|;
 block|}
 block|}
+comment|// TODO inefficient unless there are very few child nodes
 for|for
 control|(
 name|ChildNodeEntry
