@@ -115,7 +115,7 @@ name|jcr
 operator|.
 name|security
 operator|.
-name|privileges
+name|privilege
 operator|.
 name|PrivilegeManagerImpl
 import|;
