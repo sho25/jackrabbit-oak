@@ -3080,7 +3080,9 @@ operator|.
 name|getString
 argument_list|()
 else|:
-literal|"nt:unstructured"
+name|NodeType
+operator|.
+name|NT_UNSTRUCTURED
 expr_stmt|;
 return|return
 name|ntMgr
@@ -3470,12 +3472,12 @@ name|nt
 operator|.
 name|isNodeType
 argument_list|(
-literal|"mix:referenceable"
+name|NodeType
+operator|.
+name|MIX_REFERENCEABLE
 argument_list|)
 condition|)
 block|{
-name|this
-operator|.
 name|setProperty
 argument_list|(
 name|Property
