@@ -1391,8 +1391,8 @@ parameter_list|()
 block|{
 for|for
 control|(
-name|MicroKernel
-name|m
+name|MicroKernelWrapper
+name|wrapper
 range|:
 name|mounts
 operator|.
@@ -1404,7 +1404,12 @@ name|MicroKernelFactory
 operator|.
 name|disposeInstance
 argument_list|(
-name|m
+name|MicroKernelWrapperBase
+operator|.
+name|unwrap
+argument_list|(
+name|wrapper
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

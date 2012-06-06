@@ -416,13 +416,6 @@ name|mkVirtual
 argument_list|)
 expr_stmt|;
 block|}
-if|if
-condition|(
-name|mkRep1
-operator|!=
-literal|null
-condition|)
-block|{
 name|MicroKernelFactory
 operator|.
 name|disposeInstance
@@ -430,14 +423,6 @@ argument_list|(
 name|mkRep1
 argument_list|)
 expr_stmt|;
-block|}
-if|if
-condition|(
-name|mkRep2
-operator|!=
-literal|null
-condition|)
-block|{
 name|MicroKernelFactory
 operator|.
 name|disposeInstance
@@ -445,7 +430,6 @@ argument_list|(
 name|mkRep2
 argument_list|)
 expr_stmt|;
-block|}
 name|super
 operator|.
 name|tearDown
