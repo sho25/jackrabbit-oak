@@ -4648,6 +4648,7 @@ argument_list|)
 throw|;
 block|}
 comment|//-----------------------------------------------------------< internal>---
+comment|// FIXME: remove again. See OAK-136
 name|NodeDelegate
 name|getNodeDelegate
 parameter_list|()
