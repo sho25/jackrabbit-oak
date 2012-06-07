@@ -145,7 +145,7 @@ name|PARAM_GROUP_PATH
 init|=
 literal|"groupsPath"
 decl_stmt|;
-comment|/**      * Parameter used to change the number of levels that are used by default      * store authorizable nodes.<br>The default number of levels is 2.      *<p/>      *<strong>NOTE:</strong> Changing the default depth once users and groups      * have been created in the repository will cause inconsistencies, due to      * the fact that the resolution of ID to an authorizable relies on the      * structure defined by the default depth.<br>      * It is recommended to remove all authorizable nodes that will not be      * reachable any more, before this config option is changed.      *<ul>      *<li>If default depth is increased:<br>      * All authorizables on levels&lt; default depth are not reachable any more.</li>      *<li>If default depth is decreased:<br>      * All authorizables on levels&gt; default depth aren't reachable any more      * unless the {@link #PARAM_AUTO_EXPAND_TREE} flag is set to {@code true}.</li>      *</ul>      */
+comment|/**      * Parameter used to change the number of levels that are used by default      * store authorizable nodes.<br>The default number of levels is 2.      */
 specifier|public
 specifier|static
 specifier|final
@@ -154,25 +154,7 @@ name|PARAM_DEFAULT_DEPTH
 init|=
 literal|"defaultDepth"
 decl_stmt|;
-comment|/**      * If this parameter is present and its value is {@code true}, the trees      * containing user and group nodes will automatically created additional      * hierarchy levels if the number of nodes on a given level exceeds the      * maximal allowed {@link #PARAM_AUTO_EXPAND_SIZE size}.      */
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|PARAM_AUTO_EXPAND_TREE
-init|=
-literal|"autoExpandTree"
-decl_stmt|;
-comment|/**      * This parameter only takes effect if {@link #PARAM_AUTO_EXPAND_TREE} is      * enabled.      */
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|PARAM_AUTO_EXPAND_SIZE
-init|=
-literal|"autoExpandSize"
-decl_stmt|;
-comment|/**      * If this parameter is present group members are collected in a node      * structure below a {@link AuthorizableImpl#REP_MEMBERS} node instead of the      * default multi valued property {@link AuthorizableImpl#REP_MEMBERS}.      * Its value determines the maximum number of member properties until      * additional intermediate nodes are inserted.      */
+comment|/**      * If this parameter is present group members are collected in a node      * structure below a {@link UserConstants#REP_MEMBERS} node instead of the      * default multi valued property {@link UserConstants#REP_MEMBERS}.      * Its value determines the maximum number of member properties until      * additional intermediate nodes are inserted.      */
 specifier|public
 specifier|static
 specifier|final
