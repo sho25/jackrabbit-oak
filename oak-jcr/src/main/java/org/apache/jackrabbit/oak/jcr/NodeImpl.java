@@ -18,24 +18,6 @@ package|;
 end_package
 
 begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|util
-operator|.
-name|Iterators
-operator|.
-name|filter
-import|;
-end_import
-
-begin_import
 import|import
 name|java
 operator|.
@@ -614,6 +596,24 @@ operator|.
 name|slf4j
 operator|.
 name|LoggerFactory
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|util
+operator|.
+name|Iterators
+operator|.
+name|filter
 import|;
 end_import
 
@@ -2226,6 +2226,14 @@ operator|.
 name|getChildren
 argument_list|()
 decl_stmt|;
+name|long
+name|size
+init|=
+name|dlg
+operator|.
+name|getChildCount
+argument_list|()
+decl_stmt|;
 return|return
 operator|new
 name|NodeIteratorAdapter
@@ -2234,6 +2242,8 @@ name|nodeIterator
 argument_list|(
 name|children
 argument_list|)
+argument_list|,
+name|size
 argument_list|)
 return|;
 block|}
@@ -2515,6 +2525,14 @@ operator|.
 name|getProperties
 argument_list|()
 decl_stmt|;
+name|long
+name|size
+init|=
+name|dlg
+operator|.
+name|getPropertyCount
+argument_list|()
+decl_stmt|;
 return|return
 operator|new
 name|PropertyIteratorAdapter
@@ -2523,6 +2541,8 @@ name|propertyIterator
 argument_list|(
 name|properties
 argument_list|)
+argument_list|,
+name|size
 argument_list|)
 return|;
 block|}
