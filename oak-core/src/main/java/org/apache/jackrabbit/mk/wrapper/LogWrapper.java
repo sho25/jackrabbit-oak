@@ -1386,13 +1386,6 @@ expr_stmt|;
 block|}
 specifier|private
 name|void
-name|logResult
-parameter_list|()
-block|{
-comment|// ignored
-block|}
-specifier|private
-name|void
 name|log
 parameter_list|(
 name|String
