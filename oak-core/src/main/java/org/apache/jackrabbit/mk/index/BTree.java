@@ -602,10 +602,8 @@ expr_stmt|;
 if|if
 condition|(
 name|data
-operator|.
-name|length
 operator|==
-literal|0
+literal|null
 condition|)
 block|{
 name|jsop
@@ -1056,9 +1054,6 @@ block|}
 break|break;
 block|}
 block|}
-name|commit
-argument_list|()
-expr_stmt|;
 return|return
 literal|true
 return|;
@@ -1267,10 +1262,6 @@ operator|=
 name|parent
 expr_stmt|;
 block|}
-comment|// subsequent operations are based on the new structure
-name|commit
-argument_list|()
-expr_stmt|;
 block|}
 if|if
 condition|(
@@ -1410,19 +1401,6 @@ expr_stmt|;
 break|break;
 block|}
 block|}
-name|commit
-argument_list|()
-expr_stmt|;
-block|}
-name|void
-name|commit
-parameter_list|()
-block|{
-name|indexer
-operator|.
-name|commit
-argument_list|()
-expr_stmt|;
 block|}
 name|String
 name|getName

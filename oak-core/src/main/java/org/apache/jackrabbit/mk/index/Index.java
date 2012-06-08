@@ -54,7 +54,7 @@ name|Index
 block|{
 comment|/**      * Get the unique index name. This is also the name of the index node.      *      * @return the index name      */
 name|String
-name|getName
+name|getIndexNodeName
 parameter_list|()
 function_decl|;
 comment|/**      * The given node was added or removed.      *      * @param node the node including (old or new) data      * @param add true if added, false if removed      */

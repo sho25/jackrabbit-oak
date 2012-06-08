@@ -193,7 +193,7 @@ name|commit
 argument_list|(
 literal|"/jcr:system/indexes"
 argument_list|,
-literal|"+ \"prefix:x\": {}"
+literal|"+ \"prefix@x\": {}"
 argument_list|,
 name|head
 argument_list|,
@@ -267,7 +267,7 @@ name|mk
 operator|.
 name|getNodes
 argument_list|(
-literal|"/jcr:system/indexes/prefix:x?x:no"
+literal|"/jcr:system/indexes/prefix@x?x:no"
 argument_list|,
 name|head
 argument_list|,
@@ -295,7 +295,7 @@ name|mk
 operator|.
 name|getNodes
 argument_list|(
-literal|"/jcr:system/indexes/prefix:x?x:yes"
+literal|"/jcr:system/indexes/prefix@x?x:yes"
 argument_list|,
 name|head
 argument_list|,
@@ -323,7 +323,7 @@ name|mk
 operator|.
 name|getNodes
 argument_list|(
-literal|"/jcr:system/indexes/prefix:x?x:a"
+literal|"/jcr:system/indexes/prefix@x?x:a"
 argument_list|,
 name|head
 argument_list|,
@@ -360,7 +360,7 @@ name|commit
 argument_list|(
 literal|"/jcr:system/indexes"
 argument_list|,
-literal|"+ \"property:id,unique\": {}"
+literal|"+ \"property@id,unique\": {}"
 argument_list|,
 name|head
 argument_list|,
@@ -404,7 +404,7 @@ name|mk
 operator|.
 name|getNodes
 argument_list|(
-literal|"/jcr:system/indexes/property:id,unique?0"
+literal|"/jcr:system/indexes/property@id,unique?0"
 argument_list|,
 name|head
 argument_list|,
@@ -432,7 +432,7 @@ name|mk
 operator|.
 name|getNodes
 argument_list|(
-literal|"/jcr:system/indexes/property:id,unique?1"
+literal|"/jcr:system/indexes/property@id,unique?1"
 argument_list|,
 name|head
 argument_list|,
@@ -469,7 +469,7 @@ name|commit
 argument_list|(
 literal|"/jcr:system/indexes"
 argument_list|,
-literal|"+ \"property:ref\": {}"
+literal|"+ \"property@ref\": {}"
 argument_list|,
 name|head
 argument_list|,
@@ -528,7 +528,7 @@ name|mk
 operator|.
 name|getNodes
 argument_list|(
-literal|"/jcr:system/indexes/property:ref?no"
+literal|"/jcr:system/indexes/property@ref?no"
 argument_list|,
 name|head
 argument_list|,
@@ -556,7 +556,7 @@ name|mk
 operator|.
 name|getNodes
 argument_list|(
-literal|"/jcr:system/indexes/property:ref?a"
+literal|"/jcr:system/indexes/property@ref?a"
 argument_list|,
 name|head
 argument_list|,
@@ -584,7 +584,7 @@ name|mk
 operator|.
 name|getNodes
 argument_list|(
-literal|"/jcr:system/indexes/property:ref?b"
+literal|"/jcr:system/indexes/property@ref?b"
 argument_list|,
 name|head
 argument_list|,

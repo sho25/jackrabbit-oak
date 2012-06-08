@@ -1719,7 +1719,9 @@ name|mk
 operator|.
 name|getNodes
 argument_list|(
-literal|"/index"
+name|Indexer
+operator|.
+name|INDEX_CONFIG_ROOT
 argument_list|,
 name|head
 argument_list|,

@@ -417,7 +417,7 @@ block|{
 return|return
 name|index
 operator|.
-name|getName
+name|getIndexNodeName
 argument_list|()
 return|;
 block|}
