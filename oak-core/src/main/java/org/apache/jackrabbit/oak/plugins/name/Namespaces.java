@@ -125,6 +125,15 @@ name|String
 argument_list|>
 argument_list|()
 decl_stmt|;
+comment|// TODO: this should not use the "jcr" prefix
+specifier|public
+specifier|final
+specifier|static
+name|String
+name|NSMAPNODENAME
+init|=
+literal|"jcr:namespaces"
+decl_stmt|;
 static|static
 block|{
 comment|// Standard namespace specified by JCR (default one not included)
@@ -251,7 +260,7 @@ name|system
 operator|.
 name|getChild
 argument_list|(
-literal|"jcr:namespaces"
+name|NSMAPNODENAME
 argument_list|)
 decl_stmt|;
 if|if

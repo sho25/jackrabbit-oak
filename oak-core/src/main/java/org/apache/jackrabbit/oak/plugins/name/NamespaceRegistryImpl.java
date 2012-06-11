@@ -208,7 +208,9 @@ name|root
 argument_list|,
 literal|"jcr:system"
 argument_list|,
-literal|"jcr:namespaces"
+name|Namespaces
+operator|.
+name|NSMAPNODENAME
 argument_list|)
 decl_stmt|;
 name|namespaces
@@ -301,7 +303,9 @@ name|root
 argument_list|,
 literal|"jcr:system"
 argument_list|,
-literal|"jcr:namespaces"
+name|Namespaces
+operator|.
+name|NSMAPNODENAME
 argument_list|)
 decl_stmt|;
 if|if
