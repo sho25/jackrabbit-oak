@@ -68,20 +68,26 @@ name|String
 name|path
 parameter_list|)
 function_decl|;
-comment|/**      * Rebase this root to the latest revision.  After a call to this method,      * all trees obtained through {@link #getTree(String)} become invalid and fresh      * instances must be obtained.      */
+comment|/**      * Rebase this root to the latest revision.  After a call to this method,      * all trees obtained through {@link #getTree(String)} become invalid and fresh      * instances must be obtained.      *      * @param conflictHandler  {@link ConflictHandler} for resolving conflicts.      */
 name|void
 name|rebase
-parameter_list|()
+parameter_list|(
+name|ConflictHandler
+name|conflictHandler
+parameter_list|)
 function_decl|;
 comment|/**      * Reverts all changes made to this root and refreshed to the latest trunk.      * After a call to this method, all trees obtained through {@link #getTree(String)}      * become invalid and fresh instances must be obtained.      */
 name|void
 name|refresh
 parameter_list|()
 function_decl|;
-comment|/**      * Atomically apply all changes made to the tree beneath this root to the      * underlying store and refreshes this root. After a call to this method,      * all trees obtained through {@link #getTree(String)} become invalid and fresh      * instances must be obtained.      *      * @throws CommitFailedException TODO: add description and clarify how JCR exception can be generated from this generic exception      */
+comment|/**      * Atomically apply all changes made to the tree beneath this root to the      * underlying store and refreshes this root. After a call to this method,      * all trees obtained through {@link #getTree(String)} become invalid and fresh      * instances must be obtained.      *      * @param conflictHandler  {@link ConflictHandler} for resolving conflicts.      * @throws CommitFailedException TODO: add description and clarify how JCR exception can be generated from this generic exception      */
 name|void
 name|commit
-parameter_list|()
+parameter_list|(
+name|ConflictHandler
+name|conflictHandler
+parameter_list|)
 throws|throws
 name|CommitFailedException
 function_decl|;
