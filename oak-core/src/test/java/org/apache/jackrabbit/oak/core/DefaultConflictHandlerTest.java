@@ -180,7 +180,7 @@ end_import
 begin_class
 specifier|public
 class|class
-name|ConflictHandlerTest
+name|DefaultConflictHandlerTest
 extends|extends
 name|AbstractOakTest
 block|{
