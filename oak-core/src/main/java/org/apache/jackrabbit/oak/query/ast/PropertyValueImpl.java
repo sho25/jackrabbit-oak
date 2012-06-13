@@ -27,11 +27,11 @@ name|apache
 operator|.
 name|jackrabbit
 operator|.
-name|mk
+name|oak
 operator|.
-name|simple
+name|api
 operator|.
-name|NodeImpl
+name|CoreValue
 import|;
 end_import
 
@@ -47,7 +47,7 @@ name|oak
 operator|.
 name|api
 operator|.
-name|CoreValue
+name|Tree
 import|;
 end_import
 
@@ -211,13 +211,16 @@ argument_list|)
 return|;
 block|}
 comment|// TODO really support relative properties?
-name|NodeImpl
-name|n
+name|Tree
+name|tree
 init|=
+name|getTree
+argument_list|(
 name|selector
 operator|.
-name|currentNode
+name|currentPath
 argument_list|()
+argument_list|)
 decl_stmt|;
 for|for
 control|(
@@ -239,7 +242,7 @@ control|)
 block|{
 if|if
 condition|(
-name|n
+name|tree
 operator|==
 literal|null
 condition|)
@@ -251,9 +254,9 @@ block|}
 if|if
 condition|(
 operator|!
-name|n
+name|tree
 operator|.
-name|exists
+name|hasChild
 argument_list|(
 name|p
 argument_list|)
@@ -263,11 +266,11 @@ return|return
 literal|null
 return|;
 block|}
-name|n
+name|tree
 operator|=
-name|n
+name|tree
 operator|.
-name|getNode
+name|getChild
 argument_list|(
 name|p
 argument_list|)
@@ -286,7 +289,7 @@ decl_stmt|;
 if|if
 condition|(
 operator|!
-name|n
+name|tree
 operator|.
 name|hasProperty
 argument_list|(
@@ -298,21 +301,16 @@ return|return
 literal|null
 return|;
 block|}
-name|String
-name|value
-init|=
-name|n
+return|return
+name|tree
 operator|.
 name|getProperty
 argument_list|(
 name|name
 argument_list|)
-decl_stmt|;
-return|return
-name|getCoreValue
-argument_list|(
-name|value
-argument_list|)
+operator|.
+name|getValue
+argument_list|()
 return|;
 block|}
 specifier|public

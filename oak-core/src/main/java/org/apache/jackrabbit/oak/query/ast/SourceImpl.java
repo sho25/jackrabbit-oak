@@ -43,22 +43,6 @@ name|apache
 operator|.
 name|jackrabbit
 operator|.
-name|mk
-operator|.
-name|simple
-operator|.
-name|NodeImpl
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
 name|oak
 operator|.
 name|query
@@ -198,13 +182,6 @@ specifier|public
 specifier|abstract
 name|String
 name|currentPath
-parameter_list|()
-function_decl|;
-comment|/**      * Get the current node.      *      * @return the node      */
-specifier|public
-specifier|abstract
-name|NodeImpl
-name|currentNode
 parameter_list|()
 function_decl|;
 block|}

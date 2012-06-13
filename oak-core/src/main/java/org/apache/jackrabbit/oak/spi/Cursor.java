@@ -17,22 +17,6 @@ name|spi
 package|;
 end_package
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|mk
-operator|.
-name|simple
-operator|.
-name|NodeImpl
-import|;
-end_import
-
 begin_comment
 comment|/**  * A cursor to read a number of nodes sequentially.  */
 end_comment
@@ -50,11 +34,6 @@ function_decl|;
 comment|/**      * The path of the current node.      *      * @return the path      */
 name|String
 name|currentPath
-parameter_list|()
-function_decl|;
-comment|/**      * The current node.      *      * @return the node      */
-name|NodeImpl
-name|currentNode
 parameter_list|()
 function_decl|;
 block|}

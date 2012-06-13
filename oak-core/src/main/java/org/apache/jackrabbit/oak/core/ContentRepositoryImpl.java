@@ -526,8 +526,9 @@ argument_list|,
 literal|null
 argument_list|)
 expr_stmt|;
+comment|// this(new IndexWrapper(new MicroKernelImpl()), null, null);
 block|}
-comment|/**      * Creates an Oak repository instance based on the given, already      * initialized components.      *      * @param microKernel underlying kernel instance      * @param indexProvider index provider      */
+comment|/**      * Creates an Oak repository instance based on the given, already      * initialized components.      *      * @param microKernel underlying kernel instance      * @param indexProvider index provider      * @param validatorProvider the validation provider      */
 specifier|public
 name|ContentRepositoryImpl
 parameter_list|(
@@ -712,8 +713,9 @@ name|mk
 parameter_list|)
 block|{
 return|return
-operator|new
 name|Indexer
+operator|.
+name|getInstance
 argument_list|(
 name|mk
 argument_list|)
