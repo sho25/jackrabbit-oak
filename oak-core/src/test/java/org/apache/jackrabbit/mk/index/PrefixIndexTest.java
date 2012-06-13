@@ -105,14 +105,11 @@ decl_stmt|;
 name|Indexer
 name|indexer
 init|=
-operator|new
 name|Indexer
+operator|.
+name|getInstance
 argument_list|(
 name|mk
-argument_list|,
-name|mk
-argument_list|,
-literal|"index"
 argument_list|)
 decl_stmt|;
 name|indexer
@@ -146,7 +143,9 @@ name|mk
 operator|.
 name|getNodes
 argument_list|(
-literal|"/index"
+name|Indexer
+operator|.
+name|INDEX_CONFIG_ROOT
 argument_list|,
 name|head
 argument_list|,

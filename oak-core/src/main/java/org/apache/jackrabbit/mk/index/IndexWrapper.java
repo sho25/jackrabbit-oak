@@ -238,13 +238,7 @@ operator|=
 operator|new
 name|Indexer
 argument_list|(
-name|this
-argument_list|,
 name|mk
-argument_list|,
-name|Indexer
-operator|.
-name|INDEX_CONFIG_ROOT
 argument_list|)
 expr_stmt|;
 name|indexer
