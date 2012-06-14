@@ -27,6 +27,22 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
+name|core
+operator|.
+name|TreeImpl
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
 name|spi
 operator|.
 name|state
@@ -96,6 +112,17 @@ name|PropertyState
 name|theirs
 parameter_list|)
 function_decl|;
+comment|/**      * The property {@code ours} has been removed in {@code parent} while it was      * also removed in the persistence store.      *      * @param parent  root of the conflict      * @param ours  our version of the property      * @return  {@link Resolution} of the conflict      */
+name|Resolution
+name|deleteDeletedProperty
+parameter_list|(
+name|TreeImpl
+name|parent
+parameter_list|,
+name|PropertyState
+name|ours
+parameter_list|)
+function_decl|;
 comment|/**      * The property {@code theirs} changed in the persistence store while it has been      * deleted locally.      *      * @param parent  root of the conflict      * @param theirs  their version of the property      * @return  {@link Resolution} of the conflict      */
 name|Resolution
 name|deleteChangedProperty
@@ -150,6 +177,17 @@ name|name
 parameter_list|,
 name|NodeState
 name|theirs
+parameter_list|)
+function_decl|;
+comment|/**      * The node {@code name} has been removed in {@code parent} while it was      * also removed in the persistence store.      *      * @param parent  root of the conflict      * @param name  name of the node      * @return  {@link Resolution} of the conflict      */
+name|Resolution
+name|deleteDeletedNode
+parameter_list|(
+name|Tree
+name|parent
+parameter_list|,
+name|String
+name|name
 parameter_list|)
 function_decl|;
 block|}

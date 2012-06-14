@@ -17,8 +17,18 @@ name|api
 package|;
 end_package
 
+begin_import
+import|import
+name|javax
+operator|.
+name|jcr
+operator|.
+name|RepositoryException
+import|;
+end_import
+
 begin_comment
-comment|/**  * Main exception thrown by methods defined on the {@code ContentSession} interface  * indicating that committing a given set of changes failed.  *  * TODO: define mechanism to inform the oak-jcr level about the specific type of exception  *       possible ways:  *       - CommitFailedException contains nested jcr exceptions  *       - CommitFailedException extends from repository exception  *       - CommitFailedException transports status code that are then converted to jcr exceptions  */
+comment|/**  * Main exception thrown by methods defined on the {@code ContentSession} interface  * indicating that committing a given set of changes failed.  */
 end_comment
 
 begin_class
@@ -75,6 +85,45 @@ argument_list|(
 name|cause
 argument_list|)
 expr_stmt|;
+block|}
+comment|/**      * Rethrow this exception cast into a {@link RepositoryException}: if the cause      * for this exception already is a {@code RepositoryException}, the cause is      * thrown. Otherwise a new {@code RepositoryException} instance with this      * {@code CommitFailedException} is thrown.      * @throws RepositoryException      */
+specifier|public
+name|void
+name|throwRepositoryException
+parameter_list|()
+throws|throws
+name|RepositoryException
+block|{
+name|Throwable
+name|cause
+init|=
+name|getCause
+argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|cause
+operator|instanceof
+name|RepositoryException
+condition|)
+block|{
+throw|throw
+operator|(
+name|RepositoryException
+operator|)
+name|cause
+throw|;
+block|}
+else|else
+block|{
+throw|throw
+operator|new
+name|RepositoryException
+argument_list|(
+name|cause
+argument_list|)
+throw|;
+block|}
 block|}
 block|}
 end_class

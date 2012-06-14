@@ -583,7 +583,6 @@ parameter_list|()
 throws|throws
 name|CommitFailedException
 block|{
-comment|// TODO rebase to current trunk?
 name|MicroKernel
 name|kernel
 init|=
