@@ -1545,7 +1545,7 @@ if|if
 condition|(
 literal|"/"
 operator|.
-name|endsWith
+name|equals
 argument_list|(
 name|path
 argument_list|)
