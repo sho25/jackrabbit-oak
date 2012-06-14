@@ -21,6 +21,26 @@ end_package
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|HashSet
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Set
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -88,26 +108,6 @@ operator|.
 name|state
 operator|.
 name|NodeState
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|HashSet
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Set
 import|;
 end_import
 
@@ -522,6 +522,14 @@ operator|.
 name|add
 argument_list|(
 literal|"rep:RetentionManageable"
+argument_list|)
+expr_stmt|;
+comment|// Oak types are always available
+name|types
+operator|.
+name|add
+argument_list|(
+literal|"mix:mergeConflict"
 argument_list|)
 expr_stmt|;
 comment|// Find any extra types from /jcr:system/jcr:nodeTypes
