@@ -1182,7 +1182,12 @@ name|store
 operator|.
 name|getNodeState
 argument_list|(
-name|ourRoot
+name|store
+operator|.
+name|getNode
+argument_list|(
+name|rootNodeId
+argument_list|)
 argument_list|)
 argument_list|,
 literal|"/"
