@@ -19,6 +19,16 @@ end_package
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Arrays
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -45,7 +55,7 @@ name|oak
 operator|.
 name|commons
 operator|.
-name|ArrayUtils
+name|PathUtils
 import|;
 end_import
 
@@ -59,19 +69,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|commons
-operator|.
-name|PathUtils
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
 name|util
 operator|.
-name|Arrays
+name|ArrayUtils
 import|;
 end_import
 

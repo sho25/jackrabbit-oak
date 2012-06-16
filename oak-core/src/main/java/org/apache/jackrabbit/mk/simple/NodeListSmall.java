@@ -127,7 +127,7 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|commons
+name|util
 operator|.
 name|ArrayUtils
 import|;
