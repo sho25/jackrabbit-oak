@@ -410,6 +410,7 @@ throw|;
 block|}
 block|}
 specifier|private
+specifier|static
 name|Tree
 name|getOrCreate
 parameter_list|(

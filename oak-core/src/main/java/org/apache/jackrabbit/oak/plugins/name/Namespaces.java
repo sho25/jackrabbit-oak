@@ -127,13 +127,17 @@ argument_list|()
 decl_stmt|;
 comment|// TODO: this should not use the "jcr" prefix
 specifier|public
-specifier|final
 specifier|static
+specifier|final
 name|String
 name|NSMAPNODENAME
 init|=
 literal|"jcr:namespaces"
 decl_stmt|;
+specifier|private
+name|Namespaces
+parameter_list|()
+block|{     }
 static|static
 block|{
 comment|// Standard namespace specified by JCR (default one not included)
@@ -355,12 +359,11 @@ parameter_list|)
 block|{
 comment|// TODO: Other prefix rules?
 return|return
+operator|!
 name|prefix
 operator|.
-name|length
+name|isEmpty
 argument_list|()
-operator|>
-literal|0
 operator|&&
 name|prefix
 operator|.
@@ -386,10 +389,8 @@ if|if
 condition|(
 name|local
 operator|.
-name|length
+name|isEmpty
 argument_list|()
-operator|==
-literal|0
 operator|||
 literal|"."
 operator|.
