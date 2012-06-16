@@ -224,7 +224,7 @@ specifier|public
 name|Resolution
 name|deleteDeletedProperty
 parameter_list|(
-name|TreeImpl
+name|Tree
 name|parent
 parameter_list|,
 name|PropertyState
