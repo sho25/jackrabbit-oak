@@ -32,7 +32,7 @@ end_import
 begin_class
 specifier|public
 class|class
-name|PerformanceTest
+name|PerformanceBenchmark
 extends|extends
 name|AbstractPerformanceTest
 block|{
