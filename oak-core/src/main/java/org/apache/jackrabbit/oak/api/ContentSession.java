@@ -19,6 +19,16 @@ end_package
 
 begin_import
 import|import
+name|java
+operator|.
+name|io
+operator|.
+name|Closeable
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|annotation
@@ -34,16 +44,6 @@ operator|.
 name|annotation
 operator|.
 name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|Closeable
 import|;
 end_import
 
@@ -70,7 +70,7 @@ name|String
 name|getWorkspaceName
 parameter_list|()
 function_decl|;
-comment|/**      * The current root as seen by this content session. Use {@link Root#commit()} to      * atomically apply the changes made in that subtree the underlying Microkernel.      *      * @return  the current root      */
+comment|/**      * The current root as seen by this content session. Use      * {@link Root#commit(ConflictHandler)} to atomically apply the changes made in that      * subtree the underlying Microkernel.      *      * @return  the current root      */
 annotation|@
 name|Nonnull
 name|Root
