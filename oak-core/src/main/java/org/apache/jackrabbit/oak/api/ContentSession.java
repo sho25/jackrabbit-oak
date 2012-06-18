@@ -23,6 +23,16 @@ name|javax
 operator|.
 name|annotation
 operator|.
+name|CheckForNull
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|annotation
+operator|.
 name|Nonnull
 import|;
 end_import
@@ -80,6 +90,22 @@ name|Nonnull
 name|CoreValueFactory
 name|getCoreValueFactory
 parameter_list|()
+function_decl|;
+comment|/**      * Wait for changes to occur at {@code path} in the underlying repository.      * If {@code previous} is not {@code null} returns the {@link ChangeSet}      * instance following the one given in {@code previous}.      *      * @param path  path to the subtree to watch for changes      * @param previous  previous {@code ChangeSet} or {@code null}.      * @param timeout the maximum time to wait in milliseconds      * @return  the next {@code ChangeSet} or {@code null} if a timeout occurred.      */
+annotation|@
+name|CheckForNull
+name|ChangeSet
+name|waitForChanges
+parameter_list|(
+name|String
+name|path
+parameter_list|,
+name|ChangeSet
+name|previous
+parameter_list|,
+name|long
+name|timeout
+parameter_list|)
 function_decl|;
 comment|// TODO : add versioning operations
 block|}
