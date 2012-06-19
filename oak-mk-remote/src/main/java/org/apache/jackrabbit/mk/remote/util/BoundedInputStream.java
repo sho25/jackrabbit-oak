@@ -13,6 +13,8 @@ name|jackrabbit
 operator|.
 name|mk
 operator|.
+name|remote
+operator|.
 name|util
 package|;
 end_package

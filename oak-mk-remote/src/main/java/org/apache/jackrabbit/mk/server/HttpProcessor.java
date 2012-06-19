@@ -98,6 +98,7 @@ comment|/**  * Process all HTTP requests on a single socket.  */
 end_comment
 
 begin_class
+specifier|public
 class|class
 name|HttpProcessor
 block|{

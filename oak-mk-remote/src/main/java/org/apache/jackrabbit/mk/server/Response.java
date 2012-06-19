@@ -93,6 +93,8 @@ name|jackrabbit
 operator|.
 name|mk
 operator|.
+name|remote
+operator|.
 name|util
 operator|.
 name|ChunkedInputStream

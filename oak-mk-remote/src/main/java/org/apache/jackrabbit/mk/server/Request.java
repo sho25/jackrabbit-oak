@@ -107,6 +107,8 @@ name|jackrabbit
 operator|.
 name|mk
 operator|.
+name|remote
+operator|.
 name|util
 operator|.
 name|BoundedInputStream
@@ -122,6 +124,8 @@ operator|.
 name|jackrabbit
 operator|.
 name|mk
+operator|.
+name|remote
 operator|.
 name|util
 operator|.
