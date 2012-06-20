@@ -451,7 +451,7 @@ annotation|@
 name|Override
 specifier|public
 name|ChangeSet
-name|waitForChanges
+name|getChanges
 parameter_list|(
 name|String
 name|path
@@ -466,7 +466,7 @@ block|{
 return|return
 literal|null
 return|;
-comment|// todo implement waitForChanges. See OAK-144
+comment|// todo implement getChanges. See OAK-144
 block|}
 block|}
 end_class

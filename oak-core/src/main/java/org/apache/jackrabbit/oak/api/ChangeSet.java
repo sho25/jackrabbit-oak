@@ -28,7 +28,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A {@code ChangeSet} instance describes a set of changes which was applied atomically  * to a (sub-)tree.  */
+comment|/**  * A {@code ChangeSet} instance describes a set of changes to a (sub-)tree.  *  * TODO (which) meta data do we need to carry along in a ChangeSet?  * - timestamp(s)?  * - commit message?  * - JCR user data?  * - revision id(s)?  * - cluster id?  * - session id?  * - whether gaps occurred due to gc-ed revisions  */
 end_comment
 
 begin_interface
@@ -36,18 +36,6 @@ specifier|public
 interface|interface
 name|ChangeSet
 block|{
-comment|/**      * Timestamp for when the changes occurred.      * @return  time stamp in milliseconds      */
-name|long
-name|getTimeStamp
-parameter_list|()
-function_decl|;
-comment|/**      * Commit message from the underlying Microkernel.      *      * TODO: implementation detail: we might need to encode JCR user data and session      * IDs (for no-local support) here but we should expose them separately.      * @return      */
-annotation|@
-name|Nonnull
-name|String
-name|getCommitMessage
-parameter_list|()
-function_decl|;
 comment|/**      * The {@link Tree} how it was before the changes.      * @return a read only tree.      */
 annotation|@
 name|Nonnull

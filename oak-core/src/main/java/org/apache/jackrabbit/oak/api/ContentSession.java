@@ -91,11 +91,11 @@ name|CoreValueFactory
 name|getCoreValueFactory
 parameter_list|()
 function_decl|;
-comment|/**      * Wait for changes to occur at {@code path} in the underlying repository.      * If {@code previous} is not {@code null} returns the {@link ChangeSet}      * instance following the one given in {@code previous}.      *      * @param path  path to the subtree to watch for changes      * @param previous  previous {@code ChangeSet} or {@code null}.      * @param timeout the maximum time to wait in milliseconds      * @return  the next {@code ChangeSet} or {@code null} if a timeout occurred.      */
+comment|/**      * Retrieves {@link ChangeSet changes} in the underlying repository which      * occurred at {@code path}. If {@code previous} is {@code null} this method      * blocks until a changes occurs but no longer than for {@code timeout}      * milliseconds. If {@code previous} is not {@code null} this method returns a      * {@code ChangeSet} instance which follows the one given in {@code previous}.      *      * @param path  path to the subtree      * @param previous  previous {@code ChangeSet} or {@code null}.      * @param timeout the maximum time to wait in milliseconds      * @return  a next {@code ChangeSet} or {@code null} if a timeout occurred.      */
 annotation|@
 name|CheckForNull
 name|ChangeSet
-name|waitForChanges
+name|getChanges
 parameter_list|(
 name|String
 name|path
