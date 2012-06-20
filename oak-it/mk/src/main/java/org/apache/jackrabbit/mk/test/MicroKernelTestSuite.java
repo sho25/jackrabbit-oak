@@ -58,7 +58,6 @@ block|{
 name|MicroKernelIT
 operator|.
 name|class
-block|,
 comment|// TODO remove
 comment|// DataStoreIT.class
 block|}
