@@ -600,12 +600,17 @@ name|getCommitHook
 argument_list|()
 decl_stmt|;
 name|NodeState
-name|oldRoot
+name|preMergeRoot
 init|=
 name|store
 operator|.
 name|getRoot
 argument_list|()
+decl_stmt|;
+name|NodeState
+name|oldRoot
+init|=
+name|preMergeRoot
 decl_stmt|;
 name|NodeState
 name|toCommit
@@ -706,7 +711,7 @@ name|afterCommit
 argument_list|(
 name|store
 argument_list|,
-name|oldRoot
+name|preMergeRoot
 argument_list|,
 name|committed
 argument_list|)
