@@ -58,8 +58,10 @@ block|{
 name|MicroKernelIT
 operator|.
 name|class
-comment|// TODO remove
-comment|// DataStoreIT.class
+block|,
+name|DataStoreIT
+operator|.
+name|class
 block|}
 argument_list|)
 specifier|public
