@@ -233,7 +233,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-specifier|private
 class|class
 name|Reader
 implements|implements

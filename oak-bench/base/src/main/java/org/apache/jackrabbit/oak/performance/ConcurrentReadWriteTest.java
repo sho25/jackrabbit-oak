@@ -100,7 +100,6 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-specifier|private
 class|class
 name|Writer
 implements|implements
