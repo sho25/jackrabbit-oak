@@ -19,36 +19,70 @@ end_package
 
 begin_import
 import|import
-name|javax
+name|org
 operator|.
-name|annotation
+name|apache
 operator|.
-name|Nonnull
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|state
+operator|.
+name|NodeState
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|state
+operator|.
+name|NodeStateDiff
 import|;
 end_import
 
 begin_comment
-comment|/**  * A {@code ChangeSet} instance describes a set of changes to a (sub-)tree.  *  * TODO (which) meta data do we need to carry along in a ChangeSet?  * - timestamp(s)?  * - commit message?  * - JCR user data?  * - revision id(s)?  * - cluster id?  * - session id?  * - whether gaps occurred due to gc-ed revisions  */
+comment|/**  * An instance of {@code ChangeExtractor} can be used to follow changes  * done to a {@link Root} instance.  */
 end_comment
 
 begin_interface
 specifier|public
 interface|interface
-name|ChangeSet
+name|ChangeExtractor
 block|{
-comment|/**      * The {@link Tree} how it was before the changes.      * @return a read only tree.      */
-annotation|@
-name|Nonnull
-name|Tree
-name|getTreeBeforeChange
-parameter_list|()
+comment|/**      * Get the most recent changes.      * @param diff  {@code NodeStateDiff} to receive the changes      */
+name|void
+name|getChanges
+parameter_list|(
+name|NodeStateDiff
+name|diff
+parameter_list|)
 function_decl|;
-comment|/**      * The {@link Tree} how it was after the changes.      * @return a read only tree.      */
-annotation|@
-name|Nonnull
-name|Tree
-name|getTreeAfterChange
-parameter_list|()
+comment|/**      * Compares the given two node states. Any found differences are      * reported by calling the relevant added, changed or deleted methods      * of the given handler.      *      * @param before node state before changes      * @param after node state after changes      * @param diff handler of node state differences      */
+name|void
+name|getChanges
+parameter_list|(
+name|NodeState
+name|before
+parameter_list|,
+name|NodeState
+name|after
+parameter_list|,
+name|NodeStateDiff
+name|diff
+parameter_list|)
 function_decl|;
 block|}
 end_interface

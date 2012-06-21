@@ -27,6 +27,16 @@ name|CheckForNull
 import|;
 end_import
 
+begin_import
+import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|Nonnull
+import|;
+end_import
+
 begin_comment
 comment|/**  * The root of a {@link Tree}.  */
 end_comment
@@ -94,6 +104,13 @@ function_decl|;
 comment|/**      * Determine whether there are changes on this tree      * @return  {@code true} iff this tree was modified      */
 name|boolean
 name|hasPendingChanges
+parameter_list|()
+function_decl|;
+comment|/**      * Return a {@link ChangeExtractor} for this {@code Root}.      * @return a {@code ChangeExtractor}.      */
+annotation|@
+name|Nonnull
+name|ChangeExtractor
+name|getChangeExtractor
 parameter_list|()
 function_decl|;
 block|}
