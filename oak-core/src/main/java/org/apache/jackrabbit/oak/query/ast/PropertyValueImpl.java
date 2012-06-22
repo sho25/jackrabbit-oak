@@ -276,6 +276,17 @@ name|p
 argument_list|)
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|tree
+operator|==
+literal|null
+condition|)
+block|{
+return|return
+literal|null
+return|;
+block|}
 name|String
 name|name
 init|=

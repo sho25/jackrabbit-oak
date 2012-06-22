@@ -160,7 +160,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Implementation of {@link NamespaceRegistry} based on {@link NamespaceMappings}.  */
+comment|/**  * Implementation of {@link NamespaceRegistry}.  */
 end_comment
 
 begin_class
@@ -432,6 +432,11 @@ argument_list|(
 literal|"/"
 argument_list|)
 decl_stmt|;
+assert|assert
+name|tree
+operator|!=
+literal|null
+assert|;
 for|for
 control|(
 name|String
