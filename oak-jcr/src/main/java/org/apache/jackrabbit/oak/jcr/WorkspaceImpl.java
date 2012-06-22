@@ -53,16 +53,6 @@ name|javax
 operator|.
 name|jcr
 operator|.
-name|Repository
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|jcr
-operator|.
 name|RepositoryException
 import|;
 end_import
@@ -489,13 +479,6 @@ parameter_list|)
 throws|throws
 name|RepositoryException
 block|{
-name|ensureSupportedOption
-argument_list|(
-name|Repository
-operator|.
-name|LEVEL_2_SUPPORTED
-argument_list|)
-expr_stmt|;
 name|ensureIsAlive
 argument_list|()
 expr_stmt|;
@@ -604,13 +587,6 @@ parameter_list|)
 throws|throws
 name|RepositoryException
 block|{
-name|ensureSupportedOption
-argument_list|(
-name|Repository
-operator|.
-name|LEVEL_2_SUPPORTED
-argument_list|)
-expr_stmt|;
 name|ensureIsAlive
 argument_list|()
 expr_stmt|;
@@ -643,13 +619,6 @@ parameter_list|)
 throws|throws
 name|RepositoryException
 block|{
-name|ensureSupportedOption
-argument_list|(
-name|Repository
-operator|.
-name|LEVEL_2_SUPPORTED
-argument_list|)
-expr_stmt|;
 name|ensureIsAlive
 argument_list|()
 expr_stmt|;
@@ -753,13 +722,6 @@ block|{
 name|ensureIsAlive
 argument_list|()
 expr_stmt|;
-name|ensureSupportedOption
-argument_list|(
-name|Repository
-operator|.
-name|OPTION_LOCKING_SUPPORTED
-argument_list|)
-expr_stmt|;
 throw|throw
 operator|new
 name|UnsupportedRepositoryOperationException
@@ -825,13 +787,6 @@ block|{
 name|ensureIsAlive
 argument_list|()
 expr_stmt|;
-name|ensureSupportedOption
-argument_list|(
-name|Repository
-operator|.
-name|OPTION_OBSERVATION_SUPPORTED
-argument_list|)
-expr_stmt|;
 return|return
 name|sessionDelegate
 operator|.
@@ -850,13 +805,6 @@ name|RepositoryException
 block|{
 name|ensureIsAlive
 argument_list|()
-expr_stmt|;
-name|ensureSupportedOption
-argument_list|(
-name|Repository
-operator|.
-name|OPTION_VERSIONING_SUPPORTED
-argument_list|)
 expr_stmt|;
 comment|// TODO
 throw|throw
@@ -914,13 +862,6 @@ block|{
 name|ensureIsAlive
 argument_list|()
 expr_stmt|;
-name|ensureSupportedOption
-argument_list|(
-name|Repository
-operator|.
-name|LEVEL_2_SUPPORTED
-argument_list|)
-expr_stmt|;
 comment|// TODO
 throw|throw
 operator|new
@@ -958,13 +899,6 @@ block|{
 name|ensureIsAlive
 argument_list|()
 expr_stmt|;
-name|ensureSupportedOption
-argument_list|(
-name|Repository
-operator|.
-name|LEVEL_2_SUPPORTED
-argument_list|)
-expr_stmt|;
 comment|// TODO -> SPI
 throw|throw
 operator|new
@@ -988,13 +922,6 @@ name|RepositoryException
 block|{
 name|ensureIsAlive
 argument_list|()
-expr_stmt|;
-name|ensureSupportedOption
-argument_list|(
-name|Repository
-operator|.
-name|OPTION_WORKSPACE_MANAGEMENT_SUPPORTED
-argument_list|)
 expr_stmt|;
 comment|// TODO -> SPI
 throw|throw
@@ -1023,13 +950,6 @@ block|{
 name|ensureIsAlive
 argument_list|()
 expr_stmt|;
-name|ensureSupportedOption
-argument_list|(
-name|Repository
-operator|.
-name|OPTION_WORKSPACE_MANAGEMENT_SUPPORTED
-argument_list|)
-expr_stmt|;
 comment|// TODO -> SPI
 throw|throw
 operator|new
@@ -1053,13 +973,6 @@ name|RepositoryException
 block|{
 name|ensureIsAlive
 argument_list|()
-expr_stmt|;
-name|ensureSupportedOption
-argument_list|(
-name|Repository
-operator|.
-name|OPTION_WORKSPACE_MANAGEMENT_SUPPORTED
-argument_list|)
 expr_stmt|;
 comment|// TODO -> SPI
 throw|throw
@@ -1088,13 +1001,6 @@ name|RepositoryException
 block|{
 name|ensureIsAlive
 argument_list|()
-expr_stmt|;
-name|ensureSupportedOption
-argument_list|(
-name|Repository
-operator|.
-name|OPTION_WORKSPACE_MANAGEMENT_SUPPORTED
-argument_list|)
 expr_stmt|;
 comment|// TODO -> SPI
 throw|throw
@@ -1146,82 +1052,6 @@ operator|new
 name|RepositoryException
 argument_list|(
 literal|"This session has been closed."
-argument_list|)
-throw|;
-block|}
-block|}
-comment|/**      * Returns true if the repository supports the given option. False otherwise.      *      * @param option Any of the option constants defined by {@link Repository}      * that either returns 'true' or 'false'. I.e.      *<ul>      *<li>{@link Repository#LEVEL_1_SUPPORTED}</li>      *<li>{@link Repository#LEVEL_2_SUPPORTED}</li>      *<li>{@link Repository#OPTION_ACCESS_CONTROL_SUPPORTED}</li>      *<li>{@link Repository#OPTION_ACTIVITIES_SUPPORTED}</li>      *<li>{@link Repository#OPTION_BASELINES_SUPPORTED}</li>      *<li>{@link Repository#OPTION_JOURNALED_OBSERVATION_SUPPORTED}</li>      *<li>{@link Repository#OPTION_LIFECYCLE_SUPPORTED}</li>      *<li>{@link Repository#OPTION_LOCKING_SUPPORTED}</li>      *<li>{@link Repository#OPTION_NODE_AND_PROPERTY_WITH_SAME_NAME_SUPPORTED}</li>      *<li>{@link Repository#OPTION_NODE_TYPE_MANAGEMENT_SUPPORTED}</li>      *<li>{@link Repository#OPTION_OBSERVATION_SUPPORTED}</li>      *<li>{@link Repository#OPTION_QUERY_SQL_SUPPORTED}</li>      *<li>{@link Repository#OPTION_RETENTION_SUPPORTED}</li>      *<li>{@link Repository#OPTION_SHAREABLE_NODES_SUPPORTED}</li>      *<li>{@link Repository#OPTION_SIMPLE_VERSIONING_SUPPORTED}</li>      *<li>{@link Repository#OPTION_TRANSACTIONS_SUPPORTED}</li>      *<li>{@link Repository#OPTION_UNFILED_CONTENT_SUPPORTED}</li>      *<li>{@link Repository#OPTION_UPDATE_MIXIN_NODE_TYPES_SUPPORTED}</li>      *<li>{@link Repository#OPTION_UPDATE_PRIMARY_NODE_TYPE_SUPPORTED}</li>      *<li>{@link Repository#OPTION_VERSIONING_SUPPORTED}</li>      *<li>{@link Repository#OPTION_WORKSPACE_MANAGEMENT_SUPPORTED}</li>      *<li>{@link Repository#OPTION_XML_EXPORT_SUPPORTED}</li>      *<li>{@link Repository#OPTION_XML_IMPORT_SUPPORTED}</li>      *<li>{@link Repository#WRITE_SUPPORTED}</li>      *</ul>      * @return true if the repository supports the given option. False otherwise.      */
-specifier|private
-name|boolean
-name|isSupportedOption
-parameter_list|(
-name|String
-name|option
-parameter_list|)
-block|{
-name|String
-name|desc
-init|=
-name|sessionDelegate
-operator|.
-name|getSession
-argument_list|()
-operator|.
-name|getRepository
-argument_list|()
-operator|.
-name|getDescriptor
-argument_list|(
-name|option
-argument_list|)
-decl_stmt|;
-comment|// if the descriptors are not available return true. the missing
-comment|// functionality of the given SPI impl will in this case be detected
-comment|// upon the corresponding SPI call (see JCR-3143).
-return|return
-operator|(
-name|desc
-operator|==
-literal|null
-operator|)
-condition|?
-literal|true
-else|:
-name|Boolean
-operator|.
-name|valueOf
-argument_list|(
-name|desc
-argument_list|)
-return|;
-block|}
-comment|/**      * Make sure the repository supports the option indicated by the given string      * and throw an exception otherwise.      *      * @param option Any of the option constants defined by {@link Repository}      * that either returns 'true' or 'false'. I.e.      *<ul>      *<li>{@link Repository#LEVEL_1_SUPPORTED}</li>      *<li>{@link Repository#LEVEL_2_SUPPORTED}</li>      *<li>{@link Repository#OPTION_ACCESS_CONTROL_SUPPORTED}</li>      *<li>{@link Repository#OPTION_ACTIVITIES_SUPPORTED}</li>      *<li>{@link Repository#OPTION_BASELINES_SUPPORTED}</li>      *<li>{@link Repository#OPTION_JOURNALED_OBSERVATION_SUPPORTED}</li>      *<li>{@link Repository#OPTION_LIFECYCLE_SUPPORTED}</li>      *<li>{@link Repository#OPTION_LOCKING_SUPPORTED}</li>      *<li>{@link Repository#OPTION_NODE_AND_PROPERTY_WITH_SAME_NAME_SUPPORTED}</li>      *<li>{@link Repository#OPTION_NODE_TYPE_MANAGEMENT_SUPPORTED}</li>      *<li>{@link Repository#OPTION_OBSERVATION_SUPPORTED}</li>      *<li>{@link Repository#OPTION_QUERY_SQL_SUPPORTED}</li>      *<li>{@link Repository#OPTION_RETENTION_SUPPORTED}</li>      *<li>{@link Repository#OPTION_SHAREABLE_NODES_SUPPORTED}</li>      *<li>{@link Repository#OPTION_SIMPLE_VERSIONING_SUPPORTED}</li>      *<li>{@link Repository#OPTION_TRANSACTIONS_SUPPORTED}</li>      *<li>{@link Repository#OPTION_UNFILED_CONTENT_SUPPORTED}</li>      *<li>{@link Repository#OPTION_UPDATE_MIXIN_NODE_TYPES_SUPPORTED}</li>      *<li>{@link Repository#OPTION_UPDATE_PRIMARY_NODE_TYPE_SUPPORTED}</li>      *<li>{@link Repository#OPTION_VERSIONING_SUPPORTED}</li>      *<li>{@link Repository#OPTION_WORKSPACE_MANAGEMENT_SUPPORTED}</li>      *<li>{@link Repository#OPTION_XML_EXPORT_SUPPORTED}</li>      *<li>{@link Repository#OPTION_XML_IMPORT_SUPPORTED}</li>      *<li>{@link Repository#WRITE_SUPPORTED}</li>      *</ul>      * @throws UnsupportedRepositoryOperationException If the given option is      * not supported.      * @throws RepositoryException If another error occurs.      * @see javax.jcr.Repository#getDescriptorKeys()      */
-specifier|private
-name|void
-name|ensureSupportedOption
-parameter_list|(
-name|String
-name|option
-parameter_list|)
-throws|throws
-name|RepositoryException
-block|{
-if|if
-condition|(
-operator|!
-name|isSupportedOption
-argument_list|(
-name|option
-argument_list|)
-condition|)
-block|{
-throw|throw
-operator|new
-name|UnsupportedRepositoryOperationException
-argument_list|(
-name|option
-operator|+
-literal|" is not supported by this repository."
 argument_list|)
 throw|;
 block|}
