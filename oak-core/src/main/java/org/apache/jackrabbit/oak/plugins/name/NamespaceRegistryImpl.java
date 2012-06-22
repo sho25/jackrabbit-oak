@@ -189,6 +189,14 @@ operator|=
 name|session
 expr_stmt|;
 block|}
+comment|/**      * Called by the {@link NamespaceRegistry} implementation methods to      * refresh the state of the session associated with this instance.      * That way the session is kept in sync with the latest global state      * seen by the namespace registry.      *      * @throws RepositoryException if the session could not be refreshed      */
+specifier|protected
+name|void
+name|refresh
+parameter_list|()
+throws|throws
+name|RepositoryException
+block|{     }
 comment|//--------------------------------------------------< NamespaceRegistry>---
 annotation|@
 name|Override
@@ -254,6 +262,9 @@ name|DefaultConflictHandler
 operator|.
 name|OURS
 argument_list|)
+expr_stmt|;
+name|refresh
+argument_list|()
 expr_stmt|;
 block|}
 catch|catch
@@ -375,6 +386,9 @@ name|DefaultConflictHandler
 operator|.
 name|OURS
 argument_list|)
+expr_stmt|;
+name|refresh
+argument_list|()
 expr_stmt|;
 block|}
 catch|catch
@@ -551,6 +565,9 @@ argument_list|(
 name|prefixes
 argument_list|)
 expr_stmt|;
+name|refresh
+argument_list|()
+expr_stmt|;
 return|return
 name|prefixes
 return|;
@@ -641,6 +658,9 @@ name|sort
 argument_list|(
 name|uris
 argument_list|)
+expr_stmt|;
+name|refresh
+argument_list|()
 expr_stmt|;
 return|return
 name|uris
@@ -734,6 +754,9 @@ name|prefix
 argument_list|)
 throw|;
 block|}
+name|refresh
+argument_list|()
+expr_stmt|;
 return|return
 name|uri
 return|;
@@ -832,6 +855,9 @@ name|uri
 argument_list|)
 condition|)
 block|{
+name|refresh
+argument_list|()
+expr_stmt|;
 return|return
 name|entry
 operator|.
