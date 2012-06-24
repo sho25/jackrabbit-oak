@@ -13,7 +13,7 @@ name|jackrabbit
 operator|.
 name|mk
 operator|.
-name|util
+name|simple
 package|;
 end_package
 
@@ -29,12 +29,27 @@ name|SoftReference
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|mk
+operator|.
+name|util
+operator|.
+name|IOUtils
+import|;
+end_import
+
 begin_comment
 comment|/**  * A simple string cache.  */
 end_comment
 
 begin_class
-specifier|public
 class|class
 name|StringCache
 block|{

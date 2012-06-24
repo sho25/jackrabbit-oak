@@ -13,9 +13,25 @@ name|jackrabbit
 operator|.
 name|mk
 operator|.
-name|util
+name|simple
 package|;
 end_package
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|mk
+operator|.
+name|simple
+operator|.
+name|AscendingClock
+import|;
+end_import
 
 begin_import
 import|import

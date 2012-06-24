@@ -13,7 +13,7 @@ name|jackrabbit
 operator|.
 name|mk
 operator|.
-name|util
+name|simple
 package|;
 end_package
 
@@ -22,7 +22,6 @@ comment|/**  * A clock that normally returns the current system time since 1970,
 end_comment
 
 begin_class
-specifier|public
 class|class
 name|AscendingClock
 block|{

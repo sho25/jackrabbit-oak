@@ -12,8 +12,6 @@ operator|.
 name|jackrabbit
 operator|.
 name|mk
-operator|.
-name|util
 package|;
 end_package
 
@@ -88,7 +86,7 @@ specifier|final
 name|String
 name|POM
 init|=
-literal|"META-INF/maven/org.apache.jackrabbit/microkernel/pom.properties"
+literal|"META-INF/maven/org.apache.jackrabbit/oak-core/pom.properties"
 decl_stmt|;
 specifier|private
 specifier|static

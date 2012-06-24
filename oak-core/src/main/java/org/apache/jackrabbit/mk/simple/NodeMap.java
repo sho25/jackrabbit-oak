@@ -71,11 +71,7 @@ name|jackrabbit
 operator|.
 name|mk
 operator|.
-name|simple
-operator|.
-name|NodeImpl
-operator|.
-name|ChildVisitor
+name|ExceptionFactory
 import|;
 end_import
 
@@ -89,9 +85,11 @@ name|jackrabbit
 operator|.
 name|mk
 operator|.
-name|util
+name|simple
 operator|.
-name|ExceptionFactory
+name|NodeImpl
+operator|.
+name|ChildVisitor
 import|;
 end_import
 
