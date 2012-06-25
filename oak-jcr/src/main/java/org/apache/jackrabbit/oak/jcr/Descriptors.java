@@ -1168,7 +1168,7 @@ name|Descriptor
 argument_list|(
 name|OPTION_LOCKING_SUPPORTED
 argument_list|,
-name|falseValue
+name|trueValue
 argument_list|,
 literal|true
 argument_list|,
