@@ -4646,7 +4646,7 @@ block|}
 block|}
 name|parent
 operator|=
-name|dlg
+name|parent
 operator|.
 name|getParent
 argument_list|()
