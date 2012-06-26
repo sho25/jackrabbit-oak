@@ -115,24 +115,6 @@ return|return
 name|after
 return|;
 block|}
-annotation|@
-name|Override
-specifier|public
-name|void
-name|afterCommit
-parameter_list|(
-name|NodeStore
-name|store
-parameter_list|,
-name|NodeState
-name|before
-parameter_list|,
-name|NodeState
-name|after
-parameter_list|)
-block|{
-comment|// do nothing
-block|}
 block|}
 end_class
 

@@ -126,7 +126,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This commit hook implementation validates the changes to be committed  * against all {@link Validator}s provided by the {@link ValidatorProvider}  * passed to the class' constructor.  */
+comment|/**  * This commit editor implementation validates the changes to be committed  * against all {@link Validator}s provided by the {@link ValidatorProvider}  * passed to the class' constructor.  */
 end_comment
 
 begin_class
@@ -202,24 +202,6 @@ expr_stmt|;
 return|return
 name|after
 return|;
-block|}
-annotation|@
-name|Override
-specifier|public
-name|void
-name|afterCommit
-parameter_list|(
-name|NodeStore
-name|store
-parameter_list|,
-name|NodeState
-name|before
-parameter_list|,
-name|NodeState
-name|after
-parameter_list|)
-block|{
-comment|// nothing to do here
 block|}
 comment|//------------------------------------------------------------< private>---
 specifier|private

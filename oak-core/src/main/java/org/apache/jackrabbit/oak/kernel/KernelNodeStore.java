@@ -148,11 +148,11 @@ specifier|final
 name|MicroKernel
 name|kernel
 decl_stmt|;
-comment|/**      * Commit hook.      */
+comment|/**      * Commit editor.      */
 specifier|private
 specifier|final
 name|CommitEditor
-name|commitHook
+name|editor
 decl_stmt|;
 comment|/**      * Value factory backed by the {@link #kernel} instance.      */
 specifier|private
@@ -172,7 +172,7 @@ name|MicroKernel
 name|kernel
 parameter_list|,
 name|CommitEditor
-name|commitHook
+name|editor
 parameter_list|)
 block|{
 assert|assert
@@ -181,7 +181,7 @@ operator|!=
 literal|null
 assert|;
 assert|assert
-name|commitHook
+name|editor
 operator|!=
 literal|null
 assert|;
@@ -193,9 +193,9 @@ name|kernel
 expr_stmt|;
 name|this
 operator|.
-name|commitHook
+name|editor
 operator|=
-name|commitHook
+name|editor
 expr_stmt|;
 name|this
 operator|.
@@ -319,11 +319,11 @@ block|}
 annotation|@
 name|Nonnull
 name|CommitEditor
-name|getCommitHook
+name|getCommitEditor
 parameter_list|()
 block|{
 return|return
-name|commitHook
+name|editor
 return|;
 block|}
 block|}

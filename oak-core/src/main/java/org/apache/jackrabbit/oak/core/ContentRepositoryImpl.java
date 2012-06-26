@@ -578,7 +578,7 @@ name|List
 argument_list|<
 name|CommitEditor
 argument_list|>
-name|hooks
+name|editors
 init|=
 operator|new
 name|ArrayList
@@ -587,7 +587,7 @@ name|CommitEditor
 argument_list|>
 argument_list|()
 decl_stmt|;
-name|hooks
+name|editors
 operator|.
 name|add
 argument_list|(
@@ -599,12 +599,12 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 name|CompositeEditor
-name|compositeHook
+name|editor
 init|=
 operator|new
 name|CompositeEditor
 argument_list|(
-name|hooks
+name|editors
 argument_list|)
 decl_stmt|;
 name|nodeStore
@@ -614,7 +614,7 @@ name|KernelNodeStore
 argument_list|(
 name|microKernel
 argument_list|,
-name|compositeHook
+name|editor
 argument_list|)
 expr_stmt|;
 name|QueryIndexProvider
