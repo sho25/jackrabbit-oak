@@ -91,7 +91,7 @@ name|spi
 operator|.
 name|commit
 operator|.
-name|CommitHook
+name|CommitEditor
 import|;
 end_import
 
@@ -151,7 +151,7 @@ decl_stmt|;
 comment|/**      * Commit hook.      */
 specifier|private
 specifier|final
-name|CommitHook
+name|CommitEditor
 name|commitHook
 decl_stmt|;
 comment|/**      * Value factory backed by the {@link #kernel} instance.      */
@@ -171,7 +171,7 @@ parameter_list|(
 name|MicroKernel
 name|kernel
 parameter_list|,
-name|CommitHook
+name|CommitEditor
 name|commitHook
 parameter_list|)
 block|{
@@ -318,7 +318,7 @@ return|;
 block|}
 annotation|@
 name|Nonnull
-name|CommitHook
+name|CommitEditor
 name|getCommitHook
 parameter_list|()
 block|{

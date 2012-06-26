@@ -72,25 +72,25 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Basic commit hook implementation that by default doesn't do anything.  * This class has a dual purpose:  *<ol>  *<li>The static {@link #INSTANCE} instance can be used as a "null object"  * in cases where another commit hook has not been configured, thus avoiding  * the need for extra code for such cases.</li>  *<li>Other commit hook implementations can extend this class and gain  * improved forwards-compatibility to possible changes in the  * {@link CommitHook} interface. For example if it is later decided that  * new arguments are needed in the hook methods, this class is guaranteed  * to implement any new method signatures in a way that falls gracefully  * back to any earlier behavior.</li>  *</ol>  */
+comment|/**  * Basic commit hook implementation that by default doesn't do anything.  * This class has a dual purpose:  *<ol>  *<li>The static {@link #INSTANCE} instance can be used as a "null object"  * in cases where another commit hook has not been configured, thus avoiding  * the need for extra code for such cases.</li>  *<li>Other commit hook implementations can extend this class and gain  * improved forwards-compatibility to possible changes in the  * {@link CommitEditor} interface. For example if it is later decided that  * new arguments are needed in the hook methods, this class is guaranteed  * to implement any new method signatures in a way that falls gracefully  * back to any earlier behavior.</li>  *</ol>  */
 end_comment
 
 begin_class
 specifier|public
 class|class
-name|EmptyCommitHook
+name|EmptyEditor
 implements|implements
-name|CommitHook
+name|CommitEditor
 block|{
 comment|/**      * Static instance of this class, useful as a "null object".      */
 specifier|public
 specifier|static
 specifier|final
-name|CommitHook
+name|CommitEditor
 name|INSTANCE
 init|=
 operator|new
-name|EmptyCommitHook
+name|EmptyEditor
 argument_list|()
 decl_stmt|;
 annotation|@

@@ -127,7 +127,7 @@ name|spi
 operator|.
 name|commit
 operator|.
-name|CommitHook
+name|CommitEditor
 import|;
 end_import
 
@@ -591,7 +591,7 @@ operator|.
 name|getKernel
 argument_list|()
 decl_stmt|;
-name|CommitHook
+name|CommitEditor
 name|commitHook
 init|=
 name|store

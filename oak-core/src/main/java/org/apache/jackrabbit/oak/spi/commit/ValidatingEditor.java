@@ -132,9 +132,9 @@ end_comment
 begin_class
 specifier|public
 class|class
-name|ValidatingCommitHook
+name|ValidatingEditor
 implements|implements
-name|CommitHook
+name|CommitEditor
 block|{
 specifier|private
 specifier|final
@@ -143,7 +143,7 @@ name|validatorProvider
 decl_stmt|;
 comment|/**      * Create a new commit hook which validates the commit against all      * {@link Validator}s provided by {@code validatorProvider}.      * @param validatorProvider  validator provider      */
 specifier|public
-name|ValidatingCommitHook
+name|ValidatingEditor
 parameter_list|(
 name|ValidatorProvider
 name|validatorProvider

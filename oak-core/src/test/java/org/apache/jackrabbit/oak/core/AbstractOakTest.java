@@ -95,7 +95,7 @@ name|spi
 operator|.
 name|commit
 operator|.
-name|CommitHook
+name|CommitEditor
 import|;
 end_import
 
@@ -113,7 +113,7 @@ name|spi
 operator|.
 name|commit
 operator|.
-name|EmptyCommitHook
+name|EmptyEditor
 import|;
 end_import
 
@@ -263,13 +263,13 @@ argument_list|)
 expr_stmt|;
 block|}
 specifier|protected
-name|CommitHook
+name|CommitEditor
 name|createCommitHook
 parameter_list|()
 block|{
 return|return
 operator|new
-name|EmptyCommitHook
+name|EmptyEditor
 argument_list|()
 return|;
 block|}

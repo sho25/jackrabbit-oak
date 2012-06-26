@@ -113,7 +113,7 @@ name|spi
 operator|.
 name|commit
 operator|.
-name|CommitHook
+name|CommitEditor
 import|;
 end_import
 
@@ -131,7 +131,7 @@ name|spi
 operator|.
 name|commit
 operator|.
-name|EmptyCommitHook
+name|EmptyEditor
 import|;
 end_import
 
@@ -317,7 +317,7 @@ block|}
 annotation|@
 name|Override
 specifier|protected
-name|CommitHook
+name|CommitEditor
 name|createCommitHook
 parameter_list|()
 block|{
@@ -979,7 +979,7 @@ argument_list|(
 name|newRoot
 argument_list|,
 operator|new
-name|EmptyCommitHook
+name|EmptyEditor
 argument_list|()
 block|{
 annotation|@
@@ -1207,7 +1207,7 @@ argument_list|(
 name|newRoot
 argument_list|,
 operator|new
-name|EmptyCommitHook
+name|EmptyEditor
 argument_list|()
 block|{
 annotation|@
@@ -1370,7 +1370,7 @@ parameter_list|(
 name|NodeState
 name|nodeState
 parameter_list|,
-name|CommitHook
+name|CommitEditor
 name|commitHook
 parameter_list|)
 throws|throws
@@ -1413,7 +1413,7 @@ operator|.
 name|set
 argument_list|(
 operator|new
-name|EmptyCommitHook
+name|EmptyEditor
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1424,21 +1424,21 @@ specifier|static
 class|class
 name|CommitHookDelegate
 implements|implements
-name|CommitHook
+name|CommitEditor
 block|{
 specifier|private
-name|CommitHook
+name|CommitEditor
 name|delegate
 init|=
 operator|new
-name|EmptyCommitHook
+name|EmptyEditor
 argument_list|()
 decl_stmt|;
 specifier|public
 name|void
 name|set
 parameter_list|(
-name|CommitHook
+name|CommitEditor
 name|commitHook
 parameter_list|)
 block|{

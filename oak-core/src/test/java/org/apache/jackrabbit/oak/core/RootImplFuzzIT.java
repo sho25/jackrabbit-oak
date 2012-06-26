@@ -199,7 +199,7 @@ name|spi
 operator|.
 name|commit
 operator|.
-name|EmptyCommitHook
+name|EmptyEditor
 import|;
 end_import
 
@@ -533,7 +533,7 @@ name|KernelNodeStore
 argument_list|(
 name|mk1
 argument_list|,
-name|EmptyCommitHook
+name|EmptyEditor
 operator|.
 name|INSTANCE
 argument_list|)
@@ -592,7 +592,7 @@ name|KernelNodeStore
 argument_list|(
 name|mk2
 argument_list|,
-name|EmptyCommitHook
+name|EmptyEditor
 operator|.
 name|INSTANCE
 argument_list|)

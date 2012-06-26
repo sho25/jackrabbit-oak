@@ -343,7 +343,7 @@ name|spi
 operator|.
 name|commit
 operator|.
-name|CommitHook
+name|CommitEditor
 import|;
 end_import
 
@@ -361,7 +361,7 @@ name|spi
 operator|.
 name|commit
 operator|.
-name|CompositeCommitHook
+name|CompositeEditor
 import|;
 end_import
 
@@ -397,7 +397,7 @@ name|spi
 operator|.
 name|commit
 operator|.
-name|ValidatingCommitHook
+name|ValidatingEditor
 import|;
 end_import
 
@@ -576,14 +576,14 @@ expr_stmt|;
 block|}
 name|List
 argument_list|<
-name|CommitHook
+name|CommitEditor
 argument_list|>
 name|hooks
 init|=
 operator|new
 name|ArrayList
 argument_list|<
-name|CommitHook
+name|CommitEditor
 argument_list|>
 argument_list|()
 decl_stmt|;
@@ -592,17 +592,17 @@ operator|.
 name|add
 argument_list|(
 operator|new
-name|ValidatingCommitHook
+name|ValidatingEditor
 argument_list|(
 name|validatorProvider
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|CompositeCommitHook
+name|CompositeEditor
 name|compositeHook
 init|=
 operator|new
-name|CompositeCommitHook
+name|CompositeEditor
 argument_list|(
 name|hooks
 argument_list|)
