@@ -8953,6 +8953,10 @@ argument_list|(
 name|TEST_PATH
 operator|+
 literal|"/1/prop2"
+argument_list|,
+name|TEST_PATH
+operator|+
+literal|"/2/jcr:primaryType"
 argument_list|)
 decl_stmt|;
 specifier|final
@@ -8981,13 +8985,6 @@ operator|.
 name|getObservationManager
 argument_list|()
 decl_stmt|;
-name|obsMgr
-operator|.
-name|setUserData
-argument_list|(
-literal|"my user data"
-argument_list|)
-expr_stmt|;
 name|obsMgr
 operator|.
 name|addEventListener
@@ -9297,6 +9294,24 @@ operator|.
 name|save
 argument_list|()
 expr_stmt|;
+try|try
+block|{
+name|Thread
+operator|.
+name|sleep
+argument_list|(
+literal|1000
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|InterruptedException
+name|e
+parameter_list|)
+block|{
+comment|// FIXME wait rather than sleep
+block|}
 name|n
 operator|.
 name|setProperty
@@ -9355,8 +9370,30 @@ operator|.
 name|save
 argument_list|()
 expr_stmt|;
+try|try
+block|{
+name|Thread
+operator|.
+name|sleep
+argument_list|(
+literal|1000
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|InterruptedException
+name|e
+parameter_list|)
+block|{
+comment|// FIXME wait rather than sleep
+block|}
 name|assertTrue
 argument_list|(
+literal|"failedEvents not empty: "
+operator|+
+name|failedEvents
+argument_list|,
 name|failedEvents
 operator|.
 name|isEmpty
@@ -9365,6 +9402,10 @@ argument_list|)
 expr_stmt|;
 name|assertTrue
 argument_list|(
+literal|"addNodes not empty: "
+operator|+
+name|addNodes
+argument_list|,
 name|addNodes
 operator|.
 name|isEmpty
@@ -9373,6 +9414,10 @@ argument_list|)
 expr_stmt|;
 name|assertTrue
 argument_list|(
+literal|"removeNodes not empty: "
+operator|+
+name|removeNodes
+argument_list|,
 name|removeNodes
 operator|.
 name|isEmpty
@@ -9381,6 +9426,10 @@ argument_list|)
 expr_stmt|;
 name|assertTrue
 argument_list|(
+literal|"addProperties not empty: "
+operator|+
+name|addProperties
+argument_list|,
 name|addProperties
 operator|.
 name|isEmpty
@@ -9389,6 +9438,10 @@ argument_list|)
 expr_stmt|;
 name|assertTrue
 argument_list|(
+literal|"removeProperties not empty: "
+operator|+
+name|removeProperties
+argument_list|,
 name|removeProperties
 operator|.
 name|isEmpty
@@ -9397,6 +9450,10 @@ argument_list|)
 expr_stmt|;
 name|assertTrue
 argument_list|(
+literal|"setProperties not empty: "
+operator|+
+name|setProperties
+argument_list|,
 name|setProperties
 operator|.
 name|isEmpty
