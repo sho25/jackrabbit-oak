@@ -87,6 +87,16 @@ name|javax
 operator|.
 name|jcr
 operator|.
+name|UnsupportedRepositoryOperationException
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|jcr
+operator|.
 name|observation
 operator|.
 name|Event
@@ -497,6 +507,11 @@ name|filter
 argument_list|)
 expr_stmt|;
 block|}
+throw|throw
+operator|new
+name|UnsupportedRepositoryOperationException
+argument_list|()
+throw|;
 block|}
 annotation|@
 name|Override
@@ -566,7 +581,11 @@ parameter_list|)
 throws|throws
 name|RepositoryException
 block|{
-comment|// todo implement setUserData
+throw|throw
+operator|new
+name|UnsupportedRepositoryOperationException
+argument_list|()
+throw|;
 block|}
 annotation|@
 name|Override
@@ -577,10 +596,11 @@ parameter_list|()
 throws|throws
 name|RepositoryException
 block|{
-return|return
-literal|null
-return|;
-comment|// todo implement getEventJournal
+throw|throw
+operator|new
+name|UnsupportedRepositoryOperationException
+argument_list|()
+throw|;
 block|}
 annotation|@
 name|Override
@@ -608,10 +628,11 @@ parameter_list|)
 throws|throws
 name|RepositoryException
 block|{
-return|return
-literal|null
-return|;
-comment|// todo implement getEventJournal
+throw|throw
+operator|new
+name|UnsupportedRepositoryOperationException
+argument_list|()
+throw|;
 block|}
 comment|//------------------------------------------------------------< private>---
 specifier|private
