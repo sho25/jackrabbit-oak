@@ -776,7 +776,7 @@ literal|null
 expr_stmt|;
 comment|// There is a small race here an we risk to get an "earlier" revision for the
 comment|// observation limit than for the branch. This is not a problem though since
-comment|// observation will catch up later on.
+comment|// observation will catch up later on with the next call to ChangeExtractor.getChanges()
 name|observationLimit
 operator|.
 name|set
