@@ -617,7 +617,7 @@ name|toCommit
 init|=
 name|editor
 operator|.
-name|beforeCommit
+name|editCommit
 argument_list|(
 name|store
 argument_list|,
@@ -653,7 +653,7 @@ name|toCommit
 operator|=
 name|editor
 operator|.
-name|beforeCommit
+name|editCommit
 argument_list|(
 name|store
 argument_list|,

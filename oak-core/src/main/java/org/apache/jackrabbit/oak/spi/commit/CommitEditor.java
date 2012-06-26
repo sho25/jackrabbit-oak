@@ -90,11 +90,11 @@ specifier|public
 interface|interface
 name|CommitEditor
 block|{
-comment|/**      * Before-commit hook. The implementation can validate, record or      * modify the staged commit. After all available before-commit hooks      * have been processed and none of them has thrown an exception the      * collected changes are committed to the underlying storage model.      *<p>      * Note that a before-commit hook can be executed multiple times for      * the same change, for example when a change needs to be retried      * after possible merge conflicts have been resolved. Use the      * after-commit hook if you need to be notified only once for each      * change.      *      * @param store the node store that contains the repository content      * @param before content tree before the commit      * @param after content tree prepared for the commit      * @return content tree to be committed      * @throws CommitFailedException if the commit should be rejected      */
+comment|/**      * Validates and/or modifies the given content change before it gets      * persisted.      *      * @param store the node store that contains the repository content      * @param before content tree before the commit      * @param after content tree prepared for the commit      * @return content tree to be committed      * @throws CommitFailedException if the commit should be rejected      */
 annotation|@
 name|Nonnull
 name|NodeState
-name|beforeCommit
+name|editCommit
 parameter_list|(
 name|NodeStore
 name|store

@@ -82,7 +82,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This {@code CommitHook} aggregates a list of commit hooks into  * a single commit hook.  */
+comment|/**  * Composite commit editor. Maintains a list of component editors and takes  * care of calling them in proper sequence in the  * {@link #editCommit(NodeStore, NodeState, NodeState)} method.  */
 end_comment
 
 begin_class
@@ -98,7 +98,7 @@ name|List
 argument_list|<
 name|CommitEditor
 argument_list|>
-name|hooks
+name|editors
 decl_stmt|;
 specifier|public
 name|CompositeEditor
@@ -107,21 +107,21 @@ name|List
 argument_list|<
 name|CommitEditor
 argument_list|>
-name|hooks
+name|editors
 parameter_list|)
 block|{
 name|this
 operator|.
-name|hooks
+name|editors
 operator|=
-name|hooks
+name|editors
 expr_stmt|;
 block|}
 annotation|@
 name|Override
 specifier|public
 name|NodeState
-name|beforeCommit
+name|editCommit
 parameter_list|(
 name|NodeStore
 name|store
@@ -148,9 +148,9 @@ decl_stmt|;
 for|for
 control|(
 name|CommitEditor
-name|hook
+name|editor
 range|:
-name|hooks
+name|editors
 control|)
 block|{
 name|NodeState
@@ -160,9 +160,9 @@ name|newState
 decl_stmt|;
 name|newState
 operator|=
-name|hook
+name|editor
 operator|.
-name|beforeCommit
+name|editCommit
 argument_list|(
 name|store
 argument_list|,

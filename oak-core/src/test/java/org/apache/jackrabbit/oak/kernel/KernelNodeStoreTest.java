@@ -262,11 +262,11 @@ name|AbstractOakTest
 block|{
 specifier|private
 specifier|final
-name|CommitHookDelegate
+name|CommitEditorDelegate
 name|commitHookDelegate
 init|=
 operator|new
-name|CommitHookDelegate
+name|CommitEditorDelegate
 argument_list|()
 decl_stmt|;
 specifier|private
@@ -318,7 +318,7 @@ annotation|@
 name|Override
 specifier|protected
 name|CommitEditor
-name|createCommitHook
+name|createCommitEditor
 parameter_list|()
 block|{
 return|return
@@ -974,7 +974,7 @@ operator|.
 name|getNodeState
 argument_list|()
 decl_stmt|;
-name|commitWithHook
+name|commitWithEditor
 argument_list|(
 name|newRoot
 argument_list|,
@@ -1117,7 +1117,7 @@ operator|.
 name|getNodeState
 argument_list|()
 decl_stmt|;
-name|commitWithHook
+name|commitWithEditor
 argument_list|(
 name|newRoot
 argument_list|,
@@ -1129,7 +1129,7 @@ annotation|@
 name|Override
 specifier|public
 name|NodeState
-name|beforeCommit
+name|editCommit
 parameter_list|(
 name|NodeStore
 name|store
@@ -1280,13 +1280,13 @@ block|}
 comment|//------------------------------------------------------------< private>---
 specifier|private
 name|void
-name|commitWithHook
+name|commitWithEditor
 parameter_list|(
 name|NodeState
 name|nodeState
 parameter_list|,
 name|CommitEditor
-name|commitHook
+name|editor
 parameter_list|)
 throws|throws
 name|CommitFailedException
@@ -1295,7 +1295,7 @@ name|commitHookDelegate
 operator|.
 name|set
 argument_list|(
-name|commitHook
+name|editor
 argument_list|)
 expr_stmt|;
 try|try
@@ -1337,7 +1337,7 @@ block|}
 specifier|private
 specifier|static
 class|class
-name|CommitHookDelegate
+name|CommitEditorDelegate
 implements|implements
 name|CommitEditor
 block|{
@@ -1354,19 +1354,19 @@ name|void
 name|set
 parameter_list|(
 name|CommitEditor
-name|commitHook
+name|editor
 parameter_list|)
 block|{
 name|delegate
 operator|=
-name|commitHook
+name|editor
 expr_stmt|;
 block|}
 annotation|@
 name|Override
 specifier|public
 name|NodeState
-name|beforeCommit
+name|editCommit
 parameter_list|(
 name|NodeStore
 name|store
@@ -1383,7 +1383,7 @@ block|{
 return|return
 name|delegate
 operator|.
-name|beforeCommit
+name|editCommit
 argument_list|(
 name|store
 argument_list|,

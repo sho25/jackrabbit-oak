@@ -160,7 +160,7 @@ annotation|@
 name|Override
 specifier|public
 name|NodeState
-name|beforeCommit
+name|editCommit
 parameter_list|(
 name|NodeStore
 name|store

@@ -243,7 +243,7 @@ name|KernelNodeStore
 argument_list|(
 name|microKernel
 argument_list|,
-name|createCommitHook
+name|createCommitEditor
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -264,7 +264,7 @@ expr_stmt|;
 block|}
 specifier|protected
 name|CommitEditor
-name|createCommitHook
+name|createCommitEditor
 parameter_list|()
 block|{
 return|return
