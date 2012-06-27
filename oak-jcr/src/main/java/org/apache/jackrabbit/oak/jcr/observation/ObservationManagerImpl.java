@@ -270,14 +270,6 @@ name|stop
 argument_list|()
 expr_stmt|;
 block|}
-name|timer
-operator|.
-name|get
-argument_list|()
-operator|.
-name|cancel
-argument_list|()
-expr_stmt|;
 block|}
 annotation|@
 name|Override
