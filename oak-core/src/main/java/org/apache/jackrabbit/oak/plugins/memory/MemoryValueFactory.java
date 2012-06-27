@@ -382,7 +382,7 @@ name|type
 operator|==
 name|PropertyType
 operator|.
-name|DECIMAL
+name|BOOLEAN
 condition|)
 block|{
 return|return
@@ -393,7 +393,7 @@ argument_list|(
 name|value
 argument_list|)
 operator|.
-name|getDecimal
+name|getBoolean
 argument_list|()
 argument_list|)
 return|;
