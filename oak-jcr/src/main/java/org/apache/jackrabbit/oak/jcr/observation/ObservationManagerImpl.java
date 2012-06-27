@@ -426,11 +426,6 @@ name|filter
 argument_list|)
 expr_stmt|;
 block|}
-throw|throw
-operator|new
-name|UnsupportedRepositoryOperationException
-argument_list|()
-throw|;
 block|}
 annotation|@
 name|Override
