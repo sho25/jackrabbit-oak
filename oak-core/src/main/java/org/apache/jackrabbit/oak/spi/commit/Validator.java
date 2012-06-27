@@ -154,7 +154,7 @@ parameter_list|)
 throws|throws
 name|CommitFailedException
 function_decl|;
-comment|/**      * Validate a deleted node      * @param before the original node      * @return a {@code Validator} for the removed subtree or      * {@code null} if validation should not decent into the subtree      * @throws CommitFailedException  if validation fails.      */
+comment|/**      * Validate a deleted node      * @param name The name of the deleted node.      * @param before the original node      * @return a {@code Validator} for the removed subtree or      * {@code null} if validation should not decent into the subtree      * @throws CommitFailedException  if validation fails.      */
 annotation|@
 name|CheckForNull
 name|Validator
