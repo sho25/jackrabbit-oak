@@ -1262,6 +1262,9 @@ name|Event
 argument_list|>
 name|childNodeEvents
 init|=
+operator|!
+name|stopped
+operator|&&
 name|filter
 operator|.
 name|includeChildren
