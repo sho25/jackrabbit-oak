@@ -714,6 +714,8 @@ parameter_list|(
 specifier|final
 name|Iterator
 argument_list|<
+name|?
+extends|extends
 name|Iterator
 argument_list|<
 name|?

@@ -303,6 +303,7 @@ parameter_list|)
 throws|throws
 name|RepositoryException
 block|{
+comment|// TODO: support noLocal flag!?
 name|ChangeProcessor
 name|processor
 init|=
