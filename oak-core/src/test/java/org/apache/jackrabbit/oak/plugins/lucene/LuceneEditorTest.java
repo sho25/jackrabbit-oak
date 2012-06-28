@@ -204,8 +204,7 @@ specifier|public
 class|class
 name|LuceneEditorTest
 block|{
-annotation|@
-name|Test
+comment|// @Test
 specifier|public
 name|void
 name|testLucene
