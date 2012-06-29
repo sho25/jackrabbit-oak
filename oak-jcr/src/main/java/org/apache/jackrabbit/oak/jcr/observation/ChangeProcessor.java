@@ -814,7 +814,7 @@ operator|.
 name|get
 argument_list|()
 operator|.
-name|include
+name|includeChildren
 argument_list|(
 name|jcrPath
 argument_list|()
@@ -886,7 +886,7 @@ operator|.
 name|get
 argument_list|()
 operator|.
-name|include
+name|includeChildren
 argument_list|(
 name|jcrPath
 argument_list|()
@@ -1005,7 +1005,6 @@ expr_stmt|;
 block|}
 block|}
 block|}
-block|}
 specifier|private
 name|Event
 name|generatePropertyEvent
@@ -1101,6 +1100,16 @@ name|name
 argument_list|)
 decl_stmt|;
 name|String
+name|jcrParentPath
+init|=
+name|namePathMapper
+operator|.
+name|getJcrPath
+argument_list|(
+name|parentPath
+argument_list|)
+decl_stmt|;
+name|String
 name|jcrPath
 init|=
 name|namePathMapper
@@ -1123,6 +1132,10 @@ operator|.
 name|include
 argument_list|(
 name|eventType
+argument_list|,
+name|jcrParentPath
+argument_list|,
+name|associatedParentNode
 argument_list|)
 condition|)
 block|{
@@ -1195,6 +1208,10 @@ operator|.
 name|include
 argument_list|(
 name|propertyEventType
+argument_list|,
+name|jcrPath
+argument_list|,
+name|associatedParentNode
 argument_list|)
 condition|)
 block|{
@@ -1385,6 +1402,7 @@ block|}
 block|}
 argument_list|)
 return|;
+block|}
 block|}
 block|}
 end_class
