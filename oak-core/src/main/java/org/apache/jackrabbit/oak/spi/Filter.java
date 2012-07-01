@@ -19,6 +19,16 @@ end_package
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Collection
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -42,6 +52,13 @@ specifier|public
 interface|interface
 name|Filter
 block|{
+name|Collection
+argument_list|<
+name|PropertyRestriction
+argument_list|>
+name|getPropertyRestrictions
+parameter_list|()
+function_decl|;
 comment|/**      * Get the property restriction for the given property, if any.      *      * @param propertyName the property name      * @return the restriction, or null if there is no restriction for this property      */
 name|PropertyRestriction
 name|getPropertyRestriction

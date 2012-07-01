@@ -387,7 +387,7 @@ block|{
 name|NodeState
 name|child
 init|=
-name|root
+name|state
 operator|.
 name|getChildNode
 argument_list|(
