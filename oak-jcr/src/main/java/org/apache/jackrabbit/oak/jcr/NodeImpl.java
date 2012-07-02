@@ -2346,6 +2346,7 @@ operator|.
 name|getChildren
 argument_list|()
 decl_stmt|;
+specifier|final
 name|long
 name|size
 init|=
@@ -2362,10 +2363,23 @@ name|nodeIterator
 argument_list|(
 name|children
 argument_list|)
-argument_list|,
-name|size
 argument_list|)
+block|{
+annotation|@
+name|Override
+specifier|public
+name|long
+name|getSize
+parameter_list|()
+block|{
+return|return
+name|size
 return|;
+block|}
+block|}
+return|;
+comment|// TODO: Restore the following when we're back on 2.6-SNAPSHOT
+comment|// return new NodeIteratorAdapter(nodeIterator(children), size);
 block|}
 annotation|@
 name|Override
@@ -2645,6 +2659,7 @@ operator|.
 name|getProperties
 argument_list|()
 decl_stmt|;
+specifier|final
 name|long
 name|size
 init|=
@@ -2661,10 +2676,23 @@ name|propertyIterator
 argument_list|(
 name|properties
 argument_list|)
-argument_list|,
-name|size
 argument_list|)
+block|{
+annotation|@
+name|Override
+specifier|public
+name|long
+name|getSize
+parameter_list|()
+block|{
+return|return
+name|size
 return|;
+block|}
+block|}
+return|;
+comment|// TODO: Restore the following when we're back on 2.6-SNAPSHOT
+comment|// return new PropertyIteratorAdapter(propertyIterator(properties), size);
 block|}
 annotation|@
 name|Override
