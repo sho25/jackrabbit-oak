@@ -434,10 +434,11 @@ throws|throws
 name|InvalidItemStateException
 block|{
 return|return
-name|getParentTree
+name|getTree
 argument_list|()
-operator|==
-literal|null
+operator|.
+name|isRoot
+argument_list|()
 return|;
 block|}
 comment|/**      * Get the number of properties of the node      * @return  number of properties of the node      */

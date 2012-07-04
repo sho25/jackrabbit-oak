@@ -19,6 +19,16 @@ end_package
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|annotation
@@ -34,16 +44,6 @@ operator|.
 name|annotation
 operator|.
 name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|List
 import|;
 end_import
 
@@ -77,6 +77,11 @@ annotation|@
 name|Nonnull
 name|String
 name|getName
+parameter_list|()
+function_decl|;
+comment|/**      * @return {@code true} iff this is the root      */
+name|boolean
+name|isRoot
 parameter_list|()
 function_decl|;
 comment|/**      * @return  path of this {@code Tree} instance relative to its {@link Root}.      */
