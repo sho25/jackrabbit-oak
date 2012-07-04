@@ -960,10 +960,13 @@ argument_list|(
 name|parentPath
 argument_list|)
 operator|.
-name|removeChild
+name|getChild
 argument_list|(
 name|name
 argument_list|)
+operator|.
+name|remove
+argument_list|()
 expr_stmt|;
 block|}
 annotation|@

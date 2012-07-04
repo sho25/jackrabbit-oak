@@ -179,12 +179,11 @@ operator|!=
 literal|null
 assert|;
 assert|assert
+operator|!
 name|name
 operator|.
-name|length
+name|isEmpty
 argument_list|()
-operator|>
-literal|0
 operator|||
 name|parent
 operator|==
@@ -264,7 +263,7 @@ operator|.
 name|getPath
 argument_list|()
 operator|+
-literal|"/"
+literal|'/'
 operator|+
 name|name
 return|;
@@ -638,11 +637,8 @@ annotation|@
 name|Override
 specifier|public
 name|boolean
-name|removeChild
-parameter_list|(
-name|String
-name|name
-parameter_list|)
+name|remove
+parameter_list|()
 block|{
 throw|throw
 operator|new

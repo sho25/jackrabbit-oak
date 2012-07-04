@@ -196,13 +196,10 @@ name|String
 name|name
 parameter_list|)
 function_decl|;
-comment|/**      * Remove a child with the given {@code name}. Does nothing if no such child exists.      * @param name  name of the child to remove      * @return  {@code false} iff no such child exists.      */
+comment|/**      * Remove this sub tree if not root.      * @return  {@code false} iff this is the root.      */
 name|boolean
-name|removeChild
-parameter_list|(
-name|String
-name|name
-parameter_list|)
+name|remove
+parameter_list|()
 function_decl|;
 comment|/**      * Set a single valued property state      *      * @param name The name of this property      * @param value The value of this property      * @return the affected property state      */
 annotation|@
