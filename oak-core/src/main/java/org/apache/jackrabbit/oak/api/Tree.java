@@ -153,15 +153,12 @@ name|String
 name|name
 parameter_list|)
 function_decl|;
-comment|/**      * Get the {@code Status} of a child tree      * @param name  name of the child      * @return  the status of the child with the given {@code name} or {@code null} in      *          no such child exists.      */
+comment|/**      * Get the {@code Status} of this tree      * @return  the status of this tree      */
 annotation|@
-name|CheckForNull
+name|Nonnull
 name|Status
-name|getChildStatus
-parameter_list|(
-name|String
-name|name
-parameter_list|)
+name|getStatus
+parameter_list|()
 function_decl|;
 comment|/**      * Determine if a child of this {@code Tree} instance exists.      * @param name  name of the child      * @return  {@code true} if and only if a child with the given {@code name}      *          exists.      */
 name|boolean

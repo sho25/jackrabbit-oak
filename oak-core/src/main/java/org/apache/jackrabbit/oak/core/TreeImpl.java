@@ -865,11 +865,8 @@ annotation|@
 name|Override
 specifier|public
 name|Status
-name|getChildStatus
-parameter_list|(
-name|String
-name|name
-parameter_list|)
+name|getStatus
+parameter_list|()
 block|{
 name|NodeState
 name|baseState
@@ -884,16 +881,7 @@ operator|==
 literal|null
 condition|)
 block|{
-comment|// This instance is NEW...
-if|if
-condition|(
-name|hasChild
-argument_list|(
-name|name
-argument_list|)
-condition|)
-block|{
-comment|// ...so all children are new
+comment|// Did not exist before, so its NEW
 return|return
 name|Status
 operator|.
@@ -902,63 +890,15 @@ return|;
 block|}
 else|else
 block|{
-comment|// ...unless they don't exist.
-return|return
-literal|null
-return|;
-block|}
-block|}
-else|else
-block|{
-if|if
-condition|(
-name|hasChild
-argument_list|(
-name|name
-argument_list|)
-condition|)
-block|{
-comment|// We have the child...
-if|if
-condition|(
-name|baseState
-operator|.
-name|getChildNode
-argument_list|(
-name|name
-argument_list|)
-operator|==
-literal|null
-condition|)
-block|{
-comment|// ...but didn't have it before. So its NEW.
-return|return
-name|Status
-operator|.
-name|NEW
-return|;
-block|}
-else|else
-block|{
-comment|// ... and did have it before. So...
+comment|// Did exit it before. So...
 if|if
 condition|(
 name|isSame
 argument_list|(
 name|baseState
-operator|.
-name|getChildNode
-argument_list|(
-name|name
-argument_list|)
 argument_list|,
 name|getNodeState
 argument_list|()
-operator|.
-name|getChildNode
-argument_list|(
-name|name
-argument_list|)
 argument_list|)
 condition|)
 block|{
@@ -977,38 +917,6 @@ name|Status
 operator|.
 name|MODIFIED
 return|;
-block|}
-block|}
-block|}
-else|else
-block|{
-comment|// We don't have the child
-if|if
-condition|(
-name|baseState
-operator|.
-name|getChildNode
-argument_list|(
-name|name
-argument_list|)
-operator|==
-literal|null
-condition|)
-block|{
-comment|// ...and didn't have it before. So it doesn't exist.
-return|return
-literal|null
-return|;
-block|}
-else|else
-block|{
-comment|// ...and didn't have it before. So it's REMOVED
-return|return
-name|Status
-operator|.
-name|REMOVED
-return|;
-block|}
 block|}
 block|}
 block|}
