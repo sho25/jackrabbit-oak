@@ -185,7 +185,6 @@ operator|==
 literal|null
 condition|)
 block|{
-comment|// TODO
 return|return
 literal|null
 return|;
