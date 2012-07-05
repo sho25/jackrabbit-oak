@@ -139,7 +139,9 @@ name|mk
 operator|.
 name|model
 operator|.
-name|ChildNodeEntry
+name|tree
+operator|.
+name|ChildNode
 import|;
 end_import
 
@@ -205,6 +207,8 @@ name|mk
 operator|.
 name|model
 operator|.
+name|tree
+operator|.
 name|DiffBuilder
 import|;
 end_import
@@ -236,6 +240,8 @@ operator|.
 name|mk
 operator|.
 name|model
+operator|.
+name|tree
 operator|.
 name|NodeState
 import|;
@@ -3639,7 +3645,7 @@ literal|0
 decl_stmt|;
 for|for
 control|(
-name|ChildNodeEntry
+name|ChildNode
 name|entry
 range|:
 name|node

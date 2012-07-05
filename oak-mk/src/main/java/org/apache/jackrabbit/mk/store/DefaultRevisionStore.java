@@ -191,7 +191,7 @@ name|mk
 operator|.
 name|model
 operator|.
-name|ChildNode
+name|ChildNodeEntry
 import|;
 end_import
 
@@ -303,6 +303,8 @@ name|mk
 operator|.
 name|model
 operator|.
+name|tree
+operator|.
 name|NodeState
 import|;
 end_import
@@ -318,6 +320,8 @@ operator|.
 name|mk
 operator|.
 name|model
+operator|.
+name|tree
 operator|.
 name|NodeStateDiff
 import|;
@@ -2121,7 +2125,7 @@ specifier|public
 name|void
 name|childNodeAdded
 parameter_list|(
-name|ChildNode
+name|ChildNodeEntry
 name|added
 parameter_list|)
 block|{
@@ -2154,7 +2158,7 @@ specifier|public
 name|void
 name|childNodeDeleted
 parameter_list|(
-name|ChildNode
+name|ChildNodeEntry
 name|deleted
 parameter_list|)
 block|{
@@ -2187,7 +2191,7 @@ specifier|public
 name|void
 name|childNodeChanged
 parameter_list|(
-name|ChildNode
+name|ChildNodeEntry
 name|changed
 parameter_list|,
 name|Id
@@ -2794,7 +2798,7 @@ return|return;
 block|}
 name|Iterator
 argument_list|<
-name|ChildNode
+name|ChildNodeEntry
 argument_list|>
 name|iter
 init|=
@@ -2816,7 +2820,7 @@ name|hasNext
 argument_list|()
 condition|)
 block|{
-name|ChildNode
+name|ChildNodeEntry
 name|c
 init|=
 name|iter

@@ -49,7 +49,9 @@ name|mk
 operator|.
 name|model
 operator|.
-name|ChildNodeEntry
+name|tree
+operator|.
+name|ChildNode
 import|;
 end_import
 
@@ -81,6 +83,8 @@ name|mk
 operator|.
 name|model
 operator|.
+name|tree
+operator|.
 name|NodeState
 import|;
 end_import
@@ -96,6 +100,8 @@ operator|.
 name|mk
 operator|.
 name|model
+operator|.
+name|tree
 operator|.
 name|NodeStateDiff
 import|;
@@ -443,7 +449,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/**      * Compares the child nodes of the given two node states.      *      * @param before node state before changes      * @param after node state after changes      * @param diff handler of node state differences      */
+comment|/**      * Compares the child nodes of the given two node states.      *<p/>      *<b>Disclaimer:</b> very inefficient implementation for large sets of child node entries      *      * @param before node state before changes      * @param after node state after changes      * @param diff handler of node state differences      */
 specifier|protected
 name|void
 name|compareChildNodes
@@ -473,7 +479,7 @@ argument_list|()
 decl_stmt|;
 for|for
 control|(
-name|ChildNodeEntry
+name|ChildNode
 name|beforeCNE
 range|:
 name|before
@@ -566,7 +572,7 @@ block|}
 block|}
 for|for
 control|(
-name|ChildNodeEntry
+name|ChildNode
 name|afterChild
 range|:
 name|after

@@ -14,6 +14,8 @@ operator|.
 name|mk
 operator|.
 name|model
+operator|.
+name|tree
 package|;
 end_package
 
@@ -54,6 +56,38 @@ operator|.
 name|util
 operator|.
 name|Map
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|mk
+operator|.
+name|model
+operator|.
+name|Id
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|mk
+operator|.
+name|model
+operator|.
+name|PropertyState
 import|;
 end_import
 

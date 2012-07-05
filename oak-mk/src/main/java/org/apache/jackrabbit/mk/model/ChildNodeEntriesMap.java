@@ -131,7 +131,7 @@ specifier|static
 specifier|final
 name|List
 argument_list|<
-name|ChildNode
+name|ChildNodeEntry
 argument_list|>
 name|EMPTY
 init|=
@@ -145,7 +145,7 @@ name|HashMap
 argument_list|<
 name|String
 argument_list|,
-name|ChildNode
+name|ChildNodeEntry
 argument_list|>
 name|entries
 init|=
@@ -154,7 +154,7 @@ name|HashMap
 argument_list|<
 name|String
 argument_list|,
-name|ChildNode
+name|ChildNodeEntry
 argument_list|>
 argument_list|()
 decl_stmt|;
@@ -174,7 +174,7 @@ name|HashMap
 argument_list|<
 name|String
 argument_list|,
-name|ChildNode
+name|ChildNodeEntry
 argument_list|>
 operator|)
 name|other
@@ -265,7 +265,7 @@ name|HashMap
 argument_list|<
 name|String
 argument_list|,
-name|ChildNode
+name|ChildNodeEntry
 argument_list|>
 operator|)
 name|entries
@@ -306,7 +306,7 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|ChildNode
+name|ChildNodeEntry
 name|get
 parameter_list|(
 name|String
@@ -468,7 +468,7 @@ name|Override
 specifier|public
 name|Iterator
 argument_list|<
-name|ChildNode
+name|ChildNodeEntry
 argument_list|>
 name|getEntries
 parameter_list|(
@@ -575,7 +575,7 @@ return|return
 operator|new
 name|RangeIterator
 argument_list|<
-name|ChildNode
+name|ChildNodeEntry
 argument_list|>
 argument_list|(
 name|entries
@@ -597,10 +597,10 @@ comment|//------------------------------------------------------------< write op
 annotation|@
 name|Override
 specifier|public
-name|ChildNode
+name|ChildNodeEntry
 name|add
 parameter_list|(
-name|ChildNode
+name|ChildNodeEntry
 name|entry
 parameter_list|)
 block|{
@@ -621,7 +621,7 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|ChildNode
+name|ChildNodeEntry
 name|remove
 parameter_list|(
 name|String
@@ -640,7 +640,7 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|ChildNode
+name|ChildNodeEntry
 name|rename
 parameter_list|(
 name|String
@@ -689,7 +689,7 @@ name|HashMap
 argument_list|<
 name|String
 argument_list|,
-name|ChildNode
+name|ChildNodeEntry
 argument_list|>
 name|clone
 init|=
@@ -698,7 +698,7 @@ name|HashMap
 argument_list|<
 name|String
 argument_list|,
-name|ChildNode
+name|ChildNodeEntry
 argument_list|>
 operator|)
 name|entries
@@ -711,7 +711,7 @@ operator|.
 name|clear
 argument_list|()
 expr_stmt|;
-name|ChildNode
+name|ChildNodeEntry
 name|oldCNE
 init|=
 literal|null
@@ -724,7 +724,7 @@ name|Entry
 argument_list|<
 name|String
 argument_list|,
-name|ChildNode
+name|ChildNodeEntry
 argument_list|>
 name|entry
 range|:
@@ -761,7 +761,7 @@ argument_list|(
 name|newName
 argument_list|,
 operator|new
-name|ChildNode
+name|ChildNodeEntry
 argument_list|(
 name|newName
 argument_list|,
@@ -802,7 +802,7 @@ name|Override
 specifier|public
 name|Iterator
 argument_list|<
-name|ChildNode
+name|ChildNodeEntry
 argument_list|>
 name|getAdded
 parameter_list|(
@@ -815,7 +815,7 @@ return|return
 operator|new
 name|AbstractFilteringIterator
 argument_list|<
-name|ChildNode
+name|ChildNodeEntry
 argument_list|>
 argument_list|(
 name|other
@@ -835,7 +835,7 @@ specifier|protected
 name|boolean
 name|include
 parameter_list|(
-name|ChildNode
+name|ChildNodeEntry
 name|entry
 parameter_list|)
 block|{
@@ -860,7 +860,7 @@ name|Override
 specifier|public
 name|Iterator
 argument_list|<
-name|ChildNode
+name|ChildNodeEntry
 argument_list|>
 name|getRemoved
 parameter_list|(
@@ -873,7 +873,7 @@ return|return
 operator|new
 name|AbstractFilteringIterator
 argument_list|<
-name|ChildNode
+name|ChildNodeEntry
 argument_list|>
 argument_list|(
 name|entries
@@ -891,7 +891,7 @@ specifier|protected
 name|boolean
 name|include
 parameter_list|(
-name|ChildNode
+name|ChildNodeEntry
 name|entry
 parameter_list|)
 block|{
@@ -917,7 +917,7 @@ name|Override
 specifier|public
 name|Iterator
 argument_list|<
-name|ChildNode
+name|ChildNodeEntry
 argument_list|>
 name|getModified
 parameter_list|(
@@ -930,7 +930,7 @@ return|return
 operator|new
 name|AbstractFilteringIterator
 argument_list|<
-name|ChildNode
+name|ChildNodeEntry
 argument_list|>
 argument_list|(
 name|getEntries
@@ -948,11 +948,11 @@ specifier|protected
 name|boolean
 name|include
 parameter_list|(
-name|ChildNode
+name|ChildNodeEntry
 name|entry
 parameter_list|)
 block|{
-name|ChildNode
+name|ChildNodeEntry
 name|namesake
 init|=
 name|other
@@ -1006,7 +1006,7 @@ block|{
 specifier|final
 name|Iterator
 argument_list|<
-name|ChildNode
+name|ChildNodeEntry
 argument_list|>
 name|iter
 init|=
@@ -1056,7 +1056,7 @@ name|BytesEntry
 name|next
 parameter_list|()
 block|{
-name|ChildNode
+name|ChildNodeEntry
 name|cne
 init|=
 name|iter
@@ -1155,7 +1155,7 @@ operator|.
 name|add
 argument_list|(
 operator|new
-name|ChildNode
+name|ChildNodeEntry
 argument_list|(
 name|entry
 operator|.

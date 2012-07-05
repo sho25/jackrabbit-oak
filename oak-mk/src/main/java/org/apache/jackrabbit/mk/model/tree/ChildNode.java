@@ -14,36 +14,29 @@ operator|.
 name|mk
 operator|.
 name|model
+operator|.
+name|tree
 package|;
 end_package
 
 begin_comment
-comment|/**  * Storage abstraction for content trees. At any given point in time  * the stored content tree is rooted at a single immutable node state.  *<p>  * This is a low-level interface that doesn't cover functionality like  * merging concurrent changes or rejecting new tree states based on some  * higher-level consistency constraints.  */
+comment|/**  * TODO: document  *  *<h2>Equality and hash codes</h2>  *<p>  * Two child node entries are considered equal if and only if their names  * and referenced node states match. The {@link Object#equals(Object)}  * method needs to be implemented so that it complies with this definition.  * And while child node entries are not meant for use as hash keys, the  * {@link Object#hashCode()} method should still be implemented according  * to this equality contract.  */
 end_comment
 
 begin_interface
 specifier|public
 interface|interface
-name|NodeStore
+name|ChildNode
 block|{
-comment|/**      * Returns the latest state of the content tree.      *      * @return root node state      */
-name|NodeState
-name|getRoot
+comment|/**      * TODO: document      */
+name|String
+name|getName
 parameter_list|()
 function_decl|;
-comment|/**      * Compares the given two node states. Any found differences are      * reported by calling the relevant added, changed or deleted methods      * of the given handler.      *      * @param before node state before changes      * @param after node state after changes      * @param diff handler of node state differences      */
-name|void
-name|compare
-parameter_list|(
+comment|/**      * TODO: document      */
 name|NodeState
-name|before
-parameter_list|,
-name|NodeState
-name|after
-parameter_list|,
-name|NodeStateDiff
-name|diff
-parameter_list|)
+name|getNode
+parameter_list|()
 function_decl|;
 block|}
 end_interface

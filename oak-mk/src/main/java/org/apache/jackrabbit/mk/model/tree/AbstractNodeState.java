@@ -14,8 +14,26 @@ operator|.
 name|mk
 operator|.
 name|model
+operator|.
+name|tree
 package|;
 end_package
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|mk
+operator|.
+name|model
+operator|.
+name|PropertyState
+import|;
+end_import
 
 begin_comment
 comment|/**  * Abstract base class for {@link NodeState} implementations.  * This base class contains default implementations of the  * {@link #equals(Object)} and {@link #hashCode()} methods based on  * the implemented interface.  *<p>  * This class also implements trivial (and potentially very slow) versions of  * the {@link #getProperty(String)} and {@link #getPropertyCount()} methods  * based on {@link #getProperties()}. The {@link #getChildNode(String)} and  * {@link #getChildNodeCount()} methods are similarly implemented based on  * {@link #getChildNodeEntries(long, int)}. Subclasses should normally  * override these method with a more efficient alternatives.  */
@@ -116,7 +134,7 @@ parameter_list|)
 block|{
 for|for
 control|(
-name|ChildNodeEntry
+name|ChildNode
 name|entry
 range|:
 name|getChildNodeEntries
@@ -172,7 +190,7 @@ literal|0
 decl_stmt|;
 for|for
 control|(
-name|ChildNodeEntry
+name|ChildNode
 name|entry
 range|:
 name|getChildNodeEntries
@@ -303,7 +321,7 @@ literal|0
 decl_stmt|;
 for|for
 control|(
-name|ChildNodeEntry
+name|ChildNode
 name|entry
 range|:
 name|getChildNodeEntries

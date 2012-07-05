@@ -97,6 +97,42 @@ name|jackrabbit
 operator|.
 name|mk
 operator|.
+name|model
+operator|.
+name|tree
+operator|.
+name|DiffBuilder
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|mk
+operator|.
+name|model
+operator|.
+name|tree
+operator|.
+name|NodeDelta
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|mk
+operator|.
 name|store
 operator|.
 name|NotFoundException
@@ -1389,7 +1425,7 @@ condition|)
 block|{
 comment|// not yet staged, resolve id using staged parent
 comment|// to allow for staged move operations
-name|ChildNode
+name|ChildNodeEntry
 name|cne
 init|=
 name|parent
@@ -1933,7 +1969,7 @@ operator|.
 name|add
 argument_list|(
 operator|new
-name|ChildNode
+name|ChildNodeEntry
 argument_list|(
 name|PathUtils
 operator|.
@@ -2179,7 +2215,7 @@ operator|.
 name|add
 argument_list|(
 operator|new
-name|ChildNode
+name|ChildNodeEntry
 argument_list|(
 name|entry
 operator|.
@@ -2220,7 +2256,7 @@ operator|.
 name|add
 argument_list|(
 operator|new
-name|ChildNode
+name|ChildNodeEntry
 argument_list|(
 name|entry
 operator|.
@@ -2927,7 +2963,7 @@ operator|.
 name|add
 argument_list|(
 operator|new
-name|ChildNode
+name|ChildNodeEntry
 argument_list|(
 name|name
 argument_list|,
@@ -3275,7 +3311,7 @@ block|}
 block|}
 else|else
 block|{
-name|ChildNode
+name|ChildNodeEntry
 name|srcCNE
 init|=
 name|srcParent
@@ -3335,7 +3371,7 @@ operator|.
 name|add
 argument_list|(
 operator|new
-name|ChildNode
+name|ChildNodeEntry
 argument_list|(
 name|destNodeName
 argument_list|,
@@ -3495,7 +3531,7 @@ argument_list|(
 name|srcParentPath
 argument_list|)
 decl_stmt|;
-name|ChildNode
+name|ChildNodeEntry
 name|srcCNE
 init|=
 name|srcParent
@@ -3555,7 +3591,7 @@ operator|.
 name|add
 argument_list|(
 operator|new
-name|ChildNode
+name|ChildNodeEntry
 argument_list|(
 name|destNodeName
 argument_list|,

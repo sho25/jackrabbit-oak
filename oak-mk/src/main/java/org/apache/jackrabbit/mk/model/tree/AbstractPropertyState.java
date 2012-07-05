@@ -14,22 +14,40 @@ operator|.
 name|mk
 operator|.
 name|model
+operator|.
+name|tree
 package|;
 end_package
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|mk
+operator|.
+name|model
+operator|.
+name|PropertyState
+import|;
+end_import
+
 begin_comment
-comment|/**  * Abstract base class for {@link ChildNodeEntry} implementations.  * This base class contains default implementations of the  * {@link #equals(Object)} and {@link #hashCode()} methods based on  * the implemented interface.  */
+comment|/**  * Abstract base class for {@link org.apache.jackrabbit.mk.model.PropertyState} implementations.  * This base class contains default implementations of the  * {@link #equals(Object)} and {@link #hashCode()} methods based on  * the implemented interface.  */
 end_comment
 
 begin_class
 specifier|public
 specifier|abstract
 class|class
-name|AbstractChildNodeEntry
+name|AbstractPropertyState
 implements|implements
-name|ChildNodeEntry
+name|PropertyState
 block|{
-comment|/**      * Checks whether the given object is equal to this one. Two child node      * entries are considered equal if both their names and referenced node      * states match. Subclasses may override this method with a more efficient      * equality check if one is available.      *      * @param that target of the comparison      * @return {@code true} if the objects are equal,      *         {@code false} otherwise      */
+comment|/**      * Checks whether the given object is equal to this one. Two property      * states are considered equal if both their names and encoded values      * match. Subclasses may override this method with a more efficient      * equality check if one is available.      *      * @param that target of the comparison      * @return {@code true} if the objects are equal, {@code false} otherwise      */
 annotation|@
 name|Override
 specifier|public
@@ -56,14 +74,14 @@ if|if
 condition|(
 name|that
 operator|instanceof
-name|ChildNodeEntry
+name|PropertyState
 condition|)
 block|{
-name|ChildNodeEntry
+name|PropertyState
 name|other
 init|=
 operator|(
-name|ChildNodeEntry
+name|PropertyState
 operator|)
 name|that
 decl_stmt|;
@@ -79,14 +97,14 @@ name|getName
 argument_list|()
 argument_list|)
 operator|&&
-name|getNode
+name|getEncodedValue
 argument_list|()
 operator|.
 name|equals
 argument_list|(
 name|other
 operator|.
-name|getNode
+name|getEncodedValue
 argument_list|()
 argument_list|)
 return|;
@@ -98,7 +116,7 @@ literal|false
 return|;
 block|}
 block|}
-comment|/**      * Returns a hash code that's compatible with how the      * {@link #equals(Object)} method is implemented. The current      * implementation simply returns the hash code of the child node name      * since {@link ChildNodeEntry} instances are not intended for use as      * hash keys.      *      * @return hash code      */
+comment|/**      * Returns a hash code that's compatible with how the      * {@link #equals(Object)} method is implemented. The current      * implementation simply returns the hash code of the property name      * since {@link PropertyState} instances are not intended for use as      * hash keys.      *      * @return hash code      */
 annotation|@
 name|Override
 specifier|public

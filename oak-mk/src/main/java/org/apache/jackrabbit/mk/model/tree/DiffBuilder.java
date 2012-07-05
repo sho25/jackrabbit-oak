@@ -14,6 +14,8 @@ operator|.
 name|mk
 operator|.
 name|model
+operator|.
+name|tree
 package|;
 end_package
 
@@ -30,6 +32,22 @@ operator|.
 name|json
 operator|.
 name|JsopBuilder
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|mk
+operator|.
+name|model
+operator|.
+name|PropertyState
 import|;
 end_import
 
@@ -1317,7 +1335,7 @@ expr_stmt|;
 block|}
 for|for
 control|(
-name|ChildNodeEntry
+name|ChildNode
 name|entry
 range|:
 name|node

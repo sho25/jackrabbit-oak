@@ -65,16 +65,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|HashSet
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|Iterator
 import|;
 end_import
@@ -86,16 +76,6 @@ operator|.
 name|util
 operator|.
 name|Map
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Set
 import|;
 end_import
 
@@ -286,7 +266,7 @@ for|for
 control|(
 name|Iterator
 argument_list|<
-name|ChildNode
+name|ChildNodeEntry
 argument_list|>
 name|it
 init|=
@@ -307,7 +287,7 @@ argument_list|()
 condition|;
 control|)
 block|{
-name|ChildNode
+name|ChildNodeEntry
 name|cne
 init|=
 name|it
@@ -342,7 +322,7 @@ name|properties
 return|;
 block|}
 specifier|public
-name|ChildNode
+name|ChildNodeEntry
 name|getChildNodeEntry
 parameter_list|(
 name|String
@@ -398,7 +378,7 @@ block|}
 specifier|public
 name|Iterator
 argument_list|<
-name|ChildNode
+name|ChildNodeEntry
 argument_list|>
 name|getChildNodeEntries
 parameter_list|(
@@ -623,7 +603,7 @@ for|for
 control|(
 name|Iterator
 argument_list|<
-name|ChildNode
+name|ChildNodeEntry
 argument_list|>
 name|it
 init|=
@@ -656,7 +636,7 @@ for|for
 control|(
 name|Iterator
 argument_list|<
-name|ChildNode
+name|ChildNodeEntry
 argument_list|>
 name|it
 init|=
@@ -689,7 +669,7 @@ for|for
 control|(
 name|Iterator
 argument_list|<
-name|ChildNode
+name|ChildNodeEntry
 argument_list|>
 name|it
 init|=
@@ -707,7 +687,7 @@ argument_list|()
 condition|;
 control|)
 block|{
-name|ChildNode
+name|ChildNodeEntry
 name|old
 init|=
 name|it
@@ -715,7 +695,7 @@ operator|.
 name|next
 argument_list|()
 decl_stmt|;
-name|ChildNode
+name|ChildNodeEntry
 name|modified
 init|=
 name|otherEntries
@@ -747,7 +727,7 @@ for|for
 control|(
 name|Iterator
 argument_list|<
-name|ChildNode
+name|ChildNodeEntry
 argument_list|>
 name|it
 init|=
@@ -766,7 +746,7 @@ argument_list|()
 condition|;
 control|)
 block|{
-name|ChildNode
+name|ChildNodeEntry
 name|child
 init|=
 name|it
@@ -774,7 +754,7 @@ operator|.
 name|next
 argument_list|()
 decl_stmt|;
-name|ChildNode
+name|ChildNodeEntry
 name|newChild
 init|=
 name|other
@@ -840,7 +820,7 @@ for|for
 control|(
 name|Iterator
 argument_list|<
-name|ChildNode
+name|ChildNodeEntry
 argument_list|>
 name|it
 init|=
@@ -861,7 +841,7 @@ argument_list|()
 condition|;
 control|)
 block|{
-name|ChildNode
+name|ChildNodeEntry
 name|child
 init|=
 name|it
