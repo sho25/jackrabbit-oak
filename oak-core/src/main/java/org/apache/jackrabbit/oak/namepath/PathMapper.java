@@ -38,7 +38,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * TODO  */
+comment|/**  * {@code PathMapper} instances provide methods for mapping paths from their JCR  * string representation to their Oak representation and vice versa.  */
 end_comment
 
 begin_interface
