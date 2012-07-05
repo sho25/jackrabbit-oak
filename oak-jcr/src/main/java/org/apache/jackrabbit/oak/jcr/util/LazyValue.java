@@ -45,6 +45,7 @@ parameter_list|()
 function_decl|;
 comment|/**      * Retrieve the value. The first call of this method results in a call      * to {@link #create()}. Subsequent calls return the same instance as the      * first call.      *      * @return the underlying value      */
 specifier|public
+specifier|synchronized
 name|T
 name|get
 parameter_list|()
