@@ -130,16 +130,19 @@ name|Tree
 block|{
 comment|/** Parent of this tree, {@code null} for the root */
 specifier|private
+specifier|final
 name|Tree
 name|parent
 decl_stmt|;
 comment|/** Name of this tree */
 specifier|private
+specifier|final
 name|String
 name|name
 decl_stmt|;
 comment|/** Underlying node state */
-specifier|protected
+specifier|private
+specifier|final
 name|NodeState
 name|state
 decl_stmt|;

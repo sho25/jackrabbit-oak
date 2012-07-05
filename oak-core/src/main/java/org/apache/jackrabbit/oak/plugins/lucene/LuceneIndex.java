@@ -638,6 +638,7 @@ return|;
 block|}
 block|}
 specifier|private
+specifier|static
 name|Query
 name|getQuery
 parameter_list|(
@@ -989,8 +990,6 @@ decl_stmt|;
 specifier|private
 name|String
 name|path
-init|=
-literal|null
 decl_stmt|;
 specifier|public
 name|PathCursor
@@ -1012,6 +1011,8 @@ name|iterator
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|next
@@ -1059,7 +1060,6 @@ name|path
 return|;
 block|}
 block|}
-empty_stmt|;
 block|}
 end_class
 
