@@ -19,24 +19,8 @@ name|tree
 package|;
 end_package
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|mk
-operator|.
-name|model
-operator|.
-name|PropertyState
-import|;
-end_import
-
 begin_comment
-comment|/**  * Abstract base class for {@link org.apache.jackrabbit.mk.model.PropertyState} implementations.  * This base class contains default implementations of the  * {@link #equals(Object)} and {@link #hashCode()} methods based on  * the implemented interface.  */
+comment|/**  * Abstract base class for {@link PropertyState} implementations.  * This base class contains default implementations of the  * {@link #equals(Object)} and {@link #hashCode()} methods based on  * the implemented interface.  */
 end_comment
 
 begin_class

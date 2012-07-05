@@ -19,26 +19,6 @@ end_package
 
 begin_import
 import|import
-name|java
-operator|.
-name|io
-operator|.
-name|Closeable
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|File
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -129,9 +109,7 @@ name|mk
 operator|.
 name|model
 operator|.
-name|tree
-operator|.
-name|NodeState
+name|StoredCommit
 import|;
 end_import
 
@@ -147,7 +125,9 @@ name|mk
 operator|.
 name|model
 operator|.
-name|StoredCommit
+name|tree
+operator|.
+name|NodeState
 import|;
 end_import
 
@@ -260,6 +240,26 @@ operator|.
 name|commons
 operator|.
 name|PathUtils
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|Closeable
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|File
 import|;
 end_import
 

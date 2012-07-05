@@ -35,22 +35,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|mk
-operator|.
-name|util
-operator|.
-name|IOUtils
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io

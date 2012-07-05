@@ -29,7 +29,7 @@ name|mk
 operator|.
 name|util
 operator|.
-name|IOUtils
+name|Cache
 import|;
 end_import
 
@@ -45,7 +45,7 @@ name|mk
 operator|.
 name|util
 operator|.
-name|Cache
+name|IOUtils
 import|;
 end_import
 
