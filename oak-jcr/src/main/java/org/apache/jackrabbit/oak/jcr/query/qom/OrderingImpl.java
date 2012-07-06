@@ -128,14 +128,11 @@ operator|+
 literal|" ASC"
 return|;
 block|}
-else|else
-block|{
 return|return
 name|operand
 operator|+
 literal|" DESC"
 return|;
-block|}
 block|}
 block|}
 end_class

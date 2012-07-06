@@ -107,7 +107,6 @@ name|String
 name|toString
 parameter_list|()
 block|{
-comment|// TODO quote nodeTypeName?
 return|return
 literal|"["
 operator|+

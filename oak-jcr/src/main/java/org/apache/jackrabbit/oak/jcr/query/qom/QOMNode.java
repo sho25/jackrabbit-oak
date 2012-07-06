@@ -62,12 +62,9 @@ operator|+
 literal|')'
 return|;
 block|}
-else|else
-block|{
 return|return
 name|str
 return|;
-block|}
 block|}
 specifier|protected
 name|String

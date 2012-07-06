@@ -226,6 +226,11 @@ argument_list|()
 expr_stmt|;
 block|}
 annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"deprecation"
+argument_list|)
+annotation|@
 name|Test
 specifier|public
 name|void
@@ -297,6 +302,7 @@ operator|.
 name|getQueryManager
 argument_list|()
 decl_stmt|;
+comment|// SQL-2
 name|Query
 name|q
 init|=
@@ -433,6 +439,44 @@ operator|.
 name|hasNext
 argument_list|()
 argument_list|)
+expr_stmt|;
+comment|// SQL
+name|q
+operator|=
+name|qm
+operator|.
+name|createQuery
+argument_list|(
+literal|"select text from [nt:base] where id = 1"
+argument_list|,
+name|Query
+operator|.
+name|SQL
+argument_list|)
+expr_stmt|;
+name|q
+operator|.
+name|execute
+argument_list|()
+expr_stmt|;
+comment|// XPath
+name|q
+operator|=
+name|qm
+operator|.
+name|createQuery
+argument_list|(
+literal|"//*[@id=1]"
+argument_list|,
+name|Query
+operator|.
+name|XPATH
+argument_list|)
+expr_stmt|;
+name|q
+operator|.
+name|execute
+argument_list|()
 expr_stmt|;
 block|}
 finally|finally

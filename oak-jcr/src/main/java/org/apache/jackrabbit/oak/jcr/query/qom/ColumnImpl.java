@@ -152,15 +152,12 @@ operator|+
 literal|"]"
 return|;
 block|}
-else|else
-block|{
 return|return
 name|getSelectorName
 argument_list|()
 operator|+
 literal|".*"
 return|;
-block|}
 block|}
 block|}
 end_class

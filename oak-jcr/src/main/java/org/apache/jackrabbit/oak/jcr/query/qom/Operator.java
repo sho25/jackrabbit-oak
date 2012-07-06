@@ -306,8 +306,6 @@ operator|+
 literal|')'
 return|;
 block|}
-else|else
-block|{
 return|return
 name|a
 operator|+
@@ -319,7 +317,6 @@ literal|' '
 operator|+
 name|b
 return|;
-block|}
 block|}
 comment|/**      * Formats an SQL constraint with this operator and the given operands.      * The operands are simply used as-is, without any quoting or escaping.      *      * @param a first operand      * @param b second operand      * @return SQL constraint, {@code a op b}      */
 specifier|public
