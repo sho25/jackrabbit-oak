@@ -1640,6 +1640,7 @@ expr_stmt|;
 block|}
 block|}
 specifier|private
+specifier|static
 name|boolean
 name|isSame
 parameter_list|(
@@ -1659,13 +1660,11 @@ block|{
 literal|false
 block|}
 decl_stmt|;
-name|root
+name|state2
 operator|.
-name|compare
+name|compareAgainstBaseState
 argument_list|(
 name|state1
-argument_list|,
-name|state2
 argument_list|,
 operator|new
 name|NodeStateDiff

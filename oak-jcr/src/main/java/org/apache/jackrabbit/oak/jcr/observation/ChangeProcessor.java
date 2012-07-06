@@ -976,13 +976,11 @@ argument_list|,
 name|after
 argument_list|)
 decl_stmt|;
-name|changeExtractor
+name|after
 operator|.
-name|getChanges
+name|compareAgainstBaseState
 argument_list|(
 name|before
-argument_list|,
-name|after
 argument_list|,
 name|diff
 argument_list|)
