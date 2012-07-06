@@ -192,8 +192,6 @@ name|validate
 argument_list|(
 name|validator
 argument_list|,
-name|store
-argument_list|,
 name|before
 argument_list|,
 name|after
@@ -216,11 +214,6 @@ specifier|final
 name|Validator
 name|validator
 decl_stmt|;
-specifier|private
-specifier|final
-name|NodeStore
-name|store
-decl_stmt|;
 comment|/**          * Checked exceptions don't compose. So we need to hack around.          * See http://markmail.org/message/ak67n5k7mr3vqylm and          * http://markmail.org/message/bhocbruikljpuhu6          */
 specifier|private
 name|CommitFailedException
@@ -235,9 +228,6 @@ parameter_list|(
 name|Validator
 name|validator
 parameter_list|,
-name|NodeStore
-name|store
-parameter_list|,
 name|NodeState
 name|before
 parameter_list|,
@@ -251,8 +241,6 @@ operator|new
 name|ValidatorDiff
 argument_list|(
 name|validator
-argument_list|,
-name|store
 argument_list|)
 operator|.
 name|validate
@@ -268,9 +256,6 @@ name|ValidatorDiff
 parameter_list|(
 name|Validator
 name|validator
-parameter_list|,
-name|NodeStore
-name|store
 parameter_list|)
 block|{
 name|this
@@ -278,12 +263,6 @@ operator|.
 name|validator
 operator|=
 name|validator
-expr_stmt|;
-name|this
-operator|.
-name|store
-operator|=
-name|store
 expr_stmt|;
 block|}
 specifier|private
@@ -299,13 +278,11 @@ parameter_list|)
 throws|throws
 name|CommitFailedException
 block|{
-name|store
+name|after
 operator|.
-name|compare
+name|compareAgainstBaseState
 argument_list|(
 name|before
-argument_list|,
-name|after
 argument_list|,
 name|this
 argument_list|)
@@ -493,8 +470,6 @@ name|validate
 argument_list|(
 name|v
 argument_list|,
-name|store
-argument_list|,
 name|EMPTY_NODE
 argument_list|,
 name|after
@@ -565,8 +540,6 @@ name|validate
 argument_list|(
 name|v
 argument_list|,
-name|store
-argument_list|,
 name|before
 argument_list|,
 name|after
@@ -631,8 +604,6 @@ block|{
 name|validate
 argument_list|(
 name|v
-argument_list|,
-name|store
 argument_list|,
 name|before
 argument_list|,

@@ -848,13 +848,11 @@ name|StringBuilder
 name|jsop
 parameter_list|)
 block|{
-name|store
+name|after
 operator|.
-name|compare
+name|compareAgainstBaseState
 argument_list|(
 name|before
-argument_list|,
-name|after
 argument_list|,
 operator|new
 name|NodeStateDiff
