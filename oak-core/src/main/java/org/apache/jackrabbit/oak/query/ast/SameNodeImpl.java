@@ -169,7 +169,7 @@ name|toString
 parameter_list|()
 block|{
 return|return
-literal|"ISSAMENODE("
+literal|"issamenode("
 operator|+
 name|getSelectorName
 argument_list|()

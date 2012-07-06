@@ -178,7 +178,7 @@ name|builder
 operator|.
 name|append
 argument_list|(
-literal|"ISSAMENODE("
+literal|"issamenode("
 argument_list|)
 expr_stmt|;
 name|builder

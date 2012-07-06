@@ -173,7 +173,7 @@ name|getAncestorSelectorName
 argument_list|()
 decl_stmt|;
 return|return
-literal|"ISDESCENDANTNODE("
+literal|"isdescendantnode("
 operator|+
 name|descendant
 operator|+

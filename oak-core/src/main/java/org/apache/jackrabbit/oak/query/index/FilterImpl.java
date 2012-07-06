@@ -183,6 +183,10 @@ name|String
 name|valuePrefix
 decl_stmt|;
 specifier|private
+name|String
+name|fulltextCondition
+decl_stmt|;
+specifier|private
 specifier|final
 name|HashMap
 argument_list|<
@@ -1440,6 +1444,34 @@ break|break;
 block|}
 break|break;
 block|}
+block|}
+annotation|@
+name|Override
+specifier|public
+name|String
+name|getFulltextCondition
+parameter_list|()
+block|{
+return|return
+name|fulltextCondition
+return|;
+block|}
+specifier|public
+name|void
+name|restrictFulltextCondition
+parameter_list|(
+name|String
+name|fulltextCondition
+parameter_list|)
+block|{
+comment|// TODO support combining multiple conditions as in
+comment|// contains('x') and contains('y')
+name|this
+operator|.
+name|fulltextCondition
+operator|=
+name|fulltextCondition
+expr_stmt|;
 block|}
 block|}
 end_class

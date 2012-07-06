@@ -2986,6 +2986,10 @@ name|add
 parameter_list|)
 block|{
 comment|// check the depth first for speed
+comment|// TODO allow creating multiple indexes in one step
+comment|// (buffer indexes to be created; traverse the repository only once)
+comment|// TODO re-organize the index structure
+comment|// TODO allow filters (only index a certain path; exclude a list of paths)
 if|if
 condition|(
 name|PathUtils

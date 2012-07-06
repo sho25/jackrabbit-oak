@@ -30,12 +30,12 @@ name|Order
 block|{
 name|ASCENDING
 argument_list|(
-literal|"ASC"
+literal|"asc"
 argument_list|)
 block|,
 name|DESCENDING
 argument_list|(
-literal|"DESC"
+literal|"desc"
 argument_list|)
 block|;
 comment|/**      * The name of this order.      */

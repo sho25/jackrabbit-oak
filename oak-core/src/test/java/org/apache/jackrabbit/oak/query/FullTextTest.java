@@ -403,6 +403,7 @@ argument_list|)
 expr_stmt|;
 block|}
 specifier|private
+specifier|static
 name|void
 name|testInvalid
 parameter_list|(
@@ -476,6 +477,7 @@ expr_stmt|;
 block|}
 block|}
 specifier|private
+specifier|static
 name|boolean
 name|test
 parameter_list|(

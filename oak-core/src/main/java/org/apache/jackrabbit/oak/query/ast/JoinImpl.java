@@ -215,7 +215,7 @@ operator|.
 name|name
 argument_list|()
 operator|+
-literal|" JOIN "
+literal|" join "
 operator|+
 name|right
 operator|.
@@ -240,7 +240,7 @@ operator|.
 name|name
 argument_list|()
 operator|+
-literal|" JOIN "
+literal|" join "
 operator|+
 name|right
 return|;

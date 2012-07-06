@@ -173,7 +173,7 @@ name|getParentSelectorName
 argument_list|()
 decl_stmt|;
 return|return
-literal|"ISCHILDNODE("
+literal|"ischildnode("
 operator|+
 name|child
 operator|+

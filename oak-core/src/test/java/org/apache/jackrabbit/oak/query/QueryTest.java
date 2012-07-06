@@ -327,6 +327,10 @@ name|executeQuery
 argument_list|(
 literal|"select * from [nt:base] where id = $id"
 argument_list|,
+name|QueryEngineImpl
+operator|.
+name|SQL2
+argument_list|,
 name|sv
 argument_list|)
 operator|.
@@ -377,6 +381,10 @@ name|executeQuery
 argument_list|(
 literal|"select * from [nt:base] where id = $id"
 argument_list|,
+name|QueryEngineImpl
+operator|.
+name|SQL2
+argument_list|,
 name|sv
 argument_list|)
 operator|.
@@ -413,6 +421,10 @@ name|executeQuery
 argument_list|(
 literal|"explain select * from [nt:base] where id = 1 order by id"
 argument_list|,
+name|QueryEngineImpl
+operator|.
+name|SQL2
+argument_list|,
 literal|null
 argument_list|)
 operator|.
@@ -432,7 +444,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"nt:base AS nt:base /* traverse \"//*\" */"
+literal|"nt:base as nt:base /* traverse \"//*\" */"
 argument_list|,
 name|result
 operator|.
@@ -693,6 +705,13 @@ name|startsWith
 argument_list|(
 literal|"explain"
 argument_list|)
+operator|||
+name|line
+operator|.
+name|startsWith
+argument_list|(
+literal|"sql1"
+argument_list|)
 condition|)
 block|{
 name|w
@@ -702,6 +721,42 @@ argument_list|(
 name|line
 argument_list|)
 expr_stmt|;
+name|String
+name|language
+init|=
+name|QueryEngineImpl
+operator|.
+name|SQL2
+decl_stmt|;
+if|if
+condition|(
+name|line
+operator|.
+name|startsWith
+argument_list|(
+literal|"sql1"
+argument_list|)
+condition|)
+block|{
+name|language
+operator|=
+name|QueryEngineImpl
+operator|.
+name|SQL
+expr_stmt|;
+name|line
+operator|=
+name|line
+operator|.
+name|substring
+argument_list|(
+literal|"sql1 "
+operator|.
+name|length
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
 name|boolean
 name|readEnd
 init|=
@@ -715,6 +770,8 @@ range|:
 name|executeQuery
 argument_list|(
 name|line
+argument_list|,
+name|language
 argument_list|)
 control|)
 block|{
@@ -998,6 +1055,9 @@ name|executeQuery
 parameter_list|(
 name|String
 name|query
+parameter_list|,
+name|String
+name|language
 parameter_list|)
 block|{
 name|List
@@ -1021,6 +1081,8 @@ init|=
 name|executeQuery
 argument_list|(
 name|query
+argument_list|,
+name|language
 argument_list|,
 literal|null
 argument_list|)
@@ -1106,6 +1168,7 @@ name|lines
 return|;
 block|}
 specifier|private
+specifier|static
 name|String
 name|readRow
 parameter_list|(
@@ -1200,6 +1263,9 @@ parameter_list|(
 name|String
 name|statement
 parameter_list|,
+name|String
+name|language
+parameter_list|,
 name|HashMap
 argument_list|<
 name|String
@@ -1218,9 +1284,7 @@ name|executeQuery
 argument_list|(
 name|statement
 argument_list|,
-name|QueryEngineImpl
-operator|.
-name|SQL2
+name|language
 argument_list|,
 name|session
 argument_list|,

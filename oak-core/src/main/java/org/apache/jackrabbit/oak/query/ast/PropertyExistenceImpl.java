@@ -45,6 +45,22 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
+name|api
+operator|.
+name|PropertyState
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
 name|query
 operator|.
 name|index
@@ -122,8 +138,8 @@ name|boolean
 name|evaluate
 parameter_list|()
 block|{
-name|CoreValue
-name|v
+name|PropertyState
+name|p
 init|=
 name|selector
 operator|.
@@ -133,7 +149,7 @@ name|propertyName
 argument_list|)
 decl_stmt|;
 return|return
-name|v
+name|p
 operator|!=
 literal|null
 return|;
@@ -172,7 +188,7 @@ literal|'.'
 operator|+
 name|propertyName
 operator|+
-literal|" IS NOT NULL"
+literal|" is not null"
 return|;
 block|}
 specifier|public

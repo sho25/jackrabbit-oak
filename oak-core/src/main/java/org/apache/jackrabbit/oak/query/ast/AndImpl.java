@@ -142,7 +142,7 @@ argument_list|(
 name|constraint1
 argument_list|)
 operator|+
-literal|" AND "
+literal|" and "
 operator|+
 name|protect
 argument_list|(

@@ -191,7 +191,7 @@ name|toString
 parameter_list|()
 block|{
 return|return
-literal|"ISDESCENDANTNODE("
+literal|"isdescendantnode("
 operator|+
 name|getSelectorName
 argument_list|()

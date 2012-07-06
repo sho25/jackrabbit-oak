@@ -145,7 +145,7 @@ argument_list|(
 name|constraint1
 argument_list|)
 operator|+
-literal|" OR "
+literal|" or "
 operator|+
 name|protect
 argument_list|(

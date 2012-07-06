@@ -59,6 +59,11 @@ argument_list|>
 name|getPropertyRestrictions
 parameter_list|()
 function_decl|;
+comment|/**      * Get the fulltext search condition.      *      * @return the condition, or null if not used      */
+name|String
+name|getFulltextCondition
+parameter_list|()
+function_decl|;
 comment|/**      * Get the property restriction for the given property, if any.      *      * @param propertyName the property name      * @return the restriction, or null if there is no restriction for this property      */
 name|PropertyRestriction
 name|getPropertyRestriction

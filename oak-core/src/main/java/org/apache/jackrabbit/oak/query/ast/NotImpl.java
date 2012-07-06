@@ -113,7 +113,7 @@ name|toString
 parameter_list|()
 block|{
 return|return
-literal|"NOT "
+literal|"not "
 operator|+
 name|protect
 argument_list|(

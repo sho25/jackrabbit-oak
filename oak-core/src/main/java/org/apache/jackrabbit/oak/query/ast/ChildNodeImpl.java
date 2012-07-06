@@ -157,7 +157,7 @@ name|toString
 parameter_list|()
 block|{
 return|return
-literal|"ISCHILDNODE("
+literal|"ischildnode("
 operator|+
 name|selectorName
 operator|+

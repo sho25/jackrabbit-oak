@@ -93,6 +93,22 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
+name|kernel
+operator|.
+name|PropertyStateImpl
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
 name|query
 operator|.
 name|Query
@@ -157,7 +173,7 @@ extends|extends
 name|SourceImpl
 block|{
 comment|// TODO jcr:path isn't an official feature, support it?
-specifier|private
+specifier|public
 specifier|static
 specifier|final
 name|String
@@ -266,7 +282,7 @@ comment|// TODO quote nodeTypeName?
 return|return
 name|nodeTypeName
 operator|+
-literal|" AS "
+literal|" as "
 operator|+
 name|getSelectorName
 argument_list|()
@@ -326,7 +342,7 @@ block|{
 return|return
 name|nodeTypeName
 operator|+
-literal|" AS "
+literal|" as "
 operator|+
 name|getSelectorName
 argument_list|()
@@ -544,7 +560,7 @@ argument_list|()
 return|;
 block|}
 specifier|public
-name|CoreValue
+name|PropertyState
 name|currentProperty
 parameter_list|(
 name|String
@@ -598,7 +614,9 @@ return|return
 literal|null
 return|;
 block|}
-return|return
+name|CoreValue
+name|v
+init|=
 name|query
 operator|.
 name|getValueFactory
@@ -607,6 +625,15 @@ operator|.
 name|createValue
 argument_list|(
 name|local
+argument_list|)
+decl_stmt|;
+return|return
+operator|new
+name|PropertyStateImpl
+argument_list|(
+name|PATH
+argument_list|,
+name|v
 argument_list|)
 return|;
 block|}
@@ -627,9 +654,7 @@ return|return
 literal|null
 return|;
 block|}
-name|PropertyState
-name|p
-init|=
+return|return
 name|getTree
 argument_list|(
 name|path
@@ -639,23 +664,6 @@ name|getProperty
 argument_list|(
 name|propertyName
 argument_list|)
-decl_stmt|;
-if|if
-condition|(
-name|p
-operator|==
-literal|null
-condition|)
-block|{
-return|return
-literal|null
-return|;
-block|}
-return|return
-name|p
-operator|.
-name|getValue
-argument_list|()
 return|;
 block|}
 annotation|@

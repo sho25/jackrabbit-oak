@@ -45,6 +45,22 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
+name|api
+operator|.
+name|PropertyState
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
 name|query
 operator|.
 name|index
@@ -118,7 +134,7 @@ name|toString
 parameter_list|()
 block|{
 return|return
-literal|"SCORE("
+literal|"score("
 operator|+
 name|getSelectorName
 argument_list|()
@@ -129,8 +145,8 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|CoreValue
-name|currentValue
+name|PropertyState
+name|currentProperty
 parameter_list|()
 block|{
 comment|// TODO support evaluating fulltext conditions (score)

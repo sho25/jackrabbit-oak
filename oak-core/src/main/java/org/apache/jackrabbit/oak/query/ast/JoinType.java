@@ -30,17 +30,17 @@ name|JoinType
 block|{
 name|INNER
 argument_list|(
-literal|"INNER JOIN"
+literal|"inner join"
 argument_list|)
 block|,
 name|LEFT_OUTER
 argument_list|(
-literal|"LEFT OUTER JOIN"
+literal|"left outer join"
 argument_list|)
 block|,
 name|RIGHT_OUTER
 argument_list|(
-literal|"RIGHT OUTER JOIN"
+literal|"right outer join"
 argument_list|)
 block|;
 comment|/**      * The name of this join type.      */

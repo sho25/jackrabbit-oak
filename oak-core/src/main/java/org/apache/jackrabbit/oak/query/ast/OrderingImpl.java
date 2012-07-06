@@ -105,29 +105,16 @@ name|String
 name|toString
 parameter_list|()
 block|{
-if|if
-condition|(
+return|return
+name|operand
+operator|+
+literal|" "
+operator|+
 name|order
-operator|==
-name|Order
 operator|.
-name|ASCENDING
-condition|)
-block|{
-return|return
-name|operand
-operator|+
-literal|" ASC"
+name|name
+argument_list|()
 return|;
-block|}
-else|else
-block|{
-return|return
-name|operand
-operator|+
-literal|" DESC"
-return|;
-block|}
 block|}
 specifier|public
 name|boolean

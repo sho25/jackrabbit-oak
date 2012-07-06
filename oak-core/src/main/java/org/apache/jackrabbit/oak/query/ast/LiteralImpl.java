@@ -138,12 +138,12 @@ name|toUpperCase
 argument_list|()
 decl_stmt|;
 return|return
-literal|"CAST("
+literal|"cast("
 operator|+
 name|escape
 argument_list|()
 operator|+
-literal|" AS "
+literal|" as "
 operator|+
 name|type
 operator|+
