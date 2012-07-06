@@ -4130,9 +4130,7 @@ return|return
 name|nodeFilter
 operator|==
 literal|null
-condition|?
-literal|true
-else|:
+operator|||
 name|nodeFilter
 operator|.
 name|matches
@@ -4152,9 +4150,7 @@ return|return
 name|propFilter
 operator|==
 literal|null
-condition|?
-literal|true
-else|:
+operator|||
 name|propFilter
 operator|.
 name|matches

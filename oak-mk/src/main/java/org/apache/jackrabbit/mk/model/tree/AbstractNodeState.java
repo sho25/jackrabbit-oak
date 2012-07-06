@@ -347,22 +347,13 @@ name|childNodeCount
 operator|++
 expr_stmt|;
 block|}
-if|if
-condition|(
+return|return
 name|childNodeCount
-operator|!=
+operator|==
 name|other
 operator|.
 name|getChildNodeCount
 argument_list|()
-condition|)
-block|{
-return|return
-literal|false
-return|;
-block|}
-return|return
-literal|true
 return|;
 block|}
 comment|/**      * Returns a hash code that's compatible with how the      * {@link #equals(Object)} method is implemented. The current      * implementation simply returns zero for everything since      * {@link NodeState} instances are not intended for use as hash keys.      *      * @return hash code      */
