@@ -452,7 +452,7 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-comment|/**      * Number of {@link #setCurrentRootState} calls for which changes      * are kept in memory.      */
+comment|/**      * Number of {@link #purge()} calls for which changes are kept in memory.      */
 specifier|private
 specifier|static
 specifier|final
@@ -477,12 +477,7 @@ specifier|private
 name|TreeImpl
 name|root
 decl_stmt|;
-comment|/** Current root node state if changed */
-specifier|private
-name|NodeState
-name|currentRootState
-decl_stmt|;
-comment|/**      * Number of {@link #setCurrentRootState} occurred so since the lase      * purge.      */
+comment|/**      * Number of {@link #purge()} occurred so since the lase      * purge.      */
 specifier|private
 name|int
 name|modCount
@@ -589,9 +584,6 @@ name|String
 name|destPath
 parameter_list|)
 block|{
-name|purgePendingChanges
-argument_list|()
-expr_stmt|;
 name|TreeImpl
 name|source
 init|=
@@ -643,6 +635,21 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+name|destParent
+operator|.
+name|hasChild
+argument_list|(
+name|destName
+argument_list|)
+condition|)
+block|{
+return|return
+literal|false
+return|;
+block|}
+name|purgePendingChanges
+argument_list|()
+expr_stmt|;
 name|source
 operator|.
 name|moveTo
@@ -651,11 +658,6 @@ name|destParent
 argument_list|,
 name|destName
 argument_list|)
-condition|)
-block|{
-name|currentRootState
-operator|=
-literal|null
 expr_stmt|;
 return|return
 name|branch
@@ -667,17 +669,6 @@ argument_list|,
 name|destPath
 argument_list|)
 return|;
-block|}
-else|else
-block|{
-name|currentRootState
-operator|=
-literal|null
-expr_stmt|;
-return|return
-literal|false
-return|;
-block|}
 block|}
 annotation|@
 name|Override
@@ -770,10 +761,6 @@ name|void
 name|refresh
 parameter_list|()
 block|{
-name|currentRootState
-operator|=
-literal|null
-expr_stmt|;
 comment|// There is a small race here and we risk to get an "earlier" revision for the
 comment|// observation limit than for the branch. This is not a problem though since
 comment|// observation will catch up later on with the next call to ChangeExtractor.getChanges()
@@ -935,23 +922,11 @@ name|NodeState
 name|getCurrentRootState
 parameter_list|()
 block|{
-if|if
-condition|(
-name|currentRootState
-operator|==
-literal|null
-condition|)
-block|{
-name|currentRootState
-operator|=
-name|branch
-operator|.
-name|getRoot
-argument_list|()
-expr_stmt|;
-block|}
 return|return
-name|currentRootState
+name|root
+operator|.
+name|getNodeState
+argument_list|()
 return|;
 block|}
 comment|/**      * Returns the node state from which the current branch was created.      * @return base node state      */
@@ -989,71 +964,31 @@ name|nodeState
 argument_list|)
 return|;
 block|}
-comment|/**      * Set the current root node state      *      * @param nodeState  node state representing the modified root state      */
-specifier|public
-name|void
-name|setCurrentRootState
-parameter_list|(
-name|NodeState
-name|nodeState
-parameter_list|)
-block|{
-name|currentRootState
-operator|=
-name|nodeState
-expr_stmt|;
-name|modCount
-operator|++
-expr_stmt|;
-if|if
-condition|(
-name|needsPurging
-argument_list|()
-condition|)
-block|{
-name|purgePendingChanges
-argument_list|()
-expr_stmt|;
-block|}
-block|}
-comment|/**      * Purge all pending changes to the underlying {@link NodeStoreBranch}.      * All registered {@link PurgeListener}s are notified.      */
-specifier|public
-name|void
-name|purgePendingChanges
+comment|//------------------------------------------------------------< internal>---
+name|NodeStateBuilder
+name|createRootBuilder
 parameter_list|()
 block|{
-if|if
-condition|(
-name|currentRootState
-operator|!=
-literal|null
-condition|)
-block|{
+return|return
+name|store
+operator|.
+name|getBuilder
+argument_list|(
 name|branch
 operator|.
-name|setRoot
-argument_list|(
-name|currentRootState
-argument_list|)
-expr_stmt|;
-name|currentRootState
-operator|=
-literal|null
-expr_stmt|;
-name|notifyListeners
+name|getRoot
 argument_list|()
-expr_stmt|;
+argument_list|)
+return|;
 block|}
-block|}
-comment|//------------------------------------------------------------< private>---
 comment|// TODO better way to determine purge limit
-specifier|private
-name|boolean
-name|needsPurging
+name|void
+name|purge
 parameter_list|()
 block|{
 if|if
 condition|(
+operator|++
 name|modCount
 operator|>
 name|PURGE_LIMIT
@@ -1063,16 +998,36 @@ name|modCount
 operator|=
 literal|0
 expr_stmt|;
-return|return
-literal|true
-return|;
+name|purgePendingChanges
+argument_list|()
+expr_stmt|;
 block|}
-else|else
+block|}
+comment|//------------------------------------------------------------< private>---
+comment|/**      * Purge all pending changes to the underlying {@link NodeStoreBranch}.      * All registered {@link PurgeListener}s are notified.      */
+specifier|private
+name|void
+name|purgePendingChanges
+parameter_list|()
 block|{
-return|return
-literal|false
-return|;
+if|if
+condition|(
+name|hasPendingChanges
+argument_list|()
+condition|)
+block|{
+name|branch
+operator|.
+name|setRoot
+argument_list|(
+name|getCurrentRootState
+argument_list|()
+argument_list|)
+expr_stmt|;
 block|}
+name|notifyListeners
+argument_list|()
+expr_stmt|;
 block|}
 specifier|private
 name|void
