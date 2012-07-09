@@ -195,6 +195,24 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
+name|spi
+operator|.
+name|state
+operator|.
+name|NodeStateDiff
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
 name|util
 operator|.
 name|Iterators
@@ -944,7 +962,143 @@ block|}
 block|}
 return|;
 block|}
+comment|/**      * Optimised comparison method that can avoid traversing all properties      * and child nodes if both this and the given base node state come from      * the same MicroKernel and either have the same content hash (when      * available) or are located at the same path in different revisions.      *      * @see<a href="https://issues.apache.org/jira/browse/OAK-175">OAK-175</a>      */
+annotation|@
+name|Override
+specifier|public
+name|void
+name|compareAgainstBaseState
+parameter_list|(
+name|NodeState
+name|base
+parameter_list|,
+name|NodeStateDiff
+name|diff
+parameter_list|)
+block|{
+if|if
+condition|(
+name|this
+operator|==
+name|base
+condition|)
+block|{
+return|return;
+comment|// no differences
+block|}
+elseif|else
+if|if
+condition|(
+name|base
+operator|instanceof
+name|KernelNodeState
+condition|)
+block|{
+name|KernelNodeState
+name|kbase
+init|=
+operator|(
+name|KernelNodeState
+operator|)
+name|base
+decl_stmt|;
+if|if
+condition|(
+name|kernel
+operator|.
+name|equals
+argument_list|(
+name|kbase
+operator|.
+name|kernel
+argument_list|)
+condition|)
+block|{
+if|if
+condition|(
+name|revision
+operator|.
+name|equals
+argument_list|(
+name|kbase
+operator|.
+name|revision
+argument_list|)
+operator|&&
+name|path
+operator|.
+name|equals
+argument_list|(
+name|kbase
+operator|.
+name|path
+argument_list|)
+condition|)
+block|{
+return|return;
+comment|// no differences
+block|}
+else|else
+block|{
+name|init
+argument_list|()
+expr_stmt|;
+name|kbase
+operator|.
+name|init
+argument_list|()
+expr_stmt|;
+if|if
+condition|(
+name|hash
+operator|!=
+literal|null
+operator|&&
+name|hash
+operator|.
+name|equals
+argument_list|(
+name|kbase
+operator|.
+name|hash
+argument_list|)
+condition|)
+block|{
+return|return;
+comment|// no differences
+block|}
+elseif|else
+if|if
+condition|(
+name|path
+operator|.
+name|equals
+argument_list|(
+name|kbase
+operator|.
+name|path
+argument_list|)
+condition|)
+block|{
+comment|// TODO: Parse the JSON diff returned by the kernel
+comment|// kernel.diff(kbase.revision, revision, path);
+block|}
+block|}
+block|}
+block|}
+comment|// fall back to the generic node state diff algorithm
+name|super
+operator|.
+name|compareAgainstBaseState
+argument_list|(
+name|base
+argument_list|,
+name|diff
+argument_list|)
+expr_stmt|;
+block|}
 comment|//------------------------------------------------------------< Object>--
+comment|/**      * Optimised equality check that can avoid a full tree comparison if      * both instances come from the same MicroKernel and have either      * the same revision and path or the same content hash (when available).      * Otherwise we fall back to the default tree comparison algorithm.      *      * @see<a href="https://issues.apache.org/jira/browse/OAK-172">OAK-172</a>      */
 annotation|@
 name|Override
 specifier|public
@@ -982,9 +1136,6 @@ name|KernelNodeState
 operator|)
 name|object
 decl_stmt|;
-comment|// When both instances come from the same MicroKernel, we can
-comment|// use revision/path information or content hashes (when available)
-comment|// to avoid a full tree comparison in many cases.
 if|if
 condition|(
 name|kernel
@@ -1061,7 +1212,7 @@ block|}
 block|}
 block|}
 block|}
-comment|// fallback
+comment|// fall back to the generic tree equality comparison algorithm
 return|return
 name|super
 operator|.
