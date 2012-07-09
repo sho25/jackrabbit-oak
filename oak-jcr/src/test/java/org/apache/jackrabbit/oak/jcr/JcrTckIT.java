@@ -58,7 +58,7 @@ end_comment
 begin_class
 specifier|public
 class|class
-name|JcrTckTest
+name|JcrTckIT
 extends|extends
 name|TestCase
 block|{
