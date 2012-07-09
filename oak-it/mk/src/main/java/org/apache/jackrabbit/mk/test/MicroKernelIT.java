@@ -2569,7 +2569,7 @@ argument_list|,
 operator|-
 literal|1
 argument_list|,
-literal|"{properties:[\"*\"]}"
+literal|"{\"properties\":[\"*\"]}"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -2600,7 +2600,7 @@ argument_list|,
 operator|-
 literal|1
 argument_list|,
-literal|"{properties:[\"*\",\":hash\"]}"
+literal|"{\"properties\":[\"*\",\":hash\"]}"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -2685,7 +2685,7 @@ argument_list|,
 operator|-
 literal|1
 argument_list|,
-literal|"{properties:[\"*\",\":hash\"]}"
+literal|"{\"properties\":[\"*\",\":hash\"]}"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -2766,7 +2766,7 @@ argument_list|,
 operator|-
 literal|1
 argument_list|,
-literal|"{properties:[\"*\",\":hash\"]}"
+literal|"{\"properties\":[\"*\",\":hash\"]}"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -2924,7 +2924,7 @@ argument_list|,
 operator|-
 literal|1
 argument_list|,
-literal|"{properties:[\"*\"]}"
+literal|"{\"properties\":[\"*\"]}"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -2996,7 +2996,7 @@ argument_list|,
 operator|-
 literal|1
 argument_list|,
-literal|"{properties:[\"*\",\"-:childNodeCount\"]}"
+literal|"{\"properties\":[\"*\",\"-:childNodeCount\"]}"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -3034,7 +3034,7 @@ comment|// verify initial content using filter
 name|String
 name|filter
 init|=
-literal|"{ properties : [ \"*ntProp\", \"-mult*\" ] } "
+literal|"{ \"properties\" : [ \"*ntProp\", \"-mult*\" ] } "
 decl_stmt|;
 name|JSONObject
 name|obj
@@ -4183,7 +4183,7 @@ name|NUM_SIBLINGS
 operator|/
 literal|10
 argument_list|,
-literal|"{nodes:[\"n0*\"]}"
+literal|"{\"nodes\":[\"n0*\"]}"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -4641,7 +4641,7 @@ literal|0
 argument_list|,
 name|maxSiblings
 argument_list|,
-literal|"{nodes:[\"n1*\"]}"
+literal|"{\"nodes\":[\"n1*\"]}"
 argument_list|)
 argument_list|)
 expr_stmt|;

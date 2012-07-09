@@ -452,7 +452,7 @@ literal|0
 argument_list|,
 name|MAX_CHILD_NODE_NAMES
 argument_list|,
-literal|"{properties:[\"*\",\":hash\"]}"
+literal|"{\"properties\":[\"*\",\":hash\"]}"
 argument_list|)
 decl_stmt|;
 name|JsopReader

@@ -3931,7 +3931,7 @@ name|type
 init|=
 name|t
 operator|.
-name|readRawValue
+name|readString
 argument_list|()
 decl_stmt|;
 name|t
