@@ -1710,12 +1710,20 @@ specifier|public
 name|void
 name|waitForCommit
 parameter_list|()
+throws|throws
+name|InterruptedException
 block|{
 specifier|final
 name|long
-name|TIMEOUT
+name|SHORT_TIMEOUT
 init|=
-literal|100
+literal|1000
+decl_stmt|;
+specifier|final
+name|long
+name|LONG_TIMEOUT
+init|=
+literal|1000
 decl_stmt|;
 comment|// concurrent commit
 name|String
@@ -1742,22 +1750,6 @@ name|void
 name|run
 parameter_list|()
 block|{
-try|try
-block|{
-name|sleep
-argument_list|(
-name|TIMEOUT
-operator|/
-literal|2
-argument_list|)
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|InterruptedException
-name|ignore
-parameter_list|)
-block|{                 }
 name|String
 name|newHead
 init|=
@@ -1790,33 +1782,20 @@ expr_stmt|;
 name|String
 name|newHead
 init|=
-literal|null
-decl_stmt|;
-try|try
-block|{
-name|newHead
-operator|=
 name|mk
 operator|.
 name|waitForCommit
 argument_list|(
 name|oldHead
 argument_list|,
-name|TIMEOUT
+name|LONG_TIMEOUT
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 name|t
 operator|.
 name|join
 argument_list|()
 expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|InterruptedException
-name|ignore
-parameter_list|)
-block|{         }
 name|assertFalse
 argument_list|(
 name|oldHead
@@ -1857,12 +1836,6 @@ operator|.
 name|getHeadRevision
 argument_list|()
 decl_stmt|;
-name|newHead
-operator|=
-literal|null
-expr_stmt|;
-try|try
-block|{
 name|long
 name|t0
 init|=
@@ -1879,7 +1852,7 @@ name|waitForCommit
 argument_list|(
 name|oldHead
 argument_list|,
-name|TIMEOUT
+name|LONG_TIMEOUT
 argument_list|)
 expr_stmt|;
 name|long
@@ -1898,16 +1871,9 @@ operator|-
 name|t0
 operator|)
 operator|<
-name|TIMEOUT
+name|LONG_TIMEOUT
 argument_list|)
 expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|InterruptedException
-name|ignore
-parameter_list|)
-block|{         }
 name|assertEquals
 argument_list|(
 name|currentHead
@@ -1916,7 +1882,7 @@ name|newHead
 argument_list|)
 expr_stmt|;
 comment|// there's no more recent head available;
-comment|// the method should wait TIMEOUT ms
+comment|// the method should wait for the given short timeout
 name|currentHead
 operator|=
 name|mk
@@ -1924,14 +1890,8 @@ operator|.
 name|getHeadRevision
 argument_list|()
 expr_stmt|;
-name|newHead
-operator|=
-literal|null
-expr_stmt|;
-try|try
-block|{
 name|long
-name|t0
+name|t2
 init|=
 name|System
 operator|.
@@ -1946,11 +1906,11 @@ name|waitForCommit
 argument_list|(
 name|currentHead
 argument_list|,
-name|TIMEOUT
+name|SHORT_TIMEOUT
 argument_list|)
 expr_stmt|;
 name|long
-name|t1
+name|t3
 init|=
 name|System
 operator|.
@@ -1960,21 +1920,14 @@ decl_stmt|;
 name|assertTrue
 argument_list|(
 operator|(
-name|t1
+name|t3
 operator|-
-name|t0
+name|t2
 operator|)
 operator|>=
-name|TIMEOUT
+name|SHORT_TIMEOUT
 argument_list|)
 expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|InterruptedException
-name|ignore
-parameter_list|)
-block|{         }
 name|assertEquals
 argument_list|(
 name|currentHead
