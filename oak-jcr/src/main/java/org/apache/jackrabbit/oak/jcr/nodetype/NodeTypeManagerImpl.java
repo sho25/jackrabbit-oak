@@ -338,11 +338,6 @@ name|NodeTypeManagerDelegate
 argument_list|(
 name|sd
 operator|.
-name|getContentSession
-argument_list|()
-argument_list|,
-name|sd
-operator|.
 name|getValueFactory
 argument_list|()
 operator|.
