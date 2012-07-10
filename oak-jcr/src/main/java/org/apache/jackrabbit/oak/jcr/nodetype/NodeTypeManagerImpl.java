@@ -335,15 +335,7 @@ name|ntmd
 operator|=
 operator|new
 name|NodeTypeManagerDelegate
-argument_list|(
-name|sd
-operator|.
-name|getValueFactory
 argument_list|()
-operator|.
-name|getCoreValueFactory
-argument_list|()
-argument_list|)
 expr_stmt|;
 block|}
 specifier|private
