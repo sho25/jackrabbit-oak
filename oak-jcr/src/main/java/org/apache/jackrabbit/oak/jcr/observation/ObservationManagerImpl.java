@@ -354,9 +354,6 @@ operator|new
 name|ChangeProcessor
 argument_list|(
 name|sessionDelegate
-operator|.
-name|getNamePathMapper
-argument_list|()
 argument_list|,
 name|extractor
 argument_list|,

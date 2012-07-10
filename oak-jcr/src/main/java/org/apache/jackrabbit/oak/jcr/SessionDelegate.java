@@ -1084,12 +1084,18 @@ name|boolean
 name|hasPendingChanges
 parameter_list|()
 block|{
+synchronized|synchronized
+init|(
+name|root
+init|)
+block|{
 return|return
 name|root
 operator|.
 name|hasPendingChanges
 argument_list|()
 return|;
+block|}
 block|}
 specifier|public
 name|void
@@ -1100,6 +1106,11 @@ name|RepositoryException
 block|{
 try|try
 block|{
+synchronized|synchronized
+init|(
+name|root
+init|)
+block|{
 name|root
 operator|.
 name|commit
@@ -1107,6 +1118,7 @@ argument_list|(
 name|conflictHandler
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 catch|catch
 parameter_list|(
@@ -1129,6 +1141,11 @@ name|boolean
 name|keepChanges
 parameter_list|)
 block|{
+synchronized|synchronized
+init|(
+name|root
+init|)
+block|{
 if|if
 condition|(
 name|keepChanges
@@ -1149,6 +1166,7 @@ operator|.
 name|refresh
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 block|}
 comment|/**      * Shortcut for {@code SessionDelegate.getNamePathMapper().getOakPath(jcrPath)}.      *      * @param jcrPath JCR path      * @return Oak path, or {@code null}      */
@@ -1313,12 +1331,18 @@ name|ChangeExtractor
 name|getChangeExtractor
 parameter_list|()
 block|{
+synchronized|synchronized
+init|(
+name|root
+init|)
+block|{
 return|return
 name|root
 operator|.
 name|getChangeExtractor
 argument_list|()
 return|;
+block|}
 block|}
 comment|//----------------------------------------------------------< Workspace>---
 annotation|@
@@ -1528,6 +1552,11 @@ parameter_list|)
 throws|throws
 name|RepositoryException
 block|{
+synchronized|synchronized
+init|(
+name|root
+init|)
+block|{
 name|String
 name|srcPath
 init|=
@@ -1698,6 +1727,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+block|}
 annotation|@
 name|Nonnull
 specifier|public
@@ -1826,6 +1856,11 @@ name|String
 name|path
 parameter_list|)
 block|{
+synchronized|synchronized
+init|(
+name|root
+init|)
+block|{
 return|return
 name|root
 operator|.
@@ -1834,6 +1869,7 @@ argument_list|(
 name|path
 argument_list|)
 return|;
+block|}
 block|}
 annotation|@
 name|CheckForNull
