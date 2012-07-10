@@ -33,6 +33,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Arrays
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Collection
 import|;
 end_import
@@ -148,16 +158,6 @@ operator|.
 name|junit
 operator|.
 name|Before
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
-name|ComparisonFailure
 import|;
 end_import
 
@@ -416,6 +416,26 @@ name|tearDownCluster
 argument_list|(
 name|mks
 argument_list|)
+expr_stmt|;
+comment|// Clear fields to avoid consuming memory after the test has run.
+comment|// It looks like JUnit keeps references to all test instances until
+comment|// the entire test suite has been run.
+name|Arrays
+operator|.
+name|fill
+argument_list|(
+name|mks
+argument_list|,
+literal|null
+argument_list|)
+expr_stmt|;
+name|mk
+operator|=
+literal|null
+expr_stmt|;
+name|parser
+operator|=
+literal|null
 expr_stmt|;
 block|}
 comment|//--------------------------------< utility methods for parsing json data>
