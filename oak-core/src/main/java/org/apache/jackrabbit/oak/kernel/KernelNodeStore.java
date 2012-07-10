@@ -226,12 +226,6 @@ name|EmptyObserver
 operator|.
 name|INSTANCE
 decl_stmt|;
-comment|/**      * Value factory backed by the {@link #kernel} instance.      */
-specifier|private
-specifier|final
-name|CoreValueFactory
-name|valueFactory
-decl_stmt|;
 comment|/**      * State of the current root node.      */
 specifier|private
 name|KernelNodeState
@@ -257,24 +251,12 @@ name|kernel
 expr_stmt|;
 name|this
 operator|.
-name|valueFactory
-operator|=
-operator|new
-name|CoreValueFactoryImpl
-argument_list|(
-name|kernel
-argument_list|)
-expr_stmt|;
-name|this
-operator|.
 name|root
 operator|=
 operator|new
 name|KernelNodeState
 argument_list|(
 name|kernel
-argument_list|,
-name|valueFactory
 argument_list|,
 literal|"/"
 argument_list|,
@@ -386,8 +368,6 @@ name|KernelNodeState
 argument_list|(
 name|kernel
 argument_list|,
-name|valueFactory
-argument_list|,
 literal|"/"
 argument_list|,
 name|kernel
@@ -435,7 +415,11 @@ name|getValueFactory
 parameter_list|()
 block|{
 return|return
-name|valueFactory
+operator|new
+name|CoreValueFactoryImpl
+argument_list|(
+name|kernel
+argument_list|)
 return|;
 block|}
 comment|//------------------------------------------------------------< internal>---
