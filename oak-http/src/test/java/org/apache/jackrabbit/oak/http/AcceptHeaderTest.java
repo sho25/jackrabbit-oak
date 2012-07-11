@@ -44,165 +44,30 @@ specifier|public
 class|class
 name|AcceptHeaderTest
 block|{
-annotation|@
-name|Test
-specifier|public
-name|void
-name|testRfcExample1
-parameter_list|()
-block|{
-name|AcceptHeader
-name|accept
-init|=
-operator|new
-name|AcceptHeader
-argument_list|(
-literal|"text/plain; q=0.5, text/html, text/x-dvi; q=0.8, text/x-c"
-argument_list|)
-decl_stmt|;
-name|assertEquals
-argument_list|(
-literal|"text/plain"
-argument_list|,
-name|accept
-operator|.
-name|resolve
-argument_list|(
-literal|"text/plain"
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|assertEquals
-argument_list|(
-literal|"text/html"
-argument_list|,
-name|accept
-operator|.
-name|resolve
-argument_list|(
-literal|"text/html"
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|assertEquals
-argument_list|(
-literal|"text/x-dvi"
-argument_list|,
-name|accept
-operator|.
-name|resolve
-argument_list|(
-literal|"text/x-dvi"
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|assertEquals
-argument_list|(
-literal|"text/x-c"
-argument_list|,
-name|accept
-operator|.
-name|resolve
-argument_list|(
-literal|"text/x-c"
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|assertEquals
-argument_list|(
-literal|"application/octet-stream"
-argument_list|,
-name|accept
-operator|.
-name|resolve
-argument_list|(
-literal|"application/octet-stream"
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|assertEquals
-argument_list|(
-literal|"application/octet-stream"
-argument_list|,
-name|accept
-operator|.
-name|resolve
-argument_list|(
-literal|"application/pdf"
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|assertEquals
-argument_list|(
-literal|"text/html"
-argument_list|,
-name|accept
-operator|.
-name|resolve
-argument_list|(
-literal|"text/plain"
-argument_list|,
-literal|"text/html"
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|assertEquals
-argument_list|(
-literal|"text/x-c"
-argument_list|,
-name|accept
-operator|.
-name|resolve
-argument_list|(
-literal|"text/x-dvi"
-argument_list|,
-literal|"text/x-c"
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|assertEquals
-argument_list|(
-literal|"text/x-dvi"
-argument_list|,
-name|accept
-operator|.
-name|resolve
-argument_list|(
-literal|"text/x-dvi"
-argument_list|,
-literal|"text/plain"
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|assertEquals
-argument_list|(
-literal|"text/html"
-argument_list|,
-name|accept
-operator|.
-name|resolve
-argument_list|(
-literal|"text/html"
-argument_list|,
-literal|"text/x-c"
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|assertEquals
-argument_list|(
-literal|"text/x-c"
-argument_list|,
-name|accept
-operator|.
-name|resolve
-argument_list|(
-literal|"text/x-c"
-argument_list|,
-literal|"text/html"
-argument_list|)
-argument_list|)
-expr_stmt|;
-block|}
+comment|//    @Test
+comment|//    public void testRfcExample1() {
+comment|//        AcceptHeader accept = new AcceptHeader(
+comment|//                "text/plain; q=0.5, text/html, text/x-dvi; q=0.8, text/x-c");
+comment|//
+comment|//        assertEquals("text/plain", accept.resolve("text/plain"));
+comment|//        assertEquals("text/html", accept.resolve("text/html"));
+comment|//        assertEquals("text/x-dvi", accept.resolve("text/x-dvi"));
+comment|//        assertEquals("text/x-c", accept.resolve("text/x-c"));
+comment|//
+comment|//        assertEquals(
+comment|//                "application/octet-stream",
+comment|//                accept.resolve("application/octet-stream"));
+comment|//        assertEquals(
+comment|//                "application/octet-stream",
+comment|//                accept.resolve("application/pdf"));
+comment|//
+comment|//        assertEquals("text/html", accept.resolve("text/plain", "text/html"));
+comment|//        assertEquals("text/x-c", accept.resolve("text/x-dvi", "text/x-c"));
+comment|//        assertEquals("text/x-dvi", accept.resolve("text/x-dvi", "text/plain"));
+comment|//
+comment|//        assertEquals("text/html", accept.resolve("text/html", "text/x-c"));
+comment|//        assertEquals("text/x-c", accept.resolve("text/x-c", "text/html"));
+comment|//    }
 block|}
 end_class
 
