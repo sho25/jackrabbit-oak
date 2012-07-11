@@ -307,6 +307,9 @@ name|NodeTypeManagerImpl
 parameter_list|(
 name|SessionDelegate
 name|sd
+parameter_list|,
+name|NodeTypeManagerDelegate
+name|ntmd
 parameter_list|)
 throws|throws
 name|RepositoryException
@@ -333,9 +336,7 @@ name|this
 operator|.
 name|ntmd
 operator|=
-operator|new
-name|NodeTypeManagerDelegate
-argument_list|()
+name|ntmd
 expr_stmt|;
 block|}
 specifier|private
