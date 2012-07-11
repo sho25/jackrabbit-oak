@@ -330,19 +330,10 @@ name|rootBuilder
 decl_stmt|;
 for|for
 control|(
-name|int
-name|i
-init|=
-literal|0
-init|;
-name|i
-operator|<
+name|String
+name|name
+range|:
 name|path
-operator|.
-name|length
-condition|;
-name|i
-operator|++
 control|)
 block|{
 name|builder
@@ -351,10 +342,7 @@ name|builder
 operator|.
 name|getChildBuilder
 argument_list|(
-name|path
-index|[
-name|i
-index|]
+name|name
 argument_list|)
 expr_stmt|;
 block|}
@@ -772,8 +760,6 @@ decl_stmt|;
 specifier|private
 name|int
 name|position
-init|=
-literal|0
 decl_stmt|;
 annotation|@
 name|Override
@@ -951,8 +937,6 @@ specifier|public
 name|void
 name|close
 parameter_list|()
-throws|throws
-name|IOException
 block|{
 comment|// do nothing
 block|}
@@ -1220,8 +1204,6 @@ specifier|public
 name|long
 name|length
 parameter_list|()
-throws|throws
-name|IOException
 block|{
 return|return
 name|size

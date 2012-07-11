@@ -667,7 +667,7 @@ return|return
 name|value
 return|;
 block|}
-comment|/**      * Read the list of values from the specified reader and convert them into      * {@link CoreValue}s. This method takes type-hint prefixes into account.      *      * @param reader The JSON reader.      * @param valueFactory The factory used to create the values.      * @return A list of values such as defined by the reader.      */
+comment|/**      * Read the list of values from the specified reader and convert them into      * {@link CoreValue}s. This method takes type-hint prefixes into account.      *      * @param reader The JSON reader.      * @param kernel The Microkernel instance from which the values originate      * @return A list of values such as defined by the reader.      */
 specifier|public
 specifier|static
 name|List
