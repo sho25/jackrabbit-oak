@@ -393,6 +393,10 @@ argument_list|()
 argument_list|)
 block|,
 operator|new
+name|PostRepresentation
+argument_list|()
+block|,
+operator|new
 name|TextRepresentation
 argument_list|()
 block|}
