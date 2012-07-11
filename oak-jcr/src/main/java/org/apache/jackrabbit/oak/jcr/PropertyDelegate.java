@@ -716,7 +716,6 @@ comment|//------------------------------------------------------------< private>
 annotation|@
 name|Nonnull
 specifier|private
-specifier|synchronized
 name|PropertyState
 name|getPropertyState
 parameter_list|()
@@ -748,7 +747,6 @@ block|}
 annotation|@
 name|Nonnull
 specifier|private
-specifier|synchronized
 name|Tree
 name|getParentTree
 parameter_list|()
