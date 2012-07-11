@@ -981,7 +981,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-comment|// TODO better way to determine purge limit
+comment|// TODO better way to determine purge limit. See OAK-175
 name|void
 name|purge
 parameter_list|()
