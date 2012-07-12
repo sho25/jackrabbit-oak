@@ -1350,6 +1350,25 @@ name|propertyState
 argument_list|)
 return|;
 block|}
+specifier|public
+name|void
+name|removeProperty
+parameter_list|(
+name|String
+name|name
+parameter_list|)
+throws|throws
+name|InvalidItemStateException
+block|{
+name|getTree
+argument_list|()
+operator|.
+name|removeProperty
+argument_list|(
+name|name
+argument_list|)
+expr_stmt|;
+block|}
 comment|/**      * Set a multi valued property      * @param name  oak name      * @param value      * @return  the set property      */
 annotation|@
 name|Nonnull
