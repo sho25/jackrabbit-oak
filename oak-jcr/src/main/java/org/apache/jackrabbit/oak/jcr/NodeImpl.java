@@ -747,6 +747,9 @@ class|class
 name|NodeImpl
 extends|extends
 name|ItemImpl
+argument_list|<
+name|NodeDelegate
+argument_list|>
 implements|implements
 name|Node
 block|{
@@ -766,11 +769,6 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-specifier|private
-specifier|final
-name|NodeDelegate
-name|dlg
-decl_stmt|;
 specifier|public
 name|NodeImpl
 parameter_list|(
@@ -787,12 +785,6 @@ argument_list|()
 argument_list|,
 name|dlg
 argument_list|)
-expr_stmt|;
-name|this
-operator|.
-name|dlg
-operator|=
-name|dlg
 expr_stmt|;
 block|}
 comment|//---------------------------------------------------------------< Item>---
@@ -4535,7 +4527,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-comment|/**      * Checks whether this node is locked by looking for the      *<code>jcr:lockOwner</code> property either on this node or      * on any ancestor that also has the<code>jcr:lockIsDeep</code>      * property set to<code>true</code>.      */
+comment|/**      * Checks whether this node is locked by looking for the      * {@code jcr:lockOwner} property either on this node or      * on any ancestor that also has the {@code jcr:lockIsDeep}      * property set to {@code true}.      */
 annotation|@
 name|Override
 specifier|public
@@ -4656,7 +4648,7 @@ return|return
 literal|false
 return|;
 block|}
-comment|/**      * Checks whether this node holds a lock by looking for the      *<code>jcr:lockOwner</code> property.      */
+comment|/**      * Checks whether this node holds a lock by looking for the      * {@code jcr:lockOwner} property.      */
 annotation|@
 name|Override
 specifier|public
