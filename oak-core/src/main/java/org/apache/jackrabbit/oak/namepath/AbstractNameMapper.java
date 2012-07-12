@@ -114,6 +114,19 @@ else|:
 name|jcrName
 return|;
 block|}
+elseif|else
+if|if
+condition|(
+name|pos
+operator|==
+literal|0
+condition|)
+block|{
+comment|// Internal name, should not be visible to JCR clients
+return|return
+literal|null
+return|;
+block|}
 else|else
 block|{
 if|if
@@ -305,6 +318,25 @@ comment|// non-prefixed
 return|return
 name|oakName
 return|;
+block|}
+elseif|else
+if|if
+condition|(
+name|pos
+operator|==
+literal|0
+condition|)
+block|{
+comment|// Internal name, should not be visible to JCR clients
+throw|throw
+operator|new
+name|IllegalStateException
+argument_list|(
+literal|"internal Oak name: "
+operator|+
+name|oakName
+argument_list|)
+throw|;
 block|}
 else|else
 block|{
