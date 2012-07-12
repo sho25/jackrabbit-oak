@@ -330,12 +330,10 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**      * Utility constructor that creates a new in-memory repository for use      * mostly in test cases.      * @throws RepositoryException       */
+comment|/**      * Utility constructor that creates a new in-memory repository for use      * mostly in test cases.      */
 specifier|public
 name|RepositoryImpl
 parameter_list|()
-throws|throws
-name|RepositoryException
 block|{
 name|this
 argument_list|(
