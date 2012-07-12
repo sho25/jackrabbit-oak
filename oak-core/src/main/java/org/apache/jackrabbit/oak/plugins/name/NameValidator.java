@@ -177,9 +177,8 @@ decl_stmt|;
 if|if
 condition|(
 name|colon
-operator|!=
-operator|-
-literal|1
+operator|>
+literal|0
 condition|)
 block|{
 name|String

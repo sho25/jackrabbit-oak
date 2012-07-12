@@ -160,7 +160,7 @@ name|validator
 operator|.
 name|childNodeAdded
 argument_list|(
-literal|"."
+literal|".."
 argument_list|,
 name|MemoryNodeState
 operator|.
@@ -170,13 +170,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-argument_list|(
-name|expected
-operator|=
-name|CommitFailedException
-operator|.
-name|class
-argument_list|)
+comment|// valid as of OAK-182
 specifier|public
 name|void
 name|testEmptyPrefix
