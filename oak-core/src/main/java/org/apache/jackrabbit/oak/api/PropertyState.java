@@ -19,6 +19,16 @@ end_package
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|annotation
@@ -55,10 +65,10 @@ name|CoreValue
 name|getValue
 parameter_list|()
 function_decl|;
-comment|/**      * Values of this property.      * @return  an iterable of the values of this multi valued property.      * @throws IllegalStateException  if {@code isArray()} is {@code false}.      */
+comment|/**      * Values of this property. The returned list is immutable and contains      * all the values of this property. If this is a single-valued property,      * then the returned list will simply contain the single value returned      * by the {@link #getValue()} method.      *      * @return immutable list of the values of this property      */
 annotation|@
 name|Nonnull
-name|Iterable
+name|List
 argument_list|<
 name|CoreValue
 argument_list|>
