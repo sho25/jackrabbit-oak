@@ -61,9 +61,11 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|kernel
+name|plugins
 operator|.
-name|PropertyStateImpl
+name|memory
+operator|.
+name|SinglePropertyState
 import|;
 end_import
 
@@ -210,7 +212,7 @@ argument_list|)
 decl_stmt|;
 return|return
 operator|new
-name|PropertyStateImpl
+name|SinglePropertyState
 argument_list|(
 name|p
 operator|.
