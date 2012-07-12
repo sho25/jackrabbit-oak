@@ -103,6 +103,16 @@ name|javax
 operator|.
 name|annotation
 operator|.
+name|CheckForNull
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|annotation
+operator|.
 name|Nonnull
 import|;
 end_import
@@ -1349,7 +1359,7 @@ comment|/**      * @see Node#setProperty(String, javax.jcr.Value)      */
 annotation|@
 name|Override
 annotation|@
-name|Nonnull
+name|CheckForNull
 specifier|public
 name|Property
 name|setProperty
@@ -1400,7 +1410,7 @@ comment|/**      * @see Node#setProperty(String, javax.jcr.Value, int)      */
 annotation|@
 name|Override
 annotation|@
-name|Nonnull
+name|CheckForNull
 specifier|public
 name|Property
 name|setProperty
@@ -1809,7 +1819,7 @@ comment|/**      * @see Node#setProperty(String, String)      */
 annotation|@
 name|Override
 annotation|@
-name|Nonnull
+name|CheckForNull
 specifier|public
 name|Property
 name|setProperty
@@ -1863,7 +1873,7 @@ comment|/**      * @see Node#setProperty(String, String, int)      */
 annotation|@
 name|Override
 annotation|@
-name|Nonnull
+name|CheckForNull
 specifier|public
 name|Property
 name|setProperty
@@ -1921,7 +1931,7 @@ argument_list|)
 annotation|@
 name|Override
 annotation|@
-name|Nonnull
+name|CheckForNull
 specifier|public
 name|Property
 name|setProperty
@@ -1971,7 +1981,7 @@ comment|/**      * @see Node#setProperty(String, Binary)      */
 annotation|@
 name|Override
 annotation|@
-name|Nonnull
+name|CheckForNull
 specifier|public
 name|Property
 name|setProperty
@@ -2095,7 +2105,7 @@ comment|/**      * @see Node#setProperty(String, BigDecimal)      */
 annotation|@
 name|Override
 annotation|@
-name|Nonnull
+name|CheckForNull
 specifier|public
 name|Property
 name|setProperty
@@ -2182,7 +2192,7 @@ comment|/**      * @see Node#setProperty(String, Calendar)      */
 annotation|@
 name|Override
 annotation|@
-name|Nonnull
+name|CheckForNull
 specifier|public
 name|Property
 name|setProperty
@@ -2232,7 +2242,7 @@ comment|/**      * @see Node#setProperty(String, Node)      */
 annotation|@
 name|Override
 annotation|@
-name|Nonnull
+name|CheckForNull
 specifier|public
 name|Property
 name|setProperty
