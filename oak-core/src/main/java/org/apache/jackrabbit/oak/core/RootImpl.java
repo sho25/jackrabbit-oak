@@ -472,7 +472,7 @@ specifier|private
 name|NodeStoreBranch
 name|branch
 decl_stmt|;
-comment|/** Actual root element of the {@code Tree} */
+comment|/** Current root {@code Tree} */
 specifier|private
 name|TreeImpl
 name|root
@@ -1070,15 +1070,6 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-specifier|private
-name|TreeImpl
-name|getRoot
-parameter_list|()
-block|{
-return|return
-name|root
-return|;
-block|}
 comment|/**      * Get a tree for the child identified by {@code path}      * @param path  the path to the child      * @return  a {@link Tree} instance for the child      *          at {@code path} or {@code null} if no such item exits.      */
 specifier|private
 name|TreeImpl
@@ -1091,8 +1082,7 @@ block|{
 name|TreeImpl
 name|child
 init|=
-name|getRoot
-argument_list|()
+name|root
 decl_stmt|;
 for|for
 control|(
