@@ -736,7 +736,9 @@ decl_stmt|;
 name|NodeState
 name|head
 init|=
-name|getCurrentRootState
+name|root
+operator|.
+name|getNodeState
 argument_list|()
 decl_stmt|;
 name|refresh
@@ -834,7 +836,9 @@ argument_list|()
 operator|.
 name|equals
 argument_list|(
-name|getCurrentRootState
+name|root
+operator|.
+name|getNodeState
 argument_list|()
 argument_list|)
 return|;
@@ -914,25 +918,10 @@ name|purgeListener
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Returns the current root node state      * @return root node state      */
-annotation|@
-name|Nonnull
-specifier|public
-name|NodeState
-name|getCurrentRootState
-parameter_list|()
-block|{
-return|return
-name|root
-operator|.
-name|getNodeState
-argument_list|()
-return|;
-block|}
+comment|//------------------------------------------------------------< internal>---
 comment|/**      * Returns the node state from which the current branch was created.      * @return base node state      */
 annotation|@
 name|Nonnull
-specifier|public
 name|NodeState
 name|getBaseState
 parameter_list|()
@@ -944,27 +933,6 @@ name|getBase
 argument_list|()
 return|;
 block|}
-comment|/**      * Returns a builder for constructing a new or modified node state.      * The builder is initialized with all the properties and child nodes      * from the given base node state.      *      * @param nodeState  base node state, or {@code null} for building new nodes      * @return  builder instance      */
-annotation|@
-name|Nonnull
-specifier|public
-name|NodeStateBuilder
-name|getBuilder
-parameter_list|(
-name|NodeState
-name|nodeState
-parameter_list|)
-block|{
-return|return
-name|store
-operator|.
-name|getBuilder
-argument_list|(
-name|nodeState
-argument_list|)
-return|;
-block|}
-comment|//------------------------------------------------------------< internal>---
 name|NodeStateBuilder
 name|createRootBuilder
 parameter_list|()
@@ -1020,7 +988,9 @@ name|branch
 operator|.
 name|setRoot
 argument_list|(
-name|getCurrentRootState
+name|root
+operator|.
+name|getNodeState
 argument_list|()
 argument_list|)
 expr_stmt|;
