@@ -7379,6 +7379,13 @@ name|addNode
 argument_list|(
 literal|"node"
 argument_list|)
+operator|.
+name|setProperty
+argument_list|(
+literal|"p"
+argument_list|,
+literal|"v"
+argument_list|)
 expr_stmt|;
 name|assertTrue
 argument_list|(
@@ -7955,6 +7962,13 @@ operator|+
 literal|"/source/node"
 argument_list|)
 decl_stmt|;
+name|session
+operator|.
+name|refresh
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
 name|session
 operator|.
 name|move
