@@ -155,7 +155,9 @@ name|Assert
 operator|.
 name|assertEquals
 argument_list|(
-literal|"{\":childNodeCount\":1,\"property@id,unique\":{\":childNodeCount\":0}}"
+literal|"{\":childNodeCount\":2,\":data\":{\":childNodeCount\":0},"
+operator|+
+literal|"\"property@id,unique\":{\":childNodeCount\":1,\":data\":{}}}"
 argument_list|,
 name|meta
 argument_list|)

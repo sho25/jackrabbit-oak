@@ -163,7 +163,9 @@ name|Assert
 operator|.
 name|assertEquals
 argument_list|(
-literal|"{\":childNodeCount\":1,\"prefix@d:\":{\":childNodeCount\":0}}"
+literal|"{\":childNodeCount\":2,\"prefix@d:\":"
+operator|+
+literal|"{\":childNodeCount\":1,\":data\":{}},\":data\":{\":childNodeCount\":0}}"
 argument_list|,
 name|meta
 argument_list|)
@@ -480,6 +482,7 @@ argument_list|)
 expr_stmt|;
 block|}
 specifier|private
+specifier|static
 name|String
 name|getPathList
 parameter_list|(

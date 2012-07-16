@@ -101,7 +101,6 @@ specifier|final
 name|String
 name|propertyName
 decl_stmt|;
-specifier|public
 name|PropertyIndex
 parameter_list|(
 name|Indexer
@@ -164,7 +163,6 @@ literal|10
 argument_list|)
 expr_stmt|;
 block|}
-specifier|public
 specifier|static
 name|PropertyIndex
 name|fromNodeName

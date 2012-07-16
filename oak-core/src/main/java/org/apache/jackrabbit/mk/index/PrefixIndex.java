@@ -75,6 +75,22 @@ name|NodeImpl
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|commons
+operator|.
+name|PathUtils
+import|;
+end_import
+
 begin_comment
 comment|/**  * An index for all values with a given prefix.  */
 end_comment
@@ -551,6 +567,18 @@ name|length
 argument_list|()
 argument_list|)
 decl_stmt|;
+name|String
+name|p
+init|=
+name|PathUtils
+operator|.
+name|concat
+argument_list|(
+name|path
+argument_list|,
+name|propertyName
+argument_list|)
+decl_stmt|;
 if|if
 condition|(
 name|add
@@ -562,11 +590,7 @@ name|add
 argument_list|(
 name|v
 argument_list|,
-name|path
-operator|+
-literal|"/"
-operator|+
-name|propertyName
+name|p
 argument_list|)
 expr_stmt|;
 block|}
@@ -578,11 +602,7 @@ name|remove
 argument_list|(
 name|v
 argument_list|,
-name|path
-operator|+
-literal|"/"
-operator|+
-name|propertyName
+name|p
 argument_list|)
 expr_stmt|;
 block|}
