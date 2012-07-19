@@ -91,6 +91,13 @@ name|String
 name|getPath
 parameter_list|()
 function_decl|;
+comment|/**      * Get the {@code Status} of this tree instance.      *      * @return The status of this tree instance.      */
+annotation|@
+name|Nonnull
+name|Status
+name|getStatus
+parameter_list|()
+function_decl|;
 comment|/**      * @return the parent of this {@code Tree} instance. This method returns      * {@code null} if the parent is not accessible or if no parent exists (root      * node).      */
 annotation|@
 name|CheckForNull
@@ -153,13 +160,6 @@ name|String
 name|name
 parameter_list|)
 function_decl|;
-comment|/**      * Get the {@code Status} of this tree instance.      *      * @return The status of this tree instance.      */
-annotation|@
-name|Nonnull
-name|Status
-name|getStatus
-parameter_list|()
-function_decl|;
 comment|/**      * Determine if a child of this {@code Tree} instance exists. If no child      * exists or an existing child isn't accessible this method returns {@code false}.      *      * @param name The name of the child      * @return {@code true} if and only if a child with the given {@code name}      * exists and is accessible for the current content session.      */
 name|boolean
 name|hasChild
@@ -183,6 +183,11 @@ argument_list|>
 name|getChildren
 parameter_list|()
 function_decl|;
+comment|/**      * Remove this tree instance. This operation never succeeds for the root tree.      *      * @return {@code true} if the node was removed; {@code false} otherwise.      */
+name|boolean
+name|remove
+parameter_list|()
+function_decl|;
 comment|/**      * Add a child with the given {@code name}. Does nothing if such a child      * already exists.      *      * @param name name of the child      * @return the {@code Tree} instance of the child with the given {@code name}.      */
 annotation|@
 name|Nonnull
@@ -192,11 +197,6 @@ parameter_list|(
 name|String
 name|name
 parameter_list|)
-function_decl|;
-comment|/**      * Remove this sub tree if not root.      * @return  {@code false} iff this is the root.      */
-name|boolean
-name|remove
-parameter_list|()
 function_decl|;
 comment|/**      * Set a single valued property state      *      * @param name The name of this property      * @param value The value of this property      * @return the affected property state      */
 annotation|@
@@ -227,7 +227,7 @@ argument_list|>
 name|values
 parameter_list|)
 function_decl|;
-comment|/**      * Remove a property      * @param name name of the property      */
+comment|/**      * Remove the property with the given name.      *      * @param name The name of the property      */
 name|void
 name|removeProperty
 parameter_list|(
