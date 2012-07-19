@@ -108,7 +108,7 @@ name|String
 name|name
 parameter_list|)
 function_decl|;
-comment|/**      * Get the {@code Status} of a property state      * @param name  name of the property state      * @return  the status of the property state with the given {@code name}      *          or {@code null} in no such property state exists.      */
+comment|/**      * Get the {@code Status} of a property state or {@code null}.      *      * @param name The name of the property state.      * @return The status of the property state with the given {@code name}      * or {@code null} in no such property state exists or if the name refers      * to a property that is not accessible.      */
 annotation|@
 name|CheckForNull
 name|Status
@@ -126,12 +126,12 @@ name|String
 name|name
 parameter_list|)
 function_decl|;
-comment|/**      * Determine the number of properties.      * @return  number of properties      */
+comment|/**      * Determine the number of properties accessible to the current content session.      *      * @return The number of accessible properties.      */
 name|long
 name|getPropertyCount
 parameter_list|()
 function_decl|;
-comment|/**      * All property states. The returned {@code Iterable} has snapshot semantics. That      * is, it reflect the state of this {@code Tree} instance at the time of the      * call. Later changes to this instance are no visible to iterators obtained from      * the returned iterable.      * @return  An {@code Iterable} for all property states      */
+comment|/**      * All accessible property states. The returned {@code Iterable} has snapshot      * semantics. That is, it reflect the state of this {@code Tree} instance at      * the time of the call. Later changes to this instance are no visible to      * iterators obtained from the returned iterable.      *      * @return An {@code Iterable} for all accessible property states.      */
 annotation|@
 name|Nonnull
 name|Iterable
@@ -143,7 +143,7 @@ argument_list|>
 name|getProperties
 parameter_list|()
 function_decl|;
-comment|/**      * Get a child of this {@code Tree} instance      * @param name  name of the child      * @return  the child with the given {@code name} or {@code null} if no such child      * exists.      */
+comment|/**      * Get a child of this {@code Tree} instance.      *      * @param name The name of the child to retrieve.      * @return The child with the given {@code name} or {@code null} if no such      * child exists or the child is not accessible.      */
 annotation|@
 name|CheckForNull
 name|Tree
@@ -153,14 +153,14 @@ name|String
 name|name
 parameter_list|)
 function_decl|;
-comment|/**      * Get the {@code Status} of this tree      * @return  the status of this tree      */
+comment|/**      * Get the {@code Status} of this tree instance.      *      * @return The status of this tree instance.      */
 annotation|@
 name|Nonnull
 name|Status
 name|getStatus
 parameter_list|()
 function_decl|;
-comment|/**      * Determine if a child of this {@code Tree} instance exists.      * @param name  name of the child      * @return  {@code true} if and only if a child with the given {@code name}      *          exists.      */
+comment|/**      * Determine if a child of this {@code Tree} instance exists. If no child      * exists or an existing child isn't accessible this method returns {@code false}.      *      * @param name The name of the child      * @return {@code true} if and only if a child with the given {@code name}      * exists and is accessible for the current content session.      */
 name|boolean
 name|hasChild
 parameter_list|(
@@ -168,12 +168,12 @@ name|String
 name|name
 parameter_list|)
 function_decl|;
-comment|/**      * Determine the number of children of this {@code Tree} instance.      * @return  number of children      */
+comment|/**      * Determine the number of children of this {@code Tree} instance taking      * access restrictions into account.      *      * @return The number of accessible children.      */
 name|long
 name|getChildrenCount
 parameter_list|()
 function_decl|;
-comment|/**      * All children of this {@code Tree} instance. The returned {@code Iterable}      * has snapshot semantics. That is, it reflect the state of this {@code Tree}      * instance. instance at the time of the call. Later changes to this instance are no      * visible to iterators obtained from the returned iterable.      * @return  An {@code Iterable} for all children      */
+comment|/**      * All accessible children of this {@code Tree} instance. The returned      * {@code Iterable} has snapshot semantics. That is, it reflect the state of      * this {@code Tree} instance at the time of the call. Later changes to this      * instance are not visible to iterators obtained from the returned iterable.      *      * @return An {@code Iterable} for all accessible children      */
 annotation|@
 name|Nonnull
 name|Iterable
