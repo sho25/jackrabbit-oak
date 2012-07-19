@@ -349,7 +349,7 @@ decl_stmt|;
 comment|/** Current root {@code Tree} */
 specifier|private
 name|TreeImpl
-name|root
+name|rootTree
 decl_stmt|;
 comment|/**      * Number of {@link #purge()} occurred so since the lase      * purge.      */
 specifier|private
@@ -435,7 +435,7 @@ operator|.
 name|branch
 argument_list|()
 expr_stmt|;
-name|root
+name|rootTree
 operator|=
 name|TreeImpl
 operator|.
@@ -445,6 +445,7 @@ name|this
 argument_list|)
 expr_stmt|;
 block|}
+comment|//---------------------------------------------------------------< Root>---
 annotation|@
 name|Override
 specifier|public
@@ -608,7 +609,7 @@ argument_list|()
 operator|.
 name|equals
 argument_list|(
-name|root
+name|rootTree
 operator|.
 name|getBaseState
 argument_list|()
@@ -627,7 +628,7 @@ decl_stmt|;
 name|NodeState
 name|head
 init|=
-name|root
+name|rootTree
 operator|.
 name|getNodeState
 argument_list|()
@@ -643,7 +644,7 @@ name|base
 argument_list|,
 name|head
 argument_list|,
-name|root
+name|rootTree
 argument_list|,
 name|conflictHandler
 argument_list|)
@@ -677,7 +678,7 @@ operator|.
 name|branch
 argument_list|()
 expr_stmt|;
-name|root
+name|rootTree
 operator|=
 name|TreeImpl
 operator|.
@@ -730,7 +731,7 @@ argument_list|()
 operator|.
 name|equals
 argument_list|(
-name|root
+name|rootTree
 operator|.
 name|getNodeState
 argument_list|()
@@ -795,24 +796,7 @@ block|}
 block|}
 return|;
 block|}
-comment|/**      * Add a {@code PurgeListener} to this instance. Listeners are automatically      * unregistered after having been called. If further notifications are required,      * they need to explicitly re-register.      * @param purgeListener  listener      */
-specifier|public
-name|void
-name|addListener
-parameter_list|(
-name|PurgeListener
-name|purgeListener
-parameter_list|)
-block|{
-name|purgePurgeListeners
-operator|.
-name|add
-argument_list|(
-name|purgeListener
-argument_list|)
-expr_stmt|;
-block|}
-comment|//------------------------------------------------------------< internal>---
+comment|//-----------------------------------------------------------< internal>---
 comment|/**      * Returns the node state from which the current branch was created.      * @return base node state      */
 annotation|@
 name|Nonnull
@@ -842,6 +826,22 @@ name|getRoot
 argument_list|()
 argument_list|)
 return|;
+block|}
+comment|/**      * Add a {@code PurgeListener} to this instance. Listeners are automatically      * unregistered after having been called. If further notifications are required,      * they need to explicitly re-register.      * @param purgeListener  listener      */
+name|void
+name|addListener
+parameter_list|(
+name|PurgeListener
+name|purgeListener
+parameter_list|)
+block|{
+name|purgePurgeListeners
+operator|.
+name|add
+argument_list|(
+name|purgeListener
+argument_list|)
+expr_stmt|;
 block|}
 comment|// TODO better way to determine purge limit. See OAK-175
 name|void
@@ -882,7 +882,7 @@ name|branch
 operator|.
 name|setRoot
 argument_list|(
-name|root
+name|rootTree
 operator|.
 name|getNodeState
 argument_list|()
@@ -946,7 +946,7 @@ block|{
 name|TreeImpl
 name|child
 init|=
-name|root
+name|rootTree
 decl_stmt|;
 for|for
 control|(
