@@ -87,6 +87,11 @@ name|NodeState
 name|getNodeState
 parameter_list|()
 function_decl|;
+comment|/**      * Returns the current number of child nodes.      *      * @return number of child nodes      */
+name|long
+name|getChildNodeCount
+parameter_list|()
+function_decl|;
 comment|/**      * Add a sub-tree      *      * @param name  name child node containing the sub-tree      * @param nodeState  sub-tree      */
 name|void
 name|setNode

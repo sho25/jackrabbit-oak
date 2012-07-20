@@ -939,7 +939,7 @@ name|getChildrenCount
 parameter_list|()
 block|{
 return|return
-name|getNodeState
+name|getNodeStateBuilder
 argument_list|()
 operator|.
 name|getChildNodeCount
