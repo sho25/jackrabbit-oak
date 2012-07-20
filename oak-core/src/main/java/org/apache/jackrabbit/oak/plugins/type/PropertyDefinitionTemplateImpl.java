@@ -104,7 +104,6 @@ import|;
 end_import
 
 begin_class
-specifier|abstract
 class|class
 name|PropertyDefinitionTemplateImpl
 extends|extends

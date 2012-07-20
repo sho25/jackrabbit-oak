@@ -134,7 +134,6 @@ import|;
 end_import
 
 begin_class
-specifier|abstract
 class|class
 name|NodeDefinitionTemplateImpl
 extends|extends
