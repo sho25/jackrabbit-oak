@@ -55,6 +55,22 @@ name|CoreValue
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|api
+operator|.
+name|PropertyState
+import|;
+end_import
+
 begin_comment
 comment|/**  * Builder interface for constructing new {@link NodeState node states}.  */
 end_comment
@@ -85,6 +101,29 @@ function_decl|;
 comment|/**      * Remove a child node      * @param name  name of the child node      */
 name|void
 name|removeNode
+parameter_list|(
+name|String
+name|name
+parameter_list|)
+function_decl|;
+comment|/**      * Returns the current number of properties.      *      * @return number of properties      */
+name|long
+name|getPropertyCount
+parameter_list|()
+function_decl|;
+comment|/**      * Returns the current properties.      *      * @return current properties      */
+name|Iterable
+argument_list|<
+name|?
+extends|extends
+name|PropertyState
+argument_list|>
+name|getProperties
+parameter_list|()
+function_decl|;
+comment|/**      * Returns the current state of the named property, or {@code null}      * if the property is not set.      *      * @param name property name      * @return property state      */
+name|PropertyState
+name|getProperty
 parameter_list|(
 name|String
 name|name

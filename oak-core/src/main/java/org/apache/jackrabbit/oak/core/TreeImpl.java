@@ -552,7 +552,7 @@ name|name
 parameter_list|)
 block|{
 return|return
-name|getNodeState
+name|getNodeStateBuilder
 argument_list|()
 operator|.
 name|getProperty
@@ -738,9 +738,6 @@ name|name
 parameter_list|)
 block|{
 return|return
-name|getNodeState
-argument_list|()
-operator|.
 name|getProperty
 argument_list|(
 name|name
@@ -757,7 +754,7 @@ name|getPropertyCount
 parameter_list|()
 block|{
 return|return
-name|getNodeState
+name|getNodeStateBuilder
 argument_list|()
 operator|.
 name|getPropertyCount
@@ -777,7 +774,7 @@ name|getProperties
 parameter_list|()
 block|{
 return|return
-name|getNodeState
+name|getNodeStateBuilder
 argument_list|()
 operator|.
 name|getProperties
@@ -1848,17 +1845,6 @@ name|unlock
 argument_list|()
 expr_stmt|;
 block|}
-block|}
-specifier|public
-name|void
-name|clear
-parameter_list|()
-block|{
-name|children
-operator|.
-name|clear
-argument_list|()
-expr_stmt|;
 block|}
 annotation|@
 name|Override
