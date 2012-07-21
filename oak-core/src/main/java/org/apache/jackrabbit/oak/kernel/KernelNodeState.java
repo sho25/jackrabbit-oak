@@ -343,23 +343,21 @@ name|oak
 operator|.
 name|util
 operator|.
-name|Iterators
+name|PagedIterator
 import|;
 end_import
 
 begin_import
 import|import
-name|org
+name|com
 operator|.
-name|apache
+name|google
 operator|.
-name|jackrabbit
+name|common
 operator|.
-name|oak
+name|collect
 operator|.
-name|util
-operator|.
-name|PagedIterator
+name|Iterators
 import|;
 end_import
 
@@ -952,7 +950,7 @@ block|{
 return|return
 name|Iterators
 operator|.
-name|flatten
+name|concat
 argument_list|(
 operator|new
 name|PagedIterator
