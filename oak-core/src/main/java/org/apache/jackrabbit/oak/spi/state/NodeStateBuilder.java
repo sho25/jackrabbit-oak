@@ -92,6 +92,22 @@ name|long
 name|getChildNodeCount
 parameter_list|()
 function_decl|;
+comment|/**      * Checks whether the named child node currently exists.      *      * @param name child node name      * @return {@code true} if the named child node exists,      *         {@code false} otherwise      */
+name|boolean
+name|hasChildNode
+parameter_list|(
+name|String
+name|name
+parameter_list|)
+function_decl|;
+comment|/**      * Returns the names of current child nodes.      *      * @return child node names      */
+name|Iterable
+argument_list|<
+name|String
+argument_list|>
+name|getChildNodeNames
+parameter_list|()
+function_decl|;
 comment|/**      * Add a sub-tree      *      * @param name  name child node containing the sub-tree      * @param nodeState  sub-tree      */
 name|void
 name|setNode
