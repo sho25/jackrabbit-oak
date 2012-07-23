@@ -1441,6 +1441,7 @@ comment|// expected
 block|}
 block|}
 specifier|private
+specifier|static
 name|void
 name|testVarInt
 parameter_list|(
@@ -1543,6 +1544,7 @@ argument_list|)
 expr_stmt|;
 block|}
 specifier|private
+specifier|static
 name|void
 name|testVarLong
 parameter_list|(

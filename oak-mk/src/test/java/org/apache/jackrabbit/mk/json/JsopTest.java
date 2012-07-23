@@ -43,16 +43,6 @@ name|StopWatch
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
 begin_comment
 comment|/**  * Test the Jsop tokenizer and builder.  */
 end_comment
@@ -146,6 +136,10 @@ name|timer
 operator|.
 name|seconds
 argument_list|()
+operator|+
+literal|" dummy: "
+operator|+
+name|t2
 argument_list|)
 expr_stmt|;
 block|}
@@ -1646,8 +1640,6 @@ specifier|public
 name|void
 name|testBuilder
 parameter_list|()
-throws|throws
-name|IOException
 block|{
 name|JsopBuilder
 name|buff
@@ -1927,8 +1919,6 @@ specifier|public
 name|void
 name|testEscape
 parameter_list|()
-throws|throws
-name|IOException
 block|{
 name|assertEquals
 argument_list|(

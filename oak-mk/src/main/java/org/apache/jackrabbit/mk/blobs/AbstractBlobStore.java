@@ -1759,9 +1759,6 @@ name|skipFully
 argument_list|(
 name|idStream
 argument_list|,
-operator|(
-name|int
-operator|)
 name|len
 argument_list|)
 expr_stmt|;

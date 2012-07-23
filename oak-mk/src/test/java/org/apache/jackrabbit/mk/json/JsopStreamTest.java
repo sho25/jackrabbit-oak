@@ -43,16 +43,6 @@ name|StopWatch
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
 begin_class
 specifier|public
 class|class
@@ -333,6 +323,7 @@ argument_list|)
 expr_stmt|;
 block|}
 specifier|private
+specifier|static
 name|void
 name|testRawValue
 parameter_list|(
@@ -1178,11 +1169,10 @@ block|}
 block|}
 block|}
 specifier|public
+specifier|static
 name|void
 name|testBuilder
 parameter_list|()
-throws|throws
-name|IOException
 block|{
 name|JsopWriter
 name|buff
