@@ -221,8 +221,6 @@ decl_stmt|;
 specifier|private
 name|String
 name|primaryItemName
-init|=
-literal|null
 decl_stmt|;
 specifier|private
 name|String

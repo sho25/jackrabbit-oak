@@ -1338,7 +1338,6 @@ block|{
 comment|// do nothing
 block|}
 block|}
-empty_stmt|;
 block|}
 end_class
 

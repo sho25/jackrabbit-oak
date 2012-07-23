@@ -118,15 +118,11 @@ specifier|private
 name|String
 index|[]
 name|valueConstraints
-init|=
-literal|null
 decl_stmt|;
 specifier|private
 name|Value
 index|[]
 name|defaultValues
-init|=
-literal|null
 decl_stmt|;
 specifier|protected
 name|Value

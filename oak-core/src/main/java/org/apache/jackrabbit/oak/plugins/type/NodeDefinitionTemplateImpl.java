@@ -162,15 +162,11 @@ decl_stmt|;
 specifier|private
 name|String
 name|defaultPrimaryTypeName
-init|=
-literal|null
 decl_stmt|;
 specifier|private
 name|String
 index|[]
 name|requiredPrimaryTypeNames
-init|=
-literal|null
 decl_stmt|;
 specifier|protected
 name|NodeType
