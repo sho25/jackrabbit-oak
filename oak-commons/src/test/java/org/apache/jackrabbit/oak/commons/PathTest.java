@@ -37,6 +37,10 @@ name|TestCase
 import|;
 end_import
 
+begin_comment
+comment|/**  * Test the PathUtils class.  */
+end_comment
+
 begin_class
 specifier|public
 class|class
@@ -151,6 +155,7 @@ argument_list|)
 expr_stmt|;
 block|}
 specifier|private
+specifier|static
 name|int
 name|getElementCount
 parameter_list|(
@@ -195,6 +200,7 @@ name|count
 return|;
 block|}
 specifier|private
+specifier|static
 name|String
 name|getElement
 parameter_list|(
@@ -244,6 +250,7 @@ literal|""
 return|;
 block|}
 specifier|private
+specifier|static
 name|void
 name|test
 parameter_list|(
