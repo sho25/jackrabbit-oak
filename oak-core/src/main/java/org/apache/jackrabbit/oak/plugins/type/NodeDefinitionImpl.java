@@ -177,7 +177,7 @@ name|node
 operator|.
 name|getNames
 argument_list|(
-literal|"requiredPrimaryTypes"
+literal|"jcr:requiredPrimaryTypes"
 argument_list|,
 literal|"nt:base"
 argument_list|)
@@ -305,7 +305,7 @@ name|node
 operator|.
 name|getName
 argument_list|(
-literal|"jcr:defaultPrimaryTypeName"
+literal|"jcr:defaultPrimaryType"
 argument_list|,
 literal|null
 argument_list|)
