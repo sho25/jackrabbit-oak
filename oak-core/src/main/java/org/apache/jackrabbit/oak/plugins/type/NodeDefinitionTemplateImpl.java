@@ -531,19 +531,10 @@ argument_list|)
 decl_stmt|;
 for|for
 control|(
-name|int
-name|i
-init|=
-literal|0
-init|;
-name|i
-operator|<
+name|String
+name|requiredPrimaryTypeName
+range|:
 name|requiredPrimaryTypeNames
-operator|.
-name|length
-condition|;
-name|i
-operator|++
 control|)
 block|{
 try|try
@@ -554,10 +545,7 @@ name|add
 argument_list|(
 name|getNodeType
 argument_list|(
-name|requiredPrimaryTypeNames
-index|[
-name|i
-index|]
+name|requiredPrimaryTypeName
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -574,10 +562,7 @@ name|warn
 argument_list|(
 literal|"Unable to required primary primary type "
 operator|+
-name|requiredPrimaryTypeNames
-index|[
-name|i
-index|]
+name|requiredPrimaryTypeName
 operator|+
 literal|" of "
 operator|+

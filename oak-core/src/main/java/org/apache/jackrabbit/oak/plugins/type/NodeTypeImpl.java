@@ -783,19 +783,10 @@ argument_list|)
 decl_stmt|;
 for|for
 control|(
-name|int
-name|i
-init|=
-literal|0
-init|;
-name|i
-operator|<
+name|String
+name|name
+range|:
 name|names
-operator|.
-name|length
-condition|;
-name|i
-operator|++
 control|)
 block|{
 try|try
@@ -807,10 +798,7 @@ name|manager
 operator|.
 name|getNodeType
 argument_list|(
-name|names
-index|[
-name|i
-index|]
+name|name
 argument_list|)
 decl_stmt|;
 name|types
@@ -833,10 +821,7 @@ name|warn
 argument_list|(
 literal|"Unable to access declared supertype "
 operator|+
-name|names
-index|[
-name|i
-index|]
+name|name
 operator|+
 literal|" of "
 operator|+
