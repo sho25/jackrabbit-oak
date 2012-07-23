@@ -251,7 +251,7 @@ name|NodeDefinitionTemplate
 argument_list|>
 argument_list|()
 decl_stmt|;
-specifier|private
+specifier|public
 name|NodeTypeTemplateImpl
 parameter_list|(
 name|NodeTypeManager
