@@ -2140,11 +2140,32 @@ name|boolean
 name|hasSessionLocalMappings
 parameter_list|()
 block|{
-comment|// TODO OAK-61
-comment|// TODO right now we would have to check whether AbstractSession.namespaces is empty
+if|if
+condition|(
+name|session
+operator|instanceof
+name|SessionImpl
+condition|)
+block|{
+return|return
+operator|(
+operator|(
+name|SessionImpl
+operator|)
+name|session
+operator|)
+operator|.
+name|hasSessionLocalMappings
+argument_list|()
+return|;
+block|}
+else|else
+block|{
+comment|// we don't know
 return|return
 literal|true
 return|;
+block|}
 block|}
 block|}
 comment|//------------------------------------------------------------< AnnotatingConflictHandler>---
