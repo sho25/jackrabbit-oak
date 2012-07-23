@@ -889,6 +889,7 @@ block|}
 block|}
 comment|//-------------------------------------------------------------<private>---
 specifier|private
+specifier|static
 name|void
 name|addChild
 parameter_list|(
@@ -960,6 +961,7 @@ expr_stmt|;
 block|}
 block|}
 specifier|private
+specifier|static
 name|void
 name|setProperty
 parameter_list|(
