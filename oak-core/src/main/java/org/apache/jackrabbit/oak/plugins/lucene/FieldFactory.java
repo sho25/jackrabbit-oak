@@ -20,6 +20,34 @@ package|;
 end_package
 
 begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|lucene
+operator|.
+name|document
+operator|.
+name|Field
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|lucene
+operator|.
+name|document
+operator|.
+name|StringField
+import|;
+end_import
+
+begin_import
 import|import static
 name|org
 operator|.
@@ -53,12 +81,12 @@ name|Field
 operator|.
 name|Store
 operator|.
-name|*
+name|NO
 import|;
 end_import
 
 begin_import
-import|import
+import|import static
 name|org
 operator|.
 name|apache
@@ -68,25 +96,15 @@ operator|.
 name|document
 operator|.
 name|Field
-import|;
-end_import
-
-begin_import
-import|import
-name|org
 operator|.
-name|apache
+name|Store
 operator|.
-name|lucene
-operator|.
-name|document
-operator|.
-name|StringField
+name|YES
 import|;
 end_import
 
 begin_comment
-comment|/**  *<code>FieldFactory</code> is a factory for<code>Field</code> instances with  * frequently used fields.  */
+comment|/**  * {@code FieldFactory} is a factory for<code>Field</code> instances with  * frequently used fields.  */
 end_comment
 
 begin_class

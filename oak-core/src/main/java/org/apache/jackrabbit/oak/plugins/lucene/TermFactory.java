@@ -34,7 +34,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *<code>TermFactory</code> is a factory for<code>Term</code> instances with  * frequently used field names.  */
+comment|/**  * {@code TermFactory} is a factory for<code>Term</code> instances with  * frequently used field names.  */
 end_comment
 
 begin_class
@@ -48,7 +48,7 @@ specifier|private
 name|TermFactory
 parameter_list|()
 block|{     }
-comment|/**      * Creates a Term with the given<code>path</code> value and with a field      * name {@link FieldNames#PATH}.      *       * @param path      *            the path.      * @return the path term.      */
+comment|/**      * Creates a Term with the given {@code path} value and with a field      * name {@link FieldNames#PATH}.      *      * @param path      *            the path.      * @return the path term.      */
 specifier|public
 specifier|static
 name|Term
