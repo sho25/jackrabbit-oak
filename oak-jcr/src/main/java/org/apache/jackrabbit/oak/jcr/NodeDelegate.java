@@ -293,6 +293,7 @@ specifier|private
 name|Tree
 name|tree
 decl_stmt|;
+specifier|public
 name|NodeDelegate
 parameter_list|(
 name|SessionDelegate
