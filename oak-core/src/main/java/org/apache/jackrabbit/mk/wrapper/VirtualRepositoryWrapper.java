@@ -1754,6 +1754,7 @@ argument_list|)
 return|;
 block|}
 specifier|private
+specifier|static
 name|String
 name|getRevision
 parameter_list|(

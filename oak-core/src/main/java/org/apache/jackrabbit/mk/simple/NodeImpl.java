@@ -922,14 +922,7 @@ name|n
 operator|.
 name|descendantCount
 decl_stmt|;
-name|long
-name|diffInline
-init|=
-operator|-
-name|n
-operator|.
-name|descendantInlineCount
-decl_stmt|;
+comment|// long diffInline = -n.descendantInlineCount;
 name|NodeImpl
 name|n2
 init|=
@@ -973,12 +966,7 @@ name|n2
 operator|.
 name|descendantCount
 expr_stmt|;
-name|diffInline
-operator|+=
-name|n2
-operator|.
-name|descendantInlineCount
-expr_stmt|;
+comment|// diffInline += n2.descendantInlineCount;
 name|clone
 operator|.
 name|descendantCount
@@ -3658,8 +3646,9 @@ operator|.
 name|readRawValue
 argument_list|()
 decl_stmt|;
-if|if
-condition|(
+name|boolean
+name|hidden
+init|=
 name|key
 operator|.
 name|length
@@ -3675,10 +3664,11 @@ literal|0
 argument_list|)
 operator|==
 literal|':'
-condition|)
-block|{
+decl_stmt|;
 if|if
 condition|(
+name|hidden
+operator|&&
 name|key
 operator|.
 name|equals
@@ -3706,6 +3696,8 @@ block|}
 elseif|else
 if|if
 condition|(
+name|hidden
+operator|&&
 name|key
 operator|.
 name|equals
@@ -3733,6 +3725,8 @@ block|}
 elseif|else
 if|if
 condition|(
+name|hidden
+operator|&&
 name|key
 operator|.
 name|equals
@@ -3760,19 +3754,6 @@ argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
-block|}
-else|else
-block|{
-name|node
-operator|.
-name|setProperty
-argument_list|(
-name|key
-argument_list|,
-name|value
-argument_list|)
-expr_stmt|;
-block|}
 block|}
 elseif|else
 if|if
@@ -4075,6 +4056,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+comment|/**      * A visitor over the child nodes.      */
 interface|interface
 name|ChildVisitor
 block|{

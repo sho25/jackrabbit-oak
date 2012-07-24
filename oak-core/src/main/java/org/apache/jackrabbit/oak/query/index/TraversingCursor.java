@@ -529,6 +529,7 @@ return|return
 literal|false
 return|;
 block|}
+comment|/**      * A pointer to a child node within a node.      */
 specifier|static
 class|class
 name|NodeCursor

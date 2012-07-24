@@ -2256,6 +2256,7 @@ name|n
 return|;
 block|}
 specifier|private
+specifier|static
 name|boolean
 name|checkPropertyRights
 parameter_list|(

@@ -93,6 +93,10 @@ name|ChildVisitor
 import|;
 end_import
 
+begin_comment
+comment|/**  * A map of nodes that are accessible by id.  */
+end_comment
+
 begin_class
 specifier|public
 class|class

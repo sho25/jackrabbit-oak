@@ -788,6 +788,7 @@ argument_list|)
 expr_stmt|;
 block|}
 specifier|private
+specifier|static
 name|String
 name|filterJournal
 parameter_list|(

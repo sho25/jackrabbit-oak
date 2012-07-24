@@ -185,6 +185,10 @@ name|Parameters
 import|;
 end_import
 
+begin_comment
+comment|/**  * The base class for tests that are run using multiple MicroKernel  * implementations.  */
+end_comment
+
 begin_class
 specifier|public
 class|class
@@ -484,7 +488,7 @@ name|url
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Whether this is (directly or indirectly) the MemoryKernelImpl.      *      * @return true if it is      */
+comment|/**      * Whether this is (directly or indirectly) the MemoryKernelImpl.      *      * @param mk the MicroKernel implementation      * @return true if it is      */
 specifier|public
 specifier|static
 name|boolean

@@ -1301,6 +1301,7 @@ argument_list|()
 return|;
 block|}
 specifier|private
+specifier|static
 name|RuntimeException
 name|convert
 parameter_list|(
@@ -1345,6 +1346,7 @@ argument_list|)
 return|;
 block|}
 specifier|private
+specifier|static
 name|void
 name|logException
 parameter_list|(
@@ -1364,6 +1366,7 @@ argument_list|)
 expr_stmt|;
 block|}
 specifier|private
+specifier|static
 name|void
 name|logResult
 parameter_list|(
@@ -1383,6 +1386,7 @@ argument_list|)
 expr_stmt|;
 block|}
 specifier|private
+specifier|static
 name|void
 name|log
 parameter_list|(

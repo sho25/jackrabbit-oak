@@ -99,6 +99,10 @@ name|QueryIndex
 import|;
 end_import
 
+begin_comment
+comment|/**  * An index that traverses over a given subtree.  */
+end_comment
+
 begin_class
 specifier|public
 class|class

@@ -371,6 +371,7 @@ literal|"wrapper instance was not created by this factory"
 argument_list|)
 throw|;
 block|}
+comment|/**      * A wrapper for MicroKernel implementations that don't support JSOP methods.      */
 specifier|private
 specifier|static
 class|class
@@ -382,7 +383,6 @@ specifier|final
 name|MicroKernel
 name|wrapped
 decl_stmt|;
-specifier|private
 name|MicroKernelWrapperImpl
 parameter_list|(
 name|MicroKernel
@@ -394,7 +394,6 @@ operator|=
 name|mk
 expr_stmt|;
 block|}
-specifier|private
 name|MicroKernel
 name|getWrapped
 parameter_list|()
