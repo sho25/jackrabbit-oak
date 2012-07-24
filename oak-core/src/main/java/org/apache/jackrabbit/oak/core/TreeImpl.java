@@ -693,7 +693,7 @@ return|;
 block|}
 else|else
 block|{
-comment|// ...and didn't have it before. So it's REMOVED
+comment|// ...but did have it before. So it's REMOVED
 return|return
 name|Status
 operator|.
@@ -1344,7 +1344,7 @@ return|return
 name|nodeStateBuilder
 return|;
 block|}
-comment|//------------------------------------------------------------< internal>---
+comment|//-----------------------------------------------------------< internal>---
 comment|/**      * Move this tree to the parent at {@code destParent} with the new name      * {@code destName}.      *      * @param destParent  new parent for this tree      * @param destName  new name for this tree      */
 name|void
 name|moveTo
