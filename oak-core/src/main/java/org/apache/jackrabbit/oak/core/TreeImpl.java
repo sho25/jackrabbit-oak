@@ -320,6 +320,7 @@ comment|/** Lazily initialised {@code NodeStateBuilder} for the underlying node 
 name|NodeStateBuilder
 name|nodeStateBuilder
 decl_stmt|;
+comment|/**      * Cache for child trees that have been accessed before.      */
 specifier|private
 specifier|final
 name|Children
