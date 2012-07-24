@@ -325,7 +325,7 @@ control|)
 block|{
 name|c
 operator|.
-name|setNodeName
+name|setTestRoot
 argument_list|(
 literal|"test"
 operator|+
