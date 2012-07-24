@@ -213,6 +213,7 @@ operator|=
 name|pos
 expr_stmt|;
 block|}
+comment|/**      * An iterator over a cursor.      */
 specifier|public
 specifier|static
 class|class

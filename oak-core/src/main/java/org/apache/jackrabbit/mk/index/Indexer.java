@@ -288,17 +288,17 @@ name|Indexer
 implements|implements
 name|QueryIndexProvider
 block|{
-comment|/** 	 * The root node of the index definition (configuration) nodes. 	 */
+comment|/**      * The root node of the index definition (configuration) nodes.      */
 comment|// TODO OAK-178 discuss where to store index config data
 specifier|public
 specifier|static
 specifier|final
 name|String
-name|INDEX_CONFIG_ROOT
+name|INDEX_CONFIG_PATH
 init|=
 literal|"/jcr:system/indexes"
 decl_stmt|;
-comment|/** 	 * For each index, the index content is stored relative to the index 	 * definition below this node. There is also such a node just below the 	 * index definition node, to store the last revision and for temporary data. 	 */
+comment|/**      * For each index, the index content is stored relative to the index      * definition below this node. There is also such a node just below the      * index definition node, to store the last revision and for temporary data.      */
 specifier|public
 specifier|static
 specifier|final
@@ -316,6 +316,7 @@ init|=
 literal|"prefix@"
 decl_stmt|;
 comment|/**      * The node name prefix of a property index.      */
+comment|// TODO support multi-property indexes
 specifier|static
 specifier|final
 name|String
@@ -330,6 +331,15 @@ name|String
 name|UNIQUE
 init|=
 literal|"unique"
+decl_stmt|;
+comment|/**      * The maximum length of the write buffer.      */
+specifier|private
+specifier|static
+specifier|final
+name|int
+name|MAX_BUFFER_LENGTH
+init|=
+literal|100000
 decl_stmt|;
 specifier|private
 specifier|static
@@ -356,7 +366,7 @@ specifier|private
 name|String
 name|indexRootNode
 init|=
-name|INDEX_CONFIG_ROOT
+name|INDEX_CONFIG_PATH
 decl_stmt|;
 specifier|private
 name|int
@@ -2261,6 +2271,26 @@ argument_list|(
 literal|'}'
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|buffer
+operator|!=
+literal|null
+operator|&&
+name|buffer
+operator|.
+name|length
+argument_list|()
+operator|>
+name|MAX_BUFFER_LENGTH
+condition|)
+block|{
+name|updateEnd
+argument_list|(
+name|rev
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 do|while
 condition|(
@@ -2329,6 +2359,18 @@ name|toString
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|flushBuffer
+argument_list|()
+expr_stmt|;
+return|return
+name|revision
+return|;
+block|}
+specifier|private
+name|void
+name|flushBuffer
+parameter_list|()
+block|{
 try|try
 block|{
 name|commitChanges
@@ -2360,9 +2402,6 @@ comment|// this will cause all indexes to be removed, so
 comment|// it can be ignored here
 block|}
 block|}
-return|return
-name|revision
-return|;
 block|}
 comment|/**      * Update the index with the given changes.      *      * @param rootPath the root path      * @param t the changes      * @param lastRevision      */
 name|void
@@ -2886,18 +2925,6 @@ name|path
 argument_list|)
 condition|)
 block|{
-if|if
-condition|(
-name|n
-operator|.
-name|getPropertyCount
-argument_list|()
-operator|==
-literal|0
-condition|)
-block|{
-comment|// add or remove the index itself - otherwise it's
-comment|// changing the root page of the index
 name|addOrRemoveIndex
 argument_list|(
 name|path
@@ -2907,8 +2934,7 @@ argument_list|,
 name|add
 argument_list|)
 expr_stmt|;
-block|}
-comment|// don't index the index
+comment|// don't index the index data itself
 return|return;
 block|}
 for|for
@@ -3264,7 +3290,7 @@ name|path
 argument_list|)
 condition|)
 block|{
-comment|// don't index the index
+comment|// don't index the index data itself
 return|return;
 block|}
 name|String
@@ -3434,7 +3460,7 @@ name|path
 argument_list|)
 condition|)
 block|{
-comment|// don't index the index
+comment|// don't index the index data itself
 return|return;
 block|}
 name|String
@@ -3540,7 +3566,7 @@ literal|true
 argument_list|)
 expr_stmt|;
 block|}
-comment|// don't index the index
+comment|// don't index the index data itself
 return|return;
 block|}
 if|if
@@ -3842,6 +3868,34 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|needFlush
+argument_list|()
+condition|)
+block|{
+name|flushBuffer
+argument_list|()
+expr_stmt|;
+block|}
+block|}
+specifier|private
+name|boolean
+name|needFlush
+parameter_list|()
+block|{
+return|return
+name|buffer
+operator|!=
+literal|null
+operator|&&
+name|buffer
+operator|.
+name|length
+argument_list|()
+operator|>
+name|MAX_BUFFER_LENGTH
+return|;
 block|}
 annotation|@
 name|Override

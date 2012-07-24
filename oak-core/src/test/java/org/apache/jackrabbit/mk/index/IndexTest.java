@@ -1628,7 +1628,7 @@ name|getNodes
 argument_list|(
 name|Indexer
 operator|.
-name|INDEX_CONFIG_ROOT
+name|INDEX_CONFIG_PATH
 argument_list|,
 name|head
 argument_list|,
