@@ -53,6 +53,10 @@ name|FilterImpl
 import|;
 end_import
 
+begin_comment
+comment|/**  * The "a.x = b.y" join condition.  */
+end_comment
+
 begin_class
 specifier|public
 class|class

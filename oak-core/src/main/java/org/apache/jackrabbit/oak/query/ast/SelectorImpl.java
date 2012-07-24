@@ -167,6 +167,10 @@ name|QueryIndex
 import|;
 end_import
 
+begin_comment
+comment|/**  * A selector within a query.  */
+end_comment
+
 begin_class
 specifier|public
 class|class
@@ -199,6 +203,7 @@ name|TYPE_BASE
 init|=
 literal|"nt:base"
 decl_stmt|;
+comment|// TODO possibly support using multiple indexes (using index intersection / index merge)
 specifier|protected
 name|QueryIndex
 name|index

@@ -3601,6 +3601,52 @@ name|index
 argument_list|)
 return|;
 block|}
+specifier|static
+name|String
+name|removeParens
+parameter_list|(
+name|String
+name|s
+parameter_list|)
+block|{
+if|if
+condition|(
+name|s
+operator|.
+name|startsWith
+argument_list|(
+literal|"("
+argument_list|)
+operator|&&
+name|s
+operator|.
+name|endsWith
+argument_list|(
+literal|")"
+argument_list|)
+condition|)
+block|{
+return|return
+name|s
+operator|.
+name|substring
+argument_list|(
+literal|1
+argument_list|,
+name|s
+operator|.
+name|length
+argument_list|()
+operator|-
+literal|1
+argument_list|)
+return|;
+block|}
+return|return
+name|s
+return|;
+block|}
+comment|/**      * An expression.      */
 specifier|abstract
 specifier|static
 class|class
@@ -3615,6 +3661,7 @@ literal|false
 return|;
 block|}
 block|}
+comment|/**      * A literal expression.      */
 specifier|static
 class|class
 name|Literal
@@ -3709,6 +3756,7 @@ name|value
 return|;
 block|}
 block|}
+comment|/**      * A property expression.      */
 specifier|static
 class|class
 name|Property
@@ -3748,6 +3796,7 @@ literal|']'
 return|;
 block|}
 block|}
+comment|/**      * A condition.      */
 specifier|static
 class|class
 name|Condition
@@ -3846,6 +3895,7 @@ literal|true
 return|;
 block|}
 block|}
+comment|/**      * A function call.      */
 specifier|static
 class|class
 name|Function
@@ -3995,6 +4045,7 @@ argument_list|)
 return|;
 block|}
 block|}
+comment|/**      * A cast operation.      */
 specifier|static
 class|class
 name|Cast
@@ -4095,6 +4146,7 @@ literal|false
 return|;
 block|}
 block|}
+comment|/**      * An order by expression.      */
 specifier|static
 class|class
 name|Order
@@ -4124,51 +4176,6 @@ literal|""
 operator|)
 return|;
 block|}
-block|}
-specifier|static
-name|String
-name|removeParens
-parameter_list|(
-name|String
-name|s
-parameter_list|)
-block|{
-if|if
-condition|(
-name|s
-operator|.
-name|startsWith
-argument_list|(
-literal|"("
-argument_list|)
-operator|&&
-name|s
-operator|.
-name|endsWith
-argument_list|(
-literal|")"
-argument_list|)
-condition|)
-block|{
-return|return
-name|s
-operator|.
-name|substring
-argument_list|(
-literal|1
-argument_list|,
-name|s
-operator|.
-name|length
-argument_list|()
-operator|-
-literal|1
-argument_list|)
-return|;
-block|}
-return|return
-name|s
-return|;
 block|}
 block|}
 end_class

@@ -125,6 +125,10 @@ name|FilterImpl
 import|;
 end_import
 
+begin_comment
+comment|/**  * A comparison operation (including "like").  */
+end_comment
+
 begin_class
 specifier|public
 class|class

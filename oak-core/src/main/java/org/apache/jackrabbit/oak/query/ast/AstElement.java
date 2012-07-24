@@ -157,6 +157,10 @@ name|PropertyType
 import|;
 end_import
 
+begin_comment
+comment|/**  * The base class for all abstract syntax tree nodes.  */
+end_comment
+
 begin_class
 specifier|abstract
 class|class

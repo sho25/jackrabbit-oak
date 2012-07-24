@@ -61,6 +61,10 @@ name|PropertyType
 import|;
 end_import
 
+begin_comment
+comment|/**  * A literal of a certain data type, possibly "cast(..)" of a literal.  */
+end_comment
+
 begin_class
 specifier|public
 class|class

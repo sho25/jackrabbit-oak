@@ -87,6 +87,10 @@ name|FilterImpl
 import|;
 end_import
 
+begin_comment
+comment|/**  * The function "upper(..)".  */
+end_comment
+
 begin_class
 specifier|public
 class|class

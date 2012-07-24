@@ -19,6 +19,10 @@ name|ast
 package|;
 end_package
 
+begin_comment
+comment|/**  * A visitor to access all elements.  */
+end_comment
+
 begin_interface
 specifier|public
 interface|interface

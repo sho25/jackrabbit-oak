@@ -51,6 +51,10 @@ name|Query
 import|;
 end_import
 
+begin_comment
+comment|/**  * The base class of a selector and a join.  */
+end_comment
+
 begin_class
 specifier|public
 specifier|abstract

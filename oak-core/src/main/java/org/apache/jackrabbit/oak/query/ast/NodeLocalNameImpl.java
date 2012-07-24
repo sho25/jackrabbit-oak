@@ -103,6 +103,10 @@ name|FilterImpl
 import|;
 end_import
 
+begin_comment
+comment|/**  * The function "localname(..)".  */
+end_comment
+
 begin_class
 specifier|public
 class|class

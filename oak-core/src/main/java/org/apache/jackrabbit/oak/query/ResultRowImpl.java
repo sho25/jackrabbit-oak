@@ -191,6 +191,24 @@ literal|"More than one selector"
 argument_list|)
 throw|;
 block|}
+elseif|else
+if|if
+condition|(
+name|paths
+operator|.
+name|length
+operator|==
+literal|0
+condition|)
+block|{
+throw|throw
+operator|new
+name|IllegalArgumentException
+argument_list|(
+literal|"This query does not have a selector"
+argument_list|)
+throw|;
+block|}
 return|return
 name|paths
 index|[

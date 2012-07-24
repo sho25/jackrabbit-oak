@@ -69,6 +69,10 @@ name|FilterImpl
 import|;
 end_import
 
+begin_comment
+comment|/**  * A condition to check if the property exists ("is not null").  */
+end_comment
+
 begin_class
 specifier|public
 class|class

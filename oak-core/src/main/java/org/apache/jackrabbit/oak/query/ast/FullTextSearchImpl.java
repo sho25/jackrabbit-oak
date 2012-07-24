@@ -105,6 +105,10 @@ name|FilterImpl
 import|;
 end_import
 
+begin_comment
+comment|/**  * A fulltext "contains(...)" condition.  */
+end_comment
+
 begin_class
 specifier|public
 class|class
@@ -579,6 +583,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * A parser for fulltext condition literals.      */
 specifier|public
 specifier|static
 class|class
@@ -1189,6 +1194,7 @@ argument_list|)
 return|;
 block|}
 block|}
+comment|/**      * The base class for fulltext condition expression.      */
 specifier|public
 specifier|abstract
 specifier|static
@@ -1210,6 +1216,7 @@ name|simplify
 parameter_list|()
 function_decl|;
 block|}
+comment|/**      * A fulltext "and" condition.      */
 specifier|static
 class|class
 name|FullTextAnd
@@ -1353,6 +1360,7 @@ argument_list|()
 return|;
 block|}
 block|}
+comment|/**      * A fulltext "or" condition.      */
 specifier|static
 class|class
 name|FullTextOr
@@ -1498,6 +1506,7 @@ argument_list|()
 return|;
 block|}
 block|}
+comment|/**      * A fulltext term, or a "not" term.      */
 specifier|static
 class|class
 name|FullTextTerm

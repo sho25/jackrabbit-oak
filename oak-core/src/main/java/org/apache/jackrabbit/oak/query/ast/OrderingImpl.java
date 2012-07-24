@@ -19,6 +19,10 @@ name|ast
 package|;
 end_package
 
+begin_comment
+comment|/**  * An element of an "order by" list. This includes whether this element should  * be sorted in ascending or descending order.  */
+end_comment
+
 begin_class
 specifier|public
 class|class

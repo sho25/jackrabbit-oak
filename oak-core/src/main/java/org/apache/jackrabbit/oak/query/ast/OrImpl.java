@@ -37,6 +37,10 @@ name|FilterImpl
 import|;
 end_import
 
+begin_comment
+comment|/**  * An "or" condition.  */
+end_comment
+
 begin_class
 specifier|public
 class|class

@@ -1982,6 +1982,7 @@ name|mk
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * An iterator over result rows.      */
 class|class
 name|RowIterator
 implements|implements

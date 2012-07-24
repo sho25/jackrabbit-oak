@@ -69,6 +69,10 @@ name|FilterImpl
 import|;
 end_import
 
+begin_comment
+comment|/**  * The base class for dynamic operands (such as a function or property).  */
+end_comment
+
 begin_class
 specifier|public
 specifier|abstract

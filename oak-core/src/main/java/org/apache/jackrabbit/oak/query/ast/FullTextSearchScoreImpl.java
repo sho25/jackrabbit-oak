@@ -69,6 +69,10 @@ name|FilterImpl
 import|;
 end_import
 
+begin_comment
+comment|/**  * A fulltext search score expression.  */
+end_comment
+
 begin_class
 specifier|public
 class|class
