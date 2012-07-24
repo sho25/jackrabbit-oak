@@ -75,6 +75,16 @@ name|Set
 import|;
 end_import
 
+begin_import
+import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|Nonnull
+import|;
+end_import
+
 begin_comment
 comment|/**  * AuthInfoImpl... TODO  */
 end_comment
@@ -162,19 +172,13 @@ name|this
 operator|.
 name|principals
 operator|=
+name|Collections
+operator|.
+name|unmodifiableSet
+argument_list|(
 name|principals
+argument_list|)
 expr_stmt|;
-block|}
-name|Set
-argument_list|<
-name|Principal
-argument_list|>
-name|getPrincipals
-parameter_list|()
-block|{
-return|return
-name|principals
-return|;
 block|}
 comment|//-----------------------------------------------------------< AuthInfo>---
 annotation|@
@@ -188,6 +192,8 @@ return|return
 name|userID
 return|;
 block|}
+annotation|@
+name|Nonnull
 annotation|@
 name|Override
 specifier|public
@@ -232,6 +238,20 @@ name|get
 argument_list|(
 name|attributeName
 argument_list|)
+return|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|Set
+argument_list|<
+name|Principal
+argument_list|>
+name|getPrincipals
+parameter_list|()
+block|{
+return|return
+name|principals
 return|;
 block|}
 block|}
