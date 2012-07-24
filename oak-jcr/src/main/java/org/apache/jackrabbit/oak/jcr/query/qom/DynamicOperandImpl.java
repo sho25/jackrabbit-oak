@@ -35,6 +35,10 @@ name|DynamicOperand
 import|;
 end_import
 
+begin_comment
+comment|/**  * The base class for dynamic operands.  */
+end_comment
+
 begin_class
 specifier|public
 specifier|abstract

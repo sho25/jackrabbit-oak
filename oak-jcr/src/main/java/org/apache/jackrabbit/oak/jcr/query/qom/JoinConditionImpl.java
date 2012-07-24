@@ -35,6 +35,10 @@ name|JoinCondition
 import|;
 end_import
 
+begin_comment
+comment|/**  * The base class for join conditions.  */
+end_comment
+
 begin_class
 specifier|public
 specifier|abstract

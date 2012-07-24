@@ -395,7 +395,7 @@ name|Iterator
 argument_list|<
 name|RowImpl
 argument_list|>
-name|it
+name|rowIterator
 init|=
 operator|new
 name|Iterator
@@ -564,7 +564,7 @@ return|return
 operator|new
 name|RowIteratorAdapter
 argument_list|(
-name|it
+name|rowIterator
 argument_list|)
 return|;
 block|}
@@ -665,7 +665,7 @@ name|Iterator
 argument_list|<
 name|NodeImpl
 argument_list|>
-name|it
+name|nodeIterator
 init|=
 operator|new
 name|Iterator
@@ -820,7 +820,7 @@ return|return
 operator|new
 name|NodeIteratorAdapter
 argument_list|(
-name|it
+name|nodeIterator
 argument_list|)
 return|;
 block|}

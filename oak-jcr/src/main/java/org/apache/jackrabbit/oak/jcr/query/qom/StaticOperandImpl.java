@@ -35,6 +35,10 @@ name|StaticOperand
 import|;
 end_import
 
+begin_comment
+comment|/**  * The base class for static operands.  */
+end_comment
+
 begin_class
 specifier|public
 specifier|abstract

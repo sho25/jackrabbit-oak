@@ -21,6 +21,10 @@ name|qom
 package|;
 end_package
 
+begin_comment
+comment|/**  * The base class for all QOM nodes.  */
+end_comment
+
 begin_class
 specifier|abstract
 class|class
