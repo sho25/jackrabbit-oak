@@ -52,6 +52,12 @@ name|String
 name|uri
 parameter_list|)
 function_decl|;
+specifier|public
+specifier|abstract
+name|boolean
+name|hasSessionLocalMappings
+parameter_list|()
+function_decl|;
 annotation|@
 name|Override
 specifier|public
@@ -215,6 +221,19 @@ block|}
 block|}
 block|}
 comment|// otherwise: not an expanded name
+if|if
+condition|(
+operator|!
+name|hasSessionLocalMappings
+argument_list|()
+condition|)
+block|{
+return|return
+name|jcrName
+return|;
+block|}
+else|else
+block|{
 name|String
 name|pref
 init|=
@@ -268,6 +287,7 @@ literal|':'
 operator|+
 name|name
 return|;
+block|}
 block|}
 block|}
 block|}
