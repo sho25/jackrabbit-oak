@@ -285,6 +285,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Nonnull
 specifier|public
 name|CommitEditor
 name|getEditor
@@ -314,6 +316,8 @@ operator|=
 name|editor
 expr_stmt|;
 block|}
+annotation|@
+name|Nonnull
 specifier|public
 name|Observer
 name|getObserver
@@ -343,7 +347,7 @@ operator|=
 name|observer
 expr_stmt|;
 block|}
-comment|//-----------------------------------------------------------< NodeStore>
+comment|//----------------------------------------------------------< NodeStore>---
 annotation|@
 name|Override
 specifier|public
@@ -458,7 +462,7 @@ name|kernel
 argument_list|)
 return|;
 block|}
-comment|//------------------------------------------------------------< internal>---
+comment|//-----------------------------------------------------------< internal>---
 annotation|@
 name|Nonnull
 name|MicroKernel
@@ -467,16 +471,6 @@ parameter_list|()
 block|{
 return|return
 name|kernel
-return|;
-block|}
-annotation|@
-name|Nonnull
-name|CommitEditor
-name|getCommitEditor
-parameter_list|()
-block|{
-return|return
-name|editor
 return|;
 block|}
 block|}

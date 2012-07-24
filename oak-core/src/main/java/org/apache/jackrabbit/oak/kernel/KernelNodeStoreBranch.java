@@ -637,7 +637,7 @@ name|editor
 init|=
 name|store
 operator|.
-name|getCommitEditor
+name|getEditor
 argument_list|()
 decl_stmt|;
 name|NodeState
