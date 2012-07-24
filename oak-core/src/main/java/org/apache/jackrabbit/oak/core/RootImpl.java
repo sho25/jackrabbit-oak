@@ -872,12 +872,6 @@ name|void
 name|purgePendingChanges
 parameter_list|()
 block|{
-if|if
-condition|(
-name|hasPendingChanges
-argument_list|()
-condition|)
-block|{
 name|branch
 operator|.
 name|setRoot
@@ -888,7 +882,6 @@ name|getNodeState
 argument_list|()
 argument_list|)
 expr_stmt|;
-block|}
 name|notifyListeners
 argument_list|()
 expr_stmt|;

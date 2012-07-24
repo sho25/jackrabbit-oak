@@ -428,6 +428,17 @@ name|NodeState
 name|newRoot
 parameter_list|)
 block|{
+if|if
+condition|(
+operator|!
+name|currentRoot
+operator|.
+name|equals
+argument_list|(
+name|newRoot
+argument_list|)
+condition|)
+block|{
 name|currentRoot
 operator|=
 name|newRoot
@@ -438,6 +449,7 @@ name|buildJsop
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 annotation|@
 name|Override
