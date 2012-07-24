@@ -407,6 +407,10 @@ name|Directory
 import|;
 end_import
 
+begin_comment
+comment|/**  * This index uses internally runs a query against a Lucene index.  */
+end_comment
+
 begin_class
 specifier|public
 class|class

@@ -255,6 +255,10 @@ name|Iterables
 import|;
 end_import
 
+begin_comment
+comment|/**  * An implementation of the Lucene directory (a flat list of files) that allows  * to store Lucene index content in an Oak repository.  */
+end_comment
+
 begin_class
 class|class
 name|OakDirectory

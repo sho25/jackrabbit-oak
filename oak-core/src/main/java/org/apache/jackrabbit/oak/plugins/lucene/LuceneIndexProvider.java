@@ -121,6 +121,10 @@ name|NodeStore
 import|;
 end_import
 
+begin_comment
+comment|/**  * A provider for Lucene indexes. There is exactly one Lucene index instance per  * MicroKernel.  */
+end_comment
+
 begin_class
 specifier|public
 class|class

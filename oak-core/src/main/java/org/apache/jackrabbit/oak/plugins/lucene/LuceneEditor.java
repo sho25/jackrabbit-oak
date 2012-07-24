@@ -367,6 +367,10 @@ name|newPathTerm
 import|;
 end_import
 
+begin_comment
+comment|/**  * This class updates a Lucene index when node content is changed.  */
+end_comment
+
 begin_class
 specifier|public
 class|class
