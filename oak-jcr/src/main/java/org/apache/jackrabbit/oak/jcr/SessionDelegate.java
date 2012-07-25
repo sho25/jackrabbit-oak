@@ -653,6 +653,11 @@ name|ConflictHandler
 name|conflictHandler
 decl_stmt|;
 specifier|private
+specifier|final
+name|boolean
+name|autoRefresh
+decl_stmt|;
+specifier|private
 name|ObservationManagerImpl
 name|observationManager
 decl_stmt|;
@@ -679,6 +684,9 @@ name|observationTimer
 parameter_list|,
 name|ContentSession
 name|contentSession
+parameter_list|,
+name|boolean
+name|autoRefresh
 parameter_list|)
 throws|throws
 name|RepositoryException
@@ -768,6 +776,12 @@ name|getCoreValueFactory
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|this
+operator|.
+name|autoRefresh
+operator|=
+name|autoRefresh
+expr_stmt|;
 block|}
 comment|/**      * Performs the passed {@code SessionOperation} in a safe execution context. This      * context ensures that the session is refreshed if necessary and that refreshing      * occurs before the session operation is performed and the refreshing is done only      * once.      *      * @param sessionOperation  the {@code SessionOperation} to perform      * @param<T>  return type of {@code sessionOperation}      * @return  the result of {@code sessionOperation.perform()}      * @throws RepositoryException      */
 specifier|public
@@ -822,9 +836,13 @@ name|boolean
 name|needsRefresh
 parameter_list|()
 block|{
-comment|// Refresh is needed only for non re-entrant session operations and only if
+comment|// Refresh is always needed if this is an auto refresh session. Otherwise
+comment|// refresh in only needed for non re-entrant session operations and only if
 comment|// observation events have actually been delivered
 return|return
+name|autoRefresh
+operator|||
+operator|(
 name|sessionOpCount
 operator|<=
 literal|1
@@ -837,6 +855,7 @@ name|observationManager
 operator|.
 name|hasEvents
 argument_list|()
+operator|)
 return|;
 block|}
 specifier|public

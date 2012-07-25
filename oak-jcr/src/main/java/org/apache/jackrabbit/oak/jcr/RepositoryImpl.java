@@ -489,6 +489,8 @@ argument_list|,
 name|observationTimer
 argument_list|,
 name|contentSession
+argument_list|,
+literal|true
 argument_list|)
 operator|.
 name|getSession
