@@ -793,7 +793,7 @@ operator|++
 expr_stmt|;
 if|if
 condition|(
-name|refreshNeeded
+name|needsRefresh
 argument_list|()
 condition|)
 block|{
@@ -819,7 +819,7 @@ block|}
 block|}
 specifier|private
 name|boolean
-name|refreshNeeded
+name|needsRefresh
 parameter_list|()
 block|{
 comment|// Refresh is needed only for non re-entrant session operations and only if
