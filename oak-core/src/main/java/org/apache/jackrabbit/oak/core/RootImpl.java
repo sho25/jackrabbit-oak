@@ -39,20 +39,6 @@ end_import
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|concurrent
-operator|.
-name|atomic
-operator|.
-name|AtomicReference
-import|;
-end_import
-
-begin_import
-import|import
 name|javax
 operator|.
 name|annotation
@@ -381,15 +367,6 @@ name|purged
 parameter_list|()
 function_decl|;
 block|}
-comment|/**      * Reference to a {@code NodeState} of the revision up to which      * observation events are generated.      */
-specifier|private
-specifier|final
-name|AtomicReference
-argument_list|<
-name|NodeState
-argument_list|>
-name|observationLimit
-decl_stmt|;
 comment|/**      * New instance bases on a given {@link NodeStore} and a workspace      * @param store  node store      * @param workspaceName  name of the workspace      * TODO: add support for multiple workspaces. See OAK-118      */
 annotation|@
 name|SuppressWarnings
@@ -411,22 +388,6 @@ operator|.
 name|store
 operator|=
 name|store
-expr_stmt|;
-name|this
-operator|.
-name|observationLimit
-operator|=
-operator|new
-name|AtomicReference
-argument_list|<
-name|NodeState
-argument_list|>
-argument_list|(
-name|store
-operator|.
-name|getRoot
-argument_list|()
-argument_list|)
 expr_stmt|;
 name|branch
 operator|=
@@ -658,19 +619,6 @@ name|void
 name|refresh
 parameter_list|()
 block|{
-comment|// There is a small race here and we risk to get an "earlier" revision for the
-comment|// observation limit than for the branch. This is not a problem though since
-comment|// observation will catch up later on with the next call to ChangeExtractor.getChanges()
-name|observationLimit
-operator|.
-name|set
-argument_list|(
-name|store
-operator|.
-name|getRoot
-argument_list|()
-argument_list|)
-expr_stmt|;
 name|branch
 operator|=
 name|store
@@ -756,9 +704,9 @@ specifier|private
 name|NodeState
 name|baseLine
 init|=
-name|observationLimit
+name|store
 operator|.
-name|get
+name|getRoot
 argument_list|()
 decl_stmt|;
 annotation|@
@@ -774,9 +722,9 @@ block|{
 name|NodeState
 name|head
 init|=
-name|observationLimit
+name|store
 operator|.
-name|get
+name|getRoot
 argument_list|()
 decl_stmt|;
 name|head
