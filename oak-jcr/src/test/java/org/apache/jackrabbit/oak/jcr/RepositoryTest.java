@@ -4609,9 +4609,6 @@ expr_stmt|;
 block|}
 block|}
 annotation|@
-name|Ignore
-comment|// TODO implement node type support
-annotation|@
 name|Test
 specifier|public
 name|void
@@ -4673,9 +4670,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-annotation|@
-name|Ignore
-comment|// TODO implement node type support
 annotation|@
 name|Test
 specifier|public
@@ -4873,9 +4867,6 @@ expr_stmt|;
 block|}
 block|}
 annotation|@
-name|Ignore
-comment|// TODO implement node type support
-annotation|@
 name|Test
 specifier|public
 name|void
@@ -4939,9 +4930,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-annotation|@
-name|Ignore
-comment|// TODO implement node type support
 annotation|@
 name|Test
 specifier|public
@@ -8385,9 +8373,6 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-annotation|@
-name|Ignore
-comment|// TODO implement node type support
 annotation|@
 name|Test
 specifier|public
