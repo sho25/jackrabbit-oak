@@ -597,7 +597,7 @@ decl_stmt|;
 comment|/**      * Active branches (Key: branch root id, Value: branch head).      */
 specifier|private
 specifier|final
-name|Map
+name|TreeMap
 argument_list|<
 name|Id
 argument_list|,
@@ -605,10 +605,6 @@ name|Id
 argument_list|>
 name|branches
 init|=
-name|Collections
-operator|.
-name|synchronizedMap
-argument_list|(
 operator|new
 name|TreeMap
 argument_list|<
@@ -617,7 +613,6 @@ argument_list|,
 name|Id
 argument_list|>
 argument_list|()
-argument_list|)
 decl_stmt|;
 specifier|public
 name|DefaultRevisionStore
@@ -1453,6 +1448,11 @@ operator|!=
 literal|null
 condition|)
 block|{
+synchronized|synchronized
+init|(
+name|branches
+init|)
+block|{
 name|branches
 operator|.
 name|remove
@@ -1460,6 +1460,7 @@ argument_list|(
 name|branchRootId
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 return|return
 name|id
@@ -1513,6 +1514,11 @@ operator|!=
 literal|null
 condition|)
 block|{
+synchronized|synchronized
+init|(
+name|branches
+init|)
+block|{
 name|branches
 operator|.
 name|put
@@ -1522,6 +1528,7 @@ argument_list|,
 name|commitId
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 return|return
 name|commitId
@@ -2503,6 +2510,11 @@ expr_stmt|;
 block|}
 block|}
 comment|/**      * Mark branches.      *       * @return first branch root id that needs to be preserved, or {@code null}      * @throws Exception      *             if an error occurs      */
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unchecked"
+argument_list|)
 specifier|private
 name|Id
 name|markBranches
@@ -2510,6 +2522,35 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+name|Map
+argument_list|<
+name|Id
+argument_list|,
+name|Id
+argument_list|>
+name|tmpBranches
+decl_stmt|;
+synchronized|synchronized
+init|(
+name|branches
+init|)
+block|{
+name|tmpBranches
+operator|=
+operator|(
+name|Map
+argument_list|<
+name|Id
+argument_list|,
+name|Id
+argument_list|>
+operator|)
+name|branches
+operator|.
+name|clone
+argument_list|()
+expr_stmt|;
+block|}
 comment|/* Mark all branch commits */
 for|for
 control|(
@@ -2521,7 +2562,7 @@ name|Id
 argument_list|>
 name|entry
 range|:
-name|branches
+name|tmpBranches
 operator|.
 name|entrySet
 argument_list|()
@@ -2580,7 +2621,7 @@ comment|/* Mark all master commits till the first branch root id */
 if|if
 condition|(
 operator|!
-name|branches
+name|tmpBranches
 operator|.
 name|isEmpty
 argument_list|()
@@ -2589,7 +2630,7 @@ block|{
 name|Id
 name|firstBranchRootId
 init|=
-name|branches
+name|tmpBranches
 operator|.
 name|keySet
 argument_list|()
