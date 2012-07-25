@@ -67,6 +67,12 @@ decl_stmt|;
 specifier|public
 name|KernelNodeStateBuilder
 parameter_list|(
+name|MemoryNodeStateBuilder
+name|parent
+parameter_list|,
+name|String
+name|name
+parameter_list|,
 name|NodeState
 name|base
 parameter_list|,
@@ -76,6 +82,10 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
+name|parent
+argument_list|,
+name|name
+argument_list|,
 name|base
 argument_list|)
 expr_stmt|;
@@ -92,6 +102,9 @@ specifier|protected
 name|MemoryNodeStateBuilder
 name|createChildBuilder
 parameter_list|(
+name|String
+name|name
+parameter_list|,
 name|NodeState
 name|child
 parameter_list|)
@@ -100,6 +113,10 @@ return|return
 operator|new
 name|KernelNodeStateBuilder
 argument_list|(
+name|this
+argument_list|,
+name|name
+argument_list|,
 name|child
 argument_list|,
 name|root
