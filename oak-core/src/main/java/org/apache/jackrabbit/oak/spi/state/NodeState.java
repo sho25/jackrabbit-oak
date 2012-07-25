@@ -91,6 +91,14 @@ argument_list|>
 name|getProperties
 parameter_list|()
 function_decl|;
+comment|/**      * Checks whether the named child node exists.      *      * @param name name of the child node      * @return {@code true} if the named child node exists,      *         {@code false} otherwise      */
+name|boolean
+name|hasChildNode
+parameter_list|(
+name|String
+name|name
+parameter_list|)
+function_decl|;
 comment|/**      * Returns the named child node. The name is an opaque string and      * is not parsed or otherwise interpreted by this method.      *<p>      * The namespace of properties and child nodes is shared, so if      * this method returns a non-{@code null} value for a given      * name, then {@link #getProperty(String)} is guaranteed to return      * {@code null} for the same name.      *      * @param name name of the child node to return      * @return named child node, or {@code null} if not found      */
 annotation|@
 name|CheckForNull
@@ -104,6 +112,14 @@ function_decl|;
 comment|/**      * Returns the number of child nodes of this node.      *      * @return number of child nodes      */
 name|long
 name|getChildNodeCount
+parameter_list|()
+function_decl|;
+comment|/**      * Returns the names of all child nodes.      *      * @return child node names in some stable order      */
+name|Iterable
+argument_list|<
+name|String
+argument_list|>
+name|getChildNodeNames
 parameter_list|()
 function_decl|;
 comment|/**      * Returns an iterable of the child node entries of this instance.      * Multiple iterations are guaranteed to return the child nodes in      * the same order, but the specific order used is implementation      * dependent and may change across different states of the same node.      * @return  child node entries in some stable order      */
