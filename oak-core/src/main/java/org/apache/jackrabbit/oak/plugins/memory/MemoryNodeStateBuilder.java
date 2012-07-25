@@ -700,6 +700,15 @@ parameter_list|()
 block|{
 comment|// do nothing
 block|}
+specifier|protected
+name|NodeState
+name|getBaseState
+parameter_list|()
+block|{
+return|return
+name|base
+return|;
+block|}
 annotation|@
 name|Override
 specifier|public
