@@ -669,7 +669,7 @@ name|tree
 argument_list|)
 return|;
 block|}
-comment|/**      * Returns an iterator for traversing all the children of this node.      * If the node is orderable (there is an "<code>oak:childOrder</code>"      * property) then the iterator will return child nodes in the specified      * order. Otherwise the ordering of the iterator is undefined.      *      * @return  child nodes of the node      */
+comment|/**      * Returns an iterator for traversing all the children of this node.      * If the node is orderable (there is an "{@code oak:childOrder}"      * property) then the iterator will return child nodes in the specified      * order. Otherwise the ordering of the iterator is undefined.      *      * @return child nodes of the node      */
 annotation|@
 name|Nonnull
 specifier|public
@@ -1545,6 +1545,17 @@ condition|)
 block|{
 name|tree
 operator|=
+name|tree
+operator|.
+name|getStatus
+argument_list|()
+operator|==
+name|Status
+operator|.
+name|REMOVED
+condition|?
+literal|null
+else|:
 name|sessionDelegate
 operator|.
 name|getTree

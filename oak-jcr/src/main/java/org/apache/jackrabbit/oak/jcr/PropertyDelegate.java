@@ -815,6 +815,17 @@ condition|)
 block|{
 name|parent
 operator|=
+name|parent
+operator|.
+name|getStatus
+argument_list|()
+operator|==
+name|Status
+operator|.
+name|REMOVED
+condition|?
+literal|null
+else|:
 name|sessionDelegate
 operator|.
 name|getTree

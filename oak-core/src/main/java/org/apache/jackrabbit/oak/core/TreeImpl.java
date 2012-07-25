@@ -306,7 +306,7 @@ specifier|final
 name|RootImpl
 name|root
 decl_stmt|;
-comment|/** Parent of this tree */
+comment|/** Parent of this tree. Null for the root and this for removed trees. */
 specifier|private
 name|TreeImpl
 name|parent
@@ -834,6 +834,18 @@ name|Status
 name|getStatus
 parameter_list|()
 block|{
+if|if
+condition|(
+name|isRemoved
+argument_list|()
+condition|)
+block|{
+return|return
+name|Status
+operator|.
+name|REMOVED
+return|;
+block|}
 name|NodeState
 name|baseState
 init|=
@@ -1076,6 +1088,20 @@ parameter_list|()
 block|{
 if|if
 condition|(
+name|isRemoved
+argument_list|()
+condition|)
+block|{
+throw|throw
+operator|new
+name|IllegalStateException
+argument_list|(
+literal|"Cannot remove removed tree"
+argument_list|)
+throw|;
+block|}
+if|if
+condition|(
 operator|!
 name|isRoot
 argument_list|()
@@ -1113,7 +1139,9 @@ name|name
 argument_list|)
 expr_stmt|;
 name|parent
-operator|.
+operator|=
+name|this
+expr_stmt|;
 name|root
 operator|.
 name|purge
@@ -1283,6 +1311,20 @@ name|NodeState
 name|getBaseState
 parameter_list|()
 block|{
+if|if
+condition|(
+name|isRemoved
+argument_list|()
+condition|)
+block|{
+throw|throw
+operator|new
+name|IllegalStateException
+argument_list|(
+literal|"Cannot get the base state of a removed tree"
+argument_list|)
+throw|;
+block|}
 name|NodeState
 name|parentBaseState
 init|=
@@ -1314,6 +1356,20 @@ name|NodeStateBuilder
 name|getNodeStateBuilder
 parameter_list|()
 block|{
+if|if
+condition|(
+name|isRemoved
+argument_list|()
+condition|)
+block|{
+throw|throw
+operator|new
+name|IllegalStateException
+argument_list|(
+literal|"Cannot get a builder for a removed tree"
+argument_list|)
+throw|;
+block|}
 if|if
 condition|(
 name|nodeStateBuilder
@@ -1357,6 +1413,20 @@ name|String
 name|destName
 parameter_list|)
 block|{
+if|if
+condition|(
+name|isRemoved
+argument_list|()
+condition|)
+block|{
+throw|throw
+operator|new
+name|IllegalStateException
+argument_list|(
+literal|"Cannot move removed tree"
+argument_list|)
+throw|;
+block|}
 name|parent
 operator|.
 name|children
@@ -1402,6 +1472,17 @@ return|;
 block|}
 comment|//------------------------------------------------------------< private>---
 specifier|private
+name|boolean
+name|isRemoved
+parameter_list|()
+block|{
+return|return
+name|parent
+operator|==
+name|this
+return|;
+block|}
+specifier|private
 name|void
 name|buildPath
 parameter_list|(
@@ -1409,6 +1490,20 @@ name|StringBuilder
 name|sb
 parameter_list|)
 block|{
+if|if
+condition|(
+name|isRemoved
+argument_list|()
+condition|)
+block|{
+throw|throw
+operator|new
+name|IllegalStateException
+argument_list|(
+literal|"Cannot build the path of a removed tree"
+argument_list|)
+throw|;
+block|}
 if|if
 condition|(
 name|parent
