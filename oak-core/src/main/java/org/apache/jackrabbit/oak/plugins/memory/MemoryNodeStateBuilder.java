@@ -542,7 +542,7 @@ name|IllegalStateException
 argument_list|(
 literal|"This builder refers to a node that has"
 operator|+
-literal|" been removed from it's parent."
+literal|" been removed from its parent."
 argument_list|)
 throw|;
 block|}
@@ -633,7 +633,7 @@ name|IllegalStateException
 argument_list|(
 literal|"This builder refers to a node that has"
 operator|+
-literal|" been removed from it's parent."
+literal|" been removed from its parent."
 argument_list|)
 throw|;
 block|}
