@@ -151,7 +151,7 @@ end_import
 
 begin_class
 class|class
-name|KernelRootStateBuilder
+name|KernelRootBuilder
 extends|extends
 name|MemoryNodeBuilder
 block|{
@@ -184,7 +184,7 @@ init|=
 literal|0
 decl_stmt|;
 specifier|public
-name|KernelRootStateBuilder
+name|KernelRootBuilder
 parameter_list|(
 name|MicroKernel
 name|kernel
@@ -247,7 +247,7 @@ parameter_list|)
 block|{
 return|return
 operator|new
-name|KernelNodeStateBuilder
+name|KernelNodeBuilder
 argument_list|(
 name|this
 argument_list|,

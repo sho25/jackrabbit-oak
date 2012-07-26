@@ -487,7 +487,7 @@ condition|)
 block|{
 return|return
 operator|new
-name|KernelRootStateBuilder
+name|KernelRootBuilder
 argument_list|(
 name|kernel
 argument_list|,

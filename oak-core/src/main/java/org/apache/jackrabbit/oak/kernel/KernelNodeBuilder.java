@@ -71,17 +71,17 @@ end_import
 
 begin_class
 class|class
-name|KernelNodeStateBuilder
+name|KernelNodeBuilder
 extends|extends
 name|MemoryNodeBuilder
 block|{
 specifier|private
 specifier|final
-name|KernelRootStateBuilder
+name|KernelRootBuilder
 name|root
 decl_stmt|;
 specifier|public
-name|KernelNodeStateBuilder
+name|KernelNodeBuilder
 parameter_list|(
 name|MemoryNodeBuilder
 name|parent
@@ -92,7 +92,7 @@ parameter_list|,
 name|NodeState
 name|base
 parameter_list|,
-name|KernelRootStateBuilder
+name|KernelRootBuilder
 name|root
 parameter_list|)
 block|{
@@ -131,7 +131,7 @@ parameter_list|)
 block|{
 return|return
 operator|new
-name|KernelNodeStateBuilder
+name|KernelNodeBuilder
 argument_list|(
 name|this
 argument_list|,
