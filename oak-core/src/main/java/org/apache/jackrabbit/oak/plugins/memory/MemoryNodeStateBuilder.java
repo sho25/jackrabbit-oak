@@ -729,9 +729,12 @@ block|{
 comment|// do nothing
 block|}
 specifier|protected
-name|NodeState
-name|getBaseState
-parameter_list|()
+name|void
+name|compareAgainstBaseState
+parameter_list|(
+name|NodeStateDiff
+name|diff
+parameter_list|)
 block|{
 name|NodeState
 name|state
@@ -746,19 +749,18 @@ operator|!=
 literal|null
 condition|)
 block|{
-return|return
 name|writeState
 operator|.
-name|base
-return|;
-block|}
-else|else
-block|{
-return|return
+name|compareAgainstBaseState
+argument_list|(
 name|state
-return|;
+argument_list|,
+name|diff
+argument_list|)
+expr_stmt|;
 block|}
 block|}
+comment|//-------------------------------------------------< NodeStateBuilder>--
 annotation|@
 name|Override
 specifier|public
@@ -1467,7 +1469,7 @@ return|;
 block|}
 block|}
 comment|/**      * The<em>mutable</em> state being built. Instances of this class      * are never passed beyond the containing MemoryNodeStateBuilder,      * so it's not a problem that we intentionally break the immutability      * assumption of the {@link NodeState} interface.      */
-specifier|private
+specifier|protected
 specifier|static
 class|class
 name|MutableNodeState
@@ -1638,6 +1640,15 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+block|}
+specifier|public
+name|NodeState
+name|getBaseState
+parameter_list|()
+block|{
+return|return
+name|base
+return|;
 block|}
 comment|//-----------------------------------------------------< NodeState>--
 annotation|@
@@ -2755,7 +2766,7 @@ block|}
 block|}
 block|}
 comment|/**      * Immutable snapshot of a mutable node state.      */
-specifier|private
+specifier|protected
 specifier|static
 class|class
 name|ModifiedNodeState
