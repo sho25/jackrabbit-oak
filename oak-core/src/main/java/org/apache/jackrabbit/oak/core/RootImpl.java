@@ -159,7 +159,7 @@ name|spi
 operator|.
 name|state
 operator|.
-name|NodeStateBuilder
+name|NodeBuilder
 import|;
 end_import
 
@@ -342,7 +342,7 @@ specifier|private
 name|int
 name|modCount
 decl_stmt|;
-comment|/**      * Listeners which needs to be modified as soon as {@link #purgePendingChanges()}      * is called. Listeners are removed from this list after being called. If further      * notifications are required, they need to explicitly re-register.      *      * The {@link TreeImpl} instances us this mechanism to dispose of its associated      * {@link NodeStateBuilder} on purge. Keeping a reference on those {@code TreeImpl}      * instances {@code NodeStateBuilder} (i.e. those which are modified) prevents them      * from being prematurely garbage collected.      */
+comment|/**      * Listeners which needs to be modified as soon as {@link #purgePendingChanges()}      * is called. Listeners are removed from this list after being called. If further      * notifications are required, they need to explicitly re-register.      *      * The {@link TreeImpl} instances us this mechanism to dispose of its associated      * {@link NodeBuilder} on purge. Keeping a reference on those {@code TreeImpl}      * instances {@code NodeStateBuilder} (i.e. those which are modified) prevents them      * from being prematurely garbage collected.      */
 specifier|private
 name|List
 argument_list|<
@@ -759,7 +759,7 @@ name|getBase
 argument_list|()
 return|;
 block|}
-name|NodeStateBuilder
+name|NodeBuilder
 name|createRootBuilder
 parameter_list|()
 block|{

@@ -167,7 +167,7 @@ name|spi
 operator|.
 name|state
 operator|.
-name|NodeStateBuilder
+name|NodeBuilder
 import|;
 end_import
 
@@ -501,7 +501,7 @@ operator|.
 name|branch
 argument_list|()
 decl_stmt|;
-name|NodeStateBuilder
+name|NodeBuilder
 name|rootBuilder
 init|=
 name|store
@@ -514,7 +514,7 @@ name|getRoot
 argument_list|()
 argument_list|)
 decl_stmt|;
-name|NodeStateBuilder
+name|NodeBuilder
 name|testBuilder
 init|=
 name|rootBuilder
@@ -524,7 +524,7 @@ argument_list|(
 literal|"test"
 argument_list|)
 decl_stmt|;
-name|NodeStateBuilder
+name|NodeBuilder
 name|newNodeBuilder
 init|=
 name|testBuilder
@@ -876,7 +876,7 @@ operator|.
 name|getRoot
 argument_list|()
 decl_stmt|;
-name|NodeStateBuilder
+name|NodeBuilder
 name|rootBuilder
 init|=
 name|store
@@ -886,7 +886,7 @@ argument_list|(
 name|root
 argument_list|)
 decl_stmt|;
-name|NodeStateBuilder
+name|NodeBuilder
 name|testBuilder
 init|=
 name|rootBuilder
@@ -896,7 +896,7 @@ argument_list|(
 literal|"test"
 argument_list|)
 decl_stmt|;
-name|NodeStateBuilder
+name|NodeBuilder
 name|newNodeBuilder
 init|=
 name|testBuilder
@@ -1106,7 +1106,7 @@ name|NodeState
 name|after
 parameter_list|)
 block|{
-name|NodeStateBuilder
+name|NodeBuilder
 name|rootBuilder
 init|=
 name|store
@@ -1116,7 +1116,7 @@ argument_list|(
 name|after
 argument_list|)
 decl_stmt|;
-name|NodeStateBuilder
+name|NodeBuilder
 name|testBuilder
 init|=
 name|store
@@ -1172,7 +1172,7 @@ operator|.
 name|getRoot
 argument_list|()
 decl_stmt|;
-name|NodeStateBuilder
+name|NodeBuilder
 name|rootBuilder
 init|=
 name|store
@@ -1182,7 +1182,7 @@ argument_list|(
 name|root
 argument_list|)
 decl_stmt|;
-name|NodeStateBuilder
+name|NodeBuilder
 name|testBuilder
 init|=
 name|rootBuilder
@@ -1192,7 +1192,7 @@ argument_list|(
 literal|"test"
 argument_list|)
 decl_stmt|;
-name|NodeStateBuilder
+name|NodeBuilder
 name|newNodeBuilder
 init|=
 name|testBuilder

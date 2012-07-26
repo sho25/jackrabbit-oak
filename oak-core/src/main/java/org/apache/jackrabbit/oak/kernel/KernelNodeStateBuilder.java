@@ -47,7 +47,7 @@ name|plugins
 operator|.
 name|memory
 operator|.
-name|MemoryNodeStateBuilder
+name|MemoryNodeBuilder
 import|;
 end_import
 
@@ -73,7 +73,7 @@ begin_class
 class|class
 name|KernelNodeStateBuilder
 extends|extends
-name|MemoryNodeStateBuilder
+name|MemoryNodeBuilder
 block|{
 specifier|private
 specifier|final
@@ -83,7 +83,7 @@ decl_stmt|;
 specifier|public
 name|KernelNodeStateBuilder
 parameter_list|(
-name|MemoryNodeStateBuilder
+name|MemoryNodeBuilder
 name|parent
 parameter_list|,
 name|String
@@ -119,7 +119,7 @@ comment|//--------------------------------------------< MemoryNodeStateBuilder>-
 annotation|@
 name|Override
 specifier|protected
-name|MemoryNodeStateBuilder
+name|MemoryNodeBuilder
 name|createChildBuilder
 parameter_list|(
 name|String

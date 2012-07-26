@@ -99,7 +99,7 @@ name|plugins
 operator|.
 name|memory
 operator|.
-name|MemoryNodeStateBuilder
+name|MemoryNodeBuilder
 import|;
 end_import
 
@@ -153,7 +153,7 @@ begin_class
 class|class
 name|KernelRootStateBuilder
 extends|extends
-name|MemoryNodeStateBuilder
+name|MemoryNodeBuilder
 block|{
 comment|/**      * Number of content updates that need to happen before the updates      * are automatically committed to a branch in the MicroKernel.      */
 specifier|private
@@ -235,7 +235,7 @@ comment|//--------------------------------------------< MemoryNodeStateBuilder>-
 annotation|@
 name|Override
 specifier|protected
-name|MemoryNodeStateBuilder
+name|MemoryNodeBuilder
 name|createChildBuilder
 parameter_list|(
 name|String

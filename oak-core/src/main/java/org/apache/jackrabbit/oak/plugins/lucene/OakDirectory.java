@@ -149,7 +149,7 @@ name|spi
 operator|.
 name|state
 operator|.
-name|NodeStateBuilder
+name|NodeBuilder
 import|;
 end_import
 
@@ -272,12 +272,12 @@ name|factory
 decl_stmt|;
 specifier|private
 specifier|final
-name|NodeStateBuilder
+name|NodeBuilder
 name|rootBuilder
 decl_stmt|;
 specifier|private
 specifier|final
-name|NodeStateBuilder
+name|NodeBuilder
 name|directoryBuilder
 decl_stmt|;
 specifier|public
@@ -323,7 +323,7 @@ argument_list|(
 name|root
 argument_list|)
 expr_stmt|;
-name|NodeStateBuilder
+name|NodeBuilder
 name|builder
 init|=
 name|rootBuilder
@@ -458,7 +458,7 @@ return|return
 literal|0
 return|;
 block|}
-name|NodeStateBuilder
+name|NodeBuilder
 name|fileBuilder
 init|=
 name|directoryBuilder
@@ -606,7 +606,7 @@ literal|0
 index|]
 return|;
 block|}
-name|NodeStateBuilder
+name|NodeBuilder
 name|fileBuilder
 init|=
 name|directoryBuilder
@@ -1055,7 +1055,7 @@ name|size
 argument_list|)
 expr_stmt|;
 block|}
-name|NodeStateBuilder
+name|NodeBuilder
 name|fileBuilder
 init|=
 name|directoryBuilder

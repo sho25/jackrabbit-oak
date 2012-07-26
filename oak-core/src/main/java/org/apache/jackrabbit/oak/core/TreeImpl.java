@@ -207,7 +207,7 @@ name|spi
 operator|.
 name|state
 operator|.
-name|NodeStateBuilder
+name|NodeBuilder
 import|;
 end_import
 
@@ -317,8 +317,8 @@ name|String
 name|name
 decl_stmt|;
 comment|/** Lazily initialised {@code NodeStateBuilder} for the underlying node state */
-name|NodeStateBuilder
-name|nodeStateBuilder
+name|NodeBuilder
+name|nodeBuilder
 decl_stmt|;
 comment|/**      * Cache for child trees that have been accessed before.      */
 specifier|private
@@ -412,18 +412,18 @@ annotation|@
 name|Override
 specifier|protected
 specifier|synchronized
-name|NodeStateBuilder
-name|getNodeStateBuilder
+name|NodeBuilder
+name|getNodeBuilder
 parameter_list|()
 block|{
 if|if
 condition|(
-name|nodeStateBuilder
+name|nodeBuilder
 operator|==
 literal|null
 condition|)
 block|{
-name|nodeStateBuilder
+name|nodeBuilder
 operator|=
 name|root
 operator|.
@@ -439,7 +439,7 @@ argument_list|)
 expr_stmt|;
 block|}
 return|return
-name|nodeStateBuilder
+name|nodeBuilder
 return|;
 block|}
 block|}
@@ -529,7 +529,7 @@ name|name
 parameter_list|)
 block|{
 return|return
-name|getNodeStateBuilder
+name|getNodeBuilder
 argument_list|()
 operator|.
 name|getProperty
@@ -731,7 +731,7 @@ name|getPropertyCount
 parameter_list|()
 block|{
 return|return
-name|getNodeStateBuilder
+name|getNodeBuilder
 argument_list|()
 operator|.
 name|getPropertyCount
@@ -751,7 +751,7 @@ name|getProperties
 parameter_list|()
 block|{
 return|return
-name|getNodeStateBuilder
+name|getNodeBuilder
 argument_list|()
 operator|.
 name|getProperties
@@ -909,7 +909,7 @@ name|name
 parameter_list|)
 block|{
 return|return
-name|getNodeStateBuilder
+name|getNodeBuilder
 argument_list|()
 operator|.
 name|hasChildNode
@@ -926,7 +926,7 @@ name|getChildrenCount
 parameter_list|()
 block|{
 return|return
-name|getNodeStateBuilder
+name|getNodeBuilder
 argument_list|()
 operator|.
 name|getChildNodeCount
@@ -948,7 +948,7 @@ name|Iterables
 operator|.
 name|transform
 argument_list|(
-name|getNodeStateBuilder
+name|getNodeBuilder
 argument_list|()
 operator|.
 name|getChildNodeNames
@@ -1041,10 +1041,10 @@ name|name
 argument_list|)
 condition|)
 block|{
-name|NodeStateBuilder
+name|NodeBuilder
 name|builder
 init|=
-name|getNodeStateBuilder
+name|getNodeBuilder
 argument_list|()
 decl_stmt|;
 name|builder
@@ -1114,12 +1114,12 @@ name|name
 argument_list|)
 condition|)
 block|{
-name|NodeStateBuilder
+name|NodeBuilder
 name|builder
 init|=
 name|parent
 operator|.
-name|getNodeStateBuilder
+name|getNodeBuilder
 argument_list|()
 decl_stmt|;
 name|builder
@@ -1171,10 +1171,10 @@ name|CoreValue
 name|value
 parameter_list|)
 block|{
-name|NodeStateBuilder
+name|NodeBuilder
 name|builder
 init|=
-name|getNodeStateBuilder
+name|getNodeBuilder
 argument_list|()
 decl_stmt|;
 name|builder
@@ -1224,10 +1224,10 @@ argument_list|>
 name|values
 parameter_list|)
 block|{
-name|NodeStateBuilder
+name|NodeBuilder
 name|builder
 init|=
-name|getNodeStateBuilder
+name|getNodeBuilder
 argument_list|()
 decl_stmt|;
 name|builder
@@ -1271,10 +1271,10 @@ name|String
 name|name
 parameter_list|)
 block|{
-name|NodeStateBuilder
+name|NodeBuilder
 name|builder
 init|=
-name|getNodeStateBuilder
+name|getNodeBuilder
 argument_list|()
 decl_stmt|;
 name|builder
@@ -1298,7 +1298,7 @@ name|void
 name|purged
 parameter_list|()
 block|{
-name|nodeStateBuilder
+name|nodeBuilder
 operator|=
 literal|null
 expr_stmt|;
@@ -1352,8 +1352,8 @@ annotation|@
 name|Nonnull
 specifier|protected
 specifier|synchronized
-name|NodeStateBuilder
-name|getNodeStateBuilder
+name|NodeBuilder
+name|getNodeBuilder
 parameter_list|()
 block|{
 if|if
@@ -1372,16 +1372,16 @@ throw|;
 block|}
 if|if
 condition|(
-name|nodeStateBuilder
+name|nodeBuilder
 operator|==
 literal|null
 condition|)
 block|{
-name|nodeStateBuilder
+name|nodeBuilder
 operator|=
 name|parent
 operator|.
-name|getNodeStateBuilder
+name|getNodeBuilder
 argument_list|()
 operator|.
 name|getChildBuilder
@@ -1398,7 +1398,7 @@ argument_list|)
 expr_stmt|;
 block|}
 return|return
-name|nodeStateBuilder
+name|nodeBuilder
 return|;
 block|}
 comment|//-----------------------------------------------------------< internal>---
@@ -1463,7 +1463,7 @@ name|getNodeState
 parameter_list|()
 block|{
 return|return
-name|getNodeStateBuilder
+name|getNodeBuilder
 argument_list|()
 operator|.
 name|getNodeState

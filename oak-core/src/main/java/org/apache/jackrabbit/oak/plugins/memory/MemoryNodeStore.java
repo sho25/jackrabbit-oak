@@ -97,7 +97,7 @@ name|spi
 operator|.
 name|state
 operator|.
-name|NodeStateBuilder
+name|NodeBuilder
 import|;
 end_import
 
@@ -184,7 +184,7 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|NodeStateBuilder
+name|NodeBuilder
 name|getBuilder
 parameter_list|(
 name|NodeState
@@ -193,7 +193,7 @@ parameter_list|)
 block|{
 return|return
 operator|new
-name|MemoryNodeStateBuilder
+name|MemoryNodeBuilder
 argument_list|(
 name|base
 argument_list|)

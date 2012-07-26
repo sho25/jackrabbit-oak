@@ -175,7 +175,7 @@ name|spi
 operator|.
 name|state
 operator|.
-name|NodeStateBuilder
+name|NodeBuilder
 import|;
 end_import
 
@@ -330,9 +330,9 @@ end_comment
 begin_class
 specifier|public
 class|class
-name|MemoryNodeStateBuilder
+name|MemoryNodeBuilder
 implements|implements
-name|NodeStateBuilder
+name|NodeBuilder
 block|{
 specifier|private
 specifier|static
@@ -366,7 +366,7 @@ argument_list|)
 decl_stmt|;
 comment|/**      * Parent state builder reference, or {@code null} once this builder      * has been connected.      */
 specifier|private
-name|MemoryNodeStateBuilder
+name|MemoryNodeBuilder
 name|parent
 decl_stmt|;
 comment|/**      * Name of this child node within the parent builder, or {@code null}      * once this builder has been connected.      */
@@ -386,9 +386,9 @@ name|writeState
 decl_stmt|;
 comment|/**      * Creates a new in-memory node state builder.      *      * @param parent parent node state builder      * @param name name of this node      * @param base base state of this node      */
 specifier|protected
-name|MemoryNodeStateBuilder
+name|MemoryNodeBuilder
 parameter_list|(
-name|MemoryNodeStateBuilder
+name|MemoryNodeBuilder
 name|parent
 parameter_list|,
 name|String
@@ -434,7 +434,7 @@ expr_stmt|;
 block|}
 comment|/**      * Creates a new in-memory node state builder.      *      * @param base base state of the new builder      */
 specifier|public
-name|MemoryNodeStateBuilder
+name|MemoryNodeBuilder
 parameter_list|(
 name|NodeState
 name|base
@@ -697,7 +697,7 @@ expr_stmt|;
 block|}
 comment|/**      * Factory method for creating new child state builders. Subclasses may      * override this method to control the behavior of child state builders.      *      * @param child base state of the new builder, or {@code null}      * @return new builder      */
 specifier|protected
-name|MemoryNodeStateBuilder
+name|MemoryNodeBuilder
 name|createChildBuilder
 parameter_list|(
 name|String
@@ -709,7 +709,7 @@ parameter_list|)
 block|{
 return|return
 operator|new
-name|MemoryNodeStateBuilder
+name|MemoryNodeBuilder
 argument_list|(
 name|this
 argument_list|,
@@ -1204,7 +1204,7 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|NodeStateBuilder
+name|NodeBuilder
 name|getChildBuilder
 parameter_list|(
 name|String
@@ -1328,7 +1328,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-name|MemoryNodeStateBuilder
+name|MemoryNodeBuilder
 name|builder
 init|=
 name|createChildBuilder

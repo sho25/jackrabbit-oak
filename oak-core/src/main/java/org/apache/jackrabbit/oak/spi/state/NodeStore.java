@@ -71,7 +71,7 @@ function_decl|;
 comment|/**      * Returns a builder for constructing a new or modified node state.      * The builder is initialized with all the properties and child nodes      * from the given base node state.      *      * @param base  base node state, or {@code null} for building new nodes      * @return  builder instance      */
 annotation|@
 name|Nonnull
-name|NodeStateBuilder
+name|NodeBuilder
 name|getBuilder
 parameter_list|(
 name|NodeState

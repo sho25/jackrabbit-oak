@@ -73,7 +73,7 @@ name|plugins
 operator|.
 name|memory
 operator|.
-name|MemoryNodeStateBuilder
+name|MemoryNodeBuilder
 import|;
 end_import
 
@@ -181,7 +181,7 @@ name|spi
 operator|.
 name|state
 operator|.
-name|NodeStateBuilder
+name|NodeBuilder
 import|;
 end_import
 
@@ -450,7 +450,7 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|NodeStateBuilder
+name|NodeBuilder
 name|getBuilder
 parameter_list|(
 name|NodeState
@@ -501,7 +501,7 @@ block|}
 block|}
 return|return
 operator|new
-name|MemoryNodeStateBuilder
+name|MemoryNodeBuilder
 argument_list|(
 name|base
 argument_list|)
