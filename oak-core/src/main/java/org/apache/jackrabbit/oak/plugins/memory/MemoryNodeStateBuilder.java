@@ -536,14 +536,15 @@ name|name
 argument_list|)
 condition|)
 block|{
-name|mstate
-operator|=
+throw|throw
 operator|new
-name|MutableNodeState
+name|IllegalStateException
 argument_list|(
-name|NULL_STATE
+literal|"This builder refers to a node that has"
+operator|+
+literal|" been removed from it's parent."
 argument_list|)
-expr_stmt|;
+throw|;
 block|}
 if|if
 condition|(
@@ -626,17 +627,16 @@ name|name
 argument_list|)
 condition|)
 block|{
-name|mstate
-operator|=
+throw|throw
 operator|new
-name|MutableNodeState
+name|IllegalStateException
 argument_list|(
-name|NULL_STATE
+literal|"This builder refers to a node that has"
+operator|+
+literal|" been removed from it's parent."
 argument_list|)
-expr_stmt|;
+throw|;
 block|}
-else|else
-block|{
 name|mstate
 operator|=
 operator|new
@@ -656,7 +656,6 @@ argument_list|,
 name|mstate
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 name|parent
 operator|=
