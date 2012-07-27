@@ -422,8 +422,6 @@ operator|new
 name|MutableNode
 argument_list|(
 literal|null
-argument_list|,
-literal|"/"
 argument_list|)
 decl_stmt|;
 name|Id
@@ -497,8 +495,6 @@ operator|new
 name|MutableNode
 argument_list|(
 literal|null
-argument_list|,
-literal|"/"
 argument_list|)
 decl_stmt|;
 name|Id
@@ -575,8 +571,6 @@ operator|new
 name|MutableNode
 argument_list|(
 literal|null
-argument_list|,
-literal|"/"
 argument_list|)
 decl_stmt|;
 name|Id

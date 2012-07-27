@@ -769,8 +769,6 @@ operator|new
 name|MutableNode
 argument_list|(
 name|this
-argument_list|,
-literal|"/"
 argument_list|)
 argument_list|)
 decl_stmt|;
