@@ -130,7 +130,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A {@code StagedNodeTree} provides methods to manipulate a specific revision  * of the tree. The changes are recorded and can be persisted by calling  {@link #persist(RevisionStore.PutToken)}.  */
+comment|/**  * A {@code StagedNodeTree} provides methods to manipulate a specific revision  * of the tree. The changes are recorded and can be persisted by calling  * {@link #persist(RevisionStore.PutToken)}.  */
 end_comment
 
 begin_class
@@ -151,7 +151,7 @@ specifier|private
 name|Id
 name|baseRevisionId
 decl_stmt|;
-comment|/**      * Creates a new {@code StagedNodeTree} instance.      *      * @param store revision store used to read from and persist changes      * @param baseRevisionId id of revision the changes should be based upon      */
+comment|/**      * Creates a new {@code StagedNodeTree} instance.      *      * @param store          revision store used to read from and persist changes      * @param baseRevisionId id of revision the changes should be based upon      */
 specifier|public
 name|StagedNodeTree
 parameter_list|(
@@ -193,7 +193,7 @@ operator|=
 name|newBaseRevisionId
 expr_stmt|;
 block|}
-comment|/**      * Returns {@code true} if there are no staged changes, otherwise returns {@code false}.      * @return {@code true} if there are no staged changes, otherwise returns {@code false}.      */
+comment|/**      * Returns {@code true} if there are no staged changes, otherwise returns {@code false}.      *      * @return {@code true} if there are no staged changes, otherwise returns {@code false}.      */
 specifier|public
 name|boolean
 name|isEmpty
@@ -205,7 +205,7 @@ operator|==
 literal|null
 return|;
 block|}
-comment|/**      * Persists the staged nodes and returns the {@code Id} of new root node.      *      * @param token      * @return {@code Id} of new root node      * @throws Exception      */
+comment|/**      * Persists the staged nodes and returns the {@code Id} of the new root node.      *      * @param token      * @return {@code Id} of new root node or {@code null} if there are no changes to persist.      * @throws Exception if an error occurs      */
 specifier|public
 name|Id
 comment|/* new id of root node */
@@ -234,10 +234,9 @@ else|:
 literal|null
 return|;
 block|}
-comment|/**      * Performs a three-way merge merging<i>our</i> tree (rooted at {@code ourRoot})      * and<i>their</i> tree (identified by {@code newBaseRevisionId}),      * using the common ancestor revision {@code commonAncestorRevisionId} as      * base reference.      *<p/>      * This instance will be initially reset to {@code newBaseRevisionId}, discarding      * all currently staged changes.      *      * @param ourRoot      * @param newBaseRevisionId      * @param commonAncestorRevisionId      * @param token      * @return {@code Id} of new root node      * @throws Exception      */
+comment|/**      * Performs a three-way merge merging<i>our</i> tree (rooted at {@code ourRoot})      * and<i>their</i> tree (identified by {@code newBaseRevisionId}),      * using the common ancestor revision {@code commonAncestorRevisionId} as      * base reference.      *<p/>      *<I>This</I> instance will be initially reset to {@code newBaseRevisionId}, discarding      * all currently staged changes.      *      * @param ourRoot      * @param newBaseRevisionId      * @param commonAncestorRevisionId      * @param token      * @return {@code Id} of new root node      * @throws Exception      */
 specifier|public
 name|Id
-comment|/* new id of merged root node */
 name|merge
 parameter_list|(
 name|StoredNode
@@ -304,6 +303,7 @@ argument_list|)
 return|;
 block|}
 comment|//-----------------------------------------< tree manipulation operations>
+comment|/**      * Creates a new node named {@code nodeName} at {@code parentNodePath}.      *      * @param parentNodePath parent node path      * @param nodeName name of new node      * @param nodeData {@code JsonObject} representation of the node to be added      * @throws NotFoundException if there's no node at {@code parentNodePath}      * @throws Exception if a node named {@code nodeName} already exists at {@code parentNodePath}      *                   or if another error occurs      */
 specifier|public
 name|void
 name|add
@@ -315,7 +315,7 @@ name|String
 name|nodeName
 parameter_list|,
 name|JsonObject
-name|node
+name|nodeData
 parameter_list|)
 throws|throws
 name|Exception
@@ -360,10 +360,11 @@ name|add
 argument_list|(
 name|nodeName
 argument_list|,
-name|node
+name|nodeData
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * Removes the node at {@code nodePath}.      *      * @param nodePath node path      * @throws Exception      */
 specifier|public
 name|void
 name|remove
@@ -431,6 +432,7 @@ name|nodePath
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * Creates or updates the property named {@code propName} of the specified node.      *<p/>      * if {@code propValue == null} the specified property will be removed.      *      * @param nodePath node path      * @param propName property name      * @param propValue property value      * @throws NotFoundException if there's no node at {@code nodePath}      * @throws Exception if another error occurs      */
 specifier|public
 name|void
 name|setProperty
@@ -498,6 +500,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+comment|/**      * Moves the subtree rooted at {@code srcPath} to {@code destPath}.      *      * @param srcPath path of node to be moved      * @param destPath destination path      * @throws NotFoundException if either the node at {@code srcPath} or the parent      *                           node of {@code destPath} doesn't exist      * @throws Exception if a node already exists at {@code destPath},      *                   if {@code srcPath} denotes an ancestor of {@code destPath}      *                   or if another error occurs      */
 specifier|public
 name|void
 name|move
@@ -670,6 +673,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+comment|/**      * Copies the subtree rooted at {@code srcPath} to {@code destPath}.      *      * @param srcPath path of node to be copied      * @param destPath destination path      * @throws NotFoundException if either the node at {@code srcPath} or the parent      *                           node of {@code destPath} doesn't exist      * @throws Exception if a node already exists at {@code destPath}      *                   or if another error occurs      */
 specifier|public
 name|void
 name|copy
@@ -906,6 +910,7 @@ expr_stmt|;
 block|}
 block|}
 comment|//-------------------------------------------------------< implementation>
+comment|/**      * Returns a {@code StagedNode} representation of the specified node.      * If a {@code StagedNode} representation doesn't exist yet a new      * {@code StagedNode} instance will be returned if {@code createIfNotStaged == true},      * otherwise {@code null} will be returned.      *<p/>      * A {@code NotFoundException} will be thrown if there's no node at {@code path}.      *      * @param path              node path      * @param createIfNotStaged flag controlling whether a new {@code StagedNode}      *                          instance should be created on demand      * @return a {@code StagedNode} instance or {@code null} if there's no {@code StagedNode}      *         representation of the specified node and {@code createIfNotStaged == false}      * @throws NotFoundException if there's no child node with the given name      * @throws Exception         if another error occurs      */
 specifier|private
 name|StagedNode
 name|getStagedNode
@@ -1027,6 +1032,7 @@ return|return
 name|node
 return|;
 block|}
+comment|/**      * Discards all staged changes affecting the subtree rooted at {@code path}.      *      * @param path node path      * @return the discarded {@code StagedNode} representation or {@code null} if there wasn't any      * @throws NotFoundException if there's no node at the specified {@code path}      * @throws Exception if another error occurs      */
 specifier|private
 name|StagedNode
 name|unstageNode
@@ -1118,6 +1124,7 @@ name|name
 argument_list|)
 return|;
 block|}
+comment|/**      * Returns the {@code StoredNode} at {@code path}.      *      * @param path node path      * @return the {@code StoredNode} at {@code path}      * @throws NotFoundException if there's no node at the specified {@code path}      * @throws Exception if another error occurs      */
 specifier|private
 name|StoredNode
 name|getStoredNode
@@ -1757,7 +1764,7 @@ name|store
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**          * Returns a {@code StagedNode} representation of the given child node.          * If a {@code StagedNode} representation doesn't exist yet a new          * {@code StagedNode} instance will be returned if {@code createIfNotStaged == true},          * otherwise {@code null} will be returned.          *<p/>          * A {@code NotFoundException} will be thrown if there's no child node          * with the given name.          *          * @param name child node name          * @param createIfNotStaged flag controlling whether a new {@code StagedNode}          *                          instance should be created on demand          * @return a {@code StagedNode} instance or null if there's no {@code StagedNode}          *         representation of the given child node and {@code createIfNotStaged == false}          * @throws NotFoundException if there's no child node with the given name          * @throws Exception if another error occurs          */
+comment|/**          * Returns a {@code StagedNode} representation of the specified child node.          * If a {@code StagedNode} representation doesn't exist yet a new          * {@code StagedNode} instance will be returned if {@code createIfNotStaged == true},          * otherwise {@code null} will be returned.          *<p/>          * A {@code NotFoundException} will be thrown if there's no child node          * with the given name.          *          * @param name              child node name          * @param createIfNotStaged flag controlling whether a new {@code StagedNode}          *                          instance should be created on demand          * @return a {@code StagedNode} instance or {@code null} if there's no {@code StagedNode}          *         representation of the specified child node and {@code createIfNotStaged == false}          * @throws NotFoundException if there's no child node with the given name          * @throws Exception         if another error occurs          */
 name|StagedNode
 name|getStagedChildNode
 parameter_list|(
@@ -1851,6 +1858,7 @@ return|return
 name|child
 return|;
 block|}
+comment|/**          * Removes the {@code StagedNode} representation of the specified child node if there is one.          *          * @param name child node name          * @return the removed {@code StagedNode} representation or {@code null} if there wasn't any          */
 name|StagedNode
 name|unstageChildNode
 parameter_list|(
