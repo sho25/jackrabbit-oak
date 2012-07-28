@@ -789,11 +789,6 @@ throw|;
 block|}
 try|try
 block|{
-name|stream
-operator|=
-name|getNewStream
-argument_list|()
-expr_stmt|;
 return|return
 name|CharStreams
 operator|.
@@ -818,7 +813,10 @@ name|getInput
 parameter_list|()
 block|{
 return|return
-name|stream
+name|value
+operator|.
+name|getNewStream
+argument_list|()
 return|;
 block|}
 block|}
