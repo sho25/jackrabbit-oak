@@ -116,7 +116,7 @@ name|BigDecimal
 name|value
 parameter_list|)
 function_decl|;
-comment|/**      * Creates a new value of type {@link javax.jcr.PropertyType#BINARY}.      *      * @param value A non-null {@code InputStream} that defines the new value.      * @return a new value instance.      * @throws IllegalArgumentException if the specified {@code InputStream} is {@code null}.      * @throws IOException If an error occurs while processing the stream.      * @throws //TODO define exceptions (currently impl. throws MicrokernelException)      */
+comment|/**      * Creates a new value of type {@link javax.jcr.PropertyType#BINARY}      * from the given byte stream. The stream is consumed<em>and</em> closed      * by this method.      *      * @param value A non-null {@code InputStream} that defines the new value.      * @return a new value instance.      * @throws IllegalArgumentException if the specified {@code InputStream} is {@code null}.      * @throws IOException If the stream could not be consumed (or closed).      * @throws //TODO define exceptions (currently impl. throws MicrokernelException)      */
 annotation|@
 name|Nonnull
 name|CoreValue
