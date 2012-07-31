@@ -759,7 +759,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|//-------------------------------------------------< NodeStateBuilder>--
+comment|//--------------------------------------------------------< NodeBuilder>---
 annotation|@
 name|Override
 specifier|public
@@ -1467,7 +1467,7 @@ argument_list|)
 return|;
 block|}
 block|}
-comment|/**      * The<em>mutable</em> state being built. Instances of this class      * are never passed beyond the containing MemoryNodeStateBuilder,      * so it's not a problem that we intentionally break the immutability      * assumption of the {@link NodeState} interface.      */
+comment|/**      * The<em>mutable</em> state being built. Instances of this class      * are never passed beyond the containing {@code MemoryNodeBuilder},      * so it's not a problem that we intentionally break the immutability      * assumption of the {@link NodeState} interface.      */
 specifier|protected
 specifier|static
 class|class

@@ -316,7 +316,7 @@ specifier|private
 name|String
 name|name
 decl_stmt|;
-comment|/** Lazily initialised {@code NodeStateBuilder} for the underlying node state */
+comment|/** Lazily initialised {@code NodeBuilder} for the underlying node state */
 name|NodeBuilder
 name|nodeBuilder
 decl_stmt|;

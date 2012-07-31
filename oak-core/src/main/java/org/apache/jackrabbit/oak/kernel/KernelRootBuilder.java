@@ -231,7 +231,7 @@ operator|=
 literal|null
 expr_stmt|;
 block|}
-comment|//--------------------------------------------< MemoryNodeStateBuilder>--
+comment|//--------------------------------------------------< MemoryNodeBuilder>---
 annotation|@
 name|Override
 specifier|protected

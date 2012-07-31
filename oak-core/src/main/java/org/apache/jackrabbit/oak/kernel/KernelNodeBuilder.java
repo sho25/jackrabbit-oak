@@ -115,7 +115,7 @@ name|root
 argument_list|)
 expr_stmt|;
 block|}
-comment|//--------------------------------------------< MemoryNodeStateBuilder>--
+comment|//--------------------------------------------------< MemoryNodeBuilder>---
 annotation|@
 name|Override
 specifier|protected
