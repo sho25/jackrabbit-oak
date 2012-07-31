@@ -121,7 +121,7 @@ parameter_list|()
 throws|throws
 name|InvalidItemStateException
 function_decl|;
-comment|/**      * Get the parent of this item      * @return  parent of this item or {@code null} for root      */
+comment|/**      * Get the parent of this item or {@code null}.      * @return  parent of this item or {@code null} for root or if the parent      * is not accessible.      */
 annotation|@
 name|CheckForNull
 specifier|public
