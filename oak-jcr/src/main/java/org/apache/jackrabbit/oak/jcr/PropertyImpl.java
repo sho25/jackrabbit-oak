@@ -2378,7 +2378,7 @@ argument_list|()
 return|;
 block|}
 block|}
-comment|/**     *     * @param defaultType     * @return the required type for this property.     * @throws javax.jcr.RepositoryException     */
+comment|/**      * @param defaultType      * @return the required type for this property.      * @throws javax.jcr.RepositoryException      */
 specifier|private
 name|int
 name|getRequiredType
@@ -2436,7 +2436,7 @@ return|return
 name|reqType
 return|;
 block|}
-comment|/**     *     * @param value     * @param requiredType     * @throws RepositoryException     */
+comment|/**      * @param value      * @param requiredType      * @throws RepositoryException      */
 specifier|private
 name|void
 name|setValue
@@ -2522,7 +2522,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**    *    * @param values    * @param requiredType    * @throws RepositoryException    */
+comment|/**      * @param values      * @param requiredType      * @throws RepositoryException      */
 specifier|private
 name|void
 name|setValues
