@@ -145,6 +145,18 @@ name|apache
 operator|.
 name|jackrabbit
 operator|.
+name|JcrConstants
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
 name|oak
 operator|.
 name|api
@@ -451,7 +463,9 @@ name|pd
 init|=
 name|getProperty
 argument_list|(
-literal|"jcr:uuid"
+name|JcrConstants
+operator|.
+name|JCR_UUID
 argument_list|)
 decl_stmt|;
 if|if
@@ -461,7 +475,9 @@ operator|==
 literal|null
 condition|)
 block|{
-comment|// TODO should find the closest referenceable parent, and build an identifier based on that and the relative path
+comment|// TODO delegated to the OAK-API to calculate the identifier
+comment|// TODO consisting of closest referenceable parent and a relative path
+comment|// TODO irrespective of the accessibility of the parent node(s)
 return|return
 name|getPath
 argument_list|()
