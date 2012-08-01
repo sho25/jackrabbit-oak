@@ -319,16 +319,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|Set
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|TreeMap
 import|;
 end_import
@@ -909,13 +899,14 @@ block|}
 argument_list|,
 literal|60
 argument_list|,
-literal|60
+literal|1
 argument_list|,
 name|TimeUnit
 operator|.
-name|SECONDS
+name|MINUTES
 argument_list|)
 expr_stmt|;
+comment|// FIXME, see OAK-216
 block|}
 name|initialized
 operator|=
