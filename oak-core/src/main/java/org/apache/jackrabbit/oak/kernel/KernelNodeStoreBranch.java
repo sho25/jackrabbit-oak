@@ -545,10 +545,7 @@ decl_stmt|;
 name|NodeState
 name|oldRoot
 init|=
-name|store
-operator|.
-name|getRoot
-argument_list|()
+name|base
 decl_stmt|;
 name|NodeState
 name|toCommit
