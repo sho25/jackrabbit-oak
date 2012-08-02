@@ -333,7 +333,7 @@ name|s
 init|=
 name|store
 operator|.
-name|addBlob
+name|writeBlob
 argument_list|(
 name|tempFileName
 argument_list|)
@@ -413,7 +413,7 @@ try|try
 block|{
 name|store
 operator|.
-name|addBlob
+name|writeBlob
 argument_list|(
 name|tempFileName
 operator|+
@@ -903,17 +903,11 @@ init|=
 literal|1
 init|;
 name|i
-operator|<
-literal|10000
+operator|<=
+literal|1000
 condition|;
 name|i
-operator|+=
-operator|(
-name|i
-operator|+
-literal|1
-operator|)
-operator|*
+operator|*=
 literal|10
 control|)
 block|{
@@ -1124,6 +1118,8 @@ name|id
 argument_list|)
 expr_stmt|;
 block|}
+name|count
+operator|=
 name|store
 operator|.
 name|sweep

@@ -38,7 +38,7 @@ name|BlobStore
 block|{
 comment|/**      * Write a blob from a temporary file. The temporary file is removed      * afterwards. A file based blob stores might simply rename the file, so      * that no additional writes are necessary.      *      * @param tempFilePath the temporary file      * @return the blob id      */
 name|String
-name|addBlob
+name|writeBlob
 parameter_list|(
 name|String
 name|tempFilePath
@@ -56,6 +56,7 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
+comment|/**      * Read a number of bytes from a blob.      *       * @param blobId the blob id      * @param pos the position within the blob      * @param buff the target byte array      * @param off the offset within the target array      * @param length the number of bytes to read      * @return the number of bytes read      */
 name|int
 name|readBlob
 parameter_list|(
@@ -78,6 +79,7 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
+comment|/**      * Get the length of the blob.      *       * @param blobId the blob id      * @return the length      */
 name|long
 name|getBlobLength
 parameter_list|(
@@ -87,6 +89,7 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
+comment|/**      * Close all internally used resources, such as file handles. This method      * should be called at the end of the components lifecycle. After calling      * this method, the blob store should no longer be used.      */
 name|void
 name|close
 parameter_list|()

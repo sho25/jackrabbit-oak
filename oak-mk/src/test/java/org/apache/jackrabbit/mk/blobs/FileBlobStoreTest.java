@@ -55,7 +55,7 @@ name|store
 operator|.
 name|setBlockSizeMin
 argument_list|(
-literal|32
+literal|48
 argument_list|)
 expr_stmt|;
 name|this
