@@ -961,7 +961,7 @@ expr_stmt|;
 block|}
 block|}
 annotation|@
-name|Nonnull
+name|CheckForNull
 specifier|public
 name|NodeDelegate
 name|getRoot
@@ -982,14 +982,12 @@ operator|==
 literal|null
 condition|)
 block|{
-throw|throw
-operator|new
-name|IllegalStateException
-argument_list|(
-literal|"No root node"
-argument_list|)
-throw|;
+return|return
+literal|null
+return|;
 block|}
+else|else
+block|{
 return|return
 operator|new
 name|NodeDelegate
@@ -999,6 +997,7 @@ argument_list|,
 name|root
 argument_list|)
 return|;
+block|}
 block|}
 annotation|@
 name|CheckForNull
