@@ -535,6 +535,10 @@ argument_list|(
 name|store1
 argument_list|,
 literal|null
+argument_list|,
+operator|new
+name|TestAcContext
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|MicroKernel
@@ -583,6 +587,10 @@ argument_list|(
 name|store2
 argument_list|,
 literal|null
+argument_list|,
+operator|new
+name|TestAcContext
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
