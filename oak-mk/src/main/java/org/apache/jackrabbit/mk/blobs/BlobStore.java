@@ -36,16 +36,6 @@ specifier|public
 interface|interface
 name|BlobStore
 block|{
-comment|/**      * Write a blob from a temporary file. The temporary file is removed      * afterwards. A file based blob stores might simply rename the file, so      * that no additional writes are necessary.      *      * @param tempFilePath the temporary file      * @return the blob id      */
-name|String
-name|writeBlob
-parameter_list|(
-name|String
-name|tempFilePath
-parameter_list|)
-throws|throws
-name|Exception
-function_decl|;
 comment|/**      * Write a blob from an input stream.      * This method closes the input stream.      *      * @param in the input stream      * @return the blob id      */
 name|String
 name|writeBlob
@@ -88,11 +78,6 @@ name|blobId
 parameter_list|)
 throws|throws
 name|Exception
-function_decl|;
-comment|/**      * Close all internally used resources, such as file handles. This method      * should be called at the end of the components lifecycle. After calling      * this method, the blob store should no longer be used.      */
-name|void
-name|close
-parameter_list|()
 function_decl|;
 block|}
 end_interface

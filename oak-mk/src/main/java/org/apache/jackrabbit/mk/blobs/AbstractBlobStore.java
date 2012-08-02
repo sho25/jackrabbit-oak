@@ -91,16 +91,6 @@ name|java
 operator|.
 name|io
 operator|.
-name|Closeable
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
 name|File
 import|;
 end_import
@@ -227,8 +217,6 @@ specifier|abstract
 class|class
 name|AbstractBlobStore
 implements|implements
-name|Closeable
-implements|,
 name|BlobStore
 implements|,
 name|Cache
@@ -442,6 +430,7 @@ return|return
 name|blockSize
 return|;
 block|}
+comment|/**      * Write a blob from a temporary file. The temporary file is removed      * afterwards. A file based blob stores might simply rename the file, so      * that no additional writes are necessary.      *      * @param tempFilePath the temporary file      * @return the blob id      */
 specifier|public
 name|String
 name|writeBlob
@@ -1977,13 +1966,6 @@ argument_list|)
 throw|;
 block|}
 block|}
-block|}
-specifier|public
-name|void
-name|close
-parameter_list|()
-block|{
-comment|// ignore
 block|}
 comment|/**      * A block id. Blocks are small enough to fit in memory, so they can be      * cached.      */
 specifier|public
