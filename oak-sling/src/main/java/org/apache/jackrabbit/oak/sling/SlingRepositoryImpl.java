@@ -19,6 +19,18 @@ end_package
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|ScheduledExecutorService
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|jcr
@@ -99,11 +111,16 @@ name|SlingRepositoryImpl
 parameter_list|(
 name|ContentRepository
 name|repository
+parameter_list|,
+name|ScheduledExecutorService
+name|executor
 parameter_list|)
 block|{
 name|super
 argument_list|(
 name|repository
+argument_list|,
+name|executor
 argument_list|)
 expr_stmt|;
 block|}

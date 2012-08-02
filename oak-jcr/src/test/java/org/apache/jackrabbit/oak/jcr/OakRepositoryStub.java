@@ -49,6 +49,18 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|Executors
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|jcr
@@ -241,6 +253,13 @@ operator|new
 name|RepositoryImpl
 argument_list|(
 name|contentRepository
+argument_list|,
+name|Executors
+operator|.
+name|newScheduledThreadPool
+argument_list|(
+literal|1
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|Session
