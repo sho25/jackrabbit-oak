@@ -3859,11 +3859,6 @@ operator|.
 name|close
 argument_list|()
 expr_stmt|;
-name|ds
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
 if|if
 condition|(
 name|server
