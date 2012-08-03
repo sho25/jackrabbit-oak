@@ -60,6 +60,7 @@ argument_list|>
 name|principals
 parameter_list|)
 function_decl|;
+comment|// TODO define how permissions eval is bound to a particular revision/branch. (passing Tree?)
 name|CompiledPermissions
 name|getPermissions
 parameter_list|()

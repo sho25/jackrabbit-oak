@@ -46,9 +46,6 @@ parameter_list|(
 name|String
 name|path
 parameter_list|,
-name|boolean
-name|isProperty
-parameter_list|,
 name|int
 name|permissions
 parameter_list|)
