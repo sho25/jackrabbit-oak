@@ -1016,6 +1016,18 @@ argument_list|,
 literal|""
 argument_list|)
 decl_stmt|;
+name|int
+name|depth
+init|=
+name|request
+operator|.
+name|getParameter
+argument_list|(
+literal|"depth"
+argument_list|,
+literal|1
+argument_list|)
+decl_stmt|;
 name|response
 operator|.
 name|setContentType
@@ -1035,6 +1047,8 @@ argument_list|,
 name|toRevisionId
 argument_list|,
 name|path
+argument_list|,
+name|depth
 argument_list|)
 decl_stmt|;
 if|if

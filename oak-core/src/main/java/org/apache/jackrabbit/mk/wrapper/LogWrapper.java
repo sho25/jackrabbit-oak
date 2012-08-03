@@ -375,6 +375,9 @@ name|toRevisionId
 parameter_list|,
 name|String
 name|path
+parameter_list|,
+name|int
+name|depth
 parameter_list|)
 block|{
 try|try
@@ -402,6 +405,8 @@ argument_list|,
 name|toRevisionId
 argument_list|,
 name|path
+argument_list|,
+name|depth
 argument_list|)
 decl_stmt|;
 name|logResult

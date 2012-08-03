@@ -637,6 +637,9 @@ name|toRevisionId
 parameter_list|,
 name|String
 name|path
+parameter_list|,
+name|int
+name|depth
 parameter_list|)
 throws|throws
 name|MicroKernelException
@@ -680,6 +683,15 @@ argument_list|(
 literal|"path"
 argument_list|,
 name|path
+argument_list|)
+expr_stmt|;
+name|request
+operator|.
+name|addParameter
+argument_list|(
+literal|"depth"
+argument_list|,
+name|depth
 argument_list|)
 expr_stmt|;
 return|return
