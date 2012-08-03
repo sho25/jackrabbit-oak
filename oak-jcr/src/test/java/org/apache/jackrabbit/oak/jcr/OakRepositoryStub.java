@@ -18,6 +18,24 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|jcr
+operator|.
+name|RepositoryTestUtils
+operator|.
+name|buildDefaultCommitEditor
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -244,7 +262,8 @@ name|microkernel
 argument_list|,
 literal|null
 argument_list|,
-literal|null
+name|buildDefaultCommitEditor
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|repository

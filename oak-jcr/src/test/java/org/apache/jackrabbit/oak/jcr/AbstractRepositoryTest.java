@@ -18,6 +18,24 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|jcr
+operator|.
+name|RepositoryTestUtils
+operator|.
+name|buildDefaultCommitEditor
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -38,6 +56,22 @@ operator|.
 name|concurrent
 operator|.
 name|ScheduledExecutorService
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|mk
+operator|.
+name|core
+operator|.
+name|MicroKernelImpl
 import|;
 end_import
 
@@ -235,7 +269,16 @@ name|RepositoryImpl
 argument_list|(
 operator|new
 name|ContentRepositoryImpl
+argument_list|(
+operator|new
+name|MicroKernelImpl
 argument_list|()
+argument_list|,
+literal|null
+argument_list|,
+name|buildDefaultCommitEditor
+argument_list|()
+argument_list|)
 argument_list|,
 name|executor
 argument_list|)
