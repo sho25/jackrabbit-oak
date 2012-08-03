@@ -1883,6 +1883,9 @@ argument_list|,
 name|splitSize
 argument_list|,
 name|sessionDelegate
+operator|.
+name|getValueFactory
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
