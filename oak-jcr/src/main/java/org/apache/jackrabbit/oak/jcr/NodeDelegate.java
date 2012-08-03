@@ -685,7 +685,7 @@ name|tree
 argument_list|)
 return|;
 block|}
-comment|/**      * Returns an iterator for traversing all the children of this node.      * If the node is orderable (there is an "{@code oak:childOrder}"      * property) then the iterator will return child nodes in the specified      * order. Otherwise the ordering of the iterator is undefined.      *      * @return child nodes of the node      */
+comment|/**      * Returns an iterator for traversing all the children of this node.      * If the node is orderable (there is an {@link PropertyState#OAK_CHILD_ORDER}      * property) then the iterator will return child nodes in the specified      * order. Otherwise the ordering of the iterator is undefined.      *      * @return child nodes of the node      */
 annotation|@
 name|Nonnull
 specifier|public
@@ -811,7 +811,6 @@ block|}
 block|}
 else|else
 block|{
-comment|// TODO: Use a proper namespace for this property?
 name|PropertyState
 name|order
 init|=
@@ -819,7 +818,9 @@ name|tree
 operator|.
 name|getProperty
 argument_list|(
-literal|"childOrder"
+name|PropertyState
+operator|.
+name|OAK_CHILD_ORDER
 argument_list|)
 decl_stmt|;
 if|if
@@ -1148,7 +1149,9 @@ name|tree
 operator|.
 name|getProperty
 argument_list|(
-literal|"childOrder"
+name|PropertyState
+operator|.
+name|OAK_CHILD_ORDER
 argument_list|)
 decl_stmt|;
 if|if
@@ -1312,7 +1315,9 @@ name|tree
 operator|.
 name|setProperty
 argument_list|(
-literal|"childOrder"
+name|PropertyState
+operator|.
+name|OAK_CHILD_ORDER
 argument_list|,
 name|order
 argument_list|)
