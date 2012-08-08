@@ -13,7 +13,7 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|jcr
+name|spi
 operator|.
 name|security
 operator|.
@@ -31,7 +31,7 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|jcr
+name|spi
 operator|.
 name|security
 operator|.
@@ -104,7 +104,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * UserManagerConfig...  */
+comment|/**  * UserManagerConfig provides utilities to retrieve configuration options  * related to user management. In addition it defines some constants that  * have been used in Jackrabbit 2.0 default user management implementation.  */
 end_comment
 
 begin_class
@@ -154,7 +154,7 @@ name|PARAM_DEFAULT_DEPTH
 init|=
 literal|"defaultDepth"
 decl_stmt|;
-comment|/**      * If this parameter is present group members are collected in a node      * structure below a {@link UserConstants#REP_MEMBERS} node instead of the      * default multi valued property {@link UserConstants#REP_MEMBERS}.      * Its value determines the maximum number of member properties until      * additional intermediate nodes are inserted.      */
+comment|/**      * Its value determines the maximum number of members within a given      * content structure until additional intermediate structuring is being      * added. This may for example be used to      *<ul>      *<li>switch storing group members in JCR properties or nodes</li>      *<li>define maximum number of members is a multivalued property</li>      *<li>define maximum number of member properties within a given      *     node structure</li>      *</ul>      */
 specifier|public
 specifier|static
 specifier|final
@@ -213,6 +213,23 @@ name|AuthorizableAction
 argument_list|>
 name|actions
 decl_stmt|;
+specifier|public
+name|UserManagerConfig
+parameter_list|(
+name|String
+name|adminId
+parameter_list|)
+block|{
+name|this
+argument_list|(
+name|adminId
+argument_list|,
+literal|null
+argument_list|,
+literal|null
+argument_list|)
+expr_stmt|;
+block|}
 specifier|public
 name|UserManagerConfig
 parameter_list|(
