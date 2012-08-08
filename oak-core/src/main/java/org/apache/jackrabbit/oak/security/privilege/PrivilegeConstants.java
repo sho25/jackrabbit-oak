@@ -19,14 +19,45 @@ name|privilege
 package|;
 end_package
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|JcrConstants
+import|;
+end_import
+
 begin_comment
 comment|/**  * PrivilegeConstants... TODO  */
 end_comment
 
 begin_interface
+specifier|public
 interface|interface
 name|PrivilegeConstants
 block|{
+name|String
+name|REP_PRIVILEGES
+init|=
+literal|"rep:privileges"
+decl_stmt|;
+name|String
+name|PRIVILEGES_PATH
+init|=
+literal|'/'
+operator|+
+name|JcrConstants
+operator|.
+name|JCR_SYSTEM
+operator|+
+literal|'/'
+operator|+
+name|REP_PRIVILEGES
+decl_stmt|;
 name|String
 name|JCR_READ
 init|=
