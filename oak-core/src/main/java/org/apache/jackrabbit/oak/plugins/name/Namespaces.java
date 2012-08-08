@@ -126,6 +126,8 @@ end_comment
 begin_class
 class|class
 name|Namespaces
+implements|implements
+name|NamespaceConstants
 block|{
 specifier|private
 specifier|static
@@ -146,15 +148,6 @@ argument_list|,
 name|String
 argument_list|>
 argument_list|()
-decl_stmt|;
-comment|// TODO: this should not use the "jcr" prefix
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|NSMAPNODENAME
-init|=
-literal|"jcr:namespaces"
 decl_stmt|;
 specifier|private
 name|Namespaces
@@ -309,7 +302,7 @@ name|system
 operator|.
 name|getChild
 argument_list|(
-name|NSMAPNODENAME
+name|REP_NAMESPACES
 argument_list|)
 decl_stmt|;
 if|if
