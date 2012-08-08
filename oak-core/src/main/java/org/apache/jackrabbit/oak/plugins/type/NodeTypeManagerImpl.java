@@ -263,6 +263,18 @@ name|apache
 operator|.
 name|jackrabbit
 operator|.
+name|JcrConstants
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
 name|commons
 operator|.
 name|cnd
@@ -435,6 +447,14 @@ implements|implements
 name|NodeTypeManager
 block|{
 specifier|private
+specifier|static
+specifier|final
+name|String
+name|NODE_TYPES_PATH
+init|=
+literal|"/jcr:system/jcr:nodeTypes"
+decl_stmt|;
+specifier|private
 specifier|final
 name|ContentSession
 name|session
@@ -489,7 +509,7 @@ argument_list|()
 operator|.
 name|getTree
 argument_list|(
-literal|"/jcr:system/jcr:nodeTypes"
+name|NODE_TYPES_PATH
 argument_list|)
 operator|==
 literal|null
@@ -646,7 +666,9 @@ operator|new
 name|String
 index|[]
 block|{
-literal|"nt:base"
+name|JcrConstants
+operator|.
+name|NT_BASE
 block|}
 argument_list|)
 expr_stmt|;
@@ -711,7 +733,9 @@ index|[
 literal|0
 index|]
 operator|=
-literal|"nt:base"
+name|JcrConstants
+operator|.
+name|NT_BASE
 expr_stmt|;
 name|System
 operator|.
@@ -837,7 +861,7 @@ argument_list|()
 operator|.
 name|getTree
 argument_list|(
-literal|"/jcr:system/jcr:nodeTypes"
+name|NODE_TYPES_PATH
 argument_list|)
 decl_stmt|;
 return|return
@@ -880,7 +904,7 @@ argument_list|()
 operator|.
 name|getTree
 argument_list|(
-literal|"/jcr:system/jcr:nodeTypes"
+name|NODE_TYPES_PATH
 argument_list|)
 decl_stmt|;
 if|if
@@ -974,7 +998,7 @@ argument_list|()
 operator|.
 name|getTree
 argument_list|(
-literal|"/jcr:system/jcr:nodeTypes"
+name|NODE_TYPES_PATH
 argument_list|)
 decl_stmt|;
 if|if
@@ -1521,7 +1545,9 @@ name|node
 operator|.
 name|setName
 argument_list|(
-literal|"jcr:nodeTypeName"
+name|JcrConstants
+operator|.
+name|JCR_NODETYPENAME
 argument_list|,
 name|jcrName
 argument_list|)
@@ -1530,7 +1556,9 @@ name|node
 operator|.
 name|setNames
 argument_list|(
-literal|"jcr:supertypes"
+name|JcrConstants
+operator|.
+name|JCR_SUPERTYPES
 argument_list|,
 name|ntd
 operator|.
@@ -1566,7 +1594,9 @@ name|node
 operator|.
 name|setBoolean
 argument_list|(
-literal|"jcr:isMixin"
+name|JcrConstants
+operator|.
+name|JCR_ISMIXIN
 argument_list|,
 name|ntd
 operator|.
@@ -1578,7 +1608,9 @@ name|node
 operator|.
 name|setBoolean
 argument_list|(
-literal|"jcr:hasOrderableChildNodes"
+name|JcrConstants
+operator|.
+name|JCR_HASORDERABLECHILDNODES
 argument_list|,
 name|ntd
 operator|.
@@ -1605,7 +1637,9 @@ name|node
 operator|.
 name|setName
 argument_list|(
-literal|"jcr:primaryItemName"
+name|JcrConstants
+operator|.
+name|JCR_PRIMARYITEMNAME
 argument_list|,
 name|primaryItemName
 argument_list|)
@@ -1634,7 +1668,9 @@ name|type
 operator|.
 name|addChild
 argument_list|(
-literal|"jcr:propertyDefinition"
+name|JcrConstants
+operator|.
+name|JCR_PROPERTYDEFINITION
 operator|+
 name|pdn
 operator|++
@@ -1679,7 +1715,9 @@ name|type
 operator|.
 name|addChild
 argument_list|(
-literal|"jcr:childNodeDefinition"
+name|JcrConstants
+operator|.
+name|JCR_CHILDNODEDEFINITION
 operator|+
 name|ndn
 operator|++
@@ -1749,7 +1787,9 @@ name|node
 operator|.
 name|setName
 argument_list|(
-literal|"jcr:name"
+name|JcrConstants
+operator|.
+name|JCR_NAME
 argument_list|,
 name|name
 argument_list|)
@@ -1759,7 +1799,9 @@ name|node
 operator|.
 name|setBoolean
 argument_list|(
-literal|"jcr:autoCreated"
+name|JcrConstants
+operator|.
+name|JCR_AUTOCREATED
 argument_list|,
 name|def
 operator|.
@@ -1771,7 +1813,9 @@ name|node
 operator|.
 name|setBoolean
 argument_list|(
-literal|"jcr:mandatory"
+name|JcrConstants
+operator|.
+name|JCR_MANDATORY
 argument_list|,
 name|def
 operator|.
@@ -1783,7 +1827,9 @@ name|node
 operator|.
 name|setBoolean
 argument_list|(
-literal|"jcr:protected"
+name|JcrConstants
+operator|.
+name|JCR_PROTECTED
 argument_list|,
 name|def
 operator|.
@@ -1795,7 +1841,9 @@ name|node
 operator|.
 name|setString
 argument_list|(
-literal|"jcr:onParentVersion"
+name|JcrConstants
+operator|.
+name|JCR_ONPARENTVERSION
 argument_list|,
 name|OnParentVersionAction
 operator|.
@@ -1833,7 +1881,9 @@ name|node
 operator|.
 name|setString
 argument_list|(
-literal|"jcr:requiredType"
+name|JcrConstants
+operator|.
+name|JCR_REQUIREDTYPE
 argument_list|,
 name|PropertyType
 operator|.
@@ -1850,7 +1900,9 @@ name|node
 operator|.
 name|setBoolean
 argument_list|(
-literal|"jcr:multiple"
+name|JcrConstants
+operator|.
+name|JCR_MULTIPLE
 argument_list|,
 name|def
 operator|.
@@ -1914,7 +1966,9 @@ name|node
 operator|.
 name|setStrings
 argument_list|(
-literal|"jcr:valueConstraints"
+name|JcrConstants
+operator|.
+name|JCR_VALUECONSTRAINTS
 argument_list|,
 name|constraints
 argument_list|)
@@ -1940,7 +1994,9 @@ name|node
 operator|.
 name|setValues
 argument_list|(
-literal|"jcr:defaultValues"
+name|JcrConstants
+operator|.
+name|JCR_DEFAULTVALUES
 argument_list|,
 name|values
 argument_list|)
@@ -1969,7 +2025,9 @@ name|node
 operator|.
 name|setBoolean
 argument_list|(
-literal|"jcr:sameNameSiblings"
+name|JcrConstants
+operator|.
+name|JCR_SAMENAMESIBLINGS
 argument_list|,
 name|def
 operator|.
@@ -1981,7 +2039,9 @@ name|node
 operator|.
 name|setNames
 argument_list|(
-literal|"jcr:requiredPrimaryTypes"
+name|JcrConstants
+operator|.
+name|JCR_REQUIREDPRIMARYTYPES
 argument_list|,
 name|def
 operator|.
@@ -2008,7 +2068,9 @@ name|node
 operator|.
 name|setName
 argument_list|(
-literal|"jcr:defaultPrimaryType"
+name|JcrConstants
+operator|.
+name|JCR_DEFAULTPRIMARYTYPE
 argument_list|,
 name|defaultPrimaryType
 argument_list|)
@@ -2030,7 +2092,7 @@ name|root
 operator|.
 name|getTree
 argument_list|(
-literal|"/jcr:system/jcr:nodeTypes"
+name|NODE_TYPES_PATH
 argument_list|)
 decl_stmt|;
 if|if
@@ -2118,7 +2180,7 @@ name|root
 operator|.
 name|getTree
 argument_list|(
-literal|"/jcr:system/jcr:nodeTypes"
+name|NODE_TYPES_PATH
 argument_list|)
 decl_stmt|;
 if|if
@@ -2150,16 +2212,15 @@ operator|==
 literal|null
 condition|)
 block|{
-comment|// TODO: Degrade gracefully? Or throw NoSuchNodeTypeException?
 throw|throw
 operator|new
-name|RepositoryException
+name|NoSuchNodeTypeException
 argument_list|(
 literal|"Node type "
 operator|+
 name|name
 operator|+
-literal|" can not be unregistered"
+literal|" can not be unregistered."
 argument_list|)
 throw|;
 block|}
@@ -2230,7 +2291,7 @@ name|root
 operator|.
 name|getTree
 argument_list|(
-literal|"/jcr:system/jcr:nodeTypes"
+name|NODE_TYPES_PATH
 argument_list|)
 decl_stmt|;
 if|if
@@ -2240,12 +2301,11 @@ operator|==
 literal|null
 condition|)
 block|{
-comment|// TODO: Degrade gracefully? Or throw NoSuchNodeTypeException?
 throw|throw
 operator|new
-name|RepositoryException
+name|NoSuchNodeTypeException
 argument_list|(
-literal|"Node types can not be unregistered"
+literal|"Node types can not be unregistered."
 argument_list|)
 throw|;
 block|}
@@ -2281,16 +2341,15 @@ operator|==
 literal|null
 condition|)
 block|{
-comment|// TODO: Degrade gracefully? Or throw NoSuchNodeTypeException?
 throw|throw
 operator|new
-name|RepositoryException
+name|NoSuchNodeTypeException
 argument_list|(
 literal|"Node type "
 operator|+
 name|name
 operator|+
-literal|" can not be unregistered"
+literal|" can not be unregistered."
 argument_list|)
 throw|;
 block|}
