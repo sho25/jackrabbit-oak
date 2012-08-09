@@ -20,6 +20,40 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|JcrConstants
+operator|.
+name|JCR_SYSTEM
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|name
+operator|.
+name|NamespaceConstants
+operator|.
+name|REP_NAMESPACES
+import|;
+end_import
+
+begin_import
 import|import
 name|org
 operator|.
@@ -196,9 +230,9 @@ name|SubtreeValidator
 argument_list|(
 name|validator
 argument_list|,
-literal|"jcr:system"
+name|JCR_SYSTEM
 argument_list|,
-literal|"jcr:namespaces"
+name|REP_NAMESPACES
 argument_list|)
 return|;
 block|}
