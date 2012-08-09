@@ -13,7 +13,7 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|jcr
+name|spi
 operator|.
 name|security
 operator|.
@@ -26,6 +26,7 @@ comment|/**  * UserConstants...  */
 end_comment
 
 begin_interface
+specifier|public
 interface|interface
 name|UserConstants
 block|{
