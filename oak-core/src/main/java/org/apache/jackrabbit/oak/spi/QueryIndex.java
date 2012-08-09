@@ -17,6 +17,24 @@ name|spi
 package|;
 end_package
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|state
+operator|.
+name|NodeState
+import|;
+end_import
+
 begin_comment
 comment|/**  * Represents an index. The index should use the data in the filter if possible  * to speed up reading.  */
 end_comment
@@ -34,7 +52,7 @@ name|Filter
 name|filter
 parameter_list|)
 function_decl|;
-comment|/**      * Start a query.      *      * @param filter the filter      * @param revisionId the revision      * @return a cursor to iterate over the result      */
+comment|/**      * Start a query.      *      * @param filter the filter      * @param revisionId the revision      * @param root root state of the given revision      * @return a cursor to iterate over the result      */
 name|Cursor
 name|query
 parameter_list|(
@@ -43,6 +61,9 @@ name|filter
 parameter_list|,
 name|String
 name|revisionId
+parameter_list|,
+name|NodeState
+name|root
 parameter_list|)
 function_decl|;
 comment|/**      * Get the query plan for the given filter.      *      * @param filter the filter      * @return the query plan      */

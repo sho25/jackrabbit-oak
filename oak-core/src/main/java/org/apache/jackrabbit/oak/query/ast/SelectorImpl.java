@@ -167,6 +167,24 @@ name|QueryIndex
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|state
+operator|.
+name|NodeState
+import|;
+end_import
+
 begin_comment
 comment|/**  * A selector within a query.  */
 end_comment
@@ -324,6 +342,9 @@ name|execute
 parameter_list|(
 name|String
 name|revisionId
+parameter_list|,
+name|NodeState
+name|root
 parameter_list|)
 block|{
 name|cursor
@@ -336,6 +357,8 @@ name|createFilter
 argument_list|()
 argument_list|,
 name|revisionId
+argument_list|,
+name|root
 argument_list|)
 expr_stmt|;
 block|}

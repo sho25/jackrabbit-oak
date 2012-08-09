@@ -105,6 +105,24 @@ name|SelectorImpl
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|state
+operator|.
+name|NodeState
+import|;
+end_import
+
 begin_comment
 comment|/**  * A query result.  */
 end_comment
@@ -126,6 +144,11 @@ specifier|final
 name|String
 name|revisionId
 decl_stmt|;
+specifier|protected
+specifier|final
+name|NodeState
+name|root
+decl_stmt|;
 name|ResultImpl
 parameter_list|(
 name|Query
@@ -133,6 +156,9 @@ name|query
 parameter_list|,
 name|String
 name|revisionId
+parameter_list|,
+name|NodeState
+name|root
 parameter_list|)
 block|{
 name|this
@@ -146,6 +172,12 @@ operator|.
 name|revisionId
 operator|=
 name|revisionId
+expr_stmt|;
+name|this
+operator|.
+name|root
+operator|=
+name|root
 expr_stmt|;
 block|}
 annotation|@
@@ -318,6 +350,8 @@ operator|.
 name|getRows
 argument_list|(
 name|revisionId
+argument_list|,
+name|root
 argument_list|)
 return|;
 block|}

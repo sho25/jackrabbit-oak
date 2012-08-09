@@ -673,6 +673,24 @@ name|QueryIndex
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|state
+operator|.
+name|NodeState
+import|;
+end_import
+
 begin_comment
 comment|/**  * Represents a parsed query. Lifecycle: use the constructor to create a new  * object. Call init() to initialize the bind variable map.  */
 end_comment
@@ -1635,6 +1653,9 @@ name|executeQuery
 parameter_list|(
 name|String
 name|revisionId
+parameter_list|,
+name|NodeState
+name|root
 parameter_list|)
 block|{
 return|return
@@ -1644,6 +1665,8 @@ argument_list|(
 name|this
 argument_list|,
 name|revisionId
+argument_list|,
+name|root
 argument_list|)
 return|;
 block|}
@@ -1655,6 +1678,9 @@ name|getRows
 parameter_list|(
 name|String
 name|revisionId
+parameter_list|,
+name|NodeState
+name|root
 parameter_list|)
 block|{
 name|prepare
@@ -1747,6 +1773,8 @@ operator|new
 name|RowIterator
 argument_list|(
 name|revisionId
+argument_list|,
+name|root
 argument_list|,
 name|limit
 argument_list|,
@@ -1997,6 +2025,11 @@ name|String
 name|revisionId
 decl_stmt|;
 specifier|private
+specifier|final
+name|NodeState
+name|root
+decl_stmt|;
+specifier|private
 name|ResultRowImpl
 name|current
 decl_stmt|;
@@ -2019,6 +2052,9 @@ parameter_list|(
 name|String
 name|revisionId
 parameter_list|,
+name|NodeState
+name|root
+parameter_list|,
 name|long
 name|limit
 parameter_list|,
@@ -2031,6 +2067,12 @@ operator|.
 name|revisionId
 operator|=
 name|revisionId
+expr_stmt|;
+name|this
+operator|.
+name|root
+operator|=
+name|root
 expr_stmt|;
 name|this
 operator|.
@@ -2081,6 +2123,8 @@ operator|.
 name|execute
 argument_list|(
 name|revisionId
+argument_list|,
+name|root
 argument_list|)
 expr_stmt|;
 name|started

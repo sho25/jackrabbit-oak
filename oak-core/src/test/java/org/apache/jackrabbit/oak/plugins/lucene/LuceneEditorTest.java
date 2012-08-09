@@ -482,6 +482,11 @@ argument_list|(
 name|filter
 argument_list|,
 literal|null
+argument_list|,
+name|store
+operator|.
+name|getRoot
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|assertTrue

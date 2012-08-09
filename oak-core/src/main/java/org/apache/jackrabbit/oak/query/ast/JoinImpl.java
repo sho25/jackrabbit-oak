@@ -51,6 +51,24 @@ name|Query
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|state
+operator|.
+name|NodeState
+import|;
+end_import
+
 begin_comment
 comment|/**  * A join.  */
 end_comment
@@ -96,6 +114,10 @@ decl_stmt|;
 specifier|private
 name|boolean
 name|end
+decl_stmt|;
+specifier|private
+name|NodeState
+name|root
 decl_stmt|;
 specifier|private
 name|String
@@ -493,8 +515,17 @@ name|execute
 parameter_list|(
 name|String
 name|revisionId
+parameter_list|,
+name|NodeState
+name|root
 parameter_list|)
 block|{
+name|this
+operator|.
+name|root
+operator|=
+name|root
+expr_stmt|;
 name|this
 operator|.
 name|revisionId
@@ -536,6 +567,8 @@ operator|.
 name|execute
 argument_list|(
 name|revisionId
+argument_list|,
+name|root
 argument_list|)
 expr_stmt|;
 name|leftNeedExecute
@@ -593,6 +626,8 @@ operator|.
 name|execute
 argument_list|(
 name|revisionId
+argument_list|,
+name|root
 argument_list|)
 expr_stmt|;
 name|foundJoinedRow

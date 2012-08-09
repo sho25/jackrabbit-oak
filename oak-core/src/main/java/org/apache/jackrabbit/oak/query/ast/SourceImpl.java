@@ -51,6 +51,24 @@ name|Query
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|state
+operator|.
+name|NodeState
+import|;
+end_import
+
 begin_comment
 comment|/**  * The base class of a selector and a join.  */
 end_comment
@@ -164,7 +182,7 @@ name|MicroKernel
 name|mk
 parameter_list|)
 function_decl|;
-comment|/**      * Execute the query. The current node is set to before the first row.      *      * @param revisionId the revision to use      */
+comment|/**      * Execute the query. The current node is set to before the first row.      *      * @param revisionId the revision to use      * @param root root state of the given revision      */
 specifier|public
 specifier|abstract
 name|void
@@ -172,6 +190,9 @@ name|execute
 parameter_list|(
 name|String
 name|revisionId
+parameter_list|,
+name|NodeState
+name|root
 parameter_list|)
 function_decl|;
 comment|/**      * Go to the next node for the given source. This will also filter the      * result for the right node type if required.      *      * @return true if there is a next row      */

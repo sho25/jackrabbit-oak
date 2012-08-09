@@ -342,6 +342,7 @@ comment|/**  * Basic {@link NodeState} implementation based on the {@link MicroK
 end_comment
 
 begin_class
+specifier|public
 specifier|final
 class|class
 name|KernelNodeState
