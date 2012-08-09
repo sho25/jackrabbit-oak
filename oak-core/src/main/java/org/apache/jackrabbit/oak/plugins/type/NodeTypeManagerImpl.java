@@ -63,6 +63,16 @@ begin_import
 import|import
 name|javax
 operator|.
+name|annotation
+operator|.
+name|Nonnull
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
 name|jcr
 operator|.
 name|PropertyType
@@ -809,6 +819,9 @@ throw|;
 block|}
 block|}
 block|}
+comment|/**      * Returns the internal name for the specified JCR name.      *      * @param jcrName JCR node type name.      * @return the internal representation of the given JCR name.      * @throws RepositoryException If there is no valid internal representation      * of the specified JCR name.      */
+annotation|@
+name|Nonnull
 specifier|protected
 name|String
 name|getOakName
@@ -819,13 +832,35 @@ parameter_list|)
 throws|throws
 name|RepositoryException
 block|{
-return|return
+name|String
+name|oakName
+init|=
 name|mapper
 operator|.
 name|getOakName
 argument_list|(
 name|jcrName
 argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|oakName
+operator|==
+literal|null
+condition|)
+block|{
+throw|throw
+operator|new
+name|RepositoryException
+argument_list|(
+literal|"Invalid JCR name "
+operator|+
+name|jcrName
+argument_list|)
+throw|;
+block|}
+return|return
+name|oakName
 return|;
 block|}
 comment|/**      * Called by the {@link NodeTypeManager} implementation methods to      * refresh the state of the session associated with this instance.      * That way the session is kept in sync with the latest global state      * seen by the node type manager.      *      * @throws RepositoryException if the session could not be refreshed      */
@@ -836,7 +871,7 @@ parameter_list|()
 throws|throws
 name|RepositoryException
 block|{     }
-comment|//---------------------------------------------------< NodeTypeManager>--
+comment|//----------------------------------------------------< NodeTypeManager>---
 annotation|@
 name|Override
 specifier|public
