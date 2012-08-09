@@ -263,18 +263,6 @@ name|apache
 operator|.
 name|jackrabbit
 operator|.
-name|JcrConstants
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
 name|commons
 operator|.
 name|cnd
@@ -623,8 +611,6 @@ name|isMixin
 argument_list|()
 operator|&&
 operator|!
-name|JcrConstants
-operator|.
 name|NT_BASE
 operator|.
 name|equals
@@ -662,8 +648,6 @@ operator|new
 name|String
 index|[]
 block|{
-name|JcrConstants
-operator|.
 name|NT_BASE
 block|}
 argument_list|)
@@ -729,8 +713,6 @@ index|[
 literal|0
 index|]
 operator|=
-name|JcrConstants
-operator|.
 name|NT_BASE
 expr_stmt|;
 name|System
@@ -1541,12 +1523,8 @@ name|node
 operator|.
 name|setName
 argument_list|(
-name|JcrConstants
-operator|.
 name|JCR_PRIMARYTYPE
 argument_list|,
-name|JcrConstants
-operator|.
 name|NT_NODETYPE
 argument_list|)
 expr_stmt|;
@@ -1554,8 +1532,6 @@ name|node
 operator|.
 name|setName
 argument_list|(
-name|JcrConstants
-operator|.
 name|JCR_NODETYPENAME
 argument_list|,
 name|jcrName
@@ -1565,8 +1541,6 @@ name|node
 operator|.
 name|setNames
 argument_list|(
-name|JcrConstants
-operator|.
 name|JCR_SUPERTYPES
 argument_list|,
 name|ntd
@@ -1579,7 +1553,7 @@ name|node
 operator|.
 name|setBoolean
 argument_list|(
-literal|"jcr:isAbstract"
+name|JCR_IS_ABSTRACT
 argument_list|,
 name|ntd
 operator|.
@@ -1591,7 +1565,7 @@ name|node
 operator|.
 name|setBoolean
 argument_list|(
-literal|"jcr:isQueryable"
+name|JCR_IS_QUERYABLE
 argument_list|,
 name|ntd
 operator|.
@@ -1603,8 +1577,6 @@ name|node
 operator|.
 name|setBoolean
 argument_list|(
-name|JcrConstants
-operator|.
 name|JCR_ISMIXIN
 argument_list|,
 name|ntd
@@ -1617,8 +1589,6 @@ name|node
 operator|.
 name|setBoolean
 argument_list|(
-name|JcrConstants
-operator|.
 name|JCR_HASORDERABLECHILDNODES
 argument_list|,
 name|ntd
@@ -1646,8 +1616,6 @@ name|node
 operator|.
 name|setName
 argument_list|(
-name|JcrConstants
-operator|.
 name|JCR_PRIMARYITEMNAME
 argument_list|,
 name|primaryItemName
@@ -1677,8 +1645,6 @@ name|type
 operator|.
 name|addChild
 argument_list|(
-name|JcrConstants
-operator|.
 name|JCR_PROPERTYDEFINITION
 operator|+
 name|pdn
@@ -1724,8 +1690,6 @@ name|type
 operator|.
 name|addChild
 argument_list|(
-name|JcrConstants
-operator|.
 name|JCR_CHILDNODEDEFINITION
 operator|+
 name|ndn
@@ -1796,8 +1760,6 @@ name|node
 operator|.
 name|setName
 argument_list|(
-name|JcrConstants
-operator|.
 name|JCR_NAME
 argument_list|,
 name|name
@@ -1808,8 +1770,6 @@ name|node
 operator|.
 name|setBoolean
 argument_list|(
-name|JcrConstants
-operator|.
 name|JCR_AUTOCREATED
 argument_list|,
 name|def
@@ -1822,8 +1782,6 @@ name|node
 operator|.
 name|setBoolean
 argument_list|(
-name|JcrConstants
-operator|.
 name|JCR_MANDATORY
 argument_list|,
 name|def
@@ -1836,8 +1794,6 @@ name|node
 operator|.
 name|setBoolean
 argument_list|(
-name|JcrConstants
-operator|.
 name|JCR_PROTECTED
 argument_list|,
 name|def
@@ -1850,8 +1806,6 @@ name|node
 operator|.
 name|setString
 argument_list|(
-name|JcrConstants
-operator|.
 name|JCR_ONPARENTVERSION
 argument_list|,
 name|OnParentVersionAction
@@ -1881,12 +1835,8 @@ name|node
 operator|.
 name|setName
 argument_list|(
-name|JcrConstants
-operator|.
 name|JCR_PRIMARYTYPE
 argument_list|,
-name|JcrConstants
-operator|.
 name|NT_PROPERTYDEFINITION
 argument_list|)
 expr_stmt|;
@@ -1901,8 +1851,6 @@ name|node
 operator|.
 name|setString
 argument_list|(
-name|JcrConstants
-operator|.
 name|JCR_REQUIREDTYPE
 argument_list|,
 name|PropertyType
@@ -1920,8 +1868,6 @@ name|node
 operator|.
 name|setBoolean
 argument_list|(
-name|JcrConstants
-operator|.
 name|JCR_MULTIPLE
 argument_list|,
 name|def
@@ -1934,7 +1880,7 @@ name|node
 operator|.
 name|setBoolean
 argument_list|(
-literal|"jcr:isFullTextSearchable"
+name|JCR_IS_FULLTEXT_SEARCHABLE
 argument_list|,
 name|def
 operator|.
@@ -1946,7 +1892,7 @@ name|node
 operator|.
 name|setBoolean
 argument_list|(
-literal|"jcr:isQueryOrderable"
+name|JCR_IS_QUERY_ORDERABLE
 argument_list|,
 name|def
 operator|.
@@ -1958,7 +1904,7 @@ name|node
 operator|.
 name|setStrings
 argument_list|(
-literal|"jcr:availableQueryOperators"
+name|JCR_AVAILABLE_QUERY_OPERATORS
 argument_list|,
 name|def
 operator|.
@@ -1986,8 +1932,6 @@ name|node
 operator|.
 name|setStrings
 argument_list|(
-name|JcrConstants
-operator|.
 name|JCR_VALUECONSTRAINTS
 argument_list|,
 name|constraints
@@ -2014,8 +1958,6 @@ name|node
 operator|.
 name|setValues
 argument_list|(
-name|JcrConstants
-operator|.
 name|JCR_DEFAULTVALUES
 argument_list|,
 name|values
@@ -2038,12 +1980,8 @@ name|node
 operator|.
 name|setName
 argument_list|(
-name|JcrConstants
-operator|.
 name|JCR_PRIMARYTYPE
 argument_list|,
-name|JcrConstants
-operator|.
 name|NT_CHILDNODEDEFINITION
 argument_list|)
 expr_stmt|;
@@ -2058,8 +1996,6 @@ name|node
 operator|.
 name|setBoolean
 argument_list|(
-name|JcrConstants
-operator|.
 name|JCR_SAMENAMESIBLINGS
 argument_list|,
 name|def
@@ -2072,8 +2008,6 @@ name|node
 operator|.
 name|setNames
 argument_list|(
-name|JcrConstants
-operator|.
 name|JCR_REQUIREDPRIMARYTYPES
 argument_list|,
 name|def
@@ -2101,8 +2035,6 @@ name|node
 operator|.
 name|setName
 argument_list|(
-name|JcrConstants
-operator|.
 name|JCR_DEFAULTPRIMARYTYPE
 argument_list|,
 name|defaultPrimaryType
@@ -2145,6 +2077,7 @@ argument_list|(
 literal|"/jcr:system"
 argument_list|)
 decl_stmt|;
+comment|// FIXME: OAK-221
 if|if
 condition|(
 name|system
@@ -2163,7 +2096,7 @@ argument_list|)
 operator|.
 name|addChild
 argument_list|(
-literal|"jcr:system"
+name|JCR_SYSTEM
 argument_list|)
 expr_stmt|;
 block|}
@@ -2173,7 +2106,7 @@ name|system
 operator|.
 name|addChild
 argument_list|(
-literal|"jcr:nodeTypes"
+name|JCR_NODE_TYPES
 argument_list|)
 expr_stmt|;
 block|}
