@@ -377,7 +377,9 @@ name|UserManagerConfig
 operator|.
 name|PARAM_GROUP_PATH
 argument_list|,
-literal|"/rep:security/rep:authorizables/rep:groups"
+name|UserConstants
+operator|.
+name|DEFAULT_GROUP_PATH
 argument_list|)
 expr_stmt|;
 name|userPath
@@ -390,7 +392,9 @@ name|UserManagerConfig
 operator|.
 name|PARAM_USER_PATH
 argument_list|,
-literal|"/rep:security/rep:authorizables/rep:users"
+name|UserConstants
+operator|.
+name|DEFAULT_USER_PATH
 argument_list|)
 expr_stmt|;
 block|}
@@ -759,6 +763,7 @@ operator|.
 name|NT_REP_AUTHORIZABLE_FOLDER
 argument_list|)
 expr_stmt|;
+comment|// TODO: remove check once UserValidator is active
 if|if
 condition|(
 operator|!
@@ -807,6 +812,7 @@ argument_list|(
 name|nodeName
 argument_list|)
 decl_stmt|;
+comment|// TODO: remove check once UserValidator is active
 if|if
 condition|(
 name|colliding
@@ -878,6 +884,7 @@ argument_list|)
 throw|;
 block|}
 block|}
+comment|// TODO: remove check once UserValidator is active
 if|if
 condition|(
 operator|!

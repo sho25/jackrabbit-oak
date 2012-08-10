@@ -98,7 +98,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * The {@code AuthorizableAction} interface provide an implementation  * specific way to execute additional validation or write tasks upon  *  *<ul>  *<li>{@link #onCreate(org.apache.jackrabbit.api.security.user.User, String, javax.jcr.Session) User creation},</li>  *<li>{@link #onCreate(org.apache.jackrabbit.api.security.user.Group, javax.jcr.Session) Group creation},</li>  *<li>{@link #onRemove(org.apache.jackrabbit.api.security.user.Authorizable, javax.jcr.Session) Authorizable removal} and</li>  *<li>{@link #onPasswordChange(org.apache.jackrabbit.api.security.user.User, String, javax.jcr.Session) User password modification}.</li>  *</ul>  *  * @see org.apache.jackrabbit.oak.jcr.security.user.UserManagerConfig  */
+comment|/**  * The {@code AuthorizableAction} interface provide an implementation  * specific way to execute additional validation or write tasks upon  *  *<ul>  *<li>{@link #onCreate(org.apache.jackrabbit.api.security.user.User, String, javax.jcr.Session) User creation},</li>  *<li>{@link #onCreate(org.apache.jackrabbit.api.security.user.Group, javax.jcr.Session) Group creation},</li>  *<li>{@link #onRemove(org.apache.jackrabbit.api.security.user.Authorizable, javax.jcr.Session) Authorizable removal} and</li>  *<li>{@link #onPasswordChange(org.apache.jackrabbit.api.security.user.User, String, javax.jcr.Session) User password modification}.</li>  *</ul>  *  * @see org.apache.jackrabbit.oak.spi.security.user.UserManagerConfig  */
 end_comment
 
 begin_interface

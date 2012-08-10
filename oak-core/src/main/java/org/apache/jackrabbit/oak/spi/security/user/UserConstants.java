@@ -80,6 +80,16 @@ name|REP_IMPERSONATORS
 init|=
 literal|"rep:impersonators"
 decl_stmt|;
+name|String
+name|DEFAULT_USER_PATH
+init|=
+literal|"/rep:security/rep:authorizables/rep:users"
+decl_stmt|;
+name|String
+name|DEFAULT_GROUP_PATH
+init|=
+literal|"/rep:security/rep:authorizables/rep:groups"
+decl_stmt|;
 block|}
 end_interface
 
