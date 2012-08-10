@@ -119,26 +119,6 @@ name|NodeState
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
 begin_comment
 comment|/**  * PermissionValidatorProvider... TODO  */
 end_comment
@@ -150,22 +130,6 @@ name|PermissionValidatorProvider
 implements|implements
 name|ValidatorProvider
 block|{
-comment|/**      * logger instance      */
-specifier|private
-specifier|static
-specifier|final
-name|Logger
-name|log
-init|=
-name|LoggerFactory
-operator|.
-name|getLogger
-argument_list|(
-name|PermissionValidatorProvider
-operator|.
-name|class
-argument_list|)
-decl_stmt|;
 specifier|private
 specifier|final
 name|AccessControlContext

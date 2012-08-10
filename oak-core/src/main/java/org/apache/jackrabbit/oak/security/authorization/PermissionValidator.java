@@ -270,13 +270,12 @@ comment|/**  * PermissionValidator... TODO  */
 end_comment
 
 begin_class
-specifier|public
 class|class
 name|PermissionValidator
 implements|implements
 name|Validator
 block|{
-comment|/* TODO      * - special permissions for protected items (versioning, access control, etc.)      * - Renaming nodes or Move with same parent are reflected as remove+add -> needs special handling      * - review usage of OAK_CHILD_ORDER property (in particular if the property was removed      *      */
+comment|/* TODO      * - special permissions for protected items (versioning, access control, etc.)      * - Renaming nodes or Move with same parent are reflected as remove+add -> needs special handling      * - review usage of OAK_CHILD_ORDER property (in particular if the property was removed      */
 specifier|private
 specifier|final
 name|CompiledPermissions
@@ -696,8 +695,6 @@ condition|(
 name|isAccessControl
 argument_list|(
 name|parent
-argument_list|,
-name|property
 argument_list|)
 condition|)
 block|{
@@ -708,10 +705,25 @@ operator|.
 name|MODIFY_ACCESS_CONTROL
 expr_stmt|;
 block|}
+elseif|else
+if|if
+condition|(
+name|isVersion
+argument_list|(
+name|parent
+argument_list|)
+condition|)
+block|{
+name|permission
+operator|=
+name|Permissions
+operator|.
+name|VERSION_MANAGEMENT
+expr_stmt|;
+block|}
 else|else
 block|{
 comment|// TODO: identify specific permission depending on type of protection
-comment|// - version property -> version management
 comment|// - user/group property -> user management
 name|permission
 operator|=
@@ -823,12 +835,28 @@ operator|.
 name|MODIFY_ACCESS_CONTROL
 expr_stmt|;
 block|}
+elseif|else
+if|if
+condition|(
+name|isVersion
+argument_list|(
+name|tree
+argument_list|)
+condition|)
+block|{
+name|permission
+operator|=
+name|Permissions
+operator|.
+name|VERSION_MANAGEMENT
+expr_stmt|;
+block|}
 else|else
 block|{
 comment|// TODO: identify specific permission depending on additional types of protection
-comment|// - versioning -> version management
 comment|// - user/group -> user management
 comment|// - workspace management ???
+comment|// TODO: identify renaming/move of nodes that only required MODIFY_CHILD_NODE_COLLECTION permission
 name|permission
 operator|=
 name|defaultPermission
@@ -846,9 +874,6 @@ condition|)
 block|{
 name|checkPermissions
 argument_list|(
-operator|(
-name|String
-operator|)
 literal|null
 argument_list|,
 name|permission
@@ -949,16 +974,13 @@ block|}
 specifier|private
 specifier|static
 name|boolean
-name|isAccessControl
+name|isVersion
 parameter_list|(
 name|Tree
 name|parent
-parameter_list|,
-name|PropertyState
-name|property
 parameter_list|)
 block|{
-comment|// TODO: depends on ac-model
+comment|// TODO: add implementation
 return|return
 literal|false
 return|;
