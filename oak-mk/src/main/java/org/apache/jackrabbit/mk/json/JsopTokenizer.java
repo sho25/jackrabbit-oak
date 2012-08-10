@@ -1457,7 +1457,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-comment|/**      * Add an asterisk ('[*]') at the given position. This format is used to      * show where parsing failed in a statement.      *      * @param s     the text      * @param index the position      * @return the text with asterisk      */
+comment|/**      * Add an asterisk ('[*]') at the given position. This format is used to      * show where parsing failed in a statement.      *      * @param s the text      * @param index the position      * @return the text with asterisk      */
 specifier|private
 specifier|static
 name|String
@@ -1516,7 +1516,7 @@ return|return
 name|s
 return|;
 block|}
-comment|/**      * Read a value and return the raw Json representation.      *      * @return the Json representation of the value      */
+comment|/**      * Read a value and return the raw Json representation. This includes arrays      * and nested arrays.      *      * @return the Json representation of the value      */
 specifier|public
 name|String
 name|readRawValue
@@ -1529,6 +1529,10 @@ name|lastPos
 decl_stmt|;
 while|while
 condition|(
+name|start
+operator|<
+name|length
+operator|&&
 name|jsop
 operator|.
 name|charAt
@@ -1571,9 +1575,6 @@ case|case
 literal|'['
 case|:
 block|{
-name|read
-argument_list|()
-expr_stmt|;
 name|int
 name|level
 init|=
@@ -1590,14 +1591,18 @@ name|matches
 argument_list|(
 literal|']'
 argument_list|)
-operator|&&
-name|level
+condition|)
+block|{
+if|if
+condition|(
 operator|--
+name|level
 operator|==
 literal|0
 condition|)
 block|{
 break|break;
+block|}
 block|}
 elseif|else
 if|if
@@ -1611,6 +1616,28 @@ block|{
 name|level
 operator|++
 expr_stmt|;
+block|}
+elseif|else
+if|if
+condition|(
+name|matches
+argument_list|(
+name|JsopReader
+operator|.
+name|END
+argument_list|)
+condition|)
+block|{
+throw|throw
+name|getFormatException
+argument_list|(
+name|jsop
+argument_list|,
+name|pos
+argument_list|,
+literal|"value"
+argument_list|)
+throw|;
 block|}
 else|else
 block|{
