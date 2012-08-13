@@ -158,6 +158,8 @@ class|class
 name|TypeValidatorProvider
 implements|implements
 name|ValidatorProvider
+implements|,
+name|NodeTypeConstants
 block|{
 annotation|@
 name|Override
@@ -570,7 +572,7 @@ name|types
 operator|.
 name|add
 argument_list|(
-literal|"mix:mergeConflict"
+name|MIX_REP_MERGE_CONFLICT
 argument_list|)
 expr_stmt|;
 comment|// Find any extra types from /jcr:system/jcr:nodeTypes
@@ -581,7 +583,7 @@ name|after
 operator|.
 name|getChildNode
 argument_list|(
-literal|"jcr:system"
+name|JCR_SYSTEM
 argument_list|)
 decl_stmt|;
 if|if
@@ -598,7 +600,7 @@ name|system
 operator|.
 name|getChildNode
 argument_list|(
-literal|"jcr:nodeTypes"
+name|JCR_NODE_TYPES
 argument_list|)
 decl_stmt|;
 if|if

@@ -165,8 +165,42 @@ name|NodeState
 import|;
 end_import
 
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|JcrConstants
+operator|.
+name|JCR_MIXINTYPES
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|type
+operator|.
+name|NodeTypeConstants
+operator|.
+name|MIX_REP_MERGE_CONFLICT
+import|;
+end_import
+
 begin_comment
-comment|/**  * This {@link ConflictHandler} implementation resolves conflicts to  * {@link Resolution#THEIRS} and in addition marks nodes where a conflict  * occurred with {@code mix:mergeConflict}:  *  *<pre>  * [mix:mergeConflict]  *   mixin  *   primaryitem jcr:ours  *   + jcr:ours (nt:unstructured)  *</pre>  *  * The {@code jcr:ours} sub node contains our version of the node prior to  * the conflict.  *  * @see ConflictValidator  */
+comment|/**  * This {@link ConflictHandler} implementation resolves conflicts to  * {@link Resolution#THEIRS} and in addition marks nodes where a conflict  * occurred with the mixin {@code rep:MergeConflict}:  *  *<pre>  * [rep:MergeConflict]  *   mixin  *   primaryitem rep:ours  *   + rep:ours (nt:unstructured)  *</pre>  *  * The {@code rep:ours} sub node contains our version of the node prior to  * the conflict.  *  * @see ConflictValidator  */
 end_comment
 
 begin_class
@@ -176,30 +210,14 @@ name|AnnotatingConflictHandler
 implements|implements
 name|ConflictHandler
 block|{
-specifier|private
-specifier|static
-specifier|final
-name|String
-name|JCR_MIXIN_TYPES
-init|=
-literal|"jcr:mixinTypes"
-decl_stmt|;
 comment|// TODO: move these constants to some common location for repository internal node types
 specifier|private
 specifier|static
 specifier|final
 name|String
-name|MIX_MERGE_CONFLICT
+name|REP_OURS
 init|=
-literal|"mix:mergeConflict"
-decl_stmt|;
-specifier|private
-specifier|static
-specifier|final
-name|String
-name|JCR_OURS
-init|=
-literal|"jcr:ours"
+literal|"rep:ours"
 decl_stmt|;
 specifier|private
 specifier|static
@@ -648,7 +666,7 @@ name|parent
 operator|.
 name|getProperty
 argument_list|(
-name|JCR_MIXIN_TYPES
+name|JCR_MIXINTYPES
 argument_list|)
 decl_stmt|;
 name|List
@@ -695,7 +713,7 @@ name|mixins
 operator|.
 name|contains
 argument_list|(
-name|MIX_MERGE_CONFLICT
+name|MIX_REP_MERGE_CONFLICT
 argument_list|)
 condition|)
 block|{
@@ -707,7 +725,7 @@ name|valueFactory
 operator|.
 name|createValue
 argument_list|(
-name|MIX_MERGE_CONFLICT
+name|MIX_REP_MERGE_CONFLICT
 argument_list|,
 name|PropertyType
 operator|.
@@ -719,7 +737,7 @@ name|parent
 operator|.
 name|setProperty
 argument_list|(
-name|JCR_MIXIN_TYPES
+name|JCR_MIXINTYPES
 argument_list|,
 name|mixins
 argument_list|)
@@ -730,7 +748,7 @@ name|getOrCreateNode
 argument_list|(
 name|parent
 argument_list|,
-name|JCR_OURS
+name|REP_OURS
 argument_list|)
 return|;
 block|}

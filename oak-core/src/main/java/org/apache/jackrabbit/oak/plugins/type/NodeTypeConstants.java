@@ -31,26 +31,6 @@ name|JcrConstants
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
 begin_comment
 comment|/**  * NodeTypeConstants... TODO  */
 end_comment
@@ -104,6 +84,12 @@ name|String
 name|JCR_AVAILABLE_QUERY_OPERATORS
 init|=
 literal|"jcr:availableQueryOperators"
+decl_stmt|;
+comment|/**      * Name of the mixin type to mark merge conflicts      * TODO: review where this constant should be located.      */
+name|String
+name|MIX_REP_MERGE_CONFLICT
+init|=
+literal|"rep:MergeConflict"
 decl_stmt|;
 block|}
 end_interface
