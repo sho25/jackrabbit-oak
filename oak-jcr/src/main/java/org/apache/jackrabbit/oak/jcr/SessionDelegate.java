@@ -1059,6 +1059,10 @@ name|String
 name|id
 parameter_list|)
 block|{
+comment|// TODO delegate identifier handling  to the OAK-API (or oak-utility)
+comment|// TODO as stated in NodeDelegate#getIdentifier() a non-uuid ID shoud
+comment|// TODO consisting of closest referenceable parent and a relative path
+comment|// TODO irrespective of the accessibility of the parent node(s)
 if|if
 condition|(
 name|id
