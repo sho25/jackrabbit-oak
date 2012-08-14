@@ -458,43 +458,18 @@ parameter_list|()
 throws|throws
 name|InvalidItemStateException
 block|{
-name|PropertyDelegate
-name|pd
-init|=
-name|getProperty
+return|return
+name|sessionDelegate
+operator|.
+name|getIdManager
+argument_list|()
+operator|.
+name|getIdentifier
 argument_list|(
-name|JcrConstants
-operator|.
-name|JCR_UUID
+name|getTree
+argument_list|()
 argument_list|)
-decl_stmt|;
-if|if
-condition|(
-name|pd
-operator|==
-literal|null
-condition|)
-block|{
-comment|// TODO delegated to the OAK-API to calculate the identifier
-comment|// TODO consisting of closest referenceable parent and a relative path
-comment|// TODO irrespective of the accessibility of the parent node(s)
-return|return
-name|getPath
-argument_list|()
 return|;
-block|}
-else|else
-block|{
-return|return
-name|pd
-operator|.
-name|getValue
-argument_list|()
-operator|.
-name|toString
-argument_list|()
-return|;
-block|}
 block|}
 comment|/**      * Determine whether this is the root node      * @return  {@code true} iff this is the root node      */
 specifier|public
@@ -1521,7 +1496,6 @@ name|absPath
 argument_list|)
 return|;
 block|}
-specifier|private
 specifier|synchronized
 name|Tree
 name|getTree
