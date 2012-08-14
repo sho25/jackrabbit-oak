@@ -40,6 +40,7 @@ specifier|public
 interface|interface
 name|PrivilegeConstants
 block|{
+comment|// constants for privilege serialization
 name|String
 name|REP_PRIVILEGES
 init|=
@@ -58,6 +59,27 @@ literal|'/'
 operator|+
 name|REP_PRIVILEGES
 decl_stmt|;
+name|String
+name|NT_REP_PRIVILEGES
+init|=
+literal|"rep:Privileges"
+decl_stmt|;
+name|String
+name|NT_REP_PRIVILEGE
+init|=
+literal|"rep:Privilege"
+decl_stmt|;
+name|String
+name|REP_IS_ABSTRACT
+init|=
+literal|"rep:isAbstract"
+decl_stmt|;
+name|String
+name|REP_AGGREGATES
+init|=
+literal|"rep:aggregates"
+decl_stmt|;
+comment|// Constants for privilege names
 name|String
 name|JCR_READ
 init|=

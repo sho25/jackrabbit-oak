@@ -250,6 +250,8 @@ parameter_list|(
 name|SessionDelegate
 name|sessionDelegate
 parameter_list|)
+throws|throws
+name|RepositoryException
 block|{
 name|this
 operator|.
