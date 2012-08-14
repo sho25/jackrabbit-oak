@@ -779,10 +779,7 @@ return|return
 operator|new
 name|NodeImpl
 argument_list|(
-name|dlg
-operator|.
-name|getRoot
-argument_list|()
+name|nd
 argument_list|)
 return|;
 block|}
