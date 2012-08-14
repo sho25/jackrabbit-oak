@@ -134,7 +134,7 @@ operator|=
 name|map
 expr_stmt|;
 block|}
-comment|//-----------------------------------------------------< NodeValidator>--
+comment|//----------------------------------------------------------< Validator>---
 annotation|@
 name|Override
 specifier|public
