@@ -813,24 +813,6 @@ block|{
 name|checkStatus
 argument_list|()
 expr_stmt|;
-if|if
-condition|(
-name|dlg
-operator|.
-name|isRoot
-argument_list|()
-condition|)
-block|{
-throw|throw
-operator|new
-name|ItemNotFoundException
-argument_list|(
-literal|"Root has no parent"
-argument_list|)
-throw|;
-block|}
-else|else
-block|{
 return|return
 name|sessionDelegate
 operator|.
@@ -851,6 +833,24 @@ name|perform
 parameter_list|()
 throws|throws
 name|RepositoryException
+block|{
+if|if
+condition|(
+name|dlg
+operator|.
+name|isRoot
+argument_list|()
+condition|)
+block|{
+throw|throw
+operator|new
+name|ItemNotFoundException
+argument_list|(
+literal|"Root has no parent"
+argument_list|)
+throw|;
+block|}
+else|else
 block|{
 name|NodeDelegate
 name|parent
@@ -882,9 +882,9 @@ argument_list|)
 return|;
 block|}
 block|}
+block|}
 argument_list|)
 return|;
-block|}
 block|}
 comment|/**      * @see javax.jcr.Item#isNew()      */
 annotation|@
