@@ -401,7 +401,7 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|String
+name|Tree
 name|createUser
 parameter_list|(
 name|String
@@ -427,7 +427,7 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|String
+name|Tree
 name|createGroup
 parameter_list|(
 name|String
@@ -448,6 +448,21 @@ literal|true
 argument_list|,
 name|intermediateJcrPath
 argument_list|)
+return|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|Tree
+name|getAuthorizable
+parameter_list|(
+name|String
+name|authorizableId
+parameter_list|)
+block|{
+comment|// TODO: add implementation (requires identifier utility in oak-core)
+return|return
+literal|null
 return|;
 block|}
 annotation|@
@@ -507,7 +522,7 @@ throw|;
 block|}
 block|}
 specifier|private
-name|String
+name|Tree
 name|createAuthorizableNode
 parameter_list|(
 name|String
@@ -596,9 +611,6 @@ return|return
 name|authorizableNode
 operator|.
 name|getTree
-argument_list|()
-operator|.
-name|getPath
 argument_list|()
 return|;
 block|}

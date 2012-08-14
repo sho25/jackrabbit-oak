@@ -5841,16 +5841,6 @@ literal|"Lifecycle Management is not supported"
 argument_list|)
 throw|;
 block|}
-comment|//-----------------------------------------------------------< internal>---
-comment|// FIXME: remove again. See OAK-136
-name|NodeDelegate
-name|getNodeDelegate
-parameter_list|()
-block|{
-return|return
-name|dlg
-return|;
-block|}
 comment|//------------------------------------------------------------< private>---
 specifier|private
 specifier|static
