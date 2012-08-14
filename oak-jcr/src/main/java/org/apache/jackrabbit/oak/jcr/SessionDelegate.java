@@ -1844,6 +1844,15 @@ return|return
 name|observationManager
 return|;
 block|}
+specifier|public
+name|IdentifierManager
+name|getIdManager
+parameter_list|()
+block|{
+return|return
+name|idManager
+return|;
+block|}
 annotation|@
 name|Nonnull
 specifier|public
@@ -1898,14 +1907,6 @@ argument_list|,
 literal|null
 argument_list|)
 argument_list|)
-return|;
-block|}
-name|IdentifierManager
-name|getIdManager
-parameter_list|()
-block|{
-return|return
-name|idManager
 return|;
 block|}
 comment|//--------------------------------------------------< SessionNameMapper>---

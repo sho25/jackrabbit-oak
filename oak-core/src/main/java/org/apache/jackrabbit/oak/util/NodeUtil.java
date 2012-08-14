@@ -355,11 +355,9 @@ name|this
 operator|.
 name|mapper
 operator|=
-operator|new
 name|NamePathMapper
 operator|.
-name|Default
-argument_list|()
+name|DEFAULT
 expr_stmt|;
 block|}
 annotation|@

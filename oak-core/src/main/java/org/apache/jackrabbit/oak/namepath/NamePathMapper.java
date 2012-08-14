@@ -40,6 +40,14 @@ name|NameMapper
 extends|,
 name|PathMapper
 block|{
+specifier|public
+name|NamePathMapper
+name|DEFAULT
+init|=
+operator|new
+name|Default
+argument_list|()
+decl_stmt|;
 comment|/**      * Default implementation that doesn't perform any conversions for cases      * where a mapper object only deals with oak internal names and paths.      */
 specifier|public
 class|class
