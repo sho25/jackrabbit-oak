@@ -130,6 +130,10 @@ implements|implements
 name|NamespaceConstants
 block|{
 specifier|private
+name|Namespaces
+parameter_list|()
+block|{     }
+specifier|private
 specifier|static
 specifier|final
 name|Map
@@ -138,7 +142,7 @@ name|String
 argument_list|,
 name|String
 argument_list|>
-name|defaults
+name|DEFAULTS
 init|=
 operator|new
 name|HashMap
@@ -149,14 +153,10 @@ name|String
 argument_list|>
 argument_list|()
 decl_stmt|;
-specifier|private
-name|Namespaces
-parameter_list|()
-block|{     }
 static|static
 block|{
 comment|// Standard namespace specified by JCR (default one not included)
-name|defaults
+name|DEFAULTS
 operator|.
 name|put
 argument_list|(
@@ -169,7 +169,7 @@ operator|.
 name|NAMESPACE_EMPTY
 argument_list|)
 expr_stmt|;
-name|defaults
+name|DEFAULTS
 operator|.
 name|put
 argument_list|(
@@ -182,7 +182,7 @@ operator|.
 name|NAMESPACE_JCR
 argument_list|)
 expr_stmt|;
-name|defaults
+name|DEFAULTS
 operator|.
 name|put
 argument_list|(
@@ -195,7 +195,7 @@ operator|.
 name|NAMESPACE_NT
 argument_list|)
 expr_stmt|;
-name|defaults
+name|DEFAULTS
 operator|.
 name|put
 argument_list|(
@@ -208,7 +208,7 @@ operator|.
 name|NAMESPACE_MIX
 argument_list|)
 expr_stmt|;
-name|defaults
+name|DEFAULTS
 operator|.
 name|put
 argument_list|(
@@ -222,24 +222,31 @@ name|NAMESPACE_XML
 argument_list|)
 expr_stmt|;
 comment|// Namespace included in Jackrabbit 2.x
-comment|// TODO: use constants (see also http://java.net/jira/browse/JSR_333-50)
-name|defaults
+name|DEFAULTS
 operator|.
 name|put
 argument_list|(
-literal|"sv"
+name|PREFIX_XMLNS
 argument_list|,
-literal|"http://www.jcp.org/jcr/sv/1.0"
+name|NAMESPACE_XMLNS
 argument_list|)
 expr_stmt|;
-comment|// TODO: see OAK-74
-name|defaults
+name|DEFAULTS
 operator|.
 name|put
 argument_list|(
-literal|"rep"
+name|PREFIX_SV
 argument_list|,
-literal|"internal"
+name|NAMESPACE_SV
+argument_list|)
+expr_stmt|;
+name|DEFAULTS
+operator|.
+name|put
+argument_list|(
+name|PREFIX_REP
+argument_list|,
+name|NAMESPACE_REP
 argument_list|)
 expr_stmt|;
 block|}
@@ -273,7 +280,7 @@ argument_list|,
 name|String
 argument_list|>
 argument_list|(
-name|defaults
+name|DEFAULTS
 argument_list|)
 decl_stmt|;
 name|Tree
