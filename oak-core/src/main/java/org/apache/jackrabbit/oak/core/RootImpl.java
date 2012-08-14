@@ -648,6 +648,7 @@ block|}
 annotation|@
 name|Override
 specifier|public
+specifier|final
 name|void
 name|refresh
 parameter_list|()
