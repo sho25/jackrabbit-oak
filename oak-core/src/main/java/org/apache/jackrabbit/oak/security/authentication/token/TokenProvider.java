@@ -25,6 +25,16 @@ begin_import
 import|import
 name|javax
 operator|.
+name|annotation
+operator|.
+name|CheckForNull
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
 name|jcr
 operator|.
 name|Credentials
@@ -57,6 +67,8 @@ name|Credentials
 name|credentials
 parameter_list|)
 function_decl|;
+annotation|@
+name|CheckForNull
 name|TokenInfo
 name|createToken
 parameter_list|(
@@ -64,6 +76,8 @@ name|Credentials
 name|credentials
 parameter_list|)
 function_decl|;
+annotation|@
+name|CheckForNull
 name|TokenInfo
 name|getTokenInfo
 parameter_list|(
