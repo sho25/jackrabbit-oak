@@ -195,7 +195,7 @@ name|oak
 operator|.
 name|api
 operator|.
-name|QueryEngine
+name|SessionQueryEngine
 import|;
 end_import
 
@@ -479,19 +479,21 @@ specifier|abstract
 class|class
 name|AbstractLuceneQueryTest
 block|{
-specifier|private
-specifier|static
-name|String
-name|TEST_INDEX_NAME
-init|=
-name|DEFAULT_INDEX_NAME
-decl_stmt|;
 specifier|protected
 specifier|static
+specifier|final
 name|String
 name|SQL2
 init|=
 literal|"JCR-SQL2"
+decl_stmt|;
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|TEST_INDEX_NAME
+init|=
+name|DEFAULT_INDEX_NAME
 decl_stmt|;
 specifier|protected
 name|ContentRepository
@@ -506,7 +508,7 @@ name|CoreValueFactory
 name|vf
 decl_stmt|;
 specifier|protected
-name|QueryEngine
+name|SessionQueryEngine
 name|qe
 decl_stmt|;
 specifier|protected
@@ -692,7 +694,7 @@ name|providers
 argument_list|)
 return|;
 block|}
-comment|/**      * Recreates an empty index node, ready to be used in tests      *       * @throws Exception      */
+comment|/**      * Recreates an empty index node, ready to be used in tests      *      * @throws Exception      */
 specifier|private
 name|void
 name|cleanupIndexNode
@@ -789,8 +791,6 @@ argument_list|(
 name|statement
 argument_list|,
 name|SQL2
-argument_list|,
-name|session
 argument_list|,
 name|Long
 operator|.

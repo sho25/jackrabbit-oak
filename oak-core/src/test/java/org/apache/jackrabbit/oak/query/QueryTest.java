@@ -1286,8 +1286,6 @@ name|statement
 argument_list|,
 name|language
 argument_list|,
-name|session
-argument_list|,
 name|Long
 operator|.
 name|MAX_VALUE

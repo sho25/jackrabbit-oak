@@ -742,8 +742,6 @@ name|Query
 operator|.
 name|JCR_SQL2
 argument_list|,
-name|contentSession
-argument_list|,
 name|Long
 operator|.
 name|MAX_VALUE
@@ -752,9 +750,11 @@ literal|0
 argument_list|,
 name|bindings
 argument_list|,
+operator|new
 name|NamePathMapper
 operator|.
-name|DEFAULT
+name|Default
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|String

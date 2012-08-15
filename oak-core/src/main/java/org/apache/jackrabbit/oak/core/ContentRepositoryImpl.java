@@ -175,22 +175,6 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|api
-operator|.
-name|QueryEngine
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
 name|kernel
 operator|.
 name|KernelNodeStore
@@ -440,7 +424,7 @@ name|loginContextProvider
 decl_stmt|;
 specifier|private
 specifier|final
-name|QueryEngine
+name|QueryEngineImpl
 name|queryEngine
 decl_stmt|;
 specifier|private
@@ -480,7 +464,7 @@ argument_list|)
 expr_stmt|;
 comment|// this(new IndexWrapper(new MicroKernelImpl()), null, null);
 block|}
-comment|/**      * Utility constructor, intended to be used within test cases only.      *       * Creates an Oak repository instance based on the given, already      * initialized components.      *       * @param microKernel      *            underlying kernel instance      * @param indexProvider      *            index provider      * @param validatorProvider      *            the validation provider      */
+comment|/**      * Utility constructor, intended to be used within test cases only.      *      * Creates an Oak repository instance based on the given, already      * initialized components.      *      * @param microKernel      *            underlying kernel instance      * @param indexProvider      *            index provider      * @param validatorProvider      *            the validation provider      */
 specifier|public
 name|ContentRepositoryImpl
 parameter_list|(

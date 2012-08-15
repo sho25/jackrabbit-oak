@@ -70,7 +70,7 @@ function_decl|;
 comment|/**      * Get the query engine.      *      * @return the query engine      */
 annotation|@
 name|Nonnull
-name|QueryEngine
+name|SessionQueryEngine
 name|getQueryEngine
 parameter_list|()
 function_decl|;

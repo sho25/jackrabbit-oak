@@ -143,22 +143,6 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|api
-operator|.
-name|QueryEngine
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
 name|kernel
 operator|.
 name|KernelNodeState
@@ -275,8 +259,6 @@ begin_class
 specifier|public
 class|class
 name|QueryEngineImpl
-implements|implements
-name|QueryEngine
 block|{
 specifier|static
 specifier|final
@@ -356,8 +338,6 @@ operator|=
 name|indexProvider
 expr_stmt|;
 block|}
-annotation|@
-name|Override
 specifier|public
 name|List
 argument_list|<
@@ -382,8 +362,6 @@ argument_list|)
 return|;
 block|}
 comment|/**      * Parse the query (check if it's valid) and get the list of bind variable names.      *      * @param statement      * @param language      * @return the list of bind variable names      * @throws ParseException      */
-annotation|@
-name|Override
 specifier|public
 name|List
 argument_list|<
@@ -571,8 +549,6 @@ return|return
 name|q
 return|;
 block|}
-annotation|@
-name|Override
 specifier|public
 name|ResultImpl
 name|executeQuery
