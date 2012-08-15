@@ -230,6 +230,7 @@ operator|.
 name|currentTimeMillis
 argument_list|()
 decl_stmt|;
+comment|// System.out.println("execute " + this);
 name|runTest
 argument_list|()
 expr_stmt|;
@@ -546,7 +547,11 @@ name|thread
 init|=
 operator|new
 name|Thread
-argument_list|()
+argument_list|(
+literal|"Background job "
+operator|+
+name|job
+argument_list|)
 block|{
 annotation|@
 name|Override
@@ -560,6 +565,25 @@ condition|(
 name|running
 condition|)
 block|{
+try|try
+block|{
+comment|// rate-limit, to avoid 100% cpu usage
+name|Thread
+operator|.
+name|sleep
+argument_list|(
+literal|10
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|InterruptedException
+name|e
+parameter_list|)
+block|{
+comment|// ignore
+block|}
 name|job
 operator|.
 name|run
@@ -569,6 +593,22 @@ block|}
 block|}
 block|}
 decl_stmt|;
+name|thread
+operator|.
+name|setDaemon
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+name|thread
+operator|.
+name|setPriority
+argument_list|(
+name|Thread
+operator|.
+name|MIN_PRIORITY
+argument_list|)
+expr_stmt|;
 name|thread
 operator|.
 name|start

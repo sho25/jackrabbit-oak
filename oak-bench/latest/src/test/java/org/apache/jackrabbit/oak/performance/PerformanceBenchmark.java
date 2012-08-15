@@ -50,13 +50,7 @@ argument_list|,
 literal|"default"
 argument_list|)
 expr_stmt|;
-name|testPerformance
-argument_list|(
-literal|"0.3"
-argument_list|,
-literal|"other_mk"
-argument_list|)
-expr_stmt|;
+comment|// testPerformance("0.3", "other_mk");
 block|}
 block|}
 end_class

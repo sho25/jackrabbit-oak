@@ -74,7 +74,7 @@ specifier|final
 name|int
 name|ITERATIONS
 init|=
-literal|1000
+literal|10
 decl_stmt|;
 specifier|private
 name|Session
