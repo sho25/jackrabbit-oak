@@ -3039,7 +3039,6 @@ block|{
 comment|// check the depth first for speed
 comment|// TODO allow creating multiple indexes in one step
 comment|// (buffer indexes to be created; traverse the repository only once)
-comment|// TODO re-organize the index structure
 comment|// TODO allow filters (only index a certain path; exclude a list of paths)
 if|if
 condition|(
@@ -3972,7 +3971,7 @@ operator|instanceof
 name|PrefixIndex
 condition|)
 block|{
-comment|// TODO support prefix indexes?
+comment|// TODO support prefix indexes in the query engine?
 block|}
 name|queryIndexList
 operator|.

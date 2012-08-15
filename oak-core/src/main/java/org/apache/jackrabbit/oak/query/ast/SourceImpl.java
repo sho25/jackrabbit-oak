@@ -165,6 +165,44 @@ name|String
 name|selectorName
 parameter_list|)
 function_decl|;
+comment|/**      * Get the selector with the given name, or fail if not found.      *      * @param selectorName the selector name      * @return the selector (never null)      */
+specifier|public
+name|SelectorImpl
+name|getExistingSelector
+parameter_list|(
+name|String
+name|selectorName
+parameter_list|)
+block|{
+name|SelectorImpl
+name|s
+init|=
+name|getSelector
+argument_list|(
+name|selectorName
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|s
+operator|==
+literal|null
+condition|)
+block|{
+throw|throw
+operator|new
+name|IllegalArgumentException
+argument_list|(
+literal|"Unknown selector: "
+operator|+
+name|selectorName
+argument_list|)
+throw|;
+block|}
+return|return
+name|s
+return|;
+block|}
 comment|/**      * Get the query plan.      *      * @return the query plan      */
 specifier|public
 specifier|abstract

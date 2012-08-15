@@ -288,7 +288,7 @@ name|selector
 operator|=
 name|source
 operator|.
-name|getSelector
+name|getExistingSelector
 argument_list|(
 name|selectorName
 argument_list|)

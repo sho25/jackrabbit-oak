@@ -415,8 +415,8 @@ operator|==
 literal|null
 condition|)
 block|{
-return|return;
 comment|// nothing can match this filter, leave nodes empty
+return|return;
 block|}
 block|}
 block|}
@@ -811,6 +811,7 @@ literal|true
 return|;
 block|}
 specifier|private
+specifier|static
 name|PropertyState
 name|getProperty
 parameter_list|(
@@ -897,6 +898,7 @@ argument_list|)
 return|;
 block|}
 specifier|private
+specifier|static
 name|boolean
 name|matchesValue
 parameter_list|(
@@ -1024,6 +1026,7 @@ literal|true
 return|;
 block|}
 specifier|private
+specifier|static
 name|int
 name|compareValues
 parameter_list|(

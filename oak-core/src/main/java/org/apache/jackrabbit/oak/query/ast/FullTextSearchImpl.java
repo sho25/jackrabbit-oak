@@ -460,28 +460,11 @@ name|selector
 operator|=
 name|source
 operator|.
-name|getSelector
+name|getExistingSelector
 argument_list|(
 name|selectorName
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|selector
-operator|==
-literal|null
-condition|)
-block|{
-throw|throw
-operator|new
-name|IllegalArgumentException
-argument_list|(
-literal|"Unknown selector: "
-operator|+
-name|selectorName
-argument_list|)
-throw|;
-block|}
 name|CoreValue
 name|v
 init|=
@@ -583,7 +566,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * A parser for fulltext condition literals.      */
+comment|/**      * A parser for fulltext condition literals. The grammar is defined in the      *<a href="http://www.day.com/specs/jcr/2.0/6_Query.html#6.7.19">      * JCR 2.0 specification, 6.7.19 FullTextSearch</a>,      * as follows (a bit simplified):      *<pre>      * FullTextSearchLiteral ::= Disjunct {' OR ' Disjunct}      * Disjunct ::= Term {' ' Term}      * Term ::= ['-'] SimpleTerm      * SimpleTerm ::= Word | '"' Word {' ' Word} '"'      *</pre>      */
 specifier|public
 specifier|static
 class|class

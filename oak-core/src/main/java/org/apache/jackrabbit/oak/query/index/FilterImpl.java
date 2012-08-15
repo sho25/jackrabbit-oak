@@ -109,6 +109,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|ArrayList
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Collection
 import|;
 end_import
@@ -120,6 +130,16 @@ operator|.
 name|util
 operator|.
 name|HashMap
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
 import|;
 end_import
 
@@ -182,9 +202,21 @@ specifier|private
 name|String
 name|valuePrefix
 decl_stmt|;
+comment|/**      * The fulltext search conditions, if any.      */
 specifier|private
+specifier|final
+name|ArrayList
+argument_list|<
 name|String
-name|fulltextCondition
+argument_list|>
+name|fulltextConditions
+init|=
+operator|new
+name|ArrayList
+argument_list|<
+name|String
+argument_list|>
+argument_list|()
 decl_stmt|;
 specifier|private
 specifier|final
@@ -1448,12 +1480,16 @@ block|}
 annotation|@
 name|Override
 specifier|public
+name|List
+argument_list|<
 name|String
-name|getFulltextCondition
+argument_list|>
+name|getFulltextConditions
 parameter_list|()
 block|{
+comment|// TODO support fulltext conditions on certain properties
 return|return
-name|fulltextCondition
+name|fulltextConditions
 return|;
 block|}
 specifier|public
@@ -1461,16 +1497,15 @@ name|void
 name|restrictFulltextCondition
 parameter_list|(
 name|String
-name|fulltextCondition
+name|condition
 parameter_list|)
 block|{
-comment|// TODO support combining multiple conditions as in
-comment|// contains('x') and contains('y')
-name|this
+name|fulltextConditions
 operator|.
-name|fulltextCondition
-operator|=
-name|fulltextCondition
+name|add
+argument_list|(
+name|condition
+argument_list|)
 expr_stmt|;
 block|}
 block|}

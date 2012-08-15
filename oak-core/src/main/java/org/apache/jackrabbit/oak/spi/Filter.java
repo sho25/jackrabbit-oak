@@ -52,6 +52,7 @@ specifier|public
 interface|interface
 name|Filter
 block|{
+comment|/**      * Get the list of property restrictions, if any.      *       * @return the conditions (an empty collection if not used)      */
 name|Collection
 argument_list|<
 name|PropertyRestriction
@@ -59,9 +60,12 @@ argument_list|>
 name|getPropertyRestrictions
 parameter_list|()
 function_decl|;
-comment|/**      * Get the fulltext search condition.      *      * @return the condition, or null if not used      */
+comment|/**      * Get the fulltext search conditions, if any.      *      * @return the conditions (an empty collection if not used)      */
+name|Collection
+argument_list|<
 name|String
-name|getFulltextCondition
+argument_list|>
+name|getFulltextConditions
 parameter_list|()
 function_decl|;
 comment|/**      * Get the property restriction for the given property, if any.      *      * @param propertyName the property name      * @return the restriction, or null if there is no restriction for this property      */
