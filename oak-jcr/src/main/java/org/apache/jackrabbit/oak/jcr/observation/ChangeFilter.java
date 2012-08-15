@@ -87,6 +87,7 @@ name|nodeTypeName
 decl_stmt|;
 comment|// TODO implement filtering by nodeTypeName
 specifier|private
+specifier|final
 name|boolean
 name|noLocal
 decl_stmt|;
