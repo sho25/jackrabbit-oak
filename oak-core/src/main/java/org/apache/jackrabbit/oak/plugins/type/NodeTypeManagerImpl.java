@@ -508,19 +508,16 @@ name|factory
 operator|=
 name|factory
 expr_stmt|;
+comment|// FIXME: migrate custom node types as well.
+comment|// FIXME: registration of built-in node types should be moved to repo-setup
+comment|//        as the jcr:nodetypes tree is protected and the editing session may
+comment|//        not have sufficient permission to register node types or may
+comment|//        even have limited read-permission on the jcr:nodetypes path.
 if|if
 condition|(
-name|session
-operator|.
-name|getCurrentRoot
+operator|!
+name|nodeTypesInContent
 argument_list|()
-operator|.
-name|getTree
-argument_list|(
-name|NODE_TYPES_PATH
-argument_list|)
-operator|==
-literal|null
 condition|)
 block|{
 try|try
@@ -2093,10 +2090,9 @@ name|root
 operator|.
 name|getTree
 argument_list|(
-literal|"/jcr:system"
+name|JCR_SYSTEM
 argument_list|)
 decl_stmt|;
-comment|// FIXME: OAK-221
 if|if
 condition|(
 name|system
@@ -2110,7 +2106,7 @@ name|root
 operator|.
 name|getTree
 argument_list|(
-literal|"/"
+literal|""
 argument_list|)
 operator|.
 name|addChild
@@ -2131,6 +2127,42 @@ expr_stmt|;
 block|}
 return|return
 name|types
+return|;
+block|}
+specifier|private
+name|boolean
+name|nodeTypesInContent
+parameter_list|()
+block|{
+name|Root
+name|currentRoot
+init|=
+name|session
+operator|.
+name|getCurrentRoot
+argument_list|()
+decl_stmt|;
+name|Tree
+name|types
+init|=
+name|currentRoot
+operator|.
+name|getTree
+argument_list|(
+name|NODE_TYPES_PATH
+argument_list|)
+decl_stmt|;
+return|return
+name|types
+operator|!=
+literal|null
+operator|&&
+name|types
+operator|.
+name|getChildrenCount
+argument_list|()
+operator|>
+literal|0
 return|;
 block|}
 annotation|@

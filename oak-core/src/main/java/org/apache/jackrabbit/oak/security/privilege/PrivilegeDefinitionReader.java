@@ -573,12 +573,8 @@ return|;
 block|}
 comment|/**      * Reads privilege definitions for the specified {@code InputStream}. The      * aim of this method is to provide backwards compatibility with      * custom privilege definitions of Jackrabbit 2.x repositories. The caller      * is in charge of migrating the definitions.      *      * @param customPrivileges      * @param nsRegistry      * @return      * @throws RepositoryException      * @throws IOException      */
 specifier|static
-name|Map
-argument_list|<
-name|String
-argument_list|,
 name|PrivilegeDefinition
-argument_list|>
+index|[]
 name|readCustomDefinitons
 parameter_list|(
 name|InputStream
@@ -676,6 +672,21 @@ expr_stmt|;
 block|}
 return|return
 name|definitions
+operator|.
+name|values
+argument_list|()
+operator|.
+name|toArray
+argument_list|(
+operator|new
+name|PrivilegeDefinition
+index|[
+name|definitions
+operator|.
+name|size
+argument_list|()
+index|]
+argument_list|)
 return|;
 block|}
 comment|//--------------------------------------------------------------------------

@@ -23,6 +23,16 @@ end_package
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Set
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|annotation
@@ -55,8 +65,10 @@ function_decl|;
 comment|/**      * Returns the internal names of the declared aggregated privileges or      * an empty array if the privilege defined by this definition isn't      * an aggregate.      *      * @return The internal names of the aggregated privileges or an empty array.      */
 annotation|@
 name|Nonnull
+name|Set
+argument_list|<
 name|String
-index|[]
+argument_list|>
 name|getDeclaredAggregateNames
 parameter_list|()
 function_decl|;

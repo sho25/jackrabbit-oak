@@ -365,6 +365,24 @@ begin_import
 import|import
 name|org
 operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|state
+operator|.
+name|NodeState
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|slf4j
 operator|.
 name|Logger
@@ -574,30 +592,68 @@ argument_list|(
 name|this
 argument_list|)
 expr_stmt|;
+comment|// FIXME: repository setup must be done elsewhere...
 comment|// FIXME: depends on CoreValue's name mangling
-name|String
-name|ntUnstructured
+name|NodeState
+name|root
 init|=
-literal|"nam:nt:unstructured"
+name|nodeStore
+operator|.
+name|getRoot
+argument_list|()
 decl_stmt|;
-comment|// FIXME: workspace setup must be done elsewhere...
+if|if
+condition|(
+name|root
+operator|.
+name|hasChildNode
+argument_list|(
+literal|"jcr:system"
+argument_list|)
+condition|)
+block|{
 name|microKernel
 operator|.
 name|commit
 argument_list|(
 literal|"/"
 argument_list|,
-literal|"^\"jcr:primaryType\":\""
-operator|+
-name|ntUnstructured
-operator|+
-literal|"\" "
+literal|"^\"jcr:primaryType\":\"nam:rep:root\" "
 argument_list|,
 literal|null
 argument_list|,
 literal|null
 argument_list|)
 expr_stmt|;
+block|}
+else|else
+block|{
+name|microKernel
+operator|.
+name|commit
+argument_list|(
+literal|"/"
+argument_list|,
+literal|"^\"jcr:primaryType\":\"nam:rep:root\""
+operator|+
+literal|"+\"jcr:system\":{"
+operator|+
+literal|"\"jcr:primaryType\"    :\"nam:rep:system\","
+operator|+
+literal|"\"jcr:versionStorage\" :{\"jcr:primaryType\":\"nam:rep:versionStorage\"},"
+operator|+
+literal|"\"jcr:nodeTypes\"      :{\"jcr:primaryType\":\"nam:rep:nodeTypes\"},"
+operator|+
+literal|"\"jcr:activities\"     :{\"jcr:primaryType\":\"nam:rep:Activities\"},"
+operator|+
+literal|"\"rep:privileges\"     :{\"jcr:primaryType\":\"nam:rep:Privileges\"}}"
+argument_list|,
+literal|null
+argument_list|,
+literal|null
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 specifier|private
 specifier|static
