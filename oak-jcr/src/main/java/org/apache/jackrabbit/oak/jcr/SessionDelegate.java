@@ -2113,7 +2113,6 @@ return|;
 block|}
 block|}
 block|}
-comment|//------------------------------------------------------------< AnnotatingConflictHandler>---
 block|}
 end_class
 
