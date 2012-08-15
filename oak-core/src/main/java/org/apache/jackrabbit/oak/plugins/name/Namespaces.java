@@ -226,15 +226,6 @@ name|DEFAULTS
 operator|.
 name|put
 argument_list|(
-name|PREFIX_XMLNS
-argument_list|,
-name|NAMESPACE_XMLNS
-argument_list|)
-expr_stmt|;
-name|DEFAULTS
-operator|.
-name|put
-argument_list|(
 name|PREFIX_SV
 argument_list|,
 name|NAMESPACE_SV
