@@ -81,6 +81,10 @@ name|QueryManager
 import|;
 end_import
 
+begin_comment
+comment|/**  * Run a simple query of the form "//*[@testcount=...]".  */
+end_comment
+
 begin_class
 specifier|public
 class|class
@@ -117,6 +121,18 @@ parameter_list|)
 throws|throws
 name|RepositoryException
 block|{
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"deprecation"
+argument_list|)
+name|String
+name|xpath
+init|=
+name|Query
+operator|.
+name|XPATH
+decl_stmt|;
 return|return
 name|manager
 operator|.
@@ -128,9 +144,7 @@ name|i
 operator|+
 literal|"]"
 argument_list|,
-name|Query
-operator|.
-name|XPATH
+name|xpath
 argument_list|)
 return|;
 block|}
@@ -242,6 +256,15 @@ name|save
 argument_list|()
 expr_stmt|;
 block|}
+name|IndexManager
+operator|.
+name|createPropertyIndex
+argument_list|(
+name|session
+argument_list|,
+literal|"testcount"
+argument_list|)
+expr_stmt|;
 block|}
 annotation|@
 name|Override
