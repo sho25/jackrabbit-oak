@@ -299,7 +299,7 @@ name|oak
 operator|.
 name|api
 operator|.
-name|QueryEngine
+name|SessionQueryEngine
 import|;
 end_import
 
@@ -1756,7 +1756,7 @@ block|}
 annotation|@
 name|Nonnull
 specifier|public
-name|QueryEngine
+name|SessionQueryEngine
 name|getQueryEngine
 parameter_list|()
 block|{

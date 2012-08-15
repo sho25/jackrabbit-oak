@@ -197,22 +197,6 @@ name|oak
 operator|.
 name|api
 operator|.
-name|ContentSession
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|api
-operator|.
 name|CoreValue
 import|;
 end_import
@@ -229,7 +213,7 @@ name|oak
 operator|.
 name|api
 operator|.
-name|QueryEngine
+name|SessionQueryEngine
 import|;
 end_import
 
@@ -319,7 +303,7 @@ name|qomFactory
 decl_stmt|;
 specifier|private
 specifier|final
-name|QueryEngine
+name|SessionQueryEngine
 name|queryEngine
 decl_stmt|;
 specifier|private
@@ -675,14 +659,6 @@ argument_list|(
 name|bindVariableMap
 argument_list|)
 decl_stmt|;
-name|ContentSession
-name|s
-init|=
-name|sessionDelegate
-operator|.
-name|getContentSession
-argument_list|()
-decl_stmt|;
 name|NamePathMapper
 name|namePathMapper
 init|=
@@ -701,8 +677,6 @@ argument_list|(
 name|statement
 argument_list|,
 name|language
-argument_list|,
-name|s
 argument_list|,
 name|limit
 argument_list|,
