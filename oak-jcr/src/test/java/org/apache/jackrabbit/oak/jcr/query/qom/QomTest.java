@@ -2067,7 +2067,7 @@ name|f
 operator|.
 name|column
 argument_list|(
-literal|"selectorName"
+literal|"x"
 argument_list|,
 literal|"propertyName"
 argument_list|,
