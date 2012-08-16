@@ -1482,6 +1482,8 @@ name|absPath
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Nonnull
 specifier|synchronized
 name|Tree
 name|getTree
