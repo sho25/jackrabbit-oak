@@ -976,6 +976,7 @@ argument_list|)
 return|;
 block|}
 block|}
+comment|/**      * {@code NodeDelegate} at the given path      * @param path Oak path      * @return  The {@code NodeDelegate} at {@code path} or {@code null} if      * none exists or not accessible.      */
 annotation|@
 name|CheckForNull
 specifier|public
@@ -1385,6 +1386,7 @@ name|getWorkspaceName
 argument_list|()
 return|;
 block|}
+comment|/**      * Copy a node      * @param srcPath  oak path to the source node to copy      * @param destPath  oak path to the destination      * @throws RepositoryException      */
 specifier|public
 name|void
 name|copy
@@ -1527,6 +1529,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+comment|/**      * Move a node      * @param srcPath  oak path to the source node to copy      * @param destPath  oak path to the destination      * @param transientOp  whether or not to perform the move in transient space      * @throws RepositoryException      */
 specifier|public
 name|void
 name|move
@@ -1817,6 +1820,7 @@ name|contentSession
 return|;
 block|}
 comment|//-----------------------------------------------------------< internal>---
+comment|/**      * Get the {@code Tree} with the given path      * @param path  oak path      * @return  tree at the given path or {@code null} if no such tree exists or      * if the tree at {@code path} is not accessible.      */
 annotation|@
 name|CheckForNull
 name|Tree
