@@ -164,20 +164,37 @@ name|ValidatorProvider
 block|{
 specifier|private
 specifier|final
-name|AccessControlContext
-name|acContext
-init|=
-literal|null
-decl_stmt|;
-comment|// TODO
-specifier|private
-specifier|final
 name|ContentSession
 name|contentSession
-init|=
-literal|null
 decl_stmt|;
-comment|// TODO
+specifier|private
+specifier|final
+name|AccessControlContext
+name|accessControlContext
+decl_stmt|;
+specifier|public
+name|PermissionValidatorProvider
+parameter_list|(
+name|ContentSession
+name|contentSession
+parameter_list|,
+name|AccessControlContext
+name|accessControlContext
+parameter_list|)
+block|{
+name|this
+operator|.
+name|contentSession
+operator|=
+name|contentSession
+expr_stmt|;
+name|this
+operator|.
+name|accessControlContext
+operator|=
+name|accessControlContext
+expr_stmt|;
+block|}
 comment|//--------------------------------------------------< ValidatorProvider>---
 annotation|@
 name|Nonnull
@@ -228,7 +245,7 @@ return|return
 operator|new
 name|PermissionValidator
 argument_list|(
-name|acContext
+name|accessControlContext
 operator|.
 name|getPermissions
 argument_list|()
