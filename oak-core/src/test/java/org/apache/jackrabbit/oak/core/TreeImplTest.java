@@ -495,11 +495,11 @@ name|addAll
 argument_list|(
 name|expectedPaths
 argument_list|,
-literal|"x"
+literal|"/x"
 argument_list|,
-literal|"y"
+literal|"/y"
 argument_list|,
-literal|"z"
+literal|"/z"
 argument_list|)
 expr_stmt|;
 for|for

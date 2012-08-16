@@ -282,39 +282,37 @@ name|validPaths
 operator|.
 name|add
 argument_list|(
-literal|""
+literal|"/"
 argument_list|)
 expr_stmt|;
 name|validPaths
 operator|.
 name|add
 argument_list|(
-literal|"x"
+literal|"/x"
 argument_list|)
 expr_stmt|;
 name|validPaths
 operator|.
 name|add
 argument_list|(
-literal|"x/xx"
+literal|"/x/xx"
 argument_list|)
 expr_stmt|;
 name|validPaths
 operator|.
 name|add
 argument_list|(
-literal|"y"
+literal|"/y"
 argument_list|)
 expr_stmt|;
 name|validPaths
 operator|.
 name|add
 argument_list|(
-literal|"z"
+literal|"/z"
 argument_list|)
 expr_stmt|;
-comment|//validPaths.add("/");  FIXME: see OAK-221
-comment|//validPaths.add("/x"); FIXME: see OAK-221
 for|for
 control|(
 name|String
@@ -366,18 +364,16 @@ name|invalidPaths
 operator|.
 name|add
 argument_list|(
-literal|"any"
+literal|"/any"
 argument_list|)
 expr_stmt|;
 name|invalidPaths
 operator|.
 name|add
 argument_list|(
-literal|"x/any"
+literal|"/x/any"
 argument_list|)
 expr_stmt|;
-comment|//invalidPaths.add("/");      FIXME: see OAK-221
-comment|//invalidPaths.add("/x/xx");  FIXME: see OAK-221
 for|for
 control|(
 name|String
