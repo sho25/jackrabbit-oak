@@ -338,9 +338,6 @@ argument_list|,
 name|getUserManager
 argument_list|()
 operator|.
-name|getSessionDelegate
-argument_list|()
-operator|.
 name|getNamePathMapper
 argument_list|()
 argument_list|)
@@ -355,8 +352,6 @@ name|boolean
 name|isAdmin
 parameter_list|()
 block|{
-try|try
-block|{
 return|return
 name|getUserManager
 argument_list|()
@@ -367,27 +362,6 @@ name|getID
 argument_list|()
 argument_list|)
 return|;
-block|}
-catch|catch
-parameter_list|(
-name|RepositoryException
-name|e
-parameter_list|)
-block|{
-comment|// should never get here
-name|log
-operator|.
-name|error
-argument_list|(
-literal|"Internal error while retrieving UserID."
-argument_list|,
-name|e
-argument_list|)
-expr_stmt|;
-return|return
-literal|false
-return|;
-block|}
 block|}
 comment|/**      * Always throws {@code UnsupportedRepositoryOperationException}      *      * @see org.apache.jackrabbit.api.security.user.User#getCredentials()      */
 annotation|@
@@ -571,6 +545,12 @@ literal|"The administrator user cannot be disabled."
 argument_list|)
 throw|;
 block|}
+name|Tree
+name|userTree
+init|=
+name|getTree
+argument_list|()
+decl_stmt|;
 if|if
 condition|(
 name|reason
@@ -585,19 +565,14 @@ argument_list|()
 condition|)
 block|{
 comment|// enable the user again.
-name|getUserManager
-argument_list|()
+name|userTree
 operator|.
-name|removeInternalProperty
+name|removeProperty
 argument_list|(
-name|getTree
-argument_list|()
-argument_list|,
 name|REP_DISABLED
 argument_list|)
 expr_stmt|;
 block|}
-comment|// else: nothing to do.
 block|}
 else|else
 block|{

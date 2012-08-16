@@ -61,6 +61,11 @@ init|=
 literal|"rep:principalName"
 decl_stmt|;
 name|String
+name|REP_AUTHORIZABLE_ID
+init|=
+literal|"rep:authorizableId"
+decl_stmt|;
+name|String
 name|REP_PASSWORD
 init|=
 literal|"rep:password"
