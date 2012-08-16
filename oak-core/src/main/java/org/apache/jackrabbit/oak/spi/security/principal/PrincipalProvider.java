@@ -53,6 +53,26 @@ name|Set
 import|;
 end_import
 
+begin_import
+import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|CheckForNull
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|Nonnull
+import|;
+end_import
+
 begin_comment
 comment|/**  * PrincipalProvider... TODO  */
 end_comment
@@ -63,6 +83,8 @@ interface|interface
 name|PrincipalProvider
 block|{
 comment|/**      * Returns the principal with the specified name or {@code null} if the      * principal does not exist.      *      * @param principalName the name of the principal to retrieve      * @return return the requested principal or {@code null}      */
+annotation|@
+name|CheckForNull
 name|Principal
 name|getPrincipal
 parameter_list|(
@@ -71,6 +93,8 @@ name|principalName
 parameter_list|)
 function_decl|;
 comment|/**      * Returns an iterator over all group principals for which the given      * principal is either direct or indirect member of. Thus for any principal      * returned in the iterator {@link java.security.acl.Group#isMember(Principal)}      * must return {@code true}.      *<p/>      * Example:<br>      * If Principal is member of Group A, and Group A is member of      * Group B, this method will return Group A and Group B.      *      * @param principal the principal to return it's membership from.      * @return an iterator returning all groups the given principal is member of.      * @see java.security.acl.Group#isMember(java.security.Principal)      */
+annotation|@
+name|Nonnull
 name|Set
 argument_list|<
 name|Group
@@ -79,6 +103,19 @@ name|getGroupMembership
 parameter_list|(
 name|Principal
 name|principal
+parameter_list|)
+function_decl|;
+comment|/**      * Tries to resolve the specified {@code userID} to a valid principal and      * it's group membership. This method returns an empty set if the      * specified ID cannot be resolved.      *      * @param userID A userID.      * @return The set of principals associated with the specified {@code userID}      * or an empty set if it cannot be resolved.      */
+annotation|@
+name|Nonnull
+name|Set
+argument_list|<
+name|Principal
+argument_list|>
+name|getPrincipals
+parameter_list|(
+name|String
+name|userID
 parameter_list|)
 function_decl|;
 block|}
