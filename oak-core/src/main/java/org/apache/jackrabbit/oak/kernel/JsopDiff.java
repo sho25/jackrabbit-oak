@@ -18,24 +18,6 @@ package|;
 end_package
 
 begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|kernel
-operator|.
-name|CoreValueMapper
-operator|.
-name|TYPE2HINT
-import|;
-end_import
-
-begin_import
 import|import
 name|javax
 operator|.
@@ -163,6 +145,24 @@ name|NodeStateDiff
 import|;
 end_import
 
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|kernel
+operator|.
+name|CoreValueMapper
+operator|.
+name|TYPE2HINT
+import|;
+end_import
+
 begin_class
 class|class
 name|JsopDiff
@@ -212,7 +212,7 @@ operator|new
 name|JsopBuilder
 argument_list|()
 argument_list|,
-literal|""
+literal|"/"
 argument_list|)
 expr_stmt|;
 block|}
@@ -519,6 +519,7 @@ argument_list|)
 return|;
 block|}
 specifier|private
+specifier|static
 name|void
 name|toJson
 parameter_list|(
@@ -602,6 +603,7 @@ argument_list|()
 expr_stmt|;
 block|}
 specifier|private
+specifier|static
 name|void
 name|toJson
 parameter_list|(
@@ -665,6 +667,7 @@ expr_stmt|;
 block|}
 block|}
 specifier|private
+specifier|static
 name|void
 name|toJson
 parameter_list|(

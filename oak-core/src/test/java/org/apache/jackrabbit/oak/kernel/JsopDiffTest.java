@@ -18,14 +18,16 @@ package|;
 end_package
 
 begin_import
-import|import static
-name|junit
+import|import
+name|com
 operator|.
-name|framework
+name|google
 operator|.
-name|Assert
+name|common
 operator|.
-name|assertEquals
+name|collect
+operator|.
+name|ImmutableMap
 import|;
 end_import
 
@@ -110,16 +112,14 @@ import|;
 end_import
 
 begin_import
-import|import
-name|com
+import|import static
+name|junit
 operator|.
-name|google
+name|framework
 operator|.
-name|common
+name|Assert
 operator|.
-name|collect
-operator|.
-name|ImmutableMap
+name|assertEquals
 import|;
 end_import
 
@@ -165,7 +165,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"^\"foo\":\"bar\""
+literal|"^\"/foo\":\"bar\""
 argument_list|,
 name|diff
 operator|.
@@ -197,7 +197,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"^\"foo\":123"
+literal|"^\"/foo\":123"
 argument_list|,
 name|diff
 operator|.
@@ -229,7 +229,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"^\"foo\":\"dou:1.23\""
+literal|"^\"/foo\":\"dou:1.23\""
 argument_list|,
 name|diff
 operator|.
@@ -262,7 +262,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"^\"foo\":true"
+literal|"^\"/foo\":true"
 argument_list|,
 name|diff
 operator|.
@@ -285,7 +285,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"^\"foo\":null"
+literal|"^\"/foo\":null"
 argument_list|,
 name|diff
 operator|.
@@ -367,7 +367,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"+\"test\":{}"
+literal|"+\"/test\":{}"
 argument_list|,
 name|diff
 operator|.
@@ -394,7 +394,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"^\"test/a\":1+\"test/x\":{}"
+literal|"^\"/test/a\":1+\"/test/x\":{}"
 argument_list|,
 name|diff
 operator|.
@@ -419,7 +419,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"-\"test\""
+literal|"-\"/test\""
 argument_list|,
 name|diff
 operator|.

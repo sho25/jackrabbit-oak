@@ -1606,6 +1606,14 @@ name|String
 name|path
 parameter_list|)
 block|{
+assert|assert
+name|path
+operator|.
+name|startsWith
+argument_list|(
+literal|"/"
+argument_list|)
+assert|;
 name|TreeImpl
 name|child
 init|=

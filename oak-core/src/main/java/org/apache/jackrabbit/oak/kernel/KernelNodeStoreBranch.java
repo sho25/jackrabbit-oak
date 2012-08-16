@@ -633,6 +633,14 @@ name|String
 name|path
 parameter_list|)
 block|{
+assert|assert
+name|path
+operator|.
+name|startsWith
+argument_list|(
+literal|"/"
+argument_list|)
+assert|;
 name|NodeState
 name|node
 init|=
@@ -695,7 +703,7 @@ name|kernel
 operator|.
 name|commit
 argument_list|(
-literal|"/"
+literal|""
 argument_list|,
 name|jsop
 argument_list|,
