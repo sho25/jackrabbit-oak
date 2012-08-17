@@ -356,9 +356,12 @@ return|return
 name|getUserManager
 argument_list|()
 operator|.
-name|isAdminId
+name|getUserProvider
+argument_list|()
+operator|.
+name|isAdminUser
 argument_list|(
-name|getID
+name|getTree
 argument_list|()
 argument_list|)
 return|;
