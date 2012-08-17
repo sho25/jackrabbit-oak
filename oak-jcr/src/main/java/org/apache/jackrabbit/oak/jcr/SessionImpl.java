@@ -425,7 +425,7 @@ name|security
 operator|.
 name|principal
 operator|.
-name|KernelPrincipalProvider
+name|TmpPrincipalProvider
 import|;
 end_import
 
@@ -797,7 +797,7 @@ name|Node
 name|getNodeByUUID
 parameter_list|(
 name|String
-name|id
+name|uuid
 parameter_list|)
 throws|throws
 name|RepositoryException
@@ -805,7 +805,7 @@ block|{
 return|return
 name|getNodeByIdentifier
 argument_list|(
-name|id
+name|uuid
 argument_list|)
 return|;
 block|}
@@ -2401,7 +2401,7 @@ operator|new
 name|PrincipalManagerImpl
 argument_list|(
 operator|new
-name|KernelPrincipalProvider
+name|TmpPrincipalProvider
 argument_list|()
 argument_list|)
 argument_list|)

@@ -49,7 +49,7 @@ name|security
 operator|.
 name|principal
 operator|.
-name|KernelPrincipalProvider
+name|TmpPrincipalProvider
 import|;
 end_import
 
@@ -248,7 +248,7 @@ expr_stmt|;
 name|principalProvider
 operator|=
 operator|new
-name|KernelPrincipalProvider
+name|TmpPrincipalProvider
 argument_list|()
 expr_stmt|;
 block|}

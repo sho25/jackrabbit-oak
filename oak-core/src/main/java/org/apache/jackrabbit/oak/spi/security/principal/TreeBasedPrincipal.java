@@ -291,6 +291,27 @@ operator|=
 name|pathMapper
 expr_stmt|;
 block|}
+specifier|protected
+name|Tree
+name|getTree
+parameter_list|()
+block|{
+return|return
+name|tree
+return|;
+block|}
+specifier|public
+name|String
+name|getOakPath
+parameter_list|()
+block|{
+return|return
+name|tree
+operator|.
+name|getPath
+argument_list|()
+return|;
+block|}
 comment|//-------------------------------------------------< ItemBasedPrincipal>---
 annotation|@
 name|Override
