@@ -45,24 +45,6 @@ name|CoreValueFactory
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|spi
-operator|.
-name|commit
-operator|.
-name|CommitEditor
-import|;
-end_import
-
 begin_comment
 comment|/**  * Storage abstraction for trees. At any given point in time the stored  * tree is rooted at a single immutable node state.  *<p>  * This is a low-level interface that doesn't cover functionality like  * merging concurrent changes or rejecting new tree states based on some  * higher-level consistency constraints.  */
 end_comment
@@ -84,10 +66,7 @@ annotation|@
 name|Nonnull
 name|NodeStoreBranch
 name|branch
-parameter_list|(
-name|CommitEditor
-name|commitEditor
-parameter_list|)
+parameter_list|()
 function_decl|;
 comment|/**      * Returns a builder for constructing a new or modified node state.      * The builder is initialized with all the properties and child nodes      * from the given base node state.      *      * @param base  base node state, or {@code null} for building new nodes      * @return  builder instance      */
 annotation|@

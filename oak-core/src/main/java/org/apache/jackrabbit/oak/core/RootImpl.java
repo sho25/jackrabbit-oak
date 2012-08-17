@@ -325,7 +325,7 @@ name|spi
 operator|.
 name|state
 operator|.
-name|NodeState
+name|NodeBuilder
 import|;
 end_import
 
@@ -343,7 +343,7 @@ name|spi
 operator|.
 name|state
 operator|.
-name|NodeBuilder
+name|NodeState
 import|;
 end_import
 
@@ -814,9 +814,7 @@ operator|=
 name|store
 operator|.
 name|branch
-argument_list|(
-name|commitEditor
-argument_list|)
+argument_list|()
 expr_stmt|;
 name|rootTree
 operator|=
@@ -860,7 +858,9 @@ expr_stmt|;
 name|branch
 operator|.
 name|merge
-argument_list|()
+argument_list|(
+name|commitEditor
+argument_list|)
 expr_stmt|;
 name|refresh
 argument_list|()

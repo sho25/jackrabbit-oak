@@ -95,9 +95,9 @@ name|oak
 operator|.
 name|spi
 operator|.
-name|commit
+name|state
 operator|.
-name|EmptyEditor
+name|NodeBuilder
 import|;
 end_import
 
@@ -116,24 +116,6 @@ operator|.
 name|state
 operator|.
 name|NodeState
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|spi
-operator|.
-name|state
-operator|.
-name|NodeBuilder
 import|;
 end_import
 
@@ -240,10 +222,7 @@ name|Override
 specifier|public
 name|NodeStoreBranch
 name|branch
-parameter_list|(
-name|CommitEditor
-name|editor
-parameter_list|)
+parameter_list|()
 block|{
 return|return
 operator|new
@@ -349,7 +328,10 @@ name|Override
 specifier|public
 name|NodeState
 name|merge
-parameter_list|()
+parameter_list|(
+name|CommitEditor
+name|editor
+parameter_list|)
 throws|throws
 name|CommitFailedException
 block|{

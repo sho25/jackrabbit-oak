@@ -167,7 +167,7 @@ name|spi
 operator|.
 name|state
 operator|.
-name|NodeState
+name|NodeBuilder
 import|;
 end_import
 
@@ -185,7 +185,7 @@ name|spi
 operator|.
 name|state
 operator|.
-name|NodeBuilder
+name|NodeState
 import|;
 end_import
 
@@ -517,11 +517,7 @@ init|=
 name|store
 operator|.
 name|branch
-argument_list|(
-name|EmptyEditor
-operator|.
-name|INSTANCE
-argument_list|)
+argument_list|()
 decl_stmt|;
 name|NodeBuilder
 name|rootBuilder
@@ -771,7 +767,11 @@ expr_stmt|;
 name|branch
 operator|.
 name|merge
-argument_list|()
+argument_list|(
+name|EmptyEditor
+operator|.
+name|INSTANCE
+argument_list|)
 expr_stmt|;
 comment|// Assert changes are present in the trunk
 name|testState
@@ -971,11 +971,7 @@ init|=
 name|store
 operator|.
 name|branch
-argument_list|(
-name|EmptyEditor
-operator|.
-name|INSTANCE
-argument_list|)
+argument_list|()
 decl_stmt|;
 name|branch
 operator|.
@@ -987,7 +983,11 @@ expr_stmt|;
 name|branch
 operator|.
 name|merge
-argument_list|()
+argument_list|(
+name|EmptyEditor
+operator|.
+name|INSTANCE
+argument_list|)
 expr_stmt|;
 name|store
 operator|.
@@ -1272,11 +1272,7 @@ init|=
 name|store
 operator|.
 name|branch
-argument_list|(
-name|EmptyEditor
-operator|.
-name|INSTANCE
-argument_list|)
+argument_list|()
 decl_stmt|;
 name|branch
 operator|.
@@ -1288,7 +1284,11 @@ expr_stmt|;
 name|branch
 operator|.
 name|merge
-argument_list|()
+argument_list|(
+name|EmptyEditor
+operator|.
+name|INSTANCE
+argument_list|)
 expr_stmt|;
 name|NodeState
 name|test

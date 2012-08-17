@@ -45,6 +45,24 @@ name|CommitFailedException
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|commit
+operator|.
+name|CommitEditor
+import|;
+end_import
+
 begin_interface
 specifier|public
 interface|interface
@@ -94,12 +112,15 @@ name|String
 name|target
 parameter_list|)
 function_decl|;
-comment|/**      * Merges the changes in this branch to the main content tree.      * @return the node state resulting from the merge.      *      * @throws CommitFailedException if the merge failed      */
+comment|/**      * Merges the changes in this branch to the main content tree.      * @param editor  commit editor to apply      * @return the node state resulting from the merge.      *      * @throws CommitFailedException if the merge failed      */
 annotation|@
 name|Nonnull
 name|NodeState
 name|merge
-parameter_list|()
+parameter_list|(
+name|CommitEditor
+name|editor
+parameter_list|)
 throws|throws
 name|CommitFailedException
 function_decl|;

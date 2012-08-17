@@ -163,7 +163,7 @@ name|spi
 operator|.
 name|state
 operator|.
-name|NodeState
+name|NodeBuilder
 import|;
 end_import
 
@@ -181,7 +181,7 @@ name|spi
 operator|.
 name|state
 operator|.
-name|NodeBuilder
+name|NodeState
 import|;
 end_import
 
@@ -437,18 +437,13 @@ name|Override
 specifier|public
 name|NodeStoreBranch
 name|branch
-parameter_list|(
-name|CommitEditor
-name|commitEditor
-parameter_list|)
+parameter_list|()
 block|{
 return|return
 operator|new
 name|KernelNodeStoreBranch
 argument_list|(
 name|this
-argument_list|,
-name|commitEditor
 argument_list|)
 return|;
 block|}
