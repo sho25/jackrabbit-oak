@@ -254,7 +254,7 @@ specifier|public
 class|class
 name|TreeImplTest
 extends|extends
-name|AbstractOakTest
+name|AbstractCoreTest
 block|{
 annotation|@
 name|Override

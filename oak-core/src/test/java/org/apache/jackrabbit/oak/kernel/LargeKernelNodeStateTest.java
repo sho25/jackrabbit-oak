@@ -45,7 +45,7 @@ name|oak
 operator|.
 name|core
 operator|.
-name|AbstractOakTest
+name|AbstractCoreTest
 import|;
 end_import
 
@@ -136,7 +136,7 @@ specifier|public
 class|class
 name|LargeKernelNodeStateTest
 extends|extends
-name|AbstractOakTest
+name|AbstractCoreTest
 block|{
 specifier|private
 specifier|static

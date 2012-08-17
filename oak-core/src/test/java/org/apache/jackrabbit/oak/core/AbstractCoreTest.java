@@ -157,7 +157,7 @@ begin_class
 specifier|public
 specifier|abstract
 class|class
-name|AbstractOakTest
+name|AbstractCoreTest
 block|{
 comment|/**      * logger instance      */
 specifier|private
@@ -170,7 +170,7 @@ name|LoggerFactory
 operator|.
 name|getLogger
 argument_list|(
-name|AbstractOakTest
+name|AbstractCoreTest
 operator|.
 name|class
 argument_list|)

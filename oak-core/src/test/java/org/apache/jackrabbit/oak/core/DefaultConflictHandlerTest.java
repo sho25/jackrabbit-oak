@@ -182,7 +182,7 @@ specifier|public
 class|class
 name|DefaultConflictHandlerTest
 extends|extends
-name|AbstractOakTest
+name|AbstractCoreTest
 block|{
 specifier|private
 name|Root

@@ -21,6 +21,16 @@ end_package
 
 begin_import
 import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|Nonnull
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -35,33 +45,23 @@ name|CommitFailedException
 import|;
 end_import
 
-begin_import
-import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
 begin_interface
 specifier|public
 interface|interface
 name|NodeStoreBranch
 block|{
-comment|/**      * Returns the latest state of the branch.      *      * @return root node state      */
-annotation|@
-name|Nonnull
-name|NodeState
-name|getRoot
-parameter_list|()
-function_decl|;
 comment|/**      * Returns the base state of this branch.      *      * @return base node state      */
 annotation|@
 name|Nonnull
 name|NodeState
 name|getBase
+parameter_list|()
+function_decl|;
+comment|/**      * Returns the latest state of the branch.      *      * @return root node state      */
+annotation|@
+name|Nonnull
+name|NodeState
+name|getRoot
 parameter_list|()
 function_decl|;
 comment|/**      * Updates the state of the content tree.      *      * @param newRoot new root node state      */

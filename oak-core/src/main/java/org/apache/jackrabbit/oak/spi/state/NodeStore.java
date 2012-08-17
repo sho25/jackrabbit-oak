@@ -21,6 +21,16 @@ end_package
 
 begin_import
 import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|Nonnull
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -37,11 +47,19 @@ end_import
 
 begin_import
 import|import
-name|javax
+name|org
 operator|.
-name|annotation
+name|apache
 operator|.
-name|Nonnull
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|commit
+operator|.
+name|CommitEditor
 import|;
 end_import
 
@@ -66,7 +84,10 @@ annotation|@
 name|Nonnull
 name|NodeStoreBranch
 name|branch
-parameter_list|()
+parameter_list|(
+name|CommitEditor
+name|commitEditor
+parameter_list|)
 function_decl|;
 comment|/**      * Returns a builder for constructing a new or modified node state.      * The builder is initialized with all the properties and child nodes      * from the given base node state.      *      * @param base  base node state, or {@code null} for building new nodes      * @return  builder instance      */
 annotation|@
