@@ -922,12 +922,6 @@ block|}
 block|}
 return|return
 name|path
-operator|==
-literal|null
-condition|?
-literal|null
-else|:
-name|path
 return|;
 block|}
 catch|catch
