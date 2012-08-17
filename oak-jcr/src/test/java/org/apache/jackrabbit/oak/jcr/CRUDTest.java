@@ -19,16 +19,6 @@ end_package
 
 begin_import
 import|import
-name|org
-operator|.
-name|junit
-operator|.
-name|Test
-import|;
-end_import
-
-begin_import
-import|import
 name|javax
 operator|.
 name|jcr
@@ -64,6 +54,16 @@ operator|.
 name|jcr
 operator|.
 name|Session
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Test
 import|;
 end_import
 
@@ -110,11 +110,9 @@ block|{
 name|Session
 name|session
 init|=
-name|createAnonymousSession
+name|getAdminSession
 argument_list|()
 decl_stmt|;
-try|try
-block|{
 comment|// Create
 name|Node
 name|hello
@@ -222,15 +220,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-finally|finally
-block|{
-name|session
-operator|.
-name|logout
-argument_list|()
-expr_stmt|;
-block|}
-block|}
 annotation|@
 name|Test
 specifier|public
@@ -243,7 +232,7 @@ block|{
 name|Session
 name|session
 init|=
-name|getSession
+name|getAdminSession
 argument_list|()
 decl_stmt|;
 name|Node
@@ -279,7 +268,7 @@ block|{
 name|Property
 name|property
 init|=
-name|getSession
+name|getAdminSession
 argument_list|()
 operator|.
 name|getRootNode

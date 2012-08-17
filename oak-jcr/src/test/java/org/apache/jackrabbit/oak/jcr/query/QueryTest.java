@@ -20,42 +20,6 @@ package|;
 end_package
 
 begin_import
-import|import static
-name|junit
-operator|.
-name|framework
-operator|.
-name|Assert
-operator|.
-name|assertEquals
-import|;
-end_import
-
-begin_import
-import|import static
-name|junit
-operator|.
-name|framework
-operator|.
-name|Assert
-operator|.
-name|assertTrue
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertFalse
-import|;
-end_import
-
-begin_import
 import|import
 name|javax
 operator|.
@@ -191,6 +155,42 @@ name|Test
 import|;
 end_import
 
+begin_import
+import|import static
+name|junit
+operator|.
+name|framework
+operator|.
+name|Assert
+operator|.
+name|assertEquals
+import|;
+end_import
+
+begin_import
+import|import static
+name|junit
+operator|.
+name|framework
+operator|.
+name|Assert
+operator|.
+name|assertTrue
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertFalse
+import|;
+end_import
+
 begin_comment
 comment|/**  * Tests the query feature.  */
 end_comment
@@ -219,11 +219,9 @@ block|{
 name|Session
 name|session
 init|=
-name|createAnonymousSession
+name|getAdminSession
 argument_list|()
 decl_stmt|;
-try|try
-block|{
 name|Node
 name|hello
 init|=
@@ -455,15 +453,6 @@ operator|.
 name|execute
 argument_list|()
 expr_stmt|;
-block|}
-finally|finally
-block|{
-name|session
-operator|.
-name|logout
-argument_list|()
-expr_stmt|;
-block|}
 block|}
 block|}
 end_class

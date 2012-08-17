@@ -636,7 +636,7 @@ block|{
 name|Session
 name|session
 init|=
-name|createAnonymousSession
+name|getAdminSession
 argument_list|()
 decl_stmt|;
 name|ValueFactory
@@ -647,8 +647,6 @@ operator|.
 name|getValueFactory
 argument_list|()
 decl_stmt|;
-try|try
-block|{
 name|Node
 name|root
 init|=
@@ -715,7 +713,7 @@ name|createValue
 argument_list|(
 literal|3
 argument_list|)
-block|,             }
+block|,         }
 argument_list|)
 expr_stmt|;
 name|root
@@ -737,15 +735,6 @@ operator|.
 name|save
 argument_list|()
 expr_stmt|;
-block|}
-finally|finally
-block|{
-name|session
-operator|.
-name|logout
-argument_list|()
-expr_stmt|;
-block|}
 block|}
 annotation|@
 name|Test
@@ -779,7 +768,7 @@ name|RepositoryException
 block|{
 name|assertNotNull
 argument_list|(
-name|getSession
+name|getAdminSession
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -837,7 +826,7 @@ name|String
 index|[]
 name|workspaces
 init|=
-name|getSession
+name|getAdminSession
 argument_list|()
 operator|.
 name|getWorkspace
@@ -910,7 +899,7 @@ parameter_list|()
 throws|throws
 name|RepositoryException
 block|{
-name|getSession
+name|getAdminSession
 argument_list|()
 operator|.
 name|getWorkspace
@@ -924,7 +913,7 @@ expr_stmt|;
 name|Session
 name|session2
 init|=
-name|createAnonymousSession
+name|createAdminSession
 argument_list|()
 decl_stmt|;
 try|try
@@ -1005,7 +994,7 @@ block|}
 name|Session
 name|session4
 init|=
-name|createAnonymousSession
+name|createAdminSession
 argument_list|()
 decl_stmt|;
 try|try
@@ -1057,7 +1046,7 @@ block|{
 name|Node
 name|root
 init|=
-name|getSession
+name|getAdminSession
 argument_list|()
 operator|.
 name|getRootNode
@@ -1198,7 +1187,7 @@ decl_stmt|;
 name|Node
 name|node2
 init|=
-name|getSession
+name|getAdminSession
 argument_list|()
 operator|.
 name|getNodeByIdentifier
@@ -1967,7 +1956,7 @@ block|{
 name|Session
 name|session
 init|=
-name|getSession
+name|getAdminSession
 argument_list|()
 decl_stmt|;
 name|String
@@ -2107,7 +2096,7 @@ block|{
 name|Session
 name|session
 init|=
-name|getSession
+name|getAdminSession
 argument_list|()
 decl_stmt|;
 name|String
@@ -2194,7 +2183,7 @@ block|{
 name|Session
 name|session
 init|=
-name|getSession
+name|getAdminSession
 argument_list|()
 decl_stmt|;
 name|Node
@@ -2232,7 +2221,7 @@ block|{
 name|Session
 name|session
 init|=
-name|getSession
+name|getAdminSession
 argument_list|()
 decl_stmt|;
 name|Node
@@ -2296,7 +2285,7 @@ name|parentNode
 argument_list|,
 literal|"string"
 argument_list|,
-name|getSession
+name|getAdminSession
 argument_list|()
 operator|.
 name|getValueFactory
@@ -2341,7 +2330,7 @@ index|[
 literal|0
 index|]
 operator|=
-name|getSession
+name|getAdminSession
 argument_list|()
 operator|.
 name|getValueFactory
@@ -2357,7 +2346,7 @@ index|[
 literal|1
 index|]
 operator|=
-name|getSession
+name|getAdminSession
 argument_list|()
 operator|.
 name|getValueFactory
@@ -2388,7 +2377,7 @@ expr_stmt|;
 name|Session
 name|session2
 init|=
-name|createAnonymousSession
+name|createAdminSession
 argument_list|()
 decl_stmt|;
 try|try
@@ -2506,7 +2495,7 @@ name|parentNode
 argument_list|,
 literal|"long"
 argument_list|,
-name|getSession
+name|getAdminSession
 argument_list|()
 operator|.
 name|getValueFactory
@@ -2551,7 +2540,7 @@ index|[
 literal|0
 index|]
 operator|=
-name|getSession
+name|getAdminSession
 argument_list|()
 operator|.
 name|getValueFactory
@@ -2567,7 +2556,7 @@ index|[
 literal|1
 index|]
 operator|=
-name|getSession
+name|getAdminSession
 argument_list|()
 operator|.
 name|getValueFactory
@@ -2716,7 +2705,7 @@ name|parentNode
 argument_list|,
 literal|"double"
 argument_list|,
-name|getSession
+name|getAdminSession
 argument_list|()
 operator|.
 name|getValueFactory
@@ -2761,7 +2750,7 @@ index|[
 literal|0
 index|]
 operator|=
-name|getSession
+name|getAdminSession
 argument_list|()
 operator|.
 name|getValueFactory
@@ -2777,7 +2766,7 @@ index|[
 literal|1
 index|]
 operator|=
-name|getSession
+name|getAdminSession
 argument_list|()
 operator|.
 name|getValueFactory
@@ -2926,7 +2915,7 @@ name|parentNode
 argument_list|,
 literal|"boolean"
 argument_list|,
-name|getSession
+name|getAdminSession
 argument_list|()
 operator|.
 name|getValueFactory
@@ -2971,7 +2960,7 @@ index|[
 literal|0
 index|]
 operator|=
-name|getSession
+name|getAdminSession
 argument_list|()
 operator|.
 name|getValueFactory
@@ -2987,7 +2976,7 @@ index|[
 literal|1
 index|]
 operator|=
-name|getSession
+name|getAdminSession
 argument_list|()
 operator|.
 name|getValueFactory
@@ -3136,7 +3125,7 @@ name|parentNode
 argument_list|,
 literal|"decimal"
 argument_list|,
-name|getSession
+name|getAdminSession
 argument_list|()
 operator|.
 name|getValueFactory
@@ -3186,7 +3175,7 @@ index|[
 literal|0
 index|]
 operator|=
-name|getSession
+name|getAdminSession
 argument_list|()
 operator|.
 name|getValueFactory
@@ -3207,7 +3196,7 @@ index|[
 literal|1
 index|]
 operator|=
-name|getSession
+name|getAdminSession
 argument_list|()
 operator|.
 name|getValueFactory
@@ -3361,7 +3350,7 @@ name|parentNode
 argument_list|,
 literal|"date"
 argument_list|,
-name|getSession
+name|getAdminSession
 argument_list|()
 operator|.
 name|getValueFactory
@@ -3417,7 +3406,7 @@ index|[
 literal|0
 index|]
 operator|=
-name|getSession
+name|getAdminSession
 argument_list|()
 operator|.
 name|getValueFactory
@@ -3444,7 +3433,7 @@ index|[
 literal|1
 index|]
 operator|=
-name|getSession
+name|getAdminSession
 argument_list|()
 operator|.
 name|getValueFactory
@@ -3593,7 +3582,7 @@ name|parentNode
 argument_list|,
 literal|"uri"
 argument_list|,
-name|getSession
+name|getAdminSession
 argument_list|()
 operator|.
 name|getValueFactory
@@ -3642,7 +3631,7 @@ index|[
 literal|0
 index|]
 operator|=
-name|getSession
+name|getAdminSession
 argument_list|()
 operator|.
 name|getValueFactory
@@ -3662,7 +3651,7 @@ index|[
 literal|1
 index|]
 operator|=
-name|getSession
+name|getAdminSession
 argument_list|()
 operator|.
 name|getValueFactory
@@ -3815,7 +3804,7 @@ name|parentNode
 argument_list|,
 literal|"name"
 argument_list|,
-name|getSession
+name|getAdminSession
 argument_list|()
 operator|.
 name|getValueFactory
@@ -3864,7 +3853,7 @@ index|[
 literal|0
 index|]
 operator|=
-name|getSession
+name|getAdminSession
 argument_list|()
 operator|.
 name|getValueFactory
@@ -3884,7 +3873,7 @@ index|[
 literal|1
 index|]
 operator|=
-name|getSession
+name|getAdminSession
 argument_list|()
 operator|.
 name|getValueFactory
@@ -4037,7 +4026,7 @@ name|parentNode
 argument_list|,
 literal|"path"
 argument_list|,
-name|getSession
+name|getAdminSession
 argument_list|()
 operator|.
 name|getValueFactory
@@ -4086,7 +4075,7 @@ index|[
 literal|0
 index|]
 operator|=
-name|getSession
+name|getAdminSession
 argument_list|()
 operator|.
 name|getValueFactory
@@ -4106,7 +4095,7 @@ index|[
 literal|1
 index|]
 operator|=
-name|getSession
+name|getAdminSession
 argument_list|()
 operator|.
 name|getValueFactory
@@ -4268,7 +4257,7 @@ decl_stmt|;
 name|Binary
 name|bin
 init|=
-name|getSession
+name|getAdminSession
 argument_list|()
 operator|.
 name|getValueFactory
@@ -4285,7 +4274,7 @@ name|parentNode
 argument_list|,
 literal|"binary"
 argument_list|,
-name|getSession
+name|getAdminSession
 argument_list|()
 operator|.
 name|getValueFactory
@@ -4329,7 +4318,7 @@ decl_stmt|;
 name|Binary
 name|bin
 init|=
-name|getSession
+name|getAdminSession
 argument_list|()
 operator|.
 name|getValueFactory
@@ -4346,7 +4335,7 @@ name|parentNode
 argument_list|,
 literal|"bigBinary"
 argument_list|,
-name|getSession
+name|getAdminSession
 argument_list|()
 operator|.
 name|getValueFactory
@@ -4390,7 +4379,7 @@ decl_stmt|;
 name|Binary
 name|bin
 init|=
-name|getSession
+name|getAdminSession
 argument_list|()
 operator|.
 name|getValueFactory
@@ -4407,7 +4396,7 @@ name|parentNode
 argument_list|,
 literal|"bigBinary"
 argument_list|,
-name|getSession
+name|getAdminSession
 argument_list|()
 operator|.
 name|getValueFactory
@@ -4462,7 +4451,7 @@ decl_stmt|;
 name|Binary
 name|bin
 init|=
-name|getSession
+name|getAdminSession
 argument_list|()
 operator|.
 name|getValueFactory
@@ -4478,7 +4467,7 @@ index|[
 literal|0
 index|]
 operator|=
-name|getSession
+name|getAdminSession
 argument_list|()
 operator|.
 name|getValueFactory
@@ -4502,7 +4491,7 @@ argument_list|)
 expr_stmt|;
 name|bin
 operator|=
-name|getSession
+name|getAdminSession
 argument_list|()
 operator|.
 name|getValueFactory
@@ -4518,7 +4507,7 @@ index|[
 literal|1
 index|]
 operator|=
-name|getSession
+name|getAdminSession
 argument_list|()
 operator|.
 name|getValueFactory
@@ -4664,7 +4653,7 @@ decl_stmt|;
 name|Node
 name|referee
 init|=
-name|getSession
+name|getAdminSession
 argument_list|()
 operator|.
 name|getNode
@@ -4679,7 +4668,7 @@ argument_list|(
 literal|"mix:referenceable"
 argument_list|)
 expr_stmt|;
-name|getSession
+name|getAdminSession
 argument_list|()
 operator|.
 name|save
@@ -4691,7 +4680,7 @@ name|parentNode
 argument_list|,
 literal|"reference"
 argument_list|,
-name|getSession
+name|getAdminSession
 argument_list|()
 operator|.
 name|getValueFactory
@@ -4724,7 +4713,7 @@ decl_stmt|;
 name|Node
 name|referee
 init|=
-name|getSession
+name|getAdminSession
 argument_list|()
 operator|.
 name|getNode
@@ -4739,7 +4728,7 @@ argument_list|(
 literal|"mix:referenceable"
 argument_list|)
 expr_stmt|;
-name|getSession
+name|getAdminSession
 argument_list|()
 operator|.
 name|save
@@ -4760,7 +4749,7 @@ index|[
 literal|0
 index|]
 operator|=
-name|getSession
+name|getAdminSession
 argument_list|()
 operator|.
 name|getValueFactory
@@ -4776,7 +4765,7 @@ index|[
 literal|1
 index|]
 operator|=
-name|getSession
+name|getAdminSession
 argument_list|()
 operator|.
 name|getValueFactory
@@ -4922,7 +4911,7 @@ decl_stmt|;
 name|Node
 name|referee
 init|=
-name|getSession
+name|getAdminSession
 argument_list|()
 operator|.
 name|getNode
@@ -4937,7 +4926,7 @@ argument_list|(
 literal|"mix:referenceable"
 argument_list|)
 expr_stmt|;
-name|getSession
+name|getAdminSession
 argument_list|()
 operator|.
 name|save
@@ -4949,7 +4938,7 @@ name|parentNode
 argument_list|,
 literal|"weak reference"
 argument_list|,
-name|getSession
+name|getAdminSession
 argument_list|()
 operator|.
 name|getValueFactory
@@ -4984,7 +4973,7 @@ decl_stmt|;
 name|Node
 name|referee
 init|=
-name|getSession
+name|getAdminSession
 argument_list|()
 operator|.
 name|getNode
@@ -4999,7 +4988,7 @@ argument_list|(
 literal|"mix:referenceable"
 argument_list|)
 expr_stmt|;
-name|getSession
+name|getAdminSession
 argument_list|()
 operator|.
 name|save
@@ -5020,7 +5009,7 @@ index|[
 literal|0
 index|]
 operator|=
-name|getSession
+name|getAdminSession
 argument_list|()
 operator|.
 name|getValueFactory
@@ -5038,7 +5027,7 @@ index|[
 literal|1
 index|]
 operator|=
-name|getSession
+name|getAdminSession
 argument_list|()
 operator|.
 name|getValueFactory
@@ -5416,7 +5405,7 @@ index|[
 literal|0
 index|]
 operator|=
-name|getSession
+name|getAdminSession
 argument_list|()
 operator|.
 name|getValueFactory
@@ -5432,7 +5421,7 @@ index|[
 literal|2
 index|]
 operator|=
-name|getSession
+name|getAdminSession
 argument_list|()
 operator|.
 name|getValueFactory
@@ -5657,7 +5646,7 @@ name|parentNode
 argument_list|,
 literal|"string"
 argument_list|,
-name|getSession
+name|getAdminSession
 argument_list|()
 operator|.
 name|getValueFactory
@@ -5783,7 +5772,7 @@ name|parentNode
 argument_list|,
 literal|"NaN"
 argument_list|,
-name|getSession
+name|getAdminSession
 argument_list|()
 operator|.
 name|getValueFactory
@@ -5872,7 +5861,7 @@ index|[
 literal|0
 index|]
 operator|=
-name|getSession
+name|getAdminSession
 argument_list|()
 operator|.
 name|getValueFactory
@@ -5888,7 +5877,7 @@ index|[
 literal|1
 index|]
 operator|=
-name|getSession
+name|getAdminSession
 argument_list|()
 operator|.
 name|getValueFactory
@@ -5921,7 +5910,7 @@ index|[
 literal|0
 index|]
 operator|=
-name|getSession
+name|getAdminSession
 argument_list|()
 operator|.
 name|getValueFactory
@@ -5937,7 +5926,7 @@ index|[
 literal|1
 index|]
 operator|=
-name|getSession
+name|getAdminSession
 argument_list|()
 operator|.
 name|getValueFactory
@@ -6084,7 +6073,7 @@ expr_stmt|;
 name|Session
 name|session2
 init|=
-name|createAnonymousSession
+name|createAdminSession
 argument_list|()
 decl_stmt|;
 try|try
@@ -6187,7 +6176,7 @@ expr_stmt|;
 name|Session
 name|session2
 init|=
-name|createAnonymousSession
+name|createAdminSession
 argument_list|()
 decl_stmt|;
 try|try
@@ -6283,7 +6272,7 @@ expr_stmt|;
 name|Session
 name|session2
 init|=
-name|createAnonymousSession
+name|createAdminSession
 argument_list|()
 decl_stmt|;
 try|try
@@ -6323,7 +6312,7 @@ parameter_list|(
 name|InvalidItemStateException
 name|expected
 parameter_list|)
-block|{}
+block|{             }
 name|assertTrue
 argument_list|(
 name|session2
@@ -6406,13 +6395,13 @@ block|{
 name|Session
 name|session1
 init|=
-name|createAnonymousSession
+name|createAdminSession
 argument_list|()
 decl_stmt|;
 name|Session
 name|session2
 init|=
-name|createAnonymousSession
+name|createAdminSession
 argument_list|()
 decl_stmt|;
 try|try
@@ -6717,11 +6706,9 @@ block|{
 name|Session
 name|session
 init|=
-name|createAnonymousSession
+name|getAdminSession
 argument_list|()
 decl_stmt|;
-try|try
-block|{
 comment|// Add some items and ensure they are accessible through this session
 name|session
 operator|.
@@ -6958,15 +6945,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-finally|finally
-block|{
-name|session
-operator|.
-name|logout
-argument_list|()
-expr_stmt|;
-block|}
-block|}
 annotation|@
 name|Test
 specifier|public
@@ -6979,13 +6957,13 @@ block|{
 name|Session
 name|session1
 init|=
-name|createAnonymousSession
+name|createAdminSession
 argument_list|()
 decl_stmt|;
 name|Session
 name|session2
 init|=
-name|createAnonymousSession
+name|createAdminSession
 argument_list|()
 decl_stmt|;
 try|try
@@ -7078,13 +7056,13 @@ block|{
 name|Session
 name|session1
 init|=
-name|createAnonymousSession
+name|createAdminSession
 argument_list|()
 decl_stmt|;
 name|Session
 name|session2
 init|=
-name|createAnonymousSession
+name|createAdminSession
 argument_list|()
 decl_stmt|;
 try|try
@@ -7177,13 +7155,13 @@ block|{
 name|Session
 name|session1
 init|=
-name|createAnonymousSession
+name|createAdminSession
 argument_list|()
 decl_stmt|;
 name|Session
 name|session2
 init|=
-name|createAnonymousSession
+name|createAdminSession
 argument_list|()
 decl_stmt|;
 try|try
@@ -7349,13 +7327,13 @@ block|{
 name|Session
 name|session1
 init|=
-name|createAnonymousSession
+name|createAdminSession
 argument_list|()
 decl_stmt|;
 name|Session
 name|session2
 init|=
-name|createAnonymousSession
+name|createAdminSession
 argument_list|()
 decl_stmt|;
 try|try
@@ -7520,7 +7498,7 @@ parameter_list|()
 throws|throws
 name|RepositoryException
 block|{
-name|getSession
+name|getAdminSession
 argument_list|()
 operator|.
 name|getRootNode
@@ -7531,7 +7509,7 @@ argument_list|(
 literal|"node"
 argument_list|)
 expr_stmt|;
-name|getSession
+name|getAdminSession
 argument_list|()
 operator|.
 name|save
@@ -7540,13 +7518,13 @@ expr_stmt|;
 name|Session
 name|session1
 init|=
-name|createAnonymousSession
+name|createAdminSession
 argument_list|()
 decl_stmt|;
 name|Session
 name|session2
 init|=
-name|createAnonymousSession
+name|createAdminSession
 argument_list|()
 decl_stmt|;
 try|try
@@ -7712,11 +7690,9 @@ block|{
 name|Session
 name|session
 init|=
-name|createAnonymousSession
+name|getAdminSession
 argument_list|()
 decl_stmt|;
-try|try
-block|{
 name|Node
 name|n1
 init|=
@@ -7893,15 +7869,6 @@ literal|"c2"
 argument_list|)
 argument_list|)
 expr_stmt|;
-block|}
-finally|finally
-block|{
-name|session
-operator|.
-name|logout
-argument_list|()
-expr_stmt|;
-block|}
 block|}
 annotation|@
 name|Test
@@ -7915,7 +7882,7 @@ block|{
 name|Session
 name|session
 init|=
-name|getSession
+name|getAdminSession
 argument_list|()
 decl_stmt|;
 name|Node
@@ -8070,7 +8037,7 @@ block|{
 name|Session
 name|session
 init|=
-name|getSession
+name|getAdminSession
 argument_list|()
 decl_stmt|;
 name|Node
@@ -8193,7 +8160,7 @@ block|{
 name|Session
 name|session
 init|=
-name|getSession
+name|getAdminSession
 argument_list|()
 decl_stmt|;
 name|Node
@@ -8346,7 +8313,7 @@ argument_list|(
 literal|"nt:folder"
 argument_list|)
 expr_stmt|;
-name|getSession
+name|getAdminSession
 argument_list|()
 operator|.
 name|save
@@ -8419,7 +8386,7 @@ block|{
 name|NodeTypeManager
 name|ntMgr
 init|=
-name|getSession
+name|getAdminSession
 argument_list|()
 operator|.
 name|getWorkspace
@@ -8502,7 +8469,7 @@ block|{
 name|NamespaceRegistry
 name|nsReg
 init|=
-name|getSession
+name|getAdminSession
 argument_list|()
 operator|.
 name|getWorkspace
@@ -8636,7 +8603,7 @@ block|{
 name|NodeTypeManager
 name|ntMgr
 init|=
-name|getSession
+name|getAdminSession
 argument_list|()
 operator|.
 name|getWorkspace
@@ -9371,7 +9338,7 @@ argument_list|(
 literal|"2"
 argument_list|)
 expr_stmt|;
-name|getSession
+name|getAdminSession
 argument_list|()
 operator|.
 name|save
@@ -9457,7 +9424,7 @@ operator|.
 name|remove
 argument_list|()
 expr_stmt|;
-name|getSession
+name|getAdminSession
 argument_list|()
 operator|.
 name|save
@@ -10033,7 +10000,7 @@ argument_list|(
 literal|"1"
 argument_list|)
 expr_stmt|;
-name|getSession
+name|getAdminSession
 argument_list|()
 operator|.
 name|save
@@ -10084,7 +10051,7 @@ operator|.
 name|remove
 argument_list|()
 expr_stmt|;
-name|getSession
+name|getAdminSession
 argument_list|()
 operator|.
 name|save
@@ -10210,7 +10177,7 @@ specifier|final
 name|ObservationManager
 name|obsMgr
 init|=
-name|getSession
+name|getAdminSession
 argument_list|()
 operator|.
 name|getWorkspace
@@ -10388,7 +10355,7 @@ block|{
 name|Session
 name|session
 init|=
-name|getSession
+name|getAdminSession
 argument_list|()
 decl_stmt|;
 name|Node
@@ -10628,7 +10595,47 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|//------------------------------------------< private>---
+comment|//------------------------------------------------------------< private>---
+specifier|private
+name|Node
+name|getNode
+parameter_list|(
+name|String
+name|path
+parameter_list|)
+throws|throws
+name|RepositoryException
+block|{
+return|return
+name|getAdminSession
+argument_list|()
+operator|.
+name|getNode
+argument_list|(
+name|path
+argument_list|)
+return|;
+block|}
+specifier|private
+name|Property
+name|getProperty
+parameter_list|(
+name|String
+name|path
+parameter_list|)
+throws|throws
+name|RepositoryException
+block|{
+return|return
+name|getAdminSession
+argument_list|()
+operator|.
+name|getProperty
+argument_list|(
+name|path
+argument_list|)
+return|;
+block|}
 specifier|private
 name|void
 name|addProperty
@@ -10661,7 +10668,7 @@ name|name
 decl_stmt|;
 name|assertFalse
 argument_list|(
-name|getSession
+name|getAdminSession
 argument_list|()
 operator|.
 name|propertyExists
@@ -10706,7 +10713,7 @@ name|isNew
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|getSession
+name|getAdminSession
 argument_list|()
 operator|.
 name|save
@@ -10829,7 +10836,7 @@ argument_list|()
 decl_stmt|;
 name|assertNotNull
 argument_list|(
-name|getSession
+name|getAdminSession
 argument_list|()
 operator|.
 name|getNodeByIdentifier

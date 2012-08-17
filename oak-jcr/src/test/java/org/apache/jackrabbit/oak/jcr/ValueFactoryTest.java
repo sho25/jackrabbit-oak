@@ -134,7 +134,7 @@ block|{
 name|Session
 name|session
 init|=
-name|getSession
+name|getAdminSession
 argument_list|()
 decl_stmt|;
 name|valueFactory
