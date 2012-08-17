@@ -765,7 +765,6 @@ name|acContext
 argument_list|)
 return|;
 block|}
-comment|//------------------------------------------------------------< ConflictValidator>---
 block|}
 end_class
 

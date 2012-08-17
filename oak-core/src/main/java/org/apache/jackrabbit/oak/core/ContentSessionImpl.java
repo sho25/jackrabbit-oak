@@ -135,7 +135,7 @@ name|oak
 operator|.
 name|api
 operator|.
-name|SessionQueryEngine
+name|Root
 import|;
 end_import
 
@@ -151,7 +151,7 @@ name|oak
 operator|.
 name|api
 operator|.
-name|Root
+name|SessionQueryEngine
 import|;
 end_import
 
