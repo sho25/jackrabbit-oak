@@ -168,7 +168,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * PrivilegeValidatorProvider... TODO  */
+comment|/**  * {@code PrivilegeValidatorProvider} to construct a {@code Validator} instance  * to make sure modifications to the /jcr:system/rep:privileges tree are compliant  * with constraints applied for custom privileges.  */
 end_comment
 
 begin_class
@@ -212,7 +212,6 @@ name|NodeState
 name|after
 parameter_list|)
 block|{
-comment|// TODO check again...
 return|return
 operator|new
 name|SubtreeValidator
