@@ -52,7 +52,7 @@ specifier|public
 interface|interface
 name|Filter
 block|{
-comment|/**      * Get the list of property restrictions, if any.      *       * @return the conditions (an empty collection if not used)      */
+comment|/**      * Get the list of property restrictions, if any.      *      * @return the conditions (an empty collection if not used)      */
 name|Collection
 argument_list|<
 name|PropertyRestriction

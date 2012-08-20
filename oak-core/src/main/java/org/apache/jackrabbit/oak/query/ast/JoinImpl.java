@@ -237,16 +237,17 @@ operator|+
 literal|' '
 operator|+
 name|joinType
-operator|.
-name|name
-argument_list|()
 operator|+
-literal|" join "
+literal|" "
 operator|+
 name|right
 operator|.
 name|getPlan
 argument_list|()
+operator|+
+literal|" on "
+operator|+
+name|joinCondition
 return|;
 block|}
 annotation|@
@@ -262,13 +263,14 @@ operator|+
 literal|" "
 operator|+
 name|joinType
-operator|.
-name|name
-argument_list|()
 operator|+
-literal|" join "
+literal|" "
 operator|+
 name|right
+operator|+
+literal|" on "
+operator|+
+name|joinCondition
 return|;
 block|}
 annotation|@

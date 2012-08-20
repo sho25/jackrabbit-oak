@@ -292,7 +292,10 @@ name|add
 argument_list|(
 name|c
 operator|.
-name|currentPath
+name|currentRow
+argument_list|()
+operator|.
+name|getPath
 argument_list|()
 argument_list|)
 expr_stmt|;

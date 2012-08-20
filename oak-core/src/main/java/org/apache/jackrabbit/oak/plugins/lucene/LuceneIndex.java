@@ -149,6 +149,24 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
+name|query
+operator|.
+name|index
+operator|.
+name|IndexRowImpl
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
 name|spi
 operator|.
 name|Cursor
@@ -186,6 +204,22 @@ operator|.
 name|Filter
 operator|.
 name|PropertyRestriction
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|IndexRow
 import|;
 end_import
 
@@ -804,6 +838,7 @@ break|break;
 case|case
 name|DIRECT_CHILDREN
 case|:
+comment|// FIXME
 name|qs
 operator|.
 name|add
@@ -820,7 +855,6 @@ argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// FIXME
 break|break;
 case|case
 name|EXACT
@@ -890,10 +924,10 @@ expr_stmt|;
 block|}
 else|else
 block|{
+comment|// there's no parent of the root node
 return|return
 literal|null
 return|;
-comment|// there's no parent of the root node
 block|}
 break|break;
 block|}
@@ -1080,6 +1114,7 @@ argument_list|)
 return|;
 block|}
 block|}
+comment|/**      * A cursor over the resulting paths.      */
 specifier|private
 specifier|static
 class|class
@@ -1159,12 +1194,17 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|String
-name|currentPath
+name|IndexRow
+name|currentRow
 parameter_list|()
 block|{
+comment|// TODO support jcr:score and possibly rep:exceprt
 return|return
+operator|new
+name|IndexRowImpl
+argument_list|(
 name|path
+argument_list|)
 return|;
 block|}
 block|}

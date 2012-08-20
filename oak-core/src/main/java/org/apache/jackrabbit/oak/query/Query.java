@@ -2865,6 +2865,11 @@ name|buff
 operator|.
 name|append
 argument_list|(
+literal|" where "
+argument_list|)
+operator|.
+name|append
+argument_list|(
 name|constraint
 argument_list|)
 expr_stmt|;
