@@ -699,11 +699,15 @@ name|UserManagerConfig
 operator|.
 name|PARAM_GROUP_MEMBERSHIP_SPLIT_SIZE
 argument_list|,
-literal|4
+literal|0
 argument_list|)
 decl_stmt|;
 if|if
 condition|(
+name|splitValue
+operator|!=
+literal|0
+operator|&&
 name|splitValue
 operator|<
 literal|4
@@ -713,7 +717,7 @@ name|log
 operator|.
 name|warn
 argument_list|(
-literal|"Invalid value {} for {}. Expected integer>= 4"
+literal|"Invalid value {} for {}. Expected integer>= 4 or 0"
 argument_list|,
 name|splitValue
 argument_list|,
