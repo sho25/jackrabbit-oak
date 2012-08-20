@@ -172,7 +172,6 @@ comment|/**  * PermissionValidatorProvider... TODO  */
 end_comment
 
 begin_class
-specifier|public
 class|class
 name|PermissionValidatorProvider
 implements|implements
