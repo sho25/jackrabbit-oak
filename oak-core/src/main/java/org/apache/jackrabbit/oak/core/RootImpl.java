@@ -173,6 +173,24 @@ name|oak
 operator|.
 name|security
 operator|.
+name|privilege
+operator|.
+name|PrivilegeValidatorProvider
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|security
+operator|.
 name|user
 operator|.
 name|UserValidatorProvider
@@ -1143,8 +1161,17 @@ argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// FIXME: oak-core tests setup incomplete repository -> privilege validator fails.
-comment|// providers.add(new PrivilegeValidatorProvider(valueFactory));
+name|providers
+operator|.
+name|add
+argument_list|(
+operator|new
+name|PrivilegeValidatorProvider
+argument_list|(
+name|valueFactory
+argument_list|)
+argument_list|)
+expr_stmt|;
 return|return
 operator|new
 name|ValidatingEditor

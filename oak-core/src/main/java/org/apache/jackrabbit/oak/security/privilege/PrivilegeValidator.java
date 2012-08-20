@@ -302,18 +302,10 @@ block|}
 if|if
 condition|(
 name|privilegesBefore
-operator|==
+operator|!=
 literal|null
 condition|)
 block|{
-throw|throw
-operator|new
-name|IllegalStateException
-argument_list|(
-literal|"Mandatory tree /jcr:system/rep:privileges is missing"
-argument_list|)
-throw|;
-block|}
 name|reader
 operator|=
 operator|new
@@ -333,6 +325,18 @@ argument_list|(
 name|reader
 argument_list|)
 expr_stmt|;
+block|}
+else|else
+block|{
+name|reader
+operator|=
+literal|null
+expr_stmt|;
+name|definitions
+operator|=
+literal|null
+expr_stmt|;
+block|}
 block|}
 comment|//----------------------------------------------------------< Validator>---
 annotation|@
@@ -407,6 +411,9 @@ parameter_list|)
 throws|throws
 name|CommitFailedException
 block|{
+name|checkInitialized
+argument_list|()
+expr_stmt|;
 comment|// the following characteristics are expected to be validated elsewhere:
 comment|// - permission to allow privilege registration -> permission validator.
 comment|// - name collisions (-> delegated to NodeTypeValidator since sms are not allowed)
@@ -831,6 +838,37 @@ block|}
 return|return
 name|isCircular
 return|;
+block|}
+block|}
+specifier|private
+name|void
+name|checkInitialized
+parameter_list|()
+throws|throws
+name|CommitFailedException
+block|{
+if|if
+condition|(
+name|reader
+operator|==
+literal|null
+operator|||
+name|definitions
+operator|==
+literal|null
+condition|)
+block|{
+throw|throw
+operator|new
+name|CommitFailedException
+argument_list|(
+operator|new
+name|IllegalStateException
+argument_list|(
+literal|"Mandatory privileges root is missing."
+argument_list|)
+argument_list|)
+throw|;
 block|}
 block|}
 block|}
