@@ -671,6 +671,9 @@ operator|new
 name|IdentifierManager
 argument_list|(
 name|contentSession
+operator|.
+name|getQueryEngine
+argument_list|()
 argument_list|,
 name|root
 argument_list|)
