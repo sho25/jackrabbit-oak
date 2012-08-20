@@ -729,7 +729,6 @@ operator|.
 name|toString
 argument_list|()
 decl_stmt|;
-comment|// TODO special handling for identifier paths; should happen in path mapper (OAK-23)
 if|if
 condition|(
 name|s
@@ -747,6 +746,7 @@ literal|"]"
 argument_list|)
 condition|)
 block|{
+comment|// identifier paths are returned as-is (JCR 2.0, 3.4.3.1)
 return|return
 name|s
 return|;

@@ -966,7 +966,6 @@ block|{
 name|ensureIsAlive
 argument_list|()
 expr_stmt|;
-comment|// FIXME: deal with identifier path (OAK-23)
 return|return
 name|dlg
 operator|.
@@ -1055,7 +1054,6 @@ block|{
 name|ensureIsAlive
 argument_list|()
 expr_stmt|;
-comment|// FIXME: deal with identifier path (OAK-23)
 return|return
 name|dlg
 operator|.
