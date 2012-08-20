@@ -699,7 +699,7 @@ name|UserManagerConfig
 operator|.
 name|PARAM_GROUP_MEMBERSHIP_SPLIT_SIZE
 argument_list|,
-literal|0
+literal|4
 argument_list|)
 decl_stmt|;
 if|if
@@ -2166,6 +2166,10 @@ comment|// FIXME: check for node type according to the specified type constraint
 if|if
 condition|(
 name|tree
+operator|!=
+literal|null
+operator|&&
+name|tree
 operator|.
 name|hasProperty
 argument_list|(
@@ -2405,7 +2409,7 @@ name|root
 operator|.
 name|getTree
 argument_list|(
-literal|""
+literal|"/"
 argument_list|)
 argument_list|,
 name|contentSession
