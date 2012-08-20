@@ -159,6 +159,16 @@ operator|.
 name|copyOf
 argument_list|(
 name|declaredAggregateNames
+operator|==
+literal|null
+condition|?
+operator|new
+name|String
+index|[
+literal|0
+index|]
+else|:
+name|declaredAggregateNames
 argument_list|)
 argument_list|)
 expr_stmt|;
