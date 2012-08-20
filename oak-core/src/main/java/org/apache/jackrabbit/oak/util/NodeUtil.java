@@ -1147,9 +1147,13 @@ throw|throw
 operator|new
 name|IllegalArgumentException
 argument_list|(
+operator|new
+name|RepositoryException
+argument_list|(
 literal|"Invalid name:"
 operator|+
 name|name
+argument_list|)
 argument_list|)
 throw|;
 block|}
