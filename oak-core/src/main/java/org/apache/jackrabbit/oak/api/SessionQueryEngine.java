@@ -116,6 +116,8 @@ name|Map
 argument_list|<
 name|String
 argument_list|,
+name|?
+extends|extends
 name|CoreValue
 argument_list|>
 name|bindings

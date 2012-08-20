@@ -91,7 +91,7 @@ name|oak
 operator|.
 name|api
 operator|.
-name|SessionQueryEngine
+name|Result
 import|;
 end_import
 
@@ -107,7 +107,7 @@ name|oak
 operator|.
 name|api
 operator|.
-name|Result
+name|SessionQueryEngine
 import|;
 end_import
 
@@ -239,6 +239,8 @@ name|Map
 argument_list|<
 name|String
 argument_list|,
+name|?
+extends|extends
 name|CoreValue
 argument_list|>
 name|bindings
