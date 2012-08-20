@@ -495,7 +495,7 @@ name|security
 operator|.
 name|user
 operator|.
-name|UserManagerConfig
+name|UserConfig
 import|;
 end_import
 
@@ -594,7 +594,7 @@ name|sessionDelegate
 decl_stmt|;
 specifier|private
 specifier|final
-name|UserManagerConfig
+name|UserConfig
 name|config
 decl_stmt|;
 specifier|private
@@ -616,7 +616,7 @@ parameter_list|,
 name|Root
 name|root
 parameter_list|,
-name|UserManagerConfig
+name|UserConfig
 name|config
 parameter_list|)
 block|{
@@ -637,7 +637,7 @@ literal|null
 operator|)
 condition|?
 operator|new
-name|UserManagerConfig
+name|UserConfig
 argument_list|(
 literal|"admin"
 argument_list|)
@@ -1462,7 +1462,7 @@ name|config
 operator|.
 name|getConfigValue
 argument_list|(
-name|UserManagerConfig
+name|UserConfig
 operator|.
 name|PARAM_PASSWORD_HASH_ALGORITHM
 argument_list|,
@@ -1478,7 +1478,7 @@ name|config
 operator|.
 name|getConfigValue
 argument_list|(
-name|UserManagerConfig
+name|UserConfig
 operator|.
 name|PARAM_PASSWORD_HASH_ITERATIONS
 argument_list|,
@@ -1494,7 +1494,7 @@ name|config
 operator|.
 name|getConfigValue
 argument_list|(
-name|UserManagerConfig
+name|UserConfig
 operator|.
 name|PARAM_PASSWORD_SALT_SIZE
 argument_list|,

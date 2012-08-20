@@ -25,6 +25,26 @@ end_package
 
 begin_import
 import|import
+name|javax
+operator|.
+name|jcr
+operator|.
+name|RepositoryException
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|jcr
+operator|.
+name|Session
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -77,28 +97,8 @@ name|User
 import|;
 end_import
 
-begin_import
-import|import
-name|javax
-operator|.
-name|jcr
-operator|.
-name|RepositoryException
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|jcr
-operator|.
-name|Session
-import|;
-end_import
-
 begin_comment
-comment|/**  * The {@code AuthorizableAction} interface provide an implementation  * specific way to execute additional validation or write tasks upon  *  *<ul>  *<li>{@link #onCreate(org.apache.jackrabbit.api.security.user.User, String, javax.jcr.Session) User creation},</li>  *<li>{@link #onCreate(org.apache.jackrabbit.api.security.user.Group, javax.jcr.Session) Group creation},</li>  *<li>{@link #onRemove(org.apache.jackrabbit.api.security.user.Authorizable, javax.jcr.Session) Authorizable removal} and</li>  *<li>{@link #onPasswordChange(org.apache.jackrabbit.api.security.user.User, String, javax.jcr.Session) User password modification}.</li>  *</ul>  *  * @see org.apache.jackrabbit.oak.spi.security.user.UserManagerConfig  */
+comment|/**  * The {@code AuthorizableAction} interface provide an implementation  * specific way to execute additional validation or write tasks upon  *  *<ul>  *<li>{@link #onCreate(org.apache.jackrabbit.api.security.user.User, String, javax.jcr.Session) User creation},</li>  *<li>{@link #onCreate(org.apache.jackrabbit.api.security.user.Group, javax.jcr.Session) Group creation},</li>  *<li>{@link #onRemove(org.apache.jackrabbit.api.security.user.Authorizable, javax.jcr.Session) Authorizable removal} and</li>  *<li>{@link #onPasswordChange(org.apache.jackrabbit.api.security.user.User, String, javax.jcr.Session) User password modification}.</li>  *</ul>  *  * @see org.apache.jackrabbit.oak.spi.security.user.UserConfig  */
 end_comment
 
 begin_interface

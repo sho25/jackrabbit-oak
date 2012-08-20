@@ -129,7 +129,7 @@ name|security
 operator|.
 name|user
 operator|.
-name|UserManagerConfig
+name|UserConfig
 import|;
 end_import
 
@@ -185,7 +185,7 @@ name|valueFactory
 decl_stmt|;
 specifier|private
 specifier|final
-name|UserManagerConfig
+name|UserConfig
 name|config
 decl_stmt|;
 specifier|public
@@ -194,7 +194,7 @@ parameter_list|(
 name|CoreValueFactory
 name|valueFactory
 parameter_list|,
-name|UserManagerConfig
+name|UserConfig
 name|config
 parameter_list|)
 block|{
@@ -290,7 +290,7 @@ block|}
 comment|//-----------------------------------------------------------< internal>---
 annotation|@
 name|Nonnull
-name|UserManagerConfig
+name|UserConfig
 name|getConfig
 parameter_list|()
 block|{

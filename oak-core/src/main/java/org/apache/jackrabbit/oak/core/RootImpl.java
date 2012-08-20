@@ -307,7 +307,7 @@ name|security
 operator|.
 name|user
 operator|.
-name|UserManagerConfig
+name|UserConfig
 import|;
 end_import
 
@@ -1147,7 +1147,7 @@ argument_list|(
 name|valueFactory
 argument_list|,
 operator|new
-name|UserManagerConfig
+name|UserConfig
 argument_list|(
 literal|"admin"
 argument_list|)

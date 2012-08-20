@@ -299,6 +299,22 @@ name|oak
 operator|.
 name|api
 operator|.
+name|CoreValueFactory
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|api
+operator|.
 name|PropertyState
 import|;
 end_import
@@ -477,7 +493,7 @@ name|security
 operator|.
 name|user
 operator|.
-name|UserManagerConfig
+name|UserConfig
 import|;
 end_import
 
@@ -552,7 +568,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * User provider implementation and manager for group memberships with the  * following characteristics:  *  *<h1>UserProvider</h1>  *  *<h2>User and Group Creation</h2>  * This implementation creates the JCR nodes corresponding the a given  * authorizable ID with the following behavior:  *<ul>  *<li>Users are created below /rep:security/rep:authorizables/rep:users or  * the path configured in the {@link org.apache.jackrabbit.oak.spi.security.user.UserManagerConfig#PARAM_USER_PATH}  * respectively.</li>  *<li>Groups are created below /rep:security/rep:authorizables/rep:groups or  * the path configured in the {@link org.apache.jackrabbit.oak.spi.security.user.UserManagerConfig#PARAM_GROUP_PATH}  * respectively.</li>  *<li>Below each category authorizables are created within a human readable  * structure based on the defined intermediate path or some internal logic  * with a depth defined by the {@code defaultDepth} config option.<br>  * E.g. creating a user node for an ID 'aSmith' would result in the following  * structure assuming defaultDepth == 2 is used:  *<pre>  * + rep:security            [rep:AuthorizableFolder]  *   + rep:authorizables     [rep:AuthorizableFolder]  *     + rep:users           [rep:AuthorizableFolder]  *       + a                 [rep:AuthorizableFolder]  *         + aS              [rep:AuthorizableFolder]  * ->        + aSmith        [rep:User]  *</pre>  *</li>  *<li>The node name is calculated from the specified authorizable ID  * {@link org.apache.jackrabbit.util.Text#escapeIllegalJcrChars(String) escaping} any illegal JCR chars.</li>  *<li>If no intermediate path is passed the names of the intermediate  * folders are calculated from the leading chars of the escaped node name.</li>  *<li>If the escaped node name is shorter than the {@code defaultDepth}  * the last char is repeated.<br>  * E.g. creating a user node for an ID 'a' would result in the following  * structure assuming defaultDepth == 2 is used:  *<pre>  * + rep:security            [rep:AuthorizableFolder]  *   + rep:authorizables     [rep:AuthorizableFolder]  *     + rep:users           [rep:AuthorizableFolder]  *       + a                 [rep:AuthorizableFolder]  *         + aa              [rep:AuthorizableFolder]  * ->        + a             [rep:User]  *</pre></li>  *  *<h3>Conflicts</h3>  *  *<ul>  *<li>If the authorizable node to be created would collide with an existing  *     folder the conflict is resolved by using the colling folder as target.</li>  *<li>The current implementation asserts that authorizable nodes are always  *     created underneath an node of type {@code rep:AuthorizableFolder}. If this  *     condition is violated a {@code ConstraintViolationException} is thrown.</li>  *<li>If the specified intermediate path results in an authorizable node  *     being located outside of the configured content structure a  *     {@code ConstraintViolationException} is thrown.</li>  *</ul>  *  *<h3>Configuration Options</h3>  *<ul>  *<li>{@link org.apache.jackrabbit.oak.spi.security.user.UserManagerConfig#PARAM_USER_PATH}: Underneath this structure  *     all user nodes are created. Default value is  *     "/rep:security/rep:authorizables/rep:users"</li>  *<li>{@link org.apache.jackrabbit.oak.spi.security.user.UserManagerConfig#PARAM_GROUP_PATH}: Underneath this structure  *     all group nodes are created. Default value is  *     "/rep:security/rep:authorizables/rep:groups"</li>  *<li>{@link org.apache.jackrabbit.oak.spi.security.user.UserManagerConfig#PARAM_DEFAULT_DEPTH}: A positive {@code integer}  *     greater than zero defining the depth of the default structure that is  *     always created. Default value: 2</li>  *</ul>  *  *<h3>Compatibility with Jackrabbit 2.x</h3>  *  * Due to the fact that this JCR implementation is expected to deal with huge amount  * of child nodes the following configuration options are no longer supported:  *<ul>  *<li>autoExpandTree</li>  *<li>autoExpandSize</li>  *</ul>  *  *<h2>User and Group Access</h2>  *<h3>By ID</h3>  * TODO  *<h3>By Path</h3>  * TODO  *<h3>By Principal Name</h3>  * TODO  *  *<h1>MembershipProvider</h1>  *  * TODO  */
+comment|/**  * User provider implementation and manager for group memberships with the  * following characteristics:  *  *<h1>UserProvider</h1>  *  *<h2>User and Group Creation</h2>  * This implementation creates the JCR nodes corresponding the a given  * authorizable ID with the following behavior:  *<ul>  *<li>Users are created below /rep:security/rep:authorizables/rep:users or  * the path configured in the {@link org.apache.jackrabbit.oak.spi.security.user.UserConfig#PARAM_USER_PATH}  * respectively.</li>  *<li>Groups are created below /rep:security/rep:authorizables/rep:groups or  * the path configured in the {@link org.apache.jackrabbit.oak.spi.security.user.UserConfig#PARAM_GROUP_PATH}  * respectively.</li>  *<li>Below each category authorizables are created within a human readable  * structure based on the defined intermediate path or some internal logic  * with a depth defined by the {@code defaultDepth} config option.<br>  * E.g. creating a user node for an ID 'aSmith' would result in the following  * structure assuming defaultDepth == 2 is used:  *<pre>  * + rep:security            [rep:AuthorizableFolder]  *   + rep:authorizables     [rep:AuthorizableFolder]  *     + rep:users           [rep:AuthorizableFolder]  *       + a                 [rep:AuthorizableFolder]  *         + aS              [rep:AuthorizableFolder]  * ->        + aSmith        [rep:User]  *</pre>  *</li>  *<li>The node name is calculated from the specified authorizable ID  * {@link org.apache.jackrabbit.util.Text#escapeIllegalJcrChars(String) escaping} any illegal JCR chars.</li>  *<li>If no intermediate path is passed the names of the intermediate  * folders are calculated from the leading chars of the escaped node name.</li>  *<li>If the escaped node name is shorter than the {@code defaultDepth}  * the last char is repeated.<br>  * E.g. creating a user node for an ID 'a' would result in the following  * structure assuming defaultDepth == 2 is used:  *<pre>  * + rep:security            [rep:AuthorizableFolder]  *   + rep:authorizables     [rep:AuthorizableFolder]  *     + rep:users           [rep:AuthorizableFolder]  *       + a                 [rep:AuthorizableFolder]  *         + aa              [rep:AuthorizableFolder]  * ->        + a             [rep:User]  *</pre></li>  *  *<h3>Conflicts</h3>  *  *<ul>  *<li>If the authorizable node to be created would collide with an existing  *     folder the conflict is resolved by using the colling folder as target.</li>  *<li>The current implementation asserts that authorizable nodes are always  *     created underneath an node of type {@code rep:AuthorizableFolder}. If this  *     condition is violated a {@code ConstraintViolationException} is thrown.</li>  *<li>If the specified intermediate path results in an authorizable node  *     being located outside of the configured content structure a  *     {@code ConstraintViolationException} is thrown.</li>  *</ul>  *  *<h3>Configuration Options</h3>  *<ul>  *<li>{@link org.apache.jackrabbit.oak.spi.security.user.UserConfig#PARAM_USER_PATH}: Underneath this structure  *     all user nodes are created. Default value is  *     "/rep:security/rep:authorizables/rep:users"</li>  *<li>{@link org.apache.jackrabbit.oak.spi.security.user.UserConfig#PARAM_GROUP_PATH}: Underneath this structure  *     all group nodes are created. Default value is  *     "/rep:security/rep:authorizables/rep:groups"</li>  *<li>{@link org.apache.jackrabbit.oak.spi.security.user.UserConfig#PARAM_DEFAULT_DEPTH}: A positive {@code integer}  *     greater than zero defining the depth of the default structure that is  *     always created. Default value: 2</li>  *</ul>  *  *<h3>Compatibility with Jackrabbit 2.x</h3>  *  * Due to the fact that this JCR implementation is expected to deal with huge amount  * of child nodes the following configuration options are no longer supported:  *<ul>  *<li>autoExpandTree</li>  *<li>autoExpandSize</li>  *</ul>  *  *<h2>User and Group Access</h2>  *<h3>By ID</h3>  * TODO  *<h3>By Path</h3>  * TODO  *<h3>By Principal Name</h3>  * TODO  *  *<h1>MembershipProvider</h1>  *  * TODO  */
 end_comment
 
 begin_class
@@ -600,8 +616,13 @@ literal|2
 decl_stmt|;
 specifier|private
 specifier|final
-name|ContentSession
-name|contentSession
+name|CoreValueFactory
+name|valueFactory
+decl_stmt|;
+specifier|private
+specifier|final
+name|SessionQueryEngine
+name|queryEngine
 decl_stmt|;
 specifier|private
 specifier|final
@@ -647,15 +668,55 @@ parameter_list|,
 name|Root
 name|root
 parameter_list|,
-name|UserManagerConfig
+name|UserConfig
+name|config
+parameter_list|)
+block|{
+name|this
+argument_list|(
+name|contentSession
+operator|.
+name|getCoreValueFactory
+argument_list|()
+argument_list|,
+name|contentSession
+operator|.
+name|getQueryEngine
+argument_list|()
+argument_list|,
+name|root
+argument_list|,
+name|config
+argument_list|)
+expr_stmt|;
+block|}
+specifier|public
+name|UserProviderImpl
+parameter_list|(
+name|CoreValueFactory
+name|valueFactory
+parameter_list|,
+name|SessionQueryEngine
+name|queryEngine
+parameter_list|,
+name|Root
+name|root
+parameter_list|,
+name|UserConfig
 name|config
 parameter_list|)
 block|{
 name|this
 operator|.
-name|contentSession
+name|valueFactory
 operator|=
-name|contentSession
+name|valueFactory
+expr_stmt|;
+name|this
+operator|.
+name|queryEngine
+operator|=
+name|queryEngine
 expr_stmt|;
 name|this
 operator|.
@@ -670,10 +731,7 @@ operator|=
 operator|new
 name|IdentifierManager
 argument_list|(
-name|contentSession
-operator|.
-name|getQueryEngine
-argument_list|()
+name|queryEngine
 argument_list|,
 name|root
 argument_list|)
@@ -684,7 +742,7 @@ name|config
 operator|.
 name|getConfigValue
 argument_list|(
-name|UserManagerConfig
+name|UserConfig
 operator|.
 name|PARAM_DEFAULT_DEPTH
 argument_list|,
@@ -698,7 +756,7 @@ name|config
 operator|.
 name|getConfigValue
 argument_list|(
-name|UserManagerConfig
+name|UserConfig
 operator|.
 name|PARAM_GROUP_MEMBERSHIP_SPLIT_SIZE
 argument_list|,
@@ -724,7 +782,7 @@ literal|"Invalid value {} for {}. Expected integer>= 4 or 0"
 argument_list|,
 name|splitValue
 argument_list|,
-name|UserManagerConfig
+name|UserConfig
 operator|.
 name|PARAM_GROUP_MEMBERSHIP_SPLIT_SIZE
 argument_list|)
@@ -755,7 +813,7 @@ name|config
 operator|.
 name|getConfigValue
 argument_list|(
-name|UserManagerConfig
+name|UserConfig
 operator|.
 name|PARAM_GROUP_PATH
 argument_list|,
@@ -768,7 +826,7 @@ name|config
 operator|.
 name|getConfigValue
 argument_list|(
-name|UserManagerConfig
+name|UserConfig
 operator|.
 name|PARAM_USER_PATH
 argument_list|,
@@ -1011,23 +1069,12 @@ block|{
 comment|// NOTE: in contrast to JR2 the extra shortcut for ID==principalName
 comment|// can be omitted as principals names are stored in user defined
 comment|// index as well.
-name|SessionQueryEngine
-name|queryEngine
-init|=
-name|contentSession
-operator|.
-name|getQueryEngine
-argument_list|()
-decl_stmt|;
 try|try
 block|{
 name|CoreValue
 name|bindValue
 init|=
-name|contentSession
-operator|.
-name|getCoreValueFactory
-argument_list|()
+name|valueFactory
 operator|.
 name|createValue
 argument_list|(
@@ -1062,10 +1109,7 @@ decl_stmt|;
 name|Result
 name|result
 init|=
-name|contentSession
-operator|.
-name|getQueryEngine
-argument_list|()
+name|queryEngine
 operator|.
 name|executeQuery
 argument_list|(
@@ -1847,7 +1891,7 @@ name|NodeUtil
 argument_list|(
 name|groupTree
 argument_list|,
-name|contentSession
+name|valueFactory
 argument_list|)
 decl_stmt|;
 name|NodeUtil
@@ -2419,7 +2463,7 @@ argument_list|(
 literal|"/"
 argument_list|)
 argument_list|,
-name|contentSession
+name|valueFactory
 argument_list|)
 expr_stmt|;
 for|for
@@ -2461,7 +2505,7 @@ name|NodeUtil
 argument_list|(
 name|authTree
 argument_list|,
-name|contentSession
+name|valueFactory
 argument_list|)
 expr_stmt|;
 block|}
@@ -2808,10 +2852,7 @@ name|authorizableTree
 parameter_list|)
 block|{
 return|return
-name|contentSession
-operator|.
-name|getCoreValueFactory
-argument_list|()
+name|valueFactory
 operator|.
 name|createValue
 argument_list|(
