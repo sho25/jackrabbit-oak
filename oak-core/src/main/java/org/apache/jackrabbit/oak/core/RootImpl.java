@@ -1129,7 +1129,7 @@ name|add
 argument_list|(
 name|accessControlContext
 operator|.
-name|getAccessControlValdatorProvider
+name|getAccessControlValidatorProvider
 argument_list|(
 name|valueFactory
 argument_list|)
