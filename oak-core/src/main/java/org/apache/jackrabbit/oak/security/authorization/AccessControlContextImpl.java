@@ -272,7 +272,7 @@ annotation|@
 name|Override
 specifier|public
 name|ValidatorProvider
-name|getAccessControlValdatorProvider
+name|getAccessControlValidatorProvider
 parameter_list|(
 name|CoreValueFactory
 name|valueFactory
