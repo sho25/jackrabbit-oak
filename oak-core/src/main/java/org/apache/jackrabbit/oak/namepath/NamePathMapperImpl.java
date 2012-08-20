@@ -664,6 +664,17 @@ literal|']'
 condition|)
 block|{
 comment|// TODO error handling?
+name|log
+operator|.
+name|debug
+argument_list|(
+literal|"Could not parse path "
+operator|+
+name|jcrPath
+operator|+
+literal|": unterminated identifier"
+argument_list|)
+expr_stmt|;
 return|return
 literal|null
 return|;
@@ -678,6 +689,17 @@ literal|null
 condition|)
 block|{
 comment|// TODO error handling?
+name|log
+operator|.
+name|debug
+argument_list|(
+literal|"Could not parse path "
+operator|+
+name|jcrPath
+operator|+
+literal|": could not resolve identifier"
+argument_list|)
+expr_stmt|;
 return|return
 literal|null
 return|;
