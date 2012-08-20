@@ -584,13 +584,24 @@ block|{
 comment|// TODO as stated in NodeDelegate#getIdentifier() a non-uuid ID should
 comment|// TODO consisting of closest referenceable parent and a relative path
 comment|// TODO irrespective of the accessibility of the parent node(s)
-return|return
+name|Tree
+name|tree
+init|=
 name|root
 operator|.
 name|getTree
 argument_list|(
 name|identifier
 argument_list|)
+decl_stmt|;
+return|return
+name|tree
+operator|==
+literal|null
+condition|?
+literal|null
+else|:
+name|tree
 operator|.
 name|getPath
 argument_list|()
