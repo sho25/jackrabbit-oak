@@ -785,7 +785,7 @@ argument_list|)
 expr_stmt|;
 name|buff
 operator|.
-name|value
+name|key
 argument_list|(
 name|p
 argument_list|)
