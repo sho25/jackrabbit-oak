@@ -2942,6 +2942,22 @@ argument_list|)
 condition|)
 block|{
 comment|// non-empty commit
+if|if
+condition|(
+name|rep
+operator|.
+name|getCommit
+argument_list|(
+name|newHead
+argument_list|)
+operator|.
+name|getBranchRootId
+argument_list|()
+operator|==
+literal|null
+condition|)
+block|{
+comment|// OAK-265: only trigger commit gate for non-branch commits
 name|gate
 operator|.
 name|commit
@@ -2952,6 +2968,7 @@ name|toString
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 return|return
 name|newHead
