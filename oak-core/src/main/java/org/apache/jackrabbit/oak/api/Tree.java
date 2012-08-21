@@ -207,6 +207,8 @@ parameter_list|(
 name|String
 name|name
 parameter_list|,
+annotation|@
+name|Nonnull
 name|CoreValue
 name|value
 parameter_list|)
@@ -220,6 +222,8 @@ parameter_list|(
 name|String
 name|name
 parameter_list|,
+annotation|@
+name|Nonnull
 name|List
 argument_list|<
 name|CoreValue
@@ -227,7 +231,7 @@ argument_list|>
 name|values
 parameter_list|)
 function_decl|;
-comment|/**      * Remove the property with the given name.      *      * @param name The name of the property      */
+comment|/**      * Remove the property with the given name. This method has no effect if a      * property of the given {@code name} does not exist.      *      * @param name The name of the property      */
 name|void
 name|removeProperty
 parameter_list|(

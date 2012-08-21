@@ -41,20 +41,6 @@ end_import
 
 begin_import
 import|import
-name|com
-operator|.
-name|sun
-operator|.
-name|istack
-operator|.
-name|internal
-operator|.
-name|NotNull
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -130,7 +116,7 @@ name|String
 name|name
 parameter_list|,
 annotation|@
-name|NotNull
+name|Nonnull
 name|NodeState
 name|nodeState
 parameter_list|)
@@ -174,7 +160,7 @@ name|String
 name|name
 parameter_list|,
 annotation|@
-name|NotNull
+name|Nonnull
 name|CoreValue
 name|value
 parameter_list|)
@@ -187,7 +173,7 @@ name|String
 name|name
 parameter_list|,
 annotation|@
-name|NotNull
+name|Nonnull
 name|List
 argument_list|<
 name|CoreValue
