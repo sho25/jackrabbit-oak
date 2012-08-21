@@ -649,6 +649,17 @@ parameter_list|)
 block|{
 if|if
 condition|(
+name|state
+operator|==
+literal|null
+condition|)
+block|{
+return|return
+literal|false
+return|;
+block|}
+if|if
+condition|(
 name|propertyType
 operator|==
 name|PropertyType
