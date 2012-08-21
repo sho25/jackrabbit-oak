@@ -150,7 +150,7 @@ specifier|public
 class|class
 name|CoreValueMapper
 block|{
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|Map
@@ -541,7 +541,7 @@ return|return
 name|values
 return|;
 block|}
-comment|/**      * Returns {@code true} if the specified JSON String represents a value      * serialization that includes a leading type hint.      *      * @param jsonString The JSON String representation of a {@code CoreValue}      * @return {@code true} if the {@code jsonString} starts with a type      * hint; {@code false} otherwise.      * @see #buildJsonStringWithHint(org.apache.jackrabbit.oak.api.CoreValue)      */
+comment|/**      * Returns {@code true} if the specified JSON String represents a value      * serialization that includes a leading type hint.      *      * @param jsonString The JSON String representation of a {@code CoreValue}      * @return {@code true} if the {@code jsonString} starts with a type      * hint; {@code false} otherwise.      */
 specifier|public
 specifier|static
 name|boolean
@@ -567,6 +567,25 @@ literal|3
 argument_list|)
 operator|==
 literal|':'
+return|;
+block|}
+comment|/**      * Get the type hint (JSON prefix) for the given property type.      *      * @param propertyType the property type      * @return the hint      */
+specifier|public
+specifier|static
+name|String
+name|getHintForType
+parameter_list|(
+name|int
+name|propertyType
+parameter_list|)
+block|{
+return|return
+name|TYPE2HINT
+operator|.
+name|get
+argument_list|(
+name|propertyType
+argument_list|)
 return|;
 block|}
 block|}

@@ -145,24 +145,6 @@ name|NodeStateDiff
 import|;
 end_import
 
-begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|kernel
-operator|.
-name|CoreValueMapper
-operator|.
-name|TYPE2HINT
-import|;
-end_import
-
 begin_class
 class|class
 name|JsopDiff
@@ -486,6 +468,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|//------------------------------------------------------------< Object>--
+annotation|@
+name|Override
 specifier|public
 name|String
 name|toString
@@ -755,9 +739,9 @@ condition|)
 block|{
 name|string
 operator|=
-name|TYPE2HINT
+name|CoreValueMapper
 operator|.
-name|get
+name|getHintForType
 argument_list|(
 name|type
 argument_list|)
