@@ -29,6 +29,16 @@ end_import
 
 begin_import
 import|import
+name|javax
+operator|.
+name|jcr
+operator|.
+name|PropertyType
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -114,6 +124,15 @@ comment|/**          * Whether values that match the last should be returned.   
 specifier|public
 name|boolean
 name|lastIncluding
+decl_stmt|;
+comment|/**          * The property type, if restricted.          * If not restricted, this field is set to PropertyType.UNDEFINED.          */
+specifier|public
+name|int
+name|propertyType
+init|=
+name|PropertyType
+operator|.
+name|UNDEFINED
 decl_stmt|;
 annotation|@
 name|Override
