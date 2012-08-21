@@ -6373,12 +6373,6 @@ block|}
 block|}
 annotation|@
 name|Test
-annotation|@
-name|Ignore
-argument_list|(
-literal|"OAK-261"
-argument_list|)
-comment|//  TODO OAK-261: Support querying on property types
 specifier|public
 name|void
 name|getReferences
@@ -6531,7 +6525,7 @@ argument_list|)
 operator|.
 name|setProperty
 argument_list|(
-literal|"reference"
+literal|"reference1"
 argument_list|,
 name|value
 argument_list|)
@@ -6543,7 +6537,7 @@ argument_list|)
 operator|.
 name|setProperty
 argument_list|(
-literal|"reference"
+literal|"reference2"
 argument_list|,
 name|value
 argument_list|)
@@ -6560,7 +6554,7 @@ name|referee
 operator|.
 name|getReferences
 argument_list|(
-literal|"bar"
+literal|"reference1"
 argument_list|)
 decl_stmt|;
 name|assertTrue
@@ -6581,7 +6575,7 @@ argument_list|()
 decl_stmt|;
 name|assertEquals
 argument_list|(
-literal|"reference"
+literal|"reference1"
 argument_list|,
 name|p
 operator|.
@@ -6600,12 +6594,6 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-annotation|@
-name|Ignore
-argument_list|(
-literal|"OAK-261"
-argument_list|)
-comment|//  TODO OAK-261: Support querying on property types
 specifier|public
 name|void
 name|getWeakReferences
@@ -6762,7 +6750,7 @@ argument_list|)
 operator|.
 name|setProperty
 argument_list|(
-literal|"reference"
+literal|"weak-reference1"
 argument_list|,
 name|value
 argument_list|)
@@ -6774,7 +6762,7 @@ argument_list|)
 operator|.
 name|setProperty
 argument_list|(
-literal|"reference"
+literal|"weak-reference2"
 argument_list|,
 name|value
 argument_list|)
@@ -6791,7 +6779,7 @@ name|referee
 operator|.
 name|getWeakReferences
 argument_list|(
-literal|"bar"
+literal|"weak-reference1"
 argument_list|)
 decl_stmt|;
 name|assertTrue
@@ -6812,7 +6800,7 @@ argument_list|()
 decl_stmt|;
 name|assertEquals
 argument_list|(
-literal|"reference"
+literal|"weak-reference1"
 argument_list|,
 name|p
 operator|.
