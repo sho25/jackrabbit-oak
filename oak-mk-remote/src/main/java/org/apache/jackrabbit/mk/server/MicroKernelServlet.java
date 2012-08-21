@@ -1026,7 +1026,7 @@ name|response
 operator|.
 name|setContentType
 argument_list|(
-literal|"application/json"
+literal|"text/plain"
 argument_list|)
 expr_stmt|;
 name|String
