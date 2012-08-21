@@ -792,6 +792,14 @@ argument_list|)
 expr_stmt|;
 name|buff
 operator|.
+name|object
+argument_list|()
+operator|.
+name|endObject
+argument_list|()
+expr_stmt|;
+name|buff
+operator|.
 name|newline
 argument_list|()
 expr_stmt|;
