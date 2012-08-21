@@ -672,6 +672,31 @@ return|return
 name|principals
 return|;
 block|}
+annotation|@
+name|Override
+specifier|public
+name|Iterator
+argument_list|<
+name|Principal
+argument_list|>
+name|findPrincipals
+parameter_list|(
+name|String
+name|nameHint
+parameter_list|,
+name|int
+name|searchType
+parameter_list|)
+block|{
+comment|// TODO add implementation
+throw|throw
+operator|new
+name|UnsupportedOperationException
+argument_list|(
+literal|"TODO: PrincipalProvide#findPrincipals"
+argument_list|)
+throw|;
+block|}
 comment|//------------------------------------------------------------< private>---
 specifier|private
 name|Set
