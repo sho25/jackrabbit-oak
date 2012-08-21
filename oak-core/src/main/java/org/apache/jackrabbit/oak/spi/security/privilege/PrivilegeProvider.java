@@ -88,6 +88,7 @@ name|String
 name|name
 parameter_list|)
 function_decl|;
+comment|/**      * Creates and registers a new custom privilege definition with the specified      * characteristics. If the registration succeeds the new definition is      * returned; otherwise an {@code RepositoryException} is thrown.      *      * @param privilegeName The name of the definition.      * @param isAbstract {@code true} if the privilege is abstract.      * @param declaredAggregateNames The set of declared aggregate privilege names.      * @return The new definition.      * @throws RepositoryException If the definition could not be registered.      */
 name|PrivilegeDefinition
 name|registerDefinition
 parameter_list|(
