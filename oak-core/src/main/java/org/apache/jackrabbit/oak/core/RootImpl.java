@@ -1136,7 +1136,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// TODO the following v-providers could be initialized at ContentRepo level
-comment|// FIXME: use proper configuration
+comment|// FIXME: retrieve from user context
 name|providers
 operator|.
 name|add

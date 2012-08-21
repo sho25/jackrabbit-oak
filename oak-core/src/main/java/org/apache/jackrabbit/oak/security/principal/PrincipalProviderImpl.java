@@ -372,7 +372,7 @@ end_comment
 begin_class
 specifier|public
 class|class
-name|KernelPrincipalProvider
+name|PrincipalProviderImpl
 implements|implements
 name|PrincipalProvider
 block|{
@@ -387,7 +387,7 @@ name|LoggerFactory
 operator|.
 name|getLogger
 argument_list|(
-name|KernelPrincipalProvider
+name|PrincipalProviderImpl
 operator|.
 name|class
 argument_list|)
@@ -408,7 +408,7 @@ name|PathMapper
 name|pathMapper
 decl_stmt|;
 specifier|public
-name|KernelPrincipalProvider
+name|PrincipalProviderImpl
 parameter_list|(
 name|UserProvider
 name|userProvider
@@ -977,7 +977,6 @@ name|String
 name|oakPath
 parameter_list|)
 block|{
-comment|// TODO
 name|Tree
 name|tree
 init|=
