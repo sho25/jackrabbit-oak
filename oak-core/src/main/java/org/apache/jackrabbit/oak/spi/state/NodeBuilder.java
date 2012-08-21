@@ -41,6 +41,20 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|sun
+operator|.
+name|istack
+operator|.
+name|internal
+operator|.
+name|NotNull
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -115,11 +129,13 @@ parameter_list|(
 name|String
 name|name
 parameter_list|,
+annotation|@
+name|NotNull
 name|NodeState
 name|nodeState
 parameter_list|)
 function_decl|;
-comment|/**      * Remove a child node      * @param name  name of the child node      */
+comment|/**      * Remove a child node. This method has no effect if a      * property of the given {@code name} does not exist.      * @param name  name of the child node      */
 name|void
 name|removeNode
 parameter_list|(
@@ -157,6 +173,8 @@ parameter_list|(
 name|String
 name|name
 parameter_list|,
+annotation|@
+name|NotNull
 name|CoreValue
 name|value
 parameter_list|)
@@ -168,6 +186,8 @@ parameter_list|(
 name|String
 name|name
 parameter_list|,
+annotation|@
+name|NotNull
 name|List
 argument_list|<
 name|CoreValue
@@ -175,7 +195,7 @@ argument_list|>
 name|values
 parameter_list|)
 function_decl|;
-comment|/**      * Remove the named property      * @param name  name of the property      */
+comment|/**      * Remove the named property. This method has no effect if a      * property of the given {@code name} does not exist.      * @param name  name of the property      */
 name|void
 name|removeProperty
 parameter_list|(
