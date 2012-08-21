@@ -473,7 +473,7 @@ name|security
 operator|.
 name|user
 operator|.
-name|UserConstants
+name|UserConfig
 import|;
 end_import
 
@@ -493,7 +493,7 @@ name|security
 operator|.
 name|user
 operator|.
-name|UserConfig
+name|UserConstants
 import|;
 end_import
 
@@ -1362,8 +1362,10 @@ name|refPaths
 init|=
 name|identifierManager
 operator|.
-name|getWeakReferences
+name|getReferences
 argument_list|(
+literal|true
+argument_list|,
 name|authorizableTree
 argument_list|,
 literal|null
