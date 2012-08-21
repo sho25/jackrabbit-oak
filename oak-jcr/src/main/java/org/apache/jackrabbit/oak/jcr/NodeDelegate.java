@@ -425,7 +425,7 @@ parameter_list|()
 block|{
 comment|// don't disturb the state: avoid calling getTree()
 return|return
-literal|"NodeDelegate[/"
+literal|"NodeDelegate["
 operator|+
 name|tree
 operator|.

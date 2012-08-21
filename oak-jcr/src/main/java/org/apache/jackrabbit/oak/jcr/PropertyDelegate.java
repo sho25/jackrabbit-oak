@@ -385,7 +385,7 @@ parameter_list|()
 block|{
 comment|// don't disturb the state: avoid calling resolve()
 return|return
-literal|"PropertyDelegate[/"
+literal|"PropertyDelegate["
 operator|+
 name|parent
 operator|.
