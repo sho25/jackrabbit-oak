@@ -6471,12 +6471,6 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-annotation|@
-name|Ignore
-argument_list|(
-literal|"OAK-261"
-argument_list|)
-comment|//  TODO OAK-261: Support querying on property types
 specifier|public
 name|void
 name|getNamedReferences
@@ -6694,12 +6688,6 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-annotation|@
-name|Ignore
-argument_list|(
-literal|"OAK-261"
-argument_list|)
-comment|//  TODO OAK-261: Support querying on property types
 specifier|public
 name|void
 name|getNamedWeakReferences

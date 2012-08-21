@@ -881,7 +881,6 @@ name|uuid
 argument_list|)
 argument_list|)
 decl_stmt|;
-comment|// TODO query depends on OAK-261
 name|Result
 name|result
 init|=
