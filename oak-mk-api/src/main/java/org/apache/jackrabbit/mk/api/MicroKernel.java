@@ -213,7 +213,7 @@ throws|throws
 name|MicroKernelException
 function_decl|;
 comment|//--------------------------------------------------< BLOB READ/WRITE ops>
-comment|/**      * Returns the length of the specified blob.      *      * @param blobId blob identifier      * @return length of the specified blob      * @throws MicroKernelException if an error occurs      */
+comment|/**      * Returns the length of the specified blob.      *      * @param blobId blob identifier      * @return length of the specified blob      * @throws MicroKernelException if the specified blob does not exist or if another error occurs      */
 name|long
 name|getLength
 parameter_list|(
@@ -223,7 +223,7 @@ parameter_list|)
 throws|throws
 name|MicroKernelException
 function_decl|;
-comment|/**      * Reads up to {@code length} bytes of data from the specified blob into      * the given array of bytes.  An attempt is made to read as many as      * {@code length} bytes, but a smaller number may be read.      * The number of bytes actually read is returned as an integer.      *      * @param blobId blob identifier      * @param pos    the offset within the blob      * @param buff   the buffer into which the data is read.      * @param off    the start offset in array {@code buff}      *               at which the data is written.      * @param length the maximum number of bytes to read      * @return the total number of bytes read into the buffer, or      *         {@code -1} if there is no more data because the end of      *         the blob content has been reached.      * @throws MicroKernelException if an error occurs      */
+comment|/**      * Reads up to {@code length} bytes of data from the specified blob into      * the given array of bytes.  An attempt is made to read as many as      * {@code length} bytes, but a smaller number may be read.      * The number of bytes actually read is returned as an integer.      *      * @param blobId blob identifier      * @param pos    the offset within the blob      * @param buff   the buffer into which the data is read.      * @param off    the start offset in array {@code buff}      *               at which the data is written.      * @param length the maximum number of bytes to read      * @return the total number of bytes read into the buffer, or      *         {@code -1} if there is no more data because the end of      *         the blob content has been reached.      * @throws MicroKernelException if the specified blob does not exist or if another error occurs      */
 name|int
 comment|/* count */
 name|read
