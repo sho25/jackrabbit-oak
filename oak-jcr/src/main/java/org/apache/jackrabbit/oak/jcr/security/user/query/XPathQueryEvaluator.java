@@ -849,7 +849,7 @@ argument_list|)
 operator|.
 name|append
 argument_list|(
-literal|"jcr:like("
+literal|"jcr:like(@"
 argument_list|)
 operator|.
 name|append
@@ -889,7 +889,7 @@ argument_list|)
 operator|.
 name|append
 argument_list|(
-literal|"jcr:like(fn:name(.),'"
+literal|"jcr:like(fn:name(),'"
 argument_list|)
 operator|.
 name|append
