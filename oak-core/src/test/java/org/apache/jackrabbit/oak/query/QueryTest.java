@@ -650,6 +650,9 @@ decl_stmt|;
 name|String
 name|got
 decl_stmt|;
+name|boolean
+name|failed
+decl_stmt|;
 try|try
 block|{
 name|got
@@ -660,6 +663,10 @@ name|convert
 argument_list|(
 name|line
 argument_list|)
+expr_stmt|;
+name|failed
+operator|=
+literal|false
 expr_stmt|;
 block|}
 catch|catch
@@ -683,6 +690,10 @@ literal|'\n'
 argument_list|,
 literal|' '
 argument_list|)
+expr_stmt|;
+name|failed
+operator|=
+literal|true
 expr_stmt|;
 block|}
 name|line
@@ -716,6 +727,24 @@ block|{
 name|errors
 operator|=
 literal|true
+expr_stmt|;
+block|}
+if|if
+condition|(
+operator|!
+name|failed
+condition|)
+block|{
+name|executeQuery
+argument_list|(
+name|got
+argument_list|,
+name|QueryEngineImpl
+operator|.
+name|SQL2
+argument_list|,
+literal|null
+argument_list|)
 expr_stmt|;
 block|}
 block|}
