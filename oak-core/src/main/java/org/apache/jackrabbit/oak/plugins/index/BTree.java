@@ -11,7 +11,9 @@ name|apache
 operator|.
 name|jackrabbit
 operator|.
-name|mk
+name|oak
+operator|.
+name|plugins
 operator|.
 name|index
 package|;
@@ -1378,6 +1380,7 @@ break|break;
 block|}
 block|}
 block|}
+specifier|public
 name|String
 name|getName
 parameter_list|()

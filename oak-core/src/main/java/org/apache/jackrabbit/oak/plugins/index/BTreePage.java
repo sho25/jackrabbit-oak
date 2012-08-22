@@ -11,7 +11,9 @@ name|apache
 operator|.
 name|jackrabbit
 operator|.
-name|mk
+name|oak
+operator|.
+name|plugins
 operator|.
 name|index
 package|;
@@ -39,6 +41,7 @@ end_comment
 
 begin_class
 specifier|abstract
+specifier|public
 class|class
 name|BTreePage
 block|{
@@ -285,6 +288,7 @@ name|getPath
 argument_list|()
 return|;
 block|}
+specifier|public
 name|String
 name|getPath
 parameter_list|()

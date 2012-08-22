@@ -11,11 +11,65 @@ name|apache
 operator|.
 name|jackrabbit
 operator|.
-name|mk
+name|oak
+operator|.
+name|plugins
 operator|.
 name|index
 package|;
 end_package
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|ArrayList
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|HashMap
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Iterator
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Map
+operator|.
+name|Entry
+import|;
+end_import
 
 begin_import
 import|import
@@ -60,6 +114,22 @@ operator|.
 name|api
 operator|.
 name|MicroKernelException
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|mk
+operator|.
+name|index
+operator|.
+name|IndexWrapper
 import|;
 end_import
 
@@ -245,53 +315,37 @@ end_import
 
 begin_import
 import|import
-name|java
+name|org
 operator|.
-name|util
+name|apache
 operator|.
-name|ArrayList
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|query
+operator|.
+name|Index
 import|;
 end_import
 
 begin_import
 import|import
-name|java
+name|org
 operator|.
-name|util
+name|apache
 operator|.
-name|HashMap
-import|;
-end_import
-
-begin_import
-import|import
-name|java
+name|jackrabbit
 operator|.
-name|util
+name|oak
 operator|.
-name|Iterator
-import|;
-end_import
-
-begin_import
-import|import
-name|java
+name|spi
 operator|.
-name|util
+name|query
 operator|.
-name|List
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Map
-operator|.
-name|Entry
+name|IndexUtils
 import|;
 end_import
 
@@ -314,8 +368,13 @@ specifier|final
 name|String
 name|INDEX_CONFIG_PATH
 init|=
-literal|"/jcr:system/indexes"
+name|IndexUtils
+operator|.
+name|DEFAULT_INDEX_HOME
+operator|+
+literal|"/indexes"
 decl_stmt|;
+comment|//"/jcr:system/indexes";
 comment|/**      * For each index, the index content is stored relative to the index      * definition below this node. There is also such a node just below the      * index definition node, to store the last revision and for temporary data.      */
 specifier|public
 specifier|static
@@ -326,6 +385,7 @@ init|=
 literal|":data"
 decl_stmt|;
 comment|/**      * The node name prefix of a prefix index.      */
+specifier|public
 specifier|static
 specifier|final
 name|String
@@ -335,6 +395,7 @@ literal|"prefix@"
 decl_stmt|;
 comment|/**      * The node name prefix of a property index.      */
 comment|// TODO support multi-property indexes
+specifier|public
 specifier|static
 specifier|final
 name|String
@@ -343,6 +404,7 @@ init|=
 literal|"property@"
 decl_stmt|;
 comment|/**      * Marks a unique index.      */
+specifier|public
 specifier|static
 specifier|final
 name|String
@@ -449,7 +511,7 @@ name|HashMap
 argument_list|<
 name|String
 argument_list|,
-name|Index
+name|PIndex
 argument_list|>
 name|indexes
 init|=
@@ -458,7 +520,7 @@ name|HashMap
 argument_list|<
 name|String
 argument_list|,
-name|Index
+name|PIndex
 argument_list|>
 argument_list|()
 decl_stmt|;
@@ -502,6 +564,7 @@ name|PropertyIndex
 argument_list|>
 argument_list|()
 decl_stmt|;
+specifier|public
 name|Indexer
 parameter_list|(
 name|MicroKernel
@@ -565,6 +628,7 @@ name|mk
 argument_list|)
 return|;
 block|}
+specifier|public
 name|String
 name|getIndexRootNode
 parameter_list|()
@@ -793,7 +857,10 @@ name|put
 argument_list|(
 name|prop
 operator|.
-name|getIndexNodeName
+name|getDefinition
+argument_list|()
+operator|.
+name|getName
 argument_list|()
 argument_list|,
 name|prop
@@ -841,7 +908,10 @@ name|put
 argument_list|(
 name|pref
 operator|.
-name|getIndexNodeName
+name|getDefinition
+argument_list|()
+operator|.
+name|getName
 argument_list|()
 argument_list|,
 name|pref
@@ -894,7 +964,10 @@ name|remove
 argument_list|(
 name|index
 operator|.
-name|getIndexNodeName
+name|getDefinition
+argument_list|()
+operator|.
+name|getName
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -959,7 +1032,10 @@ name|put
 argument_list|(
 name|index
 operator|.
-name|getIndexNodeName
+name|getDefinition
+argument_list|()
+operator|.
+name|getName
 argument_list|()
 argument_list|,
 name|index
@@ -1009,7 +1085,10 @@ name|remove
 argument_list|(
 name|index
 operator|.
-name|getIndexNodeName
+name|getDefinition
+argument_list|()
+operator|.
+name|getName
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1069,7 +1148,10 @@ name|put
 argument_list|(
 name|index
 operator|.
-name|getIndexNodeName
+name|getDefinition
+argument_list|()
+operator|.
+name|getName
 argument_list|()
 argument_list|,
 name|index
@@ -1127,6 +1209,7 @@ name|revision
 argument_list|)
 return|;
 block|}
+specifier|public
 name|void
 name|createNodes
 parameter_list|(
@@ -1274,6 +1357,7 @@ literal|null
 argument_list|)
 expr_stmt|;
 block|}
+specifier|public
 name|BTreePage
 name|getPageIfCached
 parameter_list|(
@@ -1371,6 +1455,7 @@ name|p
 argument_list|)
 return|;
 block|}
+specifier|public
 name|BTreePage
 name|getPage
 parameter_list|(
@@ -1746,6 +1831,7 @@ return|return
 name|data
 return|;
 block|}
+specifier|public
 name|void
 name|buffer
 parameter_list|(
@@ -1780,6 +1866,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+specifier|public
 name|void
 name|modified
 parameter_list|(
@@ -1851,6 +1938,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+specifier|public
 name|void
 name|moveCache
 parameter_list|(
@@ -2059,6 +2147,7 @@ expr_stmt|;
 block|}
 block|}
 specifier|synchronized
+specifier|public
 name|void
 name|updateUntil
 parameter_list|(
@@ -2327,6 +2416,7 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Finish updating the index.      *      * @param toRevision the new index revision      * @return the new head revision      */
+specifier|public
 name|String
 name|updateEnd
 parameter_list|(
@@ -2422,6 +2512,7 @@ block|}
 block|}
 block|}
 comment|/**      * Update the index with the given changes.      *      * @param rootPath the root path      * @param t the changes      * @param lastRevision      */
+specifier|public
 name|void
 name|updateIndex
 parameter_list|(
@@ -2957,7 +3048,7 @@ return|return;
 block|}
 for|for
 control|(
-name|Index
+name|PIndex
 name|index
 range|:
 name|indexes
@@ -3428,7 +3519,7 @@ argument_list|)
 expr_stmt|;
 for|for
 control|(
-name|Index
+name|PIndex
 name|index
 range|:
 name|indexes
@@ -3502,7 +3593,7 @@ argument_list|)
 decl_stmt|;
 for|for
 control|(
-name|Index
+name|PIndex
 name|index
 range|:
 name|indexes
@@ -3738,7 +3829,7 @@ specifier|private
 name|void
 name|buildIndex
 parameter_list|(
-name|Index
+name|PIndex
 name|index
 parameter_list|)
 block|{
@@ -3755,7 +3846,7 @@ specifier|private
 name|void
 name|addRecursive
 parameter_list|(
-name|Index
+name|PIndex
 name|index
 parameter_list|,
 name|String
@@ -4014,6 +4105,7 @@ return|return
 name|queryIndexList
 return|;
 block|}
+specifier|public
 name|PrefixIndex
 name|getPrefixIndex
 parameter_list|(
@@ -4030,6 +4122,7 @@ name|prefix
 argument_list|)
 return|;
 block|}
+specifier|public
 name|PropertyIndex
 name|getPropertyIndex
 parameter_list|(

@@ -11,7 +11,9 @@ name|apache
 operator|.
 name|jackrabbit
 operator|.
-name|mk
+name|oak
+operator|.
+name|plugins
 operator|.
 name|index
 package|;
@@ -80,6 +82,7 @@ comment|/**  * An index node page.  */
 end_comment
 
 begin_class
+specifier|public
 class|class
 name|BTreeNode
 extends|extends
@@ -90,6 +93,7 @@ name|String
 index|[]
 name|children
 decl_stmt|;
+specifier|public
 name|BTreeNode
 parameter_list|(
 name|BTree

@@ -21,6 +21,26 @@ begin_import
 import|import static
 name|org
 operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|index
+operator|.
+name|Indexer
+operator|.
+name|INDEX_CONFIG_PATH
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
 name|junit
 operator|.
 name|Assert
@@ -141,7 +161,9 @@ name|mk
 operator|.
 name|getNodes
 argument_list|(
-literal|"/jcr:system/indexes/unknown"
+name|INDEX_CONFIG_PATH
+operator|+
+literal|"/unknown"
 argument_list|,
 name|head
 argument_list|,
@@ -191,7 +213,7 @@ name|mk
 operator|.
 name|commit
 argument_list|(
-literal|"/jcr:system/indexes"
+name|INDEX_CONFIG_PATH
 argument_list|,
 literal|"+ \"prefix@x\": {}"
 argument_list|,
@@ -267,7 +289,9 @@ name|mk
 operator|.
 name|getNodes
 argument_list|(
-literal|"/jcr:system/indexes/prefix@x?x:no"
+name|INDEX_CONFIG_PATH
+operator|+
+literal|"/prefix@x?x:no"
 argument_list|,
 name|head
 argument_list|,
@@ -295,7 +319,9 @@ name|mk
 operator|.
 name|getNodes
 argument_list|(
-literal|"/jcr:system/indexes/prefix@x?x:yes"
+name|INDEX_CONFIG_PATH
+operator|+
+literal|"/prefix@x?x:yes"
 argument_list|,
 name|head
 argument_list|,
@@ -323,7 +349,9 @@ name|mk
 operator|.
 name|getNodes
 argument_list|(
-literal|"/jcr:system/indexes/prefix@x?x:a"
+name|INDEX_CONFIG_PATH
+operator|+
+literal|"/prefix@x?x:a"
 argument_list|,
 name|head
 argument_list|,
@@ -358,7 +386,7 @@ name|mk
 operator|.
 name|commit
 argument_list|(
-literal|"/jcr:system/indexes"
+name|INDEX_CONFIG_PATH
 argument_list|,
 literal|"+ \"property@id,unique\": {}"
 argument_list|,
@@ -404,7 +432,9 @@ name|mk
 operator|.
 name|getNodes
 argument_list|(
-literal|"/jcr:system/indexes/property@id,unique?0"
+name|INDEX_CONFIG_PATH
+operator|+
+literal|"/property@id,unique?0"
 argument_list|,
 name|head
 argument_list|,
@@ -432,7 +462,9 @@ name|mk
 operator|.
 name|getNodes
 argument_list|(
-literal|"/jcr:system/indexes/property@id,unique?1"
+name|INDEX_CONFIG_PATH
+operator|+
+literal|"/property@id,unique?1"
 argument_list|,
 name|head
 argument_list|,
@@ -467,7 +499,7 @@ name|mk
 operator|.
 name|commit
 argument_list|(
-literal|"/jcr:system/indexes"
+name|INDEX_CONFIG_PATH
 argument_list|,
 literal|"+ \"property@ref\": {}"
 argument_list|,
@@ -528,7 +560,9 @@ name|mk
 operator|.
 name|getNodes
 argument_list|(
-literal|"/jcr:system/indexes/property@ref?no"
+name|INDEX_CONFIG_PATH
+operator|+
+literal|"/property@ref?no"
 argument_list|,
 name|head
 argument_list|,
@@ -556,7 +590,9 @@ name|mk
 operator|.
 name|getNodes
 argument_list|(
-literal|"/jcr:system/indexes/property@ref?a"
+name|INDEX_CONFIG_PATH
+operator|+
+literal|"/property@ref?a"
 argument_list|,
 name|head
 argument_list|,
@@ -584,7 +620,9 @@ name|mk
 operator|.
 name|getNodes
 argument_list|(
-literal|"/jcr:system/indexes/property@ref?b"
+name|INDEX_CONFIG_PATH
+operator|+
+literal|"/property@ref?b"
 argument_list|,
 name|head
 argument_list|,

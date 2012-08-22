@@ -37,11 +37,11 @@ name|apache
 operator|.
 name|jackrabbit
 operator|.
-name|mk
+name|oak
 operator|.
-name|index
+name|api
 operator|.
-name|PropertyIndex
+name|CoreValue
 import|;
 end_import
 
@@ -55,9 +55,11 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|api
+name|plugins
 operator|.
-name|CoreValue
+name|index
+operator|.
+name|PropertyIndex
 import|;
 end_import
 
@@ -239,6 +241,9 @@ name|unique
 init|=
 name|index
 operator|.
+name|getDefinition
+argument_list|()
+operator|.
 name|isUnique
 argument_list|()
 decl_stmt|;
@@ -404,7 +409,10 @@ block|{
 return|return
 name|index
 operator|.
-name|getIndexNodeName
+name|getDefinition
+argument_list|()
+operator|.
+name|getName
 argument_list|()
 return|;
 block|}

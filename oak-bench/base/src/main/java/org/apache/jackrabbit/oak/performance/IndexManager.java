@@ -55,11 +55,11 @@ name|apache
 operator|.
 name|jackrabbit
 operator|.
-name|mk
+name|oak
 operator|.
-name|index
+name|commons
 operator|.
-name|Indexer
+name|PathUtils
 import|;
 end_import
 
@@ -73,9 +73,11 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|commons
+name|plugins
 operator|.
-name|PathUtils
+name|index
+operator|.
+name|Indexer
 import|;
 end_import
 

@@ -11,7 +11,9 @@ name|apache
 operator|.
 name|jackrabbit
 operator|.
-name|mk
+name|oak
+operator|.
+name|plugins
 operator|.
 name|index
 package|;
@@ -80,11 +82,13 @@ comment|/**  * An index leaf page.  */
 end_comment
 
 begin_class
+specifier|public
 class|class
 name|BTreeLeaf
 extends|extends
 name|BTreePage
 block|{
+specifier|public
 name|BTreeLeaf
 parameter_list|(
 name|BTree
