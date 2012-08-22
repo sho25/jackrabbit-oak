@@ -108,8 +108,8 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
-comment|/**      * Sweep all objects that are not marked and were written before the GC started.      *       * @throws Exception if an error occurs      */
-name|void
+comment|/**      * Sweep all objects that are not marked and were written before the GC started.      *       * @return number of swept items or<code>-1</code> if number is unknown      * @throws Exception if an error occurs      */
+name|int
 name|sweep
 parameter_list|()
 throws|throws

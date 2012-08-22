@@ -791,6 +791,18 @@ argument_list|(
 name|bytes
 argument_list|)
 decl_stmt|;
+name|Timestamp
+name|ts
+init|=
+operator|new
+name|Timestamp
+argument_list|(
+name|System
+operator|.
+name|currentTimeMillis
+argument_list|()
+argument_list|)
+decl_stmt|;
 comment|//String id = StringUtils.convertBytesToHex(rawId);
 name|Connection
 name|con
@@ -809,7 +821,7 @@ name|con
 operator|.
 name|prepareStatement
 argument_list|(
-literal|"insert into REVS (ID, DATA, TIME) select ?, ?, CURRENT_TIMESTAMP() where not exists (select 1 from REVS where ID = ?)"
+literal|"insert into REVS (ID, DATA, TIME) select ?, ?, ? where not exists (select 1 from REVS where ID = ?)"
 argument_list|)
 decl_stmt|;
 try|try
@@ -834,9 +846,18 @@ argument_list|)
 expr_stmt|;
 name|stmt
 operator|.
-name|setBytes
+name|setTimestamp
 argument_list|(
 literal|3
+argument_list|,
+name|ts
+argument_list|)
+expr_stmt|;
+name|stmt
+operator|.
+name|setBytes
+argument_list|(
+literal|4
 argument_list|,
 name|rawId
 argument_list|)
@@ -1035,6 +1056,18 @@ operator|.
 name|toByteArray
 argument_list|()
 decl_stmt|;
+name|Timestamp
+name|ts
+init|=
+operator|new
+name|Timestamp
+argument_list|(
+name|System
+operator|.
+name|currentTimeMillis
+argument_list|()
+argument_list|)
+decl_stmt|;
 name|Connection
 name|con
 init|=
@@ -1052,7 +1085,7 @@ name|con
 operator|.
 name|prepareStatement
 argument_list|(
-literal|"insert into REVS (ID, DATA, TIME) select ?, ?, CURRENT_TIMESTAMP() where not exists (select 1 from REVS where ID = ?)"
+literal|"insert into REVS (ID, DATA, TIME) select ?, ?, ? where not exists (select 1 from REVS where ID = ?)"
 argument_list|)
 decl_stmt|;
 try|try
@@ -1080,9 +1113,18 @@ argument_list|)
 expr_stmt|;
 name|stmt
 operator|.
-name|setBytes
+name|setTimestamp
 argument_list|(
 literal|3
+argument_list|,
+name|ts
+argument_list|)
+expr_stmt|;
+name|stmt
+operator|.
+name|setBytes
+argument_list|(
+literal|4
 argument_list|,
 name|id
 operator|.
@@ -1283,6 +1325,18 @@ argument_list|(
 name|bytes
 argument_list|)
 decl_stmt|;
+name|Timestamp
+name|ts
+init|=
+operator|new
+name|Timestamp
+argument_list|(
+name|System
+operator|.
+name|currentTimeMillis
+argument_list|()
+argument_list|)
+decl_stmt|;
 name|Connection
 name|con
 init|=
@@ -1300,7 +1354,7 @@ name|con
 operator|.
 name|prepareStatement
 argument_list|(
-literal|"insert into REVS (ID, DATA, TIME) select ?, ?, CURRENT_TIMESTAMP() where not exists (select 1 from REVS where ID = ?)"
+literal|"insert into REVS (ID, DATA, TIME) select ?, ?, ? where not exists (select 1 from REVS where ID = ?)"
 argument_list|)
 decl_stmt|;
 try|try
@@ -1325,9 +1379,18 @@ argument_list|)
 expr_stmt|;
 name|stmt
 operator|.
-name|setBytes
+name|setTimestamp
 argument_list|(
 literal|3
+argument_list|,
+name|ts
+argument_list|)
+expr_stmt|;
+name|stmt
+operator|.
+name|setBytes
+argument_list|(
+literal|4
 argument_list|,
 name|rawId
 argument_list|)
@@ -1654,7 +1717,7 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|void
+name|int
 name|sweep
 parameter_list|()
 throws|throws
@@ -1700,11 +1763,12 @@ argument_list|,
 name|ts
 argument_list|)
 expr_stmt|;
+return|return
 name|stmt
 operator|.
 name|executeUpdate
 argument_list|()
-expr_stmt|;
+return|;
 block|}
 finally|finally
 block|{

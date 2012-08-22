@@ -279,6 +279,26 @@ end_import
 
 begin_import
 import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|io
@@ -452,6 +472,21 @@ name|AbstractRevisionStore
 implements|implements
 name|Closeable
 block|{
+specifier|private
+specifier|static
+specifier|final
+name|Logger
+name|LOG
+init|=
+name|LoggerFactory
+operator|.
+name|getLogger
+argument_list|(
+name|DefaultRevisionStore
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 specifier|public
 specifier|static
 specifier|final
@@ -560,6 +595,12 @@ operator|new
 name|AtomicInteger
 argument_list|()
 decl_stmt|;
+specifier|private
+name|int
+name|markedNodes
+decl_stmt|,
+name|markedCommits
+decl_stmt|;
 comment|/**      * GC executor.      */
 specifier|private
 name|ScheduledExecutorService
@@ -600,7 +641,7 @@ operator|new
 name|ReentrantReadWriteLock
 argument_list|()
 decl_stmt|;
-comment|/**      * Active branches (Key: branch root id, Value: branch head).      */
+comment|/**      * Active branches (Key: current branch head, Value: branch root id).      */
 specifier|private
 specifier|final
 name|TreeMap
@@ -913,7 +954,7 @@ block|}
 block|}
 block|}
 argument_list|,
-literal|60
+literal|10
 argument_list|,
 literal|1
 argument_list|,
@@ -922,7 +963,6 @@ operator|.
 name|MINUTES
 argument_list|)
 expr_stmt|;
-comment|// FIXME, see OAK-216
 block|}
 name|initialized
 operator|=
@@ -1397,6 +1437,9 @@ name|commit
 parameter_list|,
 name|Id
 name|branchRootId
+parameter_list|,
+name|Id
+name|branchRevId
 parameter_list|)
 throws|throws
 name|Exception
@@ -1448,7 +1491,7 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|branchRootId
+name|branchRevId
 operator|!=
 literal|null
 condition|)
@@ -1462,7 +1505,7 @@ name|branches
 operator|.
 name|remove
 argument_list|(
-name|branchRootId
+name|branchRevId
 argument_list|)
 expr_stmt|;
 block|}
@@ -1524,13 +1567,41 @@ init|(
 name|branches
 init|)
 block|{
+name|Id
+name|parentId
+init|=
+name|commit
+operator|.
+name|getParentId
+argument_list|()
+decl_stmt|;
+if|if
+condition|(
+operator|!
+name|parentId
+operator|.
+name|equals
+argument_list|(
+name|branchRootId
+argument_list|)
+condition|)
+block|{
+comment|/* not the first branch commit, replace its head */
+name|branches
+operator|.
+name|remove
+argument_list|(
+name|parentId
+argument_list|)
+expr_stmt|;
+block|}
 name|branches
 operator|.
 name|put
 argument_list|(
-name|branchRootId
-argument_list|,
 name|commitId
+argument_list|,
+name|branchRootId
 argument_list|)
 expr_stmt|;
 block|}
@@ -2282,6 +2353,19 @@ block|{
 comment|// already running
 return|return;
 block|}
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"GC started."
+argument_list|)
+expr_stmt|;
+name|markedCommits
+operator|=
+name|markedNodes
+operator|=
+literal|0
+expr_stmt|;
 try|try
 block|{
 name|markUncommittedNodes
@@ -2293,12 +2377,49 @@ init|=
 name|markBranches
 argument_list|()
 decl_stmt|;
+if|if
+condition|(
+name|firstBranchRootId
+operator|!=
+literal|null
+condition|)
+block|{
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"First branch root to be preserved: {}"
+argument_list|,
+name|firstBranchRootId
+argument_list|)
+expr_stmt|;
+block|}
 name|Id
 name|firstCommitId
 init|=
 name|markCommits
 argument_list|()
 decl_stmt|;
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"First commit to be preserved: {}"
+argument_list|,
+name|firstCommitId
+argument_list|)
+expr_stmt|;
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"Marked {} commits, {} nodes."
+argument_list|,
+name|markedCommits
+argument_list|,
+name|markedNodes
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|firstBranchRootId
@@ -2376,17 +2497,21 @@ name|e
 parameter_list|)
 block|{
 comment|/* unable to perform GC */
+name|LOG
+operator|.
+name|error
+argument_list|(
+literal|"Exception occurred in GC cycle"
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
 name|gcState
 operator|.
 name|set
 argument_list|(
 name|NOT_ACTIVE
 argument_list|)
-expr_stmt|;
-name|e
-operator|.
-name|printStackTrace
-argument_list|()
 expr_stmt|;
 return|return;
 block|}
@@ -2399,10 +2524,22 @@ argument_list|)
 expr_stmt|;
 try|try
 block|{
+name|int
+name|swept
+init|=
 name|gcpm
 operator|.
 name|sweep
 argument_list|()
+decl_stmt|;
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"GC cycle swept {} items"
+argument_list|,
+name|swept
+argument_list|)
 expr_stmt|;
 name|cache
 operator|.
@@ -2416,10 +2553,14 @@ name|Exception
 name|e
 parameter_list|)
 block|{
-name|e
+name|LOG
 operator|.
-name|printStackTrace
-argument_list|()
+name|error
+argument_list|(
+literal|"Exception occurred in GC cycle"
+argument_list|,
+name|e
+argument_list|)
 expr_stmt|;
 block|}
 finally|finally
@@ -2432,6 +2573,13 @@ name|NOT_ACTIVE
 argument_list|)
 expr_stmt|;
 block|}
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"GC stopped."
+argument_list|)
+expr_stmt|;
 block|}
 comment|/**      * Mark nodes that have already been put but not committed yet.      *       * @throws Exception      *             if an error occurs      */
 specifier|private
@@ -2556,6 +2704,11 @@ name|clone
 argument_list|()
 expr_stmt|;
 block|}
+name|Id
+name|firstBranchRootId
+init|=
+literal|null
+decl_stmt|;
 comment|/* Mark all branch commits */
 for|for
 control|(
@@ -2574,7 +2727,7 @@ argument_list|()
 control|)
 block|{
 name|Id
-name|branchRootId
+name|branchRevId
 init|=
 name|entry
 operator|.
@@ -2582,7 +2735,7 @@ name|getKey
 argument_list|()
 decl_stmt|;
 name|Id
-name|branchHeadId
+name|branchRootId
 init|=
 name|entry
 operator|.
@@ -2592,7 +2745,7 @@ decl_stmt|;
 while|while
 condition|(
 operator|!
-name|branchHeadId
+name|branchRevId
 operator|.
 name|equals
 argument_list|(
@@ -2605,7 +2758,7 @@ name|commit
 init|=
 name|getCommit
 argument_list|(
-name|branchHeadId
+name|branchRevId
 argument_list|)
 decl_stmt|;
 name|markCommit
@@ -2613,7 +2766,7 @@ argument_list|(
 name|commit
 argument_list|)
 expr_stmt|;
-name|branchHeadId
+name|branchRevId
 operator|=
 name|commit
 operator|.
@@ -2621,31 +2774,36 @@ name|getParentId
 argument_list|()
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|firstBranchRootId
+operator|==
+literal|null
+operator|||
+name|firstBranchRootId
+operator|.
+name|compareTo
+argument_list|(
+name|branchRootId
+argument_list|)
+operator|>
+literal|0
+condition|)
+block|{
+name|firstBranchRootId
+operator|=
+name|branchRootId
+expr_stmt|;
+block|}
 block|}
 comment|/* Mark all master commits till the first branch root id */
 if|if
 condition|(
-operator|!
-name|tmpBranches
-operator|.
-name|isEmpty
-argument_list|()
+name|firstBranchRootId
+operator|!=
+literal|null
 condition|)
 block|{
-name|Id
-name|firstBranchRootId
-init|=
-name|tmpBranches
-operator|.
-name|keySet
-argument_list|()
-operator|.
-name|iterator
-argument_list|()
-operator|.
-name|next
-argument_list|()
-decl_stmt|;
 name|StoredCommit
 name|commit
 init|=
@@ -2814,6 +2972,9 @@ condition|)
 block|{
 return|return;
 block|}
+name|markedCommits
+operator|++
+expr_stmt|;
 name|markNode
 argument_list|(
 name|getNode
@@ -2853,6 +3014,9 @@ condition|)
 block|{
 return|return;
 block|}
+name|markedNodes
+operator|++
+expr_stmt|;
 name|Iterator
 argument_list|<
 name|ChildNodeEntry
