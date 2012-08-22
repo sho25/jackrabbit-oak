@@ -33,6 +33,16 @@ end_import
 
 begin_import
 import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|Nonnull
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -60,6 +70,14 @@ specifier|public
 interface|interface
 name|TokenInfo
 block|{
+annotation|@
+name|Nonnull
+name|String
+name|getUserId
+parameter_list|()
+function_decl|;
+annotation|@
+name|Nonnull
 name|String
 name|getToken
 parameter_list|()
@@ -78,6 +96,8 @@ name|TokenCredentials
 name|tokenCredentials
 parameter_list|)
 function_decl|;
+annotation|@
+name|Nonnull
 name|Map
 argument_list|<
 name|String
@@ -87,6 +107,8 @@ argument_list|>
 name|getPrivateAttributes
 parameter_list|()
 function_decl|;
+annotation|@
+name|Nonnull
 name|Map
 argument_list|<
 name|String

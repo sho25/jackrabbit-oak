@@ -33,16 +33,6 @@ end_import
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|List
-import|;
-end_import
-
-begin_import
-import|import
 name|javax
 operator|.
 name|annotation
@@ -68,22 +58,6 @@ operator|.
 name|jcr
 operator|.
 name|RepositoryException
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|api
-operator|.
-name|CoreValue
 import|;
 end_import
 
@@ -180,12 +154,15 @@ name|principal
 parameter_list|)
 function_decl|;
 annotation|@
-name|Nonnull
+name|CheckForNull
 name|String
 name|getAuthorizableId
 parameter_list|(
 name|Tree
 name|authorizableTree
+parameter_list|,
+name|Type
+name|authorizableType
 parameter_list|)
 function_decl|;
 name|boolean

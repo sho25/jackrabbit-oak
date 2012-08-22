@@ -356,14 +356,34 @@ argument_list|()
 expr_stmt|;
 name|userID
 operator|=
-literal|null
+name|tokenInfo
+operator|.
+name|getUserId
+argument_list|()
 expr_stmt|;
-comment|// TODO: getUserID(tc);
 name|principals
 operator|=
-literal|null
+name|getPrincipals
+argument_list|(
+name|userID
+argument_list|)
 expr_stmt|;
-comment|// TODO getPrincipals(userID);
+name|log
+operator|.
+name|debug
+argument_list|(
+literal|"Login: adding login name to shared state."
+argument_list|)
+expr_stmt|;
+name|sharedState
+operator|.
+name|put
+argument_list|(
+name|SHARED_KEY_LOGIN_NAME
+argument_list|,
+name|userID
+argument_list|)
+expr_stmt|;
 return|return
 literal|true
 return|;
@@ -387,12 +407,6 @@ condition|(
 name|tokenCredentials
 operator|!=
 literal|null
-operator|||
-operator|!
-name|principals
-operator|.
-name|isEmpty
-argument_list|()
 condition|)
 block|{
 if|if
@@ -467,10 +481,7 @@ condition|(
 name|shared
 operator|!=
 literal|null
-condition|)
-block|{
-if|if
-condition|(
+operator|&&
 name|tokenProvider
 operator|.
 name|doCreateToken
@@ -590,7 +601,6 @@ argument_list|(
 name|tc
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 block|}

@@ -55,6 +55,16 @@ begin_import
 import|import
 name|javax
 operator|.
+name|annotation
+operator|.
+name|Nonnull
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
 name|jcr
 operator|.
 name|Credentials
@@ -90,6 +100,8 @@ operator|.
 name|jackrabbit
 operator|.
 name|oak
+operator|.
+name|spi
 operator|.
 name|security
 operator|.
@@ -166,6 +178,7 @@ operator|=
 name|tokenProvider
 expr_stmt|;
 block|}
+comment|//-----------------------------------------------------< Authentication>---
 annotation|@
 name|Override
 specifier|public
@@ -226,15 +239,33 @@ return|return
 literal|false
 return|;
 block|}
+comment|//-----------------------------------------------------------< internal>---
+annotation|@
+name|Nonnull
 name|TokenInfo
 name|getTokenInfo
 parameter_list|()
 block|{
+if|if
+condition|(
+name|tokenInfo
+operator|==
+literal|null
+condition|)
+block|{
+throw|throw
+operator|new
+name|IllegalStateException
+argument_list|(
+literal|"Token info can only be retrieved upon successful authentication."
+argument_list|)
+throw|;
+block|}
 return|return
 name|tokenInfo
 return|;
 block|}
-comment|//--------------------------------------------------------------------------
+comment|//------------------------------------------------------------< private>---
 specifier|private
 name|boolean
 name|validateCredentials
