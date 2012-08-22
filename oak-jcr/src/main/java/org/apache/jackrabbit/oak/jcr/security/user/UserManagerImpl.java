@@ -381,7 +381,7 @@ name|security
 operator|.
 name|user
 operator|.
-name|UserConstants
+name|UserConfig
 import|;
 end_import
 
@@ -401,7 +401,7 @@ name|security
 operator|.
 name|user
 operator|.
-name|UserContext
+name|UserConstants
 import|;
 end_import
 
@@ -505,8 +505,18 @@ name|namePathMapper
 decl_stmt|;
 specifier|private
 specifier|final
-name|UserContext
-name|userContext
+name|UserProvider
+name|userProvider
+decl_stmt|;
+specifier|private
+specifier|final
+name|MembershipProvider
+name|membershipProvider
+decl_stmt|;
+specifier|private
+specifier|final
+name|UserConfig
+name|config
 decl_stmt|;
 specifier|public
 name|UserManagerImpl
@@ -517,8 +527,14 @@ parameter_list|,
 name|NamePathMapper
 name|namePathMapper
 parameter_list|,
-name|UserContext
-name|userContext
+name|UserProvider
+name|userProvider
+parameter_list|,
+name|MembershipProvider
+name|membershipProvider
+parameter_list|,
+name|UserConfig
+name|config
 parameter_list|)
 block|{
 name|this
@@ -535,9 +551,21 @@ name|namePathMapper
 expr_stmt|;
 name|this
 operator|.
-name|userContext
+name|userProvider
 operator|=
-name|userContext
+name|userProvider
+expr_stmt|;
+name|this
+operator|.
+name|membershipProvider
+operator|=
+name|membershipProvider
+expr_stmt|;
+name|this
+operator|.
+name|config
+operator|=
+name|config
 expr_stmt|;
 block|}
 comment|//--------------------------------------------------------< UserManager>---
@@ -1279,10 +1307,7 @@ name|getAuthorizableActions
 parameter_list|()
 block|{
 return|return
-name|userContext
-operator|.
-name|getConfig
-argument_list|()
+name|config
 operator|.
 name|getAuthorizableActions
 argument_list|()
@@ -1346,10 +1371,7 @@ name|buildPasswordHash
 argument_list|(
 name|password
 argument_list|,
-name|userContext
-operator|.
-name|getConfig
-argument_list|()
+name|config
 argument_list|)
 expr_stmt|;
 block|}
@@ -1495,10 +1517,7 @@ name|getUserProvider
 parameter_list|()
 block|{
 return|return
-name|userContext
-operator|.
-name|getUserProvider
-argument_list|()
+name|userProvider
 return|;
 block|}
 name|MembershipProvider
@@ -1506,10 +1525,7 @@ name|getMembershipProvider
 parameter_list|()
 block|{
 return|return
-name|userContext
-operator|.
-name|getMembershipProvider
-argument_list|()
+name|membershipProvider
 return|;
 block|}
 annotation|@

@@ -157,7 +157,7 @@ parameter_list|(
 name|String
 name|authorizableId
 parameter_list|,
-name|int
+name|Type
 name|authorizableType
 parameter_list|)
 function_decl|;
@@ -208,7 +208,7 @@ name|String
 name|value
 parameter_list|,
 name|int
-name|type
+name|propertyType
 parameter_list|)
 function_decl|;
 name|void
@@ -225,7 +225,7 @@ index|[]
 name|values
 parameter_list|,
 name|int
-name|type
+name|propertyType
 parameter_list|)
 function_decl|;
 block|}

@@ -107,7 +107,7 @@ parameter_list|(
 name|String
 name|groupId
 parameter_list|,
-name|int
+name|Type
 name|authorizableType
 parameter_list|,
 name|boolean
@@ -125,7 +125,7 @@ parameter_list|(
 name|Tree
 name|groupTree
 parameter_list|,
-name|int
+name|Type
 name|authorizableType
 parameter_list|,
 name|boolean
