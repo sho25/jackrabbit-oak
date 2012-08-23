@@ -2315,8 +2315,6 @@ name|tree
 expr_stmt|;
 block|}
 annotation|@
-name|Nonnull
-annotation|@
 name|Override
 specifier|public
 name|TreeLocation
@@ -2343,8 +2341,6 @@ name|parent
 argument_list|)
 return|;
 block|}
-annotation|@
-name|Nonnull
 annotation|@
 name|Override
 specifier|public
@@ -2519,8 +2515,6 @@ name|property
 expr_stmt|;
 block|}
 annotation|@
-name|Nonnull
-annotation|@
 name|Override
 specifier|public
 name|TreeLocation
@@ -2531,8 +2525,6 @@ return|return
 name|parent
 return|;
 block|}
-annotation|@
-name|Nonnull
 annotation|@
 name|Override
 specifier|public
@@ -2648,8 +2640,6 @@ name|NullLocation
 argument_list|()
 decl_stmt|;
 annotation|@
-name|Nonnull
-annotation|@
 name|Override
 specifier|public
 name|TreeLocation
@@ -2660,8 +2650,6 @@ return|return
 name|this
 return|;
 block|}
-annotation|@
-name|Nonnull
 annotation|@
 name|Override
 specifier|public
