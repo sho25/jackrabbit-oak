@@ -1467,6 +1467,29 @@ literal|"putHeadCommit called without holding write lock."
 argument_list|)
 throw|;
 block|}
+if|if
+condition|(
+name|commit
+operator|.
+name|getBranchRootId
+argument_list|()
+operator|!=
+literal|null
+condition|)
+block|{
+comment|// OAK-267
+throw|throw
+operator|new
+name|IllegalStateException
+argument_list|(
+literal|"private branch commit ["
+operator|+
+name|commit
+operator|+
+literal|"] cannot become HEAD"
+argument_list|)
+throw|;
+block|}
 name|Id
 name|id
 init|=

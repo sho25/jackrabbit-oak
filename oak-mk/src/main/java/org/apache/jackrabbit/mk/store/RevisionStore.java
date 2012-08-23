@@ -150,7 +150,7 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
-comment|/**      * Lock the head. Must be called prior to putting a new head commit.      *       * @see #putHeadCommit(PutToken, MutableCommit, Id)      * @see #unlockHead()      */
+comment|/**      * Lock the head. Must be called prior to putting a new head commit.      *       * @see #putHeadCommit(PutToken, MutableCommit, Id, Id)      * @see #unlockHead()      */
 name|void
 name|lockHead
 parameter_list|()
