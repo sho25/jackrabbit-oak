@@ -98,6 +98,13 @@ name|Status
 name|getStatus
 parameter_list|()
 function_decl|;
+comment|/**      * @return the current location      */
+annotation|@
+name|Nonnull
+name|TreeLocation
+name|getLocation
+parameter_list|()
+function_decl|;
 comment|/**      * @return the parent of this {@code Tree} instance. This method returns      * {@code null} if the parent is not accessible or if no parent exists (root      * node).      */
 annotation|@
 name|CheckForNull
