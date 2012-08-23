@@ -120,6 +120,8 @@ annotation|@
 name|Nonnull
 name|Set
 argument_list|<
+name|?
+extends|extends
 name|Principal
 argument_list|>
 name|getPrincipals
@@ -133,6 +135,8 @@ annotation|@
 name|Nonnull
 name|Iterator
 argument_list|<
+name|?
+extends|extends
 name|Principal
 argument_list|>
 name|findPrincipals

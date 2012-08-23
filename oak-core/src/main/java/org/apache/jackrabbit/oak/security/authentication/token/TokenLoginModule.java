@@ -273,6 +273,8 @@ decl_stmt|;
 specifier|private
 name|Set
 argument_list|<
+name|?
+extends|extends
 name|Principal
 argument_list|>
 name|principals

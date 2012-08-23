@@ -21,22 +21,6 @@ end_package
 
 begin_import
 import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|api
-operator|.
-name|AuthInfo
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|security
@@ -82,6 +66,22 @@ operator|.
 name|annotation
 operator|.
 name|Nonnull
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|api
+operator|.
+name|AuthInfo
 import|;
 end_import
 
@@ -135,6 +135,8 @@ name|attributes
 parameter_list|,
 name|Set
 argument_list|<
+name|?
+extends|extends
 name|Principal
 argument_list|>
 name|principals

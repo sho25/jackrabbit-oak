@@ -702,6 +702,8 @@ block|}
 specifier|protected
 name|Set
 argument_list|<
+name|?
+extends|extends
 name|Principal
 argument_list|>
 name|getPrincipals
