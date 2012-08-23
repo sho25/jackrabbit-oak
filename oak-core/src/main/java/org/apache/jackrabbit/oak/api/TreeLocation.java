@@ -67,14 +67,14 @@ name|TreeLocation
 name|getParent
 parameter_list|()
 function_decl|;
-comment|/**      * Navigate to a child      * @param name  name of the child      * @return  a {@code TreeLocation} for a child with the given {@code name}.      */
+comment|/**      * Navigate to a child through a relative path. A relative path consists of a      * possibly empty lists of names separated by forward slashes.      * @param relPath  relative path to the child      * @return  a {@code TreeLocation} for a child with the given {@code name}.      */
 annotation|@
 name|Nonnull
 name|TreeLocation
 name|getChild
 parameter_list|(
 name|String
-name|name
+name|relPath
 parameter_list|)
 function_decl|;
 comment|/**      * Get the underlying {@link org.apache.jackrabbit.oak.api.Tree} for this {@code TreeLocation}.      * @return  underlying {@code Tree} instance or {@code null} if not available.      */
