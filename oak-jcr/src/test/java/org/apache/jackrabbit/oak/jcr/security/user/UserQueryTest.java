@@ -438,7 +438,6 @@ name|authorizable
 argument_list|)
 expr_stmt|;
 block|}
-comment|// Create a zoo. Please excuse my ignorance in zoology ;-)
 name|Group
 name|animals
 init|=
