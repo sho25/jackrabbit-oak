@@ -519,10 +519,7 @@ block|{
 name|TreeLocation
 name|propertyLocation
 init|=
-name|getLocation
-argument_list|()
-operator|.
-name|getChild
+name|getChildLocation
 argument_list|(
 name|relPath
 argument_list|)
@@ -609,10 +606,7 @@ block|{
 name|Tree
 name|tree
 init|=
-name|getLocation
-argument_list|()
-operator|.
-name|getChild
+name|getChildLocation
 argument_list|(
 name|relPath
 argument_list|)
@@ -1512,7 +1506,7 @@ name|remove
 argument_list|()
 expr_stmt|;
 block|}
-comment|// -----------------------------------------------------------< private>---
+comment|//------------------------------------------------------------< internal>---
 annotation|@
 name|Nonnull
 name|Tree
@@ -1553,6 +1547,25 @@ return|return
 name|tree
 return|;
 block|}
+block|}
+comment|// -----------------------------------------------------------< private>---
+specifier|private
+name|TreeLocation
+name|getChildLocation
+parameter_list|(
+name|String
+name|relPath
+parameter_list|)
+block|{
+return|return
+name|getLocation
+argument_list|()
+operator|.
+name|getChild
+argument_list|(
+name|relPath
+argument_list|)
+return|;
 block|}
 annotation|@
 name|Nonnull
