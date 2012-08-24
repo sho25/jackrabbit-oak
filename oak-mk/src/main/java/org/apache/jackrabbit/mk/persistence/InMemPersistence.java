@@ -301,10 +301,6 @@ argument_list|()
 argument_list|)
 decl_stmt|;
 specifier|private
-name|Id
-name|head
-decl_stmt|;
-specifier|private
 name|long
 name|gcStart
 decl_stmt|;
@@ -330,13 +326,22 @@ parameter_list|)
 block|{
 comment|// nothing to initialize
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Id
-name|readHead
+index|[]
+name|readIds
 parameter_list|()
+throws|throws
+name|Exception
 block|{
 return|return
-name|head
+operator|new
+name|Id
+index|[
+literal|2
+index|]
 return|;
 block|}
 specifier|public
@@ -346,12 +351,7 @@ parameter_list|(
 name|Id
 name|id
 parameter_list|)
-block|{
-name|head
-operator|=
-name|id
-expr_stmt|;
-block|}
+block|{              }
 specifier|public
 name|void
 name|readNode
