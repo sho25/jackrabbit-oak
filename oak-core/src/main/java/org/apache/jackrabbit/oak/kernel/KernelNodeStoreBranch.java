@@ -213,7 +213,13 @@ specifier|final
 name|NodeState
 name|base
 decl_stmt|;
-comment|/** Revision of this branch in the Microkernel */
+comment|/** Revision from which to branch */
+specifier|private
+specifier|final
+name|String
+name|headRevision
+decl_stmt|;
+comment|/** Revision of this branch in the Microkernel, null if not yet branched */
 specifier|private
 name|String
 name|branchRevision
@@ -250,14 +256,12 @@ argument_list|()
 decl_stmt|;
 name|this
 operator|.
-name|branchRevision
+name|headRevision
 operator|=
 name|kernel
 operator|.
-name|branch
-argument_list|(
-literal|null
-argument_list|)
+name|getHeadRevision
+argument_list|()
 expr_stmt|;
 name|this
 operator|.
@@ -270,7 +274,7 @@ name|kernel
 argument_list|,
 literal|"/"
 argument_list|,
-name|branchRevision
+name|headRevision
 argument_list|)
 expr_stmt|;
 name|this
@@ -538,7 +542,7 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|KernelNodeState
+name|NodeState
 name|merge
 parameter_list|(
 name|CommitEditor
@@ -596,6 +600,28 @@ argument_list|)
 expr_stmt|;
 try|try
 block|{
+if|if
+condition|(
+name|branchRevision
+operator|==
+literal|null
+condition|)
+block|{
+comment|// Nothing was written to this branch: return initial node state.
+name|branchRevision
+operator|=
+literal|null
+expr_stmt|;
+name|currentRoot
+operator|=
+literal|null
+expr_stmt|;
+return|return
+name|committed
+return|;
+block|}
+else|else
+block|{
 name|MicroKernel
 name|kernel
 init|=
@@ -624,13 +650,7 @@ name|currentRoot
 operator|=
 literal|null
 expr_stmt|;
-name|committed
-operator|=
-literal|null
-expr_stmt|;
-name|KernelNodeState
-name|committed
-init|=
+return|return
 operator|new
 name|KernelNodeState
 argument_list|(
@@ -640,10 +660,8 @@ literal|"/"
 argument_list|,
 name|mergedRevision
 argument_list|)
-decl_stmt|;
-return|return
-name|committed
 return|;
+block|}
 block|}
 catch|catch
 parameter_list|(
@@ -733,6 +751,24 @@ operator|.
 name|getKernel
 argument_list|()
 decl_stmt|;
+if|if
+condition|(
+name|branchRevision
+operator|==
+literal|null
+condition|)
+block|{
+comment|// create the branch if this is the first commit
+name|branchRevision
+operator|=
+name|kernel
+operator|.
+name|branch
+argument_list|(
+name|headRevision
+argument_list|)
+expr_stmt|;
+block|}
 name|branchRevision
 operator|=
 name|kernel
