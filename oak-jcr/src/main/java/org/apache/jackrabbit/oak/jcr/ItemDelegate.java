@@ -262,7 +262,6 @@ comment|/**      * The underlying {@link org.apache.jackrabbit.oak.api.TreeLocat
 annotation|@
 name|Nonnull
 specifier|public
-specifier|final
 name|TreeLocation
 name|getLocation
 parameter_list|()
