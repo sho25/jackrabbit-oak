@@ -303,7 +303,6 @@ specifier|private
 name|TreeLocation
 name|location
 decl_stmt|;
-specifier|public
 name|NodeDelegate
 parameter_list|(
 name|SessionDelegate
@@ -318,6 +317,11 @@ argument_list|(
 name|sessionDelegate
 argument_list|)
 expr_stmt|;
+assert|assert
+name|tree
+operator|!=
+literal|null
+assert|;
 name|this
 operator|.
 name|location
