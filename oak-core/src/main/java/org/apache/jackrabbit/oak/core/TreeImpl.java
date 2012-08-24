@@ -2284,7 +2284,7 @@ return|;
 block|}
 block|}
 comment|//------------------------------------------------------------< TreeLocation>---
-specifier|private
+specifier|public
 class|class
 name|NodeLocation
 implements|implements
@@ -2295,7 +2295,7 @@ specifier|final
 name|TreeImpl
 name|tree
 decl_stmt|;
-specifier|public
+specifier|private
 name|NodeLocation
 parameter_list|(
 name|TreeImpl
@@ -2566,7 +2566,7 @@ specifier|final
 name|PropertyState
 name|property
 decl_stmt|;
-specifier|public
+specifier|private
 name|PropertyLocation
 parameter_list|(
 name|NodeLocation
@@ -2858,7 +2858,7 @@ argument_list|()
 return|;
 block|}
 block|}
-specifier|private
+specifier|public
 specifier|static
 class|class
 name|NullLocation
@@ -2875,6 +2875,10 @@ operator|new
 name|NullLocation
 argument_list|()
 decl_stmt|;
+specifier|private
+name|NullLocation
+parameter_list|()
+block|{         }
 annotation|@
 name|Override
 specifier|public
