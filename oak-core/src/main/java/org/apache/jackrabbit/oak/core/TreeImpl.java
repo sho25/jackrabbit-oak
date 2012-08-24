@@ -2351,6 +2351,15 @@ name|String
 name|relPath
 parameter_list|)
 block|{
+assert|assert
+operator|!
+name|relPath
+operator|.
+name|startsWith
+argument_list|(
+literal|"/"
+argument_list|)
+assert|;
 if|if
 condition|(
 name|relPath

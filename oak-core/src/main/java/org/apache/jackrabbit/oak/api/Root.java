@@ -78,6 +78,16 @@ name|String
 name|path
 parameter_list|)
 function_decl|;
+comment|/**      * Get a tree location for a given {@code path}      * @param path  path to the location      * @return  the tree location for {@code path}      */
+annotation|@
+name|Nonnull
+name|TreeLocation
+name|getLocation
+parameter_list|(
+name|String
+name|path
+parameter_list|)
+function_decl|;
 comment|/**      * Rebase this root instance to the latest revision. After a call to this method,      * all trees obtained through {@link #getTree(String)} become invalid and fresh      * instances must be obtained.      *      * @param conflictHandler A {@link ConflictHandler} for resolving conflicts.      */
 name|void
 name|rebase
