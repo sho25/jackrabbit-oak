@@ -370,10 +370,15 @@ specifier|final
 name|RootImpl
 name|root
 decl_stmt|;
-comment|/** Parent of this tree. Null for the root and this for removed trees. */
+comment|/** Parent of this tree. Null for the root. */
 specifier|private
 name|TreeImpl
 name|parent
+decl_stmt|;
+comment|/** Marker for removed trees */
+specifier|private
+name|boolean
+name|removed
 decl_stmt|;
 comment|/** Name of this tree */
 specifier|private
@@ -1145,9 +1150,9 @@ argument_list|(
 name|name
 argument_list|)
 expr_stmt|;
-name|parent
+name|removed
 operator|=
-name|this
+literal|true
 expr_stmt|;
 name|root
 operator|.
@@ -1646,6 +1651,18 @@ name|String
 name|name
 parameter_list|)
 block|{
+if|if
+condition|(
+name|isRemoved
+argument_list|()
+condition|)
+block|{
+return|return
+name|Status
+operator|.
+name|REMOVED
+return|;
+block|}
 name|NodeState
 name|baseState
 init|=
@@ -1812,9 +1829,18 @@ name|isRemoved
 parameter_list|()
 block|{
 return|return
+name|removed
+operator|||
+operator|(
 name|parent
-operator|==
-name|this
+operator|!=
+literal|null
+operator|&&
+name|parent
+operator|.
+name|isRemoved
+argument_list|()
+operator|)
 return|;
 block|}
 specifier|private
@@ -1825,20 +1851,6 @@ name|StringBuilder
 name|sb
 parameter_list|)
 block|{
-if|if
-condition|(
-name|isRemoved
-argument_list|()
-condition|)
-block|{
-throw|throw
-operator|new
-name|IllegalStateException
-argument_list|(
-literal|"Cannot build the path of a removed tree"
-argument_list|)
-throw|;
-block|}
 if|if
 condition|(
 operator|!
