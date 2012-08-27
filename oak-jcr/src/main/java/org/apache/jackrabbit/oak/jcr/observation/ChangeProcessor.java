@@ -448,7 +448,7 @@ name|filter
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Stop this change processor if running. After returning from this methods no further      * events will be delivered. This method has no effect if the change processor is not running.      * A change processor is running while execution is inside its {@code run()} method.      */
+comment|/**      * Stop this change processor if running. After returning from this methods no further      * events will be delivered.      */
 specifier|public
 specifier|synchronized
 name|void
@@ -457,9 +457,19 @@ parameter_list|()
 block|{
 if|if
 condition|(
-name|running
+name|future
+operator|==
+literal|null
 condition|)
 block|{
+throw|throw
+operator|new
+name|IllegalStateException
+argument_list|(
+literal|"Change processor not started"
+argument_list|)
+throw|;
+block|}
 try|try
 block|{
 name|stopping
@@ -473,11 +483,17 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|running
+condition|)
+block|{
 name|stopped
 operator|.
 name|await
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 catch|catch
 parameter_list|(
@@ -494,6 +510,12 @@ name|interrupt
 argument_list|()
 expr_stmt|;
 block|}
+finally|finally
+block|{
+name|future
+operator|=
+literal|null
+expr_stmt|;
 block|}
 block|}
 comment|/**      * Start the change processor on the passed {@code executor}.      * @param executor      * @throws IllegalStateException if started already      */
@@ -550,6 +572,8 @@ name|running
 operator|=
 literal|true
 expr_stmt|;
+try|try
+block|{
 name|EventGeneratingNodeStateDiff
 name|diff
 init|=
@@ -576,15 +600,25 @@ name|sendEvents
 argument_list|()
 expr_stmt|;
 block|}
+block|}
+finally|finally
+block|{
+if|if
+condition|(
+name|stopping
+condition|)
+block|{
 name|stopped
 operator|.
 name|countDown
 argument_list|()
 expr_stmt|;
+block|}
 name|running
 operator|=
 literal|false
 expr_stmt|;
+block|}
 block|}
 comment|//------------------------------------------------------------< private>---
 specifier|private
