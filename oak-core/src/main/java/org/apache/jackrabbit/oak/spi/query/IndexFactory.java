@@ -21,6 +21,16 @@ end_package
 
 begin_import
 import|import
+name|java
+operator|.
+name|io
+operator|.
+name|Closeable
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|annotation
@@ -59,6 +69,8 @@ begin_interface
 specifier|public
 interface|interface
 name|IndexFactory
+extends|extends
+name|Closeable
 block|{
 comment|/**      * initializes the provided factory      */
 name|void
@@ -80,7 +92,7 @@ comment|/**      * @param indexDefinition      * @return      */
 annotation|@
 name|CheckForNull
 name|Index
-name|createIndex
+name|getIndex
 parameter_list|(
 name|IndexDefinition
 name|indexDefinition
