@@ -522,7 +522,7 @@ specifier|private
 name|int
 name|modCount
 decl_stmt|;
-comment|/**      * Listeners which needs to be modified as soon as {@link #purgePendingChanges()}      * is called. Listeners are removed from this list after being called. If further      * notifications are required, they need to explicitly re-register.      *      * The {@link TreeImpl} instances us this mechanism to dispose of its associated      * {@link NodeBuilder} on purge. Keeping a reference on those {@code TreeImpl}      * instances {@code NodeBuilder} (i.e. those which are modified) prevents them      * from being prematurely garbage collected.      */
+comment|/**      * Listeners which needs to be notified as soon as {@link #purgePendingChanges()}      * is called. Listeners are removed from this list after being called. If further      * notifications are required, they need to explicitly re-register.      *      * The {@link TreeImpl} instances us this mechanism to dispose of its associated      * {@link NodeBuilder} on purge. Keeping a reference on those {@code TreeImpl}      * instances {@code NodeBuilder} (i.e. those which are modified) prevents them      * from being prematurely garbage collected.      */
 specifier|private
 name|List
 argument_list|<
