@@ -1810,6 +1810,25 @@ operator|-
 literal|1
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|request
+operator|.
+name|getUserAgent
+argument_list|()
+operator|==
+literal|null
+condition|)
+block|{
+comment|// let browsers guess the correct file format
+name|response
+operator|.
+name|setContentType
+argument_list|(
+literal|"application/octet-stream"
+argument_list|)
+expr_stmt|;
+block|}
 name|OutputStream
 name|out
 init|=
