@@ -1080,6 +1080,10 @@ block|}
 if|if
 condition|(
 name|first
+operator|!=
+literal|null
+operator|&&
+name|first
 operator|.
 name|equals
 argument_list|(
