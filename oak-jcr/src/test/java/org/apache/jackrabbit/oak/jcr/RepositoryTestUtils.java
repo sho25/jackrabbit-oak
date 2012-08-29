@@ -159,7 +159,7 @@ name|spi
 operator|.
 name|commit
 operator|.
-name|CommitEditor
+name|CommitHook
 import|;
 end_import
 
@@ -177,7 +177,7 @@ name|spi
 operator|.
 name|commit
 operator|.
-name|CompositeEditor
+name|CompositeHook
 import|;
 end_import
 
@@ -213,7 +213,7 @@ name|spi
 operator|.
 name|commit
 operator|.
-name|ValidatingEditor
+name|ValidatingHook
 import|;
 end_import
 
@@ -240,26 +240,30 @@ specifier|public
 class|class
 name|RepositoryTestUtils
 block|{
+specifier|private
+name|RepositoryTestUtils
+parameter_list|()
+block|{     }
 specifier|public
 specifier|static
-name|CommitEditor
-name|buildDefaultCommitEditor
+name|CommitHook
+name|buildDefaultCommitHook
 parameter_list|()
 block|{
 name|List
 argument_list|<
-name|CommitEditor
+name|CommitHook
 argument_list|>
-name|editors
+name|hooks
 init|=
 operator|new
 name|ArrayList
 argument_list|<
-name|CommitEditor
+name|CommitHook
 argument_list|>
 argument_list|()
 decl_stmt|;
-name|editors
+name|hooks
 operator|.
 name|add
 argument_list|(
@@ -268,19 +272,19 @@ name|DefaultTypeEditor
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|editors
+name|hooks
 operator|.
 name|add
 argument_list|(
 operator|new
-name|ValidatingEditor
+name|ValidatingHook
 argument_list|(
 name|createDefaultValidatorProvider
 argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|editors
+name|hooks
 operator|.
 name|add
 argument_list|(
@@ -291,9 +295,9 @@ argument_list|)
 expr_stmt|;
 return|return
 operator|new
-name|CompositeEditor
+name|CompositeHook
 argument_list|(
-name|editors
+name|hooks
 argument_list|)
 return|;
 block|}

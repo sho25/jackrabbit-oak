@@ -285,7 +285,7 @@ name|spi
 operator|.
 name|commit
 operator|.
-name|ValidatingEditor
+name|ValidatingHook
 import|;
 end_import
 
@@ -1006,11 +1006,11 @@ argument_list|(
 name|mk
 argument_list|)
 expr_stmt|;
-name|ValidatingEditor
+name|ValidatingHook
 name|ve
 init|=
 operator|new
-name|ValidatingEditor
+name|ValidatingHook
 argument_list|(
 operator|new
 name|CompositeValidatorProvider

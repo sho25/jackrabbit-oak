@@ -113,7 +113,7 @@ name|spi
 operator|.
 name|commit
 operator|.
-name|CommitEditor
+name|CommitHook
 import|;
 end_import
 
@@ -131,7 +131,7 @@ name|spi
 operator|.
 name|commit
 operator|.
-name|EmptyEditor
+name|EmptyHook
 import|;
 end_import
 
@@ -768,7 +768,7 @@ name|branch
 operator|.
 name|merge
 argument_list|(
-name|EmptyEditor
+name|EmptyHook
 operator|.
 name|INSTANCE
 argument_list|)
@@ -984,7 +984,7 @@ name|branch
 operator|.
 name|merge
 argument_list|(
-name|EmptyEditor
+name|EmptyHook
 operator|.
 name|INSTANCE
 argument_list|)
@@ -1110,17 +1110,17 @@ name|CommitFailedException
 block|{
 name|store
 operator|.
-name|setEditor
+name|setHook
 argument_list|(
 operator|new
-name|CommitEditor
+name|CommitHook
 argument_list|()
 block|{
 annotation|@
 name|Override
 specifier|public
 name|NodeState
-name|editCommit
+name|processCommit
 parameter_list|(
 name|NodeStore
 name|store
@@ -1285,7 +1285,7 @@ name|branch
 operator|.
 name|merge
 argument_list|(
-name|EmptyEditor
+name|EmptyHook
 operator|.
 name|INSTANCE
 argument_list|)

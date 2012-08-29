@@ -53,7 +53,7 @@ name|spi
 operator|.
 name|commit
 operator|.
-name|CommitEditor
+name|CommitHook
 import|;
 end_import
 
@@ -66,7 +66,7 @@ specifier|public
 interface|interface
 name|Index
 extends|extends
-name|CommitEditor
+name|CommitHook
 extends|,
 name|Closeable
 block|{

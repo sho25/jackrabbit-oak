@@ -127,24 +127,6 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|plugins
-operator|.
-name|index
-operator|.
-name|Indexer
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
 name|api
 operator|.
 name|ContentRepository
@@ -180,6 +162,24 @@ operator|.
 name|kernel
 operator|.
 name|KernelNodeStore
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|index
+operator|.
+name|Indexer
 import|;
 end_import
 
@@ -265,7 +265,7 @@ name|spi
 operator|.
 name|commit
 operator|.
-name|CommitEditor
+name|CommitHook
 import|;
 end_import
 
@@ -301,7 +301,7 @@ name|spi
 operator|.
 name|commit
 operator|.
-name|ValidatingEditor
+name|ValidatingHook
 import|;
 end_import
 
@@ -466,7 +466,7 @@ argument_list|,
 literal|null
 argument_list|,
 operator|new
-name|ValidatingEditor
+name|ValidatingHook
 argument_list|(
 operator|new
 name|CompositeValidatorProvider
@@ -505,7 +505,7 @@ argument_list|,
 name|indexProvider
 argument_list|,
 operator|new
-name|ValidatingEditor
+name|ValidatingHook
 argument_list|(
 name|validatorProvider
 operator|!=
@@ -528,7 +528,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Creates an Oak repository instance based on the given, already      * initialized components.      *      * @param microKernel underlying kernel instance      * @param indexProvider index provider      * @param commitEditor the commit editor      */
+comment|/**      * Creates an Oak repository instance based on the given, already      * initialized components.      *      * @param microKernel underlying kernel instance      * @param indexProvider index provider      * @param commitHook the commit hook      */
 specifier|public
 name|ContentRepositoryImpl
 parameter_list|(
@@ -538,8 +538,8 @@ parameter_list|,
 name|QueryIndexProvider
 name|indexProvider
 parameter_list|,
-name|CommitEditor
-name|commitEditor
+name|CommitHook
+name|commitHook
 parameter_list|)
 block|{
 name|nodeStore
@@ -552,9 +552,9 @@ argument_list|)
 expr_stmt|;
 name|nodeStore
 operator|.
-name|setEditor
+name|setHook
 argument_list|(
-name|commitEditor
+name|commitHook
 argument_list|)
 expr_stmt|;
 name|QueryIndexProvider

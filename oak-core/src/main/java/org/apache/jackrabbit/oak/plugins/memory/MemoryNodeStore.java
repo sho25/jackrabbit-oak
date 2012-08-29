@@ -79,7 +79,7 @@ name|spi
 operator|.
 name|commit
 operator|.
-name|CommitEditor
+name|CommitHook
 import|;
 end_import
 
@@ -329,8 +329,8 @@ specifier|public
 name|NodeState
 name|merge
 parameter_list|(
-name|CommitEditor
-name|editor
+name|CommitHook
+name|hook
 parameter_list|)
 throws|throws
 name|CommitFailedException

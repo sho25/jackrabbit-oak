@@ -137,7 +137,7 @@ name|spi
 operator|.
 name|commit
 operator|.
-name|CommitEditor
+name|CommitHook
 import|;
 end_import
 
@@ -222,7 +222,7 @@ name|IndexManagerImpl
 implements|implements
 name|IndexManager
 implements|,
-name|CommitEditor
+name|CommitHook
 block|{
 specifier|private
 specifier|static
@@ -800,7 +800,7 @@ annotation|@
 name|Override
 specifier|public
 name|NodeState
-name|editCommit
+name|processCommit
 parameter_list|(
 name|NodeStore
 name|store
@@ -855,7 +855,7 @@ name|newState
 operator|=
 name|index
 operator|.
-name|editCommit
+name|processCommit
 argument_list|(
 name|store
 argument_list|,

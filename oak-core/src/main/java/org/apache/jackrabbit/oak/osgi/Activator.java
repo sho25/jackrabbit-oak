@@ -147,7 +147,7 @@ name|spi
 operator|.
 name|commit
 operator|.
-name|CommitEditor
+name|CommitHook
 import|;
 end_import
 
@@ -165,7 +165,7 @@ name|spi
 operator|.
 name|commit
 operator|.
-name|CompositeEditor
+name|CompositeHook
 import|;
 end_import
 
@@ -183,7 +183,7 @@ name|spi
 operator|.
 name|commit
 operator|.
-name|ValidatingEditor
+name|ValidatingHook
 import|;
 end_import
 
@@ -429,18 +429,18 @@ condition|)
 block|{
 name|List
 argument_list|<
-name|CommitEditor
+name|CommitHook
 argument_list|>
-name|editors
+name|hooks
 init|=
 operator|new
 name|ArrayList
 argument_list|<
-name|CommitEditor
+name|CommitHook
 argument_list|>
 argument_list|()
 decl_stmt|;
-name|editors
+name|hooks
 operator|.
 name|add
 argument_list|(
@@ -449,18 +449,18 @@ name|DefaultTypeEditor
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|editors
+name|hooks
 operator|.
 name|add
 argument_list|(
 operator|new
-name|ValidatingEditor
+name|ValidatingHook
 argument_list|(
 name|validatorProvider
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// editors.add(new LuceneEditor());
+comment|// hooks.add(new LuceneEditor());
 name|MicroKernel
 name|kernel
 init|=
@@ -494,9 +494,9 @@ argument_list|,
 name|indexProvider
 argument_list|,
 operator|new
-name|CompositeEditor
+name|CompositeHook
 argument_list|(
-name|editors
+name|hooks
 argument_list|)
 argument_list|)
 argument_list|,

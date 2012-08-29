@@ -21,6 +21,16 @@ end_package
 
 begin_import
 import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|Nonnull
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -72,32 +82,19 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Basic commit hook implementation that by default doesn't do anything.  * This class has a dual purpose:  *<ol>  *<li>The static {@link #INSTANCE} instance can be used as a "null object"  * in cases where another commit hook has not been configured, thus avoiding  * the need for extra code for such cases.</li>  *<li>Other commit hook implementations can extend this class and gain  * improved forwards-compatibility to possible changes in the  * {@link CommitEditor} interface. For example if it is later decided that  * new arguments are needed in the hook methods, this class is guaranteed  * to implement any new method signatures in a way that falls gracefully  * back to any earlier behavior.</li>  *</ol>  */
+comment|/**  * Extension point for validating and modifying content changes. Available  * commit hooks are called in sequence to process incoming content changes  * before they get persisted and shared with other clients.  *<p>  * A commit hook can throw a {@link CommitFailedException} for a particular  * change to prevent it from being persisted, or it can modify the changes  * for example to update an in-content index or to add auto-generated content.  *<p>  * Note that instead of implementing this interface directly, most commit  * editors and validators are better expressed as implementations of the  * more specific extension interfaces defined in this package.  */
 end_comment
 
-begin_class
+begin_interface
 specifier|public
-class|class
-name|EmptyEditor
-implements|implements
-name|CommitEditor
+interface|interface
+name|CommitHook
 block|{
-comment|/**      * Static instance of this class, useful as a "null object".      */
-specifier|public
-specifier|static
-specifier|final
-name|CommitEditor
-name|INSTANCE
-init|=
-operator|new
-name|EmptyEditor
-argument_list|()
-decl_stmt|;
+comment|/**      * Validates and/or modifies the given content change before it gets      * persisted.      *      * @param store the node store that contains the repository content      * @param before content tree before the commit      * @param after content tree prepared for the commit      * @return content tree to be committed      * @throws CommitFailedException if the commit should be rejected      */
 annotation|@
-name|Override
-specifier|public
+name|Nonnull
 name|NodeState
-name|editCommit
+name|processCommit
 parameter_list|(
 name|NodeStore
 name|store
@@ -110,13 +107,9 @@ name|after
 parameter_list|)
 throws|throws
 name|CommitFailedException
-block|{
-return|return
-name|after
-return|;
+function_decl|;
 block|}
-block|}
-end_class
+end_interface
 
 end_unit
 

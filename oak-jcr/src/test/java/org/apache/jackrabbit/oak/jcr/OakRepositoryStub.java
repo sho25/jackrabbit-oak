@@ -18,24 +18,6 @@ package|;
 end_package
 
 begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|jcr
-operator|.
-name|RepositoryTestUtils
-operator|.
-name|buildDefaultCommitEditor
-import|;
-end_import
-
-begin_import
 import|import
 name|java
 operator|.
@@ -229,6 +211,24 @@ name|RepositoryStub
 import|;
 end_import
 
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|jcr
+operator|.
+name|RepositoryTestUtils
+operator|.
+name|buildDefaultCommitHook
+import|;
+end_import
+
 begin_class
 specifier|public
 class|class
@@ -282,7 +282,7 @@ name|microkernel
 argument_list|,
 literal|null
 argument_list|,
-name|buildDefaultCommitEditor
+name|buildDefaultCommitHook
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -399,6 +399,7 @@ throw|;
 block|}
 specifier|private
 specifier|static
+specifier|final
 name|Principal
 name|UNKNOWN_PRINCIPAL
 init|=

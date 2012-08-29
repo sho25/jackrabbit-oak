@@ -126,15 +126,15 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This commit editor implementation validates the changes to be committed  * against all {@link Validator}s provided by the {@link ValidatorProvider}  * passed to the class' constructor.  */
+comment|/**  * This commit hook implementation validates the changes to be committed  * against all {@link Validator}s provided by the {@link ValidatorProvider}  * passed to the class' constructor.  */
 end_comment
 
 begin_class
 specifier|public
 class|class
-name|ValidatingEditor
+name|ValidatingHook
 implements|implements
-name|CommitEditor
+name|CommitHook
 block|{
 specifier|private
 specifier|final
@@ -143,7 +143,7 @@ name|validatorProvider
 decl_stmt|;
 comment|/**      * Create a new commit hook which validates the commit against all      * {@link Validator}s provided by {@code validatorProvider}.      * @param validatorProvider  validator provider      */
 specifier|public
-name|ValidatingEditor
+name|ValidatingHook
 parameter_list|(
 name|ValidatorProvider
 name|validatorProvider
@@ -160,7 +160,7 @@ annotation|@
 name|Override
 specifier|public
 name|NodeState
-name|editCommit
+name|processCommit
 parameter_list|(
 name|NodeStore
 name|store

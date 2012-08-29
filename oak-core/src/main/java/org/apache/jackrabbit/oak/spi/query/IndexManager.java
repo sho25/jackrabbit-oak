@@ -73,7 +73,7 @@ name|spi
 operator|.
 name|commit
 operator|.
-name|CommitEditor
+name|CommitHook
 import|;
 end_import
 
@@ -104,7 +104,7 @@ specifier|public
 interface|interface
 name|IndexManager
 extends|extends
-name|CommitEditor
+name|CommitHook
 extends|,
 name|Closeable
 block|{
@@ -139,7 +139,6 @@ function_decl|;
 comment|/**      * @return the index with the given definition      */
 annotation|@
 name|CheckForNull
-specifier|public
 name|Index
 name|getIndex
 parameter_list|(

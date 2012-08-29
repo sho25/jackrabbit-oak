@@ -878,7 +878,7 @@ annotation|@
 name|Override
 specifier|public
 name|NodeState
-name|editCommit
+name|processCommit
 parameter_list|(
 name|NodeStore
 name|store

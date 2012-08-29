@@ -193,7 +193,7 @@ name|spi
 operator|.
 name|commit
 operator|.
-name|CommitEditor
+name|CommitHook
 import|;
 end_import
 
@@ -229,7 +229,7 @@ name|spi
 operator|.
 name|commit
 operator|.
-name|ValidatingEditor
+name|ValidatingHook
 import|;
 end_import
 
@@ -504,8 +504,8 @@ name|permissions
 decl_stmt|;
 specifier|private
 specifier|final
-name|CommitEditor
-name|commitEditor
+name|CommitHook
+name|commitHook
 decl_stmt|;
 comment|/** Current branch this root operates on */
 specifier|private
@@ -580,9 +580,9 @@ name|accessControlContext
 expr_stmt|;
 name|this
 operator|.
-name|commitEditor
+name|commitHook
 operator|=
-name|createCommitEditor
+name|createCommitHook
 argument_list|()
 expr_stmt|;
 name|refresh
@@ -894,7 +894,7 @@ name|branch
 operator|.
 name|merge
 argument_list|(
-name|commitEditor
+name|commitHook
 argument_list|)
 expr_stmt|;
 name|refresh
@@ -1120,8 +1120,8 @@ expr_stmt|;
 block|}
 block|}
 specifier|private
-name|CommitEditor
-name|createCommitEditor
+name|CommitHook
+name|createCommitHook
 parameter_list|()
 block|{
 name|CoreValueFactory
@@ -1202,7 +1202,7 @@ argument_list|)
 expr_stmt|;
 return|return
 operator|new
-name|ValidatingEditor
+name|ValidatingHook
 argument_list|(
 operator|new
 name|CompositeValidatorProvider

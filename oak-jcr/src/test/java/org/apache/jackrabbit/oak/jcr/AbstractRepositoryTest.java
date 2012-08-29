@@ -57,26 +57,6 @@ name|javax
 operator|.
 name|jcr
 operator|.
-name|Node
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|jcr
-operator|.
-name|Property
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|jcr
-operator|.
 name|Repository
 import|;
 end_import
@@ -167,7 +147,7 @@ name|jcr
 operator|.
 name|RepositoryTestUtils
 operator|.
-name|buildDefaultCommitEditor
+name|buildDefaultCommitHook
 import|;
 end_import
 
@@ -286,7 +266,7 @@ argument_list|()
 argument_list|,
 literal|null
 argument_list|,
-name|buildDefaultCommitEditor
+name|buildDefaultCommitHook
 argument_list|()
 argument_list|)
 argument_list|,

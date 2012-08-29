@@ -297,7 +297,7 @@ name|spi
 operator|.
 name|commit
 operator|.
-name|CommitEditor
+name|CommitHook
 import|;
 end_import
 
@@ -315,7 +315,7 @@ name|spi
 operator|.
 name|commit
 operator|.
-name|CompositeEditor
+name|CompositeHook
 import|;
 end_import
 
@@ -351,7 +351,7 @@ name|spi
 operator|.
 name|commit
 operator|.
-name|ValidatingEditor
+name|ValidatingHook
 import|;
 end_import
 
@@ -472,6 +472,10 @@ name|PORT
 operator|+
 literal|"/"
 decl_stmt|;
+specifier|private
+name|Main
+parameter_list|()
+block|{     }
 specifier|public
 specifier|static
 name|void
@@ -701,8 +705,8 @@ name|String
 name|uri
 parameter_list|,
 name|String
-name|args
 index|[]
+name|args
 parameter_list|)
 block|{
 name|context
@@ -998,7 +1002,7 @@ name|kernel
 argument_list|,
 literal|null
 argument_list|,
-name|buildDefaultCommitEditor
+name|buildDefaultCommitHook
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -1164,24 +1168,24 @@ expr_stmt|;
 block|}
 specifier|private
 specifier|static
-name|CommitEditor
-name|buildDefaultCommitEditor
+name|CommitHook
+name|buildDefaultCommitHook
 parameter_list|()
 block|{
 name|List
 argument_list|<
-name|CommitEditor
+name|CommitHook
 argument_list|>
-name|editors
+name|hooks
 init|=
 operator|new
 name|ArrayList
 argument_list|<
-name|CommitEditor
+name|CommitHook
 argument_list|>
 argument_list|()
 decl_stmt|;
-name|editors
+name|hooks
 operator|.
 name|add
 argument_list|(
@@ -1190,19 +1194,19 @@ name|DefaultTypeEditor
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|editors
+name|hooks
 operator|.
 name|add
 argument_list|(
 operator|new
-name|ValidatingEditor
+name|ValidatingHook
 argument_list|(
 name|createDefaultValidatorProvider
 argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|editors
+name|hooks
 operator|.
 name|add
 argument_list|(
@@ -1213,9 +1217,9 @@ argument_list|)
 expr_stmt|;
 return|return
 operator|new
-name|CompositeEditor
+name|CompositeHook
 argument_list|(
-name|editors
+name|hooks
 argument_list|)
 return|;
 block|}

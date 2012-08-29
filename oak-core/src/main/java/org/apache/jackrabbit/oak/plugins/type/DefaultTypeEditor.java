@@ -75,7 +75,7 @@ name|spi
 operator|.
 name|commit
 operator|.
-name|CommitEditor
+name|CommitHook
 import|;
 end_import
 
@@ -196,13 +196,13 @@ specifier|public
 class|class
 name|DefaultTypeEditor
 implements|implements
-name|CommitEditor
+name|CommitHook
 block|{
 annotation|@
 name|Override
 specifier|public
 name|NodeState
-name|editCommit
+name|processCommit
 parameter_list|(
 name|NodeStore
 name|store

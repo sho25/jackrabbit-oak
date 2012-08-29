@@ -59,7 +59,7 @@ name|spi
 operator|.
 name|commit
 operator|.
-name|CommitEditor
+name|CommitHook
 import|;
 end_import
 
@@ -112,14 +112,14 @@ name|String
 name|target
 parameter_list|)
 function_decl|;
-comment|/**      * Merges the changes in this branch to the main content tree.      * @param editor  commit editor to apply      * @return the node state resulting from the merge.      *      * @throws CommitFailedException if the merge failed      */
+comment|/**      * Merges the changes in this branch to the main content tree.      * @param hook  commit hook to apply      * @return the node state resulting from the merge.      *      * @throws CommitFailedException if the merge failed      */
 annotation|@
 name|Nonnull
 name|NodeState
 name|merge
 parameter_list|(
-name|CommitEditor
-name|editor
+name|CommitHook
+name|hook
 parameter_list|)
 throws|throws
 name|CommitFailedException

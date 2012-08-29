@@ -91,7 +91,7 @@ name|spi
 operator|.
 name|commit
 operator|.
-name|CommitEditor
+name|CommitHook
 import|;
 end_import
 
@@ -109,7 +109,7 @@ name|spi
 operator|.
 name|commit
 operator|.
-name|EmptyEditor
+name|EmptyHook
 import|;
 end_import
 
@@ -238,15 +238,15 @@ specifier|final
 name|MicroKernel
 name|kernel
 decl_stmt|;
-comment|/**      * Commit editor.      */
+comment|/**      * Commit hook.      */
 annotation|@
 name|Nonnull
 specifier|private
 specifier|volatile
-name|CommitEditor
-name|editor
+name|CommitHook
+name|hook
 init|=
-name|EmptyEditor
+name|EmptyHook
 operator|.
 name|INSTANCE
 decl_stmt|;
@@ -306,32 +306,32 @@ block|}
 annotation|@
 name|Nonnull
 specifier|public
-name|CommitEditor
-name|getEditor
+name|CommitHook
+name|getHook
 parameter_list|()
 block|{
 return|return
-name|editor
+name|hook
 return|;
 block|}
 specifier|public
 name|void
-name|setEditor
+name|setHook
 parameter_list|(
-name|CommitEditor
-name|editor
+name|CommitHook
+name|hook
 parameter_list|)
 block|{
 assert|assert
-name|editor
+name|hook
 operator|!=
 literal|null
 assert|;
 name|this
 operator|.
-name|editor
+name|hook
 operator|=
-name|editor
+name|hook
 expr_stmt|;
 block|}
 annotation|@
