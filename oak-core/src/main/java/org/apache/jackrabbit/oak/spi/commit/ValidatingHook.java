@@ -126,7 +126,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This commit hook implementation validates the changes to be committed  * against all {@link Validator}s provided by the {@link ValidatorProvider}  * passed to the class' constructor.  */
+comment|/**  * This commit hook implementation validates the changes to be committed  * against the {@link Validator} provided by the {@link ValidatorProvider}  * passed to the class' constructor.  */
 end_comment
 
 begin_class
