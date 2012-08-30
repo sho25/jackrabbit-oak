@@ -147,6 +147,20 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|collect
+operator|.
+name|Lists
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -1148,6 +1162,15 @@ return|;
 block|}
 else|else
 block|{
+name|values
+operator|=
+name|Lists
+operator|.
+name|newArrayList
+argument_list|(
+name|values
+argument_list|)
+expr_stmt|;
 name|values
 operator|.
 name|add
