@@ -311,10 +311,7 @@ name|Override
 specifier|public
 name|ValidatorProvider
 name|getPermissionValidatorProvider
-parameter_list|(
-name|CoreValueFactory
-name|valueFactory
-parameter_list|)
+parameter_list|()
 block|{
 return|return
 operator|new
@@ -327,10 +324,7 @@ name|Override
 specifier|public
 name|ValidatorProvider
 name|getAccessControlValidatorProvider
-parameter_list|(
-name|CoreValueFactory
-name|valueFactory
-parameter_list|)
+parameter_list|()
 block|{
 return|return
 operator|new

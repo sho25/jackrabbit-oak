@@ -285,8 +285,6 @@ return|return
 operator|new
 name|UserValidatorProvider
 argument_list|(
-name|valueFactory
-argument_list|,
 name|config
 argument_list|)
 return|;
