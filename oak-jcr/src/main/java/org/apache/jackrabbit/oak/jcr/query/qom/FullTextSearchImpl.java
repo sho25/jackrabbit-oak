@@ -135,7 +135,6 @@ name|String
 name|toString
 parameter_list|()
 block|{
-comment|// TODO quote property names?
 name|StringBuilder
 name|builder
 init|=
@@ -154,8 +153,10 @@ name|builder
 operator|.
 name|append
 argument_list|(
-name|getSelectorName
-argument_list|()
+name|quoteSelectorName
+argument_list|(
+name|selectorName
+argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
@@ -176,7 +177,10 @@ name|builder
 operator|.
 name|append
 argument_list|(
+name|quotePropertyName
+argument_list|(
 name|propertyName
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|builder

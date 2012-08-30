@@ -110,14 +110,18 @@ name|String
 name|toString
 parameter_list|()
 block|{
-comment|// TODO quote property names?
 return|return
-name|getSelectorName
-argument_list|()
+name|quoteSelectorName
+argument_list|(
+name|selectorName
+argument_list|)
 operator|+
 literal|'.'
 operator|+
+name|quotePropertyName
+argument_list|(
 name|propertyName
+argument_list|)
 return|;
 block|}
 block|}

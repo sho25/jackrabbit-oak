@@ -113,7 +113,10 @@ block|{
 return|return
 literal|"ISCHILDNODE("
 operator|+
+name|quoteSelectorName
+argument_list|(
 name|selectorName
+argument_list|)
 operator|+
 literal|", "
 operator|+

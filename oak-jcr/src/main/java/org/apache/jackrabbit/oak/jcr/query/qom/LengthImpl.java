@@ -88,8 +88,7 @@ block|{
 return|return
 literal|"LENGTH("
 operator|+
-name|getPropertyValue
-argument_list|()
+name|propertyValue
 operator|+
 literal|')'
 return|;

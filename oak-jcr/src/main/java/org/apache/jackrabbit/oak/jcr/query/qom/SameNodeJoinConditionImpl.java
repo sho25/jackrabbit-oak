@@ -153,8 +153,10 @@ name|builder
 operator|.
 name|append
 argument_list|(
-name|getSelector1Name
-argument_list|()
+name|quoteSelectorName
+argument_list|(
+name|selector1Name
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|builder
@@ -168,8 +170,10 @@ name|builder
 operator|.
 name|append
 argument_list|(
-name|getSelector2Name
-argument_list|()
+name|quoteSelectorName
+argument_list|(
+name|selector2Name
+argument_list|)
 argument_list|)
 expr_stmt|;
 if|if

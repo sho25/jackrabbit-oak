@@ -108,14 +108,17 @@ name|toString
 parameter_list|()
 block|{
 return|return
-literal|"["
-operator|+
+name|quoteNodeTypeName
+argument_list|(
 name|nodeTypeName
+argument_list|)
 operator|+
-literal|"] AS "
+literal|" AS "
 operator|+
-name|getSelectorName
-argument_list|()
+name|quoteSelectorName
+argument_list|(
+name|selectorName
+argument_list|)
 return|;
 block|}
 block|}

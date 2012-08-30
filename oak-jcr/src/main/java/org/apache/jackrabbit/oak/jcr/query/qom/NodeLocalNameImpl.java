@@ -88,8 +88,10 @@ block|{
 return|return
 literal|"LOCALNAME("
 operator|+
-name|getSelectorName
-argument_list|()
+name|quoteSelectorName
+argument_list|(
+name|selectorName
+argument_list|)
 operator|+
 literal|')'
 return|;
