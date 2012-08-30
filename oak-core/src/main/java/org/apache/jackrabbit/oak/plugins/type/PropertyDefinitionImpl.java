@@ -257,6 +257,13 @@ index|[]
 name|getDefaultValues
 parameter_list|()
 block|{
+if|if
+condition|(
+name|factory
+operator|!=
+literal|null
+condition|)
+block|{
 return|return
 name|node
 operator|.
@@ -267,6 +274,20 @@ argument_list|,
 name|factory
 argument_list|)
 return|;
+block|}
+else|else
+block|{
+name|log
+operator|.
+name|warn
+argument_list|(
+literal|"Cannot create default values: no value factory"
+argument_list|)
+expr_stmt|;
+return|return
+literal|null
+return|;
+block|}
 block|}
 annotation|@
 name|Override
