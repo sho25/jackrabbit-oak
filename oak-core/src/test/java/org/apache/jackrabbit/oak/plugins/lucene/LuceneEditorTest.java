@@ -21,6 +21,18 @@ end_package
 
 begin_import
 import|import
+name|javax
+operator|.
+name|security
+operator|.
+name|auth
+operator|.
+name|Subject
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -96,22 +108,6 @@ operator|.
 name|core
 operator|.
 name|RootImpl
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|core
-operator|.
-name|TestAcContext
 import|;
 end_import
 
@@ -418,10 +414,10 @@ name|RootImpl
 argument_list|(
 name|store
 argument_list|,
-literal|""
+literal|null
 argument_list|,
 operator|new
-name|TestAcContext
+name|Subject
 argument_list|()
 argument_list|)
 decl_stmt|;

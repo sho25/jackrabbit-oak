@@ -39,6 +39,18 @@ end_import
 
 begin_import
 import|import
+name|javax
+operator|.
+name|security
+operator|.
+name|auth
+operator|.
+name|Subject
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -537,7 +549,7 @@ argument_list|,
 literal|null
 argument_list|,
 operator|new
-name|TestAcContext
+name|Subject
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -589,7 +601,7 @@ argument_list|,
 literal|null
 argument_list|,
 operator|new
-name|TestAcContext
+name|Subject
 argument_list|()
 argument_list|)
 expr_stmt|;

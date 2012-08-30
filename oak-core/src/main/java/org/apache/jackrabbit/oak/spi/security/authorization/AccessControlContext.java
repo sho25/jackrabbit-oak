@@ -41,24 +41,6 @@ name|Set
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|spi
-operator|.
-name|commit
-operator|.
-name|ValidatorProvider
-import|;
-end_import
-
 begin_comment
 comment|/**  * PermissionProvider... TODO  */
 end_comment
@@ -81,14 +63,6 @@ function_decl|;
 comment|// TODO define how permissions eval is bound to a particular revision/branch. (passing Tree?)
 name|CompiledPermissions
 name|getPermissions
-parameter_list|()
-function_decl|;
-name|ValidatorProvider
-name|getPermissionValidatorProvider
-parameter_list|()
-function_decl|;
-name|ValidatorProvider
-name|getAccessControlValidatorProvider
 parameter_list|()
 function_decl|;
 block|}

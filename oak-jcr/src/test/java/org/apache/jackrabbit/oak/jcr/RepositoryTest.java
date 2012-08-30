@@ -621,6 +621,15 @@ parameter_list|()
 throws|throws
 name|RepositoryException
 block|{
+name|executor
+operator|=
+name|Executors
+operator|.
+name|newScheduledThreadPool
+argument_list|(
+literal|1
+argument_list|)
+expr_stmt|;
 name|Session
 name|session
 init|=

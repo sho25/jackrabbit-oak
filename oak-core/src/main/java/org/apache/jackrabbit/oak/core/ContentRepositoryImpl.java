@@ -528,6 +528,26 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+specifier|public
+name|ContentRepositoryImpl
+parameter_list|(
+name|MicroKernel
+name|microKernel
+parameter_list|,
+name|ValidatorProvider
+name|validatorProvider
+parameter_list|)
+block|{
+name|this
+argument_list|(
+name|microKernel
+argument_list|,
+literal|null
+argument_list|,
+name|validatorProvider
+argument_list|)
+expr_stmt|;
+block|}
 comment|/**      * Creates an Oak repository instance based on the given, already      * initialized components.      *      * @param microKernel underlying kernel instance      * @param indexProvider index provider      * @param commitHook the commit hook      */
 specifier|public
 name|ContentRepositoryImpl
