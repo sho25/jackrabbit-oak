@@ -2473,10 +2473,30 @@ name|functionName
 argument_list|)
 condition|)
 block|{
+comment|// TODO support jcr:deref
 throw|throw
 name|getSyntaxError
 argument_list|(
 literal|"jcr:deref is not supported"
+argument_list|)
+throw|;
+block|}
+elseif|else
+if|if
+condition|(
+literal|"rep:similar"
+operator|.
+name|equals
+argument_list|(
+name|functionName
+argument_list|)
+condition|)
+block|{
+comment|// TODO support rep:similar
+throw|throw
+name|getSyntaxError
+argument_list|(
+literal|"rep:similar is not supported"
 argument_list|)
 throw|;
 block|}

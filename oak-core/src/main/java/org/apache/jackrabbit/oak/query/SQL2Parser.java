@@ -5712,6 +5712,13 @@ name|currentTokenType
 operator|=
 name|IDENTIFIER
 expr_stmt|;
+name|currentToken
+operator|=
+name|currentValue
+operator|.
+name|getString
+argument_list|()
+expr_stmt|;
 block|}
 return|return;
 case|case

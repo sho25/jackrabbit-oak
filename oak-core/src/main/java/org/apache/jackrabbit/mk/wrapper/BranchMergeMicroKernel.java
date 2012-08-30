@@ -273,6 +273,17 @@ name|String
 name|revisionId
 parameter_list|)
 block|{
+if|if
+condition|(
+name|revisionId
+operator|==
+literal|null
+condition|)
+block|{
+return|return
+name|TRUNK
+return|;
+block|}
 name|int
 name|idx
 init|=
@@ -627,6 +638,8 @@ name|revisionId
 argument_list|)
 decl_stmt|;
 return|return
+name|base
+operator|.
 name|getChildNodeCount
 argument_list|(
 name|path

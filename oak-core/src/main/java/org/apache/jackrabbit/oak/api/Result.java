@@ -26,16 +26,19 @@ specifier|public
 interface|interface
 name|Result
 block|{
+comment|/**      * Get the list of column names.      *      * @return the column names      */
 name|String
 index|[]
 name|getColumnNames
 parameter_list|()
 function_decl|;
+comment|/**      * Get the list of selector names.      *      * @return the selector names      */
 name|String
 index|[]
 name|getSelectorNames
 parameter_list|()
 function_decl|;
+comment|/**      * Get the rows.      *      * @return the rows      */
 name|Iterable
 argument_list|<
 name|?
@@ -43,6 +46,11 @@ extends|extends
 name|ResultRow
 argument_list|>
 name|getRows
+parameter_list|()
+function_decl|;
+comment|/**      * Get the number of rows, if known. If the size is not known, -1 is      * returned.      *      * @return the size or -1 if unknown      */
+name|long
+name|getSize
 parameter_list|()
 function_decl|;
 block|}

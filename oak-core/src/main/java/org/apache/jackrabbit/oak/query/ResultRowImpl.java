@@ -122,6 +122,7 @@ specifier|private
 specifier|final
 name|CoreValue
 index|[]
+index|[]
 name|orderValues
 decl_stmt|;
 name|ResultRowImpl
@@ -138,6 +139,7 @@ index|[]
 name|values
 parameter_list|,
 name|CoreValue
+index|[]
 index|[]
 name|orderValues
 parameter_list|)

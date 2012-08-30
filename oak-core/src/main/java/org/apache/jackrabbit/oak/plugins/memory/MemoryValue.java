@@ -276,12 +276,12 @@ argument_list|()
 condition|)
 block|{
 return|return
-name|type
-operator|-
 name|o
 operator|.
 name|getType
 argument_list|()
+operator|-
+name|type
 return|;
 block|}
 elseif|else

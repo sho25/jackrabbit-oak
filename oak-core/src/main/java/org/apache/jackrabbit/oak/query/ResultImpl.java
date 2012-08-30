@@ -358,6 +358,20 @@ block|}
 block|}
 return|;
 block|}
+annotation|@
+name|Override
+specifier|public
+name|long
+name|getSize
+parameter_list|()
+block|{
+return|return
+name|query
+operator|.
+name|getSize
+argument_list|()
+return|;
+block|}
 block|}
 end_class
 

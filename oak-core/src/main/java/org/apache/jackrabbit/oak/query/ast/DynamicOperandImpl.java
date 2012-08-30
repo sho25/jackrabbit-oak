@@ -102,6 +102,15 @@ name|CoreValue
 name|v
 parameter_list|)
 function_decl|;
+specifier|public
+name|boolean
+name|supportsRangeConditions
+parameter_list|()
+block|{
+return|return
+literal|true
+return|;
+block|}
 block|}
 end_class
 

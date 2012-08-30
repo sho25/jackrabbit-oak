@@ -434,6 +434,17 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+name|tree
+operator|==
+literal|null
+condition|)
+block|{
+return|return
+literal|null
+return|;
+block|}
+if|if
+condition|(
 name|relative
 condition|)
 block|{
