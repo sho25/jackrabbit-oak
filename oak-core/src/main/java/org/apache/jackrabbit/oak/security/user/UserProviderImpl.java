@@ -61,16 +61,6 @@ end_import
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Map
-import|;
-end_import
-
-begin_import
-import|import
 name|javax
 operator|.
 name|jcr
@@ -176,6 +166,22 @@ operator|.
 name|api
 operator|.
 name|Result
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|api
+operator|.
+name|ResultRow
 import|;
 end_import
 
@@ -625,11 +631,6 @@ name|Principal
 name|principal
 parameter_list|)
 block|{
-name|Tree
-name|authorizableTree
-init|=
-literal|null
-decl_stmt|;
 if|if
 condition|(
 name|principal
@@ -637,8 +638,7 @@ operator|instanceof
 name|TreeBasedPrincipal
 condition|)
 block|{
-name|authorizableTree
-operator|=
+return|return
 name|root
 operator|.
 name|getTree
@@ -653,10 +653,8 @@ operator|.
 name|getOakPath
 argument_list|()
 argument_list|)
-expr_stmt|;
+return|;
 block|}
-else|else
-block|{
 comment|// NOTE: in contrast to JR2 the extra shortcut for ID==principalName
 comment|// can be omitted as principals names are stored in user defined
 comment|// index as well.
@@ -673,23 +671,6 @@ name|principal
 operator|.
 name|getName
 argument_list|()
-argument_list|)
-decl_stmt|;
-name|Map
-argument_list|<
-name|String
-argument_list|,
-name|CoreValue
-argument_list|>
-name|bindings
-init|=
-name|Collections
-operator|.
-name|singletonMap
-argument_list|(
-literal|"principalName"
-argument_list|,
-name|bindValue
 argument_list|)
 decl_stmt|;
 name|String
@@ -731,6 +712,11 @@ argument_list|()
 argument_list|)
 decl_stmt|;
 name|Iterator
+argument_list|<
+name|?
+extends|extends
+name|ResultRow
+argument_list|>
 name|rows
 init|=
 name|result
@@ -757,18 +743,17 @@ operator|.
 name|next
 argument_list|()
 operator|.
-name|toString
+name|getPath
 argument_list|()
 decl_stmt|;
-name|authorizableTree
-operator|=
+return|return
 name|root
 operator|.
 name|getTree
 argument_list|(
 name|path
 argument_list|)
-expr_stmt|;
+return|;
 block|}
 block|}
 catch|catch
@@ -787,9 +772,8 @@ name|ex
 argument_list|)
 expr_stmt|;
 block|}
-block|}
 return|return
-name|authorizableTree
+literal|null
 return|;
 block|}
 annotation|@
