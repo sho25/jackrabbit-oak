@@ -709,6 +709,37 @@ index|[]
 name|args
 parameter_list|)
 block|{
+name|int
+name|port
+init|=
+name|java
+operator|.
+name|net
+operator|.
+name|URI
+operator|.
+name|create
+argument_list|(
+name|uri
+argument_list|)
+operator|.
+name|getPort
+argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|port
+operator|==
+operator|-
+literal|1
+condition|)
+block|{
+comment|// use default
+name|port
+operator|=
+name|PORT
+expr_stmt|;
+block|}
 name|context
 operator|=
 operator|new
@@ -750,7 +781,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-name|URI
+name|uri
 operator|+
 literal|" -> [memory]"
 argument_list|)
@@ -802,7 +833,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-name|URI
+name|uri
 operator|+
 literal|" -> "
 operator|+
@@ -884,7 +915,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-name|URI
+name|uri
 operator|+
 literal|"/node"
 operator|+
@@ -931,7 +962,7 @@ operator|=
 operator|new
 name|Server
 argument_list|(
-name|PORT
+name|port
 argument_list|)
 expr_stmt|;
 name|server
