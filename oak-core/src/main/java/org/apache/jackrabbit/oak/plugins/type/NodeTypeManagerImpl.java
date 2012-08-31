@@ -1789,6 +1789,7 @@ name|isMixin
 argument_list|()
 argument_list|)
 expr_stmt|;
+comment|// TODO fail if not orderable but a supertype is orderable. See 3.7.6.7 Node Type Attribute Subtyping Rules
 name|node
 operator|.
 name|setBoolean
@@ -1809,6 +1810,7 @@ operator|.
 name|getPrimaryItemName
 argument_list|()
 decl_stmt|;
+comment|// TODO fail if a supertype specifies a different primary item. See 3.7.6.7 Node Type Attribute Subtyping Rules
 if|if
 condition|(
 name|primaryItemName
@@ -1826,6 +1828,7 @@ name|primaryItemName
 argument_list|)
 expr_stmt|;
 block|}
+comment|// TODO fail on invalid item definitions. See 3.7.6.8 Item Definitions in Subtypes
 name|int
 name|pdn
 init|=

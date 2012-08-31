@@ -1302,6 +1302,7 @@ index|[]
 name|getPropertyDefinitions
 parameter_list|()
 block|{
+comment|// TODO distinguish between additive and overriding property definitions. See 3.7.6.8 Item Definitions in Subtypes
 name|Collection
 argument_list|<
 name|PropertyDefinition
@@ -1377,6 +1378,7 @@ index|[]
 name|getChildNodeDefinitions
 parameter_list|()
 block|{
+comment|// TODO distinguish between additive and overriding node definitions. See 3.7.6.8 Item Definitions in Subtypes
 name|Collection
 argument_list|<
 name|NodeDefinition
