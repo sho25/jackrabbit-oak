@@ -2509,6 +2509,12 @@ comment|// unexpected but possible
 comment|// this will cause all indexes to be removed, so
 comment|// it can be ignored here
 block|}
+else|else
+block|{
+throw|throw
+name|e
+throw|;
+block|}
 block|}
 block|}
 comment|/**      * Update the index with the given changes.      *      * @param rootPath the root path      * @param t the changes      * @param lastRevision      */
