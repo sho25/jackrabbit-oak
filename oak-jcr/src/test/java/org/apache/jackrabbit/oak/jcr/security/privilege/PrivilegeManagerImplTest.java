@@ -459,12 +459,6 @@ operator|.
 name|getWorkspace
 argument_list|()
 decl_stmt|;
-comment|// FIXME workaround to ensure built in node types are registered
-name|workspace
-operator|.
-name|getNodeTypeManager
-argument_list|()
-expr_stmt|;
 return|return
 operator|(
 operator|(
