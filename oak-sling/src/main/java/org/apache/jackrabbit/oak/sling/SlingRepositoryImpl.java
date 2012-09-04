@@ -77,7 +77,9 @@ name|oak
 operator|.
 name|jcr
 operator|.
-name|RepositoryImpl
+name|osgi
+operator|.
+name|OsgiRepository
 import|;
 end_import
 
@@ -102,7 +104,7 @@ specifier|public
 class|class
 name|SlingRepositoryImpl
 extends|extends
-name|RepositoryImpl
+name|OsgiRepository
 implements|implements
 name|SlingRepository
 block|{
