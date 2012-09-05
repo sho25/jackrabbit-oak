@@ -1612,9 +1612,15 @@ name|nt
 parameter_list|)
 block|{
 return|return
-literal|true
+name|nt
+operator|.
+name|canAddChildNode
+argument_list|(
+name|name
+argument_list|,
+name|ntName
+argument_list|)
 return|;
-comment|// TODO return nt.canAddChildNode(name, ntName);
 block|}
 block|}
 argument_list|)
