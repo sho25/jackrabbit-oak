@@ -624,6 +624,8 @@ literal|"+\"jcr:system\":{"
 operator|+
 literal|"\"jcr:primaryType\"    :\"nam:rep:system\","
 operator|+
+literal|"\":unique\"            :{\"jcr:uuid\":{}},"
+operator|+
 literal|"\"jcr:versionStorage\" :{\"jcr:primaryType\":\"nam:rep:versionStorage\"},"
 operator|+
 literal|"\"jcr:nodeTypes\"      :{\"jcr:primaryType\":\"nam:rep:nodeTypes\"},"
