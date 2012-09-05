@@ -1281,6 +1281,16 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+specifier|private
+specifier|static
+specifier|final
+name|NotFoundException
+name|NFE
+init|=
+operator|new
+name|NotFoundException
+argument_list|()
+decl_stmt|;
 specifier|public
 name|ChildNodeEntriesMap
 name|readCNEMap
@@ -1373,15 +1383,9 @@ block|}
 else|else
 block|{
 throw|throw
-operator|new
-name|NotFoundException
-argument_list|(
-name|id
-operator|.
-name|toString
-argument_list|()
-argument_list|)
+name|NFE
 throw|;
+comment|// new NotFoundException(id.toString());
 block|}
 block|}
 finally|finally
