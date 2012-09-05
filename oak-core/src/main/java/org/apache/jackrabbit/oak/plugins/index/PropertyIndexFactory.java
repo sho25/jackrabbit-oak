@@ -242,8 +242,9 @@ name|this
 operator|.
 name|indexer
 operator|=
-operator|new
 name|Indexer
+operator|.
+name|getInstance
 argument_list|(
 name|mk
 argument_list|)
