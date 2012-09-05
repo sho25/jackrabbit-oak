@@ -1866,10 +1866,10 @@ parameter_list|)
 block|{
 for|for
 control|(
-name|PropertyDefinition
+name|NodeDefinition
 name|definition
 range|:
-name|getPropertyDefinitions
+name|getChildNodeDefinitions
 argument_list|()
 control|)
 block|{
