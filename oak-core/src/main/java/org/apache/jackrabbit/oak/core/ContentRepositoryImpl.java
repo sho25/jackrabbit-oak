@@ -247,6 +247,24 @@ name|spi
 operator|.
 name|commit
 operator|.
+name|CompositeHook
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|commit
+operator|.
 name|CompositeValidatorProvider
 import|;
 end_import
@@ -422,6 +440,21 @@ block|{
 name|this
 argument_list|(
 operator|new
+name|CompositeHook
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+specifier|public
+name|ContentRepositoryImpl
+parameter_list|(
+name|CommitHook
+name|hook
+parameter_list|)
+block|{
+name|this
+argument_list|(
+operator|new
 name|MicroKernelImpl
 argument_list|()
 argument_list|,
@@ -429,21 +462,7 @@ operator|new
 name|CompositeQueryIndexProvider
 argument_list|()
 argument_list|,
-operator|new
-name|ValidatingHook
-argument_list|(
-operator|new
-name|CompositeValidatorProvider
-argument_list|(
-name|Collections
-operator|.
-expr|<
-name|ValidatorProvider
-operator|>
-name|emptyList
-argument_list|()
-argument_list|)
-argument_list|)
+name|hook
 argument_list|)
 expr_stmt|;
 block|}
@@ -622,7 +641,7 @@ literal|"+\"jcr:system\":{"
 operator|+
 literal|"\"jcr:primaryType\"    :\"nam:rep:system\","
 operator|+
-literal|"\":unique\"            :{\"jcr:uuid\":{}},"
+literal|"\":unique\"            :{\"jcr:uuid\":{},\"rep:authorizableId\":{},\"rep:principalName\":{}},"
 operator|+
 literal|"\"jcr:versionStorage\" :{\"jcr:primaryType\":\"nam:rep:versionStorage\"},"
 operator|+

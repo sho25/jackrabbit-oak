@@ -55,6 +55,8 @@ block|{
 comment|/**      * Get the currently configured indexes for the given MicroKernel instance.      *      * @param mk the MicroKernel instance      * @return the list of indexes      */
 name|List
 argument_list|<
+name|?
+extends|extends
 name|QueryIndex
 argument_list|>
 name|getQueryIndexes

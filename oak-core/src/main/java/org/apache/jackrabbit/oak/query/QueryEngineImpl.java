@@ -783,6 +783,8 @@ block|}
 specifier|private
 name|List
 argument_list|<
+name|?
+extends|extends
 name|QueryIndex
 argument_list|>
 name|getIndexes
