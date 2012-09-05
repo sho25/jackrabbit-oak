@@ -504,7 +504,7 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"Skipping illegal index definition name {} @ {}"
+literal|"Skipping illegal index definition '{}' @ {}"
 argument_list|,
 name|c
 operator|.

@@ -892,9 +892,9 @@ parameter_list|)
 throws|throws
 name|CommitFailedException
 block|{
-comment|// TODO Auto-generated method stub
+comment|// TODO wire-in the processCommit mechanism
 return|return
-literal|null
+name|after
 return|;
 block|}
 block|}
