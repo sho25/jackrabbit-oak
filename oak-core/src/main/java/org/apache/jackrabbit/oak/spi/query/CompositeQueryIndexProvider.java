@@ -189,6 +189,8 @@ name|Override
 specifier|public
 name|List
 argument_list|<
+name|?
+extends|extends
 name|QueryIndex
 argument_list|>
 name|getQueryIndexes
@@ -220,6 +222,8 @@ control|)
 block|{
 name|List
 argument_list|<
+name|?
+extends|extends
 name|QueryIndex
 argument_list|>
 name|t
