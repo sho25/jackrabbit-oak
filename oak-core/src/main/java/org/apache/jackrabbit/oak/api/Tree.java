@@ -84,7 +84,7 @@ name|boolean
 name|isRoot
 parameter_list|()
 function_decl|;
-comment|/**      * @return  path of this {@code Tree} instance relative to its {@link Root}.      */
+comment|/**      * @return the absolute path of this {@code Tree} instance from its {@link Root}.      */
 annotation|@
 name|Nonnull
 name|String
