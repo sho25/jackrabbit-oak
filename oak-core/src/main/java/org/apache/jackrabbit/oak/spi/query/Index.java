@@ -77,34 +77,6 @@ name|IndexDefinition
 name|getDefinition
 parameter_list|()
 function_decl|;
-comment|//    /**
-comment|//     * The given node was added or removed.
-comment|//     *
-comment|//     * @param node the node including (old or new) data
-comment|//     * @param add true if added, false if removed
-comment|//     */
-comment|//    void addOrRemoveNode(NodeImpl node, boolean add);
-comment|//
-comment|//    /**
-comment|//     * The given property was added or removed.
-comment|//     *
-comment|//     * @param nodePath the path of the node
-comment|//     * @param propertyName the property name
-comment|//     * @param value the old (when deleting) or new (when adding) value
-comment|//     * @param add true if added, false if removed
-comment|//     */
-comment|//    void addOrRemoveProperty(String nodePath, String propertyName,
-comment|//            String value, boolean add);
-comment|//
-comment|//    /**
-comment|//     * Get an iterator over the paths for the given value. For unique
-comment|//     * indexes, the iterator will contain at most one element.
-comment|//     *
-comment|//     * @param value the value, or null to return all indexed rows
-comment|//     * @param revision the revision
-comment|//     * @return an iterator of the paths (an empty iterator if not found)
-comment|//     */
-comment|//    Iterator<String> getPaths(String value, String revision);
 block|}
 end_interface
 

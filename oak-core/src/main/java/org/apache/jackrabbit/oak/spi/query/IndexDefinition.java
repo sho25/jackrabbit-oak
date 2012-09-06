@@ -72,7 +72,7 @@ name|String
 name|getType
 parameter_list|()
 function_decl|;
-comment|/**      * @return the index path, includung the name as the last segment      */
+comment|/**      * @return the index path, including the name as the last segment      */
 annotation|@
 name|Nonnull
 name|String
