@@ -349,7 +349,7 @@ argument_list|()
 operator|.
 name|maximumSize
 argument_list|(
-literal|100000
+literal|10000
 argument_list|)
 operator|.
 name|build
