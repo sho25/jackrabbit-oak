@@ -439,12 +439,12 @@ name|constraint
 parameter_list|)
 block|{
 return|return
-name|Predicates
-operator|.
-name|alwaysTrue
-argument_list|()
+operator|new
+name|PathConstraint
+argument_list|(
+name|constraint
+argument_list|)
 return|;
-comment|// todo implement pathConstraint
 block|}
 specifier|private
 specifier|static
