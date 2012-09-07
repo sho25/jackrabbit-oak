@@ -153,9 +153,8 @@ name|p
 decl_stmt|;
 try|try
 block|{
-comment|// FIXME matching case insensitive as a workaround
-comment|// forJSR-283: character case mismatch between property type names and node type definitions
-comment|// see http://markmail.org/message/asyaqqkn5nucvcjk
+comment|// FIXME matching case insensitive as a workaround for
+comment|// for OAK-294: nt:propertyDefinition has incorrect value constraints for property types
 name|int
 name|ignoreCase
 init|=
