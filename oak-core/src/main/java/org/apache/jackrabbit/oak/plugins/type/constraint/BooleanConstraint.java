@@ -157,7 +157,7 @@ literal|'\''
 operator|+
 name|definition
 operator|+
-literal|"' is not a valid value constraint format for BOOLEAN values"
+literal|"' is not a valid value constraint format for boolean values"
 argument_list|)
 expr_stmt|;
 block|}
@@ -201,7 +201,9 @@ name|log
 operator|.
 name|warn
 argument_list|(
-literal|"Error checking boolean constraint"
+literal|"Error checking boolean constraint "
+operator|+
+name|this
 argument_list|,
 name|e
 argument_list|)
@@ -210,6 +212,21 @@ return|return
 literal|false
 return|;
 block|}
+block|}
+annotation|@
+name|Override
+specifier|public
+name|String
+name|toString
+parameter_list|()
+block|{
+return|return
+literal|"'"
+operator|+
+name|requiredValue
+operator|+
+literal|'\''
+return|;
 block|}
 block|}
 end_class
