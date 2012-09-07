@@ -1968,7 +1968,7 @@ name|hashCode
 parameter_list|()
 block|{
 return|return
-name|super
+name|value
 operator|.
 name|hashCode
 argument_list|()
@@ -2012,7 +2012,7 @@ name|toString
 parameter_list|()
 block|{
 return|return
-name|super
+name|value
 operator|.
 name|toString
 argument_list|()
