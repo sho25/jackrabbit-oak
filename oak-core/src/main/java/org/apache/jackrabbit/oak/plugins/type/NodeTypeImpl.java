@@ -1598,7 +1598,6 @@ name|isMultiple
 argument_list|()
 condition|)
 block|{
-comment|// TODO: Check value type, etc.
 if|if
 condition|(
 operator|!
@@ -1617,6 +1616,7 @@ return|return
 literal|false
 return|;
 block|}
+comment|// TODO: Check value type, etc.
 return|return
 literal|true
 return|;
@@ -1705,7 +1705,25 @@ name|isMultiple
 argument_list|()
 condition|)
 block|{
-comment|// TODO: Check value type, constraints, etc.
+if|if
+condition|(
+operator|!
+name|meetsValueConstraints
+argument_list|(
+name|values
+argument_list|,
+name|definition
+operator|.
+name|getValueConstraints
+argument_list|()
+argument_list|)
+condition|)
+block|{
+return|return
+literal|false
+return|;
+block|}
+comment|// TODO: Check value type, etc.
 return|return
 literal|true
 return|;
@@ -1746,6 +1764,7 @@ return|return
 literal|true
 return|;
 block|}
+comment|// Any of the constraints must be met
 for|for
 control|(
 name|String
@@ -1781,6 +1800,66 @@ block|}
 block|}
 return|return
 literal|false
+return|;
+block|}
+specifier|private
+specifier|static
+name|boolean
+name|meetsValueConstraints
+parameter_list|(
+name|Value
+index|[]
+name|values
+parameter_list|,
+name|String
+index|[]
+name|constraints
+parameter_list|)
+block|{
+if|if
+condition|(
+name|constraints
+operator|==
+literal|null
+operator|||
+name|constraints
+operator|.
+name|length
+operator|==
+literal|0
+condition|)
+block|{
+return|return
+literal|true
+return|;
+block|}
+comment|// Constraints must be met by all values
+for|for
+control|(
+name|Value
+name|value
+range|:
+name|values
+control|)
+block|{
+if|if
+condition|(
+operator|!
+name|meetsValueConstraints
+argument_list|(
+name|value
+argument_list|,
+name|constraints
+argument_list|)
+condition|)
+block|{
+return|return
+literal|false
+return|;
+block|}
+block|}
+return|return
+literal|true
 return|;
 block|}
 annotation|@
