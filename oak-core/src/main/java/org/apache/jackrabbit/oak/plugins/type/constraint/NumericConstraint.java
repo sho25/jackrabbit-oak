@@ -173,7 +173,7 @@ name|Pattern
 operator|.
 name|compile
 argument_list|(
-literal|"([\\(\\[])[^,]*,[^\\)\\]]*([\\)\\]])"
+literal|"([\\(\\[])([^,]*),([^\\)\\]]*)([\\)\\]])"
 argument_list|)
 decl_stmt|;
 name|Matcher
@@ -196,27 +196,22 @@ condition|)
 block|{
 try|try
 block|{
-comment|// group 1 is lower inclusive/exclusive
-name|String
-name|match
-init|=
-name|matcher
-operator|.
-name|group
-argument_list|(
-literal|1
-argument_list|)
-decl_stmt|;
+comment|// group 1 is lower bound inclusive/exclusive
 name|lowerInclusive
 operator|=
 literal|"["
 operator|.
 name|equals
 argument_list|(
-name|match
+name|matcher
+operator|.
+name|group
+argument_list|(
+literal|1
+argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// group 2 is lower, group 3 is upper  bound
+comment|// group 2 is lower, group 3 is upper bound
 name|lowerBound
 operator|=
 name|getBound
@@ -241,23 +236,19 @@ literal|3
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// group 4 is lower inclusive/exclusive
-name|match
-operator|=
-name|matcher
-operator|.
-name|group
-argument_list|(
-literal|4
-argument_list|)
-expr_stmt|;
+comment|// group 4 is upper bound inclusive/exclusive
 name|upperInclusive
 operator|=
 literal|"]"
 operator|.
 name|equals
 argument_list|(
-name|match
+name|matcher
+operator|.
+name|group
+argument_list|(
+literal|4
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
