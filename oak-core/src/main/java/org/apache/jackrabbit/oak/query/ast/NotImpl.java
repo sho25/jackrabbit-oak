@@ -129,10 +129,23 @@ annotation|@
 name|Override
 specifier|public
 name|void
-name|apply
+name|restrict
 parameter_list|(
 name|FilterImpl
 name|f
+parameter_list|)
+block|{
+comment|// ignore
+comment|// TODO convert NOT conditions
+block|}
+annotation|@
+name|Override
+specifier|public
+name|void
+name|restrictPushDown
+parameter_list|(
+name|SelectorImpl
+name|s
 parameter_list|)
 block|{
 comment|// ignore

@@ -266,7 +266,7 @@ annotation|@
 name|Override
 specifier|public
 name|void
-name|apply
+name|restrict
 parameter_list|(
 name|FilterImpl
 name|f
@@ -349,6 +349,18 @@ name|DIRECT_CHILDREN
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+annotation|@
+name|Override
+specifier|public
+name|void
+name|restrictPushDown
+parameter_list|(
+name|SelectorImpl
+name|s
+parameter_list|)
+block|{
+comment|// nothing to do
 block|}
 block|}
 end_class

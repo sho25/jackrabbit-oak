@@ -21,6 +21,16 @@ end_package
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|ArrayList
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -81,18 +91,37 @@ name|SourceImpl
 extends|extends
 name|AstElement
 block|{
+comment|/**      * The WHERE clause of the query.      */
 specifier|protected
 name|ConstraintImpl
 name|queryConstraint
 decl_stmt|;
+comment|/**      * The join condition of this selector that can be evaluated at execution      * time. For the query "select * from nt:base as a inner join nt:base as b      * on a.x = b.x", the join condition "a.x = b.x" is only set for the      * selector b, as selector a can't evaluate it if it is executed first      * (until b is executed).      */
 specifier|protected
 name|JoinConditionImpl
 name|joinCondition
 decl_stmt|;
+comment|/**      * The list of all join conditions this selector is involved. For the query      * "select * from nt:base as a inner join nt:base as b on a.x =      * b.x", the join condition "a.x = b.x" is set for both selectors a and b,      * so both can check if the property x is set.      */
+specifier|protected
+name|ArrayList
+argument_list|<
+name|JoinConditionImpl
+argument_list|>
+name|allJoinConditions
+init|=
+operator|new
+name|ArrayList
+argument_list|<
+name|JoinConditionImpl
+argument_list|>
+argument_list|()
+decl_stmt|;
+comment|/**      * Whether this selector is the right hand side of a join.      */
 specifier|protected
 name|boolean
 name|join
 decl_stmt|;
+comment|/**      * Whether this selector is the right hand side of a left outer join.      * Right outer joins are converted to left outer join.      */
 specifier|protected
 name|boolean
 name|outerJoin
@@ -113,20 +142,36 @@ operator|=
 name|queryConstraint
 expr_stmt|;
 block|}
-comment|/**      * Set the join condition (the ON ... condition).      *      * @param joinCondition the join condition      */
+comment|/**      * Add the join condition (the ON ... condition).      *      * @param joinCondition the join condition      * @param forThisSelector if set, the join condition can only be evaluated      *        when all previous selectors are executed.      */
 specifier|public
 name|void
-name|setJoinCondition
+name|addJoinCondition
 parameter_list|(
 name|JoinConditionImpl
 name|joinCondition
+parameter_list|,
+name|boolean
+name|forThisSelector
 parameter_list|)
+block|{
+if|if
+condition|(
+name|forThisSelector
+condition|)
 block|{
 name|this
 operator|.
 name|joinCondition
 operator|=
 name|joinCondition
+expr_stmt|;
+block|}
+name|allJoinConditions
+operator|.
+name|add
+argument_list|(
+name|joinCondition
+argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Set whether this source is the right hand side of a left outer join.      *      * @param outerJoin true if yes      */

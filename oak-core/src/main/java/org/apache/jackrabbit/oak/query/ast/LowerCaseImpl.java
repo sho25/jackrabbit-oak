@@ -246,6 +246,25 @@ block|{
 comment|// ignore
 comment|// TODO UPPER(x) conditions: can use IS NOT NULL?
 block|}
+annotation|@
+name|Override
+specifier|public
+name|boolean
+name|canRestrictSelector
+parameter_list|(
+name|SelectorImpl
+name|s
+parameter_list|)
+block|{
+return|return
+name|operand
+operator|.
+name|canRestrictSelector
+argument_list|(
+name|s
+argument_list|)
+return|;
+block|}
 block|}
 end_class
 

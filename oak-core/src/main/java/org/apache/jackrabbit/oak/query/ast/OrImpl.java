@@ -161,7 +161,7 @@ annotation|@
 name|Override
 specifier|public
 name|void
-name|apply
+name|restrict
 parameter_list|(
 name|FilterImpl
 name|f
@@ -169,6 +169,22 @@ parameter_list|)
 block|{
 comment|// ignore
 comment|// TODO convert OR conditions to UNION
+block|}
+annotation|@
+name|Override
+specifier|public
+name|void
+name|restrictPushDown
+parameter_list|(
+name|SelectorImpl
+name|s
+parameter_list|)
+block|{
+comment|// ignore
+comment|// TODO some OR conditions can be applied to a selector,
+comment|// for example WHERE X.ID = 1 OR X.ID = 2
+comment|// can be applied to X as a whole,
+comment|// but X.ID = 1 OR Y.ID = 2 can't be applied to either
 block|}
 block|}
 end_class

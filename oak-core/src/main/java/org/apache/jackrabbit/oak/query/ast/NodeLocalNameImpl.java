@@ -312,6 +312,22 @@ parameter_list|)
 block|{
 comment|// TODO support LOCALNAME index conditions
 block|}
+annotation|@
+name|Override
+specifier|public
+name|boolean
+name|canRestrictSelector
+parameter_list|(
+name|SelectorImpl
+name|s
+parameter_list|)
+block|{
+return|return
+name|s
+operator|==
+name|selector
+return|;
+block|}
 block|}
 end_class
 

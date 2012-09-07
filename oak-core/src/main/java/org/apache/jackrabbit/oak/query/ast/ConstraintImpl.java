@@ -60,10 +60,20 @@ comment|/**      * Apply the condition to the filter, further restricting the fi
 specifier|public
 specifier|abstract
 name|void
-name|apply
+name|restrict
 parameter_list|(
 name|FilterImpl
 name|f
+parameter_list|)
+function_decl|;
+comment|/**      * Push as much of the condition down to this selector, further restricting      * the selector condition if possible.      *      * @param s the selector      */
+specifier|public
+specifier|abstract
+name|void
+name|restrictPushDown
+parameter_list|(
+name|SelectorImpl
+name|s
 parameter_list|)
 function_decl|;
 block|}

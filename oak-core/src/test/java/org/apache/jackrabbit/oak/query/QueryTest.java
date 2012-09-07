@@ -42,6 +42,18 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|fail
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -474,7 +486,9 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"nt:base as nt:base /* traverse \"//*\" */"
+literal|"[nt:base] as nt:base "
+operator|+
+literal|"/* traverse \"//*\" where nt:base.id = cast('1' as long) */"
 argument_list|,
 name|result
 operator|.
@@ -650,9 +664,6 @@ decl_stmt|;
 name|String
 name|got
 decl_stmt|;
-name|boolean
-name|failed
-decl_stmt|;
 try|try
 block|{
 name|got
@@ -664,9 +675,16 @@ argument_list|(
 name|line
 argument_list|)
 expr_stmt|;
-name|failed
-operator|=
-literal|false
+name|executeQuery
+argument_list|(
+name|got
+argument_list|,
+name|QueryEngineImpl
+operator|.
+name|SQL2
+argument_list|,
+literal|null
+argument_list|)
 expr_stmt|;
 block|}
 catch|catch
@@ -691,9 +709,29 @@ argument_list|,
 literal|' '
 argument_list|)
 expr_stmt|;
-name|failed
+block|}
+catch|catch
+parameter_list|(
+name|Exception
+name|e
+parameter_list|)
+block|{
+comment|// e.printStackTrace();
+name|got
 operator|=
-literal|true
+literal|"error: "
+operator|+
+name|e
+operator|.
+name|toString
+argument_list|()
+operator|.
+name|replace
+argument_list|(
+literal|'\n'
+argument_list|,
+literal|' '
+argument_list|)
 expr_stmt|;
 block|}
 name|line
@@ -729,24 +767,6 @@ operator|=
 literal|true
 expr_stmt|;
 block|}
-if|if
-condition|(
-operator|!
-name|failed
-condition|)
-block|{
-name|executeQuery
-argument_list|(
-name|got
-argument_list|,
-name|QueryEngineImpl
-operator|.
-name|SQL2
-argument_list|,
-literal|null
-argument_list|)
-expr_stmt|;
-block|}
 block|}
 elseif|else
 if|if
@@ -763,6 +783,13 @@ operator|.
 name|startsWith
 argument_list|(
 literal|"explain"
+argument_list|)
+operator|||
+name|line
+operator|.
+name|startsWith
+argument_list|(
+literal|"measure"
 argument_list|)
 operator|||
 name|line
@@ -1066,6 +1093,11 @@ literal|""
 argument_list|)
 expr_stmt|;
 block|}
+name|w
+operator|.
+name|flush
+argument_list|()
+expr_stmt|;
 block|}
 block|}
 finally|finally
@@ -1119,6 +1151,14 @@ name|String
 name|language
 parameter_list|)
 block|{
+name|long
+name|time
+init|=
+name|System
+operator|.
+name|currentTimeMillis
+argument_list|()
+decl_stmt|;
 name|List
 argument_list|<
 name|String
@@ -1219,6 +1259,36 @@ name|e
 operator|.
 name|toString
 argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+name|time
+operator|=
+name|System
+operator|.
+name|currentTimeMillis
+argument_list|()
+operator|-
+name|time
+expr_stmt|;
+if|if
+condition|(
+name|time
+operator|>
+literal|3000
+condition|)
+block|{
+name|fail
+argument_list|(
+literal|"Query took too long: "
+operator|+
+name|query
+operator|+
+literal|" took "
+operator|+
+name|time
+operator|+
+literal|" ms"
 argument_list|)
 expr_stmt|;
 block|}

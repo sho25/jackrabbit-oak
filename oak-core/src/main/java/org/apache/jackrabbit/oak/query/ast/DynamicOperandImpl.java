@@ -102,6 +102,16 @@ name|CoreValue
 name|v
 parameter_list|)
 function_decl|;
+comment|/**      * Check whether the condition can be applied to a selector (to restrict the      * selector). The method may return true if the operand can be evaluated      * when the given selector and all previous selectors in the join can be      * evaluated.      *      * @param s the selector      * @return true if the condition can be applied      */
+specifier|public
+specifier|abstract
+name|boolean
+name|canRestrictSelector
+parameter_list|(
+name|SelectorImpl
+name|s
+parameter_list|)
+function_decl|;
 specifier|public
 name|boolean
 name|supportsRangeConditions
