@@ -488,10 +488,7 @@ block|{
 return|return
 name|index
 operator|.
-name|getDefinition
-argument_list|()
-operator|.
-name|getName
+name|getIndexNodeName
 argument_list|()
 return|;
 block|}

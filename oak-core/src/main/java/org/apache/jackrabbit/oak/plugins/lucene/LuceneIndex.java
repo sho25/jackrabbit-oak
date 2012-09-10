@@ -73,26 +73,6 @@ name|plugins
 operator|.
 name|lucene
 operator|.
-name|LuceneIndexUtils
-operator|.
-name|INDEX_DATA_CHILD_NAME
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|plugins
-operator|.
-name|lucene
-operator|.
 name|TermFactory
 operator|.
 name|newPathTerm
@@ -527,6 +507,8 @@ class|class
 name|LuceneIndex
 implements|implements
 name|QueryIndex
+implements|,
+name|LuceneIndexConstants
 block|{
 specifier|private
 specifier|final

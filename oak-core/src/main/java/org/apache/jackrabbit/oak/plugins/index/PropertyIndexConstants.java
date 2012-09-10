@@ -13,31 +13,11 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|spi
+name|plugins
 operator|.
-name|query
+name|index
 package|;
 end_package
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|Closeable
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
 
 begin_import
 import|import
@@ -51,32 +31,59 @@ name|oak
 operator|.
 name|spi
 operator|.
-name|commit
+name|query
 operator|.
-name|CommitHook
+name|IndexUtils
 import|;
 end_import
-
-begin_comment
-comment|/**  * An index is a lookup mechanism. It typically uses a tree to store data. It  * updates the tree whenever a node was changed. The index is updated  * automatically.  */
-end_comment
 
 begin_interface
 specifier|public
 interface|interface
-name|Index
-extends|extends
-name|CommitHook
-extends|,
-name|Closeable
+name|PropertyIndexConstants
 block|{
-comment|/**      * Get the the index definition. This contains the name, type, uniqueness      * and other properties.      *       * @return the index definition      */
-annotation|@
-name|Nonnull
-name|IndexDefinition
-name|getDefinition
-parameter_list|()
-function_decl|;
+name|String
+name|INDEX_TYPE_PROPERTY
+init|=
+literal|"property"
+decl_stmt|;
+comment|/**      * The root node of the index definition (configuration) nodes.      */
+comment|// TODO OAK-178 discuss where to store index config data
+name|String
+name|INDEX_CONFIG_PATH
+init|=
+name|IndexUtils
+operator|.
+name|DEFAULT_INDEX_HOME
+operator|+
+literal|"/indexes"
+decl_stmt|;
+comment|// "/jcr:system/indexes";
+comment|/**      * For each index, the index content is stored relative to the index      * definition below this node. There is also such a node just below the      * index definition node, to store the last revision and for temporary data.      */
+name|String
+name|INDEX_CONTENT
+init|=
+literal|":data"
+decl_stmt|;
+comment|/**      * The node name prefix of a prefix index.      */
+name|String
+name|TYPE_PREFIX
+init|=
+literal|"prefix@"
+decl_stmt|;
+comment|/**      * The node name prefix of a property index.      */
+comment|// TODO support multi-property indexes
+name|String
+name|TYPE_PROPERTY
+init|=
+literal|"property@"
+decl_stmt|;
+comment|/**      * Marks a unique index.      */
+name|String
+name|UNIQUE
+init|=
+literal|"unique"
+decl_stmt|;
 block|}
 end_interface
 

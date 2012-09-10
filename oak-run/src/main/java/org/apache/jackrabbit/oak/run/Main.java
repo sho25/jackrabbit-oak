@@ -189,7 +189,7 @@ name|plugins
 operator|.
 name|lucene
 operator|.
-name|LuceneEditor
+name|LuceneHook
 import|;
 end_import
 
@@ -1334,7 +1334,7 @@ operator|.
 name|add
 argument_list|(
 operator|new
-name|LuceneEditor
+name|LuceneHook
 argument_list|()
 argument_list|)
 expr_stmt|;

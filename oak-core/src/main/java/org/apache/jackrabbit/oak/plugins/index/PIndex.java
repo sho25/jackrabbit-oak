@@ -45,24 +45,6 @@ name|NodeImpl
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|spi
-operator|.
-name|query
-operator|.
-name|Index
-import|;
-end_import
-
 begin_comment
 comment|/**  * An index is a lookup mechanism. It typically uses a tree to store data. It  * updates the tree whenever a node was changed. The index is updated  * automatically.  */
 end_comment
@@ -71,9 +53,12 @@ begin_interface
 specifier|public
 interface|interface
 name|PIndex
-extends|extends
-name|Index
 block|{
+comment|/**      * Get the unique index name. This is also the name of the index node.      *      * @return the index name      */
+name|String
+name|getIndexNodeName
+parameter_list|()
+function_decl|;
 comment|/**      * The given node was added or removed.      *      * @param node the node including (old or new) data      * @param add true if added, false if removed      */
 name|void
 name|addOrRemoveNode
@@ -115,6 +100,11 @@ parameter_list|,
 name|String
 name|revision
 parameter_list|)
+function_decl|;
+comment|/**      * Whether each value may only appear once in the index.      *      * @return true if unique      */
+name|boolean
+name|isUnique
+parameter_list|()
 function_decl|;
 block|}
 end_interface

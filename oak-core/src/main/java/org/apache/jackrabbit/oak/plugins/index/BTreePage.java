@@ -44,6 +44,8 @@ specifier|abstract
 specifier|public
 class|class
 name|BTreePage
+implements|implements
+name|PropertyIndexConstants
 block|{
 specifier|protected
 specifier|final
@@ -179,8 +181,6 @@ name|PathUtils
 operator|.
 name|concat
 argument_list|(
-name|Indexer
-operator|.
 name|INDEX_CONTENT
 argument_list|,
 literal|"temp"
@@ -199,8 +199,6 @@ operator|.
 name|getName
 argument_list|()
 argument_list|,
-name|Indexer
-operator|.
 name|INDEX_CONTENT
 argument_list|,
 name|getPath
@@ -236,8 +234,6 @@ operator|.
 name|getName
 argument_list|()
 argument_list|,
-name|Indexer
-operator|.
 name|INDEX_CONTENT
 argument_list|,
 name|getParentPath

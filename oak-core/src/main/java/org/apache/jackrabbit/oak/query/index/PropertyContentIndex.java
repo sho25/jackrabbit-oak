@@ -241,9 +241,6 @@ name|unique
 init|=
 name|index
 operator|.
-name|getDefinition
-argument_list|()
-operator|.
 name|isUnique
 argument_list|()
 decl_stmt|;
@@ -409,10 +406,7 @@ block|{
 return|return
 name|index
 operator|.
-name|getDefinition
-argument_list|()
-operator|.
-name|getName
+name|getIndexNodeName
 argument_list|()
 return|;
 block|}

@@ -87,6 +87,8 @@ class|class
 name|BTreeLeaf
 extends|extends
 name|BTreePage
+implements|implements
+name|PropertyIndexConstants
 block|{
 specifier|public
 name|BTreeLeaf
@@ -525,8 +527,6 @@ operator|.
 name|getName
 argument_list|()
 argument_list|,
-name|Indexer
-operator|.
 name|INDEX_CONTENT
 argument_list|,
 name|getPath

@@ -785,7 +785,7 @@ name|indexProvider
 operator|.
 name|getQueryIndexes
 argument_list|(
-name|mk
+name|store
 argument_list|)
 return|;
 block|}

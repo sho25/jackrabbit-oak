@@ -59,6 +59,8 @@ begin_class
 specifier|public
 class|class
 name|BTree
+implements|implements
+name|PropertyIndexConstants
 block|{
 specifier|private
 specifier|static
@@ -69,7 +71,7 @@ init|=
 literal|2
 decl_stmt|;
 specifier|private
-name|Indexer
+name|BTreeHelper
 name|indexer
 decl_stmt|;
 specifier|private
@@ -91,7 +93,7 @@ decl_stmt|;
 specifier|public
 name|BTree
 parameter_list|(
-name|Indexer
+name|BTreeHelper
 name|indexer
 parameter_list|,
 name|String
@@ -129,8 +131,6 @@ name|concat
 argument_list|(
 name|name
 argument_list|,
-name|Indexer
-operator|.
 name|INDEX_CONTENT
 argument_list|)
 argument_list|)
@@ -548,8 +548,6 @@ name|concat
 argument_list|(
 name|name
 argument_list|,
-name|Indexer
-operator|.
 name|INDEX_CONTENT
 argument_list|,
 name|path
@@ -713,8 +711,6 @@ name|concat
 argument_list|(
 name|name
 argument_list|,
-name|Indexer
-operator|.
 name|INDEX_CONTENT
 argument_list|,
 name|path

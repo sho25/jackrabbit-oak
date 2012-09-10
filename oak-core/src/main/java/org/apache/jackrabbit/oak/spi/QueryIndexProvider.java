@@ -35,11 +35,13 @@ name|apache
 operator|.
 name|jackrabbit
 operator|.
-name|mk
+name|oak
 operator|.
-name|api
+name|spi
 operator|.
-name|MicroKernel
+name|state
+operator|.
+name|NodeStore
 import|;
 end_import
 
@@ -52,7 +54,7 @@ specifier|public
 interface|interface
 name|QueryIndexProvider
 block|{
-comment|/**      * Get the currently configured indexes for the given MicroKernel instance.      *      * @param mk the MicroKernel instance      * @return the list of indexes      */
+comment|/**      * Get the currently configured indexes.      *       * @return the list of indexes      */
 name|List
 argument_list|<
 name|?
@@ -61,8 +63,8 @@ name|QueryIndex
 argument_list|>
 name|getQueryIndexes
 parameter_list|(
-name|MicroKernel
-name|mk
+name|NodeStore
+name|nodeStore
 parameter_list|)
 function_decl|;
 block|}

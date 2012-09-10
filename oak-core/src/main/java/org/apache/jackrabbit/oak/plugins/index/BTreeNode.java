@@ -87,6 +87,8 @@ class|class
 name|BTreeNode
 extends|extends
 name|BTreePage
+implements|implements
+name|PropertyIndexConstants
 block|{
 specifier|private
 name|String
@@ -460,8 +462,6 @@ operator|.
 name|getName
 argument_list|()
 argument_list|,
-name|Indexer
-operator|.
 name|INDEX_CONTENT
 argument_list|,
 name|getPath
@@ -479,8 +479,6 @@ operator|.
 name|getName
 argument_list|()
 argument_list|,
-name|Indexer
-operator|.
 name|INDEX_CONTENT
 argument_list|,
 name|getParentPath
@@ -996,8 +994,6 @@ operator|.
 name|getName
 argument_list|()
 argument_list|,
-name|Indexer
-operator|.
 name|INDEX_CONTENT
 argument_list|,
 name|getPath
