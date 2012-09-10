@@ -248,7 +248,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * The index mechanism, as a wrapper.  *   * @deprecated - see OAK-289  */
+comment|/**  * The index mechanism, as a wrapper.  *   * @deprecated - see OAK-298  */
 end_comment
 
 begin_class

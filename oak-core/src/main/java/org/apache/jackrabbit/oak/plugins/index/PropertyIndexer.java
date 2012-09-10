@@ -310,7 +310,7 @@ parameter_list|)
 throws|throws
 name|CommitFailedException
 block|{
-comment|// TODO update index data see OAK-289
+comment|// TODO update index data see OAK-298
 return|return
 name|after
 return|;
