@@ -117,6 +117,22 @@ name|LoggerFactory
 import|;
 end_import
 
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkNotNull
+import|;
+end_import
+
 begin_comment
 comment|/**  * {@code PrincipalProvider} implementation that aggregates a list of principal  * providers into a single.  */
 end_comment
@@ -161,16 +177,14 @@ argument_list|>
 name|providers
 parameter_list|)
 block|{
-assert|assert
-name|providers
-operator|!=
-literal|null
-assert|;
 name|this
 operator|.
 name|providers
 operator|=
+name|checkNotNull
+argument_list|(
 name|providers
+argument_list|)
 expr_stmt|;
 block|}
 comment|//--------------------------------------------------< PrincipalProvider>---

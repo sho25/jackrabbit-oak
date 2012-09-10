@@ -135,6 +135,22 @@ name|NodeUtil
 import|;
 end_import
 
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkNotNull
+import|;
+end_import
+
 begin_comment
 comment|/**  * Provides a validator for user and group management.  */
 end_comment
@@ -158,16 +174,14 @@ name|UserConfig
 name|config
 parameter_list|)
 block|{
-assert|assert
-name|config
-operator|!=
-literal|null
-assert|;
 name|this
 operator|.
 name|config
 operator|=
+name|checkNotNull
+argument_list|(
 name|config
+argument_list|)
 expr_stmt|;
 block|}
 comment|//--------------------------------------------------< ValidatorProvider>---

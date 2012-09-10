@@ -291,6 +291,22 @@ name|LoadingCache
 import|;
 end_import
 
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkNotNull
+import|;
+end_import
+
 begin_comment
 comment|/**  * {@code NodeStore} implementations against {@link MicroKernel}.  */
 end_comment
@@ -434,16 +450,14 @@ name|MicroKernel
 name|kernel
 parameter_list|)
 block|{
-assert|assert
-name|kernel
-operator|!=
-literal|null
-assert|;
 name|this
 operator|.
 name|kernel
 operator|=
+name|checkNotNull
+argument_list|(
 name|kernel
+argument_list|)
 expr_stmt|;
 try|try
 block|{
@@ -498,16 +512,14 @@ name|CommitHook
 name|hook
 parameter_list|)
 block|{
-assert|assert
-name|hook
-operator|!=
-literal|null
-assert|;
 name|this
 operator|.
 name|hook
 operator|=
+name|checkNotNull
+argument_list|(
 name|hook
+argument_list|)
 expr_stmt|;
 block|}
 annotation|@
@@ -529,16 +541,14 @@ name|Observer
 name|observer
 parameter_list|)
 block|{
-assert|assert
-name|observer
-operator|!=
-literal|null
-assert|;
 name|this
 operator|.
 name|observer
 operator|=
+name|checkNotNull
+argument_list|(
 name|observer
+argument_list|)
 expr_stmt|;
 block|}
 comment|//----------------------------------------------------------< NodeStore>---

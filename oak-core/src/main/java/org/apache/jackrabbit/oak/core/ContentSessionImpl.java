@@ -243,6 +243,22 @@ name|LoggerFactory
 import|;
 end_import
 
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkNotNull
+import|;
+end_import
+
 begin_comment
 comment|/**  * {@code MicroKernel}-based implementation of the {@link ContentSession} interface.  */
 end_comment
@@ -308,11 +324,6 @@ name|QueryEngineImpl
 name|queryEngine
 parameter_list|)
 block|{
-assert|assert
-name|queryEngine
-operator|!=
-literal|null
-assert|;
 name|this
 operator|.
 name|loginContext
@@ -340,7 +351,10 @@ name|SessionQueryEngineImpl
 argument_list|(
 name|this
 argument_list|,
+name|checkNotNull
+argument_list|(
 name|queryEngine
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

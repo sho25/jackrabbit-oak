@@ -123,6 +123,22 @@ name|Iterables
 import|;
 end_import
 
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkNotNull
+import|;
+end_import
+
 begin_comment
 comment|/**  * Basic JavaBean implementation of a child node entry.  */
 end_comment
@@ -228,27 +244,23 @@ name|NodeState
 name|node
 parameter_list|)
 block|{
-assert|assert
-name|name
-operator|!=
-literal|null
-assert|;
-assert|assert
-name|node
-operator|!=
-literal|null
-assert|;
 name|this
 operator|.
 name|name
 operator|=
+name|checkNotNull
+argument_list|(
 name|name
+argument_list|)
 expr_stmt|;
 name|this
 operator|.
 name|node
 operator|=
+name|checkNotNull
+argument_list|(
 name|node
+argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Utility constructor that copies the name and referenced      * child node state from the given map entry.      *      * @param entry map entry      */

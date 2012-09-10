@@ -121,6 +121,22 @@ end_import
 
 begin_import
 import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkArgument
+import|;
+end_import
+
+begin_import
+import|import static
 name|org
 operator|.
 name|apache
@@ -635,14 +651,16 @@ name|String
 name|path
 parameter_list|)
 block|{
-assert|assert
+name|checkArgument
+argument_list|(
 name|path
 operator|.
 name|startsWith
 argument_list|(
 literal|"/"
 argument_list|)
-assert|;
+argument_list|)
+expr_stmt|;
 name|NodeState
 name|node
 init|=

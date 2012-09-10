@@ -75,6 +75,22 @@ name|CoreValue
 import|;
 end_import
 
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkNotNull
+import|;
+end_import
+
 begin_comment
 comment|/**  * Multi-valued property state.  */
 end_comment
@@ -112,11 +128,6 @@ argument_list|(
 name|name
 argument_list|)
 expr_stmt|;
-assert|assert
-name|values
-operator|!=
-literal|null
-assert|;
 name|this
 operator|.
 name|values
@@ -131,7 +142,10 @@ argument_list|<
 name|CoreValue
 argument_list|>
 argument_list|(
+name|checkNotNull
+argument_list|(
 name|values
+argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;

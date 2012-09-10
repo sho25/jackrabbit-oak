@@ -81,6 +81,22 @@ name|PropertyState
 import|;
 end_import
 
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkNotNull
+import|;
+end_import
+
 begin_comment
 comment|/**  * Property state that contains an empty array of values. Used as a base  * class for {@link SinglePropertyState} and {@link MultiPropertyState}.  */
 end_comment
@@ -103,16 +119,14 @@ name|String
 name|name
 parameter_list|)
 block|{
-assert|assert
-name|name
-operator|!=
-literal|null
-assert|;
 name|this
 operator|.
 name|name
 operator|=
+name|checkNotNull
+argument_list|(
 name|name
+argument_list|)
 expr_stmt|;
 block|}
 annotation|@

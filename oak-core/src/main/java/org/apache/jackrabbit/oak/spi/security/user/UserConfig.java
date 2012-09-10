@@ -103,6 +103,22 @@ name|LoggerFactory
 import|;
 end_import
 
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkNotNull
+import|;
+end_import
+
 begin_comment
 comment|/**  * UserManagerConfig provides utilities to retrieve configuration options  * related to user management. In addition it defines some constants that  * have been used in Jackrabbit 2.0 default user management implementation.  */
 end_comment
@@ -251,16 +267,14 @@ argument_list|>
 name|actions
 parameter_list|)
 block|{
-assert|assert
-name|adminId
-operator|!=
-literal|null
-assert|;
 name|this
 operator|.
 name|adminId
 operator|=
+name|checkNotNull
+argument_list|(
 name|adminId
+argument_list|)
 expr_stmt|;
 name|this
 operator|.

@@ -141,6 +141,38 @@ end_import
 
 begin_import
 import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkArgument
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkNotNull
+import|;
+end_import
+
+begin_import
+import|import static
 name|org
 operator|.
 name|apache
@@ -257,11 +289,6 @@ name|ConflictHandler
 name|conflictHandler
 parameter_list|)
 block|{
-assert|assert
-name|target
-operator|!=
-literal|null
-assert|;
 name|toState
 operator|.
 name|compareAgainstBaseState
@@ -271,7 +298,10 @@ argument_list|,
 operator|new
 name|MergingNodeStateDiff
 argument_list|(
+name|checkNotNull
+argument_list|(
 name|target
+argument_list|)
 argument_list|,
 name|conflictHandler
 argument_list|)
@@ -373,7 +403,8 @@ name|PropertyState
 name|after
 parameter_list|)
 block|{
-assert|assert
+name|checkArgument
+argument_list|(
 name|before
 operator|.
 name|getName
@@ -386,7 +417,10 @@ operator|.
 name|getName
 argument_list|()
 argument_list|)
-assert|;
+argument_list|,
+literal|"before and after must have the same name"
+argument_list|)
+expr_stmt|;
 name|ConflictHandler
 operator|.
 name|Resolution

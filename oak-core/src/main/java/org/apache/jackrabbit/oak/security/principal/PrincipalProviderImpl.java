@@ -367,6 +367,38 @@ name|LoggerFactory
 import|;
 end_import
 
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkNotNull
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkState
+import|;
+end_import
+
 begin_comment
 comment|/**  * The {@code PrincipalProviderImpl} is a principal provider implementation  * that operates on principal information read from user information exposed by  * the configured {@link UserProvider} and {@link MembershipProvider}.  */
 end_comment
@@ -868,12 +900,13 @@ name|Tree
 name|authorizableTree
 parameter_list|)
 block|{
-assert|assert
+name|checkNotNull
+argument_list|(
 name|authorizableTree
-operator|!=
-literal|null
-assert|;
-assert|assert
+argument_list|)
+expr_stmt|;
+name|checkState
+argument_list|(
 name|authorizableTree
 operator|.
 name|hasProperty
@@ -882,7 +915,8 @@ name|JcrConstants
 operator|.
 name|JCR_PRIMARYTYPE
 argument_list|)
-assert|;
+argument_list|)
+expr_stmt|;
 name|String
 name|ntName
 init|=
