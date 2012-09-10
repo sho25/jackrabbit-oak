@@ -49,6 +49,8 @@ name|oak
 operator|.
 name|spi
 operator|.
+name|query
+operator|.
 name|Filter
 import|;
 end_import

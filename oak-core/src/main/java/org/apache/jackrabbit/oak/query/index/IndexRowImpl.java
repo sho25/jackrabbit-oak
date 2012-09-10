@@ -47,6 +47,8 @@ name|oak
 operator|.
 name|spi
 operator|.
+name|query
+operator|.
 name|IndexRow
 import|;
 end_import

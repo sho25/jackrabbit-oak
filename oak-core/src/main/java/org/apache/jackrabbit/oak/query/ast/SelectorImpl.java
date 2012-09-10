@@ -159,6 +159,8 @@ name|oak
 operator|.
 name|spi
 operator|.
+name|query
+operator|.
 name|Cursor
 import|;
 end_import
@@ -175,6 +177,8 @@ name|oak
 operator|.
 name|spi
 operator|.
+name|query
+operator|.
 name|IndexRow
 import|;
 end_import
@@ -190,6 +194,8 @@ operator|.
 name|oak
 operator|.
 name|spi
+operator|.
+name|query
 operator|.
 name|QueryIndex
 import|;

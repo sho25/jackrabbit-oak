@@ -143,6 +143,8 @@ name|oak
 operator|.
 name|spi
 operator|.
+name|query
+operator|.
 name|Cursor
 import|;
 end_import

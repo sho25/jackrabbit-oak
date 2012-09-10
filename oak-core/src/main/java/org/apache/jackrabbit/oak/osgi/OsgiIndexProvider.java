@@ -69,6 +69,8 @@ name|oak
 operator|.
 name|spi
 operator|.
+name|query
+operator|.
 name|QueryIndex
 import|;
 end_import
@@ -84,6 +86,8 @@ operator|.
 name|oak
 operator|.
 name|spi
+operator|.
+name|query
 operator|.
 name|QueryIndexProvider
 import|;

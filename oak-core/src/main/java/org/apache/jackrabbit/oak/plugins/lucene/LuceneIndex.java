@@ -189,6 +189,8 @@ name|oak
 operator|.
 name|spi
 operator|.
+name|query
+operator|.
 name|Cursor
 import|;
 end_import
@@ -205,6 +207,8 @@ name|oak
 operator|.
 name|spi
 operator|.
+name|query
+operator|.
 name|Filter
 import|;
 end_import
@@ -221,9 +225,9 @@ name|oak
 operator|.
 name|spi
 operator|.
-name|Filter
+name|query
 operator|.
-name|PropertyRestriction
+name|IndexDefinition
 import|;
 end_import
 
@@ -238,6 +242,8 @@ operator|.
 name|oak
 operator|.
 name|spi
+operator|.
+name|query
 operator|.
 name|IndexRow
 import|;
@@ -254,6 +260,8 @@ operator|.
 name|oak
 operator|.
 name|spi
+operator|.
+name|query
 operator|.
 name|QueryIndex
 import|;
@@ -273,7 +281,9 @@ name|spi
 operator|.
 name|query
 operator|.
-name|IndexDefinition
+name|Filter
+operator|.
+name|PropertyRestriction
 import|;
 end_import
 
