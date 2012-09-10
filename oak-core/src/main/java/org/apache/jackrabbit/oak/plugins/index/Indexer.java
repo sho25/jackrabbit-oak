@@ -236,7 +236,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A index mechanism. An index is bound to a certain repository, and supports  * one or more indexes.  *   */
+comment|/**  * A index mechanism. An index is bound to a certain repository, and supports  * one or more indexes.  *   * @deprecated use {@link PropertyIndexer} - see OAK-289  */
 end_comment
 
 begin_class
