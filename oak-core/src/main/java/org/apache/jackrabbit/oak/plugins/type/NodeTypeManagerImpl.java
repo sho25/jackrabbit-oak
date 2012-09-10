@@ -2051,6 +2051,9 @@ operator|.
 name|getRequiredType
 argument_list|()
 argument_list|)
+operator|.
+name|toUpperCase
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|node

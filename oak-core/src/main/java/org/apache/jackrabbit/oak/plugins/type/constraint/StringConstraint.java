@@ -153,19 +153,6 @@ name|p
 decl_stmt|;
 try|try
 block|{
-comment|// FIXME matching case insensitive as a workaround for
-comment|// for OAK-294: nt:propertyDefinition has incorrect value constraints for property types
-name|int
-name|ignoreCase
-init|=
-name|Pattern
-operator|.
-name|CASE_INSENSITIVE
-operator||
-name|Pattern
-operator|.
-name|UNICODE_CASE
-decl_stmt|;
 name|p
 operator|=
 name|Pattern
@@ -173,8 +160,6 @@ operator|.
 name|compile
 argument_list|(
 name|definition
-argument_list|,
-name|ignoreCase
 argument_list|)
 expr_stmt|;
 block|}
