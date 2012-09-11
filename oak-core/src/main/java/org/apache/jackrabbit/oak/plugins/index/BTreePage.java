@@ -40,8 +40,8 @@ comment|/**  * An index page.  */
 end_comment
 
 begin_class
-specifier|abstract
 specifier|public
+specifier|abstract
 class|class
 name|BTreePage
 implements|implements

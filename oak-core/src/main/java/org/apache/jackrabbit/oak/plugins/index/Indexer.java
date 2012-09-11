@@ -1942,8 +1942,8 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-specifier|synchronized
 specifier|public
+specifier|synchronized
 name|void
 name|updateUntil
 parameter_list|(
@@ -2997,7 +2997,7 @@ name|name
 operator|.
 name|startsWith
 argument_list|(
-name|Indexer
+name|PropertyIndexConstants
 operator|.
 name|TYPE_PREFIX
 argument_list|)
@@ -3010,7 +3010,7 @@ name|name
 operator|.
 name|substring
 argument_list|(
-name|Indexer
+name|PropertyIndexConstants
 operator|.
 name|TYPE_PREFIX
 operator|.
@@ -3048,7 +3048,7 @@ name|name
 operator|.
 name|startsWith
 argument_list|(
-name|Indexer
+name|PropertyIndexConstants
 operator|.
 name|TYPE_PROPERTY
 argument_list|)
@@ -3061,7 +3061,7 @@ name|name
 operator|.
 name|substring
 argument_list|(
-name|Indexer
+name|PropertyIndexConstants
 operator|.
 name|TYPE_PROPERTY
 operator|.
@@ -3082,7 +3082,7 @@ name|endsWith
 argument_list|(
 literal|","
 operator|+
-name|Indexer
+name|PropertyIndexConstants
 operator|.
 name|UNIQUE
 argument_list|)
@@ -3105,7 +3105,7 @@ operator|.
 name|length
 argument_list|()
 operator|-
-name|Indexer
+name|PropertyIndexConstants
 operator|.
 name|UNIQUE
 operator|.
