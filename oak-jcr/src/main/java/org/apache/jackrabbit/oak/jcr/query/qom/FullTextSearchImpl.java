@@ -149,6 +149,13 @@ argument_list|(
 literal|"CONTAINS("
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|selectorName
+operator|!=
+literal|null
+condition|)
+block|{
 name|builder
 operator|.
 name|append
@@ -159,6 +166,14 @@ name|selectorName
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|builder
+operator|.
+name|append
+argument_list|(
+literal|'.'
+argument_list|)
+expr_stmt|;
+block|}
 if|if
 condition|(
 name|propertyName
@@ -170,24 +185,10 @@ name|builder
 operator|.
 name|append
 argument_list|(
-literal|'.'
-argument_list|)
-expr_stmt|;
-name|builder
-operator|.
-name|append
-argument_list|(
 name|quotePropertyName
 argument_list|(
 name|propertyName
 argument_list|)
-argument_list|)
-expr_stmt|;
-name|builder
-operator|.
-name|append
-argument_list|(
-literal|", "
 argument_list|)
 expr_stmt|;
 block|}
@@ -197,10 +198,17 @@ name|builder
 operator|.
 name|append
 argument_list|(
-literal|".*, "
+literal|'*'
 argument_list|)
 expr_stmt|;
 block|}
+name|builder
+operator|.
+name|append
+argument_list|(
+literal|", "
+argument_list|)
+expr_stmt|;
 name|builder
 operator|.
 name|append

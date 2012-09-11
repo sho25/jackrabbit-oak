@@ -85,6 +85,17 @@ name|String
 name|toString
 parameter_list|()
 block|{
+if|if
+condition|(
+name|selectorName
+operator|==
+literal|null
+condition|)
+block|{
+return|return
+literal|"SCORE()"
+return|;
+block|}
 return|return
 literal|"SCORE("
 operator|+
