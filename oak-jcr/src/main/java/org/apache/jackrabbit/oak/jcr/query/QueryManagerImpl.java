@@ -573,6 +573,7 @@ index|]
 argument_list|)
 return|;
 block|}
+comment|/**      * Parse the query and get the bind variable names.      *       * @param statement the query statement      * @param language the query language      * @return the bind variable names      */
 specifier|public
 name|List
 argument_list|<
@@ -805,6 +806,7 @@ return|return
 name|map
 return|;
 block|}
+specifier|public
 name|SessionDelegate
 name|getSessionDelegate
 parameter_list|()
