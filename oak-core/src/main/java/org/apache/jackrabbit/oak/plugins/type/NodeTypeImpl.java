@@ -1915,7 +1915,12 @@ argument_list|)
 condition|)
 block|{
 return|return
-literal|true
+name|definition
+operator|.
+name|getDefaultPrimaryType
+argument_list|()
+operator|!=
+literal|null
 return|;
 block|}
 block|}
