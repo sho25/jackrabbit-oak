@@ -2458,6 +2458,7 @@ return|return
 name|ifUnknown
 return|;
 block|}
+comment|/**      * Convert a value to the given target type, if possible.      *       * @param v the value to convert      * @param targetType the target property type      * @return the converted value, or null if converting is not possible      */
 specifier|public
 name|CoreValue
 name|convert
@@ -2582,6 +2583,8 @@ name|targetType
 argument_list|)
 return|;
 block|}
+try|try
+block|{
 switch|switch
 condition|(
 name|targetType
@@ -2859,6 +2862,22 @@ operator|+
 name|targetType
 argument_list|)
 throw|;
+block|}
+catch|catch
+parameter_list|(
+name|UnsupportedOperationException
+name|e
+parameter_list|)
+block|{
+comment|// TODO detect unsupported conversions, so that no exception is thrown
+comment|// because exceptions are slow
+return|return
+literal|null
+return|;
+comment|// throw new IllegalArgumentException("<unsupported conversion of " +
+comment|//        v + " (" + PropertyType.nameFromValue(v.getType()) + ") to type " +
+comment|//        PropertyType.nameFromValue(targetType) + ">");
+block|}
 block|}
 specifier|public
 name|String

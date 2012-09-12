@@ -418,6 +418,10 @@ expr_stmt|;
 block|}
 if|if
 condition|(
+name|y
+operator|!=
+literal|null
+operator|&&
 name|x
 operator|.
 name|equals

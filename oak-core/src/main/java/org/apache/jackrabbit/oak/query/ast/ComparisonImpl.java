@@ -284,6 +284,17 @@ argument_list|,
 name|v1Type
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|v2
+operator|==
+literal|null
+condition|)
+block|{
+return|return
+literal|false
+return|;
+block|}
 block|}
 if|if
 condition|(
