@@ -27,9 +27,9 @@ name|jackrabbit
 operator|.
 name|mk
 operator|.
-name|api
+name|core
 operator|.
-name|MicroKernel
+name|MicroKernelImpl
 import|;
 end_import
 
@@ -43,9 +43,9 @@ name|jackrabbit
 operator|.
 name|mk
 operator|.
-name|core
+name|index
 operator|.
-name|MicroKernelImpl
+name|IndexWrapper
 import|;
 end_import
 
@@ -294,22 +294,28 @@ name|ContentRepository
 name|createRepository
 parameter_list|()
 block|{
-name|MicroKernel
+comment|// the property and prefix index currently require the index wrapper
+name|IndexWrapper
 name|mk
 init|=
 operator|new
+name|IndexWrapper
+argument_list|(
+operator|new
 name|MicroKernelImpl
 argument_list|()
+argument_list|)
 decl_stmt|;
 name|Indexer
 name|indexer
 init|=
-operator|new
-name|Indexer
-argument_list|(
 name|mk
-argument_list|)
+operator|.
+name|getIndexer
+argument_list|()
 decl_stmt|;
+comment|// MicroKernel mk = new MicroKernelImpl();
+comment|// Indexer indexer = new Indexer(mk);
 name|PropertyIndexer
 name|pi
 init|=
