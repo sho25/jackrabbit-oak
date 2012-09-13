@@ -141,7 +141,7 @@ function_decl|;
 block|}
 specifier|public
 specifier|static
-name|void
+name|boolean
 name|parse
 parameter_list|(
 name|String
@@ -188,7 +188,9 @@ operator|.
 name|root
 argument_list|()
 expr_stmt|;
-return|return;
+return|return
+literal|true
+return|;
 block|}
 comment|// short cut for empty path
 if|if
@@ -198,7 +200,9 @@ operator|==
 literal|0
 condition|)
 block|{
-return|return;
+return|return
+literal|true
+return|;
 block|}
 comment|// check if absolute path
 name|int
@@ -227,7 +231,9 @@ name|root
 argument_list|()
 condition|)
 block|{
-return|return;
+return|return
+literal|false
+return|;
 block|}
 name|pos
 operator|++
@@ -340,7 +346,9 @@ operator|+
 literal|"double slash '//' not allowed."
 argument_list|)
 expr_stmt|;
-return|return;
+return|return
+literal|false
+return|;
 block|}
 if|if
 condition|(
@@ -387,7 +395,9 @@ operator|+
 literal|"Trailing slashes not allowed in prefixes and names."
 argument_list|)
 expr_stmt|;
-return|return;
+return|return
+literal|false
+return|;
 block|}
 name|name
 operator|=
@@ -418,7 +428,9 @@ name|index
 argument_list|)
 condition|)
 block|{
-return|return;
+return|return
+literal|false
+return|;
 block|}
 name|state
 operator|=
@@ -454,7 +466,9 @@ name|current
 argument_list|()
 condition|)
 block|{
-return|return;
+return|return
+literal|false
+return|;
 block|}
 name|lastPos
 operator|=
@@ -482,7 +496,9 @@ name|parent
 argument_list|()
 condition|)
 block|{
-return|return;
+return|return
+literal|false
+return|;
 block|}
 name|lastPos
 operator|=
@@ -528,7 +544,9 @@ operator|+
 literal|"' not a valid name character."
 argument_list|)
 expr_stmt|;
-return|return;
+return|return
+literal|false
+return|;
 block|}
 break|break;
 case|case
@@ -595,7 +613,9 @@ operator|+
 literal|"' not valid after index. '/' expected."
 argument_list|)
 expr_stmt|;
-return|return;
+return|return
+literal|false
+return|;
 block|}
 break|break;
 case|case
@@ -621,7 +641,9 @@ operator|+
 literal|"must not be empty"
 argument_list|)
 expr_stmt|;
-return|return;
+return|return
+literal|false
+return|;
 block|}
 elseif|else
 if|if
@@ -649,7 +671,9 @@ operator|+
 literal|"Trailing slashes not allowed in prefixes and names."
 argument_list|)
 expr_stmt|;
-return|return;
+return|return
+literal|false
+return|;
 block|}
 name|state
 operator|=
@@ -680,7 +704,9 @@ operator|+
 literal|"' not valid name character"
 argument_list|)
 expr_stmt|;
-return|return;
+return|return
+literal|false
+return|;
 block|}
 break|break;
 case|case
@@ -715,7 +741,9 @@ operator|+
 literal|"Trailing slashes not allowed in prefixes and names."
 argument_list|)
 expr_stmt|;
-return|return;
+return|return
+literal|false
+return|;
 block|}
 name|state
 operator|=
@@ -801,7 +829,9 @@ literal|1
 argument_list|)
 argument_list|)
 expr_stmt|;
-return|return;
+return|return
+literal|false
+return|;
 block|}
 if|if
 condition|(
@@ -825,7 +855,9 @@ operator|+
 name|index
 argument_list|)
 expr_stmt|;
-return|return;
+return|return
+literal|false
+return|;
 block|}
 name|state
 operator|=
@@ -849,7 +881,9 @@ operator|+
 literal|"' not a valid name character."
 argument_list|)
 expr_stmt|;
-return|return;
+return|return
+literal|false
+return|;
 block|}
 break|break;
 case|case
@@ -881,7 +915,9 @@ operator|+
 literal|"' not valid name start"
 argument_list|)
 expr_stmt|;
-return|return;
+return|return
+literal|false
+return|;
 block|}
 elseif|else
 if|if
@@ -906,7 +942,9 @@ operator|+
 literal|"' not valid after index. '/' expected."
 argument_list|)
 expr_stmt|;
-return|return;
+return|return
+literal|false
+return|;
 block|}
 elseif|else
 if|if
@@ -942,7 +980,9 @@ operator|+
 literal|"Whitespace not a allowed in name."
 argument_list|)
 expr_stmt|;
-return|return;
+return|return
+literal|false
+return|;
 case|case
 literal|'*'
 case|:
@@ -964,7 +1004,9 @@ operator|+
 literal|"' not a valid name character."
 argument_list|)
 expr_stmt|;
-return|return;
+return|return
+literal|false
+return|;
 case|case
 literal|'{'
 case|:
@@ -1085,7 +1127,9 @@ operator|+
 literal|"' not valid after index. '/' expected."
 argument_list|)
 expr_stmt|;
-return|return;
+return|return
+literal|false
+return|;
 block|}
 block|}
 name|wasSlash
@@ -1095,6 +1139,115 @@ operator|==
 literal|' '
 expr_stmt|;
 block|}
+return|return
+literal|true
+return|;
+block|}
+specifier|public
+specifier|static
+name|boolean
+name|validate
+parameter_list|(
+name|String
+name|jcrPath
+parameter_list|)
+block|{
+name|Listener
+name|listener
+init|=
+operator|new
+name|Listener
+argument_list|()
+block|{
+name|boolean
+name|hasRoot
+decl_stmt|;
+annotation|@
+name|Override
+specifier|public
+name|boolean
+name|root
+parameter_list|()
+block|{
+if|if
+condition|(
+name|hasRoot
+condition|)
+block|{
+return|return
+literal|false
+return|;
+block|}
+else|else
+block|{
+name|hasRoot
+operator|=
+literal|true
+expr_stmt|;
+return|return
+literal|true
+return|;
+block|}
+block|}
+annotation|@
+name|Override
+specifier|public
+name|boolean
+name|current
+parameter_list|()
+block|{
+return|return
+literal|true
+return|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|boolean
+name|parent
+parameter_list|()
+block|{
+return|return
+literal|true
+return|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|void
+name|error
+parameter_list|(
+name|String
+name|message
+parameter_list|)
+block|{             }
+annotation|@
+name|Override
+specifier|public
+name|boolean
+name|name
+parameter_list|(
+name|String
+name|name
+parameter_list|,
+name|int
+name|index
+parameter_list|)
+block|{
+return|return
+literal|true
+return|;
+block|}
+block|}
+decl_stmt|;
+return|return
+name|parse
+argument_list|(
+name|jcrPath
+argument_list|,
+name|listener
+argument_list|)
+return|;
 block|}
 block|}
 end_class
