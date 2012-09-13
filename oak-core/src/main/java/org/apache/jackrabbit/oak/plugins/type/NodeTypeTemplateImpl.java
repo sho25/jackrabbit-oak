@@ -382,6 +382,8 @@ control|(
 name|PropertyDefinition
 name|pd
 range|:
+name|ntd
+operator|.
 name|getDeclaredPropertyDefinitions
 argument_list|()
 control|)
@@ -536,6 +538,8 @@ control|(
 name|NodeDefinition
 name|nd
 range|:
+name|ntd
+operator|.
 name|getDeclaredChildNodeDefinitions
 argument_list|()
 control|)
