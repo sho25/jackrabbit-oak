@@ -247,6 +247,24 @@ name|PropertyIndex
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|index
+operator|.
+name|PropertyIndexConstants
+import|;
+end_import
+
 begin_comment
 comment|/**  * The index mechanism, as a wrapper.  *   * @deprecated - see OAK-298  */
 end_comment
@@ -862,7 +880,7 @@ name|index
 operator|.
 name|startsWith
 argument_list|(
-name|Indexer
+name|PropertyIndexConstants
 operator|.
 name|TYPE_PREFIX
 argument_list|)
@@ -875,7 +893,7 @@ name|index
 operator|.
 name|substring
 argument_list|(
-name|Indexer
+name|PropertyIndexConstants
 operator|.
 name|TYPE_PREFIX
 operator|.
@@ -953,7 +971,7 @@ name|index
 operator|.
 name|startsWith
 argument_list|(
-name|Indexer
+name|PropertyIndexConstants
 operator|.
 name|TYPE_PROPERTY
 argument_list|)
@@ -966,7 +984,7 @@ name|index
 operator|.
 name|substring
 argument_list|(
-name|Indexer
+name|PropertyIndexConstants
 operator|.
 name|TYPE_PROPERTY
 operator|.
@@ -987,7 +1005,7 @@ name|endsWith
 argument_list|(
 literal|","
 operator|+
-name|Indexer
+name|PropertyIndexConstants
 operator|.
 name|UNIQUE
 argument_list|)
@@ -1010,7 +1028,7 @@ operator|.
 name|length
 argument_list|()
 operator|-
-name|Indexer
+name|PropertyIndexConstants
 operator|.
 name|UNIQUE
 operator|.
