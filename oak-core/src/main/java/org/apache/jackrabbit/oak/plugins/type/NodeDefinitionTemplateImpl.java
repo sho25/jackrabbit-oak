@@ -97,6 +97,18 @@ end_import
 
 begin_import
 import|import
+name|javax
+operator|.
+name|jcr
+operator|.
+name|version
+operator|.
+name|OnParentVersionAction
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -183,6 +195,17 @@ operator|new
 name|UnsupportedRepositoryOperationException
 argument_list|()
 throw|;
+block|}
+specifier|public
+name|NodeDefinitionTemplateImpl
+parameter_list|()
+block|{
+name|onParent
+operator|=
+name|OnParentVersionAction
+operator|.
+name|COPY
+expr_stmt|;
 block|}
 annotation|@
 name|Override
