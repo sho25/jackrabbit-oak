@@ -794,7 +794,7 @@ name|Descriptor
 argument_list|(
 name|OPTION_NODE_TYPE_MANAGEMENT_SUPPORTED
 argument_list|,
-name|falseValue
+name|trueValue
 argument_list|,
 literal|true
 argument_list|,
@@ -1078,7 +1078,7 @@ name|Descriptor
 argument_list|(
 name|NODE_TYPE_MANAGEMENT_SAME_NAME_SIBLINGS_SUPPORTED
 argument_list|,
-name|falseValue
+name|trueValue
 argument_list|,
 literal|true
 argument_list|,
@@ -1093,7 +1093,7 @@ name|Descriptor
 argument_list|(
 name|NODE_TYPE_MANAGEMENT_VALUE_CONSTRAINTS_SUPPORTED
 argument_list|,
-name|falseValue
+name|trueValue
 argument_list|,
 literal|true
 argument_list|,
@@ -1198,7 +1198,7 @@ name|Descriptor
 argument_list|(
 name|OPTION_NODE_AND_PROPERTY_WITH_SAME_NAME_SUPPORTED
 argument_list|,
-name|trueValue
+name|falseValue
 argument_list|,
 literal|true
 argument_list|,
