@@ -2637,6 +2637,7 @@ name|definition
 parameter_list|)
 block|{
 comment|// TODO need a better way for setting protected items internally
+comment|// FIXME admins should not be able to set protected items
 name|Subject
 name|subject
 init|=
