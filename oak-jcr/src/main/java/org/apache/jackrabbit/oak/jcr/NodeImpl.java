@@ -693,6 +693,24 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
+name|plugins
+operator|.
+name|type
+operator|.
+name|NodeTypeConstants
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
 name|util
 operator|.
 name|TODO
@@ -6222,8 +6240,7 @@ return|;
 block|}
 block|}
 comment|// TODO: hack to filter for a subset of supported mixins for now
-comment|// this allows exactly one (harmless) mixin type so that other code like
-comment|// addMixin gets test coverage
+comment|// this allows only harmless mixin types so that other code like addMixin gets test coverage
 specifier|private
 name|boolean
 name|isSupportedMixinName
@@ -6246,6 +6263,33 @@ argument_list|)
 decl_stmt|;
 return|return
 literal|"mix:title"
+operator|.
+name|equals
+argument_list|(
+name|oakName
+argument_list|)
+operator|||
+name|NodeTypeConstants
+operator|.
+name|MIX_REFERENCEABLE
+operator|.
+name|equals
+argument_list|(
+name|oakName
+argument_list|)
+operator|||
+name|NodeTypeConstants
+operator|.
+name|MIX_VERSIONABLE
+operator|.
+name|equals
+argument_list|(
+name|oakName
+argument_list|)
+operator|||
+name|NodeTypeConstants
+operator|.
+name|MIX_LOCKABLE
 operator|.
 name|equals
 argument_list|(
