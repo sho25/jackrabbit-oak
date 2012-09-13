@@ -522,11 +522,7 @@ literal|null
 condition|)
 block|{
 return|return
-operator|new
-name|NodeType
-index|[
-literal|0
-index|]
+literal|null
 return|;
 block|}
 else|else
