@@ -754,6 +754,9 @@ name|NodeTypeTemplateImpl
 argument_list|(
 name|this
 argument_list|,
+name|getNameMapper
+argument_list|()
+argument_list|,
 name|getValueFactory
 argument_list|()
 argument_list|)
@@ -777,6 +780,9 @@ name|NodeTypeTemplateImpl
 argument_list|(
 name|this
 argument_list|,
+name|getNameMapper
+argument_list|()
+argument_list|,
 name|getValueFactory
 argument_list|()
 argument_list|,
@@ -794,7 +800,10 @@ block|{
 return|return
 operator|new
 name|NodeDefinitionTemplateImpl
+argument_list|(
+name|getNameMapper
 argument_list|()
+argument_list|)
 return|;
 block|}
 annotation|@
@@ -807,7 +816,10 @@ block|{
 return|return
 operator|new
 name|PropertyDefinitionTemplateImpl
+argument_list|(
+name|getNameMapper
 argument_list|()
+argument_list|)
 return|;
 block|}
 annotation|@

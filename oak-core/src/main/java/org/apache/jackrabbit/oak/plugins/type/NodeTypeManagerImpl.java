@@ -201,18 +201,6 @@ name|jcr
 operator|.
 name|nodetype
 operator|.
-name|NodeTypeManager
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|jcr
-operator|.
-name|nodetype
-operator|.
 name|NodeTypeTemplate
 import|;
 end_import
@@ -1152,10 +1140,6 @@ try|try
 block|{
 name|registerNodeTypes
 argument_list|(
-name|NodeTypeManagerImpl
-operator|.
-name|this
-argument_list|,
 operator|new
 name|InputStreamReader
 argument_list|(
@@ -1200,15 +1184,11 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Utility method for registering node types from a CND format.      * @param nodeTypeManager  mode type manager where the node types are registered.      * @param cnd  reader for the CND      * @throws ParseException  if parsing the CND fails      * @throws RepositoryException  if registering the node types fails      */
+comment|/**      * Utility method for registering node types from a CND format.      * @param cnd  reader for the CND      * @throws ParseException  if parsing the CND fails      * @throws RepositoryException  if registering the node types fails      */
 specifier|public
-specifier|static
 name|void
 name|registerNodeTypes
 parameter_list|(
-name|NodeTypeManager
-name|nodeTypeManager
-parameter_list|,
 name|InputStreamReader
 name|cnd
 parameter_list|)
@@ -1249,7 +1229,9 @@ literal|null
 argument_list|,
 operator|new
 name|DefBuilderFactory
-argument_list|()
+argument_list|(
+name|mapper
+argument_list|)
 argument_list|)
 decl_stmt|;
 name|Map
@@ -1386,8 +1368,6 @@ condition|)
 block|{
 name|st
 operator|=
-name|nodeTypeManager
-operator|.
 name|getNodeType
 argument_list|(
 name|name
@@ -1467,8 +1447,6 @@ block|}
 block|}
 block|}
 block|}
-name|nodeTypeManager
-operator|.
 name|registerNodeTypes
 argument_list|(
 name|templates
