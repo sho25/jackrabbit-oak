@@ -685,6 +685,11 @@ name|offset
 argument_list|,
 name|bindMap
 argument_list|,
+name|sessionDelegate
+operator|.
+name|getRoot
+argument_list|()
+argument_list|,
 name|namePathMapper
 argument_list|)
 decl_stmt|;

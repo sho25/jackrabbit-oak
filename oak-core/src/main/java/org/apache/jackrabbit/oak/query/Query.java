@@ -199,6 +199,22 @@ name|oak
 operator|.
 name|api
 operator|.
+name|Root
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|api
+operator|.
 name|Tree
 import|;
 end_import
@@ -724,7 +740,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Represents a parsed query. Lifecycle: use the constructor to create a new  * object. Call init() to initialize the bind variable map.  */
+comment|/**  * Represents a parsed query. Lifecycle: use the constructor to create a new  * object. Call init() to initialize the bind variable map. If the query is  * re-executed, a new instance is created.  */
 end_comment
 
 begin_class
@@ -846,6 +862,10 @@ decl_stmt|;
 specifier|private
 name|ContentSession
 name|session
+decl_stmt|;
+specifier|private
+name|Root
+name|root
 decl_stmt|;
 specifier|private
 name|NamePathMapper
@@ -3699,18 +3719,6 @@ argument_list|)
 return|;
 block|}
 specifier|public
-name|String
-name|getWorkspaceName
-parameter_list|()
-block|{
-return|return
-name|session
-operator|.
-name|getWorkspaceName
-argument_list|()
-return|;
-block|}
-specifier|public
 name|void
 name|setQueryEngine
 parameter_list|(
@@ -3759,6 +3767,21 @@ expr_stmt|;
 block|}
 specifier|public
 name|void
+name|setRoot
+parameter_list|(
+name|Root
+name|root
+parameter_list|)
+block|{
+name|this
+operator|.
+name|root
+operator|=
+name|root
+expr_stmt|;
+block|}
+specifier|public
+name|void
 name|setNamePathMapper
 parameter_list|(
 name|NamePathMapper
@@ -3790,10 +3813,7 @@ name|path
 parameter_list|)
 block|{
 return|return
-name|session
-operator|.
-name|getCurrentRoot
-argument_list|()
+name|root
 operator|.
 name|getTree
 argument_list|(

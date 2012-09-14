@@ -781,7 +781,7 @@ name|nd
 init|=
 name|dlg
 operator|.
-name|getRoot
+name|getRootNode
 argument_list|()
 decl_stmt|;
 if|if

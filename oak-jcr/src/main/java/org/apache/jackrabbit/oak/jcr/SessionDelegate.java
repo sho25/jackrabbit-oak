@@ -1004,7 +1004,7 @@ annotation|@
 name|CheckForNull
 specifier|public
 name|NodeDelegate
-name|getRoot
+name|getRootNode
 parameter_list|()
 block|{
 return|return
@@ -1012,6 +1012,17 @@ name|getNode
 argument_list|(
 literal|"/"
 argument_list|)
+return|;
+block|}
+annotation|@
+name|CheckForNull
+specifier|public
+name|Root
+name|getRoot
+parameter_list|()
+block|{
+return|return
+name|root
 return|;
 block|}
 comment|/**      * {@code NodeDelegate} at the given path      * @param path Oak path      * @return  The {@code NodeDelegate} at {@code path} or {@code null} if      * none exists or not accessible.      */

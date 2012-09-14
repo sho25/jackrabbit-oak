@@ -910,6 +910,8 @@ literal|0
 argument_list|,
 name|bindings
 argument_list|,
+name|root
+argument_list|,
 operator|new
 name|NamePathMapper
 operator|.
@@ -1442,6 +1444,8 @@ argument_list|,
 literal|0
 argument_list|,
 name|bindings
+argument_list|,
+name|root
 argument_list|,
 operator|new
 name|NamePathMapper

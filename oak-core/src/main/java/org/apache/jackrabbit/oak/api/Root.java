@@ -38,7 +38,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * The root of a {@link Tree}.  */
+comment|/**  * The root of a {@link Tree}.  *<p>  * The data returned by this class filtered for the access rights that are set  * in the {@link ContentSession} that created this object.  */
 end_comment
 
 begin_interface
