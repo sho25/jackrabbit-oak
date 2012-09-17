@@ -243,7 +243,7 @@ name|root
 operator|=
 name|session
 operator|.
-name|getCurrentRoot
+name|getLatestRoot
 argument_list|()
 expr_stmt|;
 name|vf

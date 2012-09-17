@@ -1457,7 +1457,7 @@ name|sv
 argument_list|,
 name|session
 operator|.
-name|getCurrentRoot
+name|getLatestRoot
 argument_list|()
 argument_list|,
 literal|null

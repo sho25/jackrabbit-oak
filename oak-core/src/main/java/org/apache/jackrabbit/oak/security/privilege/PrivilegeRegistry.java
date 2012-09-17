@@ -602,7 +602,7 @@ name|root
 init|=
 name|contentSession
 operator|.
-name|getCurrentRoot
+name|getLatestRoot
 argument_list|()
 decl_stmt|;
 try|try

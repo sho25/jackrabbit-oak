@@ -64,7 +64,7 @@ comment|/**      * The current head root as seen by this content session. Use   
 annotation|@
 name|Nonnull
 name|Root
-name|getCurrentRoot
+name|getLatestRoot
 parameter_list|()
 function_decl|;
 comment|/**      * Get the query engine.      *      * @return the query engine      */

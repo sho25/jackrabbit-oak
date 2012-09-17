@@ -756,7 +756,7 @@ name|root
 operator|=
 name|contentSession
 operator|.
-name|getCurrentRoot
+name|getLatestRoot
 argument_list|()
 expr_stmt|;
 name|this
@@ -1573,7 +1573,7 @@ name|currentRoot
 init|=
 name|contentSession
 operator|.
-name|getCurrentRoot
+name|getLatestRoot
 argument_list|()
 decl_stmt|;
 name|currentRoot
@@ -1634,7 +1634,7 @@ name|root
 else|:
 name|contentSession
 operator|.
-name|getCurrentRoot
+name|getLatestRoot
 argument_list|()
 decl_stmt|;
 comment|// check destination

@@ -418,7 +418,7 @@ annotation|@
 name|Override
 specifier|public
 name|Root
-name|getCurrentRoot
+name|getLatestRoot
 parameter_list|()
 block|{
 comment|// TODO: improve initial repository/session. See OAK-41

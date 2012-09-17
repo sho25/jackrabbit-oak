@@ -5624,7 +5624,7 @@ name|root
 init|=
 name|session
 operator|.
-name|getCurrentRoot
+name|getLatestRoot
 argument_list|()
 decl_stmt|;
 name|Tree
@@ -5883,7 +5883,7 @@ operator|.
 name|getContentSession
 argument_list|()
 operator|.
-name|getCurrentRoot
+name|getLatestRoot
 argument_list|()
 decl_stmt|;
 name|Tree

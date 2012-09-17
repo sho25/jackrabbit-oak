@@ -439,7 +439,7 @@ name|this
 argument_list|(
 name|contentSession
 operator|.
-name|getCurrentRoot
+name|getLatestRoot
 argument_list|()
 operator|.
 name|getTree

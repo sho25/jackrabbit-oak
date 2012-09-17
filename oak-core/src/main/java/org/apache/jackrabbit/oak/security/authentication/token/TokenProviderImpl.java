@@ -600,7 +600,7 @@ name|root
 operator|=
 name|contentSession
 operator|.
-name|getCurrentRoot
+name|getLatestRoot
 argument_list|()
 expr_stmt|;
 name|this

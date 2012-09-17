@@ -708,6 +708,8 @@ operator|.
 name|prepare
 argument_list|()
 expr_stmt|;
+comment|// TODO which revision to use? Root does not provide this info
+comment|// TODO which node state to use? it should come from the Root
 name|String
 name|revision
 init|=
