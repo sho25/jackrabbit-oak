@@ -460,7 +460,7 @@ name|root
 init|=
 name|session
 operator|.
-name|getCurrentRoot
+name|getLatestRoot
 argument_list|()
 decl_stmt|;
 name|Tree
