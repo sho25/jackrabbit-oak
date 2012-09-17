@@ -60,7 +60,7 @@ name|String
 name|getWorkspaceName
 parameter_list|()
 function_decl|;
-comment|/**      * The current head root as seen by this content session. Use      * {@link Root#commit(ConflictHandler)} to atomically apply the changes made      * in that subtree the underlying Microkernel.      *<p>      * The root instance gives you a stable view of the tree at the time the      * root is acquired.      *<p>      * Please note this method is possibly expensive because it internally reads      * from the backend to detect if there were any changes (from any session).      *       * @return the current head root      */
+comment|/**      * The current head root as seen by this content session. Use      * {@link Root#commit(ConflictHandler)} to atomically apply the changes made      * in that subtree the underlying Microkernel.      *<p>      * The root instance gives you a stable view of the tree at the time the      * root is acquired. Changes by other sessions that were committed at the      * time this method is called are usually visible, even thought there are no      * strict guarantees that all changes are visible, specially when clustering      * is used.      *<p>      * Please note this method is possibly expensive because it internally reads      * from the backend to detect if there were any changes (from any session).      *       * @return the current head root      */
 annotation|@
 name|Nonnull
 name|Root
