@@ -85,11 +85,13 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|plugins
+name|spi
 operator|.
-name|name
+name|security
 operator|.
-name|NamespaceRegistryImpl
+name|privilege
+operator|.
+name|PrivilegeDefinition
 import|;
 end_import
 
@@ -103,13 +105,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|spi
+name|util
 operator|.
-name|security
-operator|.
-name|privilege
-operator|.
-name|PrivilegeDefinition
+name|TODO
 import|;
 end_import
 
@@ -176,13 +174,18 @@ condition|)
 block|{
 try|try
 block|{
+comment|// TODO: should get a proper namespace registry from somewhere
 name|NamespaceRegistry
 name|nsRegistry
 init|=
-operator|new
-name|NamespaceRegistryImpl
+name|TODO
+operator|.
+name|dummyImplementation
+argument_list|()
+operator|.
+name|returnValue
 argument_list|(
-name|contentSession
+literal|null
 argument_list|)
 decl_stmt|;
 name|PrivilegeDefinition
