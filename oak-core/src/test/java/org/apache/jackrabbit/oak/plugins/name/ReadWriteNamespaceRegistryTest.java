@@ -132,7 +132,7 @@ end_import
 begin_class
 specifier|public
 class|class
-name|NamespaceRegistryImplTest
+name|ReadWriteNamespaceRegistryTest
 extends|extends
 name|AbstractOakTest
 block|{
@@ -168,7 +168,7 @@ name|NamespaceRegistry
 name|r
 init|=
 operator|new
-name|NamespaceRegistryImpl
+name|ReadWriteNamespaceRegistry
 argument_list|()
 block|{
 annotation|@
