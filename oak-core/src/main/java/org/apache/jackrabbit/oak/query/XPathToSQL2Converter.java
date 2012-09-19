@@ -3501,6 +3501,45 @@ block|}
 elseif|else
 if|if
 condition|(
+literal|"fn:upper-case"
+operator|.
+name|equals
+argument_list|(
+name|functionName
+argument_list|)
+condition|)
+block|{
+name|Function
+name|f
+init|=
+operator|new
+name|Function
+argument_list|(
+literal|"upper"
+argument_list|)
+decl_stmt|;
+name|f
+operator|.
+name|params
+operator|.
+name|add
+argument_list|(
+name|parseExpression
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|read
+argument_list|(
+literal|")"
+argument_list|)
+expr_stmt|;
+return|return
+name|f
+return|;
+block|}
+elseif|else
+if|if
+condition|(
 literal|"fn:name"
 operator|.
 name|equals
@@ -3559,45 +3598,6 @@ block|}
 elseif|else
 if|if
 condition|(
-literal|"fn:upper-case"
-operator|.
-name|equals
-argument_list|(
-name|functionName
-argument_list|)
-condition|)
-block|{
-name|Function
-name|f
-init|=
-operator|new
-name|Function
-argument_list|(
-literal|"upper"
-argument_list|)
-decl_stmt|;
-name|f
-operator|.
-name|params
-operator|.
-name|add
-argument_list|(
-name|parseExpression
-argument_list|()
-argument_list|)
-expr_stmt|;
-name|read
-argument_list|(
-literal|")"
-argument_list|)
-expr_stmt|;
-return|return
-name|f
-return|;
-block|}
-elseif|else
-if|if
-condition|(
 literal|"jcr:deref"
 operator|.
 name|equals
@@ -3606,7 +3606,7 @@ name|functionName
 argument_list|)
 condition|)
 block|{
-comment|// TODO support jcr:deref
+comment|// TODO maybe support jcr:deref
 throw|throw
 name|getSyntaxError
 argument_list|(
@@ -3625,11 +3625,31 @@ name|functionName
 argument_list|)
 condition|)
 block|{
-comment|// TODO support rep:similar
+comment|// TODO maybe support rep:similar
 throw|throw
 name|getSyntaxError
 argument_list|(
 literal|"rep:similar is not supported"
+argument_list|)
+throw|;
+block|}
+elseif|else
+if|if
+condition|(
+literal|"rep:spellcheck"
+operator|.
+name|equals
+argument_list|(
+name|functionName
+argument_list|)
+condition|)
+block|{
+comment|// TODO maybe support rep:spellcheck as in
+comment|// /jcr:root[rep:spellcheck('${query}')]/(rep:spellcheck())
+throw|throw
+name|getSyntaxError
+argument_list|(
+literal|"rep:spellcheck is not supported"
 argument_list|)
 throw|;
 block|}
@@ -3638,7 +3658,9 @@ block|{
 throw|throw
 name|getSyntaxError
 argument_list|(
-literal|"jcr:like | jcr:contains | jcr:score | jcr:deref | fn:lower-case | fn:upper-case"
+literal|"jcr:like | jcr:contains | jcr:score | xs:dateTime | "
+operator|+
+literal|"fn:lower-case | fn:upper-case | fn:name"
 argument_list|)
 throw|;
 block|}
