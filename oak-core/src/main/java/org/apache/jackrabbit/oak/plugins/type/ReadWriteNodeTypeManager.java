@@ -933,6 +933,14 @@ name|UnsupportedOperationException
 argument_list|()
 throw|;
 block|}
+comment|/**      * Called by the {@link ReadWriteNodeTypeManager} implementation methods to      * refresh the state of the session associated with this instance.      * That way the session is kept in sync with the latest global state      * seen by the node type manager.      *      * @throws RepositoryException if the session could not be refreshed      */
+specifier|protected
+name|void
+name|refresh
+parameter_list|()
+throws|throws
+name|RepositoryException
+block|{     }
 comment|/**      * Registers built in node types using the given {@link Root}.      *      * @param root the {@link Root} instance.      */
 specifier|public
 specifier|static
