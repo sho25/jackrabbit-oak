@@ -169,7 +169,7 @@ name|plugins
 operator|.
 name|type
 operator|.
-name|ReadWriteNodeTypeManager
+name|BuiltInNodeTypes
 import|;
 end_import
 
@@ -437,9 +437,9 @@ name|initialised
 operator|=
 literal|true
 expr_stmt|;
-name|ReadWriteNodeTypeManager
+name|BuiltInNodeTypes
 operator|.
-name|registerBuiltInNodeTypes
+name|register
 argument_list|(
 name|getLatestRoot
 argument_list|()
