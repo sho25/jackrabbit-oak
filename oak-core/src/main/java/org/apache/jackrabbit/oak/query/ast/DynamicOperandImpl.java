@@ -90,7 +90,7 @@ function_decl|;
 specifier|public
 specifier|abstract
 name|void
-name|apply
+name|restrict
 parameter_list|(
 name|FilterImpl
 name|f

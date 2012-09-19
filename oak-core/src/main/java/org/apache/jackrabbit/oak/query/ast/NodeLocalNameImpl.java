@@ -151,15 +151,6 @@ operator|=
 name|selectorName
 expr_stmt|;
 block|}
-specifier|public
-name|String
-name|getSelectorName
-parameter_list|()
-block|{
-return|return
-name|selectorName
-return|;
-block|}
 annotation|@
 name|Override
 name|boolean
@@ -188,8 +179,10 @@ block|{
 return|return
 literal|"localname("
 operator|+
-name|getSelectorName
-argument_list|()
+name|quote
+argument_list|(
+name|selectorName
+argument_list|)
 operator|+
 literal|')'
 return|;
@@ -298,7 +291,7 @@ annotation|@
 name|Override
 specifier|public
 name|void
-name|apply
+name|restrict
 parameter_list|(
 name|FilterImpl
 name|f

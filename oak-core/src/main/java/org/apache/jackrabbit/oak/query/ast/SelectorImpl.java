@@ -230,15 +230,6 @@ name|SelectorImpl
 extends|extends
 name|SourceImpl
 block|{
-comment|// TODO jcr:path isn't an official feature, support it?
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|PATH
-init|=
-literal|"jcr:path"
-decl_stmt|;
 specifier|private
 specifier|static
 specifier|final
@@ -305,15 +296,6 @@ expr_stmt|;
 block|}
 specifier|public
 name|String
-name|getNodeTypeName
-parameter_list|()
-block|{
-return|return
-name|nodeTypeName
-return|;
-block|}
-specifier|public
-name|String
 name|getSelectorName
 parameter_list|()
 block|{
@@ -347,13 +329,17 @@ name|toString
 parameter_list|()
 block|{
 return|return
-literal|"["
-operator|+
+name|quote
+argument_list|(
 name|nodeTypeName
+argument_list|)
 operator|+
-literal|"] as "
+literal|" as "
 operator|+
+name|quote
+argument_list|(
 name|selectorName
+argument_list|)
 return|;
 block|}
 annotation|@
@@ -811,8 +797,7 @@ block|}
 block|}
 block|}
 block|}
-annotation|@
-name|Override
+comment|/**      * Get the current absolute path (including workspace name)      *      * @return the path      */
 specifier|public
 name|String
 name|currentPath
@@ -848,7 +833,9 @@ name|propertyName
 operator|.
 name|equals
 argument_list|(
-name|PATH
+name|Query
+operator|.
+name|JCR_PATH
 argument_list|)
 condition|)
 block|{
@@ -906,7 +893,9 @@ return|return
 operator|new
 name|SinglePropertyState
 argument_list|(
-name|PATH
+name|Query
+operator|.
+name|JCR_PATH
 argument_list|,
 name|v
 argument_list|)

@@ -164,8 +164,7 @@ block|{
 return|return
 literal|"length("
 operator|+
-name|getPropertyValue
-argument_list|()
+name|propertyValue
 operator|+
 literal|')'
 return|;
@@ -252,7 +251,7 @@ annotation|@
 name|Override
 specifier|public
 name|void
-name|apply
+name|restrict
 parameter_list|(
 name|FilterImpl
 name|f
@@ -332,7 +331,20 @@ argument_list|()
 argument_list|)
 throw|;
 block|}
-comment|// TODO LENGTH(x) conditions: can use IS NOT NULL as a condition?
+comment|// LENGTH(x) implies x is not null
+name|propertyValue
+operator|.
+name|restrict
+argument_list|(
+name|f
+argument_list|,
+name|Operator
+operator|.
+name|NOT_EQUAL
+argument_list|,
+literal|null
+argument_list|)
+expr_stmt|;
 block|}
 annotation|@
 name|Override

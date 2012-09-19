@@ -285,13 +285,6 @@ name|boolean
 name|next
 parameter_list|()
 function_decl|;
-comment|/**      * Get the current absolute path (including workspace name)      *      * @return the path      */
-specifier|public
-specifier|abstract
-name|String
-name|currentPath
-parameter_list|()
-function_decl|;
 block|}
 end_class
 

@@ -519,9 +519,9 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"[nt:base] as nt:base "
+literal|"[nt:base] as [nt:base] "
 operator|+
-literal|"/* traverse \"//*\" where nt:base.id = cast('1' as long) */"
+literal|"/* traverse \"//*\" where [nt:base].[id] = cast('1' as long) */"
 argument_list|,
 name|result
 operator|.

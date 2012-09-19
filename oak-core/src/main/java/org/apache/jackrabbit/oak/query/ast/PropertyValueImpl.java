@@ -313,16 +313,20 @@ name|String
 name|toString
 parameter_list|()
 block|{
-comment|// TODO quote property names?
 name|String
 name|s
 init|=
-name|getSelectorName
-argument_list|()
+name|quote
+argument_list|(
+name|selectorName
+argument_list|)
 operator|+
 literal|'.'
 operator|+
+name|quote
+argument_list|(
 name|propertyName
+argument_list|)
 decl_stmt|;
 if|if
 condition|(
@@ -763,7 +767,7 @@ annotation|@
 name|Override
 specifier|public
 name|void
-name|apply
+name|restrict
 parameter_list|(
 name|FilterImpl
 name|f

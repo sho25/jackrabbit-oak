@@ -1264,7 +1264,9 @@ name|Property
 argument_list|(
 name|currentSelector
 argument_list|,
-literal|"jcr:path"
+name|Query
+operator|.
+name|JCR_PATH
 argument_list|)
 operator|.
 name|toString
@@ -1285,7 +1287,24 @@ name|buff
 operator|.
 name|append
 argument_list|(
-literal|" as [jcr:path]"
+literal|" as "
+argument_list|)
+operator|.
+name|append
+argument_list|(
+literal|'['
+argument_list|)
+operator|.
+name|append
+argument_list|(
+name|Query
+operator|.
+name|JCR_PATH
+argument_list|)
+operator|.
+name|append
+argument_list|(
+literal|']'
 argument_list|)
 expr_stmt|;
 block|}
@@ -1305,7 +1324,9 @@ name|Property
 argument_list|(
 name|currentSelector
 argument_list|,
-literal|"jcr:score"
+name|Query
+operator|.
+name|JCR_SCORE
 argument_list|)
 operator|.
 name|toString
@@ -1326,7 +1347,24 @@ name|buff
 operator|.
 name|append
 argument_list|(
-literal|" as [jcr:score]"
+literal|" as "
+argument_list|)
+operator|.
+name|append
+argument_list|(
+literal|'['
+argument_list|)
+operator|.
+name|append
+argument_list|(
+name|Query
+operator|.
+name|JCR_SCORE
+argument_list|)
+operator|.
+name|append
+argument_list|(
+literal|']'
 argument_list|)
 expr_stmt|;
 block|}

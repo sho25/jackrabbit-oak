@@ -117,24 +117,6 @@ operator|=
 name|propertyName
 expr_stmt|;
 block|}
-specifier|public
-name|String
-name|getPropertyName
-parameter_list|()
-block|{
-return|return
-name|propertyName
-return|;
-block|}
-specifier|public
-name|String
-name|getSelectorName
-parameter_list|()
-block|{
-return|return
-name|selectorName
-return|;
-block|}
 annotation|@
 name|Override
 specifier|public
@@ -183,14 +165,18 @@ name|String
 name|toString
 parameter_list|()
 block|{
-comment|// TODO quote property names?
 return|return
-name|getSelectorName
-argument_list|()
+name|quote
+argument_list|(
+name|selectorName
+argument_list|)
 operator|+
 literal|'.'
 operator|+
+name|quote
+argument_list|(
 name|propertyName
+argument_list|)
 operator|+
 literal|" is not null"
 return|;

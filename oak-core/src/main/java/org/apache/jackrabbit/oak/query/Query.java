@@ -748,6 +748,25 @@ specifier|public
 class|class
 name|Query
 block|{
+comment|/**      * The "jcr:path" pseudo-property.      */
+comment|// TODO jcr:path isn't an official feature, support it?
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|JCR_PATH
+init|=
+literal|"jcr:path"
+decl_stmt|;
+comment|/**      * The "jcr:score" pseudo-property.      */
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|JCR_SCORE
+init|=
+literal|"jcr:score"
+decl_stmt|;
 specifier|final
 name|SourceImpl
 name|source

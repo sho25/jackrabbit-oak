@@ -231,7 +231,7 @@ annotation|@
 name|Override
 specifier|public
 name|void
-name|apply
+name|restrict
 parameter_list|(
 name|FilterImpl
 name|f
@@ -243,8 +243,20 @@ name|CoreValue
 name|v
 parameter_list|)
 block|{
-comment|// ignore
-comment|// TODO UPPER(x) conditions: can use IS NOT NULL?
+comment|// LOWER(x) implies x is not null
+name|operand
+operator|.
+name|restrict
+argument_list|(
+name|f
+argument_list|,
+name|Operator
+operator|.
+name|NOT_EQUAL
+argument_list|,
+literal|null
+argument_list|)
+expr_stmt|;
 block|}
 annotation|@
 name|Override

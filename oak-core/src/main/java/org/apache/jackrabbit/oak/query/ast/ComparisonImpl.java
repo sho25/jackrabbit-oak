@@ -233,7 +233,8 @@ operator|==
 literal|null
 condition|)
 block|{
-comment|// TODO comparison: what about (null<> x) ?
+comment|// if the property doesn't exist, the result is always false
+comment|// even for "null<> 'x'" (same as in SQL)
 return|return
 literal|false
 return|;
@@ -640,7 +641,7 @@ condition|)
 block|{
 name|operand1
 operator|.
-name|apply
+name|restrict
 argument_list|(
 name|f
 argument_list|,
@@ -666,7 +667,7 @@ condition|)
 block|{
 name|operand1
 operator|.
-name|apply
+name|restrict
 argument_list|(
 name|f
 argument_list|,
@@ -689,7 +690,7 @@ else|else
 block|{
 name|operand1
 operator|.
-name|apply
+name|restrict
 argument_list|(
 name|f
 argument_list|,
