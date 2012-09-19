@@ -233,6 +233,22 @@ name|oak
 operator|.
 name|api
 operator|.
+name|Root
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|api
+operator|.
 name|Tree
 import|;
 end_import
@@ -302,6 +318,10 @@ operator|.
 name|NodeUtil
 import|;
 end_import
+
+begin_comment
+comment|/**  * Base implementation of a {@link NodeTypeManager} with support for reading  * node types from the {@link Tree} returned by {@link #getTypes()}. Methods  * related to node type modifications throw  * {@link UnsupportedRepositoryOperationException}.  */
+end_comment
 
 begin_class
 specifier|public
@@ -386,6 +406,7 @@ return|return
 literal|null
 return|;
 block|}
+comment|/**      * Returns a {@link CoreValueFactory} to be used by this node type manager.      * This implementation returns a {@link MemoryValueFactory#INSTANCE}. A      * subclass may override this method and provide a different      * implementation.      *      * @return {@link CoreValueFactory} instance.      */
 annotation|@
 name|Nonnull
 specifier|protected
@@ -399,6 +420,7 @@ operator|.
 name|INSTANCE
 return|;
 block|}
+comment|/**      * Returns a {@link NameMapper} to be used by this node type manager. This      * implementation returns the {@link NamePathMapperImpl#DEFAULT} instance. A      * subclass may override this method and provide a different      * implementation.      *      * @return {@link NameMapper} instance.      */
 annotation|@
 name|Nonnull
 specifier|protected
@@ -822,6 +844,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
+comment|/**      * This implementation always throws a {@link UnsupportedRepositoryOperationException}.      */
 annotation|@
 name|Override
 specifier|public
@@ -843,6 +866,7 @@ name|UnsupportedRepositoryOperationException
 argument_list|()
 throw|;
 block|}
+comment|/**      * This implementation always throws a {@link UnsupportedRepositoryOperationException}.      */
 annotation|@
 name|Override
 specifier|public
@@ -865,6 +889,7 @@ name|UnsupportedRepositoryOperationException
 argument_list|()
 throw|;
 block|}
+comment|/**      * This implementation always throws a {@link UnsupportedRepositoryOperationException}.      */
 annotation|@
 name|Override
 specifier|public
@@ -883,6 +908,7 @@ name|UnsupportedRepositoryOperationException
 argument_list|()
 throw|;
 block|}
+comment|/**      * This implementation always throws a {@link UnsupportedRepositoryOperationException}.      */
 annotation|@
 name|Override
 specifier|public

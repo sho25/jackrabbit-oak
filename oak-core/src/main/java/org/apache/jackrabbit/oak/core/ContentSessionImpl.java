@@ -441,7 +441,8 @@ name|NodeTypeManagerImpl
 operator|.
 name|registerBuiltInNodeTypes
 argument_list|(
-name|this
+name|getLatestRoot
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
