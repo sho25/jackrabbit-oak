@@ -1770,9 +1770,17 @@ literal|false
 argument_list|)
 return|;
 block|}
-comment|// TODO
+comment|// TODO implement hasPermission
 return|return
-literal|false
+name|TODO
+operator|.
+name|dummyImplementation
+argument_list|()
+operator|.
+name|returnValue
+argument_list|(
+literal|true
+argument_list|)
 return|;
 block|}
 comment|/**      * @see javax.jcr.Session#checkPermission(String, String)      */
