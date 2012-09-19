@@ -193,7 +193,7 @@ name|plugins
 operator|.
 name|type
 operator|.
-name|NodeTypeManagerImpl
+name|ReadWriteNodeTypeManager
 import|;
 end_import
 
@@ -364,7 +364,7 @@ operator|!
 operator|(
 name|ntm
 operator|instanceof
-name|NodeTypeManagerImpl
+name|ReadWriteNodeTypeManager
 operator|)
 condition|)
 block|{
@@ -372,13 +372,13 @@ throw|throw
 operator|new
 name|IllegalArgumentException
 argument_list|(
-literal|"Need NodeTypeManagerImpl"
+literal|"Need ReadWriteNodeTypeManager"
 argument_list|)
 throw|;
 block|}
 operator|(
 operator|(
-name|NodeTypeManagerImpl
+name|ReadWriteNodeTypeManager
 operator|)
 name|ntm
 operator|)

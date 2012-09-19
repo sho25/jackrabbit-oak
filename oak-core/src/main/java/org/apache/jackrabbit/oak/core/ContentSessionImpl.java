@@ -169,7 +169,7 @@ name|plugins
 operator|.
 name|type
 operator|.
-name|NodeTypeManagerImpl
+name|ReadWriteNodeTypeManager
 import|;
 end_import
 
@@ -437,7 +437,7 @@ name|initialised
 operator|=
 literal|true
 expr_stmt|;
-name|NodeTypeManagerImpl
+name|ReadWriteNodeTypeManager
 operator|.
 name|registerBuiltInNodeTypes
 argument_list|(

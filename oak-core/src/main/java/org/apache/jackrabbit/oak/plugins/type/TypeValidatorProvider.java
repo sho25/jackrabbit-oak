@@ -203,11 +203,11 @@ name|NodeState
 name|after
 parameter_list|)
 block|{
-name|AbstractNodeTypeManager
+name|ReadOnlyNodeTypeManager
 name|ntm
 init|=
 operator|new
-name|AbstractNodeTypeManager
+name|ReadOnlyNodeTypeManager
 argument_list|()
 block|{
 specifier|private

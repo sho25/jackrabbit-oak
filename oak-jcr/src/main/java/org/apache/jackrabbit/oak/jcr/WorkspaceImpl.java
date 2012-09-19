@@ -387,7 +387,7 @@ name|plugins
 operator|.
 name|type
 operator|.
-name|NodeTypeManagerImpl
+name|ReadWriteNodeTypeManager
 import|;
 end_import
 
@@ -935,7 +935,7 @@ parameter_list|()
 block|{
 return|return
 operator|new
-name|NodeTypeManagerImpl
+name|ReadWriteNodeTypeManager
 argument_list|()
 block|{
 annotation|@

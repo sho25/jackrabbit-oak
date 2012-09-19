@@ -908,16 +908,16 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *<code>NodeTypeManagerImpl</code> extends the {@link AbstractNodeTypeManager}  * and add support for operations that modify node types:  *<ul>  *<li>{@link #registerNodeType(NodeTypeDefinition, boolean)}</li>  *<li>{@link #registerNodeTypes(NodeTypeDefinition[], boolean)}</li>  *<li>{@link #unregisterNodeType(String)}</li>  *<li>{@link #unregisterNodeTypes(String[])}</li>  *</ul>  * Calling any of the above methods will result in a {@link #refresh()} callback  * to e.g. inform an associated session that it should refresh to make the  * changes visible.  *</p>  * Subclass responsibility is to provide an implementation of  * {@link #getTypes()} for read only access to the tree where node types are  * stored in content and {@link #getWriteRoot()} for write access to the  * repository in order to modify node types stored in content. A subclass may  * also want to override the default implementation of  * {@link AbstractNodeTypeManager} for the following methods:  *<ul>  *<li>{@link #getValueFactory()}</li>  *<li>{@link #getCoreValueFactory()}</li>  *<li>{@link #getNameMapper()}</li>  *</ul>  */
+comment|/**  *<code>ReadWriteNodeTypeManager</code> extends the {@link ReadOnlyNodeTypeManager}  * and add support for operations that modify node types:  *<ul>  *<li>{@link #registerNodeType(NodeTypeDefinition, boolean)}</li>  *<li>{@link #registerNodeTypes(NodeTypeDefinition[], boolean)}</li>  *<li>{@link #unregisterNodeType(String)}</li>  *<li>{@link #unregisterNodeTypes(String[])}</li>  *</ul>  * Calling any of the above methods will result in a {@link #refresh()} callback  * to e.g. inform an associated session that it should refresh to make the  * changes visible.  *</p>  * Subclass responsibility is to provide an implementation of  * {@link #getTypes()} for read only access to the tree where node types are  * stored in content and {@link #getWriteRoot()} for write access to the  * repository in order to modify node types stored in content. A subclass may  * also want to override the default implementation of  * {@link ReadOnlyNodeTypeManager} for the following methods:  *<ul>  *<li>{@link #getValueFactory()}</li>  *<li>{@link #getCoreValueFactory()}</li>  *<li>{@link #getNameMapper()}</li>  *</ul>  */
 end_comment
 
 begin_class
 specifier|public
 specifier|abstract
 class|class
-name|NodeTypeManagerImpl
+name|ReadWriteNodeTypeManager
 extends|extends
-name|AbstractNodeTypeManager
+name|ReadOnlyNodeTypeManager
 block|{
 comment|/**      * Called by the methods {@link #registerNodeType(NodeTypeDefinition,boolean)},      * {@link #registerNodeTypes(NodeTypeDefinition[], boolean)},      * {@link #unregisterNodeType(String)} and {@link #unregisterNodeTypes(String[])}      * to acquire a fresh {@link Root} instance that can be used to persist the      * requested node type changes (and nothing else).      *<p/>      * This default implementation throws an {@link UnsupportedOperationException}.      *      * @return fresh {@link Root} instance.      */
 annotation|@
@@ -944,11 +944,11 @@ name|Root
 name|root
 parameter_list|)
 block|{
-name|NodeTypeManagerImpl
+name|ReadWriteNodeTypeManager
 name|ntMgr
 init|=
 operator|new
-name|NodeTypeManagerImpl
+name|ReadWriteNodeTypeManager
 argument_list|()
 block|{
 annotation|@
@@ -1049,7 +1049,7 @@ block|{
 name|InputStream
 name|stream
 init|=
-name|NodeTypeManagerImpl
+name|ReadWriteNodeTypeManager
 operator|.
 name|class
 operator|.
