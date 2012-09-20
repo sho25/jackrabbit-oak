@@ -860,6 +860,13 @@ name|startsWith
 argument_list|(
 literal|"sql1"
 argument_list|)
+operator|||
+name|line
+operator|.
+name|startsWith
+argument_list|(
+literal|"xpath"
+argument_list|)
 condition|)
 block|{
 name|w
@@ -882,7 +889,7 @@ name|line
 operator|.
 name|startsWith
 argument_list|(
-literal|"sql1"
+literal|"sql1 "
 argument_list|)
 condition|)
 block|{
@@ -899,6 +906,36 @@ operator|.
 name|substring
 argument_list|(
 literal|"sql1 "
+operator|.
+name|length
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+elseif|else
+if|if
+condition|(
+name|line
+operator|.
+name|startsWith
+argument_list|(
+literal|"xpath "
+argument_list|)
+condition|)
+block|{
+name|language
+operator|=
+name|QueryEngineImpl
+operator|.
+name|XPATH
+expr_stmt|;
+name|line
+operator|=
+name|line
+operator|.
+name|substring
+argument_list|(
+literal|"xpath "
 operator|.
 name|length
 argument_list|()
