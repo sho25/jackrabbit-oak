@@ -25,7 +25,7 @@ name|java
 operator|.
 name|io
 operator|.
-name|InputStreamReader
+name|Reader
 import|;
 end_import
 
@@ -894,7 +894,7 @@ specifier|public
 name|void
 name|registerNodeTypes
 parameter_list|(
-name|InputStreamReader
+name|Reader
 name|cnd
 parameter_list|)
 throws|throws
