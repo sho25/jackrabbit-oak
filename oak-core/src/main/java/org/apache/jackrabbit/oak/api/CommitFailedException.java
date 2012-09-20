@@ -86,7 +86,7 @@ name|cause
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Rethrow this exception cast into a {@link RepositoryException}: if the cause      * for this exception already is a {@code RepositoryException}, the cause is      * thrown. Otherwise a new {@code RepositoryException} instance with this      * {@code CommitFailedException} is thrown.      * @throws RepositoryException      */
+comment|/**      * Throw this exception wrapped into a {@link RepositoryException}      * @throws RepositoryException      */
 specifier|public
 name|void
 name|throwRepositoryException
@@ -94,36 +94,13 @@ parameter_list|()
 throws|throws
 name|RepositoryException
 block|{
-name|Throwable
-name|cause
-init|=
-name|getCause
-argument_list|()
-decl_stmt|;
-if|if
-condition|(
-name|cause
-operator|instanceof
-name|RepositoryException
-condition|)
-block|{
-throw|throw
-operator|(
-name|RepositoryException
-operator|)
-name|cause
-throw|;
-block|}
-else|else
-block|{
 throw|throw
 operator|new
 name|RepositoryException
 argument_list|(
-name|cause
+name|this
 argument_list|)
 throw|;
-block|}
 block|}
 block|}
 end_class
