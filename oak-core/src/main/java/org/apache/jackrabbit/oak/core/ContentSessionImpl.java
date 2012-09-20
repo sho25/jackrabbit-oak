@@ -465,6 +465,7 @@ block|}
 annotation|@
 name|Override
 specifier|public
+specifier|synchronized
 name|void
 name|close
 parameter_list|()
