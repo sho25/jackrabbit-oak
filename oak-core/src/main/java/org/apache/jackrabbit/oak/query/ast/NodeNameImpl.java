@@ -302,6 +302,15 @@ parameter_list|)
 block|{
 if|if
 condition|(
+name|v
+operator|==
+literal|null
+condition|)
+block|{
+return|return;
+block|}
+if|if
+condition|(
 operator|!
 name|isName
 argument_list|(

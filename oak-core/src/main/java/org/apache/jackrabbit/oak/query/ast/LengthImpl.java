@@ -263,6 +263,13 @@ name|CoreValue
 name|v
 parameter_list|)
 block|{
+if|if
+condition|(
+name|v
+operator|!=
+literal|null
+condition|)
+block|{
 switch|switch
 condition|(
 name|v
@@ -330,6 +337,7 @@ name|toString
 argument_list|()
 argument_list|)
 throw|;
+block|}
 block|}
 comment|// LENGTH(x) implies x is not null
 name|propertyValue
