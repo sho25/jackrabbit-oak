@@ -448,8 +448,6 @@ init|=
 operator|new
 name|LuceneIndex
 argument_list|(
-name|store
-argument_list|,
 name|testID
 argument_list|)
 decl_stmt|;

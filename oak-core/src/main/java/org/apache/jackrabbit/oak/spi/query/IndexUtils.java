@@ -660,8 +660,6 @@ block|{
 name|IndexDefinition
 name|def
 init|=
-name|IndexUtils
-operator|.
 name|getDefinition
 argument_list|(
 name|indexConfigPath
