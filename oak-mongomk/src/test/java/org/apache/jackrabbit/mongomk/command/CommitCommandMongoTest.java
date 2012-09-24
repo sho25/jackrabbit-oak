@@ -241,6 +241,22 @@ begin_import
 import|import
 name|org
 operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|commons
+operator|.
+name|PathUtils
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|junit
 operator|.
 name|Assert
@@ -285,20 +301,21 @@ name|BaseMongoTest
 block|{
 annotation|@
 name|Test
+annotation|@
+name|Ignore
+comment|// FIXME - Implement
 specifier|public
 name|void
-name|testAddIntermediataryNodes
+name|addIntermediataryNodes
 parameter_list|()
 throws|throws
 name|Exception
-block|{
-comment|// Assert.fail("Do it");
-block|}
+block|{     }
 annotation|@
 name|Test
 specifier|public
 name|void
-name|testAddNewNodesToSameParent
+name|addNewNodesToSameParent
 parameter_list|()
 throws|throws
 name|Exception
@@ -335,11 +352,11 @@ init|=
 operator|new
 name|CommitImpl
 argument_list|(
-literal|"This is the 1st commit"
-argument_list|,
 literal|"/"
 argument_list|,
 literal|"+1 : {}"
+argument_list|,
+literal|"This is the 1st commit"
 argument_list|,
 name|instructions
 argument_list|)
@@ -390,11 +407,11 @@ operator|=
 operator|new
 name|CommitImpl
 argument_list|(
-literal|"This is the 2nd commit"
-argument_list|,
 literal|"/"
 argument_list|,
 literal|"+2 : {}"
+argument_list|,
+literal|"This is the 2nd commit"
 argument_list|,
 name|instructions
 argument_list|)
@@ -444,11 +461,11 @@ operator|=
 operator|new
 name|CommitImpl
 argument_list|(
-literal|"This is the 3rd commit"
-argument_list|,
 literal|"/"
 argument_list|,
 literal|"+3 : {}"
+argument_list|,
+literal|"This is the 3rd commit"
 argument_list|,
 name|instructions
 argument_list|)
@@ -501,7 +518,7 @@ annotation|@
 name|Test
 specifier|public
 name|void
-name|testCommitAddNodes
+name|commitAddNodes
 parameter_list|()
 throws|throws
 name|Exception
@@ -564,11 +581,11 @@ init|=
 operator|new
 name|CommitImpl
 argument_list|(
-literal|"This is a simple commit"
-argument_list|,
 literal|"/"
 argument_list|,
 literal|"+a : { b : {} , c : {} }"
+argument_list|,
+literal|"This is a simple commit"
 argument_list|,
 name|instructions
 argument_list|)
@@ -664,7 +681,7 @@ annotation|@
 name|Test
 specifier|public
 name|void
-name|testCommitAddNodesAndPropertiesOutOfOrder
+name|commitAddNodesAndPropertiesOutOfOrder
 parameter_list|()
 throws|throws
 name|Exception
@@ -772,11 +789,11 @@ init|=
 operator|new
 name|CommitImpl
 argument_list|(
-literal|"This is a simple commit"
-argument_list|,
 literal|"/"
 argument_list|,
 literal|"+a : { \"key1\" : \"value1\" , \"key2\" : \"value2\" , \"key3\" : \"value3\" }"
+argument_list|,
+literal|"This is a simple commit"
 argument_list|,
 name|instructions
 argument_list|)
@@ -872,7 +889,7 @@ annotation|@
 name|Test
 specifier|public
 name|void
-name|testCommitAddNodesWhichAlreadyExist
+name|commitAddNodesWhichAlreadyExist
 parameter_list|()
 throws|throws
 name|Exception
@@ -994,11 +1011,11 @@ init|=
 operator|new
 name|CommitImpl
 argument_list|(
-literal|"This is a simple commit"
-argument_list|,
 literal|"/"
 argument_list|,
 literal|"+a : { \"key1\" : \"value1\" , \"key2\" : \"value2\" , \"key3\" : \"value3\" }"
+argument_list|,
+literal|"This is a simple commit"
 argument_list|,
 name|instructions
 argument_list|)
@@ -1082,7 +1099,7 @@ annotation|@
 name|Test
 specifier|public
 name|void
-name|testCommitAndMergeNodes
+name|commitAndMergeNodes
 parameter_list|()
 throws|throws
 name|Exception
@@ -1203,7 +1220,7 @@ annotation|@
 name|Test
 specifier|public
 name|void
-name|testCommitContainsAllAffectedNodes
+name|commitContainsAllAffectedNodes
 parameter_list|()
 throws|throws
 name|Exception
@@ -1268,7 +1285,7 @@ annotation|@
 name|Test
 specifier|public
 name|void
-name|testRemoveNode
+name|removeNode
 parameter_list|()
 throws|throws
 name|Exception
@@ -1331,11 +1348,11 @@ init|=
 operator|new
 name|CommitImpl
 argument_list|(
-literal|"This is a simple commit"
-argument_list|,
 literal|"/"
 argument_list|,
 literal|"+a : { b : {} , c : {} }"
+argument_list|,
+literal|"This is a simple commit"
 argument_list|,
 name|instructions
 argument_list|)
@@ -1393,11 +1410,11 @@ operator|=
 operator|new
 name|CommitImpl
 argument_list|(
-literal|"This is a simple commit"
-argument_list|,
 literal|"/"
 argument_list|,
 literal|"-a"
+argument_list|,
+literal|"This is a simple commit"
 argument_list|,
 name|instructions
 argument_list|)
@@ -1474,7 +1491,7 @@ name|Ignore
 comment|// FIXME
 specifier|public
 name|void
-name|testRemoveNonExistentNode
+name|removeNonExistentNode
 parameter_list|()
 throws|throws
 name|Exception
@@ -1524,11 +1541,11 @@ init|=
 operator|new
 name|CommitImpl
 argument_list|(
-literal|"Add nodes"
-argument_list|,
 literal|"/"
 argument_list|,
 literal|"+a : { b : {}  }"
+argument_list|,
+literal|"Add nodes"
 argument_list|,
 name|instructions
 argument_list|)
@@ -1576,11 +1593,11 @@ operator|=
 operator|new
 name|CommitImpl
 argument_list|(
-literal|"Non-existent node delete"
-argument_list|,
 literal|"/a"
 argument_list|,
 literal|"-c"
+argument_list|,
+literal|"Non-existent node delete"
 argument_list|,
 name|instructions
 argument_list|)
@@ -1619,7 +1636,7 @@ annotation|@
 name|Test
 specifier|public
 name|void
-name|testExistingParentContainsChildren
+name|existingParentContainsChildren
 parameter_list|()
 throws|throws
 name|Exception
@@ -1682,11 +1699,11 @@ init|=
 operator|new
 name|CommitImpl
 argument_list|(
-literal|"This is a simple commit"
-argument_list|,
 literal|"/"
 argument_list|,
 literal|"+a : { b : {} , c : {} }"
+argument_list|,
+literal|"This is a simple commit"
 argument_list|,
 name|instructions
 argument_list|)
@@ -1778,7 +1795,7 @@ annotation|@
 name|Test
 specifier|public
 name|void
-name|testMergePropertiesAndChildren_noneExistedAndNewAdded
+name|mergePropertiesAndChildren_noneExistedAndNewAdded
 parameter_list|()
 throws|throws
 name|Exception
@@ -1860,11 +1877,11 @@ init|=
 operator|new
 name|CommitImpl
 argument_list|(
-literal|"This is a simple commit"
-argument_list|,
 literal|"/"
 argument_list|,
 literal|"+a : { \"key1\" : \"value1\" , \"key2\" : \"value2\" , \"key3\" : \"value3\" }"
+argument_list|,
+literal|"This is a simple commit"
 argument_list|,
 name|instructions
 argument_list|)
@@ -1935,7 +1952,7 @@ annotation|@
 name|Test
 specifier|public
 name|void
-name|testMergePropertiesAndChildren_someExistedAndNewAdded
+name|mergePropertiesAndChildren_someExistedAndNewAdded
 parameter_list|()
 throws|throws
 name|Exception
@@ -2017,11 +2034,11 @@ init|=
 operator|new
 name|CommitImpl
 argument_list|(
-literal|"This is a simple commit"
-argument_list|,
 literal|"/"
 argument_list|,
 literal|"+a : { \"existed_key1\" : \"value1\" , \"existed_key2\" : \"value2\" , \"existed_key3\" : \"value3\" }"
+argument_list|,
+literal|"This is a simple commit"
 argument_list|,
 name|instructions
 argument_list|)
@@ -2117,11 +2134,11 @@ operator|=
 operator|new
 name|CommitImpl
 argument_list|(
-literal|"This is a simple commit"
-argument_list|,
 literal|"/"
 argument_list|,
 literal|"+a : { \"key1\" : \"value1\" , \"key2\" : \"value2\" , \"key3\" : \"value3\" }"
+argument_list|,
+literal|"This is a simple commit"
 argument_list|,
 name|instructions
 argument_list|)
@@ -2190,7 +2207,7 @@ annotation|@
 name|Test
 specifier|public
 name|void
-name|testNoOtherNodesTouched
+name|noOtherNodesTouched
 parameter_list|()
 throws|throws
 name|Exception
@@ -2253,11 +2270,11 @@ init|=
 operator|new
 name|CommitImpl
 argument_list|(
-literal|"This is a simple commit"
-argument_list|,
 literal|"/"
 argument_list|,
 literal|"+a : { b : {} , c : {} }"
+argument_list|,
+literal|"This is a simple commit"
 argument_list|,
 name|instructions
 argument_list|)
@@ -2321,11 +2338,11 @@ operator|=
 operator|new
 name|CommitImpl
 argument_list|(
-literal|"This is a simple commit"
-argument_list|,
 literal|"/a"
 argument_list|,
 literal|"+d: {} \n+e : {}"
+argument_list|,
+literal|"This is a simple commit"
 argument_list|,
 name|instructions
 argument_list|)
@@ -2488,7 +2505,7 @@ name|Ignore
 comment|/// FIXME
 specifier|public
 name|void
-name|testRootNodeHasEmptyRootPath
+name|rootNodeHasEmptyRootPath
 parameter_list|()
 throws|throws
 name|Exception
@@ -2525,11 +2542,11 @@ init|=
 operator|new
 name|CommitImpl
 argument_list|(
-literal|"This is the root commit"
-argument_list|,
 literal|""
 argument_list|,
 literal|"+/ : {}"
+argument_list|,
+literal|"This is the root commit"
 argument_list|,
 name|instructions
 argument_list|)
@@ -2581,6 +2598,145 @@ argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
+annotation|@
+name|Test
+annotation|@
+name|Ignore
+comment|// FIXME - This currently fails due to some limit in property sizes in Mongo
+comment|// which affects path property.
+specifier|public
+name|void
+name|bigCommit
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|String
+name|path
+init|=
+literal|"/"
+decl_stmt|;
+name|String
+name|baseNodeName
+init|=
+literal|"test"
+decl_stmt|;
+name|int
+name|numberOfCommits
+init|=
+literal|1000
+decl_stmt|;
+name|List
+argument_list|<
+name|Instruction
+argument_list|>
+name|instructions
+init|=
+operator|new
+name|LinkedList
+argument_list|<
+name|Instruction
+argument_list|>
+argument_list|()
+decl_stmt|;
+for|for
+control|(
+name|int
+name|i
+init|=
+literal|0
+init|;
+name|i
+operator|<
+name|numberOfCommits
+condition|;
+name|i
+operator|++
+control|)
+block|{
+name|instructions
+operator|.
+name|clear
+argument_list|()
+expr_stmt|;
+name|instructions
+operator|.
+name|add
+argument_list|(
+operator|new
+name|AddNodeInstructionImpl
+argument_list|(
+name|path
+argument_list|,
+name|baseNodeName
+operator|+
+name|i
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|Commit
+name|commit
+init|=
+operator|new
+name|CommitImpl
+argument_list|(
+name|path
+argument_list|,
+literal|"+"
+operator|+
+name|baseNodeName
+operator|+
+name|i
+operator|+
+literal|" : {}"
+argument_list|,
+literal|"Add node n"
+operator|+
+name|i
+argument_list|,
+name|instructions
+argument_list|)
+decl_stmt|;
+name|CommitCommandMongo
+name|command
+init|=
+operator|new
+name|CommitCommandMongo
+argument_list|(
+name|mongoConnection
+argument_list|,
+name|commit
+argument_list|)
+decl_stmt|;
+name|command
+operator|.
+name|execute
+argument_list|()
+expr_stmt|;
+if|if
+condition|(
+operator|!
+name|PathUtils
+operator|.
+name|denotesRoot
+argument_list|(
+name|path
+argument_list|)
+condition|)
+block|{
+name|path
+operator|+=
+literal|"/"
+expr_stmt|;
+block|}
+name|path
+operator|+=
+name|baseNodeName
+operator|+
+name|i
+expr_stmt|;
+block|}
 block|}
 block|}
 end_class

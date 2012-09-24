@@ -367,8 +367,6 @@ init|=
 operator|new
 name|CommitImpl
 argument_list|(
-literal|"This is a concurrent commit"
-argument_list|,
 literal|"/"
 argument_list|,
 literal|"+"
@@ -376,6 +374,8 @@ operator|+
 name|i
 operator|+
 literal|" : {}"
+argument_list|,
+literal|"This is a concurrent commit"
 argument_list|,
 name|instructions
 argument_list|)

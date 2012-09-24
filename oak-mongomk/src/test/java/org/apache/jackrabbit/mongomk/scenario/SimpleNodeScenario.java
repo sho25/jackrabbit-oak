@@ -316,11 +316,11 @@ init|=
 operator|new
 name|CommitImpl
 argument_list|(
-literal|"This is the simple node scenario with nodes /, /a, /a/b, /a/c"
-argument_list|,
 literal|"/"
 argument_list|,
 literal|"+a : { \"int\" : 1 , \"b\" : { \"string\" : \"foo\" } , \"c\" : { \"bool\" : true } } }"
+argument_list|,
+literal|"This is the simple node scenario with nodes /, /a, /a/b, /a/c"
 argument_list|,
 name|instructions
 argument_list|)
@@ -412,13 +412,13 @@ init|=
 operator|new
 name|CommitImpl
 argument_list|(
-literal|"Add child"
-operator|+
-name|i
-argument_list|,
 literal|"/a"
 argument_list|,
 literal|"TODO"
+argument_list|,
+literal|"Add child"
+operator|+
+name|i
 argument_list|,
 name|instructions
 argument_list|)
@@ -486,11 +486,11 @@ init|=
 operator|new
 name|CommitImpl
 argument_list|(
-literal|"This is a commit with deleted /a"
-argument_list|,
 literal|"/"
 argument_list|,
 literal|"-a"
+argument_list|,
+literal|"This is a commit with deleted /a"
 argument_list|,
 name|instructions
 argument_list|)
@@ -557,11 +557,11 @@ init|=
 operator|new
 name|CommitImpl
 argument_list|(
-literal|"This is a commit with deleted /a/b"
-argument_list|,
 literal|"/a"
 argument_list|,
 literal|"-b"
+argument_list|,
+literal|"This is a commit with deleted /a/b"
 argument_list|,
 name|instructions
 argument_list|)
@@ -697,11 +697,11 @@ init|=
 operator|new
 name|CommitImpl
 argument_list|(
-literal|"This is a commit with updated /a and added /a/d and /a/b/e"
-argument_list|,
 literal|""
 argument_list|,
 literal|"TODO"
+argument_list|,
+literal|"This is a commit with updated /a and added /a/d and /a/b/e"
 argument_list|,
 name|instructions
 argument_list|)
