@@ -65,6 +65,22 @@ name|MediaTypeRegistry
 import|;
 end_import
 
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkArgument
+import|;
+end_import
+
 begin_class
 specifier|public
 class|class
@@ -183,7 +199,8 @@ modifier|...
 name|representations
 parameter_list|)
 block|{
-assert|assert
+name|checkArgument
+argument_list|(
 name|representations
 operator|!=
 literal|null
@@ -193,7 +210,8 @@ operator|.
 name|length
 operator|>
 literal|0
-assert|;
+argument_list|)
+expr_stmt|;
 name|int
 name|maxIndex
 init|=
