@@ -97,6 +97,22 @@ name|PathUtils
 import|;
 end_import
 
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkNotNull
+import|;
+end_import
+
 begin_comment
 comment|/**  * Abstract base class for {@link NodeDelegate} and {@link PropertyDelegate}  */
 end_comment
@@ -126,27 +142,23 @@ name|TreeLocation
 name|location
 parameter_list|)
 block|{
-assert|assert
-name|sessionDelegate
-operator|!=
-literal|null
-assert|;
-assert|assert
-name|location
-operator|!=
-literal|null
-assert|;
 name|this
 operator|.
 name|sessionDelegate
 operator|=
+name|checkNotNull
+argument_list|(
 name|sessionDelegate
+argument_list|)
 expr_stmt|;
 name|this
 operator|.
 name|location
 operator|=
+name|checkNotNull
+argument_list|(
 name|location
+argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Get the name of this item      * @return oak name of this item      */

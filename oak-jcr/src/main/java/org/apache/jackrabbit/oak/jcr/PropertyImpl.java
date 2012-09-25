@@ -18,18 +18,6 @@ package|;
 end_package
 
 begin_import
-import|import static
-name|javax
-operator|.
-name|jcr
-operator|.
-name|PropertyType
-operator|.
-name|UNDEFINED
-import|;
-end_import
-
-begin_import
 import|import
 name|java
 operator|.
@@ -290,6 +278,34 @@ operator|.
 name|slf4j
 operator|.
 name|LoggerFactory
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkArgument
+import|;
+end_import
+
+begin_import
+import|import static
+name|javax
+operator|.
+name|jcr
+operator|.
+name|PropertyType
+operator|.
+name|UNDEFINED
 import|;
 end_import
 
@@ -2706,15 +2722,15 @@ parameter_list|)
 throws|throws
 name|RepositoryException
 block|{
-assert|assert
-operator|(
+name|checkArgument
+argument_list|(
 name|requiredType
 operator|!=
 name|PropertyType
 operator|.
 name|UNDEFINED
-operator|)
-assert|;
+argument_list|)
+expr_stmt|;
 comment|// TODO check again if definition validation should be respected here.
 if|if
 condition|(
@@ -2793,15 +2809,15 @@ parameter_list|)
 throws|throws
 name|RepositoryException
 block|{
-assert|assert
-operator|(
+name|checkArgument
+argument_list|(
 name|requiredType
 operator|!=
 name|PropertyType
 operator|.
 name|UNDEFINED
-operator|)
-assert|;
+argument_list|)
+expr_stmt|;
 comment|// TODO check again if definition validation should be respected here.
 if|if
 condition|(
