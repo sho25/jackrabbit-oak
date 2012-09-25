@@ -112,6 +112,7 @@ name|e
 decl_stmt|;
 try|try
 block|{
+comment|// Try to preserve all parts of the stack trace
 name|e
 operator|=
 operator|(
@@ -142,6 +143,7 @@ name|Exception
 name|ex
 parameter_list|)
 block|{
+comment|// Fall back to the initial cause on failure
 name|e
 operator|=
 operator|(
