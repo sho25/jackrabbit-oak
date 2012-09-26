@@ -240,6 +240,7 @@ comment|/**  * ValueImpl...  */
 end_comment
 
 begin_class
+specifier|public
 class|class
 name|ValueImpl
 implements|implements
