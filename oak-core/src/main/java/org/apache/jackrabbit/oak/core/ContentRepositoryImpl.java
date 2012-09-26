@@ -643,6 +643,8 @@ literal|"+\"jcr:system\":{"
 operator|+
 literal|"\"jcr:primaryType\"    :\"nam:rep:system\","
 operator|+
+comment|// FIXME: user-mgt related unique properties are implementation detail and not generic for repo
+comment|// FIXME: rep:principalName only needs to be unique if defined with user/group nodes -> add defining nt-info to uniqueness constraint
 literal|"\":unique\"            :{\"jcr:uuid\":{},\"rep:authorizableId\":{},\"rep:principalName\":{}},"
 operator|+
 literal|"\"jcr:versionStorage\" :{\"jcr:primaryType\":\"nam:rep:versionStorage\"},"
