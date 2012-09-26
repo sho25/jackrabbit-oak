@@ -1298,16 +1298,21 @@ argument_list|)
 expr_stmt|;
 name|sb
 operator|.
-name|append
+name|deleteCharAt
 argument_list|(
-literal|" internal props: "
+name|sb
+operator|.
+name|length
+argument_list|()
+operator|-
+literal|1
 argument_list|)
 expr_stmt|;
 name|sb
 operator|.
 name|append
 argument_list|(
-literal|"AddedChildren = "
+literal|", addedChildren : "
 argument_list|)
 expr_stmt|;
 name|sb
@@ -1321,7 +1326,7 @@ name|sb
 operator|.
 name|append
 argument_list|(
-literal|", RemovedChildren = "
+literal|", removedChildren : "
 argument_list|)
 expr_stmt|;
 name|sb
@@ -1335,7 +1340,7 @@ name|sb
 operator|.
 name|append
 argument_list|(
-literal|", AddedProps = "
+literal|", addedProps : "
 argument_list|)
 expr_stmt|;
 name|sb
@@ -1349,7 +1354,7 @@ name|sb
 operator|.
 name|append
 argument_list|(
-literal|", RemovedProps = "
+literal|", removedProps : "
 argument_list|)
 expr_stmt|;
 name|sb
@@ -1357,6 +1362,13 @@ operator|.
 name|append
 argument_list|(
 name|removedProps
+argument_list|)
+expr_stmt|;
+name|sb
+operator|.
+name|append
+argument_list|(
+literal|" }"
 argument_list|)
 expr_stmt|;
 return|return

@@ -484,6 +484,15 @@ argument_list|(
 name|currentRevision
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|commitMongo
+operator|==
+literal|null
+condition|)
+block|{
+break|break;
+block|}
 name|validCommits
 operator|.
 name|add

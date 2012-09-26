@@ -458,8 +458,6 @@ argument_list|<
 name|String
 argument_list|>
 operator|)
-name|this
-operator|.
 name|get
 argument_list|(
 name|KEY_AFFECTED_PATH
@@ -532,8 +530,6 @@ name|hasFailed
 parameter_list|()
 block|{
 return|return
-name|this
-operator|.
 name|getBoolean
 argument_list|(
 name|KEY_FAILED
@@ -662,8 +658,6 @@ name|String
 name|revisionId
 parameter_list|)
 block|{
-name|this
-operator|.
 name|setRevisionId
 argument_list|(
 name|MongoUtil

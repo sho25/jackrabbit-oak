@@ -1896,7 +1896,7 @@ specifier|final
 name|int
 name|NUM_COMMITS
 init|=
-literal|1000
+literal|100
 decl_stmt|;
 name|String
 index|[]
@@ -6784,26 +6784,51 @@ annotation|@
 name|Test
 specifier|public
 name|void
-name|testBlobs
+name|testSmallBlob
 parameter_list|()
 block|{
-comment|// test with small blobs
 name|testBlobs
 argument_list|(
 literal|1234
+argument_list|,
+literal|8
+operator|*
+literal|1024
 argument_list|)
 expr_stmt|;
-comment|// test with medium sized blobs
+block|}
+annotation|@
+name|Test
+specifier|public
+name|void
+name|testMediumBlob
+parameter_list|()
+block|{
 name|testBlobs
 argument_list|(
 literal|1234567
+argument_list|,
+literal|8
+operator|*
+literal|1024
 argument_list|)
 expr_stmt|;
-comment|// test with large blobs
+block|}
+annotation|@
+name|Test
+specifier|public
+name|void
+name|testLargeBlob
+parameter_list|()
+block|{
 name|testBlobs
 argument_list|(
 literal|32
 operator|*
+literal|1024
+operator|*
+literal|1024
+argument_list|,
 literal|1024
 operator|*
 literal|1024
@@ -6816,6 +6841,9 @@ name|testBlobs
 parameter_list|(
 name|int
 name|size
+parameter_list|,
+name|int
+name|bufferSize
 parameter_list|)
 block|{
 comment|// write data
@@ -6927,6 +6955,8 @@ name|mk
 argument_list|,
 name|id
 argument_list|)
+argument_list|,
+name|bufferSize
 argument_list|)
 decl_stmt|;
 try|try
