@@ -37,26 +37,8 @@ name|NodeState
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|spi
-operator|.
-name|state
-operator|.
-name|NodeStore
-import|;
-end_import
-
 begin_comment
-comment|/**  * Extension point for observing changes in an Oak repository. Content  * changes are reported by passing the "before" and "after" state of the  * content tree to the {@link #contentChanged(NodeStore, NodeState, NodeState)}  * callback method.  *<p>  * Each observer is guaranteed to see a linear sequence of changes, i.e.  * the "after" state of one method call is guaranteed to be the "before"  * state of the following call. This sequence of changes only applies while  * a hook is registered with a specific repository instance, and is thus for  * example<em>not</me> guaranteed across repository restarts.  *<p>  * Note also that two observers may not necessarily see the same sequence of  * content changes, and each commit does not necessarily trigger a separate  * observer callback. It is also possible for an observer to be notified  * when no actual changes have been committed.  *<p>  * A specific implementation or deployment may offer more guarantees about  * when and how observers are notified of content changes. See the relevant  * documentation for more details about such cases.  *  * @since Oak 0.3  */
+comment|/**  * Extension point for observing changes in an Oak repository. Content  * changes are reported by passing the "before" and "after" state of the  * content tree to the {@link #contentChanged(NodeState, NodeState)}  * callback method.  *<p>  * Each observer is guaranteed to see a linear sequence of changes, i.e.  * the "after" state of one method call is guaranteed to be the "before"  * state of the following call. This sequence of changes only applies while  * a hook is registered with a specific repository instance, and is thus for  * example<em>not</me> guaranteed across repository restarts.  *<p>  * Note also that two observers may not necessarily see the same sequence of  * content changes, and each commit does not necessarily trigger a separate  * observer callback. It is also possible for an observer to be notified  * when no actual changes have been committed.  *<p>  * A specific implementation or deployment may offer more guarantees about  * when and how observers are notified of content changes. See the relevant  * documentation for more details about such cases.  *  * @since Oak 0.3  */
 end_comment
 
 begin_interface
@@ -64,13 +46,10 @@ specifier|public
 interface|interface
 name|Observer
 block|{
-comment|/**      * Observes a content change. The implementation might for example      * use this information to update caches, trigger JCR-level observation      * events or otherwise record the change.      *<p>      * Content changes are observed for both commits made locally against      * the repository instance to which the hook is registered and any      * other changes committed by other repository instances in the same      * cluster.      *<p>      * After-commit hooks are executed synchronously within the context of      * a repository instance, so to prevent delaying access to latest changes      * the after-commit hooks should avoid any potentially blocking      * operations.      *      * @param store the node store that contains the repository content      * @param before content tree before the changes      * @param after content tree after the changes      */
+comment|/**      * Observes a content change. The implementation might for example      * use this information to update caches, trigger JCR-level observation      * events or otherwise record the change.      *<p>      * Content changes are observed for both commits made locally against      * the repository instance to which the hook is registered and any      * other changes committed by other repository instances in the same      * cluster.      *<p>      * After-commit hooks are executed synchronously within the context of      * a repository instance, so to prevent delaying access to latest changes      * the after-commit hooks should avoid any potentially blocking      * operations.      *      * @param before content tree before the changes      * @param after content tree after the changes      */
 name|void
 name|contentChanged
 parameter_list|(
-name|NodeStore
-name|store
-parameter_list|,
 name|NodeState
 name|before
 parameter_list|,

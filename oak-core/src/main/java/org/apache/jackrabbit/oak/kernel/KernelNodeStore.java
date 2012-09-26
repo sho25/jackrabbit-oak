@@ -562,8 +562,6 @@ name|observer
 operator|.
 name|contentChanged
 argument_list|(
-name|this
-argument_list|,
 name|before
 argument_list|,
 name|root

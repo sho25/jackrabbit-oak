@@ -73,26 +73,8 @@ name|NodeState
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|spi
-operator|.
-name|state
-operator|.
-name|NodeStore
-import|;
-end_import
-
 begin_comment
-comment|/**  * Composite commit hook. Maintains a list of component hooks and takes  * care of calling them in proper sequence in the  * {@link #processCommit(NodeStore, NodeState, NodeState)} method.  */
+comment|/**  * Composite commit hook. Maintains a list of component hooks and takes  * care of calling them in proper sequence.  */
 end_comment
 
 begin_class

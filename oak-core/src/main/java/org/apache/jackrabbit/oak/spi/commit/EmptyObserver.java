@@ -37,24 +37,6 @@ name|NodeState
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|spi
-operator|.
-name|state
-operator|.
-name|NodeStore
-import|;
-end_import
-
 begin_comment
 comment|/**  * Basic content change observer that doesn't do anything. Useful as a  * "null object" for cases where another observer has not been configured,  * thus avoiding an extra {@code null} check when invoking the observer.  */
 end_comment
@@ -83,9 +65,6 @@ specifier|public
 name|void
 name|contentChanged
 parameter_list|(
-name|NodeStore
-name|store
-parameter_list|,
 name|NodeState
 name|before
 parameter_list|,
