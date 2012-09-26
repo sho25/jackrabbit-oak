@@ -13,7 +13,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|core
+name|plugins
+operator|.
+name|commit
 package|;
 end_package
 
@@ -27,7 +29,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|api
+name|spi
+operator|.
+name|commit
 operator|.
 name|ConflictHandler
 import|;

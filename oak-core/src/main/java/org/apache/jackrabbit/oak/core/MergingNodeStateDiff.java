@@ -27,7 +27,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|api
+name|spi
+operator|.
+name|commit
 operator|.
 name|ConflictHandler
 import|;
@@ -181,7 +183,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|api
+name|spi
+operator|.
+name|commit
 operator|.
 name|ConflictHandler
 operator|.
@@ -201,7 +205,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|api
+name|spi
+operator|.
+name|commit
 operator|.
 name|ConflictHandler
 operator|.

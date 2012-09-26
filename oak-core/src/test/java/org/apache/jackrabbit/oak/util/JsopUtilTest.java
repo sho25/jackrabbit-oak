@@ -18,42 +18,6 @@ package|;
 end_package
 
 begin_import
-import|import static
-name|junit
-operator|.
-name|framework
-operator|.
-name|Assert
-operator|.
-name|assertEquals
-import|;
-end_import
-
-begin_import
-import|import static
-name|junit
-operator|.
-name|framework
-operator|.
-name|Assert
-operator|.
-name|assertFalse
-import|;
-end_import
-
-begin_import
-import|import static
-name|junit
-operator|.
-name|framework
-operator|.
-name|Assert
-operator|.
-name|assertTrue
-import|;
-end_import
-
-begin_import
 import|import
 name|org
 operator|.
@@ -157,22 +121,6 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|core
-operator|.
-name|DefaultConflictHandler
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
 name|query
 operator|.
 name|JsopUtil
@@ -196,6 +144,42 @@ operator|.
 name|junit
 operator|.
 name|Test
+import|;
+end_import
+
+begin_import
+import|import static
+name|junit
+operator|.
+name|framework
+operator|.
+name|Assert
+operator|.
+name|assertEquals
+import|;
+end_import
+
+begin_import
+import|import static
+name|junit
+operator|.
+name|framework
+operator|.
+name|Assert
+operator|.
+name|assertFalse
+import|;
+end_import
+
+begin_import
+import|import static
+name|junit
+operator|.
+name|framework
+operator|.
+name|Assert
+operator|.
+name|assertTrue
 import|;
 end_import
 
@@ -314,11 +298,7 @@ expr_stmt|;
 name|root
 operator|.
 name|commit
-argument_list|(
-name|DefaultConflictHandler
-operator|.
-name|OURS
-argument_list|)
+argument_list|()
 expr_stmt|;
 name|t
 operator|=
@@ -459,11 +439,7 @@ expr_stmt|;
 name|root
 operator|.
 name|commit
-argument_list|(
-name|DefaultConflictHandler
-operator|.
-name|OURS
-argument_list|)
+argument_list|()
 expr_stmt|;
 name|t
 operator|=

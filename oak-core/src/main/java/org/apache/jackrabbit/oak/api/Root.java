@@ -46,7 +46,7 @@ specifier|public
 interface|interface
 name|Root
 block|{
-comment|/**      * Move the child located at {@code sourcePath} to a child at {@code destPath}.      * Both paths must be absolute and resolve to a child located beneath this      * root.<br>      *      * This method does nothing and returns {@code false} if      *<ul>      *<li>the tree at {@code sourcePath} does not exist or is not accessible,</li>      *<li>the parent of the tree at {@code destinationPath} does not exist or is not accessible,</li>      *<li>a tree already exists at {@code destinationPath}.</li>      *</ul>      * If a tree at {@code destinationPath} exists but is not accessible to the      * editing content session this method succeeds but a subsequent      * {@link #commit(ConflictHandler)} will detect the violation and fail.      *      * @param sourcePath The source path      * @param destPath The destination path      * @return {@code true} on success, {@code false} otherwise.      */
+comment|/**      * Move the child located at {@code sourcePath} to a child at {@code destPath}.      * Both paths must be absolute and resolve to a child located beneath this      * root.<br>      *      * This method does nothing and returns {@code false} if      *<ul>      *<li>the tree at {@code sourcePath} does not exist or is not accessible,</li>      *<li>the parent of the tree at {@code destinationPath} does not exist or is not accessible,</li>      *<li>a tree already exists at {@code destinationPath}.</li>      *</ul>      * If a tree at {@code destinationPath} exists but is not accessible to the      * editing content session this method succeeds but a subsequent      * {@link #commit()} will detect the violation and fail.      *      * @param sourcePath The source path      * @param destPath The destination path      * @return {@code true} on success, {@code false} otherwise.      */
 name|boolean
 name|move
 parameter_list|(
@@ -57,7 +57,7 @@ name|String
 name|destPath
 parameter_list|)
 function_decl|;
-comment|/**      * Copy the child located at {@code sourcePath} to a child at {@code destPath}.      * Both paths must be absolute and resolve to a child located in this root.<br>      *      * This method does nothing an returns {@code false} if      *<ul>      *<li>The tree at {@code sourcePath} does exist or is not accessible,</li>      *<li>the parent of the tree at {@code destinationPath} does not exist or is not accessible,</li>      *<li>a tree already exists at {@code destinationPath}.</li>      *</ul>      * If a tree at {@code destinationPath} exists but is not accessible to the      * editing content session this method succeeds but a subsequent      * {@link #commit(ConflictHandler)} will detect the violation and fail.      *      * @param sourcePath source path      * @param destPath destination path      * @return  {@code true} on success, {@code false} otherwise.      */
+comment|/**      * Copy the child located at {@code sourcePath} to a child at {@code destPath}.      * Both paths must be absolute and resolve to a child located in this root.<br>      *      * This method does nothing an returns {@code false} if      *<ul>      *<li>The tree at {@code sourcePath} does exist or is not accessible,</li>      *<li>the parent of the tree at {@code destinationPath} does not exist or is not accessible,</li>      *<li>a tree already exists at {@code destinationPath}.</li>      *</ul>      * If a tree at {@code destinationPath} exists but is not accessible to the      * editing content session this method succeeds but a subsequent      * {@link #commit()} will detect the violation and fail.      *      * @param sourcePath source path      * @param destPath destination path      * @return  {@code true} on success, {@code false} otherwise.      */
 name|boolean
 name|copy
 parameter_list|(
@@ -88,26 +88,20 @@ name|String
 name|path
 parameter_list|)
 function_decl|;
-comment|/**      * Rebase this root instance to the latest revision. After a call to this method,      * all trees obtained through {@link #getTree(String)} become invalid and fresh      * instances must be obtained.      *      * @param conflictHandler A {@link ConflictHandler} for resolving conflicts.      */
+comment|/**      * Rebase this root instance to the latest revision. After a call to this method,      * all trees obtained through {@link #getTree(String)} become invalid and fresh      * instances must be obtained.      */
 name|void
 name|rebase
-parameter_list|(
-name|ConflictHandler
-name|conflictHandler
-parameter_list|)
+parameter_list|()
 function_decl|;
 comment|/**      * Reverts all changes made to this root and refreshed to the latest trunk.      * After a call to this method, all trees obtained through {@link #getTree(String)}      * become invalid and fresh instances must be obtained.      */
 name|void
 name|refresh
 parameter_list|()
 function_decl|;
-comment|/**      * Atomically apply all changes made to the tree beneath this root to the      * underlying store and refreshes this root. After a call to this method,      * all trees obtained through {@link #getTree(String)} become invalid and fresh      * instances must be obtained.      *      * @param conflictHandler  {@link ConflictHandler} for resolving conflicts.      * @throws CommitFailedException      */
+comment|/**      * Atomically apply all changes made to the tree beneath this root to the      * underlying store and refreshes this root. After a call to this method,      * all trees obtained through {@link #getTree(String)} become invalid and fresh      * instances must be obtained.      *      * @throws CommitFailedException      */
 name|void
 name|commit
-parameter_list|(
-name|ConflictHandler
-name|conflictHandler
-parameter_list|)
+parameter_list|()
 throws|throws
 name|CommitFailedException
 function_decl|;

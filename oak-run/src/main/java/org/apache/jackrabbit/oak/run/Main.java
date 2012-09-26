@@ -277,7 +277,7 @@ name|oak
 operator|.
 name|plugins
 operator|.
-name|value
+name|commit
 operator|.
 name|ConflictValidatorProvider
 import|;
