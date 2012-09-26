@@ -316,14 +316,6 @@ name|AddNodeInstruction
 name|instruction
 parameter_list|)
 block|{
-comment|// Old code
-comment|//        String path = instruction.getPath();
-comment|//        getStagedNode(path);
-comment|//        if (!PathUtils.denotesRoot(path)) {
-comment|//            String parentPath = PathUtils.getParentPath(path);
-comment|//            NodeMongo parentNode = getStagedNode(parentPath);
-comment|//            parentNode.addChild(PathUtils.getName(path));
-comment|//        }
 name|String
 name|path
 init|=
@@ -347,6 +339,16 @@ argument_list|(
 name|path
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|nodeName
+operator|.
+name|isEmpty
+argument_list|()
+condition|)
+block|{
+return|return;
+block|}
 name|String
 name|parentNodePath
 init|=
@@ -1059,12 +1061,40 @@ decl_stmt|;
 name|NodeMongo
 name|parentNode
 init|=
-name|getStagedNode
+name|getStoredNode
 argument_list|(
 name|parentPath
 argument_list|)
 decl_stmt|;
-comment|// [Mete] What if there is no such child?
+name|String
+name|childName
+init|=
+name|PathUtils
+operator|.
+name|getName
+argument_list|(
+name|path
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+operator|!
+name|parentNode
+operator|.
+name|childExists
+argument_list|(
+name|childName
+argument_list|)
+condition|)
+block|{
+throw|throw
+operator|new
+name|RuntimeException
+argument_list|(
+name|path
+argument_list|)
+throw|;
+block|}
 name|parentNode
 operator|.
 name|removeChild

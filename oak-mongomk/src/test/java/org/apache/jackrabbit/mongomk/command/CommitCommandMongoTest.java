@@ -245,6 +245,22 @@ name|apache
 operator|.
 name|jackrabbit
 operator|.
+name|mongomk
+operator|.
+name|util
+operator|.
+name|MongoUtil
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
 name|oak
 operator|.
 name|commons
@@ -1486,9 +1502,6 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-annotation|@
-name|Ignore
-comment|// FIXME
 specifier|public
 name|void
 name|removeNonExistentNode
@@ -2500,9 +2513,6 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-annotation|@
-name|Ignore
-comment|/// FIXME
 specifier|public
 name|void
 name|rootNodeHasEmptyRootPath
@@ -2542,11 +2552,17 @@ init|=
 operator|new
 name|CommitImpl
 argument_list|(
-literal|""
+name|MongoUtil
+operator|.
+name|INITIAL_COMMIT_PATH
 argument_list|,
-literal|"+/ : {}"
+name|MongoUtil
+operator|.
+name|INITIAL_COMMIT_DIFF
 argument_list|,
-literal|"This is the root commit"
+name|MongoUtil
+operator|.
+name|INITIAL_COMMIT_MESSAGE
 argument_list|,
 name|instructions
 argument_list|)
@@ -2577,12 +2593,9 @@ argument_list|(
 name|revisionId
 argument_list|)
 expr_stmt|;
-name|MongoAssert
-operator|.
-name|assertNodesExist
-argument_list|(
-literal|""
-argument_list|,
+name|Node
+name|expected
+init|=
 name|NodeBuilder
 operator|.
 name|build
@@ -2596,6 +2609,16 @@ argument_list|,
 name|revisionId
 argument_list|)
 argument_list|)
+decl_stmt|;
+name|MongoAssert
+operator|.
+name|assertNodesExist
+argument_list|(
+name|MongoUtil
+operator|.
+name|INITIAL_COMMIT_PATH
+argument_list|,
+name|expected
 argument_list|)
 expr_stmt|;
 block|}
