@@ -249,6 +249,9 @@ argument_list|)
 decl_stmt|;
 name|UserImpl
 parameter_list|(
+name|String
+name|id
+parameter_list|,
 name|Tree
 name|tree
 parameter_list|,
@@ -260,6 +263,8 @@ name|RepositoryException
 block|{
 name|super
 argument_list|(
+name|id
+argument_list|,
 name|tree
 argument_list|,
 name|userManager
@@ -608,6 +613,8 @@ specifier|public
 name|boolean
 name|isDisabled
 parameter_list|()
+throws|throws
+name|RepositoryException
 block|{
 return|return
 name|getTree
@@ -626,6 +633,8 @@ specifier|public
 name|String
 name|getDisabledReason
 parameter_list|()
+throws|throws
+name|RepositoryException
 block|{
 name|PropertyState
 name|disabled
@@ -670,6 +679,8 @@ parameter_list|,
 name|String
 name|value
 parameter_list|)
+throws|throws
+name|RepositoryException
 block|{
 name|getUserManager
 argument_list|()
@@ -702,6 +713,8 @@ name|String
 index|[]
 name|values
 parameter_list|)
+throws|throws
+name|RepositoryException
 block|{
 name|getUserManager
 argument_list|()

@@ -315,6 +315,9 @@ argument_list|)
 decl_stmt|;
 name|GroupImpl
 parameter_list|(
+name|String
+name|id
+parameter_list|,
 name|Tree
 name|tree
 parameter_list|,
@@ -326,6 +329,8 @@ name|RepositoryException
 block|{
 name|super
 argument_list|(
+name|id
+argument_list|,
 name|tree
 argument_list|,
 name|userManager

@@ -305,26 +305,6 @@ name|security
 operator|.
 name|user
 operator|.
-name|Type
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|spi
-operator|.
-name|security
-operator|.
-name|user
-operator|.
 name|UserConstants
 import|;
 end_import
@@ -364,7 +344,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * AuthorizableImpl... TODO  *  * FIXME: get rid of keeping both tree AND node fields. this is workaround for  *        missing conversion from Node to Tree and vice version in OAK-JCR  */
+comment|/**  * AuthorizableImpl...  */
 end_comment
 
 begin_class
@@ -394,8 +374,8 @@ argument_list|)
 decl_stmt|;
 specifier|private
 specifier|final
-name|Tree
-name|tree
+name|String
+name|id
 decl_stmt|;
 specifier|private
 specifier|final
@@ -412,6 +392,9 @@ name|hashCode
 decl_stmt|;
 name|AuthorizableImpl
 parameter_list|(
+name|String
+name|id
+parameter_list|,
 name|Tree
 name|tree
 parameter_list|,
@@ -423,9 +406,9 @@ name|RepositoryException
 block|{
 name|this
 operator|.
-name|tree
+name|id
 operator|=
-name|tree
+name|id
 expr_stmt|;
 name|this
 operator|.
@@ -473,28 +456,7 @@ name|getID
 parameter_list|()
 block|{
 return|return
-name|userManager
-operator|.
-name|getUserProvider
-argument_list|()
-operator|.
-name|getAuthorizableId
-argument_list|(
-name|tree
-argument_list|,
-operator|(
-name|isGroup
-argument_list|()
-operator|)
-condition|?
-name|Type
-operator|.
-name|GROUP
-else|:
-name|Type
-operator|.
-name|USER
-argument_list|)
+name|id
 return|;
 block|}
 comment|/**      * @see Authorizable#declaredMemberOf()      */
@@ -581,7 +543,8 @@ argument_list|(
 name|this
 argument_list|)
 expr_stmt|;
-name|tree
+name|getTree
+argument_list|()
 operator|.
 name|remove
 argument_list|()
@@ -1329,7 +1292,8 @@ name|isSame
 argument_list|(
 name|otherAuth
 operator|.
-name|node
+name|getNode
+argument_list|()
 argument_list|)
 return|;
 block|}
@@ -1378,8 +1342,7 @@ argument_list|)
 operator|.
 name|append
 argument_list|(
-name|getID
-argument_list|()
+name|id
 argument_list|)
 operator|.
 name|append
@@ -1392,7 +1355,7 @@ argument_list|()
 return|;
 block|}
 comment|//--------------------------------------------------------------------------
-comment|/**      * @return The node associated with this authorizable instance.      */
+comment|/**      * @return The node associated with this authorizable instance.      * @throws javax.jcr.RepositoryException      */
 annotation|@
 name|Nonnull
 name|Node
@@ -1418,7 +1381,8 @@ argument_list|()
 operator|.
 name|getJcrPath
 argument_list|(
-name|tree
+name|getTree
+argument_list|()
 operator|.
 name|getPath
 argument_list|()
@@ -1447,6 +1411,34 @@ name|Tree
 name|getTree
 parameter_list|()
 block|{
+name|Tree
+name|tree
+init|=
+name|userManager
+operator|.
+name|getUserProvider
+argument_list|()
+operator|.
+name|getAuthorizable
+argument_list|(
+name|id
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|tree
+operator|==
+literal|null
+condition|)
+block|{
+throw|throw
+operator|new
+name|IllegalStateException
+argument_list|(
+literal|"Authorizable not associated with an existing tree"
+argument_list|)
+throw|;
+block|}
 return|return
 name|tree
 return|;
@@ -1490,6 +1482,12 @@ parameter_list|()
 throws|throws
 name|RepositoryException
 block|{
+name|Tree
+name|tree
+init|=
+name|getTree
+argument_list|()
+decl_stmt|;
 if|if
 condition|(
 name|tree
@@ -1920,7 +1918,8 @@ name|mMgr
 operator|.
 name|getMembership
 argument_list|(
-name|tree
+name|getTree
+argument_list|()
 argument_list|,
 name|includeInherited
 argument_list|)

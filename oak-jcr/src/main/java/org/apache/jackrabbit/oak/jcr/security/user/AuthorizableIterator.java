@@ -35,16 +35,6 @@ begin_import
 import|import
 name|javax
 operator|.
-name|annotation
-operator|.
-name|Nullable
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
 name|jcr
 operator|.
 name|RangeIterator
@@ -523,8 +513,6 @@ specifier|public
 name|Authorizable
 name|apply
 parameter_list|(
-annotation|@
-name|Nullable
 name|String
 name|oakPath
 parameter_list|)
@@ -627,8 +615,6 @@ specifier|public
 name|Authorizable
 name|apply
 parameter_list|(
-annotation|@
-name|Nullable
 name|Tree
 name|authorizableTree
 parameter_list|)

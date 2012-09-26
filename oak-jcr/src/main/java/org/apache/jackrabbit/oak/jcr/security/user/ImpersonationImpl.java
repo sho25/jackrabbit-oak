@@ -971,6 +971,8 @@ name|String
 argument_list|>
 name|principalNames
 parameter_list|)
+throws|throws
+name|RepositoryException
 block|{
 name|String
 index|[]
