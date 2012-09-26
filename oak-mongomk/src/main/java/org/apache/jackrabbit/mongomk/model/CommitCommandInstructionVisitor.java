@@ -404,10 +404,28 @@ argument_list|)
 argument_list|)
 throw|;
 block|}
-comment|// FIXME [Mete] Add once tests are fixed.
-comment|//if (parent.childExists(nodeName)) {
-comment|//    throw new RuntimeException("There's already a child node with name '" + nodeName + "'");
-comment|//}
+if|if
+condition|(
+name|parent
+operator|.
+name|childExists
+argument_list|(
+name|nodeName
+argument_list|)
+condition|)
+block|{
+throw|throw
+operator|new
+name|RuntimeException
+argument_list|(
+literal|"There's already a child node with name '"
+operator|+
+name|nodeName
+operator|+
+literal|"'"
+argument_list|)
+throw|;
+block|}
 block|}
 else|else
 block|{
