@@ -1534,10 +1534,6 @@ operator|.
 name|getAuthorizableId
 argument_list|(
 name|userTree
-argument_list|,
-name|Type
-operator|.
-name|USER
 argument_list|)
 return|;
 block|}
