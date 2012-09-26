@@ -2528,12 +2528,6 @@ name|CoreValue
 name|value
 parameter_list|)
 block|{
-if|if
-condition|(
-name|canWrite
-argument_list|()
-condition|)
-block|{
 name|parent
 operator|.
 name|tree
@@ -2552,13 +2546,6 @@ return|return
 literal|true
 return|;
 block|}
-else|else
-block|{
-return|return
-literal|false
-return|;
-block|}
-block|}
 comment|/**          * Set the values of the underlying property          * @param values the values to set          * @return  {@code true} on success false otherwise          */
 specifier|public
 name|boolean
@@ -2570,12 +2557,6 @@ name|CoreValue
 argument_list|>
 name|values
 parameter_list|)
-block|{
-if|if
-condition|(
-name|canWrite
-argument_list|()
-condition|)
 block|{
 name|parent
 operator|.
@@ -2595,24 +2576,11 @@ return|return
 literal|true
 return|;
 block|}
-else|else
-block|{
-return|return
-literal|false
-return|;
-block|}
-block|}
 comment|/**          * Remove the underlying property          * @return  {@code true} on success false otherwise          */
 specifier|public
 name|boolean
 name|remove
 parameter_list|()
-block|{
-if|if
-condition|(
-name|canWrite
-argument_list|()
-condition|)
 block|{
 name|parent
 operator|.
@@ -2629,13 +2597,6 @@ expr_stmt|;
 return|return
 literal|true
 return|;
-block|}
-else|else
-block|{
-return|return
-literal|false
-return|;
-block|}
 block|}
 specifier|private
 name|boolean
@@ -2655,17 +2616,6 @@ argument_list|()
 argument_list|,
 literal|true
 argument_list|)
-return|;
-block|}
-specifier|private
-name|boolean
-name|canWrite
-parameter_list|()
-block|{
-comment|// TODO implement canWrite
-return|return
-name|canRead
-argument_list|()
 return|;
 block|}
 block|}
