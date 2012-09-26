@@ -2293,6 +2293,24 @@ name|modified
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
+specifier|public
+name|NodeBuilder
+name|getBuilder
+parameter_list|()
+block|{
+return|return
+operator|new
+name|ModifiedNodeState
+argument_list|(
+name|this
+argument_list|)
+operator|.
+name|getBuilder
+argument_list|()
+return|;
+block|}
 comment|/**          * Since we keep track of an explicit base node state for a          * {@link ModifiedNodeState} instance, we can do this in two steps:          * first compare the base states to each other (often a fast operation),          * ignoring all changed properties and child nodes for which we have          * further modifications, and then compare all the modified properties          * and child nodes to those in the given base state.          */
 annotation|@
 name|Override
@@ -2865,6 +2883,21 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+block|}
+annotation|@
+name|Override
+specifier|public
+name|NodeBuilder
+name|getBuilder
+parameter_list|()
+block|{
+return|return
+operator|new
+name|MemoryNodeBuilder
+argument_list|(
+name|this
+argument_list|)
+return|;
 block|}
 comment|//----------------------------------------------< MutableNodeState>--
 annotation|@

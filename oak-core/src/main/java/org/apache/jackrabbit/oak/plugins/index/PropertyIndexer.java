@@ -298,9 +298,6 @@ specifier|public
 name|NodeState
 name|processCommit
 parameter_list|(
-name|NodeStore
-name|store
-parameter_list|,
 name|NodeState
 name|before
 parameter_list|,

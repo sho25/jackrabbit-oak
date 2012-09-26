@@ -63,24 +63,6 @@ name|NodeState
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|spi
-operator|.
-name|state
-operator|.
-name|NodeStore
-import|;
-end_import
-
 begin_comment
 comment|/**  * Extension point for validating and modifying content changes. Available  * commit hooks are called in sequence to process incoming content changes  * before they get persisted and shared with other clients.  *<p>  * A commit hook can throw a {@link CommitFailedException} for a particular  * change to prevent it from being persisted, or it can modify the changes  * for example to update an in-content index or to add auto-generated content.  *<p>  * Note that instead of implementing this interface directly, most commit  * editors and validators are better expressed as implementations of the  * more specific extension interfaces defined in this package.  */
 end_comment
@@ -90,15 +72,12 @@ specifier|public
 interface|interface
 name|CommitHook
 block|{
-comment|/**      * Validates and/or modifies the given content change before it gets      * persisted.      *      * @param store the node store that contains the repository content      * @param before content tree before the commit      * @param after content tree prepared for the commit      * @return content tree to be committed      * @throws CommitFailedException if the commit should be rejected      */
+comment|/**      * Validates and/or modifies the given content change before it gets      * persisted.      *      * @param before content tree before the commit      * @param after content tree prepared for the commit      * @return content tree to be committed      * @throws CommitFailedException if the commit should be rejected      */
 annotation|@
 name|Nonnull
 name|NodeState
 name|processCommit
 parameter_list|(
-name|NodeStore
-name|store
-parameter_list|,
 name|NodeState
 name|before
 parameter_list|,

@@ -68,16 +68,6 @@ name|NodeStoreBranch
 name|branch
 parameter_list|()
 function_decl|;
-comment|/**      * Returns a builder for constructing a new or modified node state.      * The builder is initialized with all the properties and child nodes      * from the given base node state.      *      * @param base  base node state, or {@code null} for building new nodes      * @return  builder instance      */
-annotation|@
-name|Nonnull
-name|NodeBuilder
-name|getBuilder
-parameter_list|(
-name|NodeState
-name|base
-parameter_list|)
-function_decl|;
 comment|/**      * Returns the factory for creating values used for building node states.      *      * @return value factory      */
 annotation|@
 name|Nonnull

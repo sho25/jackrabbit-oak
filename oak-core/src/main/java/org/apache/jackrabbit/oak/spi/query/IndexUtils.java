@@ -749,12 +749,10 @@ block|{
 name|NodeBuilder
 name|builder
 init|=
-name|store
+name|state
 operator|.
 name|getBuilder
-argument_list|(
-name|state
-argument_list|)
+argument_list|()
 decl_stmt|;
 for|for
 control|(

@@ -355,6 +355,11 @@ specifier|public
 name|CopyAndMoveAwareJsopDiff
 parameter_list|()
 block|{
+name|super
+argument_list|(
+name|kernel
+argument_list|)
+expr_stmt|;
 name|added
 operator|=
 name|Maps
@@ -396,6 +401,8 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
+name|kernel
+argument_list|,
 name|jsop
 argument_list|,
 name|path
@@ -525,6 +532,8 @@ argument_list|,
 operator|new
 name|JsopDiff
 argument_list|(
+name|kernel
+argument_list|,
 name|jsop
 argument_list|,
 name|path

@@ -108,24 +108,6 @@ import|;
 end_import
 
 begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|spi
-operator|.
-name|state
-operator|.
-name|NodeStore
-import|;
-end_import
-
-begin_import
 import|import static
 name|org
 operator|.
@@ -276,9 +258,6 @@ specifier|public
 name|NodeState
 name|processCommit
 parameter_list|(
-name|NodeStore
-name|store
-parameter_list|,
 name|NodeState
 name|before
 parameter_list|,

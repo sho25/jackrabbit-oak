@@ -152,9 +152,6 @@ specifier|public
 name|NodeState
 name|processCommit
 parameter_list|(
-name|NodeStore
-name|store
-parameter_list|,
 name|NodeState
 name|before
 parameter_list|,
@@ -183,8 +180,6 @@ name|hook
 operator|.
 name|processCommit
 argument_list|(
-name|store
-argument_list|,
 name|before
 argument_list|,
 name|newState

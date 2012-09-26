@@ -1054,15 +1054,13 @@ name|createRootBuilder
 parameter_list|()
 block|{
 return|return
-name|store
-operator|.
-name|getBuilder
-argument_list|(
 name|branch
 operator|.
 name|getRoot
 argument_list|()
-argument_list|)
+operator|.
+name|getBuilder
+argument_list|()
 return|;
 block|}
 comment|/**      * Add a {@code PurgeListener} to this instance. Listeners are automatically      * unregistered after having been called. If further notifications are required,      * they need to explicitly re-register.      * @param purgeListener  listener      */

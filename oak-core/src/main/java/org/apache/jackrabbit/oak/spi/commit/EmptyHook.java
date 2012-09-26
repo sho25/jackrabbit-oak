@@ -53,24 +53,6 @@ name|NodeState
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|spi
-operator|.
-name|state
-operator|.
-name|NodeStore
-import|;
-end_import
-
 begin_comment
 comment|/**  * Basic commit hook implementation that by default doesn't do anything.  * This class has a dual purpose:  *<ol>  *<li>The static {@link #INSTANCE} instance can be used as a "null object"  * in cases where another commit hook has not been configured, thus avoiding  * the need for extra code for such cases.</li>  *<li>Other commit hook implementations can extend this class and gain  * improved forwards-compatibility to possible changes in the  * {@link CommitHook} interface. For example if it is later decided that  * new arguments are needed in the hook methods, this class is guaranteed  * to implement any new method signatures in a way that falls gracefully  * back to any earlier behavior.</li>  *</ol>  */
 end_comment
@@ -99,9 +81,6 @@ specifier|public
 name|NodeState
 name|processCommit
 parameter_list|(
-name|NodeStore
-name|store
-parameter_list|,
 name|NodeState
 name|before
 parameter_list|,

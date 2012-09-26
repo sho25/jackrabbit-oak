@@ -327,7 +327,12 @@ name|diff
 init|=
 operator|new
 name|JsopDiff
+argument_list|(
+name|store
+operator|.
+name|getKernel
 argument_list|()
+argument_list|)
 decl_stmt|;
 name|currentRoot
 operator|.
@@ -553,8 +558,6 @@ name|commitHook
 operator|.
 name|processCommit
 argument_list|(
-name|store
-argument_list|,
 name|oldRoot
 argument_list|,
 name|currentRoot
