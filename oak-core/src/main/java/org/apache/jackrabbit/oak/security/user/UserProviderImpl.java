@@ -689,11 +689,51 @@ name|getName
 argument_list|()
 argument_list|)
 decl_stmt|;
-name|String
+name|StringBuilder
 name|stmt
 init|=
-literal|"SELECT * FROM [rep:Authorizable] WHERE [rep:principalName] = $principalName"
+operator|new
+name|StringBuilder
+argument_list|()
 decl_stmt|;
+name|stmt
+operator|.
+name|append
+argument_list|(
+literal|"SELECT * FROM ["
+argument_list|)
+operator|.
+name|append
+argument_list|(
+name|UserConstants
+operator|.
+name|NT_REP_AUTHORIZABLE
+argument_list|)
+operator|.
+name|append
+argument_list|(
+literal|']'
+argument_list|)
+expr_stmt|;
+name|stmt
+operator|.
+name|append
+argument_list|(
+literal|"WHERE ["
+argument_list|)
+operator|.
+name|append
+argument_list|(
+name|UserConstants
+operator|.
+name|REP_PRINCIPAL_NAME
+argument_list|)
+operator|.
+name|append
+argument_list|(
+literal|"] = $principalName"
+argument_list|)
+expr_stmt|;
 name|Result
 name|result
 init|=
@@ -702,6 +742,9 @@ operator|.
 name|executeQuery
 argument_list|(
 name|stmt
+operator|.
+name|toString
+argument_list|()
 argument_list|,
 name|Query
 operator|.
@@ -784,7 +827,7 @@ name|log
 operator|.
 name|error
 argument_list|(
-literal|"query failed"
+literal|"Failed to retrieve authorizable by principal"
 argument_list|,
 name|ex
 argument_list|)
@@ -802,9 +845,6 @@ name|getAuthorizableId
 parameter_list|(
 name|Tree
 name|authorizableTree
-parameter_list|,
-name|Type
-name|authorizableType
 parameter_list|)
 block|{
 name|checkNotNull
@@ -818,7 +858,9 @@ name|isAuthorizableTree
 argument_list|(
 name|authorizableTree
 argument_list|,
-name|authorizableType
+name|Type
+operator|.
+name|AUTHORIZABLE
 argument_list|)
 condition|)
 block|{
@@ -954,10 +996,6 @@ argument_list|(
 name|getAuthorizableId
 argument_list|(
 name|userTree
-argument_list|,
-name|Type
-operator|.
-name|USER
 argument_list|)
 argument_list|)
 return|;
@@ -1300,6 +1338,7 @@ name|valueFactory
 argument_list|)
 expr_stmt|;
 block|}
+comment|// verification of hierarchy and node types is delegated to UserValidator upon commit
 name|String
 name|folderPath
 init|=
@@ -1308,6 +1347,8 @@ argument_list|(
 name|authorizableId
 argument_list|,
 name|intermediatePath
+argument_list|,
+name|authRoot
 argument_list|)
 decl_stmt|;
 name|String
@@ -1333,6 +1374,39 @@ range|:
 name|segmts
 control|)
 block|{
+if|if
+condition|(
+literal|"."
+operator|.
+name|equals
+argument_list|(
+name|segment
+argument_list|)
+condition|)
+block|{
+comment|// nothing to do
+block|}
+elseif|else
+if|if
+condition|(
+literal|".."
+operator|.
+name|equals
+argument_list|(
+name|segment
+argument_list|)
+condition|)
+block|{
+name|folder
+operator|=
+name|folder
+operator|.
+name|getParent
+argument_list|()
+expr_stmt|;
+block|}
+else|else
+block|{
 name|folder
 operator|=
 name|folder
@@ -1344,7 +1418,7 @@ argument_list|,
 name|NT_REP_AUTHORIZABLE_FOLDER
 argument_list|)
 expr_stmt|;
-comment|// verification of node type is delegated to UserValidator upon commit
+block|}
 block|}
 comment|// test for colliding folder child node.
 while|while
@@ -1436,8 +1510,6 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|// note: verification that user/group is created underneath the configured
-comment|// tree is delegated to UserValidator
 return|return
 name|folder
 return|;
@@ -1451,8 +1523,66 @@ name|authorizableId
 parameter_list|,
 name|String
 name|intermediatePath
+parameter_list|,
+name|String
+name|authRoot
 parameter_list|)
+throws|throws
+name|ConstraintViolationException
 block|{
+if|if
+condition|(
+name|intermediatePath
+operator|!=
+literal|null
+operator|&&
+name|intermediatePath
+operator|.
+name|charAt
+argument_list|(
+literal|0
+argument_list|)
+operator|==
+literal|'/'
+condition|)
+block|{
+if|if
+condition|(
+operator|!
+name|intermediatePath
+operator|.
+name|startsWith
+argument_list|(
+name|authRoot
+argument_list|)
+condition|)
+block|{
+throw|throw
+operator|new
+name|ConstraintViolationException
+argument_list|(
+literal|"Attempt to create authorizable outside of configured tree"
+argument_list|)
+throw|;
+block|}
+else|else
+block|{
+name|intermediatePath
+operator|=
+name|intermediatePath
+operator|.
+name|substring
+argument_list|(
+name|authRoot
+operator|.
+name|length
+argument_list|()
+operator|+
+literal|1
+argument_list|)
+expr_stmt|;
+block|}
+block|}
 name|StringBuilder
 name|sb
 init|=
