@@ -221,8 +221,6 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|jcr
-operator|.
 name|value
 operator|.
 name|ValueFactoryImpl
