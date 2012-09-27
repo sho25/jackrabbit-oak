@@ -416,13 +416,13 @@ operator|new
 name|CompositeHook
 argument_list|(
 operator|new
-name|LuceneHook
+name|LuceneReindexHook
 argument_list|(
 name|DEFAULT_INDEX_HOME
 argument_list|)
 argument_list|,
 operator|new
-name|LuceneReindexHook
+name|LuceneHook
 argument_list|(
 name|DEFAULT_INDEX_HOME
 argument_list|)

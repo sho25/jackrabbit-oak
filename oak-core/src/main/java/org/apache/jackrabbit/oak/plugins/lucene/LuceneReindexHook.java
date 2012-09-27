@@ -166,7 +166,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A {@link CommitHook} that handles re-indexing and initial indexing of the  * content.  *   * Currently it triggers a full reindex on any detected index definition change.  *   */
+comment|/**  * A {@link CommitHook} that handles re-indexing and initial indexing of the  * content.  *   * Currently it triggers a full reindex on any detected index definition change  * (excepting the properties) OR on removing the  * {@link LuceneIndexConstants#INDEX_UPDATE} property  *   * Warning: This hook has to be placed before the updater {@link LuceneHook},  * otherwise it is going to miss the {@link LuceneIndexConstants#INDEX_UPDATE}  * change to null  *   */
 end_comment
 
 begin_class
@@ -305,6 +305,30 @@ name|contains
 argument_list|(
 name|def
 argument_list|)
+condition|)
+block|{
+name|defsChanged
+operator|.
+name|add
+argument_list|(
+name|def
+argument_list|)
+expr_stmt|;
+block|}
+comment|// verify initial state or forced reindex
+if|if
+condition|(
+name|def
+operator|.
+name|getProperties
+argument_list|()
+operator|.
+name|get
+argument_list|(
+name|INDEX_UPDATE
+argument_list|)
+operator|==
+literal|null
 condition|)
 block|{
 name|defsChanged

@@ -39,6 +39,11 @@ name|INDEX_DATA_CHILD_NAME
 init|=
 literal|":data"
 decl_stmt|;
+name|String
+name|INDEX_UPDATE
+init|=
+literal|"indexUpdate"
+decl_stmt|;
 block|}
 end_interface
 
