@@ -37,20 +37,6 @@ name|jackrabbit
 operator|.
 name|mongomk
 operator|.
-name|MongoConnection
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|mongomk
-operator|.
 name|api
 operator|.
 name|command
@@ -74,6 +60,22 @@ operator|.
 name|model
 operator|.
 name|Node
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|mongomk
+operator|.
+name|impl
+operator|.
+name|MongoConnection
 import|;
 end_import
 
@@ -114,7 +116,7 @@ name|mongoConnection
 decl_stmt|;
 specifier|private
 specifier|final
-name|String
+name|Long
 name|revisionId
 decl_stmt|;
 specifier|private
@@ -125,7 +127,7 @@ specifier|private
 name|String
 name|path
 decl_stmt|;
-comment|/**      * Constructs a new {@code NodeExistsCommandMongo}.      *      * @param mongoConnection The {@link MongoConnection}.      * @param path The root path of the nodes to get.      * @param revisionId The {@link RevisionId} or {@code null}.      */
+comment|/**      * Constructs a new {@code NodeExistsCommandMongo}.      *      * @param mongoConnection The {@link MongoConnection}.      * @param path The root path of the nodes to get.      * @param revisionId The revision id or null.      */
 specifier|public
 name|NodeExistsCommandMongo
 parameter_list|(
@@ -135,7 +137,7 @@ parameter_list|,
 name|String
 name|path
 parameter_list|,
-name|String
+name|Long
 name|revisionId
 parameter_list|)
 block|{

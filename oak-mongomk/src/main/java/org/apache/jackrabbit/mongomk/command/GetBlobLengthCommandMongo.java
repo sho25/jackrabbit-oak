@@ -27,7 +27,11 @@ name|jackrabbit
 operator|.
 name|mongomk
 operator|.
-name|MongoConnection
+name|api
+operator|.
+name|command
+operator|.
+name|AbstractCommand
 import|;
 end_import
 
@@ -41,11 +45,9 @@ name|jackrabbit
 operator|.
 name|mongomk
 operator|.
-name|api
+name|impl
 operator|.
-name|command
-operator|.
-name|AbstractCommand
+name|MongoConnection
 import|;
 end_import
 

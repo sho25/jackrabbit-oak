@@ -236,7 +236,7 @@ name|node_c
 operator|.
 name|setRevisionId
 argument_list|(
-literal|"2"
+literal|2L
 argument_list|)
 expr_stmt|;
 name|Node
@@ -252,7 +252,7 @@ name|node_b
 operator|.
 name|setRevisionId
 argument_list|(
-literal|"2"
+literal|2L
 argument_list|)
 expr_stmt|;
 name|Node
@@ -277,7 +277,7 @@ name|node_a
 operator|.
 name|setRevisionId
 argument_list|(
-literal|"1"
+literal|1L
 argument_list|)
 expr_stmt|;
 name|Node
@@ -300,7 +300,7 @@ name|node_root
 operator|.
 name|setRevisionId
 argument_list|(
-literal|"1"
+literal|1L
 argument_list|)
 expr_stmt|;
 name|NodeAssert

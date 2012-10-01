@@ -77,20 +77,6 @@ name|jackrabbit
 operator|.
 name|mongomk
 operator|.
-name|MongoConnection
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|mongomk
-operator|.
 name|api
 operator|.
 name|command
@@ -114,6 +100,22 @@ operator|.
 name|model
 operator|.
 name|Node
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|mongomk
+operator|.
+name|impl
+operator|.
+name|MongoConnection
 import|;
 end_import
 
@@ -207,22 +209,6 @@ name|apache
 operator|.
 name|jackrabbit
 operator|.
-name|mongomk
-operator|.
-name|util
-operator|.
-name|MongoUtil
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
 name|oak
 operator|.
 name|commons
@@ -296,7 +282,7 @@ name|int
 name|depth
 decl_stmt|;
 specifier|private
-name|String
+name|Long
 name|revisionId
 decl_stmt|;
 specifier|private
@@ -335,7 +321,7 @@ specifier|private
 name|Node
 name|rootOfPath
 decl_stmt|;
-comment|/**      * Constructs a new {@code GetNodesCommandMongo}.      *      * @param mongoConnection The {@link MongoConnection}.      * @param path The root path of the nodes to get.      * @param revisionId The {@link RevisionId} or {@code null}.      * @param depth The depth.      */
+comment|/**      * Constructs a new {@code GetNodesCommandMongo}.      *      * @param mongoConnection The {@link MongoConnection}.      * @param path The root path of the nodes to get.      * @param revisionId The revision id or null.      * @param depth The depth.      */
 specifier|public
 name|GetNodesCommandMongo
 parameter_list|(
@@ -345,7 +331,7 @@ parameter_list|,
 name|String
 name|path
 parameter_list|,
-name|String
+name|Long
 name|revisionId
 parameter_list|,
 name|int
@@ -752,16 +738,6 @@ name|revisionExists
 init|=
 literal|false
 decl_stmt|;
-name|long
-name|revId
-init|=
-name|MongoUtil
-operator|.
-name|toMongoRepresentation
-argument_list|(
-name|revisionId
-argument_list|)
-decl_stmt|;
 for|for
 control|(
 name|CommitMongo
@@ -777,7 +753,7 @@ operator|.
 name|getRevisionId
 argument_list|()
 operator|==
-name|revId
+name|revisionId
 condition|)
 block|{
 name|revisionExists
@@ -801,9 +777,9 @@ name|String
 operator|.
 name|format
 argument_list|(
-literal|"The revisionId %d could not be found"
+literal|"Revision %d could not be found"
 argument_list|,
-name|revId
+name|revisionId
 argument_list|)
 argument_list|)
 throw|;
@@ -871,7 +847,9 @@ name|String
 operator|.
 name|format
 argument_list|(
-literal|"Node hierarchy could not be verified because some nodes were inconsistent: %s"
+literal|"Node hierarchy could not be verified because"
+operator|+
+literal|" some nodes were inconsistent: %s"
 argument_list|,
 name|path
 argument_list|)

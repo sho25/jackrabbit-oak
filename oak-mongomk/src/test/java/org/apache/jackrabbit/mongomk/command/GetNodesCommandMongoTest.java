@@ -150,7 +150,7 @@ argument_list|(
 name|mongoConnection
 argument_list|)
 decl_stmt|;
-name|String
+name|Long
 name|firstRevisionId
 init|=
 name|scenario
@@ -158,7 +158,7 @@ operator|.
 name|create
 argument_list|()
 decl_stmt|;
-name|String
+name|Long
 name|secondRevisionId
 init|=
 name|scenario
@@ -282,7 +282,7 @@ argument_list|(
 name|mongoConnection
 argument_list|)
 decl_stmt|;
-name|String
+name|Long
 name|firstRevisionId
 init|=
 name|scenario
@@ -290,7 +290,7 @@ operator|.
 name|create
 argument_list|()
 decl_stmt|;
-name|String
+name|Long
 name|secondRevisionId
 init|=
 name|scenario
@@ -604,7 +604,7 @@ argument_list|(
 name|mongoConnection
 argument_list|)
 decl_stmt|;
-name|String
+name|Long
 name|firstRevisionId
 init|=
 name|scenario
@@ -612,7 +612,7 @@ operator|.
 name|create
 argument_list|()
 decl_stmt|;
-name|String
+name|Long
 name|secondRevisionId
 init|=
 name|scenario
@@ -738,7 +738,7 @@ argument_list|(
 name|mongoConnection
 argument_list|)
 decl_stmt|;
-name|String
+name|Long
 name|revisionId
 init|=
 name|scenario
@@ -837,14 +837,9 @@ name|mongoConnection
 argument_list|,
 literal|"/"
 argument_list|,
-name|String
-operator|.
-name|valueOf
-argument_list|(
 name|Long
 operator|.
 name|MAX_VALUE
-argument_list|)
 argument_list|,
 operator|-
 literal|1

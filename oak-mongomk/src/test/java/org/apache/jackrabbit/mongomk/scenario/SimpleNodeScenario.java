@@ -47,20 +47,6 @@ name|jackrabbit
 operator|.
 name|mongomk
 operator|.
-name|MongoConnection
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|mongomk
-operator|.
 name|api
 operator|.
 name|model
@@ -100,6 +86,22 @@ operator|.
 name|command
 operator|.
 name|CommitCommandMongo
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|mongomk
+operator|.
+name|impl
+operator|.
+name|MongoConnection
 import|;
 end_import
 
@@ -184,13 +186,12 @@ specifier|public
 class|class
 name|SimpleNodeScenario
 block|{
-comment|// TODO this should be refactored to use class rules
 specifier|private
 specifier|final
 name|MongoConnection
 name|mongoConnection
 decl_stmt|;
-comment|/**      * Constructs a new {@code SimpleNodeScenario}.      *      * @param mongoConnection      *            The {@link MongoConnection}.      */
+comment|/**      * Constructs a new {@code SimpleNodeScenario}.      *      * @param mongoConnection The {@link MongoConnection}.      */
 specifier|public
 name|SimpleNodeScenario
 parameter_list|(
@@ -205,9 +206,9 @@ operator|=
 name|mongoConnection
 expr_stmt|;
 block|}
-comment|/**      * Creates the following nodes:      *      *<pre>      *&quot;+a : { \&quot;int\&quot; : 1 , \&quot;b\&quot; : { \&quot;string\&quot; : \&quot;foo\&quot; } , \&quot;c\&quot; : { \&quot;bool\&quot; : true } } }&quot;      *</pre>      *      * @return The {@link RevisionId}.      * @throws Exception      *             If an error occurred.      */
+comment|/**      * Creates the following nodes:      *      *<pre>      *&quot;+a : { \&quot;int\&quot; : 1 , \&quot;b\&quot; : { \&quot;string\&quot; : \&quot;foo\&quot; } , \&quot;c\&quot; : { \&quot;bool\&quot; : true } } }&quot;      *</pre>      *      * @return The {@link RevisionId}.      * @throws Exception If an error occurred.      */
 specifier|public
-name|String
+name|Long
 name|create
 parameter_list|()
 throws|throws
@@ -336,20 +337,15 @@ argument_list|,
 name|commit
 argument_list|)
 decl_stmt|;
-name|String
-name|revisionId
-init|=
+return|return
 name|command
 operator|.
 name|execute
 argument_list|()
-decl_stmt|;
-return|return
-name|revisionId
 return|;
 block|}
 specifier|public
-name|String
+name|Long
 name|addChildrenToA
 parameter_list|(
 name|int
@@ -358,7 +354,7 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
-name|String
+name|Long
 name|revisionId
 init|=
 literal|null
@@ -446,9 +442,8 @@ return|return
 name|revisionId
 return|;
 block|}
-comment|/**      * Deletes the a node.      *      *<pre>      *&quot;-a&quot;      *</pre>      *      * @return The {@link RevisionId}.      * @throws Exception      *             If an error occurred.      */
 specifier|public
-name|String
+name|Long
 name|delete_A
 parameter_list|()
 throws|throws
@@ -506,20 +501,15 @@ argument_list|,
 name|commit
 argument_list|)
 decl_stmt|;
-name|String
-name|revisionId
-init|=
+return|return
 name|command
 operator|.
 name|execute
 argument_list|()
-decl_stmt|;
-return|return
-name|revisionId
 return|;
 block|}
 specifier|public
-name|String
+name|Long
 name|delete_B
 parameter_list|()
 throws|throws
@@ -584,9 +574,8 @@ name|execute
 argument_list|()
 return|;
 block|}
-comment|/**      * Updates the following nodes:      *      *<pre>      * TBD      *</pre>      *      * @return The {@link RevisionId}.      * @throws Exception      *             If an error occurred.      */
 specifier|public
-name|String
+name|Long
 name|update_A_and_add_D_and_E
 parameter_list|()
 throws|throws
@@ -717,16 +706,11 @@ argument_list|,
 name|commit
 argument_list|)
 decl_stmt|;
-name|String
-name|revisionId
-init|=
+return|return
 name|command
 operator|.
 name|execute
 argument_list|()
-decl_stmt|;
-return|return
-name|revisionId
 return|;
 block|}
 block|}

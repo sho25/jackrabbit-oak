@@ -49,6 +49,8 @@ name|jackrabbit
 operator|.
 name|mongomk
 operator|.
+name|impl
+operator|.
 name|MongoConnection
 import|;
 end_import
@@ -66,22 +68,6 @@ operator|.
 name|model
 operator|.
 name|NodeMongo
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|mongomk
-operator|.
-name|util
-operator|.
-name|MongoUtil
 import|;
 end_import
 
@@ -189,10 +175,10 @@ name|path
 decl_stmt|;
 specifier|private
 specifier|final
-name|String
+name|Long
 name|revisionId
 decl_stmt|;
-comment|/**      * Constructs a new {@code FetchNodesByPathAndDepthQuery}.      *      * @param mongoConnection      *            The {@link MongoConnection}.      * @param path      *            The path.      * @param revisionId      *            The revision id.      * @param depth      *            The depth.      */
+comment|/**      * Constructs a new {@code FetchNodesByPathAndDepthQuery}.      *      * @param mongoConnection The {@link MongoConnection}.      * @param path The path.      * @param revisionId The revision id.      * @param depth The depth.      */
 specifier|public
 name|FetchNodesByPathAndDepthQuery
 parameter_list|(
@@ -202,7 +188,7 @@ parameter_list|,
 name|String
 name|path
 parameter_list|,
-name|String
+name|Long
 name|revisionId
 parameter_list|,
 name|int
@@ -442,7 +428,7 @@ parameter_list|(
 name|MongoConnection
 name|mongoConnection
 parameter_list|,
-name|String
+name|Long
 name|revisionId
 parameter_list|)
 block|{
@@ -512,12 +498,7 @@ argument_list|)
 operator|.
 name|lessThanEquals
 argument_list|(
-name|MongoUtil
-operator|.
-name|toMongoRepresentation
-argument_list|(
 name|revisionId
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

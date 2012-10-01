@@ -12,6 +12,8 @@ operator|.
 name|jackrabbit
 operator|.
 name|mongomk
+operator|.
+name|impl
 package|;
 end_package
 
@@ -118,9 +120,9 @@ specifier|private
 specifier|static
 specifier|final
 name|String
-name|COLLECTION_COMMIT
+name|COLLECTION_COMMITS
 init|=
-literal|"commit"
+literal|"commits"
 decl_stmt|;
 specifier|private
 specifier|static
@@ -201,7 +203,7 @@ name|db
 operator|.
 name|getCollection
 argument_list|(
-name|COLLECTION_COMMIT
+name|COLLECTION_COMMITS
 argument_list|)
 decl_stmt|;
 name|commitCollection

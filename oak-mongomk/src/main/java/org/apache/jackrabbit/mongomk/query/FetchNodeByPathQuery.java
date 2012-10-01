@@ -37,6 +37,8 @@ name|jackrabbit
 operator|.
 name|mongomk
 operator|.
+name|impl
+operator|.
 name|MongoConnection
 import|;
 end_import
@@ -358,14 +360,9 @@ name|FetchValidRevisionsQuery
 argument_list|(
 name|mongoConnection
 argument_list|,
-name|String
-operator|.
-name|valueOf
-argument_list|(
 name|Long
 operator|.
 name|MAX_VALUE
-argument_list|)
 argument_list|)
 decl_stmt|;
 name|List

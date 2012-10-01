@@ -135,7 +135,7 @@ name|long
 name|timestamp
 decl_stmt|;
 specifier|private
-name|String
+name|Long
 name|revisionId
 decl_stmt|;
 comment|/**      * Constructs a new {@code CommitImpl}.      *      * @param path The path.      * @param diff The diff.      * @param message The message.      */
@@ -285,7 +285,7 @@ name|path
 return|;
 block|}
 specifier|public
-name|String
+name|Long
 name|getRevisionId
 parameter_list|()
 block|{
@@ -297,7 +297,7 @@ specifier|public
 name|void
 name|setRevisionId
 parameter_list|(
-name|String
+name|Long
 name|revisionId
 parameter_list|)
 block|{

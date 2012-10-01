@@ -67,6 +67,8 @@ name|jackrabbit
 operator|.
 name|mongomk
 operator|.
+name|impl
+operator|.
 name|MongoConnection
 import|;
 end_import
@@ -84,22 +86,6 @@ operator|.
 name|model
 operator|.
 name|NodeMongo
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|mongomk
-operator|.
-name|util
-operator|.
-name|MongoUtil
 import|;
 end_import
 
@@ -205,10 +191,10 @@ name|paths
 decl_stmt|;
 specifier|private
 specifier|final
-name|String
+name|Long
 name|revisionId
 decl_stmt|;
-comment|/**      * Constructs a new {@code FetchNodesForRevisionQuery}.      *      * @param mongoConnection      *            The {@link MongoConnection}.      * @param paths      *            The paths to fetch.      * @param revisionId      *            The revision id.      */
+comment|/**      * Constructs a new {@code FetchNodesForRevisionQuery}.      *      * @param mongoConnection The {@link MongoConnection}.      * @param paths The paths to fetch.      * @param revisionId The revision id.      */
 specifier|public
 name|FetchNodesForRevisionQuery
 parameter_list|(
@@ -221,7 +207,7 @@ name|String
 argument_list|>
 name|paths
 parameter_list|,
-name|String
+name|Long
 name|revisionId
 parameter_list|)
 block|{
@@ -243,7 +229,7 @@ operator|=
 name|revisionId
 expr_stmt|;
 block|}
-comment|/**      * Constructs a new {@code FetchNodesForRevisionQuery}.      *      * @param mongoConnection      *            The {@link MongoConnection}.      * @param paths      *            The paths to fetch.      * @param revisionId      *            The revision id.      */
+comment|/**      * Constructs a new {@code FetchNodesForRevisionQuery}.      *      * @param mongoConnection The {@link MongoConnection}.      * @param paths The paths to fetch.      * @param revisionId The revision id.      */
 specifier|public
 name|FetchNodesForRevisionQuery
 parameter_list|(
@@ -254,7 +240,7 @@ name|String
 index|[]
 name|paths
 parameter_list|,
-name|String
+name|Long
 name|revisionId
 parameter_list|)
 block|{
@@ -296,12 +282,16 @@ name|Long
 argument_list|>
 name|validRevisions
 init|=
-name|fetchValidRevisions
+operator|new
+name|FetchValidRevisionsQuery
 argument_list|(
 name|mongoConnection
 argument_list|,
 name|revisionId
 argument_list|)
+operator|.
+name|execute
+argument_list|()
 decl_stmt|;
 name|DBCursor
 name|dbCursor
@@ -326,33 +316,6 @@ argument_list|)
 decl_stmt|;
 return|return
 name|nodes
-return|;
-block|}
-specifier|private
-name|List
-argument_list|<
-name|Long
-argument_list|>
-name|fetchValidRevisions
-parameter_list|(
-name|MongoConnection
-name|mongoConnection
-parameter_list|,
-name|String
-name|revisionId
-parameter_list|)
-block|{
-return|return
-operator|new
-name|FetchValidRevisionsQuery
-argument_list|(
-name|mongoConnection
-argument_list|,
-name|revisionId
-argument_list|)
-operator|.
-name|execute
-argument_list|()
 return|;
 block|}
 specifier|private
@@ -394,12 +357,7 @@ argument_list|)
 operator|.
 name|lessThanEquals
 argument_list|(
-name|MongoUtil
-operator|.
-name|toMongoRepresentation
-argument_list|(
 name|revisionId
-argument_list|)
 argument_list|)
 operator|.
 name|get
@@ -419,18 +377,13 @@ name|query
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|DBCursor
-name|dbCursor
-init|=
+return|return
 name|nodeCollection
 operator|.
 name|find
 argument_list|(
 name|query
 argument_list|)
-decl_stmt|;
-return|return
-name|dbCursor
 return|;
 block|}
 block|}

@@ -469,14 +469,14 @@ decl_stmt|;
 specifier|final
 name|List
 argument_list|<
-name|String
+name|Long
 argument_list|>
 name|revisionIds
 init|=
 operator|new
 name|LinkedList
 argument_list|<
-name|String
+name|Long
 argument_list|>
 argument_list|()
 decl_stmt|;
@@ -522,7 +522,7 @@ parameter_list|()
 block|{
 try|try
 block|{
-name|String
+name|Long
 name|revisionId
 init|=
 name|commandExecutor
@@ -597,8 +597,8 @@ operator|<
 name|numOfConcurrentThreads
 condition|)
 do|;
-comment|// verify the result by sorting the revision ids and verifying that all children are contained in the next
-comment|// revision
+comment|// Verify the result by sorting the revision ids and verifying that all
+comment|// children are contained in the next revision
 name|Collections
 operator|.
 name|sort
@@ -608,7 +608,7 @@ argument_list|,
 operator|new
 name|Comparator
 argument_list|<
-name|String
+name|Long
 argument_list|>
 argument_list|()
 block|{
@@ -618,29 +618,19 @@ specifier|public
 name|int
 name|compare
 parameter_list|(
-name|String
+name|Long
 name|o1
 parameter_list|,
-name|String
+name|Long
 name|o2
 parameter_list|)
 block|{
 return|return
-name|Long
-operator|.
-name|valueOf
-argument_list|(
 name|o1
-argument_list|)
 operator|.
 name|compareTo
 argument_list|(
-name|Long
-operator|.
-name|valueOf
-argument_list|(
 name|o2
-argument_list|)
 argument_list|)
 return|;
 block|}
@@ -675,7 +665,7 @@ operator|++
 name|i
 control|)
 block|{
-name|String
+name|Long
 name|revisionId
 init|=
 name|revisionIds

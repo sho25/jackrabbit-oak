@@ -27,6 +27,8 @@ name|jackrabbit
 operator|.
 name|mongomk
 operator|.
+name|impl
+operator|.
 name|MongoConnection
 import|;
 end_import
@@ -131,12 +133,7 @@ name|HeadMongo
 operator|.
 name|KEY_NEXT_REVISION_ID
 argument_list|,
-name|Long
-operator|.
-name|valueOf
-argument_list|(
-literal|1
-argument_list|)
+literal|1L
 argument_list|)
 decl_stmt|;
 name|DBObject

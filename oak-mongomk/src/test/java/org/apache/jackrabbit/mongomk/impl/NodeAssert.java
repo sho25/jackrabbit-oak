@@ -365,7 +365,7 @@ name|getPath
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|String
+name|Long
 name|expectedRevisionId
 init|=
 name|expected
@@ -373,7 +373,7 @@ operator|.
 name|getRevisionId
 argument_list|()
 decl_stmt|;
-name|String
+name|Long
 name|actualRevisionId
 init|=
 name|actual

@@ -83,13 +83,11 @@ name|apache
 operator|.
 name|jackrabbit
 operator|.
-name|mongomk
+name|mk
 operator|.
-name|api
+name|util
 operator|.
-name|model
-operator|.
-name|Node
+name|NodeFilter
 import|;
 end_import
 
@@ -103,9 +101,11 @@ name|jackrabbit
 operator|.
 name|mongomk
 operator|.
-name|impl
+name|api
 operator|.
-name|NodeFilter
+name|model
+operator|.
+name|Node
 import|;
 end_import
 

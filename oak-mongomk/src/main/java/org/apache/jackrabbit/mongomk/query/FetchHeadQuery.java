@@ -27,6 +27,8 @@ name|jackrabbit
 operator|.
 name|mongomk
 operator|.
+name|impl
+operator|.
 name|MongoConnection
 import|;
 end_import
@@ -71,7 +73,7 @@ argument_list|<
 name|HeadMongo
 argument_list|>
 block|{
-comment|/**      * Constructs a new {@code FetchHeadQuery}.      *      * @param mongoConnection      *            The {@link MongoConnection}.      */
+comment|/**      * Constructs a new {@code FetchHeadQuery}.      *      * @param mongoConnection The {@link MongoConnection}.      */
 specifier|public
 name|FetchHeadQuery
 parameter_list|(
@@ -102,9 +104,7 @@ operator|.
 name|getHeadCollection
 argument_list|()
 decl_stmt|;
-name|HeadMongo
-name|headMongo
-init|=
+return|return
 operator|(
 name|HeadMongo
 operator|)
@@ -112,9 +112,6 @@ name|headCollection
 operator|.
 name|findOne
 argument_list|()
-decl_stmt|;
-return|return
-name|headMongo
 return|;
 block|}
 block|}

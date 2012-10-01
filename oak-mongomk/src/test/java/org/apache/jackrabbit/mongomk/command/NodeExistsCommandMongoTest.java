@@ -233,7 +233,7 @@ argument_list|(
 name|mongoConnection
 argument_list|)
 decl_stmt|;
-name|String
+name|Long
 name|revisionId
 init|=
 name|scenario
@@ -461,7 +461,7 @@ name|mongoConnection
 argument_list|,
 literal|"/a"
 argument_list|,
-literal|"123456789"
+literal|123456789L
 argument_list|)
 decl_stmt|;
 try|try
@@ -917,7 +917,7 @@ argument_list|(
 name|mongoConnection
 argument_list|)
 decl_stmt|;
-name|String
+name|Long
 name|rev1
 init|=
 name|scenario
@@ -925,7 +925,7 @@ operator|.
 name|create
 argument_list|()
 decl_stmt|;
-name|String
+name|Long
 name|rev2
 init|=
 name|scenario

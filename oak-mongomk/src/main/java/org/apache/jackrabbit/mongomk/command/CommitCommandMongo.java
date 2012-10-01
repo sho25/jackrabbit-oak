@@ -87,20 +87,6 @@ name|jackrabbit
 operator|.
 name|mongomk
 operator|.
-name|MongoConnection
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|mongomk
-operator|.
 name|api
 operator|.
 name|command
@@ -142,6 +128,22 @@ operator|.
 name|model
 operator|.
 name|Instruction
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|mongomk
+operator|.
+name|impl
+operator|.
+name|MongoConnection
 import|;
 end_import
 
@@ -370,7 +372,7 @@ name|CommitCommandMongo
 extends|extends
 name|AbstractCommand
 argument_list|<
-name|String
+name|Long
 argument_list|>
 block|{
 specifier|private
@@ -428,7 +430,7 @@ argument_list|>
 name|nodeMongos
 decl_stmt|;
 specifier|private
-name|String
+name|Long
 name|revisionId
 decl_stmt|;
 comment|/**      * Constructs a new {@code CommitCommandMongo}.      *      * @param mongoConnection {@link MongoConnection}      * @param commit {@link Commit}      */
@@ -458,7 +460,7 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|String
+name|Long
 name|execute
 parameter_list|()
 throws|throws
@@ -605,12 +607,7 @@ operator|.
 name|getHeadRevisionId
 argument_list|()
 argument_list|,
-name|HeadMongo
-operator|.
-name|toDBRepresentation
-argument_list|(
 name|revisionId
-argument_list|)
 argument_list|)
 operator|.
 name|execute
@@ -632,7 +629,9 @@ name|String
 operator|.
 name|format
 argument_list|(
-literal|"Encounterd a conflicting update, thus can't commit revision %s and will be retried with new revision"
+literal|"Encounterd a conflicting update, thus can't commit"
+operator|+
+literal|" revision %s and will be retried with new revision"
 argument_list|,
 name|revisionId
 argument_list|)
@@ -807,17 +806,12 @@ parameter_list|()
 block|{
 name|revisionId
 operator|=
-name|String
-operator|.
-name|valueOf
-argument_list|(
 name|headMongo
 operator|.
 name|getNextRevisionId
 argument_list|()
 operator|-
 literal|1
-argument_list|)
 expr_stmt|;
 block|}
 specifier|private
@@ -1518,15 +1512,10 @@ name|mongoConnection
 argument_list|,
 name|paths
 argument_list|,
-name|String
-operator|.
-name|valueOf
-argument_list|(
 name|headMongo
 operator|.
 name|getHeadRevisionId
 argument_list|()
-argument_list|)
 argument_list|)
 operator|.
 name|execute

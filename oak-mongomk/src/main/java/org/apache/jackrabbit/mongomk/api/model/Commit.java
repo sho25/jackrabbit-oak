@@ -61,8 +61,8 @@ name|String
 name|getPath
 parameter_list|()
 function_decl|;
-comment|/**      * Returns the revision id of this commit if known already, else this will return {@code null}. The revision      * id will be determined only after the commit has been successfully performed.      *      * @see #setRevisionId(String)      *      * @return The revision id of this commit or {@code null}.      */
-name|String
+comment|/**      * Returns the revision id of this commit if known already, else this will return {@code null}.      * The revision id will be determined only after the commit has been successfully performed.      *      * @see #setRevisionId(Long)      *      * @return The revision id of this commit or {@code null}.      */
+name|Long
 name|getRevisionId
 parameter_list|()
 function_decl|;
@@ -70,7 +70,7 @@ comment|/**      * Sets the revision id of this commit.      *      * @see #getR
 name|void
 name|setRevisionId
 parameter_list|(
-name|String
+name|Long
 name|revisionId
 parameter_list|)
 function_decl|;

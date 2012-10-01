@@ -127,7 +127,7 @@ argument_list|(
 name|mongoConnection
 argument_list|)
 decl_stmt|;
-name|String
+name|Long
 name|revisionId
 init|=
 name|scenario
@@ -144,7 +144,7 @@ argument_list|(
 name|mongoConnection
 argument_list|)
 decl_stmt|;
-name|String
+name|Long
 name|revisionId2
 init|=
 name|command
@@ -155,11 +155,8 @@ decl_stmt|;
 name|assertTrue
 argument_list|(
 name|revisionId
-operator|.
-name|equals
-argument_list|(
+operator|==
 name|revisionId2
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|scenario
@@ -167,7 +164,7 @@ operator|.
 name|delete_A
 argument_list|()
 expr_stmt|;
-name|String
+name|Long
 name|revisionId3
 init|=
 name|command
@@ -178,11 +175,8 @@ decl_stmt|;
 name|assertFalse
 argument_list|(
 name|revisionId3
-operator|.
-name|equals
-argument_list|(
+operator|==
 name|revisionId2
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
