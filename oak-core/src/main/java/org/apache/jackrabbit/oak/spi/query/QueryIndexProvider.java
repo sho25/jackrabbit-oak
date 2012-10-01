@@ -31,6 +31,16 @@ end_import
 
 begin_import
 import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|Nonnull
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -57,6 +67,8 @@ interface|interface
 name|QueryIndexProvider
 block|{
 comment|/**      * Get the currently configured indexes.      *       * @return the list of indexes      */
+annotation|@
+name|Nonnull
 name|List
 argument_list|<
 name|?

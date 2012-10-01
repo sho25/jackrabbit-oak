@@ -372,8 +372,9 @@ name|after
 parameter_list|)
 block|{
 return|return
-operator|new
 name|CompositeValidatorProvider
+operator|.
+name|compose
 argument_list|(
 name|providers
 operator|.

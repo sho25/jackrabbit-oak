@@ -1012,8 +1012,9 @@ init|=
 operator|new
 name|ValidatingHook
 argument_list|(
-operator|new
 name|CompositeValidatorProvider
+operator|.
+name|compose
 argument_list|(
 name|Collections
 operator|.

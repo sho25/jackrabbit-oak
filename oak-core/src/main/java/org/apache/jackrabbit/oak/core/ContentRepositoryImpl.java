@@ -19,16 +19,6 @@ end_package
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Collections
-import|;
-end_import
-
-begin_import
-import|import
 name|javax
 operator|.
 name|annotation
@@ -267,7 +257,7 @@ name|spi
 operator|.
 name|commit
 operator|.
-name|CompositeValidatorProvider
+name|ConflictHandlerProvider
 import|;
 end_import
 
@@ -285,7 +275,7 @@ name|spi
 operator|.
 name|commit
 operator|.
-name|ConflictHandlerProvider
+name|DefaultValidatorProvider
 import|;
 end_import
 
@@ -543,17 +533,9 @@ literal|null
 condition|?
 name|validatorProvider
 else|:
-operator|new
-name|CompositeValidatorProvider
-argument_list|(
-name|Collections
+name|DefaultValidatorProvider
 operator|.
-expr|<
-name|ValidatorProvider
-operator|>
-name|emptyList
-argument_list|()
-argument_list|)
+name|INSTANCE
 argument_list|)
 argument_list|)
 expr_stmt|;

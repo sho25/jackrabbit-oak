@@ -252,8 +252,9 @@ argument_list|)
 expr_stmt|;
 block|}
 return|return
-operator|new
 name|CompositeHook
+operator|.
+name|compose
 argument_list|(
 name|hooks
 argument_list|)

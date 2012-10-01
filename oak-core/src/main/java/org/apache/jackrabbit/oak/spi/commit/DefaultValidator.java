@@ -80,6 +80,16 @@ name|DefaultValidator
 implements|implements
 name|Validator
 block|{
+specifier|public
+specifier|static
+specifier|final
+name|Validator
+name|INSTANCE
+init|=
+operator|new
+name|DefaultValidator
+argument_list|()
+decl_stmt|;
 annotation|@
 name|Override
 specifier|public
