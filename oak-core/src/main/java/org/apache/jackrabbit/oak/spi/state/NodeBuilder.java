@@ -108,8 +108,10 @@ argument_list|>
 name|getChildNodeNames
 parameter_list|()
 function_decl|;
-comment|/**      * Add a sub-tree      *      * @param name  name child node containing the sub-tree      * @param nodeState  sub-tree      */
-name|void
+comment|/**      * Adds or replaces a sub-ree.      *      * @param name name of the child node containing the new subtree      * @param nodeState subtree      * @return this builder      */
+annotation|@
+name|Nonnull
+name|NodeBuilder
 name|setNode
 parameter_list|(
 name|String
@@ -121,8 +123,10 @@ name|NodeState
 name|nodeState
 parameter_list|)
 function_decl|;
-comment|/**      * Remove a child node. This method has no effect if a      * property of the given {@code name} does not exist.      * @param name  name of the child node      */
-name|void
+comment|/**      * Remove a child node. This method has no effect if a      * property of the given {@code name} does not exist.      *      * @param name  name of the child node      * @return this builder      */
+annotation|@
+name|Nonnull
+name|NodeBuilder
 name|removeNode
 parameter_list|(
 name|String
@@ -152,8 +156,10 @@ name|String
 name|name
 parameter_list|)
 function_decl|;
-comment|/**      * Set a property.      *      * @param name property name      * @param value      */
-name|void
+comment|/**      * Set a property.      *      * @param name property name      * @param value      * @return this builder      */
+annotation|@
+name|Nonnull
+name|NodeBuilder
 name|setProperty
 parameter_list|(
 name|String
@@ -165,8 +171,10 @@ name|CoreValue
 name|value
 parameter_list|)
 function_decl|;
-comment|/**      * Set a property.      *      * @param name property name      * @param values      */
-name|void
+comment|/**      * Set a property.      *      * @param name property name      * @param values      * @return this builder      */
+annotation|@
+name|Nonnull
+name|NodeBuilder
 name|setProperty
 parameter_list|(
 name|String
@@ -181,8 +189,10 @@ argument_list|>
 name|values
 parameter_list|)
 function_decl|;
-comment|/**      * Remove the named property. This method has no effect if a      * property of the given {@code name} does not exist.      * @param name  name of the property      */
-name|void
+comment|/**      * Remove the named property. This method has no effect if a      * property of the given {@code name} does not exist.      *      * @param name  name of the property      * @return this builder      */
+annotation|@
+name|Nonnull
+name|NodeBuilder
 name|removeProperty
 parameter_list|(
 name|String

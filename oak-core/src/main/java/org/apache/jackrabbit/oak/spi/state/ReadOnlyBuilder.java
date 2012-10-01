@@ -31,6 +31,16 @@ end_import
 
 begin_import
 import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|Nonnull
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -167,8 +177,10 @@ return|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Nonnull
 specifier|public
-name|void
+name|NodeBuilder
 name|setNode
 parameter_list|(
 name|String
@@ -185,8 +197,10 @@ throw|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Nonnull
 specifier|public
-name|void
+name|NodeBuilder
 name|removeNode
 parameter_list|(
 name|String
@@ -252,8 +266,10 @@ return|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Nonnull
 specifier|public
-name|void
+name|NodeBuilder
 name|setProperty
 parameter_list|(
 name|String
@@ -270,8 +286,10 @@ throw|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Nonnull
 specifier|public
-name|void
+name|NodeBuilder
 name|setProperty
 parameter_list|(
 name|String
@@ -291,8 +309,10 @@ throw|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Nonnull
 specifier|public
-name|void
+name|NodeBuilder
 name|removeProperty
 parameter_list|(
 name|String
