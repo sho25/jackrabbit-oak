@@ -284,6 +284,13 @@ operator|.
 name|readString
 argument_list|()
 decl_stmt|;
+name|tokenizer
+operator|.
+name|read
+argument_list|(
+literal|':'
+argument_list|)
+expr_stmt|;
 name|String
 name|path
 init|=
@@ -296,13 +303,6 @@ argument_list|,
 name|subPath
 argument_list|)
 decl_stmt|;
-name|tokenizer
-operator|.
-name|read
-argument_list|(
-literal|':'
-argument_list|)
-expr_stmt|;
 if|if
 condition|(
 name|tokenizer
@@ -406,7 +406,8 @@ literal|'{'
 argument_list|)
 condition|)
 block|{
-comment|// parse a nested node
+comment|// Nested node.
+comment|// Reset to last pos as parseOpAdded expected the whole JSON.
 name|tokenizer
 operator|.
 name|setPos
@@ -414,7 +415,6 @@ argument_list|(
 name|pos
 argument_list|)
 expr_stmt|;
-comment|// resetting to last post b/c parseOpAdded expects the whole json
 name|tokenizer
 operator|.
 name|read
@@ -428,7 +428,7 @@ expr_stmt|;
 block|}
 else|else
 block|{
-comment|// parse property
+comment|// Property.
 name|String
 name|valueAsString
 init|=
@@ -482,6 +482,80 @@ argument_list|)
 expr_stmt|;
 comment|// explicitly close the bracket
 block|}
+block|}
+else|else
+block|{
+comment|// Property.
+name|String
+name|parentPath
+init|=
+name|PathUtils
+operator|.
+name|denotesRoot
+argument_list|(
+name|path
+argument_list|)
+condition|?
+literal|""
+else|:
+name|PathUtils
+operator|.
+name|getParentPath
+argument_list|(
+name|path
+argument_list|)
+decl_stmt|;
+name|String
+name|propName
+init|=
+name|PathUtils
+operator|.
+name|denotesRoot
+argument_list|(
+name|path
+argument_list|)
+condition|?
+literal|"/"
+else|:
+name|PathUtils
+operator|.
+name|getName
+argument_list|(
+name|path
+argument_list|)
+decl_stmt|;
+name|String
+name|valueAsString
+init|=
+name|tokenizer
+operator|.
+name|readRawValue
+argument_list|()
+operator|.
+name|trim
+argument_list|()
+decl_stmt|;
+name|Object
+name|value
+init|=
+name|JsonUtil
+operator|.
+name|convertJsonValue
+argument_list|(
+name|valueAsString
+argument_list|)
+decl_stmt|;
+name|defaultHandler
+operator|.
+name|propertyAdded
+argument_list|(
+name|parentPath
+argument_list|,
+name|propName
+argument_list|,
+name|value
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 specifier|private

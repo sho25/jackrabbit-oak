@@ -157,7 +157,7 @@ specifier|final
 name|String
 name|INITIAL_COMMIT_DIFF
 init|=
-literal|"+/ : {}"
+literal|"+\"/\" : {}"
 decl_stmt|;
 specifier|public
 specifier|static

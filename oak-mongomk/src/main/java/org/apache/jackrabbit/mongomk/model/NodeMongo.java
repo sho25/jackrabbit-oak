@@ -906,11 +906,9 @@ return|;
 block|}
 block|}
 return|return
-name|addedChildExists
-argument_list|(
-name|childName
-argument_list|)
+literal|false
 return|;
+comment|//return addedChildExists(childName);
 block|}
 specifier|private
 name|boolean
