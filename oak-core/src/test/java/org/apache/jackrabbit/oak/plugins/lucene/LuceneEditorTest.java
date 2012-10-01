@@ -482,8 +482,6 @@ name|query
 argument_list|(
 name|filter
 argument_list|,
-literal|null
-argument_list|,
 name|store
 operator|.
 name|getRoot

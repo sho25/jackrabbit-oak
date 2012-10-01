@@ -154,7 +154,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * An index that stores the index data in a {@code MicroKernel}.  */
+comment|/**  * An index that stores the index data in a {@code MicroKernel}.  *   * @deprecated the revisionId info has been removed  */
 end_comment
 
 begin_class
@@ -316,9 +316,6 @@ parameter_list|(
 name|Filter
 name|filter
 parameter_list|,
-name|String
-name|revisionId
-parameter_list|,
 name|NodeState
 name|root
 parameter_list|)
@@ -380,6 +377,12 @@ name|first
 operator|.
 name|toString
 argument_list|()
+decl_stmt|;
+comment|// TODO revisit code after the removal of revisionId
+name|String
+name|revisionId
+init|=
+literal|""
 decl_stmt|;
 name|Iterator
 argument_list|<

@@ -609,8 +609,6 @@ name|QueryEngineImpl
 argument_list|(
 name|nodeStore
 argument_list|,
-name|microKernel
-argument_list|,
 name|qip
 argument_list|)
 expr_stmt|;

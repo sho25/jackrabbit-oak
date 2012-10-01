@@ -683,9 +683,6 @@ parameter_list|(
 name|Filter
 name|filter
 parameter_list|,
-name|String
-name|revisionId
-parameter_list|,
 name|NodeState
 name|root
 parameter_list|)

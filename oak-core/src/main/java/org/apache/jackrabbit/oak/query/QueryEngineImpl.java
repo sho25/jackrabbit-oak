@@ -77,22 +77,6 @@ name|apache
 operator|.
 name|jackrabbit
 operator|.
-name|mk
-operator|.
-name|api
-operator|.
-name|MicroKernel
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
 name|oak
 operator|.
 name|api
@@ -179,7 +163,7 @@ name|query
 operator|.
 name|index
 operator|.
-name|FilterImpl
+name|TraversingIndex
 import|;
 end_import
 
@@ -193,11 +177,11 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
+name|spi
+operator|.
 name|query
 operator|.
-name|index
-operator|.
-name|TraversingIndex
+name|Filter
 import|;
 end_import
 
@@ -299,11 +283,6 @@ name|store
 decl_stmt|;
 specifier|private
 specifier|final
-name|MicroKernel
-name|mk
-decl_stmt|;
-specifier|private
-specifier|final
 name|CoreValueFactory
 name|vf
 decl_stmt|;
@@ -318,9 +297,6 @@ parameter_list|(
 name|NodeStore
 name|store
 parameter_list|,
-name|MicroKernel
-name|mk
-parameter_list|,
 name|QueryIndexProvider
 name|indexProvider
 parameter_list|)
@@ -330,12 +306,6 @@ operator|.
 name|store
 operator|=
 name|store
-expr_stmt|;
-name|this
-operator|.
-name|mk
-operator|=
-name|mk
 expr_stmt|;
 name|this
 operator|.
@@ -673,13 +643,6 @@ argument_list|(
 name|offset
 argument_list|)
 expr_stmt|;
-name|q
-operator|.
-name|setMicroKernel
-argument_list|(
-name|mk
-argument_list|)
-expr_stmt|;
 if|if
 condition|(
 name|bindings
@@ -734,23 +697,11 @@ operator|.
 name|prepare
 argument_list|()
 expr_stmt|;
-comment|// TODO which revision to use? Root does not provide this info
-comment|// TODO which node state to use? it should come from the Root
-name|String
-name|revision
-init|=
-name|mk
-operator|.
-name|getHeadRevision
-argument_list|()
-decl_stmt|;
 return|return
 name|q
 operator|.
 name|executeQuery
 argument_list|(
-name|revision
-argument_list|,
 name|store
 operator|.
 name|getRoot
@@ -762,7 +713,7 @@ specifier|public
 name|QueryIndex
 name|getBestIndex
 parameter_list|(
-name|FilterImpl
+name|Filter
 name|filter
 parameter_list|)
 block|{

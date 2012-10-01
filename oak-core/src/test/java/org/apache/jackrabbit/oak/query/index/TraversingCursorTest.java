@@ -398,8 +398,6 @@ name|query
 argument_list|(
 name|f
 argument_list|,
-name|head
-argument_list|,
 operator|new
 name|KernelNodeState
 argument_list|(
@@ -503,8 +501,6 @@ operator|.
 name|query
 argument_list|(
 name|f
-argument_list|,
-name|head
 argument_list|,
 operator|new
 name|KernelNodeState

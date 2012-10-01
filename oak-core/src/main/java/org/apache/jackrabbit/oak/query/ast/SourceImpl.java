@@ -37,22 +37,6 @@ name|apache
 operator|.
 name|jackrabbit
 operator|.
-name|mk
-operator|.
-name|api
-operator|.
-name|MicroKernel
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
 name|oak
 operator|.
 name|query
@@ -255,25 +239,19 @@ name|String
 name|getPlan
 parameter_list|()
 function_decl|;
-comment|/**      * Prepare executing the query. This method will decide which index to use.      *      * @param mk the MicroKernel      */
+comment|/**      * Prepare executing the query. This method will decide which index to use.      *      */
 specifier|public
 specifier|abstract
 name|void
 name|prepare
-parameter_list|(
-name|MicroKernel
-name|mk
-parameter_list|)
+parameter_list|()
 function_decl|;
-comment|/**      * Execute the query. The current node is set to before the first row.      *      * @param revisionId the revision to use      * @param root root state of the given revision      */
+comment|/**      * Execute the query. The current node is set to before the first row.      *      * @param root root state of the given revision      */
 specifier|public
 specifier|abstract
 name|void
 name|execute
 parameter_list|(
-name|String
-name|revisionId
-parameter_list|,
 name|NodeState
 name|root
 parameter_list|)

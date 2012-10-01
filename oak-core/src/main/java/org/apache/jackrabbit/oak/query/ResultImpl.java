@@ -141,11 +141,6 @@ name|query
 decl_stmt|;
 specifier|protected
 specifier|final
-name|String
-name|revisionId
-decl_stmt|;
-specifier|protected
-specifier|final
 name|NodeState
 name|root
 decl_stmt|;
@@ -153,9 +148,6 @@ name|ResultImpl
 parameter_list|(
 name|Query
 name|query
-parameter_list|,
-name|String
-name|revisionId
 parameter_list|,
 name|NodeState
 name|root
@@ -166,12 +158,6 @@ operator|.
 name|query
 operator|=
 name|query
-expr_stmt|;
-name|this
-operator|.
-name|revisionId
-operator|=
-name|revisionId
 expr_stmt|;
 name|this
 operator|.
@@ -349,8 +335,6 @@ name|query
 operator|.
 name|getRows
 argument_list|(
-name|revisionId
-argument_list|,
 name|root
 argument_list|)
 return|;
