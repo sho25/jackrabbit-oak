@@ -343,6 +343,14 @@ argument_list|(
 name|pi
 argument_list|)
 decl_stmt|;
+name|createDefaultKernelTracker
+argument_list|()
+operator|.
+name|available
+argument_list|(
+name|mk
+argument_list|)
+expr_stmt|;
 return|return
 operator|new
 name|ContentRepositoryImpl
