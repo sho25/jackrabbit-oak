@@ -479,6 +479,10 @@ name|MicroKernelImpl
 argument_list|()
 argument_list|,
 operator|new
+name|LoginContextProviderImpl
+argument_list|()
+argument_list|,
+operator|new
 name|CompositeQueryIndexProvider
 argument_list|()
 argument_list|,
@@ -503,6 +507,10 @@ block|{
 name|this
 argument_list|(
 name|microKernel
+argument_list|,
+operator|new
+name|LoginContextProviderImpl
+argument_list|()
 argument_list|,
 name|indexProvider
 argument_list|,
@@ -542,12 +550,15 @@ name|validatorProvider
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Creates an Oak repository instance based on the given, already      * initialized components.      *      * @param microKernel underlying kernel instance      * @param indexProvider index provider      * @param commitHook the commit hook      */
+comment|/**      * Creates an Oak repository instance based on the given, already      * initialized components.      *      * @param microKernel underlying kernel instance      * @param loginContextProvider login context provider      * @param indexProvider index provider      * @param commitHook the commit hook      */
 specifier|public
 name|ContentRepositoryImpl
 parameter_list|(
 name|MicroKernel
 name|microKernel
+parameter_list|,
+name|LoginContextProvider
+name|loginContextProvider
 parameter_list|,
 name|QueryIndexProvider
 name|indexProvider
@@ -594,14 +605,11 @@ argument_list|,
 name|qip
 argument_list|)
 expr_stmt|;
-comment|// TODO: use configurable context provider
+name|this
+operator|.
 name|loginContextProvider
 operator|=
-operator|new
-name|LoginContextProviderImpl
-argument_list|(
-name|this
-argument_list|)
+name|loginContextProvider
 expr_stmt|;
 block|}
 annotation|@

@@ -29,22 +29,6 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|api
-operator|.
-name|ContentRepository
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
 name|security
 operator|.
 name|principal
@@ -233,10 +217,7 @@ name|principalProvider
 decl_stmt|;
 specifier|public
 name|LoginContextProviderImpl
-parameter_list|(
-name|ContentRepository
-name|repository
-parameter_list|)
+parameter_list|()
 block|{
 comment|// TODO: use configurable authentication config and principal provider
 name|authConfig

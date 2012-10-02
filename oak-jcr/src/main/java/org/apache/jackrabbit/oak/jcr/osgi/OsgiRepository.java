@@ -71,9 +71,7 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|api
-operator|.
-name|ContentRepository
+name|Oak
 import|;
 end_import
 
@@ -87,9 +85,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|core
+name|api
 operator|.
-name|ContentRepositoryImpl
+name|ContentRepository
 import|;
 end_import
 
@@ -153,6 +151,8 @@ parameter_list|)
 throws|throws
 name|RepositoryException
 block|{
+comment|// TODO: The context class loader hack below shouldn't be needed
+comment|// with a properly OSGi-compatible JAAS implementation
 name|Thread
 name|thread
 init|=
@@ -175,7 +175,7 @@ name|thread
 operator|.
 name|setContextClassLoader
 argument_list|(
-name|ContentRepositoryImpl
+name|Oak
 operator|.
 name|class
 operator|.
