@@ -155,6 +155,19 @@ operator|.
 name|getName
 argument_list|()
 decl_stmt|;
+comment|// ignore jcr:primaryType
+if|if
+condition|(
+name|prefix
+operator|.
+name|equals
+argument_list|(
+literal|"jcr:primaryType"
+argument_list|)
+condition|)
+block|{
+return|return;
+block|}
 if|if
 condition|(
 name|map
