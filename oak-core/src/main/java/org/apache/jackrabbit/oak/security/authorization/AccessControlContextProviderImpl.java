@@ -13,8 +13,6 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|spi
-operator|.
 name|security
 operator|.
 name|authorization
@@ -23,40 +21,87 @@ end_package
 
 begin_import
 import|import
-name|java
+name|javax
 operator|.
 name|security
 operator|.
-name|Principal
+name|auth
+operator|.
+name|Subject
 import|;
 end_import
 
 begin_import
 import|import
-name|java
+name|org
 operator|.
-name|util
+name|apache
 operator|.
-name|Set
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|security
+operator|.
+name|authorization
+operator|.
+name|AccessControlContext
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|security
+operator|.
+name|authorization
+operator|.
+name|AccessControlContextProvider
 import|;
 end_import
 
 begin_comment
-comment|/**  * PermissionProvider... TODO  */
+comment|/**  *<code>AccessControlContextProviderImpl</code> is a default implementation and  * creates {@link AccessControlContextImpl} for a given set of principals.  */
 end_comment
 
-begin_interface
+begin_class
 specifier|public
-interface|interface
-name|AccessControlContext
+class|class
+name|AccessControlContextProviderImpl
+implements|implements
+name|AccessControlContextProvider
 block|{
-comment|// TODO define how permissions eval is bound to a particular revision/branch. (passing Tree?)
-name|CompiledPermissions
-name|getPermissions
-parameter_list|()
-function_decl|;
+annotation|@
+name|Override
+specifier|public
+name|AccessControlContext
+name|createAccessControlContext
+parameter_list|(
+name|Subject
+name|subject
+parameter_list|)
+block|{
+return|return
+operator|new
+name|AccessControlContextImpl
+argument_list|(
+name|subject
+argument_list|)
+return|;
 block|}
-end_interface
+block|}
+end_class
 
 end_unit
 

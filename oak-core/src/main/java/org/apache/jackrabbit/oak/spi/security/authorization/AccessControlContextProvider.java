@@ -41,19 +41,34 @@ name|Set
 import|;
 end_import
 
+begin_import
+import|import
+name|javax
+operator|.
+name|security
+operator|.
+name|auth
+operator|.
+name|Subject
+import|;
+end_import
+
 begin_comment
-comment|/**  * PermissionProvider... TODO  */
+comment|/**  *<code>AccessControlContextProvider</code>...  */
 end_comment
 
 begin_interface
 specifier|public
 interface|interface
-name|AccessControlContext
+name|AccessControlContextProvider
 block|{
-comment|// TODO define how permissions eval is bound to a particular revision/branch. (passing Tree?)
-name|CompiledPermissions
-name|getPermissions
-parameter_list|()
+specifier|public
+name|AccessControlContext
+name|createAccessControlContext
+parameter_list|(
+name|Subject
+name|subject
+parameter_list|)
 function_decl|;
 block|}
 end_interface
