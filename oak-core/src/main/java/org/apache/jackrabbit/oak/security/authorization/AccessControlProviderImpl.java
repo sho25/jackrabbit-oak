@@ -120,7 +120,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *<code>AccessControlContextProviderImpl</code> is a default implementation and  * creates {@link AccessControlContextImpl} for a given set of principals.  */
+comment|/**  * {@code AccessControlProviderImpl} is a default implementation and  * creates {@link AccessControlContextImpl} for a given set of principals.  */
 end_comment
 
 begin_class
