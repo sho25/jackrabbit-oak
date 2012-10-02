@@ -98,6 +98,10 @@ name|String
 name|getPath
 parameter_list|()
 function_decl|;
+name|String
+name|getNodeType
+parameter_list|()
+function_decl|;
 comment|/**      * A restriction for a property.      */
 class|class
 name|PropertyRestriction

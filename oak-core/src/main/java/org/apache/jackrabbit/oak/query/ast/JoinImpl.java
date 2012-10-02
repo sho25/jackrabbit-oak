@@ -194,13 +194,18 @@ name|Override
 specifier|public
 name|String
 name|getPlan
-parameter_list|()
+parameter_list|(
+name|NodeState
+name|root
+parameter_list|)
 block|{
 return|return
 name|left
 operator|.
 name|getPlan
-argument_list|()
+argument_list|(
+name|root
+argument_list|)
 operator|+
 literal|' '
 operator|+
@@ -211,7 +216,9 @@ operator|+
 name|right
 operator|.
 name|getPlan
-argument_list|()
+argument_list|(
+name|root
+argument_list|)
 operator|+
 literal|" on "
 operator|+

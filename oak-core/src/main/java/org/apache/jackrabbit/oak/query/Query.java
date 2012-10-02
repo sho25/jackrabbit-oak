@@ -1740,7 +1740,9 @@ init|=
 name|source
 operator|.
 name|getPlan
-argument_list|()
+argument_list|(
+name|root
+argument_list|)
 decl_stmt|;
 name|columns
 operator|=

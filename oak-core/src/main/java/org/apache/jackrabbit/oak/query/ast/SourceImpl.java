@@ -237,7 +237,10 @@ specifier|public
 specifier|abstract
 name|String
 name|getPlan
-parameter_list|()
+parameter_list|(
+name|NodeState
+name|root
+parameter_list|)
 function_decl|;
 comment|/**      * Prepare executing the query. This method will decide which index to use.      *      */
 specifier|public
