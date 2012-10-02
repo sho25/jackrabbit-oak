@@ -9,8 +9,6 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|jcr
-operator|.
 name|security
 operator|.
 name|user

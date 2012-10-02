@@ -185,6 +185,22 @@ name|oak
 operator|.
 name|security
 operator|.
+name|SecurityProviderImpl
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|security
+operator|.
 name|authentication
 operator|.
 name|LoginContextProviderImpl
@@ -205,7 +221,7 @@ name|security
 operator|.
 name|authorization
 operator|.
-name|AccessControlContextProviderImpl
+name|AccessControlProviderImpl
 import|;
 end_import
 
@@ -367,6 +383,24 @@ name|spi
 operator|.
 name|security
 operator|.
+name|SecurityProvider
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|security
+operator|.
 name|authentication
 operator|.
 name|LoginContextProvider
@@ -389,7 +423,7 @@ name|security
 operator|.
 name|authorization
 operator|.
-name|AccessControlContextProvider
+name|AccessControlProvider
 import|;
 end_import
 
@@ -466,7 +500,7 @@ name|loginContextProvider
 decl_stmt|;
 specifier|private
 specifier|final
-name|AccessControlContextProvider
+name|AccessControlProvider
 name|accProvider
 decl_stmt|;
 specifier|private
@@ -506,7 +540,7 @@ name|MicroKernelImpl
 argument_list|()
 argument_list|,
 operator|new
-name|LoginContextProviderImpl
+name|SecurityProviderImpl
 argument_list|()
 argument_list|,
 operator|new
@@ -536,7 +570,7 @@ argument_list|(
 name|microKernel
 argument_list|,
 operator|new
-name|LoginContextProviderImpl
+name|SecurityProviderImpl
 argument_list|()
 argument_list|,
 name|indexProvider
@@ -577,15 +611,15 @@ name|validatorProvider
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Creates an Oak repository instance based on the given, already      * initialized components.      *      * @param microKernel underlying kernel instance      * @param loginContextProvider login context provider      * @param indexProvider index provider      * @param commitHook the commit hook      */
+comment|/**      * Creates an Oak repository instance based on the given, already      * initialized components.      *      * @param microKernel underlying kernel instance      * @param securityProvider security provider      * @param indexProvider index provider      * @param commitHook the commit hook      */
 specifier|public
 name|ContentRepositoryImpl
 parameter_list|(
 name|MicroKernel
 name|microKernel
 parameter_list|,
-name|LoginContextProvider
-name|loginContextProvider
+name|SecurityProvider
+name|securityProvider
 parameter_list|,
 name|QueryIndexProvider
 name|indexProvider
@@ -602,13 +636,11 @@ name|indexProvider
 argument_list|,
 name|commitHook
 argument_list|,
-name|loginContextProvider
-argument_list|,
-literal|null
+name|securityProvider
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Creates an Oak repository instance based on the given, already      * initialized components.      *      * @param microKernel   underlying kernel instance      * @param indexProvider index provider      * @param commitHook    the commit hook      * @param lcProvider    the login context provider or<code>null</code> if a      *                      default implementation should be used.      * @param accProvider   the access control context provider or      *<code>null</code> if a default implementation should      *                      be used.      */
+comment|/**      * Creates an Oak repository instance based on the given, already      * initialized components.      *      * @param microKernel   underlying kernel instance      * @param indexProvider index provider      * @param commitHook    the commit hook      * @param securityProvider The configured security provider or {@code null} if      * default implementations should be used.      */
 specifier|public
 name|ContentRepositoryImpl
 parameter_list|(
@@ -621,11 +653,8 @@ parameter_list|,
 name|CommitHook
 name|commitHook
 parameter_list|,
-name|LoginContextProvider
-name|lcProvider
-parameter_list|,
-name|AccessControlContextProvider
-name|accProvider
+name|SecurityProvider
+name|securityProvider
 parameter_list|)
 block|{
 name|nodeStore
@@ -659,7 +688,7 @@ argument_list|()
 expr_stmt|;
 if|if
 condition|(
-name|lcProvider
+name|securityProvider
 operator|!=
 literal|null
 condition|)
@@ -668,7 +697,19 @@ name|this
 operator|.
 name|loginContextProvider
 operator|=
-name|lcProvider
+name|securityProvider
+operator|.
+name|getLoginContextProvider
+argument_list|()
+expr_stmt|;
+name|this
+operator|.
+name|accProvider
+operator|=
+name|securityProvider
+operator|.
+name|getAccessControlProvider
+argument_list|()
 expr_stmt|;
 block|}
 else|else
@@ -682,30 +723,12 @@ operator|new
 name|LoginContextProviderImpl
 argument_list|()
 expr_stmt|;
-block|}
-if|if
-condition|(
-name|accProvider
-operator|!=
-literal|null
-condition|)
-block|{
-name|this
-operator|.
-name|accProvider
-operator|=
-name|accProvider
-expr_stmt|;
-block|}
-else|else
-block|{
-comment|// use default implementation
 name|this
 operator|.
 name|accProvider
 operator|=
 operator|new
-name|AccessControlContextProviderImpl
+name|AccessControlProviderImpl
 argument_list|()
 expr_stmt|;
 block|}

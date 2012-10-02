@@ -179,7 +179,7 @@ name|security
 operator|.
 name|authorization
 operator|.
-name|AccessControlContextProviderImpl
+name|AccessControlProviderImpl
 import|;
 end_import
 
@@ -427,7 +427,7 @@ name|Subject
 argument_list|()
 argument_list|,
 operator|new
-name|AccessControlContextProviderImpl
+name|AccessControlProviderImpl
 argument_list|()
 argument_list|,
 operator|new

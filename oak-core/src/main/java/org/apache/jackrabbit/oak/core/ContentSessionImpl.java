@@ -191,7 +191,7 @@ name|security
 operator|.
 name|authorization
 operator|.
-name|AccessControlContextProvider
+name|AccessControlProvider
 import|;
 end_import
 
@@ -265,7 +265,7 @@ name|loginContext
 decl_stmt|;
 specifier|private
 specifier|final
-name|AccessControlContextProvider
+name|AccessControlProvider
 name|accProvider
 decl_stmt|;
 specifier|private
@@ -294,7 +294,7 @@ parameter_list|(
 name|LoginContext
 name|loginContext
 parameter_list|,
-name|AccessControlContextProvider
+name|AccessControlProvider
 name|accProvider
 parameter_list|,
 name|String

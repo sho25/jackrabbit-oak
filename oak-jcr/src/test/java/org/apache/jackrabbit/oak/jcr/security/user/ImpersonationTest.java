@@ -142,13 +142,13 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * ImpersonationImplTest...  */
+comment|/**  * ImpersonationTest...  */
 end_comment
 
 begin_class
 specifier|public
 class|class
-name|ImpersonationImplTest
+name|ImpersonationTest
 extends|extends
 name|AbstractUserTest
 block|{

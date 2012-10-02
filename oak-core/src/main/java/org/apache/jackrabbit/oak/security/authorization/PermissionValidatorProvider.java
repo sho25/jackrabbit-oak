@@ -31,26 +31,6 @@ end_import
 
 begin_import
 import|import
-name|java
-operator|.
-name|security
-operator|.
-name|Principal
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Set
-import|;
-end_import
-
-begin_import
-import|import
 name|javax
 operator|.
 name|annotation
@@ -177,20 +157,6 @@ name|NodeUtil
 import|;
 end_import
 
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|collect
-operator|.
-name|ImmutableSet
-import|;
-end_import
-
 begin_comment
 comment|/**  * PermissionValidatorProvider... TODO  */
 end_comment
@@ -250,7 +216,7 @@ name|AccessControlContext
 name|context
 init|=
 operator|new
-name|AccessControlContextProviderImpl
+name|AccessControlProviderImpl
 argument_list|()
 operator|.
 name|createAccessControlContext

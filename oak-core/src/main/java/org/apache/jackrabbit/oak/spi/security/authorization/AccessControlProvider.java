@@ -25,19 +25,9 @@ begin_import
 import|import
 name|java
 operator|.
-name|security
-operator|.
-name|Principal
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
 name|util
 operator|.
-name|Set
+name|List
 import|;
 end_import
 
@@ -53,14 +43,32 @@ name|Subject
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|commit
+operator|.
+name|ValidatorProvider
+import|;
+end_import
+
 begin_comment
-comment|/**  *<code>AccessControlContextProvider</code>...  */
+comment|/**  * {@code AccessControlContextProvider}...  */
 end_comment
 
 begin_interface
 specifier|public
 interface|interface
-name|AccessControlContextProvider
+name|AccessControlProvider
 block|{
 specifier|public
 name|AccessControlContext
@@ -69,6 +77,14 @@ parameter_list|(
 name|Subject
 name|subject
 parameter_list|)
+function_decl|;
+specifier|public
+name|List
+argument_list|<
+name|ValidatorProvider
+argument_list|>
+name|getValidatorProviders
+parameter_list|()
 function_decl|;
 block|}
 end_interface

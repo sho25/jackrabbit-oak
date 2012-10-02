@@ -188,13 +188,13 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * GroupImplTest...  */
+comment|/**  * GroupTest...  */
 end_comment
 
 begin_class
 specifier|public
 class|class
-name|GroupImplTest
+name|GroupTest
 extends|extends
 name|AbstractUserTest
 block|{

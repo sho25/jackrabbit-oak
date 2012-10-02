@@ -13,8 +13,6 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|jcr
-operator|.
 name|security
 operator|.
 name|user
@@ -267,7 +265,7 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|jcr
+name|spi
 operator|.
 name|security
 operator|.

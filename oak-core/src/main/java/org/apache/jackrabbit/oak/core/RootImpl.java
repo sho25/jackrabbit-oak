@@ -245,7 +245,7 @@ name|security
 operator|.
 name|authorization
 operator|.
-name|AccessControlContextProvider
+name|AccessControlProvider
 import|;
 end_import
 
@@ -491,7 +491,7 @@ decl_stmt|;
 comment|/**      * The access control context provider.      */
 specifier|private
 specifier|final
-name|AccessControlContextProvider
+name|AccessControlProvider
 name|accProvider
 decl_stmt|;
 comment|/** Current branch this root operates on */
@@ -566,7 +566,7 @@ parameter_list|,
 name|Subject
 name|subject
 parameter_list|,
-name|AccessControlContextProvider
+name|AccessControlProvider
 name|accProvider
 parameter_list|,
 name|QueryIndexProvider

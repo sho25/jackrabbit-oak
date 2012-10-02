@@ -100,23 +100,6 @@ name|DEFAULT_DEPTH
 init|=
 literal|2
 decl_stmt|;
-name|int
-name|SEARCH_TYPE_USER
-init|=
-literal|1
-decl_stmt|;
-comment|/**      * Filter flag indicating that only<code>Group</code>s should be searched      * and returned.      */
-name|int
-name|SEARCH_TYPE_GROUP
-init|=
-literal|2
-decl_stmt|;
-comment|/**      * Filter flag indicating that all<code>Authorizable</code>s should be      * searched.      */
-name|int
-name|SEARCH_TYPE_AUTHORIZABLE
-init|=
-literal|3
-decl_stmt|;
 block|}
 end_interface
 
