@@ -84,11 +84,10 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * AccessControlValidatorProvider... TODO  */
+comment|/**  * {@code AccessControlValidatorProvider} aimed to provide a root validator  * that makes sure access control related content modifications (adding, modifying  * and removing access control policies) are valid according to the  * constraints defined by this access control implementation.  */
 end_comment
 
 begin_class
-specifier|public
 class|class
 name|AccessControlValidatorProvider
 implements|implements
