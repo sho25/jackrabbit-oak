@@ -737,7 +737,10 @@ expr_stmt|;
 name|Result
 name|result
 init|=
-name|queryEngine
+name|root
+operator|.
+name|getQueryEngine
+argument_list|()
 operator|.
 name|executeQuery
 argument_list|(

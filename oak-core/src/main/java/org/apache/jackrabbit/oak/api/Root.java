@@ -117,6 +117,13 @@ name|ChangeExtractor
 name|getChangeExtractor
 parameter_list|()
 function_decl|;
+comment|/**      * Get the query engine.      *       * @return the query engine      */
+annotation|@
+name|Nonnull
+name|SessionQueryEngine
+name|getQueryEngine
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 

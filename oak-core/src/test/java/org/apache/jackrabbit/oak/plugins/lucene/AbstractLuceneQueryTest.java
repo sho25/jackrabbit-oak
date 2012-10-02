@@ -394,7 +394,7 @@ argument_list|()
 expr_stmt|;
 name|qe
 operator|=
-name|session
+name|root
 operator|.
 name|getQueryEngine
 argument_list|()

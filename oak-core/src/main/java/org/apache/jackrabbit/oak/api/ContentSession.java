@@ -67,13 +67,6 @@ name|Root
 name|getLatestRoot
 parameter_list|()
 function_decl|;
-comment|/**      * Get the query engine.      *      * @return the query engine      */
-annotation|@
-name|Nonnull
-name|SessionQueryEngine
-name|getQueryEngine
-parameter_list|()
-function_decl|;
 comment|/**      * Returns the internal value factory.      *      * @return the internal value factory.      */
 annotation|@
 name|Nonnull
