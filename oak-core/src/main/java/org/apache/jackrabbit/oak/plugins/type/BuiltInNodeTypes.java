@@ -190,10 +190,6 @@ name|registerBuiltinNodeTypes
 parameter_list|()
 block|{
 comment|// FIXME: migrate custom node types as well.
-comment|// FIXME: registration of built-in node types should be moved to repo-setup
-comment|//        as the jcr:nodetypes tree is protected and the editing session may
-comment|//        not have sufficient permission to register node types or may
-comment|//        even have limited read-permission on the jcr:nodetypes path.
 if|if
 condition|(
 operator|!
