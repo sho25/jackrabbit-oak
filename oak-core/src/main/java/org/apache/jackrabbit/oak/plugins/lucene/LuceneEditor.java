@@ -586,11 +586,8 @@ block|}
 block|}
 specifier|private
 specifier|final
-name|Iterable
-argument_list|<
-name|String
-argument_list|>
-name|path
+name|IndexDefinition
+name|index
 decl_stmt|;
 specifier|public
 name|LuceneEditor
@@ -601,15 +598,9 @@ parameter_list|)
 block|{
 name|this
 operator|.
-name|path
+name|index
 operator|=
-name|elements
-argument_list|(
 name|indexDefinition
-operator|.
-name|getPath
-argument_list|()
-argument_list|)
 expr_stmt|;
 block|}
 comment|/*      *       * If before is null, then the #processCommit call is treated as a full      * reindex call      */
@@ -646,7 +637,13 @@ control|(
 name|String
 name|name
 range|:
-name|path
+name|elements
+argument_list|(
+name|index
+operator|.
+name|getPath
+argument_list|()
+argument_list|)
 control|)
 block|{
 name|builder
