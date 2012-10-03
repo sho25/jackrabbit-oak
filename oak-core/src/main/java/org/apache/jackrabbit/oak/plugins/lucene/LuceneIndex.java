@@ -1463,6 +1463,23 @@ literal|"*"
 argument_list|)
 condition|)
 block|{
+comment|// remove trailing "*" for prefixquery
+name|first
+operator|=
+name|first
+operator|.
+name|substring
+argument_list|(
+literal|0
+argument_list|,
+name|first
+operator|.
+name|length
+argument_list|()
+operator|-
+literal|1
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|JCR_PATH
