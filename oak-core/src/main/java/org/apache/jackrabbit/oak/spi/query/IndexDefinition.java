@@ -58,6 +58,11 @@ name|UNIQUE_PROPERTY_NAME
 init|=
 literal|"unique"
 decl_stmt|;
+name|String
+name|INDEX_DATA_CHILD_NAME
+init|=
+literal|":data"
+decl_stmt|;
 comment|/**      * Get the unique index name. This is also the name of the index node.      *       * @return the index name      */
 annotation|@
 name|Nonnull

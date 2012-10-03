@@ -116,6 +116,26 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|query
+operator|.
+name|IndexDefinition
+operator|.
+name|INDEX_DATA_CHILD_NAME
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -639,6 +659,15 @@ name|name
 argument_list|)
 expr_stmt|;
 block|}
+name|builder
+operator|=
+name|builder
+operator|.
+name|getChildBuilder
+argument_list|(
+name|INDEX_DATA_CHILD_NAME
+argument_list|)
+expr_stmt|;
 name|Directory
 name|directory
 init|=
@@ -646,11 +675,6 @@ operator|new
 name|ReadWriteOakDirectory
 argument_list|(
 name|builder
-operator|.
-name|getChildBuilder
-argument_list|(
-name|INDEX_DATA_CHILD_NAME
-argument_list|)
 argument_list|)
 decl_stmt|;
 try|try

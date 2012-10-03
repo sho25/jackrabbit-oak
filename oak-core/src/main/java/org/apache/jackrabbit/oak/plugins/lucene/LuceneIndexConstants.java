@@ -35,11 +35,6 @@ init|=
 literal|"default-lucene"
 decl_stmt|;
 name|String
-name|INDEX_DATA_CHILD_NAME
-init|=
-literal|":data"
-decl_stmt|;
-name|String
 name|INDEX_UPDATE
 init|=
 literal|"indexUpdate"
