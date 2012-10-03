@@ -1910,11 +1910,19 @@ parameter_list|)
 throws|throws
 name|RepositoryException
 block|{
+comment|// TODO remove empty name check once OAK-359 is done
 if|if
 condition|(
 name|NodeTypeConstants
 operator|.
 name|NT_BASE
+operator|.
+name|equals
+argument_list|(
+name|name
+argument_list|)
+operator|||
+literal|""
 operator|.
 name|equals
 argument_list|(
