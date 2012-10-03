@@ -726,15 +726,6 @@ block|{
 comment|// trigger re-indexing
 name|diff
 operator|.
-name|childNodeDeleted
-argument_list|(
-literal|""
-argument_list|,
-name|after
-argument_list|)
-expr_stmt|;
-name|diff
-operator|.
 name|childNodeAdded
 argument_list|(
 literal|""
@@ -1025,8 +1016,13 @@ name|IOException
 block|{
 name|writer
 operator|.
-name|addDocument
+name|updateDocument
 argument_list|(
+name|newPathTerm
+argument_list|(
+name|path
+argument_list|)
+argument_list|,
 name|makeDocument
 argument_list|(
 name|path
