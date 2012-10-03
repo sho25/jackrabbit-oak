@@ -2686,6 +2686,8 @@ name|v
 operator|.
 name|getString
 argument_list|()
+argument_list|,
+literal|true
 argument_list|)
 argument_list|,
 name|PropertyType
@@ -2861,6 +2863,9 @@ name|getOakPath
 parameter_list|(
 name|String
 name|jcrPath
+parameter_list|,
+name|boolean
+name|errorOnInvalidPath
 parameter_list|)
 block|{
 name|NamePathMapper
@@ -2898,6 +2903,16 @@ operator|==
 literal|null
 condition|)
 block|{
+if|if
+condition|(
+operator|!
+name|errorOnInvalidPath
+condition|)
+block|{
+return|return
+literal|null
+return|;
+block|}
 throw|throw
 operator|new
 name|IllegalArgumentException
