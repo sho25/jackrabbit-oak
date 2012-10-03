@@ -352,7 +352,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * MembershipProviderImpl... TODO  */
+comment|/**  * {@code MembershipProvider} implementation storing group membership information  * with the {@code Tree} associated with a given {@link org.apache.jackrabbit.api.security.user.Group}.  * Depending on the configuration there are two variants on how group members  * are recorded:  *  *<h3>Membership stored in multi-valued property</h3>  * This is the default way of storing membership information with the following  * characteristics:  *<ul>  *<li>Multivalued property {@link #REP_MEMBERS}</li>  *<li>Property type: {@link PropertyType#WEAKREFERENCE}</li>  *<li>Used if the config option {@link UserConfig#PARAM_GROUP_MEMBERSHIP_SPLIT_SIZE} is missing or&lt;4</li>  *</ul>  *  *<h3>Membership stored in individual properties</h3>  * Variant to store group membership based on the  * {@link UserConfig#PARAM_GROUP_MEMBERSHIP_SPLIT_SIZE} configuration parameter:  *  *<ul>  *<li>Membership information stored underneath a {@link #REP_MEMBERS} node hierarchy</li>  *<li>Individual member information is stored each in a {@link PropertyType#WEAKREFERENCE}  *     property</li>  *<li>Node hierarchy is split based on the {@link UserConfig#PARAM_GROUP_MEMBERSHIP_SPLIT_SIZE}  *     configuration parameter.</li>  *<li>{@link UserConfig#PARAM_GROUP_MEMBERSHIP_SPLIT_SIZE} must be greater than 4  *     in order to turn on this behavior</li>  *</ul>  *  *<h3>Compatibility</h3>  * This membership provider is able to deal with both options being present in  * the content. If the {@link UserConfig#PARAM_GROUP_MEMBERSHIP_SPLIT_SIZE} configuration  * parameter is modified later on, existing membership information is not  * modified or converted to the new structure.  */
 end_comment
 
 begin_class
@@ -751,9 +751,13 @@ operator|!=
 literal|null
 condition|)
 block|{
-comment|// FIXME: replace usage of PropertySequence (oak-api not possible there)
-comment|//                PropertySequence propertySequence = getPropertySequence(membersTree);
-comment|//                iterator = new AuthorizableIterator(propertySequence, authorizableType, userManager);
+throw|throw
+operator|new
+name|UnsupportedOperationException
+argument_list|(
+literal|"not implemented: retrieve members from member-node hierarchy"
+argument_list|)
+throw|;
 block|}
 block|}
 else|else
@@ -970,13 +974,15 @@ operator|!=
 literal|null
 condition|)
 block|{
-comment|// FIXME: fix.. testing for property name isn't correct.
-comment|// FIXME: usage of PropertySequence isn't possible when operating on oak-API
-comment|//                    PropertySequence propertySequence = getPropertySequence(membersTree);
-comment|//                    return propertySequence.hasItem(authorizable.getID());
-return|return
-literal|false
-return|;
+comment|// FIXME: fix.. testing for property name in jr2 wasn't correct.
+comment|// TODO: add implementation
+throw|throw
+operator|new
+name|UnsupportedOperationException
+argument_list|(
+literal|"not implemented: isMembers determined from member-node hierarchy"
+argument_list|)
+throw|;
 block|}
 block|}
 else|else
@@ -1095,16 +1101,14 @@ argument_list|,
 name|NT_REP_MEMBERS
 argument_list|)
 decl_stmt|;
-comment|//FIXME: replace usage of PropertySequence with oak-compatible utility
-comment|//            PropertySequence properties = getPropertySequence(membersTree);
-comment|//            String propName = Text.escapeIllegalJcrChars(authorizable.getID());
-comment|//            if (properties.hasItem(propName)) {
-comment|//                log.debug("Authorizable {} is already member of {}", authorizable, this);
-comment|//                return false;
-comment|//            } else {
-comment|//                CoreValue newMember = createCoreValue(authorizable);
-comment|//                properties.addProperty(propName, newMember);
-comment|//            }
+comment|// TODO: add implementation
+throw|throw
+operator|new
+name|UnsupportedOperationException
+argument_list|(
+literal|"not implemented: addMember with member-node hierarchy"
+argument_list|)
+throw|;
 block|}
 else|else
 block|{
@@ -1244,18 +1248,14 @@ operator|!=
 literal|null
 condition|)
 block|{
-comment|// FIXME: replace usage of PropertySequence with oak-compatible utility
-comment|//                PropertySequence properties = getPropertySequence(membersTree);
-comment|//                String propName = authorizable.getTree().getName();
-comment|// FIXME: fix.. testing for property name isn't correct.
-comment|//                if (properties.hasItem(propName)) {
-comment|//                    Property p = properties.getItem(propName);
-comment|//                    userManager.removeInternalProperty(p.getParent(), propName);
-comment|//                }
-comment|//                return true;
-return|return
-literal|false
-return|;
+comment|// TODO: add implementation
+throw|throw
+operator|new
+name|UnsupportedOperationException
+argument_list|(
+literal|"not implemented: remove member from member-node hierarchy"
+argument_list|)
+throw|;
 block|}
 block|}
 else|else
@@ -1409,7 +1409,7 @@ name|REP_MEMBERS
 argument_list|)
 return|;
 block|}
-comment|/**      * Returns an iterator of authorizables which includes all indirect members      * of the given iterator of authorizables.      *      *      * @param declaredMembers      * @param authorizableType      * @return Iterator of Authorizable objects      */
+comment|/**      * Returns an iterator of authorizables which includes all indirect members      * of the given iterator of authorizables.      *      *      * @param declaredMembers Iterator containing the paths to the declared members.      * @param authorizableType Flag used to filter the result by authorizable type.      * @return Iterator of Authorizable objects      */
 specifier|private
 name|Iterator
 argument_list|<
