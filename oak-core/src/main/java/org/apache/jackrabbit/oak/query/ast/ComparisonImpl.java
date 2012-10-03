@@ -47,22 +47,6 @@ name|oak
 operator|.
 name|api
 operator|.
-name|CoreValueFactory
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|api
-operator|.
 name|PropertyState
 import|;
 end_import
@@ -558,136 +542,6 @@ operator|!=
 literal|null
 condition|)
 block|{
-if|if
-condition|(
-name|operator
-operator|==
-name|Operator
-operator|.
-name|LIKE
-condition|)
-block|{
-name|String
-name|pattern
-decl_stmt|;
-name|pattern
-operator|=
-name|v
-operator|.
-name|getString
-argument_list|()
-expr_stmt|;
-name|LikePattern
-name|p
-init|=
-operator|new
-name|LikePattern
-argument_list|(
-name|pattern
-argument_list|)
-decl_stmt|;
-name|String
-name|lowerBound
-init|=
-name|p
-operator|.
-name|getLowerBound
-argument_list|()
-decl_stmt|;
-name|String
-name|upperBound
-init|=
-name|p
-operator|.
-name|getUpperBound
-argument_list|()
-decl_stmt|;
-if|if
-condition|(
-name|lowerBound
-operator|==
-literal|null
-operator|&&
-name|upperBound
-operator|==
-literal|null
-condition|)
-block|{
-comment|// ignore
-block|}
-elseif|else
-if|if
-condition|(
-name|operand1
-operator|.
-name|supportsRangeConditions
-argument_list|()
-condition|)
-block|{
-name|CoreValueFactory
-name|vf
-init|=
-name|query
-operator|.
-name|getValueFactory
-argument_list|()
-decl_stmt|;
-if|if
-condition|(
-name|lowerBound
-operator|!=
-literal|null
-condition|)
-block|{
-name|operand1
-operator|.
-name|restrict
-argument_list|(
-name|f
-argument_list|,
-name|Operator
-operator|.
-name|GREATER_OR_EQUAL
-argument_list|,
-name|vf
-operator|.
-name|createValue
-argument_list|(
-name|lowerBound
-argument_list|)
-argument_list|)
-expr_stmt|;
-block|}
-if|if
-condition|(
-name|upperBound
-operator|!=
-literal|null
-condition|)
-block|{
-name|operand1
-operator|.
-name|restrict
-argument_list|(
-name|f
-argument_list|,
-name|Operator
-operator|.
-name|LESS_OR_EQUAL
-argument_list|,
-name|vf
-operator|.
-name|createValue
-argument_list|(
-name|upperBound
-argument_list|)
-argument_list|)
-expr_stmt|;
-block|}
-block|}
-block|}
-else|else
-block|{
 name|operand1
 operator|.
 name|restrict
@@ -699,7 +553,27 @@ argument_list|,
 name|v
 argument_list|)
 expr_stmt|;
-block|}
+comment|// TODO OAK-347
+comment|//            if (operator == Operator.LIKE) {
+comment|//                String pattern;
+comment|//                pattern = v.getString();
+comment|//                LikePattern p = new LikePattern(pattern);
+comment|//                String lowerBound = p.getLowerBound();
+comment|//                String upperBound = p.getUpperBound();
+comment|//                if (lowerBound == null&& upperBound == null) {
+comment|//                    // ignore
+comment|//                } else if (operand1.supportsRangeConditions()) {
+comment|//                    CoreValueFactory vf = query.getValueFactory();
+comment|//                    if (lowerBound != null) {
+comment|//                        operand1.restrict(f, Operator.GREATER_OR_EQUAL, vf.createValue(lowerBound));
+comment|//                    }
+comment|//                    if (upperBound != null) {
+comment|//                        operand1.restrict(f, Operator.LESS_OR_EQUAL, vf.createValue(upperBound));
+comment|//                    }
+comment|//                }
+comment|//            } else {
+comment|//                operand1.restrict(f, operator, v);
+comment|//            }
 block|}
 block|}
 annotation|@

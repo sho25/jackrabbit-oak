@@ -881,13 +881,20 @@ break|break;
 case|case
 name|LIKE
 case|:
-throw|throw
-operator|new
-name|IllegalArgumentException
-argument_list|(
-literal|"LIKE is not supported"
-argument_list|)
-throw|;
+comment|// LIKE is handled in the fulltext index
+name|x
+operator|.
+name|isLike
+operator|=
+literal|true
+expr_stmt|;
+name|x
+operator|.
+name|first
+operator|=
+name|value
+expr_stmt|;
+break|break;
 block|}
 if|if
 condition|(

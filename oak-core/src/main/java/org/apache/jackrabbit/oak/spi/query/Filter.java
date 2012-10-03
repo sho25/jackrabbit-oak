@@ -131,6 +131,11 @@ specifier|public
 name|boolean
 name|lastIncluding
 decl_stmt|;
+comment|/**          * Whether this is a like constraint. in this case only the 'first'          * value should be taken into consideration          */
+specifier|public
+name|boolean
+name|isLike
+decl_stmt|;
 comment|/**          * The property type, if restricted.          * If not restricted, this field is set to PropertyType.UNDEFINED.          */
 specifier|public
 name|int
