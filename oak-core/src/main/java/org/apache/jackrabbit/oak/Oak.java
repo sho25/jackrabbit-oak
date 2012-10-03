@@ -542,7 +542,9 @@ name|isEmpty
 argument_list|()
 condition|)
 block|{
-name|with
+name|commitHooks
+operator|.
+name|add
 argument_list|(
 operator|new
 name|ValidatingHook
