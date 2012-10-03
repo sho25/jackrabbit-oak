@@ -1691,6 +1691,13 @@ name|SHOULD
 argument_list|)
 expr_stmt|;
 block|}
+name|qs
+operator|.
+name|add
+argument_list|(
+name|bq
+argument_list|)
+expr_stmt|;
 block|}
 specifier|private
 specifier|static
