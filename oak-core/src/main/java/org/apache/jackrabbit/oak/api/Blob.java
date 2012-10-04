@@ -33,19 +33,23 @@ name|Nonnull
 import|;
 end_import
 
+begin_comment
+comment|/**  * Immutable representation of a binary value of finite length.  */
+end_comment
+
 begin_interface
 specifier|public
 interface|interface
 name|Blob
 block|{
-comment|/**      * Returns a new stream for this value object.      * @return a new stream for this value based on an internal conversion.      */
+comment|/**      * Returns a new stream for this value object. Multiple calls to this      * methods return equal instances: {@code getNewStream().equals(getNewStream())}.      * @return a new stream for this value based on an internal conversion.      */
 annotation|@
 name|Nonnull
 name|InputStream
 name|getNewStream
 parameter_list|()
 function_decl|;
-comment|/**      * Returns the length of this blob.      *      * @return the length of this bloc.      */
+comment|/**      * Returns the length of this blob.      *      * @return the length of this blob.      */
 name|long
 name|length
 parameter_list|()
