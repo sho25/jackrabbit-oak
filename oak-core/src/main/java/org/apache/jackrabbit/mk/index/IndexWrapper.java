@@ -207,6 +207,8 @@ name|plugins
 operator|.
 name|index
 operator|.
+name|old
+operator|.
 name|Indexer
 import|;
 end_import
@@ -224,6 +226,8 @@ operator|.
 name|plugins
 operator|.
 name|index
+operator|.
+name|old
 operator|.
 name|PrefixIndex
 import|;
@@ -243,6 +247,8 @@ name|plugins
 operator|.
 name|index
 operator|.
+name|old
+operator|.
 name|PropertyIndex
 import|;
 end_import
@@ -260,6 +266,8 @@ operator|.
 name|plugins
 operator|.
 name|index
+operator|.
+name|old
 operator|.
 name|PropertyIndexConstants
 import|;

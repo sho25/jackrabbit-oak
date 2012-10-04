@@ -77,6 +77,8 @@ name|plugins
 operator|.
 name|index
 operator|.
+name|old
+operator|.
 name|Indexer
 import|;
 end_import

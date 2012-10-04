@@ -85,6 +85,8 @@ name|plugins
 operator|.
 name|index
 operator|.
+name|old
+operator|.
 name|PrefixIndex
 import|;
 end_import

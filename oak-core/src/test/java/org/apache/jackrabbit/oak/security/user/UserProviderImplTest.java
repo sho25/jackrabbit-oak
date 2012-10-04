@@ -201,6 +201,8 @@ name|oak
 operator|.
 name|plugins
 operator|.
+name|index
+operator|.
 name|property
 operator|.
 name|PropertyIndexHook
