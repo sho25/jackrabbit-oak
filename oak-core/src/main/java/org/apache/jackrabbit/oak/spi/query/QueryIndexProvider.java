@@ -53,7 +53,7 @@ name|spi
 operator|.
 name|state
 operator|.
-name|NodeStore
+name|NodeState
 import|;
 end_import
 
@@ -77,8 +77,8 @@ name|QueryIndex
 argument_list|>
 name|getQueryIndexes
 parameter_list|(
-name|NodeStore
-name|nodeStore
+name|NodeState
+name|nodeState
 parameter_list|)
 function_decl|;
 block|}

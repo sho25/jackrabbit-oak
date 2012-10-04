@@ -73,7 +73,7 @@ name|spi
 operator|.
 name|state
 operator|.
-name|NodeStore
+name|NodeState
 import|;
 end_import
 
@@ -154,8 +154,8 @@ name|QueryIndex
 argument_list|>
 name|getQueryIndexes
 parameter_list|(
-name|NodeStore
-name|nodeStore
+name|NodeState
+name|nodeState
 parameter_list|)
 block|{
 return|return
@@ -262,8 +262,8 @@ name|QueryIndex
 argument_list|>
 name|getQueryIndexes
 parameter_list|(
-name|NodeStore
-name|nodeStore
+name|NodeState
+name|nodeState
 parameter_list|)
 block|{
 name|List
@@ -293,7 +293,7 @@ name|provider
 operator|.
 name|getQueryIndexes
 argument_list|(
-name|nodeStore
+name|nodeState
 argument_list|)
 argument_list|)
 expr_stmt|;

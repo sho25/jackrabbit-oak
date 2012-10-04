@@ -245,24 +245,6 @@ name|NodeState
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|spi
-operator|.
-name|state
-operator|.
-name|NodeStore
-import|;
-end_import
-
 begin_class
 specifier|public
 class|class
@@ -335,8 +317,8 @@ name|QueryIndex
 argument_list|>
 name|getQueryIndexes
 parameter_list|(
-name|NodeStore
-name|store
+name|NodeState
+name|nodeState
 parameter_list|)
 block|{
 name|List
@@ -359,7 +341,7 @@ name|IndexUtils
 operator|.
 name|getChildBuilder
 argument_list|(
-name|store
+name|nodeState
 argument_list|,
 name|indexConfigPath
 argument_list|)
@@ -374,10 +356,7 @@ name|IndexUtils
 operator|.
 name|buildIndexDefinitions
 argument_list|(
-name|store
-operator|.
-name|getRoot
-argument_list|()
+name|nodeState
 argument_list|,
 name|indexConfigPath
 argument_list|,

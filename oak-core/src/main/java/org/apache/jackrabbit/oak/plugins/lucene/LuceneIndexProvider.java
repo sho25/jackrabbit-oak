@@ -161,7 +161,7 @@ name|spi
 operator|.
 name|state
 operator|.
-name|NodeStore
+name|NodeState
 import|;
 end_import
 
@@ -243,8 +243,8 @@ name|QueryIndex
 argument_list|>
 name|getQueryIndexes
 parameter_list|(
-name|NodeStore
-name|store
+name|NodeState
+name|nodeState
 parameter_list|)
 block|{
 if|if
@@ -299,10 +299,7 @@ name|IndexUtils
 operator|.
 name|buildIndexDefinitions
 argument_list|(
-name|store
-operator|.
-name|getRoot
-argument_list|()
+name|nodeState
 argument_list|,
 name|indexPath
 argument_list|,
