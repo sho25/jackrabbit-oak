@@ -71,12 +71,19 @@ name|auth
 operator|.
 name|login
 operator|.
-name|LoginContext
+name|LoginException
 import|;
 end_import
 
-begin_import
-import|import
+begin_comment
+comment|/**  * Bridge class that connects the JAAS {@link javax.security.auth.login.LoginContext} class with the  * {@link LoginContext} interface used by Oak.  */
+end_comment
+
+begin_class
+specifier|public
+class|class
+name|JaasLoginContext
+extends|extends
 name|javax
 operator|.
 name|security
@@ -85,22 +92,9 @@ name|auth
 operator|.
 name|login
 operator|.
-name|LoginException
-import|;
-end_import
-
-begin_comment
-comment|/**  * Bridge class that connects the JAAS {@link LoginContext} class with the  * {@link OakLoginContext} interface used by Oak.  */
-end_comment
-
-begin_class
-specifier|public
-class|class
-name|JaasLoginContext
-extends|extends
 name|LoginContext
 implements|implements
-name|OakLoginContext
+name|LoginContext
 block|{
 specifier|public
 name|JaasLoginContext

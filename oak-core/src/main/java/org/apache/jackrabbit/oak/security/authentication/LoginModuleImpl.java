@@ -473,13 +473,6 @@ operator|=
 name|getUserID
 argument_list|()
 expr_stmt|;
-name|principals
-operator|=
-name|getPrincipals
-argument_list|(
-name|userID
-argument_list|)
-expr_stmt|;
 name|Authentication
 name|authentication
 init|=
@@ -518,6 +511,13 @@ condition|(
 name|success
 condition|)
 block|{
+name|principals
+operator|=
+name|getPrincipals
+argument_list|(
+name|userID
+argument_list|)
+expr_stmt|;
 name|log
 operator|.
 name|debug

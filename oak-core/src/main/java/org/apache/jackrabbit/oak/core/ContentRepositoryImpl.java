@@ -373,7 +373,7 @@ name|security
 operator|.
 name|authentication
 operator|.
-name|OakLoginContext
+name|LoginContext
 import|;
 end_import
 
@@ -737,7 +737,7 @@ argument_list|(
 name|nodeStore
 argument_list|)
 decl_stmt|;
-name|OakLoginContext
+name|LoginContext
 name|loginContext
 init|=
 name|lcProvider

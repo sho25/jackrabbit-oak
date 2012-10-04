@@ -183,6 +183,164 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
+name|api
+operator|.
+name|ContentSession
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|namepath
+operator|.
+name|NamePathMapper
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|security
+operator|.
+name|SecurityProvider
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|security
+operator|.
+name|authentication
+operator|.
+name|callback
+operator|.
+name|CredentialsCallback
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|security
+operator|.
+name|authentication
+operator|.
+name|callback
+operator|.
+name|PrincipalProviderCallback
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|security
+operator|.
+name|authentication
+operator|.
+name|callback
+operator|.
+name|RepositoryCallback
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|security
+operator|.
+name|authentication
+operator|.
+name|callback
+operator|.
+name|SecurityProviderCallback
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|security
+operator|.
+name|principal
+operator|.
+name|OpenPrincipalProvider
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
 name|spi
 operator|.
 name|security
@@ -756,85 +914,47 @@ name|PrincipalProvider
 name|getPrincipalProvider
 parameter_list|()
 block|{
-name|PrincipalProvider
-name|principalProvider
-init|=
-literal|null
-decl_stmt|;
-if|if
-condition|(
-name|callbackHandler
-operator|!=
-literal|null
-condition|)
-block|{
-try|try
-block|{
-name|PrincipalProviderCallback
-name|principalCallBack
-init|=
-operator|new
-name|PrincipalProviderCallback
-argument_list|()
-decl_stmt|;
-name|callbackHandler
-operator|.
-name|handle
-argument_list|(
-operator|new
-name|Callback
-index|[]
-block|{
-name|principalCallBack
-block|}
-argument_list|)
-expr_stmt|;
-name|principalProvider
-operator|=
-name|principalCallBack
-operator|.
-name|getPrincipalProvider
-argument_list|()
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|IOException
-name|e
-parameter_list|)
-block|{
-name|log
-operator|.
-name|warn
-argument_list|(
-name|e
-operator|.
-name|getMessage
-argument_list|()
-argument_list|)
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|UnsupportedCallbackException
-name|e
-parameter_list|)
-block|{
-name|log
-operator|.
-name|warn
-argument_list|(
-name|e
-operator|.
-name|getMessage
-argument_list|()
-argument_list|)
-expr_stmt|;
-block|}
-block|}
+comment|// TODO: replace fake pp to enable proper principal resolution. code below works but...
 return|return
-name|principalProvider
+operator|new
+name|OpenPrincipalProvider
+argument_list|()
 return|;
+comment|//        PrincipalProvider principalProvider = null;
+comment|//        if (callbackHandler != null) {
+comment|//            RepositoryCallback rcb = new RepositoryCallback();
+comment|//            SecurityProviderCallback scb = new SecurityProviderCallback();
+comment|//            try {
+comment|//                callbackHandler.handle(new Callback[] {rcb,  scb});
+comment|//                ContentSession contentSession = rcb.getContentSession();
+comment|//                SecurityProvider securityProvider = scb.getSecurityProvider();
+comment|//                if (contentSession != null&& securityProvider != null) {
+comment|//                    // FIXME: getLatestRoot is unbearable slow.
+comment|//                    // FIXME: - either use a different Root that passed from the repo to the callback-handler or
+comment|//                    // FIXME: - fix mk such that retrieving the root is for free
+comment|//                    principalProvider = securityProvider.getPrincipalConfiguration().
+comment|//                            getPrincipalProvider(contentSession, contentSession.getLatestRoot(), NamePathMapper.DEFAULT);
+comment|//                }
+comment|//            } catch (UnsupportedCallbackException e) {
+comment|//                log.debug(e.getMessage());
+comment|//            } catch (IOException e) {
+comment|//                log.debug(e.getMessage());
+comment|//            }
+comment|//
+comment|//            if (principalProvider == null) {
+comment|//                try {
+comment|//                    PrincipalProviderCallback principalCallBack = new PrincipalProviderCallback();
+comment|//                    callbackHandler.handle(new Callback[] {principalCallBack});
+comment|//                    principalProvider = principalCallBack.getPrincipalProvider();
+comment|//                } catch (IOException e) {
+comment|//                    log.debug(e.getMessage());
+comment|//                } catch (UnsupportedCallbackException e) {
+comment|//                    log.debug(e.getMessage());
+comment|//                }
+comment|//            }
+comment|//
+comment|//        }
+comment|//        return principalProvider;
 block|}
 block|}
 end_class

@@ -177,7 +177,7 @@ name|security
 operator|.
 name|authentication
 operator|.
-name|OakLoginContext
+name|LoginContext
 import|;
 end_import
 
@@ -266,7 +266,7 @@ argument_list|)
 decl_stmt|;
 specifier|private
 specifier|final
-name|OakLoginContext
+name|LoginContext
 name|loginContext
 decl_stmt|;
 specifier|private
@@ -297,7 +297,7 @@ decl_stmt|;
 specifier|public
 name|ContentSessionImpl
 parameter_list|(
-name|OakLoginContext
+name|LoginContext
 name|loginContext
 parameter_list|,
 name|AccessControlProvider

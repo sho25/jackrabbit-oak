@@ -18,6 +18,8 @@ operator|.
 name|security
 operator|.
 name|authentication
+operator|.
+name|callback
 package|;
 end_package
 
@@ -98,6 +100,42 @@ operator|.
 name|core
 operator|.
 name|ContentRepositoryImpl
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|security
+operator|.
+name|OpenSecurityProvider
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|security
+operator|.
+name|SecurityProvider
 import|;
 end_import
 
@@ -210,6 +248,13 @@ block|{
 try|try
 block|{
 comment|// TODO rather use Oak or similar setup mechanism
+name|SecurityProvider
+name|sp
+init|=
+operator|new
+name|OpenSecurityProvider
+argument_list|()
+decl_stmt|;
 return|return
 operator|new
 name|ContentRepositoryImpl
@@ -218,7 +263,7 @@ name|nodeStore
 argument_list|,
 literal|null
 argument_list|,
-literal|null
+name|sp
 argument_list|)
 operator|.
 name|login

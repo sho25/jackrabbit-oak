@@ -67,7 +67,7 @@ block|{
 comment|/**      * Returns a new login context instance for handling authentication.      *      * @param credentials The {@link Credentials} such as passed to the      * {@link org.apache.jackrabbit.oak.api.ContentRepository#login(javax.jcr.Credentials, String) login}      * method of the repository.      * @param workspaceName The name of the workspace that is being accessed by      * the login called.      * @return a new login context      * @throws LoginException If an error occurs while creating a new context.      */
 annotation|@
 name|Nonnull
-name|OakLoginContext
+name|LoginContext
 name|getLoginContext
 parameter_list|(
 name|Credentials
