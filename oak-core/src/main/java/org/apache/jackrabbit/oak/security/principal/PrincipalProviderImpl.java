@@ -399,6 +399,24 @@ name|checkState
 import|;
 end_import
 
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|api
+operator|.
+name|Type
+operator|.
+name|*
+import|;
+end_import
+
 begin_comment
 comment|/**  * The {@code PrincipalProviderImpl} is a principal provider implementation  * that operates on principal information read from user information exposed by  * the configured {@link UserProvider} and {@link MembershipProvider}.  */
 end_comment
@@ -930,10 +948,9 @@ name|JCR_PRIMARYTYPE
 argument_list|)
 operator|.
 name|getValue
-argument_list|()
-operator|.
-name|getString
-argument_list|()
+argument_list|(
+name|STRING
+argument_list|)
 decl_stmt|;
 return|return
 name|UserConstants

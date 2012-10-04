@@ -507,6 +507,24 @@ name|LoggerFactory
 import|;
 end_import
 
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|api
+operator|.
+name|Type
+operator|.
+name|*
+import|;
+end_import
+
 begin_comment
 comment|/**  * Default implementation of the {@code TokenProvider} interface with the  * following characteristics.  *  *<h3>doCreateToken</h3>  * The {@link #doCreateToken(javax.jcr.Credentials)} returns {@code true} if  * {@code SimpleCredentials} can be extracted from the specified credentials  * object and that simple credentials object has a {@link #TOKEN_ATTRIBUTE}  * attribute with an empty value.  *  *<h3>createToken</h3>  * This implementation of {@link #createToken(javax.jcr.Credentials)} will  * create a separate token node underneath the user home node. That token  * node contains the hashed token, the expiration time and additional  * mandatory attributes that will be verified during login.  */
 end_comment
@@ -1817,10 +1835,9 @@ init|=
 name|propertyState
 operator|.
 name|getValue
-argument_list|()
-operator|.
-name|getString
-argument_list|()
+argument_list|(
+name|STRING
+argument_list|)
 decl_stmt|;
 if|if
 condition|(
