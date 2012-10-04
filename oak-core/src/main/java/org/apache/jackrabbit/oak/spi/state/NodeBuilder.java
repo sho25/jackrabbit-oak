@@ -71,6 +71,22 @@ name|PropertyState
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|api
+operator|.
+name|Type
+import|;
+end_import
+
 begin_comment
 comment|/**  * Builder interface for constructing new {@link NodeState node states}.  */
 end_comment
@@ -158,6 +174,8 @@ parameter_list|)
 function_decl|;
 comment|/**      * Set a property.      *      * @param name property name      * @param value      * @return this builder      */
 annotation|@
+name|Deprecated
+annotation|@
 name|Nonnull
 name|NodeBuilder
 name|setProperty
@@ -172,6 +190,8 @@ name|value
 parameter_list|)
 function_decl|;
 comment|/**      * Set a property.      *      * @param name property name      * @param values      * @return this builder      */
+annotation|@
+name|Deprecated
 annotation|@
 name|Nonnull
 name|NodeBuilder
@@ -190,6 +210,8 @@ name|values
 parameter_list|)
 function_decl|;
 annotation|@
+name|Deprecated
+annotation|@
 name|Nonnull
 name|NodeBuilder
 name|set
@@ -201,6 +223,8 @@ name|String
 name|value
 parameter_list|)
 function_decl|;
+annotation|@
+name|Deprecated
 annotation|@
 name|Nonnull
 name|NodeBuilder
@@ -214,7 +238,49 @@ modifier|...
 name|values
 parameter_list|)
 function_decl|;
-comment|/**      * Remove the named property. This method has no effect if a      * property of the given {@code name} does not exist.      *      * @param name  name of the property      * @return this builder      */
+comment|/**      * Set a property state      * @param property  The property state to set      * @return this builder      */
+name|NodeBuilder
+name|setProperty
+parameter_list|(
+name|PropertyState
+name|property
+parameter_list|)
+function_decl|;
+comment|/**      * Set a property state      * @param name  The name of this property      * @param value  The value of this property      * @param<T>  The type of this property. Must be one of {@code String, Blob, byte[], Long, Integer, Double, Boolean, BigDecimal}      * @throws IllegalArgumentException if {@code T} is not one of the above types.      *      * @param name  name of the property      * @return this builder      */
+parameter_list|<
+name|T
+parameter_list|>
+name|NodeBuilder
+name|setProperty
+parameter_list|(
+name|String
+name|name
+parameter_list|,
+name|T
+name|value
+parameter_list|)
+function_decl|;
+comment|/**      * Set a property state      * @param name  The name of this property      * @param value  The value of this property      * @param<T>  The type of this property.      * @return this builder      */
+parameter_list|<
+name|T
+parameter_list|>
+name|NodeBuilder
+name|setProperty
+parameter_list|(
+name|String
+name|name
+parameter_list|,
+name|T
+name|value
+parameter_list|,
+name|Type
+argument_list|<
+name|T
+argument_list|>
+name|type
+parameter_list|)
+function_decl|;
+comment|/**     * Remove the named property. This method has no effect if a     * property of the given {@code name} does not exist.     * @param name  name of the property     */
 annotation|@
 name|Nonnull
 name|NodeBuilder

@@ -208,6 +208,8 @@ function_decl|;
 comment|/**      * Set a single valued property state      *      * @param name The name of this property      * @param value The value of this property      * @return the affected property state      */
 annotation|@
 name|Nonnull
+annotation|@
+name|Deprecated
 name|PropertyState
 name|setProperty
 parameter_list|(
@@ -223,6 +225,8 @@ function_decl|;
 comment|/**      * Set a multivalued valued property state      *      * @param name The name of this property      * @param values The value of this property      * @return the affected property state      */
 annotation|@
 name|Nonnull
+annotation|@
+name|Deprecated
 name|PropertyState
 name|setProperty
 parameter_list|(
@@ -236,6 +240,48 @@ argument_list|<
 name|CoreValue
 argument_list|>
 name|values
+parameter_list|)
+function_decl|;
+comment|/**      * Set a property state      * @param property  The property state to set      */
+name|void
+name|setProperty
+parameter_list|(
+name|PropertyState
+name|property
+parameter_list|)
+function_decl|;
+comment|/**      * Set a property state      * @param name  The name of this property      * @param value  The value of this property      * @param<T>  The type of this property. Must be one of {@code String, Blob, byte[], Long, Integer, Double, Boolean, BigDecimal}      * @throws IllegalArgumentException if {@code T} is not one of the above types.      */
+parameter_list|<
+name|T
+parameter_list|>
+name|void
+name|setProperty
+parameter_list|(
+name|String
+name|name
+parameter_list|,
+name|T
+name|value
+parameter_list|)
+function_decl|;
+comment|/**      * Set a property state      * @param name  The name of this property      * @param value  The value of this property      * @param<T>  The type of this property.      */
+parameter_list|<
+name|T
+parameter_list|>
+name|void
+name|setProperty
+parameter_list|(
+name|String
+name|name
+parameter_list|,
+name|T
+name|value
+parameter_list|,
+name|Type
+argument_list|<
+name|T
+argument_list|>
+name|type
 parameter_list|)
 function_decl|;
 comment|/**      * Remove the property with the given name. This method has no effect if a      * property of the given {@code name} does not exist.      *      * @param name The name of the property      */
