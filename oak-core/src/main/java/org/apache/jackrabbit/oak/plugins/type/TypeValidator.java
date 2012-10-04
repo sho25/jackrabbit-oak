@@ -1743,7 +1743,7 @@ if|if
 condition|(
 name|nodeType
 operator|.
-name|canRemoveProperty
+name|canRemoveNode
 argument_list|(
 name|name
 argument_list|)
