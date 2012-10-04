@@ -87,6 +87,20 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|collect
+operator|.
+name|ImmutableSet
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -312,16 +326,20 @@ import|;
 end_import
 
 begin_import
-import|import
-name|com
+import|import static
+name|org
 operator|.
-name|google
+name|apache
 operator|.
-name|common
+name|jackrabbit
 operator|.
-name|collect
+name|oak
 operator|.
-name|ImmutableSet
+name|api
+operator|.
+name|Type
+operator|.
+name|STRINGS
 import|;
 end_import
 
@@ -957,13 +975,15 @@ condition|)
 block|{
 for|for
 control|(
-name|CoreValue
+name|String
 name|value
 range|:
 name|property
 operator|.
-name|getValues
-argument_list|()
+name|getValue
+argument_list|(
+name|STRINGS
+argument_list|)
 control|)
 block|{
 name|builder
@@ -971,9 +991,6 @@ operator|.
 name|add
 argument_list|(
 name|value
-operator|.
-name|getString
-argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
