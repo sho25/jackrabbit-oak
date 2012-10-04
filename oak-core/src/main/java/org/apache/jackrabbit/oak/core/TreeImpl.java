@@ -2651,6 +2651,8 @@ argument_list|)
 return|;
 block|}
 comment|/**          * Set the value of the underlying property          * @param value the value to set          * @return  {@code true} on success false otherwise          */
+annotation|@
+name|Deprecated
 specifier|public
 name|boolean
 name|setValue
@@ -2678,6 +2680,8 @@ literal|true
 return|;
 block|}
 comment|/**          * Set the values of the underlying property          * @param values the values to set          * @return  {@code true} on success false otherwise          */
+annotation|@
+name|Deprecated
 specifier|public
 name|boolean
 name|setValues
@@ -2706,6 +2710,28 @@ expr_stmt|;
 return|return
 literal|true
 return|;
+block|}
+comment|/**          * Set the underlying property          * @param property The property to set          */
+specifier|public
+parameter_list|<
+name|T
+parameter_list|>
+name|void
+name|set
+parameter_list|(
+name|PropertyState
+name|property
+parameter_list|)
+block|{
+name|parent
+operator|.
+name|tree
+operator|.
+name|setProperty
+argument_list|(
+name|property
+argument_list|)
+expr_stmt|;
 block|}
 comment|/**          * Remove the underlying property          * @return  {@code true} on success false otherwise          */
 specifier|public
