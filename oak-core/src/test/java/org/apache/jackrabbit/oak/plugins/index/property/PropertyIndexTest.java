@@ -22,14 +22,42 @@ package|;
 end_package
 
 begin_import
-import|import static
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Arrays
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|collect
+operator|.
+name|ImmutableSet
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
-name|junit
+name|apache
 operator|.
-name|Assert
+name|jackrabbit
 operator|.
-name|assertEquals
+name|oak
+operator|.
+name|api
+operator|.
+name|Type
 import|;
 end_import
 
@@ -98,16 +126,14 @@ import|;
 end_import
 
 begin_import
-import|import
-name|com
+import|import static
+name|org
 operator|.
-name|google
+name|junit
 operator|.
-name|common
+name|Assert
 operator|.
-name|collect
-operator|.
-name|ImmutableSet
+name|assertEquals
 import|;
 end_import
 
@@ -184,7 +210,7 @@ argument_list|(
 literal|"a"
 argument_list|)
 operator|.
-name|set
+name|setProperty
 argument_list|(
 literal|"foo"
 argument_list|,
@@ -198,13 +224,22 @@ argument_list|(
 literal|"b"
 argument_list|)
 operator|.
-name|set
+name|setProperty
 argument_list|(
 literal|"foo"
 argument_list|,
+name|Arrays
+operator|.
+name|asList
+argument_list|(
 literal|"abc"
 argument_list|,
 literal|"def"
+argument_list|)
+argument_list|,
+name|Type
+operator|.
+name|STRINGS
 argument_list|)
 expr_stmt|;
 comment|// plus lots of dummy content to highlight the benefit of indexing
@@ -232,7 +267,7 @@ operator|+
 name|i
 argument_list|)
 operator|.
-name|set
+name|setProperty
 argument_list|(
 literal|"foo"
 argument_list|,
