@@ -19,16 +19,6 @@ end_package
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|List
-import|;
-end_import
-
-begin_import
-import|import
 name|javax
 operator|.
 name|annotation
@@ -203,26 +193,6 @@ name|addChild
 parameter_list|(
 name|String
 name|name
-parameter_list|)
-function_decl|;
-comment|/**      * Set a multivalued valued property state      *      * @param name The name of this property      * @param values The value of this property      * @return the affected property state      */
-annotation|@
-name|Nonnull
-annotation|@
-name|Deprecated
-name|PropertyState
-name|setProperty
-parameter_list|(
-name|String
-name|name
-parameter_list|,
-annotation|@
-name|Nonnull
-name|List
-argument_list|<
-name|CoreValue
-argument_list|>
-name|values
 parameter_list|)
 function_decl|;
 comment|/**      * Set a property state      * @param property  The property state to set      */
