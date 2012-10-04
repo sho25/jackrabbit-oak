@@ -269,6 +269,24 @@ name|TreeLocation
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|memory
+operator|.
+name|SinglePropertyState
+import|;
+end_import
+
 begin_comment
 comment|/**  * {@code NodeDelegate} serve as internal representations of {@code Node}s.  * Most methods of this class throw an {@code InvalidItemStateException}  * exception if the instance is stale. An instance is stale if the underlying  * items does not exist anymore.  */
 end_comment
@@ -1220,9 +1238,13 @@ name|tree
 operator|.
 name|setProperty
 argument_list|(
+operator|new
+name|SinglePropertyState
+argument_list|(
 name|name
 argument_list|,
 name|value
+argument_list|)
 argument_list|)
 expr_stmt|;
 return|return
