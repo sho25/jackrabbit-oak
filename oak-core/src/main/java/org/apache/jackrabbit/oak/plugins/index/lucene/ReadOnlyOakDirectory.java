@@ -63,17 +63,15 @@ end_import
 
 begin_import
 import|import
-name|org
+name|com
 operator|.
-name|apache
+name|google
 operator|.
-name|jackrabbit
+name|common
 operator|.
-name|oak
+name|collect
 operator|.
-name|api
-operator|.
-name|CoreValue
+name|Iterables
 import|;
 end_import
 
@@ -182,16 +180,20 @@ import|;
 end_import
 
 begin_import
-import|import
-name|com
+import|import static
+name|org
 operator|.
-name|google
+name|apache
 operator|.
-name|common
+name|jackrabbit
 operator|.
-name|collect
+name|oak
 operator|.
-name|Iterables
+name|api
+operator|.
+name|Type
+operator|.
+name|BINARY
 import|;
 end_import
 
@@ -364,10 +366,7 @@ block|}
 return|return
 name|property
 operator|.
-name|getValue
-argument_list|()
-operator|.
-name|length
+name|size
 argument_list|()
 return|;
 block|}
@@ -515,18 +514,15 @@ literal|0
 index|]
 return|;
 block|}
-name|CoreValue
-name|value
+name|InputStream
+name|stream
 init|=
 name|property
 operator|.
 name|getValue
-argument_list|()
-decl_stmt|;
-name|InputStream
-name|stream
-init|=
-name|value
+argument_list|(
+name|BINARY
+argument_list|)
 operator|.
 name|getNewStream
 argument_list|()
@@ -543,9 +539,9 @@ index|[
 operator|(
 name|int
 operator|)
-name|value
+name|property
 operator|.
-name|length
+name|size
 argument_list|()
 index|]
 decl_stmt|;

@@ -209,10 +209,7 @@ name|length
 init|=
 name|p
 operator|.
-name|getValue
-argument_list|()
-operator|.
-name|length
+name|size
 argument_list|()
 decl_stmt|;
 name|CoreValue
