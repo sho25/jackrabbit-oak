@@ -21,37 +21,11 @@ end_package
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|List
-import|;
-end_import
-
-begin_import
-import|import
 name|javax
 operator|.
 name|annotation
 operator|.
 name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|api
-operator|.
-name|CoreValue
 import|;
 end_import
 
@@ -170,26 +144,6 @@ name|getProperty
 parameter_list|(
 name|String
 name|name
-parameter_list|)
-function_decl|;
-comment|/**      * Set a property.      *      * @param name property name      * @param values      * @return this builder      */
-annotation|@
-name|Deprecated
-annotation|@
-name|Nonnull
-name|NodeBuilder
-name|setProperty
-parameter_list|(
-name|String
-name|name
-parameter_list|,
-annotation|@
-name|Nonnull
-name|List
-argument_list|<
-name|CoreValue
-argument_list|>
-name|values
 parameter_list|)
 function_decl|;
 comment|/**      * Set a property state      * @param property  The property state to set      * @return this builder      */
