@@ -120,7 +120,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * UserManagerConfig provides utilities to retrieve configuration options  * related to user management. In addition it defines some constants that  * have been used in Jackrabbit 2.0 default user management implementation.  */
+comment|/**  * UserConfig provides utilities to retrieve configuration options  * related to user management. In addition it defines some constants that  * have been used in Jackrabbit 2.0 default user management implementation.  */
 end_comment
 
 begin_class
