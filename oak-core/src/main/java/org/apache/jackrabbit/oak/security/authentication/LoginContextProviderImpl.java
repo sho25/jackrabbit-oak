@@ -179,7 +179,7 @@ name|security
 operator|.
 name|principal
 operator|.
-name|OpenPrincipalProvider
+name|PrincipalProvider
 import|;
 end_import
 
@@ -195,11 +195,9 @@ name|oak
 operator|.
 name|spi
 operator|.
-name|security
+name|state
 operator|.
-name|principal
-operator|.
-name|PrincipalProvider
+name|NodeStore
 import|;
 end_import
 
@@ -260,7 +258,12 @@ decl_stmt|;
 specifier|private
 specifier|final
 name|Configuration
-name|authConfig
+name|configuration
+decl_stmt|;
+specifier|private
+specifier|final
+name|NodeStore
+name|nodeStore
 decl_stmt|;
 specifier|private
 specifier|final
@@ -269,20 +272,34 @@ name|principalProvider
 decl_stmt|;
 specifier|public
 name|LoginContextProviderImpl
-parameter_list|()
+parameter_list|(
+name|Configuration
+name|configuration
+parameter_list|,
+name|NodeStore
+name|nodeStore
+parameter_list|,
+name|PrincipalProvider
+name|principalProvider
+parameter_list|)
 block|{
-comment|// TODO: use configurable authentication config and principal provider
-name|authConfig
+name|this
+operator|.
+name|configuration
 operator|=
-operator|new
-name|ConfigurationImpl
-argument_list|()
+name|configuration
 expr_stmt|;
+name|this
+operator|.
+name|nodeStore
+operator|=
+name|nodeStore
+expr_stmt|;
+name|this
+operator|.
 name|principalProvider
 operator|=
-operator|new
-name|OpenPrincipalProvider
-argument_list|()
+name|principalProvider
 expr_stmt|;
 block|}
 annotation|@
@@ -319,6 +336,10 @@ name|CallbackHandlerImpl
 argument_list|(
 name|credentials
 argument_list|,
+name|workspaceName
+argument_list|,
+name|nodeStore
+argument_list|,
 name|principalProvider
 argument_list|)
 decl_stmt|;
@@ -332,12 +353,13 @@ name|subject
 argument_list|,
 name|handler
 argument_list|,
-name|authConfig
+name|configuration
 argument_list|)
 return|;
 block|}
 comment|//------------------------------------------------------------< private>---
 specifier|private
+specifier|static
 name|Subject
 name|getSubject
 parameter_list|()
