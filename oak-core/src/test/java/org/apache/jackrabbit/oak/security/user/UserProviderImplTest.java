@@ -201,9 +201,9 @@ name|oak
 operator|.
 name|plugins
 operator|.
-name|unique
+name|property
 operator|.
-name|UniqueIndexHook
+name|PropertyIndexHook
 import|;
 end_import
 
@@ -676,7 +676,7 @@ operator|new
 name|ContentRepositoryImpl
 argument_list|(
 operator|new
-name|UniqueIndexHook
+name|PropertyIndexHook
 argument_list|()
 argument_list|)
 return|;

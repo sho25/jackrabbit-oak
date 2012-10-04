@@ -276,10 +276,6 @@ literal|"+\"jcr:system\":{"
 operator|+
 literal|"\"jcr:primaryType\"    :\"nam:rep:system\","
 operator|+
-comment|// FIXME: user-mgt related unique properties (rep:authorizableId, rep:principalName) are implementation detail and not generic for repo
-comment|// FIXME: rep:principalName only needs to be unique if defined with user/group nodes -> add defining nt-info to uniqueness constraint otherwise ac-editing will fail.
-literal|"\":unique\"            :{\"jcr:uuid\":{},\"rep:authorizableId\":{},\"rep:principalName\":{}},"
-operator|+
 literal|"\"jcr:versionStorage\" :{\"jcr:primaryType\":\"nam:rep:versionStorage\"},"
 operator|+
 literal|"\"jcr:nodeTypes\"      :{\"jcr:primaryType\":\"nam:rep:nodeTypes\"},"
@@ -287,6 +283,33 @@ operator|+
 literal|"\"jcr:activities\"     :{\"jcr:primaryType\":\"nam:rep:Activities\"},"
 operator|+
 literal|"\"rep:privileges\"     :{\"jcr:primaryType\":\"nam:rep:Privileges\"}}"
+argument_list|,
+literal|null
+argument_list|,
+literal|null
+argument_list|)
+expr_stmt|;
+block|}
+if|if
+condition|(
+operator|!
+name|root
+operator|.
+name|hasChildNode
+argument_list|(
+literal|"oak:index"
+argument_list|)
+condition|)
+block|{
+comment|// FIXME: user-mgt related unique properties (rep:authorizableId, rep:principalName) are implementation detail and not generic for repo
+comment|// FIXME: rep:principalName only needs to be unique if defined with user/group nodes -> add defining nt-info to uniqueness constraint otherwise ac-editing will fail.
+name|mk
+operator|.
+name|commit
+argument_list|(
+literal|"/"
+argument_list|,
+literal|"+\"oak:index\":{\"jcr:uuid\":{\"unique\":true},\"rep:authorizableId\":{\"unique\":true},\"rep:principalName\":{\"unique\":true}}"
 argument_list|,
 literal|null
 argument_list|,

@@ -1500,7 +1500,7 @@ operator|.
 name|getNodes
 argument_list|()
 decl_stmt|;
-comment|// TODO: use a test subtree to avoid excluding default content
+comment|// FIXME: use a test subtree to avoid excluding default content
 name|int
 name|expected
 init|=
@@ -1525,6 +1525,19 @@ operator|.
 name|hasNode
 argument_list|(
 literal|"oak-index"
+argument_list|)
+condition|?
+literal|1
+else|:
+literal|0
+operator|)
+operator|+
+operator|(
+name|root
+operator|.
+name|hasNode
+argument_list|(
+literal|"oak:index"
 argument_list|)
 condition|?
 literal|1
@@ -1577,6 +1590,14 @@ operator|.
 name|equals
 argument_list|(
 literal|"oak-index"
+argument_list|)
+operator|&&
+operator|!
+name|name
+operator|.
+name|equals
+argument_list|(
+literal|"oak:index"
 argument_list|)
 condition|)
 block|{
