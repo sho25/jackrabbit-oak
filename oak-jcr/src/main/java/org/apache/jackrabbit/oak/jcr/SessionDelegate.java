@@ -467,11 +467,11 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
+name|spi
+operator|.
 name|security
 operator|.
-name|principal
-operator|.
-name|TmpPrincipalProvider
+name|SecurityProvider
 import|;
 end_import
 
@@ -489,7 +489,9 @@ name|spi
 operator|.
 name|security
 operator|.
-name|SecurityProvider
+name|principal
+operator|.
+name|OpenPrincipalProvider
 import|;
 end_import
 
@@ -1898,7 +1900,7 @@ operator|new
 name|PrincipalManagerImpl
 argument_list|(
 operator|new
-name|TmpPrincipalProvider
+name|OpenPrincipalProvider
 argument_list|()
 argument_list|)
 argument_list|)
