@@ -172,23 +172,6 @@ name|String
 name|name
 parameter_list|)
 function_decl|;
-comment|/**      * Set a property.      *      * @param name property name      * @param value      * @return this builder      */
-annotation|@
-name|Deprecated
-annotation|@
-name|Nonnull
-name|NodeBuilder
-name|setProperty
-parameter_list|(
-name|String
-name|name
-parameter_list|,
-annotation|@
-name|Nonnull
-name|CoreValue
-name|value
-parameter_list|)
-function_decl|;
 comment|/**      * Set a property.      *      * @param name property name      * @param values      * @return this builder      */
 annotation|@
 name|Deprecated
