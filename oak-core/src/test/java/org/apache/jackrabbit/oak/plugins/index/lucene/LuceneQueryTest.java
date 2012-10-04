@@ -22,62 +22,6 @@ package|;
 end_package
 
 begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|spi
-operator|.
-name|query
-operator|.
-name|IndexUtils
-operator|.
-name|DEFAULT_INDEX_HOME
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertEquals
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertFalse
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertTrue
-import|;
-end_import
-
-begin_import
 import|import
 name|java
 operator|.
@@ -305,6 +249,62 @@ name|Test
 import|;
 end_import
 
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|query
+operator|.
+name|IndexUtils
+operator|.
+name|DEFAULT_INDEX_HOME
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertEquals
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertFalse
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertTrue
+import|;
+end_import
+
 begin_comment
 comment|/**  * base class for lucene search tests  */
 end_comment
@@ -495,12 +495,7 @@ name|setProperty
 argument_list|(
 literal|"type"
 argument_list|,
-name|vf
-operator|.
-name|createValue
-argument_list|(
 literal|"lucene"
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|root
@@ -544,12 +539,7 @@ name|setProperty
 argument_list|(
 literal|"name"
 argument_list|,
-name|vf
-operator|.
-name|createValue
-argument_list|(
 literal|"hello"
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|test
@@ -563,12 +553,7 @@ name|setProperty
 argument_list|(
 literal|"name"
 argument_list|,
-name|vf
-operator|.
-name|createValue
-argument_list|(
 literal|"nothello"
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|root
