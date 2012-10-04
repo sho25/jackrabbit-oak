@@ -125,6 +125,42 @@ name|FilterImpl
 import|;
 end_import
 
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|api
+operator|.
+name|Type
+operator|.
+name|STRING
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|api
+operator|.
+name|Type
+operator|.
+name|STRINGS
+import|;
+end_import
+
 begin_comment
 comment|/**  * A fulltext "contains(...)" condition.  */
 end_comment
@@ -483,13 +519,15 @@ condition|)
 block|{
 for|for
 control|(
-name|CoreValue
+name|String
 name|v
 range|:
 name|p
 operator|.
-name|getValues
-argument_list|()
+name|getValue
+argument_list|(
+name|STRINGS
+argument_list|)
 control|)
 block|{
 name|buff
@@ -497,9 +535,6 @@ operator|.
 name|append
 argument_list|(
 name|v
-operator|.
-name|getString
-argument_list|()
 argument_list|)
 operator|.
 name|append
@@ -518,10 +553,9 @@ argument_list|(
 name|p
 operator|.
 name|getValue
-argument_list|()
-operator|.
-name|getString
-argument_list|()
+argument_list|(
+name|STRING
+argument_list|)
 argument_list|)
 operator|.
 name|append

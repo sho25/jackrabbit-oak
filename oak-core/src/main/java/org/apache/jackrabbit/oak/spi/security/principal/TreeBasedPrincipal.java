@@ -155,6 +155,24 @@ name|LoggerFactory
 import|;
 end_import
 
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|api
+operator|.
+name|Type
+operator|.
+name|STRING
+import|;
+end_import
+
 begin_comment
 comment|/**  * TreeBasedPrincipal...  */
 end_comment
@@ -241,10 +259,9 @@ operator|=
 name|prop
 operator|.
 name|getValue
-argument_list|()
-operator|.
-name|getString
-argument_list|()
+argument_list|(
+name|STRING
+argument_list|)
 expr_stmt|;
 name|this
 operator|.

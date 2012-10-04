@@ -223,6 +223,24 @@ name|Text
 import|;
 end_import
 
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|api
+operator|.
+name|Type
+operator|.
+name|STRING
+import|;
+end_import
+
 begin_comment
 comment|/**  * PrivilegeValidator... TODO  */
 end_comment
@@ -484,10 +502,9 @@ argument_list|(
 name|primaryType
 operator|.
 name|getValue
-argument_list|()
-operator|.
-name|getString
-argument_list|()
+argument_list|(
+name|STRING
+argument_list|)
 argument_list|)
 condition|)
 block|{

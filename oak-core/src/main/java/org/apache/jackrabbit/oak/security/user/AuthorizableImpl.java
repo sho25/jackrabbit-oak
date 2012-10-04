@@ -341,6 +341,24 @@ name|LoggerFactory
 import|;
 end_import
 
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|api
+operator|.
+name|Type
+operator|.
+name|STRING
+import|;
+end_import
+
 begin_comment
 comment|/**  * AuthorizableImpl...  */
 end_comment
@@ -1505,10 +1523,9 @@ name|REP_PRINCIPAL_NAME
 argument_list|)
 operator|.
 name|getValue
-argument_list|()
-operator|.
-name|getString
-argument_list|()
+argument_list|(
+name|STRING
+argument_list|)
 return|;
 block|}
 else|else

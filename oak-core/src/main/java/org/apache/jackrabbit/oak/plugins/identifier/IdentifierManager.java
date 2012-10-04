@@ -365,6 +365,24 @@ name|LoggerFactory
 import|;
 end_import
 
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|api
+operator|.
+name|Type
+operator|.
+name|STRING
+import|;
+end_import
+
 begin_comment
 comment|/**  * IdentifierManager...  */
 end_comment
@@ -575,10 +593,9 @@ return|return
 name|property
 operator|.
 name|getValue
-argument_list|()
-operator|.
-name|getString
-argument_list|()
+argument_list|(
+name|STRING
+argument_list|)
 return|;
 block|}
 block|}
@@ -1192,10 +1209,9 @@ argument_list|(
 name|pState
 operator|.
 name|getValue
-argument_list|()
-operator|.
-name|getString
-argument_list|()
+argument_list|(
+name|STRING
+argument_list|)
 argument_list|)
 return|;
 block|}
@@ -1248,10 +1264,9 @@ init|=
 name|pType
 operator|.
 name|getValue
-argument_list|()
-operator|.
-name|getString
-argument_list|()
+argument_list|(
+name|STRING
+argument_list|)
 decl_stmt|;
 if|if
 condition|(

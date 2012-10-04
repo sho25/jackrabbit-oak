@@ -115,6 +115,24 @@ name|Tree
 import|;
 end_import
 
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|api
+operator|.
+name|Type
+operator|.
+name|STRING
+import|;
+end_import
+
 begin_comment
 comment|/**  * Writable namespace registry. Mainly for use to implement the full JCR API.  */
 end_comment
@@ -277,10 +295,9 @@ operator|&&
 name|p
 operator|.
 name|getValue
-argument_list|()
-operator|.
-name|getString
-argument_list|()
+argument_list|(
+name|STRING
+argument_list|)
 operator|.
 name|equals
 argument_list|(
