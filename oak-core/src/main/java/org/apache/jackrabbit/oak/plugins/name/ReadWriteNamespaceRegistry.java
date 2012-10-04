@@ -115,24 +115,6 @@ name|Tree
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|plugins
-operator|.
-name|memory
-operator|.
-name|StringValue
-import|;
-end_import
-
 begin_comment
 comment|/**  * Writable namespace registry. Mainly for use to implement the full JCR API.  */
 end_comment
@@ -324,11 +306,7 @@ name|setProperty
 argument_list|(
 name|prefix
 argument_list|,
-operator|new
-name|StringValue
-argument_list|(
 name|uri
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|root
