@@ -397,7 +397,7 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|long
+name|int
 name|count
 parameter_list|()
 block|{

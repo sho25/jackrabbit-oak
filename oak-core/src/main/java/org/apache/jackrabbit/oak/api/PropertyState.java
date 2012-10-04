@@ -142,7 +142,7 @@ name|index
 parameter_list|)
 function_decl|;
 comment|/**      * The number of values of this property. {@code 1} for atoms.      * @return  number of values      */
-name|long
+name|int
 name|count
 parameter_list|()
 function_decl|;
