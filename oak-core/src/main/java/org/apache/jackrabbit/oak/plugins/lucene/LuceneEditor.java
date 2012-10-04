@@ -603,7 +603,6 @@ operator|=
 name|indexDefinition
 expr_stmt|;
 block|}
-comment|/*      *       * If before is null, then the #processCommit call is treated as a full      * reindex call      */
 annotation|@
 name|Override
 specifier|public
@@ -700,14 +699,6 @@ argument_list|,
 literal|"/"
 argument_list|)
 decl_stmt|;
-if|if
-condition|(
-name|before
-operator|!=
-literal|null
-condition|)
-block|{
-comment|// normal diff
 name|after
 operator|.
 name|compareAgainstBaseState
@@ -717,20 +708,6 @@ argument_list|,
 name|diff
 argument_list|)
 expr_stmt|;
-block|}
-else|else
-block|{
-comment|// trigger re-indexing
-name|diff
-operator|.
-name|childNodeAdded
-argument_list|(
-literal|""
-argument_list|,
-name|after
-argument_list|)
-expr_stmt|;
-block|}
 name|diff
 operator|.
 name|postProcess
@@ -738,9 +715,12 @@ argument_list|(
 name|after
 argument_list|)
 expr_stmt|;
+block|}
+finally|finally
+block|{
 name|writer
 operator|.
-name|commit
+name|close
 argument_list|()
 expr_stmt|;
 name|builder
@@ -758,14 +738,6 @@ name|currentTimeMillis
 argument_list|()
 argument_list|)
 argument_list|)
-expr_stmt|;
-block|}
-finally|finally
-block|{
-name|writer
-operator|.
-name|close
-argument_list|()
 expr_stmt|;
 block|}
 return|return
