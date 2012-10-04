@@ -101,9 +101,11 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|query
+name|plugins
 operator|.
-name|AbstractQueryTest
+name|memory
+operator|.
+name|StringValue
 import|;
 end_import
 
@@ -161,8 +163,6 @@ begin_class
 specifier|public
 class|class
 name|FilterTest
-extends|extends
-name|AbstractQueryTest
 block|{
 annotation|@
 name|Test
@@ -174,9 +174,8 @@ block|{
 name|CoreValue
 name|one
 init|=
-name|vf
-operator|.
-name|createValue
+operator|new
+name|StringValue
 argument_list|(
 literal|"1"
 argument_list|)
@@ -184,9 +183,8 @@ decl_stmt|;
 name|CoreValue
 name|two
 init|=
-name|vf
-operator|.
-name|createValue
+operator|new
+name|StringValue
 argument_list|(
 literal|"2"
 argument_list|)

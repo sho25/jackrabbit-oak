@@ -362,7 +362,7 @@ end_import
 begin_class
 specifier|public
 class|class
-name|LuceneEditorTest
+name|LuceneIndexTest
 implements|implements
 name|LuceneIndexConstants
 block|{

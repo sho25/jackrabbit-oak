@@ -14,6 +14,8 @@ operator|.
 name|oak
 operator|.
 name|query
+operator|.
+name|ast
 package|;
 end_package
 

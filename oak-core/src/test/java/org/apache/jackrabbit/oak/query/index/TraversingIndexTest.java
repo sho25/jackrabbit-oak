@@ -208,7 +208,7 @@ end_comment
 begin_class
 specifier|public
 class|class
-name|TraversingCursorTest
+name|TraversingIndexTest
 block|{
 specifier|private
 specifier|final
