@@ -19,16 +19,6 @@ end_package
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|List
-import|;
-end_import
-
-begin_import
-import|import
 name|javax
 operator|.
 name|annotation
@@ -62,27 +52,6 @@ function_decl|;
 comment|/**      * Determine whether the value if an array of atoms      * @return  {@code true} if and only if the value is an array of atoms.      */
 name|boolean
 name|isArray
-parameter_list|()
-function_decl|;
-comment|/**      * Value of this property.      * @return  the single value of this property.      * @throws IllegalStateException  if {@code isArray()} is {@code true}.      */
-annotation|@
-name|Nonnull
-annotation|@
-name|Deprecated
-name|CoreValue
-name|getValue
-parameter_list|()
-function_decl|;
-comment|/**      * Values of this property. The returned list is immutable and contains      * all the values of this property. If this is a single-valued property,      * then the returned list will simply contain the single value returned      * by the {@link #getValue()} method.      *      * @return immutable list of the values of this property      */
-annotation|@
-name|Nonnull
-annotation|@
-name|Deprecated
-name|List
-argument_list|<
-name|CoreValue
-argument_list|>
-name|getValues
 parameter_list|()
 function_decl|;
 comment|/**      * Determine the type of this property      * @return  the type of this property      */

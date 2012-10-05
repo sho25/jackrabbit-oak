@@ -171,6 +171,24 @@ name|plugins
 operator|.
 name|memory
 operator|.
+name|CoreValues
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|memory
+operator|.
 name|MultiPropertyState
 import|;
 end_import
@@ -248,11 +266,13 @@ throws|throws
 name|InvalidItemStateException
 block|{
 return|return
-name|getPropertyState
-argument_list|()
+name|CoreValues
 operator|.
 name|getValue
+argument_list|(
+name|getPropertyState
 argument_list|()
+argument_list|)
 return|;
 block|}
 comment|/**      * Get the value of the property      * @return  the values of the property      * @throws IllegalStateException  if {@code isMultivalue()} is {@code false}.      */
@@ -269,11 +289,13 @@ throws|throws
 name|InvalidItemStateException
 block|{
 return|return
-name|getPropertyState
-argument_list|()
+name|CoreValues
 operator|.
 name|getValues
+argument_list|(
+name|getPropertyState
 argument_list|()
+argument_list|)
 return|;
 block|}
 comment|/**      * Determine whether the property is multi valued      * @return  {@code true} if multi valued      */
