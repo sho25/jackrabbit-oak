@@ -125,9 +125,6 @@ parameter_list|(
 name|Session
 name|session
 parameter_list|,
-name|ContentSession
-name|contentSession
-parameter_list|,
 name|Root
 name|root
 parameter_list|,
@@ -141,9 +138,6 @@ specifier|public
 name|PrincipalProvider
 name|getPrincipalProvider
 parameter_list|(
-name|ContentSession
-name|contentSession
-parameter_list|,
 name|Root
 name|root
 parameter_list|,

@@ -1848,8 +1848,6 @@ name|getPrincipalManager
 argument_list|(
 name|session
 argument_list|,
-name|contentSession
-argument_list|,
 name|root
 argument_list|,
 name|getNamePathMapper
@@ -1892,8 +1890,6 @@ operator|.
 name|getUserManager
 argument_list|(
 name|session
-argument_list|,
-name|contentSession
 argument_list|,
 name|root
 argument_list|,

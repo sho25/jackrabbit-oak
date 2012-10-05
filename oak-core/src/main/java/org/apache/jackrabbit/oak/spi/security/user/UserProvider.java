@@ -219,6 +219,30 @@ name|Tree
 name|userTree
 parameter_list|)
 function_decl|;
+comment|/**      * Returns the password hash for the user with the specified ID or {@code null}      * if the user does not exist or if the hash is not accessible for the editing      * session.      *      * @param userID The id of a user.      * @return the password hash or {@code null}.      */
+name|String
+name|getPassword
+parameter_list|(
+name|String
+name|userID
+parameter_list|)
+function_decl|;
+comment|/**      * Set the password for the user identified by the specified {@code userTree}.      *      * @param userTree The tree representing the user.      * @param password The plaintext password to set.      * @param forceHash If true the specified password needs to be hashed irrespective      * of it's format.      * @throws javax.jcr.RepositoryException If an error occurs      */
+name|void
+name|setPassword
+parameter_list|(
+name|Tree
+name|userTree
+parameter_list|,
+name|String
+name|password
+parameter_list|,
+name|boolean
+name|forceHash
+parameter_list|)
+throws|throws
+name|RepositoryException
+function_decl|;
 name|void
 name|setProtectedProperty
 parameter_list|(

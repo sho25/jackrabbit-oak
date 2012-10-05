@@ -315,6 +315,26 @@ name|apache
 operator|.
 name|jackrabbit
 operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|security
+operator|.
+name|user
+operator|.
+name|UserProvider
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
 name|util
 operator|.
 name|Text
@@ -1487,6 +1507,20 @@ parameter_list|()
 block|{
 return|return
 name|userManager
+return|;
+block|}
+comment|/**      * @return The user provider associated with this authorizable      */
+annotation|@
+name|Nonnull
+name|UserProvider
+name|getUserProvider
+parameter_list|()
+block|{
+return|return
+name|userManager
+operator|.
+name|getUserProvider
+argument_list|()
 return|;
 block|}
 comment|/**      * @return The principal name of this authorizable.      * @throws RepositoryException If no principal name can be retrieved.      */

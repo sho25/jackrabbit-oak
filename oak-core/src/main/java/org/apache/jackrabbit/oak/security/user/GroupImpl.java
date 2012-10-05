@@ -353,9 +353,6 @@ operator|==
 literal|null
 operator|||
 operator|!
-name|getUserManager
-argument_list|()
-operator|.
 name|getUserProvider
 argument_list|()
 operator|.

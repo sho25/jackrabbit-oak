@@ -413,7 +413,35 @@ operator|==
 literal|null
 return|;
 block|}
-comment|/**      * Returns {@code true} if hash of the specified {@code password} equals the      * given hashed password.      *      * @param hashedPassword Password hash.      * @param password The password to compare.      * @return If the hash of the specified {@code password} equals the given      * {@code hashedPassword} string.      */
+comment|/**      * Returns {@code true} if hash of the specified {@code password} equals the      * given hashed password.      *      * @param hashedPassword Password hash.      * @param password The password to compare.      * @return If the hash created from the specified {@code password} equals      * the given {@code hashedPassword} string.      */
+specifier|public
+specifier|static
+name|boolean
+name|isSame
+parameter_list|(
+name|String
+name|hashedPassword
+parameter_list|,
+name|char
+index|[]
+name|password
+parameter_list|)
+block|{
+return|return
+name|isSame
+argument_list|(
+name|hashedPassword
+argument_list|,
+name|String
+operator|.
+name|valueOf
+argument_list|(
+name|password
+argument_list|)
+argument_list|)
+return|;
+block|}
+comment|/**      * Returns {@code true} if hash of the specified {@code password} equals the      * given hashed password.      *      * @param hashedPassword Password hash.      * @param password The password to compare.      * @return If the hash created from the specified {@code password} equals      * the given {@code hashedPassword} string.      */
 specifier|public
 specifier|static
 name|boolean

@@ -143,6 +143,15 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
+comment|/**      * Configuration option defining the ID of the anonymous user. The ID      * might be {@code null} of no anonymous user exists. In this case      * Session#getUserID() may return {@code null} if it has been obtained      * using {@link javax.jcr.GuestCredentials}.      */
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|PARAM_ANONYMOUS_ID
+init|=
+literal|"anonymousId"
+decl_stmt|;
 comment|/**      * Configuration option to define the path underneath which user nodes      * are being created.      */
 specifier|public
 specifier|static
@@ -338,6 +347,20 @@ parameter_list|()
 block|{
 return|return
 name|adminId
+return|;
+block|}
+specifier|public
+name|String
+name|getAnonymousId
+parameter_list|()
+block|{
+return|return
+name|getConfigValue
+argument_list|(
+name|PARAM_ANONYMOUS_ID
+argument_list|,
+literal|null
+argument_list|)
 return|;
 block|}
 specifier|public

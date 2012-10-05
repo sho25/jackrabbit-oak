@@ -250,9 +250,9 @@ argument_list|()
 expr_stmt|;
 name|vf
 operator|=
-name|session
+name|root
 operator|.
-name|getCoreValueFactory
+name|getValueFactory
 argument_list|()
 expr_stmt|;
 block|}

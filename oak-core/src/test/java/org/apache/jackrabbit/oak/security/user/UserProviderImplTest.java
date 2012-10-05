@@ -721,8 +721,6 @@ return|return
 operator|new
 name|UserProviderImpl
 argument_list|(
-name|contentSession
-argument_list|,
 name|root
 argument_list|,
 name|defaultConfig
@@ -771,8 +769,6 @@ return|return
 operator|new
 name|UserProviderImpl
 argument_list|(
-name|contentSession
-argument_list|,
 name|root
 argument_list|,
 operator|new

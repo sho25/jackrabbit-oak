@@ -79,6 +79,22 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
+name|api
+operator|.
+name|Tree
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
 name|spi
 operator|.
 name|security
@@ -86,6 +102,46 @@ operator|.
 name|authentication
 operator|.
 name|Authentication
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|security
+operator|.
+name|user
+operator|.
+name|PasswordUtility
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|security
+operator|.
+name|user
+operator|.
+name|UserProvider
 import|;
 end_import
 
@@ -105,11 +161,19 @@ specifier|final
 name|String
 name|userID
 decl_stmt|;
+specifier|private
+specifier|final
+name|UserProvider
+name|userProvider
+decl_stmt|;
 specifier|public
 name|AuthenticationImpl
 parameter_list|(
 name|String
 name|userID
+parameter_list|,
+name|UserProvider
+name|userProvider
 parameter_list|)
 block|{
 name|this
@@ -117,6 +181,12 @@ operator|.
 name|userID
 operator|=
 name|userID
+expr_stmt|;
+name|this
+operator|.
+name|userProvider
+operator|=
+name|userProvider
 expr_stmt|;
 block|}
 annotation|@
@@ -129,37 +199,24 @@ name|Credentials
 name|credentials
 parameter_list|)
 block|{
-if|if
-condition|(
-name|credentials
-operator|instanceof
-name|SimpleCredentials
-condition|)
-block|{
 comment|// TODO
 return|return
 literal|true
 return|;
-block|}
-elseif|else
-if|if
-condition|(
-name|credentials
-operator|instanceof
-name|GuestCredentials
-condition|)
-block|{
-comment|// TODO
-return|return
-literal|true
-return|;
-block|}
-else|else
-block|{
-return|return
-literal|false
-return|;
-block|}
+comment|//        if (userProvider == null || userID == null) {
+comment|//            return false;
+comment|//        }
+comment|//
+comment|//        if (credentials instanceof SimpleCredentials) {
+comment|//            SimpleCredentials creds = (SimpleCredentials) credentials;
+comment|//            return userID.equals(creds.getUserID())&&
+comment|//                    PasswordUtility.isSame(userProvider.getPassword(userID), creds.getPassword());
+comment|//        } else if (credentials instanceof GuestCredentials) {
+comment|//            return userProvider.getAuthorizable(userID) != null;
+comment|//        } else {
+comment|//            // unsupported credentials object
+comment|//            return false;
+comment|//        }
 block|}
 annotation|@
 name|Override

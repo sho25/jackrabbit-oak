@@ -206,13 +206,6 @@ operator|=
 name|createAdminSession
 argument_list|()
 expr_stmt|;
-name|vf
-operator|=
-name|session
-operator|.
-name|getCoreValueFactory
-argument_list|()
-expr_stmt|;
 name|root
 operator|=
 name|session
@@ -225,6 +218,13 @@ operator|=
 name|root
 operator|.
 name|getQueryEngine
+argument_list|()
+expr_stmt|;
+name|vf
+operator|=
+name|root
+operator|.
+name|getValueFactory
 argument_list|()
 expr_stmt|;
 block|}

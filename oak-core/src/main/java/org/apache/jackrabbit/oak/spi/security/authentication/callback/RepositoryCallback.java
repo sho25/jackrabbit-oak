@@ -83,7 +83,7 @@ name|oak
 operator|.
 name|api
 operator|.
-name|ContentSession
+name|Root
 import|;
 end_import
 
@@ -234,8 +234,8 @@ block|}
 annotation|@
 name|CheckForNull
 specifier|public
-name|ContentSession
-name|getContentSession
+name|Root
+name|getRoot
 parameter_list|()
 block|{
 if|if
@@ -247,7 +247,9 @@ condition|)
 block|{
 try|try
 block|{
-comment|// TODO rather use Oak or similar setup mechanism
+comment|// FIXME: need a direct and fast way to create Root from the node store
+comment|// FIXME: - without login
+comment|// FIXME: - without ContentSession#getLatestRoot which is unbearably slow
 name|SecurityProvider
 name|sp
 init|=
@@ -272,6 +274,9 @@ literal|null
 argument_list|,
 name|workspaceName
 argument_list|)
+operator|.
+name|getLatestRoot
+argument_list|()
 return|;
 block|}
 catch|catch

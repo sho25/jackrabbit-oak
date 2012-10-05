@@ -627,7 +627,10 @@ name|NodeUtil
 argument_list|(
 name|privilegesTree
 argument_list|,
-name|contentSession
+name|root
+operator|.
+name|getValueFactory
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|writeDefinition

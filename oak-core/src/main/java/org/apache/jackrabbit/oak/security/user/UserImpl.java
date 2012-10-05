@@ -303,9 +303,6 @@ operator|==
 literal|null
 operator|||
 operator|!
-name|getUserManager
-argument_list|()
-operator|.
 name|getUserProvider
 argument_list|()
 operator|.
@@ -384,9 +381,6 @@ name|isAdmin
 parameter_list|()
 block|{
 return|return
-name|getUserManager
-argument_list|()
-operator|.
 name|getUserProvider
 argument_list|()
 operator|.
@@ -461,7 +455,8 @@ argument_list|,
 name|password
 argument_list|)
 expr_stmt|;
-name|userManager
+name|getUserProvider
+argument_list|()
 operator|.
 name|setPassword
 argument_list|(
@@ -696,9 +691,6 @@ parameter_list|)
 throws|throws
 name|RepositoryException
 block|{
-name|getUserManager
-argument_list|()
-operator|.
 name|getUserProvider
 argument_list|()
 operator|.
@@ -730,9 +722,6 @@ parameter_list|)
 throws|throws
 name|RepositoryException
 block|{
-name|getUserManager
-argument_list|()
-operator|.
 name|getUserProvider
 argument_list|()
 operator|.

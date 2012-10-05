@@ -451,7 +451,6 @@ argument_list|,
 name|options
 argument_list|)
 expr_stmt|;
-comment|// TODO
 block|}
 annotation|@
 name|Override
@@ -480,6 +479,9 @@ operator|new
 name|AuthenticationImpl
 argument_list|(
 name|userID
+argument_list|,
+name|getUserProvider
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|boolean
@@ -727,7 +729,8 @@ condition|)
 block|{
 name|userID
 operator|=
-literal|"anonymous"
+name|getAnonymousID
+argument_list|()
 expr_stmt|;
 block|}
 elseif|else
@@ -855,6 +858,16 @@ expr_stmt|;
 block|}
 return|return
 name|userID
+return|;
+block|}
+specifier|private
+name|String
+name|getAnonymousID
+parameter_list|()
+block|{
+comment|// TODO
+return|return
+literal|"anonymous"
 return|;
 block|}
 specifier|private
