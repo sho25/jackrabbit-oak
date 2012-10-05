@@ -172,7 +172,7 @@ parameter_list|)
 block|{
 return|return
 operator|new
-name|BlobImpl
+name|ValueBasedBlob
 argument_list|(
 name|value
 argument_list|)

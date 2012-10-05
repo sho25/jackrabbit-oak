@@ -88,7 +88,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Single-valued property state.  */
+comment|/**  * Single-valued property  state.  */
 end_comment
 
 begin_class

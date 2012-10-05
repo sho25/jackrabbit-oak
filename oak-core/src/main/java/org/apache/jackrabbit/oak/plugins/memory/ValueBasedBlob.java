@@ -48,7 +48,7 @@ end_import
 begin_class
 specifier|public
 class|class
-name|BlobImpl
+name|ValueBasedBlob
 extends|extends
 name|AbstractBlob
 block|{
@@ -58,7 +58,7 @@ name|CoreValue
 name|value
 decl_stmt|;
 specifier|public
-name|BlobImpl
+name|ValueBasedBlob
 parameter_list|(
 name|CoreValue
 name|value
