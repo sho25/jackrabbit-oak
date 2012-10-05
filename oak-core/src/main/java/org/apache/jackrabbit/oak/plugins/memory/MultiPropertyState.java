@@ -170,7 +170,6 @@ name|CoreValue
 argument_list|>
 name|values
 decl_stmt|;
-specifier|public
 name|MultiPropertyState
 parameter_list|(
 name|String

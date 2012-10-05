@@ -145,7 +145,7 @@ name|plugins
 operator|.
 name|memory
 operator|.
-name|MultiPropertyState
+name|PropertyStates
 import|;
 end_import
 
@@ -651,19 +651,15 @@ expr_stmt|;
 block|}
 block|}
 block|}
-name|MultiPropertyState
-name|mv
-init|=
-operator|new
-name|MultiPropertyState
+return|return
+name|PropertyStates
+operator|.
+name|createProperty
 argument_list|(
 literal|"*"
 argument_list|,
 name|values
 argument_list|)
-decl_stmt|;
-return|return
-name|mv
 return|;
 block|}
 specifier|private

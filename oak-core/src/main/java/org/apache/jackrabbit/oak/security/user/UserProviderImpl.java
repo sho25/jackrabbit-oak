@@ -279,7 +279,7 @@ name|plugins
 operator|.
 name|memory
 operator|.
-name|SinglePropertyState
+name|PropertyStates
 import|;
 end_import
 
@@ -339,7 +339,7 @@ name|security
 operator|.
 name|user
 operator|.
-name|PasswordUtility
+name|AuthorizableType
 import|;
 end_import
 
@@ -359,7 +359,7 @@ name|security
 operator|.
 name|user
 operator|.
-name|AuthorizableType
+name|PasswordUtility
 import|;
 end_import
 
@@ -1362,8 +1362,9 @@ name|authorizableTree
 operator|.
 name|setProperty
 argument_list|(
-operator|new
-name|SinglePropertyState
+name|PropertyStates
+operator|.
+name|createProperty
 argument_list|(
 name|propertyName
 argument_list|,

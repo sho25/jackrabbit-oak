@@ -65,7 +65,7 @@ name|plugins
 operator|.
 name|memory
 operator|.
-name|SinglePropertyState
+name|PropertyStates
 import|;
 end_import
 
@@ -215,8 +215,9 @@ argument_list|)
 decl_stmt|;
 name|p
 operator|=
-operator|new
-name|SinglePropertyState
+name|PropertyStates
+operator|.
+name|createProperty
 argument_list|(
 name|Query
 operator|.

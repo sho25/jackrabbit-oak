@@ -75,7 +75,7 @@ name|plugins
 operator|.
 name|memory
 operator|.
-name|SinglePropertyState
+name|PropertyStates
 import|;
 end_import
 
@@ -226,8 +226,9 @@ name|length
 argument_list|)
 decl_stmt|;
 return|return
-operator|new
-name|SinglePropertyState
+name|PropertyStates
+operator|.
+name|createProperty
 argument_list|(
 literal|"LENGTH"
 argument_list|,

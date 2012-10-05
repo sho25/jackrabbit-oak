@@ -291,7 +291,7 @@ name|plugins
 operator|.
 name|memory
 operator|.
-name|MultiPropertyState
+name|PropertyStates
 import|;
 end_import
 
@@ -433,7 +433,7 @@ name|api
 operator|.
 name|Type
 operator|.
-name|STRINGS
+name|STRING
 import|;
 end_import
 
@@ -451,7 +451,7 @@ name|api
 operator|.
 name|Type
 operator|.
-name|STRING
+name|STRINGS
 import|;
 end_import
 
@@ -1468,8 +1468,9 @@ name|tree
 operator|.
 name|setProperty
 argument_list|(
-operator|new
-name|MultiPropertyState
+name|PropertyStates
+operator|.
+name|createProperty
 argument_list|(
 name|name
 argument_list|,
