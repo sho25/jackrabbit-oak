@@ -23,21 +23,11 @@ end_package
 
 begin_import
 import|import
-name|java
+name|javax
 operator|.
-name|security
+name|jcr
 operator|.
-name|Principal
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Set
+name|Credentials
 import|;
 end_import
 
@@ -45,9 +35,11 @@ begin_import
 import|import
 name|javax
 operator|.
-name|jcr
+name|security
 operator|.
-name|Credentials
+name|auth
+operator|.
+name|Subject
 import|;
 end_import
 
@@ -68,15 +60,12 @@ name|Credentials
 name|credentials
 parameter_list|)
 function_decl|;
-comment|/**      * Test if the given subject (i.e. any of the principals it contains) is      * allowed to impersonate.      *      * @param principals a set of principals to test.      * @return true if this {@code Impersonation} allows the specified      * set of principals to impersonate.      */
+comment|/**      * Test if the given subject (i.e. any of the principals it contains) is      * allowed to impersonate.      *      * @param subject The subject that wants to impersonate.      * @return true if this {@code Impersonation} allows the specified      * set of principals to impersonate.      */
 name|boolean
 name|impersonate
 parameter_list|(
-name|Set
-argument_list|<
-name|Principal
-argument_list|>
-name|principals
+name|Subject
+name|subject
 parameter_list|)
 function_decl|;
 block|}

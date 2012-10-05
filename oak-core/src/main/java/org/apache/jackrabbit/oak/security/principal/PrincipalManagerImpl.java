@@ -155,6 +155,17 @@ operator|=
 name|principalProvider
 expr_stmt|;
 block|}
+comment|/**      * Returns the underlying principal provider implementation. Note, that      * in contrast to Jackrabbit 2.x the principal provider is associated with      * the editing session. Thus exposing the lower level interface will not      * expose information that wasn't accessible by other means.      *      * @return the principal provider.      */
+specifier|public
+name|PrincipalProvider
+name|getPrincipalProvider
+parameter_list|()
+block|{
+return|return
+name|principalProvider
+return|;
+block|}
+comment|//---------------------------------------------------< PrincipalManager>---
 annotation|@
 name|Override
 specifier|public

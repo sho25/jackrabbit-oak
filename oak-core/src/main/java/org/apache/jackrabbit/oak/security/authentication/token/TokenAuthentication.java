@@ -25,29 +25,9 @@ begin_import
 import|import
 name|java
 operator|.
-name|security
-operator|.
-name|Principal
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
 name|util
 operator|.
 name|Date
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Set
 import|;
 end_import
 
@@ -68,6 +48,18 @@ operator|.
 name|jcr
 operator|.
 name|Credentials
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|security
+operator|.
+name|auth
+operator|.
+name|Subject
 import|;
 end_import
 
@@ -176,7 +168,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * TokenAuthentication... TODO  */
+comment|/**  * Implementation of the {@code Authentication} interface that deals with  * token based login. {@link #authenticate(javax.jcr.Credentials) Authentication}  * will be successful if the specified credentials are valid {@link TokenCredentials}  * according to the characteristics and constraints enforced by {@link TokenProvider}  * and the information obtained using {@link TokenProvider#getTokenInfo(String)}  * respectively.  */
 end_comment
 
 begin_class
@@ -272,11 +264,8 @@ specifier|public
 name|boolean
 name|impersonate
 parameter_list|(
-name|Set
-argument_list|<
-name|Principal
-argument_list|>
-name|principals
+name|Subject
+name|subject
 parameter_list|)
 block|{
 return|return
@@ -404,9 +393,6 @@ name|tokenCredentials
 argument_list|)
 condition|)
 block|{
-if|if
-condition|(
-operator|!
 name|tokenProvider
 operator|.
 name|resetTokenExpiration
@@ -415,16 +401,7 @@ name|tokenInfo
 argument_list|,
 name|loginTime
 argument_list|)
-condition|)
-block|{
-name|log
-operator|.
-name|debug
-argument_list|(
-literal|"Unable to reset token expiration... trying next time"
-argument_list|)
 expr_stmt|;
-block|}
 return|return
 literal|true
 return|;

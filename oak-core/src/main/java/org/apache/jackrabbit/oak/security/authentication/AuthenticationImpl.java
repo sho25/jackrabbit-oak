@@ -21,26 +21,6 @@ end_package
 
 begin_import
 import|import
-name|java
-operator|.
-name|security
-operator|.
-name|Principal
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Set
-import|;
-end_import
-
-begin_import
-import|import
 name|javax
 operator|.
 name|jcr
@@ -53,35 +33,11 @@ begin_import
 import|import
 name|javax
 operator|.
-name|jcr
+name|security
 operator|.
-name|GuestCredentials
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
+name|auth
 operator|.
-name|jcr
-operator|.
-name|SimpleCredentials
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|api
-operator|.
-name|Tree
+name|Subject
 import|;
 end_import
 
@@ -119,9 +75,9 @@ name|spi
 operator|.
 name|security
 operator|.
-name|user
+name|principal
 operator|.
-name|PasswordUtility
+name|PrincipalProvider
 import|;
 end_import
 
@@ -145,6 +101,26 @@ name|UserProvider
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
+import|;
+end_import
+
 begin_comment
 comment|/**  * AuthenticationImpl...  */
 end_comment
@@ -157,6 +133,21 @@ implements|implements
 name|Authentication
 block|{
 specifier|private
+specifier|static
+specifier|final
+name|Logger
+name|log
+init|=
+name|LoggerFactory
+operator|.
+name|getLogger
+argument_list|(
+name|AuthenticationImpl
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
+specifier|private
 specifier|final
 name|String
 name|userID
@@ -166,6 +157,11 @@ specifier|final
 name|UserProvider
 name|userProvider
 decl_stmt|;
+specifier|private
+specifier|final
+name|PrincipalProvider
+name|principalProvider
+decl_stmt|;
 specifier|public
 name|AuthenticationImpl
 parameter_list|(
@@ -174,6 +170,9 @@ name|userID
 parameter_list|,
 name|UserProvider
 name|userProvider
+parameter_list|,
+name|PrincipalProvider
+name|principalProvider
 parameter_list|)
 block|{
 name|this
@@ -187,6 +186,12 @@ operator|.
 name|userProvider
 operator|=
 name|userProvider
+expr_stmt|;
+name|this
+operator|.
+name|principalProvider
+operator|=
+name|principalProvider
 expr_stmt|;
 block|}
 annotation|@
@@ -224,17 +229,23 @@ specifier|public
 name|boolean
 name|impersonate
 parameter_list|(
-name|Set
-argument_list|<
-name|Principal
-argument_list|>
-name|principals
+name|Subject
+name|subject
 parameter_list|)
 block|{
 comment|// TODO
 return|return
 literal|true
 return|;
+comment|//        if (userProvider == null || userID == null) {
+comment|//            try {
+comment|//                return userProvider.getImpersonation(userID, principalProvider).allows(subject);
+comment|//            } catch (RepositoryException e) {
+comment|//                log.debug("Error while validating impersonation", e.getMessage());
+comment|//                return false;
+comment|//            }
+comment|//        }
+comment|//        return false;
 block|}
 block|}
 end_class

@@ -1373,6 +1373,13 @@ operator|.
 name|commit
 argument_list|()
 expr_stmt|;
+name|log
+operator|.
+name|debug
+argument_list|(
+literal|"Successfully reset token expiration time."
+argument_list|)
+expr_stmt|;
 return|return
 literal|true
 return|;
