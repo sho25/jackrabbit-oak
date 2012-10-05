@@ -383,7 +383,7 @@ name|security
 operator|.
 name|user
 operator|.
-name|Type
+name|AuthorizableType
 import|;
 end_import
 
@@ -780,7 +780,7 @@ name|getAuthorizable
 argument_list|(
 name|userId
 argument_list|,
-name|Type
+name|AuthorizableType
 operator|.
 name|USER
 argument_list|)

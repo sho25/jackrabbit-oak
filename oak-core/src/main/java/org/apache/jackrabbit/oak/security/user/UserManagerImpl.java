@@ -377,7 +377,7 @@ name|security
 operator|.
 name|user
 operator|.
-name|Type
+name|AuthorizableType
 import|;
 end_import
 
@@ -780,7 +780,7 @@ name|relPath
 argument_list|)
 block|}
 decl_stmt|;
-name|Type
+name|AuthorizableType
 name|authorizableType
 init|=
 name|getAuthorizableType
@@ -1565,7 +1565,7 @@ name|isAuthorizableType
 argument_list|(
 name|tree
 argument_list|,
-name|Type
+name|AuthorizableType
 operator|.
 name|USER
 argument_list|)
@@ -1597,7 +1597,7 @@ name|isAuthorizableType
 argument_list|(
 name|tree
 argument_list|,
-name|Type
+name|AuthorizableType
 operator|.
 name|GROUP
 argument_list|)
@@ -1801,7 +1801,7 @@ expr_stmt|;
 block|}
 specifier|private
 specifier|static
-name|Type
+name|AuthorizableType
 name|getAuthorizableType
 parameter_list|(
 name|int
@@ -1819,7 +1819,7 @@ operator|.
 name|SEARCH_TYPE_USER
 case|:
 return|return
-name|Type
+name|AuthorizableType
 operator|.
 name|USER
 return|;
@@ -1829,7 +1829,7 @@ operator|.
 name|SEARCH_TYPE_GROUP
 case|:
 return|return
-name|Type
+name|AuthorizableType
 operator|.
 name|GROUP
 return|;
@@ -1839,7 +1839,7 @@ operator|.
 name|SEARCH_TYPE_AUTHORIZABLE
 case|:
 return|return
-name|Type
+name|AuthorizableType
 operator|.
 name|AUTHORIZABLE
 return|;

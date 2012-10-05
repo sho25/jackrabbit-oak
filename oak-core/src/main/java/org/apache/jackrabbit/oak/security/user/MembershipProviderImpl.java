@@ -311,7 +311,7 @@ name|security
 operator|.
 name|user
 operator|.
-name|Type
+name|AuthorizableType
 import|;
 end_import
 
@@ -512,7 +512,7 @@ name|getByID
 argument_list|(
 name|authorizableId
 argument_list|,
-name|Type
+name|AuthorizableType
 operator|.
 name|AUTHORIZABLE
 argument_list|)
@@ -685,7 +685,7 @@ parameter_list|(
 name|String
 name|groupId
 parameter_list|,
-name|Type
+name|AuthorizableType
 name|authorizableType
 parameter_list|,
 name|boolean
@@ -699,7 +699,7 @@ name|getByID
 argument_list|(
 name|groupId
 argument_list|,
-name|Type
+name|AuthorizableType
 operator|.
 name|GROUP
 argument_list|)
@@ -744,7 +744,7 @@ parameter_list|(
 name|Tree
 name|groupTree
 parameter_list|,
-name|Type
+name|AuthorizableType
 name|authorizableType
 parameter_list|,
 name|boolean
@@ -1471,7 +1471,7 @@ argument_list|>
 name|declaredMembers
 parameter_list|,
 specifier|final
-name|Type
+name|AuthorizableType
 name|authorizableType
 parameter_list|)
 block|{
@@ -1600,7 +1600,7 @@ name|isAuthorizableTree
 argument_list|(
 name|group
 argument_list|,
-name|Type
+name|AuthorizableType
 operator|.
 name|GROUP
 argument_list|)
@@ -1770,7 +1770,7 @@ name|isAuthorizableTree
 argument_list|(
 name|group
 argument_list|,
-name|Type
+name|AuthorizableType
 operator|.
 name|GROUP
 argument_list|)

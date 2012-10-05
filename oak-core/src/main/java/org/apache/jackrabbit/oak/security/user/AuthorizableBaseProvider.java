@@ -113,7 +113,7 @@ name|security
 operator|.
 name|user
 operator|.
-name|Type
+name|AuthorizableType
 import|;
 end_import
 
@@ -285,7 +285,7 @@ parameter_list|(
 name|String
 name|authorizableId
 parameter_list|,
-name|Type
+name|AuthorizableType
 name|authorizableType
 parameter_list|)
 block|{
@@ -346,7 +346,7 @@ name|isAuthorizableTree
 argument_list|(
 name|tree
 argument_list|,
-name|Type
+name|AuthorizableType
 operator|.
 name|AUTHORIZABLE
 argument_list|)
@@ -404,7 +404,7 @@ parameter_list|(
 name|Tree
 name|tree
 parameter_list|,
-name|Type
+name|AuthorizableType
 name|authorizableType
 parameter_list|)
 block|{

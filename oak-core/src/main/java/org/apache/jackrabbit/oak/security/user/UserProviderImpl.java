@@ -359,7 +359,7 @@ name|security
 operator|.
 name|user
 operator|.
-name|Type
+name|AuthorizableType
 import|;
 end_import
 
@@ -682,7 +682,7 @@ name|getByID
 argument_list|(
 name|authorizableId
 argument_list|,
-name|Type
+name|AuthorizableType
 operator|.
 name|AUTHORIZABLE
 argument_list|)
@@ -697,7 +697,7 @@ parameter_list|(
 name|String
 name|authorizableId
 parameter_list|,
-name|Type
+name|AuthorizableType
 name|authorizableType
 parameter_list|)
 block|{
@@ -952,7 +952,7 @@ name|isAuthorizableTree
 argument_list|(
 name|authorizableTree
 argument_list|,
-name|Type
+name|AuthorizableType
 operator|.
 name|AUTHORIZABLE
 argument_list|)
@@ -1031,7 +1031,7 @@ parameter_list|,
 name|long
 name|maxSize
 parameter_list|,
-name|Type
+name|AuthorizableType
 name|authorizableType
 parameter_list|)
 block|{
@@ -1053,7 +1053,7 @@ parameter_list|(
 name|Tree
 name|authorizableTree
 parameter_list|,
-name|Type
+name|AuthorizableType
 name|authorizableType
 parameter_list|)
 block|{
@@ -1086,7 +1086,7 @@ name|isAuthorizableType
 argument_list|(
 name|userTree
 argument_list|,
-name|Type
+name|AuthorizableType
 operator|.
 name|USER
 argument_list|)
@@ -1122,7 +1122,7 @@ name|getAuthorizable
 argument_list|(
 name|userID
 argument_list|,
-name|Type
+name|AuthorizableType
 operator|.
 name|USER
 argument_list|)

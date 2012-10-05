@@ -46,7 +46,7 @@ end_comment
 begin_enum
 specifier|public
 enum|enum
-name|Type
+name|AuthorizableType
 block|{
 name|USER
 parameter_list|(
@@ -77,7 +77,7 @@ end_decl_stmt
 
 begin_constructor
 specifier|private
-name|Type
+name|AuthorizableType
 parameter_list|(
 name|int
 name|userType

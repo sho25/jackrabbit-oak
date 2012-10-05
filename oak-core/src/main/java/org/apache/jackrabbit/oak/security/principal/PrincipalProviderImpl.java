@@ -181,6 +181,22 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
+name|api
+operator|.
+name|Type
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
 name|namepath
 operator|.
 name|PathMapper
@@ -283,7 +299,7 @@ name|security
 operator|.
 name|user
 operator|.
-name|MembershipProvider
+name|AuthorizableType
 import|;
 end_import
 
@@ -303,7 +319,7 @@ name|security
 operator|.
 name|user
 operator|.
-name|Type
+name|MembershipProvider
 import|;
 end_import
 
@@ -396,24 +412,6 @@ operator|.
 name|Preconditions
 operator|.
 name|checkState
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|api
-operator|.
-name|Type
-operator|.
-name|*
 import|;
 end_import
 
@@ -642,7 +640,7 @@ name|getAuthorizable
 argument_list|(
 name|userID
 argument_list|,
-name|Type
+name|AuthorizableType
 operator|.
 name|USER
 argument_list|)
@@ -792,7 +790,7 @@ name|Long
 operator|.
 name|MAX_VALUE
 argument_list|,
-name|Type
+name|AuthorizableType
 operator|.
 name|AUTHORIZABLE
 argument_list|)
@@ -949,6 +947,8 @@ argument_list|)
 operator|.
 name|getValue
 argument_list|(
+name|Type
+operator|.
 name|STRING
 argument_list|)
 decl_stmt|;
@@ -1011,7 +1011,7 @@ name|isAuthorizableType
 argument_list|(
 name|tree
 argument_list|,
-name|Type
+name|AuthorizableType
 operator|.
 name|GROUP
 argument_list|)
@@ -1150,7 +1150,7 @@ argument_list|(
 name|getTree
 argument_list|()
 argument_list|,
-name|Type
+name|AuthorizableType
 operator|.
 name|AUTHORIZABLE
 argument_list|,

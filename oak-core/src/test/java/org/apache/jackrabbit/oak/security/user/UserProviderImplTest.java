@@ -241,7 +241,7 @@ name|security
 operator|.
 name|user
 operator|.
-name|Type
+name|AuthorizableType
 import|;
 end_import
 
@@ -1961,7 +1961,7 @@ name|getAuthorizable
 argument_list|(
 name|userID
 argument_list|,
-name|Type
+name|AuthorizableType
 operator|.
 name|USER
 argument_list|)
@@ -1992,7 +1992,7 @@ name|getAuthorizable
 argument_list|(
 name|userID
 argument_list|,
-name|Type
+name|AuthorizableType
 operator|.
 name|AUTHORIZABLE
 argument_list|)
@@ -2006,7 +2006,7 @@ name|getAuthorizable
 argument_list|(
 name|userID
 argument_list|,
-name|Type
+name|AuthorizableType
 operator|.
 name|GROUP
 argument_list|)
@@ -2043,7 +2043,7 @@ name|getAuthorizable
 argument_list|(
 name|groupID
 argument_list|,
-name|Type
+name|AuthorizableType
 operator|.
 name|GROUP
 argument_list|)
@@ -2074,7 +2074,7 @@ name|getAuthorizable
 argument_list|(
 name|groupID
 argument_list|,
-name|Type
+name|AuthorizableType
 operator|.
 name|AUTHORIZABLE
 argument_list|)
@@ -2088,7 +2088,7 @@ name|getAuthorizable
 argument_list|(
 name|groupID
 argument_list|,
-name|Type
+name|AuthorizableType
 operator|.
 name|USER
 argument_list|)

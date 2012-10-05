@@ -171,6 +171,22 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
+name|api
+operator|.
+name|Type
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
 name|spi
 operator|.
 name|security
@@ -237,7 +253,7 @@ name|security
 operator|.
 name|user
 operator|.
-name|Type
+name|AuthorizableType
 import|;
 end_import
 
@@ -611,16 +627,6 @@ name|prop
 operator|.
 name|getValue
 argument_list|(
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|api
-operator|.
 name|Type
 operator|.
 name|STRING
@@ -1041,7 +1047,7 @@ name|getAuthorizable
 argument_list|(
 name|userId
 argument_list|,
-name|Type
+name|AuthorizableType
 operator|.
 name|USER
 argument_list|)

@@ -129,6 +129,22 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
+name|api
+operator|.
+name|Type
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
 name|core
 operator|.
 name|ReadOnlyTree
@@ -220,24 +236,6 @@ operator|.
 name|util
 operator|.
 name|Text
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|api
-operator|.
-name|Type
-operator|.
-name|STRING
 import|;
 end_import
 
@@ -503,6 +501,8 @@ name|primaryType
 operator|.
 name|getValue
 argument_list|(
+name|Type
+operator|.
 name|STRING
 argument_list|)
 argument_list|)

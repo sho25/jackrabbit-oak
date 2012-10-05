@@ -193,7 +193,7 @@ name|security
 operator|.
 name|user
 operator|.
-name|Type
+name|AuthorizableType
 import|;
 end_import
 
@@ -310,7 +310,7 @@ name|isAuthorizableType
 argument_list|(
 name|tree
 argument_list|,
-name|Type
+name|AuthorizableType
 operator|.
 name|USER
 argument_list|)
