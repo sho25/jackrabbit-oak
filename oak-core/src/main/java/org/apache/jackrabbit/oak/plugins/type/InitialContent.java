@@ -357,7 +357,7 @@ name|commit
 argument_list|(
 literal|"/"
 argument_list|,
-literal|"+\"oak:index\":{\"jcr:uuid\":{\"unique\":true},\"rep:authorizableId\":{\"unique\":true},\"rep:principalName\":{\"unique\":true}}"
+literal|"+\"oak:index\":{\"jcr:uuid\":{\"jcr:primaryType\":\"nam:oak:queryIndexDefinition\",\"unique\":true},\"rep:authorizableId\":{\"jcr:primaryType\":\"nam:oak:queryIndexDefinition\",\"unique\":true},\"rep:principalName\":{\"jcr:primaryType\":\"nam:oak:queryIndexDefinition\",\"unique\":true}}"
 argument_list|,
 literal|null
 argument_list|,
