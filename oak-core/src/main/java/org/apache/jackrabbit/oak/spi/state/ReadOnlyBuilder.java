@@ -338,7 +338,7 @@ annotation|@
 name|Override
 specifier|public
 name|ReadOnlyBuilder
-name|getChildBuilder
+name|child
 parameter_list|(
 name|String
 name|name

@@ -541,7 +541,7 @@ name|index
 init|=
 name|node
 operator|.
-name|getChildBuilder
+name|child
 argument_list|(
 literal|":index"
 argument_list|)

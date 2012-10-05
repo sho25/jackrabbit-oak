@@ -287,7 +287,7 @@ name|childA
 init|=
 name|root
 operator|.
-name|getChildBuilder
+name|child
 argument_list|(
 literal|"x"
 argument_list|)
@@ -297,7 +297,7 @@ name|childB
 init|=
 name|root
 operator|.
-name|getChildBuilder
+name|child
 argument_list|(
 literal|"x"
 argument_list|)
@@ -353,7 +353,7 @@ name|childA
 init|=
 name|root
 operator|.
-name|getChildBuilder
+name|child
 argument_list|(
 literal|"x"
 argument_list|)
@@ -363,7 +363,7 @@ name|childB
 init|=
 name|root
 operator|.
-name|getChildBuilder
+name|child
 argument_list|(
 literal|"x"
 argument_list|)
@@ -425,7 +425,7 @@ name|childA
 init|=
 name|root
 operator|.
-name|getChildBuilder
+name|child
 argument_list|(
 literal|"x"
 argument_list|)
@@ -435,7 +435,7 @@ name|childB
 init|=
 name|root
 operator|.
-name|getChildBuilder
+name|child
 argument_list|(
 literal|"x"
 argument_list|)
@@ -488,7 +488,7 @@ name|childA
 init|=
 name|root
 operator|.
-name|getChildBuilder
+name|child
 argument_list|(
 literal|"x"
 argument_list|)
@@ -498,7 +498,7 @@ name|childB
 init|=
 name|root
 operator|.
-name|getChildBuilder
+name|child
 argument_list|(
 literal|"x"
 argument_list|)
@@ -515,13 +515,9 @@ argument_list|)
 expr_stmt|;
 name|childB
 operator|.
-name|setNode
+name|child
 argument_list|(
 literal|"test"
-argument_list|,
-name|MemoryNodeState
-operator|.
-name|EMPTY_NODE
 argument_list|)
 expr_stmt|;
 name|assertTrue
@@ -563,7 +559,7 @@ name|child
 init|=
 name|root
 operator|.
-name|getChildBuilder
+name|child
 argument_list|(
 literal|"x"
 argument_list|)

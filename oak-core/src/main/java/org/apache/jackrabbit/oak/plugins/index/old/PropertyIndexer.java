@@ -324,7 +324,7 @@ name|builder
 init|=
 name|rootBuilder
 operator|.
-name|getChildBuilder
+name|child
 argument_list|(
 name|def
 operator|.
@@ -335,7 +335,7 @@ decl_stmt|;
 comment|// create the global :data node
 name|builder
 operator|.
-name|getChildBuilder
+name|child
 argument_list|(
 name|INDEX_CONTENT
 argument_list|)
@@ -373,7 +373,7 @@ block|{
 comment|// create the :data node
 name|builder
 operator|.
-name|getChildBuilder
+name|child
 argument_list|(
 name|prop
 operator|.
@@ -381,7 +381,7 @@ name|getIndexNodeName
 argument_list|()
 argument_list|)
 operator|.
-name|getChildBuilder
+name|child
 argument_list|(
 name|INDEX_CONTENT
 argument_list|)
@@ -420,7 +420,7 @@ block|{
 comment|// create the :data node
 name|builder
 operator|.
-name|getChildBuilder
+name|child
 argument_list|(
 name|pref
 operator|.
@@ -428,7 +428,7 @@ name|getIndexNodeName
 argument_list|()
 argument_list|)
 operator|.
-name|getChildBuilder
+name|child
 argument_list|(
 name|INDEX_CONTENT
 argument_list|)

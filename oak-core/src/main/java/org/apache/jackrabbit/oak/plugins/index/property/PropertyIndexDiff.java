@@ -307,7 +307,7 @@ name|index
 init|=
 name|node
 operator|.
-name|getChildBuilder
+name|child
 argument_list|(
 literal|"oak:index"
 argument_list|)
@@ -372,7 +372,7 @@ argument_list|()
 argument_list|,
 name|index
 operator|.
-name|getChildBuilder
+name|child
 argument_list|(
 name|indexName
 argument_list|)
@@ -476,7 +476,7 @@ block|{
 return|return
 name|node
 operator|.
-name|getChildBuilder
+name|child
 argument_list|(
 name|name
 argument_list|)

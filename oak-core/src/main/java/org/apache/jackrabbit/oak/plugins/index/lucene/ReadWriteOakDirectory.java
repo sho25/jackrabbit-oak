@@ -448,7 +448,7 @@ name|fileBuilder
 init|=
 name|directoryBuilder
 operator|.
-name|getChildBuilder
+name|child
 argument_list|(
 name|name
 argument_list|)

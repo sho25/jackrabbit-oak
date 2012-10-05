@@ -175,7 +175,7 @@ name|builder
 init|=
 name|after
 operator|.
-name|getBuilder
+name|builder
 argument_list|()
 decl_stmt|;
 name|after
@@ -269,7 +269,7 @@ name|childBuilder
 init|=
 name|builder
 operator|.
-name|getChildBuilder
+name|child
 argument_list|(
 name|name
 argument_list|)
@@ -368,7 +368,7 @@ name|childBuilder
 init|=
 name|builder
 operator|.
-name|getChildBuilder
+name|child
 argument_list|(
 name|name
 argument_list|)

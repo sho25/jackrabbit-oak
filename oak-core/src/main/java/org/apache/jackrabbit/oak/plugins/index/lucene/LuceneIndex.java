@@ -913,7 +913,7 @@ name|builder
 operator|=
 name|builder
 operator|.
-name|getChildBuilder
+name|child
 argument_list|(
 name|name
 argument_list|)
@@ -949,7 +949,7 @@ name|builder
 operator|=
 name|builder
 operator|.
-name|getChildBuilder
+name|child
 argument_list|(
 name|INDEX_DATA_CHILD_NAME
 argument_list|)

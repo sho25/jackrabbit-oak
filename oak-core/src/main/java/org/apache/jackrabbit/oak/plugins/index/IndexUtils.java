@@ -744,7 +744,7 @@ name|builder
 init|=
 name|state
 operator|.
-name|getBuilder
+name|builder
 argument_list|()
 decl_stmt|;
 for|for
@@ -764,7 +764,7 @@ name|builder
 operator|=
 name|builder
 operator|.
-name|getChildBuilder
+name|child
 argument_list|(
 name|p
 argument_list|)

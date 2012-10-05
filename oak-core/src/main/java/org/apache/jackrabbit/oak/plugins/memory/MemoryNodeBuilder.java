@@ -1263,7 +1263,7 @@ annotation|@
 name|Override
 specifier|public
 name|NodeBuilder
-name|getChildBuilder
+name|child
 parameter_list|(
 name|String
 name|name
@@ -1350,7 +1350,6 @@ block|}
 elseif|else
 if|if
 condition|(
-operator|!
 name|mstate
 operator|.
 name|nodes
@@ -1359,7 +1358,25 @@ name|containsKey
 argument_list|(
 name|name
 argument_list|)
-operator|&&
+condition|)
+block|{
+comment|// The child node was removed earlier and we're creating
+comment|// a new child with the same name. Remove the removal marker
+comment|// so that the new child builder won't try reconnecting with
+comment|// the previously removed node.
+name|mstate
+operator|.
+name|nodes
+operator|.
+name|remove
+argument_list|(
+name|name
+argument_list|)
+expr_stmt|;
+block|}
+elseif|else
+if|if
+condition|(
 name|mstate
 operator|.
 name|base
@@ -2355,7 +2372,7 @@ annotation|@
 name|Override
 specifier|public
 name|NodeBuilder
-name|getBuilder
+name|builder
 parameter_list|()
 block|{
 return|return
@@ -2365,7 +2382,7 @@ argument_list|(
 name|this
 argument_list|)
 operator|.
-name|getBuilder
+name|builder
 argument_list|()
 return|;
 block|}
@@ -2946,7 +2963,7 @@ annotation|@
 name|Override
 specifier|public
 name|NodeBuilder
-name|getBuilder
+name|builder
 parameter_list|()
 block|{
 return|return

@@ -475,7 +475,7 @@ operator|.
 name|getRoot
 argument_list|()
 operator|.
-name|getBuilder
+name|builder
 argument_list|()
 decl_stmt|;
 name|NodeBuilder
@@ -483,7 +483,7 @@ name|testBuilder
 init|=
 name|rootBuilder
 operator|.
-name|getChildBuilder
+name|child
 argument_list|(
 literal|"test"
 argument_list|)
@@ -493,7 +493,7 @@ name|newNodeBuilder
 init|=
 name|testBuilder
 operator|.
-name|getChildBuilder
+name|child
 argument_list|(
 literal|"newNode"
 argument_list|)
@@ -844,7 +844,7 @@ name|rootBuilder
 init|=
 name|root
 operator|.
-name|getBuilder
+name|builder
 argument_list|()
 decl_stmt|;
 name|NodeBuilder
@@ -852,7 +852,7 @@ name|testBuilder
 init|=
 name|rootBuilder
 operator|.
-name|getChildBuilder
+name|child
 argument_list|(
 literal|"test"
 argument_list|)
@@ -862,7 +862,7 @@ name|newNodeBuilder
 init|=
 name|testBuilder
 operator|.
-name|getChildBuilder
+name|child
 argument_list|(
 literal|"newNode"
 argument_list|)
@@ -1061,7 +1061,7 @@ name|rootBuilder
 init|=
 name|after
 operator|.
-name|getBuilder
+name|builder
 argument_list|()
 decl_stmt|;
 name|NodeBuilder
@@ -1069,14 +1069,14 @@ name|testBuilder
 init|=
 name|rootBuilder
 operator|.
-name|getChildBuilder
+name|child
 argument_list|(
 literal|"test"
 argument_list|)
 decl_stmt|;
 name|testBuilder
 operator|.
-name|getChildBuilder
+name|child
 argument_list|(
 literal|"fromHook"
 argument_list|)
@@ -1104,7 +1104,7 @@ name|rootBuilder
 init|=
 name|root
 operator|.
-name|getBuilder
+name|builder
 argument_list|()
 decl_stmt|;
 name|NodeBuilder
@@ -1112,7 +1112,7 @@ name|testBuilder
 init|=
 name|rootBuilder
 operator|.
-name|getChildBuilder
+name|child
 argument_list|(
 literal|"test"
 argument_list|)
@@ -1122,7 +1122,7 @@ name|newNodeBuilder
 init|=
 name|testBuilder
 operator|.
-name|getChildBuilder
+name|child
 argument_list|(
 literal|"newNode"
 argument_list|)

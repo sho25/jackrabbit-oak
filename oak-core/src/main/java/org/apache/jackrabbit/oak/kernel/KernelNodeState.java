@@ -1190,7 +1190,7 @@ annotation|@
 name|Override
 specifier|public
 name|NodeBuilder
-name|getBuilder
+name|builder
 parameter_list|()
 block|{
 if|if

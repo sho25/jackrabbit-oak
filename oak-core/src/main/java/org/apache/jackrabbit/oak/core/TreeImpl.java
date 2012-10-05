@@ -305,26 +305,6 @@ name|elements
 import|;
 end_import
 
-begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|plugins
-operator|.
-name|memory
-operator|.
-name|MemoryNodeState
-operator|.
-name|EMPTY_NODE
-import|;
-end_import
-
 begin_class
 specifier|public
 class|class
@@ -1039,19 +1019,12 @@ name|name
 argument_list|)
 condition|)
 block|{
-name|NodeBuilder
-name|builder
-init|=
 name|getNodeBuilder
 argument_list|()
-decl_stmt|;
-name|builder
 operator|.
-name|setNode
+name|child
 argument_list|(
 name|name
-argument_list|,
-name|EMPTY_NODE
 argument_list|)
 expr_stmt|;
 name|root
@@ -1405,7 +1378,7 @@ operator|.
 name|getNodeBuilder
 argument_list|()
 operator|.
-name|getChildBuilder
+name|child
 argument_list|(
 name|name
 argument_list|)

@@ -1237,7 +1237,7 @@ operator|.
 name|getRoot
 argument_list|()
 operator|.
-name|getBuilder
+name|builder
 argument_list|()
 return|;
 block|}

@@ -164,7 +164,7 @@ name|builder
 init|=
 name|after
 operator|.
-name|getBuilder
+name|builder
 argument_list|()
 decl_stmt|;
 name|Map
