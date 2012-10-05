@@ -1379,7 +1379,7 @@ parameter_list|)
 block|{
 return|return
 operator|new
-name|DecimalPropertySate
+name|DecimalPropertyState
 argument_list|(
 name|name
 argument_list|,

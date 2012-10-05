@@ -66,7 +66,7 @@ end_import
 begin_class
 specifier|public
 class|class
-name|DecimalPropertySate
+name|DecimalPropertyState
 extends|extends
 name|SinglePropertyState
 block|{
@@ -76,7 +76,7 @@ name|BigDecimal
 name|value
 decl_stmt|;
 specifier|protected
-name|DecimalPropertySate
+name|DecimalPropertyState
 parameter_list|(
 name|String
 name|name
