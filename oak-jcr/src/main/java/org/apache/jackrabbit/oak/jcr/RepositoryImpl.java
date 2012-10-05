@@ -283,7 +283,7 @@ name|oak
 operator|.
 name|plugins
 operator|.
-name|type
+name|nodetype
 operator|.
 name|InitialContent
 import|;
@@ -301,7 +301,7 @@ name|oak
 operator|.
 name|plugins
 operator|.
-name|type
+name|nodetype
 operator|.
 name|TypeValidatorProvider
 import|;

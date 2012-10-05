@@ -105,7 +105,7 @@ name|oak
 operator|.
 name|plugins
 operator|.
-name|type
+name|nodetype
 operator|.
 name|DefaultTypeEditor
 import|;

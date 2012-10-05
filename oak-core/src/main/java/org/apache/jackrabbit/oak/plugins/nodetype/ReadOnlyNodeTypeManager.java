@@ -15,7 +15,7 @@ name|oak
 operator|.
 name|plugins
 operator|.
-name|type
+name|nodetype
 package|;
 end_package
 
@@ -370,7 +370,7 @@ name|Tree
 name|getTypes
 parameter_list|()
 function_decl|;
-comment|/**      * The value factory to be used by {@link org.apache.jackrabbit.oak.plugins.type.PropertyDefinitionImpl#getDefaultValues()}.      * If {@code null} the former returns {@code null}.      * @return  {@code ValueFactory} instance or {@code null}.      */
+comment|/**      * The value factory to be used by {@link org.apache.jackrabbit.oak.plugins.nodetype.PropertyDefinitionImpl#getDefaultValues()}.      * If {@code null} the former returns {@code null}.      * @return  {@code ValueFactory} instance or {@code null}.      */
 annotation|@
 name|CheckForNull
 specifier|protected

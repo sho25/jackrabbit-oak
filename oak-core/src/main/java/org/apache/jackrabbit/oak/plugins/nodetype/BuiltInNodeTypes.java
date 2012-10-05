@@ -15,7 +15,7 @@ name|oak
 operator|.
 name|plugins
 operator|.
-name|type
+name|nodetype
 package|;
 end_package
 
@@ -93,7 +93,7 @@ name|oak
 operator|.
 name|plugins
 operator|.
-name|type
+name|nodetype
 operator|.
 name|NodeTypeConstants
 operator|.
