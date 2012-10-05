@@ -193,7 +193,7 @@ parameter_list|)
 block|{
 return|return
 operator|new
-name|SinglePropertyState
+name|ValueBasedSinglePropertyState
 argument_list|(
 name|name
 argument_list|,
@@ -220,7 +220,7 @@ parameter_list|)
 block|{
 return|return
 operator|new
-name|MultiPropertyState
+name|ValueBasedMultiPropertyState
 argument_list|(
 name|name
 argument_list|,
@@ -897,7 +897,7 @@ parameter_list|)
 block|{
 return|return
 operator|new
-name|EmptyPropertyState
+name|ValueBasedEmptyPropertyState
 argument_list|(
 name|name
 argument_list|,
@@ -919,7 +919,7 @@ parameter_list|)
 block|{
 return|return
 operator|new
-name|SinglePropertyState
+name|ValueBasedSinglePropertyState
 argument_list|(
 name|name
 argument_list|,
@@ -946,7 +946,7 @@ parameter_list|)
 block|{
 return|return
 operator|new
-name|SinglePropertyState
+name|ValueBasedSinglePropertyState
 argument_list|(
 name|name
 argument_list|,
@@ -972,7 +972,7 @@ parameter_list|)
 block|{
 return|return
 operator|new
-name|SinglePropertyState
+name|ValueBasedSinglePropertyState
 argument_list|(
 name|name
 argument_list|,
@@ -998,7 +998,7 @@ parameter_list|)
 block|{
 return|return
 operator|new
-name|SinglePropertyState
+name|ValueBasedSinglePropertyState
 argument_list|(
 name|name
 argument_list|,
@@ -1024,7 +1024,7 @@ parameter_list|)
 block|{
 return|return
 operator|new
-name|SinglePropertyState
+name|ValueBasedSinglePropertyState
 argument_list|(
 name|name
 argument_list|,
@@ -1054,7 +1054,7 @@ parameter_list|)
 block|{
 return|return
 operator|new
-name|SinglePropertyState
+name|ValueBasedSinglePropertyState
 argument_list|(
 name|name
 argument_list|,
@@ -1084,7 +1084,7 @@ parameter_list|)
 block|{
 return|return
 operator|new
-name|SinglePropertyState
+name|ValueBasedSinglePropertyState
 argument_list|(
 name|name
 argument_list|,
@@ -1114,7 +1114,7 @@ parameter_list|)
 block|{
 return|return
 operator|new
-name|SinglePropertyState
+name|ValueBasedSinglePropertyState
 argument_list|(
 name|name
 argument_list|,
@@ -1144,7 +1144,7 @@ parameter_list|)
 block|{
 return|return
 operator|new
-name|SinglePropertyState
+name|ValueBasedSinglePropertyState
 argument_list|(
 name|name
 argument_list|,
@@ -1174,7 +1174,7 @@ parameter_list|)
 block|{
 return|return
 operator|new
-name|SinglePropertyState
+name|ValueBasedSinglePropertyState
 argument_list|(
 name|name
 argument_list|,
@@ -1204,7 +1204,7 @@ parameter_list|)
 block|{
 return|return
 operator|new
-name|SinglePropertyState
+name|ValueBasedSinglePropertyState
 argument_list|(
 name|name
 argument_list|,
@@ -1234,7 +1234,7 @@ parameter_list|)
 block|{
 return|return
 operator|new
-name|SinglePropertyState
+name|ValueBasedSinglePropertyState
 argument_list|(
 name|name
 argument_list|,
@@ -1260,7 +1260,7 @@ parameter_list|)
 block|{
 return|return
 operator|new
-name|SinglePropertyState
+name|ValueBasedSinglePropertyState
 argument_list|(
 name|name
 argument_list|,
@@ -1323,7 +1323,7 @@ expr_stmt|;
 block|}
 return|return
 operator|new
-name|MultiPropertyState
+name|ValueBasedMultiPropertyState
 argument_list|(
 name|name
 argument_list|,
@@ -1382,7 +1382,7 @@ expr_stmt|;
 block|}
 return|return
 operator|new
-name|MultiPropertyState
+name|ValueBasedMultiPropertyState
 argument_list|(
 name|name
 argument_list|,
@@ -1438,7 +1438,7 @@ expr_stmt|;
 block|}
 return|return
 operator|new
-name|MultiPropertyState
+name|ValueBasedMultiPropertyState
 argument_list|(
 name|name
 argument_list|,
@@ -1494,7 +1494,7 @@ expr_stmt|;
 block|}
 return|return
 operator|new
-name|MultiPropertyState
+name|ValueBasedMultiPropertyState
 argument_list|(
 name|name
 argument_list|,
@@ -1554,7 +1554,7 @@ expr_stmt|;
 block|}
 return|return
 operator|new
-name|MultiPropertyState
+name|ValueBasedMultiPropertyState
 argument_list|(
 name|name
 argument_list|,
@@ -1614,7 +1614,7 @@ expr_stmt|;
 block|}
 return|return
 operator|new
-name|MultiPropertyState
+name|ValueBasedMultiPropertyState
 argument_list|(
 name|name
 argument_list|,
@@ -1674,7 +1674,7 @@ expr_stmt|;
 block|}
 return|return
 operator|new
-name|MultiPropertyState
+name|ValueBasedMultiPropertyState
 argument_list|(
 name|name
 argument_list|,
@@ -1734,7 +1734,7 @@ expr_stmt|;
 block|}
 return|return
 operator|new
-name|MultiPropertyState
+name|ValueBasedMultiPropertyState
 argument_list|(
 name|name
 argument_list|,
@@ -1794,7 +1794,7 @@ expr_stmt|;
 block|}
 return|return
 operator|new
-name|MultiPropertyState
+name|ValueBasedMultiPropertyState
 argument_list|(
 name|name
 argument_list|,
@@ -1854,7 +1854,7 @@ expr_stmt|;
 block|}
 return|return
 operator|new
-name|MultiPropertyState
+name|ValueBasedMultiPropertyState
 argument_list|(
 name|name
 argument_list|,
@@ -1914,7 +1914,7 @@ expr_stmt|;
 block|}
 return|return
 operator|new
-name|MultiPropertyState
+name|ValueBasedMultiPropertyState
 argument_list|(
 name|name
 argument_list|,
@@ -1970,7 +1970,7 @@ expr_stmt|;
 block|}
 return|return
 operator|new
-name|MultiPropertyState
+name|ValueBasedMultiPropertyState
 argument_list|(
 name|name
 argument_list|,
@@ -2028,7 +2028,7 @@ expr_stmt|;
 block|}
 return|return
 operator|new
-name|MultiPropertyState
+name|ValueBasedMultiPropertyState
 argument_list|(
 name|name
 argument_list|,

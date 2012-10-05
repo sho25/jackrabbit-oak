@@ -110,12 +110,12 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Property state that contains an empty array of values. Used as a base  * class for {@link SinglePropertyState} and {@link MultiPropertyState}.  */
+comment|/**  * Property state that contains an empty array of values. Used as a base  * class for {@link ValueBasedSinglePropertyState} and {@link ValueBasedMultiPropertyState}.  */
 end_comment
 
 begin_class
 class|class
-name|EmptyPropertyState
+name|ValueBasedEmptyPropertyState
 implements|implements
 name|PropertyState
 block|{
@@ -132,8 +132,7 @@ name|?
 argument_list|>
 name|type
 decl_stmt|;
-specifier|public
-name|EmptyPropertyState
+name|ValueBasedEmptyPropertyState
 parameter_list|(
 name|String
 name|name
