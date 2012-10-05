@@ -69,7 +69,7 @@ name|oak
 operator|.
 name|kernel
 operator|.
-name|CoreValueMapper
+name|TypeCodes
 import|;
 end_import
 
@@ -301,11 +301,11 @@ block|{
 continue|continue;
 block|}
 name|String
-name|hint
+name|code
 init|=
-name|CoreValueMapper
+name|TypeCodes
 operator|.
-name|getHintForType
+name|getCodeForType
 argument_list|(
 name|restriction
 operator|.
@@ -315,7 +315,7 @@ decl_stmt|;
 name|String
 name|prefix
 init|=
-name|hint
+name|code
 operator|+
 literal|":"
 decl_stmt|;

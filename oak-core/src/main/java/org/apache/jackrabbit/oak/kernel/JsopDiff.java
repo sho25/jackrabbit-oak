@@ -912,9 +912,9 @@ decl_stmt|;
 name|String
 name|binId
 init|=
-name|CoreValueMapper
+name|TypeCodes
 operator|.
-name|getHintForType
+name|getCodeForType
 argument_list|(
 name|type
 argument_list|)
@@ -964,9 +964,9 @@ name|STRING
 operator|!=
 name|type
 operator|||
-name|CoreValueMapper
+name|TypeCodes
 operator|.
-name|startsWithHint
+name|startsWithCode
 argument_list|(
 name|value
 argument_list|)
@@ -974,9 +974,9 @@ condition|)
 block|{
 name|value
 operator|=
-name|CoreValueMapper
+name|TypeCodes
 operator|.
-name|getHintForType
+name|getCodeForType
 argument_list|(
 name|type
 argument_list|)
