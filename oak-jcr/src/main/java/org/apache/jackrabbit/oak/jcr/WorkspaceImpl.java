@@ -1277,11 +1277,10 @@ throws|throws
 name|RepositoryException
 block|{
 return|return
-operator|new
-name|PrivilegeManagerImpl
-argument_list|(
 name|sessionDelegate
-argument_list|)
+operator|.
+name|getPrivilegeManager
+argument_list|()
 return|;
 block|}
 comment|//------------------------------------------------------------< private>---

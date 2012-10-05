@@ -70,7 +70,12 @@ specifier|public
 interface|interface
 name|PrivilegeProvider
 block|{
-comment|/**      * Returns all privilege definitions accessible to a given      * {@link org.apache.jackrabbit.oak.api.ContentSession}.      *      * @return all privilege definitions.      */
+comment|/**      * Refresh this privilege provider.      */
+name|void
+name|refresh
+parameter_list|()
+function_decl|;
+comment|/**      * Returns all privilege definitions accessible to this provider.      *      * @return all privilege definitions.      */
 annotation|@
 name|Nonnull
 name|PrivilegeDefinition
