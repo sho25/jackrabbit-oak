@@ -99,11 +99,11 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|spi
+name|plugins
 operator|.
-name|commit
+name|index
 operator|.
-name|CommitHook
+name|IndexDefinition
 import|;
 end_import
 
@@ -119,9 +119,9 @@ name|oak
 operator|.
 name|spi
 operator|.
-name|query
+name|commit
 operator|.
-name|IndexDefinition
+name|CommitHook
 import|;
 end_import
 
@@ -391,6 +391,26 @@ name|plugins
 operator|.
 name|index
 operator|.
+name|IndexDefinition
+operator|.
+name|INDEX_DATA_CHILD_NAME
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|index
+operator|.
 name|lucene
 operator|.
 name|FieldFactory
@@ -440,26 +460,6 @@ operator|.
 name|TermFactory
 operator|.
 name|newPathTerm
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|spi
-operator|.
-name|query
-operator|.
-name|IndexDefinition
-operator|.
-name|INDEX_DATA_CHILD_NAME
 import|;
 end_import
 

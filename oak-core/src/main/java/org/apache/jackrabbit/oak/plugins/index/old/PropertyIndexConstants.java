@@ -31,9 +31,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|spi
+name|plugins
 operator|.
-name|query
+name|index
 operator|.
 name|IndexUtils
 import|;
