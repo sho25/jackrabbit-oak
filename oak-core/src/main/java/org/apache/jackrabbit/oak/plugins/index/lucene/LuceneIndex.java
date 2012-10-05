@@ -1406,6 +1406,19 @@ name|pr
 operator|.
 name|propertyName
 decl_stmt|;
+if|if
+condition|(
+name|name
+operator|.
+name|contains
+argument_list|(
+literal|"/"
+argument_list|)
+condition|)
+block|{
+comment|// lucene cannot handle child-level property restrictions
+continue|continue;
+block|}
 name|String
 name|first
 init|=
