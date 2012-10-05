@@ -257,26 +257,6 @@ name|index
 operator|.
 name|IndexDefinition
 operator|.
-name|TYPE_PROPERTY_NAME
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|plugins
-operator|.
-name|index
-operator|.
-name|IndexDefinition
-operator|.
 name|UNIQUE_PROPERTY_NAME
 import|;
 end_import
@@ -285,6 +265,8 @@ begin_class
 specifier|public
 class|class
 name|IndexUtils
+implements|implements
+name|IndexConstants
 block|{
 comment|/**      * switch to "oak:index" as soon as it is possible      */
 specifier|public
@@ -293,7 +275,7 @@ specifier|final
 name|String
 name|DEFAULT_INDEX_HOME
 init|=
-literal|"/oak-index"
+literal|"/oak:index"
 decl_stmt|;
 specifier|private
 specifier|static

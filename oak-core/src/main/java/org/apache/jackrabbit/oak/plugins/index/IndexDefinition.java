@@ -49,11 +49,6 @@ interface|interface
 name|IndexDefinition
 block|{
 name|String
-name|TYPE_PROPERTY_NAME
-init|=
-literal|"type"
-decl_stmt|;
-name|String
 name|UNIQUE_PROPERTY_NAME
 init|=
 literal|"unique"
