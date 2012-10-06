@@ -116,7 +116,7 @@ specifier|public
 class|class
 name|MongoConnection
 block|{
-specifier|private
+specifier|public
 specifier|static
 specifier|final
 name|String
@@ -124,7 +124,7 @@ name|COLLECTION_COMMITS
 init|=
 literal|"commits"
 decl_stmt|;
-specifier|private
+specifier|public
 specifier|static
 specifier|final
 name|String
@@ -132,7 +132,7 @@ name|COLLECTION_HEAD
 init|=
 literal|"head"
 decl_stmt|;
-specifier|private
+specifier|public
 specifier|static
 specifier|final
 name|String
@@ -150,6 +150,11 @@ specifier|final
 name|GridFS
 name|gridFS
 decl_stmt|;
+specifier|private
+specifier|final
+name|Mongo
+name|mongo
+decl_stmt|;
 comment|/**      * Constructs a new {@code MongoConnection}.      *      * @param host The host address.      * @param port The port.      * @param database The database name.      * @throws Exception If an error occurred while trying to connect.      */
 specifier|public
 name|MongoConnection
@@ -166,7 +171,7 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
-name|db
+name|mongo
 operator|=
 operator|new
 name|Mongo
@@ -175,6 +180,10 @@ name|host
 argument_list|,
 name|port
 argument_list|)
+expr_stmt|;
+name|db
+operator|=
+name|mongo
 operator|.
 name|getDB
 argument_list|(
@@ -239,6 +248,16 @@ return|return
 name|gridFS
 return|;
 block|}
+comment|/**      * Returns the {@link Mongo}.      *      * @return The {@link Mongo}.      */
+specifier|public
+name|Mongo
+name|getMongo
+parameter_list|()
+block|{
+return|return
+name|mongo
+return|;
+block|}
 comment|/**      * Returns the head {@link DBCollection}.      *      * @return The head {@link DBCollection}.      */
 specifier|public
 name|DBCollection
@@ -296,6 +315,26 @@ expr_stmt|;
 return|return
 name|nodeCollection
 return|;
+block|}
+comment|/**      * Closes the underlying Mongo instance      */
+specifier|public
+name|void
+name|close
+parameter_list|()
+block|{
+if|if
+condition|(
+name|mongo
+operator|!=
+literal|null
+condition|)
+block|{
+name|mongo
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
+block|}
 block|}
 block|}
 end_class
