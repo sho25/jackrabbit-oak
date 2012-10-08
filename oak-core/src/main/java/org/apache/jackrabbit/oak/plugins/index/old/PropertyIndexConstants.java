@@ -58,6 +58,10 @@ name|IndexUtils
 operator|.
 name|DEFAULT_INDEX_HOME
 operator|+
+name|IndexUtils
+operator|.
+name|INDEX_DEFINITIONS_NAME
+operator|+
 literal|"/indexes"
 decl_stmt|;
 comment|// "/jcr:system/indexes";

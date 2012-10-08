@@ -21,26 +21,6 @@ begin_import
 import|import static
 name|org
 operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|plugins
-operator|.
-name|index
-operator|.
-name|IndexUtils
-operator|.
-name|DEFAULT_INDEX_HOME
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
 name|junit
 operator|.
 name|Assert
@@ -623,6 +603,11 @@ name|indexDef
 operator|.
 name|addChild
 argument_list|(
+name|INDEX_DEFINITIONS_NAME
+argument_list|)
+operator|.
+name|addChild
+argument_list|(
 name|TEST_INDEX_NAME
 argument_list|)
 expr_stmt|;
@@ -644,6 +629,15 @@ argument_list|(
 name|TYPE_PROPERTY_NAME
 argument_list|,
 name|type
+argument_list|)
+expr_stmt|;
+name|indexDef
+operator|.
+name|setProperty
+argument_list|(
+name|REINDEX_PROPERTY_NAME
+argument_list|,
+literal|true
 argument_list|)
 expr_stmt|;
 return|return

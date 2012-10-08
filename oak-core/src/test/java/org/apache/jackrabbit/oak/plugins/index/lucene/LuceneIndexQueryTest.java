@@ -223,7 +223,7 @@ name|createTestIndexNode
 argument_list|(
 name|index
 argument_list|,
-name|TYPE
+name|TYPE_LUCENE
 argument_list|)
 expr_stmt|;
 name|root

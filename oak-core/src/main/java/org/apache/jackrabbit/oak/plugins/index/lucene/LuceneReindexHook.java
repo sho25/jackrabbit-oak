@@ -22,6 +22,26 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|index
+operator|.
+name|IndexUtils
+operator|.
+name|buildIndexDefinitions
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -72,24 +92,6 @@ operator|.
 name|index
 operator|.
 name|IndexDefinition
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|plugins
-operator|.
-name|index
-operator|.
-name|IndexUtils
 import|;
 end_import
 
@@ -186,7 +188,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A {@link CommitHook} that handles re-indexing and initial indexing of the  * content.  *   * Currently it triggers a full reindex on any detected index definition change  * (excepting the properties) OR on removing the  * {@link LuceneIndexConstants#INDEX_UPDATE} property  *   * Warning: This hook has to be placed before the updater {@link LuceneHook},  * otherwise it is going to miss the {@link LuceneIndexConstants#INDEX_UPDATE}  * change to null  *   */
+comment|/**  * A {@link CommitHook} that handles re-indexing and initial indexing of the  * content.  *   * Currently it triggers a full reindex on any detected index definition change  * OR on the {@link IndexDefinition#isReindex()} flag  *   */
 end_comment
 
 begin_class
@@ -232,19 +234,6 @@ operator|=
 name|indexConfigPath
 expr_stmt|;
 block|}
-comment|/**      * TODO test only      */
-specifier|public
-name|LuceneReindexHook
-parameter_list|()
-block|{
-name|this
-argument_list|(
-name|IndexUtils
-operator|.
-name|DEFAULT_INDEX_HOME
-argument_list|)
-expr_stmt|;
-block|}
 annotation|@
 name|Override
 specifier|public
@@ -266,15 +255,13 @@ name|IndexDefinition
 argument_list|>
 name|defsBefore
 init|=
-name|IndexUtils
-operator|.
 name|buildIndexDefinitions
 argument_list|(
 name|before
 argument_list|,
 name|indexConfigPath
 argument_list|,
-name|TYPE
+name|TYPE_LUCENE
 argument_list|)
 decl_stmt|;
 name|List
@@ -283,15 +270,13 @@ name|IndexDefinition
 argument_list|>
 name|defsAfter
 init|=
-name|IndexUtils
-operator|.
 name|buildIndexDefinitions
 argument_list|(
 name|after
 argument_list|,
 name|indexConfigPath
 argument_list|,
-name|TYPE
+name|TYPE_LUCENE
 argument_list|)
 decl_stmt|;
 comment|// TODO add a more fine-grained change verifier
@@ -335,20 +320,13 @@ name|def
 argument_list|)
 expr_stmt|;
 block|}
-comment|// verify initial state or forced reindex
+comment|// verify reindex flag
 if|if
 condition|(
 name|def
 operator|.
-name|getProperties
+name|isReindex
 argument_list|()
-operator|.
-name|get
-argument_list|(
-name|INDEX_UPDATE
-argument_list|)
-operator|==
-literal|null
 condition|)
 block|{
 name|defsChanged

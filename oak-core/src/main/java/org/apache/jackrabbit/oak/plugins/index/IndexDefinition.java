@@ -21,21 +21,29 @@ end_package
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Map
-import|;
-end_import
-
-begin_import
-import|import
 name|javax
 operator|.
 name|annotation
 operator|.
 name|Nonnull
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|state
+operator|.
+name|NodeState
 import|;
 end_import
 
@@ -48,28 +56,11 @@ specifier|public
 interface|interface
 name|IndexDefinition
 block|{
-name|String
-name|UNIQUE_PROPERTY_NAME
-init|=
-literal|"unique"
-decl_stmt|;
-name|String
-name|INDEX_DATA_CHILD_NAME
-init|=
-literal|":data"
-decl_stmt|;
 comment|/**      * Get the unique index name. This is also the name of the index node.      *       * @return the index name      */
 annotation|@
 name|Nonnull
 name|String
 name|getName
-parameter_list|()
-function_decl|;
-comment|/**      * @return the index type      */
-annotation|@
-name|Nonnull
-name|String
-name|getType
 parameter_list|()
 function_decl|;
 comment|/**      * @return the index path, including the name as the last segment      */
@@ -79,21 +70,23 @@ name|String
 name|getPath
 parameter_list|()
 function_decl|;
-comment|/**      * Whether each value may only appear once in the index.      *       * @return true if unique      */
-name|boolean
-name|isUnique
-parameter_list|()
-function_decl|;
-comment|/**      * @return the index properties      */
+comment|/**      * @return the index type      */
 annotation|@
 name|Nonnull
-name|Map
-argument_list|<
 name|String
-argument_list|,
-name|String
-argument_list|>
-name|getProperties
+name|getType
+parameter_list|()
+function_decl|;
+comment|/**      * @return flag marking if reindexing is required on this index      */
+name|boolean
+name|isReindex
+parameter_list|()
+function_decl|;
+comment|/**      * @return the state that this definition is built on      */
+annotation|@
+name|Nonnull
+name|NodeState
+name|getState
 parameter_list|()
 function_decl|;
 block|}
