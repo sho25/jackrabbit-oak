@@ -213,7 +213,7 @@ specifier|final
 name|int
 name|NODE_TYPE_DEFINITION_MANAGEMENT
 init|=
-name|RETENTION_MANAGEMENT
+name|MODIFY_CHILD_NODE_COLLECTION
 operator|<<
 literal|1
 decl_stmt|;
