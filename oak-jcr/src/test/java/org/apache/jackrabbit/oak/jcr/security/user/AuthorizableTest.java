@@ -1035,10 +1035,7 @@ name|userMgr
 operator|.
 name|createUser
 argument_list|(
-name|getTestPrincipal
-argument_list|()
-operator|.
-name|getName
+name|createUserId
 argument_list|()
 argument_list|,
 literal|"pw"
@@ -1050,7 +1047,7 @@ name|userMgr
 operator|.
 name|createGroup
 argument_list|(
-name|getTestPrincipal
+name|createGroupId
 argument_list|()
 argument_list|)
 expr_stmt|;

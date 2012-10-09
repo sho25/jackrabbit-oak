@@ -1238,10 +1238,7 @@ name|sb
 operator|.
 name|append
 argument_list|(
-name|node
-operator|.
-name|getIdentifier
-argument_list|()
+name|id
 argument_list|)
 expr_stmt|;
 name|hashCode
@@ -1450,8 +1447,6 @@ block|{
 name|Tree
 name|tree
 init|=
-name|userManager
-operator|.
 name|getUserProvider
 argument_list|()
 operator|.

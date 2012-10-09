@@ -183,16 +183,6 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Ignore
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
 name|Test
 import|;
 end_import
@@ -202,9 +192,6 @@ comment|/**  * GroupTest...  */
 end_comment
 
 begin_class
-annotation|@
-name|Ignore
-comment|// FIXME: enable again
 specifier|public
 class|class
 name|GroupTest
@@ -1028,7 +1015,7 @@ name|userMgr
 operator|.
 name|createGroup
 argument_list|(
-name|getTestPrincipal
+name|createGroupId
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1187,7 +1174,7 @@ name|userMgr
 operator|.
 name|createGroup
 argument_list|(
-name|getTestPrincipal
+name|createGroupId
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1407,7 +1394,7 @@ name|userMgr
 operator|.
 name|createGroup
 argument_list|(
-name|getTestPrincipal
+name|createGroupId
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1417,7 +1404,7 @@ name|userMgr
 operator|.
 name|createGroup
 argument_list|(
-name|getTestPrincipal
+name|createGroupId
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1742,7 +1729,7 @@ name|userMgr
 operator|.
 name|createGroup
 argument_list|(
-name|getTestPrincipal
+name|createGroupId
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1752,7 +1739,7 @@ name|userMgr
 operator|.
 name|createGroup
 argument_list|(
-name|getTestPrincipal
+name|createGroupId
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1996,7 +1983,7 @@ name|userMgr
 operator|.
 name|createGroup
 argument_list|(
-name|getTestPrincipal
+name|createGroupId
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -2107,7 +2094,7 @@ name|userMgr
 operator|.
 name|createGroup
 argument_list|(
-name|getTestPrincipal
+name|createGroupId
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -2223,7 +2210,7 @@ name|userMgr
 operator|.
 name|createGroup
 argument_list|(
-name|getTestPrincipal
+name|createGroupId
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -2329,7 +2316,7 @@ throws|,
 name|RepositoryException
 block|{
 name|User
-name|auth
+name|user
 init|=
 name|getTestUser
 argument_list|(
@@ -2354,7 +2341,7 @@ name|userMgr
 operator|.
 name|createGroup
 argument_list|(
-name|getTestPrincipal
+name|createGroupId
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -2364,7 +2351,7 @@ name|userMgr
 operator|.
 name|createGroup
 argument_list|(
-name|getTestPrincipal
+name|createGroupId
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -2399,7 +2386,7 @@ name|newGroup2
 operator|.
 name|addMember
 argument_list|(
-name|auth
+name|user
 argument_list|)
 expr_stmt|;
 name|superuser
@@ -2415,12 +2402,12 @@ operator|.
 name|getDeclaredMembers
 argument_list|()
 argument_list|,
-name|auth
+name|user
 argument_list|)
 expr_stmt|;
 name|assertFalseMemberOfContainsGroup
 argument_list|(
-name|auth
+name|user
 operator|.
 name|declaredMemberOf
 argument_list|()
@@ -2436,12 +2423,12 @@ operator|.
 name|getMembers
 argument_list|()
 argument_list|,
-name|auth
+name|user
 argument_list|)
 expr_stmt|;
 name|assertTrueMemberOfContainsGroup
 argument_list|(
-name|auth
+name|user
 operator|.
 name|memberOf
 argument_list|()
@@ -2456,7 +2443,7 @@ name|newGroup
 operator|.
 name|removeMember
 argument_list|(
-name|auth
+name|user
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -2504,7 +2491,7 @@ name|newGroup2
 operator|.
 name|removeMember
 argument_list|(
-name|auth
+name|user
 argument_list|)
 expr_stmt|;
 name|newGroup2
@@ -2557,7 +2544,7 @@ name|userMgr
 operator|.
 name|createGroup
 argument_list|(
-name|getTestPrincipal
+name|createGroupId
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -2567,7 +2554,7 @@ name|userMgr
 operator|.
 name|createGroup
 argument_list|(
-name|getTestPrincipal
+name|createGroupId
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -2793,7 +2780,7 @@ name|userMgr
 operator|.
 name|createGroup
 argument_list|(
-name|getTestPrincipal
+name|createGroupId
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -2825,7 +2812,7 @@ name|userMgr
 operator|.
 name|createGroup
 argument_list|(
-name|getTestPrincipal
+name|createGroupId
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -3017,10 +3004,7 @@ name|userMgr
 operator|.
 name|createUser
 argument_list|(
-name|getTestPrincipal
-argument_list|()
-operator|.
-name|getName
+name|createUserId
 argument_list|()
 argument_list|,
 literal|"pw"
@@ -3040,7 +3024,7 @@ name|userMgr
 operator|.
 name|createGroup
 argument_list|(
-name|getTestPrincipal
+name|createGroupId
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -3058,7 +3042,7 @@ name|userMgr
 operator|.
 name|createGroup
 argument_list|(
-name|getTestPrincipal
+name|createGroupId
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -3076,7 +3060,7 @@ name|userMgr
 operator|.
 name|createGroup
 argument_list|(
-name|getTestPrincipal
+name|createGroupId
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -3219,7 +3203,7 @@ name|userMgr
 operator|.
 name|createGroup
 argument_list|(
-name|getTestPrincipal
+name|createGroupId
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -3229,7 +3213,7 @@ name|userMgr
 operator|.
 name|createGroup
 argument_list|(
-name|getTestPrincipal
+name|createGroupId
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -3239,7 +3223,7 @@ name|userMgr
 operator|.
 name|createGroup
 argument_list|(
-name|getTestPrincipal
+name|createGroupId
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -3363,7 +3347,7 @@ name|userMgr
 operator|.
 name|createGroup
 argument_list|(
-name|getTestPrincipal
+name|createGroupId
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -3472,7 +3456,7 @@ name|userMgr
 operator|.
 name|createGroup
 argument_list|(
-name|getTestPrincipal
+name|createGroupId
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -3564,7 +3548,7 @@ name|userMgr
 operator|.
 name|createGroup
 argument_list|(
-name|getTestPrincipal
+name|createGroupId
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -3678,7 +3662,7 @@ name|userMgr
 operator|.
 name|createGroup
 argument_list|(
-name|getTestPrincipal
+name|createGroupId
 argument_list|()
 argument_list|)
 expr_stmt|;

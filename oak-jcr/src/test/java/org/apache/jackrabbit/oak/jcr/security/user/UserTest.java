@@ -150,9 +150,6 @@ comment|/**  * UserTest...  */
 end_comment
 
 begin_class
-annotation|@
-name|Ignore
-comment|// FIXME: enable again
 specifier|public
 class|class
 name|UserTest
