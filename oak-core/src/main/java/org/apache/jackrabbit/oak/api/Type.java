@@ -314,7 +314,7 @@ argument_list|,
 literal|true
 argument_list|)
 decl_stmt|;
-comment|/** Map {@code Iterable<Blob} to array of {@link PropertyType#BINARY} */
+comment|/** Map {@code Iterable<Blob>} to array of {@link PropertyType#BINARY} */
 specifier|public
 specifier|static
 specifier|final
