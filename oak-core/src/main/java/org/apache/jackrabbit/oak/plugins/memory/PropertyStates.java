@@ -871,6 +871,8 @@ argument_list|)
 return|;
 block|}
 block|}
+annotation|@
+name|Nonnull
 specifier|public
 specifier|static
 name|PropertyState
