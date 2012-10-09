@@ -238,7 +238,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * AbstractUserTest...  */
+comment|/**  * Base class for user mgt related tests  */
 end_comment
 
 begin_class
