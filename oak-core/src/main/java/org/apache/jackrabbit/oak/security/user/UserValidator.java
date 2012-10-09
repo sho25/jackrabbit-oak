@@ -250,6 +250,48 @@ annotation|@
 name|Override
 specifier|public
 name|void
+name|propertyAdded
+parameter_list|(
+name|PropertyState
+name|after
+parameter_list|)
+throws|throws
+name|CommitFailedException
+block|{
+name|String
+name|name
+init|=
+name|after
+operator|.
+name|getName
+argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|REP_DISABLED
+operator|.
+name|equals
+argument_list|(
+name|name
+argument_list|)
+operator|&&
+name|isAdminUser
+argument_list|()
+condition|)
+block|{
+throw|throw
+operator|new
+name|CommitFailedException
+argument_list|(
+literal|"Admin user cannot be disabled."
+argument_list|)
+throw|;
+block|}
+block|}
+annotation|@
+name|Override
+specifier|public
+name|void
 name|propertyChanged
 parameter_list|(
 name|PropertyState
@@ -456,6 +498,7 @@ return|;
 block|}
 comment|//------------------------------------------------------------< private>---
 comment|/**      * Make sure user and group nodes are located underneath the configured path      * and that path consists of rep:authorizableFolder nodes.      *      * @param userNode      * @param pathConstraint      * @throws CommitFailedException      */
+specifier|private
 name|void
 name|assertHierarchy
 parameter_list|(
@@ -567,6 +610,16 @@ name|getParent
 argument_list|()
 expr_stmt|;
 block|}
+block|}
+specifier|private
+name|boolean
+name|isAdminUser
+parameter_list|()
+block|{
+comment|// FIXME: add implementation
+return|return
+literal|false
+return|;
 block|}
 block|}
 end_class

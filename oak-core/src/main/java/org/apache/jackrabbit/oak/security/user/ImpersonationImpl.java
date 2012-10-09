@@ -536,7 +536,6 @@ comment|/**      * @see org.apache.jackrabbit.api.security.user.Impersonation#gr
 annotation|@
 name|Override
 specifier|public
-specifier|synchronized
 name|boolean
 name|grantImpersonation
 parameter_list|(
@@ -712,7 +711,6 @@ comment|/**      * @see Impersonation#revokeImpersonation(java.security.Principa
 annotation|@
 name|Override
 specifier|public
-specifier|synchronized
 name|boolean
 name|revokeImpersonation
 parameter_list|(

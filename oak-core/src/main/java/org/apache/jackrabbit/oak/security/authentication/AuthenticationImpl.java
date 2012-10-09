@@ -33,11 +33,57 @@ begin_import
 import|import
 name|javax
 operator|.
+name|jcr
+operator|.
+name|GuestCredentials
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|jcr
+operator|.
+name|RepositoryException
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|jcr
+operator|.
+name|SimpleCredentials
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
 name|security
 operator|.
 name|auth
 operator|.
 name|Subject
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|api
+operator|.
+name|Tree
 import|;
 end_import
 
@@ -78,6 +124,46 @@ operator|.
 name|principal
 operator|.
 name|PrincipalProvider
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|security
+operator|.
+name|user
+operator|.
+name|AuthorizableType
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|security
+operator|.
+name|user
+operator|.
+name|PasswordUtility
 import|;
 end_import
 
@@ -150,7 +236,7 @@ decl_stmt|;
 specifier|private
 specifier|final
 name|String
-name|userID
+name|userId
 decl_stmt|;
 specifier|private
 specifier|final
@@ -162,11 +248,15 @@ specifier|final
 name|PrincipalProvider
 name|principalProvider
 decl_stmt|;
+specifier|private
+name|Tree
+name|userTree
+decl_stmt|;
 specifier|public
 name|AuthenticationImpl
 parameter_list|(
 name|String
-name|userID
+name|userId
 parameter_list|,
 name|UserProvider
 name|userProvider
@@ -177,9 +267,9 @@ parameter_list|)
 block|{
 name|this
 operator|.
-name|userID
+name|userId
 operator|=
-name|userID
+name|userId
 expr_stmt|;
 name|this
 operator|.
@@ -208,19 +298,16 @@ comment|// TODO
 return|return
 literal|true
 return|;
-comment|//        if (userProvider == null || userID == null) {
+comment|//        Tree userTree = getUserTree();
+comment|//        if (userTree == null || userProvider.isDisabled(userTree)) {
 comment|//            return false;
 comment|//        }
 comment|//
 comment|//        if (credentials instanceof SimpleCredentials) {
 comment|//            SimpleCredentials creds = (SimpleCredentials) credentials;
-comment|//            return userID.equals(creds.getUserID())&&
-comment|//                    PasswordUtility.isSame(userProvider.getPassword(userID), creds.getPassword());
-comment|//        } else if (credentials instanceof GuestCredentials) {
-comment|//            return userProvider.getAuthorizable(userID) != null;
+comment|//            return PasswordUtility.isSame(userProvider.getPasswordHash(userTree), creds.getPassword());
 comment|//        } else {
-comment|//            // unsupported credentials object
-comment|//            return false;
+comment|//            return credentials instanceof GuestCredentials;
 comment|//        }
 block|}
 annotation|@
@@ -237,15 +324,63 @@ comment|// TODO
 return|return
 literal|true
 return|;
-comment|//        if (userProvider == null || userID == null) {
+comment|//        Tree userTree = getUserTree();
+comment|//        if (userTree == null || userProvider.isDisabled(userTree)) {
+comment|//            return false;
+comment|//        } else {
 comment|//            try {
-comment|//                return userProvider.getImpersonation(userID, principalProvider).allows(subject);
+comment|//                return userProvider.getImpersonation(userTree, principalProvider).allows(subject);
 comment|//            } catch (RepositoryException e) {
 comment|//                log.debug("Error while validating impersonation", e.getMessage());
 comment|//                return false;
 comment|//            }
 comment|//        }
-comment|//        return false;
+block|}
+comment|//--------------------------------------------------------------------------
+specifier|private
+name|Tree
+name|getUserTree
+parameter_list|()
+block|{
+if|if
+condition|(
+name|userProvider
+operator|==
+literal|null
+operator|||
+name|userId
+operator|==
+literal|null
+condition|)
+block|{
+return|return
+literal|null
+return|;
+block|}
+if|if
+condition|(
+name|userTree
+operator|==
+literal|null
+condition|)
+block|{
+name|userTree
+operator|=
+name|userProvider
+operator|.
+name|getAuthorizable
+argument_list|(
+name|userId
+argument_list|,
+name|AuthorizableType
+operator|.
+name|USER
+argument_list|)
+expr_stmt|;
+block|}
+return|return
+name|userTree
+return|;
 block|}
 block|}
 end_class
