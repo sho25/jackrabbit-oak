@@ -450,10 +450,7 @@ argument_list|(
 name|conflictHandlerProvider
 operator|.
 name|getConflictHandler
-argument_list|(
-name|getCoreValueFactory
 argument_list|()
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

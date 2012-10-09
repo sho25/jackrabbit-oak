@@ -15,22 +15,6 @@ name|commit
 package|;
 end_package
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|api
-operator|.
-name|CoreValueFactory
-import|;
-end_import
-
 begin_interface
 specifier|public
 interface|interface
@@ -38,10 +22,7 @@ name|ConflictHandlerProvider
 block|{
 name|ConflictHandler
 name|getConflictHandler
-parameter_list|(
-name|CoreValueFactory
-name|valueFactory
-parameter_list|)
+parameter_list|()
 function_decl|;
 block|}
 end_interface
