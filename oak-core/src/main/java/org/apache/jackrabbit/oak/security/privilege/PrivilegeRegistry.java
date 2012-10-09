@@ -190,7 +190,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * PrivilegeRegistry... TODO  *  *  * TODO: define if/how built-in privileges are reflected in the mk  * TODO: define if custom privileges are read with editing content session (thus enforcing read permissions)  *  * FIXME: Session#refresh should refresh privileges exposed  */
+comment|/**  * PrivilegeRegistry... TODO  *  *  * TODO: define if/how built-in privileges are reflected in the mk  * TODO: define if custom privileges are read with editing content session (thus enforcing read permissions)  *  * FIXME: Privilege registation should result in Session#refresh in order to have the new privilege also exposed in the content.  */
 end_comment
 
 begin_class
@@ -261,6 +261,11 @@ name|contentSession
 decl_stmt|;
 specifier|private
 specifier|final
+name|Root
+name|root
+decl_stmt|;
+specifier|private
+specifier|final
 name|Map
 argument_list|<
 name|String
@@ -274,6 +279,9 @@ name|PrivilegeRegistry
 parameter_list|(
 name|ContentSession
 name|contentSession
+parameter_list|,
+name|Root
+name|root
 parameter_list|)
 block|{
 name|this
@@ -284,10 +292,18 @@ name|contentSession
 expr_stmt|;
 name|this
 operator|.
+name|root
+operator|=
+name|root
+expr_stmt|;
+name|this
+operator|.
 name|definitions
 operator|=
 name|readDefinitions
-argument_list|()
+argument_list|(
+name|root
+argument_list|)
 expr_stmt|;
 block|}
 specifier|static
@@ -416,7 +432,10 @@ argument_list|,
 name|PrivilegeDefinition
 argument_list|>
 name|readDefinitions
-parameter_list|()
+parameter_list|(
+name|Root
+name|root
+parameter_list|)
 block|{
 return|return
 name|getAllDefinitions
@@ -424,7 +443,7 @@ argument_list|(
 operator|new
 name|PrivilegeDefinitionReader
 argument_list|(
-name|contentSession
+name|root
 argument_list|)
 argument_list|)
 return|;
@@ -504,7 +523,9 @@ operator|.
 name|putAll
 argument_list|(
 name|readDefinitions
-argument_list|()
+argument_list|(
+name|root
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -614,7 +635,7 @@ throws|throws
 name|RepositoryException
 block|{
 name|Root
-name|root
+name|latestRoot
 init|=
 name|contentSession
 operator|.
@@ -627,7 +648,7 @@ comment|// make sure the privileges path is defined
 name|Tree
 name|privilegesTree
 init|=
-name|root
+name|latestRoot
 operator|.
 name|getTree
 argument_list|(
@@ -659,7 +680,7 @@ name|NodeUtil
 argument_list|(
 name|privilegesTree
 argument_list|,
-name|root
+name|latestRoot
 operator|.
 name|getValueFactory
 argument_list|()
@@ -673,7 +694,7 @@ name|toRegister
 argument_list|)
 expr_stmt|;
 comment|// delegate validation to the commit validation (see above)
-name|root
+name|latestRoot
 operator|.
 name|commit
 argument_list|()
@@ -721,6 +742,7 @@ argument_list|)
 throw|;
 block|}
 block|}
+comment|// TODO: should be covered by refresh instead
 name|definitions
 operator|.
 name|put

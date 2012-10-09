@@ -154,6 +154,11 @@ operator|new
 name|PrivilegeRegistry
 argument_list|(
 name|contentSession
+argument_list|,
+name|contentSession
+operator|.
+name|getLatestRoot
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|InputStream

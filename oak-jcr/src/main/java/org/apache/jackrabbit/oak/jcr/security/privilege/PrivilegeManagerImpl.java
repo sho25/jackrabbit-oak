@@ -272,6 +272,11 @@ name|sessionDelegate
 operator|.
 name|getContentSession
 argument_list|()
+argument_list|,
+name|sessionDelegate
+operator|.
+name|getRoot
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|this
@@ -490,6 +495,7 @@ name|declaredAggregateNames
 argument_list|)
 argument_list|)
 decl_stmt|;
+comment|// TODO: should be called by provider
 name|sessionDelegate
 operator|.
 name|refresh

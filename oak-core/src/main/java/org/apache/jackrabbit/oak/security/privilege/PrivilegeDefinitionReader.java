@@ -177,7 +177,7 @@ name|oak
 operator|.
 name|api
 operator|.
-name|ContentSession
+name|Root
 import|;
 end_import
 
@@ -431,16 +431,13 @@ expr_stmt|;
 block|}
 name|PrivilegeDefinitionReader
 parameter_list|(
-name|ContentSession
-name|contentSession
+name|Root
+name|root
 parameter_list|)
 block|{
 name|this
 argument_list|(
-name|contentSession
-operator|.
-name|getLatestRoot
-argument_list|()
+name|root
 operator|.
 name|getTree
 argument_list|(
