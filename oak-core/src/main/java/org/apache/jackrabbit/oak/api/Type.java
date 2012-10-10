@@ -51,6 +51,22 @@ name|Objects
 import|;
 end_import
 
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkState
+import|;
+end_import
+
 begin_comment
 comment|/**  * Instances of this class map Java types to {@link PropertyType property types}.  * Passing an instance of this class to {@link PropertyState#getValue(Type)} determines  * the return type of that method.  * @param<T>  */
 end_comment
@@ -826,29 +842,51 @@ argument_list|>
 name|getBaseType
 parameter_list|()
 block|{
-if|if
-condition|(
-operator|!
+name|checkState
+argument_list|(
 name|isArray
 argument_list|()
-condition|)
-block|{
-throw|throw
-operator|new
-name|IllegalStateException
-argument_list|(
+argument_list|,
 literal|"Not an array: "
 operator|+
 name|this
 argument_list|)
-throw|;
-block|}
+expr_stmt|;
 return|return
 name|fromTag
 argument_list|(
 name|tag
 argument_list|,
 literal|false
+argument_list|)
+return|;
+block|}
+comment|/**      * Determine the array type which has this type as base type      * @return  array type with this type as base type      * @throws IllegalStateException if {@code isArray} is true.      */
+specifier|public
+name|Type
+argument_list|<
+name|?
+argument_list|>
+name|getArrayType
+parameter_list|()
+block|{
+name|checkState
+argument_list|(
+operator|!
+name|isArray
+argument_list|()
+argument_list|,
+literal|"Not a simply type: "
+operator|+
+name|this
+argument_list|)
+expr_stmt|;
+return|return
+name|fromTag
+argument_list|(
+name|tag
+argument_list|,
+literal|true
 argument_list|)
 return|;
 block|}
