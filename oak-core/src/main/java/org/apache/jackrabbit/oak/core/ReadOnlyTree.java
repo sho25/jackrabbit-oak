@@ -572,6 +572,7 @@ name|getChildNodeCount
 argument_list|()
 return|;
 block|}
+comment|/**      * This implementation does not respect ordered child nodes, but always      * returns them in some implementation specific order.      *      * TODO: respect orderable children (needed?)      * @return the children.      */
 annotation|@
 name|Override
 specifier|public
@@ -715,6 +716,22 @@ specifier|public
 name|boolean
 name|remove
 parameter_list|()
+block|{
+throw|throw
+operator|new
+name|UnsupportedOperationException
+argument_list|()
+throw|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|boolean
+name|orderBefore
+parameter_list|(
+name|String
+name|name
+parameter_list|)
 block|{
 throw|throw
 operator|new

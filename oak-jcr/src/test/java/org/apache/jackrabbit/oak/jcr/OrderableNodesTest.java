@@ -159,6 +159,15 @@ argument_list|,
 literal|"b"
 argument_list|)
 expr_stmt|;
+name|root
+operator|.
+name|orderBefore
+argument_list|(
+literal|"c"
+argument_list|,
+literal|null
+argument_list|)
+expr_stmt|;
 name|iterator
 operator|=
 name|root

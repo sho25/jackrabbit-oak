@@ -36,12 +36,6 @@ specifier|public
 interface|interface
 name|PropertyState
 block|{
-comment|/**      * If a JCR node is orderable the OAK API will expose an "{@code oak:childOrder}"      * property state indicating the order of child nodes.      *      * NOTE: this is an temporary solution (OAK-232) until we reach consensus (see also OAK-182)      *      * // TODO: Use a proper namespace for this property?      * // TODO: Expose this a API method on the Tree interface (see http://markmail.org/message/kzt7csiz2bd5n3ww) ?      * // TODO: Define if/how this internal property is exposed on the JCR API      */
-name|String
-name|OAK_CHILD_ORDER
-init|=
-literal|"childOrder"
-decl_stmt|;
 comment|/**      * @return the name of this property state      */
 annotation|@
 name|Nonnull

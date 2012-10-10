@@ -38,7 +38,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A tree instance represents a snapshot of the {@code ContentRepository}  * tree at the time the instance was acquired. Tree instances may  * become invalid over time due to garbage collection of old content, at  * which point an outdated snapshot will start throwing  * {@code IllegalStateException}s to indicate that the snapshot is no  * longer available.  *<p>  * A tree instance belongs to the client and its state is only modified  * in response to method calls made by the client. The various accessors  * on this interface mirror these of the underlying {@code NodeState}  * interface. However, since instances of this class are mutable return  * values may change between invocations.  *<p>  * Tree instances are not thread-safe for write access, so writing clients  * need to ensure that they are not accessed concurrently from multiple  * threads. Instances are however thread-safe for read access, so  * implementations need to ensure that all reading clients see a  * coherent state.  *<p>  * The data returned by this class and intermediary objects such as  * {@link PropertyState} is filtered for the access rights that are set in the  * {@link ContentSession} that created the {@link Root} of this object.  */
+comment|/**  * A tree instance represents a snapshot of the {@code ContentRepository}  * tree at the time the instance was acquired. Tree instances may  * become invalid over time due to garbage collection of old content, at  * which point an outdated snapshot will start throwing  * {@code IllegalStateException}s to indicate that the snapshot is no  * longer available.  *<p/>  * The children of a<code>Tree</code> are generally unordered. That is, the  * sequence of the children returned by {@link #getChildren()} may change over  * time as this Tree is modified either directly or through some other session.  * Calling {@link #orderBefore(String)} will persist the current order and  * maintain the order as new children are added or removed. In this case a new  * child will be inserted after the last child as seen by {@link #getChildren()}.  *<p>  * A tree instance belongs to the client and its state is only modified  * in response to method calls made by the client. The various accessors  * on this interface mirror these of the underlying {@code NodeState}  * interface. However, since instances of this class are mutable return  * values may change between invocations.  *<p>  * Tree instances are not thread-safe for write access, so writing clients  * need to ensure that they are not accessed concurrently from multiple  * threads. Instances are however thread-safe for read access, so  * implementations need to ensure that all reading clients see a  * coherent state.  *<p>  * The data returned by this class and intermediary objects such as  * {@link PropertyState} is filtered for the access rights that are set in the  * {@link ContentSession} that created the {@link Root} of this object.  */
 end_comment
 
 begin_interface
@@ -190,6 +190,14 @@ annotation|@
 name|Nonnull
 name|Tree
 name|addChild
+parameter_list|(
+name|String
+name|name
+parameter_list|)
+function_decl|;
+comment|/**      * Orders this<code>Tree</code> before the sibling tree with the given      *<code>name</code>. Calling this method for the first time on this      *<code>Tree</code> or any of its siblings will persist the current order      * of siblings and maintain it from this point on.      *      * @param name the name of the sibling node where this tree is ordered      *             before. This tree will become the last sibling if      *<code>name</code> is<code>null</code>.      * @return<code>false</code> if there is no sibling with the given      *<code>name</code> and no reordering was performed;      *<code>true</code> otherwise.      */
+name|boolean
+name|orderBefore
 parameter_list|(
 name|String
 name|name
