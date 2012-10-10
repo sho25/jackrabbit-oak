@@ -45,6 +45,11 @@ begin_interface
 specifier|public
 interface|interface
 name|Blob
+extends|extends
+name|Comparable
+argument_list|<
+name|Blob
+argument_list|>
 block|{
 comment|/**      * Returns a new stream for this value object. Multiple calls to this      * methods return equal instances: {@code getNewStream().equals(getNewStream())}.      * @return a new stream for this value based on an internal conversion.      */
 annotation|@

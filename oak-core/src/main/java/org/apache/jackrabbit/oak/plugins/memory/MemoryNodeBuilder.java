@@ -207,22 +207,6 @@ name|oak
 operator|.
 name|api
 operator|.
-name|CoreValue
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|api
-operator|.
 name|PropertyState
 import|;
 end_import
@@ -346,24 +330,6 @@ operator|.
 name|Preconditions
 operator|.
 name|checkNotNull
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|api
-operator|.
-name|Type
-operator|.
-name|STRING
 import|;
 end_import
 
