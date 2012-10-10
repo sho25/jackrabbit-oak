@@ -35,22 +35,6 @@ name|MicroKernel
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|api
-operator|.
-name|ContentRepository
-import|;
-end_import
-
 begin_comment
 comment|/**  * This interface is mainly used in an OSGi environment where various components  * of Oak are started by container and one would like to plug in some code that  * is executed when the micro kernel becomes available in the system.  */
 end_comment
