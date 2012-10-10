@@ -230,6 +230,15 @@ name|AGGREGATE_PRIVILEGES
 operator|.
 name|put
 argument_list|(
+name|JCR_READ
+argument_list|,
+name|AGGR_JCR_READ
+argument_list|)
+expr_stmt|;
+name|AGGREGATE_PRIVILEGES
+operator|.
+name|put
+argument_list|(
 name|JCR_MODIFY_PROPERTIES
 argument_list|,
 name|AGGR_JCR_MODIFY_PROPERTIES

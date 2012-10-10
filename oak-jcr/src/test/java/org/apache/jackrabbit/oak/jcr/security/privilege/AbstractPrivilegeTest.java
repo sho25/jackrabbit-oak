@@ -128,7 +128,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * AbstractPrivilegeTest... TODO  */
+comment|/**  * Base class for privilege management tests.  */
 end_comment
 
 begin_class
