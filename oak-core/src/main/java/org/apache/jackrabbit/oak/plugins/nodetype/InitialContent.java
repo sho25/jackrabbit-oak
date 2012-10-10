@@ -188,7 +188,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *<code>InitialContent</code> implements a {@link MicroKernelTracker} and  * registers built-in node types when the micro kernel becomes available.  */
+comment|/**  * {@code InitialContent} implements a {@link MicroKernelTracker} and  * registers built-in node types when the micro kernel becomes available.  */
 end_comment
 
 begin_class

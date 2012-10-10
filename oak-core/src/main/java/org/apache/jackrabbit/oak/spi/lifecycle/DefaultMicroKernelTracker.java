@@ -36,7 +36,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *<code>DefaultMicroKernelTracker</code> is a default implementation of all methods  * specified in {@link MicroKernelTracker}. The methods immediately return and do  * nothing.  *</p>  * This class can be used when a tracker only wants to get callbacks for some of  * the life cycle events and does not want to implement all methods specified  * in {@link MicroKernelTracker}. This also guarantees forward compatibility when  * new methods are introduced in later versions.  */
+comment|/**  * {@code DefaultMicroKernelTracker} is a default implementation of all methods  * specified in {@link MicroKernelTracker}. The methods immediately return and do  * nothing.  *</p>  * This class can be used when a tracker only wants to get callbacks for some of  * the life cycle events and does not want to implement all methods specified  * in {@link MicroKernelTracker}. This also guarantees forward compatibility when  * new methods are introduced in later versions.  */
 end_comment
 
 begin_class
