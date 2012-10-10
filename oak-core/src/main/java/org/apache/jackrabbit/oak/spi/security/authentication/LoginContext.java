@@ -56,16 +56,19 @@ specifier|public
 interface|interface
 name|LoginContext
 block|{
+comment|/**      * @see javax.security.auth.login.LoginContext#getSubject()      */
 name|Subject
 name|getSubject
 parameter_list|()
 function_decl|;
+comment|/**      * @see javax.security.auth.login.LoginContext#login()      */
 name|void
 name|login
 parameter_list|()
 throws|throws
 name|LoginException
 function_decl|;
+comment|/**      * @see javax.security.auth.login.LoginContext#logout()      */
 name|void
 name|logout
 parameter_list|()

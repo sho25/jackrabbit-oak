@@ -64,7 +64,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * TokenInfo... TODO document, move to spi/api  */
+comment|/**  * TokenInfo... TODO  */
 end_comment
 
 begin_interface

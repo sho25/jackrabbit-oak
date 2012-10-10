@@ -44,7 +44,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * TokenProvider... TODO document, move to spi/api  */
+comment|/**  * TokenProvider... TODO  */
 end_comment
 
 begin_interface
@@ -53,9 +53,6 @@ interface|interface
 name|TokenProvider
 block|{
 comment|/**      * Optional configuration parameter to set the token expiration time in ms.      */
-specifier|public
-specifier|static
-specifier|final
 name|String
 name|PARAM_TOKEN_EXPIRATION
 init|=

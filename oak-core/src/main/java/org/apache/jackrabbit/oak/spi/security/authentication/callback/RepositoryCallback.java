@@ -247,9 +247,7 @@ condition|)
 block|{
 try|try
 block|{
-comment|// FIXME: need a direct and fast way to create Root from the node store
-comment|// FIXME: - without login
-comment|// FIXME: - without ContentSession#getLatestRoot which is unbearably slow
+comment|// FIXME: need a direct and fast way to create Root from the node store without having to call login
 name|SecurityProvider
 name|sp
 init|=
