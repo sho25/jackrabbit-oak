@@ -19,16 +19,6 @@ end_package
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|List
-import|;
-end_import
-
-begin_import
-import|import
 name|javax
 operator|.
 name|annotation
@@ -44,6 +34,16 @@ operator|.
 name|jcr
 operator|.
 name|InvalidItemStateException
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|jcr
+operator|.
+name|RepositoryException
 import|;
 end_import
 
@@ -548,11 +548,11 @@ specifier|public
 name|void
 name|setValue
 parameter_list|(
-name|CoreValue
+name|Value
 name|value
 parameter_list|)
 throws|throws
-name|InvalidItemStateException
+name|RepositoryException
 block|{
 name|getLocation
 argument_list|()
@@ -576,14 +576,12 @@ specifier|public
 name|void
 name|setValues
 parameter_list|(
-name|List
-argument_list|<
-name|CoreValue
-argument_list|>
+name|Value
+index|[]
 name|values
 parameter_list|)
 throws|throws
-name|InvalidItemStateException
+name|RepositoryException
 block|{
 name|getLocation
 argument_list|()

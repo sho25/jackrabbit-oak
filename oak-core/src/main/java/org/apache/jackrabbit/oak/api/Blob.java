@@ -58,7 +58,7 @@ name|InputStream
 name|getNewStream
 parameter_list|()
 function_decl|;
-comment|/**      * Returns the length of this blob.      *      * @return the length of this blob.      */
+comment|/**      * Returns the length of this blob or -1 if unknown.      *      * @return the length of this blob.      */
 name|long
 name|length
 parameter_list|()
