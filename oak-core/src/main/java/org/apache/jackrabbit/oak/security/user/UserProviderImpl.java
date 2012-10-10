@@ -1127,8 +1127,6 @@ operator|new
 name|NodeUtil
 argument_list|(
 name|userTree
-argument_list|,
-name|valueFactory
 argument_list|)
 decl_stmt|;
 return|return
@@ -1556,8 +1554,6 @@ operator|new
 name|NodeUtil
 argument_list|(
 name|authorizableTree
-argument_list|,
-name|valueFactory
 argument_list|)
 decl_stmt|;
 name|node
@@ -1734,8 +1730,6 @@ name|getTree
 argument_list|(
 literal|"/"
 argument_list|)
-argument_list|,
-name|valueFactory
 argument_list|)
 expr_stmt|;
 for|for
@@ -1776,8 +1770,6 @@ operator|new
 name|NodeUtil
 argument_list|(
 name|authTree
-argument_list|,
-name|valueFactory
 argument_list|)
 expr_stmt|;
 block|}

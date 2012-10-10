@@ -1141,8 +1141,6 @@ operator|new
 name|NodeUtil
 argument_list|(
 name|groupTree
-argument_list|,
-name|valueFactory
 argument_list|)
 decl_stmt|;
 name|NodeUtil

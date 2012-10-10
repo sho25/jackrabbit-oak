@@ -688,11 +688,6 @@ operator|new
 name|NodeUtil
 argument_list|(
 name|privilegesTree
-argument_list|,
-name|latestRoot
-operator|.
-name|getValueFactory
-argument_list|()
 argument_list|)
 decl_stmt|;
 name|writeDefinition

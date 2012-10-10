@@ -814,14 +814,6 @@ operator|.
 name|getUserID
 argument_list|()
 decl_stmt|;
-name|CoreValueFactory
-name|valueFactory
-init|=
-name|root
-operator|.
-name|getValueFactory
-argument_list|()
-decl_stmt|;
 try|try
 block|{
 name|Tree
@@ -852,8 +844,6 @@ operator|new
 name|NodeUtil
 argument_list|(
 name|userTree
-argument_list|,
-name|valueFactory
 argument_list|)
 decl_stmt|;
 name|NodeUtil
@@ -1255,11 +1245,6 @@ operator|new
 name|NodeUtil
 argument_list|(
 name|tokenTree
-argument_list|,
-name|root
-operator|.
-name|getValueFactory
-argument_list|()
 argument_list|)
 argument_list|,
 name|token
@@ -1373,11 +1358,6 @@ operator|new
 name|NodeUtil
 argument_list|(
 name|tokenTree
-argument_list|,
-name|root
-operator|.
-name|getValueFactory
-argument_list|()
 argument_list|)
 decl_stmt|;
 name|long

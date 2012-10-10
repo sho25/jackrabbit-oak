@@ -1423,9 +1423,6 @@ name|NodeUtil
 argument_list|(
 name|type
 argument_list|,
-name|getCoreValueFactory
-argument_list|()
-argument_list|,
 name|getNameMapper
 argument_list|()
 argument_list|)
