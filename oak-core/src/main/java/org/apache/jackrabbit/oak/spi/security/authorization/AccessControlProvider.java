@@ -72,7 +72,7 @@ name|AccessControlProvider
 block|{
 specifier|public
 name|AccessControlContext
-name|createAccessControlContext
+name|getAccessControlContext
 parameter_list|(
 name|Subject
 name|subject

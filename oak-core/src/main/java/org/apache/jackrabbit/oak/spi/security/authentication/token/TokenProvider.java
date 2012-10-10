@@ -52,9 +52,18 @@ specifier|public
 interface|interface
 name|TokenProvider
 block|{
+comment|/**      * Optional configuration parameter to set the token expiration time in ms.      */
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|PARAM_TOKEN_EXPIRATION
+init|=
+literal|"tokenExpiration"
+decl_stmt|;
 comment|/**      * Default expiration time in ms for login tokens is 2 hours.      */
 name|long
-name|TOKEN_EXPIRATION
+name|DEFAULT_TOKEN_EXPIRATION
 init|=
 literal|2
 operator|*

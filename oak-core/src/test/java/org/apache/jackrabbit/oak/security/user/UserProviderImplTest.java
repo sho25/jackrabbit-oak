@@ -534,9 +534,7 @@ name|defaultConfig
 operator|=
 operator|new
 name|UserConfig
-argument_list|(
-literal|"admin"
-argument_list|)
+argument_list|()
 expr_stmt|;
 name|defaultUserPath
 operator|=
@@ -767,8 +765,6 @@ argument_list|,
 operator|new
 name|UserConfig
 argument_list|(
-literal|"admin"
-argument_list|,
 name|options
 argument_list|,
 name|Collections

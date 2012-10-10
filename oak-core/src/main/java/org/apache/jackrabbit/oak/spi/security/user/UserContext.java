@@ -130,6 +130,12 @@ name|UserContext
 block|{
 annotation|@
 name|Nonnull
+name|UserConfig
+name|getUserConfig
+parameter_list|()
+function_decl|;
+annotation|@
+name|Nonnull
 name|UserProvider
 name|getUserProvider
 parameter_list|(

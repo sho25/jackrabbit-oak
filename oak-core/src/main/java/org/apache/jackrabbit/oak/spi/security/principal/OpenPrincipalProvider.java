@@ -204,27 +204,6 @@ name|p
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// TODO: remove again (currently needed because LoginContextProviderImpl uses this dummy principal provider)
-if|if
-condition|(
-literal|"admin"
-operator|.
-name|equals
-argument_list|(
-name|userID
-argument_list|)
-condition|)
-block|{
-name|principals
-operator|.
-name|add
-argument_list|(
-name|AdminPrincipal
-operator|.
-name|INSTANCE
-argument_list|)
-expr_stmt|;
-block|}
 return|return
 name|principals
 return|;

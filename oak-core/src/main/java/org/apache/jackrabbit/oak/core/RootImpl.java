@@ -1286,7 +1286,7 @@ block|{
 return|return
 name|accProvider
 operator|.
-name|createAccessControlContext
+name|getAccessControlContext
 argument_list|(
 name|subject
 argument_list|)

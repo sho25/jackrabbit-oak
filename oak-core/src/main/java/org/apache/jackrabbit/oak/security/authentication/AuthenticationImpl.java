@@ -21,6 +21,16 @@ end_package
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Collections
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|jcr
@@ -83,6 +93,22 @@ name|oak
 operator|.
 name|api
 operator|.
+name|AuthInfo
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|api
+operator|.
 name|Tree
 import|;
 end_import
@@ -104,6 +130,26 @@ operator|.
 name|authentication
 operator|.
 name|Authentication
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|security
+operator|.
+name|authentication
+operator|.
+name|ImpersonationCredentials
 import|;
 end_import
 
@@ -248,10 +294,6 @@ specifier|final
 name|PrincipalProvider
 name|principalProvider
 decl_stmt|;
-specifier|private
-name|Tree
-name|userTree
-decl_stmt|;
 specifier|public
 name|AuthenticationImpl
 parameter_list|(
@@ -294,47 +336,114 @@ name|Credentials
 name|credentials
 parameter_list|)
 block|{
-comment|// TODO
-return|return
-literal|true
-return|;
-comment|//        Tree userTree = getUserTree();
-comment|//        if (userTree == null || userProvider.isDisabled(userTree)) {
-comment|//            return false;
-comment|//        }
-comment|//
-comment|//        if (credentials instanceof SimpleCredentials) {
-comment|//            SimpleCredentials creds = (SimpleCredentials) credentials;
-comment|//            return PasswordUtility.isSame(userProvider.getPasswordHash(userTree), creds.getPassword());
-comment|//        } else {
-comment|//            return credentials instanceof GuestCredentials;
-comment|//        }
-block|}
-annotation|@
-name|Override
-specifier|public
-name|boolean
-name|impersonate
-parameter_list|(
-name|Subject
-name|subject
-parameter_list|)
+name|Tree
+name|userTree
+init|=
+name|getUserTree
+argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|userTree
+operator|==
+literal|null
+operator|||
+name|userProvider
+operator|.
+name|isDisabled
+argument_list|(
+name|userTree
+argument_list|)
+condition|)
 block|{
-comment|// TODO
 return|return
-literal|true
+literal|false
 return|;
-comment|//        Tree userTree = getUserTree();
-comment|//        if (userTree == null || userProvider.isDisabled(userTree)) {
-comment|//            return false;
-comment|//        } else {
-comment|//            try {
-comment|//                return userProvider.getImpersonation(userTree, principalProvider).allows(subject);
-comment|//            } catch (RepositoryException e) {
-comment|//                log.debug("Error while validating impersonation", e.getMessage());
-comment|//                return false;
-comment|//            }
-comment|//        }
+block|}
+name|boolean
+name|success
+decl_stmt|;
+if|if
+condition|(
+name|credentials
+operator|instanceof
+name|SimpleCredentials
+condition|)
+block|{
+name|SimpleCredentials
+name|creds
+init|=
+operator|(
+name|SimpleCredentials
+operator|)
+name|credentials
+decl_stmt|;
+name|success
+operator|=
+name|PasswordUtility
+operator|.
+name|isSame
+argument_list|(
+name|userProvider
+operator|.
+name|getPasswordHash
+argument_list|(
+name|userTree
+argument_list|)
+argument_list|,
+name|creds
+operator|.
+name|getPassword
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+elseif|else
+if|if
+condition|(
+name|credentials
+operator|instanceof
+name|ImpersonationCredentials
+condition|)
+block|{
+name|AuthInfo
+name|info
+init|=
+operator|(
+operator|(
+name|ImpersonationCredentials
+operator|)
+name|credentials
+operator|)
+operator|.
+name|getImpersonatorInfo
+argument_list|()
+decl_stmt|;
+name|success
+operator|=
+name|impersonate
+argument_list|(
+name|info
+argument_list|,
+name|userTree
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+comment|// guest login is allowed if an anonymous user exists in the content (see getUserTree above)
+name|success
+operator|=
+operator|(
+name|credentials
+operator|instanceof
+name|GuestCredentials
+operator|)
+expr_stmt|;
+block|}
+return|return
+name|success
+return|;
 block|}
 comment|//--------------------------------------------------------------------------
 specifier|private
@@ -357,15 +466,9 @@ return|return
 literal|null
 return|;
 block|}
-if|if
-condition|(
-name|userTree
-operator|==
-literal|null
-condition|)
+else|else
 block|{
-name|userTree
-operator|=
+return|return
 name|userProvider
 operator|.
 name|getAuthorizable
@@ -376,10 +479,83 @@ name|AuthorizableType
 operator|.
 name|USER
 argument_list|)
+return|;
+block|}
+block|}
+specifier|private
+name|boolean
+name|impersonate
+parameter_list|(
+name|AuthInfo
+name|info
+parameter_list|,
+name|Tree
+name|userTree
+parameter_list|)
+block|{
+name|Subject
+name|subject
+init|=
+operator|new
+name|Subject
+argument_list|(
+literal|true
+argument_list|,
+name|info
+operator|.
+name|getPrincipals
+argument_list|()
+argument_list|,
+name|Collections
+operator|.
+name|emptySet
+argument_list|()
+argument_list|,
+name|Collections
+operator|.
+name|emptySet
+argument_list|()
+argument_list|)
+decl_stmt|;
+try|try
+block|{
+return|return
+name|userProvider
+operator|.
+name|getImpersonation
+argument_list|(
+name|userTree
+argument_list|,
+name|principalProvider
+argument_list|)
+operator|.
+name|allows
+argument_list|(
+name|subject
+argument_list|)
+return|;
+block|}
+catch|catch
+parameter_list|(
+name|RepositoryException
+name|e
+parameter_list|)
+block|{
+name|log
+operator|.
+name|debug
+argument_list|(
+literal|"Error while validating impersonation"
+argument_list|,
+name|e
+operator|.
+name|getMessage
+argument_list|()
+argument_list|)
 expr_stmt|;
 block|}
 return|return
-name|userTree
+literal|false
 return|;
 block|}
 block|}

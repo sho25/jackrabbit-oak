@@ -219,7 +219,7 @@ operator|new
 name|AccessControlProviderImpl
 argument_list|()
 operator|.
-name|createAccessControlContext
+name|getAccessControlContext
 argument_list|(
 name|subject
 argument_list|)

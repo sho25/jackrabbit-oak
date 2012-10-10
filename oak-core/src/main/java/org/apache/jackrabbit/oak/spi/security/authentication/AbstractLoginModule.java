@@ -229,6 +229,24 @@ name|spi
 operator|.
 name|security
 operator|.
+name|ConfigurationParameters
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|security
+operator|.
 name|SecurityProvider
 import|;
 end_import
@@ -318,26 +336,6 @@ operator|.
 name|callback
 operator|.
 name|SecurityProviderCallback
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|spi
-operator|.
-name|security
-operator|.
-name|principal
-operator|.
-name|OpenPrincipalProvider
 import|;
 end_import
 
@@ -459,6 +457,10 @@ specifier|protected
 name|Map
 name|sharedState
 decl_stmt|;
+specifier|protected
+name|ConfigurationParameters
+name|options
+decl_stmt|;
 specifier|private
 name|SecurityProvider
 name|securityProvider
@@ -514,6 +516,16 @@ operator|.
 name|sharedState
 operator|=
 name|sharedState
+expr_stmt|;
+name|this
+operator|.
+name|options
+operator|=
+operator|new
+name|ConfigurationParameters
+argument_list|(
+name|options
+argument_list|)
 expr_stmt|;
 block|}
 annotation|@
@@ -958,32 +970,129 @@ name|PrincipalProvider
 name|getPrincipalProvider
 parameter_list|()
 block|{
-comment|// TODO: replace fake pp to enable proper principal resolution.
-return|return
-operator|new
-name|OpenPrincipalProvider
+name|PrincipalProvider
+name|principalProvider
+init|=
+literal|null
+decl_stmt|;
+name|SecurityProvider
+name|sp
+init|=
+name|getSecurityProvider
 argument_list|()
+decl_stmt|;
+name|Root
+name|root
+init|=
+name|getRoot
+argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|root
+operator|!=
+literal|null
+operator|&&
+name|sp
+operator|!=
+literal|null
+condition|)
+block|{
+name|principalProvider
+operator|=
+name|sp
+operator|.
+name|getPrincipalConfiguration
+argument_list|()
+operator|.
+name|getPrincipalProvider
+argument_list|(
+name|root
+argument_list|,
+name|NamePathMapper
+operator|.
+name|DEFAULT
+argument_list|)
+expr_stmt|;
+block|}
+if|if
+condition|(
+name|principalProvider
+operator|==
+literal|null
+operator|&&
+name|callbackHandler
+operator|!=
+literal|null
+condition|)
+block|{
+try|try
+block|{
+name|PrincipalProviderCallback
+name|principalCallBack
+init|=
+operator|new
+name|PrincipalProviderCallback
+argument_list|()
+decl_stmt|;
+name|callbackHandler
+operator|.
+name|handle
+argument_list|(
+operator|new
+name|Callback
+index|[]
+block|{
+name|principalCallBack
+block|}
+argument_list|)
+expr_stmt|;
+name|principalProvider
+operator|=
+name|principalCallBack
+operator|.
+name|getPrincipalProvider
+argument_list|()
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|IOException
+name|e
+parameter_list|)
+block|{
+name|log
+operator|.
+name|debug
+argument_list|(
+name|e
+operator|.
+name|getMessage
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|UnsupportedCallbackException
+name|e
+parameter_list|)
+block|{
+name|log
+operator|.
+name|debug
+argument_list|(
+name|e
+operator|.
+name|getMessage
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+return|return
+name|principalProvider
 return|;
-comment|//        PrincipalProvider principalProvider = null;
-comment|//
-comment|//        SecurityProvider sp = getSecurityProvider();
-comment|//        Root r = getRoot();
-comment|//        if (root != null&& securityProvider != null) {
-comment|//            principalProvider = securityProvider.getPrincipalConfiguration().getPrincipalProvider(root, NamePathMapper.DEFAULT);
-comment|//        }
-comment|//
-comment|//        if (principalProvider == null&& callbackHandler != null) {
-comment|//            try {
-comment|//                PrincipalProviderCallback principalCallBack = new PrincipalProviderCallback();
-comment|//                callbackHandler.handle(new Callback[] {principalCallBack});
-comment|//                principalProvider = principalCallBack.getPrincipalProvider();
-comment|//            } catch (IOException e) {
-comment|//                log.debug(e.getMessage());
-comment|//            } catch (UnsupportedCallbackException e) {
-comment|//                log.debug(e.getMessage());
-comment|//            }
-comment|//        }
-comment|//        return principalProvider;
 block|}
 annotation|@
 name|CheckForNull
@@ -992,21 +1101,51 @@ name|UserProvider
 name|getUserProvider
 parameter_list|()
 block|{
+name|SecurityProvider
+name|sp
+init|=
+name|getSecurityProvider
+argument_list|()
+decl_stmt|;
+name|Root
+name|root
+init|=
+name|getRoot
+argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|root
+operator|!=
+literal|null
+operator|&&
+name|sp
+operator|!=
+literal|null
+condition|)
+block|{
+return|return
+name|sp
+operator|.
+name|getUserContext
+argument_list|()
+operator|.
+name|getUserProvider
+argument_list|(
+name|root
+argument_list|)
+return|;
+block|}
+else|else
+block|{
 return|return
 literal|null
 return|;
-comment|// TODO
-comment|//        SecurityProvider sp = getSecurityProvider();
-comment|//        Root r = getRoot();
-comment|//        if (root != null&& securityProvider != null) {
-comment|//            return securityProvider.getUserContext().getUserProvider(root);
-comment|//        } else {
-comment|//            return null;
-comment|//        }
+block|}
 block|}
 annotation|@
 name|CheckForNull
-specifier|private
+specifier|protected
 name|SecurityProvider
 name|getSecurityProvider
 parameter_list|()
@@ -1092,7 +1231,7 @@ return|;
 block|}
 annotation|@
 name|CheckForNull
-specifier|private
+specifier|protected
 name|Root
 name|getRoot
 parameter_list|()
@@ -1101,6 +1240,10 @@ if|if
 condition|(
 name|root
 operator|==
+literal|null
+operator|&&
+name|callbackHandler
+operator|!=
 literal|null
 condition|)
 block|{

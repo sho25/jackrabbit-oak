@@ -100,6 +100,16 @@ name|DEFAULT_DEPTH
 init|=
 literal|2
 decl_stmt|;
+name|String
+name|DEFAULT_ADMIN_ID
+init|=
+literal|"admin"
+decl_stmt|;
+name|String
+name|DEFAULT_ANONYMOUS_ID
+init|=
+literal|"anonymous"
+decl_stmt|;
 block|}
 end_interface
 

@@ -53,18 +53,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|security
-operator|.
-name|auth
-operator|.
-name|Subject
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -255,21 +243,6 @@ expr_stmt|;
 block|}
 return|return
 name|success
-return|;
-block|}
-comment|/**      * Always returns {@code false}      */
-annotation|@
-name|Override
-specifier|public
-name|boolean
-name|impersonate
-parameter_list|(
-name|Subject
-name|subject
-parameter_list|)
-block|{
-return|return
-literal|false
 return|;
 block|}
 comment|//-----------------------------------------------------------< internal>---

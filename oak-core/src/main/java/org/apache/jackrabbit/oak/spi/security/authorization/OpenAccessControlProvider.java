@@ -72,7 +72,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This class implements an {@link AccessControlProvider} which grants  * full access to any {@link Subject} passed to {@link #createAccessControlContext(Subject)}.  */
+comment|/**  * This class implements an {@link AccessControlProvider} which grants  * full access to any {@link Subject} passed to {@link #getAccessControlContext(Subject)}.  */
 end_comment
 
 begin_class
@@ -86,7 +86,7 @@ annotation|@
 name|Override
 specifier|public
 name|AccessControlContext
-name|createAccessControlContext
+name|getAccessControlContext
 parameter_list|(
 name|Subject
 name|subject
