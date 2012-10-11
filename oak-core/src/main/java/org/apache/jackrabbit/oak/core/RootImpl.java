@@ -890,6 +890,9 @@ argument_list|,
 name|head
 argument_list|,
 name|rootTree
+operator|.
+name|getNodeBuilder
+argument_list|()
 argument_list|,
 name|conflictHandler
 argument_list|)

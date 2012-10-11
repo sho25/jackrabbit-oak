@@ -45,9 +45,11 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|api
+name|spi
 operator|.
-name|Tree
+name|state
+operator|.
+name|NodeBuilder
 import|;
 end_import
 
@@ -95,7 +97,7 @@ comment|/**      * The property {@code ours} has been added to {@code parent} wh
 name|Resolution
 name|addExistingProperty
 parameter_list|(
-name|Tree
+name|NodeBuilder
 name|parent
 parameter_list|,
 name|PropertyState
@@ -109,7 +111,7 @@ comment|/**      * The property {@code ours} has been changed in {@code parent} 
 name|Resolution
 name|changeDeletedProperty
 parameter_list|(
-name|Tree
+name|NodeBuilder
 name|parent
 parameter_list|,
 name|PropertyState
@@ -120,7 +122,7 @@ comment|/**      * The property {@code ours} has been changed in {@code parent} 
 name|Resolution
 name|changeChangedProperty
 parameter_list|(
-name|Tree
+name|NodeBuilder
 name|parent
 parameter_list|,
 name|PropertyState
@@ -134,7 +136,7 @@ comment|/**      * The property {@code ours} has been removed in {@code parent} 
 name|Resolution
 name|deleteDeletedProperty
 parameter_list|(
-name|Tree
+name|NodeBuilder
 name|parent
 parameter_list|,
 name|PropertyState
@@ -145,7 +147,7 @@ comment|/**      * The property {@code theirs} changed in the persistence store 
 name|Resolution
 name|deleteChangedProperty
 parameter_list|(
-name|Tree
+name|NodeBuilder
 name|parent
 parameter_list|,
 name|PropertyState
@@ -156,7 +158,7 @@ comment|/**      * The node {@code ours} has been added to {@code parent} which 
 name|Resolution
 name|addExistingNode
 parameter_list|(
-name|Tree
+name|NodeBuilder
 name|parent
 parameter_list|,
 name|String
@@ -173,7 +175,7 @@ comment|/**      * The node {@code ours} has been changed in {@code parent} whil
 name|Resolution
 name|changeDeletedNode
 parameter_list|(
-name|Tree
+name|NodeBuilder
 name|parent
 parameter_list|,
 name|String
@@ -183,11 +185,11 @@ name|NodeState
 name|ours
 parameter_list|)
 function_decl|;
-comment|/**      * The node {@code theirs} changed in the persistence store while it has been      * deleted locally.      *      * @param parent  root of the conflict      * @param name  name of the node      * @param theirs      * @param theirs  their version of the node      * @return  {@link Resolution} of the conflict      */
+comment|/**      * The node {@code theirs} changed in the persistence store while it has been      * deleted locally.      *      * @param parent  root of the conflict      * @param name  name of the node      * @param theirs  their version of the node      * @return  {@link Resolution} of the conflict      */
 name|Resolution
 name|deleteChangedNode
 parameter_list|(
-name|Tree
+name|NodeBuilder
 name|parent
 parameter_list|,
 name|String
@@ -201,7 +203,7 @@ comment|/**      * The node {@code name} has been removed in {@code parent} whil
 name|Resolution
 name|deleteDeletedNode
 parameter_list|(
-name|Tree
+name|NodeBuilder
 name|parent
 parameter_list|,
 name|String

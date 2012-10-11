@@ -63,9 +63,11 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|api
+name|spi
 operator|.
-name|Tree
+name|state
+operator|.
+name|NodeBuilder
 import|;
 end_import
 
@@ -154,7 +156,7 @@ specifier|public
 name|Resolution
 name|addExistingProperty
 parameter_list|(
-name|Tree
+name|NodeBuilder
 name|parent
 parameter_list|,
 name|PropertyState
@@ -174,7 +176,7 @@ specifier|public
 name|Resolution
 name|changeDeletedProperty
 parameter_list|(
-name|Tree
+name|NodeBuilder
 name|parent
 parameter_list|,
 name|PropertyState
@@ -191,7 +193,7 @@ specifier|public
 name|Resolution
 name|changeChangedProperty
 parameter_list|(
-name|Tree
+name|NodeBuilder
 name|parent
 parameter_list|,
 name|PropertyState
@@ -211,7 +213,7 @@ specifier|public
 name|Resolution
 name|deleteChangedProperty
 parameter_list|(
-name|Tree
+name|NodeBuilder
 name|parent
 parameter_list|,
 name|PropertyState
@@ -228,7 +230,7 @@ specifier|public
 name|Resolution
 name|deleteDeletedProperty
 parameter_list|(
-name|Tree
+name|NodeBuilder
 name|parent
 parameter_list|,
 name|PropertyState
@@ -245,7 +247,7 @@ specifier|public
 name|Resolution
 name|addExistingNode
 parameter_list|(
-name|Tree
+name|NodeBuilder
 name|parent
 parameter_list|,
 name|String
@@ -268,7 +270,7 @@ specifier|public
 name|Resolution
 name|changeDeletedNode
 parameter_list|(
-name|Tree
+name|NodeBuilder
 name|parent
 parameter_list|,
 name|String
@@ -288,7 +290,7 @@ specifier|public
 name|Resolution
 name|deleteChangedNode
 parameter_list|(
-name|Tree
+name|NodeBuilder
 name|parent
 parameter_list|,
 name|String
@@ -308,7 +310,7 @@ specifier|public
 name|Resolution
 name|deleteDeletedNode
 parameter_list|(
-name|Tree
+name|NodeBuilder
 name|parent
 parameter_list|,
 name|String
