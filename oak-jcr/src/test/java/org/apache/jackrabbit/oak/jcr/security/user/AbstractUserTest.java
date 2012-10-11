@@ -250,6 +250,12 @@ extends|extends
 name|AbstractJCRTest
 block|{
 specifier|protected
+name|String
+name|testPw
+init|=
+literal|"pw"
+decl_stmt|;
+specifier|protected
 name|UserManager
 name|userMgr
 decl_stmt|;
@@ -293,7 +299,7 @@ argument_list|(
 name|createUserId
 argument_list|()
 argument_list|,
-literal|"pw"
+name|testPw
 argument_list|)
 expr_stmt|;
 name|group

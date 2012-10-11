@@ -1160,22 +1160,6 @@ parameter_list|)
 throws|throws
 name|RepositoryException
 block|{
-if|if
-condition|(
-name|password
-operator|==
-literal|null
-condition|)
-block|{
-name|log
-operator|.
-name|debug
-argument_list|(
-literal|"Password is null."
-argument_list|)
-expr_stmt|;
-return|return;
-block|}
 name|String
 name|pwHash
 decl_stmt|;

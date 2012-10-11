@@ -386,9 +386,9 @@ name|password
 argument_list|,
 name|algorithm
 argument_list|,
-name|iterations
-argument_list|,
 name|saltSize
+argument_list|,
+name|iterations
 argument_list|)
 return|;
 block|}
