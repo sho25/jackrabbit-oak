@@ -63,6 +63,24 @@ name|NamePathMapper
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|query
+operator|.
+name|PropertyValue
+import|;
+end_import
+
 begin_comment
 comment|/**  * The query engine allows to parse and execute queries.  *<p>  * What query languages are supported depends on the registered query parsers.  */
 end_comment
@@ -118,7 +136,7 @@ name|String
 argument_list|,
 name|?
 extends|extends
-name|CoreValue
+name|PropertyValue
 argument_list|>
 name|bindings
 parameter_list|,

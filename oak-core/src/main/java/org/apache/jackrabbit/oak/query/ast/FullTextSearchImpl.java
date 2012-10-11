@@ -20,6 +20,42 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|api
+operator|.
+name|Type
+operator|.
+name|STRING
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|api
+operator|.
+name|Type
+operator|.
+name|STRINGS
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -36,22 +72,6 @@ operator|.
 name|util
 operator|.
 name|ArrayList
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|api
-operator|.
-name|CoreValue
 import|;
 end_import
 
@@ -97,6 +117,22 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
+name|api
+operator|.
+name|Type
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
 name|query
 operator|.
 name|ast
@@ -126,7 +162,7 @@ import|;
 end_import
 
 begin_import
-import|import static
+import|import
 name|org
 operator|.
 name|apache
@@ -135,29 +171,11 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|api
+name|spi
 operator|.
-name|Type
+name|query
 operator|.
-name|STRING
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|api
-operator|.
-name|Type
-operator|.
-name|STRINGS
+name|PropertyValue
 import|;
 end_import
 
@@ -366,7 +384,7 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|PropertyState
+name|PropertyValue
 name|p
 init|=
 name|selector
@@ -443,7 +461,7 @@ comment|// TODO fulltext conditions: need a way to disable evaluation
 comment|// if a fulltext index is used, to avoid filtering too much
 comment|// (we don't know what exact options are used in the fulltext index)
 comment|// (stop word, special characters,...)
-name|CoreValue
+name|PropertyValue
 name|v
 init|=
 name|fullTextSearchExpression
@@ -462,8 +480,12 @@ name|parse
 argument_list|(
 name|v
 operator|.
-name|getString
-argument_list|()
+name|getValue
+argument_list|(
+name|Type
+operator|.
+name|STRING
+argument_list|)
 argument_list|)
 decl_stmt|;
 return|return
@@ -620,9 +642,6 @@ name|Operator
 operator|.
 name|NOT_EQUAL
 argument_list|,
-operator|(
-name|CoreValue
-operator|)
 literal|null
 argument_list|)
 expr_stmt|;
@@ -637,8 +656,12 @@ operator|.
 name|currentValue
 argument_list|()
 operator|.
-name|getString
-argument_list|()
+name|getValue
+argument_list|(
+name|Type
+operator|.
+name|STRING
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

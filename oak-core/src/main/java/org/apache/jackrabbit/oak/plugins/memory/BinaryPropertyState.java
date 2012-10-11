@@ -92,8 +92,12 @@ name|String
 name|getString
 parameter_list|()
 block|{
+comment|// TODO find a better way to represent string values with Blobs
 return|return
-literal|"<binary>"
+name|value
+operator|.
+name|toString
+argument_list|()
 return|;
 block|}
 annotation|@

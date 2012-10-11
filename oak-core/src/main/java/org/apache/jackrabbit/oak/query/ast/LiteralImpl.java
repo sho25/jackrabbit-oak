@@ -31,6 +31,16 @@ end_import
 
 begin_import
 import|import
+name|javax
+operator|.
+name|jcr
+operator|.
+name|PropertyType
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -41,7 +51,7 @@ name|oak
 operator|.
 name|api
 operator|.
-name|CoreValue
+name|Type
 import|;
 end_import
 
@@ -63,11 +73,19 @@ end_import
 
 begin_import
 import|import
-name|javax
+name|org
 operator|.
-name|jcr
+name|apache
 operator|.
-name|PropertyType
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|query
+operator|.
+name|PropertyValue
 import|;
 end_import
 
@@ -84,13 +102,13 @@ name|StaticOperandImpl
 block|{
 specifier|private
 specifier|final
-name|CoreValue
+name|PropertyValue
 name|value
 decl_stmt|;
 specifier|public
 name|LiteralImpl
 parameter_list|(
-name|CoreValue
+name|PropertyValue
 name|value
 parameter_list|)
 block|{
@@ -102,7 +120,7 @@ name|value
 expr_stmt|;
 block|}
 specifier|public
-name|CoreValue
+name|PropertyValue
 name|getLiteralValue
 parameter_list|()
 block|{
@@ -146,6 +164,9 @@ name|value
 operator|.
 name|getType
 argument_list|()
+operator|.
+name|tag
+argument_list|()
 argument_list|)
 decl_stmt|;
 return|return
@@ -180,14 +201,18 @@ name|escapeStringLiteral
 argument_list|(
 name|value
 operator|.
-name|getString
-argument_list|()
+name|getValue
+argument_list|(
+name|Type
+operator|.
+name|STRING
+argument_list|)
 argument_list|)
 return|;
 block|}
 annotation|@
 name|Override
-name|CoreValue
+name|PropertyValue
 name|currentValue
 parameter_list|()
 block|{

@@ -43,7 +43,23 @@ name|oak
 operator|.
 name|api
 operator|.
-name|CoreValue
+name|PropertyState
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|api
+operator|.
+name|Type
 import|;
 end_import
 
@@ -362,7 +378,7 @@ name|propertyName
 argument_list|)
 throw|;
 block|}
-name|CoreValue
+name|PropertyState
 name|first
 init|=
 name|restriction
@@ -380,8 +396,12 @@ literal|null
 else|:
 name|first
 operator|.
-name|toString
-argument_list|()
+name|getValue
+argument_list|(
+name|Type
+operator|.
+name|STRING
+argument_list|)
 decl_stmt|;
 comment|// TODO revisit code after the removal of revisionId
 name|String

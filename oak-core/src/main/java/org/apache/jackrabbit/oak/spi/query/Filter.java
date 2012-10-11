@@ -39,22 +39,6 @@ name|PropertyType
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|api
-operator|.
-name|CoreValue
-import|;
-end_import
-
 begin_comment
 comment|/**  * The filter for an index lookup.  */
 end_comment
@@ -113,7 +97,7 @@ name|propertyName
 decl_stmt|;
 comment|/**          * The first value to read, or null to read from the beginning.          */
 specifier|public
-name|CoreValue
+name|PropertyValue
 name|first
 decl_stmt|;
 comment|/**          * Whether values that match the first should be returned.          */
@@ -123,7 +107,7 @@ name|firstIncluding
 decl_stmt|;
 comment|/**          * The last value to read, or null to read until the end.          */
 specifier|public
-name|CoreValue
+name|PropertyValue
 name|last
 decl_stmt|;
 comment|/**          * Whether values that match the last should be returned.          */

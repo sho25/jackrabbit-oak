@@ -29,9 +29,11 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|api
+name|spi
 operator|.
-name|CoreValue
+name|query
+operator|.
+name|PropertyValue
 import|;
 end_import
 
@@ -107,7 +109,7 @@ return|;
 block|}
 annotation|@
 name|Override
-name|CoreValue
+name|PropertyValue
 name|currentValue
 parameter_list|()
 block|{

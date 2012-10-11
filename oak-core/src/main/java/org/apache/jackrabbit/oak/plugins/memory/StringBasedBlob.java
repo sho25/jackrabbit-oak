@@ -86,6 +86,17 @@ name|value
 expr_stmt|;
 block|}
 annotation|@
+name|Override
+specifier|public
+name|String
+name|toString
+parameter_list|()
+block|{
+return|return
+name|value
+return|;
+block|}
+annotation|@
 name|Nonnull
 annotation|@
 name|Override

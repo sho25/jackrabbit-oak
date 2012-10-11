@@ -29,9 +29,11 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|api
+name|spi
 operator|.
-name|CoreValue
+name|query
+operator|.
+name|PropertyValue
 import|;
 end_import
 
@@ -48,7 +50,7 @@ extends|extends
 name|AstElement
 block|{
 specifier|abstract
-name|CoreValue
+name|PropertyValue
 name|currentValue
 parameter_list|()
 function_decl|;

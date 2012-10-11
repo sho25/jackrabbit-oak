@@ -29,9 +29,11 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|api
+name|spi
 operator|.
-name|CoreValue
+name|query
+operator|.
+name|PropertyValue
 import|;
 end_import
 
@@ -396,7 +398,7 @@ specifier|public
 name|LiteralImpl
 name|literal
 parameter_list|(
-name|CoreValue
+name|PropertyValue
 name|literalValue
 parameter_list|)
 block|{

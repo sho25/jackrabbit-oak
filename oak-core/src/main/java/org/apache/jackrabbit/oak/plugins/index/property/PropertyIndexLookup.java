@@ -43,22 +43,6 @@ name|oak
 operator|.
 name|api
 operator|.
-name|CoreValue
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|api
-operator|.
 name|PropertyState
 import|;
 end_import
@@ -89,11 +73,11 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|plugins
+name|spi
 operator|.
-name|memory
+name|query
 operator|.
-name|CoreValues
+name|PropertyValue
 import|;
 end_import
 
@@ -107,11 +91,11 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|plugins
+name|spi
 operator|.
-name|memory
+name|query
 operator|.
-name|StringValue
+name|PropertyValues
 import|;
 end_import
 
@@ -337,8 +321,9 @@ name|find
 argument_list|(
 name|name
 argument_list|,
-operator|new
-name|StringValue
+name|PropertyValues
+operator|.
+name|newString
 argument_list|(
 name|value
 argument_list|)
@@ -355,7 +340,7 @@ parameter_list|(
 name|String
 name|name
 parameter_list|,
-name|CoreValue
+name|PropertyValue
 name|value
 parameter_list|)
 block|{
@@ -424,6 +409,7 @@ operator|!=
 literal|null
 condition|)
 block|{
+comment|//TODO what happens when I search using an mvp?
 name|property
 operator|=
 name|state
@@ -435,6 +421,11 @@ operator|.
 name|encode
 argument_list|(
 name|value
+argument_list|)
+operator|.
+name|get
+argument_list|(
+literal|0
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -492,25 +483,14 @@ operator|!=
 literal|null
 condition|)
 block|{
-for|for
-control|(
-name|CoreValue
-name|cv
-range|:
-name|CoreValues
-operator|.
-name|getValues
-argument_list|(
-name|property
-argument_list|)
-control|)
-block|{
 if|if
 condition|(
-name|cv
+name|PropertyValues
 operator|.
-name|equals
+name|match
 argument_list|(
+name|property
+argument_list|,
 name|value
 argument_list|)
 condition|)
@@ -522,8 +502,6 @@ argument_list|(
 literal|""
 argument_list|)
 expr_stmt|;
-break|break;
-block|}
 block|}
 block|}
 comment|// ... and then recursively look up from the rest of the tree

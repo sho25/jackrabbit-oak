@@ -73,7 +73,7 @@ name|oak
 operator|.
 name|api
 operator|.
-name|CoreValue
+name|ResultRow
 import|;
 end_import
 
@@ -87,9 +87,11 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|api
+name|spi
 operator|.
-name|ResultRow
+name|query
+operator|.
+name|PropertyValue
 import|;
 end_import
 
@@ -345,7 +347,7 @@ parameter_list|()
 throws|throws
 name|RepositoryException
 block|{
-name|CoreValue
+name|PropertyValue
 index|[]
 name|values
 init|=

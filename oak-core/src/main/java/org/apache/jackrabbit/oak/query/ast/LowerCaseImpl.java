@@ -20,7 +20,7 @@ package|;
 end_package
 
 begin_import
-import|import
+import|import static
 name|org
 operator|.
 name|apache
@@ -31,7 +31,9 @@ name|oak
 operator|.
 name|api
 operator|.
-name|CoreValue
+name|Type
+operator|.
+name|STRING
 import|;
 end_import
 
@@ -61,11 +63,11 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|plugins
+name|query
 operator|.
-name|memory
+name|index
 operator|.
-name|PropertyStates
+name|FilterImpl
 import|;
 end_import
 
@@ -79,16 +81,16 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
+name|spi
+operator|.
 name|query
 operator|.
-name|index
-operator|.
-name|FilterImpl
+name|PropertyValue
 import|;
 end_import
 
 begin_import
-import|import static
+import|import
 name|org
 operator|.
 name|apache
@@ -97,11 +99,11 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|api
+name|spi
 operator|.
-name|Type
+name|query
 operator|.
-name|STRING
+name|PropertyValues
 import|;
 end_import
 
@@ -180,7 +182,7 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|PropertyState
+name|PropertyValue
 name|currentProperty
 parameter_list|()
 block|{
@@ -216,15 +218,10 @@ name|STRING
 argument_list|)
 decl_stmt|;
 return|return
-name|PropertyStates
+name|PropertyValues
 operator|.
-name|stringProperty
+name|newString
 argument_list|(
-name|p
-operator|.
-name|getName
-argument_list|()
-argument_list|,
 name|value
 operator|.
 name|toLowerCase
@@ -244,7 +241,7 @@ parameter_list|,
 name|Operator
 name|operator
 parameter_list|,
-name|CoreValue
+name|PropertyValue
 name|v
 parameter_list|)
 block|{
