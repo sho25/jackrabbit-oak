@@ -39,6 +39,22 @@ name|PropertyType
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|value
+operator|.
+name|PropertyValue
+import|;
+end_import
+
 begin_comment
 comment|/**  * The filter for an index lookup.  */
 end_comment

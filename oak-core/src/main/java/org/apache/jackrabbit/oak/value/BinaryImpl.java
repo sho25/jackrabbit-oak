@@ -189,9 +189,6 @@ default|default:
 return|return
 name|value
 operator|.
-name|unwrap
-argument_list|()
-operator|.
 name|getNewStream
 argument_list|()
 return|;
@@ -219,9 +216,6 @@ name|InputStream
 name|stream
 init|=
 name|value
-operator|.
-name|unwrap
-argument_list|()
 operator|.
 name|getNewStream
 argument_list|()
@@ -309,10 +303,7 @@ default|default:
 return|return
 name|value
 operator|.
-name|unwrap
-argument_list|()
-operator|.
-name|length
+name|getStreamLength
 argument_list|()
 return|;
 block|}

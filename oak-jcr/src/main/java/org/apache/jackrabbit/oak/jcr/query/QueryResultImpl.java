@@ -241,11 +241,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|plugins
+name|value
 operator|.
-name|memory
-operator|.
-name|CoreValues
+name|PropertyValue
 import|;
 end_import
 
@@ -259,11 +257,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|spi
+name|value
 operator|.
-name|query
-operator|.
-name|PropertyValue
+name|ValueFactoryImpl
 import|;
 end_import
 
@@ -976,22 +972,19 @@ literal|null
 condition|?
 literal|null
 else|:
-name|sessionDelegate
-operator|.
-name|getValueFactory
-argument_list|()
+name|ValueFactoryImpl
 operator|.
 name|createValue
-argument_list|(
-name|CoreValues
-operator|.
-name|getValue
 argument_list|(
 name|value
 operator|.
 name|unwrap
 argument_list|()
-argument_list|)
+argument_list|,
+name|sessionDelegate
+operator|.
+name|getNamePathMapper
+argument_list|()
 argument_list|)
 return|;
 block|}

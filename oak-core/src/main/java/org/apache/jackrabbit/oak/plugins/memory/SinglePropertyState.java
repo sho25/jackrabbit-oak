@@ -217,13 +217,15 @@ name|boolean
 name|getBoolean
 parameter_list|()
 block|{
-throw|throw
-operator|new
-name|UnsupportedOperationException
+return|return
+name|Boolean
+operator|.
+name|parseBoolean
 argument_list|(
-literal|"Unsupported conversion."
+name|getString
+argument_list|()
 argument_list|)
-throw|;
+return|;
 block|}
 specifier|protected
 name|BigDecimal
