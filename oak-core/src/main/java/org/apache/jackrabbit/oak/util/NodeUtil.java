@@ -1323,7 +1323,12 @@ name|createProperty
 argument_list|(
 name|name
 argument_list|,
+name|Arrays
+operator|.
+name|asList
+argument_list|(
 name|values
+argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;

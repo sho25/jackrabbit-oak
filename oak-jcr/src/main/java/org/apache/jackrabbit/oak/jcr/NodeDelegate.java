@@ -808,8 +808,10 @@ parameter_list|(
 name|String
 name|name
 parameter_list|,
+name|Iterable
+argument_list|<
 name|Value
-index|[]
+argument_list|>
 name|values
 parameter_list|)
 throws|throws
