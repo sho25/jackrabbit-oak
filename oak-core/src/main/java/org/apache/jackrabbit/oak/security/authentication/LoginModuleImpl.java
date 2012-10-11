@@ -425,7 +425,7 @@ name|principals
 decl_stmt|;
 specifier|private
 name|String
-name|userID
+name|userId
 decl_stmt|;
 comment|//--------------------------------------------------------< LoginModule>---
 annotation|@
@@ -485,9 +485,9 @@ operator|=
 name|getCredentials
 argument_list|()
 expr_stmt|;
-name|userID
+name|userId
 operator|=
-name|getUserID
+name|getUserId
 argument_list|()
 expr_stmt|;
 if|if
@@ -496,7 +496,7 @@ name|credentials
 operator|==
 literal|null
 operator|||
-name|userID
+name|userId
 operator|==
 literal|null
 condition|)
@@ -518,7 +518,7 @@ init|=
 operator|new
 name|AuthenticationImpl
 argument_list|(
-name|userID
+name|userId
 argument_list|,
 name|getUserProvider
 argument_list|()
@@ -546,7 +546,7 @@ name|principals
 operator|=
 name|getPrincipals
 argument_list|(
-name|userID
+name|userId
 argument_list|)
 expr_stmt|;
 name|log
@@ -578,7 +578,7 @@ name|put
 argument_list|(
 name|SHARED_KEY_LOGIN_NAME
 argument_list|,
-name|userID
+name|userId
 argument_list|)
 expr_stmt|;
 block|}
@@ -592,8 +592,6 @@ specifier|public
 name|boolean
 name|commit
 parameter_list|()
-throws|throws
-name|LoginException
 block|{
 if|if
 condition|(
@@ -602,11 +600,11 @@ operator|==
 literal|null
 operator|||
 name|principals
-operator|.
-name|isEmpty
-argument_list|()
+operator|==
+literal|null
 condition|)
 block|{
+comment|// login attempt in this login module was not successful
 name|clearState
 argument_list|()
 expr_stmt|;
@@ -709,7 +707,7 @@ name|principals
 operator|=
 literal|null
 expr_stmt|;
-name|userID
+name|userId
 operator|=
 literal|null
 expr_stmt|;
@@ -719,11 +717,11 @@ annotation|@
 name|CheckForNull
 specifier|private
 name|String
-name|getUserID
+name|getUserId
 parameter_list|()
 block|{
 name|String
-name|userID
+name|uid
 init|=
 literal|null
 decl_stmt|;
@@ -741,7 +739,7 @@ operator|instanceof
 name|SimpleCredentials
 condition|)
 block|{
-name|userID
+name|uid
 operator|=
 operator|(
 operator|(
@@ -762,9 +760,9 @@ operator|instanceof
 name|GuestCredentials
 condition|)
 block|{
-name|userID
+name|uid
 operator|=
-name|getAnonymousID
+name|getAnonymousId
 argument_list|()
 expr_stmt|;
 block|}
@@ -796,7 +794,7 @@ operator|instanceof
 name|SimpleCredentials
 condition|)
 block|{
-name|userID
+name|uid
 operator|=
 operator|(
 operator|(
@@ -835,7 +833,7 @@ name|callback
 block|}
 argument_list|)
 expr_stmt|;
-name|userID
+name|uid
 operator|=
 name|callback
 operator|.
@@ -880,24 +878,24 @@ block|}
 block|}
 if|if
 condition|(
-name|userID
+name|uid
 operator|==
 literal|null
 condition|)
 block|{
-name|userID
+name|uid
 operator|=
 name|getSharedLoginName
 argument_list|()
 expr_stmt|;
 block|}
 return|return
-name|userID
+name|uid
 return|;
 block|}
 specifier|private
 name|String
-name|getAnonymousID
+name|getAnonymousId
 parameter_list|()
 block|{
 name|SecurityProvider
@@ -1001,7 +999,7 @@ return|return
 operator|new
 name|AuthInfoImpl
 argument_list|(
-name|userID
+name|userId
 argument_list|,
 name|attributes
 argument_list|,
