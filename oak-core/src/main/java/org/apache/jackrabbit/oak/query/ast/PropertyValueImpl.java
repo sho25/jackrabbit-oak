@@ -450,6 +450,9 @@ return|return
 name|matchesPropertyType
 argument_list|(
 name|p
+operator|.
+name|unwrap
+argument_list|()
 argument_list|)
 condition|?
 name|p

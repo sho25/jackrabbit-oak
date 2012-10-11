@@ -2531,15 +2531,10 @@ index|[
 name|i
 index|]
 operator|=
-name|PropertyValues
-operator|.
-name|create
-argument_list|(
 name|c
 operator|.
 name|currentProperty
 argument_list|()
-argument_list|)
 expr_stmt|;
 block|}
 name|PropertyValue
@@ -2595,10 +2590,6 @@ index|[
 name|i
 index|]
 operator|=
-name|PropertyValues
-operator|.
-name|create
-argument_list|(
 name|orderings
 index|[
 name|i
@@ -2609,7 +2600,6 @@ argument_list|()
 operator|.
 name|currentProperty
 argument_list|()
-argument_list|)
 expr_stmt|;
 block|}
 block|}

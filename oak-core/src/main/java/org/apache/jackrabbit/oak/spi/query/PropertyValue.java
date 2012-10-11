@@ -100,8 +100,6 @@ specifier|public
 class|class
 name|PropertyValue
 implements|implements
-name|PropertyState
-implements|,
 name|Comparable
 argument_list|<
 name|PropertyValue
@@ -125,18 +123,6 @@ name|ps
 operator|=
 name|ps
 expr_stmt|;
-block|}
-specifier|public
-name|String
-name|getName
-parameter_list|()
-block|{
-return|return
-name|ps
-operator|.
-name|getName
-argument_list|()
-return|;
 block|}
 specifier|public
 name|boolean

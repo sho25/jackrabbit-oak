@@ -988,6 +988,9 @@ operator|.
 name|getValue
 argument_list|(
 name|value
+operator|.
+name|unwrap
+argument_list|()
 argument_list|)
 argument_list|)
 return|;

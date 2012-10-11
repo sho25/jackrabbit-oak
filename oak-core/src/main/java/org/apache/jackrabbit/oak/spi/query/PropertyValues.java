@@ -861,13 +861,13 @@ literal|false
 return|;
 block|}
 comment|// --
-comment|/**      * Convert a value to the given target type, if possible.      *       * @param v      *            the value to convert      * @param targetType      *            the target property type      * @return the converted value, or null if converting is not possible      */
+comment|/**      * Convert a value to the given target type, if possible.      *       * @param value      *            the value to convert      * @param targetType      *            the target property type      * @return the converted value, or null if converting is not possible      */
 specifier|public
 specifier|static
 name|PropertyValue
 name|convert
 parameter_list|(
-name|PropertyState
+name|PropertyValue
 name|value
 parameter_list|,
 name|int

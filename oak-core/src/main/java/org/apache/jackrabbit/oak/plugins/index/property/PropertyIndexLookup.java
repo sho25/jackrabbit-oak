@@ -421,6 +421,9 @@ operator|.
 name|encode
 argument_list|(
 name|value
+operator|.
+name|unwrap
+argument_list|()
 argument_list|)
 operator|.
 name|get
