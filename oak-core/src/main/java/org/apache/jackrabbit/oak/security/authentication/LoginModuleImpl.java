@@ -341,6 +341,7 @@ end_comment
 
 begin_class
 specifier|public
+specifier|final
 class|class
 name|LoginModuleImpl
 extends|extends
@@ -489,6 +490,28 @@ operator|=
 name|getUserID
 argument_list|()
 expr_stmt|;
+if|if
+condition|(
+name|credentials
+operator|==
+literal|null
+operator|||
+name|userID
+operator|==
+literal|null
+condition|)
+block|{
+name|log
+operator|.
+name|debug
+argument_list|(
+literal|"Could not extract userId/credentials"
+argument_list|)
+expr_stmt|;
+return|return
+literal|false
+return|;
+block|}
 name|Authentication
 name|authentication
 init|=
@@ -530,7 +553,7 @@ name|log
 operator|.
 name|debug
 argument_list|(
-literal|"Login: adding Credentials to shared state."
+literal|"Adding Credentials to shared state."
 argument_list|)
 expr_stmt|;
 name|sharedState
@@ -546,7 +569,7 @@ name|log
 operator|.
 name|debug
 argument_list|(
-literal|"Login: adding login name to shared state."
+literal|"Adding login name to shared state."
 argument_list|)
 expr_stmt|;
 name|sharedState
@@ -584,6 +607,9 @@ name|isEmpty
 argument_list|()
 condition|)
 block|{
+name|clearState
+argument_list|()
+expr_stmt|;
 return|return
 literal|false
 return|;
@@ -648,27 +674,6 @@ literal|true
 return|;
 block|}
 block|}
-annotation|@
-name|Override
-specifier|public
-name|boolean
-name|abort
-parameter_list|()
-throws|throws
-name|LoginException
-block|{
-name|credentials
-operator|=
-literal|null
-expr_stmt|;
-name|principals
-operator|=
-literal|null
-expr_stmt|;
-return|return
-literal|true
-return|;
-block|}
 comment|//------------------------------------------------< AbstractLoginModule>---
 annotation|@
 name|Override
@@ -683,6 +688,31 @@ block|{
 return|return
 name|SUPPORTED_CREDENTIALS
 return|;
+block|}
+annotation|@
+name|Override
+specifier|protected
+name|void
+name|clearState
+parameter_list|()
+block|{
+name|super
+operator|.
+name|clearState
+argument_list|()
+expr_stmt|;
+name|credentials
+operator|=
+literal|null
+expr_stmt|;
+name|principals
+operator|=
+literal|null
+expr_stmt|;
+name|userID
+operator|=
+literal|null
+expr_stmt|;
 block|}
 comment|//--------------------------------------------------------------------------
 annotation|@

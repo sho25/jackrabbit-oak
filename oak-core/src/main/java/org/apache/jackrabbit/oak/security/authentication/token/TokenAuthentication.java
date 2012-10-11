@@ -53,6 +53,20 @@ end_import
 
 begin_import
 import|import
+name|javax
+operator|.
+name|security
+operator|.
+name|auth
+operator|.
+name|login
+operator|.
+name|LoginException
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -212,14 +226,15 @@ parameter_list|(
 name|Credentials
 name|credentials
 parameter_list|)
+throws|throws
+name|LoginException
 block|{
-name|boolean
-name|success
-init|=
-literal|false
-decl_stmt|;
 if|if
 condition|(
+name|tokenProvider
+operator|!=
+literal|null
+operator|&&
 name|credentials
 operator|instanceof
 name|TokenCredentials
@@ -233,16 +248,27 @@ name|TokenCredentials
 operator|)
 name|credentials
 decl_stmt|;
-name|success
-operator|=
+if|if
+condition|(
+operator|!
 name|validateCredentials
 argument_list|(
 name|tc
 argument_list|)
-expr_stmt|;
+condition|)
+block|{
+throw|throw
+operator|new
+name|LoginException
+argument_list|(
+literal|"Invalid token credentials."
+argument_list|)
+throw|;
 block|}
+block|}
+comment|// no tokenProvider or other credentials implementation -> not handled here.
 return|return
-name|success
+literal|false
 return|;
 block|}
 comment|//-----------------------------------------------------------< internal>---

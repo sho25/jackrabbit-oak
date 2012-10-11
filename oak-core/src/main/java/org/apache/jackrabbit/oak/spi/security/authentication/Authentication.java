@@ -31,6 +31,20 @@ name|Credentials
 import|;
 end_import
 
+begin_import
+import|import
+name|javax
+operator|.
+name|security
+operator|.
+name|auth
+operator|.
+name|login
+operator|.
+name|LoginException
+import|;
+end_import
+
 begin_comment
 comment|/**  * The {@code Authentication} interface defines methods to validate  * {@link javax.jcr.Credentials Credentials} during the  * {@link javax.security.auth.spi.LoginModule#login() login step} of the  * authentication process. The validation depends on the authentication  * mechanism in place.<p/>  *  * A given implementation may only handle certain types of {@code Credentials}  * as the authentication process is tightly coupled to the semantics of the  * {@code Credentials}.<p/>  *  * For example a implementation may only be able to validate UserID/password  * pairs such as passed with {@link javax.jcr.SimpleCredentials}, while another  * might be responsible for validating login token issued by the repository or  * an external access token generation mechanism.  */
 end_comment
@@ -40,13 +54,15 @@ specifier|public
 interface|interface
 name|Authentication
 block|{
-comment|/**      * Validates the specified {@code Credentials} and returns {@code true} if      * the validation was successful.      *      * @param credentials to verify      * @return {@code true} if the validation was successful; {@code false}      * if the specified credentials are not supported or if validation failed.      */
+comment|/**      * Validates the specified {@code Credentials} and returns {@code true} if      * the validation was successful.      *      * @param credentials to verify      * @return {@code true} if the validation was successful; {@code false}      * if the specified credentials are not supported and this authentication      * implementation cannot verify their validity.      * @throws LoginException if the authentication failed.      */
 name|boolean
 name|authenticate
 parameter_list|(
 name|Credentials
 name|credentials
 parameter_list|)
+throws|throws
+name|LoginException
 function_decl|;
 block|}
 end_interface
