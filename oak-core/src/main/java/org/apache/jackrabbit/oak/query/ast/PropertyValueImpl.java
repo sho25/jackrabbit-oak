@@ -447,6 +447,10 @@ name|propertyName
 argument_list|)
 decl_stmt|;
 return|return
+name|p
+operator|!=
+literal|null
+operator|&&
 name|matchesPropertyType
 argument_list|(
 name|p
