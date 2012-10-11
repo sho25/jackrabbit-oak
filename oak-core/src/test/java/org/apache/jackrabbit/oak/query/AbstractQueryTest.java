@@ -211,22 +211,6 @@ name|oak
 operator|.
 name|api
 operator|.
-name|CoreValueFactory
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|api
-operator|.
 name|Result
 import|;
 end_import
@@ -482,10 +466,6 @@ init|=
 literal|"nam:oak:queryIndexDefinition"
 decl_stmt|;
 specifier|protected
-name|CoreValueFactory
-name|vf
-decl_stmt|;
-specifier|protected
 name|SessionQueryEngine
 name|qe
 decl_stmt|;
@@ -530,13 +510,6 @@ operator|=
 name|root
 operator|.
 name|getQueryEngine
-argument_list|()
-expr_stmt|;
-name|vf
-operator|=
-name|root
-operator|.
-name|getValueFactory
 argument_list|()
 expr_stmt|;
 name|createTestIndexNode
@@ -814,8 +787,6 @@ argument_list|(
 name|root
 argument_list|,
 literal|"/ + \"test\": { \"hello\": {\"id\": \"1\"}, \"world\": {\"id\": \"2\"}}"
-argument_list|,
-name|vf
 argument_list|)
 expr_stmt|;
 name|root
@@ -1572,8 +1543,6 @@ argument_list|(
 name|root
 argument_list|,
 name|line
-argument_list|,
-name|vf
 argument_list|)
 expr_stmt|;
 name|root

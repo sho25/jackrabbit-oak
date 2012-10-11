@@ -45,22 +45,6 @@ name|oak
 operator|.
 name|api
 operator|.
-name|CoreValueFactory
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|api
-operator|.
 name|Root
 import|;
 end_import
@@ -128,7 +112,7 @@ specifier|private
 name|JsopUtil
 parameter_list|()
 block|{      }
-comment|/**      * Applies the commit string to a given Root instance      *       *       * The commit string represents a sequence of operations, jsonp style:      *       *<p>      * / + "test": { "a": { "id": "ref:123" }, "b": { "id" : "str:123" }}      *<p>      * or      *<p>      * "/ - "test"      *</p>      *       * @param root      * @param commit the commit string      * @param vf the value factory      * @throws UnsupportedOperationException if the operation is not supported      */
+comment|/**      * Applies the commit string to a given Root instance      *       *       * The commit string represents a sequence of operations, jsonp style:      *       *<p>      * / + "test": { "a": { "id": "ref:123" }, "b": { "id" : "str:123" }}      *<p>      * or      *<p>      * "/ - "test"      *</p>      *       * @param root      * @param commit the commit string      * @throws UnsupportedOperationException if the operation is not supported      */
 specifier|public
 specifier|static
 name|void
@@ -139,9 +123,6 @@ name|root
 parameter_list|,
 name|String
 name|commit
-parameter_list|,
-name|CoreValueFactory
-name|vf
 parameter_list|)
 throws|throws
 name|UnsupportedOperationException
@@ -251,8 +232,6 @@ argument_list|(
 name|c
 argument_list|,
 name|tokenizer
-argument_list|,
-name|vf
 argument_list|)
 expr_stmt|;
 block|}
@@ -349,9 +328,6 @@ name|t
 parameter_list|,
 name|JsopTokenizer
 name|tokenizer
-parameter_list|,
-name|CoreValueFactory
-name|vf
 parameter_list|)
 block|{
 do|do
@@ -407,8 +383,6 @@ argument_list|(
 name|c
 argument_list|,
 name|tokenizer
-argument_list|,
-name|vf
 argument_list|)
 expr_stmt|;
 name|tokenizer

@@ -124,11 +124,6 @@ name|SessionQueryEngine
 name|getQueryEngine
 parameter_list|()
 function_decl|;
-comment|/**      * Get the value factory.      *      * @return the value factory      */
-name|CoreValueFactory
-name|getValueFactory
-parameter_list|()
-function_decl|;
 block|}
 end_interface
 

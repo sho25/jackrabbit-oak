@@ -67,13 +67,6 @@ name|Root
 name|getLatestRoot
 parameter_list|()
 function_decl|;
-comment|/**      * Returns the internal value factory.      *      * @return the internal value factory.      */
-annotation|@
-name|Nonnull
-name|CoreValueFactory
-name|getCoreValueFactory
-parameter_list|()
-function_decl|;
 comment|// TODO : add versioning operations
 block|}
 end_interface
