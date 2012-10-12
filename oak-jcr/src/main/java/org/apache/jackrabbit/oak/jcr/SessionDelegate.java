@@ -755,6 +755,8 @@ operator|=
 operator|new
 name|ValueFactoryImpl
 argument_list|(
+name|contentSession
+argument_list|,
 name|namePathMapper
 argument_list|)
 expr_stmt|;

@@ -115,6 +115,25 @@ operator|=
 name|value
 expr_stmt|;
 block|}
+name|ValueImpl
+name|getBinaryValue
+parameter_list|()
+block|{
+return|return
+name|value
+operator|.
+name|getType
+argument_list|()
+operator|==
+name|PropertyType
+operator|.
+name|BINARY
+condition|?
+name|value
+else|:
+literal|null
+return|;
+block|}
 comment|//-------------------------------------------------------------< Binary>---
 annotation|@
 name|Override

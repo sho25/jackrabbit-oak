@@ -29,6 +29,26 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|InputStream
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|annotation
@@ -67,7 +87,16 @@ name|Root
 name|getLatestRoot
 parameter_list|()
 function_decl|;
-comment|// TODO : add versioning operations
+comment|/**      * Create a {@link Blob} from the given input stream. The input stream      * is closed after this method returns.      * @param inputStream  The input stream for the {@code Blob}      * @return  The {@code Blob} representing {@code inputStream}      * @throws IOException  If an error occurs while reading from the stream      */
+name|Blob
+name|createBlob
+parameter_list|(
+name|InputStream
+name|inputStream
+parameter_list|)
+throws|throws
+name|IOException
+function_decl|;
 block|}
 end_interface
 
