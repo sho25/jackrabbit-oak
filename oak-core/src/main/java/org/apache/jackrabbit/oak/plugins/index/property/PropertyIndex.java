@@ -103,7 +103,7 @@ name|oak
 operator|.
 name|api
 operator|.
-name|PropertyState
+name|PropertyValue
 import|;
 end_import
 
@@ -320,7 +320,7 @@ name|String
 argument_list|>
 name|encode
 parameter_list|(
-name|PropertyState
+name|PropertyValue
 name|value
 parameter_list|)
 block|{

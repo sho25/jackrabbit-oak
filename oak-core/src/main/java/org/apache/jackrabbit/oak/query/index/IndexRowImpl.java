@@ -51,7 +51,7 @@ name|spi
 operator|.
 name|query
 operator|.
-name|PropertyValue
+name|PropertyStateValue
 import|;
 end_import
 
@@ -99,7 +99,7 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|PropertyValue
+name|PropertyStateValue
 name|getValue
 parameter_list|(
 name|String

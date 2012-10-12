@@ -43,12 +43,12 @@ name|String
 name|getName
 parameter_list|()
 function_decl|;
-comment|/**      * Determine whether the value if an array of atoms      * @return  {@code true} if and only if the value is an array of atoms.      */
+comment|/**      * Determine whether the value is an array of atoms      * @return {@code true} if and only if the value is an array of atoms.      */
 name|boolean
 name|isArray
 parameter_list|()
 function_decl|;
-comment|/**      * Determine the type of this property      * @return  the type of this property      */
+comment|/**      * Determine the type of this property      * @return the type of this property      */
 name|Type
 argument_list|<
 name|?
@@ -56,7 +56,7 @@ argument_list|>
 name|getType
 parameter_list|()
 function_decl|;
-comment|/**      * Value of this property.      * The type of the return value is determined by the target {@code type}      * argument. If {@code type.isArray()} is true, this method returns an      * {@code Iterable} of the {@link Type#getBaseType() base type} of      * {@code type} containing all values of this property.      * If the target type is not the same as the type of this property an attempt      * is made to convert the value to the target type. If the conversion fails an      * exception is thrown.      * @param type target type      * @param<T>      * @return the value of this property      * @throws IllegalStateException  if {@code type.isArray() == false} and      *         {@code this.isArray() == true}. In other words, when trying to convert      *         from an array to an atom.      * @throws IllegalArgumentException  if {@code type} refers to an unkown type.      * @throws NumberFormatException  if conversion to a number failed.      * @throws UnsupportedOperationException  if conversion to boolean failed.      */
+comment|/**      * Value of this property.      * The type of the return value is determined by the target {@code type}      * argument. If {@code type.isArray()} is true, this method returns an      * {@code Iterable} of the {@link Type#getBaseType() base type} of      * {@code type} containing all values of this property.      * If the target type is not the same as the type of this property an attempt      * is made to convert the value to the target type. If the conversion fails an      * exception is thrown.      * @param type target type      * @param<T>      * @return the value of this property      * @throws IllegalStateException  if {@code type.isArray() == false} and      *         {@code this.isArray() == true}. In other words, when trying to convert      *         from an array to an atom.      * @throws IllegalArgumentException  if {@code type} refers to an unknown type.      * @throws NumberFormatException  if conversion to a number failed.      * @throws UnsupportedOperationException  if conversion to boolean failed.      */
 annotation|@
 name|Nonnull
 argument_list|<
@@ -72,7 +72,7 @@ argument_list|>
 name|type
 parameter_list|)
 function_decl|;
-comment|/**      * Value at the given {@code index}.      * The type of the return value is determined by the target {@code type}      * argument.      * If the target type is not the same as the type of this property an attempt      * is made to convert the value to the target type. If the conversion fails an      * exception is thrown.      * @param type  target type      * @param index      * @param<T>      * @return the value of this property at the given {@code index}      * @throws IndexOutOfBoundsException  if {@code index} is less than {@code 0} or      *         greater or equals {@code count()}.      * @throws IllegalArgumentException  if {@code type} refers to an unkown type or if      *         {@code type.isArray()} is true.      */
+comment|/**      * Value at the given {@code index}.      * The type of the return value is determined by the target {@code type}      * argument.      * If the target type is not the same as the type of this property an attempt      * is made to convert the value to the target type. If the conversion fails an      * exception is thrown.      * @param type target type      * @param index      * @param<T>      * @return the value of this property at the given {@code index}      * @throws IndexOutOfBoundsException  if {@code index} is less than {@code 0} or      *         greater or equals {@code count()}.      * @throws IllegalArgumentException  if {@code type} refers to an unknown type or if      *         {@code type.isArray()} is true.      */
 annotation|@
 name|Nonnull
 argument_list|<
@@ -91,12 +91,12 @@ name|int
 name|index
 parameter_list|)
 function_decl|;
-comment|/**      * The size of the value of this property.      * @return  size of the value of this property      * @throws  IllegalStateException  if the value is an array      */
+comment|/**      * The size of the value of this property.      * @return size of the value of this property      * @throws IllegalStateException  if the value is an array      */
 name|long
 name|size
 parameter_list|()
 function_decl|;
-comment|/**      * The size of the value at the given {@code index}.      * @param index      * @return  size of the value at the given {@code index}.      * @throws IndexOutOfBoundsException  if {@code index} is less than {@code 0} or      *         greater or equals {@code count()}.      */
+comment|/**      * The size of the value at the given {@code index}.      * @param index      * @return size of the value at the given {@code index}.      * @throws IndexOutOfBoundsException  if {@code index} is less than {@code 0} or      *         greater or equals {@code count()}.      */
 name|long
 name|size
 parameter_list|(
@@ -104,7 +104,7 @@ name|int
 name|index
 parameter_list|)
 function_decl|;
-comment|/**      * The number of values of this property. {@code 1} for atoms.      * @return  number of values      */
+comment|/**      * The number of values of this property. {@code 1} for atoms.      * @return number of values      */
 name|int
 name|count
 parameter_list|()

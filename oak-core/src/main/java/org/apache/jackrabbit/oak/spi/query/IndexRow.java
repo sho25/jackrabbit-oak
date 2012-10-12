@@ -33,7 +33,7 @@ name|spi
 operator|.
 name|query
 operator|.
-name|PropertyValue
+name|PropertyStateValue
 import|;
 end_import
 
@@ -52,7 +52,7 @@ name|getPath
 parameter_list|()
 function_decl|;
 comment|/**      * The value of the given property, if available. This might be a property      * of the given node, or a pseudo-property (a property that is only      * available in the index but not in the node itself, such as "jcr:score").      *      * @param columnName the column name      * @return the value, or null if not available      */
-name|PropertyValue
+name|PropertyStateValue
 name|getValue
 parameter_list|(
 name|String

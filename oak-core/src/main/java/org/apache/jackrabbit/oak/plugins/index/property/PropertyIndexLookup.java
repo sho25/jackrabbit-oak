@@ -59,7 +59,7 @@ name|oak
 operator|.
 name|api
 operator|.
-name|Type
+name|PropertyValue
 import|;
 end_import
 
@@ -73,11 +73,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|spi
+name|api
 operator|.
-name|query
-operator|.
-name|PropertyValue
+name|Type
 import|;
 end_import
 
@@ -421,9 +419,6 @@ operator|.
 name|encode
 argument_list|(
 name|value
-operator|.
-name|unwrap
-argument_list|()
 argument_list|)
 operator|.
 name|get

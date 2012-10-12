@@ -67,6 +67,22 @@ name|oak
 operator|.
 name|api
 operator|.
+name|PropertyValue
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|api
+operator|.
 name|Tree
 import|;
 end_import
@@ -139,7 +155,7 @@ name|spi
 operator|.
 name|query
 operator|.
-name|PropertyValue
+name|PropertyValues
 import|;
 end_import
 
@@ -410,9 +426,6 @@ argument_list|(
 name|buff
 argument_list|,
 name|p
-operator|.
-name|unwrap
-argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -455,7 +468,12 @@ name|appendString
 argument_list|(
 name|buff
 argument_list|,
+name|PropertyValues
+operator|.
+name|create
+argument_list|(
 name|p
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -530,7 +548,7 @@ parameter_list|(
 name|StringBuilder
 name|buff
 parameter_list|,
-name|PropertyState
+name|PropertyValue
 name|p
 parameter_list|)
 block|{

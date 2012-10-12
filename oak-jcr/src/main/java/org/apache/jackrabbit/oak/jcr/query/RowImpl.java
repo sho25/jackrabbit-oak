@@ -73,7 +73,7 @@ name|oak
 operator|.
 name|api
 operator|.
-name|ResultRow
+name|PropertyValue
 import|;
 end_import
 
@@ -87,11 +87,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|spi
+name|api
 operator|.
-name|query
-operator|.
-name|PropertyValue
+name|ResultRow
 import|;
 end_import
 

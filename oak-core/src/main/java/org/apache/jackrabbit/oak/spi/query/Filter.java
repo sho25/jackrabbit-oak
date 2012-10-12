@@ -49,9 +49,7 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|spi
-operator|.
-name|query
+name|api
 operator|.
 name|PropertyValue
 import|;

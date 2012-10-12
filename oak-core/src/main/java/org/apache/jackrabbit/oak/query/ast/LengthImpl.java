@@ -39,11 +39,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|query
+name|api
 operator|.
-name|index
-operator|.
-name|FilterImpl
+name|PropertyValue
 import|;
 end_import
 
@@ -57,11 +55,11 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|spi
-operator|.
 name|query
 operator|.
-name|PropertyValue
+name|index
+operator|.
+name|FilterImpl
 import|;
 end_import
 
