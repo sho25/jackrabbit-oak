@@ -171,6 +171,10 @@ name|checkState
 import|;
 end_import
 
+begin_comment
+comment|/**  * {@code PropertyBuilder} for building in memory {@code PropertyState} instances.  * @param<T>  */
+end_comment
+
 begin_class
 specifier|public
 class|class
@@ -208,33 +212,9 @@ operator|.
 name|newArrayList
 argument_list|()
 decl_stmt|;
+comment|/**      * Create a new instance for building {@code PropertyState} instances      * of the given {@code type}.      * @param type  type of the {@code PropertyState} instances to be built.      * @throws IllegalArgumentException if {@code type.isArray()} is {@code true}.      */
 specifier|public
 name|MemoryPropertyBuilder
-parameter_list|(
-name|Type
-argument_list|<
-name|T
-argument_list|>
-name|type
-parameter_list|)
-block|{
-name|this
-operator|.
-name|type
-operator|=
-name|type
-expr_stmt|;
-block|}
-specifier|public
-specifier|static
-parameter_list|<
-name|T
-parameter_list|>
-name|PropertyBuilder
-argument_list|<
-name|T
-argument_list|>
-name|create
 parameter_list|(
 name|Type
 argument_list|<
@@ -254,6 +234,32 @@ argument_list|,
 literal|"type must not be array"
 argument_list|)
 expr_stmt|;
+name|this
+operator|.
+name|type
+operator|=
+name|type
+expr_stmt|;
+block|}
+comment|/**      * Create a new instance for building {@code PropertyState} instances      * of the given {@code type}.      * @param type  type of the {@code PropertyState} instances to be built.      * @return {@code PropertyBuilder} for {@code type}      */
+specifier|public
+specifier|static
+parameter_list|<
+name|T
+parameter_list|>
+name|PropertyBuilder
+argument_list|<
+name|T
+argument_list|>
+name|create
+parameter_list|(
+name|Type
+argument_list|<
+name|T
+argument_list|>
+name|type
+parameter_list|)
+block|{
 return|return
 operator|new
 name|MemoryPropertyBuilder
@@ -265,6 +271,7 @@ name|type
 argument_list|)
 return|;
 block|}
+comment|/**      * Create a new instance for building {@code PropertyState} instances      * of the given {@code type}. The builder is initialised with the name and      * the values of {@code property}.      * Equivalent to      *<pre>      *     MemoryPropertyBuilder.create(type).assignFrom(property);      *</pre>      * @param type  type of the {@code PropertyState} instances to be built.      * @param property  initial name and values      * @return {@code PropertyBuilder} for {@code type}      */
 specifier|public
 specifier|static
 parameter_list|<
@@ -286,23 +293,8 @@ name|PropertyState
 name|property
 parameter_list|)
 block|{
-name|checkArgument
-argument_list|(
-operator|!
-name|type
-operator|.
-name|isArray
-argument_list|()
-argument_list|,
-literal|"type must not be array"
-argument_list|)
-expr_stmt|;
 return|return
-operator|new
-name|MemoryPropertyBuilder
-argument_list|<
-name|T
-argument_list|>
+name|create
 argument_list|(
 name|type
 argument_list|)
@@ -313,6 +305,7 @@ name|property
 argument_list|)
 return|;
 block|}
+comment|/**      * Create a new instance for building {@code PropertyState} instances      * of the given {@code type}. The builder is initialised with the      * given {@code name}.      * Equivalent to      *<pre>      *     MemoryPropertyBuilder.create(type).setName(name);      *</pre>      * @param type  type of the {@code PropertyState} instances to be built.      * @param name  initial name      * @return {@code PropertyBuilder} for {@code type}      */
 specifier|public
 specifier|static
 parameter_list|<
@@ -334,23 +327,8 @@ name|String
 name|name
 parameter_list|)
 block|{
-name|checkArgument
-argument_list|(
-operator|!
-name|type
-operator|.
-name|isArray
-argument_list|()
-argument_list|,
-literal|"type must not be array"
-argument_list|)
-expr_stmt|;
 return|return
-operator|new
-name|MemoryPropertyBuilder
-argument_list|<
-name|T
-argument_list|>
+name|create
 argument_list|(
 name|type
 argument_list|)
