@@ -336,7 +336,7 @@ name|log
 operator|.
 name|debug
 argument_list|(
-literal|"Invalid token credentials"
+literal|"No valid TokenInfo for token."
 argument_list|)
 expr_stmt|;
 return|return
