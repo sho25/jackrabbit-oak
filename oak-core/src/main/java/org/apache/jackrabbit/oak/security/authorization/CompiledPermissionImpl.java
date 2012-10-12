@@ -136,11 +136,26 @@ specifier|public
 name|boolean
 name|canRead
 parameter_list|(
-name|String
-name|path
-parameter_list|,
+name|Tree
+name|tree
+parameter_list|)
+block|{
+comment|// TODO
+return|return
+literal|true
+return|;
+block|}
+annotation|@
+name|Override
+specifier|public
 name|boolean
-name|isProperty
+name|canRead
+parameter_list|(
+name|Tree
+name|tree
+parameter_list|,
+name|PropertyState
+name|property
 parameter_list|)
 block|{
 comment|// TODO
