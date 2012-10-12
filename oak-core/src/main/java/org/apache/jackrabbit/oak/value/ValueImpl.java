@@ -268,7 +268,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * ValueImpl...  */
+comment|/**  * Implementation of {@link Value} based on {@code PropertyState}.  */
 end_comment
 
 begin_class
@@ -314,10 +314,11 @@ name|stream
 init|=
 literal|null
 decl_stmt|;
+comment|/**      * Create a new {@code Value} instance      * @param property  The property state this instance is based on      * @param index  The index      * @param namePathMapper The name/path mapping used for converting JCR names/paths to      * the internal representation.      * @throws IllegalArgumentException if {@code index< propertyState.count()}      */
 name|ValueImpl
 parameter_list|(
 name|PropertyState
-name|propertyState
+name|property
 parameter_list|,
 name|int
 name|index
@@ -330,7 +331,7 @@ name|checkArgument
 argument_list|(
 name|index
 operator|<
-name|propertyState
+name|property
 operator|.
 name|count
 argument_list|()
@@ -340,7 +341,7 @@ name|this
 operator|.
 name|propertyState
 operator|=
-name|propertyState
+name|property
 expr_stmt|;
 name|this
 operator|.
@@ -355,6 +356,7 @@ operator|=
 name|namePathMapper
 expr_stmt|;
 block|}
+comment|/**      * Create a new {@code Value} instance      * @param property  The property state this instance is based on      * @param namePathMapper The name/path mapping used for converting JCR names/paths to      * the internal representation.      * @throws IllegalArgumentException if {@code property.isArray()} is {@code true}.      */
 name|ValueImpl
 parameter_list|(
 name|PropertyState

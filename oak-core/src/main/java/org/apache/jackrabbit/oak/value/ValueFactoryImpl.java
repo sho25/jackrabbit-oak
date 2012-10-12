@@ -361,6 +361,7 @@ operator|=
 name|namePathMapper
 expr_stmt|;
 block|}
+comment|/**      * Utility method for creating a {@code Value} based on a {@code PropertyState}.      * @param property  The property state      * @param namePathMapper The name/path mapping used for converting JCR names/paths to      * the internal representation.      * @return  New {@code Value} instance      * @throws IllegalArgumentException if {@code property.isArray()} is {@code true}.      */
 specifier|public
 specifier|static
 name|Value
@@ -383,6 +384,7 @@ name|namePathMapper
 argument_list|)
 return|;
 block|}
+comment|/**      * Utility method for creating {@code Value}s based on a {@code PropertyState}.      * @param property  The property state      * @param namePathMapper The name/path mapping used for converting JCR names/paths to      * the internal representation.      * @return  A list of new {@code Value} instances      */
 specifier|public
 specifier|static
 name|List
@@ -1382,6 +1384,7 @@ expr_stmt|;
 block|}
 block|}
 comment|//------------------------------------------------------------< ErrorValue>---
+comment|/**      * Instances of this class represent a {@code Value} which couldn't be retrieved.      * All its accessors throw a {@code RepositoryException}.      */
 specifier|private
 specifier|static
 class|class
@@ -1560,6 +1563,7 @@ name|exception
 argument_list|)
 return|;
 block|}
+comment|/**          * Error values are never equal.          * @return {@code false}          */
 annotation|@
 name|Override
 specifier|public
