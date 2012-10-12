@@ -307,7 +307,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|value
+name|spi
+operator|.
+name|query
 operator|.
 name|PropertyValue
 import|;
@@ -323,7 +325,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|value
+name|spi
+operator|.
+name|query
 operator|.
 name|PropertyValues
 import|;
