@@ -59,6 +59,10 @@ name|Nonnull
 import|;
 end_import
 
+begin_comment
+comment|/**  * This {@code Blob} implementations is based on an array of bytes.  */
+end_comment
+
 begin_class
 specifier|public
 class|class

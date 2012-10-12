@@ -229,7 +229,7 @@ operator|.
 name|createNodeStore
 argument_list|()
 decl_stmt|;
-comment|// FIXME: depends on CoreValue's name mangling
+comment|// FIXME: depends on name mangling
 name|NodeState
 name|root
 init|=

@@ -175,7 +175,7 @@ specifier|private
 name|TypeCodes
 parameter_list|()
 block|{ }
-comment|/**      * Returns {@code true} if the specified JSON String represents a value      * serialization that is prefixed with a type code.      *      * @param jsonString The JSON String representation of a {@code CoreValue}      * @return {@code true} if the {@code jsonString} starts with a type      * code; {@code false} otherwise.      */
+comment|/**      * Returns {@code true} if the specified JSON String represents a value      * serialization that is prefixed with a type code.      *      * @param jsonString The JSON String representation of the value of a {@code PropertyState}      * @return {@code true} if the {@code jsonString} starts with a type      * code; {@code false} otherwise.      */
 specifier|public
 specifier|static
 name|boolean

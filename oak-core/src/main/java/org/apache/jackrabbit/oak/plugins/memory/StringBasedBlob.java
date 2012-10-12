@@ -59,6 +59,10 @@ name|Nonnull
 import|;
 end_import
 
+begin_comment
+comment|/**  * This {@code Blob} implementations is based on a string.  */
+end_comment
+
 begin_class
 specifier|public
 class|class
@@ -96,6 +100,7 @@ return|return
 name|value
 return|;
 block|}
+comment|/**      * This implementation returns the bytes of the UTF-8 encoding      * of the underlying string.      */
 annotation|@
 name|Nonnull
 annotation|@
@@ -137,6 +142,7 @@ argument_list|)
 throw|;
 block|}
 block|}
+comment|/**      * This implementation returns the number of bytes in the UTF-8 encoding      * of the underlying string.      */
 annotation|@
 name|Override
 specifier|public

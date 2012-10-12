@@ -79,6 +79,10 @@ name|Value
 import|;
 end_import
 
+begin_comment
+comment|/**  * This {@code Blob} implementations is based on {@link Value}  */
+end_comment
+
 begin_class
 specifier|public
 class|class
@@ -105,6 +109,7 @@ operator|=
 name|value
 expr_stmt|;
 block|}
+comment|/**      * This implementation return the stream of the underlying {@code Value}.      */
 annotation|@
 name|Nonnull
 annotation|@
@@ -122,6 +127,7 @@ name|value
 argument_list|)
 return|;
 block|}
+comment|/**      * This implementation returns the size of the {@link Binary} of the underlying      * {@code Value}.      */
 annotation|@
 name|Override
 specifier|public

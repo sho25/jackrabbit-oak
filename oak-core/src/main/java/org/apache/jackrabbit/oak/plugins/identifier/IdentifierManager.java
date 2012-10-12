@@ -757,7 +757,7 @@ argument_list|()
 return|;
 block|}
 block|}
-comment|/**      * Returns the path of the tree references by the specified (weak)      * reference {@code CoreValue value}.      *      * @param referenceValue A (weak) reference value.      * @return The tree with the given {@code identifier} or {@code null} if no      * such tree exists or isn't accessible to the content session.      */
+comment|/**      * Returns the path of the tree references by the specified (weak)      * reference {@code PropertyState}.      *      * @param referenceValue A (weak) reference value.      * @return The tree with the given {@code identifier} or {@code null} if no      * such tree exists or isn't accessible to the content session.      */
 annotation|@
 name|CheckForNull
 specifier|public

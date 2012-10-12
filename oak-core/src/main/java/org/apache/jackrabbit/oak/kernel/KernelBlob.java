@@ -87,6 +87,10 @@ name|AbstractBlob
 import|;
 end_import
 
+begin_comment
+comment|/**  * This {@code Blob} implementation is backed by a binary stored in  * a {@code MicroKernel}.  */
+end_comment
+
 begin_class
 specifier|public
 class|class
@@ -104,6 +108,7 @@ specifier|final
 name|MicroKernel
 name|kernel
 decl_stmt|;
+comment|/**      * Create a new instance for a binary id and a Microkernel.      * @param binaryID  id of the binary      * @param kernel      */
 specifier|public
 name|KernelBlob
 parameter_list|(
@@ -146,6 +151,7 @@ name|binaryID
 argument_list|)
 return|;
 block|}
+comment|/**      * This implementation delegates the calculation of the length back      * to the underlying {@code MicroKernel}.      */
 annotation|@
 name|Override
 specifier|public
@@ -162,6 +168,7 @@ name|binaryID
 argument_list|)
 return|;
 block|}
+comment|/**      * This implementation delegates back to the underlying {@code Microkernel}      * if other is also of type {@code KernelBlob}.      */
 annotation|@
 name|Override
 specifier|public
