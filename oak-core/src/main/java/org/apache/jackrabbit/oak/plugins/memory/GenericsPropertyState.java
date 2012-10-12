@@ -79,6 +79,7 @@ name|?
 argument_list|>
 name|type
 decl_stmt|;
+comment|/**      * @throws IllegalArgumentException if {@code type.isArray()} is {@code false}      */
 specifier|protected
 name|GenericsPropertyState
 parameter_list|(

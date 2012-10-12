@@ -119,6 +119,26 @@ name|Type
 import|;
 end_import
 
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkArgument
+import|;
+end_import
+
+begin_comment
+comment|/**  * Abstract base class for multi valued {@code PropertyState} implementations.  */
+end_comment
+
 begin_class
 specifier|abstract
 class|class
@@ -137,6 +157,7 @@ name|T
 argument_list|>
 name|values
 decl_stmt|;
+comment|/**      * Create a new property state with the given {@code name}      * and {@code values}      * @param name  The name of the property state.      * @param values  The values of the property state.      */
 specifier|protected
 name|MultiPropertyState
 parameter_list|(
@@ -162,6 +183,7 @@ operator|=
 name|values
 expr_stmt|;
 block|}
+comment|/**      * @return  {@code Iterable} of the string representations of the values      * of the property state.      */
 specifier|protected
 specifier|abstract
 name|Iterable
@@ -171,6 +193,7 @@ argument_list|>
 name|getStrings
 parameter_list|()
 function_decl|;
+comment|/**      * @param index      * @return  String representation of the value at {@code index }of the      * property state.      */
 specifier|protected
 specifier|abstract
 name|String
@@ -180,6 +203,7 @@ name|int
 name|index
 parameter_list|)
 function_decl|;
+comment|/**      * @return  The values of this property state as {@link Blob}s      */
 specifier|protected
 name|Iterable
 argument_list|<
@@ -227,6 +251,7 @@ block|}
 argument_list|)
 return|;
 block|}
+comment|/**      * @return  The values of this property state as {@code Long}s      */
 specifier|protected
 name|Iterable
 argument_list|<
@@ -275,6 +300,7 @@ block|}
 argument_list|)
 return|;
 block|}
+comment|/**      * @return  The values of this property state as {@code Double}s      */
 specifier|protected
 name|Iterable
 argument_list|<
@@ -323,6 +349,7 @@ block|}
 argument_list|)
 return|;
 block|}
+comment|/**      * @return  The values of this property state as {@code Booleans}s      */
 specifier|protected
 name|Iterable
 argument_list|<
@@ -331,14 +358,47 @@ argument_list|>
 name|getBooleans
 parameter_list|()
 block|{
-throw|throw
-operator|new
-name|UnsupportedOperationException
+return|return
+name|Iterables
+operator|.
+name|transform
 argument_list|(
-literal|"Unsupported conversion."
+name|getStrings
+argument_list|()
+argument_list|,
+operator|new
+name|Function
+argument_list|<
+name|String
+argument_list|,
+name|Boolean
+argument_list|>
+argument_list|()
+block|{
+annotation|@
+name|Override
+specifier|public
+name|Boolean
+name|apply
+parameter_list|(
+name|String
+name|value
+parameter_list|)
+block|{
+return|return
+name|StringPropertyState
+operator|.
+name|getBoolean
+argument_list|(
+name|value
 argument_list|)
-throw|;
+return|;
 block|}
+block|}
+argument_list|)
+return|;
+block|}
+comment|/**      * @return  The values of this property state as {@code BigDecimal}s      */
 specifier|protected
 name|Iterable
 argument_list|<
@@ -386,6 +446,7 @@ block|}
 argument_list|)
 return|;
 block|}
+comment|/**      * @param index      * @return  The value at the given {@code index} as {@link Blob}      */
 specifier|protected
 name|Blob
 name|getBlob
@@ -405,6 +466,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
+comment|/**      * @param index      * @return  The value at the given {@code index} as {@code long}      */
 specifier|protected
 name|long
 name|getLong
@@ -425,6 +487,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
+comment|/**      * @param index      * @return  The value at the given {@code index} as {@code double}      */
 specifier|protected
 name|double
 name|getDouble
@@ -445,6 +508,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
+comment|/**      * @param index      * @return  The value at the given {@code index} as {@code boolean}      */
 specifier|protected
 name|boolean
 name|getBoolean
@@ -453,14 +517,19 @@ name|int
 name|index
 parameter_list|)
 block|{
-throw|throw
-operator|new
-name|UnsupportedOperationException
+return|return
+name|StringPropertyState
+operator|.
+name|getBoolean
 argument_list|(
-literal|"Unsupported conversion."
+name|getString
+argument_list|(
+name|index
 argument_list|)
-throw|;
+argument_list|)
+return|;
 block|}
+comment|/**      * @param index      * @return  The value at the given {@code index} as {@code BigDecimal}      */
 specifier|protected
 name|BigDecimal
 name|getDecimal
@@ -480,6 +549,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
+comment|/**      * @throws IllegalArgumentException if {@code type} is not one of the      * values defined in {@link Type} or if {@code type.isArray()} is {@code false}.      */
 annotation|@
 name|SuppressWarnings
 argument_list|(
@@ -503,23 +573,16 @@ argument_list|>
 name|type
 parameter_list|)
 block|{
-if|if
-condition|(
-operator|!
+name|checkArgument
+argument_list|(
 name|type
 operator|.
 name|isArray
 argument_list|()
-condition|)
-block|{
-throw|throw
-operator|new
-name|IllegalStateException
-argument_list|(
-literal|"Not a single valued property"
+argument_list|,
+literal|"Type must not be an array type"
 argument_list|)
-throw|;
-block|}
+expr_stmt|;
 switch|switch
 condition|(
 name|type
@@ -684,6 +747,7 @@ argument_list|)
 throw|;
 block|}
 block|}
+comment|/**      * @throws IllegalArgumentException if {@code type} is not one of the      * values defined in {@link Type} or if {@code type.isArray()} is {@code true}      * @throws IndexOutOfBoundsException if {@code index>= count()}.      */
 annotation|@
 name|SuppressWarnings
 argument_list|(
@@ -710,22 +774,17 @@ name|int
 name|index
 parameter_list|)
 block|{
-if|if
-condition|(
+name|checkArgument
+argument_list|(
+operator|!
 name|type
 operator|.
 name|isArray
 argument_list|()
-condition|)
-block|{
-throw|throw
-operator|new
-name|IllegalArgumentException
-argument_list|(
-literal|"Nested arrays not supported"
+argument_list|,
+literal|"Type must not be an array type"
 argument_list|)
-throw|;
-block|}
+expr_stmt|;
 if|if
 condition|(
 name|index

@@ -87,6 +87,7 @@ operator|=
 name|value
 expr_stmt|;
 block|}
+comment|/**      * Utility method defining the conversion from {@code String}      * to {@code boolean}.      * @param value  The string to convert to a boolean      * @return  The boolean value parsed from {@code value}      */
 specifier|public
 specifier|static
 name|boolean

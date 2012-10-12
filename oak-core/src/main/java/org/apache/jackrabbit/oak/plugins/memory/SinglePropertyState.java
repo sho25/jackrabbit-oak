@@ -83,6 +83,22 @@ end_import
 
 begin_import
 import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkArgument
+import|;
+end_import
+
+begin_import
+import|import static
 name|java
 operator|.
 name|util
@@ -93,6 +109,10 @@ name|singleton
 import|;
 end_import
 
+begin_comment
+comment|/**  * Abstract base class for single valued {@code PropertyState} implementations.  */
+end_comment
+
 begin_class
 specifier|abstract
 class|class
@@ -100,6 +120,21 @@ name|SinglePropertyState
 extends|extends
 name|EmptyPropertyState
 block|{
+comment|/**      * Create a new property state with the given {@code name}      * @param name  The name of the property state.      */
+specifier|protected
+name|SinglePropertyState
+parameter_list|(
+name|String
+name|name
+parameter_list|)
+block|{
+name|super
+argument_list|(
+name|name
+argument_list|)
+expr_stmt|;
+block|}
+comment|/**      * Utility method defining the conversion from {@code String}      * to {@code long}.      * @param value  The string to convert to a long      * @return  The long value parsed from {@code value}      * @throws NumberFormatException  if the string does not contain a      * parseable long.      */
 specifier|public
 specifier|static
 name|long
@@ -118,6 +153,7 @@ name|value
 argument_list|)
 return|;
 block|}
+comment|/**      * Utility method defining the conversion from {@code String}      * to {@code double}.      * @param value  The string to convert to a double      * @return  The double value parsed from {@code value}      * @throws NumberFormatException  if the string does not contain a      * parseable double.      */
 specifier|public
 specifier|static
 name|double
@@ -136,6 +172,7 @@ name|value
 argument_list|)
 return|;
 block|}
+comment|/**      * Utility method defining the conversion from {@code String}      * to {@code BigDecimal}.      * @param value  The string to convert to a BigDecimal      * @return  The BigDecimal value parsed from {@code value}      * @throws NumberFormatException  if the string does not contain a      * parseable BigDecimal.      */
 specifier|public
 specifier|static
 name|BigDecimal
@@ -153,25 +190,14 @@ name|value
 argument_list|)
 return|;
 block|}
-specifier|protected
-name|SinglePropertyState
-parameter_list|(
-name|String
-name|name
-parameter_list|)
-block|{
-name|super
-argument_list|(
-name|name
-argument_list|)
-expr_stmt|;
-block|}
+comment|/**      * String representation of the value of the property state.      * @return      */
 specifier|protected
 specifier|abstract
 name|String
 name|getString
 parameter_list|()
 function_decl|;
+comment|/**      * @return  A {@link StringBasedBlob} instance created by calling      * {@link #getString()}.      */
 specifier|protected
 name|Blob
 name|getBlob
@@ -186,6 +212,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
+comment|/**      * @return  {@code getLong(getString())}      */
 specifier|protected
 name|long
 name|getLong
@@ -199,6 +226,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
+comment|/**      * @return  {@code getDouble(getString())}      */
 specifier|protected
 name|double
 name|getDouble
@@ -212,21 +240,23 @@ argument_list|()
 argument_list|)
 return|;
 block|}
+comment|/**      * @return  {@code StringPropertyState.getBoolean(getString())}      */
 specifier|protected
 name|boolean
 name|getBoolean
 parameter_list|()
 block|{
 return|return
-name|Boolean
+name|StringPropertyState
 operator|.
-name|parseBoolean
+name|getBoolean
 argument_list|(
 name|getString
 argument_list|()
 argument_list|)
 return|;
 block|}
+comment|/**      * @return  {@code getDecimal(getString())}      */
 specifier|protected
 name|BigDecimal
 name|getDecimal
@@ -240,6 +270,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
+comment|/**      * @return  {@code false}      */
 annotation|@
 name|Override
 specifier|public
@@ -251,6 +282,7 @@ return|return
 literal|false
 return|;
 block|}
+comment|/**      * @throws IllegalArgumentException if {@code type} is not one of the      * values defined in {@link Type}.      */
 annotation|@
 name|SuppressWarnings
 argument_list|(
@@ -658,6 +690,7 @@ throw|;
 block|}
 block|}
 block|}
+comment|/**      * @throws IllegalArgumentException  if {@code type.isArray} is {@code true}      * @throws IndexOutOfBoundsException  if {@code index != 0}      */
 annotation|@
 name|Nonnull
 annotation|@
@@ -679,22 +712,17 @@ name|int
 name|index
 parameter_list|)
 block|{
-if|if
-condition|(
+name|checkArgument
+argument_list|(
+operator|!
 name|type
 operator|.
 name|isArray
 argument_list|()
-condition|)
-block|{
-throw|throw
-operator|new
-name|IllegalArgumentException
-argument_list|(
-literal|"Nested arrows not supported"
+argument_list|,
+literal|"Type must not be an array type"
 argument_list|)
-throw|;
-block|}
+expr_stmt|;
 if|if
 condition|(
 name|index
@@ -722,6 +750,7 @@ name|type
 argument_list|)
 return|;
 block|}
+comment|/**      * @return  {@code getString().length()}      */
 annotation|@
 name|Override
 specifier|public
@@ -737,6 +766,7 @@ name|length
 argument_list|()
 return|;
 block|}
+comment|/**      * @return  {@code size}      * @throws IndexOutOfBoundsException  if {@code index != 0}      */
 annotation|@
 name|Override
 specifier|public
@@ -772,6 +802,7 @@ name|size
 argument_list|()
 return|;
 block|}
+comment|/**      * @return {@code 1}      */
 annotation|@
 name|Override
 specifier|public

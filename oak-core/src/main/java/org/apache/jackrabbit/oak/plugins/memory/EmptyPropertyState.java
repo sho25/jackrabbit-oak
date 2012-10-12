@@ -97,6 +97,22 @@ end_import
 
 begin_import
 import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkArgument
+import|;
+end_import
+
+begin_import
+import|import static
 name|org
 operator|.
 name|apache
@@ -149,6 +165,10 @@ name|STRINGS
 import|;
 end_import
 
+begin_comment
+comment|/**  * Abstract base class for {@link PropertyState} implementations  * providing default implementation which correspond to a property  * without any value.  */
+end_comment
+
 begin_class
 specifier|abstract
 class|class
@@ -161,6 +181,7 @@ specifier|final
 name|String
 name|name
 decl_stmt|;
+comment|/**      * Create a new property state with the given {@code name}      * @param name  The name of the property state.      */
 specifier|protected
 name|EmptyPropertyState
 parameter_list|(
@@ -188,6 +209,7 @@ return|return
 name|name
 return|;
 block|}
+comment|/**      * @return {@code true}      */
 annotation|@
 name|Override
 specifier|public
@@ -199,6 +221,7 @@ return|return
 literal|true
 return|;
 block|}
+comment|/**      * @return An empty list if {@code type.isArray()} is {@code true}.      * @throws IllegalArgumentException {@code type.isArray()} is {@code false}.      */
 annotation|@
 name|SuppressWarnings
 argument_list|(
@@ -222,14 +245,16 @@ argument_list|>
 name|type
 parameter_list|)
 block|{
-if|if
-condition|(
+name|checkArgument
+argument_list|(
 name|type
 operator|.
 name|isArray
 argument_list|()
-condition|)
-block|{
+argument_list|,
+literal|"Type must be an array type"
+argument_list|)
+expr_stmt|;
 return|return
 operator|(
 name|T
@@ -240,17 +265,7 @@ name|emptyList
 argument_list|()
 return|;
 block|}
-else|else
-block|{
-throw|throw
-operator|new
-name|IllegalStateException
-argument_list|(
-literal|"Not a single valued property"
-argument_list|)
-throw|;
-block|}
-block|}
+comment|/**      * @throws IndexOutOfBoundsException always      */
 annotation|@
 name|Nonnull
 annotation|@
@@ -285,6 +300,7 @@ argument_list|)
 argument_list|)
 throw|;
 block|}
+comment|/**      * @throws IllegalStateException always      */
 annotation|@
 name|Override
 specifier|public
@@ -300,6 +316,7 @@ literal|"Not a single valued property"
 argument_list|)
 throw|;
 block|}
+comment|/**      * @throws IndexOutOfBoundsException always      */
 annotation|@
 name|Override
 specifier|public
@@ -323,6 +340,7 @@ argument_list|)
 argument_list|)
 throw|;
 block|}
+comment|/**      * @return {@code 0}      */
 annotation|@
 name|Override
 specifier|public
