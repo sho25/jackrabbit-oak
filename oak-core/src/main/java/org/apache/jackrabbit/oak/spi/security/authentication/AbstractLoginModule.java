@@ -400,7 +400,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * AbstractLoginModule... TODO  */
+comment|/**  * Abstract implementation of the {@link LoginModule} interface that can act  * as base class for login modules that aim to autenticate subjects against  * information stored in the content repository.  *  *<h2>LoginModule Methods</h2>  * This base class provides a simple implementation for the following methods  * of the {@code LoginModule} interface:  *  *<h3>{@link LoginModule#initialize(Subject, CallbackHandler, Map, Map) Initialize}</h3>  * Initialization of this abstract module sets the following protected instance  * fields:  *<ul>  *<li>subject: The subject to be authenticated,</li>  *<li>callbackHandler: The callback handler passed to the login module,</li>  *<li>shareState: The map used to share state information with other login  *     modules,</li>  *<li>options: The configuration options of this login module as specified  *     in the {@link javax.security.auth.login.Configuration}.</li>  *</ul>  *  *<h3>{@link LoginModule#logout() Logout}</h3>  * If the authenticated subject is not empty this logout implementation attempts  * to clear both principals and public credentials and returns {@code true}.  *  *<h3>{@link LoginModule#abort() Abort}</h3>  * Clears the state of this login module by setting all private instance  * variables created in phase 1 or 2 to {@code null}. Subclasses are in charge of  * releasing their own state information by either overriding {@link #clearState()}.  *  *<h2>Utility Methods</h2>  * The following methods are provided in addition:  *  *<h3>{@link #clearState()}</h3>  * Clears all private state information that has be created during login. This  * method in called in {@link #abort()} and subclasses are expected to override  * this method.  *  *<h3>{@link #getSupportedCredentials()}</h3>  * Abstract method used by {@link #getCredentials()} that reveals which credential  * implementations are supported by the {@code LoginModule}.  *  *<h3>{@link #getCredentials()}</h3>  * Tries to retrieve valid (supported) Credentials in the following order:  *<ol>  *<li>using a {@link CredentialsCallback},</li>  *<li>looking for a {@link #SHARED_KEY_CREDENTIALS} entry in the shared  *     state (see also {@link #getSharedCredentials()} and finally by</li>  *<li>searching for valid credentials in the subject.</li>  *</ol>  *  *<h3>{@link #getSharedCredentials()}</h3>  * This method returns any credentials passed to the login module with the  * share state. The key to share credentials with a another module extending from  * this base class is {@link #SHARED_KEY_CREDENTIALS}.  *  *<h3>{@link #getSharedLoginName()}</h3>  * If the shared state contains an entry for {@link #SHARED_KEY_LOGIN_NAME} this  * method returns the value as login name.  *  *<h3>{@link #getPrincipals(String)}</h3>  * Returns all principals associated with a given user id. This method should  * be called after a successful authentication in order to be able to populate  * the subject during {@link #commit()}.  *  *<h3>{@link #getPrincipalProvider()}</h3>  * // TODO  *<h3>{@link #getUserProvider()}</h3>  * // TODO  *<h3>{@link #getSecurityProvider()}</h3>  * // TODO  *<h3>{@link #getRoot()}</h3>  * // TODO  *  */
 end_comment
 
 begin_class
@@ -621,6 +621,21 @@ literal|true
 return|;
 block|}
 comment|//--------------------------------------------------------------------------
+comment|/**      * Clear state information that has been created during {@link #login()}.      */
+specifier|protected
+name|void
+name|clearState
+parameter_list|()
+block|{
+name|securityProvider
+operator|=
+literal|null
+expr_stmt|;
+name|root
+operator|=
+literal|null
+expr_stmt|;
+block|}
 annotation|@
 name|Nonnull
 specifier|protected
@@ -639,6 +654,15 @@ name|Credentials
 name|getCredentials
 parameter_list|()
 block|{
+name|Set
+argument_list|<
+name|Class
+argument_list|>
+name|supported
+init|=
+name|getSupportedCredentials
+argument_list|()
+decl_stmt|;
 if|if
 condition|(
 name|callbackHandler
@@ -687,6 +711,16 @@ condition|(
 name|creds
 operator|!=
 literal|null
+operator|&&
+name|supported
+operator|.
+name|contains
+argument_list|(
+name|creds
+operator|.
+name|getClass
+argument_list|()
+argument_list|)
 condition|)
 block|{
 name|log
@@ -708,7 +742,7 @@ name|log
 operator|.
 name|debug
 argument_list|(
-literal|"Login: No credentials obtained from callback; trying shared state."
+literal|"Login: No supported credentials obtained from callback; trying shared state."
 argument_list|)
 expr_stmt|;
 block|}
@@ -757,15 +791,38 @@ decl_stmt|;
 if|if
 condition|(
 name|creds
-operator|==
+operator|!=
 literal|null
+operator|&&
+name|supported
+operator|.
+name|contains
+argument_list|(
+name|creds
+operator|.
+name|getClass
+argument_list|()
+argument_list|)
 condition|)
 block|{
 name|log
 operator|.
 name|debug
 argument_list|(
-literal|"Login: No credentials found in shared state; looking for supported credentials in subject."
+literal|"Login: Credentials obtained from shared state."
+argument_list|)
+expr_stmt|;
+return|return
+name|creds
+return|;
+block|}
+else|else
+block|{
+name|log
+operator|.
+name|debug
+argument_list|(
+literal|"Login: No supported credentials found in shared state; looking for credentials in subject."
 argument_list|)
 expr_stmt|;
 for|for
@@ -1336,21 +1393,6 @@ block|}
 return|return
 name|root
 return|;
-block|}
-comment|/**      * Clear state information that has been created during {@link #login()}.      */
-specifier|protected
-name|void
-name|clearState
-parameter_list|()
-block|{
-name|securityProvider
-operator|=
-literal|null
-expr_stmt|;
-name|root
-operator|=
-literal|null
-expr_stmt|;
 block|}
 block|}
 end_class
