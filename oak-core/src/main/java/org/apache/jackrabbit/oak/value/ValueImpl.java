@@ -251,6 +251,22 @@ name|LoggerFactory
 import|;
 end_import
 
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkArgument
+import|;
+end_import
+
 begin_comment
 comment|/**  * ValueImpl...  */
 end_comment
@@ -310,6 +326,16 @@ name|NamePathMapper
 name|namePathMapper
 parameter_list|)
 block|{
+name|checkArgument
+argument_list|(
+name|index
+operator|<
+name|propertyState
+operator|.
+name|count
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|this
 operator|.
 name|propertyState
@@ -340,13 +366,38 @@ parameter_list|)
 block|{
 name|this
 argument_list|(
+name|checkSingleValued
+argument_list|(
 name|property
+argument_list|)
 argument_list|,
 literal|0
 argument_list|,
 name|namePathMapper
 argument_list|)
 expr_stmt|;
+block|}
+specifier|private
+specifier|static
+name|PropertyState
+name|checkSingleValued
+parameter_list|(
+name|PropertyState
+name|property
+parameter_list|)
+block|{
+name|checkArgument
+argument_list|(
+operator|!
+name|property
+operator|.
+name|isArray
+argument_list|()
+argument_list|)
+expr_stmt|;
+return|return
+name|property
+return|;
 block|}
 comment|//--------------------------------------------------------------< Value>---
 comment|/**      * @see javax.jcr.Value#getType()      */
