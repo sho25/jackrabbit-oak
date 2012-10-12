@@ -89,7 +89,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|api
+name|spi
+operator|.
+name|observation
 operator|.
 name|ChangeExtractor
 import|;
@@ -1110,8 +1112,6 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-annotation|@
-name|Override
 annotation|@
 name|Nonnull
 specifier|public

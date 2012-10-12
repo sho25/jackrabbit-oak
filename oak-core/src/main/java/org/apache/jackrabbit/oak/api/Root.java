@@ -110,13 +110,6 @@ name|boolean
 name|hasPendingChanges
 parameter_list|()
 function_decl|;
-comment|/**      * Return a {@link ChangeExtractor} for this {@code Root}.      * @return a {@code ChangeExtractor}.      */
-annotation|@
-name|Nonnull
-name|ChangeExtractor
-name|getChangeExtractor
-parameter_list|()
-function_decl|;
 comment|/**      * Get the query engine.      *       * @return the query engine      */
 annotation|@
 name|Nonnull

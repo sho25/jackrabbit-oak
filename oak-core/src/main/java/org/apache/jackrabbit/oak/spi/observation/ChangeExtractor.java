@@ -13,7 +13,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|api
+name|spi
+operator|.
+name|observation
 package|;
 end_package
 
@@ -36,7 +38,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * An instance of {@code ChangeExtractor} can be used to follow changes  * done to a {@link Root} instance.  */
+comment|/**  * An instance of {@code ChangeExtractor} can be used to follow changes  * done to a {@link org.apache.jackrabbit.oak.api.Root} instance.  */
 end_comment
 
 begin_interface

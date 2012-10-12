@@ -13,7 +13,7 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|jcr
+name|plugins
 operator|.
 name|observation
 package|;
@@ -177,7 +177,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|api
+name|spi
+operator|.
+name|observation
 operator|.
 name|ChangeExtractor
 import|;
