@@ -353,6 +353,8 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
+name|spi
+operator|.
 name|security
 operator|.
 name|privilege
@@ -373,6 +375,8 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
+name|spi
+operator|.
 name|security
 operator|.
 name|privilege
@@ -392,6 +396,8 @@ operator|.
 name|jackrabbit
 operator|.
 name|oak
+operator|.
+name|spi
 operator|.
 name|security
 operator|.

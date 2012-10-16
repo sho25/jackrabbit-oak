@@ -61,6 +61,24 @@ name|RepositoryException
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|commit
+operator|.
+name|ValidatorProvider
+import|;
+end_import
+
 begin_comment
 comment|/**  * PrivilegeProvider... TODO  */
 end_comment

@@ -141,6 +141,8 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
+name|spi
+operator|.
 name|security
 operator|.
 name|privilege
@@ -156,7 +158,6 @@ comment|/**  * {@code PrivilegeValidatorProvider} to construct a {@code Validato
 end_comment
 
 begin_class
-specifier|public
 class|class
 name|PrivilegeValidatorProvider
 implements|implements

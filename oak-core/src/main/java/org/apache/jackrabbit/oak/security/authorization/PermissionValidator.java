@@ -135,6 +135,8 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
+name|spi
+operator|.
 name|security
 operator|.
 name|privilege
@@ -1200,6 +1202,7 @@ name|String
 name|path
 parameter_list|)
 block|{
+comment|// TODO: depends on pluggable module
 return|return
 name|Text
 operator|.
@@ -1222,6 +1225,7 @@ name|String
 name|path
 parameter_list|)
 block|{
+comment|// TODO: depends on pluggable module
 return|return
 name|Text
 operator|.
@@ -1244,6 +1248,7 @@ name|String
 name|path
 parameter_list|)
 block|{
+comment|// TODO: depends on pluggable module
 return|return
 name|Text
 operator|.

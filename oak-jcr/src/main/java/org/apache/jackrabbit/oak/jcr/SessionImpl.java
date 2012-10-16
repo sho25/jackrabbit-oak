@@ -1872,7 +1872,16 @@ name|AccessControlPolicy
 name|policy
 parameter_list|)
 block|{
-comment|// do nothing
+throw|throw
+operator|new
+name|AccessControlException
+argument_list|(
+name|policy
+operator|.
+name|toString
+argument_list|()
+argument_list|)
+throw|;
 block|}
 annotation|@
 name|Override
@@ -1887,7 +1896,16 @@ name|AccessControlPolicy
 name|policy
 parameter_list|)
 block|{
-comment|// do nothing
+throw|throw
+operator|new
+name|AccessControlException
+argument_list|(
+name|policy
+operator|.
+name|toString
+argument_list|()
+argument_list|)
+throw|;
 block|}
 annotation|@
 name|Override
