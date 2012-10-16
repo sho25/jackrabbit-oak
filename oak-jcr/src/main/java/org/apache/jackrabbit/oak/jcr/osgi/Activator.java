@@ -103,6 +103,24 @@ begin_import
 import|import
 name|org
 operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|security
+operator|.
+name|SecurityProvider
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|osgi
 operator|.
 name|framework
@@ -192,6 +210,11 @@ specifier|private
 name|ScheduledExecutorService
 name|executor
 decl_stmt|;
+specifier|private
+name|SecurityProvider
+name|securityProvider
+decl_stmt|;
+comment|// TODO
 specifier|private
 name|ServiceTracker
 name|tracker
@@ -346,6 +369,8 @@ argument_list|(
 name|repository
 argument_list|,
 name|executor
+argument_list|,
+name|securityProvider
 argument_list|)
 argument_list|,
 operator|new

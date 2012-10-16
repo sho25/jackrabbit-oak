@@ -107,6 +107,24 @@ name|RepositoryImpl
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|security
+operator|.
+name|SecurityProvider
+import|;
+end_import
+
 begin_comment
 comment|/**  * Workaround to a JAAS class loading issue in OSGi environments.  *  * @see<a href="https://issues.apache.org/jira/browse/OAK-256">OAK-256</a>  */
 end_comment
@@ -126,6 +144,9 @@ name|repository
 parameter_list|,
 name|ScheduledExecutorService
 name|executor
+parameter_list|,
+name|SecurityProvider
+name|securityProvider
 parameter_list|)
 block|{
 name|super
@@ -134,10 +155,9 @@ name|repository
 argument_list|,
 name|executor
 argument_list|,
-literal|null
+name|securityProvider
 argument_list|)
 expr_stmt|;
-comment|// FIXME pass security provider
 block|}
 annotation|@
 name|Override

@@ -103,6 +103,24 @@ name|org
 operator|.
 name|apache
 operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|security
+operator|.
+name|SecurityProvider
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
 name|sling
 operator|.
 name|jcr
@@ -207,6 +225,10 @@ name|ScheduledExecutorService
 name|executor
 decl_stmt|;
 specifier|private
+name|SecurityProvider
+name|securityProvider
+decl_stmt|;
+specifier|private
 name|ServiceTracker
 name|tracker
 decl_stmt|;
@@ -274,6 +296,11 @@ argument_list|(
 literal|1
 argument_list|)
 expr_stmt|;
+name|securityProvider
+operator|=
+literal|null
+expr_stmt|;
+comment|// TODO
 name|tracker
 operator|=
 operator|new
@@ -360,6 +387,8 @@ operator|)
 name|service
 argument_list|,
 name|executor
+argument_list|,
+name|securityProvider
 argument_list|)
 decl_stmt|;
 name|jcrRepositories

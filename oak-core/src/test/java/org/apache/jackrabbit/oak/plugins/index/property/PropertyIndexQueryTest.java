@@ -243,6 +243,12 @@ argument_list|(
 name|ch
 argument_list|)
 operator|.
+name|with
+argument_list|(
+name|getSecurityProvider
+argument_list|()
+argument_list|)
+operator|.
 name|createContentRepository
 argument_list|()
 return|;
