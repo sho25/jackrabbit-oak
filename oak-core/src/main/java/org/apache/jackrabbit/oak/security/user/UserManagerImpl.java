@@ -1012,6 +1012,13 @@ argument_list|,
 name|principal
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|password
+operator|!=
+literal|null
+condition|)
+block|{
 name|userProvider
 operator|.
 name|setPassword
@@ -1023,6 +1030,7 @@ argument_list|,
 literal|true
 argument_list|)
 expr_stmt|;
+block|}
 name|User
 name|user
 init|=
