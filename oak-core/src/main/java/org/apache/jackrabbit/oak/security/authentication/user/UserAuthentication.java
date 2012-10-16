@@ -16,6 +16,8 @@ operator|.
 name|security
 operator|.
 name|authentication
+operator|.
+name|user
 package|;
 end_package
 
@@ -272,7 +274,6 @@ comment|/**  * Implementation of the Authentication interface that validates cre
 end_comment
 
 begin_class
-specifier|public
 class|class
 name|UserAuthentication
 implements|implements
@@ -308,7 +309,6 @@ specifier|final
 name|PrincipalProvider
 name|principalProvider
 decl_stmt|;
-specifier|public
 name|UserAuthentication
 parameter_list|(
 name|String

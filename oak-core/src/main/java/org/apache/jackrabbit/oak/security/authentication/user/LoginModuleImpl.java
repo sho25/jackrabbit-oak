@@ -16,6 +16,8 @@ operator|.
 name|security
 operator|.
 name|authentication
+operator|.
+name|user
 package|;
 end_package
 
@@ -200,6 +202,24 @@ operator|.
 name|api
 operator|.
 name|AuthInfo
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|security
+operator|.
+name|authentication
+operator|.
+name|AuthInfoImpl
 import|;
 end_import
 

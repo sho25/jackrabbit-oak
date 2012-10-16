@@ -220,7 +220,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * LoginContextProviderImpl...  TODO  */
+comment|/**  * {@code LoginContextProvider}  */
 end_comment
 
 begin_class
@@ -246,12 +246,9 @@ name|class
 argument_list|)
 decl_stmt|;
 specifier|private
-specifier|static
 specifier|final
 name|String
-name|APP_NAME
-init|=
-literal|"jackrabbit.oak"
+name|appName
 decl_stmt|;
 specifier|private
 specifier|final
@@ -271,6 +268,9 @@ decl_stmt|;
 specifier|public
 name|LoginContextProviderImpl
 parameter_list|(
+name|String
+name|appName
+parameter_list|,
 name|Configuration
 name|configuration
 parameter_list|,
@@ -281,6 +281,12 @@ name|SecurityProvider
 name|securityProvider
 parameter_list|)
 block|{
+name|this
+operator|.
+name|appName
+operator|=
+name|appName
+expr_stmt|;
 name|this
 operator|.
 name|configuration
@@ -317,8 +323,6 @@ parameter_list|)
 throws|throws
 name|LoginException
 block|{
-comment|// TODO: add proper implementation
-comment|// TODO  - authentication against configurable spi-authentication
 comment|// TODO  - validation of workspace name (including access rights for the given 'user')
 name|Subject
 name|subject
@@ -340,7 +344,7 @@ return|return
 operator|new
 name|JaasLoginContext
 argument_list|(
-name|APP_NAME
+name|appName
 argument_list|,
 name|subject
 argument_list|,
