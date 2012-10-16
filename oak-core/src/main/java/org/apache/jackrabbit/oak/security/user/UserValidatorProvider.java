@@ -174,7 +174,6 @@ comment|/**  * Provides a validator for user and group management.  */
 end_comment
 
 begin_class
-specifier|public
 class|class
 name|UserValidatorProvider
 implements|implements
@@ -189,7 +188,6 @@ specifier|private
 name|UserProvider
 name|userProvider
 decl_stmt|;
-specifier|public
 name|UserValidatorProvider
 parameter_list|(
 name|ConfigurationParameters
