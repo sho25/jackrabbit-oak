@@ -365,6 +365,8 @@ name|security
 operator|.
 name|user
 operator|.
+name|util
+operator|.
 name|PasswordUtility
 import|;
 end_import
@@ -405,7 +407,7 @@ name|security
 operator|.
 name|user
 operator|.
-name|UserContext
+name|UserConfiguration
 import|;
 end_import
 
@@ -641,8 +643,8 @@ parameter_list|,
 name|ConfigurationParameters
 name|options
 parameter_list|,
-name|UserContext
-name|userContext
+name|UserConfiguration
+name|userConfiguration
 parameter_list|)
 block|{
 name|this
@@ -663,7 +665,7 @@ name|DEFAULT_TOKEN_EXPIRATION
 argument_list|)
 argument_list|)
 argument_list|,
-name|userContext
+name|userConfiguration
 argument_list|)
 expr_stmt|;
 block|}
@@ -676,8 +678,8 @@ parameter_list|,
 name|long
 name|tokenExpiration
 parameter_list|,
-name|UserContext
-name|userContext
+name|UserConfiguration
+name|userConfiguration
 parameter_list|)
 block|{
 name|this
@@ -696,7 +698,7 @@ name|this
 operator|.
 name|userProvider
 operator|=
-name|userContext
+name|userConfiguration
 operator|.
 name|getUserProvider
 argument_list|(

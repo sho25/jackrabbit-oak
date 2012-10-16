@@ -85,30 +85,95 @@ name|REP_IMPERSONATORS
 init|=
 literal|"rep:impersonators"
 decl_stmt|;
+comment|/**      * Configuration option defining the ID of the administrator user.      */
 name|String
-name|DEFAULT_USER_PATH
+name|PARAM_ADMIN_ID
 init|=
-literal|"/rep:security/rep:authorizables/rep:users"
+literal|"adminId"
 decl_stmt|;
-name|String
-name|DEFAULT_GROUP_PATH
-init|=
-literal|"/rep:security/rep:authorizables/rep:groups"
-decl_stmt|;
-name|int
-name|DEFAULT_DEPTH
-init|=
-literal|2
-decl_stmt|;
+comment|/**      * Default value for {@link #PARAM_ADMIN_ID}      */
 name|String
 name|DEFAULT_ADMIN_ID
 init|=
 literal|"admin"
 decl_stmt|;
+comment|/**      * Configuration option defining the ID of the anonymous user. The ID      * might be {@code null} of no anonymous user exists. In this case      * Session#getUserID() may return {@code null} if it has been obtained      * using {@link javax.jcr.GuestCredentials}.      */
+name|String
+name|PARAM_ANONYMOUS_ID
+init|=
+literal|"anonymousId"
+decl_stmt|;
+comment|/**      * Default value for {@link #PARAM_ANONYMOUS_ID}      */
 name|String
 name|DEFAULT_ANONYMOUS_ID
 init|=
 literal|"anonymous"
+decl_stmt|;
+comment|/**      * Configuration option to define the path underneath which user nodes      * are being created.      */
+name|String
+name|PARAM_USER_PATH
+init|=
+literal|"usersPath"
+decl_stmt|;
+comment|/**      * Default value for {@link #PARAM_USER_PATH}      */
+name|String
+name|DEFAULT_USER_PATH
+init|=
+literal|"/rep:security/rep:authorizables/rep:users"
+decl_stmt|;
+comment|/**      * Configuration option to define the path underneath which group nodes      * are being created.      */
+name|String
+name|PARAM_GROUP_PATH
+init|=
+literal|"groupsPath"
+decl_stmt|;
+comment|/**      * Default value for {@link #PARAM_GROUP_PATH}      */
+name|String
+name|DEFAULT_GROUP_PATH
+init|=
+literal|"/rep:security/rep:authorizables/rep:groups"
+decl_stmt|;
+comment|/**      * Parameter used to change the number of levels that are used by default      * store authorizable nodes.<br>The default number of levels is 2.      */
+name|String
+name|PARAM_DEFAULT_DEPTH
+init|=
+literal|"defaultDepth"
+decl_stmt|;
+comment|/**      * Default value for {@link #PARAM_DEFAULT_DEPTH}      */
+name|int
+name|DEFAULT_DEPTH
+init|=
+literal|2
+decl_stmt|;
+comment|/**      * Its value determines the maximum number of members within a given      * content structure until additional intermediate structuring is being      * added. This may for example be used to      *<ul>      *<li>switch storing group members in JCR properties or nodes</li>      *<li>define maximum number of members is a multivalued property</li>      *<li>define maximum number of member properties within a given      *     node structure</li>      *</ul>      */
+name|String
+name|PARAM_GROUP_MEMBERSHIP_SPLIT_SIZE
+init|=
+literal|"groupMembershipSplitSize"
+decl_stmt|;
+comment|/**      * Configuration parameter to change the default algorithm used to generate      * password hashes.      */
+name|String
+name|PARAM_PASSWORD_HASH_ALGORITHM
+init|=
+literal|"passwordHashAlgorithm"
+decl_stmt|;
+comment|/**      * Configuration parameter to change the number of iterations used for      * password hash generation.      */
+name|String
+name|PARAM_PASSWORD_HASH_ITERATIONS
+init|=
+literal|"passwordHashIterations"
+decl_stmt|;
+comment|/**      * Configuration parameter to change the number of iterations used for      * password hash generation.      */
+name|String
+name|PARAM_PASSWORD_SALT_SIZE
+init|=
+literal|"passwordSaltSize"
+decl_stmt|;
+comment|/**      * Configuration parameter to set the authorizable actions.      *      * @see org.apache.jackrabbit.oak.spi.security.user.action.AuthorizableAction      */
+name|String
+name|PARAM_AUTHORIZABLE_ACTIONS
+init|=
+literal|"authorizableActions"
 decl_stmt|;
 block|}
 end_interface

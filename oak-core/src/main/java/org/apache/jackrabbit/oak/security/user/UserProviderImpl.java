@@ -299,6 +299,24 @@ name|spi
 operator|.
 name|security
 operator|.
+name|ConfigurationParameters
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|security
+operator|.
 name|principal
 operator|.
 name|PrincipalProvider
@@ -361,27 +379,9 @@ name|security
 operator|.
 name|user
 operator|.
+name|util
+operator|.
 name|PasswordUtility
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|spi
-operator|.
-name|security
-operator|.
-name|user
-operator|.
-name|UserConfig
 import|;
 end_import
 
@@ -422,6 +422,28 @@ operator|.
 name|user
 operator|.
 name|UserProvider
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|security
+operator|.
+name|user
+operator|.
+name|util
+operator|.
+name|UserUtility
 import|;
 end_import
 
@@ -510,7 +532,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * User provider implementation and manager for group memberships with the  * following characteristics:  *  *<h1>UserProvider</h1>  *  *<h2>User and Group Creation</h2>  * This implementation creates the JCR nodes corresponding the a given  * authorizable ID with the following behavior:  *<ul>  *<li>Users are created below /rep:security/rep:authorizables/rep:users or  * the path configured in the {@link org.apache.jackrabbit.oak.spi.security.user.UserConfig#PARAM_USER_PATH}  * respectively.</li>  *<li>Groups are created below /rep:security/rep:authorizables/rep:groups or  * the path configured in the {@link org.apache.jackrabbit.oak.spi.security.user.UserConfig#PARAM_GROUP_PATH}  * respectively.</li>  *<li>Below each category authorizables are created within a human readable  * structure based on the defined intermediate path or some internal logic  * with a depth defined by the {@code defaultDepth} config option.<br>  * E.g. creating a user node for an ID 'aSmith' would result in the following  * structure assuming defaultDepth == 2 is used:  *<pre>  * + rep:security            [rep:AuthorizableFolder]  *   + rep:authorizables     [rep:AuthorizableFolder]  *     + rep:users           [rep:AuthorizableFolder]  *       + a                 [rep:AuthorizableFolder]  *         + aS              [rep:AuthorizableFolder]  * ->        + aSmith        [rep:User]  *</pre>  *</li>  *<li>The node name is calculated from the specified authorizable ID  * {@link org.apache.jackrabbit.util.Text#escapeIllegalJcrChars(String) escaping} any illegal JCR chars.</li>  *<li>If no intermediate path is passed the names of the intermediate  * folders are calculated from the leading chars of the escaped node name.</li>  *<li>If the escaped node name is shorter than the {@code defaultDepth}  * the last char is repeated.<br>  * E.g. creating a user node for an ID 'a' would result in the following  * structure assuming defaultDepth == 2 is used:  *<pre>  * + rep:security            [rep:AuthorizableFolder]  *   + rep:authorizables     [rep:AuthorizableFolder]  *     + rep:users           [rep:AuthorizableFolder]  *       + a                 [rep:AuthorizableFolder]  *         + aa              [rep:AuthorizableFolder]  * ->        + a             [rep:User]  *</pre></li>  *  *<h3>Conflicts</h3>  *  *<ul>  *<li>If the authorizable node to be created would collide with an existing  *     folder the conflict is resolved by using the colling folder as target.</li>  *<li>The current implementation asserts that authorizable nodes are always  *     created underneath an node of type {@code rep:AuthorizableFolder}. If this  *     condition is violated a {@code ConstraintViolationException} is thrown.</li>  *<li>If the specified intermediate path results in an authorizable node  *     being located outside of the configured content structure a  *     {@code ConstraintViolationException} is thrown.</li>  *</ul>  *  *<h3>Configuration Options</h3>  *<ul>  *<li>{@link org.apache.jackrabbit.oak.spi.security.user.UserConfig#PARAM_USER_PATH}: Underneath this structure  *     all user nodes are created. Default value is  *     "/rep:security/rep:authorizables/rep:users"</li>  *<li>{@link org.apache.jackrabbit.oak.spi.security.user.UserConfig#PARAM_GROUP_PATH}: Underneath this structure  *     all group nodes are created. Default value is  *     "/rep:security/rep:authorizables/rep:groups"</li>  *<li>{@link org.apache.jackrabbit.oak.spi.security.user.UserConfig#PARAM_DEFAULT_DEPTH}: A positive {@code integer}  *     greater than zero defining the depth of the default structure that is  *     always created. Default value: 2</li>  *</ul>  *  *<h3>Compatibility with Jackrabbit 2.x</h3>  *  * Due to the fact that this JCR implementation is expected to deal with huge amount  * of child nodes the following configuration options are no longer supported:  *<ul>  *<li>autoExpandTree</li>  *<li>autoExpandSize</li>  *</ul>  *  *<h2>User and Group Access</h2>  *<h3>By ID</h3>  * TODO  *<h3>By Path</h3>  * TODO  *<h3>By Principal Name</h3>  * TODO  *  *<h3>Search for authorizables</h3>  *  * TODO  */
+comment|/**  * User provider implementation and manager for group memberships with the  * following characteristics:  *  *<h1>UserProvider</h1>  *  *<h2>User and Group Creation</h2>  * This implementation creates the JCR nodes corresponding the a given  * authorizable ID with the following behavior:  *<ul>  *<li>Users are created below /rep:security/rep:authorizables/rep:users or  * the path configured in the {@link org.apache.jackrabbit.oak.spi.security.user.UserConstants#PARAM_USER_PATH}  * respectively.</li>  *<li>Groups are created below /rep:security/rep:authorizables/rep:groups or  * the path configured in the {@link org.apache.jackrabbit.oak.spi.security.user.UserConstants#PARAM_GROUP_PATH}  * respectively.</li>  *<li>Below each category authorizables are created within a human readable  * structure based on the defined intermediate path or some internal logic  * with a depth defined by the {@code defaultDepth} config option.<br>  * E.g. creating a user node for an ID 'aSmith' would result in the following  * structure assuming defaultDepth == 2 is used:  *<pre>  * + rep:security            [rep:AuthorizableFolder]  *   + rep:authorizables     [rep:AuthorizableFolder]  *     + rep:users           [rep:AuthorizableFolder]  *       + a                 [rep:AuthorizableFolder]  *         + aS              [rep:AuthorizableFolder]  * ->        + aSmith        [rep:User]  *</pre>  *</li>  *<li>The node name is calculated from the specified authorizable ID  * {@link org.apache.jackrabbit.util.Text#escapeIllegalJcrChars(String) escaping} any illegal JCR chars.</li>  *<li>If no intermediate path is passed the names of the intermediate  * folders are calculated from the leading chars of the escaped node name.</li>  *<li>If the escaped node name is shorter than the {@code defaultDepth}  * the last char is repeated.<br>  * E.g. creating a user node for an ID 'a' would result in the following  * structure assuming defaultDepth == 2 is used:  *<pre>  * + rep:security            [rep:AuthorizableFolder]  *   + rep:authorizables     [rep:AuthorizableFolder]  *     + rep:users           [rep:AuthorizableFolder]  *       + a                 [rep:AuthorizableFolder]  *         + aa              [rep:AuthorizableFolder]  * ->        + a             [rep:User]  *</pre></li>  *  *<h3>Conflicts</h3>  *  *<ul>  *<li>If the authorizable node to be created would collide with an existing  *     folder the conflict is resolved by using the colling folder as target.</li>  *<li>The current implementation asserts that authorizable nodes are always  *     created underneath an node of type {@code rep:AuthorizableFolder}. If this  *     condition is violated a {@code ConstraintViolationException} is thrown.</li>  *<li>If the specified intermediate path results in an authorizable node  *     being located outside of the configured content structure a  *     {@code ConstraintViolationException} is thrown.</li>  *</ul>  *  *<h3>Configuration Options</h3>  *<ul>  *<li>{@link org.apache.jackrabbit.oak.spi.security.user.UserConstants#PARAM_USER_PATH}: Underneath this structure  *     all user nodes are created. Default value is  *     "/rep:security/rep:authorizables/rep:users"</li>  *<li>{@link org.apache.jackrabbit.oak.spi.security.user.UserConstants#PARAM_GROUP_PATH}: Underneath this structure  *     all group nodes are created. Default value is  *     "/rep:security/rep:authorizables/rep:groups"</li>  *<li>{@link org.apache.jackrabbit.oak.spi.security.user.UserConstants#PARAM_DEFAULT_DEPTH}: A positive {@code integer}  *     greater than zero defining the depth of the default structure that is  *     always created. Default value: 2</li>  *</ul>  *  *<h3>Compatibility with Jackrabbit 2.x</h3>  *  * Due to the fact that this JCR implementation is expected to deal with huge amount  * of child nodes the following configuration options are no longer supported:  *<ul>  *<li>autoExpandTree</li>  *<li>autoExpandSize</li>  *</ul>  *  *<h2>User and Group Access</h2>  *<h3>By ID</h3>  * TODO  *<h3>By Path</h3>  * TODO  *<h3>By Principal Name</h3>  * TODO  *  *<h3>Search for authorizables</h3>  *  * TODO  */
 end_comment
 
 begin_class
@@ -565,7 +587,7 @@ parameter_list|(
 name|Root
 name|root
 parameter_list|,
-name|UserConfig
+name|ConfigurationParameters
 name|config
 parameter_list|)
 block|{
@@ -582,8 +604,6 @@ name|config
 operator|.
 name|getConfigValue
 argument_list|(
-name|UserConfig
-operator|.
 name|PARAM_DEFAULT_DEPTH
 argument_list|,
 name|DEFAULT_DEPTH
@@ -595,8 +615,6 @@ name|config
 operator|.
 name|getConfigValue
 argument_list|(
-name|UserConfig
-operator|.
 name|PARAM_GROUP_PATH
 argument_list|,
 name|DEFAULT_GROUP_PATH
@@ -608,8 +626,6 @@ name|config
 operator|.
 name|getConfigValue
 argument_list|(
-name|UserConfig
-operator|.
 name|PARAM_USER_PATH
 argument_list|,
 name|DEFAULT_USER_PATH
@@ -945,6 +961,8 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+name|UserUtility
+operator|.
 name|isAuthorizableTree
 argument_list|(
 name|authorizableTree
@@ -1055,6 +1073,8 @@ name|authorizableType
 parameter_list|)
 block|{
 return|return
+name|UserUtility
+operator|.
 name|isAuthorizableTree
 argument_list|(
 name|authorizableTree
@@ -1088,10 +1108,12 @@ operator|.
 name|USER
 argument_list|)
 operator|&&
-name|config
+name|UserUtility
 operator|.
 name|getAdminId
-argument_list|()
+argument_list|(
+name|config
+argument_list|)
 operator|.
 name|equals
 argument_list|(

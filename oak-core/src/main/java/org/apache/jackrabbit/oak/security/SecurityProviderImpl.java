@@ -251,7 +251,7 @@ name|security
 operator|.
 name|user
 operator|.
-name|UserContextImpl
+name|UserConfigurationImpl
 import|;
 end_import
 
@@ -429,7 +429,7 @@ name|security
 operator|.
 name|user
 operator|.
-name|UserContext
+name|UserConfiguration
 import|;
 end_import
 
@@ -607,7 +607,7 @@ name|log
 operator|.
 name|warn
 argument_list|(
-literal|"Failed to read login configuration: using default."
+literal|"Failed to retrieve login configuration: using default."
 argument_list|,
 name|e
 argument_list|)
@@ -678,7 +678,7 @@ name|root
 argument_list|,
 name|options
 argument_list|,
-name|getUserContext
+name|getUserConfiguration
 argument_list|()
 argument_list|)
 return|;
@@ -688,13 +688,13 @@ name|Nonnull
 annotation|@
 name|Override
 specifier|public
-name|UserContext
-name|getUserContext
+name|UserConfiguration
+name|getUserConfiguration
 parameter_list|()
 block|{
 return|return
 operator|new
-name|UserContextImpl
+name|UserConfigurationImpl
 argument_list|()
 return|;
 block|}
@@ -763,16 +763,16 @@ name|NamePathMapper
 name|namePathMapper
 parameter_list|)
 block|{
-name|UserContext
-name|userContext
+name|UserConfiguration
+name|userConfiguration
 init|=
-name|getUserContext
+name|getUserConfiguration
 argument_list|()
 decl_stmt|;
 name|UserProvider
 name|userProvider
 init|=
-name|userContext
+name|userConfiguration
 operator|.
 name|getUserProvider
 argument_list|(
@@ -782,7 +782,7 @@ decl_stmt|;
 name|MembershipProvider
 name|msProvider
 init|=
-name|userContext
+name|userConfiguration
 operator|.
 name|getMembershipProvider
 argument_list|(

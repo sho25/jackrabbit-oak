@@ -1224,7 +1224,7 @@ name|userProvider
 operator|=
 name|sp
 operator|.
-name|getUserContext
+name|getUserConfiguration
 argument_list|()
 operator|.
 name|getUserProvider

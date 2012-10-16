@@ -618,7 +618,7 @@ name|addAll
 argument_list|(
 name|securityProvider
 operator|.
-name|getUserContext
+name|getUserConfiguration
 argument_list|()
 operator|.
 name|getValidatorProviders

@@ -143,7 +143,7 @@ name|security
 operator|.
 name|user
 operator|.
-name|UserContext
+name|UserConfiguration
 import|;
 end_import
 
@@ -203,11 +203,10 @@ parameter_list|)
 function_decl|;
 annotation|@
 name|Nonnull
-name|UserContext
-name|getUserContext
+name|UserConfiguration
+name|getUserConfiguration
 parameter_list|()
 function_decl|;
-comment|// TODO review naming consistency
 annotation|@
 name|Nonnull
 name|PrincipalConfiguration

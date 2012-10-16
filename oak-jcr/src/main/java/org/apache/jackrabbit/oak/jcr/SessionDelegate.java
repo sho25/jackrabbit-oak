@@ -1910,7 +1910,7 @@ block|{
 return|return
 name|securityProvider
 operator|.
-name|getUserContext
+name|getUserConfiguration
 argument_list|()
 operator|.
 name|getUserManager
