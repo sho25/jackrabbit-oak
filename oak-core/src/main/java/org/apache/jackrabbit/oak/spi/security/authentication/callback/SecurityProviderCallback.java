@@ -66,7 +66,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * SecurityProviderCallback... TODO  */
+comment|/**  * Callback implementation to set and get the {@link SecurityProvider}.  */
 end_comment
 
 begin_class

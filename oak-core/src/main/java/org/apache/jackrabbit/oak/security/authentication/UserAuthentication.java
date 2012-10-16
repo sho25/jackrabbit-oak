@@ -274,7 +274,7 @@ end_comment
 begin_class
 specifier|public
 class|class
-name|AuthenticationImpl
+name|UserAuthentication
 implements|implements
 name|Authentication
 block|{
@@ -288,7 +288,7 @@ name|LoggerFactory
 operator|.
 name|getLogger
 argument_list|(
-name|AuthenticationImpl
+name|UserAuthentication
 operator|.
 name|class
 argument_list|)
@@ -309,7 +309,7 @@ name|PrincipalProvider
 name|principalProvider
 decl_stmt|;
 specifier|public
-name|AuthenticationImpl
+name|UserAuthentication
 parameter_list|(
 name|String
 name|userId

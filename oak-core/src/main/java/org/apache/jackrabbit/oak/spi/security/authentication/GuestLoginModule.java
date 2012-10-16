@@ -123,20 +123,6 @@ name|security
 operator|.
 name|auth
 operator|.
-name|login
-operator|.
-name|LoginException
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|security
-operator|.
-name|auth
-operator|.
 name|spi
 operator|.
 name|LoginModule
@@ -211,6 +197,7 @@ end_comment
 
 begin_class
 specifier|public
+specifier|final
 class|class
 name|GuestLoginModule
 implements|implements
@@ -302,8 +289,6 @@ specifier|public
 name|boolean
 name|login
 parameter_list|()
-throws|throws
-name|LoginException
 block|{
 if|if
 condition|(
@@ -414,8 +399,6 @@ specifier|public
 name|boolean
 name|commit
 parameter_list|()
-throws|throws
-name|LoginException
 block|{
 if|if
 condition|(
@@ -464,10 +447,11 @@ specifier|public
 name|boolean
 name|abort
 parameter_list|()
-throws|throws
-name|LoginException
 block|{
-comment|// nothing to do
+name|guestCredentials
+operator|=
+literal|null
+expr_stmt|;
 return|return
 literal|true
 return|;
@@ -478,8 +462,6 @@ specifier|public
 name|boolean
 name|logout
 parameter_list|()
-throws|throws
-name|LoginException
 block|{
 comment|// nothing to do.
 return|return

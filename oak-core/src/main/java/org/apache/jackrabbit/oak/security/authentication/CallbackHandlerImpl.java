@@ -177,28 +177,6 @@ name|authentication
 operator|.
 name|callback
 operator|.
-name|PrincipalProviderCallback
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|spi
-operator|.
-name|security
-operator|.
-name|authentication
-operator|.
-name|callback
-operator|.
 name|RepositoryCallback
 import|;
 end_import
@@ -243,28 +221,8 @@ name|NodeStore
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
 begin_comment
-comment|/**  * Default implementation of the {@link CallbackHandler} interface. It currently  * supports the following {@code Callback} implementations:  *  *<ul>  *<li>{@link CredentialsCallback}</li>  *<li>{@link NameCallback}</li>  *<li>{@link PasswordCallback}</li>  *<li>{@link PrincipalProviderCallback}</li>  *</ul>  */
+comment|/**  * Default implementation of the {@link CallbackHandler} interface. It currently  * supports the following {@code Callback} implementations:  *  *<ul>  *<li>{@link CredentialsCallback}</li>  *<li>{@link NameCallback}</li>  *<li>{@link PasswordCallback}</li>  *<li>{@link SecurityProviderCallback}</li>  *<li>{@link RepositoryCallback}</li>  *</ul>  */
 end_comment
 
 begin_class
@@ -274,22 +232,6 @@ name|CallbackHandlerImpl
 implements|implements
 name|CallbackHandler
 block|{
-comment|/**      * logger instance      */
-specifier|private
-specifier|static
-specifier|final
-name|Logger
-name|log
-init|=
-name|LoggerFactory
-operator|.
-name|getLogger
-argument_list|(
-name|CallbackHandlerImpl
-operator|.
-name|class
-argument_list|)
-decl_stmt|;
 specifier|private
 specifier|final
 name|Credentials
