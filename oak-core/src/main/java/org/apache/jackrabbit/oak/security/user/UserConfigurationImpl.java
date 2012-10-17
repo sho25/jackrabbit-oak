@@ -206,7 +206,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * UserContextImpl... TODO  */
+comment|/**  * UserConfigurationImpl... TODO  */
 end_comment
 
 begin_class
@@ -221,19 +221,6 @@ specifier|final
 name|ConfigurationParameters
 name|config
 decl_stmt|;
-comment|// TODO add proper configuration
-specifier|public
-name|UserConfigurationImpl
-parameter_list|()
-block|{
-name|this
-argument_list|(
-operator|new
-name|ConfigurationParameters
-argument_list|()
-argument_list|)
-expr_stmt|;
-block|}
 specifier|public
 name|UserConfigurationImpl
 parameter_list|(
