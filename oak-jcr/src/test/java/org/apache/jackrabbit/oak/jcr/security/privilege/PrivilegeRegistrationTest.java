@@ -310,7 +310,7 @@ end_comment
 begin_class
 specifier|public
 class|class
-name|CustomPrivilegeTest
+name|PrivilegeRegistrationTest
 extends|extends
 name|AbstractPrivilegeTest
 block|{
@@ -1999,6 +1999,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+comment|/**      * @since oak      */
 annotation|@
 name|Test
 specifier|public
@@ -2175,6 +2176,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+comment|/**      * @since oak      */
 annotation|@
 name|Test
 specifier|public
@@ -2273,6 +2275,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+comment|/**      * @since oak      */
 annotation|@
 name|Test
 specifier|public
@@ -2406,6 +2409,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+comment|/**      * @since oak      */
 annotation|@
 name|Test
 specifier|public

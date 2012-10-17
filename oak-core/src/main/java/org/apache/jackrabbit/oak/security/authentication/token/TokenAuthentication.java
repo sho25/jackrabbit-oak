@@ -265,6 +265,12 @@ literal|"Invalid token credentials."
 argument_list|)
 throw|;
 block|}
+else|else
+block|{
+return|return
+literal|true
+return|;
+block|}
 block|}
 comment|// no tokenProvider or other credentials implementation -> not handled here.
 return|return

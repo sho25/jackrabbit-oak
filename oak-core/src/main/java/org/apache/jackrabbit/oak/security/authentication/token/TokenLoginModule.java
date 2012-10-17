@@ -809,8 +809,6 @@ operator|.
 name|getTokenProvider
 argument_list|(
 name|root
-argument_list|,
-name|options
 argument_list|)
 expr_stmt|;
 block|}

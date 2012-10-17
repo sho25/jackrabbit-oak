@@ -210,9 +210,6 @@ name|getTokenProvider
 parameter_list|(
 name|Root
 name|root
-parameter_list|,
-name|ConfigurationParameters
-name|options
 parameter_list|)
 function_decl|;
 annotation|@

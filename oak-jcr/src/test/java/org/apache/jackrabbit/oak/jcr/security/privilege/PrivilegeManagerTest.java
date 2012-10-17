@@ -180,7 +180,7 @@ end_comment
 begin_class
 specifier|public
 class|class
-name|PrivilegeManagerImplTest
+name|PrivilegeManagerTest
 extends|extends
 name|AbstractPrivilegeTest
 block|{
@@ -229,6 +229,8 @@ name|tearDown
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testGetRegisteredPrivileges
@@ -320,6 +322,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testGetPrivilege
@@ -388,6 +392,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testJcrAll
