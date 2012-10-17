@@ -149,7 +149,7 @@ name|spi
 operator|.
 name|commit
 operator|.
-name|ConflictHandlerProvider
+name|ConflictHandler
 import|;
 end_import
 
@@ -296,8 +296,8 @@ name|store
 decl_stmt|;
 specifier|private
 specifier|final
-name|ConflictHandlerProvider
-name|conflictHandlerProvider
+name|ConflictHandler
+name|conflictHandler
 decl_stmt|;
 specifier|private
 specifier|final
@@ -319,8 +319,8 @@ parameter_list|,
 name|NodeStore
 name|store
 parameter_list|,
-name|ConflictHandlerProvider
-name|conflictHandlerProvider
+name|ConflictHandler
+name|conflictHandler
 parameter_list|,
 name|QueryIndexProvider
 name|indexProvider
@@ -352,9 +352,9 @@ name|store
 expr_stmt|;
 name|this
 operator|.
-name|conflictHandlerProvider
+name|conflictHandler
 operator|=
-name|conflictHandlerProvider
+name|conflictHandler
 expr_stmt|;
 name|this
 operator|.
@@ -448,7 +448,7 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|conflictHandlerProvider
+name|conflictHandler
 operator|!=
 literal|null
 condition|)
@@ -457,10 +457,7 @@ name|root
 operator|.
 name|setConflictHandler
 argument_list|(
-name|conflictHandlerProvider
-operator|.
-name|getConflictHandler
-argument_list|()
+name|conflictHandler
 argument_list|)
 expr_stmt|;
 block|}

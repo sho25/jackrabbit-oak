@@ -139,7 +139,7 @@ name|plugins
 operator|.
 name|commit
 operator|.
-name|AnnotatingConflictHandlerProvider
+name|AnnotatingConflictHandler
 import|;
 end_import
 
@@ -193,7 +193,7 @@ name|spi
 operator|.
 name|commit
 operator|.
-name|ConflictHandlerProvider
+name|ConflictHandler
 import|;
 end_import
 
@@ -267,7 +267,7 @@ name|security
 operator|.
 name|authentication
 operator|.
-name|LoginContextProvider
+name|LoginContext
 import|;
 end_import
 
@@ -287,7 +287,7 @@ name|security
 operator|.
 name|authentication
 operator|.
-name|LoginContext
+name|LoginContextProvider
 import|;
 end_import
 
@@ -388,11 +388,11 @@ decl_stmt|;
 specifier|private
 specifier|static
 specifier|final
-name|ConflictHandlerProvider
-name|DEFAULT_CONFLICT_HANDLER_PROVIDER
+name|ConflictHandler
+name|DEFAULT_CONFLICT
 init|=
 operator|new
-name|AnnotatingConflictHandlerProvider
+name|AnnotatingConflictHandler
 argument_list|()
 decl_stmt|;
 specifier|private
@@ -581,7 +581,7 @@ name|workspaceName
 argument_list|,
 name|nodeStore
 argument_list|,
-name|DEFAULT_CONFLICT_HANDLER_PROVIDER
+name|DEFAULT_CONFLICT
 argument_list|,
 name|indexProvider
 argument_list|)
