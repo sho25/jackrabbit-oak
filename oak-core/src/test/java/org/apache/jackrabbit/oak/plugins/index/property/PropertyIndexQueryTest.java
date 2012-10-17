@@ -171,6 +171,24 @@ name|QueryIndexProvider
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|security
+operator|.
+name|OpenSecurityProvider
+import|;
+end_import
+
 begin_comment
 comment|/**  * Tests the query engine using the default index implementation: the  * {@link PropertyIndexProvider}  */
 end_comment
@@ -245,7 +263,8 @@ argument_list|)
 operator|.
 name|with
 argument_list|(
-name|getSecurityProvider
+operator|new
+name|OpenSecurityProvider
 argument_list|()
 argument_list|)
 operator|.
