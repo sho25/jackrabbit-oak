@@ -657,7 +657,7 @@ argument_list|)
 operator|.
 name|setProperty
 argument_list|(
-literal|"jcr:pimaryType"
+literal|"jcr:primaryType"
 argument_list|,
 literal|"oak:queryIndexDefinition"
 argument_list|,
@@ -684,7 +684,7 @@ argument_list|)
 operator|.
 name|setProperty
 argument_list|(
-literal|"jcr:pimaryType"
+literal|"jcr:primaryType"
 argument_list|,
 literal|"oak:queryIndexDefinition"
 argument_list|,
@@ -709,7 +709,7 @@ argument_list|)
 operator|.
 name|setProperty
 argument_list|(
-literal|"jcr:pimaryType"
+literal|"jcr:primaryType"
 argument_list|,
 literal|"oak:queryIndexDefinition"
 argument_list|,
