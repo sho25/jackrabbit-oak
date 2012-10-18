@@ -257,6 +257,8 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
+name|plugins
+operator|.
 name|value
 operator|.
 name|ValueFactoryImpl
