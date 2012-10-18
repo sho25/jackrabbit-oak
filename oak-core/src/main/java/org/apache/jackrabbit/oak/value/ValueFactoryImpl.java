@@ -293,7 +293,7 @@ name|plugins
 operator|.
 name|memory
 operator|.
-name|PropertyStates
+name|EmptyPropertyState
 import|;
 end_import
 
@@ -311,7 +311,7 @@ name|plugins
 operator|.
 name|memory
 operator|.
-name|StringPropertyState
+name|PropertyStates
 import|;
 end_import
 
@@ -1000,7 +1000,7 @@ case|:
 return|return
 name|createValue
 argument_list|(
-name|StringPropertyState
+name|EmptyPropertyState
 operator|.
 name|getLong
 argument_list|(
@@ -1016,7 +1016,7 @@ case|:
 return|return
 name|createValue
 argument_list|(
-name|StringPropertyState
+name|EmptyPropertyState
 operator|.
 name|getDouble
 argument_list|(
@@ -1071,7 +1071,7 @@ case|:
 return|return
 name|createValue
 argument_list|(
-name|StringPropertyState
+name|EmptyPropertyState
 operator|.
 name|getBoolean
 argument_list|(
@@ -1300,7 +1300,7 @@ case|:
 return|return
 name|createValue
 argument_list|(
-name|StringPropertyState
+name|EmptyPropertyState
 operator|.
 name|getDecimal
 argument_list|(

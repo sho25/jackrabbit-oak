@@ -1033,8 +1033,9 @@ name|BinaryPropertyState
 argument_list|(
 name|name
 argument_list|,
-operator|new
-name|StringBasedBlob
+name|EmptyPropertyState
+operator|.
+name|getBinary
 argument_list|(
 name|value
 argument_list|)
@@ -1051,7 +1052,7 @@ name|LongPropertyState
 argument_list|(
 name|name
 argument_list|,
-name|SinglePropertyState
+name|EmptyPropertyState
 operator|.
 name|getLong
 argument_list|(
@@ -1070,7 +1071,7 @@ name|DoublePropertyState
 argument_list|(
 name|name
 argument_list|,
-name|StringPropertyState
+name|EmptyPropertyState
 operator|.
 name|getDouble
 argument_list|(
@@ -1089,7 +1090,7 @@ name|BooleanPropertyState
 argument_list|(
 name|name
 argument_list|,
-name|StringPropertyState
+name|EmptyPropertyState
 operator|.
 name|getBoolean
 argument_list|(
@@ -1108,7 +1109,7 @@ name|DecimalPropertyState
 argument_list|(
 name|name
 argument_list|,
-name|StringPropertyState
+name|EmptyPropertyState
 operator|.
 name|getDecimal
 argument_list|(
@@ -2929,7 +2930,7 @@ name|values
 operator|.
 name|add
 argument_list|(
-name|StringPropertyState
+name|EmptyPropertyState
 operator|.
 name|getLong
 argument_list|(
@@ -3086,7 +3087,7 @@ name|values
 operator|.
 name|add
 argument_list|(
-name|StringPropertyState
+name|EmptyPropertyState
 operator|.
 name|getDouble
 argument_list|(
@@ -3109,7 +3110,7 @@ name|values
 operator|.
 name|add
 argument_list|(
-name|StringPropertyState
+name|EmptyPropertyState
 operator|.
 name|getDecimal
 argument_list|(
