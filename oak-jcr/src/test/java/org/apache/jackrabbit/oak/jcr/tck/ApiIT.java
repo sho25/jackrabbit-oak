@@ -43,6 +43,22 @@ name|ConcurrentTestSuite
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|test
+operator|.
+name|api
+operator|.
+name|NamespaceRegistryTest
+import|;
+end_import
+
 begin_class
 specifier|public
 class|class
@@ -71,24 +87,14 @@ argument_list|(
 literal|"JCR API tests"
 argument_list|)
 expr_stmt|;
-name|addTest
+name|addTestSuite
 argument_list|(
-name|org
+name|NamespaceRegistryTest
 operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|test
-operator|.
-name|api
-operator|.
-name|TestAll
-operator|.
-name|suite
-argument_list|()
+name|class
 argument_list|)
 expr_stmt|;
+comment|// addTest(org.apache.jackrabbit.test.api.TestAll.suite());
 block|}
 block|}
 end_class

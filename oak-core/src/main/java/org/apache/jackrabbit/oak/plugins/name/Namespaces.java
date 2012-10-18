@@ -116,6 +116,7 @@ comment|/**  * Internal static utility class for managing the persisted namespac
 end_comment
 
 begin_class
+specifier|public
 class|class
 name|Namespaces
 implements|implements
