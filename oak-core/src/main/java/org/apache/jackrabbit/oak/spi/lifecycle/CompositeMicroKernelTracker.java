@@ -75,6 +75,24 @@ name|MicroKernel
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|state
+operator|.
+name|NodeStore
+import|;
+end_import
+
 begin_comment
 comment|/**  *<code>CompositeMicroKernelTracker</code> consists of multiple micro kernel  * trackers and calls them all on {@link #available(MicroKernel)}.  */
 end_comment
@@ -150,8 +168,8 @@ specifier|public
 name|void
 name|available
 parameter_list|(
-name|MicroKernel
-name|mk
+name|NodeStore
+name|store
 parameter_list|)
 block|{
 for|for
@@ -166,7 +184,7 @@ name|tracker
 operator|.
 name|available
 argument_list|(
-name|mk
+name|store
 argument_list|)
 expr_stmt|;
 block|}

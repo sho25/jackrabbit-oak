@@ -27,11 +27,13 @@ name|apache
 operator|.
 name|jackrabbit
 operator|.
-name|mk
+name|oak
 operator|.
-name|api
+name|spi
 operator|.
-name|MicroKernel
+name|state
+operator|.
+name|NodeStore
 import|;
 end_import
 
@@ -52,8 +54,8 @@ specifier|public
 name|void
 name|available
 parameter_list|(
-name|MicroKernel
-name|mk
+name|NodeStore
+name|store
 parameter_list|)
 block|{     }
 block|}

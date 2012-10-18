@@ -35,6 +35,24 @@ name|MicroKernel
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|state
+operator|.
+name|NodeStore
+import|;
+end_import
+
 begin_comment
 comment|/**  * This interface is mainly used in an OSGi environment where various components  * of Oak are started by container and one would like to plug in some code that  * is executed when the micro kernel becomes available in the system.  */
 end_comment
@@ -49,8 +67,8 @@ specifier|public
 name|void
 name|available
 parameter_list|(
-name|MicroKernel
-name|mk
+name|NodeStore
+name|store
 parameter_list|)
 function_decl|;
 block|}

@@ -25,11 +25,13 @@ name|apache
 operator|.
 name|jackrabbit
 operator|.
-name|mk
+name|oak
 operator|.
-name|api
+name|spi
 operator|.
-name|MicroKernel
+name|lifecycle
+operator|.
+name|MicroKernelTracker
 import|;
 end_import
 
@@ -45,9 +47,9 @@ name|oak
 operator|.
 name|spi
 operator|.
-name|lifecycle
+name|state
 operator|.
-name|MicroKernelTracker
+name|NodeStore
 import|;
 end_import
 
@@ -82,8 +84,8 @@ block|{
 comment|/**      * The reference to the micro kernel once available.      */
 specifier|private
 specifier|volatile
-name|MicroKernel
-name|mk
+name|NodeStore
+name|store
 decl_stmt|;
 specifier|public
 name|OsgiMicroKernelTracker
@@ -103,19 +105,19 @@ specifier|public
 name|void
 name|available
 parameter_list|(
-name|MicroKernel
-name|mk
+name|NodeStore
+name|store
 parameter_list|)
 block|{
 name|this
 operator|.
-name|mk
+name|store
 operator|=
-name|mk
+name|store
 expr_stmt|;
 if|if
 condition|(
-name|mk
+name|store
 operator|!=
 literal|null
 condition|)
@@ -133,7 +135,7 @@ name|mki
 operator|.
 name|available
 argument_list|(
-name|mk
+name|store
 argument_list|)
 expr_stmt|;
 block|}
@@ -162,14 +164,16 @@ argument_list|(
 name|reference
 argument_list|)
 decl_stmt|;
-name|MicroKernel
-name|microKernel
+name|NodeStore
+name|store
 init|=
-name|mk
+name|this
+operator|.
+name|store
 decl_stmt|;
 if|if
 condition|(
-name|microKernel
+name|store
 operator|!=
 literal|null
 condition|)
@@ -178,7 +182,7 @@ name|mki
 operator|.
 name|available
 argument_list|(
-name|mk
+name|store
 argument_list|)
 expr_stmt|;
 block|}
