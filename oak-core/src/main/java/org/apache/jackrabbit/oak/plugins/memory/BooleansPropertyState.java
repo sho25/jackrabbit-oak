@@ -74,6 +74,22 @@ import|;
 end_import
 
 begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|value
+operator|.
+name|Conversions
+import|;
+end_import
+
+begin_import
 import|import static
 name|org
 operator|.
@@ -159,12 +175,15 @@ name|value
 parameter_list|)
 block|{
 return|return
-name|Boolean
+name|Conversions
 operator|.
-name|toString
+name|convert
 argument_list|(
 name|value
 argument_list|)
+operator|.
+name|toString
+argument_list|()
 return|;
 block|}
 block|}
@@ -182,9 +201,9 @@ name|index
 parameter_list|)
 block|{
 return|return
-name|Boolean
+name|Conversions
 operator|.
-name|toString
+name|convert
 argument_list|(
 name|values
 operator|.
@@ -193,6 +212,9 @@ argument_list|(
 name|index
 argument_list|)
 argument_list|)
+operator|.
+name|toString
+argument_list|()
 return|;
 block|}
 annotation|@

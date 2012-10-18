@@ -82,6 +82,22 @@ import|;
 end_import
 
 begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|value
+operator|.
+name|Conversions
+import|;
+end_import
+
+begin_import
 import|import static
 name|com
 operator|.
@@ -148,11 +164,16 @@ name|getBlob
 parameter_list|()
 block|{
 return|return
-name|getBinary
+name|Conversions
+operator|.
+name|convert
 argument_list|(
 name|getString
 argument_list|()
 argument_list|)
+operator|.
+name|toBinary
+argument_list|()
 return|;
 block|}
 comment|/**      * @return  {@code getLong(getString())}      */
@@ -162,11 +183,16 @@ name|getLong
 parameter_list|()
 block|{
 return|return
-name|getLong
+name|Conversions
+operator|.
+name|convert
 argument_list|(
 name|getString
 argument_list|()
 argument_list|)
+operator|.
+name|toLong
+argument_list|()
 return|;
 block|}
 comment|/**      * @return  {@code getDouble(getString())}      */
@@ -176,11 +202,16 @@ name|getDouble
 parameter_list|()
 block|{
 return|return
-name|getDouble
+name|Conversions
+operator|.
+name|convert
 argument_list|(
 name|getString
 argument_list|()
 argument_list|)
+operator|.
+name|toDouble
+argument_list|()
 return|;
 block|}
 comment|/**      * @return  {@code StringPropertyState.getBoolean(getString())}      */
@@ -190,11 +221,16 @@ name|getBoolean
 parameter_list|()
 block|{
 return|return
-name|getBoolean
+name|Conversions
+operator|.
+name|convert
 argument_list|(
 name|getString
 argument_list|()
 argument_list|)
+operator|.
+name|toBoolean
+argument_list|()
 return|;
 block|}
 comment|/**      * @return  {@code getDecimal(getString())}      */
@@ -204,11 +240,16 @@ name|getDecimal
 parameter_list|()
 block|{
 return|return
-name|getDecimal
+name|Conversions
+operator|.
+name|convert
 argument_list|(
 name|getString
 argument_list|()
 argument_list|)
+operator|.
+name|toDecimal
+argument_list|()
 return|;
 block|}
 comment|/**      * @return  {@code false}      */

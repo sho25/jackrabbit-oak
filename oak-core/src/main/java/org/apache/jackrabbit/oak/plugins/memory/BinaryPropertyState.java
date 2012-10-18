@@ -51,6 +51,22 @@ name|Type
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|value
+operator|.
+name|Conversions
+import|;
+end_import
+
 begin_class
 specifier|public
 class|class
@@ -92,9 +108,13 @@ name|String
 name|getString
 parameter_list|()
 block|{
-comment|// TODO find a better way to represent string values with Blobs
 return|return
+name|Conversions
+operator|.
+name|convert
+argument_list|(
 name|value
+argument_list|)
 operator|.
 name|toString
 argument_list|()
