@@ -84,6 +84,16 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
+specifier|public
+specifier|static
+specifier|final
+name|ConfigurationParameters
+name|EMPTY
+init|=
+operator|new
+name|ConfigurationParameters
+argument_list|()
+decl_stmt|;
 specifier|private
 specifier|final
 name|Map

@@ -93,6 +93,20 @@ end_import
 
 begin_import
 import|import
+name|javax
+operator|.
+name|security
+operator|.
+name|auth
+operator|.
+name|login
+operator|.
+name|Configuration
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -120,6 +134,22 @@ operator|.
 name|core
 operator|.
 name|MicroKernelImpl
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|security
+operator|.
+name|OakConfiguration
 import|;
 end_import
 
@@ -167,6 +197,16 @@ name|After
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Before
+import|;
+end_import
+
 begin_comment
 comment|/**  * Abstract base class for repository tests providing methods for accessing  * the repository, a session and nodes and properties from that session.  *  * Users of this class must call clear to close the session associated with  * this instance and clean up the repository when done.  */
 end_comment
@@ -195,6 +235,26 @@ name|adminSession
 init|=
 literal|null
 decl_stmt|;
+annotation|@
+name|Before
+specifier|public
+name|void
+name|before
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+comment|// TODO: OAK-17. workaround for missing test configuration
+name|Configuration
+operator|.
+name|setConfiguration
+argument_list|(
+operator|new
+name|OakConfiguration
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
 annotation|@
 name|After
 specifier|public
