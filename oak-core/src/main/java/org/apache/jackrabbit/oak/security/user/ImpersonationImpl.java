@@ -1063,10 +1063,8 @@ block|{
 if|if
 condition|(
 name|principal
-operator|==
+operator|instanceof
 name|AdminPrincipal
-operator|.
-name|INSTANCE
 condition|)
 block|{
 return|return

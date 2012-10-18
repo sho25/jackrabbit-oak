@@ -121,6 +121,24 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
+name|security
+operator|.
+name|principal
+operator|.
+name|AdminPrincipalImpl
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
 name|spi
 operator|.
 name|security
@@ -147,9 +165,7 @@ name|security
 operator|.
 name|user
 operator|.
-name|util
-operator|.
-name|PasswordUtility
+name|AuthorizableType
 import|;
 end_import
 
@@ -169,7 +185,9 @@ name|security
 operator|.
 name|user
 operator|.
-name|AuthorizableType
+name|util
+operator|.
+name|PasswordUtility
 import|;
 end_import
 
@@ -221,6 +239,11 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
+specifier|private
+specifier|final
+name|boolean
+name|isAdmin
+decl_stmt|;
 name|UserImpl
 parameter_list|(
 name|String
@@ -242,6 +265,18 @@ argument_list|,
 name|tree
 argument_list|,
 name|userManager
+argument_list|)
+expr_stmt|;
+name|isAdmin
+operator|=
+name|userManager
+operator|.
+name|getUserProvider
+argument_list|()
+operator|.
+name|isAdminUser
+argument_list|(
+name|tree
 argument_list|)
 expr_stmt|;
 block|}
@@ -323,6 +358,30 @@ argument_list|(
 name|userTree
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|isAdmin
+argument_list|()
+condition|)
+block|{
+return|return
+operator|new
+name|AdminPrincipalImpl
+argument_list|(
+name|principalName
+argument_list|,
+name|userTree
+argument_list|,
+name|getUserManager
+argument_list|()
+operator|.
+name|getNamePathMapper
+argument_list|()
+argument_list|)
+return|;
+block|}
+else|else
+block|{
 return|return
 operator|new
 name|TreeBasedPrincipal
@@ -339,6 +398,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
+block|}
 comment|//---------------------------------------------------------------< User>---
 comment|/**      * @see org.apache.jackrabbit.api.security.user.User#isAdmin()      */
 annotation|@
@@ -349,14 +409,7 @@ name|isAdmin
 parameter_list|()
 block|{
 return|return
-name|getUserProvider
-argument_list|()
-operator|.
-name|isAdminUser
-argument_list|(
-name|getTree
-argument_list|()
-argument_list|)
+name|isAdmin
 return|;
 block|}
 comment|/**      * Always throws {@code UnsupportedRepositoryOperationException}      *      * @see org.apache.jackrabbit.api.security.user.User#getCredentials()      */

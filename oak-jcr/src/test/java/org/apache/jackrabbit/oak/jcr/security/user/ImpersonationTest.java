@@ -551,9 +551,22 @@ block|{
 name|Principal
 name|adminPrincipal
 init|=
+operator|new
 name|AdminPrincipal
-operator|.
-name|INSTANCE
+argument_list|()
+block|{
+annotation|@
+name|Override
+specifier|public
+name|String
+name|getName
+parameter_list|()
+block|{
+return|return
+literal|"some-admin-name"
+return|;
+block|}
+block|}
 decl_stmt|;
 comment|// admin cannot be add/remove to set of impersonators of 'u' but is
 comment|// always allowed to impersonate that user.

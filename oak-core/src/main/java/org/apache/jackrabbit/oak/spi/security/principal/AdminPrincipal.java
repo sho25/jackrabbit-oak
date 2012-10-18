@@ -35,64 +35,14 @@ begin_comment
 comment|/**  * Principal used to mark an administrator. The aim of this principal  * is to simplify the check whether a given set of principals is supplied with  * special (admin) access permissions. It may be used as the single or as  * additional non-group principal.  */
 end_comment
 
-begin_class
+begin_interface
 specifier|public
-specifier|final
-class|class
+interface|interface
 name|AdminPrincipal
-implements|implements
+extends|extends
 name|Principal
-block|{
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|NAME
-init|=
-literal|"administrator"
-decl_stmt|;
-specifier|public
-specifier|static
-specifier|final
-name|Principal
-name|INSTANCE
-init|=
-operator|new
-name|AdminPrincipal
-argument_list|()
-decl_stmt|;
-specifier|private
-name|AdminPrincipal
-parameter_list|()
-block|{ }
-comment|//----------------------------------------------------------< Principal>---
-annotation|@
-name|Override
-specifier|public
-name|String
-name|getName
-parameter_list|()
-block|{
-return|return
-name|NAME
-return|;
-block|}
-comment|//-------------------------------------------------------------< Object>---
-annotation|@
-name|Override
-specifier|public
-name|String
-name|toString
-parameter_list|()
-block|{
-return|return
-name|NAME
-operator|+
-literal|" principal"
-return|;
-block|}
-block|}
-end_class
+block|{  }
+end_interface
 
 end_unit
 
