@@ -355,9 +355,11 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|security
+name|spi
 operator|.
-name|SecurityProviderImpl
+name|query
+operator|.
+name|PropertyValues
 import|;
 end_import
 
@@ -373,9 +375,9 @@ name|oak
 operator|.
 name|spi
 operator|.
-name|query
+name|security
 operator|.
-name|PropertyValues
+name|OpenSecurityProvider
 import|;
 end_import
 
@@ -749,7 +751,7 @@ parameter_list|()
 block|{
 return|return
 operator|new
-name|SecurityProviderImpl
+name|OpenSecurityProvider
 argument_list|()
 return|;
 block|}
