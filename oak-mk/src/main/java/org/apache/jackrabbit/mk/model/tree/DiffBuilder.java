@@ -414,7 +414,7 @@ name|buff
 operator|.
 name|tag
 argument_list|(
-literal|'+'
+literal|'^'
 argument_list|)
 operator|.
 name|key
@@ -929,7 +929,7 @@ name|buff
 operator|.
 name|tag
 argument_list|(
-literal|'+'
+literal|'^'
 argument_list|)
 operator|.
 name|key
