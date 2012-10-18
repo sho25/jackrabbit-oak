@@ -505,7 +505,7 @@ name|UserAuthentication
 argument_list|(
 name|userId
 argument_list|,
-name|getUserProvider
+name|getUserManager
 argument_list|()
 argument_list|,
 name|getPrincipalProvider

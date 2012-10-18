@@ -231,7 +231,7 @@ if|if
 condition|(
 name|UserUtility
 operator|.
-name|isAuthorizableTree
+name|isType
 argument_list|(
 name|tree
 argument_list|,
@@ -271,7 +271,7 @@ if|if
 condition|(
 name|UserUtility
 operator|.
-name|isAuthorizableTree
+name|isType
 argument_list|(
 name|tree
 argument_list|,

@@ -203,7 +203,7 @@ name|authorizableTree
 parameter_list|)
 block|{
 return|return
-name|isAuthorizableTree
+name|isType
 argument_list|(
 name|authorizableTree
 argument_list|,
@@ -216,7 +216,7 @@ block|}
 specifier|public
 specifier|static
 name|boolean
-name|isAuthorizableTree
+name|isType
 parameter_list|(
 name|Tree
 name|authorizableTree

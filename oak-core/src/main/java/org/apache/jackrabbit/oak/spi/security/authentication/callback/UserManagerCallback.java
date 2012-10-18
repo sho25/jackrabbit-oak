@@ -45,57 +45,55 @@ name|apache
 operator|.
 name|jackrabbit
 operator|.
-name|oak
-operator|.
-name|spi
+name|api
 operator|.
 name|security
 operator|.
 name|user
 operator|.
-name|UserProvider
+name|UserManager
 import|;
 end_import
 
 begin_comment
-comment|/**  * Callback implementation used to pass a {@link UserProvider} to the  * login module.  */
+comment|/**  * Callback implementation used to pass a {@link UserManager} to the  * login module.  */
 end_comment
 
 begin_class
 specifier|public
 class|class
-name|UserProviderCallback
+name|UserManagerCallback
 implements|implements
 name|Callback
 block|{
 specifier|private
-name|UserProvider
-name|userProvider
+name|UserManager
+name|userManager
 decl_stmt|;
-comment|/**      * Returns the user provider as set using      * {@link #setUserProvider(org.apache.jackrabbit.oak.spi.security.user.UserProvider)}      * or {@code null}.      *      * @return an instance of {@code UserProvider} or {@code null} if no      * provider has been set before.      */
+comment|/**      * Returns the user provider as set using      * {@link #setUserManager(org.apache.jackrabbit.api.security.user.UserManager)}      * or {@code null}.      *      * @return an instance of {@code UserManager} or {@code null} if no      * provider has been set before.      */
 specifier|public
-name|UserProvider
-name|getUserProvider
+name|UserManager
+name|getUserManager
 parameter_list|()
 block|{
 return|return
-name|userProvider
+name|userManager
 return|;
 block|}
-comment|/**      * Sets the {@code UserProvider} that is being used during the      * authentication process.      *      * @param userProvider The user provider to use during the      * authentication process.      */
+comment|/**      * Sets the {@code UserManager} that is being used during the      * authentication process.      *      * @param userManager The user provider to use during the      * authentication process.      */
 specifier|public
 name|void
-name|setUserProvider
+name|setUserManager
 parameter_list|(
-name|UserProvider
-name|userProvider
+name|UserManager
+name|userManager
 parameter_list|)
 block|{
 name|this
 operator|.
-name|userProvider
+name|userManager
 operator|=
-name|userProvider
+name|userManager
 expr_stmt|;
 block|}
 block|}

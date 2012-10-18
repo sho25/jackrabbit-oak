@@ -239,7 +239,7 @@ name|security
 operator|.
 name|user
 operator|.
-name|MembershipProvider
+name|AuthorizableType
 import|;
 end_import
 
@@ -259,7 +259,9 @@ name|security
 operator|.
 name|user
 operator|.
-name|AuthorizableType
+name|util
+operator|.
+name|UserUtility
 import|;
 end_import
 
@@ -353,10 +355,9 @@ operator|==
 literal|null
 operator|||
 operator|!
-name|getUserProvider
-argument_list|()
+name|UserUtility
 operator|.
-name|isAuthorizableType
+name|isType
 argument_list|(
 name|tree
 argument_list|,
@@ -408,9 +409,6 @@ return|return
 operator|new
 name|GroupPrincipal
 argument_list|(
-name|getUserProvider
-argument_list|()
-operator|.
 name|getPrincipalName
 argument_list|(
 name|groupTree

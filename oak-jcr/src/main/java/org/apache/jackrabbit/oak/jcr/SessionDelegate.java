@@ -1955,12 +1955,12 @@ argument_list|()
 operator|.
 name|getUserManager
 argument_list|(
-name|session
-argument_list|,
 name|root
 argument_list|,
 name|getNamePathMapper
 argument_list|()
+argument_list|,
+name|session
 argument_list|)
 expr_stmt|;
 block|}

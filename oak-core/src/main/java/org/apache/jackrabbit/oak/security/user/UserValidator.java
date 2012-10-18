@@ -424,7 +424,7 @@ if|if
 condition|(
 name|UserUtility
 operator|.
-name|isAuthorizableTree
+name|isType
 argument_list|(
 name|parentBefore
 operator|.
@@ -873,7 +873,7 @@ decl_stmt|;
 return|return
 name|UserUtility
 operator|.
-name|isAuthorizableTree
+name|isType
 argument_list|(
 name|userNode
 operator|.

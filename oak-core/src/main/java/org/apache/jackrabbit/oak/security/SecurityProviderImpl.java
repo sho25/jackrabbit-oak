@@ -710,6 +710,8 @@ operator|new
 name|UserConfigurationImpl
 argument_list|(
 name|options
+argument_list|,
+name|this
 argument_list|)
 return|;
 block|}
