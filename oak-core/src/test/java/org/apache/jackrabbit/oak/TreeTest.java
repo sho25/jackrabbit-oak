@@ -187,6 +187,22 @@ begin_import
 import|import static
 name|org
 operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|OakAssert
+operator|.
+name|assertSequence
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
 name|junit
 operator|.
 name|Assert
@@ -337,7 +353,7 @@ argument_list|(
 literal|null
 argument_list|)
 expr_stmt|;
-name|checkSequence
+name|assertSequence
 argument_list|(
 name|t
 operator|.
@@ -366,7 +382,7 @@ argument_list|(
 literal|"/"
 argument_list|)
 expr_stmt|;
-name|checkSequence
+name|assertSequence
 argument_list|(
 name|t
 operator|.
@@ -392,7 +408,7 @@ argument_list|(
 literal|"node2"
 argument_list|)
 expr_stmt|;
-name|checkSequence
+name|assertSequence
 argument_list|(
 name|t
 operator|.
@@ -420,7 +436,7 @@ argument_list|(
 literal|"/"
 argument_list|)
 expr_stmt|;
-name|checkSequence
+name|assertSequence
 argument_list|(
 name|t
 operator|.
@@ -446,7 +462,7 @@ argument_list|(
 literal|null
 argument_list|)
 expr_stmt|;
-name|checkSequence
+name|assertSequence
 argument_list|(
 name|t
 operator|.
@@ -474,7 +490,7 @@ argument_list|(
 literal|"/"
 argument_list|)
 expr_stmt|;
-name|checkSequence
+name|assertSequence
 argument_list|(
 name|t
 operator|.
@@ -653,7 +669,7 @@ argument_list|(
 literal|"/"
 argument_list|)
 expr_stmt|;
-name|checkSequence
+name|assertSequence
 argument_list|(
 name|t1
 operator|.

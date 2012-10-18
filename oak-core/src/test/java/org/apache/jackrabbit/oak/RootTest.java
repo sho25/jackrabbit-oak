@@ -16,6 +16,22 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|OakAssert
+operator|.
+name|assertSequence
+import|;
+end_import
+
+begin_import
 import|import
 name|org
 operator|.
@@ -305,7 +321,7 @@ argument_list|(
 literal|"c"
 argument_list|)
 expr_stmt|;
-name|checkSequence
+name|assertSequence
 argument_list|(
 name|c
 operator|.
@@ -433,7 +449,7 @@ argument_list|(
 literal|"c"
 argument_list|)
 expr_stmt|;
-name|checkSequence
+name|assertSequence
 argument_list|(
 name|c
 operator|.
