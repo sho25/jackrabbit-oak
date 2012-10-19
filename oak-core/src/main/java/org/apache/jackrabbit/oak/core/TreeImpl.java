@@ -561,6 +561,11 @@ name|String
 name|getName
 parameter_list|()
 block|{
+name|root
+operator|.
+name|checkLive
+argument_list|()
+expr_stmt|;
 return|return
 name|name
 return|;
@@ -572,6 +577,11 @@ name|boolean
 name|isRoot
 parameter_list|()
 block|{
+name|root
+operator|.
+name|checkLive
+argument_list|()
+expr_stmt|;
 return|return
 name|parent
 operator|==
@@ -585,6 +595,11 @@ name|String
 name|getPath
 parameter_list|()
 block|{
+name|root
+operator|.
+name|checkLive
+argument_list|()
+expr_stmt|;
 if|if
 condition|(
 name|isRoot
@@ -622,6 +637,11 @@ name|Tree
 name|getParent
 parameter_list|()
 block|{
+name|root
+operator|.
+name|checkLive
+argument_list|()
+expr_stmt|;
 if|if
 condition|(
 name|parent
@@ -655,6 +675,11 @@ name|String
 name|name
 parameter_list|)
 block|{
+name|root
+operator|.
+name|checkLive
+argument_list|()
+expr_stmt|;
 name|PropertyState
 name|property
 init|=
@@ -693,6 +718,11 @@ name|name
 parameter_list|)
 block|{
 comment|// TODO: see OAK-212
+name|root
+operator|.
+name|checkLive
+argument_list|()
+expr_stmt|;
 name|Status
 name|nodeStatus
 init|=
@@ -853,6 +883,11 @@ name|String
 name|name
 parameter_list|)
 block|{
+name|root
+operator|.
+name|checkLive
+argument_list|()
+expr_stmt|;
 return|return
 name|getProperty
 argument_list|(
@@ -869,6 +904,11 @@ name|long
 name|getPropertyCount
 parameter_list|()
 block|{
+name|root
+operator|.
+name|checkLive
+argument_list|()
+expr_stmt|;
 return|return
 name|Iterables
 operator|.
@@ -891,6 +931,11 @@ argument_list|>
 name|getProperties
 parameter_list|()
 block|{
+name|root
+operator|.
+name|checkLive
+argument_list|()
+expr_stmt|;
 return|return
 name|Iterables
 operator|.
@@ -940,6 +985,11 @@ name|String
 name|name
 parameter_list|)
 block|{
+name|root
+operator|.
+name|checkLive
+argument_list|()
+expr_stmt|;
 name|TreeImpl
 name|child
 init|=
@@ -978,6 +1028,11 @@ name|Status
 name|getStatus
 parameter_list|()
 block|{
+name|root
+operator|.
+name|checkLive
+argument_list|()
+expr_stmt|;
 if|if
 condition|(
 name|isRemoved
@@ -1052,6 +1107,11 @@ name|String
 name|name
 parameter_list|)
 block|{
+name|root
+operator|.
+name|checkLive
+argument_list|()
+expr_stmt|;
 return|return
 name|getChild
 argument_list|(
@@ -1069,6 +1129,11 @@ name|getChildrenCount
 parameter_list|()
 block|{
 comment|// TODO: make sure cnt respects access control
+name|root
+operator|.
+name|checkLive
+argument_list|()
+expr_stmt|;
 return|return
 name|getNodeBuilder
 argument_list|()
@@ -1087,6 +1152,11 @@ argument_list|>
 name|getChildren
 parameter_list|()
 block|{
+name|root
+operator|.
+name|checkLive
+argument_list|()
+expr_stmt|;
 name|Iterable
 argument_list|<
 name|String
@@ -1236,6 +1306,11 @@ name|String
 name|name
 parameter_list|)
 block|{
+name|root
+operator|.
+name|checkLive
+argument_list|()
+expr_stmt|;
 if|if
 condition|(
 operator|!
@@ -1320,6 +1395,11 @@ name|boolean
 name|remove
 parameter_list|()
 block|{
+name|root
+operator|.
+name|checkLive
+argument_list|()
+expr_stmt|;
 if|if
 condition|(
 name|isRemoved
@@ -1443,6 +1523,11 @@ name|String
 name|name
 parameter_list|)
 block|{
+name|root
+operator|.
+name|checkLive
+argument_list|()
+expr_stmt|;
 if|if
 condition|(
 name|isRoot
@@ -1682,6 +1767,11 @@ name|PropertyState
 name|property
 parameter_list|)
 block|{
+name|root
+operator|.
+name|checkLive
+argument_list|()
+expr_stmt|;
 name|NodeBuilder
 name|builder
 init|=
@@ -1717,6 +1807,11 @@ name|T
 name|value
 parameter_list|)
 block|{
+name|root
+operator|.
+name|checkLive
+argument_list|()
+expr_stmt|;
 name|NodeBuilder
 name|builder
 init|=
@@ -1760,6 +1855,11 @@ argument_list|>
 name|type
 parameter_list|)
 block|{
+name|root
+operator|.
+name|checkLive
+argument_list|()
+expr_stmt|;
 name|NodeBuilder
 name|builder
 init|=
@@ -1793,6 +1893,11 @@ name|String
 name|name
 parameter_list|)
 block|{
+name|root
+operator|.
+name|checkLive
+argument_list|()
+expr_stmt|;
 name|NodeBuilder
 name|builder
 init|=
@@ -1819,6 +1924,11 @@ name|TreeLocation
 name|getLocation
 parameter_list|()
 block|{
+name|root
+operator|.
+name|checkLive
+argument_list|()
+expr_stmt|;
 return|return
 operator|new
 name|NodeLocation
@@ -2263,7 +2373,7 @@ name|property
 argument_list|)
 return|;
 block|}
-comment|/**      * @return<code>true</code> if this tree has orderable children;      *<code>false</code> otherwise.      */
+comment|/**      * @return {@code true} if this tree has orderable children;      *         {@code false} otherwise.      */
 specifier|private
 name|boolean
 name|hasOrderableChildren
@@ -2317,6 +2427,7 @@ name|String
 argument_list|>
 argument_list|()
 block|{
+specifier|final
 name|PropertyState
 name|childOrder
 init|=

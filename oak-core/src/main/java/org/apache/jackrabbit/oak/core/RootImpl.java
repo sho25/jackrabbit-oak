@@ -684,6 +684,11 @@ return|return
 name|conflictHandler
 return|;
 block|}
+specifier|protected
+name|void
+name|checkLive
+parameter_list|()
+block|{      }
 comment|//---------------------------------------------------------------< Root>---
 annotation|@
 name|Override
@@ -698,6 +703,9 @@ name|String
 name|destPath
 parameter_list|)
 block|{
+name|checkLive
+argument_list|()
+expr_stmt|;
 name|TreeImpl
 name|source
 init|=
@@ -801,6 +809,9 @@ name|String
 name|destPath
 parameter_list|)
 block|{
+name|checkLive
+argument_list|()
+expr_stmt|;
 name|purgePendingChanges
 argument_list|()
 expr_stmt|;
@@ -825,6 +836,9 @@ name|String
 name|path
 parameter_list|)
 block|{
+name|checkLive
+argument_list|()
+expr_stmt|;
 return|return
 name|rootTree
 operator|.
@@ -844,6 +858,9 @@ name|String
 name|path
 parameter_list|)
 block|{
+name|checkLive
+argument_list|()
+expr_stmt|;
 name|checkArgument
 argument_list|(
 name|path
@@ -878,6 +895,9 @@ name|void
 name|rebase
 parameter_list|()
 block|{
+name|checkLive
+argument_list|()
+expr_stmt|;
 if|if
 condition|(
 operator|!
@@ -941,6 +961,9 @@ name|void
 name|refresh
 parameter_list|()
 block|{
+name|checkLive
+argument_list|()
+expr_stmt|;
 name|branch
 operator|=
 name|store
@@ -967,6 +990,9 @@ parameter_list|()
 throws|throws
 name|CommitFailedException
 block|{
+name|checkLive
+argument_list|()
+expr_stmt|;
 name|rebase
 argument_list|()
 expr_stmt|;
@@ -1146,6 +1172,9 @@ name|boolean
 name|hasPendingChanges
 parameter_list|()
 block|{
+name|checkLive
+argument_list|()
+expr_stmt|;
 return|return
 operator|!
 name|getBaseState
@@ -1167,6 +1196,9 @@ name|ChangeExtractor
 name|getChangeExtractor
 parameter_list|()
 block|{
+name|checkLive
+argument_list|()
+expr_stmt|;
 return|return
 operator|new
 name|ChangeExtractor
@@ -1223,6 +1255,9 @@ name|SessionQueryEngine
 name|getQueryEngine
 parameter_list|()
 block|{
+name|checkLive
+argument_list|()
+expr_stmt|;
 return|return
 operator|new
 name|SessionQueryEngineImpl

@@ -249,6 +249,22 @@ name|LoggerFactory
 import|;
 end_import
 
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkState
+import|;
+end_import
+
 begin_comment
 comment|/**  * {@code MicroKernel}-based implementation of the {@link ContentSession} interface.  */
 end_comment
@@ -303,6 +319,13 @@ specifier|private
 specifier|final
 name|QueryIndexProvider
 name|indexProvider
+decl_stmt|;
+specifier|private
+specifier|volatile
+name|boolean
+name|live
+init|=
+literal|true
 decl_stmt|;
 specifier|public
 name|ContentSessionImpl
@@ -363,6 +386,19 @@ operator|=
 name|indexProvider
 expr_stmt|;
 block|}
+specifier|private
+name|void
+name|checkLive
+parameter_list|()
+block|{
+name|checkState
+argument_list|(
+name|live
+argument_list|,
+literal|"This session has been closed"
+argument_list|)
+expr_stmt|;
+block|}
 comment|//-----------------------------------------------------< ContentSession>---
 annotation|@
 name|Nonnull
@@ -373,6 +409,9 @@ name|AuthInfo
 name|getAuthInfo
 parameter_list|()
 block|{
+name|checkLive
+argument_list|()
+expr_stmt|;
 name|Set
 argument_list|<
 name|AuthInfo
@@ -438,6 +477,9 @@ name|Root
 name|getLatestRoot
 parameter_list|()
 block|{
+name|checkLive
+argument_list|()
+expr_stmt|;
 name|RootImpl
 name|root
 init|=
@@ -457,6 +499,23 @@ name|accProvider
 argument_list|,
 name|indexProvider
 argument_list|)
+block|{
+annotation|@
+name|Override
+specifier|protected
+name|void
+name|checkLive
+parameter_list|()
+block|{
+name|ContentSessionImpl
+operator|.
+name|this
+operator|.
+name|checkLive
+argument_list|()
+expr_stmt|;
+block|}
+block|}
 decl_stmt|;
 if|if
 condition|(
@@ -489,6 +548,9 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+name|checkLive
+argument_list|()
+expr_stmt|;
 return|return
 name|store
 operator|.
@@ -515,6 +577,10 @@ name|loginContext
 operator|.
 name|logout
 argument_list|()
+expr_stmt|;
+name|live
+operator|=
+literal|false
 expr_stmt|;
 block|}
 catch|catch
