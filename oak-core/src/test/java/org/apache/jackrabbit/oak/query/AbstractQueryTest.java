@@ -179,7 +179,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|AbstractOakTest
+name|api
+operator|.
+name|ContentRepository
 import|;
 end_import
 
@@ -474,8 +476,6 @@ specifier|public
 specifier|abstract
 class|class
 name|AbstractQueryTest
-extends|extends
-name|AbstractOakTest
 implements|implements
 name|IndexConstants
 block|{
@@ -516,8 +516,6 @@ name|Root
 name|root
 decl_stmt|;
 annotation|@
-name|Override
-annotation|@
 name|Before
 specifier|public
 name|void
@@ -526,15 +524,17 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|super
-operator|.
-name|before
-argument_list|()
-expr_stmt|;
 name|session
 operator|=
-name|createAdminSession
+name|createRepository
 argument_list|()
+operator|.
+name|login
+argument_list|(
+literal|null
+argument_list|,
+literal|null
+argument_list|)
 expr_stmt|;
 name|root
 operator|=
@@ -554,6 +554,12 @@ name|createTestIndexNode
 argument_list|()
 expr_stmt|;
 block|}
+specifier|protected
+specifier|abstract
+name|ContentRepository
+name|createRepository
+parameter_list|()
+function_decl|;
 comment|/**      * Override this method to add your default index definition      *       * {@link #createTestIndexNode(Tree, String)} for a helper method      */
 specifier|protected
 name|void
