@@ -531,7 +531,17 @@ name|emptyProperty
 argument_list|(
 name|name
 argument_list|,
+name|Type
+operator|.
+name|fromTag
+argument_list|(
 name|type
+operator|.
+name|tag
+argument_list|()
+argument_list|,
+literal|true
+argument_list|)
 argument_list|)
 return|;
 block|}
