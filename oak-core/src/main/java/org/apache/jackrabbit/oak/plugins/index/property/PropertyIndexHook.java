@@ -135,6 +135,10 @@ name|Maps
 import|;
 end_import
 
+begin_comment
+comment|/**  * {@link CommitHook} implementation that is responsible for keeping the  * {@link PropertyIndex} up to date  *   * @see PropertyIndex  * @see PropertyIndexLookup  *   */
+end_comment
+
 begin_class
 specifier|public
 class|class

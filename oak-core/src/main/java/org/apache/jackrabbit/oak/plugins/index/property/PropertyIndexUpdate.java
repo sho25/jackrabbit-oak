@@ -219,6 +219,10 @@ name|NodeBuilder
 import|;
 end_import
 
+begin_comment
+comment|/**  * Takes care of applying the updates to the index content.  *   */
+end_comment
+
 begin_class
 class|class
 name|PropertyIndexUpdate

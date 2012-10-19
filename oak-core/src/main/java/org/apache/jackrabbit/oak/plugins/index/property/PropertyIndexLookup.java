@@ -22,6 +22,26 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|index
+operator|.
+name|IndexConstants
+operator|.
+name|INDEX_DEFINITIONS_NAME
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -147,6 +167,10 @@ name|Sets
 import|;
 end_import
 
+begin_comment
+comment|/**  * Is responsible for querying the property index content.  *   *<p>  * This class can be used directly on a subtree where there is an index defined  * by supplying a {@link NodeState} root.  *</p>  *   *<pre>  *<code>  * {  *     NodeState state = ... // get a node state  *     PropertyIndexLookup lookup = new PropertyIndexLookup(state);  *     Set<String> hits = lookup.find("foo", "xyz");  * }  *</code>  *</pre>  */
+end_comment
+
 begin_class
 specifier|public
 class|class
@@ -190,7 +214,7 @@ name|root
 operator|.
 name|getChildNode
 argument_list|(
-literal|"oak:index"
+name|INDEX_DEFINITIONS_NAME
 argument_list|)
 decl_stmt|;
 if|if
@@ -365,7 +389,7 @@ name|root
 operator|.
 name|getChildNode
 argument_list|(
-literal|"oak:index"
+name|INDEX_DEFINITIONS_NAME
 argument_list|)
 decl_stmt|;
 if|if
