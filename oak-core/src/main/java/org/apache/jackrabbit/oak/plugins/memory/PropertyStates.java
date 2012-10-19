@@ -1976,6 +1976,33 @@ argument_list|)
 argument_list|)
 return|;
 block|}
+comment|/**      * Create a {@code PropertyState} from an array of bytes.      * @param name  The name of the property state      * @param value  The value of the property state      * @return  The new property state of type {@link Type#BINARY}      */
+specifier|public
+specifier|static
+name|PropertyState
+name|binaryProperty
+parameter_list|(
+name|String
+name|name
+parameter_list|,
+name|String
+name|value
+parameter_list|)
+block|{
+return|return
+operator|new
+name|BinaryPropertyState
+argument_list|(
+name|name
+argument_list|,
+operator|new
+name|StringBasedBlob
+argument_list|(
+name|value
+argument_list|)
+argument_list|)
+return|;
+block|}
 comment|/**      * Create a {@code PropertyState} from a {@link Blob}.      * @param name  The name of the property state      * @param value  The value of the property state      * @return  The new property state of type {@link Type#BINARY}      */
 specifier|public
 specifier|static

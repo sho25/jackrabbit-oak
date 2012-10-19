@@ -253,9 +253,13 @@ name|apache
 operator|.
 name|jackrabbit
 operator|.
-name|util
+name|oak
 operator|.
-name|ISO8601
+name|plugins
+operator|.
+name|value
+operator|.
+name|Conversions
 import|;
 end_import
 
@@ -1152,12 +1156,15 @@ name|setProperty
 argument_list|(
 name|name
 argument_list|,
-name|ISO8601
+name|Conversions
 operator|.
-name|format
+name|convert
 argument_list|(
 name|cal
 argument_list|)
+operator|.
+name|toDate
+argument_list|()
 argument_list|,
 name|DATE
 argument_list|)
