@@ -71,21 +71,7 @@ begin_class
 specifier|public
 class|class
 name|TokenProviderImplTest
-extends|extends
-name|AbstractSecurityTest
 block|{
-annotation|@
-name|Override
-specifier|protected
-name|ContentRepository
-name|createRepository
-parameter_list|()
-block|{
-comment|// TODO
-return|return
-literal|null
-return|;
-block|}
 annotation|@
 name|Test
 specifier|public
