@@ -412,9 +412,7 @@ name|String
 name|principalName
 init|=
 name|getPrincipalName
-argument_list|(
-name|userTree
-argument_list|)
+argument_list|()
 decl_stmt|;
 if|if
 condition|(
