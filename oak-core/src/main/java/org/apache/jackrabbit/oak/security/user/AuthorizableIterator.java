@@ -345,6 +345,7 @@ name|size
 argument_list|)
 return|;
 block|}
+specifier|private
 name|AuthorizableIterator
 parameter_list|(
 name|Iterator

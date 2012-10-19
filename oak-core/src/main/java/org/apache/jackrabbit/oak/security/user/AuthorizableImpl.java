@@ -381,7 +381,6 @@ name|AuthorizableImpl
 return|;
 block|}
 comment|//-------------------------------------------------------< Authorizable>---
-comment|/**      * @see org.apache.jackrabbit.api.security.user.Authorizable#getID()      */
 annotation|@
 name|Override
 specifier|public
@@ -393,7 +392,6 @@ return|return
 name|id
 return|;
 block|}
-comment|/**      * @see Authorizable#declaredMemberOf()      */
 annotation|@
 name|Override
 specifier|public
@@ -413,7 +411,6 @@ literal|false
 argument_list|)
 return|;
 block|}
-comment|/**      * @see Authorizable#memberOf()      */
 annotation|@
 name|Override
 specifier|public
@@ -433,7 +430,6 @@ literal|true
 argument_list|)
 return|;
 block|}
-comment|/**      * @see org.apache.jackrabbit.api.security.user.Authorizable#remove()      */
 annotation|@
 name|Override
 specifier|public
@@ -484,7 +480,6 @@ name|remove
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * @see org.apache.jackrabbit.api.security.user.Authorizable#getPropertyNames()      */
 annotation|@
 name|Override
 specifier|public
@@ -504,7 +499,6 @@ literal|"."
 argument_list|)
 return|;
 block|}
-comment|/**      * @see Authorizable#getPropertyNames(String)      */
 annotation|@
 name|Override
 specifier|public
@@ -530,7 +524,6 @@ name|relPath
 argument_list|)
 return|;
 block|}
-comment|/**      * @see org.apache.jackrabbit.api.security.user.Authorizable#hasProperty(String)      */
 annotation|@
 name|Override
 specifier|public
@@ -553,7 +546,6 @@ name|relPath
 argument_list|)
 return|;
 block|}
-comment|/**      * @see org.apache.jackrabbit.api.security.user.Authorizable#getProperty(String)      */
 annotation|@
 name|Override
 specifier|public
@@ -577,7 +569,6 @@ name|relPath
 argument_list|)
 return|;
 block|}
-comment|/**      * @see org.apache.jackrabbit.api.security.user.Authorizable#setProperty(String, javax.jcr.Value)      */
 annotation|@
 name|Override
 specifier|public
@@ -604,7 +595,6 @@ name|value
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * @see org.apache.jackrabbit.api.security.user.Authorizable#setProperty(String, javax.jcr.Value[])      */
 annotation|@
 name|Override
 specifier|public
@@ -632,7 +622,6 @@ name|values
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * @see org.apache.jackrabbit.api.security.user.Authorizable#removeProperty(String)      */
 annotation|@
 name|Override
 specifier|public
@@ -655,7 +644,6 @@ name|relPath
 argument_list|)
 return|;
 block|}
-comment|/**      * @see org.apache.jackrabbit.api.security.user.Authorizable#getPath()      */
 annotation|@
 name|Override
 specifier|public
@@ -705,7 +693,6 @@ return|;
 block|}
 block|}
 comment|//-------------------------------------------------------------< Object>---
-comment|/**      * @see Object#hashCode()      */
 annotation|@
 name|Override
 specifier|public
@@ -775,7 +762,6 @@ return|return
 name|hashCode
 return|;
 block|}
-comment|/**      * @see Object#equals(Object)      */
 annotation|@
 name|Override
 specifier|public
@@ -836,7 +822,6 @@ return|return
 literal|false
 return|;
 block|}
-comment|/**      * @see Object#toString()      */
 annotation|@
 name|Override
 specifier|public
@@ -887,36 +872,17 @@ name|Tree
 name|getTree
 parameter_list|()
 block|{
-name|Tree
-name|tree
-init|=
-name|getUserProvider
-argument_list|()
+return|return
+name|userManager
 operator|.
-name|getAuthorizable
+name|getAuthorizableTree
 argument_list|(
 name|id
 argument_list|)
-decl_stmt|;
-if|if
-condition|(
-name|tree
-operator|==
-literal|null
-condition|)
-block|{
-throw|throw
-operator|new
-name|IllegalStateException
-argument_list|(
-literal|"Authorizable not associated with an existing tree"
-argument_list|)
-throw|;
-block|}
-return|return
-name|tree
 return|;
 block|}
+annotation|@
+name|Nonnull
 name|String
 name|getPrincipalName
 parameter_list|(
@@ -926,9 +892,6 @@ parameter_list|)
 throws|throws
 name|RepositoryException
 block|{
-name|String
-name|principalName
-decl_stmt|;
 if|if
 condition|(
 name|thisTree
@@ -978,6 +941,8 @@ argument_list|)
 throw|;
 block|}
 block|}
+annotation|@
+name|CheckForNull
 name|String
 name|getJcrName
 parameter_list|(
@@ -1006,20 +971,6 @@ parameter_list|()
 block|{
 return|return
 name|userManager
-return|;
-block|}
-comment|/**      * @return The user provider associated with this authorizable      */
-annotation|@
-name|Nonnull
-name|UserProvider
-name|getUserProvider
-parameter_list|()
-block|{
-return|return
-name|userManager
-operator|.
-name|getUserProvider
-argument_list|()
 return|;
 block|}
 comment|/**      * @return The membership provider associated with this authorizable      */

@@ -97,8 +97,24 @@ name|User
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|api
+operator|.
+name|Root
+import|;
+end_import
+
 begin_comment
-comment|/**  * The {@code AuthorizableAction} interface provide an implementation  * specific way to execute additional validation or write tasks upon  *  *<ul>  *<li>{@link #onCreate(org.apache.jackrabbit.api.security.user.User, String, javax.jcr.Session) User creation},</li>  *<li>{@link #onCreate(org.apache.jackrabbit.api.security.user.Group, javax.jcr.Session) Group creation},</li>  *<li>{@link #onRemove(org.apache.jackrabbit.api.security.user.Authorizable, javax.jcr.Session) Authorizable removal} and</li>  *<li>{@link #onPasswordChange(org.apache.jackrabbit.api.security.user.User, String, javax.jcr.Session) User password modification}.</li>  *</ul>  *  * @see org.apache.jackrabbit.oak.spi.security.ConfigurationParameters  */
+comment|/**  * The {@code AuthorizableAction} interface provide an implementation  * specific way to execute additional validation or write tasks upon  *  *<ul>  *<li>{@link #onCreate User creation},</li>  *<li>{@link #onCreate Group creation},</li>  *<li>{@link #onRemove Authorizable removal} and</li>  *<li>{@link #onPasswordChange User password modification}.</li>  *</ul>  *  * @see org.apache.jackrabbit.oak.spi.security.ConfigurationParameters  */
 end_comment
 
 begin_interface
@@ -106,6 +122,7 @@ specifier|public
 interface|interface
 name|AuthorizableAction
 block|{
+comment|// TODO: review (rather split into OAK and JCR level interface?)
 comment|/**      * Allows to add application specific modifications or validation associated      * with the creation of a new group. Note, that this method is called      *<strong>before</strong> any {@code Session.save} call.      *      * @param group The new group that has not yet been persisted;      * e.g. the associated node is still 'NEW'.      * @param session The editing session associated with the user manager.      * @throws javax.jcr.RepositoryException If an error occurs.      */
 name|void
 name|onCreate
@@ -115,6 +132,19 @@ name|group
 parameter_list|,
 name|Session
 name|session
+parameter_list|)
+throws|throws
+name|RepositoryException
+function_decl|;
+comment|/**      * Allows to add application specific modifications or validation associated      * with the creation of a new group. Note, that this method is called      *<strong>before</strong> any {@code Session.save} call.      *      * @param group The new group that has not yet been persisted;      * e.g. the associated node is still 'NEW'.      * @param root The root associated with the user manager.      * @throws javax.jcr.RepositoryException If an error occurs.      */
+name|void
+name|onCreate
+parameter_list|(
+name|Group
+name|group
+parameter_list|,
+name|Root
+name|root
 parameter_list|)
 throws|throws
 name|RepositoryException
@@ -135,6 +165,22 @@ parameter_list|)
 throws|throws
 name|RepositoryException
 function_decl|;
+comment|/**      * Allows to add application specific modifications or validation associated      * with the creation of a new user. Note, that this method is called      *<strong>before</strong> any {@code Session.save} call.      *      * @param user The new user that has not yet been persisted;      * e.g. the associated node is still 'NEW'.      * @param password The password that was specified upon user creation.      * @param root The root associated with the user manager.      * @throws RepositoryException If an error occurs.      */
+name|void
+name|onCreate
+parameter_list|(
+name|User
+name|user
+parameter_list|,
+name|String
+name|password
+parameter_list|,
+name|Root
+name|root
+parameter_list|)
+throws|throws
+name|RepositoryException
+function_decl|;
 comment|/**      * Allows to add application specific behavior associated with the removal      * of an authorizable. Note, that this method is called<strong>before</strong>      * {@link org.apache.jackrabbit.api.security.user.Authorizable#remove} is executed (and persisted); thus the      * target authorizable still exists.      *      * @param authorizable The authorizable to be removed.      * @param session The editing session associated with the user manager.      * @throws RepositoryException If an error occurs.      */
 name|void
 name|onRemove
@@ -144,6 +190,19 @@ name|authorizable
 parameter_list|,
 name|Session
 name|session
+parameter_list|)
+throws|throws
+name|RepositoryException
+function_decl|;
+comment|/**      * Allows to add application specific behavior associated with the removal      * of an authorizable. Note, that this method is called<strong>before</strong>      * {@link org.apache.jackrabbit.api.security.user.Authorizable#remove} is executed (and persisted); thus the      * target authorizable still exists.      *      * @param authorizable The authorizable to be removed.      * @param root The root associated with the user manager.      * @throws RepositoryException If an error occurs.      */
+name|void
+name|onRemove
+parameter_list|(
+name|Authorizable
+name|authorizable
+parameter_list|,
+name|Root
+name|root
 parameter_list|)
 throws|throws
 name|RepositoryException
@@ -160,6 +219,22 @@ name|newPassword
 parameter_list|,
 name|Session
 name|session
+parameter_list|)
+throws|throws
+name|RepositoryException
+function_decl|;
+comment|/**      * Allows to add application specific action or validation associated with      * changing a user password. Note, that this method is called<strong>before</strong>      * the password property is being modified in the content.      *      * @param user The user that whose password is going to change.      * @param newPassword The new password as specified in {@link User#changePassword}      * @param root The root associated with the user manager.      * @throws RepositoryException If an exception or error occurs.      */
+name|void
+name|onPasswordChange
+parameter_list|(
+name|User
+name|user
+parameter_list|,
+name|String
+name|newPassword
+parameter_list|,
+name|Root
+name|root
 parameter_list|)
 throws|throws
 name|RepositoryException

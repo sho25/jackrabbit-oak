@@ -54,7 +54,6 @@ comment|/**  * AuthorizableProperty... TODO  */
 end_comment
 
 begin_interface
-specifier|public
 interface|interface
 name|AuthorizableProperties
 block|{

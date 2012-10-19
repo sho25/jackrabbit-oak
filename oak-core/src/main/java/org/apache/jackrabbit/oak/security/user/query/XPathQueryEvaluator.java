@@ -322,7 +322,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This evaluator for {@link org.apache.jackrabbit.api.security.user.Query}s use XPath  * and some minimal client side filtering.  */
+comment|/**  * This evaluator for {@link org.apache.jackrabbit.api.security.user.Query}s use XPath  * and some minimal client side filtering.  *  * FIXME: replace usage of jcr-query manager by oak-api SessionQueryEngine.  */
 end_comment
 
 begin_class

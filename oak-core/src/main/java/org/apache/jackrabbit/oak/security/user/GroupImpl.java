@@ -337,6 +337,7 @@ name|userManager
 argument_list|)
 expr_stmt|;
 block|}
+comment|//---------------------------------------------------< AuthorizableImpl>---
 annotation|@
 name|Override
 name|void
@@ -377,7 +378,6 @@ throw|;
 block|}
 block|}
 comment|//-------------------------------------------------------< Authorizable>---
-comment|/**      * @see org.apache.jackrabbit.api.security.user.Authorizable#isGroup()      */
 annotation|@
 name|Override
 specifier|public
@@ -389,7 +389,6 @@ return|return
 literal|true
 return|;
 block|}
-comment|/**      * @see org.apache.jackrabbit.api.security.user.Authorizable#getPrincipal()      */
 annotation|@
 name|Override
 specifier|public
@@ -419,7 +418,6 @@ argument_list|)
 return|;
 block|}
 comment|//--------------------------------------------------------------< Group>---
-comment|/**      * @see org.apache.jackrabbit.api.security.user.Group#getDeclaredMembers()      */
 annotation|@
 name|Override
 specifier|public
@@ -439,7 +437,6 @@ literal|false
 argument_list|)
 return|;
 block|}
-comment|/**      * @see org.apache.jackrabbit.api.security.user.Group#getMembers()      */
 annotation|@
 name|Override
 specifier|public
@@ -459,7 +456,6 @@ literal|true
 argument_list|)
 return|;
 block|}
-comment|/**      * @see org.apache.jackrabbit.api.security.user.Group#isDeclaredMember(org.apache.jackrabbit.api.security.user.Authorizable)      */
 annotation|@
 name|Override
 specifier|public
@@ -481,7 +477,6 @@ literal|false
 argument_list|)
 return|;
 block|}
-comment|/**      * @see org.apache.jackrabbit.api.security.user.Group#isMember(org.apache.jackrabbit.api.security.user.Authorizable)      */
 annotation|@
 name|Override
 specifier|public
@@ -503,7 +498,6 @@ literal|true
 argument_list|)
 return|;
 block|}
-comment|/**      * @see org.apache.jackrabbit.api.security.user.Group#addMember(org.apache.jackrabbit.api.security.user.Authorizable)      */
 annotation|@
 name|Override
 specifier|public
@@ -678,7 +672,6 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-comment|/**      * @see org.apache.jackrabbit.api.security.user.Group#removeMember(org.apache.jackrabbit.api.security.user.Authorizable)      */
 annotation|@
 name|Override
 specifier|public

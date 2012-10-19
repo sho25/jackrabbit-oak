@@ -97,6 +97,22 @@ name|User
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|api
+operator|.
+name|Root
+import|;
+end_import
+
 begin_comment
 comment|/**  * Abstract implementation of the {@code AuthorizableAction} interface that  * doesn't perform any action. This is a convenience implementation allowing  * subclasses to only implement methods that need extra attention.  */
 end_comment
@@ -110,6 +126,8 @@ implements|implements
 name|AuthorizableAction
 block|{
 comment|/**      * Doesn't perform any action.      *      * @see AuthorizableAction#onCreate(org.apache.jackrabbit.api.security.user.Group, javax.jcr.Session)      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onCreate
@@ -125,7 +143,27 @@ name|RepositoryException
 block|{
 comment|// nothing to do
 block|}
+comment|/**      * Doesn't perform any action.      *      * @see AuthorizableAction#onCreate(org.apache.jackrabbit.api.security.user.Group, Root)      */
+annotation|@
+name|Override
+specifier|public
+name|void
+name|onCreate
+parameter_list|(
+name|Group
+name|group
+parameter_list|,
+name|Root
+name|root
+parameter_list|)
+throws|throws
+name|RepositoryException
+block|{
+comment|// nothing to do
+block|}
 comment|/**      * Doesn't perform any action.      *      * @see AuthorizableAction#onCreate(org.apache.jackrabbit.api.security.user.User, String, javax.jcr.Session)      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onCreate
@@ -144,7 +182,30 @@ name|RepositoryException
 block|{
 comment|// nothing to do
 block|}
+comment|/**      * Doesn't perform any action.      *      * @see AuthorizableAction#onCreate(org.apache.jackrabbit.api.security.user.User, String, Root)      */
+annotation|@
+name|Override
+specifier|public
+name|void
+name|onCreate
+parameter_list|(
+name|User
+name|user
+parameter_list|,
+name|String
+name|password
+parameter_list|,
+name|Root
+name|root
+parameter_list|)
+throws|throws
+name|RepositoryException
+block|{
+comment|// nothing to do
+block|}
 comment|/**      * Doesn't perform any action.      *      * @see AuthorizableAction#onRemove(org.apache.jackrabbit.api.security.user.Authorizable, javax.jcr.Session)      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onRemove
@@ -160,7 +221,27 @@ name|RepositoryException
 block|{
 comment|// nothing to do
 block|}
+comment|/**      * Doesn't perform any action.      *      * @see AuthorizableAction#onRemove(org.apache.jackrabbit.api.security.user.Authorizable, Root)      */
+annotation|@
+name|Override
+specifier|public
+name|void
+name|onRemove
+parameter_list|(
+name|Authorizable
+name|authorizable
+parameter_list|,
+name|Root
+name|root
+parameter_list|)
+throws|throws
+name|RepositoryException
+block|{
+comment|// nothing to do
+block|}
 comment|/**      * Doesn't perform any action.      *      * @see AuthorizableAction#onPasswordChange(org.apache.jackrabbit.api.security.user.User, String, javax.jcr.Session)      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onPasswordChange
@@ -173,6 +254,27 @@ name|newPassword
 parameter_list|,
 name|Session
 name|session
+parameter_list|)
+throws|throws
+name|RepositoryException
+block|{
+comment|// nothing to do
+block|}
+comment|/**      * Doesn't perform any action.      *      * @see AuthorizableAction#onPasswordChange(org.apache.jackrabbit.api.security.user.User, String, Root)      */
+annotation|@
+name|Override
+specifier|public
+name|void
+name|onPasswordChange
+parameter_list|(
+name|User
+name|user
+parameter_list|,
+name|String
+name|newPassword
+parameter_list|,
+name|Root
+name|root
 parameter_list|)
 throws|throws
 name|RepositoryException

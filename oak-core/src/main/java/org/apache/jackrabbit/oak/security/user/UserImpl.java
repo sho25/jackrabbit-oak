@@ -266,26 +266,6 @@ import|;
 end_import
 
 begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
-begin_import
 import|import static
 name|org
 operator|.
@@ -315,22 +295,6 @@ name|AuthorizableImpl
 implements|implements
 name|User
 block|{
-comment|/**      * logger instance      */
-specifier|private
-specifier|static
-specifier|final
-name|Logger
-name|log
-init|=
-name|LoggerFactory
-operator|.
-name|getLogger
-argument_list|(
-name|UserImpl
-operator|.
-name|class
-argument_list|)
-decl_stmt|;
 specifier|private
 specifier|final
 name|boolean
@@ -377,6 +341,9 @@ name|id
 argument_list|)
 expr_stmt|;
 block|}
+comment|//---------------------------------------------------< AuthorizableImpl>---
+annotation|@
+name|Override
 name|void
 name|checkValidTree
 parameter_list|(
@@ -415,7 +382,6 @@ throw|;
 block|}
 block|}
 comment|//-------------------------------------------------------< Authorizable>---
-comment|/**      * @see org.apache.jackrabbit.api.security.user.Authorizable#isGroup()      */
 annotation|@
 name|Override
 specifier|public
@@ -427,7 +393,6 @@ return|return
 literal|false
 return|;
 block|}
-comment|/**      * @see org.apache.jackrabbit.api.security.user.Authorizable#getPrincipal()      */
 annotation|@
 name|Override
 specifier|public
@@ -493,7 +458,6 @@ return|;
 block|}
 block|}
 comment|//---------------------------------------------------------------< User>---
-comment|/**      * @see org.apache.jackrabbit.api.security.user.User#isAdmin()      */
 annotation|@
 name|Override
 specifier|public
@@ -505,7 +469,6 @@ return|return
 name|isAdmin
 return|;
 block|}
-comment|/**      * Always throws {@code UnsupportedRepositoryOperationException}      *      * @see org.apache.jackrabbit.api.security.user.User#getCredentials()      */
 annotation|@
 name|Override
 specifier|public
@@ -525,7 +488,6 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-comment|/**      * @see org.apache.jackrabbit.api.security.user.User#getImpersonation()      */
 annotation|@
 name|Override
 specifier|public
@@ -543,7 +505,6 @@ name|this
 argument_list|)
 return|;
 block|}
-comment|/**      * @see org.apache.jackrabbit.api.security.user.User#changePassword(String)      */
 annotation|@
 name|Override
 specifier|public
@@ -602,7 +563,6 @@ literal|true
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * @see org.apache.jackrabbit.api.security.user.User#changePassword(String, String)      */
 annotation|@
 name|Override
 specifier|public
@@ -652,7 +612,6 @@ name|password
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * @see org.apache.jackrabbit.api.security.user.User#disable(String)      */
 annotation|@
 name|Override
 specifier|public
@@ -725,7 +684,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * @see org.apache.jackrabbit.api.security.user.User#isDisabled()      */
 annotation|@
 name|Override
 specifier|public
@@ -745,7 +703,6 @@ name|REP_DISABLED
 argument_list|)
 return|;
 block|}
-comment|/**      * @see org.apache.jackrabbit.api.security.user.User#getDisabledReason()      */
 annotation|@
 name|Override
 specifier|public
@@ -789,7 +746,7 @@ literal|null
 return|;
 block|}
 block|}
-comment|//--------------------------------------------------------------------------
+comment|//------------------------------------------------------------< private>---
 annotation|@
 name|CheckForNull
 specifier|private

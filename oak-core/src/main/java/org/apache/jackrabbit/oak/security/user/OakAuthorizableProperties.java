@@ -167,6 +167,24 @@ name|oak
 operator|.
 name|plugins
 operator|.
+name|name
+operator|.
+name|NamespaceConstants
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
 name|value
 operator|.
 name|ValueFactoryImpl
@@ -228,7 +246,6 @@ comment|/**  * OakAuthorizableProperty... TODO  */
 end_comment
 
 begin_class
-specifier|public
 class|class
 name|OakAuthorizableProperties
 implements|implements
@@ -1009,21 +1026,31 @@ parameter_list|)
 throws|throws
 name|RepositoryException
 block|{
-comment|// TODO: check protection and declaring nt of the property
+comment|// FIXME: add proper check for protection and declaring nt of the
+comment|// FIXME: property using nt functionality provided by nt-plugins
+name|String
+name|prefix
+init|=
+name|Text
+operator|.
+name|getNamespacePrefix
+argument_list|(
+name|property
+operator|.
+name|getName
+argument_list|()
+argument_list|)
+decl_stmt|;
 return|return
-literal|true
+name|NamespaceConstants
+operator|.
+name|RESERVED_PREFIXES
+operator|.
+name|contains
+argument_list|(
+name|prefix
+argument_list|)
 return|;
-comment|//        PropertyDefinition def = prop.getDefinition();
-comment|//        if (def.isProtected()) {
-comment|//            return false;
-comment|//        } else if (node.isSame(prop.getParent())) {
-comment|//            NodeType declaringNt = prop.getDefinition().getDeclaringNodeType();
-comment|//            return declaringNt.isNodeType(getJcrName(NT_REP_AUTHORIZABLE));
-comment|//        } else {
-comment|//            // another non-protected property somewhere in the subtree of this
-comment|//            // authorizable node -> is a property that can be set using #setProperty.
-comment|//            return true;
-comment|//        }
 block|}
 comment|/**      * Retrieves the node at {@code relPath} relative to node associated with      * this authorizable. If no such node exist it and any missing intermediate      * nodes are created.      *      * @param relPath A relative path.      * @return The corresponding node.      * @throws RepositoryException If an error occurs or if {@code relPath} refers      * to a node that is outside of the scope of this authorizable.      */
 annotation|@
