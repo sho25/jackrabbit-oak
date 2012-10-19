@@ -31,16 +31,6 @@ end_import
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Calendar
-import|;
-end_import
-
-begin_import
-import|import
 name|javax
 operator|.
 name|annotation
@@ -232,9 +222,7 @@ name|String
 name|getDate
 parameter_list|()
 block|{
-name|Calendar
-name|calendar
-init|=
+return|return
 name|Conversions
 operator|.
 name|convert
@@ -244,17 +232,6 @@ argument_list|()
 argument_list|)
 operator|.
 name|toDate
-argument_list|()
-decl_stmt|;
-return|return
-name|Conversions
-operator|.
-name|convert
-argument_list|(
-name|calendar
-argument_list|)
-operator|.
-name|toString
 argument_list|()
 return|;
 block|}

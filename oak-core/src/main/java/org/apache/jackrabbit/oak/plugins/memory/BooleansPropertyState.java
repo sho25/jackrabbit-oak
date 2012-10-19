@@ -21,16 +21,6 @@ end_package
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|List
-import|;
-end_import
-
-begin_import
-import|import
 name|com
 operator|.
 name|google
@@ -125,7 +115,7 @@ parameter_list|(
 name|String
 name|name
 parameter_list|,
-name|List
+name|Iterable
 argument_list|<
 name|Boolean
 argument_list|>

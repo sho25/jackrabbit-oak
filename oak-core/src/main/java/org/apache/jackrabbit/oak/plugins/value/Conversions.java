@@ -206,10 +206,10 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-comment|/**          * Convert to date. This default implementation is based on {@code ISO8601.parse(String)}.          * @return  date representation of the converted value          * @throws IllegalStateException  if the string cannot be parsed into a date          */
+comment|/**          * Convert to date. This default implementation is based on {@code ISO8601.parse(String)}.          * @return  date representation of the converted value          * @throws IllegalArgumentException  if the string cannot be parsed into a date          */
 specifier|public
 name|Calendar
-name|toDate
+name|toCalendar
 parameter_list|()
 block|{
 name|Calendar
@@ -232,7 +232,7 @@ condition|)
 block|{
 throw|throw
 operator|new
-name|IllegalStateException
+name|IllegalArgumentException
 argument_list|(
 literal|"Not a date string: "
 operator|+
@@ -243,6 +243,23 @@ throw|;
 block|}
 return|return
 name|date
+return|;
+block|}
+comment|/**          * Convert to date. This default implementation is based on {@code ISO8601.parse(String)}.          * @return  date representation of the converted value          * @throws IllegalArgumentException  if the string cannot be parsed into a date          */
+specifier|public
+name|String
+name|toDate
+parameter_list|()
+block|{
+return|return
+name|convert
+argument_list|(
+name|toCalendar
+argument_list|()
+argument_list|)
+operator|.
+name|toString
+argument_list|()
 return|;
 block|}
 comment|/**          * Convert to boolean. This default implementation is based on {@code Boolean.parseBoolean(String)}.          * @return  boolean representation of the converted value          */
@@ -453,7 +470,7 @@ annotation|@
 name|Override
 specifier|public
 name|Calendar
-name|toDate
+name|toCalendar
 parameter_list|()
 block|{
 name|Calendar
@@ -562,7 +579,7 @@ annotation|@
 name|Override
 specifier|public
 name|Calendar
-name|toDate
+name|toCalendar
 parameter_list|()
 block|{
 name|Calendar
@@ -675,7 +692,7 @@ annotation|@
 name|Override
 specifier|public
 name|Calendar
-name|toDate
+name|toCalendar
 parameter_list|()
 block|{
 return|return
@@ -811,7 +828,7 @@ annotation|@
 name|Override
 specifier|public
 name|Calendar
-name|toDate
+name|toCalendar
 parameter_list|()
 block|{
 name|Calendar

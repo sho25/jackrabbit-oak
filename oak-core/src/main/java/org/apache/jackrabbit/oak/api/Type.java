@@ -847,9 +847,7 @@ argument_list|(
 name|isArray
 argument_list|()
 argument_list|,
-literal|"Not an array: "
-operator|+
-name|this
+literal|"Not an array"
 argument_list|)
 expr_stmt|;
 return|return
@@ -876,9 +874,7 @@ operator|!
 name|isArray
 argument_list|()
 argument_list|,
-literal|"Not a simply type: "
-operator|+
-name|this
+literal|"Not a simply type"
 argument_list|)
 expr_stmt|;
 return|return
