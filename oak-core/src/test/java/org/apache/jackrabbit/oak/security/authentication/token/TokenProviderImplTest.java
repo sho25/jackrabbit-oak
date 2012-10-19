@@ -31,7 +31,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|AbstractOakTest
+name|api
+operator|.
+name|ContentRepository
 import|;
 end_import
 
@@ -45,9 +47,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|api
+name|security
 operator|.
-name|ContentRepository
+name|AbstractSecurityTest
 import|;
 end_import
 
@@ -70,7 +72,7 @@ specifier|public
 class|class
 name|TokenProviderImplTest
 extends|extends
-name|AbstractOakTest
+name|AbstractSecurityTest
 block|{
 annotation|@
 name|Override
