@@ -62,6 +62,15 @@ specifier|public
 interface|interface
 name|TokenProvider
 block|{
+comment|/**      * Constant for the token attribute passed with valid simple credentials to      * trigger the generation of a new token.      */
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|TOKEN_ATTRIBUTE
+init|=
+literal|".token"
+decl_stmt|;
 comment|/**      * Optional configuration parameter to set the token expiration time in ms.      */
 name|String
 name|PARAM_TOKEN_EXPIRATION

@@ -131,6 +131,26 @@ name|AdminPrincipal
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|security
+operator|.
+name|principal
+operator|.
+name|SystemPrincipal
+import|;
+end_import
+
 begin_comment
 comment|/**  * PermissionProviderImpl... TODO  */
 end_comment
@@ -180,6 +200,15 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
+name|principals
+operator|.
+name|contains
+argument_list|(
+name|SystemPrincipal
+operator|.
+name|INSTANCE
+argument_list|)
+operator|||
 name|isAdmin
 argument_list|(
 name|principals

@@ -598,15 +598,6 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-comment|/**      * Constant for the token attribute passed with simple credentials to      * trigger the generation of a new token.      */
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|TOKEN_ATTRIBUTE
-init|=
-literal|".token"
-decl_stmt|;
 specifier|private
 specifier|static
 specifier|final

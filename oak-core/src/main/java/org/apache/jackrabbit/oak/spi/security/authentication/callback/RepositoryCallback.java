@@ -108,6 +108,9 @@ name|RepositoryCallback
 implements|implements
 name|Callback
 block|{
+comment|// TODO: base on a system-ContentSession that was passed to this
+comment|// TODO: callback handler in order have the appropriate set of indexes,
+comment|// TODO: valiators, commit-hooks etc...
 specifier|private
 name|NodeStore
 name|nodeStore
@@ -116,17 +119,6 @@ specifier|private
 name|String
 name|workspaceName
 decl_stmt|;
-annotation|@
-name|CheckForNull
-specifier|public
-name|NodeStore
-name|getNodeStore
-parameter_list|()
-block|{
-return|return
-name|nodeStore
-return|;
-block|}
 specifier|public
 name|String
 name|getWorkspaceName
