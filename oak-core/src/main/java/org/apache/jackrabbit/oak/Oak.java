@@ -341,7 +341,7 @@ name|spi
 operator|.
 name|lifecycle
 operator|.
-name|MicroKernelTracker
+name|RepositoryInitializer
 import|;
 end_import
 
@@ -488,7 +488,7 @@ specifier|private
 specifier|final
 name|List
 argument_list|<
-name|MicroKernelTracker
+name|RepositoryInitializer
 argument_list|>
 name|initializers
 init|=
@@ -581,7 +581,7 @@ name|with
 parameter_list|(
 annotation|@
 name|Nonnull
-name|MicroKernelTracker
+name|RepositoryInitializer
 name|initializer
 parameter_list|)
 block|{
@@ -878,7 +878,7 @@ argument_list|)
 decl_stmt|;
 for|for
 control|(
-name|MicroKernelTracker
+name|RepositoryInitializer
 name|initializer
 range|:
 name|initializers
@@ -886,7 +886,7 @@ control|)
 block|{
 name|initializer
 operator|.
-name|available
+name|initialize
 argument_list|(
 name|store
 argument_list|)

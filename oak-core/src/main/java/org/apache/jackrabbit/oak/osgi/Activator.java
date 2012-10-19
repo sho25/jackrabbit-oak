@@ -276,11 +276,11 @@ argument_list|()
 decl_stmt|;
 specifier|private
 specifier|final
-name|OsgiMicroKernelTracker
+name|OsgiRepositoryInitializer
 name|kernelTracker
 init|=
 operator|new
-name|OsgiMicroKernelTracker
+name|OsgiRepositoryInitializer
 argument_list|()
 decl_stmt|;
 specifier|private
@@ -434,7 +434,7 @@ name|service
 decl_stmt|;
 name|kernelTracker
 operator|.
-name|available
+name|initialize
 argument_list|(
 operator|new
 name|KernelNodeStore

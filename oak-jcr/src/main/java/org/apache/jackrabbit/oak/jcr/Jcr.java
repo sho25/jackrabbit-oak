@@ -471,7 +471,7 @@ name|spi
 operator|.
 name|lifecycle
 operator|.
-name|MicroKernelTracker
+name|RepositoryInitializer
 import|;
 end_import
 
@@ -691,7 +691,7 @@ name|with
 parameter_list|(
 annotation|@
 name|Nonnull
-name|MicroKernelTracker
+name|RepositoryInitializer
 name|initializer
 parameter_list|)
 block|{

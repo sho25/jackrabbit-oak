@@ -113,25 +113,7 @@ name|spi
 operator|.
 name|lifecycle
 operator|.
-name|DefaultMicroKernelTracker
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|spi
-operator|.
-name|lifecycle
-operator|.
-name|MicroKernelTracker
+name|RepositoryInitializer
 import|;
 end_import
 
@@ -190,7 +172,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * {@code InitialContent} implements a {@link MicroKernelTracker} and  * registers built-in node types when the micro kernel becomes available.  */
+comment|/**  * {@code InitialContent} implements a {@link RepositoryInitializer} and  * registers built-in node types when the micro kernel becomes available.  */
 end_comment
 
 begin_class
@@ -199,21 +181,21 @@ name|Component
 annotation|@
 name|Service
 argument_list|(
-name|MicroKernelTracker
+name|RepositoryInitializer
 operator|.
 name|class
 argument_list|)
 specifier|public
 class|class
 name|InitialContent
-extends|extends
-name|DefaultMicroKernelTracker
+implements|implements
+name|RepositoryInitializer
 block|{
 annotation|@
 name|Override
 specifier|public
 name|void
-name|available
+name|initialize
 parameter_list|(
 name|NodeStore
 name|store
