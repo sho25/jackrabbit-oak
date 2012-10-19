@@ -363,6 +363,7 @@ operator|=
 name|indexProvider
 expr_stmt|;
 block|}
+comment|//-----------------------------------------------------< ContentSession>---
 annotation|@
 name|Nonnull
 annotation|@
@@ -416,6 +417,17 @@ name|next
 argument_list|()
 return|;
 block|}
+block|}
+annotation|@
+name|Override
+specifier|public
+name|String
+name|getWorkspaceName
+parameter_list|()
+block|{
+return|return
+name|workspaceName
+return|;
 block|}
 annotation|@
 name|Nonnull
@@ -486,6 +498,7 @@ name|inputStream
 argument_list|)
 return|;
 block|}
+comment|//-----------------------------------------------------------< Closable>---
 annotation|@
 name|Override
 specifier|public
@@ -520,17 +533,6 @@ name|e
 argument_list|)
 expr_stmt|;
 block|}
-block|}
-annotation|@
-name|Override
-specifier|public
-name|String
-name|getWorkspaceName
-parameter_list|()
-block|{
-return|return
-name|workspaceName
-return|;
 block|}
 block|}
 end_class
