@@ -616,7 +616,7 @@ comment|/**      * Create a converter for a date. {@code ISO8601.format(Calendar
 specifier|public
 specifier|static
 name|Converter
-name|converter
+name|convert
 parameter_list|(
 specifier|final
 name|Calendar
