@@ -475,8 +475,7 @@ name|date
 operator|.
 name|setTimeInMillis
 argument_list|(
-name|toLong
-argument_list|()
+name|value
 argument_list|)
 expr_stmt|;
 return|return

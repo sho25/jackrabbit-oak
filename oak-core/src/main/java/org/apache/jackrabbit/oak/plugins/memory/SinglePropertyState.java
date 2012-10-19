@@ -31,6 +31,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Calendar
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|annotation
@@ -178,7 +188,7 @@ name|toBinary
 argument_list|()
 return|;
 block|}
-comment|/**      * @return  {@code getLong(getString())}      */
+comment|/**      * @return  long value converted by {@code Conversions.convert(String)}      */
 specifier|protected
 name|long
 name|getLong
@@ -197,7 +207,7 @@ name|toLong
 argument_list|()
 return|;
 block|}
-comment|/**      * @return  {@code getDouble(getString())}      */
+comment|/**      * @return  double value converted by {@code Conversions.convert(String)}      */
 specifier|protected
 name|double
 name|getDouble
@@ -216,7 +226,39 @@ name|toDouble
 argument_list|()
 return|;
 block|}
-comment|/**      * @return  {@code StringPropertyState.getBoolean(getString())}      */
+comment|/**      * @return  date value converted by {@code Conversions.convert(String)}      */
+specifier|protected
+name|String
+name|getDate
+parameter_list|()
+block|{
+name|Calendar
+name|calendar
+init|=
+name|Conversions
+operator|.
+name|convert
+argument_list|(
+name|getString
+argument_list|()
+argument_list|)
+operator|.
+name|toDate
+argument_list|()
+decl_stmt|;
+return|return
+name|Conversions
+operator|.
+name|convert
+argument_list|(
+name|calendar
+argument_list|)
+operator|.
+name|toString
+argument_list|()
+return|;
+block|}
+comment|/**      * @return  boolean value converted by {@code Conversions.convert(String)}      */
 specifier|protected
 name|boolean
 name|getBoolean
@@ -235,7 +277,7 @@ name|toBoolean
 argument_list|()
 return|;
 block|}
-comment|/**      * @return  {@code getDecimal(getString())}      */
+comment|/**      * @return  decimal value converted by {@code Conversions.convert(String)}      */
 specifier|protected
 name|BigDecimal
 name|getDecimal
@@ -377,7 +419,7 @@ name|T
 operator|)
 name|singleton
 argument_list|(
-name|getString
+name|getDate
 argument_list|()
 argument_list|)
 return|;
@@ -571,7 +613,7 @@ return|return
 operator|(
 name|T
 operator|)
-name|getString
+name|getDate
 argument_list|()
 return|;
 case|case
