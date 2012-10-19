@@ -168,7 +168,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Is responsible for querying the property index content.  *   *<p>  * This class can be used directly on a subtree where there is an index defined  * by supplying a {@link NodeState} root.  *</p>  *   *<pre>  *<code>  * {  *     NodeState state = ... // get a node state  *     PropertyIndexLookup lookup = new PropertyIndexLookup(state);  *     Set<String> hits = lookup.find("foo", "xyz");  * }  *</code>  *</pre>  */
+comment|/**  * Is responsible for querying the property index content.  *   *<p>  * This class can be used directly on a subtree where there is an index defined  * by supplying a {@link NodeState} root.  *</p>  *   *<pre>  *<code>  * {  *     NodeState state = ... // get a node state  *     PropertyIndexLookup lookup = new PropertyIndexLookup(state);  *     Set<String> hits = lookup.find("foo", PropertyValues.newString("xyz"));  * }  *</code>  *</pre>  */
 end_comment
 
 begin_class
@@ -324,6 +324,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
+comment|/**      * Searches for a given<code>String<code> value within this index.      *       *<p><b>Note</b> if the property you are looking for is not of type<code>String<code>, the converted key value might not match the index key, and there will be no hits on the index.</p>      *       * @param name      *            the property name      * @param value      *            the property value      * @return the set of matched paths      */
 specifier|public
 name|Set
 argument_list|<
@@ -352,6 +353,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
+comment|/**      * Searches for a given value within this index.      *       * @param name the property name      * @param value the property value      * @return the set of matched paths      */
 specifier|public
 name|Set
 argument_list|<
