@@ -374,15 +374,28 @@ name|of
 argument_list|()
 argument_list|)
 decl_stmt|;
-comment|/**      * Parent state builder reference, or {@code null} once this builder      * has been connected.      */
+comment|/**      * Parent builder, or {@code null} for a root builder.      */
 specifier|private
+specifier|final
 name|MemoryNodeBuilder
 name|parent
 decl_stmt|;
-comment|/**      * Name of this child node within the parent builder, or {@code null}      * once this builder has been connected.      */
+comment|/**      * Name of this child node within the parent builder,      * or {@code null} for a root builder.      */
 specifier|private
+specifier|final
 name|String
 name|name
+decl_stmt|;
+comment|/**      * Root builder, or {@code this} for the root itself.      */
+specifier|private
+specifier|final
+name|MemoryNodeBuilder
+name|root
+decl_stmt|;
+comment|/**      * Internal revision counter that is incremented in the root builder      * whenever anything changes in the tree below. Each builder instance      * has its own copy of the revision counter, for quickly checking whether      * any state changes are needed.      */
+specifier|private
+name|long
+name|revision
 decl_stmt|;
 comment|/**      * The read state of this builder. Originally the immutable base state      * in an unconnected builder, or the shared mutable state      * (see {@link #writeState}) once the this builder has been connected.      */
 specifier|private
@@ -428,6 +441,22 @@ argument_list|)
 expr_stmt|;
 name|this
 operator|.
+name|root
+operator|=
+name|parent
+operator|.
+name|root
+expr_stmt|;
+name|this
+operator|.
+name|revision
+operator|=
+name|parent
+operator|.
+name|revision
+expr_stmt|;
+name|this
+operator|.
 name|readState
 operator|=
 name|checkNotNull
@@ -462,6 +491,18 @@ name|name
 operator|=
 literal|null
 expr_stmt|;
+name|this
+operator|.
+name|root
+operator|=
+name|this
+expr_stmt|;
+name|this
+operator|.
+name|revision
+operator|=
+literal|0
+expr_stmt|;
 name|MutableNodeState
 name|mstate
 init|=
@@ -494,11 +535,21 @@ parameter_list|()
 block|{
 if|if
 condition|(
-name|writeState
-operator|==
-literal|null
+name|revision
+operator|!=
+name|root
+operator|.
+name|revision
 condition|)
 block|{
+assert|assert
+operator|(
+name|parent
+operator|!=
+literal|null
+operator|)
+assert|;
+comment|// root never gets here
 name|parent
 operator|.
 name|read
@@ -535,7 +586,10 @@ condition|(
 name|mstate
 operator|==
 literal|null
-operator|&&
+condition|)
+block|{
+if|if
+condition|(
 name|pstate
 operator|.
 name|nodes
@@ -550,27 +604,19 @@ throw|throw
 operator|new
 name|IllegalStateException
 argument_list|(
-literal|"This builder refers to a node that has"
-operator|+
-literal|" been removed from its parent."
+literal|"This node has been removed."
 argument_list|)
 throw|;
 block|}
+block|}
+elseif|else
 if|if
 condition|(
 name|mstate
 operator|!=
-literal|null
+name|writeState
 condition|)
 block|{
-name|parent
-operator|=
-literal|null
-expr_stmt|;
-name|name
-operator|=
-literal|null
-expr_stmt|;
 name|readState
 operator|=
 name|mstate
@@ -581,6 +627,12 @@ name|mstate
 expr_stmt|;
 block|}
 block|}
+name|revision
+operator|=
+name|root
+operator|.
+name|revision
+expr_stmt|;
 block|}
 return|return
 name|readState
@@ -591,20 +643,55 @@ name|MutableNodeState
 name|write
 parameter_list|()
 block|{
+return|return
+name|write
+argument_list|(
+name|root
+operator|.
+name|revision
+operator|+
+literal|1
+argument_list|)
+return|;
+block|}
+specifier|private
+name|MutableNodeState
+name|write
+parameter_list|(
+name|long
+name|newRevision
+parameter_list|)
+block|{
 if|if
 condition|(
 name|writeState
 operator|==
 literal|null
+operator|||
+name|revision
+operator|!=
+name|root
+operator|.
+name|revision
 condition|)
 block|{
+assert|assert
+operator|(
+name|parent
+operator|!=
+literal|null
+operator|)
+assert|;
+comment|// root never gets here
 name|MutableNodeState
 name|pstate
 init|=
 name|parent
 operator|.
 name|write
-argument_list|()
+argument_list|(
+name|newRevision
+argument_list|)
 decl_stmt|;
 name|MutableNodeState
 name|mstate
@@ -641,9 +728,7 @@ throw|throw
 operator|new
 name|IllegalStateException
 argument_list|(
-literal|"This builder refers to a node that has"
-operator|+
-literal|" been removed from its parent."
+literal|"This node has been removed."
 argument_list|)
 throw|;
 block|}
@@ -667,14 +752,13 @@ name|mstate
 argument_list|)
 expr_stmt|;
 block|}
-name|parent
-operator|=
-literal|null
-expr_stmt|;
-name|name
-operator|=
-literal|null
-expr_stmt|;
+if|if
+condition|(
+name|mstate
+operator|!=
+name|writeState
+condition|)
+block|{
 name|readState
 operator|=
 name|mstate
@@ -684,6 +768,11 @@ operator|=
 name|mstate
 expr_stmt|;
 block|}
+block|}
+name|revision
+operator|=
+name|newRevision
+expr_stmt|;
 return|return
 name|writeState
 return|;
