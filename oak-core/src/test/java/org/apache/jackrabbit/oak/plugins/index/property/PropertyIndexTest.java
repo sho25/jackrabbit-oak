@@ -535,7 +535,7 @@ argument_list|)
 operator|.
 name|setProperty
 argument_list|(
-literal|"pnames"
+literal|"propertyNames"
 argument_list|,
 name|Arrays
 operator|.

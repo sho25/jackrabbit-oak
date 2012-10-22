@@ -380,7 +380,7 @@ name|indexChild
 operator|.
 name|getProperty
 argument_list|(
-literal|"pnames"
+literal|"propertyNames"
 argument_list|)
 decl_stmt|;
 name|Iterable

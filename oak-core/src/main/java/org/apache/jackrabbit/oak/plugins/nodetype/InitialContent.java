@@ -590,7 +590,7 @@ argument_list|)
 operator|.
 name|setProperty
 argument_list|(
-literal|"pnames"
+literal|"propertyNames"
 argument_list|,
 literal|"jcr:uuid"
 argument_list|)
@@ -622,7 +622,7 @@ argument_list|)
 operator|.
 name|setProperty
 argument_list|(
-literal|"pnames"
+literal|"propertyNames"
 argument_list|,
 literal|"jcr:primaryType"
 argument_list|)
@@ -649,7 +649,7 @@ argument_list|)
 operator|.
 name|setProperty
 argument_list|(
-literal|"pnames"
+literal|"propertyNames"
 argument_list|,
 literal|"rep:authorizableId"
 argument_list|)
@@ -681,7 +681,7 @@ argument_list|)
 operator|.
 name|setProperty
 argument_list|(
-literal|"pnames"
+literal|"propertyNames"
 argument_list|,
 literal|"rep:principalName"
 argument_list|)
