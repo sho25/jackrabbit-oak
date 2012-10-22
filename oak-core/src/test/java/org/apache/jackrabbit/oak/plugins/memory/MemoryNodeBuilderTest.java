@@ -210,9 +210,9 @@ name|of
 argument_list|(
 literal|"a"
 argument_list|,
-name|PropertyStates
+name|LongPropertyState
 operator|.
-name|longProperty
+name|createLongProperty
 argument_list|(
 literal|"a"
 argument_list|,
@@ -221,9 +221,9 @@ argument_list|)
 argument_list|,
 literal|"b"
 argument_list|,
-name|PropertyStates
+name|LongPropertyState
 operator|.
-name|longProperty
+name|createLongProperty
 argument_list|(
 literal|"b"
 argument_list|,
@@ -232,9 +232,9 @@ argument_list|)
 argument_list|,
 literal|"c"
 argument_list|,
-name|PropertyStates
+name|LongPropertyState
 operator|.
-name|longProperty
+name|createLongProperty
 argument_list|(
 literal|"c"
 argument_list|,

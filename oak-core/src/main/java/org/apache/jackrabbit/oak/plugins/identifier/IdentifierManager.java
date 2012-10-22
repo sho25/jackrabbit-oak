@@ -351,7 +351,7 @@ name|plugins
 operator|.
 name|memory
 operator|.
-name|PropertyStates
+name|StringPropertyState
 import|;
 end_import
 
@@ -1402,7 +1402,7 @@ block|{
 return|return
 name|resolveUUID
 argument_list|(
-name|PropertyStates
+name|StringPropertyState
 operator|.
 name|stringProperty
 argument_list|(

@@ -263,7 +263,7 @@ name|plugins
 operator|.
 name|memory
 operator|.
-name|PropertyStates
+name|MultiStringPropertyState
 import|;
 end_import
 
@@ -1723,7 +1723,7 @@ argument_list|()
 operator|.
 name|setProperty
 argument_list|(
-name|PropertyStates
+name|MultiStringPropertyState
 operator|.
 name|stringProperty
 argument_list|(
@@ -2526,7 +2526,7 @@ argument_list|()
 operator|.
 name|setProperty
 argument_list|(
-name|PropertyStates
+name|MultiStringPropertyState
 operator|.
 name|stringProperty
 argument_list|(

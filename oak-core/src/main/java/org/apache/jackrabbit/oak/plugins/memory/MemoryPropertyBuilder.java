@@ -525,7 +525,7 @@ argument_list|()
 condition|)
 block|{
 return|return
-name|PropertyStates
+name|EmptyPropertyState
 operator|.
 name|emptyProperty
 argument_list|(
@@ -568,7 +568,7 @@ operator|.
 name|STRING
 case|:
 return|return
-name|PropertyStates
+name|MultiStringPropertyState
 operator|.
 name|stringProperty
 argument_list|(
@@ -589,7 +589,7 @@ operator|.
 name|BINARY
 case|:
 return|return
-name|PropertyStates
+name|MultiBinaryPropertyState
 operator|.
 name|binaryPropertyFromBlob
 argument_list|(
@@ -610,9 +610,9 @@ operator|.
 name|LONG
 case|:
 return|return
-name|PropertyStates
+name|MultiLongPropertyState
 operator|.
-name|longProperty
+name|createLongProperty
 argument_list|(
 name|name
 argument_list|,
@@ -631,7 +631,7 @@ operator|.
 name|DOUBLE
 case|:
 return|return
-name|PropertyStates
+name|MultiDoublePropertyState
 operator|.
 name|doubleProperty
 argument_list|(
@@ -652,9 +652,9 @@ operator|.
 name|DATE
 case|:
 return|return
-name|LongsPropertyState
+name|MultiLongPropertyState
 operator|.
-name|createDatesProperty
+name|createDateProperty
 argument_list|(
 name|name
 argument_list|,
@@ -673,7 +673,7 @@ operator|.
 name|BOOLEAN
 case|:
 return|return
-name|PropertyStates
+name|MultiBooleanPropertyState
 operator|.
 name|booleanProperty
 argument_list|(
@@ -694,7 +694,7 @@ operator|.
 name|DECIMAL
 case|:
 return|return
-name|PropertyStates
+name|MultiDecimalPropertyState
 operator|.
 name|decimalProperty
 argument_list|(
@@ -712,7 +712,7 @@ return|;
 default|default:
 return|return
 operator|new
-name|GenericsPropertyState
+name|MultiGenericPropertyState
 argument_list|(
 name|name
 argument_list|,
@@ -765,7 +765,7 @@ operator|.
 name|STRING
 case|:
 return|return
-name|PropertyStates
+name|StringPropertyState
 operator|.
 name|stringProperty
 argument_list|(
@@ -783,7 +783,7 @@ operator|.
 name|BINARY
 case|:
 return|return
-name|PropertyStates
+name|BinaryPropertyState
 operator|.
 name|binaryProperty
 argument_list|(
@@ -801,9 +801,9 @@ operator|.
 name|LONG
 case|:
 return|return
-name|PropertyStates
+name|LongPropertyState
 operator|.
-name|longProperty
+name|createLongProperty
 argument_list|(
 name|name
 argument_list|,
@@ -819,7 +819,7 @@ operator|.
 name|DOUBLE
 case|:
 return|return
-name|PropertyStates
+name|DoublePropertyState
 operator|.
 name|doubleProperty
 argument_list|(
@@ -837,9 +837,9 @@ operator|.
 name|DATE
 case|:
 return|return
-name|PropertyStates
+name|LongPropertyState
 operator|.
-name|dateProperty
+name|createDateProperty
 argument_list|(
 name|name
 argument_list|,
@@ -855,7 +855,7 @@ operator|.
 name|BOOLEAN
 case|:
 return|return
-name|PropertyStates
+name|BooleanPropertyState
 operator|.
 name|booleanProperty
 argument_list|(
@@ -873,7 +873,7 @@ operator|.
 name|DECIMAL
 case|:
 return|return
-name|PropertyStates
+name|DecimalPropertyState
 operator|.
 name|decimalProperty
 argument_list|(

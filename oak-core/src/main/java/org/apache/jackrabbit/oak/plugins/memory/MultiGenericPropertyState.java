@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  *     http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
+comment|/*  * Licensed to the Apache Software Foundation (ASF) under one  * or more contributor license agreements.  See the NOTICE file  * distributed with this work for additional information  * regarding copyright ownership.  The ASF licenses this file  * to you under the Apache License, Version 2.0 (the  * "License"); you may not use this file except in compliance  * with the License.  You may obtain a copy of the License at  *  *   http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing,  * software distributed under the License is distributed on an  * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY  * KIND, either express or implied.  See the License for the  * specific language governing permissions and limitations  * under the License.  */
 end_comment
 
 begin_package
@@ -119,7 +119,7 @@ name|api
 operator|.
 name|Type
 operator|.
-name|NAME
+name|NAMES
 import|;
 end_import
 
@@ -137,7 +137,7 @@ name|api
 operator|.
 name|Type
 operator|.
-name|PATH
+name|PATHS
 import|;
 end_import
 
@@ -155,7 +155,7 @@ name|api
 operator|.
 name|Type
 operator|.
-name|REFERENCE
+name|REFERENCES
 import|;
 end_import
 
@@ -173,7 +173,7 @@ name|api
 operator|.
 name|Type
 operator|.
-name|URI
+name|URIS
 import|;
 end_import
 
@@ -191,25 +191,20 @@ name|api
 operator|.
 name|Type
 operator|.
-name|WEAKREFERENCE
+name|WEAKREFERENCES
 import|;
 end_import
 
 begin_class
 specifier|public
 class|class
-name|GenericPropertyState
+name|MultiGenericPropertyState
 extends|extends
-name|SinglePropertyState
+name|MultiPropertyState
 argument_list|<
 name|String
 argument_list|>
 block|{
-specifier|private
-specifier|final
-name|String
-name|value
-decl_stmt|;
 specifier|private
 specifier|final
 name|Type
@@ -218,15 +213,18 @@ name|?
 argument_list|>
 name|type
 decl_stmt|;
-comment|/**      * @throws IllegalArgumentException if {@code type.isArray()} is {@code true}      */
+comment|/**      * @throws IllegalArgumentException if {@code type.isArray()} is {@code false}      */
 specifier|public
-name|GenericPropertyState
+name|MultiGenericPropertyState
 parameter_list|(
 name|String
 name|name
 parameter_list|,
+name|Iterable
+argument_list|<
 name|String
-name|value
+argument_list|>
+name|values
 parameter_list|,
 name|Type
 argument_list|<
@@ -238,11 +236,12 @@ block|{
 name|super
 argument_list|(
 name|name
+argument_list|,
+name|values
 argument_list|)
 expr_stmt|;
 name|checkArgument
 argument_list|(
-operator|!
 name|type
 operator|.
 name|isArray
@@ -251,18 +250,12 @@ argument_list|)
 expr_stmt|;
 name|this
 operator|.
-name|value
-operator|=
-name|value
-expr_stmt|;
-name|this
-operator|.
 name|type
 operator|=
 name|type
 expr_stmt|;
 block|}
-comment|/**      * Create a {@code PropertyState} from a name. No validation is performed      * on the string passed for {@code value}.      * @param name  The name of the property state      * @param value  The value of the property state      * @return  The new property state of type {@link Type#NAME}      */
+comment|/**      * Create a multi valued {@code PropertyState} from a list of names.      * No validation is performed on the strings passed for {@code values}.      * @param name  The name of the property state      * @param values  The values of the property state      * @return  The new property state of type {@link Type#NAMES}      */
 specifier|public
 specifier|static
 name|PropertyState
@@ -271,23 +264,26 @@ parameter_list|(
 name|String
 name|name
 parameter_list|,
+name|Iterable
+argument_list|<
 name|String
-name|value
+argument_list|>
+name|values
 parameter_list|)
 block|{
 return|return
 operator|new
-name|GenericPropertyState
+name|MultiGenericPropertyState
 argument_list|(
 name|name
 argument_list|,
-name|value
+name|values
 argument_list|,
-name|NAME
+name|NAMES
 argument_list|)
 return|;
 block|}
-comment|/**      * Create a {@code PropertyState} from a path. No validation is performed      * on the string passed for {@code value}.      * @param name  The name of the property state      * @param value  The value of the property state      * @return  The new property state of type {@link Type#PATH}      */
+comment|/**      * Create a multi valued {@code PropertyState} from a list of paths.      * No validation is performed on the strings passed for {@code values}.      * @param name  The name of the property state      * @param values  The values of the property state      * @return  The new property state of type {@link Type#PATHS}      */
 specifier|public
 specifier|static
 name|PropertyState
@@ -296,23 +292,26 @@ parameter_list|(
 name|String
 name|name
 parameter_list|,
+name|Iterable
+argument_list|<
 name|String
-name|value
+argument_list|>
+name|values
 parameter_list|)
 block|{
 return|return
 operator|new
-name|GenericPropertyState
+name|MultiGenericPropertyState
 argument_list|(
 name|name
 argument_list|,
-name|value
+name|values
 argument_list|,
-name|PATH
+name|PATHS
 argument_list|)
 return|;
 block|}
-comment|/**      * Create a {@code PropertyState} from a reference. No validation is performed      * on the string passed for {@code value}.      * @param name  The name of the property state      * @param value  The value of the property state      * @return  The new property state of type {@link Type#REFERENCE}      */
+comment|/**      * Create a multi valued {@code PropertyState} from a list of references.      * No validation is performed on the strings passed for {@code values}.      * @param name  The name of the property state      * @param values  The values of the property state      * @return  The new property state of type {@link Type#REFERENCES}      */
 specifier|public
 specifier|static
 name|PropertyState
@@ -321,23 +320,26 @@ parameter_list|(
 name|String
 name|name
 parameter_list|,
+name|Iterable
+argument_list|<
 name|String
-name|value
+argument_list|>
+name|values
 parameter_list|)
 block|{
 return|return
 operator|new
-name|GenericPropertyState
+name|MultiGenericPropertyState
 argument_list|(
 name|name
 argument_list|,
-name|value
+name|values
 argument_list|,
-name|REFERENCE
+name|REFERENCES
 argument_list|)
 return|;
 block|}
-comment|/**      * Create a {@code PropertyState} from a weak reference. No validation is performed      * on the string passed for {@code value}.      * @param name  The name of the property state      * @param value  The value of the property state      * @return  The new property state of type {@link Type#WEAKREFERENCE}      */
+comment|/**      * Create a multi valued {@code PropertyState} from a list of weak references.      * No validation is performed on the strings passed for {@code values}.      * @param name  The name of the property state      * @param values  The values of the property state      * @return  The new property state of type {@link Type#WEAKREFERENCES}      */
 specifier|public
 specifier|static
 name|PropertyState
@@ -346,23 +348,26 @@ parameter_list|(
 name|String
 name|name
 parameter_list|,
+name|Iterable
+argument_list|<
 name|String
-name|value
+argument_list|>
+name|values
 parameter_list|)
 block|{
 return|return
 operator|new
-name|GenericPropertyState
+name|MultiGenericPropertyState
 argument_list|(
 name|name
 argument_list|,
-name|value
+name|values
 argument_list|,
-name|WEAKREFERENCE
+name|WEAKREFERENCES
 argument_list|)
 return|;
 block|}
-comment|/**      * Create a {@code PropertyState} from a URI. No validation is performed      * on the string passed for {@code value}.      * @param name  The name of the property state      * @param value  The value of the property state      * @return  The new property state of type {@link Type#URI}      */
+comment|/**      * Create a multi valued {@code PropertyState} from a list of URIs.      * No validation is performed on the strings passed for {@code values}.      * @param name  The name of the property state      * @param values  The values of the property state      * @return  The new property state of type {@link Type#URIS}      */
 specifier|public
 specifier|static
 name|PropertyState
@@ -371,31 +376,23 @@ parameter_list|(
 name|String
 name|name
 parameter_list|,
+name|Iterable
+argument_list|<
 name|String
-name|value
+argument_list|>
+name|values
 parameter_list|)
 block|{
 return|return
 operator|new
-name|GenericPropertyState
+name|MultiGenericPropertyState
 argument_list|(
 name|name
 argument_list|,
-name|value
+name|values
 argument_list|,
-name|URI
+name|URIS
 argument_list|)
-return|;
-block|}
-annotation|@
-name|Override
-specifier|public
-name|String
-name|getValue
-parameter_list|()
-block|{
-return|return
-name|value
 return|;
 block|}
 annotation|@
@@ -403,7 +400,10 @@ name|Override
 specifier|public
 name|Converter
 name|getConverter
-parameter_list|()
+parameter_list|(
+name|String
+name|value
+parameter_list|)
 block|{
 return|return
 name|Conversions

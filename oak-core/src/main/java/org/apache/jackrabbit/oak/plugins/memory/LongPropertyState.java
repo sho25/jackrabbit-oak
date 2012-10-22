@@ -41,6 +41,22 @@ name|oak
 operator|.
 name|api
 operator|.
+name|PropertyState
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|api
+operator|.
 name|Type
 import|;
 end_import
@@ -106,7 +122,7 @@ name|?
 argument_list|>
 name|type
 decl_stmt|;
-specifier|private
+specifier|public
 name|LongPropertyState
 parameter_list|(
 name|String
@@ -143,7 +159,7 @@ block|}
 comment|/**      * Create a {@code PropertyState} from a long.      * @param name  The name of the property state      * @param value  The value of the property state      * @return  The new property state of type {@link Type#LONG}      */
 specifier|public
 specifier|static
-name|LongPropertyState
+name|PropertyState
 name|createLongProperty
 parameter_list|(
 name|String
@@ -170,7 +186,7 @@ block|}
 comment|/**      * Create a {@code PropertyState} for a date value from a long.      * @param name  The name of the property state      * @param value  The value of the property state      * @return  The new property state of type {@link Type#DATE}      */
 specifier|public
 specifier|static
-name|LongPropertyState
+name|PropertyState
 name|createDateProperty
 parameter_list|(
 name|String
@@ -197,7 +213,7 @@ block|}
 comment|/**      * Create a {@code PropertyState} for a date.      * @param name  The name of the property state      * @param value  The value of the property state      * @return  The new property state of type {@link Type#DATE}      */
 specifier|public
 specifier|static
-name|LongPropertyState
+name|PropertyState
 name|createDateProperty
 parameter_list|(
 name|String
@@ -232,7 +248,7 @@ block|}
 comment|/**      * Create a {@code PropertyState} for a date from a String.      * @param name  The name of the property state      * @param value  The value of the property state      * @return  The new property state of type {@link Type#DATE}      * @throws IllegalArgumentException if {@code value} is not a parseable to a date.      */
 specifier|public
 specifier|static
-name|LongPropertyState
+name|PropertyState
 name|createDateProperty
 parameter_list|(
 name|String

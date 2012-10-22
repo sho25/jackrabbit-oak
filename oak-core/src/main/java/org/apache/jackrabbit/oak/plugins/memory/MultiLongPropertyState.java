@@ -65,6 +65,22 @@ name|oak
 operator|.
 name|api
 operator|.
+name|PropertyState
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|api
+operator|.
 name|Type
 import|;
 end_import
@@ -110,7 +126,7 @@ end_import
 begin_class
 specifier|public
 class|class
-name|LongsPropertyState
+name|MultiLongPropertyState
 extends|extends
 name|MultiPropertyState
 argument_list|<
@@ -125,8 +141,8 @@ name|?
 argument_list|>
 name|type
 decl_stmt|;
-specifier|private
-name|LongsPropertyState
+specifier|public
+name|MultiLongPropertyState
 parameter_list|(
 name|String
 name|name
@@ -161,8 +177,8 @@ block|}
 comment|/**      * Create a multi valued {@code PropertyState} from a list of longs.      * @param name  The name of the property state      * @param values  The values of the property state      * @return  The new property state of type {@link Type#LONGS}      */
 specifier|public
 specifier|static
-name|LongsPropertyState
-name|createLongsProperty
+name|PropertyState
+name|createLongProperty
 parameter_list|(
 name|String
 name|name
@@ -176,7 +192,7 @@ parameter_list|)
 block|{
 return|return
 operator|new
-name|LongsPropertyState
+name|MultiLongPropertyState
 argument_list|(
 name|name
 argument_list|,
@@ -196,8 +212,8 @@ block|}
 comment|/**      * Create a multi valued {@code PropertyState} of dates from a list of longs.      * @param name  The name of the property state      * @param values  The values of the property state      * @return  The new property state of type {@link Type#DATES}      */
 specifier|public
 specifier|static
-name|LongsPropertyState
-name|createDatesPropertyFromLong
+name|PropertyState
+name|createDatePropertyFromLong
 parameter_list|(
 name|String
 name|name
@@ -211,7 +227,7 @@ parameter_list|)
 block|{
 return|return
 operator|new
-name|LongsPropertyState
+name|MultiLongPropertyState
 argument_list|(
 name|name
 argument_list|,
@@ -231,8 +247,8 @@ block|}
 comment|/**      * Create a multi valued {@code PropertyState} of dates.      * @param name  The name of the property state      * @param values  The values of the property state      * @return  The new property state of type {@link Type#DATES}      */
 specifier|public
 specifier|static
-name|LongsPropertyState
-name|createDatesPropertyFromCalendar
+name|PropertyState
+name|createDatePropertyFromCalendar
 parameter_list|(
 name|String
 name|name
@@ -281,7 +297,7 @@ expr_stmt|;
 block|}
 return|return
 operator|new
-name|LongsPropertyState
+name|MultiLongPropertyState
 argument_list|(
 name|name
 argument_list|,
@@ -296,8 +312,8 @@ block|}
 comment|/**      * Create a multi valued {@code PropertyState} of dates from a list of strings.      * @param name  The name of the property state      * @param values  The values of the property state      * @return  The new property state of type {@link Type#DATES}      * @throws IllegalArgumentException if one of the {@code values} is not a parseable to a date.      */
 specifier|public
 specifier|static
-name|LongsPropertyState
-name|createDatesProperty
+name|PropertyState
+name|createDateProperty
 parameter_list|(
 name|String
 name|name
@@ -354,7 +370,7 @@ expr_stmt|;
 block|}
 return|return
 operator|new
-name|LongsPropertyState
+name|MultiLongPropertyState
 argument_list|(
 name|name
 argument_list|,

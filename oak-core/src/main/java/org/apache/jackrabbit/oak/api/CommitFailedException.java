@@ -162,7 +162,7 @@ throw|throw
 operator|new
 name|RepositoryException
 argument_list|(
-name|cause
+name|this
 argument_list|)
 throw|;
 block|}
