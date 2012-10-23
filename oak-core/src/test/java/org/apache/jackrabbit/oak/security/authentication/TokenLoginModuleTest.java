@@ -546,9 +546,7 @@ name|sc
 operator|.
 name|setAttribute
 argument_list|(
-name|TokenProvider
-operator|.
-name|TOKEN_ATTRIBUTE
+literal|".token"
 argument_list|,
 literal|""
 argument_list|)

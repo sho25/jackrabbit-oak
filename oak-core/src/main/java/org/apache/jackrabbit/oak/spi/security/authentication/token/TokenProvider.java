@@ -62,30 +62,17 @@ specifier|public
 interface|interface
 name|TokenProvider
 block|{
-comment|/**      * Constant for the token attribute passed with valid simple credentials to      * trigger the generation of a new token.      */
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|TOKEN_ATTRIBUTE
-init|=
-literal|".token"
-decl_stmt|;
-comment|/**      * Optional configuration parameter to set the token expiration time in ms.      */
+comment|/**      * Optional configuration parameter to set the token expiration time in ms.      * Implementations that do not support this option will ignore any config      * options with that name.      */
 name|String
 name|PARAM_TOKEN_EXPIRATION
 init|=
 literal|"tokenExpiration"
 decl_stmt|;
-comment|/**      * Default expiration time in ms for login tokens is 2 hours.      */
-name|long
-name|DEFAULT_TOKEN_EXPIRATION
+comment|/**      * Optional configuration parameter to define the length of the key.      * Implementations that do not support this option will ignore any config      * options with that name.      */
+name|String
+name|PARAM_TOKEN_LENGTH
 init|=
-literal|2
-operator|*
-literal|3600
-operator|*
-literal|1000
+literal|"tokenLength"
 decl_stmt|;
 name|boolean
 name|doCreateToken
