@@ -201,7 +201,7 @@ name|oak
 operator|.
 name|api
 operator|.
-name|ContentSession
+name|BlobFactory
 import|;
 end_import
 
@@ -477,8 +477,8 @@ argument_list|)
 decl_stmt|;
 specifier|private
 specifier|final
-name|ContentSession
-name|contentSession
+name|BlobFactory
+name|blobFactory
 decl_stmt|;
 specifier|private
 specifier|final
@@ -489,8 +489,8 @@ comment|/**      * Creates a new instance of {@code ValueFactory}.      *      *
 specifier|public
 name|ValueFactoryImpl
 parameter_list|(
-name|ContentSession
-name|session
+name|BlobFactory
+name|blobFactory
 parameter_list|,
 name|NamePathMapper
 name|namePathMapper
@@ -498,9 +498,9 @@ parameter_list|)
 block|{
 name|this
 operator|.
-name|contentSession
+name|blobFactory
 operator|=
-name|session
+name|blobFactory
 expr_stmt|;
 name|this
 operator|.
@@ -1509,7 +1509,7 @@ block|{
 name|Blob
 name|blob
 init|=
-name|contentSession
+name|blobFactory
 operator|.
 name|createBlob
 argument_list|(

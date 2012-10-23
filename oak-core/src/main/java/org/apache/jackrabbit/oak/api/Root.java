@@ -117,6 +117,13 @@ name|SessionQueryEngine
 name|getQueryEngine
 parameter_list|()
 function_decl|;
+comment|/**      * Returns the blob factory. TODO: specify life-cycle of that factory....      *      * @return the blob factory.      */
+annotation|@
+name|Nonnull
+name|BlobFactory
+name|getBlobFactory
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 

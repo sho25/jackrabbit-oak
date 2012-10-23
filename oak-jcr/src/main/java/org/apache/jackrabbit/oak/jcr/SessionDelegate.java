@@ -749,7 +749,10 @@ operator|=
 operator|new
 name|ValueFactoryImpl
 argument_list|(
-name|contentSession
+name|root
+operator|.
+name|getBlobFactory
+argument_list|()
 argument_list|,
 name|namePathMapper
 argument_list|)
