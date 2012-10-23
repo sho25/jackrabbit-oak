@@ -639,6 +639,28 @@ argument_list|,
 name|authRoot
 argument_list|)
 expr_stmt|;
+comment|// assert rep:principalName is present (that should actually by covered
+comment|// by node type validator)
+if|if
+condition|(
+name|node
+operator|.
+name|getString
+argument_list|(
+name|REP_PRINCIPAL_NAME
+argument_list|,
+literal|null
+argument_list|)
+operator|==
+literal|null
+condition|)
+block|{
+name|fail
+argument_list|(
+literal|"Mandatory property rep:principalName missing."
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 return|return
 operator|new
