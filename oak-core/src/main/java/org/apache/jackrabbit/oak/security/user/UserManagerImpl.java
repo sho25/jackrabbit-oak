@@ -2182,8 +2182,6 @@ name|UserQueryManager
 argument_list|(
 name|this
 argument_list|,
-name|session
-argument_list|,
 name|root
 argument_list|)
 expr_stmt|;
