@@ -29,24 +29,6 @@ name|Nonnull
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|spi
-operator|.
-name|state
-operator|.
-name|NodeState
-import|;
-end_import
-
 begin_comment
 comment|/**  * Defines an index definition  *   */
 end_comment
@@ -75,18 +57,6 @@ annotation|@
 name|Nonnull
 name|String
 name|getType
-parameter_list|()
-function_decl|;
-comment|/**      * @return flag marking if reindexing is required on this index      */
-name|boolean
-name|isReindex
-parameter_list|()
-function_decl|;
-comment|/**      * @return the state that this definition is built on      */
-annotation|@
-name|Nonnull
-name|NodeState
-name|getState
 parameter_list|()
 function_decl|;
 block|}

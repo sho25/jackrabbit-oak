@@ -25,6 +25,11 @@ interface|interface
 name|IndexConstants
 block|{
 name|String
+name|INDEX_DEFINITIONS_NODE_TYPE
+init|=
+literal|"oak:queryIndexDefinition"
+decl_stmt|;
+name|String
 name|INDEX_DEFINITIONS_NAME
 init|=
 literal|"oak:index"
@@ -49,6 +54,7 @@ name|INDEX_DATA_CHILD_NAME
 init|=
 literal|":data"
 decl_stmt|;
+comment|//TODO remove this property as soon as the index manager is in
 name|String
 name|DEFAULT_INDEX_HOME
 init|=

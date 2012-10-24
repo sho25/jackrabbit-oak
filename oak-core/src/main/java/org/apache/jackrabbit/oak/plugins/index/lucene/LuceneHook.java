@@ -236,6 +236,9 @@ operator|new
 name|LuceneEditor
 argument_list|(
 name|def
+operator|.
+name|getPath
+argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;

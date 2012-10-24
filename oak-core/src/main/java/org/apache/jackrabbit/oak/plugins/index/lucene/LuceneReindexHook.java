@@ -320,23 +320,6 @@ name|def
 argument_list|)
 expr_stmt|;
 block|}
-comment|// verify reindex flag
-if|if
-condition|(
-name|def
-operator|.
-name|isReindex
-argument_list|()
-condition|)
-block|{
-name|defsChanged
-operator|.
-name|add
-argument_list|(
-name|def
-argument_list|)
-expr_stmt|;
-block|}
 block|}
 if|if
 condition|(
@@ -409,6 +392,9 @@ operator|new
 name|LuceneEditor
 argument_list|(
 name|def
+operator|.
+name|getPath
+argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;

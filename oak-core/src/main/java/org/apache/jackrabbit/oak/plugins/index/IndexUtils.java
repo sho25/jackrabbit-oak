@@ -356,8 +356,6 @@ name|path
 argument_list|,
 name|name
 argument_list|)
-argument_list|,
-name|ns
 argument_list|)
 return|;
 block|}

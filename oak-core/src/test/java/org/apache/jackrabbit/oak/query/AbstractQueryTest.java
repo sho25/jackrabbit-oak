@@ -393,7 +393,7 @@ name|index
 operator|.
 name|IndexConstants
 operator|.
-name|DEFAULT_INDEX_HOME
+name|INDEX_DEFINITIONS_NAME
 import|;
 end_import
 
@@ -413,7 +413,7 @@ name|index
 operator|.
 name|IndexConstants
 operator|.
-name|INDEX_DEFINITIONS_NAME
+name|INDEX_DEFINITIONS_NODE_TYPE
 import|;
 end_import
 
@@ -503,6 +503,14 @@ specifier|abstract
 class|class
 name|AbstractQueryTest
 block|{
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|TEST_INDEX_HOME
+init|=
+literal|"/"
+decl_stmt|;
 specifier|protected
 specifier|static
 specifier|final
@@ -510,22 +518,6 @@ name|String
 name|TEST_INDEX_NAME
 init|=
 literal|"test-index"
-decl_stmt|;
-specifier|protected
-specifier|static
-specifier|final
-name|String
-name|TEST_INDEX_HOME
-init|=
-name|DEFAULT_INDEX_HOME
-decl_stmt|;
-specifier|protected
-specifier|static
-specifier|final
-name|String
-name|INDEX_DEFINITION_NODE_TYPE
-init|=
-literal|"nam:oak:queryIndexDefinition"
 decl_stmt|;
 specifier|protected
 name|SessionQueryEngine
@@ -702,7 +694,11 @@ name|JcrConstants
 operator|.
 name|JCR_PRIMARYTYPE
 argument_list|,
-name|INDEX_DEFINITION_NODE_TYPE
+name|INDEX_DEFINITIONS_NODE_TYPE
+argument_list|,
+name|Type
+operator|.
+name|NAME
 argument_list|)
 expr_stmt|;
 name|indexDef

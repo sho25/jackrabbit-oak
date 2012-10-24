@@ -227,9 +227,7 @@ specifier|final
 name|String
 name|indexConfigPath
 init|=
-name|IndexUtils
-operator|.
-name|DEFAULT_INDEX_HOME
+literal|"/"
 decl_stmt|;
 specifier|private
 specifier|final

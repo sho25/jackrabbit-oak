@@ -54,9 +54,7 @@ comment|// TODO OAK-178 discuss where to store index config data
 name|String
 name|INDEX_CONFIG_PATH
 init|=
-name|IndexUtils
-operator|.
-name|DEFAULT_INDEX_HOME
+literal|"/"
 operator|+
 name|IndexUtils
 operator|.
