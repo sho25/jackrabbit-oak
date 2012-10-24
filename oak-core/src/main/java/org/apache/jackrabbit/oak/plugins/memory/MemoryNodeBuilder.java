@@ -407,7 +407,7 @@ specifier|private
 name|MutableNodeState
 name|writeState
 decl_stmt|;
-comment|/**      * Creates a new in-memory node state builder.      *      * @param parent parent node state builder      * @param name name of this node      * @param base base state of this node, or {@code null}      */
+comment|/**      * Creates a new in-memory node state builder.      *      * @param parent parent node state builder      * @param name name of this node      */
 specifier|protected
 name|MemoryNodeBuilder
 parameter_list|(
@@ -416,9 +416,6 @@ name|parent
 parameter_list|,
 name|String
 name|name
-parameter_list|,
-name|NodeState
-name|base
 parameter_list|)
 block|{
 name|this
@@ -459,7 +456,7 @@ name|this
 operator|.
 name|baseState
 operator|=
-name|base
+literal|null
 expr_stmt|;
 name|this
 operator|.
@@ -859,16 +856,13 @@ return|return
 name|writeState
 return|;
 block|}
-comment|/**      * Factory method for creating new child state builders. Subclasses may      * override this method to control the behavior of child state builders.      *      * @param child base state of the new builder, or {@code null}      * @return new builder      */
+comment|/**      * Factory method for creating new child state builders. Subclasses may      * override this method to control the behavior of child state builders.      *      * @return new builder      */
 specifier|protected
 name|MemoryNodeBuilder
 name|createChildBuilder
 parameter_list|(
 name|String
 name|name
-parameter_list|,
-name|NodeState
-name|child
 parameter_list|)
 block|{
 return|return
@@ -878,8 +872,6 @@ argument_list|(
 name|this
 argument_list|,
 name|name
-argument_list|,
-name|child
 argument_list|)
 return|;
 block|}
@@ -1085,16 +1077,13 @@ name|NodeState
 name|state
 parameter_list|)
 block|{
-name|MutableNodeState
-name|mstate
-init|=
 name|write
 argument_list|()
-decl_stmt|;
+expr_stmt|;
 name|MutableNodeState
-name|cstate
+name|childState
 init|=
-name|mstate
+name|writeState
 operator|.
 name|nodes
 operator|.
@@ -1105,22 +1094,12 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|cstate
-operator|!=
+name|childState
+operator|==
 literal|null
 condition|)
 block|{
-name|cstate
-operator|.
-name|reset
-argument_list|(
-name|state
-argument_list|)
-expr_stmt|;
-block|}
-else|else
-block|{
-name|mstate
+name|writeState
 operator|.
 name|nodes
 operator|.
@@ -1129,17 +1108,24 @@ argument_list|(
 name|name
 argument_list|)
 expr_stmt|;
+name|childState
+operator|=
 name|createChildBuilder
 argument_list|(
 name|name
-argument_list|,
-name|state
 argument_list|)
 operator|.
 name|write
 argument_list|()
 expr_stmt|;
 block|}
+name|childState
+operator|.
+name|reset
+argument_list|(
+name|state
+argument_list|)
+expr_stmt|;
 name|updated
 argument_list|()
 expr_stmt|;
@@ -1447,50 +1433,30 @@ name|String
 name|name
 parameter_list|)
 block|{
-comment|// look for a read-only child node
 name|read
 argument_list|()
 expr_stmt|;
+comment|// shortcut when dealing with a read-only child node
 if|if
 condition|(
 name|writeState
 operator|==
 literal|null
-condition|)
-block|{
-assert|assert
-name|baseState
-operator|!=
-literal|null
-assert|;
-comment|// guaranteed by read()
-name|NodeState
-name|childBase
-init|=
+operator|&&
 name|baseState
 operator|.
-name|getChildNode
+name|hasChildNode
 argument_list|(
 name|name
 argument_list|)
-decl_stmt|;
-if|if
-condition|(
-name|childBase
-operator|!=
-literal|null
 condition|)
 block|{
-comment|// read-only shortcut
 return|return
 name|createChildBuilder
 argument_list|(
 name|name
-argument_list|,
-name|childBase
 argument_list|)
 return|;
-block|}
 block|}
 comment|// no read-only child node found, switch to write mode
 name|write
@@ -1580,8 +1546,6 @@ init|=
 name|createChildBuilder
 argument_list|(
 name|name
-argument_list|,
-name|childBase
 argument_list|)
 decl_stmt|;
 name|builder

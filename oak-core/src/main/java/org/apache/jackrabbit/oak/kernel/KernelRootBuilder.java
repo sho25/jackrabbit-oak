@@ -235,9 +235,6 @@ name|createChildBuilder
 parameter_list|(
 name|String
 name|name
-parameter_list|,
-name|NodeState
-name|child
 parameter_list|)
 block|{
 return|return
@@ -247,8 +244,6 @@ argument_list|(
 name|this
 argument_list|,
 name|name
-argument_list|,
-name|child
 argument_list|,
 name|this
 argument_list|)

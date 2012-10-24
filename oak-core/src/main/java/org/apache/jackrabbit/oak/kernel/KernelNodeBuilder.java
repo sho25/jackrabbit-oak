@@ -51,24 +51,6 @@ name|MemoryNodeBuilder
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|spi
-operator|.
-name|state
-operator|.
-name|NodeState
-import|;
-end_import
-
 begin_class
 class|class
 name|KernelNodeBuilder
@@ -89,9 +71,6 @@ parameter_list|,
 name|String
 name|name
 parameter_list|,
-name|NodeState
-name|base
-parameter_list|,
 name|KernelRootBuilder
 name|root
 parameter_list|)
@@ -101,8 +80,6 @@ argument_list|(
 name|parent
 argument_list|,
 name|name
-argument_list|,
-name|base
 argument_list|)
 expr_stmt|;
 name|this
@@ -124,9 +101,6 @@ name|createChildBuilder
 parameter_list|(
 name|String
 name|name
-parameter_list|,
-name|NodeState
-name|child
 parameter_list|)
 block|{
 return|return
@@ -136,8 +110,6 @@ argument_list|(
 name|this
 argument_list|,
 name|name
-argument_list|,
-name|child
 argument_list|,
 name|root
 argument_list|)
