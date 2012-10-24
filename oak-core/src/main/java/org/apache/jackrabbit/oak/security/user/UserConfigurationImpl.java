@@ -183,6 +183,28 @@ name|UserConfiguration
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|security
+operator|.
+name|user
+operator|.
+name|action
+operator|.
+name|AuthorizableAction
+import|;
+end_import
+
 begin_comment
 comment|/**  * UserConfigurationImpl... TODO  */
 end_comment
@@ -267,6 +289,26 @@ name|singletonList
 argument_list|(
 name|vp
 argument_list|)
+return|;
+block|}
+annotation|@
+name|Nonnull
+annotation|@
+name|Override
+specifier|public
+name|List
+argument_list|<
+name|AuthorizableAction
+argument_list|>
+name|getAuthorizableActions
+parameter_list|()
+block|{
+comment|// TODO: create authorizable actions from configuration
+return|return
+name|Collections
+operator|.
+name|emptyList
+argument_list|()
 return|;
 block|}
 annotation|@

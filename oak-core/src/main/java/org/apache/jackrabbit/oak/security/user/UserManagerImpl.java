@@ -61,6 +61,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|annotation
@@ -576,8 +586,10 @@ name|config
 decl_stmt|;
 specifier|private
 specifier|final
+name|List
+argument_list|<
 name|AuthorizableAction
-index|[]
+argument_list|>
 name|authorizableActions
 decl_stmt|;
 specifier|private
@@ -669,20 +681,10 @@ name|this
 operator|.
 name|authorizableActions
 operator|=
-name|config
+name|uc
 operator|.
-name|getConfigValue
-argument_list|(
-name|UserConstants
-operator|.
-name|PARAM_AUTHORIZABLE_ACTIONS
-argument_list|,
-operator|new
-name|AuthorizableAction
-index|[
-literal|0
-index|]
-argument_list|)
+name|getAuthorizableActions
+argument_list|()
 expr_stmt|;
 block|}
 comment|//--------------------------------------------------------< UserManager>---
