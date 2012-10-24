@@ -197,6 +197,18 @@ name|assertFalse
 import|;
 end_import
 
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertTrue
+import|;
+end_import
+
 begin_comment
 comment|/**  * Contains tests related to {@link Tree}  */
 end_comment
@@ -529,8 +541,31 @@ argument_list|,
 literal|"node1"
 argument_list|)
 expr_stmt|;
-comment|// TODO :childOrder property invisible?
-comment|//assertEquals("must not have any properties", 0, t.getPropertyCount());
+comment|// :childOrder property invisible?
+name|assertTrue
+argument_list|(
+name|t
+operator|.
+name|getProperty
+argument_list|(
+literal|":childOrder"
+argument_list|)
+operator|==
+literal|null
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"must not have any properties"
+argument_list|,
+literal|0
+argument_list|,
+name|t
+operator|.
+name|getPropertyCount
+argument_list|()
+argument_list|)
+expr_stmt|;
 block|}
 finally|finally
 block|{
