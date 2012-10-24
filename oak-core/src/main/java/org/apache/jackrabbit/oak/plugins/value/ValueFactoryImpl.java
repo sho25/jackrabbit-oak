@@ -429,26 +429,6 @@ name|ISO8601
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
 begin_comment
 comment|/**  * Implementation of {@link ValueFactory} interface.  */
 end_comment
@@ -461,21 +441,6 @@ implements|implements
 name|ValueFactory
 block|{
 specifier|private
-specifier|static
-specifier|final
-name|Logger
-name|log
-init|=
-name|LoggerFactory
-operator|.
-name|getLogger
-argument_list|(
-name|ValueFactoryImpl
-operator|.
-name|class
-argument_list|)
-decl_stmt|;
-specifier|private
 specifier|final
 name|BlobFactory
 name|blobFactory
@@ -485,7 +450,7 @@ specifier|final
 name|NamePathMapper
 name|namePathMapper
 decl_stmt|;
-comment|/**      * Creates a new instance of {@code ValueFactory}.      *      * @param namePathMapper The name/path mapping used for converting JCR names/paths to      * the internal representation.      */
+comment|/**      * Creates a new instance of {@code ValueFactory}.      *      * @param blobFactory The factory for creation of binary values      * @param namePathMapper The name/path mapping used for converting JCR names/paths to      * the internal representation.      */
 specifier|public
 name|ValueFactoryImpl
 parameter_list|(
