@@ -111,6 +111,18 @@ name|apache
 operator|.
 name|jackrabbit
 operator|.
+name|JcrConstants
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
 name|oak
 operator|.
 name|api
@@ -721,7 +733,7 @@ name|nodeTypeName
 operator|.
 name|equals
 argument_list|(
-name|NodeTypeConstants
+name|JcrConstants
 operator|.
 name|NT_BASE
 argument_list|)
@@ -791,7 +803,7 @@ name|getStrings
 argument_list|(
 name|tree
 argument_list|,
-name|NodeTypeConstants
+name|JcrConstants
 operator|.
 name|JCR_PRIMARYTYPE
 argument_list|)
@@ -806,7 +818,7 @@ name|getStrings
 argument_list|(
 name|tree
 argument_list|,
-name|NodeTypeConstants
+name|JcrConstants
 operator|.
 name|JCR_MIXINTYPES
 argument_list|)
@@ -930,6 +942,7 @@ literal|false
 return|;
 block|}
 specifier|private
+specifier|static
 name|Set
 argument_list|<
 name|String
@@ -1003,6 +1016,7 @@ argument_list|()
 return|;
 block|}
 specifier|private
+specifier|static
 name|boolean
 name|evaluateTypeMatch
 parameter_list|(

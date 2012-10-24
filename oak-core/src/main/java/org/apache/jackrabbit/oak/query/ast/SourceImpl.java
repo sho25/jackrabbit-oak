@@ -232,7 +232,7 @@ return|return
 name|s
 return|;
 block|}
-comment|/**      * Get the query plan.      *      * @return the query plan      */
+comment|/**      * Get the query plan.      *      * @param root the root      * @return the query plan      */
 specifier|public
 specifier|abstract
 name|String

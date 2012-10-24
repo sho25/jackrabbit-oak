@@ -151,6 +151,22 @@ name|oak
 operator|.
 name|query
 operator|.
+name|Query
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|query
+operator|.
 name|SQL2Parser
 import|;
 end_import
@@ -399,6 +415,28 @@ block|}
 annotation|@
 name|Override
 specifier|public
+name|boolean
+name|supportsRangeConditions
+parameter_list|()
+block|{
+comment|// the jcr:path pseudo-property doesn't support LIKE conditions,
+comment|// because the path doesn't might be escaped, and possibly contain
+comment|// expressions that would result in incorrect results (/test[1] for example)
+return|return
+operator|!
+name|propertyName
+operator|.
+name|equals
+argument_list|(
+name|Query
+operator|.
+name|JCR_PATH
+argument_list|)
+return|;
+block|}
+annotation|@
+name|Override
+specifier|public
 name|PropertyValue
 name|currentProperty
 parameter_list|()
@@ -608,7 +646,8 @@ block|}
 comment|// asterisk - create a multi-value property
 comment|// warning: the returned property state may have a mixed type
 comment|// (not all values may have the same type)
-comment|//TODO this doesn't play well with the idea that the types may be different
+comment|// TODO currently all property values are converted to strings -
+comment|// this doesn't play well with the idea that the types may be different
 name|List
 argument_list|<
 name|String
