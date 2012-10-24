@@ -117,7 +117,7 @@ name|SessionQueryEngine
 name|getQueryEngine
 parameter_list|()
 function_decl|;
-comment|/**      * Returns the blob factory. TODO: specify life-cycle of that factory....      *      * @return the blob factory.      */
+comment|/**      * Returns the blob factory (TODO: review if that really belongs to the OAK-API. see also todos on BlobFactory)      *      * @return the blob factory.      */
 annotation|@
 name|Nonnull
 name|BlobFactory
