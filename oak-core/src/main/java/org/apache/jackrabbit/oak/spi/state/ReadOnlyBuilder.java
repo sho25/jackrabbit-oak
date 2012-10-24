@@ -118,6 +118,17 @@ block|}
 annotation|@
 name|Override
 specifier|public
+name|NodeState
+name|getBaseState
+parameter_list|()
+block|{
+return|return
+name|state
+return|;
+block|}
+annotation|@
+name|Override
+specifier|public
 name|long
 name|getChildNodeCount
 parameter_list|()

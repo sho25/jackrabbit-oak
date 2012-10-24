@@ -25,6 +25,16 @@ name|javax
 operator|.
 name|annotation
 operator|.
+name|CheckForNull
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|annotation
+operator|.
 name|Nonnull
 import|;
 end_import
@@ -77,6 +87,13 @@ name|NodeState
 name|getNodeState
 parameter_list|()
 function_decl|;
+comment|/**      * Returns the original base state that this builder is modifying.      * Returns {@code null} if this builder represents a new node that      * didn't exist in the base content tree.      *      * @return base node state, or {@code null}      */
+annotation|@
+name|CheckForNull
+name|NodeState
+name|getBaseState
+parameter_list|()
+function_decl|;
 comment|/**      * Returns the current number of child nodes.      *      * @return number of child nodes      */
 name|long
 name|getChildNodeCount
@@ -98,7 +115,7 @@ argument_list|>
 name|getChildNodeNames
 parameter_list|()
 function_decl|;
-comment|/**      * Adds or replaces a sub-ree.      *      * @param name name of the child node containing the new subtree      * @param nodeState subtree      * @return this builder      */
+comment|/**      * Adds or replaces a subtree.      *      * @param name name of the child node containing the new subtree      * @param nodeState subtree      * @return this builder      */
 annotation|@
 name|Nonnull
 name|NodeBuilder
