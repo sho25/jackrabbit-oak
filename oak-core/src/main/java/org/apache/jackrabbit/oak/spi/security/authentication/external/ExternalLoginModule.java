@@ -292,16 +292,8 @@ block|}
 if|if
 condition|(
 name|syncHandler
-operator|.
-name|getClass
-argument_list|()
-operator|.
-name|isAssignableFrom
-argument_list|(
+operator|instanceof
 name|SyncHandler
-operator|.
-name|class
-argument_list|)
 condition|)
 block|{
 return|return
