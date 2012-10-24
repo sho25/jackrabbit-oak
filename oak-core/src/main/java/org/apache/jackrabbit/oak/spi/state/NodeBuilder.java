@@ -130,7 +130,7 @@ name|NodeState
 name|nodeState
 parameter_list|)
 function_decl|;
-comment|/**      * Remove a child node. This method has no effect if a      * property of the given {@code name} does not exist.      *      * @param name  name of the child node      * @return this builder      */
+comment|/**      * Remove a child node. This method has no effect if a      * name of the given {@code name} does not exist.      *      * @param name  name of the child node      * @return this builder      */
 annotation|@
 name|Nonnull
 name|NodeBuilder
