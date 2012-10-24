@@ -247,7 +247,8 @@ name|PrincipalProviderImpl
 argument_list|(
 name|root
 argument_list|,
-name|securityProvider
+name|getSecurityProvider
+argument_list|()
 operator|.
 name|getUserConfiguration
 argument_list|()
@@ -374,7 +375,8 @@ decl_stmt|;
 name|UserConfiguration
 name|config
 init|=
-name|securityProvider
+name|getSecurityProvider
+argument_list|()
 operator|.
 name|getUserConfiguration
 argument_list|()

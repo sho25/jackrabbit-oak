@@ -341,7 +341,8 @@ name|UserUtility
 operator|.
 name|getAnonymousId
 argument_list|(
-name|securityProvider
+name|getSecurityProvider
+argument_list|()
 operator|.
 name|getUserConfiguration
 argument_list|()
@@ -406,7 +407,8 @@ name|UserUtility
 operator|.
 name|getAnonymousId
 argument_list|(
-name|securityProvider
+name|getSecurityProvider
+argument_list|()
 operator|.
 name|getUserConfiguration
 argument_list|()

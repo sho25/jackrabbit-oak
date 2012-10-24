@@ -182,7 +182,8 @@ name|ConfigurationParameters
 operator|.
 name|EMPTY
 argument_list|,
-name|securityProvider
+name|getSecurityProvider
+argument_list|()
 operator|.
 name|getUserConfiguration
 argument_list|()

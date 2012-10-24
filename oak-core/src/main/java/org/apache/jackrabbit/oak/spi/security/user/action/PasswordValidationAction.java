@@ -208,6 +208,8 @@ block|{
 name|validatePassword
 argument_list|(
 name|password
+argument_list|,
+literal|false
 argument_list|)
 expr_stmt|;
 block|}
@@ -232,6 +234,8 @@ block|{
 name|validatePassword
 argument_list|(
 name|password
+argument_list|,
+literal|false
 argument_list|)
 expr_stmt|;
 block|}
@@ -256,6 +260,8 @@ block|{
 name|validatePassword
 argument_list|(
 name|newPassword
+argument_list|,
+literal|true
 argument_list|)
 expr_stmt|;
 block|}
@@ -280,6 +286,8 @@ block|{
 name|validatePassword
 argument_list|(
 name|newPassword
+argument_list|,
+literal|true
 argument_list|)
 expr_stmt|;
 block|}
@@ -326,13 +334,16 @@ expr_stmt|;
 block|}
 block|}
 comment|//------------------------------------------------------------< private>---
-comment|/**      * Validate the specified password.      *      * @param password The password to be validated      * @throws RepositoryException If the specified password is too short or      * doesn't match the specified password pattern.      */
+comment|/**      * Validate the specified password.      *      * @param password The password to be validated      * @param forceMatch If true the specified password is always validated;      * otherwise only if it is a plain text password.      * @throws RepositoryException If the specified password is too short or      * doesn't match the specified password pattern.      */
 specifier|private
 name|void
 name|validatePassword
 parameter_list|(
 name|String
 name|password
+parameter_list|,
+name|boolean
+name|forceMatch
 parameter_list|)
 throws|throws
 name|RepositoryException
@@ -343,10 +354,16 @@ name|password
 operator|!=
 literal|null
 operator|&&
-name|isPlainText
+operator|(
+name|forceMatch
+operator|||
+name|PasswordUtility
+operator|.
+name|isPlainTextPassword
 argument_list|(
 name|password
 argument_list|)
+operator|)
 condition|)
 block|{
 if|if
@@ -383,25 +400,6 @@ argument_list|)
 throw|;
 block|}
 block|}
-block|}
-specifier|private
-specifier|static
-name|boolean
-name|isPlainText
-parameter_list|(
-name|String
-name|password
-parameter_list|)
-block|{
-return|return
-operator|!
-name|PasswordUtility
-operator|.
-name|isPlainTextPassword
-argument_list|(
-name|password
-argument_list|)
-return|;
 block|}
 block|}
 end_class

@@ -921,7 +921,8 @@ decl_stmt|;
 name|TokenProvider
 name|tp
 init|=
-name|securityProvider
+name|getSecurityProvider
+argument_list|()
 operator|.
 name|getTokenProvider
 argument_list|(
