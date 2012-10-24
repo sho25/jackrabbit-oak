@@ -260,6 +260,7 @@ name|syncHandler
 decl_stmt|;
 try|try
 block|{
+comment|// FIXME this will create problems within OSGi environment
 name|syncHandler
 operator|=
 name|Class
