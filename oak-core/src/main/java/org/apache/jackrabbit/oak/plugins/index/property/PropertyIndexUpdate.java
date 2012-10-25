@@ -622,10 +622,7 @@ argument_list|(
 name|Type
 operator|.
 name|STRING
-argument_list|)
-operator|.
-name|setName
-argument_list|(
+argument_list|,
 name|encoded
 argument_list|)
 decl_stmt|;
@@ -651,7 +648,7 @@ name|paths
 operator|.
 name|contains
 argument_list|(
-name|builder
+name|value
 argument_list|)
 condition|)
 block|{
