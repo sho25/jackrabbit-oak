@@ -693,6 +693,10 @@ operator|<
 name|bestCost
 condition|)
 block|{
+name|bestCost
+operator|=
+name|cost
+expr_stmt|;
 name|best
 operator|=
 name|index
