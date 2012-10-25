@@ -37,7 +37,9 @@ name|jackrabbit
 operator|.
 name|mk
 operator|.
-name|MicroKernelFactory
+name|api
+operator|.
+name|MicroKernel
 import|;
 end_import
 
@@ -51,9 +53,9 @@ name|jackrabbit
 operator|.
 name|mk
 operator|.
-name|api
+name|core
 operator|.
-name|MicroKernel
+name|MicroKernelImpl
 import|;
 end_import
 
@@ -105,7 +107,7 @@ name|out
 operator|.
 name|format
 argument_list|(
-literal|"usage: %s microkernel-url [port] [bindaddr]%n"
+literal|"usage: %s /path/to/mk [port] [bindaddr]%n"
 argument_list|,
 name|MicroKernelServer
 operator|.
@@ -118,12 +120,11 @@ expr_stmt|;
 return|return;
 block|}
 specifier|final
-name|MicroKernel
+name|MicroKernelImpl
 name|mk
 init|=
-name|MicroKernelFactory
-operator|.
-name|getInstance
+operator|new
+name|MicroKernelImpl
 argument_list|(
 name|args
 index|[
@@ -232,12 +233,10 @@ operator|.
 name|stop
 argument_list|()
 expr_stmt|;
-name|MicroKernelFactory
-operator|.
-name|disposeInstance
-argument_list|(
 name|mk
-argument_list|)
+operator|.
+name|dispose
+argument_list|()
 expr_stmt|;
 block|}
 block|}

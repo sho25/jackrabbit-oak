@@ -71,11 +71,11 @@ name|apache
 operator|.
 name|jackrabbit
 operator|.
-name|mk
+name|oak
 operator|.
-name|simple
+name|commons
 operator|.
-name|NodeImpl
+name|PathUtils
 import|;
 end_import
 
@@ -89,9 +89,17 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|commons
+name|plugins
 operator|.
-name|PathUtils
+name|index
+operator|.
+name|old
+operator|.
+name|mk
+operator|.
+name|simple
+operator|.
+name|NodeImpl
 import|;
 end_import
 
