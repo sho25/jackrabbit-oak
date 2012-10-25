@@ -1432,6 +1432,7 @@ name|pr
 operator|.
 name|isLike
 decl_stmt|;
+comment|// TODO what to do with escaped tokens?
 if|if
 condition|(
 name|pr
@@ -1452,6 +1453,17 @@ argument_list|(
 name|Type
 operator|.
 name|STRING
+argument_list|)
+expr_stmt|;
+name|first
+operator|=
+name|first
+operator|.
+name|replace
+argument_list|(
+literal|"\\"
+argument_list|,
+literal|""
 argument_list|)
 expr_stmt|;
 block|}
@@ -1475,6 +1487,17 @@ argument_list|(
 name|Type
 operator|.
 name|STRING
+argument_list|)
+expr_stmt|;
+name|last
+operator|=
+name|last
+operator|.
+name|replace
+argument_list|(
+literal|"\\"
+argument_list|,
+literal|""
 argument_list|)
 expr_stmt|;
 block|}
