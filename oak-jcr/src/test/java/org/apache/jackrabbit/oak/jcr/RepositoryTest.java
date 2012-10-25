@@ -1188,7 +1188,9 @@ expr_stmt|;
 block|}
 annotation|@
 name|Ignore
-comment|// FIXME OAK-369
+argument_list|(
+literal|"OAK-369"
+argument_list|)
 annotation|@
 name|Test
 specifier|public
@@ -1337,7 +1339,9 @@ expr_stmt|;
 block|}
 annotation|@
 name|Ignore
-comment|//OAK-343
+argument_list|(
+literal|"OAK-343"
+argument_list|)
 annotation|@
 name|Test
 specifier|public
