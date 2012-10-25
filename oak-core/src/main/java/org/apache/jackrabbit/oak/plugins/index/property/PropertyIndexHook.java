@@ -77,11 +77,11 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|spi
+name|plugins
 operator|.
-name|commit
+name|index
 operator|.
-name|CommitHook
+name|IndexHook
 import|;
 end_import
 
@@ -136,7 +136,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * {@link CommitHook} implementation that is responsible for keeping the  * {@link PropertyIndex} up to date  *   * @see PropertyIndex  * @see PropertyIndexLookup  *   */
+comment|/**  * {@link IndexHook} implementation that is responsible for keeping the  * {@link PropertyIndex} up to date  *   * @see PropertyIndex  * @see PropertyIndexLookup  *   */
 end_comment
 
 begin_class
@@ -144,8 +144,27 @@ specifier|public
 class|class
 name|PropertyIndexHook
 implements|implements
-name|CommitHook
+name|IndexHook
 block|{
+specifier|private
+specifier|final
+name|NodeBuilder
+name|builder
+decl_stmt|;
+specifier|public
+name|PropertyIndexHook
+parameter_list|(
+name|NodeBuilder
+name|builder
+parameter_list|)
+block|{
+name|this
+operator|.
+name|builder
+operator|=
+name|builder
+expr_stmt|;
+block|}
 annotation|@
 name|Override
 annotation|@
@@ -163,14 +182,6 @@ parameter_list|)
 throws|throws
 name|CommitFailedException
 block|{
-name|NodeBuilder
-name|builder
-init|=
-name|after
-operator|.
-name|builder
-argument_list|()
-decl_stmt|;
 name|Map
 argument_list|<
 name|String
@@ -237,10 +248,7 @@ expr_stmt|;
 block|}
 block|}
 return|return
-name|builder
-operator|.
-name|getNodeState
-argument_list|()
+name|after
 return|;
 block|}
 block|}

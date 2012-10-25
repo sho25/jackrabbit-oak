@@ -392,7 +392,9 @@ name|PropertyIndexLookup
 argument_list|(
 operator|new
 name|PropertyIndexHook
-argument_list|()
+argument_list|(
+name|builder
+argument_list|)
 operator|.
 name|processCommit
 argument_list|(
@@ -799,7 +801,9 @@ name|PropertyIndexLookup
 argument_list|(
 operator|new
 name|PropertyIndexHook
-argument_list|()
+argument_list|(
+name|builder
+argument_list|)
 operator|.
 name|processCommit
 argument_list|(

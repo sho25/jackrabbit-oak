@@ -185,9 +185,25 @@ name|plugins
 operator|.
 name|index
 operator|.
-name|lucene
+name|CompositeIndexHookProvider
+import|;
+end_import
+
+begin_import
+import|import
+name|org
 operator|.
-name|LuceneHook
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|index
+operator|.
+name|IndexHookManager
 import|;
 end_import
 
@@ -207,7 +223,7 @@ name|index
 operator|.
 name|lucene
 operator|.
-name|LuceneReindexHook
+name|LuceneIndexHookProvider
 import|;
 end_import
 
@@ -227,7 +243,7 @@ name|index
 operator|.
 name|property
 operator|.
-name|PropertyIndexHook
+name|PropertyIndexHookProvider
 import|;
 end_import
 
@@ -500,26 +516,6 @@ operator|.
 name|servlet
 operator|.
 name|ServletHolder
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|plugins
-operator|.
-name|index
-operator|.
-name|IndexUtils
-operator|.
-name|DEFAULT_INDEX_HOME
 import|;
 end_import
 
@@ -1314,19 +1310,19 @@ argument_list|()
 argument_list|)
 argument_list|,
 operator|new
-name|PropertyIndexHook
+name|IndexHookManager
+argument_list|(
+operator|new
+name|CompositeIndexHookProvider
+argument_list|(
+operator|new
+name|PropertyIndexHookProvider
 argument_list|()
 argument_list|,
 operator|new
-name|LuceneReindexHook
-argument_list|(
-name|DEFAULT_INDEX_HOME
+name|LuceneIndexHookProvider
+argument_list|()
 argument_list|)
-argument_list|,
-operator|new
-name|LuceneHook
-argument_list|(
-name|DEFAULT_INDEX_HOME
 argument_list|)
 argument_list|)
 return|;
