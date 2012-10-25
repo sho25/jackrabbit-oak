@@ -164,7 +164,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A provider for Lucene indexes.  */
+comment|/**  * A provider for Lucene indexes.  *   * @see LuceneIndex  *   */
 end_comment
 
 begin_class

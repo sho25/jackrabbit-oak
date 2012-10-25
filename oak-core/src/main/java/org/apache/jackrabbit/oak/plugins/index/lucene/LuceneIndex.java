@@ -768,7 +768,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This index uses internally runs a query against a Lucene index.  */
+comment|/**  * Provides a QueryIndex that does lookups against a Lucene-based index  *   *<p>  * To define a lucene index on a subtree you have to add an<code>oak:index<code> node.  *   * Under it follows the index definition node that:  *<ul>  *<li>must be of type<code>oak:queryIndexDefinition</code></li>  *<li>must have the<code>type</code> property set to<b><code>lucene</code></b></li>  *</ul>  *</p>  *   *<p>  * Note:<code>reindex<code> is a property that when set to<code>true</code>, triggers a full content reindex.  *</p>  *   *<pre>  *<code>  * {  *     NodeBuilder index = root.child("oak:index");  *     index.child("lucene")  *         .setProperty("jcr:primaryType", "oak:queryIndexDefinition", Type.NAME)  *         .setProperty("type", "lucene")  *         .setProperty("reindex", "true");  * }  *</code>  *</pre>  *   * @see QueryIndex  *   */
 end_comment
 
 begin_class

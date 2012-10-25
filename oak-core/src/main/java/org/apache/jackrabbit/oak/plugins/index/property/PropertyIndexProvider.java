@@ -110,7 +110,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A provider for property indexes.  */
+comment|/**  * A provider for property indexes.  *   * @see PropertyIndex  *   */
 end_comment
 
 begin_class

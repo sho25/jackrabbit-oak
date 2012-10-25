@@ -37,6 +37,10 @@ name|CommitHook
 import|;
 end_import
 
+begin_comment
+comment|/**  * Represents the content of a QueryIndex as well as a mechanism for keeping  * this content up to date.  *   */
+end_comment
+
 begin_interface
 specifier|public
 interface|interface

@@ -57,11 +57,16 @@ name|NodeBuilder
 import|;
 end_import
 
+begin_comment
+comment|/**  * Extension point for plugging in different kinds of IndexHook providers.  *   * @see IndexHook  */
+end_comment
+
 begin_interface
 specifier|public
 interface|interface
 name|IndexHookProvider
 block|{
+comment|/**      *       * Each provider knows how to produce a certain type of index. If the      *<code>type</code> param is of an unknown value, the provider is expected      * to return an empty list.      *       * @param type      *            the index type      * @param builder      *            the node state builder that will be used for updates      * @return a list of index hooks      */
 annotation|@
 name|Nonnull
 name|List

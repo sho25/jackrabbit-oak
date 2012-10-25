@@ -337,6 +337,10 @@ name|NodeStateUtils
 import|;
 end_import
 
+begin_comment
+comment|/**  * Keeps existing IndexHooks updated.  *   *<p>  * The existing index list is obtained via the IndexHookProvider.  *</p>  *   * @see IndexHook  * @see IndexHookProvider  *   */
+end_comment
+
 begin_class
 specifier|public
 class|class
