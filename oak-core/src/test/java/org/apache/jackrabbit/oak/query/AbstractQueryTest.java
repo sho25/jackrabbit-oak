@@ -750,7 +750,7 @@ literal|"OAK-336"
 argument_list|)
 specifier|public
 name|void
-name|sql2_measure
+name|sql2Measure
 parameter_list|()
 throws|throws
 name|Exception
