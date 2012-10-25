@@ -77,9 +77,7 @@ name|plugins
 operator|.
 name|index
 operator|.
-name|old
-operator|.
-name|Indexer
+name|IndexConstants
 import|;
 end_import
 
@@ -99,9 +97,13 @@ specifier|final
 name|String
 name|INDEX_CONFIG_PATH
 init|=
-name|Indexer
+literal|'/'
+operator|+
+name|IndexConstants
 operator|.
-name|INDEX_CONFIG_PATH
+name|INDEX_DEFINITIONS_NAME
+operator|+
+literal|"/indexes"
 decl_stmt|;
 comment|/**      * Creates a property index for the given property if such an index doesn't      * exist yet, and if the repository supports property indexes. The session      * may not have pending changes.      *       * @param session the session      * @param propertyName the property name      * @return true if the index was created or already existed      */
 specifier|public
