@@ -85,6 +85,27 @@ name|JCR_AVAILABLE_QUERY_OPERATORS
 init|=
 literal|"jcr:availableQueryOperators"
 decl_stmt|;
+comment|/**      * Additinal name constants not present in JcrConstants      */
+name|String
+name|JCR_CREATEDBY
+init|=
+literal|"jcr:createdBy"
+decl_stmt|;
+name|String
+name|JCR_LASTMODIFIEDBY
+init|=
+literal|"jcr:lastModifiedBy"
+decl_stmt|;
+name|String
+name|MIX_CREATED
+init|=
+literal|"mix:created"
+decl_stmt|;
+name|String
+name|MIX_LASTMODIFIED
+init|=
+literal|"mix:lastModified"
+decl_stmt|;
 comment|/**      * Merge conflict handling      */
 name|String
 name|MIX_REP_MERGE_CONFLICT
