@@ -1326,7 +1326,7 @@ argument_list|,
 literal|true
 argument_list|)
 decl_stmt|;
-comment|// merge non-conflicting changes
+comment|// apply our changes
 name|stagedNode
 operator|.
 name|getProperties
@@ -1440,6 +1440,23 @@ name|entrySet
 argument_list|()
 control|)
 block|{
+if|if
+condition|(
+operator|!
+name|theirChanges
+operator|.
+name|getChangedChildNodes
+argument_list|()
+operator|.
+name|containsKey
+argument_list|(
+name|entry
+operator|.
+name|getKey
+argument_list|()
+argument_list|)
+condition|)
+block|{
 name|stagedNode
 operator|.
 name|add
@@ -1459,6 +1476,7 @@ argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 for|for
 control|(
