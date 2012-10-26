@@ -35,16 +35,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|jcr
-operator|.
-name|Session
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -122,21 +112,7 @@ specifier|public
 interface|interface
 name|AuthorizableAction
 block|{
-comment|// TODO: review (rather split into OAK and JCR level interface?)
-comment|/**      * Allows to add application specific modifications or validation associated      * with the creation of a new group. Note, that this method is called      *<strong>before</strong> any {@code Session#save} call.      *      * @param group The new group that has not yet been persisted;      * e.g. the associated node is still 'NEW'.      * @param session The editing session associated with the user manager.      * @throws javax.jcr.RepositoryException If an error occurs.      */
-name|void
-name|onCreate
-parameter_list|(
-name|Group
-name|group
-parameter_list|,
-name|Session
-name|session
-parameter_list|)
-throws|throws
-name|RepositoryException
-function_decl|;
-comment|/**      * Allows to add application specific modifications or validation associated      * with the creation of a new group. Note, that this method is called      *<strong>before</strong> any {@code Root#commit()} call.      *      * @param group The new group that has not yet been persisted;      * e.g. the associated node is still 'NEW'.      * @param root The root associated with the user manager.      * @throws javax.jcr.RepositoryException If an error occurs.      */
+comment|/**      * Allows to add application specific modifications or validation associated      * with the creation of a new group. Note, that this method is called      *<strong>before</strong> any {@code Root#commit()} call.      *      * @param group The new group that has not yet been persisted;      * e.g. the associated tree is still 'NEW'.      * @param root The root associated with the user manager.      * @throws javax.jcr.RepositoryException If an error occurs.      */
 name|void
 name|onCreate
 parameter_list|(
@@ -149,23 +125,7 @@ parameter_list|)
 throws|throws
 name|RepositoryException
 function_decl|;
-comment|/**      * Allows to add application specific modifications or validation associated      * with the creation of a new user. Note, that this method is called      *<strong>before</strong> any {@code Session#save} call.      *      * @param user The new user that has not yet been persisted;      * e.g. the associated node is still 'NEW'.      * @param password The password that was specified upon user creation.      * @param session The editing session associated with the user manager.      * @throws RepositoryException If an error occurs.      */
-name|void
-name|onCreate
-parameter_list|(
-name|User
-name|user
-parameter_list|,
-name|String
-name|password
-parameter_list|,
-name|Session
-name|session
-parameter_list|)
-throws|throws
-name|RepositoryException
-function_decl|;
-comment|/**      * Allows to add application specific modifications or validation associated      * with the creation of a new user. Note, that this method is called      *<strong>before</strong> any {@code Root#commit()} call.      *      * @param user The new user that has not yet been persisted;      * e.g. the associated node is still 'NEW'.      * @param password The password that was specified upon user creation.      * @param root The root associated with the user manager.      * @throws RepositoryException If an error occurs.      */
+comment|/**      * Allows to add application specific modifications or validation associated      * with the creation of a new user. Note, that this method is called      *<strong>before</strong> any {@code Root#commit()} call.      *      * @param user The new user that has not yet been persisted;      * e.g. the associated tree is still 'NEW'.      * @param password The password that was specified upon user creation.      * @param root The root associated with the user manager.      * @throws RepositoryException If an error occurs.      */
 name|void
 name|onCreate
 parameter_list|(
@@ -177,19 +137,6 @@ name|password
 parameter_list|,
 name|Root
 name|root
-parameter_list|)
-throws|throws
-name|RepositoryException
-function_decl|;
-comment|/**      * Allows to add application specific behavior associated with the removal      * of an authorizable. Note, that this method is called<strong>before</strong>      * {@link org.apache.jackrabbit.api.security.user.Authorizable#remove} is executed (and persisted); thus the      * target authorizable still exists.      *      * @param authorizable The authorizable to be removed.      * @param session The editing session associated with the user manager.      * @throws RepositoryException If an error occurs.      */
-name|void
-name|onRemove
-parameter_list|(
-name|Authorizable
-name|authorizable
-parameter_list|,
-name|Session
-name|session
 parameter_list|)
 throws|throws
 name|RepositoryException
@@ -203,22 +150,6 @@ name|authorizable
 parameter_list|,
 name|Root
 name|root
-parameter_list|)
-throws|throws
-name|RepositoryException
-function_decl|;
-comment|/**      * Allows to add application specific action or validation associated with      * changing a user password. Note, that this method is called<strong>before</strong>      * the password property is being modified in the content.      *      * @param user The user that whose password is going to change.      * @param newPassword The new password as specified in {@link User#changePassword}      * @param session The editing session associated with the user manager.      * @throws RepositoryException If an exception or error occurs.      */
-name|void
-name|onPasswordChange
-parameter_list|(
-name|User
-name|user
-parameter_list|,
-name|String
-name|newPassword
-parameter_list|,
-name|Session
-name|session
 parameter_list|)
 throws|throws
 name|RepositoryException

@@ -45,16 +45,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|jcr
-operator|.
-name|Session
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -106,7 +96,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Authorizable action attempting to clear all group membership before removing  * the specified authorizable. If {@link Group#removeMember(org.apache.jackrabbit.api.security.user.Authorizable)}  * fails due to lack of permissions {@link #onRemove(org.apache.jackrabbit.api.security.user.Authorizable, javax.jcr.Session)}  * throws an exception and removing the specified authorizable will be aborted.  */
+comment|/**  * Authorizable action attempting to clear all group membership before removing  * the specified authorizable. If {@link Group#removeMember(Authorizable)}  * fails due to lack of permissions {@link #onRemove(Authorizable, Root)}  * throws an exception and removing the specified authorizable will be aborted.  */
 end_comment
 
 begin_class
@@ -117,28 +107,6 @@ extends|extends
 name|AbstractAuthorizableAction
 block|{
 comment|//-------------------------------------------------< AuthorizableAction>---
-comment|/**      * @see AuthorizableAction#onRemove(org.apache.jackrabbit.api.security.user.Authorizable, javax.jcr.Session)      */
-annotation|@
-name|Override
-specifier|public
-name|void
-name|onRemove
-parameter_list|(
-name|Authorizable
-name|authorizable
-parameter_list|,
-name|Session
-name|session
-parameter_list|)
-throws|throws
-name|RepositoryException
-block|{
-name|clearMembership
-argument_list|(
-name|authorizable
-argument_list|)
-expr_stmt|;
-block|}
 annotation|@
 name|Override
 specifier|public

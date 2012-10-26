@@ -35,16 +35,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|jcr
-operator|.
-name|Session
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -125,24 +115,6 @@ name|AbstractAuthorizableAction
 implements|implements
 name|AuthorizableAction
 block|{
-comment|/**      * Doesn't perform any action.      *      * @see AuthorizableAction#onCreate(org.apache.jackrabbit.api.security.user.Group, javax.jcr.Session)      */
-annotation|@
-name|Override
-specifier|public
-name|void
-name|onCreate
-parameter_list|(
-name|Group
-name|group
-parameter_list|,
-name|Session
-name|session
-parameter_list|)
-throws|throws
-name|RepositoryException
-block|{
-comment|// nothing to do
-block|}
 comment|/**      * Doesn't perform any action.      *      * @see AuthorizableAction#onCreate(org.apache.jackrabbit.api.security.user.Group, Root)      */
 annotation|@
 name|Override
@@ -155,27 +127,6 @@ name|group
 parameter_list|,
 name|Root
 name|root
-parameter_list|)
-throws|throws
-name|RepositoryException
-block|{
-comment|// nothing to do
-block|}
-comment|/**      * Doesn't perform any action.      *      * @see AuthorizableAction#onCreate(org.apache.jackrabbit.api.security.user.User, String, javax.jcr.Session)      */
-annotation|@
-name|Override
-specifier|public
-name|void
-name|onCreate
-parameter_list|(
-name|User
-name|user
-parameter_list|,
-name|String
-name|password
-parameter_list|,
-name|Session
-name|session
 parameter_list|)
 throws|throws
 name|RepositoryException
@@ -203,24 +154,6 @@ name|RepositoryException
 block|{
 comment|// nothing to do
 block|}
-comment|/**      * Doesn't perform any action.      *      * @see AuthorizableAction#onRemove(org.apache.jackrabbit.api.security.user.Authorizable, javax.jcr.Session)      */
-annotation|@
-name|Override
-specifier|public
-name|void
-name|onRemove
-parameter_list|(
-name|Authorizable
-name|authorizable
-parameter_list|,
-name|Session
-name|session
-parameter_list|)
-throws|throws
-name|RepositoryException
-block|{
-comment|// nothing to do
-block|}
 comment|/**      * Doesn't perform any action.      *      * @see AuthorizableAction#onRemove(org.apache.jackrabbit.api.security.user.Authorizable, Root)      */
 annotation|@
 name|Override
@@ -233,27 +166,6 @@ name|authorizable
 parameter_list|,
 name|Root
 name|root
-parameter_list|)
-throws|throws
-name|RepositoryException
-block|{
-comment|// nothing to do
-block|}
-comment|/**      * Doesn't perform any action.      *      * @see AuthorizableAction#onPasswordChange(org.apache.jackrabbit.api.security.user.User, String, javax.jcr.Session)      */
-annotation|@
-name|Override
-specifier|public
-name|void
-name|onPasswordChange
-parameter_list|(
-name|User
-name|user
-parameter_list|,
-name|String
-name|newPassword
-parameter_list|,
-name|Session
-name|session
 parameter_list|)
 throws|throws
 name|RepositoryException

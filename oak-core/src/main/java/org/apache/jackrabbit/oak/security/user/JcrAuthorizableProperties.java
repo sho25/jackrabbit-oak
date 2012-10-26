@@ -117,6 +117,18 @@ name|jcr
 operator|.
 name|nodetype
 operator|.
+name|ConstraintViolationException
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|jcr
+operator|.
+name|nodetype
+operator|.
 name|NodeType
 import|;
 end_import
@@ -796,6 +808,20 @@ expr_stmt|;
 return|return
 literal|true
 return|;
+block|}
+else|else
+block|{
+throw|throw
+operator|new
+name|ConstraintViolationException
+argument_list|(
+literal|"Property "
+operator|+
+name|relPath
+operator|+
+literal|" isn't a modifiable authorizable property"
+argument_list|)
+throw|;
 block|}
 block|}
 comment|// no such property or wasn't a property of this authorizable.
