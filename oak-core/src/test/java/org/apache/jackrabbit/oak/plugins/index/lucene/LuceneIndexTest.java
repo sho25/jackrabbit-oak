@@ -350,7 +350,7 @@ name|getNodeState
 argument_list|()
 decl_stmt|;
 operator|new
-name|LuceneEditor
+name|LuceneHook
 argument_list|(
 name|index
 argument_list|)
