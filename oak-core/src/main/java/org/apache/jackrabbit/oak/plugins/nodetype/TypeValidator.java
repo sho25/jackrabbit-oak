@@ -2108,6 +2108,7 @@ return|;
 block|}
 block|}
 specifier|private
+specifier|static
 name|boolean
 name|isHidden
 parameter_list|(
