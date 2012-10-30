@@ -444,6 +444,8 @@ operator|.
 name|getLoginContextProvider
 argument_list|(
 name|nodeStore
+argument_list|,
+name|indexProvider
 argument_list|)
 decl_stmt|;
 name|LoginContext

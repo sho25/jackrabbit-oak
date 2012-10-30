@@ -698,6 +698,7 @@ name|refresh
 argument_list|()
 expr_stmt|;
 block|}
+comment|// TODO: review if this constructor really makes sense and cannot be replaced.
 specifier|public
 name|RootImpl
 parameter_list|(
@@ -714,7 +715,6 @@ argument_list|(
 name|store
 argument_list|)
 expr_stmt|;
-comment|// TODO review again (see also comment in RepositoryCallback)
 name|this
 operator|.
 name|subject

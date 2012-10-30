@@ -57,6 +57,24 @@ name|oak
 operator|.
 name|spi
 operator|.
+name|query
+operator|.
+name|QueryIndexProvider
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
 name|security
 operator|.
 name|authentication
@@ -194,6 +212,7 @@ specifier|public
 interface|interface
 name|SecurityProvider
 block|{
+comment|// TODO review again
 annotation|@
 name|Nonnull
 name|LoginContextProvider
@@ -201,6 +220,9 @@ name|getLoginContextProvider
 parameter_list|(
 name|NodeStore
 name|nodeStore
+parameter_list|,
+name|QueryIndexProvider
+name|indexProvider
 parameter_list|)
 function_decl|;
 annotation|@
