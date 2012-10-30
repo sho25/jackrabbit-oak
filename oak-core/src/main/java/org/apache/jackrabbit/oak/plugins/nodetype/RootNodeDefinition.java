@@ -102,7 +102,6 @@ comment|/**  * Node definition for the root node.  */
 end_comment
 
 begin_class
-specifier|public
 specifier|final
 class|class
 name|RootNodeDefinition
@@ -138,7 +137,6 @@ specifier|final
 name|NodeTypeManager
 name|ntManager
 decl_stmt|;
-specifier|public
 name|RootNodeDefinition
 parameter_list|(
 name|NodeTypeManager
@@ -152,6 +150,7 @@ operator|=
 name|ntManager
 expr_stmt|;
 block|}
+comment|//-----------------------------------------------------< NodeDefinition>---
 annotation|@
 name|Override
 specifier|public
