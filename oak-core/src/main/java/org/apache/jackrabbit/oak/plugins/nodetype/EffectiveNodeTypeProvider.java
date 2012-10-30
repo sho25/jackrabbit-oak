@@ -52,7 +52,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * EffectiveNodeTypeProvider... TODO  */
+comment|/**  * EffectiveNodeTypeProvider... TODO  *  * FIXME: see also TypeValidator which has it's own private EffectiveNodeType class.  */
 end_comment
 
 begin_interface

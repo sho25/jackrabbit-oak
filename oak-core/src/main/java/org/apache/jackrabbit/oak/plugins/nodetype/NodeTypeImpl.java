@@ -2213,6 +2213,7 @@ name|String
 name|childNodeName
 parameter_list|)
 block|{
+comment|// FIXME: properly calculate matching definition
 for|for
 control|(
 name|NodeDefinition
@@ -2248,6 +2249,12 @@ argument_list|)
 condition|)
 block|{
 return|return
+operator|!
+name|definition
+operator|.
+name|isProtected
+argument_list|()
+operator|&&
 name|definition
 operator|.
 name|getDefaultPrimaryType
