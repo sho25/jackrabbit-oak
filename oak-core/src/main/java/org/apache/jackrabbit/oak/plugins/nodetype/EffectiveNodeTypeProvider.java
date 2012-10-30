@@ -51,6 +51,22 @@ name|NodeType
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|api
+operator|.
+name|Tree
+import|;
+end_import
+
 begin_comment
 comment|/**  * EffectiveNodeTypeProvider... TODO  *  * FIXME: see also TypeValidator which has it's own private EffectiveNodeType class.  */
 end_comment
@@ -69,6 +85,19 @@ name|getEffectiveNodeTypes
 parameter_list|(
 name|Node
 name|targetNode
+parameter_list|)
+throws|throws
+name|RepositoryException
+function_decl|;
+comment|/**      * Calculates and returns all effective node types of the given tree.      *      * @param tree      * @return all node types of the given tree      * @throws RepositoryException if the type information can not be accessed      */
+name|Iterable
+argument_list|<
+name|NodeType
+argument_list|>
+name|getEffectiveNodeTypes
+parameter_list|(
+name|Tree
+name|tree
 parameter_list|)
 throws|throws
 name|RepositoryException
