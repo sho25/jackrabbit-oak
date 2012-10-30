@@ -248,7 +248,10 @@ expr_stmt|;
 block|}
 block|}
 return|return
-name|after
+name|builder
+operator|.
+name|getNodeState
+argument_list|()
 return|;
 block|}
 block|}
