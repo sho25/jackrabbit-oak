@@ -260,7 +260,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * PrivilegeValidator... TODO  */
+comment|/**  * Validator implementation that is responsible for validating any modifications  * made to privileges stored in the repository.  */
 end_comment
 
 begin_class
