@@ -21,6 +21,32 @@ end_package
 
 begin_import
 import|import
+name|java
+operator|.
+name|io
+operator|.
+name|Closeable
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|api
+operator|.
+name|CommitFailedException
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -31,9 +57,9 @@ name|oak
 operator|.
 name|spi
 operator|.
-name|commit
+name|state
 operator|.
-name|CommitHook
+name|NodeStateDiff
 import|;
 end_import
 
@@ -46,8 +72,21 @@ specifier|public
 interface|interface
 name|IndexHook
 extends|extends
-name|CommitHook
-block|{  }
+name|Closeable
+block|{
+name|NodeStateDiff
+name|preProcess
+parameter_list|()
+throws|throws
+name|CommitFailedException
+function_decl|;
+name|void
+name|postProcess
+parameter_list|()
+throws|throws
+name|CommitFailedException
+function_decl|;
+block|}
 end_interface
 
 end_unit
