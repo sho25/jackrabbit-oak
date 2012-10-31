@@ -258,7 +258,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * LoginTest...  */
+comment|/**  * TokenLoginModuleTest...  */
 end_comment
 
 begin_class
