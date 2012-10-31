@@ -2126,7 +2126,7 @@ parameter_list|)
 throws|throws
 name|RepositoryException
 block|{
-comment|// TODO: review again. added to make tck happy.
+comment|// TODO: review again. added to make tck happy.  (see also OAK-411)
 comment|// TODO  before refactoring the type-validation removing nt:based fail with
 comment|// TODO  IllegalStateException: Inconsistent node type: org.apache.jackrabbit.oak.plugins.nodetype.NodeTypeImpl@55ab3cda
 if|if
@@ -2296,7 +2296,7 @@ range|:
 name|names
 control|)
 block|{
-comment|// TODO: review again. added to make tck happy.
+comment|// TODO: review again. added to make tck happy. (see also OAK-411)
 comment|// TODO  before refactoring the type-validation removing nt:based fail with
 comment|// TODO  IllegalStateException: Inconsistent node type: org.apache.jackrabbit.oak.plugins.nodetype.NodeTypeImpl@55ab3cda
 if|if
