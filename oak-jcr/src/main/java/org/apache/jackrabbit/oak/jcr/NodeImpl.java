@@ -6758,6 +6758,7 @@ return|;
 block|}
 else|else
 block|{
+comment|// Return a property instance which throws on access. See OAK-395
 return|return
 operator|new
 name|PropertyImpl
