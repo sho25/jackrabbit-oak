@@ -1160,6 +1160,7 @@ argument_list|,
 name|TOKENS_NT_NAME
 argument_list|)
 decl_stmt|;
+comment|// TODO: review if token node should be made referenceable
 name|String
 name|key
 init|=
