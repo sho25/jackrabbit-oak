@@ -298,7 +298,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * UserProviderImplTest...  *  * TODO: create tests with custom config that persists changes (currently fails since config used in UserValidator is different)  * TODO: add tests for setProtectedProperty (might still be refactored...)  * TODO: add tests for findAuthorizables once implementation is ready  */
+comment|/**  * UserProviderImplTest...  */
 end_comment
 
 begin_class
@@ -1694,12 +1694,17 @@ argument_list|(
 name|a
 argument_list|)
 expr_stmt|;
-comment|// FIXME there is no additional contract on equality of Tree instances neither do the various accessors guarantee to return the same instance on call
 name|assertEquals
 argument_list|(
 name|user
+operator|.
+name|getPath
+argument_list|()
 argument_list|,
 name|a
+operator|.
+name|getPath
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|Tree
@@ -1734,8 +1739,14 @@ expr_stmt|;
 name|assertEquals
 argument_list|(
 name|group
+operator|.
+name|getPath
+argument_list|()
 argument_list|,
 name|a
+operator|.
+name|getPath
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
