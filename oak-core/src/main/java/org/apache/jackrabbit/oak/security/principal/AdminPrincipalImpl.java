@@ -92,7 +92,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * AdminPrincipalImpl... TODO  */
+comment|/**  * AdminPrincipal variant of the {@link TreeBasedPrincipal}.  */
 end_comment
 
 begin_class
@@ -104,24 +104,6 @@ name|TreeBasedPrincipal
 implements|implements
 name|AdminPrincipal
 block|{
-specifier|public
-name|AdminPrincipalImpl
-parameter_list|(
-name|Tree
-name|tree
-parameter_list|,
-name|PathMapper
-name|pathMapper
-parameter_list|)
-block|{
-name|super
-argument_list|(
-name|tree
-argument_list|,
-name|pathMapper
-argument_list|)
-expr_stmt|;
-block|}
 specifier|public
 name|AdminPrincipalImpl
 parameter_list|(
