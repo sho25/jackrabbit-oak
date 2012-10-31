@@ -68,7 +68,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * EffectiveNodeTypeProvider... TODO  *  * FIXME: see also TypeValidator which has it's own private EffectiveNodeType class.  */
+comment|/**  * EffectiveNodeTypeProvider... TODO  *  * FIXME: see also TypeValidator which has it's own private EffectiveNodeType class. See OAK-412  */
 end_comment
 
 begin_interface
@@ -76,7 +76,7 @@ specifier|public
 interface|interface
 name|EffectiveNodeTypeProvider
 block|{
-comment|/**      * Calculates and returns all effective node types of the given node.      *      * @param targetNode the node for which the types should be calculated.      * @return all types of the given node      * @throws RepositoryException if the type information can not be accessed      */
+comment|/**      * FIXME in contrast what the method name implies this method returns the transitive closure of the super types      * TODO clarify contract, what is the difference between this method and NodeType.getSuperTypes()      * Calculates and returns all effective node types of the given node.      *      * @param targetNode the node for which the types should be calculated.      * @return all types of the given node      * @throws RepositoryException if the type information can not be accessed      */
 name|Iterable
 argument_list|<
 name|NodeType
@@ -89,7 +89,7 @@ parameter_list|)
 throws|throws
 name|RepositoryException
 function_decl|;
-comment|/**      * Calculates and returns all effective node types of the given tree.      *      * @param tree      * @return all node types of the given tree      * @throws RepositoryException if the type information can not be accessed      */
+comment|/**      * FIXME in contrast what the method name implies this method returns the transitive closure of the super types      * TODO clarify contract, what is the difference between this method and NodeType.getSuperTypes()      * Calculates and returns all effective node types of the given tree.      *      * @param tree      * @return all node types of the given tree      * @throws RepositoryException if the type information can not be accessed      */
 name|Iterable
 argument_list|<
 name|NodeType
