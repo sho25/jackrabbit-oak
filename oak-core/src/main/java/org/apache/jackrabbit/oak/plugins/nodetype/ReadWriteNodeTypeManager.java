@@ -1211,7 +1211,7 @@ parameter_list|)
 throws|throws
 name|RepositoryException
 block|{
-comment|// TODO proper node type registration... (OAK-66)
+comment|// TODO proper node type registration... (OAK-66, OAK-411)
 name|Root
 name|root
 init|=
@@ -1284,7 +1284,7 @@ parameter_list|)
 throws|throws
 name|RepositoryException
 block|{
-comment|// TODO handle inter-type dependencies (OAK-66)
+comment|// TODO handle inter-type dependencies (OAK-66, OAK-411)
 name|Root
 name|root
 init|=
@@ -1576,7 +1576,7 @@ name|isMixin
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|// TODO fail if not orderable but a supertype is orderable. See 3.7.6.7 Node Type Attribute Subtyping Rules
+comment|// TODO fail if not orderable but a supertype is orderable. See 3.7.6.7 Node Type Attribute Subtyping Rules (OAK-411)
 name|node
 operator|.
 name|setBoolean
@@ -1597,7 +1597,7 @@ operator|.
 name|getPrimaryItemName
 argument_list|()
 decl_stmt|;
-comment|// TODO fail if a supertype specifies a different primary item. See 3.7.6.7 Node Type Attribute Subtyping Rules
+comment|// TODO fail if a supertype specifies a different primary item. See 3.7.6.7 Node Type Attribute Subtyping Rules (OAK-411)
 if|if
 condition|(
 name|primaryItemName
@@ -1615,7 +1615,7 @@ name|primaryItemName
 argument_list|)
 expr_stmt|;
 block|}
-comment|// TODO fail on invalid item definitions. See 3.7.6.8 Item Definitions in Subtypes
+comment|// TODO fail on invalid item definitions. See 3.7.6.8 Item Definitions in Subtypes (OAK-411)
 name|PropertyDefinition
 index|[]
 name|propertyDefinitions
@@ -1776,7 +1776,7 @@ name|name
 argument_list|)
 expr_stmt|;
 block|}
-comment|// TODO avoid unbounded recursive auto creation. See 3.7.2.3.5 Chained Auto-creation
+comment|// TODO avoid unbounded recursive auto creation. See 3.7.2.3.5 Chained Auto-creation (OAK-411)
 name|node
 operator|.
 name|setBoolean
