@@ -1644,6 +1644,7 @@ name|RepositoryException
 name|e
 parameter_list|)
 block|{
+comment|// TODO don't use exceptions for flow control. Use internal method in ReadOnlyNodeTypeManager instead.
 name|log
 operator|.
 name|debug
@@ -1780,6 +1781,7 @@ name|RepositoryException
 name|e
 parameter_list|)
 block|{
+comment|// TODO don't use exceptions for flow control. Use internal method in ReadOnlyNodeTypeManager instead.
 name|log
 operator|.
 name|debug
