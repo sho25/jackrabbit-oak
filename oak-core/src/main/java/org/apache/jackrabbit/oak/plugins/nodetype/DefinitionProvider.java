@@ -112,6 +112,25 @@ parameter_list|()
 throws|throws
 name|RepositoryException
 function_decl|;
+comment|/**      * Returns the node definition for a child node of<code>parent</code> named      *<code>nodeName</code> with a default primary type. First the non-residual      * child node definitions of<code>parent</code> are checked matching the      * given node name. Then the residual definitions are checked.      *      * @param parent   the parent node.      * @param nodeName the name of the child node.      * @return the applicable node definition.      * @throws RepositoryException if there is no applicable node definition      *                             with a default primary type.      */
+annotation|@
+name|Nonnull
+name|NodeDefinition
+name|getDefinition
+parameter_list|(
+annotation|@
+name|Nonnull
+name|Node
+name|parent
+parameter_list|,
+annotation|@
+name|Nonnull
+name|String
+name|nodeName
+parameter_list|)
+throws|throws
+name|RepositoryException
+function_decl|;
 annotation|@
 name|Nonnull
 name|NodeDefinition
