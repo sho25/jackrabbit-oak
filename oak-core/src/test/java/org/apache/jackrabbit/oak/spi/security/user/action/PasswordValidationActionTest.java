@@ -723,6 +723,10 @@ argument_list|,
 name|pw
 argument_list|,
 name|root
+argument_list|,
+name|NamePathMapper
+operator|.
+name|DEFAULT
 argument_list|)
 expr_stmt|;
 name|fail
@@ -805,6 +809,10 @@ argument_list|,
 name|pw
 argument_list|,
 name|root
+argument_list|,
+name|NamePathMapper
+operator|.
+name|DEFAULT
 argument_list|)
 expr_stmt|;
 block|}
@@ -993,6 +1001,9 @@ name|password
 parameter_list|,
 name|Root
 name|root
+parameter_list|,
+name|NamePathMapper
+name|namePathMapper
 parameter_list|)
 throws|throws
 name|RepositoryException
@@ -1015,6 +1026,9 @@ name|newPassword
 parameter_list|,
 name|Root
 name|root
+parameter_list|,
+name|NamePathMapper
+name|namePathMapper
 parameter_list|)
 throws|throws
 name|RepositoryException

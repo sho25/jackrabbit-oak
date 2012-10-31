@@ -103,6 +103,22 @@ name|Root
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|namepath
+operator|.
+name|NamePathMapper
+import|;
+end_import
+
 begin_comment
 comment|/**  * Abstract implementation of the {@code AuthorizableAction} interface that  * doesn't perform any action. This is a convenience implementation allowing  * subclasses to only implement methods that need extra attention.  */
 end_comment
@@ -115,7 +131,7 @@ name|AbstractAuthorizableAction
 implements|implements
 name|AuthorizableAction
 block|{
-comment|/**      * Doesn't perform any action.      *      * @see AuthorizableAction#onCreate(org.apache.jackrabbit.api.security.user.Group, Root)      */
+comment|/**      * Doesn't perform any action.      *      * @see AuthorizableAction#onCreate(org.apache.jackrabbit.api.security.user.Group, org.apache.jackrabbit.oak.api.Root, org.apache.jackrabbit.oak.namepath.NamePathMapper)      */
 annotation|@
 name|Override
 specifier|public
@@ -127,13 +143,16 @@ name|group
 parameter_list|,
 name|Root
 name|root
+parameter_list|,
+name|NamePathMapper
+name|namePathMapper
 parameter_list|)
 throws|throws
 name|RepositoryException
 block|{
 comment|// nothing to do
 block|}
-comment|/**      * Doesn't perform any action.      *      * @see AuthorizableAction#onCreate(org.apache.jackrabbit.api.security.user.User, String, Root)      */
+comment|/**      * Doesn't perform any action.      *      * @see AuthorizableAction#onCreate(org.apache.jackrabbit.api.security.user.User, String, org.apache.jackrabbit.oak.api.Root, org.apache.jackrabbit.oak.namepath.NamePathMapper)      */
 annotation|@
 name|Override
 specifier|public
@@ -148,13 +167,16 @@ name|password
 parameter_list|,
 name|Root
 name|root
+parameter_list|,
+name|NamePathMapper
+name|namePathMapper
 parameter_list|)
 throws|throws
 name|RepositoryException
 block|{
 comment|// nothing to do
 block|}
-comment|/**      * Doesn't perform any action.      *      * @see AuthorizableAction#onRemove(org.apache.jackrabbit.api.security.user.Authorizable, Root)      */
+comment|/**      * Doesn't perform any action.      *      * @see AuthorizableAction#onRemove(org.apache.jackrabbit.api.security.user.Authorizable, org.apache.jackrabbit.oak.api.Root, org.apache.jackrabbit.oak.namepath.NamePathMapper)      */
 annotation|@
 name|Override
 specifier|public
@@ -166,13 +188,16 @@ name|authorizable
 parameter_list|,
 name|Root
 name|root
+parameter_list|,
+name|NamePathMapper
+name|namePathMapper
 parameter_list|)
 throws|throws
 name|RepositoryException
 block|{
 comment|// nothing to do
 block|}
-comment|/**      * Doesn't perform any action.      *      * @see AuthorizableAction#onPasswordChange(org.apache.jackrabbit.api.security.user.User, String, Root)      */
+comment|/**      * Doesn't perform any action.      *      * @see AuthorizableAction#onPasswordChange(org.apache.jackrabbit.api.security.user.User, String, org.apache.jackrabbit.oak.api.Root, org.apache.jackrabbit.oak.namepath.NamePathMapper)      */
 annotation|@
 name|Override
 specifier|public
@@ -187,6 +212,9 @@ name|newPassword
 parameter_list|,
 name|Root
 name|root
+parameter_list|,
+name|NamePathMapper
+name|namePathMapper
 parameter_list|)
 throws|throws
 name|RepositoryException

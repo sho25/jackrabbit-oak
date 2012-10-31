@@ -169,12 +169,6 @@ name|PARAM_PASSWORD_SALT_SIZE
 init|=
 literal|"passwordSaltSize"
 decl_stmt|;
-comment|/**      * Configuration parameter to set the authorizable actions.      *      * @see org.apache.jackrabbit.oak.spi.security.user.action.AuthorizableAction      */
-name|String
-name|PARAM_AUTHORIZABLE_ACTIONS
-init|=
-literal|"authorizableActions"
-decl_stmt|;
 block|}
 end_interface
 

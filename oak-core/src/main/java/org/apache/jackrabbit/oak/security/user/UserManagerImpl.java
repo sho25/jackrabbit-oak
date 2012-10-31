@@ -1349,6 +1349,8 @@ argument_list|,
 name|password
 argument_list|,
 name|root
+argument_list|,
+name|namePathMapper
 argument_list|)
 expr_stmt|;
 block|}
@@ -1378,6 +1380,8 @@ argument_list|(
 name|group
 argument_list|,
 name|root
+argument_list|,
+name|namePathMapper
 argument_list|)
 expr_stmt|;
 block|}
@@ -1407,6 +1411,8 @@ argument_list|(
 name|authorizable
 argument_list|,
 name|root
+argument_list|,
+name|namePathMapper
 argument_list|)
 expr_stmt|;
 block|}
@@ -1441,6 +1447,8 @@ argument_list|,
 name|password
 argument_list|,
 name|root
+argument_list|,
+name|namePathMapper
 argument_list|)
 expr_stmt|;
 block|}

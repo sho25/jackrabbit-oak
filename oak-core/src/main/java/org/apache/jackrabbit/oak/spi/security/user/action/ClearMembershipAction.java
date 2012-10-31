@@ -95,8 +95,24 @@ name|Root
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|namepath
+operator|.
+name|NamePathMapper
+import|;
+end_import
+
 begin_comment
-comment|/**  * Authorizable action attempting to clear all group membership before removing  * the specified authorizable. If {@link Group#removeMember(Authorizable)}  * fails due to lack of permissions {@link #onRemove(Authorizable, Root)}  * throws an exception and removing the specified authorizable will be aborted.  */
+comment|/**  * Authorizable action attempting to clear all group membership before removing  * the specified authorizable. If {@link Group#removeMember(Authorizable)}  * fails due to lack of permissions {@link AuthorizableAction#onRemove(org.apache.jackrabbit.api.security.user.Authorizable, org.apache.jackrabbit.oak.api.Root, org.apache.jackrabbit.oak.namepath.NamePathMapper)}  * throws an exception and removing the specified authorizable will be aborted.  */
 end_comment
 
 begin_class
@@ -118,6 +134,9 @@ name|authorizable
 parameter_list|,
 name|Root
 name|root
+parameter_list|,
+name|NamePathMapper
+name|namePathMapper
 parameter_list|)
 throws|throws
 name|RepositoryException
