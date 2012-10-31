@@ -459,22 +459,6 @@ name|base
 operator|.
 name|Preconditions
 operator|.
-name|checkArgument
-import|;
-end_import
-
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|Preconditions
-operator|.
 name|checkNotNull
 import|;
 end_import
@@ -2421,24 +2405,10 @@ init|=
 name|Queues
 operator|.
 name|newArrayDeque
-argument_list|()
-decl_stmt|;
-for|for
-control|(
-name|NodeType
-name|nt
-range|:
-name|nodeTypes
-control|)
-block|{
-name|queue
-operator|.
-name|add
 argument_list|(
-name|nt
+name|nodeTypes
 argument_list|)
-expr_stmt|;
-block|}
+decl_stmt|;
 name|Collection
 argument_list|<
 name|NodeType
@@ -2467,6 +2437,7 @@ return|;
 block|}
 comment|//------------------------------------------------------------< private>---
 specifier|private
+specifier|static
 name|Collection
 argument_list|<
 name|NodeType
@@ -2563,6 +2534,7 @@ argument_list|()
 return|;
 block|}
 specifier|private
+specifier|static
 name|PropertyDefinition
 name|getPropertyDefinition
 parameter_list|(
