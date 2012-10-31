@@ -18,22 +18,6 @@ package|;
 end_package
 
 begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|Preconditions
-operator|.
-name|checkNotNull
-import|;
-end_import
-
-begin_import
 import|import
 name|java
 operator|.
@@ -345,6 +329,24 @@ name|plugins
 operator|.
 name|nodetype
 operator|.
+name|RegistrationValidatorProvider
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|nodetype
+operator|.
 name|TypeValidatorProvider
 import|;
 end_import
@@ -491,6 +493,22 @@ name|SecurityProvider
 import|;
 end_import
 
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkNotNull
+import|;
+end_import
+
 begin_class
 specifier|public
 class|class
@@ -568,6 +586,13 @@ name|with
 argument_list|(
 operator|new
 name|TypeValidatorProvider
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|with
+argument_list|(
+operator|new
+name|RegistrationValidatorProvider
 argument_list|()
 argument_list|)
 expr_stmt|;

@@ -2126,27 +2126,6 @@ parameter_list|)
 throws|throws
 name|RepositoryException
 block|{
-comment|// TODO: review again. added to make tck happy.  (see also OAK-411)
-comment|// TODO  before refactoring the type-validation removing nt:based fail with
-comment|// TODO  IllegalStateException: Inconsistent node type: org.apache.jackrabbit.oak.plugins.nodetype.NodeTypeImpl@55ab3cda
-if|if
-condition|(
-name|NT_BASE
-operator|.
-name|equals
-argument_list|(
-name|name
-argument_list|)
-condition|)
-block|{
-throw|throw
-operator|new
-name|RepositoryException
-argument_list|(
-literal|"nt:base cannot be removed."
-argument_list|)
-throw|;
-block|}
 name|Tree
 name|type
 init|=
@@ -2296,27 +2275,6 @@ range|:
 name|names
 control|)
 block|{
-comment|// TODO: review again. added to make tck happy. (see also OAK-411)
-comment|// TODO  before refactoring the type-validation removing nt:based fail with
-comment|// TODO  IllegalStateException: Inconsistent node type: org.apache.jackrabbit.oak.plugins.nodetype.NodeTypeImpl@55ab3cda
-if|if
-condition|(
-name|NT_BASE
-operator|.
-name|equals
-argument_list|(
-name|name
-argument_list|)
-condition|)
-block|{
-throw|throw
-operator|new
-name|RepositoryException
-argument_list|(
-literal|"nt:base cannot be removed."
-argument_list|)
-throw|;
-block|}
 name|Tree
 name|type
 init|=
