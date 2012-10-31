@@ -1694,6 +1694,7 @@ argument_list|(
 name|a
 argument_list|)
 expr_stmt|;
+comment|// FIXME there is no additional contract on equality of Tree instances neither do the various accessors guarantee to return the same instance on call
 name|assertEquals
 argument_list|(
 name|user
