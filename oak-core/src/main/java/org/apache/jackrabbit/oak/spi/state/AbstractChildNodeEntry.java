@@ -42,11 +42,6 @@ block|{
 return|return
 name|getName
 argument_list|()
-operator|+
-literal|": "
-operator|+
-name|getNodeState
-argument_list|()
 return|;
 block|}
 comment|/**      * Checks whether the given object is equal to this one. Two child node      * entries are considered equal if both their names and referenced node      * states match. Subclasses may override this method with a more efficient      * equality check if one is available.      *      * @param that target of the comparison      * @return {@code true} if the objects are equal,      *         {@code false} otherwise      */
