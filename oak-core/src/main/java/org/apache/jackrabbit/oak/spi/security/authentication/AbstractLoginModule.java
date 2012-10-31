@@ -1011,6 +1011,7 @@ literal|null
 return|;
 block|}
 block|}
+comment|/**      * Tries to obtain the {@code SecurityProvider} object from the callback      * handler using a new SecurityProviderCallback and keeps the value as      * private field. If the callback handler isn't able to handle the      * SecurityProviderCallback this method returns {@code null}.      *      * @return The {@code SecurityProvider} associated with this      * {@code LoginModule} or {@code null}.      */
 annotation|@
 name|CheckForNull
 specifier|protected
@@ -1097,6 +1098,7 @@ return|return
 name|securityProvider
 return|;
 block|}
+comment|/**      * Tries to obtain a {@code Root} object from the callback handler using      * a new RepositoryCallback and keeps the value as private field.      * If the callback handler isn't able to handle the RepositoryCallback      * this method returns {@code null}.      *      * @return The {@code Root} associated with this {@code LoginModule} or      * {@code null}.      */
 annotation|@
 name|CheckForNull
 specifier|protected
@@ -1183,6 +1185,7 @@ return|return
 name|root
 return|;
 block|}
+comment|/**      * Retrieves the {@link UserManager} that should be used to handle      * this authentication. If no user manager has been configure this      * method returns {@code null}.      *      * @return A instance of {@code UserManager} or {@code null}.      */
 annotation|@
 name|CheckForNull
 specifier|protected
@@ -1314,6 +1317,7 @@ return|return
 name|userManager
 return|;
 block|}
+comment|/**      * Retrieves the {@link PrincipalProvider} that should be used to handle      * this authentication. If no principal provider has been configure this      * method returns {@code null}.      *      * @return A instance of {@code PrincipalProvider} or {@code null}.      */
 annotation|@
 name|CheckForNull
 specifier|protected
