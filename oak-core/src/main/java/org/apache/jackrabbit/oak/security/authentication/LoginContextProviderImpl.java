@@ -355,7 +355,6 @@ parameter_list|)
 throws|throws
 name|LoginException
 block|{
-comment|// TODO  - validation of workspace name (including access rights for the given 'user')
 name|Subject
 name|subject
 init|=
