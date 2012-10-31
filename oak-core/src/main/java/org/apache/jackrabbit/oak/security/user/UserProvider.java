@@ -522,10 +522,8 @@ name|DEFAULT_USER_PATH
 argument_list|)
 expr_stmt|;
 block|}
-comment|//-------------------------------------------------------< UserProvider>---
 annotation|@
 name|Nonnull
-specifier|public
 name|Tree
 name|createUser
 parameter_list|(
@@ -551,7 +549,6 @@ return|;
 block|}
 annotation|@
 name|Nonnull
-specifier|public
 name|Tree
 name|createGroup
 parameter_list|(
@@ -577,7 +574,6 @@ return|;
 block|}
 annotation|@
 name|CheckForNull
-specifier|public
 name|Tree
 name|getAuthorizable
 parameter_list|(
@@ -598,7 +594,6 @@ return|;
 block|}
 annotation|@
 name|CheckForNull
-specifier|public
 name|Tree
 name|getAuthorizableByPath
 parameter_list|(
@@ -615,7 +610,6 @@ return|;
 block|}
 annotation|@
 name|CheckForNull
-specifier|public
 name|Tree
 name|getAuthorizableByPrincipal
 parameter_list|(
@@ -813,7 +807,7 @@ return|;
 block|}
 annotation|@
 name|CheckForNull
-specifier|public
+specifier|static
 name|String
 name|getAuthorizableId
 parameter_list|(
