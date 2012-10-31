@@ -1445,6 +1445,7 @@ return|return
 name|principalProvider
 return|;
 block|}
+comment|/**      * Retrieves all principals associated with the specified {@code userId} for      * the configured principal provider.      *      * @param userId The id of the user.      * @return The set of principals associated with the given {@code userId}.      * @see #getPrincipalProvider()      */
 annotation|@
 name|Nonnull
 specifier|protected
@@ -1457,7 +1458,7 @@ argument_list|>
 name|getPrincipals
 parameter_list|(
 name|String
-name|userID
+name|userId
 parameter_list|)
 block|{
 name|PrincipalProvider
@@ -1494,7 +1495,7 @@ name|principalProvider
 operator|.
 name|getPrincipals
 argument_list|(
-name|userID
+name|userId
 argument_list|)
 return|;
 block|}
