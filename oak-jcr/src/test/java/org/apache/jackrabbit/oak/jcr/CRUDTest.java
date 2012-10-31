@@ -23,6 +23,16 @@ name|javax
 operator|.
 name|jcr
 operator|.
+name|InvalidItemStateException
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|jcr
+operator|.
 name|Node
 import|;
 end_import
@@ -403,8 +413,9 @@ operator|.
 name|getRootNode
 argument_list|()
 decl_stmt|;
-try|try
-block|{
+name|Property
+name|p
+init|=
 name|root
 operator|.
 name|setProperty
@@ -416,20 +427,32 @@ name|String
 operator|)
 literal|null
 argument_list|)
+decl_stmt|;
+name|assertNotNull
+argument_list|(
+name|p
+argument_list|)
+expr_stmt|;
+try|try
+block|{
+name|p
+operator|.
+name|getValue
+argument_list|()
 expr_stmt|;
 name|fail
 argument_list|(
-literal|"removing a missing property should fail"
+literal|"must throw InvalidItemStateException"
 argument_list|)
 expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|PathNotFoundException
+name|InvalidItemStateException
 name|e
 parameter_list|)
 block|{
-comment|// success
+comment|// expected
 block|}
 block|}
 annotation|@
@@ -455,8 +478,9 @@ operator|.
 name|getRootNode
 argument_list|()
 decl_stmt|;
-try|try
-block|{
+name|Property
+name|p
+init|=
 name|root
 operator|.
 name|setProperty
@@ -469,20 +493,32 @@ index|[]
 operator|)
 literal|null
 argument_list|)
+decl_stmt|;
+name|assertNotNull
+argument_list|(
+name|p
+argument_list|)
+expr_stmt|;
+try|try
+block|{
+name|p
+operator|.
+name|getValues
+argument_list|()
 expr_stmt|;
 name|fail
 argument_list|(
-literal|"removing a missing property should fail"
+literal|"must throw InvalidItemStateException"
 argument_list|)
 expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|PathNotFoundException
+name|InvalidItemStateException
 name|e
 parameter_list|)
 block|{
-comment|// success
+comment|// expected
 block|}
 block|}
 annotation|@
