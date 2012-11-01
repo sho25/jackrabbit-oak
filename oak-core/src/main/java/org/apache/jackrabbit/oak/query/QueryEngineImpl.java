@@ -203,7 +203,7 @@ name|spi
 operator|.
 name|state
 operator|.
-name|NodeStore
+name|NodeState
 import|;
 end_import
 
@@ -246,8 +246,8 @@ literal|"JCR-JQOM"
 decl_stmt|;
 specifier|private
 specifier|final
-name|NodeStore
-name|store
+name|NodeState
+name|root
 decl_stmt|;
 specifier|private
 specifier|final
@@ -257,8 +257,8 @@ decl_stmt|;
 specifier|public
 name|QueryEngineImpl
 parameter_list|(
-name|NodeStore
-name|store
+name|NodeState
+name|root
 parameter_list|,
 name|QueryIndexProvider
 name|indexProvider
@@ -266,9 +266,9 @@ parameter_list|)
 block|{
 name|this
 operator|.
-name|store
+name|root
 operator|=
-name|store
+name|root
 expr_stmt|;
 name|this
 operator|.
@@ -640,10 +640,9 @@ name|q
 operator|.
 name|executeQuery
 argument_list|(
-name|store
+name|this
 operator|.
-name|getRoot
-argument_list|()
+name|root
 argument_list|)
 return|;
 block|}
@@ -736,10 +735,7 @@ name|indexProvider
 operator|.
 name|getQueryIndexes
 argument_list|(
-name|store
-operator|.
-name|getRoot
-argument_list|()
+name|root
 argument_list|)
 return|;
 block|}

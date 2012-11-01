@@ -731,8 +731,6 @@ argument_list|()
 argument_list|)
 argument_list|)
 argument_list|,
-name|root
-argument_list|,
 operator|new
 name|NamePathMapper
 operator|.

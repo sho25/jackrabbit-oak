@@ -687,11 +687,6 @@ literal|0
 argument_list|,
 name|sv
 argument_list|,
-name|session
-operator|.
-name|getLatestRoot
-argument_list|()
-argument_list|,
 literal|null
 argument_list|)
 return|;

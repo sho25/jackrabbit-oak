@@ -1717,8 +1717,6 @@ name|offset
 argument_list|,
 literal|null
 argument_list|,
-name|root
-argument_list|,
 name|namePathMapper
 argument_list|)
 operator|.

@@ -729,8 +729,6 @@ literal|0
 argument_list|,
 name|bindings
 argument_list|,
-name|root
-argument_list|,
 name|userManager
 operator|.
 name|getNamePathMapper
