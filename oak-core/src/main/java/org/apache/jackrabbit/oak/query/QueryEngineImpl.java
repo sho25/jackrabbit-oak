@@ -683,6 +683,8 @@ operator|.
 name|getCost
 argument_list|(
 name|filter
+argument_list|,
+name|root
 argument_list|)
 decl_stmt|;
 if|if
