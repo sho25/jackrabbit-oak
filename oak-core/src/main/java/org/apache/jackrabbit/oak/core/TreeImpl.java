@@ -1342,7 +1342,7 @@ expr_stmt|;
 block|}
 name|root
 operator|.
-name|purge
+name|updated
 argument_list|()
 expr_stmt|;
 block|}
@@ -1464,7 +1464,7 @@ expr_stmt|;
 block|}
 name|root
 operator|.
-name|purge
+name|updated
 argument_list|()
 expr_stmt|;
 return|return
@@ -1716,7 +1716,7 @@ argument_list|)
 expr_stmt|;
 name|root
 operator|.
-name|purge
+name|updated
 argument_list|()
 expr_stmt|;
 return|return
@@ -1753,7 +1753,7 @@ argument_list|)
 expr_stmt|;
 name|root
 operator|.
-name|purge
+name|updated
 argument_list|()
 expr_stmt|;
 block|}
@@ -1795,7 +1795,7 @@ argument_list|)
 expr_stmt|;
 name|root
 operator|.
-name|purge
+name|updated
 argument_list|()
 expr_stmt|;
 block|}
@@ -1845,7 +1845,7 @@ argument_list|)
 expr_stmt|;
 name|root
 operator|.
-name|purge
+name|updated
 argument_list|()
 expr_stmt|;
 block|}
@@ -1879,7 +1879,7 @@ argument_list|)
 expr_stmt|;
 name|root
 operator|.
-name|purge
+name|updated
 argument_list|()
 expr_stmt|;
 block|}

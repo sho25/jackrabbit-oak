@@ -556,7 +556,7 @@ name|RootImpl
 implements|implements
 name|Root
 block|{
-comment|/**      * Number of {@link #purge()} calls for which changes are kept in memory.      */
+comment|/**      * Number of {@link #updated} calls for which changes are kept in memory.      */
 specifier|private
 specifier|static
 specifier|final
@@ -592,7 +592,7 @@ specifier|private
 name|TreeImpl
 name|rootTree
 decl_stmt|;
-comment|/**      * Number of {@link #purge()} occurred so since the lase      * purge.      */
+comment|/**      * Number of {@link #updated} occurred so since the lase      * purge.      */
 specifier|private
 name|int
 name|modCount
@@ -1539,7 +1539,7 @@ expr_stmt|;
 block|}
 comment|// TODO better way to determine purge limit. See OAK-175
 name|void
-name|purge
+name|updated
 parameter_list|()
 block|{
 if|if
