@@ -366,7 +366,7 @@ operator|.
 name|getTime
 argument_list|()
 operator|+
-literal|7200000
+literal|7200001
 decl_stmt|;
 name|assertTrue
 argument_list|(
