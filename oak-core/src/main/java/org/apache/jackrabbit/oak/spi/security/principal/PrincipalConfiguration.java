@@ -91,6 +91,24 @@ name|NamePathMapper
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|security
+operator|.
+name|SecurityConfiguration
+import|;
+end_import
+
 begin_comment
 comment|/**  * PrincipalConfig... TODO  */
 end_comment
@@ -99,6 +117,8 @@ begin_interface
 specifier|public
 interface|interface
 name|PrincipalConfiguration
+extends|extends
+name|SecurityConfiguration
 block|{
 annotation|@
 name|Nonnull

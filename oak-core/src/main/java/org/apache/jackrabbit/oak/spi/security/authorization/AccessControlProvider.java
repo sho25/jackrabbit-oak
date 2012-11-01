@@ -23,16 +23,6 @@ end_package
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|List
-import|;
-end_import
-
-begin_import
-import|import
 name|javax
 operator|.
 name|security
@@ -55,9 +45,9 @@ name|oak
 operator|.
 name|spi
 operator|.
-name|commit
+name|security
 operator|.
-name|ValidatorProvider
+name|SecurityConfiguration
 import|;
 end_import
 
@@ -69,6 +59,8 @@ begin_interface
 specifier|public
 interface|interface
 name|AccessControlProvider
+extends|extends
+name|SecurityConfiguration
 block|{
 specifier|public
 name|AccessControlContext
@@ -77,14 +69,6 @@ parameter_list|(
 name|Subject
 name|subject
 parameter_list|)
-function_decl|;
-specifier|public
-name|List
-argument_list|<
-name|ValidatorProvider
-argument_list|>
-name|getValidatorProviders
-parameter_list|()
 function_decl|;
 block|}
 end_interface
