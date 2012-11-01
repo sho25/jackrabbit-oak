@@ -1616,6 +1616,27 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+name|tokenInfo
+operator|.
+name|isExpired
+argument_list|(
+name|loginTime
+argument_list|)
+condition|)
+block|{
+name|log
+operator|.
+name|debug
+argument_list|(
+literal|"Attempt to reset an expired token."
+argument_list|)
+expr_stmt|;
+return|return
+literal|false
+return|;
+block|}
+if|if
+condition|(
 name|expTime
 operator|-
 name|loginTime
