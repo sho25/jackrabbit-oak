@@ -212,6 +212,15 @@ specifier|public
 interface|interface
 name|SecurityProvider
 block|{
+annotation|@
+name|Nonnull
+name|Iterable
+argument_list|<
+name|SecurityConfiguration
+argument_list|>
+name|getSecurityConfigurations
+parameter_list|()
+function_decl|;
 comment|// TODO review again
 annotation|@
 name|Nonnull

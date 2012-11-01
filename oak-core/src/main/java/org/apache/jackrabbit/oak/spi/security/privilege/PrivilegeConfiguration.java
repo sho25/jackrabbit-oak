@@ -23,16 +23,6 @@ end_package
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Set
-import|;
-end_import
-
-begin_import
-import|import
 name|javax
 operator|.
 name|annotation
@@ -119,9 +109,9 @@ name|oak
 operator|.
 name|spi
 operator|.
-name|commit
+name|security
 operator|.
-name|ValidatorProvider
+name|SecurityConfiguration
 import|;
 end_import
 
@@ -133,6 +123,8 @@ begin_interface
 specifier|public
 interface|interface
 name|PrivilegeConfiguration
+extends|extends
+name|SecurityConfiguration
 block|{
 annotation|@
 name|Nonnull
@@ -160,15 +152,6 @@ parameter_list|,
 name|NamePathMapper
 name|namePathMapper
 parameter_list|)
-function_decl|;
-annotation|@
-name|Nonnull
-name|Set
-argument_list|<
-name|ValidatorProvider
-argument_list|>
-name|getValidatorProviders
-parameter_list|()
 function_decl|;
 block|}
 end_interface

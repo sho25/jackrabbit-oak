@@ -35,7 +35,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|Set
+name|List
 import|;
 end_import
 
@@ -147,6 +147,24 @@ name|spi
 operator|.
 name|security
 operator|.
+name|SecurityConfiguration
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|security
+operator|.
 name|privilege
 operator|.
 name|PrivilegeConfiguration
@@ -201,6 +219,10 @@ begin_class
 specifier|public
 class|class
 name|PrivilegeConfigurationImpl
+extends|extends
+name|SecurityConfiguration
+operator|.
+name|Default
 implements|implements
 name|PrivilegeConfiguration
 block|{
@@ -265,7 +287,7 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|Set
+name|List
 argument_list|<
 name|ValidatorProvider
 argument_list|>
@@ -282,7 +304,7 @@ decl_stmt|;
 return|return
 name|Collections
 operator|.
-name|singleton
+name|singletonList
 argument_list|(
 name|vp
 argument_list|)
