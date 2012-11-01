@@ -384,6 +384,8 @@ name|TreeLocation
 name|location
 parameter_list|)
 block|{
+try|try
+block|{
 return|return
 name|location
 operator|.
@@ -401,6 +403,18 @@ argument_list|()
 operator|==
 literal|null
 return|;
+block|}
+catch|catch
+parameter_list|(
+name|IllegalStateException
+name|e
+parameter_list|)
+block|{
+return|return
+literal|true
+return|;
+comment|// FIXME left over from OAK-391. Find better way to determine staleness
+block|}
 block|}
 block|}
 end_class
