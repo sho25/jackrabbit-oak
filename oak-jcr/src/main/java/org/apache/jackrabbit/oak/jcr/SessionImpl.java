@@ -1340,6 +1340,7 @@ block|{
 name|ensureIsAlive
 argument_list|()
 expr_stmt|;
+comment|// FIXME: check for protection on src-parent and dest-parent (OAK-250)
 name|dlg
 operator|.
 name|perform

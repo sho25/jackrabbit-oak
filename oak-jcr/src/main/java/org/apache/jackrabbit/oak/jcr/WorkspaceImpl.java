@@ -596,6 +596,7 @@ literal|"Not implemented."
 argument_list|)
 throw|;
 block|}
+comment|// FIXME: check for protection on src-parent and dest-parent (OAK-250)
 name|String
 name|oakPath
 init|=
@@ -679,7 +680,8 @@ block|{
 name|ensureIsAlive
 argument_list|()
 expr_stmt|;
-comment|// TODO -> SPI
+comment|// TODO
+comment|// FIXME: check for protection on src-parent and dest-parent (OAK-250)
 throw|throw
 operator|new
 name|UnsupportedRepositoryOperationException
@@ -706,6 +708,7 @@ block|{
 name|ensureIsAlive
 argument_list|()
 expr_stmt|;
+comment|// FIXME: check for protection on src-parent and dest-parent (OAK-250)
 name|String
 name|oakPath
 init|=
