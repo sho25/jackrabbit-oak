@@ -268,6 +268,7 @@ name|MemoryNodeBuilder
 implements|implements
 name|NodeBuilder
 block|{
+specifier|private
 specifier|static
 specifier|final
 name|NodeState
@@ -371,9 +372,8 @@ name|this
 operator|.
 name|revision
 operator|=
-name|parent
-operator|.
-name|revision
+operator|-
+literal|1
 expr_stmt|;
 name|this
 operator|.
@@ -587,13 +587,9 @@ return|;
 block|}
 else|else
 block|{
-throw|throw
-operator|new
-name|IllegalStateException
-argument_list|(
-literal|"This node does not exist"
-argument_list|)
-throw|;
+return|return
+name|NULL_STATE
+return|;
 block|}
 block|}
 specifier|private
@@ -1364,8 +1360,8 @@ expr_stmt|;
 comment|// shortcut when dealing with a read-only child node
 if|if
 condition|(
-name|writeState
-operator|==
+name|baseState
+operator|!=
 literal|null
 operator|&&
 name|baseState
@@ -1374,6 +1370,22 @@ name|hasChildNode
 argument_list|(
 name|name
 argument_list|)
+operator|&&
+operator|(
+name|writeState
+operator|==
+literal|null
+operator|||
+operator|!
+name|writeState
+operator|.
+name|nodes
+operator|.
+name|containsKey
+argument_list|(
+name|name
+argument_list|)
+operator|)
 condition|)
 block|{
 return|return
