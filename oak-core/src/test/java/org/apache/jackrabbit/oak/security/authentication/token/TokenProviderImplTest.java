@@ -415,7 +415,7 @@ name|sc
 operator|.
 name|setAttribute
 argument_list|(
-literal|".token_key"
+literal|"rep:token_key"
 argument_list|,
 literal|"value"
 argument_list|)
@@ -758,7 +758,7 @@ name|reserved
 operator|.
 name|put
 argument_list|(
-literal|".token.key"
+literal|"rep:token.key"
 argument_list|,
 literal|"value"
 argument_list|)
@@ -767,7 +767,7 @@ name|reserved
 operator|.
 name|put
 argument_list|(
-literal|".token.exp"
+literal|"rep:token.exp"
 argument_list|,
 literal|"value"
 argument_list|)
@@ -964,7 +964,7 @@ name|tokenNode
 operator|.
 name|getProperty
 argument_list|(
-literal|".token.key"
+literal|"rep:token.key"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -974,7 +974,7 @@ name|tokenNode
 operator|.
 name|getProperty
 argument_list|(
-literal|".token.exp"
+literal|"rep:token.exp"
 argument_list|)
 argument_list|)
 expr_stmt|;

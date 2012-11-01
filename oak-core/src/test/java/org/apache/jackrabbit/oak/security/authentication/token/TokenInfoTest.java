@@ -621,7 +621,7 @@ name|reserved
 operator|.
 name|put
 argument_list|(
-literal|".token.key"
+literal|"rep:token.key"
 argument_list|,
 literal|"value"
 argument_list|)
@@ -630,7 +630,7 @@ name|reserved
 operator|.
 name|put
 argument_list|(
-literal|".token.exp"
+literal|"rep:token.exp"
 argument_list|,
 literal|"value"
 argument_list|)
@@ -779,6 +779,8 @@ argument_list|()
 decl_stmt|;
 name|assertEquals
 argument_list|(
+literal|"public attributes"
+argument_list|,
 name|publicAttributes
 operator|.
 name|size
@@ -803,6 +805,12 @@ control|)
 block|{
 name|assertTrue
 argument_list|(
+literal|"public attribute "
+operator|+
+name|key
+operator|+
+literal|" not contained"
+argument_list|,
 name|pubAttr
 operator|.
 name|containsKey
@@ -813,6 +821,10 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
+literal|"public attribute "
+operator|+
+name|key
+argument_list|,
 name|publicAttributes
 operator|.
 name|get
@@ -844,6 +856,8 @@ argument_list|()
 decl_stmt|;
 name|assertEquals
 argument_list|(
+literal|"private attributes"
+argument_list|,
 name|privateAttributes
 operator|.
 name|size
@@ -868,6 +882,12 @@ control|)
 block|{
 name|assertTrue
 argument_list|(
+literal|"private attribute "
+operator|+
+name|key
+operator|+
+literal|" not contained"
+argument_list|,
 name|privAttr
 operator|.
 name|containsKey
@@ -878,6 +898,10 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
+literal|"private attribute"
+operator|+
+name|key
+argument_list|,
 name|privateAttributes
 operator|.
 name|get
@@ -907,6 +931,10 @@ control|)
 block|{
 name|assertFalse
 argument_list|(
+literal|"reserved attribute "
+operator|+
+name|key
+argument_list|,
 name|privAttr
 operator|.
 name|containsKey
@@ -917,6 +945,10 @@ argument_list|)
 expr_stmt|;
 name|assertFalse
 argument_list|(
+literal|"reserved attribute "
+operator|+
+name|key
+argument_list|,
 name|pubAttr
 operator|.
 name|containsKey
