@@ -23,6 +23,16 @@ name|javax
 operator|.
 name|jcr
 operator|.
+name|InvalidItemStateException
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|jcr
+operator|.
 name|Node
 import|;
 end_import
@@ -526,17 +536,22 @@ literal|"/target/moved"
 argument_list|)
 expr_stmt|;
 comment|// assertEquals("/target/moved", sourceNode.getPath());  // passes on JR2, fails on Oak
-name|assertEquals
-argument_list|(
-literal|"/source/node"
-argument_list|,
+try|try
+block|{
 name|sourceNode
 operator|.
 name|getPath
 argument_list|()
-argument_list|)
 expr_stmt|;
-comment|// fails on JR2, passed on Oak
+block|}
+catch|catch
+parameter_list|(
+name|InvalidItemStateException
+name|expected
+parameter_list|)
+block|{
+comment|// sourceNode is stale
+block|}
 block|}
 annotation|@
 name|Test
