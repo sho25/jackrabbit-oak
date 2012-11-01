@@ -413,7 +413,7 @@ block|{
 return|return
 literal|true
 return|;
-comment|// FIXME left over from OAK-391. Find better way to determine staleness
+comment|// FIXME left over from OAK-391. Find better way to determine staleness (OAK-417, OAK-418)
 block|}
 block|}
 block|}
