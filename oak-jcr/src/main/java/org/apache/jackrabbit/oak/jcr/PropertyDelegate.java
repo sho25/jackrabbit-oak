@@ -261,7 +261,7 @@ parameter_list|)
 throws|throws
 name|RepositoryException
 block|{
-name|getLocation
+name|getPropertyLocation
 argument_list|()
 operator|.
 name|set
@@ -292,7 +292,7 @@ parameter_list|)
 throws|throws
 name|RepositoryException
 block|{
-name|getLocation
+name|getPropertyLocation
 argument_list|()
 operator|.
 name|set
@@ -317,7 +317,7 @@ parameter_list|()
 throws|throws
 name|InvalidItemStateException
 block|{
-name|getLocation
+name|getPropertyLocation
 argument_list|()
 operator|.
 name|remove
@@ -335,7 +335,7 @@ throws|throws
 name|InvalidItemStateException
 block|{
 return|return
-name|getLocation
+name|getPropertyLocation
 argument_list|()
 operator|.
 name|getProperty
@@ -343,11 +343,9 @@ argument_list|()
 return|;
 comment|// Not null
 block|}
-annotation|@
-name|Override
-specifier|public
+specifier|private
 name|PropertyLocation
-name|getLocation
+name|getPropertyLocation
 parameter_list|()
 throws|throws
 name|InvalidItemStateException
@@ -355,27 +353,23 @@ block|{
 name|TreeLocation
 name|location
 init|=
-name|super
-operator|.
 name|getLocation
 argument_list|()
 decl_stmt|;
 if|if
 condition|(
+operator|!
+operator|(
 name|location
-operator|.
-name|getProperty
-argument_list|()
-operator|==
-literal|null
+operator|instanceof
+name|PropertyLocation
+operator|)
 condition|)
 block|{
 throw|throw
 operator|new
 name|InvalidItemStateException
-argument_list|(
-literal|"Property is stale"
-argument_list|)
+argument_list|()
 throw|;
 block|}
 return|return

@@ -452,20 +452,15 @@ parameter_list|)
 throws|throws
 name|InvalidItemStateException
 block|{
-name|TreeLocation
-name|childLocation
-init|=
-name|getChildLocation
-argument_list|(
-name|relPath
-argument_list|)
-decl_stmt|;
 return|return
 name|create
 argument_list|(
 name|sessionDelegate
 argument_list|,
-name|childLocation
+name|getChildLocation
+argument_list|(
+name|relPath
+argument_list|)
 argument_list|)
 return|;
 block|}
@@ -972,9 +967,7 @@ block|{
 throw|throw
 operator|new
 name|InvalidItemStateException
-argument_list|(
-literal|"Node is stale"
-argument_list|)
+argument_list|()
 throw|;
 block|}
 return|return

@@ -268,14 +268,31 @@ parameter_list|()
 throws|throws
 name|InvalidItemStateException
 block|{
-return|return
+name|Status
+name|status
+init|=
 name|getLocation
 argument_list|()
 operator|.
 name|getStatus
 argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|status
+operator|==
+literal|null
+condition|)
+block|{
+throw|throw
+operator|new
+name|InvalidItemStateException
+argument_list|()
+throw|;
+block|}
+return|return
+name|status
 return|;
-comment|// never null
 block|}
 comment|/**      * Get the session delegate with which this item is associated      * @return  {@link SessionDelegate} to which this item belongs      */
 annotation|@
