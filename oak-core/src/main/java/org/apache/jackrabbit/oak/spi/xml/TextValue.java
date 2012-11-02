@@ -90,6 +90,10 @@ specifier|public
 interface|interface
 name|TextValue
 block|{
+name|String
+name|getString
+parameter_list|()
+function_decl|;
 comment|// TODO: review again
 name|Value
 name|getValue

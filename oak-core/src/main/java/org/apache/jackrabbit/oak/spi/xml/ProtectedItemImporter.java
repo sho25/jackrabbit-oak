@@ -31,15 +31,11 @@ end_import
 
 begin_import
 import|import
-name|org
+name|javax
 operator|.
-name|apache
+name|jcr
 operator|.
-name|jackrabbit
-operator|.
-name|api
-operator|.
-name|JackrabbitSession
+name|Session
 import|;
 end_import
 
@@ -89,7 +85,7 @@ comment|/**      * Initializes the importer.      *      * @param session The se
 name|boolean
 name|init
 parameter_list|(
-name|JackrabbitSession
+name|Session
 name|session
 parameter_list|,
 name|Root
