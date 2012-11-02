@@ -612,6 +612,18 @@ name|isUnique
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
+specifier|public
+name|String
+name|toString
+parameter_list|()
+block|{
+return|return
+name|getIndexNodeName
+argument_list|()
+return|;
+block|}
 block|}
 end_class
 

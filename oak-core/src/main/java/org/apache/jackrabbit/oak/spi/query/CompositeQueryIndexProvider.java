@@ -302,6 +302,28 @@ return|return
 name|indexes
 return|;
 block|}
+annotation|@
+name|Override
+specifier|public
+name|String
+name|toString
+parameter_list|()
+block|{
+return|return
+name|getClass
+argument_list|()
+operator|.
+name|getName
+argument_list|()
+operator|+
+literal|": "
+operator|+
+name|providers
+operator|.
+name|toString
+argument_list|()
+return|;
+block|}
 block|}
 end_class
 
