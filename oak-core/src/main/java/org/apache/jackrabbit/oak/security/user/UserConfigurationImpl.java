@@ -223,6 +223,24 @@ name|AuthorizableAction
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|xml
+operator|.
+name|ProtectedItemImporter
+import|;
+end_import
+
 begin_comment
 comment|/**  * UserConfigurationImpl... TODO  */
 end_comment
@@ -271,6 +289,7 @@ operator|=
 name|securityProvider
 expr_stmt|;
 block|}
+comment|//----------------------------------------------< SecurityConfiguration>---
 annotation|@
 name|Nonnull
 annotation|@
@@ -313,6 +332,35 @@ name|vp
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Nonnull
+annotation|@
+name|Override
+specifier|public
+name|List
+argument_list|<
+name|ProtectedItemImporter
+argument_list|>
+name|getProtectedItemImporters
+parameter_list|()
+block|{
+return|return
+name|Collections
+operator|.
+expr|<
+name|ProtectedItemImporter
+operator|>
+name|singletonList
+argument_list|(
+operator|new
+name|UserImporter
+argument_list|(
+name|config
+argument_list|)
+argument_list|)
+return|;
+block|}
+comment|//--------------------------------------------------< UserConfiguration>---
 annotation|@
 name|Nonnull
 annotation|@

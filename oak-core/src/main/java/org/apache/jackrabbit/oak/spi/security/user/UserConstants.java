@@ -56,6 +56,11 @@ init|=
 literal|"rep:Members"
 decl_stmt|;
 name|String
+name|MIX_REP_IMPERSONATABLE
+init|=
+literal|"rep:Impersonatable"
+decl_stmt|;
+name|String
 name|REP_PRINCIPAL_NAME
 init|=
 literal|"rep:principalName"

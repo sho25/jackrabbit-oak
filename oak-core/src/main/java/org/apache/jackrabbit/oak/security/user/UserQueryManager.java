@@ -440,8 +440,6 @@ parameter_list|,
 name|Root
 name|root
 parameter_list|)
-throws|throws
-name|RepositoryException
 block|{
 name|this
 operator|.

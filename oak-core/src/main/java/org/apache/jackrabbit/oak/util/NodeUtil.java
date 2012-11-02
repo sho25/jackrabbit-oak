@@ -513,6 +513,8 @@ argument_list|()
 argument_list|)
 return|;
 block|}
+annotation|@
+name|CheckForNull
 specifier|public
 name|NodeUtil
 name|getParent
@@ -529,6 +531,18 @@ argument_list|()
 argument_list|,
 name|mapper
 argument_list|)
+return|;
+block|}
+specifier|public
+name|boolean
+name|isRoot
+parameter_list|()
+block|{
+return|return
+name|tree
+operator|.
+name|isRoot
+argument_list|()
 return|;
 block|}
 specifier|public
@@ -637,6 +651,8 @@ return|return
 name|childUtil
 return|;
 block|}
+annotation|@
+name|Nonnull
 specifier|public
 name|NodeUtil
 name|getOrAddChild
@@ -771,6 +787,8 @@ name|value
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|CheckForNull
 specifier|public
 name|String
 name|getString
@@ -844,6 +862,8 @@ name|value
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|CheckForNull
 specifier|public
 name|String
 index|[]
@@ -921,6 +941,8 @@ name|STRINGS
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|CheckForNull
 specifier|public
 name|String
 name|getName
@@ -938,6 +960,8 @@ literal|null
 argument_list|)
 return|;
 block|}
+annotation|@
+name|CheckForNull
 specifier|public
 name|String
 name|getName
@@ -1024,6 +1048,8 @@ name|NAME
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|CheckForNull
 specifier|public
 name|String
 index|[]
@@ -1241,6 +1267,8 @@ name|value
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Nonnull
 specifier|public
 name|List
 argument_list|<
@@ -1389,6 +1417,8 @@ name|STRINGS
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|CheckForNull
 specifier|public
 name|Value
 index|[]
@@ -1510,6 +1540,8 @@ literal|null
 return|;
 block|}
 block|}
+annotation|@
+name|Nonnull
 specifier|private
 name|String
 name|getOakName
