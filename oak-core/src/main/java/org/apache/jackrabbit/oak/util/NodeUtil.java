@@ -285,6 +285,22 @@ end_import
 
 begin_import
 import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkNotNull
+import|;
+end_import
+
+begin_import
+import|import static
 name|org
 operator|.
 name|apache
@@ -457,13 +473,19 @@ name|this
 operator|.
 name|mapper
 operator|=
+name|checkNotNull
+argument_list|(
 name|mapper
+argument_list|)
 expr_stmt|;
 name|this
 operator|.
 name|tree
 operator|=
+name|checkNotNull
+argument_list|(
 name|tree
+argument_list|)
 expr_stmt|;
 block|}
 specifier|public
