@@ -66,6 +66,10 @@ name|String
 name|getId
 parameter_list|()
 function_decl|;
+name|String
+name|getPassword
+parameter_list|()
+function_decl|;
 name|Principal
 name|getPrincipal
 parameter_list|()

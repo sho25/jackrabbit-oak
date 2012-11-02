@@ -224,6 +224,17 @@ name|T
 name|defaultValue
 parameter_list|)
 block|{
+if|if
+condition|(
+name|configProperty
+operator|==
+literal|null
+condition|)
+block|{
+return|return
+name|defaultValue
+return|;
+block|}
 name|T
 name|value
 decl_stmt|;
