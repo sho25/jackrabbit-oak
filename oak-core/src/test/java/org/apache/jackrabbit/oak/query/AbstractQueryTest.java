@@ -738,11 +738,6 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-annotation|@
-name|Ignore
-argument_list|(
-literal|"OAK-336"
-argument_list|)
 specifier|public
 name|void
 name|sql2Measure

@@ -677,14 +677,15 @@ name|f
 argument_list|)
 expr_stmt|;
 block|}
-if|if
-condition|(
-operator|!
-name|outerJoin
-condition|)
-block|{
-comment|// for outer joins, query constraints can't be applied to the
-comment|// filter, because that would alter the result
+comment|// all conditions can be pushed to the selectors -
+comment|// except in some cases to "outer joined" selectors,
+comment|// but the exceptions are handled in the condition
+comment|// itself.
+comment|// An example where it *is* a problem:
+comment|//  "select * from a left outer join b on a.x = b.y
+comment|// where b.y is null" - in this case the selector b
+comment|// must not use an index condition on "y is null"
+comment|// (".. is null" must be written as "not .. is not null").
 if|if
 condition|(
 name|queryConstraint
@@ -699,7 +700,6 @@ argument_list|(
 name|f
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 return|return
 name|f

@@ -135,6 +135,30 @@ name|FilterImpl
 name|f
 parameter_list|)
 block|{
+if|if
+condition|(
+name|f
+operator|.
+name|getSelector
+argument_list|()
+operator|.
+name|outerJoin
+condition|)
+block|{
+comment|// we need to be careful with the condition
+comment|// "NOT (property IS NOT NULL)"
+comment|// (which is the same as
+comment|// "property IS NULL") because
+comment|// this might cause an index to ignore
+comment|// the join condition "property = x"
+comment|// for example in:
+comment|// "select * from a left outer join b on a.x = b.y
+comment|// where not b.y is not null"
+comment|// must not result in the index to check for
+comment|// "b.y is null", because that would alter the
+comment|// result
+return|return;
+block|}
 comment|// ignore
 comment|// TODO convert NOT conditions
 block|}
