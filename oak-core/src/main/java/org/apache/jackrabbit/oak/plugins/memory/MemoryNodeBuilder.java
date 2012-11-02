@@ -916,9 +916,10 @@ name|baseState
 argument_list|)
 expr_stmt|;
 name|revision
-operator|=
-literal|0
+operator|+=
+literal|2
 expr_stmt|;
+comment|// Make sure we are ahead of the revisions of all other builders root at this builder
 block|}
 else|else
 block|{
