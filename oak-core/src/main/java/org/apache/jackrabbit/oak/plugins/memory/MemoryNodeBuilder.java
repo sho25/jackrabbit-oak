@@ -861,6 +861,7 @@ return|;
 block|}
 else|else
 block|{
+comment|// FIXME this assertion might fail when getNodeState() is called on a removed node.
 assert|assert
 name|baseState
 operator|!=
