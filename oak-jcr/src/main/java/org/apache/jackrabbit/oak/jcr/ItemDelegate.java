@@ -151,6 +151,11 @@ specifier|private
 name|TreeLocation
 name|location
 decl_stmt|;
+comment|/**      * Revision on which this item is based. The underlying state of the item      * is re-resolved whenever the revision of the session does not match this      * revision.      */
+specifier|private
+name|int
+name|revision
+decl_stmt|;
 name|ItemDelegate
 parameter_list|(
 name|SessionDelegate
@@ -177,6 +182,15 @@ name|checkNotNull
 argument_list|(
 name|location
 argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|revision
+operator|=
+name|sessionDelegate
+operator|.
+name|getRevision
+argument_list|()
 expr_stmt|;
 block|}
 comment|/**      * Get the name of this item      * @return oak name of this item      */
@@ -249,13 +263,25 @@ name|boolean
 name|isStale
 parameter_list|()
 block|{
-return|return
+name|Status
+name|status
+init|=
 name|getLocationOrNull
 argument_list|()
-operator|==
-name|NullLocation
 operator|.
-name|INSTANCE
+name|getStatus
+argument_list|()
+decl_stmt|;
+return|return
+name|status
+operator|==
+name|Status
+operator|.
+name|REMOVED
+operator|||
+name|status
+operator|==
+literal|null
 return|;
 block|}
 comment|/**      * Get the status of this item      * @return  {@link Status} of this item      */
@@ -370,7 +396,7 @@ literal|']'
 return|;
 block|}
 comment|//------------------------------------------------------------< private>---
-comment|/**      * The underlying {@link org.apache.jackrabbit.oak.api.TreeLocation} of this item.      * @return  tree location of the underlying item or {@code null} if stale.      */
+comment|/**      * The underlying {@link org.apache.jackrabbit.oak.api.TreeLocation} of this item.      * The location is only re-resolved when the revision of this item does not match      * the revision of the session.      * @return  tree location of the underlying item or {@code null} if stale.      */
 annotation|@
 name|CheckForNull
 specifier|private
@@ -386,6 +412,13 @@ operator|!=
 name|NullLocation
 operator|.
 name|INSTANCE
+operator|&&
+name|sessionDelegate
+operator|.
+name|getRevision
+argument_list|()
+operator|!=
+name|revision
 condition|)
 block|{
 name|location
@@ -399,6 +432,13 @@ operator|.
 name|getPath
 argument_list|()
 argument_list|)
+expr_stmt|;
+name|revision
+operator|=
+name|sessionDelegate
+operator|.
+name|getRevision
+argument_list|()
 expr_stmt|;
 block|}
 return|return

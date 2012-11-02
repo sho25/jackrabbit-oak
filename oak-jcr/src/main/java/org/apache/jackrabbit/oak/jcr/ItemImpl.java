@@ -296,6 +296,9 @@ parameter_list|()
 throws|throws
 name|RepositoryException
 block|{
+name|checkStatus
+argument_list|()
+expr_stmt|;
 return|return
 name|sessionDelegate
 operator|.
