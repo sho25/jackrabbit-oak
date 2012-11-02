@@ -223,24 +223,6 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|core
-operator|.
-name|RootImpl
-operator|.
-name|PurgeListener
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
 name|plugins
 operator|.
 name|memory
@@ -413,8 +395,6 @@ class|class
 name|TreeImpl
 implements|implements
 name|Tree
-implements|,
-name|PurgeListener
 block|{
 comment|/** Internal and hidden property that contains the child order */
 specifier|static
@@ -539,13 +519,6 @@ name|root
 operator|.
 name|createRootBuilder
 argument_list|()
-expr_stmt|;
-name|root
-operator|.
-name|addListener
-argument_list|(
-name|this
-argument_list|)
 expr_stmt|;
 block|}
 return|return
@@ -1894,19 +1867,6 @@ name|this
 argument_list|)
 return|;
 block|}
-comment|//--------------------------------------------------< RootImpl.Listener>---
-annotation|@
-name|Override
-specifier|public
-name|void
-name|purged
-parameter_list|()
-block|{
-name|nodeBuilder
-operator|=
-literal|null
-expr_stmt|;
-block|}
 comment|//----------------------------------------------------------< protected>---
 annotation|@
 name|CheckForNull
@@ -1977,13 +1937,6 @@ operator|.
 name|child
 argument_list|(
 name|name
-argument_list|)
-expr_stmt|;
-name|root
-operator|.
-name|addListener
-argument_list|(
-name|this
 argument_list|)
 expr_stmt|;
 block|}

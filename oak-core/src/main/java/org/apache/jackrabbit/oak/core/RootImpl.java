@@ -63,27 +63,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|ArrayList
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|Collections
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|List
 import|;
 end_import
 
@@ -597,21 +577,6 @@ specifier|private
 name|int
 name|modCount
 decl_stmt|;
-comment|/**      * Listeners which needs to be notified as soon as {@link #purgePendingChanges()}      * is called. Listeners are removed from this list after being called. If further      * notifications are required, they need to explicitly re-register.      *      * The {@link TreeImpl} instances us this mechanism to dispose of its associated      * {@link NodeBuilder} on purge. Keeping a reference on those {@code TreeImpl}      * instances {@code NodeBuilder} (i.e. those which are modified) prevents them      * from being prematurely garbage collected.      */
-specifier|private
-name|List
-argument_list|<
-name|PurgeListener
-argument_list|>
-name|purgePurgeListeners
-init|=
-operator|new
-name|ArrayList
-argument_list|<
-name|PurgeListener
-argument_list|>
-argument_list|()
-decl_stmt|;
 specifier|private
 specifier|volatile
 name|ConflictHandler
@@ -626,16 +591,6 @@ specifier|final
 name|QueryIndexProvider
 name|indexProvider
 decl_stmt|;
-comment|/**      * Purge listener.      * @see #purgePurgeListeners      */
-specifier|public
-interface|interface
-name|PurgeListener
-block|{
-name|void
-name|purged
-parameter_list|()
-function_decl|;
-block|}
 comment|/**      * New instance bases on a given {@link NodeStore} and a workspace      *      * @param store         node store      * @param workspaceName name of the workspace      * @param subject       the subject.      * @param accProvider   the access control context provider.      * @param indexProvider the query index provider.      */
 annotation|@
 name|SuppressWarnings
@@ -898,6 +853,9 @@ argument_list|,
 name|destPath
 argument_list|)
 decl_stmt|;
+name|reset
+argument_list|()
+expr_stmt|;
 if|if
 condition|(
 name|success
@@ -961,6 +919,9 @@ argument_list|,
 name|destPath
 argument_list|)
 decl_stmt|;
+name|reset
+argument_list|()
+expr_stmt|;
 if|if
 condition|(
 name|success
@@ -1521,22 +1482,6 @@ name|builder
 argument_list|()
 return|;
 block|}
-comment|/**      * Add a {@code PurgeListener} to this instance. Listeners are automatically      * unregistered after having been called. If further notifications are required,      * they need to explicitly re-register.      * @param purgeListener  listener      */
-name|void
-name|addListener
-parameter_list|(
-name|PurgeListener
-name|purgeListener
-parameter_list|)
-block|{
-name|purgePurgeListeners
-operator|.
-name|add
-argument_list|(
-name|purgeListener
-argument_list|)
-expr_stmt|;
-block|}
 comment|// TODO better way to determine purge limit. See OAK-175
 name|void
 name|updated
@@ -1576,7 +1521,7 @@ argument_list|()
 return|;
 block|}
 comment|//------------------------------------------------------------< private>---
-comment|/**      * Purge all pending changes to the underlying {@link NodeStoreBranch}.      * All registered {@link PurgeListener}s are notified.      */
+comment|/**      * Purge all pending changes to the underlying {@link NodeStoreBranch}.      */
 specifier|private
 name|void
 name|purgePendingChanges
@@ -1592,50 +1537,29 @@ name|getNodeState
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|notifyListeners
+name|reset
 argument_list|()
 expr_stmt|;
 block|}
+comment|/**      * Reset the root builder to the branch's current root state      */
 specifier|private
 name|void
-name|notifyListeners
+name|reset
 parameter_list|()
 block|{
-name|List
-argument_list|<
-name|PurgeListener
-argument_list|>
-name|purgeListeners
-init|=
-name|this
+name|rootTree
 operator|.
-name|purgePurgeListeners
-decl_stmt|;
-name|this
-operator|.
-name|purgePurgeListeners
-operator|=
-operator|new
-name|ArrayList
-argument_list|<
-name|PurgeListener
-argument_list|>
+name|getNodeBuilder
 argument_list|()
-expr_stmt|;
-for|for
-control|(
-name|PurgeListener
-name|purgeListener
-range|:
-name|purgeListeners
-control|)
-block|{
-name|purgeListener
 operator|.
-name|purged
+name|reset
+argument_list|(
+name|branch
+operator|.
+name|getRoot
 argument_list|()
+argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 end_class
