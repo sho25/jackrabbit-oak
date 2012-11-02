@@ -916,7 +916,8 @@ name|baseState
 argument_list|)
 expr_stmt|;
 name|revision
-operator|++
+operator|=
+literal|0
 expr_stmt|;
 block|}
 else|else
