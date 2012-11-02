@@ -645,10 +645,6 @@ decl_stmt|;
 name|String
 name|rev
 init|=
-name|JsopTokenizer
-operator|.
-name|decodeQuoted
-argument_list|(
 name|n
 operator|.
 name|getNode
@@ -660,7 +656,6 @@ name|getProperty
 argument_list|(
 literal|"rev"
 argument_list|)
-argument_list|)
 decl_stmt|;
 if|if
 condition|(
@@ -671,7 +666,12 @@ condition|)
 block|{
 name|readRevision
 operator|=
+name|JsopTokenizer
+operator|.
+name|decodeQuoted
+argument_list|(
 name|rev
+argument_list|)
 expr_stmt|;
 block|}
 for|for
@@ -3673,6 +3673,11 @@ argument_list|(
 name|index
 argument_list|,
 literal|"/"
+argument_list|,
+name|mk
+operator|.
+name|getHeadRevision
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -3685,6 +3690,9 @@ name|index
 parameter_list|,
 name|String
 name|path
+parameter_list|,
+name|String
+name|revision
 parameter_list|)
 block|{
 if|if
@@ -3707,7 +3715,7 @@ name|getNodes
 argument_list|(
 name|path
 argument_list|,
-name|readRevision
+name|revision
 argument_list|,
 literal|0
 argument_list|,
@@ -3807,6 +3815,8 @@ operator|.
 name|next
 argument_list|()
 argument_list|)
+argument_list|,
+name|revision
 argument_list|)
 expr_stmt|;
 block|}
