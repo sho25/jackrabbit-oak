@@ -345,7 +345,9 @@ name|t
 init|=
 operator|new
 name|TraversingIndex
-argument_list|()
+argument_list|(
+literal|"?"
+argument_list|)
 decl_stmt|;
 name|String
 name|head

@@ -614,6 +614,8 @@ return|return
 operator|new
 name|TraversingCursor
 argument_list|(
+literal|"?"
+argument_list|,
 name|filter
 argument_list|,
 name|root

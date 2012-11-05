@@ -723,6 +723,9 @@ specifier|public
 name|QueryIndex
 name|getBestIndex
 parameter_list|(
+name|Query
+name|query
+parameter_list|,
 name|Filter
 name|filter
 parameter_list|)
@@ -828,7 +831,12 @@ name|best
 operator|=
 operator|new
 name|TraversingIndex
+argument_list|(
+name|query
+operator|.
+name|getStatement
 argument_list|()
+argument_list|)
 expr_stmt|;
 block|}
 return|return

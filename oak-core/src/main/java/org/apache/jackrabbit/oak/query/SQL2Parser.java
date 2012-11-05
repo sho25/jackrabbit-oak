@@ -813,6 +813,8 @@ init|=
 operator|new
 name|Query
 argument_list|(
+name|statement
+argument_list|,
 name|source
 argument_list|,
 name|constraint
