@@ -33,6 +33,16 @@ begin_import
 import|import
 name|javax
 operator|.
+name|annotation
+operator|.
+name|CheckForNull
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
 name|jcr
 operator|.
 name|PropertyType
@@ -98,6 +108,9 @@ name|String
 name|getPath
 parameter_list|()
 function_decl|;
+comment|/**      * @return the node type restriction or<code>null</code> if none is set.      */
+annotation|@
+name|CheckForNull
 name|String
 name|getNodeType
 parameter_list|()

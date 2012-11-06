@@ -778,6 +778,9 @@ argument_list|(
 literal|"cost for "
 operator|+
 name|index
+operator|.
+name|getIndexName
+argument_list|()
 operator|+
 literal|" is "
 operator|+
