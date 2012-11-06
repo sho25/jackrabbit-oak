@@ -2696,7 +2696,7 @@ literal|0
 index|]
 return|;
 block|}
-comment|//------------------------------------------------------------< TreeLocation>---
+comment|//-------------------------------------------------------< TreeLocation>---
 specifier|public
 class|class
 name|NodeLocation
