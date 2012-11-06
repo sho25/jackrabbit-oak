@@ -1017,6 +1017,11 @@ name|addMember
 argument_list|(
 name|groupTree
 argument_list|,
+name|newMemberTree
+operator|.
+name|getName
+argument_list|()
+argument_list|,
 name|getContentID
 argument_list|(
 name|newMemberTree
@@ -1029,6 +1034,9 @@ name|addMember
 parameter_list|(
 name|Tree
 name|groupTree
+parameter_list|,
+name|String
+name|treeName
 parameter_list|,
 name|String
 name|memberContentId
@@ -1063,7 +1071,7 @@ argument_list|,
 name|NT_REP_MEMBERS
 argument_list|)
 decl_stmt|;
-comment|// TODO: add implementation
+comment|// TODO: add implementation that allows to index group members
 throw|throw
 operator|new
 name|UnsupportedOperationException

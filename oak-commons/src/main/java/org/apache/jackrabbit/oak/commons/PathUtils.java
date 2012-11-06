@@ -103,6 +103,44 @@ name|path
 argument_list|)
 return|;
 block|}
+comment|/**      * @param element The path segment to check for being the current element      * @return {@code true} if the specified element equals "."; {@code false} otherwise.      */
+specifier|public
+specifier|static
+name|boolean
+name|denotesCurrent
+parameter_list|(
+name|String
+name|element
+parameter_list|)
+block|{
+return|return
+literal|"."
+operator|.
+name|equals
+argument_list|(
+name|element
+argument_list|)
+return|;
+block|}
+comment|/**      * @param element The path segment to check for being the parent element      * @return {@code true} if the specified element equals ".."; {@code false} otherwise.      */
+specifier|public
+specifier|static
+name|boolean
+name|denotesParent
+parameter_list|(
+name|String
+name|element
+parameter_list|)
+block|{
+return|return
+literal|".."
+operator|.
+name|equals
+argument_list|(
+name|element
+argument_list|)
+return|;
+block|}
 comment|/**      * Whether the path is absolute (starts with a slash) or not.      *      * @param path the path      * @return true if it starts with a slash      */
 specifier|public
 specifier|static
