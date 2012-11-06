@@ -809,6 +809,10 @@ return|return
 literal|true
 return|;
 block|}
+name|cursor
+operator|=
+literal|null
+expr_stmt|;
 return|return
 literal|false
 return|;
