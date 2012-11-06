@@ -767,6 +767,23 @@ expr_stmt|;
 block|}
 block|}
 block|}
+elseif|else
+if|if
+condition|(
+name|parent
+operator|!=
+literal|null
+condition|)
+block|{
+comment|// make sure that all revision numbers up to the root gets updated
+name|parent
+operator|.
+name|write
+argument_list|(
+name|newRevision
+argument_list|)
+expr_stmt|;
+block|}
 name|revision
 operator|=
 name|newRevision
@@ -917,10 +934,8 @@ name|baseState
 argument_list|)
 expr_stmt|;
 name|revision
-operator|+=
-literal|2
+operator|++
 expr_stmt|;
-comment|// Make sure we are ahead of the revisions of all other builders root at this builder
 block|}
 else|else
 block|{
