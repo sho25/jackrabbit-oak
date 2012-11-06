@@ -479,6 +479,10 @@ specifier|private
 name|long
 name|readCount
 decl_stmt|;
+specifier|private
+name|boolean
+name|closed
+decl_stmt|;
 specifier|public
 name|TraversingCursor
 parameter_list|(
@@ -717,6 +721,19 @@ name|IndexRow
 name|currentRow
 parameter_list|()
 block|{
+if|if
+condition|(
+name|closed
+condition|)
+block|{
+throw|throw
+operator|new
+name|IllegalStateException
+argument_list|(
+literal|"This cursor is closed"
+argument_list|)
+throw|;
+block|}
 return|return
 operator|new
 name|IndexRowImpl
@@ -894,6 +911,10 @@ block|}
 name|currentPath
 operator|=
 literal|null
+expr_stmt|;
+name|closed
+operator|=
+literal|true
 expr_stmt|;
 return|return
 literal|false
