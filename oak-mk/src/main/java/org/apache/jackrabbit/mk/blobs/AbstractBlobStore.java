@@ -968,6 +968,7 @@ name|close
 argument_list|()
 expr_stmt|;
 block|}
+comment|/**      * Store a block of data.      *       * @param digest the content hash      * @param level the indirection level (0 is for user data, 1 is a list of      *            digests that point to user data, 2 is a list of digests that      *            point to digests, and so on). This parameter is for      *            informational use only, and it is not required to store it      *            unless that's easy to achieve      * @param data the data to be stored      */
 specifier|protected
 specifier|abstract
 name|void
@@ -2112,6 +2113,25 @@ argument_list|)
 operator|+
 literal|"@"
 operator|+
+name|pos
+return|;
+block|}
+specifier|public
+name|byte
+index|[]
+name|getDigest
+parameter_list|()
+block|{
+return|return
+name|digest
+return|;
+block|}
+specifier|public
+name|long
+name|getPos
+parameter_list|()
+block|{
+return|return
 name|pos
 return|;
 block|}
