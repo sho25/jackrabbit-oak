@@ -64,6 +64,91 @@ specifier|public
 interface|interface
 name|TreeLocation
 block|{
+comment|/**      * This {@code TreeLocation} refers to an invalid location in a tree. That is      * to a location where no item resides.      */
+name|TreeLocation
+name|NULL
+init|=
+operator|new
+name|TreeLocation
+argument_list|()
+block|{
+comment|/**          * @return  {@code NULL}          */
+annotation|@
+name|Override
+specifier|public
+name|TreeLocation
+name|getParent
+parameter_list|()
+block|{
+return|return
+name|NULL
+return|;
+block|}
+comment|/**          * @return  {@code NULL}          */
+annotation|@
+name|Override
+specifier|public
+name|TreeLocation
+name|getChild
+parameter_list|(
+name|String
+name|relPath
+parameter_list|)
+block|{
+return|return
+name|NULL
+return|;
+block|}
+comment|/**          * @return  {@code null}          */
+annotation|@
+name|Override
+specifier|public
+name|String
+name|getPath
+parameter_list|()
+block|{
+return|return
+literal|null
+return|;
+block|}
+comment|/**          * @return  {@code null}          */
+annotation|@
+name|Override
+specifier|public
+name|Tree
+name|getTree
+parameter_list|()
+block|{
+return|return
+literal|null
+return|;
+block|}
+comment|/**          * @return  {@code null}          */
+annotation|@
+name|Override
+specifier|public
+name|PropertyState
+name|getProperty
+parameter_list|()
+block|{
+return|return
+literal|null
+return|;
+block|}
+comment|/**          * @return  {@code null}          */
+annotation|@
+name|Override
+specifier|public
+name|Status
+name|getStatus
+parameter_list|()
+block|{
+return|return
+literal|null
+return|;
+block|}
+block|}
+decl_stmt|;
 comment|/**      * Navigate to the parent      * @return  a {@code TreeLocation} for the parent of this location.      */
 annotation|@
 name|Nonnull

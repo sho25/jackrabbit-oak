@@ -98,24 +98,6 @@ import|;
 end_import
 
 begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|core
-operator|.
-name|TreeImpl
-operator|.
-name|NullLocation
-import|;
-end_import
-
-begin_import
 import|import static
 name|com
 operator|.
@@ -353,9 +335,9 @@ if|if
 condition|(
 name|location
 operator|==
-name|NullLocation
+name|TreeLocation
 operator|.
-name|INSTANCE
+name|NULL
 condition|)
 block|{
 throw|throw
@@ -409,9 +391,9 @@ if|if
 condition|(
 name|location
 operator|!=
-name|NullLocation
+name|TreeLocation
 operator|.
-name|INSTANCE
+name|NULL
 operator|&&
 name|sessionDelegate
 operator|.
