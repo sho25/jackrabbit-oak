@@ -173,6 +173,11 @@ init|=
 literal|"rep:privilegeManagement"
 decl_stmt|;
 name|String
+name|REP_USER_MANAGEMENT
+init|=
+literal|"rep:userManagement"
+decl_stmt|;
+name|String
 name|REP_WRITE
 init|=
 literal|"rep:write"
@@ -247,6 +252,8 @@ block|,
 name|JCR_NAMESPACE_MANAGEMENT
 block|,
 name|REP_PRIVILEGE_MANAGEMENT
+block|,
+name|REP_USER_MANAGEMENT
 block|}
 decl_stmt|;
 name|String
