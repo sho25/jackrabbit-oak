@@ -1284,7 +1284,7 @@ name|setProperty
 argument_list|(
 name|MemoryPropertyBuilder
 operator|.
-name|create
+name|copy
 argument_list|(
 name|Type
 operator|.
@@ -1302,9 +1302,7 @@ name|name
 argument_list|)
 operator|.
 name|getPropertyState
-argument_list|(
-literal|true
-argument_list|)
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -1400,7 +1398,7 @@ name|setProperty
 argument_list|(
 name|MemoryPropertyBuilder
 operator|.
-name|create
+name|copy
 argument_list|(
 name|Type
 operator|.
@@ -1420,9 +1418,7 @@ name|name
 argument_list|)
 operator|.
 name|getPropertyState
-argument_list|(
-literal|true
-argument_list|)
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -2145,7 +2141,7 @@ name|builder
 init|=
 name|MemoryPropertyBuilder
 operator|.
-name|create
+name|array
 argument_list|(
 name|Type
 operator|.
@@ -2169,9 +2165,7 @@ argument_list|(
 name|builder
 operator|.
 name|getPropertyState
-argument_list|(
-literal|true
-argument_list|)
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}

@@ -1089,7 +1089,7 @@ name|builder
 init|=
 name|MemoryPropertyBuilder
 operator|.
-name|create
+name|copy
 argument_list|(
 name|Type
 operator|.
@@ -1112,9 +1112,7 @@ argument_list|(
 name|builder
 operator|.
 name|getPropertyState
-argument_list|(
-literal|true
-argument_list|)
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -1192,7 +1190,7 @@ name|builder
 init|=
 name|MemoryPropertyBuilder
 operator|.
-name|create
+name|copy
 argument_list|(
 name|Type
 operator|.
@@ -1215,14 +1213,12 @@ argument_list|(
 name|builder
 operator|.
 name|getPropertyState
-argument_list|(
-literal|true
-argument_list|)
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      *<code>ChildOrderConflictHandler</code> ignores conflicts on the      * {@link TreeImpl#OAK_CHILD_ORDER} property. All other conflicts are forwarded      * to the wrapped handler.      */
+comment|/**      * {@code ChildOrderConflictHandler} ignores conflicts on the      * {@link TreeImpl#OAK_CHILD_ORDER} property. All other conflicts are forwarded      * to the wrapped handler.      */
 specifier|private
 specifier|static
 class|class

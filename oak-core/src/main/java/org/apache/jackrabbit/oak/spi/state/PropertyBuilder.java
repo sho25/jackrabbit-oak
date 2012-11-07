@@ -124,7 +124,7 @@ name|int
 name|count
 parameter_list|()
 function_decl|;
-comment|/**      * @return  {@code true} iff {@code count() != 1}      */
+comment|/**      * @return  {@code true} this is a builder for an array property.      */
 name|boolean
 name|isArray
 parameter_list|()
@@ -134,24 +134,14 @@ name|boolean
 name|isEmpty
 parameter_list|()
 function_decl|;
-comment|/**      * Returns an immutable property state that matches the current state of      * the builder. The {@code asArray} flag can be used to coerce a property      * state with a single value into a multi valued property state.      * Equivalent to {@code getPropertyState(false)}      *      * @return immutable property state      * @throws IllegalStateException  If the name of the property is not set      */
+comment|/**      * Returns an immutable property state that matches the current state of      * the builder.      *      * @return immutable property state      * @throws IllegalStateException  If the name of the property is not set or      * {@code !(isArray() || count() == 1)}.      */
 annotation|@
 name|Nonnull
 name|PropertyState
 name|getPropertyState
 parameter_list|()
 function_decl|;
-comment|/**      * Returns an immutable property state that matches the current state of      * the builder. The {@code asArray} flag can be used to coerce a property      * state with a single value into a multi valued property state.      *      * @param asArray  If {@code true} the builder creates a multi valued property state      * @return immutable property state      * @throws IllegalStateException  If the name of the property is not set      */
-annotation|@
-name|Nonnull
-name|PropertyState
-name|getPropertyState
-parameter_list|(
-name|boolean
-name|asArray
-parameter_list|)
-function_decl|;
-comment|/**      * Clone {@code property} to the property state being built. After      * this call {@code getPropertyState(property.isArray()).equals(property)} will hold.      * @param property  the property to clone      * @return  {@code this}      */
+comment|/**      * Clone {@code property} to the property state being built. After      * this call {@code getPropertyState().equals(property)} will hold.      * @param property  the property to clone      * @return  {@code this}      */
 annotation|@
 name|Nonnull
 name|PropertyBuilder
@@ -176,6 +166,26 @@ parameter_list|(
 name|String
 name|name
 parameter_list|)
+function_decl|;
+comment|/**      * Make this build an array property.      * @return      */
+annotation|@
+name|Nonnull
+name|PropertyBuilder
+argument_list|<
+name|T
+argument_list|>
+name|setArray
+parameter_list|()
+function_decl|;
+comment|/**      * Make this build a scalar property.      * @return      */
+annotation|@
+name|Nonnull
+name|PropertyBuilder
+argument_list|<
+name|T
+argument_list|>
+name|setScalar
+parameter_list|()
 function_decl|;
 comment|/**      * Set the value of the property state clearing all previously set values.      * @param value  value to set      * @return  {@code this}      */
 annotation|@

@@ -1104,7 +1104,7 @@ literal|null
 condition|?
 name|MemoryPropertyBuilder
 operator|.
-name|create
+name|array
 argument_list|(
 name|WEAKREFERENCE
 argument_list|,
@@ -1113,7 +1113,7 @@ argument_list|)
 else|:
 name|MemoryPropertyBuilder
 operator|.
-name|create
+name|copy
 argument_list|(
 name|WEAKREFERENCE
 argument_list|,
@@ -1151,9 +1151,7 @@ argument_list|(
 name|propertyBuilder
 operator|.
 name|getPropertyState
-argument_list|(
-literal|true
-argument_list|)
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -1239,7 +1237,7 @@ literal|null
 condition|?
 name|MemoryPropertyBuilder
 operator|.
-name|create
+name|array
 argument_list|(
 name|WEAKREFERENCE
 argument_list|,
@@ -1248,7 +1246,7 @@ argument_list|)
 else|:
 name|MemoryPropertyBuilder
 operator|.
-name|create
+name|copy
 argument_list|(
 name|WEAKREFERENCE
 argument_list|,
@@ -1297,9 +1295,7 @@ argument_list|(
 name|propertyBuilder
 operator|.
 name|getPropertyState
-argument_list|(
-literal|true
-argument_list|)
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
