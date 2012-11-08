@@ -37,7 +37,7 @@ name|javax
 operator|.
 name|annotation
 operator|.
-name|Nonnull
+name|CheckForNull
 import|;
 end_import
 
@@ -47,7 +47,7 @@ name|javax
 operator|.
 name|annotation
 operator|.
-name|Nullable
+name|Nonnull
 import|;
 end_import
 
@@ -61,38 +61,15 @@ name|RepositoryException
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|spi
-operator|.
-name|commit
-operator|.
-name|ValidatorProvider
-import|;
-end_import
-
 begin_comment
-comment|/**  * PrivilegeProvider... TODO  */
+comment|/**  * PrivilegeDefinitionProvider... TODO  */
 end_comment
 
 begin_interface
 specifier|public
 interface|interface
-name|PrivilegeProvider
+name|PrivilegeDefinitionProvider
 block|{
-comment|/**      * Refresh this privilege provider.      */
-name|void
-name|refresh
-parameter_list|()
-function_decl|;
 comment|/**      * Returns all privilege definitions accessible to this provider.      *      * @return all privilege definitions.      */
 annotation|@
 name|Nonnull
@@ -103,7 +80,7 @@ parameter_list|()
 function_decl|;
 comment|/**      * Returns the privilege definition with the specified internal name.      *      * @param name The internal name of the privilege definition to be      * retrieved.      * @return The privilege definition with the given name or {@code null} if      * no such definition exists.      */
 annotation|@
-name|Nullable
+name|CheckForNull
 name|PrivilegeDefinition
 name|getPrivilegeDefinition
 parameter_list|(
@@ -112,6 +89,8 @@ name|name
 parameter_list|)
 function_decl|;
 comment|/**      * Creates and registers a new custom privilege definition with the specified      * characteristics. If the registration succeeds the new definition is      * returned; otherwise an {@code RepositoryException} is thrown.      *      * @param privilegeName The name of the definition.      * @param isAbstract {@code true} if the privilege is abstract.      * @param declaredAggregateNames The set of declared aggregate privilege names.      * @return The new definition.      * @throws RepositoryException If the definition could not be registered.      */
+annotation|@
+name|Nonnull
 name|PrivilegeDefinition
 name|registerDefinition
 parameter_list|(

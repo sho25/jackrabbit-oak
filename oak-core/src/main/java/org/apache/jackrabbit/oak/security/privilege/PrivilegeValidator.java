@@ -343,12 +343,10 @@ argument_list|)
 expr_stmt|;
 name|definitions
 operator|=
-name|PrivilegeRegistry
-operator|.
-name|getAllDefinitions
-argument_list|(
 name|reader
-argument_list|)
+operator|.
+name|readDefinitions
+argument_list|()
 expr_stmt|;
 block|}
 else|else

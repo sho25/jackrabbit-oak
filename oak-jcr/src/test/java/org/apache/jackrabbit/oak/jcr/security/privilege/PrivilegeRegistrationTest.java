@@ -858,6 +858,54 @@ block|{
 comment|// success
 block|}
 block|}
+for|for
+control|(
+name|String
+name|builtInName
+range|:
+name|builtIns
+operator|.
+name|keySet
+argument_list|()
+control|)
+block|{
+try|try
+block|{
+name|privilegeManager
+operator|.
+name|registerPrivilege
+argument_list|(
+name|builtInName
+argument_list|,
+literal|true
+argument_list|,
+name|builtIns
+operator|.
+name|get
+argument_list|(
+name|builtInName
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|fail
+argument_list|(
+literal|"Privilege name "
+operator|+
+name|builtInName
+operator|+
+literal|" already in use -> Exception expected"
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|RepositoryException
+name|e
+parameter_list|)
+block|{
+comment|// success
+block|}
+block|}
 block|}
 annotation|@
 name|Test

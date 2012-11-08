@@ -85,6 +85,17 @@ name|JCR_AVAILABLE_QUERY_OPERATORS
 init|=
 literal|"jcr:availableQueryOperators"
 decl_stmt|;
+comment|/**      * Constants for built-in repository defined node type names      */
+name|String
+name|NT_REP_ROOT
+init|=
+literal|"rep:root"
+decl_stmt|;
+name|String
+name|NT_REP_SYSTEM
+init|=
+literal|"rep:system"
+decl_stmt|;
 comment|/**      * Additinal name constants not present in JcrConstants      */
 name|String
 name|JCR_CREATEDBY

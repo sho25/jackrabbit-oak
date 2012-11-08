@@ -304,6 +304,11 @@ control|)
 block|{
 name|assertTrue
 argument_list|(
+name|p
+operator|.
+name|getName
+argument_list|()
+argument_list|,
 name|set
 operator|.
 name|remove

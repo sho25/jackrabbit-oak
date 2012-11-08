@@ -147,11 +147,11 @@ parameter_list|()
 throws|throws
 name|RepositoryException
 block|{
-name|PrivilegeRegistry
+name|PrivilegeDefinitionProviderImpl
 name|pr
 init|=
 operator|new
-name|PrivilegeRegistry
+name|PrivilegeDefinitionProviderImpl
 argument_list|(
 name|contentSession
 argument_list|,

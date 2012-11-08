@@ -128,8 +128,8 @@ name|SecurityConfiguration
 block|{
 annotation|@
 name|Nonnull
-name|PrivilegeProvider
-name|getPrivilegeProvider
+name|PrivilegeDefinitionProvider
+name|getPrivilegeDefinitionProvider
 parameter_list|(
 name|ContentSession
 name|contentSession
