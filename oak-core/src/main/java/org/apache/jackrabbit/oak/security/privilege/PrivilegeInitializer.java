@@ -426,6 +426,17 @@ operator|.
 name|NAME
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+operator|!
+name|system
+operator|.
+name|hasChildNode
+argument_list|(
+name|REP_PRIVILEGES
+argument_list|)
+condition|)
+block|{
 name|NodeBuilder
 name|privileges
 init|=
@@ -538,6 +549,7 @@ argument_list|(
 name|e
 argument_list|)
 throw|;
+block|}
 block|}
 block|}
 name|Set
