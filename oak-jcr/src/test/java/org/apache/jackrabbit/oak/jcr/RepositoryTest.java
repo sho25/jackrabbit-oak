@@ -1181,6 +1181,7 @@ name|Ignore
 argument_list|(
 literal|"OAK-369"
 argument_list|)
+comment|// FIXME: OAK-369
 annotation|@
 name|Test
 specifier|public
@@ -1233,6 +1234,59 @@ name|root
 operator|.
 name|getPath
 argument_list|()
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Ignore
+argument_list|(
+literal|"OAK-369"
+argument_list|)
+comment|// FIXME: OAK-369
+annotation|@
+name|Test
+specifier|public
+name|void
+name|testAddNode
+parameter_list|()
+throws|throws
+name|RepositoryException
+block|{
+name|Node
+name|node
+init|=
+name|getNode
+argument_list|(
+literal|"/foo"
+argument_list|)
+decl_stmt|;
+comment|// add a node with '..' should fail...
+name|Node
+name|invalid
+init|=
+name|node
+operator|.
+name|addNode
+argument_list|(
+literal|".."
+argument_list|)
+decl_stmt|;
+name|assertTrue
+argument_list|(
+name|node
+operator|.
+name|getParent
+argument_list|()
+operator|.
+name|isSame
+argument_list|(
+name|node
+operator|.
+name|getNode
+argument_list|(
+literal|".."
+argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1332,6 +1386,7 @@ name|Ignore
 argument_list|(
 literal|"OAK-343"
 argument_list|)
+comment|// FIXME: OAK-343
 annotation|@
 name|Test
 specifier|public
