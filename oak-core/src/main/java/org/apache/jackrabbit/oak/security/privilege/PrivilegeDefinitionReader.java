@@ -430,7 +430,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Reads privilege definitions without applying any validation.  */
+comment|/**  * Reads privilege definitions from the repository content without applying  * any validation.  */
 end_comment
 
 begin_class

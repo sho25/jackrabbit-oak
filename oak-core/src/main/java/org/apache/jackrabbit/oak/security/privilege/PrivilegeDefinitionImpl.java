@@ -84,7 +84,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * PrivilegeDefinitionImpl... TODO  */
+comment|/**  * Default implementation of the {@code PrivilegeDefinition} interface.  */
 end_comment
 
 begin_class

@@ -153,28 +153,8 @@ name|NodeUtil
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
 begin_comment
-comment|/**  * PrivilegeDefinitionWriter... TODO  */
+comment|/**  * PrivilegeDefinitionWriter is responsible for writing privilege definitions  * to the repository without applying any validation checks.  */
 end_comment
 
 begin_class
@@ -183,22 +163,6 @@ name|PrivilegeDefinitionWriter
 implements|implements
 name|PrivilegeConstants
 block|{
-comment|/**      * logger instance      */
-specifier|private
-specifier|static
-specifier|final
-name|Logger
-name|log
-init|=
-name|LoggerFactory
-operator|.
-name|getLogger
-argument_list|(
-name|PrivilegeDefinitionWriter
-operator|.
-name|class
-argument_list|)
-decl_stmt|;
 specifier|private
 specifier|final
 name|Root
