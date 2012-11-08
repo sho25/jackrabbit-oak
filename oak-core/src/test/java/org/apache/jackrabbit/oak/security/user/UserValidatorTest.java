@@ -596,7 +596,7 @@ argument_list|,
 literal|"pw"
 argument_list|)
 decl_stmt|;
-comment|// TODO: use user.getPath instead (blocked by OAK-343)
+comment|// FIXME: use user.getPath instead (blocked by OAK-343)
 name|Tree
 name|tree
 init|=
@@ -667,7 +667,7 @@ argument_list|,
 literal|"pw"
 argument_list|)
 decl_stmt|;
-comment|// TODO: use user.getPath instead (blocked by OAK-343)
+comment|// FIXME: use user.getPath instead (blocked by OAK-343)
 name|Tree
 name|tree
 init|=

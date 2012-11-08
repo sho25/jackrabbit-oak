@@ -286,7 +286,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * OakAuthorizableProperty... TODO  */
+comment|/**  * Oak level implementation of the internal {@code AuthorizableProperties} that  * is used in those cases where no {@code Session} is associated with the  * {@code UserManager} and only OAK API methods can be used to read and  * modify authorizable properties.  */
 end_comment
 
 begin_class
@@ -295,7 +295,6 @@ name|OakAuthorizableProperties
 implements|implements
 name|AuthorizableProperties
 block|{
-comment|/**      * logger instance      */
 specifier|private
 specifier|static
 specifier|final
@@ -357,6 +356,7 @@ operator|=
 name|namePathMapper
 expr_stmt|;
 block|}
+comment|//---------------------------------------------< AuthorizableProperties>---
 annotation|@
 name|Override
 specifier|public
@@ -1055,6 +1055,7 @@ return|return
 literal|false
 return|;
 block|}
+comment|//------------------------------------------------------------< private>---
 specifier|private
 name|Tree
 name|getTree
@@ -1069,7 +1070,7 @@ name|id
 argument_list|)
 return|;
 block|}
-comment|/**      * Returns true if the given property of the authorizable node is one of the      * non-protected properties defined by the rep:Authorizable node type or a      * some other descendant of the authorizable node.      *      * @param authorizableTree The tree of the target authorizable.      * @param propertyLocation Location to be tested.      * @param verifyAncestor If true the property is tested to be a descendant      * of the node of this authorizable; otherwise it is expected that this      * test has been executed by the caller.      * @return {@code true} if the given property is defined      * by the rep:authorizable node type or one of it's sub-node types;      * {@code false} otherwise.      * @throws RepositoryException If the property definition cannot be retrieved.      */
+comment|/**      * Returns true if the given property of the authorizable node is one of the      * non-protected properties defined by the rep:Authorizable node type or a      * some other descendant of the authorizable node.      *      * @param authorizableTree The tree of the target authorizable.      * @param propertyLocation Location to be tested.      * @param verifyAncestor If true the property is tested to be a descendant      * of the node of this authorizable; otherwise it is expected that this      * test has been executed by the caller.      * @return {@code true} if the given property is defined      * by the rep:authorizable node type or one of it's sub-node types;      * {@code false} otherwise.      */
 specifier|private
 name|boolean
 name|isAuthorizableProperty
@@ -1083,8 +1084,6 @@ parameter_list|,
 name|boolean
 name|verifyAncestor
 parameter_list|)
-throws|throws
-name|RepositoryException
 block|{
 if|if
 condition|(
@@ -1140,8 +1139,6 @@ parameter_list|,
 name|PropertyState
 name|property
 parameter_list|)
-throws|throws
-name|RepositoryException
 block|{
 comment|// FIXME: add proper check for protection and declaring nt of the
 comment|// FIXME: property using nt functionality provided by nt-plugins

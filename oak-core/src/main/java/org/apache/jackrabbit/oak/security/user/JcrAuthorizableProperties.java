@@ -216,7 +216,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * JcrAuthorizableProperty... TODO  */
+comment|/**  * JCR level implementation of the internal {@code AuthorizableProperties}  * interface. It will be used whenever a {@code Session} is associated  * with a user manager and thus a JCR item operations can be used to retrieve  * the authorizable properties.  */
 end_comment
 
 begin_class
@@ -227,7 +227,6 @@ name|AuthorizableProperties
 implements|,
 name|UserConstants
 block|{
-comment|/**      * logger instance      */
 specifier|private
 specifier|static
 specifier|final
@@ -275,6 +274,7 @@ operator|=
 name|namePathMapper
 expr_stmt|;
 block|}
+comment|//---------------------------------------------< AuthorizableProperties>---
 annotation|@
 name|Override
 specifier|public
@@ -829,6 +829,7 @@ return|return
 literal|false
 return|;
 block|}
+comment|//------------------------------------------------------------< private>---
 specifier|private
 name|Node
 name|getNode

@@ -33,6 +33,26 @@ begin_import
 import|import
 name|javax
 operator|.
+name|annotation
+operator|.
+name|CheckForNull
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|Nonnull
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
 name|jcr
 operator|.
 name|RepositoryException
@@ -50,13 +70,16 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * AuthorizableProperty... TODO  */
+comment|/**  * Internal interface covering those methods of {link Authorizable} that deal  * with reading and writing custom properties defined with user and groups.  */
 end_comment
 
 begin_interface
 interface|interface
 name|AuthorizableProperties
 block|{
+comment|/**      * Retrieve all property names located at the given relative path underneath      * the associated {@code Authorizable} instance.      *      * @param relPath A relative path referring to a node associated with a      * given authorizable. A relative path consisting only of the current      * element "." refers to the authorizable node itself.      * @return An iterator of property names available at the given {@code relPath}.      * @throws RepositoryException If an error occurs.      */
+annotation|@
+name|Nonnull
 name|Iterator
 argument_list|<
 name|String
@@ -69,6 +92,7 @@ parameter_list|)
 throws|throws
 name|RepositoryException
 function_decl|;
+comment|/**      * Returns {@code true} if there is a custom authorizable property at the      * specified {@code relPath}; false if no such property exists or if the      * path refers to a property located outside of the authorizable tree      * or a protected property that cannot be read/modified using      * the {@code AuthorizableProperties}.      *      * @param relPath A relative path to a property.      * @return {@code true} if a valid property exists; {@code false} otherwise.      * @throws RepositoryException If an error occurs.      */
 name|boolean
 name|hasProperty
 parameter_list|(
@@ -78,6 +102,9 @@ parameter_list|)
 throws|throws
 name|RepositoryException
 function_decl|;
+comment|/**      * Returns the values of the property identified by the specified      * {@code relPath}. If no such property exists or the property doesn't      * represent a custom property associated with this authorizable {@code null}      * is returned.      *      * @param relPath A relative path to an authorizable property.      * @return The value(s) of the specified property or {@code null} if no      * such property exists or the property doesn't represent a valid authorizable      * property exposed by this interface.      * @throws RepositoryException If an error occurs.      */
+annotation|@
+name|CheckForNull
 name|Value
 index|[]
 name|getProperty
@@ -88,6 +115,7 @@ parameter_list|)
 throws|throws
 name|RepositoryException
 function_decl|;
+comment|/**      * Creates or modifies the property at the specified {@code relPath}. If      * the property exists and is multi-valued it is converted into a single      * valued property.      *      * @param relPath A relative path referring to a custom authorizable property      * located underneath the associated authorizable.      * @param value The value of the property.      * @throws RepositoryException If the {@code relPath} refers to an invalid      * property: located outside of the scope of this authorizable or one      * that represents protected content that cannot be modified using this API.      * @see #setProperty(String, javax.jcr.Value[])      */
 name|void
 name|setProperty
 parameter_list|(
@@ -100,6 +128,7 @@ parameter_list|)
 throws|throws
 name|RepositoryException
 function_decl|;
+comment|/**      * Creates or modifies the property at the specified {@code relPath}. If      * the property exists and is single-valued it is converted into a multi-      * value property.      *      * @param relPath A relative path referring to a custom authorizable property      * associated with the authorizable.      * @param values The values of the property.      * @throws RepositoryException If the {@code relPath} refers to an invalid      * property: located outside of the scope of this authorizable or one      * that represents protected content that cannot be modified using this API.      * @see #setProperty(String, javax.jcr.Value)      */
 name|void
 name|setProperty
 parameter_list|(
@@ -113,6 +142,7 @@ parameter_list|)
 throws|throws
 name|RepositoryException
 function_decl|;
+comment|/**      * Removes the property identified by the given {@code relPath} and returns      * {@code true} if the property was successfully removed.      *      * @param relPath A relative path referring to a custom authorizable property      * associated with the authorizable.      * @return {@code true} if the property exists and could successfully be      * removed; {@code false} if no such property exists.      * @throws RepositoryException If the specified path points to a property      * that cannot be altered using this API because it is not associated with      * this authorizable or is otherwise considered protected.      */
 name|boolean
 name|removeProperty
 parameter_list|(
