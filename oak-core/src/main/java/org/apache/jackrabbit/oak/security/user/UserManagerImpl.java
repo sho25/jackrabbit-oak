@@ -1552,7 +1552,7 @@ throw|throw
 operator|new
 name|IllegalStateException
 argument_list|(
-literal|"Authorizable not associated with an existing tree"
+literal|"Authorizable not associated with an existing tree (WAITING FOR OAK-343 TO BE FIXED)"
 argument_list|)
 throw|;
 block|}
