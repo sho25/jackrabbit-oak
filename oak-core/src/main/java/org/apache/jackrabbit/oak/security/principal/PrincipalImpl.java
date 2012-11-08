@@ -64,7 +64,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * PrincipalImpl TODO  */
+comment|/**  * Default implementation of the {@code JackrabbitPrincipal} interface.  */
 end_comment
 
 begin_class
