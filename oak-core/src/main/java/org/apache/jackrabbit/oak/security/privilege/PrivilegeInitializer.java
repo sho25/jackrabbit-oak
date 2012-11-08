@@ -280,7 +280,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * PrivilegeInitializer... TODO  */
+comment|/**  * {@code RepositoryInitializer} that asserts the existence and node type of  * the /jcr:system/jcr:privileges node that is used to store privilege definitons.  * In addition it writes all built-in privilege defintions except jcr:all to  * the repository.  */
 end_comment
 
 begin_class

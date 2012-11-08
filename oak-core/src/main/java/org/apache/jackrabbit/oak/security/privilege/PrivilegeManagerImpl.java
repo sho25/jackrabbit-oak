@@ -224,7 +224,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * PrivilegeManagerImpl... TODO  */
+comment|/**  * {@code PrivilegeManager} implementation operating on the specified  * {@code PrivilegeDefinitionProvider}.  */
 end_comment
 
 begin_class
@@ -443,7 +443,7 @@ throw|throw
 operator|new
 name|InvalidItemStateException
 argument_list|(
-literal|"Session has pending changes."
+literal|"Attempt to register a new privilege while there are pending changes."
 argument_list|)
 throw|;
 block|}
