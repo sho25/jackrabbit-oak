@@ -45,9 +45,9 @@ name|apache
 operator|.
 name|jackrabbit
 operator|.
-name|mongomk
+name|mk
 operator|.
-name|api
+name|blobs
 operator|.
 name|BlobStore
 import|;

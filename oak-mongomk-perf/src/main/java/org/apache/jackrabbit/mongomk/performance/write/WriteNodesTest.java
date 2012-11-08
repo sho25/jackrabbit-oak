@@ -45,9 +45,27 @@ name|jackrabbit
 operator|.
 name|mongomk
 operator|.
-name|util
+name|impl
 operator|.
-name|MongoUtil
+name|MongoNodeStore
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|mongomk
+operator|.
+name|impl
+operator|.
+name|blob
+operator|.
+name|MongoBlobStore
 import|;
 end_import
 
@@ -81,8 +99,18 @@ name|Test
 import|;
 end_import
 
+begin_import
+import|import
+name|com
+operator|.
+name|mongodb
+operator|.
+name|DB
+import|;
+end_import
+
 begin_comment
-comment|/**  * Measures the time needed for creating different tree node structures.Only one  * mongoMk is used for writing operation.  *   * @author rogoz  *   */
+comment|/**  * Measures the time needed for creating different tree node structures.Only one  * mongoMk is used for writing operation.  */
 end_comment
 
 begin_class
@@ -125,15 +153,78 @@ name|void
 name|cleanDatabase
 parameter_list|()
 block|{
-name|MongoUtil
-operator|.
-name|initDatabase
-argument_list|(
+name|DB
+name|db
+init|=
 name|mongoConnection
+operator|.
+name|getDB
+argument_list|()
+decl_stmt|;
+name|dropCollections
+argument_list|(
+name|db
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * Creates 10000 nodes, all with on the same level with the same parent 	 * node. 	 */
+specifier|private
+name|void
+name|dropCollections
+parameter_list|(
+name|DB
+name|db
+parameter_list|)
+block|{
+name|db
+operator|.
+name|getCollection
+argument_list|(
+name|MongoBlobStore
+operator|.
+name|COLLECTION_BLOBS
+argument_list|)
+operator|.
+name|drop
+argument_list|()
+expr_stmt|;
+name|db
+operator|.
+name|getCollection
+argument_list|(
+name|MongoNodeStore
+operator|.
+name|COLLECTION_COMMITS
+argument_list|)
+operator|.
+name|drop
+argument_list|()
+expr_stmt|;
+name|db
+operator|.
+name|getCollection
+argument_list|(
+name|MongoNodeStore
+operator|.
+name|COLLECTION_NODES
+argument_list|)
+operator|.
+name|drop
+argument_list|()
+expr_stmt|;
+name|db
+operator|.
+name|getCollection
+argument_list|(
+name|MongoNodeStore
+operator|.
+name|COLLECTION_SYNC
+argument_list|)
+operator|.
+name|drop
+argument_list|()
+expr_stmt|;
+block|}
+comment|/**      * Creates 10000 nodes, all with on the same level with the same parent      * node.      */
 annotation|@
 name|Test
 specifier|public
@@ -164,7 +255,7 @@ literal|"N"
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * Creates 10000 nodes, all of them having 10 children nodes. 	 */
+comment|/**      * Creates 10000 nodes, all of them having 10 children nodes.      */
 annotation|@
 name|Test
 specifier|public
@@ -195,7 +286,7 @@ literal|"N"
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * Creates 10000 nodes, all of them having 100 children nodes. 	 */
+comment|/**      * Creates 10000 nodes, all of them having 100 children nodes.      */
 annotation|@
 name|Test
 specifier|public
@@ -226,7 +317,7 @@ literal|"N"
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * Creates 10000 nodes, all of them on different levels.Each node has one 	 * child only. 	 */
+comment|/**      * Creates 10000 nodes, all of them on different levels.Each node has one      * child only.      */
 annotation|@
 name|Test
 specifier|public

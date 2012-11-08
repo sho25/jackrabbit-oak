@@ -27,23 +27,9 @@ name|jackrabbit
 operator|.
 name|mongomk
 operator|.
+name|impl
+operator|.
 name|MongoConnection
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|mongomk
-operator|.
-name|util
-operator|.
-name|MongoUtil
 import|;
 end_import
 
@@ -58,10 +44,6 @@ operator|.
 name|Logger
 import|;
 end_import
-
-begin_comment
-comment|/**  * @author<a href="mailto:pmarx@adobe.com>Philipp Marx</a>  */
-end_comment
 
 begin_class
 specifier|public
@@ -107,8 +89,6 @@ name|config
 operator|=
 name|config
 expr_stmt|;
-name|this
-operator|.
 name|initMongo
 argument_list|()
 expr_stmt|;
@@ -125,15 +105,7 @@ argument_list|(
 literal|"Preparing environment"
 argument_list|)
 expr_stmt|;
-name|MongoUtil
-operator|.
-name|initDatabase
-argument_list|(
-name|this
-operator|.
-name|mongoConnection
-argument_list|)
-expr_stmt|;
+comment|//mongoConnection.initializeDB(true);
 block|}
 specifier|private
 name|void
@@ -142,29 +114,21 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|this
-operator|.
 name|mongoConnection
 operator|=
 operator|new
 name|MongoConnection
 argument_list|(
-name|this
-operator|.
 name|config
 operator|.
 name|getMongoHost
 argument_list|()
 argument_list|,
-name|this
-operator|.
 name|config
 operator|.
 name|getMongoPort
 argument_list|()
 argument_list|,
-name|this
-operator|.
 name|config
 operator|.
 name|getMongoDatabase

@@ -20,7 +20,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * The executor part of the<a href="http://en.wikipedia.org/wiki/Command_pattern">Command Pattern</a>.  *  *<p>  * The implementation of this class contains the business logic to execute a command.  *</p>  *  * @see<a href="http://en.wikipedia.org/wiki/Command_pattern">Command Pattern</a>  * @see Command  *  * @author<a href="mailto:pmarx@adobe.com>Philipp Marx</a>  */
+comment|/**  * The executor part of the<a href="http://en.wikipedia.org/wiki/Command_pattern">Command Pattern</a>.  *  *<p>  * The implementation of this class contains the business logic to execute a command.  *</p>  *  * @see<a href="http://en.wikipedia.org/wiki/Command_pattern">Command Pattern</a>  * @see Command  */
 end_comment
 
 begin_interface

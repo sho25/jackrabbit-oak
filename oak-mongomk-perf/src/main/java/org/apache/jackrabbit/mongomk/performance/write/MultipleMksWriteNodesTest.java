@@ -39,22 +39,6 @@ begin_import
 import|import
 name|org
 operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|mongomk
-operator|.
-name|util
-operator|.
-name|MongoUtil
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
 name|junit
 operator|.
 name|Before
@@ -82,7 +66,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Writing tests with multiple Mks.  * @author rogoz  *  */
+comment|/**  * Writing tests with multiple Mks.  */
 end_comment
 
 begin_class
@@ -206,15 +190,10 @@ name|void
 name|cleanDatabase
 parameter_list|()
 block|{
-name|MongoUtil
-operator|.
-name|initDatabase
-argument_list|(
-name|mongoConnection
-argument_list|)
-expr_stmt|;
+comment|// FIXME
+comment|//mongoConnection.initializeDB(true);
 block|}
-comment|/** 	 * Each worker creates 2000 nodes on the same level. 	 * 5 workers x 2000 nodes=10000 nodes 	 * @throws InterruptedException 	 */
+comment|/**      * Each worker creates 2000 nodes on the same level.      * 5 workers x 2000 nodes=10000 nodes      * @throws InterruptedException      */
 annotation|@
 name|Test
 specifier|public
@@ -273,7 +252,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/** 	 * Each worker is creating a pyramid containing 2000 nodes. 	 * 5 workers x 2000 nodes=10000 nodes 	 *  	 * @throws InterruptedException 	 */
+comment|/**      * Each worker is creating a pyramid containing 2000 nodes.      * 5 workers x 2000 nodes=10000 nodes      *      * @throws InterruptedException      */
 annotation|@
 name|Test
 specifier|public

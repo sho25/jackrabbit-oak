@@ -27,9 +27,9 @@ name|jackrabbit
 operator|.
 name|mk
 operator|.
-name|util
+name|testing
 operator|.
-name|MKOperation
+name|MicroKernelTestBase
 import|;
 end_import
 
@@ -43,9 +43,9 @@ name|jackrabbit
 operator|.
 name|mk
 operator|.
-name|testing
+name|util
 operator|.
-name|MicroKernelTestBase
+name|Committer
 import|;
 end_import
 
@@ -60,7 +60,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Measure the time needed for writing nodes in different tree structures.Each  * node is committed separately.Each node is also committed using the relative path of  * the parent node.  *   * @author rogoz  *   */
+comment|/**  * Measure the time needed for writing nodes in different tree structures.Each  * node is committed separately.Each node is also committed using the relative  * path of the parent node.  */
 end_comment
 
 begin_class
@@ -82,7 +82,6 @@ name|nodesNumber
 init|=
 literal|1000
 decl_stmt|;
-comment|/** 	 * Writes all the nodes on the same level.All the nodes have the same 	 * parent. 	 *  	 * @throws Exception 	 */
 annotation|@
 name|Test
 specifier|public
@@ -92,12 +91,19 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+name|Committer
+name|commiter
+init|=
+operator|new
+name|Committer
+argument_list|()
+decl_stmt|;
 name|chronometer
 operator|.
 name|start
 argument_list|()
 expr_stmt|;
-name|MKOperation
+name|commiter
 operator|.
 name|addPyramidStructure
 argument_list|(
@@ -141,12 +147,19 @@ name|void
 name|testWriteNodes10Children
 parameter_list|()
 block|{
+name|Committer
+name|commiter
+init|=
+operator|new
+name|Committer
+argument_list|()
+decl_stmt|;
 name|chronometer
 operator|.
 name|start
 argument_list|()
 expr_stmt|;
-name|MKOperation
+name|commiter
 operator|.
 name|addPyramidStructure
 argument_list|(
@@ -190,12 +203,19 @@ name|void
 name|testWriteNodes100Children
 parameter_list|()
 block|{
+name|Committer
+name|commiter
+init|=
+operator|new
+name|Committer
+argument_list|()
+decl_stmt|;
 name|chronometer
 operator|.
 name|start
 argument_list|()
 expr_stmt|;
-name|MKOperation
+name|commiter
 operator|.
 name|addPyramidStructure
 argument_list|(

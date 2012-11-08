@@ -41,16 +41,22 @@ end_import
 
 begin_import
 import|import
-name|java
+name|org
 operator|.
-name|util
+name|apache
 operator|.
-name|Set
+name|jackrabbit
+operator|.
+name|mk
+operator|.
+name|model
+operator|.
+name|NodeDiffHandler
 import|;
 end_import
 
 begin_comment
-comment|/**  * A higher level object representing a node.  *  * @author<a href="mailto:pmarx@adobe.com>Philipp Marx</a>  */
+comment|/**  * A higher level object representing a node.  */
 end_comment
 
 begin_interface
@@ -58,26 +64,25 @@ specifier|public
 interface|interface
 name|Node
 block|{
-comment|/**      * Returns the total number of children of this node.      *      *<p>      *<strong>This is not necessarily equal to the number of children returned by {@link #getChildren()} since this      * {@code Node} might be created with only a subset of children.</strong>      *</p>      *      * @return The total number of children.      */
-name|long
-name|getChildCount
-parameter_list|()
-function_decl|;
-comment|/**      * Returns the children this {@code Node} was created with.      *      * @return The children.      */
-name|Set
-argument_list|<
+comment|/**      * Returns the descendant node entry (descendant)      *      * @param name Name of the descendant.      * @return Descendant node.      */
 name|Node
-argument_list|>
-name|getChildren
+name|getChildNodeEntry
+parameter_list|(
+name|String
+name|name
+parameter_list|)
+function_decl|;
+comment|/**      *      * Returns the total number of children of this node.      *      *<p>      *<strong>This is not necessarily equal to the number of children returned by      * {@link #getChildren()} since this {@code Node} might be created with only      * a subset of children.</strong>      *</p>      *      * @return The total number of children.      */
+name|int
+name|getChildNodeCount
 parameter_list|()
 function_decl|;
-comment|// TODO Replace Set with Collection
-comment|// TODO - [Mete] Document.
+comment|/**      * Returns the children iterator for the supplied offset and count.      *      * @param offset The offset to return the children from.      * @param count The number of children to return.      * @return Iterator with child entries.      */
 name|Iterator
 argument_list|<
 name|Node
 argument_list|>
-name|getChildEntries
+name|getChildNodeEntries
 parameter_list|(
 name|int
 name|offset
@@ -86,49 +91,36 @@ name|int
 name|count
 parameter_list|)
 function_decl|;
-comment|/**      * Returns the descendants (children, children of the children, etc) this {@code Node} was created with.      *      * @param includeThis Flag indicating whether this {@code Node} should be included in the list.      * @return The descendants.      */
-name|Set
+comment|/**      * Returns the properties this {@code Node} was created with.      *      * @return The properties.      */
+name|Map
 argument_list|<
-name|Node
-argument_list|>
-name|getDescendants
-parameter_list|(
-name|boolean
-name|includeThis
-parameter_list|)
-function_decl|;
-comment|/**      * Returns the name of this {@code Node}.      *      * @return The name.      */
 name|String
-name|getName
+argument_list|,
+name|String
+argument_list|>
+name|getProperties
 parameter_list|()
+function_decl|;
+comment|/**      * Diffs this node with the other node and calls the passed in diff handler.      *      * @param otherNode Other node.      * @param nodeDiffHandler Diff handler.      */
+name|void
+name|diff
+parameter_list|(
+name|Node
+name|otherNode
+parameter_list|,
+name|NodeDiffHandler
+name|nodeDiffHandler
+parameter_list|)
 function_decl|;
 comment|/**      * Returns the path of this {@code Node}.      *      * @return The path.      */
 name|String
 name|getPath
 parameter_list|()
 function_decl|;
-comment|/**      * Returns the properties this {@code Node} was created with.      *      * @return The properties.      */
-name|Map
-argument_list|<
-name|String
-argument_list|,
-name|Object
-argument_list|>
-name|getProperties
-parameter_list|()
-function_decl|;
-comment|/**      * Returns the revision id of this node if known already, else this will return {@code null}.      * The revision id will be determined only after the commit has been successfully      * performed or the node has been read as part of an existing revision.      *      * @see #setRevisionId(Long)      *      * @return The revision id of this commit or {@code null}.      */
+comment|/**      * Returns the revision id of this node if known already, else this will return {@code null}.      * The revision id will be determined only after the commit has been successfully      * performed or the node has been read as part of an existing revision.      *      * @return The revision id of this commit or {@code null}.      */
 name|Long
 name|getRevisionId
 parameter_list|()
-function_decl|;
-comment|/**      * Sets the revision id of this node.      *      * @see #getRevisionId()      *      * @param revisionId The revision id to set.      */
-name|void
-name|setRevisionId
-parameter_list|(
-name|Long
-name|revisionId
-parameter_list|)
 function_decl|;
 block|}
 end_interface

@@ -8206,10 +8206,8 @@ parameter_list|()
 block|{
 name|testBlobs
 argument_list|(
-literal|1234
+literal|1024
 argument_list|,
-literal|8
-operator|*
 literal|1024
 argument_list|)
 expr_stmt|;
@@ -8223,7 +8221,9 @@ parameter_list|()
 block|{
 name|testBlobs
 argument_list|(
-literal|1234567
+literal|1024
+operator|*
+literal|1024
 argument_list|,
 literal|8
 operator|*

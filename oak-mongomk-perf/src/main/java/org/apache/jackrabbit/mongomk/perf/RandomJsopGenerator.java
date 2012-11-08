@@ -81,9 +81,7 @@ name|jackrabbit
 operator|.
 name|mongomk
 operator|.
-name|impl
-operator|.
-name|builder
+name|util
 operator|.
 name|NodeBuilder
 import|;
@@ -104,10 +102,6 @@ operator|.
 name|PathUtils
 import|;
 end_import
-
-begin_comment
-comment|/**  * @author<a href="mailto:pmarx@adobe.com>Philipp Marx</a>  */
-end_comment
 
 begin_class
 specifier|public
@@ -455,26 +449,8 @@ argument_list|,
 name|path
 argument_list|)
 decl_stmt|;
-name|this
-operator|.
-name|descendants
-operator|=
-name|node
-operator|.
-name|getDescendants
-argument_list|(
-literal|false
-argument_list|)
-operator|.
-name|toArray
-argument_list|(
-operator|new
-name|Node
-index|[
-literal|0
-index|]
-argument_list|)
-expr_stmt|;
+comment|// FIXME - This needs to change to node.getChildNodeEntries(0, -1).
+comment|//this.descendants = node.getDescendants(false).toArray(new Node[0]);
 name|this
 operator|.
 name|random

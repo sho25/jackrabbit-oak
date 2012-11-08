@@ -29,8 +29,26 @@ name|List
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|mongomk
+operator|.
+name|api
+operator|.
+name|instruction
+operator|.
+name|Instruction
+import|;
+end_import
+
 begin_comment
-comment|/**  * A higher level object representing a commit.  *  * @author<a href="mailto:pmarx@adobe.com>Philipp Marx</a>  */
+comment|/**  * A higher level object representing a commit.  */
 end_comment
 
 begin_interface
@@ -38,12 +56,35 @@ specifier|public
 interface|interface
 name|Commit
 block|{
-comment|/**      * Returns the<a href="http://wiki.apache.org/jackrabbit/Jsop">JSOP</a> diff of this commit.      *      * @return The {@link String} representing the diff.      */
+comment|/**      * Returns the paths affected by the commit.      *      * @return The paths affected by the commit.      */
+name|List
+argument_list|<
+name|String
+argument_list|>
+name|getAffectedPaths
+parameter_list|()
+function_decl|;
+comment|/**      * Returns the base revision id the commit is based on.      *      * @return The base revision id the commit is based on.      */
+name|Long
+name|getBaseRevisionId
+parameter_list|()
+function_decl|;
+comment|/**      * Returns the private branch id the commit is under or {@code null} if the      * commit is in the public branch.      *      * @return The private branch id or {@code null}      */
+name|String
+name|getBranchId
+parameter_list|()
+function_decl|;
+comment|/**      * Returns the<a href="http://wiki.apache.org/jackrabbit/Jsop">JSOP</a>      * diff of this commit.      *      * @return The {@link String} representing the diff.      */
 name|String
 name|getDiff
 parameter_list|()
 function_decl|;
-comment|/**      * Returns the {@link List} of {@link Instruction}s which were created from the diff.      *      * @see #getDiff()      *      * @return The {@link List} of {@link Instruction}s.      */
+comment|/**      * Determines whether the commit failed or not.      *      * @return True if the commit failed.      */
+name|boolean
+name|isFailed
+parameter_list|()
+function_decl|;
+comment|/**      * Returns the {@link List} of {@link Instruction}s which were created from      * the diff.      *      * @see #getDiff()      *      * @return The {@link List} of {@link Instruction}s.      */
 name|List
 argument_list|<
 name|Instruction
@@ -61,12 +102,12 @@ name|String
 name|getPath
 parameter_list|()
 function_decl|;
-comment|/**      * Returns the revision id of this commit if known already, else this will return {@code null}.      * The revision id will be determined only after the commit has been successfully performed.      *      * @see #setRevisionId(Long)      *      * @return The revision id of this commit or {@code null}.      */
+comment|/**      * Returns the revision id of this commit if known already, else this will      * return {@code null}. The revision id will be determined only after the      * commit has been successfully performed.      *      * @return The revision id of this commit or {@code null}.      */
 name|Long
 name|getRevisionId
 parameter_list|()
 function_decl|;
-comment|/**      * Sets the revision id of this commit.      *      * @see #getRevisionId()      *      * @param revisionId The revision id to set.      */
+comment|/**      * Sets the revision id of this commit.      *      * @param revisionId The revision id to set.      */
 name|void
 name|setRevisionId
 parameter_list|(
@@ -75,7 +116,7 @@ name|revisionId
 parameter_list|)
 function_decl|;
 comment|/**      * Returns the timestamp of this commit.      *      * @return The timestamp of this commit.      */
-name|long
+name|Long
 name|getTimestamp
 parameter_list|()
 function_decl|;

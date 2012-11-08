@@ -29,7 +29,7 @@ name|mk
 operator|.
 name|util
 operator|.
-name|MKOperation
+name|MicroKernelOperation
 import|;
 end_import
 
@@ -76,7 +76,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Measure the time needed for writing nodes in different tree structures.All  * the nodes are added in a single commit.  *   * @author rogoz  *   */
+comment|/**  * Measure the time needed for writing nodes in different tree structures.All  * the nodes are added in a single commit.  */
 end_comment
 
 begin_class
@@ -87,10 +87,10 @@ extends|extends
 name|MicroKernelTestBase
 block|{
 specifier|static
-name|int
+name|long
 name|nodesNumber
 init|=
-literal|100000
+literal|100
 decl_stmt|;
 specifier|static
 name|String
@@ -98,6 +98,7 @@ name|nodeNamePrefix
 init|=
 literal|"N"
 decl_stmt|;
+comment|/**      * Tree structure:      *<p>      * rootNode (/)      *<p>      * N0 N1... Nn-1 Nn      */
 annotation|@
 name|Test
 specifier|public
@@ -108,7 +109,7 @@ block|{
 name|String
 name|diff
 init|=
-name|MKOperation
+name|MicroKernelOperation
 operator|.
 name|buildPyramidDiff
 argument_list|(
@@ -173,6 +174,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * Tree structure:      *<p>      * rootNode (/)      *<p>      * N0      *<p>      * N1      *<p>      * N2      *<p>      * N3      */
 annotation|@
 name|Test
 specifier|public
@@ -188,7 +190,7 @@ decl_stmt|;
 name|String
 name|diff
 init|=
-name|MKOperation
+name|MicroKernelOperation
 operator|.
 name|buildPyramidDiff
 argument_list|(
@@ -253,6 +255,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * Tree structure:      *<p>      * Number of nodes per<b>level</b> =10^(<b>level</b>).      *<p>      * Each node has 10 children.      */
 annotation|@
 name|Test
 specifier|public
@@ -263,7 +266,7 @@ block|{
 name|String
 name|diff
 init|=
-name|MKOperation
+name|MicroKernelOperation
 operator|.
 name|buildPyramidDiff
 argument_list|(
@@ -328,6 +331,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * Tree structure:      *<p>      * Number of nodes per<b>level</b> =100^(<b>level</b>).      *<p>      * Each node has 100 children.      */
 annotation|@
 name|Test
 specifier|public
@@ -338,7 +342,7 @@ block|{
 name|String
 name|diff
 init|=
-name|MKOperation
+name|MicroKernelOperation
 operator|.
 name|buildPyramidDiff
 argument_list|(
@@ -403,6 +407,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * Tree structure:      *<p>      * Number of nodes per<b>level</b> =1000^(<b>level</b>).      *<p>      * Each node has 1000 children.      */
 annotation|@
 name|Test
 specifier|public
@@ -413,7 +418,7 @@ block|{
 name|String
 name|diff
 init|=
-name|MKOperation
+name|MicroKernelOperation
 operator|.
 name|buildPyramidDiff
 argument_list|(

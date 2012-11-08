@@ -41,6 +41,22 @@ name|apache
 operator|.
 name|jackrabbit
 operator|.
+name|mk
+operator|.
+name|api
+operator|.
+name|MicroKernelException
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
 name|mongomk
 operator|.
 name|api
@@ -70,7 +86,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * The<code>NodeStore</code> interface deals with all node related operations of the {@link MicroKernel}.  *  *<p>  * Since binary storage and node storage most likely use different backend technologies two separate interfaces for  * these operations are provided.  *</p>  *  *<p>  * This interface is not only a partly {@code MicroKernel} but also provides a different layer of abstraction by  * converting the {@link String} parameters into higher level objects to ease the development for implementors of the  * {@code MicroKernel}.  *</p>  *  * @see BlobStore  *  * @author<a href="mailto:pmarx@adobe.com>Philipp Marx</a>  */
+comment|/**  * The<code>NodeStore</code> interface deals with all node related operations  * of the {@code MicroKernel}.  *  *<p>  * Since binary storage and node storage most likely use different back-end  * technologies two separate interfaces for these operations are provided.  *</p>  *  *<p>  * This interface is not only a partly {@code MicroKernel} but also provides a  * different layer of abstraction by converting the {@link String} parameters  * into higher level objects to ease the development for implementors of the  * {@code MicroKernel}.  *</p>  *  * @see {@code BlobStore}  */
 end_comment
 
 begin_interface
@@ -78,12 +94,31 @@ specifier|public
 interface|interface
 name|NodeStore
 block|{
-comment|/**      * @see MicroKernel#commit(String, String, String, String)      *      * @param commit The {@link Commit} object to store in the backend.      * @return The revision id of this commit.      * @throws Exception If an error occurred while committing.      */
+comment|/**      * @see MicroKernel#commit(String, String, String, String)      *      * @param commit The {@link Commit} object to store in the back-end.      * @return The revision id of this commit.      * @throws Exception If an error occurred while committing.      */
 name|String
 name|commit
 parameter_list|(
 name|Commit
 name|commit
+parameter_list|)
+throws|throws
+name|Exception
+function_decl|;
+comment|/**      * @see MicroKernel#diff(String, String, String, int)      *      * @param fromRevisionId a revision id, if {@code null} the current head revision is assumed      * @param toRevisionId another revision id, if {@code null} the current head revision is assumed      * @param path optional path filter; if {@code null} or {@code ""}.      * The default ({@code "/"}) will be assumed, i.e. no filter will be applied      * @param depth Depth limit; if {@code -1} no limit will be applied      * @return JSON diff representation of the changes      * @throws MicroKernelException if any of the specified revisions doesn't exist or if another error occurs      */
+name|String
+name|diff
+parameter_list|(
+name|String
+name|fromRevisionId
+parameter_list|,
+name|String
+name|toRevisionId
+parameter_list|,
+name|String
+name|path
+parameter_list|,
+name|int
+name|depth
 parameter_list|)
 throws|throws
 name|Exception
@@ -95,7 +130,7 @@ parameter_list|()
 throws|throws
 name|Exception
 function_decl|;
-comment|/**      * @see MicroKernel#getJournal(String, String, String)      *      * @param fromRevisionId id of first revision to be returned in journal      * @param toRevisionId id of last revision to be returned in journal,      * if {@code null} the current head revision is assumed      * @param path optional path filter; if {@code null} or {@code ""}      * the default ({@code "/"}) will be assumed, i.e. no filter will be applied      * @return a chronological list of revisions in JSON format      */
+comment|/**      * @see MicroKernel#getJournal(String, String, String)      *      * @param fromRevisionId id of first revision to be returned in journal      * @param toRevisionId id of last revision to be returned in journal,      * if {@code null} the current head revision is assumed      * @param path optional path filter; if {@code null} or {@code ""}      * the default ({@code "/"}) will be assumed, i.e. no filter will be applied      * @return a chronological list of revisions in JSON format      * @throws Exception if an error occurred while getting the journal.      */
 name|String
 name|getJournal
 parameter_list|(
@@ -108,8 +143,10 @@ parameter_list|,
 name|String
 name|path
 parameter_list|)
+throws|throws
+name|Exception
 function_decl|;
-comment|/**      * @see MicroKernel#getRevisionHistory(long, int, String)      *      * @param since timestamp (ms) of earliest revision to be returned      * @param maxEntries maximum #entries to be returned; if< 0, no limit will be applied.      * @param path optional path filter; if {@code null} or {@code ""} the default      *  ({@code "/"}) will be assumed, i.e. no filter will be applied      * @return a list of revisions in chronological order in JSON format.      */
+comment|/**      * @see MicroKernel#getRevisionHistory(long, int, String)      *      * @param since timestamp (ms) of earliest revision to be returned      * @param maxEntries maximum #entries to be returned; if< 0, no limit will be applied.      * @param path optional path filter; if {@code null} or {@code ""} the default      *  ({@code "/"}) will be assumed, i.e. no filter will be applied      * @return a list of revisions in chronological order in JSON format.      * @throws Exception if an error occurred while getting the revision history.      */
 name|String
 name|getRevisionHistory
 parameter_list|(
@@ -122,7 +159,10 @@ parameter_list|,
 name|String
 name|path
 parameter_list|)
+throws|throws
+name|Exception
 function_decl|;
+empty_stmt|;
 comment|/**      * @see MicroKernel#getNodes(String, String, int, long, int, String)      *      * @param path The path of the root of nodes to retrieve.      * @param revisionId The revision id of the nodes or {@code null} if the latest head revision      * should be retrieved.      * @param depth The maximum depth of the retrieved node tree or -1 to retrieve all nodes.      * @param offset The offset of the child list to retrieve.      * @param maxChildNodes The count of children to retrieve or -1 to retrieve all children.      * @param filter An optional filter for the retrieved nodes.      * @return The {@link Node} of the root node.      * @throws Exception If an error occurred while retrieving the nodes.      */
 name|Node
 name|getNodes
@@ -148,6 +188,19 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
+comment|/**      * @see MicroKernel#merge(String, String)      *      * @param branchRevisionId Branch revision id to merge.      * @param message Merge message.      * @return The revision id after merge.      * @throws Exception If an error occurred while merging.      */
+name|String
+name|merge
+parameter_list|(
+name|String
+name|branchRevisionId
+parameter_list|,
+name|String
+name|message
+parameter_list|)
+throws|throws
+name|Exception
+function_decl|;
 comment|/**      * @see MicroKernel#nodeExists(String, String)      *      * @param path The path of the node to test.      * @param revisionId The revision id of the node or {@code null} for the head revision.      * @return {@code true} if the node for the specific revision exists else {@code false}.      * @throws Exception If an error occurred while testing the node.      */
 name|boolean
 name|nodeExists
@@ -161,7 +214,7 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
-comment|/**      * @see MicroKernel#waitForCommit(String, long)      *      * @param oldHeadRevisionId id of earlier head revision      * @param timeout the maximum time to wait in milliseconds      * @return the id of the head revision      * @throws InterruptedException if the thread was interrupted      */
+comment|/**      * @see MicroKernel#waitForCommit(String, long)      *      * @param oldHeadRevisionId id of earlier head revision      * @param timeout the maximum time to wait in milliseconds      * @return the id of the head revision      * @throws Exception if an error occurred while waiting.      */
 name|String
 name|waitForCommit
 parameter_list|(
@@ -172,7 +225,7 @@ name|long
 name|timeout
 parameter_list|)
 throws|throws
-name|InterruptedException
+name|Exception
 function_decl|;
 block|}
 end_interface

@@ -90,23 +90,6 @@ parameter_list|)
 block|{
 comment|// No-op
 block|}
-comment|/**      * Event: A property was added.      *      * @param path The path of the node where the property was added.      * @param key The key of the property.      * @param value The value of the property.      */
-specifier|public
-name|void
-name|propertyAdded
-parameter_list|(
-name|String
-name|path
-parameter_list|,
-name|String
-name|key
-parameter_list|,
-name|Object
-name|value
-parameter_list|)
-block|{
-comment|// No-op
-block|}
 comment|/**      * Event: A property was set.      *      * @param path The path of the node where the property was set.      * @param key The key of the property.      * @param value The value of the property.      */
 specifier|public
 name|void

@@ -143,10 +143,6 @@ name|PropertyConfigurator
 import|;
 end_import
 
-begin_comment
-comment|/**  * @author<a href="mailto:pmarx@adobe.com>Philipp Marx</a>  */
-end_comment
-
 begin_class
 specifier|public
 class|class

@@ -77,7 +77,7 @@ name|mk
 operator|.
 name|util
 operator|.
-name|MkConfigProvider
+name|MicroKernelConfigProvider
 import|;
 end_import
 
@@ -102,7 +102,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Base class for tests that are using only one microkernel instance.  * @author rogoz  *  */
+comment|/**  * The test base class for tests that are using only one microkernel instance.  *  *  *  */
 end_comment
 
 begin_class
@@ -111,7 +111,7 @@ class|class
 name|MicroKernelTestBase
 block|{
 specifier|static
-name|Initializator
+name|MicroKernelInitializer
 name|initializator
 decl_stmt|;
 specifier|public
@@ -127,7 +127,7 @@ specifier|public
 name|Chronometer
 name|chronometer
 decl_stmt|;
-comment|/** 	 * Creates a microkernel collection with only one microkernel. 	 *  	 * @throws Exception 	 */
+comment|/**      * Loads the corresponding microkernel initialization class and the      * microkernel configuration.The method searches for the<b>mk.type</b>      * system property in order to initialize the proper microkernel.By default,      * the oak microkernel will be instantiated.      *      * @throws Exception      */
 annotation|@
 name|BeforeClass
 specifier|public
@@ -138,40 +138,16 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|String
-name|mktype
-init|=
-name|System
-operator|.
-name|getProperty
-argument_list|(
-literal|"mk.type"
-argument_list|)
-decl_stmt|;
+comment|// FIXME - Add back
 name|initializator
 operator|=
-operator|(
-name|mktype
-operator|==
-literal|null
-operator|||
-name|mktype
-operator|.
-name|equals
-argument_list|(
-literal|"oak"
-argument_list|)
-operator|)
-condition|?
 operator|new
-name|OakMkinitializator
-argument_list|()
-else|:
-operator|new
-name|SCMkInitializator
+name|OakMicroKernelInitializer
 argument_list|()
 expr_stmt|;
-comment|/*	initializator = new SCMkInitializator(); */
+comment|//String mktype = System.getProperty("mk.type");
+comment|//initializator = (mktype == null || mktype.equals("oakmk")) ? new OakMicroKernelInitializer()
+comment|//        : new MongoMicroKernelInitializer();
 name|System
 operator|.
 name|out
@@ -190,12 +166,13 @@ argument_list|)
 expr_stmt|;
 name|conf
 operator|=
-name|MkConfigProvider
+name|MicroKernelConfigProvider
 operator|.
 name|readConfig
 argument_list|()
 expr_stmt|;
 block|}
+comment|/**      * Creates a microkernel collection with only one microkernel.      *      * @throws Exception      */
 annotation|@
 name|Before
 specifier|public
@@ -209,7 +186,7 @@ name|mk
 operator|=
 operator|(
 operator|new
-name|MkCollection
+name|MicroKernelCollection
 argument_list|(
 name|initializator
 argument_list|,

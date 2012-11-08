@@ -29,7 +29,7 @@ name|mk
 operator|.
 name|util
 operator|.
-name|MKOperation
+name|MicroKernelOperation
 import|;
 end_import
 
@@ -86,7 +86,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Measure the time needed for writing the same node structure in one or  * multiple commit steps .  *   * @author rogoz  *   */
+comment|/**  * Measure the time needed for writing the same node structure in one or  * multiple commit steps.  *<p>  * Tree structure:  *<p>  * Number of nodes per<b>level</b> =100^(<b>level</b>).  *<p>  * Each node has 100 children.  */
 end_comment
 
 begin_class
@@ -104,7 +104,7 @@ specifier|static
 name|int
 name|nodesNumber
 init|=
-literal|10000
+literal|1000
 decl_stmt|;
 specifier|static
 name|String
@@ -122,7 +122,7 @@ parameter_list|()
 block|{
 name|diff
 operator|=
-name|MKOperation
+name|MicroKernelOperation
 operator|.
 name|buildPyramidDiff
 argument_list|(
@@ -130,7 +130,7 @@ literal|"/"
 argument_list|,
 literal|0
 argument_list|,
-literal|100
+literal|10
 argument_list|,
 name|nodesNumber
 argument_list|,
@@ -322,7 +322,7 @@ name|mk
 argument_list|,
 name|diff
 argument_list|,
-literal|1000
+literal|10
 argument_list|)
 expr_stmt|;
 name|chronometer
