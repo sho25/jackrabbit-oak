@@ -1143,6 +1143,10 @@ block|{
 comment|// FIXME: add proper check for protection and declaring nt of the
 comment|// FIXME: property using nt functionality provided by nt-plugins
 return|return
+name|property
+operator|!=
+literal|null
+operator|&&
 name|isAuthorizableProperty
 argument_list|(
 name|property
