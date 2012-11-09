@@ -1744,7 +1744,7 @@ comment|// TODO should we throw an exception here?
 return|return
 name|TODO
 operator|.
-name|dummyImplementation
+name|unimplemented
 argument_list|()
 operator|.
 name|returnValue
@@ -1757,7 +1757,7 @@ comment|// TODO implement hasPermission
 return|return
 name|TODO
 operator|.
-name|dummyImplementation
+name|unimplemented
 argument_list|()
 operator|.
 name|returnValue
@@ -1851,7 +1851,7 @@ block|{
 return|return
 name|TODO
 operator|.
-name|dummyImplementation
+name|unimplemented
 argument_list|()
 operator|.
 name|returnValue
