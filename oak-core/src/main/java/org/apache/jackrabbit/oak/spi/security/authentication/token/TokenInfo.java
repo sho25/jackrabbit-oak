@@ -64,7 +64,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * TokenInfo... TODO  */
+comment|/**  * The {@code TokenInfo} provides data associated with a login token and  * basic methods to verify the validity of token credentials at given  * point in time.  */
 end_comment
 
 begin_interface
@@ -72,18 +72,21 @@ specifier|public
 interface|interface
 name|TokenInfo
 block|{
+comment|/**      * Returns the ID of the user associated with this token info object.      *      * @return the ID of the user.      */
 annotation|@
 name|Nonnull
 name|String
 name|getUserId
 parameter_list|()
 function_decl|;
+comment|/**      * Returns the login token.      *      * @return the login token.      */
 annotation|@
 name|Nonnull
 name|String
 name|getToken
 parameter_list|()
 function_decl|;
+comment|/**      * Returns {@code true} if the token has already expired; {@code false} otherwise.      *      * @param loginTime The login time used to calculate the expiration status.      * @return {@code true} if the token has already expired; {@code false} otherwise.      */
 name|boolean
 name|isExpired
 parameter_list|(
@@ -91,6 +94,7 @@ name|long
 name|loginTime
 parameter_list|)
 function_decl|;
+comment|/**      * Returns {@code true} if the specified credentials can be successfully      * validated against the information stored in this instance.      *      * @param tokenCredentials The credentials to validate.      * @return {@code true} if the specified credentials can be successfully      * validated against the information stored in this instance; {@code false}      * otherwise.      */
 name|boolean
 name|matches
 parameter_list|(
@@ -98,6 +102,7 @@ name|TokenCredentials
 name|tokenCredentials
 parameter_list|)
 function_decl|;
+comment|/**      * Returns the private attributes stored with this info object.      *      * @return the private attributes stored with this info object.      */
 annotation|@
 name|Nonnull
 name|Map
@@ -109,6 +114,7 @@ argument_list|>
 name|getPrivateAttributes
 parameter_list|()
 function_decl|;
+comment|/**      * Returns the public attributes stored with this info object.      *      * @return the public attributes stored with this info object.      */
 annotation|@
 name|Nonnull
 name|Map
