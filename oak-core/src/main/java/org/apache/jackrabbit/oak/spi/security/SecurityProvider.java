@@ -121,7 +121,7 @@ name|security
 operator|.
 name|authorization
 operator|.
-name|AccessControlProvider
+name|AccessControlConfiguration
 import|;
 end_import
 
@@ -245,7 +245,7 @@ parameter_list|)
 function_decl|;
 annotation|@
 name|Nonnull
-name|AccessControlProvider
+name|AccessControlConfiguration
 name|getAccessControlProvider
 parameter_list|()
 function_decl|;

@@ -181,7 +181,7 @@ name|security
 operator|.
 name|authorization
 operator|.
-name|AccessControlProvider
+name|AccessControlConfiguration
 import|;
 end_import
 
@@ -271,8 +271,8 @@ name|loginContext
 decl_stmt|;
 specifier|private
 specifier|final
-name|AccessControlProvider
-name|accProvider
+name|AccessControlConfiguration
+name|accConfiguration
 decl_stmt|;
 specifier|private
 specifier|final
@@ -307,8 +307,8 @@ parameter_list|(
 name|LoginContext
 name|loginContext
 parameter_list|,
-name|AccessControlProvider
-name|accProvider
+name|AccessControlConfiguration
+name|accConfiguration
 parameter_list|,
 name|String
 name|workspaceName
@@ -331,9 +331,9 @@ name|loginContext
 expr_stmt|;
 name|this
 operator|.
-name|accProvider
+name|accConfiguration
 operator|=
-name|accProvider
+name|accConfiguration
 expr_stmt|;
 name|this
 operator|.
@@ -469,7 +469,7 @@ operator|.
 name|getSubject
 argument_list|()
 argument_list|,
-name|accProvider
+name|accConfiguration
 argument_list|,
 name|indexProvider
 argument_list|)

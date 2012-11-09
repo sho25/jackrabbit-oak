@@ -237,7 +237,7 @@ name|security
 operator|.
 name|authorization
 operator|.
-name|AccessControlProvider
+name|AccessControlConfiguration
 import|;
 end_import
 
@@ -465,8 +465,8 @@ operator|.
 name|login
 argument_list|()
 expr_stmt|;
-name|AccessControlProvider
-name|acProvider
+name|AccessControlConfiguration
+name|acConfiguration
 init|=
 name|securityProvider
 operator|.
@@ -479,7 +479,7 @@ name|ContentSessionImpl
 argument_list|(
 name|loginContext
 argument_list|,
-name|acProvider
+name|acConfiguration
 argument_list|,
 name|workspaceName
 argument_list|,

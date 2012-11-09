@@ -307,7 +307,7 @@ name|security
 operator|.
 name|authorization
 operator|.
-name|AccessControlProvider
+name|AccessControlConfiguration
 import|;
 end_import
 
@@ -347,7 +347,7 @@ name|security
 operator|.
 name|authorization
 operator|.
-name|OpenAccessControlProvider
+name|OpenAccessControlConfiguration
 import|;
 end_import
 
@@ -559,8 +559,8 @@ decl_stmt|;
 comment|/**      * The access control context provider.      */
 specifier|private
 specifier|final
-name|AccessControlProvider
-name|accProvider
+name|AccessControlConfiguration
+name|accConfiguration
 decl_stmt|;
 comment|/** Current branch this root operates on */
 specifier|private
@@ -591,7 +591,7 @@ specifier|final
 name|QueryIndexProvider
 name|indexProvider
 decl_stmt|;
-comment|/**      * New instance bases on a given {@link NodeStore} and a workspace      *      * @param store         node store      * @param workspaceName name of the workspace      * @param subject       the subject.      * @param accProvider   the access control context provider.      * @param indexProvider the query index provider.      */
+comment|/**      * New instance bases on a given {@link NodeStore} and a workspace      *      * @param store         node store      * @param workspaceName name of the workspace      * @param subject       the subject.      * @param accConfiguration   the access control context provider.      * @param indexProvider the query index provider.      */
 annotation|@
 name|SuppressWarnings
 argument_list|(
@@ -609,8 +609,8 @@ parameter_list|,
 name|Subject
 name|subject
 parameter_list|,
-name|AccessControlProvider
-name|accProvider
+name|AccessControlConfiguration
+name|accConfiguration
 parameter_list|,
 name|QueryIndexProvider
 name|indexProvider
@@ -636,11 +636,11 @@ argument_list|)
 expr_stmt|;
 name|this
 operator|.
-name|accProvider
+name|accConfiguration
 operator|=
 name|checkNotNull
 argument_list|(
-name|accProvider
+name|accConfiguration
 argument_list|)
 expr_stmt|;
 name|this
@@ -707,10 +707,10 @@ argument_list|)
 expr_stmt|;
 name|this
 operator|.
-name|accProvider
+name|accConfiguration
 operator|=
 operator|new
-name|OpenAccessControlProvider
+name|OpenAccessControlConfiguration
 argument_list|()
 expr_stmt|;
 name|this
@@ -1509,7 +1509,7 @@ name|getPermissions
 parameter_list|()
 block|{
 return|return
-name|accProvider
+name|accConfiguration
 operator|.
 name|getAccessControlContext
 argument_list|(

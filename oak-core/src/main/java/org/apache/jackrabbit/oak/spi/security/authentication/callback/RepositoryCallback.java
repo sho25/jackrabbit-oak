@@ -135,7 +135,7 @@ name|security
 operator|.
 name|authorization
 operator|.
-name|AccessControlProvider
+name|AccessControlConfiguration
 import|;
 end_import
 
@@ -155,7 +155,7 @@ name|security
 operator|.
 name|authorization
 operator|.
-name|OpenAccessControlProvider
+name|OpenAccessControlConfiguration
 import|;
 end_import
 
@@ -277,11 +277,11 @@ name|emptySet
 argument_list|()
 argument_list|)
 decl_stmt|;
-name|AccessControlProvider
-name|acProvider
+name|AccessControlConfiguration
+name|acConfiguration
 init|=
 operator|new
-name|OpenAccessControlProvider
+name|OpenAccessControlConfiguration
 argument_list|()
 decl_stmt|;
 return|return
@@ -294,7 +294,7 @@ name|workspaceName
 argument_list|,
 name|subject
 argument_list|,
-name|acProvider
+name|acConfiguration
 argument_list|,
 name|indexProvider
 argument_list|)

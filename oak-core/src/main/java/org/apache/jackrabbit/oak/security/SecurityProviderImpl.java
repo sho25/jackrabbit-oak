@@ -193,7 +193,7 @@ name|security
 operator|.
 name|authorization
 operator|.
-name|AccessControlProviderImpl
+name|AccessControlConfigurationImpl
 import|;
 end_import
 
@@ -417,7 +417,7 @@ name|security
 operator|.
 name|authorization
 operator|.
-name|AccessControlProvider
+name|AccessControlConfiguration
 import|;
 end_import
 
@@ -835,13 +835,13 @@ name|Nonnull
 annotation|@
 name|Override
 specifier|public
-name|AccessControlProvider
+name|AccessControlConfiguration
 name|getAccessControlProvider
 parameter_list|()
 block|{
 return|return
 operator|new
-name|AccessControlProviderImpl
+name|AccessControlConfigurationImpl
 argument_list|()
 return|;
 block|}
