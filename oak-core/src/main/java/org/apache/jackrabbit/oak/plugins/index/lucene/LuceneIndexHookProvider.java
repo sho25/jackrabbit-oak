@@ -154,7 +154,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Service that provides Lucene based IndexHooks  *   * @see LuceneHook  * @see IndexHookProvider  *   */
+comment|/**  * Service that provides Lucene based {@link IndexHook}s  *   * @see LuceneIndexDiff  * @see IndexHookProvider  *   */
 end_comment
 
 begin_class
@@ -207,7 +207,7 @@ operator|.
 name|of
 argument_list|(
 operator|new
-name|LuceneHook
+name|LuceneIndexDiff
 argument_list|(
 name|builder
 argument_list|)

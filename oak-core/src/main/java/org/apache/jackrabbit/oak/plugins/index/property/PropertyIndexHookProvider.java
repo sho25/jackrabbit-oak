@@ -22,6 +22,28 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|index
+operator|.
+name|property
+operator|.
+name|PropertyIndex
+operator|.
+name|TYPE
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -132,7 +154,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Service that provides PropertyIndex based IndexHooks  *   * @see PropertyIndexHook  * @see IndexHookProvider  *   */
+comment|/**  * Service that provides PropertyIndex based IndexHooks  *   * @see PropertyIndexDiff  * @see IndexHookProvider  *   */
 end_comment
 
 begin_class
@@ -151,14 +173,6 @@ name|PropertyIndexHookProvider
 implements|implements
 name|IndexHookProvider
 block|{
-specifier|private
-specifier|static
-specifier|final
-name|String
-name|TYPE
-init|=
-literal|"property"
-decl_stmt|;
 annotation|@
 name|Override
 specifier|public
@@ -193,7 +207,7 @@ operator|.
 name|of
 argument_list|(
 operator|new
-name|PropertyIndexHook
+name|PropertyIndexDiff
 argument_list|(
 name|builder
 argument_list|)

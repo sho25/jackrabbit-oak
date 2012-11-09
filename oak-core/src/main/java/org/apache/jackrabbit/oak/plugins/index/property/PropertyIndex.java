@@ -252,6 +252,14 @@ name|PropertyIndex
 implements|implements
 name|QueryIndex
 block|{
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|TYPE
+init|=
+literal|"property"
+decl_stmt|;
 specifier|private
 specifier|static
 specifier|final

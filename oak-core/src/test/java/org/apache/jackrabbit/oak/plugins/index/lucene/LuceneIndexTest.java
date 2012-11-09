@@ -383,7 +383,7 @@ name|IndexHook
 name|l
 init|=
 operator|new
-name|LuceneHook
+name|LuceneIndexDiff
 argument_list|(
 name|builder
 argument_list|)
@@ -395,14 +395,11 @@ argument_list|(
 name|before
 argument_list|,
 name|l
-operator|.
-name|preProcess
-argument_list|()
 argument_list|)
 expr_stmt|;
 name|l
 operator|.
-name|postProcess
+name|apply
 argument_list|()
 expr_stmt|;
 name|l
