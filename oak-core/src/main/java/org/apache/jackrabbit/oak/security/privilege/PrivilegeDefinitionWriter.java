@@ -204,7 +204,7 @@ block|}
 name|void
 name|writeDefinitions
 parameter_list|(
-name|Set
+name|Iterable
 argument_list|<
 name|PrivilegeDefinition
 argument_list|>
