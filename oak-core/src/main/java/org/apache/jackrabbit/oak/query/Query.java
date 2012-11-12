@@ -1849,7 +1849,7 @@ argument_list|)
 expr_stmt|;
 block|}
 name|long
-name|resultCount
+name|readCount
 init|=
 literal|0
 decl_stmt|;
@@ -1862,6 +1862,37 @@ condition|)
 block|{
 comment|// TODO "order by" is not necessary if the used index returns
 comment|// rows in the same order
+comment|// avoid overflow (both offset and limit could be Long.MAX_VALUE)
+name|int
+name|keep
+init|=
+call|(
+name|int
+call|)
+argument_list|(
+name|Math
+operator|.
+name|min
+argument_list|(
+name|Integer
+operator|.
+name|MAX_VALUE
+argument_list|,
+name|offset
+argument_list|)
+operator|+
+name|Math
+operator|.
+name|min
+argument_list|(
+name|Integer
+operator|.
+name|MAX_VALUE
+argument_list|,
+name|limit
+argument_list|)
+argument_list|)
+decl_stmt|;
 name|ArrayList
 argument_list|<
 name|ResultRowImpl
@@ -1883,6 +1914,9 @@ name|hasNext
 argument_list|()
 condition|)
 block|{
+name|readCount
+operator|++
+expr_stmt|;
 name|ResultRowImpl
 name|r
 init|=
@@ -1898,6 +1932,37 @@ argument_list|(
 name|r
 argument_list|)
 expr_stmt|;
+comment|// from time to time, sort and truncate
+comment|// this should results in O(n*log(2*keep)) operations,
+comment|// which is close to the optimum O(n*log(keep))
+if|if
+condition|(
+name|list
+operator|.
+name|size
+argument_list|()
+operator|>
+name|keep
+operator|*
+literal|2
+condition|)
+block|{
+comment|// remove tail entries right now, to save memory
+name|Collections
+operator|.
+name|sort
+argument_list|(
+name|list
+argument_list|)
+expr_stmt|;
+name|keepFirst
+argument_list|(
+name|list
+argument_list|,
+name|keep
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 name|Collections
 operator|.
@@ -1906,69 +1971,13 @@ argument_list|(
 name|list
 argument_list|)
 expr_stmt|;
-comment|// if limit is set, possibly remove the tailing entries
-comment|// for list size 10, offset 2, limit 5: remove 3
-name|resultCount
-operator|=
-name|list
-operator|.
-name|size
-argument_list|()
-expr_stmt|;
-comment|// avoid overflow (both offset and limit could be Long.MAX_VALUE)
-name|long
-name|keep
-init|=
-name|Math
-operator|.
-name|min
+name|keepFirst
 argument_list|(
 name|list
-operator|.
-name|size
-argument_list|()
 argument_list|,
-name|offset
-argument_list|)
-operator|+
-name|Math
-operator|.
-name|min
-argument_list|(
-name|list
-operator|.
-name|size
-argument_list|()
-argument_list|,
-name|limit
-argument_list|)
-decl_stmt|;
-while|while
-condition|(
-name|list
-operator|.
-name|size
-argument_list|()
-operator|>
 name|keep
-condition|)
-block|{
-comment|// remove tail entries right now, to save memory (don't copy)
-comment|// remove the entries starting at the end,
-comment|// to avoid n^2 performance
-name|list
-operator|.
-name|remove
-argument_list|(
-name|list
-operator|.
-name|size
-argument_list|()
-operator|-
-literal|1
 argument_list|)
 expr_stmt|;
-block|}
 name|it
 operator|=
 name|list
@@ -2028,7 +2037,7 @@ name|hasNext
 argument_list|()
 condition|)
 block|{
-name|resultCount
+name|readCount
 operator|++
 expr_stmt|;
 name|it
@@ -2112,7 +2121,7 @@ name|PropertyValues
 operator|.
 name|newLong
 argument_list|(
-name|resultCount
+name|readCount
 argument_list|)
 block|}
 argument_list|,
@@ -2195,6 +2204,48 @@ block|}
 return|return
 name|it
 return|;
+block|}
+comment|/**      * Truncate a list.      *       * @param list the list      * @param keep the maximum number of entries to keep      */
+specifier|private
+specifier|static
+name|void
+name|keepFirst
+parameter_list|(
+name|ArrayList
+argument_list|<
+name|ResultRowImpl
+argument_list|>
+name|list
+parameter_list|,
+name|int
+name|keep
+parameter_list|)
+block|{
+while|while
+condition|(
+name|list
+operator|.
+name|size
+argument_list|()
+operator|>
+name|keep
+condition|)
+block|{
+comment|// remove the entries starting at the end,
+comment|// to avoid n^2 performance
+name|list
+operator|.
+name|remove
+argument_list|(
+name|list
+operator|.
+name|size
+argument_list|()
+operator|-
+literal|1
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 specifier|public
 name|int
