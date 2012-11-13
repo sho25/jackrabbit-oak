@@ -79,7 +79,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"bin:"
+literal|":blobId:"
 argument_list|,
 name|TypeCodes
 operator|.

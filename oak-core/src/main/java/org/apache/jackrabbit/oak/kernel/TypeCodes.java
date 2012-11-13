@@ -146,6 +146,15 @@ block|{
 name|String
 name|code
 init|=
+name|type
+operator|==
+name|PropertyType
+operator|.
+name|BINARY
+condition|?
+literal|":blobId"
+comment|// See class comment for MicroKernel and OAK-428
+else|:
 name|PropertyType
 operator|.
 name|nameFromValue
@@ -235,6 +244,22 @@ name|String
 name|jsonString
 parameter_list|)
 block|{
+if|if
+condition|(
+name|jsonString
+operator|.
+name|startsWith
+argument_list|(
+literal|":blobId:"
+argument_list|)
+condition|)
+block|{
+comment|// See OAK-428
+return|return
+literal|7
+return|;
+block|}
+elseif|else
 if|if
 condition|(
 name|jsonString
