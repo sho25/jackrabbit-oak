@@ -834,12 +834,7 @@ name|best
 operator|=
 operator|new
 name|TraversingIndex
-argument_list|(
-name|query
-operator|.
-name|getStatement
 argument_list|()
-argument_list|)
 expr_stmt|;
 block|}
 return|return

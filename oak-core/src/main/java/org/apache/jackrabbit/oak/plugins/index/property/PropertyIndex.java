@@ -623,8 +623,6 @@ name|Cursors
 operator|.
 name|newTraversingCursor
 argument_list|(
-literal|"?"
-argument_list|,
 name|filter
 argument_list|,
 name|root

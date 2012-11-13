@@ -43,6 +43,16 @@ begin_import
 import|import
 name|javax
 operator|.
+name|annotation
+operator|.
+name|Nullable
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
 name|jcr
 operator|.
 name|PropertyType
@@ -108,11 +118,18 @@ name|String
 name|getPath
 parameter_list|()
 function_decl|;
-comment|/**      * @return the node type restriction or<code>null</code> if none is set.      */
+comment|/**      * Get the node type.      *       * @return the node type restriction or<code>null</code> if none is set.      */
 annotation|@
 name|CheckForNull
 name|String
 name|getNodeType
+parameter_list|()
+function_decl|;
+comment|/**      * Get the complete query statement. The statement should only be used for      * logging purposes.      *       * @return the query statement (possibly null)      */
+annotation|@
+name|Nullable
+name|String
+name|getQueryStatement
 parameter_list|()
 function_decl|;
 comment|/**      * A restriction for a property.      */

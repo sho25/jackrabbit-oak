@@ -345,9 +345,7 @@ name|t
 init|=
 operator|new
 name|TraversingIndex
-argument_list|(
-literal|"?"
-argument_list|)
+argument_list|()
 decl_stmt|;
 name|String
 name|head
@@ -393,6 +391,8 @@ init|=
 operator|new
 name|FilterImpl
 argument_list|(
+literal|null
+argument_list|,
 literal|null
 argument_list|)
 decl_stmt|;

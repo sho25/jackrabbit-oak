@@ -285,15 +285,12 @@ name|paths
 argument_list|)
 return|;
 block|}
-comment|/**      * Returns a traversing cursor based on the path restriction in the given      * {@link Filter}.      *      * @param statement the query statement. This string is only used for      *                  logging purposes.      * @param filter    the filter.      * @param root      the root {@link NodeState}.      * @return the {@link Cursor}.      */
+comment|/**      * Returns a traversing cursor based on the path restriction in the given      * {@link Filter}.      *      * @param filter    the filter.      * @param root      the root {@link NodeState}.      * @return the {@link Cursor}.      */
 specifier|public
 specifier|static
 name|Cursor
 name|newTraversingCursor
 parameter_list|(
-name|String
-name|statement
-parameter_list|,
 name|Filter
 name|filter
 parameter_list|,
@@ -305,8 +302,6 @@ return|return
 operator|new
 name|TraversingCursor
 argument_list|(
-name|statement
-argument_list|,
 name|filter
 argument_list|,
 name|root
@@ -441,11 +436,6 @@ argument_list|)
 decl_stmt|;
 specifier|private
 specifier|final
-name|String
-name|statement
-decl_stmt|;
-specifier|private
-specifier|final
 name|Filter
 name|filter
 decl_stmt|;
@@ -486,9 +476,6 @@ decl_stmt|;
 specifier|public
 name|TraversingCursor
 parameter_list|(
-name|String
-name|statement
-parameter_list|,
 name|Filter
 name|filter
 parameter_list|,
@@ -496,12 +483,6 @@ name|NodeState
 name|root
 parameter_list|)
 block|{
-name|this
-operator|.
-name|statement
-operator|=
-name|statement
-expr_stmt|;
 name|this
 operator|.
 name|filter
@@ -810,10 +791,6 @@ operator|+
 literal|" nodes with filter "
 operator|+
 name|filter
-operator|+
-literal|" for query "
-operator|+
-name|statement
 operator|+
 literal|"; consider creating an index or changing the query"
 argument_list|)

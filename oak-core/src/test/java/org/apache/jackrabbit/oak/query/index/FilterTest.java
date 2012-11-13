@@ -198,6 +198,8 @@ operator|new
 name|FilterImpl
 argument_list|(
 literal|null
+argument_list|,
+literal|null
 argument_list|)
 decl_stmt|;
 name|assertTrue
@@ -351,6 +353,8 @@ operator|new
 name|FilterImpl
 argument_list|(
 literal|null
+argument_list|,
+literal|null
 argument_list|)
 expr_stmt|;
 name|f
@@ -492,6 +496,8 @@ operator|new
 name|FilterImpl
 argument_list|(
 literal|null
+argument_list|,
+literal|null
 argument_list|)
 expr_stmt|;
 name|f
@@ -548,6 +554,8 @@ operator|=
 operator|new
 name|FilterImpl
 argument_list|(
+literal|null
+argument_list|,
 literal|null
 argument_list|)
 expr_stmt|;
@@ -885,6 +893,8 @@ operator|new
 name|FilterImpl
 argument_list|(
 literal|null
+argument_list|,
+literal|null
 argument_list|)
 decl_stmt|;
 name|f1
@@ -903,6 +913,8 @@ operator|new
 name|FilterImpl
 argument_list|(
 literal|null
+argument_list|,
+literal|null
 argument_list|)
 decl_stmt|;
 name|f2
@@ -920,6 +932,8 @@ init|=
 operator|new
 name|FilterImpl
 argument_list|(
+literal|null
+argument_list|,
 literal|null
 argument_list|)
 decl_stmt|;
@@ -1004,6 +1018,8 @@ operator|=
 operator|new
 name|FilterImpl
 argument_list|(
+literal|null
+argument_list|,
 literal|null
 argument_list|)
 expr_stmt|;
@@ -1114,6 +1130,8 @@ operator|new
 name|FilterImpl
 argument_list|(
 literal|null
+argument_list|,
+literal|null
 argument_list|)
 decl_stmt|;
 name|assertEquals
@@ -1180,6 +1198,8 @@ operator|new
 name|FilterImpl
 argument_list|(
 literal|null
+argument_list|,
+literal|null
 argument_list|)
 expr_stmt|;
 name|f
@@ -1298,6 +1318,8 @@ operator|=
 operator|new
 name|FilterImpl
 argument_list|(
+literal|null
+argument_list|,
 literal|null
 argument_list|)
 expr_stmt|;
@@ -1378,6 +1400,8 @@ operator|new
 name|FilterImpl
 argument_list|(
 literal|null
+argument_list|,
+literal|null
 argument_list|)
 expr_stmt|;
 name|f
@@ -1457,6 +1481,8 @@ operator|new
 name|FilterImpl
 argument_list|(
 literal|null
+argument_list|,
+literal|null
 argument_list|)
 expr_stmt|;
 name|f
@@ -1498,6 +1524,8 @@ operator|=
 operator|new
 name|FilterImpl
 argument_list|(
+literal|null
+argument_list|,
 literal|null
 argument_list|)
 expr_stmt|;
@@ -1578,6 +1606,8 @@ operator|new
 name|FilterImpl
 argument_list|(
 literal|null
+argument_list|,
+literal|null
 argument_list|)
 expr_stmt|;
 name|f
@@ -1619,6 +1649,8 @@ operator|=
 operator|new
 name|FilterImpl
 argument_list|(
+literal|null
+argument_list|,
 literal|null
 argument_list|)
 expr_stmt|;
@@ -1677,6 +1709,8 @@ operator|=
 operator|new
 name|FilterImpl
 argument_list|(
+literal|null
+argument_list|,
 literal|null
 argument_list|)
 expr_stmt|;
@@ -1719,6 +1753,8 @@ operator|=
 operator|new
 name|FilterImpl
 argument_list|(
+literal|null
+argument_list|,
 literal|null
 argument_list|)
 expr_stmt|;
@@ -1798,6 +1834,8 @@ operator|=
 operator|new
 name|FilterImpl
 argument_list|(
+literal|null
+argument_list|,
 literal|null
 argument_list|)
 expr_stmt|;
@@ -1976,6 +2014,8 @@ operator|new
 name|FilterImpl
 argument_list|(
 literal|null
+argument_list|,
+literal|null
 argument_list|)
 expr_stmt|;
 name|f
@@ -2080,6 +2120,8 @@ operator|=
 operator|new
 name|FilterImpl
 argument_list|(
+literal|null
+argument_list|,
 literal|null
 argument_list|)
 expr_stmt|;

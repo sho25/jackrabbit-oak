@@ -653,6 +653,11 @@ operator|new
 name|FilterImpl
 argument_list|(
 name|this
+argument_list|,
+name|query
+operator|.
+name|getStatement
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|f
