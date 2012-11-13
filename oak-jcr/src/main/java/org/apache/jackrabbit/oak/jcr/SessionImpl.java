@@ -21,16 +21,6 @@ begin_import
 import|import
 name|java
 operator|.
-name|security
-operator|.
-name|AccessControlException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
 name|util
 operator|.
 name|Arrays
@@ -246,6 +236,18 @@ operator|.
 name|retention
 operator|.
 name|RetentionManager
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|jcr
+operator|.
+name|security
+operator|.
+name|AccessControlException
 import|;
 end_import
 
@@ -1872,6 +1874,8 @@ parameter_list|,
 name|AccessControlPolicy
 name|policy
 parameter_list|)
+throws|throws
+name|AccessControlException
 block|{
 throw|throw
 operator|new
@@ -1896,6 +1900,8 @@ parameter_list|,
 name|AccessControlPolicy
 name|policy
 parameter_list|)
+throws|throws
+name|AccessControlException
 block|{
 throw|throw
 operator|new
