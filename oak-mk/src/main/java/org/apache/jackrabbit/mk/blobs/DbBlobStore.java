@@ -472,8 +472,7 @@ name|convertBytesToHex
 argument_list|(
 name|blockId
 operator|.
-name|getDigest
-argument_list|()
+name|digest
 argument_list|)
 decl_stmt|;
 name|prep
@@ -530,8 +529,7 @@ if|if
 condition|(
 name|blockId
 operator|.
-name|getPos
-argument_list|()
+name|pos
 operator|==
 literal|0
 condition|)
@@ -553,8 +551,7 @@ name|length
 operator|-
 name|blockId
 operator|.
-name|getPos
-argument_list|()
+name|pos
 argument_list|)
 decl_stmt|;
 if|if
@@ -593,8 +590,7 @@ name|int
 operator|)
 name|blockId
 operator|.
-name|getPos
-argument_list|()
+name|pos
 argument_list|,
 name|d2
 argument_list|,
@@ -698,8 +694,7 @@ name|convertBytesToHex
 argument_list|(
 name|blockId
 operator|.
-name|getDigest
-argument_list|()
+name|digest
 argument_list|)
 decl_stmt|;
 name|PreparedStatement

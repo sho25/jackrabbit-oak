@@ -188,6 +188,8 @@ parameter_list|(
 name|String
 name|dir
 parameter_list|)
+throws|throws
+name|IOException
 block|{
 name|baseDir
 operator|=
@@ -672,8 +674,7 @@ name|getFile
 argument_list|(
 name|id
 operator|.
-name|getDigest
-argument_list|()
+name|digest
 argument_list|,
 literal|false
 argument_list|)
@@ -694,8 +695,7 @@ name|getFile
 argument_list|(
 name|id
 operator|.
-name|getDigest
-argument_list|()
+name|digest
 argument_list|,
 literal|true
 argument_list|)
@@ -721,8 +721,7 @@ name|getFile
 argument_list|(
 name|id
 operator|.
-name|getDigest
-argument_list|()
+name|digest
 argument_list|,
 literal|false
 argument_list|)
@@ -776,8 +775,7 @@ name|in
 argument_list|,
 name|id
 operator|.
-name|getPos
-argument_list|()
+name|pos
 argument_list|)
 expr_stmt|;
 name|IOUtils
@@ -1022,8 +1020,7 @@ name|getFile
 argument_list|(
 name|id
 operator|.
-name|getDigest
-argument_list|()
+name|digest
 argument_list|,
 literal|false
 argument_list|)
@@ -1044,8 +1041,7 @@ name|getFile
 argument_list|(
 name|id
 operator|.
-name|getDigest
-argument_list|()
+name|digest
 argument_list|,
 literal|true
 argument_list|)
@@ -1071,8 +1067,7 @@ name|getFile
 argument_list|(
 name|id
 operator|.
-name|getDigest
-argument_list|()
+name|digest
 argument_list|,
 literal|false
 argument_list|)
