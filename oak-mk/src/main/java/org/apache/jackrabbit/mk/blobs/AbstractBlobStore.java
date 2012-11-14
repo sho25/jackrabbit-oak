@@ -240,6 +240,7 @@ name|HASH_ALGORITHM
 init|=
 literal|"SHA-256"
 decl_stmt|;
+comment|/**      * The prefix for small blocks, where the data is encoded in the id.      */
 specifier|protected
 specifier|static
 specifier|final
@@ -248,6 +249,7 @@ name|TYPE_DATA
 init|=
 literal|0
 decl_stmt|;
+comment|/**      * The prefix for stored blocks, where the hash code is the id.      */
 specifier|protected
 specifier|static
 specifier|final
@@ -256,6 +258,7 @@ name|TYPE_HASH
 init|=
 literal|1
 decl_stmt|;
+comment|/**      * The prefix for stored blocks, where the stored data contains the list of      * hashes (indirect hash).      */
 specifier|protected
 specifier|static
 specifier|final
@@ -264,6 +267,7 @@ name|TYPE_HASH_COMPRESSED
 init|=
 literal|2
 decl_stmt|;
+comment|/**      * The minimum block size. Smaller blocks may not be stored, as the hash      * code would be larger than the stored data itself.      */
 specifier|protected
 specifier|static
 specifier|final
@@ -272,6 +276,7 @@ name|BLOCK_SIZE_LIMIT
 init|=
 literal|48
 decl_stmt|;
+comment|/**      * The weak map of data store ids that are still in use. For ids that are      * still referenced in memory, the stored blocks will not be deleted when      * running garbage collection. This should prevent that binaries are removed      * before the reference was written to the MicroKernel (before there is a      * persistent reference).      *<p>      * Please note this will not prevent binaries to be deleted if they are only      * referenced from within another JVM (when the MicroKernel API is remoted).      *<p>      * Instead of this map, it might be better to use a fixed timeout. In this      * case, the creation / modification time should be persisted, so that it      * survives restarts. Or, as an alternative, the storage backends could be      * segmented (young generation / old generation).      */
 specifier|protected
 name|Map
 argument_list|<
@@ -319,6 +324,7 @@ literal|1024
 operator|*
 literal|1024
 decl_stmt|;
+comment|/**      * A very small cache of the last used blocks.      */
 specifier|private
 name|Cache
 argument_list|<
@@ -343,6 +349,7 @@ operator|*
 literal|1024
 argument_list|)
 decl_stmt|;
+comment|/**      * Set the minimum block size (smaller blocks are inlined in the id, larger      * blocks are stored).      *       * @param x the minimum block size      */
 specifier|public
 name|void
 name|setBlockSizeMin
@@ -363,6 +370,7 @@ operator|=
 name|x
 expr_stmt|;
 block|}
+comment|/**      * Get the minimum block size.      *       * @return the minimum block size      */
 specifier|public
 name|long
 name|getBlockSizeMin
@@ -372,6 +380,7 @@ return|return
 name|blockSizeMin
 return|;
 block|}
+comment|/**      * Set the maximum block size (larger binaries are split into blocks of this      * size).      *       * @param x the maximum block size      */
 specifier|public
 name|void
 name|setBlockSize
@@ -392,6 +401,17 @@ operator|=
 name|x
 expr_stmt|;
 block|}
+comment|/**      * Get the maximum block size.      *       * @return the maximum block size      */
+specifier|public
+name|int
+name|getBlockSize
+parameter_list|()
+block|{
+return|return
+name|blockSize
+return|;
+block|}
+comment|/**      * Validate that the block size is larger than the lenght of a hash code.      *       * @param x the size      */
 specifier|private
 specifier|static
 name|void
@@ -420,15 +440,6 @@ name|BLOCK_SIZE_LIMIT
 argument_list|)
 throw|;
 block|}
-block|}
-specifier|public
-name|int
-name|getBlockSize
-parameter_list|()
-block|{
-return|return
-name|blockSize
-return|;
 block|}
 comment|/**      * Write a blob from a temporary file. The temporary file is removed      * afterwards. A file based blob stores might simply rename the file, so      * that no additional writes are necessary.      *      * @param tempFilePath the temporary file      * @return the blob id      */
 specifier|public
@@ -494,6 +505,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+comment|/**      * Write a binary, possibly splitting it into blocks and storing them.      *       * @param in the input stream      * @return the data store id      */
 specifier|public
 name|String
 name|writeBlob
@@ -573,6 +585,7 @@ comment|// ignore
 block|}
 block|}
 block|}
+comment|/**      * Mark the data store id as 'current in use'.      *       * @param blobId the id      */
 specifier|protected
 name|void
 name|usesBlobId
@@ -598,6 +611,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * Clear the in-used map. This method is used for testing.      */
 specifier|public
 name|void
 name|clearInUse
@@ -609,6 +623,7 @@ name|clear
 argument_list|()
 expr_stmt|;
 block|}
+comment|/**      * Clear the cache to free up memory.      */
 specifier|public
 name|void
 name|clearCache
@@ -620,6 +635,7 @@ name|clear
 argument_list|()
 expr_stmt|;
 block|}
+comment|/**      * Store a binary, possibly splitting it into blocks, and store the block      * ids in the id stream.      *       * @param in the stream      * @param idStream the stream of block ids      * @param level the indirection level (0 if the binary is user data, 1 if      *            the data is a list of digests)      * @param totalLength the total length (if the data is a list of block ids)      * @throws Exception if storing failed      */
 specifier|private
 name|void
 name|convertBlobToId
@@ -988,6 +1004,7 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
+comment|/**      * Start the mark phase of the data store garbage collection.      */
 specifier|public
 specifier|abstract
 name|void
@@ -996,6 +1013,7 @@ parameter_list|()
 throws|throws
 name|Exception
 function_decl|;
+comment|/**      * Start the sweep phase of the data store garbage collection.      *       * @return the number of removed blocks.      */
 specifier|public
 specifier|abstract
 name|int
@@ -1004,12 +1022,14 @@ parameter_list|()
 throws|throws
 name|Exception
 function_decl|;
+comment|/**      * Whether the mark phase has been started.      *       * @return true if it was started      */
 specifier|protected
 specifier|abstract
 name|boolean
 name|isMarkEnabled
 parameter_list|()
 function_decl|;
+comment|/**      * Mark a block as 'in use'. This method is called in the mark phase.      *       * @param id the block id      */
 specifier|protected
 specifier|abstract
 name|void
@@ -1021,6 +1041,7 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
+comment|/**      * Mark all blocks that are in the in-use map.      */
 specifier|protected
 name|void
 name|markInUse
@@ -1410,6 +1431,7 @@ throw|;
 block|}
 block|}
 block|}
+comment|/**      * Read the block with the given digest. This method should not be      * overwritten by a subclass as it caches the data.      *       * @param digest the digest      * @param pos the position within the block (usually 0)      * @return a byte array with the data (the byte array is not modified by the      *         caller, but might be cached)      */
 specifier|private
 name|byte
 index|[]
@@ -1447,6 +1469,7 @@ operator|.
 name|data
 return|;
 block|}
+comment|/**      * Load a block from the backend. This method is called from the cache if      * the block is not in memory.      *       * @param id the block id      * @return the data      */
 specifier|public
 name|Data
 name|load
@@ -1712,6 +1735,7 @@ return|return
 name|totalLength
 return|;
 block|}
+comment|/**      * Mark a binary as 'in use'.      *       * @param blobId the blob id      */
 specifier|protected
 name|void
 name|mark
@@ -1974,11 +1998,13 @@ specifier|static
 class|class
 name|BlockId
 block|{
+specifier|private
 specifier|final
 name|byte
 index|[]
 name|digest
 decl_stmt|;
+specifier|private
 specifier|final
 name|long
 name|pos
@@ -2116,6 +2142,7 @@ operator|+
 name|pos
 return|;
 block|}
+comment|/**          * Get the digest (hash code).          *           * @return the digest          */
 specifier|public
 name|byte
 index|[]
@@ -2126,6 +2153,7 @@ return|return
 name|digest
 return|;
 block|}
+comment|/**          * Get the starting position within the block (usually 0).          *           * @return the position          */
 specifier|public
 name|long
 name|getPos
@@ -2136,7 +2164,7 @@ name|pos
 return|;
 block|}
 block|}
-comment|/**      * The data for a block.      */
+comment|/**      * The data for a block. This class is only used within this class and the      * cache.      */
 specifier|public
 specifier|static
 class|class
