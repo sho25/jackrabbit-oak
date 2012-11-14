@@ -1032,9 +1032,9 @@ block|}
 if|if
 condition|(
 name|baseState
-operator|!=
+operator|==
 literal|null
-operator|&&
+operator|||
 operator|!
 name|baseState
 operator|.
@@ -1092,9 +1092,9 @@ block|}
 if|if
 condition|(
 name|baseState
-operator|!=
+operator|==
 literal|null
-operator|&&
+operator|||
 operator|!
 name|pState
 operator|.
