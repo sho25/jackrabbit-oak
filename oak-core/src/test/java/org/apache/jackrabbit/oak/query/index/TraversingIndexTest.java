@@ -442,7 +442,7 @@ while|while
 condition|(
 name|c
 operator|.
-name|next
+name|hasNext
 argument_list|()
 condition|)
 block|{
@@ -452,7 +452,7 @@ name|add
 argument_list|(
 name|c
 operator|.
-name|currentRow
+name|next
 argument_list|()
 operator|.
 name|getPath
@@ -501,7 +501,7 @@ name|assertFalse
 argument_list|(
 name|c
 operator|.
-name|next
+name|hasNext
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -510,7 +510,7 @@ name|assertFalse
 argument_list|(
 name|c
 operator|.
-name|next
+name|hasNext
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -546,7 +546,7 @@ name|assertFalse
 argument_list|(
 name|c
 operator|.
-name|next
+name|hasNext
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -555,7 +555,7 @@ name|assertFalse
 argument_list|(
 name|c
 operator|.
-name|next
+name|hasNext
 argument_list|()
 argument_list|)
 expr_stmt|;

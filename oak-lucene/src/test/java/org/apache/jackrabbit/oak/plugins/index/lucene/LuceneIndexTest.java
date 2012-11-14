@@ -490,7 +490,7 @@ name|assertTrue
 argument_list|(
 name|cursor
 operator|.
-name|next
+name|hasNext
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -500,7 +500,7 @@ literal|"/"
 argument_list|,
 name|cursor
 operator|.
-name|currentRow
+name|next
 argument_list|()
 operator|.
 name|getPath
@@ -511,7 +511,7 @@ name|assertFalse
 argument_list|(
 name|cursor
 operator|.
-name|next
+name|hasNext
 argument_list|()
 argument_list|)
 expr_stmt|;

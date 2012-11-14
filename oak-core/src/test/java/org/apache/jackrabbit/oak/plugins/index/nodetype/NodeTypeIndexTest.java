@@ -740,7 +740,7 @@ while|while
 condition|(
 name|cursor
 operator|.
-name|next
+name|hasNext
 argument_list|()
 condition|)
 block|{
@@ -750,7 +750,7 @@ name|add
 argument_list|(
 name|cursor
 operator|.
-name|currentRow
+name|next
 argument_list|()
 operator|.
 name|getPath
