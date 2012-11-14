@@ -113,6 +113,22 @@ end_import
 
 begin_import
 import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkNotNull
+import|;
+end_import
+
+begin_import
+import|import static
 name|org
 operator|.
 name|apache
@@ -186,6 +202,8 @@ comment|/**      * Create a new property state with the given {@code name}      
 specifier|protected
 name|EmptyPropertyState
 parameter_list|(
+annotation|@
+name|Nonnull
 name|String
 name|name
 parameter_list|)
@@ -194,7 +212,10 @@ name|this
 operator|.
 name|name
 operator|=
+name|checkNotNull
+argument_list|(
 name|name
+argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Create an empty {@code PropertyState}      * @param name  The name of the property state      * @param type  The type of the property state      * @return  The new property state      */

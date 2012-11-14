@@ -21,6 +21,16 @@ end_package
 
 begin_import
 import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|Nonnull
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -91,6 +101,22 @@ end_import
 
 begin_import
 import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkNotNull
+import|;
+end_import
+
+begin_import
+import|import static
 name|org
 operator|.
 name|apache
@@ -125,9 +151,13 @@ decl_stmt|;
 specifier|public
 name|StringPropertyState
 parameter_list|(
+annotation|@
+name|Nonnull
 name|String
 name|name
 parameter_list|,
+annotation|@
+name|Nonnull
 name|String
 name|value
 parameter_list|)
@@ -141,7 +171,10 @@ name|this
 operator|.
 name|value
 operator|=
+name|checkNotNull
+argument_list|(
 name|value
+argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Create a {@code PropertyState} from a string.      * @param name  The name of the property state      * @param value  The value of the property state      * @return  The new property state of type {@link Type#STRING}      */
@@ -150,9 +183,13 @@ specifier|static
 name|PropertyState
 name|stringProperty
 parameter_list|(
+annotation|@
+name|Nonnull
 name|String
 name|name
 parameter_list|,
+annotation|@
+name|Nonnull
 name|String
 name|value
 parameter_list|)

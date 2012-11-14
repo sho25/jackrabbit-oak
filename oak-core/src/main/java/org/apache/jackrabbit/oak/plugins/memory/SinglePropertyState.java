@@ -121,6 +121,8 @@ comment|/**      * Create a new property state with the given {@code name}      
 specifier|protected
 name|SinglePropertyState
 parameter_list|(
+annotation|@
+name|Nonnull
 name|String
 name|name
 parameter_list|)
