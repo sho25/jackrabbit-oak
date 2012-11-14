@@ -19,6 +19,16 @@ name|query
 package|;
 end_package
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Iterator
+import|;
+end_import
+
 begin_comment
 comment|/**  * A cursor to read a number of nodes sequentially.  */
 end_comment
@@ -27,14 +37,17 @@ begin_interface
 specifier|public
 interface|interface
 name|Cursor
+extends|extends
+name|Iterator
+argument_list|<
+name|IndexRow
+argument_list|>
 block|{
 comment|/**      * The next row within this index.      *<p>      * The row may only contains the path, if a path is available. It may also      * (or just) contain so-called "pseudo-properties" such as "jcr:score" and      * "rep:excerpt", in case the index supports those properties and if the      * properties were requested when running the query. The query engine will      * indicate that those pseudo properties were requested by setting an      * appropriate (possibly unrestricted) filter condition.      *<p>      * The index should return a row with those properties that are stored in      * the index itself, so that the query engine doesn't have to load the whole      * row / node unnecessarily (avoiding to load the whole row is sometimes      * called "index only scan"), specially for rows that are anyway skipped. If      * the index does not have an (efficient) way to return some (or any) of the      * properties, it doesn't have to provide those values. In this case, the      * query engine will load the node itself if required. If all conditions      * match, the query engine will sometimes load the node to do access checks,      * but this is not always the case, and it is not the case if any of the      * (join) conditions do not match.      *       * @return the row      */
+annotation|@
+name|Override
 name|IndexRow
 name|next
-parameter_list|()
-function_decl|;
-name|boolean
-name|hasNext
 parameter_list|()
 function_decl|;
 block|}
