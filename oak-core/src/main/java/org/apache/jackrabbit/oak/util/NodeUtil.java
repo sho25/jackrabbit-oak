@@ -939,6 +939,19 @@ name|ntName
 operator|.
 name|equals
 argument_list|(
+name|getPrimaryNodeTypeName
+argument_list|()
+argument_list|)
+return|;
+block|}
+annotation|@
+name|CheckForNull
+specifier|public
+name|String
+name|getPrimaryNodeTypeName
+parameter_list|()
+block|{
+return|return
 name|getString
 argument_list|(
 name|JcrConstants
@@ -946,7 +959,6 @@ operator|.
 name|JCR_PRIMARYTYPE
 argument_list|,
 literal|null
-argument_list|)
 argument_list|)
 return|;
 block|}
