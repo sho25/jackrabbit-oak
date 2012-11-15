@@ -1170,14 +1170,8 @@ literal|"Detected conflicting node of unexpected node type '"
 operator|+
 name|colliding
 operator|.
-name|getString
-argument_list|(
-name|JcrConstants
-operator|.
-name|JCR_PRIMARYTYPE
-argument_list|,
-literal|null
-argument_list|)
+name|getPrimaryNodeTypeName
+argument_list|()
 operator|+
 literal|"'."
 decl_stmt|;
