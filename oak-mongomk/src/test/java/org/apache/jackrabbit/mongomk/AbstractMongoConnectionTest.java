@@ -81,16 +81,6 @@ name|BasicDBObject
 import|;
 end_import
 
-begin_import
-import|import
-name|com
-operator|.
-name|mongodb
-operator|.
-name|DB
-import|;
-end_import
-
 begin_comment
 comment|/**  * Base class for test cases that need a {@link MongoConnection}  * to a clean test database. Tests in subclasses are automatically  * skipped if the configured MongoDB connection can not be created.  */
 end_comment

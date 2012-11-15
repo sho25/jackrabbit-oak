@@ -220,7 +220,7 @@ name|System
 operator|.
 name|getProperty
 argument_list|(
-literal|"mongo.db"
+literal|"mongo.db2"
 argument_list|,
 literal|"MongoMKDB2"
 argument_list|)
