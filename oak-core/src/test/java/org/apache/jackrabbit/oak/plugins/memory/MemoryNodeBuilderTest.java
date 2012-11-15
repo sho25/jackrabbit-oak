@@ -735,12 +735,6 @@ comment|// reconnect!
 block|}
 annotation|@
 name|Test
-annotation|@
-name|Ignore
-argument_list|(
-literal|"OAK-447"
-argument_list|)
-comment|// FIXME OAK-447
 specifier|public
 name|void
 name|testAddRemovedNodeAgain

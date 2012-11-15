@@ -1679,6 +1679,13 @@ name|writeState
 operator|==
 literal|null
 operator|||
+operator|(
+name|writeState
+operator|.
+name|base
+operator|==
+name|baseState
+operator|&&
 operator|!
 name|writeState
 operator|.
@@ -1688,6 +1695,7 @@ name|containsKey
 argument_list|(
 name|name
 argument_list|)
+operator|)
 operator|)
 condition|)
 block|{
