@@ -49,7 +49,7 @@ name|impl
 operator|.
 name|blob
 operator|.
-name|MongoBlobStore
+name|MongoGridFSBlobStore
 import|;
 end_import
 
@@ -66,7 +66,7 @@ end_import
 begin_class
 specifier|public
 class|class
-name|MongoMicroKernelFixture
+name|MongoGridFSMicroKernelFixture
 extends|extends
 name|BaseMongoMicroKernelFixture
 block|{
@@ -82,7 +82,7 @@ parameter_list|)
 block|{
 return|return
 operator|new
-name|MongoBlobStore
+name|MongoGridFSBlobStore
 argument_list|(
 name|db
 argument_list|)

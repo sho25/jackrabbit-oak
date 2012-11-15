@@ -1363,6 +1363,10 @@ operator|new
 name|NotFoundException
 argument_list|(
 name|path
+operator|+
+literal|" @rev"
+operator|+
+name|headRevisionId
 argument_list|)
 throw|;
 block|}

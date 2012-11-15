@@ -268,7 +268,7 @@ name|includeBranchCommits
 init|=
 literal|true
 decl_stmt|;
-comment|/**      * Constructs a new {@link FetchCommitsAction}      *      * @param nodeStore Node store.      * @param toRevisionId To revision id.      */
+comment|/**      * Constructs a new {@link FetchCommitsAction}      *      * @param nodeStore Node store.      */
 specifier|public
 name|FetchCommitsAction
 parameter_list|(

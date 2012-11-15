@@ -138,7 +138,6 @@ name|int
 name|bufferOffset
 decl_stmt|;
 specifier|private
-specifier|final
 name|int
 name|length
 decl_stmt|;
@@ -275,6 +274,17 @@ operator|=
 name|fileLength
 expr_stmt|;
 block|}
+name|length
+operator|=
+call|(
+name|int
+call|)
+argument_list|(
+name|end
+operator|-
+name|start
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|start

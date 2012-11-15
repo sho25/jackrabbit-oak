@@ -182,7 +182,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Implementation of {@link BlobStore} for the {@code MongoDB} using GridFS.  */
+comment|/**  * Implementation of {@link BlobStore} for the {@code MongoDB} using GridFS. It  * does not support garbage collection at the moment.  */
 end_comment
 
 begin_class

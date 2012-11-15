@@ -87,6 +87,26 @@ end_import
 
 begin_import
 import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
+import|;
+end_import
+
+begin_import
+import|import
 name|com
 operator|.
 name|mongodb
@@ -146,7 +166,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Implementation of {@link BlobStore} for the {@code MongoDB} extending from  * {@link AbstractBlobStore}. Unlike {@link MongoGridFSBlobStore}, it saves blobs  * into a separate collection in {@link MongoDB} instead of GridFS.  *  * FIXME:  * -Do we need to create commands for retry etc.?  * -Implement GC  */
+comment|/**  * Implementation of {@link BlobStore} for the {@code MongoDB} extending from  * {@link AbstractBlobStore}. Unlike {@link MongoGridFSBlobStore}, it saves blobs  * into a separate collection in {@link MongoDB} instead of GridFS and it supports  * basic garbage collection.  *  * FIXME:  * -Do we need to create commands for retry etc.?  * -Not sure if this is going to work for multiple MKs talking to same MongoDB?  */
 end_comment
 
 begin_class
@@ -163,6 +183,21 @@ name|String
 name|COLLECTION_BLOBS
 init|=
 literal|"blobs"
+decl_stmt|;
+specifier|private
+specifier|static
+specifier|final
+name|Logger
+name|LOG
+init|=
+name|LoggerFactory
+operator|.
+name|getLogger
+argument_list|(
+name|MongoBlobStore
+operator|.
+name|class
+argument_list|)
 decl_stmt|;
 specifier|private
 specifier|final
@@ -248,6 +283,16 @@ operator|.
 name|setLevel
 argument_list|(
 name|level
+argument_list|)
+expr_stmt|;
+name|mongoBlob
+operator|.
+name|setLastMod
+argument_list|(
+name|System
+operator|.
+name|currentTimeMillis
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|getBlobCollection
@@ -507,7 +552,20 @@ operator|!=
 literal|null
 condition|)
 block|{
-comment|// Handle
+name|LOG
+operator|.
+name|error
+argument_list|(
+literal|"Mark failed for blob %s: %s"
+argument_list|,
+name|id
+argument_list|,
+name|writeResult
+operator|.
+name|getError
+argument_list|()
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 annotation|@
@@ -530,7 +588,7 @@ name|minLastModified
 argument_list|)
 decl_stmt|;
 name|long
-name|beforeCount
+name|countBefore
 init|=
 name|getBlobCollection
 argument_list|()
@@ -561,10 +619,21 @@ operator|!=
 literal|null
 condition|)
 block|{
-comment|// Handle
+name|LOG
+operator|.
+name|error
+argument_list|(
+literal|"Sweep failed: %s"
+argument_list|,
+name|writeResult
+operator|.
+name|getError
+argument_list|()
+argument_list|)
+expr_stmt|;
 block|}
 name|long
-name|afterCount
+name|countAfter
 init|=
 name|getBlobCollection
 argument_list|()
@@ -583,9 +652,9 @@ call|(
 name|int
 call|)
 argument_list|(
-name|beforeCount
+name|countBefore
 operator|-
-name|afterCount
+name|countAfter
 argument_list|)
 return|;
 block|}

@@ -71,6 +71,22 @@ name|apache
 operator|.
 name|jackrabbit
 operator|.
+name|mk
+operator|.
+name|util
+operator|.
+name|MicroKernelInputStream
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
 name|mongomk
 operator|.
 name|BaseMongoMicroKernelTest
@@ -102,16 +118,6 @@ operator|.
 name|junit
 operator|.
 name|Before
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
-name|Ignore
 import|;
 end_import
 
@@ -226,6 +232,8 @@ block|{
 name|read
 argument_list|(
 literal|1024
+argument_list|,
+literal|false
 argument_list|)
 expr_stmt|;
 block|}
@@ -243,14 +251,13 @@ argument_list|(
 literal|1024
 operator|*
 literal|1024
+argument_list|,
+literal|false
 argument_list|)
 expr_stmt|;
 block|}
 annotation|@
 name|Test
-annotation|@
-name|Ignore
-comment|// FIXME - Add it back when OAK-430 is fixed.
 specifier|public
 name|void
 name|large
@@ -258,6 +265,8 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+comment|// Skip range tests for large blobs for now as it's complicated with
+comment|// block size.
 name|read
 argument_list|(
 literal|20
@@ -265,6 +274,8 @@ operator|*
 literal|1024
 operator|*
 literal|1024
+argument_list|,
+literal|true
 argument_list|)
 expr_stmt|;
 block|}
@@ -274,6 +285,9 @@ name|read
 parameter_list|(
 name|int
 name|blobLength
+parameter_list|,
+name|boolean
+name|skipRangeTests
 parameter_list|)
 throws|throws
 name|Exception
@@ -288,32 +302,13 @@ name|byte
 index|[]
 name|buffer
 init|=
-operator|new
-name|byte
-index|[
-name|blob
+name|MicroKernelInputStream
 operator|.
-name|length
-index|]
-decl_stmt|;
-name|int
-name|totalBytes
-init|=
-name|mk
-operator|.
-name|read
+name|readFully
 argument_list|(
+name|mk
+argument_list|,
 name|blobId
-argument_list|,
-literal|0
-argument_list|,
-name|buffer
-argument_list|,
-literal|0
-argument_list|,
-name|blob
-operator|.
-name|length
 argument_list|)
 decl_stmt|;
 name|Assert
@@ -324,7 +319,9 @@ name|blob
 operator|.
 name|length
 argument_list|,
-name|totalBytes
+name|buffer
+operator|.
+name|length
 argument_list|)
 expr_stmt|;
 name|Assert
@@ -341,6 +338,13 @@ name|buffer
 argument_list|)
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|skipRangeTests
+condition|)
+block|{
+return|return;
+block|}
 comment|// Range end from end.
 name|buffer
 operator|=
@@ -354,8 +358,9 @@ operator|/
 literal|2
 index|]
 expr_stmt|;
+name|int
 name|totalBytes
-operator|=
+init|=
 name|mk
 operator|.
 name|read
@@ -382,7 +387,7 @@ name|length
 operator|/
 literal|2
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 name|Assert
 operator|.
 name|assertEquals
