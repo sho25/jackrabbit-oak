@@ -103,7 +103,7 @@ name|jackrabbit
 operator|.
 name|mongomk
 operator|.
-name|BaseMongoMicroKernelTest
+name|AbstractMongoConnectionTest
 import|;
 end_import
 
@@ -178,9 +178,12 @@ specifier|public
 class|class
 name|MongoMKWriteTest
 extends|extends
-name|BaseMongoMicroKernelTest
+name|AbstractMongoConnectionTest
 block|{
-comment|// Override to set the right blob store.
+specifier|private
+name|MongoMicroKernel
+name|mk
+decl_stmt|;
 annotation|@
 name|Before
 specifier|public
@@ -190,11 +193,6 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|super
-operator|.
-name|setUp
-argument_list|()
-expr_stmt|;
 name|DB
 name|db
 init|=
@@ -203,11 +201,6 @@ operator|.
 name|getDB
 argument_list|()
 decl_stmt|;
-name|dropCollections
-argument_list|(
-name|db
-argument_list|)
-expr_stmt|;
 name|MongoNodeStore
 name|nodeStore
 init|=
