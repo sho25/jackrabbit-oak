@@ -114,7 +114,7 @@ end_import
 begin_class
 specifier|public
 class|class
-name|ConcurrentMicroKernelTestBase
+name|MongoConcurrentMicroKernelTestBase
 block|{
 specifier|public
 specifier|static
@@ -156,7 +156,7 @@ block|{
 name|initializator
 operator|=
 operator|new
-name|OakMicroKernelInitializer
+name|MongoMicroKernelInitializer
 argument_list|()
 expr_stmt|;
 name|System

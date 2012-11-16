@@ -611,7 +611,7 @@ name|getNumOfRetries
 parameter_list|()
 block|{
 return|return
-literal|20
+literal|100
 return|;
 block|}
 annotation|@

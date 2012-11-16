@@ -102,14 +102,16 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * The test base class for tests that are using only one microkernel instance.  *  *  *  */
+comment|/**  * The test base class for tests that are using only one microkernel instance.  *   *   *   */
 end_comment
 
 begin_class
 specifier|public
+specifier|abstract
 class|class
 name|MicroKernelTestBase
 block|{
+specifier|protected
 specifier|static
 name|MicroKernelInitializer
 name|initializator
@@ -127,7 +129,7 @@ specifier|public
 name|Chronometer
 name|chronometer
 decl_stmt|;
-comment|/**      * Loads the corresponding microkernel initialization class and the      * microkernel configuration.The method searches for the<b>mk.type</b>      * system property in order to initialize the proper microkernel.By default,      * the oak microkernel will be instantiated.      *      * @throws Exception      */
+comment|/**      * Loads the corresponding microkernel initialization class and the      * microkernel configuration.The method searches for the<b>mk.type</b>      * system property in order to initialize the proper microkernel.By default,      * the oak microkernel will be instantiated.      *       * @throws Exception      */
 annotation|@
 name|BeforeClass
 specifier|public
@@ -138,16 +140,12 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-comment|// FIXME - Add back
 name|initializator
 operator|=
 operator|new
 name|OakMicroKernelInitializer
 argument_list|()
 expr_stmt|;
-comment|//String mktype = System.getProperty("mk.type");
-comment|//initializator = (mktype == null || mktype.equals("oakmk")) ? new OakMicroKernelInitializer()
-comment|//        : new MongoMicroKernelInitializer();
 name|System
 operator|.
 name|out
@@ -172,7 +170,7 @@ name|readConfig
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * Creates a microkernel collection with only one microkernel.      *      * @throws Exception      */
+comment|/**      * Creates a microkernel collection with only one microkernel.      *       * @throws Exception      */
 annotation|@
 name|Before
 specifier|public

@@ -14,6 +14,8 @@ operator|.
 name|mk
 operator|.
 name|tests
+operator|.
+name|perf
 package|;
 end_package
 
@@ -45,7 +47,7 @@ name|mk
 operator|.
 name|testing
 operator|.
-name|ConcurrentMicroKernelTestBase
+name|MongoConcurrentMicroKernelTestBase
 import|;
 end_import
 
@@ -59,36 +61,18 @@ name|Test
 import|;
 end_import
 
-begin_import
-import|import
-name|com
-operator|.
-name|cedarsoft
-operator|.
-name|test
-operator|.
-name|utils
-operator|.
-name|CatchAllExceptionsRule
-import|;
-end_import
-
-begin_comment
-comment|/**  * Test class for microkernel concurrent writing.All the nodes are added in a  * single commit.  */
-end_comment
-
 begin_class
 specifier|public
 class|class
-name|MkConcurrentAddNodes1CommitTest
+name|MongoConcurrentAddNodes1CommitTest
 extends|extends
-name|ConcurrentMicroKernelTestBase
+name|MongoConcurrentMicroKernelTestBase
 block|{
 comment|// nodes for each worker
 name|int
 name|nodesNumber
 init|=
-literal|100
+literal|1000
 decl_stmt|;
 comment|/**      * @Rule public CatchAllExceptionsRule catchAllExceptionsRule = new      *       CatchAllExceptionsRule();      **/
 annotation|@

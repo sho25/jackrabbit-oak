@@ -14,6 +14,8 @@ operator|.
 name|mk
 operator|.
 name|tests
+operator|.
+name|perf
 package|;
 end_package
 
@@ -29,7 +31,7 @@ name|mk
 operator|.
 name|scenarios
 operator|.
-name|ConcurrentAddNodes1Commit
+name|ConcurrentAddNodesMultipleCommits
 import|;
 end_import
 
@@ -45,7 +47,7 @@ name|mk
 operator|.
 name|testing
 operator|.
-name|ConcurrentMicroKernelTestBase
+name|MongoConcurrentMicroKernelTestBase
 import|;
 end_import
 
@@ -59,38 +61,25 @@ name|Test
 import|;
 end_import
 
-begin_import
-import|import
-name|com
-operator|.
-name|cedarsoft
-operator|.
-name|test
-operator|.
-name|utils
-operator|.
-name|CatchAllExceptionsRule
-import|;
-end_import
-
-begin_comment
-comment|/**  * Test class for microkernel concurrent writing.All the nodes are added in a  * single commit.  */
-end_comment
-
 begin_class
 specifier|public
 class|class
-name|MkConcurrentAddNodes1CommitTest
+name|MongoConcurrentAddNodesMultipleCommitTest
 extends|extends
-name|ConcurrentMicroKernelTestBase
+name|MongoConcurrentMicroKernelTestBase
 block|{
 comment|// nodes for each worker
 name|int
 name|nodesNumber
 init|=
-literal|100
+literal|1000
 decl_stmt|;
-comment|/**      * @Rule public CatchAllExceptionsRule catchAllExceptionsRule = new      *       CatchAllExceptionsRule();      **/
+name|int
+name|numberOfNodesPerCommit
+init|=
+literal|10
+decl_stmt|;
+comment|/**      * @Rule public CatchAllExceptionsRule catchAllExceptionsRule = new      *       CatchAllExceptionsRule();      */
 annotation|@
 name|Test
 specifier|public
@@ -100,15 +89,17 @@ parameter_list|()
 throws|throws
 name|InterruptedException
 block|{
-name|ConcurrentAddNodes1Commit
+name|ConcurrentAddNodesMultipleCommits
 operator|.
 name|concurentWritingFlatStructure
 argument_list|(
 name|mks
 argument_list|,
-literal|3
+name|mkNumber
 argument_list|,
 name|nodesNumber
+argument_list|,
+name|numberOfNodesPerCommit
 argument_list|,
 name|chronometer
 argument_list|)
@@ -123,15 +114,17 @@ parameter_list|()
 throws|throws
 name|InterruptedException
 block|{
-name|ConcurrentAddNodes1Commit
+name|ConcurrentAddNodesMultipleCommits
 operator|.
 name|concurentWritingPyramid1
 argument_list|(
 name|mks
 argument_list|,
-literal|3
+name|mkNumber
 argument_list|,
 name|nodesNumber
+argument_list|,
+name|numberOfNodesPerCommit
 argument_list|,
 name|chronometer
 argument_list|)
@@ -146,15 +139,17 @@ parameter_list|()
 throws|throws
 name|InterruptedException
 block|{
-name|ConcurrentAddNodes1Commit
+name|ConcurrentAddNodesMultipleCommits
 operator|.
 name|concurentWritingPyramid2
 argument_list|(
 name|mks
 argument_list|,
-literal|3
+name|mkNumber
 argument_list|,
 name|nodesNumber
+argument_list|,
+name|numberOfNodesPerCommit
 argument_list|,
 name|chronometer
 argument_list|)

@@ -113,7 +113,7 @@ name|index
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|//System.out.println("Create node "+ index);
+comment|// System.out.println("Create node "+ index);
 for|for
 control|(
 name|int
