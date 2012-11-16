@@ -392,18 +392,18 @@ annotation|@
 name|After
 specifier|public
 name|void
-name|dropDatabases
+name|dropCollections
 parameter_list|()
 throws|throws
 name|Exception
 block|{
+name|dropCollections
+argument_list|(
 name|mongoConnection2
 operator|.
 name|getDB
 argument_list|()
-operator|.
-name|dropDatabase
-argument_list|()
+argument_list|)
 expr_stmt|;
 comment|// DB1 handled by the AbstractMongoConnectionTest
 block|}
