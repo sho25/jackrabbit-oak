@@ -2025,8 +2025,6 @@ argument_list|()
 operator|.
 name|getPrivilegeManager
 argument_list|(
-name|contentSession
-argument_list|,
 name|root
 argument_list|,
 name|getNamePathMapper
