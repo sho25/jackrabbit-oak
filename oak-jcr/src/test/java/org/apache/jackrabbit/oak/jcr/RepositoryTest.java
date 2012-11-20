@@ -1198,11 +1198,6 @@ argument_list|)
 expr_stmt|;
 block|}
 annotation|@
-name|Ignore
-argument_list|(
-literal|"OAK-369"
-argument_list|)
-annotation|@
 name|Test
 specifier|public
 name|void
@@ -1224,14 +1219,13 @@ argument_list|(
 operator|(
 name|node
 operator|.
-name|hasNode
+name|hasProperty
 argument_list|(
 literal|"."
 argument_list|)
 operator|)
 argument_list|)
 expr_stmt|;
-comment|// FIXME: OAK-369
 block|}
 annotation|@
 name|Test
@@ -1255,7 +1249,7 @@ argument_list|(
 operator|(
 name|node
 operator|.
-name|hasNode
+name|hasProperty
 argument_list|(
 literal|".."
 argument_list|)
