@@ -236,6 +236,12 @@ name|PARAM_PASSWORD_SALT_SIZE
 init|=
 literal|"passwordSaltSize"
 decl_stmt|;
+comment|/**      * Configuration option to define how the name of the authorizable node      * is generated from the ID of the new authorizable that is being created.      * The value is expected to be an instance of {@link AuthorizableNodeName}.      * By default {@link AuthorizableNodeName#DEFAULT} is used.      */
+name|String
+name|PARAM_AUTHORIZABLE_NODE_NAME
+init|=
+literal|"authorizableNodeName"
+decl_stmt|;
 block|}
 end_interface
 
