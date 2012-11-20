@@ -1257,8 +1257,6 @@ name|toString
 parameter_list|()
 block|{
 return|return
-literal|"Privilege "
-operator|+
 name|definition
 operator|.
 name|getName
