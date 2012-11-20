@@ -77,13 +77,6 @@ name|Tree
 name|tree
 parameter_list|)
 function_decl|;
-name|boolean
-name|definesItems
-parameter_list|(
-name|String
-name|path
-parameter_list|)
-function_decl|;
 block|}
 end_interface
 

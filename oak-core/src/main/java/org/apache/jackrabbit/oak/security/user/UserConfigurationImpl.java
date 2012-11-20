@@ -467,9 +467,9 @@ name|getContext
 parameter_list|()
 block|{
 return|return
-operator|new
 name|UserContext
-argument_list|()
+operator|.
+name|INSTANCE
 return|;
 block|}
 comment|//--------------------------------------------------< UserConfiguration>---
