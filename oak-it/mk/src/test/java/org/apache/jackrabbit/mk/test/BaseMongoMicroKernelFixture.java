@@ -201,7 +201,7 @@ name|getProperty
 argument_list|(
 literal|"mongo.db"
 argument_list|,
-literal|"mk-tf"
+literal|"MongoMKDB"
 argument_list|)
 decl_stmt|;
 specifier|private
