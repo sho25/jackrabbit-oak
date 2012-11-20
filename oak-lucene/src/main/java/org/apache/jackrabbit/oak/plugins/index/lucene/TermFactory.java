@@ -70,6 +70,7 @@ argument_list|(
 name|path
 argument_list|)
 operator|&&
+operator|!
 name|path
 operator|.
 name|startsWith
@@ -80,12 +81,9 @@ condition|)
 block|{
 name|path
 operator|=
+literal|"/"
+operator|+
 name|path
-operator|.
-name|substring
-argument_list|(
-literal|1
-argument_list|)
 expr_stmt|;
 block|}
 return|return
