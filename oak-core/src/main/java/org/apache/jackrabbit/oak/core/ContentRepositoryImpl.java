@@ -335,7 +335,7 @@ specifier|final
 name|ConflictHandler
 name|conflictHandler
 decl_stmt|;
-comment|/**      * Creates an content repository instance based on the given, already      * initialized components.      *      * @param nodeStore the node store this repository is based upon.      * @param indexProvider index provider      * @param securityProvider The configured security provider or {@code null} if      * default implementations should be used.      */
+comment|/**      * Creates an content repository instance based on the given, already      * initialized components.      *      * @param nodeStore the node store this repository is based upon.      * @param conflictHandler The conflict handler.      * @param indexProvider index provider      * @param securityProvider The configured security provider or {@code null} if      * default implementations should be used.      */
 specifier|public
 name|ContentRepositoryImpl
 parameter_list|(
