@@ -1341,6 +1341,7 @@ block|}
 annotation|@
 name|Nonnull
 specifier|private
+specifier|static
 name|TreeLocation
 name|getLocation
 parameter_list|(
@@ -1351,9 +1352,7 @@ name|String
 name|relativePath
 parameter_list|)
 block|{
-name|TreeLocation
-name|target
-init|=
+return|return
 name|LocationUtil
 operator|.
 name|getTreeLocation
@@ -1365,9 +1364,6 @@ argument_list|()
 argument_list|,
 name|relativePath
 argument_list|)
-decl_stmt|;
-return|return
-name|target
 return|;
 block|}
 specifier|private
