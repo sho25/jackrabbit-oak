@@ -776,14 +776,16 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+comment|//seek() may be called with pos == data.length
+comment|//see https://issues.apache.org/jira/browse/LUCENE-1196
 if|if
 condition|(
 name|pos
-operator|<
+argument_list|<
 literal|0
 operator|||
 name|pos
-operator|>=
+argument_list|>
 name|data
 operator|.
 name|length
