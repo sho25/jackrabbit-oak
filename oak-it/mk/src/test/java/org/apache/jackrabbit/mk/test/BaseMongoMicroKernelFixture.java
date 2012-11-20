@@ -11,11 +11,9 @@ name|apache
 operator|.
 name|jackrabbit
 operator|.
-name|mongomk
+name|mk
 operator|.
 name|test
-operator|.
-name|it
 package|;
 end_package
 

@@ -91,6 +91,17 @@ block|{
 annotation|@
 name|Override
 specifier|public
+name|boolean
+name|isAvailable
+parameter_list|()
+block|{
+return|return
+literal|true
+return|;
+block|}
+annotation|@
+name|Override
+specifier|public
 name|void
 name|setUpCluster
 parameter_list|(

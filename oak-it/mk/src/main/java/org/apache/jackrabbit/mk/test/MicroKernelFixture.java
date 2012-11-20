@@ -42,7 +42,12 @@ specifier|public
 interface|interface
 name|MicroKernelFixture
 block|{
-comment|/**      * Creates a new {@link MicroKernel} cluster with as many nodes as the      * given array has elements. References to the cluster nodes are stored      * in the given array. The initial state of the cluster consists of just      * an empty root node and a shared journal with only a single root      * revision. The caller of this method should have exclusive access to      * the created cluster. The caller is also responsible for calling      * {@link #tearDownCluster(MicroKernel[])} when the test cluster is      * no longer needed.      *      * @param cluster array to which references to all nodes of the      *                created cluster should be stored      */
+comment|/**      * Checks whether this fixture is currently available. For example      * a database-based fixture would only be available when the underlying      * database service is running.      *      * @return<code>true</code> iff the fixture is available      */
+name|boolean
+name|isAvailable
+parameter_list|()
+function_decl|;
+comment|/**      * Creates a new {@link MicroKernel} cluster with as many nodes as the      * given array has elements. References to the cluster nodes are stored      * in the given array. The initial state of the cluster consists of just      * an empty root node and a shared journal with only a single root      * revision. The caller of this method should have exclusive access to      * the created cluster. The caller is also responsible for calling      * {@link #tearDownCluster(MicroKernel[])} when the test cluster is      * no longer needed.      *      * @param cluster array to which references to all nodes of the      *                created cluster should be stored      * @throws Exception if the cluster could not be set up      */
 name|void
 name|setUpCluster
 parameter_list|(
@@ -50,6 +55,8 @@ name|MicroKernel
 index|[]
 name|cluster
 parameter_list|)
+throws|throws
+name|Exception
 function_decl|;
 comment|/**      * Ensures that all content changes seen by one of the given cluster      * nodes are seen also by all the other given nodes. Used to help      * testing features like eventual consistency where the standard      * {@link MicroKernel} API doesn't make strong enough guarantees to      * enable writing a test case without a potentially unbounded wait for      * changes to propagate across the cluster.      *      * @param nodes cluster nodes to be synchronized      */
 name|void

@@ -325,6 +325,14 @@ range|:
 name|loader
 control|)
 block|{
+if|if
+condition|(
+name|fixture
+operator|.
+name|isAvailable
+argument_list|()
+condition|)
+block|{
 name|fixtures
 operator|.
 name|add
@@ -337,6 +345,7 @@ name|fixture
 block|}
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 return|return
 name|fixtures
@@ -407,6 +416,8 @@ specifier|public
 name|void
 name|setUp
 parameter_list|()
+throws|throws
+name|Exception
 block|{
 name|fixture
 operator|.
