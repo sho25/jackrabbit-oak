@@ -236,11 +236,17 @@ name|PARAM_PASSWORD_SALT_SIZE
 init|=
 literal|"passwordSaltSize"
 decl_stmt|;
-comment|/**      * Configuration option to define how the name of the authorizable node      * is generated from the ID of the new authorizable that is being created.      * The value is expected to be an instance of {@link AuthorizableNodeName}.      * By default {@link AuthorizableNodeName#DEFAULT} is used.      */
+comment|/**      * Optional configuration parameter defining how to generate the name of the      * authorizable node from the ID of the new authorizable that is being created.      * The value is expected to be an instance of {@link AuthorizableNodeName}.      * By default {@link AuthorizableNodeName#DEFAULT} is used.      */
 name|String
 name|PARAM_AUTHORIZABLE_NODE_NAME
 init|=
 literal|"authorizableNodeName"
+decl_stmt|;
+comment|/**      * Optional configuration parameter to set the      * {@link org.apache.jackrabbit.oak.spi.security.user.action.AuthorizableActionProvider}      * to be used with the given user management implementation.      * Unless otherwise specified in the configuration      * {@link org.apache.jackrabbit.oak.spi.security.user.action.DefaultAuthorizableActionProvider}      * is used.      */
+name|String
+name|PARAM_AUTHORIZABLE_ACTION_PROVIDER
+init|=
+literal|"authorizableActionProvider"
 decl_stmt|;
 block|}
 end_interface

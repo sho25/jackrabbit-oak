@@ -470,7 +470,7 @@ name|acConfiguration
 init|=
 name|securityProvider
 operator|.
-name|getAccessControlProvider
+name|getAccessControlConfiguration
 argument_list|()
 decl_stmt|;
 return|return

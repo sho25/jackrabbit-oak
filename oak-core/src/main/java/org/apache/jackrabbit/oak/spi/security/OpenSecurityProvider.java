@@ -284,7 +284,7 @@ name|SecurityConfiguration
 operator|>
 name|singletonList
 argument_list|(
-name|getAccessControlProvider
+name|getAccessControlConfiguration
 argument_list|()
 argument_list|)
 return|;
@@ -334,7 +334,7 @@ annotation|@
 name|Override
 specifier|public
 name|AccessControlConfiguration
-name|getAccessControlProvider
+name|getAccessControlConfiguration
 parameter_list|()
 block|{
 return|return
