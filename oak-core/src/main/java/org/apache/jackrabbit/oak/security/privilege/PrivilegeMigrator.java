@@ -352,7 +352,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * PrivilegeMigrator is a utility to migrate custom privilege definitions from  * a jackrabbit 2 project to oak.  */
+comment|/**  * PrivilegeMigrator is a utility to migrate custom privilege definitions from  * a jackrabbit 2 project to oak.  *  * TODO: this is an initial draft of a migration tool from jr2 custom privileges  * TODO: to oak. might need to be adjusted once we have defined a upgrade path (see OAK-458)  */
 end_comment
 
 begin_class
@@ -382,7 +382,10 @@ block|}
 specifier|public
 name|void
 name|migrateCustomPrivileges
-parameter_list|()
+parameter_list|(
+name|InputStream
+name|privilegeStream
+parameter_list|)
 throws|throws
 name|RepositoryException
 block|{
@@ -404,21 +407,6 @@ argument_list|(
 name|root
 argument_list|)
 decl_stmt|;
-name|InputStream
-name|stream
-init|=
-literal|null
-decl_stmt|;
-comment|// FIXME: user proper path to jr2 custom privileges stored in fs
-comment|// jr2 used to be:
-comment|// new FileSystemResource(fs, "/privileges/custom_privileges.xml").getInputStream()
-if|if
-condition|(
-name|stream
-operator|!=
-literal|null
-condition|)
-block|{
 try|try
 block|{
 name|NamespaceRegistry
@@ -465,7 +453,7 @@ name|custom
 init|=
 name|readCustomDefinitons
 argument_list|(
-name|stream
+name|privilegeStream
 argument_list|,
 name|nsRegistry
 argument_list|)
@@ -491,26 +479,6 @@ argument_list|(
 name|e
 argument_list|)
 throw|;
-block|}
-finally|finally
-block|{
-try|try
-block|{
-name|stream
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|IOException
-name|e
-parameter_list|)
-block|{
-comment|// ignore.
-block|}
-block|}
 block|}
 block|}
 comment|/**      * Reads privilege definitions for the specified {@code InputStream}. The      * aim of this method is to provide backwards compatibility with      * custom privilege definitions of Jackrabbit 2.x repositories. The caller      * is in charge of migrating the definitions.      *      * @param customPrivileges      * @param nsRegistry      * @return      * @throws RepositoryException      * @throws IOException      */
