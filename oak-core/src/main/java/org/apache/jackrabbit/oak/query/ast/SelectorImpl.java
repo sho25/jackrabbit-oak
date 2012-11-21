@@ -664,6 +664,11 @@ name|getStatement
 argument_list|()
 argument_list|)
 decl_stmt|;
+name|validateNodeType
+argument_list|(
+name|nodeTypeName
+argument_list|)
+expr_stmt|;
 name|f
 operator|.
 name|setNodeType
@@ -713,6 +718,25 @@ block|}
 return|return
 name|f
 return|;
+block|}
+specifier|private
+name|void
+name|validateNodeType
+parameter_list|(
+name|String
+name|nodeType
+parameter_list|)
+block|{
+comment|// this looks a bit weird, but it should be correct - the code
+comment|// assumes that paths and node type names have the same format
+comment|// restrictions (characters such as "[" are not allowed and so on)
+name|query
+operator|.
+name|validatePath
+argument_list|(
+name|nodeType
+argument_list|)
+expr_stmt|;
 block|}
 annotation|@
 name|Override

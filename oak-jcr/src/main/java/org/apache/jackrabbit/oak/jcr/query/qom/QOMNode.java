@@ -154,6 +154,17 @@ name|String
 name|name
 parameter_list|)
 block|{
+name|name
+operator|=
+name|name
+operator|.
+name|replaceAll
+argument_list|(
+literal|"]"
+argument_list|,
+literal|"]]"
+argument_list|)
+expr_stmt|;
 return|return
 literal|'['
 operator|+

@@ -123,6 +123,17 @@ name|String
 name|pathOrName
 parameter_list|)
 block|{
+name|pathOrName
+operator|=
+name|pathOrName
+operator|.
+name|replaceAll
+argument_list|(
+literal|"]"
+argument_list|,
+literal|"]]"
+argument_list|)
+expr_stmt|;
 return|return
 literal|'['
 operator|+
@@ -146,15 +157,23 @@ operator|=
 name|query
 expr_stmt|;
 block|}
-comment|/**      * Calculate the absolute path (the path including the workspace name).      *      * @param path the session local path      * @return the absolute path      */
+comment|/**      * Validate and normalize the path.      *      * @param path the path to validate      * @return the validated and normalized path      */
 specifier|protected
 name|String
-name|getAbsolutePath
+name|validateAndNormalizePath
 parameter_list|(
 name|String
 name|path
 parameter_list|)
 block|{
+comment|// TODO normalize the path (remove superfluous ".." and "." where possible)
+name|query
+operator|.
+name|validatePath
+argument_list|(
+name|path
+argument_list|)
+expr_stmt|;
 return|return
 name|path
 return|;

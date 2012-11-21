@@ -148,7 +148,7 @@ block|}
 name|String
 name|path
 init|=
-name|getAbsolutePath
+name|validateAndNormalizePath
 argument_list|(
 name|ancestorPath
 argument_list|)
@@ -259,7 +259,7 @@ block|{
 name|String
 name|path
 init|=
-name|getAbsolutePath
+name|validateAndNormalizePath
 argument_list|(
 name|ancestorPath
 argument_list|)
