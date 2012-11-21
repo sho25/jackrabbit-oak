@@ -215,14 +215,9 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"Executing query: %s"
+literal|"Executing query: {}"
 argument_list|,
 name|query
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|DBObject

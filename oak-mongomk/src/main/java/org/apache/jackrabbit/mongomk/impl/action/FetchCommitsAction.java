@@ -510,14 +510,9 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"Executing query: %s"
+literal|"Executing query: {}"
 argument_list|,
 name|query
-argument_list|)
 argument_list|)
 expr_stmt|;
 return|return
@@ -728,16 +723,11 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"Found list of valid revisions for max revision %s: %s"
+literal|"Found list of valid revisions for max revision {}: {}"
 argument_list|,
 name|toRevisionId
 argument_list|,
 name|validCommits
-argument_list|)
 argument_list|)
 expr_stmt|;
 return|return

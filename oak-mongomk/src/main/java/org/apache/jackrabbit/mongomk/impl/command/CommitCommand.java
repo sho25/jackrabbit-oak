@@ -507,17 +507,12 @@ name|logger
 operator|.
 name|debug
 argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"Trying to commit: %s"
+literal|"Trying to commit: {}"
 argument_list|,
 name|commit
 operator|.
 name|getDiff
 argument_list|()
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|boolean
@@ -923,51 +918,45 @@ argument_list|()
 argument_list|)
 condition|)
 block|{
+if|if
+condition|(
+name|logger
+operator|.
+name|isDebugEnabled
+argument_list|()
+condition|)
+block|{
 name|logger
 operator|.
 name|debug
 argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"Found existing node to merge: %s"
+literal|"Found existing node to merge: {}"
 argument_list|,
 name|existingNode
 operator|.
 name|getPath
 argument_list|()
 argument_list|)
-argument_list|)
 expr_stmt|;
 name|logger
 operator|.
 name|debug
 argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"Existing node: %s"
+literal|"Existing node: {}"
 argument_list|,
 name|existingNode
 argument_list|)
-argument_list|)
 expr_stmt|;
 name|logger
 operator|.
 name|debug
 argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"Committing node: %s"
+literal|"Committing node: {}"
 argument_list|,
 name|committingNode
 argument_list|)
-argument_list|)
 expr_stmt|;
+block|}
 name|Map
 argument_list|<
 name|String
@@ -1001,11 +990,7 @@ name|logger
 operator|.
 name|debug
 argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"Merged properties for %s: %s"
+literal|"Merged properties for {}: {}"
 argument_list|,
 name|existingNode
 operator|.
@@ -1013,7 +998,6 @@ name|getPath
 argument_list|()
 argument_list|,
 name|existingProperties
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -1046,11 +1030,7 @@ name|logger
 operator|.
 name|debug
 argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"Merged children for %s: %s"
+literal|"Merged children for {}: {}"
 argument_list|,
 name|existingNode
 operator|.
@@ -1058,7 +1038,6 @@ name|getPath
 argument_list|()
 argument_list|,
 name|existingChildren
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -1076,11 +1055,7 @@ name|logger
 operator|.
 name|debug
 argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"Merged node for %s: %s"
+literal|"Merged node for {}: {}"
 argument_list|,
 name|existingNode
 operator|.
@@ -1088,7 +1063,6 @@ name|getPath
 argument_list|()
 argument_list|,
 name|committingNode
-argument_list|)
 argument_list|)
 expr_stmt|;
 break|break;
@@ -1113,31 +1087,21 @@ name|logger
 operator|.
 name|debug
 argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"Preparing children (added and removed) of %s"
+literal|"Preparing children (added and removed) of {}"
 argument_list|,
 name|committingNode
 operator|.
 name|getPath
 argument_list|()
 argument_list|)
-argument_list|)
 expr_stmt|;
 name|logger
 operator|.
 name|debug
 argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"Committing node: %s"
+literal|"Committing node: {}"
 argument_list|,
 name|committingNode
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|List
@@ -1414,14 +1378,9 @@ name|logger
 operator|.
 name|debug
 argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"Prepared committing node: %s"
+literal|"Prepared committing node: {}"
 argument_list|,
 name|committingNode
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

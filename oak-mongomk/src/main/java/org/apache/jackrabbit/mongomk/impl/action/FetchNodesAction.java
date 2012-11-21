@@ -332,7 +332,7 @@ operator|=
 name|revisionId
 expr_stmt|;
 block|}
-comment|/**      * Constructs a new {@code FetchNodesAction} to fetch nodes with the exact      * specified paths.      *      * @param nodeStore Node store.      * @param path The exact paths to fetch nodes for.      * @param revisionId The revision id.      */
+comment|/**      * Constructs a new {@code FetchNodesAction} to fetch nodes with the exact      * specified paths.      *      * @param nodeStore Node store.      * @param paths The exact paths to fetch nodes for.      * @param revisionId The revision id.      */
 specifier|public
 name|FetchNodesAction
 parameter_list|(
@@ -701,14 +701,9 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"Executing query: %s"
+literal|"Executing query: {}"
 argument_list|,
 name|query
-argument_list|)
 argument_list|)
 expr_stmt|;
 return|return
@@ -738,6 +733,15 @@ operator|new
 name|StringBuilder
 argument_list|()
 decl_stmt|;
+name|path
+operator|=
+name|Pattern
+operator|.
+name|quote
+argument_list|(
+name|path
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|depth
@@ -949,16 +953,11 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"Converting node %s (%d)"
+literal|"Converting node {} ({})"
 argument_list|,
 name|path
 argument_list|,
 name|revisionId
-argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
@@ -976,16 +975,11 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"Node will not be converted as it is not a valid commit %s (%d)"
+literal|"Node will not be converted as it is not a valid commit {} ({})"
 argument_list|,
 name|path
 argument_list|,
 name|revisionId
-argument_list|)
 argument_list|)
 expr_stmt|;
 continue|continue;
@@ -1035,16 +1029,11 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"Converted nodes was put into map and replaced %s (%d)"
+literal|"Converted nodes was put into map and replaced {} ({})"
 argument_list|,
 name|path
 argument_list|,
 name|revisionId
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -1054,18 +1043,13 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
 literal|"Converted nodes was not put into map because a newer version"
 operator|+
-literal|" is available %s (%d)"
+literal|" is available {} ({})"
 argument_list|,
 name|path
 argument_list|,
 name|revisionId
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
