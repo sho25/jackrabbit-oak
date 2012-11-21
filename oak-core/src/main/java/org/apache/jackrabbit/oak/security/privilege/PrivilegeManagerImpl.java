@@ -235,7 +235,7 @@ name|security
 operator|.
 name|privilege
 operator|.
-name|PrivilegeConstants
+name|PrivilegeDefinition
 import|;
 end_import
 
@@ -255,7 +255,7 @@ name|security
 operator|.
 name|privilege
 operator|.
-name|PrivilegeDefinition
+name|PrivilegeDefinitionReader
 import|;
 end_import
 
@@ -859,7 +859,7 @@ parameter_list|()
 block|{
 return|return
 operator|new
-name|PrivilegeDefinitionReader
+name|PrivilegeDefinitionReaderImpl
 argument_list|(
 name|root
 argument_list|)

@@ -45,16 +45,6 @@ name|javax
 operator|.
 name|annotation
 operator|.
-name|CheckForNull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|annotation
-operator|.
 name|Nonnull
 import|;
 end_import
@@ -121,6 +111,26 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
+name|spi
+operator|.
+name|security
+operator|.
+name|privilege
+operator|.
+name|PrivilegeDefinitionReader
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
 name|util
 operator|.
 name|NodeUtil
@@ -136,8 +146,6 @@ operator|.
 name|jackrabbit
 operator|.
 name|oak
-operator|.
-name|spi
 operator|.
 name|security
 operator|.
@@ -158,8 +166,6 @@ operator|.
 name|jackrabbit
 operator|.
 name|oak
-operator|.
-name|spi
 operator|.
 name|security
 operator|.
@@ -181,8 +187,6 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|spi
-operator|.
 name|security
 operator|.
 name|privilege
@@ -199,6 +203,8 @@ end_comment
 
 begin_class
 class|class
+name|PrivilegeDefinitionReaderImpl
+implements|implements
 name|PrivilegeDefinitionReader
 block|{
 specifier|private
@@ -206,7 +212,7 @@ specifier|final
 name|Tree
 name|privilegesTree
 decl_stmt|;
-name|PrivilegeDefinitionReader
+name|PrivilegeDefinitionReaderImpl
 parameter_list|(
 name|Tree
 name|privilegesTree
@@ -219,7 +225,7 @@ operator|=
 name|privilegesTree
 expr_stmt|;
 block|}
-name|PrivilegeDefinitionReader
+name|PrivilegeDefinitionReaderImpl
 parameter_list|(
 name|Root
 name|root
@@ -236,8 +242,10 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+comment|//------------------------------------------< PrivilegeDefinitionReader>---
 annotation|@
-name|Nonnull
+name|Override
+specifier|public
 name|Map
 argument_list|<
 name|String
@@ -309,7 +317,8 @@ name|definitions
 return|;
 block|}
 annotation|@
-name|CheckForNull
+name|Override
+specifier|public
 name|PrivilegeDefinition
 name|readDefinition
 parameter_list|(
@@ -342,6 +351,7 @@ name|definitionTree
 argument_list|)
 return|;
 block|}
+comment|//-----------------------------------------------------------< internal>---
 annotation|@
 name|Nonnull
 specifier|static
