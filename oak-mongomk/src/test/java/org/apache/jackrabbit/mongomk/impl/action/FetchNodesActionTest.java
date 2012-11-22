@@ -249,6 +249,16 @@ name|org
 operator|.
 name|junit
 operator|.
+name|Ignore
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
 name|Test
 import|;
 end_import
@@ -656,6 +666,11 @@ block|}
 comment|// FIXME - Revisit this test.
 annotation|@
 name|Test
+annotation|@
+name|Ignore
+argument_list|(
+literal|"OAK-459"
+argument_list|)
 specifier|public
 name|void
 name|fetchRootAndAllDepths
