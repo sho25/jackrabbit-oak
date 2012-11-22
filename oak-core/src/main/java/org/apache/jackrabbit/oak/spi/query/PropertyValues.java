@@ -1003,7 +1003,7 @@ operator|.
 name|STRINGS
 argument_list|)
 argument_list|,
-name|p2
+name|p1
 operator|.
 name|getValue
 argument_list|(
