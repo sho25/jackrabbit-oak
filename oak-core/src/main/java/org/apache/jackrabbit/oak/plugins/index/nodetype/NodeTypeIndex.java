@@ -397,16 +397,15 @@ argument_list|()
 argument_list|)
 condition|)
 block|{
-return|return
-name|Cursors
-operator|.
-name|newTraversingCursor
+throw|throw
+operator|new
+name|IllegalStateException
 argument_list|(
+literal|"NodeType index is used even when no index is available for filter "
+operator|+
 name|filter
-argument_list|,
-name|root
 argument_list|)
-return|;
+throw|;
 block|}
 return|return
 name|Cursors
