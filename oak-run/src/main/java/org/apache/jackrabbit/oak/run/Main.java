@@ -1327,8 +1327,9 @@ name|createDefaultValidatorProvider
 argument_list|()
 argument_list|)
 argument_list|,
-operator|new
 name|IndexHookManager
+operator|.
+name|of
 argument_list|(
 operator|new
 name|CompositeIndexHookProvider
