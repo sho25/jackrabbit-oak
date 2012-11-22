@@ -110,7 +110,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A provider for property indexes.  *   * @see PropertyIndex  *   */
+comment|/**  * A provider for property indexes.  *<p>  * Even if there are multiple index definitions, there is only actually one  * PropertyIndex instance, which is used for all indexes.  *   * @see PropertyIndex  *   */
 end_comment
 
 begin_class

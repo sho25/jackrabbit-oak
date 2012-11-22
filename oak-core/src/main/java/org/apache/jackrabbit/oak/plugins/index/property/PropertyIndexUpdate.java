@@ -244,23 +244,26 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Takes care of applying the updates to the index content.  *   */
+comment|/**  * Takes care of applying the updates to the index content.  *<p>  * The changes are temporarily added to an in-memory structure, and then applied  * to the node.  */
 end_comment
 
 begin_class
 class|class
 name|PropertyIndexUpdate
 block|{
+comment|/**      * The path of the index definition (where the index data is stored).      */
 specifier|private
 specifier|final
 name|String
 name|path
 decl_stmt|;
+comment|/**      * The node where the index definition is stored.      */
 specifier|private
 specifier|final
 name|NodeBuilder
 name|node
 decl_stmt|;
+comment|/**      * The set of added values / paths. The key of the map is the property value      * (encoded as a string), the value of the map is a set of paths that where      * added.      */
 specifier|private
 specifier|final
 name|Map
@@ -274,6 +277,7 @@ argument_list|>
 argument_list|>
 name|insert
 decl_stmt|;
+comment|/**      * The set of removed values / paths. The key of the map is the property      * value (encoded as a string), the value of the map is a set of paths that      * were removed.      */
 specifier|private
 specifier|final
 name|Map
@@ -336,6 +340,7 @@ return|return
 name|path
 return|;
 block|}
+comment|/**      * A property value was added at the given path.      *       * @param path the path      * @param value the value      */
 specifier|public
 name|void
 name|insert
@@ -381,6 +386,7 @@ name|value
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * A property value was removed at the given path.      *       * @param path the path      * @param value the value      */
 specifier|public
 name|void
 name|remove
@@ -580,6 +586,7 @@ return|return
 name|reindex
 return|;
 block|}
+comment|/**      * Try to apply the changes to the index content (to the ":index" node.      *       * @throws CommitFailedException if a unique index was violated      */
 specifier|public
 name|void
 name|apply

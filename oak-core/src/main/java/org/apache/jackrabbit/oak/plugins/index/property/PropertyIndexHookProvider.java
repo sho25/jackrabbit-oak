@@ -154,7 +154,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Service that provides PropertyIndex based IndexHooks  *   * @see PropertyIndexDiff  * @see IndexHookProvider  *   */
+comment|/**  * Service that provides PropertyIndex based IndexHooks.  *   * @see PropertyIndexDiff  * @see IndexHookProvider  *   */
 end_comment
 
 begin_class

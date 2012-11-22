@@ -205,7 +205,7 @@ operator|=
 name|root
 expr_stmt|;
 block|}
-comment|/**      * Checks whether the named properties are indexed somewhere      * along the given path.      *      * @param name property name      * @param path lookup path      */
+comment|/**      * Checks whether the named property is indexed somewhere along the given      * path. Lookup starts at the current path (at the root of this object) and      * traverses down the path.      *       * @param name property name      * @param path lookup path      * @return true if the property is indexed      */
 specifier|public
 name|boolean
 name|isIndexed
@@ -231,6 +231,7 @@ return|return
 literal|true
 return|;
 block|}
+comment|// TODO use PathUtils
 if|if
 condition|(
 name|path
@@ -310,7 +311,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-comment|/**      * Searches for a given<code>String<code> value within this index.      *       *<p><b>Note</b> if the property you are looking for is not of type<code>String<code>, the converted key value might not match the index key, and there will be no hits on the index.</p>      *       * @param name      *            the property name      * @param value      *            the property value      * @return the set of matched paths      */
+comment|/**      * Searches for a given<code>String<code> value within this index.      *       *<p><b>Note</b> if the property you are looking for is not of type<code>String<code>,       * the converted key value might not match the index key, and there will be no hits on the index.</p>      *       * @param name the property name      * @param value the property value      * @return the set of matched paths      */
 specifier|public
 name|Set
 argument_list|<
@@ -742,6 +743,7 @@ return|return
 name|cost
 return|;
 block|}
+comment|/**      * Get the node with the index definition node for the given property.      *       * @param name the property name      * @return the node where the index definition is stored, or null if no      *         index definition node was found      */
 annotation|@
 name|Nullable
 specifier|private

@@ -342,7 +342,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * {@link IndexHook} implementation that is responsible for keeping the  * {@link PropertyIndex} up to date  *   * @see PropertyIndex  * @see PropertyIndexLookup  *   */
+comment|/**  * {@link IndexHook} implementation that is responsible for keeping the  * {@link PropertyIndex} up to date.  *<p>  * There is a tree of PropertyIndexDiff objects, each object represents the  * changes at a given node.  *   * @see PropertyIndex  * @see PropertyIndexLookup  *   */
 end_comment
 
 begin_class
@@ -351,25 +351,30 @@ name|PropertyIndexDiff
 implements|implements
 name|IndexHook
 block|{
+comment|/**      * The parent (null if this is the root node).      */
 specifier|private
 specifier|final
 name|PropertyIndexDiff
 name|parent
 decl_stmt|;
+comment|/**      * The node (never null).      */
 specifier|private
 specifier|final
 name|NodeBuilder
 name|node
 decl_stmt|;
+comment|/**      * The node name (the path element). Null for the root node.      */
 specifier|private
 specifier|final
 name|String
 name|name
 decl_stmt|;
+comment|/**      * The path of the changed node (built lazily).      */
 specifier|private
 name|String
 name|path
 decl_stmt|;
+comment|/**      * Key: the property name. Value: the list of indexes (it is possible to      * have multiple indexes for the same property name).      */
 specifier|private
 specifier|final
 name|Map
@@ -610,11 +615,14 @@ literal|null
 return|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|getPath
 parameter_list|()
 block|{
+comment|// build the path lazily
 if|if
 condition|(
 name|path
@@ -622,7 +630,6 @@ operator|==
 literal|null
 condition|)
 block|{
-comment|// => parent != null
 name|path
 operator|=
 name|concat
@@ -640,6 +647,7 @@ return|return
 name|path
 return|;
 block|}
+comment|/**      * Get all the indexes for the given property name.      *       * @param name the property name      * @return the indexes      */
 specifier|private
 name|Iterable
 argument_list|<
