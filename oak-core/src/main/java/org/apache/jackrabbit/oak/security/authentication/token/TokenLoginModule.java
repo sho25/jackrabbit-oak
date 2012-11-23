@@ -829,6 +829,9 @@ name|provider
 operator|=
 name|securityProvider
 operator|.
+name|getAuthenticationConfiguration
+argument_list|()
+operator|.
 name|getTokenProvider
 argument_list|(
 name|root
