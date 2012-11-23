@@ -81,7 +81,7 @@ operator|=
 name|raw
 expr_stmt|;
 block|}
-comment|/**      * Creates an {@code Id} instance from its      * string representation as returned by {@link #toString()}.      *<p/>      * The following condition holds true:      *<pre>      * Id someId = ...;      * assert(Id.fromString(someId.toString()).equals(someId));      *</pre>      *      * @param s a string representation of an {@code Id}      * @return an {@code Id} instance      */
+comment|/**      * Creates an {@code Id} instance from its      * string representation as returned by {@link #toString()}.      *<p/>      * The following condition holds true:      *<pre>      * Id someId = ...;      * assert(Id.fromString(someId.toString()).equals(someId));      *</pre>      *      * @param s a string representation of an {@code Id}      * @return an {@code Id} instance      * @throws IllegalArgumentException if {@code s} is not a valid string representation      */
 specifier|public
 specifier|static
 name|Id
