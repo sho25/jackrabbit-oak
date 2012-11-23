@@ -3248,7 +3248,7 @@ argument_list|,
 literal|":id"
 argument_list|)
 decl_stmt|;
-comment|// get node by identifier (:hash)
+comment|// get node by identifier (:id)
 name|JSONObject
 name|obj1
 init|=
