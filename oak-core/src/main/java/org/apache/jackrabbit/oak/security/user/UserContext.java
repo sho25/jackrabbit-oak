@@ -115,6 +115,7 @@ name|UserContext
 implements|implements
 name|Context
 block|{
+specifier|private
 specifier|static
 specifier|final
 name|Context
@@ -128,6 +129,15 @@ specifier|private
 name|UserContext
 parameter_list|()
 block|{}
+specifier|static
+name|Context
+name|getInstance
+parameter_list|()
+block|{
+return|return
+name|INSTANCE
+return|;
+block|}
 comment|//------------------------------------------------------------< Context>---
 annotation|@
 name|Override

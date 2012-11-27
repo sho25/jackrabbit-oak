@@ -469,7 +469,8 @@ block|{
 return|return
 name|UserContext
 operator|.
-name|INSTANCE
+name|getInstance
+argument_list|()
 return|;
 block|}
 comment|//--------------------------------------------------< UserConfiguration>---
