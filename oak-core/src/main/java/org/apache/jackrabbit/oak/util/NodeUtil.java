@@ -757,7 +757,7 @@ name|primaryTypeName
 argument_list|)
 return|;
 block|}
-comment|/**      * FIXME: workaround for OAK-426      */
+comment|/**      * FIXME: workaround for OAK-426      * FIXME: does probably no work as intended      * rootNode.getOrAddTree("a/b/../../c/d/../../e/f", "");      * adds the three sub trees /a/b, /c/d and /e/f.      */
 annotation|@
 name|Nonnull
 specifier|public
