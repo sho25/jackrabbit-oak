@@ -23,13 +23,21 @@ end_package
 
 begin_import
 import|import
-name|javax
-operator|.
-name|jcr
+name|java
 operator|.
 name|security
 operator|.
-name|AccessControlManager
+name|Principal
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Set
 import|;
 end_import
 
@@ -37,11 +45,21 @@ begin_import
 import|import
 name|javax
 operator|.
+name|annotation
+operator|.
+name|Nonnull
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|jcr
+operator|.
 name|security
 operator|.
-name|auth
-operator|.
-name|Subject
+name|AccessControlManager
 import|;
 end_import
 
@@ -95,6 +113,24 @@ name|SecurityConfiguration
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|state
+operator|.
+name|NodeStore
+import|;
+end_import
+
 begin_comment
 comment|/**  * {@code AccessControlContextProvider}...  */
 end_comment
@@ -106,6 +142,8 @@ name|AccessControlConfiguration
 extends|extends
 name|SecurityConfiguration
 block|{
+annotation|@
+name|Nonnull
 specifier|public
 name|AccessControlManager
 name|getAccessControlManager
@@ -117,12 +155,21 @@ name|NamePathMapper
 name|namePathMapper
 parameter_list|)
 function_decl|;
+comment|// TODO define how permissions eval is bound to a particular revision/branch. (passing Tree?)
+annotation|@
+name|Nonnull
 specifier|public
-name|AccessControlContext
-name|getAccessControlContext
+name|CompiledPermissions
+name|getCompiledPermissions
 parameter_list|(
-name|Subject
-name|subject
+name|NodeStore
+name|nodeStore
+parameter_list|,
+name|Set
+argument_list|<
+name|Principal
+argument_list|>
+name|principals
 parameter_list|)
 function_decl|;
 block|}

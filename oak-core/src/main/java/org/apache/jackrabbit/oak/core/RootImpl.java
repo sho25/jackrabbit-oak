@@ -1571,13 +1571,15 @@ block|{
 return|return
 name|accConfiguration
 operator|.
-name|getAccessControlContext
+name|getCompiledPermissions
 argument_list|(
+name|store
+argument_list|,
 name|subject
-argument_list|)
 operator|.
-name|getPermissions
+name|getPrincipals
 argument_list|()
+argument_list|)
 return|;
 block|}
 comment|//------------------------------------------------------------< private>---
