@@ -923,6 +923,16 @@ name|getSecurityConfigurations
 argument_list|()
 control|)
 block|{
+name|commitHooks
+operator|.
+name|addAll
+argument_list|(
+name|sc
+operator|.
+name|getCommitHooks
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|validatorProviders
 operator|.
 name|addAll
