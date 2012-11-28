@@ -477,7 +477,12 @@ name|SetPropertyInstructionImpl
 argument_list|(
 name|path
 argument_list|,
+name|MongoUtil
+operator|.
+name|toMongoPropertyKey
+argument_list|(
 name|key
+argument_list|)
 argument_list|,
 name|value
 argument_list|)

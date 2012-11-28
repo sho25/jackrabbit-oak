@@ -37,9 +37,11 @@ name|org
 operator|.
 name|apache
 operator|.
-name|commons
+name|jackrabbit
 operator|.
-name|io
+name|mk
+operator|.
+name|util
 operator|.
 name|IOUtils
 import|;
@@ -300,6 +302,13 @@ operator|.
 name|getInputStream
 argument_list|()
 decl_stmt|;
+if|if
+condition|(
+name|blobOffset
+operator|>
+literal|0
+condition|)
+block|{
 name|IOUtils
 operator|.
 name|skipFully
@@ -309,6 +318,7 @@ argument_list|,
 name|blobOffset
 argument_list|)
 expr_stmt|;
+block|}
 name|IOUtils
 operator|.
 name|readFully
