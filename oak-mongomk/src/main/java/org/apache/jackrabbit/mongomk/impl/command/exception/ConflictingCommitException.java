@@ -21,6 +21,10 @@ name|exception
 package|;
 end_package
 
+begin_comment
+comment|/**  * Exception thrown by {@link CommitCommand} when it tries to save a commit but  * a conflicting concurrent update has been encountered.  */
+end_comment
+
 begin_class
 specifier|public
 class|class
