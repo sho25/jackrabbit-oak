@@ -384,6 +384,10 @@ name|commit
 operator|.
 name|setBranchId
 argument_list|(
+name|revId
+operator|+
+literal|"-"
+operator|+
 name|UUID
 operator|.
 name|randomUUID
