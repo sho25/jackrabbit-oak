@@ -589,85 +589,12 @@ name|orderBy
 argument_list|)
 return|;
 block|}
-comment|// FIXME - Revisit this method to make sure it works correctly in concurrent scenarios.
-comment|// The old method tried to read all commits reachable from current rev but the problem
-comment|// with that approach is that the current rev can end up being invalid later on which
-comment|// causes previous valid but unreachable commits to be missed. The new method simply grabs all
-comment|// valid commits at the moment in order to not miss any legitimate valid commits but
-comment|// not sure if this is the right thing to do in all scenarios.
 specifier|private
 name|List
 argument_list|<
 name|MongoCommit
 argument_list|>
 name|convertToCommits
-parameter_list|(
-name|DBCursor
-name|dbCursor
-parameter_list|)
-block|{
-name|List
-argument_list|<
-name|MongoCommit
-argument_list|>
-name|commits
-init|=
-operator|new
-name|LinkedList
-argument_list|<
-name|MongoCommit
-argument_list|>
-argument_list|()
-decl_stmt|;
-while|while
-condition|(
-name|dbCursor
-operator|.
-name|hasNext
-argument_list|()
-condition|)
-block|{
-name|MongoCommit
-name|commit
-init|=
-operator|(
-name|MongoCommit
-operator|)
-name|dbCursor
-operator|.
-name|next
-argument_list|()
-decl_stmt|;
-name|commits
-operator|.
-name|add
-argument_list|(
-name|commit
-argument_list|)
-expr_stmt|;
-block|}
-name|LOG
-operator|.
-name|debug
-argument_list|(
-literal|"Found list of valid revisions for max revision {}: {}"
-argument_list|,
-name|toRevisionId
-argument_list|,
-name|commits
-argument_list|)
-expr_stmt|;
-return|return
-name|commits
-return|;
-block|}
-comment|// Keeping this until we're sure that the new method is correct.
-specifier|private
-name|List
-argument_list|<
-name|MongoCommit
-argument_list|>
-name|convertToCommitsOld
 parameter_list|(
 name|DBCursor
 name|dbCursor

@@ -1379,6 +1379,13 @@ argument_list|(
 name|branchId
 argument_list|)
 expr_stmt|;
+name|existCommand
+operator|.
+name|setValidCommits
+argument_list|(
+name|validCommits
+argument_list|)
+expr_stmt|;
 name|boolean
 name|exists
 init|=

@@ -35,6 +35,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Map
 import|;
 end_import
@@ -97,6 +107,24 @@ name|impl
 operator|.
 name|model
 operator|.
+name|MongoCommit
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|mongomk
+operator|.
+name|impl
+operator|.
+name|model
+operator|.
 name|MongoNode
 import|;
 end_import
@@ -116,10 +144,6 @@ operator|.
 name|PathUtils
 import|;
 end_import
-
-begin_comment
-comment|//import org.apache.jackrabbit.mongomk.api.model.Node;
-end_comment
 
 begin_comment
 comment|/**  * {@code Command} for {@code MongoMicroKernel#nodeExists(String, String)}  */
@@ -143,10 +167,16 @@ specifier|private
 name|String
 name|branchId
 decl_stmt|;
-comment|//private Node parentNode;
 specifier|private
 name|String
 name|path
+decl_stmt|;
+specifier|private
+name|List
+argument_list|<
+name|MongoCommit
+argument_list|>
+name|validCommits
 decl_stmt|;
 comment|/**      * Constructs a new {@code NodeExistsCommandMongo}.      *      * @param nodeStore Node store.      * @param path The root path of the nodes to get.      * @param revisionId The revision id or null.      */
 specifier|public
@@ -194,6 +224,25 @@ operator|.
 name|branchId
 operator|=
 name|branchId
+expr_stmt|;
+block|}
+comment|/**      * Sets the last valid commits if already known. This is an optimization to      * speed up the fetch nodes action.      *      * @param commits The last valid commits.      */
+specifier|public
+name|void
+name|setValidCommits
+parameter_list|(
+name|List
+argument_list|<
+name|MongoCommit
+argument_list|>
+name|validCommits
+parameter_list|)
+block|{
+name|this
+operator|.
+name|validCommits
+operator|=
+name|validCommits
 expr_stmt|;
 block|}
 annotation|@
@@ -367,7 +416,13 @@ argument_list|(
 name|branchId
 argument_list|)
 expr_stmt|;
-comment|//action.setValidCommits(validCommits);
+name|action
+operator|.
+name|setValidCommits
+argument_list|(
+name|validCommits
+argument_list|)
+expr_stmt|;
 name|Map
 argument_list|<
 name|String

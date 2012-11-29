@@ -614,7 +614,10 @@ name|FetchCommitsAction
 argument_list|(
 name|nodeStore
 argument_list|,
-name|revisionId
+name|mongoSync
+operator|.
+name|getHeadRevisionId
+argument_list|()
 argument_list|)
 operator|.
 name|execute
