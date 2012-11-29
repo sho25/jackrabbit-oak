@@ -189,22 +189,6 @@ name|core
 operator|.
 name|query
 operator|.
-name|SQL2OrderByTest
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|core
-operator|.
-name|query
-operator|.
 name|SQL2OuterJoinTest
 import|;
 end_import
@@ -344,15 +328,6 @@ name|suite
 operator|.
 name|addTestSuite
 argument_list|(
-name|SQL2OrderByTest
-operator|.
-name|class
-argument_list|)
-expr_stmt|;
-name|suite
-operator|.
-name|addTestSuite
-argument_list|(
 name|MixinTest
 operator|.
 name|class
@@ -387,6 +362,7 @@ argument_list|)
 expr_stmt|;
 comment|// FAILURES
 comment|//
+comment|//         suite.addTestSuite(SQL2OrderByTest.class); // order by score is not stable
 comment|// suite.addTestSuite(QueryResultTest.class); // OAK-484
 comment|// suite.addTestSuite(OrderByTest.class); // OAK-466
 comment|// suite.addTestSuite(ParentNodeTest.class); // OAK-309
