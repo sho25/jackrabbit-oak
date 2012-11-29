@@ -356,6 +356,10 @@ decl_stmt|;
 if|if
 condition|(
 name|toCommit
+operator|!=
+literal|null
+operator|&&
+name|toCommit
 operator|.
 name|getBranchId
 argument_list|()

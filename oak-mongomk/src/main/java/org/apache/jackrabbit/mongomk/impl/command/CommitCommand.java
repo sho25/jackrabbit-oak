@@ -512,18 +512,6 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|logger
-operator|.
-name|debug
-argument_list|(
-literal|"Trying to commit: {}"
-argument_list|,
-name|commit
-operator|.
-name|getDiff
-argument_list|()
-argument_list|)
-expr_stmt|;
 name|boolean
 name|success
 init|=
@@ -550,6 +538,20 @@ name|getNextRevisionId
 argument_list|()
 operator|-
 literal|1
+expr_stmt|;
+name|logger
+operator|.
+name|debug
+argument_list|(
+literal|"Trying to commit: {} @rev{}"
+argument_list|,
+name|commit
+operator|.
+name|getDiff
+argument_list|()
+argument_list|,
+name|revisionId
+argument_list|)
 expr_stmt|;
 name|readValidCommits
 argument_list|()
