@@ -1085,16 +1085,6 @@ name|existingChildren
 argument_list|)
 expr_stmt|;
 block|}
-name|committingNode
-operator|.
-name|setBaseRevisionId
-argument_list|(
-name|existingNode
-operator|.
-name|getRevisionId
-argument_list|()
-argument_list|)
-expr_stmt|;
 name|logger
 operator|.
 name|debug

@@ -116,14 +116,6 @@ specifier|public
 specifier|static
 specifier|final
 name|String
-name|KEY_BASE_REVISION_ID
-init|=
-literal|"baseRevId"
-decl_stmt|;
-specifier|public
-specifier|static
-specifier|final
-name|String
 name|KEY_CHILDREN
 init|=
 literal|"children"
@@ -387,22 +379,6 @@ comment|//
 comment|// These properties are persisted to MongoDB
 comment|//
 comment|//--------------------------------------------------------------------------
-specifier|public
-name|void
-name|setBaseRevisionId
-parameter_list|(
-name|long
-name|baseRevisionId
-parameter_list|)
-block|{
-name|put
-argument_list|(
-name|KEY_BASE_REVISION_ID
-argument_list|,
-name|baseRevisionId
-argument_list|)
-expr_stmt|;
-block|}
 specifier|public
 name|String
 name|getBranchId
