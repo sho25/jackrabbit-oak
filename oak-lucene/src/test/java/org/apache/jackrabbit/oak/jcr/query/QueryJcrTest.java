@@ -61,7 +61,183 @@ name|core
 operator|.
 name|query
 operator|.
+name|FulltextQueryTest
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|core
+operator|.
+name|query
+operator|.
+name|FulltextSQL2QueryTest
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|core
+operator|.
+name|query
+operator|.
+name|JoinTest
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|core
+operator|.
+name|query
+operator|.
+name|LimitAndOffsetTest
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|core
+operator|.
+name|query
+operator|.
+name|MixinTest
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|core
+operator|.
+name|query
+operator|.
+name|PathQueryNodeTest
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|core
+operator|.
+name|query
+operator|.
+name|SQL2NodeLocalNameTest
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|core
+operator|.
+name|query
+operator|.
+name|SQL2OffsetLimitTest
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|core
+operator|.
+name|query
+operator|.
+name|SQL2OrderByTest
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|core
+operator|.
+name|query
+operator|.
+name|SQL2OuterJoinTest
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|core
+operator|.
+name|query
+operator|.
 name|SQLTest
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|core
+operator|.
+name|query
+operator|.
+name|SkipDeletedNodesTest
 import|;
 end_import
 
@@ -101,9 +277,15 @@ argument_list|(
 literal|"Jackrabbit query tests using a Lucene based index"
 argument_list|)
 decl_stmt|;
-comment|// suite.addTestSuite(FulltextQueryTest.class);
-comment|// ok but I'm not too sure about
-comment|// OAK-348 - fulltext tokenization
+name|suite
+operator|.
+name|addTestSuite
+argument_list|(
+name|FulltextQueryTest
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
 name|suite
 operator|.
 name|addTestSuite
@@ -113,49 +295,116 @@ operator|.
 name|class
 argument_list|)
 expr_stmt|;
-comment|// ok
-comment|// suite.addTestSuite(SimpleQueryTest.class);
-comment|// OAK-327 eq support
-comment|// like pattern escaped
-comment|// type support
-comment|// suite.addTestSuite(UpperLowerCaseQueryTest.class);
-comment|// OAK-329 type check should fail but doesn't
-comment|// suite.addTestSuite(QueryResultTest.class);
-comment|// OAK-308
-comment|// type checks *probably* fail some of the tests
-comment|// some orderby conditions
-comment|// suite.addTestSuite(SQL2QueryResultTest.class);
-comment|// OAK-323 - column names
-comment|// suite.addTestSuite(SQL2OuterJoinTest.class); // ok
-comment|// suite.addTestSuite(SkipDeletedNodesTest.class); // ok
-comment|// suite.addTestSuite(PathQueryNodeTest.class); // ok
-comment|// suite.addTestSuite(FulltextSQL2QueryTest.class); // ok
-comment|// suite.addTestSuite(SQL2NodeLocalNameTest.class); // ok
-comment|// suite.addTestSuite(SQL2OffsetLimitTest.class); // ok
-comment|// suite.addTestSuite(SQL2OrderByTest.class); // ok
-comment|// suite.addTestSuite(MixinTest.class);// ok
-comment|// suite.addTestSuite(JoinTest.class); // ok
+name|suite
+operator|.
+name|addTestSuite
+argument_list|(
+name|JoinTest
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
+name|suite
+operator|.
+name|addTestSuite
+argument_list|(
+name|SkipDeletedNodesTest
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
+name|suite
+operator|.
+name|addTestSuite
+argument_list|(
+name|PathQueryNodeTest
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
+name|suite
+operator|.
+name|addTestSuite
+argument_list|(
+name|FulltextSQL2QueryTest
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
+name|suite
+operator|.
+name|addTestSuite
+argument_list|(
+name|SQL2NodeLocalNameTest
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
+name|suite
+operator|.
+name|addTestSuite
+argument_list|(
+name|SQL2OrderByTest
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
+name|suite
+operator|.
+name|addTestSuite
+argument_list|(
+name|MixinTest
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
+name|suite
+operator|.
+name|addTestSuite
+argument_list|(
+name|SQL2OuterJoinTest
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
+name|suite
+operator|.
+name|addTestSuite
+argument_list|(
+name|SQL2OffsetLimitTest
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
+name|suite
+operator|.
+name|addTestSuite
+argument_list|(
+name|LimitAndOffsetTest
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
+comment|// FAILURES
 comment|//
-comment|// NOT OK
-comment|//
-comment|// suite.addTestSuite(OrderByTest.class); // OAK-347
-comment|// suite.addTestSuite(SQL2PathEscapingTest.class); // OAK-295
-comment|// suite.addTestSuite(LimitAndOffsetTest.class); // OAK-308
+comment|// suite.addTestSuite(QueryResultTest.class); // OAK-484
+comment|// suite.addTestSuite(OrderByTest.class); // OAK-466
 comment|// suite.addTestSuite(ParentNodeTest.class); // OAK-309
-comment|// suite.addTestSuite(XPathAxisTest.class); // OAK-322
-comment|// suite.addTestSuite(FnNameQueryTest.class);
-comment|// OAK-328: "%:content" illegal name
-comment|//
-comment|// NOT IMPLEMENTED
-comment|//
-comment|// suite.addTestSuite(DerefTest.class); // OAK-321
 comment|// suite.addTestSuite(ExcerptTest.class); // OAK-318
 comment|// suite.addTestSuite(SimilarQueryTest.class); // OAK-319
+comment|// suite.addTestSuite(DerefTest.class); // OAK-321
+comment|// suite.addTestSuite(XPathAxisTest.class); // OAK-322
+comment|// suite.addTestSuite(SQL2QueryResultTest.class); // OAK-323
+comment|// suite.addTestSuite(SimpleQueryTest.class); // OAK-327
+comment|// suite.addTestSuite(FnNameQueryTest.class); // OAK-328
+comment|// suite.addTestSuite(UpperLowerCaseQueryTest.class); // OAK-329
+comment|// suite.addTestSuite(SQL2PathEscapingTest.class); // OAK-481
+comment|// NOT IMPLEMENTED
+comment|//
 comment|// suite.addTestSuite(ChildAxisQueryTest.class); // sns
 comment|// suite.addTestSuite(SelectClauseTest.class); // sns
 comment|// suite.addTestSuite(ShareableNodeTest.class); // ws#clone
 comment|// suite.addTestSuite(VersionStoreQueryTest.class); // versioning
-comment|//
 comment|// TOO JR SPECIFIC
 comment|//
 comment|// suite.addTestSuite(LimitedAccessQueryTest.class); // acls
