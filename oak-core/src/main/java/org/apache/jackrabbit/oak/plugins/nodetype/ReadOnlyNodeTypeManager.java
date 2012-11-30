@@ -1537,7 +1537,7 @@ name|RepositoryException
 argument_list|(
 literal|"No matching node definition found for "
 operator|+
-name|this
+name|nodeName
 argument_list|)
 throw|;
 block|}
@@ -1762,7 +1762,10 @@ name|RepositoryException
 argument_list|(
 literal|"No matching node definition found for "
 operator|+
-name|this
+name|targetNode
+operator|.
+name|getName
+argument_list|()
 argument_list|)
 throw|;
 block|}
@@ -1812,7 +1815,7 @@ name|RepositoryException
 argument_list|(
 literal|"No matching node definition found for "
 operator|+
-name|this
+name|nodeName
 argument_list|)
 throw|;
 block|}
@@ -2368,7 +2371,10 @@ name|RepositoryException
 argument_list|(
 literal|"No matching property definition found for "
 operator|+
-name|this
+name|targetProperty
+operator|.
+name|getName
+argument_list|()
 argument_list|)
 throw|;
 block|}
