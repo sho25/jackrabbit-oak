@@ -651,7 +651,11 @@ name|RepositoryException
 block|{
 name|ItemDefinition
 name|definition
-init|=
+decl_stmt|;
+try|try
+block|{
+name|definition
+operator|=
 operator|(
 name|isNode
 argument_list|()
@@ -676,7 +680,17 @@ operator|)
 operator|.
 name|getDefinition
 argument_list|()
-decl_stmt|;
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|RepositoryException
+name|ignore
+parameter_list|)
+block|{
+comment|// No definition -> not protected but a different error which should be handled else where
+return|return;
+block|}
 name|checkProtected
 argument_list|(
 name|definition
