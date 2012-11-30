@@ -178,6 +178,10 @@ name|MongoCommit
 argument_list|>
 name|validCommits
 decl_stmt|;
+specifier|private
+name|MongoNode
+name|node
+decl_stmt|;
 comment|/**      * Constructs a new {@code NodeExistsCommandMongo}.      *      * @param nodeStore Node store.      * @param path The root path of the nodes to get.      * @param revisionId The revision id or null.      */
 specifier|public
 name|NodeExistsCommand
@@ -254,33 +258,7 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-if|if
-condition|(
-name|PathUtils
-operator|.
-name|denotesRoot
-argument_list|(
-name|path
-argument_list|)
-condition|)
-block|{
-return|return
-literal|true
-return|;
-block|}
-comment|// Check that all the paths up to the root actually exist.
-return|return
-name|pathExists
-argument_list|()
-return|;
-block|}
-specifier|private
-name|boolean
-name|pathExists
-parameter_list|()
-throws|throws
-name|Exception
-block|{
+comment|// To check a path really exists, all the paths from root need to be checked.
 name|Set
 argument_list|<
 name|String
@@ -377,6 +355,16 @@ index|]
 argument_list|)
 expr_stmt|;
 block|}
+name|paths
+operator|.
+name|add
+argument_list|(
+name|current
+operator|.
+name|toString
+argument_list|()
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|revisionId
@@ -499,6 +487,10 @@ name|childName
 argument_list|)
 condition|)
 block|{
+name|node
+operator|=
+literal|null
+expr_stmt|;
 return|return
 literal|false
 return|;
@@ -513,33 +505,31 @@ name|currentPath
 argument_list|)
 expr_stmt|;
 block|}
+name|node
+operator|=
+name|pathAndNodeMap
+operator|.
+name|get
+argument_list|(
+name|this
+operator|.
+name|path
+argument_list|)
+expr_stmt|;
 return|return
 literal|true
 return|;
 block|}
-comment|//    private boolean pathExists() throws Exception {
-comment|//        while (!PathUtils.denotesRoot(path)) {
-comment|//            readParentNode(revisionId, branchId);
-comment|//            if (parentNode == null || !childExists()) {
-comment|//                return false;
-comment|//            }
-comment|//            path = PathUtils.getParentPath(path);
-comment|//        }
-comment|//
-comment|//        return true;
-comment|//    }
-comment|//
-comment|//    private void readParentNode(Long revisionId, String branchId) throws Exception {
-comment|//        String parentPath = PathUtils.getParentPath(path);
-comment|//        GetNodesCommand command = new GetNodesCommand(nodeStore, parentPath, revisionId);
-comment|//        command.setBranchId(branchId);
-comment|//        parentNode = command.execute();
-comment|//    }
-comment|//
-comment|//    private boolean childExists() {
-comment|//        String childName = PathUtils.getName(path);
-comment|//        return parentNode.getChildNodeEntry(childName) != null;
-comment|//    }
+comment|/**      * After {@link NodeExistsCommand} executed, this method can be used to access      * the node with the path.      *      * @return Node or null if it does not exist.      */
+specifier|public
+name|MongoNode
+name|getNode
+parameter_list|()
+block|{
+return|return
+name|node
+return|;
+block|}
 block|}
 end_class
 
