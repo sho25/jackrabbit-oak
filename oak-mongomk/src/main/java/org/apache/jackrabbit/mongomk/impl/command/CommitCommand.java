@@ -531,16 +531,16 @@ literal|1
 expr_stmt|;
 name|logger
 operator|.
-name|debug
+name|info
 argument_list|(
-literal|"Trying to commit: {} @rev{}"
+literal|"Committing @{} with diff: {}"
+argument_list|,
+name|revisionId
 argument_list|,
 name|commit
 operator|.
 name|getDiff
 argument_list|()
-argument_list|,
-name|revisionId
 argument_list|)
 expr_stmt|;
 name|readValidCommits
@@ -598,6 +598,15 @@ operator|!
 name|success
 condition|)
 do|;
+name|logger
+operator|.
+name|info
+argument_list|(
+literal|"Commit @{}: success"
+argument_list|,
+name|revisionId
+argument_list|)
+expr_stmt|;
 return|return
 name|revisionId
 return|;
@@ -1482,11 +1491,9 @@ name|String
 operator|.
 name|format
 argument_list|(
-literal|"Encountered a concurrent conflicting update"
+literal|"Commit @%s: failed due to a conflicting commit."
 operator|+
-literal|", thus can't commit revision %s with affected paths %s."
-operator|+
-literal|" Retry with a new revision."
+literal|" Affected paths: %s"
 argument_list|,
 name|revisionId
 argument_list|,
@@ -1520,11 +1527,9 @@ name|logger
 operator|.
 name|warn
 argument_list|(
-literal|"Encountered a concurrent but non-conflicting update"
+literal|"Commit @{}: failed due to a conflicting commit."
 operator|+
-literal|", thus can't commit revision {} with affected paths {}."
-operator|+
-literal|" Retry with a new revision."
+literal|" Affected paths: {}"
 argument_list|,
 name|revisionId
 argument_list|,
