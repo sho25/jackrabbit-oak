@@ -73,16 +73,6 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Ignore
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
 name|Test
 import|;
 end_import
@@ -94,12 +84,7 @@ name|NodeTypeTest
 extends|extends
 name|AbstractRepositoryTest
 block|{
-comment|/**      * Add a node to a node type that does not accept child nodes      * FIXME OAK-479      */
-annotation|@
-name|Ignore
-argument_list|(
-literal|"OAK-479"
-argument_list|)
+comment|/**      * Add a node to a node type that does not accept child nodes      * See OAK-479      */
 annotation|@
 name|Test
 argument_list|(

@@ -1506,6 +1506,23 @@ decl_stmt|;
 if|if
 condition|(
 name|definition
+operator|==
+literal|null
+condition|)
+block|{
+throw|throw
+operator|new
+name|ConstraintViolationException
+argument_list|(
+literal|"No matching node definition found for "
+operator|+
+name|name
+argument_list|)
+throw|;
+block|}
+if|if
+condition|(
+name|definition
 operator|.
 name|isProtected
 argument_list|()
@@ -1563,6 +1580,23 @@ argument_list|,
 name|nodeType
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|definition
+operator|==
+literal|null
+condition|)
+block|{
+throw|throw
+operator|new
+name|ConstraintViolationException
+argument_list|(
+literal|"No matching node definition found for "
+operator|+
+name|name
+argument_list|)
+throw|;
+block|}
 if|if
 condition|(
 name|definition
@@ -1857,8 +1891,6 @@ parameter_list|,
 name|NodeType
 name|nodeType
 parameter_list|)
-throws|throws
-name|RepositoryException
 block|{
 comment|// FIXME: ugly hack to workaround sns-hack that was used to map sns-item definitions with node types.
 name|String
@@ -1935,7 +1967,7 @@ block|}
 return|return
 name|ntm
 operator|.
-name|getDefinition
+name|getDefinitionOrNull
 argument_list|(
 name|allTypes
 argument_list|,
