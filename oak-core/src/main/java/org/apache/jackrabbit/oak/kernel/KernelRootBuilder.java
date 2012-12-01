@@ -375,6 +375,7 @@ name|CopyAndMoveAwareJsopDiff
 extends|extends
 name|JsopDiff
 block|{
+comment|// FIXME this does currently not work. See OAK-463, OAK464
 specifier|private
 specifier|final
 name|Map
