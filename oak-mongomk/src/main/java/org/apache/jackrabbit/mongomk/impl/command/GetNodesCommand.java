@@ -794,8 +794,6 @@ name|nodeStore
 argument_list|,
 name|path
 argument_list|,
-literal|true
-argument_list|,
 name|revisionId
 argument_list|)
 decl_stmt|;
@@ -836,17 +834,13 @@ block|{
 name|boolean
 name|verified
 init|=
-literal|false
-decl_stmt|;
-name|verified
-operator|=
 name|verifyNodeHierarchyRec
 argument_list|(
 name|path
 argument_list|,
 literal|0
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 if|if
 condition|(
 operator|!
@@ -857,16 +851,11 @@ name|LOG
 operator|.
 name|error
 argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"Node hierarchy could not be verified because"
+literal|"Node hierarchy could not be verified because some nodes"
 operator|+
-literal|" some nodes were inconsistent: %s"
+literal|" were inconsistent: {}"
 argument_list|,
 name|path
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -1008,11 +997,6 @@ name|boolean
 name|verifyProblematicNodes
 parameter_list|()
 block|{
-name|boolean
-name|verified
-init|=
-literal|true
-decl_stmt|;
 for|for
 control|(
 name|Map
@@ -1078,19 +1062,13 @@ argument_list|()
 argument_list|)
 condition|)
 block|{
-name|verified
-operator|=
-literal|false
-expr_stmt|;
 name|LOG
 operator|.
 name|error
 argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"Node could not be verified because the expected revisionId did not match: %d (expected) vs %d (actual)"
+literal|"Node could not be verified because revisionIds"
+operator|+
+literal|" did not match: {} (expected) vs {} (actual)"
 argument_list|,
 name|revisionId
 argument_list|,
@@ -1099,14 +1077,15 @@ operator|.
 name|getRevisionId
 argument_list|()
 argument_list|)
-argument_list|)
 expr_stmt|;
-break|break;
+return|return
+literal|false
+return|;
 block|}
 block|}
 block|}
 return|return
-name|verified
+literal|true
 return|;
 block|}
 block|}

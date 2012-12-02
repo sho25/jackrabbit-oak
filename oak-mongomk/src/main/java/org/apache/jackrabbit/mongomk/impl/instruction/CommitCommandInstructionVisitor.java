@@ -851,8 +851,6 @@ name|nodeStore
 argument_list|,
 name|srcPath
 argument_list|,
-literal|true
-argument_list|,
 name|headRevisionId
 argument_list|)
 operator|.
@@ -1126,8 +1124,6 @@ argument_list|(
 name|nodeStore
 argument_list|,
 name|srcPath
-argument_list|,
-literal|true
 argument_list|,
 name|headRevisionId
 argument_list|)

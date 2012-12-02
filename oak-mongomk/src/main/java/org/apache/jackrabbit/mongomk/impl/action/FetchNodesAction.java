@@ -286,11 +286,7 @@ name|depth
 init|=
 name|LIMITLESS_DEPTH
 decl_stmt|;
-specifier|private
-name|boolean
-name|fetchDescendants
-decl_stmt|;
-comment|/**      * Constructs a new {@code FetchNodesAction} to fetch a node and optionally      * its descendants under the specified path.      *      * @param nodeStore Node store.      * @param path The path.      * @param fetchDescendants Determines whether the descendants of the path      * will be fetched as well.      * @param revisionId The revision id.      */
+comment|/**      * Constructs a new {@code FetchNodesAction} to fetch a node and optionally      * its descendants under the specified path.      *      * @param nodeStore Node store.      * @param path The path.      * @param revisionId The revision id.      */
 specifier|public
 name|FetchNodesAction
 parameter_list|(
@@ -299,9 +295,6 @@ name|nodeStore
 parameter_list|,
 name|String
 name|path
-parameter_list|,
-name|boolean
-name|fetchDescendants
 parameter_list|,
 name|long
 name|revisionId
@@ -327,12 +320,6 @@ name|add
 argument_list|(
 name|path
 argument_list|)
-expr_stmt|;
-name|this
-operator|.
-name|fetchDescendants
-operator|=
-name|fetchDescendants
 expr_stmt|;
 name|this
 operator|.
@@ -523,11 +510,6 @@ index|[
 literal|0
 index|]
 decl_stmt|;
-if|if
-condition|(
-name|fetchDescendants
-condition|)
-block|{
 name|Pattern
 name|pattern
 init|=
@@ -545,19 +527,6 @@ argument_list|(
 name|pattern
 argument_list|)
 expr_stmt|;
-block|}
-else|else
-block|{
-name|queryBuilder
-operator|=
-name|queryBuilder
-operator|.
-name|is
-argument_list|(
-name|path
-argument_list|)
-expr_stmt|;
-block|}
 block|}
 if|if
 condition|(
@@ -704,6 +673,20 @@ argument_list|)
 expr_stmt|;
 block|}
 name|DBObject
+name|orderBy
+init|=
+operator|new
+name|BasicDBObject
+argument_list|(
+name|MongoCommit
+operator|.
+name|KEY_REVISION_ID
+argument_list|,
+operator|-
+literal|1
+argument_list|)
+decl_stmt|;
+name|DBObject
 name|query
 init|=
 name|queryBuilder
@@ -729,6 +712,11 @@ operator|.
 name|find
 argument_list|(
 name|query
+argument_list|)
+operator|.
+name|sort
+argument_list|(
+name|orderBy
 argument_list|)
 return|;
 block|}
@@ -1016,78 +1004,33 @@ argument_list|)
 expr_stmt|;
 continue|continue;
 block|}
-name|MongoNode
-name|existingNodeMongo
-init|=
-name|nodeMongos
-operator|.
-name|get
-argument_list|(
-name|path
-argument_list|)
-decl_stmt|;
+comment|// This assumes that revision ids are ordered and nodes were fetched
+comment|// in sorted order.
 if|if
 condition|(
-name|existingNodeMongo
-operator|!=
-literal|null
-condition|)
-block|{
-name|long
-name|existingRevId
-init|=
-name|existingNodeMongo
-operator|.
-name|getRevisionId
-argument_list|()
-decl_stmt|;
-if|if
-condition|(
-name|revisionId
-operator|>
-name|existingRevId
-condition|)
-block|{
 name|nodeMongos
 operator|.
-name|put
+name|containsKey
 argument_list|(
 name|path
-argument_list|,
-name|nodeMongo
 argument_list|)
-expr_stmt|;
-name|LOG
-operator|.
-name|debug
-argument_list|(
-literal|"Converted nodes was put into map and replaced {} ({})"
-argument_list|,
-name|path
-argument_list|,
-name|revisionId
-argument_list|)
-expr_stmt|;
-block|}
-else|else
+condition|)
 block|{
 name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Converted nodes was not put into map because a newer version"
+literal|"Converted nodes @{} with path {} was not put into map"
 operator|+
-literal|" is available {} ({})"
-argument_list|,
-name|path
+literal|" because a newer version is available"
 argument_list|,
 name|revisionId
+argument_list|,
+name|path
 argument_list|)
 expr_stmt|;
+continue|continue;
 block|}
-block|}
-else|else
-block|{
 name|nodeMongos
 operator|.
 name|put
@@ -1101,11 +1044,21 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Converted node was put into map"
+literal|"Converted node @{} with path {} was put into map"
+argument_list|,
+name|revisionId
+argument_list|,
+name|path
 argument_list|)
 expr_stmt|;
+comment|// This is for unordered revision ids.
+comment|/*             MongoNode existingNodeMongo = nodeMongos.get(path);             if (existingNodeMongo != null) {                 long existingRevId = existingNodeMongo.getRevisionId();                  if (revisionId> existingRevId) {                     nodeMongos.put(path, nodeMongo);                     LOG.debug("Converted nodes was put into map and replaced {} ({})", path, revisionId);                 } else {                     LOG.debug("Converted nodes was not put into map because a newer version"                             + " is available {} ({})", path, revisionId);                 }             } else {                 nodeMongos.put(path, nodeMongo);                 LOG.debug("Converted node @{} with path {} was put into map", revisionId, path);             }             */
 block|}
-block|}
+name|dbCursor
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
 return|return
 name|nodeMongos
 return|;
