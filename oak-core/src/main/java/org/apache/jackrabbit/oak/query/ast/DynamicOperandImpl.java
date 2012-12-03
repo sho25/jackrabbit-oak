@@ -105,6 +105,11 @@ return|return
 literal|true
 return|;
 block|}
+specifier|abstract
+name|int
+name|getPropertyType
+parameter_list|()
+function_decl|;
 block|}
 end_class
 

@@ -906,6 +906,16 @@ operator|==
 name|selector
 return|;
 block|}
+annotation|@
+name|Override
+name|int
+name|getPropertyType
+parameter_list|()
+block|{
+return|return
+name|propertyType
+return|;
+block|}
 block|}
 end_class
 

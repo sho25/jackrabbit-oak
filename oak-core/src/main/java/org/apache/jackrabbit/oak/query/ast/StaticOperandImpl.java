@@ -52,6 +52,11 @@ name|PropertyValue
 name|currentValue
 parameter_list|()
 function_decl|;
+specifier|abstract
+name|int
+name|getPropertyType
+parameter_list|()
+function_decl|;
 block|}
 end_class
 

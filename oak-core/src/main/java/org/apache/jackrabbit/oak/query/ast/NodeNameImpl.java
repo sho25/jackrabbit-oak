@@ -519,6 +519,18 @@ return|return
 literal|true
 return|;
 block|}
+annotation|@
+name|Override
+name|int
+name|getPropertyType
+parameter_list|()
+block|{
+return|return
+name|PropertyType
+operator|.
+name|NAME
+return|;
+block|}
 block|}
 end_class
 

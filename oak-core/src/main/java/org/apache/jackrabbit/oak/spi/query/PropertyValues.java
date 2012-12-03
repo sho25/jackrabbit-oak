@@ -1398,18 +1398,87 @@ name|UnsupportedOperationException
 name|e
 parameter_list|)
 block|{
-comment|// TODO detect unsupported conversions, so that no exception is
-comment|// thrown
-comment|// because exceptions are slow
-return|return
-literal|null
-return|;
-comment|// throw new IllegalArgumentException("<unsupported conversion of "
-comment|// +
-comment|// v + " (" + PropertyType.nameFromValue(v.getType()) + ") to type "
-comment|// +
-comment|// PropertyType.nameFromValue(targetType) + ">");
+throw|throw
+operator|new
+name|IllegalArgumentException
+argument_list|(
+literal|"Unsupported conversion from type "
+operator|+
+name|value
+operator|+
+literal|" ("
+operator|+
+name|PropertyType
+operator|.
+name|nameFromValue
+argument_list|(
+name|value
+operator|.
+name|getType
+argument_list|()
+operator|.
+name|tag
+argument_list|()
+argument_list|)
+operator|+
+literal|") to type "
+operator|+
+name|PropertyType
+operator|.
+name|nameFromValue
+argument_list|(
+name|targetType
+argument_list|)
+argument_list|)
+throw|;
 block|}
+block|}
+specifier|public
+specifier|static
+name|boolean
+name|canConvert
+parameter_list|(
+name|int
+name|sourceType
+parameter_list|,
+name|int
+name|targetType
+parameter_list|)
+block|{
+comment|// TODO support full set of conversion features defined in the JCR spec
+comment|// at 3.6.4 Property Type Conversion
+switch|switch
+condition|(
+name|sourceType
+condition|)
+block|{
+case|case
+name|PropertyType
+operator|.
+name|WEAKREFERENCE
+case|:
+case|case
+name|PropertyType
+operator|.
+name|REFERENCE
+case|:
+if|if
+condition|(
+name|targetType
+operator|==
+name|PropertyType
+operator|.
+name|NAME
+condition|)
+block|{
+return|return
+literal|false
+return|;
+block|}
+block|}
+return|return
+literal|true
+return|;
 block|}
 specifier|public
 specifier|static

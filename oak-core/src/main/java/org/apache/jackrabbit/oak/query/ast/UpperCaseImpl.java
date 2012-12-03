@@ -21,6 +21,16 @@ end_package
 
 begin_import
 import|import
+name|javax
+operator|.
+name|jcr
+operator|.
+name|PropertyType
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -259,6 +269,18 @@ name|canRestrictSelector
 argument_list|(
 name|s
 argument_list|)
+return|;
+block|}
+annotation|@
+name|Override
+name|int
+name|getPropertyType
+parameter_list|()
+block|{
+return|return
+name|PropertyType
+operator|.
+name|STRING
 return|;
 block|}
 block|}

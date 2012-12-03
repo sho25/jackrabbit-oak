@@ -346,6 +346,18 @@ name|s
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
+name|int
+name|getPropertyType
+parameter_list|()
+block|{
+return|return
+name|PropertyType
+operator|.
+name|LONG
+return|;
+block|}
 block|}
 end_class
 
