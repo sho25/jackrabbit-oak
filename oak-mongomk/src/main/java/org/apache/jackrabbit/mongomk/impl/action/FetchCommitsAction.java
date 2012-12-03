@@ -649,6 +649,11 @@ name|commitMongo
 argument_list|)
 expr_stmt|;
 block|}
+name|dbCursor
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
 name|List
 argument_list|<
 name|MongoCommit

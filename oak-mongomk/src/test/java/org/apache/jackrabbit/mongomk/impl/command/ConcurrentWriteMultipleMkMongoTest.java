@@ -176,14 +176,14 @@ annotation|@
 name|Test
 specifier|public
 name|void
-name|testHundredNodes
+name|testSmall
 parameter_list|()
 throws|throws
 name|Exception
 block|{
 name|doTest
 argument_list|(
-literal|100
+literal|1000
 argument_list|)
 expr_stmt|;
 block|}
@@ -194,14 +194,14 @@ name|Ignore
 comment|// Ignored only because it takes a while to complete.
 specifier|public
 name|void
-name|testThousandNodes
+name|testLarge
 parameter_list|()
 throws|throws
 name|Exception
 block|{
 name|doTest
 argument_list|(
-literal|1000
+literal|10000
 argument_list|)
 expr_stmt|;
 block|}
