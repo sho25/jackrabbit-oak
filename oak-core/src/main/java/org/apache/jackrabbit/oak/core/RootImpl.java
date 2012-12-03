@@ -1481,6 +1481,9 @@ name|BlobFactory
 name|getBlobFactory
 parameter_list|()
 block|{
+name|checkLive
+argument_list|()
+expr_stmt|;
 return|return
 operator|new
 name|BlobFactory
