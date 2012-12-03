@@ -240,6 +240,34 @@ range|:
 name|definitions
 control|)
 block|{
+if|if
+condition|(
+name|privilegesNode
+operator|.
+name|hasChild
+argument_list|(
+name|definition
+operator|.
+name|getName
+argument_list|()
+argument_list|)
+condition|)
+block|{
+throw|throw
+operator|new
+name|RepositoryException
+argument_list|(
+literal|"Privilege definition with name '"
+operator|+
+name|definition
+operator|.
+name|getName
+argument_list|()
+operator|+
+literal|"' already exists."
+argument_list|)
+throw|;
+block|}
 name|writePrivilegeNode
 argument_list|(
 name|privilegesNode
@@ -309,8 +337,6 @@ parameter_list|,
 name|PrivilegeDefinition
 name|definition
 parameter_list|)
-throws|throws
-name|RepositoryException
 block|{
 name|String
 name|name
@@ -320,31 +346,6 @@ operator|.
 name|getName
 argument_list|()
 decl_stmt|;
-if|if
-condition|(
-name|privilegesNode
-operator|.
-name|hasChild
-argument_list|(
-name|definition
-operator|.
-name|getName
-argument_list|()
-argument_list|)
-condition|)
-block|{
-throw|throw
-operator|new
-name|RepositoryException
-argument_list|(
-literal|"Privilege definition with name '"
-operator|+
-name|name
-operator|+
-literal|"' already exists."
-argument_list|)
-throw|;
-block|}
 name|NodeUtil
 name|privNode
 init|=
