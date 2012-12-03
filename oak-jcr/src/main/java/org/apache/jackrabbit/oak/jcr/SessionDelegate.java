@@ -668,8 +668,6 @@ parameter_list|,
 name|boolean
 name|autoRefresh
 parameter_list|)
-throws|throws
-name|RepositoryException
 block|{
 name|this
 operator|.
@@ -1974,8 +1972,6 @@ name|root
 argument_list|,
 name|getNamePathMapper
 argument_list|()
-argument_list|,
-name|session
 argument_list|)
 expr_stmt|;
 block|}

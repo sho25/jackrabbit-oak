@@ -979,13 +979,13 @@ condition|(
 name|isWorkspaceImport
 condition|)
 block|{
+comment|// use a separate user manager that is not associated with
+comment|// transient session modifications.
 name|userManager
 operator|=
 operator|new
 name|UserManagerImpl
 argument_list|(
-literal|null
-argument_list|,
 name|root
 argument_list|,
 name|namePathMapper
@@ -1002,25 +1002,6 @@ return|;
 block|}
 else|else
 block|{
-if|if
-condition|(
-name|session
-operator|!=
-name|impl
-operator|.
-name|getSession
-argument_list|()
-condition|)
-block|{
-name|log
-operator|.
-name|warn
-argument_list|(
-literal|"Session import cannot handle user content: different session used by UserManager instance."
-argument_list|)
-expr_stmt|;
-block|}
-elseif|else
 if|if
 condition|(
 name|impl

@@ -707,28 +707,6 @@ parameter_list|()
 throws|throws
 name|RepositoryException
 block|{
-name|Node
-name|n
-init|=
-name|getNode
-argument_list|()
-decl_stmt|;
-if|if
-condition|(
-name|n
-operator|!=
-literal|null
-condition|)
-block|{
-return|return
-name|n
-operator|.
-name|getPath
-argument_list|()
-return|;
-block|}
-else|else
-block|{
 return|return
 name|userManager
 operator|.
@@ -744,7 +722,6 @@ name|getPath
 argument_list|()
 argument_list|)
 return|;
-block|}
 block|}
 comment|//-------------------------------------------------------------< Object>---
 annotation|@
@@ -762,8 +739,6 @@ literal|0
 condition|)
 block|{
 comment|// FIXME: add proper hash-code generation taking repo/workspace/tree-identifier into account
-comment|//            try {
-comment|//                Node node = getNode();
 name|StringBuilder
 name|sb
 init|=
@@ -783,7 +758,6 @@ else|:
 literal|"user:"
 argument_list|)
 expr_stmt|;
-comment|//sb.append(node.getSession().getWorkspace().getName());
 name|sb
 operator|.
 name|append
@@ -808,9 +782,6 @@ operator|.
 name|hashCode
 argument_list|()
 expr_stmt|;
-comment|//            } catch (RepositoryException e) {
-comment|//                log.warn("Error while calculating hash code.",e.getMessage());
-comment|//            }
 block|}
 return|return
 name|hashCode
@@ -1013,37 +984,6 @@ argument_list|(
 name|getPrincipalName
 argument_list|()
 argument_list|)
-return|;
-block|}
-comment|/**      * @return The node associated with this authorizable instance.      * @throws javax.jcr.RepositoryException      */
-annotation|@
-name|CheckForNull
-specifier|private
-name|Node
-name|getNode
-parameter_list|()
-throws|throws
-name|RepositoryException
-block|{
-if|if
-condition|(
-name|node
-operator|==
-literal|null
-condition|)
-block|{
-name|node
-operator|=
-name|userManager
-operator|.
-name|getAuthorizableNode
-argument_list|(
-name|id
-argument_list|)
-expr_stmt|;
-block|}
-return|return
-name|node
 return|;
 block|}
 comment|/**      * Retrieve authorizable properties for property related operations.      *      * @return      * @throws RepositoryException      */
