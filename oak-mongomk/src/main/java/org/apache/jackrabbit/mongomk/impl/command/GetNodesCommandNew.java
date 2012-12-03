@@ -573,6 +573,8 @@ name|nodeStore
 argument_list|,
 name|path
 argument_list|,
+name|depth
+argument_list|,
 name|revisionId
 argument_list|)
 decl_stmt|;
@@ -581,13 +583,6 @@ operator|.
 name|setBranchId
 argument_list|(
 name|branchId
-argument_list|)
-expr_stmt|;
-name|query
-operator|.
-name|setDepth
-argument_list|(
-name|depth
 argument_list|)
 expr_stmt|;
 name|pathAndNodeMap

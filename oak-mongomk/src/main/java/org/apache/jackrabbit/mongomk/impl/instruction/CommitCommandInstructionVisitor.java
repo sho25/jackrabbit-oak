@@ -851,6 +851,10 @@ name|nodeStore
 argument_list|,
 name|srcPath
 argument_list|,
+name|FetchNodesActionNew
+operator|.
+name|LIMITLESS_DEPTH
+argument_list|,
 name|headRevisionId
 argument_list|)
 operator|.
@@ -1124,6 +1128,10 @@ argument_list|(
 name|nodeStore
 argument_list|,
 name|srcPath
+argument_list|,
+name|FetchNodesActionNew
+operator|.
+name|LIMITLESS_DEPTH
 argument_list|,
 name|headRevisionId
 argument_list|)

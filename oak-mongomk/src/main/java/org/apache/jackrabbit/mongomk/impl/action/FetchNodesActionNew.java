@@ -261,7 +261,7 @@ name|depth
 init|=
 name|LIMITLESS_DEPTH
 decl_stmt|;
-comment|/**      * Constructs a new {@code FetchNodesAction} to fetch a node and optionally      * its descendants under the specified path.      *      * @param nodeStore Node store.      * @param path The path.      * @param revisionId The revision id.      */
+comment|/**      * Constructs a new {@code FetchNodesAction} to fetch a node and optionally      * its descendants under the specified path.      *      * @param nodeStore Node store.      * @param path The path.      * @param depth The depth.      * @param revisionId The revision id.      */
 specifier|public
 name|FetchNodesActionNew
 parameter_list|(
@@ -270,6 +270,9 @@ name|nodeStore
 parameter_list|,
 name|String
 name|path
+parameter_list|,
+name|int
+name|depth
 parameter_list|,
 name|long
 name|revisionId
@@ -295,6 +298,12 @@ name|add
 argument_list|(
 name|path
 argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|depth
+operator|=
+name|depth
 expr_stmt|;
 name|this
 operator|.
@@ -352,22 +361,6 @@ operator|.
 name|branchId
 operator|=
 name|branchId
-expr_stmt|;
-block|}
-comment|/**      * Sets the depth for the command. Only used when fetchDescendants is enabled.      *      * @param depth The depth for the command or -1 for limitless depth.      */
-specifier|public
-name|void
-name|setDepth
-parameter_list|(
-name|int
-name|depth
-parameter_list|)
-block|{
-name|this
-operator|.
-name|depth
-operator|=
-name|depth
 expr_stmt|;
 block|}
 annotation|@
