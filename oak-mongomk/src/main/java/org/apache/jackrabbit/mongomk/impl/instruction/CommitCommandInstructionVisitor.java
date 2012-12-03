@@ -209,7 +209,7 @@ name|impl
 operator|.
 name|action
 operator|.
-name|FetchNodesAction
+name|FetchNodesActionNew
 import|;
 end_import
 
@@ -845,7 +845,7 @@ argument_list|>
 name|nodesToCopy
 init|=
 operator|new
-name|FetchNodesAction
+name|FetchNodesActionNew
 argument_list|(
 name|nodeStore
 argument_list|,
@@ -1119,7 +1119,7 @@ argument_list|>
 name|nodesToCopy
 init|=
 operator|new
-name|FetchNodesAction
+name|FetchNodesActionNew
 argument_list|(
 name|nodeStore
 argument_list|,

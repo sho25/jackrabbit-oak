@@ -147,7 +147,7 @@ name|impl
 operator|.
 name|command
 operator|.
-name|CommitCommand
+name|CommitCommandNew
 import|;
 end_import
 
@@ -237,7 +237,7 @@ name|impl
 operator|.
 name|command
 operator|.
-name|GetNodesCommand
+name|GetNodesCommandNew
 import|;
 end_import
 
@@ -535,7 +535,7 @@ argument_list|>
 name|command
 init|=
 operator|new
-name|CommitCommand
+name|CommitCommandNew
 argument_list|(
 name|this
 argument_list|,
@@ -675,11 +675,11 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
-name|GetNodesCommand
+name|GetNodesCommandNew
 name|command
 init|=
 operator|new
-name|GetNodesCommand
+name|GetNodesCommandNew
 argument_list|(
 name|this
 argument_list|,

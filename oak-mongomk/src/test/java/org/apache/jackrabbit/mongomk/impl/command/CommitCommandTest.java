@@ -185,11 +185,11 @@ argument_list|,
 literal|null
 argument_list|)
 decl_stmt|;
-name|CommitCommand
+name|CommitCommandNew
 name|command
 init|=
 operator|new
-name|CommitCommand
+name|CommitCommandNew
 argument_list|(
 name|getNodeStore
 argument_list|()

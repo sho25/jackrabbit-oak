@@ -67,7 +67,7 @@ name|impl
 operator|.
 name|command
 operator|.
-name|CommitCommand
+name|CommitCommandNew
 import|;
 end_import
 
@@ -142,7 +142,7 @@ argument_list|)
 decl_stmt|;
 return|return
 operator|new
-name|CommitCommand
+name|CommitCommandNew
 argument_list|(
 name|nodeStore
 argument_list|,
@@ -206,7 +206,7 @@ decl_stmt|;
 name|revisionId
 operator|=
 operator|new
-name|CommitCommand
+name|CommitCommandNew
 argument_list|(
 name|nodeStore
 argument_list|,
@@ -244,7 +244,7 @@ argument_list|)
 decl_stmt|;
 return|return
 operator|new
-name|CommitCommand
+name|CommitCommandNew
 argument_list|(
 name|nodeStore
 argument_list|,
@@ -278,7 +278,7 @@ argument_list|)
 decl_stmt|;
 return|return
 operator|new
-name|CommitCommand
+name|CommitCommandNew
 argument_list|(
 name|nodeStore
 argument_list|,
@@ -357,7 +357,7 @@ argument_list|)
 decl_stmt|;
 return|return
 operator|new
-name|CommitCommand
+name|CommitCommandNew
 argument_list|(
 name|nodeStore
 argument_list|,

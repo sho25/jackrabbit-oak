@@ -89,7 +89,7 @@ name|impl
 operator|.
 name|action
 operator|.
-name|FetchNodesAction
+name|FetchNodesActionNew
 import|;
 end_import
 
@@ -384,11 +384,11 @@ name|execute
 argument_list|()
 expr_stmt|;
 block|}
-name|FetchNodesAction
+name|FetchNodesActionNew
 name|action
 init|=
 operator|new
-name|FetchNodesAction
+name|FetchNodesActionNew
 argument_list|(
 name|nodeStore
 argument_list|,
@@ -404,13 +404,7 @@ argument_list|(
 name|branchId
 argument_list|)
 expr_stmt|;
-name|action
-operator|.
-name|setValidCommits
-argument_list|(
-name|validCommits
-argument_list|)
-expr_stmt|;
+comment|//action.setValidCommits(validCommits);
 name|Map
 argument_list|<
 name|String

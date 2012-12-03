@@ -204,7 +204,7 @@ operator|-
 literal|1
 argument_list|)
 decl_stmt|;
-name|CommitCommand
+name|CommitCommandNew
 name|cmd1
 init|=
 operator|new
@@ -227,7 +227,7 @@ argument_list|,
 name|latch
 argument_list|)
 decl_stmt|;
-name|CommitCommand
+name|CommitCommandNew
 name|cmd2
 init|=
 operator|new
@@ -375,7 +375,7 @@ operator|-
 literal|1
 argument_list|)
 decl_stmt|;
-name|CommitCommand
+name|CommitCommandNew
 name|cmd1
 init|=
 operator|new
@@ -398,7 +398,7 @@ argument_list|,
 name|latch
 argument_list|)
 decl_stmt|;
-name|CommitCommand
+name|CommitCommandNew
 name|cmd2
 init|=
 operator|new
@@ -565,7 +565,7 @@ operator|-
 literal|1
 argument_list|)
 decl_stmt|;
-name|CommitCommand
+name|CommitCommandNew
 name|cmd1
 init|=
 operator|new
@@ -588,7 +588,7 @@ argument_list|,
 name|latch
 argument_list|)
 decl_stmt|;
-name|CommitCommand
+name|CommitCommandNew
 name|cmd2
 init|=
 operator|new
@@ -611,7 +611,7 @@ argument_list|,
 name|latch
 argument_list|)
 decl_stmt|;
-name|CommitCommand
+name|CommitCommandNew
 name|cmd3
 init|=
 operator|new
@@ -787,7 +787,7 @@ operator|-
 literal|1
 argument_list|)
 decl_stmt|;
-name|CommitCommand
+name|CommitCommandNew
 name|cmd1
 init|=
 operator|new
@@ -810,7 +810,7 @@ argument_list|,
 name|latch
 argument_list|)
 decl_stmt|;
-name|CommitCommand
+name|CommitCommandNew
 name|cmd2
 init|=
 operator|new
@@ -833,7 +833,7 @@ argument_list|,
 name|latch
 argument_list|)
 decl_stmt|;
-name|CommitCommand
+name|CommitCommandNew
 name|cmd3
 init|=
 operator|new
@@ -957,7 +957,7 @@ specifier|static
 class|class
 name|WaitingCommitCommand
 extends|extends
-name|CommitCommand
+name|CommitCommandNew
 block|{
 specifier|private
 specifier|final
@@ -1037,7 +1037,7 @@ specifier|static
 class|class
 name|NotifyingCommitCommand
 extends|extends
-name|CommitCommand
+name|CommitCommandNew
 block|{
 specifier|private
 specifier|final
@@ -1132,13 +1132,13 @@ argument_list|>
 block|{
 specifier|private
 specifier|final
-name|CommitCommand
+name|CommitCommandNew
 name|command
 decl_stmt|;
 specifier|public
 name|CommitCallable
 parameter_list|(
-name|CommitCommand
+name|CommitCommandNew
 name|command
 parameter_list|)
 block|{
