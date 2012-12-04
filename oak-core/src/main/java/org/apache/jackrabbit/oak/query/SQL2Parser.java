@@ -1308,14 +1308,13 @@ name|selector1
 argument_list|,
 name|selector2
 argument_list|,
-name|readAbsolutePath
+name|readPath
 argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
 else|else
 block|{
-comment|// TODO verify "." is correct
 name|c
 operator|=
 name|factory
