@@ -367,26 +367,6 @@ name|LoggerFactory
 import|;
 end_import
 
-begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|plugins
-operator|.
-name|nodetype
-operator|.
-name|NodeTypeConstants
-operator|.
-name|NODE_TYPES_PATH
-import|;
-end_import
-
 begin_comment
 comment|/**  * Oak level implementation of the internal {@code AuthorizableProperties} that  * is used in those cases where no {@code Session} is associated with the  * {@code UserManager} and only OAK API methods can be used to read and  * modify authorizable properties.  */
 end_comment
@@ -470,27 +450,12 @@ name|this
 operator|.
 name|nodeTypeManager
 operator|=
-operator|new
 name|ReadOnlyNodeTypeManager
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|protected
-name|Tree
-name|getTypes
-parameter_list|()
-block|{
-return|return
-name|root
 operator|.
-name|getTree
+name|getInstance
 argument_list|(
-name|NODE_TYPES_PATH
+name|root
 argument_list|)
-return|;
-block|}
-block|}
 expr_stmt|;
 block|}
 comment|//---------------------------------------------< AuthorizableProperties>---

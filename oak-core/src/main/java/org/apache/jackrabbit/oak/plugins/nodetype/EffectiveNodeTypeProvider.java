@@ -47,6 +47,18 @@ name|jcr
 operator|.
 name|nodetype
 operator|.
+name|NoSuchNodeTypeException
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|jcr
+operator|.
+name|nodetype
+operator|.
 name|NodeType
 import|;
 end_import
@@ -76,7 +88,22 @@ specifier|public
 interface|interface
 name|EffectiveNodeTypeProvider
 block|{
-comment|/**      * FIXME in contrast what the method name implies this method returns the transitive closure of the super types      * TODO clarify contract, what is the difference between this method and NodeType.getSuperTypes()      * Calculates and returns all effective node types of the given node.      *      * @param targetNode the node for which the types should be calculated.      * @return all types of the given node      * @throws RepositoryException if the type information can not be accessed      */
+comment|/**      * Returns {@code true} if this tree is of the specified primary node      * type or mixin type, or a subtype thereof respecting the effective node      * type of the {@code tree}. Returns {@code false} otherwise.      *      * @param tree The tree to be tested.      * @param nodeTypeName The name of the node type to be tested.      * @return true if the specified node is of the given node type.      * @throws NoSuchNodeTypeException If the specified node type name doesn't      * refer to an existing node type.      * @throws RepositoryException If the given node type name is invalid or if      * some other error occurs.      */
+name|boolean
+name|isNodeType
+parameter_list|(
+name|Tree
+name|tree
+parameter_list|,
+name|String
+name|nodeTypeName
+parameter_list|)
+throws|throws
+name|NoSuchNodeTypeException
+throws|,
+name|RepositoryException
+function_decl|;
+comment|/**      * Calculates and returns all effective node types of the given node.      *      * @param targetNode the node for which the types should be calculated.      * @return all types of the given node      * @throws RepositoryException if the type information can not be accessed      * @see<a href="http://www.jcp.org/en/jsr/detail?id=283">JCR 2.0 Specification,      * Section 3.7.6.5</a> for the definition of the effective node type.      */
 name|Iterable
 argument_list|<
 name|NodeType
@@ -89,7 +116,7 @@ parameter_list|)
 throws|throws
 name|RepositoryException
 function_decl|;
-comment|/**      * FIXME in contrast what the method name implies this method returns the transitive closure of the super types      * TODO clarify contract, what is the difference between this method and NodeType.getSuperTypes()      * Calculates and returns all effective node types of the given tree.      *      * @param tree      * @return all node types of the given tree      * @throws RepositoryException if the type information can not be accessed      */
+comment|/**      * Calculates and returns all effective node types of the given tree.      *      * @param tree      * @return all node types of the given tree      * @throws RepositoryException if the type information can not be accessed,      * @see<a href="http://www.jcp.org/en/jsr/detail?id=283">JCR 2.0 Specification,      * Section 3.7.6.5</a> for the definition of the effective node type.      */
 name|Iterable
 argument_list|<
 name|NodeType
