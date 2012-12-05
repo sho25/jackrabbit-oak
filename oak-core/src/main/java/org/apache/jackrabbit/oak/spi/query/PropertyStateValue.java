@@ -161,6 +161,8 @@ operator|=
 name|ps
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isArray
@@ -173,6 +175,8 @@ name|isArray
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 annotation|@
 name|Nonnull
 specifier|public
@@ -190,6 +194,8 @@ name|getType
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 annotation|@
 name|Nonnull
 specifier|public
@@ -215,6 +221,8 @@ name|type
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 annotation|@
 name|Nonnull
 specifier|public
@@ -245,6 +253,8 @@ name|index
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|long
 name|size
@@ -257,6 +267,8 @@ name|size
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|long
 name|size
@@ -274,6 +286,8 @@ name|index
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|int
 name|count
@@ -329,14 +343,14 @@ name|Integer
 operator|.
 name|signum
 argument_list|(
+name|p2
+operator|.
 name|getType
 argument_list|()
 operator|.
 name|tag
 argument_list|()
 operator|-
-name|p2
-operator|.
 name|getType
 argument_list|()
 operator|.
