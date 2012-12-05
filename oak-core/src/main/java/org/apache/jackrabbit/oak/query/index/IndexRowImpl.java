@@ -29,11 +29,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|spi
+name|api
 operator|.
-name|query
-operator|.
-name|IndexRow
+name|PropertyValue
 import|;
 end_import
 
@@ -51,7 +49,7 @@ name|spi
 operator|.
 name|query
 operator|.
-name|PropertyStateValue
+name|IndexRow
 import|;
 end_import
 
@@ -99,7 +97,7 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|PropertyStateValue
+name|PropertyValue
 name|getValue
 parameter_list|(
 name|String
