@@ -4143,16 +4143,6 @@ block|{
 name|checkStatus
 argument_list|()
 expr_stmt|;
-name|String
-name|oakName
-init|=
-name|sessionDelegate
-operator|.
-name|getOakNameOrThrow
-argument_list|(
-name|nodeTypeName
-argument_list|)
-decl_stmt|;
 return|return
 name|sessionDelegate
 operator|.
@@ -4166,7 +4156,7 @@ operator|.
 name|getTree
 argument_list|()
 argument_list|,
-name|oakName
+name|nodeTypeName
 argument_list|)
 return|;
 block|}
