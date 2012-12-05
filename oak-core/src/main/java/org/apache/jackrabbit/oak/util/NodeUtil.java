@@ -554,6 +554,17 @@ block|}
 annotation|@
 name|Nonnull
 specifier|public
+name|NameMapper
+name|getNameMapper
+parameter_list|()
+block|{
+return|return
+name|mapper
+return|;
+block|}
+annotation|@
+name|Nonnull
+specifier|public
 name|Tree
 name|getTree
 parameter_list|()
