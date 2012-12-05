@@ -409,6 +409,20 @@ argument_list|)
 decl_stmt|;
 name|index
 operator|.
+name|setProperty
+argument_list|(
+name|JcrConstants
+operator|.
+name|JCR_PRIMARYTYPE
+argument_list|,
+name|JcrConstants
+operator|.
+name|NT_UNSTRUCTURED
+argument_list|)
+expr_stmt|;
+comment|// TODO: use proper node type
+name|index
+operator|.
 name|child
 argument_list|(
 literal|"uuid"
