@@ -539,20 +539,6 @@ name|apache
 operator|.
 name|jackrabbit
 operator|.
-name|JcrConstants
-operator|.
-name|NT_UNSTRUCTURED
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
 name|oak
 operator|.
 name|api
@@ -1452,25 +1438,20 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|log
-operator|.
-name|warn
+throw|throw
+operator|new
+name|RepositoryException
 argument_list|(
-literal|"Item at {} has no primary type. Assuming nt:unstructured"
-argument_list|,
+literal|"Node at "
+operator|+
 name|tree
 operator|.
 name|getPath
 argument_list|()
+operator|+
+literal|" has no primary type."
 argument_list|)
-expr_stmt|;
-name|primaryType
-operator|=
-name|getNodeType
-argument_list|(
-name|NT_UNSTRUCTURED
-argument_list|)
-expr_stmt|;
+throw|;
 block|}
 name|queue
 operator|.

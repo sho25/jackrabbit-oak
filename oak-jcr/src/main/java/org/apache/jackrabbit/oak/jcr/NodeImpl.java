@@ -3940,7 +3940,6 @@ parameter_list|()
 throws|throws
 name|RepositoryException
 block|{
-comment|// TODO: check if transient changes to mixin-types are reflected here
 name|NodeTypeManager
 name|ntMgr
 init|=
@@ -3952,15 +3951,18 @@ decl_stmt|;
 name|String
 name|primaryNtName
 decl_stmt|;
-name|primaryNtName
-operator|=
+if|if
+condition|(
 name|hasProperty
 argument_list|(
 name|Property
 operator|.
 name|JCR_PRIMARY_TYPE
 argument_list|)
-condition|?
+condition|)
+block|{
+name|primaryNtName
+operator|=
 name|getProperty
 argument_list|(
 name|Property
@@ -3970,11 +3972,23 @@ argument_list|)
 operator|.
 name|getString
 argument_list|()
-else|:
-name|NodeType
-operator|.
-name|NT_UNSTRUCTURED
 expr_stmt|;
+block|}
+else|else
+block|{
+throw|throw
+operator|new
+name|RepositoryException
+argument_list|(
+literal|"Node "
+operator|+
+name|getPath
+argument_list|()
+operator|+
+literal|" doesn't have primary type set."
+argument_list|)
+throw|;
+block|}
 return|return
 name|ntMgr
 operator|.
