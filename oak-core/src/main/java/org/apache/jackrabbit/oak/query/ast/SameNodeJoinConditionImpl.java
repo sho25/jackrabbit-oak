@@ -363,6 +363,13 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
+name|p2
+operator|!=
+literal|null
+condition|)
+block|{
+if|if
+condition|(
 name|selector2Path
 operator|.
 name|equals
@@ -415,6 +422,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+block|}
 if|if
 condition|(
 name|f
@@ -423,6 +431,21 @@ name|getSelector
 argument_list|()
 operator|==
 name|selector2
+condition|)
+block|{
+name|String
+name|p1
+init|=
+name|selector1
+operator|.
+name|currentPath
+argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|p1
+operator|!=
+literal|null
 condition|)
 block|{
 if|if
@@ -435,14 +458,6 @@ literal|"."
 argument_list|)
 condition|)
 block|{
-name|String
-name|p1
-init|=
-name|selector1
-operator|.
-name|currentPath
-argument_list|()
-decl_stmt|;
 name|f
 operator|.
 name|restrictPath
@@ -460,6 +475,7 @@ block|}
 else|else
 block|{
 comment|// TODO normalize paths; support relative path (".." and so on)
+block|}
 block|}
 block|}
 block|}
