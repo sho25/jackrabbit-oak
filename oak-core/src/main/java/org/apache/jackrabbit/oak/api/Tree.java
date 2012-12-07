@@ -207,6 +207,8 @@ comment|/**      * Set a property state      * @param property  The property sta
 name|void
 name|setProperty
 parameter_list|(
+annotation|@
+name|Nonnull
 name|PropertyState
 name|property
 parameter_list|)
@@ -221,6 +223,8 @@ parameter_list|(
 name|String
 name|name
 parameter_list|,
+annotation|@
+name|Nonnull
 name|T
 name|value
 parameter_list|)
@@ -235,6 +239,8 @@ parameter_list|(
 name|String
 name|name
 parameter_list|,
+annotation|@
+name|Nonnull
 name|T
 name|value
 parameter_list|,
