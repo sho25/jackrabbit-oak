@@ -111,20 +111,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|security
-operator|.
-name|auth
-operator|.
-name|login
-operator|.
-name|Configuration
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -136,22 +122,6 @@ operator|.
 name|core
 operator|.
 name|MicroKernelImpl
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|security
-operator|.
-name|OakConfiguration
 import|;
 end_import
 
@@ -202,22 +172,10 @@ parameter_list|(
 name|Properties
 name|settings
 parameter_list|)
-throws|throws
-name|RepositoryException
 block|{
 name|super
 argument_list|(
 name|settings
-argument_list|)
-expr_stmt|;
-comment|// TODO: OAK-17. workaround for missing test configuration
-name|Configuration
-operator|.
-name|setConfiguration
-argument_list|(
-operator|new
-name|OakConfiguration
-argument_list|()
 argument_list|)
 expr_stmt|;
 name|String

@@ -230,16 +230,6 @@ operator|.
 name|createContentRepository
 argument_list|()
 expr_stmt|;
-comment|// TODO: OAK-17. workaround for missing test configuration
-name|Configuration
-operator|.
-name|setConfiguration
-argument_list|(
-operator|new
-name|OakConfiguration
-argument_list|()
-argument_list|)
-expr_stmt|;
 name|admin
 operator|=
 name|login
