@@ -132,6 +132,8 @@ argument_list|(
 literal|"Could not get JCR prefix for OAK prefix "
 operator|+
 name|oakPrefix
+argument_list|,
+name|e
 argument_list|)
 expr_stmt|;
 return|return
@@ -196,6 +198,8 @@ argument_list|(
 literal|"Could not get OAK prefix for JCR prefix "
 operator|+
 name|jcrPrefix
+argument_list|,
+name|e
 argument_list|)
 expr_stmt|;
 return|return
@@ -247,6 +251,8 @@ argument_list|(
 literal|"Could not get OAK prefix for URI "
 operator|+
 name|uri
+argument_list|,
+name|e
 argument_list|)
 expr_stmt|;
 return|return
