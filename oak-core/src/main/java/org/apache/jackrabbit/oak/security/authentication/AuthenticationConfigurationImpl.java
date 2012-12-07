@@ -383,6 +383,8 @@ argument_list|)
 decl_stmt|;
 name|Configuration
 name|loginConfig
+init|=
+literal|null
 decl_stmt|;
 try|try
 block|{
@@ -393,6 +395,34 @@ operator|.
 name|getConfiguration
 argument_list|()
 expr_stmt|;
+if|if
+condition|(
+name|loginConfig
+operator|.
+name|getAppConfigurationEntry
+argument_list|(
+name|appName
+argument_list|)
+operator|==
+literal|null
+condition|)
+block|{
+name|log
+operator|.
+name|warn
+argument_list|(
+literal|"No login configuration available for "
+operator|+
+name|appName
+operator|+
+literal|": using default."
+argument_list|)
+expr_stmt|;
+name|loginConfig
+operator|=
+literal|null
+expr_stmt|;
+block|}
 block|}
 catch|catch
 parameter_list|(
@@ -409,6 +439,14 @@ argument_list|,
 name|e
 argument_list|)
 expr_stmt|;
+block|}
+if|if
+condition|(
+name|loginConfig
+operator|==
+literal|null
+condition|)
+block|{
 name|loginConfig
 operator|=
 operator|new
@@ -418,13 +456,6 @@ name|options
 argument_list|)
 expr_stmt|;
 comment|// TODO: define configuration structure
-name|Configuration
-operator|.
-name|setConfiguration
-argument_list|(
-name|loginConfig
-argument_list|)
-expr_stmt|;
 block|}
 return|return
 operator|new
