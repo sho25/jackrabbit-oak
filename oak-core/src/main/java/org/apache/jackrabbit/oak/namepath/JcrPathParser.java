@@ -1159,6 +1159,9 @@ operator|new
 name|Listener
 argument_list|()
 block|{
+name|int
+name|depth
+decl_stmt|;
 name|boolean
 name|hasRoot
 decl_stmt|;
@@ -1207,8 +1210,16 @@ name|boolean
 name|parent
 parameter_list|()
 block|{
+name|depth
+operator|--
+expr_stmt|;
 return|return
-literal|true
+operator|!
+name|hasRoot
+operator|||
+name|depth
+operator|>=
+literal|0
 return|;
 block|}
 annotation|@
@@ -1234,6 +1245,9 @@ name|int
 name|index
 parameter_list|)
 block|{
+name|depth
+operator|++
+expr_stmt|;
 return|return
 literal|true
 return|;
