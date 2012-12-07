@@ -1745,7 +1745,10 @@ name|getPrivateAttributes
 parameter_list|()
 block|{
 return|return
-literal|null
+name|Collections
+operator|.
+name|emptyMap
+argument_list|()
 return|;
 block|}
 annotation|@
@@ -1763,7 +1766,10 @@ name|getPublicAttributes
 parameter_list|()
 block|{
 return|return
-literal|null
+name|Collections
+operator|.
+name|emptyMap
+argument_list|()
 return|;
 block|}
 block|}

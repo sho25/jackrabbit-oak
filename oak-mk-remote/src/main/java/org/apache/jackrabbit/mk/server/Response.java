@@ -441,13 +441,6 @@ literal|"Connection: Close"
 argument_list|)
 expr_stmt|;
 block|}
-if|if
-condition|(
-name|headers
-operator|!=
-literal|null
-condition|)
-block|{
 for|for
 control|(
 name|Map
@@ -486,7 +479,6 @@ argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 name|writeLine
 argument_list|(
