@@ -78,14 +78,14 @@ name|String
 name|path
 parameter_list|)
 function_decl|;
-comment|/**      * Get a tree location for a given absolute {@code path}      *      * @param path absolute path to the location      * @return the tree location for {@code path}      */
+comment|/**      * Get a tree location for from {@code pathResolver}      *      * @param pathResolver for the path to the location      * @return the tree location for {@code pathResolver}      */
 annotation|@
 name|Nonnull
 name|TreeLocation
 name|getLocation
 parameter_list|(
-name|String
-name|path
+name|PathResolver
+name|pathResolver
 parameter_list|)
 function_decl|;
 comment|/**      * Rebase this root instance to the latest revision. After a call to this method,      * all trees obtained through {@link #getTree(String)} become invalid and fresh      * instances must be obtained.      */

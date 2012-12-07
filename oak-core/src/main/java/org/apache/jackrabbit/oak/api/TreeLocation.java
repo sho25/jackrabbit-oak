@@ -86,13 +86,32 @@ return|;
 block|}
 comment|/**          * @return  {@code NULL}          */
 annotation|@
+name|Nonnull
+annotation|@
 name|Override
 specifier|public
 name|TreeLocation
 name|getChild
 parameter_list|(
 name|String
-name|relPath
+name|name
+parameter_list|)
+block|{
+return|return
+name|NULL
+return|;
+block|}
+comment|/**          * @return  {@code NULL}          */
+annotation|@
+name|Nonnull
+annotation|@
+name|Override
+specifier|public
+name|TreeLocation
+name|getLocation
+parameter_list|(
+name|PathResolver
+name|pathResolver
 parameter_list|)
 block|{
 return|return
@@ -156,14 +175,24 @@ name|TreeLocation
 name|getParent
 parameter_list|()
 function_decl|;
-comment|/**      * Navigate to a child through a relative path. A relative path consists of a      * possibly empty lists of names separated by forward slashes.      * @param relPath  relative path to the child      * @return  a {@code TreeLocation} for a child with the given {@code name}.      */
+comment|/**      * Retrieve the child location with the given name.      * @param name  name of the child      * @return  a {@code TreeLocation} for a child with the given {@code name}.      */
 annotation|@
 name|Nonnull
 name|TreeLocation
 name|getChild
 parameter_list|(
 name|String
-name|relPath
+name|name
+parameter_list|)
+function_decl|;
+comment|/**      * Navigate to a child through a {@code pathResolver}.      * @param pathResolver for the path to the location      * @return the tree location for {@code pathResolver}      */
+annotation|@
+name|Nonnull
+name|TreeLocation
+name|getLocation
+parameter_list|(
+name|PathResolver
+name|pathResolver
 parameter_list|)
 function_decl|;
 comment|/**      * Get the underlying {@link org.apache.jackrabbit.oak.api.Tree} for this {@code TreeLocation}.      * @return  underlying {@code Tree} instance or {@code null} if not available.      */
