@@ -524,7 +524,7 @@ literal|1
 expr_stmt|;
 name|logger
 operator|.
-name|info
+name|debug
 argument_list|(
 literal|"Committing @{} with diff: {}"
 argument_list|,
@@ -590,7 +590,7 @@ condition|)
 do|;
 name|logger
 operator|.
-name|info
+name|debug
 argument_list|(
 literal|"Commit @{}: success"
 argument_list|,
