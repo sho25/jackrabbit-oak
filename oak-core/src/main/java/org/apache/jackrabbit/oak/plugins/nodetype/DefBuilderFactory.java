@@ -97,7 +97,7 @@ name|oak
 operator|.
 name|namepath
 operator|.
-name|NameMapperImpl
+name|IdentityNameMapper
 import|;
 end_import
 
@@ -184,7 +184,7 @@ operator|new
 name|NodeTypeTemplateImpl
 argument_list|(
 operator|new
-name|NameMapperImpl
+name|IdentityNameMapper
 argument_list|(
 name|root
 argument_list|)
