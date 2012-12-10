@@ -1894,6 +1894,7 @@ name|CommitFailedException
 name|e
 parameter_list|)
 block|{
+comment|// TODO ignore exception - is this a hack?
 name|LOG
 operator|.
 name|error

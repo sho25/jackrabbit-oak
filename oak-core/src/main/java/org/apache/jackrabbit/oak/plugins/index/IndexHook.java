@@ -64,7 +64,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Represents the content of a QueryIndex as well as a mechanism for keeping  * this content up to date.  *   */
+comment|/**  * Represents the content of a QueryIndex as well as a mechanism for keeping  * this content up to date.  *<p>  * An IndexHook listens for changes to the content and updates the index data  * accordingly.  */
 end_comment
 
 begin_interface
@@ -86,6 +86,7 @@ parameter_list|()
 throws|throws
 name|CommitFailedException
 function_decl|;
+comment|/**      * Re-create this index.      *       * @param state the parent of the node "oak:index" (the node that contains the index definition)      * @throws CommitFailedException      */
 name|void
 name|reindex
 parameter_list|(
