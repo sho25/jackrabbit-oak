@@ -786,6 +786,8 @@ init|=
 name|getStoredNode
 argument_list|(
 name|srcParentPath
+argument_list|,
+literal|false
 argument_list|)
 decl_stmt|;
 if|if
@@ -935,6 +937,8 @@ init|=
 name|getStoredNode
 argument_list|(
 name|srcPath
+argument_list|,
+literal|false
 argument_list|)
 decl_stmt|;
 name|MongoNode
@@ -953,15 +957,6 @@ name|destNode
 argument_list|)
 expr_stmt|;
 comment|// Finally, add to destParent.
-name|pathNodeMap
-operator|.
-name|put
-argument_list|(
-name|destPath
-argument_list|,
-name|destNode
-argument_list|)
-expr_stmt|;
 name|destParent
 operator|.
 name|addChild
@@ -1213,6 +1208,8 @@ init|=
 name|getStoredNode
 argument_list|(
 name|srcPath
+argument_list|,
+literal|false
 argument_list|)
 decl_stmt|;
 name|MongoNode
@@ -1231,11 +1228,6 @@ name|destNode
 argument_list|)
 expr_stmt|;
 comment|// Finally, add to destParent and remove from srcParent.
-name|getStagedNode
-argument_list|(
-name|destPath
-argument_list|)
-expr_stmt|;
 name|destParent
 operator|.
 name|addChild
@@ -1341,6 +1333,26 @@ name|String
 name|path
 parameter_list|)
 block|{
+return|return
+name|getStoredNode
+argument_list|(
+name|path
+argument_list|,
+literal|true
+argument_list|)
+return|;
+block|}
+specifier|private
+name|MongoNode
+name|getStoredNode
+parameter_list|(
+name|String
+name|path
+parameter_list|,
+name|boolean
+name|addToMap
+parameter_list|)
+block|{
 name|MongoNode
 name|node
 init|=
@@ -1381,13 +1393,6 @@ operator|.
 name|setBranchId
 argument_list|(
 name|branchId
-argument_list|)
-expr_stmt|;
-name|existCommand
-operator|.
-name|setValidCommits
-argument_list|(
-name|validCommits
 argument_list|)
 expr_stmt|;
 name|boolean
@@ -1443,6 +1448,11 @@ argument_list|(
 literal|"_id"
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|addToMap
+condition|)
+block|{
 name|pathNodeMap
 operator|.
 name|put
@@ -1452,6 +1462,7 @@ argument_list|,
 name|node
 argument_list|)
 expr_stmt|;
+block|}
 return|return
 name|node
 return|;
