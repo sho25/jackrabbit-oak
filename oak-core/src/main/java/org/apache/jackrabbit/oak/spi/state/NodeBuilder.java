@@ -135,6 +135,8 @@ name|name
 parameter_list|)
 function_decl|;
 comment|/**      * Returns the names of current child nodes.      *      * @return child node names      */
+annotation|@
+name|Nonnull
 name|Iterable
 argument_list|<
 name|String
@@ -173,6 +175,8 @@ name|getPropertyCount
 parameter_list|()
 function_decl|;
 comment|/**      * Returns the current properties.      *      * @return current properties      */
+annotation|@
+name|Nonnull
 name|Iterable
 argument_list|<
 name|?
@@ -183,6 +187,8 @@ name|getProperties
 parameter_list|()
 function_decl|;
 comment|/**      * Returns the current state of the named property, or {@code null}      * if the property is not set.      *      * @param name property name      * @return property state      */
+annotation|@
+name|CheckForNull
 name|PropertyState
 name|getProperty
 parameter_list|(
@@ -191,6 +197,8 @@ name|name
 parameter_list|)
 function_decl|;
 comment|/**      * Set a property state      * @param property  The property state to set      * @return this builder      */
+annotation|@
+name|Nonnull
 name|NodeBuilder
 name|setProperty
 parameter_list|(
@@ -201,9 +209,11 @@ name|property
 parameter_list|)
 function_decl|;
 comment|/**      * Set a property state      * @param name  The name of this property      * @param value  The value of this property      * @param<T>  The type of this property. Must be one of {@code String, Blob, byte[], Long, Integer, Double, Boolean, BigDecimal}      * @throws IllegalArgumentException if {@code T} is not one of the above types.      *      * @param name  name of the property      * @return this builder      */
-parameter_list|<
+annotation|@
+name|Nonnull
+argument_list|<
 name|T
-parameter_list|>
+argument_list|>
 name|NodeBuilder
 name|setProperty
 parameter_list|(
@@ -217,9 +227,11 @@ name|value
 parameter_list|)
 function_decl|;
 comment|/**      * Set a property state      * @param name  The name of this property      * @param value  The value of this property      * @param<T>  The type of this property.      * @return this builder      */
-parameter_list|<
+annotation|@
+name|Nonnull
+argument_list|<
 name|T
-parameter_list|>
+argument_list|>
 name|NodeBuilder
 name|setProperty
 parameter_list|(
