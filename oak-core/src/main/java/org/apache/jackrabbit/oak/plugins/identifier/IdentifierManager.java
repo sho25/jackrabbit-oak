@@ -511,6 +511,10 @@ operator|.
 name|getInstance
 argument_list|(
 name|root
+argument_list|,
+name|NamePathMapper
+operator|.
+name|DEFAULT
 argument_list|)
 expr_stmt|;
 block|}
