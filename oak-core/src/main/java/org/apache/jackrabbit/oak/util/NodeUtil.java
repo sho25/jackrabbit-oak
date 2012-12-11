@@ -471,24 +471,6 @@ name|STRINGS
 import|;
 end_import
 
-begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|namepath
-operator|.
-name|PathResolvers
-operator|.
-name|dotResolver
-import|;
-end_import
-
 begin_comment
 comment|/**  * Utility class for accessing and writing typed content of a tree.  */
 end_comment
@@ -786,7 +768,7 @@ name|primaryTypeName
 argument_list|)
 return|;
 block|}
-comment|/**      * FIXME: this might add a node at a parent where a property of the same name already exists.      * FIXME: does probably no work as intended      * rootNode.getOrAddTree("a/b/../../c/d/../../e/f", "");      * adds the three sub trees /a/b, /c/d and /e/f.      */
+comment|/**      * FIXME: workaround for OAK-426      * FIXME: does probably no work as intended      * rootNode.getOrAddTree("a/b/../../c/d/../../e/f", "");      * adds the three sub trees /a/b, /c/d and /e/f.      */
 annotation|@
 name|Nonnull
 specifier|public
@@ -827,17 +809,16 @@ block|{
 name|TreeLocation
 name|location
 init|=
+name|LocationUtil
+operator|.
+name|getTreeLocation
+argument_list|(
 name|tree
 operator|.
 name|getLocation
 argument_list|()
-operator|.
-name|getLocation
-argument_list|(
-name|dotResolver
-argument_list|(
+argument_list|,
 name|relativePath
-argument_list|)
 argument_list|)
 decl_stmt|;
 if|if

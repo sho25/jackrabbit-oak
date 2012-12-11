@@ -545,11 +545,11 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|plugins
+name|spi
 operator|.
-name|value
+name|security
 operator|.
-name|ValueFactoryImpl
+name|SecurityProvider
 import|;
 end_import
 
@@ -563,11 +563,11 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|spi
+name|plugins
 operator|.
-name|security
+name|value
 operator|.
-name|SecurityProvider
+name|ValueFactoryImpl
 import|;
 end_import
 
@@ -618,24 +618,6 @@ operator|.
 name|Preconditions
 operator|.
 name|checkNotNull
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|namepath
-operator|.
-name|PathResolvers
-operator|.
-name|dotResolver
 import|;
 end_import
 
@@ -1204,6 +1186,8 @@ block|{
 name|TreeLocation
 name|location
 init|=
+name|root
+operator|.
 name|getLocation
 argument_list|(
 name|path
@@ -2016,10 +2000,7 @@ name|root
 operator|.
 name|getLocation
 argument_list|(
-name|dotResolver
-argument_list|(
 name|path
-argument_list|)
 argument_list|)
 return|;
 block|}

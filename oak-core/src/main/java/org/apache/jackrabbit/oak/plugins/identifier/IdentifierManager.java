@@ -455,24 +455,6 @@ name|STRING
 import|;
 end_import
 
-begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|namepath
-operator|.
-name|PathResolvers
-operator|.
-name|identity
-import|;
-end_import
-
 begin_comment
 comment|/**  * IdentifierManager...  */
 end_comment
@@ -1232,10 +1214,7 @@ name|root
 operator|.
 name|getLocation
 argument_list|(
-name|identity
-argument_list|(
 name|path
-argument_list|)
 argument_list|)
 decl_stmt|;
 name|Tree

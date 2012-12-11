@@ -1878,8 +1878,20 @@ name|String
 argument_list|>
 argument_list|()
 decl_stmt|;
-comment|//        invalidPaths.add("../");  // FIXME: these paths are valid on JR2
-comment|//        invalidPaths.add("../../");
+name|invalidPaths
+operator|.
+name|add
+argument_list|(
+literal|"../"
+argument_list|)
+expr_stmt|;
+name|invalidPaths
+operator|.
+name|add
+argument_list|(
+literal|"../../"
+argument_list|)
+expr_stmt|;
 name|invalidPaths
 operator|.
 name|add
