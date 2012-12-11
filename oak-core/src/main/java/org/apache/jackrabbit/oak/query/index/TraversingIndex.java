@@ -146,7 +146,7 @@ name|Filter
 name|filter
 parameter_list|,
 name|NodeState
-name|root
+name|rootState
 parameter_list|)
 block|{
 return|return
@@ -156,7 +156,7 @@ name|newTraversingCursor
 argument_list|(
 name|filter
 argument_list|,
-name|root
+name|rootState
 argument_list|)
 return|;
 block|}
@@ -170,7 +170,7 @@ name|Filter
 name|filter
 parameter_list|,
 name|NodeState
-name|root
+name|rootState
 parameter_list|)
 block|{
 name|String
@@ -239,7 +239,7 @@ name|Filter
 name|filter
 parameter_list|,
 name|NodeState
-name|root
+name|rootState
 parameter_list|)
 block|{
 name|String

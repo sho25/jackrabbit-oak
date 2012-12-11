@@ -142,7 +142,7 @@ decl_stmt|;
 specifier|protected
 specifier|final
 name|NodeState
-name|root
+name|rootState
 decl_stmt|;
 name|ResultImpl
 parameter_list|(
@@ -150,7 +150,7 @@ name|Query
 name|query
 parameter_list|,
 name|NodeState
-name|root
+name|rootState
 parameter_list|)
 block|{
 name|this
@@ -161,9 +161,9 @@ name|query
 expr_stmt|;
 name|this
 operator|.
-name|root
+name|rootState
 operator|=
-name|root
+name|rootState
 expr_stmt|;
 block|}
 annotation|@
@@ -335,7 +335,7 @@ name|query
 operator|.
 name|getRows
 argument_list|(
-name|root
+name|rootState
 argument_list|)
 return|;
 block|}

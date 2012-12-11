@@ -101,7 +101,7 @@ name|end
 decl_stmt|;
 specifier|private
 name|NodeState
-name|root
+name|rootState
 decl_stmt|;
 specifier|public
 name|JoinImpl
@@ -196,7 +196,7 @@ name|String
 name|getPlan
 parameter_list|(
 name|NodeState
-name|root
+name|rootState
 parameter_list|)
 block|{
 return|return
@@ -204,7 +204,7 @@ name|left
 operator|.
 name|getPlan
 argument_list|(
-name|root
+name|rootState
 argument_list|)
 operator|+
 literal|' '
@@ -217,7 +217,7 @@ name|right
 operator|.
 name|getPlan
 argument_list|(
-name|root
+name|rootState
 argument_list|)
 operator|+
 literal|" on "
@@ -461,14 +461,14 @@ name|void
 name|execute
 parameter_list|(
 name|NodeState
-name|root
+name|rootState
 parameter_list|)
 block|{
 name|this
 operator|.
-name|root
+name|rootState
 operator|=
-name|root
+name|rootState
 expr_stmt|;
 name|leftNeedExecute
 operator|=
@@ -504,7 +504,7 @@ name|left
 operator|.
 name|execute
 argument_list|(
-name|root
+name|rootState
 argument_list|)
 expr_stmt|;
 name|leftNeedExecute
@@ -561,7 +561,7 @@ name|right
 operator|.
 name|execute
 argument_list|(
-name|root
+name|rootState
 argument_list|)
 expr_stmt|;
 name|foundJoinedRow

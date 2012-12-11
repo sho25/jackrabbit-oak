@@ -550,7 +550,7 @@ name|void
 name|execute
 parameter_list|(
 name|NodeState
-name|root
+name|rootState
 parameter_list|)
 block|{
 name|cursor
@@ -562,7 +562,7 @@ argument_list|(
 name|createFilter
 argument_list|()
 argument_list|,
-name|root
+name|rootState
 argument_list|)
 expr_stmt|;
 block|}
@@ -573,7 +573,7 @@ name|String
 name|getPlan
 parameter_list|(
 name|NodeState
-name|root
+name|rootState
 parameter_list|)
 block|{
 name|StringBuilder
@@ -607,7 +607,7 @@ argument_list|(
 name|createFilter
 argument_list|()
 argument_list|,
-name|root
+name|rootState
 argument_list|)
 argument_list|)
 expr_stmt|;

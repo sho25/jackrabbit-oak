@@ -850,7 +850,7 @@ name|prepared
 decl_stmt|;
 specifier|private
 name|Root
-name|root
+name|rootTree
 decl_stmt|;
 specifier|private
 name|NamePathMapper
@@ -1694,7 +1694,7 @@ name|ResultImpl
 name|executeQuery
 parameter_list|(
 name|NodeState
-name|root
+name|rootState
 parameter_list|)
 block|{
 return|return
@@ -1703,7 +1703,7 @@ name|ResultImpl
 argument_list|(
 name|this
 argument_list|,
-name|root
+name|rootState
 argument_list|)
 return|;
 block|}
@@ -1714,7 +1714,7 @@ argument_list|>
 name|getRows
 parameter_list|(
 name|NodeState
-name|root
+name|rootState
 parameter_list|)
 block|{
 name|prepare
@@ -1738,7 +1738,7 @@ name|source
 operator|.
 name|getPlan
 argument_list|(
-name|root
+name|rootState
 argument_list|)
 decl_stmt|;
 name|columns
@@ -1820,7 +1820,7 @@ name|source
 operator|.
 name|getPlan
 argument_list|(
-name|root
+name|rootState
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1838,7 +1838,7 @@ operator|=
 operator|new
 name|RowIterator
 argument_list|(
-name|root
+name|rootState
 argument_list|,
 name|limit
 argument_list|,
@@ -1854,7 +1854,7 @@ operator|=
 operator|new
 name|RowIterator
 argument_list|(
-name|root
+name|rootState
 argument_list|,
 name|Long
 operator|.
@@ -2447,7 +2447,7 @@ block|{
 specifier|private
 specifier|final
 name|NodeState
-name|root
+name|rootState
 decl_stmt|;
 specifier|private
 name|ResultRowImpl
@@ -2470,7 +2470,7 @@ decl_stmt|;
 name|RowIterator
 parameter_list|(
 name|NodeState
-name|root
+name|rootState
 parameter_list|,
 name|long
 name|limit
@@ -2481,9 +2481,9 @@ parameter_list|)
 block|{
 name|this
 operator|.
-name|root
+name|rootState
 operator|=
-name|root
+name|rootState
 expr_stmt|;
 name|this
 operator|.
@@ -2533,7 +2533,7 @@ name|source
 operator|.
 name|execute
 argument_list|(
-name|root
+name|rootState
 argument_list|)
 expr_stmt|;
 name|started
@@ -3105,17 +3105,17 @@ return|;
 block|}
 specifier|public
 name|void
-name|setRoot
+name|setRootTree
 parameter_list|(
 name|Root
-name|root
+name|rootTree
 parameter_list|)
 block|{
 name|this
 operator|.
-name|root
+name|rootTree
 operator|=
-name|root
+name|rootTree
 expr_stmt|;
 block|}
 specifier|public
@@ -3151,7 +3151,7 @@ name|path
 parameter_list|)
 block|{
 return|return
-name|root
+name|rootTree
 operator|.
 name|getTree
 argument_list|(

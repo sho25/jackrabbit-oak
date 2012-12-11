@@ -232,14 +232,14 @@ return|return
 name|s
 return|;
 block|}
-comment|/**      * Get the query plan.      *      * @param root the root      * @return the query plan      */
+comment|/**      * Get the query plan.      *      * @param rootState the root      * @return the query plan      */
 specifier|public
 specifier|abstract
 name|String
 name|getPlan
 parameter_list|(
 name|NodeState
-name|root
+name|rootState
 parameter_list|)
 function_decl|;
 comment|/**      * Prepare executing the query. This method will decide which index to use.      *      */
@@ -249,14 +249,14 @@ name|void
 name|prepare
 parameter_list|()
 function_decl|;
-comment|/**      * Execute the query. The current node is set to before the first row.      *      * @param root root state of the given revision      */
+comment|/**      * Execute the query. The current node is set to before the first row.      *      * @param rootState root state of the given revision      */
 specifier|public
 specifier|abstract
 name|void
 name|execute
 parameter_list|(
 name|NodeState
-name|root
+name|rootState
 parameter_list|)
 function_decl|;
 comment|/**      * Go to the next node for the given source. This will also filter the      * result for the right node type if required.      *      * @return true if there is a next row      */

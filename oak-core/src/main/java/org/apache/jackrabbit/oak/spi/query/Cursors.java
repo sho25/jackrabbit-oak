@@ -285,7 +285,7 @@ name|paths
 argument_list|)
 return|;
 block|}
-comment|/**      * Returns a traversing cursor based on the path restriction in the given      * {@link Filter}.      *      * @param filter    the filter.      * @param root      the root {@link NodeState}.      * @return the {@link Cursor}.      */
+comment|/**      * Returns a traversing cursor based on the path restriction in the given      * {@link Filter}.      *      * @param filter    the filter.      * @param rootState      the root {@link NodeState}.      * @return the {@link Cursor}.      */
 specifier|public
 specifier|static
 name|Cursor
@@ -295,7 +295,7 @@ name|Filter
 name|filter
 parameter_list|,
 name|NodeState
-name|root
+name|rootState
 parameter_list|)
 block|{
 return|return
@@ -304,7 +304,7 @@ name|TraversingCursor
 argument_list|(
 name|filter
 argument_list|,
-name|root
+name|rootState
 argument_list|)
 return|;
 block|}
@@ -488,7 +488,7 @@ name|Filter
 name|filter
 parameter_list|,
 name|NodeState
-name|root
+name|rootState
 parameter_list|)
 block|{
 name|this
@@ -521,7 +521,7 @@ decl_stmt|;
 name|NodeState
 name|node
 init|=
-name|root
+name|rootState
 decl_stmt|;
 if|if
 condition|(

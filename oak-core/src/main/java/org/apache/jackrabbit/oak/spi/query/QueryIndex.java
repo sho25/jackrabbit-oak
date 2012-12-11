@@ -46,7 +46,7 @@ specifier|public
 interface|interface
 name|QueryIndex
 block|{
-comment|/**      * Estimate the cost to query with the given filter. The returned      * cost is a value between 1 (very fast; lookup of a unique node) and the      * estimated number of nodes to traverse.      *      * @param filter the filter      * @param root root state of the current repository snapshot      * @return the estimated cost in number of read nodes      */
+comment|/**      * Estimate the cost to query with the given filter. The returned      * cost is a value between 1 (very fast; lookup of a unique node) and the      * estimated number of nodes to traverse.      *      * @param filter the filter      * @param rootState root state of the current repository snapshot      * @return the estimated cost in number of read nodes      */
 name|double
 name|getCost
 parameter_list|(
@@ -54,10 +54,10 @@ name|Filter
 name|filter
 parameter_list|,
 name|NodeState
-name|root
+name|rootState
 parameter_list|)
 function_decl|;
-comment|/**      * Start a query.      *      * @param filter the filter      * @param root root state of the current repository snapshot      * @return a cursor to iterate over the result      */
+comment|/**      * Start a query.      *      * @param filter the filter      * @param rootState root state of the current repository snapshot      * @return a cursor to iterate over the result      */
 name|Cursor
 name|query
 parameter_list|(
@@ -65,10 +65,10 @@ name|Filter
 name|filter
 parameter_list|,
 name|NodeState
-name|root
+name|rootState
 parameter_list|)
 function_decl|;
-comment|/**      * Get the query plan for the given filter.      *      * @param filter the filter      * @param root root state of the current repository snapshot      * @return the query plan      */
+comment|/**      * Get the query plan for the given filter.      *      * @param filter the filter      * @param rootState root state of the current repository snapshot      * @return the query plan      */
 name|String
 name|getPlan
 parameter_list|(
@@ -76,7 +76,7 @@ name|Filter
 name|filter
 parameter_list|,
 name|NodeState
-name|root
+name|rootState
 parameter_list|)
 function_decl|;
 comment|/**      * Get the unique index name.      *      * @return the index name      */

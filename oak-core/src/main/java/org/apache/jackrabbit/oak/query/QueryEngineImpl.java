@@ -289,7 +289,7 @@ decl_stmt|;
 specifier|private
 specifier|final
 name|NodeState
-name|root
+name|rootState
 decl_stmt|;
 specifier|private
 specifier|final
@@ -300,7 +300,7 @@ specifier|public
 name|QueryEngineImpl
 parameter_list|(
 name|NodeState
-name|root
+name|rootState
 parameter_list|,
 name|QueryIndexProvider
 name|indexProvider
@@ -308,9 +308,9 @@ parameter_list|)
 block|{
 name|this
 operator|.
-name|root
+name|rootState
 operator|=
-name|root
+name|rootState
 expr_stmt|;
 name|this
 operator|.
@@ -657,7 +657,7 @@ argument_list|>
 name|bindings
 parameter_list|,
 name|Root
-name|root
+name|rootTree
 parameter_list|,
 name|NamePathMapper
 name|namePathMapper
@@ -677,9 +677,9 @@ argument_list|)
 decl_stmt|;
 name|q
 operator|.
-name|setRoot
+name|setRootTree
 argument_list|(
-name|root
+name|rootTree
 argument_list|)
 expr_stmt|;
 name|q
@@ -764,7 +764,7 @@ name|executeQuery
 argument_list|(
 name|this
 operator|.
-name|root
+name|rootState
 argument_list|)
 return|;
 block|}
@@ -809,7 +809,7 @@ name|getCost
 argument_list|(
 name|filter
 argument_list|,
-name|root
+name|rootState
 argument_list|)
 decl_stmt|;
 if|if
@@ -905,7 +905,7 @@ name|indexProvider
 operator|.
 name|getQueryIndexes
 argument_list|(
-name|root
+name|rootState
 argument_list|)
 return|;
 block|}
