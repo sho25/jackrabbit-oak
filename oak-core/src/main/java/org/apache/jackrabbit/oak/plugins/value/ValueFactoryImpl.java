@@ -1694,21 +1694,6 @@ name|exception
 argument_list|)
 return|;
 block|}
-comment|/**          * Error values are never equal.          * @return {@code false}          */
-annotation|@
-name|Override
-specifier|public
-name|boolean
-name|equals
-parameter_list|(
-name|Object
-name|obj
-parameter_list|)
-block|{
-return|return
-literal|false
-return|;
-block|}
 annotation|@
 name|Override
 specifier|public
