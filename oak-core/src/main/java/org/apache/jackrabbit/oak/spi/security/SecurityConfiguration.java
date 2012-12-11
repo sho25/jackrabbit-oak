@@ -131,24 +131,6 @@ name|spi
 operator|.
 name|commit
 operator|.
-name|Observer
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|spi
-operator|.
-name|commit
-operator|.
 name|ValidatorProvider
 import|;
 end_import
@@ -208,7 +190,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * PluginConfiguration... TODO  */
+comment|/**  * SecurityConfiguration... TODO  */
 end_comment
 
 begin_interface
@@ -244,15 +226,6 @@ argument_list|<
 name|ValidatorProvider
 argument_list|>
 name|getValidatorProviders
-parameter_list|()
-function_decl|;
-annotation|@
-name|Nonnull
-name|List
-argument_list|<
-name|Observer
-argument_list|>
-name|getCommitObservers
 parameter_list|()
 function_decl|;
 annotation|@
@@ -352,25 +325,6 @@ argument_list|<
 name|ValidatorProvider
 argument_list|>
 name|getValidatorProviders
-parameter_list|()
-block|{
-return|return
-name|Collections
-operator|.
-name|emptyList
-argument_list|()
-return|;
-block|}
-annotation|@
-name|Nonnull
-annotation|@
-name|Override
-specifier|public
-name|List
-argument_list|<
-name|Observer
-argument_list|>
-name|getCommitObservers
 parameter_list|()
 block|{
 return|return

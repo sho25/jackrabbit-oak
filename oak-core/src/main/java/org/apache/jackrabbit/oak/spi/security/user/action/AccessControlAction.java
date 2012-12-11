@@ -27,6 +27,16 @@ begin_import
 import|import
 name|java
 operator|.
+name|security
+operator|.
+name|Principal
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|ArrayList
@@ -73,7 +83,47 @@ name|jcr
 operator|.
 name|security
 operator|.
+name|AccessControlPolicy
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|jcr
+operator|.
+name|security
+operator|.
+name|AccessControlPolicyIterator
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|jcr
+operator|.
+name|security
+operator|.
 name|Privilege
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|api
+operator|.
+name|security
+operator|.
+name|JackrabbitAccessControlList
 import|;
 end_import
 
@@ -171,6 +221,24 @@ name|apache
 operator|.
 name|jackrabbit
 operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|security
+operator|.
+name|SecurityProvider
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
 name|util
 operator|.
 name|Text
@@ -246,6 +314,44 @@ index|[
 literal|0
 index|]
 decl_stmt|;
+specifier|private
+specifier|final
+name|SecurityProvider
+name|securityProvider
+decl_stmt|;
+name|AccessControlAction
+parameter_list|(
+name|String
+index|[]
+name|groupPrivilegeNames
+parameter_list|,
+name|String
+index|[]
+name|userPrivilegeNames
+parameter_list|,
+name|SecurityProvider
+name|securityProvider
+parameter_list|)
+block|{
+name|this
+operator|.
+name|groupPrivilegeNames
+operator|=
+name|groupPrivilegeNames
+expr_stmt|;
+name|this
+operator|.
+name|userPrivilegeNames
+operator|=
+name|userPrivilegeNames
+expr_stmt|;
+name|this
+operator|.
+name|securityProvider
+operator|=
+name|securityProvider
+expr_stmt|;
+block|}
 comment|//-------------------------------------------------< AuthorizableAction>---
 annotation|@
 name|Override
@@ -270,6 +376,8 @@ argument_list|(
 name|group
 argument_list|,
 name|root
+argument_list|,
+name|namePathMapper
 argument_list|)
 expr_stmt|;
 block|}
@@ -299,6 +407,8 @@ argument_list|(
 name|user
 argument_list|,
 name|root
+argument_list|,
+name|namePathMapper
 argument_list|)
 expr_stmt|;
 block|}
@@ -377,52 +487,200 @@ name|authorizable
 parameter_list|,
 name|Root
 name|root
+parameter_list|,
+name|NamePathMapper
+name|namePathMapper
 parameter_list|)
 throws|throws
 name|RepositoryException
 block|{
-comment|// TODO: add implementation
+name|String
+name|path
+init|=
+name|authorizable
+operator|.
+name|getPath
+argument_list|()
+decl_stmt|;
+name|AccessControlManager
+name|acMgr
+init|=
+name|securityProvider
+operator|.
+name|getAccessControlConfiguration
+argument_list|()
+operator|.
+name|getAccessControlManager
+argument_list|(
+name|root
+argument_list|,
+name|namePathMapper
+argument_list|)
+decl_stmt|;
+name|JackrabbitAccessControlList
+name|acl
+init|=
+literal|null
+decl_stmt|;
+for|for
+control|(
+name|AccessControlPolicyIterator
+name|it
+init|=
+name|acMgr
+operator|.
+name|getApplicablePolicies
+argument_list|(
+name|path
+argument_list|)
+init|;
+name|it
+operator|.
+name|hasNext
+argument_list|()
+condition|;
+control|)
+block|{
+name|AccessControlPolicy
+name|plc
+init|=
+name|it
+operator|.
+name|nextAccessControlPolicy
+argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|plc
+operator|instanceof
+name|JackrabbitAccessControlList
+condition|)
+block|{
+name|acl
+operator|=
+operator|(
+name|JackrabbitAccessControlList
+operator|)
+name|plc
+expr_stmt|;
+break|break;
+block|}
+block|}
+if|if
+condition|(
+name|acl
+operator|==
+literal|null
+condition|)
+block|{
 name|log
 operator|.
-name|error
+name|warn
 argument_list|(
-literal|"Not yet implemented"
+literal|"Cannot process AccessControlAction: no applicable ACL at "
+operator|+
+name|path
 argument_list|)
 expr_stmt|;
-comment|//        Node aNode;
-comment|//        String path = authorizable.getPath();
-comment|//
-comment|//        JackrabbitAccessControlList acl = null;
-comment|//        AccessControlManager acMgr = session.getAccessControlManager();
-comment|//        for (AccessControlPolicyIterator it = acMgr.getApplicablePolicies(path); it.hasNext();) {
-comment|//            AccessControlPolicy plc = it.nextAccessControlPolicy();
-comment|//            if (plc instanceof JackrabbitAccessControlList) {
-comment|//                acl = (JackrabbitAccessControlList) plc;
-comment|//                break;
-comment|//            }
-comment|//        }
-comment|//
-comment|//        if (acl == null) {
-comment|//            log.warn("Cannot process AccessControlAction: no applicable ACL at " + path);
-comment|//        } else {
-comment|//            // setup acl according to configuration.
-comment|//            Principal principal = authorizable.getPrincipal();
-comment|//            boolean modified = false;
-comment|//            if (authorizable.isGroup()) {
-comment|//                // new authorizable is a Group
-comment|//                if (groupPrivilegeNames.length> 0) {
-comment|//                    modified = acl.addAccessControlEntry(principal, getPrivileges(groupPrivilegeNames, acMgr));
-comment|//                }
-comment|//            } else {
-comment|//                // new authorizable is a User
-comment|//                if (userPrivilegeNames.length> 0) {
-comment|//                    modified = acl.addAccessControlEntry(principal, getPrivileges(userPrivilegeNames, acMgr));
-comment|//                }
-comment|//            }
-comment|//            if (modified) {
-comment|//                acMgr.setPolicy(path, acl);
-comment|//            }
-comment|//        }
+block|}
+else|else
+block|{
+comment|// setup acl according to configuration.
+name|Principal
+name|principal
+init|=
+name|authorizable
+operator|.
+name|getPrincipal
+argument_list|()
+decl_stmt|;
+name|boolean
+name|modified
+init|=
+literal|false
+decl_stmt|;
+if|if
+condition|(
+name|authorizable
+operator|.
+name|isGroup
+argument_list|()
+condition|)
+block|{
+comment|// new authorizable is a Group
+if|if
+condition|(
+name|groupPrivilegeNames
+operator|.
+name|length
+operator|>
+literal|0
+condition|)
+block|{
+name|modified
+operator|=
+name|acl
+operator|.
+name|addAccessControlEntry
+argument_list|(
+name|principal
+argument_list|,
+name|getPrivileges
+argument_list|(
+name|groupPrivilegeNames
+argument_list|,
+name|acMgr
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+else|else
+block|{
+comment|// new authorizable is a User
+if|if
+condition|(
+name|userPrivilegeNames
+operator|.
+name|length
+operator|>
+literal|0
+condition|)
+block|{
+name|modified
+operator|=
+name|acl
+operator|.
+name|addAccessControlEntry
+argument_list|(
+name|principal
+argument_list|,
+name|getPrivileges
+argument_list|(
+name|userPrivilegeNames
+argument_list|,
+name|acMgr
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+if|if
+condition|(
+name|modified
+condition|)
+block|{
+name|acMgr
+operator|.
+name|setPolicy
+argument_list|(
+name|path
+argument_list|,
+name|acl
+argument_list|)
+expr_stmt|;
+block|}
+block|}
 block|}
 comment|/**      * Retrieve privileges for the specified privilege names.      *      * @param privNames The privilege names.      * @param acMgr The access control manager.      * @return Array of {@code Privilege}      * @throws javax.jcr.RepositoryException If a privilege name cannot be      * resolved to a valid privilege.      */
 specifier|private

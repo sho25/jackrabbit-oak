@@ -13,6 +13,8 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
+name|spi
+operator|.
 name|security
 operator|.
 name|authorization
@@ -21,19 +23,43 @@ end_package
 
 begin_import
 import|import
-name|org
+name|java
 operator|.
-name|apache
+name|security
 operator|.
-name|jackrabbit
+name|Principal
+import|;
+end_import
+
+begin_import
+import|import
+name|java
 operator|.
-name|oak
+name|util
 operator|.
-name|spi
+name|Set
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
 operator|.
-name|commit
+name|annotation
 operator|.
-name|Observer
+name|Nonnull
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|jcr
+operator|.
+name|security
+operator|.
+name|Privilege
 import|;
 end_import
 
@@ -51,45 +77,49 @@ name|spi
 operator|.
 name|state
 operator|.
-name|NodeState
+name|NodeStore
 import|;
 end_import
 
 begin_comment
-comment|/**  * {@code Observer} implementation that processes any modification made to  * access control content and updates persisted permission caches associated  * with access control related data stored in the repository.  */
+comment|/**  * PermissionProvider... TODO  */
 end_comment
 
-begin_class
+begin_interface
 specifier|public
-class|class
-name|AccessControlObserver
-implements|implements
-name|Observer
+interface|interface
+name|PermissionProvider
 block|{
 annotation|@
-name|Override
-specifier|public
-name|void
-name|contentChanged
+name|Nonnull
+name|Permissions
+name|getPermissions
 parameter_list|(
-name|NodeState
-name|before
-parameter_list|,
-name|NodeState
-name|after
+name|Set
+argument_list|<
+name|Privilege
+argument_list|>
+name|privileges
 parameter_list|)
-block|{
-comment|// TODO
-throw|throw
-operator|new
-name|UnsupportedOperationException
-argument_list|(
-literal|"not yet implemented"
-argument_list|)
-throw|;
+function_decl|;
+comment|// TODO define how permissions eval is bound to a particular revision/branch. (passing Tree?)
+annotation|@
+name|Nonnull
+name|CompiledPermissions
+name|getCompiledPermissions
+parameter_list|(
+name|NodeStore
+name|nodeStore
+parameter_list|,
+name|Set
+argument_list|<
+name|Principal
+argument_list|>
+name|principals
+parameter_list|)
+function_decl|;
 block|}
-block|}
-end_class
+end_interface
 
 end_unit
 
