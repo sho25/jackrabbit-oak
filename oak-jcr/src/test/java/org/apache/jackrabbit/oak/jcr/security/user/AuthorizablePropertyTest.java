@@ -1950,6 +1950,10 @@ comment|// success
 block|}
 block|}
 block|}
+comment|//    @Test FIXME OAK-502
+comment|//    public void testGetPropertyNamesByInvalidRelPathThrowsAIOOBE() throws NotExecutableException, RepositoryException {
+comment|//        user.getPropertyNames("");
+comment|//    }
 annotation|@
 name|Test
 specifier|public
