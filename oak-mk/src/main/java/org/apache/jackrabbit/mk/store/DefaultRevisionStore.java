@@ -998,7 +998,7 @@ block|}
 block|}
 block|}
 argument_list|,
-literal|10
+literal|60
 argument_list|,
 literal|1
 argument_list|,
@@ -1007,6 +1007,7 @@ operator|.
 name|MINUTES
 argument_list|)
 expr_stmt|;
+comment|// TODO: Should start earlier
 block|}
 name|initialized
 operator|=
