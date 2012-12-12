@@ -253,9 +253,9 @@ block|}
 default|default:
 throw|throw
 operator|new
-name|IllegalStateException
+name|IllegalArgumentException
 argument_list|(
-literal|"Unknown operation: "
+literal|"Illegal token '"
 operator|+
 operator|(
 name|char
