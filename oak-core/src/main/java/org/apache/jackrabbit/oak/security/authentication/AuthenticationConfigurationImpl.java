@@ -434,8 +434,8 @@ name|log
 operator|.
 name|warn
 argument_list|(
-literal|"Failed to retrieve login configuration: using default."
-argument_list|,
+literal|"Failed to retrieve login configuration: using default. "
+operator|+
 name|e
 argument_list|)
 expr_stmt|;
