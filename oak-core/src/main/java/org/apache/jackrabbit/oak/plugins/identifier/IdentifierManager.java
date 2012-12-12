@@ -843,7 +843,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**      * Searches all reference properties to the specified {@code tree} that match      * the given name and node type constraints.      *      * @param weak  if {@code true} only weak references are returned. Otherwise only      *              hard references are returned.      * @param tree The tree for which references should be searched.      * @param propertyName A name constraint for the reference properties;      * {@code null} if no constraint should be enforced.      * @param nodeTypeNames Node type constraints to be enforced when using      * for reference properties.      * @return A set of oak paths of those reference properties referring to the      * specified {@code tree} and matching the constraints.      */
+comment|/**      * Searches all reference properties to the specified {@code tree} that match      * the given name and node type constraints.      *      * @param weak  if {@code true} only weak references are returned. Otherwise only      *              hard references are returned.      * @param tree The tree for which references should be searched.      * @param propertyName A name constraint for the reference properties;      * {@code null} if no constraint should be enforced.      * @param nodeTypeNames Node type constraints to be enforced when using      * for reference properties; the specified names are expected to be internal      * oak names.      * @return A set of oak paths of those reference properties referring to the      * specified {@code tree} and matching the constraints.      */
 annotation|@
 name|Nonnull
 specifier|public

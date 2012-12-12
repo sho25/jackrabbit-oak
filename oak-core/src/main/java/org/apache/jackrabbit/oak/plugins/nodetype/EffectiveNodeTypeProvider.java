@@ -76,7 +76,7 @@ specifier|public
 interface|interface
 name|EffectiveNodeTypeProvider
 block|{
-comment|/**      * Returns {@code true} if this tree is of the specified primary node      * type or mixin type, or a subtype thereof respecting the effective node      * type of the {@code tree}. Returns {@code false} otherwise.      *      * @param tree The tree to be tested.      * @param nodeTypeName The name of the node type to be tested.      * @return true if the specified node is of the given node type.      * @throws NoSuchNodeTypeException If the specified node type name doesn't      * refer to an existing node type.      * @throws RepositoryException If the given node type name is invalid or if      * some other error occurs.      */
+comment|/**      * Returns {@code true} if this tree is of the specified primary node      * type or mixin type, or a subtype thereof respecting the effective node      * type of the {@code tree}. Returns {@code false} otherwise.      *      * @param tree The tree to be tested.      * @param nodeTypeName The internal oak name of the node type to be tested.      * @return true if the specified node is of the given node type.      * @throws NoSuchNodeTypeException If the specified node type name doesn't      * refer to an existing node type.      * @throws RepositoryException If the given node type name is invalid or if      * some other error occurs.      */
 name|boolean
 name|isNodeType
 parameter_list|(
