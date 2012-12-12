@@ -2290,6 +2290,25 @@ name|path
 argument_list|)
 throw|;
 block|}
+if|if
+condition|(
+name|jsonDiff
+operator|==
+literal|null
+operator|||
+name|jsonDiff
+operator|.
+name|length
+argument_list|()
+operator|==
+literal|0
+condition|)
+block|{
+return|return
+name|getHeadRevision
+argument_list|()
+return|;
+block|}
 name|Id
 name|revId
 init|=
@@ -2942,13 +2961,20 @@ block|}
 default|default:
 throw|throw
 operator|new
-name|AssertionError
+name|IllegalArgumentException
 argument_list|(
-literal|"token type: "
+literal|"jsonDiff: illegal token '"
 operator|+
 name|t
 operator|.
-name|getTokenType
+name|getToken
+argument_list|()
+operator|+
+literal|"' at pos: "
+operator|+
+name|t
+operator|.
+name|getLastPos
 argument_list|()
 argument_list|)
 throw|;
