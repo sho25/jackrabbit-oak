@@ -2045,8 +2045,7 @@ name|exactTypeMatch
 argument_list|)
 return|;
 block|}
-comment|//------------------------------------------------------------< private>---
-specifier|private
+comment|//-----------------------------------------------------------< internal>---
 name|NodeTypeImpl
 name|internalGetNodeType
 parameter_list|(
@@ -2121,6 +2120,7 @@ argument_list|)
 argument_list|)
 throw|;
 block|}
+comment|//------------------------------------------------------------< private>---
 specifier|private
 name|EffectiveNodeType
 name|getEffectiveNodeType
@@ -2131,6 +2131,8 @@ name|NodeType
 argument_list|>
 name|queue
 parameter_list|)
+throws|throws
+name|ConstraintViolationException
 block|{
 name|Map
 argument_list|<
@@ -2208,8 +2210,9 @@ expr_stmt|;
 block|}
 block|}
 return|return
-operator|new
 name|EffectiveNodeTypeImpl
+operator|.
+name|create
 argument_list|(
 name|types
 operator|.
