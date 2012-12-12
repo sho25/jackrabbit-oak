@@ -6733,6 +6733,14 @@ literal|null
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|String
+name|oldHead
+init|=
+name|mk
+operator|.
+name|getHeadRevision
+argument_list|()
+decl_stmt|;
 comment|// create a branch on head
 name|String
 name|branchRev
@@ -6942,6 +6950,32 @@ name|mk
 operator|.
 name|getJournal
 argument_list|(
+name|oldHead
+argument_list|,
+name|branchRev
+argument_list|,
+literal|"/"
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|MicroKernelException
+name|e
+parameter_list|)
+block|{
+name|fail
+argument_list|(
+literal|"getJournal should succeed if the range spans from a (older) head to a (newer) private branch revision"
+argument_list|)
+expr_stmt|;
+block|}
+try|try
+block|{
+name|mk
+operator|.
+name|getJournal
+argument_list|(
 name|branchRootRev
 argument_list|,
 literal|null
@@ -6951,7 +6985,7 @@ argument_list|)
 expr_stmt|;
 name|fail
 argument_list|(
-literal|"getJournal should throw for branch revisions"
+literal|"getJournal should throw if the range spans from a (older) private branch to a (newer) head revision"
 argument_list|)
 expr_stmt|;
 block|}
@@ -6976,11 +7010,6 @@ argument_list|,
 literal|"/"
 argument_list|)
 expr_stmt|;
-name|fail
-argument_list|(
-literal|"getJournal should throw for branch revisions"
-argument_list|)
-expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
@@ -6988,7 +7017,11 @@ name|MicroKernelException
 name|e
 parameter_list|)
 block|{
-comment|// expected
+name|fail
+argument_list|(
+literal|"getJournal should succeed if the range spans a single private branch"
+argument_list|)
+expr_stmt|;
 block|}
 name|String
 name|jrnl
@@ -7063,6 +7096,26 @@ name|matches
 argument_list|(
 literal|"\\s*\\+\\s*\"/branch\"\\s*:\\s*\\{\\s*\"foo\"\\s*:\\s*\\{\\s*\\}\\s*\\}\\s*"
 argument_list|)
+argument_list|)
+expr_stmt|;
+name|jrnl
+operator|=
+name|mk
+operator|.
+name|getJournal
+argument_list|(
+name|oldHead
+argument_list|,
+name|branchRev
+argument_list|,
+literal|"/"
+argument_list|)
+expr_stmt|;
+name|array
+operator|=
+name|parseJSONArray
+argument_list|(
+name|jrnl
 argument_list|)
 expr_stmt|;
 block|}
