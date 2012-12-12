@@ -53,18 +53,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|jcr
-operator|.
-name|nodetype
-operator|.
-name|NodeType
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -80,7 +68,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * EffectiveNodeTypeProvider... TODO  *  * FIXME: see also TypeValidator which has it's own private EffectiveNodeType class. See OAK-412  */
+comment|/**  * EffectiveNodeTypeProvider... TODO  */
 end_comment
 
 begin_interface
@@ -103,12 +91,9 @@ name|NoSuchNodeTypeException
 throws|,
 name|RepositoryException
 function_decl|;
-comment|/**      * FIXME in contrast what the method name implies this method returns the transitive closure of the super types      * Calculates and returns all effective node types of the given node.      *      * @param targetNode the node for which the types should be calculated.      * @return all types of the given node      * @throws RepositoryException if the type information can not be accessed      * @see<a href="http://www.jcp.org/en/jsr/detail?id=283">JCR 2.0 Specification,      * Section 3.7.6.5</a> for the definition of the effective node type.      */
-name|Iterable
-argument_list|<
-name|NodeType
-argument_list|>
-name|getEffectiveNodeTypes
+comment|/**      * Calculates and returns the effective node types of the given node.      *      * @param targetNode the node for which the types should be calculated.      * @return all types of the given node      * @throws RepositoryException if the type information can not be accessed      * @see<a href="http://www.jcp.org/en/jsr/detail?id=283">JCR 2.0 Specification,      * Section 3.7.6.5</a> for the definition of the effective node type.      */
+name|EffectiveNodeType
+name|getEffectiveNodeType
 parameter_list|(
 name|Node
 name|targetNode
@@ -116,12 +101,9 @@ parameter_list|)
 throws|throws
 name|RepositoryException
 function_decl|;
-comment|/**      * FIXME in contrast what the method name implies this method returns the transitive closure of the super types      * Calculates and returns all effective node types of the given tree.      *      * @param tree      * @return all node types of the given tree      * @throws RepositoryException if the type information can not be accessed,      * @see<a href="http://www.jcp.org/en/jsr/detail?id=283">JCR 2.0 Specification,      * Section 3.7.6.5</a> for the definition of the effective node type.      */
-name|Iterable
-argument_list|<
-name|NodeType
-argument_list|>
-name|getEffectiveNodeTypes
+comment|/**      * Calculates and returns the effective node types of the given tree.      *      * @param tree      * @return all node types of the given tree      * @throws RepositoryException if the type information can not be accessed,      * @see<a href="http://www.jcp.org/en/jsr/detail?id=283">JCR 2.0 Specification,      * Section 3.7.6.5</a> for the definition of the effective node type.      */
+name|EffectiveNodeType
+name|getEffectiveNodeType
 parameter_list|(
 name|Tree
 name|tree

@@ -315,7 +315,7 @@ name|oak
 operator|.
 name|namepath
 operator|.
-name|NameMapper
+name|NamePathMapper
 import|;
 end_import
 
@@ -1058,8 +1058,8 @@ name|Nonnull
 annotation|@
 name|Override
 specifier|protected
-name|NameMapper
-name|getNameMapper
+name|NamePathMapper
+name|getNamePathMapper
 parameter_list|()
 block|{
 return|return
