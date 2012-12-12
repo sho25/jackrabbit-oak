@@ -94,7 +94,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *<code>AutoCreatedItemsTest</code> checks if auto-created nodes and properties  * are added correctly as defined in the node type definition.  */
+comment|/**  * {@code AutoCreatedItemsTest} checks if auto-created nodes and properties  * are added correctly as defined in the node type definition.  */
 end_comment
 
 begin_class
