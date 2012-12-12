@@ -153,6 +153,11 @@ name|DELETE_DELETED
 init|=
 literal|"deleteDeleted"
 decl_stmt|;
+name|String
+name|RESIDUAL_NAME
+init|=
+literal|"*"
+decl_stmt|;
 block|}
 end_interface
 

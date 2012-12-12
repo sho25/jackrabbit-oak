@@ -161,6 +161,7 @@ operator|=
 name|node
 expr_stmt|;
 block|}
+comment|//-----------------------------------------------------< ItemDefinition>---
 annotation|@
 name|Override
 specifier|public
@@ -188,7 +189,9 @@ name|JcrConstants
 operator|.
 name|JCR_NAME
 argument_list|,
-literal|"*"
+name|NodeTypeConstants
+operator|.
+name|RESIDUAL_NAME
 argument_list|)
 return|;
 block|}
@@ -305,6 +308,26 @@ block|{
 return|return
 name|getName
 argument_list|()
+return|;
+block|}
+comment|//-----------------------------------------------------------< internal>---
+name|String
+name|getOakName
+parameter_list|()
+block|{
+return|return
+name|node
+operator|.
+name|getString
+argument_list|(
+name|JcrConstants
+operator|.
+name|JCR_NAME
+argument_list|,
+name|NodeTypeConstants
+operator|.
+name|RESIDUAL_NAME
+argument_list|)
 return|;
 block|}
 block|}

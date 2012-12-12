@@ -605,6 +605,26 @@ name|NODE_TYPES_PATH
 import|;
 end_import
 
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|nodetype
+operator|.
+name|NodeTypeConstants
+operator|.
+name|RESIDUAL_NAME
+import|;
+end_import
+
 begin_comment
 comment|/**  * Base implementation of a {@link NodeTypeManager} with support for reading  * node types from the {@link Tree} returned by {@link #getTypes()}. Methods  * related to node type modifications throw  * {@link UnsupportedRepositoryOperationException}.  */
 end_comment
@@ -2200,6 +2220,7 @@ name|this
 argument_list|)
 return|;
 block|}
+comment|/**      *      * @param effectiveNodeType      * @param propertyName The internal oak name of the property.      * @param isMultiple      * @param type      * @param exactTypeMatch      * @return      * @throws ConstraintViolationException      */
 specifier|private
 specifier|static
 name|PropertyDefinition
@@ -2287,7 +2308,7 @@ name|def
 range|:
 name|effectiveNodeType
 operator|.
-name|getUnnamedPropertyDefinitions
+name|getResidualPropertyDefinitions
 argument_list|()
 control|)
 block|{
@@ -2356,6 +2377,7 @@ name|getDeclaredPropertyDefinitions
 argument_list|()
 control|)
 block|{
+comment|// FIXME: compares oak propertyName with JCR name exposed by def.getName()
 name|String
 name|defName
 init|=
@@ -2374,7 +2396,7 @@ argument_list|(
 name|defName
 argument_list|)
 operator|||
-literal|"*"
+name|RESIDUAL_NAME
 operator|.
 name|equals
 argument_list|(
@@ -2412,6 +2434,7 @@ name|propertyName
 argument_list|)
 throw|;
 block|}
+comment|/**      *      * @param effectiveNodeType      * @param childName The internal oak name of the target node.      * @param childEffective      * @return      * @throws ConstraintViolationException      */
 specifier|private
 specifier|static
 name|NodeDefinition
@@ -2487,7 +2510,7 @@ name|def
 range|:
 name|effectiveNodeType
 operator|.
-name|getUnnamedNodeDefinitions
+name|getResidualNodeDefinitions
 argument_list|()
 control|)
 block|{

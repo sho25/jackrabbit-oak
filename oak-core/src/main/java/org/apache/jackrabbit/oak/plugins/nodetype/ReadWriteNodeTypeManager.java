@@ -1908,7 +1908,7 @@ argument_list|)
 expr_stmt|;
 name|node
 operator|.
-name|setStrings
+name|setNames
 argument_list|(
 name|JCR_AVAILABLE_QUERY_OPERATORS
 argument_list|,

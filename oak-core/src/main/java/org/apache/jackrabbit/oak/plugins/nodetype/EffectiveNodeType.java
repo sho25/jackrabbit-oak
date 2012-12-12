@@ -23,6 +23,16 @@ begin_import
 import|import
 name|javax
 operator|.
+name|annotation
+operator|.
+name|Nonnull
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
 name|jcr
 operator|.
 name|RepositoryException
@@ -194,6 +204,9 @@ argument_list|>
 name|getMandatoryPropertyDefinitions
 parameter_list|()
 function_decl|;
+comment|/**      * Return all node definitions that match the specified oak name.      *      * @param oakName An internal oak name.      * @return All node definitions that match the given internal oak name.      */
+annotation|@
+name|Nonnull
 name|Iterable
 argument_list|<
 name|NodeDefinition
@@ -201,9 +214,12 @@ argument_list|>
 name|getNamedNodeDefinitions
 parameter_list|(
 name|String
-name|name
+name|oakName
 parameter_list|)
 function_decl|;
+comment|/**      * Return all property definitions that match the specified oak name.      *      * @param oakName An internal oak name.      * @return All property definitions that match the given internal oak name.      */
+annotation|@
+name|Nonnull
 name|Iterable
 argument_list|<
 name|PropertyDefinition
@@ -211,21 +227,27 @@ argument_list|>
 name|getNamedPropertyDefinitions
 parameter_list|(
 name|String
-name|name
+name|oakName
 parameter_list|)
 function_decl|;
+comment|/**      * Return all residual node definitions.      *      * @return All residual node definitions.      */
+annotation|@
+name|Nonnull
 name|Iterable
 argument_list|<
 name|NodeDefinition
 argument_list|>
-name|getUnnamedNodeDefinitions
+name|getResidualNodeDefinitions
 parameter_list|()
 function_decl|;
+comment|/**      * Return all residual property definitions.      *      * @return All residual property definitions.      */
+annotation|@
+name|Nonnull
 name|Iterable
 argument_list|<
 name|PropertyDefinition
 argument_list|>
-name|getUnnamedPropertyDefinitions
+name|getResidualPropertyDefinitions
 parameter_list|()
 function_decl|;
 name|void

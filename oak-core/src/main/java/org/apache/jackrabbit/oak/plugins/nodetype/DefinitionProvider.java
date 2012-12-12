@@ -67,6 +67,18 @@ name|jcr
 operator|.
 name|nodetype
 operator|.
+name|ConstraintViolationException
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|jcr
+operator|.
+name|nodetype
+operator|.
 name|NodeDefinition
 import|;
 end_import
@@ -144,7 +156,7 @@ parameter_list|()
 throws|throws
 name|RepositoryException
 function_decl|;
-comment|/**      * Returns the node definition for a child node of<code>parent</code> named      *<code>nodeName</code> with a default primary type. First the non-residual      * child node definitions of<code>parent</code> are checked matching the      * given node name. Then the residual definitions are checked.      *      * @param parent   the parent node.      * @param nodeName the name of the child node.      * @return the applicable node definition.      * @throws RepositoryException if there is no applicable node definition      *                             with a default primary type.      */
+comment|/**      * Returns the node definition for a child node of {@code parent} named      * {@code nodeName} with a default primary type. First the non-residual      * child node definitions of {@code parent} are checked matching the      * given node name. Then the residual definitions are checked.      *      *      * @param parent   the parent node.      * @param nodeName The internal oak name of the child node.      * @return the applicable node definition.      * @throws ConstraintViolationException If no matching definition can be found.      * @throws RepositoryException If another error occurs.      */
 annotation|@
 name|Nonnull
 name|NodeDefinition
@@ -161,8 +173,11 @@ name|String
 name|nodeName
 parameter_list|)
 throws|throws
+name|ConstraintViolationException
+throws|,
 name|RepositoryException
 function_decl|;
+comment|/**      * Calculates the applicable definition for the child node under the given      * parent node.      *      * @param parent The parent node.      * @param targetNode The child node for which the definition is calculated.      * @return the defintion of the target node.      * @throws ConstraintViolationException If no matching definition can be found.      * @throws RepositoryException If another error occurs.      */
 annotation|@
 name|Nonnull
 name|NodeDefinition
@@ -175,8 +190,11 @@ name|Node
 name|targetNode
 parameter_list|)
 throws|throws
+name|ConstraintViolationException
+throws|,
 name|RepositoryException
 function_decl|;
+comment|/**      * Calculates the applicable definition for the child node with the      * specified name and node type under the given parent node.      *      * @param parentNodeTypes The node types of the parent node.      * @param nodeName The internal oak name of the child node.      * @param nodeType The target node type of the child.      * @return the applicable definition for the child node with the specified      * name and primary type.      * @throws ConstraintViolationException If no matching definition can be found.      * @throws RepositoryException If another error occurs.      */
 annotation|@
 name|Nonnull
 name|NodeDefinition
@@ -195,8 +213,11 @@ name|NodeType
 name|nodeType
 parameter_list|)
 throws|throws
+name|ConstraintViolationException
+throws|,
 name|RepositoryException
 function_decl|;
+comment|/**      * Calculates the definition of the specified property.      *      * @param parent The parent node.      * @param targetProperty The target property.      * @return The definition of the specified property.      * @throws ConstraintViolationException If no matching definition can be      * found.      * @throws RepositoryException If another error occurs.      */
 annotation|@
 name|Nonnull
 name|PropertyDefinition
@@ -209,8 +230,11 @@ name|Property
 name|targetProperty
 parameter_list|)
 throws|throws
+name|ConstraintViolationException
+throws|,
 name|RepositoryException
 function_decl|;
+comment|/**      * Calculates the applicable definition for the property state under the      * given parent tree.      *      * @param parent The parent tree.      * @param propertyState The target property.      * @return the definition for the target property.      * @throws ConstraintViolationException If no matching definition can be found.      * @throws RepositoryException If another error occurs.      */
 annotation|@
 name|Nonnull
 name|PropertyDefinition
@@ -223,8 +247,11 @@ name|PropertyState
 name|propertyState
 parameter_list|)
 throws|throws
+name|ConstraintViolationException
+throws|,
 name|RepositoryException
 function_decl|;
+comment|/**      * Calculates the applicable definition for the property with the specified      * characteristics under the given parent node.      *      * @param parent The parent node.      * @param propertyName The internal oak name of the property for which the      * definition should be retrieved.      * @param isMultiple {@code true} if the target property is multi-valued.      * @param type The target type of the property.      * @param exactTypeMatch {@code true} if the required type of the definition      * must exactly match the type of the target property.      * @return the applicable definition for the target property.      * @throws ConstraintViolationException If no matching definition can be found.      * @throws RepositoryException If another error occurs.      */
 annotation|@
 name|Nonnull
 name|PropertyDefinition
@@ -246,8 +273,11 @@ name|boolean
 name|exactTypeMatch
 parameter_list|)
 throws|throws
+name|ConstraintViolationException
+throws|,
 name|RepositoryException
 function_decl|;
+comment|/**      * Calculates the applicable definition for the property with the specified      * characteristics under the given parent tree.      *      * @param parent The parent tree.      * @param propertyName The internal oak name of the property for which the      * definition should be retrieved.      * @param isMultiple {@code true} if the target property is multi-valued.      * @param type The target type of the property.      * @param exactTypeMatch {@code true} if the required type of the definition      * must exactly match the type of the target property.      * @return the applicable definition for the target property.      * @throws ConstraintViolationException If no matching definition can be found.      * @throws RepositoryException If another error occurs.      */
 annotation|@
 name|Nonnull
 name|PropertyDefinition
@@ -269,8 +299,11 @@ name|boolean
 name|exactTypeMatch
 parameter_list|)
 throws|throws
+name|ConstraintViolationException
+throws|,
 name|RepositoryException
 function_decl|;
+comment|/**      * Calculates the applicable definition for the property with the specified      * characteristics under a parent with the specified node types.      *      * @param nodeTypes The node types of the parent tree.      * @param propertyName The internal oak name of the property for which the      * definition should be retrieved.      * @param isMultiple {@code true} if the target property is multi-valued.      * @param type The target type of the property.      * @param exactTypeMatch {@code true} if the required type of the definition      * must exactly match the type of the target property.      * @return the applicable definition for the target property.      * @throws ConstraintViolationException If no matching definition can be found.      * @throws RepositoryException If another error occurs.      */
 annotation|@
 name|Nonnull
 name|PropertyDefinition
@@ -295,6 +328,8 @@ name|boolean
 name|exactTypeMatch
 parameter_list|)
 throws|throws
+name|ConstraintViolationException
+throws|,
 name|RepositoryException
 function_decl|;
 block|}
