@@ -192,6 +192,7 @@ operator|=
 name|manager
 expr_stmt|;
 block|}
+comment|//-----------------------------------------------------< NodeDefinition>---
 annotation|@
 name|Override
 specifier|public
