@@ -515,7 +515,7 @@ specifier|final
 name|int
 name|MAX_CHILD_NODE_NAMES
 init|=
-literal|1000
+literal|10000
 decl_stmt|;
 specifier|private
 specifier|final
