@@ -466,10 +466,16 @@ block|}
 return|return
 name|getBaseVersion
 argument_list|(
-name|location
+name|getWorkspaceRoot
+argument_list|()
 operator|.
 name|getTree
+argument_list|(
+name|location
+operator|.
+name|getPath
 argument_list|()
+argument_list|)
 argument_list|)
 return|;
 block|}
