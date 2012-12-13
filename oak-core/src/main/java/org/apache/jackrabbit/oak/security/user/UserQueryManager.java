@@ -197,7 +197,7 @@ name|oak
 operator|.
 name|api
 operator|.
-name|SessionQueryEngine
+name|QueryEngine
 import|;
 end_import
 
@@ -603,7 +603,7 @@ argument_list|,
 name|type
 argument_list|)
 decl_stmt|;
-name|SessionQueryEngine
+name|QueryEngine
 name|queryEngine
 init|=
 name|root

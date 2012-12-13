@@ -70,7 +70,7 @@ end_comment
 begin_interface
 specifier|public
 interface|interface
-name|SessionQueryEngine
+name|QueryEngine
 block|{
 comment|/**      * Get the list of supported query languages.      *      * @return the supported query languages      */
 name|List
@@ -128,8 +128,6 @@ parameter_list|)
 throws|throws
 name|ParseException
 function_decl|;
-comment|// TODO pass namespace mapping
-comment|// TODO pass node type information (select * from [xyz] is supposed to return at least the mandatory columns for xyz)
 block|}
 end_interface
 

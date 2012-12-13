@@ -277,7 +277,7 @@ name|oak
 operator|.
 name|api
 operator|.
-name|SessionQueryEngine
+name|QueryEngine
 import|;
 end_import
 
@@ -338,16 +338,6 @@ operator|.
 name|junit
 operator|.
 name|Before
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
-name|Ignore
 import|;
 end_import
 
@@ -496,7 +486,7 @@ init|=
 literal|"test-index"
 decl_stmt|;
 specifier|protected
-name|SessionQueryEngine
+name|QueryEngine
 name|qe
 decl_stmt|;
 specifier|protected

@@ -165,7 +165,7 @@ name|oak
 operator|.
 name|api
 operator|.
-name|SessionQueryEngine
+name|QueryEngine
 import|;
 end_import
 
@@ -231,7 +231,7 @@ name|oak
 operator|.
 name|query
 operator|.
-name|SessionQueryEngineImpl
+name|QueryEngineImpl
 import|;
 end_import
 
@@ -1444,7 +1444,7 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|SessionQueryEngine
+name|QueryEngine
 name|getQueryEngine
 parameter_list|()
 block|{
@@ -1453,7 +1453,7 @@ argument_list|()
 expr_stmt|;
 return|return
 operator|new
-name|SessionQueryEngineImpl
+name|QueryEngineImpl
 argument_list|(
 name|indexProvider
 argument_list|)
@@ -1462,7 +1462,7 @@ annotation|@
 name|Override
 specifier|protected
 name|NodeState
-name|getRootNodeState
+name|getRootState
 parameter_list|()
 block|{
 return|return
@@ -1476,7 +1476,7 @@ annotation|@
 name|Override
 specifier|protected
 name|Root
-name|getRoot
+name|getRootTree
 parameter_list|()
 block|{
 return|return

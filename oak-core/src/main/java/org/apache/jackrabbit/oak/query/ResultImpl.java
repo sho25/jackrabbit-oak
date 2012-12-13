@@ -105,24 +105,6 @@ name|SelectorImpl
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|spi
-operator|.
-name|state
-operator|.
-name|NodeState
-import|;
-end_import
-
 begin_comment
 comment|/**  * A query result.  */
 end_comment
@@ -139,18 +121,10 @@ specifier|final
 name|Query
 name|query
 decl_stmt|;
-specifier|protected
-specifier|final
-name|NodeState
-name|rootState
-decl_stmt|;
 name|ResultImpl
 parameter_list|(
 name|Query
 name|query
-parameter_list|,
-name|NodeState
-name|rootState
 parameter_list|)
 block|{
 name|this
@@ -158,12 +132,6 @@ operator|.
 name|query
 operator|=
 name|query
-expr_stmt|;
-name|this
-operator|.
-name|rootState
-operator|=
-name|rootState
 expr_stmt|;
 block|}
 annotation|@
@@ -334,9 +302,7 @@ return|return
 name|query
 operator|.
 name|getRows
-argument_list|(
-name|rootState
-argument_list|)
+argument_list|()
 return|;
 block|}
 block|}
