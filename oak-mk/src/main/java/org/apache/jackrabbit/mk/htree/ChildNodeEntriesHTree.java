@@ -873,6 +873,20 @@ name|Exception
 block|{
 comment|// nothing to be done here
 block|}
+annotation|@
+name|Override
+specifier|public
+name|int
+name|getMemory
+parameter_list|()
+block|{
+return|return
+name|top
+operator|.
+name|getMemory
+argument_list|()
+return|;
+block|}
 block|}
 end_class
 

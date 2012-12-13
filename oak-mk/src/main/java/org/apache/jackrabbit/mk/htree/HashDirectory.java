@@ -3360,6 +3360,28 @@ name|NoSuchMethodError
 argument_list|()
 throw|;
 block|}
+annotation|@
+name|Override
+specifier|public
+name|int
+name|getMemory
+parameter_list|()
+block|{
+comment|// assuming a fixed size of 1000 entries, each with 100 bytes, plus 100
+comment|// bytes overhead
+name|int
+name|memory
+init|=
+literal|100
+operator|+
+literal|1000
+operator|*
+literal|100
+decl_stmt|;
+return|return
+name|memory
+return|;
+block|}
 block|}
 end_class
 
