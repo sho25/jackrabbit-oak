@@ -49,6 +49,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Set
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -72,8 +82,8 @@ specifier|public
 interface|interface
 name|QueryEngine
 block|{
-comment|/**      * Get the list of supported query languages.      *      * @return the supported query languages      */
-name|List
+comment|/**      * Get the set of supported query languages.      *      * @return the supported query languages      */
+name|Set
 argument_list|<
 name|String
 argument_list|>
