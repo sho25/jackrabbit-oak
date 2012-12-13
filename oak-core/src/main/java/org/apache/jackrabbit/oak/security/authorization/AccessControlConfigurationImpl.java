@@ -137,6 +137,24 @@ name|spi
 operator|.
 name|commit
 operator|.
+name|CommitHook
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|commit
+operator|.
 name|ValidatorProvider
 import|;
 end_import
@@ -257,6 +275,24 @@ name|RestrictionProvider
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|xml
+operator|.
+name|ProtectedItemImporter
+import|;
+end_import
+
 begin_comment
 comment|/**  * {@code AccessControlConfigurationImpl} ... TODO  */
 end_comment
@@ -304,6 +340,34 @@ name|AccessControlContext
 operator|.
 name|getInstance
 argument_list|()
+return|;
+block|}
+annotation|@
+name|Nonnull
+annotation|@
+name|Override
+specifier|public
+name|List
+argument_list|<
+name|ProtectedItemImporter
+argument_list|>
+name|getProtectedItemImporters
+parameter_list|()
+block|{
+return|return
+name|Collections
+operator|.
+expr|<
+name|ProtectedItemImporter
+operator|>
+name|singletonList
+argument_list|(
+operator|new
+name|AccessControlImporter
+argument_list|(
+name|securityProvider
+argument_list|)
+argument_list|)
 return|;
 block|}
 comment|//-----------------------------------------< AccessControlConfiguration>---
@@ -366,11 +430,32 @@ name|PermissionProviderImpl
 argument_list|()
 return|;
 block|}
-comment|//    @Nonnull
-comment|//    @Override
-comment|//    public List<CommitHook> getCommitHooks() {
-comment|//        return Collections.<CommitHook>singletonList(new AccessControlHook());
-comment|//    }
+annotation|@
+name|Nonnull
+annotation|@
+name|Override
+specifier|public
+name|List
+argument_list|<
+name|CommitHook
+argument_list|>
+name|getCommitHooks
+parameter_list|()
+block|{
+return|return
+name|Collections
+operator|.
+expr|<
+name|CommitHook
+operator|>
+name|singletonList
+argument_list|(
+operator|new
+name|AccessControlHook
+argument_list|()
+argument_list|)
+return|;
+block|}
 annotation|@
 name|Override
 specifier|public

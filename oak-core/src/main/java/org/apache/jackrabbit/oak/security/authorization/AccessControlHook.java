@@ -109,14 +109,10 @@ parameter_list|)
 throws|throws
 name|CommitFailedException
 block|{
-comment|// TODO
-throw|throw
-operator|new
-name|UnsupportedOperationException
-argument_list|(
-literal|"not yet implemented"
-argument_list|)
-throw|;
+comment|// TODO: add implementation
+return|return
+name|after
+return|;
 block|}
 block|}
 end_class

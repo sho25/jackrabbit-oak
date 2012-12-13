@@ -109,9 +109,11 @@ argument_list|>
 name|getSupportedRestrictions
 parameter_list|(
 name|String
-name|path
+name|jcrPath
 parameter_list|)
 function_decl|;
+annotation|@
+name|Nonnull
 name|Restriction
 name|createRestriction
 parameter_list|(
@@ -127,6 +129,8 @@ parameter_list|)
 throws|throws
 name|RepositoryException
 function_decl|;
+annotation|@
+name|Nonnull
 name|Set
 argument_list|<
 name|Restriction
@@ -134,7 +138,7 @@ argument_list|>
 name|readRestrictions
 parameter_list|(
 name|String
-name|path
+name|jcrPath
 parameter_list|,
 name|Tree
 name|aceTree
@@ -146,7 +150,7 @@ name|void
 name|writeRestrictions
 parameter_list|(
 name|String
-name|path
+name|jcrPath
 parameter_list|,
 name|Tree
 name|aceTree
@@ -164,7 +168,7 @@ name|void
 name|validateRestrictions
 parameter_list|(
 name|String
-name|path
+name|jcrPath
 parameter_list|,
 name|Tree
 name|aceTree

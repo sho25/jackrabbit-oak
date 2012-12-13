@@ -71,22 +71,6 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|api
-operator|.
-name|Type
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
 name|namepath
 operator|.
 name|NamePathMapper
@@ -111,7 +95,7 @@ decl_stmt|;
 comment|/**      * Type of the property being imported.      */
 specifier|private
 specifier|final
-name|Type
+name|int
 name|type
 decl_stmt|;
 comment|/**      * Value(s) of the property being imported.      */
@@ -141,7 +125,7 @@ parameter_list|(
 name|String
 name|name
 parameter_list|,
-name|Type
+name|int
 name|type
 parameter_list|,
 name|TextValue
@@ -186,14 +170,14 @@ operator|.
 name|MULTIPLE
 expr_stmt|;
 block|}
-comment|/**      * Creates a property information instance.      *      * @param name name of the property being imported      * @param type type of the property being imported      * @param values value(s) of the property being imported      * @param multipleStatus Hint indicating whether the property is      *                       multi- or single-value      */
+comment|/**      * Creates a property information instance.      *      * @param name name of the property being imported      * @param type type of the property being imported      * @param values value(s) of the property being imported      * @param multipleStatus Hint indicating whether the property is      */
 specifier|public
 name|PropInfo
 parameter_list|(
 name|String
 name|name
 parameter_list|,
-name|Type
+name|int
 name|type
 parameter_list|,
 name|TextValue
@@ -251,7 +235,7 @@ expr_stmt|;
 block|}
 block|}
 specifier|public
-name|Type
+name|int
 name|getTargetType
 parameter_list|(
 name|PropertyDefinition
@@ -276,26 +260,13 @@ name|UNDEFINED
 condition|)
 block|{
 return|return
-name|Type
-operator|.
-name|fromTag
-argument_list|(
-name|target
-argument_list|,
-name|def
-operator|.
-name|isMultiple
-argument_list|()
-argument_list|)
+name|type
 return|;
 block|}
 elseif|else
 if|if
 condition|(
 name|type
-operator|.
-name|tag
-argument_list|()
 operator|!=
 name|PropertyType
 operator|.
@@ -309,7 +280,7 @@ block|}
 else|else
 block|{
 return|return
-name|Type
+name|PropertyType
 operator|.
 name|STRING
 return|;
@@ -325,7 +296,7 @@ name|name
 return|;
 block|}
 specifier|public
-name|Type
+name|int
 name|getType
 parameter_list|()
 block|{
@@ -378,7 +349,7 @@ specifier|public
 name|Value
 name|getValue
 parameter_list|(
-name|Type
+name|int
 name|targetType
 parameter_list|,
 name|NamePathMapper
@@ -423,7 +394,7 @@ name|Value
 index|[]
 name|getValues
 parameter_list|(
-name|Type
+name|int
 name|targetType
 parameter_list|,
 name|NamePathMapper

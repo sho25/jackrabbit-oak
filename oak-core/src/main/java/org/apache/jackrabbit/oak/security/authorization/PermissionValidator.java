@@ -682,7 +682,7 @@ operator|.
 name|VERSION_MANAGEMENT
 expr_stmt|;
 comment|// FIXME: path to check for permission must be adjusted to be
-comment|//        the one of the versionable node instead of the target parent.
+comment|// FIXME: the one of the versionable node instead of the target parent in case of version-store is affected.
 block|}
 elseif|else
 if|if
@@ -762,10 +762,7 @@ expr_stmt|;
 block|}
 name|checkPermissions
 argument_list|(
-name|parent
-operator|.
-name|getTree
-argument_list|()
+name|parentTree
 argument_list|,
 name|property
 argument_list|,
@@ -855,7 +852,7 @@ operator|.
 name|VERSION_MANAGEMENT
 expr_stmt|;
 comment|// FIXME: path to check for permission must be adjusted to be
-comment|// //     the one of the versionable node instead of the target node.
+comment|// FIXME: the one of the versionable node instead of the target parent in case of version-store is affected.
 block|}
 elseif|else
 if|if

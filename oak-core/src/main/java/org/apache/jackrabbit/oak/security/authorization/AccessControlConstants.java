@@ -78,6 +78,12 @@ init|=
 literal|"rep:glob"
 decl_stmt|;
 name|String
+name|REP_NODE_PATH
+init|=
+literal|"rep:nodePath"
+decl_stmt|;
+comment|/**      * @since OAK 1.0      */
+name|String
 name|REP_RESTRICTIONS
 init|=
 literal|"rep:restrictions"
@@ -117,6 +123,7 @@ name|NT_REP_DENY_ACE
 init|=
 literal|"rep:DenyACE"
 decl_stmt|;
+comment|/**      * @since OAK 1.0      */
 name|String
 name|NT_REP_RESTRICTIONS
 init|=

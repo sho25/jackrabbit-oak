@@ -42,16 +42,19 @@ specifier|public
 interface|interface
 name|RestrictionDefinition
 block|{
+comment|/**      * The internal oak name of this restriction definition.      *      * @return The oak name.      */
 annotation|@
 name|Nonnull
 name|String
 name|getName
 parameter_list|()
 function_decl|;
+comment|/**      * The required type as defined by this definition.      *      * @return The required type which must be a valid {@link javax.jcr.PropertyType}.      */
 name|int
 name|getRequiredType
 parameter_list|()
 function_decl|;
+comment|/**      * Indicates if this restriction is mandatory.      *      * @return {@code true} if this restriction is mandatory; {@code false} otherwise.      */
 name|boolean
 name|isMandatory
 parameter_list|()
