@@ -227,6 +227,9 @@ name|createValue
 parameter_list|(
 name|String
 name|value
+parameter_list|,
+name|int
+name|type
 parameter_list|)
 throws|throws
 name|RepositoryException
@@ -608,6 +611,9 @@ block|{
 name|createValue
 argument_list|(
 name|value
+argument_list|,
+name|getRequiredType
+argument_list|()
 argument_list|)
 block|}
 expr_stmt|;
@@ -655,6 +661,9 @@ operator|=
 name|createValue
 argument_list|(
 name|value
+argument_list|,
+name|getRequiredType
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|defaultValues
