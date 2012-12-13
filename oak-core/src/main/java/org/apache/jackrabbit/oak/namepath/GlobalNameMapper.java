@@ -298,12 +298,19 @@ literal|1
 argument_list|)
 return|;
 block|}
-block|}
-block|}
+else|else
+block|{
 return|return
 literal|null
 return|;
-comment|// invalid or unmapped name
+comment|// no matching namespace prefix
+block|}
+block|}
+block|}
+return|return
+name|expandedName
+return|;
+comment|// not an expanded name
 block|}
 specifier|protected
 specifier|abstract
