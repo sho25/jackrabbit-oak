@@ -2650,18 +2650,6 @@ name|prefix
 return|;
 block|}
 block|}
-name|boolean
-name|hasSessionLocalMappings
-parameter_list|()
-block|{
-return|return
-operator|!
-name|namespaces
-operator|.
-name|isEmpty
-argument_list|()
-return|;
-block|}
 comment|//--------------------------------------------------< JackrabbitSession>---
 annotation|@
 name|Override
