@@ -70,6 +70,12 @@ name|VersionConstants
 extends|extends
 name|JcrConstants
 block|{
+comment|// version storage
+name|String
+name|REP_VERSIONSTORAGE
+init|=
+literal|"rep:versionStorage"
+decl_stmt|;
 comment|// activities
 name|String
 name|JCR_ACTIVITY

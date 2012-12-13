@@ -651,6 +651,9 @@ name|parentNode
 init|=
 operator|new
 name|NodeImpl
+argument_list|<
+name|NodeDelegate
+argument_list|>
 argument_list|(
 name|parentDelegate
 argument_list|)

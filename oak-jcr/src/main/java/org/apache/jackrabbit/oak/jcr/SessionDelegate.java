@@ -788,6 +788,7 @@ operator|.
 name|getLatestRoot
 argument_list|()
 expr_stmt|;
+comment|// FIXME: do not pass partially initialized 'this'
 name|this
 operator|.
 name|workspace

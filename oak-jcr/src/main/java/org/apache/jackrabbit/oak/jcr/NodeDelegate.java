@@ -273,6 +273,7 @@ name|location
 argument_list|)
 return|;
 block|}
+specifier|protected
 name|NodeDelegate
 parameter_list|(
 name|SessionDelegate
@@ -958,6 +959,7 @@ block|}
 comment|//------------------------------------------------------------< internal>---
 annotation|@
 name|Nonnull
+specifier|protected
 name|Tree
 name|getTree
 parameter_list|()

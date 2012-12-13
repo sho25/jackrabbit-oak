@@ -426,6 +426,9 @@ block|{
 return|return
 operator|new
 name|NodeImpl
+argument_list|<
+name|NodeDelegate
+argument_list|>
 argument_list|(
 name|dlg
 operator|.
