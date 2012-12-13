@@ -85,6 +85,16 @@ name|AbstractQueryTest
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Test
+import|;
+end_import
+
 begin_comment
 comment|/**  * Tests the query engine using the default index implementation: the  * {@link PropertyIndexProvider}  */
 end_comment
@@ -132,6 +142,21 @@ operator|.
 name|createContentRepository
 argument_list|()
 return|;
+block|}
+annotation|@
+name|Test
+specifier|public
+name|void
+name|sql2Index
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|test
+argument_list|(
+literal|"sql2_index.txt"
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 end_class
