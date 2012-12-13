@@ -239,7 +239,7 @@ name|oak
 operator|.
 name|api
 operator|.
-name|SessionQueryEngine
+name|QueryEngine
 import|;
 end_import
 
@@ -349,7 +349,7 @@ name|qomFactory
 decl_stmt|;
 specifier|private
 specifier|final
-name|SessionQueryEngine
+name|QueryEngine
 name|queryEngine
 decl_stmt|;
 specifier|private
