@@ -17,7 +17,7 @@ name|plugins
 operator|.
 name|index
 operator|.
-name|property
+name|p2
 package|;
 end_package
 
@@ -196,13 +196,13 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Is responsible for querying the property index content.  *   *<p>  * This class can be used directly on a subtree where there is an index defined  * by supplying a {@link NodeState} root.  *</p>  *   *<pre>  *<code>  * {  *     NodeState state = ... // get a node state  *     PropertyIndexLookup lookup = new PropertyIndexLookup(state);  *     Set<String> hits = lookup.find("foo", PropertyValues.newString("xyz"));  * }  *</code>  *</pre>  */
+comment|/**  * Is responsible for querying the property index content.  *   *<p>  * This class can be used directly on a subtree where there is an index defined  * by supplying a {@link NodeState} root.  *</p>  *   *<pre>  *<code>  * {  *     NodeState state = ... // get a node state  *     Property2IndexLookup lookup = new Property2IndexLookup(state);  *     Set<String> hits = lookup.find("foo", PropertyValues.newString("xyz"));  * }  *</code>  *</pre>  */
 end_comment
 
 begin_class
 specifier|public
 class|class
-name|PropertyIndexLookup
+name|Property2IndexLookup
 block|{
 specifier|private
 specifier|final
@@ -210,7 +210,7 @@ name|NodeState
 name|root
 decl_stmt|;
 specifier|public
-name|PropertyIndexLookup
+name|Property2IndexLookup
 parameter_list|(
 name|NodeState
 name|root
@@ -311,7 +311,7 @@ argument_list|)
 decl_stmt|;
 return|return
 operator|new
-name|PropertyIndexLookup
+name|Property2IndexLookup
 argument_list|(
 name|child
 argument_list|)
@@ -384,9 +384,6 @@ operator|.
 name|newHashSet
 argument_list|()
 decl_stmt|;
-name|PropertyState
-name|property
-decl_stmt|;
 name|NodeState
 name|state
 init|=
@@ -411,6 +408,9 @@ operator|!=
 literal|null
 condition|)
 block|{
+name|NodeState
+name|property
+decl_stmt|;
 name|state
 operator|=
 name|state
@@ -425,7 +425,7 @@ control|(
 name|String
 name|p
 range|:
-name|PropertyIndex
+name|Property2Index
 operator|.
 name|encode
 argument_list|(
@@ -437,7 +437,7 @@ name|property
 operator|=
 name|state
 operator|.
-name|getProperty
+name|getChildNode
 argument_list|(
 name|p
 argument_list|)
@@ -457,12 +457,8 @@ name|path
 range|:
 name|property
 operator|.
-name|getValue
-argument_list|(
-name|Type
-operator|.
-name|STRINGS
-argument_list|)
+name|getChildNodeNames
+argument_list|()
 control|)
 block|{
 name|paths
@@ -479,15 +475,16 @@ block|}
 else|else
 block|{
 comment|// No index available, so first check this node for a match
+name|PropertyState
 name|property
-operator|=
+init|=
 name|root
 operator|.
 name|getProperty
 argument_list|(
 name|name
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 if|if
 condition|(
 name|property
@@ -595,11 +592,11 @@ operator|.
 name|getName
 argument_list|()
 decl_stmt|;
-name|PropertyIndexLookup
+name|Property2IndexLookup
 name|lookup
 init|=
 operator|new
-name|PropertyIndexLookup
+name|Property2IndexLookup
 argument_list|(
 name|entry
 operator|.
@@ -713,7 +710,7 @@ control|(
 name|String
 name|p
 range|:
-name|PropertyIndex
+name|Property2Index
 operator|.
 name|encode
 argument_list|(
@@ -827,7 +824,7 @@ name|isArray
 argument_list|()
 operator|||
 operator|!
-name|PropertyIndex
+name|Property2Index
 operator|.
 name|TYPE
 operator|.
