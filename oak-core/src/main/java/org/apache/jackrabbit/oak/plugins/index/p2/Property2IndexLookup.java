@@ -751,7 +751,7 @@ name|cost
 operator|=
 name|Double
 operator|.
-name|MAX_VALUE
+name|POSITIVE_INFINITY
 expr_stmt|;
 block|}
 return|return

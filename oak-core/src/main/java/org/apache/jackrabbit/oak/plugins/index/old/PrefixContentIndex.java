@@ -277,7 +277,7 @@ block|}
 return|return
 name|Double
 operator|.
-name|MAX_VALUE
+name|POSITIVE_INFINITY
 return|;
 block|}
 specifier|private

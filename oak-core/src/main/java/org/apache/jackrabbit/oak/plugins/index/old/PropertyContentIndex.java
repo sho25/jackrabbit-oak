@@ -264,7 +264,7 @@ block|{
 return|return
 name|Double
 operator|.
-name|MAX_VALUE
+name|POSITIVE_INFINITY
 return|;
 block|}
 if|if
@@ -282,7 +282,7 @@ comment|// only support equality matches (for now)
 return|return
 name|Double
 operator|.
-name|MAX_VALUE
+name|POSITIVE_INFINITY
 return|;
 block|}
 name|boolean

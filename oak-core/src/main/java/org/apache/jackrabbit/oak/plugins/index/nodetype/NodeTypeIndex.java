@@ -304,7 +304,7 @@ comment|// doesn't have a node type restriction
 return|return
 name|Double
 operator|.
-name|MAX_VALUE
+name|POSITIVE_INFINITY
 return|;
 block|}
 name|NodeTypeIndexLookup
@@ -351,7 +351,7 @@ block|{
 return|return
 name|Double
 operator|.
-name|MAX_VALUE
+name|POSITIVE_INFINITY
 return|;
 block|}
 block|}
