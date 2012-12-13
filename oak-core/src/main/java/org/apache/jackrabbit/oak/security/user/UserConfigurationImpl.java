@@ -473,6 +473,18 @@ name|AuthorizableActionProvider
 name|getAuthorizableActionProvider
 parameter_list|()
 block|{
+comment|// TODO: add proper implementation
+name|AuthorizableActionProvider
+name|defProvider
+init|=
+operator|new
+name|DefaultAuthorizableActionProvider
+argument_list|(
+name|securityProvider
+argument_list|,
+name|config
+argument_list|)
+decl_stmt|;
 return|return
 name|config
 operator|.
@@ -482,9 +494,7 @@ name|UserConstants
 operator|.
 name|PARAM_AUTHORIZABLE_ACTION_PROVIDER
 argument_list|,
-name|DefaultAuthorizableActionProvider
-operator|.
-name|INSTANCE
+name|defProvider
 argument_list|)
 return|;
 block|}

@@ -119,6 +119,42 @@ name|NamePathMapper
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|security
+operator|.
+name|ConfigurationParameters
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|security
+operator|.
+name|SecurityProvider
+import|;
+end_import
+
 begin_comment
 comment|/**  * Abstract implementation of the {@code AuthorizableAction} interface that  * doesn't perform any action. This is a convenience implementation allowing  * subclasses to only implement methods that need extra attention.  */
 end_comment
@@ -131,6 +167,20 @@ name|AbstractAuthorizableAction
 implements|implements
 name|AuthorizableAction
 block|{
+comment|// TODO: review again
+specifier|protected
+specifier|abstract
+name|void
+name|init
+parameter_list|(
+name|SecurityProvider
+name|securityProvider
+parameter_list|,
+name|ConfigurationParameters
+name|config
+parameter_list|)
+function_decl|;
+comment|//-------------------------------------------------< AuthorizableAction>---
 comment|/**      * Doesn't perform any action.      *      * @see AuthorizableAction#onCreate(org.apache.jackrabbit.api.security.user.Group, org.apache.jackrabbit.oak.api.Root, org.apache.jackrabbit.oak.namepath.NamePathMapper)      */
 annotation|@
 name|Override

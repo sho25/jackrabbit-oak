@@ -111,6 +111,42 @@ name|NamePathMapper
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|security
+operator|.
+name|ConfigurationParameters
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|security
+operator|.
+name|SecurityProvider
+import|;
+end_import
+
 begin_comment
 comment|/**  * Authorizable action attempting to clear all group membership before removing  * the specified authorizable. If {@link Group#removeMember(Authorizable)}  * fails due to lack of permissions {@link AuthorizableAction#onRemove(org.apache.jackrabbit.api.security.user.Authorizable, org.apache.jackrabbit.oak.api.Root, org.apache.jackrabbit.oak.namepath.NamePathMapper)}  * throws an exception and removing the specified authorizable will be aborted.  */
 end_comment
@@ -122,6 +158,22 @@ name|ClearMembershipAction
 extends|extends
 name|AbstractAuthorizableAction
 block|{
+comment|//-----------------------------------------< AbstractAuthorizableAction>---
+annotation|@
+name|Override
+specifier|protected
+name|void
+name|init
+parameter_list|(
+name|SecurityProvider
+name|securityProvider
+parameter_list|,
+name|ConfigurationParameters
+name|config
+parameter_list|)
+block|{
+comment|// nothing to do
+block|}
 comment|//-------------------------------------------------< AuthorizableAction>---
 annotation|@
 name|Override

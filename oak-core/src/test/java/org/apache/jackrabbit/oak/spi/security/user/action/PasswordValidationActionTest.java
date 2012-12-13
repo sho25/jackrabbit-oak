@@ -989,6 +989,21 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
+specifier|protected
+name|void
+name|init
+parameter_list|(
+name|SecurityProvider
+name|securityProvider
+parameter_list|,
+name|ConfigurationParameters
+name|config
+parameter_list|)
+block|{
+comment|// nothing to do
+block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onCreate
