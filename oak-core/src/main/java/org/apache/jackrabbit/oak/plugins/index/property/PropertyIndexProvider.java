@@ -51,6 +51,26 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
+name|plugins
+operator|.
+name|index
+operator|.
+name|p2
+operator|.
+name|Property2IndexProvider
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
 name|spi
 operator|.
 name|query
@@ -110,10 +130,12 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A provider for property indexes.  *<p>  * Even if there are multiple index definitions, there is only actually one  * PropertyIndex instance, which is used for all indexes.  *   * @see PropertyIndex  *   */
+comment|/**  * A provider for property indexes.  *<p>  * Even if there are multiple index definitions, there is only actually one  * PropertyIndex instance, which is used for all indexes.  *   * @see PropertyIndex  * @deprecated please use the {@link Property2IndexProvider} instead  *   */
 end_comment
 
 begin_class
+annotation|@
+name|Deprecated
 specifier|public
 class|class
 name|PropertyIndexProvider

@@ -346,6 +346,8 @@ comment|/**  * {@link IndexHook} implementation that is responsible for keeping 
 end_comment
 
 begin_class
+annotation|@
+name|Deprecated
 class|class
 name|PropertyIndexDiff
 implements|implements

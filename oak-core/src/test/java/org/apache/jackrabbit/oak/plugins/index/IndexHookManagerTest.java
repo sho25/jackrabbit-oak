@@ -93,6 +93,18 @@ name|junit
 operator|.
 name|Assert
 operator|.
+name|assertFalse
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
 name|assertNotNull
 import|;
 end_import
@@ -106,18 +118,6 @@ operator|.
 name|Assert
 operator|.
 name|assertTrue
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertFalse
 import|;
 end_import
 
@@ -167,9 +167,9 @@ name|plugins
 operator|.
 name|index
 operator|.
-name|property
+name|p2
 operator|.
-name|PropertyIndexHookProvider
+name|Property2IndexHookProvider
 import|;
 end_import
 
@@ -187,9 +187,9 @@ name|plugins
 operator|.
 name|index
 operator|.
-name|property
+name|p2
 operator|.
-name|PropertyIndexLookup
+name|Property2IndexLookup
 import|;
 end_import
 
@@ -324,7 +324,7 @@ name|setProperty
 argument_list|(
 literal|"type"
 argument_list|,
-literal|"property"
+literal|"p2"
 argument_list|)
 operator|.
 name|setProperty
@@ -371,7 +371,7 @@ name|setProperty
 argument_list|(
 literal|"type"
 argument_list|,
-literal|"property"
+literal|"p2"
 argument_list|)
 operator|.
 name|setProperty
@@ -450,7 +450,7 @@ operator|new
 name|CompositeIndexHookProvider
 argument_list|(
 operator|new
-name|PropertyIndexHookProvider
+name|Property2IndexHookProvider
 argument_list|()
 argument_list|)
 argument_list|)
@@ -494,11 +494,11 @@ argument_list|,
 literal|":index"
 argument_list|)
 expr_stmt|;
-name|PropertyIndexLookup
+name|Property2IndexLookup
 name|lookup
 init|=
 operator|new
-name|PropertyIndexLookup
+name|Property2IndexLookup
 argument_list|(
 name|indexed
 argument_list|)
@@ -522,11 +522,11 @@ literal|"abc"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|PropertyIndexLookup
+name|Property2IndexLookup
 name|lookupChild
 init|=
 operator|new
-name|PropertyIndexLookup
+name|Property2IndexLookup
 argument_list|(
 name|indexed
 operator|.
@@ -648,7 +648,7 @@ name|setProperty
 argument_list|(
 literal|"type"
 argument_list|,
-literal|"property"
+literal|"p2"
 argument_list|)
 operator|.
 name|setProperty
@@ -687,7 +687,7 @@ operator|new
 name|CompositeIndexHookProvider
 argument_list|(
 operator|new
-name|PropertyIndexHookProvider
+name|Property2IndexHookProvider
 argument_list|()
 argument_list|)
 argument_list|)
@@ -755,11 +755,11 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// next, lookup
-name|PropertyIndexLookup
+name|Property2IndexLookup
 name|lookup
 init|=
 operator|new
-name|PropertyIndexLookup
+name|Property2IndexLookup
 argument_list|(
 name|indexed
 argument_list|)
@@ -854,7 +854,7 @@ name|setProperty
 argument_list|(
 literal|"type"
 argument_list|,
-literal|"property"
+literal|"p2"
 argument_list|)
 operator|.
 name|setProperty
@@ -886,7 +886,7 @@ operator|new
 name|CompositeIndexHookProvider
 argument_list|(
 operator|new
-name|PropertyIndexHookProvider
+name|Property2IndexHookProvider
 argument_list|()
 argument_list|)
 argument_list|)
@@ -954,11 +954,11 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// next, lookup
-name|PropertyIndexLookup
+name|Property2IndexLookup
 name|lookup
 init|=
 operator|new
-name|PropertyIndexLookup
+name|Property2IndexLookup
 argument_list|(
 name|indexed
 argument_list|)
@@ -1045,7 +1045,7 @@ name|setProperty
 argument_list|(
 literal|"type"
 argument_list|,
-literal|"property"
+literal|"p2"
 argument_list|)
 operator|.
 name|setProperty
@@ -1104,7 +1104,7 @@ operator|new
 name|CompositeIndexHookProvider
 argument_list|(
 operator|new
-name|PropertyIndexHookProvider
+name|Property2IndexHookProvider
 argument_list|()
 argument_list|)
 argument_list|)
@@ -1172,11 +1172,11 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// next, lookup
-name|PropertyIndexLookup
+name|Property2IndexLookup
 name|lookup
 init|=
 operator|new
-name|PropertyIndexLookup
+name|Property2IndexLookup
 argument_list|(
 name|indexed
 argument_list|)

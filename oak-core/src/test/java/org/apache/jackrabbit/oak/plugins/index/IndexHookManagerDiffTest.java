@@ -179,9 +179,9 @@ name|plugins
 operator|.
 name|index
 operator|.
-name|property
+name|p2
 operator|.
-name|PropertyIndexHookProvider
+name|Property2IndexHookProvider
 import|;
 end_import
 
@@ -314,7 +314,7 @@ name|setProperty
 argument_list|(
 literal|"type"
 argument_list|,
-literal|"property"
+literal|"p2"
 argument_list|)
 operator|.
 name|setProperty
@@ -356,7 +356,7 @@ name|setProperty
 argument_list|(
 literal|"type"
 argument_list|,
-literal|"property"
+literal|"p2"
 argument_list|)
 operator|.
 name|setProperty
@@ -428,7 +428,7 @@ name|setProperty
 argument_list|(
 literal|"type"
 argument_list|,
-literal|"property"
+literal|"p2"
 argument_list|)
 operator|.
 name|setProperty
@@ -457,7 +457,7 @@ operator|new
 name|CompositeIndexHookProvider
 argument_list|(
 operator|new
-name|PropertyIndexHookProvider
+name|Property2IndexHookProvider
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -586,7 +586,7 @@ name|updates
 operator|.
 name|remove
 argument_list|(
-literal|"property"
+literal|"p2"
 argument_list|)
 operator|.
 name|keySet

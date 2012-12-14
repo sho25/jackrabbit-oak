@@ -73,9 +73,9 @@ name|plugins
 operator|.
 name|index
 operator|.
-name|property
+name|p2
 operator|.
-name|PropertyIndexLookup
+name|Property2IndexLookup
 import|;
 end_import
 
@@ -167,11 +167,11 @@ name|String
 name|path
 parameter_list|)
 block|{
-name|PropertyIndexLookup
+name|Property2IndexLookup
 name|lookup
 init|=
 operator|new
-name|PropertyIndexLookup
+name|Property2IndexLookup
 argument_list|(
 name|root
 argument_list|)
@@ -299,11 +299,11 @@ argument_list|(
 name|nodeTypes
 argument_list|)
 decl_stmt|;
-name|PropertyIndexLookup
+name|Property2IndexLookup
 name|lookup
 init|=
 operator|new
-name|PropertyIndexLookup
+name|Property2IndexLookup
 argument_list|(
 name|root
 argument_list|)
@@ -354,11 +354,11 @@ operator|.
 name|newHashSet
 argument_list|()
 decl_stmt|;
-name|PropertyIndexLookup
+name|Property2IndexLookup
 name|lookup
 init|=
 operator|new
-name|PropertyIndexLookup
+name|Property2IndexLookup
 argument_list|(
 name|root
 argument_list|)

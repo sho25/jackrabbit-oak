@@ -266,7 +266,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *<code>NodeTypeIndex</code> implements a {@link QueryIndex} using  * {@link PropertyIndexLookup}s on<code>jcr:primaryType</code> and  *<code>jcr:mixinTypes</code> to evaluate a node type restriction on  * {@link Filter}. The cost for this index is the sum of the costs of the  * {@link PropertyIndexLookup} for queries on<code>jcr:primaryType</code> and  *<code>jcr:mixinTypes</code>.  */
+comment|/**  *<code>NodeTypeIndex</code> implements a {@link QueryIndex} using  * {@link Property2IndexLookup}s on<code>jcr:primaryType</code> and  *<code>jcr:mixinTypes</code> to evaluate a node type restriction on  * {@link Filter}. The cost for this index is the sum of the costs of the  * {@link Property2IndexLookup} for queries on<code>jcr:primaryType</code> and  *<code>jcr:mixinTypes</code>.  */
 end_comment
 
 begin_class

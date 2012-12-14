@@ -248,6 +248,8 @@ comment|/**  * Takes care of applying the updates to the index content.  *<p>  *
 end_comment
 
 begin_class
+annotation|@
+name|Deprecated
 class|class
 name|PropertyIndexUpdate
 block|{

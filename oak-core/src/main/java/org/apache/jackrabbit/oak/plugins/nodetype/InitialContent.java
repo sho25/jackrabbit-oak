@@ -501,7 +501,7 @@ name|setProperty
 argument_list|(
 literal|"type"
 argument_list|,
-literal|"property"
+literal|"p2"
 argument_list|)
 operator|.
 name|setProperty
@@ -547,7 +547,7 @@ name|setProperty
 argument_list|(
 literal|"type"
 argument_list|,
-literal|"property"
+literal|"p2"
 argument_list|)
 operator|.
 name|setProperty
@@ -604,7 +604,7 @@ name|setProperty
 argument_list|(
 literal|"type"
 argument_list|,
-literal|"property"
+literal|"p2"
 argument_list|)
 operator|.
 name|setProperty
@@ -652,7 +652,7 @@ name|setProperty
 argument_list|(
 literal|"type"
 argument_list|,
-literal|"property"
+literal|"p2"
 argument_list|)
 operator|.
 name|setProperty
@@ -700,7 +700,7 @@ name|setProperty
 argument_list|(
 literal|"type"
 argument_list|,
-literal|"property"
+literal|"p2"
 argument_list|)
 operator|.
 name|setProperty

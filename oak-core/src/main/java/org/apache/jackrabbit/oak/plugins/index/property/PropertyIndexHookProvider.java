@@ -131,6 +131,26 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
+name|plugins
+operator|.
+name|index
+operator|.
+name|p2
+operator|.
+name|Property2IndexHookProvider
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
 name|spi
 operator|.
 name|state
@@ -154,7 +174,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Service that provides PropertyIndex based IndexHooks.  *   * @see PropertyIndexDiff  * @see IndexHookProvider  *   */
+comment|/**  * Service that provides PropertyIndex based IndexHooks.  *   * @see PropertyIndexDiff  * @see IndexHookProvider  * @deprecated please use the {@link Property2IndexHookProvider} instead  *   */
 end_comment
 
 begin_class
@@ -167,6 +187,8 @@ name|IndexHookProvider
 operator|.
 name|class
 argument_list|)
+annotation|@
+name|Deprecated
 specifier|public
 class|class
 name|PropertyIndexHookProvider

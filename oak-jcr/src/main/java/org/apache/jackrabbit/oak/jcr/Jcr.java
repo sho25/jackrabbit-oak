@@ -179,9 +179,9 @@ name|plugins
 operator|.
 name|index
 operator|.
-name|property
+name|p2
 operator|.
-name|PropertyIndexHookProvider
+name|Property2IndexHookProvider
 import|;
 end_import
 
@@ -199,9 +199,9 @@ name|plugins
 operator|.
 name|index
 operator|.
-name|property
+name|p2
 operator|.
-name|PropertyIndexProvider
+name|Property2IndexProvider
 import|;
 end_import
 
@@ -593,7 +593,7 @@ expr_stmt|;
 name|with
 argument_list|(
 operator|new
-name|PropertyIndexHookProvider
+name|Property2IndexHookProvider
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -607,7 +607,7 @@ expr_stmt|;
 name|with
 argument_list|(
 operator|new
-name|PropertyIndexProvider
+name|Property2IndexProvider
 argument_list|()
 argument_list|)
 expr_stmt|;

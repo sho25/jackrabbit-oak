@@ -246,6 +246,8 @@ comment|/**  * Provides a QueryIndex that does lookups against a property index 
 end_comment
 
 begin_class
+annotation|@
+name|Deprecated
 class|class
 name|PropertyIndex
 implements|implements
