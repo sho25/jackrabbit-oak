@@ -481,10 +481,12 @@ argument_list|(
 name|nodePath
 argument_list|)
 decl_stmt|;
+comment|// FIXME - Performance
+comment|//MongoNode parent = getStoredNode(parentNodePath);
 name|MongoNode
 name|parent
 init|=
-name|getStoredNode
+name|getStagedNode
 argument_list|(
 name|parentNodePath
 argument_list|)
@@ -550,10 +552,12 @@ operator|.
 name|getValue
 argument_list|()
 decl_stmt|;
+comment|// FIXME - Performance
+comment|//MongoNode node = getStoredNode(instruction.getPath());
 name|MongoNode
 name|node
 init|=
-name|getStoredNode
+name|getStagedNode
 argument_list|(
 name|instruction
 operator|.

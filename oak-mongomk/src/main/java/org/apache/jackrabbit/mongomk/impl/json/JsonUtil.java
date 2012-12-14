@@ -21,26 +21,6 @@ end_package
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|LinkedList
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|List
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -177,6 +157,16 @@ name|JSONObject
 import|;
 end_import
 
+begin_import
+import|import
+name|com
+operator|.
+name|mongodb
+operator|.
+name|BasicDBList
+import|;
+end_import
+
 begin_comment
 comment|/**  * JSON related utility class.  */
 end_comment
@@ -269,17 +259,12 @@ operator|instanceof
 name|JSONArray
 condition|)
 block|{
-name|List
-argument_list|<
-name|Object
-argument_list|>
+comment|// DBList is needed in order to cache node properties correctly.
+name|BasicDBList
 name|elements
 init|=
 operator|new
-name|LinkedList
-argument_list|<
-name|Object
-argument_list|>
+name|BasicDBList
 argument_list|()
 decl_stmt|;
 name|JSONArray
