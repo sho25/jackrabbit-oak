@@ -116,7 +116,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * PrivilegeConfiguration... TODO  */
+comment|/**  * Interface for the privilege management configuration.  */
 end_comment
 
 begin_interface
@@ -126,6 +126,7 @@ name|PrivilegeConfiguration
 extends|extends
 name|SecurityConfiguration
 block|{
+comment|/**      * Creates a new instance of {@link PrivilegeManager}.      *      * @param root The root for which the privilege manager should be created.      * @param namePathMapper The name and path mapper to be used.      * @return A new {@code PrivilegeManager}.      */
 annotation|@
 name|Nonnull
 name|PrivilegeManager
@@ -138,6 +139,7 @@ name|NamePathMapper
 name|namePathMapper
 parameter_list|)
 function_decl|;
+comment|/**      * Creates a new {@code PrivilegeDefinitionReader} instance for the      * specified {@code tree}.      *      * @param tree The {@code Tree} that is used to read the privilege definitions.      * @return A new {@code PrivilegeDefinitionReader}.      */
 annotation|@
 name|Nonnull
 name|PrivilegeDefinitionReader

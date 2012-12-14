@@ -246,7 +246,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * PrivilegeConfigurationImpl... TODO  */
+comment|/**  * Configuration for the privilege management component.  */
 end_comment
 
 begin_class
@@ -260,6 +260,7 @@ name|Default
 implements|implements
 name|PrivilegeConfiguration
 block|{
+comment|//---------------------------------------------< PrivilegeConfiguration>---
 annotation|@
 name|Nonnull
 annotation|@
@@ -305,6 +306,7 @@ name|tree
 argument_list|)
 return|;
 block|}
+comment|//----------------------------------------------< SecurityConfiguration>---
 annotation|@
 name|Nonnull
 annotation|@

@@ -80,7 +80,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * PrivilegeConstants... TODO  */
+comment|/**  * Internal name constants used for the privilege management.  */
 end_comment
 
 begin_interface
@@ -88,12 +88,13 @@ specifier|public
 interface|interface
 name|PrivilegeConstants
 block|{
-comment|// constants for privilege serialization
+comment|/** Internal (oak) name for the root node of the privilege store. */
 name|String
 name|REP_PRIVILEGES
 init|=
 literal|"rep:privileges"
 decl_stmt|;
+comment|/** Internal (oak) path for the privilege store.*/
 name|String
 name|PRIVILEGES_PATH
 init|=
@@ -107,152 +108,181 @@ literal|'/'
 operator|+
 name|REP_PRIVILEGES
 decl_stmt|;
+comment|/** Node type name of the root node of the privilege store */
 name|String
 name|NT_REP_PRIVILEGES
 init|=
 literal|"rep:Privileges"
 decl_stmt|;
+comment|/** Node type name of the privilege definition nodes */
 name|String
 name|NT_REP_PRIVILEGE
 init|=
 literal|"rep:Privilege"
 decl_stmt|;
+comment|/** Name of the property that defines if the privilege is abstract. */
 name|String
 name|REP_IS_ABSTRACT
 init|=
 literal|"rep:isAbstract"
 decl_stmt|;
+comment|/** Name of the privilege definition property that stores the aggregate privilege names. */
 name|String
 name|REP_AGGREGATES
 init|=
 literal|"rep:aggregates"
 decl_stmt|;
-comment|// Constants for privilege names
+comment|/** Internal (oak) name of the {@link javax.jcr.security.Privilege#JCR_READ} privilege */
 name|String
 name|JCR_READ
 init|=
 literal|"jcr:read"
 decl_stmt|;
+comment|/** Internal (oak) name of the {@link javax.jcr.security.Privilege#JCR_MODIFY_PROPERTIES} privilege */
 name|String
 name|JCR_MODIFY_PROPERTIES
 init|=
 literal|"jcr:modifyProperties"
 decl_stmt|;
+comment|/** Internal (oak) name of the {@link javax.jcr.security.Privilege#JCR_ADD_CHILD_NODES} privilege */
 name|String
 name|JCR_ADD_CHILD_NODES
 init|=
 literal|"jcr:addChildNodes"
 decl_stmt|;
+comment|/** Internal (oak) name of the {@link javax.jcr.security.Privilege#JCR_REMOVE_NODE} privilege */
 name|String
 name|JCR_REMOVE_NODE
 init|=
 literal|"jcr:removeNode"
 decl_stmt|;
+comment|/** Internal (oak) name of the {@link javax.jcr.security.Privilege#JCR_REMOVE_CHILD_NODES} privilege */
 name|String
 name|JCR_REMOVE_CHILD_NODES
 init|=
 literal|"jcr:removeChildNodes"
 decl_stmt|;
+comment|/** Internal (oak) name of the {@link javax.jcr.security.Privilege#JCR_WRITE} privilege */
 name|String
 name|JCR_WRITE
 init|=
 literal|"jcr:write"
 decl_stmt|;
+comment|/** Internal (oak) name of the {@link javax.jcr.security.Privilege#JCR_READ_ACCESS_CONTROL} privilege */
 name|String
 name|JCR_READ_ACCESS_CONTROL
 init|=
 literal|"jcr:readAccessControl"
 decl_stmt|;
+comment|/** Internal (oak) name of the {@link javax.jcr.security.Privilege#JCR_MODIFY_ACCESS_CONTROL} privilege */
 name|String
 name|JCR_MODIFY_ACCESS_CONTROL
 init|=
 literal|"jcr:modifyAccessControl"
 decl_stmt|;
+comment|/** Internal (oak) name of the {@link javax.jcr.security.Privilege#JCR_LOCK_MANAGEMENT} privilege */
 name|String
 name|JCR_LOCK_MANAGEMENT
 init|=
 literal|"jcr:lockManagement"
 decl_stmt|;
+comment|/** Internal (oak) name of the {@link javax.jcr.security.Privilege#JCR_VERSION_MANAGEMENT} privilege */
 name|String
 name|JCR_VERSION_MANAGEMENT
 init|=
 literal|"jcr:versionManagement"
 decl_stmt|;
+comment|/** Internal (oak) name of the {@link javax.jcr.security.Privilege#JCR_NODE_TYPE_MANAGEMENT} privilege */
 name|String
 name|JCR_NODE_TYPE_MANAGEMENT
 init|=
 literal|"jcr:nodeTypeManagement"
 decl_stmt|;
+comment|/** Internal (oak) name of the {@link javax.jcr.security.Privilege#JCR_RETENTION_MANAGEMENT} privilege */
 name|String
 name|JCR_RETENTION_MANAGEMENT
 init|=
 literal|"jcr:retentionManagement"
 decl_stmt|;
+comment|/** Internal (oak) name of the {@link javax.jcr.security.Privilege#JCR_LIFECYCLE_MANAGEMENT} privilege */
 name|String
 name|JCR_LIFECYCLE_MANAGEMENT
 init|=
 literal|"jcr:lifecycleManagement"
 decl_stmt|;
+comment|/** Internal (oak) name of the jcr:workspaceManagement privilege */
 name|String
 name|JCR_WORKSPACE_MANAGEMENT
 init|=
 literal|"jcr:workspaceManagement"
 decl_stmt|;
+comment|/** Internal (oak) name of the jcr:nodeTypeDefinitionManagement privilege */
 name|String
 name|JCR_NODE_TYPE_DEFINITION_MANAGEMENT
 init|=
 literal|"jcr:nodeTypeDefinitionManagement"
 decl_stmt|;
+comment|/** Internal (oak) name of the jcr:namespaceManagement privilege */
 name|String
 name|JCR_NAMESPACE_MANAGEMENT
 init|=
 literal|"jcr:namespaceManagement"
 decl_stmt|;
+comment|/** Internal (oak) name of the {@link javax.jcr.security.Privilege#JCR_ALL} privilege */
 name|String
 name|JCR_ALL
 init|=
 literal|"jcr:all"
 decl_stmt|;
+comment|/** Internal (oak) name of the rep:privilegeManagement privilege */
 name|String
 name|REP_PRIVILEGE_MANAGEMENT
 init|=
 literal|"rep:privilegeManagement"
 decl_stmt|;
+comment|/**      * Internal (oak) name of the rep:userManagement privilege      * @since OAK 1.0      */
 name|String
 name|REP_USER_MANAGEMENT
 init|=
 literal|"rep:userManagement"
 decl_stmt|;
+comment|/** Internal (oak) name of the rep:write privilege */
 name|String
 name|REP_WRITE
 init|=
 literal|"rep:write"
 decl_stmt|;
+comment|/** Internal (oak) name of the rep:readNodes privilege */
 name|String
 name|REP_READ_NODES
 init|=
 literal|"rep:readNodes"
 decl_stmt|;
+comment|/** Internal (oak) name of the rep:readProperties privilege */
 name|String
 name|REP_READ_PROPERTIES
 init|=
 literal|"rep:readProperties"
 decl_stmt|;
+comment|/** Internal (oak) name of the rep:addProperties privilege */
 name|String
 name|REP_ADD_PROPERTIES
 init|=
 literal|"rep:addProperties"
 decl_stmt|;
+comment|/** Internal (oak) name of the rep:alterProperties privilege */
 name|String
 name|REP_ALTER_PROPERTIES
 init|=
 literal|"rep:alterProperties"
 decl_stmt|;
+comment|/** Internal (oak) name of the rep:removeProperties privilege */
 name|String
 name|REP_REMOVE_PROPERTIES
 init|=
 literal|"rep:removeProperties"
 decl_stmt|;
+comment|/** The internal names of all built-in privileges that are not aggregates. */
 name|String
 index|[]
 name|NON_AGGR_PRIVILEGES
@@ -302,6 +332,7 @@ block|,
 name|REP_USER_MANAGEMENT
 block|}
 decl_stmt|;
+comment|/** The aggregation definition of the jcr:read privilege. */
 name|String
 index|[]
 name|AGGR_JCR_READ
@@ -315,6 +346,7 @@ block|,
 name|REP_READ_PROPERTIES
 block|}
 decl_stmt|;
+comment|/** The aggregation definition of the jcr:modifyProperties privilege. */
 name|String
 index|[]
 name|AGGR_JCR_MODIFY_PROPERTIES
@@ -330,6 +362,7 @@ block|,
 name|REP_REMOVE_PROPERTIES
 block|}
 decl_stmt|;
+comment|/** The aggregation definition of the jcr:write privilege. */
 name|String
 index|[]
 name|AGGR_JCR_WRITE
@@ -347,6 +380,7 @@ block|,
 name|JCR_REMOVE_NODE
 block|}
 decl_stmt|;
+comment|/** The aggregation definition of the rep:write privilege. */
 name|String
 index|[]
 name|AGGR_REP_WRITE
@@ -360,6 +394,7 @@ block|,
 name|JCR_NODE_TYPE_MANAGEMENT
 block|}
 decl_stmt|;
+comment|/** The internal names of all built-in privileges that are aggregates. */
 name|Map
 argument_list|<
 name|String
@@ -390,6 +425,7 @@ argument_list|,
 name|AGGR_REP_WRITE
 argument_list|)
 decl_stmt|;
+comment|/**      * The internal names of all property definitions that are associated with      * the {@link #NT_REP_PRIVILEGE rep:Privilege} node type      */
 name|Set
 argument_list|<
 name|String
