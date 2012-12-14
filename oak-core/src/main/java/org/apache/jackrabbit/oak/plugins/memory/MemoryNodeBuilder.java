@@ -625,6 +625,8 @@ name|removed
 argument_list|(
 name|name
 argument_list|)
+argument_list|,
+literal|"This node has already been removed"
 argument_list|)
 expr_stmt|;
 name|parent
