@@ -25,16 +25,6 @@ begin_import
 import|import
 name|java
 operator|.
-name|security
-operator|.
-name|AccessControlException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
 name|util
 operator|.
 name|Collections
@@ -118,6 +108,18 @@ operator|.
 name|jcr
 operator|.
 name|Value
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|jcr
+operator|.
+name|security
+operator|.
+name|AccessControlException
 import|;
 end_import
 
@@ -561,19 +563,15 @@ name|Tree
 name|aceTree
 parameter_list|)
 throws|throws
-name|javax
-operator|.
-name|jcr
-operator|.
-name|security
-operator|.
 name|AccessControlException
 block|{
 comment|// TODO
 throw|throw
 operator|new
 name|UnsupportedOperationException
-argument_list|()
+argument_list|(
+literal|"not yet implemented"
+argument_list|)
 throw|;
 block|}
 annotation|@
@@ -595,15 +593,16 @@ argument_list|>
 name|restrictions
 parameter_list|)
 throws|throws
-name|javax
-operator|.
-name|jcr
-operator|.
-name|security
-operator|.
 name|AccessControlException
 block|{
 comment|// TODO
+throw|throw
+operator|new
+name|UnsupportedOperationException
+argument_list|(
+literal|"not yet implemented"
+argument_list|)
+throw|;
 block|}
 annotation|@
 name|Override
