@@ -150,7 +150,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * AuthorizableBaseProvider... TODO  */
+comment|/**  * Base class for {@link UserProvider} and {@link MembershipProvider}.  */
 end_comment
 
 begin_class
