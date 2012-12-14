@@ -1269,11 +1269,11 @@ name|key
 init|=
 name|path
 operator|+
-literal|"@"
+literal|"*"
 operator|+
 name|branchId
 operator|+
-literal|"@"
+literal|"*"
 operator|+
 name|revisionId
 decl_stmt|;
@@ -1328,11 +1328,11 @@ name|key
 init|=
 name|path
 operator|+
-literal|"@"
+literal|"*"
 operator|+
 name|branchId
 operator|+
-literal|"@"
+literal|"*"
 operator|+
 name|revisionId
 decl_stmt|;
