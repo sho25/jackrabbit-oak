@@ -1012,6 +1012,7 @@ name|values
 argument_list|()
 control|)
 block|{
+comment|// TODO: NT_BASE is the oak-name, while the template is an JCR level API which might have local namespace remapping
 if|if
 condition|(
 operator|!
