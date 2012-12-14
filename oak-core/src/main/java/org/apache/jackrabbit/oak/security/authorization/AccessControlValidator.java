@@ -262,7 +262,20 @@ parameter_list|)
 throws|throws
 name|CommitFailedException
 block|{
-comment|// TODO: validate access control property
+if|if
+condition|(
+name|isAccessControlEntry
+argument_list|(
+name|parentAfter
+argument_list|)
+condition|)
+block|{
+name|checkValidAccessControlEntry
+argument_list|(
+name|parentAfter
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 annotation|@
 name|Override
@@ -279,7 +292,20 @@ parameter_list|)
 throws|throws
 name|CommitFailedException
 block|{
-comment|// TODO: validate access control property
+if|if
+condition|(
+name|isAccessControlEntry
+argument_list|(
+name|parentAfter
+argument_list|)
+condition|)
+block|{
+name|checkValidAccessControlEntry
+argument_list|(
+name|parentAfter
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 annotation|@
 name|Override
