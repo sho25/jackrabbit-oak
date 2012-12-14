@@ -30,7 +30,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * CredentialsImpl... TODO  */
+comment|/**  * Credentials implementation to cover  * {@link org.apache.jackrabbit.api.security.user.User#getCredentials()}  */
 end_comment
 
 begin_class
