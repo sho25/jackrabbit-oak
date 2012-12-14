@@ -108,6 +108,16 @@ specifier|final
 name|MicroKernel
 name|kernel
 decl_stmt|;
+comment|/**      * The id returned from {@link MicroKernel#write(java.io.InputStream)}      * @return  the binary id of this blob      */
+specifier|public
+name|String
+name|getBinaryID
+parameter_list|()
+block|{
+return|return
+name|binaryID
+return|;
+block|}
 comment|/**      * Create a new instance for a binary id and a Microkernel.      * @param binaryID  id of the binary      * @param kernel      */
 specifier|public
 name|KernelBlob
