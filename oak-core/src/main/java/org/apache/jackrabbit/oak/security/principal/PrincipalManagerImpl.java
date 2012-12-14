@@ -255,11 +255,12 @@ name|int
 name|searchType
 parameter_list|)
 block|{
+comment|// TODO OAK-524
 throw|throw
 operator|new
 name|UnsupportedOperationException
 argument_list|(
-literal|"not implemented"
+literal|"not implemented (see: OAK-524)"
 argument_list|)
 throw|;
 block|}
