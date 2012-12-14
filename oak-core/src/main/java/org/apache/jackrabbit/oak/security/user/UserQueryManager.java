@@ -484,6 +484,7 @@ parameter_list|)
 throws|throws
 name|RepositoryException
 block|{
+comment|// TODO OAK-253: replace usage of XPATH
 name|XPathQueryBuilder
 name|builder
 init|=
@@ -588,7 +589,8 @@ parameter_list|)
 throws|throws
 name|RepositoryException
 block|{
-comment|// TODO: replace XPATH
+comment|// TODO OAK-480: fix authorizable query
+comment|// TODO OAK-253: replace usage of XPATH
 name|String
 name|statement
 init|=

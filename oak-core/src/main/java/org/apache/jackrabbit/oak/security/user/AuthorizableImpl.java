@@ -738,7 +738,7 @@ operator|==
 literal|0
 condition|)
 block|{
-comment|// FIXME: add proper hash-code generation taking repo/workspace/tree-identifier into account
+comment|// FIXME OAK-523: add proper hash-code generation taking repo/workspace/tree-identifier into account
 name|StringBuilder
 name|sb
 init|=
@@ -823,7 +823,7 @@ name|AuthorizableImpl
 operator|)
 name|obj
 decl_stmt|;
-comment|// FIXME: make sure 2 authorizables are based on the same tree/node object
+comment|// FIXME OAK-523: make sure 2 authorizables are based on the same tree/node object
 return|return
 name|isGroup
 argument_list|()

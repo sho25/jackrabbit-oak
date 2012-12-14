@@ -122,7 +122,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * UserContext... TODO  */
+comment|/**  * UserConfiguration...  * TODO: OAK-522  */
 end_comment
 
 begin_interface

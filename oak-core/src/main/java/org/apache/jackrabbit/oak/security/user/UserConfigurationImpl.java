@@ -473,7 +473,7 @@ name|AuthorizableActionProvider
 name|getAuthorizableActionProvider
 parameter_list|()
 block|{
-comment|// TODO: add proper implementation
+comment|// TODO OAK-521: add proper implementation
 name|AuthorizableActionProvider
 name|defProvider
 init|=

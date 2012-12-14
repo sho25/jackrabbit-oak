@@ -133,7 +133,7 @@ argument_list|>
 name|getAuthorizableActions
 parameter_list|()
 block|{
-comment|// TODO : create and initialize actions from configuration
+comment|// TODO OAK-521: create and initialize actions from configuration
 return|return
 name|Collections
 operator|.

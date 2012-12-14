@@ -921,7 +921,7 @@ literal|null
 condition|)
 block|{
 comment|// FIXME: fix.. testing for property name in jr2 wasn't correct.
-comment|// TODO: add implementation
+comment|// TODO OAK-482: add implementation
 throw|throw
 operator|new
 name|UnsupportedOperationException
@@ -1071,7 +1071,7 @@ argument_list|,
 name|NT_REP_MEMBERS
 argument_list|)
 decl_stmt|;
-comment|// TODO: add implementation that allows to index group members
+comment|// TODO OAK-482: add implementation that allows to index group members
 throw|throw
 operator|new
 name|UnsupportedOperationException
@@ -1167,7 +1167,7 @@ operator|!=
 literal|null
 condition|)
 block|{
-comment|// TODO: add implementation
+comment|// TODO OAK-482: add implementation
 throw|throw
 operator|new
 name|UnsupportedOperationException

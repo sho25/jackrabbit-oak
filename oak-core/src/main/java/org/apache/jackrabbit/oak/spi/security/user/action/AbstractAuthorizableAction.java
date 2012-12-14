@@ -167,7 +167,7 @@ name|AbstractAuthorizableAction
 implements|implements
 name|AuthorizableAction
 block|{
-comment|// TODO: review again
+comment|// TODO OAK-521:: review again
 specifier|protected
 specifier|abstract
 name|void
