@@ -849,6 +849,26 @@ name|NODE_TYPES_PATH
 import|;
 end_import
 
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|nodetype
+operator|.
+name|NodeTypeConstants
+operator|.
+name|RESIDUAL_NAME
+import|;
+end_import
+
 begin_comment
 comment|/**  * {@code ReadWriteNodeTypeManager} extends the {@link ReadOnlyNodeTypeManager}  * and add support for operations that modify node types:  *<ul>  *<li>{@link #registerNodeType(NodeTypeDefinition, boolean)}</li>  *<li>{@link #registerNodeTypes(NodeTypeDefinition[], boolean)}</li>  *<li>{@link #unregisterNodeType(String)}</li>  *<li>{@link #unregisterNodeTypes(String[])}</li>  *</ul>  * Calling any of the above methods will result in a {@link #refresh()} callback  * to e.g. inform an associated session that it should refresh to make the  * changes visible.  *</p>  * Subclass responsibility is to provide an implementation of  * {@link #getTypes()} for read only access to the tree where node types are  * stored in content and {@link #getWriteRoot()} for write access to the  * repository in order to modify node types stored in content. A subclass may  * also want to override the default implementation of  * {@link ReadOnlyNodeTypeManager} for the following methods:  *<ul>  *<li>{@link #getValueFactory()}</li>  *<li>{@link ReadOnlyNodeTypeManager#getNamePathMapper()}</li>  *</ul>  */
 end_comment
@@ -1781,7 +1801,7 @@ decl_stmt|;
 if|if
 condition|(
 operator|!
-literal|"*"
+name|RESIDUAL_NAME
 operator|.
 name|equals
 argument_list|(

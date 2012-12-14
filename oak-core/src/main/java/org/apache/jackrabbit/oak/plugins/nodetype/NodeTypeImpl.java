@@ -489,6 +489,26 @@ name|JCR_IS_QUERYABLE
 import|;
 end_import
 
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|nodetype
+operator|.
+name|NodeTypeConstants
+operator|.
+name|RESIDUAL_NAME
+import|;
+end_import
+
 begin_comment
 comment|/**  *<pre>  * [nt:nodeType]  * - jcr:nodeTypeName (NAME) protected mandatory  * - jcr:supertypes (NAME) protected multiple  * - jcr:isAbstract (BOOLEAN) protected mandatory  * - jcr:isQueryable (BOOLEAN) protected mandatory  * - jcr:isMixin (BOOLEAN) protected mandatory  * - jcr:hasOrderableChildNodes (BOOLEAN) protected mandatory  * - jcr:primaryItemName (NAME) protected  * + jcr:propertyDefinition (nt:propertyDefinition) = nt:propertyDefinition protected sns  * + jcr:childNodeDefinition (nt:childNodeDefinition) = nt:childNodeDefinition protected sns  *</pre>  */
 end_comment
@@ -1732,7 +1752,7 @@ argument_list|,
 name|name
 argument_list|)
 operator|||
-literal|"*"
+name|RESIDUAL_NAME
 operator|.
 name|equals
 argument_list|(
@@ -1858,7 +1878,7 @@ argument_list|,
 name|name
 argument_list|)
 operator|||
-literal|"*"
+name|RESIDUAL_NAME
 operator|.
 name|equals
 argument_list|(
