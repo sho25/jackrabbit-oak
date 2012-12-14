@@ -370,73 +370,17 @@ block|}
 block|}
 comment|// prune the index: remove all children that have no children
 comment|// and no "match" property progressing bottom up
-while|while
-condition|(
-operator|!
-name|parentQueue
-operator|.
-name|isEmpty
-argument_list|()
-condition|)
-block|{
-name|NodeBuilder
-name|node
-init|=
-name|parentQueue
-operator|.
-name|poll
-argument_list|()
-decl_stmt|;
-for|for
-control|(
-name|String
-name|name
-range|:
-name|node
-operator|.
-name|getChildNodeNames
-argument_list|()
-control|)
-block|{
-name|NodeBuilder
-name|segment
-init|=
-name|node
-operator|.
-name|child
-argument_list|(
-name|name
-argument_list|)
-decl_stmt|;
-if|if
-condition|(
-name|segment
-operator|.
-name|getChildNodeCount
-argument_list|()
-operator|==
-literal|0
-operator|&&
-name|segment
-operator|.
-name|getProperty
-argument_list|(
-literal|"match"
-argument_list|)
-operator|==
-literal|null
-condition|)
-block|{
-name|segment
-operator|.
-name|removeNode
-argument_list|(
-name|name
-argument_list|)
-expr_stmt|;
-block|}
-block|}
-block|}
+comment|// see OAK-520
+comment|// while (!parentQueue.isEmpty()) {
+comment|// NodeBuilder node = parentQueue.poll();
+comment|// for (String name : node.getChildNodeNames()) {
+comment|// NodeBuilder segment = node.child(name);
+comment|// if (segment.getChildNodeCount() == 0
+comment|//&& segment.getProperty("match") == null) {
+comment|// segment.removeNode(name);
+comment|// }
+comment|// }
+comment|// }
 comment|// finally remove the index node if empty
 if|if
 condition|(
