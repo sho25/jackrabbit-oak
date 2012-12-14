@@ -626,6 +626,14 @@ argument_list|(
 name|nodePath
 argument_list|)
 decl_stmt|;
+name|MongoNode
+name|parent
+init|=
+name|getStagedNode
+argument_list|(
+name|parentPath
+argument_list|)
+decl_stmt|;
 name|String
 name|nodeName
 init|=
@@ -636,49 +644,17 @@ argument_list|(
 name|nodePath
 argument_list|)
 decl_stmt|;
-name|MongoNode
-name|parent
-init|=
-name|getStoredNode
-argument_list|(
-name|parentPath
-argument_list|)
-decl_stmt|;
-if|if
-condition|(
-operator|!
-name|parent
-operator|.
-name|childExists
-argument_list|(
-name|nodeName
-argument_list|)
-condition|)
-block|{
-throw|throw
-operator|new
-name|RuntimeException
-argument_list|(
-literal|"Node "
-operator|+
-name|nodeName
-operator|+
-literal|" does not exists at parent path: "
-operator|+
-name|parentPath
-argument_list|)
-throw|;
-block|}
+comment|// See OAK-507
+comment|//        MongoNode parent = getStoredNode(parentPath);
+comment|//        if (!parent.childExists(nodeName)) {
+comment|//            throw new RuntimeException("Node " + nodeName
+comment|//                    + " does not exists at parent path: " + parentPath);
+comment|//        }
 name|parent
 operator|.
 name|removeChild
 argument_list|(
-name|PathUtils
-operator|.
-name|getName
-argument_list|(
-name|nodePath
-argument_list|)
+name|nodeName
 argument_list|)
 expr_stmt|;
 block|}

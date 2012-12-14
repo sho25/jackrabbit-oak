@@ -181,6 +181,9 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
+annotation|@
+name|Ignore
+comment|// According to OAK-507, this should not fail.
 specifier|public
 name|void
 name|removeNonExistentNode
@@ -218,12 +221,6 @@ block|{}
 block|}
 annotation|@
 name|Test
-annotation|@
-name|Ignore
-argument_list|(
-literal|"OAK-507"
-argument_list|)
-comment|// FIXME
 specifier|public
 name|void
 name|removeNodeTwice
