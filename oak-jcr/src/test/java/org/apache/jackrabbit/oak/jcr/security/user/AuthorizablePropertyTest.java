@@ -1167,7 +1167,7 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|Exception
+name|RepositoryException
 name|e
 parameter_list|)
 block|{
@@ -1313,7 +1313,7 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|Exception
+name|RepositoryException
 name|e
 parameter_list|)
 block|{
@@ -1442,7 +1442,7 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|Exception
+name|RepositoryException
 name|e
 parameter_list|)
 block|{
@@ -1882,6 +1882,20 @@ name|invalidPaths
 operator|.
 name|add
 argument_list|(
+literal|""
+argument_list|)
+expr_stmt|;
+name|invalidPaths
+operator|.
+name|add
+argument_list|(
+literal|"/"
+argument_list|)
+expr_stmt|;
+name|invalidPaths
+operator|.
+name|add
+argument_list|(
 literal|"../"
 argument_list|)
 expr_stmt|;
@@ -1942,7 +1956,7 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|Exception
+name|RepositoryException
 name|e
 parameter_list|)
 block|{
@@ -1950,10 +1964,6 @@ comment|// success
 block|}
 block|}
 block|}
-comment|//    @Test FIXME OAK-502
-comment|//    public void testGetPropertyNamesByInvalidRelPathThrowsAIOOBE() throws NotExecutableException, RepositoryException {
-comment|//        user.getPropertyNames("");
-comment|//    }
 annotation|@
 name|Test
 specifier|public

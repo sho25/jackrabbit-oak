@@ -1505,7 +1505,7 @@ name|RepositoryException
 block|{
 return|return
 operator|new
-name|OakAuthorizableProperties
+name|AuthorizablePropertiesImpl
 argument_list|(
 name|root
 argument_list|,

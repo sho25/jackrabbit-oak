@@ -373,7 +373,7 @@ end_comment
 
 begin_class
 class|class
-name|OakAuthorizableProperties
+name|AuthorizablePropertiesImpl
 implements|implements
 name|AuthorizableProperties
 block|{
@@ -387,7 +387,7 @@ name|LoggerFactory
 operator|.
 name|getLogger
 argument_list|(
-name|OakAuthorizableProperties
+name|AuthorizablePropertiesImpl
 operator|.
 name|class
 argument_list|)
@@ -412,7 +412,7 @@ specifier|final
 name|ReadOnlyNodeTypeManager
 name|nodeTypeManager
 decl_stmt|;
-name|OakAuthorizableProperties
+name|AuthorizablePropertiesImpl
 parameter_list|(
 specifier|final
 name|Root
@@ -598,7 +598,7 @@ else|else
 block|{
 throw|throw
 operator|new
-name|IllegalArgumentException
+name|RepositoryException
 argument_list|(
 literal|"Relative path "
 operator|+
@@ -1657,26 +1657,20 @@ condition|(
 name|relativePath
 operator|==
 literal|null
-condition|)
-block|{
-throw|throw
-operator|new
-name|RepositoryException
-argument_list|(
-literal|"Relative path expected. Found null."
-argument_list|)
-throw|;
-block|}
-if|if
-condition|(
-literal|'/'
-operator|==
+operator|||
+name|relativePath
+operator|.
+name|isEmpty
+argument_list|()
+operator|||
 name|relativePath
 operator|.
 name|charAt
 argument_list|(
 literal|0
 argument_list|)
+operator|==
+literal|'/'
 condition|)
 block|{
 throw|throw
