@@ -1302,23 +1302,6 @@ decl_stmt|;
 if|if
 condition|(
 name|definition
-operator|==
-literal|null
-condition|)
-block|{
-throw|throw
-operator|new
-name|ConstraintViolationException
-argument_list|(
-literal|"No matching node definition found for "
-operator|+
-name|name
-argument_list|)
-throw|;
-block|}
-if|if
-condition|(
-name|definition
 operator|.
 name|isProtected
 argument_list|()
@@ -1427,23 +1410,6 @@ argument_list|,
 name|nodeType
 argument_list|)
 decl_stmt|;
-if|if
-condition|(
-name|definition
-operator|==
-literal|null
-condition|)
-block|{
-throw|throw
-operator|new
-name|ConstraintViolationException
-argument_list|(
-literal|"No matching node definition found for "
-operator|+
-name|name
-argument_list|)
-throw|;
-block|}
 if|if
 condition|(
 name|definition
