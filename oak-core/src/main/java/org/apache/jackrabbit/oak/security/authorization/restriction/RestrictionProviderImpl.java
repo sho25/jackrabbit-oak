@@ -299,20 +299,6 @@ name|Text
 import|;
 end_import
 
-begin_import
-import|import
-name|sun
-operator|.
-name|reflect
-operator|.
-name|generics
-operator|.
-name|reflectiveObjects
-operator|.
-name|NotImplementedException
-import|;
-end_import
-
 begin_comment
 comment|/**  * RestrictionProviderImpl... TODO  */
 end_comment
@@ -586,7 +572,7 @@ block|{
 comment|// TODO
 throw|throw
 operator|new
-name|NotImplementedException
+name|UnsupportedOperationException
 argument_list|()
 throw|;
 block|}
