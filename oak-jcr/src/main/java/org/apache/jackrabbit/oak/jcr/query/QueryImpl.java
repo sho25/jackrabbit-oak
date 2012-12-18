@@ -137,6 +137,18 @@ end_import
 
 begin_import
 import|import
+name|javax
+operator|.
+name|jcr
+operator|.
+name|version
+operator|.
+name|VersionException
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -658,6 +670,27 @@ argument_list|(
 name|parentDelegate
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+operator|!
+name|parentNode
+operator|.
+name|isCheckedOut
+argument_list|()
+condition|)
+block|{
+throw|throw
+operator|new
+name|VersionException
+argument_list|(
+literal|"Cannot store query. Node at "
+operator|+
+name|absPath
+operator|+
+literal|" is checked in."
+argument_list|)
+throw|;
+block|}
 name|String
 name|nodeName
 init|=

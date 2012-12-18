@@ -81,6 +81,18 @@ name|apache
 operator|.
 name|jackrabbit
 operator|.
+name|JcrConstants
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
 name|oak
 operator|.
 name|api
@@ -510,6 +522,36 @@ condition|)
 block|{
 return|return;
 block|}
+comment|// JCR allows to put a lock on a checked in node.
+if|if
+condition|(
+name|after
+operator|.
+name|getName
+argument_list|()
+operator|.
+name|equals
+argument_list|(
+name|JcrConstants
+operator|.
+name|JCR_LOCKOWNER
+argument_list|)
+operator|||
+name|after
+operator|.
+name|getName
+argument_list|()
+operator|.
+name|equals
+argument_list|(
+name|JcrConstants
+operator|.
+name|JCR_LOCKISDEEP
+argument_list|)
+condition|)
+block|{
+return|return;
+block|}
 if|if
 condition|(
 name|wasCheckedIn
@@ -518,7 +560,14 @@ condition|)
 block|{
 name|throwCheckedIn
 argument_list|(
-literal|"Cannot add property on checked in node"
+literal|"Cannot add property "
+operator|+
+name|after
+operator|.
+name|getName
+argument_list|()
+operator|+
+literal|" on checked in node"
 argument_list|)
 expr_stmt|;
 block|}
@@ -555,9 +604,16 @@ name|wasCheckedIn
 argument_list|()
 condition|)
 block|{
-name|throwProtected
+name|throwCheckedIn
 argument_list|(
-literal|"Cannot change property on checked in node"
+literal|"Cannot change property "
+operator|+
+name|after
+operator|.
+name|getName
+argument_list|()
+operator|+
+literal|" on checked in node"
 argument_list|)
 expr_stmt|;
 block|}
@@ -656,7 +712,14 @@ condition|)
 block|{
 name|throwCheckedIn
 argument_list|(
-literal|"Cannot change property on checked in node"
+literal|"Cannot change property "
+operator|+
+name|after
+operator|.
+name|getName
+argument_list|()
+operator|+
+literal|" on checked in node"
 argument_list|)
 expr_stmt|;
 block|}

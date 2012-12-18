@@ -21,6 +21,16 @@ end_package
 
 begin_import
 import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|Nonnull
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -67,6 +77,22 @@ name|SessionDelegate
 import|;
 end_import
 
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkNotNull
+import|;
+end_import
+
 begin_comment
 comment|/**  *<code>VersionDelegate</code>...  */
 end_comment
@@ -90,9 +116,15 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
+name|checkNotNull
+argument_list|(
 name|sessionDelegate
+argument_list|)
 argument_list|,
+name|checkNotNull
+argument_list|(
 name|tree
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -100,9 +132,13 @@ specifier|static
 name|VersionDelegate
 name|create
 parameter_list|(
+annotation|@
+name|Nonnull
 name|SessionDelegate
 name|sessionDelegate
 parameter_list|,
+annotation|@
+name|Nonnull
 name|Tree
 name|tree
 parameter_list|)
