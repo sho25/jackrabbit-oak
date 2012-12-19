@@ -142,7 +142,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *<code>SimpleRoot</code>...  */
+comment|/**  * TODO document  */
 end_comment
 
 begin_class
