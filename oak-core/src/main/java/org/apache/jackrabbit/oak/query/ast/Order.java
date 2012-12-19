@@ -20,7 +20,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * Enumeration of query orders.  */
+comment|/**  * The enumeration of query column orders (ascending and descending).  */
 end_comment
 
 begin_enum

@@ -252,7 +252,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *<code>Cursors</code> provides factory methods to create {@link Cursor}s.  */
+comment|/**  * This utility class provides factory methods to create commonly used types of  * {@link Cursor}s.  */
 end_comment
 
 begin_class
@@ -285,7 +285,7 @@ name|paths
 argument_list|)
 return|;
 block|}
-comment|/**      * Returns a traversing cursor based on the path restriction in the given      * {@link Filter}.      *      * @param filter    the filter.      * @param rootState      the root {@link NodeState}.      * @return the {@link Cursor}.      */
+comment|/**      * Returns a traversing cursor based on the path restriction in the given      * {@link Filter}.      *       * @param filter the filter.      * @param rootState the root {@link NodeState}.      * @return the {@link Cursor}.      */
 specifier|public
 specifier|static
 name|Cursor

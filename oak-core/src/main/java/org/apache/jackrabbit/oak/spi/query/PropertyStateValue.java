@@ -132,7 +132,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A {@link PropertyValue} implementation that wraps a {@link PropertyState}  *   */
+comment|/**  * A {@link PropertyValue} implementation that wraps a {@link PropertyState}  */
 end_comment
 
 begin_class

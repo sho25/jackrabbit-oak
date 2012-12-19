@@ -66,7 +66,7 @@ specifier|public
 interface|interface
 name|QueryIndexProvider
 block|{
-comment|/**      * Get the currently configured indexes.      *       * @return the list of indexes      */
+comment|/**      * Get the currently configured indexes.      *       * @param nodeState the node state of the root      * @return the list of indexes      */
 annotation|@
 name|Nonnull
 name|List

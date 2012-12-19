@@ -20,7 +20,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * Enumeration of the join types.  */
+comment|/**  * The enumeration of all join types.  */
 end_comment
 
 begin_enum

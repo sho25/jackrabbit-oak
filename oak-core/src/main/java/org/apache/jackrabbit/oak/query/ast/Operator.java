@@ -20,7 +20,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * Enumeration of operators.  */
+comment|/**  * The enumeration of all operators.  */
 end_comment
 
 begin_enum

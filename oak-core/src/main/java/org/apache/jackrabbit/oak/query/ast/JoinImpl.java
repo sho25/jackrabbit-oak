@@ -54,7 +54,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A join.  */
+comment|/**  * A join. This object contains the left hand side source, the right hand side  * source, the join type, and the join condition.  */
 end_comment
 
 begin_class
