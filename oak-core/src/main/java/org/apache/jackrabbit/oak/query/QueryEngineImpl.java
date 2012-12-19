@@ -320,7 +320,6 @@ name|NO_LITERALS
 init|=
 literal|"-noLiterals"
 decl_stmt|;
-specifier|private
 specifier|static
 specifier|final
 name|Logger

@@ -86,7 +86,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A query result row that keeps all data in memory.  */
+comment|/**  * A query result row that keeps all data (for this row only) in memory.  */
 end_comment
 
 begin_class
