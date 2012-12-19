@@ -120,7 +120,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * NamePathMapperImpl...  */
+comment|/**  * TODO document  */
 end_comment
 
 begin_class

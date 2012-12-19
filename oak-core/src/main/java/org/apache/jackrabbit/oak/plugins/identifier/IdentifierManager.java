@@ -456,7 +456,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * IdentifierManager...  */
+comment|/**  * TODO document  */
 end_comment
 
 begin_class
