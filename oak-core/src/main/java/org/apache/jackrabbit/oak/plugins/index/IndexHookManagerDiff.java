@@ -420,7 +420,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Acts as a composite NodeStateDiff, it delegates all the diff's events to the  * existing IndexHooks.  *   * This allows for a simultaneous update of all the indexes via a single  * traversal of the changes.  *   *   */
+comment|/**  * Acts as a composite NodeStateDiff, it delegates all the diff's events to the  * existing IndexHooks.  *   * This allows for a simultaneous update of all the indexes via a single  * traversal of the changes.  */
 end_comment
 
 begin_class

@@ -37,6 +37,10 @@ name|NodeStateDiff
 import|;
 end_import
 
+begin_comment
+comment|/**  * TODO document  */
+end_comment
+
 begin_interface
 specifier|public
 interface|interface

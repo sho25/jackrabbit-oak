@@ -45,6 +45,10 @@ name|CommitFailedException
 import|;
 end_import
 
+begin_comment
+comment|/**  * TODO document  */
+end_comment
+
 begin_class
 class|class
 name|NamespaceValidatorException

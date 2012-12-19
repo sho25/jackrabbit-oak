@@ -30,7 +30,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Defines an index definition  *   */
+comment|/**  * Defines an index definition  */
 end_comment
 
 begin_interface

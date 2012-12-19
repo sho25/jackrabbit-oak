@@ -72,7 +72,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * NamespaceConstants... TODO  */
+comment|/**  * TODO document  */
 end_comment
 
 begin_interface

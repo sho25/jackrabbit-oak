@@ -19,6 +19,10 @@ name|index
 package|;
 end_package
 
+begin_comment
+comment|/**  * TODO document  */
+end_comment
+
 begin_class
 specifier|public
 class|class
