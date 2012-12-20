@@ -547,6 +547,13 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|Thread
+operator|.
+name|sleep
+argument_list|(
+literal|100
+argument_list|)
+expr_stmt|;
 name|long
 name|since2
 init|=
