@@ -364,8 +364,6 @@ name|Expression
 argument_list|>
 argument_list|()
 decl_stmt|;
-comment|// TODO support "..", example:
-comment|// /jcr:root/etc/..
 name|String
 name|pathPattern
 init|=
@@ -1012,6 +1010,116 @@ name|name
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+block|}
+block|}
+elseif|else
+if|if
+condition|(
+name|readIf
+argument_list|(
+literal|"."
+argument_list|)
+condition|)
+block|{
+comment|// just "." this is simply ignored, so that
+comment|// "a/./b" is the same as "a/b"
+if|if
+condition|(
+name|readIf
+argument_list|(
+literal|"."
+argument_list|)
+condition|)
+block|{
+comment|// ".." means "the parent of the node"
+comment|// handle like a regular path restriction
+name|String
+name|name
+init|=
+literal|".."
+decl_stmt|;
+name|pathPattern
+operator|+=
+name|name
+expr_stmt|;
+if|if
+condition|(
+operator|!
+name|currentSelector
+operator|.
+name|isChild
+condition|)
+block|{
+name|currentSelector
+operator|.
+name|nodeName
+operator|=
+name|name
+expr_stmt|;
+block|}
+else|else
+block|{
+if|if
+condition|(
+name|currentSelector
+operator|.
+name|isChild
+condition|)
+block|{
+name|currentSelector
+operator|.
+name|isChild
+operator|=
+literal|false
+expr_stmt|;
+name|currentSelector
+operator|.
+name|isParent
+operator|=
+literal|true
+expr_stmt|;
+block|}
+block|}
+block|}
+else|else
+block|{
+if|if
+condition|(
+name|selectors
+operator|.
+name|size
+argument_list|()
+operator|>
+literal|0
+condition|)
+block|{
+name|currentSelector
+operator|=
+name|selectors
+operator|.
+name|remove
+argument_list|(
+name|selectors
+operator|.
+name|size
+argument_list|()
+operator|-
+literal|1
+argument_list|)
+expr_stmt|;
+name|currentSelector
+operator|.
+name|condition
+operator|=
+literal|null
+expr_stmt|;
+name|currentSelector
+operator|.
+name|joinCondition
+operator|=
+literal|null
+expr_stmt|;
 block|}
 block|}
 block|}
@@ -1811,9 +1919,7 @@ decl_stmt|;
 name|Expression
 name|joinCondition
 init|=
-name|currentSelector
-operator|.
-name|joinCondition
+literal|null
 decl_stmt|;
 if|if
 condition|(
@@ -2015,6 +2121,77 @@ argument_list|()
 operator|-
 literal|1
 argument_list|)
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|joinCondition
+operator|=
+name|c
+expr_stmt|;
+block|}
+block|}
+elseif|else
+if|if
+condition|(
+name|currentSelector
+operator|.
+name|isParent
+condition|)
+block|{
+if|if
+condition|(
+name|isFirstSelector
+condition|)
+block|{
+throw|throw
+name|getSyntaxError
+argument_list|()
+throw|;
+block|}
+else|else
+block|{
+name|Function
+name|c
+init|=
+operator|new
+name|Function
+argument_list|(
+literal|"ischildnode"
+argument_list|)
+decl_stmt|;
+name|c
+operator|.
+name|params
+operator|.
+name|add
+argument_list|(
+operator|new
+name|SelectorExpr
+argument_list|(
+name|selectors
+operator|.
+name|get
+argument_list|(
+name|selectors
+operator|.
+name|size
+argument_list|()
+operator|-
+literal|1
+argument_list|)
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|c
+operator|.
+name|params
+operator|.
+name|add
+argument_list|(
+operator|new
+name|SelectorExpr
+argument_list|(
+name|currentSelector
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -2322,7 +2499,14 @@ name|currentSelector
 operator|.
 name|joinCondition
 operator|=
+name|add
+argument_list|(
+name|currentSelector
+operator|.
 name|joinCondition
+argument_list|,
+name|joinCondition
+argument_list|)
 expr_stmt|;
 name|selectors
 operator|.
@@ -2358,6 +2542,18 @@ condition|)
 block|{
 return|return
 name|add
+return|;
+block|}
+elseif|else
+if|if
+condition|(
+name|add
+operator|==
+literal|null
+condition|)
+block|{
+return|return
+name|old
 return|;
 block|}
 return|return
@@ -5264,21 +5460,15 @@ comment|/**          * The node type, if set, or null.          */
 name|String
 name|nodeType
 decl_stmt|;
-comment|/**          * Whether this is a child node of the previous selector or a given path.          */
-comment|// queries of the type
-comment|// jcr:root/*
-comment|// jcr:root/test/*
-comment|// jcr:root/element()
-comment|// jcr:root/element(*)
+comment|/**          * Whether this is a child node of the previous selector or a given path.          * Examples:          *<ul><li>/jcr:root/*          *</li><li>/jcr:root/test/*          *</li><li>/jcr:root/element()          *</li><li>/jcr:root/element(*)          *</li></ul>          */
 name|boolean
 name|isChild
 decl_stmt|;
-comment|/**          * Whether this is a descendant of the previous selector or a given path.          */
-comment|// queries of the type
-comment|// /jcr:root//...
-comment|// /jcr:root/test//...
-comment|// /jcr:root[...]
-comment|// /jcr:root (just by itself)
+comment|/**          * Whether this is a parent node of the previous selector or given path.          * Examples:          *<ul><li>testroot//child/..[@foo1]          *</li><li>/jcr:root/test/descendant/..[@test]          *</li></ul>          */
+name|boolean
+name|isParent
+decl_stmt|;
+comment|/**          * Whether this is a descendant of the previous selector or a given path.          * Examples:          *<ul><li>/jcr:root//descendant          *</li><li>/jcr:root/test//descendant          *</li><li>/jcr:root[@x]          *</li><li>/jcr:root (just by itself)          *</li></ul>          */
 name|boolean
 name|isDescendant
 decl_stmt|;
