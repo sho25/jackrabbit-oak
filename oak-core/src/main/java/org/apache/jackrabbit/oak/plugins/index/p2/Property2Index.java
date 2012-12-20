@@ -259,6 +259,7 @@ name|TYPE
 init|=
 literal|"p2"
 decl_stmt|;
+comment|// TODO the max string length should be removed, or made configurable
 specifier|private
 specifier|static
 specifier|final
@@ -267,7 +268,6 @@ name|MAX_STRING_LENGTH
 init|=
 literal|100
 decl_stmt|;
-comment|// TODO: configurable
 specifier|static
 name|List
 argument_list|<
@@ -417,6 +417,22 @@ name|getPropertyRestrictions
 argument_list|()
 control|)
 block|{
+comment|// TODO support indexes on a path
+comment|// currently, only indexes on the root node are supported
+if|if
+condition|(
+name|lookup
+operator|.
+name|isIndexed
+argument_list|(
+name|pr
+operator|.
+name|propertyName
+argument_list|,
+literal|"/"
+argument_list|)
+condition|)
+block|{
 if|if
 condition|(
 name|pr
@@ -430,6 +446,12 @@ operator|&&
 name|pr
 operator|.
 name|first
+operator|!=
+literal|null
+operator|&&
+name|pr
+operator|.
+name|first
 operator|.
 name|equals
 argument_list|(
@@ -437,21 +459,9 @@ name|pr
 operator|.
 name|last
 argument_list|)
-comment|// TODO: range queries
-operator|&&
-name|lookup
-operator|.
-name|isIndexed
-argument_list|(
-name|pr
-operator|.
-name|propertyName
-argument_list|,
-literal|"/"
-argument_list|)
 condition|)
 block|{
-comment|// TODO: path
+comment|// "[property] = $value"
 return|return
 name|lookup
 operator|.
@@ -466,6 +476,37 @@ operator|.
 name|first
 argument_list|)
 return|;
+block|}
+elseif|else
+if|if
+condition|(
+name|pr
+operator|.
+name|first
+operator|==
+literal|null
+operator|&&
+name|pr
+operator|.
+name|last
+operator|==
+literal|null
+condition|)
+block|{
+comment|// "[property] is not null"
+return|return
+name|lookup
+operator|.
+name|getCost
+argument_list|(
+name|pr
+operator|.
+name|propertyName
+argument_list|,
+literal|null
+argument_list|)
+return|;
+block|}
 block|}
 block|}
 comment|// not an appropriate index
@@ -516,6 +557,31 @@ name|getPropertyRestrictions
 argument_list|()
 control|)
 block|{
+comment|// TODO support indexes on a path
+comment|// currently, only indexes on the root node are supported
+if|if
+condition|(
+name|lookup
+operator|.
+name|isIndexed
+argument_list|(
+name|pr
+operator|.
+name|propertyName
+argument_list|,
+literal|"/"
+argument_list|)
+condition|)
+block|{
+name|Set
+argument_list|<
+name|String
+argument_list|>
+name|set
+init|=
+literal|null
+decl_stmt|;
+comment|// equality
 if|if
 condition|(
 name|pr
@@ -529,6 +595,12 @@ operator|&&
 name|pr
 operator|.
 name|first
+operator|!=
+literal|null
+operator|&&
+name|pr
+operator|.
+name|first
 operator|.
 name|equals
 argument_list|(
@@ -536,27 +608,12 @@ name|pr
 operator|.
 name|last
 argument_list|)
-comment|// TODO: range queries
-operator|&&
-name|lookup
-operator|.
-name|isIndexed
-argument_list|(
-name|pr
-operator|.
-name|propertyName
-argument_list|,
-literal|"/"
-argument_list|)
 condition|)
 block|{
-comment|// TODO: path
-name|Set
-argument_list|<
-name|String
-argument_list|>
+comment|// "[property] = $value"
+comment|// TODO don't load all entries in memory
 name|set
-init|=
+operator|=
 name|lookup
 operator|.
 name|find
@@ -569,7 +626,52 @@ name|pr
 operator|.
 name|first
 argument_list|)
-decl_stmt|;
+expr_stmt|;
+block|}
+elseif|else
+if|if
+condition|(
+name|pr
+operator|.
+name|first
+operator|==
+literal|null
+operator|&&
+name|pr
+operator|.
+name|last
+operator|==
+literal|null
+condition|)
+block|{
+comment|// "[property] is not null"
+comment|// TODO don't load all entries in memory
+name|set
+operator|=
+name|lookup
+operator|.
+name|find
+argument_list|(
+name|pr
+operator|.
+name|propertyName
+argument_list|,
+operator|(
+name|PropertyValue
+operator|)
+literal|null
+argument_list|)
+expr_stmt|;
+block|}
+comment|// only keep the intersection
+comment|// TODO this requires all paths are loaded in memory
+if|if
+condition|(
+name|set
+operator|!=
+literal|null
+condition|)
+block|{
 if|if
 condition|(
 name|paths
@@ -596,6 +698,7 @@ argument_list|(
 name|set
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 block|}
@@ -638,10 +741,10 @@ name|NodeState
 name|root
 parameter_list|)
 block|{
+comment|// TODO the index should return better query plans
 return|return
 literal|"oak:index"
 return|;
-comment|// TODO: better plans
 block|}
 block|}
 end_class

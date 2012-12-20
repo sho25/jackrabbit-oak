@@ -411,7 +411,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-comment|/**      * Searches for a given value within this index.      *       * @param name the property name      * @param value the property value      * @return the set of matched paths      */
+comment|/**      * Searches for a given value within this index.      *       * @param name the property name      * @param value the property value (null to check for property existence)      * @return the set of matched paths      */
 specifier|public
 name|Set
 argument_list|<
@@ -470,6 +470,30 @@ argument_list|(
 literal|":index"
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|value
+operator|==
+literal|null
+condition|)
+block|{
+name|paths
+operator|.
+name|addAll
+argument_list|(
+name|store
+operator|.
+name|find
+argument_list|(
+name|state
+argument_list|,
+literal|null
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
 name|paths
 operator|.
 name|addAll
@@ -489,6 +513,7 @@ argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 else|else
 block|{
@@ -513,12 +538,17 @@ block|{
 if|if
 condition|(
 name|value
+operator|==
+literal|null
+operator|||
+name|value
 operator|.
 name|isArray
 argument_list|()
 condition|)
 block|{
-comment|// let query engine handle multi-valued look ups
+comment|// let query engine handle property existence and
+comment|// multi-valued look ups;
 comment|// simply return all nodes that have this property
 name|paths
 operator|.
@@ -690,6 +720,8 @@ name|cost
 init|=
 literal|0.0
 decl_stmt|;
+comment|// TODO the cost method is currently reading all the data -
+comment|// is not supposed to do that, it is only supposed to estimate
 name|NodeState
 name|state
 init|=
@@ -723,6 +755,27 @@ argument_list|(
 literal|":index"
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|value
+operator|==
+literal|null
+condition|)
+block|{
+name|cost
+operator|+=
+name|store
+operator|.
+name|count
+argument_list|(
+name|state
+argument_list|,
+literal|null
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
 name|cost
 operator|+=
 name|store
@@ -739,6 +792,7 @@ name|value
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 else|else
 block|{
