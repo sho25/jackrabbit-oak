@@ -313,16 +313,34 @@ name|i
 index|]
 condition|)
 block|{
-return|return
+specifier|final
+name|int
+name|rawValue
+init|=
 name|raw
 index|[
 name|i
 index|]
-operator|-
+operator|&
+literal|0xFF
+decl_stmt|;
+comment|// unsigned value
+specifier|final
+name|int
+name|otherValue
+init|=
 name|other
 index|[
 name|i
 index|]
+operator|&
+literal|0xFF
+decl_stmt|;
+comment|// unsigned value
+return|return
+name|rawValue
+operator|-
+name|otherValue
 return|;
 block|}
 block|}
