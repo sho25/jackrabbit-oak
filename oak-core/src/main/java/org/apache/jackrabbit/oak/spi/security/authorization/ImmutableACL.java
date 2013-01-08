@@ -470,7 +470,7 @@ return|return
 name|hashCode
 return|;
 block|}
-comment|/**      * @see Object#equals(Object)      */
+comment|/**      * @see Object#equals(Object)      * FIXME: this implementation violates the general contract of equals: it is not symmetric.      * While ACL.equals(ImmutableACL) might be true, ImmutableACL.equals(ACL) is always false.      */
 annotation|@
 name|Override
 specifier|public
