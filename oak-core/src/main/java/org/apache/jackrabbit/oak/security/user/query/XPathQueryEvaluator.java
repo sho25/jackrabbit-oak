@@ -328,7 +328,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This evaluator for {@link org.apache.jackrabbit.api.security.user.Query}s use XPath  * and some minimal client side filtering.  */
+comment|/**  * XPATH based evaluation of {@link org.apache.jackrabbit.api.security.user.Query}s.  */
 end_comment
 
 begin_class
@@ -432,7 +432,6 @@ parameter_list|()
 throws|throws
 name|RepositoryException
 block|{
-comment|// shortcut
 if|if
 condition|(
 name|builder
@@ -548,14 +547,22 @@ argument_list|,
 name|bound
 argument_list|)
 decl_stmt|;
-name|condition
-operator|=
+if|if
+condition|(
 name|condition
 operator|==
 literal|null
-condition|?
+condition|)
+block|{
+name|condition
+operator|=
 name|boundCondition
-else|:
+expr_stmt|;
+block|}
+else|else
+block|{
+name|condition
+operator|=
 name|builder
 operator|.
 name|and
@@ -565,6 +572,7 @@ argument_list|,
 name|boundCondition
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 if|if
@@ -711,7 +719,7 @@ return|;
 block|}
 else|else
 block|{
-comment|// filtering by group name not included in query -> enforce offset
+comment|// filtering by group name included in query -> enforce offset
 comment|// and limit on the result set.
 name|Iterator
 argument_list|<
@@ -783,8 +791,6 @@ name|e
 argument_list|)
 throw|;
 block|}
-comment|// If we are scoped to a group and have a limit, we have to apply the limit
-comment|// here (inefficient!) otherwise we can apply the limit in the query
 block|}
 comment|//---------------------------------------------------< ConditionVisitor>---
 annotation|@
@@ -1289,7 +1295,6 @@ argument_list|,
 name|k
 argument_list|)
 expr_stmt|;
-comment|// split on %
 if|if
 condition|(
 name|j
@@ -1692,7 +1697,7 @@ name|Iterator
 argument_list|<
 name|Authorizable
 argument_list|>
-name|authorizbles
+name|authorizables
 init|=
 name|Iterators
 operator|.
@@ -1715,7 +1720,7 @@ name|Iterators
 operator|.
 name|filter
 argument_list|(
-name|authorizbles
+name|authorizables
 argument_list|,
 name|Predicates
 operator|.

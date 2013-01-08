@@ -262,11 +262,11 @@ name|long
 name|maxCount
 parameter_list|)
 block|{
+comment|// reset the offset before setting bound value/maxCount
 name|offset
 operator|=
 literal|0
 expr_stmt|;
-comment|// Unset any previously set offset
 name|this
 operator|.
 name|bound
@@ -293,11 +293,11 @@ name|long
 name|maxCount
 parameter_list|)
 block|{
+comment|// reset the bound value before setting offset/maxCount
 name|bound
 operator|=
 literal|null
 expr_stmt|;
-comment|// Unset any previously set bound
 name|this
 operator|.
 name|offset

@@ -84,7 +84,7 @@ parameter_list|)
 throws|throws
 name|RepositoryException
 function_decl|;
-comment|//------------------------------------------< Condition implementations>---
+comment|//-----------------------------------------------------< Node Condition>---
 specifier|static
 class|class
 name|Node
@@ -138,6 +138,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+comment|//-------------------------------------------------< Property Condition>---
 specifier|static
 class|class
 name|Property
@@ -322,6 +323,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+comment|//-------------------------------------------------< Contains Condition>---
 specifier|static
 class|class
 name|Contains
@@ -396,6 +398,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+comment|//--------------------------------------------< Impersonation Condition>---
 specifier|static
 class|class
 name|Impersonation
@@ -447,6 +450,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+comment|//------------------------------------------------------< Not Condition>---
 specifier|static
 class|class
 name|Not
@@ -500,6 +504,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+comment|//-------------------------------------------------< Compound Condition>---
 specifier|abstract
 specifier|static
 class|class
@@ -529,14 +534,6 @@ argument_list|()
 decl_stmt|;
 specifier|public
 name|Compound
-parameter_list|()
-block|{
-name|super
-argument_list|()
-expr_stmt|;
-block|}
-specifier|public
-name|Compound
 parameter_list|(
 name|Condition
 name|condition1
@@ -561,22 +558,6 @@ argument_list|)
 expr_stmt|;
 block|}
 specifier|public
-name|void
-name|addCondition
-parameter_list|(
-name|Condition
-name|condition
-parameter_list|)
-block|{
-name|conditions
-operator|.
-name|add
-argument_list|(
-name|condition
-argument_list|)
-expr_stmt|;
-block|}
-specifier|public
 name|Iterator
 argument_list|<
 name|Condition
@@ -592,6 +573,7 @@ argument_list|()
 return|;
 block|}
 block|}
+comment|//------------------------------------------------------< And Condition>---
 specifier|static
 class|class
 name|And
@@ -635,6 +617,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+comment|//-------------------------------------------------------< Or Condition>---
 specifier|static
 class|class
 name|Or
