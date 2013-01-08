@@ -135,7 +135,7 @@ parameter_list|)
 throws|throws
 name|CommitFailedException
 function_decl|;
-comment|/**      * Search for a given set of values      *       * @param index index node      * @param values values to look for (null to check for property existence)      * @return the set of paths corresponding to the given values      */
+comment|/**      * Search for a given set of values      *       * @param index index node (may not be null)      * @param values values to look for (null to check for property existence)      * @return the set of paths corresponding to the given values      */
 name|Set
 argument_list|<
 name|String
@@ -152,7 +152,7 @@ argument_list|>
 name|values
 parameter_list|)
 function_decl|;
-comment|/**      * Count the occurrence of a given set of values. Used in calculating the      * cost of an index.      *       * @param index the index node      * @param values values to look for (null to check for property existence)      * @return the aggregated count of occurrences for each provided value      */
+comment|/**      * Count the occurrence of a given set of values. Used in calculating the      * cost of an index.      *       * @param index the index node (may not be null)      * @param values values to look for (null to check for property existence)      * @return the aggregated count of occurrences for each provided value      */
 name|int
 name|count
 parameter_list|(
