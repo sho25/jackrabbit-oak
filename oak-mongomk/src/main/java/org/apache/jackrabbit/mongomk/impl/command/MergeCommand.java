@@ -504,13 +504,6 @@ argument_list|(
 name|nodeStore
 argument_list|)
 decl_stmt|;
-name|query2
-operator|.
-name|includeBranchCommits
-argument_list|(
-literal|false
-argument_list|)
-expr_stmt|;
 name|long
 name|currentHead
 init|=

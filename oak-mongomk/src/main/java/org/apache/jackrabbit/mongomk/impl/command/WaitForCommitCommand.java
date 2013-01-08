@@ -257,13 +257,6 @@ argument_list|(
 name|nodeStore
 argument_list|)
 decl_stmt|;
-name|query
-operator|.
-name|includeBranchCommits
-argument_list|(
-literal|false
-argument_list|)
-expr_stmt|;
 return|return
 name|query
 operator|.

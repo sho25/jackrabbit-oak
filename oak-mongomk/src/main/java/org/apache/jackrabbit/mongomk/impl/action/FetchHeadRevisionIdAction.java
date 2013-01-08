@@ -143,12 +143,6 @@ argument_list|<
 name|Long
 argument_list|>
 block|{
-specifier|private
-name|boolean
-name|includeBranchCommits
-init|=
-literal|true
-decl_stmt|;
 comment|/**      * Constructs a new {@code FetchHeadRevisionIdAction}.      *      * @param nodeStore Node store.      */
 specifier|public
 name|FetchHeadRevisionIdAction
@@ -161,22 +155,6 @@ name|super
 argument_list|(
 name|nodeStore
 argument_list|)
-expr_stmt|;
-block|}
-comment|/**      * Sets whether the branch commits are included in the query.      *      * @param includeBranchCommits Whether the branch commits are included.      */
-specifier|public
-name|void
-name|includeBranchCommits
-parameter_list|(
-name|boolean
-name|includeBranchCommits
-parameter_list|)
-block|{
-name|this
-operator|.
-name|includeBranchCommits
-operator|=
-name|includeBranchCommits
 expr_stmt|;
 block|}
 annotation|@
@@ -215,16 +193,7 @@ operator|.
 name|getHeadRevisionId
 argument_list|()
 decl_stmt|;
-if|if
-condition|(
-name|includeBranchCommits
-condition|)
-block|{
-return|return
-name|headRevisionId
-return|;
-block|}
-comment|// Otherwise, find the first revision id that's not part of a branch.
+comment|// Find the first revision id that's not part of a branch.
 name|DBCollection
 name|collection
 init|=
