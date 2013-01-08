@@ -37,7 +37,7 @@ interface|interface
 name|MicroKernel
 block|{
 comment|//---------------------------------------------------------< REVISION ops>
-comment|/**      * Return the id of the current head revision.      *      * @return the id of the head revision      * @throws MicroKernelException if an error occurs      */
+comment|/**      * Return the id of the current head revision, i.e. the most recent<i>public</i>      * trunk revision.<i>Private</i> branch revisions are ignored.      *      * @return the id of the head revision      * @throws MicroKernelException if an error occurs      */
 name|String
 name|getHeadRevision
 parameter_list|()
