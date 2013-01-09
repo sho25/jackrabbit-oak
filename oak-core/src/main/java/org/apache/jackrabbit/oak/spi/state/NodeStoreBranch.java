@@ -46,7 +46,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * TODO document  */
+comment|/**  * An instance of this class represents a private branch of the tree in a  * {@link NodeStore} to which transient changes can be applied and later merged  * back or discarded.  */
 end_comment
 
 begin_interface
@@ -54,21 +54,21 @@ specifier|public
 interface|interface
 name|NodeStoreBranch
 block|{
-comment|/**      * Returns the base state of this branch.      *      * @return base node state      */
+comment|/**      * Returns the base state of this branch.      *      * @return root node state      */
 annotation|@
 name|Nonnull
 name|NodeState
 name|getBase
 parameter_list|()
 function_decl|;
-comment|/**      * Returns the latest state of the branch.      *      * @return root node state      */
+comment|/**      * Returns the latest state of the branch.      *      * @return root node state      * @throws IllegalStateException if the branch is already merged      */
 annotation|@
 name|Nonnull
 name|NodeState
 name|getRoot
 parameter_list|()
 function_decl|;
-comment|/**      * Updates the state of the content tree.      *      * @param newRoot new root node state      */
+comment|/**      * Updates the state of the content tree of this private branch.      *      * @param newRoot new root node state      * @throws IllegalStateException if the branch is already merged      */
 name|void
 name|setRoot
 parameter_list|(
@@ -76,7 +76,7 @@ name|NodeState
 name|newRoot
 parameter_list|)
 function_decl|;
-comment|/**      * Moves a node.      *      * @param source source path      * @param target target path      * @return  {@code true} iff the move succeeded      */
+comment|/**      * Moves a node in this private branch.      *      * @param source source path      * @param target target path      * @return  {@code true} iff the move succeeded      * @throws IllegalStateException if the branch is already merged      */
 name|boolean
 name|move
 parameter_list|(
@@ -87,7 +87,7 @@ name|String
 name|target
 parameter_list|)
 function_decl|;
-comment|/**      * Copies a node.      *      * @param source source path      * @param target target path      * @return  {@code true} iff the copy succeeded      */
+comment|/**      * Copies a node in this private branch.      *      * @param source source path      * @param target target path      * @return  {@code true} iff the copy succeeded      * @throws IllegalStateException if the branch is already merged      */
 name|boolean
 name|copy
 parameter_list|(
@@ -98,7 +98,7 @@ name|String
 name|target
 parameter_list|)
 function_decl|;
-comment|/**      * Merges the changes in this branch to the main content tree.      *      * @return the node state resulting from the merge.      * @throws CommitFailedException if the merge failed      */
+comment|/**      * Merges the changes in this branch to the main content tree.      *      * @return the node state resulting from the merge.      * @throws CommitFailedException if the merge failed      * @throws IllegalStateException if the branch is already merged      */
 annotation|@
 name|Nonnull
 name|NodeState

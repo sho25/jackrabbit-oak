@@ -137,6 +137,22 @@ end_import
 
 begin_import
 import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkState
+import|;
+end_import
+
+begin_import
+import|import static
 name|org
 operator|.
 name|apache
@@ -205,32 +221,27 @@ specifier|final
 name|KernelNodeStore
 name|store
 decl_stmt|;
-comment|/** Base state of this branch */
+comment|/** Root state of the base revision of this branch */
 specifier|private
 specifier|final
 name|NodeState
 name|base
 decl_stmt|;
-comment|/** Revision from which to branch */
+comment|/** Revision of the base state of this branch*/
 specifier|private
 specifier|final
 name|String
-name|headRevision
+name|baseRevision
 decl_stmt|;
-comment|/** Revision of this branch in the Microkernel, null if not yet branched */
+comment|/** Root state of the head revision of this branch*/
+specifier|private
+name|NodeState
+name|head
+decl_stmt|;
+comment|/** Head revision of this branch, null if not yet branched*/
 specifier|private
 name|String
-name|branchRevision
-decl_stmt|;
-comment|/** Current root state of this branch */
-specifier|private
-name|NodeState
-name|currentRoot
-decl_stmt|;
-comment|/** Last state which was committed to this branch */
-specifier|private
-name|NodeState
-name|committed
+name|headRevision
 decl_stmt|;
 name|KernelNodeStoreBranch
 parameter_list|(
@@ -249,7 +260,13 @@ name|store
 expr_stmt|;
 name|this
 operator|.
-name|headRevision
+name|base
+operator|=
+name|root
+expr_stmt|;
+name|this
+operator|.
+name|baseRevision
 operator|=
 name|root
 operator|.
@@ -258,21 +275,9 @@ argument_list|()
 expr_stmt|;
 name|this
 operator|.
-name|currentRoot
+name|head
 operator|=
 name|root
-expr_stmt|;
-name|this
-operator|.
-name|base
-operator|=
-name|currentRoot
-expr_stmt|;
-name|this
-operator|.
-name|committed
-operator|=
-name|currentRoot
 expr_stmt|;
 block|}
 annotation|@
@@ -293,8 +298,11 @@ name|NodeState
 name|getRoot
 parameter_list|()
 block|{
+name|checkNotMerged
+argument_list|()
+expr_stmt|;
 return|return
-name|currentRoot
+name|head
 return|;
 block|}
 annotation|@
@@ -307,10 +315,13 @@ name|NodeState
 name|newRoot
 parameter_list|)
 block|{
+name|checkNotMerged
+argument_list|()
+expr_stmt|;
 if|if
 condition|(
 operator|!
-name|currentRoot
+name|head
 operator|.
 name|equals
 argument_list|(
@@ -318,10 +329,6 @@ name|newRoot
 argument_list|)
 condition|)
 block|{
-name|currentRoot
-operator|=
-name|newRoot
-expr_stmt|;
 name|JsopDiff
 name|diff
 init|=
@@ -334,11 +341,11 @@ name|getKernel
 argument_list|()
 argument_list|)
 decl_stmt|;
-name|currentRoot
+name|newRoot
 operator|.
 name|compareAgainstBaseState
 argument_list|(
-name|committed
+name|head
 argument_list|,
 name|diff
 argument_list|)
@@ -366,6 +373,9 @@ name|String
 name|target
 parameter_list|)
 block|{
+name|checkNotMerged
+argument_list|()
+expr_stmt|;
 if|if
 condition|(
 name|getNode
@@ -454,6 +464,9 @@ name|String
 name|target
 parameter_list|)
 block|{
+name|checkNotMerged
+argument_list|()
+expr_stmt|;
 if|if
 condition|(
 name|getNode
@@ -538,6 +551,9 @@ parameter_list|()
 throws|throws
 name|CommitFailedException
 block|{
+name|checkNotMerged
+argument_list|()
+expr_stmt|;
 name|CommitHook
 name|commitHook
 init|=
@@ -555,13 +571,13 @@ name|processCommit
 argument_list|(
 name|base
 argument_list|,
-name|currentRoot
+name|head
 argument_list|)
 decl_stmt|;
 name|NodeState
 name|oldRoot
 init|=
-name|currentRoot
+name|head
 decl_stmt|;
 name|setRoot
 argument_list|(
@@ -572,22 +588,19 @@ try|try
 block|{
 if|if
 condition|(
-name|branchRevision
+name|headRevision
 operator|==
 literal|null
 condition|)
 block|{
-comment|// Nothing was written to this branch: return initial node state.
-name|branchRevision
+comment|// Nothing was written to this branch: return base state
+name|head
 operator|=
 literal|null
 expr_stmt|;
-name|currentRoot
-operator|=
-literal|null
-expr_stmt|;
+comment|// Mark as merged
 return|return
-name|committed
+name|base
 return|;
 block|}
 else|else
@@ -607,19 +620,20 @@ name|kernel
 operator|.
 name|merge
 argument_list|(
-name|branchRevision
+name|headRevision
 argument_list|,
 literal|null
 argument_list|)
 decl_stmt|;
-name|branchRevision
+name|headRevision
 operator|=
 literal|null
 expr_stmt|;
-name|currentRoot
+name|head
 operator|=
 literal|null
 expr_stmt|;
+comment|// Mark as merged
 return|return
 name|store
 operator|.
@@ -651,6 +665,21 @@ throw|;
 block|}
 block|}
 comment|//------------------------------------------------------------< private>---
+specifier|private
+name|void
+name|checkNotMerged
+parameter_list|()
+block|{
+name|checkState
+argument_list|(
+name|head
+operator|!=
+literal|null
+argument_list|,
+literal|"Branch has already been merged"
+argument_list|)
+expr_stmt|;
+block|}
 specifier|private
 name|NodeState
 name|getNode
@@ -727,23 +756,23 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
-name|branchRevision
+name|headRevision
 operator|==
 literal|null
 condition|)
 block|{
 comment|// create the branch if this is the first commit
-name|branchRevision
+name|headRevision
 operator|=
 name|kernel
 operator|.
 name|branch
 argument_list|(
-name|headRevision
+name|baseRevision
 argument_list|)
 expr_stmt|;
 block|}
-name|branchRevision
+name|headRevision
 operator|=
 name|kernel
 operator|.
@@ -753,23 +782,19 @@ literal|""
 argument_list|,
 name|jsop
 argument_list|,
-name|branchRevision
+name|headRevision
 argument_list|,
 literal|null
 argument_list|)
 expr_stmt|;
-name|currentRoot
+name|head
 operator|=
 name|store
 operator|.
 name|getRootState
 argument_list|(
-name|branchRevision
+name|headRevision
 argument_list|)
-expr_stmt|;
-name|committed
-operator|=
-name|currentRoot
 expr_stmt|;
 block|}
 block|}
