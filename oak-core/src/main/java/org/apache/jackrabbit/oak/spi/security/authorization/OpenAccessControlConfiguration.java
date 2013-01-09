@@ -77,18 +77,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|security
-operator|.
-name|auth
-operator|.
-name|Subject
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -178,7 +166,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This class implements an {@link AccessControlConfiguration} which grants  * full access to any {@link Subject}.  */
+comment|/**  * This class implements an {@link AccessControlConfiguration} which grants  * full access to any {@link javax.security.auth.Subject}.  */
 end_comment
 
 begin_class

@@ -51,6 +51,11 @@ specifier|final
 class|class
 name|Permissions
 block|{
+specifier|private
+name|Permissions
+parameter_list|()
+block|{}
+empty_stmt|;
 specifier|public
 specifier|static
 specifier|final

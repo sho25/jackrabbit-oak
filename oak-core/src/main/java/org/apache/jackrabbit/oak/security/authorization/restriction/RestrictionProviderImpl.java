@@ -145,6 +145,22 @@ name|apache
 operator|.
 name|jackrabbit
 operator|.
+name|api
+operator|.
+name|security
+operator|.
+name|JackrabbitAccessControlEntry
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
 name|oak
 operator|.
 name|api
@@ -347,6 +363,8 @@ operator|.
 name|STRING
 argument_list|,
 literal|false
+argument_list|,
+name|namePathMapper
 argument_list|)
 decl_stmt|;
 name|this
@@ -544,6 +562,8 @@ name|definition
 operator|.
 name|isMandatory
 argument_list|()
+argument_list|,
+name|namePathMapper
 argument_list|)
 return|;
 block|}
@@ -591,6 +611,33 @@ argument_list|<
 name|Restriction
 argument_list|>
 name|restrictions
+parameter_list|)
+throws|throws
+name|AccessControlException
+block|{
+comment|// TODO
+throw|throw
+operator|new
+name|UnsupportedOperationException
+argument_list|(
+literal|"not yet implemented"
+argument_list|)
+throw|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|void
+name|writeRestrictions
+parameter_list|(
+name|String
+name|jcrPath
+parameter_list|,
+name|Tree
+name|aceTree
+parameter_list|,
+name|JackrabbitAccessControlEntry
+name|entry
 parameter_list|)
 throws|throws
 name|AccessControlException
@@ -660,6 +707,13 @@ operator|=
 name|aceTree
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|restrictions
+operator|!=
+literal|null
+condition|)
+block|{
 name|Map
 argument_list|<
 name|String
@@ -862,6 +916,7 @@ operator|+
 literal|" is missing."
 argument_list|)
 throw|;
+block|}
 block|}
 block|}
 block|}
