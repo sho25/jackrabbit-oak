@@ -1055,6 +1055,11 @@ argument_list|>
 name|attributes
 parameter_list|)
 block|{
+name|String
+name|error
+init|=
+literal|"Failed to create login token "
+decl_stmt|;
 try|try
 block|{
 name|Authorizable
@@ -1370,7 +1375,7 @@ name|log
 operator|.
 name|debug
 argument_list|(
-literal|"Failed to create login token "
+name|error
 argument_list|,
 name|e
 operator|.
@@ -1389,7 +1394,7 @@ name|log
 operator|.
 name|debug
 argument_list|(
-literal|"Failed to create login token "
+name|error
 argument_list|,
 name|e
 operator|.
@@ -1408,7 +1413,7 @@ name|log
 operator|.
 name|debug
 argument_list|(
-literal|"Failed to create login token "
+name|error
 argument_list|,
 name|e
 operator|.
@@ -1427,7 +1432,7 @@ name|log
 operator|.
 name|debug
 argument_list|(
-literal|"Failed to create login token "
+name|error
 argument_list|,
 name|e
 operator|.
@@ -2069,6 +2074,7 @@ comment|//----------------------------------------------------------------------
 comment|/**      * TokenInfo      */
 specifier|private
 specifier|static
+specifier|final
 class|class
 name|TokenInfoImpl
 implements|implements
@@ -2335,7 +2341,7 @@ name|tokenCredentials
 parameter_list|)
 block|{
 name|String
-name|token
+name|tk
 init|=
 name|tokenCredentials
 operator|.
@@ -2345,7 +2351,7 @@ decl_stmt|;
 name|int
 name|pos
 init|=
-name|token
+name|tk
 operator|.
 name|lastIndexOf
 argument_list|(
@@ -2360,9 +2366,9 @@ operator|-
 literal|1
 condition|)
 block|{
-name|token
+name|tk
 operator|=
-name|token
+name|tk
 operator|.
 name|substring
 argument_list|(
@@ -2385,7 +2391,7 @@ name|isSame
 argument_list|(
 name|key
 argument_list|,
-name|token
+name|tk
 argument_list|)
 condition|)
 block|{
