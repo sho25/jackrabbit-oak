@@ -15,7 +15,7 @@ name|oak
 operator|.
 name|security
 operator|.
-name|principal
+name|user
 package|;
 end_package
 
@@ -71,32 +71,11 @@ name|AdminPrincipal
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|spi
-operator|.
-name|security
-operator|.
-name|principal
-operator|.
-name|TreeBasedPrincipal
-import|;
-end_import
-
 begin_comment
 comment|/**  * AdminPrincipal variant of the {@link TreeBasedPrincipal}.  */
 end_comment
 
 begin_class
-specifier|public
 class|class
 name|AdminPrincipalImpl
 extends|extends
@@ -104,7 +83,6 @@ name|TreeBasedPrincipal
 implements|implements
 name|AdminPrincipal
 block|{
-specifier|public
 name|AdminPrincipalImpl
 parameter_list|(
 name|String

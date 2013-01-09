@@ -203,11 +203,6 @@ specifier|final
 name|SecurityProvider
 name|securityProvider
 decl_stmt|;
-specifier|private
-specifier|final
-name|ConfigurationParameters
-name|options
-decl_stmt|;
 specifier|public
 name|PrincipalConfigurationImpl
 parameter_list|(
@@ -223,12 +218,6 @@ operator|.
 name|securityProvider
 operator|=
 name|securityProvider
-expr_stmt|;
-name|this
-operator|.
-name|options
-operator|=
-name|options
 expr_stmt|;
 block|}
 annotation|@

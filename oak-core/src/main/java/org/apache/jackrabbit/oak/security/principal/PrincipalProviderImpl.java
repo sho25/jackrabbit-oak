@@ -841,6 +841,7 @@ block|}
 comment|//--------------------------------------------------------------------------
 comment|/**      * Function to covert an authorizable tree to a principal.      */
 specifier|private
+specifier|static
 specifier|final
 class|class
 name|AuthorizableToPrincipal
@@ -861,6 +862,13 @@ parameter_list|(
 name|Authorizable
 name|authorizable
 parameter_list|)
+block|{
+if|if
+condition|(
+name|authorizable
+operator|!=
+literal|null
+condition|)
 block|{
 try|try
 block|{
@@ -887,10 +895,11 @@ name|getMessage
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
+block|}
 return|return
 literal|null
 return|;
-block|}
 block|}
 block|}
 block|}
