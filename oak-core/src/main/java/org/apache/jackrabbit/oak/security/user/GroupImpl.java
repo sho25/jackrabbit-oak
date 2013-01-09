@@ -752,9 +752,17 @@ block|{
 name|String
 name|propName
 init|=
+name|getUserManager
+argument_list|()
+operator|.
+name|getNamePathMapper
+argument_list|()
+operator|.
 name|getJcrName
 argument_list|(
+operator|(
 name|REP_PRINCIPAL_NAME
+operator|)
 argument_list|)
 decl_stmt|;
 return|return

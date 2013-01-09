@@ -189,6 +189,10 @@ name|UserUtility
 implements|implements
 name|UserConstants
 block|{
+specifier|private
+name|UserUtility
+parameter_list|()
+block|{}
 annotation|@
 name|Nonnull
 specifier|public

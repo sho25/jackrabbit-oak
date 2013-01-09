@@ -85,7 +85,6 @@ throws|throws
 name|RepositoryException
 function_decl|;
 comment|//-----------------------------------------------------< Node Condition>---
-specifier|static
 class|class
 name|Node
 implements|implements
@@ -139,7 +138,6 @@ expr_stmt|;
 block|}
 block|}
 comment|//-------------------------------------------------< Property Condition>---
-specifier|static
 class|class
 name|Property
 implements|implements
@@ -324,7 +322,6 @@ expr_stmt|;
 block|}
 block|}
 comment|//-------------------------------------------------< Contains Condition>---
-specifier|static
 class|class
 name|Contains
 implements|implements
@@ -399,7 +396,6 @@ expr_stmt|;
 block|}
 block|}
 comment|//--------------------------------------------< Impersonation Condition>---
-specifier|static
 class|class
 name|Impersonation
 implements|implements
@@ -451,7 +447,6 @@ expr_stmt|;
 block|}
 block|}
 comment|//------------------------------------------------------< Not Condition>---
-specifier|static
 class|class
 name|Not
 implements|implements
@@ -506,7 +501,6 @@ block|}
 block|}
 comment|//-------------------------------------------------< Compound Condition>---
 specifier|abstract
-specifier|static
 class|class
 name|Compound
 implements|implements
@@ -574,7 +568,6 @@ return|;
 block|}
 block|}
 comment|//------------------------------------------------------< And Condition>---
-specifier|static
 class|class
 name|And
 extends|extends
@@ -618,7 +611,6 @@ expr_stmt|;
 block|}
 block|}
 comment|//-------------------------------------------------------< Or Condition>---
-specifier|static
 class|class
 name|Or
 extends|extends

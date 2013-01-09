@@ -433,7 +433,6 @@ name|UserProvider
 extends|extends
 name|AuthorizableBaseProvider
 block|{
-comment|/**      * logger instance      */
 specifier|private
 specifier|static
 specifier|final

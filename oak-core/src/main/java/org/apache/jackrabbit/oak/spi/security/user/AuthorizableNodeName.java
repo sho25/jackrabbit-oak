@@ -45,7 +45,6 @@ interface|interface
 name|AuthorizableNodeName
 block|{
 comment|/**      * Default {@code AuthorizableNodeName} instance.      *      * @see AuthorizableNodeName.Default      */
-specifier|public
 name|AuthorizableNodeName
 name|DEFAULT
 init|=
@@ -62,8 +61,6 @@ name|authorizableId
 parameter_list|)
 function_decl|;
 comment|/**      * Default implementation of the {@code AuthorizableNodeName} interface      * that uses the specified authorizable identifier as node name      * {@link org.apache.jackrabbit.util.Text#escapeIllegalJcrChars(String) escaping}      * any illegal JCR chars.      */
-specifier|public
-specifier|static
 specifier|final
 class|class
 name|Default

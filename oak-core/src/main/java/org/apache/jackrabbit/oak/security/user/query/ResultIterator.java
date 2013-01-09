@@ -47,6 +47,7 @@ end_comment
 
 begin_class
 specifier|public
+specifier|final
 class|class
 name|ResultIterator
 parameter_list|<
@@ -59,16 +60,16 @@ name|T
 argument_list|>
 block|{
 specifier|public
-specifier|final
 specifier|static
+specifier|final
 name|int
 name|OFFSET_NONE
 init|=
 literal|0
 decl_stmt|;
 specifier|public
-specifier|final
 specifier|static
+specifier|final
 name|int
 name|MAX_ALL
 init|=
