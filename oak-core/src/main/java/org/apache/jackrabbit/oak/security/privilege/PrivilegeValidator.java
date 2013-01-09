@@ -270,9 +270,6 @@ name|PrivilegeValidator
 parameter_list|(
 name|NodeState
 name|before
-parameter_list|,
-name|NodeState
-name|after
 parameter_list|)
 block|{
 name|NodeState

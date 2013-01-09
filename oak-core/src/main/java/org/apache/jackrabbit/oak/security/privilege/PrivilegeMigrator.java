@@ -567,9 +567,6 @@ argument_list|(
 literal|"Duplicate entry for custom privilege with name "
 operator|+
 name|privName
-operator|.
-name|toString
-argument_list|()
 argument_list|)
 throw|;
 block|}
@@ -597,22 +594,6 @@ specifier|static
 class|class
 name|PrivilegeXmlHandler
 block|{
-specifier|private
-specifier|static
-specifier|final
-name|String
-name|TEXT_XML
-init|=
-literal|"text/xml"
-decl_stmt|;
-specifier|private
-specifier|static
-specifier|final
-name|String
-name|APPLICATION_XML
-init|=
-literal|"application/xml"
-decl_stmt|;
 specifier|private
 specifier|static
 specifier|final
@@ -660,14 +641,6 @@ name|String
 name|ATTR_XMLNS
 init|=
 literal|"xmlns:"
-decl_stmt|;
-specifier|private
-specifier|static
-name|DocumentBuilderFactory
-name|DOCUMENT_BUILDER_FACTORY
-init|=
-name|createFactory
-argument_list|()
 decl_stmt|;
 specifier|private
 specifier|static
@@ -1097,7 +1070,8 @@ block|{
 name|DocumentBuilder
 name|builder
 init|=
-name|DOCUMENT_BUILDER_FACTORY
+name|createFactory
+argument_list|()
 operator|.
 name|newDocumentBuilder
 argument_list|()

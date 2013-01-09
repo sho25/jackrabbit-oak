@@ -262,6 +262,7 @@ argument_list|()
 return|;
 block|}
 specifier|private
+specifier|final
 class|class
 name|PrivilegeDiff
 extends|extends
@@ -274,11 +275,6 @@ name|String
 name|ROOT_PATH
 init|=
 literal|""
-decl_stmt|;
-specifier|private
-specifier|final
-name|PrivilegeDiff
-name|parentDiff
 decl_stmt|;
 specifier|private
 specifier|final
@@ -303,12 +299,6 @@ name|NodeBuilder
 name|nodeBuilder
 parameter_list|)
 block|{
-name|this
-operator|.
-name|parentDiff
-operator|=
-name|parentDiff
-expr_stmt|;
 name|this
 operator|.
 name|path

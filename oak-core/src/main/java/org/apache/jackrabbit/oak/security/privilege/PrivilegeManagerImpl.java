@@ -290,7 +290,6 @@ name|PrivilegeManagerImpl
 implements|implements
 name|PrivilegeManager
 block|{
-comment|/**      * logger instance      */
 specifier|private
 specifier|static
 specifier|final
@@ -306,10 +305,12 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
+specifier|private
 specifier|final
 name|Root
 name|root
 decl_stmt|;
+specifier|private
 specifier|final
 name|NamePathMapper
 name|namePathMapper
@@ -828,6 +829,7 @@ block|}
 comment|//--------------------------------------------------------------------------
 comment|/**      * Privilege implementation based on a {@link org.apache.jackrabbit.oak.spi.security.privilege.PrivilegeDefinition}.      */
 specifier|private
+specifier|final
 class|class
 name|PrivilegeImpl
 implements|implements

@@ -388,7 +388,8 @@ block|{
 return|return
 name|PrivilegeContext
 operator|.
-name|INSTANCE
+name|getInstance
+argument_list|()
 return|;
 block|}
 block|}
