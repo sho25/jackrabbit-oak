@@ -122,7 +122,6 @@ name|SecurityConfiguration
 block|{
 annotation|@
 name|Nonnull
-specifier|public
 name|PrincipalManager
 name|getPrincipalManager
 parameter_list|(
@@ -138,7 +137,6 @@ parameter_list|)
 function_decl|;
 annotation|@
 name|Nonnull
-specifier|public
 name|PrincipalProvider
 name|getPrincipalProvider
 parameter_list|(
