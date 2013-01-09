@@ -556,7 +556,7 @@ argument_list|)
 argument_list|)
 argument_list|)
 decl_stmt|;
-comment|// Merge nodes from head to branch.
+comment|// Merge changes, if any, from trunk to branch.
 name|Node
 name|currentHeadNode
 init|=
@@ -567,6 +567,13 @@ argument_list|,
 name|currentHead
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|currentHead
+operator|!=
+name|branchRootId
+condition|)
+block|{
 name|ourRoot
 operator|=
 name|mergeNodes
@@ -578,6 +585,7 @@ argument_list|,
 name|branchRootId
 argument_list|)
 expr_stmt|;
+block|}
 name|String
 name|diff
 init|=
