@@ -156,7 +156,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * {@code ItemImpl}...  */
+comment|/**  * TODO document  */
 end_comment
 
 begin_class

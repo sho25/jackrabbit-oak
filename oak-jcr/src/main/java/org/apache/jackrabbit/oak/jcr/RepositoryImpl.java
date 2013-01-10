@@ -178,7 +178,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * {@code RepositoryImpl}...  */
+comment|/**  * TODO document  */
 end_comment
 
 begin_class

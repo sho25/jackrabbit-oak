@@ -655,6 +655,9 @@ block|}
 annotation|@
 name|CheckForNull
 name|NodeImpl
+argument_list|<
+name|NodeDelegate
+argument_list|>
 name|getNode
 parameter_list|(
 name|String
@@ -691,6 +694,9 @@ literal|null
 else|:
 operator|new
 name|NodeImpl
+argument_list|<
+name|NodeDelegate
+argument_list|>
 argument_list|(
 name|d
 argument_list|)
@@ -777,6 +783,9 @@ block|}
 name|Iterator
 argument_list|<
 name|NodeImpl
+argument_list|<
+name|NodeDelegate
+argument_list|>
 argument_list|>
 name|nodeIterator
 init|=
@@ -784,6 +793,9 @@ operator|new
 name|Iterator
 argument_list|<
 name|NodeImpl
+argument_list|<
+name|NodeDelegate
+argument_list|>
 argument_list|>
 argument_list|()
 block|{
@@ -807,6 +819,9 @@ argument_list|()
 decl_stmt|;
 specifier|private
 name|NodeImpl
+argument_list|<
+name|NodeDelegate
+argument_list|>
 name|current
 decl_stmt|;
 block|{
@@ -888,6 +903,9 @@ annotation|@
 name|Override
 specifier|public
 name|NodeImpl
+argument_list|<
+name|NodeDelegate
+argument_list|>
 name|next
 parameter_list|()
 block|{
@@ -905,6 +923,9 @@ argument_list|()
 throw|;
 block|}
 name|NodeImpl
+argument_list|<
+name|NodeDelegate
+argument_list|>
 name|n
 init|=
 name|current
@@ -935,6 +956,9 @@ specifier|final
 name|PrefetchIterator
 argument_list|<
 name|NodeImpl
+argument_list|<
+name|NodeDelegate
+argument_list|>
 argument_list|>
 name|prefIt
 init|=
@@ -942,6 +966,9 @@ operator|new
 name|PrefetchIterator
 argument_list|<
 name|NodeImpl
+argument_list|<
+name|NodeDelegate
+argument_list|>
 argument_list|>
 argument_list|(
 name|nodeIterator

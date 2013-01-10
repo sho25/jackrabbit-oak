@@ -778,6 +778,7 @@ throw|;
 block|}
 block|}
 specifier|private
+specifier|static
 name|Map
 argument_list|<
 name|String

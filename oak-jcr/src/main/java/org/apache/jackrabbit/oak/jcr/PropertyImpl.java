@@ -306,7 +306,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * {@code PropertyImpl}...  */
+comment|/**  * TODO document  */
 end_comment
 
 begin_class

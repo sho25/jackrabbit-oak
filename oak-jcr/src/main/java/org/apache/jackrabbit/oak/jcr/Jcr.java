@@ -514,7 +514,6 @@ specifier|private
 name|SecurityProvider
 name|securityProvider
 decl_stmt|;
-specifier|private
 name|Jcr
 parameter_list|(
 name|Oak

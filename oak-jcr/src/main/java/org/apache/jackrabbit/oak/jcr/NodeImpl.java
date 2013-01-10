@@ -419,18 +419,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|jcr
-operator|.
-name|version
-operator|.
-name|VersionManager
-import|;
-end_import
-
-begin_import
-import|import
 name|com
 operator|.
 name|google
@@ -816,7 +804,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * {@code NodeImpl}...  */
+comment|/**  * TODO document  *   * @param<T> the delegate type  */
 end_comment
 
 begin_class
