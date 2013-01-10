@@ -1460,6 +1460,19 @@ condition|)
 block|{
 continue|continue;
 block|}
+name|assertTrue
+argument_list|(
+name|principalMgr
+operator|.
+name|hasPrincipal
+argument_list|(
+name|pcpl
+operator|.
+name|getName
+argument_list|()
+argument_list|)
+argument_list|)
+expr_stmt|;
 name|PrincipalIterator
 name|it
 init|=
@@ -1476,12 +1489,14 @@ decl_stmt|;
 comment|// search must find at least a single principal
 name|assertTrue
 argument_list|(
-literal|"findPrincipals does not find principal with filter "
+literal|"findPrincipals does not find principal with filter '"
 operator|+
 name|pcpl
 operator|.
 name|getName
 argument_list|()
+operator|+
+literal|'\''
 argument_list|,
 name|it
 operator|.
@@ -1519,6 +1534,19 @@ block|{
 comment|// special case covered by another test
 continue|continue;
 block|}
+name|assertTrue
+argument_list|(
+name|principalMgr
+operator|.
+name|hasPrincipal
+argument_list|(
+name|pcpl
+operator|.
+name|getName
+argument_list|()
+argument_list|)
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|isGroup
@@ -1583,12 +1611,18 @@ decl_stmt|;
 comment|// search must find at least a single matching non-group principal
 name|assertTrue
 argument_list|(
-literal|"findPrincipals does not find principal with filter "
+literal|"findPrincipals does not find principal with filter '"
 operator|+
 name|pcpl
 operator|.
 name|getName
 argument_list|()
+operator|+
+literal|"' and type "
+operator|+
+name|PrincipalManager
+operator|.
+name|SEARCH_TYPE_NOT_GROUP
 argument_list|,
 name|it
 operator|.
@@ -1627,6 +1661,19 @@ block|{
 comment|// special case covered by another test
 continue|continue;
 block|}
+name|assertTrue
+argument_list|(
+name|principalMgr
+operator|.
+name|hasPrincipal
+argument_list|(
+name|pcpl
+operator|.
+name|getName
+argument_list|()
+argument_list|)
+argument_list|)
+expr_stmt|;
 name|PrincipalIterator
 name|it
 init|=
@@ -1657,6 +1704,40 @@ name|getName
 argument_list|()
 argument_list|)
 decl_stmt|;
+name|assertTrue
+argument_list|(
+literal|"Principal "
+operator|+
+name|pcpl
+operator|.
+name|getName
+argument_list|()
+operator|+
+literal|" not found"
+argument_list|,
+name|it
+operator|.
+name|hasNext
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|assertTrue
+argument_list|(
+literal|"Principal "
+operator|+
+name|pcpl
+operator|.
+name|getName
+argument_list|()
+operator|+
+literal|" not found"
+argument_list|,
+name|it2
+operator|.
+name|hasNext
+argument_list|()
+argument_list|)
+expr_stmt|;
 comment|// both search must reveal the same result and size
 name|assertTrue
 argument_list|(
@@ -1768,6 +1849,19 @@ operator|.
 name|getEveryone
 argument_list|()
 decl_stmt|;
+name|assertTrue
+argument_list|(
+name|principalMgr
+operator|.
+name|hasPrincipal
+argument_list|(
+name|everyone
+operator|.
+name|getName
+argument_list|()
+argument_list|)
+argument_list|)
+expr_stmt|;
 name|boolean
 name|containedInResult
 init|=

@@ -148,6 +148,21 @@ name|int
 name|searchType
 parameter_list|)
 function_decl|;
+comment|/**      * Find all principals that match the search type.      *      * @param searchType Limit the search to certain types of principals. Valid      * values are any of      *<ul><li>{@link org.apache.jackrabbit.api.security.principal.PrincipalManager#SEARCH_TYPE_ALL}</li></ul>      *<ul><li>{@link org.apache.jackrabbit.api.security.principal.PrincipalManager#SEARCH_TYPE_NOT_GROUP}</li></ul>      *<ul><li>{@link org.apache.jackrabbit.api.security.principal.PrincipalManager#SEARCH_TYPE_GROUP}</li></ul>      * @return An iterator of principals.      */
+annotation|@
+name|Nonnull
+name|Iterator
+argument_list|<
+name|?
+extends|extends
+name|Principal
+argument_list|>
+name|findPrincipals
+parameter_list|(
+name|int
+name|searchType
+parameter_list|)
+function_decl|;
 block|}
 end_interface
 

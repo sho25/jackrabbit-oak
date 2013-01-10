@@ -255,14 +255,18 @@ name|int
 name|searchType
 parameter_list|)
 block|{
-comment|// TODO OAK-524
-throw|throw
+return|return
 operator|new
-name|UnsupportedOperationException
+name|PrincipalIteratorAdapter
 argument_list|(
-literal|"not implemented (see: OAK-524)"
+name|principalProvider
+operator|.
+name|findPrincipals
+argument_list|(
+name|searchType
 argument_list|)
-throw|;
+argument_list|)
+return|;
 block|}
 annotation|@
 name|Override
