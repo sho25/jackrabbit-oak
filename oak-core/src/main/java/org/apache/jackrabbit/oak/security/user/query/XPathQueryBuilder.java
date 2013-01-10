@@ -181,8 +181,9 @@ specifier|private
 name|long
 name|maxCount
 init|=
-operator|-
-literal|1
+name|Long
+operator|.
+name|MAX_VALUE
 decl_stmt|;
 comment|//-------------------------------------------------------< QueryBuilder>---
 annotation|@
