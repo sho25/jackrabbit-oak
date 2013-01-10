@@ -562,6 +562,23 @@ name|long
 name|limit
 parameter_list|)
 block|{
+if|if
+condition|(
+name|limit
+operator|<
+literal|0
+condition|)
+block|{
+throw|throw
+operator|new
+name|IllegalArgumentException
+argument_list|(
+literal|"Limit may not be negative, is: "
+operator|+
+name|limit
+argument_list|)
+throw|;
+block|}
 name|this
 operator|.
 name|limit
@@ -579,6 +596,23 @@ name|long
 name|offset
 parameter_list|)
 block|{
+if|if
+condition|(
+name|offset
+operator|<
+literal|0
+condition|)
+block|{
+throw|throw
+operator|new
+name|IllegalArgumentException
+argument_list|(
+literal|"Offset may not be negative, is: "
+operator|+
+name|offset
+argument_list|)
+throw|;
+block|}
 name|this
 operator|.
 name|offset
