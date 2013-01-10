@@ -25,16 +25,6 @@ end_package
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Set
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -134,25 +124,6 @@ name|values
 parameter_list|)
 throws|throws
 name|CommitFailedException
-function_decl|;
-comment|/**      * Search for a given set of values.      *       * @param index index node (may not be null)      * @param values values to look for (null to check for property existence)      * @return the set of paths corresponding to the given values      */
-annotation|@
-name|Deprecated
-name|Set
-argument_list|<
-name|String
-argument_list|>
-name|find
-parameter_list|(
-name|NodeState
-name|index
-parameter_list|,
-name|Iterable
-argument_list|<
-name|String
-argument_list|>
-name|values
-parameter_list|)
 function_decl|;
 comment|/**      * Search for a given set of values.      *       * @param indexName the name of the index (for logging)      * @param index index node (may not be null)      * @param values values to look for (null to check for property existence)      * @return an iterator of paths      */
 name|Iterable
