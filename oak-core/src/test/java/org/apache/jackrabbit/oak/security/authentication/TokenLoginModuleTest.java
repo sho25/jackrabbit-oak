@@ -659,7 +659,7 @@ block|{
 name|Root
 name|root
 init|=
-name|admin
+name|adminSession
 operator|.
 name|getLatestRoot
 argument_list|()

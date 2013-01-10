@@ -392,7 +392,7 @@ expr_stmt|;
 block|}
 name|root
 operator|=
-name|admin
+name|adminSession
 operator|.
 name|getLatestRoot
 argument_list|()

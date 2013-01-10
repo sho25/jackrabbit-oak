@@ -329,7 +329,7 @@ name|DEFAULT
 decl_stmt|;
 name|root
 operator|=
-name|admin
+name|adminSession
 operator|.
 name|getLatestRoot
 argument_list|()

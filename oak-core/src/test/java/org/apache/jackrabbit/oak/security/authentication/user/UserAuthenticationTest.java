@@ -364,7 +364,7 @@ argument_list|()
 expr_stmt|;
 name|root
 operator|=
-name|admin
+name|adminSession
 operator|.
 name|getLatestRoot
 argument_list|()
@@ -772,7 +772,7 @@ operator|new
 name|GuestCredentials
 argument_list|()
 argument_list|,
-name|admin
+name|adminSession
 operator|.
 name|getAuthInfo
 argument_list|()
@@ -789,7 +789,7 @@ argument_list|(
 operator|new
 name|SimpleCredentials
 argument_list|(
-name|admin
+name|adminSession
 operator|.
 name|getAuthInfo
 argument_list|()
@@ -829,7 +829,7 @@ literal|0
 index|]
 argument_list|)
 argument_list|,
-name|admin
+name|adminSession
 operator|.
 name|getAuthInfo
 argument_list|()
@@ -929,7 +929,7 @@ name|ImpersonationCredentials
 argument_list|(
 name|sc
 argument_list|,
-name|admin
+name|adminSession
 operator|.
 name|getAuthInfo
 argument_list|()

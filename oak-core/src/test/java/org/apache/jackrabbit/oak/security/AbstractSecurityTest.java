@@ -197,7 +197,7 @@ name|securityProvider
 decl_stmt|;
 specifier|protected
 name|ContentSession
-name|admin
+name|adminSession
 decl_stmt|;
 annotation|@
 name|Before
@@ -230,7 +230,7 @@ operator|.
 name|createContentRepository
 argument_list|()
 expr_stmt|;
-name|admin
+name|adminSession
 operator|=
 name|login
 argument_list|(
@@ -256,7 +256,7 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|admin
+name|adminSession
 operator|.
 name|close
 argument_list|()
