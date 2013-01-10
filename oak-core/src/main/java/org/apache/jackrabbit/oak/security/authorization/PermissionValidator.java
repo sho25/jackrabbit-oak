@@ -247,6 +247,22 @@ name|Text
 import|;
 end_import
 
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkNotNull
+import|;
+end_import
+
 begin_comment
 comment|/**  * PermissionValidator... TODO  */
 end_comment
@@ -786,6 +802,11 @@ parameter_list|)
 throws|throws
 name|CommitFailedException
 block|{
+name|checkNotNull
+argument_list|(
+name|node
+argument_list|)
+expr_stmt|;
 name|Tree
 name|tree
 init|=

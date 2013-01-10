@@ -167,6 +167,22 @@ name|NodeUtil
 import|;
 end_import
 
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkNotNull
+import|;
+end_import
+
 begin_comment
 comment|/**  * AccessControlValidator... TODO  */
 end_comment
@@ -346,6 +362,11 @@ argument_list|(
 name|name
 argument_list|)
 decl_stmt|;
+name|checkNotNull
+argument_list|(
+name|node
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|isAccessControlEntry
@@ -418,6 +439,16 @@ argument_list|(
 name|name
 argument_list|)
 decl_stmt|;
+name|checkNotNull
+argument_list|(
+name|nodeBefore
+argument_list|)
+expr_stmt|;
+name|checkNotNull
+argument_list|(
+name|nodeAfter
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|isAccessControlEntry
@@ -616,6 +647,10 @@ control|)
 block|{
 if|if
 condition|(
+name|privilegeName
+operator|==
+literal|null
+operator|||
 operator|!
 name|privilegeDefinitions
 operator|.
@@ -627,7 +662,7 @@ condition|)
 block|{
 name|fail
 argument_list|(
-literal|"Unknown privilege "
+literal|"Invalid privilege "
 operator|+
 name|privilegeName
 argument_list|)
