@@ -1236,6 +1236,44 @@ name|commit
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * Evicts the commit from the {@link #commitCache}.      *      * @param commit the commit.      */
+specifier|public
+name|void
+name|evict
+parameter_list|(
+name|MongoCommit
+name|commit
+parameter_list|)
+block|{
+if|if
+condition|(
+name|commitCache
+operator|.
+name|remove
+argument_list|(
+name|commit
+operator|.
+name|getRevisionId
+argument_list|()
+argument_list|)
+operator|!=
+literal|null
+condition|)
+block|{
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"Removed commit {} from cache"
+argument_list|,
+name|commit
+operator|.
+name|getRevisionId
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+block|}
 comment|/**      * Returns the commit from the cache or null if the commit is not in the cache.      *      * @param revisionId Commit revision id.      * @return Commit from cache or null if commit is not in the cache.      */
 specifier|public
 name|MongoCommit
@@ -1349,6 +1387,9 @@ argument_list|(
 name|key
 argument_list|,
 name|node
+operator|.
+name|copy
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}

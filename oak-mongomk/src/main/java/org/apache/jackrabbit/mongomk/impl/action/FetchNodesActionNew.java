@@ -1113,11 +1113,14 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Converted nodes @{} with path {} was not put into map"
+literal|"Converted node @{} with path {} was not put into map"
 operator|+
 literal|" because a newer version is available"
 argument_list|,
-name|revisionId
+name|node
+operator|.
+name|getRevisionId
+argument_list|()
 argument_list|,
 name|path
 argument_list|)
@@ -1138,7 +1141,7 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Converting node {} ({})"
+literal|"Converting node {} (@{})"
 argument_list|,
 name|path
 argument_list|,
@@ -1161,7 +1164,7 @@ name|getFromCache
 argument_list|(
 name|revisionId
 argument_list|)
-operator|!=
+operator|==
 literal|null
 condition|)
 block|{

@@ -79,9 +79,11 @@ begin_import
 import|import
 name|org
 operator|.
-name|junit
+name|json
 operator|.
-name|Ignore
+name|simple
+operator|.
+name|JSONObject
 import|;
 end_import
 
@@ -181,9 +183,6 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-annotation|@
-name|Ignore
-comment|// According to OAK-507, this should not fail.
 specifier|public
 name|void
 name|removeNonExistentNode
@@ -308,6 +307,9 @@ argument_list|,
 literal|null
 argument_list|)
 decl_stmt|;
+name|String
+name|rev
+init|=
 name|mk
 operator|.
 name|commit
@@ -320,7 +322,7 @@ name|base
 argument_list|,
 literal|null
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 name|assertTrue
 argument_list|(
 name|mk
@@ -333,6 +335,18 @@ name|base
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|assertFalse
+argument_list|(
+name|mk
+operator|.
+name|nodeExists
+argument_list|(
+literal|"/a"
+argument_list|,
+name|rev
+argument_list|)
+argument_list|)
+expr_stmt|;
 name|mk
 operator|.
 name|commit
@@ -341,7 +355,7 @@ literal|""
 argument_list|,
 literal|"+\"/a\":{}"
 argument_list|,
-name|base
+name|rev
 argument_list|,
 literal|null
 argument_list|)

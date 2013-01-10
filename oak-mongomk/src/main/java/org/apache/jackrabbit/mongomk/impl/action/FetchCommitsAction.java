@@ -342,9 +342,9 @@ operator|=
 name|toRevisionId
 expr_stmt|;
 block|}
-comment|/**      * Sets the max number of entries that should be fetched.      *      * @param maxEntries The max number of entries.      */
+comment|/**      * Sets the max number of entries that should be fetched.      *      * @param maxEntries The max number of entries.      * @return this action.      */
 specifier|public
-name|void
+name|FetchCommitsAction
 name|setMaxEntries
 parameter_list|(
 name|int
@@ -357,10 +357,13 @@ name|maxEntries
 operator|=
 name|maxEntries
 expr_stmt|;
+return|return
+name|this
+return|;
 block|}
-comment|/**      * Sets whether the branch commits are included in the query.      *      * @param includeBranchCommits Whether the branch commits are included.      */
+comment|/**      * Sets whether the branch commits are included in the query.      *      * @param includeBranchCommits Whether the branch commits are included.      * @return this action.      */
 specifier|public
-name|void
+name|FetchCommitsAction
 name|includeBranchCommits
 parameter_list|(
 name|boolean
@@ -373,6 +376,9 @@ name|includeBranchCommits
 operator|=
 name|includeBranchCommits
 expr_stmt|;
+return|return
+name|this
+return|;
 block|}
 annotation|@
 name|Override

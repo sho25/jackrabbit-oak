@@ -312,10 +312,11 @@ name|CommitCommandInstructionVisitor
 implements|implements
 name|InstructionVisitor
 block|{
+comment|// the revision this commit is based on
 specifier|private
 specifier|final
 name|long
-name|headRevisionId
+name|baseRevisionId
 decl_stmt|;
 specifier|private
 specifier|final
@@ -344,7 +345,7 @@ specifier|private
 name|String
 name|branchId
 decl_stmt|;
-comment|/**      * Creates {@code CommitCommandInstructionVisitor}      *      * @param nodeStore Node store.      * @param headRevisionId Head revision.      * @param validCommits      */
+comment|/**      * Creates {@code CommitCommandInstructionVisitor}      *      * @param nodeStore Node store.      * @param baseRevisionId the revision this commit is based on      * @param validCommits      */
 specifier|public
 name|CommitCommandInstructionVisitor
 parameter_list|(
@@ -352,7 +353,7 @@ name|MongoNodeStore
 name|nodeStore
 parameter_list|,
 name|long
-name|headRevisionId
+name|baseRevisionId
 parameter_list|,
 name|List
 argument_list|<
@@ -369,9 +370,9 @@ name|nodeStore
 expr_stmt|;
 name|this
 operator|.
-name|headRevisionId
+name|baseRevisionId
 operator|=
-name|headRevisionId
+name|baseRevisionId
 expr_stmt|;
 name|this
 operator|.
@@ -481,12 +482,10 @@ argument_list|(
 name|nodePath
 argument_list|)
 decl_stmt|;
-comment|// FIXME - Performance
-comment|//MongoNode parent = getStoredNode(parentNodePath);
 name|MongoNode
 name|parent
 init|=
-name|getStagedNode
+name|getStoredNode
 argument_list|(
 name|parentNodePath
 argument_list|)
@@ -552,12 +551,10 @@ operator|.
 name|getValue
 argument_list|()
 decl_stmt|;
-comment|// FIXME - Performance
-comment|//MongoNode node = getStoredNode(instruction.getPath());
 name|MongoNode
 name|node
 init|=
-name|getStagedNode
+name|getStoredNode
 argument_list|(
 name|instruction
 operator|.
@@ -626,14 +623,6 @@ argument_list|(
 name|nodePath
 argument_list|)
 decl_stmt|;
-name|MongoNode
-name|parent
-init|=
-name|getStagedNode
-argument_list|(
-name|parentPath
-argument_list|)
-decl_stmt|;
 name|String
 name|nodeName
 init|=
@@ -644,12 +633,39 @@ argument_list|(
 name|nodePath
 argument_list|)
 decl_stmt|;
-comment|// See OAK-507
-comment|//        MongoNode parent = getStoredNode(parentPath);
-comment|//        if (!parent.childExists(nodeName)) {
-comment|//            throw new RuntimeException("Node " + nodeName
-comment|//                    + " does not exists at parent path: " + parentPath);
-comment|//        }
+name|MongoNode
+name|parent
+init|=
+name|getStoredNode
+argument_list|(
+name|parentPath
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+operator|!
+name|parent
+operator|.
+name|childExists
+argument_list|(
+name|nodeName
+argument_list|)
+condition|)
+block|{
+throw|throw
+operator|new
+name|RuntimeException
+argument_list|(
+literal|"Node "
+operator|+
+name|nodeName
+operator|+
+literal|" does not exists at parent path: "
+operator|+
+name|parentPath
+argument_list|)
+throw|;
+block|}
 name|parent
 operator|.
 name|removeChild
@@ -818,13 +834,8 @@ argument_list|)
 throw|;
 block|}
 comment|// First, copy the existing nodes.
-name|Map
-argument_list|<
-name|String
-argument_list|,
-name|MongoNode
-argument_list|>
-name|nodesToCopy
+name|FetchNodesActionNew
+name|action
 init|=
 operator|new
 name|FetchNodesActionNew
@@ -837,8 +848,25 @@ name|FetchNodesActionNew
 operator|.
 name|LIMITLESS_DEPTH
 argument_list|,
-name|headRevisionId
+name|baseRevisionId
 argument_list|)
+decl_stmt|;
+name|action
+operator|.
+name|setBranchId
+argument_list|(
+name|branchId
+argument_list|)
+expr_stmt|;
+name|Map
+argument_list|<
+name|String
+argument_list|,
+name|MongoNode
+argument_list|>
+name|nodesToCopy
+init|=
+name|action
 operator|.
 name|execute
 argument_list|()
@@ -1089,13 +1117,8 @@ argument_list|)
 throw|;
 block|}
 comment|// First, copy the existing nodes.
-name|Map
-argument_list|<
-name|String
-argument_list|,
-name|MongoNode
-argument_list|>
-name|nodesToCopy
+name|FetchNodesActionNew
+name|action
 init|=
 operator|new
 name|FetchNodesActionNew
@@ -1108,8 +1131,25 @@ name|FetchNodesActionNew
 operator|.
 name|LIMITLESS_DEPTH
 argument_list|,
-name|headRevisionId
+name|baseRevisionId
 argument_list|)
+decl_stmt|;
+name|action
+operator|.
+name|setBranchId
+argument_list|(
+name|branchId
+argument_list|)
+expr_stmt|;
+name|Map
+argument_list|<
+name|String
+argument_list|,
+name|MongoNode
+argument_list|>
+name|nodesToCopy
+init|=
+name|action
 operator|.
 name|execute
 argument_list|()
@@ -1365,7 +1405,7 @@ name|nodeStore
 argument_list|,
 name|path
 argument_list|,
-name|headRevisionId
+name|baseRevisionId
 argument_list|)
 decl_stmt|;
 name|existCommand
@@ -1410,7 +1450,7 @@ name|path
 operator|+
 literal|" @rev"
 operator|+
-name|headRevisionId
+name|baseRevisionId
 argument_list|)
 throw|;
 block|}

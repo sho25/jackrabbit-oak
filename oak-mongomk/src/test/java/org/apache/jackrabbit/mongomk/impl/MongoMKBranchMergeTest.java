@@ -2071,11 +2071,6 @@ modifier|...
 name|nodes
 parameter_list|)
 block|{
-name|String
-name|newRev
-init|=
-name|rev
-decl_stmt|;
 for|for
 control|(
 name|String
@@ -2084,7 +2079,7 @@ range|:
 name|nodes
 control|)
 block|{
-name|newRev
+name|rev
 operator|=
 name|mk
 operator|.
@@ -2105,7 +2100,7 @@ argument_list|)
 expr_stmt|;
 block|}
 return|return
-name|newRev
+name|rev
 return|;
 block|}
 specifier|private
@@ -2120,11 +2115,6 @@ modifier|...
 name|nodes
 parameter_list|)
 block|{
-name|String
-name|newRev
-init|=
-name|rev
-decl_stmt|;
 for|for
 control|(
 name|String
@@ -2133,7 +2123,7 @@ range|:
 name|nodes
 control|)
 block|{
-name|newRev
+name|rev
 operator|=
 name|mk
 operator|.
@@ -2154,7 +2144,7 @@ argument_list|)
 expr_stmt|;
 block|}
 return|return
-name|newRev
+name|rev
 return|;
 block|}
 specifier|private

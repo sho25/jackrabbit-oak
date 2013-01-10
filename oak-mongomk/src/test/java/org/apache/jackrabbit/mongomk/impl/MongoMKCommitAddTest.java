@@ -542,9 +542,6 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-annotation|@
-name|Ignore
-comment|// FIXME - due to CommitCommandInstructionVisitor add node change.
 specifier|public
 name|void
 name|addDuplicateNode
@@ -1032,9 +1029,6 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-annotation|@
-name|Ignore
-comment|// FIXME - due to CommitCommandInstructionVisitor add node change.
 specifier|public
 name|void
 name|setPropertyWithoutAddingNode
