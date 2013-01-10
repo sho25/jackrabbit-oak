@@ -613,7 +613,6 @@ literal|null
 condition|)
 block|{
 comment|// "[property] is not null"
-comment|// TODO don't load all entries in memory
 name|paths
 operator|=
 name|lookup
