@@ -145,7 +145,7 @@ argument_list|>
 name|values
 parameter_list|)
 function_decl|;
-comment|/**      * Count the occurrence of a given set of values. Used in calculating the      * cost of an index.      *       * @param index the index node (may not be null)      * @param values values to look for (null to check for property existence)      * @return the aggregated count of occurrences for each provided value      */
+comment|/**      * Count the occurrence of a given set of values. Used in calculating the      * cost of an index.      *       * @param index the index node (may not be null)      * @param values values to look for (null to check for property existence)      * @param max the maximum value to return      * @return the aggregated count of occurrences for each provided value      */
 name|int
 name|count
 parameter_list|(
@@ -157,6 +157,9 @@ argument_list|<
 name|String
 argument_list|>
 name|values
+parameter_list|,
+name|int
+name|max
 parameter_list|)
 function_decl|;
 block|}
