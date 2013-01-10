@@ -81,6 +81,16 @@ begin_import
 import|import
 name|javax
 operator|.
+name|annotation
+operator|.
+name|Nullable
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
 name|jcr
 operator|.
 name|RepositoryException
@@ -1056,6 +1066,8 @@ parameter_list|(
 name|String
 name|name
 parameter_list|,
+annotation|@
+name|Nullable
 name|String
 name|defaultValue
 parameter_list|)
@@ -1229,6 +1241,8 @@ parameter_list|(
 name|String
 name|name
 parameter_list|,
+annotation|@
+name|Nullable
 name|String
 name|defaultValue
 parameter_list|)
