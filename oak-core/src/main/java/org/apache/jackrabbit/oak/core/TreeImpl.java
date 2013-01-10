@@ -2747,6 +2747,20 @@ block|}
 annotation|@
 name|Override
 specifier|public
+name|boolean
+name|remove
+parameter_list|()
+block|{
+return|return
+name|tree
+operator|.
+name|remove
+argument_list|()
+return|;
+block|}
+annotation|@
+name|Override
+specifier|public
 name|Tree
 name|getTree
 parameter_list|()
@@ -2963,6 +2977,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**          * Remove the underlying property          * @return  {@code true} on success false otherwise          */
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|remove

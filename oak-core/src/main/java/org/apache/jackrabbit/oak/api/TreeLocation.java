@@ -111,6 +111,18 @@ return|return
 literal|null
 return|;
 block|}
+comment|/**          * @return Always {@code false}.          */
+annotation|@
+name|Override
+specifier|public
+name|boolean
+name|remove
+parameter_list|()
+block|{
+return|return
+literal|false
+return|;
+block|}
 comment|/**          * @return  {@code null}          */
 annotation|@
 name|Override
@@ -192,6 +204,11 @@ annotation|@
 name|CheckForNull
 name|String
 name|getPath
+parameter_list|()
+function_decl|;
+comment|/**      * Remove the underlying item.      *      * @return {@code true} if the item was removed, {@code false} otherwise.      */
+name|boolean
+name|remove
 parameter_list|()
 function_decl|;
 block|}
