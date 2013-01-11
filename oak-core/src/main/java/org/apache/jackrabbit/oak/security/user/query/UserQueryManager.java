@@ -711,7 +711,7 @@ if|if
 condition|(
 name|builder
 operator|.
-name|getGroupName
+name|getGroupID
 argument_list|()
 operator|==
 literal|null
@@ -803,7 +803,7 @@ name|userManager
 argument_list|,
 name|builder
 operator|.
-name|getGroupName
+name|getGroupID
 argument_list|()
 argument_list|,
 name|builder

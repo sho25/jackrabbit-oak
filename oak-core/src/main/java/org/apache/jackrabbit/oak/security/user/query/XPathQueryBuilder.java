@@ -142,7 +142,7 @@ name|AUTHORIZABLE
 decl_stmt|;
 specifier|private
 name|String
-name|groupName
+name|groupID
 decl_stmt|;
 specifier|private
 name|boolean
@@ -256,7 +256,7 @@ name|void
 name|setScope
 parameter_list|(
 name|String
-name|groupName
+name|groupID
 parameter_list|,
 name|boolean
 name|declaredOnly
@@ -264,9 +264,9 @@ parameter_list|)
 block|{
 name|this
 operator|.
-name|groupName
+name|groupID
 operator|=
-name|groupName
+name|groupID
 expr_stmt|;
 name|declaredMembersOnly
 operator|=
@@ -803,11 +803,11 @@ name|selectorType
 return|;
 block|}
 name|String
-name|getGroupName
+name|getGroupID
 parameter_list|()
 block|{
 return|return
-name|groupName
+name|groupID
 return|;
 block|}
 name|boolean
