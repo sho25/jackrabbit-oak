@@ -1454,6 +1454,9 @@ argument_list|)
 expr_stmt|;
 return|return
 name|node
+operator|.
+name|copy
+argument_list|()
 return|;
 block|}
 specifier|private
