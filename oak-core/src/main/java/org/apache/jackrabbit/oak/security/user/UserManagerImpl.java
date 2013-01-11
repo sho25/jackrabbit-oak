@@ -821,7 +821,7 @@ name|oakPath
 init|=
 name|namePathMapper
 operator|.
-name|getOakPath
+name|getOakPathKeepIndex
 argument_list|(
 name|path
 argument_list|)
@@ -1042,7 +1042,7 @@ name|intermediatePath
 operator|=
 name|namePathMapper
 operator|.
-name|getOakPath
+name|getOakPathKeepIndex
 argument_list|(
 name|intermediatePath
 argument_list|)
@@ -1247,7 +1247,7 @@ name|intermediatePath
 operator|=
 name|namePathMapper
 operator|.
-name|getOakPath
+name|getOakPathKeepIndex
 argument_list|(
 name|intermediatePath
 argument_list|)
