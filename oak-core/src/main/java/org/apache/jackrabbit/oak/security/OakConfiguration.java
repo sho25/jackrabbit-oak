@@ -93,26 +93,6 @@ name|ConfigurationParameters
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
 begin_comment
 comment|/**  * OakConfiguration... tmp solution missing repo-configuration in test-setup.  * TODO: remove again once OAK-17 is addressed.  */
 end_comment
@@ -124,22 +104,8 @@ name|OakConfiguration
 extends|extends
 name|Configuration
 block|{
-comment|/**      * logger instance      */
 specifier|private
-specifier|static
 specifier|final
-name|Logger
-name|log
-init|=
-name|LoggerFactory
-operator|.
-name|getLogger
-argument_list|(
-name|OakConfiguration
-operator|.
-name|class
-argument_list|)
-decl_stmt|;
 name|ConfigurationParameters
 name|loginConfiguration
 decl_stmt|;

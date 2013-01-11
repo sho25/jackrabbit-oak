@@ -1024,9 +1024,9 @@ name|Authorizable
 argument_list|>
 name|findAuthorizables
 parameter_list|(
-specifier|final
 annotation|@
 name|Nullable
+specifier|final
 name|String
 name|nameHint
 parameter_list|,
@@ -1304,6 +1304,8 @@ specifier|public
 name|Principal
 name|apply
 parameter_list|(
+annotation|@
+name|Nullable
 name|Authorizable
 name|authorizable
 parameter_list|)
@@ -1349,6 +1351,7 @@ block|}
 block|}
 comment|/**      * Predicate to make sure the everyone principal is only included once in      * the result set.      */
 specifier|private
+specifier|static
 specifier|final
 class|class
 name|EveryonePredicate
