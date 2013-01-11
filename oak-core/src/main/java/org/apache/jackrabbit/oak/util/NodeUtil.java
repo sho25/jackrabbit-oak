@@ -297,24 +297,6 @@ name|plugins
 operator|.
 name|memory
 operator|.
-name|MemoryPropertyBuilder
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|plugins
-operator|.
-name|memory
-operator|.
 name|PropertyStates
 import|;
 end_import
@@ -334,24 +316,6 @@ operator|.
 name|value
 operator|.
 name|Conversions
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|spi
-operator|.
-name|state
-operator|.
-name|PropertyBuilder
 import|;
 end_import
 
@@ -1711,7 +1675,7 @@ name|log
 operator|.
 name|warn
 argument_list|(
-literal|"Unable to convert a default value"
+literal|"Unable to convert values"
 argument_list|,
 name|e
 argument_list|)

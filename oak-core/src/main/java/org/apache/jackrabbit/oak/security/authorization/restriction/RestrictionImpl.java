@@ -139,9 +139,6 @@ name|Nonnull
 name|PropertyState
 name|property
 parameter_list|,
-name|int
-name|requiredType
-parameter_list|,
 name|boolean
 name|isMandatory
 parameter_list|,
@@ -158,7 +155,13 @@ operator|.
 name|getName
 argument_list|()
 argument_list|,
-name|requiredType
+name|property
+operator|.
+name|getType
+argument_list|()
+operator|.
+name|tag
+argument_list|()
 argument_list|,
 name|isMandatory
 argument_list|,

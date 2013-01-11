@@ -431,6 +431,20 @@ name|restrictions
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Nonnull
+specifier|public
+name|Set
+argument_list|<
+name|Restriction
+argument_list|>
+name|getRestrictions
+parameter_list|()
+block|{
+return|return
+name|restrictions
+return|;
+block|}
 comment|//-------------------------------------------------< AccessControlEntry>---
 annotation|@
 name|Nonnull
