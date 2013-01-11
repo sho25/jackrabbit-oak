@@ -2242,7 +2242,7 @@ name|oakPath
 init|=
 name|namePathMapper
 operator|.
-name|getOakPath
+name|getOakPathKeepIndex
 argument_list|(
 name|jcrPath
 argument_list|)
