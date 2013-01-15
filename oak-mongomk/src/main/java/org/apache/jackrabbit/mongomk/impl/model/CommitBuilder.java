@@ -308,7 +308,7 @@ return|return
 name|commit
 return|;
 block|}
-comment|/**      * The {@link DefaultJaopHandler} for the {@code JSOP} diff.      */
+comment|/**      * The {@link DefaultJsopHandler} for the {@code JSOP} diff.      */
 specifier|private
 specifier|static
 class|class
@@ -466,6 +466,9 @@ name|key
 parameter_list|,
 name|Object
 name|value
+parameter_list|,
+name|String
+name|rawValue
 parameter_list|)
 block|{
 name|commit

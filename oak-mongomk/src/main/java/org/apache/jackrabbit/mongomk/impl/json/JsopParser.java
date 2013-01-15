@@ -459,6 +459,8 @@ argument_list|,
 name|propName
 argument_list|,
 name|value
+argument_list|,
+name|valueAsString
 argument_list|)
 expr_stmt|;
 block|}
@@ -895,6 +897,8 @@ name|toJsonValue
 argument_list|(
 name|value
 argument_list|)
+argument_list|,
+name|value
 argument_list|)
 expr_stmt|;
 block|}
