@@ -297,6 +297,8 @@ argument_list|(
 name|buff
 argument_list|,
 name|after
+argument_list|,
+name|depth
 argument_list|)
 expr_stmt|;
 return|return
@@ -625,6 +627,8 @@ argument_list|(
 name|buff
 argument_list|,
 name|after
+argument_list|,
+name|depth
 argument_list|)
 expr_stmt|;
 name|buff
@@ -1144,6 +1148,8 @@ argument_list|(
 name|buff
 argument_list|,
 name|after
+argument_list|,
+name|depth
 argument_list|)
 expr_stmt|;
 name|buff
@@ -1407,6 +1413,9 @@ name|builder
 parameter_list|,
 name|NodeState
 name|node
+parameter_list|,
+name|int
+name|depth
 parameter_list|)
 block|{
 for|for
@@ -1439,6 +1448,13 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|depth
+operator|!=
+literal|0
+condition|)
+block|{
 for|for
 control|(
 name|ChildNode
@@ -1476,6 +1492,16 @@ name|entry
 operator|.
 name|getNode
 argument_list|()
+argument_list|,
+name|depth
+operator|<
+literal|0
+condition|?
+name|depth
+else|:
+name|depth
+operator|-
+literal|1
 argument_list|)
 expr_stmt|;
 name|builder
@@ -1483,6 +1509,7 @@ operator|.
 name|endObject
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 block|}
 block|}
