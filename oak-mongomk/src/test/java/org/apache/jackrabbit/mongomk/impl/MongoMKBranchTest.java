@@ -138,9 +138,6 @@ argument_list|(
 name|rev1
 argument_list|)
 decl_stmt|;
-name|String
-name|branchRev11
-init|=
 name|mk
 operator|.
 name|commit
@@ -153,7 +150,7 @@ name|branchRev1
 argument_list|,
 literal|""
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 name|String
 name|rev2
 init|=
