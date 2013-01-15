@@ -1006,15 +1006,10 @@ operator|-
 literal|1
 condition|)
 block|{
-comment|// search for properties somewhere below an authorizable node
+comment|// search for properties somewhere in the authorizable tree
 name|propName
 operator|=
-name|namePathMapper
-operator|.
-name|getOakName
-argument_list|(
 name|relPath
-argument_list|)
 expr_stmt|;
 name|path
 operator|=
@@ -1027,24 +1022,13 @@ expr_stmt|;
 block|}
 else|else
 block|{
-comment|// FIXME: proper normalization of the relative path
-name|String
-name|oakPath
-init|=
-name|namePathMapper
-operator|.
-name|getOakPath
-argument_list|(
-name|relPath
-argument_list|)
-decl_stmt|;
 name|propName
 operator|=
 name|Text
 operator|.
 name|getName
 argument_list|(
-name|oakPath
+name|relPath
 argument_list|)
 expr_stmt|;
 name|path
@@ -1053,7 +1037,7 @@ name|Text
 operator|.
 name|getRelativeParent
 argument_list|(
-name|oakPath
+name|relPath
 argument_list|,
 literal|1
 argument_list|)

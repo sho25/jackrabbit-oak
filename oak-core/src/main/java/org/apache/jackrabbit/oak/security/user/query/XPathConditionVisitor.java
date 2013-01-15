@@ -67,26 +67,6 @@ name|UserConstants
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
 begin_comment
 comment|/**  * XPATH based condition visitor.  */
 end_comment
@@ -97,20 +77,6 @@ name|XPathConditionVisitor
 implements|implements
 name|ConditionVisitor
 block|{
-specifier|static
-specifier|final
-name|Logger
-name|log
-init|=
-name|LoggerFactory
-operator|.
-name|getLogger
-argument_list|(
-name|XPathConditionVisitor
-operator|.
-name|class
-argument_list|)
-decl_stmt|;
 specifier|private
 specifier|final
 name|StringBuilder
