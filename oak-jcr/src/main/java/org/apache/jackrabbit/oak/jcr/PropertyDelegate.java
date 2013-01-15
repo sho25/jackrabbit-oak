@@ -317,7 +317,7 @@ parameter_list|()
 throws|throws
 name|InvalidItemStateException
 block|{
-name|getPropertyLocation
+name|getLocation
 argument_list|()
 operator|.
 name|remove
