@@ -193,6 +193,13 @@ condition|(
 name|propertyName
 operator|==
 literal|null
+operator|||
+name|propertyName
+operator|.
+name|equals
+argument_list|(
+literal|"*"
+argument_list|)
 condition|)
 block|{
 comment|// TODO for SELECT * FROM queries, currently return the path (for testing only)
