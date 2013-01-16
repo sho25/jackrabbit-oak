@@ -1806,6 +1806,13 @@ argument_list|()
 operator|.
 name|total
 decl_stmt|;
+name|double
+name|avg
+init|=
+name|total
+operator|/
+name|c
+decl_stmt|;
 if|if
 condition|(
 name|c
@@ -1823,6 +1830,10 @@ operator|+
 literal|" --> count:"
 operator|+
 name|c
+operator|+
+literal|" avg: "
+operator|+
+name|avg
 operator|+
 literal|" max: "
 operator|+
