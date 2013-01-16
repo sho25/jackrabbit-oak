@@ -1328,7 +1328,7 @@ operator|.
 name|getSessionDelegate
 argument_list|()
 operator|.
-name|getOakNameOrThrow
+name|getOakName
 argument_list|(
 name|jcrName
 argument_list|)

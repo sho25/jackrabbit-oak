@@ -1314,7 +1314,7 @@ annotation|@
 name|Nonnull
 specifier|public
 name|String
-name|getOakNameOrThrow
+name|getOakName
 parameter_list|(
 name|String
 name|jcrName
@@ -1322,9 +1322,7 @@ parameter_list|)
 throws|throws
 name|RepositoryException
 block|{
-name|String
-name|oakName
-init|=
+return|return
 name|getNamePathMapper
 argument_list|()
 operator|.
@@ -1332,30 +1330,7 @@ name|getOakName
 argument_list|(
 name|jcrName
 argument_list|)
-decl_stmt|;
-if|if
-condition|(
-name|oakName
-operator|!=
-literal|null
-condition|)
-block|{
-return|return
-name|oakName
 return|;
-block|}
-else|else
-block|{
-throw|throw
-operator|new
-name|RepositoryException
-argument_list|(
-literal|"Invalid name: "
-operator|+
-name|jcrName
-argument_list|)
-throw|;
-block|}
 block|}
 comment|/**      * Shortcut for {@code SessionDelegate.getNamePathMapper().getOakPath(jcrPath)}.      *      * @param jcrPath JCR path      * @return Oak path, or {@code null}      */
 annotation|@

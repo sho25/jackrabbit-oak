@@ -1442,7 +1442,7 @@ name|childName
 init|=
 name|sessionDelegate
 operator|.
-name|getOakNameOrThrow
+name|getOakName
 argument_list|(
 name|PathUtils
 operator|.
@@ -4230,7 +4230,7 @@ name|oakName
 init|=
 name|sessionDelegate
 operator|.
-name|getOakNameOrThrow
+name|getOakName
 argument_list|(
 name|nodeTypeName
 argument_list|)

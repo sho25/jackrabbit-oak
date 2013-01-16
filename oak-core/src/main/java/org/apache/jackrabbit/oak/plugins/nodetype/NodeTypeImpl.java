@@ -1384,7 +1384,7 @@ operator|.
 name|getNameMapper
 argument_list|()
 operator|.
-name|getOakName
+name|getOakNameOrNull
 argument_list|(
 name|nodeTypeName
 argument_list|)
@@ -2773,7 +2773,7 @@ operator|.
 name|getNameMapper
 argument_list|()
 operator|.
-name|getOakName
+name|getOakNameOrNull
 argument_list|(
 name|childNodeName
 argument_list|)
@@ -2786,7 +2786,7 @@ operator|.
 name|getNameMapper
 argument_list|()
 operator|.
-name|getOakName
+name|getOakNameOrNull
 argument_list|(
 name|name
 argument_list|)

@@ -18,6 +18,26 @@ package|;
 end_package
 
 begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Map
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|CheckForNull
+import|;
+end_import
+
+begin_import
 import|import static
 name|com
 operator|.
@@ -46,26 +66,6 @@ operator|.
 name|Preconditions
 operator|.
 name|checkNotNull
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Map
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|CheckForNull
 import|;
 end_import
 
@@ -359,7 +359,7 @@ annotation|@
 name|CheckForNull
 specifier|public
 name|String
-name|getOakName
+name|getOakNameOrNull
 parameter_list|(
 name|String
 name|jcrName

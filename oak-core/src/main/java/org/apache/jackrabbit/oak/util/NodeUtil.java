@@ -1828,7 +1828,7 @@ literal|null
 else|:
 name|mapper
 operator|.
-name|getOakName
+name|getOakNameOrNull
 argument_list|(
 name|jcrName
 argument_list|)

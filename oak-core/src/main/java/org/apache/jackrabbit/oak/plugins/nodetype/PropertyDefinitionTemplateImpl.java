@@ -303,7 +303,7 @@ name|getJcrName
 argument_list|(
 name|mapper
 operator|.
-name|getOakName
+name|getOakNameOrNull
 argument_list|(
 name|name
 argument_list|)

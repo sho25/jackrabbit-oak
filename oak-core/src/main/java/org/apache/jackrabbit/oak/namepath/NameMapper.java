@@ -37,6 +37,16 @@ name|Nonnull
 import|;
 end_import
 
+begin_import
+import|import
+name|javax
+operator|.
+name|jcr
+operator|.
+name|RepositoryException
+import|;
+end_import
+
 begin_comment
 comment|/**  * TODO document  */
 end_comment
@@ -50,6 +60,18 @@ comment|/**      * Returns the Oak name for the given JCR name, or {@code null} 
 annotation|@
 name|CheckForNull
 name|String
+name|getOakNameOrNull
+parameter_list|(
+annotation|@
+name|Nonnull
+name|String
+name|jcrName
+parameter_list|)
+function_decl|;
+comment|/**      * Returns the Oak name for the specified JCR name. In contrast to      * {@link #getOakNameOrNull(String)} this method will throw a {@code RepositoryException}      * if the JCR name is invalid and cannot be resolved.      *      * @param jcrName The JCR name to be converted.      * @return A valid Oak name.      * @throws RepositoryException If the JCR name cannot be resolved.      */
+annotation|@
+name|Nonnull
+name|String
 name|getOakName
 parameter_list|(
 annotation|@
@@ -57,6 +79,8 @@ name|Nonnull
 name|String
 name|jcrName
 parameter_list|)
+throws|throws
+name|RepositoryException
 function_decl|;
 comment|/**      * Returns whether the mapper has prefix remappings; when there aren't      * any, prefixed names do not need to be converted at all      *       * @return {@code true} if prefixes have been remapped      */
 name|boolean

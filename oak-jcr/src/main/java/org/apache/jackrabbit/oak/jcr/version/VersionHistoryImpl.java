@@ -503,7 +503,7 @@ name|oakLabel
 init|=
 name|sessionDelegate
 operator|.
-name|getOakNameOrThrow
+name|getOakName
 argument_list|(
 name|label
 argument_list|)

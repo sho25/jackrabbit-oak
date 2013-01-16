@@ -1128,7 +1128,7 @@ name|oakName
 init|=
 name|namePathMapper
 operator|.
-name|getOakName
+name|getOakNameOrNull
 argument_list|(
 name|value
 argument_list|)
