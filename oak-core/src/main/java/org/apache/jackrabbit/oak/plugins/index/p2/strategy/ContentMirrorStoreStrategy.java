@@ -177,6 +177,24 @@ name|oak
 operator|.
 name|spi
 operator|.
+name|query
+operator|.
+name|Filter
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
 name|state
 operator|.
 name|ChildNodeEntry
@@ -945,6 +963,10 @@ argument_list|>
 name|query
 parameter_list|(
 specifier|final
+name|Filter
+name|filter
+parameter_list|,
+specifier|final
 name|String
 name|indexName
 parameter_list|,
@@ -984,6 +1006,8 @@ init|=
 operator|new
 name|PathIterator
 argument_list|(
+name|filter
+argument_list|,
 name|indexName
 argument_list|)
 decl_stmt|;
@@ -1219,6 +1243,11 @@ argument_list|>
 block|{
 specifier|private
 specifier|final
+name|Filter
+name|filter
+decl_stmt|;
+specifier|private
+specifier|final
 name|String
 name|indexName
 decl_stmt|;
@@ -1280,10 +1309,19 @@ argument_list|()
 decl_stmt|;
 name|PathIterator
 parameter_list|(
+name|Filter
+name|filter
+parameter_list|,
 name|String
 name|indexName
 parameter_list|)
 block|{
+name|this
+operator|.
+name|filter
+operator|=
+name|filter
+expr_stmt|;
 name|this
 operator|.
 name|indexName
@@ -1412,7 +1450,7 @@ if|if
 condition|(
 name|readCount
 operator|%
-literal|100
+literal|1000
 operator|==
 literal|0
 condition|)
@@ -1428,6 +1466,10 @@ operator|+
 literal|" nodes using index "
 operator|+
 name|indexName
+operator|+
+literal|" with filter "
+operator|+
+name|filter
 argument_list|)
 expr_stmt|;
 block|}

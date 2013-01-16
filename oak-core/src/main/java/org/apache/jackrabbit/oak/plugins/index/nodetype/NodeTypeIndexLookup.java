@@ -83,6 +83,24 @@ name|spi
 operator|.
 name|query
 operator|.
+name|Filter
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|query
+operator|.
 name|PropertyValues
 import|;
 end_import
@@ -318,7 +336,7 @@ name|ntNames
 argument_list|)
 return|;
 block|}
-comment|/**      * Returns the paths that match the given node types.      *      * @param nodeTypes the names of the node types to match.      * @return the matched paths (the result might contain duplicate entries)      */
+comment|/**      * Returns the paths that match the given node types.      *      * @param filter the filter (used for logging)      * @param nodeTypes the names of the node types to match.      * @return the matched paths (the result might contain duplicate entries)      */
 specifier|public
 name|Iterable
 argument_list|<
@@ -326,6 +344,9 @@ name|String
 argument_list|>
 name|query
 parameter_list|(
+name|Filter
+name|filter
+parameter_list|,
 name|Iterable
 argument_list|<
 name|String
@@ -362,6 +383,8 @@ name|lookup
 operator|.
 name|query
 argument_list|(
+name|filter
+argument_list|,
 name|JCR_PRIMARYTYPE
 argument_list|,
 name|ntNames
@@ -371,6 +394,8 @@ name|lookup
 operator|.
 name|query
 argument_list|(
+name|filter
+argument_list|,
 name|JCR_MIXINTYPES
 argument_list|,
 name|ntNames

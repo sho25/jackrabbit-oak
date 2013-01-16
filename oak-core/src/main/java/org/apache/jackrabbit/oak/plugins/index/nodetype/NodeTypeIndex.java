@@ -416,6 +416,8 @@ name|lookup
 operator|.
 name|query
 argument_list|(
+name|filter
+argument_list|,
 name|resolveNodeType
 argument_list|(
 name|root

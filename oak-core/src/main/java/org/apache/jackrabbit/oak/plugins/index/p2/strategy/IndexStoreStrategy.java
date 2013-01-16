@@ -51,6 +51,24 @@ name|oak
 operator|.
 name|spi
 operator|.
+name|query
+operator|.
+name|Filter
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
 name|state
 operator|.
 name|NodeBuilder
@@ -125,13 +143,16 @@ parameter_list|)
 throws|throws
 name|CommitFailedException
 function_decl|;
-comment|/**      * Search for a given set of values.      *       * @param indexName the name of the index (for logging)      * @param index index node (may not be null)      * @param values values to look for (null to check for property existence)      * @return an iterator of paths      */
+comment|/**      * Search for a given set of values.      *       * @param filter the filter (used for logging)      * @param indexName the name of the index (for logging)      * @param index index node (may not be null)      * @param values values to look for (null to check for property existence)      * @return an iterator of paths      */
 name|Iterable
 argument_list|<
 name|String
 argument_list|>
 name|query
 parameter_list|(
+name|Filter
+name|filter
+parameter_list|,
 name|String
 name|indexName
 parameter_list|,

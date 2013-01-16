@@ -963,7 +963,7 @@ if|if
 condition|(
 name|readCount
 operator|%
-literal|100
+literal|1000
 operator|==
 literal|0
 condition|)

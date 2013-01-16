@@ -585,6 +585,8 @@ name|lookup
 operator|.
 name|query
 argument_list|(
+name|filter
+argument_list|,
 name|pr
 operator|.
 name|propertyName
@@ -619,6 +621,8 @@ name|lookup
 operator|.
 name|query
 argument_list|(
+name|filter
+argument_list|,
 name|pr
 operator|.
 name|propertyName
