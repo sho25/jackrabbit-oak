@@ -586,7 +586,7 @@ name|oakPath
 init|=
 name|sessionDelegate
 operator|.
-name|getOakPathOrThrowNotFound
+name|getOakPath
 argument_list|(
 name|absPath
 argument_list|)
@@ -677,7 +677,7 @@ name|oakPath
 init|=
 name|sessionDelegate
 operator|.
-name|getOakPathOrThrowNotFound
+name|getOakPath
 argument_list|(
 name|absPath
 argument_list|)
@@ -772,7 +772,7 @@ name|oakPath
 init|=
 name|sessionDelegate
 operator|.
-name|getOakPathOrThrowNotFound
+name|getOakPath
 argument_list|(
 name|absPath
 argument_list|)
@@ -997,7 +997,7 @@ name|oakPath
 init|=
 name|sessionDelegate
 operator|.
-name|getOakPathOrThrowNotFound
+name|getOakPath
 argument_list|(
 name|absPath
 argument_list|)
@@ -1135,7 +1135,7 @@ name|oakPath
 init|=
 name|sessionDelegate
 operator|.
-name|getOakPathOrThrowNotFound
+name|getOakPath
 argument_list|(
 name|absPath
 argument_list|)

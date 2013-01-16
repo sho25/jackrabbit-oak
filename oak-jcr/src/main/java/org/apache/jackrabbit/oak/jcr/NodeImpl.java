@@ -1262,7 +1262,7 @@ name|oakPath
 init|=
 name|sessionDelegate
 operator|.
-name|getOakPathKeepIndexOrThrowNotFound
+name|getOakPathKeepIndex
 argument_list|(
 name|relPath
 argument_list|)
@@ -1282,7 +1282,7 @@ name|parentPath
 init|=
 name|sessionDelegate
 operator|.
-name|getOakPathOrThrow
+name|getOakPath
 argument_list|(
 name|PathUtils
 operator|.
@@ -1639,7 +1639,7 @@ name|oakSrcChildRelPath
 init|=
 name|sessionDelegate
 operator|.
-name|getOakPathOrThrowNotFound
+name|getOakPath
 argument_list|(
 name|srcChildRelPath
 argument_list|)
@@ -1660,7 +1660,7 @@ name|oakDestChildRelPath
 operator|=
 name|sessionDelegate
 operator|.
-name|getOakPathOrThrowNotFound
+name|getOakPath
 argument_list|(
 name|destChildRelPath
 argument_list|)
@@ -2524,7 +2524,7 @@ name|oakPath
 init|=
 name|sessionDelegate
 operator|.
-name|getOakPathOrThrowNotFound
+name|getOakPath
 argument_list|(
 name|relPath
 argument_list|)
@@ -2926,7 +2926,7 @@ name|oakPath
 init|=
 name|sessionDelegate
 operator|.
-name|getOakPathOrThrowNotFound
+name|getOakPath
 argument_list|(
 name|relPath
 argument_list|)
@@ -3798,7 +3798,7 @@ name|oakPath
 init|=
 name|sessionDelegate
 operator|.
-name|getOakPathOrThrow
+name|getOakPath
 argument_list|(
 name|relPath
 argument_list|)
@@ -3860,7 +3860,7 @@ name|oakPath
 init|=
 name|sessionDelegate
 operator|.
-name|getOakPathOrThrow
+name|getOakPath
 argument_list|(
 name|relPath
 argument_list|)
@@ -5096,7 +5096,7 @@ name|lockOwner
 init|=
 name|sessionDelegate
 operator|.
-name|getOakPathOrThrow
+name|getOakPath
 argument_list|(
 name|JCR_LOCK_OWNER
 argument_list|)
@@ -5106,7 +5106,7 @@ name|lockIsDeep
 init|=
 name|sessionDelegate
 operator|.
-name|getOakPathOrThrow
+name|getOakPath
 argument_list|(
 name|JCR_LOCK_IS_DEEP
 argument_list|)
@@ -5217,7 +5217,7 @@ name|lockOwner
 init|=
 name|sessionDelegate
 operator|.
-name|getOakPathOrThrow
+name|getOakPath
 argument_list|(
 name|JCR_LOCK_OWNER
 argument_list|)
@@ -5285,7 +5285,7 @@ name|lockOwner
 init|=
 name|sessionDelegate
 operator|.
-name|getOakPathOrThrow
+name|getOakPath
 argument_list|(
 name|JCR_LOCK_OWNER
 argument_list|)
@@ -5295,7 +5295,7 @@ name|lockIsDeep
 init|=
 name|sessionDelegate
 operator|.
-name|getOakPathOrThrow
+name|getOakPath
 argument_list|(
 name|JCR_LOCK_IS_DEEP
 argument_list|)
@@ -5535,7 +5535,7 @@ name|lockOwner
 init|=
 name|sessionDelegate
 operator|.
-name|getOakPathOrThrow
+name|getOakPath
 argument_list|(
 name|JCR_LOCK_OWNER
 argument_list|)
@@ -5545,7 +5545,7 @@ name|lockIsDeep
 init|=
 name|sessionDelegate
 operator|.
-name|getOakPathOrThrow
+name|getOakPath
 argument_list|(
 name|JCR_LOCK_IS_DEEP
 argument_list|)
@@ -6501,7 +6501,7 @@ name|oakName
 init|=
 name|sessionDelegate
 operator|.
-name|getOakPathOrThrow
+name|getOakPath
 argument_list|(
 name|mixinName
 argument_list|)
@@ -6665,7 +6665,7 @@ name|jcrPrimaryType
 init|=
 name|sessionDelegate
 operator|.
-name|getOakPathOrThrow
+name|getOakPath
 argument_list|(
 name|Property
 operator|.
@@ -6761,7 +6761,7 @@ name|oakName
 init|=
 name|sessionDelegate
 operator|.
-name|getOakPathOrThrow
+name|getOakPath
 argument_list|(
 name|jcrName
 argument_list|)
@@ -6997,7 +6997,7 @@ name|oakName
 init|=
 name|sessionDelegate
 operator|.
-name|getOakPathOrThrow
+name|getOakPath
 argument_list|(
 name|jcrName
 argument_list|)
