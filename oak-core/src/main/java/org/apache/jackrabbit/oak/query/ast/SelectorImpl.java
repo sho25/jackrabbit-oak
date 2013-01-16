@@ -562,6 +562,15 @@ name|this
 argument_list|)
 expr_stmt|;
 block|}
+if|if
+condition|(
+operator|!
+name|outerJoinLeftHandSide
+operator|&&
+operator|!
+name|outerJoinRightHandSide
+condition|)
+block|{
 for|for
 control|(
 name|JoinConditionImpl
@@ -577,6 +586,7 @@ argument_list|(
 name|this
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|index
 operator|=

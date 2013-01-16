@@ -142,7 +142,7 @@ operator|.
 name|getSelector
 argument_list|()
 operator|.
-name|outerJoin
+name|outerJoinRightHandSide
 condition|)
 block|{
 comment|// we need to be careful with the condition

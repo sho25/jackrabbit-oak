@@ -105,10 +105,15 @@ specifier|protected
 name|boolean
 name|join
 decl_stmt|;
+comment|/**      * Whether this selector is the left hand side of a left outer join.      * Right outer joins are converted to left outer join.      */
+specifier|protected
+name|boolean
+name|outerJoinLeftHandSide
+decl_stmt|;
 comment|/**      * Whether this selector is the right hand side of a left outer join.      * Right outer joins are converted to left outer join.      */
 specifier|protected
 name|boolean
-name|outerJoin
+name|outerJoinRightHandSide
 decl_stmt|;
 comment|/**      * Set the complete constraint of the query (the WHERE ... condition).      *      * @param queryConstraint the constraint      */
 specifier|public
@@ -158,20 +163,29 @@ name|joinCondition
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Set whether this source is the right hand side of a left outer join.      *      * @param outerJoin true if yes      */
+comment|/**      * Set whether this source is the left hand side or right hand side of a left outer join.      *      * @param outerJoinLeftHandSide true if yes      * @param outerJoinRightHandSide true if yes      */
 specifier|public
 name|void
 name|setOuterJoin
 parameter_list|(
 name|boolean
-name|outerJoin
+name|outerJoinLeftHandSide
+parameter_list|,
+name|boolean
+name|outerJoinRightHandSide
 parameter_list|)
 block|{
 name|this
 operator|.
-name|outerJoin
+name|outerJoinLeftHandSide
 operator|=
-name|outerJoin
+name|outerJoinLeftHandSide
+expr_stmt|;
+name|this
+operator|.
+name|outerJoinRightHandSide
+operator|=
+name|outerJoinRightHandSide
 expr_stmt|;
 block|}
 comment|/**      * Initialize the query. This will 'wire' the selectors with the      * constraints.      *      * @param query the query      */
