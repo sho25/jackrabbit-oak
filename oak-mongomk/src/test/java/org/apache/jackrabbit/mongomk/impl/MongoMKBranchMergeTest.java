@@ -2187,7 +2187,7 @@ name|Test
 annotation|@
 name|Ignore
 argument_list|(
-literal|"OAK-535"
+literal|"OAK-560"
 argument_list|)
 specifier|public
 name|void
@@ -2199,7 +2199,7 @@ block|{
 name|int
 name|numThreads
 init|=
-literal|5
+literal|10
 decl_stmt|;
 name|mk
 operator|.
@@ -2315,7 +2315,7 @@ literal|0
 init|;
 name|i
 operator|<
-literal|100
+literal|50
 condition|;
 name|i
 operator|++
