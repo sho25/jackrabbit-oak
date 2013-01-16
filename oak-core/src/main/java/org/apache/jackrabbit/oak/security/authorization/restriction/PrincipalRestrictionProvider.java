@@ -327,7 +327,7 @@ argument_list|>
 name|getSupportedRestrictions
 parameter_list|(
 name|String
-name|jcrPath
+name|oakPath
 parameter_list|)
 block|{
 name|Set
@@ -346,7 +346,7 @@ name|base
 operator|.
 name|getSupportedRestrictions
 argument_list|(
-name|jcrPath
+name|oakPath
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -382,7 +382,7 @@ name|Restriction
 name|createRestriction
 parameter_list|(
 name|String
-name|jcrPath
+name|oakPath
 parameter_list|,
 annotation|@
 name|Nonnull
@@ -402,7 +402,7 @@ name|base
 operator|.
 name|createRestriction
 argument_list|(
-name|jcrPath
+name|oakPath
 argument_list|,
 name|jcrName
 argument_list|,
@@ -420,7 +420,7 @@ argument_list|>
 name|readRestrictions
 parameter_list|(
 name|String
-name|jcrPath
+name|oakPath
 parameter_list|,
 name|Tree
 name|aceTree
@@ -444,7 +444,7 @@ name|base
 operator|.
 name|readRestrictions
 argument_list|(
-name|jcrPath
+name|oakPath
 argument_list|,
 name|aceTree
 argument_list|)
@@ -454,14 +454,14 @@ name|String
 name|value
 init|=
 operator|(
-name|jcrPath
+name|oakPath
 operator|==
 literal|null
 operator|)
 condition|?
 literal|""
 else|:
-name|jcrPath
+name|oakPath
 decl_stmt|;
 name|PropertyState
 name|nodePathProp
@@ -505,7 +505,7 @@ name|void
 name|writeRestrictions
 parameter_list|(
 name|String
-name|jcrPath
+name|oakPath
 parameter_list|,
 name|Tree
 name|aceTree
@@ -570,7 +570,7 @@ name|base
 operator|.
 name|writeRestrictions
 argument_list|(
-name|jcrPath
+name|oakPath
 argument_list|,
 name|aceTree
 argument_list|,
@@ -585,7 +585,7 @@ name|void
 name|validateRestrictions
 parameter_list|(
 name|String
-name|jcrPath
+name|oakPath
 parameter_list|,
 annotation|@
 name|Nonnull
@@ -599,7 +599,7 @@ name|base
 operator|.
 name|validateRestrictions
 argument_list|(
-name|jcrPath
+name|oakPath
 argument_list|,
 name|aceTree
 argument_list|)

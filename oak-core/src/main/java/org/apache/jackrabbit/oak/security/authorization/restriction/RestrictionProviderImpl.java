@@ -433,12 +433,12 @@ argument_list|>
 name|getSupportedRestrictions
 parameter_list|(
 name|String
-name|jcrPath
+name|oakPath
 parameter_list|)
 block|{
 if|if
 condition|(
-name|jcrPath
+name|oakPath
 operator|==
 literal|null
 condition|)
@@ -472,7 +472,7 @@ name|Restriction
 name|createRestriction
 parameter_list|(
 name|String
-name|jcrPath
+name|oakPath
 parameter_list|,
 name|String
 name|jcrName
@@ -485,7 +485,7 @@ name|RepositoryException
 block|{
 if|if
 condition|(
-name|jcrPath
+name|oakPath
 operator|==
 literal|null
 condition|)
@@ -496,7 +496,7 @@ name|AccessControlException
 argument_list|(
 literal|"Unsupported restriction: "
 operator|+
-name|jcrName
+name|oakPath
 argument_list|)
 throw|;
 block|}
@@ -533,7 +533,7 @@ name|AccessControlException
 argument_list|(
 literal|"Unsupported restriction: "
 operator|+
-name|jcrName
+name|oakPath
 argument_list|)
 throw|;
 block|}
@@ -613,7 +613,7 @@ argument_list|>
 name|readRestrictions
 parameter_list|(
 name|String
-name|jcrPath
+name|oakPath
 parameter_list|,
 name|Tree
 name|aceTree
@@ -623,7 +623,7 @@ name|AccessControlException
 block|{
 if|if
 condition|(
-name|jcrPath
+name|oakPath
 operator|==
 literal|null
 condition|)
@@ -743,7 +743,7 @@ name|void
 name|writeRestrictions
 parameter_list|(
 name|String
-name|jcrPath
+name|oakPath
 parameter_list|,
 name|Tree
 name|aceTree
@@ -810,7 +810,7 @@ name|void
 name|validateRestrictions
 parameter_list|(
 name|String
-name|jcrPath
+name|oakPath
 parameter_list|,
 name|Tree
 name|aceTree
@@ -839,7 +839,7 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|jcrPath
+name|oakPath
 operator|==
 literal|null
 operator|&&
@@ -1000,30 +1000,22 @@ parameter_list|)
 block|{
 name|Tree
 name|restrictions
-decl_stmt|;
-if|if
-condition|(
-name|aceTree
-operator|.
-name|hasChild
-argument_list|(
-name|REP_RESTRICTIONS
-argument_list|)
-condition|)
-block|{
-name|restrictions
-operator|=
+init|=
 name|aceTree
 operator|.
 name|getChild
 argument_list|(
 name|REP_RESTRICTIONS
 argument_list|)
-expr_stmt|;
-block|}
-else|else
+decl_stmt|;
+if|if
+condition|(
+name|restrictions
+operator|==
+literal|null
+condition|)
 block|{
-comment|// backwards compatibility
+comment|// no rep: restrictions tree -> read from aceTree for backwards compatibility
 name|restrictions
 operator|=
 name|aceTree

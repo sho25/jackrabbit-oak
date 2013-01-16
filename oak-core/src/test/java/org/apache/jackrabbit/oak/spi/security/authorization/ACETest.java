@@ -209,9 +209,7 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|api
-operator|.
-name|Root
+name|AbstractSecurityTest
 import|;
 end_import
 
@@ -228,22 +226,6 @@ operator|.
 name|namepath
 operator|.
 name|NamePathMapper
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|security
-operator|.
-name|AbstractSecurityTest
 import|;
 end_import
 
@@ -409,6 +391,8 @@ name|PrivilegeManager
 name|privMgr
 decl_stmt|;
 annotation|@
+name|Override
+annotation|@
 name|Before
 specifier|public
 name|void
@@ -439,14 +423,6 @@ return|;
 block|}
 block|}
 expr_stmt|;
-name|Root
-name|root
-init|=
-name|adminSession
-operator|.
-name|getLatestRoot
-argument_list|()
-decl_stmt|;
 comment|// TODO
 comment|//acMgr = securityProvider.getAccessControlConfiguration().getAccessControlManager(root, NamePathMapper.DEFAULT);
 name|acMgr
