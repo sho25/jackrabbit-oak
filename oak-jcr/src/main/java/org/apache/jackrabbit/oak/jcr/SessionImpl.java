@@ -1027,7 +1027,7 @@ name|oakPath
 init|=
 name|dlg
 operator|.
-name|getOakPathOrThrow
+name|getOakPath
 argument_list|(
 name|absPath
 argument_list|)
@@ -1118,7 +1118,7 @@ name|oakPath
 init|=
 name|dlg
 operator|.
-name|getOakPathOrThrow
+name|getOakPath
 argument_list|(
 name|absPath
 argument_list|)

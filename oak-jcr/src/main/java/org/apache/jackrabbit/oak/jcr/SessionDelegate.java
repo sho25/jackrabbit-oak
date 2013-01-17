@@ -1447,7 +1447,7 @@ annotation|@
 name|Nonnull
 specifier|public
 name|String
-name|getOakPathOrThrow
+name|getOakPath
 parameter_list|(
 name|String
 name|jcrPath
