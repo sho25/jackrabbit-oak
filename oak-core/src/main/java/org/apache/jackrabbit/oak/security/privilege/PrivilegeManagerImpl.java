@@ -682,6 +682,21 @@ parameter_list|)
 throws|throws
 name|RepositoryException
 block|{
+if|if
+condition|(
+name|jcrName
+operator|==
+literal|null
+condition|)
+block|{
+throw|throw
+operator|new
+name|RepositoryException
+argument_list|(
+literal|"Invalid privilege name 'null'"
+argument_list|)
+throw|;
+block|}
 return|return
 name|namePathMapper
 operator|.

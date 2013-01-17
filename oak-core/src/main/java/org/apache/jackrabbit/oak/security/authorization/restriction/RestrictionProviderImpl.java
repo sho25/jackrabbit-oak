@@ -1015,7 +1015,7 @@ operator|==
 literal|null
 condition|)
 block|{
-comment|// no rep: restrictions tree -> read from aceTree for backwards compatibility
+comment|// no rep:restrictions tree -> read from aceTree for backwards compatibility
 name|restrictions
 operator|=
 name|aceTree

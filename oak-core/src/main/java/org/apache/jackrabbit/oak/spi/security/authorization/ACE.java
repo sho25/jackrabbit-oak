@@ -353,11 +353,7 @@ throw|throw
 operator|new
 name|AccessControlException
 argument_list|(
-literal|"Privilege "
-operator|+
-name|privilege
-operator|+
-literal|" is null."
+literal|"Null Privilege."
 argument_list|)
 throw|;
 block|}

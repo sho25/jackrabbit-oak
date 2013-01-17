@@ -456,8 +456,30 @@ parameter_list|)
 throws|throws
 name|RepositoryException
 block|{
-comment|// NOTE: validation and any kind of optimization of the entry list is
-comment|// delegated to the commit validator
+if|if
+condition|(
+name|privileges
+operator|==
+literal|null
+operator|||
+name|privileges
+operator|.
+name|length
+operator|==
+literal|0
+condition|)
+block|{
+throw|throw
+operator|new
+name|AccessControlException
+argument_list|(
+literal|"Privileges may not be null nor an empty array"
+argument_list|)
+throw|;
+block|}
+comment|// TODO: check again.
+comment|// NOTE: in contrast to jr2 any further validation and optimization of
+comment|// the entry list is delegated to the commit validator
 name|Set
 argument_list|<
 name|Restriction

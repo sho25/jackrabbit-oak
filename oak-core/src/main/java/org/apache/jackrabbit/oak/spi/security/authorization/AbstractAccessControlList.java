@@ -600,6 +600,8 @@ argument_list|()
 return|;
 block|}
 block|}
+comment|// for backwards compatibility with JR2 return undefined type for an
+comment|// unknown restriction name.
 return|return
 name|PropertyType
 operator|.

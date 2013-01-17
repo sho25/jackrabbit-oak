@@ -2146,6 +2146,14 @@ condition|(
 name|oakPath
 operator|==
 literal|null
+operator|||
+operator|!
+name|PathUtils
+operator|.
+name|isAbsolute
+argument_list|(
+name|oakPath
+argument_list|)
 condition|)
 block|{
 throw|throw
@@ -2240,7 +2248,10 @@ name|RepositoryException
 block|{
 name|getTree
 argument_list|(
+name|getOakPath
+argument_list|(
 name|jcrPath
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
