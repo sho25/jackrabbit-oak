@@ -1090,7 +1090,7 @@ literal|false
 return|;
 block|}
 name|String
-name|propString
+name|propName
 init|=
 name|propInfo
 operator|.
@@ -1105,7 +1105,7 @@ name|REP_PRINCIPAL_NAME
 operator|.
 name|equals
 argument_list|(
-name|propString
+name|propName
 argument_list|)
 condition|)
 block|{
@@ -1114,8 +1114,6 @@ condition|(
 operator|!
 name|isValid
 argument_list|(
-name|propString
-argument_list|,
 name|def
 argument_list|,
 name|UserConstants
@@ -1241,7 +1239,7 @@ name|REP_PASSWORD
 operator|.
 name|equals
 argument_list|(
-name|propString
+name|propName
 argument_list|)
 condition|)
 block|{
@@ -1255,8 +1253,6 @@ operator|||
 operator|!
 name|isValid
 argument_list|(
-name|propString
-argument_list|,
 name|def
 argument_list|,
 name|UserConstants
@@ -1375,7 +1371,7 @@ name|REP_IMPERSONATORS
 operator|.
 name|equals
 argument_list|(
-name|propString
+name|propName
 argument_list|)
 condition|)
 block|{
@@ -1389,8 +1385,6 @@ operator|||
 operator|!
 name|isValid
 argument_list|(
-name|propString
-argument_list|,
 name|def
 argument_list|,
 name|UserConstants
@@ -1453,7 +1447,7 @@ name|REP_DISABLED
 operator|.
 name|equals
 argument_list|(
-name|propString
+name|propName
 argument_list|)
 condition|)
 block|{
@@ -1467,8 +1461,6 @@ operator|||
 operator|!
 name|isValid
 argument_list|(
-name|propString
-argument_list|,
 name|def
 argument_list|,
 name|UserConstants
@@ -1521,7 +1513,7 @@ name|REP_MEMBERS
 operator|.
 name|equals
 argument_list|(
-name|propString
+name|propName
 argument_list|)
 condition|)
 block|{
@@ -1536,8 +1528,6 @@ operator|||
 operator|!
 name|isValid
 argument_list|(
-name|propString
-argument_list|,
 name|def
 argument_list|,
 name|UserConstants
@@ -2047,9 +2037,6 @@ specifier|private
 name|boolean
 name|isValid
 parameter_list|(
-name|String
-name|propertyName
-parameter_list|,
 name|PropertyDefinition
 name|definition
 parameter_list|,
