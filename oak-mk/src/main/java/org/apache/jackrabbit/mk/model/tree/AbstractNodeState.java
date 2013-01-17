@@ -356,7 +356,7 @@ name|getChildNodeCount
 argument_list|()
 return|;
 block|}
-comment|/**      * Returns a hash code that's compatible with how the      * {@link #equals(Object)} method is implemented. The current      * implementation simply returns zero for everything since      * {@link NodeState} instances are not intended for use as hash keys.      *      * @return hash code      */
+comment|/**      * Returns the hash code. This method is relatively expensive, and the      * returned value is not very distinct, as {@link NodeState} instances are      * not intended for use as hash keys.      *      * @return the hash code      */
 annotation|@
 name|Override
 specifier|public
@@ -364,8 +364,34 @@ name|int
 name|hashCode
 parameter_list|()
 block|{
+name|int
+name|hash
+init|=
+operator|(
+name|int
+operator|)
+name|getChildNodeCount
+argument_list|()
+decl_stmt|;
+for|for
+control|(
+name|PropertyState
+name|p
+range|:
+name|getProperties
+argument_list|()
+control|)
+block|{
+name|hash
+operator|^=
+name|p
+operator|.
+name|hashCode
+argument_list|()
+expr_stmt|;
+block|}
 return|return
-literal|0
+name|hash
 return|;
 block|}
 block|}
