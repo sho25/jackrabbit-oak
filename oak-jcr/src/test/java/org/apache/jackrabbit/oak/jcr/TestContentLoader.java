@@ -139,13 +139,15 @@ end_import
 
 begin_import
 import|import
-name|javax
+name|org
 operator|.
-name|jcr
+name|apache
 operator|.
-name|nodetype
+name|jackrabbit
 operator|.
-name|NodeTypeManager
+name|commons
+operator|.
+name|JcrUtils
 import|;
 end_import
 
@@ -159,7 +161,9 @@ name|jackrabbit
 operator|.
 name|commons
 operator|.
-name|JcrUtils
+name|cnd
+operator|.
+name|CndImporter
 import|;
 end_import
 
@@ -187,27 +191,23 @@ name|apache
 operator|.
 name|jackrabbit
 operator|.
-name|oak
+name|value
 operator|.
-name|plugins
-operator|.
-name|nodetype
-operator|.
-name|ReadWriteNodeTypeManager
+name|BinaryValue
 import|;
 end_import
 
 begin_import
 import|import
-name|org
+name|com
 operator|.
-name|apache
+name|google
 operator|.
-name|jackrabbit
+name|common
 operator|.
-name|value
+name|base
 operator|.
-name|BinaryValue
+name|Charsets
 import|;
 end_import
 
@@ -257,12 +257,6 @@ expr_stmt|;
 name|registerTestNodeTypes
 argument_list|(
 name|session
-operator|.
-name|getWorkspace
-argument_list|()
-operator|.
-name|getNodeTypeManager
-argument_list|()
 argument_list|)
 expr_stmt|;
 name|Node
@@ -334,8 +328,8 @@ specifier|static
 name|void
 name|registerTestNodeTypes
 parameter_list|(
-name|NodeTypeManager
-name|ntm
+name|Session
+name|session
 parameter_list|)
 throws|throws
 name|RepositoryException
@@ -358,30 +352,7 @@ argument_list|)
 decl_stmt|;
 try|try
 block|{
-if|if
-condition|(
-operator|!
-operator|(
-name|ntm
-operator|instanceof
-name|ReadWriteNodeTypeManager
-operator|)
-condition|)
-block|{
-throw|throw
-operator|new
-name|IllegalArgumentException
-argument_list|(
-literal|"Need ReadWriteNodeTypeManager"
-argument_list|)
-throw|;
-block|}
-operator|(
-operator|(
-name|ReadWriteNodeTypeManager
-operator|)
-name|ntm
-operator|)
+name|CndImporter
 operator|.
 name|registerNodeTypes
 argument_list|(
@@ -390,8 +361,12 @@ name|InputStreamReader
 argument_list|(
 name|stream
 argument_list|,
-literal|"UTF-8"
+name|Charsets
+operator|.
+name|UTF_8
 argument_list|)
+argument_list|,
+name|session
 argument_list|)
 expr_stmt|;
 block|}
