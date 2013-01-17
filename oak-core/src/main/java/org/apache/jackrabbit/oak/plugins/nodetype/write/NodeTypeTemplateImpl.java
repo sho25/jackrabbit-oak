@@ -16,6 +16,8 @@ operator|.
 name|plugins
 operator|.
 name|nodetype
+operator|.
+name|write
 package|;
 end_package
 
@@ -415,7 +417,7 @@ begin_class
 class|class
 name|NodeTypeTemplateImpl
 extends|extends
-name|AbstractNamedTemplate
+name|NamedTemplate
 implements|implements
 name|NodeTypeTemplate
 block|{

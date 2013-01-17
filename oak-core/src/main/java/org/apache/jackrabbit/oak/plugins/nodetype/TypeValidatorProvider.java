@@ -230,8 +230,9 @@ block|{
 name|ReadOnlyNodeTypeManager
 name|ntm
 init|=
-operator|new
-name|ValidatingNodeTypeManager
+name|ReadOnlyNodeTypeManager
+operator|.
+name|getInstance
 argument_list|(
 name|after
 argument_list|)

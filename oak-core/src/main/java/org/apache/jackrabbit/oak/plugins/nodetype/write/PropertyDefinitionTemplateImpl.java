@@ -16,6 +16,8 @@ operator|.
 name|plugins
 operator|.
 name|nodetype
+operator|.
+name|write
 package|;
 end_package
 
@@ -311,7 +313,7 @@ begin_class
 class|class
 name|PropertyDefinitionTemplateImpl
 extends|extends
-name|ItemDefinitionTemplateImpl
+name|ItemDefinitionTemplate
 implements|implements
 name|PropertyDefinitionTemplate
 block|{

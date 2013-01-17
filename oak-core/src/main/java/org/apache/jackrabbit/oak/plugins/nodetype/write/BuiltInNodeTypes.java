@@ -16,6 +16,8 @@ operator|.
 name|plugins
 operator|.
 name|nodetype
+operator|.
+name|write
 package|;
 end_package
 
@@ -300,7 +302,6 @@ comment|/**  *<code>BuiltInNodeTypes</code> is a utility class that registers th
 end_comment
 
 begin_class
-specifier|public
 class|class
 name|BuiltInNodeTypes
 block|{

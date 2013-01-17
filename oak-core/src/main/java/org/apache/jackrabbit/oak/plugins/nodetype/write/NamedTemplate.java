@@ -16,6 +16,8 @@ operator|.
 name|plugins
 operator|.
 name|nodetype
+operator|.
+name|write
 package|;
 end_package
 
@@ -90,7 +92,7 @@ end_comment
 begin_class
 specifier|abstract
 class|class
-name|AbstractNamedTemplate
+name|NamedTemplate
 block|{
 specifier|private
 specifier|final
@@ -105,7 +107,7 @@ literal|null
 decl_stmt|;
 comment|// not defined by default
 specifier|protected
-name|AbstractNamedTemplate
+name|NamedTemplate
 parameter_list|(
 name|NameMapper
 name|mapper
@@ -119,7 +121,7 @@ name|mapper
 expr_stmt|;
 block|}
 specifier|protected
-name|AbstractNamedTemplate
+name|NamedTemplate
 parameter_list|(
 name|NameMapper
 name|mapper
@@ -161,6 +163,7 @@ return|return
 name|oakName
 return|;
 block|}
+comment|//------------------------------------------------------------< public>--
 comment|/**      * Returns the JCR name of this template, or {@code null} if the name      * has not yet been set.      *      * @return JCR name, or {@code null}      */
 annotation|@
 name|CheckForNull
@@ -199,6 +202,7 @@ name|jcrName
 argument_list|)
 expr_stmt|;
 block|}
+comment|//-------------------------------------------< name handling utilities>--
 comment|/**      * Like {@link NameMapper#getJcrName(String)}, but allows the given Oak      * name to be {@code null}, in which case the return value is also      * {@code null}. Useful for the template implementations where      * {@code null} values are used to indicate undefined attributes.      *      * @param oakName Oak name, or {@code null}      * @return JCR name, or {@code null}      */
 annotation|@
 name|CheckForNull

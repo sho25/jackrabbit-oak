@@ -351,6 +351,8 @@ name|plugins
 operator|.
 name|nodetype
 operator|.
+name|write
+operator|.
 name|ReadWriteNodeTypeManager
 import|;
 end_import
