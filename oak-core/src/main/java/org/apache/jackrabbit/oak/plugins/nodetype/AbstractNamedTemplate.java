@@ -149,7 +149,19 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Returns the name of this template, or {@code null} if the name      * has not yet been set.      *      * @return JCR name, or {@code null}      */
+comment|/**      * Returns the Oak name of this template, or {@code null} if the name      * has not yet been set.      *      * @return Oak name, or {@code null}      */
+annotation|@
+name|CheckForNull
+specifier|protected
+name|String
+name|getOakName
+parameter_list|()
+block|{
+return|return
+name|oakName
+return|;
+block|}
+comment|/**      * Returns the JCR name of this template, or {@code null} if the name      * has not yet been set.      *      * @return JCR name, or {@code null}      */
 annotation|@
 name|CheckForNull
 specifier|public
