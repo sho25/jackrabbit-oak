@@ -1027,7 +1027,7 @@ name|oakPath
 init|=
 name|dlg
 operator|.
-name|getOakPath
+name|getOakPathOrThrow
 argument_list|(
 name|absPath
 argument_list|)
@@ -1118,7 +1118,7 @@ name|oakPath
 init|=
 name|dlg
 operator|.
-name|getOakPath
+name|getOakPathOrThrow
 argument_list|(
 name|absPath
 argument_list|)
@@ -1197,7 +1197,7 @@ name|oakPath
 init|=
 name|dlg
 operator|.
-name|getOakPath
+name|getOakPathOrThrowNotFound
 argument_list|(
 name|absPath
 argument_list|)
@@ -1311,7 +1311,7 @@ name|oakPath
 init|=
 name|dlg
 operator|.
-name|getOakPath
+name|getOakPathOrThrowNotFound
 argument_list|(
 name|absPath
 argument_list|)
@@ -1408,7 +1408,7 @@ name|oakPath
 init|=
 name|dlg
 operator|.
-name|getOakPathKeepIndex
+name|getOakPathKeepIndexOrThrowNotFound
 argument_list|(
 name|destAbsPath
 argument_list|)
@@ -1448,14 +1448,14 @@ name|move
 argument_list|(
 name|dlg
 operator|.
-name|getOakPath
+name|getOakPathOrThrowNotFound
 argument_list|(
 name|srcAbsPath
 argument_list|)
 argument_list|,
 name|dlg
 operator|.
-name|getOakPath
+name|getOakPathOrThrowNotFound
 argument_list|(
 name|oakPath
 argument_list|)

@@ -650,7 +650,7 @@ name|oakPath
 init|=
 name|sessionDelegate
 operator|.
-name|getOakPath
+name|getOakPathOrThrow
 argument_list|(
 name|absPath
 argument_list|)
