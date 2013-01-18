@@ -169,7 +169,7 @@ name|getPrimaryNodeTypeName
 argument_list|()
 decl_stmt|;
 return|return
-name|AC_NODE_TYPE_NAMES
+name|AC_NODETYPE_NAMES
 operator|.
 name|contains
 argument_list|(
