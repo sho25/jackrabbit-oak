@@ -532,26 +532,6 @@ import|;
 end_import
 
 begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
-begin_import
 import|import static
 name|com
 operator|.
@@ -679,21 +659,6 @@ name|EffectiveNodeTypeProvider
 implements|,
 name|DefinitionProvider
 block|{
-specifier|private
-specifier|static
-specifier|final
-name|Logger
-name|log
-init|=
-name|LoggerFactory
-operator|.
-name|getLogger
-argument_list|(
-name|ReadOnlyNodeTypeManager
-operator|.
-name|class
-argument_list|)
-decl_stmt|;
 comment|/**      * Returns the internal name for the specified JCR name.      *      * @param jcrName JCR node type name.      * @return the internal representation of the given JCR name.      * @throws javax.jcr.RepositoryException If there is no valid internal representation      * of the specified JCR name.      */
 annotation|@
 name|Nonnull
@@ -754,7 +719,7 @@ name|DEFAULT
 return|;
 block|}
 comment|//--------------------------------------------------------------------------
-comment|/**      * Return a new instance of {@code ReadOnlyNodeTypeManager} that reads node      * type information from the tree at {@link NodeTypeConstants#NODE_TYPES_PATH}.      *      * @param root The root to read node types from.      * @return a new instance of {@code ReadOnlyNodeTypeManager}.      */
+comment|/**      * Return a new instance of {@code ReadOnlyNodeTypeManager} that reads node      * type information from the tree at {@link NodeTypeConstants#NODE_TYPES_PATH}.      *      * @param root The root to read node types from.      * @param namePathMapper The {@code NamePathMapper} to use.      * @return a new instance of {@code ReadOnlyNodeTypeManager}.      */
 annotation|@
 name|Nonnull
 specifier|public

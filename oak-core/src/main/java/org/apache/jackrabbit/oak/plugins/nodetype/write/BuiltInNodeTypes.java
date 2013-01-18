@@ -22,26 +22,6 @@ package|;
 end_package
 
 begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|plugins
-operator|.
-name|nodetype
-operator|.
-name|NodeTypeConstants
-operator|.
-name|NODE_TYPES_PATH
-import|;
-end_import
-
-begin_import
 import|import
 name|java
 operator|.
@@ -130,6 +110,20 @@ operator|.
 name|nodetype
 operator|.
 name|NodeTypeManager
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Charsets
 import|;
 end_import
 
@@ -284,21 +278,27 @@ import|;
 end_import
 
 begin_import
-import|import
-name|com
+import|import static
+name|org
 operator|.
-name|google
+name|apache
 operator|.
-name|common
+name|jackrabbit
 operator|.
-name|base
+name|oak
 operator|.
-name|Charsets
+name|plugins
+operator|.
+name|nodetype
+operator|.
+name|NodeTypeConstants
+operator|.
+name|NODE_TYPES_PATH
 import|;
 end_import
 
 begin_comment
-comment|/**  *<code>BuiltInNodeTypes</code> is a utility class that registers the built-in  * node types required for a JCR repository running on Oak.  */
+comment|/**  * {@code BuiltInNodeTypes} is a utility class that registers the built-in  * node types required for a JCR repository running on Oak.  */
 end_comment
 
 begin_class
