@@ -410,7 +410,7 @@ condition|)
 block|{
 name|log
 operator|.
-name|warn
+name|info
 argument_list|(
 literal|"No login configuration available for "
 operator|+
@@ -433,7 +433,7 @@ parameter_list|)
 block|{
 name|log
 operator|.
-name|warn
+name|info
 argument_list|(
 literal|"Failed to retrieve login configuration: using default. "
 operator|+
