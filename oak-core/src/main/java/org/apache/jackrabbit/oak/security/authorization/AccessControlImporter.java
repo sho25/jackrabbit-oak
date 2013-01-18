@@ -715,7 +715,7 @@ block|{
 name|checkInitialized
 argument_list|()
 expr_stmt|;
-comment|// the acl node must have been added during the regular inport before
+comment|// the acl node must have been added during the regular import before
 comment|// this importer is only successfully started if an valid ACL was created.
 name|acl
 operator|=

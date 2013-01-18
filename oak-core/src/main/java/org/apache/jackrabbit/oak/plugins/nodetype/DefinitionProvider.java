@@ -177,7 +177,7 @@ name|ConstraintViolationException
 throws|,
 name|RepositoryException
 function_decl|;
-comment|/**      * Calculates the applicable definition for the child node under the given      * parent node.      *      * @param parent The parent node.      * @param targetNode The child node for which the definition is calculated.      * @return the defintion of the target node.      * @throws ConstraintViolationException If no matching definition can be found.      * @throws RepositoryException If another error occurs.      */
+comment|/**      * Calculates the applicable definition for the child node under the given      * parent node.      *      * @param parent The parent node.      * @param targetNode The child node for which the definition is calculated.      * @return the definition of the target node.      * @throws ConstraintViolationException If no matching definition can be found.      * @throws RepositoryException If another error occurs.      */
 annotation|@
 name|Nonnull
 name|NodeDefinition

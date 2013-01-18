@@ -505,7 +505,7 @@ name|IndexRow
 name|next
 parameter_list|()
 block|{
-comment|// TODO support jcr:score and possibly rep:exceprt
+comment|// TODO support jcr:score and possibly rep:excerpt
 name|String
 name|path
 init|=
@@ -726,7 +726,7 @@ block|}
 name|Filter
 operator|.
 name|PathRestriction
-name|restriciton
+name|restriction
 init|=
 name|filter
 operator|.
@@ -735,7 +735,7 @@ argument_list|()
 decl_stmt|;
 switch|switch
 condition|(
-name|restriciton
+name|restriction
 condition|)
 block|{
 case|case
@@ -829,7 +829,7 @@ name|IllegalArgumentException
 argument_list|(
 literal|"Unknown restriction: "
 operator|+
-name|restriciton
+name|restriction
 argument_list|)
 throw|;
 block|}
