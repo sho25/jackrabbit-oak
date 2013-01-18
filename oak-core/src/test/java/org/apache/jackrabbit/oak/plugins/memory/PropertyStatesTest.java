@@ -119,16 +119,6 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Ignore
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
 name|Test
 import|;
 end_import
@@ -195,9 +185,6 @@ argument_list|)
 decl_stmt|;
 annotation|@
 name|Test
-annotation|@
-name|Ignore
-comment|// FIXME OAK-554
 specifier|public
 name|void
 name|namePropertyFromNameValue
@@ -255,9 +242,6 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-annotation|@
-name|Ignore
-comment|// FIXME OAK-554
 specifier|public
 name|void
 name|pathPropertyFromPathValue
