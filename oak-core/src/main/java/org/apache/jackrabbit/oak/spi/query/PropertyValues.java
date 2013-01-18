@@ -981,6 +981,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
+break|break;
 default|default:
 if|if
 condition|(
