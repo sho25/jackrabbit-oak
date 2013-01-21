@@ -905,6 +905,24 @@ name|best
 init|=
 literal|null
 decl_stmt|;
+if|if
+condition|(
+name|LOG
+operator|.
+name|isDebugEnabled
+argument_list|()
+condition|)
+block|{
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"cost using filter "
+operator|+
+name|filter
+argument_list|)
+expr_stmt|;
+block|}
 name|double
 name|bestCost
 init|=

@@ -516,7 +516,7 @@ operator|.
 name|POSITIVE_INFINITY
 return|;
 block|}
-name|Iterable
+name|List
 argument_list|<
 name|String
 argument_list|>

@@ -25,6 +25,16 @@ end_package
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -173,7 +183,7 @@ parameter_list|(
 name|NodeState
 name|index
 parameter_list|,
-name|Iterable
+name|List
 argument_list|<
 name|String
 argument_list|>
