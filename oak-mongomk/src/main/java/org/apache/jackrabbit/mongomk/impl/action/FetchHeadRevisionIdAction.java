@@ -374,7 +374,7 @@ operator|.
 name|getRevisionId
 argument_list|()
 else|:
-literal|0L
+name|headRevisionId
 return|;
 block|}
 block|}
