@@ -763,6 +763,7 @@ operator|.
 name|commit
 argument_list|()
 expr_stmt|;
+comment|// TODO
 name|testPrincipal
 operator|=
 operator|new
@@ -771,7 +772,6 @@ argument_list|(
 literal|"admin"
 argument_list|)
 expr_stmt|;
-comment|// TODO
 name|testPrivileges
 operator|=
 name|privilegesFromNames
