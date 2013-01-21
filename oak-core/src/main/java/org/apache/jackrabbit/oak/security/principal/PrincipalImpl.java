@@ -21,16 +21,6 @@ end_package
 
 begin_import
 import|import
-name|java
-operator|.
-name|security
-operator|.
-name|Principal
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -86,16 +76,14 @@ name|String
 name|name
 parameter_list|)
 block|{
-name|checkNotNull
-argument_list|(
-name|name
-argument_list|)
-expr_stmt|;
 name|this
 operator|.
 name|name
 operator|=
+name|checkNotNull
+argument_list|(
 name|name
+argument_list|)
 expr_stmt|;
 block|}
 comment|//----------------------------------------------------------< Principal>---
@@ -147,7 +135,7 @@ name|equals
 argument_list|(
 operator|(
 operator|(
-name|Principal
+name|JackrabbitPrincipal
 operator|)
 name|obj
 operator|)
