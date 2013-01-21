@@ -3354,6 +3354,8 @@ block|{
 name|String
 name|principalName
 init|=
+name|checkNotNull
+argument_list|(
 name|aceNode
 operator|.
 name|getString
@@ -3362,12 +3364,8 @@ name|REP_PRINCIPAL_NAME
 argument_list|,
 literal|null
 argument_list|)
-decl_stmt|;
-name|checkNotNull
-argument_list|(
-name|principalName
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 name|Principal
 name|principal
 init|=
