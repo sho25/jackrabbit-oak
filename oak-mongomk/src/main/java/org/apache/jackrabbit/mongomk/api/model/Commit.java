@@ -31,6 +31,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|SortedSet
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -57,7 +67,7 @@ interface|interface
 name|Commit
 block|{
 comment|/**      * Returns the paths affected by the commit.      *      * @return The paths affected by the commit.      */
-name|List
+name|SortedSet
 argument_list|<
 name|String
 argument_list|>

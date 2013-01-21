@@ -951,14 +951,7 @@ name|commit
 operator|.
 name|setAffectedPaths
 argument_list|(
-operator|new
-name|LinkedList
-argument_list|<
-name|String
-argument_list|>
-argument_list|(
 name|affectedPaths
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|commit

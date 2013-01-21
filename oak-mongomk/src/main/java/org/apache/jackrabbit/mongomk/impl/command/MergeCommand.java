@@ -942,7 +942,7 @@ argument_list|(
 name|i
 argument_list|)
 decl_stmt|;
-name|List
+name|Set
 argument_list|<
 name|String
 argument_list|>
