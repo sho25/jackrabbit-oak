@@ -2376,7 +2376,7 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Entry inside this a directory's index.      */
+comment|/**      * Entry inside this directory's index.      */
 specifier|static
 interface|interface
 name|IndexEntry
@@ -2409,7 +2409,7 @@ name|other
 parameter_list|)
 function_decl|;
 block|}
-comment|/**      * Direct entry inside this a directory's index, pointing to a child node.      */
+comment|/**      * Direct entry inside this directory's index, pointing to a child node.      */
 specifier|static
 class|class
 name|NodeEntry
@@ -2583,7 +2583,7 @@ argument_list|()
 return|;
 block|}
 block|}
-comment|/**      * Container entry inside this a directory's index, pointing to either a      * directory or a bucket.      */
+comment|/**      * Container entry inside this directory's index, pointing to either a      * directory or a bucket.      */
 specifier|static
 specifier|abstract
 class|class
@@ -2852,13 +2852,6 @@ block|{
 name|ChildNodeEntries
 name|container
 init|=
-operator|(
-operator|(
-name|ContainerEntry
-operator|)
-name|other
-operator|)
-operator|.
 name|createCompatibleContainer
 argument_list|()
 decl_stmt|;
@@ -2932,13 +2925,6 @@ block|{
 name|ChildNodeEntries
 name|container
 init|=
-operator|(
-operator|(
-name|ContainerEntry
-operator|)
-name|other
-operator|)
-operator|.
 name|createCompatibleContainer
 argument_list|()
 decl_stmt|;
@@ -3004,7 +2990,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Directory entry inside this a directory's index, pointing to a directory on the      * next level.      */
+comment|/**      * Directory entry inside this directory's index, pointing to a directory on the      * next level.      */
 specifier|static
 class|class
 name|DirectoryEntry
@@ -3175,7 +3161,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Bucket entry inside this a directory's index, pointing to a bucket or leaf node.      */
+comment|/**      * Bucket entry inside this directory's index, pointing to a bucket or leaf node.      */
 specifier|static
 class|class
 name|BucketEntry
