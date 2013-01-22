@@ -918,8 +918,6 @@ name|getStream
 parameter_list|()
 throws|throws
 name|IllegalStateException
-throws|,
-name|RepositoryException
 block|{
 if|if
 condition|(
@@ -941,8 +939,6 @@ block|}
 name|InputStream
 name|getNewStream
 parameter_list|()
-throws|throws
-name|RepositoryException
 block|{
 return|return
 name|propertyState
