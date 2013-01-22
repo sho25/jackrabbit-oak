@@ -29,6 +29,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Collections
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -192,7 +202,7 @@ name|COLLECTION_SYNC
 init|=
 literal|"sync"
 decl_stmt|;
-comment|/**      * Removes all documents from nodes collection.      *       * @param mongoConnection      */
+comment|/**      * Removes all documents from nodes collection.      *      * @param mongoConnection      */
 specifier|public
 specifier|static
 name|void
@@ -269,7 +279,7 @@ name|root
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Removes all documents from commits collection.      *       * @param mongoConnection      */
+comment|/**      * Removes all documents from commits collection.      *      * @param mongoConnection      */
 specifier|public
 specifier|static
 name|void
@@ -328,16 +338,11 @@ name|commit
 operator|.
 name|setAffectedPaths
 argument_list|(
-name|Arrays
+name|Collections
 operator|.
-name|asList
+name|singleton
 argument_list|(
-operator|new
-name|String
-index|[]
-block|{
 literal|"/"
-block|}
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -384,7 +389,7 @@ name|commit
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Removes all documents from head collection.      *       * @param mongoConnection      */
+comment|/**      * Removes all documents from head collection.      *      * @param mongoConnection      */
 specifier|public
 specifier|static
 name|void
@@ -461,7 +466,7 @@ name|headMongo
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Removes all documents from all microkernel collections.      *       * @param mongoConnection      */
+comment|/**      * Removes all documents from all microkernel collections.      *      * @param mongoConnection      */
 specifier|public
 specifier|static
 name|void
