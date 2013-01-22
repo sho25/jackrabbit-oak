@@ -53,6 +53,18 @@ name|REINDEX_PROPERTY_NAME
 init|=
 literal|"reindex"
 decl_stmt|;
+comment|/**      * Marks a unique property index.      */
+name|String
+name|UNIQUE
+init|=
+literal|"unique"
+decl_stmt|;
+comment|/**      * Defines the names of the properties that are covered by a specific      * property index definition.      */
+name|String
+name|PROPERTY_NAMES
+init|=
+literal|"propertyNames"
+decl_stmt|;
 block|}
 end_interface
 
