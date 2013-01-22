@@ -139,7 +139,7 @@ name|void
 name|lockHead
 parameter_list|()
 function_decl|;
-comment|/**      * Put a new head commit. Must be called while holding a lock on the head.      *       * @param token      *            put token      * @param commit      *            commit      * @param branchRootId      *            former branch root id, if this is a merge; otherwise      *            {@code null}      * @return branchRevId      *            current branch head, i.e. last commit on this branch,       *            if this is a merge; otherwise {@code null}      * @return head commit id      * @throws Exception      *             if an error occurs      * @see #lockHead()      */
+comment|/**      * Put a new head commit. Must be called while holding a lock on the head.      *      * @param token      *            put token      * @param commit      *            commit      * @param branchRootId      *            former branch root id, if this is a merge; otherwise      *            {@code null}      * @param branchRevId      *            current branch head, i.e. last commit on this branch,       *            if this is a merge; otherwise {@code null}      * @return head commit id      * @throws Exception      *             if an error occurs      * @see #lockHead()      */
 name|Id
 comment|/*id*/
 name|putHeadCommit
