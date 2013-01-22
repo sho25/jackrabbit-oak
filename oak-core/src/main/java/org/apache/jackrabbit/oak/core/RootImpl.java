@@ -767,6 +767,8 @@ argument_list|,
 name|indexProvider
 argument_list|)
 block|{
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|checkLive
