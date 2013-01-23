@@ -256,7 +256,7 @@ name|NodeState
 name|rootState
 parameter_list|)
 function_decl|;
-comment|/**      * Prepare executing the query. This method will decide which index to use.      *      */
+comment|/**      * Prepare executing the query (recursively). This method will decide which      * index to use.      */
 specifier|public
 specifier|abstract
 name|void

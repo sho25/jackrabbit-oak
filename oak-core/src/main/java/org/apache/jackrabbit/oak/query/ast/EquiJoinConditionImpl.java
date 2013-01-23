@@ -513,13 +513,41 @@ decl_stmt|;
 if|if
 condition|(
 name|p2
+operator|==
+literal|null
+operator|&&
+name|f
+operator|.
+name|isPreparing
+argument_list|()
+operator|&&
+name|selector2
+operator|.
+name|isPrepared
+argument_list|()
+condition|)
+block|{
+comment|// during the prepare phase, if the selector is already
+comment|// prepared, then we would know the value
+name|p2
+operator|=
+name|PropertyValues
+operator|.
+name|newString
+argument_list|(
+name|KNOWN_VALUE
+argument_list|)
+expr_stmt|;
+block|}
+if|if
+condition|(
+name|p2
 operator|!=
 literal|null
 condition|)
 block|{
 if|if
 condition|(
-operator|!
 name|p2
 operator|.
 name|isArray
@@ -527,6 +555,13 @@ argument_list|()
 condition|)
 block|{
 comment|// TODO support join on multi-valued properties
+name|p2
+operator|=
+literal|null
+expr_stmt|;
+block|}
+block|}
+comment|// always set the condition, even if unkown ( -> is not null)
 name|f
 operator|.
 name|restrictProperty
@@ -540,8 +575,6 @@ argument_list|,
 name|p2
 argument_list|)
 expr_stmt|;
-block|}
-block|}
 block|}
 if|if
 condition|(
@@ -566,13 +599,41 @@ decl_stmt|;
 if|if
 condition|(
 name|p1
+operator|==
+literal|null
+operator|&&
+name|f
+operator|.
+name|isPreparing
+argument_list|()
+operator|&&
+name|selector1
+operator|.
+name|isPrepared
+argument_list|()
+condition|)
+block|{
+comment|// during the prepare phase, if the selector is already
+comment|// prepared, then we would know the value
+name|p1
+operator|=
+name|PropertyValues
+operator|.
+name|newString
+argument_list|(
+name|KNOWN_VALUE
+argument_list|)
+expr_stmt|;
+block|}
+if|if
+condition|(
+name|p1
 operator|!=
 literal|null
 condition|)
 block|{
 if|if
 condition|(
-operator|!
 name|p1
 operator|.
 name|isArray
@@ -580,6 +641,13 @@ argument_list|()
 condition|)
 block|{
 comment|// TODO support join on multi-valued properties
+name|p1
+operator|=
+literal|null
+expr_stmt|;
+block|}
+block|}
+comment|// always set the condition, even if unkown ( -> is not null)
 name|f
 operator|.
 name|restrictProperty
@@ -593,8 +661,6 @@ argument_list|,
 name|p1
 argument_list|)
 expr_stmt|;
-block|}
-block|}
 block|}
 block|}
 annotation|@

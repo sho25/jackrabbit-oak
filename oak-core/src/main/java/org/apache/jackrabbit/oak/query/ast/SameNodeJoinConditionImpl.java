@@ -364,6 +364,30 @@ decl_stmt|;
 if|if
 condition|(
 name|p2
+operator|==
+literal|null
+operator|&&
+name|f
+operator|.
+name|isPreparing
+argument_list|()
+operator|&&
+name|selector2
+operator|.
+name|isPrepared
+argument_list|()
+condition|)
+block|{
+comment|// during the prepare phase, if the selector is already
+comment|// prepared, then we would know the value
+name|p2
+operator|=
+name|KNOWN_PATH
+expr_stmt|;
+block|}
+if|if
+condition|(
+name|p2
 operator|!=
 literal|null
 condition|)
@@ -441,6 +465,30 @@ operator|.
 name|currentPath
 argument_list|()
 decl_stmt|;
+if|if
+condition|(
+name|p1
+operator|==
+literal|null
+operator|&&
+name|f
+operator|.
+name|isPreparing
+argument_list|()
+operator|&&
+name|selector1
+operator|.
+name|isPrepared
+argument_list|()
+condition|)
+block|{
+comment|// during the prepare phase, if the selector is already
+comment|// prepared, then we would know the value
+name|p1
+operator|=
+name|KNOWN_PATH
+expr_stmt|;
+block|}
 if|if
 condition|(
 name|p1

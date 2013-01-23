@@ -49,12 +49,31 @@ name|JoinConditionImpl
 extends|extends
 name|AstElement
 block|{
+comment|/**      * A path with 6 elements, which is the expected average for a join.      */
+specifier|protected
+specifier|static
+specifier|final
+name|String
+name|KNOWN_PATH
+init|=
+literal|"/path/from/the/join/selector"
+decl_stmt|;
+specifier|protected
+specifier|static
+specifier|final
+name|String
+name|KNOWN_VALUE
+init|=
+literal|"valueFromTheJoinSelector"
+decl_stmt|;
+comment|/**      * Evaluate the result using the currently set values.      *       * @return true if the constraint matches      */
 specifier|public
 specifier|abstract
 name|boolean
 name|evaluate
 parameter_list|()
 function_decl|;
+comment|/**      * Apply the condition to the filter, further restricting the filter if      * possible. This may also verify the data types are compatible, and that      * paths are valid.      *       * @param f the filter      */
 specifier|public
 specifier|abstract
 name|void
@@ -64,13 +83,14 @@ name|FilterImpl
 name|f
 parameter_list|)
 function_decl|;
+comment|/**      * Push as much of the condition down to this selector, further restricting      * the selector condition if possible.      *       * @param s the selector      */
 specifier|public
 specifier|abstract
 name|void
 name|restrictPushDown
 parameter_list|(
 name|SelectorImpl
-name|selectorImpl
+name|s
 parameter_list|)
 function_decl|;
 block|}

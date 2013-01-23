@@ -274,6 +274,11 @@ specifier|private
 name|boolean
 name|distinct
 decl_stmt|;
+comment|/**      * Set during the prepare phase of a query.      */
+specifier|private
+name|boolean
+name|preparing
+decl_stmt|;
 comment|// TODO support "order by"
 specifier|public
 name|FilterImpl
@@ -297,6 +302,30 @@ name|queryStatement
 operator|=
 name|queryStatement
 expr_stmt|;
+block|}
+specifier|public
+name|void
+name|setPreparing
+parameter_list|(
+name|boolean
+name|preparing
+parameter_list|)
+block|{
+name|this
+operator|.
+name|preparing
+operator|=
+name|preparing
+expr_stmt|;
+block|}
+specifier|public
+name|boolean
+name|isPreparing
+parameter_list|()
+block|{
+return|return
+name|preparing
+return|;
 block|}
 comment|/**      * Get the path.      *      * @return the path      */
 annotation|@

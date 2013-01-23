@@ -1730,12 +1730,8 @@ block|{
 name|String
 name|plan
 init|=
-name|source
-operator|.
 name|getPlan
-argument_list|(
-name|rootState
-argument_list|)
+argument_list|()
 decl_stmt|;
 name|columns
 operator|=
@@ -1812,12 +1808,8 @@ name|debug
 argument_list|(
 literal|"plan: "
 operator|+
-name|source
-operator|.
 name|getPlan
-argument_list|(
-name|rootState
-argument_list|)
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -2408,6 +2400,21 @@ block|}
 block|}
 return|return
 name|comp
+return|;
+block|}
+comment|/**      * Get the query plan. The query must already be prepared.      *       * @return the query plan      */
+specifier|private
+name|String
+name|getPlan
+parameter_list|()
+block|{
+return|return
+name|source
+operator|.
+name|getPlan
+argument_list|(
+name|rootState
+argument_list|)
 return|;
 block|}
 name|void
