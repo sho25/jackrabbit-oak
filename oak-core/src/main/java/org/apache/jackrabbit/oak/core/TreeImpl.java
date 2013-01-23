@@ -2834,9 +2834,6 @@ return|;
 block|}
 comment|/**          * Set the underlying property          * @param property The property to set          */
 specifier|public
-parameter_list|<
-name|T
-parameter_list|>
 name|void
 name|set
 parameter_list|(
