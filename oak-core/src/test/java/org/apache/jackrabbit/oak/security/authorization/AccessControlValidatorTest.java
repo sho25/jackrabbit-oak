@@ -269,6 +269,10 @@ specifier|private
 name|Principal
 name|testPrincipal
 decl_stmt|;
+specifier|private
+name|Principal
+name|testPrincipal2
+decl_stmt|;
 annotation|@
 name|Before
 specifier|public
@@ -323,6 +327,14 @@ operator|new
 name|PrincipalImpl
 argument_list|(
 literal|"testPrincipal"
+argument_list|)
+expr_stmt|;
+name|testPrincipal2
+operator|=
+operator|new
+name|PrincipalImpl
+argument_list|(
+literal|"anotherPrincipal"
 argument_list|)
 expr_stmt|;
 block|}
@@ -1365,7 +1377,7 @@ literal|"invalid"
 argument_list|,
 name|NT_REP_GRANT_ACE
 argument_list|,
-name|testPrincipal
+name|testPrincipal2
 operator|.
 name|getName
 argument_list|()
@@ -1460,7 +1472,7 @@ literal|"invalid"
 argument_list|,
 name|NT_REP_GRANT_ACE
 argument_list|,
-name|testPrincipal
+name|testPrincipal2
 operator|.
 name|getName
 argument_list|()

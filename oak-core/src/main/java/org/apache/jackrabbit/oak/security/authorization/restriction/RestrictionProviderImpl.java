@@ -751,6 +751,15 @@ name|AccessControlException
 block|{
 comment|// validation of the restrictions is delegated to the commit hook
 comment|// see #validateRestrictions below
+if|if
+condition|(
+operator|!
+name|restrictions
+operator|.
+name|isEmpty
+argument_list|()
+condition|)
+block|{
 name|NodeUtil
 name|aceNode
 init|=
@@ -793,6 +802,7 @@ name|getProperty
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 annotation|@
