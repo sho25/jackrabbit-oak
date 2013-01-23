@@ -23,6 +23,16 @@ end_package
 
 begin_import
 import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|Nonnull
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -55,9 +65,13 @@ block|{
 specifier|public
 name|LdapGroup
 parameter_list|(
+annotation|@
+name|Nonnull
 name|String
 name|dn
 parameter_list|,
+annotation|@
+name|Nonnull
 name|LdapSearch
 name|search
 parameter_list|)
@@ -71,8 +85,6 @@ argument_list|,
 name|search
 argument_list|)
 expr_stmt|;
-name|this
-operator|.
 name|setDN
 argument_list|(
 name|dn
