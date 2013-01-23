@@ -37,19 +37,25 @@ name|javax
 operator|.
 name|jcr
 operator|.
-name|RepositoryException
+name|security
+operator|.
+name|Privilege
 import|;
 end_import
 
 begin_import
 import|import
-name|javax
+name|org
 operator|.
-name|jcr
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|api
 operator|.
 name|security
 operator|.
-name|Privilege
+name|JackrabbitAccessControlManager
 import|;
 end_import
 
@@ -222,7 +228,7 @@ name|String
 name|uri
 parameter_list|)
 throws|throws
-name|RepositoryException
+name|Exception
 block|{
 name|NamespaceRegistry
 name|nsRegistry
@@ -289,7 +295,7 @@ modifier|...
 name|privilegeNames
 parameter_list|)
 throws|throws
-name|RepositoryException
+name|Exception
 block|{
 name|Privilege
 index|[]
@@ -342,9 +348,12 @@ name|privs
 return|;
 block|}
 specifier|protected
-name|AccessControlManagerImpl
+name|JackrabbitAccessControlManager
 name|getAccessControlManager
-parameter_list|()
+parameter_list|(
+name|Root
+name|root
+parameter_list|)
 block|{
 comment|// TODO
 comment|//acMgr = securityProvider.getAccessControlConfiguration().getAccessControlManager(root, NamePathMapper.DEFAULT);

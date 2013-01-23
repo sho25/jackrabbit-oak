@@ -352,6 +352,13 @@ operator|.
 name|before
 argument_list|()
 expr_stmt|;
+name|acMgr
+operator|=
+name|getAccessControlManager
+argument_list|(
+name|root
+argument_list|)
+expr_stmt|;
 name|testPrincipal
 operator|=
 operator|new
@@ -368,11 +375,6 @@ literal|"TestPrincipal"
 return|;
 block|}
 block|}
-expr_stmt|;
-name|acMgr
-operator|=
-name|getAccessControlManager
-argument_list|()
 expr_stmt|;
 block|}
 specifier|private
