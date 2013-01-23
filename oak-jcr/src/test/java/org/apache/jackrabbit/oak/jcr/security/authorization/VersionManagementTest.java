@@ -190,7 +190,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * VersionManagementTest... TODO  *  * copied and modified from jr2x VersionTest  */
+comment|/**  * Test access control evaluation for version operations.  */
 end_comment
 
 begin_class
@@ -255,8 +255,7 @@ argument_list|)
 expr_stmt|;
 name|assertFalse
 argument_list|(
-name|getTestAccessControlManager
-argument_list|()
+name|testAcMgr
 operator|.
 name|hasPrivileges
 argument_list|(
@@ -868,8 +867,7 @@ argument_list|()
 expr_stmt|;
 name|assertFalse
 argument_list|(
-name|getTestAccessControlManager
-argument_list|()
+name|testAcMgr
 operator|.
 name|hasPrivileges
 argument_list|(
@@ -1053,8 +1051,7 @@ argument_list|()
 expr_stmt|;
 name|assertFalse
 argument_list|(
-name|getTestAccessControlManager
-argument_list|()
+name|testAcMgr
 operator|.
 name|hasPrivileges
 argument_list|(
@@ -1084,8 +1081,7 @@ block|{
 comment|// version information must still be accessible
 name|assertTrue
 argument_list|(
-name|getTestSession
-argument_list|()
+name|testSession
 operator|.
 name|nodeExists
 argument_list|(
@@ -1098,8 +1094,7 @@ argument_list|)
 expr_stmt|;
 name|assertTrue
 argument_list|(
-name|getTestSession
-argument_list|()
+name|testSession
 operator|.
 name|nodeExists
 argument_list|(
@@ -1112,8 +1107,7 @@ argument_list|)
 expr_stmt|;
 name|assertTrue
 argument_list|(
-name|getTestSession
-argument_list|()
+name|testSession
 operator|.
 name|nodeExists
 argument_list|(
@@ -1423,8 +1417,7 @@ expr_stmt|;
 comment|// versionable node is not readable any more for test session.
 name|assertFalse
 argument_list|(
-name|getTestSession
-argument_list|()
+name|testSession
 operator|.
 name|nodeExists
 argument_list|(
@@ -1444,8 +1437,7 @@ init|=
 operator|(
 name|VersionHistory
 operator|)
-name|getTestSession
-argument_list|()
+name|testSession
 operator|.
 name|getNode
 argument_list|(
@@ -1474,8 +1466,7 @@ init|=
 operator|(
 name|VersionHistory
 operator|)
-name|getTestSession
-argument_list|()
+name|testSession
 operator|.
 name|getNodeByIdentifier
 argument_list|(
@@ -1504,8 +1495,7 @@ init|=
 operator|(
 name|VersionHistory
 operator|)
-name|getTestSession
-argument_list|()
+name|testSession
 operator|.
 name|getNodeByUUID
 argument_list|(
@@ -1640,8 +1630,7 @@ expr_stmt|;
 name|VersionManager
 name|vMgr
 init|=
-name|getTestSession
-argument_list|()
+name|testSession
 operator|.
 name|getWorkspace
 argument_list|()

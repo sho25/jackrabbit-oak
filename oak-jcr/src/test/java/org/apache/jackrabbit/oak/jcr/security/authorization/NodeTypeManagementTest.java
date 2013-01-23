@@ -77,16 +77,6 @@ name|javax
 operator|.
 name|jcr
 operator|.
-name|Session
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|jcr
-operator|.
 name|Workspace
 import|;
 end_import
@@ -148,7 +138,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * NodeTypeManagementTest... TODO  *  * copied from jr2.x NodeTypeTest  */
+comment|/**  * NodeTypeManagementTest... TODO  */
 end_comment
 
 begin_class
@@ -228,8 +218,7 @@ argument_list|()
 expr_stmt|;
 name|mixinName
 operator|=
-name|getTestSession
-argument_list|()
+name|testSession
 operator|.
 name|getNamespacePrefix
 argument_list|(
@@ -240,12 +229,19 @@ literal|":referenceable"
 expr_stmt|;
 name|childNode
 operator|=
-name|getTestSession
-argument_list|()
+name|testSession
 operator|.
 name|getNode
 argument_list|(
 name|child
+operator|.
+name|getPath
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|assertReadOnly
+argument_list|(
+name|childNode
 operator|.
 name|getPath
 argument_list|()
@@ -261,14 +257,6 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|checkReadOnly
-argument_list|(
-name|childNode
-operator|.
-name|getPath
-argument_list|()
-argument_list|)
-expr_stmt|;
 name|assertFalse
 argument_list|(
 name|childNode
@@ -337,14 +325,6 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|checkReadOnly
-argument_list|(
-name|childNode
-operator|.
-name|getPath
-argument_list|()
-argument_list|)
-expr_stmt|;
 try|try
 block|{
 name|childNode
@@ -433,14 +413,6 @@ name|superuser
 operator|.
 name|save
 argument_list|()
-expr_stmt|;
-name|checkReadOnly
-argument_list|(
-name|childNode
-operator|.
-name|getPath
-argument_list|()
-argument_list|)
 expr_stmt|;
 try|try
 block|{
@@ -552,14 +524,6 @@ argument_list|()
 expr_stmt|;
 try|try
 block|{
-name|checkReadOnly
-argument_list|(
-name|childNode
-operator|.
-name|getPath
-argument_list|()
-argument_list|)
-expr_stmt|;
 try|try
 block|{
 name|childNode
@@ -587,8 +551,7 @@ name|e
 parameter_list|)
 block|{
 comment|// success
-name|getTestSession
-argument_list|()
+name|testSession
 operator|.
 name|refresh
 argument_list|(
@@ -668,14 +631,6 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|checkReadOnly
-argument_list|(
-name|childNode
-operator|.
-name|getPath
-argument_list|()
-argument_list|)
-expr_stmt|;
 comment|// with simple write privilege a child node can be added BUT no
 comment|// node type must be specified.
 name|modify
@@ -819,8 +774,7 @@ block|{
 name|Workspace
 name|wsp
 init|=
-name|getTestSession
-argument_list|()
+name|testSession
 operator|.
 name|getWorkspace
 argument_list|()
@@ -853,11 +807,6 @@ literal|'/'
 operator|+
 name|nodeName3
 decl_stmt|;
-name|checkReadOnly
-argument_list|(
-name|parentPath
-argument_list|)
-expr_stmt|;
 try|try
 block|{
 name|wsp
@@ -952,8 +901,7 @@ block|{
 name|Workspace
 name|wsp
 init|=
-name|getTestSession
-argument_list|()
+name|testSession
 operator|.
 name|getWorkspace
 argument_list|()
@@ -986,11 +934,6 @@ literal|'/'
 operator|+
 name|nodeName3
 decl_stmt|;
-name|checkReadOnly
-argument_list|(
-name|parentPath
-argument_list|)
-expr_stmt|;
 try|try
 block|{
 name|wsp
@@ -1082,12 +1025,6 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|Session
-name|s
-init|=
-name|getTestSession
-argument_list|()
-decl_stmt|;
 name|String
 name|parentPath
 init|=
@@ -1116,14 +1053,9 @@ literal|'/'
 operator|+
 name|nodeName3
 decl_stmt|;
-name|checkReadOnly
-argument_list|(
-name|parentPath
-argument_list|)
-expr_stmt|;
 try|try
 block|{
-name|s
+name|testSession
 operator|.
 name|move
 argument_list|(
@@ -1132,7 +1064,7 @@ argument_list|,
 name|destPath
 argument_list|)
 expr_stmt|;
-name|s
+name|testSession
 operator|.
 name|save
 argument_list|()
@@ -1165,7 +1097,7 @@ argument_list|)
 expr_stmt|;
 try|try
 block|{
-name|s
+name|testSession
 operator|.
 name|move
 argument_list|(
@@ -1174,7 +1106,7 @@ argument_list|,
 name|destPath
 argument_list|)
 expr_stmt|;
-name|s
+name|testSession
 operator|.
 name|save
 argument_list|()
@@ -1203,7 +1135,7 @@ argument_list|,
 literal|true
 argument_list|)
 expr_stmt|;
-name|s
+name|testSession
 operator|.
 name|move
 argument_list|(
@@ -1212,7 +1144,7 @@ argument_list|,
 name|destPath
 argument_list|)
 expr_stmt|;
-name|s
+name|testSession
 operator|.
 name|save
 argument_list|()
@@ -1227,12 +1159,6 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|Session
-name|s
-init|=
-name|getTestSession
-argument_list|()
-decl_stmt|;
 name|String
 name|parentPath
 init|=
@@ -1241,14 +1167,9 @@ operator|.
 name|getPath
 argument_list|()
 decl_stmt|;
-name|checkReadOnly
-argument_list|(
-name|parentPath
-argument_list|)
-expr_stmt|;
 try|try
 block|{
-name|s
+name|testSession
 operator|.
 name|importXML
 argument_list|(
@@ -1262,7 +1183,7 @@ operator|.
 name|IMPORT_UUID_CREATE_NEW
 argument_list|)
 expr_stmt|;
-name|s
+name|testSession
 operator|.
 name|save
 argument_list|()
@@ -1283,7 +1204,7 @@ comment|// success
 block|}
 finally|finally
 block|{
-name|s
+name|testSession
 operator|.
 name|refresh
 argument_list|(
@@ -1305,7 +1226,7 @@ argument_list|)
 expr_stmt|;
 try|try
 block|{
-name|s
+name|testSession
 operator|.
 name|importXML
 argument_list|(
@@ -1319,7 +1240,7 @@ operator|.
 name|IMPORT_UUID_CREATE_NEW
 argument_list|)
 expr_stmt|;
-name|s
+name|testSession
 operator|.
 name|save
 argument_list|()
@@ -1340,7 +1261,7 @@ comment|// success
 block|}
 finally|finally
 block|{
-name|s
+name|testSession
 operator|.
 name|refresh
 argument_list|(
@@ -1358,7 +1279,7 @@ argument_list|,
 literal|true
 argument_list|)
 expr_stmt|;
-name|s
+name|testSession
 operator|.
 name|importXML
 argument_list|(
@@ -1372,7 +1293,7 @@ operator|.
 name|IMPORT_UUID_CREATE_NEW
 argument_list|)
 expr_stmt|;
-name|s
+name|testSession
 operator|.
 name|save
 argument_list|()
@@ -1390,8 +1311,7 @@ block|{
 name|Workspace
 name|wsp
 init|=
-name|getTestSession
-argument_list|()
+name|testSession
 operator|.
 name|getWorkspace
 argument_list|()
@@ -1404,11 +1324,6 @@ operator|.
 name|getPath
 argument_list|()
 decl_stmt|;
-name|checkReadOnly
-argument_list|(
-name|parentPath
-argument_list|)
-expr_stmt|;
 try|try
 block|{
 name|wsp

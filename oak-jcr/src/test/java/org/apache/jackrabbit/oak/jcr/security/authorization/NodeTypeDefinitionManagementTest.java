@@ -118,7 +118,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * NodeTypeDefinitionManagementTest... TODO  *  * copied from jr2x RepositoryOperationTest  */
+comment|/**  * NodeTypeDefinitionManagementTest... TODO  */
 end_comment
 
 begin_class
@@ -157,7 +157,7 @@ operator|.
 name|setUp
 argument_list|()
 expr_stmt|;
-name|assertPrivilege
+name|assertHasPrivilege
 argument_list|(
 literal|null
 argument_list|,
@@ -230,8 +230,7 @@ block|{
 name|Workspace
 name|testWsp
 init|=
-name|getTestSession
-argument_list|()
+name|testSession
 operator|.
 name|getWorkspace
 argument_list|()
@@ -440,7 +439,7 @@ argument_list|,
 literal|true
 argument_list|)
 expr_stmt|;
-name|assertPrivilege
+name|assertHasPrivilege
 argument_list|(
 literal|null
 argument_list|,
@@ -454,8 +453,7 @@ block|{
 name|Workspace
 name|testWsp
 init|=
-name|getTestSession
-argument_list|()
+name|testSession
 operator|.
 name|getWorkspace
 argument_list|()
@@ -576,7 +574,7 @@ literal|false
 argument_list|)
 expr_stmt|;
 block|}
-name|assertPrivilege
+name|assertHasPrivilege
 argument_list|(
 literal|null
 argument_list|,
@@ -640,8 +638,7 @@ expr_stmt|;
 name|Workspace
 name|testWsp
 init|=
-name|getTestSession
-argument_list|()
+name|testSession
 operator|.
 name|getWorkspace
 argument_list|()

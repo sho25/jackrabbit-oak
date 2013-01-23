@@ -136,7 +136,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * PrivilegeManagementTest... TODO  *  * copied from jr2x RepositoryOperationTest  */
+comment|/**  * PrivilegeManagementTest... TODO  */
 end_comment
 
 begin_class
@@ -174,7 +174,7 @@ name|setUp
 argument_list|()
 expr_stmt|;
 comment|// test user must not be allowed
-name|assertPrivilege
+name|assertHasPrivilege
 argument_list|(
 literal|null
 argument_list|,
@@ -337,8 +337,7 @@ block|{
 name|Workspace
 name|testWsp
 init|=
-name|getTestSession
-argument_list|()
+name|testSession
 operator|.
 name|getWorkspace
 argument_list|()
@@ -402,7 +401,7 @@ argument_list|,
 literal|true
 argument_list|)
 expr_stmt|;
-name|assertPrivilege
+name|assertHasPrivilege
 argument_list|(
 literal|null
 argument_list|,
@@ -416,8 +415,7 @@ block|{
 name|Workspace
 name|testWsp
 init|=
-name|getTestSession
-argument_list|()
+name|testSession
 operator|.
 name|getWorkspace
 argument_list|()
@@ -461,7 +459,7 @@ literal|false
 argument_list|)
 expr_stmt|;
 block|}
-name|assertPrivilege
+name|assertHasPrivilege
 argument_list|(
 literal|null
 argument_list|,
