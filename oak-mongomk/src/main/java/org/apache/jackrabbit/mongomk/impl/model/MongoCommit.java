@@ -949,7 +949,7 @@ name|IOException
 name|e
 parameter_list|)
 block|{
-comment|// FIXME: shoulnd't actually happen with byte[] and UTF-8
+comment|// FIXME: shouldn't actually happen with byte[] and UTF-8
 throw|throw
 operator|new
 name|RuntimeException
@@ -1070,7 +1070,7 @@ name|IOException
 name|e
 parameter_list|)
 block|{
-comment|// FIXME: shoulnd't actually happen with byte[] and UTF-8
+comment|// FIXME: shouldn't actually happen with byte[] and UTF-8
 throw|throw
 operator|new
 name|RuntimeException
