@@ -1560,6 +1560,9 @@ argument_list|()
 throw|;
 block|}
 name|NodeImpl
+argument_list|<
+name|?
+argument_list|>
 name|childNode
 init|=
 operator|new
@@ -2507,6 +2510,9 @@ operator|new
 name|SessionOperation
 argument_list|<
 name|NodeImpl
+argument_list|<
+name|?
+argument_list|>
 argument_list|>
 argument_list|()
 block|{
@@ -2514,6 +2520,9 @@ annotation|@
 name|Override
 specifier|public
 name|NodeImpl
+argument_list|<
+name|?
+argument_list|>
 name|perform
 parameter_list|()
 throws|throws
@@ -2569,9 +2578,12 @@ return|;
 block|}
 block|}
 block|}
-argument_list|)
-return|;
+block|)
+function|;
 block|}
+end_class
+
+begin_function
 annotation|@
 name|Override
 annotation|@
@@ -2643,6 +2655,9 @@ block|}
 argument_list|)
 return|;
 block|}
+end_function
+
+begin_function
 annotation|@
 name|Override
 annotation|@
@@ -2762,6 +2777,9 @@ block|}
 argument_list|)
 return|;
 block|}
+end_function
+
+begin_function
 annotation|@
 name|Override
 annotation|@
@@ -2882,6 +2900,9 @@ block|}
 argument_list|)
 return|;
 block|}
+end_function
+
+begin_function
 annotation|@
 name|Override
 annotation|@
@@ -2976,6 +2997,9 @@ block|}
 argument_list|)
 return|;
 block|}
+end_function
+
+begin_function
 annotation|@
 name|Override
 annotation|@
@@ -3047,6 +3071,9 @@ block|}
 argument_list|)
 return|;
 block|}
+end_function
+
+begin_function
 annotation|@
 name|Override
 annotation|@
@@ -3166,6 +3193,9 @@ block|}
 argument_list|)
 return|;
 block|}
+end_function
+
+begin_function
 annotation|@
 name|Override
 annotation|@
@@ -3286,7 +3316,13 @@ block|}
 argument_list|)
 return|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * @see javax.jcr.Node#getPrimaryItem()      */
+end_comment
+
+begin_function
 annotation|@
 name|Override
 annotation|@
@@ -3400,7 +3436,13 @@ block|}
 argument_list|)
 return|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * @see javax.jcr.Node#getUUID()      */
+end_comment
+
+begin_function
 annotation|@
 name|Override
 annotation|@
@@ -3463,6 +3505,9 @@ block|}
 argument_list|)
 return|;
 block|}
+end_function
+
+begin_function
 annotation|@
 name|Override
 annotation|@
@@ -3509,6 +3554,9 @@ block|}
 argument_list|)
 return|;
 block|}
+end_function
+
+begin_function
 annotation|@
 name|Override
 specifier|public
@@ -3523,7 +3571,13 @@ return|return
 literal|1
 return|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * @see javax.jcr.Node#getReferences()      */
+end_comment
+
+begin_function
 annotation|@
 name|Override
 annotation|@
@@ -3542,6 +3596,9 @@ literal|null
 argument_list|)
 return|;
 block|}
+end_function
+
+begin_function
 annotation|@
 name|Override
 annotation|@
@@ -3569,7 +3626,13 @@ literal|false
 argument_list|)
 return|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * @see javax.jcr.Node#getWeakReferences()      */
+end_comment
+
+begin_function
 annotation|@
 name|Override
 annotation|@
@@ -3588,6 +3651,9 @@ literal|null
 argument_list|)
 return|;
 block|}
+end_function
+
+begin_function
 annotation|@
 name|Override
 annotation|@
@@ -3614,6 +3680,9 @@ literal|true
 argument_list|)
 return|;
 block|}
+end_function
+
+begin_function
 specifier|private
 name|PropertyIterator
 name|internalGetReferences
@@ -3756,6 +3825,9 @@ block|}
 argument_list|)
 return|;
 block|}
+end_function
+
+begin_function
 annotation|@
 name|Override
 specifier|public
@@ -3818,6 +3890,9 @@ block|}
 argument_list|)
 return|;
 block|}
+end_function
+
+begin_function
 annotation|@
 name|Override
 specifier|public
@@ -3880,6 +3955,9 @@ block|}
 argument_list|)
 return|;
 block|}
+end_function
+
+begin_function
 annotation|@
 name|Override
 specifier|public
@@ -3926,6 +4004,9 @@ block|}
 argument_list|)
 return|;
 block|}
+end_function
+
+begin_function
 annotation|@
 name|Override
 specifier|public
@@ -3972,7 +4053,13 @@ block|}
 argument_list|)
 return|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * @see javax.jcr.Node#getPrimaryNodeType()      */
+end_comment
+
+begin_function
 annotation|@
 name|Override
 annotation|@
@@ -4070,7 +4157,13 @@ block|}
 argument_list|)
 return|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * @see javax.jcr.Node#getMixinNodeTypes()      */
+end_comment
+
+begin_function
 annotation|@
 name|Override
 annotation|@
@@ -4209,6 +4302,9 @@ block|}
 argument_list|)
 return|;
 block|}
+end_function
+
+begin_function
 annotation|@
 name|Override
 specifier|public
@@ -4252,6 +4348,9 @@ name|oakName
 argument_list|)
 return|;
 block|}
+end_function
+
+begin_function
 annotation|@
 name|Override
 specifier|public
@@ -4294,6 +4393,9 @@ name|nodeTypeName
 argument_list|)
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 annotation|@
 name|Override
 specifier|public
@@ -4478,6 +4580,9 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 annotation|@
 name|Override
 specifier|public
@@ -4542,6 +4647,9 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 annotation|@
 name|Override
 specifier|public
@@ -4611,6 +4719,9 @@ block|}
 argument_list|)
 return|;
 block|}
+end_function
+
+begin_function
 specifier|private
 name|EffectiveNodeType
 name|getEffectiveNodeType
@@ -4630,6 +4741,9 @@ name|this
 argument_list|)
 return|;
 block|}
+end_function
+
+begin_function
 annotation|@
 name|Override
 annotation|@
@@ -4681,6 +4795,9 @@ argument_list|)
 return|;
 block|}
 block|}
+end_function
+
+begin_function
 annotation|@
 name|Override
 annotation|@
@@ -4711,6 +4828,9 @@ literal|"TODO: Node.getCorrespondingNodePath"
 argument_list|)
 throw|;
 block|}
+end_function
+
+begin_function
 annotation|@
 name|Override
 specifier|public
@@ -4736,7 +4856,13 @@ argument_list|()
 expr_stmt|;
 comment|// TODO
 block|}
+end_function
+
+begin_comment
 comment|/**      * @see javax.jcr.Node#checkin()      */
+end_comment
+
+begin_function
 annotation|@
 name|Override
 annotation|@
@@ -4761,7 +4887,13 @@ argument_list|()
 argument_list|)
 return|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * @see javax.jcr.Node#checkout()      */
+end_comment
+
+begin_function
 annotation|@
 name|Override
 specifier|public
@@ -4783,7 +4915,13 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * @see javax.jcr.Node#doneMerge(javax.jcr.version.Version)      */
+end_comment
+
+begin_function
 annotation|@
 name|Override
 specifier|public
@@ -4810,7 +4948,13 @@ name|version
 argument_list|)
 expr_stmt|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * @see javax.jcr.Node#cancelMerge(javax.jcr.version.Version)      */
+end_comment
+
+begin_function
 annotation|@
 name|Override
 specifier|public
@@ -4837,7 +4981,13 @@ name|version
 argument_list|)
 expr_stmt|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * @see javax.jcr.Node#merge(String, boolean)      */
+end_comment
+
+begin_function
 annotation|@
 name|Override
 annotation|@
@@ -4872,7 +5022,13 @@ name|bestEffort
 argument_list|)
 return|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * @see javax.jcr.Node#isCheckedOut()      */
+end_comment
+
+begin_function
 annotation|@
 name|Override
 specifier|public
@@ -4910,7 +5066,13 @@ literal|true
 return|;
 block|}
 block|}
+end_function
+
+begin_comment
 comment|/**      * @see javax.jcr.Node#restore(String, boolean)      */
+end_comment
+
+begin_function
 annotation|@
 name|Override
 specifier|public
@@ -4942,7 +5104,13 @@ name|removeExisting
 argument_list|)
 expr_stmt|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * @see javax.jcr.Node#restore(javax.jcr.version.Version, boolean)      */
+end_comment
+
+begin_function
 annotation|@
 name|Override
 specifier|public
@@ -4971,7 +5139,13 @@ name|removeExisting
 argument_list|)
 expr_stmt|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * @see javax.jcr.Node#restore(Version, String, boolean)      */
+end_comment
+
+begin_function
 annotation|@
 name|Override
 specifier|public
@@ -5018,7 +5192,13 @@ block|{
 comment|// TODO
 block|}
 block|}
+end_function
+
+begin_comment
 comment|/**      * @see javax.jcr.Node#restoreByLabel(String, boolean)      */
+end_comment
+
+begin_function
 annotation|@
 name|Override
 specifier|public
@@ -5050,7 +5230,13 @@ name|removeExisting
 argument_list|)
 expr_stmt|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * @see javax.jcr.Node#getVersionHistory()      */
+end_comment
+
+begin_function
 annotation|@
 name|Override
 annotation|@
@@ -5075,7 +5261,13 @@ argument_list|()
 argument_list|)
 return|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * @see javax.jcr.Node#getBaseVersion()      */
+end_comment
+
+begin_function
 annotation|@
 name|Override
 annotation|@
@@ -5100,7 +5292,13 @@ argument_list|()
 argument_list|)
 return|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * Checks whether this node is locked by looking for the      * {@code jcr:lockOwner} property either on this node or      * on any ancestor that also has the {@code jcr:lockIsDeep}      * property set to {@code true}.      */
+end_comment
+
+begin_function
 annotation|@
 name|Override
 specifier|public
@@ -5221,7 +5419,13 @@ return|return
 literal|false
 return|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * Checks whether this node holds a lock by looking for the      * {@code jcr:lockOwner} property.      */
+end_comment
+
+begin_function
 annotation|@
 name|Override
 specifier|public
@@ -5252,7 +5456,13 @@ operator|!=
 literal|null
 return|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * @see javax.jcr.Node#getLock()      */
+end_comment
+
+begin_function
 annotation|@
 name|Override
 annotation|@
@@ -5270,7 +5480,13 @@ name|UnsupportedRepositoryOperationException
 argument_list|()
 throw|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * @see javax.jcr.Node#lock(boolean, boolean)      */
+end_comment
+
+begin_function
 annotation|@
 name|Override
 annotation|@
@@ -5539,7 +5755,13 @@ name|getLock
 argument_list|()
 return|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * @see javax.jcr.Node#unlock()      */
+end_comment
+
+begin_function
 annotation|@
 name|Override
 specifier|public
@@ -5655,6 +5877,9 @@ literal|true
 argument_list|)
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 annotation|@
 name|Override
 annotation|@
@@ -5674,6 +5899,9 @@ literal|"TODO: Node.getSharedSet"
 argument_list|)
 throw|;
 block|}
+end_function
+
+begin_function
 annotation|@
 name|Override
 specifier|public
@@ -5691,6 +5919,9 @@ literal|"TODO: Node.removeSharedSet"
 argument_list|)
 throw|;
 block|}
+end_function
+
+begin_function
 annotation|@
 name|Override
 specifier|public
@@ -5708,7 +5939,13 @@ literal|"TODO: Node.removeShare"
 argument_list|)
 throw|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * @see javax.jcr.Node#followLifecycleTransition(String)      */
+end_comment
+
+begin_function
 annotation|@
 name|Override
 specifier|public
@@ -5729,7 +5966,13 @@ literal|"Lifecycle Management is not supported"
 argument_list|)
 throw|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * @see javax.jcr.Node#getAllowedLifecycleTransistions()      */
+end_comment
+
+begin_function
 annotation|@
 name|Override
 annotation|@
@@ -5750,7 +5993,13 @@ literal|"Lifecycle Management is not supported"
 argument_list|)
 throw|;
 block|}
+end_function
+
+begin_comment
 comment|//------------------------------------------------------------< private>---
+end_comment
+
+begin_function
 specifier|private
 specifier|static
 name|Iterator
@@ -5807,6 +6056,9 @@ block|}
 argument_list|)
 return|;
 block|}
+end_function
+
+begin_function
 specifier|private
 specifier|static
 name|Iterator
@@ -5860,6 +6112,9 @@ block|}
 argument_list|)
 return|;
 block|}
+end_function
+
+begin_function
 specifier|private
 specifier|static
 name|int
@@ -5901,6 +6156,9 @@ argument_list|()
 return|;
 block|}
 block|}
+end_function
+
+begin_function
 specifier|private
 specifier|static
 name|int
@@ -5975,6 +6233,9 @@ argument_list|()
 return|;
 block|}
 block|}
+end_function
+
+begin_function
 specifier|private
 name|void
 name|autoCreateItems
@@ -6101,6 +6362,9 @@ expr_stmt|;
 block|}
 block|}
 block|}
+end_function
+
+begin_function
 specifier|private
 name|Value
 name|getAutoCreatedValue
@@ -6417,6 +6681,9 @@ argument_list|)
 argument_list|)
 throw|;
 block|}
+end_function
+
+begin_function
 specifier|private
 name|Iterable
 argument_list|<
@@ -6479,6 +6746,9 @@ argument_list|)
 argument_list|)
 throw|;
 block|}
+end_function
+
+begin_function
 specifier|private
 name|void
 name|autoCreateNode
@@ -6503,6 +6773,9 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 specifier|private
 name|void
 name|checkValidWorkspace
@@ -6550,6 +6823,9 @@ literal|" does not exist."
 argument_list|)
 throw|;
 block|}
+end_function
+
+begin_function
 specifier|private
 name|void
 name|internalSetPrimaryType
@@ -6667,6 +6943,9 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 specifier|private
 name|Property
 name|internalSetProperty
@@ -6902,6 +7181,9 @@ block|}
 argument_list|)
 return|;
 block|}
+end_function
+
+begin_function
 specifier|private
 name|Property
 name|internalSetProperty
@@ -7162,8 +7444,8 @@ block|}
 argument_list|)
 return|;
 block|}
-block|}
-end_class
+end_function
 
+unit|}
 end_unit
 

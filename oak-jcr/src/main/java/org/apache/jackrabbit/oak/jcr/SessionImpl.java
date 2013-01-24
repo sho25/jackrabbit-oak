@@ -767,6 +767,9 @@ operator|new
 name|SessionOperation
 argument_list|<
 name|NodeImpl
+argument_list|<
+name|?
+argument_list|>
 argument_list|>
 argument_list|()
 block|{
@@ -774,6 +777,9 @@ annotation|@
 name|Override
 specifier|public
 name|NodeImpl
+argument_list|<
+name|?
+argument_list|>
 name|perform
 parameter_list|()
 throws|throws
@@ -817,9 +823,12 @@ return|;
 block|}
 block|}
 block|}
-argument_list|)
-return|;
+block|)
+function|;
 block|}
+end_class
+
+begin_function
 annotation|@
 name|Override
 annotation|@
@@ -841,6 +850,9 @@ name|uuid
 argument_list|)
 return|;
 block|}
+end_function
+
+begin_function
 annotation|@
 name|Override
 annotation|@
@@ -868,6 +880,9 @@ operator|new
 name|SessionOperation
 argument_list|<
 name|NodeImpl
+argument_list|<
+name|?
+argument_list|>
 argument_list|>
 argument_list|()
 block|{
@@ -875,6 +890,9 @@ annotation|@
 name|Override
 specifier|public
 name|NodeImpl
+argument_list|<
+name|?
+argument_list|>
 name|perform
 parameter_list|()
 throws|throws
@@ -921,10 +939,12 @@ argument_list|)
 return|;
 block|}
 block|}
-argument_list|)
-return|;
-block|}
-annotation|@
+block|)
+function|;
+end_function
+
+begin_function
+unit|}      @
 name|Override
 specifier|public
 name|Item
@@ -961,6 +981,9 @@ argument_list|)
 return|;
 block|}
 block|}
+end_function
+
+begin_function
 annotation|@
 name|Override
 specifier|public
@@ -985,6 +1008,9 @@ name|absPath
 argument_list|)
 return|;
 block|}
+end_function
+
+begin_function
 annotation|@
 name|Override
 specifier|public
@@ -1010,6 +1036,9 @@ operator|new
 name|SessionOperation
 argument_list|<
 name|NodeImpl
+argument_list|<
+name|?
+argument_list|>
 argument_list|>
 argument_list|()
 block|{
@@ -1017,6 +1046,9 @@ annotation|@
 name|Override
 specifier|public
 name|NodeImpl
+argument_list|<
+name|?
+argument_list|>
 name|perform
 parameter_list|()
 throws|throws
@@ -1073,10 +1105,12 @@ argument_list|)
 return|;
 block|}
 block|}
-argument_list|)
-return|;
-block|}
-annotation|@
+block|)
+function|;
+end_function
+
+begin_function
+unit|}      @
 name|Override
 specifier|public
 name|boolean
@@ -1138,6 +1172,9 @@ block|}
 argument_list|)
 return|;
 block|}
+end_function
+
+begin_function
 annotation|@
 name|Override
 specifier|public
@@ -1252,6 +1289,9 @@ argument_list|)
 return|;
 block|}
 block|}
+end_function
+
+begin_function
 annotation|@
 name|Override
 specifier|public
@@ -1340,6 +1380,9 @@ argument_list|)
 return|;
 block|}
 block|}
+end_function
+
+begin_function
 annotation|@
 name|Override
 specifier|public
@@ -1471,6 +1514,9 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 annotation|@
 name|Override
 specifier|public
@@ -1489,6 +1535,9 @@ name|save
 argument_list|()
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 annotation|@
 name|Override
 specifier|public
@@ -1512,6 +1561,9 @@ name|keepChanges
 argument_list|)
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 annotation|@
 name|Override
 specifier|public
@@ -1531,6 +1583,9 @@ name|hasPendingChanges
 argument_list|()
 return|;
 block|}
+end_function
+
+begin_function
 annotation|@
 name|Override
 specifier|public
@@ -1545,6 +1600,9 @@ name|isAlive
 argument_list|()
 return|;
 block|}
+end_function
+
+begin_function
 annotation|@
 name|Override
 specifier|public
@@ -1569,6 +1627,9 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+end_function
+
+begin_function
 annotation|@
 name|Override
 annotation|@
@@ -1605,7 +1666,13 @@ name|uuidBehavior
 argument_list|)
 return|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * @see javax.jcr.Session#addLockToken(String)      */
+end_comment
+
+begin_function
 annotation|@
 name|Override
 specifier|public
@@ -1651,7 +1718,13 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+end_function
+
+begin_comment
 comment|/**      * @see javax.jcr.Session#getLockTokens()      */
+end_comment
+
+begin_function
 annotation|@
 name|Override
 annotation|@
@@ -1701,7 +1774,13 @@ index|]
 return|;
 block|}
 block|}
+end_function
+
+begin_comment
 comment|/**      * @see javax.jcr.Session#removeLockToken(String)      */
+end_comment
+
+begin_function
 annotation|@
 name|Override
 specifier|public
@@ -1747,6 +1826,9 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+end_function
+
+begin_function
 annotation|@
 name|Override
 specifier|public
@@ -1808,7 +1890,13 @@ literal|true
 argument_list|)
 return|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * @see javax.jcr.Session#checkPermission(String, String)      */
+end_comment
+
+begin_function
 annotation|@
 name|Override
 specifier|public
@@ -1852,6 +1940,9 @@ argument_list|)
 throw|;
 block|}
 block|}
+end_function
+
+begin_function
 annotation|@
 name|Override
 specifier|public
@@ -1887,6 +1978,9 @@ literal|false
 argument_list|)
 return|;
 block|}
+end_function
+
+begin_function
 annotation|@
 name|Override
 annotation|@
@@ -2102,7 +2196,13 @@ block|}
 argument_list|)
 return|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * @see javax.jcr.Session#getRetentionManager()      */
+end_comment
+
+begin_function
 annotation|@
 name|Override
 annotation|@
@@ -2122,9 +2222,21 @@ literal|"Retention Management is not supported."
 argument_list|)
 throw|;
 block|}
+end_function
+
+begin_comment
 comment|//---------------------------------------------------------< Namespaces>---
+end_comment
+
+begin_comment
 comment|// The code below was initially copied from JCR Commons AbstractSession, but
+end_comment
+
+begin_comment
 comment|// provides information the "hasRemappings" information
+end_comment
+
+begin_function
 annotation|@
 name|Override
 specifier|public
@@ -2347,6 +2459,9 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+end_function
+
+begin_function
 annotation|@
 name|Override
 specifier|public
@@ -2454,6 +2569,9 @@ index|]
 argument_list|)
 return|;
 block|}
+end_function
+
+begin_function
 annotation|@
 name|Override
 specifier|public
@@ -2530,6 +2648,9 @@ name|uri
 return|;
 block|}
 block|}
+end_function
+
+begin_function
 annotation|@
 name|Override
 specifier|public
@@ -2658,7 +2779,13 @@ name|prefix
 return|;
 block|}
 block|}
+end_function
+
+begin_comment
 comment|//--------------------------------------------------< JackrabbitSession>---
+end_comment
+
+begin_function
 annotation|@
 name|Override
 annotation|@
@@ -2677,6 +2804,9 @@ name|getPrincipalManager
 argument_list|()
 return|;
 block|}
+end_function
+
+begin_function
 annotation|@
 name|Override
 annotation|@
@@ -2695,8 +2825,17 @@ name|getUserManager
 argument_list|()
 return|;
 block|}
+end_function
+
+begin_comment
 comment|//------------------------------------------------------------< private>---
+end_comment
+
+begin_comment
 comment|/**      * Ensure that this session is alive and throw an exception otherwise.      *      * @throws RepositoryException if this session has been rendered invalid      * for some reason (e.g. if this session has been closed explicitly by logout)      */
+end_comment
+
+begin_function
 specifier|private
 name|void
 name|ensureIsAlive
@@ -2723,8 +2862,8 @@ argument_list|)
 throw|;
 block|}
 block|}
-block|}
-end_class
+end_function
 
+unit|}
 end_unit
 

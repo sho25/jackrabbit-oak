@@ -388,6 +388,9 @@ operator|new
 name|SessionOperation
 argument_list|<
 name|NodeImpl
+argument_list|<
+name|?
+argument_list|>
 argument_list|>
 argument_list|()
 block|{
@@ -395,6 +398,9 @@ annotation|@
 name|Override
 specifier|public
 name|NodeImpl
+argument_list|<
+name|?
+argument_list|>
 name|perform
 parameter_list|()
 throws|throws
@@ -439,10 +445,16 @@ return|;
 block|}
 block|}
 block|}
-argument_list|)
-return|;
+block|)
+function|;
 block|}
+end_class
+
+begin_comment
 comment|/**      * @see javax.jcr.Item#isNew()      */
+end_comment
+
+begin_function
 annotation|@
 name|Override
 specifier|public
@@ -499,7 +511,13 @@ literal|false
 return|;
 block|}
 block|}
+end_function
+
+begin_comment
 comment|/**      * @see javax.jcr.Item#isModified() ()      */
+end_comment
+
+begin_function
 annotation|@
 name|Override
 specifier|public
@@ -556,7 +574,13 @@ literal|false
 return|;
 block|}
 block|}
+end_function
+
+begin_comment
 comment|/**      * @see javax.jcr.Item#isNew()      */
+end_comment
+
+begin_function
 annotation|@
 name|Override
 specifier|public
@@ -605,7 +629,13 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * @see javax.jcr.Item#accept(javax.jcr.ItemVisitor)      */
+end_comment
+
+begin_function
 annotation|@
 name|Override
 specifier|public
@@ -629,8 +659,17 @@ name|this
 argument_list|)
 expr_stmt|;
 block|}
+end_function
+
+begin_comment
 comment|//-----------------------------------------------------------< Property>---
+end_comment
+
+begin_comment
 comment|/**      * @see Property#setValue(Value)      */
+end_comment
+
+begin_function
 annotation|@
 name|Override
 specifier|public
@@ -680,7 +719,13 @@ name|reqType
 argument_list|)
 expr_stmt|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * @see Property#setValue(Value[])      */
+end_comment
+
+begin_function
 annotation|@
 name|Override
 specifier|public
@@ -828,7 +873,13 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * @see Property#setValue(String)      */
+end_comment
+
+begin_function
 annotation|@
 name|Override
 specifier|public
@@ -886,7 +937,13 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+end_function
+
+begin_comment
 comment|/**      * @see Property#setValue(String[])      */
+end_comment
+
+begin_function
 annotation|@
 name|Override
 specifier|public
@@ -998,7 +1055,13 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+end_function
+
+begin_comment
 comment|/**      * @see Property#setValue(InputStream)      */
+end_comment
+
+begin_function
 annotation|@
 name|SuppressWarnings
 argument_list|(
@@ -1061,7 +1124,13 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+end_function
+
+begin_comment
 comment|/**      * @see Property#setValue(Binary)      */
+end_comment
+
+begin_function
 annotation|@
 name|Override
 specifier|public
@@ -1119,7 +1188,13 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+end_function
+
+begin_comment
 comment|/**      * @see Property#setValue(long)      */
+end_comment
+
+begin_function
 annotation|@
 name|Override
 specifier|public
@@ -1159,7 +1234,13 @@ name|reqType
 argument_list|)
 expr_stmt|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * @see Property#setValue(double)      */
+end_comment
+
+begin_function
 annotation|@
 name|Override
 specifier|public
@@ -1199,7 +1280,13 @@ name|reqType
 argument_list|)
 expr_stmt|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * @see Property#setValue(BigDecimal)      */
+end_comment
+
+begin_function
 annotation|@
 name|Override
 specifier|public
@@ -1257,7 +1344,13 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+end_function
+
+begin_comment
 comment|/**      * @see Property#setValue(Calendar)      */
+end_comment
+
+begin_function
 annotation|@
 name|Override
 specifier|public
@@ -1315,7 +1408,13 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+end_function
+
+begin_comment
 comment|/**      * @see Property#setValue(boolean)      */
+end_comment
+
+begin_function
 annotation|@
 name|Override
 specifier|public
@@ -1355,7 +1454,13 @@ name|reqType
 argument_list|)
 expr_stmt|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * @see Property#setValue(javax.jcr.Node)      */
+end_comment
+
+begin_function
 annotation|@
 name|Override
 specifier|public
@@ -1413,6 +1518,9 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+end_function
+
+begin_function
 annotation|@
 name|Override
 annotation|@
@@ -1475,6 +1583,9 @@ block|}
 argument_list|)
 return|;
 block|}
+end_function
+
+begin_function
 annotation|@
 name|Override
 annotation|@
@@ -1550,7 +1661,13 @@ block|}
 argument_list|)
 return|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * @see Property#getString()      */
+end_comment
+
+begin_function
 annotation|@
 name|Override
 annotation|@
@@ -1570,7 +1687,13 @@ name|getString
 argument_list|()
 return|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * @see Property#getStream()      */
+end_comment
+
+begin_function
 annotation|@
 name|SuppressWarnings
 argument_list|(
@@ -1595,7 +1718,13 @@ name|getStream
 argument_list|()
 return|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * @see javax.jcr.Property#getBinary()      */
+end_comment
+
+begin_function
 annotation|@
 name|Override
 annotation|@
@@ -1615,7 +1744,13 @@ name|getBinary
 argument_list|()
 return|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * @see Property#getLong()      */
+end_comment
+
+begin_function
 annotation|@
 name|Override
 specifier|public
@@ -1633,7 +1768,13 @@ name|getLong
 argument_list|()
 return|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * @see Property#getDouble()      */
+end_comment
+
+begin_function
 annotation|@
 name|Override
 specifier|public
@@ -1651,7 +1792,13 @@ name|getDouble
 argument_list|()
 return|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * @see Property#getDecimal()      */
+end_comment
+
+begin_function
 annotation|@
 name|Override
 annotation|@
@@ -1671,7 +1818,13 @@ name|getDecimal
 argument_list|()
 return|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * @see Property#getDate()      */
+end_comment
+
+begin_function
 annotation|@
 name|Override
 annotation|@
@@ -1691,7 +1844,13 @@ name|getDate
 argument_list|()
 return|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * @see Property#getBoolean()      */
+end_comment
+
+begin_function
 annotation|@
 name|Override
 specifier|public
@@ -1709,7 +1868,13 @@ name|getBoolean
 argument_list|()
 return|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * @see javax.jcr.Property#getNode()      */
+end_comment
+
+begin_function
 annotation|@
 name|Override
 annotation|@
@@ -2030,7 +2195,13 @@ block|}
 argument_list|)
 return|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * @see javax.jcr.Property#getProperty()      */
+end_comment
+
+begin_function
 annotation|@
 name|Override
 annotation|@
@@ -2144,7 +2315,13 @@ block|}
 argument_list|)
 return|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * @see javax.jcr.Property#getLength()      */
+end_comment
+
+begin_function
 annotation|@
 name|Override
 specifier|public
@@ -2162,7 +2339,13 @@ argument_list|()
 argument_list|)
 return|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * @see javax.jcr.Property#getLengths()      */
+end_comment
+
+begin_function
 annotation|@
 name|Override
 annotation|@
@@ -2229,6 +2412,9 @@ return|return
 name|lengths
 return|;
 block|}
+end_function
+
+begin_function
 annotation|@
 name|Override
 annotation|@
@@ -2257,7 +2443,13 @@ name|this
 argument_list|)
 return|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * @see javax.jcr.Property#getType()      */
+end_comment
+
+begin_function
 annotation|@
 name|Override
 specifier|public
@@ -2348,6 +2540,9 @@ block|}
 argument_list|)
 return|;
 block|}
+end_function
+
+begin_function
 annotation|@
 name|Override
 specifier|public
@@ -2392,8 +2587,17 @@ block|}
 argument_list|)
 return|;
 block|}
+end_function
+
+begin_comment
 comment|//------------------------------------------------------------< private>---
+end_comment
+
+begin_comment
 comment|/**      * Return the length of the specified JCR value object.      *      * @param value The value.      * @return The length of the given value.      * @throws RepositoryException If an error occurs.      */
+end_comment
+
+begin_function
 specifier|private
 specifier|static
 name|long
@@ -2440,7 +2644,13 @@ argument_list|()
 return|;
 block|}
 block|}
+end_function
+
+begin_comment
 comment|/**      * @param defaultType      * @return the required type for this property.      * @throws javax.jcr.RepositoryException      */
+end_comment
+
+begin_function
 specifier|private
 name|int
 name|getRequiredType
@@ -2498,7 +2708,13 @@ return|return
 name|reqType
 return|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * @param value      * @param requiredType      * @throws RepositoryException      */
+end_comment
+
+begin_function
 specifier|private
 name|void
 name|setValue
@@ -2580,7 +2796,13 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+end_function
+
+begin_comment
 comment|/**      * @param values      * @param requiredType      * @throws RepositoryException      */
+end_comment
+
+begin_function
 specifier|private
 name|void
 name|setValues
@@ -2688,8 +2910,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-block|}
-end_class
+end_function
 
+unit|}
 end_unit
 

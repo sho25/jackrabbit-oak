@@ -2196,10 +2196,16 @@ name|absJcrPaths
 control|)
 block|{
 name|NodeImpl
+argument_list|<
+name|?
+argument_list|>
 name|node
 init|=
 operator|(
 name|NodeImpl
+argument_list|<
+name|?
+argument_list|>
 operator|)
 name|session
 operator|.
