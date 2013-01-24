@@ -632,12 +632,6 @@ operator|.
 name|getNames
 argument_list|(
 name|JCR_SUPERTYPES
-argument_list|,
-operator|new
-name|String
-index|[
-literal|0
-index|]
 argument_list|)
 return|;
 block|}
