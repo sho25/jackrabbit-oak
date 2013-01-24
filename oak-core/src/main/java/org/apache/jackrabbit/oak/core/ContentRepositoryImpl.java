@@ -290,7 +290,7 @@ name|ContentRepositoryImpl
 implements|implements
 name|ContentRepository
 block|{
-comment|/** Logger instance */
+comment|/**      * Logger instance      */
 specifier|private
 specifier|static
 specifier|final
@@ -306,7 +306,7 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-comment|// TODO: retrieve default wsp-name from configuration
+comment|// FIXME OAK-589 : retrieve default wsp-name from configuration
 specifier|private
 specifier|static
 specifier|final
@@ -335,7 +335,7 @@ specifier|final
 name|ConflictHandler
 name|conflictHandler
 decl_stmt|;
-comment|/**      * Creates an content repository instance based on the given, already      * initialized components.      *      * @param nodeStore the node store this repository is based upon.      * @param conflictHandler The conflict handler.      * @param indexProvider index provider      * @param securityProvider The configured security provider or {@code null} if      * default implementations should be used.      */
+comment|/**      * Creates an content repository instance based on the given, already      * initialized components.      *      * @param nodeStore        the node store this repository is based upon.      * @param conflictHandler  The conflict handler.      * @param indexProvider    index provider      * @param securityProvider The configured security provider or {@code null} if      *                         default implementations should be used.      */
 specifier|public
 name|ContentRepositoryImpl
 parameter_list|(
