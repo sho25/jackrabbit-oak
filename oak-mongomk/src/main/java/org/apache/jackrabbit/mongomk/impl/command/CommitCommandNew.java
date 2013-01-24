@@ -562,8 +562,6 @@ literal|0
 decl_stmt|;
 name|boolean
 name|success
-init|=
-literal|false
 decl_stmt|;
 do|do
 block|{
@@ -1956,6 +1954,15 @@ operator|.
 name|SAFE
 argument_list|)
 decl_stmt|;
+name|logger
+operator|.
+name|debug
+argument_list|(
+literal|"Marked @{} failed"
+argument_list|,
+name|revisionId
+argument_list|)
+expr_stmt|;
 name|nodeStore
 operator|.
 name|evict
