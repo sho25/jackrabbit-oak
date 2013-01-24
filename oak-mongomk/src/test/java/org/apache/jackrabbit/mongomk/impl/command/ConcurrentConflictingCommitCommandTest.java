@@ -151,16 +151,6 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Ignore
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
 name|Test
 import|;
 end_import
@@ -964,11 +954,6 @@ block|}
 comment|/**      * Tests the following scenario:      * -Commit /a but not increment head revision. This saves node /a and updates      * root node's children to /a but does not publish commit yet.      * -Commit /c/d. This basically adds a new commit and increments head revision.      * -Commit /b. This commit will think that /a is a valid child of the root.      * -Commit /a wakes up and tries to increment head revision but fails due to      * concurrent commit. It retries the operation but gets a "There's already      * a child node with name 'a'" error due to previous commit.      */
 annotation|@
 name|Test
-annotation|@
-name|Ignore
-argument_list|(
-literal|"OAK-566"
-argument_list|)
 specifier|public
 name|void
 name|leakedInvalidChild
