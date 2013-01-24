@@ -221,6 +221,7 @@ name|MicroKernel
 name|kernel
 decl_stmt|;
 specifier|private
+specifier|final
 name|String
 name|baseRevision
 decl_stmt|;
