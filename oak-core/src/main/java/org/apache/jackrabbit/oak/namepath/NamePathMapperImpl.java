@@ -602,21 +602,29 @@ operator|!=
 literal|']'
 condition|)
 block|{
-comment|// TODO error handling?
-name|log
-operator|.
-name|debug
-argument_list|(
+name|String
+name|msg
+init|=
 literal|"Could not parse path "
 operator|+
 name|jcrPath
 operator|+
-literal|": unterminated identifier"
+literal|": invalid or unterminated identifier"
+decl_stmt|;
+name|log
+operator|.
+name|debug
+argument_list|(
+name|msg
 argument_list|)
 expr_stmt|;
-return|return
-literal|null
-return|;
+throw|throw
+operator|new
+name|IllegalArgumentException
+argument_list|(
+name|msg
+argument_list|)
+throw|;
 block|}
 if|if
 condition|(
@@ -627,7 +635,6 @@ operator|==
 literal|null
 condition|)
 block|{
-comment|// TODO error handling?
 name|log
 operator|.
 name|debug
@@ -870,18 +877,27 @@ return|;
 block|}
 else|else
 block|{
+name|String
+name|msg
+init|=
+literal|"Invalid path: "
+operator|+
+name|jcrPath
+decl_stmt|;
 name|log
 operator|.
 name|debug
 argument_list|(
-literal|"Invalid path: {}"
-argument_list|,
-name|jcrPath
+name|msg
 argument_list|)
 expr_stmt|;
-return|return
-literal|null
-return|;
+throw|throw
+operator|new
+name|IllegalArgumentException
+argument_list|(
+name|msg
+argument_list|)
+throw|;
 block|}
 block|}
 block|}
@@ -910,13 +926,13 @@ name|String
 name|message
 parameter_list|)
 block|{
-name|parseErrors
-operator|.
-name|append
+throw|throw
+operator|new
+name|IllegalArgumentException
 argument_list|(
 name|message
 argument_list|)
-expr_stmt|;
+throw|;
 block|}
 annotation|@
 name|Override
@@ -941,7 +957,9 @@ operator|>
 literal|1
 condition|)
 block|{
-name|error
+name|parseErrors
+operator|.
+name|append
 argument_list|(
 literal|"index> 1"
 argument_list|)
@@ -967,10 +985,15 @@ operator|==
 literal|null
 condition|)
 block|{
-name|error
+name|parseErrors
+operator|.
+name|append
 argument_list|(
 literal|"Invalid name: "
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 name|name
 argument_list|)
 expr_stmt|;
