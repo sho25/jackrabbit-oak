@@ -1085,10 +1085,8 @@ literal|"Missing principal name."
 argument_list|)
 expr_stmt|;
 block|}
-comment|// TODO
-comment|// if (!principalMgr.hasPrincipal(principal.getName())) {
-comment|//     throw new AccessControlException("Principal " + principal.getName() + " does not exist.");
-comment|// }
+comment|// validity of principal is only a JCR specific contract and will not be
+comment|// enforced on the oak level.
 block|}
 specifier|private
 name|void
