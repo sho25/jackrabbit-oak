@@ -814,7 +814,7 @@ argument_list|>
 name|command
 init|=
 operator|new
-name|CommitCommandNew
+name|CommitCommand
 argument_list|(
 name|nodeStore
 argument_list|,
@@ -1684,11 +1684,11 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
-name|GetNodesCommandNew
+name|GetNodesCommand
 name|command
 init|=
 operator|new
-name|GetNodesCommandNew
+name|GetNodesCommand
 argument_list|(
 name|nodeStore
 argument_list|,

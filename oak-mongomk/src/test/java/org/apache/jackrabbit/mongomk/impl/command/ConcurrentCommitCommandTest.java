@@ -307,14 +307,14 @@ decl_stmt|;
 comment|// create the commands
 name|List
 argument_list|<
-name|CommitCommandNew
+name|CommitCommand
 argument_list|>
 name|commands
 init|=
 operator|new
 name|ArrayList
 argument_list|<
-name|CommitCommandNew
+name|CommitCommand
 argument_list|>
 argument_list|(
 name|numOfConcurrentThreads
@@ -353,11 +353,11 @@ argument_list|,
 literal|"This is a concurrent commit"
 argument_list|)
 decl_stmt|;
-name|CommitCommandNew
+name|CommitCommand
 name|command
 init|=
 operator|new
-name|CommitCommandNew
+name|CommitCommand
 argument_list|(
 name|getNodeStore
 argument_list|()
@@ -470,7 +470,7 @@ name|i
 control|)
 block|{
 specifier|final
-name|CommitCommandNew
+name|CommitCommand
 name|command
 init|=
 name|commands
@@ -654,11 +654,11 @@ argument_list|(
 name|i
 argument_list|)
 decl_stmt|;
-name|GetNodesCommandNew
+name|GetNodesCommand
 name|command2
 init|=
 operator|new
-name|GetNodesCommandNew
+name|GetNodesCommand
 argument_list|(
 name|getNodeStore
 argument_list|()

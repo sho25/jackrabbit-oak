@@ -141,7 +141,7 @@ name|impl
 operator|.
 name|action
 operator|.
-name|FetchNodesActionNew
+name|FetchNodesAction
 import|;
 end_import
 
@@ -414,11 +414,11 @@ operator|.
 name|execute
 argument_list|()
 decl_stmt|;
-name|FetchNodesActionNew
+name|FetchNodesAction
 name|action
 init|=
 operator|new
-name|FetchNodesActionNew
+name|FetchNodesAction
 argument_list|(
 name|nodeStore
 argument_list|,
@@ -460,7 +460,7 @@ decl_stmt|;
 name|action
 operator|=
 operator|new
-name|FetchNodesActionNew
+name|FetchNodesAction
 argument_list|(
 name|nodeStore
 argument_list|,

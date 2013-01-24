@@ -582,7 +582,7 @@ name|Exception
 block|{
 return|return
 operator|new
-name|GetNodesCommandNew
+name|GetNodesCommand
 argument_list|(
 name|nodeStore
 argument_list|,

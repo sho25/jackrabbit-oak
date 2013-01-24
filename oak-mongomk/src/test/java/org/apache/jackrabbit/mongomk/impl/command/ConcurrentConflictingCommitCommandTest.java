@@ -204,7 +204,7 @@ operator|-
 literal|1
 argument_list|)
 decl_stmt|;
-name|CommitCommandNew
+name|CommitCommand
 name|cmd1
 init|=
 operator|new
@@ -227,7 +227,7 @@ argument_list|,
 name|latch
 argument_list|)
 decl_stmt|;
-name|CommitCommandNew
+name|CommitCommand
 name|cmd2
 init|=
 operator|new
@@ -375,7 +375,7 @@ operator|-
 literal|1
 argument_list|)
 decl_stmt|;
-name|CommitCommandNew
+name|CommitCommand
 name|cmd1
 init|=
 operator|new
@@ -398,7 +398,7 @@ argument_list|,
 name|latch
 argument_list|)
 decl_stmt|;
-name|CommitCommandNew
+name|CommitCommand
 name|cmd2
 init|=
 operator|new
@@ -565,7 +565,7 @@ operator|-
 literal|1
 argument_list|)
 decl_stmt|;
-name|CommitCommandNew
+name|CommitCommand
 name|cmd1
 init|=
 operator|new
@@ -588,7 +588,7 @@ argument_list|,
 name|latch
 argument_list|)
 decl_stmt|;
-name|CommitCommandNew
+name|CommitCommand
 name|cmd2
 init|=
 operator|new
@@ -611,7 +611,7 @@ argument_list|,
 name|latch
 argument_list|)
 decl_stmt|;
-name|CommitCommandNew
+name|CommitCommand
 name|cmd3
 init|=
 operator|new
@@ -787,7 +787,7 @@ operator|-
 literal|1
 argument_list|)
 decl_stmt|;
-name|CommitCommandNew
+name|CommitCommand
 name|cmd1
 init|=
 operator|new
@@ -810,7 +810,7 @@ argument_list|,
 name|latch
 argument_list|)
 decl_stmt|;
-name|CommitCommandNew
+name|CommitCommand
 name|cmd2
 init|=
 operator|new
@@ -833,7 +833,7 @@ argument_list|,
 name|latch
 argument_list|)
 decl_stmt|;
-name|CommitCommandNew
+name|CommitCommand
 name|cmd3
 init|=
 operator|new
@@ -990,7 +990,7 @@ operator|-
 literal|1
 argument_list|)
 decl_stmt|;
-name|CommitCommandNew
+name|CommitCommand
 name|cmd1
 init|=
 operator|new
@@ -1013,7 +1013,7 @@ argument_list|,
 name|latch
 argument_list|)
 decl_stmt|;
-name|CommitCommandNew
+name|CommitCommand
 name|cmd2
 init|=
 operator|new
@@ -1036,7 +1036,7 @@ argument_list|,
 name|latch
 argument_list|)
 decl_stmt|;
-name|CommitCommandNew
+name|CommitCommand
 name|cmd3
 init|=
 operator|new
@@ -1175,7 +1175,7 @@ specifier|static
 class|class
 name|WaitingCommitCommand
 extends|extends
-name|CommitCommandNew
+name|CommitCommand
 block|{
 specifier|private
 specifier|final
@@ -1255,7 +1255,7 @@ specifier|static
 class|class
 name|NotifyingCommitCommand
 extends|extends
-name|CommitCommandNew
+name|CommitCommand
 block|{
 specifier|private
 specifier|final
@@ -1350,13 +1350,13 @@ argument_list|>
 block|{
 specifier|private
 specifier|final
-name|CommitCommandNew
+name|CommitCommand
 name|command
 decl_stmt|;
 specifier|public
 name|CommitCallable
 parameter_list|(
-name|CommitCommandNew
+name|CommitCommand
 name|command
 parameter_list|)
 block|{

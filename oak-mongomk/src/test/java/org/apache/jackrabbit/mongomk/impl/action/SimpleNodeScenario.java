@@ -67,7 +67,25 @@ name|impl
 operator|.
 name|command
 operator|.
-name|CommitCommandNew
+name|CommitCommand
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|mongomk
+operator|.
+name|impl
+operator|.
+name|command
+operator|.
+name|CommitCommand
 import|;
 end_import
 
@@ -142,7 +160,7 @@ argument_list|)
 decl_stmt|;
 return|return
 operator|new
-name|CommitCommandNew
+name|CommitCommand
 argument_list|(
 name|nodeStore
 argument_list|,
@@ -206,7 +224,7 @@ decl_stmt|;
 name|revisionId
 operator|=
 operator|new
-name|CommitCommandNew
+name|CommitCommand
 argument_list|(
 name|nodeStore
 argument_list|,
@@ -244,7 +262,7 @@ argument_list|)
 decl_stmt|;
 return|return
 operator|new
-name|CommitCommandNew
+name|CommitCommand
 argument_list|(
 name|nodeStore
 argument_list|,
@@ -278,7 +296,7 @@ argument_list|)
 decl_stmt|;
 return|return
 operator|new
-name|CommitCommandNew
+name|CommitCommand
 argument_list|(
 name|nodeStore
 argument_list|,
@@ -357,7 +375,7 @@ argument_list|)
 decl_stmt|;
 return|return
 operator|new
-name|CommitCommandNew
+name|CommitCommand
 argument_list|(
 name|nodeStore
 argument_list|,
