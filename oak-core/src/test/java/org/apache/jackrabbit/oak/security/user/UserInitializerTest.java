@@ -752,7 +752,7 @@ name|getBoolean
 argument_list|(
 name|IndexConstants
 operator|.
-name|UNIQUE
+name|UNIQUE_PROPERTY_NAME
 argument_list|)
 argument_list|)
 expr_stmt|;

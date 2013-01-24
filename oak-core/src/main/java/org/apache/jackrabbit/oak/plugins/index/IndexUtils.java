@@ -231,7 +231,7 @@ name|setBoolean
 argument_list|(
 name|IndexConstants
 operator|.
-name|UNIQUE
+name|UNIQUE_PROPERTY_NAME
 argument_list|,
 literal|true
 argument_list|)
@@ -239,7 +239,7 @@ expr_stmt|;
 block|}
 name|entry
 operator|.
-name|setNames
+name|setStrings
 argument_list|(
 name|IndexConstants
 operator|.

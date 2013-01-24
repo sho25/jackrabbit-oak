@@ -106,7 +106,7 @@ name|UNIQUE
 init|=
 name|IndexConstants
 operator|.
-name|UNIQUE
+name|UNIQUE_PROPERTY_NAME
 decl_stmt|;
 block|}
 end_interface

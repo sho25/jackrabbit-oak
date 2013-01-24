@@ -55,7 +55,7 @@ literal|"reindex"
 decl_stmt|;
 comment|/**      * Marks a unique property index.      */
 name|String
-name|UNIQUE
+name|UNIQUE_PROPERTY_NAME
 init|=
 literal|"unique"
 decl_stmt|;
