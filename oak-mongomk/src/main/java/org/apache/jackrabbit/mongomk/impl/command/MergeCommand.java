@@ -663,9 +663,6 @@ argument_list|(
 literal|"/"
 argument_list|,
 name|diff
-operator|.
-name|toString
-argument_list|()
 argument_list|,
 name|MongoUtil
 operator|.
