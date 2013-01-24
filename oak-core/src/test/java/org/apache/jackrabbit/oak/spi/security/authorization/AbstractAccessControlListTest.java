@@ -25,6 +25,16 @@ begin_import
 import|import
 name|java
 operator|.
+name|security
+operator|.
+name|Principal
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|ArrayList
@@ -383,6 +393,20 @@ parameter_list|()
 block|{
 return|return
 name|testPath
+return|;
+block|}
+specifier|protected
+name|Principal
+name|getTestPrincipal
+parameter_list|()
+block|{
+comment|// TODO: add proper implementation
+return|return
+operator|new
+name|PrincipalImpl
+argument_list|(
+literal|"admin"
+argument_list|)
 return|;
 block|}
 specifier|protected

@@ -292,13 +292,14 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+comment|//--------------------------------------------------------------------------
 specifier|private
 class|class
 name|TestPrincipal
 extends|extends
 name|PrincipalImpl
 block|{
-specifier|public
+specifier|private
 name|TestPrincipal
 parameter_list|(
 name|String

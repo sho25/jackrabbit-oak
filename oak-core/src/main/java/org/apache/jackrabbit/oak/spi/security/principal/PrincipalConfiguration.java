@@ -33,16 +33,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|jcr
-operator|.
-name|Session
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -125,9 +115,6 @@ name|Nonnull
 name|PrincipalManager
 name|getPrincipalManager
 parameter_list|(
-name|Session
-name|session
-parameter_list|,
 name|Root
 name|root
 parameter_list|,

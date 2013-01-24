@@ -2011,8 +2011,6 @@ argument_list|()
 operator|.
 name|getPrincipalManager
 argument_list|(
-name|session
-argument_list|,
 name|root
 argument_list|,
 name|getNamePathMapper
