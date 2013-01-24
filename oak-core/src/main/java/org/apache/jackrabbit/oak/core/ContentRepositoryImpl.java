@@ -69,22 +69,6 @@ name|apache
 operator|.
 name|jackrabbit
 operator|.
-name|mk
-operator|.
-name|api
-operator|.
-name|MicroKernel
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
 name|oak
 operator|.
 name|api
@@ -280,7 +264,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * {@link MicroKernel}-based implementation of  * the {@link ContentRepository} interface.  */
+comment|/**  * {@code MicroKernel}-based implementation of  * the {@link ContentRepository} interface.  */
 end_comment
 
 begin_class
@@ -306,7 +290,6 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-comment|// FIXME OAK-589 : retrieve default wsp-name from configuration
 specifier|private
 specifier|static
 specifier|final
@@ -314,6 +297,11 @@ name|String
 name|DEFAULT_WORKSPACE_NAME
 init|=
 literal|"default"
+decl_stmt|;
+specifier|private
+specifier|final
+name|String
+name|defaultWorkspaceName
 decl_stmt|;
 specifier|private
 specifier|final
@@ -335,12 +323,15 @@ specifier|final
 name|ConflictHandler
 name|conflictHandler
 decl_stmt|;
-comment|/**      * Creates an content repository instance based on the given, already      * initialized components.      *      * @param nodeStore        the node store this repository is based upon.      * @param conflictHandler  The conflict handler.      * @param indexProvider    index provider      * @param securityProvider The configured security provider or {@code null} if      *                         default implementations should be used.      */
+comment|/**      * Creates an content repository instance based on the given, already      * initialized components.      *      * @param nodeStore        the node store this repository is based upon.      * @param defaultWorkspaceName the default workspace name;      * @param conflictHandler  The conflict handler.      * @param indexProvider    index provider      * @param securityProvider The configured security provider or {@code null} if      *                         default implementations should be used.      */
 specifier|public
 name|ContentRepositoryImpl
 parameter_list|(
 name|NodeStore
 name|nodeStore
+parameter_list|,
+name|String
+name|defaultWorkspaceName
 parameter_list|,
 name|ConflictHandler
 name|conflictHandler
@@ -357,6 +348,20 @@ operator|.
 name|nodeStore
 operator|=
 name|nodeStore
+expr_stmt|;
+name|this
+operator|.
+name|defaultWorkspaceName
+operator|=
+operator|(
+name|defaultWorkspaceName
+operator|==
+literal|null
+operator|)
+condition|?
+name|DEFAULT_WORKSPACE_NAME
+else|:
+name|defaultWorkspaceName
 expr_stmt|;
 name|this
 operator|.
@@ -413,7 +418,7 @@ condition|)
 block|{
 name|workspaceName
 operator|=
-name|DEFAULT_WORKSPACE_NAME
+name|defaultWorkspaceName
 expr_stmt|;
 block|}
 comment|// TODO: support multiple workspaces. See OAK-118
