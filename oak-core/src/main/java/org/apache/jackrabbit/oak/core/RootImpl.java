@@ -149,7 +149,7 @@ name|oak
 operator|.
 name|api
 operator|.
-name|Root
+name|QueryEngine
 import|;
 end_import
 
@@ -165,7 +165,7 @@ name|oak
 operator|.
 name|api
 operator|.
-name|QueryEngine
+name|Root
 import|;
 end_import
 
@@ -216,6 +216,26 @@ operator|.
 name|commit
 operator|.
 name|DefaultConflictHandler
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|index
+operator|.
+name|diffindex
+operator|.
+name|UUIDDiffIndexProviderWrapper
 import|;
 end_import
 
@@ -764,7 +784,8 @@ name|subject
 argument_list|,
 name|accConfiguration
 argument_list|,
-name|indexProvider
+name|getIndexProvider
+argument_list|()
 argument_list|)
 block|{
 annotation|@
@@ -1457,7 +1478,8 @@ return|return
 operator|new
 name|QueryEngineImpl
 argument_list|(
-name|indexProvider
+name|getIndexProvider
+argument_list|()
 argument_list|)
 block|{
 annotation|@
@@ -1532,6 +1554,37 @@ argument_list|)
 return|;
 block|}
 block|}
+return|;
+block|}
+specifier|private
+name|QueryIndexProvider
+name|getIndexProvider
+parameter_list|()
+block|{
+if|if
+condition|(
+name|hasPendingChanges
+argument_list|()
+condition|)
+block|{
+return|return
+operator|new
+name|UUIDDiffIndexProviderWrapper
+argument_list|(
+name|indexProvider
+argument_list|,
+name|getBaseState
+argument_list|()
+argument_list|,
+name|rootTree
+operator|.
+name|getNodeState
+argument_list|()
+argument_list|)
+return|;
+block|}
+return|return
+name|indexProvider
 return|;
 block|}
 comment|//-----------------------------------------------------------< internal>---
