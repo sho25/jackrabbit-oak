@@ -123,8 +123,6 @@ specifier|public
 name|InputStream
 name|getStream
 parameter_list|()
-throws|throws
-name|RepositoryException
 block|{
 return|return
 name|value
@@ -148,8 +146,6 @@ name|position
 parameter_list|)
 throws|throws
 name|IOException
-throws|,
-name|RepositoryException
 block|{
 name|InputStream
 name|stream
