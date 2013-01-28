@@ -132,6 +132,11 @@ name|String
 name|getQueryStatement
 parameter_list|()
 function_decl|;
+comment|/**      * If the filter condition can not possibly match any row, due to a      * contradiction in the query (for example "x=1 and x=2").      *       * @return true if the filter condition can not match any row      */
+name|boolean
+name|isAlwaysFalse
+parameter_list|()
+function_decl|;
 comment|/**      * A restriction for a property.      */
 class|class
 name|PropertyRestriction
@@ -229,7 +234,13 @@ comment|/**      * The path restriction type.      */
 enum|enum
 name|PathRestriction
 block|{
-comment|/**          * A parent of this node          */
+comment|/**          * All nodes.          */
+name|NO_RESTRICTION
+argument_list|(
+literal|"*"
+argument_list|)
+block|,
+comment|/**          * A parent of this node.          */
 name|PARENT
 argument_list|(
 literal|"/.."
@@ -247,7 +258,7 @@ argument_list|(
 literal|"/*"
 argument_list|)
 block|,
-comment|/**          * All direct and indirect child nodes.          */
+comment|/**          * All direct and indirect child nodes (excluding the node with the          * given path).          */
 name|ALL_CHILDREN
 argument_list|(
 literal|"//*"

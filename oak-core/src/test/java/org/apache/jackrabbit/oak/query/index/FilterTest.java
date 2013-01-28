@@ -1150,7 +1150,7 @@ name|Filter
 operator|.
 name|PathRestriction
 operator|.
-name|ALL_CHILDREN
+name|NO_RESTRICTION
 argument_list|,
 name|f
 operator|.
