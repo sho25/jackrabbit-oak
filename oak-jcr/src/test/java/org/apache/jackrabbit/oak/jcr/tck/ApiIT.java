@@ -29,26 +29,12 @@ name|Test
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|test
-operator|.
-name|ConcurrentTestSuite
-import|;
-end_import
-
 begin_class
 specifier|public
 class|class
 name|ApiIT
 extends|extends
-name|ConcurrentTestSuite
+name|TCKBase
 block|{
 specifier|public
 specifier|static
@@ -71,6 +57,14 @@ argument_list|(
 literal|"JCR API tests"
 argument_list|)
 expr_stmt|;
+block|}
+annotation|@
+name|Override
+specifier|protected
+name|void
+name|addTests
+parameter_list|()
+block|{
 name|addTest
 argument_list|(
 name|org
