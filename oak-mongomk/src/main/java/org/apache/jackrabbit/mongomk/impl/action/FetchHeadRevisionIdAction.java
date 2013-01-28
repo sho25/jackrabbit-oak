@@ -130,7 +130,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * An action for fetching the head revision.  */
+comment|/**  * An action for fetching the head revision for trunk or a branch.  */
 end_comment
 
 begin_class
@@ -148,7 +148,7 @@ specifier|final
 name|String
 name|branchId
 decl_stmt|;
-comment|/**      * Constructs a new {@code FetchHeadRevisionIdAction}.      *      * @param nodeStore Node store.      */
+comment|/**      * Constructs a new {@code FetchHeadRevisionIdAction} for trunk.      *      * @param nodeStore Node store.      */
 specifier|public
 name|FetchHeadRevisionIdAction
 parameter_list|(
@@ -164,7 +164,7 @@ literal|null
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Constructs a new {@code FetchHeadRevisionIdAction}.      *      * @param nodeStore Node store.      * @param branchId Branch id.      */
+comment|/**      * Constructs a new {@code FetchHeadRevisionIdAction} for branch.      *      * @param nodeStore Node store.      * @param branchId Branch id.      */
 specifier|public
 name|FetchHeadRevisionIdAction
 parameter_list|(
@@ -223,6 +223,17 @@ operator|.
 name|getHeadRevisionId
 argument_list|()
 decl_stmt|;
+if|if
+condition|(
+name|branchId
+operator|==
+literal|null
+condition|)
+block|{
+return|return
+name|headRevisionId
+return|;
+block|}
 name|DBCollection
 name|collection
 init|=
@@ -261,43 +272,6 @@ name|lessThanEquals
 argument_list|(
 name|headRevisionId
 argument_list|)
-decl_stmt|;
-if|if
-condition|(
-name|branchId
-operator|==
-literal|null
-condition|)
-block|{
-name|qb
-operator|=
-name|qb
-operator|.
-name|and
-argument_list|(
-operator|new
-name|BasicDBObject
-argument_list|(
-name|MongoNode
-operator|.
-name|KEY_BRANCH_ID
-argument_list|,
-operator|new
-name|BasicDBObject
-argument_list|(
-literal|"$exists"
-argument_list|,
-literal|false
-argument_list|)
-argument_list|)
-argument_list|)
-expr_stmt|;
-block|}
-else|else
-block|{
-name|qb
-operator|=
-name|qb
 operator|.
 name|and
 argument_list|(
@@ -310,8 +284,7 @@ name|is
 argument_list|(
 name|branchId
 argument_list|)
-expr_stmt|;
-block|}
+decl_stmt|;
 name|DBObject
 name|query
 init|=
