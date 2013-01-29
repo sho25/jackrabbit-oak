@@ -190,12 +190,16 @@ expr_stmt|;
 name|addTests
 argument_list|()
 expr_stmt|;
+comment|// OAK-588: CI builds take too long with MongoMK
+comment|// -> disabled for now
 if|if
 condition|(
 name|OakMongoMKRepositoryStub
 operator|.
 name|isMongoDBAvailable
 argument_list|()
+operator|&&
+literal|false
 condition|)
 block|{
 name|addTest
