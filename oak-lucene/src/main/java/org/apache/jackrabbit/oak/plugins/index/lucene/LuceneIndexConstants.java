@@ -83,18 +83,6 @@ name|Version
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|tika
-operator|.
-name|Tika
-import|;
-end_import
-
 begin_interface
 specifier|public
 interface|interface
@@ -127,13 +115,6 @@ name|StandardAnalyzer
 argument_list|(
 name|VERSION
 argument_list|)
-decl_stmt|;
-name|Tika
-name|TIKA
-init|=
-operator|new
-name|Tika
-argument_list|()
 decl_stmt|;
 block|}
 end_interface
