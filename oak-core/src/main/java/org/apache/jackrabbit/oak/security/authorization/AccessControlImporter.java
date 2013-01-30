@@ -706,8 +706,6 @@ name|Tree
 name|protectedParent
 parameter_list|)
 throws|throws
-name|IllegalStateException
-throws|,
 name|RepositoryException
 block|{
 name|checkInitialized

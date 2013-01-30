@@ -86,9 +86,8 @@ comment|/**  * {@code CommitHook} implementation that processes any modification
 end_comment
 
 begin_class
-specifier|public
 class|class
-name|AccessControlHook
+name|PermissionHook
 implements|implements
 name|CommitHook
 block|{

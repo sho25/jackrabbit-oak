@@ -114,7 +114,6 @@ comment|/**  * RestrictionDefinitionImpl... TODO  */
 end_comment
 
 begin_class
-specifier|public
 class|class
 name|RestrictionDefinitionImpl
 implements|implements
@@ -140,8 +139,7 @@ specifier|final
 name|NamePathMapper
 name|namePathMapper
 decl_stmt|;
-comment|/**      * Create a new instance.      *      * @param name The oak name of the restriction definition.      * @param type The required type of this definition. Any valid JCR      * {@link javax.jcr.PropertyType} except {@link javax.jcr.PropertyType#UNDEFINED}      * is allowed.      * @param isMandatory A boolean indicating if the restriction is mandatory.      * @param namePathMapper The name path mapper used to calculate the JCR name.      */
-specifier|public
+comment|/**      * Create a new instance.      *      * @param name           The oak name of the restriction definition.      * @param type           The required type of this definition. Any valid JCR      *                       {@link javax.jcr.PropertyType} except {@link javax.jcr.PropertyType#UNDEFINED}      *                       is allowed.      * @param isMandatory    A boolean indicating if the restriction is mandatory.      * @param namePathMapper The name path mapper used to calculate the JCR name.      */
 name|RestrictionDefinitionImpl
 parameter_list|(
 annotation|@

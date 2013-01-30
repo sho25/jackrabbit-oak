@@ -43,6 +43,18 @@ name|ImmutableSet
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|JcrConstants
+import|;
+end_import
+
 begin_comment
 comment|/**  * AccessControlConstants... TODO  */
 end_comment
@@ -128,6 +140,53 @@ name|String
 name|NT_REP_RESTRICTIONS
 init|=
 literal|"rep:Restrictions"
+decl_stmt|;
+comment|/**      * @since OAK 1.0      */
+name|String
+name|NT_REP_PERMISSIONS
+init|=
+literal|"rep:Permissions"
+decl_stmt|;
+comment|/**      * @since OAK 1.0      */
+name|String
+name|REP_PERMISSION_STORE
+init|=
+literal|"rep:permissionStore"
+decl_stmt|;
+comment|/**      * @since OAK 1.0      */
+name|String
+name|PERMISSIONS_STORE_PATH
+init|=
+name|JcrConstants
+operator|.
+name|JCR_SYSTEM
+operator|+
+literal|'/'
+operator|+
+name|REP_PERMISSION_STORE
+decl_stmt|;
+comment|/**      * @since OAK 1.0      */
+name|String
+name|MIX_REP_VERSIONABLE_INFO
+init|=
+literal|"rep:VersionableInfo"
+decl_stmt|;
+name|String
+name|REP_VERSIONABLE_INFO
+init|=
+literal|"rep:versionableInfo"
+decl_stmt|;
+comment|/**      * @since OAK 1.0      */
+name|String
+name|REP_WORKSPACE_NAME
+init|=
+literal|"rep:workspaceName"
+decl_stmt|;
+comment|/**      * @since OAK 1.0      */
+name|String
+name|REP_VERSIONABLE_PATH
+init|=
+literal|"rep:versionablePath"
 decl_stmt|;
 name|Collection
 argument_list|<

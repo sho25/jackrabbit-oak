@@ -549,7 +549,7 @@ specifier|final
 name|SessionDelegate
 name|dlg
 decl_stmt|;
-comment|/**      * Local namespace remappings. Prefixes as keys and namespace URIs as values.      *<p>      * This map is only accessed from synchronized methods (see      *<a href="https://issues.apache.org/jira/browse/JCR-1793">JCR-1793</a>).      */
+comment|/**      * Local namespace remappings. Prefixes as keys and namespace URIs as values.      *<p/>      * This map is only accessed from synchronized methods (see      *<a href="https://issues.apache.org/jira/browse/JCR-1793">JCR-1793</a>).      */
 specifier|private
 specifier|final
 name|Map
@@ -1852,7 +1852,10 @@ name|oakPath
 init|=
 name|dlg
 operator|.
-name|getOakPathOrNull
+name|getNamePathMapper
+argument_list|()
+operator|.
+name|getOakPathKeepIndex
 argument_list|(
 name|absPath
 argument_list|)
@@ -1864,18 +1867,15 @@ operator|==
 literal|null
 condition|)
 block|{
-comment|// TODO should we throw an exception here?
-return|return
-name|TODO
-operator|.
-name|unimplemented
-argument_list|()
-operator|.
-name|returnValue
+throw|throw
+operator|new
+name|RepositoryException
 argument_list|(
-literal|false
+literal|"Invalid JCR path: "
+operator|+
+name|absPath
 argument_list|)
-return|;
+throw|;
 block|}
 comment|// TODO implement hasPermission
 return|return
@@ -1891,10 +1891,6 @@ argument_list|)
 return|;
 block|}
 end_function
-
-begin_comment
-comment|/**      * @see javax.jcr.Session#checkPermission(String, String)      */
-end_comment
 
 begin_function
 annotation|@
@@ -2832,7 +2828,7 @@ comment|//------------------------------------------------------------< private>
 end_comment
 
 begin_comment
-comment|/**      * Ensure that this session is alive and throw an exception otherwise.      *      * @throws RepositoryException if this session has been rendered invalid      * for some reason (e.g. if this session has been closed explicitly by logout)      */
+comment|/**      * Ensure that this session is alive and throw an exception otherwise.      *      * @throws RepositoryException if this session has been rendered invalid      *                             for some reason (e.g. if this session has been closed explicitly by logout)      */
 end_comment
 
 begin_function

@@ -378,7 +378,7 @@ name|TreeImpl
 implements|implements
 name|Tree
 block|{
-comment|/** Internal and hidden property that contains the child order */
+comment|/**      * Internal and hidden property that contains the child order      */
 specifier|static
 specifier|final
 name|String
@@ -386,23 +386,23 @@ name|OAK_CHILD_ORDER
 init|=
 literal|":childOrder"
 decl_stmt|;
-comment|/** Underlying {@code Root} of this {@code Tree} instance */
+comment|/**      * Underlying {@code Root} of this {@code Tree} instance      */
 specifier|private
 specifier|final
 name|RootImpl
 name|root
 decl_stmt|;
-comment|/** Parent of this tree. Null for the root. */
+comment|/**      * Parent of this tree. Null for the root.      */
 specifier|private
 name|TreeImpl
 name|parent
 decl_stmt|;
-comment|/** Name of this tree */
+comment|/**      * Name of this tree      */
 specifier|private
 name|String
 name|name
 decl_stmt|;
-comment|/** Lazily initialised {@code NodeBuilder} for the underlying node state */
+comment|/**      * Lazily initialised {@code NodeBuilder} for the underlying node state      */
 name|NodeBuilder
 name|nodeBuilder
 decl_stmt|;
@@ -1976,7 +1976,7 @@ name|nodeBuilder
 return|;
 block|}
 comment|//-----------------------------------------------------------< internal>---
-comment|/**      * Move this tree to the parent at {@code destParent} with the new name      * {@code destName}.      *      * @param destParent  new parent for this tree      * @param destName  new name for this tree      */
+comment|/**      * Move this tree to the parent at {@code destParent} with the new name      * {@code destName}.      *      * @param destParent new parent for this tree      * @param destName   new name for this tree      */
 name|void
 name|moveTo
 parameter_list|(
@@ -2024,7 +2024,7 @@ name|getNodeState
 argument_list|()
 return|;
 block|}
-comment|/**      * Get a tree for the tree identified by {@code path}.      *      * @param path the path to the child      * @return a {@link Tree} instance for the child at {@code path} or      * {@code null} if no such tree exits or if the tree is not accessible.      */
+comment|/**      * Get a tree for the tree identified by {@code path}.      *      * @param path the path to the child      * @return a {@link Tree} instance for the child at {@code path} or      *         {@code null} if no such tree exits or if the tree is not accessible.      */
 annotation|@
 name|CheckForNull
 name|TreeImpl
@@ -2302,7 +2302,7 @@ comment|// FIXME: special handling for access control item and version content
 return|return
 name|root
 operator|.
-name|getPermissions
+name|getPermissionProvider
 argument_list|()
 operator|.
 name|canRead
@@ -2330,7 +2330,7 @@ operator|)
 operator|&&
 name|root
 operator|.
-name|getPermissions
+name|getPermissionProvider
 argument_list|()
 operator|.
 name|canRead
@@ -2832,7 +2832,7 @@ name|name
 argument_list|)
 return|;
 block|}
-comment|/**          * Set the underlying property          * @param property The property to set          */
+comment|/**          * Set the underlying property          *          * @param property The property to set          */
 specifier|public
 name|void
 name|set
@@ -2851,7 +2851,7 @@ name|property
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**          * Remove the underlying property          * @return  {@code true} on success false otherwise          */
+comment|/**          * Remove the underlying property          *          * @return {@code true} on success false otherwise          */
 annotation|@
 name|Override
 specifier|public

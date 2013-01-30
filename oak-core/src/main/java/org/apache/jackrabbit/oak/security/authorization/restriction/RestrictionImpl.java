@@ -132,7 +132,6 @@ import|;
 end_import
 
 begin_class
-specifier|public
 class|class
 name|RestrictionImpl
 extends|extends
@@ -145,7 +144,6 @@ specifier|final
 name|PropertyState
 name|property
 decl_stmt|;
-specifier|public
 name|RestrictionImpl
 parameter_list|(
 annotation|@

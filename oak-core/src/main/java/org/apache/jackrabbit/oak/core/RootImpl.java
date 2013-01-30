@@ -195,22 +195,6 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|namepath
-operator|.
-name|NamePathMapper
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
 name|plugins
 operator|.
 name|commit
@@ -363,7 +347,7 @@ name|security
 operator|.
 name|authorization
 operator|.
-name|CompiledPermissions
+name|OpenAccessControlConfiguration
 import|;
 end_import
 
@@ -383,7 +367,7 @@ name|security
 operator|.
 name|authorization
 operator|.
-name|OpenAccessControlConfiguration
+name|PermissionProvider
 import|;
 end_import
 
@@ -581,7 +565,7 @@ name|PURGE_LIMIT
 init|=
 literal|100
 decl_stmt|;
-comment|/** The underlying store to which this root belongs */
+comment|/**      * The underlying store to which this root belongs      */
 specifier|private
 specifier|final
 name|NodeStore
@@ -598,12 +582,12 @@ specifier|final
 name|AccessControlConfiguration
 name|accConfiguration
 decl_stmt|;
-comment|/** Current branch this root operates on */
+comment|/**      * Current branch this root operates on      */
 specifier|private
 name|NodeStoreBranch
 name|branch
 decl_stmt|;
-comment|/** Current root {@code Tree} */
+comment|/**      * Current root {@code Tree}      */
 specifier|private
 name|TreeImpl
 name|rootTree
@@ -627,7 +611,7 @@ specifier|final
 name|QueryIndexProvider
 name|indexProvider
 decl_stmt|;
-comment|/**      * New instance bases on a given {@link NodeStore} and a workspace      *      * @param store         node store      * @param workspaceName name of the workspace      * @param subject       the subject.      * @param accConfiguration   the access control context provider.      * @param indexProvider the query index provider.      */
+comment|/**      * New instance bases on a given {@link NodeStore} and a workspace      *      * @param store            node store      * @param workspaceName    name of the workspace      * @param subject          the subject.      * @param accConfiguration the access control context provider.      * @param indexProvider    the query index provider.      */
 annotation|@
 name|SuppressWarnings
 argument_list|(
@@ -1588,7 +1572,7 @@ name|indexProvider
 return|;
 block|}
 comment|//-----------------------------------------------------------< internal>---
-comment|/**      * Returns the node state from which the current branch was created.      * @return base node state      */
+comment|/**      * Returns the node state from which the current branch was created.      *      * @return base node state      */
 annotation|@
 name|Nonnull
 name|NodeState
@@ -1638,8 +1622,8 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-name|CompiledPermissions
-name|getPermissions
+name|PermissionProvider
+name|getPermissionProvider
 parameter_list|()
 block|{
 return|return
@@ -1647,14 +1631,7 @@ name|accConfiguration
 operator|.
 name|getPermissionProvider
 argument_list|(
-name|NamePathMapper
-operator|.
-name|DEFAULT
-argument_list|)
-operator|.
-name|getCompiledPermissions
-argument_list|(
-name|store
+name|this
 argument_list|,
 name|subject
 operator|.

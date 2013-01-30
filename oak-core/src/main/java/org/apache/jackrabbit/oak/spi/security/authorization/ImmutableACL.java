@@ -77,16 +77,6 @@ name|javax
 operator|.
 name|jcr
 operator|.
-name|RepositoryException
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|jcr
-operator|.
 name|Value
 import|;
 end_import
@@ -237,7 +227,7 @@ specifier|private
 name|int
 name|hashCode
 decl_stmt|;
-comment|/**      * Construct a new {@code UnmodifiableAccessControlList}      *      * @param oakPath The Oak path of this policy or {@code null}.      * @param entries The access control entries contained in this policy.      * @param restrictionProvider The restriction provider.      * @param namePathMapper The {@link NamePathMapper} used for conversion.      */
+comment|/**      * Construct a new {@code UnmodifiableAccessControlList}      *      * @param oakPath             The Oak path of this policy or {@code null}.      * @param entries             The access control entries contained in this policy.      * @param restrictionProvider The restriction provider.      * @param namePathMapper      The {@link NamePathMapper} used for conversion.      */
 specifier|public
 name|ImmutableACL
 parameter_list|(
@@ -304,8 +294,6 @@ name|ace
 parameter_list|)
 throws|throws
 name|AccessControlException
-throws|,
-name|RepositoryException
 block|{
 throw|throw
 operator|new
