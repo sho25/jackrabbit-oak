@@ -47,7 +47,6 @@ interface|interface
 name|RepositoryInitializer
 block|{
 comment|/**      * Initializes repository content. This method is called as soon as a      * repository becomes available. Note that the repository may already      * have been initialized, so the implementation of this method should      * check for that before blindly adding new content.      *      * @param store node store of the repository      */
-specifier|public
 name|void
 name|initialize
 parameter_list|(
