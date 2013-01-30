@@ -1021,6 +1021,7 @@ throw|;
 block|}
 comment|//-------------------------------------------------------< TreeLocation>---
 specifier|private
+specifier|final
 class|class
 name|NodeLocation
 extends|extends
@@ -1260,6 +1261,7 @@ return|;
 block|}
 block|}
 specifier|private
+specifier|final
 class|class
 name|PropertyLocation
 extends|extends

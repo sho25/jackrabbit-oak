@@ -90,6 +90,7 @@ comment|/**  * PrivilegeContext... TODO  */
 end_comment
 
 begin_class
+specifier|final
 class|class
 name|PrivilegeContext
 implements|implements
@@ -108,7 +109,7 @@ decl_stmt|;
 specifier|private
 name|PrivilegeContext
 parameter_list|()
-block|{}
+block|{     }
 specifier|static
 name|Context
 name|getInstance
