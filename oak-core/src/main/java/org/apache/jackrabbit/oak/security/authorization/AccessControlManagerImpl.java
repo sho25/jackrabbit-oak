@@ -4107,6 +4107,7 @@ return|;
 block|}
 block|}
 specifier|private
+specifier|final
 class|class
 name|PrincipalACL
 extends|extends

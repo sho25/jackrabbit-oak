@@ -1215,6 +1215,7 @@ return|;
 block|}
 comment|//--------------------------------------------------------------------------
 specifier|private
+specifier|final
 class|class
 name|MutableEntry
 block|{

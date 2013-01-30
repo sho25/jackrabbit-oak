@@ -90,6 +90,7 @@ comment|/**  * AccessControlContext... TODO  */
 end_comment
 
 begin_class
+specifier|final
 class|class
 name|AccessControlContext
 implements|implements

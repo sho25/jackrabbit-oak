@@ -244,8 +244,6 @@ name|getContext
 parameter_list|()
 function_decl|;
 comment|/**      * Default implementation that provides empty validators/parameters.      */
-specifier|public
-specifier|static
 class|class
 name|Default
 implements|implements
