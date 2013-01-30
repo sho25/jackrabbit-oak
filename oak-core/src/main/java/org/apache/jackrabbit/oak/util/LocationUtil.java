@@ -79,9 +79,14 @@ end_comment
 
 begin_class
 specifier|public
+specifier|final
 class|class
 name|LocationUtil
 block|{
+specifier|private
+name|LocationUtil
+parameter_list|()
+block|{     }
 annotation|@
 name|Nonnull
 specifier|public
