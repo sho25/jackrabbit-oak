@@ -71,22 +71,6 @@ name|oak
 operator|.
 name|security
 operator|.
-name|OakConfiguration
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|security
-operator|.
 name|authentication
 operator|.
 name|token
@@ -448,15 +432,17 @@ operator|==
 literal|null
 condition|)
 block|{
+comment|// TODO: define configuration structure
+comment|// TODO: review if having a default is desirable or if login should fail without valid login configuration.
 name|loginConfig
 operator|=
-operator|new
-name|OakConfiguration
+name|ConfigurationUtil
+operator|.
+name|getDefaultConfiguration
 argument_list|(
 name|options
 argument_list|)
 expr_stmt|;
-comment|// TODO: define configuration structure
 block|}
 return|return
 operator|new
