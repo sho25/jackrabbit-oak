@@ -604,26 +604,6 @@ literal|false
 return|;
 block|}
 block|}
-comment|/**      *      * @param uuid      * @throws IllegalArgumentException If the specified uuid has an invalid format.      */
-specifier|public
-specifier|static
-name|void
-name|checkUUIDFormat
-parameter_list|(
-name|String
-name|uuid
-parameter_list|)
-throws|throws
-name|IllegalArgumentException
-block|{
-name|UUID
-operator|.
-name|fromString
-argument_list|(
-name|uuid
-argument_list|)
-expr_stmt|;
-block|}
 annotation|@
 name|Nonnull
 specifier|public
@@ -674,7 +654,7 @@ argument_list|)
 return|;
 block|}
 block|}
-comment|/**      * The tree identified by the specified {@code identifier} or {@code null}.      *      * @param identifier The identifier of the Node such as exposed by {@link javax.jcr.Node#getIdentifier()}      * @return The tree with the given {@code identifier} or {@code null} if no      * such tree exists or isn't accessible to the content session.      */
+comment|/**      * The tree identified by the specified {@code identifier} or {@code null}.      *      * @param identifier The identifier of the Node such as exposed by {@link javax.jcr.Node#getIdentifier()}      * @return The tree with the given {@code identifier} or {@code null} if no      *         such tree exists or isn't accessible to the content session.      */
 annotation|@
 name|CheckForNull
 specifier|public
@@ -733,7 +713,7 @@ argument_list|)
 return|;
 block|}
 block|}
-comment|/**      * The path of the tree identified by the specified {@code identifier} or {@code null}.      *      * @param identifier The identifier of the Tree such as exposed by {@link javax.jcr.Node#getIdentifier()}      * @return The tree with the given {@code identifier} or {@code null} if no      * such tree exists or isn't accessible to the content session.      */
+comment|/**      * The path of the tree identified by the specified {@code identifier} or {@code null}.      *      * @param identifier The identifier of the Tree such as exposed by {@link javax.jcr.Node#getIdentifier()}      * @return The tree with the given {@code identifier} or {@code null} if no      *         such tree exists or isn't accessible to the content session.      */
 annotation|@
 name|CheckForNull
 specifier|public
@@ -788,7 +768,7 @@ argument_list|()
 return|;
 block|}
 block|}
-comment|/**      * Returns the path of the tree references by the specified (weak)      * reference {@code PropertyState}.      *      * @param referenceValue A (weak) reference value.      * @return The tree with the given {@code identifier} or {@code null} if no      * such tree exists or isn't accessible to the content session.      */
+comment|/**      * Returns the path of the tree references by the specified (weak)      * reference {@code PropertyState}.      *      * @param referenceValue A (weak) reference value.      * @return The tree with the given {@code identifier} or {@code null} if no      *         such tree exists or isn't accessible to the content session.      */
 annotation|@
 name|CheckForNull
 specifier|public
@@ -843,7 +823,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**      * Searches all reference properties to the specified {@code tree} that match      * the given name and node type constraints.      *      * @param weak  if {@code true} only weak references are returned. Otherwise only      *              hard references are returned.      * @param tree The tree for which references should be searched.      * @param propertyName A name constraint for the reference properties;      * {@code null} if no constraint should be enforced.      * @param nodeTypeNames Node type constraints to be enforced when using      * for reference properties; the specified names are expected to be internal      * oak names.      * @return A set of oak paths of those reference properties referring to the      * specified {@code tree} and matching the constraints.      */
+comment|/**      * Searches all reference properties to the specified {@code tree} that match      * the given name and node type constraints.      *      * @param weak          if {@code true} only weak references are returned. Otherwise only      *                      hard references are returned.      * @param tree          The tree for which references should be searched.      * @param propertyName  A name constraint for the reference properties;      *                      {@code null} if no constraint should be enforced.      * @param nodeTypeNames Node type constraints to be enforced when using      *                      for reference properties; the specified names are expected to be internal      *                      oak names.      * @return A set of oak paths of those reference properties referring to the      *         specified {@code tree} and matching the constraints.      */
 annotation|@
 name|Nonnull
 specifier|public
