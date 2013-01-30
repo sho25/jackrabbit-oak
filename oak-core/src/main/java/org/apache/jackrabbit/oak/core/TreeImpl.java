@@ -2522,7 +2522,8 @@ expr_stmt|;
 block|}
 block|}
 comment|//-------------------------------------------------------< TreeLocation>---
-specifier|public
+specifier|private
+specifier|final
 class|class
 name|NodeLocation
 extends|extends
@@ -2757,7 +2758,9 @@ literal|null
 return|;
 block|}
 block|}
+comment|// TODO: OAK-599 (accessed by PropertyDelegate)
 specifier|public
+specifier|final
 class|class
 name|PropertyLocation
 extends|extends

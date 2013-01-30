@@ -181,7 +181,7 @@ name|location
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Get the value of the property      * @return  the value of the property      * @throws InvalidItemStateException      */
+comment|/**      * Get the value of the property      *      * @return the value of the property      * @throws InvalidItemStateException      */
 annotation|@
 name|Nonnull
 specifier|public
@@ -206,7 +206,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-comment|/**      * Get the values of the property      * @return  the values of the property      * @throws InvalidItemStateException      */
+comment|/**      * Get the values of the property      *      * @return the values of the property      * @throws InvalidItemStateException      */
 annotation|@
 name|Nonnull
 specifier|public
@@ -234,7 +234,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-comment|/**      * Determine whether the property is multi valued      * @return  {@code true} if multi valued      */
+comment|/**      * Determine whether the property is multi valued      *      * @return {@code true} if multi valued      */
 specifier|public
 name|boolean
 name|isMultivalue
@@ -250,7 +250,7 @@ name|isArray
 argument_list|()
 return|;
 block|}
-comment|/**      * Set the value of the property      * @param value      */
+comment|/**      * Set the value of the property      *      * @param value      */
 specifier|public
 name|void
 name|setValue
@@ -278,7 +278,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Set the values of the property      * @param values      */
+comment|/**      * Set the values of the property      *      * @param values      */
 specifier|public
 name|void
 name|setValues
@@ -337,7 +337,7 @@ block|{
 name|PropertyState
 name|property
 init|=
-name|getPropertyLocation
+name|getLocation
 argument_list|()
 operator|.
 name|getProperty
@@ -360,6 +360,7 @@ return|return
 name|property
 return|;
 block|}
+comment|// TODO: OAK-599
 annotation|@
 name|Nonnull
 specifier|private
