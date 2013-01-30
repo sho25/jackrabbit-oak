@@ -442,7 +442,7 @@ operator|.
 name|getHeadRevision
 argument_list|()
 operator|+
-literal|"/"
+literal|'/'
 argument_list|)
 expr_stmt|;
 block|}
@@ -476,6 +476,8 @@ specifier|public
 name|void
 name|setHook
 parameter_list|(
+annotation|@
+name|Nonnull
 name|CommitHook
 name|hook
 parameter_list|)
@@ -505,6 +507,8 @@ specifier|public
 name|void
 name|setObserver
 parameter_list|(
+annotation|@
+name|Nonnull
 name|Observer
 name|observer
 parameter_list|)
