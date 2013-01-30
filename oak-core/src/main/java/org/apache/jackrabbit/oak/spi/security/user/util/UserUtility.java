@@ -162,7 +162,7 @@ block|{
 specifier|private
 name|UserUtility
 parameter_list|()
-block|{}
+block|{     }
 annotation|@
 name|Nonnull
 specifier|public
@@ -295,6 +295,8 @@ specifier|static
 name|AuthorizableType
 name|getType
 parameter_list|(
+annotation|@
+name|Nonnull
 name|NodeUtil
 name|authorizableNode
 parameter_list|)

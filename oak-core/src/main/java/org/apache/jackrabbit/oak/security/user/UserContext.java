@@ -110,6 +110,7 @@ comment|/**  * UserContext... TODO  */
 end_comment
 
 begin_class
+specifier|final
 class|class
 name|UserContext
 implements|implements
@@ -128,7 +129,7 @@ decl_stmt|;
 specifier|private
 name|UserContext
 parameter_list|()
-block|{}
+block|{     }
 specifier|static
 name|Context
 name|getInstance

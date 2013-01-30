@@ -1150,7 +1150,7 @@ name|id
 argument_list|)
 return|;
 block|}
-comment|/**      * Returns true if the given property of the authorizable node is one of the      * non-protected properties defined by the rep:Authorizable node type or a      * some other descendant of the authorizable node.      *      * @param authorizableTree The tree of the target authorizable.      * @param propertyLocation Location to be tested.      * @param verifyAncestor If true the property is tested to be a descendant      * of the node of this authorizable; otherwise it is expected that this      * test has been executed by the caller.      * @return {@code true} if the given property is not protected and is defined      * by the rep:authorizable node type or one of it's sub-node types;      * {@code false} otherwise.      * @throws RepositoryException If an error occurs.      */
+comment|/**      * Returns true if the given property of the authorizable node is one of the      * non-protected properties defined by the rep:Authorizable node type or a      * some other descendant of the authorizable node.      *      * @param authorizableTree The tree of the target authorizable.      * @param propertyLocation Location to be tested.      * @param verifyAncestor   If true the property is tested to be a descendant      *                         of the node of this authorizable; otherwise it is expected that this      *                         test has been executed by the caller.      * @return {@code true} if the given property is not protected and is defined      *         by the rep:authorizable node type or one of it's sub-node types;      *         {@code false} otherwise.      * @throws RepositoryException If an error occurs.      */
 specifier|private
 name|boolean
 name|isAuthorizableProperty
@@ -1180,7 +1180,7 @@ operator|!=
 literal|null
 return|;
 block|}
-comment|/**      * Returns the valid authorizable property identified by the specified      * property location or {@code null} if that property does not exist or      * isn't a authorizable property because it is protected or outside of the      * scope of the {@code authorizableTree}.      *      * @param authorizableTree The tree of the target authorizable.      * @param propertyLocation Location to be tested.      * @param verifyAncestor If true the property is tested to be a descendant      * of the node of this authorizable; otherwise it is expected that this      * test has been executed by the caller.      * @return a valid authorizable property or {@code null} if no such property      * exists or fi the property is protected or not defined by the rep:authorizable      * node type or one of it's sub-node types.      * @throws RepositoryException If an error occurs.      */
+comment|/**      * Returns the valid authorizable property identified by the specified      * property location or {@code null} if that property does not exist or      * isn't a authorizable property because it is protected or outside of the      * scope of the {@code authorizableTree}.      *      * @param authorizableTree The tree of the target authorizable.      * @param propertyLocation Location to be tested.      * @param verifyAncestor   If true the property is tested to be a descendant      *                         of the node of this authorizable; otherwise it is expected that this      *                         test has been executed by the caller.      * @return a valid authorizable property or {@code null} if no such property      *         exists or fi the property is protected or not defined by the rep:authorizable      *         node type or one of it's sub-node types.      * @throws RepositoryException If an error occurs.      */
 annotation|@
 name|CheckForNull
 specifier|private
@@ -1204,12 +1204,25 @@ condition|(
 name|propertyLocation
 operator|==
 literal|null
-operator|||
-name|TreeLocation
-operator|.
-name|NULL
-operator|==
+condition|)
+block|{
+return|return
+literal|null
+return|;
+block|}
+name|PropertyState
+name|property
+init|=
 name|propertyLocation
+operator|.
+name|getProperty
+argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|property
+operator|==
+literal|null
 condition|)
 block|{
 return|return
@@ -1253,21 +1266,6 @@ return|return
 literal|null
 return|;
 block|}
-name|PropertyState
-name|property
-init|=
-name|propertyLocation
-operator|.
-name|getProperty
-argument_list|()
-decl_stmt|;
-if|if
-condition|(
-name|property
-operator|!=
-literal|null
-condition|)
-block|{
 name|Tree
 name|parent
 init|=
@@ -1352,8 +1350,6 @@ literal|null
 return|;
 block|}
 comment|// else: non-protected property somewhere in the subtree of the user tree.
-block|}
-comment|// else: no such property.
 return|return
 name|property
 return|;
@@ -1414,7 +1410,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**      * Retrieves the node at {@code relPath} relative to node associated with      * this authorizable. If no such node exist it and any missing intermediate      * nodes are created.      *      * @param relPath A relative path.      * @return The corresponding node.      * @throws RepositoryException If an error occurs or if {@code relPath} refers      * to a node that is outside of the scope of this authorizable.      */
+comment|/**      * Retrieves the node at {@code relPath} relative to node associated with      * this authorizable. If no such node exist it and any missing intermediate      * nodes are created.      *      * @param relPath A relative path.      * @return The corresponding node.      * @throws RepositoryException If an error occurs or if {@code relPath} refers      *                             to a node that is outside of the scope of this authorizable.      */
 annotation|@
 name|Nonnull
 specifier|private
