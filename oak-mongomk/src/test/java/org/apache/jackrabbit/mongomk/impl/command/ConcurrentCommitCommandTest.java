@@ -368,7 +368,7 @@ block|{
 annotation|@
 name|Override
 specifier|protected
-name|boolean
+name|void
 name|saveAndSetHeadRevision
 parameter_list|()
 throws|throws
@@ -387,12 +387,11 @@ name|wait
 argument_list|()
 expr_stmt|;
 block|}
-return|return
 name|super
 operator|.
 name|saveAndSetHeadRevision
 argument_list|()
-return|;
+expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
@@ -405,9 +404,6 @@ operator|.
 name|printStackTrace
 argument_list|()
 expr_stmt|;
-return|return
-literal|false
-return|;
 block|}
 block|}
 empty_stmt|;
