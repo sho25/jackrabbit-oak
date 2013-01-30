@@ -86,7 +86,12 @@ specifier|public
 class|class
 name|IOUtils
 block|{
-comment|/**      * Try to read the given number of bytes to the buffer. This method reads      * until the maximum number of bytes have been read or until the end of      * file.      *      * @param in the input stream      * @param buffer the output buffer      * @param off the offset in the buffer      * @param max the number of bytes to read at most      * @return the number of bytes read, 0 meaning EOF      */
+comment|/**      * Avoid instantiation      */
+specifier|private
+name|IOUtils
+parameter_list|()
+block|{     }
+comment|/**      * Try to read the given number of bytes to the buffer. This method reads      * until the maximum number of bytes have been read or until the end of      * file.      *      * @param in     the input stream      * @param buffer the output buffer      * @param off    the offset in the buffer      * @param max    the number of bytes to read at most      * @return the number of bytes read, 0 meaning EOF      * @throws java.io.IOException If an error occurs.      */
 specifier|public
 specifier|static
 name|int
@@ -174,7 +179,7 @@ return|return
 name|result
 return|;
 block|}
-comment|/**      * Skip a number of bytes in an input stream.      *      * @param in the input stream      * @param skip the number of bytes to skip      * @throws EOFException if the end of file has been reached before all bytes      *                      could be skipped      * @throws IOException if an IO exception occurred while skipping      */
+comment|/**      * Skip a number of bytes in an input stream.      *      * @param in   the input stream      * @param skip the number of bytes to skip      * @throws EOFException if the end of file has been reached before all bytes      *                      could be skipped      * @throws IOException  if an IO exception occurred while skipping      */
 specifier|public
 specifier|static
 name|void
@@ -225,7 +230,7 @@ name|skipped
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Write a String. This will first write the length as 4 bytes, and then the      * UTF-8 encoded string.      *      * @param out the data output stream      * @param s the string (maximum length about 2 GB)      */
+comment|/**      * Write a String. This will first write the length as 4 bytes, and then the      * UTF-8 encoded string.      *      * @param out the data output stream      * @param s   the string (maximum length about 2 GB)      */
 specifier|public
 specifier|static
 name|void
@@ -278,7 +283,7 @@ literal|"UTF-8"
 argument_list|)
 return|;
 block|}
-comment|/**      * Write a byte array. This will first write the length as 4 bytes, and then      * the actual bytes.      *      * @param out the data output stream      * @param data the byte array      */
+comment|/**      * Write a byte array. This will first write the length as 4 bytes, and then      * the actual bytes.      *      * @param out  the data output stream      * @param data the byte array      */
 specifier|public
 specifier|static
 name|void
@@ -395,7 +400,7 @@ return|return
 name|data
 return|;
 block|}
-comment|/**      * Write a variable size integer. Negative values need 5 bytes.      *      * @param out the output stream      * @param x the value      */
+comment|/**      * Write a variable size integer. Negative values need 5 bytes.      *      * @param out the output stream      * @param x   the value      */
 specifier|public
 specifier|static
 name|void
@@ -550,7 +555,7 @@ return|;
 block|}
 block|}
 block|}
-comment|/**      * Write a variable size long.      * Negative values need 10 bytes.      *      * @param out the output stream      * @param x the value      */
+comment|/**      * Write a variable size long.      * Negative values need 10 bytes.      *      * @param out the output stream      * @param x   the value      */
 specifier|public
 specifier|static
 name|void
@@ -611,7 +616,7 @@ name|x
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Write a long (8 bytes).      *      * @param out the output stream      * @param x the value      */
+comment|/**      * Write a long (8 bytes).      *      * @param out the output stream      * @param x   the value      */
 specifier|public
 specifier|static
 name|void
@@ -688,7 +693,7 @@ literal|0xffffffffL
 operator|)
 return|;
 block|}
-comment|/**      * Write an integer (4 bytes).      *      * @param out the output stream      * @param x the value      */
+comment|/**      * Write an integer (4 bytes).      *      * @param out the output stream      * @param x   the value      */
 specifier|public
 specifier|static
 name|void
@@ -964,7 +969,7 @@ operator|)
 name|i
 return|;
 block|}
-comment|/**      * Unconditionally close a {@code Closeable}.      *<p>      * Equivalent to {@link Closeable#close()}, except any exceptions will be ignored.      * This is typically used in finally blocks.      *      * @param closeable the object to close, may be null or already closed      */
+comment|/**      * Unconditionally close a {@code Closeable}.      *<p/>      * Equivalent to {@link Closeable#close()}, except any exceptions will be ignored.      * This is typically used in finally blocks.      *      * @param closeable the object to close, may be null or already closed      */
 specifier|public
 specifier|static
 name|void
@@ -999,7 +1004,7 @@ block|{
 comment|// ignore
 block|}
 block|}
-comment|/**      * Unconditionally close a {@code Socket}.      *<p>      * Equivalent to {@link Socket#close()}, except any exceptions will be ignored.      * This is typically used in finally blocks.      *      * @param sock the Socket to close, may be null or already closed      */
+comment|/**      * Unconditionally close a {@code Socket}.      *<p/>      * Equivalent to {@link Socket#close()}, except any exceptions will be ignored.      * This is typically used in finally blocks.      *      * @param sock the Socket to close, may be null or already closed      */
 specifier|public
 specifier|static
 name|void
@@ -1034,7 +1039,7 @@ comment|// ignored
 block|}
 block|}
 block|}
-comment|/**      * Copy bytes from an {@code InputStream} to an      * {@code OutputStream}.      *<p>      * This method buffers the input internally, so there is no need to use a      * {@code BufferedInputStream}.      *      * @param input  the {@code InputStream} to read from      * @param output  the {@code OutputStream} to write to      * @return the number of bytes copied      * @throws IOException if an I/O error occurs      */
+comment|/**      * Copy bytes from an {@code InputStream} to an      * {@code OutputStream}.      *<p/>      * This method buffers the input internally, so there is no need to use a      * {@code BufferedInputStream}.      *      * @param input  the {@code InputStream} to read from      * @param output the {@code OutputStream} to write to      * @return the number of bytes copied      * @throws IOException if an I/O error occurs      */
 specifier|public
 specifier|static
 name|long
