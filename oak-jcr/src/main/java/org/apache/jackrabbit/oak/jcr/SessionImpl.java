@@ -1906,8 +1906,6 @@ name|String
 name|actions
 parameter_list|)
 throws|throws
-name|AccessControlException
-throws|,
 name|RepositoryException
 block|{
 if|if
