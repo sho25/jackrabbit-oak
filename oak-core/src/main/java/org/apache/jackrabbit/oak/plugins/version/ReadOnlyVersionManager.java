@@ -61,18 +61,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|jcr
-operator|.
-name|version
-operator|.
-name|VersionManager
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -252,7 +240,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *<code>ReadOnlyVersionManager</code> provides implementations for read-only  * version operations modeled after the ones available in {@link VersionManager}.  */
+comment|/**  *<code>ReadOnlyVersionManager</code> provides implementations for read-only  * version operations modeled after the ones available in {@link javax.jcr.version.VersionManager}.  */
 end_comment
 
 begin_class
@@ -596,7 +584,7 @@ return|return
 name|relPath
 return|;
 block|}
-comment|/**      * @return an identifier manager that is able to resolve identifiers of      * nodes in the version storage.      */
+comment|/**      * @return an identifier manager that is able to resolve identifiers of      *         nodes in the version storage.      */
 specifier|protected
 name|IdentifierManager
 name|getIdentifierManager
@@ -761,7 +749,7 @@ return|return
 name|tree
 return|;
 block|}
-comment|/**      * Returns<code>true</code> if the given<code>tree</code> is of type      *<code>mix:versionable</code>;<code>false</code> otherwise.      *      * @param tree the tree to check.      * @return whether the<code>tree</code> is versionable.      * @throws RepositoryException if an error occurs while checking the node      *              type of the tree.      */
+comment|/**      * Returns<code>true</code> if the given<code>tree</code> is of type      *<code>mix:versionable</code>;<code>false</code> otherwise.      *      * @param tree the tree to check.      * @return whether the<code>tree</code> is versionable.      * @throws RepositoryException if an error occurs while checking the node      *                             type of the tree.      */
 specifier|protected
 name|boolean
 name|isVersionable

@@ -25,6 +25,16 @@ name|javax
 operator|.
 name|annotation
 operator|.
+name|Nonnull
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|annotation
+operator|.
 name|Nullable
 import|;
 end_import
@@ -160,22 +170,6 @@ operator|.
 name|state
 operator|.
 name|NodeState
-import|;
-end_import
-
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|Preconditions
-operator|.
-name|checkNotNull
 import|;
 end_import
 
@@ -484,6 +478,8 @@ specifier|private
 name|Validator
 name|checkPermissions
 parameter_list|(
+annotation|@
+name|Nonnull
 name|Tree
 name|tree
 parameter_list|,
@@ -496,11 +492,6 @@ parameter_list|)
 throws|throws
 name|CommitFailedException
 block|{
-name|checkNotNull
-argument_list|(
-name|tree
-argument_list|)
-expr_stmt|;
 name|long
 name|permission
 init|=
@@ -599,9 +590,13 @@ specifier|private
 name|void
 name|checkPermissions
 parameter_list|(
+annotation|@
+name|Nonnull
 name|Tree
 name|parent
 parameter_list|,
+annotation|@
+name|Nonnull
 name|PropertyState
 name|property
 parameter_list|,

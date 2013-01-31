@@ -13,9 +13,7 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|plugins
-operator|.
-name|version
+name|core
 package|;
 end_package
 
@@ -42,22 +40,6 @@ operator|.
 name|api
 operator|.
 name|BlobFactory
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|api
-operator|.
-name|CommitFailedException
 import|;
 end_import
 
@@ -105,7 +87,7 @@ name|oak
 operator|.
 name|api
 operator|.
-name|Tree
+name|TreeLocation
 import|;
 end_import
 
@@ -119,9 +101,27 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|api
+name|commons
 operator|.
-name|TreeLocation
+name|PathUtils
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|state
+operator|.
+name|NodeState
 import|;
 end_import
 
@@ -142,23 +142,43 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * TODO document  */
+comment|/**  * Simple implementation of the Root interface that only supports simple read  * operations (excluding query) based on the NodeState (or ReadOnly tree)  * passed to the constructor.  *<p/>  * TODO: proper handle node state lifecycle that has an impact on this root.  */
 end_comment
 
 begin_class
+specifier|public
+specifier|final
 class|class
-name|SimpleRoot
+name|ReadOnlyRoot
 implements|implements
 name|Root
 block|{
 specifier|private
 specifier|final
-name|Tree
+name|ReadOnlyTree
 name|rootTree
 decl_stmt|;
-name|SimpleRoot
+specifier|public
+name|ReadOnlyRoot
 parameter_list|(
-name|Tree
+name|NodeState
+name|rootState
+parameter_list|)
+block|{
+name|this
+argument_list|(
+operator|new
+name|ReadOnlyTree
+argument_list|(
+name|rootState
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+specifier|public
+name|ReadOnlyRoot
+parameter_list|(
+name|ReadOnlyTree
 name|rootTree
 parameter_list|)
 block|{
@@ -180,7 +200,7 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|Tree
+name|ReadOnlyTree
 name|getTree
 parameter_list|(
 name|String
@@ -188,6 +208,9 @@ name|path
 parameter_list|)
 block|{
 return|return
+operator|(
+name|ReadOnlyTree
+operator|)
 name|getLocation
 argument_list|(
 name|path
@@ -211,11 +234,11 @@ parameter_list|)
 block|{
 name|checkArgument
 argument_list|(
-name|path
+name|PathUtils
 operator|.
-name|startsWith
+name|isAbsolute
 argument_list|(
-literal|"/"
+name|path
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -307,8 +330,6 @@ specifier|public
 name|void
 name|commit
 parameter_list|()
-throws|throws
-name|CommitFailedException
 block|{
 throw|throw
 operator|new

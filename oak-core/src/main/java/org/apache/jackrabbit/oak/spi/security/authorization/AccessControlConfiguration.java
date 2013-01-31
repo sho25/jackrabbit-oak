@@ -89,22 +89,6 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|api
-operator|.
-name|Tree
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
 name|namepath
 operator|.
 name|NamePathMapper
@@ -183,7 +167,6 @@ name|NamePathMapper
 name|namePathMapper
 parameter_list|)
 function_decl|;
-comment|// TODO: define how to pass workspace information
 annotation|@
 name|Nonnull
 name|PermissionProvider
@@ -191,22 +174,6 @@ name|getPermissionProvider
 parameter_list|(
 name|Root
 name|root
-parameter_list|,
-name|Set
-argument_list|<
-name|Principal
-argument_list|>
-name|principals
-parameter_list|)
-function_decl|;
-comment|// TODO: check again
-annotation|@
-name|Nonnull
-name|PermissionProvider
-name|getPermissionProvider
-parameter_list|(
-name|Tree
-name|rootTree
 parameter_list|,
 name|Set
 argument_list|<

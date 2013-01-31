@@ -244,11 +244,6 @@ name|AccessControlConstants
 block|{
 specifier|private
 specifier|final
-name|ReadOnlyTree
-name|permissionsTree
-decl_stmt|;
-specifier|private
-specifier|final
 name|Set
 argument_list|<
 name|Principal
@@ -290,12 +285,6 @@ argument_list|>
 name|principals
 parameter_list|)
 block|{
-name|this
-operator|.
-name|permissionsTree
-operator|=
-name|permissionsTree
-expr_stmt|;
 name|this
 operator|.
 name|principals
