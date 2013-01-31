@@ -2758,8 +2758,7 @@ literal|null
 return|;
 block|}
 block|}
-comment|// TODO: OAK-599 (accessed by PropertyDelegate)
-specifier|public
+specifier|private
 specifier|final
 class|class
 name|PropertyLocation
@@ -2837,9 +2836,10 @@ name|name
 argument_list|)
 return|;
 block|}
-comment|/**          * Set the underlying property          *          * @param property The property to set          */
+annotation|@
+name|Override
 specifier|public
-name|void
+name|boolean
 name|set
 parameter_list|(
 name|PropertyState
@@ -2855,6 +2855,9 @@ argument_list|(
 name|property
 argument_list|)
 expr_stmt|;
+return|return
+literal|true
+return|;
 block|}
 comment|/**          * Remove the underlying property          *          * @return {@code true} on success false otherwise          */
 annotation|@

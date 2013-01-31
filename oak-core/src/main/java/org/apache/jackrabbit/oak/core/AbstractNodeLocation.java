@@ -207,6 +207,20 @@ name|getStatus
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
+specifier|public
+name|boolean
+name|set
+parameter_list|(
+name|PropertyState
+name|property
+parameter_list|)
+block|{
+return|return
+literal|false
+return|;
+block|}
 block|}
 end_class
 

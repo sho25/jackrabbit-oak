@@ -119,6 +119,14 @@ name|boolean
 name|remove
 parameter_list|()
 function_decl|;
+comment|/**      * Set the underlying property of this {@code TreeLocation}. If the underlying item is      * not a property, this method return {@code false}.      * @param property The property to set      * @return {@code true} if the property state was set, {@code false} otherwise.      */
+name|boolean
+name|set
+parameter_list|(
+name|PropertyState
+name|property
+parameter_list|)
+function_decl|;
 block|}
 end_interface
 
