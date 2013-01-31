@@ -83,6 +83,7 @@ end_comment
 
 begin_class
 specifier|public
+specifier|final
 class|class
 name|IOUtils
 block|{
@@ -230,7 +231,7 @@ name|skipped
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Write a String. This will first write the length as 4 bytes, and then the      * UTF-8 encoded string.      *      * @param out the data output stream      * @param s   the string (maximum length about 2 GB)      */
+comment|/**      * Write a String. This will first write the length as 4 bytes, and then the      * UTF-8 encoded string.      *      * @param out the data output stream      * @param s   the string (maximum length about 2 GB)      * @throws IOException if an IO exception occurred while writing      */
 specifier|public
 specifier|static
 name|void
@@ -258,7 +259,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Read a String. This will first read the length as 4 bytes, and then the      * UTF-8 encoded string.      *      * @param in the data input stream      * @return the string      */
+comment|/**      * Read a String. This will first read the length as 4 bytes, and then the      * UTF-8 encoded string.      *      * @param in the data input stream      * @return the string      * @throws IOException if an IO exception occurred while reading      */
 specifier|public
 specifier|static
 name|String
@@ -283,7 +284,7 @@ literal|"UTF-8"
 argument_list|)
 return|;
 block|}
-comment|/**      * Write a byte array. This will first write the length as 4 bytes, and then      * the actual bytes.      *      * @param out  the data output stream      * @param data the byte array      */
+comment|/**      * Write a byte array. This will first write the length as 4 bytes, and then      * the actual bytes.      *      * @param out  the data output stream      * @param data the byte array      * @throws IOException if an IO exception occurred while writing.      */
 specifier|public
 specifier|static
 name|void
@@ -316,7 +317,7 @@ name|data
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Read a byte array. This will first read the length as 4 bytes, and then      * the actual bytes.      *      * @param in the data input stream      * @return the bytes      */
+comment|/**      * Read a byte array. This will first read the length as 4 bytes, and then      * the actual bytes.      *      * @param in the data input stream      * @return the bytes      * @throws IOException if an IO exception occurred while reading from the stream.      */
 specifier|public
 specifier|static
 name|byte
@@ -400,7 +401,7 @@ return|return
 name|data
 return|;
 block|}
-comment|/**      * Write a variable size integer. Negative values need 5 bytes.      *      * @param out the output stream      * @param x   the value      */
+comment|/**      * Write a variable size integer. Negative values need 5 bytes.      *      * @param out the output stream      * @param x   the value      * @throws IOException if an IO exception occurred while writing.      */
 specifier|public
 specifier|static
 name|void
@@ -453,7 +454,7 @@ name|x
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Read a variable size integer.      *      * @param in the input stream      * @return the integer      */
+comment|/**      * Read a variable size integer.      *      * @param in the input stream      * @return the integer      * @throws IOException if an IO exception occurred while reading.      */
 specifier|public
 specifier|static
 name|int
@@ -555,7 +556,7 @@ return|;
 block|}
 block|}
 block|}
-comment|/**      * Write a variable size long.      * Negative values need 10 bytes.      *      * @param out the output stream      * @param x   the value      */
+comment|/**      * Write a variable size long.      * Negative values need 10 bytes.      *      * @param out the output stream      * @param x   the value      * @throws IOException if an IO exception occurred while writing.      */
 specifier|public
 specifier|static
 name|void
@@ -616,7 +617,7 @@ name|x
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Write a long (8 bytes).      *      * @param out the output stream      * @param x   the value      */
+comment|/**      * Write a long (8 bytes).      *      * @param out the output stream      * @param x   the value      * @throws IOException if an IO exception occurred while writing.      */
 specifier|public
 specifier|static
 name|void
@@ -656,7 +657,7 @@ name|x
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Read a long (8 bytes).      *      * @param in the input stream      * @return the value      */
+comment|/**      * Read a long (8 bytes).      *      * @param in the input stream      * @return the value      * @throws IOException if an IO exception occurred while reading.      */
 specifier|public
 specifier|static
 name|long
@@ -693,7 +694,7 @@ literal|0xffffffffL
 operator|)
 return|;
 block|}
-comment|/**      * Write an integer (4 bytes).      *      * @param out the output stream      * @param x   the value      */
+comment|/**      * Write an integer (4 bytes).      *      * @param out the output stream      * @param x   the value      * @throws IOException if an IO exception occurred while writing.      */
 specifier|public
 specifier|static
 name|void
@@ -761,7 +762,7 @@ name|x
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Read an integer (4 bytes).      *      * @param in the input stream      * @return the value      */
+comment|/**      * Read an integer (4 bytes).      *      * @param in the input stream      * @return the value      * @throws IOException if an IO exception occurred while reading.      */
 specifier|public
 specifier|static
 name|int
@@ -823,7 +824,7 @@ literal|0xff
 operator|)
 return|;
 block|}
-comment|/**      * Read a variable size long.      *      * @param in the input stream      * @return the long      */
+comment|/**      * Read a variable size long.      *      * @param in the input stream      * @return the long      * @throws IOException if an IO exception occurred while reading.      */
 specifier|public
 specifier|static
 name|long
