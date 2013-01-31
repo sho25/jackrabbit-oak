@@ -327,6 +327,13 @@ argument_list|()
 argument_list|)
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|t
+operator|!=
+literal|null
+condition|)
+block|{
 name|builder
 operator|.
 name|addEntry
@@ -336,6 +343,7 @@ argument_list|,
 name|t
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|userEntries
 operator|=
@@ -572,6 +580,7 @@ specifier|final
 name|long
 name|permissions
 decl_stmt|;
+specifier|private
 name|Entry
 parameter_list|(
 name|NodeUtil
@@ -622,6 +631,7 @@ specifier|final
 class|class
 name|EntriesBuilder
 block|{
+specifier|private
 name|ImmutableSortedMap
 operator|.
 name|Builder
@@ -637,6 +647,7 @@ operator|.
 name|naturalOrder
 argument_list|()
 decl_stmt|;
+specifier|private
 name|ImmutableSortedMap
 operator|.
 name|Builder
@@ -656,9 +667,13 @@ specifier|private
 name|void
 name|addEntry
 parameter_list|(
+annotation|@
+name|Nonnull
 name|Principal
 name|principal
 parameter_list|,
+annotation|@
+name|Nonnull
 name|Tree
 name|entryTree
 parameter_list|)
