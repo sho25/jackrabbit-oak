@@ -224,7 +224,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *<code>ReadOnlyVersionManager</code> provides implementations for read-only  * version operations modeled after the ones available in {@link javax.jcr.version.VersionManager}.  */
+comment|/**  * {@code ReadOnlyVersionManager} provides implementations for read-only  * version operations modeled after the ones available in {@link javax.jcr.version.VersionManager}.  */
 end_comment
 
 begin_class
@@ -233,7 +233,7 @@ specifier|abstract
 class|class
 name|ReadOnlyVersionManager
 block|{
-comment|/**      * @return the read-only {@link Tree} for the jcr:versionStorage node. The      *         returned<code>Tree</code> instance must be up-to-date with the      *<code>Root</code> returned by {@link #getWorkspaceRoot()}.      */
+comment|/**      * @return the read-only {@link Tree} for the jcr:versionStorage node. The      *         returned {@code Tree} instance must be up-to-date with the      *         {@code Root} returned by {@link #getWorkspaceRoot()}.      */
 annotation|@
 name|Nonnull
 specifier|protected
@@ -242,7 +242,7 @@ name|Tree
 name|getVersionStorageTree
 parameter_list|()
 function_decl|;
-comment|/**      * @return the<code>Root</code> of the workspace.      */
+comment|/**      * @return the {@code Root} of the workspace.      */
 annotation|@
 name|Nonnull
 specifier|protected
@@ -260,7 +260,7 @@ name|ReadOnlyNodeTypeManager
 name|getNodeTypeManager
 parameter_list|()
 function_decl|;
-comment|/**      * Returns<code>true</code> if the tree is checked out; otherwise      *<code>false</code>.      *      * @param tree the tree to check.      * @return whether the tree is checked out or not.      */
+comment|/**      * Returns {@code true} if the tree is checked out; otherwise      * {@code false}.      *      * @param tree the tree to check.      * @return whether the tree is checked out or not.      */
 specifier|public
 name|boolean
 name|isCheckedOut
@@ -284,7 +284,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-comment|/**      * Returns<code>true</code> if the tree at the given absolute Oak path is      * checked out; otherwise<code>false</code>.      *      * @param absOakPath an absolute path.      * @return whether the tree at the given location is checked out or not.      */
+comment|/**      * Returns {@code true} if the tree at the given absolute Oak path is      * checked out; otherwise {@code false}.      *      * @param absOakPath an absolute path.      * @return whether the tree at the given location is checked out or not.      */
 specifier|public
 name|boolean
 name|isCheckedOut
@@ -311,7 +311,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-comment|/**      * Returns the tree representing the version history of the given      * versionable tree or<code>null</code> if none exists yet.      *      * @param versionable the versionable tree.      * @return the version history or<code>null</code> if none exists yet.      * @throws UnsupportedRepositoryOperationException      *                             if the versionable tree is not actually      *                             versionable.      * @throws RepositoryException if an error occurs while checking the node      *                             type of the tree.      */
+comment|/**      * Returns the tree representing the version history of the given      * versionable tree or {@code null} if none exists yet.      *      * @param versionable the versionable tree.      * @return the version history or {@code null} if none exists yet.      * @throws UnsupportedRepositoryOperationException      *                             if the versionable tree is not actually      *                             versionable.      * @throws RepositoryException if an error occurs while checking the node      *                             type of the tree.      */
 annotation|@
 name|CheckForNull
 specifier|public
@@ -371,7 +371,7 @@ name|getTree
 argument_list|()
 return|;
 block|}
-comment|/**      * Returns the path of the version history for the given<code>uuid</code>.      * The returned path is relative to the version storage tree as returned      * by {@link #getVersionStorageTree()}.      *      * @param uuid the uuid of the versionable node      * @return the relative path of the version history for the given uuid.      */
+comment|/**      * Returns the path of the version history for the given {@code uuid}.      * The returned path is relative to the version storage tree as returned      * by {@link #getVersionStorageTree()}.      *      * @param uuid the uuid of the versionable node      * @return the relative path of the version history for the given uuid.      */
 annotation|@
 name|Nonnull
 specifier|public
@@ -445,7 +445,7 @@ name|uuid
 argument_list|)
 return|;
 block|}
-comment|/**      * Returns the tree representing the base version of the given versionable      * tree or<code>null</code> if none exists yet. This is the case when a      * versionable node is created, but is not yet saved.      *      * @param versionable the versionable tree.      * @return the tree representing the base version or<code>null</code>.      * @throws UnsupportedRepositoryOperationException      *                             if the versionable tree is not actually      *                             versionable.      * @throws RepositoryException if an error occurs while checking the node      *                             type of the tree.      */
+comment|/**      * Returns the tree representing the base version of the given versionable      * tree or {@code null} if none exists yet. This is the case when a      * versionable node is created, but is not yet saved.      *      * @param versionable the versionable tree.      * @return the tree representing the base version or {@code null}.      * @throws UnsupportedRepositoryOperationException      *                             if the versionable tree is not actually      *                             versionable.      * @throws RepositoryException if an error occurs while checking the node      *                             type of the tree.      */
 annotation|@
 name|CheckForNull
 specifier|public
@@ -678,7 +678,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-comment|/**      * Checks if the given<code>tree</code> is versionable and throws a {@link      * UnsupportedRepositoryOperationException} if it is not.      *      * @param tree the tree to check.      * @return the passed tree.      * @throws UnsupportedRepositoryOperationException      *                             if the tree is not versionable.      * @throws RepositoryException if an error occurs while checking the node      *                             type of the tree.      */
+comment|/**      * Checks if the given {@code tree} is versionable and throws a {@link      * UnsupportedRepositoryOperationException} if it is not.      *      * @param tree the tree to check.      * @return the passed tree.      * @throws UnsupportedRepositoryOperationException      *                             if the tree is not versionable.      * @throws RepositoryException if an error occurs while checking the node      *                             type of the tree.      */
 annotation|@
 name|Nonnull
 specifier|protected
@@ -726,7 +726,7 @@ return|return
 name|tree
 return|;
 block|}
-comment|/**      * Returns<code>true</code> if the given<code>tree</code> is of type      *<code>mix:versionable</code>;<code>false</code> otherwise.      *      * @param tree the tree to check.      * @return whether the<code>tree</code> is versionable.      * @throws RepositoryException if an error occurs while checking the node      *                             type of the tree.      */
+comment|/**      * Returns {@code true} if the given {@code tree} is of type      * {@code mix:versionable}; {@code false} otherwise.      *      * @param tree the tree to check.      * @return whether the {@code tree} is versionable.      * @throws RepositoryException if an error occurs while checking the node      *                             type of the tree.      */
 specifier|protected
 name|boolean
 name|isVersionable
