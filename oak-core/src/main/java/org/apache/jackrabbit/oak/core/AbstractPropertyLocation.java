@@ -90,9 +90,16 @@ specifier|abstract
 class|class
 name|AbstractPropertyLocation
 parameter_list|<
+name|T
+extends|extends
+name|Tree
+parameter_list|,
 name|L
 extends|extends
 name|AbstractNodeLocation
+parameter_list|<
+name|T
+parameter_list|>
 parameter_list|>
 implements|implements
 name|TreeLocation

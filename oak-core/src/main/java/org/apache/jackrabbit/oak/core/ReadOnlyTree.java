@@ -1267,6 +1267,8 @@ name|PropertyLocation
 extends|extends
 name|AbstractPropertyLocation
 argument_list|<
+name|ReadOnlyTree
+argument_list|,
 name|NodeLocation
 argument_list|>
 block|{

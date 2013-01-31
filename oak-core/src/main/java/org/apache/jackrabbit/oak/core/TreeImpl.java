@@ -2766,6 +2766,8 @@ name|PropertyLocation
 extends|extends
 name|AbstractPropertyLocation
 argument_list|<
+name|TreeImpl
+argument_list|,
 name|NodeLocation
 argument_list|>
 block|{
