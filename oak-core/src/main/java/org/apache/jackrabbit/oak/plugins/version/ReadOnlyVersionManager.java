@@ -644,6 +644,19 @@ name|BOOLEAN
 argument_list|)
 return|;
 block|}
+elseif|else
+if|if
+condition|(
+name|t
+operator|.
+name|isRoot
+argument_list|()
+condition|)
+block|{
+return|return
+literal|true
+return|;
+block|}
 block|}
 else|else
 block|{
@@ -655,25 +668,6 @@ comment|// but it may mean oak-jcr sees a node as checked out even though
 comment|// it is in fact read-only because of a checked-in ancestor.
 block|}
 comment|// otherwise return checkedOut status of parent
-if|if
-condition|(
-name|location
-operator|.
-name|getParent
-argument_list|()
-operator|==
-name|TreeLocation
-operator|.
-name|NULL
-condition|)
-block|{
-comment|// root tree
-return|return
-literal|true
-return|;
-block|}
-else|else
-block|{
 return|return
 name|isCheckedOut
 argument_list|(
@@ -683,7 +677,6 @@ name|getParent
 argument_list|()
 argument_list|)
 return|;
-block|}
 block|}
 comment|/**      * Checks if the given<code>tree</code> is versionable and throws a {@link      * UnsupportedRepositoryOperationException} if it is not.      *      * @param tree the tree to check.      * @return the passed tree.      * @throws UnsupportedRepositoryOperationException      *                             if the tree is not versionable.      * @throws RepositoryException if an error occurs while checking the node      *                             type of the tree.      */
 annotation|@

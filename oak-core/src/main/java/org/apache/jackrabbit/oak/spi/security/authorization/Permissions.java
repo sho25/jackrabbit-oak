@@ -900,11 +900,11 @@ condition|)
 block|{
 if|if
 condition|(
+operator|!
 name|location
-operator|==
-name|TreeLocation
 operator|.
-name|NULL
+name|exists
+argument_list|()
 condition|)
 block|{
 name|permissions

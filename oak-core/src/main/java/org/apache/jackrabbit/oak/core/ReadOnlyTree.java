@@ -1014,7 +1014,7 @@ name|parent
 operator|==
 literal|null
 condition|?
-name|TreeLocation
+name|NullLocation
 operator|.
 name|NULL
 else|:
@@ -1105,7 +1105,7 @@ literal|null
 condition|)
 block|{
 return|return
-name|TreeLocation
+name|NullLocation
 operator|.
 name|NULL
 return|;
@@ -1168,7 +1168,7 @@ name|child
 operator|==
 literal|null
 condition|?
-name|TreeLocation
+name|NullLocation
 operator|.
 name|NULL
 else|:

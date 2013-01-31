@@ -333,11 +333,11 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
+operator|!
 name|location
-operator|==
-name|TreeLocation
 operator|.
-name|NULL
+name|exists
+argument_list|()
 condition|)
 block|{
 throw|throw
@@ -378,7 +378,7 @@ literal|']'
 return|;
 block|}
 comment|//------------------------------------------------------------< private>---
-comment|/**      * The underlying {@link org.apache.jackrabbit.oak.api.TreeLocation} of this item.      * The location is only re-resolved when the revision of this item does not match      * the revision of the session.      * @return  tree location of the underlying item or {@link TreeLocation#NULL} if stale.      */
+comment|/**      * The underlying {@link org.apache.jackrabbit.oak.api.TreeLocation} of this item.      * The location is only re-resolved when the revision of this item does not match      * the revision of the session.      * @return  tree location of the underlying item or {@link org.apache.jackrabbit.oak.core.NullLocation#NULL} if stale.      */
 annotation|@
 name|Nonnull
 specifier|private
@@ -390,10 +390,9 @@ block|{
 if|if
 condition|(
 name|location
-operator|!=
-name|TreeLocation
 operator|.
-name|NULL
+name|exists
+argument_list|()
 operator|&&
 name|sessionDelegate
 operator|.
