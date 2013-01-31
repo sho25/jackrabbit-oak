@@ -81,7 +81,7 @@ name|oak
 operator|.
 name|util
 operator|.
-name|NodeUtil
+name|TreeUtil
 import|;
 end_import
 
@@ -152,22 +152,15 @@ name|Tree
 name|tree
 parameter_list|)
 block|{
-name|NodeUtil
-name|node
-init|=
-operator|new
-name|NodeUtil
-argument_list|(
-name|tree
-argument_list|)
-decl_stmt|;
 name|String
 name|ntName
 init|=
-name|node
+name|TreeUtil
 operator|.
-name|getPrimaryNodeTypeName
-argument_list|()
+name|getPrimaryTypeName
+argument_list|(
+name|tree
+argument_list|)
 decl_stmt|;
 return|return
 name|AC_NODETYPE_NAMES

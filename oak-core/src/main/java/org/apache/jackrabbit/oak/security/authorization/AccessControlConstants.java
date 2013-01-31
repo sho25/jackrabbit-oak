@@ -167,26 +167,9 @@ name|REP_PERMISSION_STORE
 decl_stmt|;
 comment|/**      * @since OAK 1.0      */
 name|String
-name|MIX_REP_VERSIONABLE_INFO
+name|MIX_REP_VERSIONABLE_PATH
 init|=
-literal|"rep:VersionableInfo"
-decl_stmt|;
-name|String
-name|REP_VERSIONABLE_INFO
-init|=
-literal|"rep:versionableInfo"
-decl_stmt|;
-comment|/**      * @since OAK 1.0      */
-name|String
-name|REP_WORKSPACE_NAME
-init|=
-literal|"rep:workspaceName"
-decl_stmt|;
-comment|/**      * @since OAK 1.0      */
-name|String
-name|REP_VERSIONABLE_PATH
-init|=
-literal|"rep:versionablePath"
+literal|"rep:VersionablePath"
 decl_stmt|;
 name|Collection
 argument_list|<
