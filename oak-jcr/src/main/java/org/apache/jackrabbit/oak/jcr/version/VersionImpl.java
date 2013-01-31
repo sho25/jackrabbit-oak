@@ -183,9 +183,11 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|util
+name|plugins
 operator|.
-name|TODO
+name|version
+operator|.
+name|VersionConstants
 import|;
 end_import
 
@@ -199,9 +201,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|version
+name|util
 operator|.
-name|VersionConstants
+name|TODO
 import|;
 end_import
 
