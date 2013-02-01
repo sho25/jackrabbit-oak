@@ -737,7 +737,7 @@ name|LoggerFactory
 operator|.
 name|getLogger
 argument_list|(
-name|QueryEngineImpl
+name|Query
 operator|.
 name|class
 argument_list|)
@@ -1806,8 +1806,17 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"plan: "
-operator|+
+literal|"query execute {} "
+argument_list|,
+name|statement
+argument_list|)
+expr_stmt|;
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"query plan {}"
+argument_list|,
 name|getPlan
 argument_list|()
 argument_list|)
