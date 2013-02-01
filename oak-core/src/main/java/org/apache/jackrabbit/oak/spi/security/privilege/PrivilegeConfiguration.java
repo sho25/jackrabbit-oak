@@ -75,22 +75,6 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|api
-operator|.
-name|Tree
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
 name|namepath
 operator|.
 name|NamePathMapper
@@ -126,7 +110,7 @@ name|PrivilegeConfiguration
 extends|extends
 name|SecurityConfiguration
 block|{
-comment|/**      * Creates a new instance of {@link PrivilegeManager}.      *      * @param root The root for which the privilege manager should be created.      * @param namePathMapper The name and path mapper to be used.      * @return A new {@code PrivilegeManager}.      */
+comment|/**      * Creates a new instance of {@link PrivilegeManager}.      *      * @param root           The root for which the privilege manager should be created.      * @param namePathMapper The name and path mapper to be used.      * @return A new {@code PrivilegeManager}.      */
 annotation|@
 name|Nonnull
 name|PrivilegeManager
@@ -137,16 +121,6 @@ name|root
 parameter_list|,
 name|NamePathMapper
 name|namePathMapper
-parameter_list|)
-function_decl|;
-comment|/**      * Creates a new {@code PrivilegeDefinitionReader} instance for the      * specified {@code tree}.      *      * @param tree The {@code Tree} that is used to read the privilege definitions.      * @return A new {@code PrivilegeDefinitionReader}.      */
-annotation|@
-name|Nonnull
-name|PrivilegeDefinitionReader
-name|getPrivilegeDefinitionReader
-parameter_list|(
-name|Tree
-name|tree
 parameter_list|)
 function_decl|;
 block|}
