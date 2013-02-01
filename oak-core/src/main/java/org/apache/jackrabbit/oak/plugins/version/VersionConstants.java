@@ -143,6 +143,12 @@ name|JCR_CHILD_VERSION_HISTORY
 init|=
 literal|"jcr:childVersionHistory"
 decl_stmt|;
+comment|/**      * @since OAK 1.0      */
+name|String
+name|MIX_REP_VERSIONABLE_PATHS
+init|=
+literal|"rep:VersionablePaths"
+decl_stmt|;
 comment|/**      * Quote from JSR 283 Section "15.12.3 Activity Storage"<p/>      *<p/>      * Activities are persisted as nodes of type nt:activity under system-generated      * node names in activity storage below /jcr:system/jcr:activities.<br>      * Similar to the /jcr:system/jcr:versionStorage subgraph, the activity storage      * is a single repository wide store, but is reflected into each workspace.      */
 name|String
 name|ACTIVITIES_PATH

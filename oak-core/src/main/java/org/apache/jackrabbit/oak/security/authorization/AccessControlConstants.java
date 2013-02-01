@@ -165,12 +165,6 @@ literal|'/'
 operator|+
 name|REP_PERMISSION_STORE
 decl_stmt|;
-comment|/**      * @since OAK 1.0      */
-name|String
-name|MIX_REP_VERSIONABLE_PATH
-init|=
-literal|"rep:VersionablePath"
-decl_stmt|;
 name|Collection
 argument_list|<
 name|String
