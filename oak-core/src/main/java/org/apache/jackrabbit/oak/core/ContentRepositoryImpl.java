@@ -105,24 +105,6 @@ name|oak
 operator|.
 name|spi
 operator|.
-name|commit
-operator|.
-name|ConflictHandler
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|spi
-operator|.
 name|query
 operator|.
 name|CompositeQueryIndexProvider
@@ -282,12 +264,7 @@ specifier|final
 name|NodeStore
 name|nodeStore
 decl_stmt|;
-specifier|private
-specifier|final
-name|ConflictHandler
-name|conflictHandler
-decl_stmt|;
-comment|/**      * Creates an content repository instance based on the given, already      * initialized components.      *      * @param nodeStore            the node store this repository is based upon.      * @param defaultWorkspaceName the default workspace name;      * @param conflictHandler      The conflict handler.      * @param indexProvider        index provider      * @param securityProvider     The configured security provider or {@code null} if      *                             default implementations should be used.      */
+comment|/**      * Creates an content repository instance based on the given, already      * initialized components.      *      * @param nodeStore            the node store this repository is based upon.      * @param defaultWorkspaceName the default workspace name;      * @param indexProvider        index provider      * @param securityProvider     The configured security provider or {@code null} if      *                             default implementations should be used.      */
 specifier|public
 name|ContentRepositoryImpl
 parameter_list|(
@@ -296,9 +273,6 @@ name|nodeStore
 parameter_list|,
 name|String
 name|defaultWorkspaceName
-parameter_list|,
-name|ConflictHandler
-name|conflictHandler
 parameter_list|,
 name|QueryIndexProvider
 name|indexProvider
@@ -326,12 +300,6 @@ condition|?
 name|DEFAULT_WORKSPACE_NAME
 else|:
 name|defaultWorkspaceName
-expr_stmt|;
-name|this
-operator|.
-name|conflictHandler
-operator|=
-name|conflictHandler
 expr_stmt|;
 name|this
 operator|.
@@ -456,8 +424,6 @@ argument_list|,
 name|workspaceName
 argument_list|,
 name|nodeStore
-argument_list|,
-name|conflictHandler
 argument_list|,
 name|indexProvider
 argument_list|)

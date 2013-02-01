@@ -379,6 +379,7 @@ implements|implements
 name|Tree
 block|{
 comment|/**      * Internal and hidden property that contains the child order      */
+specifier|public
 specifier|static
 specifier|final
 name|String

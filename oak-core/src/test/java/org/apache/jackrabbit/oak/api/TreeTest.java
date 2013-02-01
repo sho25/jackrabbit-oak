@@ -29,6 +29,20 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|collect
+operator|.
+name|Sets
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -56,6 +70,24 @@ operator|.
 name|commit
 operator|.
 name|AnnotatingConflictHandler
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|commit
+operator|.
+name|ChildOrderConflictHandler
 import|;
 end_import
 
@@ -144,20 +176,6 @@ import|;
 end_import
 
 begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|collect
-operator|.
-name|Sets
-import|;
-end_import
-
-begin_import
 import|import static
 name|org
 operator|.
@@ -238,15 +256,12 @@ operator|.
 name|with
 argument_list|(
 operator|new
-name|ConflictValidator
-argument_list|()
-argument_list|)
-operator|.
-name|with
+name|ChildOrderConflictHandler
 argument_list|(
 operator|new
 name|AnnotatingConflictHandler
 argument_list|()
+argument_list|)
 block|{
 comment|/**                  * Allow deleting changed node.                  * See {@link TreeTest#removeWithConcurrentOrderBefore()}                  */
 annotation|@
@@ -272,6 +287,13 @@ name|OURS
 return|;
 block|}
 block|}
+argument_list|)
+operator|.
+name|with
+argument_list|(
+operator|new
+name|ConflictValidator
+argument_list|()
 argument_list|)
 operator|.
 name|createContentRepository

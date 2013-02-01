@@ -45,7 +45,7 @@ name|plugins
 operator|.
 name|commit
 operator|.
-name|AnnotatingConflictHandler
+name|ConflictValidator
 import|;
 end_import
 
@@ -63,7 +63,7 @@ name|plugins
 operator|.
 name|commit
 operator|.
-name|ConflictValidator
+name|JcrConflictHandler
 import|;
 end_import
 
@@ -141,15 +141,15 @@ argument_list|()
 operator|.
 name|with
 argument_list|(
-operator|new
-name|ConflictValidator
-argument_list|()
+name|JcrConflictHandler
+operator|.
+name|JCR_CONFLICT_HANDLER
 argument_list|)
 operator|.
 name|with
 argument_list|(
 operator|new
-name|AnnotatingConflictHandler
+name|ConflictValidator
 argument_list|()
 argument_list|)
 operator|.

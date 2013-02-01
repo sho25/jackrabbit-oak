@@ -107,6 +107,11 @@ parameter_list|()
 throws|throws
 name|CommitFailedException
 function_decl|;
+comment|/**      * Rebase the changes from this branch on top of the current      * root.      */
+name|void
+name|rebase
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 

@@ -105,7 +105,7 @@ name|plugins
 operator|.
 name|commit
 operator|.
-name|AnnotatingConflictHandler
+name|ConflictValidatorProvider
 import|;
 end_import
 
@@ -123,7 +123,7 @@ name|plugins
 operator|.
 name|commit
 operator|.
-name|ConflictValidatorProvider
+name|JcrConflictHandler
 import|;
 end_import
 
@@ -537,6 +537,13 @@ argument_list|)
 expr_stmt|;
 name|with
 argument_list|(
+name|JcrConflictHandler
+operator|.
+name|JCR_CONFLICT_HANDLER
+argument_list|)
+expr_stmt|;
+name|with
+argument_list|(
 operator|new
 name|DefaultTypeEditor
 argument_list|()
@@ -595,13 +602,6 @@ name|with
 argument_list|(
 operator|new
 name|Property2IndexHookProvider
-argument_list|()
-argument_list|)
-expr_stmt|;
-name|with
-argument_list|(
-operator|new
-name|AnnotatingConflictHandler
 argument_list|()
 argument_list|)
 expr_stmt|;
