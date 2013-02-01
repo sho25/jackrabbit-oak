@@ -103,6 +103,26 @@ begin_import
 import|import
 name|org
 operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|nodetype
+operator|.
+name|write
+operator|.
+name|InitialContent
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|junit
 operator|.
 name|After
@@ -167,6 +187,13 @@ operator|new
 name|Oak
 argument_list|()
 operator|.
+name|with
+argument_list|(
+operator|new
+name|InitialContent
+argument_list|()
+argument_list|)
+operator|.
 name|createContentRepository
 argument_list|()
 expr_stmt|;
@@ -220,6 +247,11 @@ operator|.
 name|getTree
 argument_list|(
 literal|"/"
+argument_list|)
+operator|.
+name|addChild
+argument_list|(
+literal|"test"
 argument_list|)
 decl_stmt|;
 name|t
@@ -293,7 +325,7 @@ name|r
 operator|.
 name|getTree
 argument_list|(
-literal|"/"
+literal|"/test"
 argument_list|)
 operator|.
 name|getChild
@@ -319,7 +351,7 @@ argument_list|()
 operator|.
 name|executeQuery
 argument_list|(
-literal|"//element(*, nt:base)"
+literal|"test//element(*, nt:base)"
 argument_list|,
 name|Query
 operator|.
@@ -393,13 +425,11 @@ name|Arrays
 operator|.
 name|asList
 argument_list|(
-literal|"/"
+literal|"/test/node1"
 argument_list|,
-literal|"/node1"
+literal|"/test/node2"
 argument_list|,
-literal|"/node2"
-argument_list|,
-literal|"/node3"
+literal|"/test/node3"
 argument_list|)
 argument_list|)
 argument_list|,

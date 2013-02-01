@@ -749,9 +749,7 @@ name|preparing
 argument_list|)
 expr_stmt|;
 name|validateNodeType
-argument_list|(
-name|nodeTypeName
-argument_list|)
+argument_list|()
 expr_stmt|;
 name|f
 operator|.
@@ -806,10 +804,7 @@ block|}
 specifier|private
 name|void
 name|validateNodeType
-parameter_list|(
-name|String
-name|nodeType
-parameter_list|)
+parameter_list|()
 block|{
 comment|// this looks a bit weird, but it should be correct - the code
 comment|// assumes that paths and node type names have the same format
@@ -818,9 +813,35 @@ name|query
 operator|.
 name|validatePath
 argument_list|(
-name|nodeType
+name|nodeTypeName
 argument_list|)
 expr_stmt|;
+try|try
+block|{
+comment|// force init of node types, which will also check for the node
+comment|// type's existence
+name|getNodeTypes
+argument_list|()
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|RepositoryException
+name|e
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|IllegalArgumentException
+argument_list|(
+literal|"Unable to determine node type "
+operator|+
+name|nodeTypeName
+argument_list|,
+name|e
+argument_list|)
+throw|;
+block|}
 block|}
 annotation|@
 name|Override

@@ -1090,17 +1090,6 @@ argument_list|(
 name|line
 argument_list|)
 expr_stmt|;
-name|executeQuery
-argument_list|(
-name|got
-argument_list|,
-name|QueryEngineImpl
-operator|.
-name|SQL2
-argument_list|,
-literal|null
-argument_list|)
-expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
