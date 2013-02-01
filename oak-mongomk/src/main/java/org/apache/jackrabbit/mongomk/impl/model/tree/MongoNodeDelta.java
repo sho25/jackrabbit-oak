@@ -73,22 +73,6 @@ name|mk
 operator|.
 name|model
 operator|.
-name|Id
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|mk
-operator|.
-name|model
-operator|.
 name|tree
 operator|.
 name|NodeState
@@ -257,7 +241,7 @@ name|Map
 argument_list|<
 name|String
 argument_list|,
-name|Id
+name|NodeState
 argument_list|>
 name|removedChildNodes
 init|=
@@ -266,7 +250,7 @@ name|HashMap
 argument_list|<
 name|String
 argument_list|,
-name|Id
+name|NodeState
 argument_list|>
 argument_list|()
 decl_stmt|;
@@ -389,7 +373,7 @@ name|Map
 argument_list|<
 name|String
 argument_list|,
-name|Id
+name|NodeState
 argument_list|>
 name|getRemovedChildNodes
 parameter_list|()
@@ -845,7 +829,7 @@ name|Map
 argument_list|<
 name|String
 argument_list|,
-name|Id
+name|NodeState
 argument_list|>
 name|otherRemovedChildNodes
 init|=
@@ -965,7 +949,7 @@ name|Entry
 argument_list|<
 name|String
 argument_list|,
-name|Id
+name|NodeState
 argument_list|>
 name|removed
 range|:
@@ -1170,7 +1154,7 @@ name|put
 argument_list|(
 name|name
 argument_list|,
-literal|null
+name|before
 comment|/*provider.getId(before)*/
 argument_list|)
 expr_stmt|;

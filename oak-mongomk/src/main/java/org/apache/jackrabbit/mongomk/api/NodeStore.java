@@ -201,6 +201,19 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
+comment|/**      * @see MicroKernel#rebase(String, String)      *      * @param branchRevisionId Branch revision id to rebase.      * @param newBaseRevisionId  New base revision to rebase onto.      * @return  The revision id of the rebased branch.      * @throws Exception If an error occurred while rebasing.      */
+name|String
+name|rebase
+parameter_list|(
+name|String
+name|branchRevisionId
+parameter_list|,
+name|String
+name|newBaseRevisionId
+parameter_list|)
+throws|throws
+name|Exception
+function_decl|;
 comment|/**      * @see MicroKernel#nodeExists(String, String)      *      * @param path The path of the node to test.      * @param revisionId The revision id of the node or {@code null} for the head revision.      * @return {@code true} if the node for the specific revision exists else {@code false}.      * @throws Exception If an error occurred while testing the node.      */
 name|boolean
 name|nodeExists
