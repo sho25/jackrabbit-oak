@@ -27,6 +27,16 @@ name|InputStream
 import|;
 end_import
 
+begin_import
+import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|Nonnull
+import|;
+end_import
+
 begin_comment
 comment|/**  * The MicroKernel<b>Design Goals and Principles</b>:  *<ul>  *<li>manage huge trees of nodes and properties efficiently</li>  *<li>MVCC-based concurrency control  * (writers don't interfere with readers, snapshot isolation)</li>  *<li>GIT/SVN-inspired DAG-based versioning model</li>  *<li>highly scalable concurrent read& write operations</li>  *<li>session-less API (there's no concept of sessions; an implementation doesn't need to track/manage session state)</li>  *<li>easily portable to C</li>  *<li>easy to remote</li>  *<li>efficient support for large number of child nodes</li>  *<li>integrated API for efficiently storing/retrieving large binaries</li>  *<li>human-readable data serialization (JSON)</li>  *</ul>  *<p>  * The MicroKernel<b>Data Model</b>:  *</p>  *<ul>  *<li>simple JSON-inspired data model: just nodes and properties</li>  *<li>a node consists of an unordered set of name -&gt; item mappings. each  * property and child node is uniquely named and a single name can only  * refer to a property or a child node, not both at the same time.  *<li>properties are represented as name/value pairs</li>  *<li>supported property types: string, number, boolean, array</li>  *<li>a property value is stored and used as an opaque, unparsed character sequence</li>  *</ul>  *<p>  * The<b>Retention Policy for Revisions</b>:  *<p>  * TODO specify retention policy for old revisions, i.e. minimal guaranteed retention period (OAK-114)  *</p>  *<p>  * The<b>Retention Policy for Binaries</b>:  *</p>  *<p>  * The MicroKernel implementation is free to remove binaries if both of the  * following conditions are met:  *</p>  *<ul>  *<li>If the binary is not references as a property value of the  * format ":blobId:&lt;blobId&gt;" where&lt;blobId&gt; is the id returned by  * {@link #write(InputStream in)}. This includes simple property values such as  * {"bin": ":blobId:1234"} as well as array property values such as  * {"array": [":blobId:1234", ":blobId:5678"]}.</li>  *<li>If the binary was stored before the last retained revision (this is to  * keep temporary binaries, and binaries that are not yet referenced).</li>  *</ul>  */
 end_comment
@@ -208,6 +218,24 @@ name|branchRevisionId
 parameter_list|,
 name|String
 name|message
+parameter_list|)
+throws|throws
+name|MicroKernelException
+function_decl|;
+comment|/**      * Rebases the specified<i>private</i> branch revision on top of specified new base      * revision.      *<p/>      * A {@code MicroKernelException} is thrown if {@code branchRevisionId} doesn't      * exist, if it's not a branch revision, if {@code newBaseRevisionId} doesn't exist,      * if it's a branch revision or if another error occurs.      *<p/>      * If rebasing results in a conflict, conflicting nodes are annotated with a conflict      * marker denoting the type of the conflict and the value(s) before the rebase operation.      * The conflict marker is an internal node with the name {@code :conflict} and is added      * to the node whose properties or child nodes are in conflict.      *<p/>      * type of conflicts:      *<dl>      *<dt>addExistingProperty:</dt>      *<dd>A property has been added that has a different value than a property with the same name      *         that has been added in trunk.</dd>      *<dt>deleteDeletedProperty:</dt>      *<dd>A property has been removed while a property of the same name has been removed in trunk.</dd>      *<dt>deleteChangedProperty:</dt>      *<dd>A property has been removed while a property of the same name has been changed in trunk.</dd>      *<dt>changeDeletedProperty:</dt>      *<dd>A property has been changed while a property of the same name has been removed in trunk.</dd>      *<dt>changeChangedProperty:</dt>      *<dd>A property has been changed while a property of the same name has been changed to a      *         different value in trunk.</dd>      *<dt>addExistingNode:</dt>      *<dd>A node has been added that is different from a node of them same name that has been added      *         to the trunk.</dd>      *<dt>deleteDeletedNode:</dt>      *<dd>A node has been removed while a node of the same name has been removed in trunk.</dd>      *<dt>deleteChangedNode:</dt>      *<dd>A node has been removed while a node of the same name has been changed in trunk.</dd>      *<dt>changeDeletedNode:</dt>      *<dd>A node has been changed while a node of the same name has been removed in trunk.</dd>      *</dl>      * In this context a node is regarded as changed if a property way added, a property was removed,      * a property was set to a different value, a child node was added, a child node was removed or      * a child node was changed.      *<p/>      * On conflict the conflict marker node carries the conflicting value of the branch while the rebased      * value in the branch itself will be set to the conflicting value of the trunk. In the case of conflicting      * properties, the conflicting value is the property value from the branch. In the case of conflicting      * node, the conflicting value is the node from the branch.      *      * @param branchRevisionId id of private branch revision      * @param newBaseRevisionId id of new base revision      * @return id of the rebased branch revision      * @throws MicroKernelException if {@code branchRevisionId} doesn't exist,      *                              if it's not a branch revision, if {@code newBaseRevisionId}      *                              doesn't exist, if it's a branch revision, or if another error occurs.      */
+annotation|@
+name|Nonnull
+name|String
+comment|/*revisionId */
+name|rebase
+parameter_list|(
+annotation|@
+name|Nonnull
+name|String
+name|branchRevisionId
+parameter_list|,
+name|String
+name|newBaseRevisionId
 parameter_list|)
 throws|throws
 name|MicroKernelException
