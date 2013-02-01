@@ -127,16 +127,6 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Ignore
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
 name|Test
 import|;
 end_import
@@ -148,7 +138,7 @@ end_comment
 begin_class
 specifier|public
 class|class
-name|LargeMoveTest
+name|LargeMoveTestIT
 block|{
 specifier|private
 name|ContentSession
@@ -322,8 +312,6 @@ block|}
 block|}
 annotation|@
 name|Test
-annotation|@
-name|Ignore
 specifier|public
 name|void
 name|moveTest
