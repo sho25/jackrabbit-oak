@@ -194,12 +194,12 @@ comment|// OAK-588: CI builds take too long with MongoMK
 comment|// -> disabled for now
 if|if
 condition|(
+literal|false
+operator|&&
 name|OakMongoMKRepositoryStub
 operator|.
 name|isMongoDBAvailable
 argument_list|()
-operator|&&
-literal|false
 condition|)
 block|{
 name|addTest
