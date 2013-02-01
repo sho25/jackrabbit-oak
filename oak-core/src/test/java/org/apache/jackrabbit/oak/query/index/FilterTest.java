@@ -372,7 +372,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"[1..1]"
+literal|"1"
 argument_list|,
 name|f
 operator|.
@@ -400,7 +400,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"[1..1]"
+literal|"1"
 argument_list|,
 name|f
 operator|.
@@ -428,7 +428,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"[1..1]"
+literal|"1"
 argument_list|,
 name|f
 operator|.
@@ -456,7 +456,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"[1..1]"
+literal|"1"
 argument_list|,
 name|f
 operator|.
@@ -515,7 +515,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"[1..1]"
+literal|"1"
 argument_list|,
 name|f
 operator|.
@@ -574,7 +574,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|".."
+literal|""
 argument_list|,
 name|f
 operator|.
