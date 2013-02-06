@@ -866,7 +866,7 @@ operator|.
 name|isArray
 argument_list|()
 argument_list|,
-literal|"Type must not be an array type"
+literal|"Type must be an array type"
 argument_list|)
 expr_stmt|;
 if|if
