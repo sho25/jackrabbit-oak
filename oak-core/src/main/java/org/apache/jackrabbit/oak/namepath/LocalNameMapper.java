@@ -91,7 +91,7 @@ name|String
 argument_list|>
 name|local
 decl_stmt|;
-specifier|public
+specifier|protected
 name|LocalNameMapper
 parameter_list|(
 name|Map

@@ -508,6 +508,10 @@ name|REP_CONFIGURATIONS
 argument_list|)
 decl_stmt|;
 specifier|private
+name|StringCache
+parameter_list|()
+block|{     }
+specifier|private
 specifier|static
 name|Map
 argument_list|<

@@ -28,6 +28,10 @@ specifier|public
 class|class
 name|NodeStateUtils
 block|{
+specifier|private
+name|NodeStateUtils
+parameter_list|()
+block|{     }
 comment|/**      * Check whether the node or property with the given name is hidden, that      * is, if the node name starts with a ":".      *      * @param name the node or property name      * @return true if the item is hidden      */
 specifier|public
 specifier|static
