@@ -628,10 +628,7 @@ operator|.
 name|getPrincipal
 argument_list|()
 argument_list|,
-name|externalUser
-operator|.
-name|getPath
-argument_list|()
+literal|null
 argument_list|)
 decl_stmt|;
 name|syncAuthorizable
@@ -695,10 +692,7 @@ operator|.
 name|getPrincipal
 argument_list|()
 argument_list|,
-name|externalGroup
-operator|.
-name|getPath
-argument_list|()
+literal|null
 argument_list|)
 decl_stmt|;
 name|syncAuthorizable
