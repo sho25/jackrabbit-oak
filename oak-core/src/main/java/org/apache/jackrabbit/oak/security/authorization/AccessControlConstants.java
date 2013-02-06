@@ -149,6 +149,12 @@ literal|"rep:Permissions"
 decl_stmt|;
 comment|/**      * @since OAK 1.0      */
 name|String
+name|NT_REP_PERMISSION_STORE
+init|=
+literal|"rep:PermissionStore"
+decl_stmt|;
+comment|/**      * @since OAK 1.0      */
+name|String
 name|REP_PERMISSION_STORE
 init|=
 literal|"rep:permissionStore"

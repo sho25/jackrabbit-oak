@@ -213,6 +213,22 @@ name|oak
 operator|.
 name|core
 operator|.
+name|ReadOnlyRoot
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|core
+operator|.
 name|ReadOnlyTree
 import|;
 end_import
@@ -558,9 +574,12 @@ name|this
 operator|.
 name|root
 operator|=
+operator|new
+name|ReadOnlyRoot
+argument_list|(
 name|root
+argument_list|)
 expr_stmt|;
-comment|// FIXME: assert that root has full access.
 name|this
 operator|.
 name|acContext
@@ -1023,16 +1042,12 @@ argument_list|()
 condition|)
 block|{
 comment|// TODO: deal with version content
-comment|// FIXME: non-existing locations currently return null-path
 return|return
 name|compiledPermissions
 operator|.
 name|isGranted
 argument_list|(
-name|location
-operator|.
-name|getPath
-argument_list|()
+name|oakPath
 argument_list|,
 name|permissions
 argument_list|)
