@@ -113,7 +113,7 @@ name|oak
 operator|.
 name|util
 operator|.
-name|NodeUtil
+name|TreeUtil
 import|;
 end_import
 
@@ -337,19 +337,10 @@ name|Tree
 name|definitionTree
 parameter_list|)
 block|{
-name|NodeUtil
-name|n
-init|=
-operator|new
-name|NodeUtil
-argument_list|(
-name|definitionTree
-argument_list|)
-decl_stmt|;
 name|String
 name|name
 init|=
-name|n
+name|definitionTree
 operator|.
 name|getName
 argument_list|()
@@ -357,10 +348,12 @@ decl_stmt|;
 name|boolean
 name|isAbstract
 init|=
-name|n
+name|TreeUtil
 operator|.
 name|getBoolean
 argument_list|(
+name|definitionTree
+argument_list|,
 name|REP_IS_ABSTRACT
 argument_list|)
 decl_stmt|;
@@ -368,10 +361,12 @@ name|String
 index|[]
 name|declAggrNames
 init|=
-name|n
+name|TreeUtil
 operator|.
 name|getStrings
 argument_list|(
+name|definitionTree
+argument_list|,
 name|REP_AGGREGATES
 argument_list|)
 decl_stmt|;
