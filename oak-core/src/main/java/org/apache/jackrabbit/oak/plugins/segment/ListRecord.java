@@ -188,9 +188,12 @@ decl_stmt|;
 name|RecordId
 name|bucketId
 init|=
+name|reader
+operator|.
 name|readRecordId
 argument_list|(
-name|reader
+name|getRecordId
+argument_list|()
 argument_list|,
 name|bucketIndex
 operator|*
