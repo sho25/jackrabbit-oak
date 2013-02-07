@@ -1238,8 +1238,6 @@ name|stagedNode
 argument_list|,
 literal|"addExistingNode"
 argument_list|,
-name|name
-argument_list|,
 name|ourState
 argument_list|)
 expr_stmt|;
@@ -1312,8 +1310,6 @@ name|stagedNode
 argument_list|,
 literal|"deleteDeletedNode"
 argument_list|,
-name|name
-argument_list|,
 name|ourState
 argument_list|)
 expr_stmt|;
@@ -1337,8 +1333,6 @@ argument_list|(
 name|stagedNode
 argument_list|,
 literal|"deleteChangedNode"
-argument_list|,
-name|name
 argument_list|,
 name|ourState
 argument_list|)
@@ -1412,8 +1406,6 @@ argument_list|(
 name|stagedNode
 argument_list|,
 literal|"changeDeletedNode"
-argument_list|,
-name|name
 argument_list|,
 name|ourState
 argument_list|)
@@ -1540,9 +1532,6 @@ name|parent
 parameter_list|,
 name|String
 name|conflictType
-parameter_list|,
-name|String
-name|name
 parameter_list|,
 name|NodeState
 name|ourState
