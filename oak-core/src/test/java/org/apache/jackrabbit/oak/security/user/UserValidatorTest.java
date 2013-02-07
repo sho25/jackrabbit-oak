@@ -569,7 +569,6 @@ argument_list|,
 literal|"pw"
 argument_list|)
 decl_stmt|;
-comment|// FIXME: use user.getPath instead (blocked by OAK-343)
 name|Tree
 name|tree
 init|=
@@ -577,7 +576,10 @@ name|root
 operator|.
 name|getTree
 argument_list|(
-literal|"/rep:security/rep:authorizables/rep:users/t/te/test"
+name|user
+operator|.
+name|getPath
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|tree
@@ -641,7 +643,6 @@ argument_list|,
 literal|"pw"
 argument_list|)
 decl_stmt|;
-comment|// FIXME: use user.getPath instead (blocked by OAK-343)
 name|Tree
 name|tree
 init|=
@@ -649,7 +650,10 @@ name|root
 operator|.
 name|getTree
 argument_list|(
-literal|"/rep:security/rep:authorizables/rep:users/t/te/test"
+name|user
+operator|.
+name|getPath
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|tree
