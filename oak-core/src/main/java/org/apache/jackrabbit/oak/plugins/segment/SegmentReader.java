@@ -317,8 +317,6 @@ init|=
 operator|new
 name|ListRecord
 argument_list|(
-name|this
-argument_list|,
 name|segment
 operator|.
 name|readRecordId
@@ -636,8 +634,6 @@ return|return
 operator|new
 name|ListRecord
 argument_list|(
-name|this
-argument_list|,
 name|id
 argument_list|,
 name|numberOfEntries
@@ -650,8 +646,6 @@ return|return
 operator|new
 name|ListRecord
 argument_list|(
-name|this
-argument_list|,
 name|recordId
 argument_list|,
 name|numberOfEntries
@@ -686,8 +680,6 @@ return|return
 operator|new
 name|BlockRecord
 argument_list|(
-name|this
-argument_list|,
 name|recordId
 argument_list|,
 name|size

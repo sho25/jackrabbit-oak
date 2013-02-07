@@ -395,6 +395,8 @@ name|blocks
 operator|.
 name|getEntry
 argument_list|(
+name|reader
+argument_list|,
 name|blockIndex
 argument_list|)
 argument_list|,
@@ -407,6 +409,8 @@ name|block
 operator|.
 name|read
 argument_list|(
+name|reader
+argument_list|,
 name|blockOffset
 argument_list|,
 name|b

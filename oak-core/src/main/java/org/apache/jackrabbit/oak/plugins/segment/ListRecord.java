@@ -79,9 +79,6 @@ name|bucketSize
 decl_stmt|;
 name|ListRecord
 parameter_list|(
-name|SegmentReader
-name|reader
-parameter_list|,
 name|RecordId
 name|id
 parameter_list|,
@@ -91,8 +88,6 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
-name|reader
-argument_list|,
 name|id
 argument_list|)
 expr_stmt|;
@@ -148,6 +143,9 @@ specifier|public
 name|RecordId
 name|getEntry
 parameter_list|(
+name|SegmentReader
+name|reader
+parameter_list|,
 name|int
 name|index
 parameter_list|)
@@ -192,6 +190,8 @@ name|bucketId
 init|=
 name|readRecordId
 argument_list|(
+name|reader
+argument_list|,
 name|bucketIndex
 operator|*
 literal|4
@@ -203,9 +203,6 @@ init|=
 operator|new
 name|ListRecord
 argument_list|(
-name|getReader
-argument_list|()
-argument_list|,
 name|bucketId
 argument_list|,
 name|bucketSize
@@ -216,6 +213,8 @@ name|bucket
 operator|.
 name|getEntry
 argument_list|(
+name|reader
+argument_list|,
 name|bucketOffset
 argument_list|)
 return|;

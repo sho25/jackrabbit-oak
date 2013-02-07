@@ -293,8 +293,6 @@ init|=
 operator|new
 name|BlockRecord
 argument_list|(
-name|reader
-argument_list|,
 name|blockId
 argument_list|,
 name|bytes
@@ -365,6 +363,8 @@ name|block
 operator|.
 name|read
 argument_list|(
+name|reader
+argument_list|,
 name|i
 argument_list|,
 name|bytes
@@ -417,6 +417,8 @@ name|block
 operator|.
 name|read
 argument_list|(
+name|reader
+argument_list|,
 literal|0
 argument_list|,
 name|large
@@ -575,6 +577,8 @@ name|one
 operator|.
 name|getEntry
 argument_list|(
+name|reader
+argument_list|,
 literal|0
 argument_list|)
 argument_list|)
@@ -597,6 +601,8 @@ name|level1
 operator|.
 name|getEntry
 argument_list|(
+name|reader
+argument_list|,
 literal|0
 argument_list|)
 argument_list|)
@@ -609,6 +615,8 @@ name|level1
 operator|.
 name|getEntry
 argument_list|(
+name|reader
+argument_list|,
 name|LEVEL_SIZE
 operator|-
 literal|1
@@ -635,6 +643,8 @@ name|level1p
 operator|.
 name|getEntry
 argument_list|(
+name|reader
+argument_list|,
 literal|0
 argument_list|)
 argument_list|)
@@ -647,6 +657,8 @@ name|level1p
 operator|.
 name|getEntry
 argument_list|(
+name|reader
+argument_list|,
 name|LEVEL_SIZE
 argument_list|)
 argument_list|)
@@ -671,6 +683,8 @@ name|level2
 operator|.
 name|getEntry
 argument_list|(
+name|reader
+argument_list|,
 literal|0
 argument_list|)
 argument_list|)
@@ -683,6 +697,8 @@ name|level2
 operator|.
 name|getEntry
 argument_list|(
+name|reader
+argument_list|,
 name|LEVEL_SIZE
 operator|*
 name|LEVEL_SIZE
@@ -713,6 +729,8 @@ name|level2p
 operator|.
 name|getEntry
 argument_list|(
+name|reader
+argument_list|,
 literal|0
 argument_list|)
 argument_list|)
@@ -725,6 +743,8 @@ name|level2p
 operator|.
 name|getEntry
 argument_list|(
+name|reader
+argument_list|,
 name|LEVEL_SIZE
 operator|*
 name|LEVEL_SIZE
@@ -762,8 +782,6 @@ return|return
 operator|new
 name|ListRecord
 argument_list|(
-name|reader
-argument_list|,
 name|writer
 operator|.
 name|writeList
@@ -1207,8 +1225,6 @@ init|=
 operator|new
 name|MapRecord
 argument_list|(
-name|reader
-argument_list|,
 name|writer
 operator|.
 name|writeMap
@@ -1231,8 +1247,6 @@ init|=
 operator|new
 name|MapRecord
 argument_list|(
-name|reader
-argument_list|,
 name|writer
 operator|.
 name|writeMap
@@ -1254,8 +1268,6 @@ init|=
 operator|new
 name|MapRecord
 argument_list|(
-name|reader
-argument_list|,
 name|writer
 operator|.
 name|writeMap
@@ -1321,8 +1333,6 @@ init|=
 operator|new
 name|MapRecord
 argument_list|(
-name|reader
-argument_list|,
 name|writer
 operator|.
 name|writeMap
@@ -1343,7 +1353,9 @@ argument_list|,
 name|zero
 operator|.
 name|size
-argument_list|()
+argument_list|(
+name|reader
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|assertNull
@@ -1352,6 +1364,8 @@ name|zero
 operator|.
 name|getEntry
 argument_list|(
+name|reader
+argument_list|,
 literal|"one"
 argument_list|)
 argument_list|)
@@ -1363,7 +1377,9 @@ argument_list|,
 name|one
 operator|.
 name|size
-argument_list|()
+argument_list|(
+name|reader
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|assertEquals
@@ -1374,6 +1390,8 @@ name|one
 operator|.
 name|getEntry
 argument_list|(
+name|reader
+argument_list|,
 literal|"one"
 argument_list|)
 argument_list|)
@@ -1384,6 +1402,8 @@ name|one
 operator|.
 name|getEntry
 argument_list|(
+name|reader
+argument_list|,
 literal|"two"
 argument_list|)
 argument_list|)
@@ -1395,7 +1415,9 @@ argument_list|,
 name|two
 operator|.
 name|size
-argument_list|()
+argument_list|(
+name|reader
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|assertEquals
@@ -1406,6 +1428,8 @@ name|two
 operator|.
 name|getEntry
 argument_list|(
+name|reader
+argument_list|,
 literal|"one"
 argument_list|)
 argument_list|)
@@ -1418,6 +1442,8 @@ name|two
 operator|.
 name|getEntry
 argument_list|(
+name|reader
+argument_list|,
 literal|"two"
 argument_list|)
 argument_list|)
@@ -1428,6 +1454,8 @@ name|two
 operator|.
 name|getEntry
 argument_list|(
+name|reader
+argument_list|,
 literal|"three"
 argument_list|)
 argument_list|)
@@ -1439,7 +1467,9 @@ argument_list|,
 name|many
 operator|.
 name|size
-argument_list|()
+argument_list|(
+name|reader
+argument_list|)
 argument_list|)
 expr_stmt|;
 for|for
@@ -1465,6 +1495,8 @@ name|many
 operator|.
 name|getEntry
 argument_list|(
+name|reader
+argument_list|,
 literal|"key"
 operator|+
 name|i
@@ -1478,6 +1510,8 @@ name|many
 operator|.
 name|getEntry
 argument_list|(
+name|reader
+argument_list|,
 literal|"foo"
 argument_list|)
 argument_list|)
