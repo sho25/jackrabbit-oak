@@ -56,7 +56,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A {@code TreeLocation} denotes a location inside a tree.  * It can either refer to a inner node (that is a {@link org.apache.jackrabbit.oak.api.Tree})  * or to a leaf (that is a {@link org.apache.jackrabbit.oak.api.PropertyState}).  * {@code TreeLocation} instances provide methods for navigating trees. {@code TreeLocation}  * instances are immutable and navigating a tree always results in new {@code TreeLocation}  * instances. Navigation never fails. Errors are deferred until the underlying item itself is  * accessed. That is, if a {@code TreeLocation} points to an item which does not exist or  * is unavailable otherwise (i.e. due to access control restrictions) accessing the tree  * will return {@code null} at this point.  */
+comment|/**  * A {@code TreeLocation} denotes a location inside a tree.  * It can either refer to a inner node (that is a {@link org.apache.jackrabbit.oak.api.Tree}),  * to a leaf (that is a {@link org.apache.jackrabbit.oak.api.PropertyState}) or to an  * invalid location which refers to neither of the former.  * {@code TreeLocation} instances provide methods for navigating trees. {@code TreeLocation}  * instances are immutable and navigating a tree always results in new {@code TreeLocation}  * instances. Navigation never fails. Errors are deferred until the underlying item itself is  * accessed. That is, if a {@code TreeLocation} points to an item which does not exist or  * is unavailable otherwise (i.e. due to access control restrictions) accessing the tree  * will return {@code null} at this point.  */
 end_comment
 
 begin_interface
@@ -64,7 +64,7 @@ specifier|public
 interface|interface
 name|TreeLocation
 block|{
-comment|/**      * Navigate to the parent      * @return  a {@code TreeLocation} for the parent of this location.      */
+comment|/**      * Navigate to the parent or an invalid location for the root of the hierarchy.      * @return  a {@code TreeLocation} for the parent of this location.      */
 annotation|@
 name|Nonnull
 name|TreeLocation
@@ -100,16 +100,16 @@ name|PropertyState
 name|getProperty
 parameter_list|()
 function_decl|;
-comment|/**      * {@link org.apache.jackrabbit.oak.api.Tree.Status} of the underlying item or {@code null} if no      * such item exists.      * @return      */
+comment|/**      * Get the {@link org.apache.jackrabbit.oak.api.Tree.Status} of the underlying item for this      * {@code TreeLocation}.      * @return  underlying status or {@code null} if not available.      */
 annotation|@
 name|CheckForNull
 name|Status
 name|getStatus
 parameter_list|()
 function_decl|;
-comment|/**      * The path of the underlying item or {@code null} if no such item exists.      * @return  path      */
+comment|/**      * The path of this location      * @return  path      */
 annotation|@
-name|CheckForNull
+name|Nonnull
 name|String
 name|getPath
 parameter_list|()
