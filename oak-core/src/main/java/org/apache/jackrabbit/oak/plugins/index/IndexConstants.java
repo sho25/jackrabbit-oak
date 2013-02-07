@@ -65,6 +65,12 @@ name|PROPERTY_NAMES
 init|=
 literal|"propertyNames"
 decl_stmt|;
+comment|/**      * Defines the property name of the "declaringNodeTypes" property with      * allows to restrict a given index definition to specific node types.      */
+name|String
+name|DECLARING_NODE_TYPES
+init|=
+literal|"declaringNodeTypes"
+decl_stmt|;
 block|}
 end_interface
 

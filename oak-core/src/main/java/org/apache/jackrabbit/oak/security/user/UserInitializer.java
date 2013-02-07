@@ -290,7 +290,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Creates initial set of users to be present in the repository. This  * implementation uses the {@code UserManager} such as defined by the  * user configuration.  *  * Currently the following users are created:  *  *<ul>  *<li>An administrator user using {@link UserConstants#PARAM_ADMIN_ID}  *     or {@link UserConstants#DEFAULT_ADMIN_ID} if the config option is missing.</li>  *<li>An administrator user using {@link UserConstants#PARAM_ANONYMOUS_ID}  *     or {@link UserConstants#DEFAULT_ANONYMOUS_ID} if the config option is  *     missing.</li>  *</ul>  *  * In addition this initializer sets up index definitions for the following  * user related properties:  *  *<ul>  *<li>{@link UserConstants#REP_AUTHORIZABLE_ID}</li>  *<li>{@link UserConstants#REP_PRINCIPAL_NAME}</li>  *<li>{@link UserConstants#REP_MEMBERS}</li>  *</ul>  */
+comment|/**  * Creates initial set of users to be present in the repository. This  * implementation uses the {@code UserManager} such as defined by the  * user configuration.  *<p/>  * Currently the following users are created:  *<p/>  *<ul>  *<li>An administrator user using {@link UserConstants#PARAM_ADMIN_ID}  * or {@link UserConstants#DEFAULT_ADMIN_ID} if the config option is missing.</li>  *<li>An administrator user using {@link UserConstants#PARAM_ANONYMOUS_ID}  * or {@link UserConstants#DEFAULT_ANONYMOUS_ID} if the config option is  * missing.</li>  *</ul>  *<p/>  * In addition this initializer sets up index definitions for the following  * user related properties:  *<p/>  *<ul>  *<li>{@link UserConstants#REP_AUTHORIZABLE_ID}</li>  *<li>{@link UserConstants#REP_PRINCIPAL_NAME}</li>  *<li>{@link UserConstants#REP_MEMBERS}</li>  *</ul>  */
 end_comment
 
 begin_class
@@ -420,12 +420,16 @@ literal|"authorizableId"
 argument_list|,
 literal|true
 argument_list|,
-name|UserConstants
-operator|.
+operator|new
+name|String
+index|[]
+block|{
 name|REP_AUTHORIZABLE_ID
+block|}
+argument_list|,
+literal|null
 argument_list|)
 expr_stmt|;
-comment|// FIXME OAK-396: rep:principalName only needs to be unique if defined with user/group nodes -> add defining nt-info to uniqueness constraint otherwise ac-editing will fail.
 name|IndexUtils
 operator|.
 name|createIndexDefinition
@@ -436,9 +440,21 @@ literal|"principalName"
 argument_list|,
 literal|true
 argument_list|,
-name|UserConstants
-operator|.
+operator|new
+name|String
+index|[]
+block|{
 name|REP_PRINCIPAL_NAME
+block|}
+argument_list|,
+operator|new
+name|String
+index|[]
+block|{
+name|NT_REP_GROUP
+block|,
+name|NT_REP_USER
+block|}
 argument_list|)
 expr_stmt|;
 name|IndexUtils
@@ -451,9 +467,16 @@ literal|"members"
 argument_list|,
 literal|false
 argument_list|,
+operator|new
+name|String
+index|[]
+block|{
 name|UserConstants
 operator|.
 name|REP_MEMBERS
+block|}
+argument_list|,
+literal|null
 argument_list|)
 expr_stmt|;
 name|String

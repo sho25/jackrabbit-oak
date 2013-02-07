@@ -488,6 +488,8 @@ name|of
 argument_list|(
 name|JCR_UUID
 argument_list|)
+argument_list|,
+literal|null
 argument_list|)
 expr_stmt|;
 name|IndexUtils
@@ -510,6 +512,8 @@ name|JCR_PRIMARYTYPE
 argument_list|,
 name|JCR_MIXINTYPES
 argument_list|)
+argument_list|,
+literal|null
 argument_list|)
 expr_stmt|;
 block|}

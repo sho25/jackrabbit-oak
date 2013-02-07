@@ -169,6 +169,8 @@ class|class
 name|AccessControlInitializer
 implements|implements
 name|RepositoryInitializer
+implements|,
+name|AccessControlConstants
 block|{
 comment|/**      * logger instance      */
 specifier|private
@@ -225,7 +227,6 @@ argument_list|(
 name|root
 argument_list|)
 decl_stmt|;
-comment|// TODO OAK-396: add declaring node type information
 name|IndexUtils
 operator|.
 name|createIndexDefinition
@@ -245,9 +246,19 @@ name|String
 operator|>
 name|of
 argument_list|(
-name|AccessControlConstants
-operator|.
 name|REP_PRINCIPAL_NAME
+argument_list|)
+argument_list|,
+name|ImmutableList
+operator|.
+expr|<
+name|String
+operator|>
+name|of
+argument_list|(
+name|NT_REP_DENY_ACE
+argument_list|,
+name|NT_REP_GRANT_ACE
 argument_list|)
 argument_list|)
 expr_stmt|;
