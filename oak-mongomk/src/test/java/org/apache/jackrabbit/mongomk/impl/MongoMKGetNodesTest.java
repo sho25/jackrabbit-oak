@@ -547,7 +547,6 @@ operator|.
 name|create
 argument_list|()
 expr_stmt|;
-comment|// FIXME - depth> 3449 does not work.
 name|JSONObject
 name|root
 init|=
@@ -561,7 +560,8 @@ literal|"/"
 argument_list|,
 literal|null
 argument_list|,
-literal|3449
+operator|-
+literal|1
 argument_list|,
 literal|0
 argument_list|,
