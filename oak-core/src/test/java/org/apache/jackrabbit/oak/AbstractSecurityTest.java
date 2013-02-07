@@ -376,7 +376,7 @@ operator|new
 name|InitialContent
 argument_list|()
 argument_list|)
-comment|// FIXME: specify index provider (waiting for OAK-396 and OAK-343)
+comment|// FIXME: specify index provider (waiting for OAK-343)
 comment|//                .with(new Property2IndexHookProvider())
 comment|//                .with(new Property2IndexProvider())
 operator|.
