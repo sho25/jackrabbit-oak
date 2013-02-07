@@ -94,6 +94,7 @@ comment|/**  * TODO document  */
 end_comment
 
 begin_class
+specifier|final
 class|class
 name|StringCache
 block|{

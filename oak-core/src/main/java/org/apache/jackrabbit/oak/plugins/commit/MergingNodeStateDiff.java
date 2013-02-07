@@ -262,6 +262,7 @@ comment|/**  * MergingNodeStateDiff... TODO  */
 end_comment
 
 begin_class
+specifier|final
 class|class
 name|MergingNodeStateDiff
 extends|extends

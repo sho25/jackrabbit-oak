@@ -350,6 +350,7 @@ return|;
 block|}
 specifier|private
 specifier|static
+specifier|final
 class|class
 name|Diff
 extends|extends
