@@ -1335,7 +1335,7 @@ argument_list|)
 throw|;
 block|}
 comment|//--------------------------------------------------------------------------
-comment|/**      * Let the configured {@code AuthorizableAction}s perform additional      * tasks associated with the creation of the new user before the      * corresponding new node is persisted.      *      * @param user The new user.      * @param password The password.      * @throws RepositoryException If an exception occurs.      */
+comment|/**      * Let the configured {@code AuthorizableAction}s perform additional      * tasks associated with the creation of the new user before the      * corresponding new node is persisted.      *      * @param user     The new user.      * @param password The password.      * @throws RepositoryException If an exception occurs.      */
 name|void
 name|onCreate
 parameter_list|(
@@ -1433,7 +1433,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Let the configured {@code AuthorizableAction}s perform additional      * tasks associated with password changing of a given user before the      * corresponding property is being changed.      *      * @param user The target user.      * @param password The new password.      * @throws RepositoryException If an exception occurs.      */
+comment|/**      * Let the configured {@code AuthorizableAction}s perform additional      * tasks associated with password changing of a given user before the      * corresponding property is being changed.      *      * @param user     The target user.      * @param password The new password.      * @throws RepositoryException If an exception occurs.      */
 name|void
 name|onPasswordChange
 parameter_list|(
@@ -1817,6 +1817,8 @@ parameter_list|,
 name|boolean
 name|isGroup
 parameter_list|)
+throws|throws
+name|RepositoryException
 block|{
 if|if
 condition|(
@@ -1873,6 +1875,31 @@ operator|new
 name|IllegalArgumentException
 argument_list|(
 literal|"'everyone' is a reserved group principal name."
+argument_list|)
+throw|;
+block|}
+if|if
+condition|(
+name|getAuthorizable
+argument_list|(
+name|principal
+argument_list|)
+operator|!=
+literal|null
+condition|)
+block|{
+throw|throw
+operator|new
+name|AuthorizableExistsException
+argument_list|(
+literal|"Authorizable with principal "
+operator|+
+name|principal
+operator|.
+name|getName
+argument_list|()
+operator|+
+literal|" already exists."
 argument_list|)
 throw|;
 block|}
