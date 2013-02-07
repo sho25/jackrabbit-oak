@@ -60,11 +60,6 @@ name|BlobStoreFS
 implements|implements
 name|BlobStore
 block|{
-specifier|private
-specifier|final
-name|File
-name|rootDir
-decl_stmt|;
 specifier|public
 name|BlobStoreFS
 parameter_list|(
@@ -96,12 +91,6 @@ name|mkdirs
 argument_list|()
 expr_stmt|;
 block|}
-name|this
-operator|.
-name|rootDir
-operator|=
-name|rootDir
-expr_stmt|;
 block|}
 annotation|@
 name|Override
