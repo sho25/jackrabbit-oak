@@ -306,7 +306,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * ACL... TODO  */
+comment|/**  * ACL... TODO  *  * TODO: - remove redundant entries from the list  * TODO: - remove redundant privileges from entries  */
 end_comment
 
 begin_class

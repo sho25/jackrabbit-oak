@@ -398,7 +398,7 @@ operator|.
 name|toArray
 argument_list|(
 operator|new
-name|AccessControlEntry
+name|JackrabbitAccessControlEntry
 index|[
 name|entries
 operator|.
