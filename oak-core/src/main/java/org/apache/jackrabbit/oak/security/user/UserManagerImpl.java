@@ -2081,9 +2081,6 @@ argument_list|,
 name|config
 argument_list|,
 name|root
-operator|.
-name|getQueryEngine
-argument_list|()
 argument_list|)
 expr_stmt|;
 block|}

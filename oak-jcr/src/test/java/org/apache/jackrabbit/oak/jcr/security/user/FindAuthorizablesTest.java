@@ -682,11 +682,6 @@ literal|"v2"
 argument_list|)
 block|}
 decl_stmt|;
-name|superuser
-operator|.
-name|save
-argument_list|()
-expr_stmt|;
 name|String
 name|relPath
 init|=
@@ -743,6 +738,11 @@ literal|"v3"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|superuser
+operator|.
+name|save
+argument_list|()
+expr_stmt|;
 comment|// relPath = "prop1", v = "v1" -> should find the target group
 name|Iterator
 argument_list|<
@@ -795,7 +795,7 @@ name|hasNext
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|// relPath = "prop1", v = "v1" -> should find the target group
+comment|// relPath = "prop1", v = "v3" -> should find the target group
 name|result
 operator|=
 name|userMgr

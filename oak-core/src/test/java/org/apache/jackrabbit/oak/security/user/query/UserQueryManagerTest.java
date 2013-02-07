@@ -292,9 +292,6 @@ name|getConfigurationParameters
 argument_list|()
 argument_list|,
 name|root
-operator|.
-name|getQueryEngine
-argument_list|()
 argument_list|)
 expr_stmt|;
 name|valueFactory
