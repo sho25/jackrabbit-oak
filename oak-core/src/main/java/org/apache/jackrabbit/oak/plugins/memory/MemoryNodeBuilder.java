@@ -570,31 +570,22 @@ literal|null
 return|;
 block|}
 block|}
-comment|/**      * Determine whether this child has been removed.      * Assumes {@code read()}, {@code write()} needs not be called.      * @return  {@code true} iff this child has been removed      */
+comment|/**      * Determine whether this child exists.      * Assumes {@code read()}, {@code write()} needs not be called.      * @return  {@code true} iff this child exists      */
 specifier|private
 name|boolean
-name|removed
+name|exists
 parameter_list|()
 block|{
 return|return
-operator|!
 name|isRoot
 argument_list|()
-operator|&&
+operator|||
 name|parent
 operator|.
 name|writeState
-operator|!=
+operator|==
 literal|null
-operator|&&
-name|parent
-operator|.
-name|hasBaseState
-argument_list|(
-name|name
-argument_list|)
-operator|&&
-operator|!
+operator|||
 name|parent
 operator|.
 name|writeState
@@ -631,8 +622,7 @@ assert|;
 comment|// root never gets here since revision == root.revision
 name|checkState
 argument_list|(
-operator|!
-name|removed
+name|exists
 argument_list|()
 argument_list|,
 literal|"This node has already been removed"
@@ -737,8 +727,7 @@ name|checkState
 argument_list|(
 name|skipRemovedCheck
 operator|||
-operator|!
-name|removed
+name|exists
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -801,7 +790,8 @@ condition|)
 block|{
 if|if
 condition|(
-name|removed
+operator|!
+name|exists
 argument_list|()
 condition|)
 block|{
@@ -1354,7 +1344,15 @@ name|name
 argument_list|)
 operator|.
 name|write
-argument_list|()
+argument_list|(
+name|root
+operator|.
+name|revision
+operator|+
+literal|1
+argument_list|,
+literal|true
+argument_list|)
 expr_stmt|;
 block|}
 name|childState
