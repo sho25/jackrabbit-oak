@@ -341,79 +341,19 @@ parameter_list|)
 throws|throws
 name|CommitFailedException
 block|{
-name|NodeBuilder
-name|rootBuilder
-init|=
-name|after
-operator|.
-name|builder
-argument_list|()
-decl_stmt|;
-name|String
-name|workspaceName
-init|=
-literal|"default"
-decl_stmt|;
-comment|// TODO
-name|NodeBuilder
-name|permissionRoot
-init|=
-name|rootBuilder
-operator|.
-name|child
-argument_list|(
-name|NodeTypeConstants
-operator|.
-name|JCR_SYSTEM
-argument_list|)
-operator|.
-name|child
-argument_list|(
-name|REP_PERMISSION_STORE
-argument_list|)
-operator|.
-name|child
-argument_list|(
-name|workspaceName
-argument_list|)
-decl_stmt|;
-name|ReadOnlyNodeTypeManager
-name|ntMgr
-init|=
-name|ReadOnlyNodeTypeManager
-operator|.
-name|getInstance
-argument_list|(
-name|before
-argument_list|)
-decl_stmt|;
-name|after
-operator|.
-name|compareAgainstBaseState
-argument_list|(
-name|before
-argument_list|,
-operator|new
-name|Diff
-argument_list|(
-operator|new
-name|Node
-argument_list|(
-name|rootBuilder
-argument_list|)
-argument_list|,
-name|permissionRoot
-argument_list|,
-name|ntMgr
-argument_list|)
-argument_list|)
-expr_stmt|;
+comment|// TODO OAK-526: add implementation
 return|return
-name|rootBuilder
-operator|.
-name|getNodeState
-argument_list|()
+name|after
 return|;
+comment|//
+comment|//        NodeBuilder rootBuilder = after.builder();
+comment|//
+comment|//        String workspaceName = "default"; // TODO
+comment|//        NodeBuilder permissionRoot = rootBuilder.child(NodeTypeConstants.JCR_SYSTEM).child(REP_PERMISSION_STORE).child(workspaceName);
+comment|//        ReadOnlyNodeTypeManager ntMgr = ReadOnlyNodeTypeManager.getInstance(before);
+comment|//
+comment|//        after.compareAgainstBaseState(before, new Diff(new Node(rootBuilder), permissionRoot, ntMgr));
+comment|//        return rootBuilder.getNodeState();
 block|}
 specifier|private
 specifier|static
