@@ -5205,12 +5205,6 @@ argument_list|(
 name|group
 argument_list|)
 expr_stmt|;
-comment|// TODO: remove again once OAK-343 is fixed.
-name|superuser
-operator|.
-name|save
-argument_list|()
-expr_stmt|;
 return|return
 name|group
 return|;
@@ -5246,12 +5240,6 @@ argument_list|,
 literal|""
 argument_list|)
 decl_stmt|;
-comment|// TODO: remove again once OAK-343 is fixed.
-name|superuser
-operator|.
-name|save
-argument_list|()
-expr_stmt|;
 name|user
 operator|.
 name|setProperty
