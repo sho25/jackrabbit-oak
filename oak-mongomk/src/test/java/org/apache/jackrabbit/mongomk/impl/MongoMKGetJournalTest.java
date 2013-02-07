@@ -881,23 +881,36 @@ name|commit
 argument_list|(
 literal|""
 argument_list|,
-literal|"+\"/b/d\":{}"
+literal|"+\"/d\":{}"
 argument_list|,
 literal|null
 argument_list|,
 literal|""
 argument_list|)
 expr_stmt|;
-comment|// Commit with /b path and retrieve with root path
+name|mk
+operator|.
+name|commit
+argument_list|(
+literal|""
+argument_list|,
+literal|"+\"/d/e\":{}"
+argument_list|,
+literal|null
+argument_list|,
+literal|""
+argument_list|)
+expr_stmt|;
+comment|// Commit with /d path and retrieve with root path
 name|rev
 operator|=
 name|mk
 operator|.
 name|commit
 argument_list|(
-literal|"/b"
+literal|"/d"
 argument_list|,
-literal|">\"d\" : \"e\""
+literal|">\"e\" : \"f\""
 argument_list|,
 literal|null
 argument_list|,
@@ -935,7 +948,7 @@ argument_list|)
 expr_stmt|;
 name|expected
 operator|=
-literal|">\"/b/d\":\"/b/e\""
+literal|">\"/d/e\":\"/d/f\""
 expr_stmt|;
 name|assertPropertyValue
 argument_list|(
