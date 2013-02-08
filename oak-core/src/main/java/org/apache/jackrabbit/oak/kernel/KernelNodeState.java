@@ -1232,29 +1232,6 @@ name|NodeBuilder
 name|builder
 parameter_list|()
 block|{
-if|if
-condition|(
-literal|"/"
-operator|.
-name|equals
-argument_list|(
-name|getPath
-argument_list|()
-argument_list|)
-condition|)
-block|{
-return|return
-operator|new
-name|KernelRootBuilder
-argument_list|(
-name|kernel
-argument_list|,
-name|this
-argument_list|)
-return|;
-block|}
-else|else
-block|{
 return|return
 operator|new
 name|MemoryNodeBuilder
@@ -1262,7 +1239,6 @@ argument_list|(
 name|this
 argument_list|)
 return|;
-block|}
 block|}
 comment|/**      * Optimised comparison method that can avoid traversing all properties      * and child nodes if both this and the given base node state come from      * the same MicroKernel and either have the same content hash (when      * available) or are located at the same path in different revisions.      *      * @see<a href="https://issues.apache.org/jira/browse/OAK-175">OAK-175</a>      */
 annotation|@
