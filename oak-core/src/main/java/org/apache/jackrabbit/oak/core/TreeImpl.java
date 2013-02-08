@@ -701,15 +701,14 @@ name|nodeStatus
 operator|==
 name|Status
 operator|.
-name|REMOVED
+name|DISCONNECTED
 condition|)
 block|{
 return|return
 name|Status
 operator|.
-name|REMOVED
+name|DISCONNECTED
 return|;
-comment|// FIXME not correct if no property existed with that name
 block|}
 else|else
 block|{
@@ -779,7 +778,7 @@ literal|null
 else|:
 name|Status
 operator|.
-name|REMOVED
+name|DISCONNECTED
 return|;
 block|}
 else|else
@@ -975,7 +974,7 @@ block|}
 block|}
 specifier|private
 name|boolean
-name|isRemoved
+name|isDisconnected
 parameter_list|()
 block|{
 if|if
@@ -1003,11 +1002,12 @@ return|;
 block|}
 if|if
 condition|(
+operator|!
 name|parent
 operator|.
 name|nodeBuilder
 operator|.
-name|isRemoved
+name|isConnected
 argument_list|()
 condition|)
 block|{
@@ -1016,10 +1016,11 @@ literal|true
 return|;
 block|}
 return|return
+operator|!
 name|getNodeBuilder
 argument_list|()
 operator|.
-name|isRemoved
+name|isConnected
 argument_list|()
 return|;
 block|}
@@ -1037,14 +1038,14 @@ argument_list|()
 expr_stmt|;
 if|if
 condition|(
-name|isRemoved
+name|isDisconnected
 argument_list|()
 condition|)
 block|{
 return|return
 name|Status
 operator|.
-name|REMOVED
+name|DISCONNECTED
 return|;
 block|}
 name|NodeBuilder
@@ -1363,7 +1364,7 @@ argument_list|()
 expr_stmt|;
 if|if
 condition|(
-name|isRemoved
+name|isDisconnected
 argument_list|()
 condition|)
 block|{
@@ -1371,7 +1372,7 @@ throw|throw
 operator|new
 name|IllegalStateException
 argument_list|(
-literal|"Cannot remove removed tree"
+literal|"Cannot remove a disconnected tree"
 argument_list|)
 throw|;
 block|}
@@ -1893,7 +1894,7 @@ parameter_list|()
 block|{
 if|if
 condition|(
-name|isRemoved
+name|isDisconnected
 argument_list|()
 condition|)
 block|{
@@ -1901,7 +1902,7 @@ throw|throw
 operator|new
 name|IllegalStateException
 argument_list|(
-literal|"Cannot get the base state of a removed tree"
+literal|"Cannot get the base state of a disconnected tree"
 argument_list|)
 throw|;
 block|}
@@ -1974,7 +1975,7 @@ parameter_list|)
 block|{
 if|if
 condition|(
-name|isRemoved
+name|isDisconnected
 argument_list|()
 condition|)
 block|{
@@ -1982,7 +1983,7 @@ throw|throw
 operator|new
 name|IllegalStateException
 argument_list|(
-literal|"Cannot move removed tree"
+literal|"Cannot move a disconnected tree"
 argument_list|)
 throw|;
 block|}

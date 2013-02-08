@@ -99,9 +99,9 @@ name|boolean
 name|isNew
 parameter_list|()
 function_decl|;
-comment|/**      * Check whether this builder represents a removed node, which is present in the base state.      * @return  {@code true} for a removed node      */
+comment|/**      * Check whether this builder represents a disconnected node. A node is disconnected when it has been      * part of a tree but has been subsequently removed.      * @return  {@code true} for a disconnected node      */
 name|boolean
-name|isRemoved
+name|isConnected
 parameter_list|()
 function_decl|;
 comment|/**      * Check whether this builder represents a modified node, which has either modified properties      * or removed or added child nodes.      * @return  {@code true} for a modified node      */

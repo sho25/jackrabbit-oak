@@ -119,11 +119,11 @@ annotation|@
 name|Override
 specifier|public
 name|boolean
-name|isRemoved
+name|isConnected
 parameter_list|()
 block|{
 return|return
-literal|false
+literal|true
 return|;
 block|}
 annotation|@

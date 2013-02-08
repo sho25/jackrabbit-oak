@@ -1768,7 +1768,7 @@ name|assertEquals
 argument_list|(
 name|Status
 operator|.
-name|REMOVED
+name|DISCONNECTED
 argument_list|,
 name|x
 operator|.
@@ -1780,7 +1780,7 @@ name|assertEquals
 argument_list|(
 name|Status
 operator|.
-name|REMOVED
+name|DISCONNECTED
 argument_list|,
 name|y
 operator|.
@@ -1931,7 +1931,7 @@ name|Tree
 operator|.
 name|Status
 operator|.
-name|REMOVED
+name|DISCONNECTED
 argument_list|,
 name|tree
 operator|.
@@ -1993,7 +1993,7 @@ name|assertEquals
 argument_list|(
 name|Status
 operator|.
-name|REMOVED
+name|DISCONNECTED
 argument_list|,
 name|x
 operator|.

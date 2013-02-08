@@ -208,8 +208,14 @@ block|{
 name|Status
 name|status
 init|=
-name|getStatus
-argument_list|()
+name|parentLocation
+operator|.
+name|tree
+operator|.
+name|getPropertyStatus
+argument_list|(
+name|name
+argument_list|)
 decl_stmt|;
 return|return
 name|status
@@ -220,7 +226,7 @@ name|status
 operator|!=
 name|Status
 operator|.
-name|REMOVED
+name|DISCONNECTED
 operator|&&
 name|getProperty
 argument_list|()

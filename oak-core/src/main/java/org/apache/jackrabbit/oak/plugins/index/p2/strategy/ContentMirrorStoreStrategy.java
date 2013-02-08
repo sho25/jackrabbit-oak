@@ -694,9 +694,10 @@ parameter_list|)
 block|{
 if|if
 condition|(
+operator|!
 name|parent
 operator|.
-name|isRemoved
+name|isConnected
 argument_list|()
 condition|)
 block|{

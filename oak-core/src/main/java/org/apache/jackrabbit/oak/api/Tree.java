@@ -59,8 +59,8 @@ block|,
 comment|/**          * Item is modified: has added or removed children or added, removed or modified          * properties.          */
 name|MODIFIED
 block|,
-comment|/**          * Item is removed          */
-name|REMOVED
+comment|/**          * Item is removed or has become disconnected otherwise (e.g. caused by a refresh).          */
+name|DISCONNECTED
 block|}
 comment|/**      * @return  the name of this {@code Tree} instance.      */
 annotation|@

@@ -259,7 +259,7 @@ name|status
 operator|==
 name|Status
 operator|.
-name|REMOVED
+name|DISCONNECTED
 operator|||
 name|status
 operator|==

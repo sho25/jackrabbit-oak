@@ -409,7 +409,7 @@ name|status
 operator|!=
 name|Status
 operator|.
-name|REMOVED
+name|DISCONNECTED
 operator|&&
 name|getTree
 argument_list|()
