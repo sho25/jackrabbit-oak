@@ -655,6 +655,12 @@ argument_list|(
 name|name
 argument_list|)
 expr_stmt|;
+name|revision
+operator|=
+name|root
+operator|.
+name|revision
+expr_stmt|;
 name|checkState
 argument_list|(
 name|baseState
@@ -667,12 +673,6 @@ literal|null
 argument_list|,
 literal|"This node is disconnected"
 argument_list|)
-expr_stmt|;
-name|revision
-operator|=
-name|root
-operator|.
-name|revision
 expr_stmt|;
 block|}
 assert|assert
