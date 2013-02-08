@@ -634,7 +634,7 @@ return|;
 block|}
 name|parent
 operator|.
-name|read
+name|updateReadState
 argument_list|()
 expr_stmt|;
 comment|// The builder could have been reset, need to re-get base state
