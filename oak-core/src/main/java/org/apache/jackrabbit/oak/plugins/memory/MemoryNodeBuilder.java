@@ -570,12 +570,14 @@ literal|null
 return|;
 block|}
 block|}
-comment|/**      * Determine whether this child exists.      * Assumes {@code read()}, {@code write()} needs not be called.      * @return  {@code true} iff this child exists      */
+comment|/**      * Determine whether this child exists with its direct parent or existed with its direct      * parent and got disconnected.      * @return  {@code true} iff this child either exists or got disconnected from its direct parent.      */
 specifier|private
 name|boolean
-name|exists
+name|existsOrDisconnected
 parameter_list|()
 block|{
+comment|// No need to check the base state. The fact that we have this
+comment|// builder instance proofs that this child existed at some point.
 return|return
 name|isRoot
 argument_list|()
@@ -622,7 +624,7 @@ assert|;
 comment|// root never gets here since revision == root.revision
 name|checkState
 argument_list|(
-name|exists
+name|existsOrDisconnected
 argument_list|()
 argument_list|,
 literal|"This node has already been removed"
@@ -651,6 +653,19 @@ operator|.
 name|getWriteState
 argument_list|(
 name|name
+argument_list|)
+expr_stmt|;
+name|checkState
+argument_list|(
+name|baseState
+operator|!=
+literal|null
+operator|||
+name|writeState
+operator|!=
+literal|null
+argument_list|,
+literal|"This node is disconnected"
 argument_list|)
 expr_stmt|;
 name|revision
@@ -727,8 +742,10 @@ name|checkState
 argument_list|(
 name|skipRemovedCheck
 operator|||
-name|exists
+name|existsOrDisconnected
 argument_list|()
+argument_list|,
+literal|"This node has already been removed"
 argument_list|)
 expr_stmt|;
 name|parent
@@ -790,17 +807,21 @@ condition|)
 block|{
 if|if
 condition|(
-operator|!
-name|exists
+name|existsOrDisconnected
 argument_list|()
 condition|)
 block|{
+assert|assert
+name|baseState
+operator|!=
+literal|null
+assert|;
 name|writeState
 operator|=
 operator|new
 name|MutableNodeState
 argument_list|(
-literal|null
+name|baseState
 argument_list|)
 expr_stmt|;
 block|}
@@ -811,7 +832,7 @@ operator|=
 operator|new
 name|MutableNodeState
 argument_list|(
-name|baseState
+literal|null
 argument_list|)
 expr_stmt|;
 block|}
