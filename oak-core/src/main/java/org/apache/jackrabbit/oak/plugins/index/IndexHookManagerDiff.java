@@ -468,7 +468,7 @@ specifier|private
 name|String
 name|path
 decl_stmt|;
-comment|/**      *<type,<path, indexhook>>      */
+comment|/**      * The map of known indexes.      *       * Key: index type name ("p2"). Value: a map from path to index hook.      */
 specifier|private
 specifier|final
 name|Map
@@ -485,7 +485,7 @@ name|IndexHook
 argument_list|>
 argument_list|>
 argument_list|>
-name|updates
+name|indexMap
 decl_stmt|;
 specifier|public
 name|IndexHookManagerDiff
@@ -567,7 +567,7 @@ literal|null
 argument_list|,
 name|parent
 operator|.
-name|updates
+name|indexMap
 argument_list|)
 expr_stmt|;
 block|}
@@ -640,7 +640,7 @@ name|path
 expr_stmt|;
 name|this
 operator|.
-name|updates
+name|indexMap
 operator|=
 name|updates
 expr_stmt|;
@@ -1012,7 +1012,7 @@ name|byType
 init|=
 name|this
 operator|.
-name|updates
+name|indexMap
 operator|.
 name|get
 argument_list|(
@@ -1042,7 +1042,7 @@ argument_list|()
 expr_stmt|;
 name|this
 operator|.
-name|updates
+name|indexMap
 operator|.
 name|put
 argument_list|(
@@ -1270,7 +1270,7 @@ name|type
 range|:
 name|this
 operator|.
-name|updates
+name|indexMap
 operator|.
 name|keySet
 argument_list|()
@@ -1407,7 +1407,7 @@ name|indexes
 init|=
 name|this
 operator|.
-name|updates
+name|indexMap
 operator|.
 name|get
 argument_list|(
@@ -1546,6 +1546,7 @@ return|;
 block|}
 comment|/**      * Fixes the relative paths on the best matching indexes so updates apply      * properly      */
 specifier|private
+specifier|static
 name|List
 argument_list|<
 name|IndexHook
