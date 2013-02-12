@@ -191,7 +191,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|70
+literal|48
 argument_list|,
 name|getSize
 argument_list|(
@@ -228,7 +228,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|124
+literal|80
 argument_list|,
 name|getSize
 argument_list|(
@@ -254,7 +254,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|59
+literal|48
 argument_list|,
 name|getSize
 argument_list|(
@@ -287,7 +287,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|102
+literal|80
 argument_list|,
 name|getSize
 argument_list|(
