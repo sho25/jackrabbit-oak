@@ -2463,7 +2463,7 @@ block|}
 return|;
 block|}
 comment|/**      * Ensures that the {@link #OAK_CHILD_ORDER} exists. This method will create      * the property if it doesn't exist and initialize the value with the names      * of the children as returned by {@link NodeBuilder#getChildNodeNames()}.      */
-specifier|private
+specifier|public
 name|void
 name|ensureChildOrderProperty
 parameter_list|()

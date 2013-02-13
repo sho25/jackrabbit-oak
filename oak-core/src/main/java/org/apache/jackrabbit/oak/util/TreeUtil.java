@@ -102,6 +102,38 @@ import|;
 end_import
 
 begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|core
+operator|.
+name|TreeImpl
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkArgument
+import|;
+end_import
+
+begin_import
 import|import static
 name|org
 operator|.
@@ -285,7 +317,7 @@ literal|null
 return|;
 block|}
 block|}
-comment|/**      * Returns the boolean representation of the property with the specified      * {@code propertyName}. If the property does not exist or      * {@link org.apache.jackrabbit.oak.api.PropertyState#isArray() is an array}      * this method returns {@code false}.      *      * @param tree The target tree.      * @param propertyName The name of the property.      * @return the boolean representation of the property state with the given      * name. This utility returns {@code false} if the property does not exist      * or is an multivalued property.      */
+comment|/**      * Returns the boolean representation of the property with the specified      * {@code propertyName}. If the property does not exist or      * {@link org.apache.jackrabbit.oak.api.PropertyState#isArray() is an array}      * this method returns {@code false}.      *      * @param tree         The target tree.      * @param propertyName The name of the property.      * @return the boolean representation of the property state with the given      *         name. This utility returns {@code false} if the property does not exist      *         or is an multivalued property.      */
 specifier|public
 specifier|static
 name|boolean
@@ -326,6 +358,34 @@ argument_list|(
 name|BOOLEAN
 argument_list|)
 return|;
+block|}
+comment|/**      * Utility method that assert that children of a tree keep the order such      * as defined by the insertion and any subsequent      * {@link Tree#orderBefore(String) reordering}.      *      * @param tree The parent tree whose children are mandated to be orderable.      */
+specifier|public
+specifier|static
+name|void
+name|ensureOrderableChildren
+parameter_list|(
+name|Tree
+name|tree
+parameter_list|)
+block|{
+name|checkArgument
+argument_list|(
+name|tree
+operator|instanceof
+name|TreeImpl
+argument_list|)
+expr_stmt|;
+operator|(
+operator|(
+name|TreeImpl
+operator|)
+name|tree
+operator|)
+operator|.
+name|ensureChildOrderProperty
+argument_list|()
+expr_stmt|;
 block|}
 block|}
 end_class
