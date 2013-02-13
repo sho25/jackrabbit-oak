@@ -352,7 +352,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * PrivilegeMigrator is a utility to migrate custom privilege definitions from  * a jackrabbit 2 project to oak.  *  * TODO: this is an initial draft of a migration tool from jr2 custom privileges  * TODO: to oak. might need to be adjusted once we have defined a upgrade path (see OAK-458)  */
+comment|/**  * PrivilegeMigrator is a utility to migrate custom privilege definitions from  * a jackrabbit 2 project to oak.  *<p/>  * TODO: this is an initial draft of a migration tool from jr2 custom privileges  * TODO: to oak. might need to be adjusted once we have defined a upgrade path (see OAK-458)  */
 end_comment
 
 begin_class
@@ -398,11 +398,11 @@ operator|.
 name|getLatestRoot
 argument_list|()
 decl_stmt|;
-name|PrivilegeDefinitionWriter
-name|writer
+name|PrivilegeDefinitionStore
+name|store
 init|=
 operator|new
-name|PrivilegeDefinitionWriter
+name|PrivilegeDefinitionStore
 argument_list|(
 name|root
 argument_list|)
@@ -445,26 +445,27 @@ return|;
 block|}
 block|}
 decl_stmt|;
-name|Iterable
-argument_list|<
+for|for
+control|(
 name|PrivilegeDefinition
-argument_list|>
-name|custom
-init|=
+name|def
+range|:
 name|readCustomDefinitons
 argument_list|(
 name|privilegeStream
 argument_list|,
 name|nsRegistry
 argument_list|)
-decl_stmt|;
-name|writer
+control|)
+block|{
+name|store
 operator|.
-name|writeDefinitions
+name|writeDefinition
 argument_list|(
-name|custom
+name|def
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 catch|catch
 parameter_list|(
@@ -875,7 +876,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**          * Build a new {@code PrivilegeDefinition} from the given XML node.          * @param n the xml node storing the privilege definition.          * @param nsRegistry          * @return a new PrivilegeDefinition.          * @throws javax.jcr.RepositoryException          */
+comment|/**          * Build a new {@code PrivilegeDefinition} from the given XML node.          *          * @param n          the xml node storing the privilege definition.          * @param nsRegistry          * @return a new PrivilegeDefinition.          * @throws javax.jcr.RepositoryException          */
 specifier|private
 specifier|static
 name|PrivilegeDefinition
