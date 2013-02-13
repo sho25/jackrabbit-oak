@@ -52,6 +52,20 @@ import|;
 end_import
 
 begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|collect
+operator|.
+name|ComparisonChain
+import|;
+end_import
+
+begin_import
 import|import static
 name|com
 operator|.
@@ -79,6 +93,14 @@ name|Type
 parameter_list|<
 name|T
 parameter_list|>
+implements|implements
+name|Comparable
+argument_list|<
+name|Type
+argument_list|<
+name|?
+argument_list|>
+argument_list|>
 block|{
 comment|/** Map {@code String} to {@link PropertyType#STRING} */
 specifier|public
@@ -886,6 +908,49 @@ literal|true
 argument_list|)
 return|;
 block|}
+comment|//--------------------------------------------------------< Comparable>--
+annotation|@
+name|Override
+specifier|public
+name|int
+name|compareTo
+parameter_list|(
+name|Type
+argument_list|<
+name|?
+argument_list|>
+name|that
+parameter_list|)
+block|{
+return|return
+name|ComparisonChain
+operator|.
+name|start
+argument_list|()
+operator|.
+name|compare
+argument_list|(
+name|tag
+argument_list|,
+name|that
+operator|.
+name|tag
+argument_list|)
+operator|.
+name|compareFalseFirst
+argument_list|(
+name|array
+argument_list|,
+name|that
+operator|.
+name|array
+argument_list|)
+operator|.
+name|result
+argument_list|()
+return|;
+block|}
+comment|//------------------------------------------------------------< Object>--
 annotation|@
 name|Override
 specifier|public
