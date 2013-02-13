@@ -429,6 +429,15 @@ name|indexProvider
 argument_list|)
 return|;
 block|}
+specifier|public
+name|NodeStore
+name|getNodeStore
+parameter_list|()
+block|{
+return|return
+name|nodeStore
+return|;
+block|}
 block|}
 end_class
 

@@ -81,29 +81,11 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|plugins
-operator|.
-name|memory
-operator|.
-name|MemoryNodeState
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
 name|spi
 operator|.
 name|state
 operator|.
-name|NodeBuilder
+name|NodeState
 import|;
 end_import
 
@@ -163,17 +145,6 @@ name|IndexHookProvider
 name|indexHook
 parameter_list|)
 block|{
-comment|// TODO refactor initializer to be able to first #branch, then
-comment|// #initialize, next #index and finally #merge
-comment|// This means that the RepositoryInitializer should receive a
-comment|// NodeStoreBranch as a param
-name|initializer
-operator|.
-name|initialize
-argument_list|(
-name|store
-argument_list|)
-expr_stmt|;
 name|NodeStoreBranch
 name|branch
 init|=
@@ -182,16 +153,23 @@ operator|.
 name|branch
 argument_list|()
 decl_stmt|;
-name|NodeBuilder
-name|root
+name|NodeState
+name|before
 init|=
 name|branch
 operator|.
 name|getRoot
 argument_list|()
+decl_stmt|;
+name|NodeState
+name|after
+init|=
+name|initializer
 operator|.
-name|builder
-argument_list|()
+name|initialize
+argument_list|(
+name|before
+argument_list|)
 decl_stmt|;
 try|try
 block|{
@@ -208,14 +186,9 @@ argument_list|)
 operator|.
 name|processCommit
 argument_list|(
-name|MemoryNodeState
-operator|.
-name|EMPTY_NODE
+name|before
 argument_list|,
-name|root
-operator|.
-name|getNodeState
-argument_list|()
+name|after
 argument_list|)
 argument_list|)
 expr_stmt|;

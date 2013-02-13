@@ -33,7 +33,7 @@ name|spi
 operator|.
 name|state
 operator|.
-name|NodeStore
+name|NodeState
 import|;
 end_import
 
@@ -46,12 +46,12 @@ specifier|public
 interface|interface
 name|RepositoryInitializer
 block|{
-comment|/**      * Initializes repository content. This method is called as soon as a      * repository becomes available. Note that the repository may already      * have been initialized, so the implementation of this method should      * check for that before blindly adding new content.      *      * @param store node store of the repository      */
-name|void
+comment|/**      * Initializes repository content. This method is called as soon as a      * repository becomes available. Note that the repository may already      * have been initialized, so the implementation of this method should      * check for that before blindly adding new content.      *      * @param state the current state of the repository      */
+name|NodeState
 name|initialize
 parameter_list|(
-name|NodeStore
-name|store
+name|NodeState
+name|state
 parameter_list|)
 function_decl|;
 block|}
