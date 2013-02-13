@@ -129,7 +129,7 @@ name|oak
 operator|.
 name|api
 operator|.
-name|Root
+name|Tree
 import|;
 end_import
 
@@ -629,7 +629,7 @@ function_decl|;
 comment|/**      * Get the current root tree, to run the query against.      *       * @return the node state      */
 specifier|protected
 specifier|abstract
-name|Root
+name|Tree
 name|getRootTree
 parameter_list|()
 function_decl|;

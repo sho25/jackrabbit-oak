@@ -105,7 +105,7 @@ name|oak
 operator|.
 name|api
 operator|.
-name|Root
+name|Tree
 import|;
 end_import
 
@@ -119,9 +119,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|api
+name|commons
 operator|.
-name|Tree
+name|PathUtils
 import|;
 end_import
 
@@ -849,7 +849,7 @@ name|boolean
 name|prepared
 decl_stmt|;
 specifier|private
-name|Root
+name|Tree
 name|rootTree
 decl_stmt|;
 specifier|private
@@ -3121,7 +3121,7 @@ specifier|public
 name|void
 name|setRootTree
 parameter_list|(
-name|Root
+name|Tree
 name|rootTree
 parameter_list|)
 block|{
@@ -3182,10 +3182,30 @@ block|{
 return|return
 name|rootTree
 operator|.
-name|getTree
+name|getLocation
+argument_list|()
+operator|.
+name|getChild
+argument_list|(
+name|PathUtils
+operator|.
+name|isAbsolute
 argument_list|(
 name|path
 argument_list|)
+condition|?
+name|path
+operator|.
+name|substring
+argument_list|(
+literal|1
+argument_list|)
+else|:
+name|path
+argument_list|)
+operator|.
+name|getTree
+argument_list|()
 return|;
 block|}
 comment|/**      * Validate a path is syntactically correct.      *       * @param path the path to validate      */
