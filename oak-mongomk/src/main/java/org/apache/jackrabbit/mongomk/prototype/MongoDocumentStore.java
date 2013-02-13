@@ -160,7 +160,7 @@ specifier|final
 name|String
 name|KEY_PATH
 init|=
-literal|"_path"
+literal|"_id"
 decl_stmt|;
 specifier|private
 specifier|static
@@ -565,49 +565,13 @@ name|void
 name|ensureIndex
 parameter_list|()
 block|{
-name|DBObject
-name|index
-init|=
-operator|new
-name|BasicDBObject
-argument_list|()
-decl_stmt|;
-name|index
-operator|.
-name|put
-argument_list|(
-name|KEY_PATH
-argument_list|,
-literal|1L
-argument_list|)
-expr_stmt|;
-name|DBObject
-name|options
-init|=
-operator|new
-name|BasicDBObject
-argument_list|()
-decl_stmt|;
-name|options
-operator|.
-name|put
-argument_list|(
-literal|"unique"
-argument_list|,
-name|Boolean
-operator|.
-name|TRUE
-argument_list|)
-expr_stmt|;
-name|nodesCollection
-operator|.
-name|ensureIndex
-argument_list|(
-name|index
-argument_list|,
-name|options
-argument_list|)
-expr_stmt|;
+comment|// the _id field is the primary key, so we don't need to define it
+comment|// the following code is just a template in case we need more indexes
+comment|// DBObject index = new BasicDBObject();
+comment|// index.put(KEY_PATH, 1L);
+comment|// DBObject options = new BasicDBObject();
+comment|// options.put("unique", Boolean.TRUE);
+comment|// nodesCollection.ensureIndex(index, options);
 block|}
 specifier|private
 specifier|static
@@ -744,6 +708,7 @@ argument_list|)
 return|;
 block|}
 specifier|private
+specifier|static
 name|DBObject
 name|getByPathQuery
 parameter_list|(

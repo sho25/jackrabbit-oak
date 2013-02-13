@@ -125,7 +125,7 @@ specifier|static
 name|boolean
 name|MONGO_DB
 init|=
-literal|false
+literal|true
 decl_stmt|;
 comment|// private final static int NODE_COUNT = 2000;
 specifier|private
