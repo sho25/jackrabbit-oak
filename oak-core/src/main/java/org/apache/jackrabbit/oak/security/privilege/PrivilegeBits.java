@@ -61,6 +61,26 @@ end_import
 
 begin_import
 import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|Nonnull
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|Nullable
+import|;
+end_import
+
+begin_import
+import|import
 name|com
 operator|.
 name|google
@@ -776,7 +796,7 @@ specifier|final
 name|Data
 name|d
 decl_stmt|;
-comment|/**      * Private constructor.      *      * @param d      */
+comment|/**      * Private constructor.      */
 specifier|private
 name|PrivilegeBits
 parameter_list|(
@@ -808,12 +828,16 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-comment|/**      * Creates a mutable instance of privilege bits.      *      * @param base      * @return a new instance of privilege bits.      */
+comment|/**      * Creates a mutable instance of privilege bits.      *      * @param base The base for this mutable instance.      * @return a new instance of privilege bits.      */
+annotation|@
+name|Nonnull
 specifier|public
 specifier|static
 name|PrivilegeBits
 name|getInstance
 parameter_list|(
+annotation|@
+name|Nonnull
 name|PrivilegeBits
 name|base
 parameter_list|)
@@ -832,12 +856,16 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-comment|/**      * Get or create an instance of privilege bits for a specific property that      * stores privileges.      *      * @param property      * @return an instance of {@code PrivilegeBits}      */
+comment|/**      * Get or create an instance of privilege bits for a specific property that      * stores privileges.      *      * @param property The property state storing privilege bits information.      * @return an instance of {@code PrivilegeBits}      */
+annotation|@
+name|Nonnull
 specifier|public
 specifier|static
 name|PrivilegeBits
 name|getInstance
 parameter_list|(
+annotation|@
+name|Nullable
 name|PropertyState
 name|property
 parameter_list|)
@@ -912,11 +940,15 @@ return|;
 block|}
 block|}
 comment|/**      * Get or create an instance of privilege bits for a privilege definition.      *      * @param tree A privilege definition tree or the privileges root.      * @return an instance of {@code PrivilegeBits}      */
+annotation|@
+name|Nonnull
 specifier|public
 specifier|static
 name|PrivilegeBits
 name|getInstance
 parameter_list|(
+annotation|@
+name|Nullable
 name|Tree
 name|tree
 parameter_list|)
@@ -997,7 +1029,9 @@ argument_list|)
 return|;
 block|}
 block|}
-comment|/**      * Internal method to get or create an instance of privilege bits for the      * specified long value.      *      * @param bits      * @return an instance of {@code PrivilegeBits}      */
+comment|/**      * Internal method to get or create an instance of privilege bits for the      * specified long value.      *      * @param bits A long value.      * @return an instance of {@code PrivilegeBits}      */
+annotation|@
+name|Nonnull
 specifier|private
 specifier|static
 name|PrivilegeBits
@@ -1040,7 +1074,9 @@ argument_list|)
 return|;
 block|}
 block|}
-comment|/**      * Internal method to create a new instance of {@code PrivilegeBits}.      *      * @param bits      * @return an instance of {@code PrivilegeBits}      */
+comment|/**      * Internal method to create a new instance of {@code PrivilegeBits}.      *      * @param bits A long array.      * @return an instance of {@code PrivilegeBits}      */
+annotation|@
+name|Nonnull
 specifier|private
 specifier|static
 name|PrivilegeBits
@@ -1069,9 +1105,13 @@ specifier|static
 name|long
 name|calculatePermissions
 parameter_list|(
+annotation|@
+name|Nonnull
 name|PrivilegeBits
 name|bits
 parameter_list|,
+annotation|@
+name|Nonnull
 name|PrivilegeBits
 name|parentBits
 parameter_list|,
@@ -1587,6 +1627,8 @@ argument_list|()
 return|;
 block|}
 comment|/**      * Returns an unmodifiable instance.      *      * @return an unmodifiable {@code PrivilegeBits} instance.      */
+annotation|@
+name|Nonnull
 specifier|public
 name|PrivilegeBits
 name|unmodifiable
@@ -1677,6 +1719,8 @@ specifier|public
 name|boolean
 name|includes
 parameter_list|(
+annotation|@
+name|Nonnull
 name|PrivilegeBits
 name|otherBits
 parameter_list|)
@@ -1725,10 +1769,14 @@ return|;
 block|}
 block|}
 comment|/**      * Adds the other privilege bits to this instance.      *      * @param other The other privilege bits to be added.      * @return The updated instance.      * @throws UnsupportedOperationException if this instance is immutable.      */
+annotation|@
+name|Nonnull
 specifier|public
 name|PrivilegeBits
 name|add
 parameter_list|(
+annotation|@
+name|Nonnull
 name|PrivilegeBits
 name|other
 parameter_list|)
@@ -1770,10 +1818,14 @@ throw|;
 block|}
 block|}
 comment|/**      * Subtracts the other PrivilegeBits from the this.<br>      * If the specified bits do not intersect with this, it isn't modified.<br>      * If {@code this} is included in {@code other} {@link #EMPTY empty}      * privilege bits is returned.      *      * @param other The other privilege bits to be substracted from this instance.      * @return The updated instance.      * @throws UnsupportedOperationException if this instance is immutable.      */
+annotation|@
+name|Nonnull
 specifier|public
 name|PrivilegeBits
 name|diff
 parameter_list|(
+annotation|@
+name|Nonnull
 name|PrivilegeBits
 name|other
 parameter_list|)
@@ -1815,13 +1867,19 @@ throw|;
 block|}
 block|}
 comment|/**      * Subtracts the {@code b} from {@code a} and adds the result (diff)      * to this instance.      *      * @param a An instance of privilege bits.      * @param b An instance of privilege bits.      * @return The updated instance.      * @throws UnsupportedOperationException if this instance is immutable.      */
+annotation|@
+name|Nonnull
 specifier|public
 name|PrivilegeBits
 name|addDifference
 parameter_list|(
+annotation|@
+name|Nonnull
 name|PrivilegeBits
 name|a
 parameter_list|,
+annotation|@
+name|Nonnull
 name|PrivilegeBits
 name|b
 parameter_list|)
@@ -1867,6 +1925,8 @@ throw|;
 block|}
 block|}
 comment|/**      * Package private method to calculate the privilege bits associated with a      * given built-in or custom privilege definition.      *      * @return an instance of {@code PrivilegeBits}      */
+annotation|@
+name|Nonnull
 name|PrivilegeBits
 name|nextBits
 parameter_list|()
@@ -1896,9 +1956,12 @@ argument_list|)
 return|;
 block|}
 block|}
+comment|/**      * Write this instance as property to the specified tree.      *      * @param tree The target tree.      */
 name|void
 name|writeTo
 parameter_list|(
+annotation|@
+name|Nonnull
 name|Tree
 name|tree
 parameter_list|)
@@ -1944,12 +2007,17 @@ name|LONGS
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * Write this instance as property to the specified node builder.      *      * @param nodeBuilder The target node builder.      * @param nodeName    The name of the node.      */
 name|void
 name|writeTo
 parameter_list|(
+annotation|@
+name|Nonnull
 name|NodeBuilder
 name|nodeBuilder
 parameter_list|,
+annotation|@
+name|Nonnull
 name|String
 name|nodeName
 parameter_list|)

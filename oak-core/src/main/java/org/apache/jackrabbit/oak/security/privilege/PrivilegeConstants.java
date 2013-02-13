@@ -108,13 +108,13 @@ name|REP_AGGREGATES
 init|=
 literal|"rep:aggregates"
 decl_stmt|;
-comment|/**      * TODO      */
+comment|/**      * Name of the property storing the value of the next available privilege bits.      */
 name|String
 name|REP_NEXT
 init|=
 literal|"rep:next"
 decl_stmt|;
-comment|/**      * TODO      */
+comment|/**      * Name of the privilege definition property that stores the internal representation      * of this privilege.      */
 name|String
 name|REP_BITS
 init|=
