@@ -89,6 +89,22 @@ name|MicroKernelException
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|mk
+operator|.
+name|blobs
+operator|.
+name|BlobStore
+import|;
+end_import
+
 begin_class
 specifier|public
 class|class
@@ -102,13 +118,19 @@ specifier|final
 name|DocumentStore
 name|store
 decl_stmt|;
+comment|/**      * The MongoDB blob store.      */
+specifier|private
+specifier|final
+name|BlobStore
+name|blobStore
+decl_stmt|;
 comment|/**      * The unique cluster id, similar to the unique machine id in MongoDB.      */
 specifier|private
 specifier|final
 name|int
 name|clusterId
 decl_stmt|;
-comment|/**      * The node cache.      *       * Key: path@rev      * Value: node      */
+comment|/**      * The node cache.      *      * Key: path@rev      * Value: node      */
 comment|// TODO: should be path@id
 specifier|private
 specifier|final
@@ -164,12 +186,15 @@ argument_list|(
 literal|1024
 argument_list|)
 decl_stmt|;
-comment|/**      * Create a new MongoMK.      *       * @param store the store (might be shared)      * @param clusterId the cluster id (must be unique)      */
+comment|/**      * Create a new MongoMK.      *      * @param store the store (might be shared)      * @param clusterId the cluster id (must be unique)      */
 specifier|public
 name|MongoMK
 parameter_list|(
-name|MemoryDocumentStore
+name|DocumentStore
 name|store
+parameter_list|,
+name|BlobStore
+name|blobStore
 parameter_list|,
 name|int
 name|clusterId
@@ -180,6 +205,12 @@ operator|.
 name|store
 operator|=
 name|store
+expr_stmt|;
+name|this
+operator|.
+name|blobStore
+operator|=
+name|blobStore
 expr_stmt|;
 name|this
 operator|.
@@ -201,7 +232,7 @@ name|clusterId
 argument_list|)
 return|;
 block|}
-comment|/**      * Get the node for the given path and revision. The returned object might      * not be modified directly.      *       * @param path      * @param rev      * @return the node      */
+comment|/**      * Get the node for the given path and revision. The returned object might      * not be modified directly.      *      * @param path      * @param rev      * @return the node      */
 name|Node
 name|getNode
 parameter_list|(
@@ -269,7 +300,7 @@ return|return
 name|node
 return|;
 block|}
-comment|/**      * Try to add a node.      *       * @param rev the revision      * @param n the node      * @throw IllegalStateException if the node already existed      */
+comment|/**      * Try to add a node.      *      * @param rev the revision      * @param n the node      * @throw IllegalStateException if the node already existed      */
 specifier|public
 name|void
 name|addNode
@@ -805,10 +836,31 @@ parameter_list|)
 throws|throws
 name|MicroKernelException
 block|{
-comment|// TODO Auto-generated method stub
+try|try
+block|{
 return|return
-literal|0
+name|blobStore
+operator|.
+name|getBlobLength
+argument_list|(
+name|blobId
+argument_list|)
 return|;
+block|}
+catch|catch
+parameter_list|(
+name|Exception
+name|e
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|MicroKernelException
+argument_list|(
+name|e
+argument_list|)
+throw|;
+block|}
 block|}
 annotation|@
 name|Override
@@ -835,10 +887,39 @@ parameter_list|)
 throws|throws
 name|MicroKernelException
 block|{
-comment|// TODO Auto-generated method stub
+try|try
+block|{
 return|return
-literal|0
+name|blobStore
+operator|.
+name|readBlob
+argument_list|(
+name|blobId
+argument_list|,
+name|pos
+argument_list|,
+name|buff
+argument_list|,
+name|off
+argument_list|,
+name|length
+argument_list|)
 return|;
+block|}
+catch|catch
+parameter_list|(
+name|Exception
+name|e
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|MicroKernelException
+argument_list|(
+name|e
+argument_list|)
+throw|;
+block|}
 block|}
 annotation|@
 name|Override
@@ -852,10 +933,31 @@ parameter_list|)
 throws|throws
 name|MicroKernelException
 block|{
-comment|// TODO Auto-generated method stub
+try|try
+block|{
 return|return
-literal|null
+name|blobStore
+operator|.
+name|writeBlob
+argument_list|(
+name|in
+argument_list|)
 return|;
+block|}
+catch|catch
+parameter_list|(
+name|Exception
+name|e
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|MicroKernelException
+argument_list|(
+name|e
+argument_list|)
+throw|;
+block|}
 block|}
 specifier|static
 class|class
