@@ -177,15 +177,14 @@ name|MONGO_DB
 init|=
 literal|false
 decl_stmt|;
+comment|//    private final static int NODE_COUNT = 2000;
 specifier|private
-specifier|final
 specifier|static
 name|int
 name|NODE_COUNT
 init|=
-literal|2000
+literal|10
 decl_stmt|;
-comment|//private static int NODE_COUNT = 10;
 name|DocumentStore
 name|openDocumentStore
 parameter_list|()
@@ -241,8 +240,6 @@ block|}
 block|}
 annotation|@
 name|Test
-annotation|@
-name|Ignore
 specifier|public
 name|void
 name|addGetAndRemove
@@ -452,8 +449,6 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-annotation|@
-name|Ignore
 specifier|public
 name|void
 name|addLotsOfNodes
