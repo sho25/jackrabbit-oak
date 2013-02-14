@@ -3691,7 +3691,7 @@ name|pNames
 init|=
 name|provider
 operator|.
-name|getPrivilegeNames
+name|getPrivileges
 argument_list|(
 name|tree
 argument_list|)

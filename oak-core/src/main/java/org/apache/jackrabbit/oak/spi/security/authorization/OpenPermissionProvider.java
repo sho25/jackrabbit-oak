@@ -156,7 +156,7 @@ name|Set
 argument_list|<
 name|String
 argument_list|>
-name|getPrivilegeNames
+name|getPrivileges
 parameter_list|(
 annotation|@
 name|Nullable
@@ -300,6 +300,8 @@ name|Nonnull
 name|String
 name|oakPath
 parameter_list|,
+annotation|@
+name|Nonnull
 name|String
 name|jcrActions
 parameter_list|)

@@ -98,7 +98,7 @@ name|Set
 argument_list|<
 name|String
 argument_list|>
-name|getPrivilegeNames
+name|getPrivileges
 parameter_list|(
 annotation|@
 name|Nullable
