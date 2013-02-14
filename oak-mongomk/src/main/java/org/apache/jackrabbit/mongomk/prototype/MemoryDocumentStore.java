@@ -23,6 +23,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Map
 import|;
 end_import
@@ -109,7 +119,7 @@ argument_list|>
 argument_list|>
 argument_list|()
 decl_stmt|;
-comment|/**      * Get a document. The returned map is a clone (the caller      * can modify it without affecting the stored version).      *       * @param collection the collection      * @param path the path      * @return the map, or null if not found      */
+comment|/**      * Get a document. The returned map is a clone (the caller      * can modify it without affecting the stored version).      *      * @param collection the collection      * @param path the path      * @return the map, or null if not found      */
 specifier|public
 name|Map
 argument_list|<
@@ -200,7 +210,7 @@ name|copy
 return|;
 block|}
 block|}
-comment|/**      * Remove a document.      *       * @param collection the collection      * @param path the path      */
+comment|/**      * Remove a document.      *      * @param collection the collection      * @param path the path      */
 specifier|public
 name|void
 name|remove
@@ -223,7 +233,7 @@ name|path
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Get the in-memory map for this collection.      *       * @param collection the collection      * @return the map      */
+comment|/**      * Get the in-memory map for this collection.      *      * @param collection the collection      * @return the map      */
 specifier|private
 name|ConcurrentSkipListMap
 argument_list|<
@@ -266,7 +276,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**      * Create or update a document. For MongoDb, this is using "findAndModify" with      * the "upsert" flag (insert or update).      *       * @param collection the collection      * @param update the update operation      * @return the old document, or null if there was no      */
+comment|/**      * Create or update a document. For MongoDb, this is using "findAndModify" with      * the "upsert" flag (insert or update).      *      * @param collection the collection      * @param update the update operation      * @return the old document, or null if there was no      */
 specifier|public
 name|Map
 argument_list|<
@@ -659,6 +669,24 @@ block|}
 return|return
 name|oldNode
 return|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|void
+name|create
+parameter_list|(
+name|Collection
+name|collection
+parameter_list|,
+name|List
+argument_list|<
+name|UpdateOp
+argument_list|>
+name|updateOps
+parameter_list|)
+block|{
+comment|// TODO Auto-generated method stub
 block|}
 specifier|public
 name|String
