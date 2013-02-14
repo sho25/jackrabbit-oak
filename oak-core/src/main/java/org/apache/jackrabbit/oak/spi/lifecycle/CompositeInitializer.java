@@ -57,26 +57,8 @@ name|NodeState
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|spi
-operator|.
-name|state
-operator|.
-name|NodeStore
-import|;
-end_import
-
 begin_comment
-comment|/**  * Composite repository initializer that delegates the  * {@link #initialize(NodeStore)} call in sequence to all the  * component initializers.  */
+comment|/**  * Composite repository initializer that delegates the  * {@link #initialize(NodeState)} call in sequence to all the  * component initializers.  */
 end_comment
 
 begin_class
