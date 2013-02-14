@@ -4472,6 +4472,18 @@ argument_list|)
 expr_stmt|;
 comment|// throws on not found
 comment|// TODO: END
+if|if
+condition|(
+name|isNodeType
+argument_list|(
+name|mixinName
+argument_list|)
+condition|)
+block|{
+return|return
+literal|null
+return|;
+block|}
 name|PropertyDelegate
 name|mixins
 init|=
