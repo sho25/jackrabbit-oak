@@ -266,6 +266,25 @@ name|VersionablePathHook
 implements|implements
 name|CommitHook
 block|{
+specifier|private
+specifier|final
+name|String
+name|workspaceName
+decl_stmt|;
+specifier|public
+name|VersionablePathHook
+parameter_list|(
+name|String
+name|workspaceName
+parameter_list|)
+block|{
+name|this
+operator|.
+name|workspaceName
+operator|=
+name|workspaceName
+expr_stmt|;
+block|}
 annotation|@
 name|Nonnull
 annotation|@
@@ -349,7 +368,6 @@ argument_list|()
 return|;
 block|}
 specifier|private
-specifier|static
 specifier|final
 class|class
 name|Diff
@@ -469,12 +487,6 @@ name|PATH
 argument_list|)
 expr_stmt|;
 block|}
-comment|// FIXME: property pass the current workspace name to the processCommit call.
-name|String
-name|workspaceName
-init|=
-literal|"default"
-decl_stmt|;
 name|String
 name|versionablePath
 init|=

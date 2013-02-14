@@ -335,6 +335,24 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
+specifier|private
+specifier|final
+name|String
+name|workspaceName
+decl_stmt|;
+name|PermissionHook
+parameter_list|(
+name|String
+name|workspaceName
+parameter_list|)
+block|{
+name|this
+operator|.
+name|workspaceName
+operator|=
+name|workspaceName
+expr_stmt|;
+block|}
 annotation|@
 name|Nonnull
 annotation|@
@@ -360,12 +378,6 @@ name|after
 operator|.
 name|builder
 argument_list|()
-decl_stmt|;
-comment|// TODO: retrieve workspace name
-name|String
-name|workspaceName
-init|=
-literal|"default"
 decl_stmt|;
 name|NodeBuilder
 name|permissionRoot
