@@ -572,6 +572,15 @@ specifier|public
 class|class
 name|Oak
 block|{
+comment|/**      * Constant for the default workspace name      */
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|DEFAULT_WORKSPACE_NAME
+init|=
+literal|"default"
+decl_stmt|;
 specifier|private
 specifier|final
 name|MicroKernel
@@ -653,6 +662,8 @@ decl_stmt|;
 specifier|private
 name|String
 name|defaultWorkspaceName
+init|=
+name|DEFAULT_WORKSPACE_NAME
 decl_stmt|;
 specifier|public
 name|Oak
