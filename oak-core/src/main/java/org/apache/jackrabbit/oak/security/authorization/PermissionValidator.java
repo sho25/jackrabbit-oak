@@ -214,7 +214,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * PermissionValidator... TODO  */
+comment|/**  * Validator implementation that checks for sufficient permission for all  * write operations executed by a given content session.  */
 end_comment
 
 begin_class
@@ -223,7 +223,7 @@ name|PermissionValidator
 implements|implements
 name|Validator
 block|{
-comment|/* TODO      * - special permissions for protected items (versioning, access control, etc.)      * - Renaming nodes or Move with same parent are reflected as remove+add -> needs special handling      * - review usage of OAK_CHILD_ORDER property (in particular if the property was removed      */
+comment|/* TODO      * - Renaming nodes or Move with same parent are reflected as remove+add -> needs special handling      * - review usage of OAK_CHILD_ORDER property (in particular if the property was removed      * - Proper handling of jcr:nodeTypeManagement privilege.      */
 specifier|private
 specifier|final
 name|Tree
