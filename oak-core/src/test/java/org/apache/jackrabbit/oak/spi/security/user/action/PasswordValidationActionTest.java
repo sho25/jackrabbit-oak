@@ -1049,10 +1049,6 @@ operator|new
 name|UserConfigurationImpl
 argument_list|(
 name|this
-argument_list|,
-name|ConfigurationParameters
-operator|.
-name|EMPTY
 argument_list|)
 block|{
 annotation|@

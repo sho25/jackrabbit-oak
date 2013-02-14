@@ -31,6 +31,16 @@ end_import
 
 begin_import
 import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|Nullable
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -138,6 +148,17 @@ specifier|public
 interface|interface
 name|SecurityProvider
 block|{
+annotation|@
+name|Nonnull
+name|ConfigurationParameters
+name|getConfiguration
+parameter_list|(
+annotation|@
+name|Nullable
+name|String
+name|name
+parameter_list|)
+function_decl|;
 annotation|@
 name|Nonnull
 name|Iterable
