@@ -405,9 +405,6 @@ return|return
 operator|new
 name|LowerCaseImpl
 argument_list|(
-operator|(
-name|DynamicOperandImpl
-operator|)
 name|operand
 argument_list|)
 return|;
