@@ -980,6 +980,25 @@ name|get
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
+specifier|public
+name|void
+name|dispose
+parameter_list|()
+block|{
+name|nodesCollection
+operator|.
+name|getDB
+argument_list|()
+operator|.
+name|getMongo
+argument_list|()
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
+block|}
 block|}
 end_class
 
