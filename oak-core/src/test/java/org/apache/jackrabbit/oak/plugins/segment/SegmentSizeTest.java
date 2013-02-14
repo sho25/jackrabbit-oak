@@ -754,7 +754,7 @@ argument_list|,
 literal|"everyone"
 argument_list|)
 expr_stmt|;
-name|builder
+name|deny
 operator|.
 name|setProperty
 argument_list|(
@@ -934,7 +934,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|331
+literal|348
 argument_list|,
 name|getSize
 argument_list|(
@@ -944,7 +944,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|104
+literal|116
 argument_list|,
 name|getAmortizedSize
 argument_list|(
@@ -1005,7 +1005,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|394
+literal|411
 argument_list|,
 name|getSize
 argument_list|(
@@ -1015,7 +1015,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|140
+literal|152
 argument_list|,
 name|getAmortizedSize
 argument_list|(
