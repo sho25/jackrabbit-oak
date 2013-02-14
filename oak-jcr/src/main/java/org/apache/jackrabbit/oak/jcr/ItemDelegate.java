@@ -245,25 +245,13 @@ name|boolean
 name|isStale
 parameter_list|()
 block|{
-name|Status
-name|status
-init|=
-name|getLocationOrNull
-argument_list|()
-operator|.
-name|getStatus
-argument_list|()
-decl_stmt|;
 return|return
-name|status
-operator|==
-name|Status
+operator|!
+name|getLocationInternal
+argument_list|()
 operator|.
-name|DISCONNECTED
-operator|||
-name|status
-operator|==
-literal|null
+name|exists
+argument_list|()
 return|;
 block|}
 comment|/**      * Get the status of this item      * @return  {@link Status} of this item      */
@@ -328,7 +316,7 @@ block|{
 name|TreeLocation
 name|location
 init|=
-name|getLocationOrNull
+name|getLocationInternal
 argument_list|()
 decl_stmt|;
 if|if
@@ -378,28 +366,29 @@ literal|']'
 return|;
 block|}
 comment|//------------------------------------------------------------< private>---
-comment|/**      * The underlying {@link org.apache.jackrabbit.oak.api.TreeLocation} of this item.      * The location is only re-resolved when the revision of this item does not match      * the revision of the session.      * @return  tree location of the underlying item.      */
+comment|/**      * The underlying {@link org.apache.jackrabbit.oak.api.TreeLocation} of this item.      * The location is only re-resolved when the revision of this item does not match      * the revision of the session or when the location does not exist (anymore).      * @return  tree location of the underlying item.      */
 annotation|@
 name|Nonnull
 specifier|private
 specifier|synchronized
 name|TreeLocation
-name|getLocationOrNull
+name|getLocationInternal
 parameter_list|()
 block|{
 if|if
 condition|(
-name|location
-operator|.
-name|exists
-argument_list|()
-operator|&&
 name|sessionDelegate
 operator|.
 name|getRevision
 argument_list|()
 operator|!=
 name|revision
+operator|||
+operator|!
+name|location
+operator|.
+name|exists
+argument_list|()
 condition|)
 block|{
 name|location
