@@ -359,7 +359,7 @@ name|BOOLEAN
 argument_list|)
 return|;
 block|}
-comment|/**      * Utility method that assert that children of a tree keep the order such      * as defined by the insertion and any subsequent      * {@link Tree#orderBefore(String) reordering}.      *      * @param tree The parent tree whose children are mandated to be orderable.      */
+comment|/**      * FIXME: see OAK-626 for a proposal on how to clean that up.      *      * Utility method that assert that children of a tree keep the order such      * as defined by the insertion and any subsequent      * {@link Tree#orderBefore(String) reordering}.      *      * @param tree The parent tree whose children are mandated to be orderable.      */
 specifier|public
 specifier|static
 name|void
