@@ -45,16 +45,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|List
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|Map
 import|;
 end_import
@@ -1844,7 +1834,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**      * Subtracts the other PrivilegeBits from the this.<br>      * If the specified bits do not intersect with this, it isn't modified.<br>      * If {@code this} is included in {@code other} {@link #EMPTY empty}      * privilege bits is returned.      *      * @param other The other privilege bits to be substracted from this instance.      * @return The updated instance.      * @throws UnsupportedOperationException if this instance is immutable.      */
+comment|/**      * Subtracts the other PrivilegeBits from the this.<br>      * If the specified bits do not intersect with this, it isn't modified.<br>      * If {@code this} is included in {@code other} {@link #EMPTY empty}      * privilege bits is returned.      *      * @param other The other privilege bits to be subtracted from this instance.      * @return The updated instance.      * @throws UnsupportedOperationException if this instance is immutable.      */
 annotation|@
 name|Nonnull
 specifier|public

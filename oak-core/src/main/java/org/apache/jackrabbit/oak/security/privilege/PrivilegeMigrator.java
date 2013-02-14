@@ -450,7 +450,7 @@ control|(
 name|PrivilegeDefinition
 name|def
 range|:
-name|readCustomDefinitons
+name|readCustomDefinitions
 argument_list|(
 name|privilegeStream
 argument_list|,
@@ -489,7 +489,7 @@ name|Iterable
 argument_list|<
 name|PrivilegeDefinition
 argument_list|>
-name|readCustomDefinitons
+name|readCustomDefinitions
 parameter_list|(
 name|InputStream
 name|customPrivileges
