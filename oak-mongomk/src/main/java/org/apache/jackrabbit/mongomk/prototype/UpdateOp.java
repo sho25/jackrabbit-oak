@@ -51,6 +51,10 @@ name|String
 name|key
 decl_stmt|;
 specifier|final
+name|boolean
+name|isNew
+decl_stmt|;
+specifier|final
 name|Map
 argument_list|<
 name|String
@@ -68,11 +72,14 @@ name|Operation
 argument_list|>
 argument_list|()
 decl_stmt|;
-comment|/**      * Create an update operation for the given document. The commit root is assumed      * to be the path, unless this is changed later on.      *       * @param path the path      * @param rev the revision      */
+comment|/**      * Create an update operation for the given document. The commit root is assumed      * to be the path, unless this is changed later on.      *       * @param key the primary key      * @param isNew whether this is a new document      * @param rev the revision      */
 name|UpdateOp
 parameter_list|(
 name|String
 name|key
+parameter_list|,
+name|boolean
+name|isNew
 parameter_list|)
 block|{
 name|this
@@ -81,6 +88,20 @@ name|key
 operator|=
 name|key
 expr_stmt|;
+name|this
+operator|.
+name|isNew
+operator|=
+name|isNew
+expr_stmt|;
+block|}
+name|boolean
+name|isNew
+parameter_list|()
+block|{
+return|return
+name|isNew
+return|;
 block|}
 comment|/**      * Add a new map entry for this revision.      *       * @param property the property      * @param value the value      */
 name|void
@@ -222,6 +243,31 @@ argument_list|,
 name|op
 argument_list|)
 expr_stmt|;
+block|}
+specifier|public
+name|String
+name|toString
+parameter_list|()
+block|{
+return|return
+literal|"key: "
+operator|+
+name|key
+operator|+
+literal|" "
+operator|+
+operator|(
+name|isNew
+condition|?
+literal|"new"
+else|:
+literal|"update"
+operator|)
+operator|+
+literal|" "
+operator|+
+name|changes
+return|;
 block|}
 comment|/**      * A MongoDB operation for a given key within a document.       */
 specifier|static

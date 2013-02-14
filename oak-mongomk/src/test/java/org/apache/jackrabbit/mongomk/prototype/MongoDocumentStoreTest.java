@@ -283,6 +283,8 @@ operator|new
 name|UpdateOp
 argument_list|(
 literal|"/"
+argument_list|,
+literal|true
 argument_list|)
 decl_stmt|;
 name|updateOp
@@ -527,6 +529,8 @@ argument_list|(
 literal|"/node"
 operator|+
 name|i
+argument_list|,
+literal|true
 argument_list|)
 decl_stmt|;
 name|updateOp
@@ -596,6 +600,8 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
+annotation|@
+name|Ignore
 specifier|public
 name|void
 name|addLotsOfNodes
@@ -807,8 +813,6 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-annotation|@
-name|Ignore
 specifier|public
 name|void
 name|batchInsert
@@ -816,14 +820,6 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-if|if
-condition|(
-operator|!
-name|MONGO_DB
-condition|)
-block|{
-return|return;
-block|}
 name|doInsert
 argument_list|(
 name|NODE_COUNT
@@ -1221,6 +1217,8 @@ operator|+
 name|nodeName
 operator|+
 name|i
+argument_list|,
+literal|true
 argument_list|)
 decl_stmt|;
 name|updateOp
@@ -1287,6 +1285,8 @@ operator|+
 name|nodeName
 operator|+
 name|i
+argument_list|,
+literal|false
 argument_list|)
 decl_stmt|;
 name|updateOp

@@ -686,7 +686,22 @@ argument_list|>
 name|updateOps
 parameter_list|)
 block|{
-comment|// TODO Auto-generated method stub
+for|for
+control|(
+name|UpdateOp
+name|op
+range|:
+name|updateOps
+control|)
+block|{
+name|createOrUpdate
+argument_list|(
+name|collection
+argument_list|,
+name|op
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 specifier|public
 name|String
