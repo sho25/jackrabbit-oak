@@ -242,7 +242,7 @@ name|NodeDelegate
 extends|extends
 name|ItemDelegate
 block|{
-comment|/**      * Create a new {@code NodeDelegate} instance for a valid {@code TreeLocation}. That      * is for one where {@code getTree() != null}.      * @param sessionDelegate      * @param location      * @return      */
+comment|/**      * Create a new {@code NodeDelegate} instance for a valid {@code TreeLocation}. That      * is for one where {@code getTree() != null}.      *      * @param sessionDelegate      * @param location      * @return      */
 specifier|static
 name|NodeDelegate
 name|create
@@ -334,7 +334,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-comment|/**      * Determine whether this is the root node      * @return  {@code true} iff this is the root node      */
+comment|/**      * Determine whether this is the root node      *      * @return {@code true} iff this is the root node      */
 specifier|public
 name|boolean
 name|isRoot
@@ -350,7 +350,7 @@ name|isRoot
 argument_list|()
 return|;
 block|}
-comment|/**      * Get the number of properties of the node      * @return  number of properties of the node      */
+comment|/**      * Get the number of properties of the node      *      * @return number of properties of the node      */
 specifier|public
 name|long
 name|getPropertyCount
@@ -367,7 +367,7 @@ name|getPropertyCount
 argument_list|()
 return|;
 block|}
-comment|/**      * Get a property      * @param relPath  oak path      * @return  property at the path given by {@code relPath} or {@code null} if      * no such property exists      */
+comment|/**      * Get a property      *      * @param relPath oak path      * @return property at the path given by {@code relPath} or {@code null} if      *         no such property exists      */
 annotation|@
 name|CheckForNull
 specifier|public
@@ -412,7 +412,7 @@ name|propertyLocation
 argument_list|)
 return|;
 block|}
-comment|/**      * Get the properties of the node      * @return  properties of the node      */
+comment|/**      * Get the properties of the node      *      * @return properties of the node      */
 annotation|@
 name|Nonnull
 specifier|public
@@ -439,7 +439,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-comment|/**      * Get the number of child nodes      * @return  number of child nodes of the node      */
+comment|/**      * Get the number of child nodes      *      * @return number of child nodes of the node      */
 specifier|public
 name|long
 name|getChildCount
@@ -456,7 +456,7 @@ name|getChildrenCount
 argument_list|()
 return|;
 block|}
-comment|/**      * Get child node      * @param relPath  oak path      * @return  node at the path given by {@code relPath} or {@code null} if      * no such node exists      */
+comment|/**      * Get child node      *      * @param relPath oak path      * @return node at the path given by {@code relPath} or {@code null} if      *         no such node exists      */
 annotation|@
 name|CheckForNull
 specifier|public
@@ -707,7 +707,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Set a property      * @param name  oak name      * @param value      * @return  the set property      */
+comment|/**      * Set a property      *      * @param name  oak name      * @param value      * @return the set property      */
 annotation|@
 name|Nonnull
 specifier|public
@@ -810,7 +810,7 @@ name|name
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Set a multi valued property      * @param name  oak name      * @param values      * @return  the set property      */
+comment|/**      * Set a multi valued property      *      * @param name   oak name      * @param values      * @return the set property      */
 annotation|@
 name|Nonnull
 specifier|public
@@ -898,7 +898,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-comment|/**      * Add a child node      * @param name  oak name      * @return  the added node or {@code null} if such a node already exists      */
+comment|/**      * Add a child node      *      * @param name oak name      * @return the added node or {@code null} if such a node already exists      */
 annotation|@
 name|CheckForNull
 specifier|public
@@ -954,6 +954,26 @@ argument_list|()
 operator|.
 name|remove
 argument_list|()
+expr_stmt|;
+block|}
+comment|/**      * Enables or disabled orderable children on the underlying tree.      *      * @param enable whether to enable or disable orderable children.      */
+specifier|public
+name|void
+name|setOrderableChildren
+parameter_list|(
+name|boolean
+name|enable
+parameter_list|)
+throws|throws
+name|InvalidItemStateException
+block|{
+name|getTree
+argument_list|()
+operator|.
+name|setOrderableChildren
+argument_list|(
+name|enable
+argument_list|)
 expr_stmt|;
 block|}
 comment|//------------------------------------------------------------< internal>---
