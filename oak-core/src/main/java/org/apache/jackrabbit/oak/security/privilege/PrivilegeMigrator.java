@@ -482,7 +482,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**      * Reads privilege definitions for the specified {@code InputStream}. The      * aim of this method is to provide backwards compatibility with      * custom privilege definitions of Jackrabbit 2.x repositories. The caller      * is in charge of migrating the definitions.      *      * @param customPrivileges      * @param nsRegistry      * @return      * @throws RepositoryException      * @throws IOException      */
+comment|/**      * Reads privilege definitions for the specified {@code InputStream}. The      * aim of this method is to provide backwards compatibility with      * custom privilege definitions of Jackrabbit 2.x repositories. The caller      * is in charge of migrating the definitions.      *      * @param customPrivileges The stream from which 2.x privilege definitions      *                         should be read.      * @param nsRegistry       The namespace registry.      * @return The {@code PrivilegeDefinition}s contained in the stream.      * @throws RepositoryException If a name collisions is detected during      *                             parsing the custom privileges.      * @throws IOException         If another error occurs while reading from the      *                             custom privileges stream.      */
 specifier|private
 specifier|static
 name|Iterable
@@ -1059,7 +1059,7 @@ return|return
 literal|null
 return|;
 block|}
-comment|/**          * Create a new {@code DocumentBuilder}          *          * @return a new {@code DocumentBuilder}          * @throws ParserConfigurationException          */
+comment|/**          * Create a new {@code DocumentBuilder}          *          * @return a new {@code DocumentBuilder}          * @throws ParserConfigurationException If an error occurs.          */
 specifier|private
 specifier|static
 name|DocumentBuilder
@@ -1090,7 +1090,7 @@ return|return
 name|builder
 return|;
 block|}
-comment|/**          * Update the specified nsRegistry mappings with the nsRegistry declarations          * defined by the given XML element.          *          * @param elem          * @param nsRegistry          * @throws javax.jcr.RepositoryException          */
+comment|/**          * Update the specified nsRegistry mappings with the nsRegistry declarations          * defined by the given XML element.          *          * @param elem       An XML element.          * @param nsRegistry The namespace registry used to keep track of the          *                   namespace definitions present in the xml file.          * @throws javax.jcr.RepositoryException If error occurs.          */
 specifier|private
 specifier|static
 name|void
