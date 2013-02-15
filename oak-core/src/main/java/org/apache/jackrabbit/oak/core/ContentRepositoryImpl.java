@@ -115,6 +115,24 @@ name|oak
 operator|.
 name|spi
 operator|.
+name|commit
+operator|.
+name|CommitHook
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
 name|query
 operator|.
 name|CompositeQueryIndexProvider
@@ -266,7 +284,12 @@ specifier|final
 name|NodeStore
 name|nodeStore
 decl_stmt|;
-comment|/**      * Creates an content repository instance based on the given, already      * initialized components.      *      * @param nodeStore            the node store this repository is based upon.      * @param defaultWorkspaceName the default workspace name;      * @param indexProvider        index provider      * @param securityProvider     The configured security provider.      */
+specifier|private
+specifier|final
+name|CommitHook
+name|commitHook
+decl_stmt|;
+comment|/**      * Creates an content repository instance based on the given, already      * initialized components.      *      * @param nodeStore            the node store this repository is based upon.      * @param commitHook           the hook to use for processing commits      * @param defaultWorkspaceName the default workspace name;      * @param indexProvider        index provider      * @param securityProvider     The configured security provider.      */
 specifier|public
 name|ContentRepositoryImpl
 parameter_list|(
@@ -274,6 +297,11 @@ annotation|@
 name|Nonnull
 name|NodeStore
 name|nodeStore
+parameter_list|,
+annotation|@
+name|Nonnull
+name|CommitHook
+name|commitHook
 parameter_list|,
 annotation|@
 name|Nonnull
@@ -296,6 +324,12 @@ operator|.
 name|nodeStore
 operator|=
 name|nodeStore
+expr_stmt|;
+name|this
+operator|.
+name|commitHook
+operator|=
+name|commitHook
 expr_stmt|;
 name|this
 operator|.
@@ -387,6 +421,8 @@ name|getLoginContextProvider
 argument_list|(
 name|nodeStore
 argument_list|,
+name|commitHook
+argument_list|,
 name|indexProvider
 argument_list|)
 decl_stmt|;
@@ -426,6 +462,8 @@ argument_list|,
 name|workspaceName
 argument_list|,
 name|nodeStore
+argument_list|,
+name|commitHook
 argument_list|,
 name|indexProvider
 argument_list|)

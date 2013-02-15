@@ -464,20 +464,6 @@ argument_list|(
 name|mk
 argument_list|)
 expr_stmt|;
-name|store
-operator|.
-name|setHook
-argument_list|(
-name|IndexHookManager
-operator|.
-name|of
-argument_list|(
-operator|new
-name|Property2IndexHookProvider
-argument_list|()
-argument_list|)
-argument_list|)
-expr_stmt|;
 comment|// initialize node types& index definitions
 name|OakInitializer
 operator|.
@@ -573,7 +559,16 @@ expr_stmt|;
 name|branch
 operator|.
 name|merge
+argument_list|(
+name|IndexHookManager
+operator|.
+name|of
+argument_list|(
+operator|new
+name|Property2IndexHookProvider
 argument_list|()
+argument_list|)
+argument_list|)
 expr_stmt|;
 name|NodeState
 name|rootState

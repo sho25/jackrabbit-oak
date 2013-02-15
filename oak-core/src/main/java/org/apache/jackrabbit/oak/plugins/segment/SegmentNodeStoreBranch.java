@@ -407,11 +407,6 @@ name|SegmentWriter
 name|writer
 decl_stmt|;
 specifier|private
-specifier|final
-name|CommitHook
-name|hook
-decl_stmt|;
-specifier|private
 name|RecordId
 name|baseId
 decl_stmt|;
@@ -426,9 +421,6 @@ name|store
 parameter_list|,
 name|SegmentReader
 name|reader
-parameter_list|,
-name|CommitHook
-name|hook
 parameter_list|)
 block|{
 name|this
@@ -452,12 +444,6 @@ name|SegmentWriter
 argument_list|(
 name|store
 argument_list|)
-expr_stmt|;
-name|this
-operator|.
-name|hook
-operator|=
-name|hook
 expr_stmt|;
 name|this
 operator|.
@@ -1098,7 +1084,10 @@ specifier|public
 specifier|synchronized
 name|NodeState
 name|merge
-parameter_list|()
+parameter_list|(
+name|CommitHook
+name|hook
+parameter_list|)
 throws|throws
 name|CommitFailedException
 block|{
