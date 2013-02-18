@@ -63,6 +63,24 @@ begin_import
 import|import
 name|org
 operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|mongomk
+operator|.
+name|prototype
+operator|.
+name|Node
+operator|.
+name|Children
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|junit
 operator|.
 name|Test
@@ -82,6 +100,10 @@ operator|.
 name|Lists
 import|;
 end_import
+
+begin_comment
+comment|/**  * A set of simple tests.  */
+end_comment
 
 begin_class
 specifier|public
@@ -357,6 +379,70 @@ argument_list|,
 name|test
 argument_list|)
 expr_stmt|;
+name|rev
+operator|=
+name|mk
+operator|.
+name|commit
+argument_list|(
+literal|"/test"
+argument_list|,
+literal|"+\"a\":{\"name\": \"World\"}"
+argument_list|,
+literal|null
+argument_list|,
+literal|null
+argument_list|)
+expr_stmt|;
+name|test
+operator|=
+name|mk
+operator|.
+name|getNodes
+argument_list|(
+literal|"/test"
+argument_list|,
+name|rev
+argument_list|,
+literal|0
+argument_list|,
+literal|0
+argument_list|,
+name|Integer
+operator|.
+name|MAX_VALUE
+argument_list|,
+literal|null
+argument_list|)
+expr_stmt|;
+name|Children
+name|c
+init|=
+name|mk
+operator|.
+name|readChildren
+argument_list|(
+literal|"/"
+argument_list|,
+name|Revision
+operator|.
+name|fromString
+argument_list|(
+name|rev
+argument_list|)
+argument_list|)
+decl_stmt|;
+name|assertEquals
+argument_list|(
+literal|"/: []"
+argument_list|,
+name|c
+operator|.
+name|toString
+argument_list|()
+argument_list|)
+expr_stmt|;
+comment|// assertEquals("{\"name\":\"Hello\",{\"a\":\"name\":\"World\"}}", test);
 comment|// System.out.println(test);
 name|mk
 operator|.
@@ -364,6 +450,7 @@ name|dispose
 argument_list|()
 expr_stmt|;
 block|}
+comment|// TODO run Damians tests
 block|}
 end_class
 
