@@ -495,6 +495,10 @@ name|REP_BITS
 argument_list|)
 argument_list|)
 decl_stmt|;
+name|jcrAll
+operator|.
+name|setProperty
+argument_list|(
 name|PrivilegeBits
 operator|.
 name|getInstance
@@ -507,11 +511,10 @@ argument_list|(
 name|bits
 argument_list|)
 operator|.
-name|writeTo
+name|asPropertyState
 argument_list|(
-name|jcrAll
-argument_list|,
-name|JCR_ALL
+name|REP_BITS
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
