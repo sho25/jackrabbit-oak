@@ -33,6 +33,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|HashMap
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|LinkedHashMap
 import|;
 end_import
@@ -323,7 +333,7 @@ argument_list|)
 decl_stmt|;
 comment|/**      * The last known head revision. This is the last-known revision.      */
 specifier|private
-name|String
+name|Revision
 name|headRevision
 decl_stmt|;
 name|AtomicBoolean
@@ -336,6 +346,25 @@ decl_stmt|;
 specifier|private
 name|Thread
 name|backgroundThread
+decl_stmt|;
+specifier|private
+specifier|final
+name|Map
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
+name|branchCommits
+init|=
+operator|new
+name|HashMap
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
+argument_list|()
 decl_stmt|;
 comment|/**      * Create a new in-memory MongoMK used for testing.      */
 specifier|public
@@ -500,6 +529,67 @@ operator|.
 name|start
 argument_list|()
 expr_stmt|;
+name|headRevision
+operator|=
+name|Revision
+operator|.
+name|newRevision
+argument_list|(
+name|clusterId
+argument_list|)
+expr_stmt|;
+name|Node
+name|n
+init|=
+name|readNode
+argument_list|(
+literal|"/"
+argument_list|,
+name|headRevision
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|n
+operator|==
+literal|null
+condition|)
+block|{
+comment|// root node is missing: repository is not initialized
+name|Commit
+name|commit
+init|=
+operator|new
+name|Commit
+argument_list|(
+name|headRevision
+argument_list|)
+decl_stmt|;
+name|n
+operator|=
+operator|new
+name|Node
+argument_list|(
+literal|"/"
+argument_list|,
+name|headRevision
+argument_list|)
+expr_stmt|;
+name|commit
+operator|.
+name|addNode
+argument_list|(
+name|n
+argument_list|)
+expr_stmt|;
+name|commit
+operator|.
+name|apply
+argument_list|(
+name|store
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 name|Revision
 name|newRevision
@@ -783,6 +873,39 @@ block|{
 comment|// TODO property name escaping
 continue|continue;
 block|}
+name|Object
+name|v
+init|=
+name|map
+operator|.
+name|get
+argument_list|(
+name|key
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+operator|!
+operator|(
+name|v
+operator|instanceof
+name|Map
+operator|)
+condition|)
+block|{
+name|int
+name|test
+decl_stmt|;
+name|System
+operator|.
+name|out
+operator|.
+name|println
+argument_list|(
+literal|"??"
+argument_list|)
+expr_stmt|;
+block|}
 annotation|@
 name|SuppressWarnings
 argument_list|(
@@ -804,13 +927,15 @@ argument_list|,
 name|String
 argument_list|>
 operator|)
-name|map
-operator|.
-name|get
-argument_list|(
-name|key
-argument_list|)
+name|v
 decl_stmt|;
+if|if
+condition|(
+name|valueMap
+operator|!=
+literal|null
+condition|)
+block|{
 for|for
 control|(
 name|String
@@ -859,6 +984,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
+block|}
 return|return
 name|n
 return|;
@@ -874,6 +1000,9 @@ name|MicroKernelException
 block|{
 return|return
 name|headRevision
+operator|.
+name|toString
+argument_list|()
 return|;
 block|}
 annotation|@
@@ -894,10 +1023,14 @@ parameter_list|)
 throws|throws
 name|MicroKernelException
 block|{
-comment|// TODO implement if needed
-return|return
-literal|null
-return|;
+comment|// not currently called by oak-core
+throw|throw
+operator|new
+name|MicroKernelException
+argument_list|(
+literal|"Not implemented"
+argument_list|)
+throw|;
 block|}
 annotation|@
 name|Override
@@ -916,10 +1049,14 @@ name|MicroKernelException
 throws|,
 name|InterruptedException
 block|{
-comment|// TODO implement if needed
-return|return
-literal|null
-return|;
+comment|// not currently called by oak-core
+throw|throw
+operator|new
+name|MicroKernelException
+argument_list|(
+literal|"Not implemented"
+argument_list|)
+throw|;
 block|}
 annotation|@
 name|Override
@@ -939,10 +1076,14 @@ parameter_list|)
 throws|throws
 name|MicroKernelException
 block|{
-comment|// TODO implement if needed
-return|return
-literal|null
-return|;
+comment|// not currently called by oak-core
+throw|throw
+operator|new
+name|MicroKernelException
+argument_list|(
+literal|"Not implemented"
+argument_list|)
+throw|;
 block|}
 annotation|@
 name|Override
@@ -965,6 +1106,20 @@ parameter_list|)
 throws|throws
 name|MicroKernelException
 block|{
+if|if
+condition|(
+name|fromRevisionId
+operator|.
+name|equals
+argument_list|(
+name|toRevisionId
+argument_list|)
+condition|)
+block|{
+return|return
+literal|""
+return|;
+block|}
 comment|// TODO implement if needed
 return|return
 literal|null
@@ -1026,10 +1181,14 @@ parameter_list|)
 throws|throws
 name|MicroKernelException
 block|{
-comment|// TODO implement if needed
-return|return
-literal|0
-return|;
+comment|// not currently called by oak-core
+throw|throw
+operator|new
+name|MicroKernelException
+argument_list|(
+literal|"Not implemented"
+argument_list|)
+throw|;
 block|}
 annotation|@
 name|Override
@@ -1058,6 +1217,54 @@ parameter_list|)
 throws|throws
 name|MicroKernelException
 block|{
+if|if
+condition|(
+name|depth
+operator|!=
+literal|0
+condition|)
+block|{
+throw|throw
+operator|new
+name|MicroKernelException
+argument_list|(
+literal|"Only depth 0 is supported, depth is "
+operator|+
+name|depth
+argument_list|)
+throw|;
+block|}
+if|if
+condition|(
+name|revisionId
+operator|.
+name|startsWith
+argument_list|(
+literal|"b"
+argument_list|)
+condition|)
+block|{
+comment|// reading from the branch is reading from the trunk currently
+name|revisionId
+operator|=
+name|revisionId
+operator|.
+name|substring
+argument_list|(
+literal|1
+argument_list|)
+operator|.
+name|replace
+argument_list|(
+literal|'+'
+argument_list|,
+literal|' '
+argument_list|)
+operator|.
+name|trim
+argument_list|()
+expr_stmt|;
+block|}
 name|Revision
 name|rev
 init|=
@@ -1090,6 +1297,8 @@ operator|.
 name|append
 argument_list|(
 name|json
+argument_list|,
+literal|true
 argument_list|)
 expr_stmt|;
 return|return
@@ -1120,6 +1329,19 @@ parameter_list|)
 throws|throws
 name|MicroKernelException
 block|{
+name|revisionId
+operator|=
+name|revisionId
+operator|==
+literal|null
+condition|?
+name|headRevision
+operator|.
+name|toString
+argument_list|()
+else|:
+name|revisionId
+expr_stmt|;
 name|JsopReader
 name|t
 init|=
@@ -1129,16 +1351,6 @@ argument_list|(
 name|json
 argument_list|)
 decl_stmt|;
-name|revisionId
-operator|=
-name|revisionId
-operator|==
-literal|null
-condition|?
-name|headRevision
-else|:
-name|revisionId
-expr_stmt|;
 name|Revision
 name|rev
 init|=
@@ -1233,6 +1445,13 @@ case|case
 literal|'-'
 case|:
 comment|// TODO support remove operations
+name|commit
+operator|.
+name|removeNode
+argument_list|(
+name|path
+argument_list|)
+expr_stmt|;
 break|break;
 case|case
 literal|'^'
@@ -1263,6 +1482,26 @@ name|value
 operator|=
 literal|null
 expr_stmt|;
+name|commit
+operator|.
+name|getDiff
+argument_list|()
+operator|.
+name|tag
+argument_list|(
+literal|'^'
+argument_list|)
+operator|.
+name|key
+argument_list|(
+name|path
+argument_list|)
+operator|.
+name|value
+argument_list|(
+literal|null
+argument_list|)
+expr_stmt|;
 block|}
 else|else
 block|{
@@ -1275,6 +1514,26 @@ argument_list|()
 operator|.
 name|trim
 argument_list|()
+expr_stmt|;
+name|commit
+operator|.
+name|getDiff
+argument_list|()
+operator|.
+name|tag
+argument_list|(
+literal|'^'
+argument_list|)
+operator|.
+name|key
+argument_list|(
+name|path
+argument_list|)
+operator|.
+name|value
+argument_list|(
+literal|null
+argument_list|)
 expr_stmt|;
 block|}
 name|String
@@ -1309,9 +1568,14 @@ argument_list|)
 decl_stmt|;
 name|op
 operator|.
-name|set
+name|addMapEntry
 argument_list|(
 name|propertyName
+argument_list|,
+name|rev
+operator|.
+name|toString
+argument_list|()
 argument_list|,
 name|value
 argument_list|)
@@ -1760,6 +2024,17 @@ argument_list|)
 throw|;
 block|}
 block|}
+if|if
+condition|(
+name|revisionId
+operator|.
+name|startsWith
+argument_list|(
+literal|"b"
+argument_list|)
+condition|)
+block|{
+comment|// just commit to head currently
 name|commit
 operator|.
 name|apply
@@ -1770,12 +2045,37 @@ expr_stmt|;
 name|headRevision
 operator|=
 name|rev
+expr_stmt|;
+return|return
+literal|"b"
+operator|+
+name|rev
 operator|.
 name|toString
 argument_list|()
+return|;
+comment|// String jsonBranch = branchCommits.remove(revisionId);
+comment|// jsonBranch += commit.getDiff().toString();
+comment|// String branchRev = revisionId + "+";
+comment|// branchCommits.put(branchRev, jsonBranch);
+comment|// return branchRev;
+block|}
+name|commit
+operator|.
+name|apply
+argument_list|(
+name|store
+argument_list|)
+expr_stmt|;
+name|headRevision
+operator|=
+name|rev
 expr_stmt|;
 return|return
-name|headRevision
+name|rev
+operator|.
+name|toString
+argument_list|()
 return|;
 block|}
 specifier|public
@@ -1929,9 +2229,17 @@ parameter_list|)
 throws|throws
 name|MicroKernelException
 block|{
-comment|// TODO implement if needed
+comment|// TODO improve implementation if needed
+name|String
+name|branchId
+init|=
+literal|"b"
+operator|+
+name|trunkRevisionId
+decl_stmt|;
+comment|// branchCommits.put(branchId, "");
 return|return
-literal|null
+name|branchId
 return|;
 block|}
 annotation|@
@@ -1949,10 +2257,37 @@ parameter_list|)
 throws|throws
 name|MicroKernelException
 block|{
-comment|// TODO implement if needed
+comment|// reading from the branch is reading from the trunk currently
+name|String
+name|revisionId
+init|=
+name|branchRevisionId
+operator|.
+name|substring
+argument_list|(
+literal|1
+argument_list|)
+operator|.
+name|replace
+argument_list|(
+literal|'+'
+argument_list|,
+literal|' '
+argument_list|)
+operator|.
+name|trim
+argument_list|()
+decl_stmt|;
 return|return
-literal|null
+name|revisionId
 return|;
+comment|// TODO improve implementation if needed
+comment|// if (!branchRevisionId.startsWith("b")) {
+comment|//     throw new MicroKernelException("Not a branch: " + branchRevisionId);
+comment|// }
+comment|//
+comment|// String commit = branchCommits.remove(branchRevisionId);
+comment|// return commit("", commit, null, null);
 block|}
 annotation|@
 name|Override
@@ -1962,8 +2297,6 @@ specifier|public
 name|String
 name|rebase
 parameter_list|(
-annotation|@
-name|Nonnull
 name|String
 name|branchRevisionId
 parameter_list|,
@@ -1973,9 +2306,9 @@ parameter_list|)
 throws|throws
 name|MicroKernelException
 block|{
-comment|// TODO implement if needed
+comment|// TODO improve implementation if needed
 return|return
-literal|null
+name|branchRevisionId
 return|;
 block|}
 annotation|@

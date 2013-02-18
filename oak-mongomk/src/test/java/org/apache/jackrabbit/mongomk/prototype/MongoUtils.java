@@ -172,14 +172,7 @@ literal|1
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|dropCollections
-argument_list|(
-name|mongoConnection
-operator|.
-name|getDB
-argument_list|()
-argument_list|)
-expr_stmt|;
+comment|// dropCollections(mongoConnection.getDB());
 block|}
 catch|catch
 parameter_list|(
