@@ -21,16 +21,6 @@ end_package
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Collections
-import|;
-end_import
-
-begin_import
-import|import
 name|javax
 operator|.
 name|annotation
@@ -46,6 +36,20 @@ operator|.
 name|annotation
 operator|.
 name|Nullable
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|collect
+operator|.
+name|ImmutableList
 import|;
 end_import
 
@@ -233,14 +237,14 @@ name|getSecurityConfigurations
 parameter_list|()
 block|{
 return|return
-name|Collections
+name|ImmutableList
 operator|.
-expr|<
-name|SecurityConfiguration
-operator|>
-name|singletonList
+name|of
 argument_list|(
 name|getAccessControlConfiguration
+argument_list|()
+argument_list|,
+name|getAuthenticationConfiguration
 argument_list|()
 argument_list|)
 return|;

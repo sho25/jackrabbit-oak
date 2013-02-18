@@ -229,28 +229,6 @@ name|oak
 operator|.
 name|spi
 operator|.
-name|security
-operator|.
-name|authentication
-operator|.
-name|callback
-operator|.
-name|SecurityProviderCallback
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|spi
-operator|.
 name|state
 operator|.
 name|NodeStore
@@ -258,7 +236,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Default implementation of the {@link CallbackHandler} interface. It currently  * supports the following {@code Callback} implementations:  *  *<ul>  *<li>{@link CredentialsCallback}</li>  *<li>{@link NameCallback}</li>  *<li>{@link PasswordCallback}</li>  *<li>{@link SecurityProviderCallback}</li>  *<li>{@link RepositoryCallback}</li>  *</ul>  */
+comment|/**  * Default implementation of the {@link CallbackHandler} interface. It currently  * supports the following {@code Callback} implementations:  *<p/>  *<ul>  *<li>{@link CredentialsCallback}</li>  *<li>{@link NameCallback}</li>  *<li>{@link PasswordCallback}</li>  *<li>{@link RepositoryCallback}</li>  *</ul>  */
 end_comment
 
 begin_class
@@ -450,27 +428,6 @@ if|if
 condition|(
 name|callback
 operator|instanceof
-name|SecurityProviderCallback
-condition|)
-block|{
-operator|(
-operator|(
-name|SecurityProviderCallback
-operator|)
-name|callback
-operator|)
-operator|.
-name|setSecurityProvider
-argument_list|(
-name|securityProvider
-argument_list|)
-expr_stmt|;
-block|}
-elseif|else
-if|if
-condition|(
-name|callback
-operator|instanceof
 name|RepositoryCallback
 condition|)
 block|{
@@ -487,6 +444,13 @@ operator|.
 name|setNodeStore
 argument_list|(
 name|nodeStore
+argument_list|)
+expr_stmt|;
+name|repositoryCallback
+operator|.
+name|setSecurityProvider
+argument_list|(
+name|securityProvider
 argument_list|)
 expr_stmt|;
 name|repositoryCallback

@@ -30,7 +30,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * {@code CommitHookProvider} TODO  *  * FIXME: needs re-evaluation and review once we add support for multiple workspaces (OAK-118)  */
+comment|/**  * {@code CommitHookProvider} TODO  *<p/>  * FIXME: needs re-evaluation and review once we add support for multiple workspaces (OAK-118)  */
 end_comment
 
 begin_interface
@@ -44,6 +44,8 @@ name|Nonnull
 name|CommitHook
 name|getCommitHook
 parameter_list|(
+annotation|@
+name|Nonnull
 name|String
 name|workspaceName
 parameter_list|)

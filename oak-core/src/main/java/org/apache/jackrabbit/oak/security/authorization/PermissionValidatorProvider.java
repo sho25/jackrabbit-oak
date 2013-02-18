@@ -239,6 +239,11 @@ name|SecurityProvider
 name|securityProvider
 decl_stmt|;
 specifier|private
+specifier|final
+name|String
+name|workspaceName
+decl_stmt|;
+specifier|private
 name|Context
 name|acCtx
 decl_stmt|;
@@ -250,6 +255,9 @@ name|PermissionValidatorProvider
 parameter_list|(
 name|SecurityProvider
 name|securityProvider
+parameter_list|,
+name|String
+name|workspaceName
 parameter_list|)
 block|{
 name|this
@@ -257,6 +265,12 @@ operator|.
 name|securityProvider
 operator|=
 name|securityProvider
+expr_stmt|;
+name|this
+operator|.
+name|workspaceName
+operator|=
+name|workspaceName
 expr_stmt|;
 block|}
 comment|//--------------------------------------------------< ValidatorProvider>---
