@@ -485,7 +485,7 @@ name|long
 name|permissions
 parameter_list|)
 block|{
-comment|// TODO
+comment|// TODO: only evaluate entries that are defined for the "" path.
 return|return
 literal|false
 return|;
@@ -503,9 +503,15 @@ name|long
 name|permissions
 parameter_list|)
 block|{
-comment|// TODO
 return|return
-literal|false
+name|hasPermissions
+argument_list|(
+name|tree
+argument_list|,
+literal|null
+argument_list|,
+name|permissions
+argument_list|)
 return|;
 block|}
 annotation|@
@@ -524,9 +530,15 @@ name|long
 name|permissions
 parameter_list|)
 block|{
-comment|// TODO
 return|return
-literal|false
+name|hasPermissions
+argument_list|(
+name|parent
+argument_list|,
+name|property
+argument_list|,
+name|permissions
+argument_list|)
 return|;
 block|}
 annotation|@
@@ -609,6 +621,29 @@ return|;
 block|}
 comment|//------------------------------------------------------------< private>---
 specifier|private
+name|boolean
+name|hasPermissions
+parameter_list|(
+annotation|@
+name|Nonnull
+name|Tree
+name|tree
+parameter_list|,
+annotation|@
+name|Nullable
+name|PropertyState
+name|property
+parameter_list|,
+name|long
+name|permissions
+parameter_list|)
+block|{
+comment|// TODO
+return|return
+literal|false
+return|;
+block|}
+specifier|private
 name|PrivilegeBits
 name|getPrivilegeBits
 parameter_list|(
@@ -618,12 +653,12 @@ name|Tree
 name|tree
 parameter_list|)
 block|{
+comment|// TODO
 return|return
 name|PrivilegeBits
 operator|.
 name|EMPTY
 return|;
-comment|// TODO
 block|}
 specifier|private
 specifier|static
