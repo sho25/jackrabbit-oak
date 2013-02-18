@@ -639,7 +639,7 @@ specifier|final
 name|QueryIndexProvider
 name|indexProvider
 decl_stmt|;
-comment|/**      * New instance bases on a given {@link NodeStore} and a workspace      *      * @param store            node store      * @param workspaceName    name of the workspace      * @param subject          the subject.      * @param accConfiguration the access control context provider.      * @param indexProvider    the query index provider.      */
+comment|/**      * New instance bases on a given {@link NodeStore} and a workspace      *      * @param store            node store      * @param hook             the commit hook      * @param workspaceName    name of the workspace      * @param subject          the subject.      * @param accConfiguration the access control context provider.      * @param indexProvider    the query index provider.      */
 annotation|@
 name|SuppressWarnings
 argument_list|(
