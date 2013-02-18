@@ -63,6 +63,26 @@ begin_import
 import|import
 name|javax
 operator|.
+name|annotation
+operator|.
+name|Nonnull
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|Nullable
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
 name|jcr
 operator|.
 name|Value
@@ -436,7 +456,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * ACLTest... TODO  *  * TODO: test restrictions  * TODO: add test with multiple entries  */
+comment|/**  * ACLTest... TODO  *<p/>  * TODO: test restrictions  * TODO: add test with multiple entries  */
 end_comment
 
 begin_class
@@ -534,15 +554,21 @@ specifier|protected
 name|AbstractAccessControlList
 name|createACL
 parameter_list|(
+annotation|@
+name|Nullable
 name|String
 name|jcrPath
 parameter_list|,
+annotation|@
+name|Nonnull
 name|List
 argument_list|<
 name|JackrabbitAccessControlEntry
 argument_list|>
 name|entries
 parameter_list|,
+annotation|@
+name|Nonnull
 name|NamePathMapper
 name|namePathMapper
 parameter_list|)

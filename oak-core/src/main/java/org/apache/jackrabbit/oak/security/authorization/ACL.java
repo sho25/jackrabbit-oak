@@ -103,6 +103,16 @@ begin_import
 import|import
 name|javax
 operator|.
+name|annotation
+operator|.
+name|Nullable
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
 name|jcr
 operator|.
 name|RepositoryException
@@ -306,7 +316,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * ACL... TODO  *  * TODO: - remove redundant entries from the list  * TODO: - remove redundant privileges from entries  */
+comment|/**  * ACL... TODO  *<p/>  * TODO: - remove redundant entries from the list  * TODO: - remove redundant privileges from entries  */
 end_comment
 
 begin_class
@@ -348,9 +358,13 @@ argument_list|()
 decl_stmt|;
 name|ACL
 parameter_list|(
+annotation|@
+name|Nullable
 name|String
 name|oakPath
 parameter_list|,
+annotation|@
+name|Nonnull
 name|NamePathMapper
 name|namePathMapper
 parameter_list|)
@@ -367,15 +381,21 @@ expr_stmt|;
 block|}
 name|ACL
 parameter_list|(
+annotation|@
+name|Nullable
 name|String
 name|oakPath
 parameter_list|,
+annotation|@
+name|Nullable
 name|List
 argument_list|<
 name|JackrabbitAccessControlEntry
 argument_list|>
 name|entries
 parameter_list|,
+annotation|@
+name|Nonnull
 name|NamePathMapper
 name|namePathMapper
 parameter_list|)
@@ -703,9 +723,7 @@ block|}
 else|else
 block|{
 return|return
-name|entries
-operator|.
-name|add
+name|addEntry
 argument_list|(
 name|entry
 argument_list|)
@@ -909,6 +927,7 @@ argument_list|()
 return|;
 block|}
 comment|//------------------------------------------------------------< private>---
+comment|/**      * Check validity of the specified access control entry.      *      * @param entry The access control entry to test.      * @return The validated {@code ACE}.      * @throws AccessControlException If the specified entry is invalid.      */
 specifier|private
 specifier|static
 name|JackrabbitAccessControlEntry
@@ -943,6 +962,24 @@ operator|(
 name|ACE
 operator|)
 name|entry
+return|;
+block|}
+specifier|private
+name|boolean
+name|addEntry
+parameter_list|(
+name|JackrabbitAccessControlEntry
+name|entry
+parameter_list|)
+block|{
+comment|// TODO: remove redundancy
+return|return
+name|entries
+operator|.
+name|add
+argument_list|(
+name|entry
+argument_list|)
 return|;
 block|}
 block|}
