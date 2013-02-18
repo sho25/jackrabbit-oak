@@ -570,6 +570,11 @@ name|dn
 operator|.
 name|append
 argument_list|(
+literal|"cn="
+argument_list|)
+operator|.
+name|append
+argument_list|(
 name|name
 argument_list|)
 operator|.
