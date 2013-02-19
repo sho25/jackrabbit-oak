@@ -85,6 +85,9 @@ name|fromKey
 parameter_list|,
 name|String
 name|toKey
+parameter_list|,
+name|int
+name|limit
 parameter_list|)
 function_decl|;
 name|void

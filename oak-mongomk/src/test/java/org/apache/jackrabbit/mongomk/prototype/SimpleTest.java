@@ -394,6 +394,21 @@ argument_list|,
 literal|null
 argument_list|)
 expr_stmt|;
+name|rev
+operator|=
+name|mk
+operator|.
+name|commit
+argument_list|(
+literal|"/test"
+argument_list|,
+literal|"+\"b\":{\"name\": \"!\"}"
+argument_list|,
+literal|null
+argument_list|,
+literal|null
+argument_list|)
+expr_stmt|;
 name|test
 operator|=
 name|mk
@@ -417,7 +432,9 @@ argument_list|)
 expr_stmt|;
 name|Children
 name|c
-init|=
+decl_stmt|;
+name|c
+operator|=
 name|mk
 operator|.
 name|readChildren
@@ -430,11 +447,15 @@ name|fromString
 argument_list|(
 name|rev
 argument_list|)
+argument_list|,
+name|Integer
+operator|.
+name|MAX_VALUE
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"/: []"
+literal|"/: [/test]"
 argument_list|,
 name|c
 operator|.
@@ -442,7 +463,36 @@ name|toString
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|// assertEquals("{\"name\":\"Hello\",{\"a\":\"name\":\"World\"}}", test);
+name|c
+operator|=
+name|mk
+operator|.
+name|readChildren
+argument_list|(
+literal|"/test"
+argument_list|,
+name|Revision
+operator|.
+name|fromString
+argument_list|(
+name|rev
+argument_list|)
+argument_list|,
+name|Integer
+operator|.
+name|MAX_VALUE
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"/test: [/test/a, /test/b]"
+argument_list|,
+name|c
+operator|.
+name|toString
+argument_list|()
+argument_list|)
+expr_stmt|;
 comment|// System.out.println(test);
 name|mk
 operator|.
