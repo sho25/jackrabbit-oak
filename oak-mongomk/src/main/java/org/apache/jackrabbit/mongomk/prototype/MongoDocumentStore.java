@@ -67,6 +67,22 @@ name|apache
 operator|.
 name|jackrabbit
 operator|.
+name|mk
+operator|.
+name|api
+operator|.
+name|MicroKernelException
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
 name|mongomk
 operator|.
 name|prototype
@@ -720,6 +736,8 @@ block|}
 comment|//        dbCollection.update(query, update, true /*upsert*/, false /*multi*/,
 comment|//                WriteConcern.SAFE);
 comment|//        return null;
+try|try
+block|{
 name|DBObject
 name|oldNode
 init|=
@@ -753,6 +771,21 @@ argument_list|(
 name|oldNode
 argument_list|)
 return|;
+block|}
+catch|catch
+parameter_list|(
+name|Exception
+name|e
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|MicroKernelException
+argument_list|(
+name|e
+argument_list|)
+throw|;
+block|}
 block|}
 annotation|@
 name|Override

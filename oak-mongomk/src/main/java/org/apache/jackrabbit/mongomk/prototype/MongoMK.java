@@ -1685,32 +1685,9 @@ operator|.
 name|toString
 argument_list|()
 decl_stmt|;
-if|if
-condition|(
-name|filter
-operator|!=
-literal|null
-operator|&&
-name|filter
-operator|.
-name|contains
-argument_list|(
-literal|":hash"
-argument_list|)
-condition|)
-block|{
-name|result
-operator|=
-name|result
-operator|.
-name|replaceAll
-argument_list|(
-literal|"\":id\""
-argument_list|,
-literal|"\":hash\""
-argument_list|)
-expr_stmt|;
-block|}
+comment|// if (filter != null&& filter.contains(":hash")) {
+comment|//     result = result.replaceAll("\":id\"", "\":hash\"");
+comment|// }
 return|return
 name|result
 return|;

@@ -419,6 +419,11 @@ name|keySet
 argument_list|()
 control|)
 block|{
+name|addChangedParent
+argument_list|(
+name|p
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|commitRoot
@@ -470,11 +475,6 @@ block|}
 block|}
 block|}
 block|}
-name|addChangedParent
-argument_list|(
-name|commitRoot
-argument_list|)
-expr_stmt|;
 comment|// create a "root of the commit" if there is none
 name|UpdateOp
 name|root
@@ -550,6 +550,10 @@ name|size
 argument_list|()
 operator|==
 literal|0
+operator|&&
+name|root
+operator|.
+name|isNew
 condition|)
 block|{
 comment|// no updates, so we just add the root like the others
@@ -565,6 +569,16 @@ operator|=
 literal|null
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|newNodes
+operator|.
+name|size
+argument_list|()
+operator|>
+literal|0
+condition|)
+block|{
 name|store
 operator|.
 name|create
@@ -576,6 +590,7 @@ argument_list|,
 name|newNodes
 argument_list|)
 expr_stmt|;
+block|}
 for|for
 control|(
 name|UpdateOp
@@ -603,6 +618,20 @@ operator|!=
 literal|null
 condition|)
 block|{
+name|root
+operator|.
+name|addMapEntry
+argument_list|(
+literal|"_revisions"
+argument_list|,
+name|revision
+operator|.
+name|toString
+argument_list|()
+argument_list|,
+literal|"true"
+argument_list|)
+expr_stmt|;
 name|store
 operator|.
 name|createOrUpdate
