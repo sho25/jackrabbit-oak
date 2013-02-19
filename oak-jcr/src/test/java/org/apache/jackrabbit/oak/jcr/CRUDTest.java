@@ -79,6 +79,18 @@ end_import
 
 begin_import
 import|import
+name|javax
+operator|.
+name|jcr
+operator|.
+name|nodetype
+operator|.
+name|ConstraintViolationException
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|junit
@@ -567,6 +579,13 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
+argument_list|(
+name|expected
+operator|=
+name|ConstraintViolationException
+operator|.
+name|class
+argument_list|)
 annotation|@
 name|Ignore
 argument_list|(
