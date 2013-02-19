@@ -425,13 +425,11 @@ condition|)
 block|{
 name|log
 operator|.
-name|info
+name|debug
 argument_list|(
-literal|"No login configuration available for "
-operator|+
+literal|"No login configuration available for {}; using default"
+argument_list|,
 name|appName
-operator|+
-literal|": using default."
 argument_list|)
 expr_stmt|;
 name|loginConfig
