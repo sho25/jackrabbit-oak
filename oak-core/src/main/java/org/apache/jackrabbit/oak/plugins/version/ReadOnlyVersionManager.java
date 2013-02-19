@@ -736,33 +736,17 @@ name|Nonnull
 name|Tree
 name|tree
 parameter_list|)
-throws|throws
-name|RepositoryException
 block|{
-name|checkNotNull
-argument_list|(
-name|tree
-argument_list|)
-expr_stmt|;
-comment|// the first check for the jcr:isCheckedOut property will fail fast
-comment|// if the node is not versionable. the second check is to make sure
-comment|// the node is in fact versionable.
 return|return
-name|tree
-operator|.
-name|hasProperty
-argument_list|(
-name|VersionConstants
-operator|.
-name|JCR_ISCHECKEDOUT
-argument_list|)
-operator|&&
 name|getNodeTypeManager
 argument_list|()
 operator|.
 name|isNodeType
 argument_list|(
+name|checkNotNull
+argument_list|(
 name|tree
+argument_list|)
 argument_list|,
 name|VersionConstants
 operator|.

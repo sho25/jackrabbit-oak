@@ -515,7 +515,7 @@ return|return
 literal|true
 return|;
 block|}
-try|try
+else|else
 block|{
 for|for
 control|(
@@ -542,29 +542,11 @@ literal|true
 return|;
 block|}
 block|}
-block|}
-catch|catch
-parameter_list|(
-name|RepositoryException
-name|e
-parameter_list|)
-block|{
-comment|// shouldn't happen, because node type was validated in constructor
-comment|// FIXME: rather throw?
-name|log
-operator|.
-name|warn
-argument_list|(
-literal|"Unable to check node type of associated parent node"
-argument_list|,
-name|e
-argument_list|)
-expr_stmt|;
-block|}
 comment|// filter has node types set but none matched
 return|return
 literal|false
 return|;
+block|}
 block|}
 comment|/**      * Validates the given node type names.      *      * @param nodeTypeNames the node type names.      * @return the node type names as oak names.      * @throws NoSuchNodeTypeException if one of the node type names refers to      *                                 an non-existing node type.      * @throws RepositoryException     if an error occurs while reading from the      *                                 node type manager.      */
 annotation|@
