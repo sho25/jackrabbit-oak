@@ -1441,7 +1441,6 @@ literal|false
 return|;
 block|}
 block|}
-comment|// TODO: deal with activities/configurations
 annotation|@
 name|CheckForNull
 specifier|private

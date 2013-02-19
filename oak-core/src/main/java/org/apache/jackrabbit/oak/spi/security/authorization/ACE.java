@@ -638,6 +638,9 @@ operator|.
 name|hashCode
 argument_list|(
 name|principal
+operator|.
+name|getName
+argument_list|()
 argument_list|,
 name|aggrPrivNames
 argument_list|()
@@ -691,11 +694,17 @@ decl_stmt|;
 return|return
 name|principal
 operator|.
+name|getName
+argument_list|()
+operator|.
 name|equals
 argument_list|(
 name|other
 operator|.
 name|principal
+operator|.
+name|getName
+argument_list|()
 argument_list|)
 operator|&&
 name|isAllow
