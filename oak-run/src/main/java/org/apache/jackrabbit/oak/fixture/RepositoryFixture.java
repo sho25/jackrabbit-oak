@@ -32,7 +32,7 @@ specifier|public
 interface|interface
 name|RepositoryFixture
 block|{
-comment|/**      * Checks whether this fixture is currently available. For example      * a database-based fixture would only be available when the underlying      * database service is running.      *      * @return<code>true</code> iff the fixture is available      */
+comment|/**      * Checks whether this fixture is currently available. For example      * a database-based fixture would only be available when the underlying      * database service is running.      *      * @return {@code true} iff the fixture is available      */
 name|boolean
 name|isAvailable
 parameter_list|()
