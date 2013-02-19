@@ -77,6 +77,18 @@ name|jcr
 operator|.
 name|nodetype
 operator|.
+name|NoSuchNodeTypeException
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|jcr
+operator|.
+name|nodetype
+operator|.
 name|NodeTypeManager
 import|;
 end_import
@@ -828,16 +840,75 @@ name|void
 name|validateNodeType
 parameter_list|()
 block|{
-comment|// this looks a bit weird, but it should be correct - the code
-comment|// assumes that paths and node type names have the same format
-comment|// restrictions (characters such as "[" are not allowed and so on)
-name|query
+if|if
+condition|(
+operator|!
+name|JcrConstants
 operator|.
-name|validatePath
+name|NT_BASE
+operator|.
+name|equals
+argument_list|(
+name|nodeTypeName
+argument_list|)
+condition|)
+block|{
+try|try
+block|{
+comment|// Check both the syntactic validity of the type name
+comment|// and the existence of the named type in one call
+name|getNodeTypeManager
+argument_list|()
+operator|.
+name|getNodeType
 argument_list|(
 name|nodeTypeName
 argument_list|)
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|NoSuchNodeTypeException
+name|e
+parameter_list|)
+block|{
+comment|// TODO: QueryManagerImpl.executeQuery() expects an
+comment|// IllegalArgumentException to signal an invalid query.
+comment|// This is a bit troublesome since any method could throw
+comment|// that exception as a result of some internal programming
+comment|// error or some other inconsistency that has nothing to
+comment|// do with the validity of the query. A better solution
+comment|// would be to use some checked exception or explicit
+comment|// return value to signal whether the query is valid or not.
+throw|throw
+operator|new
+name|IllegalArgumentException
+argument_list|(
+literal|"Unknown node type: "
+operator|+
+name|nodeTypeName
+argument_list|,
+name|e
+argument_list|)
+throw|;
+block|}
+catch|catch
+parameter_list|(
+name|RepositoryException
+name|e
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|RuntimeException
+argument_list|(
+literal|"Unable to evaluate node type constraints"
+argument_list|,
+name|e
+argument_list|)
+throw|;
+block|}
+block|}
 block|}
 annotation|@
 name|Override
@@ -969,7 +1040,9 @@ parameter_list|)
 block|{
 if|if
 condition|(
-literal|"nt:base"
+name|JcrConstants
+operator|.
+name|NT_BASE
 operator|.
 name|equals
 argument_list|(
@@ -1161,29 +1234,8 @@ block|{
 name|NodeTypeManager
 name|manager
 init|=
-operator|new
-name|ReadOnlyNodeTypeManager
+name|getNodeTypeManager
 argument_list|()
-block|{
-annotation|@
-name|Override
-annotation|@
-name|CheckForNull
-specifier|protected
-name|Tree
-name|getTypes
-parameter_list|()
-block|{
-return|return
-name|getTree
-argument_list|(
-name|NodeTypeConstants
-operator|.
-name|NODE_TYPES_PATH
-argument_list|)
-return|;
-block|}
-block|}
 decl_stmt|;
 for|for
 control|(
@@ -1253,6 +1305,37 @@ return|return
 literal|false
 return|;
 comment|// no matches found
+block|}
+specifier|private
+name|NodeTypeManager
+name|getNodeTypeManager
+parameter_list|()
+block|{
+return|return
+operator|new
+name|ReadOnlyNodeTypeManager
+argument_list|()
+block|{
+annotation|@
+name|Override
+annotation|@
+name|CheckForNull
+specifier|protected
+name|Tree
+name|getTypes
+parameter_list|()
+block|{
+return|return
+name|getTree
+argument_list|(
+name|NodeTypeConstants
+operator|.
+name|NODE_TYPES_PATH
+argument_list|)
+return|;
+block|}
+block|}
+return|;
 block|}
 comment|/**      * Get the current absolute path (including workspace name)      *      * @return the path      */
 specifier|public
