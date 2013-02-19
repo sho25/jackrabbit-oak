@@ -1204,6 +1204,11 @@ name|String
 name|name
 parameter_list|)
 block|{
+name|checkNotNull
+argument_list|(
+name|name
+argument_list|)
+expr_stmt|;
 name|init
 argument_list|()
 expr_stmt|;

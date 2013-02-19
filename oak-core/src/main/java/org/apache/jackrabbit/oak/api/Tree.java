@@ -153,6 +153,8 @@ name|CheckForNull
 name|Tree
 name|getChild
 parameter_list|(
+annotation|@
+name|Nonnull
 name|String
 name|name
 parameter_list|)
@@ -161,6 +163,8 @@ comment|/**      * Determine if a child of this {@code Tree} instance exists. If
 name|boolean
 name|hasChild
 parameter_list|(
+annotation|@
+name|Nonnull
 name|String
 name|name
 parameter_list|)

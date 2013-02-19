@@ -2176,6 +2176,11 @@ name|String
 name|name
 parameter_list|)
 block|{
+name|checkNotNull
+argument_list|(
+name|name
+argument_list|)
+expr_stmt|;
 return|return
 name|withNodes
 argument_list|(
@@ -2200,6 +2205,11 @@ name|String
 name|name
 parameter_list|)
 block|{
+name|checkNotNull
+argument_list|(
+name|name
+argument_list|)
+expr_stmt|;
 return|return
 name|withNodes
 argument_list|(

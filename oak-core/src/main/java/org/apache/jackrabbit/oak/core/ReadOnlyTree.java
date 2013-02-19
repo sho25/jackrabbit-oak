@@ -577,6 +577,8 @@ specifier|public
 name|ReadOnlyTree
 name|getChild
 parameter_list|(
+annotation|@
+name|Nonnull
 name|String
 name|name
 parameter_list|)
@@ -651,6 +653,8 @@ specifier|public
 name|boolean
 name|hasChild
 parameter_list|(
+annotation|@
+name|Nonnull
 name|String
 name|name
 parameter_list|)
@@ -658,12 +662,10 @@ block|{
 return|return
 name|state
 operator|.
-name|getChildNode
+name|hasChildNode
 argument_list|(
 name|name
 argument_list|)
-operator|!=
-literal|null
 return|;
 block|}
 annotation|@

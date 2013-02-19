@@ -130,6 +130,8 @@ comment|/**      * Checks whether the named child node currently exists.      * 
 name|boolean
 name|hasChildNode
 parameter_list|(
+annotation|@
+name|Nonnull
 name|String
 name|name
 parameter_list|)
@@ -266,6 +268,8 @@ name|Nonnull
 name|NodeBuilder
 name|child
 parameter_list|(
+annotation|@
+name|Nonnull
 name|String
 name|name
 parameter_list|)

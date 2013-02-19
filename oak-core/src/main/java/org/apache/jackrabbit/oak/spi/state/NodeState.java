@@ -95,6 +95,8 @@ comment|/**      * Checks whether the named child node exists.      *      * @pa
 name|boolean
 name|hasChildNode
 parameter_list|(
+annotation|@
+name|Nonnull
 name|String
 name|name
 parameter_list|)
@@ -105,6 +107,8 @@ name|CheckForNull
 name|NodeState
 name|getChildNode
 parameter_list|(
+annotation|@
+name|Nonnull
 name|String
 name|name
 parameter_list|)

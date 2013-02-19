@@ -20,6 +20,22 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkNotNull
+import|;
+end_import
+
+begin_import
 import|import
 name|org
 operator|.
@@ -214,6 +230,11 @@ name|String
 name|name
 parameter_list|)
 block|{
+name|checkNotNull
+argument_list|(
+name|name
+argument_list|)
+expr_stmt|;
 for|for
 control|(
 name|ChildNodeEntry
