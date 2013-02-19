@@ -463,16 +463,11 @@ name|String
 name|workspaceName
 parameter_list|)
 block|{
+comment|//FIXME return new CompositeHook(new PermissionHook(workspaceName), new VersionablePathHook(workspaceName));
 return|return
 operator|new
 name|CompositeHook
 argument_list|(
-operator|new
-name|PermissionHook
-argument_list|(
-name|workspaceName
-argument_list|)
-argument_list|,
 operator|new
 name|VersionablePathHook
 argument_list|(

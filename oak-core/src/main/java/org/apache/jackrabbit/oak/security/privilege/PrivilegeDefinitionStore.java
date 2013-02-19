@@ -267,6 +267,22 @@ name|LoggerFactory
 import|;
 end_import
 
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkNotNull
+import|;
+end_import
+
 begin_comment
 comment|/**  * Reads and writes privilege definitions from and to the repository content  * without applying any validation.  */
 end_comment
@@ -596,7 +612,10 @@ name|privilegesTree
 operator|.
 name|getChild
 argument_list|(
+name|checkNotNull
+argument_list|(
 name|privilegeName
+argument_list|)
 argument_list|)
 decl_stmt|;
 if|if
