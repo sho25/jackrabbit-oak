@@ -1435,8 +1435,6 @@ operator|.
 name|getDefinitionProvider
 argument_list|()
 decl_stmt|;
-try|try
-block|{
 name|String
 name|childName
 init|=
@@ -1478,12 +1476,12 @@ operator|.
 name|getDefaultPrimaryTypeName
 argument_list|()
 expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|RepositoryException
-name|e
-parameter_list|)
+if|if
+condition|(
+name|ntName
+operator|==
+literal|null
+condition|)
 block|{
 throw|throw
 operator|new
