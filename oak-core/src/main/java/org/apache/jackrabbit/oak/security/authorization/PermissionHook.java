@@ -1693,7 +1693,7 @@ name|getBits
 argument_list|(
 name|TreeUtil
 operator|.
-name|getString
+name|getStrings
 argument_list|(
 name|aceTree
 argument_list|,
