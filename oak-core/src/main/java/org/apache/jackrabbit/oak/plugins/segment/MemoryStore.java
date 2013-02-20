@@ -85,17 +85,6 @@ implements|implements
 name|SegmentStore
 block|{
 specifier|private
-specifier|static
-specifier|final
-name|int
-name|MAX_SEGMENT_SIZE
-init|=
-literal|1
-operator|<<
-literal|20
-decl_stmt|;
-comment|// 1MB
-specifier|private
 specifier|final
 name|Map
 argument_list|<
@@ -209,17 +198,6 @@ return|return
 literal|false
 return|;
 block|}
-block|}
-annotation|@
-name|Override
-specifier|public
-name|int
-name|getMaxSegmentSize
-parameter_list|()
-block|{
-return|return
-name|MAX_SEGMENT_SIZE
-return|;
 block|}
 annotation|@
 name|Override

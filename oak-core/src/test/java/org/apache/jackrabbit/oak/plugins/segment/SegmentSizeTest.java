@@ -186,14 +186,6 @@ specifier|public
 class|class
 name|SegmentSizeTest
 block|{
-specifier|private
-specifier|static
-specifier|final
-name|int
-name|BYTES_PER_REFERENCE
-init|=
-literal|4
-decl_stmt|;
 annotation|@
 name|Test
 specifier|public
@@ -251,7 +243,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|25
+literal|24
 argument_list|,
 name|getSize
 argument_list|(
@@ -298,7 +290,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|42
+literal|40
 argument_list|,
 name|getSize
 argument_list|(
@@ -377,7 +369,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|60
+literal|56
 argument_list|,
 name|getSize
 argument_list|(
@@ -387,7 +379,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|44
+literal|40
 argument_list|,
 name|getAmortizedSize
 argument_list|(
@@ -465,7 +457,7 @@ name|Collections
 operator|.
 name|nCopies
 argument_list|(
-literal|10
+literal|12
 argument_list|,
 name|string
 argument_list|)
@@ -480,9 +472,11 @@ name|assertEquals
 argument_list|(
 name|base
 operator|+
-literal|10
+literal|12
 operator|*
-name|BYTES_PER_REFERENCE
+name|Segment
+operator|.
+name|RECORD_ID_BYTES
 argument_list|,
 name|getSize
 argument_list|(
@@ -521,7 +515,9 @@ name|base
 operator|+
 literal|100
 operator|*
-name|BYTES_PER_REFERENCE
+name|Segment
+operator|.
+name|RECORD_ID_BYTES
 argument_list|,
 name|getSize
 argument_list|(
@@ -607,7 +603,7 @@ name|Collections
 operator|.
 name|nCopies
 argument_list|(
-literal|10
+literal|12
 argument_list|,
 name|now
 argument_list|)
@@ -622,9 +618,11 @@ name|assertEquals
 argument_list|(
 name|base
 operator|+
-literal|10
+literal|12
 operator|*
-name|BYTES_PER_REFERENCE
+name|Segment
+operator|.
+name|RECORD_ID_BYTES
 argument_list|,
 name|getSize
 argument_list|(
@@ -663,7 +661,9 @@ name|base
 operator|+
 literal|100
 operator|*
-name|BYTES_PER_REFERENCE
+name|Segment
+operator|.
+name|RECORD_ID_BYTES
 argument_list|,
 name|getSize
 argument_list|(
@@ -779,7 +779,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|134
+literal|144
 argument_list|,
 name|getSize
 argument_list|(
@@ -850,7 +850,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|259
+literal|264
 argument_list|,
 name|getSize
 argument_list|(
@@ -860,7 +860,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|80
+literal|72
 argument_list|,
 name|getAmortizedSize
 argument_list|(
@@ -934,7 +934,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|348
+literal|356
 argument_list|,
 name|getSize
 argument_list|(
@@ -944,7 +944,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|116
+literal|108
 argument_list|,
 name|getAmortizedSize
 argument_list|(
@@ -1005,7 +1005,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|411
+literal|412
 argument_list|,
 name|getSize
 argument_list|(
@@ -1015,7 +1015,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|152
+literal|136
 argument_list|,
 name|getAmortizedSize
 argument_list|(

@@ -197,7 +197,9 @@ argument_list|()
 argument_list|,
 name|bucketIndex
 operator|*
-literal|4
+name|Segment
+operator|.
+name|RECORD_ID_BYTES
 argument_list|)
 decl_stmt|;
 name|ListRecord

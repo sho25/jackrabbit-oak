@@ -48,10 +48,6 @@ name|RecordId
 name|base
 parameter_list|)
 function_decl|;
-name|int
-name|getMaxSegmentSize
-parameter_list|()
-function_decl|;
 name|Segment
 name|readSegment
 parameter_list|(
