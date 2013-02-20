@@ -307,7 +307,7 @@ name|security
 operator|.
 name|privilege
 operator|.
-name|PrivilegeDefinitionStore
+name|PrivilegeBitsProvider
 import|;
 end_import
 
@@ -559,11 +559,11 @@ argument_list|(
 name|before
 argument_list|)
 decl_stmt|;
-name|PrivilegeDefinitionStore
-name|privilegeStore
+name|PrivilegeBitsProvider
+name|bitsProvider
 init|=
 operator|new
-name|PrivilegeDefinitionStore
+name|PrivilegeBitsProvider
 argument_list|(
 operator|new
 name|ReadOnlyRoot
@@ -595,7 +595,7 @@ argument_list|)
 argument_list|,
 name|permissionRoot
 argument_list|,
-name|privilegeStore
+name|bitsProvider
 argument_list|,
 name|ntMgr
 argument_list|)
@@ -841,8 +841,8 @@ name|permissionRoot
 decl_stmt|;
 specifier|private
 specifier|final
-name|PrivilegeDefinitionStore
-name|privilegeStore
+name|PrivilegeBitsProvider
+name|bitsProvider
 decl_stmt|;
 specifier|private
 specifier|final
@@ -869,8 +869,8 @@ name|permissionRoot
 parameter_list|,
 annotation|@
 name|Nonnull
-name|PrivilegeDefinitionStore
-name|privilegeStore
+name|PrivilegeBitsProvider
+name|bitsProvider
 parameter_list|,
 annotation|@
 name|Nonnull
@@ -898,9 +898,9 @@ name|permissionRoot
 expr_stmt|;
 name|this
 operator|.
-name|privilegeStore
+name|bitsProvider
 operator|=
-name|privilegeStore
+name|bitsProvider
 expr_stmt|;
 name|this
 operator|.
@@ -1049,7 +1049,7 @@ name|node
 argument_list|,
 name|permissionRoot
 argument_list|,
-name|privilegeStore
+name|bitsProvider
 argument_list|,
 name|ntMgr
 argument_list|)
@@ -1175,7 +1175,7 @@ name|nodeAfter
 argument_list|,
 name|permissionRoot
 argument_list|,
-name|privilegeStore
+name|bitsProvider
 argument_list|,
 name|ntMgr
 argument_list|)
@@ -1268,7 +1268,7 @@ name|after
 argument_list|,
 name|permissionRoot
 argument_list|,
-name|privilegeStore
+name|bitsProvider
 argument_list|,
 name|ntMgr
 argument_list|)
@@ -1647,7 +1647,7 @@ decl_stmt|;
 name|PrivilegeBits
 name|privilegeBits
 init|=
-name|privilegeStore
+name|bitsProvider
 operator|.
 name|getBits
 argument_list|(

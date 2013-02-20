@@ -221,7 +221,7 @@ name|security
 operator|.
 name|privilege
 operator|.
-name|PrivilegeDefinitionStore
+name|PrivilegeBitsProvider
 import|;
 end_import
 
@@ -298,8 +298,8 @@ name|principals
 decl_stmt|;
 specifier|private
 specifier|final
-name|PrivilegeDefinitionStore
-name|privilegeStore
+name|PrivilegeBitsProvider
+name|bitsProvider
 decl_stmt|;
 specifier|private
 specifier|final
@@ -334,8 +334,8 @@ name|principals
 parameter_list|,
 annotation|@
 name|Nonnull
-name|PrivilegeDefinitionStore
-name|privilegeStore
+name|PrivilegeBitsProvider
+name|bitsProvider
 parameter_list|,
 annotation|@
 name|Nonnull
@@ -354,9 +354,9 @@ argument_list|)
 expr_stmt|;
 name|this
 operator|.
-name|privilegeStore
+name|bitsProvider
 operator|=
-name|privilegeStore
+name|bitsProvider
 expr_stmt|;
 name|EntriesBuilder
 name|builder
@@ -575,7 +575,7 @@ name|tree
 parameter_list|)
 block|{
 return|return
-name|privilegeStore
+name|bitsProvider
 operator|.
 name|getPrivilegeNames
 argument_list|(
@@ -610,7 +610,7 @@ argument_list|)
 operator|.
 name|includes
 argument_list|(
-name|privilegeStore
+name|bitsProvider
 operator|.
 name|getBits
 argument_list|(

@@ -319,7 +319,7 @@ name|security
 operator|.
 name|privilege
 operator|.
-name|PrivilegeDefinitionStore
+name|PrivilegeBitsProvider
 import|;
 end_import
 
@@ -526,8 +526,8 @@ name|getPrivilegeManager
 parameter_list|()
 function_decl|;
 specifier|abstract
-name|PrivilegeDefinitionStore
-name|getPrivilegeStore
+name|PrivilegeBitsProvider
+name|getPrivilegeBitsProvider
 parameter_list|()
 function_decl|;
 comment|//------------------------------------------< AbstractAccessControlList>---
@@ -1469,7 +1469,7 @@ control|(
 name|String
 name|name
 range|:
-name|getPrivilegeStore
+name|getPrivilegeBitsProvider
 argument_list|()
 operator|.
 name|getPrivilegeNames
@@ -1527,7 +1527,7 @@ name|bits
 operator|.
 name|add
 argument_list|(
-name|getPrivilegeStore
+name|getPrivilegeBitsProvider
 argument_list|()
 operator|.
 name|getBits

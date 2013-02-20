@@ -335,7 +335,7 @@ name|security
 operator|.
 name|privilege
 operator|.
-name|PrivilegeDefinitionStore
+name|PrivilegeBitsProvider
 import|;
 end_import
 
@@ -675,17 +675,6 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|PrivilegeDefinitionStore
-name|privilegeStore
-init|=
-operator|new
-name|PrivilegeDefinitionStore
-argument_list|(
-name|this
-operator|.
-name|root
-argument_list|)
-decl_stmt|;
 name|compiledPermissions
 operator|=
 operator|new
@@ -693,7 +682,13 @@ name|CompiledPermissionImpl
 argument_list|(
 name|principals
 argument_list|,
-name|privilegeStore
+operator|new
+name|PrivilegeBitsProvider
+argument_list|(
+name|this
+operator|.
+name|root
+argument_list|)
 argument_list|,
 name|permissionsTree
 argument_list|)

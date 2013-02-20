@@ -655,7 +655,7 @@ name|security
 operator|.
 name|privilege
 operator|.
-name|PrivilegeDefinitionStore
+name|PrivilegeBitsProvider
 import|;
 end_import
 
@@ -4147,13 +4147,13 @@ return|;
 block|}
 annotation|@
 name|Override
-name|PrivilegeDefinitionStore
-name|getPrivilegeStore
+name|PrivilegeBitsProvider
+name|getPrivilegeBitsProvider
 parameter_list|()
 block|{
 return|return
 operator|new
-name|PrivilegeDefinitionStore
+name|PrivilegeBitsProvider
 argument_list|(
 name|root
 argument_list|)

@@ -426,7 +426,7 @@ block|}
 try|try
 block|{
 operator|new
-name|PrivilegeDefinitionStore
+name|PrivilegeDefinitionWriter
 argument_list|(
 operator|new
 name|RootImpl

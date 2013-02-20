@@ -208,7 +208,7 @@ name|AbstractSecurityTest
 implements|implements
 name|PrivilegeConstants
 block|{
-name|PrivilegeDefinitionStore
+name|PrivilegeBitsProvider
 name|store
 decl_stmt|;
 name|Tree
@@ -231,7 +231,7 @@ expr_stmt|;
 name|store
 operator|=
 operator|new
-name|PrivilegeDefinitionStore
+name|PrivilegeBitsProvider
 argument_list|(
 name|root
 argument_list|)

@@ -116,15 +116,15 @@ end_comment
 begin_class
 specifier|public
 class|class
-name|PrivilegeDefinitionStoreTest
+name|PrivilegeBitsProviderTest
 extends|extends
 name|AbstractSecurityTest
 implements|implements
 name|PrivilegeConstants
 block|{
 specifier|private
-name|PrivilegeDefinitionStore
-name|store
+name|PrivilegeBitsProvider
+name|bitsProvider
 decl_stmt|;
 annotation|@
 name|Override
@@ -140,10 +140,10 @@ operator|.
 name|before
 argument_list|()
 expr_stmt|;
-name|store
+name|bitsProvider
 operator|=
 operator|new
-name|PrivilegeDefinitionStore
+name|PrivilegeBitsProvider
 argument_list|(
 name|root
 argument_list|)
@@ -158,7 +158,7 @@ parameter_list|()
 block|{
 name|assertNotNull
 argument_list|(
-name|store
+name|bitsProvider
 operator|.
 name|getPrivilegesTree
 argument_list|()
@@ -168,7 +168,7 @@ name|assertEquals
 argument_list|(
 name|PRIVILEGES_PATH
 argument_list|,
-name|store
+name|bitsProvider
 operator|.
 name|getPrivilegesTree
 argument_list|()
@@ -182,40 +182,13 @@ annotation|@
 name|Test
 specifier|public
 name|void
-name|testReadDefinition
-parameter_list|()
-block|{
-comment|// TODO
-block|}
-annotation|@
-name|Test
-specifier|public
-name|void
-name|testReadDefinitions
-parameter_list|()
-block|{
-comment|// TODO
-block|}
-annotation|@
-name|Test
-specifier|public
-name|void
-name|testWriteDefinition
-parameter_list|()
-block|{
-comment|// TODO
-block|}
-annotation|@
-name|Test
-specifier|public
-name|void
 name|testGetBits
 parameter_list|()
 block|{
 name|PrivilegeBits
 name|bits
 init|=
-name|store
+name|bitsProvider
 operator|.
 name|getBits
 argument_list|(
@@ -239,7 +212,7 @@ name|PrivilegeBits
 operator|.
 name|getInstance
 argument_list|(
-name|store
+name|bitsProvider
 operator|.
 name|getBits
 argument_list|(
@@ -249,7 +222,7 @@ argument_list|)
 operator|.
 name|add
 argument_list|(
-name|store
+name|bitsProvider
 operator|.
 name|getBits
 argument_list|(
@@ -281,7 +254,7 @@ name|PrivilegeBits
 operator|.
 name|EMPTY
 argument_list|,
-name|store
+name|bitsProvider
 operator|.
 name|getBits
 argument_list|(
@@ -305,7 +278,7 @@ name|PrivilegeBits
 operator|.
 name|EMPTY
 argument_list|,
-name|store
+name|bitsProvider
 operator|.
 name|getBits
 argument_list|()
@@ -317,7 +290,7 @@ name|PrivilegeBits
 operator|.
 name|EMPTY
 argument_list|,
-name|store
+name|bitsProvider
 operator|.
 name|getBits
 argument_list|(
@@ -335,7 +308,7 @@ name|PrivilegeBits
 operator|.
 name|EMPTY
 argument_list|,
-name|store
+name|bitsProvider
 operator|.
 name|getBits
 argument_list|(
@@ -356,7 +329,7 @@ block|{
 name|PrivilegeBits
 name|bits
 init|=
-name|store
+name|bitsProvider
 operator|.
 name|getBits
 argument_list|(
@@ -369,7 +342,7 @@ name|String
 argument_list|>
 name|names
 init|=
-name|store
+name|bitsProvider
 operator|.
 name|getPrivilegeNames
 argument_list|(
@@ -412,7 +385,7 @@ block|{
 name|PrivilegeBits
 name|writeBits
 init|=
-name|store
+name|bitsProvider
 operator|.
 name|getBits
 argument_list|(
@@ -431,7 +404,7 @@ name|String
 argument_list|>
 name|names
 init|=
-name|store
+name|bitsProvider
 operator|.
 name|getPrivilegeNames
 argument_list|(
@@ -474,7 +447,7 @@ block|{
 name|PrivilegeBits
 name|bits
 init|=
-name|store
+name|bitsProvider
 operator|.
 name|getBits
 argument_list|(
@@ -489,7 +462,7 @@ name|String
 argument_list|>
 name|names
 init|=
-name|store
+name|bitsProvider
 operator|.
 name|getPrivilegeNames
 argument_list|(
@@ -519,7 +492,7 @@ block|{
 name|PrivilegeBits
 name|writeBits
 init|=
-name|store
+name|bitsProvider
 operator|.
 name|getBits
 argument_list|(
@@ -532,7 +505,7 @@ name|String
 argument_list|>
 name|names
 init|=
-name|store
+name|bitsProvider
 operator|.
 name|getPrivilegeNames
 argument_list|(
@@ -564,7 +537,7 @@ argument_list|)
 expr_stmt|;
 name|writeBits
 operator|=
-name|store
+name|bitsProvider
 operator|.
 name|getBits
 argument_list|(
@@ -575,7 +548,7 @@ argument_list|)
 expr_stmt|;
 name|names
 operator|=
-name|store
+name|bitsProvider
 operator|.
 name|getPrivilegeNames
 argument_list|(
@@ -616,7 +589,7 @@ block|{
 name|PrivilegeBits
 name|all
 init|=
-name|store
+name|bitsProvider
 operator|.
 name|getBits
 argument_list|(
@@ -640,7 +613,7 @@ argument_list|(
 name|JCR_ALL
 argument_list|)
 argument_list|,
-name|store
+name|bitsProvider
 operator|.
 name|getPrivilegeNames
 argument_list|(
@@ -659,11 +632,20 @@ block|{
 name|PrivilegeBits
 name|all
 init|=
-name|store
+name|bitsProvider
 operator|.
 name|getBits
 argument_list|(
 name|JCR_ALL
+argument_list|)
+decl_stmt|;
+name|PrivilegeDefinitionReader
+name|reader
+init|=
+operator|new
+name|PrivilegeDefinitionReader
+argument_list|(
+name|root
 argument_list|)
 decl_stmt|;
 name|Set
@@ -672,7 +654,7 @@ name|String
 argument_list|>
 name|allAggregates
 init|=
-name|store
+name|reader
 operator|.
 name|readDefinition
 argument_list|(
@@ -685,7 +667,7 @@ decl_stmt|;
 name|PrivilegeBits
 name|all2
 init|=
-name|store
+name|bitsProvider
 operator|.
 name|getBits
 argument_list|(
@@ -720,7 +702,7 @@ argument_list|(
 name|JCR_ALL
 argument_list|)
 argument_list|,
-name|store
+name|bitsProvider
 operator|.
 name|getPrivilegeNames
 argument_list|(
@@ -748,7 +730,7 @@ name|bits
 operator|.
 name|add
 argument_list|(
-name|store
+name|bitsProvider
 operator|.
 name|getBits
 argument_list|(

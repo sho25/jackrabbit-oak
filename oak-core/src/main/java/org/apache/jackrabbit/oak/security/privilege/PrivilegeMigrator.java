@@ -398,11 +398,11 @@ operator|.
 name|getLatestRoot
 argument_list|()
 decl_stmt|;
-name|PrivilegeDefinitionStore
-name|store
+name|PrivilegeDefinitionWriter
+name|writer
 init|=
 operator|new
-name|PrivilegeDefinitionStore
+name|PrivilegeDefinitionWriter
 argument_list|(
 name|root
 argument_list|)
@@ -458,7 +458,7 @@ name|nsRegistry
 argument_list|)
 control|)
 block|{
-name|store
+name|writer
 operator|.
 name|writeDefinition
 argument_list|(
