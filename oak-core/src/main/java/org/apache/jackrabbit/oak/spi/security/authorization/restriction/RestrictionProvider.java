@@ -165,8 +165,6 @@ name|Nonnull
 name|Tree
 name|aceTree
 parameter_list|)
-throws|throws
-name|AccessControlException
 function_decl|;
 name|void
 name|writeRestrictions

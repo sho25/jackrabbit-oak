@@ -425,8 +425,6 @@ parameter_list|,
 name|Tree
 name|aceTree
 parameter_list|)
-throws|throws
-name|AccessControlException
 block|{
 name|Set
 argument_list|<

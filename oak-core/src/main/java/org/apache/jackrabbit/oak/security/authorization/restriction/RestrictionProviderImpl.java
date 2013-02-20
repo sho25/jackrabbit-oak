@@ -610,8 +610,6 @@ parameter_list|,
 name|Tree
 name|aceTree
 parameter_list|)
-throws|throws
-name|AccessControlException
 block|{
 if|if
 condition|(
@@ -746,8 +744,6 @@ name|Restriction
 argument_list|>
 name|restrictions
 parameter_list|)
-throws|throws
-name|AccessControlException
 block|{
 comment|// validation of the restrictions is delegated to the commit hook
 comment|// see #validateRestrictions below
