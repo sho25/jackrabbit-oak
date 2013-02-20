@@ -167,7 +167,7 @@ name|spi
 operator|.
 name|lifecycle
 operator|.
-name|RepositoryInitializer
+name|WorkspaceInitializer
 import|;
 end_import
 
@@ -422,8 +422,8 @@ name|Nonnull
 annotation|@
 name|Override
 specifier|public
-name|RepositoryInitializer
-name|getRepositoryInitializer
+name|WorkspaceInitializer
+name|getWorkspaceInitializer
 parameter_list|()
 block|{
 return|return
