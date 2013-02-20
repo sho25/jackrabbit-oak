@@ -293,6 +293,14 @@ name|this
 argument_list|(
 name|principal
 argument_list|,
+operator|(
+name|privileges
+operator|==
+literal|null
+operator|)
+condition|?
+literal|null
+else|:
 name|ImmutableSet
 operator|.
 name|copyOf
@@ -339,6 +347,11 @@ operator|||
 name|privileges
 operator|==
 literal|null
+operator|||
+name|privileges
+operator|.
+name|isEmpty
+argument_list|()
 condition|)
 block|{
 throw|throw
