@@ -691,6 +691,30 @@ condition|(
 literal|true
 condition|)
 block|{
+name|UpdateOp
+name|op
+init|=
+name|operations
+operator|.
+name|get
+argument_list|(
+name|path
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|op
+operator|==
+literal|null
+operator|||
+operator|!
+name|op
+operator|.
+name|isNew
+condition|)
+block|{
+comment|// no need to update the write count
+comment|// for new nodes
 name|changedParents
 operator|.
 name|add
@@ -698,6 +722,7 @@ argument_list|(
 name|path
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|PathUtils
