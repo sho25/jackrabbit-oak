@@ -248,14 +248,13 @@ name|namePathMapper
 argument_list|)
 return|;
 block|}
-comment|//----------------------------------------------< SecurityConfiguration>---
 annotation|@
 name|Nonnull
 annotation|@
 name|Override
 specifier|public
 name|RepositoryInitializer
-name|getRepositoryInitializer
+name|getPrivilegeInitializer
 parameter_list|()
 block|{
 return|return
@@ -264,6 +263,7 @@ name|PrivilegeInitializer
 argument_list|()
 return|;
 block|}
+comment|//----------------------------------------------< SecurityConfiguration>---
 annotation|@
 name|Nonnull
 annotation|@
