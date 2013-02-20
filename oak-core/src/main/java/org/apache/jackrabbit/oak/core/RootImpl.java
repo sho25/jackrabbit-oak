@@ -785,27 +785,6 @@ name|store
 parameter_list|)
 block|{
 name|this
-argument_list|(
-name|store
-argument_list|,
-operator|new
-name|CompositeQueryIndexProvider
-argument_list|()
-argument_list|)
-expr_stmt|;
-block|}
-comment|// TODO: review if this constructor really makes sense and cannot be replaced.
-specifier|public
-name|RootImpl
-parameter_list|(
-name|NodeStore
-name|store
-parameter_list|,
-name|QueryIndexProvider
-name|indexProvider
-parameter_list|)
-block|{
-name|this
 operator|.
 name|store
 operator|=
