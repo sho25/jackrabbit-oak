@@ -237,7 +237,7 @@ name|oak
 operator|.
 name|security
 operator|.
-name|SecurityProviderImpl
+name|ConfigurationUtil
 import|;
 end_import
 
@@ -253,9 +253,7 @@ name|oak
 operator|.
 name|security
 operator|.
-name|authentication
-operator|.
-name|ConfigurationUtil
+name|SecurityProviderImpl
 import|;
 end_import
 

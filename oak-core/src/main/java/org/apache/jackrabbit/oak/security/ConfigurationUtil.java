@@ -14,8 +14,6 @@ operator|.
 name|oak
 operator|.
 name|security
-operator|.
-name|authentication
 package|;
 end_package
 
