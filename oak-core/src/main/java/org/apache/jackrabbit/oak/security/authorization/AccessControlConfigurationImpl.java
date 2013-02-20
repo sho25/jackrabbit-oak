@@ -463,7 +463,9 @@ name|String
 name|workspaceName
 parameter_list|)
 block|{
-comment|//FIXME return new CompositeHook(new PermissionHook(workspaceName), new VersionablePathHook(workspaceName));
+comment|//                return new CompositeHook(
+comment|//                        new PermissionHook(workspaceName, getRestrictionProvider(NamePathMapper.DEFAULT)),
+comment|//                        new VersionablePathHook(workspaceName));
 return|return
 operator|new
 name|CompositeHook

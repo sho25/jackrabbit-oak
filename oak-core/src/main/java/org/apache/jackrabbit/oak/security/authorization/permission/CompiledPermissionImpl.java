@@ -280,7 +280,6 @@ comment|/**  * TODO  */
 end_comment
 
 begin_class
-specifier|public
 class|class
 name|CompiledPermissionImpl
 implements|implements
@@ -321,7 +320,6 @@ name|Entry
 argument_list|>
 name|groupEntries
 decl_stmt|;
-specifier|public
 name|CompiledPermissionImpl
 parameter_list|(
 annotation|@
