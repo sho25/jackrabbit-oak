@@ -35,7 +35,7 @@ block|{
 specifier|private
 specifier|final
 name|String
-name|name
+name|indexName
 decl_stmt|;
 specifier|private
 specifier|final
@@ -62,7 +62,7 @@ parameter_list|)
 block|{
 name|this
 operator|.
-name|name
+name|indexName
 operator|=
 name|name
 expr_stmt|;
@@ -87,7 +87,7 @@ name|getName
 parameter_list|()
 block|{
 return|return
-name|name
+name|indexName
 return|;
 block|}
 annotation|@
@@ -122,7 +122,7 @@ block|{
 return|return
 literal|"IndexDefinitionImpl [name="
 operator|+
-name|name
+name|indexName
 operator|+
 literal|", type="
 operator|+
@@ -161,14 +161,14 @@ name|result
 operator|+
 operator|(
 operator|(
-name|name
+name|indexName
 operator|==
 literal|null
 operator|)
 condition|?
 literal|0
 else|:
-name|name
+name|indexName
 operator|.
 name|hashCode
 argument_list|()
@@ -271,7 +271,7 @@ name|obj
 decl_stmt|;
 if|if
 condition|(
-name|name
+name|indexName
 operator|==
 literal|null
 condition|)
@@ -280,7 +280,7 @@ if|if
 condition|(
 name|other
 operator|.
-name|name
+name|indexName
 operator|!=
 literal|null
 condition|)
@@ -292,13 +292,13 @@ elseif|else
 if|if
 condition|(
 operator|!
-name|name
+name|indexName
 operator|.
 name|equals
 argument_list|(
 name|other
 operator|.
-name|name
+name|indexName
 argument_list|)
 condition|)
 return|return

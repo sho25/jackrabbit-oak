@@ -200,7 +200,8 @@ operator|.
 name|builder
 argument_list|()
 decl_stmt|;
-comment|//<type,<path, indexhook>>
+comment|// key: index type
+comment|// value: map of path to indexhook
 name|Map
 argument_list|<
 name|String
@@ -215,7 +216,7 @@ name|IndexHook
 argument_list|>
 argument_list|>
 argument_list|>
-name|updates
+name|indexMap
 init|=
 operator|new
 name|HashMap
@@ -247,13 +248,13 @@ name|provider
 argument_list|,
 name|builder
 argument_list|,
-name|updates
+name|indexMap
 argument_list|)
 argument_list|)
 expr_stmt|;
 name|apply
 argument_list|(
-name|updates
+name|indexMap
 argument_list|)
 expr_stmt|;
 return|return
@@ -281,7 +282,7 @@ name|IndexHook
 argument_list|>
 argument_list|>
 argument_list|>
-name|updates
+name|indexMap
 parameter_list|)
 throws|throws
 name|CommitFailedException
@@ -293,7 +294,7 @@ control|(
 name|String
 name|type
 range|:
-name|updates
+name|indexMap
 operator|.
 name|keySet
 argument_list|()
@@ -307,7 +308,7 @@ name|IndexHook
 argument_list|>
 name|hooks
 range|:
-name|updates
+name|indexMap
 operator|.
 name|get
 argument_list|(
@@ -342,7 +343,7 @@ control|(
 name|String
 name|type
 range|:
-name|updates
+name|indexMap
 operator|.
 name|keySet
 argument_list|()
@@ -356,7 +357,7 @@ name|IndexHook
 argument_list|>
 name|hooks
 range|:
-name|updates
+name|indexMap
 operator|.
 name|get
 argument_list|(

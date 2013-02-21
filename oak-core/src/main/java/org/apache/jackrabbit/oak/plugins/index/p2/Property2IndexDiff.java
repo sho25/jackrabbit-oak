@@ -446,7 +446,7 @@ comment|/**      * The node name (the path element). Null for the root node.    
 specifier|private
 specifier|final
 name|String
-name|name
+name|nodeName
 decl_stmt|;
 comment|/**      * The path of the changed node (built lazily).      */
 specifier|private
@@ -505,7 +505,7 @@ name|Property2IndexDiff
 name|parent
 parameter_list|,
 name|String
-name|name
+name|nodeName
 parameter_list|)
 block|{
 name|this
@@ -518,10 +518,10 @@ name|parent
 operator|.
 name|node
 argument_list|,
-name|name
+name|nodeName
 argument_list|)
 argument_list|,
-name|name
+name|nodeName
 argument_list|,
 literal|null
 argument_list|,
@@ -541,7 +541,7 @@ name|NodeBuilder
 name|node
 parameter_list|,
 name|String
-name|name
+name|nodeName
 parameter_list|,
 name|String
 name|path
@@ -555,7 +555,7 @@ argument_list|<
 name|Property2IndexUpdate
 argument_list|>
 argument_list|>
-name|updates
+name|indexMap
 parameter_list|)
 block|{
 name|this
@@ -572,9 +572,9 @@ name|node
 expr_stmt|;
 name|this
 operator|.
-name|name
+name|nodeName
 operator|=
-name|name
+name|nodeName
 expr_stmt|;
 name|this
 operator|.
@@ -586,7 +586,7 @@ name|this
 operator|.
 name|indexMap
 operator|=
-name|updates
+name|indexMap
 expr_stmt|;
 if|if
 condition|(
@@ -718,7 +718,7 @@ operator|.
 name|getPath
 argument_list|()
 argument_list|,
-name|name
+name|nodeName
 argument_list|)
 expr_stmt|;
 block|}
@@ -726,7 +726,7 @@ return|return
 name|path
 return|;
 block|}
-comment|/**      * Get all the indexes for the given property name.      *      * @param name the property name      * @return the indexes      */
+comment|/**      * Get all the indexes for the given property name.      *      * @param propertyName the property name      * @return the indexes      */
 specifier|private
 name|Iterable
 argument_list|<
@@ -735,7 +735,7 @@ argument_list|>
 name|getIndexes
 parameter_list|(
 name|String
-name|name
+name|propertyName
 parameter_list|)
 block|{
 name|List
@@ -748,7 +748,7 @@ name|indexMap
 operator|.
 name|get
 argument_list|(
-name|name
+name|propertyName
 argument_list|)
 decl_stmt|;
 if|if

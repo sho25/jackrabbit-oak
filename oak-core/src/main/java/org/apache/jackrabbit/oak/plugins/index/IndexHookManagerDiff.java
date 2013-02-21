@@ -462,7 +462,7 @@ decl_stmt|;
 specifier|private
 specifier|final
 name|String
-name|name
+name|nodeName
 decl_stmt|;
 specifier|private
 name|String
@@ -541,7 +541,7 @@ name|IndexHookManagerDiff
 name|parent
 parameter_list|,
 name|String
-name|name
+name|nodeName
 parameter_list|)
 throws|throws
 name|CommitFailedException
@@ -558,10 +558,10 @@ name|parent
 operator|.
 name|node
 argument_list|,
-name|name
+name|nodeName
 argument_list|)
 argument_list|,
-name|name
+name|nodeName
 argument_list|,
 literal|null
 argument_list|,
@@ -603,7 +603,7 @@ name|IndexHook
 argument_list|>
 argument_list|>
 argument_list|>
-name|updates
+name|indexMap
 parameter_list|)
 throws|throws
 name|CommitFailedException
@@ -628,7 +628,7 @@ name|node
 expr_stmt|;
 name|this
 operator|.
-name|name
+name|nodeName
 operator|=
 name|name
 expr_stmt|;
@@ -642,7 +642,7 @@ name|this
 operator|.
 name|indexMap
 operator|=
-name|updates
+name|indexMap
 expr_stmt|;
 if|if
 condition|(
@@ -1163,7 +1163,7 @@ name|NodeBuilder
 name|node
 parameter_list|,
 name|String
-name|name
+name|nodeName
 parameter_list|)
 block|{
 if|if
@@ -1176,7 +1176,7 @@ name|node
 operator|.
 name|hasChildNode
 argument_list|(
-name|name
+name|nodeName
 argument_list|)
 condition|)
 block|{
@@ -1185,7 +1185,7 @@ name|node
 operator|.
 name|child
 argument_list|(
-name|name
+name|nodeName
 argument_list|)
 return|;
 block|}
@@ -1218,7 +1218,7 @@ operator|.
 name|getPath
 argument_list|()
 argument_list|,
-name|name
+name|nodeName
 argument_list|)
 expr_stmt|;
 block|}
@@ -1354,7 +1354,7 @@ return|return
 name|hooks
 return|;
 block|}
-comment|/**      * Returns IndexHooks of the given type that have the best match (are      * situated the closest on the hierarchy) for the current path.      */
+comment|/**      * Returns IndexHooks of the given type that have the best match (are      * situated the closest on the hierarchy) for the current path.      *       * @param type the index type ("p2")      */
 specifier|private
 name|Map
 argument_list|<
@@ -1809,7 +1809,7 @@ name|void
 name|childNodeAdded
 parameter_list|(
 name|String
-name|name
+name|nodeName
 parameter_list|,
 name|NodeState
 name|after
@@ -1817,7 +1817,7 @@ parameter_list|)
 block|{
 name|childNodeChanged
 argument_list|(
-name|name
+name|nodeName
 argument_list|,
 name|MemoryNodeState
 operator|.
@@ -1834,7 +1834,7 @@ name|void
 name|childNodeChanged
 parameter_list|(
 name|String
-name|name
+name|nodeName
 parameter_list|,
 name|NodeState
 name|before
@@ -1849,7 +1849,7 @@ name|NodeStateUtils
 operator|.
 name|isHidden
 argument_list|(
-name|name
+name|nodeName
 argument_list|)
 condition|)
 block|{
@@ -1862,7 +1862,7 @@ argument_list|(
 name|getPath
 argument_list|()
 argument_list|,
-name|name
+name|nodeName
 argument_list|)
 argument_list|,
 name|getIndexes
@@ -1884,7 +1884,7 @@ name|provider
 argument_list|,
 name|this
 argument_list|,
-name|name
+name|nodeName
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1917,7 +1917,7 @@ name|void
 name|childNodeDeleted
 parameter_list|(
 name|String
-name|name
+name|nodeName
 parameter_list|,
 name|NodeState
 name|before
@@ -1925,7 +1925,7 @@ parameter_list|)
 block|{
 name|childNodeChanged
 argument_list|(
-name|name
+name|nodeName
 argument_list|,
 name|before
 argument_list|,

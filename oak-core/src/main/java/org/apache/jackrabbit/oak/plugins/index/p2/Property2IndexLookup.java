@@ -296,13 +296,13 @@ operator|=
 name|root
 expr_stmt|;
 block|}
-comment|/**      * Checks whether the named property is indexed somewhere along the given      * path. Lookup starts at the current path (at the root of this object) and      * traverses down the path.      *       * @param name property name      * @param path lookup path      * @return true if the property is indexed      */
+comment|/**      * Checks whether the named property is indexed somewhere along the given      * path. Lookup starts at the current path (at the root of this object) and      * traverses down the path.      *       * @param propertyName property name      * @param path lookup path      * @return true if the property is indexed      */
 specifier|public
 name|boolean
 name|isIndexed
 parameter_list|(
 name|String
-name|name
+name|propertyName
 parameter_list|,
 name|String
 name|path
@@ -313,7 +313,7 @@ name|isIndexed
 argument_list|(
 name|root
 argument_list|,
-name|name
+name|propertyName
 argument_list|,
 name|path
 argument_list|)
@@ -328,7 +328,7 @@ name|NodeState
 name|root
 parameter_list|,
 name|String
-name|name
+name|propertyName
 parameter_list|,
 name|String
 name|path
@@ -366,7 +366,7 @@ name|getIndexDataNode
 argument_list|(
 name|node
 argument_list|,
-name|name
+name|propertyName
 argument_list|)
 operator|!=
 literal|null
@@ -415,7 +415,7 @@ name|Filter
 name|filter
 parameter_list|,
 name|String
-name|name
+name|propertyName
 parameter_list|,
 name|PropertyValue
 name|value
@@ -428,7 +428,7 @@ name|getIndexDataNode
 argument_list|(
 name|root
 argument_list|,
-name|name
+name|propertyName
 argument_list|)
 decl_stmt|;
 if|if
@@ -444,7 +444,7 @@ name|IllegalArgumentException
 argument_list|(
 literal|"No index for "
 operator|+
-name|name
+name|propertyName
 argument_list|)
 throw|;
 block|}
@@ -474,7 +474,7 @@ name|query
 argument_list|(
 name|filter
 argument_list|,
-name|name
+name|propertyName
 argument_list|,
 name|state
 argument_list|,
@@ -548,7 +548,7 @@ name|MAX_COST
 argument_list|)
 return|;
 block|}
-comment|/**      * Get the node with the index data for the given property, if there is an      * applicable index with data.      *       * @param name the property name      * @return the node where the index data is stored, or null if no index      *         definition or index data node was found      */
+comment|/**      * Get the node with the index data for the given property, if there is an      * applicable index with data.      *       * @param propertyName the property name      * @return the node where the index data is stored, or null if no index      *         definition or index data node was found      */
 annotation|@
 name|Nullable
 specifier|private
@@ -560,7 +560,7 @@ name|NodeState
 name|node
 parameter_list|,
 name|String
-name|name
+name|propertyName
 parameter_list|)
 block|{
 name|NodeState
@@ -677,7 +677,7 @@ control|)
 block|{
 if|if
 condition|(
-name|name
+name|propertyName
 operator|.
 name|equals
 argument_list|(
