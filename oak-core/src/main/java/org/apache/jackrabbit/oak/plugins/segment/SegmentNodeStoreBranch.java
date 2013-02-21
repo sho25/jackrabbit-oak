@@ -221,6 +221,18 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|TimeUnit
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|annotation
@@ -1119,6 +1131,11 @@ name|originalRootId
 init|=
 name|rootId
 decl_stmt|;
+name|long
+name|backoff
+init|=
+literal|1
+decl_stmt|;
 for|for
 control|(
 name|int
@@ -1134,6 +1151,7 @@ name|i
 operator|++
 control|)
 block|{
+comment|// rebase to latest head and apply commit hooks
 name|rebase
 argument_list|()
 expr_stmt|;
@@ -1161,6 +1179,7 @@ operator|.
 name|flush
 argument_list|()
 expr_stmt|;
+comment|// use optimistic locking to update the journal
 if|if
 condition|(
 name|store
@@ -1188,6 +1207,7 @@ name|getRoot
 argument_list|()
 return|;
 block|}
+comment|// someone else was faster, so clear state and try again later
 name|baseId
 operator|=
 name|originalBaseId
@@ -1196,11 +1216,46 @@ name|rootId
 operator|=
 name|originalRootId
 expr_stmt|;
+comment|// use exponential backoff to reduce contention
+try|try
+block|{
+name|TimeUnit
+operator|.
+name|MICROSECONDS
+operator|.
+name|sleep
+argument_list|(
+name|backoff
+argument_list|)
+expr_stmt|;
+name|backoff
+operator|*=
+literal|2
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|InterruptedException
+name|e
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|CommitFailedException
+argument_list|(
+literal|"Commit was interrupted"
+argument_list|,
+name|e
+argument_list|)
+throw|;
+block|}
 block|}
 throw|throw
 operator|new
 name|CommitFailedException
-argument_list|()
+argument_list|(
+literal|"System overloaded, try again later"
+argument_list|)
 throw|;
 block|}
 annotation|@
