@@ -398,6 +398,11 @@ name|store
 decl_stmt|;
 specifier|private
 specifier|final
+name|String
+name|journal
+decl_stmt|;
+specifier|private
+specifier|final
 name|SegmentReader
 name|reader
 decl_stmt|;
@@ -419,6 +424,9 @@ parameter_list|(
 name|SegmentStore
 name|store
 parameter_list|,
+name|String
+name|journal
+parameter_list|,
 name|SegmentReader
 name|reader
 parameter_list|)
@@ -428,6 +436,12 @@ operator|.
 name|store
 operator|=
 name|store
+expr_stmt|;
+name|this
+operator|.
+name|journal
+operator|=
+name|journal
 expr_stmt|;
 name|this
 operator|.
@@ -452,7 +466,9 @@ operator|=
 name|store
 operator|.
 name|getJournalHead
-argument_list|()
+argument_list|(
+name|journal
+argument_list|)
 expr_stmt|;
 name|this
 operator|.
@@ -1006,7 +1022,9 @@ init|=
 name|store
 operator|.
 name|getJournalHead
-argument_list|()
+argument_list|(
+name|journal
+argument_list|)
 decl_stmt|;
 if|if
 condition|(
@@ -1149,6 +1167,8 @@ name|store
 operator|.
 name|setJournalHead
 argument_list|(
+name|journal
+argument_list|,
 name|headId
 argument_list|,
 name|baseId
