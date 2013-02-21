@@ -232,6 +232,12 @@ operator|new
 name|SegmentWriter
 argument_list|(
 name|this
+argument_list|,
+operator|new
+name|SegmentReader
+argument_list|(
+name|this
+argument_list|)
 argument_list|)
 decl_stmt|;
 name|RecordId

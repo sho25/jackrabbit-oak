@@ -253,6 +253,8 @@ operator|new
 name|SegmentWriter
 argument_list|(
 name|store
+argument_list|,
+name|reader
 argument_list|)
 decl_stmt|;
 name|RecordId

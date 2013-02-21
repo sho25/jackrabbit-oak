@@ -469,6 +469,8 @@ operator|new
 name|SegmentWriter
 argument_list|(
 name|store
+argument_list|,
+name|reader
 argument_list|)
 expr_stmt|;
 name|this

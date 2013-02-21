@@ -1046,6 +1046,12 @@ operator|new
 name|SegmentWriter
 argument_list|(
 name|store
+argument_list|,
+operator|new
+name|SegmentReader
+argument_list|(
+name|store
+argument_list|)
 argument_list|)
 decl_stmt|;
 name|RecordId
@@ -1110,6 +1116,12 @@ operator|new
 name|SegmentWriter
 argument_list|(
 name|store
+argument_list|,
+operator|new
+name|SegmentReader
+argument_list|(
+name|store
+argument_list|)
 argument_list|)
 decl_stmt|;
 name|NodeState
