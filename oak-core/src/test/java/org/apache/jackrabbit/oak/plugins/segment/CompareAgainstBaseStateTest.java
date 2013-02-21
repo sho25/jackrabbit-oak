@@ -743,8 +743,8 @@ name|NodeBuilder
 name|builder
 parameter_list|)
 block|{
-name|RecordId
-name|id
+name|NodeState
+name|state
 init|=
 name|writer
 operator|.
@@ -762,13 +762,7 @@ name|flush
 argument_list|()
 expr_stmt|;
 return|return
-operator|new
-name|SegmentNodeState
-argument_list|(
-name|reader
-argument_list|,
-name|id
-argument_list|)
+name|state
 return|;
 block|}
 block|}
