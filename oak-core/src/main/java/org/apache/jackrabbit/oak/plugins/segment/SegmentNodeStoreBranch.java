@@ -551,6 +551,9 @@ name|writeNode
 argument_list|(
 name|newRoot
 argument_list|)
+operator|.
+name|getRecordId
+argument_list|()
 expr_stmt|;
 name|writer
 operator|.
@@ -1100,6 +1103,9 @@ operator|.
 name|getNodeState
 argument_list|()
 argument_list|)
+operator|.
+name|getRecordId
+argument_list|()
 expr_stmt|;
 name|writer
 operator|.
@@ -1175,6 +1181,9 @@ name|getRoot
 argument_list|()
 argument_list|)
 argument_list|)
+operator|.
+name|getRecordId
+argument_list|()
 decl_stmt|;
 name|writer
 operator|.

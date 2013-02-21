@@ -151,6 +151,24 @@ name|NodeBuilder
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|state
+operator|.
+name|NodeState
+import|;
+end_import
+
 begin_class
 specifier|public
 class|class
@@ -176,7 +194,7 @@ name|writer
 expr_stmt|;
 block|}
 specifier|public
-name|RecordId
+name|NodeState
 name|writeNode
 parameter_list|(
 name|Node

@@ -251,6 +251,9 @@ name|MemoryNodeState
 operator|.
 name|EMPTY_NODE
 argument_list|)
+operator|.
+name|getRecordId
+argument_list|()
 decl_stmt|;
 name|writer
 operator|.

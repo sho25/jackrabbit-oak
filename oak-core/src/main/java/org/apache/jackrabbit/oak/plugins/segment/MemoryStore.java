@@ -162,6 +162,9 @@ name|writeNode
 argument_list|(
 name|root
 argument_list|)
+operator|.
+name|getRecordId
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|writer
