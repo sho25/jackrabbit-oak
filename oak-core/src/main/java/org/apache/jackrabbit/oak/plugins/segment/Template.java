@@ -329,7 +329,7 @@ end_import
 
 begin_class
 class|class
-name|NodeTemplate
+name|Template
 block|{
 specifier|static
 specifier|final
@@ -378,7 +378,7 @@ specifier|final
 name|String
 name|childName
 decl_stmt|;
-name|NodeTemplate
+name|Template
 parameter_list|(
 name|PropertyState
 name|primaryType
@@ -419,7 +419,7 @@ operator|=
 name|childName
 expr_stmt|;
 block|}
-name|NodeTemplate
+name|Template
 parameter_list|(
 name|NodeState
 name|state
@@ -1722,7 +1722,7 @@ parameter_list|,
 name|RecordId
 name|afterId
 parameter_list|,
-name|NodeTemplate
+name|Template
 name|beforeTemplate
 parameter_list|,
 name|RecordId
@@ -2422,14 +2422,14 @@ if|if
 condition|(
 name|object
 operator|instanceof
-name|NodeTemplate
+name|Template
 condition|)
 block|{
-name|NodeTemplate
+name|Template
 name|that
 init|=
 operator|(
-name|NodeTemplate
+name|Template
 operator|)
 name|object
 decl_stmt|;

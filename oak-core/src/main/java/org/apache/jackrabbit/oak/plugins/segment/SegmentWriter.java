@@ -392,7 +392,7 @@ specifier|private
 specifier|final
 name|Map
 argument_list|<
-name|NodeTemplate
+name|Template
 argument_list|,
 name|RecordId
 argument_list|>
@@ -2637,7 +2637,7 @@ specifier|synchronized
 name|RecordId
 name|writeTemplate
 parameter_list|(
-name|NodeTemplate
+name|Template
 name|template
 parameter_list|)
 block|{
@@ -3151,11 +3151,11 @@ return|return
 name|nodeId
 return|;
 block|}
-name|NodeTemplate
+name|Template
 name|template
 init|=
 operator|new
-name|NodeTemplate
+name|Template
 argument_list|(
 name|state
 argument_list|)

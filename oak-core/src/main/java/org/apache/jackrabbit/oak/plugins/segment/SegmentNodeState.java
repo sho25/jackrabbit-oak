@@ -230,7 +230,7 @@ name|RecordId
 name|recordId
 decl_stmt|;
 specifier|private
-name|NodeTemplate
+name|Template
 name|template
 init|=
 literal|null
@@ -265,7 +265,7 @@ expr_stmt|;
 block|}
 specifier|private
 specifier|synchronized
-name|NodeTemplate
+name|Template
 name|getTemplate
 parameter_list|()
 block|{

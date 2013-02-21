@@ -266,7 +266,7 @@ name|LoadingCache
 argument_list|<
 name|RecordId
 argument_list|,
-name|NodeTemplate
+name|Template
 argument_list|>
 name|templates
 init|=
@@ -414,7 +414,7 @@ name|CacheLoader
 argument_list|<
 name|RecordId
 argument_list|,
-name|NodeTemplate
+name|Template
 argument_list|>
 name|newTemplateLoader
 parameter_list|()
@@ -425,14 +425,14 @@ name|CacheLoader
 argument_list|<
 name|RecordId
 argument_list|,
-name|NodeTemplate
+name|Template
 argument_list|>
 argument_list|()
 block|{
 annotation|@
 name|Override
 specifier|public
-name|NodeTemplate
+name|Template
 name|load
 parameter_list|(
 name|RecordId
@@ -703,7 +703,7 @@ block|}
 name|String
 name|childName
 init|=
-name|NodeTemplate
+name|Template
 operator|.
 name|ZERO_CHILD_NODES
 decl_stmt|;
@@ -714,7 +714,7 @@ condition|)
 block|{
 name|childName
 operator|=
-name|NodeTemplate
+name|Template
 operator|.
 name|MANY_CHILD_NODES
 expr_stmt|;
@@ -837,7 +837,7 @@ expr_stmt|;
 block|}
 return|return
 operator|new
-name|NodeTemplate
+name|Template
 argument_list|(
 name|primaryType
 argument_list|,
@@ -853,7 +853,7 @@ block|}
 return|;
 block|}
 specifier|public
-name|NodeTemplate
+name|Template
 name|readTemplate
 parameter_list|(
 name|RecordId
