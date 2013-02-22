@@ -209,6 +209,18 @@ argument_list|()
 operator|.
 name|compare
 argument_list|(
+name|hashCode
+argument_list|()
+argument_list|,
+name|template
+operator|.
+name|hashCode
+argument_list|()
+argument_list|)
+comment|// important
+operator|.
+name|compare
+argument_list|(
 name|name
 argument_list|,
 name|template
@@ -303,13 +315,6 @@ parameter_list|()
 block|{
 return|return
 name|name
-operator|.
-name|hashCode
-argument_list|()
-operator|*
-literal|37
-operator|+
-name|type
 operator|.
 name|hashCode
 argument_list|()
