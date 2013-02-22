@@ -1827,7 +1827,7 @@ name|d
 init|=
 name|Integer
 operator|.
-name|compare
+name|valueOf
 argument_list|(
 name|properties
 index|[
@@ -1836,7 +1836,14 @@ index|]
 operator|.
 name|hashCode
 argument_list|()
-argument_list|,
+argument_list|)
+operator|.
+name|compareTo
+argument_list|(
+name|Integer
+operator|.
+name|valueOf
+argument_list|(
 name|beforeTemplate
 operator|.
 name|properties
@@ -1846,6 +1853,7 @@ index|]
 operator|.
 name|hashCode
 argument_list|()
+argument_list|)
 argument_list|)
 decl_stmt|;
 if|if
