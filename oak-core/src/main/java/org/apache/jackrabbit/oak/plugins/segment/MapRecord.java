@@ -127,7 +127,7 @@ specifier|final
 name|int
 name|LEVEL_BITS
 init|=
-literal|6
+literal|5
 decl_stmt|;
 name|MapRecord
 parameter_list|(
@@ -464,12 +464,12 @@ return|;
 block|}
 else|else
 block|{
-name|long
+name|int
 name|bucketMap
 init|=
 name|reader
 operator|.
-name|readLong
+name|readInt
 argument_list|(
 name|getRecordId
 argument_list|()
@@ -488,10 +488,10 @@ operator|)
 operator|&
 name|mask
 decl_stmt|;
-name|long
+name|int
 name|bucketBit
 init|=
-literal|1L
+literal|1
 operator|<<
 name|bucketIndex
 decl_stmt|;
@@ -508,7 +508,7 @@ condition|)
 block|{
 name|bucketIndex
 operator|=
-name|Long
+name|Integer
 operator|.
 name|bitCount
 argument_list|(
@@ -531,7 +531,7 @@ argument_list|(
 name|getRecordId
 argument_list|()
 argument_list|,
-literal|12
+literal|8
 operator|+
 name|bucketIndex
 operator|*
@@ -804,12 +804,12 @@ return|;
 block|}
 else|else
 block|{
-name|long
+name|int
 name|bucketMap
 init|=
 name|reader
 operator|.
-name|readLong
+name|readInt
 argument_list|(
 name|getRecordId
 argument_list|()
@@ -820,7 +820,7 @@ decl_stmt|;
 name|int
 name|bucketCount
 init|=
-name|Long
+name|Integer
 operator|.
 name|bitCount
 argument_list|(
@@ -868,7 +868,7 @@ argument_list|(
 name|getRecordId
 argument_list|()
 argument_list|,
-literal|12
+literal|8
 operator|+
 name|i
 operator|*

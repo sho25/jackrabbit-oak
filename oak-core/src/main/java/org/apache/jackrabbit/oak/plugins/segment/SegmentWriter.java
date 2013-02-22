@@ -1724,12 +1724,12 @@ name|entry
 argument_list|)
 expr_stmt|;
 block|}
-name|long
+name|int
 name|baseMap
 init|=
 name|reader
 operator|.
-name|readLong
+name|readInt
 argument_list|(
 name|baseId
 argument_list|,
@@ -1768,10 +1768,10 @@ name|i
 operator|++
 control|)
 block|{
-name|long
+name|int
 name|bucketBit
 init|=
-literal|1L
+literal|1
 operator|<<
 name|i
 decl_stmt|;
@@ -1794,7 +1794,7 @@ block|{
 name|int
 name|index
 init|=
-name|Long
+name|Integer
 operator|.
 name|bitCount
 argument_list|(
@@ -1815,7 +1815,7 @@ name|readRecordId
 argument_list|(
 name|baseId
 argument_list|,
-literal|12
+literal|8
 operator|+
 name|index
 operator|*
@@ -1911,10 +1911,10 @@ operator|.
 name|newArrayList
 argument_list|()
 decl_stmt|;
-name|long
+name|int
 name|bucketMap
 init|=
-literal|0L
+literal|0
 decl_stmt|;
 for|for
 control|(
@@ -1955,7 +1955,7 @@ argument_list|)
 expr_stmt|;
 name|bucketMap
 operator||=
-literal|1L
+literal|1
 operator|<<
 name|i
 expr_stmt|;
@@ -1976,7 +1976,7 @@ argument_list|(
 name|newSize
 argument_list|)
 expr_stmt|;
-name|writeLong
+name|writeInt
 argument_list|(
 name|bucketMap
 argument_list|)
@@ -2227,10 +2227,10 @@ operator|.
 name|newArrayList
 argument_list|()
 decl_stmt|;
-name|long
+name|int
 name|bucketMap
 init|=
-literal|0L
+literal|0
 decl_stmt|;
 for|for
 control|(
@@ -2282,7 +2282,7 @@ argument_list|)
 expr_stmt|;
 name|bucketMap
 operator||=
-literal|1L
+literal|1
 operator|<<
 name|i
 expr_stmt|;
@@ -2293,7 +2293,7 @@ name|bucketId
 init|=
 name|prepare
 argument_list|(
-literal|12
+literal|8
 argument_list|,
 name|bucketIds
 argument_list|)
@@ -2306,7 +2306,7 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|writeLong
+name|writeInt
 argument_list|(
 name|bucketMap
 argument_list|)
