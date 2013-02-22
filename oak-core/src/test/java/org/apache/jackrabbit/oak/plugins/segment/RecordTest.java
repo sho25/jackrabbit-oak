@@ -1410,9 +1410,7 @@ argument_list|()
 expr_stmt|;
 name|Iterator
 argument_list|<
-name|MapRecord
-operator|.
-name|Entry
+name|MapEntry
 argument_list|>
 name|iterator
 decl_stmt|;
@@ -1513,7 +1511,7 @@ operator|.
 name|next
 argument_list|()
 operator|.
-name|getKey
+name|getName
 argument_list|()
 argument_list|)
 expr_stmt|;
