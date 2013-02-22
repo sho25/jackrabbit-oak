@@ -733,6 +733,8 @@ return|return
 operator|new
 name|Segment
 argument_list|(
+name|this
+argument_list|,
 name|segmentId
 argument_list|,
 name|data

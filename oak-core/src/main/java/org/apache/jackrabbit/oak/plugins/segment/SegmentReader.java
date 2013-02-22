@@ -1749,6 +1749,14 @@ name|size
 argument_list|)
 return|;
 block|}
+name|SegmentStore
+name|getStore
+parameter_list|()
+block|{
+return|return
+name|store
+return|;
+block|}
 block|}
 end_class
 
