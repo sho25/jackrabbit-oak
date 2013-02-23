@@ -53,6 +53,22 @@ end_import
 
 begin_import
 import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkPositionIndex
+import|;
+end_import
+
+begin_import
+import|import static
 name|java
 operator|.
 name|lang
@@ -82,6 +98,20 @@ operator|.
 name|util
 operator|.
 name|UUID
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
 import|;
 end_import
 
@@ -248,21 +278,6 @@ operator|-
 literal|1
 operator|)
 decl_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"R: "
-operator|+
-name|size
-operator|+
-literal|" "
-operator|+
-name|level
-argument_list|)
-expr_stmt|;
 if|if
 condition|(
 name|size
@@ -385,7 +400,7 @@ name|this
 operator|.
 name|level
 operator|=
-name|checkElementIndex
+name|checkPositionIndex
 argument_list|(
 name|level
 argument_list|,
