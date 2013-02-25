@@ -32,18 +32,21 @@ specifier|public
 interface|interface
 name|RepositoryFixture
 block|{
-comment|/**      * Checks whether this fixture is currently available. For example      * a database-based fixture would only be available when the underlying      * database service is running.      *      * @return {@code true} iff the fixture is available      */
+comment|/**      * Checks whether this fixture is currently available. For example      * a database-based fixture would only be available when the underlying      * database service is running.      *      * @param n size of the requested cluster      * @return {@code true} iff the fixture is available      */
 name|boolean
 name|isAvailable
-parameter_list|()
-function_decl|;
-comment|/**      * Creates a new repository cluster with as many nodes as the given      * array has elements. References to the cluster nodes are stored in      * the given array. The initial state of the cluster consists of just      * the default repository content included by the implementation. The      * caller of this method should have exclusive access to the created      * cluster. The caller is also responsible for calling      * {@link #tearDownCluster(Repository[])} when the test cluster is      * no longer needed.      *      * @param cluster array to which references to all nodes of the      *                created cluster should be stored      * @throws Exception if the cluster could not be set up      */
-name|void
-name|setUpCluster
 parameter_list|(
+name|int
+name|n
+parameter_list|)
+function_decl|;
+comment|/**      * Creates a new repository cluster with the given number of nodes.      * The initial state of the cluster consists of just the default      * repository content included by the implementation. The caller of      * this method should have exclusive access to the created cluster.      * The caller is also responsible for calling {@link #tearDownCluster()}      * when the test cluster is no longer needed.      *      * @param n size of the requested cluster      * @return nodes of the created cluster      * @throws Exception if the cluster could not be set up      */
 name|Repository
 index|[]
-name|cluster
+name|setUpCluster
+parameter_list|(
+name|int
+name|n
 parameter_list|)
 throws|throws
 name|Exception
@@ -57,14 +60,10 @@ modifier|...
 name|nodes
 parameter_list|)
 function_decl|;
-comment|/**      * Releases resources associated with the given repository cluster.      * The caller of {@link #setUpCluster(Repository[])} shall call this      * method once the cluster is no longer needed.      *      * @param cluster array containing references to all nodes of the cluster      */
+comment|/**      * Releases resources associated with the given repository cluster.      * The caller of {@link #setUpCluster(int)} shall call this      * method once the cluster is no longer needed.      */
 name|void
 name|tearDownCluster
-parameter_list|(
-name|Repository
-index|[]
-name|cluster
-parameter_list|)
+parameter_list|()
 function_decl|;
 block|}
 end_interface

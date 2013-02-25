@@ -133,7 +133,7 @@ name|oak
 operator|.
 name|benchmark
 operator|.
-name|Benchmark
+name|BenchmarkRunner
 import|;
 end_import
 
@@ -701,7 +701,7 @@ name|command
 argument_list|)
 condition|)
 block|{
-name|Benchmark
+name|BenchmarkRunner
 operator|.
 name|main
 argument_list|(
