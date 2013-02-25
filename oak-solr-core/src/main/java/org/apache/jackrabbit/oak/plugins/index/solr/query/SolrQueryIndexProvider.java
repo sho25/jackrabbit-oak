@@ -364,11 +364,11 @@ block|{     }
 specifier|public
 name|SolrQueryIndexProvider
 parameter_list|(
-name|OakSolrConfigurationProvider
-name|oakSolrConfigurationProvider
-parameter_list|,
 name|SolrServerProvider
 name|solrServerProvider
+parameter_list|,
+name|OakSolrConfigurationProvider
+name|oakSolrConfigurationProvider
 parameter_list|)
 block|{
 name|this
