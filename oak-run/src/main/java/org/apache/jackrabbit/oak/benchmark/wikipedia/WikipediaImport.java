@@ -212,17 +212,6 @@ name|isFile
 argument_list|()
 condition|)
 block|{
-name|System
-operator|.
-name|out
-operator|.
-name|format
-argument_list|(
-literal|"Wikipedia import (%s)%n"
-argument_list|,
-name|dump
-argument_list|)
-expr_stmt|;
 for|for
 control|(
 name|RepositoryFixture
@@ -249,9 +238,11 @@ name|out
 operator|.
 name|format
 argument_list|(
-literal|"%s: importing Wikipedia...%n"
+literal|"%s: importing %s...%n"
 argument_list|,
 name|fixture
+argument_list|,
+name|dump
 argument_list|)
 expr_stmt|;
 name|Repository
@@ -570,7 +561,7 @@ name|out
 operator|.
 name|format
 argument_list|(
-literal|"Imported %d pages in %d seconds (%dus/page)%n"
+literal|"Added %d pages in %d seconds (%.2fms/page)%n"
 argument_list|,
 name|pages
 argument_list|,
@@ -578,9 +569,10 @@ name|millis
 operator|/
 literal|1000
 argument_list|,
+operator|(
+name|double
+operator|)
 name|millis
-operator|*
-literal|1000
 operator|/
 name|pages
 argument_list|)
@@ -620,7 +612,7 @@ name|out
 operator|.
 name|format
 argument_list|(
-literal|"Imported %d pages in %d seconds (%dus/page)%n"
+literal|"Imported %d pages in %d seconds (%.2fms/page)%n"
 argument_list|,
 name|pages
 argument_list|,
@@ -628,9 +620,10 @@ name|millis
 operator|/
 literal|1000
 argument_list|,
+operator|(
+name|double
+operator|)
 name|millis
-operator|*
-literal|1000
 operator|/
 name|pages
 argument_list|)
