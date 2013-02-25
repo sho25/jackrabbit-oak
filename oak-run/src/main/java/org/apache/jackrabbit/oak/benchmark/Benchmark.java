@@ -33,12 +33,15 @@ name|RepositoryFixture
 import|;
 end_import
 
-begin_interface
+begin_class
 specifier|public
-interface|interface
+specifier|abstract
+class|class
 name|Benchmark
 block|{
 comment|/**      * Runs this benchmark against all the given repository fixtures.      * The benchmark report is written to standard output.      *      * @param fixtures repository fixtures      */
+specifier|public
+specifier|abstract
 name|void
 name|run
 parameter_list|(
@@ -49,8 +52,38 @@ argument_list|>
 name|fixtures
 parameter_list|)
 function_decl|;
+specifier|public
+name|String
+name|toString
+parameter_list|()
+block|{
+name|String
+name|name
+init|=
+name|getClass
+argument_list|()
+operator|.
+name|getName
+argument_list|()
+decl_stmt|;
+return|return
+name|name
+operator|.
+name|substring
+argument_list|(
+name|name
+operator|.
+name|lastIndexOf
+argument_list|(
+literal|'.'
+argument_list|)
+operator|+
+literal|1
+argument_list|)
+return|;
 block|}
-end_interface
+block|}
+end_class
 
 end_unit
 
