@@ -113,6 +113,16 @@ name|Lists
 import|;
 end_import
 
+begin_import
+import|import
+name|com
+operator|.
+name|mongodb
+operator|.
+name|DB
+import|;
+end_import
+
 begin_comment
 comment|/**  * A set of simple tests.  */
 end_comment
@@ -122,6 +132,15 @@ specifier|public
 class|class
 name|SimpleTest
 block|{
+comment|//    private static final boolean MONGO_DB = true;
+specifier|private
+specifier|static
+specifier|final
+name|boolean
+name|MONGO_DB
+init|=
+literal|false
+decl_stmt|;
 annotation|@
 name|Test
 specifier|public
@@ -452,6 +471,8 @@ name|readChildren
 argument_list|(
 literal|"/"
 argument_list|,
+literal|"1"
+argument_list|,
 name|Revision
 operator|.
 name|fromString
@@ -481,6 +502,8 @@ operator|.
 name|readChildren
 argument_list|(
 literal|"/test"
+argument_list|,
+literal|"2"
 argument_list|,
 name|Revision
 operator|.
@@ -547,15 +570,7 @@ argument_list|,
 name|test
 argument_list|)
 expr_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-name|test
-argument_list|)
-expr_stmt|;
+comment|// System.out.println(test);
 name|mk
 operator|.
 name|dispose
@@ -645,6 +660,8 @@ name|readChildren
 argument_list|(
 literal|"/testDel"
 argument_list|,
+literal|"1"
+argument_list|,
 name|Revision
 operator|.
 name|fromString
@@ -691,6 +708,8 @@ operator|.
 name|readChildren
 argument_list|(
 literal|"/testDel"
+argument_list|,
+literal|"2"
 argument_list|,
 name|Revision
 operator|.
@@ -755,18 +774,50 @@ argument_list|)
 expr_stmt|;
 block|}
 specifier|private
+specifier|static
 name|MongoMK
 name|createMK
 parameter_list|()
 block|{
+if|if
+condition|(
+name|MONGO_DB
+condition|)
+block|{
+name|DB
+name|db
+init|=
+name|MongoUtils
+operator|.
+name|getConnection
+argument_list|()
+operator|.
+name|getDB
+argument_list|()
+decl_stmt|;
+name|MongoUtils
+operator|.
+name|dropCollections
+argument_list|(
+name|db
+argument_list|)
+expr_stmt|;
+return|return
+operator|new
+name|MongoMK
+argument_list|(
+name|db
+argument_list|,
+literal|0
+argument_list|)
+return|;
+block|}
 return|return
 operator|new
 name|MongoMK
 argument_list|()
 return|;
-comment|//        return new MongoMK(MongoUtils.getConnection().getDB(),0);
 block|}
-comment|// TODO run Damians tests
 block|}
 end_class
 

@@ -185,21 +185,28 @@ name|assertTrue
 import|;
 end_import
 
+begin_comment
+comment|/**  * Tests the document store.  */
+end_comment
+
 begin_class
 specifier|public
 class|class
 name|MongoDocumentStoreTest
 block|{
+comment|//    private static final boolean MONGO_DB = true;
+comment|//    private static final int NODE_COUNT = 2000;
 specifier|private
 specifier|static
+specifier|final
 name|boolean
 name|MONGO_DB
 init|=
 literal|false
 decl_stmt|;
-comment|//    private final static int NODE_COUNT = 2000;
 specifier|private
 specifier|static
+specifier|final
 name|int
 name|NODE_COUNT
 init|=
@@ -1118,6 +1125,7 @@ name|s
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * Task to create / update nodes.      */
 specifier|private
 specifier|static
 class|class

@@ -109,11 +109,6 @@ argument_list|)
 decl_stmt|;
 specifier|protected
 specifier|static
-name|MongoConnection
-name|mongoConnection
-decl_stmt|;
-specifier|protected
-specifier|static
 name|Exception
 name|exception
 decl_stmt|;
@@ -135,6 +130,11 @@ return|return
 literal|null
 return|;
 block|}
+name|MongoConnection
+name|mongoConnection
+init|=
+literal|null
+decl_stmt|;
 if|if
 condition|(
 name|mongoConnection

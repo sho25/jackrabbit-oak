@@ -328,6 +328,19 @@ name|path
 return|;
 block|}
 specifier|public
+name|String
+name|getId
+parameter_list|()
+block|{
+return|return
+name|path
+operator|+
+literal|"@"
+operator|+
+name|writeCount
+return|;
+block|}
+specifier|public
 name|void
 name|append
 parameter_list|(
@@ -352,11 +365,8 @@ argument_list|)
 operator|.
 name|value
 argument_list|(
-name|path
-operator|+
-literal|"@"
-operator|+
-name|writeCount
+name|getId
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -390,6 +400,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+comment|/**      * A list of children for a node.      */
 specifier|static
 class|class
 name|Children
@@ -397,6 +408,10 @@ block|{
 specifier|final
 name|String
 name|path
+decl_stmt|;
+specifier|final
+name|String
+name|id
 decl_stmt|;
 specifier|final
 name|Revision
@@ -421,6 +436,9 @@ parameter_list|(
 name|String
 name|path
 parameter_list|,
+name|String
+name|id
+parameter_list|,
 name|Revision
 name|rev
 parameter_list|)
@@ -430,6 +448,12 @@ operator|.
 name|path
 operator|=
 name|path
+expr_stmt|;
+name|this
+operator|.
+name|id
+operator|=
+name|id
 expr_stmt|;
 name|this
 operator|.

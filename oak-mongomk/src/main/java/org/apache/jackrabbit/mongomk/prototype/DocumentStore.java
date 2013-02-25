@@ -46,6 +46,7 @@ specifier|public
 interface|interface
 name|DocumentStore
 block|{
+comment|/**      * The list of collections.      */
 enum|enum
 name|Collection
 block|{

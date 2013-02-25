@@ -78,11 +78,12 @@ specifier|public
 class|class
 name|BlobTest
 block|{
-comment|// private static boolean MONGO_DB = true;
-comment|// private static long TOTAL_SIZE = 1 * 1024 * 1024 * 1024;
-comment|// private static int DOCUMENT_COUNT = 10;
+comment|//     private static final boolean MONGO_DB = true;
+comment|//     private static final long TOTAL_SIZE = 1 * 1024 * 1024 * 1024;
+comment|//     private static final int DOCUMENT_COUNT = 10;
 specifier|private
 specifier|static
+specifier|final
 name|boolean
 name|MONGO_DB
 init|=
@@ -90,6 +91,7 @@ literal|false
 decl_stmt|;
 specifier|private
 specifier|static
+specifier|final
 name|long
 name|TOTAL_SIZE
 init|=
@@ -101,6 +103,7 @@ literal|1024
 decl_stmt|;
 specifier|private
 specifier|static
+specifier|final
 name|int
 name|DOCUMENT_COUNT
 init|=

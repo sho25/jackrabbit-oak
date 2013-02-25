@@ -26,21 +26,6 @@ specifier|public
 class|class
 name|Revision
 block|{
-comment|/**      * The timestamp in milliseconds since 2013 (unlike in seconds since 1970 as      * in MongoDB).      */
-specifier|private
-name|long
-name|timestamp
-decl_stmt|;
-comment|/**      * An incrementing counter, for commits that occur within the same      * millisecond.      */
-specifier|private
-name|int
-name|counter
-decl_stmt|;
-comment|/**      * The cluster id (the MongoDB machine id).      */
-specifier|private
-name|int
-name|clusterId
-decl_stmt|;
 specifier|static
 name|long
 name|timestampOffset
@@ -70,6 +55,21 @@ specifier|static
 specifier|volatile
 name|int
 name|count
+decl_stmt|;
+comment|/**      * The timestamp in milliseconds since 2013 (unlike in seconds since 1970 as      * in MongoDB).      */
+specifier|private
+name|long
+name|timestamp
+decl_stmt|;
+comment|/**      * An incrementing counter, for commits that occur within the same      * millisecond.      */
+specifier|private
+name|int
+name|counter
+decl_stmt|;
+comment|/**      * The cluster id (the MongoDB machine id).      */
+specifier|private
+name|int
+name|clusterId
 decl_stmt|;
 specifier|public
 name|Revision
