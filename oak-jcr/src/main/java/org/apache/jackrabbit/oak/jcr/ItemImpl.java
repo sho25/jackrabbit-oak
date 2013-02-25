@@ -171,6 +171,20 @@ parameter_list|>
 extends|extends
 name|AbstractItem
 block|{
+comment|/**      * Flag to disable expensive transient item definition checks.      * FIXME: This flag should be removed once OAK-652 gets resolved.      */
+specifier|protected
+specifier|static
+specifier|final
+name|boolean
+name|DISABLE_TRANSIENT_DEFINITION_CHECKS
+init|=
+name|Boolean
+operator|.
+name|getBoolean
+argument_list|(
+literal|"OAK-652"
+argument_list|)
+decl_stmt|;
 specifier|protected
 specifier|final
 name|SessionDelegate
@@ -649,6 +663,13 @@ parameter_list|()
 throws|throws
 name|RepositoryException
 block|{
+if|if
+condition|(
+name|DISABLE_TRANSIENT_DEFINITION_CHECKS
+condition|)
+block|{
+return|return;
+block|}
 name|ItemDefinition
 name|definition
 decl_stmt|;
