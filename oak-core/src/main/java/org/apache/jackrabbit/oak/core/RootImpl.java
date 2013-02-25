@@ -1231,6 +1231,10 @@ argument_list|(
 name|this
 argument_list|)
 expr_stmt|;
+name|modCount
+operator|=
+literal|0
+expr_stmt|;
 block|}
 annotation|@
 name|Override
