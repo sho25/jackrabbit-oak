@@ -1214,11 +1214,24 @@ operator|.
 name|flush
 argument_list|()
 expr_stmt|;
+name|Segment
+name|segment
+init|=
+name|store
+operator|.
+name|readSegment
+argument_list|(
+name|large
+operator|.
+name|getSegmentId
+argument_list|()
+argument_list|)
+decl_stmt|;
 name|assertEquals
 argument_list|(
 literal|""
 argument_list|,
-name|reader
+name|segment
 operator|.
 name|readString
 argument_list|(
@@ -1230,7 +1243,7 @@ name|assertEquals
 argument_list|(
 literal|" "
 argument_list|,
-name|reader
+name|segment
 operator|.
 name|readString
 argument_list|(
@@ -1242,7 +1255,7 @@ name|assertEquals
 argument_list|(
 literal|"Hello, World!"
 argument_list|,
-name|reader
+name|segment
 operator|.
 name|readString
 argument_list|(
@@ -1257,7 +1270,7 @@ operator|.
 name|toString
 argument_list|()
 argument_list|,
-name|reader
+name|segment
 operator|.
 name|readString
 argument_list|(
