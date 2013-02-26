@@ -573,14 +573,17 @@ name|NamePathMapper
 name|namePathMapper
 parameter_list|)
 block|{
-comment|// TODO OAK-51
-throw|throw
+return|return
 operator|new
-name|UnsupportedOperationException
+name|AccessControlManagerImpl
 argument_list|(
-literal|"not yet implemented"
+name|root
+argument_list|,
+name|namePathMapper
+argument_list|,
+name|securityProvider
 argument_list|)
-throw|;
+return|;
 block|}
 annotation|@
 name|Nonnull
