@@ -181,21 +181,23 @@ name|javax
 operator|.
 name|jcr
 operator|.
-name|query
+name|version
 operator|.
-name|QueryManager
+name|VersionManager
 import|;
 end_import
 
 begin_import
 import|import
-name|javax
+name|com
 operator|.
-name|jcr
+name|google
 operator|.
-name|version
+name|common
 operator|.
-name|VersionManager
+name|collect
+operator|.
+name|Maps
 import|;
 end_import
 
@@ -313,7 +315,7 @@ name|oak
 operator|.
 name|api
 operator|.
-name|Root
+name|QueryEngine
 import|;
 end_import
 
@@ -329,7 +331,7 @@ name|oak
 operator|.
 name|api
 operator|.
-name|QueryEngine
+name|Root
 import|;
 end_import
 
@@ -545,11 +547,11 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|spi
+name|plugins
 operator|.
-name|security
+name|value
 operator|.
-name|SecurityProvider
+name|ValueFactoryImpl
 import|;
 end_import
 
@@ -563,11 +565,11 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|plugins
+name|spi
 operator|.
-name|value
+name|security
 operator|.
-name|ValueFactoryImpl
+name|SecurityProvider
 import|;
 end_import
 
@@ -588,20 +590,6 @@ operator|.
 name|slf4j
 operator|.
 name|LoggerFactory
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|collect
-operator|.
-name|Maps
 import|;
 end_import
 
@@ -1838,22 +1826,6 @@ return|return
 name|root
 operator|.
 name|getQueryEngine
-argument_list|()
-return|;
-block|}
-annotation|@
-name|Nonnull
-specifier|public
-name|QueryManager
-name|getQueryManager
-parameter_list|()
-throws|throws
-name|RepositoryException
-block|{
-return|return
-name|workspace
-operator|.
-name|getQueryManager
 argument_list|()
 return|;
 block|}
