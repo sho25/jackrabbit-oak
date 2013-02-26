@@ -405,17 +405,10 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|// default to softCommit
 name|solrServer
 operator|.
 name|commit
-argument_list|(
-literal|false
-argument_list|,
-literal|false
-argument_list|,
-literal|true
-argument_list|)
+argument_list|()
 expr_stmt|;
 if|if
 condition|(

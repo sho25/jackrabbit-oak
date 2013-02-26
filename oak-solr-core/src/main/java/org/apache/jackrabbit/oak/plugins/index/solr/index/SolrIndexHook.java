@@ -1076,15 +1076,8 @@ block|{
 name|solrServer
 operator|.
 name|commit
-argument_list|(
-literal|false
-argument_list|,
-literal|false
-argument_list|,
-literal|true
-argument_list|)
+argument_list|()
 expr_stmt|;
-comment|// default to softCommit
 block|}
 if|if
 condition|(
