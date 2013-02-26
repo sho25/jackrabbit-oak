@@ -13,6 +13,8 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
+name|spi
+operator|.
 name|security
 operator|.
 name|authentication
@@ -91,6 +93,7 @@ end_comment
 
 begin_class
 specifier|public
+specifier|final
 class|class
 name|AuthInfoImpl
 implements|implements
