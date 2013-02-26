@@ -104,6 +104,12 @@ name|PropertyRestriction
 name|propertyRestriction
 parameter_list|)
 function_decl|;
+comment|/**      * Provide the commit policy to be used with the underlying Solr instance      *      * @return a {@link CommitPolicy}      */
+specifier|public
+name|CommitPolicy
+name|getCommitPolicy
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 
