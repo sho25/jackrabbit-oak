@@ -141,7 +141,6 @@ argument_list|>
 argument_list|>
 argument_list|()
 decl_stmt|;
-comment|/**      * Get a document. The returned map is a clone (the caller      * can modify it without affecting the stored version).      *      * @param collection the collection      * @param path the path      * @return the map, or null if not found      */
 specifier|public
 name|Map
 argument_list|<
@@ -386,7 +385,6 @@ return|return
 name|list
 return|;
 block|}
-comment|/**      * Remove a document.      *      * @param collection the collection      * @param path the path      */
 specifier|public
 name|void
 name|remove
@@ -452,7 +450,6 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**      * Create or update a document. For MongoDb, this is using "findAndModify" with      * the "upsert" flag (insert or update).      *      * @param collection the collection      * @param update the update operation      * @return the old document, or null if there was no      */
 specifier|public
 name|Map
 argument_list|<
@@ -615,7 +612,7 @@ argument_list|)
 expr_stmt|;
 block|}
 return|return
-name|oldNode
+name|n
 return|;
 block|}
 specifier|public

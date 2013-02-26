@@ -253,6 +253,23 @@ name|buff
 operator|.
 name|append
 argument_list|(
+literal|"writeCount: "
+argument_list|)
+operator|.
+name|append
+argument_list|(
+name|writeCount
+argument_list|)
+operator|.
+name|append
+argument_list|(
+literal|'\n'
+argument_list|)
+expr_stmt|;
+name|buff
+operator|.
+name|append
+argument_list|(
 name|properties
 argument_list|)
 expr_stmt|;
@@ -292,6 +309,8 @@ init|=
 operator|new
 name|UpdateOp
 argument_list|(
+name|path
+argument_list|,
 name|id
 argument_list|,
 name|isNew

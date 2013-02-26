@@ -226,7 +226,7 @@ specifier|final
 name|boolean
 name|LOG
 init|=
-literal|true
+literal|false
 decl_stmt|;
 specifier|private
 specifier|static
