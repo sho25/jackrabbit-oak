@@ -10437,7 +10437,7 @@ argument_list|)
 decl_stmt|;
 name|assertEquals
 argument_list|(
-literal|"nt:unstructured"
+literal|"oak:unstructured"
 argument_list|,
 name|testNode
 operator|.
@@ -10450,7 +10450,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"nt:unstructured"
+literal|"oak:unstructured"
 argument_list|,
 name|testNode
 operator|.
