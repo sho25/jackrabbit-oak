@@ -360,14 +360,6 @@ name|Default
 implements|implements
 name|UserConfiguration
 block|{
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|PARAM_USER_OPTIONS
-init|=
-literal|"org.apache.jackrabbit.oak.user.options"
-decl_stmt|;
 specifier|private
 specifier|final
 name|ConfigurationParameters

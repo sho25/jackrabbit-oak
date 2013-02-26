@@ -132,6 +132,11 @@ name|UserConfiguration
 extends|extends
 name|SecurityConfiguration
 block|{
+name|String
+name|PARAM_USER_OPTIONS
+init|=
+literal|"org.apache.jackrabbit.oak.user.options"
+decl_stmt|;
 annotation|@
 name|Nonnull
 name|AuthorizableActionProvider

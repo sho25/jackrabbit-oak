@@ -152,6 +152,16 @@ name|AuthenticationConfiguration
 extends|extends
 name|SecurityConfiguration
 block|{
+name|String
+name|PARAM_AUTHENTICATION_OPTIONS
+init|=
+literal|"org.apache.jackrabbit.oak.authentication.options"
+decl_stmt|;
+name|String
+name|PARAM_APP_NAME
+init|=
+literal|"org.apache.jackrabbit.oak.auth.appName"
+decl_stmt|;
 comment|// TODO review again
 annotation|@
 name|Nonnull
