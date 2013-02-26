@@ -850,7 +850,6 @@ operator|>=
 literal|0
 return|;
 block|}
-specifier|private
 name|boolean
 name|isRevisionNewer
 parameter_list|(
@@ -1069,7 +1068,9 @@ name|e
 operator|.
 name|get
 argument_list|(
-literal|"_id"
+name|UpdateOp
+operator|.
+name|ID
 argument_list|)
 operator|.
 name|toString
@@ -1224,7 +1225,9 @@ name|key
 operator|.
 name|equals
 argument_list|(
-literal|"_writeCount"
+name|UpdateOp
+operator|.
+name|WRITE_COUNT
 argument_list|)
 condition|)
 block|{
@@ -2599,7 +2602,9 @@ name|nodeProps
 operator|.
 name|get
 argument_list|(
-literal|"_deleted"
+name|UpdateOp
+operator|.
+name|DELETED
 argument_list|)
 decl_stmt|;
 if|if

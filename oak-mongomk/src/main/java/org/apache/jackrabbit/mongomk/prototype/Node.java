@@ -320,27 +320,13 @@ name|op
 operator|.
 name|set
 argument_list|(
-literal|"_id"
+name|UpdateOp
+operator|.
+name|ID
 argument_list|,
 name|id
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-operator|!
-name|isNew
-condition|)
-block|{
-name|op
-operator|.
-name|increment
-argument_list|(
-literal|"_changeCount"
-argument_list|,
-literal|1L
-argument_list|)
-expr_stmt|;
-block|}
 for|for
 control|(
 name|String
@@ -357,7 +343,9 @@ operator|.
 name|addMapEntry
 argument_list|(
 name|p
-argument_list|,
+operator|+
+literal|"."
+operator|+
 name|rev
 operator|.
 name|toString
@@ -486,8 +474,9 @@ name|key
 parameter_list|)
 block|{
 comment|//TODO We need to move node properties to a sub key
-comment|//so that all other top level props can be considered as
-comment|//system generated and handled in a better way
+comment|// so that all other top level props can be considered as
+comment|// system generated and handled in a better way,
+comment|// or escape properties that start with a _
 return|return
 name|key
 operator|.

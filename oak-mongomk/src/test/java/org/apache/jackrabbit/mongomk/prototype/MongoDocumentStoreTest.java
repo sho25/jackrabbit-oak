@@ -300,9 +300,7 @@ name|updateOp
 operator|.
 name|addMapEntry
 argument_list|(
-literal|"property1"
-argument_list|,
-literal|"key1"
+literal|"property1.key1"
 argument_list|,
 literal|"value1"
 argument_list|)
@@ -553,9 +551,9 @@ name|updateOp
 operator|.
 name|set
 argument_list|(
-name|MongoDocumentStore
+name|UpdateOp
 operator|.
-name|KEY_PATH
+name|ID
 argument_list|,
 literal|"/node"
 operator|+
@@ -566,9 +564,7 @@ name|updateOp
 operator|.
 name|addMapEntry
 argument_list|(
-literal|"property1"
-argument_list|,
-literal|"key1"
+literal|"property1.key1"
 argument_list|,
 literal|"value1"
 argument_list|)
@@ -1249,9 +1245,7 @@ name|updateOp
 operator|.
 name|addMapEntry
 argument_list|(
-literal|"property1"
-argument_list|,
-literal|"key1"
+literal|"property1.key1"
 argument_list|,
 literal|"value1"
 argument_list|)
@@ -1324,9 +1318,7 @@ name|updateOp
 operator|.
 name|addMapEntry
 argument_list|(
-literal|"property1"
-argument_list|,
-literal|"key2"
+literal|"property1.key2"
 argument_list|,
 literal|"value2"
 argument_list|)
