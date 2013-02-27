@@ -840,11 +840,11 @@ return|;
 block|}
 comment|// TODO currently we only compare the timestamps
 return|return
-name|x
+name|requestRevision
 operator|.
 name|compareRevisionTime
 argument_list|(
-name|requestRevision
+name|x
 argument_list|)
 operator|>=
 literal|0

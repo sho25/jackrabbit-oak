@@ -160,16 +160,26 @@ specifier|public
 class|class
 name|Commit
 block|{
-comment|// TODO too small
+comment|/**      * The maximum size of a document. If it is larger, it is split.      */
+comment|// TODO check which value is the best one
 specifier|private
 specifier|static
 specifier|final
 name|int
-name|MAX_MAP_SIZE
+name|MAX_DOCUMENT_SIZE
 init|=
 literal|16
 operator|*
 literal|1024
+decl_stmt|;
+comment|/**      * Whether to purge old revisions if a node gets too large. If false, old      * revisions are stored in a separate document. If true, old revisions are      * removed (purged).      */
+specifier|private
+specifier|static
+specifier|final
+name|boolean
+name|PURGE_OLD_REVISIONS
+init|=
+literal|true
 decl_stmt|;
 specifier|private
 specifier|final
@@ -739,6 +749,8 @@ operator|=
 literal|null
 expr_stmt|;
 block|}
+try|try
+block|{
 if|if
 condition|(
 name|newNodes
@@ -843,6 +855,28 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+catch|catch
+parameter_list|(
+name|MicroKernelException
+name|e
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|MicroKernelException
+argument_list|(
+literal|"Exception committing "
+operator|+
+name|diff
+operator|.
+name|toString
+argument_list|()
+argument_list|,
+name|e
+argument_list|)
+throw|;
+block|}
+block|}
 specifier|private
 name|void
 name|createOrUpdateNode
@@ -887,7 +921,7 @@ if|if
 condition|(
 name|size
 operator|>
-name|MAX_MAP_SIZE
+name|MAX_DOCUMENT_SIZE
 condition|)
 block|{
 name|UpdateOp
@@ -902,21 +936,21 @@ decl_stmt|;
 comment|// TODO check if the new main document is actually smaller;
 comment|// otherwise, splitting doesn't make sense
 comment|// the old version
-name|store
-operator|.
-name|createOrUpdate
-argument_list|(
-name|Collection
-operator|.
-name|NODES
-argument_list|,
+name|UpdateOp
+name|old
+init|=
 name|split
 index|[
 literal|0
 index|]
-argument_list|)
-expr_stmt|;
-comment|// the (shrunken) main document
+decl_stmt|;
+if|if
+condition|(
+name|old
+operator|!=
+literal|null
+condition|)
+block|{
 name|store
 operator|.
 name|createOrUpdate
@@ -925,12 +959,38 @@ name|Collection
 operator|.
 name|NODES
 argument_list|,
+name|old
+argument_list|)
+expr_stmt|;
+block|}
+comment|// the (shrunken) main document
+name|UpdateOp
+name|main
+init|=
 name|split
 index|[
 literal|1
 index|]
+decl_stmt|;
+if|if
+condition|(
+name|main
+operator|!=
+literal|null
+condition|)
+block|{
+name|store
+operator|.
+name|createOrUpdate
+argument_list|(
+name|Collection
+operator|.
+name|NODES
+argument_list|,
+name|main
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 comment|// TODO detect conflicts here
 name|Long
@@ -1351,6 +1411,16 @@ expr_stmt|;
 block|}
 block|}
 block|}
+block|}
+if|if
+condition|(
+name|PURGE_OLD_REVISIONS
+condition|)
+block|{
+name|old
+operator|=
+literal|null
+expr_stmt|;
 block|}
 return|return
 operator|new
