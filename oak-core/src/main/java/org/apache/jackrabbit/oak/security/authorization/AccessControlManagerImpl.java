@@ -2790,12 +2790,16 @@ name|boolean
 name|isACE
 parameter_list|(
 annotation|@
-name|Nonnull
+name|Nullable
 name|Tree
 name|tree
 parameter_list|)
 block|{
 return|return
+name|tree
+operator|!=
+literal|null
+operator|&&
 name|ntMgr
 operator|.
 name|isNodeType
@@ -3676,6 +3680,8 @@ name|String
 index|[]
 name|privNames
 init|=
+name|checkNotNull
+argument_list|(
 name|TreeUtil
 operator|.
 name|getStrings
@@ -3683,6 +3689,7 @@ argument_list|(
 name|aceTree
 argument_list|,
 name|REP_PRIVILEGES
+argument_list|)
 argument_list|)
 decl_stmt|;
 name|Set
