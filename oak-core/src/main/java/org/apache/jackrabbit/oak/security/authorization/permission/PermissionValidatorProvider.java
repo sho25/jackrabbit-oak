@@ -16,6 +16,8 @@ operator|.
 name|security
 operator|.
 name|authorization
+operator|.
+name|permission
 package|;
 end_package
 
@@ -228,6 +230,7 @@ comment|/**  * PermissionValidatorProvider... TODO  */
 end_comment
 
 begin_class
+specifier|public
 class|class
 name|PermissionValidatorProvider
 implements|implements
@@ -251,6 +254,7 @@ specifier|private
 name|Context
 name|userCtx
 decl_stmt|;
+specifier|public
 name|PermissionValidatorProvider
 parameter_list|(
 name|SecurityProvider

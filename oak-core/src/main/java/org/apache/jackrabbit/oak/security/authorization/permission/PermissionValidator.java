@@ -16,6 +16,8 @@ operator|.
 name|security
 operator|.
 name|authorization
+operator|.
+name|permission
 package|;
 end_package
 
