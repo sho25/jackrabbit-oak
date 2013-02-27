@@ -430,7 +430,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *<code>NodeTypeIndexTest</code> performs tests on {@link NodeTypeIndex}.  */
+comment|/**  * {@code NodeTypeIndexTest} performs tests on {@link NodeTypeIndex}.  */
 end_comment
 
 begin_class
