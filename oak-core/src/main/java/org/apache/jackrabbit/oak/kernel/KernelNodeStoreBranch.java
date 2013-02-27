@@ -370,7 +370,7 @@ annotation|@
 name|Override
 specifier|public
 name|NodeState
-name|getRoot
+name|getHead
 parameter_list|()
 block|{
 name|checkNotMerged
@@ -405,7 +405,7 @@ argument_list|)
 condition|)
 block|{
 name|NodeState
-name|oldRoot
+name|oldHead
 init|=
 name|head
 decl_stmt|;
@@ -447,7 +447,7 @@ condition|)
 block|{
 name|head
 operator|=
-name|oldRoot
+name|oldHead
 expr_stmt|;
 block|}
 block|}
@@ -915,7 +915,7 @@ argument_list|(
 name|root
 argument_list|)
 decl_stmt|;
-name|getRoot
+name|getHead
 argument_list|()
 operator|.
 name|compareAgainstBaseState
@@ -1031,7 +1031,7 @@ expr_stmt|;
 name|NodeState
 name|node
 init|=
-name|getRoot
+name|getHead
 argument_list|()
 decl_stmt|;
 for|for

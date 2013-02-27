@@ -72,18 +72,18 @@ specifier|public
 interface|interface
 name|NodeStoreBranch
 block|{
-comment|/**      * Returns the base state of this branch.      *      * @return root node state      */
+comment|/**      * Returns the base state of this branch.      * The base state is the state of the tree as it was at the time      * {@link NodeStore#branch()} was used to obtain this instance.      *      * @return root node state      */
 annotation|@
 name|Nonnull
 name|NodeState
 name|getBase
 parameter_list|()
 function_decl|;
-comment|/**      * Returns the latest state of the branch.      *      * @return root node state      * @throws IllegalStateException if the branch is already merged      */
+comment|/**      * Returns the head state of this branch.      * The head state is the state resulting from the      * base state by applying all subsequent modifications to this branch      * by {@link #setRoot(NodeState)}, {@link #move(String, String)},      * and {@link #copy(String, String)}.      *      * @return root node state      * @throws IllegalStateException if the branch is already merged      */
 annotation|@
 name|Nonnull
 name|NodeState
-name|getRoot
+name|getHead
 parameter_list|()
 function_decl|;
 comment|/**      * Updates the state of the content tree of this private branch.      *      * @param newRoot new root node state      * @throws IllegalStateException if the branch is already merged      */

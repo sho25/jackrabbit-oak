@@ -275,7 +275,7 @@ name|builder
 init|=
 name|branch
 operator|.
-name|getRoot
+name|getHead
 argument_list|()
 operator|.
 name|builder

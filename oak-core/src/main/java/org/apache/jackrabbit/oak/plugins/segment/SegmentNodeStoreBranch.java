@@ -301,7 +301,7 @@ name|Nonnull
 specifier|public
 specifier|synchronized
 name|NodeState
-name|getRoot
+name|getHead
 parameter_list|()
 block|{
 return|return
@@ -389,7 +389,7 @@ name|newBaseId
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|getRoot
+name|getHead
 argument_list|()
 operator|.
 name|compareAgainstBaseState
@@ -497,7 +497,7 @@ argument_list|(
 name|getBase
 argument_list|()
 argument_list|,
-name|getRoot
+name|getHead
 argument_list|()
 argument_list|)
 argument_list|)
@@ -534,7 +534,7 @@ operator|=
 name|headId
 expr_stmt|;
 return|return
-name|getRoot
+name|getHead
 argument_list|()
 return|;
 block|}
@@ -636,7 +636,7 @@ block|}
 name|NodeBuilder
 name|builder
 init|=
-name|getRoot
+name|getHead
 argument_list|()
 operator|.
 name|builder
@@ -858,7 +858,7 @@ block|{
 name|NodeBuilder
 name|builder
 init|=
-name|getRoot
+name|getHead
 argument_list|()
 operator|.
 name|builder

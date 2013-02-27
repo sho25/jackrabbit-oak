@@ -210,7 +210,7 @@ name|before
 init|=
 name|branch
 operator|.
-name|getRoot
+name|getHead
 argument_list|()
 decl_stmt|;
 name|branch
@@ -307,7 +307,7 @@ name|root
 init|=
 name|branch
 operator|.
-name|getRoot
+name|getHead
 argument_list|()
 decl_stmt|;
 for|for

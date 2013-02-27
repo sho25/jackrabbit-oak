@@ -1776,7 +1776,7 @@ block|{
 return|return
 name|branch
 operator|.
-name|getRoot
+name|getHead
 argument_list|()
 operator|.
 name|builder
@@ -1862,7 +1862,7 @@ name|reset
 argument_list|(
 name|branch
 operator|.
-name|getRoot
+name|getHead
 argument_list|()
 argument_list|)
 expr_stmt|;

@@ -490,7 +490,7 @@ name|rootBuilder
 init|=
 name|branch
 operator|.
-name|getRoot
+name|getHead
 argument_list|()
 operator|.
 name|builder
@@ -596,7 +596,7 @@ name|testState
 operator|=
 name|branch
 operator|.
-name|getRoot
+name|getHead
 argument_list|()
 operator|.
 name|getChildNode
@@ -639,7 +639,7 @@ name|testState
 operator|=
 name|branch
 operator|.
-name|getRoot
+name|getHead
 argument_list|()
 operator|.
 name|getChildNode
