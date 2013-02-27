@@ -45,6 +45,16 @@ end_import
 
 begin_import
 import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|Nullable
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -170,6 +180,8 @@ specifier|static
 name|String
 name|getAdminId
 parameter_list|(
+annotation|@
+name|Nonnull
 name|ConfigurationParameters
 name|parameters
 parameter_list|)
@@ -192,6 +204,8 @@ specifier|static
 name|String
 name|getAnonymousId
 parameter_list|(
+annotation|@
+name|Nonnull
 name|ConfigurationParameters
 name|parameters
 parameter_list|)
@@ -212,9 +226,13 @@ specifier|static
 name|boolean
 name|isType
 parameter_list|(
+annotation|@
+name|Nullable
 name|Tree
 name|authorizableTree
 parameter_list|,
+annotation|@
+name|Nonnull
 name|AuthorizableType
 name|type
 parameter_list|)
@@ -294,7 +312,7 @@ name|AuthorizableType
 name|getType
 parameter_list|(
 annotation|@
-name|Nonnull
+name|Nullable
 name|Tree
 name|authorizableNode
 parameter_list|)
@@ -302,6 +320,14 @@ block|{
 name|String
 name|ntName
 init|=
+operator|(
+name|authorizableNode
+operator|==
+literal|null
+operator|)
+condition|?
+literal|null
+else|:
 name|TreeUtil
 operator|.
 name|getPrimaryTypeName

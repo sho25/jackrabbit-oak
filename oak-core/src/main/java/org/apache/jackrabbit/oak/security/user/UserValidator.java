@@ -375,14 +375,6 @@ name|provider
 expr_stmt|;
 name|authorizableType
 operator|=
-operator|(
-name|parentAfter
-operator|==
-literal|null
-operator|)
-condition|?
-literal|null
-else|:
 name|UserUtility
 operator|.
 name|getType
@@ -1035,6 +1027,10 @@ name|parent
 argument_list|)
 decl_stmt|;
 return|return
+name|id
+operator|!=
+literal|null
+operator|&&
 name|uuid
 operator|.
 name|equals

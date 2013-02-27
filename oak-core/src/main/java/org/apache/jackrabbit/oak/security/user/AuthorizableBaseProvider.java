@@ -210,9 +210,13 @@ name|identifierManager
 decl_stmt|;
 name|AuthorizableBaseProvider
 parameter_list|(
+annotation|@
+name|Nonnull
 name|Root
 name|root
 parameter_list|,
+annotation|@
+name|Nonnull
 name|ConfigurationParameters
 name|config
 parameter_list|)
@@ -251,9 +255,13 @@ name|CheckForNull
 name|Tree
 name|getByID
 parameter_list|(
+annotation|@
+name|Nonnull
 name|String
 name|authorizableId
 parameter_list|,
+annotation|@
+name|Nonnull
 name|AuthorizableType
 name|authorizableType
 parameter_list|)
@@ -299,6 +307,8 @@ name|CheckForNull
 name|Tree
 name|getByPath
 parameter_list|(
+annotation|@
+name|Nonnull
 name|String
 name|authorizableOakPath
 parameter_list|)
@@ -343,6 +353,8 @@ name|Nonnull
 name|String
 name|getContentID
 parameter_list|(
+annotation|@
+name|Nonnull
 name|Tree
 name|authorizableTree
 parameter_list|)
@@ -362,6 +374,8 @@ specifier|static
 name|String
 name|getContentID
 parameter_list|(
+annotation|@
+name|Nonnull
 name|String
 name|authorizableId
 parameter_list|)
