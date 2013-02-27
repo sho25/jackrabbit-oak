@@ -247,6 +247,22 @@ name|NodeStateUtils
 import|;
 end_import
 
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkNotNull
+import|;
+end_import
+
 begin_comment
 comment|/**  * Validator implementation that checks for sufficient permission for all  * write operations executed by a given content session.  */
 end_comment
@@ -499,11 +515,14 @@ block|{
 name|Tree
 name|child
 init|=
+name|checkNotNull
+argument_list|(
 name|parentAfter
 operator|.
 name|getChild
 argument_list|(
 name|name
+argument_list|)
 argument_list|)
 decl_stmt|;
 return|return
@@ -585,11 +604,14 @@ block|{
 name|Tree
 name|child
 init|=
+name|checkNotNull
+argument_list|(
 name|parentBefore
 operator|.
 name|getChild
 argument_list|(
 name|name
+argument_list|)
 argument_list|)
 decl_stmt|;
 return|return
