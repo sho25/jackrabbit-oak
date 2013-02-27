@@ -44,7 +44,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * AccessControlConstants... TODO  */
+comment|/**  * Constants for this access control management implementation.  */
 end_comment
 
 begin_interface
