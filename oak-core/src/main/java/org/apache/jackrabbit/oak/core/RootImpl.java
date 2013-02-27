@@ -688,7 +688,7 @@ specifier|private
 name|TreeImpl
 name|rootTree
 decl_stmt|;
-comment|/**      * Number of {@link #updated} occurred so since the lase      * purge.      */
+comment|/**      * Number of {@link #updated} occurred so since the last      * purge.      */
 specifier|private
 name|int
 name|modCount
