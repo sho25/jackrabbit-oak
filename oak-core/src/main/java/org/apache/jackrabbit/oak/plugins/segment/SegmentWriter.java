@@ -651,6 +651,10 @@ name|uuids
 operator|.
 name|keySet
 argument_list|()
+argument_list|,
+name|strings
+argument_list|,
+name|templates
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -666,6 +670,16 @@ operator|=
 literal|0
 expr_stmt|;
 name|uuids
+operator|.
+name|clear
+argument_list|()
+expr_stmt|;
+name|strings
+operator|.
+name|clear
+argument_list|()
+expr_stmt|;
+name|templates
 operator|.
 name|clear
 argument_list|()

@@ -188,6 +188,7 @@ name|SegmentSizeTest
 block|{
 annotation|@
 name|Test
+comment|// TODO: Fix cross-segment amortization code
 specifier|public
 name|void
 name|testNodeSize
@@ -215,7 +216,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|4
+literal|8
 argument_list|,
 name|getAmortizedSize
 argument_list|(
@@ -253,7 +254,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|8
+literal|24
 argument_list|,
 name|getAmortizedSize
 argument_list|(
@@ -300,7 +301,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|12
+literal|40
 argument_list|,
 name|getAmortizedSize
 argument_list|(
@@ -336,7 +337,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|12
+literal|28
 argument_list|,
 name|getAmortizedSize
 argument_list|(
@@ -379,7 +380,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|40
+literal|56
 argument_list|,
 name|getAmortizedSize
 argument_list|(
@@ -714,7 +715,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|4
+literal|20
 argument_list|,
 name|getAmortizedSize
 argument_list|(
@@ -789,7 +790,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|28
+literal|144
 argument_list|,
 name|getAmortizedSize
 argument_list|(
@@ -860,7 +861,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|72
+literal|264
 argument_list|,
 name|getAmortizedSize
 argument_list|(
@@ -944,7 +945,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|108
+literal|356
 argument_list|,
 name|getAmortizedSize
 argument_list|(
@@ -1015,7 +1016,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|136
+literal|412
 argument_list|,
 name|getAmortizedSize
 argument_list|(
@@ -1187,7 +1188,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|252
+literal|260
 argument_list|,
 name|segment
 operator|.
