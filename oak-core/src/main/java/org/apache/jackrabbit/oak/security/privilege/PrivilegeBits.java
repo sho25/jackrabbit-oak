@@ -786,7 +786,7 @@ specifier|final
 name|Data
 name|d
 decl_stmt|;
-comment|/**      * Private constructor.      */
+comment|/**      * Private constructor.      *      * @param d The data that backs this instance.      */
 specifier|private
 name|PrivilegeBits
 parameter_list|(
@@ -2328,6 +2328,7 @@ block|}
 comment|/**      * Immutable Data object      */
 specifier|private
 specifier|static
+specifier|final
 class|class
 name|UnmodifiableData
 extends|extends
@@ -2726,8 +2727,9 @@ operator|(
 name|isSimple
 operator|)
 condition|?
-operator|new
 name|Long
+operator|.
+name|valueOf
 argument_list|(
 name|bits
 argument_list|)
@@ -2833,6 +2835,7 @@ block|}
 comment|/**      * Mutable implementation of the Data base class.      */
 specifier|private
 specifier|static
+specifier|final
 class|class
 name|ModifiableData
 extends|extends
