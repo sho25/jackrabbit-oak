@@ -781,7 +781,7 @@ name|Map
 argument_list|<
 name|String
 argument_list|,
-name|String
+name|Object
 argument_list|>
 name|m
 init|=
@@ -790,7 +790,7 @@ name|Map
 argument_list|<
 name|String
 argument_list|,
-name|String
+name|Object
 argument_list|>
 operator|)
 name|old
@@ -834,9 +834,6 @@ argument_list|,
 name|op
 operator|.
 name|value
-operator|.
-name|toString
-argument_list|()
 argument_list|)
 expr_stmt|;
 break|break;
@@ -867,7 +864,7 @@ name|Map
 argument_list|<
 name|String
 argument_list|,
-name|String
+name|Object
 argument_list|>
 name|m
 init|=
@@ -876,7 +873,7 @@ name|Map
 argument_list|<
 name|String
 argument_list|,
-name|String
+name|Object
 argument_list|>
 operator|)
 name|old
@@ -909,7 +906,7 @@ name|Map
 argument_list|<
 name|String
 argument_list|,
-name|String
+name|Object
 argument_list|>
 name|m
 init|=
