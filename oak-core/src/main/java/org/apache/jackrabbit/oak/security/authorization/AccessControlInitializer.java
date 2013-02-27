@@ -170,7 +170,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * AccessControlInitializer... TODO  */
+comment|/**  * Implementation of the {@code WorkspaceInitializer} interface that creates  * a property index definitions for {@link #REP_PRINCIPAL_NAME rep:principalName}  * properties defined with ACE nodes.  */
 end_comment
 
 begin_class
