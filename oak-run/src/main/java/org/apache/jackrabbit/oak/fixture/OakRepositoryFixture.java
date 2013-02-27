@@ -650,6 +650,10 @@ parameter_list|,
 specifier|final
 name|int
 name|port
+parameter_list|,
+specifier|final
+name|long
+name|cacheSize
 parameter_list|)
 block|{
 return|return
@@ -725,6 +729,8 @@ name|getDB
 argument_list|(
 name|unique
 argument_list|)
+argument_list|,
+name|cacheSize
 argument_list|)
 decl_stmt|;
 name|Oak

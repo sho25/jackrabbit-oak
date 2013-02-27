@@ -292,6 +292,9 @@ name|MongoStore
 parameter_list|(
 name|DB
 name|db
+parameter_list|,
+name|long
+name|cacheSize
 parameter_list|)
 block|{
 name|this
@@ -300,7 +303,9 @@ name|db
 argument_list|,
 operator|new
 name|SegmentCache
-argument_list|()
+argument_list|(
+name|cacheSize
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -309,6 +314,9 @@ name|MongoStore
 parameter_list|(
 name|Mongo
 name|mongo
+parameter_list|,
+name|long
+name|cacheSize
 parameter_list|)
 block|{
 name|this
@@ -319,6 +327,8 @@ name|getDB
 argument_list|(
 literal|"Oak"
 argument_list|)
+argument_list|,
+name|cacheSize
 argument_list|)
 expr_stmt|;
 block|}
