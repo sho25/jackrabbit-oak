@@ -1255,6 +1255,10 @@ argument_list|)
 condition|)
 block|{
 comment|// nothing to persist
+name|success
+operator|=
+literal|true
+expr_stmt|;
 return|return;
 block|}
 else|else
