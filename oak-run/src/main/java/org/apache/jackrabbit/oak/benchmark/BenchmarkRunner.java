@@ -465,6 +465,10 @@ argument_list|(
 name|options
 argument_list|)
 argument_list|)
+block|,
+operator|new
+name|ManyNodes
+argument_list|()
 block|}
 decl_stmt|;
 name|Set
