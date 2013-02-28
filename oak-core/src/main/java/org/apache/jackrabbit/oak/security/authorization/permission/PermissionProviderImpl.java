@@ -462,7 +462,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * PermissionProviderImpl... TODO  *<p/>  * FIXME: permissions need to be refreshed if something changes in the permission tree  * FIXME: define read/write access patterns on version-store content  * FIXME: proper access permissions on activity-store and configuration-store  */
+comment|/**  * PermissionProviderImpl... TODO  *<p/>  * FIXME: define read/write access patterns on version-store content  * FIXME: proper access permissions on activity-store and configuration-store  */
 end_comment
 
 begin_class
