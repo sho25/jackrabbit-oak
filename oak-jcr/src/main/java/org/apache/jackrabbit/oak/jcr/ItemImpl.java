@@ -214,9 +214,6 @@ decl_stmt|;
 specifier|protected
 name|ItemImpl
 parameter_list|(
-name|SessionDelegate
-name|sessionDelegate
-parameter_list|,
 name|T
 name|itemDelegate
 parameter_list|)
@@ -225,7 +222,10 @@ name|this
 operator|.
 name|sessionDelegate
 operator|=
-name|sessionDelegate
+name|itemDelegate
+operator|.
+name|getSessionDelegate
+argument_list|()
 expr_stmt|;
 name|this
 operator|.
@@ -233,6 +233,31 @@ name|dlg
 operator|=
 name|itemDelegate
 expr_stmt|;
+block|}
+specifier|protected
+parameter_list|<
+name|X
+parameter_list|>
+name|X
+name|perform
+parameter_list|(
+name|SessionOperation
+argument_list|<
+name|X
+argument_list|>
+name|operation
+parameter_list|)
+throws|throws
+name|RepositoryException
+block|{
+return|return
+name|sessionDelegate
+operator|.
+name|perform
+argument_list|(
+name|operation
+argument_list|)
+return|;
 block|}
 comment|//---------------------------------------------------------------< Item>---
 comment|/**      * @see javax.jcr.Item#getName()      */
@@ -248,8 +273,6 @@ throws|throws
 name|RepositoryException
 block|{
 return|return
-name|sessionDelegate
-operator|.
 name|perform
 argument_list|(
 operator|new
@@ -314,8 +337,6 @@ name|checkStatus
 argument_list|()
 expr_stmt|;
 return|return
-name|sessionDelegate
-operator|.
 name|perform
 argument_list|(
 operator|new

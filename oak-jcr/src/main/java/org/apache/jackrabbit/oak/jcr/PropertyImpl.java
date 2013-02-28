@@ -346,11 +346,6 @@ block|{
 name|super
 argument_list|(
 name|dlg
-operator|.
-name|getSessionDelegate
-argument_list|()
-argument_list|,
-name|dlg
 argument_list|)
 expr_stmt|;
 block|}
@@ -380,8 +375,6 @@ throws|throws
 name|RepositoryException
 block|{
 return|return
-name|sessionDelegate
-operator|.
 name|perform
 argument_list|(
 operator|new
@@ -465,8 +458,6 @@ block|{
 try|try
 block|{
 return|return
-name|sessionDelegate
-operator|.
 name|perform
 argument_list|(
 operator|new
@@ -528,8 +519,6 @@ block|{
 try|try
 block|{
 return|return
-name|sessionDelegate
-operator|.
 name|perform
 argument_list|(
 operator|new
@@ -596,8 +585,6 @@ expr_stmt|;
 name|checkProtected
 argument_list|()
 expr_stmt|;
-name|sessionDelegate
-operator|.
 name|perform
 argument_list|(
 operator|new
@@ -743,8 +730,6 @@ block|{
 name|checkStatus
 argument_list|()
 expr_stmt|;
-name|sessionDelegate
-operator|.
 name|perform
 argument_list|(
 operator|new
@@ -1536,8 +1521,6 @@ name|checkStatus
 argument_list|()
 expr_stmt|;
 return|return
-name|sessionDelegate
-operator|.
 name|perform
 argument_list|(
 operator|new
@@ -1602,8 +1585,6 @@ name|checkStatus
 argument_list|()
 expr_stmt|;
 return|return
-name|sessionDelegate
-operator|.
 name|perform
 argument_list|(
 operator|new
@@ -1887,8 +1868,6 @@ throws|throws
 name|RepositoryException
 block|{
 return|return
-name|sessionDelegate
-operator|.
 name|perform
 argument_list|(
 operator|new
@@ -2214,8 +2193,6 @@ throws|throws
 name|RepositoryException
 block|{
 return|return
-name|sessionDelegate
-operator|.
 name|perform
 argument_list|(
 operator|new
@@ -2460,8 +2437,6 @@ throws|throws
 name|RepositoryException
 block|{
 return|return
-name|sessionDelegate
-operator|.
 name|perform
 argument_list|(
 operator|new
@@ -2556,8 +2531,6 @@ name|checkStatus
 argument_list|()
 expr_stmt|;
 return|return
-name|sessionDelegate
-operator|.
 name|perform
 argument_list|(
 operator|new
