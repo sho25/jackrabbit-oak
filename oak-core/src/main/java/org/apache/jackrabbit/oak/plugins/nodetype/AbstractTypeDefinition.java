@@ -57,16 +57,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|jcr
-operator|.
-name|ValueFactory
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -158,11 +148,6 @@ name|definition
 decl_stmt|;
 specifier|protected
 specifier|final
-name|ValueFactory
-name|factory
-decl_stmt|;
-specifier|protected
-specifier|final
 name|NamePathMapper
 name|mapper
 decl_stmt|;
@@ -171,9 +156,6 @@ name|AbstractTypeDefinition
 parameter_list|(
 name|Tree
 name|definition
-parameter_list|,
-name|ValueFactory
-name|factory
 parameter_list|,
 name|NamePathMapper
 name|mapper
@@ -187,12 +169,6 @@ name|checkNotNull
 argument_list|(
 name|definition
 argument_list|)
-expr_stmt|;
-name|this
-operator|.
-name|factory
-operator|=
-name|factory
 expr_stmt|;
 name|this
 operator|.

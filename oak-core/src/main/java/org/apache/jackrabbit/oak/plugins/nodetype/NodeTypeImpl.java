@@ -155,16 +155,6 @@ name|javax
 operator|.
 name|jcr
 operator|.
-name|ValueFactory
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|jcr
-operator|.
 name|nodetype
 operator|.
 name|NoSuchNodeTypeException
@@ -689,9 +679,6 @@ parameter_list|(
 name|Tree
 name|type
 parameter_list|,
-name|ValueFactory
-name|factory
-parameter_list|,
 name|NamePathMapper
 name|mapper
 parameter_list|)
@@ -699,8 +686,6 @@ block|{
 name|super
 argument_list|(
 name|type
-argument_list|,
-name|factory
 argument_list|,
 name|mapper
 argument_list|)
@@ -997,8 +982,6 @@ name|PropertyDefinitionImpl
 argument_list|(
 name|child
 argument_list|,
-name|factory
-argument_list|,
 name|mapper
 argument_list|)
 argument_list|)
@@ -1065,8 +1048,6 @@ operator|new
 name|NodeDefinitionImpl
 argument_list|(
 name|child
-argument_list|,
-name|factory
 argument_list|,
 name|mapper
 argument_list|)
@@ -1218,8 +1199,6 @@ name|NodeTypeImpl
 argument_list|(
 name|supertype
 argument_list|,
-name|factory
-argument_list|,
 name|mapper
 argument_list|)
 argument_list|)
@@ -1335,8 +1314,6 @@ operator|new
 name|NodeTypeImpl
 argument_list|(
 name|type
-argument_list|,
-name|factory
 argument_list|,
 name|mapper
 argument_list|)
@@ -1602,8 +1579,6 @@ name|NodeTypeImpl
 argument_list|(
 name|tree
 argument_list|,
-name|factory
-argument_list|,
 name|mapper
 argument_list|)
 argument_list|)
@@ -1705,8 +1680,6 @@ operator|new
 name|NodeTypeImpl
 argument_list|(
 name|child
-argument_list|,
-name|factory
 argument_list|,
 name|mapper
 argument_list|)

@@ -25,16 +25,6 @@ name|javax
 operator|.
 name|jcr
 operator|.
-name|ValueFactory
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|jcr
-operator|.
 name|nodetype
 operator|.
 name|ItemDefinition
@@ -127,9 +117,6 @@ parameter_list|(
 name|Tree
 name|definition
 parameter_list|,
-name|ValueFactory
-name|factory
-parameter_list|,
 name|NamePathMapper
 name|mapper
 parameter_list|)
@@ -137,8 +124,6 @@ block|{
 name|super
 argument_list|(
 name|definition
-argument_list|,
-name|factory
 argument_list|,
 name|mapper
 argument_list|)
@@ -192,8 +177,6 @@ name|definition
 operator|.
 name|getParent
 argument_list|()
-argument_list|,
-name|factory
 argument_list|,
 name|mapper
 argument_list|)
