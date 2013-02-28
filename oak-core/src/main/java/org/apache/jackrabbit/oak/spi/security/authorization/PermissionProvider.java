@@ -92,6 +92,10 @@ specifier|public
 interface|interface
 name|PermissionProvider
 block|{
+name|void
+name|refresh
+parameter_list|()
+function_decl|;
 annotation|@
 name|Nonnull
 name|Set

@@ -148,6 +148,15 @@ name|INSTANCE
 return|;
 block|}
 annotation|@
+name|Override
+specifier|public
+name|void
+name|refresh
+parameter_list|()
+block|{
+comment|// nothing to do
+block|}
+annotation|@
 name|Nonnull
 annotation|@
 name|Override

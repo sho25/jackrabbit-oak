@@ -1079,7 +1079,6 @@ operator|>
 name|emptySet
 argument_list|()
 decl_stmt|;
-comment|// FIXME: keep permission provider up to date.
 name|permissionProvider
 operator|=
 name|acConfig
@@ -1187,6 +1186,11 @@ parameter_list|)
 throws|throws
 name|RepositoryException
 block|{
+name|permissionProvider
+operator|.
+name|refresh
+argument_list|()
+expr_stmt|;
 return|return
 name|hasPrivileges
 argument_list|(
@@ -1215,6 +1219,11 @@ parameter_list|)
 throws|throws
 name|RepositoryException
 block|{
+name|permissionProvider
+operator|.
+name|refresh
+argument_list|()
+expr_stmt|;
 return|return
 name|getPrivileges
 argument_list|(
