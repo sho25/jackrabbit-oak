@@ -302,6 +302,8 @@ argument_list|>
 argument_list|>
 argument_list|(
 literal|1024
+operator|*
+literal|20
 argument_list|)
 decl_stmt|;
 specifier|public
