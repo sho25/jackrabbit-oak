@@ -103,7 +103,8 @@ name|String
 name|key
 parameter_list|)
 function_decl|;
-name|void
+comment|/**      * Try to create a list of documents.      *       * @param collection the collection      * @param updateOps the list of documents to add      * @return true if this worked (if none of the documents already existed)      */
+name|boolean
 name|create
 parameter_list|(
 name|Collection

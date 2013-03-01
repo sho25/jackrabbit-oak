@@ -56,13 +56,6 @@ decl_stmt|;
 specifier|static
 specifier|final
 name|String
-name|PATH
-init|=
-literal|"_path"
-decl_stmt|;
-specifier|static
-specifier|final
-name|String
 name|WRITE_COUNT
 init|=
 literal|"_writeCount"
@@ -100,6 +93,9 @@ specifier|final
 name|boolean
 name|isNew
 decl_stmt|;
+name|boolean
+name|isDelete
+decl_stmt|;
 specifier|final
 name|Map
 argument_list|<
@@ -118,7 +114,7 @@ name|Operation
 argument_list|>
 argument_list|()
 decl_stmt|;
-comment|/**      * Create an update operation for the given document. The commit root is assumed      * to be the path, unless this is changed later on.      *       * @param path the node path (for nodes)      * @param key the primary key      * @param isNew whether this is a new document      * @param rev the revision      */
+comment|/**      * Create an update operation for the given document. The commit root is assumed      * to be the path, unless this is changed later on.      *       * @param path the node path (for nodes)      * @param key the primary key      * @param isNew whether this is a new document      * @param isDelete whether the _deleted property is set       * @param rev the revision      */
 name|UpdateOp
 parameter_list|(
 name|String
@@ -165,6 +161,20 @@ block|{
 return|return
 name|isNew
 return|;
+block|}
+name|void
+name|setDelete
+parameter_list|(
+name|boolean
+name|isDelete
+parameter_list|)
+block|{
+name|this
+operator|.
+name|isDelete
+operator|=
+name|isDelete
+expr_stmt|;
 block|}
 comment|/**      * Add a new map entry for this revision.      *       * @param property the property      * @param value the value      */
 name|void
@@ -330,6 +340,22 @@ argument_list|(
 name|property
 argument_list|,
 name|op
+argument_list|)
+expr_stmt|;
+block|}
+comment|/**      * Do not set the property (after it has been set).      *       * @param property the property name      */
+name|void
+name|unset
+parameter_list|(
+name|String
+name|property
+parameter_list|)
+block|{
+name|changes
+operator|.
+name|remove
+argument_list|(
+name|property
 argument_list|)
 expr_stmt|;
 block|}

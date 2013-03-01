@@ -49,6 +49,18 @@ name|TreeMap
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|bson
+operator|.
+name|types
+operator|.
+name|ObjectId
+import|;
+end_import
+
 begin_comment
 comment|/**  * Utility methods.  */
 end_comment
@@ -233,6 +245,27 @@ block|}
 block|}
 return|return
 name|size
+return|;
+block|}
+comment|/**      * Generate a unique cluster id, similar to the machine id field in MongoDB ObjectId objects.      *       * @return the unique machine id      */
+specifier|public
+specifier|static
+name|int
+name|getUniqueClusterId
+parameter_list|()
+block|{
+name|ObjectId
+name|objId
+init|=
+operator|new
+name|ObjectId
+argument_list|()
+decl_stmt|;
+return|return
+name|objId
+operator|.
+name|_machine
+argument_list|()
 return|;
 block|}
 block|}
