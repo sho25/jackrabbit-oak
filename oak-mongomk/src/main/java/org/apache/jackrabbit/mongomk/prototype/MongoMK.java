@@ -930,9 +930,9 @@ argument_list|)
 decl_stmt|;
 name|from
 operator|=
-name|Node
+name|Utils
 operator|.
-name|convertPathToDocumentId
+name|getIdFromPath
 argument_list|(
 name|from
 argument_list|)
@@ -967,9 +967,9 @@ argument_list|)
 decl_stmt|;
 name|to
 operator|=
-name|Node
+name|Utils
 operator|.
-name|convertPathToDocumentId
+name|getIdFromPath
 argument_list|(
 name|to
 argument_list|)
@@ -1079,11 +1079,11 @@ decl_stmt|;
 name|String
 name|p
 init|=
-name|id
+name|Utils
 operator|.
-name|substring
+name|getPathFromId
 argument_list|(
-literal|2
+name|id
 argument_list|)
 decl_stmt|;
 name|c
@@ -1123,9 +1123,9 @@ block|{
 name|String
 name|id
 init|=
-name|Node
+name|Utils
 operator|.
-name|convertPathToDocumentId
+name|getIdFromPath
 argument_list|(
 name|path
 argument_list|)
@@ -2555,6 +2555,13 @@ operator|+
 name|rev
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|n
+operator|!=
+literal|null
+condition|)
+block|{
 name|Node
 operator|.
 name|Children
@@ -2595,6 +2602,7 @@ argument_list|,
 literal|true
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 comment|// Remove the node from the cache
