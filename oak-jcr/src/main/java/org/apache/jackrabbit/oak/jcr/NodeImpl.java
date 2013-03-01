@@ -469,6 +469,20 @@ name|common
 operator|.
 name|collect
 operator|.
+name|ImmutableSet
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|collect
+operator|.
 name|Iterables
 import|;
 end_import
@@ -5859,13 +5873,24 @@ parameter_list|()
 throws|throws
 name|RepositoryException
 block|{
-throw|throw
+name|checkStatus
+argument_list|()
+expr_stmt|;
+name|checkProtected
+argument_list|()
+expr_stmt|;
+return|return
 operator|new
-name|UnsupportedRepositoryOperationException
+name|NodeIteratorAdapter
 argument_list|(
-literal|"TODO: Node.getSharedSet"
+name|ImmutableSet
+operator|.
+name|of
+argument_list|(
+name|this
 argument_list|)
-throw|;
+argument_list|)
+return|;
 block|}
 end_function
 
@@ -5879,13 +5904,29 @@ parameter_list|()
 throws|throws
 name|RepositoryException
 block|{
-throw|throw
-operator|new
-name|UnsupportedRepositoryOperationException
-argument_list|(
-literal|"TODO: Node.removeSharedSet"
-argument_list|)
-throw|;
+name|NodeIterator
+name|iter
+init|=
+name|getSharedSet
+argument_list|()
+decl_stmt|;
+while|while
+condition|(
+name|iter
+operator|.
+name|hasNext
+argument_list|()
+condition|)
+block|{
+name|iter
+operator|.
+name|nextNode
+argument_list|()
+operator|.
+name|removeShare
+argument_list|()
+expr_stmt|;
+block|}
 block|}
 end_function
 
@@ -5899,13 +5940,9 @@ parameter_list|()
 throws|throws
 name|RepositoryException
 block|{
-throw|throw
-operator|new
-name|UnsupportedRepositoryOperationException
-argument_list|(
-literal|"TODO: Node.removeShare"
-argument_list|)
-throw|;
+name|remove
+argument_list|()
+expr_stmt|;
 block|}
 end_function
 
