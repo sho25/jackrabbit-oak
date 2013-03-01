@@ -1374,6 +1374,11 @@ name|boolean
 name|enable
 parameter_list|)
 block|{
+name|root
+operator|.
+name|checkLive
+argument_list|()
+expr_stmt|;
 if|if
 condition|(
 name|enable
