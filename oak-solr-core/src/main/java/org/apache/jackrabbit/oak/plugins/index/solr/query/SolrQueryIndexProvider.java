@@ -435,13 +435,13 @@ if|if
 condition|(
 name|log
 operator|.
-name|isInfoEnabled
+name|isDebugEnabled
 argument_list|()
 condition|)
 block|{
 name|log
 operator|.
-name|info
+name|debug
 argument_list|(
 literal|"found a Solr index definition {}"
 argument_list|,
@@ -450,6 +450,17 @@ argument_list|)
 expr_stmt|;
 block|}
 try|try
+block|{
+if|if
+condition|(
+name|solrServerProvider
+operator|!=
+literal|null
+operator|&&
+name|oakSolrConfigurationProvider
+operator|!=
+literal|null
+condition|)
 block|{
 name|tempIndexes
 operator|.
@@ -472,6 +483,7 @@ argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 catch|catch
 parameter_list|(

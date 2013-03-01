@@ -1093,13 +1093,13 @@ if|if
 condition|(
 name|log
 operator|.
-name|isInfoEnabled
+name|isDebugEnabled
 argument_list|()
 condition|)
 block|{
 name|log
 operator|.
-name|info
+name|debug
 argument_list|(
 operator|new
 name|StringBuilder
