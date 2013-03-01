@@ -81,7 +81,7 @@ name|String
 name|relPath
 parameter_list|)
 function_decl|;
-comment|/**      * Determine whether the underlying {@link org.apache.jackrabbit.oak.api.Tree} or      * {@link org.apache.jackrabbit.oak.api.PropertyState} for this {@code TreeLocation}      * is available.      * @return  {@code true} if either {@link #getTree()} or {@link #getParent()} is non {@code null}.      * {@code false} otherwise.      */
+comment|/**      * Determine whether the underlying {@link org.apache.jackrabbit.oak.api.Tree} or      * {@link org.apache.jackrabbit.oak.api.PropertyState} for this {@code TreeLocation}      * is available.      * @return  {@code true} if either {@link #getTree()} or {@link #getProperty()} is non {@code null}.      *          and {@link #getStatus()} is not {{@link Status#DISCONNECTED}}.      * {@code false} otherwise.      */
 name|boolean
 name|exists
 parameter_list|()
