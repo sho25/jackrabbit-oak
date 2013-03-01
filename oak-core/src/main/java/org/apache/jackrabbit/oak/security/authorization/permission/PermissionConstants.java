@@ -77,6 +77,11 @@ init|=
 literal|"rep:accessControlledPath"
 decl_stmt|;
 name|String
+name|REP_PRIVILEGE_BITS
+init|=
+literal|"rep:privileges"
+decl_stmt|;
+name|String
 name|REP_INDEX
 init|=
 literal|"rep:index"
