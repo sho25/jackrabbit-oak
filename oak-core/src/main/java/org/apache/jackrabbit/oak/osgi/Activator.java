@@ -724,13 +724,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-else|else
-block|{
-name|service
-operator|=
-literal|null
-expr_stmt|;
-block|}
 return|return
 name|service
 return|;
