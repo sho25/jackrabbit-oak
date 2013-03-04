@@ -514,7 +514,7 @@ argument_list|(
 operator|new
 name|SegmentStore
 index|[
-literal|0
+literal|1
 index|]
 argument_list|)
 expr_stmt|;
