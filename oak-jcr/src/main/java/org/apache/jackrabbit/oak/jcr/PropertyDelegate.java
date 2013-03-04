@@ -69,6 +69,16 @@ end_import
 
 begin_import
 import|import
+name|javax
+operator|.
+name|jcr
+operator|.
+name|ValueFormatException
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -163,7 +173,7 @@ name|location
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Get the value of the property      *      * @return the value of the property      * @throws InvalidItemStateException      */
+comment|/**      * Get the value of the property      *      * @return the value of the property      * @throws InvalidItemStateException      * @throws ValueFormatException if this property is multi-valued      */
 annotation|@
 name|Nonnull
 specifier|public
@@ -172,14 +182,39 @@ name|getValue
 parameter_list|()
 throws|throws
 name|InvalidItemStateException
+throws|,
+name|ValueFormatException
 block|{
+name|PropertyState
+name|property
+init|=
+name|getPropertyState
+argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|property
+operator|.
+name|isArray
+argument_list|()
+condition|)
+block|{
+throw|throw
+operator|new
+name|ValueFormatException
+argument_list|(
+name|this
+operator|+
+literal|" is multi-valued."
+argument_list|)
+throw|;
+block|}
 return|return
 name|ValueFactoryImpl
 operator|.
 name|createValue
 argument_list|(
-name|getPropertyState
-argument_list|()
+name|property
 argument_list|,
 name|sessionDelegate
 operator|.
@@ -188,7 +223,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-comment|/**      * Get the values of the property      *      * @return the values of the property      * @throws InvalidItemStateException      */
+comment|/**      * Get the values of the property      *      * @return the values of the property      * @throws InvalidItemStateException      * @throws ValueFormatException if this property is single-valued      */
 annotation|@
 name|Nonnull
 specifier|public
@@ -200,14 +235,40 @@ name|getValues
 parameter_list|()
 throws|throws
 name|InvalidItemStateException
+throws|,
+name|ValueFormatException
 block|{
+name|PropertyState
+name|property
+init|=
+name|getPropertyState
+argument_list|()
+decl_stmt|;
+if|if
+condition|(
+operator|!
+name|property
+operator|.
+name|isArray
+argument_list|()
+condition|)
+block|{
+throw|throw
+operator|new
+name|ValueFormatException
+argument_list|(
+name|this
+operator|+
+literal|" is single-valued."
+argument_list|)
+throw|;
+block|}
 return|return
 name|ValueFactoryImpl
 operator|.
 name|createValues
 argument_list|(
-name|getPropertyState
-argument_list|()
+name|property
 argument_list|,
 name|sessionDelegate
 operator|.
