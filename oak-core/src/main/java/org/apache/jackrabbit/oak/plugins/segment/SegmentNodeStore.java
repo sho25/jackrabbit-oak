@@ -133,7 +133,7 @@ name|store
 decl_stmt|;
 specifier|private
 specifier|final
-name|String
+name|Journal
 name|journal
 decl_stmt|;
 specifier|private
@@ -161,7 +161,12 @@ name|this
 operator|.
 name|journal
 operator|=
+name|store
+operator|.
+name|getJournal
+argument_list|(
 name|journal
+argument_list|)
 expr_stmt|;
 name|this
 operator|.
@@ -204,12 +209,10 @@ name|SegmentNodeState
 argument_list|(
 name|reader
 argument_list|,
-name|store
-operator|.
-name|getJournalHead
-argument_list|(
 name|journal
-argument_list|)
+operator|.
+name|getHead
+argument_list|()
 argument_list|)
 return|;
 block|}
