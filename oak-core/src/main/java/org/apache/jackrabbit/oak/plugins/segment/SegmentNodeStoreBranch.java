@@ -517,7 +517,18 @@ operator|=
 name|headId
 expr_stmt|;
 block|}
-elseif|else
+else|else
+block|{
+comment|// someone else was faster, so restore state and retry later
+name|baseId
+operator|=
+name|originalBaseId
+expr_stmt|;
+name|rootId
+operator|=
+name|originalRootId
+expr_stmt|;
+comment|// use exponential backoff to reduce contention
 if|if
 condition|(
 name|backoff
@@ -525,8 +536,6 @@ operator|<
 literal|10000
 condition|)
 block|{
-comment|// someone else was faster, so try again later
-comment|// use exponential backoff to reduce contention
 try|try
 block|{
 name|Thread
@@ -564,22 +573,9 @@ name|e
 argument_list|)
 throw|;
 block|}
-comment|// rebase to latest head before trying again
-name|baseId
-operator|=
-name|originalBaseId
-expr_stmt|;
-name|rootId
-operator|=
-name|originalRootId
-expr_stmt|;
-name|rebase
-argument_list|()
-expr_stmt|;
 block|}
 else|else
 block|{
-comment|//
 throw|throw
 operator|new
 name|CommitFailedException
@@ -587,6 +583,11 @@ argument_list|(
 literal|"System overloaded, try again later"
 argument_list|)
 throw|;
+block|}
+comment|// rebase to latest head before trying again
+name|rebase
+argument_list|()
+expr_stmt|;
 block|}
 block|}
 return|return
