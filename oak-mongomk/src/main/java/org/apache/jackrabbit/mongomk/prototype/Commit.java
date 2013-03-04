@@ -868,6 +868,17 @@ argument_list|,
 literal|"false"
 argument_list|)
 expr_stmt|;
+name|op
+operator|.
+name|increment
+argument_list|(
+name|UpdateOp
+operator|.
+name|WRITE_COUNT
+argument_list|,
+literal|1
+argument_list|)
+expr_stmt|;
 name|createOrUpdateNode
 argument_list|(
 name|store
