@@ -442,9 +442,6 @@ parameter_list|)
 throws|throws
 name|CommitFailedException
 block|{
-name|rebase
-argument_list|()
-expr_stmt|;
 name|RecordId
 name|originalBaseId
 init|=
