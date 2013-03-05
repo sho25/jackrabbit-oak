@@ -285,7 +285,7 @@ name|out
 operator|.
 name|format
 argument_list|(
-literal|"# %-34.34s     min     10%%     50%%     90%%     max       N%n"
+literal|"# %-26.26s     min     10%%     50%%     90%%     max       N%n"
 argument_list|,
 name|toString
 argument_list|()
@@ -342,7 +342,7 @@ name|out
 operator|.
 name|format
 argument_list|(
-literal|"%-36.36s  %6.0f  %6.0f  %6.0f  %6.0f  %6.0f  %6d%n"
+literal|"%-28.328  %6.0f  %6.0f  %6.0f  %6.0f  %6.0f  %6d%n"
 argument_list|,
 name|fixture
 operator|.
