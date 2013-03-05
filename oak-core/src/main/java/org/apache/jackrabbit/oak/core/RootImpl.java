@@ -649,7 +649,14 @@ specifier|final
 name|int
 name|PURGE_LIMIT
 init|=
+name|Integer
+operator|.
+name|getInteger
+argument_list|(
+literal|"oak.root.purgeLimit"
+argument_list|,
 literal|100
+argument_list|)
 decl_stmt|;
 comment|/**      * The underlying store to which this root belongs      */
 specifier|private
