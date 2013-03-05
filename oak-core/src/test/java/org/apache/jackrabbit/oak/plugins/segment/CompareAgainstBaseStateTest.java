@@ -141,17 +141,6 @@ argument_list|()
 decl_stmt|;
 specifier|private
 specifier|final
-name|SegmentReader
-name|reader
-init|=
-operator|new
-name|SegmentReader
-argument_list|(
-name|store
-argument_list|)
-decl_stmt|;
-specifier|private
-specifier|final
 name|SegmentWriter
 name|writer
 init|=
@@ -159,8 +148,6 @@ operator|new
 name|SegmentWriter
 argument_list|(
 name|store
-argument_list|,
-name|reader
 argument_list|)
 decl_stmt|;
 specifier|private

@@ -247,11 +247,7 @@ return|return
 operator|new
 name|SegmentNodeState
 argument_list|(
-operator|new
-name|SegmentReader
-argument_list|(
 name|store
-argument_list|)
 argument_list|,
 name|value
 argument_list|)

@@ -187,8 +187,8 @@ name|AbstractNodeState
 block|{
 specifier|private
 specifier|final
-name|SegmentReader
-name|reader
+name|SegmentStore
+name|store
 decl_stmt|;
 specifier|private
 specifier|final
@@ -203,8 +203,8 @@ literal|null
 decl_stmt|;
 name|SegmentNodeState
 parameter_list|(
-name|SegmentReader
-name|reader
+name|SegmentStore
+name|store
 parameter_list|,
 name|RecordId
 name|id
@@ -212,11 +212,11 @@ parameter_list|)
 block|{
 name|this
 operator|.
-name|reader
+name|store
 operator|=
 name|checkNotNull
 argument_list|(
-name|reader
+name|store
 argument_list|)
 expr_stmt|;
 name|this
@@ -253,10 +253,7 @@ block|{
 name|Segment
 name|segment
 init|=
-name|reader
-operator|.
-name|getStore
-argument_list|()
+name|store
 operator|.
 name|readSegment
 argument_list|(
@@ -303,7 +300,7 @@ argument_list|()
 operator|.
 name|getChildNodeMap
 argument_list|(
-name|reader
+name|store
 argument_list|,
 name|recordId
 argument_list|)
@@ -349,7 +346,7 @@ name|getProperty
 argument_list|(
 name|name
 argument_list|,
-name|reader
+name|store
 argument_list|,
 name|recordId
 argument_list|)
@@ -373,7 +370,7 @@ argument_list|()
 operator|.
 name|getProperties
 argument_list|(
-name|reader
+name|store
 argument_list|,
 name|recordId
 argument_list|)
@@ -392,7 +389,7 @@ argument_list|()
 operator|.
 name|getChildNodeCount
 argument_list|(
-name|reader
+name|store
 argument_list|,
 name|recordId
 argument_list|)
@@ -419,7 +416,7 @@ argument_list|(
 name|name
 argument_list|)
 argument_list|,
-name|reader
+name|store
 argument_list|,
 name|recordId
 argument_list|)
@@ -448,7 +445,7 @@ argument_list|(
 name|name
 argument_list|)
 argument_list|,
-name|reader
+name|store
 argument_list|,
 name|recordId
 argument_list|)
@@ -470,7 +467,7 @@ argument_list|()
 operator|.
 name|getChildNodeNames
 argument_list|(
-name|reader
+name|store
 argument_list|,
 name|recordId
 argument_list|)
@@ -496,7 +493,7 @@ argument_list|()
 operator|.
 name|getChildNodeEntries
 argument_list|(
-name|reader
+name|store
 argument_list|,
 name|recordId
 argument_list|)
@@ -565,7 +562,7 @@ argument_list|()
 operator|.
 name|compareAgainstBaseState
 argument_list|(
-name|reader
+name|store
 argument_list|,
 name|recordId
 argument_list|,

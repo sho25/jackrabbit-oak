@@ -207,7 +207,7 @@ return|return
 operator|new
 name|SegmentNodeState
 argument_list|(
-name|reader
+name|store
 argument_list|,
 name|journal
 operator|.
@@ -232,8 +232,6 @@ argument_list|(
 name|store
 argument_list|,
 name|journal
-argument_list|,
-name|reader
 argument_list|)
 return|;
 block|}
@@ -256,8 +254,6 @@ operator|new
 name|SegmentWriter
 argument_list|(
 name|store
-argument_list|,
-name|reader
 argument_list|)
 decl_stmt|;
 name|RecordId

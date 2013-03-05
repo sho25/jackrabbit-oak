@@ -477,11 +477,6 @@ name|store
 decl_stmt|;
 specifier|private
 specifier|final
-name|SegmentReader
-name|reader
-decl_stmt|;
-specifier|private
-specifier|final
 name|Map
 argument_list|<
 name|String
@@ -567,9 +562,6 @@ name|SegmentWriter
 parameter_list|(
 name|SegmentStore
 name|store
-parameter_list|,
-name|SegmentReader
-name|reader
 parameter_list|)
 block|{
 name|this
@@ -577,12 +569,6 @@ operator|.
 name|store
 operator|=
 name|store
-expr_stmt|;
-name|this
-operator|.
-name|reader
-operator|=
-name|reader
 expr_stmt|;
 block|}
 specifier|public
@@ -4256,7 +4242,7 @@ return|return
 operator|new
 name|SegmentNodeState
 argument_list|(
-name|reader
+name|store
 argument_list|,
 name|recordId
 argument_list|)
