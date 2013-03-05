@@ -38,6 +38,10 @@ name|RecordId
 name|head
 parameter_list|)
 function_decl|;
+name|void
+name|merge
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 
