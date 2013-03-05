@@ -1205,9 +1205,8 @@ argument_list|()
 expr_stmt|;
 name|rootTree
 operator|=
+operator|new
 name|TreeImpl
-operator|.
-name|createRoot
 argument_list|(
 name|this
 argument_list|)
@@ -1238,9 +1237,8 @@ argument_list|()
 expr_stmt|;
 name|rootTree
 operator|=
+operator|new
 name|TreeImpl
-operator|.
-name|createRoot
 argument_list|(
 name|this
 argument_list|)
