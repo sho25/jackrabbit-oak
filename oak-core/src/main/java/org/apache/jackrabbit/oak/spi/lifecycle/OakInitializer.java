@@ -333,8 +333,6 @@ name|root
 argument_list|,
 name|workspaceName
 argument_list|,
-name|indexHook
-argument_list|,
 name|indexProvider
 argument_list|,
 name|commitHook

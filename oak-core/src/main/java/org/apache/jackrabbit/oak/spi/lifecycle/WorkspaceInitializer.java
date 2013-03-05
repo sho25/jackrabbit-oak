@@ -39,24 +39,6 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|plugins
-operator|.
-name|index
-operator|.
-name|IndexHookProvider
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
 name|spi
 operator|.
 name|commit
@@ -110,7 +92,7 @@ specifier|public
 interface|interface
 name|WorkspaceInitializer
 block|{
-comment|/**      * Initialize the content of a new workspace. This method is called before      * the workspace becomes available.      *      * @param workspaceRoot The workspace root state.      * @param workspaceName The name of the workspace that is being initialized.      * @param indexHook     The index hook provider.      * @param indexProvider The query index provider used within this workspace.      * @param commitHook    The commit hook(s) defined for this workspace.      * @return The modified workspace root state.      */
+comment|/**      * Initialize the content of a new workspace. This method is called before      * the workspace becomes available.      *      * @param workspaceRoot The workspace root state.      * @param workspaceName The name of the workspace that is being initialized.      * @param indexProvider The query index provider used within this workspace.      * @param commitHook    The commit hook(s) defined for this workspace.      * @return The modified workspace root state.      */
 annotation|@
 name|Nonnull
 name|NodeState
@@ -121,9 +103,6 @@ name|workspaceRoot
 parameter_list|,
 name|String
 name|workspaceName
-parameter_list|,
-name|IndexHookProvider
-name|indexHook
 parameter_list|,
 name|QueryIndexProvider
 name|indexProvider
