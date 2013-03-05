@@ -328,6 +328,55 @@ name|MongoMK
 implements|implements
 name|MicroKernel
 block|{
+comment|/**      * The number of documents to cache.      */
+specifier|static
+specifier|final
+name|int
+name|CACHE_DOCUMENTS
+init|=
+name|Integer
+operator|.
+name|getInteger
+argument_list|(
+literal|"oak.mongoMK.cacheDocs"
+argument_list|,
+literal|20
+operator|*
+literal|1024
+argument_list|)
+decl_stmt|;
+comment|/**      * The number of child node list entries to cache.      */
+specifier|private
+specifier|static
+specifier|final
+name|int
+name|CACHE_CHILDREN
+init|=
+name|Integer
+operator|.
+name|getInteger
+argument_list|(
+literal|"oak.mongoMK.cacheChildren"
+argument_list|,
+literal|1024
+argument_list|)
+decl_stmt|;
+comment|/**      * The number of nodes to cache.      */
+specifier|private
+specifier|static
+specifier|final
+name|int
+name|CACHE_NODES
+init|=
+name|Integer
+operator|.
+name|getInteger
+argument_list|(
+literal|"oak.mongoMK.cacheNodes"
+argument_list|,
+literal|1024
+argument_list|)
+decl_stmt|;
 specifier|private
 specifier|static
 specifier|final
@@ -407,7 +456,7 @@ argument_list|,
 name|Node
 argument_list|>
 argument_list|(
-literal|1024
+name|CACHE_NODES
 argument_list|)
 decl_stmt|;
 comment|/**      * Child node cache.      */
@@ -432,7 +481,7 @@ operator|.
 name|Children
 argument_list|>
 argument_list|(
-literal|1024
+name|CACHE_CHILDREN
 argument_list|)
 decl_stmt|;
 comment|/**      * The unsaved write count increments.      */

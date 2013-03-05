@@ -301,9 +301,9 @@ name|Object
 argument_list|>
 argument_list|>
 argument_list|(
-literal|1024
-operator|*
-literal|20
+name|MongoMK
+operator|.
+name|CACHE_DOCUMENTS
 argument_list|)
 decl_stmt|;
 specifier|public
