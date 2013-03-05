@@ -1649,6 +1649,12 @@ parameter_list|()
 throws|throws
 name|RepositoryException
 block|{
+name|getEffectiveNodeType
+argument_list|()
+operator|.
+name|checkOrderableChildNodes
+argument_list|()
+expr_stmt|;
 name|String
 name|oakSrcChildRelPath
 init|=
