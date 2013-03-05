@@ -342,7 +342,7 @@ name|out
 operator|.
 name|format
 argument_list|(
-literal|"%-28.328  %6.0f  %6.0f  %6.0f  %6.0f  %6.0f  %6d%n"
+literal|"%-28.28s  %6.0f  %6.0f  %6.0f  %6.0f  %6.0f  %6d%n"
 argument_list|,
 name|fixture
 operator|.
