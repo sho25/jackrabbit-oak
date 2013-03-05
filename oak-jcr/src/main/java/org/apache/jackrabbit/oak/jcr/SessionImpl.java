@@ -1825,16 +1825,17 @@ name|absPath
 argument_list|)
 throw|;
 block|}
-comment|// TODO implement hasPermission
 return|return
-name|TODO
+name|dlg
 operator|.
-name|unimplemented
+name|getPermissionProvider
 argument_list|()
 operator|.
-name|returnValue
+name|hasPermission
 argument_list|(
-literal|true
+name|absPath
+argument_list|,
+name|actions
 argument_list|)
 return|;
 block|}

@@ -201,6 +201,20 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|collect
+operator|.
+name|Maps
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -313,7 +327,7 @@ name|oak
 operator|.
 name|api
 operator|.
-name|Root
+name|QueryEngine
 import|;
 end_import
 
@@ -329,7 +343,7 @@ name|oak
 operator|.
 name|api
 operator|.
-name|QueryEngine
+name|Root
 import|;
 end_import
 
@@ -545,6 +559,24 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
+name|plugins
+operator|.
+name|value
+operator|.
+name|ValueFactoryImpl
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
 name|spi
 operator|.
 name|security
@@ -563,11 +595,13 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|plugins
+name|spi
 operator|.
-name|value
+name|security
 operator|.
-name|ValueFactoryImpl
+name|authorization
+operator|.
+name|PermissionProvider
 import|;
 end_import
 
@@ -588,20 +622,6 @@ operator|.
 name|slf4j
 operator|.
 name|LoggerFactory
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|collect
-operator|.
-name|Maps
 import|;
 end_import
 
@@ -1980,7 +2000,7 @@ argument_list|)
 return|;
 block|}
 annotation|@
-name|CheckForNull
+name|Nonnull
 name|AccessControlManager
 name|getAccessControlManager
 parameter_list|()
@@ -2012,6 +2032,33 @@ expr_stmt|;
 block|}
 return|return
 name|accessControlManager
+return|;
+block|}
+annotation|@
+name|Nonnull
+name|PermissionProvider
+name|getPermissionProvider
+parameter_list|()
+throws|throws
+name|RepositoryException
+block|{
+comment|// TODO
+return|return
+name|securityProvider
+operator|.
+name|getAccessControlConfiguration
+argument_list|()
+operator|.
+name|getPermissionProvider
+argument_list|(
+name|root
+argument_list|,
+name|getAuthInfo
+argument_list|()
+operator|.
+name|getPrincipals
+argument_list|()
+argument_list|)
 return|;
 block|}
 annotation|@
