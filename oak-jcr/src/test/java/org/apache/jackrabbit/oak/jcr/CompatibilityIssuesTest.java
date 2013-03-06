@@ -59,6 +59,18 @@ end_import
 
 begin_import
 import|import
+name|javax
+operator|.
+name|jcr
+operator|.
+name|nodetype
+operator|.
+name|ConstraintViolationException
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -194,7 +206,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This class contains test cases which demonstrate changes in behaviour wrt. to Jackrabbit 2.  * See OAK-14: Identify and document changes in behaviour wrt. Jackrabbit 2  */
+comment|/**  * This class contains test cases which demonstrate changes in behaviour wrt. to Jackrabbit 2.  *   * @see<a href="https://issues.apache.org/jira/browse/OAK-14">OAK-14: Identify and document changes in behaviour wrt. Jackrabbit 2</a>  */
 end_comment
 
 begin_class
@@ -696,6 +708,68 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// fails on JR2, passes on Oak
+block|}
+comment|/**      * Type checks are deferred to the Session#save call instead of the      * Node#addNode method like in Jackrabbit2.      *<p>Stacktrace in JR2:</p>      *<pre>      * {@code      * javax.jcr.nodetype.ConstraintViolationException: No child node definition for fail found in node /f1362578560413      *     at org.apache.jackrabbit.core.NodeImpl.addNode(NodeImpl.java:1276)      *     at org.apache.jackrabbit.core.session.AddNodeOperation.perform(AddNodeOperation.java:111)      *     at org.apache.jackrabbit.core.session.AddNodeOperation.perform(AddNodeOperation.java:1)      *     at org.apache.jackrabbit.core.session.SessionState.perform(SessionState.java:216)      *     at org.apache.jackrabbit.core.ItemImpl.perform(ItemImpl.java:91)      *     at org.apache.jackrabbit.core.NodeImpl.addNodeWithUuid(NodeImpl.java:1814)      *     at org.apache.jackrabbit.core.NodeImpl.addNode(NodeImpl.java:1774)      * }      *<pre>      *<p>Stacktrace in Oak:</p>      *<pre>      * {@code      *javax.jcr.nodetype.ConstraintViolationException      *    at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)      *    at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:39)      *    at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:27)      *    at java.lang.reflect.Constructor.newInstance(Constructor.java:513)      *    at org.apache.jackrabbit.oak.api.CommitFailedException.throwRepositoryException(CommitFailedException.java:57)      *    at org.apache.jackrabbit.oak.jcr.SessionDelegate.save(SessionDelegate.java:258)      *    at org.apache.jackrabbit.oak.jcr.SessionImpl.save(SessionImpl.java:277)      *    ...      *Caused by: org.apache.jackrabbit.oak.api.CommitFailedException: Cannot add node 'f1362578685631' at /      *    at org.apache.jackrabbit.oak.plugins.nodetype.TypeValidator.childNodeAdded(TypeValidator.java:128)      *    at org.apache.jackrabbit.oak.spi.commit.CompositeValidator.childNodeAdded(CompositeValidator.java:68)      *    at org.apache.jackrabbit.oak.spi.commit.ValidatingHook$ValidatorDiff.childNodeAdded(ValidatingHook.java:159)      *    at org.apache.jackrabbit.oak.core.RootImpl.commit(RootImpl.java:250)      *    at org.apache.jackrabbit.oak.jcr.SessionDelegate.save(SessionDelegate.java:255)      *    ...      *Caused by: javax.jcr.nodetype.ConstraintViolationException: Node 'jcr:content' in 'nt:file' is mandatory      *    at org.apache.jackrabbit.oak.plugins.nodetype.EffectiveNodeTypeImpl.checkMandatoryItems(EffectiveNodeTypeImpl.java:288)      *    at org.apache.jackrabbit.oak.plugins.nodetype.TypeValidator.childNodeAdded(TypeValidator.java:125)      *    ...      * }      *<pre>      */
+annotation|@
+name|Test
+argument_list|(
+name|expected
+operator|=
+name|ConstraintViolationException
+operator|.
+name|class
+argument_list|)
+specifier|public
+name|void
+name|typeChecksOnSave
+parameter_list|()
+throws|throws
+name|RepositoryException
+block|{
+name|Session
+name|session
+init|=
+name|getAdminSession
+argument_list|()
+decl_stmt|;
+name|Node
+name|f
+init|=
+name|session
+operator|.
+name|getNode
+argument_list|(
+literal|"/"
+argument_list|)
+operator|.
+name|addNode
+argument_list|(
+literal|"f"
+operator|+
+name|System
+operator|.
+name|currentTimeMillis
+argument_list|()
+argument_list|,
+literal|"nt:file"
+argument_list|)
+decl_stmt|;
+name|f
+operator|.
+name|addNode
+argument_list|(
+literal|"fail"
+argument_list|,
+literal|"nt:unstructured"
+argument_list|)
+expr_stmt|;
+comment|// this is where JR2 throws ConstraintViolationException
+name|session
+operator|.
+name|save
+argument_list|()
+expr_stmt|;
+comment|// // this is where OAK throws ConstraintViolationException
 block|}
 block|}
 end_class
