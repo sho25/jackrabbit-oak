@@ -196,6 +196,12 @@ name|RecordId
 name|recordId
 decl_stmt|;
 specifier|private
+name|RecordId
+name|templateId
+init|=
+literal|null
+decl_stmt|;
+specifier|private
 name|Template
 name|template
 init|=
@@ -237,7 +243,18 @@ return|return
 name|recordId
 return|;
 block|}
-specifier|private
+name|RecordId
+name|getTemplateId
+parameter_list|()
+block|{
+name|getTemplate
+argument_list|()
+expr_stmt|;
+comment|// force loading of the template
+return|return
+name|templateId
+return|;
+block|}
 specifier|synchronized
 name|Template
 name|getTemplate
@@ -263,9 +280,8 @@ name|getSegmentId
 argument_list|()
 argument_list|)
 decl_stmt|;
-name|RecordId
 name|templateId
-init|=
+operator|=
 name|segment
 operator|.
 name|readRecordId
@@ -275,7 +291,7 @@ operator|.
 name|getOffset
 argument_list|()
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 name|template
 operator|=
 name|segment

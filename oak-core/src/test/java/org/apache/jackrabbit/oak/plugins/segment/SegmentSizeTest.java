@@ -1176,7 +1176,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|260
+literal|256
 argument_list|,
 name|segment
 operator|.
