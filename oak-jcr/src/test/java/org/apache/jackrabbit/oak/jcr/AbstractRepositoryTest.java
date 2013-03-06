@@ -47,16 +47,6 @@ name|javax
 operator|.
 name|jcr
 operator|.
-name|GuestCredentials
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|jcr
-operator|.
 name|Repository
 import|;
 end_import
@@ -266,16 +256,11 @@ parameter_list|()
 throws|throws
 name|RepositoryException
 block|{
+comment|// FIXME: provider proper permission setup for the anonymous session (e.g. full read access)
+comment|// return getRepository().login(new GuestCredentials());
 return|return
-name|getRepository
+name|createAdminSession
 argument_list|()
-operator|.
-name|login
-argument_list|(
-operator|new
-name|GuestCredentials
-argument_list|()
-argument_list|)
 return|;
 block|}
 specifier|protected
