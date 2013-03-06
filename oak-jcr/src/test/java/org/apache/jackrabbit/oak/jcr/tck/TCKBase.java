@@ -53,7 +53,7 @@ name|oak
 operator|.
 name|jcr
 operator|.
-name|OakMongoMKRepositoryStub
+name|OakRepositoryStub
 import|;
 end_import
 
@@ -69,7 +69,7 @@ name|oak
 operator|.
 name|jcr
 operator|.
-name|OakRepositoryStub
+name|OakSegmentMKRepositoryStub
 import|;
 end_import
 
@@ -190,15 +190,11 @@ expr_stmt|;
 name|addTests
 argument_list|()
 expr_stmt|;
-comment|// OAK-588: CI builds take too long with MongoMK
-comment|// -> disabled for now
 if|if
 condition|(
-literal|false
-operator|&&
-name|OakMongoMKRepositoryStub
+name|OakSegmentMKRepositoryStub
 operator|.
-name|isMongoDBAvailable
+name|isAvailable
 argument_list|()
 condition|)
 block|{
@@ -207,7 +203,7 @@ argument_list|(
 operator|new
 name|Setup
 argument_list|(
-name|OakMongoMKRepositoryStub
+name|OakSegmentMKRepositoryStub
 operator|.
 name|class
 operator|.
@@ -220,6 +216,12 @@ name|addTests
 argument_list|()
 expr_stmt|;
 block|}
+comment|// OAK-588: CI builds take too long with MongoMK
+comment|// -> disabled for now
+comment|//        if (OakMongoMKRepositoryStub.isMongoDBAvailable()) {
+comment|//            addTest(new Setup(OakMongoMKRepositoryStub.class.getName()));
+comment|//            addTests();
+comment|//        }
 block|}
 specifier|abstract
 specifier|protected
