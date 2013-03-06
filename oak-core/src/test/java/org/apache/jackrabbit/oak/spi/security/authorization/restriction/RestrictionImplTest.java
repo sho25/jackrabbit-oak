@@ -13,6 +13,8 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
+name|spi
+operator|.
 name|security
 operator|.
 name|authorization
@@ -220,28 +222,6 @@ operator|.
 name|authorization
 operator|.
 name|AbstractAccessControlTest
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|spi
-operator|.
-name|security
-operator|.
-name|authorization
-operator|.
-name|restriction
-operator|.
-name|Restriction
 import|;
 end_import
 
