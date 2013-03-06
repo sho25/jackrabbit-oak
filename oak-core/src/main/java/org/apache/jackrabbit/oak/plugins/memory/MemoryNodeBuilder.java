@@ -588,25 +588,52 @@ literal|null
 return|;
 block|}
 block|}
-comment|/**      * Determine whether this child exists at its direct parent.      * @return  {@code true} iff this child exists at its direct parent.      */
+comment|/**      * Determine whether this child exists at its direct parent.      * @return {@code true} iff this child exists at its direct parent.      */
 specifier|private
 name|boolean
 name|exists
 parameter_list|()
 block|{
-comment|// No need to check the base state if write state is null. The fact that we have this
-comment|// builder instance proofs that this child existed at some point as it must have been
-comment|// retrieved from the base state.
-return|return
+if|if
+condition|(
 name|isRoot
 argument_list|()
-operator|||
+condition|)
+block|{
+return|return
+literal|true
+return|;
+block|}
+elseif|else
+if|if
+condition|(
 name|parent
 operator|.
 name|writeState
 operator|==
 literal|null
-operator|||
+condition|)
+block|{
+return|return
+name|parent
+operator|.
+name|baseState
+operator|!=
+literal|null
+operator|&&
+name|parent
+operator|.
+name|baseState
+operator|.
+name|hasChildNode
+argument_list|(
+name|name
+argument_list|)
+return|;
+block|}
+else|else
+block|{
+return|return
 name|parent
 operator|.
 name|writeState
@@ -616,6 +643,7 @@ argument_list|(
 name|name
 argument_list|)
 return|;
+block|}
 block|}
 comment|/**      * Update the state of this builder for reading.      * @return  {@code true} is this reader is connected, {@code false} otherwise.      */
 specifier|private
@@ -642,20 +670,15 @@ assert|;
 comment|// root never gets here since revision == root.revision
 if|if
 condition|(
-operator|!
-name|exists
-argument_list|()
-condition|)
-block|{
-return|return
-literal|false
-return|;
-block|}
 name|parent
 operator|.
 name|updateReadState
 argument_list|()
-expr_stmt|;
+operator|&&
+name|exists
+argument_list|()
+condition|)
+block|{
 comment|// The builder could have been reset, need to re-get base state
 name|baseState
 operator|=
@@ -682,6 +705,13 @@ name|root
 operator|.
 name|revision
 expr_stmt|;
+return|return
+literal|true
+return|;
+block|}
+return|return
+literal|false
+return|;
 block|}
 return|return
 name|writeState
@@ -763,6 +793,15 @@ name|isRoot
 argument_list|()
 condition|)
 block|{
+name|parent
+operator|.
+name|write
+argument_list|(
+name|newRevision
+argument_list|,
+name|reconnect
+argument_list|)
+expr_stmt|;
 name|checkState
 argument_list|(
 name|reconnect
@@ -771,15 +810,6 @@ name|exists
 argument_list|()
 argument_list|,
 literal|"This node has been removed"
-argument_list|)
-expr_stmt|;
-name|parent
-operator|.
-name|write
-argument_list|(
-name|newRevision
-argument_list|,
-name|reconnect
 argument_list|)
 expr_stmt|;
 block|}
