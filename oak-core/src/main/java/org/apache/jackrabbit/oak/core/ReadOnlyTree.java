@@ -223,6 +223,8 @@ decl_stmt|;
 specifier|public
 name|ReadOnlyTree
 parameter_list|(
+annotation|@
+name|Nonnull
 name|NodeState
 name|rootState
 parameter_list|)

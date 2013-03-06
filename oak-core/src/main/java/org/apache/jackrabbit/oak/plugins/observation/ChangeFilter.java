@@ -344,6 +344,8 @@ parameter_list|,
 name|String
 name|path
 parameter_list|,
+annotation|@
+name|Nullable
 name|NodeState
 name|associatedParentNode
 parameter_list|)
@@ -359,6 +361,11 @@ argument_list|(
 name|path
 argument_list|)
 operator|&&
+operator|(
+name|associatedParentNode
+operator|==
+literal|null
+operator|||
 name|includeByType
 argument_list|(
 operator|new
@@ -367,6 +374,7 @@ argument_list|(
 name|associatedParentNode
 argument_list|)
 argument_list|)
+operator|)
 return|;
 block|}
 specifier|public
