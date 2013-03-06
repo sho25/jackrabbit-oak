@@ -588,14 +588,15 @@ literal|null
 return|;
 block|}
 block|}
-comment|/**      * Determine whether this child exists with its direct parent or existed with its direct      * parent and got disconnected.      * @return  {@code true} iff this child either exists or got disconnected from its direct parent.      */
+comment|/**      * Determine whether this child exists at its direct parent.      * @return  {@code true} iff this child exists at its direct parent.      */
 specifier|private
 name|boolean
-name|existsOrDisconnected
+name|exists
 parameter_list|()
 block|{
-comment|// No need to check the base state. The fact that we have this
-comment|// builder instance proofs that this child existed at some point.
+comment|// No need to check the base state if write state is null. The fact that we have this
+comment|// builder instance proofs that this child existed at some point as it must have been
+comment|// retrieved from the base state.
 return|return
 name|isRoot
 argument_list|()
@@ -642,7 +643,7 @@ comment|// root never gets here since revision == root.revision
 if|if
 condition|(
 operator|!
-name|existsOrDisconnected
+name|exists
 argument_list|()
 condition|)
 block|{
@@ -751,7 +752,7 @@ name|long
 name|newRevision
 parameter_list|,
 name|boolean
-name|skipRemovedCheck
+name|reconnect
 parameter_list|)
 block|{
 comment|// make sure that all revision numbers up to the root gets updated
@@ -764,9 +765,9 @@ condition|)
 block|{
 name|checkState
 argument_list|(
-name|skipRemovedCheck
+name|reconnect
 operator|||
-name|existsOrDisconnected
+name|exists
 argument_list|()
 argument_list|,
 literal|"This node has been removed"
@@ -778,7 +779,7 @@ name|write
 argument_list|(
 name|newRevision
 argument_list|,
-name|skipRemovedCheck
+name|reconnect
 argument_list|)
 expr_stmt|;
 block|}
@@ -831,7 +832,7 @@ condition|)
 block|{
 if|if
 condition|(
-name|existsOrDisconnected
+name|exists
 argument_list|()
 condition|)
 block|{
