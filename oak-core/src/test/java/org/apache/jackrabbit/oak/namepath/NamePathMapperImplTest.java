@@ -81,9 +81,7 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|plugins
-operator|.
-name|identifier
+name|core
 operator|.
 name|IdentifierManager
 import|;
