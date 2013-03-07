@@ -103,7 +103,7 @@ name|oak
 operator|.
 name|api
 operator|.
-name|Tree
+name|TreeLocation
 import|;
 end_import
 
@@ -644,8 +644,8 @@ name|Nonnull
 annotation|@
 name|Override
 specifier|protected
-name|Tree
-name|getVersionStorageTree
+name|TreeLocation
+name|getVersionStorageLocation
 parameter_list|()
 block|{
 return|return
@@ -657,6 +657,9 @@ operator|.
 name|getNodeState
 argument_list|()
 argument_list|)
+operator|.
+name|getLocation
+argument_list|()
 return|;
 block|}
 annotation|@

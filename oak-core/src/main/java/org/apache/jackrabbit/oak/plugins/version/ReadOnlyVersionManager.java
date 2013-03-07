@@ -238,8 +238,8 @@ annotation|@
 name|Nonnull
 specifier|protected
 specifier|abstract
-name|Tree
-name|getVersionStorageTree
+name|TreeLocation
+name|getVersionStorageLocation
 parameter_list|()
 function_decl|;
 comment|/**      * @return the {@code Root} of the workspace.      */
@@ -353,10 +353,7 @@ name|STRING
 argument_list|)
 decl_stmt|;
 return|return
-name|getVersionStorageTree
-argument_list|()
-operator|.
-name|getLocation
+name|getVersionStorageLocation
 argument_list|()
 operator|.
 name|getChild
@@ -371,7 +368,7 @@ name|getTree
 argument_list|()
 return|;
 block|}
-comment|/**      * Returns the path of the version history for the given {@code uuid}.      * The returned path is relative to the version storage tree as returned      * by {@link #getVersionStorageTree()}.      *      * @param uuid the uuid of the versionable node      * @return the relative path of the version history for the given uuid.      */
+comment|/**      * Returns the path of the version history for the given {@code uuid}.      * The returned path is relative to the version storage tree as returned      * by {@link #getVersionStorageLocation()}.      *      * @param uuid the uuid of the versionable node      * @return the relative path of the version history for the given uuid.      */
 annotation|@
 name|Nonnull
 specifier|public

@@ -226,7 +226,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *<code>ReadWriteVersionManager</code>...  */
+comment|/**  * {@code ReadWriteVersionManager}...  */
 end_comment
 
 begin_class
@@ -294,15 +294,12 @@ name|Override
 annotation|@
 name|Nonnull
 specifier|protected
-name|Tree
-name|getVersionStorageTree
+name|TreeLocation
+name|getVersionStorageLocation
 parameter_list|()
 block|{
 return|return
 name|versionStorageLocation
-operator|.
-name|getTree
-argument_list|()
 return|;
 block|}
 annotation|@
