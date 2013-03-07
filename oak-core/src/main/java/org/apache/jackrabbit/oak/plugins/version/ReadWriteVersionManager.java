@@ -705,7 +705,7 @@ name|DEFAULT
 argument_list|)
 return|;
 block|}
-comment|/**      * Gets or creates the version history for the given      *<code>versionable</code> node.      *      * @param versionable the versionable node.      * @return the version history node.      * @throws IllegalArgumentException if the given node does not have a      *<code>jcr:uuid</code> property.      */
+comment|/**      * Gets or creates the version history for the given      * {@code versionable} node.      *      * @param versionable the versionable node.      * @return the version history node.      * @throws IllegalArgumentException if the given node does not have a      *                                  {@code jcr:uuid} property.      */
 annotation|@
 name|Nonnull
 name|NodeBuilder
