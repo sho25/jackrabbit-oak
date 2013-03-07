@@ -889,7 +889,9 @@ throw|throw
 operator|new
 name|CommitFailedException
 argument_list|(
-literal|"Uniqueness constraint violated"
+literal|"Uniqueness constraint violated for key "
+operator|+
+name|key
 argument_list|)
 throw|;
 block|}

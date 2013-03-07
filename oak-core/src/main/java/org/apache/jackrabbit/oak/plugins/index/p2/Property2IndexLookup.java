@@ -338,7 +338,7 @@ operator|=
 name|root
 expr_stmt|;
 block|}
-comment|/**      * Checks whether the named property is indexed somewhere along the given      * path. Lookup starts at the current path (at the root of this object) and      * traverses down the path.      *       * @param propertyName property name      * @param path lookup path      * @return true if the property is indexed      */
+comment|/**      * Checks whether the named property is indexed somewhere along the given      * path. Lookup starts at the current path (at the root of this object) and      * traverses down the path.      *       * @param propertyName property name      * @param path lookup path      * @param filter for the node type restriction (null if no node type restriction)      * @return true if the property is indexed      */
 specifier|public
 name|boolean
 name|isIndexed
@@ -591,7 +591,7 @@ name|MAX_COST
 argument_list|)
 return|;
 block|}
-comment|/**      * Get the node with the index data for the given property, if there is an      * applicable index with data.      *       * @param propertyName the property name      * @param filter for the node type restriction      * @return the node where the index data is stored, or null if no index      *         definition or index data node was found      */
+comment|/**      * Get the node with the index data for the given property, if there is an      * applicable index with data.      *       * @param propertyName the property name      * @param filter for the node type restriction (null if no node type restriction)      * @return the node where the index data is stored, or null if no index      *         definition or index data node was found      */
 annotation|@
 name|Nullable
 specifier|private
