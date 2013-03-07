@@ -496,6 +496,15 @@ argument_list|()
 return|;
 block|}
 specifier|public
+name|long
+name|getTimestamp
+parameter_list|()
+block|{
+return|return
+name|timestamp
+return|;
+block|}
+specifier|public
 name|int
 name|hashCode
 parameter_list|()
