@@ -406,6 +406,8 @@ operator|.
 name|propertyName
 argument_list|,
 literal|"/"
+argument_list|,
+name|filter
 argument_list|)
 condition|)
 block|{
@@ -443,6 +445,8 @@ name|lookup
 operator|.
 name|getCost
 argument_list|(
+name|filter
+argument_list|,
 name|pr
 operator|.
 name|propertyName
@@ -475,6 +479,8 @@ name|lookup
 operator|.
 name|getCost
 argument_list|(
+name|filter
+argument_list|,
 name|pr
 operator|.
 name|propertyName
@@ -546,6 +552,8 @@ operator|.
 name|propertyName
 argument_list|,
 literal|"/"
+argument_list|,
+name|filter
 argument_list|)
 condition|)
 block|{
@@ -715,6 +723,8 @@ operator|.
 name|propertyName
 argument_list|,
 literal|"/"
+argument_list|,
+name|filter
 argument_list|)
 condition|)
 block|{

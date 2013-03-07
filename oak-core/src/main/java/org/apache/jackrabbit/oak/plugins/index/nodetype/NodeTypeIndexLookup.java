@@ -193,6 +193,8 @@ argument_list|(
 name|JCR_PRIMARYTYPE
 argument_list|,
 name|path
+argument_list|,
+literal|null
 argument_list|)
 operator|&&
 name|lookup
@@ -202,6 +204,8 @@ argument_list|(
 name|JCR_MIXINTYPES
 argument_list|,
 name|path
+argument_list|,
+literal|null
 argument_list|)
 condition|)
 block|{
@@ -321,6 +325,8 @@ name|lookup
 operator|.
 name|getCost
 argument_list|(
+literal|null
+argument_list|,
 name|JCR_PRIMARYTYPE
 argument_list|,
 name|ntNames
@@ -330,6 +336,8 @@ name|lookup
 operator|.
 name|getCost
 argument_list|(
+literal|null
+argument_list|,
 name|JCR_MIXINTYPES
 argument_list|,
 name|ntNames
