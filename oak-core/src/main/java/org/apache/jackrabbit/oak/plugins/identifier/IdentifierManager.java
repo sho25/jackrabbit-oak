@@ -667,6 +667,7 @@ return|;
 block|}
 else|else
 block|{
+comment|// FIXME parent might not be accessible
 return|return
 name|PathUtils
 operator|.
