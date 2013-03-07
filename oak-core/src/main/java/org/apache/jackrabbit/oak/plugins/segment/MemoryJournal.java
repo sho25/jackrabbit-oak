@@ -71,24 +71,6 @@ name|NodeState
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|spi
-operator|.
-name|state
-operator|.
-name|RebaseDiff
-import|;
-end_import
-
 begin_class
 specifier|final
 class|class
@@ -377,7 +359,7 @@ argument_list|(
 name|before
 argument_list|,
 operator|new
-name|RebaseDiff
+name|MergeDiff
 argument_list|(
 name|builder
 argument_list|)
