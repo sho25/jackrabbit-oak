@@ -126,9 +126,6 @@ decl_stmt|;
 specifier|private
 name|RecordId
 name|head
-init|=
-name|getHead
-argument_list|()
 decl_stmt|;
 name|MongoJournal
 parameter_list|(
@@ -150,6 +147,11 @@ operator|.
 name|name
 operator|=
 name|name
+expr_stmt|;
+name|head
+operator|=
+name|getHead
+argument_list|()
 expr_stmt|;
 block|}
 annotation|@
