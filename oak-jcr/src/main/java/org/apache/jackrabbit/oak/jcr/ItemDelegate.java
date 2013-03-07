@@ -247,7 +247,7 @@ parameter_list|()
 block|{
 return|return
 operator|!
-name|getLocationInternal
+name|loadLocation
 argument_list|()
 operator|.
 name|exists
@@ -316,7 +316,7 @@ block|{
 name|TreeLocation
 name|location
 init|=
-name|getLocationInternal
+name|loadLocation
 argument_list|()
 decl_stmt|;
 if|if
@@ -366,13 +366,13 @@ literal|']'
 return|;
 block|}
 comment|//------------------------------------------------------------< private>---
-comment|/**      * The underlying {@link org.apache.jackrabbit.oak.api.TreeLocation} of this item.      * The location is only re-resolved when the revision of this item does not match      * the revision of the session or when the location does not exist (anymore).      * @return  tree location of the underlying item.      */
+comment|/**      * The underlying {@link org.apache.jackrabbit.oak.api.TreeLocation} of this item.      * The location is only loaded when the revision of this item does not match      * the revision of the session or when the location does not exist (anymore).      * @return tree location of the underlying item.      */
 annotation|@
 name|Nonnull
 specifier|private
 specifier|synchronized
 name|TreeLocation
-name|getLocationInternal
+name|loadLocation
 parameter_list|()
 block|{
 if|if
