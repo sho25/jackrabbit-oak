@@ -1882,7 +1882,7 @@ literal|"{} is not of type {}"
 argument_list|,
 name|childInfo
 operator|.
-name|getString
+name|getName
 argument_list|()
 argument_list|,
 name|NT_REP_MEMBERS

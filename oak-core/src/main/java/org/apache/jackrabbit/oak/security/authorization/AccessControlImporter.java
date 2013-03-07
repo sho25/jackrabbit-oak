@@ -1334,7 +1334,6 @@ range|:
 name|txtValues
 control|)
 block|{
-comment|// FIXME: proper namespace handling (in case of local remapping)
 name|Value
 name|privilegeName
 init|=
@@ -1345,8 +1344,6 @@ argument_list|(
 name|PropertyType
 operator|.
 name|NAME
-argument_list|,
-name|namePathMapper
 argument_list|)
 decl_stmt|;
 name|privileges
@@ -1376,7 +1373,6 @@ parameter_list|)
 throws|throws
 name|RepositoryException
 block|{
-comment|// FIXME: proper namespace handling (in case of local remapping)
 name|String
 name|restrictionName
 init|=
@@ -1395,7 +1391,6 @@ argument_list|(
 name|restrictionName
 argument_list|)
 decl_stmt|;
-comment|// FIXME: proper namespace handling (in case of local remapping)
 name|restrictions
 operator|.
 name|put
@@ -1410,8 +1405,6 @@ operator|.
 name|getValue
 argument_list|(
 name|targetType
-argument_list|,
-name|namePathMapper
 argument_list|)
 argument_list|)
 expr_stmt|;

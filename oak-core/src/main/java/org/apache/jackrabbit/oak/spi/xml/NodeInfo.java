@@ -99,7 +99,7 @@ block|}
 comment|/**      * Returns the name of the node being imported.      *      * @return node name      */
 specifier|public
 name|String
-name|getString
+name|getName
 parameter_list|()
 block|{
 return|return

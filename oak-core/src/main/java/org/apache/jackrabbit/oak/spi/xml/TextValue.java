@@ -49,22 +49,6 @@ name|ValueFormatException
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|namepath
-operator|.
-name|NamePathMapper
-import|;
-end_import
-
 begin_comment
 comment|/**  * {@code TextValue} represents a serialized property value read  * from a System or Document View XML document.  */
 end_comment
@@ -78,15 +62,11 @@ name|String
 name|getString
 parameter_list|()
 function_decl|;
-comment|// TODO: review again
 name|Value
 name|getValue
 parameter_list|(
 name|int
 name|targetType
-parameter_list|,
-name|NamePathMapper
-name|namePathMapper
 parameter_list|)
 throws|throws
 name|ValueFormatException
