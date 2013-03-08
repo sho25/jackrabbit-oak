@@ -66,7 +66,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Extension point for content change editors. Used by the {@link EditorHook}  * class to allow multiple components to process content changes during just  * a single content diff.  */
+comment|/**  * Extension point for content change editors. Used by the {@link EditorHook}  * class to allow multiple components to process content changes during just  * a single content diff.  *  * @since Oak 0.7  */
 end_comment
 
 begin_interface

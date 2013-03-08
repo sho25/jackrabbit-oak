@@ -65,48 +65,34 @@ name|spi
 operator|.
 name|state
 operator|.
-name|NodeBuilder
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|spi
-operator|.
-name|state
-operator|.
 name|NodeState
 import|;
 end_import
 
-begin_import
-import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|CheckForNull
-import|;
-end_import
-
 begin_comment
-comment|/**  * Content change editor. An editor receives information about changes  * to the content tree and can reject the changes by throwing a  * {@link CommitFailedException} or adjust them using the {@link NodeBuilder}  * instance passed to the {@link EditorProvider} that returned this editor.  * Note that the given builder can contain updates from multiple different  * editors, so its state might not match exactly the state of the given  * after state.  *  * @since Oak 0.7  */
+comment|/**  * Editor that does nothing by default and doesn't recurse into subtrees.  * Useful as a sentinel or as a base class for more complex editors.  *  * @since Oak 0.7  */
 end_comment
 
-begin_interface
+begin_class
 specifier|public
-interface|interface
+class|class
+name|DefaultEditor
+implements|implements
 name|Editor
 block|{
-comment|/**      * Processes an added property.      *      * @param after the added property      * @throws CommitFailedException if processing failed      */
+specifier|public
+specifier|static
+specifier|final
+name|Editor
+name|INSTANCE
+init|=
+operator|new
+name|DefaultEditor
+argument_list|()
+decl_stmt|;
+annotation|@
+name|Override
+specifier|public
 name|void
 name|propertyAdded
 parameter_list|(
@@ -115,8 +101,12 @@ name|after
 parameter_list|)
 throws|throws
 name|CommitFailedException
-function_decl|;
-comment|/**      * Processes a changed property.      *      * @param before the original property      * @param after  the changed property      * @throws CommitFailedException if processing failed      */
+block|{
+comment|// do nothing
+block|}
+annotation|@
+name|Override
+specifier|public
 name|void
 name|propertyChanged
 parameter_list|(
@@ -128,8 +118,12 @@ name|after
 parameter_list|)
 throws|throws
 name|CommitFailedException
-function_decl|;
-comment|/**      * Processes a removed property.      *      * @param before the removed property      * @throws CommitFailedException if processing failed      */
+block|{
+comment|// do nothing
+block|}
+annotation|@
+name|Override
+specifier|public
 name|void
 name|propertyDeleted
 parameter_list|(
@@ -138,10 +132,12 @@ name|before
 parameter_list|)
 throws|throws
 name|CommitFailedException
-function_decl|;
-comment|/**      * Processes an added child node.      *      * @param name name of the added node      * @param after the added child node      * @return an editor for processing the subtree below the added node,      *         or {@code null} if the subtree does not need processing      * @throws CommitFailedException if processing failed      */
+block|{
+comment|// do nothing
+block|}
 annotation|@
-name|CheckForNull
+name|Override
+specifier|public
 name|Editor
 name|childNodeAdded
 parameter_list|(
@@ -153,10 +149,14 @@ name|after
 parameter_list|)
 throws|throws
 name|CommitFailedException
-function_decl|;
-comment|/**      * Processes a changed child node.      *      * @param name name of the changed node      * @param before child node before the change      * @param after child node after the change      * @return an editor for processing the subtree below the added node,      *         or {@code null} if the subtree does not need processing      * @throws CommitFailedException if processing failed      */
+block|{
+return|return
+literal|null
+return|;
+block|}
 annotation|@
-name|CheckForNull
+name|Override
+specifier|public
 name|Editor
 name|childNodeChanged
 parameter_list|(
@@ -171,10 +171,14 @@ name|after
 parameter_list|)
 throws|throws
 name|CommitFailedException
-function_decl|;
-comment|/**      * Processes a deleted child node.      *      * @param name name of the deleted node      * @param before the deleted child node      * @return an editor for processing the subtree below the removed node,      *         or {@code null} if the subtree does not need processing      * @throws CommitFailedException if processing failed      */
+block|{
+return|return
+literal|null
+return|;
+block|}
 annotation|@
-name|CheckForNull
+name|Override
+specifier|public
 name|Editor
 name|childNodeDeleted
 parameter_list|(
@@ -186,9 +190,13 @@ name|before
 parameter_list|)
 throws|throws
 name|CommitFailedException
-function_decl|;
+block|{
+return|return
+literal|null
+return|;
 block|}
-end_interface
+block|}
+end_class
 
 end_unit
 
