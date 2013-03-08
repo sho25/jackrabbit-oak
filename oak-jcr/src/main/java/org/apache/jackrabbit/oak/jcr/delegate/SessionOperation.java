@@ -33,14 +33,24 @@ begin_comment
 comment|/**  * A {@code SessionOperation} provides an execution context for executing session scoped operations.  */
 end_comment
 
-begin_interface
+begin_class
 specifier|public
-interface|interface
+specifier|abstract
+class|class
 name|SessionOperation
 parameter_list|<
 name|T
 parameter_list|>
 block|{
+specifier|protected
+name|void
+name|checkPreconditions
+parameter_list|()
+throws|throws
+name|RepositoryException
+block|{}
+specifier|protected
+specifier|abstract
 name|T
 name|perform
 parameter_list|()
@@ -48,7 +58,7 @@ throws|throws
 name|RepositoryException
 function_decl|;
 block|}
-end_interface
+end_class
 
 end_unit
 
