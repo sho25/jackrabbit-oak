@@ -23,155 +23,11 @@ end_package
 
 begin_import
 import|import
-name|java
-operator|.
-name|security
-operator|.
-name|Principal
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|jcr
-operator|.
-name|Credentials
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|jcr
-operator|.
-name|LoginException
-import|;
-end_import
-
-begin_import
-import|import
 name|javax
 operator|.
 name|jcr
 operator|.
 name|RepositoryException
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|jcr
-operator|.
-name|Session
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|jcr
-operator|.
-name|SimpleCredentials
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|jcr
-operator|.
-name|UnsupportedRepositoryOperationException
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|api
-operator|.
-name|JackrabbitSession
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|api
-operator|.
-name|security
-operator|.
-name|user
-operator|.
-name|Authorizable
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|api
-operator|.
-name|security
-operator|.
-name|user
-operator|.
-name|User
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|spi
-operator|.
-name|security
-operator|.
-name|user
-operator|.
-name|UserConstants
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|test
-operator|.
-name|NotExecutableException
 import|;
 end_import
 
@@ -205,1240 +61,246 @@ parameter_list|()
 throws|throws
 name|RepositoryException
 block|{
-name|Authorizable
-name|authorizable
-init|=
-name|userMgr
-operator|.
-name|getAuthorizable
-argument_list|(
-name|user
-operator|.
-name|getID
-argument_list|()
-argument_list|)
-decl_stmt|;
-name|assertTrue
-argument_list|(
-name|authorizable
-operator|instanceof
-name|User
-argument_list|)
-expr_stmt|;
+comment|//        Authorizable authorizable = userMgr.getAuthorizable(user.getID());
+comment|//        assertTrue(authorizable instanceof User);
 block|}
-annotation|@
-name|Test
-specifier|public
-name|void
-name|testIsGroup
-parameter_list|()
-throws|throws
-name|RepositoryException
-block|{
-name|assertFalse
-argument_list|(
-name|user
-operator|.
-name|isGroup
-argument_list|()
-argument_list|)
-expr_stmt|;
-block|}
-annotation|@
-name|Test
-specifier|public
-name|void
-name|testGetId
-parameter_list|()
-throws|throws
-name|NotExecutableException
-throws|,
-name|RepositoryException
-block|{
-name|assertNotNull
-argument_list|(
-name|user
-operator|.
-name|getID
-argument_list|()
-argument_list|)
-expr_stmt|;
-name|assertNotNull
-argument_list|(
-name|userMgr
-operator|.
-name|getAuthorizable
-argument_list|(
-name|user
-operator|.
-name|getID
-argument_list|()
-argument_list|)
-operator|.
-name|getID
-argument_list|()
-argument_list|)
-expr_stmt|;
-block|}
-annotation|@
-name|Test
-specifier|public
-name|void
-name|testGetPrincipal
-parameter_list|()
-throws|throws
-name|RepositoryException
-throws|,
-name|NotExecutableException
-block|{
-name|assertNotNull
-argument_list|(
-name|user
-operator|.
-name|getPrincipal
-argument_list|()
-argument_list|)
-expr_stmt|;
-name|assertNotNull
-argument_list|(
-name|userMgr
-operator|.
-name|getAuthorizable
-argument_list|(
-name|user
-operator|.
-name|getID
-argument_list|()
-argument_list|)
-operator|.
-name|getPrincipal
-argument_list|()
-argument_list|)
-expr_stmt|;
-block|}
-annotation|@
-name|Test
-specifier|public
-name|void
-name|testGetPath
-parameter_list|()
-throws|throws
-name|RepositoryException
-throws|,
-name|NotExecutableException
-block|{
-name|assertNotNull
-argument_list|(
-name|user
-operator|.
-name|getPath
-argument_list|()
-argument_list|)
-expr_stmt|;
-name|assertNotNull
-argument_list|(
-name|userMgr
-operator|.
-name|getAuthorizable
-argument_list|(
-name|user
-operator|.
-name|getID
-argument_list|()
-argument_list|)
-operator|.
-name|getPath
-argument_list|()
-argument_list|)
-expr_stmt|;
-try|try
-block|{
-name|assertEquals
-argument_list|(
-name|getNode
-argument_list|(
-name|user
-argument_list|,
-name|superuser
-argument_list|)
-operator|.
-name|getPath
-argument_list|()
-argument_list|,
-name|user
-operator|.
-name|getPath
-argument_list|()
-argument_list|)
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|UnsupportedRepositoryOperationException
-name|e
-parameter_list|)
-block|{
-comment|// ok.
-block|}
-block|}
-annotation|@
-name|Test
-specifier|public
-name|void
-name|testIsAdmin
-parameter_list|()
-throws|throws
-name|NotExecutableException
-throws|,
-name|RepositoryException
-block|{
-name|assertFalse
-argument_list|(
-name|user
-operator|.
-name|isAdmin
-argument_list|()
-argument_list|)
-expr_stmt|;
-block|}
-annotation|@
-name|Test
-specifier|public
-name|void
-name|testChangePasswordNull
-parameter_list|()
-throws|throws
-name|RepositoryException
-throws|,
-name|NotExecutableException
-block|{
-comment|// invalid 'null' pw string
-try|try
-block|{
-name|user
-operator|.
-name|changePassword
-argument_list|(
-literal|null
-argument_list|)
-expr_stmt|;
-name|superuser
-operator|.
-name|save
-argument_list|()
-expr_stmt|;
-name|fail
-argument_list|(
-literal|"invalid pw null"
-argument_list|)
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|Exception
-name|e
-parameter_list|)
-block|{
-comment|// success
-block|}
-block|}
-annotation|@
-name|Test
-specifier|public
-name|void
-name|testChangePassword
-parameter_list|()
-throws|throws
-name|RepositoryException
-throws|,
-name|NotExecutableException
-block|{
-try|try
-block|{
-name|String
-name|hash
-init|=
-name|getNode
-argument_list|(
-name|user
-argument_list|,
-name|superuser
-argument_list|)
-operator|.
-name|getProperty
-argument_list|(
-name|UserConstants
-operator|.
-name|REP_PASSWORD
-argument_list|)
-operator|.
-name|getString
-argument_list|()
-decl_stmt|;
-name|user
-operator|.
-name|changePassword
-argument_list|(
-literal|"changed"
-argument_list|)
-expr_stmt|;
-name|superuser
-operator|.
-name|save
-argument_list|()
-expr_stmt|;
-name|assertFalse
-argument_list|(
-name|hash
-operator|.
-name|equals
-argument_list|(
-name|getNode
-argument_list|(
-name|user
-argument_list|,
-name|superuser
-argument_list|)
-operator|.
-name|getProperty
-argument_list|(
-name|UserConstants
-operator|.
-name|REP_PASSWORD
-argument_list|)
-operator|.
-name|getString
-argument_list|()
-argument_list|)
-argument_list|)
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|Exception
-name|e
-parameter_list|)
-block|{
-comment|// success
-block|}
-block|}
-annotation|@
-name|Test
-specifier|public
-name|void
-name|testChangePasswordWithInvalidOldPassword
-parameter_list|()
-throws|throws
-name|RepositoryException
-throws|,
-name|NotExecutableException
-block|{
-try|try
-block|{
-name|user
-operator|.
-name|changePassword
-argument_list|(
-literal|"changed"
-argument_list|,
-literal|"wrongOldPw"
-argument_list|)
-expr_stmt|;
-name|superuser
-operator|.
-name|save
-argument_list|()
-expr_stmt|;
-name|fail
-argument_list|(
-literal|"old password didn't match -> changePassword(String,String) should fail."
-argument_list|)
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|RepositoryException
-name|e
-parameter_list|)
-block|{
-comment|// success.
-block|}
-block|}
-annotation|@
-name|Test
-specifier|public
-name|void
-name|testChangePasswordWithOldPassword
-parameter_list|()
-throws|throws
-name|RepositoryException
-throws|,
-name|NotExecutableException
-block|{
-try|try
-block|{
-name|String
-name|hash
-init|=
-name|getNode
-argument_list|(
-name|user
-argument_list|,
-name|superuser
-argument_list|)
-operator|.
-name|getProperty
-argument_list|(
-name|UserConstants
-operator|.
-name|REP_PASSWORD
-argument_list|)
-operator|.
-name|getString
-argument_list|()
-decl_stmt|;
-name|user
-operator|.
-name|changePassword
-argument_list|(
-literal|"changed"
-argument_list|,
-name|testPw
-argument_list|)
-expr_stmt|;
-name|superuser
-operator|.
-name|save
-argument_list|()
-expr_stmt|;
-name|assertFalse
-argument_list|(
-name|hash
-operator|.
-name|equals
-argument_list|(
-name|getNode
-argument_list|(
-name|user
-argument_list|,
-name|superuser
-argument_list|)
-operator|.
-name|getProperty
-argument_list|(
-name|UserConstants
-operator|.
-name|REP_PASSWORD
-argument_list|)
-operator|.
-name|getString
-argument_list|()
-argument_list|)
-argument_list|)
-expr_stmt|;
-block|}
-finally|finally
-block|{
-name|user
-operator|.
-name|changePassword
-argument_list|(
-name|testPw
-argument_list|)
-expr_stmt|;
-name|superuser
-operator|.
-name|save
-argument_list|()
-expr_stmt|;
-block|}
-block|}
-annotation|@
-name|Test
-specifier|public
-name|void
-name|testLoginAfterChangePassword
-parameter_list|()
-throws|throws
-name|RepositoryException
-block|{
-name|user
-operator|.
-name|changePassword
-argument_list|(
-literal|"changed"
-argument_list|)
-expr_stmt|;
-name|superuser
-operator|.
-name|save
-argument_list|()
-expr_stmt|;
-comment|// make sure the user can login with the new pw
-name|Session
-name|s
-init|=
-name|getHelper
-argument_list|()
-operator|.
-name|getRepository
-argument_list|()
-operator|.
-name|login
-argument_list|(
-operator|new
-name|SimpleCredentials
-argument_list|(
-name|user
-operator|.
-name|getID
-argument_list|()
-argument_list|,
-literal|"changed"
-operator|.
-name|toCharArray
-argument_list|()
-argument_list|)
-argument_list|)
-decl_stmt|;
-name|s
-operator|.
-name|logout
-argument_list|()
-expr_stmt|;
-block|}
-annotation|@
-name|Test
-specifier|public
-name|void
-name|testLoginAfterChangePassword2
-parameter_list|()
-throws|throws
-name|RepositoryException
-throws|,
-name|NotExecutableException
-block|{
-try|try
-block|{
-name|user
-operator|.
-name|changePassword
-argument_list|(
-literal|"changed"
-argument_list|,
-name|testPw
-argument_list|)
-expr_stmt|;
-name|superuser
-operator|.
-name|save
-argument_list|()
-expr_stmt|;
-comment|// make sure the user can login with the new pw
-name|Session
-name|s
-init|=
-name|getHelper
-argument_list|()
-operator|.
-name|getRepository
-argument_list|()
-operator|.
-name|login
-argument_list|(
-operator|new
-name|SimpleCredentials
-argument_list|(
-name|user
-operator|.
-name|getID
-argument_list|()
-argument_list|,
-literal|"changed"
-operator|.
-name|toCharArray
-argument_list|()
-argument_list|)
-argument_list|)
-decl_stmt|;
-name|s
-operator|.
-name|logout
-argument_list|()
-expr_stmt|;
-block|}
-finally|finally
-block|{
-name|user
-operator|.
-name|changePassword
-argument_list|(
-name|testPw
-argument_list|)
-expr_stmt|;
-name|superuser
-operator|.
-name|save
-argument_list|()
-expr_stmt|;
-block|}
-block|}
-annotation|@
-name|Test
-specifier|public
-name|void
-name|testLoginWithOldPassword
-parameter_list|()
-throws|throws
-name|RepositoryException
-throws|,
-name|NotExecutableException
-block|{
-try|try
-block|{
-name|user
-operator|.
-name|changePassword
-argument_list|(
-literal|"changed"
-argument_list|)
-expr_stmt|;
-name|superuser
-operator|.
-name|save
-argument_list|()
-expr_stmt|;
-name|Session
-name|s
-init|=
-name|getHelper
-argument_list|()
-operator|.
-name|getRepository
-argument_list|()
-operator|.
-name|login
-argument_list|(
-operator|new
-name|SimpleCredentials
-argument_list|(
-name|user
-operator|.
-name|getID
-argument_list|()
-argument_list|,
-name|testPw
-operator|.
-name|toCharArray
-argument_list|()
-argument_list|)
-argument_list|)
-decl_stmt|;
-name|s
-operator|.
-name|logout
-argument_list|()
-expr_stmt|;
-name|fail
-argument_list|(
-literal|"user pw has changed. login must fail."
-argument_list|)
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|LoginException
-name|e
-parameter_list|)
-block|{
-comment|// success
-block|}
-block|}
-annotation|@
-name|Test
-specifier|public
-name|void
-name|testLoginWithOldPassword2
-parameter_list|()
-throws|throws
-name|RepositoryException
-throws|,
-name|NotExecutableException
-block|{
-try|try
-block|{
-name|user
-operator|.
-name|changePassword
-argument_list|(
-literal|"changed"
-argument_list|,
-name|testPw
-argument_list|)
-expr_stmt|;
-name|superuser
-operator|.
-name|save
-argument_list|()
-expr_stmt|;
-name|Session
-name|s
-init|=
-name|getHelper
-argument_list|()
-operator|.
-name|getRepository
-argument_list|()
-operator|.
-name|login
-argument_list|(
-operator|new
-name|SimpleCredentials
-argument_list|(
-name|user
-operator|.
-name|getID
-argument_list|()
-argument_list|,
-name|testPw
-operator|.
-name|toCharArray
-argument_list|()
-argument_list|)
-argument_list|)
-decl_stmt|;
-name|s
-operator|.
-name|logout
-argument_list|()
-expr_stmt|;
-name|fail
-argument_list|(
-literal|"superuser pw has changed. login must fail."
-argument_list|)
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|LoginException
-name|e
-parameter_list|)
-block|{
-comment|// success
-block|}
-finally|finally
-block|{
-name|user
-operator|.
-name|changePassword
-argument_list|(
-name|testPw
-argument_list|)
-expr_stmt|;
-name|superuser
-operator|.
-name|save
-argument_list|()
-expr_stmt|;
-block|}
-block|}
-annotation|@
-name|Test
-specifier|public
-name|void
-name|testEnabledByDefault
-parameter_list|()
-throws|throws
-name|Exception
-block|{
-comment|// by default a user isn't disabled
-name|assertFalse
-argument_list|(
-name|user
-operator|.
-name|isDisabled
-argument_list|()
-argument_list|)
-expr_stmt|;
-name|assertNull
-argument_list|(
-name|user
-operator|.
-name|getDisabledReason
-argument_list|()
-argument_list|)
-expr_stmt|;
-block|}
-annotation|@
-name|Test
-specifier|public
-name|void
-name|testDisable
-parameter_list|()
-throws|throws
-name|Exception
-block|{
-name|String
-name|reason
-init|=
-literal|"readonly user is disabled!"
-decl_stmt|;
-name|user
-operator|.
-name|disable
-argument_list|(
-name|reason
-argument_list|)
-expr_stmt|;
-name|superuser
-operator|.
-name|save
-argument_list|()
-expr_stmt|;
-name|assertTrue
-argument_list|(
-name|user
-operator|.
-name|isDisabled
-argument_list|()
-argument_list|)
-expr_stmt|;
-name|assertEquals
-argument_list|(
-name|reason
-argument_list|,
-name|user
-operator|.
-name|getDisabledReason
-argument_list|()
-argument_list|)
-expr_stmt|;
-block|}
-annotation|@
-name|Test
-specifier|public
-name|void
-name|testAccessDisabledUser
-parameter_list|()
-throws|throws
-name|Exception
-block|{
-name|user
-operator|.
-name|disable
-argument_list|(
-literal|"readonly user is disabled!"
-argument_list|)
-expr_stmt|;
-name|superuser
-operator|.
-name|save
-argument_list|()
-expr_stmt|;
-comment|// user must still be retrievable from user manager
-name|assertNotNull
-argument_list|(
-name|getUserManager
-argument_list|(
-name|superuser
-argument_list|)
-operator|.
-name|getAuthorizable
-argument_list|(
-name|user
-operator|.
-name|getID
-argument_list|()
-argument_list|)
-argument_list|)
-expr_stmt|;
-comment|// ... and from principal manager as well
-name|assertTrue
-argument_list|(
-operator|(
-operator|(
-name|JackrabbitSession
-operator|)
-name|superuser
-operator|)
-operator|.
-name|getPrincipalManager
-argument_list|()
-operator|.
-name|hasPrincipal
-argument_list|(
-name|user
-operator|.
-name|getPrincipal
-argument_list|()
-operator|.
-name|getName
-argument_list|()
-argument_list|)
-argument_list|)
-expr_stmt|;
-block|}
-annotation|@
-name|Test
-specifier|public
-name|void
-name|testAccessPrincipalOfDisabledUser
-parameter_list|()
-throws|throws
-name|Exception
-block|{
-name|user
-operator|.
-name|disable
-argument_list|(
-literal|"readonly user is disabled!"
-argument_list|)
-expr_stmt|;
-name|superuser
-operator|.
-name|save
-argument_list|()
-expr_stmt|;
-name|Principal
-name|principal
-init|=
-name|user
-operator|.
-name|getPrincipal
-argument_list|()
-decl_stmt|;
-name|assertTrue
-argument_list|(
-operator|(
-operator|(
-name|JackrabbitSession
-operator|)
-name|superuser
-operator|)
-operator|.
-name|getPrincipalManager
-argument_list|()
-operator|.
-name|hasPrincipal
-argument_list|(
-name|principal
-operator|.
-name|getName
-argument_list|()
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|assertEquals
-argument_list|(
-name|principal
-argument_list|,
-operator|(
-operator|(
-name|JackrabbitSession
-operator|)
-name|superuser
-operator|)
-operator|.
-name|getPrincipalManager
-argument_list|()
-operator|.
-name|getPrincipal
-argument_list|(
-name|principal
-operator|.
-name|getName
-argument_list|()
-argument_list|)
-argument_list|)
-expr_stmt|;
-block|}
-annotation|@
-name|Test
-specifier|public
-name|void
-name|testEnableUser
-parameter_list|()
-throws|throws
-name|Exception
-block|{
-name|user
-operator|.
-name|disable
-argument_list|(
-literal|"readonly user is disabled!"
-argument_list|)
-expr_stmt|;
-name|superuser
-operator|.
-name|save
-argument_list|()
-expr_stmt|;
-comment|// enable user again
-name|user
-operator|.
-name|disable
-argument_list|(
-literal|null
-argument_list|)
-expr_stmt|;
-name|superuser
-operator|.
-name|save
-argument_list|()
-expr_stmt|;
-name|assertFalse
-argument_list|(
-name|user
-operator|.
-name|isDisabled
-argument_list|()
-argument_list|)
-expr_stmt|;
-name|assertNull
-argument_list|(
-name|user
-operator|.
-name|getDisabledReason
-argument_list|()
-argument_list|)
-expr_stmt|;
-comment|// -> login must succeed again
-name|getHelper
-argument_list|()
-operator|.
-name|getRepository
-argument_list|()
-operator|.
-name|login
-argument_list|(
-operator|new
-name|SimpleCredentials
-argument_list|(
-name|user
-operator|.
-name|getID
-argument_list|()
-argument_list|,
-literal|"pw"
-operator|.
-name|toCharArray
-argument_list|()
-argument_list|)
-argument_list|)
-operator|.
-name|logout
-argument_list|()
-expr_stmt|;
-block|}
-annotation|@
-name|Test
-specifier|public
-name|void
-name|testLoginDisabledUser
-parameter_list|()
-throws|throws
-name|Exception
-block|{
-name|user
-operator|.
-name|disable
-argument_list|(
-literal|"readonly user is disabled!"
-argument_list|)
-expr_stmt|;
-name|superuser
-operator|.
-name|save
-argument_list|()
-expr_stmt|;
-comment|// -> login must fail
-try|try
-block|{
-name|Session
-name|ss
-init|=
-name|getHelper
-argument_list|()
-operator|.
-name|getRepository
-argument_list|()
-operator|.
-name|login
-argument_list|(
-operator|new
-name|SimpleCredentials
-argument_list|(
-name|user
-operator|.
-name|getID
-argument_list|()
-argument_list|,
-literal|"pw"
-operator|.
-name|toCharArray
-argument_list|()
-argument_list|)
-argument_list|)
-decl_stmt|;
-name|ss
-operator|.
-name|logout
-argument_list|()
-expr_stmt|;
-name|fail
-argument_list|(
-literal|"A disabled user must not be allowed to login any more"
-argument_list|)
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|LoginException
-name|e
-parameter_list|)
-block|{
-comment|// success
-block|}
-block|}
-annotation|@
-name|Test
-specifier|public
-name|void
-name|testImpersonateDisabledUser
-parameter_list|()
-throws|throws
-name|Exception
-block|{
-name|user
-operator|.
-name|disable
-argument_list|(
-literal|"readonly user is disabled!"
-argument_list|)
-expr_stmt|;
-name|superuser
-operator|.
-name|save
-argument_list|()
-expr_stmt|;
-comment|// -> impersonating this user must fail
-try|try
-block|{
-name|Session
-name|ss
-init|=
-name|superuser
-operator|.
-name|impersonate
-argument_list|(
-operator|new
-name|SimpleCredentials
-argument_list|(
-name|user
-operator|.
-name|getID
-argument_list|()
-argument_list|,
-operator|new
-name|char
-index|[
-literal|0
-index|]
-argument_list|)
-argument_list|)
-decl_stmt|;
-name|ss
-operator|.
-name|logout
-argument_list|()
-expr_stmt|;
-name|fail
-argument_list|(
-literal|"A disabled user cannot be impersonated any more."
-argument_list|)
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|LoginException
-name|e
-parameter_list|)
-block|{
-comment|// success
-block|}
-block|}
-annotation|@
-name|Test
-specifier|public
-name|void
-name|testLoginWithGetCredentials
-parameter_list|()
-throws|throws
-name|RepositoryException
-throws|,
-name|NotExecutableException
-block|{
-try|try
-block|{
-name|Credentials
-name|creds
-init|=
-name|user
-operator|.
-name|getCredentials
-argument_list|()
-decl_stmt|;
-name|Session
-name|s
-init|=
-name|getHelper
-argument_list|()
-operator|.
-name|getRepository
-argument_list|()
-operator|.
-name|login
-argument_list|(
-name|creds
-argument_list|)
-decl_stmt|;
-name|s
-operator|.
-name|logout
-argument_list|()
-expr_stmt|;
-name|fail
-argument_list|(
-literal|"Login using credentials exposed on user must fail."
-argument_list|)
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|UnsupportedRepositoryOperationException
-name|e
-parameter_list|)
-block|{
-throw|throw
-operator|new
-name|NotExecutableException
-argument_list|(
-name|e
-operator|.
-name|getMessage
-argument_list|()
-argument_list|)
-throw|;
-block|}
-catch|catch
-parameter_list|(
-name|LoginException
-name|e
-parameter_list|)
-block|{
-comment|// success
-block|}
-block|}
+comment|//    @Test
+comment|//    public void testIsGroup() throws RepositoryException {
+comment|//        assertFalse(user.isGroup());
+comment|//    }
+comment|//
+comment|//    @Test
+comment|//    public void testGetId() throws NotExecutableException, RepositoryException {
+comment|//        assertNotNull(user.getID());
+comment|//        assertNotNull(userMgr.getAuthorizable(user.getID()).getID());
+comment|//    }
+comment|//
+comment|//    @Test
+comment|//    public void testGetPrincipal() throws RepositoryException, NotExecutableException {
+comment|//        assertNotNull(user.getPrincipal());
+comment|//        assertNotNull(userMgr.getAuthorizable(user.getID()).getPrincipal());
+comment|//    }
+comment|//
+comment|//    @Test
+comment|//    public void testGetPath() throws RepositoryException, NotExecutableException {
+comment|//        assertNotNull(user.getPath());
+comment|//        assertNotNull(userMgr.getAuthorizable(user.getID()).getPath());
+comment|//        try {
+comment|//            assertEquals(getNode(user, superuser).getPath(), user.getPath());
+comment|//        } catch (UnsupportedRepositoryOperationException e) {
+comment|//            // ok.
+comment|//        }
+comment|//    }
+comment|//
+comment|//    @Test
+comment|//    public void testIsAdmin() throws NotExecutableException, RepositoryException {
+comment|//        assertFalse(user.isAdmin());
+comment|//    }
+comment|//
+comment|//    @Test
+comment|//    public void testChangePasswordNull() throws RepositoryException, NotExecutableException {
+comment|//        // invalid 'null' pw string
+comment|//        try {
+comment|//            user.changePassword(null);
+comment|//            superuser.save();
+comment|//            fail("invalid pw null");
+comment|//        } catch (Exception e) {
+comment|//            // success
+comment|//        }
+comment|//    }
+comment|//
+comment|//    @Test
+comment|//    public void testChangePassword() throws RepositoryException, NotExecutableException {
+comment|//        try {
+comment|//            String hash = getNode(user, superuser).getProperty(UserConstants.REP_PASSWORD).getString();
+comment|//
+comment|//            user.changePassword("changed");
+comment|//            superuser.save();
+comment|//
+comment|//            assertFalse(hash.equals(getNode(user, superuser).getProperty(UserConstants.REP_PASSWORD).getString()));
+comment|//        } catch (Exception e) {
+comment|//            // success
+comment|//        }
+comment|//    }
+comment|//
+comment|//    @Test
+comment|//    public void testChangePasswordWithInvalidOldPassword() throws RepositoryException, NotExecutableException {
+comment|//        try {
+comment|//            user.changePassword("changed", "wrongOldPw");
+comment|//            superuser.save();
+comment|//            fail("old password didn't match -> changePassword(String,String) should fail.");
+comment|//        } catch (RepositoryException e) {
+comment|//            // success.
+comment|//        }
+comment|//    }
+comment|//
+comment|//    @Test
+comment|//    public void testChangePasswordWithOldPassword() throws RepositoryException, NotExecutableException {
+comment|//        try {
+comment|//            String hash = getNode(user, superuser).getProperty(UserConstants.REP_PASSWORD).getString();
+comment|//
+comment|//            user.changePassword("changed", testPw);
+comment|//            superuser.save();
+comment|//
+comment|//            assertFalse(hash.equals(getNode(user, superuser).getProperty(UserConstants.REP_PASSWORD).getString()));
+comment|//        } finally {
+comment|//            user.changePassword(testPw);
+comment|//            superuser.save();
+comment|//        }
+comment|//    }
+comment|//
+comment|//    @Test
+comment|//    public void testLoginAfterChangePassword() throws RepositoryException {
+comment|//        user.changePassword("changed");
+comment|//        superuser.save();
+comment|//
+comment|//        // make sure the user can login with the new pw
+comment|//        Session s = getHelper().getRepository().login(new SimpleCredentials(user.getID(), "changed".toCharArray()));
+comment|//        s.logout();
+comment|//    }
+comment|//
+comment|//    @Test
+comment|//    public void testLoginAfterChangePassword2() throws RepositoryException, NotExecutableException {
+comment|//        try {
+comment|//
+comment|//            user.changePassword("changed", testPw);
+comment|//            superuser.save();
+comment|//
+comment|//            // make sure the user can login with the new pw
+comment|//            Session s = getHelper().getRepository().login(new SimpleCredentials(user.getID(), "changed".toCharArray()));
+comment|//            s.logout();
+comment|//        } finally {
+comment|//            user.changePassword(testPw);
+comment|//            superuser.save();
+comment|//        }
+comment|//    }
+comment|//
+comment|//    @Test
+comment|//    public void testLoginWithOldPassword() throws RepositoryException, NotExecutableException {
+comment|//        try {
+comment|//            user.changePassword("changed");
+comment|//            superuser.save();
+comment|//
+comment|//            Session s = getHelper().getRepository().login(new SimpleCredentials(user.getID(), testPw.toCharArray()));
+comment|//            s.logout();
+comment|//            fail("user pw has changed. login must fail.");
+comment|//        } catch (LoginException e) {
+comment|//            // success
+comment|//        }
+comment|//    }
+comment|//
+comment|//    @Test
+comment|//    public void testLoginWithOldPassword2() throws RepositoryException, NotExecutableException {
+comment|//        try {
+comment|//            user.changePassword("changed", testPw);
+comment|//            superuser.save();
+comment|//
+comment|//            Session s = getHelper().getRepository().login(new SimpleCredentials(user.getID(), testPw.toCharArray()));
+comment|//            s.logout();
+comment|//            fail("superuser pw has changed. login must fail.");
+comment|//        } catch (LoginException e) {
+comment|//            // success
+comment|//        } finally {
+comment|//            user.changePassword(testPw);
+comment|//            superuser.save();
+comment|//        }
+comment|//    }
+comment|//
+comment|//    @Test
+comment|//    public void testEnabledByDefault() throws Exception {
+comment|//        // by default a user isn't disabled
+comment|//        assertFalse(user.isDisabled());
+comment|//        assertNull(user.getDisabledReason());
+comment|//    }
+comment|//
+comment|//    @Test
+comment|//    public void testDisable() throws Exception {
+comment|//        String reason = "readonly user is disabled!";
+comment|//        user.disable(reason);
+comment|//        superuser.save();
+comment|//        assertTrue(user.isDisabled());
+comment|//        assertEquals(reason, user.getDisabledReason());
+comment|//    }
+comment|//
+comment|//    @Test
+comment|//    public void testAccessDisabledUser() throws Exception {
+comment|//        user.disable("readonly user is disabled!");
+comment|//        superuser.save();
+comment|//
+comment|//        // user must still be retrievable from user manager
+comment|//        assertNotNull(getUserManager(superuser).getAuthorizable(user.getID()));
+comment|//        // ... and from principal manager as well
+comment|//        assertTrue(((JackrabbitSession) superuser).getPrincipalManager().hasPrincipal(user.getPrincipal().getName()));
+comment|//    }
+comment|//
+comment|//    @Test
+comment|//    public void testAccessPrincipalOfDisabledUser()  throws Exception {
+comment|//        user.disable("readonly user is disabled!");
+comment|//        superuser.save();
+comment|//
+comment|//        Principal principal = user.getPrincipal();
+comment|//        assertTrue(((JackrabbitSession) superuser).getPrincipalManager().hasPrincipal(principal.getName()));
+comment|//        assertEquals(principal, ((JackrabbitSession) superuser).getPrincipalManager().getPrincipal(principal.getName()));
+comment|//    }
+comment|//
+comment|//    @Test
+comment|//    public void testEnableUser() throws Exception {
+comment|//        user.disable("readonly user is disabled!");
+comment|//        superuser.save();
+comment|//
+comment|//        // enable user again
+comment|//        user.disable(null);
+comment|//        superuser.save();
+comment|//        assertFalse(user.isDisabled());
+comment|//        assertNull(user.getDisabledReason());
+comment|//
+comment|//        // -> login must succeed again
+comment|//        getHelper().getRepository().login(new SimpleCredentials(user.getID(), "pw".toCharArray())).logout();
+comment|//    }
+comment|//
+comment|//    @Test
+comment|//    public void testLoginDisabledUser() throws Exception {
+comment|//        user.disable("readonly user is disabled!");
+comment|//        superuser.save();
+comment|//
+comment|//        // -> login must fail
+comment|//        try {
+comment|//            Session ss = getHelper().getRepository().login(new SimpleCredentials(user.getID(), "pw".toCharArray()));
+comment|//            ss.logout();
+comment|//            fail("A disabled user must not be allowed to login any more");
+comment|//        } catch (LoginException e) {
+comment|//            // success
+comment|//        }
+comment|//    }
+comment|//
+comment|//    @Test
+comment|//    public void testImpersonateDisabledUser() throws Exception {
+comment|//        user.disable("readonly user is disabled!");
+comment|//        superuser.save();
+comment|//
+comment|//        // -> impersonating this user must fail
+comment|//        try {
+comment|//            Session ss = superuser.impersonate(new SimpleCredentials(user.getID(), new char[0]));
+comment|//            ss.logout();
+comment|//            fail("A disabled user cannot be impersonated any more.");
+comment|//        } catch (LoginException e) {
+comment|//            // success
+comment|//        }
+comment|//    }
+comment|//
+comment|//    @Test
+comment|//    public void testLoginWithGetCredentials() throws RepositoryException, NotExecutableException {
+comment|//        try {
+comment|//            Credentials creds = user.getCredentials();
+comment|//            Session s = getHelper().getRepository().login(creds);
+comment|//            s.logout();
+comment|//            fail("Login using credentials exposed on user must fail.");
+comment|//        } catch (UnsupportedRepositoryOperationException e) {
+comment|//            throw new NotExecutableException(e.getMessage());
+comment|//        } catch (LoginException e) {
+comment|//            // success
+comment|//        }
+comment|//    }
 block|}
 end_class
 
