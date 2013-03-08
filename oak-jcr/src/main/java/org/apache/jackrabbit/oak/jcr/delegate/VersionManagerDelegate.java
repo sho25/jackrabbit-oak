@@ -15,7 +15,7 @@ name|oak
 operator|.
 name|jcr
 operator|.
-name|version
+name|delegate
 package|;
 end_package
 
@@ -115,23 +115,9 @@ name|oak
 operator|.
 name|jcr
 operator|.
-name|NodeDelegate
-import|;
-end_import
-
-begin_import
-import|import
-name|org
+name|version
 operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|jcr
-operator|.
-name|SessionDelegate
+name|ReadWriteVersionManager
 import|;
 end_import
 
@@ -189,6 +175,7 @@ specifier|final
 name|ReadWriteVersionManager
 name|versionManager
 decl_stmt|;
+specifier|public
 specifier|static
 name|VersionManagerDelegate
 name|create
@@ -275,6 +262,7 @@ block|}
 block|}
 expr_stmt|;
 block|}
+specifier|public
 name|SessionDelegate
 name|getSessionDelegate
 parameter_list|()

@@ -15,7 +15,7 @@ name|oak
 operator|.
 name|jcr
 operator|.
-name|version
+name|delegate
 package|;
 end_package
 
@@ -42,38 +42,6 @@ operator|.
 name|api
 operator|.
 name|Tree
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|jcr
-operator|.
-name|NodeDelegate
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|jcr
-operator|.
-name|SessionDelegate
 import|;
 end_import
 

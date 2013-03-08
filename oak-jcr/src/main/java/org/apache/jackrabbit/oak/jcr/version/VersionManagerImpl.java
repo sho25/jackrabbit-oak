@@ -177,6 +177,8 @@ name|oak
 operator|.
 name|jcr
 operator|.
+name|delegate
+operator|.
 name|NodeDelegate
 import|;
 end_import
@@ -192,6 +194,8 @@ operator|.
 name|oak
 operator|.
 name|jcr
+operator|.
+name|delegate
 operator|.
 name|SessionDelegate
 import|;
@@ -209,7 +213,27 @@ name|oak
 operator|.
 name|jcr
 operator|.
+name|delegate
+operator|.
 name|SessionOperation
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|jcr
+operator|.
+name|delegate
+operator|.
+name|VersionManagerDelegate
 import|;
 end_import
 

@@ -121,6 +121,8 @@ name|oak
 operator|.
 name|jcr
 operator|.
+name|delegate
+operator|.
 name|SessionDelegate
 import|;
 end_import

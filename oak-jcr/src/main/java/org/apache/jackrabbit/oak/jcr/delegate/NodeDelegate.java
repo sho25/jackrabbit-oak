@@ -14,6 +14,8 @@ operator|.
 name|oak
 operator|.
 name|jcr
+operator|.
+name|delegate
 package|;
 end_package
 
@@ -960,7 +962,7 @@ block|}
 comment|//------------------------------------------------------------< internal>---
 annotation|@
 name|Nonnull
-specifier|protected
+specifier|public
 name|Tree
 name|getTree
 parameter_list|()

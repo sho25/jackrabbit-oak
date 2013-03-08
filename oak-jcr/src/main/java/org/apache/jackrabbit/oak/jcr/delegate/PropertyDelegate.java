@@ -14,6 +14,8 @@ operator|.
 name|oak
 operator|.
 name|jcr
+operator|.
+name|delegate
 package|;
 end_package
 
@@ -156,6 +158,7 @@ name|PropertyDelegate
 extends|extends
 name|ItemDelegate
 block|{
+specifier|public
 name|PropertyDelegate
 parameter_list|(
 name|SessionDelegate
