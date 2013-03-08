@@ -405,6 +405,22 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
+name|core
+operator|.
+name|IdentifierManager
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
 name|namepath
 operator|.
 name|LocalNameMapper
@@ -456,22 +472,6 @@ operator|.
 name|namepath
 operator|.
 name|NamePathMapperImpl
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|core
-operator|.
-name|IdentifierManager
 import|;
 end_import
 
@@ -934,6 +934,7 @@ expr_stmt|;
 block|}
 comment|/**      * Performs the passed {@code SessionOperation} in a safe execution context. This      * context ensures that the session is refreshed if necessary and that refreshing      * occurs before the session operation is performed and the refreshing is done only      * once.      *      * @param sessionOperation  the {@code SessionOperation} to perform      * @param<T>  return type of {@code sessionOperation}      * @return  the result of {@code sessionOperation.perform()}      * @throws RepositoryException      */
 specifier|public
+specifier|synchronized
 parameter_list|<
 name|T
 parameter_list|>
@@ -949,11 +950,12 @@ parameter_list|)
 throws|throws
 name|RepositoryException
 block|{
-try|try
-block|{
+comment|// Synchronize to avoid conflicting refreshes from concurrent JCR API calls
 name|sessionOpCount
 operator|++
 expr_stmt|;
+try|try
+block|{
 if|if
 condition|(
 name|needsRefresh
