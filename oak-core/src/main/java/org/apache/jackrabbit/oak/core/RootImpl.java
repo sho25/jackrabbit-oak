@@ -698,6 +698,10 @@ comment|/** Sentinel for the next move operation to take place on the this root 
 specifier|private
 name|Move
 name|lastMove
+init|=
+operator|new
+name|Move
+argument_list|()
 decl_stmt|;
 comment|/**      * Current root {@code Tree}      */
 specifier|private
@@ -1221,12 +1225,6 @@ operator|.
 name|rebase
 argument_list|()
 expr_stmt|;
-name|lastMove
-operator|=
-operator|new
-name|Move
-argument_list|()
-expr_stmt|;
 name|rootTree
 operator|=
 operator|new
@@ -1259,12 +1257,6 @@ operator|=
 name|store
 operator|.
 name|branch
-argument_list|()
-expr_stmt|;
-name|lastMove
-operator|=
-operator|new
-name|Move
 argument_list|()
 expr_stmt|;
 name|rootTree

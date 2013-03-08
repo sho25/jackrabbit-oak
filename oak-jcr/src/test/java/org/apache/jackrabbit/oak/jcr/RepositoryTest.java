@@ -9813,6 +9813,9 @@ argument_list|(
 name|TEST_PATH
 argument_list|)
 decl_stmt|;
+name|Node
+name|source
+init|=
 name|node
 operator|.
 name|addNode
@@ -9824,7 +9827,7 @@ name|addNode
 argument_list|(
 literal|"node"
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 name|node
 operator|.
 name|addNode
@@ -9855,6 +9858,18 @@ argument_list|,
 name|TEST_PATH
 operator|+
 literal|"/target/moved"
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+name|TEST_PATH
+operator|+
+literal|"/target/moved"
+argument_list|,
+name|source
+operator|.
+name|getPath
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|assertFalse

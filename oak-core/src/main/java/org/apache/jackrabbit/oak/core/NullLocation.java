@@ -83,6 +83,22 @@ name|PathUtils
 import|;
 end_import
 
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Objects
+operator|.
+name|toStringHelper
+import|;
+end_import
+
 begin_comment
 comment|/**  * This {@code TreeLocation} refers to an invalid location in a tree. That is  * to a location where no item resides.  */
 end_comment
@@ -241,6 +257,31 @@ parameter_list|)
 block|{
 return|return
 literal|false
+return|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|String
+name|toString
+parameter_list|()
+block|{
+return|return
+name|toStringHelper
+argument_list|(
+name|this
+argument_list|)
+operator|.
+name|add
+argument_list|(
+literal|"path"
+argument_list|,
+name|getPath
+argument_list|()
+argument_list|)
+operator|.
+name|toString
+argument_list|()
 return|;
 block|}
 block|}
