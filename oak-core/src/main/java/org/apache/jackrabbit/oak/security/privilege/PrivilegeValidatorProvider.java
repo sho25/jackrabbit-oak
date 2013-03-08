@@ -142,7 +142,7 @@ end_comment
 begin_class
 class|class
 name|PrivilegeValidatorProvider
-implements|implements
+extends|extends
 name|ValidatorProvider
 block|{
 annotation|@

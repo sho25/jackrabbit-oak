@@ -33,6 +33,24 @@ name|spi
 operator|.
 name|state
 operator|.
+name|NodeBuilder
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|state
+operator|.
 name|NodeState
 import|;
 end_import
@@ -51,14 +69,19 @@ begin_comment
 comment|/**  * Extension point for plugging in different kinds of validation rules  * for content changes.  */
 end_comment
 
-begin_interface
+begin_class
 specifier|public
-interface|interface
+specifier|abstract
+class|class
 name|ValidatorProvider
+implements|implements
+name|EditorProvider
 block|{
 comment|/**      * Returns a validator for checking the changes between the given      * two root states.      *      * @param before original root state      * @param after  modified root state      * @return validator for checking the modifications      */
 annotation|@
 name|Nonnull
+specifier|protected
+specifier|abstract
 name|Validator
 name|getRootValidator
 parameter_list|(
@@ -69,8 +92,37 @@ name|NodeState
 name|after
 parameter_list|)
 function_decl|;
+comment|//----------------------------------------------------< EditorProvider>--
+annotation|@
+name|Override
+annotation|@
+name|Nonnull
+specifier|public
+specifier|final
+name|Editor
+name|getRootEditor
+parameter_list|(
+name|NodeState
+name|before
+parameter_list|,
+name|NodeState
+name|after
+parameter_list|,
+name|NodeBuilder
+name|builder
+parameter_list|)
+block|{
+return|return
+name|getRootValidator
+argument_list|(
+name|before
+argument_list|,
+name|after
+argument_list|)
+return|;
 block|}
-end_interface
+block|}
+end_class
 
 end_unit
 

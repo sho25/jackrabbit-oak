@@ -137,7 +137,7 @@ begin_class
 specifier|public
 class|class
 name|RegistrationValidatorProvider
-implements|implements
+extends|extends
 name|ValidatorProvider
 block|{
 annotation|@

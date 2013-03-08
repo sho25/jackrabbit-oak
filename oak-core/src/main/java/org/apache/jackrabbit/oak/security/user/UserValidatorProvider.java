@@ -140,7 +140,7 @@ end_comment
 begin_class
 class|class
 name|UserValidatorProvider
-implements|implements
+extends|extends
 name|ValidatorProvider
 block|{
 specifier|private

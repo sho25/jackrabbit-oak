@@ -233,7 +233,7 @@ begin_class
 specifier|public
 class|class
 name|PermissionValidatorProvider
-implements|implements
+extends|extends
 name|ValidatorProvider
 block|{
 specifier|private

@@ -87,6 +87,8 @@ begin_interface
 specifier|public
 interface|interface
 name|Validator
+extends|extends
+name|Editor
 block|{
 comment|/**      * Validate an added property      * @param after  the added property      * @throws CommitFailedException  if validation fails.      */
 name|void

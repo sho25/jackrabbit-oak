@@ -399,7 +399,7 @@ name|spi
 operator|.
 name|commit
 operator|.
-name|Validator
+name|Editor
 import|;
 end_import
 
@@ -417,7 +417,7 @@ name|spi
 operator|.
 name|commit
 operator|.
-name|ValidatorProvider
+name|EditorProvider
 import|;
 end_import
 
@@ -762,7 +762,7 @@ name|with
 parameter_list|(
 annotation|@
 name|Nonnull
-name|ValidatorProvider
+name|EditorProvider
 name|provider
 parameter_list|)
 block|{
@@ -788,8 +788,8 @@ name|with
 parameter_list|(
 annotation|@
 name|Nonnull
-name|Validator
-name|validator
+name|Editor
+name|editor
 parameter_list|)
 block|{
 name|oak
@@ -798,7 +798,7 @@ name|with
 argument_list|(
 name|checkNotNull
 argument_list|(
-name|validator
+name|editor
 argument_list|)
 argument_list|)
 expr_stmt|;

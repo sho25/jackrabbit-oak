@@ -352,7 +352,7 @@ end_comment
 begin_class
 class|class
 name|AccessControlValidatorProvider
-implements|implements
+extends|extends
 name|ValidatorProvider
 block|{
 specifier|private

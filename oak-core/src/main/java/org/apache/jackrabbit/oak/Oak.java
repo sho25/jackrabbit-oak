@@ -321,7 +321,7 @@ name|spi
 operator|.
 name|commit
 operator|.
-name|CompositeValidatorProvider
+name|CompositeEditorProvider
 import|;
 end_import
 
@@ -357,7 +357,7 @@ name|spi
 operator|.
 name|commit
 operator|.
-name|ValidatingHook
+name|Editor
 import|;
 end_import
 
@@ -375,7 +375,7 @@ name|spi
 operator|.
 name|commit
 operator|.
-name|Validator
+name|EditorHook
 import|;
 end_import
 
@@ -393,7 +393,7 @@ name|spi
 operator|.
 name|commit
 operator|.
-name|ValidatorProvider
+name|EditorProvider
 import|;
 end_import
 
@@ -573,6 +573,24 @@ name|spi
 operator|.
 name|state
 operator|.
+name|NodeBuilder
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|state
+operator|.
 name|NodeState
 import|;
 end_import
@@ -697,9 +715,9 @@ decl_stmt|;
 specifier|private
 name|List
 argument_list|<
-name|ValidatorProvider
+name|EditorProvider
 argument_list|>
-name|validatorProviders
+name|editorProviders
 init|=
 name|newArrayList
 argument_list|()
@@ -878,7 +896,7 @@ name|CommitHook
 name|hook
 parameter_list|)
 block|{
-name|withValidatorHook
+name|withEditorHook
 argument_list|()
 expr_stmt|;
 name|commitHooks
@@ -892,16 +910,16 @@ return|return
 name|this
 return|;
 block|}
-comment|/**      * Turns all currently tracked validators to a validating commit hook      * and associates that hook with the repository to be created. This way      * a sequence of {@code with()} calls that alternates between validators      * and other commit hooks will have all the validators in the correct      * order while still being able to leverage the performance gains of      * multiple validators iterating over the changes simultaneously.      */
+comment|/**      * Turns all currently tracked editors to an editor commit hook and      * associates that hook with the repository to be created. This way      * a sequence of {@code with()} calls that alternates between editors      * and other commit hooks will have all the editors in the correct      * order while still being able to leverage the performance gains of      * multiple editors iterating over the changes simultaneously.      */
 specifier|private
 name|void
-name|withValidatorHook
+name|withEditorHook
 parameter_list|()
 block|{
 if|if
 condition|(
 operator|!
-name|validatorProviders
+name|editorProviders
 operator|.
 name|isEmpty
 argument_list|()
@@ -912,25 +930,25 @@ operator|.
 name|add
 argument_list|(
 operator|new
-name|ValidatingHook
+name|EditorHook
 argument_list|(
-name|CompositeValidatorProvider
+name|CompositeEditorProvider
 operator|.
 name|compose
 argument_list|(
-name|validatorProviders
+name|editorProviders
 argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|validatorProviders
+name|editorProviders
 operator|=
 name|newArrayList
 argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Associates the given validator provider with the repository to      * be created.      *      * @param provider validator provider      * @return this builder      */
+comment|/**      * Associates the given editor provider with the repository to be created.      *      * @param provider editor provider      * @return this builder      */
 annotation|@
 name|Nonnull
 specifier|public
@@ -939,22 +957,25 @@ name|with
 parameter_list|(
 annotation|@
 name|Nonnull
-name|ValidatorProvider
+name|EditorProvider
 name|provider
 parameter_list|)
 block|{
-name|validatorProviders
+name|editorProviders
 operator|.
 name|add
 argument_list|(
+name|checkNotNull
+argument_list|(
 name|provider
+argument_list|)
 argument_list|)
 expr_stmt|;
 return|return
 name|this
 return|;
 block|}
-comment|/**      * Associates the given validator with the repository to be created.      *      * @param validator validator      * @return this builder      */
+comment|/**      * Associates the given editor with the repository to be created.      *      * @param editor editor      * @return this builder      */
 annotation|@
 name|Nonnull
 specifier|public
@@ -964,15 +985,20 @@ parameter_list|(
 annotation|@
 name|Nonnull
 specifier|final
-name|Validator
-name|validator
+name|Editor
+name|editor
 parameter_list|)
 block|{
+name|checkNotNull
+argument_list|(
+name|editor
+argument_list|)
+expr_stmt|;
 return|return
 name|with
 argument_list|(
 operator|new
-name|ValidatorProvider
+name|EditorProvider
 argument_list|()
 block|{
 annotation|@
@@ -980,18 +1006,21 @@ name|Override
 annotation|@
 name|Nonnull
 specifier|public
-name|Validator
-name|getRootValidator
+name|Editor
+name|getRootEditor
 parameter_list|(
 name|NodeState
 name|before
 parameter_list|,
 name|NodeState
 name|after
+parameter_list|,
+name|NodeBuilder
+name|builder
 parameter_list|)
 block|{
 return|return
-name|validator
+name|editor
 return|;
 block|}
 block|}
@@ -1046,7 +1075,7 @@ name|ConflictHandler
 name|conflictHandler
 parameter_list|)
 block|{
-name|withValidatorHook
+name|withEditorHook
 argument_list|()
 expr_stmt|;
 name|commitHooks
@@ -1094,6 +1123,9 @@ argument_list|,
 name|indexHooks
 argument_list|)
 expr_stmt|;
+name|withEditorHook
+argument_list|()
+expr_stmt|;
 name|commitHooks
 operator|.
 name|add
@@ -1105,9 +1137,6 @@ argument_list|(
 name|indexHooks
 argument_list|)
 argument_list|)
-expr_stmt|;
-name|withValidatorHook
-argument_list|()
 expr_stmt|;
 name|CommitHook
 name|commitHook

@@ -143,9 +143,9 @@ begin_class
 specifier|public
 class|class
 name|PermissionStoreValidatorProvider
-implements|implements
+extends|extends
 name|ValidatorProvider
-implements|,
+implements|implements
 name|PermissionConstants
 block|{
 annotation|@
