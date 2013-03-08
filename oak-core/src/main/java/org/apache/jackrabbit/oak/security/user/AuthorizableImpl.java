@@ -401,12 +401,13 @@ argument_list|(
 name|msg
 argument_list|)
 expr_stmt|;
-comment|//FIXME OAK-414 UserImport needs this workaround
-comment|//throw new RepositoryException(msg);
-name|principalName
-operator|=
-name|id
-expr_stmt|;
+throw|throw
+operator|new
+name|RepositoryException
+argument_list|(
+name|msg
+argument_list|)
+throw|;
 block|}
 block|}
 specifier|abstract
