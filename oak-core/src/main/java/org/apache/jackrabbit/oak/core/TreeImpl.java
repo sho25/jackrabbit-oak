@@ -2020,7 +2020,7 @@ name|getNodeState
 argument_list|()
 return|;
 block|}
-comment|/**      * Move this tree to the parent at {@code destParent} with the new name      * {@code destName}.      *      * @param destParent new parent for this tree      * @param destName   new name for this tree      */
+comment|/**      * Move this tree to the parent at {@code destParent} with the new name      * {@code destName}.      * @param destParent new parent for this tree      * @param destName   new name for this tree      */
 name|void
 name|moveTo
 parameter_list|(
@@ -2039,6 +2039,15 @@ name|parent
 operator|=
 name|destParent
 expr_stmt|;
+if|if
+condition|(
+operator|!
+name|parent
+operator|.
+name|isDisconnected
+argument_list|()
+condition|)
+block|{
 if|if
 condition|(
 name|parent
@@ -2086,6 +2095,7 @@ argument_list|(
 name|name
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 comment|/**      * Get a tree for the tree identified by {@code path}.      *      * @param path the path to the child      * @return a {@link Tree} instance for the child at {@code path} or      *         {@code null} if no such tree exits or if the tree is not accessible.      */
