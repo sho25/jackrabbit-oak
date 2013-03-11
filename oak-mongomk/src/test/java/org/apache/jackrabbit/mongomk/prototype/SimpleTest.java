@@ -530,6 +530,45 @@ annotation|@
 name|Test
 specifier|public
 name|void
+name|diff
+parameter_list|()
+block|{
+name|MongoMK
+name|mk
+init|=
+name|createMK
+argument_list|()
+decl_stmt|;
+name|String
+name|rev0
+init|=
+name|mk
+operator|.
+name|getHeadRevision
+argument_list|()
+decl_stmt|;
+comment|// TODO
+comment|//        String rev1 = mk.commit("/", "+\"test\":{\"name\": \"Hello\"}", null, null);
+comment|//        String rev2 = mk.commit("/", "-\"test\"", null, null);
+comment|//        String rev3 = mk.commit("/", "+\"test\":{\"name\": \"Hallo\"}", null, null);
+comment|//        String test0 = mk.getNodes("/test", rev0, 0, 0, Integer.MAX_VALUE, null);
+comment|//        assertNull(null, test0);
+comment|//        String test1 = mk.getNodes("/test", rev1, 0, 0, Integer.MAX_VALUE, null);
+comment|//        assertEquals("{\"name\":\"Hello\",\":childNodeCount\":0}", test1);
+comment|//        String test2 = mk.getNodes("/test", rev2, 0, 0, Integer.MAX_VALUE, null);
+comment|//        assertNull(null, test2);
+comment|//        String test3 = mk.getNodes("/test", rev3, 0, 0, Integer.MAX_VALUE, null);
+comment|//        assertEquals("{\"name\":\"Hallo\",\":childNodeCount\":0}", test3);
+name|mk
+operator|.
+name|dispose
+argument_list|()
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+specifier|public
+name|void
 name|reAddDeleted
 parameter_list|()
 block|{
@@ -739,7 +778,7 @@ name|commit
 argument_list|(
 literal|"/"
 argument_list|,
-literal|"+\"test\":{\"child\": {}}"
+literal|"+\"test\":{\"x\":\"1\",\"child\": {}}"
 argument_list|,
 literal|null
 argument_list|,
