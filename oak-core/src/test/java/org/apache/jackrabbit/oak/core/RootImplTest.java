@@ -1006,6 +1006,15 @@ operator|.
 name|commit
 argument_list|()
 expr_stmt|;
+name|r
+operator|=
+name|root
+operator|.
+name|getTree
+argument_list|(
+literal|"/"
+argument_list|)
+expr_stmt|;
 name|assertFalse
 argument_list|(
 name|r

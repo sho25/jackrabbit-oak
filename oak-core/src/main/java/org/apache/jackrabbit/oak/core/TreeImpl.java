@@ -401,6 +401,22 @@ end_import
 
 begin_import
 import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkState
+import|;
+end_import
+
+begin_import
+import|import static
 name|org
 operator|.
 name|apache
@@ -641,7 +657,7 @@ name|String
 name|getName
 parameter_list|()
 block|{
-name|enter
+name|enterNoStateCheck
 argument_list|()
 expr_stmt|;
 return|return
@@ -655,7 +671,7 @@ name|boolean
 name|isRoot
 parameter_list|()
 block|{
-name|enter
+name|enterNoStateCheck
 argument_list|()
 expr_stmt|;
 return|return
@@ -671,7 +687,7 @@ name|String
 name|getPath
 parameter_list|()
 block|{
-name|enter
+name|enterNoStateCheck
 argument_list|()
 expr_stmt|;
 return|return
@@ -686,7 +702,7 @@ name|Tree
 name|getParent
 parameter_list|()
 block|{
-name|enter
+name|enterNoStateCheck
 argument_list|()
 expr_stmt|;
 if|if
@@ -1130,7 +1146,7 @@ name|Status
 name|getStatus
 parameter_list|()
 block|{
-name|enter
+name|enterNoStateCheck
 argument_list|()
 expr_stmt|;
 if|if
@@ -2374,6 +2390,46 @@ comment|//------------------------------------------------------------< private>
 specifier|private
 name|void
 name|enter
+parameter_list|()
+block|{
+name|root
+operator|.
+name|checkLive
+argument_list|()
+expr_stmt|;
+if|if
+condition|(
+name|RootImpl
+operator|.
+name|OAK_690
+condition|)
+block|{
+name|checkState
+argument_list|(
+name|parent
+operator|!=
+literal|null
+operator|||
+name|this
+operator|==
+name|root
+operator|.
+name|getTree
+argument_list|(
+literal|"/"
+argument_list|)
+argument_list|,
+literal|"Tree access after commit, refresh or rebase"
+argument_list|)
+expr_stmt|;
+block|}
+name|applyPendingMoves
+argument_list|()
+expr_stmt|;
+block|}
+specifier|private
+name|void
+name|enterNoStateCheck
 parameter_list|()
 block|{
 name|root

@@ -714,6 +714,19 @@ name|RootImpl
 implements|implements
 name|Root
 block|{
+comment|/**      * Disable checks for invalid trees.      * FIXME: remove once OAK-690 and dependencies are fixed      */
+specifier|static
+specifier|final
+name|boolean
+name|OAK_690
+init|=
+name|Boolean
+operator|.
+name|getBoolean
+argument_list|(
+literal|"OAK-690"
+argument_list|)
+decl_stmt|;
 comment|/**      * Number of {@link #updated} calls for which changes are kept in memory.      */
 specifier|private
 specifier|static
@@ -1320,6 +1333,25 @@ operator|.
 name|branch
 argument_list|()
 expr_stmt|;
+comment|// Disconnect all children -> access to now invalid trees fails fast
+if|if
+condition|(
+name|OAK_690
+condition|)
+block|{
+name|rootTree
+operator|.
+name|getNodeBuilder
+argument_list|()
+operator|.
+name|reset
+argument_list|(
+name|MemoryNodeState
+operator|.
+name|EMPTY_NODE
+argument_list|)
+expr_stmt|;
+block|}
 name|rootTree
 operator|=
 operator|new
