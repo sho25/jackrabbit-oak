@@ -183,7 +183,7 @@ name|oak
 operator|.
 name|core
 operator|.
-name|ReadOnlyRoot
+name|ImmutableRoot
 import|;
 end_import
 
@@ -199,7 +199,7 @@ name|oak
 operator|.
 name|core
 operator|.
-name|ReadOnlyTree
+name|ImmutableTree
 import|;
 end_import
 
@@ -341,7 +341,7 @@ name|spi
 operator|.
 name|commit
 operator|.
-name|CommitHook
+name|PostValidationHook
 import|;
 end_import
 
@@ -532,7 +532,7 @@ specifier|public
 class|class
 name|PermissionHook
 implements|implements
-name|CommitHook
+name|PostValidationHook
 implements|,
 name|AccessControlConstants
 implements|,
@@ -648,7 +648,7 @@ operator|new
 name|PrivilegeBitsProvider
 argument_list|(
 operator|new
-name|ReadOnlyRoot
+name|ImmutableRoot
 argument_list|(
 name|before
 argument_list|)
@@ -801,16 +801,25 @@ name|NodeState
 name|nodeState
 parameter_list|)
 block|{
-comment|// FIXME: this readonlytree is not properly connect to it's parent
 return|return
 operator|new
-name|ReadOnlyTree
+name|ImmutableTree
 argument_list|(
-literal|null
+name|ImmutableTree
+operator|.
+name|ParentProvider
+operator|.
+name|UNSUPPORTED
 argument_list|,
 name|name
 argument_list|,
 name|nodeState
+argument_list|,
+name|ImmutableTree
+operator|.
+name|TypeProvider
+operator|.
+name|EMPTY
 argument_list|)
 return|;
 block|}

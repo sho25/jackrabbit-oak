@@ -91,7 +91,7 @@ name|spi
 operator|.
 name|commit
 operator|.
-name|CommitHook
+name|PostValidationHook
 import|;
 end_import
 
@@ -206,7 +206,7 @@ specifier|public
 class|class
 name|JcrAllCommitHook
 implements|implements
-name|CommitHook
+name|PostValidationHook
 implements|,
 name|PrivilegeConstants
 block|{

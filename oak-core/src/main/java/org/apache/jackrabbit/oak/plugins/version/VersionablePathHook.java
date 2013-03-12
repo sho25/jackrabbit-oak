@@ -133,7 +133,7 @@ name|oak
 operator|.
 name|core
 operator|.
-name|ReadOnlyTree
+name|ImmutableTree
 import|;
 end_import
 
@@ -666,14 +666,17 @@ name|ReadWriteVersionManager
 name|versionManager
 parameter_list|)
 block|{
-comment|// FIXME: this readonlytree is not properly connect to it's parent
 name|Tree
 name|tree
 init|=
 operator|new
-name|ReadOnlyTree
+name|ImmutableTree
 argument_list|(
-literal|null
+name|ImmutableTree
+operator|.
+name|ParentProvider
+operator|.
+name|UNSUPPORTED
 argument_list|,
 name|PathUtils
 operator|.

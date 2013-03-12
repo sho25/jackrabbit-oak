@@ -142,24 +142,24 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Simple implementation of the Root interface that only supports simple read  * operations (excluding query) based on the NodeState (or ReadOnly tree)  * passed to the constructor.  *<p/>  * TODO: proper handle node state lifecycle that has an impact on this root.  */
+comment|/**  * Simple implementation of the Root interface that only supports simple read  * operations (excluding query) based on the {@code NodeState} (or {@code ImmutableTree})  * passed to the constructor.  */
 end_comment
 
 begin_class
 specifier|public
 specifier|final
 class|class
-name|ReadOnlyRoot
+name|ImmutableRoot
 implements|implements
 name|Root
 block|{
 specifier|private
 specifier|final
-name|ReadOnlyTree
+name|ImmutableTree
 name|rootTree
 decl_stmt|;
 specifier|public
-name|ReadOnlyRoot
+name|ImmutableRoot
 parameter_list|(
 annotation|@
 name|Nonnull
@@ -170,7 +170,7 @@ block|{
 name|this
 argument_list|(
 operator|new
-name|ReadOnlyTree
+name|ImmutableTree
 argument_list|(
 name|rootState
 argument_list|)
@@ -178,31 +178,40 @@ argument_list|)
 expr_stmt|;
 block|}
 specifier|public
-name|ReadOnlyRoot
+name|ImmutableRoot
 parameter_list|(
 annotation|@
 name|Nonnull
 name|Root
 name|root
+parameter_list|,
+annotation|@
+name|Nonnull
+name|ImmutableTree
+operator|.
+name|TypeProvider
+name|typeProvider
 parameter_list|)
 block|{
 name|this
 argument_list|(
-name|ReadOnlyTree
+name|ImmutableTree
 operator|.
 name|createFromRoot
 argument_list|(
 name|root
+argument_list|,
+name|typeProvider
 argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-specifier|private
-name|ReadOnlyRoot
+specifier|public
+name|ImmutableRoot
 parameter_list|(
 annotation|@
 name|Nonnull
-name|ReadOnlyTree
+name|ImmutableTree
 name|rootTree
 parameter_list|)
 block|{
@@ -221,10 +230,11 @@ operator|=
 name|rootTree
 expr_stmt|;
 block|}
+comment|//---------------------------------------------------------------< Root>---
 annotation|@
 name|Override
 specifier|public
-name|ReadOnlyTree
+name|ImmutableTree
 name|getTree
 parameter_list|(
 name|String
@@ -233,7 +243,7 @@ parameter_list|)
 block|{
 return|return
 operator|(
-name|ReadOnlyTree
+name|ImmutableTree
 operator|)
 name|getLocation
 argument_list|(
@@ -283,7 +293,6 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-comment|//---------------------< unsupported methods>------------------------------
 annotation|@
 name|Override
 specifier|public
@@ -368,11 +377,9 @@ name|boolean
 name|hasPendingChanges
 parameter_list|()
 block|{
-throw|throw
-operator|new
-name|UnsupportedOperationException
-argument_list|()
-throw|;
+return|return
+literal|false
+return|;
 block|}
 annotation|@
 name|Nonnull

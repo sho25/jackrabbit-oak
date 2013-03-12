@@ -137,7 +137,7 @@ name|oak
 operator|.
 name|core
 operator|.
-name|ReadOnlyRoot
+name|ImmutableRoot
 import|;
 end_import
 
@@ -153,7 +153,7 @@ name|oak
 operator|.
 name|core
 operator|.
-name|ReadOnlyTree
+name|ImmutableTree
 import|;
 end_import
 
@@ -407,7 +407,7 @@ name|Tree
 name|rootBefore
 init|=
 operator|new
-name|ReadOnlyTree
+name|ImmutableTree
 argument_list|(
 name|before
 argument_list|)
@@ -416,7 +416,7 @@ name|Tree
 name|rootAfter
 init|=
 operator|new
-name|ReadOnlyTree
+name|ImmutableTree
 argument_list|(
 name|after
 argument_list|)
@@ -506,7 +506,7 @@ name|Root
 name|root
 init|=
 operator|new
-name|ReadOnlyRoot
+name|ImmutableRoot
 argument_list|(
 name|beforeRoot
 argument_list|)
@@ -573,6 +573,8 @@ operator|.
 name|error
 argument_list|(
 literal|"Unexpected error: failed to read privileges."
+argument_list|,
+name|e
 argument_list|)
 expr_stmt|;
 block|}

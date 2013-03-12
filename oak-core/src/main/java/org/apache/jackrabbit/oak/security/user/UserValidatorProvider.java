@@ -41,7 +41,7 @@ name|oak
 operator|.
 name|core
 operator|.
-name|ReadOnlyTree
+name|ImmutableTree
 import|;
 end_import
 
@@ -185,13 +185,13 @@ operator|new
 name|UserValidator
 argument_list|(
 operator|new
-name|ReadOnlyTree
+name|ImmutableTree
 argument_list|(
 name|before
 argument_list|)
 argument_list|,
 operator|new
-name|ReadOnlyTree
+name|ImmutableTree
 argument_list|(
 name|after
 argument_list|)

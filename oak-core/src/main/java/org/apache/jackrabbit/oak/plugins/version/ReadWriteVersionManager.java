@@ -151,7 +151,7 @@ name|oak
 operator|.
 name|core
 operator|.
-name|ReadOnlyRoot
+name|IdentifierManager
 import|;
 end_import
 
@@ -167,7 +167,23 @@ name|oak
 operator|.
 name|core
 operator|.
-name|ReadOnlyTree
+name|ImmutableRoot
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|core
+operator|.
+name|ImmutableTree
 import|;
 end_import
 
@@ -184,22 +200,6 @@ operator|.
 name|namepath
 operator|.
 name|NamePathMapper
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|core
-operator|.
-name|IdentifierManager
 import|;
 end_import
 
@@ -648,7 +648,7 @@ parameter_list|()
 block|{
 return|return
 operator|new
-name|ReadOnlyTree
+name|ImmutableTree
 argument_list|(
 name|versionStorageNode
 operator|.
@@ -671,7 +671,7 @@ parameter_list|()
 block|{
 return|return
 operator|new
-name|ReadOnlyRoot
+name|ImmutableRoot
 argument_list|(
 name|workspaceRoot
 operator|.
