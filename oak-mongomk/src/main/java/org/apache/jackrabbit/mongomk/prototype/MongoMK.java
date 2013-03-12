@@ -3006,6 +3006,16 @@ name|sourcePath
 argument_list|,
 name|targetPath
 argument_list|,
+name|Revision
+operator|.
+name|fromString
+argument_list|(
+name|stripBranchRevMarker
+argument_list|(
+name|revisionId
+argument_list|)
+argument_list|)
+argument_list|,
 name|commit
 argument_list|)
 expr_stmt|;
@@ -3073,6 +3083,16 @@ argument_list|(
 name|sourcePath
 argument_list|,
 name|targetPath
+argument_list|,
+name|Revision
+operator|.
+name|fromString
+argument_list|(
+name|stripBranchRevMarker
+argument_list|(
+name|revisionId
+argument_list|)
+argument_list|)
 argument_list|,
 name|commit
 argument_list|)
@@ -3167,6 +3187,9 @@ parameter_list|,
 name|String
 name|targetPath
 parameter_list|,
+name|Revision
+name|baseRev
+parameter_list|,
 name|Commit
 name|commit
 parameter_list|)
@@ -3178,6 +3201,8 @@ argument_list|,
 name|sourcePath
 argument_list|,
 name|targetPath
+argument_list|,
+name|baseRev
 argument_list|,
 name|commit
 argument_list|)
@@ -3193,6 +3218,9 @@ parameter_list|,
 name|String
 name|targetPath
 parameter_list|,
+name|Revision
+name|baseRev
+parameter_list|,
 name|Commit
 name|commit
 parameter_list|)
@@ -3204,6 +3232,8 @@ argument_list|,
 name|sourcePath
 argument_list|,
 name|targetPath
+argument_list|,
+name|baseRev
 argument_list|,
 name|commit
 argument_list|)
@@ -3222,6 +3252,9 @@ parameter_list|,
 name|String
 name|targetPath
 parameter_list|,
+name|Revision
+name|baseRev
+parameter_list|,
 name|Commit
 name|commit
 parameter_list|)
@@ -3239,10 +3272,7 @@ name|getNode
 argument_list|(
 name|sourcePath
 argument_list|,
-name|commit
-operator|.
-name|getRevision
-argument_list|()
+name|baseRev
 argument_list|)
 decl_stmt|;
 comment|// Node might be deleted already
@@ -3312,10 +3342,7 @@ operator|.
 name|getId
 argument_list|()
 argument_list|,
-name|commit
-operator|.
-name|getRevision
-argument_list|()
+name|baseRev
 argument_list|,
 name|Integer
 operator|.
@@ -3361,6 +3388,8 @@ argument_list|,
 name|srcChildPath
 argument_list|,
 name|destChildPath
+argument_list|,
+name|baseRev
 argument_list|,
 name|commit
 argument_list|)
@@ -3473,6 +3502,16 @@ literal|true
 argument_list|)
 expr_stmt|;
 block|}
+name|nodeChildrenCache
+operator|.
+name|remove
+argument_list|(
+name|n
+operator|.
+name|getId
+argument_list|()
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 comment|// Remove the node from the cache
