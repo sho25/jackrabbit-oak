@@ -473,7 +473,7 @@ operator||
 name|USER_MANAGEMENT
 operator|)
 decl_stmt|;
-specifier|private
+specifier|public
 specifier|static
 specifier|final
 name|Map
@@ -871,6 +871,26 @@ name|permissionsToTest
 operator|)
 operator|==
 name|permissionsToTest
+return|;
+block|}
+comment|/**       * Returns those bits from {@code permissions} that are not present in       * the {@code otherPermissions}, i.e. subtracts the other permissions       * from permissions.<br>       * If the specified {@code otherPermissions} do not intersect with       * {@code permissions},  {@code permissions} are returned.<br>       * If {@code permissions} is included in {@code otherPermissions},       * {@link #NO_PERMISSION} is returned.       *       * @param permissions       * @param otherPermissions       * @return the differences of the 2 permissions or {@link #NO_PERMISSION}.       */
+specifier|public
+specifier|static
+name|long
+name|diff
+parameter_list|(
+name|long
+name|permissions
+parameter_list|,
+name|long
+name|otherPermissions
+parameter_list|)
+block|{
+return|return
+name|permissions
+operator|&
+operator|~
+name|otherPermissions
 return|;
 block|}
 specifier|public
