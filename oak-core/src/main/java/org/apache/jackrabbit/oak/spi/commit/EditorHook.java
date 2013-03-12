@@ -20,42 +20,6 @@ package|;
 end_package
 
 begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|Preconditions
-operator|.
-name|checkNotNull
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|plugins
-operator|.
-name|memory
-operator|.
-name|MemoryNodeState
-operator|.
-name|EMPTY_NODE
-import|;
-end_import
-
-begin_import
 import|import
 name|javax
 operator|.
@@ -158,6 +122,42 @@ operator|.
 name|state
 operator|.
 name|NodeStateDiff
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkNotNull
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|memory
+operator|.
+name|MemoryNodeState
+operator|.
+name|EMPTY_NODE
 import|;
 end_import
 
@@ -283,7 +283,7 @@ throw|;
 block|}
 block|}
 comment|//------------------------------------------------------------< private>---
-comment|/**      * Validates the given subtree by diffing and recursing through it.      *      * @param validator validator for the root of the subtree      * @param before state of the original subtree      * @param after state of the modified subtree      * @return exception if the processing failed, {@code null} otherwise      */
+comment|/**      * Validates and possibly edits the given subtree by diffing and recursing through it.      *      * @param editor editor for the root of the subtree      * @param before state of the original subtree      * @param after state of the modified subtree      * @return exception if the processing failed, {@code null} otherwise      */
 annotation|@
 name|CheckForNull
 specifier|private
