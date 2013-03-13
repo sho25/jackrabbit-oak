@@ -13,6 +13,8 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
+name|spi
+operator|.
 name|security
 operator|.
 name|authentication
@@ -324,6 +326,7 @@ operator|=
 name|userManager
 expr_stmt|;
 block|}
+comment|//-----------------------------------------------------< Authentication>---
 annotation|@
 name|Override
 specifier|public

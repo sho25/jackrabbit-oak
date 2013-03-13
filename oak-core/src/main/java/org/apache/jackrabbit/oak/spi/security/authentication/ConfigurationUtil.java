@@ -13,7 +13,11 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
+name|spi
+operator|.
 name|security
+operator|.
+name|authentication
 package|;
 end_package
 
@@ -75,6 +79,8 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
+name|spi
+operator|.
 name|security
 operator|.
 name|authentication
@@ -94,6 +100,8 @@ operator|.
 name|jackrabbit
 operator|.
 name|oak
+operator|.
+name|spi
 operator|.
 name|security
 operator|.
@@ -120,26 +128,6 @@ operator|.
 name|security
 operator|.
 name|ConfigurationParameters
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|spi
-operator|.
-name|security
-operator|.
-name|authentication
-operator|.
-name|GuestLoginModule
 import|;
 end_import
 
