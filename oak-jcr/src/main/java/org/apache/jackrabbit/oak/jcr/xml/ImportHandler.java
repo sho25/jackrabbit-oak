@@ -65,16 +65,6 @@ name|javax
 operator|.
 name|jcr
 operator|.
-name|Session
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|jcr
-operator|.
 name|ValueFactory
 import|;
 end_import
@@ -90,22 +80,6 @@ operator|.
 name|commons
 operator|.
 name|NamespaceHelper
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|api
-operator|.
-name|Root
 import|;
 end_import
 
@@ -135,69 +109,11 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|jcr
-operator|.
-name|delegate
-operator|.
-name|SessionDelegate
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
 name|plugins
 operator|.
 name|name
 operator|.
 name|NamespaceConstants
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|spi
-operator|.
-name|security
-operator|.
-name|authorization
-operator|.
-name|AccessControlConfiguration
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|spi
-operator|.
-name|security
-operator|.
-name|user
-operator|.
-name|UserConfiguration
 import|;
 end_import
 
@@ -284,7 +200,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * An<code>ImportHandler</code> instance can be used to import serialized  * data in System View XML or Document View XML. Processing of the XML is  * handled by specialized<code>ContentHandler</code>s  * (i.e.<code>SysViewImportHandler</code> and<code>DocViewImportHandler</code>).  *<p/>  * The actual task of importing though is delegated to the implementation of  * the<code>{@link Importer}</code> interface.  *<p/>  *<b>Important Note:</b>  *<p/>  * These SAX Event Handlers expect that Namespace URI's and local names are  * reported in the<code>start/endElement</code> events and that  *<code>start/endPrefixMapping</code> events are reported  * (i.e. default SAX2 Namespace processing).  */
+comment|/**  * An {@code ImportHandler} instance can be used to import serialized  * data in System View XML or Document View XML. Processing of the XML is  * handled by specialized {@code ContentHandler}s  * (i.e. {@code SysViewImportHandler} and {@code DocViewImportHandler}).  *<p/>  * The actual task of importing though is delegated to the implementation of  * the {@code {@link Importer}} interface.  *<p/>  *<b>Important Note:</b>  *<p/>  * These SAX Event Handlers expect that Namespace URI's and local names are  * reported in the {@code start/endElement} events and that  * {@code start/endPrefixMapping} events are reported  * (i.e. default SAX2 Namespace processing).  */
 end_comment
 
 begin_class
@@ -296,6 +212,7 @@ name|DefaultHandler
 block|{
 specifier|private
 specifier|static
+specifier|final
 name|Logger
 name|log
 init|=
@@ -330,8 +247,6 @@ decl_stmt|;
 specifier|private
 name|TargetImportHandler
 name|targetHandler
-init|=
-literal|null
 decl_stmt|;
 specifier|private
 specifier|final
@@ -358,29 +273,12 @@ parameter_list|(
 name|Node
 name|importTargetNode
 parameter_list|,
-name|Root
-name|root
-parameter_list|,
-name|Session
-name|session
-parameter_list|,
-name|SessionDelegate
-name|dlg
-parameter_list|,
-name|UserConfiguration
-name|userConfig
-parameter_list|,
-name|AccessControlConfiguration
-name|accessControlConfig
+name|SessionContext
+name|sessionContext
 parameter_list|,
 name|int
 name|uuidBehavior
-parameter_list|,
-name|SessionContext
-name|sessionContext
 parameter_list|)
-throws|throws
-name|RepositoryException
 block|{
 name|this
 operator|.
@@ -389,7 +287,10 @@ operator|=
 operator|new
 name|NamespaceHelper
 argument_list|(
-name|session
+name|sessionContext
+operator|.
+name|getSession
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|this
@@ -401,35 +302,24 @@ name|SessionImporter
 argument_list|(
 name|importTargetNode
 argument_list|,
-name|root
-argument_list|,
-name|session
-argument_list|,
-name|dlg
+name|sessionContext
 argument_list|,
 name|helper
 argument_list|,
-name|userConfig
-argument_list|,
-name|accessControlConfig
-argument_list|,
 name|uuidBehavior
-argument_list|,
-name|sessionContext
 argument_list|)
 expr_stmt|;
 name|this
 operator|.
 name|valueFactory
 operator|=
-name|session
+name|sessionContext
 operator|.
 name|getValueFactory
 argument_list|()
 expr_stmt|;
 block|}
 comment|//---------------------------------------------------------< ErrorHandler>
-comment|/**      * {@inheritDoc}      */
 annotation|@
 name|Override
 specifier|public
@@ -467,7 +357,6 @@ name|e
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * {@inheritDoc}      */
 annotation|@
 name|Override
 specifier|public
@@ -508,7 +397,6 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * {@inheritDoc}      */
 annotation|@
 name|Override
 specifier|public
@@ -553,7 +441,6 @@ name|e
 throw|;
 block|}
 comment|//-------------------------------------------------------< ContentHandler>
-comment|/**      * {@inheritDoc}      */
 annotation|@
 name|Override
 specifier|public
@@ -688,7 +575,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * {@inheritDoc}      */
 annotation|@
 name|Override
 specifier|public
@@ -814,7 +700,6 @@ name|atts
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * {@inheritDoc}      */
 annotation|@
 name|Override
 specifier|public
@@ -878,7 +763,6 @@ name|qName
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * {@inheritDoc}      */
 annotation|@
 name|Override
 specifier|public

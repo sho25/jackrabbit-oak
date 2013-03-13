@@ -285,24 +285,6 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|jcr
-operator|.
-name|delegate
-operator|.
-name|SessionDelegate
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
 name|namepath
 operator|.
 name|NamePathMapper
@@ -496,7 +478,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *<code>SessionImporter</code> ...  */
+comment|/**  * {@code SessionImporter} ...  */
 end_comment
 
 begin_class
@@ -508,6 +490,7 @@ name|Importer
 block|{
 specifier|private
 specifier|static
+specifier|final
 name|Logger
 name|log
 init|=
@@ -542,15 +525,11 @@ name|uuidBehavior
 decl_stmt|;
 specifier|private
 specifier|final
-name|SessionContext
-name|sessionContext
-decl_stmt|;
-specifier|private
-specifier|final
 name|NamespaceHelper
 name|namespaceHelper
 decl_stmt|;
 specifier|private
+specifier|final
 name|Stack
 argument_list|<
 name|Node
@@ -583,42 +562,23 @@ comment|/**      * Currently active importer for protected nodes.      */
 specifier|private
 name|ProtectedNodeImporter
 name|pnImporter
-init|=
-literal|null
 decl_stmt|;
-comment|/**      * Creates a new<code>SessionImporter</code> instance.      */
+comment|/**      * Creates a new {@code SessionImporter} instance.      */
 specifier|public
 name|SessionImporter
 parameter_list|(
 name|Node
 name|importTargetNode
 parameter_list|,
-name|Root
-name|root
-parameter_list|,
-name|Session
-name|session
-parameter_list|,
-name|SessionDelegate
-name|dlg
+name|SessionContext
+name|sessionContext
 parameter_list|,
 name|NamespaceHelper
 name|helper
 parameter_list|,
-name|UserConfiguration
-name|userConfig
-parameter_list|,
-name|AccessControlConfiguration
-name|accessControlConfig
-parameter_list|,
 name|int
 name|uuidBehavior
-parameter_list|,
-name|SessionContext
-name|sessionContext
 parameter_list|)
-throws|throws
-name|RepositoryException
 block|{
 name|this
 operator|.
@@ -630,13 +590,22 @@ name|this
 operator|.
 name|session
 operator|=
-name|session
+name|sessionContext
+operator|.
+name|getSession
+argument_list|()
 expr_stmt|;
 name|this
 operator|.
 name|root
 operator|=
-name|root
+name|sessionContext
+operator|.
+name|getSessionDelegate
+argument_list|()
+operator|.
+name|getRoot
+argument_list|()
 expr_stmt|;
 name|this
 operator|.
@@ -649,12 +618,6 @@ operator|.
 name|uuidBehavior
 operator|=
 name|uuidBehavior
-expr_stmt|;
-name|this
-operator|.
-name|sessionContext
-operator|=
-name|sessionContext
 expr_stmt|;
 name|refTracker
 operator|=
@@ -684,6 +647,14 @@ name|clear
 argument_list|()
 expr_stmt|;
 comment|//TODO clarify how to provide ProtectedItemImporters
+name|UserConfiguration
+name|userConfig
+init|=
+name|sessionContext
+operator|.
+name|getUserConfiguration
+argument_list|()
+decl_stmt|;
 name|NamePathMapper
 name|namePathMapper
 init|=
@@ -732,6 +703,14 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+name|AccessControlConfiguration
+name|accessControlConfig
+init|=
+name|sessionContext
+operator|.
+name|getAccessControlConfiguration
+argument_list|()
+decl_stmt|;
 for|for
 control|(
 name|ProtectedItemImporter
@@ -1518,7 +1497,8 @@ name|node
 return|;
 block|}
 comment|//-------------------------------------------------------------< Importer>
-comment|/**      * {@inheritDoc}      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|start
@@ -1528,7 +1508,8 @@ name|RepositoryException
 block|{
 comment|// nop
 block|}
-comment|/**      * {@inheritDoc}      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|startNode
@@ -2304,7 +2285,8 @@ name|node
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * {@inheritDoc}      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|endNode
@@ -2387,7 +2369,8 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/**      * {@inheritDoc}      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|end
