@@ -541,7 +541,6 @@ specifier|final
 name|ValueFactory
 name|valueFactory
 decl_stmt|;
-comment|// FIXME lazy initialisation is not thread safe
 specifier|private
 name|AccessControlManager
 name|accessControlManager
