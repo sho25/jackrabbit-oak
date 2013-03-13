@@ -185,9 +185,7 @@ name|lucene
 operator|.
 name|codecs
 operator|.
-name|lucene40
-operator|.
-name|Lucene40Codec
+name|Codec
 import|;
 end_import
 
@@ -638,6 +636,24 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+comment|// hack needed to let lucene SPIs work in an OSGi deploy
+comment|//        Thread thread = Thread.currentThread();
+comment|//        ClassLoader loader = thread.getContextClassLoader();
+comment|//        thread.setContextClassLoader(Lucene40Codec.class.getClassLoader());
+comment|//        thread.setContextClassLoader(loader);
+name|Codec
+operator|.
+name|reloadCodecs
+argument_list|(
+name|Thread
+operator|.
+name|currentThread
+argument_list|()
+operator|.
+name|getContextClassLoader
+argument_list|()
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|solrServer
@@ -656,7 +672,7 @@ block|}
 catch|catch
 parameter_list|(
 name|Exception
-name|e2
+name|e
 parameter_list|)
 block|{
 name|log
@@ -677,7 +693,7 @@ block|}
 catch|catch
 parameter_list|(
 name|Exception
-name|e3
+name|e2
 parameter_list|)
 block|{
 name|log
@@ -726,42 +742,6 @@ throws|throws
 name|Exception
 block|{
 comment|// try spawning a new Solr server using Jetty and connect to it via HTTP
-comment|// hack needed to let lucene SPIs work in an OSGi deploy
-name|Thread
-name|thread
-init|=
-name|Thread
-operator|.
-name|currentThread
-argument_list|()
-decl_stmt|;
-name|ClassLoader
-name|loader
-init|=
-name|thread
-operator|.
-name|getContextClassLoader
-argument_list|()
-decl_stmt|;
-name|thread
-operator|.
-name|setContextClassLoader
-argument_list|(
-name|Lucene40Codec
-operator|.
-name|class
-operator|.
-name|getClassLoader
-argument_list|()
-argument_list|)
-expr_stmt|;
-name|thread
-operator|.
-name|setContextClassLoader
-argument_list|(
-name|loader
-argument_list|)
-expr_stmt|;
 name|enableSolrCloud
 argument_list|(
 name|solrHome
