@@ -653,6 +653,7 @@ block|}
 annotation|@
 name|Nonnull
 specifier|public
+specifier|final
 name|Jcr
 name|with
 parameter_list|(
@@ -679,6 +680,7 @@ block|}
 annotation|@
 name|Nonnull
 specifier|public
+specifier|final
 name|Jcr
 name|with
 parameter_list|(
@@ -705,6 +707,7 @@ block|}
 annotation|@
 name|Nonnull
 specifier|public
+specifier|final
 name|Jcr
 name|with
 parameter_list|(
@@ -731,6 +734,7 @@ block|}
 annotation|@
 name|Nonnull
 specifier|public
+specifier|final
 name|Jcr
 name|with
 parameter_list|(
@@ -757,6 +761,7 @@ block|}
 annotation|@
 name|Nonnull
 specifier|public
+specifier|final
 name|Jcr
 name|with
 parameter_list|(
@@ -783,6 +788,7 @@ block|}
 annotation|@
 name|Nonnull
 specifier|public
+specifier|final
 name|Jcr
 name|with
 parameter_list|(
@@ -809,6 +815,7 @@ block|}
 annotation|@
 name|Nonnull
 specifier|public
+specifier|final
 name|Jcr
 name|with
 parameter_list|(
@@ -841,6 +848,7 @@ block|}
 annotation|@
 name|Nonnull
 specifier|public
+specifier|final
 name|Jcr
 name|with
 parameter_list|(
@@ -867,6 +875,7 @@ block|}
 annotation|@
 name|Nonnull
 specifier|public
+specifier|final
 name|Jcr
 name|with
 parameter_list|(
