@@ -311,9 +311,6 @@ decl_stmt|;
 specifier|public
 name|VersionManagerImpl
 parameter_list|(
-name|SessionDelegate
-name|sessionDelegate
-parameter_list|,
 name|SessionContext
 name|sessionContext
 parameter_list|)
@@ -332,7 +329,10 @@ name|VersionManagerDelegate
 operator|.
 name|create
 argument_list|(
-name|sessionDelegate
+name|sessionContext
+operator|.
+name|getSessionDelegate
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}

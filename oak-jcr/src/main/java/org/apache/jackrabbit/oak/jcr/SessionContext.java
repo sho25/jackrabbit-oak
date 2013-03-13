@@ -664,8 +664,6 @@ init|=
 operator|new
 name|SessionImpl
 argument_list|(
-name|delegate
-argument_list|,
 name|this
 argument_list|,
 name|namespaces
@@ -679,8 +677,6 @@ init|=
 operator|new
 name|WorkspaceImpl
 argument_list|(
-name|delegate
-argument_list|,
 name|this
 argument_list|)
 decl_stmt|;

@@ -225,24 +225,6 @@ name|NodeDelegate
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|jcr
-operator|.
-name|delegate
-operator|.
-name|SessionDelegate
-import|;
-end_import
-
 begin_comment
 comment|/**  * The implementation of the corresponding JCR interface.  */
 end_comment
@@ -671,14 +653,6 @@ operator|.
 name|ensureIsAlive
 argument_list|()
 expr_stmt|;
-name|SessionDelegate
-name|sessionDelegate
-init|=
-name|manager
-operator|.
-name|getSessionDelegate
-argument_list|()
-decl_stmt|;
 name|String
 name|oakPath
 init|=
@@ -702,7 +676,10 @@ decl_stmt|;
 name|NodeDelegate
 name|parentDelegate
 init|=
-name|sessionDelegate
+name|sessionContext
+operator|.
+name|getSessionDelegate
+argument_list|()
 operator|.
 name|getNode
 argument_list|(

@@ -308,19 +308,6 @@ return|return
 name|status
 return|;
 block|}
-comment|/**      * Get the session delegate with which this item is associated      * @return  {@link SessionDelegate} to which this item belongs      */
-annotation|@
-name|Nonnull
-specifier|public
-specifier|final
-name|SessionDelegate
-name|getSessionDelegate
-parameter_list|()
-block|{
-return|return
-name|sessionDelegate
-return|;
-block|}
 comment|/**      * The underlying {@link org.apache.jackrabbit.oak.api.TreeLocation} of this item.      * @return  tree location of the underlying item      * @throws InvalidItemStateException if the location points to a stale item      */
 annotation|@
 name|Nonnull

@@ -719,7 +719,7 @@ name|VersionManagerDelegate
 operator|.
 name|create
 argument_list|(
-name|dlg
+name|sessionContext
 operator|.
 name|getSessionDelegate
 argument_list|()

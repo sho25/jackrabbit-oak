@@ -141,24 +141,6 @@ name|SessionContext
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|jcr
-operator|.
-name|delegate
-operator|.
-name|SessionDelegate
-import|;
-end_import
-
 begin_comment
 comment|/**  * Simple lock manager implementation that just keeps track of a set of lock  * tokens and delegates all locking operations back to the {@link Session}  * and {@link Node} implementations.  */
 end_comment
@@ -170,11 +152,6 @@ name|LockManagerImpl
 implements|implements
 name|LockManager
 block|{
-specifier|private
-specifier|final
-name|SessionDelegate
-name|sessionDelegate
-decl_stmt|;
 specifier|private
 specifier|final
 name|SessionContext
@@ -198,19 +175,10 @@ decl_stmt|;
 specifier|public
 name|LockManagerImpl
 parameter_list|(
-name|SessionDelegate
-name|sessionDelegate
-parameter_list|,
 name|SessionContext
 name|sessionContext
 parameter_list|)
 block|{
-name|this
-operator|.
-name|sessionDelegate
-operator|=
-name|sessionDelegate
-expr_stmt|;
 name|this
 operator|.
 name|sessionContext
