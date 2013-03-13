@@ -137,13 +137,11 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
+name|spi
+operator|.
 name|security
 operator|.
-name|authorization
-operator|.
-name|permission
-operator|.
-name|PermissionProviderImpl
+name|SecurityProvider
 import|;
 end_import
 
@@ -161,7 +159,9 @@ name|spi
 operator|.
 name|security
 operator|.
-name|SecurityProvider
+name|authorization
+operator|.
+name|PermissionProvider
 import|;
 end_import
 
@@ -232,8 +232,8 @@ end_comment
 begin_class
 class|class
 name|TmpPermissionProvider
-extends|extends
-name|PermissionProviderImpl
+implements|implements
+name|PermissionProvider
 block|{
 specifier|private
 specifier|final
@@ -262,15 +262,6 @@ name|SecurityProvider
 name|securityProvider
 parameter_list|)
 block|{
-name|super
-argument_list|(
-name|root
-argument_list|,
-name|principals
-argument_list|,
-name|securityProvider
-argument_list|)
-expr_stmt|;
 name|isAdmin
 operator|=
 name|principals
@@ -287,6 +278,15 @@ argument_list|(
 name|principals
 argument_list|)
 expr_stmt|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|void
+name|refresh
+parameter_list|()
+block|{
+comment|// nothing to do
 block|}
 annotation|@
 name|Nonnull

@@ -2226,9 +2226,7 @@ return|return
 name|sessionContext
 operator|.
 name|getAccessControlManager
-argument_list|(
-name|dlg
-argument_list|)
+argument_list|()
 return|;
 block|}
 end_function
