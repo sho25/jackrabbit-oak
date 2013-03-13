@@ -83,16 +83,6 @@ name|javax
 operator|.
 name|jcr
 operator|.
-name|Session
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|jcr
-operator|.
 name|UnsupportedRepositoryOperationException
 import|;
 end_import
@@ -632,7 +622,7 @@ name|Override
 annotation|@
 name|Nonnull
 specifier|public
-name|Session
+name|SessionImpl
 name|getSession
 parameter_list|()
 block|{
@@ -747,7 +737,8 @@ literal|"Not implemented."
 argument_list|)
 throw|;
 block|}
-name|sessionDelegate
+name|getSession
+argument_list|()
 operator|.
 name|checkProtectedNodes
 argument_list|(
@@ -868,7 +859,8 @@ block|{
 name|ensureIsAlive
 argument_list|()
 expr_stmt|;
-name|sessionDelegate
+name|getSession
+argument_list|()
 operator|.
 name|checkProtectedNodes
 argument_list|(
@@ -918,7 +910,8 @@ block|{
 name|ensureIsAlive
 argument_list|()
 expr_stmt|;
-name|sessionDelegate
+name|getSession
+argument_list|()
 operator|.
 name|checkProtectedNodes
 argument_list|(
