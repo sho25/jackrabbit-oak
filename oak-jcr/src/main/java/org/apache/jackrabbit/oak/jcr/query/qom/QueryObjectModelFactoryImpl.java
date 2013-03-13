@@ -487,7 +487,7 @@ name|oak
 operator|.
 name|jcr
 operator|.
-name|SessionContextProvider
+name|SessionContext
 import|;
 end_import
 
@@ -548,6 +548,11 @@ specifier|final
 name|SessionDelegate
 name|sessionDelegate
 decl_stmt|;
+specifier|private
+specifier|final
+name|SessionContext
+name|sessionContext
+decl_stmt|;
 specifier|public
 name|QueryObjectModelFactoryImpl
 parameter_list|(
@@ -556,6 +561,9 @@ name|queryManager
 parameter_list|,
 name|SessionDelegate
 name|sessionDelegate
+parameter_list|,
+name|SessionContext
+name|sessionContext
 parameter_list|)
 block|{
 name|this
@@ -569,6 +577,12 @@ operator|.
 name|sessionDelegate
 operator|=
 name|sessionDelegate
+expr_stmt|;
+name|this
+operator|.
+name|sessionContext
+operator|=
+name|sessionContext
 expr_stmt|;
 block|}
 annotation|@
@@ -1305,12 +1319,10 @@ name|QueryObjectModelImpl
 argument_list|(
 name|queryManager
 argument_list|,
-name|SessionContextProvider
+name|sessionContext
 operator|.
 name|getValueFactory
-argument_list|(
-name|sessionDelegate
-argument_list|)
+argument_list|()
 argument_list|,
 name|source
 argument_list|,
@@ -1352,15 +1364,10 @@ literal|null
 return|;
 block|}
 return|return
-name|SessionContextProvider
+name|sessionContext
 operator|.
 name|getOakName
 argument_list|(
-name|queryManager
-operator|.
-name|getSessionDelegate
-argument_list|()
-argument_list|,
 name|jcrName
 argument_list|)
 return|;

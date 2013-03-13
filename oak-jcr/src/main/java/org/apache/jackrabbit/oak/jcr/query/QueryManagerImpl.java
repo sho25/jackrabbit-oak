@@ -223,7 +223,7 @@ name|oak
 operator|.
 name|api
 operator|.
-name|Result
+name|QueryEngine
 import|;
 end_import
 
@@ -239,7 +239,7 @@ name|oak
 operator|.
 name|api
 operator|.
-name|QueryEngine
+name|Result
 import|;
 end_import
 
@@ -255,7 +255,7 @@ name|oak
 operator|.
 name|jcr
 operator|.
-name|SessionContextProvider
+name|SessionContext
 import|;
 end_import
 
@@ -362,6 +362,16 @@ name|QueryManager
 block|{
 specifier|private
 specifier|final
+name|SessionDelegate
+name|sessionDelegate
+decl_stmt|;
+specifier|private
+specifier|final
+name|SessionContext
+name|sessionContext
+decl_stmt|;
+specifier|private
+specifier|final
 name|QueryObjectModelFactoryImpl
 name|qomFactory
 decl_stmt|;
@@ -369,11 +379,6 @@ specifier|private
 specifier|final
 name|QueryEngine
 name|queryEngine
-decl_stmt|;
-specifier|private
-specifier|final
-name|SessionDelegate
-name|sessionDelegate
 decl_stmt|;
 specifier|private
 specifier|final
@@ -395,6 +400,9 @@ name|QueryManagerImpl
 parameter_list|(
 name|SessionDelegate
 name|sessionDelegate
+parameter_list|,
+name|SessionContext
+name|sessionContext
 parameter_list|)
 block|{
 name|this
@@ -402,6 +410,12 @@ operator|.
 name|sessionDelegate
 operator|=
 name|sessionDelegate
+expr_stmt|;
+name|this
+operator|.
+name|sessionContext
+operator|=
+name|sessionContext
 expr_stmt|;
 name|qomFactory
 operator|=
@@ -411,6 +425,8 @@ argument_list|(
 name|this
 argument_list|,
 name|sessionDelegate
+argument_list|,
+name|sessionContext
 argument_list|)
 expr_stmt|;
 name|queryEngine
@@ -476,6 +492,8 @@ argument_list|,
 name|statement
 argument_list|,
 name|language
+argument_list|,
+name|sessionContext
 argument_list|)
 return|;
 block|}
@@ -728,12 +746,10 @@ decl_stmt|;
 name|NamePathMapper
 name|namePathMapper
 init|=
-name|SessionContextProvider
+name|sessionContext
 operator|.
 name|getNamePathMapper
-argument_list|(
-name|sessionDelegate
-argument_list|)
+argument_list|()
 decl_stmt|;
 name|Result
 name|r
@@ -762,6 +778,8 @@ argument_list|(
 name|sessionDelegate
 argument_list|,
 name|r
+argument_list|,
+name|sessionContext
 argument_list|)
 return|;
 block|}

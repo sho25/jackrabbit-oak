@@ -227,7 +227,7 @@ name|oak
 operator|.
 name|jcr
 operator|.
-name|SessionContextProvider
+name|SessionContext
 import|;
 end_import
 
@@ -305,6 +305,11 @@ name|PREFETCH_TIMEOUT
 init|=
 literal|100
 decl_stmt|;
+specifier|private
+specifier|final
+name|SessionContext
+name|sessionContext
+decl_stmt|;
 specifier|final
 name|SessionDelegate
 name|sessionDelegate
@@ -325,8 +330,17 @@ name|sessionDelegate
 parameter_list|,
 name|Result
 name|result
+parameter_list|,
+name|SessionContext
+name|sessionContext
 parameter_list|)
 block|{
+name|this
+operator|.
+name|sessionContext
+operator|=
+name|sessionContext
+expr_stmt|;
 name|this
 operator|.
 name|sessionDelegate
@@ -701,6 +715,8 @@ name|NodeDelegate
 argument_list|>
 argument_list|(
 name|d
+argument_list|,
+name|sessionContext
 argument_list|)
 return|;
 block|}
@@ -1032,12 +1048,10 @@ block|}
 else|else
 block|{
 return|return
-name|SessionContextProvider
+name|sessionContext
 operator|.
 name|getValueFactory
-argument_list|(
-name|sessionDelegate
-argument_list|)
+argument_list|()
 operator|.
 name|createValue
 argument_list|(

@@ -985,11 +985,16 @@ name|NodeImpl
 parameter_list|(
 name|T
 name|dlg
+parameter_list|,
+name|SessionContext
+name|sessionContext
 parameter_list|)
 block|{
 name|super
 argument_list|(
 name|dlg
+argument_list|,
+name|sessionContext
 argument_list|)
 expr_stmt|;
 block|}
@@ -1103,6 +1108,8 @@ name|NodeDelegate
 argument_list|>
 argument_list|(
 name|parent
+argument_list|,
+name|sessionContext
 argument_list|)
 return|;
 block|}
@@ -1369,12 +1376,10 @@ throws|throws
 name|RepositoryException
 block|{
 return|return
-name|SessionContextProvider
+name|sessionContext
 operator|.
 name|getOakPath
 argument_list|(
-name|sessionDelegate
-argument_list|,
 name|jcrPath
 argument_list|)
 return|;
@@ -1426,12 +1431,10 @@ block|{
 name|String
 name|oakPath
 init|=
-name|SessionContextProvider
+name|sessionContext
 operator|.
 name|getOakPathKeepIndexOrThrowNotFound
 argument_list|(
-name|sessionDelegate
-argument_list|,
 name|relPath
 argument_list|)
 decl_stmt|;
@@ -1626,6 +1629,8 @@ name|NodeDelegate
 argument_list|>
 argument_list|(
 name|parent
+argument_list|,
+name|sessionContext
 argument_list|)
 argument_list|,
 name|childName
@@ -1742,6 +1747,8 @@ name|NodeDelegate
 argument_list|>
 argument_list|(
 name|added
+argument_list|,
+name|sessionContext
 argument_list|)
 decl_stmt|;
 name|childNode
@@ -1777,12 +1784,10 @@ throws|throws
 name|RepositoryException
 block|{
 return|return
-name|SessionContextProvider
+name|sessionContext
 operator|.
 name|getOakName
 argument_list|(
-name|sessionDelegate
-argument_list|,
 name|name
 argument_list|)
 return|;
@@ -1900,12 +1905,10 @@ throws|throws
 name|PathNotFoundException
 block|{
 return|return
-name|SessionContextProvider
+name|sessionContext
 operator|.
 name|getOakPathOrThrowNotFound
 argument_list|(
-name|sessionDelegate
-argument_list|,
 name|relPath
 argument_list|)
 return|;
@@ -2803,6 +2806,8 @@ name|NodeDelegate
 argument_list|>
 argument_list|(
 name|nd
+argument_list|,
+name|sessionContext
 argument_list|)
 return|;
 block|}
@@ -3249,6 +3254,8 @@ operator|new
 name|PropertyImpl
 argument_list|(
 name|pd
+argument_list|,
+name|sessionContext
 argument_list|)
 return|;
 block|}
@@ -4105,6 +4112,8 @@ operator|new
 name|PropertyImpl
 argument_list|(
 name|pd
+argument_list|,
+name|sessionContext
 argument_list|)
 return|;
 block|}
@@ -4654,12 +4663,10 @@ name|getEffectiveNodeTypeProvider
 parameter_list|()
 block|{
 return|return
-name|SessionContextProvider
+name|sessionContext
 operator|.
 name|getEffectiveNodeTypeProvider
-argument_list|(
-name|sessionDelegate
-argument_list|)
+argument_list|()
 return|;
 block|}
 end_function
@@ -5256,12 +5263,10 @@ throws|throws
 name|RepositoryException
 block|{
 return|return
-name|SessionContextProvider
+name|sessionContext
 operator|.
 name|getVersionManager
-argument_list|(
-name|sessionDelegate
-argument_list|)
+argument_list|()
 return|;
 block|}
 end_function
@@ -6397,7 +6402,6 @@ end_comment
 
 begin_function
 specifier|private
-specifier|static
 name|Iterator
 argument_list|<
 name|Node
@@ -6445,6 +6449,8 @@ name|NodeDelegate
 argument_list|>
 argument_list|(
 name|nodeDelegate
+argument_list|,
+name|sessionContext
 argument_list|)
 return|;
 block|}
@@ -6456,7 +6462,6 @@ end_function
 
 begin_function
 specifier|private
-specifier|static
 name|Iterator
 argument_list|<
 name|Property
@@ -6501,6 +6506,8 @@ operator|new
 name|PropertyImpl
 argument_list|(
 name|propertyDelegate
+argument_list|,
+name|sessionContext
 argument_list|)
 return|;
 block|}
@@ -7191,12 +7198,10 @@ block|{
 name|Workspace
 name|workspace
 init|=
-name|SessionContextProvider
+name|sessionContext
 operator|.
 name|getWorkspace
-argument_list|(
-name|sessionDelegate
-argument_list|)
+argument_list|()
 decl_stmt|;
 for|for
 control|(
@@ -7477,6 +7482,8 @@ argument_list|(
 name|oakName
 argument_list|)
 argument_list|)
+argument_list|,
+name|sessionContext
 argument_list|)
 return|;
 block|}
@@ -7606,6 +7613,8 @@ argument_list|,
 name|targetValue
 argument_list|)
 argument_list|)
+argument_list|,
+name|sessionContext
 argument_list|)
 return|;
 block|}
@@ -7737,6 +7746,8 @@ argument_list|(
 name|oakName
 argument_list|)
 argument_list|)
+argument_list|,
+name|sessionContext
 argument_list|)
 return|;
 block|}
@@ -7891,6 +7902,8 @@ argument_list|,
 name|nonNullValues
 argument_list|)
 argument_list|)
+argument_list|,
+name|sessionContext
 argument_list|)
 return|;
 block|}

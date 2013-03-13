@@ -137,7 +137,7 @@ name|oak
 operator|.
 name|jcr
 operator|.
-name|SessionContextProvider
+name|SessionContext
 import|;
 end_import
 
@@ -177,6 +177,11 @@ name|sessionDelegate
 decl_stmt|;
 specifier|private
 specifier|final
+name|SessionContext
+name|sessionContext
+decl_stmt|;
+specifier|private
+specifier|final
 name|Set
 argument_list|<
 name|String
@@ -195,6 +200,9 @@ name|LockManagerImpl
 parameter_list|(
 name|SessionDelegate
 name|sessionDelegate
+parameter_list|,
+name|SessionContext
+name|sessionContext
 parameter_list|)
 block|{
 name|this
@@ -202,6 +210,12 @@ operator|.
 name|sessionDelegate
 operator|=
 name|sessionDelegate
+expr_stmt|;
+name|this
+operator|.
+name|sessionContext
+operator|=
+name|sessionContext
 expr_stmt|;
 block|}
 annotation|@
@@ -467,12 +481,10 @@ name|getSession
 parameter_list|()
 block|{
 return|return
-name|SessionContextProvider
+name|sessionContext
 operator|.
 name|getSession
-argument_list|(
-name|sessionDelegate
-argument_list|)
+argument_list|()
 return|;
 block|}
 block|}

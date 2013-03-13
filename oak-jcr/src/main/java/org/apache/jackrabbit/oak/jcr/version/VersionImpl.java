@@ -173,7 +173,7 @@ name|oak
 operator|.
 name|jcr
 operator|.
-name|SessionContextProvider
+name|SessionContext
 import|;
 end_import
 
@@ -333,11 +333,16 @@ name|VersionImpl
 parameter_list|(
 name|VersionDelegate
 name|dlg
+parameter_list|,
+name|SessionContext
+name|sessionContext
 parameter_list|)
 block|{
 name|super
 argument_list|(
 name|dlg
+argument_list|,
+name|sessionContext
 argument_list|)
 expr_stmt|;
 block|}
@@ -364,6 +369,8 @@ operator|.
 name|getParent
 argument_list|()
 argument_list|)
+argument_list|,
+name|sessionContext
 argument_list|)
 return|;
 block|}
@@ -373,12 +380,10 @@ name|getValueFactory
 parameter_list|()
 block|{
 return|return
-name|SessionContextProvider
+name|sessionContext
 operator|.
 name|getValueFactory
-argument_list|(
-name|sessionDelegate
-argument_list|)
+argument_list|()
 return|;
 block|}
 annotation|@
@@ -557,6 +562,8 @@ name|getVersionByIdentifier
 argument_list|(
 name|id
 argument_list|)
+argument_list|,
+name|sessionContext
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -648,6 +655,8 @@ name|getVersionByIdentifier
 argument_list|(
 name|id
 argument_list|)
+argument_list|,
+name|sessionContext
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -692,6 +701,8 @@ name|VersionConstants
 operator|.
 name|JCR_FROZENNODE
 argument_list|)
+argument_list|,
+name|sessionContext
 argument_list|)
 return|;
 block|}

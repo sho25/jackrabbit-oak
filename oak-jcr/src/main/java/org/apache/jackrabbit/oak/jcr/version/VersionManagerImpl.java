@@ -199,7 +199,7 @@ name|oak
 operator|.
 name|jcr
 operator|.
-name|SessionContextProvider
+name|SessionContext
 import|;
 end_import
 
@@ -300,6 +300,11 @@ name|VersionManager
 block|{
 specifier|private
 specifier|final
+name|SessionContext
+name|sessionContext
+decl_stmt|;
+specifier|private
+specifier|final
 name|VersionManagerDelegate
 name|versionManagerDelegate
 decl_stmt|;
@@ -308,8 +313,17 @@ name|VersionManagerImpl
 parameter_list|(
 name|SessionDelegate
 name|sessionDelegate
+parameter_list|,
+name|SessionContext
+name|sessionContext
 parameter_list|)
 block|{
+name|this
+operator|.
+name|sessionContext
+operator|=
+name|sessionContext
+expr_stmt|;
 name|this
 operator|.
 name|versionManagerDelegate
@@ -692,7 +706,6 @@ argument_list|)
 return|;
 block|}
 specifier|private
-specifier|static
 name|String
 name|getOakPathOrThrowNotFound
 parameter_list|(
@@ -706,12 +719,10 @@ throws|throws
 name|PathNotFoundException
 block|{
 return|return
-name|SessionContextProvider
+name|sessionContext
 operator|.
 name|getOakPathOrThrowNotFound
 argument_list|(
-name|sessionDelegate
-argument_list|,
 name|absPath
 argument_list|)
 return|;
@@ -804,6 +815,8 @@ name|getVersionHistory
 argument_list|(
 name|nodeDelegate
 argument_list|)
+argument_list|,
+name|sessionContext
 argument_list|)
 return|;
 block|}
@@ -899,6 +912,8 @@ name|getBaseVersion
 argument_list|(
 name|nodeDelegate
 argument_list|)
+argument_list|,
+name|sessionContext
 argument_list|)
 return|;
 block|}
@@ -1026,7 +1041,6 @@ block|}
 annotation|@
 name|Nonnull
 specifier|private
-specifier|static
 name|LockManager
 name|getLockManager
 parameter_list|(
@@ -1035,12 +1049,10 @@ name|sessionDelegate
 parameter_list|)
 block|{
 return|return
-name|SessionContextProvider
+name|sessionContext
 operator|.
 name|getLockManager
-argument_list|(
-name|sessionDelegate
-argument_list|)
+argument_list|()
 return|;
 block|}
 annotation|@
@@ -1307,6 +1319,8 @@ name|checkin
 argument_list|(
 name|nodeDelegate
 argument_list|)
+argument_list|,
+name|sessionContext
 argument_list|)
 return|;
 block|}

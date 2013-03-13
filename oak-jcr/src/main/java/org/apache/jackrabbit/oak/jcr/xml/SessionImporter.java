@@ -271,7 +271,7 @@ name|oak
 operator|.
 name|jcr
 operator|.
-name|SessionContextProvider
+name|SessionContext
 import|;
 end_import
 
@@ -542,6 +542,11 @@ name|uuidBehavior
 decl_stmt|;
 specifier|private
 specifier|final
+name|SessionContext
+name|sessionContext
+decl_stmt|;
+specifier|private
+specifier|final
 name|NamespaceHelper
 name|namespaceHelper
 decl_stmt|;
@@ -608,6 +613,9 @@ name|accessControlConfig
 parameter_list|,
 name|int
 name|uuidBehavior
+parameter_list|,
+name|SessionContext
+name|sessionContext
 parameter_list|)
 throws|throws
 name|RepositoryException
@@ -642,6 +650,12 @@ name|uuidBehavior
 operator|=
 name|uuidBehavior
 expr_stmt|;
+name|this
+operator|.
+name|sessionContext
+operator|=
+name|sessionContext
+expr_stmt|;
 name|refTracker
 operator|=
 operator|new
@@ -673,12 +687,10 @@ comment|//TODO clarify how to provide ProtectedItemImporters
 name|NamePathMapper
 name|namePathMapper
 init|=
-name|SessionContextProvider
+name|sessionContext
 operator|.
 name|getNamePathMapper
-argument_list|(
-name|dlg
-argument_list|)
+argument_list|()
 decl_stmt|;
 for|for
 control|(

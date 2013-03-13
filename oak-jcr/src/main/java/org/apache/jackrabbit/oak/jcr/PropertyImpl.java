@@ -426,11 +426,16 @@ name|PropertyImpl
 parameter_list|(
 name|PropertyDelegate
 name|dlg
+parameter_list|,
+name|SessionContext
+name|sessionContext
 parameter_list|)
 block|{
 name|super
 argument_list|(
 name|dlg
+argument_list|,
+name|sessionContext
 argument_list|)
 expr_stmt|;
 block|}
@@ -518,6 +523,8 @@ name|dlg
 operator|.
 name|getParent
 argument_list|()
+argument_list|,
+name|sessionContext
 argument_list|)
 return|;
 block|}
