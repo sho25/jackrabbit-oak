@@ -262,15 +262,6 @@ block|}
 block|}
 expr_stmt|;
 block|}
-specifier|public
-name|SessionDelegate
-name|getSessionDelegate
-parameter_list|()
-block|{
-return|return
-name|sessionDelegate
-return|;
-block|}
 annotation|@
 name|Nonnull
 specifier|public
