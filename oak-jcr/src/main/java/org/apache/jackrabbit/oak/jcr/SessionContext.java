@@ -509,6 +509,10 @@ name|checkNotNull
 import|;
 end_import
 
+begin_comment
+comment|/**  * TODO doc  */
+end_comment
+
 begin_class
 specifier|public
 specifier|abstract
@@ -537,6 +541,7 @@ specifier|final
 name|ValueFactory
 name|valueFactory
 decl_stmt|;
+comment|// FIXME lazy initialisation is not thread safe
 specifier|private
 name|AccessControlManager
 name|accessControlManager

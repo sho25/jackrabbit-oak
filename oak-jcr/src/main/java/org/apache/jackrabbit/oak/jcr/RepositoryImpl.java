@@ -537,6 +537,7 @@ index|[
 literal|1
 index|]
 decl_stmt|;
+comment|// FIXME hack[]
 name|SessionDelegate
 name|sessionDelegate
 init|=

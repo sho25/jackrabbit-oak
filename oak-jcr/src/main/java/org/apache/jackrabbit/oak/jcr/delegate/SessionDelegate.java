@@ -537,6 +537,7 @@ block|}
 block|}
 annotation|@
 name|Nonnull
+comment|// FIXME this should be package private
 specifier|public
 name|Root
 name|getRoot
