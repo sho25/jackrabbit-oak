@@ -176,22 +176,11 @@ comment|/**  * Basic in-memory node state implementation.  */
 end_comment
 
 begin_class
-specifier|public
 class|class
 name|MemoryNodeState
 extends|extends
 name|AbstractNodeState
 block|{
-specifier|public
-specifier|static
-specifier|final
-name|NodeState
-name|EMPTY_NODE
-init|=
-name|EmptyNodeState
-operator|.
-name|EMPTY_NODE
-decl_stmt|;
 specifier|private
 specifier|final
 name|Map
