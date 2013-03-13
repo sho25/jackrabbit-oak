@@ -542,27 +542,10 @@ name|void
 name|refresh
 parameter_list|()
 block|{
-if|if
-condition|(
-name|needsRefresh
-argument_list|()
-condition|)
-block|{
-name|refresh
-argument_list|(
-literal|true
-argument_list|)
-expr_stmt|;
-block|}
-block|}
-specifier|private
-name|boolean
-name|needsRefresh
-parameter_list|()
-block|{
 comment|// Refresh is always needed if this is an auto refresh session or there
 comment|// are pending observation events
-return|return
+if|if
+condition|(
 name|autoRefresh
 operator|||
 name|SessionContextProvider
@@ -571,7 +554,14 @@ name|hasPendingEvents
 argument_list|(
 name|this
 argument_list|)
-return|;
+condition|)
+block|{
+name|refresh
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 block|}
 decl_stmt|;
