@@ -113,6 +113,24 @@ name|spi
 operator|.
 name|security
 operator|.
+name|OpenSecurityProvider
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|security
+operator|.
 name|SecurityProvider
 import|;
 end_import
@@ -213,8 +231,12 @@ decl_stmt|;
 specifier|private
 name|SecurityProvider
 name|securityProvider
+init|=
+operator|new
+name|OpenSecurityProvider
+argument_list|()
 decl_stmt|;
-comment|// TODO
+comment|// TODO review
 specifier|private
 name|ServiceTracker
 name|tracker
