@@ -208,7 +208,17 @@ operator|=
 name|TestUtils
 operator|.
 name|getTestConfiguration
+argument_list|(
+name|store
+operator|.
+name|getRoot
 argument_list|()
+operator|.
+name|getChildNode
+argument_list|(
+literal|"solrIdx"
+argument_list|)
+argument_list|)
 expr_stmt|;
 block|}
 annotation|@
@@ -263,7 +273,21 @@ block|{
 name|String
 name|jsop
 init|=
-literal|"^\"a\":1 ^\"b\":2 ^\"c\":3 +\"x\":{} +\"y\":{} +\"z\":{}"
+literal|"^\"a\":1 ^\"b\":2 ^\"c\":3 +\"x\":{} +\"y\":{} +\"z\":{} "
+operator|+
+literal|"+\"solrIdx\":{\"core\":\"oak\", \"solrHome\":\""
+operator|+
+name|TestUtils
+operator|.
+name|SOLR_HOME_PATH
+operator|+
+literal|"\", \"solrConfig\":\""
+operator|+
+name|TestUtils
+operator|.
+name|SOLRCONFIG_PATH
+operator|+
+literal|"\"} "
 decl_stmt|;
 name|microKernel
 operator|.

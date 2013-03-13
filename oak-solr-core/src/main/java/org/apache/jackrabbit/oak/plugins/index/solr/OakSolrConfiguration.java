@@ -110,6 +110,12 @@ name|CommitPolicy
 name|getCommitPolicy
 parameter_list|()
 function_decl|;
+comment|/**      * Provide the name of the Solr core to be used      *      * @return a<code>String</code> representing the name of the Solr core to      *         be used fo Oak      */
+specifier|public
+name|String
+name|getCoreName
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 
