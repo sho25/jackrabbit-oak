@@ -668,11 +668,13 @@ name|String
 argument_list|>
 name|namespaces
 decl_stmt|;
-specifier|public
 name|SessionImpl
 parameter_list|(
 name|SessionDelegate
 name|dlg
+parameter_list|,
+name|SessionContext
+name|sessionContext
 parameter_list|,
 name|Map
 argument_list|<
