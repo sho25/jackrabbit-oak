@@ -304,7 +304,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *<code>VersionHistoryImpl</code>...  */
+comment|/**  * {@code VersionHistoryImpl}...  */
 end_comment
 
 begin_class

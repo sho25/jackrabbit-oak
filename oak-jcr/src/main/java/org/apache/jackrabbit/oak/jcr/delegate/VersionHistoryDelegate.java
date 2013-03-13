@@ -262,7 +262,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *<code>VersionHistoryDelegate</code>...  */
+comment|/**  * {@code VersionHistoryDelegate}...  */
 end_comment
 
 begin_class
@@ -901,7 +901,7 @@ argument_list|)
 return|;
 block|}
 comment|//-----------------------------< internal>---------------------------------
-comment|/**      * @return the jcr:versionLabels tree or throws a<code>RepositoryException</code>      *         if it doesn't exist.      * @throws RepositoryException if the jcr:versionLabels child does not      *                             exist.      */
+comment|/**      * @return the jcr:versionLabels tree or throws a {@code RepositoryException}      *         if it doesn't exist.      * @throws RepositoryException if the jcr:versionLabels child does not      *                             exist.      */
 annotation|@
 name|Nonnull
 specifier|private
