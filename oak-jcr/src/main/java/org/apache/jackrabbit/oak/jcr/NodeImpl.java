@@ -1396,7 +1396,7 @@ block|{
 return|return
 name|sessionContext
 operator|.
-name|getOakPath
+name|getOakPathOrThrow
 argument_list|(
 name|jcrPath
 argument_list|)
@@ -4935,9 +4935,6 @@ argument_list|(
 name|property
 argument_list|,
 name|sessionContext
-operator|.
-name|getNamePathMapper
-argument_list|()
 argument_list|)
 decl_stmt|;
 if|if

@@ -1181,7 +1181,7 @@ block|{
 return|return
 name|sessionContext
 operator|.
-name|getOakPath
+name|getOakPathOrThrow
 argument_list|(
 name|absPath
 argument_list|)

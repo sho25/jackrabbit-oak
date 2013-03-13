@@ -628,9 +628,6 @@ parameter_list|()
 block|{
 return|return
 name|sessionContext
-operator|.
-name|getNamePathMapper
-argument_list|()
 return|;
 block|}
 block|}

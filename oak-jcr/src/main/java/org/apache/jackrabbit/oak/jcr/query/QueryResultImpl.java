@@ -1073,9 +1073,6 @@ argument_list|(
 name|value
 argument_list|,
 name|sessionContext
-operator|.
-name|getNamePathMapper
-argument_list|()
 argument_list|)
 return|;
 block|}
