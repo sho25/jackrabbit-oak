@@ -296,7 +296,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *<code>BufferedStringValue</code> represents an appendable  * serialized value that is either buffered in-memory or backed  * by a temporary file if its size exceeds a certain limit.  *<p/>  *<b>Important:</b> Note that in order to free resources  *<code>{@link #dispose()}</code> should be called as soon as  *<code>BufferedStringValue</code> instance is not used anymore.  */
+comment|/**  * {@code BufferedStringValue} represents an appendable  * serialized value that is either buffered in-memory or backed  * by a temporary file if its size exceeds a certain limit.  *<p/>  *<b>Important:</b> Note that in order to free resources  * {@code {@link #dispose()}} should be called as soon as  * {@code BufferedStringValue} instance is not used anymore.  */
 end_comment
 
 begin_class
@@ -307,6 +307,7 @@ name|TextValue
 block|{
 specifier|private
 specifier|static
+specifier|final
 name|Logger
 name|log
 init|=
@@ -363,7 +364,7 @@ specifier|private
 name|boolean
 name|base64
 decl_stmt|;
-comment|/**      * Constructs a new empty<code>BufferedStringValue</code>.      */
+comment|/**      * Constructs a new empty {@code BufferedStringValue}.      */
 specifier|protected
 name|BufferedStringValue
 parameter_list|(
@@ -673,7 +674,7 @@ literal|"UTF-8"
 argument_list|)
 return|;
 block|}
-comment|/**      * Returns a<code>Reader</code> for reading the serialized value.      *      * @return a<code>Reader</code> for reading the serialized value.      * @throws IOException if an I/O error occurs      */
+comment|/**      * Returns a {@code Reader} for reading the serialized value.      *      * @return a {@code Reader} for reading the serialized value.      * @throws IOException if an I/O error occurs      */
 specifier|public
 name|Reader
 name|reader
@@ -929,6 +930,8 @@ throw|;
 block|}
 block|}
 comment|//--------------------------------------------------------< TextValue>
+annotation|@
+name|Override
 specifier|public
 name|Value
 name|getValue
@@ -1124,7 +1127,8 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**      * {@inheritDoc}      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|dispose
@@ -1345,6 +1349,8 @@ name|reset
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|int
 name|read

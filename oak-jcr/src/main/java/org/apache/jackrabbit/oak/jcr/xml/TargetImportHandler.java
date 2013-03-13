@@ -216,7 +216,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *<code>TargetImportHandler</code> serves as the base class for the concrete  * classes<code>{@link DocViewImportHandler}</code> and  *<code>{@link SysViewImportHandler}</code>.  */
+comment|/**  * {@code TargetImportHandler} serves as the base class for the concrete  * classes {@code {@link DocViewImportHandler}} and  * {@code {@link SysViewImportHandler}}.  */
 end_comment
 
 begin_class
@@ -677,7 +677,7 @@ name|docQualifiedName
 operator|.
 name|indexOf
 argument_list|(
-literal|":"
+literal|':'
 argument_list|)
 decl_stmt|;
 if|if
@@ -890,10 +890,8 @@ literal|null
 operator|||
 name|docPrefix
 operator|.
-name|length
+name|isEmpty
 argument_list|()
-operator|==
-literal|0
 condition|)
 block|{
 return|return
@@ -905,7 +903,7 @@ block|{
 return|return
 name|docPrefix
 operator|+
-literal|":"
+literal|':'
 operator|+
 name|localName
 return|;
@@ -923,10 +921,8 @@ literal|null
 operator|||
 name|repoPrefix
 operator|.
-name|length
+name|isEmpty
 argument_list|()
-operator|==
-literal|0
 condition|)
 block|{
 return|return
@@ -938,7 +934,7 @@ block|{
 return|return
 name|repoPrefix
 operator|+
-literal|":"
+literal|':'
 operator|+
 name|localName
 return|;
@@ -949,11 +945,11 @@ name|getExpandedName
 parameter_list|()
 block|{
 return|return
-literal|"{"
+literal|'{'
 operator|+
 name|namespaceUri
 operator|+
-literal|"}"
+literal|'}'
 operator|+
 name|localName
 return|;

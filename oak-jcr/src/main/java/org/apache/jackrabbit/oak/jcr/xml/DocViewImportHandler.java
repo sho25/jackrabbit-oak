@@ -292,7 +292,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *<code>DocViewImportHandler</code> processes Document View XML SAX events  * and 'translates' them into<code>{@link Importer}</code> method calls.  */
+comment|/**  * {@code DocViewImportHandler} processes Document View XML SAX events  * and 'translates' them into {@code {@link Importer}} method calls.  */
 end_comment
 
 begin_class
@@ -303,6 +303,7 @@ name|TargetImportHandler
 block|{
 specifier|private
 specifier|static
+specifier|final
 name|Logger
 name|log
 init|=
@@ -335,10 +336,8 @@ comment|// buffer used to merge adjacent character data
 specifier|private
 name|BufferedStringValue
 name|textHandler
-init|=
-literal|null
 decl_stmt|;
-comment|/**      * Constructs a new<code>DocViewImportHandler</code>.      *      * @param importer     the importer      * @param valueFactory a value factory      */
+comment|/**      * Constructs a new {@code DocViewImportHandler}.      *      * @param importer     the importer      * @param valueFactory a value factory      */
 name|DocViewImportHandler
 parameter_list|(
 name|Importer
@@ -541,7 +540,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**      * Translates character data reported by the      *<code>{@link #characters(char[], int, int)}</code>&      *<code>{@link #ignorableWhitespace(char[], int, int)}</code> SAX events      * into a<code>jcr:xmltext</code> child node with one      *<code>jcr:xmlcharacters</code> property.      *      * @throws SAXException if an error occurs      * @see #appendCharacters(char[], int, int)      */
+comment|/**      * Translates character data reported by the      * {@code {@link #characters(char[], int, int)}}&      * {@code {@link #ignorableWhitespace(char[], int, int)}} SAX events      * into a  {@code jcr:xmltext} child node with one      * {@code jcr:xmlcharacters} property.      *      * @throws SAXException if an error occurs      * @see #appendCharacters(char[], int, int)      */
 specifier|private
 name|void
 name|processCharacters
@@ -791,7 +790,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**      * Processes the given<code>name</code>, i.e. decodes it and checks      * the format of the decoded name.      *      * @param nameInfo name to process      * @return the decoded and valid jcr name or the original name if it is      *         not encoded or if the resulting decoded name would be illegal.      */
+comment|/**      * Processes the given {@code name}, i.e. decodes it and checks      * the format of the decoded name.      *      * @param nameInfo name to process      * @return the decoded and valid jcr name or the original name if it is      *         not encoded or if the resulting decoded name would be illegal.      */
 specifier|private
 name|NameInfo
 name|processName
@@ -874,7 +873,7 @@ literal|"encountered illegal decoded name '"
 operator|+
 name|decodedLocalName
 operator|+
-literal|"'"
+literal|'\''
 argument_list|,
 name|e
 argument_list|)
@@ -1100,12 +1099,11 @@ block|{
 comment|// jcr:primaryType
 if|if
 condition|(
+operator|!
 name|attrValue
 operator|.
-name|length
+name|isEmpty
 argument_list|()
-operator|>
-literal|0
 condition|)
 block|{
 comment|//TODO
@@ -1179,12 +1177,11 @@ block|{
 comment|// jcr:uuid
 if|if
 condition|(
+operator|!
 name|attrValue
 operator|.
-name|length
+name|isEmpty
 argument_list|()
-operator|>
-literal|0
 condition|)
 block|{
 name|id
@@ -1269,7 +1266,6 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**      * {@inheritDoc}      */
 annotation|@
 name|Override
 specifier|public
@@ -1300,7 +1296,6 @@ name|length
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * {@inheritDoc}      */
 annotation|@
 name|Override
 specifier|public
@@ -1331,7 +1326,6 @@ name|length
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * {@inheritDoc}      */
 annotation|@
 name|Override
 specifier|public

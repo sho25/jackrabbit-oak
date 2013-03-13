@@ -108,7 +108,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *<code>StringValue</code> represents an immutable serialized value.  */
+comment|/**  * {@code StringValue} represents an immutable serialized value.  */
 end_comment
 
 begin_class
@@ -132,7 +132,7 @@ specifier|final
 name|NamePathMapper
 name|namePathMapper
 decl_stmt|;
-comment|/**      * Constructs a new<code>StringValue</code> representing the given      * value.      *      * @param value serialized value from document      * @param valueFactory the ValueFactory      * @param namePathMapper a namePathMapper knowing the document context      */
+comment|/**      * Constructs a new {@code StringValue} representing the given      * value.      *      * @param value serialized value from document      * @param valueFactory the ValueFactory      * @param namePathMapper a namePathMapper knowing the document context      */
 specifier|protected
 name|StringValue
 parameter_list|(
@@ -179,6 +179,8 @@ operator|.
 name|value
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Value
 name|getValue
@@ -235,6 +237,8 @@ name|valueFactory
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|dispose

@@ -220,7 +220,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *<code>SysViewImportHandler</code>  ...  */
+comment|/**  * {@code SysViewImportHandler}  ...  */
 end_comment
 
 begin_class
@@ -242,6 +242,21 @@ operator|new
 name|Stack
 argument_list|<
 name|ImportState
+argument_list|>
+argument_list|()
+decl_stmt|;
+specifier|private
+specifier|final
+name|ArrayList
+argument_list|<
+name|BufferedStringValue
+argument_list|>
+name|currentPropValues
+init|=
+operator|new
+name|ArrayList
+argument_list|<
+name|BufferedStringValue
 argument_list|>
 argument_list|()
 decl_stmt|;
@@ -272,24 +287,10 @@ name|UNKNOWN
 decl_stmt|;
 comment|// list of appendable value objects
 specifier|private
-name|ArrayList
-argument_list|<
-name|BufferedStringValue
-argument_list|>
-name|currentPropValues
-init|=
-operator|new
-name|ArrayList
-argument_list|<
-name|BufferedStringValue
-argument_list|>
-argument_list|()
-decl_stmt|;
-specifier|private
 name|BufferedStringValue
 name|currentPropValue
 decl_stmt|;
-comment|/**      * Constructs a new<code>SysViewImportHandler</code>.      *      * @param importer     the underlying importer      * @param valueFactory the value factory      */
+comment|/**      * Constructs a new {@code SysViewImportHandler}.      *      * @param importer     the underlying importer      * @param valueFactory the value factory      */
 name|SysViewImportHandler
 parameter_list|(
 name|Importer
@@ -468,7 +469,6 @@ throw|;
 block|}
 block|}
 comment|//-------------------------------------------------------< ContentHandler>
-comment|/**      * {@inheritDoc}      */
 annotation|@
 name|Override
 specifier|public
@@ -916,7 +916,7 @@ literal|"Unexpected element in system view xml document: {"
 operator|+
 name|namespaceURI
 operator|+
-literal|"}"
+literal|'}'
 operator|+
 name|localName
 argument_list|)
@@ -924,7 +924,6 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**      * {@inheritDoc}      */
 annotation|@
 name|Override
 specifier|public
@@ -984,7 +983,6 @@ throw|;
 block|}
 block|}
 block|}
-comment|/**      * {@inheritDoc}      */
 annotation|@
 name|Override
 specifier|public
@@ -1046,7 +1044,6 @@ throw|;
 block|}
 block|}
 block|}
-comment|/**      * {@inheritDoc}      */
 annotation|@
 name|Override
 specifier|public
@@ -1637,6 +1634,7 @@ name|String
 name|uuid
 decl_stmt|;
 comment|/**          * list of PropInfo instances representing properties of current node          */
+specifier|final
 name|List
 argument_list|<
 name|PropInfo
@@ -1656,7 +1654,7 @@ name|started
 decl_stmt|;
 block|}
 comment|//-------------------------------------------------------------< private>
-comment|/**      * Returns the value of the named XML attribute.      *      * @param attributes set of XML attributes      * @param namespaceUri attribute namespace      * @param localName attribute local name      * @return attribute value,      *         or<code>null</code> if the named attribute is not found      */
+comment|/**      * Returns the value of the named XML attribute.      *      * @param attributes set of XML attributes      * @param namespaceUri attribute namespace      * @param localName attribute local name      * @return attribute value,      *         or {@code null} if the named attribute is not found      */
 specifier|private
 specifier|static
 name|String

@@ -2258,7 +2258,7 @@ parameter_list|()
 throws|throws
 name|RepositoryException
 block|{
-comment|/**          * adjust references that refer to uuid's which have been mapped to          * newly generated uuid's on import          */
+comment|/**          * adjust references that refer to uuids which have been mapped to          * newly generated uuids on import          */
 comment|// 1. let protected property/node importers handle protected ref-properties
 comment|//    and (protected) properties underneath a protected parent node.
 for|for
