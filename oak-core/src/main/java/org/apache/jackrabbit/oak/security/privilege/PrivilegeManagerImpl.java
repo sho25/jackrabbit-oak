@@ -671,7 +671,7 @@ condition|)
 block|{
 throw|throw
 operator|new
-name|RepositoryException
+name|AccessControlException
 argument_list|(
 literal|"Invalid privilege name 'null'"
 argument_list|)
