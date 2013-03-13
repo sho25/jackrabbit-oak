@@ -408,7 +408,7 @@ name|createValue
 argument_list|(
 name|dlg
 operator|.
-name|getSingle
+name|getSingleState
 argument_list|()
 argument_list|)
 operator|.
@@ -481,7 +481,7 @@ name|createValues
 argument_list|(
 name|p
 operator|.
-name|getMulti
+name|getMultiState
 argument_list|()
 argument_list|)
 return|;
