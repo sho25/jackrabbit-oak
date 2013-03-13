@@ -1750,6 +1750,7 @@ block|}
 annotation|@
 name|Override
 specifier|public
+specifier|synchronized
 name|String
 name|getHeadRevision
 parameter_list|()
@@ -2332,6 +2333,7 @@ block|}
 annotation|@
 name|Override
 specifier|public
+specifier|synchronized
 name|boolean
 name|nodeExists
 parameter_list|(
