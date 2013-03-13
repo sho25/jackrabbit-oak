@@ -654,7 +654,7 @@ block|}
 block|}
 argument_list|)
 decl_stmt|;
-comment|/**      * This<code>NULL</code> kernel node state is used as a value in the      * {@link #cache} to indicate that there is no node state at the given      * path and revision. This object is only used internally and never leaves      * this {@link KernelNodeState}.      */
+comment|/**      * This {@code NULL} kernel node state is used as a value in the      * {@link #cache} to indicate that there is no node state at the given      * path and revision. This object is only used internally and never leaves      * this {@link KernelNodeState}.      */
 specifier|private
 specifier|static
 specifier|final
@@ -2315,7 +2315,7 @@ name|isEmpty
 argument_list|()
 return|;
 block|}
-comment|/**      * Process the given JSON diff, which is the diff of of the<code>base</code>      * node state to this node state.      *      * @param jsonDiff the JSON diff.      * @param base the base node state.      * @param diff where diffs are reported to.      */
+comment|/**      * Process the given JSON diff, which is the diff of of the {@code base}      * node state to this node state.      *      * @param jsonDiff the JSON diff.      * @param base the base node state.      * @param diff where diffs are reported to.      */
 specifier|private
 name|void
 name|processJsonDiff
@@ -2682,7 +2682,7 @@ operator|.
 name|getLastPos
 argument_list|()
 operator|+
-literal|" "
+literal|' '
 operator|+
 name|jsonDiff
 argument_list|)
