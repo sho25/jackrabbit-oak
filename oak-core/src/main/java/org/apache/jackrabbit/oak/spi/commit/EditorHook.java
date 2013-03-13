@@ -155,7 +155,7 @@ name|plugins
 operator|.
 name|memory
 operator|.
-name|MemoryNodeState
+name|EmptyNodeState
 operator|.
 name|EMPTY_NODE
 import|;

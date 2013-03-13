@@ -40,6 +40,26 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|memory
+operator|.
+name|EmptyNodeState
+operator|.
+name|EMPTY_NODE
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -56,24 +76,6 @@ operator|.
 name|util
 operator|.
 name|Set
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|plugins
-operator|.
-name|memory
-operator|.
-name|MemoryNodeState
 import|;
 end_import
 
@@ -535,8 +537,6 @@ name|childNodeChanged
 argument_list|(
 name|name
 argument_list|,
-name|MemoryNodeState
-operator|.
 name|EMPTY_NODE
 argument_list|,
 name|after

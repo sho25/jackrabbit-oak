@@ -77,6 +77,26 @@ begin_import
 import|import static
 name|org
 operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|memory
+operator|.
+name|EmptyNodeState
+operator|.
+name|EMPTY_NODE
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
 name|junit
 operator|.
 name|Assert
@@ -213,24 +233,6 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|plugins
-operator|.
-name|memory
-operator|.
-name|MemoryNodeState
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
 name|spi
 operator|.
 name|query
@@ -331,8 +333,6 @@ block|{
 name|NodeState
 name|root
 init|=
-name|MemoryNodeState
-operator|.
 name|EMPTY_NODE
 decl_stmt|;
 name|NodeBuilder
@@ -674,8 +674,6 @@ block|{
 name|NodeState
 name|root
 init|=
-name|MemoryNodeState
-operator|.
 name|EMPTY_NODE
 decl_stmt|;
 name|NodeBuilder
@@ -880,8 +878,6 @@ block|{
 name|NodeState
 name|root
 init|=
-name|MemoryNodeState
-operator|.
 name|EMPTY_NODE
 decl_stmt|;
 name|NodeBuilder
@@ -1079,8 +1075,6 @@ block|{
 name|NodeState
 name|root
 init|=
-name|MemoryNodeState
-operator|.
 name|EMPTY_NODE
 decl_stmt|;
 name|NodeBuilder

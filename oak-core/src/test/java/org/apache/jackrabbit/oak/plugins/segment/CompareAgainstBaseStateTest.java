@@ -20,7 +20,7 @@ package|;
 end_package
 
 begin_import
-import|import
+import|import static
 name|org
 operator|.
 name|apache
@@ -33,7 +33,9 @@ name|plugins
 operator|.
 name|memory
 operator|.
-name|MemoryNodeState
+name|EmptyNodeState
+operator|.
+name|EMPTY_NODE
 import|;
 end_import
 
@@ -169,8 +171,6 @@ specifier|final
 name|NodeBuilder
 name|builder
 init|=
-name|MemoryNodeState
-operator|.
 name|EMPTY_NODE
 operator|.
 name|builder

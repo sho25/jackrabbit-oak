@@ -187,6 +187,26 @@ name|checkState
 import|;
 end_import
 
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|memory
+operator|.
+name|EmptyNodeState
+operator|.
+name|EMPTY_NODE
+import|;
+end_import
+
 begin_comment
 comment|/**  * Basic in-memory node store implementation. Useful as a base class for  * more complex functionality.  */
 end_comment
@@ -212,8 +232,6 @@ argument_list|<
 name|NodeState
 argument_list|>
 argument_list|(
-name|MemoryNodeState
-operator|.
 name|EMPTY_NODE
 argument_list|)
 decl_stmt|;

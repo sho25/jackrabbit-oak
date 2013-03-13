@@ -523,24 +523,6 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|plugins
-operator|.
-name|memory
-operator|.
-name|MemoryNodeState
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
 name|spi
 operator|.
 name|state
@@ -638,6 +620,26 @@ operator|.
 name|Type
 operator|.
 name|STRINGS
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|memory
+operator|.
+name|EmptyNodeState
+operator|.
+name|EMPTY_NODE
 import|;
 end_import
 
@@ -839,8 +841,6 @@ condition|?
 operator|new
 name|ReadOnlyTree
 argument_list|(
-name|MemoryNodeState
-operator|.
 name|EMPTY_NODE
 argument_list|)
 comment|// No node types in content, use an empty node

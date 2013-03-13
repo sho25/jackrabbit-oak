@@ -20,6 +20,26 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|memory
+operator|.
+name|EmptyNodeState
+operator|.
+name|EMPTY_NODE
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -58,24 +78,6 @@ operator|.
 name|concurrent
 operator|.
 name|ConcurrentMap
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|plugins
-operator|.
-name|memory
-operator|.
-name|MemoryNodeState
 import|;
 end_import
 
@@ -177,8 +179,6 @@ parameter_list|()
 block|{
 name|this
 argument_list|(
-name|MemoryNodeState
-operator|.
 name|EMPTY_NODE
 argument_list|)
 expr_stmt|;

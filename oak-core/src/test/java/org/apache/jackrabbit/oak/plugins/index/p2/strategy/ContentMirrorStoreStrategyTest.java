@@ -24,7 +24,7 @@ package|;
 end_package
 
 begin_import
-import|import
+import|import static
 name|org
 operator|.
 name|apache
@@ -33,9 +33,13 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|commons
+name|plugins
 operator|.
-name|PathUtils
+name|memory
+operator|.
+name|EmptyNodeState
+operator|.
+name|EMPTY_NODE
 import|;
 end_import
 
@@ -49,11 +53,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|plugins
+name|commons
 operator|.
-name|memory
-operator|.
-name|MemoryNodeState
+name|PathUtils
 import|;
 end_import
 
@@ -152,8 +154,6 @@ decl_stmt|;
 name|NodeState
 name|root
 init|=
-name|MemoryNodeState
-operator|.
 name|EMPTY_NODE
 decl_stmt|;
 name|NodeBuilder

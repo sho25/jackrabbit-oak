@@ -20,6 +20,26 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|memory
+operator|.
+name|EmptyNodeState
+operator|.
+name|EMPTY_NODE
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -42,24 +62,6 @@ operator|.
 name|api
 operator|.
 name|CommitFailedException
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|plugins
-operator|.
-name|memory
-operator|.
-name|MemoryNodeState
 import|;
 end_import
 
@@ -134,8 +136,6 @@ name|childNodeAdded
 argument_list|(
 literal|"."
 argument_list|,
-name|MemoryNodeState
-operator|.
 name|EMPTY_NODE
 argument_list|)
 expr_stmt|;
@@ -162,8 +162,6 @@ name|childNodeAdded
 argument_list|(
 literal|".."
 argument_list|,
-name|MemoryNodeState
-operator|.
 name|EMPTY_NODE
 argument_list|)
 expr_stmt|;
@@ -184,8 +182,6 @@ name|childNodeAdded
 argument_list|(
 literal|":name"
 argument_list|,
-name|MemoryNodeState
-operator|.
 name|EMPTY_NODE
 argument_list|)
 expr_stmt|;
@@ -212,8 +208,6 @@ name|childNodeAdded
 argument_list|(
 literal|"invalid:name"
 argument_list|,
-name|MemoryNodeState
-operator|.
 name|EMPTY_NODE
 argument_list|)
 expr_stmt|;
@@ -233,8 +227,6 @@ name|childNodeAdded
 argument_list|(
 literal|"valid:name"
 argument_list|,
-name|MemoryNodeState
-operator|.
 name|EMPTY_NODE
 argument_list|)
 expr_stmt|;
@@ -261,8 +253,6 @@ name|childNodeAdded
 argument_list|(
 literal|"invalid/name"
 argument_list|,
-name|MemoryNodeState
-operator|.
 name|EMPTY_NODE
 argument_list|)
 expr_stmt|;
@@ -289,8 +279,6 @@ name|childNodeAdded
 argument_list|(
 literal|"name[1]"
 argument_list|,
-name|MemoryNodeState
-operator|.
 name|EMPTY_NODE
 argument_list|)
 expr_stmt|;
@@ -310,8 +298,6 @@ name|childNodeAdded
 argument_list|(
 literal|"name"
 argument_list|,
-name|MemoryNodeState
-operator|.
 name|EMPTY_NODE
 argument_list|)
 expr_stmt|;
@@ -331,8 +317,6 @@ name|childNodeDeleted
 argument_list|(
 literal|"."
 argument_list|,
-name|MemoryNodeState
-operator|.
 name|EMPTY_NODE
 argument_list|)
 expr_stmt|;
@@ -342,8 +326,6 @@ name|childNodeDeleted
 argument_list|(
 literal|".."
 argument_list|,
-name|MemoryNodeState
-operator|.
 name|EMPTY_NODE
 argument_list|)
 expr_stmt|;
@@ -353,8 +335,6 @@ name|childNodeDeleted
 argument_list|(
 literal|"valid:name"
 argument_list|,
-name|MemoryNodeState
-operator|.
 name|EMPTY_NODE
 argument_list|)
 expr_stmt|;
@@ -364,8 +344,6 @@ name|childNodeDeleted
 argument_list|(
 literal|"invalid:name"
 argument_list|,
-name|MemoryNodeState
-operator|.
 name|EMPTY_NODE
 argument_list|)
 expr_stmt|;
@@ -375,8 +353,6 @@ name|childNodeDeleted
 argument_list|(
 literal|"invalid/name"
 argument_list|,
-name|MemoryNodeState
-operator|.
 name|EMPTY_NODE
 argument_list|)
 expr_stmt|;

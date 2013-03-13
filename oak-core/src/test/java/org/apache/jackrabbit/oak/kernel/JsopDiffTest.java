@@ -177,6 +177,26 @@ name|assertEquals
 import|;
 end_import
 
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|memory
+operator|.
+name|EmptyNodeState
+operator|.
+name|EMPTY_NODE
+import|;
+end_import
+
 begin_class
 specifier|public
 class|class
@@ -371,8 +391,6 @@ decl_stmt|;
 name|NodeState
 name|before
 init|=
-name|MemoryNodeState
-operator|.
 name|EMPTY_NODE
 decl_stmt|;
 name|NodeState
@@ -408,8 +426,6 @@ name|of
 argument_list|(
 literal|"x"
 argument_list|,
-name|MemoryNodeState
-operator|.
 name|EMPTY_NODE
 argument_list|)
 argument_list|)

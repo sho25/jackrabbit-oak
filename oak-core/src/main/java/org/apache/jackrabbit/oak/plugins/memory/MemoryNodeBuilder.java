@@ -243,6 +243,26 @@ name|plugins
 operator|.
 name|memory
 operator|.
+name|EmptyNodeState
+operator|.
+name|EMPTY_NODE
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|memory
+operator|.
 name|ModifiedNodeState
 operator|.
 name|with
@@ -1859,8 +1879,6 @@ name|this
 operator|.
 name|base
 operator|=
-name|MemoryNodeState
-operator|.
 name|EMPTY_NODE
 expr_stmt|;
 block|}
