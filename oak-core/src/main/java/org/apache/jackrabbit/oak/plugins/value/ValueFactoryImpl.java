@@ -495,25 +495,7 @@ name|namePathMapper
 argument_list|)
 return|;
 block|}
-comment|/**      * Utility method for creating a {@code Value} based on a {@code PropertyState}.      * @param property  The property state      * @return  New {@code Value} instance      * @throws IllegalArgumentException if {@code property.isArray()} is {@code true}.      */
-specifier|public
-name|Value
-name|createValue
-parameter_list|(
-name|PropertyState
-name|property
-parameter_list|)
-block|{
-return|return
-operator|new
-name|ValueImpl
-argument_list|(
-name|property
-argument_list|,
-name|namePathMapper
-argument_list|)
-return|;
-block|}
+comment|/**      * Utility method for creating a {@code Value} based on a {@code PropertyValue}.      * @param property  The property value      * @param namePathMapper The name/path mapping used for converting JCR names/paths to      * the internal representation.      * @return  New {@code Value} instance      * @throws IllegalArgumentException if {@code property.isArray()} is {@code true}.      */
 specifier|public
 specifier|static
 name|Value
@@ -524,30 +506,6 @@ name|property
 parameter_list|,
 name|NamePathMapper
 name|namePathMapper
-parameter_list|)
-block|{
-return|return
-operator|new
-name|ValueImpl
-argument_list|(
-name|PropertyValues
-operator|.
-name|create
-argument_list|(
-name|property
-argument_list|)
-argument_list|,
-name|namePathMapper
-argument_list|)
-return|;
-block|}
-comment|/**      * Utility method for creating a {@code Value} based on a {@code PropertyValue}.      * @param property  The property value      * @return  New {@code Value} instance      * @throws IllegalArgumentException if {@code property.isArray()} is {@code true}.      */
-specifier|public
-name|Value
-name|createValue
-parameter_list|(
-name|PropertyValue
-name|property
 parameter_list|)
 block|{
 return|return

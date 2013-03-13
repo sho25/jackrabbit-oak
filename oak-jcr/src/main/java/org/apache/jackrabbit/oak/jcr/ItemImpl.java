@@ -83,6 +83,16 @@ name|javax
 operator|.
 name|jcr
 operator|.
+name|ValueFactory
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|jcr
+operator|.
 name|nodetype
 operator|.
 name|ConstraintViolationException
@@ -212,24 +222,6 @@ operator|.
 name|nodetype
 operator|.
 name|DefinitionProvider
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|plugins
-operator|.
-name|value
-operator|.
-name|ValueFactoryImpl
 import|;
 end_import
 
@@ -914,7 +906,7 @@ block|}
 comment|/**      * Returns the value factory associated with the editing session.      *      * @return the value factory      */
 annotation|@
 name|Nonnull
-name|ValueFactoryImpl
+name|ValueFactory
 name|getValueFactory
 parameter_list|()
 block|{

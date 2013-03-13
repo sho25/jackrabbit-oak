@@ -267,6 +267,24 @@ name|SessionDelegate
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|value
+operator|.
+name|ValueFactoryImpl
+import|;
+end_import
+
 begin_comment
 comment|/**  * The implementation of the corresponding JCR interface.  */
 end_comment
@@ -1048,14 +1066,16 @@ block|}
 else|else
 block|{
 return|return
-name|sessionContext
-operator|.
-name|getValueFactory
-argument_list|()
+name|ValueFactoryImpl
 operator|.
 name|createValue
 argument_list|(
 name|value
+argument_list|,
+name|sessionContext
+operator|.
+name|getNamePathMapper
+argument_list|()
 argument_list|)
 return|;
 block|}
