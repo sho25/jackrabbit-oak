@@ -597,6 +597,7 @@ name|class
 argument_list|)
 decl_stmt|;
 specifier|private
+specifier|final
 name|SessionContext
 name|sessionContext
 decl_stmt|;
