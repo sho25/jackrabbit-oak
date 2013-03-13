@@ -571,18 +571,6 @@ argument_list|,
 name|uid
 argument_list|)
 expr_stmt|;
-name|testSession
-operator|=
-name|getTestSession
-argument_list|()
-expr_stmt|;
-name|testAcMgr
-operator|=
-name|getAccessControlManager
-argument_list|(
-name|testSession
-argument_list|)
-expr_stmt|;
 comment|// create some nodes below the test root in order to apply ac-stuff
 name|Node
 name|node
@@ -702,6 +690,18 @@ name|n2
 operator|.
 name|getPath
 argument_list|()
+expr_stmt|;
+name|testSession
+operator|=
+name|getTestSession
+argument_list|()
+expr_stmt|;
+name|testAcMgr
+operator|=
+name|getAccessControlManager
+argument_list|(
+name|testSession
+argument_list|)
 expr_stmt|;
 comment|/*         precondition:         testuser must have READ-only permission on test-node and below         */
 name|assertReadOnly
