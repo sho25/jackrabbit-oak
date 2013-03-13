@@ -286,6 +286,22 @@ name|MongoDocumentStore
 implements|implements
 name|DocumentStore
 block|{
+comment|/**      * Marker instance to be used as a value in cache to indicate that no value exist for given key as Guava      * cache does not allow null values      */
+specifier|static
+specifier|final
+name|Map
+argument_list|<
+name|String
+argument_list|,
+name|Object
+argument_list|>
+name|NULL_VAL
+init|=
+name|Collections
+operator|.
+name|emptyMap
+argument_list|()
+decl_stmt|;
 specifier|private
 specifier|static
 specifier|final
@@ -333,23 +349,6 @@ argument_list|>
 argument_list|>
 name|cache
 decl_stmt|;
-comment|/**      * Marker instance to be used as a value in cache to indicate that no value exist for given key as Guava      * cache does not allow null values      */
-specifier|private
-specifier|static
-specifier|final
-name|Map
-argument_list|<
-name|String
-argument_list|,
-name|Object
-argument_list|>
-name|NULL_VAL
-init|=
-name|Collections
-operator|.
-name|emptyMap
-argument_list|()
-decl_stmt|;
 specifier|public
 name|MongoDocumentStore
 parameter_list|(
@@ -371,9 +370,14 @@ name|toString
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|ensureIndex
-argument_list|()
-expr_stmt|;
+comment|// the _id field is the primary key, so we don't need to define it
+comment|// the following code is just a template in case we need more indexes
+comment|// DBObject index = new BasicDBObject();
+comment|// index.put(KEY_PATH, 1L);
+comment|// DBObject options = new BasicDBObject();
+comment|// options.put("unique", Boolean.TRUE);
+comment|// nodesCollection.ensureIndex(index, options);
+comment|// TODO expire entries if the parent was changed
 name|cache
 operator|=
 name|CacheBuilder
@@ -513,35 +517,6 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|DBCollection
-name|dbCollection
-init|=
-name|getDBCollection
-argument_list|(
-name|collection
-argument_list|)
-decl_stmt|;
-name|long
-name|start
-init|=
-name|start
-argument_list|()
-decl_stmt|;
-try|try
-block|{
-name|DBObject
-name|doc
-init|=
-name|dbCollection
-operator|.
-name|findOne
-argument_list|(
-name|getByPathQuery
-argument_list|(
-name|path
-argument_list|)
-argument_list|)
-decl_stmt|;
 name|Map
 argument_list|<
 name|String
@@ -550,44 +525,25 @@ name|Object
 argument_list|>
 name|result
 decl_stmt|;
-if|if
-condition|(
-name|doc
-operator|==
-literal|null
-condition|)
-block|{
-comment|//TODO Look into null handling. It might happen that some
-comment|//other cluster node create a node at given path. So caching
-comment|//this info can cause issue
-comment|//In case of null let be cached as well
 name|result
 operator|=
-name|NULL_VAL
-expr_stmt|;
-block|}
-else|else
-block|{
-name|result
-operator|=
-name|convertFromDBObject
+name|loadDocument
 argument_list|(
-name|doc
+name|collection
+argument_list|,
+name|path
 argument_list|)
 expr_stmt|;
-block|}
+comment|// support caching of null entries
 return|return
 name|result
+operator|==
+literal|null
+condition|?
+name|NULL_VAL
+else|:
+name|result
 return|;
-block|}
-finally|finally
-block|{
-name|end
-argument_list|(
-name|start
-argument_list|)
-expr_stmt|;
-block|}
 block|}
 block|}
 argument_list|)
@@ -619,6 +575,78 @@ argument_list|,
 name|e
 argument_list|)
 throw|;
+block|}
+block|}
+specifier|protected
+name|Map
+argument_list|<
+name|String
+argument_list|,
+name|Object
+argument_list|>
+name|loadDocument
+parameter_list|(
+name|Collection
+name|collection
+parameter_list|,
+name|String
+name|path
+parameter_list|)
+block|{
+name|DBCollection
+name|dbCollection
+init|=
+name|getDBCollection
+argument_list|(
+name|collection
+argument_list|)
+decl_stmt|;
+name|long
+name|start
+init|=
+name|start
+argument_list|()
+decl_stmt|;
+try|try
+block|{
+name|DBObject
+name|doc
+init|=
+name|dbCollection
+operator|.
+name|findOne
+argument_list|(
+name|getByPathQuery
+argument_list|(
+name|path
+argument_list|)
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|doc
+operator|==
+literal|null
+condition|)
+block|{
+return|return
+literal|null
+return|;
+block|}
+return|return
+name|convertFromDBObject
+argument_list|(
+name|doc
+argument_list|)
+return|;
+block|}
+finally|finally
+block|{
+name|end
+argument_list|(
+name|start
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 annotation|@
@@ -1659,19 +1687,6 @@ name|start
 argument_list|)
 expr_stmt|;
 block|}
-block|}
-specifier|private
-name|void
-name|ensureIndex
-parameter_list|()
-block|{
-comment|// the _id field is the primary key, so we don't need to define it
-comment|// the following code is just a template in case we need more indexes
-comment|// DBObject index = new BasicDBObject();
-comment|// index.put(KEY_PATH, 1L);
-comment|// DBObject options = new BasicDBObject();
-comment|// options.put("unique", Boolean.TRUE);
-comment|// nodesCollection.ensureIndex(index, options);
 block|}
 specifier|private
 specifier|static
