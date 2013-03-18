@@ -1762,6 +1762,7 @@ name|diff
 argument_list|)
 expr_stmt|;
 comment|// special case
+return|return;
 block|}
 elseif|else
 if|if
