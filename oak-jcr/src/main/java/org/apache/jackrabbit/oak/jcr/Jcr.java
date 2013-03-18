@@ -273,7 +273,7 @@ name|plugins
 operator|.
 name|nodetype
 operator|.
-name|RegistrationValidatorProvider
+name|RegistrationEditorProvider
 import|;
 end_import
 
@@ -588,7 +588,7 @@ expr_stmt|;
 name|with
 argument_list|(
 operator|new
-name|RegistrationValidatorProvider
+name|RegistrationEditorProvider
 argument_list|()
 argument_list|)
 expr_stmt|;
