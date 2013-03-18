@@ -169,6 +169,24 @@ name|spi
 operator|.
 name|commit
 operator|.
+name|DefaultValidator
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|commit
+operator|.
 name|Validator
 import|;
 end_import
@@ -288,8 +306,8 @@ end_comment
 begin_class
 class|class
 name|PermissionValidator
-implements|implements
-name|Validator
+extends|extends
+name|DefaultValidator
 block|{
 comment|/* TODO      * - Renaming nodes or Move with same parent are reflected as remove+add -> needs special handling      * - Proper handling of jcr:nodeTypeManagement privilege.      */
 specifier|private

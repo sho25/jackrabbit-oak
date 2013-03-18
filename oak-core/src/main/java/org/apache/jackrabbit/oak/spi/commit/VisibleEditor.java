@@ -103,8 +103,8 @@ begin_class
 specifier|public
 class|class
 name|VisibleEditor
-implements|implements
-name|Editor
+extends|extends
+name|DefaultEditor
 block|{
 annotation|@
 name|CheckForNull
