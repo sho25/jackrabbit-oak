@@ -554,6 +554,8 @@ operator|new
 name|AccessControlValidatorProvider
 argument_list|(
 name|securityProvider
+argument_list|,
+name|workspaceName
 argument_list|)
 argument_list|)
 return|;

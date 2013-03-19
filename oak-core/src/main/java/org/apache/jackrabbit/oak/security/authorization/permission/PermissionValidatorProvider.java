@@ -504,6 +504,8 @@ name|createTree
 argument_list|(
 name|before
 argument_list|)
+argument_list|,
+name|workspaceName
 argument_list|)
 argument_list|,
 name|principals

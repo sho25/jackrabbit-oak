@@ -1334,7 +1334,7 @@ name|hasEvents
 argument_list|()
 return|;
 block|}
-comment|//------------------------------------------------------------< NamePathMapper>---
+comment|//-----------------------------------------------------< NamePathMapper>---
 annotation|@
 name|Override
 annotation|@
@@ -1627,6 +1627,24 @@ block|{
 name|observationManager
 operator|.
 name|dispose
+argument_list|()
+expr_stmt|;
+block|}
+block|}
+name|void
+name|refresh
+parameter_list|()
+block|{
+if|if
+condition|(
+name|permissionProvider
+operator|!=
+literal|null
+condition|)
+block|{
+name|permissionProvider
+operator|.
+name|refresh
 argument_list|()
 expr_stmt|;
 block|}

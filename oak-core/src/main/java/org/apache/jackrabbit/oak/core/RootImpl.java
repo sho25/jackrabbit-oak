@@ -1973,6 +1973,16 @@ return|return
 name|permissionProvider
 return|;
 block|}
+annotation|@
+name|Nonnull
+name|String
+name|getWorkspaceName
+parameter_list|()
+block|{
+return|return
+name|workspaceName
+return|;
+block|}
 comment|//------------------------------------------------------------< private>---
 comment|/**      * Purge all pending changes to the underlying {@link NodeStoreBranch}.      */
 specifier|private

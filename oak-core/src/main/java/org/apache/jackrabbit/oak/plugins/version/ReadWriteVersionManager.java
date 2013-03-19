@@ -677,6 +677,8 @@ name|workspaceRoot
 operator|.
 name|getNodeState
 argument_list|()
+argument_list|,
+literal|null
 argument_list|)
 return|;
 block|}

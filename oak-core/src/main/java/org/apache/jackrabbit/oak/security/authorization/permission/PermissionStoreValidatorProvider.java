@@ -121,6 +121,20 @@ name|NodeState
 import|;
 end_import
 
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|JcrConstants
+operator|.
+name|JCR_SYSTEM
+import|;
+end_import
+
 begin_comment
 comment|/**  * Validator implementation that asserts that the permission store is read-only.  */
 end_comment
@@ -164,7 +178,9 @@ name|SubtreeValidator
 argument_list|(
 name|validator
 argument_list|,
-name|PERMISSIONS_STORE_PATH
+name|JCR_SYSTEM
+argument_list|,
+name|REP_PERMISSION_STORE
 argument_list|)
 return|;
 block|}

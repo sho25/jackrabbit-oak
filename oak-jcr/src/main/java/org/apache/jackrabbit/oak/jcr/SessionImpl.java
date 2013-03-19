@@ -1756,6 +1756,11 @@ operator|.
 name|save
 argument_list|()
 expr_stmt|;
+name|sessionContext
+operator|.
+name|refresh
+argument_list|()
+expr_stmt|;
 block|}
 end_function
 
@@ -1781,6 +1786,11 @@ name|refresh
 argument_list|(
 name|keepChanges
 argument_list|)
+expr_stmt|;
+name|sessionContext
+operator|.
+name|refresh
+argument_list|()
 expr_stmt|;
 block|}
 end_function

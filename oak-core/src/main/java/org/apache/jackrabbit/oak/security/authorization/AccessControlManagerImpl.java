@@ -1168,8 +1168,7 @@ name|absPath
 argument_list|,
 name|privileges
 argument_list|,
-name|getPermissionProvider
-argument_list|()
+name|permissionProvider
 argument_list|)
 return|;
 block|}
@@ -1195,8 +1194,7 @@ name|getPrivileges
 argument_list|(
 name|absPath
 argument_list|,
-name|getPermissionProvider
-argument_list|()
+name|permissionProvider
 argument_list|)
 return|;
 block|}

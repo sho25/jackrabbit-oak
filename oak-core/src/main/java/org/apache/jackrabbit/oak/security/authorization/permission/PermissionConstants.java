@@ -88,6 +88,8 @@ comment|/**      * @since OAK 1.0      */
 name|String
 name|PERMISSIONS_STORE_PATH
 init|=
+literal|'/'
+operator|+
 name|JcrConstants
 operator|.
 name|JCR_SYSTEM
