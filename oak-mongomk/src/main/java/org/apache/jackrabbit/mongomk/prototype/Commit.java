@@ -590,16 +590,27 @@ name|path
 argument_list|)
 expr_stmt|;
 block|}
-name|boolean
-name|isEmpty
+comment|/**      * Apply the changes to the document store and the cache.      */
+name|void
+name|apply
 parameter_list|()
 block|{
-return|return
+if|if
+condition|(
+operator|!
 name|operations
 operator|.
 name|isEmpty
 argument_list|()
-return|;
+condition|)
+block|{
+name|applyToDocumentStore
+argument_list|()
+expr_stmt|;
+name|applyToCache
+argument_list|()
+expr_stmt|;
+block|}
 block|}
 comment|/**      * Apply the changes to the document store (to update MongoDB).      *       * @param store the store      */
 name|void

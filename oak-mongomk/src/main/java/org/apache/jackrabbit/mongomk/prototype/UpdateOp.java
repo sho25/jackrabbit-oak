@@ -46,6 +46,7 @@ specifier|public
 class|class
 name|UpdateOp
 block|{
+comment|/**      * The node id, which contains the depth of the path      * (0 for root, 1 for children of the root), and then the path.      */
 specifier|static
 specifier|final
 name|String
@@ -53,6 +54,7 @@ name|ID
 init|=
 literal|"_id"
 decl_stmt|;
+comment|/**      * The number of write operations to this node.      */
 specifier|static
 specifier|final
 name|String
@@ -60,6 +62,7 @@ name|WRITE_COUNT
 init|=
 literal|"_writeCount"
 decl_stmt|;
+comment|/**      * The list of recent revisions against this node, where this node is the      * root of the commit.      */
 specifier|static
 specifier|final
 name|String
@@ -67,6 +70,7 @@ name|REVISIONS
 init|=
 literal|"_revisions"
 decl_stmt|;
+comment|/**      * The number of previous documents (documents that contain old revisions of      * this node). This property is only set if multiple documents per node      * exist. This is the case when a node is updated very often in a short      * time, such that the document gets very big.      */
 specifier|static
 specifier|final
 name|String
@@ -74,12 +78,20 @@ name|PREVIOUS
 init|=
 literal|"_prev"
 decl_stmt|;
+comment|/**      * Whether this node is      */
 specifier|static
 specifier|final
 name|String
 name|DELETED
 init|=
 literal|"_deleted"
+decl_stmt|;
+specifier|static
+specifier|final
+name|String
+name|MODIFIED
+init|=
+literal|"_modified"
 decl_stmt|;
 specifier|final
 name|String
