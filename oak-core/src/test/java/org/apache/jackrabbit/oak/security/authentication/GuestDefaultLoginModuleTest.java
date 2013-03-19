@@ -13,13 +13,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|spi
-operator|.
 name|security
 operator|.
 name|authentication
-operator|.
-name|user
 package|;
 end_package
 
@@ -127,13 +123,13 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|spi
-operator|.
 name|security
 operator|.
 name|authentication
 operator|.
-name|GuestLoginModule
+name|user
+operator|.
+name|LoginModuleImpl
 import|;
 end_import
 
@@ -153,9 +149,7 @@ name|security
 operator|.
 name|authentication
 operator|.
-name|user
-operator|.
-name|LoginModuleImpl
+name|GuestLoginModule
 import|;
 end_import
 

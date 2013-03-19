@@ -13,8 +13,6 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|spi
-operator|.
 name|security
 operator|.
 name|authentication
@@ -111,6 +109,50 @@ begin_import
 import|import
 name|org
 operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|security
+operator|.
+name|authentication
+operator|.
+name|token
+operator|.
+name|TokenInfo
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|security
+operator|.
+name|authentication
+operator|.
+name|token
+operator|.
+name|TokenProvider
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|slf4j
 operator|.
 name|Logger
@@ -128,7 +170,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Implementation of the {@code Authentication} interface that deals with  * token based login. {@link #authenticate(javax.jcr.Credentials) Authentication}  * will be successful if the specified credentials are valid {@link TokenCredentials}  * according to the characteristics and constraints enforced by {@link TokenProvider}  * and the information obtained using {@link TokenProvider#getTokenInfo(String)}  * respectively.  */
+comment|/**  * Implementation of the {@code Authentication} interface that deals with  * token based login. {@link #authenticate(javax.jcr.Credentials) Authentication}  * will be successful if the specified credentials are valid {@link TokenCredentials}  * according to the characteristics and constraints enforced by {@link org.apache.jackrabbit.oak.spi.security.authentication.token.TokenProvider}  * and the information obtained using {@link org.apache.jackrabbit.oak.spi.security.authentication.token.TokenProvider#getTokenInfo(String)}  * respectively.  */
 end_comment
 
 begin_class

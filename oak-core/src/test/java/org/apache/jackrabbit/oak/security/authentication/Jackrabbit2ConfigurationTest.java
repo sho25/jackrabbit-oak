@@ -13,8 +13,6 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|spi
-operator|.
 name|security
 operator|.
 name|authentication
@@ -101,9 +99,7 @@ name|security
 operator|.
 name|authentication
 operator|.
-name|token
-operator|.
-name|TokenDefaultLoginModuleTest
+name|ConfigurationUtil
 import|;
 end_import
 
