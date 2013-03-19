@@ -600,6 +600,9 @@ name|root
 parameter_list|,
 name|NamePathMapper
 name|namePathMapper
+parameter_list|,
+name|PermissionProvider
+name|permissionProvider
 parameter_list|)
 block|{
 return|return
@@ -611,6 +614,8 @@ argument_list|,
 name|namePathMapper
 argument_list|,
 name|securityProvider
+argument_list|,
+name|permissionProvider
 argument_list|)
 return|;
 block|}

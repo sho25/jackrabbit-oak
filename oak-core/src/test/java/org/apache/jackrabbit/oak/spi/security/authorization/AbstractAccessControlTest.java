@@ -367,6 +367,12 @@ name|Root
 name|root
 parameter_list|)
 block|{
+name|PermissionProvider
+name|pp
+init|=
+literal|null
+decl_stmt|;
+comment|// TODO
 name|AccessControlManager
 name|acMgr
 init|=
@@ -382,6 +388,8 @@ argument_list|,
 name|NamePathMapper
 operator|.
 name|DEFAULT
+argument_list|,
+name|pp
 argument_list|)
 decl_stmt|;
 if|if
