@@ -916,7 +916,7 @@ name|lastMove
 argument_list|)
 expr_stmt|;
 block|}
-comment|// TODO: review if this constructor really makes sense and cannot be replaced.
+comment|// TODO: review if these constructors really make sense and cannot be replaced.
 specifier|public
 name|RootImpl
 parameter_list|(
@@ -924,7 +924,6 @@ name|NodeStore
 name|store
 parameter_list|)
 block|{
-comment|// FIXME: define proper default or pass workspace name with the constructor
 name|this
 argument_list|(
 name|store
@@ -932,6 +931,25 @@ argument_list|,
 name|EmptyHook
 operator|.
 name|INSTANCE
+argument_list|)
+expr_stmt|;
+block|}
+specifier|public
+name|RootImpl
+parameter_list|(
+name|NodeStore
+name|store
+parameter_list|,
+name|CommitHook
+name|hook
+parameter_list|)
+block|{
+comment|// FIXME: define proper default or pass workspace name with the constructor
+name|this
+argument_list|(
+name|store
+argument_list|,
+name|hook
 argument_list|,
 name|Oak
 operator|.

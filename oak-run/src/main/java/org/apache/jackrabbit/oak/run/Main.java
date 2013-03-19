@@ -311,7 +311,7 @@ name|plugins
 operator|.
 name|nodetype
 operator|.
-name|TypeValidatorProvider
+name|TypeEditorProvider
 import|;
 end_import
 
@@ -1115,7 +1115,7 @@ operator|.
 name|with
 argument_list|(
 operator|new
-name|TypeValidatorProvider
+name|TypeEditorProvider
 argument_list|()
 argument_list|)
 operator|.

@@ -914,8 +914,12 @@ name|addChild
 argument_list|(
 name|JCR_PROPERTYDEFINITION
 operator|+
+literal|"["
+operator|+
 name|pdn
 operator|++
+operator|+
+literal|"]"
 argument_list|)
 decl_stmt|;
 name|tree
@@ -969,8 +973,12 @@ name|addChild
 argument_list|(
 name|JCR_CHILDNODEDEFINITION
 operator|+
+literal|"["
+operator|+
 name|ndn
 operator|++
+operator|+
+literal|"]"
 argument_list|)
 decl_stmt|;
 name|tree
