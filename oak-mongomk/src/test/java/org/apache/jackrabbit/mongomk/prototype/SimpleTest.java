@@ -489,6 +489,22 @@ argument_list|(
 literal|true
 argument_list|)
 decl_stmt|;
+comment|// mark as commit root
+name|op
+operator|.
+name|addMapEntry
+argument_list|(
+name|UpdateOp
+operator|.
+name|REVISIONS
+operator|+
+literal|"."
+operator|+
+name|rev
+argument_list|,
+literal|"true"
+argument_list|)
+expr_stmt|;
 name|DocumentStore
 name|s
 init|=
