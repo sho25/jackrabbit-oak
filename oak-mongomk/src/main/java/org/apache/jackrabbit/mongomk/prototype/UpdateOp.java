@@ -54,15 +54,15 @@ name|ID
 init|=
 literal|"_id"
 decl_stmt|;
-comment|/**      * The number of write operations to this node.      */
+comment|/**      * The last revision. Key: machine id, value: revision.      */
 specifier|static
 specifier|final
 name|String
-name|WRITE_COUNT
+name|LAST_REV
 init|=
-literal|"_writeCount"
+literal|"_lastRev"
 decl_stmt|;
-comment|/**      * The list of recent revisions against this node, where this node is the      * root of the commit.      */
+comment|/**      * The list of recent revisions for this node, where this node is the      * root of the commit. Key: revision, value: true.      */
 specifier|static
 specifier|final
 name|String
@@ -86,7 +86,7 @@ name|PREVIOUS
 init|=
 literal|"_prev"
 decl_stmt|;
-comment|/**      * Whether this node is      */
+comment|/**      * Whether this node is deleted. Key: revision, value: true/false.      */
 specifier|static
 specifier|final
 name|String
@@ -94,6 +94,7 @@ name|DELETED
 init|=
 literal|"_deleted"
 decl_stmt|;
+comment|/**      * The modified time (5 second resolution).      */
 specifier|static
 specifier|final
 name|String
