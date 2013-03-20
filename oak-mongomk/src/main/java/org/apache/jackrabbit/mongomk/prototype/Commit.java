@@ -612,7 +612,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Apply the changes to the document store (to update MongoDB).      *       * @param store the store      */
+comment|/**      * Apply the changes to the document store (to update MongoDB).      */
 name|void
 name|applyToDocumentStore
 parameter_list|()
@@ -723,6 +723,16 @@ block|}
 block|}
 block|}
 block|}
+name|int
+name|commitRootDepth
+init|=
+name|PathUtils
+operator|.
+name|getDepth
+argument_list|(
+name|commitRoot
+argument_list|)
+decl_stmt|;
 comment|// create a "root of the commit" if there is none
 name|UpdateOp
 name|root
@@ -804,17 +814,33 @@ operator|.
 name|isNew
 condition|)
 block|{
-comment|// no updates, so we just add the root like the others
+comment|// no updates and root of commit is also new. that is,
+comment|// it is the root of a subtree added in a commit.
+comment|// so we just add the root like the others
+name|root
+operator|.
+name|addMapEntry
+argument_list|(
+name|UpdateOp
+operator|.
+name|REVISIONS
+operator|+
+literal|"."
+operator|+
+name|revision
+operator|.
+name|toString
+argument_list|()
+argument_list|,
+literal|"true"
+argument_list|)
+expr_stmt|;
 name|newNodes
 operator|.
 name|add
 argument_list|(
 name|root
 argument_list|)
-expr_stmt|;
-name|root
-operator|=
-literal|null
 expr_stmt|;
 block|}
 try|try
@@ -829,6 +855,42 @@ operator|>
 literal|0
 condition|)
 block|{
+comment|// set commit root on new nodes
+for|for
+control|(
+name|UpdateOp
+name|op
+range|:
+name|newNodes
+control|)
+block|{
+if|if
+condition|(
+name|op
+operator|!=
+name|root
+condition|)
+block|{
+name|op
+operator|.
+name|addMapEntry
+argument_list|(
+name|UpdateOp
+operator|.
+name|COMMIT_ROOT
+operator|+
+literal|"."
+operator|+
+name|revision
+operator|.
+name|toString
+argument_list|()
+argument_list|,
+name|commitRootDepth
+argument_list|)
+expr_stmt|;
+block|}
+block|}
 if|if
 condition|(
 operator|!
@@ -908,6 +970,25 @@ range|:
 name|changedNodes
 control|)
 block|{
+comment|// set commit root on changed nodes
+name|op
+operator|.
+name|addMapEntry
+argument_list|(
+name|UpdateOp
+operator|.
+name|COMMIT_ROOT
+operator|+
+literal|"."
+operator|+
+name|revision
+operator|.
+name|toString
+argument_list|()
+argument_list|,
+name|commitRootDepth
+argument_list|)
+expr_stmt|;
 name|createOrUpdateNode
 argument_list|(
 name|store
@@ -916,11 +997,21 @@ name|op
 argument_list|)
 expr_stmt|;
 block|}
+comment|// finally write commit, unless it was already written
+comment|// with added nodes.
 if|if
 condition|(
-name|root
+name|changedNodes
+operator|.
+name|size
+argument_list|()
 operator|!=
-literal|null
+literal|0
+operator|||
+operator|!
+name|root
+operator|.
+name|isNew
 condition|)
 block|{
 name|long

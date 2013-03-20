@@ -70,6 +70,14 @@ name|REVISIONS
 init|=
 literal|"_revisions"
 decl_stmt|;
+comment|/**      * The list of revision to root commit depth mappings to find out if a      * revision is actually committed.      */
+specifier|static
+specifier|final
+name|String
+name|COMMIT_ROOT
+init|=
+literal|"_commitRoot"
+decl_stmt|;
 comment|/**      * The number of previous documents (documents that contain old revisions of      * this node). This property is only set if multiple documents per node      * exist. This is the case when a node is updated very often in a short      * time, such that the document gets very big.      */
 specifier|static
 specifier|final
@@ -126,7 +134,7 @@ name|Operation
 argument_list|>
 argument_list|()
 decl_stmt|;
-comment|/**      * Create an update operation for the given document. The commit root is assumed      * to be the path, unless this is changed later on.      *       * @param path the node path (for nodes)      * @param key the primary key      * @param isNew whether this is a new document      * @param isDelete whether the _deleted property is set       * @param rev the revision      */
+comment|/**      * Create an update operation for the given document. The commit root is assumed      * to be the path, unless this is changed later on.      *       * @param path the node path (for nodes)      * @param key the primary key      * @param isNew whether this is a new document      */
 name|UpdateOp
 parameter_list|(
 name|String
@@ -371,7 +379,7 @@ name|property
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Increment the value.      *       * @param key the key      * @param value the increment      */
+comment|/**      * Increment the value.      *       * @param property the key      * @param value the increment      */
 name|void
 name|increment
 parameter_list|(
