@@ -1549,9 +1549,6 @@ argument_list|,
 name|op
 operator|.
 name|value
-operator|.
-name|toString
-argument_list|()
 argument_list|)
 decl_stmt|;
 name|inserts
