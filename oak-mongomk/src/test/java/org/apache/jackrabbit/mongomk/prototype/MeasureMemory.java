@@ -75,7 +75,7 @@ specifier|final
 name|boolean
 name|TRACE
 init|=
-literal|true
+literal|false
 decl_stmt|;
 specifier|static
 specifier|final
