@@ -921,8 +921,6 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-annotation|@
-name|Ignore
 specifier|public
 name|void
 name|diff
@@ -999,7 +997,7 @@ name|commit
 argument_list|(
 literal|"/"
 argument_list|,
-literal|"^\"t2/x\":1"
+literal|"^\"t3/x\":1"
 argument_list|,
 literal|null
 argument_list|,
@@ -1247,7 +1245,7 @@ argument_list|()
 decl_stmt|;
 name|assertEquals
 argument_list|(
-literal|"^\"/t2\":{}"
+literal|"^\"/t3\":{}"
 argument_list|,
 name|diff34
 argument_list|)
@@ -2047,134 +2045,6 @@ annotation|@
 name|Test
 specifier|public
 name|void
-name|cache
-parameter_list|()
-block|{
-name|MongoMK
-name|mk
-init|=
-name|createMK
-argument_list|()
-decl_stmt|;
-comment|// BAD
-name|String
-name|rev
-init|=
-name|mk
-operator|.
-name|commit
-argument_list|(
-literal|"/"
-argument_list|,
-literal|"+\"testRoot\":{} +\"index\":{}"
-argument_list|,
-literal|null
-argument_list|,
-literal|null
-argument_list|)
-decl_stmt|;
-comment|// GOOD
-comment|//        String rev = mk.commit("/", "+\"testRoot\":{} ", null, null);
-name|String
-name|test
-init|=
-name|mk
-operator|.
-name|getNodes
-argument_list|(
-literal|"/"
-argument_list|,
-name|rev
-argument_list|,
-literal|0
-argument_list|,
-literal|0
-argument_list|,
-name|Integer
-operator|.
-name|MAX_VALUE
-argument_list|,
-literal|":id"
-argument_list|)
-decl_stmt|;
-comment|// System.out.println("  " + test);
-comment|//        test = mk.getNodes("/testRoot", rev, 0, 0, Integer.MAX_VALUE, ":id");
-comment|//        System.out.println("  " + test);
-name|rev
-operator|=
-name|mk
-operator|.
-name|commit
-argument_list|(
-literal|"/testRoot"
-argument_list|,
-literal|"+\"a\":{}"
-argument_list|,
-literal|null
-argument_list|,
-literal|null
-argument_list|)
-expr_stmt|;
-comment|//        test = mk.getNodes("/testRoot", rev, 0, 0, Integer.MAX_VALUE, ":id");
-comment|//        System.out.println("  " + test);
-comment|//        rev = mk.commit("/testRoot/a", "+\"b\":{}", null, null);
-comment|//        rev = mk.commit("/testRoot/a/b", "+\"c\":{} +\"d\":{}", null, null);
-comment|//        test = mk.getNodes("/testRoot", rev, 0, 0, Integer.MAX_VALUE, ":id");
-comment|//        System.out.println("  " + test);
-comment|//        test = mk.getNodes("/", rev, 0, 0, Integer.MAX_VALUE, ":id");
-comment|//        System.out.println("  " + test);
-comment|//        rev = mk.commit("/index", "+\"a\":{}", null, null);
-name|test
-operator|=
-name|mk
-operator|.
-name|getNodes
-argument_list|(
-literal|"/"
-argument_list|,
-name|rev
-argument_list|,
-literal|0
-argument_list|,
-literal|0
-argument_list|,
-name|Integer
-operator|.
-name|MAX_VALUE
-argument_list|,
-literal|":id"
-argument_list|)
-expr_stmt|;
-comment|// System.out.println("  " + test);
-comment|//        test = mk.getNodes("/testRoot", rev, 0, 0, Integer.MAX_VALUE, ":id");
-comment|//        System.out.println("  " + test);
-comment|//        assertEquals("{\"name\":\"Hello\",\":childNodeCount\":0}", test);
-comment|//
-comment|//        rev = mk.commit("/test", "+\"a\":{\"name\": \"World\"}", null, null);
-comment|//        rev = mk.commit("/test", "+\"b\":{\"name\": \"!\"}", null, null);
-comment|//        test = mk.getNodes("/test", rev, 0, 0, Integer.MAX_VALUE, null);
-comment|//        Children c;
-comment|//        c = mk.readChildren("/", "1",
-comment|//                Revision.fromString(rev), Integer.MAX_VALUE);
-comment|//        assertEquals("/: [/test]", c.toString());
-comment|//        c = mk.readChildren("/test", "2",
-comment|//                Revision.fromString(rev), Integer.MAX_VALUE);
-comment|//        assertEquals("/test: [/test/a, /test/b]", c.toString());
-comment|//
-comment|//        rev = mk.commit("", "^\"/test\":1", null, null);
-comment|//        test = mk.getNodes("/", rev, 0, 0, Integer.MAX_VALUE, null);
-comment|//        assertEquals("{\"test\":1,\"test\":{},\":childNodeCount\":1}", test);
-comment|// System.out.println(test);
-name|mk
-operator|.
-name|dispose
-argument_list|()
-expr_stmt|;
-block|}
-annotation|@
-name|Test
-specifier|public
-name|void
 name|testDeletion
 parameter_list|()
 block|{
@@ -2510,6 +2380,11 @@ argument_list|(
 operator|(
 operator|(
 name|Map
+argument_list|<
+name|?
+argument_list|,
+name|?
+argument_list|>
 operator|)
 name|rootNode
 operator|.
@@ -2552,6 +2427,11 @@ argument_list|(
 operator|(
 operator|(
 name|Map
+argument_list|<
+name|?
+argument_list|,
+name|?
+argument_list|>
 operator|)
 name|node
 operator|.
@@ -2611,6 +2491,11 @@ argument_list|,
 operator|(
 operator|(
 name|Map
+argument_list|<
+name|?
+argument_list|,
+name|?
+argument_list|>
 operator|)
 name|foo
 operator|.
@@ -2662,6 +2547,11 @@ argument_list|(
 operator|(
 operator|(
 name|Map
+argument_list|<
+name|?
+argument_list|,
+name|?
+argument_list|>
 operator|)
 name|rootNode
 operator|.
@@ -2706,6 +2596,11 @@ argument_list|,
 operator|(
 operator|(
 name|Map
+argument_list|<
+name|?
+argument_list|,
+name|?
+argument_list|>
 operator|)
 name|bar
 operator|.
@@ -2744,6 +2639,11 @@ argument_list|,
 operator|(
 operator|(
 name|Map
+argument_list|<
+name|?
+argument_list|,
+name|?
+argument_list|>
 operator|)
 name|bar
 operator|.

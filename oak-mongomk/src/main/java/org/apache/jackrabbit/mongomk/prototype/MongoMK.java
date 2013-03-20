@@ -2366,16 +2366,6 @@ return|return
 literal|""
 return|;
 block|}
-comment|// TODO implement if needed
-if|if
-condition|(
-literal|true
-condition|)
-block|{
-return|return
-literal|"{}"
-return|;
-block|}
 if|if
 condition|(
 name|depth
@@ -2712,14 +2702,24 @@ argument_list|,
 name|toRev
 argument_list|)
 decl_stmt|;
+comment|// this is not fully correct:
+comment|// a change is detected if the node changed recently,
+comment|// even if the revisions are well in the past
+comment|// if this is a problem it would need to be changed
 if|if
 condition|(
 operator|!
 name|n1
 operator|.
+name|getId
+argument_list|()
+operator|.
 name|equals
 argument_list|(
 name|n2
+operator|.
+name|getId
+argument_list|()
 argument_list|)
 condition|)
 block|{
