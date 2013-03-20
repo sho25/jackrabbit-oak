@@ -4137,14 +4137,6 @@ name|propRev
 argument_list|,
 name|maxRev
 argument_list|)
-operator|||
-operator|!
-name|isValidRevision
-argument_list|(
-name|propRev
-argument_list|,
-name|nodeMap
-argument_list|)
 condition|)
 block|{
 continue|continue;
