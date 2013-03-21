@@ -644,18 +644,11 @@ block|{
 return|return
 name|definition
 return|;
-block|}
-else|else
-block|{
-throw|throw
-operator|new
-name|ConstraintViolationException
-argument_list|(
-literal|"No matching definition found for property "
-operator|+
-name|propertyName
-argument_list|)
-throw|;
+comment|// TODO: Fall back to residual definitions until we have consensus on OAK-709
+comment|//                    } else {
+comment|//                        throw new ConstraintViolationException(
+comment|//                                "No matching definition found for property "
+comment|//                                        + propertyName);
 block|}
 block|}
 block|}
@@ -917,15 +910,9 @@ name|definition
 return|;
 block|}
 block|}
-throw|throw
-operator|new
-name|ConstraintViolationException
-argument_list|(
-literal|"Incorrect node type of child node "
-operator|+
-name|nodeName
-argument_list|)
-throw|;
+comment|// TODO: Fall back to residual definitions until we have consensus on OAK-709
+comment|//                    throw new ConstraintViolationException(
+comment|//                            "Incorrect node type of child node " + nodeName);
 block|}
 block|}
 block|}
