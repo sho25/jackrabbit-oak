@@ -781,6 +781,10 @@ operator|.
 name|JCR_PRIMARYTYPE
 argument_list|,
 name|NT_REP_PERMISSION_STORE
+argument_list|,
+name|Type
+operator|.
+name|NAME
 argument_list|)
 expr_stmt|;
 block|}
