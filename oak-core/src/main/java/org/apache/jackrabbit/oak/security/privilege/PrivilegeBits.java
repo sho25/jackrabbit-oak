@@ -165,6 +165,8 @@ name|security
 operator|.
 name|authorization
 operator|.
+name|permission
+operator|.
 name|Permissions
 import|;
 end_import
@@ -1630,7 +1632,7 @@ return|return
 name|perm
 return|;
 block|}
-comment|/**      * Returns {@code true} if this privilege bits includes no privileges      * at all.      *      * @return {@code true} if this privilege bits includes no privileges      *         at all; {@code false} otherwise.      * @see Permissions#NO_PERMISSION      */
+comment|/**      * Returns {@code true} if this privilege bits includes no privileges      * at all.      *      * @return {@code true} if this privilege bits includes no privileges      *         at all; {@code false} otherwise.      * @see org.apache.jackrabbit.oak.spi.security.authorization.permission.Permissions#NO_PERMISSION      */
 specifier|public
 name|boolean
 name|isEmpty

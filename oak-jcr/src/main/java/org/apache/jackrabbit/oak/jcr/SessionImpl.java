@@ -487,6 +487,8 @@ name|security
 operator|.
 name|authorization
 operator|.
+name|permission
+operator|.
 name|PermissionProvider
 import|;
 end_import
@@ -2129,7 +2131,7 @@ decl_stmt|;
 return|return
 name|permissionProvider
 operator|.
-name|hasPermission
+name|isGranted
 argument_list|(
 name|absPath
 argument_list|,

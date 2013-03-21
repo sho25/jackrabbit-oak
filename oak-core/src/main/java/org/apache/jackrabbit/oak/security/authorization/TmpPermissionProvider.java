@@ -161,6 +161,8 @@ name|security
 operator|.
 name|authorization
 operator|.
+name|permission
+operator|.
 name|PermissionProvider
 import|;
 end_import
@@ -180,6 +182,8 @@ operator|.
 name|security
 operator|.
 name|authorization
+operator|.
+name|permission
 operator|.
 name|Permissions
 import|;
@@ -527,7 +531,7 @@ annotation|@
 name|Override
 specifier|public
 name|boolean
-name|hasPermission
+name|isGranted
 parameter_list|(
 annotation|@
 name|Nonnull

@@ -103,6 +103,8 @@ name|security
 operator|.
 name|authorization
 operator|.
+name|permission
+operator|.
 name|Permissions
 import|;
 end_import
