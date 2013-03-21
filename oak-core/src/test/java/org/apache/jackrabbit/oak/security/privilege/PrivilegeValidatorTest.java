@@ -271,6 +271,10 @@ operator|.
 name|JCR_PRIMARYTYPE
 argument_list|,
 name|NT_REP_PRIVILEGE
+argument_list|,
+name|Type
+operator|.
+name|NAME
 argument_list|)
 expr_stmt|;
 return|return
