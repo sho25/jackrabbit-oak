@@ -319,6 +319,34 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|collect
+operator|.
+name|Queues
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|collect
+operator|.
+name|Sets
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -455,36 +483,8 @@ name|NodeState
 import|;
 end_import
 
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|collect
-operator|.
-name|Queues
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|collect
-operator|.
-name|Sets
-import|;
-end_import
-
 begin_comment
-comment|/**  * Editor that validates the consistency of the in-content node type registry  * under {@code /jcr:system/jcr:nodeTypes} and maintains the access-optimized  * version uncer {@code /jcr:system/oak:nodeTypes}.  *  *<ul>  *<li>validate new definitions</li>  *<li>detect collisions,</li>  *<li>prevent circular inheritance,</li>  *<li>reject modifications to definitions that render existing content invalid,</li>  *<li>prevent un-registration of built-in node types.</li>  *</ul>  */
+comment|/**  * Editor that validates the consistency of the in-content node type registry  * under {@code /jcr:system/jcr:nodeTypes} and maintains the access-optimized  * version under {@code /jcr:system/oak:nodeTypes}.  *  *<ul>  *<li>validate new definitions</li>  *<li>detect collisions,</li>  *<li>prevent circular inheritance,</li>  *<li>reject modifications to definitions that render existing content invalid,</li>  *<li>prevent un-registration of built-in node types.</li>  *</ul>  */
 end_comment
 
 begin_class
