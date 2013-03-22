@@ -629,6 +629,7 @@ name|RepositoryImpl
 name|repository
 parameter_list|)
 block|{
+comment|// FIXME don't rely on a naked map. See OAK-715
 specifier|final
 name|Map
 argument_list|<
