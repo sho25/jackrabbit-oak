@@ -2478,7 +2478,7 @@ expr_stmt|;
 block|}
 block|}
 return|return
-name|EffectiveNodeTypeImpl
+name|EffectiveNodeType
 operator|.
 name|create
 argument_list|(
