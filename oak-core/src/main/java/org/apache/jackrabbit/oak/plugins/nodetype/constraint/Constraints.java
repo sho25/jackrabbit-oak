@@ -77,6 +77,7 @@ end_import
 
 begin_class
 specifier|public
+specifier|final
 class|class
 name|Constraints
 block|{
