@@ -18,26 +18,6 @@ package|;
 end_package
 
 begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Map
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|CheckForNull
-import|;
-end_import
-
-begin_import
 import|import static
 name|com
 operator|.
@@ -66,6 +46,26 @@ operator|.
 name|Preconditions
 operator|.
 name|checkNotNull
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Map
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|CheckForNull
 import|;
 end_import
 
@@ -214,6 +214,11 @@ name|oakName
 argument_list|)
 throw|;
 block|}
+synchronized|synchronized
+init|(
+name|local
+init|)
+block|{
 for|for
 control|(
 name|Map
@@ -349,6 +354,7 @@ block|}
 block|}
 block|}
 block|}
+block|}
 return|return
 name|oakName
 return|;
@@ -409,6 +415,11 @@ name|colon
 operator|>
 literal|0
 condition|)
+block|{
+synchronized|synchronized
+init|(
+name|local
+init|)
 block|{
 name|String
 name|jcrPrefix
@@ -521,6 +532,7 @@ return|;
 block|}
 block|}
 block|}
+block|}
 return|return
 name|jcrName
 return|;
@@ -532,6 +544,11 @@ name|boolean
 name|hasSessionLocalMappings
 parameter_list|()
 block|{
+synchronized|synchronized
+init|(
+name|local
+init|)
+block|{
 return|return
 operator|!
 name|local
@@ -539,6 +556,7 @@ operator|.
 name|isEmpty
 argument_list|()
 return|;
+block|}
 block|}
 block|}
 end_class
