@@ -401,6 +401,8 @@ name|isGranted
 argument_list|(
 name|tree
 argument_list|,
+literal|null
+argument_list|,
 name|Permissions
 operator|.
 name|ALL
@@ -453,6 +455,8 @@ operator|.
 name|isGranted
 argument_list|(
 name|child
+argument_list|,
+literal|null
 argument_list|,
 name|Permissions
 operator|.
