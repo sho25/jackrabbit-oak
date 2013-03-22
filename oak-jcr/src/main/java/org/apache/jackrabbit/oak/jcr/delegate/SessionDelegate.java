@@ -20,6 +20,22 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkNotNull
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -243,24 +259,8 @@ name|LoggerFactory
 import|;
 end_import
 
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|Preconditions
-operator|.
-name|checkNotNull
-import|;
-end_import
-
 begin_comment
-comment|/**  * TODO document  *  *  * Responsibilities of JCR Impl classes:  * * name/path mapping for both method arguments and return values  * ** NamePathMapper should be in SessionImpl instead of SessionDelegate  * * tracking and instantiation of other JCR Impl objects  * ** Delegate classes should refer to neither the JCR API nor the Impl classes  * ** Values should be returned as PropertyState instances that are mapped to JCR Values by an Impl class  *  * Delegate classes  * * access to the Oak API  * * the checkStatus() and perform() logic  * ** Something like:  * *** all the "business logic" associated with complex operations  * *** the complex SessionObject classes from Impl classes should be pushed down to Delegates  * *** dlg.perform(dlg.getSomeOperation(oakName, ...))  *  */
+comment|/**  * TODO document  */
 end_comment
 
 begin_class
