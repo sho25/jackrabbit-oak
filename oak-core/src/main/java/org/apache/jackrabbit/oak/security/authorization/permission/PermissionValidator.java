@@ -843,6 +843,8 @@ name|isGranted
 argument_list|(
 name|tree
 argument_list|,
+literal|null
+argument_list|,
 name|toTest
 argument_list|)
 condition|)

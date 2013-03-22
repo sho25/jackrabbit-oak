@@ -2679,6 +2679,8 @@ name|isGranted
 argument_list|(
 name|tree
 argument_list|,
+literal|null
+argument_list|,
 name|permissions
 argument_list|)
 condition|)

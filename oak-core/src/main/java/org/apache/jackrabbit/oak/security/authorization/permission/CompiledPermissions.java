@@ -83,6 +83,28 @@ name|Tree
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|security
+operator|.
+name|authorization
+operator|.
+name|permission
+operator|.
+name|ReadStatus
+import|;
+end_import
+
 begin_comment
 comment|/**  * CompiledPermissions... TODO  */
 end_comment
@@ -92,17 +114,10 @@ specifier|public
 interface|interface
 name|CompiledPermissions
 block|{
-name|boolean
-name|canRead
-parameter_list|(
 annotation|@
 name|Nonnull
-name|Tree
-name|tree
-parameter_list|)
-function_decl|;
-name|boolean
-name|canRead
+name|ReadStatus
+name|getReadStatus
 parameter_list|(
 annotation|@
 name|Nonnull
@@ -110,7 +125,7 @@ name|Tree
 name|tree
 parameter_list|,
 annotation|@
-name|Nonnull
+name|Nullable
 name|PropertyState
 name|property
 parameter_list|)
@@ -163,6 +178,8 @@ name|long
 name|permissions
 parameter_list|)
 function_decl|;
+annotation|@
+name|Nonnull
 name|Set
 argument_list|<
 name|String
