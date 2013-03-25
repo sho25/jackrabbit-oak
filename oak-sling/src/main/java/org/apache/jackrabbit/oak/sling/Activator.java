@@ -107,6 +107,22 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
+name|security
+operator|.
+name|SecurityProviderImpl
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
 name|spi
 operator|.
 name|security
@@ -298,7 +314,9 @@ argument_list|)
 expr_stmt|;
 name|securityProvider
 operator|=
-literal|null
+operator|new
+name|SecurityProviderImpl
+argument_list|()
 expr_stmt|;
 comment|// TODO
 name|tracker
