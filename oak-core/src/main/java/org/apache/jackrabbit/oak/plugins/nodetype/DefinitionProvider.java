@@ -171,10 +171,10 @@ name|Nonnull
 name|NodeDefinition
 name|getDefinition
 parameter_list|(
-name|Node
+name|Tree
 name|parent
 parameter_list|,
-name|Node
+name|Tree
 name|targetNode
 parameter_list|)
 throws|throws

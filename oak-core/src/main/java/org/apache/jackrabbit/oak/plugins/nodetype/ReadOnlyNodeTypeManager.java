@@ -1867,12 +1867,12 @@ name|getDefinition
 parameter_list|(
 annotation|@
 name|Nonnull
-name|Node
+name|Tree
 name|parent
 parameter_list|,
 annotation|@
 name|Nonnull
-name|Node
+name|Tree
 name|targetNode
 parameter_list|)
 throws|throws
