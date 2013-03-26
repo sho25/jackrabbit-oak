@@ -132,34 +132,24 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * An {@link OakSolrConfiguration} specified via a given {@link NodeState}.  * For each of the supported properties a default is provided if either the  * property doesn't exist in the node or if the value is<code>null</code> or  * empty<code>String</code>.  */
+comment|/**  * An {@link OakSolrConfiguration} specified via a given {@link NodeState}.  * For each of the supported properties a default is provided if either the  * property doesn't exist in the node or if the value is<code>null</code> or  * empty<code>String</code>.  *<p/>  * Subclasses of this should at least provide the {@link NodeState} which holds  * the configuration.  */
 end_comment
 
 begin_class
 specifier|public
+specifier|abstract
 class|class
 name|OakSolrNodeStateConfiguration
 implements|implements
 name|OakSolrConfiguration
 block|{
-specifier|private
+comment|/**      * get the {@link NodeState} which contains the properties for the Oak -      * Solr configuration.      *      * @return a {@link NodeState} for the Solr configuration.      */
+specifier|protected
+specifier|abstract
 name|NodeState
-name|solrConfigurationNodeState
-decl_stmt|;
-specifier|public
-name|OakSolrNodeStateConfiguration
-parameter_list|(
-name|NodeState
-name|solrConfigurationNodeState
-parameter_list|)
-block|{
-name|this
-operator|.
-name|solrConfigurationNodeState
-operator|=
-name|solrConfigurationNodeState
-expr_stmt|;
-block|}
+name|getConfigurationNodeState
+parameter_list|()
+function_decl|;
 annotation|@
 name|Override
 specifier|public
@@ -173,6 +163,37 @@ argument_list|>
 name|propertyType
 parameter_list|)
 block|{
+if|if
+condition|(
+name|Type
+operator|.
+name|BINARIES
+operator|.
+name|equals
+argument_list|(
+name|propertyType
+argument_list|)
+operator|||
+name|Type
+operator|.
+name|BINARY
+operator|.
+name|equals
+argument_list|(
+name|propertyType
+argument_list|)
+condition|)
+block|{
+comment|// TODO : use Tika / SolrCell here
+return|return
+name|propertyType
+operator|.
+name|toString
+argument_list|()
+operator|+
+literal|"_bin"
+return|;
+block|}
 return|return
 literal|null
 return|;
@@ -384,7 +405,7 @@ literal|"oak"
 argument_list|)
 return|;
 block|}
-specifier|private
+specifier|protected
 name|String
 name|getStringValueFor
 parameter_list|(
@@ -403,7 +424,8 @@ decl_stmt|;
 name|PropertyState
 name|property
 init|=
-name|solrConfigurationNodeState
+name|getConfigurationNodeState
+argument_list|()
 operator|.
 name|getProperty
 argument_list|(

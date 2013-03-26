@@ -177,7 +177,7 @@ name|solr
 operator|.
 name|server
 operator|.
-name|OakSolrNodeStateConfiguration
+name|FixedNodeStateConfiguration
 import|;
 end_import
 
@@ -615,7 +615,7 @@ parameter_list|)
 block|{
 return|return
 operator|new
-name|OakSolrNodeStateConfiguration
+name|FixedNodeStateConfiguration
 argument_list|(
 name|nodeState
 argument_list|)
