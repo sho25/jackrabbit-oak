@@ -239,6 +239,16 @@ begin_import
 import|import
 name|org
 operator|.
+name|junit
+operator|.
+name|Ignore
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|xml
 operator|.
 name|sax
@@ -595,14 +605,6 @@ operator|+
 literal|"</sv:node>"
 operator|+
 literal|"</sv:node>"
-decl_stmt|;
-specifier|private
-specifier|static
-specifier|final
-name|String
-name|XML_AC_TREE
-init|=
-literal|"<?xml version=\"1.0\" encoding=\"UTF-8\"?><sv:node sv:name=\"rep:security\" xmlns:mix=\"http://www.jcp.org/jcr/mix/1.0\" xmlns:nt=\"http://www.jcp.org/jcr/nt/1.0\" xmlns:fn_old=\"http://www.w3.org/2004/10/xpath-functions\" xmlns:fn=\"http://www.w3.org/2005/xpath-functions\" xmlns:crx=\"http://www.day.com/crx/1.0\" xmlns:xs=\"http://www.w3.org/2001/XMLSchema\" xmlns:sv=\"http://www.jcp.org/jcr/sv/1.0\" xmlns:repl=\"http://www.day.com/crx/replication/1.0\" xmlns:rep=\"internal\" xmlns:jcr=\"http://www.jcp.org/jcr/1.0\"><sv:property sv:name=\"jcr:primaryType\" sv:type=\"Name\"><sv:value>rep:AccessControl</sv:value></sv:property><sv:node sv:name=\"rep:authorizables\"><sv:property sv:name=\"jcr:primaryType\" sv:type=\"Name\"><sv:value>rep:AccessControl</sv:value></sv:property><sv:node sv:name=\"rep:groups\"><sv:property sv:name=\"jcr:primaryType\" sv:type=\"Name\"><sv:value>rep:AccessControl</sv:value></sv:property><sv:node sv:name=\"administrators\"><sv:property sv:name=\"jcr:primaryType\" sv:type=\"Name\"><sv:value>rep:PrincipalAccessControl</sv:value></sv:property><sv:node sv:name=\"rep:policy\"><sv:property sv:name=\"jcr:primaryType\" sv:type=\"Name\"><sv:value>rep:ACL</sv:value></sv:property><sv:node sv:name=\"entry\"><sv:property sv:name=\"jcr:primaryType\" sv:type=\"Name\"><sv:value>rep:GrantACE</sv:value></sv:property><sv:property sv:name=\"rep:glob\" sv:type=\"String\"><sv:value>*</sv:value></sv:property><sv:property sv:name=\"rep:nodePath\" sv:type=\"Path\"><sv:value>/</sv:value></sv:property><sv:property sv:name=\"rep:principalName\" sv:type=\"String\"><sv:value>administrators</sv:value></sv:property><sv:property sv:name=\"rep:privileges\" sv:type=\"Name\"><sv:value>jcr:all</sv:value></sv:property></sv:node></sv:node></sv:node></sv:node><sv:node sv:name=\"rep:users\"><sv:property sv:name=\"jcr:primaryType\" sv:type=\"Name\"><sv:value>rep:AccessControl</sv:value></sv:property><sv:node sv:name=\"admin\"><sv:property sv:name=\"jcr:primaryType\" sv:type=\"Name\"><sv:value>rep:AccessControl</sv:value></sv:property><sv:node sv:name=\"t\"><sv:property sv:name=\"jcr:primaryType\" sv:type=\"Name\"><sv:value>rep:PrincipalAccessControl</sv:value></sv:property></sv:node><sv:node sv:name=\"a\"><sv:property sv:name=\"jcr:primaryType\" sv:type=\"Name\"><sv:value>rep:PrincipalAccessControl</sv:value></sv:property></sv:node></sv:node><sv:node sv:name=\"anonymous\"><sv:property sv:name=\"jcr:primaryType\" sv:type=\"Name\"><sv:value>rep:PrincipalAccessControl</sv:value></sv:property></sv:node></sv:node></sv:node></sv:node>"
 decl_stmt|;
 specifier|private
 specifier|static
@@ -1058,6 +1060,12 @@ expr_stmt|;
 block|}
 block|}
 comment|/**      * Imports a resource-based ACL containing a single entry.      *      * @throws Exception      */
+annotation|@
+name|Ignore
+argument_list|(
+literal|""
+argument_list|)
+comment|// FIXME
 specifier|public
 name|void
 name|testImportACLRemoveACE
@@ -1264,6 +1272,12 @@ expr_stmt|;
 block|}
 block|}
 comment|/**      * Imports a resource-based ACL containing a single entry.      *      * @throws Exception      */
+annotation|@
+name|Ignore
+argument_list|(
+literal|""
+argument_list|)
+comment|// FIXME
 specifier|public
 name|void
 name|testImportACLUnknown
@@ -1519,8 +1533,8 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-comment|// this test does not work anymore, since the normal behavior is replace
-comment|// all ACEs for an import. maybe control this behavior via uuid-flag.
+comment|// FIXME this test does not work anymore, since the normal behavior is replace
+comment|// FIXME all ACEs for an import. maybe control this behavior via uuid-flag.
 if|if
 condition|(
 literal|true
@@ -2342,64 +2356,6 @@ literal|false
 argument_list|)
 expr_stmt|;
 block|}
-block|}
-comment|/**      * Imports a principal-based ACL containing a single entry mist fail with      * the default configuration.      *      * @throws Exception      */
-specifier|public
-name|void
-name|testImportPrincipalBasedACL
-parameter_list|()
-throws|throws
-name|Exception
-block|{
-comment|//        JackrabbitAccessControlManager acMgr = (JackrabbitAccessControlManager) superuser.getAccessControlManager();
-comment|//        if (acMgr.getApplicablePolicies(EveryonePrincipal.getInstance()).length> 0 ||
-comment|//                acMgr.getPolicies(EveryonePrincipal.getInstance()).length> 0) {
-comment|//            // test expects that only resource-based acl is supported
-comment|//            throw new NotExecutableException();
-comment|//        }
-comment|//
-comment|//        PrincipalManager pmgr = sImpl.getPrincipalManager();
-comment|//        if (!pmgr.hasPrincipal(SecurityConstants.ADMINISTRATORS_NAME)) {
-comment|//            UserManager umgr = sImpl.getUserManager();
-comment|//            umgr.createGroup(new PrincipalImpl(SecurityConstants.ADMINISTRATORS_NAME));
-comment|//            if (!umgr.isAutoSave()) {
-comment|//                sImpl.save();
-comment|//            }
-comment|//            if (pmgr.hasPrincipal(SecurityConstants.ADMINISTRATORS_NAME)) {
-comment|//                throw new NotExecutableException();
-comment|//            }
-comment|//        }
-comment|//
-comment|//
-comment|//        NodeImpl target;
-comment|//        NodeImpl root = (NodeImpl) sImpl.getRootNode();
-comment|//        if (!root.hasNode(AccessControlConstants.N_ACCESSCONTROL)) {
-comment|//            target = root.addNode(AccessControlConstants.N_ACCESSCONTROL, AccessControlConstants.NT_REP_ACCESS_CONTROL, null);
-comment|//        } else {
-comment|//            target = root.getNode(AccessControlConstants.N_ACCESSCONTROL);
-comment|//            if (!target.isNodeType(AccessControlConstants.NT_REP_ACCESS_CONTROL)) {
-comment|//                target.setPrimaryType(sImpl.getJCRName(AccessControlConstants.NT_REP_ACCESS_CONTROL));
-comment|//            }
-comment|//        }
-comment|//        try {
-comment|//
-comment|//            InputStream in = new ByteArrayInputStream(XML_AC_TREE.getBytes("UTF-8"));
-comment|//
-comment|//            SessionImporter importer = new SessionImporter(target, sImpl, ImportUUIDBehavior.IMPORT_UUID_COLLISION_THROW, new PseudoConfig());
-comment|//            ImportHandler ih = new ImportHandler(importer, sImpl);
-comment|//            new ParsingContentHandler(ih).parse(in);
-comment|//
-comment|//            fail("Default config only allows resource-based ACL -> protected import must fail");
-comment|//
-comment|//        } catch (SAXException e) {
-comment|//            if (e.getException() instanceof ConstraintViolationException) {
-comment|//                // success
-comment|//            } else {
-comment|//                throw e;
-comment|//            }
-comment|//        } finally {
-comment|//            superuser.refresh(false);
-comment|//        }
 block|}
 specifier|private
 name|void
