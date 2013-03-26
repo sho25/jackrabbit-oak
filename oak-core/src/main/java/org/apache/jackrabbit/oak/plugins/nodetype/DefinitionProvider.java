@@ -35,26 +35,6 @@ name|javax
 operator|.
 name|jcr
 operator|.
-name|Node
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|jcr
-operator|.
-name|Property
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|jcr
-operator|.
 name|RepositoryException
 import|;
 end_import
@@ -144,7 +124,7 @@ parameter_list|()
 throws|throws
 name|RepositoryException
 function_decl|;
-comment|/**      * Returns the node definition for a child node of {@code parent} named      * {@code nodeName} with a default primary type. First the non-residual      * child node definitions of {@code parent} are checked matching the      * given node name. Then the residual definitions are checked.      *      *      * @param parent   the parent node.      * @param nodeName The internal oak name of the child node.      * @return the applicable node definition.      * @throws ConstraintViolationException If no matching definition can be found.      * @throws RepositoryException If another error occurs.      */
+comment|/**      * Returns the node definition for a child node of {@code parent} named      * {@code nodeName} with a default primary type. First the non-residual      * child node definitions of {@code parent} are checked matching the      * given node name. Then the residual definitions are checked.      *      * @param parent   the parent node.      * @param nodeName The internal oak name of the child node.      * @return the applicable node definition.      * @throws ConstraintViolationException If no matching definition can be found.      * @throws RepositoryException If another error occurs.      */
 annotation|@
 name|Nonnull
 name|NodeDefinition
@@ -152,7 +132,7 @@ name|getDefinition
 parameter_list|(
 annotation|@
 name|Nonnull
-name|Node
+name|Tree
 name|parent
 parameter_list|,
 annotation|@
@@ -176,23 +156,6 @@ name|parent
 parameter_list|,
 name|Tree
 name|targetNode
-parameter_list|)
-throws|throws
-name|ConstraintViolationException
-throws|,
-name|RepositoryException
-function_decl|;
-comment|/**      * Calculates the definition of the specified property.      *      * @param parent The parent node.      * @param targetProperty The target property.      * @return The definition of the specified property.      * @throws ConstraintViolationException If no matching definition can be      * found.      * @throws RepositoryException If another error occurs.      */
-annotation|@
-name|Nonnull
-name|PropertyDefinition
-name|getDefinition
-parameter_list|(
-name|Node
-name|parent
-parameter_list|,
-name|Property
-name|targetProperty
 parameter_list|)
 throws|throws
 name|ConstraintViolationException

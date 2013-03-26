@@ -128,7 +128,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Nonnull
-specifier|private
+specifier|public
 name|PropertyState
 name|getPropertyState
 parameter_list|()
