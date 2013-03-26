@@ -349,6 +349,7 @@ name|root
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * Called by {@link #perform(SessionOperation)} when the session needs to be      * refreshed before the actual {@link SessionOperation} is executed.      * This default implementation is empty.      */
 specifier|protected
 name|void
 name|refresh
@@ -373,8 +374,6 @@ throws|throws
 name|RepositoryException
 block|{
 comment|// Synchronize to avoid conflicting refreshes from concurrent JCR API calls
-try|try
-block|{
 if|if
 condition|(
 name|sessionOpCount
@@ -382,18 +381,20 @@ operator|==
 literal|0
 condition|)
 block|{
-comment|// Refresh only for non re-entrant session operations
+comment|// Refresh and checks only for non re-entrant session operations
 name|refresh
 argument_list|()
-expr_stmt|;
-block|}
-name|sessionOpCount
-operator|++
 expr_stmt|;
 name|sessionOperation
 operator|.
 name|checkPreconditions
 argument_list|()
+expr_stmt|;
+block|}
+try|try
+block|{
+name|sessionOpCount
+operator|++
 expr_stmt|;
 return|return
 name|sessionOperation
@@ -408,18 +409,6 @@ name|sessionOpCount
 operator|--
 expr_stmt|;
 block|}
-block|}
-annotation|@
-name|Nonnull
-comment|// FIXME this should be package private
-specifier|public
-name|Root
-name|getRoot
-parameter_list|()
-block|{
-return|return
-name|root
-return|;
 block|}
 annotation|@
 name|Nonnull
@@ -533,25 +522,6 @@ parameter_list|()
 block|{
 return|return
 name|idManager
-return|;
-block|}
-annotation|@
-name|Nonnull
-specifier|public
-name|TreeLocation
-name|getLocation
-parameter_list|(
-name|String
-name|path
-parameter_list|)
-block|{
-return|return
-name|root
-operator|.
-name|getLocation
-argument_list|(
-name|path
-argument_list|)
 return|;
 block|}
 annotation|@
@@ -1073,6 +1043,36 @@ argument_list|()
 return|;
 block|}
 comment|//-----------------------------------------------------------< internal>---
+annotation|@
+name|Nonnull
+comment|// FIXME this should be package private
+specifier|public
+name|Root
+name|getRoot
+parameter_list|()
+block|{
+return|return
+name|root
+return|;
+block|}
+annotation|@
+name|Nonnull
+name|TreeLocation
+name|getLocation
+parameter_list|(
+name|String
+name|path
+parameter_list|)
+block|{
+return|return
+name|root
+operator|.
+name|getLocation
+argument_list|(
+name|path
+argument_list|)
+return|;
+block|}
 comment|/**      * Revision of this session. The revision is incremented each time a session is refreshed or saved.      * This allows items to determine whether they need to re-resolve their underlying state when the      * revision on which an item is based does not match the revision of the session any more.      * @return  the current revision of this session      */
 name|int
 name|getRevision
