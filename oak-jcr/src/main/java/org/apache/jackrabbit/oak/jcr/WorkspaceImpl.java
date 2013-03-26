@@ -18,6 +18,26 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|nodetype
+operator|.
+name|NodeTypeConstants
+operator|.
+name|NODE_TYPES_PATH
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -420,26 +440,6 @@ operator|.
 name|sax
 operator|.
 name|InputSource
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|plugins
-operator|.
-name|nodetype
-operator|.
-name|NodeTypeConstants
-operator|.
-name|NODE_TYPES_PATH
 import|;
 end_import
 
@@ -1137,8 +1137,7 @@ name|getNodeTypeManager
 parameter_list|()
 block|{
 return|return
-name|getReadWriteNodeTypeManager
-argument_list|()
+name|nodeTypeManager
 return|;
 block|}
 annotation|@
