@@ -105,6 +105,16 @@ end_import
 
 begin_import
 import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|Nonnull
+import|;
+end_import
+
+begin_import
+import|import
 name|com
 operator|.
 name|google
@@ -650,6 +660,8 @@ expr_stmt|;
 block|}
 block|}
 annotation|@
+name|Nonnull
+annotation|@
 name|Override
 specifier|public
 name|List
@@ -949,6 +961,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Nonnull
 annotation|@
 name|Override
 specifier|public

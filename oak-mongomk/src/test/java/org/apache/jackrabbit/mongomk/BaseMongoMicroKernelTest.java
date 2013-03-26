@@ -227,7 +227,6 @@ extends|extends
 name|AbstractMongoConnectionTest
 block|{
 specifier|public
-specifier|static
 name|MicroKernel
 name|mk
 decl_stmt|;
@@ -567,8 +566,7 @@ name|path
 argument_list|,
 name|rev
 argument_list|,
-operator|-
-literal|1
+literal|0
 comment|/*depth*/
 argument_list|,
 literal|0
@@ -623,8 +621,7 @@ name|path
 argument_list|,
 name|rev
 argument_list|,
-operator|-
-literal|1
+literal|0
 comment|/*depth*/
 argument_list|,
 literal|0
@@ -691,8 +688,7 @@ name|path
 argument_list|,
 name|rev
 argument_list|,
-operator|-
-literal|1
+literal|0
 comment|/*depth*/
 argument_list|,
 literal|0

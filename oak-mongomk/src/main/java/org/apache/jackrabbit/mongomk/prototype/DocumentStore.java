@@ -37,6 +37,42 @@ name|Map
 import|;
 end_import
 
+begin_import
+import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|CheckForNull
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|Nonnull
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|mk
+operator|.
+name|api
+operator|.
+name|MicroKernelException
+import|;
+end_import
+
 begin_comment
 comment|/**  * The interface for the backend storage for documents.  */
 end_comment
@@ -52,7 +88,9 @@ name|Collection
 block|{
 name|NODES
 block|}
-comment|/**      * Get a document. The returned map is a clone (the caller      * can modify it without affecting the stored version).      *      * @param collection the collection      * @param path the path      * @return the map, or null if not found      */
+comment|/**      * Get a document. The returned map is a clone (the caller      * can modify it without affecting the stored version).      *      * @param collection the collection      * @param key the key      * @return the map, or null if not found      */
+annotation|@
+name|CheckForNull
 name|Map
 argument_list|<
 name|String
@@ -68,6 +106,8 @@ name|String
 name|key
 parameter_list|)
 function_decl|;
+annotation|@
+name|Nonnull
 name|List
 argument_list|<
 name|Map
@@ -92,7 +132,7 @@ name|int
 name|limit
 parameter_list|)
 function_decl|;
-comment|/**      * Remove a document.      *      * @param collection the collection      * @param path the path      */
+comment|/**      * Remove a document.      *      * @param collection the collection      * @param key the key      */
 name|void
 name|remove
 parameter_list|(
@@ -117,7 +157,9 @@ argument_list|>
 name|updateOps
 parameter_list|)
 function_decl|;
-comment|/**      * Create or update a document. For MongoDb, this is using "findAndModify" with      * the "upsert" flag (insert or update).      *      * @param collection the collection      * @param update the update operation      * @return the new document      */
+comment|/**      * Create or update a document. For MongoDb, this is using "findAndModify" with      * the "upsert" flag (insert or update).      *      * @param collection the collection      * @param update the update operation      * @return the new document      * @throws MicroKernelException if the operation failed.      */
+annotation|@
+name|Nonnull
 name|Map
 argument_list|<
 name|String
@@ -132,6 +174,8 @@ parameter_list|,
 name|UpdateOp
 name|update
 parameter_list|)
+throws|throws
+name|MicroKernelException
 function_decl|;
 name|void
 name|dispose

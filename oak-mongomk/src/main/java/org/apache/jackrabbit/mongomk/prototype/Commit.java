@@ -197,15 +197,17 @@ argument_list|)
 decl_stmt|;
 comment|/**      * The maximum size of a document. If it is larger, it is split.      */
 comment|// TODO check which value is the best one
+comment|//private static final int MAX_DOCUMENT_SIZE = 16 * 1024;
+comment|// TODO disabled until document split is fully implemented
 specifier|private
 specifier|static
 specifier|final
 name|int
 name|MAX_DOCUMENT_SIZE
 init|=
-literal|16
-operator|*
-literal|1024
+name|Integer
+operator|.
+name|MAX_VALUE
 decl_stmt|;
 comment|/**      * Whether to purge old revisions if a node gets too large. If false, old      * revisions are stored in a separate document. If true, old revisions are      * removed (purged).      */
 specifier|private
@@ -606,11 +608,69 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+name|void
+name|prepare
+parameter_list|(
+name|Revision
+name|baseRevision
+parameter_list|)
+block|{
+if|if
+condition|(
+operator|!
+name|operations
+operator|.
+name|isEmpty
+argument_list|()
+condition|)
+block|{
+name|applyToDocumentStore
+argument_list|(
+name|baseRevision
+argument_list|)
+expr_stmt|;
+name|applyToCache
+argument_list|()
+expr_stmt|;
+block|}
+block|}
 comment|/**      * Apply the changes to the document store (to update MongoDB).      */
 name|void
 name|applyToDocumentStore
 parameter_list|()
 block|{
+name|applyToDocumentStore
+argument_list|(
+literal|null
+argument_list|)
+expr_stmt|;
+block|}
+comment|/**      * Apply the changes to the document store (to update MongoDB).      *      * @param baseRevision the base revision of this commit. Currently only      *                     used for branch commits.      */
+name|void
+name|applyToDocumentStore
+parameter_list|(
+name|Revision
+name|baseRevision
+parameter_list|)
+block|{
+comment|// the value in _revisions.<revision> property of the commit root node
+comment|// regular commits use "true", which makes the commit visible to
+comment|// other readers. branch commits use the base revision to indicate
+comment|// the visibility of the commit
+name|String
+name|commitValue
+init|=
+name|baseRevision
+operator|!=
+literal|null
+condition|?
+name|baseRevision
+operator|.
+name|toString
+argument_list|()
+else|:
+literal|"true"
+decl_stmt|;
 name|DocumentStore
 name|store
 init|=
@@ -624,6 +684,19 @@ name|commitRootPath
 init|=
 literal|null
 decl_stmt|;
+if|if
+condition|(
+name|baseRevision
+operator|!=
+literal|null
+condition|)
+block|{
+comment|// branch commits always use root node as commit root
+name|commitRootPath
+operator|=
+literal|"/"
+expr_stmt|;
+block|}
 name|ArrayList
 argument_list|<
 name|UpdateOp
@@ -893,7 +966,7 @@ operator|.
 name|toString
 argument_list|()
 argument_list|,
-literal|"true"
+name|commitValue
 argument_list|)
 expr_stmt|;
 name|newNodes
@@ -1061,7 +1134,7 @@ operator|.
 name|toString
 argument_list|()
 argument_list|,
-literal|"true"
+name|commitValue
 argument_list|)
 expr_stmt|;
 name|createOrUpdateNode
@@ -1172,6 +1245,10 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+name|newestRev
+operator|!=
+literal|null
+operator|&&
 name|mk
 operator|.
 name|isRevisionNewer

@@ -85,6 +85,16 @@ end_import
 
 begin_import
 import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|Nonnull
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -231,6 +241,8 @@ return|return
 name|copy
 return|;
 block|}
+annotation|@
+name|Nonnull
 specifier|public
 name|List
 argument_list|<
@@ -450,6 +462,8 @@ argument_list|)
 throw|;
 block|}
 block|}
+annotation|@
+name|Nonnull
 specifier|public
 name|Map
 argument_list|<
