@@ -47,6 +47,18 @@ name|jcr
 operator|.
 name|nodetype
 operator|.
+name|NodeType
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|jcr
+operator|.
+name|nodetype
+operator|.
 name|PropertyDefinition
 import|;
 end_import
@@ -329,6 +341,9 @@ parameter_list|(
 name|Tree
 name|definition
 parameter_list|,
+name|NodeType
+name|type
+parameter_list|,
 name|NamePathMapper
 name|mapper
 parameter_list|)
@@ -336,6 +351,8 @@ block|{
 name|super
 argument_list|(
 name|definition
+argument_list|,
+name|type
 argument_list|,
 name|mapper
 argument_list|)
