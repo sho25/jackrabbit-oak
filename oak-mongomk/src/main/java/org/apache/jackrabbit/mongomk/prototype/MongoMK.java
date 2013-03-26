@@ -4461,8 +4461,6 @@ name|newestRev
 argument_list|)
 condition|)
 block|{
-comment|// TODO check if propRev is really committed, if
-comment|// onlyCommitted is set
 if|if
 condition|(
 name|isRevisionNewer
@@ -4473,10 +4471,26 @@ name|propRev
 argument_list|)
 condition|)
 block|{
+if|if
+condition|(
+operator|!
+name|onlyCommitted
+operator|||
+name|isValidRevision
+argument_list|(
+name|propRev
+argument_list|,
+name|before
+argument_list|,
+name|nodeMap
+argument_list|)
+condition|)
+block|{
 name|newestRev
 operator|=
 name|propRev
 expr_stmt|;
+block|}
 block|}
 block|}
 block|}
