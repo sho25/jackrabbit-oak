@@ -1325,6 +1325,12 @@ operator|==
 name|Permissions
 operator|.
 name|VERSION_MANAGEMENT
+operator|||
+name|permission
+operator|==
+name|Permissions
+operator|.
+name|REMOVE_NODE
 return|;
 block|}
 comment|// TODO

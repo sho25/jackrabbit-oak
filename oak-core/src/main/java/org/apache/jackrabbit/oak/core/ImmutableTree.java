@@ -251,22 +251,6 @@ name|base
 operator|.
 name|Preconditions
 operator|.
-name|checkArgument
-import|;
-end_import
-
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|Preconditions
-operator|.
 name|checkNotNull
 import|;
 end_import
@@ -888,6 +872,7 @@ name|this
 argument_list|)
 return|;
 block|}
+comment|// TODO
 specifier|public
 specifier|static
 name|int
@@ -897,13 +882,13 @@ name|Tree
 name|tree
 parameter_list|)
 block|{
-name|checkArgument
-argument_list|(
+if|if
+condition|(
 name|tree
 operator|instanceof
 name|ImmutableTree
-argument_list|)
-expr_stmt|;
+condition|)
+block|{
 return|return
 operator|(
 operator|(
@@ -915,6 +900,15 @@ operator|.
 name|getType
 argument_list|()
 return|;
+block|}
+else|else
+block|{
+return|return
+name|TypeProvider
+operator|.
+name|TYPE_DEFAULT
+return|;
+block|}
 block|}
 annotation|@
 name|Nonnull
