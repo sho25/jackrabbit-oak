@@ -1125,7 +1125,6 @@ parameter_list|()
 throws|throws
 name|RepositoryException
 function_decl|;
-specifier|public
 name|void
 name|checkProtected
 parameter_list|()

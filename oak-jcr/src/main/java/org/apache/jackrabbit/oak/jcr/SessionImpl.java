@@ -820,25 +820,6 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-specifier|public
-name|void
-name|checkProtectedNodes
-parameter_list|(
-name|String
-modifier|...
-name|absJcrPaths
-parameter_list|)
-throws|throws
-name|RepositoryException
-block|{
-name|checkProtectedNodes
-argument_list|(
-name|this
-argument_list|,
-name|absJcrPaths
-argument_list|)
-expr_stmt|;
-block|}
 comment|//------------------------------------------------------------< Session>---
 annotation|@
 name|Override
@@ -943,7 +924,9 @@ parameter_list|)
 throws|throws
 name|RepositoryException
 block|{
-name|ensureIsAlive
+name|dlg
+operator|.
+name|checkAlive
 argument_list|()
 expr_stmt|;
 name|ImpersonationCredentials
@@ -986,7 +969,9 @@ parameter_list|()
 throws|throws
 name|RepositoryException
 block|{
-name|ensureIsAlive
+name|dlg
+operator|.
+name|checkAlive
 argument_list|()
 expr_stmt|;
 return|return
@@ -1031,7 +1016,9 @@ parameter_list|()
 throws|throws
 name|RepositoryException
 block|{
-name|ensureIsAlive
+name|dlg
+operator|.
+name|checkAlive
 argument_list|()
 expr_stmt|;
 block|}
@@ -1156,7 +1143,9 @@ parameter_list|()
 throws|throws
 name|RepositoryException
 block|{
-name|ensureIsAlive
+name|dlg
+operator|.
+name|checkAlive
 argument_list|()
 expr_stmt|;
 block|}
@@ -1346,7 +1335,9 @@ parameter_list|()
 throws|throws
 name|RepositoryException
 block|{
-name|ensureIsAlive
+name|dlg
+operator|.
+name|checkAlive
 argument_list|()
 expr_stmt|;
 block|}
@@ -1452,7 +1443,9 @@ parameter_list|()
 throws|throws
 name|RepositoryException
 block|{
-name|ensureIsAlive
+name|dlg
+operator|.
+name|checkAlive
 argument_list|()
 expr_stmt|;
 block|}
@@ -1756,11 +1749,17 @@ parameter_list|()
 throws|throws
 name|RepositoryException
 block|{
-name|ensureIsAlive
+name|dlg
+operator|.
+name|checkAlive
 argument_list|()
 expr_stmt|;
 name|checkProtectedNodes
 argument_list|(
+name|SessionImpl
+operator|.
+name|this
+argument_list|,
 name|Text
 operator|.
 name|getRelativeParent
@@ -1791,7 +1790,7 @@ throws|throws
 name|RepositoryException
 block|{
 name|String
-name|oakPath
+name|oakDestPath
 init|=
 name|sessionContext
 operator|.
@@ -1800,20 +1799,15 @@ argument_list|(
 name|destAbsPath
 argument_list|)
 decl_stmt|;
-name|String
-name|oakName
-init|=
+comment|// handle index
+if|if
+condition|(
 name|PathUtils
 operator|.
 name|getName
 argument_list|(
-name|oakPath
+name|oakDestPath
 argument_list|)
-decl_stmt|;
-comment|// handle index
-if|if
-condition|(
-name|oakName
 operator|.
 name|contains
 argument_list|(
@@ -1838,10 +1832,7 @@ argument_list|(
 name|srcAbsPath
 argument_list|)
 argument_list|,
-name|getOakPathOrThrowNotFound
-argument_list|(
-name|oakPath
-argument_list|)
+name|oakDestPath
 argument_list|,
 literal|true
 argument_list|)
@@ -1890,7 +1881,9 @@ parameter_list|()
 throws|throws
 name|RepositoryException
 block|{
-name|ensureIsAlive
+name|dlg
+operator|.
+name|checkAlive
 argument_list|()
 expr_stmt|;
 name|dlg
@@ -1919,7 +1912,9 @@ parameter_list|)
 throws|throws
 name|RepositoryException
 block|{
-name|ensureIsAlive
+name|dlg
+operator|.
+name|checkAlive
 argument_list|()
 expr_stmt|;
 name|dlg
@@ -1947,7 +1942,9 @@ parameter_list|()
 throws|throws
 name|RepositoryException
 block|{
-name|ensureIsAlive
+name|dlg
+operator|.
+name|checkAlive
 argument_list|()
 expr_stmt|;
 return|return
@@ -2727,7 +2724,9 @@ parameter_list|)
 throws|throws
 name|RepositoryException
 block|{
-name|ensureIsAlive
+name|dlg
+operator|.
+name|checkAlive
 argument_list|()
 expr_stmt|;
 name|String
@@ -2842,7 +2841,9 @@ parameter_list|)
 throws|throws
 name|RepositoryException
 block|{
-name|ensureIsAlive
+name|dlg
+operator|.
+name|checkAlive
 argument_list|()
 expr_stmt|;
 comment|// TODO
@@ -3532,43 +3533,6 @@ operator|.
 name|getUserManager
 argument_list|()
 return|;
-block|}
-end_function
-
-begin_comment
-comment|//------------------------------------------------------------< private>---
-end_comment
-
-begin_comment
-comment|/**      * Ensure that this session is alive and throw an exception otherwise.      *      * @throws RepositoryException if this session has been rendered invalid      *                             for some reason (e.g. if this session has been closed explicitly by logout)      */
-end_comment
-
-begin_function
-specifier|private
-name|void
-name|ensureIsAlive
-parameter_list|()
-throws|throws
-name|RepositoryException
-block|{
-comment|// check session status
-if|if
-condition|(
-operator|!
-name|dlg
-operator|.
-name|isAlive
-argument_list|()
-condition|)
-block|{
-throw|throw
-operator|new
-name|RepositoryException
-argument_list|(
-literal|"This session has been closed."
-argument_list|)
-throw|;
-block|}
 block|}
 end_function
 
