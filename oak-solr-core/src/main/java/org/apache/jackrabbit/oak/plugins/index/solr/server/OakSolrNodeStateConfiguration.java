@@ -452,6 +452,7 @@ return|return
 name|value
 return|;
 block|}
+comment|/**      * Properties that may be retrieved from the configuration {@link NodeState}.      */
 specifier|public
 specifier|final
 class|class
