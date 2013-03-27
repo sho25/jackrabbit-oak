@@ -202,7 +202,7 @@ name|PropertyValues
 operator|.
 name|newString
 argument_list|(
-literal|"target/solr/"
+literal|"target/solr"
 argument_list|)
 argument_list|)
 argument_list|)
