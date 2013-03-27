@@ -402,29 +402,6 @@ name|int
 name|index
 parameter_list|)
 block|{
-if|if
-condition|(
-name|index
-operator|>
-literal|1
-condition|)
-block|{
-name|error
-argument_list|(
-literal|"index> 1; = "
-operator|+
-name|index
-operator|+
-literal|" for path "
-operator|+
-name|oakPath
-operator|+
-literal|" and name "
-operator|+
-name|name
-argument_list|)
-expr_stmt|;
-block|}
 name|String
 name|p
 init|=
@@ -435,6 +412,13 @@ argument_list|(
 name|name
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|index
+operator|==
+literal|0
+condition|)
+block|{
 name|elements
 operator|.
 name|add
@@ -442,6 +426,23 @@ argument_list|(
 name|p
 argument_list|)
 expr_stmt|;
+block|}
+else|else
+block|{
+name|elements
+operator|.
+name|add
+argument_list|(
+name|p
+operator|+
+literal|"["
+operator|+
+name|index
+operator|+
+literal|"]"
+argument_list|)
+expr_stmt|;
+block|}
 return|return
 literal|true
 return|;
