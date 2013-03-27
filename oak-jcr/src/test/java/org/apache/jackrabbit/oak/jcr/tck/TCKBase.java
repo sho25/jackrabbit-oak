@@ -41,6 +41,22 @@ name|oak
 operator|.
 name|jcr
 operator|.
+name|OakMongoMKRepositoryStub
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|jcr
+operator|.
 name|OakRepositoryStub
 import|;
 end_import
@@ -229,12 +245,32 @@ name|addTests
 argument_list|()
 expr_stmt|;
 block|}
-comment|// OAK-588: CI builds take too long with MongoMK
-comment|// -> disabled for now
-comment|//        if (OakMongoMKRepositoryStub.isMongoDBAvailable()) {
-comment|//            addTest(new Setup(OakMongoMKRepositoryStub.class.getName()));
-comment|//            addTests();
-comment|//        }
+if|if
+condition|(
+name|OakMongoMKRepositoryStub
+operator|.
+name|isMongoDBAvailable
+argument_list|()
+condition|)
+block|{
+name|addTest
+argument_list|(
+operator|new
+name|Setup
+argument_list|(
+name|OakMongoMKRepositoryStub
+operator|.
+name|class
+operator|.
+name|getName
+argument_list|()
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|addTests
+argument_list|()
+expr_stmt|;
+block|}
 block|}
 specifier|abstract
 specifier|protected
@@ -242,7 +278,7 @@ name|void
 name|addTests
 parameter_list|()
 function_decl|;
-comment|/**      * Setup test class to replace the RepositoryHelper. This is quite a hack      * be cause the existing TCK tests do not take parameters.      */
+comment|/**      * Setup test class to replace the RepositoryHelper. This is quite a hack      * because the existing TCK tests do not take parameters.      */
 specifier|public
 specifier|static
 class|class
