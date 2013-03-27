@@ -245,32 +245,10 @@ name|addTests
 argument_list|()
 expr_stmt|;
 block|}
-if|if
-condition|(
-name|OakMongoMKRepositoryStub
-operator|.
-name|isMongoDBAvailable
-argument_list|()
-condition|)
-block|{
-name|addTest
-argument_list|(
-operator|new
-name|Setup
-argument_list|(
-name|OakMongoMKRepositoryStub
-operator|.
-name|class
-operator|.
-name|getName
-argument_list|()
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|addTests
-argument_list|()
-expr_stmt|;
-block|}
+comment|//        if (OakMongoMKRepositoryStub.isMongoDBAvailable()) {
+comment|//            addTest(new Setup(OakMongoMKRepositoryStub.class.getName()));
+comment|//            addTests();
+comment|//        }
 block|}
 specifier|abstract
 specifier|protected
