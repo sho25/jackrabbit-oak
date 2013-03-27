@@ -509,7 +509,7 @@ parameter_list|()
 throws|throws
 name|RepositoryException
 block|{
-name|checkStatus
+name|checkAlive
 argument_list|()
 expr_stmt|;
 block|}
@@ -536,7 +536,7 @@ parameter_list|()
 throws|throws
 name|RepositoryException
 block|{
-name|checkStatus
+name|checkAlive
 argument_list|()
 expr_stmt|;
 name|checkProtected
@@ -1303,7 +1303,7 @@ block|}
 comment|//-----------------------------------------------------------< internal>---
 comment|/**      * Performs a sanity check on this item and the associated session.      *      * @throws RepositoryException if this item has been rendered invalid for some reason      * or the associated session has been logged out.      */
 name|void
-name|checkStatus
+name|checkAlive
 parameter_list|()
 throws|throws
 name|RepositoryException
@@ -1322,7 +1322,7 @@ block|}
 specifier|protected
 specifier|abstract
 name|ItemDefinition
-name|getDefinition
+name|internalGetDefinition
 parameter_list|()
 throws|throws
 name|RepositoryException
@@ -1340,7 +1340,7 @@ try|try
 block|{
 name|definition
 operator|=
-name|getDefinition
+name|internalGetDefinition
 argument_list|()
 expr_stmt|;
 block|}
