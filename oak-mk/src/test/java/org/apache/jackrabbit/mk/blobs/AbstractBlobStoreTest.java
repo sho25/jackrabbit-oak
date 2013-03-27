@@ -211,7 +211,7 @@ name|AbstractBlobStoreTest
 extends|extends
 name|TestCase
 block|{
-specifier|protected
+specifier|public
 name|AbstractBlobStore
 name|store
 decl_stmt|;
@@ -2052,72 +2052,6 @@ name|getAbsolutePath
 argument_list|()
 argument_list|)
 expr_stmt|;
-block|}
-comment|// FIXME: OAK-430: Incorrect read logic in AbstractBlobStore
-comment|//    public void testRead() throws Exception {
-comment|//        int blobLength = 81;
-comment|//        store.setBlockSize(80);
-comment|//        store.setBlockSizeMin(48);
-comment|//
-comment|//        byte[] blob = createBlob(blobLength);
-comment|//        String blobId = store.writeBlob(new ByteArrayInputStream(blob));
-comment|//        assertNotNull(blobId);
-comment|//
-comment|//        byte[] readBlob = new byte[blobLength];
-comment|//        store.readBlob(blobId, 0, readBlob, 0, readBlob.length);
-comment|//        assertTrue(Arrays.equals(blob, readBlob));
-comment|//    }
-specifier|private
-specifier|static
-name|byte
-index|[]
-name|createBlob
-parameter_list|(
-name|int
-name|blobLength
-parameter_list|)
-block|{
-name|byte
-index|[]
-name|blob
-init|=
-operator|new
-name|byte
-index|[
-name|blobLength
-index|]
-decl_stmt|;
-for|for
-control|(
-name|int
-name|i
-init|=
-literal|0
-init|;
-name|i
-operator|<
-name|blob
-operator|.
-name|length
-condition|;
-name|i
-operator|++
-control|)
-block|{
-name|blob
-index|[
-name|i
-index|]
-operator|=
-operator|(
-name|byte
-operator|)
-name|i
-expr_stmt|;
-block|}
-return|return
-name|blob
-return|;
 block|}
 block|}
 end_class
