@@ -536,14 +536,7 @@ argument_list|(
 literal|null
 argument_list|)
 expr_stmt|;
-comment|//        when(mockedNodeState.getProperty(OakSolrNodeStateConfiguration.Properties.SOLRHOME_PATH)).
-comment|//                thenReturn(PropertyStates.createProperty(OakSolrNodeStateConfiguration.Properties.SOLRHOME_PATH, TestUtils.SOLR_HOME_PATH));
-comment|//        when(mockedNodeState.getProperty(OakSolrNodeStateConfiguration.Properties.SOLRCONFIG_PATH)).
-comment|//                thenReturn(PropertyStates.createProperty(OakSolrNodeStateConfiguration.Properties.SOLRCONFIG_PATH, TestUtils.SOLRCONFIG_PATH));
-comment|//        when(mockedNodeState.getProperty(OakSolrNodeStateConfiguration.Properties.PATH_FIELD)).
-comment|//                thenReturn(PropertyStates.createProperty(OakSolrNodeStateConfiguration.Properties.PATH_FIELD, "path_exact"));
-comment|//        when(mockedNodeState.getProperty(OakSolrNodeStateConfiguration.Properties.COMMIT_POLICY)).
-comment|//                thenReturn(PropertyStates.createProperty(OakSolrNodeStateConfiguration.Properties.COMMIT_POLICY, "HARD"));
+comment|// this triggers defaults
 return|return
 name|mockedNodeState
 return|;
