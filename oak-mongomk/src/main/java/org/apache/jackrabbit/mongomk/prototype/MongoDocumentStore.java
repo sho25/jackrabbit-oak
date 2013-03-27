@@ -1043,6 +1043,21 @@ operator|.
 name|getKey
 argument_list|()
 decl_stmt|;
+if|if
+condition|(
+name|k
+operator|.
+name|equals
+argument_list|(
+name|UpdateOp
+operator|.
+name|ID
+argument_list|)
+condition|)
+block|{
+comment|// avoid exception "Mod on _id not allowed"
+continue|continue;
+block|}
 name|Operation
 name|op
 init|=

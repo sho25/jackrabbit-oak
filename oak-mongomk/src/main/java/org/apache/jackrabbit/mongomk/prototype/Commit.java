@@ -1028,15 +1028,6 @@ range|:
 name|newNodes
 control|)
 block|{
-name|op
-operator|.
-name|unset
-argument_list|(
-name|UpdateOp
-operator|.
-name|ID
-argument_list|)
-expr_stmt|;
 if|if
 condition|(
 name|op
@@ -1380,6 +1371,14 @@ operator|+
 literal|" was already added in revision "
 operator|+
 name|newestRev
+operator|+
+literal|"; before "
+operator|+
+name|revision
+operator|+
+literal|"; document "
+operator|+
+name|map
 argument_list|)
 throw|;
 block|}
@@ -1412,6 +1411,14 @@ operator|+
 literal|", which was applied after the base revision "
 operator|+
 name|baseRevision
+operator|+
+literal|"; before "
+operator|+
+name|revision
+operator|+
+literal|"; document "
+operator|+
+name|map
 argument_list|)
 throw|;
 block|}

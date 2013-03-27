@@ -4693,7 +4693,6 @@ name|newestRev
 operator|=
 name|propRev
 expr_stmt|;
-block|}
 name|newestValue
 operator|=
 name|valueMap
@@ -4703,6 +4702,7 @@ argument_list|(
 name|r
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 block|}
