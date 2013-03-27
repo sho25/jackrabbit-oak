@@ -492,12 +492,12 @@ specifier|abstract
 class|class
 name|ItemReadOperation
 parameter_list|<
-name|T
+name|U
 parameter_list|>
 extends|extends
 name|SessionOperation
 argument_list|<
-name|T
+name|U
 argument_list|>
 block|{
 annotation|@
@@ -519,12 +519,12 @@ specifier|abstract
 class|class
 name|ItemWriteOperation
 parameter_list|<
-name|T
+name|U
 parameter_list|>
 extends|extends
 name|SessionOperation
 argument_list|<
-name|T
+name|U
 argument_list|>
 block|{
 annotation|@
@@ -544,22 +544,22 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Perform the passed {@link org.apache.jackrabbit.oak.jcr.ItemImpl.ItemReadOperation}.      * @param op  operation to perform      * @param<T>  return type of the operation      * @return  the result of {@code op.perform()}      * @throws RepositoryException as thrown by {@code op.perform()}.      */
+comment|/**      * Perform the passed {@link org.apache.jackrabbit.oak.jcr.ItemImpl.ItemReadOperation}.      * @param op  operation to perform      * @param<U>  return type of the operation      * @return  the result of {@code op.perform()}      * @throws RepositoryException as thrown by {@code op.perform()}.      */
 annotation|@
 name|CheckForNull
 specifier|protected
 specifier|final
 parameter_list|<
-name|T
+name|U
 parameter_list|>
-name|T
+name|U
 name|perform
 parameter_list|(
 annotation|@
 name|Nonnull
 name|SessionOperation
 argument_list|<
-name|T
+name|U
 argument_list|>
 name|op
 parameter_list|)
@@ -575,22 +575,22 @@ name|op
 argument_list|)
 return|;
 block|}
-comment|/**      * Perform the passed {@link org.apache.jackrabbit.oak.jcr.ItemImpl.ItemReadOperation} assuming it does not throw an      * {@code RepositoryException}. If it does, wrap it into and throw it as an      * {@code IllegalArgumentException}.      * @param op  operation to perform      * @param<T>  return type of the operation      * @return  the result of {@code op.perform()}      */
+comment|/**      * Perform the passed {@link org.apache.jackrabbit.oak.jcr.ItemImpl.ItemReadOperation} assuming it does not throw an      * {@code RepositoryException}. If it does, wrap it into and throw it as an      * {@code IllegalArgumentException}.      * @param op  operation to perform      * @param<U>  return type of the operation      * @return  the result of {@code op.perform()}      */
 annotation|@
 name|CheckForNull
 specifier|protected
 specifier|final
 parameter_list|<
-name|T
+name|U
 parameter_list|>
-name|T
+name|U
 name|safePerform
 parameter_list|(
 annotation|@
 name|Nonnull
 name|SessionOperation
 argument_list|<
-name|T
+name|U
 argument_list|>
 name|op
 parameter_list|)
