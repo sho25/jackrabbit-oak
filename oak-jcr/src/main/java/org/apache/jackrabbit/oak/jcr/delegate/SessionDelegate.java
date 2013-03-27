@@ -1045,7 +1045,7 @@ block|}
 comment|//-----------------------------------------------------------< internal>---
 annotation|@
 name|Nonnull
-comment|// FIXME this should be package private
+comment|// FIXME this should be package private. OAK-672
 specifier|public
 name|Root
 name|getRoot

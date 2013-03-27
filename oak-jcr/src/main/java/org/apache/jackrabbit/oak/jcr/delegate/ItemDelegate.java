@@ -313,6 +313,7 @@ block|}
 comment|/**      * The underlying {@link org.apache.jackrabbit.oak.api.TreeLocation} of this item.      * @return  tree location of the underlying item      * @throws InvalidItemStateException if the location points to a stale item      */
 annotation|@
 name|Nonnull
+comment|// FIXME this should be package private. OAK-672
 specifier|public
 name|TreeLocation
 name|getLocation
