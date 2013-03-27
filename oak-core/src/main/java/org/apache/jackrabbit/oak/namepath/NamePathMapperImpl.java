@@ -411,7 +411,17 @@ condition|)
 block|{
 name|error
 argument_list|(
-literal|"index> 1"
+literal|"index> 1; = "
+operator|+
+name|index
+operator|+
+literal|" for path "
+operator|+
+name|oakPath
+operator|+
+literal|" and name "
+operator|+
+name|name
 argument_list|)
 expr_stmt|;
 block|}
