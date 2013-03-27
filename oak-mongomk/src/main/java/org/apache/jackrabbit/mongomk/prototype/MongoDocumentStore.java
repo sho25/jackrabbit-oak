@@ -824,7 +824,7 @@ name|o
 argument_list|)
 decl_stmt|;
 name|String
-name|path
+name|key
 init|=
 operator|(
 name|String
@@ -842,7 +842,7 @@ name|cache
 operator|.
 name|put
 argument_list|(
-name|path
+name|key
 argument_list|,
 name|map
 argument_list|)
@@ -1010,6 +1010,13 @@ operator|new
 name|BasicDBObject
 argument_list|()
 decl_stmt|;
+name|BasicDBObject
+name|unsetUpdates
+init|=
+operator|new
+name|BasicDBObject
+argument_list|()
+decl_stmt|;
 for|for
 control|(
 name|Entry
@@ -1106,7 +1113,15 @@ case|case
 name|REMOVE_MAP_ENTRY
 case|:
 block|{
-comment|// TODO
+name|unsetUpdates
+operator|.
+name|append
+argument_list|(
+name|k
+argument_list|,
+literal|"1"
+argument_list|)
+expr_stmt|;
 break|break;
 block|}
 case|case
@@ -1216,9 +1231,28 @@ name|incUpdates
 argument_list|)
 expr_stmt|;
 block|}
-comment|//        dbCollection.update(query, update, true /*upsert*/, false /*multi*/,
-comment|//                WriteConcern.SAFE);
-comment|//        return null;
+if|if
+condition|(
+operator|!
+name|unsetUpdates
+operator|.
+name|isEmpty
+argument_list|()
+condition|)
+block|{
+name|update
+operator|.
+name|append
+argument_list|(
+literal|"$unset"
+argument_list|,
+name|unsetUpdates
+argument_list|)
+expr_stmt|;
+block|}
+comment|// dbCollection.update(query, update, true /*upsert*/, false /*multi*/,
+comment|//         WriteConcern.SAFE);
+comment|// return null;
 name|long
 name|start
 init|=
@@ -1247,7 +1281,7 @@ comment|/*remove*/
 argument_list|,
 name|update
 argument_list|,
-literal|true
+literal|false
 comment|/*returnNew*/
 argument_list|,
 literal|true
@@ -1267,28 +1301,53 @@ argument_list|(
 name|oldNode
 argument_list|)
 decl_stmt|;
+comment|// cache the new document
+name|Map
+argument_list|<
 name|String
-name|path
+argument_list|,
+name|Object
+argument_list|>
+name|newMap
 init|=
-operator|(
-name|String
-operator|)
-name|map
+name|Utils
 operator|.
-name|get
-argument_list|(
-name|UpdateOp
-operator|.
-name|ID
-argument_list|)
+name|newMap
+argument_list|()
 decl_stmt|;
+name|Utils
+operator|.
+name|deepCopyMap
+argument_list|(
+name|map
+argument_list|,
+name|newMap
+argument_list|)
+expr_stmt|;
+name|String
+name|key
+init|=
+name|updateOp
+operator|.
+name|getKey
+argument_list|()
+decl_stmt|;
+name|MemoryDocumentStore
+operator|.
+name|applyChanges
+argument_list|(
+name|newMap
+argument_list|,
+name|updateOp
+argument_list|)
+expr_stmt|;
 name|cache
 operator|.
 name|put
 argument_list|(
-name|path
+name|key
 argument_list|,
-name|map
+name|newMap
 argument_list|)
 expr_stmt|;
 name|log
@@ -1651,7 +1710,7 @@ name|maps
 control|)
 block|{
 name|String
-name|path
+name|id
 init|=
 operator|(
 name|String
@@ -1669,7 +1728,7 @@ name|cache
 operator|.
 name|put
 argument_list|(
-name|path
+name|id
 argument_list|,
 name|map
 argument_list|)

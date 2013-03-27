@@ -407,17 +407,7 @@ argument_list|(
 literal|null
 argument_list|)
 decl_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"branchRev: "
-operator|+
-name|branchRev
-argument_list|)
-expr_stmt|;
+comment|// System.out.println("branchRev: " + branchRev);
 name|addNodes
 argument_list|(
 literal|null

@@ -157,7 +157,7 @@ argument_list|>
 name|updateOps
 parameter_list|)
 function_decl|;
-comment|/**      * Create or update a document. For MongoDb, this is using "findAndModify" with      * the "upsert" flag (insert or update).      *      * @param collection the collection      * @param update the update operation      * @return the new document      * @throws MicroKernelException if the operation failed.      */
+comment|/**      * Create or update a document. For MongoDb, this is using "findAndModify" with      * the "upsert" flag (insert or update).      *      * @param collection the collection      * @param update the update operation      * @return the old document      * @throws MicroKernelException if the operation failed.      */
 annotation|@
 name|Nonnull
 name|Map

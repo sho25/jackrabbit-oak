@@ -76,6 +76,34 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|fail
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|mk
+operator|.
+name|api
+operator|.
+name|MicroKernelException
+import|;
+end_import
+
+begin_import
 import|import
 name|org
 operator|.
@@ -162,7 +190,7 @@ name|MONGO_DB
 init|=
 literal|false
 decl_stmt|;
-comment|//    private static final boolean MONGO_DB = true;
+comment|// private static final boolean MONGO_DB = true;
 annotation|@
 name|Test
 specifier|public
@@ -901,6 +929,80 @@ argument_list|(
 literal|"{\":id\":\"/test/b@r0000004000-0\",\":childNodeCount\":0}"
 argument_list|,
 name|r4
+argument_list|)
+expr_stmt|;
+name|mk
+operator|.
+name|dispose
+argument_list|()
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+specifier|public
+name|void
+name|conflict
+parameter_list|()
+block|{
+name|MongoMK
+name|mk
+init|=
+name|createMK
+argument_list|()
+decl_stmt|;
+name|mk
+operator|.
+name|commit
+argument_list|(
+literal|"/"
+argument_list|,
+literal|"+\"a\": {}"
+argument_list|,
+literal|null
+argument_list|,
+literal|null
+argument_list|)
+expr_stmt|;
+try|try
+block|{
+name|mk
+operator|.
+name|commit
+argument_list|(
+literal|"/"
+argument_list|,
+literal|"+\"b\": {}  +\"a\": {}"
+argument_list|,
+literal|null
+argument_list|,
+literal|null
+argument_list|)
+expr_stmt|;
+name|fail
+argument_list|()
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|MicroKernelException
+name|e
+parameter_list|)
+block|{
+comment|// expected
+block|}
+comment|// the previous commit should be rolled back now,
+comment|// so this should work
+name|mk
+operator|.
+name|commit
+argument_list|(
+literal|"/"
+argument_list|,
+literal|"+\"b\": {}"
+argument_list|,
+literal|null
+argument_list|,
+literal|null
 argument_list|)
 expr_stmt|;
 name|mk

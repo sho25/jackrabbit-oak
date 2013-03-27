@@ -570,6 +570,11 @@ name|oldNode
 expr_stmt|;
 block|}
 block|}
+synchronized|synchronized
+init|(
+name|n
+init|)
+block|{
 if|if
 condition|(
 name|oldNode
@@ -585,38 +590,30 @@ name|String
 argument_list|,
 name|Object
 argument_list|>
-name|old
+name|oldNode2
 init|=
 name|Utils
 operator|.
 name|newMap
 argument_list|()
 decl_stmt|;
-synchronized|synchronized
-init|(
-name|oldNode
-init|)
-block|{
-name|old
+name|Utils
 operator|.
-name|putAll
+name|deepCopyMap
 argument_list|(
 name|oldNode
+argument_list|,
+name|oldNode2
 argument_list|)
 expr_stmt|;
-block|}
 name|oldNode
 operator|=
-name|old
+name|oldNode2
 expr_stmt|;
 block|}
+comment|// to return the new document:
 comment|// update the document
 comment|// (document level operations are synchronized)
-synchronized|synchronized
-init|(
-name|n
-init|)
-block|{
 name|applyChanges
 argument_list|(
 name|n
@@ -626,7 +623,7 @@ argument_list|)
 expr_stmt|;
 block|}
 return|return
-name|n
+name|oldNode
 return|;
 block|}
 specifier|public
