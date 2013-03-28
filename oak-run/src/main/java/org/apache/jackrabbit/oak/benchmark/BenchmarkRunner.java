@@ -486,6 +486,10 @@ argument_list|)
 argument_list|)
 block|,
 operator|new
+name|CreateNodesBenchmark
+argument_list|()
+block|,
+operator|new
 name|ManyNodes
 argument_list|()
 block|,
