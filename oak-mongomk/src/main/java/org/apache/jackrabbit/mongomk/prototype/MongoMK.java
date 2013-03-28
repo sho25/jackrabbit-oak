@@ -404,21 +404,6 @@ name|MongoMK
 implements|implements
 name|MicroKernel
 block|{
-specifier|private
-specifier|static
-specifier|final
-name|Logger
-name|log
-init|=
-name|LoggerFactory
-operator|.
-name|getLogger
-argument_list|(
-name|MongoMK
-operator|.
-name|class
-argument_list|)
-decl_stmt|;
 comment|/**      * The number of documents to cache.      */
 specifier|static
 specifier|final
@@ -434,6 +419,21 @@ argument_list|,
 literal|20
 operator|*
 literal|1024
+argument_list|)
+decl_stmt|;
+specifier|private
+specifier|static
+specifier|final
+name|Logger
+name|LOG
+init|=
+name|LoggerFactory
+operator|.
+name|getLogger
+argument_list|(
+name|MongoMK
+operator|.
+name|class
 argument_list|)
 decl_stmt|;
 comment|/**      * The number of child node list entries to cache.      */
@@ -468,6 +468,7 @@ argument_list|,
 literal|1024
 argument_list|)
 decl_stmt|;
+comment|/**      * When trying to access revisions that are older than this many milliseconds, a warning is logged.      */
 specifier|private
 specifier|static
 specifier|final
@@ -483,21 +484,6 @@ argument_list|,
 literal|10000
 argument_list|)
 decl_stmt|;
-specifier|private
-specifier|static
-specifier|final
-name|Logger
-name|LOG
-init|=
-name|LoggerFactory
-operator|.
-name|getLogger
-argument_list|(
-name|MongoMK
-operator|.
-name|class
-argument_list|)
-decl_stmt|;
 comment|/**      * The delay for asynchronous operations (delayed commit propagation and      * cache update).      */
 comment|// TODO test observation with multiple Oak instances
 specifier|protected
@@ -508,17 +494,9 @@ name|ASYNC_DELAY
 init|=
 literal|1000
 decl_stmt|;
-comment|/**      * For revisions that are older than this many seconds, the MongoMK will      * assume the revision is valid. For more recent changes, the MongoMK needs      * to verify it first (by reading the revision root). The default is      * Integer.MAX_VALUE, meaning no revisions are trusted. Once the garbage      * collector removes old revisions, this value is changed.      */
+comment|/**      * Whether this instance is disposed.      */
 specifier|private
-specifier|static
 specifier|final
-name|int
-name|trustedRevisionAge
-init|=
-name|Integer
-operator|.
-name|MAX_VALUE
-decl_stmt|;
 name|AtomicBoolean
 name|isDisposed
 init|=
@@ -992,6 +970,7 @@ block|}
 block|}
 block|}
 block|}
+comment|/**      * Enable using simple revisions (just a counter). This feature is useful      * for testing.      */
 name|void
 name|useSimpleRevisions
 parameter_list|()
@@ -1006,6 +985,7 @@ name|init
 argument_list|()
 expr_stmt|;
 block|}
+comment|/**      * Create a new revision.      *       * @return the revision      */
 name|Revision
 name|newRevision
 parameter_list|()
@@ -1600,7 +1580,7 @@ condition|)
 block|{
 comment|// shouldn't happen, either node is commit root for a revision
 comment|// or has a reference to the commit root
-name|log
+name|LOG
 operator|.
 name|warn
 argument_list|(
@@ -1618,7 +1598,7 @@ argument_list|,
 name|rev
 argument_list|)
 expr_stmt|;
-name|log
+name|LOG
 operator|.
 name|warn
 argument_list|(
