@@ -3850,6 +3850,55 @@ name|targetPath
 argument_list|)
 expr_stmt|;
 block|}
+if|if
+condition|(
+operator|!
+name|nodeExists
+argument_list|(
+name|sourcePath
+argument_list|,
+name|baseRevId
+argument_list|)
+condition|)
+block|{
+throw|throw
+operator|new
+name|MicroKernelException
+argument_list|(
+literal|"Node not found: "
+operator|+
+name|sourcePath
+operator|+
+literal|" in revision "
+operator|+
+name|baseRevId
+argument_list|)
+throw|;
+block|}
+if|if
+condition|(
+name|nodeExists
+argument_list|(
+name|targetPath
+argument_list|,
+name|baseRevId
+argument_list|)
+condition|)
+block|{
+throw|throw
+operator|new
+name|MicroKernelException
+argument_list|(
+literal|"Node already exists: "
+operator|+
+name|targetPath
+operator|+
+literal|" in revision "
+operator|+
+name|baseRevId
+argument_list|)
+throw|;
+block|}
 name|commit
 operator|.
 name|moveNode
@@ -3919,6 +3968,31 @@ argument_list|,
 name|targetPath
 argument_list|)
 expr_stmt|;
+block|}
+if|if
+condition|(
+operator|!
+name|nodeExists
+argument_list|(
+name|sourcePath
+argument_list|,
+name|baseRevId
+argument_list|)
+condition|)
+block|{
+throw|throw
+operator|new
+name|MicroKernelException
+argument_list|(
+literal|"Node not found: "
+operator|+
+name|sourcePath
+operator|+
+literal|" in revision "
+operator|+
+name|baseRevId
+argument_list|)
+throw|;
 block|}
 name|commit
 operator|.
