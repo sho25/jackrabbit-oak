@@ -749,15 +749,11 @@ operator|.
 name|remove
 argument_list|()
 expr_stmt|;
-name|assertEquals
+name|assertFalse
 argument_list|(
-name|Status
-operator|.
-name|DISCONNECTED
-argument_list|,
 name|z
 operator|.
-name|getStatus
+name|isConnected
 argument_list|()
 argument_list|)
 expr_stmt|;
