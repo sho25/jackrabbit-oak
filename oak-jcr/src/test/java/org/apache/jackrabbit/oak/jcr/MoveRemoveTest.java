@@ -18,6 +18,30 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertEquals
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|fail
+import|;
+end_import
+
+begin_import
 import|import
 name|javax
 operator|.
@@ -64,30 +88,6 @@ operator|.
 name|junit
 operator|.
 name|Test
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertEquals
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|fail
 import|;
 end_import
 
@@ -1079,6 +1079,16 @@ name|save
 argument_list|()
 expr_stmt|;
 name|Node
+name|p
+init|=
+name|session
+operator|.
+name|getNode
+argument_list|(
+literal|"/parent"
+argument_list|)
+decl_stmt|;
+name|Node
 name|n
 init|=
 name|session
@@ -1095,6 +1105,16 @@ argument_list|(
 literal|"/parent"
 argument_list|,
 literal|"/moved"
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"/moved"
+argument_list|,
+name|p
+operator|.
+name|getPath
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|assertEquals

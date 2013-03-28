@@ -38,7 +38,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * The root of a {@link Tree}.  *<p/>  * The data returned by this class filtered for the access rights that are set  * in the {@link ContentSession} that created this object.  *<p/>  * All root instances created by a content session become invalid after the  * content session is closed. Any method called on an invalid root instance  * will throw an {@code InvalidStateException}.  *<p/>  * All {@link Tree} instances acquired through a root become invalid upon call of  * {@link #refresh()}, {@link #rebase()} or {@link #commit()}. Any access to invalid  * tree instances - except for hierarchy related methods - will cause an  * {@code InvalidStateException}.  */
+comment|/**  * The root of a {@link Tree}.  *<p/>  * The data returned by this class filtered for the access rights that are set  * in the {@link ContentSession} that created this object.  *<p/>  * All root instances created by a content session become invalid after the  * content session is closed. Any method called on an invalid root instance  * will throw an {@code InvalidStateException}.  *<p/>  * {@link Tree} instances may become disconnected after a call to {@link #refresh()},  * {@link #rebase()} or {@link #commit()}. Any access to disconnected tree instances  * - except for  {@link Tree#getName()}, {@link Tree#isRoot()}, {@link Tree#getPath()},  * {@link Tree#getParent()} and {@link Tree#getStatus()} - will cause an  * {@code InvalidStateException}.  */
 end_comment
 
 begin_interface
@@ -88,12 +88,12 @@ name|String
 name|path
 parameter_list|)
 function_decl|;
-comment|/**      * Rebase this root instance to the latest revision. After a call to this method,      * all trees obtained through {@link #getTree(String)} become invalid and fresh      * instances must be obtained.      */
+comment|/**      * Rebase this root instance to the latest revision. After a call to this method,      * trees obtained through {@link #getTree(String)} may become disconnected.      */
 name|void
 name|rebase
 parameter_list|()
 function_decl|;
-comment|/**      * Reverts all changes made to this root and refreshed to the latest trunk.      * After a call to this method, all trees obtained through {@link #getTree(String)}      * become invalid and fresh instances must be obtained.      */
+comment|/**      * Reverts all changes made to this root and refreshed to the latest trunk.      * After a call to this method, trees obtained through {@link #getTree(String)}      * may become disconnected.      */
 name|void
 name|refresh
 parameter_list|()

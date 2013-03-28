@@ -307,10 +307,6 @@ specifier|private
 name|int
 name|sessionOpCount
 decl_stmt|;
-specifier|private
-name|int
-name|revision
-decl_stmt|;
 specifier|public
 name|SessionDelegate
 parameter_list|(
@@ -667,9 +663,6 @@ operator|.
 name|commit
 argument_list|()
 expr_stmt|;
-name|revision
-operator|++
-expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
@@ -711,9 +704,6 @@ name|refresh
 argument_list|()
 expr_stmt|;
 block|}
-name|revision
-operator|++
-expr_stmt|;
 block|}
 comment|//----------------------------------------------------------< Workspace>---
 annotation|@
@@ -1071,15 +1061,6 @@ name|getLocation
 argument_list|(
 name|path
 argument_list|)
-return|;
-block|}
-comment|/**      * Revision of this session. The revision is incremented each time a session is refreshed or saved.      * This allows items to determine whether they need to re-resolve their underlying state when the      * revision on which an item is based does not match the revision of the session any more.      * @return  the current revision of this session      */
-name|int
-name|getRevision
-parameter_list|()
-block|{
-return|return
-name|revision
 return|;
 block|}
 comment|/**      * Get the {@code Tree} with the given path      * @param path  oak path      * @return  tree at the given path or {@code null} if no such tree exists or      * if the tree at {@code path} is not accessible.      */
