@@ -6110,6 +6110,8 @@ name|ImmutableSet
 operator|.
 name|of
 argument_list|(
+name|NodeImpl
+operator|.
 name|this
 argument_list|)
 argument_list|)
