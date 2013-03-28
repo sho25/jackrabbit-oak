@@ -628,7 +628,13 @@ expr_stmt|;
 block|}
 else|else
 block|{
-comment|//                    queryBuilder.append("\"");
+name|queryBuilder
+operator|.
+name|append
+argument_list|(
+literal|"\""
+argument_list|)
+expr_stmt|;
 name|queryBuilder
 operator|.
 name|append
@@ -636,7 +642,13 @@ argument_list|(
 name|path
 argument_list|)
 expr_stmt|;
-comment|//                    queryBuilder.append("\"");
+name|queryBuilder
+operator|.
+name|append
+argument_list|(
+literal|"\""
+argument_list|)
+expr_stmt|;
 block|}
 name|queryBuilder
 operator|.
@@ -683,6 +695,21 @@ range|:
 name|propertyRestrictions
 control|)
 block|{
+if|if
+condition|(
+name|pr
+operator|.
+name|propertyName
+operator|.
+name|contains
+argument_list|(
+literal|"/"
+argument_list|)
+condition|)
+block|{
+comment|// lucene cannot handle child-level property restrictions
+continue|continue;
+block|}
 name|String
 name|first
 init|=
@@ -1071,6 +1098,24 @@ operator|.
 name|append
 argument_list|(
 literal|" "
+argument_list|)
+expr_stmt|;
+block|}
+if|if
+condition|(
+name|queryBuilder
+operator|.
+name|length
+argument_list|()
+operator|==
+literal|0
+condition|)
+block|{
+name|queryBuilder
+operator|.
+name|append
+argument_list|(
+literal|"*:*"
 argument_list|)
 expr_stmt|;
 block|}

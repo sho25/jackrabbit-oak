@@ -131,46 +131,6 @@ name|oak
 operator|.
 name|plugins
 operator|.
-name|index
-operator|.
-name|solr
-operator|.
-name|server
-operator|.
-name|OakSolrNodeStateConfiguration
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|plugins
-operator|.
-name|memory
-operator|.
-name|PropertyStates
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|plugins
-operator|.
 name|nodetype
 operator|.
 name|write
@@ -348,7 +308,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * General query extensive testcase for {@link org.apache.jackrabbit.oak.plugins.index.solr.query.SolrQueryIndex} and {@link org.apache.jackrabbit.oak.plugins.index.solr.index.SolrIndexDiff}  */
+comment|/**  * General query extensive testcase for {@link SolrQueryIndex} and {@link  * org.apache.jackrabbit.oak.plugins.index.solr.index.SolrIndexDiff}  */
 end_comment
 
 begin_class
@@ -543,11 +503,6 @@ return|;
 block|}
 annotation|@
 name|Test
-annotation|@
-name|Ignore
-argument_list|(
-literal|"failing"
-argument_list|)
 specifier|public
 name|void
 name|sql2
