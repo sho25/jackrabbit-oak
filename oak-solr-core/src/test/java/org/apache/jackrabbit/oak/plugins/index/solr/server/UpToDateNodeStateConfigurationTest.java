@@ -129,6 +129,18 @@ name|assertNotNull
 import|;
 end_import
 
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertNull
+import|;
+end_import
+
 begin_comment
 comment|/**  * Testcase for {@link UpToDateNodeStateConfiguration}  */
 end_comment
@@ -194,7 +206,7 @@ annotation|@
 name|Test
 specifier|public
 name|void
-name|testPath
+name|testExistingPath
 parameter_list|()
 throws|throws
 name|Exception
@@ -225,6 +237,18 @@ name|getCoreName
 argument_list|()
 argument_list|)
 expr_stmt|;
+comment|// property defined in the node state
+name|assertEquals
+argument_list|(
+literal|"path_exact"
+argument_list|,
+name|upToDateNodeStateConfiguration
+operator|.
+name|getPathField
+argument_list|()
+argument_list|)
+expr_stmt|;
+comment|// using default as this property not defined in the node state
 block|}
 annotation|@
 name|Test
@@ -251,7 +275,7 @@ argument_list|,
 name|path
 argument_list|)
 decl_stmt|;
-name|assertNotNull
+name|assertNull
 argument_list|(
 name|upToDateNodeStateConfiguration
 operator|.
@@ -259,13 +283,37 @@ name|getSolrConfigPath
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|assertEquals
+block|}
+annotation|@
+name|Test
+specifier|public
+name|void
+name|testNodeStateNotFound
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|String
+name|path
+init|=
+literal|"some/path/to/somewhere/unknown"
+decl_stmt|;
+name|UpToDateNodeStateConfiguration
+name|upToDateNodeStateConfiguration
+init|=
+operator|new
+name|UpToDateNodeStateConfiguration
 argument_list|(
-literal|"./solr.xml"
+name|store
 argument_list|,
+name|path
+argument_list|)
+decl_stmt|;
+name|assertNull
+argument_list|(
 name|upToDateNodeStateConfiguration
 operator|.
-name|getSolrConfigPath
+name|getConfigurationNodeState
 argument_list|()
 argument_list|)
 expr_stmt|;

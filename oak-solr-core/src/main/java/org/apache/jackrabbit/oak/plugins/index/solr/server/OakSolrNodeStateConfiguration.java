@@ -143,7 +143,7 @@ name|OakSolrNodeStateConfiguration
 implements|implements
 name|OakSolrConfiguration
 block|{
-comment|/**      * get the {@link NodeState} which contains the properties for the Oak -      * Solr configuration.      *      * @return a {@link NodeState} for the Solr configuration.      */
+comment|/**      * get the {@link NodeState} which contains the properties for the Oak -      * Solr configuration.      *      * @return a {@link NodeState} for the Solr configuration or<code>null</code>      *         if such a {@link NodeState} doesn't exist.      */
 specifier|protected
 specifier|abstract
 name|NodeState
@@ -463,7 +463,6 @@ name|STRING
 argument_list|)
 expr_stmt|;
 block|}
-block|}
 if|if
 condition|(
 name|value
@@ -482,6 +481,7 @@ name|value
 operator|=
 name|defaultValue
 expr_stmt|;
+block|}
 block|}
 return|return
 name|value
