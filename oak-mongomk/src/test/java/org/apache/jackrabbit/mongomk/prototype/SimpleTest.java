@@ -1378,7 +1378,7 @@ name|commit
 argument_list|(
 literal|"/"
 argument_list|,
-literal|"+\"test\":{\"name\": \"Hello\"}"
+literal|"+\"test\":{\"name\": \"Hello\"} ^ \"x\": 1"
 argument_list|,
 literal|null
 argument_list|,
@@ -1394,7 +1394,7 @@ name|commit
 argument_list|(
 literal|"/"
 argument_list|,
-literal|"-\"test\""
+literal|"-\"test\" ^ \"x\": 2"
 argument_list|,
 literal|null
 argument_list|,
@@ -1410,7 +1410,7 @@ name|commit
 argument_list|(
 literal|"/"
 argument_list|,
-literal|"+\"test\":{\"name\": \"Hallo\"}"
+literal|"+\"test\":{\"name\": \"Hallo\"} ^ \"x\": 3"
 argument_list|,
 literal|null
 argument_list|,

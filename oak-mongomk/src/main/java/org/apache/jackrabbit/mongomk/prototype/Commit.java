@@ -1347,9 +1347,46 @@ decl_stmt|;
 if|if
 condition|(
 name|newestRev
-operator|!=
+operator|==
 literal|null
 condition|)
+block|{
+if|if
+condition|(
+name|op
+operator|.
+name|isDelete
+operator|||
+operator|!
+name|op
+operator|.
+name|isNew
+condition|)
+block|{
+throw|throw
+operator|new
+name|MicroKernelException
+argument_list|(
+literal|"The node "
+operator|+
+name|op
+operator|.
+name|path
+operator|+
+literal|" does not exist or is already deleted "
+operator|+
+literal|"before "
+operator|+
+name|revision
+operator|+
+literal|"; document "
+operator|+
+name|map
+argument_list|)
+throw|;
+block|}
+block|}
+else|else
 block|{
 if|if
 condition|(
