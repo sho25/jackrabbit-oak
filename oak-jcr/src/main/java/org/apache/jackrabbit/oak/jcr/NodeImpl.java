@@ -1915,7 +1915,7 @@ name|name
 argument_list|,
 name|values
 argument_list|,
-name|PropertyImpl
+name|ValueHelper
 operator|.
 name|getType
 argument_list|(
