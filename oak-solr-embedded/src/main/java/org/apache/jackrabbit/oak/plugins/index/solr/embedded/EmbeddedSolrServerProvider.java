@@ -637,10 +637,6 @@ throws|throws
 name|Exception
 block|{
 comment|// hack needed to let lucene SPIs work in an OSGi deploy
-comment|//        Thread thread = Thread.currentThread();
-comment|//        ClassLoader loader = thread.getContextClassLoader();
-comment|//        thread.setContextClassLoader(Lucene40Codec.class.getClassLoader());
-comment|//        thread.setContextClassLoader(loader);
 name|Codec
 operator|.
 name|reloadCodecs
@@ -749,6 +745,34 @@ argument_list|,
 name|DEFAULT_CORE_NAME
 argument_list|)
 expr_stmt|;
+name|ClassLoader
+name|classLoader
+init|=
+name|Thread
+operator|.
+name|currentThread
+argument_list|()
+operator|.
+name|getContextClassLoader
+argument_list|()
+decl_stmt|;
+name|Thread
+operator|.
+name|currentThread
+argument_list|()
+operator|.
+name|setContextClassLoader
+argument_list|(
+name|JettySolrRunner
+operator|.
+name|class
+operator|.
+name|getClassLoader
+argument_list|()
+argument_list|)
+expr_stmt|;
+try|try
+block|{
 name|JettySolrRunner
 name|jettySolrRunner
 init|=
@@ -775,6 +799,20 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+block|}
+finally|finally
+block|{
+name|Thread
+operator|.
+name|currentThread
+argument_list|()
+operator|.
+name|setContextClassLoader
+argument_list|(
+name|classLoader
+argument_list|)
+expr_stmt|;
+block|}
 name|HttpSolrServer
 name|httpSolrServer
 init|=
