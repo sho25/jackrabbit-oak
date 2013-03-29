@@ -143,6 +143,20 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Joiner
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -981,6 +995,22 @@ argument_list|(
 literal|"Incorrect node type of child node "
 operator|+
 name|nodeName
+operator|+
+literal|" ("
+operator|+
+name|Joiner
+operator|.
+name|on
+argument_list|(
+literal|","
+argument_list|)
+operator|.
+name|join
+argument_list|(
+name|nodeType
+argument_list|)
+operator|+
+literal|')'
 argument_list|)
 throw|;
 block|}
