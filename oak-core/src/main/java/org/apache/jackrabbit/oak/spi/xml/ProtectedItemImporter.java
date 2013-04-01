@@ -87,7 +87,6 @@ end_comment
 
 begin_interface
 specifier|public
-specifier|abstract
 interface|interface
 name|ProtectedItemImporter
 block|{

@@ -18,6 +18,22 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkNotNull
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -57,28 +73,13 @@ name|PropertyType
 import|;
 end_import
 
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|Preconditions
-operator|.
-name|checkNotNull
-import|;
-end_import
-
 begin_comment
 comment|/**  * TypeCodes maps between {@code Type} and the code used to prefix  * its json serialisation.  */
 end_comment
 
 begin_class
 specifier|public
+specifier|final
 class|class
 name|TypeCodes
 block|{

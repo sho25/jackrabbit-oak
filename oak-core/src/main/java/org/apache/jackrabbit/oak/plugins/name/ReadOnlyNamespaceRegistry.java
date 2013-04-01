@@ -119,7 +119,7 @@ name|NamespaceRegistry
 implements|,
 name|NamespaceConstants
 block|{
-comment|/**      * Called by the {@link NamespaceRegistry} implementation methods      * to acquire a root {@link Tree} instance from which to read the      * namespace mappings (under<code>jcr:system/rep:namespaces</code>).      *      * @return root {@link Tree} for reading the namespace mappings      */
+comment|/**      * Called by the {@link NamespaceRegistry} implementation methods      * to acquire a root {@link Tree} instance from which to read the      * namespace mappings (under {@code jcr:system/rep:namespaces}).      *      * @return root {@link Tree} for reading the namespace mappings      */
 specifier|protected
 specifier|abstract
 name|Tree
