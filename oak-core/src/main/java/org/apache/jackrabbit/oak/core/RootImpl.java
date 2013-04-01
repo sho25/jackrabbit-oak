@@ -740,13 +740,13 @@ name|store
 decl_stmt|;
 specifier|private
 specifier|final
-name|String
-name|workspaceName
+name|CommitHook
+name|hook
 decl_stmt|;
 specifier|private
 specifier|final
-name|CommitHook
-name|hook
+name|String
+name|workspaceName
 decl_stmt|;
 specifier|private
 specifier|final
@@ -763,6 +763,12 @@ specifier|final
 name|QueryIndexProvider
 name|indexProvider
 decl_stmt|;
+comment|/**      * Current root {@code Tree}      */
+specifier|private
+specifier|final
+name|TreeImpl
+name|rootTree
+decl_stmt|;
 comment|/**      * Current branch this root operates on      */
 specifier|private
 name|NodeStoreBranch
@@ -776,11 +782,6 @@ init|=
 operator|new
 name|Move
 argument_list|()
-decl_stmt|;
-comment|/**      * Current root {@code Tree}      */
-specifier|private
-name|TreeImpl
-name|rootTree
 decl_stmt|;
 comment|/**      * Number of {@link #updated} occurred so since the last      * purge.      */
 specifier|private
