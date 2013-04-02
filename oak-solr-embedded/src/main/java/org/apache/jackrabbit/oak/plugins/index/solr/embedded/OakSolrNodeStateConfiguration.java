@@ -19,7 +19,7 @@ name|index
 operator|.
 name|solr
 operator|.
-name|server
+name|embedded
 package|;
 end_package
 
@@ -132,7 +132,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * An {@link OakSolrConfiguration} specified via a given {@link NodeState}.  * For each of the supported properties a default is provided if either the  * property doesn't exist in the node or if the value is<code>null</code> or  * empty<code>String</code>.  *<p/>  * Subclasses of this should at least provide the {@link NodeState} which holds  * the configuration.  */
+comment|/**  * An {@link org.apache.jackrabbit.oak.plugins.index.solr.OakSolrConfiguration} specified via a given {@link org.apache.jackrabbit.oak.spi.state.NodeState}.  * For each of the supported properties a default is provided if either the  * property doesn't exist in the node or if the value is<code>null</code> or  * empty<code>String</code>.  *<p/>  * Subclasses of this should at least provide the {@link org.apache.jackrabbit.oak.spi.state.NodeState} which holds  * the configuration.  */
 end_comment
 
 begin_class
@@ -143,7 +143,7 @@ name|OakSolrNodeStateConfiguration
 implements|implements
 name|OakSolrConfiguration
 block|{
-comment|/**      * get the {@link NodeState} which contains the properties for the Oak -      * Solr configuration.      *      * @return a {@link NodeState} for the Solr configuration or<code>null</code>      *         if such a {@link NodeState} doesn't exist.      */
+comment|/**      * get the {@link org.apache.jackrabbit.oak.spi.state.NodeState} which contains the properties for the Oak -      * Solr configuration.      *      * @return a {@link org.apache.jackrabbit.oak.spi.state.NodeState} for the Solr configuration or<code>null</code>      *         if such a {@link org.apache.jackrabbit.oak.spi.state.NodeState} doesn't exist.      */
 specifier|protected
 specifier|abstract
 name|NodeState
@@ -487,7 +487,7 @@ return|return
 name|value
 return|;
 block|}
-comment|/**      * Properties that may be retrieved from the configuration {@link NodeState}.      */
+comment|/**      * Properties that may be retrieved from the configuration {@link org.apache.jackrabbit.oak.spi.state.NodeState}.      */
 specifier|public
 specifier|final
 class|class

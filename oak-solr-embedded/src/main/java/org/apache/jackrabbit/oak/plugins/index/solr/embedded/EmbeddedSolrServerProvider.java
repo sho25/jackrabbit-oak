@@ -342,15 +342,6 @@ end_comment
 begin_class
 annotation|@
 name|Component
-argument_list|(
-name|metatype
-operator|=
-literal|true
-argument_list|,
-name|immediate
-operator|=
-literal|true
-argument_list|)
 annotation|@
 name|Service
 argument_list|(

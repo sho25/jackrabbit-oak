@@ -19,7 +19,7 @@ name|index
 operator|.
 name|solr
 operator|.
-name|server
+name|embedded
 package|;
 end_package
 

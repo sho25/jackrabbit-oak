@@ -15,7 +15,7 @@ name|index
 operator|.
 name|solr
 operator|.
-name|server
+name|embedded
 package|;
 end_package
 
@@ -125,24 +125,12 @@ name|junit
 operator|.
 name|Assert
 operator|.
-name|assertNotNull
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
 name|assertNull
 import|;
 end_import
 
 begin_comment
-comment|/**  * Testcase for {@link UpToDateNodeStateConfiguration}  */
+comment|/**  * Testcase for {@link org.apache.jackrabbit.oak.plugins.index.solr.server.UpToDateNodeStateConfiguration}  */
 end_comment
 
 begin_class
