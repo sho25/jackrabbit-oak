@@ -456,6 +456,29 @@ name|uri
 argument_list|)
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|snapshot
+operator|.
+name|containsKey
+argument_list|(
+name|prefix
+argument_list|)
+condition|)
+block|{
+comment|// make sure we have a prefix in case an existing
+comment|// namespace uri is re-mapped
+name|getNamespacePrefix
+argument_list|(
+name|snapshot
+operator|.
+name|get
+argument_list|(
+name|prefix
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 comment|/**      * @see Session#getNamespacePrefixes()      */
 name|String
@@ -775,6 +798,17 @@ operator|.
 name|equals
 argument_list|(
 name|uri
+argument_list|)
+operator|&&
+operator|!
+name|namespaces
+operator|.
+name|containsKey
+argument_list|(
+name|entry
+operator|.
+name|getKey
+argument_list|()
 argument_list|)
 condition|)
 block|{

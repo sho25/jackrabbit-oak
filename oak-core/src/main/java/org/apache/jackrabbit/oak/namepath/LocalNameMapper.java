@@ -307,15 +307,6 @@ name|jcrPrefix
 argument_list|)
 condition|)
 block|{
-name|local
-operator|.
-name|put
-argument_list|(
-name|jcrPrefix
-argument_list|,
-name|uri
-argument_list|)
-expr_stmt|;
 return|return
 name|jcrPrefix
 operator|+
