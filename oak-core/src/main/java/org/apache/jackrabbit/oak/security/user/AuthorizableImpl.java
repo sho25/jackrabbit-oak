@@ -305,6 +305,11 @@ name|id
 decl_stmt|;
 specifier|private
 specifier|final
+name|Tree
+name|tree
+decl_stmt|;
+specifier|private
+specifier|final
 name|String
 name|principalName
 decl_stmt|;
@@ -351,6 +356,12 @@ operator|.
 name|id
 operator|=
 name|id
+expr_stmt|;
+name|this
+operator|.
+name|tree
+operator|=
+name|tree
 expr_stmt|;
 name|this
 operator|.
@@ -897,14 +908,32 @@ name|Tree
 name|getTree
 parameter_list|()
 block|{
-return|return
-name|userManager
+if|if
+condition|(
+name|tree
 operator|.
-name|getAuthorizableTree
-argument_list|(
-name|id
-argument_list|)
+name|isConnected
+argument_list|()
+condition|)
+block|{
+return|return
+name|tree
 return|;
+block|}
+else|else
+block|{
+throw|throw
+operator|new
+name|IllegalStateException
+argument_list|(
+literal|"Authorizable "
+operator|+
+name|id
+operator|+
+literal|": underlying tree has been disconnected."
+argument_list|)
+throw|;
+block|}
 block|}
 annotation|@
 name|Nonnull
@@ -965,13 +994,11 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-comment|/**      * Retrieve authorizable properties for property related operations.      *      * @return The authorizable properties for this user/group.      * @throws RepositoryException If an error occurs.      */
+comment|/**      * Retrieve authorizable properties for property related operations.      *      * @return The authorizable properties for this user/group.      */
 specifier|private
 name|AuthorizableProperties
 name|getAuthorizableProperties
 parameter_list|()
-throws|throws
-name|RepositoryException
 block|{
 if|if
 condition|(
@@ -982,11 +1009,10 @@ condition|)
 block|{
 name|properties
 operator|=
-name|userManager
-operator|.
-name|getAuthorizableProperties
+operator|new
+name|AuthorizablePropertiesImpl
 argument_list|(
-name|id
+name|this
 argument_list|)
 expr_stmt|;
 block|}
