@@ -208,17 +208,7 @@ operator|=
 name|TestUtils
 operator|.
 name|getTestConfiguration
-argument_list|(
-name|store
-operator|.
-name|getRoot
 argument_list|()
-operator|.
-name|getChildNode
-argument_list|(
-literal|"solrIdx"
-argument_list|)
-argument_list|)
 expr_stmt|;
 block|}
 annotation|@
