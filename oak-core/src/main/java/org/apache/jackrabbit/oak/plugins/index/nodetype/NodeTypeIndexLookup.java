@@ -138,7 +138,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *<code>NodeTypeIndexLookup</code> uses {@link PropertyIndexLookup} internally  * for cost calculation and queries.  */
+comment|/**  *<code>NodeTypeIndexLookup</code> uses {@link Property2IndexLookup} internally  * for cost calculation and queries.  */
 end_comment
 
 begin_class

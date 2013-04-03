@@ -398,7 +398,7 @@ return|return
 name|nodeTypeNames
 return|;
 block|}
-comment|/**      * A property value was added at the given path.      *       * @param path the path      * @param value the value      */
+comment|/**      * A property value was added at the given path.      *       * @param path      *            the path      * @param value      *            the value      */
 specifier|public
 name|void
 name|insert
@@ -444,7 +444,7 @@ name|value
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * A property value was removed at the given path.      *       * @param path the path      * @param value the value      */
+comment|/**      * A property value was removed at the given path.      *       * @param path      *            the path      * @param value      *            the value      */
 specifier|public
 name|void
 name|remove
@@ -620,8 +620,8 @@ name|boolean
 name|getAndResetReindexFlag
 parameter_list|()
 block|{
-name|boolean
-name|reindex
+name|PropertyState
+name|reindexPS
 init|=
 name|node
 operator|.
@@ -629,15 +629,19 @@ name|getProperty
 argument_list|(
 name|REINDEX_PROPERTY_NAME
 argument_list|)
+decl_stmt|;
+name|boolean
+name|reindex
+init|=
+name|reindexPS
+operator|==
+literal|null
+operator|||
+name|reindexPS
 operator|!=
 literal|null
 operator|&&
-name|node
-operator|.
-name|getProperty
-argument_list|(
-name|REINDEX_PROPERTY_NAME
-argument_list|)
+name|reindexPS
 operator|.
 name|getValue
 argument_list|(
@@ -659,7 +663,7 @@ return|return
 name|reindex
 return|;
 block|}
-comment|/**      * Try to apply the changes to the index content (to the ":index" node.      *       * @throws CommitFailedException if a unique index was violated      */
+comment|/**      * Try to apply the changes to the index content (to the ":index" node.      *       * @throws CommitFailedException      *             if a unique index was violated      */
 specifier|public
 name|void
 name|apply

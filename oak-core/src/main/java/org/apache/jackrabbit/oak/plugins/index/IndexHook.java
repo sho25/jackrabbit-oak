@@ -21,11 +21,17 @@ end_package
 
 begin_import
 import|import
-name|java
+name|org
 operator|.
-name|io
+name|apache
 operator|.
-name|Closeable
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|api
+operator|.
+name|CommitFailedException
 import|;
 end_import
 
@@ -39,9 +45,11 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|api
+name|spi
 operator|.
-name|CommitFailedException
+name|commit
+operator|.
+name|Editor
 import|;
 end_import
 
@@ -72,21 +80,9 @@ specifier|public
 interface|interface
 name|IndexHook
 extends|extends
-name|HierarchicalNodeStateDiff
-argument_list|<
-name|IndexHook
-argument_list|>
-extends|,
-name|Closeable
+name|Editor
 block|{
-comment|/**      * Applies the changes to the index content      */
-name|void
-name|apply
-parameter_list|()
-throws|throws
-name|CommitFailedException
-function_decl|;
-comment|/**      * Re-create this index.      *       * @param state the parent of the node "oak:index" (the node that contains the index definition)      * @throws CommitFailedException      */
+comment|/**      * Re-create this index.      *       * @param state      *            the parent of the node "oak:index" (the node that contains the      *            index definition)      * @throws CommitFailedException      */
 name|void
 name|reindex
 parameter_list|(
