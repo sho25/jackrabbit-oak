@@ -39,10 +39,44 @@ name|String
 name|toString
 parameter_list|()
 block|{
-return|return
+name|String
+name|name
+init|=
 name|getName
 argument_list|()
+decl_stmt|;
+name|NodeState
+name|state
+init|=
+name|getNodeState
+argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|state
+operator|.
+name|getChildNodeCount
+argument_list|()
+operator|==
+literal|0
+condition|)
+block|{
+return|return
+name|name
+operator|+
+literal|" = "
+operator|+
+name|state
 return|;
+block|}
+else|else
+block|{
+return|return
+name|name
+operator|+
+literal|" = { ... }"
+return|;
+block|}
 block|}
 comment|/**      * Checks whether the given object is equal to this one. Two child node      * entries are considered equal if both their names and referenced node      * states match. Subclasses may override this method with a more efficient      * equality check if one is available.      *      * @param that target of the comparison      * @return {@code true} if the objects are equal,      *         {@code false} otherwise      */
 annotation|@
