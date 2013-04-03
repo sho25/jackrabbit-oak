@@ -169,15 +169,20 @@ name|startsWith
 argument_list|(
 literal|":"
 argument_list|)
+argument_list|,
+name|oakName
 argument_list|)
 expr_stmt|;
 comment|// hidden name
 name|checkArgument
 argument_list|(
+operator|!
 name|isExpandedName
 argument_list|(
 name|oakName
 argument_list|)
+argument_list|,
+name|oakName
 argument_list|)
 expr_stmt|;
 comment|// expanded name
