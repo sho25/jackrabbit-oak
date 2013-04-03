@@ -110,7 +110,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *<code>AbstractServiceTracker</code> is a base class for the various OSGi based  * providers.  */
+comment|/**  * {@code AbstractServiceTracker} is a base class for the various OSGi based  * providers.  */
 end_comment
 
 begin_class
@@ -224,7 +224,7 @@ name|close
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * Returns all services of type<code>T</code> currently available.      *      * @return services currently available.      */
+comment|/**      * Returns all services of type {@code T} currently available.      *      * @return services currently available.      */
 specifier|protected
 name|List
 argument_list|<
