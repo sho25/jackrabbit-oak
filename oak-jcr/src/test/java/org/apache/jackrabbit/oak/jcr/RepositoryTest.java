@@ -11488,6 +11488,10 @@ argument_list|,
 name|TEST_PATH
 operator|+
 literal|"/3"
+argument_list|,
+name|TEST_PATH
+operator|+
+literal|"/{4}"
 argument_list|)
 decl_stmt|;
 specifier|final
@@ -11544,6 +11548,10 @@ argument_list|,
 name|TEST_PATH
 operator|+
 literal|"/3/jcr:primaryType"
+argument_list|,
+name|TEST_PATH
+operator|+
+literal|"/{4}/jcr:primaryType"
 argument_list|,
 name|TEST_PATH
 operator|+
@@ -12066,7 +12074,7 @@ argument_list|(
 operator|new
 name|CountDownLatch
 argument_list|(
-literal|8
+literal|10
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -12121,6 +12129,13 @@ argument_list|)
 operator|.
 name|remove
 argument_list|()
+expr_stmt|;
+name|n
+operator|.
+name|addNode
+argument_list|(
+literal|"{4}"
+argument_list|)
 expr_stmt|;
 name|getAdminSession
 argument_list|()
