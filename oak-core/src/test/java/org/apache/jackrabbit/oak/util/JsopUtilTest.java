@@ -18,60 +18,6 @@ package|;
 end_package
 
 begin_import
-import|import static
-name|junit
-operator|.
-name|framework
-operator|.
-name|Assert
-operator|.
-name|assertEquals
-import|;
-end_import
-
-begin_import
-import|import static
-name|junit
-operator|.
-name|framework
-operator|.
-name|Assert
-operator|.
-name|assertFalse
-import|;
-end_import
-
-begin_import
-import|import static
-name|junit
-operator|.
-name|framework
-operator|.
-name|Assert
-operator|.
-name|assertTrue
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|api
-operator|.
-name|Type
-operator|.
-name|STRING
-import|;
-end_import
-
-begin_import
 import|import
 name|org
 operator|.
@@ -81,7 +27,7 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|Oak
+name|OakBaseTest
 import|;
 end_import
 
@@ -143,10 +89,66 @@ name|Test
 import|;
 end_import
 
+begin_import
+import|import static
+name|junit
+operator|.
+name|framework
+operator|.
+name|Assert
+operator|.
+name|assertEquals
+import|;
+end_import
+
+begin_import
+import|import static
+name|junit
+operator|.
+name|framework
+operator|.
+name|Assert
+operator|.
+name|assertFalse
+import|;
+end_import
+
+begin_import
+import|import static
+name|junit
+operator|.
+name|framework
+operator|.
+name|Assert
+operator|.
+name|assertTrue
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|api
+operator|.
+name|Type
+operator|.
+name|STRING
+import|;
+end_import
+
 begin_class
 specifier|public
 class|class
 name|JsopUtilTest
+extends|extends
+name|OakBaseTest
 block|{
 annotation|@
 name|Test
@@ -160,11 +162,10 @@ block|{
 name|Root
 name|root
 init|=
-operator|new
-name|Oak
+name|createContentSession
 argument_list|()
 operator|.
-name|createRoot
+name|getLatestRoot
 argument_list|()
 decl_stmt|;
 name|Tree

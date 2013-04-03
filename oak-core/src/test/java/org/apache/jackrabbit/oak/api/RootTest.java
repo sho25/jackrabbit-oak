@@ -18,22 +18,6 @@ package|;
 end_package
 
 begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|OakAssert
-operator|.
-name|assertSequence
-import|;
-end_import
-
-begin_import
 import|import
 name|org
 operator|.
@@ -87,6 +71,24 @@ begin_import
 import|import
 name|org
 operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|security
+operator|.
+name|OpenSecurityProvider
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|junit
 operator|.
 name|After
@@ -110,6 +112,22 @@ operator|.
 name|junit
 operator|.
 name|Test
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|OakAssert
+operator|.
+name|assertSequence
 import|;
 end_import
 
@@ -138,6 +156,13 @@ operator|=
 operator|new
 name|Oak
 argument_list|()
+operator|.
+name|with
+argument_list|(
+operator|new
+name|OpenSecurityProvider
+argument_list|()
+argument_list|)
 operator|.
 name|with
 argument_list|(

@@ -55,6 +55,16 @@ name|javax
 operator|.
 name|jcr
 operator|.
+name|GuestCredentials
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|jcr
+operator|.
 name|NoSuchWorkspaceException
 import|;
 end_import
@@ -402,7 +412,9 @@ name|repository
 operator|.
 name|login
 argument_list|(
-literal|null
+operator|new
+name|GuestCredentials
+argument_list|()
 argument_list|,
 literal|null
 argument_list|)

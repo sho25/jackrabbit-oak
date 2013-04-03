@@ -191,6 +191,22 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
+name|security
+operator|.
+name|SecurityProviderImpl
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
 name|spi
 operator|.
 name|lifecycle
@@ -629,6 +645,14 @@ operator|new
 name|Oak
 argument_list|(
 name|store
+argument_list|)
+comment|// FIXME: proper osgi setup for security provider (see OAK-17 and sub-tasks)
+operator|.
+name|with
+argument_list|(
+operator|new
+name|SecurityProviderImpl
+argument_list|()
 argument_list|)
 comment|// TODO: DefaultTypeEditor is JCR specific and does not belong here
 operator|.

@@ -27,7 +27,7 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|Oak
+name|OakBaseTest
 import|;
 end_import
 
@@ -139,6 +139,8 @@ begin_class
 specifier|public
 class|class
 name|LargeMoveTestIT
+extends|extends
+name|OakBaseTest
 block|{
 specifier|private
 name|ContentSession
@@ -163,10 +165,6 @@ name|CommitFailedException
 block|{
 name|session
 operator|=
-operator|new
-name|Oak
-argument_list|()
-operator|.
 name|createContentSession
 argument_list|()
 expr_stmt|;

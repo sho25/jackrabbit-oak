@@ -123,6 +123,24 @@ begin_import
 import|import
 name|org
 operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|security
+operator|.
+name|OpenSecurityProvider
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|junit
 operator|.
 name|After
@@ -162,7 +180,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *<code>QueryTest</code> contains query related tests.  */
+comment|/**  * {@code QueryTest} contains query related tests.  */
 end_comment
 
 begin_class
@@ -186,6 +204,13 @@ operator|=
 operator|new
 name|Oak
 argument_list|()
+operator|.
+name|with
+argument_list|(
+operator|new
+name|OpenSecurityProvider
+argument_list|()
+argument_list|)
 operator|.
 name|with
 argument_list|(

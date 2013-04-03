@@ -61,7 +61,7 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|Oak
+name|OakBaseTest
 import|;
 end_import
 
@@ -99,6 +99,8 @@ begin_class
 specifier|public
 class|class
 name|ContentSessionTest
+extends|extends
+name|OakBaseTest
 block|{
 specifier|private
 name|ContentRepository
@@ -113,10 +115,6 @@ parameter_list|()
 block|{
 name|repository
 operator|=
-operator|new
-name|Oak
-argument_list|()
-operator|.
 name|createContentRepository
 argument_list|()
 expr_stmt|;

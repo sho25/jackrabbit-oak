@@ -39,7 +39,7 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|Oak
+name|OakBaseTest
 import|;
 end_import
 
@@ -117,6 +117,8 @@ begin_class
 specifier|public
 class|class
 name|ReadWriteNamespaceRegistryTest
+extends|extends
+name|OakBaseTest
 block|{
 annotation|@
 name|Test
@@ -131,10 +133,6 @@ specifier|final
 name|ContentSession
 name|session
 init|=
-operator|new
-name|Oak
-argument_list|()
-operator|.
 name|createContentSession
 argument_list|()
 decl_stmt|;

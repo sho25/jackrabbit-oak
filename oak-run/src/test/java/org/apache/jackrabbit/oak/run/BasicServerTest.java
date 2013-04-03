@@ -235,7 +235,7 @@ name|Base64
 operator|.
 name|encode
 argument_list|(
-literal|"a:a"
+literal|"admin:admin"
 argument_list|)
 argument_list|)
 expr_stmt|;

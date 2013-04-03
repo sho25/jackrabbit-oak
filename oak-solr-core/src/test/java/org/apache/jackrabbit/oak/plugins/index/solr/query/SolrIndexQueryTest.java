@@ -183,9 +183,9 @@ name|oak
 operator|.
 name|spi
 operator|.
-name|state
+name|security
 operator|.
-name|NodeState
+name|OpenSecurityProvider
 import|;
 end_import
 
@@ -268,42 +268,6 @@ operator|.
 name|Assert
 operator|.
 name|assertTrue
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|mockito
-operator|.
-name|Matchers
-operator|.
-name|anyString
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|mockito
-operator|.
-name|Mockito
-operator|.
-name|mock
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|mockito
-operator|.
-name|Mockito
-operator|.
-name|when
 import|;
 end_import
 
@@ -411,6 +375,13 @@ name|with
 argument_list|(
 operator|new
 name|InitialContent
+argument_list|()
+argument_list|)
+operator|.
+name|with
+argument_list|(
+operator|new
+name|OpenSecurityProvider
 argument_list|()
 argument_list|)
 operator|.

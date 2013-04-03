@@ -27,7 +27,7 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|Oak
+name|OakBaseTest
 import|;
 end_import
 
@@ -209,6 +209,8 @@ begin_class
 specifier|public
 class|class
 name|TreeLocationTest
+extends|extends
+name|OakBaseTest
 block|{
 specifier|private
 name|Root
@@ -226,10 +228,6 @@ block|{
 name|ContentSession
 name|session
 init|=
-operator|new
-name|Oak
-argument_list|()
-operator|.
 name|createContentSession
 argument_list|()
 decl_stmt|;
