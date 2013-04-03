@@ -319,14 +319,6 @@ operator|.
 name|commit
 argument_list|()
 expr_stmt|;
-comment|// Acquire a fresh new root to avoid problems from lingering state
-name|root
-operator|=
-name|session
-operator|.
-name|getLatestRoot
-argument_list|()
-expr_stmt|;
 block|}
 annotation|@
 name|After
