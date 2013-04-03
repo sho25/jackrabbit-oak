@@ -108,7 +108,6 @@ name|PropertyDelegate
 extends|extends
 name|ItemDelegate
 block|{
-specifier|public
 name|PropertyDelegate
 parameter_list|(
 name|SessionDelegate

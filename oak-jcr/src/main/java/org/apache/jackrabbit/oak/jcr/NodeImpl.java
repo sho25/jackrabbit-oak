@@ -1418,7 +1418,7 @@ if|if
 condition|(
 name|grandParent
 operator|.
-name|getProperty
+name|getPropertyOrNull
 argument_list|(
 name|propName
 argument_list|)
@@ -3174,7 +3174,7 @@ name|pd
 init|=
 name|dlg
 operator|.
-name|getProperty
+name|getPropertyOrNull
 argument_list|(
 name|oakPath
 argument_list|)
@@ -4116,7 +4116,7 @@ decl_stmt|;
 return|return
 name|dlg
 operator|.
-name|getProperty
+name|getPropertyOrNull
 argument_list|(
 name|oakPath
 argument_list|)
@@ -4647,7 +4647,7 @@ name|mixins
 init|=
 name|dlg
 operator|.
-name|getProperty
+name|getPropertyOrNull
 argument_list|(
 name|JcrConstants
 operator|.
@@ -5506,7 +5506,7 @@ if|if
 condition|(
 name|dlg
 operator|.
-name|getProperty
+name|getPropertyOrNull
 argument_list|(
 name|lockOwner
 argument_list|)
@@ -5537,7 +5537,7 @@ if|if
 condition|(
 name|parent
 operator|.
-name|getProperty
+name|getPropertyOrNull
 argument_list|(
 name|lockOwner
 argument_list|)
@@ -5550,7 +5550,7 @@ name|isDeep
 init|=
 name|parent
 operator|.
-name|getProperty
+name|getPropertyOrNull
 argument_list|(
 name|lockIsDeep
 argument_list|)
@@ -5644,7 +5644,7 @@ decl_stmt|;
 return|return
 name|dlg
 operator|.
-name|getProperty
+name|getPropertyOrNull
 argument_list|(
 name|lockOwner
 argument_list|)
@@ -6484,7 +6484,7 @@ if|if
 condition|(
 name|dlg
 operator|.
-name|getProperty
+name|getPropertyOrNull
 argument_list|(
 name|pd
 operator|.
@@ -7451,26 +7451,16 @@ return|;
 block|}
 else|else
 block|{
-comment|// Return a property instance which throws on access. See
-comment|// OAK-395
+comment|// Return a property instance which throws on access. See OAK-395
 return|return
 operator|new
 name|PropertyImpl
 argument_list|(
-operator|new
-name|PropertyDelegate
-argument_list|(
-name|sessionDelegate
-argument_list|,
 name|dlg
 operator|.
-name|getLocation
-argument_list|()
-operator|.
-name|getChild
+name|getProperty
 argument_list|(
 name|oakName
-argument_list|)
 argument_list|)
 argument_list|,
 name|sessionContext

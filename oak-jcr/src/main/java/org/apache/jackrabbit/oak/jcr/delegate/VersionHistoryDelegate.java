@@ -20,6 +20,22 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkNotNull
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -242,22 +258,6 @@ operator|.
 name|version
 operator|.
 name|VersionConstants
-import|;
-end_import
-
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|Preconditions
-operator|.
-name|checkNotNull
 import|;
 end_import
 
@@ -796,7 +796,7 @@ name|created
 init|=
 name|n
 operator|.
-name|getProperty
+name|getPropertyOrNull
 argument_list|(
 name|JcrConstants
 operator|.
