@@ -2130,11 +2130,11 @@ parameter_list|)
 block|{
 name|checkArgument
 argument_list|(
-name|path
+name|PathUtils
 operator|.
-name|startsWith
+name|isAbsolute
 argument_list|(
-literal|"/"
+name|path
 argument_list|)
 argument_list|)
 expr_stmt|;

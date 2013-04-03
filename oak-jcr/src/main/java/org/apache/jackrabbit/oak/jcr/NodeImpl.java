@@ -7383,7 +7383,7 @@ specifier|final
 name|String
 name|oakName
 init|=
-name|getOakPathOrThrow
+name|getOakName
 argument_list|(
 name|checkNotNull
 argument_list|(

@@ -20,6 +20,38 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkArgument
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkNotNull
+import|;
+end_import
+
+begin_import
 import|import
 name|javax
 operator|.
@@ -190,34 +222,18 @@ import|;
 end_import
 
 begin_import
-import|import static
-name|com
+import|import
+name|org
 operator|.
-name|google
+name|apache
 operator|.
-name|common
+name|jackrabbit
 operator|.
-name|base
+name|oak
 operator|.
-name|Preconditions
+name|util
 operator|.
-name|checkArgument
-import|;
-end_import
-
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|Preconditions
-operator|.
-name|checkNotNull
+name|TreeUtil
 import|;
 end_import
 
@@ -351,19 +367,18 @@ name|STRING
 argument_list|)
 decl_stmt|;
 return|return
+name|TreeUtil
+operator|.
+name|getTree
+argument_list|(
 name|getVersionStorageLocation
 argument_list|()
-operator|.
-name|getChild
-argument_list|(
+argument_list|,
 name|getVersionHistoryPath
 argument_list|(
 name|uuid
 argument_list|)
 argument_list|)
-operator|.
-name|getTree
-argument_list|()
 return|;
 block|}
 comment|/**      * Returns the path of the version history for the given {@code uuid}.      * The returned path is relative to the version storage tree as returned      * by {@link #getVersionStorageLocation()}.      *      * @param uuid the uuid of the versionable node      * @return the relative path of the version history for the given uuid.      */

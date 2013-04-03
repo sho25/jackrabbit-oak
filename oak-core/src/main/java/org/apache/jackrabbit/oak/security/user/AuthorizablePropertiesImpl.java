@@ -285,7 +285,7 @@ name|oak
 operator|.
 name|util
 operator|.
-name|LocationUtil
+name|NodeUtil
 import|;
 end_import
 
@@ -301,7 +301,7 @@ name|oak
 operator|.
 name|util
 operator|.
-name|NodeUtil
+name|TreeUtil
 import|;
 end_import
 
@@ -938,13 +938,12 @@ decl_stmt|;
 name|TreeLocation
 name|propertyLocation
 init|=
-name|node
+name|TreeUtil
 operator|.
-name|getLocation
-argument_list|()
-operator|.
-name|getChild
+name|getTreeLocation
 argument_list|(
+name|node
+argument_list|,
 name|relPath
 argument_list|)
 decl_stmt|;
@@ -1456,14 +1455,11 @@ name|relativePath
 parameter_list|)
 block|{
 return|return
-name|LocationUtil
+name|TreeUtil
 operator|.
 name|getTreeLocation
 argument_list|(
 name|tree
-operator|.
-name|getLocation
-argument_list|()
 argument_list|,
 name|relativePath
 argument_list|)

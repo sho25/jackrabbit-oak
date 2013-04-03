@@ -64,21 +64,21 @@ specifier|public
 interface|interface
 name|TreeLocation
 block|{
-comment|/**      * Navigate to the parent or an invalid location for the root of the hierarchy.      * @return  a {@code TreeLocation} for the parent of this location.      */
+comment|/**      * Navigate to the parent or an invalid location for the root of the hierarchy.      * @return a {@code TreeLocation} for the parent of this location.      */
 annotation|@
 name|Nonnull
 name|TreeLocation
 name|getParent
 parameter_list|()
 function_decl|;
-comment|/**      * Navigate to a child through a relative path. A relative path consists of a      * possibly empty lists of names separated by forward slashes.      * @param relPath  relative path to the child      * @return  a {@code TreeLocation} for a child with the given {@code name}.      */
+comment|/**      * Navigate to a child of the given {@code name}.      * @param name  name of the child      * @return  a {@code TreeLocation} for a child with the given {@code name}.      */
 annotation|@
 name|Nonnull
 name|TreeLocation
 name|getChild
 parameter_list|(
 name|String
-name|relPath
+name|name
 parameter_list|)
 function_decl|;
 comment|/**      * Determine whether the underlying {@link org.apache.jackrabbit.oak.api.Tree} or      * {@link org.apache.jackrabbit.oak.api.PropertyState} for this {@code TreeLocation}      * is available.      * @return  {@code true} if the underlying item is available and has not been disconnected.      * @see org.apache.jackrabbit.oak.api.Tree#isConnected()      */
