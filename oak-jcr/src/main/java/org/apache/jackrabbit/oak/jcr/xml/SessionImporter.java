@@ -632,25 +632,6 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/**      * make sure the editing session is allowed create nodes with a      * specified node type (and ev. mixins),<br>      * NOTE: this check is not executed in a single place as the parent      * may change in case of      * {@link javax.jcr.ImportUUIDBehavior#IMPORT_UUID_COLLISION_REPLACE_EXISTING IMPORT_UUID_COLLISION_REPLACE_EXISTING}.      *      * @param parent   parent node      * @param nodeName the name      * @throws javax.jcr.RepositoryException if an error occurs      */
-specifier|protected
-name|void
-name|checkPermission
-parameter_list|(
-name|Node
-name|parent
-parameter_list|,
-name|String
-name|nodeName
-parameter_list|)
-throws|throws
-name|RepositoryException
-block|{
-comment|//TODO clarify how to check permissions
-comment|//        if (!session.getAccessControlManager().isGranted(session.getQPath(parent.getPath()), nodeName, Permissions.NODE_TYPE_MANAGEMENT)) {
-comment|//            throw new AccessDeniedException("Insufficient permission.");
-comment|//        }
-block|}
 specifier|protected
 name|Node
 name|createNode
@@ -995,16 +976,6 @@ name|IMPORT_UUID_CREATE_NEW
 condition|)
 block|{
 comment|// create new with new uuid
-name|checkPermission
-argument_list|(
-name|parent
-argument_list|,
-name|nodeInfo
-operator|.
-name|getName
-argument_list|()
-argument_list|)
-expr_stmt|;
 name|node
 operator|=
 name|createNode
@@ -1184,16 +1155,6 @@ name|remove
 argument_list|()
 expr_stmt|;
 comment|// create new with given uuid
-name|checkPermission
-argument_list|(
-name|parent
-argument_list|,
-name|nodeInfo
-operator|.
-name|getName
-argument_list|()
-argument_list|)
-expr_stmt|;
 name|node
 operator|=
 name|createNode
@@ -1304,16 +1265,6 @@ name|getParent
 argument_list|()
 expr_stmt|;
 comment|// replace child node
-name|checkPermission
-argument_list|(
-name|parent
-argument_list|,
-name|nodeInfo
-operator|.
-name|getName
-argument_list|()
-argument_list|)
-expr_stmt|;
 comment|//TODO ordering! (what happened to replace?)
 name|conflicting
 operator|.
@@ -1777,13 +1728,6 @@ literal|null
 condition|)
 block|{
 comment|// no potential uuid conflict, always add new node
-name|checkPermission
-argument_list|(
-name|parent
-argument_list|,
-name|nodeName
-argument_list|)
-expr_stmt|;
 name|node
 operator|=
 name|createNode
@@ -1904,13 +1848,6 @@ block|}
 else|else
 block|{
 comment|// create new with given uuid
-name|checkPermission
-argument_list|(
-name|parent
-argument_list|,
-name|nodeName
-argument_list|)
-expr_stmt|;
 name|node
 operator|=
 name|createNode
