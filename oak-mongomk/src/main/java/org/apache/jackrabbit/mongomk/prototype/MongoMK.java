@@ -3023,12 +3023,6 @@ argument_list|(
 name|n
 argument_list|)
 operator|.
-name|object
-argument_list|()
-operator|.
-name|endObject
-argument_list|()
-operator|.
 name|newline
 argument_list|()
 expr_stmt|;
