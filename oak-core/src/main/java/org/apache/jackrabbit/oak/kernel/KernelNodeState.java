@@ -2173,18 +2173,6 @@ return|return
 name|revision
 return|;
 block|}
-comment|// FIXME: this is an internal method and should not be public
-annotation|@
-name|Nonnull
-specifier|public
-name|String
-name|getPath
-parameter_list|()
-block|{
-return|return
-name|path
-return|;
-block|}
 comment|/**      * @return the approximate memory usage of this node state.      */
 specifier|synchronized
 name|int
