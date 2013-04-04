@@ -747,7 +747,7 @@ name|getInteger
 argument_list|(
 literal|"oak.root.purgeLimit"
 argument_list|,
-literal|100
+literal|1000
 argument_list|)
 decl_stmt|;
 comment|/**      * The underlying store to which this root belongs      */
