@@ -115,7 +115,7 @@ name|spi
 operator|.
 name|state
 operator|.
-name|NodeState
+name|AbstractNodeStore
 import|;
 end_import
 
@@ -133,7 +133,25 @@ name|spi
 operator|.
 name|state
 operator|.
-name|NodeStore
+name|AbstractNodeStoreBranch
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|state
+operator|.
+name|NodeState
 import|;
 end_import
 
@@ -215,8 +233,8 @@ begin_class
 specifier|public
 class|class
 name|MemoryNodeStore
-implements|implements
-name|NodeStore
+extends|extends
+name|AbstractNodeStore
 block|{
 specifier|private
 specifier|final
@@ -310,8 +328,8 @@ specifier|private
 specifier|static
 class|class
 name|MemoryNodeStoreBranch
-implements|implements
-name|NodeStoreBranch
+extends|extends
+name|AbstractNodeStoreBranch
 block|{
 comment|/** The underlying store to which this branch belongs */
 specifier|private

@@ -229,7 +229,7 @@ name|spi
 operator|.
 name|state
 operator|.
-name|NodeState
+name|AbstractNodeStore
 import|;
 end_import
 
@@ -247,7 +247,7 @@ name|spi
 operator|.
 name|state
 operator|.
-name|NodeStore
+name|NodeState
 import|;
 end_import
 
@@ -293,8 +293,8 @@ begin_class
 specifier|public
 class|class
 name|KernelNodeStore
-implements|implements
-name|NodeStore
+extends|extends
+name|AbstractNodeStore
 block|{
 specifier|private
 specifier|static

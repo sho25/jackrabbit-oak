@@ -471,7 +471,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/**      * Returns a string representation of this child node entry.      *      * @return string representation      */
+comment|/**      * Returns a string representation of this node state.      *      * @return string representation      */
 specifier|public
 name|String
 name|toString
