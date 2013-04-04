@@ -110,7 +110,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Keeps existing IndexHooks updated.  *   *<p>  * The existing index list is obtained via the IndexHookProvider.  *</p>  *   * @see IndexHook  * @see IndexHookProvider  *   */
+comment|/**  * Keeps existing IndexHooks updated.  *<br>  * The existing index list is obtained via the IndexHookProvider.  *   * @see IndexHook  * @see IndexHookProvider  *   */
 end_comment
 
 begin_class

@@ -334,7 +334,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Acts as a composite NodeStateDiff, it delegates all the diff's events to the  * existing IndexHooks.  *   * This allows for a simultaneous update of all the indexes via a single  * traversal of the changes.  */
+comment|/**  * Acts as a composite Editor, it delegates all the diff's events to the  * existing IndexHooks.<br>  * This allows for a simultaneous update of all the indexes via a single  * traversal of the changes.  */
 end_comment
 
 begin_class
@@ -401,11 +401,11 @@ name|CommitFailedException
 block|{
 if|if
 condition|(
-name|node
+name|after
 operator|!=
 literal|null
 operator|&&
-name|node
+name|after
 operator|.
 name|hasChildNode
 argument_list|(
@@ -439,12 +439,12 @@ name|String
 argument_list|>
 argument_list|()
 decl_stmt|;
-name|NodeBuilder
+name|NodeState
 name|index
 init|=
-name|node
+name|after
 operator|.
-name|child
+name|getChildNode
 argument_list|(
 name|INDEX_DEFINITIONS_NAME
 argument_list|)
@@ -460,12 +460,12 @@ name|getChildNodeNames
 argument_list|()
 control|)
 block|{
-name|NodeBuilder
+name|NodeState
 name|indexChild
 init|=
 name|index
 operator|.
-name|child
+name|getChildNode
 argument_list|(
 name|indexName
 argument_list|)
@@ -711,7 +711,7 @@ name|ih
 operator|.
 name|reindex
 argument_list|(
-name|node
+name|after
 argument_list|)
 expr_stmt|;
 block|}

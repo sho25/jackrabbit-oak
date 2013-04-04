@@ -509,7 +509,7 @@ parameter_list|)
 block|{
 return|return
 operator|new
-name|Property2IndexDiff
+name|Property2IndexHook
 argument_list|(
 name|builder
 argument_list|)
@@ -979,7 +979,7 @@ parameter_list|)
 block|{
 return|return
 operator|new
-name|Property2IndexDiff
+name|Property2IndexHook
 argument_list|(
 name|builder
 argument_list|)
@@ -1396,7 +1396,7 @@ parameter_list|)
 block|{
 return|return
 operator|new
-name|Property2IndexDiff
+name|Property2IndexHook
 argument_list|(
 name|builder
 argument_list|)
@@ -1787,7 +1787,7 @@ parameter_list|)
 block|{
 return|return
 operator|new
-name|Property2IndexDiff
+name|Property2IndexHook
 argument_list|(
 name|builder
 argument_list|)
@@ -2104,7 +2104,7 @@ parameter_list|)
 block|{
 return|return
 operator|new
-name|Property2IndexDiff
+name|Property2IndexHook
 argument_list|(
 name|builder
 argument_list|)
@@ -2225,7 +2225,7 @@ argument_list|)
 operator|.
 name|setProperty
 argument_list|(
-name|Property2IndexDiff
+name|Property2IndexHook
 operator|.
 name|declaringNodeTypes
 argument_list|,
@@ -2339,7 +2339,7 @@ parameter_list|)
 block|{
 return|return
 operator|new
-name|Property2IndexDiff
+name|Property2IndexHook
 argument_list|(
 name|builder
 argument_list|)
@@ -2444,7 +2444,7 @@ argument_list|)
 operator|.
 name|setProperty
 argument_list|(
-name|Property2IndexDiff
+name|Property2IndexHook
 operator|.
 name|declaringNodeTypes
 argument_list|,
@@ -2558,7 +2558,7 @@ parameter_list|)
 block|{
 return|return
 operator|new
-name|Property2IndexDiff
+name|Property2IndexHook
 argument_list|(
 name|builder
 argument_list|)
@@ -2679,7 +2679,7 @@ argument_list|)
 operator|.
 name|setProperty
 argument_list|(
-name|Property2IndexDiff
+name|Property2IndexHook
 operator|.
 name|declaringNodeTypes
 argument_list|,
@@ -2800,7 +2800,7 @@ parameter_list|)
 block|{
 return|return
 operator|new
-name|Property2IndexDiff
+name|Property2IndexHook
 argument_list|(
 name|builder
 argument_list|)

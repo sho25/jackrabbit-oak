@@ -1227,7 +1227,7 @@ specifier|public
 name|void
 name|reindex
 parameter_list|(
-name|NodeBuilder
+name|NodeState
 name|state
 parameter_list|)
 throws|throws
@@ -1261,9 +1261,6 @@ name|getPath
 argument_list|()
 argument_list|,
 name|state
-operator|.
-name|getNodeState
-argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;

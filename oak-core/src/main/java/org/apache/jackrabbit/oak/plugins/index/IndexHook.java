@@ -67,12 +67,12 @@ name|spi
 operator|.
 name|state
 operator|.
-name|NodeBuilder
+name|NodeState
 import|;
 end_import
 
 begin_comment
-comment|/**  * Represents the content of a QueryIndex as well as a mechanism for keeping  * this content up to date.  *<p>  * An IndexHook listens for changes to the content and updates the index data  * accordingly.  */
+comment|/**  * Represents the content of a QueryIndex as well as a mechanism for keeping  * this content up to date.  *<br>  * An IndexHook listens for changes to the content and updates the index data  * accordingly.  */
 end_comment
 
 begin_interface
@@ -82,11 +82,11 @@ name|IndexHook
 extends|extends
 name|Editor
 block|{
-comment|/**      * Re-create this index.      *       * @param state      *            the parent of the node "oak:index" (the node that contains the      *            index definition)      * @throws CommitFailedException      */
+comment|/**      * Re-create this index using the given state      *       * @param state      *            the parent of the node "oak:index" (the node that contains the      *            index definition)      * @throws CommitFailedException      */
 name|void
 name|reindex
 parameter_list|(
-name|NodeBuilder
+name|NodeState
 name|state
 parameter_list|)
 throws|throws

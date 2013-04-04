@@ -154,7 +154,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Service that provides PropertyIndex based IndexHooks.  *   * @see Property2IndexDiff  * @see IndexHookProvider  *   */
+comment|/**  * Service that provides PropertyIndex based IndexHooks.  *   * @see Property2IndexHook  * @see IndexHookProvider  *   */
 end_comment
 
 begin_class
@@ -207,7 +207,7 @@ operator|.
 name|of
 argument_list|(
 operator|new
-name|Property2IndexDiff
+name|Property2IndexHook
 argument_list|(
 name|builder
 argument_list|)
