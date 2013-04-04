@@ -67,6 +67,26 @@ name|plugins
 operator|.
 name|memory
 operator|.
+name|EmptyNodeState
+operator|.
+name|MISSING_NODE
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|memory
+operator|.
 name|PropertyStates
 operator|.
 name|createProperty
@@ -620,6 +640,22 @@ operator|.
 name|state
 operator|.
 name|NodeStateDiff
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkArgument
 import|;
 end_import
 
@@ -1359,6 +1395,17 @@ block|}
 annotation|@
 name|Override
 specifier|public
+name|boolean
+name|exists
+parameter_list|()
+block|{
+return|return
+literal|true
+return|;
+block|}
+annotation|@
+name|Override
+specifier|public
 name|long
 name|getPropertyCount
 parameter_list|()
@@ -1457,6 +1504,7 @@ argument_list|(
 name|name
 argument_list|)
 operator|||
+operator|(
 name|childNodeCount
 operator|>
 name|MAX_CHILD_NODE_NAMES
@@ -1465,8 +1513,10 @@ name|getChildNode
 argument_list|(
 name|name
 argument_list|)
-operator|!=
-literal|null
+operator|.
+name|exists
+argument_list|()
+operator|)
 return|;
 block|}
 annotation|@
@@ -1479,11 +1529,7 @@ name|String
 name|name
 parameter_list|)
 block|{
-name|checkNotNull
-argument_list|(
-name|name
-argument_list|)
-expr_stmt|;
+comment|// checkArgument(!checkNotNull(name).isEmpty()); // TODO: check in higher level
 name|init
 argument_list|()
 expr_stmt|;
@@ -1563,7 +1609,7 @@ block|}
 else|else
 block|{
 return|return
-literal|null
+name|MISSING_NODE
 return|;
 block|}
 block|}
@@ -1609,7 +1655,7 @@ literal|null
 condition|)
 block|{
 return|return
-literal|null
+name|MISSING_NODE
 return|;
 block|}
 try|try

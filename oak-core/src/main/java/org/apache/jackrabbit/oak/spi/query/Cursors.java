@@ -720,16 +720,18 @@ argument_list|(
 name|name
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
+operator|!
 name|node
-operator|==
-literal|null
+operator|.
+name|exists
+argument_list|()
 condition|)
 block|{
 comment|// nothing can match this filter, leave nodes empty
 return|return;
-block|}
 block|}
 block|}
 name|Filter

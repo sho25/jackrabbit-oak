@@ -621,9 +621,11 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|!
 name|state
-operator|==
-literal|null
+operator|.
+name|exists
+argument_list|()
 condition|)
 block|{
 return|return

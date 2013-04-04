@@ -638,9 +638,11 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|!
 name|definitions
-operator|==
-literal|null
+operator|.
+name|exists
+argument_list|()
 condition|)
 block|{
 return|return

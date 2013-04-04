@@ -143,7 +143,7 @@ name|OakSolrNodeStateConfiguration
 implements|implements
 name|OakSolrConfiguration
 block|{
-comment|/**      * get the {@link org.apache.jackrabbit.oak.spi.state.NodeState} which contains the properties for the Oak -      * Solr configuration.      *      * @return a {@link org.apache.jackrabbit.oak.spi.state.NodeState} for the Solr configuration or<code>null</code>      *         if such a {@link org.apache.jackrabbit.oak.spi.state.NodeState} doesn't exist.      */
+comment|/**      * get the {@link org.apache.jackrabbit.oak.spi.state.NodeState} which contains the properties for the Oak -      * Solr configuration.      *      * @return a (possibly non-existent) node state for the Solr configuration      */
 specifier|protected
 specifier|abstract
 name|NodeState
@@ -430,8 +430,9 @@ decl_stmt|;
 if|if
 condition|(
 name|configurationNodeState
-operator|!=
-literal|null
+operator|.
+name|exists
+argument_list|()
 condition|)
 block|{
 name|PropertyState

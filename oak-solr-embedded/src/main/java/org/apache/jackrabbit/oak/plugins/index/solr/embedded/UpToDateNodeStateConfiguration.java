@@ -140,15 +140,6 @@ argument_list|(
 name|child
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|currentState
-operator|==
-literal|null
-condition|)
-block|{
-break|break;
-block|}
 block|}
 return|return
 name|currentState

@@ -454,12 +454,14 @@ argument_list|()
 expr_stmt|;
 if|if
 condition|(
+operator|!
 name|getNode
 argument_list|(
 name|source
 argument_list|)
-operator|==
-literal|null
+operator|.
+name|exists
+argument_list|()
 condition|)
 block|{
 comment|// source does not exist
@@ -480,9 +482,11 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|!
 name|destParent
-operator|==
-literal|null
+operator|.
+name|exists
+argument_list|()
 condition|)
 block|{
 comment|// parent of destination does not exist
@@ -501,8 +505,9 @@ argument_list|(
 name|target
 argument_list|)
 argument_list|)
-operator|!=
-literal|null
+operator|.
+name|exists
+argument_list|()
 condition|)
 block|{
 comment|// destination exists already
@@ -545,12 +550,14 @@ argument_list|()
 expr_stmt|;
 if|if
 condition|(
+operator|!
 name|getNode
 argument_list|(
 name|source
 argument_list|)
-operator|==
-literal|null
+operator|.
+name|exists
+argument_list|()
 condition|)
 block|{
 comment|// source does not exist
@@ -571,9 +578,11 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|!
 name|destParent
-operator|==
-literal|null
+operator|.
+name|exists
+argument_list|()
 condition|)
 block|{
 comment|// parent of destination does not exist
@@ -592,8 +601,9 @@ argument_list|(
 name|target
 argument_list|)
 argument_list|)
-operator|!=
-literal|null
+operator|.
+name|exists
+argument_list|()
 condition|)
 block|{
 comment|// destination exists already
@@ -1035,15 +1045,6 @@ argument_list|(
 name|name
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|node
-operator|==
-literal|null
-condition|)
-block|{
-break|break;
-block|}
 block|}
 return|return
 name|node

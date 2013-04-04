@@ -31,6 +31,22 @@ name|base
 operator|.
 name|Preconditions
 operator|.
+name|checkArgument
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
 name|checkNotNull
 import|;
 end_import
@@ -144,6 +160,26 @@ operator|.
 name|Maps
 operator|.
 name|filterValues
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|memory
+operator|.
+name|EmptyNodeState
+operator|.
+name|MISSING_NODE
 import|;
 end_import
 
@@ -786,6 +822,17 @@ block|}
 annotation|@
 name|Override
 specifier|public
+name|boolean
+name|exists
+parameter_list|()
+block|{
+return|return
+literal|true
+return|;
+block|}
+annotation|@
+name|Override
+specifier|public
 name|long
 name|getPropertyCount
 parameter_list|()
@@ -1056,8 +1103,9 @@ operator|.
 name|getKey
 argument_list|()
 argument_list|)
-operator|!=
-literal|null
+operator|.
+name|exists
+argument_list|()
 condition|)
 block|{
 name|count
@@ -1093,11 +1141,7 @@ name|String
 name|name
 parameter_list|)
 block|{
-name|checkNotNull
-argument_list|(
-name|name
-argument_list|)
-expr_stmt|;
+comment|// checkArgument(!checkNotNull(name).isEmpty()); // TODO: should be caught earlier
 name|NodeState
 name|child
 init|=
@@ -1133,7 +1177,6 @@ block|{
 return|return
 literal|false
 return|;
-comment|// removed
 block|}
 else|else
 block|{
@@ -1157,9 +1200,16 @@ name|String
 name|name
 parameter_list|)
 block|{
+name|checkArgument
+argument_list|(
+operator|!
 name|checkNotNull
 argument_list|(
 name|name
+argument_list|)
+operator|.
+name|isEmpty
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|NodeState
@@ -1195,9 +1245,8 @@ argument_list|)
 condition|)
 block|{
 return|return
-literal|null
+name|MISSING_NODE
 return|;
-comment|// removed
 block|}
 else|else
 block|{
@@ -1784,23 +1833,17 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
-name|before
-operator|==
-literal|null
-operator|&&
 name|after
 operator|==
 literal|null
 condition|)
 block|{
-comment|// do nothing
-block|}
-elseif|else
 if|if
 condition|(
-name|after
-operator|==
-literal|null
+name|before
+operator|.
+name|exists
+argument_list|()
 condition|)
 block|{
 name|diff
@@ -1813,12 +1856,15 @@ name|before
 argument_list|)
 expr_stmt|;
 block|}
+block|}
 elseif|else
 if|if
 condition|(
+operator|!
 name|before
-operator|==
-literal|null
+operator|.
+name|exists
+argument_list|()
 condition|)
 block|{
 name|diff

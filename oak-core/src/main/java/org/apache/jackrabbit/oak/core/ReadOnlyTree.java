@@ -562,8 +562,9 @@ decl_stmt|;
 if|if
 condition|(
 name|child
-operator|!=
-literal|null
+operator|.
+name|exists
+argument_list|()
 condition|)
 block|{
 return|return

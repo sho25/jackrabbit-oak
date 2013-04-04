@@ -277,6 +277,18 @@ end_import
 
 begin_import
 import|import static
+name|junit
+operator|.
+name|framework
+operator|.
+name|Assert
+operator|.
+name|assertFalse
+import|;
+end_import
+
+begin_import
+import|import static
 name|org
 operator|.
 name|apache
@@ -640,7 +652,7 @@ argument_list|(
 literal|"test"
 argument_list|)
 decl_stmt|;
-name|assertNotNull
+name|assertTrue
 argument_list|(
 name|testState
 operator|.
@@ -648,9 +660,12 @@ name|getChildNode
 argument_list|(
 literal|"newNode"
 argument_list|)
+operator|.
+name|exists
+argument_list|()
 argument_list|)
 expr_stmt|;
-name|assertNull
+name|assertFalse
 argument_list|(
 name|testState
 operator|.
@@ -658,6 +673,9 @@ name|getChildNode
 argument_list|(
 literal|"x"
 argument_list|)
+operator|.
+name|exists
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|assertEquals
@@ -698,7 +716,7 @@ argument_list|(
 literal|"test"
 argument_list|)
 expr_stmt|;
-name|assertNull
+name|assertFalse
 argument_list|(
 name|testState
 operator|.
@@ -706,9 +724,12 @@ name|getChildNode
 argument_list|(
 literal|"newNode"
 argument_list|)
+operator|.
+name|exists
+argument_list|()
 argument_list|)
 expr_stmt|;
-name|assertNotNull
+name|assertTrue
 argument_list|(
 name|testState
 operator|.
@@ -716,6 +737,9 @@ name|getChildNode
 argument_list|(
 literal|"x"
 argument_list|)
+operator|.
+name|exists
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|branch
@@ -741,7 +765,7 @@ argument_list|(
 literal|"test"
 argument_list|)
 expr_stmt|;
-name|assertNotNull
+name|assertTrue
 argument_list|(
 name|testState
 operator|.
@@ -749,9 +773,12 @@ name|getChildNode
 argument_list|(
 literal|"newNode"
 argument_list|)
+operator|.
+name|exists
+argument_list|()
 argument_list|)
 expr_stmt|;
-name|assertNull
+name|assertFalse
 argument_list|(
 name|testState
 operator|.
@@ -759,6 +786,9 @@ name|getChildNode
 argument_list|(
 literal|"x"
 argument_list|)
+operator|.
+name|exists
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|assertEquals
@@ -799,7 +829,7 @@ argument_list|(
 literal|"test"
 argument_list|)
 expr_stmt|;
-name|assertNull
+name|assertFalse
 argument_list|(
 name|testState
 operator|.
@@ -807,9 +837,12 @@ name|getChildNode
 argument_list|(
 literal|"newNode"
 argument_list|)
+operator|.
+name|exists
+argument_list|()
 argument_list|)
 expr_stmt|;
-name|assertNotNull
+name|assertTrue
 argument_list|(
 name|testState
 operator|.
@@ -817,6 +850,9 @@ name|getChildNode
 argument_list|(
 literal|"x"
 argument_list|)
+operator|.
+name|exists
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|branch
@@ -841,7 +877,7 @@ argument_list|(
 literal|"test"
 argument_list|)
 expr_stmt|;
-name|assertNotNull
+name|assertTrue
 argument_list|(
 name|testState
 operator|.
@@ -849,9 +885,12 @@ name|getChildNode
 argument_list|(
 literal|"newNode"
 argument_list|)
+operator|.
+name|exists
+argument_list|()
 argument_list|)
 expr_stmt|;
-name|assertNull
+name|assertFalse
 argument_list|(
 name|testState
 operator|.
@@ -859,6 +898,9 @@ name|getChildNode
 argument_list|(
 literal|"x"
 argument_list|)
+operator|.
+name|exists
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|assertEquals
@@ -1063,7 +1105,7 @@ argument_list|(
 name|after
 argument_list|)
 expr_stmt|;
-name|assertNull
+name|assertFalse
 argument_list|(
 name|before
 operator|.
@@ -1076,9 +1118,12 @@ name|getChildNode
 argument_list|(
 literal|"newNode"
 argument_list|)
+operator|.
+name|exists
+argument_list|()
 argument_list|)
 expr_stmt|;
-name|assertNotNull
+name|assertTrue
 argument_list|(
 name|after
 operator|.
@@ -1091,9 +1136,12 @@ name|getChildNode
 argument_list|(
 literal|"newNode"
 argument_list|)
+operator|.
+name|exists
+argument_list|()
 argument_list|)
 expr_stmt|;
-name|assertNull
+name|assertFalse
 argument_list|(
 name|after
 operator|.
@@ -1106,6 +1154,9 @@ name|getChildNode
 argument_list|(
 literal|"a"
 argument_list|)
+operator|.
+name|exists
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|assertEquals
@@ -1299,7 +1350,7 @@ argument_list|(
 literal|"test"
 argument_list|)
 decl_stmt|;
-name|assertNotNull
+name|assertTrue
 argument_list|(
 name|test
 operator|.
@@ -1307,9 +1358,12 @@ name|getChildNode
 argument_list|(
 literal|"newNode"
 argument_list|)
+operator|.
+name|exists
+argument_list|()
 argument_list|)
 expr_stmt|;
-name|assertNotNull
+name|assertTrue
 argument_list|(
 name|test
 operator|.
@@ -1317,9 +1371,12 @@ name|getChildNode
 argument_list|(
 literal|"fromHook"
 argument_list|)
+operator|.
+name|exists
+argument_list|()
 argument_list|)
 expr_stmt|;
-name|assertNull
+name|assertFalse
 argument_list|(
 name|test
 operator|.
@@ -1327,6 +1384,9 @@ name|getChildNode
 argument_list|(
 literal|"a"
 argument_list|)
+operator|.
+name|exists
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|assertEquals

@@ -305,13 +305,6 @@ argument_list|(
 literal|"oak:namedPropertyDefinitions"
 argument_list|)
 decl_stmt|;
-if|if
-condition|(
-name|properties
-operator|!=
-literal|null
-condition|)
-block|{
 for|for
 control|(
 name|ChildNodeEntry
@@ -409,7 +402,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-block|}
 name|NodeState
 name|childNodes
 init|=
@@ -420,13 +412,6 @@ argument_list|(
 literal|"oak:namedChildNodeDefinitions"
 argument_list|)
 decl_stmt|;
-if|if
-condition|(
-name|childNodes
-operator|!=
-literal|null
-condition|)
-block|{
 for|for
 control|(
 name|ChildNodeEntry
@@ -474,7 +459,6 @@ argument_list|(
 name|name
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 block|}
@@ -621,13 +605,6 @@ argument_list|(
 literal|"oak:namedPropertyDefinitions"
 argument_list|)
 decl_stmt|;
-if|if
-condition|(
-name|named
-operator|!=
-literal|null
-condition|)
-block|{
 name|NodeState
 name|definitions
 init|=
@@ -638,13 +615,6 @@ argument_list|(
 name|escapedName
 argument_list|)
 decl_stmt|;
-if|if
-condition|(
-name|definitions
-operator|!=
-literal|null
-condition|)
-block|{
 name|NodeState
 name|definition
 init|=
@@ -657,9 +627,11 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|!
 name|definition
-operator|==
-literal|null
+operator|.
+name|exists
+argument_list|()
 condition|)
 block|{
 name|definition
@@ -675,20 +647,18 @@ block|}
 if|if
 condition|(
 name|definition
-operator|!=
-literal|null
+operator|.
+name|exists
+argument_list|()
 condition|)
 block|{
 return|return
 name|definition
 return|;
 comment|// TODO: Fall back to residual definitions until we have consensus on OAK-709
-comment|//                    } else {
-comment|//                        throw new ConstraintViolationException(
-comment|//                                "No matching definition found for property "
-comment|//                                        + propertyName);
-block|}
-block|}
+comment|//          } else {
+comment|//              throw new ConstraintViolationException(
+comment|//                    "No matching definition found for property " + propertyName);
 block|}
 block|}
 comment|// Find matching residual property definition
@@ -710,13 +680,6 @@ argument_list|(
 literal|"oak:residualPropertyDefinitions"
 argument_list|)
 decl_stmt|;
-if|if
-condition|(
-name|residual
-operator|!=
-literal|null
-condition|)
-block|{
 name|NodeState
 name|definition
 init|=
@@ -729,9 +692,11 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|!
 name|definition
-operator|==
-literal|null
+operator|.
+name|exists
+argument_list|()
 condition|)
 block|{
 name|definition
@@ -747,14 +712,14 @@ block|}
 if|if
 condition|(
 name|definition
-operator|!=
-literal|null
+operator|.
+name|exists
+argument_list|()
 condition|)
 block|{
 return|return
 name|definition
 return|;
-block|}
 block|}
 block|}
 return|return
@@ -886,13 +851,6 @@ argument_list|(
 literal|"oak:namedChildNodeDefinitions"
 argument_list|)
 decl_stmt|;
-if|if
-condition|(
-name|named
-operator|!=
-literal|null
-condition|)
-block|{
 name|NodeState
 name|definitions
 init|=
@@ -906,8 +864,9 @@ decl_stmt|;
 if|if
 condition|(
 name|definitions
-operator|!=
-literal|null
+operator|.
+name|exists
+argument_list|()
 condition|)
 block|{
 for|for
@@ -931,8 +890,9 @@ decl_stmt|;
 if|if
 condition|(
 name|definition
-operator|!=
-literal|null
+operator|.
+name|exists
+argument_list|()
 condition|)
 block|{
 return|return
@@ -941,9 +901,8 @@ return|;
 block|}
 block|}
 comment|// TODO: Fall back to residual definitions until we have consensus on OAK-709
-comment|//                    throw new ConstraintViolationException(
-comment|//                            "Incorrect node type of child node " + nodeName);
-block|}
+comment|//              throw new ConstraintViolationException(
+comment|//                      "Incorrect node type of child node " + nodeName);
 block|}
 block|}
 comment|// Find matching residual child node definition
@@ -968,8 +927,9 @@ decl_stmt|;
 if|if
 condition|(
 name|residual
-operator|!=
-literal|null
+operator|.
+name|exists
+argument_list|()
 condition|)
 block|{
 for|for
@@ -993,8 +953,9 @@ decl_stmt|;
 if|if
 condition|(
 name|definition
-operator|!=
-literal|null
+operator|.
+name|exists
+argument_list|()
 condition|)
 block|{
 return|return

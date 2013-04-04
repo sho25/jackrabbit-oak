@@ -263,6 +263,18 @@ name|framework
 operator|.
 name|Assert
 operator|.
+name|assertFalse
+import|;
+end_import
+
+begin_import
+import|import static
+name|junit
+operator|.
+name|framework
+operator|.
+name|Assert
+operator|.
 name|assertNotNull
 import|;
 end_import
@@ -276,6 +288,18 @@ operator|.
 name|Assert
 operator|.
 name|assertNull
+import|;
+end_import
+
+begin_import
+import|import static
+name|junit
+operator|.
+name|framework
+operator|.
+name|Assert
+operator|.
+name|assertTrue
 import|;
 end_import
 
@@ -707,7 +731,7 @@ name|void
 name|testGetChildNode
 parameter_list|()
 block|{
-name|assertNotNull
+name|assertTrue
 argument_list|(
 name|state
 operator|.
@@ -715,9 +739,12 @@ name|getChildNode
 argument_list|(
 literal|"x"
 argument_list|)
+operator|.
+name|exists
+argument_list|()
 argument_list|)
 expr_stmt|;
-name|assertNotNull
+name|assertTrue
 argument_list|(
 name|state
 operator|.
@@ -725,9 +752,12 @@ name|getChildNode
 argument_list|(
 literal|"y"
 argument_list|)
+operator|.
+name|exists
+argument_list|()
 argument_list|)
 expr_stmt|;
-name|assertNotNull
+name|assertTrue
 argument_list|(
 name|state
 operator|.
@@ -735,9 +765,12 @@ name|getChildNode
 argument_list|(
 literal|"z"
 argument_list|)
+operator|.
+name|exists
+argument_list|()
 argument_list|)
 expr_stmt|;
-name|assertNull
+name|assertFalse
 argument_list|(
 name|state
 operator|.
@@ -745,6 +778,9 @@ name|getChildNode
 argument_list|(
 literal|"a"
 argument_list|)
+operator|.
+name|exists
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}

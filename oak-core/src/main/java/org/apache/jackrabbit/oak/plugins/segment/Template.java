@@ -79,6 +79,26 @@ name|oak
 operator|.
 name|plugins
 operator|.
+name|memory
+operator|.
+name|EmptyNodeState
+operator|.
+name|MISSING_NODE
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
 name|segment
 operator|.
 name|Segment
@@ -1396,7 +1416,7 @@ argument_list|()
 condition|)
 block|{
 return|return
-literal|null
+name|MISSING_NODE
 return|;
 block|}
 elseif|else
@@ -1446,7 +1466,7 @@ block|}
 else|else
 block|{
 return|return
-literal|null
+name|MISSING_NODE
 return|;
 block|}
 block|}
@@ -1507,7 +1527,7 @@ block|}
 else|else
 block|{
 return|return
-literal|null
+name|MISSING_NODE
 return|;
 block|}
 block|}

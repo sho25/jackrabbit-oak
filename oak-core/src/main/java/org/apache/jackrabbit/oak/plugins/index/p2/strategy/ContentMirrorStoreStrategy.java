@@ -1005,8 +1005,9 @@ decl_stmt|;
 if|if
 condition|(
 name|property
-operator|!=
-literal|null
+operator|.
+name|exists
+argument_list|()
 condition|)
 block|{
 comment|// we have an entry for this value, so use it
@@ -1174,8 +1175,9 @@ decl_stmt|;
 if|if
 condition|(
 name|s
-operator|!=
-literal|null
+operator|.
+name|exists
+argument_list|()
 condition|)
 block|{
 name|CountingNodeVisitor

@@ -125,6 +125,18 @@ name|junit
 operator|.
 name|Assert
 operator|.
+name|assertFalse
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
 name|assertNull
 import|;
 end_import
@@ -297,11 +309,14 @@ argument_list|,
 name|path
 argument_list|)
 decl_stmt|;
-name|assertNull
+name|assertFalse
 argument_list|(
 name|upToDateNodeStateConfiguration
 operator|.
 name|getConfigurationNodeState
+argument_list|()
+operator|.
+name|exists
 argument_list|()
 argument_list|)
 expr_stmt|;
