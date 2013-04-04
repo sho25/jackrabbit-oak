@@ -204,6 +204,17 @@ argument_list|(
 name|root
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+operator|!
+name|index
+operator|.
+name|hasChildNode
+argument_list|(
+literal|"acPrincipalName"
+argument_list|)
+condition|)
+block|{
 name|IndexUtils
 operator|.
 name|createIndexDefinition
@@ -239,6 +250,7 @@ name|NT_REP_GRANT_ACE
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 return|return
 name|root
 operator|.
