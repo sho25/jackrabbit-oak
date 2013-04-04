@@ -88,7 +88,7 @@ name|Collection
 block|{
 name|NODES
 block|}
-comment|/**      * Get a document. The returned map is a clone (the caller      * can modify it without affecting the stored version).      *      * @param collection the collection      * @param key the key      * @return the map, or null if not found      */
+comment|/**      * Get a document.      *<p>      * The returned map is a clone (the caller can modify it without affecting      * the stored version).      *       * @param collection the collection      * @param key the key      * @return the map, or null if not found      */
 annotation|@
 name|CheckForNull
 name|Map
@@ -104,6 +104,27 @@ name|collection
 parameter_list|,
 name|String
 name|key
+parameter_list|)
+function_decl|;
+comment|/**      * Get a document, ignoring the cache if the cached entry is older than the      * specified time.      *<p>      * The returned map is a clone (the caller can modify it without affecting      * the stored version).      *       * @param collection the collection      * @param key the key      * @param maxCacheAge the maximum age of the cached document      * @return the map, or null if not found      */
+annotation|@
+name|CheckForNull
+name|Map
+argument_list|<
+name|String
+argument_list|,
+name|Object
+argument_list|>
+name|find
+parameter_list|(
+name|Collection
+name|collection
+parameter_list|,
+name|String
+name|key
+parameter_list|,
+name|int
+name|maxCacheAge
 parameter_list|)
 function_decl|;
 annotation|@
@@ -176,6 +197,10 @@ name|update
 parameter_list|)
 throws|throws
 name|MicroKernelException
+function_decl|;
+name|void
+name|invalidateCache
+parameter_list|()
 function_decl|;
 name|void
 name|dispose
