@@ -524,18 +524,7 @@ name|String
 name|name
 parameter_list|)
 block|{
-name|checkArgument
-argument_list|(
-operator|!
-name|checkNotNull
-argument_list|(
-name|name
-argument_list|)
-operator|.
-name|isEmpty
-argument_list|()
-argument_list|)
-expr_stmt|;
+comment|// checkArgument(!checkNotNull(name).isEmpty()); // TODO
 return|return
 name|getTemplate
 argument_list|()
