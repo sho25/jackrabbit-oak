@@ -272,20 +272,17 @@ return|return
 name|date
 return|;
 block|}
-comment|/**          * Convert to date. This default implementation is based on {@code ISO8601.parse(String)}.          * @return  date representation of the converted value          * @throws IllegalArgumentException  if the string cannot be parsed into a date          */
+comment|/**          * Convert to date. This default implementation delegates to {@link #toCalendar()}          * and returns the<code>getTimeInMillis</code> value of the calendar.          * @return  date representation of the converted value          * @throws IllegalArgumentException  if the string cannot be parsed into a date          */
 specifier|public
-name|String
+name|Long
 name|toDate
 parameter_list|()
 block|{
 return|return
-name|convert
-argument_list|(
 name|toCalendar
 argument_list|()
-argument_list|)
 operator|.
-name|toString
+name|getTimeInMillis
 argument_list|()
 return|;
 block|}

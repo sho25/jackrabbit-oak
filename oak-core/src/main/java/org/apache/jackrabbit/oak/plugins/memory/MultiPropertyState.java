@@ -467,14 +467,14 @@ name|Function
 argument_list|<
 name|T
 argument_list|,
-name|String
+name|Long
 argument_list|>
 argument_list|()
 block|{
 annotation|@
 name|Override
 specifier|public
-name|String
+name|Long
 name|apply
 parameter_list|(
 name|T

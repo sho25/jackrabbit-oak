@@ -178,13 +178,13 @@ argument_list|,
 literal|false
 argument_list|)
 decl_stmt|;
-comment|/** Map {@code String} to {@link PropertyType#DATE} */
+comment|/** Map {@code Long} to {@link PropertyType#DATE} */
 specifier|public
 specifier|static
 specifier|final
 name|Type
 argument_list|<
-name|String
+name|Long
 argument_list|>
 name|DATE
 init|=
@@ -418,7 +418,7 @@ argument_list|,
 literal|true
 argument_list|)
 decl_stmt|;
-comment|/** Map {@code Iterable<String>} to array of {@link PropertyType#DATE} */
+comment|/** Map {@code Iterable<Long>} to array of {@link PropertyType#DATE} */
 specifier|public
 specifier|static
 specifier|final
@@ -426,7 +426,7 @@ name|Type
 argument_list|<
 name|Iterable
 argument_list|<
-name|String
+name|Long
 argument_list|>
 argument_list|>
 name|DATES

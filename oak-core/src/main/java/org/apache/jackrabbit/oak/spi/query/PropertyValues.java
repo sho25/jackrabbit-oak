@@ -576,7 +576,7 @@ specifier|static
 name|PropertyValue
 name|newDate
 parameter_list|(
-name|String
+name|Long
 name|value
 parameter_list|)
 block|{

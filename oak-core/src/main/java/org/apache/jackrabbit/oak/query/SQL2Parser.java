@@ -3705,7 +3705,7 @@ name|getValue
 argument_list|(
 name|Type
 operator|.
-name|STRING
+name|DATE
 argument_list|)
 argument_list|)
 expr_stmt|;

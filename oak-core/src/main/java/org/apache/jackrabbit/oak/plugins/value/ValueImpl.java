@@ -425,7 +425,7 @@ name|PropertyType
 operator|.
 name|BINARY
 case|:
-name|String
+name|long
 name|value
 init|=
 name|propertyState
