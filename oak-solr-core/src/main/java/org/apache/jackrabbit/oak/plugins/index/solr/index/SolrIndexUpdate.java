@@ -999,6 +999,17 @@ operator|+
 name|path
 expr_stmt|;
 block|}
+name|path
+operator|=
+name|path
+operator|.
+name|replace
+argument_list|(
+literal|"/"
+argument_list|,
+literal|"\\/"
+argument_list|)
+expr_stmt|;
 name|solrServer
 operator|.
 name|deleteByQuery
