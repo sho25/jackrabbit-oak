@@ -1686,7 +1686,7 @@ operator|instanceof
 name|PrincipalACL
 condition|)
 block|{
-comment|// TODO
+comment|// TODO : OAK-758
 throw|throw
 operator|new
 name|RepositoryException
@@ -2001,7 +2001,7 @@ operator|instanceof
 name|PrincipalACL
 condition|)
 block|{
-comment|// TODO
+comment|// TODO : OAK-758
 throw|throw
 operator|new
 name|RepositoryException
@@ -3809,7 +3809,7 @@ parameter_list|)
 throws|throws
 name|RepositoryException
 block|{
-comment|// TODO
+comment|// TODO : OAK-707
 if|if
 condition|(
 name|provider
@@ -3958,7 +3958,7 @@ parameter_list|)
 throws|throws
 name|RepositoryException
 block|{
-comment|// TODO
+comment|// TODO : OAK-707
 if|if
 condition|(
 name|provider
