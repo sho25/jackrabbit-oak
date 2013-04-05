@@ -773,15 +773,9 @@ operator|&&
 operator|!
 name|t
 operator|.
-name|getNodeState
-argument_list|()
-operator|.
 name|equals
 argument_list|(
 name|t2
-operator|.
-name|getNodeState
-argument_list|()
 argument_list|)
 condition|)
 block|{
