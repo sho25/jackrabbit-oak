@@ -1224,7 +1224,7 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|void
+name|Editor
 name|reindex
 parameter_list|(
 name|NodeState
@@ -1282,6 +1282,9 @@ name|e
 argument_list|)
 throw|;
 block|}
+return|return
+literal|null
+return|;
 block|}
 annotation|@
 name|Override

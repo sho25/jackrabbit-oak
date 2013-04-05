@@ -173,6 +173,8 @@ annotation|@
 name|Nonnull
 name|Collection
 argument_list|<
+name|?
+extends|extends
 name|Editor
 argument_list|>
 name|editors

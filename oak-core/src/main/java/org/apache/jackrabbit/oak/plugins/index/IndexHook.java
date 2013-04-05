@@ -21,6 +21,16 @@ end_package
 
 begin_import
 import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|CheckForNull
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -72,7 +82,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Represents the content of a QueryIndex as well as a mechanism for keeping  * this content up to date.  *<br>  * An IndexHook listens for changes to the content and updates the index data  * accordingly.  */
+comment|/**  * Represents the content of a QueryIndex as well as a mechanism for keeping  * this content up to date.<br>  * An IndexHook listens for changes to the content and updates the index data  * accordingly.  */
 end_comment
 
 begin_interface
@@ -82,8 +92,10 @@ name|IndexHook
 extends|extends
 name|Editor
 block|{
-comment|/**      * Re-create this index using the given state      *       * @param state      *            the parent of the node "oak:index" (the node that contains the      *            index definition)      * @throws CommitFailedException      */
-name|void
+comment|/**      * Return an editor that can be used to recreate this index, or      *<code>null</code> if reindexing is not required or is taken care of by      * the impl directly using the provided state as a reference<br>      *<br>      * By providing an Editor an impl could help the IndexManager gain some      * performance on account of doing the reindexing in parallel for all      * indexers<br>      *<br>      *<i>Note:</i> All the existing IndexHook impls require a call to      * {@link #enter(NodeState, NodeState)} to build initial state before      * calling {@link #reindex(NodeState)}, this is enforced via the      * IndexManager.      *       * @param state      *            state can be used to reindex inside the IndexHook directly,      *            instead of providing an Editor      *       */
+annotation|@
+name|CheckForNull
+name|Editor
 name|reindex
 parameter_list|(
 name|NodeState
