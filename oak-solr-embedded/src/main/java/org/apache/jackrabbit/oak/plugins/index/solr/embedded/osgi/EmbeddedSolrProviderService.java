@@ -199,7 +199,7 @@ name|solr
 operator|.
 name|embedded
 operator|.
-name|EmbeddedSolrServerProvider
+name|EmbeddedSolrConfigurationProvider
 import|;
 end_import
 
@@ -221,7 +221,7 @@ name|solr
 operator|.
 name|embedded
 operator|.
-name|EmbeddedSolrConfigurationProvider
+name|EmbeddedSolrServerProvider
 import|;
 end_import
 
@@ -324,6 +324,15 @@ end_comment
 begin_class
 annotation|@
 name|Component
+argument_list|(
+name|metatype
+operator|=
+literal|true
+argument_list|,
+name|label
+operator|=
+literal|"Embedded SolrServer provider"
+argument_list|)
 annotation|@
 name|Services
 argument_list|(

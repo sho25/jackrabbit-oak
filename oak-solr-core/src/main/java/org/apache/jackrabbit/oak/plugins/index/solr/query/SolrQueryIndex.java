@@ -506,6 +506,7 @@ argument_list|,
 literal|"AND"
 argument_list|)
 expr_stmt|;
+comment|// TODO : change this to be not hard coded
 name|solrQuery
 operator|.
 name|setParam
