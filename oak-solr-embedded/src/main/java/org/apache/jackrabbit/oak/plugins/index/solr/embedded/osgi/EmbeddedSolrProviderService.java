@@ -199,7 +199,7 @@ name|solr
 operator|.
 name|embedded
 operator|.
-name|DefaultOakSolrProvider
+name|EmbeddedSolrServerProvider
 import|;
 end_import
 
@@ -442,7 +442,7 @@ decl_stmt|;
 name|solrServerProvider
 operator|=
 operator|new
-name|DefaultOakSolrProvider
+name|EmbeddedSolrServerProvider
 argument_list|(
 name|nodeStateConfiguration
 operator|.
@@ -469,7 +469,7 @@ comment|// use the default config and the OSGi based server configuration
 name|solrServerProvider
 operator|=
 operator|new
-name|DefaultOakSolrProvider
+name|EmbeddedSolrServerProvider
 argument_list|(
 name|solrServerConfigurationProvider
 operator|.

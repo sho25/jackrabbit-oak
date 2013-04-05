@@ -62,13 +62,13 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Testcase for {@link DefaultOakSolrProvider}  */
+comment|/**  * Testcase for {@link EmbeddedSolrServerProvider}  */
 end_comment
 
 begin_class
 specifier|public
 class|class
-name|DefaultOakSolrProviderTest
+name|EmbeddedSolrServerProviderTest
 block|{
 annotation|@
 name|Test
@@ -92,11 +92,11 @@ argument_list|,
 literal|"oak"
 argument_list|)
 decl_stmt|;
-name|DefaultOakSolrProvider
-name|defaultOakSolrProvider
+name|EmbeddedSolrServerProvider
+name|embeddedSolrServerProvider
 init|=
 operator|new
-name|DefaultOakSolrProvider
+name|EmbeddedSolrServerProvider
 argument_list|(
 name|solrServerConfiguration
 argument_list|)
@@ -104,7 +104,7 @@ decl_stmt|;
 name|SolrServer
 name|solrServer
 init|=
-name|defaultOakSolrProvider
+name|embeddedSolrServerProvider
 operator|.
 name|getSolrServer
 argument_list|()

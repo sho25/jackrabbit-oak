@@ -220,7 +220,7 @@ end_comment
 begin_class
 specifier|public
 class|class
-name|DefaultOakSolrProvider
+name|EmbeddedSolrServerProvider
 implements|implements
 name|SolrServerProvider
 block|{
@@ -230,7 +230,7 @@ name|SolrServerConfiguration
 name|solrServerConfiguration
 decl_stmt|;
 specifier|public
-name|DefaultOakSolrProvider
+name|EmbeddedSolrServerProvider
 parameter_list|(
 name|SolrServerConfiguration
 name|solrServerConfiguration
