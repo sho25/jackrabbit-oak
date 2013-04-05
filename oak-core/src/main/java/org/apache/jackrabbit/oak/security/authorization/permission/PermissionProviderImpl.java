@@ -776,6 +776,7 @@ name|PropertyState
 name|property
 parameter_list|)
 block|{
+comment|// TODO: OAK-753 decide on where to filter out hidden items.
 if|if
 condition|(
 name|isHidden
@@ -911,8 +912,18 @@ operator|==
 literal|null
 condition|)
 block|{
+comment|// TODO: review permission evaluation on hierarchy nodes within the different version stores.
 return|return
-literal|false
+name|compiledPermissions
+operator|.
+name|isGranted
+argument_list|(
+name|tree
+argument_list|,
+name|property
+argument_list|,
+name|permissions
+argument_list|)
 return|;
 block|}
 name|Tree
@@ -1516,11 +1527,17 @@ block|}
 block|}
 else|else
 block|{
+comment|// TODO: review access on hierarchy nodes within the different version stores.
 name|status
 operator|=
-name|ReadStatus
+name|compiledPermissions
 operator|.
-name|DENY_THIS
+name|getReadStatus
+argument_list|(
+name|versionStoreTree
+argument_list|,
+name|property
+argument_list|)
 expr_stmt|;
 block|}
 return|return
@@ -1729,7 +1746,7 @@ name|log
 operator|.
 name|warn
 argument_list|(
-literal|"Unable to determine path of the version controlled node."
+literal|"Unable to determine versionable path of the version store node."
 argument_list|)
 expr_stmt|;
 return|return
