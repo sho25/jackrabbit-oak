@@ -142,7 +142,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Testcase for {@link org.apache.jackrabbit.oak.plugins.index.solr.server.UpToDateNodeStateConfiguration}  */
+comment|/**  * Testcase for {@link UpToDateNodeStateConfiguration}  */
 end_comment
 
 begin_class
@@ -279,7 +279,7 @@ name|assertNull
 argument_list|(
 name|upToDateNodeStateConfiguration
 operator|.
-name|getSolrConfigPath
+name|getCoreName
 argument_list|()
 argument_list|)
 expr_stmt|;
