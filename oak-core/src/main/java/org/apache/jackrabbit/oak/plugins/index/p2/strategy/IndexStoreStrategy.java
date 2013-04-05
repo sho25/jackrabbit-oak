@@ -131,7 +131,7 @@ parameter_list|)
 throws|throws
 name|CommitFailedException
 function_decl|;
-comment|/**      * Inserts a set of values in the index      *       * @param index the index node      * @param key the index key      * @param unique if the index is defined as unique      *<b>Note:</b> If the uniqueness constraint is broken, the method will throw a<code>CommitFailedException</code>      * @param values the values to be added to the given key      * @throws CommitFailedException      */
+comment|/**      * Inserts a set of values in the index      *       * @param index the index node      * @param key the index key      * @param values the values to be added to the given key      * @throws CommitFailedException      */
 name|void
 name|insert
 parameter_list|(
@@ -140,9 +140,6 @@ name|index
 parameter_list|,
 name|String
 name|key
-parameter_list|,
-name|boolean
-name|unique
 parameter_list|,
 name|Iterable
 argument_list|<
