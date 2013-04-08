@@ -18,6 +18,22 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkNotNull
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -296,6 +312,13 @@ name|SecureNodeState
 extends|extends
 name|AbstractNodeState
 block|{
+comment|/**      * Underlying node state.      */
+specifier|private
+specifier|final
+name|NodeState
+name|state
+decl_stmt|;
+comment|/**      * Immutable tree based on the underlying node state.      */
 specifier|private
 specifier|final
 name|ImmutableTree
@@ -331,6 +354,15 @@ name|TypeProvider
 name|typeProvider
 parameter_list|)
 block|{
+name|this
+operator|.
+name|state
+operator|=
+name|checkNotNull
+argument_list|(
+name|rootState
+argument_list|)
+expr_stmt|;
 name|this
 operator|.
 name|base
@@ -369,6 +401,15 @@ name|NodeState
 name|nodeState
 parameter_list|)
 block|{
+name|this
+operator|.
+name|state
+operator|=
+name|checkNotNull
+argument_list|(
+name|nodeState
+argument_list|)
+expr_stmt|;
 name|this
 operator|.
 name|base
@@ -459,8 +500,7 @@ block|{
 name|PropertyState
 name|property
 init|=
-name|getBaseState
-argument_list|()
+name|state
 operator|.
 name|getProperty
 argument_list|(
@@ -495,8 +535,7 @@ parameter_list|()
 block|{
 comment|// TODO: make sure cnt respects read permissions (OAK-708)
 return|return
-name|getBaseState
-argument_list|()
+name|state
 operator|.
 name|getPropertyCount
 argument_list|()
@@ -530,8 +569,7 @@ name|PropertyState
 argument_list|>
 name|properties
 init|=
-name|getBaseState
-argument_list|()
+name|state
 operator|.
 name|getProperties
 argument_list|()
@@ -643,8 +681,7 @@ block|{
 name|NodeState
 name|child
 init|=
-name|getBaseState
-argument_list|()
+name|state
 operator|.
 name|getChildNode
 argument_list|(
@@ -688,8 +725,7 @@ parameter_list|()
 block|{
 comment|// TODO: make sure cnt respects read permissions (OAK-708)
 return|return
-name|getBaseState
-argument_list|()
+name|state
 operator|.
 name|getChildNodeCount
 argument_list|()
@@ -806,8 +842,7 @@ name|Iterables
 operator|.
 name|transform
 argument_list|(
-name|getBaseState
-argument_list|()
+name|state
 operator|.
 name|getChildNodeEntries
 argument_list|()
@@ -862,8 +897,8 @@ name|NodeStateDiff
 name|diff
 parameter_list|)
 block|{
-name|getBaseState
-argument_list|()
+comment|// FIXME: should not bypass access controls
+name|state
 operator|.
 name|compareAgainstBaseState
 argument_list|(
@@ -874,18 +909,6 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|//--------------------------------------------------------------------------
-specifier|private
-name|NodeState
-name|getBaseState
-parameter_list|()
-block|{
-return|return
-name|base
-operator|.
-name|getNodeState
-argument_list|()
-return|;
-block|}
 specifier|private
 name|ReadStatus
 name|getReadStatus
@@ -1123,8 +1146,7 @@ name|obj
 parameter_list|)
 block|{
 return|return
-name|getBaseState
-argument_list|()
+name|state
 operator|.
 name|equals
 argument_list|(
