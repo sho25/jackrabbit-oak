@@ -569,8 +569,7 @@ name|nodeBuilder
 operator|=
 name|parent
 operator|.
-name|getNodeBuilder
-argument_list|()
+name|nodeBuilder
 operator|.
 name|child
 argument_list|(
@@ -1910,16 +1909,6 @@ argument_list|()
 return|;
 block|}
 comment|//-----------------------------------------------------------< internal>---
-annotation|@
-name|Nonnull
-name|NodeBuilder
-name|getNodeBuilder
-parameter_list|()
-block|{
-return|return
-name|nodeBuilder
-return|;
-block|}
 comment|/**      * The (possibly non-existent) node state this tree is based on.      * @return the base node state of this tree      */
 annotation|@
 name|Nonnull
