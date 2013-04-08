@@ -302,7 +302,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * SecureNodeState...  *  * TODO: clarify if HIDDEN items should be filtered by this NodeState implementation  * TODO: add proper implementation for getPropertyCount and getChildrenCount  * TODO: clarify usage of ReadStatus in getChildNodeEntries  * TODO: add proper equals/hashcode implementation  * TODO: should be package-private  */
+comment|/**  * SecureNodeState...  *  * TODO: clarify if HIDDEN items should be filtered by this NodeState implementation  * TODO: clarify usage of ReadStatus in getChildNodeEntries  * TODO: add proper equals/hashcode implementation  * TODO: should be package-private  */
 end_comment
 
 begin_class
@@ -332,6 +332,20 @@ decl_stmt|;
 specifier|private
 name|ReadStatus
 name|readStatus
+decl_stmt|;
+specifier|private
+name|long
+name|childNodeCount
+init|=
+operator|-
+literal|1
+decl_stmt|;
+specifier|private
+name|long
+name|propertyCount
+init|=
+operator|-
+literal|1
 decl_stmt|;
 specifier|public
 name|SecureNodeState
@@ -533,12 +547,24 @@ name|long
 name|getPropertyCount
 parameter_list|()
 block|{
-comment|// TODO: make sure cnt respects read permissions (OAK-708)
-return|return
-name|state
+if|if
+condition|(
+name|propertyCount
+operator|==
+operator|-
+literal|1
+condition|)
+block|{
+name|propertyCount
+operator|=
+name|super
 operator|.
 name|getPropertyCount
 argument_list|()
+expr_stmt|;
+block|}
+return|return
+name|propertyCount
 return|;
 block|}
 annotation|@
@@ -723,12 +749,24 @@ name|long
 name|getChildNodeCount
 parameter_list|()
 block|{
-comment|// TODO: make sure cnt respects read permissions (OAK-708)
-return|return
-name|state
+if|if
+condition|(
+name|childNodeCount
+operator|==
+operator|-
+literal|1
+condition|)
+block|{
+name|childNodeCount
+operator|=
+name|super
 operator|.
 name|getChildNodeCount
 argument_list|()
+expr_stmt|;
+block|}
+return|return
+name|childNodeCount
 return|;
 block|}
 annotation|@
