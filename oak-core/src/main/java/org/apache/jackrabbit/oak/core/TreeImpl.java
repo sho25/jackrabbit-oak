@@ -482,6 +482,9 @@ parameter_list|(
 name|RootImpl
 name|root
 parameter_list|,
+name|NodeBuilder
+name|builder
+parameter_list|,
 name|Move
 name|pendingMoves
 parameter_list|)
@@ -505,10 +508,10 @@ name|this
 operator|.
 name|nodeBuilder
 operator|=
-name|root
-operator|.
-name|createRootBuilder
-argument_list|()
+name|checkNotNull
+argument_list|(
+name|builder
+argument_list|)
 expr_stmt|;
 name|this
 operator|.
