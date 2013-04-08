@@ -881,7 +881,7 @@ block|}
 block|}
 block|}
 comment|//-----------------------------------------------------------< private>--
-specifier|private
+specifier|protected
 specifier|static
 name|long
 name|count
