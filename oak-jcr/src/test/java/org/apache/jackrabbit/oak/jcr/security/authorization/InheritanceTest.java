@@ -560,6 +560,13 @@ operator|.
 name|save
 argument_list|()
 expr_stmt|;
+name|testSession
+operator|.
+name|refresh
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
 name|String
 name|gcPath
 init|=

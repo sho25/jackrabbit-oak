@@ -123,7 +123,7 @@ annotation|@
 name|Test
 specifier|public
 name|void
-name|testNewNodes
+name|testChildNodes
 parameter_list|()
 throws|throws
 name|Exception
@@ -160,7 +160,7 @@ name|n
 operator|.
 name|addNode
 argument_list|(
-name|nodeName2
+name|nodeName4
 argument_list|,
 name|testNodeType
 argument_list|)
@@ -172,6 +172,13 @@ name|save
 argument_list|()
 expr_stmt|;
 comment|/* make sure the same privileges/permissions are granted as at path. */
+name|testSession
+operator|.
+name|refresh
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
 name|String
 name|childPath
 init|=

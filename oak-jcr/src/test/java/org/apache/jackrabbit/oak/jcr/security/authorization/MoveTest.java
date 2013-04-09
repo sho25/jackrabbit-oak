@@ -122,7 +122,7 @@ expr_stmt|;
 name|Node
 name|node3
 init|=
-name|testRootNode
+name|superuser
 operator|.
 name|getNode
 argument_list|(
@@ -145,6 +145,13 @@ name|superuser
 operator|.
 name|save
 argument_list|()
+expr_stmt|;
+name|testSession
+operator|.
+name|refresh
+argument_list|(
+literal|false
+argument_list|)
 expr_stmt|;
 block|}
 annotation|@
