@@ -1902,6 +1902,14 @@ name|String
 name|toString
 parameter_list|()
 block|{
+if|if
+condition|(
+name|nodeBuilder
+operator|.
+name|isConnected
+argument_list|()
+condition|)
+block|{
 return|return
 name|getPathInternal
 argument_list|()
@@ -1911,6 +1919,13 @@ operator|+
 name|getNodeState
 argument_list|()
 return|;
+block|}
+else|else
+block|{
+return|return
+literal|"disconnected"
+return|;
+block|}
 block|}
 comment|//-----------------------------------------------------------< internal>---
 comment|/**      * The (possibly non-existent) node state this tree is based on.      * @return the base node state of this tree      */
