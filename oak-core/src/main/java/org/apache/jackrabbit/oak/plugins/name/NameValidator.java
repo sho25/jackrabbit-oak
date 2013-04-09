@@ -245,6 +245,10 @@ throw|throw
 operator|new
 name|CommitFailedException
 argument_list|(
+literal|"Name"
+argument_list|,
+literal|1
+argument_list|,
 literal|"Invalid namespace prefix: "
 operator|+
 name|name
@@ -336,6 +340,10 @@ throw|throw
 operator|new
 name|CommitFailedException
 argument_list|(
+literal|"Name"
+argument_list|,
+literal|2
+argument_list|,
 literal|"Invalid name index "
 operator|+
 name|name
@@ -372,6 +380,10 @@ throw|throw
 operator|new
 name|CommitFailedException
 argument_list|(
+literal|"Name"
+argument_list|,
+literal|3
+argument_list|,
 literal|"Invalid name: "
 operator|+
 name|name

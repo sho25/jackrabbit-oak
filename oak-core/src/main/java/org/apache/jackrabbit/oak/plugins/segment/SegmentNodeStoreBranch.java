@@ -540,6 +540,10 @@ throw|throw
 operator|new
 name|CommitFailedException
 argument_list|(
+literal|"Segment"
+argument_list|,
+literal|1
+argument_list|,
 literal|"Commit was interrupted"
 argument_list|,
 name|e
@@ -553,6 +557,10 @@ throw|throw
 operator|new
 name|CommitFailedException
 argument_list|(
+literal|"Segment"
+argument_list|,
+literal|2
+argument_list|,
 literal|"System overloaded, try again later"
 argument_list|)
 throw|;

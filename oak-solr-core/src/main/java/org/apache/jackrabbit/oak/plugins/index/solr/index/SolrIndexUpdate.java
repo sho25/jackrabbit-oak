@@ -684,6 +684,10 @@ throw|throw
 operator|new
 name|CommitFailedException
 argument_list|(
+literal|"Solr"
+argument_list|,
+literal|2
+argument_list|,
 literal|"Failed to update the full text search index"
 argument_list|,
 name|e
@@ -700,6 +704,10 @@ throw|throw
 operator|new
 name|CommitFailedException
 argument_list|(
+literal|"Solr"
+argument_list|,
+literal|3
+argument_list|,
 literal|"Failed to update the full text search index"
 argument_list|,
 name|e

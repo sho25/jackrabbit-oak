@@ -932,6 +932,10 @@ throw|throw
 operator|new
 name|CommitFailedException
 argument_list|(
+literal|"Lucene"
+argument_list|,
+literal|1
+argument_list|,
 literal|"Failed to update the full text search index"
 argument_list|,
 name|e

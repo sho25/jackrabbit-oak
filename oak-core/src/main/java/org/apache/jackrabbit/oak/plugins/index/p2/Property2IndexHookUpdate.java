@@ -668,6 +668,10 @@ throw|throw
 operator|new
 name|CommitFailedException
 argument_list|(
+literal|"Constraint"
+argument_list|,
+literal|30
+argument_list|,
 literal|"Uniqueness constraint violated for key "
 operator|+
 name|key

@@ -192,10 +192,14 @@ condition|)
 block|{
 throw|throw
 operator|new
-name|NamespaceValidatorException
+name|CommitFailedException
 argument_list|(
-literal|"Namespace mapping already registered"
+literal|"Namespace"
 argument_list|,
+literal|1
+argument_list|,
+literal|"Namespace mapping already registered: "
+operator|+
 name|prefix
 argument_list|)
 throw|;
@@ -232,10 +236,14 @@ condition|)
 block|{
 throw|throw
 operator|new
-name|NamespaceValidatorException
+name|CommitFailedException
 argument_list|(
-literal|"Invalid namespace mapping"
+literal|"Namespace"
 argument_list|,
+literal|2
+argument_list|,
+literal|"Invalid namespace mapping: "
+operator|+
 name|prefix
 argument_list|)
 throw|;
@@ -260,10 +268,14 @@ condition|)
 block|{
 throw|throw
 operator|new
-name|NamespaceValidatorException
+name|CommitFailedException
 argument_list|(
-literal|"XML prefixes are reserved"
+literal|"Namespace"
 argument_list|,
+literal|3
+argument_list|,
+literal|"XML prefixes are reserved: "
+operator|+
 name|prefix
 argument_list|)
 throw|;
@@ -296,10 +308,14 @@ else|else
 block|{
 throw|throw
 operator|new
-name|NamespaceValidatorException
+name|CommitFailedException
 argument_list|(
-literal|"Not a valid namespace prefix"
+literal|"Namespace"
 argument_list|,
+literal|4
+argument_list|,
+literal|"Not a valid namespace prefix: "
+operator|+
 name|prefix
 argument_list|)
 throw|;
@@ -374,7 +390,7 @@ block|}
 block|}
 specifier|private
 specifier|static
-name|NamespaceValidatorException
+name|CommitFailedException
 name|modificationNotAllowed
 parameter_list|(
 name|String
@@ -383,10 +399,14 @@ parameter_list|)
 block|{
 return|return
 operator|new
-name|NamespaceValidatorException
+name|CommitFailedException
 argument_list|(
-literal|"Namespace modification not allowed"
+literal|"Namespace"
 argument_list|,
+literal|5
+argument_list|,
+literal|"Namespace modification not allowed: "
+operator|+
 name|prefix
 argument_list|)
 return|;

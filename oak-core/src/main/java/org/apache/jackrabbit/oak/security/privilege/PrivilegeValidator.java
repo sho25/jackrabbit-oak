@@ -61,16 +61,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|jcr
-operator|.
-name|RepositoryException
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -392,6 +382,10 @@ throw|throw
 operator|new
 name|CommitFailedException
 argument_list|(
+literal|"Constraint"
+argument_list|,
+literal|45
+argument_list|,
 literal|"Attempt to modify existing privilege definition."
 argument_list|)
 throw|;
@@ -413,6 +407,10 @@ throw|throw
 operator|new
 name|CommitFailedException
 argument_list|(
+literal|"Constraint"
+argument_list|,
+literal|46
+argument_list|,
 literal|"Attempt to modify existing privilege definition."
 argument_list|)
 throw|;
@@ -471,11 +469,11 @@ throw|throw
 operator|new
 name|CommitFailedException
 argument_list|(
-operator|new
-name|RepositoryException
-argument_list|(
+literal|"Privilege"
+argument_list|,
+literal|1
+argument_list|,
 name|msg
-argument_list|)
 argument_list|)
 throw|;
 block|}
@@ -517,6 +515,10 @@ throw|throw
 operator|new
 name|CommitFailedException
 argument_list|(
+literal|"Privilege"
+argument_list|,
+literal|2
+argument_list|,
 literal|"Privilege definition must have primary node type set to rep:privilege"
 argument_list|)
 throw|;
@@ -554,6 +556,10 @@ throw|throw
 operator|new
 name|CommitFailedException
 argument_list|(
+literal|"Constraint"
+argument_list|,
+literal|41
+argument_list|,
 literal|"Attempt to modify existing privilege definition "
 operator|+
 name|name
@@ -579,6 +585,10 @@ throw|throw
 operator|new
 name|CommitFailedException
 argument_list|(
+literal|"Constraint"
+argument_list|,
+literal|42
+argument_list|,
 literal|"Attempt to un-register privilege "
 operator|+
 name|name
@@ -632,7 +642,11 @@ throw|throw
 operator|new
 name|CommitFailedException
 argument_list|(
-literal|"Next bits not updated."
+literal|"Constraint"
+argument_list|,
+literal|43
+argument_list|,
+literal|"Next bits not updated"
 argument_list|)
 throw|;
 block|}
@@ -670,6 +684,10 @@ throw|throw
 operator|new
 name|CommitFailedException
 argument_list|(
+literal|"Constraint"
+argument_list|,
+literal|44
+argument_list|,
 literal|"Privilege store not initialized."
 argument_list|)
 throw|;
@@ -711,6 +729,10 @@ throw|throw
 operator|new
 name|CommitFailedException
 argument_list|(
+literal|"Constraint"
+argument_list|,
+literal|48
+argument_list|,
 literal|"PrivilegeBits are missing."
 argument_list|)
 throw|;
@@ -771,6 +793,10 @@ throw|throw
 operator|new
 name|CommitFailedException
 argument_list|(
+literal|"Constraint"
+argument_list|,
+literal|49
+argument_list|,
 literal|"PrivilegeBits already in used."
 argument_list|)
 throw|;
@@ -797,6 +823,10 @@ throw|throw
 operator|new
 name|CommitFailedException
 argument_list|(
+literal|"Constraint"
+argument_list|,
+literal|50
+argument_list|,
 literal|"Singular aggregation is equivalent to existing privilege."
 argument_list|)
 throw|;
@@ -843,6 +873,10 @@ throw|throw
 operator|new
 name|CommitFailedException
 argument_list|(
+literal|"Constraint"
+argument_list|,
+literal|51
+argument_list|,
 literal|"Declared aggregate '"
 operator|+
 name|aggrName
@@ -878,6 +912,10 @@ throw|throw
 operator|new
 name|CommitFailedException
 argument_list|(
+literal|"Constraint"
+argument_list|,
+literal|52
+argument_list|,
 name|msg
 argument_list|)
 throw|;
@@ -974,6 +1012,10 @@ throw|throw
 operator|new
 name|CommitFailedException
 argument_list|(
+literal|"Constraint"
+argument_list|,
+literal|53
+argument_list|,
 name|msg
 argument_list|)
 throw|;
@@ -1016,6 +1058,10 @@ throw|throw
 operator|new
 name|CommitFailedException
 argument_list|(
+literal|"Constraint"
+argument_list|,
+literal|53
+argument_list|,
 literal|"Invalid privilege bits for aggregated privilege definition."
 argument_list|)
 throw|;
@@ -1207,6 +1253,10 @@ throw|throw
 operator|new
 name|CommitFailedException
 argument_list|(
+literal|"Constraint"
+argument_list|,
+literal|47
+argument_list|,
 literal|"Invalid declared aggregate name "
 operator|+
 name|name

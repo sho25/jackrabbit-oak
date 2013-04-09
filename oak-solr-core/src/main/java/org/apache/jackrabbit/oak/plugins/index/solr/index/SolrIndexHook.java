@@ -1216,6 +1216,12 @@ throw|throw
 operator|new
 name|CommitFailedException
 argument_list|(
+literal|"Solr"
+argument_list|,
+literal|1
+argument_list|,
+literal|"Index failure"
+argument_list|,
 name|e
 argument_list|)
 throw|;
@@ -1278,6 +1284,12 @@ throw|throw
 operator|new
 name|CommitFailedException
 argument_list|(
+literal|"Solr"
+argument_list|,
+literal|2
+argument_list|,
+literal|"Re-index failure"
+argument_list|,
 name|e
 argument_list|)
 throw|;

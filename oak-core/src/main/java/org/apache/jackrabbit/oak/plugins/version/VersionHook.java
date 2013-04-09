@@ -408,6 +408,12 @@ throw|throw
 operator|new
 name|CommitFailedException
 argument_list|(
+literal|"Version"
+argument_list|,
+literal|1
+argument_list|,
+literal|"Versioning failure"
+argument_list|,
 name|e
 operator|.
 name|getCause

@@ -317,18 +317,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|jcr
-operator|.
-name|nodetype
-operator|.
-name|ConstraintViolationException
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -695,6 +683,8 @@ block|{
 throw|throw
 name|constraintViolation
 argument_list|(
+literal|1
+argument_list|,
 literal|"Incorrect node type of child node "
 operator|+
 name|nodeName
@@ -758,6 +748,8 @@ block|{
 throw|throw
 name|constraintViolation
 argument_list|(
+literal|2
+argument_list|,
 literal|"Missing mandatory items "
 operator|+
 name|Joiner
@@ -779,6 +771,9 @@ specifier|private
 name|CommitFailedException
 name|constraintViolation
 parameter_list|(
+name|int
+name|code
+parameter_list|,
 name|String
 name|message
 parameter_list|)
@@ -787,16 +782,16 @@ return|return
 operator|new
 name|CommitFailedException
 argument_list|(
-operator|new
-name|ConstraintViolationException
-argument_list|(
+literal|"Constraint"
+argument_list|,
+name|code
+argument_list|,
 name|getPath
 argument_list|()
 operator|+
 literal|": "
 operator|+
 name|message
-argument_list|)
 argument_list|)
 return|;
 block|}
@@ -832,6 +827,8 @@ block|{
 throw|throw
 name|constraintViolation
 argument_list|(
+literal|3
+argument_list|,
 literal|"No matching property definition found for "
 operator|+
 name|after
@@ -881,6 +878,8 @@ block|{
 throw|throw
 name|constraintViolation
 argument_list|(
+literal|4
+argument_list|,
 literal|"No matching property definition found for "
 operator|+
 name|after
@@ -1309,6 +1308,8 @@ block|}
 throw|throw
 name|constraintViolation
 argument_list|(
+literal|5
+argument_list|,
 literal|"Value constraint violation in "
 operator|+
 name|property
@@ -1415,6 +1416,8 @@ block|{
 throw|throw
 name|constraintViolation
 argument_list|(
+literal|6
+argument_list|,
 literal|"Primary node type "
 operator|+
 name|name
@@ -1437,6 +1440,8 @@ block|{
 throw|throw
 name|constraintViolation
 argument_list|(
+literal|7
+argument_list|,
 literal|"Can not use mixin type "
 operator|+
 name|name
@@ -1459,6 +1464,8 @@ block|{
 throw|throw
 name|constraintViolation
 argument_list|(
+literal|8
+argument_list|,
 literal|"Can not use abstract type "
 operator|+
 name|name
@@ -1545,6 +1552,8 @@ block|{
 throw|throw
 name|constraintViolation
 argument_list|(
+literal|9
+argument_list|,
 literal|"Mixin node type "
 operator|+
 name|name
@@ -1568,6 +1577,8 @@ block|{
 throw|throw
 name|constraintViolation
 argument_list|(
+literal|10
+argument_list|,
 literal|"Can not use primary type "
 operator|+
 name|name
@@ -1590,6 +1601,8 @@ block|{
 throw|throw
 name|constraintViolation
 argument_list|(
+literal|11
+argument_list|,
 literal|"Can not use abstract type "
 operator|+
 name|name

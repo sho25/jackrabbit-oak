@@ -841,6 +841,12 @@ throw|throw
 operator|new
 name|CommitFailedException
 argument_list|(
+literal|"Kernel"
+argument_list|,
+literal|1
+argument_list|,
+literal|"Failed to merge changes to the underlying MicroKernel"
+argument_list|,
 name|e
 argument_list|)
 throw|;

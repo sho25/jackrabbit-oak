@@ -352,7 +352,7 @@ block|{
 comment|// success
 name|assertEquals
 argument_list|(
-literal|"PrivilegeBits are missing."
+literal|"OakConstraint0048: PrivilegeBits are missing."
 argument_list|,
 name|e
 operator|.
@@ -417,7 +417,7 @@ block|{
 comment|// success
 name|assertEquals
 argument_list|(
-literal|"PrivilegeBits already in used."
+literal|"OakConstraint0049: PrivilegeBits already in used."
 argument_list|,
 name|e
 operator|.
@@ -504,7 +504,7 @@ block|{
 comment|// success
 name|assertEquals
 argument_list|(
-literal|"Invalid privilege bits for aggregated privilege definition."
+literal|"OakConstraint0053: Invalid privilege bits for aggregated privilege definition."
 argument_list|,
 name|e
 operator|.
@@ -569,7 +569,7 @@ block|{
 comment|// success
 name|assertEquals
 argument_list|(
-literal|"Next bits not updated."
+literal|"OakConstraint0043: Next bits not updated"
 argument_list|,
 name|e
 operator|.
@@ -628,7 +628,7 @@ block|{
 comment|// success
 name|assertEquals
 argument_list|(
-literal|"Next bits not updated."
+literal|"OakConstraint0043: Next bits not updated"
 argument_list|,
 name|e
 operator|.
@@ -721,7 +721,7 @@ block|{
 comment|// success
 name|assertEquals
 argument_list|(
-literal|"Singular aggregation is equivalent to existing privilege."
+literal|"OakConstraint0050: Singular aggregation is equivalent to existing privilege."
 argument_list|,
 name|e
 operator|.

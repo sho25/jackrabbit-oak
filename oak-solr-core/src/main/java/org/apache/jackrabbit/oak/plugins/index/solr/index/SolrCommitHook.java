@@ -199,6 +199,10 @@ throw|throw
 operator|new
 name|CommitFailedException
 argument_list|(
+literal|"Solr"
+argument_list|,
+literal|1
+argument_list|,
 literal|"Failed to update the Solr index"
 argument_list|,
 name|e

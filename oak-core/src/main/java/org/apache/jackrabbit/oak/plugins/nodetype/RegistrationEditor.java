@@ -622,6 +622,10 @@ throw|throw
 operator|new
 name|CommitFailedException
 argument_list|(
+literal|"Constraint"
+argument_list|,
+literal|34
+argument_list|,
 literal|"Unexpected "
 operator|+
 name|JCR_NODETYPENAME
@@ -678,6 +682,10 @@ throw|throw
 operator|new
 name|CommitFailedException
 argument_list|(
+literal|"Constraint"
+argument_list|,
+literal|35
+argument_list|,
 literal|"Missing supertype "
 operator|+
 name|value
@@ -1183,6 +1191,10 @@ throw|throw
 operator|new
 name|CommitFailedException
 argument_list|(
+literal|"Constraint"
+argument_list|,
+literal|33
+argument_list|,
 literal|"Unknown required primary type "
 operator|+
 name|key
@@ -1419,6 +1431,10 @@ throw|throw
 operator|new
 name|CommitFailedException
 argument_list|(
+literal|"Constraint"
+argument_list|,
+literal|31
+argument_list|,
 literal|"Removed type "
 operator|+
 name|superName
@@ -1516,6 +1532,10 @@ throw|throw
 operator|new
 name|CommitFailedException
 argument_list|(
+literal|"Constraint"
+argument_list|,
+literal|32
+argument_list|,
 literal|"Removed type "
 operator|+
 name|required

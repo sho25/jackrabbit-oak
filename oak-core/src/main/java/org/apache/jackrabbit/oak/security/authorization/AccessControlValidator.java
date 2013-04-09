@@ -798,11 +798,14 @@ name|tree
 argument_list|)
 condition|)
 block|{
-name|fail
+throw|throw
+name|accessViolation
 argument_list|(
+literal|2
+argument_list|,
 literal|"Access control entry node expected."
 argument_list|)
-expr_stmt|;
+throw|;
 block|}
 block|}
 specifier|private
@@ -880,8 +883,11 @@ argument_list|()
 argument_list|)
 condition|)
 block|{
-name|fail
+throw|throw
+name|accessViolation
 argument_list|(
+literal|3
+argument_list|,
 literal|"Invalid policy name "
 operator|+
 name|policyNode
@@ -889,7 +895,7 @@ operator|.
 name|getName
 argument_list|()
 argument_list|)
-expr_stmt|;
+throw|;
 block|}
 if|if
 condition|(
@@ -904,11 +910,14 @@ name|OAK_CHILD_ORDER
 argument_list|)
 condition|)
 block|{
-name|fail
+throw|throw
+name|accessViolation
 argument_list|(
+literal|4
+argument_list|,
 literal|"Invalid policy node: Order of children is not stable."
 argument_list|)
-expr_stmt|;
+throw|;
 block|}
 block|}
 specifier|private
@@ -939,8 +948,11 @@ argument_list|)
 argument_list|)
 condition|)
 block|{
-name|fail
+throw|throw
+name|accessViolation
 argument_list|(
+literal|5
+argument_list|,
 literal|"Access control policy within access control content ("
 operator|+
 name|accessControlledTree
@@ -950,7 +962,7 @@ argument_list|()
 operator|+
 literal|')'
 argument_list|)
-expr_stmt|;
+throw|;
 block|}
 name|String
 name|msg
@@ -972,11 +984,14 @@ name|requiredMixin
 argument_list|)
 condition|)
 block|{
-name|fail
+throw|throw
+name|accessViolation
 argument_list|(
+literal|6
+argument_list|,
 name|msg
 argument_list|)
-expr_stmt|;
+throw|;
 block|}
 if|if
 condition|(
@@ -1033,8 +1048,11 @@ argument_list|)
 argument_list|)
 condition|)
 block|{
-name|fail
+throw|throw
+name|accessViolation
 argument_list|(
+literal|7
+argument_list|,
 literal|"Isolated access control entry at "
 operator|+
 name|aceNode
@@ -1042,7 +1060,7 @@ operator|.
 name|getPath
 argument_list|()
 argument_list|)
-expr_stmt|;
+throw|;
 block|}
 name|checkValidPrincipal
 argument_list|(
@@ -1096,11 +1114,14 @@ name|isEmpty
 argument_list|()
 condition|)
 block|{
-name|fail
+throw|throw
+name|accessViolation
 argument_list|(
+literal|8
+argument_list|,
 literal|"Missing principal name."
 argument_list|)
-expr_stmt|;
+throw|;
 block|}
 comment|// validity of principal is only a JCR specific contract and will not be
 comment|// enforced on the oak level.
@@ -1129,11 +1150,14 @@ operator|==
 literal|0
 condition|)
 block|{
-name|fail
+throw|throw
+name|accessViolation
 argument_list|(
+literal|9
+argument_list|,
 literal|"Missing privileges."
 argument_list|)
-expr_stmt|;
+throw|;
 block|}
 for|for
 control|(
@@ -1158,13 +1182,16 @@ name|privilegeName
 argument_list|)
 condition|)
 block|{
-name|fail
+throw|throw
+name|accessViolation
 argument_list|(
+literal|10
+argument_list|,
 literal|"Invalid privilege "
 operator|+
 name|privilegeName
 argument_list|)
-expr_stmt|;
+throw|;
 block|}
 name|Privilege
 name|privilege
@@ -1184,13 +1211,16 @@ name|isAbstract
 argument_list|()
 condition|)
 block|{
-name|fail
+throw|throw
+name|accessViolation
 argument_list|(
+literal|11
+argument_list|,
 literal|"Abstract privilege "
 operator|+
 name|privilegeName
 argument_list|)
-expr_stmt|;
+throw|;
 block|}
 block|}
 block|}
@@ -1282,6 +1312,12 @@ throw|throw
 operator|new
 name|CommitFailedException
 argument_list|(
+literal|"Access"
+argument_list|,
+literal|1
+argument_list|,
+literal|"Access control violation"
+argument_list|,
 name|e
 argument_list|)
 throw|;
@@ -1359,35 +1395,39 @@ name|isRoot
 argument_list|()
 condition|)
 block|{
-name|fail
+throw|throw
+name|accessViolation
 argument_list|(
+literal|12
+argument_list|,
 literal|"Only root can store repository level policies."
 argument_list|)
-expr_stmt|;
+throw|;
 block|}
 block|}
 specifier|private
 specifier|static
-name|void
-name|fail
+name|CommitFailedException
+name|accessViolation
 parameter_list|(
+name|int
+name|code
+parameter_list|,
 name|String
-name|msg
+name|message
 parameter_list|)
-throws|throws
-name|CommitFailedException
 block|{
-throw|throw
+return|return
 operator|new
 name|CommitFailedException
 argument_list|(
-operator|new
-name|AccessControlException
-argument_list|(
-name|msg
+literal|"Access"
+argument_list|,
+name|code
+argument_list|,
+name|message
 argument_list|)
-argument_list|)
-throw|;
+return|;
 block|}
 block|}
 end_class

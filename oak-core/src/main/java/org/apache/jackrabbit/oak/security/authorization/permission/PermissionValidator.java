@@ -612,6 +612,10 @@ throw|throw
 operator|new
 name|CommitFailedException
 argument_list|(
+literal|"Access"
+argument_list|,
+literal|21
+argument_list|,
 literal|"New version storage node without version history: cannot verify permissions."
 argument_list|)
 throw|;
@@ -719,6 +723,10 @@ throw|throw
 operator|new
 name|CommitFailedException
 argument_list|(
+literal|"Access"
+argument_list|,
+literal|22
+argument_list|,
 literal|"Attempt to remove versionstorage node: Fail to verify delete permission."
 argument_list|)
 throw|;
@@ -821,9 +829,11 @@ throw|throw
 operator|new
 name|CommitFailedException
 argument_list|(
-operator|new
-name|AccessDeniedException
-argument_list|()
+literal|"Access"
+argument_list|,
+literal|0
+argument_list|,
+literal|"Access denied"
 argument_list|)
 throw|;
 block|}
@@ -853,9 +863,11 @@ throw|throw
 operator|new
 name|CommitFailedException
 argument_list|(
-operator|new
-name|AccessDeniedException
-argument_list|()
+literal|"Access"
+argument_list|,
+literal|0
+argument_list|,
+literal|"Access denied"
 argument_list|)
 throw|;
 block|}
@@ -962,9 +974,11 @@ throw|throw
 operator|new
 name|CommitFailedException
 argument_list|(
-operator|new
-name|AccessDeniedException
-argument_list|()
+literal|"Access"
+argument_list|,
+literal|0
+argument_list|,
+literal|"Access denied"
 argument_list|)
 throw|;
 block|}
@@ -1437,6 +1451,10 @@ throw|throw
 operator|new
 name|CommitFailedException
 argument_list|(
+literal|"Misc"
+argument_list|,
+literal|0
+argument_list|,
 literal|"unexpected node"
 argument_list|)
 throw|;

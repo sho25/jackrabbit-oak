@@ -169,6 +169,10 @@ init|=
 operator|new
 name|FailingValidator
 argument_list|(
+literal|"Constraint"
+argument_list|,
+literal|41
+argument_list|,
 literal|"Attempt to modify permission store."
 argument_list|)
 decl_stmt|;
