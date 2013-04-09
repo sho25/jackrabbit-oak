@@ -1667,10 +1667,9 @@ block|{
 name|checkLive
 argument_list|()
 expr_stmt|;
-comment|// FIXME comparing insecure base state with secure root state
 return|return
 operator|!
-name|getBaseState
+name|getSecureBase
 argument_list|()
 operator|.
 name|equals
@@ -1875,6 +1874,28 @@ name|branch
 operator|.
 name|getBase
 argument_list|()
+return|;
+block|}
+comment|/**      * Returns the secure view of the base state from which the current branch was creates.      *      * @return secure base node state      */
+name|NodeState
+name|getSecureBase
+parameter_list|()
+block|{
+return|return
+operator|new
+name|SecureNodeState
+argument_list|(
+name|branch
+operator|.
+name|getBase
+argument_list|()
+argument_list|,
+name|getPermissionProvider
+argument_list|()
+argument_list|,
+name|getTypeProvider
+argument_list|()
+argument_list|)
 return|;
 block|}
 comment|// TODO better way to determine purge limit. See OAK-175
