@@ -2096,7 +2096,6 @@ name|NodeState
 name|getRootState
 parameter_list|()
 block|{
-comment|// FIXME: should not return a state being (based on) SecureNodeState (see OAK-709)
 return|return
 name|rootTree
 operator|.
