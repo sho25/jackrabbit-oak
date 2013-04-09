@@ -520,6 +520,20 @@ argument_list|,
 literal|10000
 argument_list|)
 decl_stmt|;
+comment|/**      * Enable background operations      */
+specifier|private
+specifier|static
+specifier|final
+name|boolean
+name|ENABLE_BACKGROUND_OPS
+init|=
+name|Boolean
+operator|.
+name|getBoolean
+argument_list|(
+literal|"oak.mongoMK.backgroundOps"
+argument_list|)
+decl_stmt|;
 comment|/**      * The delay for asynchronous operations (delayed commit propagation and      * cache update).      */
 comment|// TODO test observation with multiple Oak instances
 specifier|protected
@@ -1128,10 +1142,19 @@ block|{
 comment|// only when using timestamp
 return|return;
 block|}
+synchronized|synchronized
+init|(
+name|this
+init|)
+block|{
 try|try
 block|{
-comment|// backgroundWrite();
-comment|// backgroundRead();
+name|backgroundWrite
+argument_list|()
+expr_stmt|;
+name|backgroundRead
+argument_list|()
+expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
@@ -1163,6 +1186,7 @@ argument_list|,
 name|e
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 specifier|private
@@ -1486,25 +1510,13 @@ condition|)
 block|{
 continue|continue;
 block|}
-if|if
-condition|(
-name|Revision
-operator|.
-name|getTimestampDifference
-argument_list|(
-name|now
-argument_list|,
-name|r
-operator|.
-name|getTimestamp
-argument_list|()
-argument_list|)
-operator|<
-name|asyncDelay
-condition|)
-block|{
-continue|continue;
-block|}
+comment|// FIXME: with below code fragment the root (and other nodes
+comment|// 'close' to the root will not be updated in MongoDB when there
+comment|// are frequent changes. Uncommenting the lines below also
+comment|// leads to test failures because reads seem to become inconsistent
+comment|//            if (Revision.getTimestampDifference(now, r.getTimestamp())< asyncDelay) {
+comment|//                continue;
+comment|//            }
 name|Commit
 name|commit
 init|=
@@ -6302,6 +6314,8 @@ condition|(
 name|mk
 operator|!=
 literal|null
+operator|&&
+name|ENABLE_BACKGROUND_OPS
 condition|)
 block|{
 name|mk
