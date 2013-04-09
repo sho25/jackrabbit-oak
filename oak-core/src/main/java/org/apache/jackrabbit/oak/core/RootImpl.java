@@ -1318,8 +1318,6 @@ argument_list|()
 operator|.
 name|equals
 argument_list|(
-name|rootTree
-operator|.
 name|getBaseState
 argument_list|()
 argument_list|)
@@ -1922,6 +1920,18 @@ block|}
 block|}
 annotation|@
 name|Nonnull
+name|String
+name|getWorkspaceName
+parameter_list|()
+block|{
+return|return
+name|workspaceName
+return|;
+block|}
+comment|//------------------------------------------------------------< private>---
+annotation|@
+name|Nonnull
+specifier|private
 name|PermissionProvider
 name|getPermissionProvider
 parameter_list|()
@@ -1943,17 +1953,6 @@ return|return
 name|permissionProvider
 return|;
 block|}
-annotation|@
-name|Nonnull
-name|String
-name|getWorkspaceName
-parameter_list|()
-block|{
-return|return
-name|workspaceName
-return|;
-block|}
-comment|//------------------------------------------------------------< private>---
 comment|/**      * Purge all pending changes to the underlying {@link NodeStoreBranch}.      */
 specifier|private
 name|void
