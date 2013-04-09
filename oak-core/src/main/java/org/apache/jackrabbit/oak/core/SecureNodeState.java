@@ -18,22 +18,6 @@ package|;
 end_package
 
 begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|Preconditions
-operator|.
-name|checkNotNull
-import|;
-end_import
-
-begin_import
 import|import
 name|java
 operator|.
@@ -291,6 +275,22 @@ name|NodeStateDiff
 import|;
 end_import
 
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkNotNull
+import|;
+end_import
+
 begin_comment
 comment|/**  * SecureNodeState...  *  * TODO: clarify if HIDDEN items should be filtered by this NodeState implementation  * TODO: clarify usage of ReadStatus in getChildNodeEntries  * TODO: add proper equals/hashcode implementation  * TODO: should be package-private  */
 end_comment
@@ -318,11 +318,6 @@ specifier|private
 specifier|final
 name|PermissionProvider
 name|permissionProvider
-decl_stmt|;
-specifier|private
-specifier|final
-name|ReadStatus
-name|readStatus
 decl_stmt|;
 comment|/**      * Predicate for testing whether a given property is readable.      */
 specifier|private
@@ -434,6 +429,8 @@ argument_list|>
 argument_list|()
 block|{
 annotation|@
+name|Nonnull
+annotation|@
 name|Override
 specifier|public
 name|ChildNodeEntry
@@ -462,7 +459,7 @@ name|getNodeState
 argument_list|()
 decl_stmt|;
 name|SecureNodeState
-name|secure
+name|secureChild
 init|=
 operator|new
 name|SecureNodeState
@@ -476,47 +473,28 @@ argument_list|,
 name|child
 argument_list|)
 decl_stmt|;
-if|if
-condition|(
-operator|!
-name|secure
-operator|.
-name|readStatus
-operator|.
-name|includes
-argument_list|(
-name|ReadStatus
-operator|.
-name|ALLOW_ALL
-argument_list|)
-operator|||
-name|child
-operator|.
-name|getChildNodeCount
-argument_list|()
-operator|>
-literal|0
-condition|)
-block|{
-comment|// secure wrapper is needed
+comment|// TODO: add optimization to return 'input' if the child and all its
+comment|// children have the same type as this node state and full read
+comment|// access (including read-access-control) is granted to that subtree
+comment|// including all properties.
+comment|// NOTE: this currently cannot yet be implemented due to the fact that
+comment|// ALLOW_ALL just checks for regular read permission and does not take
+comment|// READ_ACCESSCONTROL into account
 return|return
 operator|new
 name|MemoryChildNodeEntry
 argument_list|(
 name|name
 argument_list|,
-name|secure
+name|secureChild
 argument_list|)
 return|;
 block|}
-else|else
-block|{
-return|return
-name|input
-return|;
 block|}
-block|}
-block|}
+decl_stmt|;
+specifier|private
+name|ReadStatus
+name|readStatus
 decl_stmt|;
 specifier|private
 name|long
@@ -580,19 +558,6 @@ name|permissionProvider
 operator|=
 name|permissionProvider
 expr_stmt|;
-name|this
-operator|.
-name|readStatus
-operator|=
-name|permissionProvider
-operator|.
-name|getReadStatus
-argument_list|(
-name|base
-argument_list|,
-literal|null
-argument_list|)
-expr_stmt|;
 block|}
 specifier|private
 name|SecureNodeState
@@ -646,11 +611,6 @@ name|parent
 operator|.
 name|permissionProvider
 expr_stmt|;
-name|ReadStatus
-name|status
-init|=
-literal|null
-decl_stmt|;
 if|if
 condition|(
 name|base
@@ -666,7 +626,7 @@ name|getType
 argument_list|()
 condition|)
 block|{
-name|status
+name|readStatus
 operator|=
 name|ReadStatus
 operator|.
@@ -678,31 +638,6 @@ name|readStatus
 argument_list|)
 expr_stmt|;
 block|}
-if|if
-condition|(
-name|status
-operator|==
-literal|null
-condition|)
-block|{
-name|status
-operator|=
-name|permissionProvider
-operator|.
-name|getReadStatus
-argument_list|(
-name|base
-argument_list|,
-literal|null
-argument_list|)
-expr_stmt|;
-block|}
-name|this
-operator|.
-name|readStatus
-operator|=
-name|status
-expr_stmt|;
 block|}
 annotation|@
 name|Override
@@ -712,7 +647,8 @@ name|exists
 parameter_list|()
 block|{
 return|return
-name|readStatus
+name|getReadStatus
+argument_list|()
 operator|.
 name|includes
 argument_list|(
@@ -747,11 +683,23 @@ decl_stmt|;
 if|if
 condition|(
 name|property
-operator|!=
+operator|==
 literal|null
-operator|&&
-operator|!
-name|readStatus
+condition|)
+block|{
+return|return
+name|property
+return|;
+block|}
+name|ReadStatus
+name|rs
+init|=
+name|getReadStatus
+argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|rs
 operator|.
 name|includes
 argument_list|(
@@ -761,32 +709,42 @@ name|ALLOW_PROPERTIES
 argument_list|)
 condition|)
 block|{
+return|return
+name|property
+return|;
+block|}
+elseif|else
 if|if
 condition|(
-operator|!
-name|readStatus
+name|rs
 operator|.
 name|appliesToThis
 argument_list|()
-operator|||
+condition|)
+block|{
+comment|// calculate for property individually
+return|return
+operator|(
 name|isPropertyReadable
 operator|.
 name|apply
 argument_list|(
 name|property
 argument_list|)
-condition|)
-block|{
-comment|// this property is not readable
+operator|)
+condition|?
 name|property
-operator|=
+else|:
 literal|null
-expr_stmt|;
-block|}
-block|}
-return|return
-name|property
 return|;
+block|}
+else|else
+block|{
+comment|// property access is denied
+return|return
+literal|null
+return|;
+block|}
 block|}
 annotation|@
 name|Override
@@ -796,6 +754,12 @@ name|long
 name|getPropertyCount
 parameter_list|()
 block|{
+name|ReadStatus
+name|rs
+init|=
+name|getReadStatus
+argument_list|()
+decl_stmt|;
 if|if
 condition|(
 name|propertyCount
@@ -806,7 +770,7 @@ condition|)
 block|{
 if|if
 condition|(
-name|readStatus
+name|rs
 operator|.
 name|includes
 argument_list|(
@@ -828,31 +792,13 @@ block|}
 elseif|else
 if|if
 condition|(
-name|readStatus
-operator|.
-name|includes
-argument_list|(
-name|ReadStatus
-operator|.
-name|DENY_PROPERTIES
-argument_list|)
-operator|||
-operator|!
-name|readStatus
+name|rs
 operator|.
 name|appliesToThis
 argument_list|()
 condition|)
 block|{
-comment|// no properties are readable
-name|propertyCount
-operator|=
-literal|0
-expr_stmt|;
-block|}
-else|else
-block|{
-comment|// some properties are readable
+comment|// some properties may be readable
 name|propertyCount
 operator|=
 name|count
@@ -870,6 +816,13 @@ name|isPropertyReadable
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
+else|else
+block|{
+comment|// property access is denied
+return|return
+literal|0
+return|;
 block|}
 block|}
 return|return
@@ -890,9 +843,15 @@ argument_list|>
 name|getProperties
 parameter_list|()
 block|{
+name|ReadStatus
+name|rs
+init|=
+name|getReadStatus
+argument_list|()
+decl_stmt|;
 if|if
 condition|(
-name|readStatus
+name|rs
 operator|.
 name|includes
 argument_list|(
@@ -913,33 +872,13 @@ block|}
 elseif|else
 if|if
 condition|(
-name|readStatus
-operator|.
-name|includes
-argument_list|(
-name|ReadStatus
-operator|.
-name|DENY_PROPERTIES
-argument_list|)
-operator|||
-operator|!
-name|readStatus
+name|rs
 operator|.
 name|appliesToThis
 argument_list|()
 condition|)
 block|{
-comment|// no properties are readable
-return|return
-name|Collections
-operator|.
-name|emptySet
-argument_list|()
-return|;
-block|}
-else|else
-block|{
-comment|// some properties are readable
+comment|// some properties may be readable
 return|return
 name|Iterables
 operator|.
@@ -952,6 +891,16 @@ argument_list|()
 argument_list|,
 name|isPropertyReadable
 argument_list|)
+return|;
+block|}
+else|else
+block|{
+comment|// property access is denied
+return|return
+name|Collections
+operator|.
+name|emptySet
+argument_list|()
 return|;
 block|}
 block|}
@@ -1062,7 +1011,8 @@ parameter_list|()
 block|{
 if|if
 condition|(
-name|readStatus
+name|getReadStatus
+argument_list|()
 operator|.
 name|includes
 argument_list|(
@@ -1173,6 +1123,35 @@ name|equals
 argument_list|(
 name|obj
 argument_list|)
+return|;
+block|}
+comment|//------------------------------------------------------------< private>---
+specifier|private
+name|ReadStatus
+name|getReadStatus
+parameter_list|()
+block|{
+if|if
+condition|(
+name|readStatus
+operator|==
+literal|null
+condition|)
+block|{
+name|readStatus
+operator|=
+name|permissionProvider
+operator|.
+name|getReadStatus
+argument_list|(
+name|base
+argument_list|,
+literal|null
+argument_list|)
+expr_stmt|;
+block|}
+return|return
+name|readStatus
 return|;
 block|}
 block|}
