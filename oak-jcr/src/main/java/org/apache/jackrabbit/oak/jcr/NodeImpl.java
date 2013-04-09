@@ -18,58 +18,6 @@ package|;
 end_package
 
 begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|Preconditions
-operator|.
-name|checkNotNull
-import|;
-end_import
-
-begin_import
-import|import static
-name|javax
-operator|.
-name|jcr
-operator|.
-name|Property
-operator|.
-name|JCR_LOCK_IS_DEEP
-import|;
-end_import
-
-begin_import
-import|import static
-name|javax
-operator|.
-name|jcr
-operator|.
-name|Property
-operator|.
-name|JCR_LOCK_OWNER
-import|;
-end_import
-
-begin_import
-import|import static
-name|javax
-operator|.
-name|jcr
-operator|.
-name|PropertyType
-operator|.
-name|UNDEFINED
-import|;
-end_import
-
-begin_import
 import|import
 name|java
 operator|.
@@ -904,6 +852,58 @@ operator|.
 name|slf4j
 operator|.
 name|LoggerFactory
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkNotNull
+import|;
+end_import
+
+begin_import
+import|import static
+name|javax
+operator|.
+name|jcr
+operator|.
+name|Property
+operator|.
+name|JCR_LOCK_IS_DEEP
+import|;
+end_import
+
+begin_import
+import|import static
+name|javax
+operator|.
+name|jcr
+operator|.
+name|Property
+operator|.
+name|JCR_LOCK_OWNER
+import|;
+end_import
+
+begin_import
+import|import static
+name|javax
+operator|.
+name|jcr
+operator|.
+name|PropertyType
+operator|.
+name|UNDEFINED
 import|;
 end_import
 
@@ -4825,6 +4825,7 @@ name|NoSuchNodeTypeException
 argument_list|()
 throw|;
 block|}
+comment|// TODO: implement #removeMixin (OAK-767)
 throw|throw
 operator|new
 name|ConstraintViolationException
