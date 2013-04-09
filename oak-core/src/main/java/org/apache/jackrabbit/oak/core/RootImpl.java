@@ -1010,7 +1010,6 @@ block|{
 name|checkLive
 argument_list|()
 expr_stmt|;
-comment|// FIXME clarify: getIndexProvider includes transient changes from this root. Is this intended?
 name|RootImpl
 name|root
 init|=
@@ -1027,8 +1026,7 @@ name|subject
 argument_list|,
 name|securityProvider
 argument_list|,
-name|getIndexProvider
-argument_list|()
+name|indexProvider
 argument_list|)
 block|{
 annotation|@
