@@ -299,6 +299,24 @@ name|checkNotNull
 import|;
 end_import
 
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|api
+operator|.
+name|CommitFailedException
+operator|.
+name|ACCESS
+import|;
+end_import
+
 begin_comment
 comment|/**  * AccessControlValidator... TODO  */
 end_comment
@@ -1312,7 +1330,7 @@ throw|throw
 operator|new
 name|CommitFailedException
 argument_list|(
-literal|"Access"
+name|ACCESS
 argument_list|,
 literal|1
 argument_list|,
@@ -1421,7 +1439,7 @@ return|return
 operator|new
 name|CommitFailedException
 argument_list|(
-literal|"Access"
+name|ACCESS
 argument_list|,
 name|code
 argument_list|,

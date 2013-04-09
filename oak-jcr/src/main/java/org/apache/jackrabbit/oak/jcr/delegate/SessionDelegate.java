@@ -1183,10 +1183,8 @@ if|if
 condition|(
 name|exception
 operator|.
-name|hasType
-argument_list|(
-literal|"Constraint"
-argument_list|)
+name|isConstraintViolation
+argument_list|()
 condition|)
 block|{
 return|return
@@ -1202,7 +1200,7 @@ if|if
 condition|(
 name|exception
 operator|.
-name|hasType
+name|isOfType
 argument_list|(
 literal|"Type"
 argument_list|)
@@ -1221,10 +1219,8 @@ if|if
 condition|(
 name|exception
 operator|.
-name|hasType
-argument_list|(
-literal|"Access"
-argument_list|)
+name|isAccessViolation
+argument_list|()
 condition|)
 block|{
 return|return
@@ -1240,7 +1236,7 @@ if|if
 condition|(
 name|exception
 operator|.
-name|hasType
+name|isOfType
 argument_list|(
 literal|"Integrity"
 argument_list|)
@@ -1259,7 +1255,7 @@ if|if
 condition|(
 name|exception
 operator|.
-name|hasType
+name|isOfType
 argument_list|(
 literal|"State"
 argument_list|)
@@ -1278,7 +1274,7 @@ if|if
 condition|(
 name|exception
 operator|.
-name|hasType
+name|isOfType
 argument_list|(
 literal|"Version"
 argument_list|)
@@ -1297,7 +1293,7 @@ if|if
 condition|(
 name|exception
 operator|.
-name|hasType
+name|isOfType
 argument_list|(
 literal|"Lock"
 argument_list|)

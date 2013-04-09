@@ -53,16 +53,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|jcr
-operator|.
-name|AccessDeniedException
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -300,6 +290,24 @@ operator|.
 name|Preconditions
 operator|.
 name|checkNotNull
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|api
+operator|.
+name|CommitFailedException
+operator|.
+name|ACCESS
 import|;
 end_import
 
@@ -612,7 +620,7 @@ throw|throw
 operator|new
 name|CommitFailedException
 argument_list|(
-literal|"Access"
+name|ACCESS
 argument_list|,
 literal|21
 argument_list|,
@@ -723,7 +731,7 @@ throw|throw
 operator|new
 name|CommitFailedException
 argument_list|(
-literal|"Access"
+name|ACCESS
 argument_list|,
 literal|22
 argument_list|,
@@ -829,7 +837,7 @@ throw|throw
 operator|new
 name|CommitFailedException
 argument_list|(
-literal|"Access"
+name|ACCESS
 argument_list|,
 literal|0
 argument_list|,
@@ -863,7 +871,7 @@ throw|throw
 operator|new
 name|CommitFailedException
 argument_list|(
-literal|"Access"
+name|ACCESS
 argument_list|,
 literal|0
 argument_list|,
@@ -974,7 +982,7 @@ throw|throw
 operator|new
 name|CommitFailedException
 argument_list|(
-literal|"Access"
+name|ACCESS
 argument_list|,
 literal|0
 argument_list|,

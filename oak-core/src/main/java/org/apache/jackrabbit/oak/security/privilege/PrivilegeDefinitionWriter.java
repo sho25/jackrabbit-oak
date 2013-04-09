@@ -500,10 +500,8 @@ if|if
 condition|(
 name|e
 operator|.
-name|hasType
-argument_list|(
-literal|"Access"
-argument_list|)
+name|isAccessViolation
+argument_list|()
 condition|)
 block|{
 throw|throw

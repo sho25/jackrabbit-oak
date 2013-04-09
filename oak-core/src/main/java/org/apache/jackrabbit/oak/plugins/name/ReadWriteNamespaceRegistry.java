@@ -447,7 +447,7 @@ if|if
 condition|(
 name|e
 operator|.
-name|hasType
+name|isOfType
 argument_list|(
 literal|"Namespace"
 argument_list|)
@@ -574,7 +574,7 @@ if|if
 condition|(
 name|e
 operator|.
-name|hasType
+name|isOfType
 argument_list|(
 literal|"Namespace"
 argument_list|)
