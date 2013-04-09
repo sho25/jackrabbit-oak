@@ -1332,11 +1332,19 @@ expr_stmt|;
 name|reset
 argument_list|()
 expr_stmt|;
-comment|// FIXME clarify: why set to null here and refresh below?
+if|if
+condition|(
 name|permissionProvider
-operator|=
+operator|!=
 literal|null
+condition|)
+block|{
+name|permissionProvider
+operator|.
+name|refresh
+argument_list|()
 expr_stmt|;
+block|}
 block|}
 block|}
 annotation|@
