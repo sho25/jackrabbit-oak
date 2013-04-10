@@ -103,16 +103,6 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Ignore
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
 name|Test
 import|;
 end_import
@@ -122,11 +112,6 @@ comment|/**  * NodeTypeDefinitionManagementTest... TODO  */
 end_comment
 
 begin_class
-annotation|@
-name|Ignore
-argument_list|(
-literal|"OAK-51"
-argument_list|)
 specifier|public
 class|class
 name|NodeTypeDefinitionManagementTest
@@ -701,7 +686,7 @@ argument_list|)
 expr_stmt|;
 name|fail
 argument_list|(
-literal|"Namespace unregistration should be denied."
+literal|"Node type unregistration should be denied."
 argument_list|)
 expr_stmt|;
 block|}
@@ -740,7 +725,7 @@ argument_list|)
 expr_stmt|;
 name|fail
 argument_list|(
-literal|"Namespace unregistration should be denied."
+literal|"Node type unregistration should be denied."
 argument_list|)
 expr_stmt|;
 block|}
@@ -755,9 +740,7 @@ block|}
 block|}
 finally|finally
 block|{
-comment|// clean up (not supported by jackrabbit-core)
-try|try
-block|{
+comment|// TODO: diff to jr-core where unregisterNt was not supported
 name|ntm
 operator|.
 name|unregisterNodeType
@@ -768,15 +751,6 @@ name|getName
 argument_list|()
 argument_list|)
 expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|Exception
-name|e
-parameter_list|)
-block|{
-comment|// ns unregistration is not supported by jackrabbit-core.
-block|}
 block|}
 block|}
 block|}
