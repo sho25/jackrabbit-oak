@@ -529,9 +529,16 @@ name|ENABLE_BACKGROUND_OPS
 init|=
 name|Boolean
 operator|.
-name|getBoolean
+name|parseBoolean
+argument_list|(
+name|System
+operator|.
+name|getProperty
 argument_list|(
 literal|"oak.mongoMK.backgroundOps"
+argument_list|,
+literal|"true"
+argument_list|)
 argument_list|)
 decl_stmt|;
 comment|/**      * The delay for asynchronous operations (delayed commit propagation and      * cache update).      */
