@@ -138,11 +138,6 @@ comment|/**  * NamespaceManagementTest... TODO  */
 end_comment
 
 begin_class
-annotation|@
-name|Ignore
-argument_list|(
-literal|"OAK-51"
-argument_list|)
 specifier|public
 class|class
 name|NamespaceManagementTest
@@ -196,13 +191,6 @@ name|Exception
 block|{
 try|try
 block|{
-name|superuser
-operator|.
-name|refresh
-argument_list|(
-literal|false
-argument_list|)
-expr_stmt|;
 for|for
 control|(
 name|AccessControlPolicy
