@@ -107,11 +107,6 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|super
-operator|.
-name|tearDownConnection
-argument_list|()
-expr_stmt|;
 operator|(
 operator|(
 name|MongoMK
@@ -120,6 +115,11 @@ name|mk
 operator|)
 operator|.
 name|dispose
+argument_list|()
+expr_stmt|;
+name|super
+operator|.
+name|tearDownConnection
 argument_list|()
 expr_stmt|;
 block|}

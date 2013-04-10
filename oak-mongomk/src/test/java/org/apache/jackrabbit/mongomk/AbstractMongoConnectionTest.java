@@ -289,6 +289,24 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+comment|// the db might already be closed
+name|mongoConnection
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
+name|mongoConnection
+operator|=
+operator|new
+name|MongoConnection
+argument_list|(
+name|HOST
+argument_list|,
+name|PORT
+argument_list|,
+name|DB
+argument_list|)
+expr_stmt|;
 name|dropCollections
 argument_list|(
 name|mongoConnection

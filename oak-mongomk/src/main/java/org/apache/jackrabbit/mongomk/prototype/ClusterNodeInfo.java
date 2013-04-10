@@ -283,12 +283,10 @@ argument_list|,
 literal|""
 argument_list|)
 decl_stmt|;
-comment|/**      * The initial number of milliseconds for a lease (1 minute). This value is      * only used until the first renewal.      */
+comment|/**      * The number of milliseconds for a lease (1 minute by default, and      * initially).      */
 specifier|private
-specifier|static
-specifier|final
 name|long
-name|LEASE_INITIAL
+name|leaseTime
 init|=
 literal|1000
 operator|*
@@ -405,6 +403,27 @@ parameter_list|()
 block|{
 return|return
 name|id
+return|;
+block|}
+comment|/**      * Create a cluster node info instance for the store, with the       *       * @param store the document store (for the lease)      * @return the cluster node info      */
+specifier|public
+specifier|static
+name|ClusterNodeInfo
+name|getInstance
+parameter_list|(
+name|DocumentStore
+name|store
+parameter_list|)
+block|{
+return|return
+name|getInstance
+argument_list|(
+name|store
+argument_list|,
+name|MACHINE_ID
+argument_list|,
+name|WORKING_DIR
+argument_list|)
 return|;
 block|}
 comment|/**      * Create a cluster node info instance for the store.      *       * @param store the document store (for the lease)      * @param machineId the machine id (null for MAC address)      * @param instanceId the instance id (null for current working directory)      * @return the cluster node info      */
@@ -537,7 +556,9 @@ operator|.
 name|currentTimeMillis
 argument_list|()
 operator|+
-name|LEASE_INITIAL
+name|clusterNode
+operator|.
+name|leaseTime
 argument_list|)
 expr_stmt|;
 name|update
@@ -914,7 +935,7 @@ name|leaseEndTime
 operator|=
 name|now
 operator|+
-name|nextCheckMillis
+name|leaseTime
 expr_stmt|;
 name|update
 operator|.
@@ -936,6 +957,30 @@ argument_list|,
 name|update
 argument_list|)
 expr_stmt|;
+block|}
+specifier|public
+name|void
+name|setLeaseTime
+parameter_list|(
+name|long
+name|leaseTime
+parameter_list|)
+block|{
+name|this
+operator|.
+name|leaseTime
+operator|=
+name|leaseTime
+expr_stmt|;
+block|}
+specifier|public
+name|long
+name|getLeaseTime
+parameter_list|()
+block|{
+return|return
+name|leaseTime
+return|;
 block|}
 specifier|public
 name|void
