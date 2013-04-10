@@ -75,9 +75,9 @@ name|jackrabbit
 operator|.
 name|mk
 operator|.
-name|json
+name|api
 operator|.
-name|JsopBuilder
+name|MicroKernelException
 import|;
 end_import
 
@@ -89,17 +89,11 @@ name|apache
 operator|.
 name|jackrabbit
 operator|.
-name|oak
-operator|.
-name|plugins
-operator|.
-name|index
-operator|.
-name|old
-operator|.
 name|mk
 operator|.
-name|ExceptionFactory
+name|json
+operator|.
+name|JsopBuilder
 import|;
 end_import
 
@@ -1457,10 +1451,16 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 return|return
-name|ExceptionFactory
-operator|.
-name|convert
+operator|new
+name|MicroKernelException
 argument_list|(
+literal|"Unexpected exception: "
+operator|+
+name|e
+operator|.
+name|toString
+argument_list|()
+argument_list|,
 name|e
 argument_list|)
 return|;
