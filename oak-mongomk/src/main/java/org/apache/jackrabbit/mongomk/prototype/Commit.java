@@ -332,7 +332,6 @@ operator|=
 name|mk
 expr_stmt|;
 block|}
-specifier|private
 name|UpdateOp
 name|getUpdateOperationForNode
 parameter_list|(

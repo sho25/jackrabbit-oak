@@ -1521,12 +1521,27 @@ block|{
 continue|continue;
 block|}
 comment|// FIXME: with below code fragment the root (and other nodes
-comment|// 'close' to the root will not be updated in MongoDB when there
-comment|// are frequent changes. Uncommenting the lines below also
-comment|// leads to test failures because reads seem to become inconsistent
-comment|//            if (Revision.getTimestampDifference(now, r.getTimestamp())< asyncDelay) {
-comment|//                continue;
-comment|//            }
+comment|// 'close' to the root) will not be updated in MongoDB when there
+comment|// are frequent changes.
+if|if
+condition|(
+name|Revision
+operator|.
+name|getTimestampDifference
+argument_list|(
+name|now
+argument_list|,
+name|r
+operator|.
+name|getTimestamp
+argument_list|()
+argument_list|)
+operator|<
+name|asyncDelay
+condition|)
+block|{
+continue|continue;
+block|}
 name|Commit
 name|commit
 init|=
@@ -1547,10 +1562,30 @@ argument_list|(
 name|p
 argument_list|)
 expr_stmt|;
+name|store
+operator|.
+name|createOrUpdate
+argument_list|(
+name|DocumentStore
+operator|.
+name|Collection
+operator|.
+name|NODES
+argument_list|,
 name|commit
 operator|.
-name|apply
-argument_list|()
+name|getUpdateOperationForNode
+argument_list|(
+name|p
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|unsavedLastRevisions
+operator|.
+name|remove
+argument_list|(
+name|p
+argument_list|)
 expr_stmt|;
 block|}
 block|}
@@ -6082,6 +6117,9 @@ operator|!
 name|isWritten
 condition|)
 block|{
+name|Revision
+name|prev
+init|=
 name|unsavedLastRevisions
 operator|.
 name|put
@@ -6090,7 +6128,63 @@ name|path
 argument_list|,
 name|rev
 argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|prev
+operator|!=
+literal|null
+condition|)
+block|{
+if|if
+condition|(
+name|isRevisionNewer
+argument_list|(
+name|prev
+argument_list|,
+name|rev
+argument_list|)
+condition|)
+block|{
+comment|// revert
+name|unsavedLastRevisions
+operator|.
+name|put
+argument_list|(
+name|path
+argument_list|,
+name|prev
+argument_list|)
 expr_stmt|;
+name|String
+name|msg
+init|=
+name|String
+operator|.
+name|format
+argument_list|(
+literal|"Attempt to update "
+operator|+
+literal|"unsavedLastRevision for %s with %s, which is "
+operator|+
+literal|"older than current %s."
+argument_list|,
+name|path
+argument_list|,
+name|rev
+argument_list|,
+name|prev
+argument_list|)
+decl_stmt|;
+throw|throw
+operator|new
+name|MicroKernelException
+argument_list|(
+name|msg
+argument_list|)
+throw|;
+block|}
+block|}
 block|}
 else|else
 block|{
