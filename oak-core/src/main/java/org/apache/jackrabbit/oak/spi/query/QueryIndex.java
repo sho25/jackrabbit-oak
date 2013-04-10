@@ -21,6 +21,16 @@ end_package
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -84,6 +94,110 @@ name|String
 name|getIndexName
 parameter_list|()
 function_decl|;
+comment|//    /**
+comment|//     * Return the possible index plans for the given filter and sort order.
+comment|//     * Please note this method is supposed to run quickly. That means it should
+comment|//     * usually not read any data from the storage.
+comment|//     *
+comment|//     * @param filter the filter
+comment|//     * @param sortOrder the sort order or null if no sorting is required
+comment|//     * @param rootState root state of the current repository snapshot
+comment|//     * @return the list of index plans (null if none)
+comment|//     */
+comment|//    List<IndexPlan> getPlans(Filter filter, List<Order> sortOrder, NodeState rootState);
+comment|//
+comment|//    /**
+comment|//     * Get the query plan description (for logging purposes).
+comment|//     *
+comment|//     * @param plan the index plan
+comment|//     * @return the query plan description
+comment|//     */
+comment|//    String getPlanDescription(IndexPlan plan);
+comment|//
+comment|//    /**
+comment|//     * Start a query. The filter and sort order of the index plan is to be used.
+comment|//     *
+comment|//     * @param plan the index plan to use
+comment|//     * @param rootState root state of the current repository snapshot
+comment|//     * @return a cursor to iterate over the result
+comment|//     */
+comment|//    Cursor query(IndexPlan plan, NodeState rootState);
+comment|//
+comment|//    /**
+comment|//     * An index plan.
+comment|//     */
+comment|//    public static class IndexPlan {
+comment|//
+comment|//        /**
+comment|//         * The cost to execute the query once. The returned value should
+comment|//         * approximately match the number of disk read operations plus the
+comment|//         * number of network roundtrips.
+comment|//         */
+comment|//        double costPerExecution;
+comment|//
+comment|//        /**
+comment|//         * The cost to read one entry from the cursor. The returned value should
+comment|//         * approximately match the number of disk read operations plus the
+comment|//         * number of network roundtrips.
+comment|//         */
+comment|//        double costPerEntry;
+comment|//
+comment|//        /**
+comment|//         * The estimated number of entries. This value does not have to be
+comment|//         * accurate.
+comment|//         */
+comment|//        long estimatedEntryCount;
+comment|//
+comment|//        /**
+comment|//         * The filter to use.
+comment|//         */
+comment|//        Filter filter;
+comment|//
+comment|//        /**
+comment|//         * Whether transient (unsaved) changes are included.
+comment|//         */
+comment|//        boolean includeTransient;
+comment|//
+comment|//        /**
+comment|//         * Whether the index is not always up-to-date.
+comment|//         */
+comment|//        boolean isDelayed;
+comment|//
+comment|//        /**
+comment|//         * Whether the fulltext part of the filter is evaluated (possibly with
+comment|//         * an extended syntax). If set, the fulltext part of the filter is not
+comment|//         * evaluated any more within the query engine.
+comment|//         */
+comment|//        boolean isFulltextIndex;
+comment|//
+comment|//        /**
+comment|//         * Whether the cursor is able to read all properties from a node.
+comment|//         */
+comment|//        boolean includesNodeData;
+comment|//
+comment|//        /**
+comment|//         * The sort order of the returned entries, or null if unsorted.
+comment|//         */
+comment|//        List<Order> sortOrder;
+comment|//
+comment|//    }
+comment|//
+comment|//    /**
+comment|//     * A sort order entry.
+comment|//     */
+comment|//    static class Order {
+comment|//
+comment|//        /**
+comment|//         * The property name on where to sort.
+comment|//         */
+comment|//        String propertyName;
+comment|//
+comment|//        /**
+comment|//         * True for descending, false for ascending.
+comment|//         */
+comment|//        boolean descending;
+comment|//
+comment|//    }
 block|}
 end_interface
 
