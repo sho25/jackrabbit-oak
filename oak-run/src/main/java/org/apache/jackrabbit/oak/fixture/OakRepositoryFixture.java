@@ -590,14 +590,25 @@ index|]
 operator|=
 operator|new
 name|MongoMK
+operator|.
+name|Builder
+argument_list|()
+operator|.
+name|setMongoDB
 argument_list|(
 name|mongo
 operator|.
 name|getDB
 argument_list|()
-argument_list|,
+argument_list|)
+operator|.
+name|setClusterId
+argument_list|(
 name|i
 argument_list|)
+operator|.
+name|open
+argument_list|()
 expr_stmt|;
 name|Oak
 name|oak
@@ -692,11 +703,13 @@ name|Exception
 name|e
 parameter_list|)
 block|{
+throw|throw
+operator|new
+name|RuntimeException
+argument_list|(
 name|e
-operator|.
-name|printStackTrace
-argument_list|()
-expr_stmt|;
+argument_list|)
+throw|;
 block|}
 block|}
 block|}
@@ -936,7 +949,9 @@ specifier|public
 name|void
 name|tearDownCluster
 parameter_list|()
-block|{     }
+block|{
+comment|// nothing to do by default
+block|}
 annotation|@
 name|Override
 specifier|public
