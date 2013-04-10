@@ -20,22 +20,6 @@ package|;
 end_package
 
 begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|Preconditions
-operator|.
-name|checkNotNull
-import|;
-end_import
-
-begin_import
 import|import
 name|java
 operator|.
@@ -110,7 +94,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Abstract base class for {@link NodeState} implementations.  * This base class contains default implementations of the  * {@link #equals(Object)} and {@link #hashCode()} methods based on  * the implemented interface.  *<p>  * This class also implements trivial (and potentially very slow) versions of  * the {@link #getProperty(String)} and {@link #getPropertyCount()} methods  * based on {@link #getProperties()}. The {@link #getChildNode(String)} and  * {@link #getChildNodeCount()} methods are similarly implemented based on  * {@link #getChildNodeEntries()}. Subclasses should normally  * override these method with a more efficient alternatives.  */
+comment|/**  * Abstract base class for {@link NodeState} implementations.  * This base class contains default implementations of the  * {@link #equals(Object)} and {@link #hashCode()} methods based on  * the implemented interface.  *<p>  * This class also implements trivial (and potentially very slow) versions of  * the {@link #getProperty(String)} and {@link #getPropertyCount()} methods  * based on {@link #getProperties()}. The {@link #getChildNodeCount()} method  * is similarly implemented based on {@link #getChildNodeEntries()}.  * Subclasses should normally override these method with a more efficient  * alternatives.  */
 end_comment
 
 begin_class
@@ -195,55 +179,6 @@ argument_list|)
 operator|.
 name|exists
 argument_list|()
-return|;
-block|}
-annotation|@
-name|Override
-specifier|public
-name|NodeState
-name|getChildNode
-parameter_list|(
-name|String
-name|name
-parameter_list|)
-block|{
-name|checkNotNull
-argument_list|(
-name|name
-argument_list|)
-expr_stmt|;
-for|for
-control|(
-name|ChildNodeEntry
-name|entry
-range|:
-name|getChildNodeEntries
-argument_list|()
-control|)
-block|{
-if|if
-condition|(
-name|name
-operator|.
-name|equals
-argument_list|(
-name|entry
-operator|.
-name|getName
-argument_list|()
-argument_list|)
-condition|)
-block|{
-return|return
-name|entry
-operator|.
-name|getNodeState
-argument_list|()
-return|;
-block|}
-block|}
-return|return
-literal|null
 return|;
 block|}
 annotation|@
