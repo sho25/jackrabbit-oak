@@ -232,11 +232,6 @@ comment|/**  * AccessControlManagementTest... TODO  */
 end_comment
 
 begin_class
-annotation|@
-name|Ignore
-argument_list|(
-literal|"OAK-51"
-argument_list|)
 specifier|public
 class|class
 name|AccessControlManagementTest

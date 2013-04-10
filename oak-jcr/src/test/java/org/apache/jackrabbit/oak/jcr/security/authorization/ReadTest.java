@@ -108,11 +108,6 @@ comment|/**  * ReadTest... TODO  */
 end_comment
 
 begin_class
-annotation|@
-name|Ignore
-argument_list|(
-literal|"OAK-51"
-argument_list|)
 specifier|public
 class|class
 name|ReadTest
@@ -423,6 +418,12 @@ argument_list|)
 expr_stmt|;
 block|}
 annotation|@
+name|Ignore
+argument_list|(
+literal|"OAK-766"
+argument_list|)
+comment|// FIXME
+annotation|@
 name|Test
 specifier|public
 name|void
@@ -719,6 +720,12 @@ argument_list|)
 expr_stmt|;
 block|}
 annotation|@
+name|Ignore
+argument_list|(
+literal|"OAK-51"
+argument_list|)
+comment|// FIXME
+annotation|@
 name|Test
 specifier|public
 name|void
@@ -813,6 +820,12 @@ argument_list|)
 expr_stmt|;
 block|}
 annotation|@
+name|Ignore
+argument_list|(
+literal|"OAK-51"
+argument_list|)
+comment|// FIXME
+annotation|@
 name|Test
 specifier|public
 name|void
@@ -837,7 +850,7 @@ expr_stmt|;
 comment|/*          deny READ privilege for group at 'childNPath'          */
 name|deny
 argument_list|(
-name|path
+name|childNPath
 argument_list|,
 name|getTestGroup
 argument_list|()
