@@ -473,13 +473,41 @@ argument_list|,
 name|child
 argument_list|)
 decl_stmt|;
-comment|// TODO: add optimization to return 'input' if the child and all its
-comment|// children have the same type as this node state and full read
-comment|// access (including read-access-control) is granted to that subtree
-comment|// including all properties.
-comment|// NOTE: this currently cannot yet be implemented due to the fact that
-comment|// ALLOW_ALL just checks for regular read permission and does not take
-comment|// READ_ACCESSCONTROL into account
+if|if
+condition|(
+name|child
+operator|.
+name|getChildNodeCount
+argument_list|()
+operator|==
+literal|0
+operator|&&
+name|secureChild
+operator|.
+name|getReadStatus
+argument_list|()
+operator|.
+name|includes
+argument_list|(
+name|ReadStatus
+operator|.
+name|ALLOW_THIS_PROPERTIES
+argument_list|)
+condition|)
+block|{
+comment|// Since this is an accessible leaf node whose all properties
+comment|// are readable, we don't need the SecureNodeState wrapper
+comment|// TODO: A further optimization would be to return the raw
+comment|// underlying node state even for non-leaf nodes if we can
+comment|// tell in advance that the full subtree is readable. Then
+comment|// we also wouldn't need the above getChildNodeCount() call
+comment|// that's somewhat expensive on the MongoMK.
+return|return
+name|input
+return|;
+block|}
+else|else
+block|{
 return|return
 operator|new
 name|MemoryChildNodeEntry
@@ -489,6 +517,7 @@ argument_list|,
 name|secureChild
 argument_list|)
 return|;
+block|}
 block|}
 block|}
 decl_stmt|;
