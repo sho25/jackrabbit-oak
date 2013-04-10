@@ -1134,8 +1134,9 @@ name|NodeStateDiff
 name|diff
 parameter_list|)
 block|{
-comment|// FIXME: should not bypass access controls
-name|state
+comment|// FIXME: decide if comparison during commit should compare the secure
+comment|// states or the original node states without ac restrictions
+name|super
 operator|.
 name|compareAgainstBaseState
 argument_list|(
