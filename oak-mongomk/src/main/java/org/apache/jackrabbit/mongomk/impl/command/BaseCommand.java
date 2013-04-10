@@ -37,22 +37,6 @@ name|Command
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|mongomk
-operator|.
-name|impl
-operator|.
-name|MongoNodeStore
-import|;
-end_import
-
 begin_comment
 comment|/**  * Base {@code Command} implementation.  *  * @param<T> The result type of the {@code Command}.  */
 end_comment
@@ -71,30 +55,11 @@ argument_list|<
 name|T
 argument_list|>
 block|{
-specifier|protected
-name|MongoNodeStore
-name|nodeStore
-decl_stmt|;
 comment|/**      * Constructs a base command.      */
 specifier|public
 name|BaseCommand
 parameter_list|()
 block|{     }
-comment|/**      * Constructs a base command with a mongo connection.      *      * @param nodeStore Node store.      */
-specifier|public
-name|BaseCommand
-parameter_list|(
-name|MongoNodeStore
-name|nodeStore
-parameter_list|)
-block|{
-name|this
-operator|.
-name|nodeStore
-operator|=
-name|nodeStore
-expr_stmt|;
-block|}
 annotation|@
 name|Override
 specifier|public

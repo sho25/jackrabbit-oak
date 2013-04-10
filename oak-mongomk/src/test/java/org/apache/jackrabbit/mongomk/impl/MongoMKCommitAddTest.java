@@ -144,6 +144,8 @@ name|BaseMongoMicroKernelTest
 block|{
 annotation|@
 name|Test
+annotation|@
+name|Ignore
 specifier|public
 name|void
 name|addSingleNode
@@ -481,6 +483,8 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
+annotation|@
+name|Ignore
 specifier|public
 name|void
 name|addNodeWithParanthesis
@@ -706,6 +710,8 @@ block|{}
 block|}
 annotation|@
 name|Test
+annotation|@
+name|Ignore
 specifier|public
 name|void
 name|setSingleProperty
@@ -799,6 +805,8 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
+annotation|@
+name|Ignore
 specifier|public
 name|void
 name|setMultipleProperties
@@ -959,6 +967,8 @@ block|}
 comment|// See http://www.mongodb.org/display/DOCS/Legal+Key+Names
 annotation|@
 name|Test
+annotation|@
+name|Ignore
 specifier|public
 name|void
 name|setPropertyIllegalKey
@@ -1180,6 +1190,8 @@ block|{}
 block|}
 annotation|@
 name|Test
+annotation|@
+name|Ignore
 specifier|public
 name|void
 name|setOverwritingProperty
@@ -1413,6 +1425,8 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
+annotation|@
+name|Ignore
 specifier|public
 name|void
 name|existingNodesMerged

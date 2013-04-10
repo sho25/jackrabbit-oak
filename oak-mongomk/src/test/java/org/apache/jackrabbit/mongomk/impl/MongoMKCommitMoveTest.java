@@ -85,6 +85,16 @@ name|org
 operator|.
 name|junit
 operator|.
+name|Ignore
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
 name|Test
 import|;
 end_import
@@ -813,6 +823,8 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
+annotation|@
+name|Ignore
 specifier|public
 name|void
 name|moveNodeWithProperties
@@ -1067,6 +1079,8 @@ block|{}
 block|}
 annotation|@
 name|Test
+annotation|@
+name|Ignore
 specifier|public
 name|void
 name|addNodeAndMove
@@ -1222,6 +1236,8 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
+annotation|@
+name|Ignore
 specifier|public
 name|void
 name|addNodeWithChildrenAndMove
@@ -1342,6 +1358,8 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
+annotation|@
+name|Ignore
 specifier|public
 name|void
 name|addNodeWithNestedChildrenAndMove
@@ -1402,6 +1420,8 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
+annotation|@
+name|Ignore
 specifier|public
 name|void
 name|addNodeAndMoveParent
@@ -1486,6 +1506,8 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
+annotation|@
+name|Ignore
 specifier|public
 name|void
 name|removeNodeAndMove
@@ -1536,6 +1558,8 @@ block|{}
 block|}
 annotation|@
 name|Test
+annotation|@
+name|Ignore
 specifier|public
 name|void
 name|removeNodeWithNestedChildrenAndMove
@@ -1608,6 +1632,8 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
+annotation|@
+name|Ignore
 specifier|public
 name|void
 name|removeNodeAndMoveParent
@@ -1680,6 +1706,8 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
+annotation|@
+name|Ignore
 specifier|public
 name|void
 name|setPropertyAndMove
@@ -1782,6 +1810,8 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
+annotation|@
+name|Ignore
 specifier|public
 name|void
 name|setNestedPropertyAndMove
@@ -1908,6 +1938,8 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
+annotation|@
+name|Ignore
 specifier|public
 name|void
 name|modifyParentAddPropertyAndMove
@@ -2024,6 +2056,8 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
+annotation|@
+name|Ignore
 specifier|public
 name|void
 name|removePropertyAndMove
@@ -2148,6 +2182,8 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
+annotation|@
+name|Ignore
 specifier|public
 name|void
 name|removeNestedPropertyAndMove
@@ -2248,6 +2284,8 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
+annotation|@
+name|Ignore
 specifier|public
 name|void
 name|modifyParentRemovePropertyAndMove
@@ -2362,6 +2400,8 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
+annotation|@
+name|Ignore
 specifier|public
 name|void
 name|moveAndMoveBack
@@ -2403,6 +2443,8 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
+annotation|@
+name|Ignore
 specifier|public
 name|void
 name|moveAndMoveBackWithChildren
@@ -2446,6 +2488,8 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
+annotation|@
+name|Ignore
 specifier|public
 name|void
 name|moveAndMoveBackWithAddedChildren
@@ -2491,6 +2535,8 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
+annotation|@
+name|Ignore
 specifier|public
 name|void
 name|moveAndMoveBackWithSetProperties

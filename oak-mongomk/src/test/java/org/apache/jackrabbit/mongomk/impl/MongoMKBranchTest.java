@@ -63,6 +63,16 @@ name|org
 operator|.
 name|junit
 operator|.
+name|Ignore
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
 name|Test
 import|;
 end_import
@@ -105,6 +115,8 @@ block|{
 comment|/**      * Creates the following revision history:      *<pre>      *   + rev1 (first commit with /child1)      *   |\      *   | + branchRev1 (branch from rev1)      *   | + branchRev11 (branch commit /child1/foo:1)      *   |      *   + rev2 (second commit with /child2)      *   |\      *   | + branchRev2 (brach from rev2)      *</pre>      * The test reads /child from<code>branchRev2</code> and expects      * the version from the first commit.      */
 annotation|@
 name|Test
+annotation|@
+name|Ignore
 specifier|public
 name|void
 name|isolatedBranches

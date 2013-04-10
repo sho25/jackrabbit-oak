@@ -37,6 +37,16 @@ name|org
 operator|.
 name|junit
 operator|.
+name|Ignore
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
 name|Test
 import|;
 end_import
@@ -94,6 +104,8 @@ comment|/**  * Tests for {@code MicroKernel#rebase}  * FIXME: this is copied fro
 end_comment
 
 begin_class
+annotation|@
+name|Ignore
 specifier|public
 class|class
 name|MongoMKRebaseTest
@@ -191,6 +203,8 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
+annotation|@
+name|Ignore
 specifier|public
 name|void
 name|rebaseEmptyBranch
@@ -305,6 +319,8 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
+annotation|@
+name|Ignore
 specifier|public
 name|void
 name|rebaseAddNode
@@ -505,6 +521,8 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
+annotation|@
+name|Ignore
 specifier|public
 name|void
 name|rebaseRemoveNode
@@ -684,6 +702,8 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
+annotation|@
+name|Ignore
 specifier|public
 name|void
 name|rebaseAddProperty
@@ -881,6 +901,8 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
+annotation|@
+name|Ignore
 specifier|public
 name|void
 name|rebaseRemoveProperty
@@ -1078,6 +1100,8 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
+annotation|@
+name|Ignore
 specifier|public
 name|void
 name|rebaseChangeProperty
@@ -2548,6 +2572,8 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
+annotation|@
+name|Ignore
 specifier|public
 name|void
 name|mergeRebased

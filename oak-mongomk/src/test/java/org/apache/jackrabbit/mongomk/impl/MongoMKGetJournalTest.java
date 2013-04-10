@@ -73,6 +73,16 @@ name|org
 operator|.
 name|junit
 operator|.
+name|Ignore
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
 name|Test
 import|;
 end_import
@@ -90,6 +100,8 @@ name|BaseMongoMicroKernelTest
 block|{
 annotation|@
 name|Test
+annotation|@
+name|Ignore
 specifier|public
 name|void
 name|simple
@@ -278,6 +290,8 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
+annotation|@
+name|Ignore
 specifier|public
 name|void
 name|commitAddWithDiffPaths
@@ -523,6 +537,8 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
+annotation|@
+name|Ignore
 specifier|public
 name|void
 name|commitCopyWithDiffPaths
@@ -736,6 +752,8 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
+annotation|@
+name|Ignore
 specifier|public
 name|void
 name|commitMoveWithDiffPaths
@@ -962,6 +980,8 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
+annotation|@
+name|Ignore
 specifier|public
 name|void
 name|commitRemoveMoveWithDiffPaths
@@ -1188,6 +1208,8 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
+annotation|@
+name|Ignore
 specifier|public
 name|void
 name|commitSetPropertyWithDiffPaths

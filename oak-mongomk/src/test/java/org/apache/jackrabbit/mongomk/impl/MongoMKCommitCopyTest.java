@@ -605,6 +605,8 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
+annotation|@
+name|Ignore
 specifier|public
 name|void
 name|copyNodeWithProperties
@@ -872,6 +874,8 @@ block|{}
 block|}
 annotation|@
 name|Test
+annotation|@
+name|Ignore
 specifier|public
 name|void
 name|addNodeAndCopy
@@ -1003,6 +1007,8 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
+annotation|@
+name|Ignore
 specifier|public
 name|void
 name|addNodeWithChildrenAndCopy
@@ -1087,6 +1093,8 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
+annotation|@
+name|Ignore
 specifier|public
 name|void
 name|addNodeWithNestedChildrenAndCopy
@@ -1147,6 +1155,8 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
+annotation|@
+name|Ignore
 specifier|public
 name|void
 name|addNodeAndCopyParent
@@ -1207,6 +1217,8 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
+annotation|@
+name|Ignore
 specifier|public
 name|void
 name|removeNodeAndCopy
@@ -1257,6 +1269,8 @@ block|{}
 block|}
 annotation|@
 name|Test
+annotation|@
+name|Ignore
 specifier|public
 name|void
 name|removeNodeWithNestedChildrenAndCopy
@@ -1329,6 +1343,8 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
+annotation|@
+name|Ignore
 specifier|public
 name|void
 name|removeNodeAndCopyParent
@@ -1389,6 +1405,8 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
+annotation|@
+name|Ignore
 specifier|public
 name|void
 name|setPropertyAndCopy
@@ -1476,6 +1494,8 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
+annotation|@
+name|Ignore
 specifier|public
 name|void
 name|setNestedPropertyAndCopy
@@ -1563,6 +1583,8 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
+annotation|@
+name|Ignore
 specifier|public
 name|void
 name|modifyParentAddPropertyAndCopy
@@ -1652,6 +1674,8 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
+annotation|@
+name|Ignore
 specifier|public
 name|void
 name|removePropertyAndCopy
@@ -1735,6 +1759,8 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
+annotation|@
+name|Ignore
 specifier|public
 name|void
 name|removeNestedPropertyAndCopy
@@ -1818,6 +1844,8 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
+annotation|@
+name|Ignore
 specifier|public
 name|void
 name|modifyParentRemovePropertyAndCopy

@@ -706,6 +706,8 @@ block|}
 comment|/**      * This is a test to make sure properties are properly escaped in merge.      */
 annotation|@
 name|Test
+annotation|@
+name|Ignore
 specifier|public
 name|void
 name|oneBranchAddPropertyRoot
@@ -1620,6 +1622,8 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
+annotation|@
+name|Ignore
 specifier|public
 name|void
 name|oneBranchAddedChildrenWithConflict
@@ -1722,6 +1726,8 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
+annotation|@
+name|Ignore
 specifier|public
 name|void
 name|oneBranchChangedPropertiesWithConflict
@@ -2110,6 +2116,8 @@ block|{}
 block|}
 annotation|@
 name|Test
+annotation|@
+name|Ignore
 specifier|public
 name|void
 name|movesInBranch

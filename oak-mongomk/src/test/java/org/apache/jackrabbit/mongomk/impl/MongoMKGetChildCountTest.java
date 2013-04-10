@@ -61,6 +61,16 @@ name|org
 operator|.
 name|junit
 operator|.
+name|Ignore
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
 name|Test
 import|;
 end_import
@@ -78,6 +88,8 @@ name|BaseMongoMicroKernelTest
 block|{
 annotation|@
 name|Test
+annotation|@
+name|Ignore
 specifier|public
 name|void
 name|noChild
@@ -107,6 +119,8 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
+annotation|@
+name|Ignore
 specifier|public
 name|void
 name|singleChild
@@ -149,6 +163,8 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
+annotation|@
+name|Ignore
 specifier|public
 name|void
 name|multipleChilden
@@ -263,6 +279,8 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
+annotation|@
+name|Ignore
 specifier|public
 name|void
 name|multipleNestedChildren
