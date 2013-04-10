@@ -389,9 +389,7 @@ name|createFromRoot
 argument_list|(
 name|root
 argument_list|,
-name|ImmutableTree
-operator|.
-name|TypeProvider
+name|TreeTypeProvider
 operator|.
 name|EMPTY
 argument_list|)
@@ -453,9 +451,7 @@ name|createFromRoot
 argument_list|(
 name|root
 argument_list|,
-name|ImmutableTree
-operator|.
-name|TypeProvider
+name|TreeTypeProvider
 operator|.
 name|EMPTY
 argument_list|)
@@ -488,9 +484,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-name|ImmutableTree
-operator|.
-name|TypeProvider
+name|TreeTypeProvider
 operator|.
 name|TYPE_DEFAULT
 argument_list|,
@@ -517,9 +511,7 @@ name|createFromRoot
 argument_list|(
 name|root
 argument_list|,
-name|ImmutableTree
-operator|.
-name|TypeProvider
+name|TreeTypeProvider
 operator|.
 name|EMPTY
 argument_list|)
@@ -585,9 +577,7 @@ operator|.
 name|getNodeState
 argument_list|()
 argument_list|,
-name|ImmutableTree
-operator|.
-name|TypeProvider
+name|TreeTypeProvider
 operator|.
 name|EMPTY
 argument_list|)

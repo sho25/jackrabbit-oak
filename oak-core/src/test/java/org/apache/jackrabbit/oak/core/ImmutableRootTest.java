@@ -232,9 +232,7 @@ operator|.
 name|getLatestRoot
 argument_list|()
 argument_list|,
-name|ImmutableTree
-operator|.
-name|TypeProvider
+name|TreeTypeProvider
 operator|.
 name|EMPTY
 argument_list|)

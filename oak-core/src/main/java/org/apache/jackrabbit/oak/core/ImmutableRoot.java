@@ -18,40 +18,6 @@ package|;
 end_package
 
 begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|Preconditions
-operator|.
-name|checkArgument
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|commons
-operator|.
-name|PathUtils
-operator|.
-name|elements
-import|;
-end_import
-
-begin_import
 import|import
 name|javax
 operator|.
@@ -179,6 +145,40 @@ name|NodeState
 import|;
 end_import
 
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkArgument
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|commons
+operator|.
+name|PathUtils
+operator|.
+name|elements
+import|;
+end_import
+
 begin_comment
 comment|/**  * Simple implementation of the Root interface that only supports simple read  * operations (excluding query) based on the {@code NodeState} (or {@code ImmutableTree})  * passed to the constructor.  */
 end_comment
@@ -237,9 +237,7 @@ name|root
 parameter_list|,
 annotation|@
 name|Nonnull
-name|ImmutableTree
-operator|.
-name|TypeProvider
+name|TreeTypeProvider
 name|typeProvider
 parameter_list|)
 block|{

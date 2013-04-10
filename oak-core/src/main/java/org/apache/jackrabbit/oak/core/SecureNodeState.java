@@ -554,9 +554,7 @@ name|permissionProvider
 parameter_list|,
 annotation|@
 name|Nonnull
-name|ImmutableTree
-operator|.
-name|TypeProvider
+name|TreeTypeProvider
 name|typeProvider
 parameter_list|)
 block|{
@@ -586,6 +584,20 @@ operator|.
 name|permissionProvider
 operator|=
 name|permissionProvider
+expr_stmt|;
+comment|// calculate the readstatus for the root
+name|this
+operator|.
+name|readStatus
+operator|=
+name|permissionProvider
+operator|.
+name|getReadStatus
+argument_list|(
+name|base
+argument_list|,
+literal|null
+argument_list|)
 expr_stmt|;
 block|}
 specifier|private
