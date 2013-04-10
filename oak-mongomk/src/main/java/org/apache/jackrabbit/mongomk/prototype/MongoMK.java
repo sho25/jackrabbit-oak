@@ -566,7 +566,6 @@ name|blobStore
 decl_stmt|;
 comment|/**      * The unique cluster id, similar to the unique machine id in MongoDB.      */
 specifier|private
-specifier|final
 name|int
 name|clusterId
 decl_stmt|;
@@ -778,6 +777,17 @@ name|builder
 operator|.
 name|getClusterId
 argument_list|()
+expr_stmt|;
+name|clusterId
+operator|=
+name|Integer
+operator|.
+name|getInteger
+argument_list|(
+literal|"oak.mongoMK.clusterId"
+argument_list|,
+name|clusterId
+argument_list|)
 expr_stmt|;
 name|this
 operator|.

@@ -312,11 +312,17 @@ decl_stmt|;
 specifier|private
 specifier|final
 name|DBCollection
-name|nodesCollection
+name|nodes
 decl_stmt|;
 specifier|private
+specifier|final
+name|DBCollection
+name|clusterNodes
+decl_stmt|;
+comment|/**      * The sum of all milliseconds this class waited for MongoDB.      */
+specifier|private
 name|long
-name|time
+name|timeSum
 decl_stmt|;
 specifier|private
 specifier|final
@@ -335,7 +341,7 @@ name|DB
 name|db
 parameter_list|)
 block|{
-name|nodesCollection
+name|nodes
 operator|=
 name|db
 operator|.
@@ -344,6 +350,20 @@ argument_list|(
 name|Collection
 operator|.
 name|NODES
+operator|.
+name|toString
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|clusterNodes
+operator|=
+name|db
+operator|.
+name|getCollection
+argument_list|(
+name|Collection
+operator|.
+name|CLUSTER_NODES
 operator|.
 name|toString
 argument_list|()
@@ -405,7 +425,7 @@ condition|(
 name|LOG_TIME
 condition|)
 block|{
-name|time
+name|timeSum
 operator|+=
 name|System
 operator|.
@@ -460,7 +480,7 @@ name|Collection
 name|collection
 parameter_list|,
 name|String
-name|path
+name|key
 parameter_list|)
 block|{
 return|return
@@ -468,7 +488,7 @@ name|find
 argument_list|(
 name|collection
 argument_list|,
-name|path
+name|key
 argument_list|,
 name|Integer
 operator|.
@@ -493,7 +513,7 @@ name|collection
 parameter_list|,
 specifier|final
 name|String
-name|path
+name|key
 parameter_list|,
 name|int
 name|maxCacheAge
@@ -515,7 +535,7 @@ name|cache
 operator|.
 name|get
 argument_list|(
-name|path
+name|key
 argument_list|,
 operator|new
 name|Callable
@@ -545,7 +565,7 @@ name|findUncached
 argument_list|(
 name|collection
 argument_list|,
-name|path
+name|key
 argument_list|)
 decl_stmt|;
 return|return
@@ -591,7 +611,7 @@ name|cache
 operator|.
 name|invalidate
 argument_list|(
-name|path
+name|key
 argument_list|)
 expr_stmt|;
 block|}
@@ -611,16 +631,15 @@ throw|throw
 operator|new
 name|IllegalStateException
 argument_list|(
-literal|"Failed to load node "
+literal|"Failed to load document with "
 operator|+
-name|path
+name|key
 argument_list|,
 name|e
 argument_list|)
 throw|;
 block|}
 block|}
-specifier|public
 name|Map
 argument_list|<
 name|String
@@ -633,7 +652,7 @@ name|Collection
 name|collection
 parameter_list|,
 name|String
-name|path
+name|key
 parameter_list|)
 block|{
 name|DBCollection
@@ -659,9 +678,9 @@ name|dbCollection
 operator|.
 name|findOne
 argument_list|(
-name|getByPathQuery
+name|getByKeyQuery
 argument_list|(
-name|path
+name|key
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -915,14 +934,14 @@ name|Collection
 name|collection
 parameter_list|,
 name|String
-name|path
+name|key
 parameter_list|)
 block|{
 name|log
 argument_list|(
 literal|"remove"
 argument_list|,
-name|path
+name|key
 argument_list|)
 expr_stmt|;
 name|DBCollection
@@ -945,7 +964,7 @@ name|cache
 operator|.
 name|invalidate
 argument_list|(
-name|path
+name|key
 argument_list|)
 expr_stmt|;
 name|WriteResult
@@ -955,9 +974,9 @@ name|dbCollection
 operator|.
 name|remove
 argument_list|(
-name|getByPathQuery
+name|getByKeyQuery
 argument_list|(
-name|path
+name|key
 argument_list|)
 argument_list|,
 name|WriteConcern
@@ -1231,7 +1250,7 @@ block|}
 name|DBObject
 name|query
 init|=
-name|getByPathQuery
+name|getByKeyQuery
 argument_list|(
 name|updateOp
 operator|.
@@ -1949,7 +1968,13 @@ case|case
 name|NODES
 case|:
 return|return
-name|nodesCollection
+name|nodes
+return|;
+case|case
+name|CLUSTER_NODES
+case|:
+return|return
+name|clusterNodes
 return|;
 default|default:
 throw|throw
@@ -1967,10 +1992,10 @@ block|}
 specifier|private
 specifier|static
 name|DBObject
-name|getByPathQuery
+name|getByKeyQuery
 parameter_list|(
 name|String
-name|path
+name|key
 parameter_list|)
 block|{
 return|return
@@ -1985,7 +2010,7 @@ argument_list|)
 operator|.
 name|is
 argument_list|(
-name|path
+name|key
 argument_list|)
 operator|.
 name|get
@@ -2013,11 +2038,11 @@ name|debug
 argument_list|(
 literal|"MongoDB time: "
 operator|+
-name|time
+name|timeSum
 argument_list|)
 expr_stmt|;
 block|}
-name|nodesCollection
+name|nodes
 operator|.
 name|getDB
 argument_list|()

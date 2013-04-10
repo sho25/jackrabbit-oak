@@ -86,7 +86,44 @@ comment|/**      * The list of collections.      */
 enum|enum
 name|Collection
 block|{
+comment|/**          * The 'nodes' collection. It contains all the node data, with one document          * per node, and the path as the primary key. Each document possibly          * contains multiple revisions.          *<p>          * Key: the path, value: the node data (possibly multiple revisions)          *<p>          * Old revisions are removed after some time, either by the process that          * removed or updated the node, lazily when reading, or in a background          * process.          */
 name|NODES
+argument_list|(
+literal|"nodes"
+argument_list|)
+block|,
+comment|/**          * The 'clusterNodes' collection contains the list of currently running          * cluster nodes. The key is the clusterNodeId (0, 1, 2,...).          */
+name|CLUSTER_NODES
+argument_list|(
+literal|"clusterNodes"
+argument_list|)
+block|;
+specifier|final
+name|String
+name|name
+decl_stmt|;
+name|Collection
+parameter_list|(
+name|String
+name|name
+parameter_list|)
+block|{
+name|this
+operator|.
+name|name
+operator|=
+name|name
+expr_stmt|;
+block|}
+specifier|public
+name|String
+name|toString
+parameter_list|()
+block|{
+return|return
+name|name
+return|;
+block|}
 block|}
 comment|/**      * Get a document.      *<p>      * The returned map is a clone (the caller can modify it without affecting      * the stored version).      *       * @param collection the collection      * @param key the key      * @return the map, or null if not found      */
 annotation|@
@@ -127,6 +164,7 @@ name|int
 name|maxCacheAge
 parameter_list|)
 function_decl|;
+comment|/**      * Get a list of documents where the key is greater than a start value and      * less than an end value.      *       * @param collection the collection      * @param fromKey the start value (excluding)      * @param toKey the end value (excluding)      * @param limit the maximum number of entries to return      * @return the list (possibly empty)      */
 annotation|@
 name|Nonnull
 name|List
@@ -198,10 +236,12 @@ parameter_list|)
 throws|throws
 name|MicroKernelException
 function_decl|;
+comment|/**      * Invalidate the document cache.      */
 name|void
 name|invalidateCache
 parameter_list|()
 function_decl|;
+comment|/**      * Dispose this instance.      */
 name|void
 name|dispose
 parameter_list|()

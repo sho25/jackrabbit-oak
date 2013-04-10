@@ -138,7 +138,7 @@ name|MemoryDocumentStore
 implements|implements
 name|DocumentStore
 block|{
-comment|/**      * The 'nodes' collection. It contains all the node data, with one document      * per node, and the path as the primary key. Each document possibly      * contains multiple revisions.      *<p>      * Key: the path, value: the node data (possibly multiple revisions)      *<p>      * Old revisions are removed after some time, either by the process that      * removed or updated the node, lazily when reading, or in a background      * process.      */
+comment|/**      * The 'nodes' collection.      */
 specifier|private
 name|ConcurrentSkipListMap
 argument_list|<
@@ -152,6 +152,35 @@ name|Object
 argument_list|>
 argument_list|>
 name|nodes
+init|=
+operator|new
+name|ConcurrentSkipListMap
+argument_list|<
+name|String
+argument_list|,
+name|Map
+argument_list|<
+name|String
+argument_list|,
+name|Object
+argument_list|>
+argument_list|>
+argument_list|()
+decl_stmt|;
+comment|/**      * The 'clusterNodes' collection.      */
+specifier|private
+name|ConcurrentSkipListMap
+argument_list|<
+name|String
+argument_list|,
+name|Map
+argument_list|<
+name|String
+argument_list|,
+name|Object
+argument_list|>
+argument_list|>
+name|clusterNodes
 init|=
 operator|new
 name|ConcurrentSkipListMap
@@ -493,6 +522,12 @@ case|:
 return|return
 name|nodes
 return|;
+case|case
+name|CLUSTER_NODES
+case|:
+return|return
+name|clusterNodes
+return|;
 default|default:
 throw|throw
 operator|new
@@ -690,6 +725,7 @@ return|return
 name|oldNode
 return|;
 block|}
+comment|/**      * Apply the changes to the in-memory map.      *       * @param target the target map      * @param update the changes to apply      */
 specifier|public
 specifier|static
 name|void
