@@ -354,11 +354,22 @@ index|]
 operator|=
 operator|new
 name|MongoMK
+operator|.
+name|Builder
+argument_list|()
+operator|.
+name|setMongoDB
 argument_list|(
 name|db
-argument_list|,
+argument_list|)
+operator|.
+name|setClusterId
+argument_list|(
 name|i
 argument_list|)
+operator|.
+name|open
+argument_list|()
 expr_stmt|;
 block|}
 block|}
@@ -372,7 +383,9 @@ name|MicroKernel
 modifier|...
 name|nodes
 parameter_list|)
-block|{     }
+block|{
+comment|// not needed
+block|}
 annotation|@
 name|Override
 specifier|public
@@ -433,6 +446,7 @@ name|db
 parameter_list|)
 function_decl|;
 specifier|private
+specifier|static
 name|void
 name|dropCollections
 parameter_list|(
