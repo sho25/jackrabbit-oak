@@ -197,7 +197,7 @@ begin_class
 annotation|@
 name|Ignore
 argument_list|(
-literal|"OAK-51"
+literal|"OAK-168"
 argument_list|)
 specifier|public
 class|class
@@ -349,22 +349,9 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|Node
-name|trn
-init|=
-name|testSession
-operator|.
-name|getNode
-argument_list|(
-name|path
-argument_list|)
-decl_stmt|;
 name|modify
 argument_list|(
-name|trn
-operator|.
-name|getPath
-argument_list|()
+name|path
 argument_list|,
 name|REP_WRITE
 argument_list|,
@@ -373,10 +360,7 @@ argument_list|)
 expr_stmt|;
 name|modify
 argument_list|(
-name|trn
-operator|.
-name|getPath
-argument_list|()
+name|path
 argument_list|,
 name|Privilege
 operator|.
@@ -386,65 +370,25 @@ literal|false
 argument_list|)
 expr_stmt|;
 name|Node
-name|n
+name|testNode
 init|=
-name|trn
-operator|.
-name|hasNode
-argument_list|(
-name|nodeName2
-argument_list|)
-condition|?
-name|trn
+name|testSession
 operator|.
 name|getNode
 argument_list|(
-name|nodeName2
-argument_list|)
-else|:
-name|trn
-operator|.
-name|addNode
-argument_list|(
-name|nodeName2
+name|path
 argument_list|)
 decl_stmt|;
 try|try
 block|{
-if|if
-condition|(
-name|n
-operator|.
-name|canAddMixin
+name|createVersionableNode
 argument_list|(
-name|mixVersionable
+name|testNode
 argument_list|)
-condition|)
-block|{
-name|n
-operator|.
-name|addMixin
-argument_list|(
-name|mixVersionable
-argument_list|)
-expr_stmt|;
-block|}
-else|else
-block|{
-throw|throw
-operator|new
-name|NotExecutableException
-argument_list|()
-throw|;
-block|}
-name|testSession
-operator|.
-name|save
-argument_list|()
 expr_stmt|;
 name|fail
 argument_list|(
-literal|"Test session does not have write permission in the version storage -> adding mixin must fail."
+literal|"Test session does not have permission to add mixins -> no version content should be created."
 argument_list|)
 expr_stmt|;
 block|}
@@ -458,7 +402,7 @@ comment|// success
 comment|// ... but autocreated versionable node properties must not be present
 name|assertFalse
 argument_list|(
-name|n
+name|testNode
 operator|.
 name|isNodeType
 argument_list|(
@@ -468,7 +412,7 @@ argument_list|)
 expr_stmt|;
 name|assertFalse
 argument_list|(
-name|n
+name|testNode
 operator|.
 name|hasProperty
 argument_list|(
@@ -478,7 +422,7 @@ argument_list|)
 expr_stmt|;
 name|assertFalse
 argument_list|(
-name|n
+name|testNode
 operator|.
 name|hasProperty
 argument_list|(
@@ -489,6 +433,12 @@ expr_stmt|;
 block|}
 block|}
 annotation|@
+name|Ignore
+argument_list|(
+literal|"OAK-168"
+argument_list|)
+comment|// FIXME: waiting for basic version mgt
+annotation|@
 name|Test
 specifier|public
 name|void
@@ -497,22 +447,9 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|Node
-name|trn
-init|=
-name|testSession
-operator|.
-name|getNode
-argument_list|(
-name|path
-argument_list|)
-decl_stmt|;
 name|modify
 argument_list|(
-name|trn
-operator|.
-name|getPath
-argument_list|()
+name|path
 argument_list|,
 name|REP_WRITE
 argument_list|,
@@ -521,10 +458,7 @@ argument_list|)
 expr_stmt|;
 name|modify
 argument_list|(
-name|trn
-operator|.
-name|getPath
-argument_list|()
+name|path
 argument_list|,
 name|Privilege
 operator|.
@@ -535,10 +469,7 @@ argument_list|)
 expr_stmt|;
 name|modify
 argument_list|(
-name|trn
-operator|.
-name|getPath
-argument_list|()
+name|path
 argument_list|,
 name|Privilege
 operator|.
@@ -552,7 +483,12 @@ name|n
 init|=
 name|createVersionableNode
 argument_list|(
-name|trn
+name|testSession
+operator|.
+name|getNode
+argument_list|(
+name|path
+argument_list|)
 argument_list|)
 decl_stmt|;
 name|n
@@ -566,6 +502,12 @@ name|checkout
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Ignore
+argument_list|(
+literal|"OAK-168"
+argument_list|)
+comment|// FIXME: waiting for basic version mgt
 annotation|@
 name|Test
 specifier|public
@@ -688,6 +630,12 @@ block|}
 block|}
 comment|/**      * @since oak (DIFF: jr required jcr:versionManagement privilege on the version store)      */
 annotation|@
+name|Ignore
+argument_list|(
+literal|"OAK-168"
+argument_list|)
+comment|// FIXME: waiting for basic version mgt
+annotation|@
 name|Test
 specifier|public
 name|void
@@ -775,6 +723,12 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * @since oak (DIFF: jr required jcr:versionManagement privilege on the version store)      */
+annotation|@
+name|Ignore
+argument_list|(
+literal|"OAK-168"
+argument_list|)
+comment|// FIXME: waiting for basic version mgt
 annotation|@
 name|Test
 specifier|public
@@ -894,6 +848,12 @@ comment|// success
 block|}
 block|}
 comment|/**      * @since oak (DIFF: jr required jcr:versionManagement privilege on the version store)      */
+annotation|@
+name|Ignore
+argument_list|(
+literal|"OAK-168"
+argument_list|)
+comment|// FIXME: waiting for basic version mgt
 annotation|@
 name|Test
 specifier|public
@@ -1061,6 +1021,12 @@ expr_stmt|;
 block|}
 block|}
 comment|/**      * @since oak      */
+annotation|@
+name|Ignore
+argument_list|(
+literal|"OAK-168"
+argument_list|)
+comment|// FIXME: waiting for basic version mgt
 annotation|@
 name|Test
 specifier|public
@@ -1255,6 +1221,12 @@ block|}
 block|}
 comment|/**      * @since oak (DIFF: jr required jcr:versionManagement privilege on the version store)      */
 annotation|@
+name|Ignore
+argument_list|(
+literal|"OAK-168"
+argument_list|)
+comment|// FIXME: waiting for basic version mgt
+annotation|@
 name|Test
 specifier|public
 name|void
@@ -1391,6 +1363,12 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * @since oak (DIFF: jr required jcr:versionManagement privilege on the version store)      */
+annotation|@
+name|Ignore
+argument_list|(
+literal|"OAK-168"
+argument_list|)
+comment|// FIXME: waiting for basic version mgt
 annotation|@
 name|Test
 specifier|public
@@ -1589,6 +1567,12 @@ comment|// success
 block|}
 block|}
 comment|/**      * @since oak      */
+annotation|@
+name|Ignore
+argument_list|(
+literal|"OAK-168"
+argument_list|)
+comment|// FIXME: waiting for basic version mgt
 annotation|@
 name|Test
 specifier|public
