@@ -12,20 +12,8 @@ operator|.
 name|jackrabbit
 operator|.
 name|mongomk
-operator|.
-name|prototype
 package|;
 end_package
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Map
-import|;
-end_import
 
 begin_import
 import|import static
@@ -89,6 +77,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Map
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -113,8 +111,6 @@ name|jackrabbit
 operator|.
 name|mongomk
 operator|.
-name|prototype
-operator|.
 name|DocumentStore
 operator|.
 name|Collection
@@ -130,8 +126,6 @@ operator|.
 name|jackrabbit
 operator|.
 name|mongomk
-operator|.
-name|prototype
 operator|.
 name|Node
 operator|.

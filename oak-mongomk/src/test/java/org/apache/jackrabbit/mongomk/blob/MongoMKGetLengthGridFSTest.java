@@ -115,7 +115,9 @@ parameter_list|(
 name|Exception
 name|expected
 parameter_list|)
-block|{         }
+block|{
+comment|// expected
+block|}
 block|}
 annotation|@
 name|Test
@@ -235,6 +237,7 @@ argument_list|)
 return|;
 block|}
 specifier|private
+specifier|static
 name|byte
 index|[]
 name|createBlob

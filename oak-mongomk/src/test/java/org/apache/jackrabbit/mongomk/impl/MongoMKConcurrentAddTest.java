@@ -147,8 +147,6 @@ name|jackrabbit
 operator|.
 name|mongomk
 operator|.
-name|prototype
-operator|.
 name|MongoMK
 import|;
 end_import

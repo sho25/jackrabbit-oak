@@ -101,8 +101,6 @@ name|jackrabbit
 operator|.
 name|mongomk
 operator|.
-name|prototype
-operator|.
 name|MongoMK
 import|;
 end_import
@@ -302,6 +300,7 @@ argument_list|)
 expr_stmt|;
 block|}
 specifier|private
+specifier|static
 name|byte
 index|[]
 name|createBlob

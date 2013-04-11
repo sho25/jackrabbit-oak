@@ -12,8 +12,6 @@ operator|.
 name|jackrabbit
 operator|.
 name|mongomk
-operator|.
-name|prototype
 package|;
 end_package
 
@@ -86,7 +84,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Tests for {@link MongoMicroKernel#commit(String, String, String, String)}  * with emphasis on move operations.  */
+comment|/**  * Tests for commit with emphasis on move operations.  */
 end_comment
 
 begin_class

@@ -12,8 +12,6 @@ operator|.
 name|jackrabbit
 operator|.
 name|mongomk
-operator|.
-name|prototype
 package|;
 end_package
 
@@ -126,8 +124,6 @@ operator|.
 name|jackrabbit
 operator|.
 name|mongomk
-operator|.
-name|prototype
 operator|.
 name|DocumentStore
 operator|.
