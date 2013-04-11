@@ -1241,7 +1241,7 @@ expr_stmt|;
 block|}
 else|else
 block|{
-comment|// TODO: identify renaming/move of nodes that only required MODIFY_CHILD_NODE_COLLECTION permission
+comment|// FIXME: identify renaming/move of nodes that only required MODIFY_CHILD_NODE_COLLECTION permission
 name|perm
 operator|=
 name|defaultPermission
