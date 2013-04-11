@@ -347,6 +347,8 @@ argument_list|(
 literal|null
 argument_list|)
 decl_stmt|;
+name|b1
+operator|=
 name|mk1
 operator|.
 name|commit
@@ -360,6 +362,8 @@ argument_list|,
 literal|null
 argument_list|)
 expr_stmt|;
+name|b2
+operator|=
 name|mk1
 operator|.
 name|commit
@@ -412,7 +416,7 @@ argument_list|)
 decl_stmt|;
 name|assertEquals
 argument_list|(
-literal|"{\"branchVisible\":{},\"regular\":{},\":childNodeCount\":3}"
+literal|"{\"branchVisible\":{},\"regular\":{},\":childNodeCount\":2}"
 argument_list|,
 name|nodes
 argument_list|)
