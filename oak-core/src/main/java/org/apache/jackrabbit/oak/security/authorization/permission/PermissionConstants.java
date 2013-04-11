@@ -58,7 +58,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * PermissionConstants... TODO  */
+comment|/**  * Implementation specific constants related to permission evaluation.  *  * @since OAK 1.0  */
 end_comment
 
 begin_interface
@@ -66,25 +66,21 @@ specifier|public
 interface|interface
 name|PermissionConstants
 block|{
-comment|/**      * @since OAK 1.0      */
 name|String
 name|NT_REP_PERMISSIONS
 init|=
 literal|"rep:Permissions"
 decl_stmt|;
-comment|/**      * @since OAK 1.0      */
 name|String
 name|NT_REP_PERMISSION_STORE
 init|=
 literal|"rep:PermissionStore"
 decl_stmt|;
-comment|/**      * @since OAK 1.0      */
 name|String
 name|REP_PERMISSION_STORE
 init|=
 literal|"rep:permissionStore"
 decl_stmt|;
-comment|/**      * @since OAK 1.0      */
 name|String
 name|PERMISSIONS_STORE_PATH
 init|=
