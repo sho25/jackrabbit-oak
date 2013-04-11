@@ -79,7 +79,7 @@ name|String
 name|name
 parameter_list|)
 function_decl|;
-comment|/**      * Called when the property {@code after} was added on the branch but the property      * exists already in the trunk.      *      * @param builder  parent builder      * @param after  added property      */
+comment|/**      * Called when the property {@code after} was added on the branch but the property      * exists already in the trunk.      *      * @param builder  parent builder      * @param before existing property      * @param after  added property      */
 specifier|protected
 specifier|abstract
 name|void
@@ -87,6 +87,9 @@ name|addExistingProperty
 parameter_list|(
 name|NodeBuilder
 name|builder
+parameter_list|,
+name|PropertyState
+name|before
 parameter_list|,
 name|PropertyState
 name|after
@@ -147,7 +150,7 @@ name|PropertyState
 name|before
 parameter_list|)
 function_decl|;
-comment|/**      * Called when the node {@code after} was added on the branch but the node      * exists already in the trunk.      *      * @param builder  parent builder      * @param name  name of the added node      * @param after  added added      */
+comment|/**      * Called when the node {@code after} was added on the branch but the node      * exists already in the trunk.      *      * @param builder  parent builder      * @param name  name of the added node      * @param before existing node      * @param after  added added      */
 specifier|protected
 specifier|abstract
 name|void
@@ -158,6 +161,9 @@ name|builder
 parameter_list|,
 name|String
 name|name
+parameter_list|,
+name|NodeState
+name|before
 parameter_list|,
 name|NodeState
 name|after
@@ -264,6 +270,8 @@ block|{
 name|addExistingProperty
 argument_list|(
 name|builder
+argument_list|,
+name|other
 argument_list|,
 name|after
 argument_list|)
@@ -447,11 +455,26 @@ name|name
 argument_list|)
 condition|)
 block|{
+name|NodeState
+name|other
+init|=
+name|builder
+operator|.
+name|child
+argument_list|(
+name|name
+argument_list|)
+operator|.
+name|getNodeState
+argument_list|()
+decl_stmt|;
 name|addExistingNode
 argument_list|(
 name|builder
 argument_list|,
 name|name
+argument_list|,
+name|other
 argument_list|,
 name|after
 argument_list|)

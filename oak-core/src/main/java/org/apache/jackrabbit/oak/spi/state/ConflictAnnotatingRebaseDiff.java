@@ -191,6 +191,9 @@ name|NodeBuilder
 name|builder
 parameter_list|,
 name|PropertyState
+name|before
+parameter_list|,
+name|PropertyState
 name|after
 parameter_list|)
 block|{
@@ -325,6 +328,9 @@ name|builder
 parameter_list|,
 name|String
 name|name
+parameter_list|,
+name|NodeState
+name|before
 parameter_list|,
 name|NodeState
 name|after
