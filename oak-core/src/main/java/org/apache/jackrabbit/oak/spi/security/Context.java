@@ -51,6 +51,22 @@ name|Tree
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|api
+operator|.
+name|TreeLocation
+import|;
+end_import
+
 begin_comment
 comment|/**  * Context... TODO  */
 end_comment
@@ -75,6 +91,13 @@ name|definesTree
 parameter_list|(
 name|Tree
 name|tree
+parameter_list|)
+function_decl|;
+name|boolean
+name|definesLocation
+parameter_list|(
+name|TreeLocation
+name|location
 parameter_list|)
 function_decl|;
 block|}
