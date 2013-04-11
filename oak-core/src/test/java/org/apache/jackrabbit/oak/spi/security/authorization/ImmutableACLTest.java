@@ -286,7 +286,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * ImmutableACLTest... TODO  */
+comment|/**  * Test for {@code ImmutableACL}  */
 end_comment
 
 begin_class
