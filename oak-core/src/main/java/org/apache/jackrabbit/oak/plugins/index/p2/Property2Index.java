@@ -227,14 +227,6 @@ name|Property2Index
 implements|implements
 name|QueryIndex
 block|{
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|TYPE
-init|=
-literal|"p2"
-decl_stmt|;
 comment|// TODO the max string length should be removed, or made configurable
 specifier|private
 specifier|static

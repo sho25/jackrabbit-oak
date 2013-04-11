@@ -22,28 +22,6 @@ package|;
 end_package
 
 begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|plugins
-operator|.
-name|index
-operator|.
-name|p2
-operator|.
-name|Property2Index
-operator|.
-name|TYPE
-import|;
-end_import
-
-begin_import
 import|import
 name|java
 operator|.
@@ -173,6 +151,14 @@ name|Property2IndexHookProvider
 implements|implements
 name|IndexHookProvider
 block|{
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|TYPE
+init|=
+literal|"p2"
+decl_stmt|;
 annotation|@
 name|Override
 specifier|public

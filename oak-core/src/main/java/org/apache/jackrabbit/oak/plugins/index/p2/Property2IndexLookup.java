@@ -102,6 +102,28 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|index
+operator|.
+name|p2
+operator|.
+name|Property2IndexHookProvider
+operator|.
+name|TYPE
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -699,8 +721,6 @@ name|isArray
 argument_list|()
 operator|||
 operator|!
-name|Property2Index
-operator|.
 name|TYPE
 operator|.
 name|equals

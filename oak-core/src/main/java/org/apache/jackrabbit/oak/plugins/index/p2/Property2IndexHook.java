@@ -145,7 +145,7 @@ name|index
 operator|.
 name|p2
 operator|.
-name|Property2Index
+name|Property2IndexHookProvider
 operator|.
 name|TYPE
 import|;
