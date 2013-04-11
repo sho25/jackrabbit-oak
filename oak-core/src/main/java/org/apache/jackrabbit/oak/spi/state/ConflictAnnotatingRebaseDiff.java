@@ -52,13 +52,13 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * {@code RebaseDiff} implements a {@link NodeStateDiff}, which performs  * the conflict handling as defined in {@link MicroKernel#rebase(String, String)}  * on the Oak SPI state level by annotating conflicting items with conflict  * markers.  */
+comment|/**  * This implementation of {@code AbstractRebaseDiff} implements a {@link NodeStateDiff},  * which performs the conflict handling as defined in {@link MicroKernel#rebase(String, String)}  * on the Oak SPI state level by annotating conflicting items with conflict  * markers.  */
 end_comment
 
 begin_class
 specifier|public
 class|class
-name|RebaseDiff
+name|ConflictAnnotatingRebaseDiff
 extends|extends
 name|AbstractRebaseDiff
 block|{
@@ -143,7 +143,7 @@ init|=
 literal|"deleteDeletedNode"
 decl_stmt|;
 specifier|public
-name|RebaseDiff
+name|ConflictAnnotatingRebaseDiff
 parameter_list|(
 name|NodeBuilder
 name|builder
@@ -158,7 +158,7 @@ block|}
 annotation|@
 name|Override
 specifier|protected
-name|RebaseDiff
+name|ConflictAnnotatingRebaseDiff
 name|createDiff
 parameter_list|(
 name|NodeBuilder
@@ -170,7 +170,7 @@ parameter_list|)
 block|{
 return|return
 operator|new
-name|RebaseDiff
+name|ConflictAnnotatingRebaseDiff
 argument_list|(
 name|builder
 operator|.

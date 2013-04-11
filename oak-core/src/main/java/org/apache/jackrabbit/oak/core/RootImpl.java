@@ -1967,7 +1967,7 @@ name|builder
 argument_list|()
 decl_stmt|;
 return|return
-name|PurgeRebaseDiff
+name|OurChangesRebaseDiff
 operator|.
 name|rebase
 argument_list|(
