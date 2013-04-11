@@ -13,7 +13,7 @@ name|jackrabbit
 operator|.
 name|mongomk
 operator|.
-name|impl
+name|util
 package|;
 end_package
 

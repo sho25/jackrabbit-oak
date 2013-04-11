@@ -332,7 +332,7 @@ name|String
 argument_list|,
 name|CachedDocument
 argument_list|>
-name|cache
+name|nodesCache
 decl_stmt|;
 specifier|public
 name|MongoDocumentStore
@@ -377,7 +377,7 @@ comment|// DBObject options = new BasicDBObject();
 comment|// options.put("unique", Boolean.TRUE);
 comment|// nodesCollection.ensureIndex(index, options);
 comment|// TODO expire entries if the parent was changed
-name|cache
+name|nodesCache
 operator|=
 name|CacheBuilder
 operator|.
@@ -461,7 +461,7 @@ name|void
 name|invalidateCache
 parameter_list|()
 block|{
-name|cache
+name|nodesCache
 operator|.
 name|invalidateAll
 argument_list|()
@@ -519,6 +519,24 @@ name|int
 name|maxCacheAge
 parameter_list|)
 block|{
+if|if
+condition|(
+name|collection
+operator|!=
+name|Collection
+operator|.
+name|NODES
+condition|)
+block|{
+return|return
+name|findUncached
+argument_list|(
+name|collection
+argument_list|,
+name|key
+argument_list|)
+return|;
+block|}
 try|try
 block|{
 name|CachedDocument
@@ -531,7 +549,7 @@ condition|)
 block|{
 name|doc
 operator|=
-name|cache
+name|nodesCache
 operator|.
 name|get
 argument_list|(
@@ -607,7 +625,7 @@ block|{
 break|break;
 block|}
 comment|// too old: invalidate, try again
-name|cache
+name|nodesCache
 operator|.
 name|invalidate
 argument_list|(
@@ -875,6 +893,15 @@ argument_list|(
 name|o
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|collection
+operator|==
+name|Collection
+operator|.
+name|NODES
+condition|)
+block|{
 name|String
 name|key
 init|=
@@ -890,7 +917,7 @@ operator|.
 name|ID
 argument_list|)
 decl_stmt|;
-name|cache
+name|nodesCache
 operator|.
 name|put
 argument_list|(
@@ -903,6 +930,7 @@ name|map
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 name|list
 operator|.
 name|add
@@ -960,13 +988,23 @@ argument_list|()
 decl_stmt|;
 try|try
 block|{
-name|cache
+if|if
+condition|(
+name|collection
+operator|==
+name|Collection
+operator|.
+name|NODES
+condition|)
+block|{
+name|nodesCache
 operator|.
 name|invalidate
 argument_list|(
 name|key
 argument_list|)
 expr_stmt|;
+block|}
 name|WriteResult
 name|writeResult
 init|=
@@ -1373,6 +1411,15 @@ name|oldNode
 argument_list|)
 decl_stmt|;
 comment|// cache the new document
+if|if
+condition|(
+name|collection
+operator|==
+name|Collection
+operator|.
+name|NODES
+condition|)
+block|{
 name|Map
 argument_list|<
 name|String
@@ -1412,7 +1459,7 @@ argument_list|,
 name|updateOp
 argument_list|)
 expr_stmt|;
-name|cache
+name|nodesCache
 operator|.
 name|put
 argument_list|(
@@ -1425,6 +1472,7 @@ name|newMap
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 name|log
 argument_list|(
 literal|"createOrUpdate returns "
@@ -1771,6 +1819,15 @@ return|return
 literal|false
 return|;
 block|}
+if|if
+condition|(
+name|collection
+operator|==
+name|Collection
+operator|.
+name|NODES
+condition|)
+block|{
 for|for
 control|(
 name|Map
@@ -1799,7 +1856,7 @@ operator|.
 name|ID
 argument_list|)
 decl_stmt|;
-name|cache
+name|nodesCache
 operator|.
 name|put
 argument_list|(
@@ -1812,6 +1869,7 @@ name|map
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 return|return
 literal|true
@@ -2159,6 +2217,43 @@ operator|=
 name|value
 expr_stmt|;
 block|}
+block|}
+annotation|@
+name|Override
+specifier|public
+name|boolean
+name|isCached
+parameter_list|(
+name|Collection
+name|collection
+parameter_list|,
+name|String
+name|key
+parameter_list|)
+block|{
+if|if
+condition|(
+name|collection
+operator|!=
+name|Collection
+operator|.
+name|NODES
+condition|)
+block|{
+return|return
+literal|false
+return|;
+block|}
+return|return
+name|nodesCache
+operator|.
+name|getIfPresent
+argument_list|(
+name|key
+argument_list|)
+operator|!=
+literal|null
+return|;
 block|}
 block|}
 end_class

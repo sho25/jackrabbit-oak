@@ -127,9 +127,9 @@ name|jackrabbit
 operator|.
 name|mongomk
 operator|.
-name|impl
+name|prototype
 operator|.
-name|MongoConnection
+name|MongoMK
 import|;
 end_import
 
@@ -143,9 +143,9 @@ name|jackrabbit
 operator|.
 name|mongomk
 operator|.
-name|prototype
+name|util
 operator|.
-name|MongoMK
+name|MongoConnection
 import|;
 end_import
 

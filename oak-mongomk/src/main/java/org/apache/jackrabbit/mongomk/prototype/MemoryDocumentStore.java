@@ -1308,6 +1308,23 @@ parameter_list|()
 block|{
 comment|// ignore
 block|}
+annotation|@
+name|Override
+specifier|public
+name|boolean
+name|isCached
+parameter_list|(
+name|Collection
+name|collection
+parameter_list|,
+name|String
+name|key
+parameter_list|)
+block|{
+return|return
+literal|false
+return|;
+block|}
 block|}
 end_class
 

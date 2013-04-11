@@ -246,6 +246,17 @@ name|void
 name|dispose
 parameter_list|()
 function_decl|;
+comment|/**      * Check whether the given document is in the cache.      *       * @param collection the collection      * @param key the key      * @return true if yes      */
+name|boolean
+name|isCached
+parameter_list|(
+name|Collection
+name|collection
+parameter_list|,
+name|String
+name|key
+parameter_list|)
+function_decl|;
 block|}
 end_interface
 

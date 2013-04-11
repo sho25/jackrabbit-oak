@@ -27,7 +27,7 @@ name|jackrabbit
 operator|.
 name|mongomk
 operator|.
-name|impl
+name|util
 operator|.
 name|MongoConnection
 import|;
