@@ -1787,7 +1787,7 @@ condition|)
 block|{
 name|log
 operator|.
-name|warn
+name|debug
 argument_list|(
 literal|"Unable to determine versionable path of the version store node."
 argument_list|)
