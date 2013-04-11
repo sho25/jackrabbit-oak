@@ -174,7 +174,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * TestACL... TODO  */
+comment|/**  * Test implementation of AbstractAccessControlList  */
 end_comment
 
 begin_class
