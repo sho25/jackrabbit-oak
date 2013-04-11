@@ -450,6 +450,21 @@ name|MongoMK
 implements|implements
 name|MicroKernel
 block|{
+specifier|private
+specifier|static
+specifier|final
+name|Logger
+name|LOG
+init|=
+name|LoggerFactory
+operator|.
+name|getLogger
+argument_list|(
+name|MongoMK
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 comment|/**      * The number of documents to cache.      */
 specifier|static
 specifier|final
@@ -465,21 +480,6 @@ argument_list|,
 literal|20
 operator|*
 literal|1024
-argument_list|)
-decl_stmt|;
-specifier|private
-specifier|static
-specifier|final
-name|Logger
-name|LOG
-init|=
-name|LoggerFactory
-operator|.
-name|getLogger
-argument_list|(
-name|MongoMK
-operator|.
-name|class
 argument_list|)
 decl_stmt|;
 comment|/**      * The number of child node list entries to cache.      */
@@ -3981,22 +3981,10 @@ block|{
 comment|// reading from the branch is reading from the trunk currently
 name|revisionId
 operator|=
+name|stripBranchRevMarker
+argument_list|(
 name|revisionId
-operator|.
-name|substring
-argument_list|(
-literal|1
 argument_list|)
-operator|.
-name|replace
-argument_list|(
-literal|'+'
-argument_list|,
-literal|' '
-argument_list|)
-operator|.
-name|trim
-argument_list|()
 expr_stmt|;
 block|}
 name|Revision
@@ -5804,26 +5792,13 @@ name|branchRevisionId
 argument_list|)
 throw|;
 block|}
-comment|// reading from the branch is reading from the trunk currently
 name|String
 name|revisionId
 init|=
+name|stripBranchRevMarker
+argument_list|(
 name|branchRevisionId
-operator|.
-name|substring
-argument_list|(
-literal|1
 argument_list|)
-operator|.
-name|replace
-argument_list|(
-literal|'+'
-argument_list|,
-literal|' '
-argument_list|)
-operator|.
-name|trim
-argument_list|()
 decl_stmt|;
 comment|// make branch commits visible
 name|List
@@ -5947,13 +5922,6 @@ operator|.
 name|toString
 argument_list|()
 return|;
-comment|// TODO improve implementation if needed
-comment|// if (!branchRevisionId.startsWith("b")) {
-comment|//     throw new MicroKernelException("Not a branch: " + branchRevisionId);
-comment|// }
-comment|//
-comment|// String commit = branchCommits.remove(branchRevisionId);
-comment|// return commit("", commit, null, null);
 block|}
 annotation|@
 name|Override
