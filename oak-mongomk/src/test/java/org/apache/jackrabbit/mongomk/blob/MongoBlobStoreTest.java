@@ -11,9 +11,9 @@ name|apache
 operator|.
 name|jackrabbit
 operator|.
-name|mk
+name|mongomk
 operator|.
-name|blobs
+name|blob
 package|;
 end_package
 
@@ -175,9 +175,27 @@ name|apache
 operator|.
 name|jackrabbit
 operator|.
-name|mongomk
+name|mk
 operator|.
-name|AbstractMongoConnectionTest
+name|blobs
+operator|.
+name|AbstractBlobStore
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|mk
+operator|.
+name|blobs
+operator|.
+name|BlobStoreInputStream
 import|;
 end_import
 
@@ -191,11 +209,7 @@ name|jackrabbit
 operator|.
 name|mongomk
 operator|.
-name|impl
-operator|.
-name|blob
-operator|.
-name|MongoBlobStore
+name|AbstractMongoConnectionTest
 import|;
 end_import
 
@@ -861,27 +875,6 @@ parameter_list|)
 block|{
 comment|// expected
 block|}
-try|try
-block|{
-name|store
-operator|.
-name|mark
-argument_list|(
-literal|"ff"
-argument_list|)
-expr_stmt|;
-name|fail
-argument_list|()
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|Exception
-name|e
-parameter_list|)
-block|{
-comment|// expected
-block|}
 block|}
 annotation|@
 name|Test
@@ -1193,9 +1186,10 @@ condition|)
 block|{
 continue|continue;
 block|}
+comment|// this should mark the id
 name|store
 operator|.
-name|mark
+name|getBlobLength
 argument_list|(
 name|id
 argument_list|)

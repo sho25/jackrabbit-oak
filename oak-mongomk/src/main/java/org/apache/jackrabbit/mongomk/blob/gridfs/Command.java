@@ -13,9 +13,9 @@ name|jackrabbit
 operator|.
 name|mongomk
 operator|.
-name|api
+name|blob
 operator|.
-name|command
+name|gridfs
 package|;
 end_package
 

@@ -13,8 +13,6 @@ name|jackrabbit
 operator|.
 name|mongomk
 operator|.
-name|impl
-operator|.
 name|blob
 package|;
 end_package
@@ -45,43 +43,9 @@ name|jackrabbit
 operator|.
 name|mk
 operator|.
-name|blobs
-operator|.
-name|BlobStore
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|mk
-operator|.
 name|util
 operator|.
 name|StringUtils
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|mongomk
-operator|.
-name|impl
-operator|.
-name|model
-operator|.
-name|MongoBlob
 import|;
 end_import
 
@@ -166,7 +130,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Implementation of {@link BlobStore} for the {@code MongoDB} extending from  * {@link AbstractBlobStore}. Unlike {@link MongoGridFSBlobStore}, it saves blobs  * into a separate collection in {@link MongoDB} instead of GridFS and it supports  * basic garbage collection.  *  * FIXME:  * -Do we need to create commands for retry etc.?  * -Not sure if this is going to work for multiple MKs talking to same MongoDB?  */
+comment|/**  * Implementation of blob store for the MongoDB extending from  * {@link AbstractBlobStore}. It saves blobs into a separate collection in  * MongoDB (not using GridFS) and it supports basic garbage collection.  *   * FIXME: -Do we need to create commands for retry etc.? -Not sure if this is  * going to work for multiple MKs talking to same MongoDB?  */
 end_comment
 
 begin_class
@@ -790,6 +754,7 @@ argument_list|)
 return|;
 block|}
 specifier|private
+specifier|static
 name|DBObject
 name|getBlobQuery
 parameter_list|(

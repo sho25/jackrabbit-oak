@@ -357,8 +357,6 @@ name|jackrabbit
 operator|.
 name|mongomk
 operator|.
-name|impl
-operator|.
 name|blob
 operator|.
 name|MongoBlobStore
@@ -679,6 +677,8 @@ name|AtomicInteger
 name|simpleRevisionCounter
 decl_stmt|;
 comment|/**      * Maps branch commit revision to revision it is based on      */
+comment|// TODO at some point, open (unmerged) branches
+comment|// need to be garbage collected (in-memory and on disk)
 specifier|private
 specifier|final
 name|Map

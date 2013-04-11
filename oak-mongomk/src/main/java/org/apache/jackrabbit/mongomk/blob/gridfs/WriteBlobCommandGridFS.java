@@ -13,11 +13,9 @@ name|jackrabbit
 operator|.
 name|mongomk
 operator|.
-name|impl
-operator|.
-name|command
-operator|.
 name|blob
+operator|.
+name|gridfs
 package|;
 end_package
 
@@ -64,24 +62,6 @@ operator|.
 name|digest
 operator|.
 name|DigestUtils
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|mongomk
-operator|.
-name|impl
-operator|.
-name|command
-operator|.
-name|BaseCommand
 import|;
 end_import
 
@@ -277,6 +257,7 @@ argument_list|()
 return|;
 block|}
 specifier|private
+specifier|static
 name|String
 name|calculateMd5
 parameter_list|(

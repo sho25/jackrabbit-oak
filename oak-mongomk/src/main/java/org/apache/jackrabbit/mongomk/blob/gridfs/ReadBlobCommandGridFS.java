@@ -13,11 +13,9 @@ name|jackrabbit
 operator|.
 name|mongomk
 operator|.
-name|impl
-operator|.
-name|command
-operator|.
 name|blob
+operator|.
+name|gridfs
 package|;
 end_package
 
@@ -44,24 +42,6 @@ operator|.
 name|util
 operator|.
 name|IOUtils
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|mongomk
-operator|.
-name|impl
-operator|.
-name|command
-operator|.
-name|BaseCommand
 import|;
 end_import
 

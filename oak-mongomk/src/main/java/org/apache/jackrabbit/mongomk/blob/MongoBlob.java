@@ -13,9 +13,7 @@ name|jackrabbit
 operator|.
 name|mongomk
 operator|.
-name|impl
-operator|.
-name|model
+name|blob
 package|;
 end_package
 
@@ -30,7 +28,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * The {@code MongoDB} representation of a blob. Only used by {@link MongoBlobStore}  */
+comment|/**  * The {@code MongoDB} representation of a blob. Only used by MongoBlobStore  */
 end_comment
 
 begin_class
