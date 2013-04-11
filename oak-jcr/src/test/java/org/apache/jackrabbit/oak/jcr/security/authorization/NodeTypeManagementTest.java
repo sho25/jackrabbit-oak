@@ -145,7 +145,7 @@ begin_class
 annotation|@
 name|Ignore
 argument_list|(
-literal|"OAK-51"
+literal|"OAK-51 : permission validator doesn't detect changes to mixin/primary type"
 argument_list|)
 specifier|public
 class|class
@@ -387,6 +387,11 @@ name|save
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Ignore
+argument_list|(
+literal|"OAK-767 : Implement Node#removeMixin"
+argument_list|)
 annotation|@
 name|Test
 specifier|public
@@ -810,9 +815,7 @@ name|destPath
 init|=
 name|parentPath
 operator|+
-literal|'/'
-operator|+
-name|nodeName3
+literal|"/destination"
 decl_stmt|;
 try|try
 block|{
@@ -937,9 +940,7 @@ name|destPath
 init|=
 name|parentPath
 operator|+
-literal|'/'
-operator|+
-name|nodeName3
+literal|"/destination"
 decl_stmt|;
 try|try
 block|{
@@ -1056,9 +1057,7 @@ name|destPath
 init|=
 name|parentPath
 operator|+
-literal|'/'
-operator|+
-name|nodeName3
+literal|"/destination"
 decl_stmt|;
 try|try
 block|{
@@ -1306,6 +1305,11 @@ name|save
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Ignore
+argument_list|(
+literal|"OAK-773 : Workspace Import XML"
+argument_list|)
 annotation|@
 name|Test
 specifier|public
