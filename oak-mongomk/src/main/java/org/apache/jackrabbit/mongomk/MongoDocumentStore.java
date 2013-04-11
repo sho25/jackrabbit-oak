@@ -1198,7 +1198,7 @@ expr_stmt|;
 break|break;
 block|}
 case|case
-name|ADD_MAP_ENTRY
+name|SET_MAP_ENTRY
 case|:
 block|{
 name|setUpdates
@@ -1230,7 +1230,7 @@ expr_stmt|;
 break|break;
 block|}
 case|case
-name|SET_MAP_ENTRY
+name|SET_MAP
 case|:
 block|{
 name|String
@@ -1710,10 +1710,10 @@ expr_stmt|;
 break|break;
 block|}
 case|case
-name|SET_MAP_ENTRY
+name|SET_MAP
 case|:
 case|case
-name|ADD_MAP_ENTRY
+name|SET_MAP_ENTRY
 case|:
 block|{
 name|String
