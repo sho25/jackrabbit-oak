@@ -124,7 +124,6 @@ name|PARAM_APP_NAME
 init|=
 literal|"org.apache.jackrabbit.oak.auth.appName"
 decl_stmt|;
-comment|// TODO review again
 annotation|@
 name|Nonnull
 name|LoginContextProvider
