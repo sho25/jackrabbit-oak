@@ -660,8 +660,6 @@ operator|new
 name|ImmutableRoot
 argument_list|(
 name|before
-argument_list|,
-name|workspaceName
 argument_list|)
 argument_list|)
 expr_stmt|;

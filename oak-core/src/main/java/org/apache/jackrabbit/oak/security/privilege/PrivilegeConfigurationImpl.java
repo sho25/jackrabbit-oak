@@ -318,9 +318,7 @@ name|singletonList
 argument_list|(
 operator|new
 name|PrivilegeValidatorProvider
-argument_list|(
-name|workspaceName
-argument_list|)
+argument_list|()
 argument_list|)
 return|;
 block|}

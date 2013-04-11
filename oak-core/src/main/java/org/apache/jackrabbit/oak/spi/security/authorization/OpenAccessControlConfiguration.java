@@ -205,9 +205,6 @@ name|root
 parameter_list|,
 name|NamePathMapper
 name|namePathMapper
-parameter_list|,
-name|PermissionProvider
-name|permissionProvider
 parameter_list|)
 block|{
 throw|throw

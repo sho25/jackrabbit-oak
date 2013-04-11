@@ -427,11 +427,7 @@ argument_list|()
 operator|.
 name|getLoginContextProvider
 argument_list|(
-name|nodeStore
-argument_list|,
-name|commitHook
-argument_list|,
-name|indexProvider
+name|this
 argument_list|)
 decl_stmt|;
 name|LoginContext

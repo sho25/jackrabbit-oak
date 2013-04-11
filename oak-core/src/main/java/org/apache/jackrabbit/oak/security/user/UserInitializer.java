@@ -291,6 +291,24 @@ name|spi
 operator|.
 name|security
 operator|.
+name|OpenSecurityProvider
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|security
+operator|.
 name|SecurityProvider
 import|;
 end_import
@@ -540,6 +558,7 @@ name|e
 argument_list|)
 throw|;
 block|}
+comment|// TODO reconsider
 name|Root
 name|root
 init|=
@@ -556,7 +575,9 @@ name|SystemSubject
 operator|.
 name|INSTANCE
 argument_list|,
-name|securityProvider
+operator|new
+name|OpenSecurityProvider
+argument_list|()
 argument_list|,
 name|indexProvider
 argument_list|)

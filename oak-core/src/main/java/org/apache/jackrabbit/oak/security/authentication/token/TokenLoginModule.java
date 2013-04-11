@@ -579,11 +579,6 @@ return|return
 literal|true
 return|;
 block|}
-comment|// the login attempt on this module did not succeed: clear state
-comment|// and check if another successful login asks for a new token to be created.
-name|clearState
-argument_list|()
-expr_stmt|;
 if|if
 condition|(
 name|tokenProvider
@@ -732,6 +727,11 @@ expr_stmt|;
 block|}
 block|}
 block|}
+comment|// the login attempt on this module did not succeed: clear state
+comment|// and check if another successful login asks for a new token to be created.
+name|clearState
+argument_list|()
+expr_stmt|;
 return|return
 literal|false
 return|;

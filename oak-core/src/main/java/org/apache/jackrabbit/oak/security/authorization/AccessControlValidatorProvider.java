@@ -375,22 +375,12 @@ specifier|final
 name|SecurityProvider
 name|securityProvider
 decl_stmt|;
-specifier|private
-specifier|final
-name|String
-name|workspaceName
-decl_stmt|;
 name|AccessControlValidatorProvider
 parameter_list|(
 annotation|@
 name|Nonnull
 name|SecurityProvider
 name|securityProvider
-parameter_list|,
-annotation|@
-name|Nonnull
-name|String
-name|workspaceName
 parameter_list|)
 block|{
 name|this
@@ -398,12 +388,6 @@ operator|.
 name|securityProvider
 operator|=
 name|securityProvider
-expr_stmt|;
-name|this
-operator|.
-name|workspaceName
-operator|=
-name|workspaceName
 expr_stmt|;
 block|}
 comment|//--------------------------------------------------< ValidatorProvider>---
@@ -527,8 +511,6 @@ operator|new
 name|ImmutableRoot
 argument_list|(
 name|beforeRoot
-argument_list|,
-name|workspaceName
 argument_list|)
 decl_stmt|;
 name|PrivilegeManager
