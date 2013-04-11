@@ -1641,7 +1641,7 @@ argument_list|()
 operator|.
 name|equals
 argument_list|(
-name|getRootState
+name|getSecureRootState
 argument_list|()
 argument_list|)
 return|;
