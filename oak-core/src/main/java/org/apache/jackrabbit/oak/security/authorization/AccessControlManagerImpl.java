@@ -155,16 +155,6 @@ name|javax
 operator|.
 name|jcr
 operator|.
-name|UnsupportedRepositoryOperationException
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|jcr
-operator|.
 name|query
 operator|.
 name|Query
@@ -3384,7 +3374,6 @@ parameter_list|)
 throws|throws
 name|RepositoryException
 block|{
-comment|// TODO: replace XPATH
 comment|// TODO: specify sort order
 name|StringBuilder
 name|stmt
@@ -3796,27 +3785,13 @@ name|String
 name|absPath
 parameter_list|,
 annotation|@
-name|Nullable
+name|Nonnull
 name|PermissionProvider
 name|provider
 parameter_list|)
 throws|throws
 name|RepositoryException
 block|{
-comment|// TODO : OAK-707
-if|if
-condition|(
-name|provider
-operator|==
-literal|null
-condition|)
-block|{
-throw|throw
-operator|new
-name|UnsupportedRepositoryOperationException
-argument_list|()
-throw|;
-block|}
 name|Tree
 name|tree
 init|=
@@ -3948,27 +3923,13 @@ index|[]
 name|privileges
 parameter_list|,
 annotation|@
-name|Nullable
+name|Nonnull
 name|PermissionProvider
 name|provider
 parameter_list|)
 throws|throws
 name|RepositoryException
 block|{
-comment|// TODO : OAK-707
-if|if
-condition|(
-name|provider
-operator|==
-literal|null
-condition|)
-block|{
-throw|throw
-operator|new
-name|UnsupportedRepositoryOperationException
-argument_list|()
-throw|;
-block|}
 name|Tree
 name|tree
 init|=
