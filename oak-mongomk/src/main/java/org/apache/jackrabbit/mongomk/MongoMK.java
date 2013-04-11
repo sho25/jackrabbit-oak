@@ -815,6 +815,15 @@ expr_stmt|;
 name|init
 argument_list|()
 expr_stmt|;
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Initialized MongoMK with clusterNodeId: {}"
+argument_list|,
+name|clusterId
+argument_list|)
+expr_stmt|;
 block|}
 name|void
 name|init
@@ -2406,7 +2415,10 @@ name|equals
 argument_list|(
 literal|"true"
 argument_list|)
-operator|&&
+condition|)
+block|{
+if|if
+condition|(
 operator|!
 name|branchCommits
 operator|.
@@ -2419,6 +2431,32 @@ block|{
 return|return
 literal|true
 return|;
+block|}
+block|}
+else|else
+block|{
+comment|// branch commit
+if|if
+condition|(
+name|Revision
+operator|.
+name|fromString
+argument_list|(
+name|value
+argument_list|)
+operator|.
+name|getClusterId
+argument_list|()
+operator|!=
+name|clusterId
+condition|)
+block|{
+comment|// this is an unmerged branch commit from another cluster node,
+comment|// hence never visible to us
+return|return
+literal|false
+return|;
+block|}
 block|}
 return|return
 name|includeRevision
