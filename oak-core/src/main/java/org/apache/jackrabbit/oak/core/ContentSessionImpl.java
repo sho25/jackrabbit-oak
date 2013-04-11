@@ -18,6 +18,22 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkState
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -218,22 +234,6 @@ operator|.
 name|slf4j
 operator|.
 name|LoggerFactory
-import|;
-end_import
-
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|Preconditions
-operator|.
-name|checkState
 import|;
 end_import
 
@@ -500,6 +500,19 @@ operator|.
 name|checkLive
 argument_list|()
 expr_stmt|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|ContentSession
+name|getContentSession
+parameter_list|()
+block|{
+return|return
+name|ContentSessionImpl
+operator|.
+name|this
+return|;
 block|}
 block|}
 decl_stmt|;

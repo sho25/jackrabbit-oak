@@ -259,6 +259,22 @@ name|oak
 operator|.
 name|api
 operator|.
+name|ContentSession
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|api
+operator|.
 name|QueryEngine
 import|;
 end_import
@@ -1040,6 +1056,19 @@ name|checkLive
 parameter_list|()
 block|{      }
 comment|//---------------------------------------------------------------< Root>---
+annotation|@
+name|Override
+specifier|public
+name|ContentSession
+name|getContentSession
+parameter_list|()
+block|{
+throw|throw
+operator|new
+name|UnsupportedOperationException
+argument_list|()
+throw|;
+block|}
 annotation|@
 name|Override
 specifier|public

@@ -124,6 +124,13 @@ name|BlobFactory
 name|getBlobFactory
 parameter_list|()
 function_decl|;
+comment|/**      * Get the {@code ContentSession} from which this root was acquired      *       * @return the associated ContentSession      *       * @throws UnsupportedOperationException      */
+annotation|@
+name|Nonnull
+name|ContentSession
+name|getContentSession
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 
