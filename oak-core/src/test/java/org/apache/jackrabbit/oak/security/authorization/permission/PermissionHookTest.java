@@ -1145,7 +1145,7 @@ block|}
 annotation|@
 name|Ignore
 argument_list|(
-literal|"PermissionHook#propertyChange"
+literal|"OAK-526 : PermissionHook#propertyChange"
 argument_list|)
 comment|// TODO
 annotation|@
@@ -1257,7 +1257,7 @@ block|}
 annotation|@
 name|Ignore
 argument_list|(
-literal|"PermissionHook#propertyChange"
+literal|"OAK-526 : PermissionHook#propertyChange"
 argument_list|)
 comment|// TODO
 annotation|@
