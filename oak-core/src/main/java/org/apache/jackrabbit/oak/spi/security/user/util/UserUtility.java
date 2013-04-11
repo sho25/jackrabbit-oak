@@ -158,7 +158,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * UserUtils... TODO  */
+comment|/**  * Utility methods for user management.  */
 end_comment
 
 begin_class
@@ -237,7 +237,6 @@ name|AuthorizableType
 name|type
 parameter_list|)
 block|{
-comment|// FIXME: check for node type according to the specified type constraint
 if|if
 condition|(
 name|authorizableTree
