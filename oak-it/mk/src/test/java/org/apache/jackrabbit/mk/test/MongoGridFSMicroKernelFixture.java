@@ -43,9 +43,9 @@ name|jackrabbit
 operator|.
 name|mongomk
 operator|.
-name|impl
-operator|.
 name|blob
+operator|.
+name|gridfs
 operator|.
 name|MongoGridFSBlobStore
 import|;

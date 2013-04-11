@@ -43,8 +43,6 @@ name|jackrabbit
 operator|.
 name|mongomk
 operator|.
-name|impl
-operator|.
 name|blob
 operator|.
 name|MongoBlobStore
