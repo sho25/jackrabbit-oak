@@ -128,7 +128,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * ConfigurationUtil... TODO  */
+comment|/**  * Utility to create {@link Configuration}s for built-in LoginModule implementations.  */
 end_comment
 
 begin_class
@@ -141,6 +141,7 @@ specifier|private
 name|ConfigurationUtil
 parameter_list|()
 block|{     }
+comment|/**      * Creates a new {@link Configuration} for the default OAK authentication      * setup which only handles login for standard JCR credentials.      *      * @param loginConfiguration The configuration parameters.      * @return A new {@code Configuration}      */
 specifier|public
 specifier|static
 name|Configuration
@@ -208,6 +209,7 @@ block|}
 block|}
 return|;
 block|}
+comment|/**      * Creates a new {@link Configuration} backwards compatible with the default      * Jackrabbit 2.x authentication setup. In addition to login with standard JCR      * credentials this configuration also handles      * {@link org.apache.jackrabbit.api.security.authentication.token.TokenCredentials}      * and under certain circumstances treats login without credentials as      * anonymous login.      *      * @param loginConfiguration The configuration parameters.      * @return A new {@code Configuration}      */
 specifier|public
 specifier|static
 name|Configuration
