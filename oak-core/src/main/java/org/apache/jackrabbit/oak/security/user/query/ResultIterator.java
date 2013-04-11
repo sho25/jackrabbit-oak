@@ -42,7 +42,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Implements a query result iterator which only returns a maximum number of  * element from an underlying iterator starting at a given offset.  *  * @param<T> element type of the query results  *  * TODO move to query-commons ?  */
+comment|/**  * Implements a query result iterator which only returns a maximum number of  * element from an underlying iterator starting at a given offset.  *  * @param<T> element type of the query results  */
 end_comment
 
 begin_class

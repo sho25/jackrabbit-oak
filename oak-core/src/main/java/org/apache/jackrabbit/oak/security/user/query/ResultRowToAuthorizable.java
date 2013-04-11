@@ -222,7 +222,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * ResultRowToAuthorizable... TODO  */
+comment|/**  * Function to convert query result rows {@link Authorizable}s of a given  * target type.  */
 end_comment
 
 begin_class

@@ -130,7 +130,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * GroupPredicate... TODO  */
+comment|/**  * Predicate used to filter authorizables based on their group membership.  */
 end_comment
 
 begin_class

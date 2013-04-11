@@ -382,7 +382,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * UserQueryManager... TODO  *<p/>  * TODO OAK-253: replace usage of XPATH  */
+comment|/**  * Query manager for user specific searches.  */
 end_comment
 
 begin_class
