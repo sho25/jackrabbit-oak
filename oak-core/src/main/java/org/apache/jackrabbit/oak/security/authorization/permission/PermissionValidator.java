@@ -1315,11 +1315,10 @@ argument_list|)
 condition|)
 block|{
 comment|// FIXME: distinguish between autocreated and user-supplied modification (?)
+comment|// perm = Permissions.NODE_TYPE_MANAGEMENT;
 name|perm
 operator|=
-name|Permissions
-operator|.
-name|NODE_TYPE_MANAGEMENT
+name|defaultPermission
 expr_stmt|;
 block|}
 elseif|else
