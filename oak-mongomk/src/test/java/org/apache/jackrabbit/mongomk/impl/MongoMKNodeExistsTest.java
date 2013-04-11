@@ -78,7 +78,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Tests for {@code MongoMicroKernel#nodeExists(String, String)}  */
+comment|/**  * Tests for nodeExists.  */
 end_comment
 
 begin_class
@@ -151,7 +151,7 @@ name|revisionId
 operator|=
 name|scenario
 operator|.
-name|delete_A
+name|deleteA
 argument_list|()
 expr_stmt|;
 name|exists
@@ -229,7 +229,7 @@ argument_list|)
 expr_stmt|;
 name|scenario
 operator|.
-name|delete_A
+name|deleteA
 argument_list|()
 expr_stmt|;
 name|exists
@@ -294,7 +294,9 @@ parameter_list|(
 name|Exception
 name|expected
 parameter_list|)
-block|{         }
+block|{
+comment|// expected
+block|}
 block|}
 annotation|@
 name|Test
@@ -338,7 +340,7 @@ argument_list|)
 expr_stmt|;
 name|scenario
 operator|.
-name|delete_A
+name|deleteA
 argument_list|()
 expr_stmt|;
 name|exists
@@ -497,7 +499,7 @@ name|rev2
 init|=
 name|scenario
 operator|.
-name|delete_A
+name|deleteA
 argument_list|()
 decl_stmt|;
 name|boolean
@@ -559,7 +561,7 @@ argument_list|()
 expr_stmt|;
 name|scenario
 operator|.
-name|delete_B
+name|deleteB
 argument_list|()
 expr_stmt|;
 name|boolean

@@ -119,16 +119,6 @@ name|Test
 import|;
 end_import
 
-begin_import
-import|import
-name|com
-operator|.
-name|mongodb
-operator|.
-name|DB
-import|;
-end_import
-
 begin_comment
 comment|/**  * Tests for multiple MongoMKs writing against the same DB in separate trees.  */
 end_comment
@@ -157,9 +147,9 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
+comment|// Ignored only because it takes a while to complete.
 annotation|@
 name|Ignore
-comment|// Ignored only because it takes a while to complete.
 specifier|public
 name|void
 name|testLarge
@@ -265,15 +255,6 @@ operator|.
 name|toString
 argument_list|()
 decl_stmt|;
-comment|//System.out.println(diff);
-name|DB
-name|db
-init|=
-name|mongoConnection
-operator|.
-name|getDB
-argument_list|()
-decl_stmt|;
 name|MongoMK
 name|mk
 init|=
@@ -372,6 +353,7 @@ condition|;
 name|i
 operator|++
 control|)
+block|{
 name|diff
 operator|.
 name|append
@@ -386,6 +368,7 @@ name|i
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 return|return
 name|diff
 return|;
@@ -440,12 +423,14 @@ argument_list|(
 literal|"/"
 argument_list|)
 condition|)
+block|{
 name|startingPoint
 operator|=
 name|startingPoint
 operator|+
 literal|"/"
 expr_stmt|;
+block|}
 name|buildPyramidDiff
 argument_list|(
 name|startingPoint
@@ -475,6 +460,7 @@ name|diff
 return|;
 block|}
 specifier|private
+specifier|static
 name|String
 name|addNodeToDiff
 parameter_list|(
@@ -504,7 +490,6 @@ literal|"/"
 expr_stmt|;
 block|}
 return|return
-operator|(
 literal|"+\""
 operator|+
 name|startingPoint
@@ -512,9 +497,9 @@ operator|+
 name|nodeName
 operator|+
 literal|"\" : {} \n"
-operator|)
 return|;
 block|}
+comment|/**      * A simple write task.      */
 specifier|private
 specifier|static
 class|class
@@ -578,6 +563,15 @@ name|nodesPerCommit
 operator|=
 name|nodesPerCommit
 expr_stmt|;
+block|}
+specifier|public
+name|String
+name|toString
+parameter_list|()
+block|{
+return|return
+name|id
+return|;
 block|}
 annotation|@
 name|Override
@@ -665,9 +659,6 @@ name|nodesPerCommit
 condition|)
 block|{
 comment|//System.out.println("[" + id + "] Committing: " + currentCommit.toString());
-name|String
-name|rev
-init|=
 name|mk
 operator|.
 name|commit
@@ -683,7 +674,7 @@ literal|null
 argument_list|,
 literal|null
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 comment|//System.out.println("[" + id + "] Committed-" + rev + ":" + currentCommit.toString());
 name|currentCommit
 operator|.
@@ -708,6 +699,7 @@ argument_list|()
 operator|>
 literal|0
 condition|)
+block|{
 name|mk
 operator|.
 name|commit
@@ -724,6 +716,7 @@ argument_list|,
 literal|null
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 block|}

@@ -76,7 +76,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Tests for {@code MongoMicroKernel#getHeadRevision()}.  */
+comment|/**  * Tests for getHeadRevision().  */
 end_comment
 
 begin_class
@@ -126,7 +126,9 @@ parameter_list|(
 name|Exception
 name|expected
 parameter_list|)
-block|{}
+block|{
+comment|// expected
+block|}
 block|}
 annotation|@
 name|Test
@@ -168,7 +170,9 @@ parameter_list|(
 name|Exception
 name|expected
 parameter_list|)
-block|{}
+block|{
+comment|// expected
+block|}
 block|}
 annotation|@
 name|Test
@@ -249,7 +253,7 @@ argument_list|)
 expr_stmt|;
 name|scenario
 operator|.
-name|delete_A
+name|deleteA
 argument_list|()
 expr_stmt|;
 name|root

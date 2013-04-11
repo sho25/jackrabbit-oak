@@ -76,7 +76,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Tests for {@link MongoMicroKernel#getRevisionHistory(long, int, String)}  */
+comment|/**  * Tests for getRevisionHistory  */
 end_comment
 
 begin_class
@@ -489,6 +489,7 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+comment|// To make sure there's a little delay since the initial commit.
 name|Thread
 operator|.
 name|sleep
@@ -496,7 +497,6 @@ argument_list|(
 literal|100
 argument_list|)
 expr_stmt|;
-comment|// To make sure there's a little delay since the initial commit.
 name|long
 name|since1
 init|=

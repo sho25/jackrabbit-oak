@@ -33,6 +33,10 @@ name|MicroKernel
 import|;
 end_import
 
+begin_comment
+comment|/**  * A class that can perform simple operations.  */
+end_comment
+
 begin_class
 specifier|public
 class|class
@@ -137,7 +141,7 @@ return|;
 block|}
 specifier|public
 name|String
-name|delete_A
+name|deleteA
 parameter_list|()
 throws|throws
 name|Exception
@@ -159,7 +163,7 @@ return|;
 block|}
 specifier|public
 name|String
-name|delete_B
+name|deleteB
 parameter_list|()
 throws|throws
 name|Exception
@@ -176,73 +180,6 @@ argument_list|,
 literal|null
 argument_list|,
 literal|"Commit with deleted /a/b"
-argument_list|)
-return|;
-block|}
-specifier|public
-name|String
-name|update_A_and_add_D_and_E
-parameter_list|()
-throws|throws
-name|Exception
-block|{
-name|StringBuilder
-name|diff
-init|=
-operator|new
-name|StringBuilder
-argument_list|()
-decl_stmt|;
-name|diff
-operator|.
-name|append
-argument_list|(
-literal|"+\"a/d\" : {}"
-argument_list|)
-expr_stmt|;
-name|diff
-operator|.
-name|append
-argument_list|(
-literal|"+\"a/b/e\" : {}"
-argument_list|)
-expr_stmt|;
-name|diff
-operator|.
-name|append
-argument_list|(
-literal|"^\"a/double\" : 0.123"
-argument_list|)
-expr_stmt|;
-name|diff
-operator|.
-name|append
-argument_list|(
-literal|"^\"a/d/int\" :  2"
-argument_list|)
-expr_stmt|;
-name|diff
-operator|.
-name|append
-argument_list|(
-literal|"^\"a/b/e/array\" : [ 123, null, 123.456, \"for:bar\", true ]"
-argument_list|)
-expr_stmt|;
-return|return
-name|mk
-operator|.
-name|commit
-argument_list|(
-literal|"/"
-argument_list|,
-name|diff
-operator|.
-name|toString
-argument_list|()
-argument_list|,
-literal|null
-argument_list|,
-literal|"Commit with updated /a and added /a/d and /a/b/e"
 argument_list|)
 return|;
 block|}

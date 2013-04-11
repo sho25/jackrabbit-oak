@@ -98,7 +98,7 @@ annotation|@
 name|Test
 specifier|public
 name|void
-name|oak_596
+name|oak596
 parameter_list|()
 block|{
 name|String

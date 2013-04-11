@@ -122,7 +122,7 @@ name|rev3
 init|=
 name|scenario
 operator|.
-name|delete_A
+name|deleteA
 argument_list|()
 decl_stmt|;
 name|assertFalse

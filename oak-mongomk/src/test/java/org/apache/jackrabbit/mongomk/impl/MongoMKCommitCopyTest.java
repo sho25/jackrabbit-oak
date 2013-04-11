@@ -100,7 +100,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Tests for {@link MongoMicroKernel#commit(String, String, String, String)}  * with emphasis on copy operations.  */
+comment|/**  * Tests with emphasis on copy operations.  */
 end_comment
 
 begin_class
@@ -807,7 +807,9 @@ parameter_list|(
 name|Exception
 name|expected
 parameter_list|)
-block|{}
+block|{
+comment|// expected
+block|}
 block|}
 annotation|@
 name|Test
@@ -870,7 +872,9 @@ parameter_list|(
 name|Exception
 name|expected
 parameter_list|)
-block|{}
+block|{
+comment|// expected
+block|}
 block|}
 annotation|@
 name|Test
@@ -1265,7 +1269,9 @@ parameter_list|(
 name|Exception
 name|expected
 parameter_list|)
-block|{}
+block|{
+comment|// expected
+block|}
 block|}
 annotation|@
 name|Test

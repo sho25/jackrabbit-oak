@@ -233,6 +233,10 @@ name|DB
 import|;
 end_import
 
+begin_comment
+comment|/**  * The OSGi service to start/stop a MongoMK instance.  */
+end_comment
+
 begin_class
 annotation|@
 name|Component

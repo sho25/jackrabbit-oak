@@ -132,7 +132,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Tests for {@link MongoMicroKernel#commit(String, String, String, String)}  * with emphasis on add node and property operations.  */
+comment|/**  * Tests for add node and property operations.  */
 end_comment
 
 begin_class
@@ -706,7 +706,9 @@ parameter_list|(
 name|Exception
 name|expected
 parameter_list|)
-block|{}
+block|{
+comment|// expected
+block|}
 block|}
 annotation|@
 name|Test
@@ -1186,7 +1188,9 @@ parameter_list|(
 name|Exception
 name|expected
 parameter_list|)
-block|{}
+block|{
+comment|// expected
+block|}
 block|}
 annotation|@
 name|Test
@@ -1357,6 +1361,7 @@ if|if
 condition|(
 name|debug
 condition|)
+block|{
 name|System
 operator|.
 name|out
@@ -1368,6 +1373,7 @@ operator|+
 name|diff
 argument_list|)
 expr_stmt|;
+block|}
 name|mk
 operator|.
 name|commit
@@ -1390,6 +1396,7 @@ if|if
 condition|(
 name|debug
 condition|)
+block|{
 name|System
 operator|.
 name|out
@@ -1407,10 +1414,12 @@ literal|"ms"
 argument_list|)
 expr_stmt|;
 block|}
+block|}
 if|if
 condition|(
 name|debug
 condition|)
+block|{
 name|System
 operator|.
 name|out
@@ -1422,6 +1431,7 @@ operator|+
 name|commitMonitor
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 annotation|@
 name|Test

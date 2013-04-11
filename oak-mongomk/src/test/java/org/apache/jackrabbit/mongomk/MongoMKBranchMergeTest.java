@@ -1803,7 +1803,9 @@ parameter_list|(
 name|Exception
 name|expected
 parameter_list|)
-block|{}
+block|{
+comment|// expected
+block|}
 block|}
 annotation|@
 name|Test
@@ -1860,7 +1862,9 @@ parameter_list|(
 name|Exception
 name|expected
 parameter_list|)
-block|{}
+block|{
+comment|// expected
+block|}
 block|}
 annotation|@
 name|Test
@@ -1939,7 +1943,9 @@ parameter_list|(
 name|Exception
 name|expected
 parameter_list|)
-block|{}
+block|{
+comment|// expected
+block|}
 block|}
 annotation|@
 name|Test
@@ -2098,7 +2104,9 @@ parameter_list|(
 name|Exception
 name|expected
 parameter_list|)
-block|{}
+block|{
+comment|// expected
+block|}
 block|}
 annotation|@
 name|Test

@@ -59,6 +59,26 @@ end_import
 
 begin_import
 import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
+import|;
+end_import
+
+begin_import
+import|import
 name|com
 operator|.
 name|mongodb
@@ -76,6 +96,21 @@ specifier|public
 class|class
 name|BlobTest
 block|{
+specifier|private
+specifier|static
+specifier|final
+name|Logger
+name|LOG
+init|=
+name|LoggerFactory
+operator|.
+name|getLogger
+argument_list|(
+name|RandomizedClusterTest
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 comment|//     private static final boolean MONGO_DB = true;
 comment|//     private static final long TOTAL_SIZE = 1 * 1024 * 1024 * 1024;
 comment|//     private static final int DOCUMENT_COUNT = 10;
@@ -293,24 +328,9 @@ name|String
 name|s
 parameter_list|)
 block|{
-if|if
-condition|(
-name|TOTAL_SIZE
-operator|<
-literal|10
-operator|*
-literal|1024
-operator|*
-literal|1024
-condition|)
-block|{
-return|return;
-block|}
-name|System
+name|LOG
 operator|.
-name|out
-operator|.
-name|println
+name|info
 argument_list|(
 name|s
 argument_list|)

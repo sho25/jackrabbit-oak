@@ -100,7 +100,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Tests for {@link MongoMicroKernel#commit(String, String, String, String)}  * with emphasis on remove node and property operations.  */
+comment|/**  * Tests with emphasis on remove node and property operations.  */
 end_comment
 
 begin_class
@@ -220,7 +220,9 @@ parameter_list|(
 name|Exception
 name|expected
 parameter_list|)
-block|{}
+block|{
+comment|// expected
+block|}
 block|}
 annotation|@
 name|Test

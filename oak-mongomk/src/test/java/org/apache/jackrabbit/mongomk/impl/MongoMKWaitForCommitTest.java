@@ -314,6 +314,7 @@ argument_list|,
 name|rev
 argument_list|)
 expr_stmt|;
+comment|// Basically no wait.
 name|assertTrue
 argument_list|(
 name|after
@@ -323,7 +324,6 @@ operator|<
 literal|100
 argument_list|)
 expr_stmt|;
-comment|// Basically no wait.
 block|}
 annotation|@
 name|Test
@@ -771,6 +771,7 @@ argument_list|,
 name|rev
 argument_list|)
 expr_stmt|;
+comment|// Basically no wait.
 name|assertTrue
 argument_list|(
 name|after
@@ -780,7 +781,6 @@ operator|<
 literal|10
 argument_list|)
 expr_stmt|;
-comment|// Basically no wait.
 block|}
 specifier|private
 name|ScheduledFuture

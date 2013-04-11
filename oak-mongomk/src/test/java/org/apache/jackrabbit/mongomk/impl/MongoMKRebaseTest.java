@@ -306,14 +306,12 @@ argument_list|)
 expr_stmt|;
 name|assertFalse
 argument_list|(
-operator|(
 name|trunk
 operator|.
 name|equals
 argument_list|(
 name|rebased
 argument_list|)
-operator|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -364,9 +362,6 @@ argument_list|,
 literal|null
 argument_list|)
 expr_stmt|;
-name|String
-name|trunk
-init|=
 name|mk
 operator|.
 name|commit
@@ -379,7 +374,7 @@ literal|null
 argument_list|,
 literal|null
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 name|String
 name|rebased
 init|=
@@ -566,9 +561,6 @@ argument_list|,
 literal|null
 argument_list|)
 expr_stmt|;
-name|String
-name|trunk
-init|=
 name|mk
 operator|.
 name|commit
@@ -581,7 +573,7 @@ literal|null
 argument_list|,
 literal|null
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 name|String
 name|rebased
 init|=
@@ -747,9 +739,6 @@ argument_list|,
 literal|null
 argument_list|)
 expr_stmt|;
-name|String
-name|trunk
-init|=
 name|mk
 operator|.
 name|commit
@@ -762,7 +751,7 @@ literal|null
 argument_list|,
 literal|null
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 name|String
 name|rebased
 init|=
@@ -946,9 +935,6 @@ argument_list|,
 literal|null
 argument_list|)
 expr_stmt|;
-name|String
-name|trunk
-init|=
 name|mk
 operator|.
 name|commit
@@ -961,7 +947,7 @@ literal|null
 argument_list|,
 literal|null
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 name|String
 name|rebased
 init|=
@@ -1145,9 +1131,6 @@ argument_list|,
 literal|null
 argument_list|)
 expr_stmt|;
-name|String
-name|trunk
-init|=
 name|mk
 operator|.
 name|commit
@@ -1160,7 +1143,7 @@ literal|null
 argument_list|,
 literal|null
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 name|String
 name|rebased
 init|=
@@ -1342,9 +1325,6 @@ argument_list|,
 literal|null
 argument_list|)
 expr_stmt|;
-name|String
-name|trunk
-init|=
 name|mk
 operator|.
 name|commit
@@ -1357,10 +1337,7 @@ literal|null
 argument_list|,
 literal|null
 argument_list|)
-decl_stmt|;
-name|String
-name|rebased
-init|=
+expr_stmt|;
 name|mk
 operator|.
 name|rebase
@@ -1369,7 +1346,7 @@ name|branch
 argument_list|,
 literal|null
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 name|String
 name|branchNode
 init|=
@@ -2602,9 +2579,6 @@ argument_list|(
 literal|null
 argument_list|)
 decl_stmt|;
-name|String
-name|trunk
-init|=
 name|mk
 operator|.
 name|commit
@@ -2617,7 +2591,7 @@ literal|null
 argument_list|,
 literal|null
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 name|branch
 operator|=
 name|mk

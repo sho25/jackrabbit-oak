@@ -76,7 +76,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Tests for {@link MongoMicroKernel#getChildNodeCount(String, String)}  */
+comment|/**  * Tests getChildNodeCount.  */
 end_comment
 
 begin_class
@@ -437,7 +437,9 @@ parameter_list|(
 name|Exception
 name|expected
 parameter_list|)
-block|{}
+block|{
+comment|// expected
+block|}
 block|}
 block|}
 end_class
