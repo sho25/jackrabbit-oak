@@ -353,7 +353,7 @@ name|PermissionValidator
 extends|extends
 name|DefaultValidator
 block|{
-comment|/* TODO      * - Renaming nodes or Move with same parent are reflected as remove+add -> needs special handling      * - Proper handling of jcr:nodeTypeManagement privilege.      */
+comment|/* TODO      * - OAK-710: Renaming nodes or Move with same parent are reflected as remove+add -> needs special handling      * - OAK-711: Proper handling of jcr:nodeTypeManagement privilege.      */
 specifier|private
 specifier|final
 name|Tree
@@ -1241,7 +1241,7 @@ expr_stmt|;
 block|}
 else|else
 block|{
-comment|// FIXME: identify renaming/move of nodes that only required MODIFY_CHILD_NODE_COLLECTION permission
+comment|// FIXME: OAK-710 (identify renaming/move of nodes that only required MODIFY_CHILD_NODE_COLLECTION permission)
 name|perm
 operator|=
 name|defaultPermission
@@ -1314,7 +1314,7 @@ name|name
 argument_list|)
 condition|)
 block|{
-comment|// FIXME: distinguish between autocreated and user-supplied modification (?)
+comment|// FIXME: OAK-711 (distinguish between autocreated and user-supplied modification (?))
 comment|// perm = Permissions.NODE_TYPE_MANAGEMENT;
 name|perm
 operator|=

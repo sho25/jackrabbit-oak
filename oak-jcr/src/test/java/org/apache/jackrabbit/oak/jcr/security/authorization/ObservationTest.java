@@ -74,7 +74,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * ObservationTest... TODO  */
+comment|/**  * Permission evaluation tests related to observation.  */
 end_comment
 
 begin_class

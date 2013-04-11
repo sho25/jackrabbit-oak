@@ -126,7 +126,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * PrivilegeManagementTest... TODO  */
+comment|/**  * Permission evaluation tests related to {@link #REP_PRIVILEGE_MANAGEMENT} privilege.  */
 end_comment
 
 begin_class

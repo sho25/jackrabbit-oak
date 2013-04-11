@@ -108,7 +108,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * NodeTypeDefinitionManagementTest... TODO  */
+comment|/**  * Permission evaluation tests related to {@link #JCR_NODE_TYPE_DEFINITION_MANAGEMENT} privilege.  */
 end_comment
 
 begin_class
@@ -118,6 +118,7 @@ name|NodeTypeDefinitionManagementTest
 extends|extends
 name|AbstractEvaluationTest
 block|{
+comment|// TODO: replace with JCR privilege constant (JSR-333)
 specifier|private
 specifier|static
 specifier|final

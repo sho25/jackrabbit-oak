@@ -119,22 +119,12 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Ignore
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
 name|Test
 import|;
 end_import
 
 begin_comment
-comment|/**  * NamespaceManagementTest... TODO  */
+comment|/**  * Permission evaluation tests related to {@link #JCR_NAMESPACE_MANAGEMENT} privilege.  */
 end_comment
 
 begin_class
@@ -144,6 +134,7 @@ name|NamespaceManagementTest
 extends|extends
 name|AbstractEvaluationTest
 block|{
+comment|// TODO: replace with JCR privilege constant (JSR-333)
 specifier|private
 specifier|static
 specifier|final

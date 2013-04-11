@@ -160,7 +160,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * InheritanceTest... TODO  */
+comment|/**  * Permission evaluation tests focusing on inheritance.  */
 end_comment
 
 begin_class

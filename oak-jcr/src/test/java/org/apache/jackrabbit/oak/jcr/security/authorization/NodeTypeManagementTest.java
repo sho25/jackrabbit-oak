@@ -138,14 +138,14 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * NodeTypeManagementTest... TODO  */
+comment|/**  * Permission evaluation tests related to {@link Privilege#JCR_NODE_TYPE_MANAGEMENT} privilege.  */
 end_comment
 
 begin_class
 annotation|@
 name|Ignore
 argument_list|(
-literal|"OAK-51 : permission validator doesn't detect changes to mixin/primary type"
+literal|"OAK-711 : permission validator doesn't detect changes to mixin/primary type"
 argument_list|)
 specifier|public
 class|class

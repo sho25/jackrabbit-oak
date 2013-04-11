@@ -188,7 +188,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * WriteTest... TODO  */
+comment|/**  * Permission evaluation tests related to write operations.  */
 end_comment
 
 begin_class

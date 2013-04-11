@@ -104,7 +104,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * ReadTest... TODO  */
+comment|/**  * Permission evaluation tests related to {@link javax.jcr.security.Privilege#JCR_READ} privilege.  */
 end_comment
 
 begin_class

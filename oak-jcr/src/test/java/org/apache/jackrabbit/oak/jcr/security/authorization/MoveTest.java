@@ -84,14 +84,14 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * MoveTest... TODO  */
+comment|/**  * Permission evaluation tests for move operations.  */
 end_comment
 
 begin_class
 annotation|@
 name|Ignore
 argument_list|(
-literal|"OAK-51 : permission validator doesn't detect move"
+literal|"OAK-710 : permission validator doesn't detect move"
 argument_list|)
 specifier|public
 class|class

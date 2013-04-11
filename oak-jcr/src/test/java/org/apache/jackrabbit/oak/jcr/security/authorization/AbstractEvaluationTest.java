@@ -404,7 +404,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Base class for testing access control evaluation using JCR API.  */
+comment|/**  * Base class for testing permission evaluation using JCR API.  */
 end_comment
 
 begin_class

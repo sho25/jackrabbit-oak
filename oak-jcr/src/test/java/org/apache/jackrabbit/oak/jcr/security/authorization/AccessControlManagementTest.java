@@ -228,7 +228,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * AccessControlManagementTest... TODO  */
+comment|/**  * Permission evaluation tests related to access control management.  */
 end_comment
 
 begin_class
