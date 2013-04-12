@@ -3131,7 +3131,7 @@ name|f
 operator|.
 name|selector
 argument_list|(
-literal|"nodeTypeName"
+literal|"nt:file"
 argument_list|,
 literal|"x"
 argument_list|)

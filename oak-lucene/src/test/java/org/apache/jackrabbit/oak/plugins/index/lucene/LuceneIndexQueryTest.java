@@ -358,7 +358,7 @@ name|result
 init|=
 name|executeQuery
 argument_list|(
-literal|"select * from [nt:base] where isdescendantnode('/test')"
+literal|"select [jcr:path] from [nt:base] where isdescendantnode('/test')"
 argument_list|,
 literal|"JCR-SQL2"
 argument_list|)
@@ -434,7 +434,7 @@ name|result
 init|=
 name|executeQuery
 argument_list|(
-literal|"select * from [nt:base] where isdescendantnode('/test') and name='World'"
+literal|"select [jcr:path] from [nt:base] where isdescendantnode('/test') and name='World'"
 argument_list|,
 literal|"JCR-SQL2"
 argument_list|)
@@ -509,7 +509,7 @@ name|result
 init|=
 name|executeQuery
 argument_list|(
-literal|"select * from [nt:base] as p inner join [nt:base] as p2 on ischildnode(p2, p) where p.[jcr:path] = '/'"
+literal|"select p.[jcr:path], p2.[jcr:path] from [nt:base] as p inner join [nt:base] as p2 on ischildnode(p2, p) where p.[jcr:path] = '/'"
 argument_list|,
 literal|"JCR-SQL2"
 argument_list|)

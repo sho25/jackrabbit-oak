@@ -170,11 +170,6 @@ init|=
 literal|"oak:subtypes"
 decl_stmt|;
 name|String
-name|OAK_NAMED_PROPERTIES
-init|=
-literal|"oak:namedProperties"
-decl_stmt|;
-name|String
 name|OAK_MANDATORY_PROPERTIES
 init|=
 literal|"oak:mandatoryProperties"
@@ -183,6 +178,11 @@ name|String
 name|OAK_MANDATORY_CHILD_NODES
 init|=
 literal|"oak:mandatoryChildNodes"
+decl_stmt|;
+name|String
+name|OAK_NAMED_SINGLE_VALUED_PROPERTIES
+init|=
+literal|"oak:namedSingleValuedProperties"
 decl_stmt|;
 name|String
 name|OAK_RESIDUAL_CHILD_NODE_DEFINITIONS
