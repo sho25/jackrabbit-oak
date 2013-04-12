@@ -116,7 +116,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * HiddenTreeTest... TODO  */
+comment|/**  * Test to make sure hidden trees are never exposed.  *  * TODO: review if this should rather be moved to o.a.jackrabbit.oak.core tests.  */
 end_comment
 
 begin_class
