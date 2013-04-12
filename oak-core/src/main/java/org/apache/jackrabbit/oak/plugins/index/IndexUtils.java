@@ -551,7 +551,7 @@ return|return
 name|index
 return|;
 block|}
-comment|/**      * Create a new property2 index definition below the given {@code indexNode}.      *      * @param index         The oak:index node builder      * @param indexDefName  The name of the new property index.      * @param reindex       {@code true} if the the reindex flag should be turned on.      * @param unique        {@code true} if the index is expected the assert property      *                      uniqueness.      * @param propertyNames The property names that should be indexed.      */
+comment|/**      * Create a new property2 index definition below the given {@code indexNode}.      *      * @param index         The oak:index node builder      * @param indexDefName  The name of the new property index.      * @param reindex       {@code true} if the the reindex flag should be turned on.      * @param unique        {@code true} if the index is expected the assert property      *                      uniqueness.      * @param propertyNames The property names that should be indexed.      * @param declaringNodeTypeNames The declaring node type names or {@code null}.      * @return the NodeBuilder of the new index definition.      */
 specifier|public
 specifier|static
 name|NodeBuilder
@@ -802,7 +802,7 @@ name|propertyNames
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Builds a list of the existing index definitions.      *<p/>      * Checks only children of the provided state for an index definitions      * container node, aka a node named {@link IndexConstants#INDEX_DEFINITIONS_NAME}      *      * @return      */
+comment|/**      * Builds a list of the existing index definitions.      *<p/>      * Checks only children of the provided state for an index definitions      * container node, aka a node named {@link IndexConstants#INDEX_DEFINITIONS_NAME}      *      * @param state      * @param indexConfigPath      * @param typeFilter      * @return A list of index definitions.      */
 specifier|public
 specifier|static
 name|List
@@ -913,7 +913,7 @@ return|return
 name|defs
 return|;
 block|}
-comment|/**      * Builds an {@link IndexDefinition} out of a {@link ChildNodeEntry}      */
+comment|/**      * Builds an {@link IndexDefinition} out of a {@link ChildNodeEntry}      *      * @param path      * @param def {@code ChildNodeEntry} storing the index definition.      * @param typeFilter      * @return a new {@code IndexDefinition}      */
 specifier|private
 specifier|static
 name|IndexDefinition
@@ -1098,11 +1098,9 @@ return|return
 name|def
 return|;
 block|}
+else|else
+block|{
 return|return
-name|ps
-operator|!=
-literal|null
-operator|&&
 name|ps
 operator|.
 name|getValue
@@ -1110,6 +1108,7 @@ argument_list|(
 name|BOOLEAN
 argument_list|)
 return|;
+block|}
 block|}
 block|}
 end_class
