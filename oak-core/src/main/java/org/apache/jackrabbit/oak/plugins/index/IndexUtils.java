@@ -802,7 +802,7 @@ name|propertyNames
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Builds a list of the existing index definitions.      *<p/>      * Checks only children of the provided state for an index definitions      * container node, aka a node named {@link #INDEX_DEFINITIONS_NAME}      *      * @return      */
+comment|/**      * Builds a list of the existing index definitions.      *<p/>      * Checks only children of the provided state for an index definitions      * container node, aka a node named {@link IndexConstants#INDEX_DEFINITIONS_NAME}      *      * @return      */
 specifier|public
 specifier|static
 name|List
