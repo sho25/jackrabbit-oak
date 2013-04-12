@@ -1269,10 +1269,10 @@ condition|(
 operator|(
 name|privs
 operator|&
-name|MODIFY_PROPERTIES
+name|ALTER_PROPERTIES
 operator|)
 operator|==
-name|MODIFY_PROPERTIES
+name|ALTER_PROPERTIES
 condition|)
 block|{
 name|perm
