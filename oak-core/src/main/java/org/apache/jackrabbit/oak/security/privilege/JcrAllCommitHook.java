@@ -454,14 +454,13 @@ comment|// update the privilege bits of the jcr:all in case the new
 comment|// privilege isn't an aggregate
 if|if
 condition|(
+operator|!
 name|after
 operator|.
-name|getProperty
+name|hasProperty
 argument_list|(
 name|REP_AGGREGATES
 argument_list|)
-operator|==
-literal|null
 condition|)
 block|{
 name|PrivilegeBits

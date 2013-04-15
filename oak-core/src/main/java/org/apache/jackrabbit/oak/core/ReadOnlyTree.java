@@ -496,12 +496,10 @@ block|{
 return|return
 name|state
 operator|.
-name|getProperty
+name|hasProperty
 argument_list|(
 name|name
 argument_list|)
-operator|!=
-literal|null
 return|;
 block|}
 annotation|@

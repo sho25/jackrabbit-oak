@@ -350,14 +350,13 @@ control|)
 block|{
 if|if
 condition|(
+operator|!
 name|node
 operator|.
-name|getProperty
+name|hasProperty
 argument_list|(
 name|name
 argument_list|)
-operator|==
-literal|null
 condition|)
 block|{
 name|builder

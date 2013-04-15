@@ -292,14 +292,13 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|!
 name|after
 operator|.
-name|getProperty
+name|hasProperty
 argument_list|(
 literal|"jcr:primaryType"
 argument_list|)
-operator|==
-literal|null
 condition|)
 block|{
 name|childBuilder

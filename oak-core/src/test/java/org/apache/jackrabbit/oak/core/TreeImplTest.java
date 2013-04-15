@@ -2175,7 +2175,7 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
-name|assertNotNull
+name|assertTrue
 argument_list|(
 operator|(
 operator|(
@@ -2187,7 +2187,7 @@ operator|.
 name|getNodeState
 argument_list|()
 operator|.
-name|getProperty
+name|hasProperty
 argument_list|(
 name|TreeImpl
 operator|.
@@ -2202,7 +2202,7 @@ argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
-name|assertNull
+name|assertFalse
 argument_list|(
 operator|(
 operator|(
@@ -2214,7 +2214,7 @@ operator|.
 name|getNodeState
 argument_list|()
 operator|.
-name|getProperty
+name|hasProperty
 argument_list|(
 name|TreeImpl
 operator|.
@@ -2234,7 +2234,7 @@ operator|.
 name|commit
 argument_list|()
 expr_stmt|;
-name|assertNotNull
+name|assertTrue
 argument_list|(
 operator|(
 operator|(
@@ -2246,7 +2246,7 @@ operator|.
 name|getNodeState
 argument_list|()
 operator|.
-name|getProperty
+name|hasProperty
 argument_list|(
 name|TreeImpl
 operator|.
@@ -2266,7 +2266,7 @@ operator|.
 name|commit
 argument_list|()
 expr_stmt|;
-name|assertNull
+name|assertFalse
 argument_list|(
 operator|(
 operator|(
@@ -2278,7 +2278,7 @@ operator|.
 name|getNodeState
 argument_list|()
 operator|.
-name|getProperty
+name|hasProperty
 argument_list|(
 name|TreeImpl
 operator|.

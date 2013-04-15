@@ -591,6 +591,16 @@ literal|"x"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|assertFalse
+argument_list|(
+name|state
+operator|.
+name|hasProperty
+argument_list|(
+literal|"x"
+argument_list|)
+argument_list|)
+expr_stmt|;
 block|}
 annotation|@
 name|Test

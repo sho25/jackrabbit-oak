@@ -1709,12 +1709,10 @@ if|if
 condition|(
 name|state
 operator|.
-name|getProperty
+name|hasProperty
 argument_list|(
 literal|"match"
 argument_list|)
-operator|!=
-literal|null
 condition|)
 block|{
 name|count

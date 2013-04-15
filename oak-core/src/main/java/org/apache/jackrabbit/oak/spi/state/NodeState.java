@@ -69,6 +69,16 @@ name|boolean
 name|exists
 parameter_list|()
 function_decl|;
+comment|/**      * Checks whether the named property exists. The implementation is      * equivalent to {@code getProperty(name) != null}, but may be optimized      * to avoid having to load the property value.      *      * @param name property name      * @return {@code true} if the named property exists,      *         {@code false} otherwise      */
+name|boolean
+name|hasProperty
+parameter_list|(
+annotation|@
+name|Nonnull
+name|String
+name|name
+parameter_list|)
+function_decl|;
 comment|/**      * Returns the named property. The name is an opaque string and      * is not parsed or otherwise interpreted by this method.      *<p>      * The namespace of properties and child nodes is shared, so if      * this method returns a non-{@code null} value for a given      * name, then {@link #getChildNode(String)} is guaranteed to return      * a<em>non-existing</em> {@link NodeState} for the same name.      *      * @param name name of the property to return      * @return named property, or {@code null} if not found      */
 annotation|@
 name|CheckForNull
