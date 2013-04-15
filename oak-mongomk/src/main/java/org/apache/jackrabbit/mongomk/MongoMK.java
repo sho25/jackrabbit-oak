@@ -4067,6 +4067,21 @@ argument_list|,
 name|includeId
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|maxChildNodes
+operator|==
+operator|-
+literal|1
+condition|)
+block|{
+name|maxChildNodes
+operator|=
+name|Integer
+operator|.
+name|MAX_VALUE
+expr_stmt|;
+block|}
 comment|// FIXME: must not read all children!
 name|Children
 name|c

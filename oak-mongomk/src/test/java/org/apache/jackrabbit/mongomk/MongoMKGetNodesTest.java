@@ -12,8 +12,6 @@ operator|.
 name|jackrabbit
 operator|.
 name|mongomk
-operator|.
-name|impl
 package|;
 end_package
 
@@ -39,7 +37,9 @@ name|jackrabbit
 operator|.
 name|mongomk
 operator|.
-name|BaseMongoMicroKernelTest
+name|impl
+operator|.
+name|SimpleNodeScenario
 import|;
 end_import
 
@@ -76,7 +76,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Tests for getHeadRevision().  */
+comment|/**  * Tests for getNodes().  */
 end_comment
 
 begin_class
@@ -84,7 +84,7 @@ specifier|public
 class|class
 name|MongoMKGetNodesTest
 extends|extends
-name|BaseMongoMicroKernelTest
+name|BaseMongoMKTest
 block|{
 annotation|@
 name|Test
@@ -176,8 +176,6 @@ block|}
 block|}
 annotation|@
 name|Test
-annotation|@
-name|Ignore
 specifier|public
 name|void
 name|afterDelete
@@ -212,7 +210,7 @@ literal|"/"
 argument_list|,
 literal|null
 argument_list|,
-literal|1
+literal|0
 argument_list|,
 literal|0
 argument_list|,
@@ -235,11 +233,25 @@ expr_stmt|;
 name|JSONObject
 name|a
 init|=
-name|resolveObjectValue
+name|parseJSONObject
 argument_list|(
-name|root
+name|mk
+operator|.
+name|getNodes
+argument_list|(
+literal|"/a"
 argument_list|,
-literal|"a"
+literal|null
+argument_list|,
+literal|0
+argument_list|,
+literal|0
+argument_list|,
+operator|-
+literal|1
+argument_list|,
+literal|null
+argument_list|)
 argument_list|)
 decl_stmt|;
 name|assertPropertyValue
@@ -268,7 +280,7 @@ literal|"/"
 argument_list|,
 literal|null
 argument_list|,
-literal|1
+literal|0
 argument_list|,
 literal|0
 argument_list|,
@@ -351,8 +363,6 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-annotation|@
-name|Ignore
 specifier|public
 name|void
 name|depthZero

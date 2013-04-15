@@ -12,24 +12,8 @@ operator|.
 name|jackrabbit
 operator|.
 name|mongomk
-operator|.
-name|impl
 package|;
 end_package
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|mongomk
-operator|.
-name|BaseMongoMicroKernelTest
-import|;
-end_import
 
 begin_import
 import|import
@@ -110,7 +94,7 @@ specifier|public
 class|class
 name|MongoMKRebaseTest
 extends|extends
-name|BaseMongoMicroKernelTest
+name|BaseMongoMKTest
 block|{
 annotation|@
 name|Test

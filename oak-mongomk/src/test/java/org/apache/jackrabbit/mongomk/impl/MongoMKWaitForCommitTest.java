@@ -204,6 +204,9 @@ end_comment
 begin_class
 annotation|@
 name|Ignore
+argument_list|(
+literal|"MongoMK does not implement waitForCommit()"
+argument_list|)
 specifier|public
 class|class
 name|MongoMKWaitForCommitTest

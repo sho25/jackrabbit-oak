@@ -92,6 +92,11 @@ comment|/**  * Tests for {@code MongoMicroKernel#getJournal(String, String, Stri
 end_comment
 
 begin_class
+annotation|@
+name|Ignore
+argument_list|(
+literal|"MongoMK does not implement getJournal()"
+argument_list|)
 specifier|public
 class|class
 name|MongoMKGetJournalTest
@@ -100,8 +105,6 @@ name|BaseMongoMicroKernelTest
 block|{
 annotation|@
 name|Test
-annotation|@
-name|Ignore
 specifier|public
 name|void
 name|simple
@@ -290,8 +293,6 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-annotation|@
-name|Ignore
 specifier|public
 name|void
 name|commitAddWithDiffPaths
@@ -537,8 +538,6 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-annotation|@
-name|Ignore
 specifier|public
 name|void
 name|commitCopyWithDiffPaths
@@ -752,8 +751,6 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-annotation|@
-name|Ignore
 specifier|public
 name|void
 name|commitMoveWithDiffPaths
@@ -980,8 +977,6 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-annotation|@
-name|Ignore
 specifier|public
 name|void
 name|commitRemoveMoveWithDiffPaths
@@ -1208,8 +1203,6 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-annotation|@
-name|Ignore
 specifier|public
 name|void
 name|commitSetPropertyWithDiffPaths
