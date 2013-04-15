@@ -51,7 +51,7 @@ name|memory
 operator|.
 name|EmptyNodeState
 operator|.
-name|EMPTY_NODE
+name|MISSING_NODE
 import|;
 end_import
 
@@ -483,13 +483,11 @@ argument_list|)
 decl_stmt|;
 name|exception
 operator|=
-name|EditorHook
-operator|.
 name|process
 argument_list|(
 name|e
 argument_list|,
-name|EMPTY_NODE
+name|MISSING_NODE
 argument_list|,
 name|after
 argument_list|)
@@ -549,8 +547,6 @@ argument_list|)
 decl_stmt|;
 name|exception
 operator|=
-name|EditorHook
-operator|.
 name|process
 argument_list|(
 name|e
@@ -610,15 +606,13 @@ argument_list|)
 decl_stmt|;
 name|exception
 operator|=
-name|EditorHook
-operator|.
 name|process
 argument_list|(
 name|e
 argument_list|,
 name|before
 argument_list|,
-name|EMPTY_NODE
+name|MISSING_NODE
 argument_list|)
 expr_stmt|;
 block|}
