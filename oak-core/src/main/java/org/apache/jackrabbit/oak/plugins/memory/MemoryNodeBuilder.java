@@ -63,20 +63,6 @@ end_import
 
 begin_import
 import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|collect
-operator|.
-name|Maps
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -226,22 +212,6 @@ operator|.
 name|Preconditions
 operator|.
 name|checkState
-import|;
-end_import
-
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|collect
-operator|.
-name|Lists
-operator|.
-name|newArrayList
 import|;
 end_import
 
@@ -1873,8 +1843,6 @@ name|NodeState
 argument_list|>
 name|nodes
 init|=
-name|Maps
-operator|.
 name|newHashMap
 argument_list|()
 decl_stmt|;
@@ -1983,8 +1951,6 @@ name|with
 argument_list|(
 name|base
 argument_list|,
-name|Maps
-operator|.
 name|newHashMap
 argument_list|(
 name|this
@@ -2311,16 +2277,12 @@ name|MutableNodeState
 argument_list|>
 name|copy
 init|=
-name|Maps
-operator|.
 name|newHashMap
 argument_list|(
 name|nodes
 argument_list|)
 decl_stmt|;
 return|return
-name|newArrayList
-argument_list|(
 name|withNodes
 argument_list|(
 name|base
@@ -2330,7 +2292,6 @@ argument_list|)
 operator|.
 name|getChildNodeNames
 argument_list|()
-argument_list|)
 return|;
 block|}
 annotation|@
