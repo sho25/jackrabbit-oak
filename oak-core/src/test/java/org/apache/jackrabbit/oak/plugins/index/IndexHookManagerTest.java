@@ -803,9 +803,6 @@ name|Type
 operator|.
 name|BOOLEAN
 argument_list|)
-operator|.
-name|booleanValue
-argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// next, lookup
@@ -999,9 +996,6 @@ name|Type
 operator|.
 name|BOOLEAN
 argument_list|)
-operator|.
-name|booleanValue
-argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// next, lookup
@@ -1214,9 +1208,6 @@ name|Type
 operator|.
 name|BOOLEAN
 argument_list|)
-operator|.
-name|booleanValue
-argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// next, lookup

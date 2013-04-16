@@ -545,11 +545,11 @@ condition|)
 block|{
 name|Assert
 operator|.
-name|assertNotNull
+name|assertTrue
 argument_list|(
 name|check
 operator|.
-name|getProperty
+name|hasProperty
 argument_list|(
 literal|"match"
 argument_list|)

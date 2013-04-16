@@ -553,12 +553,10 @@ name|reindex
 init|=
 name|index
 operator|.
-name|getProperty
+name|hasProperty
 argument_list|(
 literal|"reindex"
 argument_list|)
-operator|!=
-literal|null
 operator|&&
 name|index
 operator|.

@@ -85,6 +85,18 @@ name|CheckForNull
 name|PropertyState
 name|getProperty
 parameter_list|(
+annotation|@
+name|Nonnull
+name|String
+name|name
+parameter_list|)
+function_decl|;
+comment|/**      * Returns the boolean value of the named property. The implementation      * is equivalent to the following code, but may be optimized.      *<pre>      * PropertyState property = state.getProperty(name);      * return property != null      *&& property.getType() == Type.BOOLEAN      *&& property.getValue(Type.BOOLEAN);      *</pre>      *      * @param name property name      * @return boolean value of the named property, or {@code false}      */
+name|boolean
+name|getBoolean
+parameter_list|(
+annotation|@
+name|Nonnull
 name|String
 name|name
 parameter_list|)
