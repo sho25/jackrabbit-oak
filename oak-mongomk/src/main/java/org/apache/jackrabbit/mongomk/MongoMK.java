@@ -479,23 +479,6 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-comment|/**      * The number of documents to cache.      */
-specifier|static
-specifier|final
-name|int
-name|CACHE_DOCUMENTS
-init|=
-name|Integer
-operator|.
-name|getInteger
-argument_list|(
-literal|"oak.mongoMK.cacheDocs"
-argument_list|,
-literal|20
-operator|*
-literal|1024
-argument_list|)
-decl_stmt|;
 comment|/**      * The number of child node list entries to cache.      */
 specifier|private
 specifier|static

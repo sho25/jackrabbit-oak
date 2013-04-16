@@ -297,6 +297,24 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
+comment|/**      * The number of documents to cache.      */
+specifier|private
+specifier|static
+specifier|final
+name|int
+name|CACHE_DOCUMENTS
+init|=
+name|Integer
+operator|.
+name|getInteger
+argument_list|(
+literal|"oak.mongoMK.cacheDocs"
+argument_list|,
+literal|20
+operator|*
+literal|1024
+argument_list|)
+decl_stmt|;
 specifier|private
 specifier|static
 specifier|final
@@ -382,8 +400,6 @@ argument_list|()
 operator|.
 name|maximumSize
 argument_list|(
-name|MongoMK
-operator|.
 name|CACHE_DOCUMENTS
 argument_list|)
 operator|.
