@@ -711,6 +711,8 @@ block|{
 name|NT_REP_GROUP
 block|,
 name|NT_REP_USER
+block|,
+name|NT_REP_AUTHORIZABLE
 block|}
 argument_list|)
 expr_stmt|;
