@@ -55,6 +55,22 @@ begin_import
 import|import
 name|org
 operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|mk
+operator|.
+name|api
+operator|.
+name|MicroKernelException
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|json
 operator|.
 name|simple
@@ -963,7 +979,7 @@ name|commit
 argument_list|(
 literal|"/"
 argument_list|,
-literal|"^\"a/ke.y1\" : \"value\""
+literal|"^\"a/_id\" : \"value\""
 argument_list|,
 literal|null
 argument_list|,
@@ -1003,6 +1019,59 @@ argument_list|(
 name|nodes
 argument_list|)
 decl_stmt|;
+name|assertPropertyValue
+argument_list|(
+name|obj
+argument_list|,
+literal|"_id"
+argument_list|,
+literal|"value"
+argument_list|)
+expr_stmt|;
+name|mk
+operator|.
+name|commit
+argument_list|(
+literal|"/"
+argument_list|,
+literal|"^\"a/ke.y1\" : \"value\""
+argument_list|,
+literal|null
+argument_list|,
+literal|null
+argument_list|)
+expr_stmt|;
+name|nodes
+operator|=
+name|mk
+operator|.
+name|getNodes
+argument_list|(
+literal|"/a"
+argument_list|,
+literal|null
+argument_list|,
+literal|0
+comment|/*depth*/
+argument_list|,
+literal|0
+comment|/*offset*/
+argument_list|,
+operator|-
+literal|1
+comment|/*maxChildNodes*/
+argument_list|,
+literal|null
+comment|/*filter*/
+argument_list|)
+expr_stmt|;
+name|obj
+operator|=
+name|parseJSONObject
+argument_list|(
+name|nodes
+argument_list|)
+expr_stmt|;
 name|assertPropertyValue
 argument_list|(
 name|obj
@@ -1184,6 +1253,9 @@ literal|null
 argument_list|)
 decl_stmt|;
 comment|// Commit with rev1
+name|String
+name|rev2
+init|=
 name|mk
 operator|.
 name|commit
@@ -1196,8 +1268,10 @@ name|rev1
 argument_list|,
 literal|null
 argument_list|)
-expr_stmt|;
-comment|// Commit with rev1 again (to overwrite rev2)
+decl_stmt|;
+comment|// try to commit with rev1 again (to overwrite rev2)
+try|try
+block|{
 name|mk
 operator|.
 name|commit
@@ -1207,6 +1281,34 @@ argument_list|,
 literal|"^\"a/key1\" : \"value3\""
 argument_list|,
 name|rev1
+argument_list|,
+literal|null
+argument_list|)
+expr_stmt|;
+name|fail
+argument_list|(
+literal|"commit must fail with conflicting change"
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|MicroKernelException
+name|e
+parameter_list|)
+block|{
+comment|// expected
+block|}
+comment|// now overwrite with correct base revision
+name|mk
+operator|.
+name|commit
+argument_list|(
+literal|"/"
+argument_list|,
+literal|"^\"a/key1\" : \"value3\""
+argument_list|,
+name|rev2
 argument_list|,
 literal|null
 argument_list|)
