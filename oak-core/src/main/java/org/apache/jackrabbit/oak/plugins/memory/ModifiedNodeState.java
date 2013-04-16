@@ -382,7 +382,6 @@ name|ModifiedNodeState
 extends|extends
 name|AbstractNodeState
 block|{
-specifier|public
 specifier|static
 name|NodeState
 name|withProperties
@@ -436,7 +435,6 @@ argument_list|)
 return|;
 block|}
 block|}
-specifier|public
 specifier|static
 name|NodeState
 name|withNodes
@@ -490,7 +488,6 @@ argument_list|)
 return|;
 block|}
 block|}
-specifier|public
 specifier|static
 name|NodeState
 name|with
@@ -692,7 +689,7 @@ name|NodeState
 argument_list|>
 name|nodes
 decl_stmt|;
-specifier|public
+specifier|private
 name|ModifiedNodeState
 parameter_list|(
 annotation|@
