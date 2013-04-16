@@ -144,7 +144,7 @@ name|getValue
 argument_list|(
 name|Type
 operator|.
-name|STRING
+name|NAME
 argument_list|)
 return|;
 block|}
