@@ -57,7 +57,7 @@ name|jackrabbit
 operator|.
 name|mongomk
 operator|.
-name|BaseMongoMicroKernelTest
+name|AbstractMongoConnectionTest
 import|;
 end_import
 
@@ -90,7 +90,7 @@ specifier|public
 class|class
 name|MongoMKReadGridFSTest
 extends|extends
-name|BaseMongoMicroKernelTest
+name|AbstractMongoConnectionTest
 block|{
 specifier|private
 name|byte

@@ -92,7 +92,7 @@ specifier|public
 class|class
 name|MongoMKDiffTest
 extends|extends
-name|BaseMongoMicroKernelTest
+name|AbstractMongoConnectionTest
 block|{
 annotation|@
 name|Test

@@ -139,7 +139,7 @@ name|jackrabbit
 operator|.
 name|mongomk
 operator|.
-name|BaseMongoMicroKernelTest
+name|AbstractMongoConnectionTest
 import|;
 end_import
 
@@ -211,7 +211,7 @@ specifier|public
 class|class
 name|MongoMKWaitForCommitTest
 extends|extends
-name|BaseMongoMicroKernelTest
+name|AbstractMongoConnectionTest
 block|{
 specifier|private
 name|MicroKernel

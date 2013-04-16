@@ -37,7 +37,7 @@ name|jackrabbit
 operator|.
 name|mongomk
 operator|.
-name|BaseMongoMicroKernelTest
+name|AbstractMongoConnectionTest
 import|;
 end_import
 
@@ -86,7 +86,7 @@ specifier|public
 class|class
 name|MongoMKLimitsTest
 extends|extends
-name|BaseMongoMicroKernelTest
+name|AbstractMongoConnectionTest
 block|{
 comment|/**      * This test currently fails due to 1000 char limit in property sizes in      * MongoDB which affects path property. It also slows down as the test      * progresses.      */
 annotation|@

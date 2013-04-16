@@ -81,7 +81,7 @@ name|jackrabbit
 operator|.
 name|mongomk
 operator|.
-name|BaseMongoMicroKernelTest
+name|AbstractMongoConnectionTest
 import|;
 end_import
 
@@ -128,7 +128,7 @@ specifier|public
 class|class
 name|ConcurrentWriteMultipleMkMongoTest
 extends|extends
-name|BaseMongoMicroKernelTest
+name|AbstractMongoConnectionTest
 block|{
 annotation|@
 name|Test
