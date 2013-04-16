@@ -296,7 +296,6 @@ comment|/**  * SecureNodeState...  *  * TODO: clarify if HIDDEN items should be 
 end_comment
 
 begin_class
-specifier|public
 class|class
 name|SecureNodeState
 extends|extends
