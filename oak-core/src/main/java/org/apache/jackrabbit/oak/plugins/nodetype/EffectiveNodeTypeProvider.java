@@ -91,6 +91,17 @@ name|NoSuchNodeTypeException
 throws|,
 name|RepositoryException
 function_decl|;
+comment|/**      * Returns {@code true} if {@code typeName} is of the specified primary node      * type or mixin type, or a subtype thereof. Returns {@code false} otherwise.      *      * @param typeName  the internal oak name of the node type to test      * @param superName The internal oak name of the super type to be tested for.      * @return {@code true} if the specified node type is of the given node type.      */
+name|boolean
+name|isNodeType
+parameter_list|(
+name|String
+name|typeName
+parameter_list|,
+name|String
+name|superName
+parameter_list|)
+function_decl|;
 comment|/**      * Calculates and returns the effective node types of the given node.      *      * @param targetNode the node for which the types should be calculated.      * @return all types of the given node      * @throws RepositoryException if the type information can not be accessed      * @see<a href="http://www.jcp.org/en/jsr/detail?id=283">JCR 2.0 Specification,      * Section 3.7.6.5</a> for the definition of the effective node type.      */
 name|EffectiveNodeType
 name|getEffectiveNodeType

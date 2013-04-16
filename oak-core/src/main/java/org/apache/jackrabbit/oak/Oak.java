@@ -16,6 +16,52 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkNotNull
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|collect
+operator|.
+name|Lists
+operator|.
+name|newArrayList
+import|;
+end_import
+
+begin_import
+import|import static
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|Executors
+operator|.
+name|newScheduledThreadPool
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -303,6 +349,24 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
+name|plugins
+operator|.
+name|observation2
+operator|.
+name|EventQueueWriterProvider
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
 name|spi
 operator|.
 name|commit
@@ -325,7 +389,7 @@ name|spi
 operator|.
 name|commit
 operator|.
-name|CompositeHook
+name|CompositeEditorProvider
 import|;
 end_import
 
@@ -343,7 +407,7 @@ name|spi
 operator|.
 name|commit
 operator|.
-name|CompositeEditorProvider
+name|CompositeHook
 import|;
 end_import
 
@@ -614,52 +678,6 @@ operator|.
 name|state
 operator|.
 name|NodeStore
-import|;
-end_import
-
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|Preconditions
-operator|.
-name|checkNotNull
-import|;
-end_import
-
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|collect
-operator|.
-name|Lists
-operator|.
-name|newArrayList
-import|;
-end_import
-
-begin_import
-import|import static
-name|java
-operator|.
-name|util
-operator|.
-name|concurrent
-operator|.
-name|Executors
-operator|.
-name|newScheduledThreadPool
 import|;
 end_import
 
@@ -1301,6 +1319,13 @@ name|of
 argument_list|(
 name|indexHooks
 argument_list|)
+argument_list|)
+expr_stmt|;
+name|with
+argument_list|(
+operator|new
+name|EventQueueWriterProvider
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|withEditorHook
