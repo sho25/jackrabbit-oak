@@ -6722,6 +6722,12 @@ comment|// success
 block|}
 block|}
 block|}
+comment|//-----------------------------------< getApplicablePolicies(Principal)>---
+comment|// TODO
+comment|//---------------------------------------------< getPolicies(Principal)>---
+comment|// TODO
+comment|//------------------------------------< getEffectivePolicies(Principal)>---
+comment|// TODO
 block|}
 end_class
 
