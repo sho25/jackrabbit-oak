@@ -535,7 +535,10 @@ return|;
 block|}
 else|else
 block|{
+comment|// TODO: Do we need collapse() here? See OAK-778
 return|return
+name|collapse
+argument_list|(
 operator|new
 name|ModifiedNodeState
 argument_list|(
@@ -544,6 +547,7 @@ argument_list|,
 name|properties
 argument_list|,
 name|nodes
+argument_list|)
 argument_list|)
 return|;
 block|}
