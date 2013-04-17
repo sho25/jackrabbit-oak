@@ -101,6 +101,33 @@ name|String
 name|name
 parameter_list|)
 function_decl|;
+comment|/**      * Returns the name value of the named property. The implementation      * is equivalent to the following code, but may be optimized.      *<pre>      * PropertyState property = state.getProperty(name);      * if (property != null&& property.getType() == Type.NAME) {      *     return property.getValue(Type.NAME);      * } else {      *     return null;      * }      *</pre>      *      * @param name property name      * @return name value of the named property, or {@code null}      */
+annotation|@
+name|CheckForNull
+name|String
+name|getName
+parameter_list|(
+annotation|@
+name|Nonnull
+name|String
+name|name
+parameter_list|)
+function_decl|;
+comment|/**      * Returns the name values of the named property. The implementation      * is equivalent to the following code, but may be optimized.      *<pre>      * PropertyState property = state.getProperty(name);      * if (property != null&& property.getType() == Type.NAMES) {      *     return property.getValue(Type.NAMES);      * } else {      *     return null;      * }      *</pre>      *      * @param name property name      * @return name values of the named property, or {@code null}      */
+annotation|@
+name|CheckForNull
+name|Iterable
+argument_list|<
+name|String
+argument_list|>
+name|getNames
+parameter_list|(
+annotation|@
+name|Nonnull
+name|String
+name|name
+parameter_list|)
+function_decl|;
 comment|/**      * Returns the number of properties of this node.      *      * @return number of properties      */
 name|long
 name|getPropertyCount
