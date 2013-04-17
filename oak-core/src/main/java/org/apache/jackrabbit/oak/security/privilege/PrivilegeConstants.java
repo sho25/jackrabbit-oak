@@ -70,6 +70,42 @@ name|REP_PRIVILEGES
 init|=
 literal|"rep:privileges"
 decl_stmt|;
+comment|/**      * Name of the property that defines if the privilege is abstract.      */
+name|String
+name|REP_IS_ABSTRACT
+init|=
+literal|"rep:isAbstract"
+decl_stmt|;
+comment|/**      * Name of the privilege definition property that stores the aggregate privilege names.      */
+name|String
+name|REP_AGGREGATES
+init|=
+literal|"rep:aggregates"
+decl_stmt|;
+comment|/**      * Name of the property storing the value of the next available privilege bits.      */
+name|String
+name|REP_NEXT
+init|=
+literal|"rep:next"
+decl_stmt|;
+comment|/**      * The internal names of all property definitions that are associated with      * the {@link #NT_REP_PRIVILEGE rep:Privilege} node type      */
+name|Set
+argument_list|<
+name|String
+argument_list|>
+name|PRIVILEGE_PROPERTY_NAMES
+init|=
+name|ImmutableSet
+operator|.
+name|of
+argument_list|(
+name|REP_IS_ABSTRACT
+argument_list|,
+name|REP_AGGREGATES
+argument_list|,
+name|REP_NEXT
+argument_list|)
+decl_stmt|;
 comment|/**      * Internal (oak) path for the privilege store.      */
 name|String
 name|PRIVILEGES_PATH
@@ -95,24 +131,6 @@ name|String
 name|NT_REP_PRIVILEGE
 init|=
 literal|"rep:Privilege"
-decl_stmt|;
-comment|/**      * Name of the property that defines if the privilege is abstract.      */
-name|String
-name|REP_IS_ABSTRACT
-init|=
-literal|"rep:isAbstract"
-decl_stmt|;
-comment|/**      * Name of the privilege definition property that stores the aggregate privilege names.      */
-name|String
-name|REP_AGGREGATES
-init|=
-literal|"rep:aggregates"
-decl_stmt|;
-comment|/**      * Name of the property storing the value of the next available privilege bits.      */
-name|String
-name|REP_NEXT
-init|=
-literal|"rep:next"
 decl_stmt|;
 comment|/**      * Name of the privilege definition property that stores the internal representation      * of this privilege.      */
 name|String
@@ -269,22 +287,6 @@ name|String
 name|REP_REMOVE_PROPERTIES
 init|=
 literal|"rep:removeProperties"
-decl_stmt|;
-comment|/**      * The internal names of all property definitions that are associated with      * the {@link #NT_REP_PRIVILEGE rep:Privilege} node type      */
-name|Set
-argument_list|<
-name|String
-argument_list|>
-name|PRIVILEGE_PROPERTY_NAMES
-init|=
-name|ImmutableSet
-operator|.
-name|of
-argument_list|(
-name|REP_IS_ABSTRACT
-argument_list|,
-name|REP_AGGREGATES
-argument_list|)
 decl_stmt|;
 block|}
 end_interface
