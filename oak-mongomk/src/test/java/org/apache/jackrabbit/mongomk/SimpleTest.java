@@ -412,7 +412,7 @@ literal|0
 init|;
 name|i
 operator|<
-literal|100
+literal|1000
 condition|;
 name|i
 operator|++
