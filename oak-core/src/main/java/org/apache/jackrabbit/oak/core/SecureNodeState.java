@@ -18,6 +18,54 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkNotNull
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|collect
+operator|.
+name|Iterables
+operator|.
+name|filter
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|collect
+operator|.
+name|Iterables
+operator|.
+name|transform
+import|;
+end_import
+
+begin_import
 import|import
 name|javax
 operator|.
@@ -189,74 +237,8 @@ name|NodeState
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|spi
-operator|.
-name|state
-operator|.
-name|NodeStateDiff
-import|;
-end_import
-
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|Preconditions
-operator|.
-name|checkNotNull
-import|;
-end_import
-
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|collect
-operator|.
-name|Iterables
-operator|.
-name|filter
-import|;
-end_import
-
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|collect
-operator|.
-name|Iterables
-operator|.
-name|transform
-import|;
-end_import
-
 begin_comment
-comment|/**  * SecureNodeState...  *  * TODO: clarify if HIDDEN items should be filtered by this NodeState implementation  * TODO: clarify usage of ReadStatus in getChildNodeEntries  * TODO: add proper equals/hashcode implementation  * TODO: should be package-private  */
+comment|/**  * SecureNodeState...  *  * TODO: clarify if HIDDEN items should be filtered by this NodeState implementation  * TODO: clarify usage of ReadStatus in getChildNodeEntries  */
 end_comment
 
 begin_class
@@ -709,31 +691,6 @@ argument_list|(
 name|this
 argument_list|)
 return|;
-block|}
-annotation|@
-name|Override
-specifier|public
-name|void
-name|compareAgainstBaseState
-parameter_list|(
-name|NodeState
-name|base
-parameter_list|,
-name|NodeStateDiff
-name|diff
-parameter_list|)
-block|{
-comment|// FIXME: decide if comparison during commit should compare the secure
-comment|// states or the original node states without ac restrictions
-name|super
-operator|.
-name|compareAgainstBaseState
-argument_list|(
-name|base
-argument_list|,
-name|diff
-argument_list|)
-expr_stmt|;
 block|}
 comment|//-------------------------------------------------------------< Object>---
 annotation|@
