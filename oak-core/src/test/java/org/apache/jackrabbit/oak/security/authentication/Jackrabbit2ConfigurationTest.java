@@ -148,7 +148,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * JackrabbitTest... TODO  */
+comment|/**  * Test login with {@link ConfigurationUtil#getJackrabbit2Configuration(org.apache.jackrabbit.oak.spi.security.ConfigurationParameters)}  */
 end_comment
 
 begin_class

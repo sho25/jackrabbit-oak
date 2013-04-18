@@ -198,7 +198,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * LoginTest...  */
+comment|/**  * Test the following login configuration:  *  *<pre>  * jackrabbit.oak {  *            org.apache.jackrabbit.oak.spi.security.authentication.GuestLoginModule  optional;  *            org.apache.jackrabbit.oak.security.authentication.user.LoginModuleImpl required;  * };  *</pre>  */
 end_comment
 
 begin_class

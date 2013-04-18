@@ -288,7 +288,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * TokenDefaultLoginModuleTest...  */
+comment|/**  * Test login behavior with the following configuration:  *  *<pre>  *     jackrabbit.oak {  *            org.apache.jackrabbit.oak.spi.security.authentication.token.TokenLoginModule sufficient;  *            org.apache.jackrabbit.oak.security.authentication.user.LoginModuleImpl required;  *     };  *</pre>  */
 end_comment
 
 begin_class
