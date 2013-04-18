@@ -266,7 +266,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * AbstractAccessControlList... TODO  */
+comment|/**  * Abstract base implementation of the {@code JackrabbitAccessControlList}  * interface.  */
 end_comment
 
 begin_class
