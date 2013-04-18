@@ -741,7 +741,7 @@ block|}
 block|}
 finally|finally
 block|{
-comment|// TODO: diff to jr-core where unregisterNt was not supported
+comment|// NOTE: diff to jr-core where unregisterNt was not supported
 name|ntm
 operator|.
 name|unregisterNodeType
