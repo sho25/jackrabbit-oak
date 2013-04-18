@@ -270,7 +270,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * AuthorizableImpl...  */
+comment|/**  * Base class for {@code User} and {@code Group} implementations.  */
 end_comment
 
 begin_class

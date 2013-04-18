@@ -291,6 +291,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+comment|/**      * @since OAK 1.0      */
 annotation|@
 name|Test
 specifier|public
@@ -438,6 +439,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+comment|/**      * @since OAK 1.0      */
 annotation|@
 name|Test
 specifier|public
@@ -590,6 +592,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+comment|/**      * @since OAK 1.0      */
 annotation|@
 name|Test
 specifier|public
