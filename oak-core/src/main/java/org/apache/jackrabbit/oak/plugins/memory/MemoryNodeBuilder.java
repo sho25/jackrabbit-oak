@@ -2392,8 +2392,9 @@ block|{
 if|if
 condition|(
 name|before
-operator|!=
-literal|null
+operator|.
+name|exists
+argument_list|()
 condition|)
 block|{
 name|nodes
