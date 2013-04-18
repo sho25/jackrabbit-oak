@@ -94,6 +94,11 @@ name|NodeState
 name|getBaseState
 parameter_list|()
 function_decl|;
+comment|/**      * Checks whether this builder represents a node that exists.      *      * @return {@code true} if the node exists, {@code false} otherwise      */
+name|boolean
+name|exists
+parameter_list|()
+function_decl|;
 comment|/**      * Check whether this builder represents a new node, which is not present in the base state.      * @return  {@code true} for a new node      */
 name|boolean
 name|isNew
@@ -312,6 +317,30 @@ annotation|@
 name|Nonnull
 name|NodeBuilder
 name|child
+parameter_list|(
+annotation|@
+name|Nonnull
+name|String
+name|name
+parameter_list|)
+function_decl|;
+comment|/**      * Returns a builder for constructing changes to the named child node.      * If the named child node does not already exist, the returned builder      * will refer to a non-existent node and trying to modify it will cause      * {@link IllegalStateException}s to be thrown.      *      * @since Oak 0.7      * @param name name of the child node      * @return child builder, possibly non-existent      */
+annotation|@
+name|Nonnull
+name|NodeBuilder
+name|getChild
+parameter_list|(
+annotation|@
+name|Nonnull
+name|String
+name|name
+parameter_list|)
+function_decl|;
+comment|/**      * Adds the named child node and returns a builder for modifying it.      * Possible previous content in the named subtree is removed.      *      * @since Oak 0.7      * @param name name of the child node      * @return child builder      */
+annotation|@
+name|Nonnull
+name|NodeBuilder
+name|addChild
 parameter_list|(
 annotation|@
 name|Nonnull

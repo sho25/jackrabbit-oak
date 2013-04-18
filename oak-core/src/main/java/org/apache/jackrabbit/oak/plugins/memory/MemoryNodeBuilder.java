@@ -651,7 +651,10 @@ return|;
 block|}
 block|}
 comment|/**      * Determine whether this child exists at its direct parent.      * @return {@code true} iff this child exists at its direct parent.      */
-specifier|private
+annotation|@
+name|Override
+comment|// TODO: Check that the implementation matches NodeBuilder.exists()
+specifier|public
 name|boolean
 name|exists
 parameter_list|()
@@ -1960,6 +1963,56 @@ expr_stmt|;
 block|}
 return|return
 name|builder
+return|;
+block|}
+annotation|@
+name|Override
+annotation|@
+name|Nonnull
+specifier|public
+name|NodeBuilder
+name|getChild
+parameter_list|(
+annotation|@
+name|Nonnull
+name|String
+name|name
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|UnsupportedOperationException
+argument_list|()
+throw|;
+comment|// TODO
+block|}
+annotation|@
+name|Override
+annotation|@
+name|Nonnull
+specifier|public
+name|NodeBuilder
+name|addChild
+parameter_list|(
+annotation|@
+name|Nonnull
+name|String
+name|name
+parameter_list|)
+block|{
+comment|// TODO: better implementation?
+name|setNode
+argument_list|(
+name|name
+argument_list|,
+name|EMPTY_NODE
+argument_list|)
+expr_stmt|;
+return|return
+name|child
+argument_list|(
+name|name
+argument_list|)
 return|;
 block|}
 comment|/**      * The<em>mutable</em> state being built. Instances of this class      * are never passed beyond the containing {@code MemoryNodeBuilder},      * so it's not a problem that we intentionally break the immutability      * assumption of the {@link NodeState} interface.      */
