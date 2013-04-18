@@ -327,7 +327,6 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
-comment|// TODO: improve
 name|Set
 argument_list|<
 name|Principal

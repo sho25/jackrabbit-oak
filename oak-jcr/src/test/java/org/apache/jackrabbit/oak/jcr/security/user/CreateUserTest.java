@@ -1073,7 +1073,7 @@ block|{
 comment|// success.
 block|}
 block|}
-comment|// TODO: RepositoryException is thrown instead of AuthorizableExistsException
+comment|/**      * @since OAK 1.0 : RepositoryException is thrown instead of AuthorizableExistsException      */
 specifier|public
 name|void
 name|testCreateTwiceWithSamePrincipal
