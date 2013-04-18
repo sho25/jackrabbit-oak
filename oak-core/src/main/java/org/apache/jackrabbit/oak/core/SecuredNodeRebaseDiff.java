@@ -88,17 +88,17 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This implementation of {@code RebaseDiff} implements a  * {@link org.apache.jackrabbit.oak.spi.state.NodeStateDiff},  * which handled conflicts by giving precedence to our changes.  * I.e. the changes in the {@code after} node state.  */
+comment|/**  * This implementation of {@code RebaseDiff} implements a  * {@link org.apache.jackrabbit.oak.spi.state.NodeStateDiff}  * for applying changes made on top of secure node states  * to a node builder for the underlying non secure node state  * of the before state. That is, the only expected conflicts  * are adding an existing property and adding an existing node.  * These conflicts correspond to the shadowing of hidden properties  * and nodes in transient space, respectively.  *  * @see SecureNodeState  */
 end_comment
 
 begin_class
 class|class
-name|OurChangesRebaseDiff
+name|SecuredNodeRebaseDiff
 extends|extends
 name|AbstractRebaseDiff
 block|{
 specifier|private
-name|OurChangesRebaseDiff
+name|SecuredNodeRebaseDiff
 parameter_list|(
 name|NodeBuilder
 name|builder
@@ -110,6 +110,7 @@ name|builder
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * Rebase the differences between {@code before} and {@code after} on top of      * {@code builder}. Add existing node and add existing property conflicts give      * precedence to the {@code after} state. All other conflicts are unexpected      * and result in an {@code IllegalStateException}.      *      * @param before   before state      * @param after    after state      * @param builder  builder based on the before state      * @return  node state resulting from applying the differences between      *          {@code before} and {@code after} to {@code builder}      * @throws IllegalStateException  if an unexpected conflict occurs due to      *         {@code builder} not being based on {@code before}.      */
 specifier|public
 specifier|static
 name|NodeState
@@ -132,7 +133,7 @@ argument_list|(
 name|before
 argument_list|,
 operator|new
-name|OurChangesRebaseDiff
+name|SecuredNodeRebaseDiff
 argument_list|(
 name|builder
 argument_list|)
@@ -148,7 +149,7 @@ block|}
 annotation|@
 name|Override
 specifier|protected
-name|OurChangesRebaseDiff
+name|SecuredNodeRebaseDiff
 name|createDiff
 parameter_list|(
 name|NodeBuilder
@@ -160,7 +161,7 @@ parameter_list|)
 block|{
 return|return
 operator|new
-name|OurChangesRebaseDiff
+name|SecuredNodeRebaseDiff
 argument_list|(
 name|builder
 operator|.
@@ -208,13 +209,15 @@ name|PropertyState
 name|after
 parameter_list|)
 block|{
-name|builder
-operator|.
-name|setProperty
+throw|throw
+operator|new
+name|IllegalStateException
 argument_list|(
+literal|"Unexpected conflict: change deleted property: "
+operator|+
 name|after
 argument_list|)
-expr_stmt|;
+throw|;
 block|}
 annotation|@
 name|Override
@@ -232,13 +235,19 @@ name|PropertyState
 name|after
 parameter_list|)
 block|{
-name|builder
-operator|.
-name|setProperty
+throw|throw
+operator|new
+name|IllegalStateException
 argument_list|(
+literal|"Unexpected conflict: change changed property from "
+operator|+
+name|before
+operator|+
+literal|" to "
+operator|+
 name|after
 argument_list|)
-expr_stmt|;
+throw|;
 block|}
 annotation|@
 name|Override
@@ -253,7 +262,15 @@ name|PropertyState
 name|before
 parameter_list|)
 block|{
-comment|// ignore
+throw|throw
+operator|new
+name|IllegalStateException
+argument_list|(
+literal|"Unexpected conflict: delete deleted property: "
+operator|+
+name|before
+argument_list|)
+throw|;
 block|}
 annotation|@
 name|Override
@@ -268,16 +285,15 @@ name|PropertyState
 name|before
 parameter_list|)
 block|{
-name|builder
-operator|.
-name|removeProperty
+throw|throw
+operator|new
+name|IllegalStateException
 argument_list|(
+literal|"Unexpected conflict: delete changed property: "
+operator|+
 name|before
-operator|.
-name|getName
-argument_list|()
 argument_list|)
-expr_stmt|;
+throw|;
 block|}
 annotation|@
 name|Override
@@ -298,6 +314,9 @@ name|NodeState
 name|after
 parameter_list|)
 block|{
+comment|// FIXME (OAK-709) after might be a secured node instead of the underlying non secured node.
+comment|// Pushing this on the non secured builder is wrong.
+comment|// AFAICS this is only relevant when the after node state has been moved here
 name|builder
 operator|.
 name|setNode
@@ -324,15 +343,19 @@ name|NodeState
 name|after
 parameter_list|)
 block|{
-name|builder
-operator|.
-name|setNode
+throw|throw
+operator|new
+name|IllegalStateException
 argument_list|(
+literal|"Unexpected conflict: change deleted node: "
+operator|+
 name|name
-argument_list|,
+operator|+
+literal|" : "
+operator|+
 name|after
 argument_list|)
-expr_stmt|;
+throw|;
 block|}
 annotation|@
 name|Override
@@ -350,7 +373,19 @@ name|NodeState
 name|before
 parameter_list|)
 block|{
-comment|// ignore
+throw|throw
+operator|new
+name|IllegalStateException
+argument_list|(
+literal|"Unexpected conflict: delete deleted node: "
+operator|+
+name|name
+operator|+
+literal|" : "
+operator|+
+name|before
+argument_list|)
+throw|;
 block|}
 annotation|@
 name|Override
@@ -368,13 +403,9 @@ name|NodeState
 name|before
 parameter_list|)
 block|{
-name|builder
-operator|.
-name|removeNode
-argument_list|(
-name|name
-argument_list|)
-expr_stmt|;
+comment|// FIXME Should never be called. OAK-781 should fix this.
+comment|//        throw new IllegalStateException("Unexpected conflict: delete changed node: " +
+comment|//                name + " : " + before);
 block|}
 block|}
 end_class
