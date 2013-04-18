@@ -247,8 +247,18 @@ name|AbstractAccessControlTest
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Test
+import|;
+end_import
+
 begin_comment
-comment|/**  * JackrabbitAccessControlListTest... TODO  */
+comment|/**  * Testing {@code JackrabbitAccessControlList} functionality exposed by the API.  */
 end_comment
 
 begin_class
@@ -483,6 +493,8 @@ argument_list|()
 throw|;
 block|}
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testGetRestrictionNames
@@ -499,6 +511,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testGetRestrictionType
@@ -544,6 +558,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testApplicablePolicyIsEmpty
@@ -568,6 +584,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testIsEmpty
@@ -608,6 +626,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testSize
@@ -652,6 +672,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testAddEntry
@@ -788,39 +810,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|// TODO: rewrite
-comment|//    public void testAllowWriteDenyRemove() throws NotExecutableException, RepositoryException {
-comment|//        Principal princ = getValidPrincipal();
-comment|//        Privilege[] grPriv = privilegesFromName("rep:write");
-comment|//        Privilege[] dePriv = privilegesFromName(Privilege.JCR_REMOVE_CHILD_NODES);
-comment|//
-comment|//        acl.addEntry(princ, grPriv, true, Collections.<String, Value>emptyMap());
-comment|//        acl.addEntry(princ, dePriv, false, Collections.<String, Value>emptyMap());
-comment|//
-comment|//        Set<Privilege> allows = new HashSet<Privilege>();
-comment|//        Set<Privilege> denies = new HashSet<Privilege>();
-comment|//        AccessControlEntry[] entries = acl.getAccessControlEntries();
-comment|//        for (AccessControlEntry en : entries) {
-comment|//            if (princ.equals(en.getPrincipal())&& en instanceof JackrabbitAccessControlEntry) {
-comment|//                JackrabbitAccessControlEntry ace = (JackrabbitAccessControlEntry) en;
-comment|//                Privilege[] privs = ace.getPrivileges();
-comment|//                if (ace.isAllow()) {
-comment|//                    allows.addAll(Arrays.asList(privs));
-comment|//                } else {
-comment|//                    denies.addAll(Arrays.asList(privs));
-comment|//                }
-comment|//            }
-comment|//        }
-comment|//
-comment|//        String[] expected = new String[] {Privilege.JCR_ADD_CHILD_NODES, Privilege.JCR_REMOVE_NODE, Privilege.JCR_MODIFY_PROPERTIES, Privilege.JCR_NODE_TYPE_MANAGEMENT};
-comment|//        assertEquals(expected.length, allows.size());
-comment|//        for (String name : expected) {
-comment|//            assertTrue(allows.contains(acMgr.privilegeFromName(name)));
-comment|//        }
-comment|//
-comment|//        assertEquals(1, denies.size());
-comment|//        assertEquals(acMgr.privilegeFromName(Privilege.JCR_REMOVE_CHILD_NODES), denies.iterator().next());
-comment|//    }
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testRemoveEntry
