@@ -1950,6 +1950,7 @@ return|;
 block|}
 comment|/**      * The<em>mutable</em> state being built. Instances of this class      * are never passed beyond the containing {@code MemoryNodeBuilder},      * so it's not a problem that we intentionally break the immutability      * assumption of the {@link NodeState} interface.      */
 specifier|private
+specifier|static
 class|class
 name|MutableNodeState
 extends|extends
@@ -2356,6 +2357,22 @@ operator|.
 name|append
 argument_list|(
 name|entry
+operator|.
+name|getKey
+argument_list|()
+argument_list|)
+operator|.
+name|append
+argument_list|(
+literal|" : "
+argument_list|)
+operator|.
+name|append
+argument_list|(
+name|entry
+operator|.
+name|getValue
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}

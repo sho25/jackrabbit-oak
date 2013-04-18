@@ -64,7 +64,7 @@ block|{
 return|return
 name|name
 operator|+
-literal|" = "
+literal|" : "
 operator|+
 name|state
 return|;
