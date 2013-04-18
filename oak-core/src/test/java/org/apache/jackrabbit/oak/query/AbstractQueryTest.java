@@ -1692,7 +1692,7 @@ if|if
 condition|(
 name|time
 operator|>
-literal|3000
+literal|10000
 operator|&&
 operator|!
 name|isDebugModeEnabled
