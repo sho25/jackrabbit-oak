@@ -1178,46 +1178,21 @@ operator|.
 name|EMPTY_NODE
 argument_list|)
 decl_stmt|;
-name|MemoryNodeBuilder
-name|aBuilder
-init|=
-operator|new
-name|MemoryNodeBuilder
-argument_list|(
-name|EmptyNodeState
-operator|.
-name|EMPTY_NODE
-argument_list|)
-decl_stmt|;
-name|aBuilder
-operator|.
-name|child
-argument_list|(
-literal|"b"
-argument_list|)
-operator|.
-name|setProperty
-argument_list|(
-literal|"c"
-argument_list|,
-literal|"cValue"
-argument_list|)
-expr_stmt|;
 name|rootBuilder
 operator|.
 name|setNode
 argument_list|(
 literal|"a"
 argument_list|,
-name|aBuilder
-operator|.
-name|getNodeState
-argument_list|()
+name|createBC
+argument_list|(
+literal|true
+argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// Note: using the following way to construct the initial state makes the test pass
 comment|//        rootBuilder = new MemoryNodeBuilder(EmptyNodeState.EMPTY_NODE);
-comment|//        rootBuilder.child("a").child("b").setProperty("c", "cValue");
+comment|//        rootBuilder.child("a").child("c").setProperty("c", "cValue");
 name|NodeState
 name|b
 init|=
@@ -1233,7 +1208,7 @@ argument_list|)
 operator|.
 name|getChildNode
 argument_list|(
-literal|"b"
+literal|"c"
 argument_list|)
 decl_stmt|;
 name|assertTrue
@@ -1255,7 +1230,7 @@ argument_list|)
 operator|.
 name|child
 argument_list|(
-literal|"b"
+literal|"c"
 argument_list|)
 operator|.
 name|setProperty
@@ -1279,7 +1254,7 @@ argument_list|)
 operator|.
 name|getChildNode
 argument_list|(
-literal|"b"
+literal|"c"
 argument_list|)
 expr_stmt|;
 name|assertTrue
