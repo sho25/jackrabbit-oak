@@ -1591,7 +1591,7 @@ name|exists
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|assertFalse
+name|assertTrue
 argument_list|(
 name|b
 operator|.
@@ -1599,7 +1599,7 @@ name|exists
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|// FIXME fails
+comment|// shadowed by above child("b")
 name|assertTrue
 argument_list|(
 name|c
@@ -1608,7 +1608,7 @@ name|exists
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|assertTrue
+name|assertFalse
 argument_list|(
 name|c
 operator|.
@@ -1618,6 +1618,7 @@ literal|"c"
 argument_list|)
 argument_list|)
 expr_stmt|;
+comment|// shadowed by subtree b
 name|assertTrue
 argument_list|(
 name|c
