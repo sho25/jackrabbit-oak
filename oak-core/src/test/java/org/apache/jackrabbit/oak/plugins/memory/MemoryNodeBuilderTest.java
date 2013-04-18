@@ -1185,9 +1185,6 @@ literal|true
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// Note: using the following way to construct the initial state makes the test pass
-comment|//        rootBuilder = new MemoryNodeBuilder(EmptyNodeState.EMPTY_NODE);
-comment|//        rootBuilder.child("a").child("c").setProperty("c", "cValue");
 name|NodeState
 name|b
 init|=
