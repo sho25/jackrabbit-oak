@@ -749,7 +749,6 @@ operator|==
 literal|0
 condition|)
 block|{
-comment|// FIXME OAK-523: add proper hash-code generation taking repo/workspace/tree-identifier into account
 name|StringBuilder
 name|sb
 init|=
@@ -781,6 +780,23 @@ operator|.
 name|append
 argument_list|(
 name|id
+argument_list|)
+expr_stmt|;
+name|sb
+operator|.
+name|append
+argument_list|(
+literal|'_'
+argument_list|)
+expr_stmt|;
+name|sb
+operator|.
+name|append
+argument_list|(
+name|userManager
+operator|.
+name|hashCode
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|hashCode
@@ -834,7 +850,6 @@ name|AuthorizableImpl
 operator|)
 name|obj
 decl_stmt|;
-comment|// FIXME OAK-523: make sure 2 authorizables are based on the same tree/node object
 return|return
 name|isGroup
 argument_list|()
@@ -851,6 +866,15 @@ argument_list|(
 name|otherAuth
 operator|.
 name|id
+argument_list|)
+operator|&&
+name|userManager
+operator|.
+name|equals
+argument_list|(
+name|otherAuth
+operator|.
+name|userManager
 argument_list|)
 return|;
 block|}
