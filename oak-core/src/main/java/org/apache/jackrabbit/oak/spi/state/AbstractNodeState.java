@@ -167,6 +167,24 @@ name|PropertyState
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|memory
+operator|.
+name|MemoryNodeBuilder
+import|;
+end_import
+
 begin_comment
 comment|/**  * Abstract base class for {@link NodeState} implementations.  * This base class contains default implementations of the  * {@link #equals(Object)} and {@link #hashCode()} methods based on  * the implemented interface.  *<p>  * This class also implements trivial (and potentially very slow) versions of  * the {@link #getProperty(String)} and {@link #getPropertyCount()} methods  * based on {@link #getProperties()}. The {@link #getChildNodeCount()} method  * is similarly implemented based on {@link #getChildNodeEntries()}.  * Subclasses should normally override these method with a more efficient  * alternatives.  */
 end_comment
@@ -646,6 +664,23 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+block|}
+annotation|@
+name|Nonnull
+annotation|@
+name|Override
+specifier|public
+name|NodeBuilder
+name|builder
+parameter_list|()
+block|{
+return|return
+operator|new
+name|MemoryNodeBuilder
+argument_list|(
+name|this
+argument_list|)
+return|;
 block|}
 comment|/**      * Returns a string representation of this node state.      *      * @return string representation      */
 specifier|public
