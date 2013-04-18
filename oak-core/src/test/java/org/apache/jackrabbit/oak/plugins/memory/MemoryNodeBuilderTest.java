@@ -1618,7 +1618,6 @@ literal|"c"
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// FIXME fails
 name|assertTrue
 argument_list|(
 name|c
