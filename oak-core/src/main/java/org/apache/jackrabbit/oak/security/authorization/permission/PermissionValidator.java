@@ -353,7 +353,7 @@ name|PermissionValidator
 extends|extends
 name|DefaultValidator
 block|{
-comment|/* TODO      * - OAK-710: Renaming nodes or Move with same parent are reflected as remove+add -> needs special handling      * - OAK-711: Proper handling of jcr:nodeTypeManagement privilege.      */
+comment|/* TODO      * - OAK-710: Renaming nodes or Move with same parent are reflected as remove+add -> needs special handling      * - OAK-711: Proper handling of jcr:nodeTypeManagement privilege.      * - OAK-785: compatibility mode for user-mgt permission      */
 specifier|private
 specifier|final
 name|Tree
