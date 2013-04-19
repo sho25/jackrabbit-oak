@@ -127,10 +127,6 @@ name|RestrictionProvider
 import|;
 end_import
 
-begin_comment
-comment|/**  * AbstractAccessControlTest... TODO  */
-end_comment
-
 begin_class
 specifier|public
 specifier|abstract
