@@ -946,11 +946,6 @@ argument_list|)
 expr_stmt|;
 block|}
 annotation|@
-name|Ignore
-argument_list|(
-literal|"OAK-526 : missing handling for reorder in PermissionHook"
-argument_list|)
-annotation|@
 name|Test
 specifier|public
 name|void
