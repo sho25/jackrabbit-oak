@@ -114,7 +114,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * AllPermissions... TODO  */
+comment|/**  * Implementation of the {@code CompiledPermissions} interface that grants full  * permission everywhere.  */
 end_comment
 
 begin_class

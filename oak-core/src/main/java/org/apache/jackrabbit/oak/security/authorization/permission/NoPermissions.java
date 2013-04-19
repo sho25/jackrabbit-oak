@@ -116,7 +116,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * NoPermissions... TODO  */
+comment|/**  * Implementation of the {@code CompiledPermission} interface that denies all permissions.  */
 end_comment
 
 begin_class
