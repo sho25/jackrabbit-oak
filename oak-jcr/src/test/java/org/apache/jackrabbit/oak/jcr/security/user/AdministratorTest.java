@@ -112,7 +112,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * AdministratorTest...  */
+comment|/**  * Test for the administrator user.  */
 end_comment
 
 begin_class

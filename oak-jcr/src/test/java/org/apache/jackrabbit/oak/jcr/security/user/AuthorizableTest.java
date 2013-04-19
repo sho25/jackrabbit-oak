@@ -170,7 +170,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * AuthorizableTest...  */
+comment|/**  * Tests for the {@link Authorizable} implementation.  */
 end_comment
 
 begin_class

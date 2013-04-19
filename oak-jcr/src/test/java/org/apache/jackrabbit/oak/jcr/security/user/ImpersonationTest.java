@@ -162,7 +162,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * ImpersonationTest...  */
+comment|/**  * Tests for the {@link Impersonation} implementation.  */
 end_comment
 
 begin_class

@@ -140,7 +140,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * CreateGroupTest...  */
+comment|/**  * Tests for {@code Group} creation.  */
 end_comment
 
 begin_class

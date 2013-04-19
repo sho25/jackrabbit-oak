@@ -244,7 +244,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * AuthorizablePropertyTest...  */
+comment|/**  * Tests for user property specific API.  */
 end_comment
 
 begin_class

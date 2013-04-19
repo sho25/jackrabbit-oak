@@ -248,7 +248,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * FindAuthorizablesTest...  */
+comment|/**  * Tests for the query API exposed by {@link UserManager}.  */
 end_comment
 
 begin_class

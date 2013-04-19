@@ -208,7 +208,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * GroupTest...  */
+comment|/**  * Tests for the {@link Group} implementation.  */
 end_comment
 
 begin_class

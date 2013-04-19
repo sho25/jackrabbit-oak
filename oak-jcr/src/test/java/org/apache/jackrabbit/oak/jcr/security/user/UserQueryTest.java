@@ -249,6 +249,10 @@ name|Test
 import|;
 end_import
 
+begin_comment
+comment|/**  * Tests for the {@link Query} interface and  * {@link org.apache.jackrabbit.api.security.user.UserManager#findAuthorizables(Query)}.  */
+end_comment
+
 begin_class
 specifier|public
 class|class

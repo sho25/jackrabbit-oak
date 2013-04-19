@@ -152,7 +152,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * NestedGroupTest...  */
+comment|/**  * Tests for the {@link Group} implementation specific for nested group membership.  */
 end_comment
 
 begin_class

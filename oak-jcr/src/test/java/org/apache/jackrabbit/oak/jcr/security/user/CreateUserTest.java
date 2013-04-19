@@ -170,7 +170,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * CreateUserTest...  */
+comment|/**  * Tests for {@code User} creation.  */
 end_comment
 
 begin_class
