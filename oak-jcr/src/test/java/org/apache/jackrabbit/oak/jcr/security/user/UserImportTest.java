@@ -205,6 +205,20 @@ name|jackrabbit
 operator|.
 name|api
 operator|.
+name|JackrabbitSession
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|api
+operator|.
 name|security
 operator|.
 name|principal
@@ -313,54 +327,6 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|api
-operator|.
-name|Root
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|jcr
-operator|.
-name|SessionImpl
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|namepath
-operator|.
-name|NamePathMapper
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
 name|security
 operator|.
 name|principal
@@ -386,28 +352,6 @@ operator|.
 name|user
 operator|.
 name|UserConstants
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|spi
-operator|.
-name|security
-operator|.
-name|user
-operator|.
-name|action
-operator|.
-name|AuthorizableAction
 import|;
 end_import
 
@@ -475,8 +419,8 @@ init|=
 literal|"/rep:security/rep:authorizables/rep:groups"
 decl_stmt|;
 specifier|private
-name|SessionImpl
-name|sImpl
+name|JackrabbitSession
+name|jrSession
 decl_stmt|;
 annotation|@
 name|Override
@@ -554,10 +498,10 @@ operator|.
 name|save
 argument_list|()
 expr_stmt|;
-name|sImpl
+name|jrSession
 operator|=
 operator|(
-name|SessionImpl
+name|JackrabbitSession
 operator|)
 name|superuser
 expr_stmt|;
@@ -868,6 +812,8 @@ expr_stmt|;
 block|}
 block|}
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testImportGroup
@@ -1081,6 +1027,8 @@ expr_stmt|;
 block|}
 block|}
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testImportGroupIntoUsersTree
@@ -1240,6 +1188,8 @@ expr_stmt|;
 block|}
 block|}
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testImportAuthorizableId
@@ -1376,6 +1326,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testExistingPrincipal
@@ -1397,7 +1349,7 @@ decl_stmt|;
 name|PrincipalIterator
 name|principalIterator
 init|=
-name|sImpl
+name|jrSession
 operator|.
 name|getPrincipalManager
 argument_list|()
@@ -1516,7 +1468,7 @@ comment|// success
 block|}
 finally|finally
 block|{
-name|sImpl
+name|jrSession
 operator|.
 name|refresh
 argument_list|(
@@ -1525,6 +1477,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testConflictingPrincipalsWithinImport
@@ -1606,7 +1560,7 @@ comment|// success
 block|}
 finally|finally
 block|{
-name|sImpl
+name|jrSession
 operator|.
 name|refresh
 argument_list|(
@@ -1615,6 +1569,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testMultiValuedPrincipalName
@@ -1671,7 +1627,7 @@ argument_list|)
 expr_stmt|;
 name|assertTrue
 argument_list|(
-name|sImpl
+name|jrSession
 operator|.
 name|hasPendingChanges
 argument_list|()
@@ -1731,7 +1687,7 @@ expr_stmt|;
 comment|// saving changes of the import -> must fail as mandatory prop is missing
 try|try
 block|{
-name|sImpl
+name|jrSession
 operator|.
 name|save
 argument_list|()
@@ -1753,7 +1709,7 @@ block|}
 block|}
 finally|finally
 block|{
-name|sImpl
+name|jrSession
 operator|.
 name|refresh
 argument_list|(
@@ -1780,7 +1736,7 @@ operator|.
 name|remove
 argument_list|()
 expr_stmt|;
-name|sImpl
+name|jrSession
 operator|.
 name|save
 argument_list|()
@@ -1788,6 +1744,8 @@ expr_stmt|;
 block|}
 block|}
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testPlainTextPassword
@@ -1856,7 +1814,7 @@ argument_list|)
 expr_stmt|;
 name|assertTrue
 argument_list|(
-name|sImpl
+name|jrSession
 operator|.
 name|hasPendingChanges
 argument_list|()
@@ -1926,7 +1884,7 @@ expr_stmt|;
 block|}
 finally|finally
 block|{
-name|sImpl
+name|jrSession
 operator|.
 name|refresh
 argument_list|(
@@ -1935,6 +1893,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testMultiValuedPassword
@@ -1995,7 +1955,7 @@ argument_list|)
 expr_stmt|;
 name|assertTrue
 argument_list|(
-name|sImpl
+name|jrSession
 operator|.
 name|hasPendingChanges
 argument_list|()
@@ -2055,7 +2015,7 @@ expr_stmt|;
 comment|// saving changes of the import -> must fail as mandatory prop is missing
 try|try
 block|{
-name|sImpl
+name|jrSession
 operator|.
 name|save
 argument_list|()
@@ -2077,7 +2037,7 @@ block|}
 block|}
 finally|finally
 block|{
-name|sImpl
+name|jrSession
 operator|.
 name|refresh
 argument_list|(
@@ -2104,7 +2064,7 @@ operator|.
 name|remove
 argument_list|()
 expr_stmt|;
-name|sImpl
+name|jrSession
 operator|.
 name|save
 argument_list|()
@@ -2112,6 +2072,8 @@ expr_stmt|;
 block|}
 block|}
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testIncompleteUser
@@ -2202,7 +2164,7 @@ expr_stmt|;
 comment|// saving changes of the import -> must fail as mandatory prop is missing
 try|try
 block|{
-name|sImpl
+name|jrSession
 operator|.
 name|save
 argument_list|()
@@ -2224,7 +2186,7 @@ block|}
 block|}
 finally|finally
 block|{
-name|sImpl
+name|jrSession
 operator|.
 name|refresh
 argument_list|(
@@ -2251,7 +2213,7 @@ operator|.
 name|remove
 argument_list|()
 expr_stmt|;
-name|sImpl
+name|jrSession
 operator|.
 name|save
 argument_list|()
@@ -2260,6 +2222,8 @@ block|}
 block|}
 block|}
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testIncompleteGroup
@@ -2309,7 +2273,7 @@ expr_stmt|;
 comment|// saving changes of the import -> must fail as mandatory prop is missing
 try|try
 block|{
-name|sImpl
+name|jrSession
 operator|.
 name|save
 argument_list|()
@@ -2331,7 +2295,7 @@ block|}
 block|}
 finally|finally
 block|{
-name|sImpl
+name|jrSession
 operator|.
 name|refresh
 argument_list|(
@@ -2358,7 +2322,7 @@ operator|.
 name|remove
 argument_list|()
 expr_stmt|;
-name|sImpl
+name|jrSession
 operator|.
 name|save
 argument_list|()
@@ -2366,6 +2330,8 @@ expr_stmt|;
 block|}
 block|}
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testImportWithIntermediatePath
@@ -2449,7 +2415,7 @@ argument_list|)
 expr_stmt|;
 name|assertTrue
 argument_list|(
-name|sImpl
+name|jrSession
 operator|.
 name|hasPendingChanges
 argument_list|()
@@ -2586,7 +2552,7 @@ expr_stmt|;
 block|}
 finally|finally
 block|{
-name|sImpl
+name|jrSession
 operator|.
 name|refresh
 argument_list|(
@@ -2595,6 +2561,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testImportNewMembers
@@ -2703,7 +2671,7 @@ expr_stmt|;
 name|Node
 name|n
 init|=
-name|sImpl
+name|jrSession
 operator|.
 name|getNode
 argument_list|(
@@ -2735,7 +2703,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// getWeakReferences only works upon save.
-name|sImpl
+name|jrSession
 operator|.
 name|save
 argument_list|()
@@ -2753,7 +2721,7 @@ expr_stmt|;
 block|}
 finally|finally
 block|{
-name|sImpl
+name|jrSession
 operator|.
 name|refresh
 argument_list|(
@@ -2781,13 +2749,15 @@ name|remove
 argument_list|()
 expr_stmt|;
 block|}
-name|sImpl
+name|jrSession
 operator|.
 name|save
 argument_list|()
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testImportNewMembersReverseOrder
@@ -2893,7 +2863,7 @@ expr_stmt|;
 name|Node
 name|n
 init|=
-name|sImpl
+name|jrSession
 operator|.
 name|getNode
 argument_list|(
@@ -2925,7 +2895,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// getWeakReferences only works upon save.
-name|sImpl
+name|jrSession
 operator|.
 name|save
 argument_list|()
@@ -2943,7 +2913,7 @@ expr_stmt|;
 block|}
 finally|finally
 block|{
-name|sImpl
+name|jrSession
 operator|.
 name|refresh
 argument_list|(
@@ -2971,13 +2941,15 @@ name|remove
 argument_list|()
 expr_stmt|;
 block|}
-name|sImpl
+name|jrSession
 operator|.
 name|save
 argument_list|()
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testImportMembers
@@ -3095,7 +3067,7 @@ name|g1
 argument_list|)
 expr_stmt|;
 comment|// getWeakReferences only works upon save.
-name|sImpl
+name|jrSession
 operator|.
 name|save
 argument_list|()
@@ -3162,7 +3134,7 @@ expr_stmt|;
 block|}
 finally|finally
 block|{
-name|sImpl
+name|jrSession
 operator|.
 name|refresh
 argument_list|(
@@ -3179,13 +3151,15 @@ operator|.
 name|remove
 argument_list|()
 expr_stmt|;
-name|sImpl
+name|jrSession
 operator|.
 name|save
 argument_list|()
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testImportNonExistingMemberIgnore
@@ -3353,7 +3327,7 @@ block|}
 block|}
 finally|finally
 block|{
-name|sImpl
+name|jrSession
 operator|.
 name|refresh
 argument_list|(
@@ -3517,6 +3491,8 @@ comment|//        } finally {
 comment|//            sImpl.refresh(false);
 comment|//        }
 comment|//    }
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testImportSelfAsGroupIgnore
@@ -3621,7 +3597,7 @@ block|}
 block|}
 finally|finally
 block|{
-name|sImpl
+name|jrSession
 operator|.
 name|refresh
 argument_list|(
@@ -3653,6 +3629,8 @@ comment|//        }finally {
 comment|//            sImpl.refresh(false);
 comment|//        }
 comment|//    }
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testImportImpersonation
@@ -3794,7 +3772,7 @@ expr_stmt|;
 block|}
 finally|finally
 block|{
-name|sImpl
+name|jrSession
 operator|.
 name|refresh
 argument_list|(
@@ -3803,6 +3781,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testImportInvalidImpersonationIgnore
@@ -4033,7 +4013,7 @@ block|}
 block|}
 finally|finally
 block|{
-name|sImpl
+name|jrSession
 operator|.
 name|refresh
 argument_list|(
@@ -4072,6 +4052,8 @@ comment|//                sImpl.refresh(false);
 comment|//            }
 comment|//        }
 comment|//    }
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testImportUuidCollisionRemoveExisting
@@ -4134,7 +4116,7 @@ argument_list|)
 expr_stmt|;
 comment|// saving changes of the import -> must succeed. add mandatory
 comment|// props should have been created.
-name|sImpl
+name|jrSession
 operator|.
 name|save
 argument_list|()
@@ -4142,7 +4124,7 @@ expr_stmt|;
 block|}
 finally|finally
 block|{
-name|sImpl
+name|jrSession
 operator|.
 name|refresh
 argument_list|(
@@ -4169,7 +4151,7 @@ operator|.
 name|remove
 argument_list|()
 expr_stmt|;
-name|sImpl
+name|jrSession
 operator|.
 name|save
 argument_list|()
@@ -4178,6 +4160,8 @@ block|}
 block|}
 block|}
 comment|/**      * Same as {@link #testImportUuidCollisionRemoveExisting} with the single      * difference that the inital import is saved before being overwritten.      *      * @throws RepositoryException      * @throws IOException      * @throws SAXException      */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testImportUuidCollisionRemoveExisting2
@@ -4225,7 +4209,7 @@ argument_list|,
 name|xml
 argument_list|)
 expr_stmt|;
-name|sImpl
+name|jrSession
 operator|.
 name|save
 argument_list|()
@@ -4245,7 +4229,7 @@ argument_list|)
 expr_stmt|;
 comment|// saving changes of the import -> must succeed. add mandatory
 comment|// props should have been created.
-name|sImpl
+name|jrSession
 operator|.
 name|save
 argument_list|()
@@ -4253,7 +4237,7 @@ expr_stmt|;
 block|}
 finally|finally
 block|{
-name|sImpl
+name|jrSession
 operator|.
 name|refresh
 argument_list|(
@@ -4280,7 +4264,7 @@ operator|.
 name|remove
 argument_list|()
 expr_stmt|;
-name|sImpl
+name|jrSession
 operator|.
 name|save
 argument_list|()
@@ -4288,6 +4272,8 @@ expr_stmt|;
 block|}
 block|}
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testImportUuidCollisionThrow
@@ -4380,7 +4366,7 @@ comment|// success.
 block|}
 finally|finally
 block|{
-name|sImpl
+name|jrSession
 operator|.
 name|refresh
 argument_list|(
@@ -4407,7 +4393,7 @@ operator|.
 name|remove
 argument_list|()
 expr_stmt|;
-name|sImpl
+name|jrSession
 operator|.
 name|save
 argument_list|()
@@ -4415,6 +4401,8 @@ expr_stmt|;
 block|}
 block|}
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testImportGroupMembersFromNodes
@@ -4543,7 +4531,7 @@ name|isAutoSave
 argument_list|()
 condition|)
 block|{
-name|sImpl
+name|jrSession
 operator|.
 name|save
 argument_list|()
@@ -4565,7 +4553,7 @@ name|isAutoSave
 argument_list|()
 condition|)
 block|{
-name|sImpl
+name|jrSession
 operator|.
 name|save
 argument_list|()
@@ -4635,7 +4623,7 @@ block|}
 block|}
 finally|finally
 block|{
-name|sImpl
+name|jrSession
 operator|.
 name|refresh
 argument_list|(
@@ -4689,7 +4677,7 @@ name|isAutoSave
 argument_list|()
 condition|)
 block|{
-name|sImpl
+name|jrSession
 operator|.
 name|save
 argument_list|()
@@ -4730,7 +4718,7 @@ name|isAutoSave
 argument_list|()
 condition|)
 block|{
-name|sImpl
+name|jrSession
 operator|.
 name|save
 argument_list|()
@@ -4793,163 +4781,6 @@ comment|//            }
 comment|//            if (!umgr.isAutoSave()) {
 comment|//                sImpl.save();
 comment|//            }
-comment|//        }
-comment|//    }
-comment|//TODO clarify how to test AuthorizableActions in Oak
-comment|//    public void testActionExecutionForUser() throws Exception {
-comment|//        TestAction testAction = new TestAction();
-comment|//
-comment|//        userMgr.setAuthorizableActions(new AuthorizableAction[] {testAction});
-comment|//
-comment|//        // import user
-comment|//        String xml = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
-comment|//                "<sv:node sv:name=\"t\" xmlns:mix=\"http://www.jcp.org/jcr/mix/1.0\" xmlns:nt=\"http://www.jcp.org/jcr/nt/1.0\" xmlns:fn_old=\"http://www.w3.org/2004/10/xpath-functions\" xmlns:fn=\"http://www.w3.org/2005/xpath-functions\" xmlns:xs=\"http://www.w3.org/2001/XMLSchema\" xmlns:sv=\"http://www.jcp.org/jcr/sv/1.0\" xmlns:rep=\"internal\" xmlns:jcr=\"http://www.jcp.org/jcr/1.0\">" +
-comment|//                "<sv:property sv:name=\"jcr:primaryType\" sv:type=\"Name\"><sv:value>rep:User</sv:value></sv:property>" +
-comment|//                "<sv:property sv:name=\"jcr:uuid\" sv:type=\"String\"><sv:value>e358efa4-89f5-3062-b10d-d7316b65649e</sv:value></sv:property>" +
-comment|//                "<sv:property sv:name=\"rep:password\" sv:type=\"String\"><sv:value>pw</sv:value></sv:property>" +
-comment|//                "<sv:property sv:name=\"rep:principalName\" sv:type=\"String\"><sv:value>tPrincipal</sv:value></sv:property>" +
-comment|//                "</sv:node>";
-comment|//
-comment|//        NodeImpl target = (NodeImpl) sImpl.getNode(umgr.getUsersPath());
-comment|//        try {
-comment|//            doImport(target, xml);
-comment|//            assertEquals(testAction.id, "t");
-comment|//            assertEquals(testAction.pw, "pw");
-comment|//        } finally {
-comment|//            sImpl.refresh(false);
-comment|//        }
-comment|//    }
-comment|//
-comment|//    public void testActionExecutionForGroup() throws Exception {
-comment|//        TestAction testAction = new TestAction();
-comment|//
-comment|//        umgr.setAuthorizableActions(new AuthorizableAction[] {testAction});
-comment|//
-comment|//        // import group
-comment|//        String xml = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
-comment|//                "<sv:node sv:name=\"g\" xmlns:mix=\"http://www.jcp.org/jcr/mix/1.0\" xmlns:nt=\"http://www.jcp.org/jcr/nt/1.0\" xmlns:fn_old=\"http://www.w3.org/2004/10/xpath-functions\" xmlns:fn=\"http://www.w3.org/2005/xpath-functions\" xmlns:xs=\"http://www.w3.org/2001/XMLSchema\" xmlns:sv=\"http://www.jcp.org/jcr/sv/1.0\" xmlns:rep=\"internal\" xmlns:jcr=\"http://www.jcp.org/jcr/1.0\">" +
-comment|//                "<sv:property sv:name=\"jcr:primaryType\" sv:type=\"Name\"><sv:value>rep:Group</sv:value></sv:property>" +
-comment|//                "<sv:property sv:name=\"jcr:uuid\" sv:type=\"String\"><sv:value>b2f5ff47-4366-31b6-a533-d8dc3614845d</sv:value></sv:property>" +
-comment|//                "<sv:property sv:name=\"rep:principalName\" sv:type=\"String\"><sv:value>gPrincipal</sv:value></sv:property>" +
-comment|//                "</sv:node>";
-comment|//
-comment|//        NodeImpl target = (NodeImpl) sImpl.getNode(umgr.getGroupsPath());
-comment|//        try {
-comment|//            doImport(target, xml);
-comment|//            assertEquals(testAction.id, "g");
-comment|//            assertNull(testAction.pw);
-comment|//        } finally {
-comment|//            sImpl.refresh(false);
-comment|//        }
-comment|//    }
-comment|//
-comment|//    public void testAccessControlActionExecutionForUser() throws Exception {
-comment|//        AccessControlAction a1 = new AccessControlAction();
-comment|//        a1.setUserPrivilegeNames(Privilege.JCR_ALL);
-comment|//
-comment|//        umgr.setAuthorizableActions(new AuthorizableAction[] {a1});
-comment|//
-comment|//        String xml = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
-comment|//                "<sv:node sv:name=\"t\" xmlns:mix=\"http://www.jcp.org/jcr/mix/1.0\" xmlns:nt=\"http://www.jcp.org/jcr/nt/1.0\" xmlns:fn_old=\"http://www.w3.org/2004/10/xpath-functions\" xmlns:fn=\"http://www.w3.org/2005/xpath-functions\" xmlns:xs=\"http://www.w3.org/2001/XMLSchema\" xmlns:sv=\"http://www.jcp.org/jcr/sv/1.0\" xmlns:rep=\"internal\" xmlns:jcr=\"http://www.jcp.org/jcr/1.0\">" +
-comment|//                "<sv:property sv:name=\"jcr:primaryType\" sv:type=\"Name\"><sv:value>rep:User</sv:value></sv:property>" +
-comment|//                "<sv:property sv:name=\"jcr:uuid\" sv:type=\"String\"><sv:value>e358efa4-89f5-3062-b10d-d7316b65649e</sv:value></sv:property>" +
-comment|//                "<sv:property sv:name=\"rep:password\" sv:type=\"String\"><sv:value>{sha1}8efd86fb78a56a5145ed7739dcb00c78581c5375</sv:value></sv:property>" +
-comment|//                "<sv:property sv:name=\"rep:principalName\" sv:type=\"String\"><sv:value>tPrincipal</sv:value></sv:property>" +
-comment|//                "</sv:node>";
-comment|//
-comment|//        NodeImpl target = (NodeImpl) sImpl.getNode(umgr.getUsersPath());
-comment|//        try {
-comment|//            doImport(target, xml);
-comment|//
-comment|//            Authorizable a = umgr.getAuthorizable("t");
-comment|//            assertNotNull(a);
-comment|//            assertFalse(a.isGroup());
-comment|//
-comment|//            AccessControlManager acMgr = sImpl.getAccessControlManager();
-comment|//            AccessControlPolicy[] policies = acMgr.getPolicies(a.getPath());
-comment|//            assertNotNull(policies);
-comment|//            assertEquals(1, policies.length);
-comment|//            assertTrue(policies[0] instanceof AccessControlList);
-comment|//
-comment|//            AccessControlEntry[] aces = ((AccessControlList) policies[0]).getAccessControlEntries();
-comment|//            assertEquals(1, aces.length);
-comment|//            assertEquals("tPrincipal", aces[0].getPrincipal().getName());
-comment|//
-comment|//        } finally {
-comment|//            sImpl.refresh(false);
-comment|//        }
-comment|//    }
-comment|//
-comment|//    public void testAccessControlActionExecutionForUser2() throws Exception {
-comment|//        AccessControlAction a1 = new AccessControlAction();
-comment|//        a1.setUserPrivilegeNames(Privilege.JCR_ALL);
-comment|//
-comment|//        umgr.setAuthorizableActions(new AuthorizableAction[] {a1});
-comment|//
-comment|//        String xml = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
-comment|//                "<sv:node sv:name=\"t\" xmlns:mix=\"http://www.jcp.org/jcr/mix/1.0\" xmlns:nt=\"http://www.jcp.org/jcr/nt/1.0\" xmlns:fn_old=\"http://www.w3.org/2004/10/xpath-functions\" xmlns:fn=\"http://www.w3.org/2005/xpath-functions\" xmlns:xs=\"http://www.w3.org/2001/XMLSchema\" xmlns:sv=\"http://www.jcp.org/jcr/sv/1.0\" xmlns:rep=\"internal\" xmlns:jcr=\"http://www.jcp.org/jcr/1.0\">" +
-comment|//                "<sv:property sv:name=\"jcr:primaryType\" sv:type=\"Name\"><sv:value>rep:User</sv:value></sv:property>" +
-comment|//                "<sv:property sv:name=\"jcr:uuid\" sv:type=\"String\"><sv:value>e358efa4-89f5-3062-b10d-d7316b65649e</sv:value></sv:property>" +
-comment|//                "<sv:property sv:name=\"rep:principalName\" sv:type=\"String\"><sv:value>tPrincipal</sv:value></sv:property>" +
-comment|//                "<sv:property sv:name=\"rep:password\" sv:type=\"String\"><sv:value>{sha1}8efd86fb78a56a5145ed7739dcb00c78581c5375</sv:value></sv:property>" +
-comment|//                "</sv:node>";
-comment|//
-comment|//        NodeImpl target = (NodeImpl) sImpl.getNode(umgr.getUsersPath());
-comment|//        try {
-comment|//            doImport(target, xml);
-comment|//
-comment|//            Authorizable a = umgr.getAuthorizable("t");
-comment|//            assertNotNull(a);
-comment|//            assertFalse(a.isGroup());
-comment|//
-comment|//            AccessControlManager acMgr = sImpl.getAccessControlManager();
-comment|//            AccessControlPolicy[] policies = acMgr.getPolicies(a.getPath());
-comment|//            assertNotNull(policies);
-comment|//            assertEquals(1, policies.length);
-comment|//            assertTrue(policies[0] instanceof AccessControlList);
-comment|//
-comment|//            AccessControlEntry[] aces = ((AccessControlList) policies[0]).getAccessControlEntries();
-comment|//            assertEquals(1, aces.length);
-comment|//            assertEquals("tPrincipal", aces[0].getPrincipal().getName());
-comment|//
-comment|//        } finally {
-comment|//            sImpl.refresh(false);
-comment|//        }
-comment|//    }
-comment|//
-comment|//    public void testAccessControlActionExecutionForGroup() throws Exception {
-comment|//        AccessControlAction a1 = new AccessControlAction();
-comment|//        a1.setGroupPrivilegeNames(Privilege.JCR_READ);
-comment|//
-comment|//        umgr.setAuthorizableActions(new AuthorizableAction[] {a1});
-comment|//
-comment|//        String xml = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
-comment|//                "<sv:node sv:name=\"g\" xmlns:mix=\"http://www.jcp.org/jcr/mix/1.0\" xmlns:nt=\"http://www.jcp.org/jcr/nt/1.0\" xmlns:fn_old=\"http://www.w3.org/2004/10/xpath-functions\" xmlns:fn=\"http://www.w3.org/2005/xpath-functions\" xmlns:xs=\"http://www.w3.org/2001/XMLSchema\" xmlns:sv=\"http://www.jcp.org/jcr/sv/1.0\" xmlns:rep=\"internal\" xmlns:jcr=\"http://www.jcp.org/jcr/1.0\">" +
-comment|//                "<sv:property sv:name=\"jcr:primaryType\" sv:type=\"Name\"><sv:value>rep:Group</sv:value></sv:property>" +
-comment|//                "<sv:property sv:name=\"jcr:uuid\" sv:type=\"String\"><sv:value>b2f5ff47-4366-31b6-a533-d8dc3614845d</sv:value></sv:property>" +
-comment|//                "<sv:property sv:name=\"rep:principalName\" sv:type=\"String\"><sv:value>gPrincipal</sv:value></sv:property>" +
-comment|//                "</sv:node>";
-comment|//
-comment|//        NodeImpl target = (NodeImpl) sImpl.getNode(umgr.getGroupsPath());
-comment|//        try {
-comment|//            doImport(target, xml);
-comment|//
-comment|//            Authorizable a = umgr.getAuthorizable("g");
-comment|//            assertNotNull(a);
-comment|//            assertTrue(a.isGroup());
-comment|//
-comment|//            AccessControlManager acMgr = sImpl.getAccessControlManager();
-comment|//            AccessControlPolicy[] policies = acMgr.getPolicies(a.getPath());
-comment|//            assertNotNull(policies);
-comment|//            assertEquals(1, policies.length);
-comment|//            assertTrue(policies[0] instanceof AccessControlList);
-comment|//
-comment|//            AccessControlEntry[] aces = ((AccessControlList) policies[0]).getAccessControlEntries();
-comment|//            assertEquals(1, aces.length);
-comment|//            assertEquals("gPrincipal", aces[0].getPrincipal().getName());
-comment|//
-comment|//        } finally {
-comment|//            sImpl.refresh(false);
 comment|//        }
 comment|//    }
 specifier|private
@@ -5108,127 +4939,6 @@ name|getIdentifier
 argument_list|()
 argument_list|)
 argument_list|)
-expr_stmt|;
-block|}
-block|}
-specifier|private
-specifier|final
-class|class
-name|TestAction
-implements|implements
-name|AuthorizableAction
-block|{
-specifier|private
-name|String
-name|id
-decl_stmt|;
-specifier|private
-name|String
-name|pw
-decl_stmt|;
-annotation|@
-name|Override
-specifier|public
-name|void
-name|onCreate
-parameter_list|(
-name|Group
-name|group
-parameter_list|,
-name|Root
-name|root
-parameter_list|,
-name|NamePathMapper
-name|namePathMapper
-parameter_list|)
-throws|throws
-name|RepositoryException
-block|{
-name|id
-operator|=
-name|group
-operator|.
-name|getID
-argument_list|()
-expr_stmt|;
-block|}
-annotation|@
-name|Override
-specifier|public
-name|void
-name|onCreate
-parameter_list|(
-name|User
-name|user
-parameter_list|,
-name|String
-name|password
-parameter_list|,
-name|Root
-name|root
-parameter_list|,
-name|NamePathMapper
-name|namePathMapper
-parameter_list|)
-throws|throws
-name|RepositoryException
-block|{
-name|id
-operator|=
-name|user
-operator|.
-name|getID
-argument_list|()
-expr_stmt|;
-name|pw
-operator|=
-name|password
-expr_stmt|;
-block|}
-annotation|@
-name|Override
-specifier|public
-name|void
-name|onRemove
-parameter_list|(
-name|Authorizable
-name|authorizable
-parameter_list|,
-name|Root
-name|root
-parameter_list|,
-name|NamePathMapper
-name|namePathMapper
-parameter_list|)
-throws|throws
-name|RepositoryException
-block|{
-comment|// ignore
-block|}
-annotation|@
-name|Override
-specifier|public
-name|void
-name|onPasswordChange
-parameter_list|(
-name|User
-name|user
-parameter_list|,
-name|String
-name|newPassword
-parameter_list|,
-name|Root
-name|root
-parameter_list|,
-name|NamePathMapper
-name|namePathMapper
-parameter_list|)
-throws|throws
-name|RepositoryException
-block|{
-name|pw
-operator|=
-name|newPassword
 expr_stmt|;
 block|}
 block|}
