@@ -159,10 +159,8 @@ operator|.
 name|setUp
 argument_list|()
 expr_stmt|;
-name|assertHasPrivilege
+name|assertHasRepoPrivilege
 argument_list|(
-literal|null
-argument_list|,
 name|JCR_NAMESPACE_MANAGEMENT
 argument_list|,
 literal|false
@@ -419,10 +417,8 @@ argument_list|,
 literal|true
 argument_list|)
 expr_stmt|;
-name|assertHasPrivilege
+name|assertHasRepoPrivilege
 argument_list|(
-literal|null
-argument_list|,
 name|JCR_NAMESPACE_MANAGEMENT
 argument_list|,
 literal|true
@@ -440,10 +436,8 @@ argument_list|,
 literal|false
 argument_list|)
 expr_stmt|;
-name|assertHasPrivilege
+name|assertHasRepoPrivilege
 argument_list|(
-literal|null
-argument_list|,
 name|JCR_NAMESPACE_MANAGEMENT
 argument_list|,
 literal|false

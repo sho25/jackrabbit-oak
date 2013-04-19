@@ -159,10 +159,8 @@ name|setUp
 argument_list|()
 expr_stmt|;
 comment|// test user must not be allowed
-name|assertHasPrivilege
+name|assertHasRepoPrivilege
 argument_list|(
-literal|null
-argument_list|,
 name|REP_PRIVILEGE_MANAGEMENT
 argument_list|,
 literal|false
@@ -386,10 +384,8 @@ argument_list|,
 literal|true
 argument_list|)
 expr_stmt|;
-name|assertHasPrivilege
+name|assertHasRepoPrivilege
 argument_list|(
-literal|null
-argument_list|,
 name|REP_PRIVILEGE_MANAGEMENT
 argument_list|,
 literal|true
@@ -404,10 +400,8 @@ argument_list|,
 literal|false
 argument_list|)
 expr_stmt|;
-name|assertHasPrivilege
+name|assertHasRepoPrivilege
 argument_list|(
-literal|null
-argument_list|,
 name|REP_PRIVILEGE_MANAGEMENT
 argument_list|,
 literal|false
