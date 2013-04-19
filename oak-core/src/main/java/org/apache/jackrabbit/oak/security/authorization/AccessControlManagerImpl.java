@@ -976,7 +976,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * AccessControlManagerImpl... TODO  */
+comment|/**  * Default implementation of the {@code JackrabbitAccessControlManager} interface.  * This implementation covers both editing access control content by path and  * by {@code Principal} resulting both in the same content structure.  */
 end_comment
 
 begin_class
