@@ -103,24 +103,6 @@ name|oak
 operator|.
 name|security
 operator|.
-name|principal
-operator|.
-name|PrincipalImpl
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|security
-operator|.
 name|privilege
 operator|.
 name|PrivilegeConstants
@@ -229,10 +211,6 @@ name|fail
 import|;
 end_import
 
-begin_comment
-comment|/**  * AccessControlValidatorTest... TODO  */
-end_comment
-
 begin_class
 specifier|public
 class|class
@@ -268,10 +246,6 @@ decl_stmt|;
 specifier|private
 name|Principal
 name|testPrincipal
-decl_stmt|;
-specifier|private
-name|Principal
-name|testPrincipal2
 decl_stmt|;
 annotation|@
 name|Before
@@ -320,22 +294,10 @@ operator|.
 name|commit
 argument_list|()
 expr_stmt|;
-comment|// TODO
 name|testPrincipal
 operator|=
-operator|new
-name|PrincipalImpl
-argument_list|(
-literal|"testPrincipal"
-argument_list|)
-expr_stmt|;
-name|testPrincipal2
-operator|=
-operator|new
-name|PrincipalImpl
-argument_list|(
-literal|"anotherPrincipal"
-argument_list|)
+name|getTestPrincipal
+argument_list|()
 expr_stmt|;
 block|}
 annotation|@
@@ -1432,7 +1394,7 @@ literal|"invalid"
 argument_list|,
 name|NT_REP_GRANT_ACE
 argument_list|,
-name|testPrincipal2
+name|testPrincipal
 operator|.
 name|getName
 argument_list|()
@@ -1525,7 +1487,7 @@ literal|"invalid"
 argument_list|,
 name|NT_REP_GRANT_ACE
 argument_list|,
-name|testPrincipal2
+name|testPrincipal
 operator|.
 name|getName
 argument_list|()

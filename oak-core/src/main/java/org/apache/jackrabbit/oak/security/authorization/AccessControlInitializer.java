@@ -247,6 +247,8 @@ argument_list|(
 name|NT_REP_DENY_ACE
 argument_list|,
 name|NT_REP_GRANT_ACE
+argument_list|,
+name|NT_REP_ACE
 argument_list|)
 argument_list|)
 expr_stmt|;
