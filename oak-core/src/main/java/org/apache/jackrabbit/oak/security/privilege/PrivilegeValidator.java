@@ -241,9 +241,11 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|util
+name|spi
 operator|.
-name|TreeUtil
+name|state
+operator|.
+name|NodeStateUtils
 import|;
 end_import
 
@@ -258,6 +260,24 @@ operator|.
 name|util
 operator|.
 name|Text
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|api
+operator|.
+name|CommitFailedException
+operator|.
+name|CONSTRAINT
 import|;
 end_import
 
@@ -382,7 +402,7 @@ throw|throw
 operator|new
 name|CommitFailedException
 argument_list|(
-literal|"Constraint"
+name|CONSTRAINT
 argument_list|,
 literal|45
 argument_list|,
@@ -407,7 +427,7 @@ throw|throw
 operator|new
 name|CommitFailedException
 argument_list|(
-literal|"Constraint"
+name|CONSTRAINT
 argument_list|,
 literal|46
 argument_list|,
@@ -429,6 +449,14 @@ name|after
 parameter_list|)
 throws|throws
 name|CommitFailedException
+block|{
+if|if
+condition|(
+name|isPrivilegeDefinition
+argument_list|(
+name|after
+argument_list|)
+condition|)
 block|{
 comment|// make sure privileges have been initialized before
 name|getPrivilegesTree
@@ -477,7 +505,7 @@ name|msg
 argument_list|)
 throw|;
 block|}
-comment|// primary node type name must be rep:privilege
+comment|// validate the definition
 name|Tree
 name|tree
 init|=
@@ -495,41 +523,14 @@ argument_list|,
 name|after
 argument_list|)
 decl_stmt|;
-if|if
-condition|(
-operator|!
-name|NT_REP_PRIVILEGE
-operator|.
-name|equals
-argument_list|(
-name|TreeUtil
-operator|.
-name|getPrimaryTypeName
-argument_list|(
-name|tree
-argument_list|)
-argument_list|)
-condition|)
-block|{
-throw|throw
-operator|new
-name|CommitFailedException
-argument_list|(
-literal|"Privilege"
-argument_list|,
-literal|2
-argument_list|,
-literal|"Privilege definition must have primary node type set to rep:privilege"
-argument_list|)
-throw|;
-block|}
-comment|// additional validation of the definition
 name|validateDefinition
 argument_list|(
 name|tree
 argument_list|)
 expr_stmt|;
-comment|// privilege definitions may not have child nodes.
+block|}
+comment|// privilege definitions may not have child nodes (or another type of nodes
+comment|// that is not handled by this validator anyway).
 return|return
 literal|null
 return|;
@@ -552,11 +553,19 @@ parameter_list|)
 throws|throws
 name|CommitFailedException
 block|{
+if|if
+condition|(
+name|isPrivilegeDefinition
+argument_list|(
+name|before
+argument_list|)
+condition|)
+block|{
 throw|throw
 operator|new
 name|CommitFailedException
 argument_list|(
-literal|"Constraint"
+name|CONSTRAINT
 argument_list|,
 literal|41
 argument_list|,
@@ -565,6 +574,14 @@ operator|+
 name|name
 argument_list|)
 throw|;
+block|}
+else|else
+block|{
+comment|// not handled by this validator
+return|return
+literal|null
+return|;
+block|}
 block|}
 annotation|@
 name|Override
@@ -581,11 +598,19 @@ parameter_list|)
 throws|throws
 name|CommitFailedException
 block|{
+if|if
+condition|(
+name|isPrivilegeDefinition
+argument_list|(
+name|before
+argument_list|)
+condition|)
+block|{
 throw|throw
 operator|new
 name|CommitFailedException
 argument_list|(
-literal|"Constraint"
+name|CONSTRAINT
 argument_list|,
 literal|42
 argument_list|,
@@ -594,6 +619,14 @@ operator|+
 name|name
 argument_list|)
 throw|;
+block|}
+else|else
+block|{
+comment|// not handled by this validator
+return|return
+literal|null
+return|;
+block|}
 block|}
 comment|//------------------------------------------------------------< private>---
 specifier|private
@@ -642,7 +675,7 @@ throw|throw
 operator|new
 name|CommitFailedException
 argument_list|(
-literal|"Constraint"
+name|CONSTRAINT
 argument_list|,
 literal|43
 argument_list|,
@@ -684,7 +717,7 @@ throw|throw
 operator|new
 name|CommitFailedException
 argument_list|(
-literal|"Constraint"
+name|CONSTRAINT
 argument_list|,
 literal|44
 argument_list|,
@@ -729,7 +762,7 @@ throw|throw
 operator|new
 name|CommitFailedException
 argument_list|(
-literal|"Constraint"
+name|CONSTRAINT
 argument_list|,
 literal|48
 argument_list|,
@@ -793,7 +826,7 @@ throw|throw
 operator|new
 name|CommitFailedException
 argument_list|(
-literal|"Constraint"
+name|CONSTRAINT
 argument_list|,
 literal|49
 argument_list|,
@@ -823,7 +856,7 @@ throw|throw
 operator|new
 name|CommitFailedException
 argument_list|(
-literal|"Constraint"
+name|CONSTRAINT
 argument_list|,
 literal|50
 argument_list|,
@@ -873,7 +906,7 @@ throw|throw
 operator|new
 name|CommitFailedException
 argument_list|(
-literal|"Constraint"
+name|CONSTRAINT
 argument_list|,
 literal|51
 argument_list|,
@@ -912,7 +945,7 @@ throw|throw
 operator|new
 name|CommitFailedException
 argument_list|(
-literal|"Constraint"
+name|CONSTRAINT
 argument_list|,
 literal|52
 argument_list|,
@@ -1012,7 +1045,7 @@ throw|throw
 operator|new
 name|CommitFailedException
 argument_list|(
-literal|"Constraint"
+name|CONSTRAINT
 argument_list|,
 literal|53
 argument_list|,
@@ -1058,7 +1091,7 @@ throw|throw
 operator|new
 name|CommitFailedException
 argument_list|(
-literal|"Constraint"
+name|CONSTRAINT
 argument_list|,
 literal|53
 argument_list|,
@@ -1253,7 +1286,7 @@ throw|throw
 operator|new
 name|CommitFailedException
 argument_list|(
-literal|"Constraint"
+name|CONSTRAINT
 argument_list|,
 literal|47
 argument_list|,
@@ -1310,6 +1343,31 @@ block|}
 block|}
 return|return
 name|aggregateNames
+return|;
+block|}
+specifier|private
+specifier|static
+name|boolean
+name|isPrivilegeDefinition
+parameter_list|(
+annotation|@
+name|Nonnull
+name|NodeState
+name|state
+parameter_list|)
+block|{
+return|return
+name|NT_REP_PRIVILEGE
+operator|.
+name|equals
+argument_list|(
+name|NodeStateUtils
+operator|.
+name|getPrimaryTypeName
+argument_list|(
+name|state
+argument_list|)
+argument_list|)
 return|;
 block|}
 block|}
