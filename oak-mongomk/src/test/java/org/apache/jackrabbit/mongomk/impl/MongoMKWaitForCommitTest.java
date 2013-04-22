@@ -810,6 +810,14 @@ operator|.
 name|newSingleThreadScheduledExecutor
 argument_list|()
 decl_stmt|;
+specifier|final
+name|MicroKernel
+name|mk
+init|=
+name|this
+operator|.
+name|mk
+decl_stmt|;
 name|ScheduledFuture
 argument_list|<
 name|String

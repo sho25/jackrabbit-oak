@@ -689,6 +689,7 @@ throw|;
 block|}
 block|}
 specifier|private
+specifier|static
 name|void
 name|logMethod
 parameter_list|(

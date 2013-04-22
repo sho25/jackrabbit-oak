@@ -1221,7 +1221,6 @@ name|asyncDelay
 argument_list|)
 expr_stmt|;
 block|}
-specifier|private
 name|void
 name|backgroundRead
 parameter_list|()
@@ -1395,7 +1394,6 @@ expr_stmt|;
 block|}
 block|}
 block|}
-specifier|private
 name|void
 name|backgroundWrite
 parameter_list|()
@@ -5369,6 +5367,11 @@ return|;
 block|}
 comment|/**      * Get the revision of the latest change made to this node.      *       * @param nodeMap the document      * @param before the returned value is guaranteed to be older than this revision      * @param onlyCommitted whether only committed changes should be considered      * @return the revision, or null if deleted      */
 annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unchecked"
+argument_list|)
+annotation|@
 name|Nullable
 name|Revision
 name|getNewestRevision
@@ -5424,7 +5427,6 @@ name|REVISIONS
 argument_list|)
 condition|)
 block|{
-comment|//noinspection unchecked
 name|revisions
 operator|.
 name|putAll
@@ -5448,11 +5450,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"unchecked"
-argument_list|)
 name|Map
 argument_list|<
 name|String
