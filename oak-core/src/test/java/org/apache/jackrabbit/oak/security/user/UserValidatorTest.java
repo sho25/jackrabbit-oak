@@ -272,7 +272,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * UserValidatorTest  */
+comment|/**  * @since OAK 1.0  */
 end_comment
 
 begin_class

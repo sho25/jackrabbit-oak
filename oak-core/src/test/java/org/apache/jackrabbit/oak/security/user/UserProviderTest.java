@@ -300,7 +300,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * UserProviderImplTest...  */
+comment|/**  * @since OAK 1.0  */
 end_comment
 
 begin_class
