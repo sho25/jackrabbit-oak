@@ -228,7 +228,6 @@ comment|/**  * {@code PrivilegeManager} implementation reading from and storing 
 end_comment
 
 begin_class
-specifier|public
 class|class
 name|PrivilegeManagerImpl
 implements|implements
@@ -259,7 +258,6 @@ specifier|final
 name|NamePathMapper
 name|namePathMapper
 decl_stmt|;
-specifier|public
 name|PrivilegeManagerImpl
 parameter_list|(
 name|Root
@@ -282,6 +280,7 @@ operator|=
 name|namePathMapper
 expr_stmt|;
 block|}
+comment|//---------------------------------------------------< PrivilegeManager>---
 annotation|@
 name|Override
 specifier|public
