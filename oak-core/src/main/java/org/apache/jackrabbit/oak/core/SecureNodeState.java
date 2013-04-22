@@ -66,6 +66,18 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|java
+operator|.
+name|util
+operator|.
+name|Collections
+operator|.
+name|emptyList
+import|;
+end_import
+
+begin_import
 import|import
 name|javax
 operator|.
@@ -259,42 +271,6 @@ specifier|final
 name|SecurityContext
 name|context
 decl_stmt|;
-comment|/**      * Predicate for testing whether a given property is readable.      */
-specifier|private
-specifier|final
-name|Predicate
-argument_list|<
-name|PropertyState
-argument_list|>
-name|isPropertyReadable
-init|=
-operator|new
-name|ReadablePropertyPredicate
-argument_list|()
-decl_stmt|;
-comment|/**      * Predicate for testing whether the node state in a child node entry      * is iterable.      */
-specifier|private
-specifier|final
-name|Predicate
-argument_list|<
-name|ChildNodeEntry
-argument_list|>
-name|isIterableNode
-init|=
-operator|new
-name|IterableNodePredicate
-argument_list|()
-decl_stmt|;
-comment|/**     * Function that that adds a security wrapper to node states from     * in child node entries. The {@link #isIterableNode} predicate should be     * used on the result to filter out non-existing/iterable child nodes.     *<p>     * Note that the SecureNodeState wrapper is needed only when the child     * or any of its descendants has read access restrictions. Otherwise     * we can optimize access by skipping the security wrapper entirely.     */
-specifier|private
-specifier|final
-name|WrapChildEntryFunction
-name|wrapChildNodeEntry
-init|=
-operator|new
-name|WrapChildEntryFunction
-argument_list|()
-decl_stmt|;
 specifier|private
 name|long
 name|childNodeCount
@@ -447,7 +423,9 @@ operator|.
 name|getProperties
 argument_list|()
 argument_list|,
-name|isPropertyReadable
+operator|new
+name|ReadablePropertyPredicate
+argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -486,8 +464,16 @@ name|getProperties
 argument_list|()
 return|;
 block|}
-else|else
+elseif|else
+if|if
+condition|(
+name|context
+operator|.
+name|canReadThisNode
+argument_list|()
+condition|)
 block|{
+comment|// TODO: check DENY_PROPERTIES?
 return|return
 name|filter
 argument_list|(
@@ -496,8 +482,17 @@ operator|.
 name|getProperties
 argument_list|()
 argument_list|,
-name|isPropertyReadable
+operator|new
+name|ReadablePropertyPredicate
+argument_list|()
 argument_list|)
+return|;
+block|}
+else|else
+block|{
+return|return
+name|emptyList
+argument_list|()
 return|;
 block|}
 block|}
@@ -552,7 +547,9 @@ name|child
 argument_list|)
 decl_stmt|;
 return|return
-name|wrapChildNodeEntry
+operator|new
+name|WrapChildEntryFunction
+argument_list|()
 operator|.
 name|apply
 argument_list|(
@@ -647,8 +644,16 @@ name|getChildNodeEntries
 argument_list|()
 return|;
 block|}
-else|else
+elseif|else
+if|if
+condition|(
+name|context
+operator|.
+name|canReadThisNode
+argument_list|()
+condition|)
 block|{
+comment|// TODO: check DENY_CHILDREN?
 name|Iterable
 argument_list|<
 name|ChildNodeEntry
@@ -662,7 +667,9 @@ operator|.
 name|getChildNodeEntries
 argument_list|()
 argument_list|,
-name|wrapChildNodeEntry
+operator|new
+name|WrapChildEntryFunction
+argument_list|()
 argument_list|)
 decl_stmt|;
 return|return
@@ -670,8 +677,17 @@ name|filter
 argument_list|(
 name|readable
 argument_list|,
-name|isIterableNode
+operator|new
+name|IterableNodePredicate
+argument_list|()
 argument_list|)
+return|;
+block|}
+else|else
+block|{
+return|return
+name|emptyList
+argument_list|()
 return|;
 block|}
 block|}
@@ -835,7 +851,7 @@ argument_list|()
 return|;
 block|}
 block|}
-comment|/**     * Function that that adds a security wrapper to node states from     * in child node entries. The {@link IterableNodePredicate} predicate should be     * used on the result to filter out non-existing/iterable child nodes.     *<p>     * Note that the SecureNodeState wrapper is needed only when the child     * or any of its descendants has read access restrictions. Otherwise     * we can optimize access by skipping the security wrapper entirely.     */
+comment|/**      * Function that that adds a security wrapper to node states from      * in child node entries. The {@link IterableNodePredicate} predicate should be      * used on the result to filter out non-existing/iterable child nodes.      *<p>      * Note that the SecureNodeState wrapper is needed only when the child      * or any of its descendants has read access restrictions. Otherwise      * we can optimize access by skipping the security wrapper entirely.      */
 specifier|private
 class|class
 name|WrapChildEntryFunction
