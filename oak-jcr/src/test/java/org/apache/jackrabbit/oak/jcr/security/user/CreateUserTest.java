@@ -328,8 +328,6 @@ name|pw
 parameter_list|)
 throws|throws
 name|RepositoryException
-throws|,
-name|NotExecutableException
 block|{
 name|User
 name|u
@@ -370,8 +368,6 @@ name|iPath
 parameter_list|)
 throws|throws
 name|RepositoryException
-throws|,
-name|NotExecutableException
 block|{
 name|User
 name|u
