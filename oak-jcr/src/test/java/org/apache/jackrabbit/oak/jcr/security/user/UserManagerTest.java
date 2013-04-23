@@ -1223,7 +1223,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/**      * @since oak      */
+comment|/**      * @since OAK 1.0      */
 annotation|@
 name|Test
 specifier|public
