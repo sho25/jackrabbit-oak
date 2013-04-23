@@ -243,6 +243,8 @@ operator|new
 name|TypeEditor
 argument_list|(
 name|types
+argument_list|,
+name|builder
 argument_list|)
 argument_list|)
 return|;
