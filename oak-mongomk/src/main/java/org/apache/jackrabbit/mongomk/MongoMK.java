@@ -656,6 +656,7 @@ argument_list|()
 decl_stmt|;
 comment|/**      * The last known head revision. This is the last-known revision.      */
 specifier|private
+specifier|volatile
 name|Revision
 name|headRevision
 decl_stmt|;
@@ -2092,6 +2093,30 @@ argument_list|)
 expr_stmt|;
 return|return
 literal|true
+return|;
+block|}
+elseif|else
+if|if
+condition|(
+name|revisions
+operator|!=
+literal|null
+operator|&&
+name|revisions
+operator|.
+name|containsKey
+argument_list|(
+name|rev
+operator|.
+name|toString
+argument_list|()
+argument_list|)
+condition|)
+block|{
+comment|// rev is in revisions map of this node, but not committed
+comment|// no need to check _commitRoot field
+return|return
+literal|false
 return|;
 block|}
 comment|// check commit root
@@ -3826,7 +3851,6 @@ block|}
 annotation|@
 name|Override
 specifier|public
-specifier|synchronized
 name|boolean
 name|nodeExists
 parameter_list|(
@@ -3908,7 +3932,6 @@ block|}
 annotation|@
 name|Override
 specifier|public
-specifier|synchronized
 name|String
 name|getNodes
 parameter_list|(
