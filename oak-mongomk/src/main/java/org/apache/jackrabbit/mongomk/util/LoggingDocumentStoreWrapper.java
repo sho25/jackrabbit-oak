@@ -12,6 +12,8 @@ operator|.
 name|jackrabbit
 operator|.
 name|mongomk
+operator|.
+name|util
 package|;
 end_package
 
@@ -74,6 +76,34 @@ operator|.
 name|json
 operator|.
 name|JsopBuilder
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|mongomk
+operator|.
+name|DocumentStore
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|mongomk
+operator|.
+name|UpdateOp
 import|;
 end_import
 
