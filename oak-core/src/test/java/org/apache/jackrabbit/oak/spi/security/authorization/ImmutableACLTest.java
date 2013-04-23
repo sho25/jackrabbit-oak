@@ -357,6 +357,9 @@ name|entries
 parameter_list|,
 name|NamePathMapper
 name|namePathMapper
+parameter_list|,
+name|RestrictionProvider
+name|restrictionProvider
 parameter_list|)
 block|{
 name|String
@@ -385,8 +388,7 @@ name|oakPath
 argument_list|,
 name|entries
 argument_list|,
-name|getRestrictionProvider
-argument_list|()
+name|restrictionProvider
 argument_list|,
 name|namePathMapper
 argument_list|)
