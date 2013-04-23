@@ -232,7 +232,7 @@ literal|null
 condition|)
 block|{
 return|return
-name|defaultValue
+literal|null
 return|;
 block|}
 name|T

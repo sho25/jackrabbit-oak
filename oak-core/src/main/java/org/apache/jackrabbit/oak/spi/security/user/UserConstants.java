@@ -177,6 +177,12 @@ name|PARAM_ADMIN_ID
 init|=
 literal|"adminId"
 decl_stmt|;
+comment|/**      * Configuration option defining the ID of the administrator user.      */
+name|String
+name|PARAM_ADMIN_PW
+init|=
+literal|"adminPw"
+decl_stmt|;
 comment|/**      * Default value for {@link #PARAM_ADMIN_ID}      */
 name|String
 name|DEFAULT_ADMIN_ID
