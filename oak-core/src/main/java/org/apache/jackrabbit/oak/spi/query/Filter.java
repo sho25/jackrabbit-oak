@@ -31,11 +31,21 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Set
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|annotation
 operator|.
-name|CheckForNull
+name|Nonnull
 import|;
 end_import
 
@@ -118,13 +128,44 @@ name|String
 name|getPath
 parameter_list|()
 function_decl|;
-comment|/**      * Get the node type.      *       * @return the node type restriction or<code>null</code> if none is set.      */
-annotation|@
-name|CheckForNull
-name|String
-name|getNodeType
+comment|/**      * Checks whether nodes of all types can match this filter.      *      * @return {@code true} iff there are no type restrictions      */
+name|boolean
+name|matchesAllTypes
 parameter_list|()
 function_decl|;
+comment|/**      * Returns the names of the filter node type and all its supertypes.      *      * @return supertype name      */
+annotation|@
+name|Nonnull
+name|Set
+argument_list|<
+name|String
+argument_list|>
+name|getSupertypes
+parameter_list|()
+function_decl|;
+comment|/**      * Returns the names of all matching primary node types.      *      * @return primary node type names      */
+annotation|@
+name|Nonnull
+name|Set
+argument_list|<
+name|String
+argument_list|>
+name|getPrimaryTypes
+parameter_list|()
+function_decl|;
+comment|/**      * Returns the names of all matching mixin node types.      *      * @return mixin node type names      */
+annotation|@
+name|Nonnull
+name|Set
+argument_list|<
+name|String
+argument_list|>
+name|getMixinTypes
+parameter_list|()
+function_decl|;
+comment|/**      * Get the node type.      *       * @return the node type restriction or<code>null</code> if none is set.      */
+comment|//    @CheckForNull
+comment|//    String getNodeType();
 comment|/**      * Get the complete query statement. The statement should only be used for      * logging purposes.      *       * @return the query statement (possibly null)      */
 annotation|@
 name|Nullable

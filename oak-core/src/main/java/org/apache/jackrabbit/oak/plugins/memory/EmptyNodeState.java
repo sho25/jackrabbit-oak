@@ -52,12 +52,14 @@ import|;
 end_import
 
 begin_import
-import|import
+import|import static
 name|java
 operator|.
 name|util
 operator|.
 name|Collections
+operator|.
+name|emptyList
 import|;
 end_import
 
@@ -311,7 +313,7 @@ block|}
 annotation|@
 name|Override
 annotation|@
-name|CheckForNull
+name|Nonnull
 specifier|public
 name|Iterable
 argument_list|<
@@ -326,7 +328,8 @@ name|name
 parameter_list|)
 block|{
 return|return
-literal|null
+name|emptyList
+argument_list|()
 return|;
 block|}
 annotation|@
@@ -344,8 +347,6 @@ name|getProperties
 parameter_list|()
 block|{
 return|return
-name|Collections
-operator|.
 name|emptyList
 argument_list|()
 return|;
@@ -430,8 +431,6 @@ name|getChildNodeNames
 parameter_list|()
 block|{
 return|return
-name|Collections
-operator|.
 name|emptyList
 argument_list|()
 return|;
@@ -451,8 +450,6 @@ name|getChildNodeEntries
 parameter_list|()
 block|{
 return|return
-name|Collections
-operator|.
 name|emptyList
 argument_list|()
 return|;

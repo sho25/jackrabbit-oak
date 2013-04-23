@@ -21,11 +21,17 @@ end_package
 
 begin_import
 import|import
-name|java
+name|org
 operator|.
-name|util
+name|apache
 operator|.
-name|Set
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|api
+operator|.
+name|PropertyValue
 import|;
 end_import
 
@@ -39,9 +45,11 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|api
+name|spi
 operator|.
-name|PropertyValue
+name|state
+operator|.
+name|NodeState
 import|;
 end_import
 
@@ -607,28 +615,20 @@ specifier|public
 name|SelectorImpl
 name|selector
 parameter_list|(
-name|String
-name|nodeTypeName
+name|NodeState
+name|type
 parameter_list|,
 name|String
 name|selectorName
-parameter_list|,
-name|Set
-argument_list|<
-name|String
-argument_list|>
-name|matchingTypes
 parameter_list|)
 block|{
 return|return
 operator|new
 name|SelectorImpl
 argument_list|(
-name|nodeTypeName
+name|type
 argument_list|,
 name|selectorName
-argument_list|,
-name|matchingTypes
 argument_list|)
 return|;
 block|}

@@ -113,9 +113,9 @@ name|String
 name|name
 parameter_list|)
 function_decl|;
-comment|/**      * Returns the name values of the named property. The implementation      * is equivalent to the following code, but may be optimized.      *<pre>      * PropertyState property = state.getProperty(name);      * if (property != null&& property.getType() == Type.NAMES) {      *     return property.getValue(Type.NAMES);      * } else {      *     return null;      * }      *</pre>      *      * @param name property name      * @return name values of the named property, or {@code null}      */
+comment|/**      * Returns the name values of the named property. The implementation      * is equivalent to the following code, but may be optimized.      *<pre>      * PropertyState property = state.getProperty(name);      * if (property != null&& property.getType() == Type.NAMES) {      *     return property.getValue(Type.NAMES);      * } else {      *     return Collections.emptyList();      * }      *</pre>      *      * @param name property name      * @return name values of the named property, or an empty collection      */
 annotation|@
-name|CheckForNull
+name|Nonnull
 name|Iterable
 argument_list|<
 name|String

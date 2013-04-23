@@ -21,6 +21,18 @@ end_package
 
 begin_import
 import|import static
+name|java
+operator|.
+name|util
+operator|.
+name|Collections
+operator|.
+name|emptyList
+import|;
+end_import
+
+begin_import
+import|import static
 name|org
 operator|.
 name|apache
@@ -291,7 +303,7 @@ block|}
 annotation|@
 name|Override
 annotation|@
-name|CheckForNull
+name|Nonnull
 specifier|public
 name|Iterable
 argument_list|<
@@ -339,7 +351,8 @@ block|}
 else|else
 block|{
 return|return
-literal|null
+name|emptyList
+argument_list|()
 return|;
 block|}
 block|}

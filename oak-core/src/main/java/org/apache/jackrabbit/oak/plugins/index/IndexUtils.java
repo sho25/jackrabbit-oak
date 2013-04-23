@@ -281,7 +281,7 @@ name|api
 operator|.
 name|Type
 operator|.
-name|STRING
+name|NAMES
 import|;
 end_import
 
@@ -299,7 +299,7 @@ name|api
 operator|.
 name|Type
 operator|.
-name|STRINGS
+name|STRING
 import|;
 end_import
 
@@ -652,7 +652,7 @@ name|PROPERTY_NAMES
 argument_list|,
 name|propertyNames
 argument_list|,
-name|STRINGS
+name|NAMES
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -681,7 +681,7 @@ name|DECLARING_NODE_TYPES
 argument_list|,
 name|declaringNodeTypeNames
 argument_list|,
-name|STRINGS
+name|NAMES
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -794,7 +794,7 @@ expr_stmt|;
 block|}
 name|entry
 operator|.
-name|setStrings
+name|setNames
 argument_list|(
 name|PROPERTY_NAMES
 argument_list|,

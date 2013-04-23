@@ -165,9 +165,14 @@ init|=
 literal|"oak:supertypes"
 decl_stmt|;
 name|String
-name|OAK_SUBTYPES
+name|OAK_PRIMARY_SUBTYPES
 init|=
-literal|"oak:subtypes"
+literal|"oak:primarySubtypes"
+decl_stmt|;
+name|String
+name|OAK_MIXIN_SUBTYPES
+init|=
+literal|"oak:mixinSubtypes"
 decl_stmt|;
 name|String
 name|OAK_MANDATORY_PROPERTIES
