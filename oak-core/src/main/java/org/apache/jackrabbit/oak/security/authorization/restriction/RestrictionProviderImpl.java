@@ -570,7 +570,7 @@ throw|throw
 operator|new
 name|AccessControlException
 argument_list|(
-literal|"Unsupported restriction: "
+literal|"Unsupported restriction at "
 operator|+
 name|oakPath
 argument_list|)
@@ -609,7 +609,7 @@ name|AccessControlException
 argument_list|(
 literal|"Unsupported restriction: "
 operator|+
-name|oakPath
+name|oakName
 argument_list|)
 throw|;
 block|}
