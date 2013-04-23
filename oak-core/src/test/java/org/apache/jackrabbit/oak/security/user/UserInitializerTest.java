@@ -1082,6 +1082,7 @@ literal|false
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * @since OAK 1.0 The configuration defines if and how the password of the      * admin user is being set.      */
 annotation|@
 name|Test
 specifier|public
