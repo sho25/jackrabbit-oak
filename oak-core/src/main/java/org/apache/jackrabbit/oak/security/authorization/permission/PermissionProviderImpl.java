@@ -812,7 +812,7 @@ comment|// TODO: OAK-753 decide on where to filter out hidden items.
 return|return
 name|ReadStatus
 operator|.
-name|DENY_ALL
+name|ALLOW_ALL
 return|;
 case|case
 name|TreeTypeProvider
@@ -923,7 +923,7 @@ name|TYPE_HIDDEN
 case|:
 comment|// TODO: OAK-753 decide on where to filter out hidden items.
 return|return
-literal|false
+literal|true
 return|;
 case|case
 name|TreeTypeProvider
