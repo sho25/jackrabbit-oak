@@ -813,7 +813,10 @@ name|effective
 operator|.
 name|findMissingMandatoryItems
 argument_list|(
-name|after
+name|node
+operator|.
+name|getNodeState
+argument_list|()
 argument_list|)
 decl_stmt|;
 if|if
