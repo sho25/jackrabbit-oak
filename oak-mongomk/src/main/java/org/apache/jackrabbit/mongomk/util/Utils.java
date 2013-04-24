@@ -12,6 +12,8 @@ operator|.
 name|jackrabbit
 operator|.
 name|mongomk
+operator|.
+name|util
 package|;
 end_package
 

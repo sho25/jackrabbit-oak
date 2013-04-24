@@ -73,6 +73,22 @@ name|JsopWriter
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|mongomk
+operator|.
+name|util
+operator|.
+name|Utils
+import|;
+end_import
+
 begin_comment
 comment|/**  * Represents a node held in memory (in the cache for example).  */
 end_comment

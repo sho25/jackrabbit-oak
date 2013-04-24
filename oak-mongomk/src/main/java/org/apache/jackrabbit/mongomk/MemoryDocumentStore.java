@@ -133,6 +133,22 @@ name|Operation
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|mongomk
+operator|.
+name|util
+operator|.
+name|Utils
+import|;
+end_import
+
 begin_comment
 comment|/**  * Emulates a MongoDB store (possibly consisting of multiple shards and  * replicas).  */
 end_comment
