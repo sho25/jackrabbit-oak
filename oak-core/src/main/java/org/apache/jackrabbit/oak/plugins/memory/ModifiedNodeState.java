@@ -382,6 +382,7 @@ name|ModifiedNodeState
 extends|extends
 name|AbstractNodeState
 block|{
+comment|// FIXME implement correct contract wrt. existence and iterability
 specifier|static
 name|NodeState
 name|withProperties
@@ -789,7 +790,10 @@ name|exists
 parameter_list|()
 block|{
 return|return
-literal|true
+name|base
+operator|.
+name|exists
+argument_list|()
 return|;
 block|}
 annotation|@
@@ -1179,7 +1183,10 @@ literal|null
 condition|)
 block|{
 return|return
-literal|true
+name|child
+operator|.
+name|exists
+argument_list|()
 return|;
 block|}
 elseif|else

@@ -1662,7 +1662,7 @@ condition|)
 block|{
 name|principalRoot
 operator|.
-name|removeNode
+name|removeChildNode
 argument_list|(
 name|entry
 operator|.

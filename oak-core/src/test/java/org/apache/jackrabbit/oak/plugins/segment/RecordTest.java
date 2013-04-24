@@ -2324,7 +2324,7 @@ control|)
 block|{
 name|builder
 operator|.
-name|removeNode
+name|removeChildNode
 argument_list|(
 literal|"test"
 operator|+

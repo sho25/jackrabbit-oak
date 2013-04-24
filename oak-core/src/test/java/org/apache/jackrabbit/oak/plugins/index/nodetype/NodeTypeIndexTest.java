@@ -589,7 +589,7 @@ argument_list|()
 decl_stmt|;
 name|root
 operator|.
-name|removeNode
+name|removeChildNode
 argument_list|(
 literal|"rep:security"
 argument_list|)

@@ -654,7 +654,7 @@ expr_stmt|;
 block|}
 name|target
 operator|.
-name|removeNode
+name|removeChildNode
 argument_list|(
 name|CONFLICT
 argument_list|)
@@ -1036,7 +1036,7 @@ block|}
 block|}
 name|conflictMarker
 operator|.
-name|removeNode
+name|removeChildNode
 argument_list|(
 name|name
 argument_list|)
@@ -1486,7 +1486,7 @@ parameter_list|)
 block|{
 name|target
 operator|.
-name|setNode
+name|setChildNode
 argument_list|(
 name|name
 argument_list|,
@@ -1562,7 +1562,7 @@ parameter_list|)
 block|{
 name|target
 operator|.
-name|removeNode
+name|removeChildNode
 argument_list|(
 name|name
 argument_list|)

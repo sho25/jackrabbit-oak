@@ -233,16 +233,6 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Ignore
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
 name|Test
 import|;
 end_import
@@ -725,7 +715,7 @@ argument_list|)
 decl_stmt|;
 name|root
 operator|.
-name|removeNode
+name|removeChildNode
 argument_list|(
 name|name
 argument_list|)
@@ -811,7 +801,7 @@ argument_list|)
 decl_stmt|;
 name|root
 operator|.
-name|removeNode
+name|removeChildNode
 argument_list|(
 name|name
 argument_list|)
@@ -876,7 +866,7 @@ argument_list|()
 decl_stmt|;
 name|root
 operator|.
-name|removeNode
+name|removeChildNode
 argument_list|(
 literal|"x"
 argument_list|)
@@ -1142,7 +1132,7 @@ argument_list|)
 decl_stmt|;
 name|root
 operator|.
-name|removeNode
+name|removeChildNode
 argument_list|(
 literal|"m"
 argument_list|)
@@ -1157,11 +1147,6 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-annotation|@
-name|Ignore
-argument_list|(
-literal|"OAK-781"
-argument_list|)
 specifier|public
 name|void
 name|testExistingStatus
@@ -1287,11 +1272,6 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-annotation|@
-name|Ignore
-argument_list|(
-literal|"OAK-781"
-argument_list|)
 specifier|public
 name|void
 name|testRemovedStatus
@@ -1317,7 +1297,7 @@ argument_list|)
 decl_stmt|;
 name|root
 operator|.
-name|removeNode
+name|removeChildNode
 argument_list|(
 literal|"x"
 argument_list|)
@@ -1451,11 +1431,6 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-annotation|@
-name|Ignore
-argument_list|(
-literal|"OAK-781"
-argument_list|)
 specifier|public
 name|void
 name|getExistingChildTest
@@ -1474,7 +1449,7 @@ name|x
 init|=
 name|rootBuilder
 operator|.
-name|getChild
+name|getChildNode
 argument_list|(
 literal|"x"
 argument_list|)
@@ -1501,11 +1476,6 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-annotation|@
-name|Ignore
-argument_list|(
-literal|"OAK-781"
-argument_list|)
 specifier|public
 name|void
 name|getNonExistingChildTest
@@ -1524,7 +1494,7 @@ name|any
 init|=
 name|rootBuilder
 operator|.
-name|getChild
+name|getChildNode
 argument_list|(
 literal|"any"
 argument_list|)
@@ -1533,18 +1503,7 @@ name|assertFalse
 argument_list|(
 name|any
 operator|.
-name|exists
-argument_list|()
-argument_list|)
-expr_stmt|;
-name|assertFalse
-argument_list|(
-name|any
-operator|.
-name|getNodeState
-argument_list|()
-operator|.
-name|exists
+name|isConnected
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1569,7 +1528,7 @@ name|x
 init|=
 name|rootBuilder
 operator|.
-name|addChild
+name|setChildNode
 argument_list|(
 literal|"x"
 argument_list|)
@@ -1614,7 +1573,7 @@ name|x
 init|=
 name|rootBuilder
 operator|.
-name|addChild
+name|setChildNode
 argument_list|(
 literal|"any"
 argument_list|)
@@ -1747,7 +1706,7 @@ decl_stmt|;
 comment|// +"/a":{"c":{"c"="cValue"}}
 name|rootBuilder
 operator|.
-name|setNode
+name|setChildNode
 argument_list|(
 literal|"a"
 argument_list|,
@@ -1864,7 +1823,7 @@ argument_list|(
 literal|"a"
 argument_list|)
 operator|.
-name|setNode
+name|setChildNode
 argument_list|(
 literal|"b"
 argument_list|,
@@ -1983,11 +1942,6 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-annotation|@
-name|Ignore
-argument_list|(
-literal|"OAK-781"
-argument_list|)
 specifier|public
 name|void
 name|modifyChildNodeOfNonExistingNode
@@ -2009,7 +1963,7 @@ argument_list|(
 literal|"a"
 argument_list|)
 operator|.
-name|setNode
+name|setChildNode
 argument_list|(
 literal|"b"
 argument_list|,
@@ -2098,7 +2052,7 @@ argument_list|(
 literal|"a"
 argument_list|)
 operator|.
-name|getChild
+name|getChildNode
 argument_list|(
 literal|"b"
 argument_list|)
@@ -2218,7 +2172,7 @@ argument_list|(
 literal|"a"
 argument_list|)
 operator|.
-name|setNode
+name|setChildNode
 argument_list|(
 literal|"b"
 argument_list|,
@@ -2307,7 +2261,7 @@ argument_list|(
 literal|"a"
 argument_list|)
 operator|.
-name|addChild
+name|setChildNode
 argument_list|(
 literal|"b"
 argument_list|)
@@ -2407,11 +2361,6 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-annotation|@
-name|Ignore
-argument_list|(
-literal|"OAK-781"
-argument_list|)
 specifier|public
 name|void
 name|shadowNonExistingNode2
@@ -2433,7 +2382,7 @@ argument_list|(
 literal|"a"
 argument_list|)
 operator|.
-name|setNode
+name|setChildNode
 argument_list|(
 literal|"b"
 argument_list|,

@@ -671,7 +671,7 @@ argument_list|)
 decl_stmt|;
 name|builder
 operator|.
-name|removeNode
+name|removeChildNode
 argument_list|(
 literal|"baz"
 argument_list|)

@@ -484,7 +484,7 @@ else|else
 block|{
 name|builder
 operator|.
-name|setNode
+name|setChildNode
 argument_list|(
 name|name
 argument_list|,
@@ -602,7 +602,7 @@ condition|)
 block|{
 name|builder
 operator|.
-name|removeNode
+name|removeChildNode
 argument_list|(
 name|name
 argument_list|)

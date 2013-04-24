@@ -343,7 +343,7 @@ argument_list|,
 name|ADD_EXISTING_NODE
 argument_list|)
 operator|.
-name|setNode
+name|setChildNode
 argument_list|(
 name|name
 argument_list|,
@@ -374,7 +374,7 @@ argument_list|,
 name|CHANGE_DELETED_NODE
 argument_list|)
 operator|.
-name|setNode
+name|setChildNode
 argument_list|(
 name|name
 argument_list|,
@@ -405,7 +405,7 @@ argument_list|,
 name|DELETE_DELETED_NODE
 argument_list|)
 operator|.
-name|setNode
+name|setChildNode
 argument_list|(
 name|name
 argument_list|,
@@ -436,7 +436,7 @@ argument_list|,
 name|DELETE_CHANGED_NODE
 argument_list|)
 operator|.
-name|setNode
+name|setChildNode
 argument_list|(
 name|name
 argument_list|,

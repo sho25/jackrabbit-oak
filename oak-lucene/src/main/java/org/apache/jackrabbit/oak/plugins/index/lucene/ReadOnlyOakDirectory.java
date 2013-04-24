@@ -296,7 +296,7 @@ name|IOException
 block|{
 name|directoryBuilder
 operator|.
-name|removeNode
+name|removeChildNode
 argument_list|(
 name|name
 argument_list|)

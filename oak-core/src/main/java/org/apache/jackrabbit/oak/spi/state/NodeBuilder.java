@@ -131,16 +131,6 @@ name|long
 name|getChildNodeCount
 parameter_list|()
 function_decl|;
-comment|/**      * Checks whether the named child node currently exists.      *      * @param name child node name      * @return {@code true} if the named child node exists,      *         {@code false} otherwise      */
-name|boolean
-name|hasChildNode
-parameter_list|(
-annotation|@
-name|Nonnull
-name|String
-name|name
-parameter_list|)
-function_decl|;
 comment|/**      * Returns the names of current child nodes.      *      * @return child node names      */
 annotation|@
 name|Nonnull
@@ -151,11 +141,57 @@ argument_list|>
 name|getChildNodeNames
 parameter_list|()
 function_decl|;
+comment|/**      * Checks whether the named child node currently exists.      *      * @param name child node name      * @return {@code true} if the named child node exists,      *         {@code false} otherwise      */
+name|boolean
+name|hasChildNode
+parameter_list|(
+annotation|@
+name|Nonnull
+name|String
+name|name
+parameter_list|)
+function_decl|;
+comment|/**      * Returns a builder for constructing changes to the named child node.      * If the named child node does not already exist, a new empty child      * node is automatically created as the base state of the returned      * child builder. Otherwise the existing child node state is used      * as the base state of the returned builder.      *<p>      * All updates to the returned child builder will implicitly affect      * also this builder, as if a      * {@code setNode(name, childBuilder.getNodeState())} method call      * had been made after each update. Repeated calls to this method with      * the same name will return the same child builder instance until an      * explicit {@link #setChildNode(String, NodeState)} or      * {@link #removeChildNode(String)} call is made, at which point the link      * between this builder and a previously returned child builder for      * that child node name will get broken.      *      * @since Oak 0.6      * @param name name of the child node      * @return child builder      */
+annotation|@
+name|Nonnull
+name|NodeBuilder
+name|child
+parameter_list|(
+annotation|@
+name|Nonnull
+name|String
+name|name
+parameter_list|)
+function_decl|;
+comment|/**      * Returns a builder for constructing changes to the named child node.      * If the named child node does not already exist, the returned builder      * will refer to a non-existent node and trying to modify it will cause      * {@link IllegalStateException}s to be thrown.      *      * @since Oak 0.7      * @param name name of the child node      * @return child builder, possibly non-existent      */
+annotation|@
+name|Nonnull
+name|NodeBuilder
+name|getChildNode
+parameter_list|(
+annotation|@
+name|Nonnull
+name|String
+name|name
+parameter_list|)
+function_decl|;
+comment|/**      * Adds the named child node and returns a builder for modifying it.      * Possible previous content in the named subtree is removed.      *      * @since Oak 0.7      * @param name name of the child node      * @return child builder      */
+annotation|@
+name|Nonnull
+name|NodeBuilder
+name|setChildNode
+parameter_list|(
+annotation|@
+name|Nonnull
+name|String
+name|name
+parameter_list|)
+function_decl|;
 comment|/**      * Adds or replaces a subtree.      *      * @param name name of the child node containing the new subtree      * @param nodeState subtree      * @return this builder      */
 annotation|@
 name|Nonnull
 name|NodeBuilder
-name|setNode
+name|setChildNode
 parameter_list|(
 name|String
 name|name
@@ -170,7 +206,7 @@ comment|/**      * Remove a child node. This method has no effect if a      * na
 annotation|@
 name|Nonnull
 name|NodeBuilder
-name|removeNode
+name|removeChildNode
 parameter_list|(
 name|String
 name|name
@@ -308,42 +344,6 @@ name|Nonnull
 name|NodeBuilder
 name|removeProperty
 parameter_list|(
-name|String
-name|name
-parameter_list|)
-function_decl|;
-comment|/**      * Returns a builder for constructing changes to the named child node.      * If the named child node does not already exist, a new empty child      * node is automatically created as the base state of the returned      * child builder. Otherwise the existing child node state is used      * as the base state of the returned builder.      *<p>      * All updates to the returned child builder will implicitly affect      * also this builder, as if a      * {@code setNode(name, childBuilder.getNodeState())} method call      * had been made after each update. Repeated calls to this method with      * the same name will return the same child builder instance until an      * explicit {@link #setNode(String, NodeState)} or      * {@link #removeNode(String)} call is made, at which point the link      * between this builder and a previously returned child builder for      * that child node name will get broken.      *      * @since Oak 0.6      * @param name name of the child node      * @return child builder      */
-annotation|@
-name|Nonnull
-name|NodeBuilder
-name|child
-parameter_list|(
-annotation|@
-name|Nonnull
-name|String
-name|name
-parameter_list|)
-function_decl|;
-comment|/**      * Returns a builder for constructing changes to the named child node.      * If the named child node does not already exist, the returned builder      * will refer to a non-existent node and trying to modify it will cause      * {@link IllegalStateException}s to be thrown.      *      * @since Oak 0.7      * @param name name of the child node      * @return child builder, possibly non-existent      */
-annotation|@
-name|Nonnull
-name|NodeBuilder
-name|getChild
-parameter_list|(
-annotation|@
-name|Nonnull
-name|String
-name|name
-parameter_list|)
-function_decl|;
-comment|/**      * Adds the named child node and returns a builder for modifying it.      * Possible previous content in the named subtree is removed.      *      * @since Oak 0.7      * @param name name of the child node      * @return child builder      */
-annotation|@
-name|Nonnull
-name|NodeBuilder
-name|addChild
-parameter_list|(
-annotation|@
-name|Nonnull
 name|String
 name|name
 parameter_list|)

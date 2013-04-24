@@ -254,7 +254,7 @@ annotation|@
 name|Nonnull
 specifier|public
 name|NodeBuilder
-name|setNode
+name|setChildNode
 parameter_list|(
 name|String
 name|name
@@ -274,7 +274,7 @@ annotation|@
 name|Nonnull
 specifier|public
 name|NodeBuilder
-name|removeNode
+name|removeChildNode
 parameter_list|(
 name|String
 name|name
@@ -554,7 +554,7 @@ annotation|@
 name|Nonnull
 specifier|public
 name|NodeBuilder
-name|getChild
+name|getChildNode
 parameter_list|(
 annotation|@
 name|Nonnull
@@ -581,7 +581,7 @@ annotation|@
 name|Nonnull
 specifier|public
 name|NodeBuilder
-name|addChild
+name|setChildNode
 parameter_list|(
 annotation|@
 name|Nonnull

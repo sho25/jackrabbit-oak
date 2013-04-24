@@ -260,7 +260,7 @@ name|after
 expr_stmt|;
 name|builder
 operator|.
-name|removeNode
+name|removeChildNode
 argument_list|(
 literal|":hidden"
 argument_list|)

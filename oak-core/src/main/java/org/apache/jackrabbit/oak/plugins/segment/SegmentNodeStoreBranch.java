@@ -803,7 +803,7 @@ argument_list|()
 decl_stmt|;
 name|targetBuilder
 operator|.
-name|setNode
+name|setChildNode
 argument_list|(
 name|targetName
 argument_list|,
@@ -812,7 +812,7 @@ argument_list|)
 expr_stmt|;
 name|sourceBuilder
 operator|.
-name|removeNode
+name|removeChildNode
 argument_list|(
 name|sourceName
 argument_list|)
@@ -1025,7 +1025,7 @@ argument_list|()
 decl_stmt|;
 name|targetBuilder
 operator|.
-name|setNode
+name|setChildNode
 argument_list|(
 name|targetName
 argument_list|,

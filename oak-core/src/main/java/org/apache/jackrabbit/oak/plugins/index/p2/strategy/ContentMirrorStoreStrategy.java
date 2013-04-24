@@ -560,7 +560,7 @@ condition|)
 block|{
 name|indexEntry
 operator|.
-name|removeNode
+name|removeChildNode
 argument_list|(
 name|name
 argument_list|)
@@ -643,7 +643,7 @@ condition|)
 block|{
 name|index
 operator|.
-name|removeNode
+name|removeChildNode
 argument_list|(
 name|key
 argument_list|)
@@ -711,7 +711,7 @@ condition|)
 block|{
 name|parent
 operator|.
-name|removeNode
+name|removeChildNode
 argument_list|(
 name|name
 argument_list|)

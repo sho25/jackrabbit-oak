@@ -624,7 +624,7 @@ argument_list|)
 decl_stmt|;
 name|testBuilder
 operator|.
-name|removeNode
+name|removeChildNode
 argument_list|(
 literal|"x"
 argument_list|)
@@ -1036,7 +1036,7 @@ argument_list|)
 expr_stmt|;
 name|testBuilder
 operator|.
-name|removeNode
+name|removeChildNode
 argument_list|(
 literal|"a"
 argument_list|)
@@ -1253,7 +1253,7 @@ argument_list|)
 expr_stmt|;
 name|testBuilder
 operator|.
-name|removeNode
+name|removeChildNode
 argument_list|(
 literal|"a"
 argument_list|)
@@ -2092,7 +2092,7 @@ argument_list|)
 expr_stmt|;
 name|parent
 operator|.
-name|removeNode
+name|removeChildNode
 argument_list|(
 literal|"child-moved"
 argument_list|)

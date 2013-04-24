@@ -386,7 +386,7 @@ argument_list|)
 expr_stmt|;
 name|builder
 operator|.
-name|removeNode
+name|removeChildNode
 argument_list|(
 literal|"x"
 argument_list|)

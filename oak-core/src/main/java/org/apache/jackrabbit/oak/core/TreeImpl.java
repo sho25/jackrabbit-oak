@@ -1060,7 +1060,7 @@ name|parent
 operator|.
 name|nodeBuilder
 operator|.
-name|removeNode
+name|removeChildNode
 argument_list|(
 name|name
 argument_list|)
@@ -1442,7 +1442,7 @@ name|nodeBuilder
 decl_stmt|;
 name|parentBuilder
 operator|.
-name|removeNode
+name|removeChildNode
 argument_list|(
 name|name
 argument_list|)

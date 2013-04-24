@@ -319,7 +319,7 @@ comment|// Pushing this on the non secured builder is wrong.
 comment|// AFAICS this is only relevant when the after node state has been moved here
 name|builder
 operator|.
-name|setNode
+name|setChildNode
 argument_list|(
 name|name
 argument_list|,
