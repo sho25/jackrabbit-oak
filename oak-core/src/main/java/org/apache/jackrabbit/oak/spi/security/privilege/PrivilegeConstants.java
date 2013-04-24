@@ -66,6 +66,7 @@ specifier|public
 interface|interface
 name|PrivilegeConstants
 block|{
+comment|//--------------------------------< Constants for Privilege Definitions>---
 comment|/**      * Internal (oak) name for the root node of the privilege store.      */
 name|String
 name|REP_PRIVILEGES
@@ -140,6 +141,7 @@ name|REP_BITS
 init|=
 literal|"rep:bits"
 decl_stmt|;
+comment|//----------------------------------------------------< Privilege Names>---
 comment|/**      * Internal (oak) name of the {@link javax.jcr.security.Privilege#JCR_READ} privilege      */
 name|String
 name|JCR_READ
