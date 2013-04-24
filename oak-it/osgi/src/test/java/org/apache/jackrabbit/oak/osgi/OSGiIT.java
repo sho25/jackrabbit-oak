@@ -592,6 +592,11 @@ name|oakRepository
 decl_stmt|;
 annotation|@
 name|Test
+annotation|@
+name|Ignore
+argument_list|(
+literal|"OAK-795"
+argument_list|)
 specifier|public
 name|void
 name|testOakRepository
@@ -612,6 +617,11 @@ name|jcrRepository
 decl_stmt|;
 annotation|@
 name|Test
+annotation|@
+name|Ignore
+argument_list|(
+literal|"OAK-795"
+argument_list|)
 specifier|public
 name|void
 name|testJcrRepository
