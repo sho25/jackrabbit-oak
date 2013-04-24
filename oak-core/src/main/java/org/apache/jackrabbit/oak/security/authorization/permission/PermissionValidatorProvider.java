@@ -234,7 +234,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * PermissionValidatorProvider... TODO  */
+comment|/**  * {@code ValidatorProvider} implementation for permission evaluation associated  * with write operations.  */
 end_comment
 
 begin_class
