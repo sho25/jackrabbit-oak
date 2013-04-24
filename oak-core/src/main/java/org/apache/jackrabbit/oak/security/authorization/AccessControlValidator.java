@@ -318,7 +318,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * AccessControlValidator... TODO  */
+comment|/**  * Validation for access control information changed by regular JCR (and Jackrabbit)  * access control management API.  */
 end_comment
 
 begin_class
