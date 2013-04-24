@@ -296,7 +296,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * An IndexStoreStrategy implementation that saves the nodes under a hierarchy  * that mirrors the repository tree.<br>  * This should minimize the chance that concurrent updates overlap on the same  * content node.<br>  *<br>  * For example for a node that is under<code>/test/node</code>, the index  * structure will be<code>/oak:index/index/test/node</code>:  *   *<pre>  *<code>  * /  *   test  *     node  *   oak:index  *     index  *       test  *         node  *</code>  *</pre>  *   */
+comment|/**  * An IndexStoreStrategy implementation that saves the nodes under a hierarchy  * that mirrors the repository tree.<br>  * This should minimize the chance that concurrent updates overlap on the same  * content node.<br>  *<br>  * For example for a node that is under {@code /test/node}, the index  * structure will be {@code /oak:index/index/test/node}:  *  *<pre>  * {@code  * /  *   test  *     node  *   oak:index  *     index  *       test  *         node  * }  *</pre>  *  */
 end_comment
 
 begin_class
