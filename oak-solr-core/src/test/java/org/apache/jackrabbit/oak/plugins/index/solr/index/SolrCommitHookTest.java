@@ -24,6 +24,18 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertEquals
+import|;
+end_import
+
+begin_import
 import|import
 name|org
 operator|.
@@ -129,18 +141,6 @@ name|Test
 import|;
 end_import
 
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertEquals
-import|;
-end_import
-
 begin_comment
 comment|/**  * Testcase for {@link org.apache.jackrabbit.oak.plugins.index.solr.index.SolrCommitHook}  */
 end_comment
@@ -156,6 +156,8 @@ specifier|private
 name|KernelNodeStore
 name|store
 decl_stmt|;
+annotation|@
+name|Override
 annotation|@
 name|Before
 specifier|public
