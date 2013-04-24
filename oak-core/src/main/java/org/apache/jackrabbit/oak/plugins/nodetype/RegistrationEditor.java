@@ -888,7 +888,7 @@ name|builder
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Validates the inheritance hierarchy of the identified node type and      * merges supertype information to the pre-compiled type information      * fields. This makes full type information directly accessible without      * having to traverse up the type hierarchy.      *      * @param types      * @param name      * @return      * @throws CommitFailedException      */
+comment|/**      * Validates the inheritance hierarchy of the identified node type and      * merges supertype information to the pre-compiled type information      * fields. This makes full type information directly accessible without      * having to traverse up the type hierarchy.      *      * @param types      * @param type      * @return      * @throws CommitFailedException      */
 specifier|private
 name|void
 name|mergeSupertypes
