@@ -90,6 +90,7 @@ specifier|public
 class|class
 name|Utils
 block|{
+specifier|public
 specifier|static
 name|int
 name|pathDepth
@@ -156,6 +157,7 @@ return|return
 name|depth
 return|;
 block|}
+specifier|public
 specifier|static
 parameter_list|<
 name|K
@@ -182,6 +184,7 @@ argument_list|>
 argument_list|()
 return|;
 block|}
+specifier|public
 specifier|static
 parameter_list|<
 name|E
