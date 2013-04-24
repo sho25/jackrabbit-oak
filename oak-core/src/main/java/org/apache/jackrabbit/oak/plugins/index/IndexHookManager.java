@@ -184,6 +184,8 @@ argument_list|(
 name|provider
 argument_list|,
 name|builder
+argument_list|,
+name|after
 argument_list|)
 argument_list|)
 return|;

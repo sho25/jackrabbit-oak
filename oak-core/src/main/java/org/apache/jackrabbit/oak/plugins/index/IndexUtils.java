@@ -784,7 +784,7 @@ condition|)
 block|{
 name|entry
 operator|.
-name|setStrings
+name|setNames
 argument_list|(
 name|DECLARING_NODE_TYPES
 argument_list|,

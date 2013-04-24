@@ -582,6 +582,8 @@ operator|new
 name|Property2IndexHook
 argument_list|(
 name|builder
+argument_list|,
+name|after
 argument_list|)
 argument_list|,
 name|before
@@ -1017,6 +1019,8 @@ operator|new
 name|Property2IndexHook
 argument_list|(
 name|builder
+argument_list|,
+name|after
 argument_list|)
 argument_list|,
 name|before
@@ -1439,6 +1443,8 @@ operator|new
 name|Property2IndexHook
 argument_list|(
 name|builder
+argument_list|,
+name|after
 argument_list|)
 argument_list|,
 name|before
@@ -1866,6 +1872,8 @@ operator|new
 name|Property2IndexHook
 argument_list|(
 name|builder
+argument_list|,
+name|after
 argument_list|)
 argument_list|,
 name|before
@@ -2147,6 +2155,8 @@ operator|new
 name|Property2IndexHook
 argument_list|(
 name|builder
+argument_list|,
+name|after
 argument_list|)
 argument_list|,
 name|before
@@ -2340,6 +2350,8 @@ operator|new
 name|Property2IndexHook
 argument_list|(
 name|builder
+argument_list|,
+name|after
 argument_list|)
 argument_list|,
 name|before
@@ -2531,6 +2543,8 @@ operator|new
 name|Property2IndexHook
 argument_list|(
 name|builder
+argument_list|,
+name|after
 argument_list|)
 argument_list|,
 name|before
@@ -2731,6 +2745,8 @@ operator|new
 name|Property2IndexHook
 argument_list|(
 name|builder
+argument_list|,
+name|after
 argument_list|)
 argument_list|,
 name|before

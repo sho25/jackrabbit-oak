@@ -853,7 +853,10 @@ name|hasProperty
 argument_list|(
 name|DECLARING_NODE_TYPES
 argument_list|)
-operator|&&
+condition|)
+block|{
+if|if
+condition|(
 name|supertypes
 operator|!=
 literal|null
@@ -886,6 +889,7 @@ comment|// TODO: prefer the most specific type restriction
 return|return
 name|index
 return|;
+block|}
 block|}
 block|}
 block|}

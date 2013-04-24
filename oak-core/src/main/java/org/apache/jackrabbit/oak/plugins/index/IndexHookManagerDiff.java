@@ -416,6 +416,11 @@ name|NodeBuilder
 name|node
 decl_stmt|;
 specifier|private
+specifier|final
+name|NodeState
+name|root
+decl_stmt|;
+specifier|private
 name|Editor
 name|inner
 init|=
@@ -431,6 +436,9 @@ name|provider
 parameter_list|,
 name|NodeBuilder
 name|node
+parameter_list|,
+name|NodeState
+name|root
 parameter_list|)
 block|{
 name|this
@@ -444,6 +452,12 @@ operator|.
 name|node
 operator|=
 name|node
+expr_stmt|;
+name|this
+operator|.
+name|root
+operator|=
+name|root
 expr_stmt|;
 block|}
 annotation|@
@@ -696,6 +710,8 @@ argument_list|(
 name|type
 argument_list|,
 name|node
+argument_list|,
+name|ref
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -713,6 +729,8 @@ argument_list|(
 name|type
 argument_list|,
 name|node
+argument_list|,
+name|ref
 argument_list|)
 argument_list|)
 expr_stmt|;

@@ -79,6 +79,24 @@ end_import
 
 begin_import
 import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|state
+operator|.
+name|NodeState
+import|;
+end_import
+
+begin_import
+import|import
 name|com
 operator|.
 name|google
@@ -161,6 +179,9 @@ name|type
 parameter_list|,
 name|NodeBuilder
 name|builder
+parameter_list|,
+name|NodeState
+name|root
 parameter_list|)
 block|{
 return|return
@@ -272,6 +293,9 @@ name|type
 parameter_list|,
 name|NodeBuilder
 name|builder
+parameter_list|,
+name|NodeState
+name|root
 parameter_list|)
 block|{
 name|List
@@ -304,6 +328,8 @@ argument_list|(
 name|type
 argument_list|,
 name|builder
+argument_list|,
+name|root
 argument_list|)
 argument_list|)
 expr_stmt|;

@@ -57,6 +57,24 @@ name|NodeBuilder
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|state
+operator|.
+name|NodeState
+import|;
+end_import
+
 begin_comment
 comment|/**  * Extension point for plugging in different kinds of IndexHook providers.  *   * @see IndexHook  */
 end_comment
@@ -66,7 +84,7 @@ specifier|public
 interface|interface
 name|IndexHookProvider
 block|{
-comment|/**      *       * Each provider knows how to produce a certain type of index. If the      *<code>type</code> param is of an unknown value, the provider is expected      * to return an empty list.      *       *<p>      * The<code>builder</code> must point to the repository content node, not      * the index content node. Each<code>IndexHook</code> implementation will      * have to drill down to its specific index content, and possibly deal with      * multiple indexes of the same type.      *</p>      *       * @param type      *            the index type      * @param builder      *            the node state builder of the content node that will be used      *            for updates      * @return a list of index hooks of the given type      */
+comment|/**      *       * Each provider knows how to produce a certain type of index. If the      *<code>type</code> param is of an unknown value, the provider is expected      * to return an empty list.      *       *<p>      * The<code>builder</code> must point to the repository content node, not      * the index content node. Each<code>IndexHook</code> implementation will      * have to drill down to its specific index content, and possibly deal with      * multiple indexes of the same type.      *</p>      *       * @param type      *            the index type      * @param builder      *            the node state builder of the content node that will be used      *            for updates      * @param root      *            root node state      * @return a list of index hooks of the given type      */
 annotation|@
 name|Nonnull
 name|List
@@ -82,6 +100,9 @@ name|type
 parameter_list|,
 name|NodeBuilder
 name|builder
+parameter_list|,
+name|NodeState
+name|root
 parameter_list|)
 function_decl|;
 block|}
