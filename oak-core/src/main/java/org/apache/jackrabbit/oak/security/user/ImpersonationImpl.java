@@ -231,6 +231,8 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
+name|spi
+operator|.
 name|security
 operator|.
 name|principal
@@ -349,7 +351,6 @@ name|Impersonation
 implements|,
 name|UserConstants
 block|{
-comment|/**      * logger instance      */
 specifier|private
 specifier|static
 specifier|final

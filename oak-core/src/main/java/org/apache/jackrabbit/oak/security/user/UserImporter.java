@@ -429,6 +429,8 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
+name|spi
+operator|.
 name|security
 operator|.
 name|principal
@@ -658,7 +660,6 @@ comment|/**  * {@code UserImporter} implements both {@code ode>ProtectedProperty
 end_comment
 
 begin_class
-specifier|public
 class|class
 name|UserImporter
 implements|implements

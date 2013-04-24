@@ -277,6 +277,8 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
+name|spi
+operator|.
 name|security
 operator|.
 name|principal
@@ -506,10 +508,6 @@ name|SecurityProvider
 name|securityProvider
 decl_stmt|;
 specifier|private
-name|NamePathMapper
-name|namePathMapper
-decl_stmt|;
-specifier|private
 name|AccessControlManager
 name|acMgr
 decl_stmt|;
@@ -593,12 +591,6 @@ throw|;
 block|}
 try|try
 block|{
-name|this
-operator|.
-name|namePathMapper
-operator|=
-name|namePathMapper
-expr_stmt|;
 name|AccessControlConfiguration
 name|config
 init|=
