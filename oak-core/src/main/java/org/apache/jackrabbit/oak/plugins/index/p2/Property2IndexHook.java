@@ -638,6 +638,12 @@ argument_list|>
 argument_list|>
 name|indexMap
 decl_stmt|;
+comment|/**      * The root node state.      */
+specifier|private
+specifier|final
+name|NodeState
+name|root
+decl_stmt|;
 comment|/**      * The {@code /jcr:system/jcr:nodeTypes} subtree.      */
 specifier|private
 specifier|final
@@ -677,16 +683,6 @@ argument_list|>
 argument_list|()
 argument_list|,
 name|root
-operator|.
-name|getChildNode
-argument_list|(
-name|JCR_SYSTEM
-argument_list|)
-operator|.
-name|getChildNode
-argument_list|(
-name|JCR_NODE_TYPES
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -723,7 +719,7 @@ name|indexMap
 argument_list|,
 name|parent
 operator|.
-name|types
+name|root
 argument_list|)
 expr_stmt|;
 block|}
@@ -754,7 +750,7 @@ argument_list|>
 name|indexMap
 parameter_list|,
 name|NodeState
-name|types
+name|root
 parameter_list|)
 block|{
 name|this
@@ -789,9 +785,25 @@ name|indexMap
 expr_stmt|;
 name|this
 operator|.
+name|root
+operator|=
+name|root
+expr_stmt|;
+name|this
+operator|.
 name|types
 operator|=
-name|types
+name|root
+operator|.
+name|getChildNode
+argument_list|(
+name|JCR_SYSTEM
+argument_list|)
+operator|.
+name|getChildNode
+argument_list|(
+name|JCR_NODE_TYPES
+argument_list|)
 expr_stmt|;
 block|}
 specifier|private
@@ -1709,7 +1721,7 @@ name|Property2IndexHook
 argument_list|(
 name|node
 argument_list|,
-name|types
+name|root
 argument_list|)
 return|;
 block|}
