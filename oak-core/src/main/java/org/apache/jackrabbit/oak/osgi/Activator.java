@@ -328,10 +328,8 @@ specifier|private
 name|ServiceTracker
 name|microKernelTracker
 decl_stmt|;
-specifier|private
-name|ServiceTracker
-name|nodeStoreTracker
-decl_stmt|;
+comment|// see OAK-795 for a reason why the nodeStore tracker is disabled
+comment|// private ServiceTracker nodeStoreTracker;
 specifier|private
 specifier|final
 name|OsgiIndexProvider
@@ -461,28 +459,9 @@ operator|.
 name|open
 argument_list|()
 expr_stmt|;
-name|nodeStoreTracker
-operator|=
-operator|new
-name|ServiceTracker
-argument_list|(
-name|context
-argument_list|,
-name|NodeStore
-operator|.
-name|class
-operator|.
-name|getName
-argument_list|()
-argument_list|,
-name|this
-argument_list|)
-expr_stmt|;
-name|nodeStoreTracker
-operator|.
-name|open
-argument_list|()
-expr_stmt|;
+comment|// nodeStoreTracker = new ServiceTracker(
+comment|// context, NodeStore.class.getName(), this);
+comment|// nodeStoreTracker.open();
 block|}
 annotation|@
 name|Override
@@ -496,11 +475,7 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
-name|nodeStoreTracker
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
+comment|// nodeStoreTracker.close();
 name|microKernelTracker
 operator|.
 name|close
