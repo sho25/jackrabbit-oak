@@ -72,7 +72,7 @@ name|LAST_REV
 init|=
 literal|"_lastRev"
 decl_stmt|;
-comment|/**      * The list of recent revisions for this node, where this node is the      * root of the commit. Key: revision, value: true.      */
+comment|/**      * The list of recent revisions for this node, where this node is the      * root of the commit. Key: revision, value: true or the base revision of an      * un-merged branch commit.      */
 specifier|static
 specifier|final
 name|String
@@ -103,6 +103,14 @@ name|String
 name|DELETED
 init|=
 literal|"_deleted"
+decl_stmt|;
+comment|/**      * Revision collision markers set by commits with modifications, which      * overlap with un-merged branch commits.      * Key: revision, value:      */
+specifier|static
+specifier|final
+name|String
+name|COLLISIONS
+init|=
+literal|"_collisions"
 decl_stmt|;
 comment|/**      * The modified time (5 second resolution).      */
 specifier|static
@@ -444,6 +452,70 @@ name|subName
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * Checks if the named key exists or is absent in the MongoDB document. This      * method can be used to make a conditional update.      *      * @param property the property name      * @param subName the entry name      */
+name|void
+name|containsMapEntry
+parameter_list|(
+name|String
+name|property
+parameter_list|,
+name|String
+name|subName
+parameter_list|,
+name|boolean
+name|exists
+parameter_list|)
+block|{
+if|if
+condition|(
+name|isNew
+condition|)
+block|{
+throw|throw
+operator|new
+name|IllegalStateException
+argument_list|(
+literal|"Cannot use containsMapEntry() on new document"
+argument_list|)
+throw|;
+block|}
+name|Operation
+name|op
+init|=
+operator|new
+name|Operation
+argument_list|()
+decl_stmt|;
+name|op
+operator|.
+name|type
+operator|=
+name|Operation
+operator|.
+name|Type
+operator|.
+name|CONTAINS_MAP_ENTRY
+expr_stmt|;
+name|op
+operator|.
+name|value
+operator|=
+name|exists
+expr_stmt|;
+name|changes
+operator|.
+name|put
+argument_list|(
+name|property
+operator|+
+literal|"."
+operator|+
+name|subName
+argument_list|,
+name|op
+argument_list|)
+expr_stmt|;
+block|}
 comment|/**      * Increment the value.      *       * @param property the key      * @param value the increment      */
 name|void
 name|increment
@@ -662,12 +734,15 @@ block|,
 comment|/**              * Add the sub-key / value pair.              * The value in the stored node is a map.              */
 name|SET_MAP_ENTRY
 block|,
-comment|/**               * Remove the sub-key / value pair.               * The value in the stored node is a map.               */
+comment|/**              * Remove the sub-key / value pair.              * The value in the stored node is a map.              */
 name|REMOVE_MAP_ENTRY
 block|,
-comment|/**               * Set the sub-key / value pair.               * The value in the stored node is a map.               */
+comment|/**              * Checks if the sub-key is present in a map or not.              */
+name|CONTAINS_MAP_ENTRY
+block|,
+comment|/**              * Set the sub-key / value pair.              * The value in the stored node is a map.              */
 name|SET_MAP
-block|,                        }
+block|,           }
 comment|/**          * The operation type.          */
 name|Type
 name|type

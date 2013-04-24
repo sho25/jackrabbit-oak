@@ -234,6 +234,26 @@ parameter_list|)
 throws|throws
 name|MicroKernelException
 function_decl|;
+comment|/**      * Performs a conditional update (e.g. using      * {@link UpdateOp.Operation.Type#CONTAINS_MAP_ENTRY} and only updates the      * document if the condition is<code>true</code>.      *      * @param collection the collection      * @param update the update operation with the condition      * @return the old document or<code>null</code> if the condition is not met.      * @throws MicroKernelException if the operation failed.      */
+annotation|@
+name|CheckForNull
+name|Map
+argument_list|<
+name|String
+argument_list|,
+name|Object
+argument_list|>
+name|findAndUpdate
+parameter_list|(
+name|Collection
+name|collection
+parameter_list|,
+name|UpdateOp
+name|update
+parameter_list|)
+throws|throws
+name|MicroKernelException
+function_decl|;
 comment|/**      * Invalidate the document cache.      */
 name|void
 name|invalidateCache

@@ -133,13 +133,6 @@ name|mongoConnection
 init|=
 literal|null
 decl_stmt|;
-if|if
-condition|(
-name|mongoConnection
-operator|==
-literal|null
-condition|)
-block|{
 try|try
 block|{
 name|mongoConnection
@@ -182,7 +175,10 @@ name|exception
 operator|=
 name|e
 expr_stmt|;
-block|}
+name|mongoConnection
+operator|=
+literal|null
+expr_stmt|;
 block|}
 return|return
 name|mongoConnection
