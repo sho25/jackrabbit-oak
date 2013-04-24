@@ -168,6 +168,11 @@ name|AccessControlConfiguration
 extends|extends
 name|SecurityConfiguration
 block|{
+name|String
+name|PARAM_ACCESS_CONTROL_OPTIONS
+init|=
+literal|"org.apache.jackrabbit.oak.accesscontrol.options"
+decl_stmt|;
 annotation|@
 name|Nonnull
 name|AccessControlManager

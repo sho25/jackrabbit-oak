@@ -156,7 +156,6 @@ comment|/**  * Implementation of the {@code WorkspaceInitializer} interface that
 end_comment
 
 begin_class
-specifier|public
 class|class
 name|AccessControlInitializer
 implements|implements

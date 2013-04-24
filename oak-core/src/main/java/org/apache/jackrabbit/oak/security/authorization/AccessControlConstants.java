@@ -182,6 +182,12 @@ argument_list|,
 name|NT_REP_RESTRICTIONS
 argument_list|)
 decl_stmt|;
+comment|/**      * Configuration parameter to enforce backwards compatible permission      * validation with respect to user/group creation, modification and removal.      * As of OAK 1.0 those actions require      * {@link org.apache.jackrabbit.oak.spi.security.authorization.permission.Permissions#USER_MANAGEMENT USER_MANAGEMENT}      * permissions while in Jackrabbit 2.0 they were covered by regular item      * write permissions.      *      * @since OAK 1.0      */
+name|String
+name|PARAM_PERMISSIONS_JR2
+init|=
+literal|"permissionsJr2"
+decl_stmt|;
 block|}
 end_interface
 

@@ -968,6 +968,8 @@ condition|(
 name|noTraverse
 argument_list|(
 name|toTest
+argument_list|,
+name|defaultPermission
 argument_list|)
 condition|)
 block|{
@@ -1230,6 +1232,12 @@ name|definesTree
 argument_list|(
 name|tree
 argument_list|)
+operator|&&
+operator|!
+name|provider
+operator|.
+name|jr2Permissions
+argument_list|()
 condition|)
 block|{
 name|perm
@@ -1394,6 +1402,12 @@ name|parent
 argument_list|,
 name|propertyState
 argument_list|)
+operator|&&
+operator|!
+name|provider
+operator|.
+name|jr2Permissions
+argument_list|()
 condition|)
 block|{
 name|perm
@@ -1451,6 +1465,9 @@ name|noTraverse
 parameter_list|(
 name|long
 name|permission
+parameter_list|,
+name|long
+name|defaultPermission
 parameter_list|)
 block|{
 return|return
@@ -1467,6 +1484,12 @@ operator|.
 name|VERSION_MANAGEMENT
 operator|||
 name|permission
+operator|==
+name|Permissions
+operator|.
+name|REMOVE_NODE
+operator|||
+name|defaultPermission
 operator|==
 name|Permissions
 operator|.
