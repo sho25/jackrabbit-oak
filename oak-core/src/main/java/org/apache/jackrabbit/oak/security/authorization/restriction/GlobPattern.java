@@ -160,7 +160,6 @@ comment|/**  * {@code GlobPattern} defines a simplistic pattern matching. It con
 end_comment
 
 begin_class
-specifier|public
 specifier|final
 class|class
 name|GlobPattern
@@ -337,7 +336,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-specifier|public
 specifier|static
 name|GlobPattern
 name|create
