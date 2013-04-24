@@ -464,7 +464,6 @@ comment|/**  * Creates initial set of users to be present in a given workspace. 
 end_comment
 
 begin_class
-specifier|public
 class|class
 name|UserInitializer
 implements|implements
