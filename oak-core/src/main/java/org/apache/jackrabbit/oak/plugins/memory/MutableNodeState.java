@@ -342,7 +342,7 @@ init|=
 name|newHashMap
 argument_list|()
 decl_stmt|;
-specifier|public
+specifier|private
 name|MutableNodeState
 parameter_list|(
 name|boolean
@@ -360,7 +360,6 @@ else|:
 name|MISSING_NODE
 expr_stmt|;
 block|}
-specifier|public
 name|MutableNodeState
 parameter_list|(
 annotation|@
@@ -570,7 +569,6 @@ name|base
 expr_stmt|;
 block|}
 block|}
-specifier|public
 name|NodeState
 name|snapshot
 parameter_list|()
@@ -1163,7 +1161,6 @@ block|}
 block|}
 block|}
 block|}
-specifier|public
 name|boolean
 name|isConnected
 parameter_list|(
@@ -1205,7 +1202,6 @@ name|exists
 argument_list|()
 return|;
 block|}
-specifier|public
 name|MutableNodeState
 name|getChildNode
 parameter_list|(
@@ -1299,7 +1295,6 @@ return|;
 block|}
 annotation|@
 name|Nonnull
-specifier|public
 name|MutableNodeState
 name|setChildNode
 parameter_list|(
@@ -1332,7 +1327,6 @@ return|return
 name|child
 return|;
 block|}
-specifier|public
 name|boolean
 name|isModified
 parameter_list|(
@@ -1477,7 +1471,6 @@ return|return
 literal|false
 return|;
 block|}
-specifier|public
 name|boolean
 name|removeChildNode
 parameter_list|(
@@ -1530,7 +1523,6 @@ literal|null
 return|;
 block|}
 block|}
-specifier|public
 name|boolean
 name|removeProperty
 parameter_list|(
@@ -1580,7 +1572,6 @@ literal|null
 return|;
 block|}
 block|}
-specifier|public
 name|void
 name|setProperty
 parameter_list|(
