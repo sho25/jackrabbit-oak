@@ -220,7 +220,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * ACE... TODO  */
+comment|/**  * Default implementation of the {@code JackrabbitAccessControlEntry} interface.  * It asserts that the basic contract is fulfilled but does perform any additional  * validation on the principal, the privileges or the specified restrictions.  */
 end_comment
 
 begin_class
