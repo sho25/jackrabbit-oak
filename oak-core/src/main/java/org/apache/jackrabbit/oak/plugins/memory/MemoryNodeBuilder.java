@@ -216,7 +216,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * In-memory node state builder.  *<p>  * TODO: The following description is somewhat out of date  *<p>  * The following two builder states are used  * to properly track uncommitted chances without relying on weak references  * or requiring hard references on the entire accessed subtree:  *<dl>  *<dt>unmodified</dt>  *<dd>  *     A child builder with no content changes starts in this state.  *     It keeps a reference to the parent builder and knows it's name for  *     use when connecting. Before each access the unconnected builder  *     checks the parent for relevant changes to connect to. As long as  *     there are no such changes, the builder remains unconnected and  *     uses the immutable base state to respond to any content accesses.  *</dd>  *<dt>connected</dt>  *<dd>  *     Once a child node is first modified, it switches it's internal  *     state from the immutable base state to a mutable one and records  *     a hard reference to that state in the mutable parent state. After  *     that the parent reference is cleared and no more state checks are  *     made. Any other builder instances that refer to the same child node  *     will update their internal states to point to that same mutable  *     state instance and thus become connected at next access.  *     A root state builder is always connected.  *</dd>  *</dl>  */
+comment|/**  * In-memory node state builder.  *<p>  * A {@code MemoryNodeBuilder} instance tracks uncommitted changes without  * relying on weak references or requiring hard references on the entire  * accessed subtree. It does this by relying on {@code MutableNodeState}  * instances for tracking<em>uncommitted changes</em>. A child builders  * keeps a reference to its parent builder and knows it's name. Before  * each access the builder checks the mutable state of its parent for  * relevant changes and updates its own mutable state.  *<p>  * A {@code MutableNodeState} instance does not keep a reference to its  * parent state. It only keeps references to children that have been  * modified. Instances representing an unmodified child are created on  * the fly without keeping a reference. This effectively ensures that  * such an instance can be GC'ed once no node builder references it  * anymore.  */
 end_comment
 
 begin_class
@@ -244,25 +244,27 @@ specifier|final
 name|MemoryNodeBuilder
 name|root
 decl_stmt|;
+comment|/**      * Internal revision counter for the base state of this builder. The counter      * is incremented in the root builder whenever its base state is reset.      * Each builder instance has its own copy of this revision counter for      * quickly checking whether its base state needs updating.      * @see #reset(org.apache.jackrabbit.oak.spi.state.NodeState)      */
 specifier|private
 name|long
 name|baseRevision
 decl_stmt|;
-comment|/**      * The base state of this builder, possibly non-existent if this builder      * represents a new node that didn't yet exist in the base content tree.      */
+comment|/**      * The base state of this builder, possibly non-existent if this builder      * represents a new node that didn't yet exist in the base content tree.      * @see #base()      */
 specifier|private
 name|NodeState
 name|base
 decl_stmt|;
+comment|/**      * Internal revision counter for the head state of this builder. The counter      * is incremented in the root builder whenever anything changes in the tree      * below. Each builder instance has its own copy of this revision counter for      * quickly checking whether its head state needs updating.      */
 specifier|private
 name|long
 name|headRevision
 decl_stmt|;
-comment|/**      * The shared mutable state of connected builder instances, or      * {@code null} until this builder has been connected.      */
+comment|/**      * The shared mutable state this builder.      * @see #write()      * @see #read()      */
 specifier|private
 name|MutableNodeState
 name|head
 decl_stmt|;
-comment|/**      * Creates a new in-memory node state builder.      *      * @param parent parent node state builder      * @param name name of this node      */
+comment|/**      * Creates a new in-memory child builder.      * @param parent parent builder      * @param name name of this node      */
 specifier|private
 name|MemoryNodeBuilder
 parameter_list|(
@@ -294,7 +296,7 @@ operator|.
 name|root
 expr_stmt|;
 block|}
-comment|/**      * Creates a new in-memory node state builder.      *      * @param base base state of the new builder      */
+comment|/**      * Creates a new in-memory node state builder rooted at      * and based on the passed {@code base} state.      * @param base base state of the new builder      */
 specifier|public
 name|MemoryNodeBuilder
 parameter_list|(
@@ -322,6 +324,7 @@ name|root
 operator|=
 name|this
 expr_stmt|;
+comment|// ensure base is updated on next call to base()
 name|this
 operator|.
 name|baseRevision
@@ -337,6 +340,7 @@ argument_list|(
 name|base
 argument_list|)
 expr_stmt|;
+comment|// ensure head is updated on next call to read() or write()
 name|this
 operator|.
 name|headRevision
@@ -388,6 +392,7 @@ argument_list|)
 throw|;
 block|}
 block|}
+comment|/**      * Update the base state of this builder by recursively retrieving it      * from the parent builder.      * @return  base state of this builder      */
 annotation|@
 name|Nonnull
 specifier|private
@@ -427,6 +432,7 @@ return|return
 name|base
 return|;
 block|}
+comment|/**      * Update the head state of this builder by recursively retrieving it      * from the parent builder.      * @return  head state of this builder      */
 annotation|@
 name|Nonnull
 specifier|private
@@ -475,6 +481,7 @@ return|return
 name|head
 return|;
 block|}
+comment|/**      * Update the head state of this builder by recursively retrieving it      * from the parent builder and increment the head revision of the root      * builder ensuring subsequent calls to {@link #read()} result in updating      * of the respective head states.      * @return  head state of this builder      */
 annotation|@
 name|Nonnull
 specifier|private
@@ -493,6 +500,7 @@ literal|1
 argument_list|)
 return|;
 block|}
+comment|/**      * Recursive helper method to {@link #write()}. Don't call directly.      */
 annotation|@
 name|Nonnull
 specifier|private

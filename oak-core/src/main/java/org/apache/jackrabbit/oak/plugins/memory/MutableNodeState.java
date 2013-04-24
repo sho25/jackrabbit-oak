@@ -300,7 +300,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * The<em>mutable</em> state being built. Instances of this class  * are never passed beyond the containing {@code MemoryNodeBuilder},  * so it's not a problem that we intentionally break the immutability  * assumption of the {@link org.apache.jackrabbit.oak.spi.state.NodeState} interface.  */
+comment|/**  * A<em>mutable</em> state being built.  *  * Instances of this class are never passed beyond the containing  * {@link MemoryNodeBuilder}, so it's not a problem that we intentionally  * break the immutability assumption of the  * {@link org.apache.jackrabbit.oak.spi.state.NodeState} interface.  */
 end_comment
 
 begin_class
@@ -1202,6 +1202,7 @@ name|exists
 argument_list|()
 return|;
 block|}
+comment|/**      * Get and optionally connect a potentially non existing child      * node of a given {@code name}. Connected child nodes are kept      * in the list of modified child nodes of this node.      */
 name|MutableNodeState
 name|getChildNode
 parameter_list|(
@@ -1248,7 +1249,7 @@ name|name
 argument_list|)
 condition|)
 block|{
-comment|// deleted
+comment|// deleted: shadow if connect, otherwise non existing
 name|child
 operator|=
 operator|new
@@ -1293,6 +1294,7 @@ return|return
 name|child
 return|;
 block|}
+comment|/**      * Equivalent to      *<pre>      *   MutableNodeState child = getChildNode(name, true);      *   child.reset(state);      *   return child;      *</pre>      */
 annotation|@
 name|Nonnull
 name|MutableNodeState
@@ -1327,6 +1329,7 @@ return|return
 name|child
 return|;
 block|}
+comment|/**      * Determine whether this node state is modified wrt. the passed      * {@code before} state.      *<p>      * A node state is modified if it either has not the same properties      * or has not the same child nodes as a {@code before} state. A node      * state has the same properties as a {@code before} state iff its      * set of properties is equal to the set of properties of      * {@code before}. A node state has the same child nodes as a      * {@code before} state iff its set of child node names is equal to      * the set of child node names of {@code before}.      */
 name|boolean
 name|isModified
 parameter_list|(
@@ -1471,6 +1474,7 @@ return|return
 literal|false
 return|;
 block|}
+comment|/**      * Remove the child node with the given {@code name}.      * @param name  name of the child node to remove      * @return  {@code true} if a child node {@code name} existed, {@code false} otherwise.      */
 name|boolean
 name|removeChildNode
 parameter_list|(
@@ -1523,6 +1527,7 @@ literal|null
 return|;
 block|}
 block|}
+comment|/**      * Remove the property of the given {@code name}.      * @param name  name of the property to remove      * @return  {@code true} if a property {@code name} existed, {@code false} otherwise.      */
 name|boolean
 name|removeProperty
 parameter_list|(
@@ -1572,6 +1577,7 @@ literal|null
 return|;
 block|}
 block|}
+comment|/**      * Set the value of a property      */
 name|void
 name|setProperty
 parameter_list|(
