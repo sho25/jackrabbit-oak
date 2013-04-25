@@ -717,11 +717,13 @@ name|changes
 return|;
 block|}
 comment|/**      * A MongoDB operation for a given key within a document.       */
+specifier|public
 specifier|static
 class|class
 name|Operation
 block|{
 comment|/**          * The MongoDB operation type.          */
+specifier|public
 enum|enum
 name|Type
 block|{
@@ -815,6 +817,9 @@ name|REMOVE_MAP_ENTRY
 case|:
 case|case
 name|SET_MAP
+case|:
+case|case
+name|CONTAINS_MAP_ENTRY
 case|:
 comment|// nothing to do
 break|break;

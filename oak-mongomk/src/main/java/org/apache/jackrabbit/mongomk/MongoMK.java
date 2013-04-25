@@ -387,6 +387,22 @@ name|jackrabbit
 operator|.
 name|mongomk
 operator|.
+name|Revision
+operator|.
+name|RevisionComparator
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|mongomk
+operator|.
 name|blob
 operator|.
 name|MongoBlobStore
@@ -580,7 +596,7 @@ specifier|final
 name|BlobStore
 name|blobStore
 decl_stmt|;
-comment|/**      * The cluster node info.      */
+comment|/**      * The cluster instance info.      */
 specifier|private
 specifier|final
 name|ClusterNodeInfo
@@ -616,7 +632,7 @@ name|Children
 argument_list|>
 name|nodeChildrenCache
 decl_stmt|;
-comment|/**      * The unsaved last revisions.      *       * Key: path, value: revision.      */
+comment|/**      * The unsaved last revisions. This contains the parents of all changed      * nodes, once those nodes are committed but the parent node itself wasn't      * committed yet. The parents are not immediately persisted as this would      * cause each commit to change all parents (including the root node), which      * would limit write scalability.      *       * Key: path, value: revision.      */
 specifier|private
 specifier|final
 name|Map
@@ -636,7 +652,7 @@ name|Revision
 argument_list|>
 argument_list|()
 decl_stmt|;
-comment|/**      * The last known revision for each cluster node.      *       * Key: the machine id, value: revision.      */
+comment|/**      * The last known revision for each cluster instance.      *       * Key: the machine id, value: revision.      */
 specifier|private
 specifier|final
 name|Map
@@ -690,6 +706,16 @@ name|Revision
 argument_list|,
 name|Revision
 argument_list|>
+argument_list|()
+decl_stmt|;
+comment|/**      * The comparator for revisions.      */
+specifier|private
+specifier|final
+name|RevisionComparator
+name|revisionComparator
+init|=
+operator|new
+name|RevisionComparator
 argument_list|()
 decl_stmt|;
 name|MongoMK
@@ -1358,13 +1384,13 @@ name|last
 operator|==
 literal|null
 operator|||
-name|last
+name|r
 operator|.
 name|compareRevisionTime
 argument_list|(
-name|r
+name|last
 argument_list|)
-operator|!=
+operator|>
 literal|0
 condition|)
 block|{
@@ -1946,8 +1972,8 @@ operator|.
 name|clusterId
 condition|)
 block|{
-comment|// both revisions were created by this cluster node:
-comment|// compare timestamps only
+comment|// both revisions were created by this cluster instance:
+comment|// compare timestamps and counters
 return|return
 name|requestRevision
 operator|.
@@ -1971,6 +1997,7 @@ operator|>=
 literal|0
 return|;
 block|}
+comment|/**      * Checks that revision x is newer than another revision.      *       * @param x the revision to check      * @param previous the presumed earlier revision      * @return true if x is newer      */
 name|boolean
 name|isRevisionNewer
 parameter_list|(
@@ -1987,10 +2014,12 @@ parameter_list|)
 block|{
 comment|// TODO currently we only compare the timestamps
 return|return
-name|x
+name|revisionComparator
 operator|.
-name|compareRevisionTime
+name|compare
 argument_list|(
+name|x
+argument_list|,
 name|previous
 argument_list|)
 operator|>
@@ -6108,8 +6137,6 @@ name|toString
 argument_list|()
 return|;
 block|}
-else|else
-block|{
 throw|throw
 operator|new
 name|MicroKernelException
@@ -6117,7 +6144,6 @@ argument_list|(
 literal|"Conflicting concurrent change"
 argument_list|)
 throw|;
-block|}
 block|}
 annotation|@
 name|Override

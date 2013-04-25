@@ -101,16 +101,6 @@ name|Test
 import|;
 end_import
 
-begin_import
-import|import
-name|com
-operator|.
-name|mongodb
-operator|.
-name|DB
-import|;
-end_import
-
 begin_comment
 comment|/**  * Tests for {@code MongoMicroKernel#write(java.io.InputStream)}  */
 end_comment

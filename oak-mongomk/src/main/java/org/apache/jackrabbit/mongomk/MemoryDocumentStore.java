@@ -965,6 +965,9 @@ operator|.
 name|util
 operator|.
 name|Collection
+argument_list|<
+name|?
+argument_list|>
 name|col
 init|=
 operator|(
@@ -973,6 +976,9 @@ operator|.
 name|util
 operator|.
 name|Collection
+argument_list|<
+name|?
+argument_list|>
 operator|)
 name|value
 decl_stmt|;
@@ -1410,6 +1416,11 @@ argument_list|)
 expr_stmt|;
 break|break;
 block|}
+case|case
+name|CONTAINS_MAP_ENTRY
+case|:
+comment|// no effect
+break|break;
 block|}
 block|}
 block|}

@@ -1108,7 +1108,7 @@ name|String
 argument_list|,
 name|Object
 argument_list|>
-name|findAndModifiy
+name|findAndModify
 parameter_list|(
 name|Collection
 name|collection
@@ -1620,7 +1620,7 @@ name|Object
 argument_list|>
 name|map
 init|=
-name|findAndModifiy
+name|findAndModify
 argument_list|(
 name|collection
 argument_list|,
@@ -1677,7 +1677,7 @@ name|Object
 argument_list|>
 name|map
 init|=
-name|findAndModifiy
+name|findAndModify
 argument_list|(
 name|collection
 argument_list|,
@@ -1942,9 +1942,13 @@ block|}
 case|case
 name|REMOVE_MAP_ENTRY
 case|:
-block|{
 comment|// nothing to do for new entries
-block|}
+break|break;
+case|case
+name|CONTAINS_MAP_ENTRY
+case|:
+comment|// no effect
+break|break;
 block|}
 block|}
 block|}
