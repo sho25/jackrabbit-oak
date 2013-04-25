@@ -353,7 +353,7 @@ name|PermissionValidator
 extends|extends
 name|DefaultValidator
 block|{
-comment|/* TODO      * - OAK-710: Renaming nodes or Move with same parent are reflected as remove+add -> needs special handling      * - OAK-711: Proper handling of jcr:nodeTypeManagement privilege.      * - OAK-785: compatibility mode for user-mgt permission      */
+comment|/* TODO      * - OAK-710: Renaming nodes or Move with same parent are reflected as remove+add -> needs special handling      */
 specifier|private
 specifier|final
 name|Tree
@@ -1311,7 +1311,41 @@ name|equals
 argument_list|(
 name|name
 argument_list|)
-operator|||
+condition|)
+block|{
+if|if
+condition|(
+name|defaultPermission
+operator|==
+name|Permissions
+operator|.
+name|MODIFY_PROPERTY
+condition|)
+block|{
+name|perm
+operator|=
+name|Permissions
+operator|.
+name|NODE_TYPE_MANAGEMENT
+expr_stmt|;
+block|}
+else|else
+block|{
+comment|// can't determine if this was  a user supplied modification of
+comment|// the primary type -> omit permission check.
+comment|// Node#addNode(String, String) and related methods need to
+comment|// perform the permission check (as it used to be in jackrabbit 2.x).
+name|perm
+operator|=
+name|Permissions
+operator|.
+name|NO_PERMISSION
+expr_stmt|;
+block|}
+block|}
+elseif|else
+if|if
+condition|(
 name|JcrConstants
 operator|.
 name|JCR_MIXINTYPES
@@ -1322,11 +1356,32 @@ name|name
 argument_list|)
 condition|)
 block|{
-comment|// FIXME: OAK-711 (distinguish between autocreated and user-supplied modification (?))
-comment|// perm = Permissions.NODE_TYPE_MANAGEMENT;
 name|perm
 operator|=
-name|defaultPermission
+name|Permissions
+operator|.
+name|NODE_TYPE_MANAGEMENT
+expr_stmt|;
+block|}
+elseif|else
+if|if
+condition|(
+name|JcrConstants
+operator|.
+name|JCR_UUID
+operator|.
+name|equals
+argument_list|(
+name|name
+argument_list|)
+condition|)
+block|{
+comment|// TODO : jcr:uuid is never set using a method on JCR API -> omit permission check
+name|perm
+operator|=
+name|Permissions
+operator|.
+name|NO_PERMISSION
 expr_stmt|;
 block|}
 elseif|else

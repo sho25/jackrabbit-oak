@@ -142,11 +142,6 @@ comment|/**  * Permission evaluation tests related to {@link Privilege#JCR_NODE_
 end_comment
 
 begin_class
-annotation|@
-name|Ignore
-argument_list|(
-literal|"OAK-711 : permission validator doesn't detect changes to mixin/primary type"
-argument_list|)
 specifier|public
 class|class
 name|NodeTypeManagementTest
@@ -327,7 +322,7 @@ annotation|@
 name|Test
 specifier|public
 name|void
-name|testAddMixin
+name|testAddMixinWithoutPermission
 parameter_list|()
 throws|throws
 name|Exception
@@ -341,7 +336,7 @@ argument_list|(
 name|mixinName
 argument_list|)
 expr_stmt|;
-name|superuser
+name|testSession
 operator|.
 name|save
 argument_list|()
@@ -360,6 +355,16 @@ parameter_list|)
 block|{
 comment|// success
 block|}
+block|}
+annotation|@
+name|Test
+specifier|public
+name|void
+name|testAddMixin
+parameter_list|()
+throws|throws
+name|Exception
+block|{
 name|modify
 argument_list|(
 name|childNode
@@ -381,11 +386,86 @@ argument_list|(
 name|mixinName
 argument_list|)
 expr_stmt|;
+name|testSession
+operator|.
+name|save
+argument_list|()
+expr_stmt|;
+block|}
+annotation|@
+name|Ignore
+argument_list|(
+literal|"OAK-767 : Implement Node#removeMixin"
+argument_list|)
+annotation|@
+name|Test
+specifier|public
+name|void
+name|testRemoveMixinWithoutPermission
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+operator|(
+operator|(
+name|Node
+operator|)
+name|superuser
+operator|.
+name|getItem
+argument_list|(
+name|childNode
+operator|.
+name|getPath
+argument_list|()
+argument_list|)
+operator|)
+operator|.
+name|addMixin
+argument_list|(
+name|mixinName
+argument_list|)
+expr_stmt|;
 name|superuser
 operator|.
 name|save
 argument_list|()
 expr_stmt|;
+name|testSession
+operator|.
+name|refresh
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
+try|try
+block|{
+name|childNode
+operator|.
+name|removeMixin
+argument_list|(
+name|mixinName
+argument_list|)
+expr_stmt|;
+name|testSession
+operator|.
+name|save
+argument_list|()
+expr_stmt|;
+name|fail
+argument_list|(
+literal|"TestSession does not have sufficient privileges to remove a mixin type."
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|AccessDeniedException
+name|e
+parameter_list|)
+block|{
+comment|// success
+block|}
 block|}
 annotation|@
 name|Ignore
@@ -426,34 +506,13 @@ operator|.
 name|save
 argument_list|()
 expr_stmt|;
-try|try
-block|{
-name|childNode
+name|testSession
 operator|.
-name|removeMixin
+name|refresh
 argument_list|(
-name|mixinName
+literal|false
 argument_list|)
 expr_stmt|;
-name|superuser
-operator|.
-name|save
-argument_list|()
-expr_stmt|;
-name|fail
-argument_list|(
-literal|"TestSession does not have sufficient privileges to remove a mixin type."
-argument_list|)
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|AccessDeniedException
-name|e
-parameter_list|)
-block|{
-comment|// success
-block|}
 name|modify
 argument_list|(
 name|childNode
@@ -475,7 +534,7 @@ argument_list|(
 name|mixinName
 argument_list|)
 expr_stmt|;
-name|superuser
+name|testSession
 operator|.
 name|save
 argument_list|()
@@ -526,7 +585,7 @@ argument_list|(
 literal|"nt:folder"
 argument_list|)
 expr_stmt|;
-name|superuser
+name|testSession
 operator|.
 name|save
 argument_list|()
@@ -634,7 +693,7 @@ argument_list|(
 name|changedNtName
 argument_list|)
 expr_stmt|;
-name|superuser
+name|testSession
 operator|.
 name|save
 argument_list|()
@@ -660,7 +719,7 @@ argument_list|(
 name|ntName
 argument_list|)
 expr_stmt|;
-name|superuser
+name|testSession
 operator|.
 name|save
 argument_list|()
@@ -808,6 +867,12 @@ block|}
 block|}
 block|}
 annotation|@
+name|Ignore
+argument_list|(
+literal|"OAK-711"
+argument_list|)
+comment|// FIXME
+annotation|@
 name|Test
 specifier|public
 name|void
@@ -933,6 +998,12 @@ argument_list|)
 expr_stmt|;
 block|}
 annotation|@
+name|Ignore
+argument_list|(
+literal|"OAK-711"
+argument_list|)
+comment|// FIXME
+annotation|@
 name|Test
 specifier|public
 name|void
@@ -1057,6 +1128,12 @@ name|destPath
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Ignore
+argument_list|(
+literal|"OAK-711"
+argument_list|)
+comment|// FIXME
 annotation|@
 name|Test
 specifier|public
