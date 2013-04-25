@@ -387,7 +387,9 @@ throw|throw
 operator|new
 name|IllegalStateException
 argument_list|(
-literal|"This builder is not connected"
+literal|"This builder is not connected: "
+operator|+
+name|name
 argument_list|)
 throw|;
 block|}
