@@ -22,6 +22,30 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertNotNull
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertNull
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -131,41 +155,7 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Ignore
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
 name|Test
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertNotNull
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertNull
 import|;
 end_import
 
@@ -272,12 +262,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-annotation|@
-name|Ignore
-argument_list|(
-literal|"OAK-766"
-argument_list|)
-comment|// FIXME
 annotation|@
 name|Test
 specifier|public
@@ -523,12 +507,6 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-annotation|@
-name|Ignore
-argument_list|(
-literal|"OAK-766"
-argument_list|)
-comment|// FIXME
 annotation|@
 name|Test
 specifier|public
@@ -927,12 +905,6 @@ expr_stmt|;
 block|}
 block|}
 annotation|@
-name|Ignore
-argument_list|(
-literal|"OAK-766"
-argument_list|)
-comment|// FIXME
-annotation|@
 name|Test
 specifier|public
 name|void
@@ -1087,12 +1059,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-annotation|@
-name|Ignore
-argument_list|(
-literal|"OAK-766"
-argument_list|)
-comment|// FIXME
 annotation|@
 name|Test
 specifier|public
