@@ -664,7 +664,7 @@ condition|(
 operator|!
 name|parent
 operator|.
-name|isConnected
+name|exists
 argument_list|()
 condition|)
 block|{

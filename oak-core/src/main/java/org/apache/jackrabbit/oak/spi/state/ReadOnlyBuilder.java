@@ -143,17 +143,6 @@ annotation|@
 name|Override
 specifier|public
 name|boolean
-name|isConnected
-parameter_list|()
-block|{
-return|return
-literal|true
-return|;
-block|}
-annotation|@
-name|Override
-specifier|public
-name|boolean
 name|isModified
 parameter_list|()
 block|{
