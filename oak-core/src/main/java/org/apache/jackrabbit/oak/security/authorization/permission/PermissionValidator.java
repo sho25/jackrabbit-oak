@@ -1376,7 +1376,7 @@ name|name
 argument_list|)
 condition|)
 block|{
-comment|// TODO : jcr:uuid is never set using a method on JCR API -> omit permission check
+comment|// TODO OAK-796: jcr:uuid is never set using a method on JCR API -> omit permission check
 name|perm
 operator|=
 name|Permissions
