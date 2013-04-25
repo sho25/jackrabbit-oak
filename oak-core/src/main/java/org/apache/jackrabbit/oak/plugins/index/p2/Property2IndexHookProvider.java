@@ -23,16 +23,6 @@ end_package
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|List
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -77,7 +67,7 @@ name|plugins
 operator|.
 name|index
 operator|.
-name|IndexHook
+name|IndexEditorProvider
 import|;
 end_import
 
@@ -91,11 +81,11 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|plugins
+name|spi
 operator|.
-name|index
+name|commit
 operator|.
-name|IndexHookProvider
+name|Editor
 import|;
 end_import
 
@@ -117,40 +107,8 @@ name|NodeBuilder
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|spi
-operator|.
-name|state
-operator|.
-name|NodeState
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|collect
-operator|.
-name|ImmutableList
-import|;
-end_import
-
 begin_comment
-comment|/**  * Service that provides PropertyIndex based IndexHooks.  *   * @see Property2IndexHook  * @see IndexHookProvider  *   */
+comment|/**  * Service that provides PropertyIndex based IndexHooks.  *   * @see Property2IndexHook  * @see IndexEditorProvider  *   */
 end_comment
 
 begin_class
@@ -159,7 +117,7 @@ name|Component
 annotation|@
 name|Service
 argument_list|(
-name|IndexHookProvider
+name|IndexEditorProvider
 operator|.
 name|class
 argument_list|)
@@ -167,7 +125,7 @@ specifier|public
 class|class
 name|Property2IndexHookProvider
 implements|implements
-name|IndexHookProvider
+name|IndexEditorProvider
 block|{
 specifier|public
 specifier|static
@@ -180,22 +138,14 @@ decl_stmt|;
 annotation|@
 name|Override
 specifier|public
-name|List
-argument_list|<
-name|?
-extends|extends
-name|IndexHook
-argument_list|>
-name|getIndexHooks
+name|Editor
+name|getIndexEditor
 parameter_list|(
 name|String
 name|type
 parameter_list|,
 name|NodeBuilder
 name|builder
-parameter_list|,
-name|NodeState
-name|root
 parameter_list|)
 block|{
 if|if
@@ -209,25 +159,15 @@ argument_list|)
 condition|)
 block|{
 return|return
-name|ImmutableList
-operator|.
-name|of
-argument_list|(
 operator|new
 name|Property2IndexHook
 argument_list|(
 name|builder
-argument_list|,
-name|root
-argument_list|)
 argument_list|)
 return|;
 block|}
 return|return
-name|ImmutableList
-operator|.
-name|of
-argument_list|()
+literal|null
 return|;
 block|}
 block|}

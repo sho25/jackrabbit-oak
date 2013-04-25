@@ -145,7 +145,7 @@ name|plugins
 operator|.
 name|index
 operator|.
-name|IndexHook
+name|IndexEditor
 import|;
 end_import
 
@@ -306,7 +306,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * {@link IndexHook} implementation that is responsible for keeping the  * {@link org.apache.jackrabbit.oak.plugins.index.solr.query.SolrQueryIndex} up to date  *<p/>  * This handles the status of the index update inside a flat list of {@link SolrInputDocument}s  * for additions and a {@link StringBuilder} of ids for deletions of documents.  *<p/>  * Note also that at the moment this is not configurable but assumes Solr has been  * configured ot have some specific fields and analyzers..  *  * @see org.apache.jackrabbit.oak.plugins.index.solr.query.SolrQueryIndex  * @see SolrIndexDiff  */
+comment|/**  * {@link IndexEditor} implementation that is responsible for keeping the  * {@link org.apache.jackrabbit.oak.plugins.index.solr.query.SolrQueryIndex} up to date  *<p/>  * This handles the status of the index update inside a flat list of {@link SolrInputDocument}s  * for additions and a {@link StringBuilder} of ids for deletions of documents.  *<p/>  * Note also that at the moment this is not configurable but assumes Solr has been  * configured ot have some specific fields and analyzers..  *  * @see org.apache.jackrabbit.oak.plugins.index.solr.query.SolrQueryIndex  * @see SolrIndexDiff  */
 end_comment
 
 begin_class
@@ -314,7 +314,7 @@ specifier|public
 class|class
 name|SolrIndexHook
 implements|implements
-name|IndexHook
+name|IndexEditor
 implements|,
 name|Closeable
 block|{
@@ -1226,77 +1226,6 @@ name|e
 argument_list|)
 throw|;
 block|}
-block|}
-annotation|@
-name|Override
-specifier|public
-name|Editor
-name|reindex
-parameter_list|(
-name|NodeState
-name|state
-parameter_list|)
-throws|throws
-name|CommitFailedException
-block|{
-try|try
-block|{
-name|close
-argument_list|()
-expr_stmt|;
-name|deleteByIdQueryBuilder
-operator|.
-name|append
-argument_list|(
-name|getPath
-argument_list|()
-argument_list|)
-operator|.
-name|append
-argument_list|(
-literal|"*"
-argument_list|)
-expr_stmt|;
-name|solrInputDocuments
-operator|.
-name|addAll
-argument_list|(
-name|docsFromState
-argument_list|(
-name|getPath
-argument_list|()
-argument_list|,
-name|state
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|apply
-argument_list|()
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|IOException
-name|e
-parameter_list|)
-block|{
-throw|throw
-operator|new
-name|CommitFailedException
-argument_list|(
-literal|"Solr"
-argument_list|,
-literal|2
-argument_list|,
-literal|"Re-index failure"
-argument_list|,
-name|e
-argument_list|)
-throw|;
-block|}
-return|return
-literal|null
-return|;
 block|}
 annotation|@
 name|Override

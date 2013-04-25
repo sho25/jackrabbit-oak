@@ -129,7 +129,7 @@ name|plugins
 operator|.
 name|index
 operator|.
-name|IndexHookProvider
+name|IndexEditorProvider
 import|;
 end_import
 
@@ -687,7 +687,7 @@ name|with
 parameter_list|(
 annotation|@
 name|Nonnull
-name|IndexHookProvider
+name|IndexEditorProvider
 name|indexHookProvider
 parameter_list|)
 block|{

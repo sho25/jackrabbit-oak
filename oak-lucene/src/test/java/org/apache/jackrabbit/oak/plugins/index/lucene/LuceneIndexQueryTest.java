@@ -284,7 +284,7 @@ operator|.
 name|with
 argument_list|(
 operator|new
-name|LuceneIndexHookProvider
+name|LuceneIndexEditorProvider
 argument_list|()
 argument_list|)
 operator|.

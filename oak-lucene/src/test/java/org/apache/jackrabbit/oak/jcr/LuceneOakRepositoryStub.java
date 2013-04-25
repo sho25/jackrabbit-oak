@@ -73,7 +73,7 @@ name|index
 operator|.
 name|lucene
 operator|.
-name|LuceneIndexHookProvider
+name|LuceneIndexEditorProvider
 import|;
 end_import
 
@@ -152,7 +152,7 @@ operator|.
 name|with
 argument_list|(
 operator|new
-name|LuceneIndexHookProvider
+name|LuceneIndexEditorProvider
 argument_list|()
 argument_list|)
 expr_stmt|;

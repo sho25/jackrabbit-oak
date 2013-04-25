@@ -257,7 +257,7 @@ name|plugins
 operator|.
 name|index
 operator|.
-name|IndexHook
+name|IndexEditor
 import|;
 end_import
 
@@ -394,7 +394,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * {@link IndexHook} implementation that is responsible for keeping the  * {@link LuceneIndex} up to date  *   * @see LuceneIndex  *   */
+comment|/**  * {@link IndexEditor} implementation that is responsible for keeping the  * {@link LuceneIndex} up to date  *   * @see LuceneIndex  *   */
 end_comment
 
 begin_class
@@ -402,7 +402,7 @@ specifier|public
 class|class
 name|LuceneIndexDiff
 implements|implements
-name|IndexHook
+name|IndexEditor
 implements|,
 name|Closeable
 block|{
@@ -1208,63 +1208,6 @@ name|name
 argument_list|)
 argument_list|)
 expr_stmt|;
-block|}
-return|return
-literal|null
-return|;
-block|}
-annotation|@
-name|Override
-specifier|public
-name|Editor
-name|reindex
-parameter_list|(
-name|NodeState
-name|state
-parameter_list|)
-block|{
-name|boolean
-name|reindex
-init|=
-literal|false
-decl_stmt|;
-for|for
-control|(
-name|LuceneIndexUpdate
-name|update
-range|:
-name|updates
-operator|.
-name|values
-argument_list|()
-control|)
-block|{
-if|if
-condition|(
-name|update
-operator|.
-name|getAndResetReindexFlag
-argument_list|()
-condition|)
-block|{
-name|reindex
-operator|=
-literal|true
-expr_stmt|;
-block|}
-block|}
-if|if
-condition|(
-name|reindex
-condition|)
-block|{
-return|return
-operator|new
-name|LuceneIndexDiff
-argument_list|(
-name|node
-argument_list|)
-return|;
 block|}
 return|return
 literal|null

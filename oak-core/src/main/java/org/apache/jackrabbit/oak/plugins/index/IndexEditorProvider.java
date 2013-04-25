@@ -39,22 +39,6 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|api
-operator|.
-name|CommitFailedException
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
 name|spi
 operator|.
 name|commit
@@ -77,32 +61,31 @@ name|spi
 operator|.
 name|state
 operator|.
-name|NodeState
+name|NodeBuilder
 import|;
 end_import
 
 begin_comment
-comment|/**  * Represents the content of a QueryIndex as well as a mechanism for keeping  * this content up to date.<br>  * An IndexHook listens for changes to the content and updates the index data  * accordingly.  */
+comment|/**  * Extension point for plugging in different kinds of IndexEditor providers.  *   * @see IndexEditor  */
 end_comment
 
 begin_interface
 specifier|public
 interface|interface
-name|IndexHook
-extends|extends
-name|Editor
+name|IndexEditorProvider
 block|{
-comment|/**      * Return an editor that can be used to recreate this index, or      *<code>null</code> if reindexing is not required or is taken care of by      * the impl directly using the provided state as a reference<br>      *<br>      * By providing an Editor an impl could help the IndexManager gain some      * performance on account of doing the reindexing in parallel for all      * indexers<br>      *<br>      *<i>Note:</i> All the existing IndexHook impls require a call to      * {@link #enter(NodeState, NodeState)} to build initial state before      * calling {@link #reindex(NodeState)}, this is enforced via the      * IndexManager.      *       * @param state      *            state can be used to reindex inside the IndexHook directly,      *            instead of providing an Editor      *       */
+comment|/**      *       * Each provider knows how to produce a certain type of index. If the      *<code>type</code> param is of an unknown value, the provider is expected      * to return {@code null}.      *       *<p>      * The<code>builder</code> must points to the index definition node      * under which the indexer is expected to store the index content.      *</p>      *       * @param type      *            the index type      * @param builder      *            the node state builder of the index definition node that      *            will be used for updates      * @return index update editor, or {@code null} if type is unknown      */
 annotation|@
 name|CheckForNull
 name|Editor
-name|reindex
+name|getIndexEditor
 parameter_list|(
-name|NodeState
-name|state
+name|String
+name|type
+parameter_list|,
+name|NodeBuilder
+name|builder
 parameter_list|)
-throws|throws
-name|CommitFailedException
 function_decl|;
 block|}
 end_interface

@@ -25,21 +25,11 @@ end_package
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|List
-import|;
-end_import
-
-begin_import
-import|import
 name|javax
 operator|.
 name|annotation
 operator|.
-name|Nonnull
+name|CheckForNull
 import|;
 end_import
 
@@ -137,7 +127,7 @@ name|plugins
 operator|.
 name|index
 operator|.
-name|IndexHook
+name|IndexEditor
 import|;
 end_import
 
@@ -155,7 +145,7 @@ name|plugins
 operator|.
 name|index
 operator|.
-name|IndexHookProvider
+name|IndexEditorProvider
 import|;
 end_import
 
@@ -233,9 +223,9 @@ name|oak
 operator|.
 name|spi
 operator|.
-name|state
+name|commit
 operator|.
-name|NodeBuilder
+name|Editor
 import|;
 end_import
 
@@ -253,7 +243,7 @@ name|spi
 operator|.
 name|state
 operator|.
-name|NodeState
+name|NodeBuilder
 import|;
 end_import
 
@@ -277,22 +267,8 @@ name|LoggerFactory
 import|;
 end_import
 
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|collect
-operator|.
-name|ImmutableList
-import|;
-end_import
-
 begin_comment
-comment|/**  * Service that provides {@link SolrIndexHookProvider} based {@link IndexHook}s.  *  * @see org.apache.jackrabbit.oak.plugins.index.IndexHookProvider  */
+comment|/**  * Service that provides {@link SolrIndexHookProvider} based {@link IndexEditor}s.  *  * @see org.apache.jackrabbit.oak.plugins.index.IndexEditorProvider  */
 end_comment
 
 begin_class
@@ -301,7 +277,7 @@ name|Component
 annotation|@
 name|Service
 argument_list|(
-name|IndexHookProvider
+name|IndexEditorProvider
 operator|.
 name|class
 argument_list|)
@@ -309,7 +285,7 @@ specifier|public
 class|class
 name|SolrIndexHookProvider
 implements|implements
-name|IndexHookProvider
+name|IndexEditorProvider
 block|{
 specifier|private
 specifier|final
@@ -393,24 +369,16 @@ block|}
 annotation|@
 name|Override
 annotation|@
-name|Nonnull
+name|CheckForNull
 specifier|public
-name|List
-argument_list|<
-name|?
-extends|extends
-name|IndexHook
-argument_list|>
-name|getIndexHooks
+name|Editor
+name|getIndexEditor
 parameter_list|(
 name|String
 name|type
 parameter_list|,
 name|NodeBuilder
 name|builder
-parameter_list|,
-name|NodeState
-name|root
 parameter_list|)
 block|{
 if|if
@@ -451,7 +419,7 @@ literal|"Creating a Solr index hook"
 argument_list|)
 expr_stmt|;
 block|}
-name|IndexHook
+name|IndexEditor
 name|indexHook
 init|=
 operator|new
@@ -471,12 +439,7 @@ argument_list|()
 argument_list|)
 decl_stmt|;
 return|return
-name|ImmutableList
-operator|.
-name|of
-argument_list|(
 name|indexHook
-argument_list|)
 return|;
 block|}
 catch|catch
@@ -497,10 +460,7 @@ expr_stmt|;
 block|}
 block|}
 return|return
-name|ImmutableList
-operator|.
-name|of
-argument_list|()
+literal|null
 return|;
 block|}
 block|}

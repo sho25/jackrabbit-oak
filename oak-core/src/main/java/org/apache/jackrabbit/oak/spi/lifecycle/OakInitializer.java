@@ -59,7 +59,7 @@ name|plugins
 operator|.
 name|index
 operator|.
-name|IndexHookManager
+name|IndexUpdateProvider
 import|;
 end_import
 
@@ -77,7 +77,7 @@ name|plugins
 operator|.
 name|index
 operator|.
-name|IndexHookProvider
+name|IndexEditorProvider
 import|;
 end_import
 
@@ -216,7 +216,7 @@ name|initializer
 parameter_list|,
 annotation|@
 name|Nonnull
-name|IndexHookProvider
+name|IndexEditorProvider
 name|indexHook
 parameter_list|)
 block|{
@@ -257,9 +257,8 @@ argument_list|(
 operator|new
 name|EditorHook
 argument_list|(
-name|IndexHookManager
-operator|.
-name|of
+operator|new
+name|IndexUpdateProvider
 argument_list|(
 name|indexHook
 argument_list|)
@@ -307,7 +306,7 @@ name|workspaceName
 parameter_list|,
 annotation|@
 name|Nonnull
-name|IndexHookProvider
+name|IndexEditorProvider
 name|indexHook
 parameter_list|,
 annotation|@
@@ -377,9 +376,8 @@ argument_list|(
 operator|new
 name|EditorHook
 argument_list|(
-name|IndexHookManager
-operator|.
-name|of
+operator|new
+name|IndexUpdateProvider
 argument_list|(
 name|indexHook
 argument_list|)

@@ -177,7 +177,7 @@ name|plugins
 operator|.
 name|index
 operator|.
-name|CompositeIndexHookProvider
+name|CompositeIndexEditorProvider
 import|;
 end_import
 
@@ -195,7 +195,7 @@ name|plugins
 operator|.
 name|index
 operator|.
-name|IndexHookManager
+name|IndexUpdateProvider
 import|;
 end_import
 
@@ -213,7 +213,7 @@ name|plugins
 operator|.
 name|index
 operator|.
-name|IndexHookProvider
+name|IndexEditorProvider
 import|;
 end_import
 
@@ -545,14 +545,14 @@ operator|new
 name|InitialContent
 argument_list|()
 argument_list|,
-name|CompositeIndexHookProvider
+name|CompositeIndexEditorProvider
 operator|.
 name|compose
 argument_list|(
 operator|new
 name|ArrayList
 argument_list|<
-name|IndexHookProvider
+name|IndexEditorProvider
 argument_list|>
 argument_list|()
 argument_list|)
@@ -633,9 +633,8 @@ argument_list|(
 operator|new
 name|EditorHook
 argument_list|(
-name|IndexHookManager
-operator|.
-name|of
+operator|new
+name|IndexUpdateProvider
 argument_list|(
 operator|new
 name|Property2IndexHookProvider

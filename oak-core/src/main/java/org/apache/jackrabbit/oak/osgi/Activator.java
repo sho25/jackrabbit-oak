@@ -341,11 +341,11 @@ argument_list|()
 decl_stmt|;
 specifier|private
 specifier|final
-name|OsgiIndexHookProvider
-name|indexHookProvider
+name|OsgiIndexEditorProvider
+name|indexEditorProvider
 init|=
 operator|new
-name|OsgiIndexHookProvider
+name|OsgiIndexEditorProvider
 argument_list|()
 decl_stmt|;
 specifier|private
@@ -409,7 +409,7 @@ argument_list|(
 name|bundleContext
 argument_list|)
 expr_stmt|;
-name|indexHookProvider
+name|indexEditorProvider
 operator|.
 name|start
 argument_list|(
@@ -486,7 +486,7 @@ operator|.
 name|stop
 argument_list|()
 expr_stmt|;
-name|indexHookProvider
+name|indexEditorProvider
 operator|.
 name|stop
 argument_list|()
@@ -592,7 +592,7 @@ name|store
 argument_list|,
 name|repositoryInitializerTracker
 argument_list|,
-name|indexHookProvider
+name|indexEditorProvider
 argument_list|)
 expr_stmt|;
 name|Oak
@@ -624,7 +624,7 @@ argument_list|)
 operator|.
 name|with
 argument_list|(
-name|indexHookProvider
+name|indexEditorProvider
 argument_list|)
 decl_stmt|;
 name|services
@@ -779,7 +779,7 @@ argument_list|()
 argument_list|,
 name|ri
 argument_list|,
-name|indexHookProvider
+name|indexEditorProvider
 argument_list|)
 expr_stmt|;
 block|}

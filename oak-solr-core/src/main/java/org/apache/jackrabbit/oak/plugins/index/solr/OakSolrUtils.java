@@ -55,7 +55,7 @@ name|plugins
 operator|.
 name|index
 operator|.
-name|IndexHookProvider
+name|IndexEditorProvider
 import|;
 end_import
 
@@ -226,14 +226,14 @@ operator|==
 literal|0
 return|;
 block|}
-comment|/**      * adapts the OSGi Solr {@link IndexHookProvider} service      *      * @return a {@link SolrIndexHookProvider}      */
+comment|/**      * adapts the OSGi Solr {@link IndexEditorProvider} service      *      * @return a {@link SolrIndexHookProvider}      */
 specifier|public
 specifier|static
-name|IndexHookProvider
+name|IndexEditorProvider
 name|adaptOsgiIndexHookProvider
 parameter_list|()
 block|{
-name|IndexHookProvider
+name|IndexEditorProvider
 name|indexHookProvider
 init|=
 literal|null
@@ -270,7 +270,7 @@ name|ctx
 operator|.
 name|getServiceReference
 argument_list|(
-name|IndexHookProvider
+name|IndexEditorProvider
 operator|.
 name|class
 operator|.
@@ -287,7 +287,7 @@ condition|)
 block|{
 name|indexHookProvider
 operator|=
-name|IndexHookProvider
+name|IndexEditorProvider
 operator|.
 name|class
 operator|.

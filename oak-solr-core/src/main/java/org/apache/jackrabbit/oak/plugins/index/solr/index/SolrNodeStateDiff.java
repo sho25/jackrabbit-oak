@@ -119,7 +119,7 @@ name|plugins
 operator|.
 name|index
 operator|.
-name|IndexHook
+name|IndexEditor
 import|;
 end_import
 
@@ -262,7 +262,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A Solr based {@link IndexHook}  */
+comment|/**  * A Solr based {@link IndexEditor}  */
 end_comment
 
 begin_class

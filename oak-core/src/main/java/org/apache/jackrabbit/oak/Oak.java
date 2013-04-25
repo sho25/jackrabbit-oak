@@ -299,7 +299,7 @@ name|plugins
 operator|.
 name|index
 operator|.
-name|CompositeIndexHookProvider
+name|CompositeIndexEditorProvider
 import|;
 end_import
 
@@ -317,7 +317,7 @@ name|plugins
 operator|.
 name|index
 operator|.
-name|IndexHookManager
+name|IndexUpdateProvider
 import|;
 end_import
 
@@ -335,7 +335,7 @@ name|plugins
 operator|.
 name|index
 operator|.
-name|IndexHookProvider
+name|IndexEditorProvider
 import|;
 end_import
 
@@ -730,7 +730,7 @@ specifier|private
 specifier|final
 name|List
 argument_list|<
-name|IndexHookProvider
+name|IndexEditorProvider
 argument_list|>
 name|indexHookProviders
 init|=
@@ -908,7 +908,7 @@ name|with
 parameter_list|(
 annotation|@
 name|Nonnull
-name|IndexHookProvider
+name|IndexEditorProvider
 name|provider
 parameter_list|)
 block|{
@@ -1176,10 +1176,10 @@ name|ContentRepository
 name|createContentRepository
 parameter_list|()
 block|{
-name|IndexHookProvider
+name|IndexEditorProvider
 name|indexHooks
 init|=
-name|CompositeIndexHookProvider
+name|CompositeIndexEditorProvider
 operator|.
 name|compose
 argument_list|(
@@ -1313,9 +1313,8 @@ expr_stmt|;
 comment|// add index hooks later to prevent the OakInitializer to do excessive indexing
 name|with
 argument_list|(
-name|IndexHookManager
-operator|.
-name|of
+operator|new
+name|IndexUpdateProvider
 argument_list|(
 name|indexHooks
 argument_list|)
