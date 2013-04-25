@@ -17,7 +17,7 @@ name|plugins
 operator|.
 name|index
 operator|.
-name|p2
+name|property
 package|;
 end_package
 
@@ -213,6 +213,46 @@ name|oak
 operator|.
 name|plugins
 operator|.
+name|index
+operator|.
+name|property
+operator|.
+name|PropertyIndexEditor
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|index
+operator|.
+name|property
+operator|.
+name|PropertyIndexLookup
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
 name|nodetype
 operator|.
 name|write
@@ -392,7 +432,7 @@ end_comment
 begin_class
 specifier|public
 class|class
-name|Property2IndexTest
+name|PropertyIndexTest
 block|{
 specifier|private
 specifier|static
@@ -579,7 +619,7 @@ operator|.
 name|process
 argument_list|(
 operator|new
-name|Property2IndexHook
+name|PropertyIndexEditor
 argument_list|(
 name|builder
 argument_list|)
@@ -608,11 +648,11 @@ name|NT_BASE
 argument_list|)
 decl_stmt|;
 comment|// Query the index
-name|Property2IndexLookup
+name|PropertyIndexLookup
 name|lookup
 init|=
 operator|new
-name|Property2IndexLookup
+name|PropertyIndexLookup
 argument_list|(
 name|indexed
 argument_list|)
@@ -785,7 +825,7 @@ name|String
 argument_list|>
 name|find
 parameter_list|(
-name|Property2IndexLookup
+name|PropertyIndexLookup
 name|lookup
 parameter_list|,
 name|String
@@ -1014,7 +1054,7 @@ operator|.
 name|process
 argument_list|(
 operator|new
-name|Property2IndexHook
+name|PropertyIndexEditor
 argument_list|(
 name|builder
 argument_list|)
@@ -1043,11 +1083,11 @@ name|NT_BASE
 argument_list|)
 decl_stmt|;
 comment|// Query the index
-name|Property2IndexLookup
+name|PropertyIndexLookup
 name|lookup
 init|=
 operator|new
-name|Property2IndexLookup
+name|PropertyIndexLookup
 argument_list|(
 name|indexed
 argument_list|)
@@ -1436,7 +1476,7 @@ operator|.
 name|process
 argument_list|(
 operator|new
-name|Property2IndexHook
+name|PropertyIndexEditor
 argument_list|(
 name|builder
 argument_list|)
@@ -1465,11 +1505,11 @@ literal|"nt:unstructured"
 argument_list|)
 decl_stmt|;
 comment|// Query the index
-name|Property2IndexLookup
+name|PropertyIndexLookup
 name|lookup
 init|=
 operator|new
-name|Property2IndexLookup
+name|PropertyIndexLookup
 argument_list|(
 name|indexed
 argument_list|)
@@ -1863,7 +1903,7 @@ operator|.
 name|process
 argument_list|(
 operator|new
-name|Property2IndexHook
+name|PropertyIndexEditor
 argument_list|(
 name|builder
 argument_list|)
@@ -1892,11 +1932,11 @@ literal|"nt:unstructured"
 argument_list|)
 decl_stmt|;
 comment|// Query the index
-name|Property2IndexLookup
+name|PropertyIndexLookup
 name|lookup
 init|=
 operator|new
-name|Property2IndexLookup
+name|PropertyIndexLookup
 argument_list|(
 name|indexed
 argument_list|)
@@ -2144,7 +2184,7 @@ operator|.
 name|process
 argument_list|(
 operator|new
-name|Property2IndexHook
+name|PropertyIndexEditor
 argument_list|(
 name|builder
 argument_list|)
@@ -2240,7 +2280,7 @@ argument_list|)
 operator|.
 name|setProperty
 argument_list|(
-name|Property2IndexHook
+name|PropertyIndexEditor
 operator|.
 name|declaringNodeTypes
 argument_list|,
@@ -2337,7 +2377,7 @@ operator|.
 name|process
 argument_list|(
 operator|new
-name|Property2IndexHook
+name|PropertyIndexEditor
 argument_list|(
 name|builder
 argument_list|)
@@ -2431,7 +2471,7 @@ argument_list|)
 operator|.
 name|setProperty
 argument_list|(
-name|Property2IndexHook
+name|PropertyIndexEditor
 operator|.
 name|declaringNodeTypes
 argument_list|,
@@ -2528,7 +2568,7 @@ operator|.
 name|process
 argument_list|(
 operator|new
-name|Property2IndexHook
+name|PropertyIndexEditor
 argument_list|(
 name|builder
 argument_list|)
@@ -2624,7 +2664,7 @@ argument_list|)
 operator|.
 name|setProperty
 argument_list|(
-name|Property2IndexHook
+name|PropertyIndexEditor
 operator|.
 name|declaringNodeTypes
 argument_list|,
@@ -2728,7 +2768,7 @@ operator|.
 name|process
 argument_list|(
 operator|new
-name|Property2IndexHook
+name|PropertyIndexEditor
 argument_list|(
 name|builder
 argument_list|)

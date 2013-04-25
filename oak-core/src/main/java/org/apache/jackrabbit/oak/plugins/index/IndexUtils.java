@@ -109,9 +109,9 @@ name|plugins
 operator|.
 name|index
 operator|.
-name|p2
+name|property
 operator|.
-name|Property2IndexHookProvider
+name|PropertyIndexEditorProvider
 import|;
 end_import
 
@@ -613,7 +613,7 @@ name|setProperty
 argument_list|(
 name|TYPE_PROPERTY_NAME
 argument_list|,
-name|Property2IndexHookProvider
+name|PropertyIndexEditorProvider
 operator|.
 name|TYPE
 argument_list|)
@@ -740,7 +740,7 @@ name|setString
 argument_list|(
 name|TYPE_PROPERTY_NAME
 argument_list|,
-name|Property2IndexHookProvider
+name|PropertyIndexEditorProvider
 operator|.
 name|TYPE
 argument_list|)

@@ -17,7 +17,7 @@ name|plugins
 operator|.
 name|index
 operator|.
-name|p2
+name|property
 operator|.
 name|strategy
 package|;

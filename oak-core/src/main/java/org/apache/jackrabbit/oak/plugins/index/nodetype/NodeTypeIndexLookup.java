@@ -67,9 +67,9 @@ name|plugins
 operator|.
 name|index
 operator|.
-name|p2
+name|property
 operator|.
-name|Property2IndexLookup
+name|PropertyIndexLookup
 import|;
 end_import
 
@@ -124,7 +124,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *<code>NodeTypeIndexLookup</code> uses {@link Property2IndexLookup} internally  * for cost calculation and queries.  */
+comment|/**  *<code>NodeTypeIndexLookup</code> uses {@link PropertyIndexLookup} internally  * for cost calculation and queries.  */
 end_comment
 
 begin_class
@@ -161,11 +161,11 @@ name|String
 name|path
 parameter_list|)
 block|{
-name|Property2IndexLookup
+name|PropertyIndexLookup
 name|lookup
 init|=
 operator|new
-name|Property2IndexLookup
+name|PropertyIndexLookup
 argument_list|(
 name|root
 argument_list|)
@@ -284,11 +284,11 @@ name|Filter
 name|filter
 parameter_list|)
 block|{
-name|Property2IndexLookup
+name|PropertyIndexLookup
 name|lookup
 init|=
 operator|new
-name|Property2IndexLookup
+name|PropertyIndexLookup
 argument_list|(
 name|root
 argument_list|)
@@ -341,11 +341,11 @@ name|Filter
 name|filter
 parameter_list|)
 block|{
-name|Property2IndexLookup
+name|PropertyIndexLookup
 name|lookup
 init|=
 operator|new
-name|Property2IndexLookup
+name|PropertyIndexLookup
 argument_list|(
 name|root
 argument_list|)

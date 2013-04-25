@@ -17,7 +17,7 @@ name|plugins
 operator|.
 name|index
 operator|.
-name|p2
+name|property
 package|;
 end_package
 
@@ -48,6 +48,46 @@ operator|.
 name|api
 operator|.
 name|ContentRepository
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|index
+operator|.
+name|property
+operator|.
+name|PropertyIndexEditorProvider
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|index
+operator|.
+name|property
+operator|.
+name|PropertyIndexProvider
 import|;
 end_import
 
@@ -126,13 +166,13 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Tests the query engine using the default index implementation: the  * {@link Property2IndexProvider}  */
+comment|/**  * Tests the query engine using the default index implementation: the  * {@link PropertyIndexProvider}  */
 end_comment
 
 begin_class
 specifier|public
 class|class
-name|Property2IndexQueryTest
+name|PropertyIndexQueryTest
 extends|extends
 name|AbstractQueryTest
 block|{
@@ -165,14 +205,14 @@ operator|.
 name|with
 argument_list|(
 operator|new
-name|Property2IndexProvider
+name|PropertyIndexProvider
 argument_list|()
 argument_list|)
 operator|.
 name|with
 argument_list|(
 operator|new
-name|Property2IndexHookProvider
+name|PropertyIndexEditorProvider
 argument_list|()
 argument_list|)
 operator|.

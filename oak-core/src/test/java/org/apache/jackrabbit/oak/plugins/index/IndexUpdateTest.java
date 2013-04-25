@@ -231,9 +231,9 @@ name|plugins
 operator|.
 name|index
 operator|.
-name|p2
+name|property
 operator|.
-name|Property2IndexHookProvider
+name|PropertyIndexEditorProvider
 import|;
 end_import
 
@@ -251,9 +251,9 @@ name|plugins
 operator|.
 name|index
 operator|.
-name|p2
+name|property
 operator|.
-name|Property2IndexLookup
+name|PropertyIndexLookup
 import|;
 end_import
 
@@ -600,7 +600,7 @@ operator|new
 name|IndexUpdateProvider
 argument_list|(
 operator|new
-name|Property2IndexHookProvider
+name|PropertyIndexEditorProvider
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -652,11 +652,11 @@ argument_list|,
 literal|":index"
 argument_list|)
 expr_stmt|;
-name|Property2IndexLookup
+name|PropertyIndexLookup
 name|lookup
 init|=
 operator|new
-name|Property2IndexLookup
+name|PropertyIndexLookup
 argument_list|(
 name|indexed
 argument_list|)
@@ -680,11 +680,11 @@ literal|"abc"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Property2IndexLookup
+name|PropertyIndexLookup
 name|lookupChild
 init|=
 operator|new
-name|Property2IndexLookup
+name|PropertyIndexLookup
 argument_list|(
 name|indexed
 operator|.
@@ -808,7 +808,7 @@ operator|new
 name|IndexUpdateProvider
 argument_list|(
 operator|new
-name|Property2IndexHookProvider
+name|PropertyIndexEditorProvider
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -881,11 +881,11 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// next, lookup
-name|Property2IndexLookup
+name|PropertyIndexLookup
 name|lookup
 init|=
 operator|new
-name|Property2IndexLookup
+name|PropertyIndexLookup
 argument_list|(
 name|indexed
 argument_list|)
@@ -1006,7 +1006,7 @@ operator|new
 name|IndexUpdateProvider
 argument_list|(
 operator|new
-name|Property2IndexHookProvider
+name|PropertyIndexEditorProvider
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -1079,11 +1079,11 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// next, lookup
-name|Property2IndexLookup
+name|PropertyIndexLookup
 name|lookup
 init|=
 operator|new
-name|Property2IndexLookup
+name|PropertyIndexLookup
 argument_list|(
 name|indexed
 argument_list|)
@@ -1226,7 +1226,7 @@ operator|new
 name|IndexUpdateProvider
 argument_list|(
 operator|new
-name|Property2IndexHookProvider
+name|PropertyIndexEditorProvider
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -1286,7 +1286,7 @@ name|String
 argument_list|>
 name|find
 parameter_list|(
-name|Property2IndexLookup
+name|PropertyIndexLookup
 name|lookup
 parameter_list|,
 name|String
