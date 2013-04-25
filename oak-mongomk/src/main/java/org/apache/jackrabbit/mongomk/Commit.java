@@ -1642,6 +1642,10 @@ argument_list|(
 name|map
 argument_list|,
 name|r
+argument_list|,
+name|op
+argument_list|,
+name|revision
 argument_list|)
 decl_stmt|;
 name|boolean
