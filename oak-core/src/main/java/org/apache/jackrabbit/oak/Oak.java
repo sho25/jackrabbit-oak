@@ -732,7 +732,7 @@ name|List
 argument_list|<
 name|IndexEditorProvider
 argument_list|>
-name|indexHookProviders
+name|indexEditorProviders
 init|=
 name|newArrayList
 argument_list|()
@@ -912,7 +912,7 @@ name|IndexEditorProvider
 name|provider
 parameter_list|)
 block|{
-name|indexHookProviders
+name|indexEditorProviders
 operator|.
 name|add
 argument_list|(
@@ -1177,13 +1177,13 @@ name|createContentRepository
 parameter_list|()
 block|{
 name|IndexEditorProvider
-name|indexHooks
+name|indexEditors
 init|=
 name|CompositeIndexEditorProvider
 operator|.
 name|compose
 argument_list|(
-name|indexHookProviders
+name|indexEditorProviders
 argument_list|)
 decl_stmt|;
 name|OakInitializer
@@ -1198,7 +1198,7 @@ argument_list|(
 name|initializers
 argument_list|)
 argument_list|,
-name|indexHooks
+name|indexEditors
 argument_list|)
 expr_stmt|;
 name|QueryIndexProvider
@@ -1298,7 +1298,7 @@ name|store
 argument_list|,
 name|defaultWorkspaceName
 argument_list|,
-name|indexHooks
+name|indexEditors
 argument_list|,
 name|indexProvider
 argument_list|,
@@ -1316,7 +1316,7 @@ argument_list|(
 operator|new
 name|IndexUpdateProvider
 argument_list|(
-name|indexHooks
+name|indexEditors
 argument_list|)
 argument_list|)
 expr_stmt|;

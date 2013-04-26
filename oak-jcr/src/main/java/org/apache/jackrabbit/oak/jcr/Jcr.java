@@ -688,7 +688,7 @@ parameter_list|(
 annotation|@
 name|Nonnull
 name|IndexEditorProvider
-name|indexHookProvider
+name|indexEditorProvider
 parameter_list|)
 block|{
 name|oak
@@ -697,7 +697,7 @@ name|with
 argument_list|(
 name|checkNotNull
 argument_list|(
-name|indexHookProvider
+name|indexEditorProvider
 argument_list|)
 argument_list|)
 expr_stmt|;

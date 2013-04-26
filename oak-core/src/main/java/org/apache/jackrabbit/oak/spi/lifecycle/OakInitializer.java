@@ -217,7 +217,7 @@ parameter_list|,
 annotation|@
 name|Nonnull
 name|IndexEditorProvider
-name|indexHook
+name|indexEditor
 parameter_list|)
 block|{
 name|NodeStoreBranch
@@ -260,7 +260,7 @@ argument_list|(
 operator|new
 name|IndexUpdateProvider
 argument_list|(
-name|indexHook
+name|indexEditor
 argument_list|)
 argument_list|)
 argument_list|)
@@ -307,7 +307,7 @@ parameter_list|,
 annotation|@
 name|Nonnull
 name|IndexEditorProvider
-name|indexHook
+name|indexEditor
 parameter_list|,
 annotation|@
 name|Nonnull
@@ -379,7 +379,7 @@ argument_list|(
 operator|new
 name|IndexUpdateProvider
 argument_list|(
-name|indexHook
+name|indexEditor
 argument_list|)
 argument_list|)
 argument_list|)
