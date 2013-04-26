@@ -587,7 +587,7 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|// make sure it used the p2 index
+comment|// make sure it used the property index
 name|assertTrue
 argument_list|(
 name|lines
@@ -599,7 +599,7 @@ argument_list|)
 operator|.
 name|contains
 argument_list|(
-literal|"p2 myProp"
+literal|"property myProp"
 argument_list|)
 argument_list|)
 expr_stmt|;
