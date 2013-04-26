@@ -180,6 +180,14 @@ name|location
 argument_list|)
 expr_stmt|;
 block|}
+specifier|public
+specifier|abstract
+name|boolean
+name|isProtected
+parameter_list|()
+throws|throws
+name|InvalidItemStateException
+function_decl|;
 comment|/**      * Get the name of this item      * @return oak name of this item      */
 annotation|@
 name|Nonnull

@@ -1333,32 +1333,22 @@ parameter_list|()
 throws|throws
 name|RepositoryException
 block|{
-name|ItemDefinition
-name|definition
-decl_stmt|;
-try|try
-block|{
-name|definition
-operator|=
-name|internalGetDefinition
+if|if
+condition|(
+name|dlg
+operator|.
+name|isProtected
 argument_list|()
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|RepositoryException
-name|ignore
-parameter_list|)
+condition|)
 block|{
-comment|// FIXME: No definition -> not protected but a different error
-comment|// which should be handled else where
-return|return;
-block|}
-name|checkProtected
+throw|throw
+operator|new
+name|ConstraintViolationException
 argument_list|(
-name|definition
+literal|"Item is protected."
 argument_list|)
-expr_stmt|;
+throw|;
+block|}
 block|}
 name|void
 name|checkProtected
