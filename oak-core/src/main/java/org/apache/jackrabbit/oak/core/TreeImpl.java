@@ -2361,8 +2361,7 @@ comment|// return tree.getNodeState().exists()&& !NodeStateUtils.isHidden(tree.g
 return|return
 name|tree
 operator|.
-name|getNodeState
-argument_list|()
+name|nodeBuilder
 operator|.
 name|exists
 argument_list|()
