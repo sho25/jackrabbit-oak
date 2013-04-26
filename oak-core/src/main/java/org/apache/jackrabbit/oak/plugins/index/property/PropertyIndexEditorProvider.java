@@ -133,7 +133,7 @@ specifier|final
 name|String
 name|TYPE
 init|=
-literal|"p2"
+literal|"property"
 decl_stmt|;
 annotation|@
 name|Override

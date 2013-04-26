@@ -76,6 +76,11 @@ name|DECLARING_NODE_TYPES
 init|=
 literal|"declaringNodeTypes"
 decl_stmt|;
+name|String
+name|INDEX_CONTENT_NODE_NAME
+init|=
+literal|":index"
+decl_stmt|;
 block|}
 end_interface
 
