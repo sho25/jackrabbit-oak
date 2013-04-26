@@ -29,6 +29,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Map
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|jcr
@@ -81,6 +91,22 @@ name|checkState
 import|;
 end_import
 
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|collect
+operator|.
+name|Maps
+operator|.
+name|newHashMap
+import|;
+end_import
+
 begin_comment
 comment|/**  * Instances of this class map Java types to {@link PropertyType property types}.  * Passing an instance of this class to {@link PropertyState#getValue(Type)} determines  * the return type of that method.  * @param<T>  */
 end_comment
@@ -102,6 +128,76 @@ name|?
 argument_list|>
 argument_list|>
 block|{
+specifier|private
+specifier|static
+specifier|final
+name|Map
+argument_list|<
+name|String
+argument_list|,
+name|Type
+argument_list|<
+name|?
+argument_list|>
+argument_list|>
+name|TYPES
+init|=
+name|newHashMap
+argument_list|()
+decl_stmt|;
+specifier|private
+specifier|static
+parameter_list|<
+name|T
+parameter_list|>
+name|Type
+argument_list|<
+name|T
+argument_list|>
+name|create
+parameter_list|(
+name|int
+name|tag
+parameter_list|,
+name|boolean
+name|array
+parameter_list|,
+name|String
+name|string
+parameter_list|)
+block|{
+name|Type
+argument_list|<
+name|T
+argument_list|>
+name|type
+init|=
+operator|new
+name|Type
+argument_list|<
+name|T
+argument_list|>
+argument_list|(
+name|tag
+argument_list|,
+name|array
+argument_list|,
+name|string
+argument_list|)
+decl_stmt|;
+name|TYPES
+operator|.
+name|put
+argument_list|(
+name|string
+argument_list|,
+name|type
+argument_list|)
+expr_stmt|;
+return|return
+name|type
+return|;
+block|}
 comment|/** Map {@code String} to {@link PropertyType#STRING} */
 specifier|public
 specifier|static
@@ -119,6 +215,8 @@ operator|.
 name|STRING
 argument_list|,
 literal|false
+argument_list|,
+literal|"STRING"
 argument_list|)
 decl_stmt|;
 comment|/** Map {@code Blob} to {@link PropertyType#BINARY} */
@@ -138,6 +236,8 @@ operator|.
 name|BINARY
 argument_list|,
 literal|false
+argument_list|,
+literal|"BINARY"
 argument_list|)
 decl_stmt|;
 comment|/** Map {@code Long} to {@link PropertyType#LONG} */
@@ -157,6 +257,8 @@ operator|.
 name|LONG
 argument_list|,
 literal|false
+argument_list|,
+literal|"LONG"
 argument_list|)
 decl_stmt|;
 comment|/** Map {@code Double} to {@link PropertyType#DOUBLE} */
@@ -176,6 +278,8 @@ operator|.
 name|DOUBLE
 argument_list|,
 literal|false
+argument_list|,
+literal|"DOUBLE"
 argument_list|)
 decl_stmt|;
 comment|/** Map {@code Long} to {@link PropertyType#DATE} */
@@ -195,6 +299,8 @@ operator|.
 name|DATE
 argument_list|,
 literal|false
+argument_list|,
+literal|"DATE"
 argument_list|)
 decl_stmt|;
 comment|/** Map {@code Boolean} to {@link PropertyType#BOOLEAN} */
@@ -214,6 +320,8 @@ operator|.
 name|BOOLEAN
 argument_list|,
 literal|false
+argument_list|,
+literal|"BOOLEAN"
 argument_list|)
 decl_stmt|;
 comment|/** Map {@code String} to {@link PropertyType#STRING} */
@@ -233,6 +341,8 @@ operator|.
 name|NAME
 argument_list|,
 literal|false
+argument_list|,
+literal|"NAME"
 argument_list|)
 decl_stmt|;
 comment|/** Map {@code String} to {@link PropertyType#PATH} */
@@ -252,6 +362,8 @@ operator|.
 name|PATH
 argument_list|,
 literal|false
+argument_list|,
+literal|"PATH"
 argument_list|)
 decl_stmt|;
 comment|/** Map {@code String} to {@link PropertyType#REFERENCE} */
@@ -271,6 +383,8 @@ operator|.
 name|REFERENCE
 argument_list|,
 literal|false
+argument_list|,
+literal|"REFERENCE"
 argument_list|)
 decl_stmt|;
 comment|/** Map {@code String} to {@link PropertyType#WEAKREFERENCE} */
@@ -290,6 +404,8 @@ operator|.
 name|WEAKREFERENCE
 argument_list|,
 literal|false
+argument_list|,
+literal|"WEAKREFERENCE"
 argument_list|)
 decl_stmt|;
 comment|/** Map {@code String} to {@link PropertyType#URI} */
@@ -309,6 +425,8 @@ operator|.
 name|URI
 argument_list|,
 literal|false
+argument_list|,
+literal|"URI"
 argument_list|)
 decl_stmt|;
 comment|/** Map {@code BigDecimal} to {@link PropertyType#DECIMAL} */
@@ -328,6 +446,8 @@ operator|.
 name|DECIMAL
 argument_list|,
 literal|false
+argument_list|,
+literal|"DECIMAL"
 argument_list|)
 decl_stmt|;
 comment|/** Map {@code Iterable<String>} to array of {@link PropertyType#STRING} */
@@ -350,6 +470,8 @@ operator|.
 name|STRING
 argument_list|,
 literal|true
+argument_list|,
+literal|"STRINGS"
 argument_list|)
 decl_stmt|;
 comment|/** Map {@code Iterable<Blob>} to array of {@link PropertyType#BINARY} */
@@ -372,6 +494,8 @@ operator|.
 name|BINARY
 argument_list|,
 literal|true
+argument_list|,
+literal|"BINARIES"
 argument_list|)
 decl_stmt|;
 comment|/** Map {@code Iterable<Long>} to array of {@link PropertyType#LONG} */
@@ -394,6 +518,8 @@ operator|.
 name|LONG
 argument_list|,
 literal|true
+argument_list|,
+literal|"LONGS"
 argument_list|)
 decl_stmt|;
 comment|/** Map {@code Iterable<Double>} to array of {@link PropertyType#DOUBLE} */
@@ -416,6 +542,8 @@ operator|.
 name|DOUBLE
 argument_list|,
 literal|true
+argument_list|,
+literal|"DOUBLES"
 argument_list|)
 decl_stmt|;
 comment|/** Map {@code Iterable<Long>} to array of {@link PropertyType#DATE} */
@@ -438,6 +566,8 @@ operator|.
 name|DATE
 argument_list|,
 literal|true
+argument_list|,
+literal|"DATES"
 argument_list|)
 decl_stmt|;
 comment|/** Map {@code Iterable<Boolean>} to array of {@link PropertyType#BOOLEAN} */
@@ -460,6 +590,8 @@ operator|.
 name|BOOLEAN
 argument_list|,
 literal|true
+argument_list|,
+literal|"BOOLEANS"
 argument_list|)
 decl_stmt|;
 comment|/** Map {@code Iterable<String>} to array of {@link PropertyType#NAME} */
@@ -482,6 +614,8 @@ operator|.
 name|NAME
 argument_list|,
 literal|true
+argument_list|,
+literal|"NAMES"
 argument_list|)
 decl_stmt|;
 comment|/** Map {@code Iterable<String>} to array of {@link PropertyType#PATH} */
@@ -504,6 +638,8 @@ operator|.
 name|PATH
 argument_list|,
 literal|true
+argument_list|,
+literal|"PATHS"
 argument_list|)
 decl_stmt|;
 comment|/** Map {@code Iterable<String>} to array of {@link PropertyType#REFERENCE} */
@@ -526,6 +662,8 @@ operator|.
 name|REFERENCE
 argument_list|,
 literal|true
+argument_list|,
+literal|"REFERENCES"
 argument_list|)
 decl_stmt|;
 comment|/** Map {@code Iterable<String>} to array of {@link PropertyType#WEAKREFERENCE} */
@@ -548,6 +686,8 @@ operator|.
 name|WEAKREFERENCE
 argument_list|,
 literal|true
+argument_list|,
+literal|"WEAKREFERENCES"
 argument_list|)
 decl_stmt|;
 comment|/** Map {@code Iterable<String>} to array of {@link PropertyType#URI} */
@@ -570,6 +710,8 @@ operator|.
 name|URI
 argument_list|,
 literal|true
+argument_list|,
+literal|"URIS"
 argument_list|)
 decl_stmt|;
 comment|/** Map {@code Iterable<BigDecimal>} to array of {@link PropertyType#DECIMAL} */
@@ -592,71 +734,101 @@ operator|.
 name|DECIMAL
 argument_list|,
 literal|true
-argument_list|)
-decl_stmt|;
-specifier|private
-specifier|final
-name|int
-name|tag
-decl_stmt|;
-specifier|private
-specifier|final
-name|boolean
-name|array
-decl_stmt|;
-specifier|private
-name|Type
-parameter_list|(
-name|int
-name|tag
-parameter_list|,
-name|boolean
-name|array
-parameter_list|)
-block|{
-name|this
-operator|.
-name|tag
-operator|=
-name|tag
-expr_stmt|;
-name|this
-operator|.
-name|array
-operator|=
-name|array
-expr_stmt|;
-block|}
-specifier|private
-specifier|static
-parameter_list|<
-name|T
-parameter_list|>
-name|Type
-argument_list|<
-name|T
-argument_list|>
-name|create
-parameter_list|(
-name|int
-name|tag
-parameter_list|,
-name|boolean
-name|array
-parameter_list|)
-block|{
-return|return
-operator|new
-name|Type
-argument_list|<
-name|T
-argument_list|>
-argument_list|(
-name|tag
 argument_list|,
-name|array
+literal|"DECIMALS"
 argument_list|)
-return|;
+decl_stmt|;
+comment|/** The special "undefined" type, never encountered in normal values */
+specifier|public
+specifier|static
+specifier|final
+name|Type
+argument_list|<
+name|Void
+argument_list|>
+name|UNDEFINED
+init|=
+name|create
+argument_list|(
+name|PropertyType
+operator|.
+name|UNDEFINED
+argument_list|,
+literal|false
+argument_list|,
+literal|"UNDEFINED"
+argument_list|)
+decl_stmt|;
+comment|/** Multi-valued "undefined" type, never encountered in normal values */
+specifier|public
+specifier|static
+specifier|final
+name|Type
+argument_list|<
+name|Iterable
+argument_list|<
+name|Void
+argument_list|>
+argument_list|>
+name|UNDEFINEDS
+init|=
+name|create
+argument_list|(
+name|PropertyType
+operator|.
+name|UNDEFINED
+argument_list|,
+literal|true
+argument_list|,
+literal|"UNDEFINEDS"
+argument_list|)
+decl_stmt|;
+specifier|private
+specifier|final
+name|int
+name|tag
+decl_stmt|;
+specifier|private
+specifier|final
+name|boolean
+name|array
+decl_stmt|;
+specifier|private
+specifier|final
+name|String
+name|string
+decl_stmt|;
+specifier|private
+name|Type
+parameter_list|(
+name|int
+name|tag
+parameter_list|,
+name|boolean
+name|array
+parameter_list|,
+name|String
+name|string
+parameter_list|)
+block|{
+name|this
+operator|.
+name|tag
+operator|=
+name|tag
+expr_stmt|;
+name|this
+operator|.
+name|array
+operator|=
+name|array
+expr_stmt|;
+name|this
+operator|.
+name|string
+operator|=
+name|string
+expr_stmt|;
 block|}
 comment|/**      * Corresponding type tag as defined in {@link PropertyType}.      * @return  type tag      */
 specifier|public
@@ -843,6 +1015,18 @@ name|DECIMALS
 else|:
 name|DECIMAL
 return|;
+case|case
+name|PropertyType
+operator|.
+name|UNDEFINED
+case|:
+return|return
+name|array
+condition|?
+name|UNDEFINEDS
+else|:
+name|UNDEFINED
+return|;
 default|default:
 throw|throw
 operator|new
@@ -854,6 +1038,53 @@ name|tag
 argument_list|)
 throw|;
 block|}
+block|}
+comment|/**      * Returns the {@code Type} with the given string representation.      *      * @param string type string      * @return matching type      */
+specifier|public
+specifier|static
+name|Type
+argument_list|<
+name|?
+argument_list|>
+name|fromString
+parameter_list|(
+name|String
+name|string
+parameter_list|)
+block|{
+name|Type
+argument_list|<
+name|?
+argument_list|>
+name|type
+init|=
+name|TYPES
+operator|.
+name|get
+argument_list|(
+name|string
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|type
+operator|==
+literal|null
+condition|)
+block|{
+throw|throw
+operator|new
+name|IllegalArgumentException
+argument_list|(
+literal|"Invalid type name: "
+operator|+
+name|string
+argument_list|)
+throw|;
+block|}
+return|return
+name|type
+return|;
 block|}
 comment|/**      * Determine the base type of array types      * @return  base type      * @throws IllegalStateException if {@code isArray} is false.      */
 specifier|public
@@ -959,27 +1190,7 @@ name|toString
 parameter_list|()
 block|{
 return|return
-name|isArray
-argument_list|()
-condition|?
-literal|"[]"
-operator|+
-name|PropertyType
-operator|.
-name|nameFromValue
-argument_list|(
-name|getBaseType
-argument_list|()
-operator|.
-name|tag
-argument_list|)
-else|:
-name|PropertyType
-operator|.
-name|nameFromValue
-argument_list|(
-name|tag
-argument_list|)
+name|string
 return|;
 block|}
 annotation|@
