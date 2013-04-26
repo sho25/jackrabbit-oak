@@ -1259,7 +1259,7 @@ name|name
 argument_list|)
 condition|)
 block|{
-comment|// deleted: shadow if connect, otherwise non existing
+comment|// deleted: create new existing node if connect, otherwise non existing
 name|child
 operator|=
 operator|new
