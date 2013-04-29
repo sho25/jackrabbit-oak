@@ -197,7 +197,7 @@ name|spi
 operator|.
 name|state
 operator|.
-name|EmptyNodeStateDiff
+name|DefaultNodeStateDiff
 import|;
 end_import
 
@@ -326,18 +326,6 @@ operator|.
 name|Assert
 operator|.
 name|assertNotNull
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertNull
 import|;
 end_import
 
@@ -2178,7 +2166,7 @@ specifier|static
 class|class
 name|Diff
 extends|extends
-name|EmptyNodeStateDiff
+name|DefaultNodeStateDiff
 block|{
 name|List
 argument_list|<

@@ -111,7 +111,7 @@ name|spi
 operator|.
 name|state
 operator|.
-name|EmptyNodeStateDiff
+name|DefaultNodeStateDiff
 import|;
 end_import
 
@@ -358,7 +358,7 @@ specifier|static
 class|class
 name|DiffCollectorNodeStateDiff
 extends|extends
-name|EmptyNodeStateDiff
+name|DefaultNodeStateDiff
 block|{
 specifier|private
 specifier|final

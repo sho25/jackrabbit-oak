@@ -129,7 +129,7 @@ name|spi
 operator|.
 name|state
 operator|.
-name|EmptyNodeStateDiff
+name|DefaultNodeStateDiff
 import|;
 end_import
 
@@ -283,7 +283,7 @@ specifier|final
 class|class
 name|PrivilegeDiff
 extends|extends
-name|EmptyNodeStateDiff
+name|DefaultNodeStateDiff
 block|{
 specifier|private
 specifier|static
