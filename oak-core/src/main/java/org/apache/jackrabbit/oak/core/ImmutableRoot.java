@@ -269,7 +269,7 @@ annotation|@
 name|Override
 specifier|public
 name|ImmutableTree
-name|getTreeNonNull
+name|getTree
 parameter_list|(
 annotation|@
 name|Nonnull
@@ -307,7 +307,7 @@ name|child
 operator|=
 name|child
 operator|.
-name|getChildNonNull
+name|getChild
 argument_list|(
 name|name
 argument_list|)
@@ -319,9 +319,11 @@ return|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|ImmutableTree
-name|getTree
+name|getTreeOrNull
 parameter_list|(
 name|String
 name|path
@@ -330,7 +332,7 @@ block|{
 name|ImmutableTree
 name|tree
 init|=
-name|getTreeNonNull
+name|getTree
 argument_list|(
 name|path
 argument_list|)

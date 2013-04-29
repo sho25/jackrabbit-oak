@@ -244,7 +244,7 @@ name|assertNotNull
 argument_list|(
 name|testRoot
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 name|path
 argument_list|)
@@ -255,7 +255,7 @@ name|assertNull
 argument_list|(
 name|testRoot
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 literal|"/a/bb"
 argument_list|)
@@ -345,7 +345,7 @@ name|path
 argument_list|,
 name|testRoot
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 name|path
 argument_list|)
@@ -383,7 +383,7 @@ name|path
 argument_list|,
 name|testRoot
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 name|path
 argument_list|)

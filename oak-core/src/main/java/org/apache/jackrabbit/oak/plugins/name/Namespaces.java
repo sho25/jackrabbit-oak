@@ -272,7 +272,7 @@ name|system
 init|=
 name|root
 operator|.
-name|getChild
+name|getChildOrNull
 argument_list|(
 name|JcrConstants
 operator|.
@@ -291,7 +291,7 @@ name|namespaces
 init|=
 name|system
 operator|.
-name|getChild
+name|getChildOrNull
 argument_list|(
 name|REP_NAMESPACES
 argument_list|)

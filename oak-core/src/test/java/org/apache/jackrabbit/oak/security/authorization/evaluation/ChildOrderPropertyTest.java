@@ -205,7 +205,7 @@ name|a
 init|=
 name|root
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 literal|"/a"
 argument_list|)
@@ -235,7 +235,7 @@ name|a
 init|=
 name|root
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 literal|"/a"
 argument_list|)
@@ -265,7 +265,7 @@ name|a
 init|=
 name|root
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 literal|"/a"
 argument_list|)
@@ -312,7 +312,7 @@ name|a
 init|=
 name|root
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 literal|"/a"
 argument_list|)
@@ -363,7 +363,7 @@ name|a
 init|=
 name|root
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 literal|"/a"
 argument_list|)
@@ -391,7 +391,7 @@ name|a
 init|=
 name|root
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 literal|"/a"
 argument_list|)

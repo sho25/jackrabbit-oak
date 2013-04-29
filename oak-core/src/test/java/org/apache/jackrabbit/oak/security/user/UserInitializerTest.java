@@ -916,7 +916,7 @@ name|assertNotNull
 argument_list|(
 name|root
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 name|a
 operator|.
@@ -943,7 +943,7 @@ name|assertNotNull
 argument_list|(
 name|root
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 name|a
 operator|.
@@ -967,7 +967,7 @@ name|oakIndex
 init|=
 name|root
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 literal|'/'
 operator|+
@@ -986,7 +986,7 @@ name|id
 init|=
 name|oakIndex
 operator|.
-name|getChild
+name|getChildOrNull
 argument_list|(
 literal|"authorizableId"
 argument_list|)
@@ -1007,7 +1007,7 @@ name|princName
 init|=
 name|oakIndex
 operator|.
-name|getChild
+name|getChildOrNull
 argument_list|(
 literal|"principalName"
 argument_list|)
@@ -1057,7 +1057,7 @@ name|members
 init|=
 name|oakIndex
 operator|.
-name|getChild
+name|getChildOrNull
 argument_list|(
 literal|"members"
 argument_list|)
@@ -1281,7 +1281,7 @@ name|adminTree
 init|=
 name|root
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 name|adminUser
 operator|.

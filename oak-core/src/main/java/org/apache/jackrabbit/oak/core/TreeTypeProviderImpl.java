@@ -147,7 +147,7 @@ name|parent
 init|=
 name|tree
 operator|.
-name|getParent
+name|getParentOrNull
 argument_list|()
 decl_stmt|;
 if|if

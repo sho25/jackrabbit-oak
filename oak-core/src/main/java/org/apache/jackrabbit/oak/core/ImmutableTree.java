@@ -208,7 +208,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Immutable implementation of the {@code Tree} interface in order to provide  * the much feature rich API functionality for a given {@code NodeState}.  *  *<h3>Tree hierarchy</h3>  * Due to the nature of this {@code Tree} implementation creating a proper  * hierarchical view of the tree structure is the responsibility of the caller.  * It is recommended to start with the state of the  * {@link #ImmutableTree(org.apache.jackrabbit.oak.spi.state.NodeState) root node}  * and build up the hierarchy by calling  * {@link #ImmutableTree(ImmutableTree, String, org.apache.jackrabbit.oak.spi.state.NodeState)}  * for every subsequent child state. Note, that this implementation will not  * perform any kind of validation of the passed state and methods like {@link #isRoot()},  * {@link #getName()}, {@link #getPath()} or {@link #getLocation()} will just  * make use of the hierarchy that has been create by that sequence.  * In order to create a disconnected individual tree in cases where the hierarchy  * information is not (yet) need or known it is suggested to use  * {@link #ImmutableTree(org.apache.jackrabbit.oak.core.ImmutableTree.ParentProvider, String, org.apache.jackrabbit.oak.spi.state.NodeState)}  * an specify an appropriate {@code ParentProvider} implementation.  *  *<h3>ParentProvider</h3>  * Apart from create the tree hierarchy in traversal mode this tree implementation  * allows to instantiate disconnected trees that depending on the use may  * never or on demand retrieve hierarchy information. The following default  * implementations of this internal interface are present:  *  *<ul>  *<li>{@link DefaultParentProvider}: used with the default usage where the  *     parent tree is passed to the constructor</li>  *<li>{@link ParentProvider#ROOTPROVIDER}: the default parent provider for  *     the root tree. All children will get {@link DefaultParentProvider}</li>  *<li>{@link ParentProvider#UNSUPPORTED}: throws {@code UnsupportedOperationException}  *     upon hierarchy related methods like {@link #getParent()}, {@link #getPath()} and  *     {@link #getIdentifier()}</li>  *</ul>  *  *<h3>TreeTypeProvider</h3>  * For optimization purpose an Immutable tree will be associated with a  * {@code TreeTypeProvider} that allows for fast detection of the following types  * of Trees:  *  *<ul>  *<li>{@link TreeTypeProvider#TYPE_HIDDEN}: a hidden tree whose name starts with ":".  *     Please note that the whole subtree of a hidden node is considered hidden.</li>  *<li>{@link TreeTypeProvider#TYPE_AC}: A tree that stores access control content  *     and requires special access {@link org.apache.jackrabbit.oak.spi.security.authorization.permission.Permissions#READ_ACCESS_CONTROL permissions}.</li>  *<li>{@link TreeTypeProvider#TYPE_VERSION}: if a given tree is located within  *     any of the version related stores defined by JSR 283. Depending on the  *     permission evaluation implementation those items require special treatment.</li>  *<li>{@link TreeTypeProvider#TYPE_DEFAULT}: the default type for trees that don't  *     match any of the upper types.</li>  *</ul>  *  *<h3>Equality and hash code</h3>  * In contrast to {@link TreeImpl} the {@code ImmutableTree} implements  * {@link Object#equals(Object)} and {@link Object#hashCode()}: Two {@code ImmutableTree}s  * are consider equal if their name and the underlying {@code NodeState}s are equal. Note  * however, that according to the contract defined in {@code NodeState} these  * objects are not expected to be used as hash keys.  *  * FIXME: merge with ReadOnlyTree  */
+comment|/**  * Immutable implementation of the {@code Tree} interface in order to provide  * the much feature rich API functionality for a given {@code NodeState}.  *  *<h3>Tree hierarchy</h3>  * Due to the nature of this {@code Tree} implementation creating a proper  * hierarchical view of the tree structure is the responsibility of the caller.  * It is recommended to start with the state of the  * {@link #ImmutableTree(org.apache.jackrabbit.oak.spi.state.NodeState) root node}  * and build up the hierarchy by calling  * {@link #ImmutableTree(ImmutableTree, String, org.apache.jackrabbit.oak.spi.state.NodeState)}  * for every subsequent child state. Note, that this implementation will not  * perform any kind of validation of the passed state and methods like {@link #isRoot()},  * {@link #getName()}, {@link #getPath()} or {@link #getLocation()} will just  * make use of the hierarchy that has been create by that sequence.  * In order to create a disconnected individual tree in cases where the hierarchy  * information is not (yet) need or known it is suggested to use  * {@link #ImmutableTree(org.apache.jackrabbit.oak.core.ImmutableTree.ParentProvider, String, org.apache.jackrabbit.oak.spi.state.NodeState)}  * an specify an appropriate {@code ParentProvider} implementation.  *  *<h3>ParentProvider</h3>  * Apart from create the tree hierarchy in traversal mode this tree implementation  * allows to instantiate disconnected trees that depending on the use may  * never or on demand retrieve hierarchy information. The following default  * implementations of this internal interface are present:  *  *<ul>  *<li>{@link DefaultParentProvider}: used with the default usage where the  *     parent tree is passed to the constructor</li>  *<li>{@link ParentProvider#ROOTPROVIDER}: the default parent provider for  *     the root tree. All children will get {@link DefaultParentProvider}</li>  *<li>{@link ParentProvider#UNSUPPORTED}: throws {@code UnsupportedOperationException}  *     upon hierarchy related methods like {@link #getParentOrNull()}, {@link #getPath()} and  *     {@link #getIdentifier()}</li>  *</ul>  *  *<h3>TreeTypeProvider</h3>  * For optimization purpose an Immutable tree will be associated with a  * {@code TreeTypeProvider} that allows for fast detection of the following types  * of Trees:  *  *<ul>  *<li>{@link TreeTypeProvider#TYPE_HIDDEN}: a hidden tree whose name starts with ":".  *     Please note that the whole subtree of a hidden node is considered hidden.</li>  *<li>{@link TreeTypeProvider#TYPE_AC}: A tree that stores access control content  *     and requires special access {@link org.apache.jackrabbit.oak.spi.security.authorization.permission.Permissions#READ_ACCESS_CONTROL permissions}.</li>  *<li>{@link TreeTypeProvider#TYPE_VERSION}: if a given tree is located within  *     any of the version related stores defined by JSR 283. Depending on the  *     permission evaluation implementation those items require special treatment.</li>  *<li>{@link TreeTypeProvider#TYPE_DEFAULT}: the default type for trees that don't  *     match any of the upper types.</li>  *</ul>  *  *<h3>Equality and hash code</h3>  * In contrast to {@link TreeImpl} the {@code ImmutableTree} implements  * {@link Object#equals(Object)} and {@link Object#hashCode()}: Two {@code ImmutableTree}s  * are consider equal if their name and the underlying {@code NodeState}s are equal. Note  * however, that according to the contract defined in {@code NodeState} these  * objects are not expected to be used as hash keys.  *  * FIXME: merge with ReadOnlyTree  */
 end_comment
 
 begin_class
@@ -462,7 +462,7 @@ operator|)
 name|root
 operator|)
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 literal|"/"
 argument_list|)
@@ -535,7 +535,7 @@ decl_stmt|;
 name|ImmutableTree
 name|parent
 init|=
-name|getParent
+name|getParentOrNull
 argument_list|()
 decl_stmt|;
 name|sb
@@ -588,9 +588,11 @@ return|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|ImmutableTree
-name|getParent
+name|getParentOrNull
 parameter_list|()
 block|{
 return|return
@@ -606,7 +608,7 @@ annotation|@
 name|Override
 specifier|public
 name|ImmutableTree
-name|getChildNonNull
+name|getChild
 parameter_list|(
 annotation|@
 name|Nonnull
@@ -638,9 +640,11 @@ return|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|ImmutableTree
-name|getChild
+name|getChildOrNull
 parameter_list|(
 annotation|@
 name|Nonnull
@@ -651,7 +655,7 @@ block|{
 name|ImmutableTree
 name|child
 init|=
-name|getChildNonNull
+name|getChild
 argument_list|(
 name|name
 argument_list|)
@@ -1012,7 +1016,7 @@ block|}
 elseif|else
 if|if
 condition|(
-name|getParent
+name|getParentOrNull
 argument_list|()
 operator|.
 name|isRoot
@@ -1030,7 +1034,7 @@ name|PathUtils
 operator|.
 name|concat
 argument_list|(
-name|getParent
+name|getParentOrNull
 argument_list|()
 operator|.
 name|getIdentifier

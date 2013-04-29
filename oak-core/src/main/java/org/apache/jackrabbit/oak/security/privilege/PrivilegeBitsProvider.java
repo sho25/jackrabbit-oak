@@ -288,7 +288,7 @@ block|{
 return|return
 name|root
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 name|PRIVILEGES_PATH
 argument_list|)
@@ -395,7 +395,7 @@ name|defTree
 init|=
 name|privilegesTree
 operator|.
-name|getChild
+name|getChildOrNull
 argument_list|(
 name|checkNotNull
 argument_list|(

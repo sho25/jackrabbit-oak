@@ -468,7 +468,7 @@ argument_list|(
 name|getWorkspaceRoot
 argument_list|()
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 name|location
 operator|.

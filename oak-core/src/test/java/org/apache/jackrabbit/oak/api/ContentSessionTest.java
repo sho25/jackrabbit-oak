@@ -221,7 +221,7 @@ argument_list|()
 expr_stmt|;
 name|root
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 literal|"/"
 argument_list|)
@@ -272,7 +272,7 @@ name|tree
 init|=
 name|root
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 literal|"/"
 argument_list|)
@@ -284,7 +284,7 @@ argument_list|()
 expr_stmt|;
 name|tree
 operator|.
-name|getChild
+name|getChildOrNull
 argument_list|(
 literal|"any"
 argument_list|)

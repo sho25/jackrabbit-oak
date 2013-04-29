@@ -268,10 +268,10 @@ name|root
 init|=
 name|definition
 operator|.
-name|getParent
+name|getParentOrNull
 argument_list|()
 operator|.
-name|getParent
+name|getParentOrNull
 argument_list|()
 decl_stmt|;
 for|for
@@ -296,7 +296,7 @@ name|type
 init|=
 name|root
 operator|.
-name|getChild
+name|getChildOrNull
 argument_list|(
 name|oakNames
 index|[
@@ -398,10 +398,10 @@ name|root
 init|=
 name|definition
 operator|.
-name|getParent
+name|getParentOrNull
 argument_list|()
 operator|.
-name|getParent
+name|getParentOrNull
 argument_list|()
 decl_stmt|;
 name|Tree
@@ -409,7 +409,7 @@ name|type
 init|=
 name|root
 operator|.
-name|getChild
+name|getChildOrNull
 argument_list|(
 name|oakName
 argument_list|)

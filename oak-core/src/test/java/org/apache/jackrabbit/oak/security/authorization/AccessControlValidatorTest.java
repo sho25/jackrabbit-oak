@@ -271,7 +271,7 @@ name|NodeUtil
 argument_list|(
 name|root
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 literal|"/"
 argument_list|)
@@ -318,7 +318,7 @@ name|testRoot
 init|=
 name|root
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 name|testPath
 argument_list|)
@@ -362,7 +362,7 @@ name|NodeUtil
 argument_list|(
 name|root
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 name|testPath
 argument_list|)

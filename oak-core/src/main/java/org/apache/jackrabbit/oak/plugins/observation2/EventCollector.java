@@ -733,7 +733,7 @@ name|child
 init|=
 name|parent
 operator|.
-name|getChild
+name|getChildOrNull
 argument_list|(
 name|name
 argument_list|)
@@ -776,7 +776,7 @@ name|getOrCreate
 argument_list|(
 name|root
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 literal|'/'
 operator|+
@@ -924,7 +924,7 @@ name|listenerSpec
 init|=
 name|root
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 name|LISTENER_PATH
 operator|+

@@ -461,7 +461,7 @@ name|tree
 init|=
 name|root
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 name|head
 argument_list|)
@@ -543,7 +543,7 @@ name|tree
 operator|=
 name|root
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 name|head
 argument_list|)
@@ -970,7 +970,7 @@ name|child
 init|=
 name|tree
 operator|.
-name|getChild
+name|getChildOrNull
 argument_list|(
 name|name
 argument_list|)
@@ -1007,7 +1007,7 @@ name|child
 init|=
 name|tree
 operator|.
-name|getChild
+name|getChildOrNull
 argument_list|(
 name|name
 argument_list|)
@@ -1197,7 +1197,7 @@ name|parent
 init|=
 name|tree
 operator|.
-name|getParent
+name|getParentOrNull
 argument_list|()
 decl_stmt|;
 if|if
@@ -1212,7 +1212,7 @@ name|child
 init|=
 name|parent
 operator|.
-name|getChild
+name|getChildOrNull
 argument_list|(
 name|tree
 operator|.

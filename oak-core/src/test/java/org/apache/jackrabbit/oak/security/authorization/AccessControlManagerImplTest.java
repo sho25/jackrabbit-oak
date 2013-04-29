@@ -945,7 +945,7 @@ name|getNamespaceMap
 argument_list|(
 name|root
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 literal|"/"
 argument_list|)
@@ -988,7 +988,7 @@ name|NodeUtil
 argument_list|(
 name|root
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 literal|"/"
 argument_list|)
@@ -1049,7 +1049,7 @@ argument_list|()
 expr_stmt|;
 name|root
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 name|testPath
 argument_list|)
@@ -1558,7 +1558,7 @@ name|acl
 init|=
 name|root
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 name|aclPath
 argument_list|)
@@ -1638,7 +1638,7 @@ name|rest
 init|=
 name|ace
 operator|.
-name|getChild
+name|getChildOrNull
 argument_list|(
 name|REP_RESTRICTIONS
 argument_list|)
@@ -4064,7 +4064,7 @@ name|NodeUtil
 argument_list|(
 name|root
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 name|testPath
 argument_list|)
@@ -4210,7 +4210,7 @@ name|NodeUtil
 argument_list|(
 name|root
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 name|testPath
 argument_list|)
@@ -4797,7 +4797,7 @@ name|NodeUtil
 argument_list|(
 name|root
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 name|testPath
 operator|+
@@ -5755,7 +5755,7 @@ name|tree
 init|=
 name|root2
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 name|testPath
 argument_list|)
@@ -5775,7 +5775,7 @@ name|policyTree
 init|=
 name|tree
 operator|.
-name|getChild
+name|getChildOrNull
 argument_list|(
 name|REP_POLICY
 argument_list|)

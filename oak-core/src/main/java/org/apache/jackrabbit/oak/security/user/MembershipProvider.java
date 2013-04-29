@@ -665,7 +665,7 @@ name|membersTree
 init|=
 name|groupTree
 operator|.
-name|getChild
+name|getChildOrNull
 argument_list|(
 name|REP_MEMBERS
 argument_list|)
@@ -896,7 +896,7 @@ name|membersTree
 init|=
 name|groupTree
 operator|.
-name|getChild
+name|getChildOrNull
 argument_list|(
 name|REP_MEMBERS
 argument_list|)
@@ -1143,7 +1143,7 @@ name|membersTree
 init|=
 name|groupTree
 operator|.
-name|getChild
+name|getChildOrNull
 argument_list|(
 name|REP_MEMBERS
 argument_list|)

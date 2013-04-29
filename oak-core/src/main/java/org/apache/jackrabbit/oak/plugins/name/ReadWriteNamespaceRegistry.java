@@ -218,7 +218,7 @@ name|tree
 init|=
 name|root
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 literal|"/"
 argument_list|)
@@ -241,7 +241,7 @@ name|child
 init|=
 name|tree
 operator|.
-name|getChild
+name|getChildOrNull
 argument_list|(
 name|name
 argument_list|)
@@ -529,7 +529,7 @@ name|namespaces
 init|=
 name|root
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 name|NAMESPACES_PATH
 argument_list|)

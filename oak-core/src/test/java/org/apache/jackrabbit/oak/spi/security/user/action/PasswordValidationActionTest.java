@@ -795,7 +795,7 @@ name|pwValue
 init|=
 name|root
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 name|testUser
 operator|.

@@ -494,7 +494,7 @@ name|NodeUtil
 argument_list|(
 name|root
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 literal|"/"
 argument_list|)
@@ -615,7 +615,7 @@ name|test
 init|=
 name|root
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 name|testPath
 argument_list|)
@@ -679,12 +679,12 @@ block|{
 return|return
 name|root
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 name|PERMISSIONS_STORE_PATH
 argument_list|)
 operator|.
-name|getChild
+name|getChildOrNull
 argument_list|(
 name|adminSession
 operator|.
@@ -692,7 +692,7 @@ name|getWorkspaceName
 argument_list|()
 argument_list|)
 operator|.
-name|getChild
+name|getChildOrNull
 argument_list|(
 name|principalName
 argument_list|)
@@ -844,7 +844,7 @@ name|NodeUtil
 argument_list|(
 name|root
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 name|testPath
 operator|+
@@ -1016,7 +1016,7 @@ expr_stmt|;
 comment|// remove duplicate policy entry again
 name|root
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 name|testPath
 operator|+
@@ -1059,7 +1059,7 @@ name|testAce
 init|=
 name|root
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 name|testPath
 operator|+
@@ -1193,7 +1193,7 @@ name|restrictionsNode
 init|=
 name|root
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 name|restritionsPath
 argument_list|)
@@ -1260,7 +1260,7 @@ expr_stmt|;
 comment|// remove the restriction again
 name|root
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 name|restritionsPath
 argument_list|)
@@ -1356,7 +1356,7 @@ name|aclTree
 init|=
 name|root
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 name|testPath
 operator|+
@@ -1462,7 +1462,7 @@ name|aclTree
 init|=
 name|root
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 name|testPath
 operator|+
@@ -1608,7 +1608,7 @@ name|aclTree
 init|=
 name|root
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 name|testPath
 operator|+

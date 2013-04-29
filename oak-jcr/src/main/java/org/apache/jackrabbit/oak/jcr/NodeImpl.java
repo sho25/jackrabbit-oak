@@ -5602,7 +5602,7 @@ name|tree
 init|=
 name|root
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 name|dlg
 operator|.
@@ -5849,7 +5849,7 @@ name|tree
 init|=
 name|root
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 name|dlg
 operator|.

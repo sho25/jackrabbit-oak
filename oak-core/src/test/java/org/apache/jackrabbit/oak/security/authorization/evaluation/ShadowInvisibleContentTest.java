@@ -235,7 +235,7 @@ name|a
 init|=
 name|testRoot
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 literal|"/a"
 argument_list|)
@@ -358,7 +358,7 @@ name|a
 init|=
 name|testRoot
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 literal|"/a"
 argument_list|)
@@ -470,7 +470,7 @@ name|a
 init|=
 name|testRoot
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 literal|"/a"
 argument_list|)

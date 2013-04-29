@@ -337,7 +337,7 @@ init|=
 name|getTree
 argument_list|()
 operator|.
-name|getChild
+name|getChildOrNull
 argument_list|(
 name|VersionConstants
 operator|.
@@ -399,7 +399,7 @@ init|=
 name|getTree
 argument_list|()
 operator|.
-name|getChild
+name|getChildOrNull
 argument_list|(
 name|versionName
 argument_list|)
@@ -889,7 +889,7 @@ name|sessionDelegate
 argument_list|,
 name|thisTree
 operator|.
-name|getChild
+name|getChildOrNull
 argument_list|(
 name|name
 argument_list|)
@@ -917,7 +917,7 @@ init|=
 name|getTree
 argument_list|()
 operator|.
-name|getChild
+name|getChildOrNull
 argument_list|(
 name|VersionConstants
 operator|.

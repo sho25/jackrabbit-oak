@@ -419,7 +419,7 @@ name|privilegesTree
 init|=
 name|root
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 name|PRIVILEGES_PATH
 argument_list|)

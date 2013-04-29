@@ -532,7 +532,7 @@ name|userTree
 init|=
 name|root
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 name|user
 operator|.
@@ -718,7 +718,7 @@ name|userTree
 init|=
 name|root
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 name|user
 operator|.
@@ -812,7 +812,7 @@ name|userTree
 init|=
 name|root
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 name|user
 operator|.
@@ -920,7 +920,7 @@ name|NodeUtil
 argument_list|(
 name|root
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 name|user
 operator|.
@@ -1269,7 +1269,7 @@ name|t
 init|=
 name|root
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 name|path
 argument_list|)

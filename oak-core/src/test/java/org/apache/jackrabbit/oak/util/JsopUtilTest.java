@@ -173,7 +173,7 @@ name|t
 init|=
 name|root
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 literal|"/"
 argument_list|)
@@ -211,7 +211,7 @@ name|t
 operator|=
 name|root
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 literal|"/"
 argument_list|)
@@ -230,7 +230,7 @@ name|t
 operator|=
 name|t
 operator|.
-name|getChild
+name|getChildOrNull
 argument_list|(
 literal|"test"
 argument_list|)
@@ -271,7 +271,7 @@ literal|0
 argument_list|,
 name|t
 operator|.
-name|getChild
+name|getChildOrNull
 argument_list|(
 literal|"b"
 argument_list|)
@@ -284,7 +284,7 @@ name|t
 operator|=
 name|t
 operator|.
-name|getChild
+name|getChildOrNull
 argument_list|(
 literal|"a"
 argument_list|)
@@ -349,7 +349,7 @@ name|t
 operator|=
 name|root
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 literal|"/"
 argument_list|)

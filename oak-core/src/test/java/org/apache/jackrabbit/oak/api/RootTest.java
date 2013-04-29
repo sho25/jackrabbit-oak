@@ -230,7 +230,7 @@ name|t
 init|=
 name|r
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 literal|"/"
 argument_list|)
@@ -364,7 +364,7 @@ name|t
 init|=
 name|r
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 literal|"/"
 argument_list|)

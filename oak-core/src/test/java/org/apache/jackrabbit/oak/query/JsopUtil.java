@@ -311,7 +311,7 @@ name|c
 init|=
 name|root
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 name|path
 argument_list|)
@@ -460,7 +460,7 @@ name|t
 operator|=
 name|t
 operator|.
-name|getChild
+name|getChildOrNull
 argument_list|(
 name|p
 argument_list|)

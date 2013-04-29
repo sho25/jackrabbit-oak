@@ -1873,7 +1873,7 @@ name|folder
 init|=
 name|root
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 name|Text
 operator|.

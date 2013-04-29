@@ -1780,7 +1780,7 @@ name|groupTree
 operator|=
 name|groupTree
 operator|.
-name|getParent
+name|getParentOrNull
 argument_list|()
 expr_stmt|;
 block|}
@@ -2646,7 +2646,7 @@ name|groupTree
 init|=
 name|root
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 name|gr
 operator|.
@@ -3094,7 +3094,7 @@ name|checkNotNull
 argument_list|(
 name|root
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 name|a
 operator|.

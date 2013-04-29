@@ -394,7 +394,7 @@ name|NodeUtil
 argument_list|(
 name|root
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 literal|"/"
 argument_list|)
@@ -548,7 +548,7 @@ expr_stmt|;
 block|}
 name|root
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 name|path
 argument_list|)

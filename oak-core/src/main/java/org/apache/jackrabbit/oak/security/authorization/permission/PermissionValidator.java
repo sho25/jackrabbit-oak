@@ -559,7 +559,7 @@ name|child
 init|=
 name|parentAfter
 operator|.
-name|getChild
+name|getChildOrNull
 argument_list|(
 name|childName
 argument_list|)
@@ -639,7 +639,7 @@ name|checkNotNull
 argument_list|(
 name|parentAfter
 operator|.
-name|getChild
+name|getChildOrNull
 argument_list|(
 name|name
 argument_list|)
@@ -716,7 +716,7 @@ name|childBefore
 init|=
 name|parentBefore
 operator|.
-name|getChild
+name|getChildOrNull
 argument_list|(
 name|name
 argument_list|)
@@ -726,7 +726,7 @@ name|childAfter
 init|=
 name|parentAfter
 operator|.
-name|getChild
+name|getChildOrNull
 argument_list|(
 name|name
 argument_list|)
@@ -763,7 +763,7 @@ name|checkNotNull
 argument_list|(
 name|parentBefore
 operator|.
-name|getChild
+name|getChildOrNull
 argument_list|(
 name|name
 argument_list|)

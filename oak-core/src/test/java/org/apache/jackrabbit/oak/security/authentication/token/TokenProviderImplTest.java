@@ -945,7 +945,7 @@ name|userTree
 init|=
 name|root
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 name|getUserManager
 argument_list|()
@@ -964,7 +964,7 @@ name|tokens
 init|=
 name|userTree
 operator|.
-name|getChild
+name|getChildOrNull
 argument_list|(
 literal|".tokens"
 argument_list|)
@@ -1425,7 +1425,7 @@ name|userTree
 init|=
 name|root
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 name|getUserManager
 argument_list|()
@@ -1444,7 +1444,7 @@ name|tokens
 init|=
 name|userTree
 operator|.
-name|getChild
+name|getChildOrNull
 argument_list|(
 literal|".tokens"
 argument_list|)
@@ -1477,7 +1477,7 @@ name|assertNull
 argument_list|(
 name|root
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 name|tokenNodePath
 argument_list|)

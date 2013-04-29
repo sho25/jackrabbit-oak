@@ -1464,7 +1464,7 @@ name|t
 init|=
 name|root
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 name|parentPath
 argument_list|)
@@ -2704,7 +2704,7 @@ name|accessControlledTree
 init|=
 name|root
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 name|Text
 operator|.
@@ -3045,14 +3045,14 @@ operator|)
 condition|?
 name|root
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 literal|"/"
 argument_list|)
 else|:
 name|root
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 name|oakPath
 argument_list|)
@@ -3479,7 +3479,7 @@ name|policyTree
 init|=
 name|accessControlledTree
 operator|.
-name|getChild
+name|getChildOrNull
 argument_list|(
 name|getAclName
 argument_list|(
@@ -3698,7 +3698,7 @@ name|aclTree
 init|=
 name|accessControlledTree
 operator|.
-name|getChild
+name|getChildOrNull
 argument_list|(
 name|aclName
 argument_list|)
@@ -3872,7 +3872,7 @@ name|aceTree
 init|=
 name|root
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 name|row
 operator|.

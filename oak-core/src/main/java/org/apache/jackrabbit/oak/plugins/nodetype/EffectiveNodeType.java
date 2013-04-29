@@ -1556,7 +1556,7 @@ argument_list|()
 operator|&&
 name|tree
 operator|.
-name|getChild
+name|getChildOrNull
 argument_list|(
 name|name
 argument_list|)

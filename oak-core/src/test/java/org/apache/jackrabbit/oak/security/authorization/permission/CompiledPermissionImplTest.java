@@ -759,7 +759,7 @@ name|NodeUtil
 argument_list|(
 name|root
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 literal|"/"
 argument_list|)
@@ -935,7 +935,7 @@ name|Exception
 block|{
 name|root
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 name|PERMISSIONS_STORE_PATH
 argument_list|)
@@ -2340,7 +2340,7 @@ operator|.
 name|EMPTY
 argument_list|)
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 name|PERMISSIONS_STORE_PATH
 argument_list|)
@@ -2519,7 +2519,7 @@ name|principalRoot
 init|=
 name|root
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 name|PERMISSIONS_STORE_PATH
 operator|+
@@ -2698,7 +2698,7 @@ name|node
 init|=
 name|root
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 name|path
 argument_list|)

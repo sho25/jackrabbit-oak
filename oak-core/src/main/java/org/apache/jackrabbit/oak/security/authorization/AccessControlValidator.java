@@ -549,7 +549,7 @@ name|checkNotNull
 argument_list|(
 name|parentAfter
 operator|.
-name|getChild
+name|getChildOrNull
 argument_list|(
 name|name
 argument_list|)
@@ -603,7 +603,7 @@ name|checkNotNull
 argument_list|(
 name|parentBefore
 operator|.
-name|getChild
+name|getChildOrNull
 argument_list|(
 name|name
 argument_list|)
@@ -616,7 +616,7 @@ name|checkNotNull
 argument_list|(
 name|parentAfter
 operator|.
-name|getChild
+name|getChildOrNull
 argument_list|(
 name|name
 argument_list|)
@@ -1043,7 +1043,7 @@ name|parent
 init|=
 name|aceNode
 operator|.
-name|getParent
+name|getParentOrNull
 argument_list|()
 decl_stmt|;
 if|if
@@ -1262,7 +1262,7 @@ name|checkNotNull
 argument_list|(
 name|aceTree
 operator|.
-name|getParent
+name|getParentOrNull
 argument_list|()
 argument_list|)
 decl_stmt|;

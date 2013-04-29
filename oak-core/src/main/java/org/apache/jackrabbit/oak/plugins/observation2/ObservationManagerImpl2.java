@@ -487,7 +487,7 @@ name|events
 init|=
 name|root
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 name|ObservationConstants
 operator|.

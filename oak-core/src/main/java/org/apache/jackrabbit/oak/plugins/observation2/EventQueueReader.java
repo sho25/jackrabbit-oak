@@ -456,7 +456,7 @@ name|bundles
 operator|=
 name|root
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 name|EVENTS_PATH
 argument_list|)
@@ -474,7 +474,7 @@ name|bundle
 init|=
 name|bundles
 operator|.
-name|getChild
+name|getChildOrNull
 argument_list|(
 name|String
 operator|.
@@ -594,7 +594,7 @@ name|getString
 argument_list|(
 name|event
 operator|.
-name|getChild
+name|getChildOrNull
 argument_list|(
 name|id
 argument_list|)
@@ -621,7 +621,7 @@ name|getString
 argument_list|(
 name|event
 operator|.
-name|getChild
+name|getChildOrNull
 argument_list|(
 name|id
 argument_list|)

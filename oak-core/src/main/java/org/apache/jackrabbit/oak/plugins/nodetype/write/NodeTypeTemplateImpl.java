@@ -720,7 +720,7 @@ name|type
 init|=
 name|parent
 operator|.
-name|getChild
+name|getChildOrNull
 argument_list|(
 name|oakName
 argument_list|)

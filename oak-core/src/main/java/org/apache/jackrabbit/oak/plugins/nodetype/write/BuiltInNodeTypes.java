@@ -346,7 +346,7 @@ block|{
 return|return
 name|root
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 name|NODE_TYPES_PATH
 argument_list|)
@@ -385,7 +385,7 @@ block|{
 return|return
 name|root
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 literal|"/"
 argument_list|)
@@ -439,7 +439,7 @@ name|getNamespaceMap
 argument_list|(
 name|root
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 literal|"/"
 argument_list|)

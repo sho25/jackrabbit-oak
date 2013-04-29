@@ -1096,7 +1096,7 @@ name|parent
 init|=
 name|tree
 operator|.
-name|getParent
+name|getParentOrNull
 argument_list|()
 decl_stmt|;
 if|if
@@ -1122,7 +1122,7 @@ operator|.
 name|getRoot
 argument_list|()
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 name|NODE_TYPES_PATH
 argument_list|)
@@ -1258,7 +1258,7 @@ name|definitions
 init|=
 name|type
 operator|.
-name|getChild
+name|getChildOrNull
 argument_list|(
 name|OAK_RESIDUAL_CHILD_NODE_DEFINITIONS
 argument_list|)
@@ -1283,7 +1283,7 @@ name|definition
 init|=
 name|definitions
 operator|.
-name|getChild
+name|getChildOrNull
 argument_list|(
 name|typeName
 argument_list|)
@@ -1338,7 +1338,7 @@ operator|.
 name|getRoot
 argument_list|()
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 name|NODE_TYPES_PATH
 argument_list|)
@@ -1427,7 +1427,7 @@ name|definitions
 init|=
 name|type
 operator|.
-name|getChild
+name|getChildOrNull
 argument_list|(
 name|OAK_RESIDUAL_PROPERTY_DEFINITIONS
 argument_list|)
@@ -1806,7 +1806,7 @@ if|if
 condition|(
 name|tree
 operator|.
-name|getChild
+name|getChildOrNull
 argument_list|(
 name|source
 argument_list|)
@@ -1833,7 +1833,7 @@ literal|null
 operator|&&
 name|tree
 operator|.
-name|getChild
+name|getChildOrNull
 argument_list|(
 name|target
 argument_list|)
@@ -1855,7 +1855,7 @@ else|else
 block|{
 name|tree
 operator|.
-name|getChild
+name|getChildOrNull
 argument_list|(
 name|source
 argument_list|)
@@ -1885,7 +1885,7 @@ operator|.
 name|getRoot
 argument_list|()
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 name|NODE_TYPES_PATH
 argument_list|)
@@ -1895,7 +1895,7 @@ name|type
 init|=
 name|typeRoot
 operator|.
-name|getChild
+name|getChildOrNull
 argument_list|(
 name|typeName
 argument_list|)
@@ -1957,7 +1957,7 @@ operator|.
 name|getRoot
 argument_list|()
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 name|NODE_TYPES_PATH
 argument_list|)
@@ -1967,7 +1967,7 @@ name|type
 init|=
 name|typeRoot
 operator|.
-name|getChild
+name|getChildOrNull
 argument_list|(
 name|typeName
 argument_list|)
@@ -2326,7 +2326,7 @@ operator|.
 name|getRoot
 argument_list|()
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 name|NODE_TYPES_PATH
 argument_list|)
@@ -2461,7 +2461,7 @@ name|type
 init|=
 name|typeRoot
 operator|.
-name|getChild
+name|getChildOrNull
 argument_list|(
 name|typeName
 argument_list|)
@@ -2605,7 +2605,7 @@ name|properties
 init|=
 name|type
 operator|.
-name|getChild
+name|getChildOrNull
 argument_list|(
 name|OAK_NAMED_PROPERTY_DEFINITIONS
 argument_list|)
@@ -2762,7 +2762,7 @@ name|childNodes
 init|=
 name|type
 operator|.
-name|getChild
+name|getChildOrNull
 argument_list|(
 name|OAK_NAMED_CHILD_NODE_DEFINITIONS
 argument_list|)
@@ -3199,7 +3199,7 @@ name|named
 init|=
 name|type
 operator|.
-name|getChild
+name|getChildOrNull
 argument_list|(
 name|OAK_NAMED_CHILD_NODE_DEFINITIONS
 argument_list|)
@@ -3216,7 +3216,7 @@ name|definitions
 init|=
 name|named
 operator|.
-name|getChild
+name|getChildOrNull
 argument_list|(
 name|childName
 argument_list|)
@@ -3266,7 +3266,7 @@ name|definitions
 init|=
 name|type
 operator|.
-name|getChild
+name|getChildOrNull
 argument_list|(
 name|OAK_RESIDUAL_CHILD_NODE_DEFINITIONS
 argument_list|)
@@ -3353,7 +3353,7 @@ name|type
 init|=
 name|typeRoot
 operator|.
-name|getChild
+name|getChildOrNull
 argument_list|(
 name|primary
 argument_list|)
@@ -3392,7 +3392,7 @@ name|type
 init|=
 name|typeRoot
 operator|.
-name|getChild
+name|getChildOrNull
 argument_list|(
 name|mixin
 argument_list|)

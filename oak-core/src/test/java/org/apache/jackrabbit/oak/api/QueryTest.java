@@ -269,7 +269,7 @@ name|t
 init|=
 name|r
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 literal|"/"
 argument_list|)
@@ -348,12 +348,12 @@ argument_list|()
 decl_stmt|;
 name|r
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 literal|"/test"
 argument_list|)
 operator|.
-name|getChild
+name|getChildOrNull
 argument_list|(
 literal|"node2"
 argument_list|)

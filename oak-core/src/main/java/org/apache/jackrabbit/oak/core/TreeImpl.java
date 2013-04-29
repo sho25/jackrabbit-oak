@@ -854,7 +854,7 @@ annotation|@
 name|Override
 specifier|public
 name|Tree
-name|getParentNonNull
+name|getParent
 parameter_list|()
 block|{
 name|checkState
@@ -877,9 +877,11 @@ return|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|Tree
-name|getParent
+name|getParentOrNull
 parameter_list|()
 block|{
 name|enterNoStateCheck
@@ -1123,7 +1125,7 @@ annotation|@
 name|Override
 specifier|public
 name|TreeImpl
-name|getChildNonNull
+name|getChild
 parameter_list|(
 annotation|@
 name|Nonnull
@@ -1155,9 +1157,11 @@ return|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|TreeImpl
-name|getChild
+name|getChildOrNull
 parameter_list|(
 annotation|@
 name|Nonnull
@@ -1168,7 +1172,7 @@ block|{
 name|TreeImpl
 name|child
 init|=
-name|getChildNonNull
+name|getChild
 argument_list|(
 name|name
 argument_list|)

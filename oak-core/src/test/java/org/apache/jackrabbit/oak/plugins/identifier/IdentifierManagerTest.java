@@ -405,7 +405,7 @@ name|tree
 init|=
 name|root
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 literal|"/"
 argument_list|)
@@ -507,7 +507,7 @@ name|rootTree
 init|=
 name|root
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 literal|"/"
 argument_list|)
@@ -529,7 +529,7 @@ name|xx1
 init|=
 name|root
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 name|PATH_X1
 argument_list|)
@@ -551,7 +551,7 @@ name|yy1
 init|=
 name|root
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 name|PATH_Y1
 argument_list|)
@@ -573,7 +573,7 @@ name|zz1
 init|=
 name|root
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 name|PATH_Z1
 argument_list|)

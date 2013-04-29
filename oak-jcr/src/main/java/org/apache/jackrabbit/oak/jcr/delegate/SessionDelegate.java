@@ -974,7 +974,7 @@ name|dest
 init|=
 name|moveRoot
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 name|destPath
 argument_list|)
@@ -1010,7 +1010,7 @@ name|destParent
 init|=
 name|moveRoot
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 name|destParentPath
 argument_list|)
@@ -1041,7 +1041,7 @@ name|src
 init|=
 name|moveRoot
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 name|srcPath
 argument_list|)
@@ -1158,7 +1158,7 @@ block|{
 return|return
 name|root
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 name|path
 argument_list|)

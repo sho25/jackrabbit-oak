@@ -371,7 +371,7 @@ name|tree
 init|=
 name|root
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 name|resultPath
 argument_list|)
@@ -401,7 +401,7 @@ name|tree
 operator|=
 name|tree
 operator|.
-name|getParent
+name|getParentOrNull
 argument_list|()
 expr_stmt|;
 name|type

@@ -1693,7 +1693,7 @@ name|t
 operator|=
 name|t
 operator|.
-name|getParent
+name|getParentOrNull
 argument_list|()
 expr_stmt|;
 block|}

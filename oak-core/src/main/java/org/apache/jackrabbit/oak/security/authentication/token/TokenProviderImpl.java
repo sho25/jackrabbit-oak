@@ -1091,7 +1091,7 @@ name|NodeUtil
 argument_list|(
 name|root
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 name|user
 operator|.
@@ -1948,7 +1948,7 @@ block|{
 return|return
 name|root
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 operator|(
 operator|(

@@ -325,7 +325,7 @@ name|userTree
 init|=
 name|root
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 name|userPath
 argument_list|)
@@ -383,7 +383,7 @@ name|userTree
 init|=
 name|root
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 name|userPath
 argument_list|)
@@ -441,7 +441,7 @@ name|userTree
 init|=
 name|root
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 name|userPath
 argument_list|)
@@ -512,7 +512,7 @@ name|tree
 init|=
 name|root
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 name|userPath
 argument_list|)
@@ -583,7 +583,7 @@ name|tree
 init|=
 name|root
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 name|userPath
 argument_list|)
@@ -649,7 +649,7 @@ name|userTree
 init|=
 name|root
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 name|userPath
 argument_list|)
@@ -715,7 +715,7 @@ name|userTree
 init|=
 name|root
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 name|userPath
 argument_list|)
@@ -775,7 +775,7 @@ name|userTree
 init|=
 name|root
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 name|userPath
 argument_list|)
@@ -835,7 +835,7 @@ name|userTree
 init|=
 name|root
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 name|userPath
 argument_list|)
@@ -949,7 +949,7 @@ expr_stmt|;
 block|}
 name|root
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 name|admin
 operator|.
@@ -1058,7 +1058,7 @@ expr_stmt|;
 block|}
 name|root
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 name|admin
 operator|.
@@ -1227,7 +1227,7 @@ name|parent
 init|=
 name|root
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 name|path
 argument_list|)
@@ -1258,7 +1258,7 @@ name|parent
 operator|=
 name|root
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 literal|"/"
 argument_list|)
@@ -1276,7 +1276,7 @@ name|next
 init|=
 name|parent
 operator|.
-name|getChild
+name|getChildOrNull
 argument_list|(
 name|segment
 argument_list|)

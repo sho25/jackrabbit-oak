@@ -522,7 +522,7 @@ name|assertFalse
 argument_list|(
 name|root
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 name|anonymous
 operator|.

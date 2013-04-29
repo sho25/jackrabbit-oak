@@ -639,7 +639,7 @@ block|{
 return|return
 name|root
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 name|NODE_TYPES_PATH
 argument_list|)
@@ -1389,7 +1389,7 @@ name|type
 init|=
 name|types
 operator|.
-name|getChild
+name|getChildOrNull
 argument_list|(
 name|typeName
 argument_list|)
@@ -1927,7 +1927,7 @@ name|type
 init|=
 name|types
 operator|.
-name|getChild
+name|getChildOrNull
 argument_list|(
 name|oakName
 argument_list|)

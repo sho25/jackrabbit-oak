@@ -360,7 +360,7 @@ name|tree
 init|=
 name|root
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 literal|"/"
 argument_list|)
@@ -451,7 +451,7 @@ name|tree
 init|=
 name|root
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 literal|"/"
 argument_list|)
@@ -461,7 +461,7 @@ name|child
 init|=
 name|tree
 operator|.
-name|getChild
+name|getChildOrNull
 argument_list|(
 literal|"any"
 argument_list|)
@@ -475,7 +475,7 @@ name|child
 operator|=
 name|tree
 operator|.
-name|getChild
+name|getChildOrNull
 argument_list|(
 literal|"x"
 argument_list|)
@@ -498,7 +498,7 @@ name|tree
 init|=
 name|root
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 literal|"/"
 argument_list|)
@@ -578,7 +578,7 @@ name|tree
 init|=
 name|root
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 literal|"/"
 argument_list|)
@@ -673,7 +673,7 @@ name|tree
 init|=
 name|root
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 literal|"/"
 argument_list|)
@@ -781,7 +781,7 @@ name|tree
 init|=
 name|root
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 literal|"/"
 argument_list|)
@@ -848,7 +848,7 @@ argument_list|)
 expr_stmt|;
 name|tree
 operator|.
-name|getChild
+name|getChildOrNull
 argument_list|(
 literal|"new"
 argument_list|)
@@ -862,7 +862,7 @@ name|assertTrue
 argument_list|(
 name|tree
 operator|.
-name|getChild
+name|getChildOrNull
 argument_list|(
 literal|"new"
 argument_list|)
@@ -888,7 +888,7 @@ name|tree
 init|=
 name|root
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 literal|"/"
 argument_list|)
@@ -965,7 +965,7 @@ name|tree
 init|=
 name|root
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 literal|"/"
 argument_list|)
@@ -982,7 +982,7 @@ argument_list|)
 expr_stmt|;
 name|tree
 operator|.
-name|getChild
+name|getChildOrNull
 argument_list|(
 literal|"x"
 argument_list|)
@@ -1028,7 +1028,7 @@ name|tree
 init|=
 name|root
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 literal|"/"
 argument_list|)
@@ -1045,7 +1045,7 @@ argument_list|)
 decl_stmt|;
 name|tree
 operator|.
-name|getChild
+name|getChildOrNull
 argument_list|(
 literal|"new"
 argument_list|)
@@ -1065,7 +1065,7 @@ name|assertNull
 argument_list|(
 name|tree
 operator|.
-name|getChild
+name|getChildOrNull
 argument_list|(
 literal|"new"
 argument_list|)
@@ -1086,7 +1086,7 @@ name|tree
 init|=
 name|root
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 literal|"/"
 argument_list|)
@@ -1203,7 +1203,7 @@ name|tree
 init|=
 name|root
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 literal|"/"
 argument_list|)
@@ -1263,7 +1263,7 @@ name|tree
 init|=
 name|root
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 literal|"/"
 argument_list|)
@@ -1280,7 +1280,7 @@ argument_list|)
 expr_stmt|;
 name|tree
 operator|.
-name|getChild
+name|getChildOrNull
 argument_list|(
 literal|"x"
 argument_list|)
@@ -1345,7 +1345,7 @@ name|tree
 init|=
 name|root
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 literal|"/"
 argument_list|)
@@ -1449,7 +1449,7 @@ name|tree
 init|=
 name|root
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 literal|"/"
 argument_list|)
@@ -1515,7 +1515,7 @@ name|tree
 init|=
 name|root
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 literal|"/"
 argument_list|)
@@ -1537,7 +1537,7 @@ name|NEW
 argument_list|,
 name|tree
 operator|.
-name|getChild
+name|getChildOrNull
 argument_list|(
 literal|"new"
 argument_list|)
@@ -1561,7 +1561,7 @@ name|EXISTING
 argument_list|,
 name|tree
 operator|.
-name|getChild
+name|getChildOrNull
 argument_list|(
 literal|"new"
 argument_list|)
@@ -1575,7 +1575,7 @@ name|added
 init|=
 name|tree
 operator|.
-name|getChild
+name|getChildOrNull
 argument_list|(
 literal|"new"
 argument_list|)
@@ -1597,7 +1597,7 @@ name|MODIFIED
 argument_list|,
 name|tree
 operator|.
-name|getChild
+name|getChildOrNull
 argument_list|(
 literal|"new"
 argument_list|)
@@ -1621,7 +1621,7 @@ name|EXISTING
 argument_list|,
 name|tree
 operator|.
-name|getChild
+name|getChildOrNull
 argument_list|(
 literal|"new"
 argument_list|)
@@ -1632,12 +1632,12 @@ argument_list|)
 expr_stmt|;
 name|tree
 operator|.
-name|getChild
+name|getChildOrNull
 argument_list|(
 literal|"new"
 argument_list|)
 operator|.
-name|getChild
+name|getChildOrNull
 argument_list|(
 literal|"another"
 argument_list|)
@@ -1655,7 +1655,7 @@ name|MODIFIED
 argument_list|,
 name|tree
 operator|.
-name|getChild
+name|getChildOrNull
 argument_list|(
 literal|"new"
 argument_list|)
@@ -1679,7 +1679,7 @@ name|EXISTING
 argument_list|,
 name|tree
 operator|.
-name|getChild
+name|getChildOrNull
 argument_list|(
 literal|"new"
 argument_list|)
@@ -1692,12 +1692,12 @@ name|assertNull
 argument_list|(
 name|tree
 operator|.
-name|getChild
+name|getChildOrNull
 argument_list|(
 literal|"new"
 argument_list|)
 operator|.
-name|getChild
+name|getChildOrNull
 argument_list|(
 literal|"another"
 argument_list|)
@@ -1708,7 +1708,7 @@ name|x
 init|=
 name|root
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 literal|"/x"
 argument_list|)
@@ -1759,7 +1759,7 @@ name|tree
 init|=
 name|root
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 literal|"/"
 argument_list|)
@@ -1893,7 +1893,7 @@ name|x
 init|=
 name|root
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 literal|"/x"
 argument_list|)
@@ -1927,7 +1927,7 @@ name|tree
 init|=
 name|root
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 literal|"/"
 argument_list|)
@@ -1951,12 +1951,12 @@ argument_list|()
 expr_stmt|;
 name|tree
 operator|.
-name|getChild
+name|getChildOrNull
 argument_list|(
 literal|"one"
 argument_list|)
 operator|.
-name|getChild
+name|getChildOrNull
 argument_list|(
 literal|"two"
 argument_list|)
@@ -1976,7 +1976,7 @@ name|EXISTING
 argument_list|,
 name|tree
 operator|.
-name|getChild
+name|getChildOrNull
 argument_list|(
 literal|"one"
 argument_list|)
@@ -1995,12 +1995,12 @@ name|MODIFIED
 argument_list|,
 name|tree
 operator|.
-name|getChild
+name|getChildOrNull
 argument_list|(
 literal|"one"
 argument_list|)
 operator|.
-name|getChild
+name|getChildOrNull
 argument_list|(
 literal|"two"
 argument_list|)
@@ -2024,7 +2024,7 @@ name|tree
 init|=
 name|root
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 literal|"/"
 argument_list|)
@@ -2142,7 +2142,7 @@ name|tree
 init|=
 name|root
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 literal|"/"
 argument_list|)
@@ -2285,7 +2285,7 @@ name|tree
 init|=
 name|root
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 literal|"/"
 argument_list|)
@@ -2379,7 +2379,7 @@ name|x
 init|=
 name|root
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 literal|"/x"
 argument_list|)
@@ -2512,7 +2512,7 @@ name|x
 init|=
 name|root
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 literal|"/x"
 argument_list|)
@@ -2599,7 +2599,7 @@ argument_list|)
 expr_stmt|;
 name|root
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 literal|"/x"
 argument_list|)

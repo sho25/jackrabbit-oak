@@ -560,7 +560,7 @@ operator|.
 name|getRoot
 argument_list|()
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 name|NODE_TYPES_PATH
 argument_list|)
@@ -997,7 +997,7 @@ operator|.
 name|getRoot
 argument_list|()
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 literal|"/"
 argument_list|)

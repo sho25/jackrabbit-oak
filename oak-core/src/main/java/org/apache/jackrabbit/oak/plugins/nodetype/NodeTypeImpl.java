@@ -1226,7 +1226,7 @@ name|root
 init|=
 name|definition
 operator|.
-name|getParent
+name|getParentOrNull
 argument_list|()
 decl_stmt|;
 for|for
@@ -1260,7 +1260,7 @@ name|supertype
 init|=
 name|root
 operator|.
-name|getChild
+name|getChildOrNull
 argument_list|(
 name|oakName
 argument_list|)
@@ -1349,7 +1349,7 @@ name|root
 init|=
 name|definition
 operator|.
-name|getParent
+name|getParentOrNull
 argument_list|()
 decl_stmt|;
 for|for
@@ -1374,7 +1374,7 @@ name|type
 init|=
 name|root
 operator|.
-name|getChild
+name|getChildOrNull
 argument_list|(
 name|oakNames
 index|[
@@ -1436,7 +1436,7 @@ name|root
 init|=
 name|definition
 operator|.
-name|getParent
+name|getParentOrNull
 argument_list|()
 decl_stmt|;
 for|for
@@ -1647,7 +1647,7 @@ name|tree
 init|=
 name|root
 operator|.
-name|getChild
+name|getChildOrNull
 argument_list|(
 name|subname
 argument_list|)
@@ -1700,7 +1700,7 @@ name|root
 init|=
 name|definition
 operator|.
-name|getParent
+name|getParentOrNull
 argument_list|()
 decl_stmt|;
 for|for
@@ -2535,7 +2535,7 @@ name|types
 init|=
 name|definition
 operator|.
-name|getParent
+name|getParentOrNull
 argument_list|()
 decl_stmt|;
 return|return
@@ -2755,7 +2755,7 @@ name|named
 init|=
 name|definition
 operator|.
-name|getChild
+name|getChildOrNull
 argument_list|(
 literal|"oak:namedPropertyDefinitions"
 argument_list|)
@@ -2829,7 +2829,7 @@ name|definitions
 init|=
 name|named
 operator|.
-name|getChild
+name|getChildOrNull
 argument_list|(
 name|escapedName
 argument_list|)
@@ -2908,7 +2908,7 @@ name|definitions
 init|=
 name|definition
 operator|.
-name|getChild
+name|getChildOrNull
 argument_list|(
 literal|"oak:residualPropertyDefinitions"
 argument_list|)
@@ -2989,7 +2989,7 @@ name|named
 init|=
 name|definition
 operator|.
-name|getChild
+name|getChildOrNull
 argument_list|(
 literal|"oak:namedChildNodeDefinitions"
 argument_list|)
@@ -3006,7 +3006,7 @@ name|definitions
 init|=
 name|named
 operator|.
-name|getChild
+name|getChildOrNull
 argument_list|(
 name|oakName
 argument_list|)
@@ -3085,7 +3085,7 @@ name|definitions
 init|=
 name|definition
 operator|.
-name|getChild
+name|getChildOrNull
 argument_list|(
 literal|"oak:residualChildNodeDefinitions"
 argument_list|)

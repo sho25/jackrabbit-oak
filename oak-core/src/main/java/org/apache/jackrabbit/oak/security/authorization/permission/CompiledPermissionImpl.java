@@ -756,7 +756,7 @@ name|t2
 init|=
 name|permissionsTree
 operator|.
-name|getChild
+name|getChildOrNull
 argument_list|(
 name|t
 operator|.
@@ -1090,7 +1090,7 @@ block|{
 return|return
 name|permissionsTree
 operator|.
-name|getChild
+name|getChildOrNull
 argument_list|(
 name|Text
 operator|.
@@ -1418,7 +1418,7 @@ operator|)
 condition|?
 name|tree
 operator|.
-name|getParent
+name|getParentOrNull
 argument_list|()
 else|:
 literal|null

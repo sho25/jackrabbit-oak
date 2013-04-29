@@ -639,7 +639,7 @@ name|types
 init|=
 name|root
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 name|NODE_TYPES_PATH
 argument_list|)
@@ -656,7 +656,7 @@ name|system
 init|=
 name|root
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 literal|'/'
 operator|+
@@ -674,7 +674,7 @@ name|system
 operator|=
 name|root
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 literal|"/"
 argument_list|)
@@ -727,7 +727,7 @@ name|types
 init|=
 name|root
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 name|NODE_TYPES_PATH
 argument_list|)
@@ -743,7 +743,7 @@ name|type
 operator|=
 name|types
 operator|.
-name|getChild
+name|getChildOrNull
 argument_list|(
 name|getOakName
 argument_list|(
@@ -856,7 +856,7 @@ name|types
 init|=
 name|root
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 name|NODE_TYPES_PATH
 argument_list|)
@@ -891,7 +891,7 @@ name|type
 init|=
 name|types
 operator|.
-name|getChild
+name|getChildOrNull
 argument_list|(
 name|getOakName
 argument_list|(

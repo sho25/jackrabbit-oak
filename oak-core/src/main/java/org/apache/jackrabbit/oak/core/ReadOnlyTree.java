@@ -444,7 +444,7 @@ annotation|@
 name|Override
 specifier|public
 name|Tree
-name|getParentNonNull
+name|getParent
 parameter_list|()
 block|{
 name|checkState
@@ -462,9 +462,11 @@ return|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|Tree
-name|getParent
+name|getParentOrNull
 parameter_list|()
 block|{
 return|return
@@ -579,7 +581,7 @@ annotation|@
 name|Override
 specifier|public
 name|ReadOnlyTree
-name|getChildNonNull
+name|getChild
 parameter_list|(
 annotation|@
 name|Nonnull
@@ -606,9 +608,11 @@ return|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|ReadOnlyTree
-name|getChild
+name|getChildOrNull
 parameter_list|(
 annotation|@
 name|Nonnull
@@ -619,7 +623,7 @@ block|{
 name|ReadOnlyTree
 name|child
 init|=
-name|getChildNonNull
+name|getChild
 argument_list|(
 name|name
 argument_list|)
@@ -1148,7 +1152,7 @@ block|{
 return|return
 name|tree
 operator|.
-name|getChild
+name|getChildOrNull
 argument_list|(
 name|name
 argument_list|)

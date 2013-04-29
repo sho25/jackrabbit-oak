@@ -694,7 +694,7 @@ condition|)
 block|{
 name|root
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 name|node
 operator|.
@@ -1529,7 +1529,7 @@ name|start
 argument_list|(
 name|root
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 name|parent
 operator|.
@@ -2043,7 +2043,7 @@ name|handlePropInfo
 argument_list|(
 name|root
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 name|node
 operator|.
@@ -2168,7 +2168,7 @@ name|end
 argument_list|(
 name|root
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 name|parent
 operator|.

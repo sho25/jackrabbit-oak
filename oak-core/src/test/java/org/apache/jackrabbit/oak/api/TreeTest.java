@@ -373,7 +373,7 @@ name|t
 init|=
 name|r
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 literal|"/"
 argument_list|)
@@ -406,7 +406,7 @@ argument_list|()
 expr_stmt|;
 name|t
 operator|.
-name|getChild
+name|getChildOrNull
 argument_list|(
 literal|"node1"
 argument_list|)
@@ -418,7 +418,7 @@ argument_list|)
 expr_stmt|;
 name|t
 operator|.
-name|getChild
+name|getChildOrNull
 argument_list|(
 literal|"node3"
 argument_list|)
@@ -464,7 +464,7 @@ argument_list|)
 expr_stmt|;
 name|t
 operator|.
-name|getChild
+name|getChildOrNull
 argument_list|(
 literal|"node3"
 argument_list|)
@@ -509,7 +509,7 @@ argument_list|)
 expr_stmt|;
 name|t
 operator|.
-name|getChild
+name|getChildOrNull
 argument_list|(
 literal|"node1"
 argument_list|)
@@ -623,7 +623,7 @@ name|t1
 init|=
 name|r1
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 literal|"/"
 argument_list|)
@@ -681,14 +681,14 @@ name|t2
 init|=
 name|r2
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 literal|"/"
 argument_list|)
 decl_stmt|;
 name|t1
 operator|.
-name|getChild
+name|getChildOrNull
 argument_list|(
 literal|"node2"
 argument_list|)
@@ -700,7 +700,7 @@ argument_list|)
 expr_stmt|;
 name|t1
 operator|.
-name|getChild
+name|getChildOrNull
 argument_list|(
 literal|"node3"
 argument_list|)
@@ -731,7 +731,7 @@ argument_list|)
 expr_stmt|;
 name|t2
 operator|.
-name|getChild
+name|getChildOrNull
 argument_list|(
 literal|"node3"
 argument_list|)
@@ -743,7 +743,7 @@ argument_list|)
 expr_stmt|;
 name|t2
 operator|.
-name|getChild
+name|getChildOrNull
 argument_list|(
 literal|"node2"
 argument_list|)
@@ -776,7 +776,7 @@ expr_stmt|;
 comment|// try again on current root
 name|t2
 operator|.
-name|getChild
+name|getChildOrNull
 argument_list|(
 literal|"node3"
 argument_list|)
@@ -788,7 +788,7 @@ argument_list|)
 expr_stmt|;
 name|t2
 operator|.
-name|getChild
+name|getChildOrNull
 argument_list|(
 literal|"node2"
 argument_list|)
@@ -872,7 +872,7 @@ name|t1
 init|=
 name|r1
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 literal|"/"
 argument_list|)
@@ -930,14 +930,14 @@ name|t2
 init|=
 name|r2
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 literal|"/"
 argument_list|)
 decl_stmt|;
 name|t1
 operator|.
-name|getChild
+name|getChildOrNull
 argument_list|(
 literal|"node2"
 argument_list|)
@@ -949,7 +949,7 @@ argument_list|)
 expr_stmt|;
 name|t1
 operator|.
-name|getChild
+name|getChildOrNull
 argument_list|(
 literal|"node3"
 argument_list|)
@@ -989,7 +989,7 @@ argument_list|)
 expr_stmt|;
 name|t2
 operator|.
-name|getChild
+name|getChildOrNull
 argument_list|(
 literal|"node3"
 argument_list|)
@@ -1024,7 +1024,7 @@ expr_stmt|;
 comment|// try again on current root
 name|t2
 operator|.
-name|getChild
+name|getChildOrNull
 argument_list|(
 literal|"node3"
 argument_list|)
@@ -1110,7 +1110,7 @@ name|t1
 init|=
 name|r1
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 literal|"/"
 argument_list|)
@@ -1175,14 +1175,14 @@ name|t2
 init|=
 name|r2
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 literal|"/"
 argument_list|)
 decl_stmt|;
 name|t1
 operator|.
-name|getChild
+name|getChildOrNull
 argument_list|(
 literal|"node2"
 argument_list|)
@@ -1194,7 +1194,7 @@ argument_list|)
 expr_stmt|;
 name|t1
 operator|.
-name|getChild
+name|getChildOrNull
 argument_list|(
 literal|"node3"
 argument_list|)
@@ -1206,7 +1206,7 @@ argument_list|)
 expr_stmt|;
 name|t1
 operator|.
-name|getChild
+name|getChildOrNull
 argument_list|(
 literal|"node4"
 argument_list|)
@@ -1235,7 +1235,7 @@ argument_list|)
 expr_stmt|;
 name|t2
 operator|.
-name|getChild
+name|getChildOrNull
 argument_list|(
 literal|"node3"
 argument_list|)
@@ -1268,7 +1268,7 @@ expr_stmt|;
 comment|// try again on current root
 name|t2
 operator|.
-name|getChild
+name|getChildOrNull
 argument_list|(
 literal|"node3"
 argument_list|)
@@ -1352,7 +1352,7 @@ name|t1
 init|=
 name|r1
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 literal|"/"
 argument_list|)
@@ -1422,14 +1422,14 @@ name|t2
 init|=
 name|r2
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 literal|"/"
 argument_list|)
 decl_stmt|;
 name|t1
 operator|.
-name|getChild
+name|getChildOrNull
 argument_list|(
 literal|"node2"
 argument_list|)
@@ -1441,7 +1441,7 @@ argument_list|)
 expr_stmt|;
 name|t1
 operator|.
-name|getChild
+name|getChildOrNull
 argument_list|(
 literal|"node3"
 argument_list|)
@@ -1474,7 +1474,7 @@ argument_list|)
 expr_stmt|;
 name|t2
 operator|.
-name|getChild
+name|getChildOrNull
 argument_list|(
 literal|"node3"
 argument_list|)
@@ -1486,7 +1486,7 @@ argument_list|)
 expr_stmt|;
 name|t2
 operator|.
-name|getChild
+name|getChildOrNull
 argument_list|(
 literal|"node4"
 argument_list|)
@@ -1517,7 +1517,7 @@ expr_stmt|;
 comment|// try reorder again on current root
 name|t2
 operator|.
-name|getChild
+name|getChildOrNull
 argument_list|(
 literal|"node3"
 argument_list|)
@@ -1601,7 +1601,7 @@ name|t1
 init|=
 name|r1
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 literal|"/"
 argument_list|)
@@ -1659,14 +1659,14 @@ name|t2
 init|=
 name|r2
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 literal|"/"
 argument_list|)
 decl_stmt|;
 name|t1
 operator|.
-name|getChild
+name|getChildOrNull
 argument_list|(
 literal|"node2"
 argument_list|)
@@ -1678,7 +1678,7 @@ argument_list|)
 expr_stmt|;
 name|t1
 operator|.
-name|getChild
+name|getChildOrNull
 argument_list|(
 literal|"node3"
 argument_list|)
@@ -1705,7 +1705,7 @@ argument_list|)
 expr_stmt|;
 name|t2
 operator|.
-name|getChild
+name|getChildOrNull
 argument_list|(
 literal|"node3"
 argument_list|)
@@ -1787,7 +1787,7 @@ name|t1
 init|=
 name|r1
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 literal|"/"
 argument_list|)
@@ -1855,7 +1855,7 @@ name|t2
 init|=
 name|r2
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 literal|"/c"
 argument_list|)
@@ -1868,7 +1868,7 @@ expr_stmt|;
 comment|// now 'c' does not have ordered children anymore
 name|r1
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 literal|"/"
 argument_list|)
@@ -1893,7 +1893,7 @@ argument_list|)
 expr_stmt|;
 name|t2
 operator|.
-name|getChild
+name|getChildOrNull
 argument_list|(
 literal|"node3"
 argument_list|)
@@ -1971,7 +1971,7 @@ name|t1
 init|=
 name|r1
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 literal|"/"
 argument_list|)
@@ -2041,14 +2041,14 @@ name|t2
 init|=
 name|r2
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 literal|"/"
 argument_list|)
 decl_stmt|;
 name|t1
 operator|.
-name|getChild
+name|getChildOrNull
 argument_list|(
 literal|"node2"
 argument_list|)
@@ -2060,7 +2060,7 @@ argument_list|)
 expr_stmt|;
 name|t1
 operator|.
-name|getChild
+name|getChildOrNull
 argument_list|(
 literal|"node3"
 argument_list|)
@@ -2089,7 +2089,7 @@ argument_list|)
 expr_stmt|;
 name|t2
 operator|.
-name|getChild
+name|getChildOrNull
 argument_list|(
 literal|"node4"
 argument_list|)
@@ -2173,7 +2173,7 @@ name|t1
 init|=
 name|r1
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 literal|"/"
 argument_list|)
@@ -2229,7 +2229,7 @@ name|t2
 init|=
 name|r2
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 literal|"/"
 argument_list|)
@@ -2238,7 +2238,7 @@ name|t1
 operator|=
 name|r1
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 literal|"/"
 argument_list|)
@@ -2276,7 +2276,7 @@ operator|.
 name|getLatestRoot
 argument_list|()
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 literal|"/"
 argument_list|)
@@ -2352,7 +2352,7 @@ name|t1
 init|=
 name|r1
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 literal|"/"
 argument_list|)
@@ -2410,7 +2410,7 @@ name|t2
 init|=
 name|r2
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 literal|"/"
 argument_list|)
@@ -2419,7 +2419,7 @@ name|t1
 operator|=
 name|r1
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 literal|"/"
 argument_list|)
@@ -2461,7 +2461,7 @@ name|t1
 operator|=
 name|r1
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 literal|"/"
 argument_list|)
@@ -2574,7 +2574,7 @@ name|t1
 init|=
 name|r1
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 literal|"/"
 argument_list|)
@@ -2635,7 +2635,7 @@ name|t2
 init|=
 name|r2
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 literal|"/c"
 argument_list|)
@@ -2644,14 +2644,14 @@ name|t1
 operator|=
 name|r1
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 literal|"/c"
 argument_list|)
 expr_stmt|;
 name|t1
 operator|.
-name|getChild
+name|getChildOrNull
 argument_list|(
 literal|"node2"
 argument_list|)
@@ -2692,7 +2692,7 @@ name|assertFalse
 argument_list|(
 name|r2
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 literal|"/"
 argument_list|)

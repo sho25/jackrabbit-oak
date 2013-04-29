@@ -1182,7 +1182,7 @@ name|tree
 init|=
 name|root
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 name|PathUtils
 operator|.

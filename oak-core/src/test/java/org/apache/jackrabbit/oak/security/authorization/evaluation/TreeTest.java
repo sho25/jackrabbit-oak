@@ -268,7 +268,7 @@ name|rootTree
 init|=
 name|testRoot
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 literal|"/"
 argument_list|)
@@ -300,7 +300,7 @@ name|a
 init|=
 name|rootTree
 operator|.
-name|getChild
+name|getChildOrNull
 argument_list|(
 literal|"a"
 argument_list|)
@@ -330,7 +330,7 @@ name|b
 init|=
 name|a
 operator|.
-name|getChild
+name|getChildOrNull
 argument_list|(
 literal|"b"
 argument_list|)
@@ -360,7 +360,7 @@ name|rootTree
 init|=
 name|testRoot
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 literal|"/"
 argument_list|)
@@ -375,7 +375,7 @@ name|a
 init|=
 name|rootTree
 operator|.
-name|getChild
+name|getChildOrNull
 argument_list|(
 literal|"a"
 argument_list|)
@@ -390,7 +390,7 @@ name|b
 init|=
 name|a
 operator|.
-name|getChild
+name|getChildOrNull
 argument_list|(
 literal|"b"
 argument_list|)
@@ -404,7 +404,7 @@ name|assertNotNull
 argument_list|(
 name|b
 operator|.
-name|getChild
+name|getChildOrNull
 argument_list|(
 literal|"c"
 argument_list|)
@@ -414,7 +414,7 @@ name|assertNull
 argument_list|(
 name|a
 operator|.
-name|getChild
+name|getChildOrNull
 argument_list|(
 literal|"bb"
 argument_list|)
@@ -434,7 +434,7 @@ name|assertNotNull
 argument_list|(
 name|root
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 literal|'/'
 operator|+
@@ -450,7 +450,7 @@ name|rootTree
 init|=
 name|testRoot
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 literal|"/"
 argument_list|)
@@ -471,7 +471,7 @@ name|assertNull
 argument_list|(
 name|rootTree
 operator|.
-name|getChild
+name|getChildOrNull
 argument_list|(
 name|AccessControlConstants
 operator|.
@@ -494,7 +494,7 @@ name|cntRoot
 init|=
 name|root
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 literal|"/"
 argument_list|)
@@ -507,7 +507,7 @@ name|cntA
 init|=
 name|root
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 literal|"/a"
 argument_list|)
@@ -524,7 +524,7 @@ literal|1
 argument_list|,
 name|testRoot
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 literal|"/"
 argument_list|)
@@ -541,7 +541,7 @@ literal|1
 argument_list|,
 name|testRoot
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 literal|"/a"
 argument_list|)
@@ -578,7 +578,7 @@ name|assertEquals
 argument_list|(
 name|root
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 name|path
 argument_list|)
@@ -588,7 +588,7 @@ argument_list|()
 argument_list|,
 name|testRoot
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 name|path
 argument_list|)

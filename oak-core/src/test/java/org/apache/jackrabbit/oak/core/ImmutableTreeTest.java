@@ -212,7 +212,7 @@ name|tree
 init|=
 name|root
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 literal|"/"
 argument_list|)
@@ -288,7 +288,7 @@ name|TreeImpl
 operator|)
 name|root
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 literal|"/"
 argument_list|)
@@ -319,7 +319,7 @@ name|immutable
 operator|=
 name|immutable
 operator|.
-name|getChild
+name|getChildOrNull
 argument_list|(
 literal|"x"
 argument_list|)
@@ -338,7 +338,7 @@ name|immutable
 operator|=
 name|immutable
 operator|.
-name|getChild
+name|getChildOrNull
 argument_list|(
 literal|"y"
 argument_list|)
@@ -357,7 +357,7 @@ name|immutable
 operator|=
 name|immutable
 operator|.
-name|getChild
+name|getChildOrNull
 argument_list|(
 literal|"z"
 argument_list|)
@@ -468,7 +468,7 @@ name|assertNull
 argument_list|(
 name|tree
 operator|.
-name|getParent
+name|getParentOrNull
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -520,7 +520,7 @@ name|assertNull
 argument_list|(
 name|tree
 operator|.
-name|getParent
+name|getParentOrNull
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -529,7 +529,7 @@ name|child
 init|=
 name|tree
 operator|.
-name|getChild
+name|getChildOrNull
 argument_list|(
 literal|"x"
 argument_list|)
@@ -538,7 +538,7 @@ name|assertNotNull
 argument_list|(
 name|child
 operator|.
-name|getParent
+name|getParentOrNull
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -548,7 +548,7 @@ literal|"/"
 argument_list|,
 name|child
 operator|.
-name|getParent
+name|getParentOrNull
 argument_list|()
 operator|.
 name|getPath
@@ -586,7 +586,7 @@ try|try
 block|{
 name|disconnected
 operator|.
-name|getParent
+name|getParentOrNull
 argument_list|()
 expr_stmt|;
 block|}

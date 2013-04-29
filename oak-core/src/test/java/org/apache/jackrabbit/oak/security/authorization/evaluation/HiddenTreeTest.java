@@ -162,7 +162,7 @@ name|parent
 operator|=
 name|root
 operator|.
-name|getTree
+name|getTreeOrNull
 argument_list|(
 name|hiddenParentPath
 argument_list|)
@@ -214,7 +214,7 @@ name|assertNull
 argument_list|(
 name|parent
 operator|.
-name|getChild
+name|getChildOrNull
 argument_list|(
 name|hiddenName
 argument_list|)

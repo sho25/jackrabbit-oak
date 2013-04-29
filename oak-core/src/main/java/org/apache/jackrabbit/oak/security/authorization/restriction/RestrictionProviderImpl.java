@@ -1188,7 +1188,7 @@ name|restrictions
 init|=
 name|aceTree
 operator|.
-name|getChild
+name|getChildOrNull
 argument_list|(
 name|REP_RESTRICTIONS
 argument_list|)

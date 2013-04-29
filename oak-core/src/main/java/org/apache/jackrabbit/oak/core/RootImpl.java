@@ -1105,7 +1105,7 @@ condition|(
 name|success
 condition|)
 block|{
-name|getTree
+name|getTreeOrNull
 argument_list|(
 name|getParentPath
 argument_list|(
@@ -1116,7 +1116,7 @@ operator|.
 name|updateChildOrder
 argument_list|()
 expr_stmt|;
-name|getTree
+name|getTreeOrNull
 argument_list|(
 name|getParentPath
 argument_list|(
@@ -1187,7 +1187,7 @@ condition|(
 name|success
 condition|)
 block|{
-name|getTree
+name|getTreeOrNull
 argument_list|(
 name|getParentPath
 argument_list|(
@@ -1207,7 +1207,7 @@ annotation|@
 name|Override
 specifier|public
 name|TreeImpl
-name|getTreeNonNull
+name|getTree
 parameter_list|(
 annotation|@
 name|Nonnull
@@ -1229,9 +1229,11 @@ return|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|TreeImpl
-name|getTree
+name|getTreeOrNull
 parameter_list|(
 name|String
 name|path
