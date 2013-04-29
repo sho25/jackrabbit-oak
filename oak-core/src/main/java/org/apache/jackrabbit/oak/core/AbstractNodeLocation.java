@@ -298,7 +298,7 @@ block|{
 return|return
 name|tree
 operator|.
-name|isConnected
+name|exists
 argument_list|()
 operator|&&
 name|getTree

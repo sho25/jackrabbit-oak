@@ -48,7 +48,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A tree instance represents a snapshot of the {@code ContentRepository}  * tree at the time the instance was acquired. Tree instances may  * become invalid over time due to garbage collection of old content, at  * which point an outdated snapshot will start throwing  * {@code IllegalStateException}s to indicate that the snapshot is no  * longer available.  *<p/>  * The children of a {@code Tree} are generally unordered. That is, the  * sequence of the children returned by {@link #getChildren()} may change over  * time as this Tree is modified either directly or through some other session.  * Calling {@link #orderBefore(String)} will persist the current order and  * maintain the order as new children are added or removed. In this case a new  * child will be inserted after the last child as seen by {@link #getChildren()}.  *<p/>  * A tree instance belongs to the client and its state is only modified  * in response to method calls made by the client. The various accessors  * on this interface mirror these of the underlying {@code NodeState}  * interface. However, since instances of this class are mutable return  * values may change between invocations.  *<p/>  * Tree instances are not thread-safe for write access, so writing clients  * need to ensure that they are not accessed concurrently from multiple  * threads. Instances are however thread-safe for read access, so  * implementations need to ensure that all reading clients see a  * coherent state.  *<p/>  * The data returned by this class and intermediary objects such as  * {@link PropertyState} is filtered for the access rights that are set in the  * {@link ContentSession} that created the {@link Root} of this object.  *<p/>  * All tree instances created in the context of a content session become invalid  * after the content session is closed. Any method called on an invalid tree instance  * will throw an {@code InvalidStateException}.  *<p/>  * {@link Tree} instances may become disconnected after a call to {@link Root#refresh()},  * {@link Root#rebase()} or {@link Root#commit()}. Any access to disconnected tree instances  * - except for {@link Tree#getName()}, {@link Tree#isRoot()}, {@link Tree#getPath()},  * {@link Tree#getParent()} and {@link Tree#isConnected()} - will cause an  * {@code InvalidStateException}.  */
+comment|/**  * A tree instance represents a snapshot of the {@code ContentRepository}  * tree at the time the instance was acquired. Tree instances may  * become invalid over time due to garbage collection of old content, at  * which point an outdated snapshot will start throwing  * {@code IllegalStateException}s to indicate that the snapshot is no  * longer available.  *<p/>  * The children of a {@code Tree} are generally unordered. That is, the  * sequence of the children returned by {@link #getChildren()} may change over  * time as this Tree is modified either directly or through some other session.  * Calling {@link #orderBefore(String)} will persist the current order and  * maintain the order as new children are added or removed. In this case a new  * child will be inserted after the last child as seen by {@link #getChildren()}.  *<p/>  * A tree instance belongs to the client and its state is only modified  * in response to method calls made by the client. The various accessors  * on this interface mirror these of the underlying {@code NodeState}  * interface. However, since instances of this class are mutable return  * values may change between invocations.  *<p/>  * Tree instances are not thread-safe for write access, so writing clients  * need to ensure that they are not accessed concurrently from multiple  * threads. Instances are however thread-safe for read access, so  * implementations need to ensure that all reading clients see a  * coherent state.  *<p/>  * The data returned by this class and intermediary objects such as  * {@link PropertyState} is filtered for the access rights that are set in the  * {@link ContentSession} that created the {@link Root} of this object.  *<p/>  * All tree instances created in the context of a content session become invalid  * after the content session is closed. Any method called on an invalid tree instance  * will throw an {@code InvalidStateException}.  *<p/>  * {@link Tree} instances may become disconnected after a call to {@link Root#refresh()},  * {@link Root#rebase()} or {@link Root#commit()}. Any access to disconnected tree instances  * - except for {@link Tree#getName()}, {@link Tree#isRoot()}, {@link Tree#getPath()},  * {@link Tree#getParent()} and {@link Tree#exists()} - will cause an  * {@code InvalidStateException}.  * TODO document iterability / existence (OAK-798)  */
 end_comment
 
 begin_interface
@@ -95,9 +95,9 @@ name|Status
 name|getStatus
 parameter_list|()
 function_decl|;
-comment|/**      * Determine whether this tree has been removed or has become disconnected otherwise      * (e.g. caused by a refresh, rebase or commit).      * @return {@code false} if this tree has been disconnected and {@code true} otherwise.      */
+comment|/**      * Determine whether this tree has been removed or does not exist otherwise (e.g. caused      * by a refresh, rebase or commit) or is not visible due to access control restriction      * or does not exist at all.      * @return {@code true} if this tree exists, {@code false} otherwise.      */
 name|boolean
-name|isConnected
+name|exists
 parameter_list|()
 function_decl|;
 comment|/**      * @return the current location      */
@@ -105,6 +105,13 @@ annotation|@
 name|Nonnull
 name|TreeLocation
 name|getLocation
+parameter_list|()
+function_decl|;
+comment|/**      * @return the possibly non existent parent of this {@code Tree}.      * @throws IllegalStateException if called on the root tree.      */
+annotation|@
+name|Nonnull
+name|Tree
+name|getParentNonNull
 parameter_list|()
 function_decl|;
 comment|/**      * @return the parent of this {@code Tree} instance. This method returns      *         {@code null} if the parent is not accessible or if no parent exists (root      *         node).      */
@@ -158,6 +165,18 @@ name|PropertyState
 argument_list|>
 name|getProperties
 parameter_list|()
+function_decl|;
+comment|/**      * Get a possibly non existing child of this {@code Tree}.      * @param name The name of the child to retrieve.      * @return The child with the given {@code name}.      */
+annotation|@
+name|Nonnull
+name|Tree
+name|getChildNonNull
+parameter_list|(
+annotation|@
+name|Nonnull
+name|String
+name|name
+parameter_list|)
 function_decl|;
 comment|/**      * Get a child of this {@code Tree} instance.      *      * @param name The name of the child to retrieve.      * @return The child with the given {@code name} or {@code null} if no such      *         child exists or the child is not accessible.      */
 annotation|@

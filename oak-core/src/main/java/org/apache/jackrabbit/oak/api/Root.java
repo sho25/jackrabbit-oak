@@ -38,7 +38,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * The root of a {@link Tree}.  *<p/>  * The data returned by this class filtered for the access rights that are set  * in the {@link ContentSession} that created this object.  *<p/>  * All root instances created by a content session become invalid after the  * content session is closed. Any method called on an invalid root instance  * will throw an {@code InvalidStateException}.  *<p/>  * {@link Tree} instances may become disconnected after a call to {@link #refresh()},  * {@link #rebase()} or {@link #commit()}. Any access to disconnected tree instances  * - except for  {@link Tree#getName()}, {@link Tree#isRoot()}, {@link Tree#getPath()},  * {@link Tree#getParent()} and {@link Tree#isConnected()} - will cause an  * {@code InvalidStateException}.  */
+comment|/**  * The root of a {@link Tree}.  *<p/>  * The data returned by this class filtered for the access rights that are set  * in the {@link ContentSession} that created this object.  *<p/>  * All root instances created by a content session become invalid after the  * content session is closed. Any method called on an invalid root instance  * will throw an {@code InvalidStateException}.  *<p/>  * {@link Tree} instances may become disconnected after a call to {@link #refresh()},  * {@link #rebase()} or {@link #commit()}. Any access to disconnected tree instances  * - except for  {@link Tree#getName()}, {@link Tree#isRoot()}, {@link Tree#getPath()},  * {@link Tree#getParent()} and {@link Tree#exists()} - will cause an  * {@code InvalidStateException}.  * TODO document iterability / existence (OAK-798)  */
 end_comment
 
 begin_interface
@@ -66,6 +66,18 @@ name|sourcePath
 parameter_list|,
 name|String
 name|destPath
+parameter_list|)
+function_decl|;
+comment|/**      * Retrieve the possible non existing {@code Tree} at the given absolute {@code path}.      * The path must resolve to a tree in this root.      *      * @param path absolute path to the tree      * @return tree at the given path.      */
+annotation|@
+name|Nonnull
+name|Tree
+name|getTreeNonNull
+parameter_list|(
+annotation|@
+name|Nonnull
+name|String
+name|path
 parameter_list|)
 function_decl|;
 comment|/**      * Retrieve the {@code Tree} at the given absolute {@code path}. The path      * must resolve to a tree in this root.      *      * @param path absolute path to the tree      * @return tree at the given path or {@code null} if no such tree exists or      *         if the tree at {@code path} is not accessible.      */

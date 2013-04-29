@@ -226,7 +226,7 @@ name|parentLocation
 operator|.
 name|tree
 operator|.
-name|isConnected
+name|exists
 argument_list|()
 operator|&&
 name|getProperty
@@ -253,6 +253,10 @@ name|name
 argument_list|)
 decl_stmt|;
 return|return
+name|property
+operator|!=
+literal|null
+operator|&&
 name|canRead
 argument_list|(
 name|property

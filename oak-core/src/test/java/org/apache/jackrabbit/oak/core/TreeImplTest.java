@@ -167,20 +167,6 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|Oak
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
 name|OakBaseTest
 import|;
 end_import
@@ -1036,8 +1022,6 @@ specifier|public
 name|void
 name|removeNew
 parameter_list|()
-throws|throws
-name|CommitFailedException
 block|{
 name|Tree
 name|tree
@@ -1073,7 +1057,7 @@ name|assertFalse
 argument_list|(
 name|t
 operator|.
-name|isConnected
+name|exists
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1748,7 +1732,7 @@ name|assertFalse
 argument_list|(
 name|x
 operator|.
-name|isConnected
+name|exists
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1756,7 +1740,7 @@ name|assertFalse
 argument_list|(
 name|y
 operator|.
-name|isConnected
+name|exists
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -2511,7 +2495,7 @@ name|assertFalse
 argument_list|(
 name|xx
 operator|.
-name|isConnected
+name|exists
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -2627,7 +2611,7 @@ name|assertFalse
 argument_list|(
 name|x
 operator|.
-name|isConnected
+name|exists
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -2635,7 +2619,7 @@ name|assertFalse
 argument_list|(
 name|xx
 operator|.
-name|isConnected
+name|exists
 argument_list|()
 argument_list|)
 expr_stmt|;

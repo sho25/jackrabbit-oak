@@ -81,7 +81,7 @@ name|String
 name|name
 parameter_list|)
 function_decl|;
-comment|/**      * Determine whether the underlying {@link org.apache.jackrabbit.oak.api.Tree} or      * {@link org.apache.jackrabbit.oak.api.PropertyState} for this {@code TreeLocation}      * is available.      * @return  {@code true} if the underlying item is available and has not been disconnected.      * @see org.apache.jackrabbit.oak.api.Tree#isConnected()      */
+comment|/**      * Determine whether the underlying {@link org.apache.jackrabbit.oak.api.Tree} or      * {@link org.apache.jackrabbit.oak.api.PropertyState} for this {@code TreeLocation}      * is available.      * @return  {@code true} if the underlying item is available and has not been disconnected.      * @see org.apache.jackrabbit.oak.api.Tree#exists()      */
 name|boolean
 name|exists
 parameter_list|()
