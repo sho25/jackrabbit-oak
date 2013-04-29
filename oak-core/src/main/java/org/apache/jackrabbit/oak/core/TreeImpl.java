@@ -2654,6 +2654,8 @@ expr_stmt|;
 block|}
 block|}
 comment|//-------------------------------------------------------< TreeLocation>---
+annotation|@
+name|Deprecated
 specifier|private
 specifier|final
 class|class
@@ -2801,6 +2803,8 @@ argument_list|()
 return|;
 block|}
 block|}
+annotation|@
+name|Deprecated
 specifier|private
 specifier|static
 specifier|final

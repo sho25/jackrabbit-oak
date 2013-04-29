@@ -104,6 +104,8 @@ comment|/**  * This {@code TreeLocation} refers to an invalid location in a tree
 end_comment
 
 begin_class
+annotation|@
+name|Deprecated
 specifier|final
 class|class
 name|NullLocation

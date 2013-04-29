@@ -102,6 +102,8 @@ comment|/**  * AbstractNodeLocation... TODO  */
 end_comment
 
 begin_class
+annotation|@
+name|Deprecated
 specifier|abstract
 class|class
 name|AbstractNodeLocation

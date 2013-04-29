@@ -1059,6 +1059,8 @@ return|;
 block|}
 block|}
 comment|//-------------------------------------------------------< TreeLocation>---
+annotation|@
+name|Deprecated
 specifier|private
 specifier|final
 class|class
@@ -1200,6 +1202,8 @@ literal|false
 return|;
 block|}
 block|}
+annotation|@
+name|Deprecated
 specifier|private
 specifier|final
 class|class
