@@ -3990,15 +3990,10 @@ condition|)
 block|{
 name|after
 operator|=
-name|ModifiedNodeState
-operator|.
-name|collapse
-argument_list|(
 operator|(
 name|ModifiedNodeState
 operator|)
 name|state
-argument_list|)
 expr_stmt|;
 name|NodeState
 name|base
