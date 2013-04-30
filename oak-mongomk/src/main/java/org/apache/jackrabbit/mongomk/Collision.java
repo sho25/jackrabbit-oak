@@ -68,6 +68,26 @@ import|;
 end_import
 
 begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
+import|;
+end_import
+
+begin_import
 import|import static
 name|com
 operator|.
@@ -91,6 +111,21 @@ begin_class
 class|class
 name|Collision
 block|{
+specifier|private
+specifier|static
+specifier|final
+name|Logger
+name|log
+init|=
+name|LoggerFactory
+operator|.
+name|getLogger
+argument_list|(
+name|Collision
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 specifier|private
 specifier|final
 name|Map
@@ -320,7 +355,6 @@ return|;
 block|}
 block|}
 block|}
-comment|// TODO: detect concurrent commit of previously un-merged changes
 return|return
 literal|true
 return|;
@@ -475,6 +509,8 @@ argument_list|,
 literal|true
 argument_list|)
 expr_stmt|;
+comment|// TODO: detect concurrent commit of previously un-merged changes
+comment|// TODO: check _commitRoot for revision is not 'true'
 name|store
 operator|.
 name|createOrUpdate
@@ -486,6 +522,24 @@ operator|.
 name|NODES
 argument_list|,
 name|op
+argument_list|)
+expr_stmt|;
+name|log
+operator|.
+name|debug
+argument_list|(
+literal|"Marked collision on: {} for {} ({})"
+argument_list|,
+operator|new
+name|Object
+index|[]
+block|{
+name|commitRootPath
+block|,
+name|p
+block|,
+name|revision
+block|}
 argument_list|)
 expr_stmt|;
 return|return
