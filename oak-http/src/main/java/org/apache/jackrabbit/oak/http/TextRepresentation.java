@@ -275,13 +275,6 @@ literal|'\n'
 argument_list|)
 expr_stmt|;
 block|}
-name|writer
-operator|.
-name|print
-argument_list|(
-literal|'\n'
-argument_list|)
-expr_stmt|;
 for|for
 control|(
 name|Tree
@@ -307,7 +300,7 @@ name|writer
 operator|.
 name|print
 argument_list|(
-literal|" -> "
+literal|":<"
 argument_list|)
 expr_stmt|;
 name|writer
@@ -323,6 +316,13 @@ operator|.
 name|getName
 argument_list|()
 argument_list|)
+argument_list|)
+expr_stmt|;
+name|writer
+operator|.
+name|print
+argument_list|(
+literal|">\n"
 argument_list|)
 expr_stmt|;
 block|}

@@ -373,6 +373,14 @@ name|REPRESENTATIONS
 init|=
 block|{
 operator|new
+name|HtmlRepresentation
+argument_list|()
+block|,
+operator|new
+name|TextRepresentation
+argument_list|()
+block|,
+operator|new
 name|JsonRepresentation
 argument_list|(
 name|JSON
@@ -394,10 +402,6 @@ argument_list|)
 block|,
 operator|new
 name|PostRepresentation
-argument_list|()
-block|,
-operator|new
-name|TextRepresentation
 argument_list|()
 block|}
 decl_stmt|;
