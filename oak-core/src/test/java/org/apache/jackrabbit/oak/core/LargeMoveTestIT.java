@@ -182,7 +182,7 @@ name|tree
 init|=
 name|root
 operator|.
-name|getTreeOrNull
+name|getTree
 argument_list|(
 literal|"/"
 argument_list|)
@@ -336,7 +336,7 @@ argument_list|()
 decl_stmt|;
 name|root2
 operator|.
-name|getTreeOrNull
+name|getTree
 argument_list|(
 literal|"/"
 argument_list|)

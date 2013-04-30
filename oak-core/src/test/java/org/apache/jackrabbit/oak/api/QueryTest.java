@@ -18,6 +18,18 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|junit
+operator|.
+name|framework
+operator|.
+name|Assert
+operator|.
+name|assertEquals
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -167,18 +179,6 @@ name|Test
 import|;
 end_import
 
-begin_import
-import|import static
-name|junit
-operator|.
-name|framework
-operator|.
-name|Assert
-operator|.
-name|assertEquals
-import|;
-end_import
-
 begin_comment
 comment|/**  * {@code QueryTest} contains query related tests.  */
 end_comment
@@ -269,7 +269,7 @@ name|t
 init|=
 name|r
 operator|.
-name|getTreeOrNull
+name|getTree
 argument_list|(
 literal|"/"
 argument_list|)
@@ -348,12 +348,12 @@ argument_list|()
 decl_stmt|;
 name|r
 operator|.
-name|getTreeOrNull
+name|getTree
 argument_list|(
 literal|"/test"
 argument_list|)
 operator|.
-name|getChildOrNull
+name|getChild
 argument_list|(
 literal|"node2"
 argument_list|)

@@ -18,6 +18,22 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|OakAssert
+operator|.
+name|assertSequence
+import|;
+end_import
+
+begin_import
 import|import
 name|org
 operator|.
@@ -112,22 +128,6 @@ operator|.
 name|junit
 operator|.
 name|Test
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|OakAssert
-operator|.
-name|assertSequence
 import|;
 end_import
 
@@ -230,7 +230,7 @@ name|t
 init|=
 name|r
 operator|.
-name|getTreeOrNull
+name|getTree
 argument_list|(
 literal|"/"
 argument_list|)
@@ -364,7 +364,7 @@ name|t
 init|=
 name|r
 operator|.
-name|getTreeOrNull
+name|getTree
 argument_list|(
 literal|"/"
 argument_list|)

@@ -18,6 +18,84 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|api
+operator|.
+name|Type
+operator|.
+name|STRING
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertEquals
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertFalse
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertNotNull
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertNull
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertTrue
+import|;
+end_import
+
+begin_import
 import|import
 name|org
 operator|.
@@ -177,60 +255,6 @@ name|Test
 import|;
 end_import
 
-begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|api
-operator|.
-name|Type
-operator|.
-name|STRING
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertEquals
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertNotNull
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertNull
-import|;
-end_import
-
 begin_class
 specifier|public
 class|class
@@ -307,7 +331,7 @@ name|tree
 init|=
 name|root
 operator|.
-name|getTreeOrNull
+name|getTree
 argument_list|(
 literal|"/"
 argument_list|)
@@ -410,7 +434,7 @@ name|CommitFailedException
 block|{
 name|theirRoot
 operator|.
-name|getTreeOrNull
+name|getTree
 argument_list|(
 literal|"/"
 argument_list|)
@@ -424,7 +448,7 @@ argument_list|)
 expr_stmt|;
 name|theirRoot
 operator|.
-name|getTreeOrNull
+name|getTree
 argument_list|(
 literal|"/"
 argument_list|)
@@ -438,7 +462,7 @@ argument_list|)
 expr_stmt|;
 name|ourRoot
 operator|.
-name|getTreeOrNull
+name|getTree
 argument_list|(
 literal|"/"
 argument_list|)
@@ -452,7 +476,7 @@ argument_list|)
 expr_stmt|;
 name|ourRoot
 operator|.
-name|getTreeOrNull
+name|getTree
 argument_list|(
 literal|"/"
 argument_list|)
@@ -479,7 +503,7 @@ name|p
 init|=
 name|ourRoot
 operator|.
-name|getTreeOrNull
+name|getTree
 argument_list|(
 literal|"/"
 argument_list|)
@@ -511,7 +535,7 @@ name|q
 init|=
 name|ourRoot
 operator|.
-name|getTreeOrNull
+name|getTree
 argument_list|(
 literal|"/"
 argument_list|)
@@ -550,7 +574,7 @@ name|CommitFailedException
 block|{
 name|theirRoot
 operator|.
-name|getTreeOrNull
+name|getTree
 argument_list|(
 literal|"/"
 argument_list|)
@@ -562,7 +586,7 @@ argument_list|)
 expr_stmt|;
 name|ourRoot
 operator|.
-name|getTreeOrNull
+name|getTree
 argument_list|(
 literal|"/"
 argument_list|)
@@ -589,7 +613,7 @@ name|p
 init|=
 name|ourRoot
 operator|.
-name|getTreeOrNull
+name|getTree
 argument_list|(
 literal|"/"
 argument_list|)
@@ -616,7 +640,7 @@ name|CommitFailedException
 block|{
 name|theirRoot
 operator|.
-name|getTreeOrNull
+name|getTree
 argument_list|(
 literal|"/"
 argument_list|)
@@ -630,7 +654,7 @@ argument_list|)
 expr_stmt|;
 name|ourRoot
 operator|.
-name|getTreeOrNull
+name|getTree
 argument_list|(
 literal|"/"
 argument_list|)
@@ -657,7 +681,7 @@ name|p
 init|=
 name|ourRoot
 operator|.
-name|getTreeOrNull
+name|getTree
 argument_list|(
 literal|"/"
 argument_list|)
@@ -696,7 +720,7 @@ name|CommitFailedException
 block|{
 name|theirRoot
 operator|.
-name|getTreeOrNull
+name|getTree
 argument_list|(
 literal|"/"
 argument_list|)
@@ -710,7 +734,7 @@ argument_list|)
 expr_stmt|;
 name|ourRoot
 operator|.
-name|getTreeOrNull
+name|getTree
 argument_list|(
 literal|"/"
 argument_list|)
@@ -735,7 +759,7 @@ name|p
 init|=
 name|ourRoot
 operator|.
-name|getTreeOrNull
+name|getTree
 argument_list|(
 literal|"/"
 argument_list|)
@@ -774,7 +798,7 @@ name|CommitFailedException
 block|{
 name|theirRoot
 operator|.
-name|getTreeOrNull
+name|getTree
 argument_list|(
 literal|"/"
 argument_list|)
@@ -793,7 +817,7 @@ argument_list|)
 expr_stmt|;
 name|ourRoot
 operator|.
-name|getTreeOrNull
+name|getTree
 argument_list|(
 literal|"/"
 argument_list|)
@@ -825,7 +849,7 @@ name|n
 init|=
 name|ourRoot
 operator|.
-name|getTreeOrNull
+name|getTree
 argument_list|(
 literal|"/n"
 argument_list|)
@@ -864,7 +888,7 @@ name|CommitFailedException
 block|{
 name|theirRoot
 operator|.
-name|getTreeOrNull
+name|getTree
 argument_list|(
 literal|"/x"
 argument_list|)
@@ -874,7 +898,7 @@ argument_list|()
 expr_stmt|;
 name|ourRoot
 operator|.
-name|getTreeOrNull
+name|getTree
 argument_list|(
 literal|"/x"
 argument_list|)
@@ -901,14 +925,17 @@ name|n
 init|=
 name|ourRoot
 operator|.
-name|getTreeOrNull
+name|getTree
 argument_list|(
 literal|"/x"
 argument_list|)
 decl_stmt|;
-name|assertNull
+name|assertFalse
 argument_list|(
 name|n
+operator|.
+name|exists
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -923,7 +950,7 @@ name|CommitFailedException
 block|{
 name|theirRoot
 operator|.
-name|getTreeOrNull
+name|getTree
 argument_list|(
 literal|"/x"
 argument_list|)
@@ -937,7 +964,7 @@ argument_list|)
 expr_stmt|;
 name|ourRoot
 operator|.
-name|getTreeOrNull
+name|getTree
 argument_list|(
 literal|"/x"
 argument_list|)
@@ -960,14 +987,17 @@ name|n
 init|=
 name|ourRoot
 operator|.
-name|getTreeOrNull
+name|getTree
 argument_list|(
 literal|"/x"
 argument_list|)
 decl_stmt|;
-name|assertNotNull
+name|assertTrue
 argument_list|(
 name|n
+operator|.
+name|exists
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|assertEquals
