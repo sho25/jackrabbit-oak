@@ -46,32 +46,24 @@ name|DefaultNodeStateDiff
 implements|implements
 name|NodeStateDiff
 block|{
-specifier|public
-specifier|static
-specifier|final
-name|NodeStateDiff
-name|INSTANCE
-init|=
-operator|new
-name|DefaultNodeStateDiff
-argument_list|()
-decl_stmt|;
 annotation|@
 name|Override
 specifier|public
-name|void
+name|boolean
 name|propertyAdded
 parameter_list|(
 name|PropertyState
 name|after
 parameter_list|)
 block|{
-comment|// do nothing
+return|return
+literal|true
+return|;
 block|}
 annotation|@
 name|Override
 specifier|public
-name|void
+name|boolean
 name|propertyChanged
 parameter_list|(
 name|PropertyState
@@ -81,24 +73,28 @@ name|PropertyState
 name|after
 parameter_list|)
 block|{
-comment|// do nothing
+return|return
+literal|true
+return|;
 block|}
 annotation|@
 name|Override
 specifier|public
-name|void
+name|boolean
 name|propertyDeleted
 parameter_list|(
 name|PropertyState
 name|before
 parameter_list|)
 block|{
-comment|// do nothing
+return|return
+literal|true
+return|;
 block|}
 annotation|@
 name|Override
 specifier|public
-name|void
+name|boolean
 name|childNodeAdded
 parameter_list|(
 name|String
@@ -108,12 +104,14 @@ name|NodeState
 name|after
 parameter_list|)
 block|{
-comment|// do nothing
+return|return
+literal|true
+return|;
 block|}
 annotation|@
 name|Override
 specifier|public
-name|void
+name|boolean
 name|childNodeChanged
 parameter_list|(
 name|String
@@ -126,12 +124,14 @@ name|NodeState
 name|after
 parameter_list|)
 block|{
-comment|// do nothing
+return|return
+literal|true
+return|;
 block|}
 annotation|@
 name|Override
 specifier|public
-name|void
+name|boolean
 name|childNodeDeleted
 parameter_list|(
 name|String
@@ -141,7 +141,9 @@ name|NodeState
 name|before
 parameter_list|)
 block|{
-comment|// do nothing
+return|return
+literal|true
+return|;
 block|}
 block|}
 end_class

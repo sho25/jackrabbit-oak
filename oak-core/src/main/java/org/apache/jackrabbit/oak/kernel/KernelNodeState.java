@@ -1814,7 +1814,7 @@ comment|/**      * Optimised comparison method that can avoid traversing all pro
 annotation|@
 name|Override
 specifier|public
-name|void
+name|boolean
 name|compareAgainstBaseState
 parameter_list|(
 name|NodeState
@@ -1831,7 +1831,9 @@ operator|==
 name|base
 condition|)
 block|{
-return|return;
+return|return
+literal|true
+return|;
 comment|// no differences
 block|}
 elseif|else
@@ -1840,8 +1842,16 @@ condition|(
 name|base
 operator|==
 name|EMPTY_NODE
+operator|||
+operator|!
+name|base
+operator|.
+name|exists
+argument_list|()
 condition|)
 block|{
+comment|// special case
+return|return
 name|EmptyNodeState
 operator|.
 name|compareAgainstEmptyState
@@ -1850,9 +1860,7 @@ name|this
 argument_list|,
 name|diff
 argument_list|)
-expr_stmt|;
-comment|// special case
-return|return;
+return|;
 block|}
 elseif|else
 if|if
@@ -1903,7 +1911,9 @@ name|path
 argument_list|)
 condition|)
 block|{
-return|return;
+return|return
+literal|true
+return|;
 comment|// no differences
 block|}
 else|else
@@ -1932,7 +1942,9 @@ name|hash
 argument_list|)
 condition|)
 block|{
-return|return;
+return|return
+literal|true
+return|;
 comment|// no differences
 block|}
 elseif|else
@@ -1952,7 +1964,9 @@ name|id
 argument_list|)
 condition|)
 block|{
-return|return;
+return|return
+literal|true
+return|;
 comment|// no differences
 block|}
 elseif|else
@@ -2001,12 +2015,15 @@ argument_list|,
 name|diff
 argument_list|)
 expr_stmt|;
-return|return;
+return|return
+literal|true
+return|;
 block|}
 block|}
 block|}
 block|}
 comment|// fall back to the generic node state diff algorithm
+return|return
 name|super
 operator|.
 name|compareAgainstBaseState
@@ -2015,7 +2032,7 @@ name|base
 argument_list|,
 name|diff
 argument_list|)
-expr_stmt|;
+return|;
 block|}
 comment|//------------------------------------------------------------< Object>--
 comment|/**      * Optimised equality check that can avoid a full tree comparison if      * both instances come from the same MicroKernel and have either      * the same revision and path or the same content hash (when available).      * Otherwise we fall back to the default tree comparison algorithm.      *      * @see<a href="https://issues.apache.org/jira/browse/OAK-172">OAK-172</a>      */

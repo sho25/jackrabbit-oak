@@ -632,7 +632,7 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|void
+name|boolean
 name|compareAgainstBaseState
 parameter_list|(
 name|NodeState
@@ -649,7 +649,9 @@ operator|==
 name|this
 condition|)
 block|{
-return|return;
+return|return
+literal|true
+return|;
 comment|// no changes
 block|}
 elseif|else
@@ -658,8 +660,16 @@ condition|(
 name|base
 operator|==
 name|EMPTY_NODE
+operator|||
+operator|!
+name|base
+operator|.
+name|exists
+argument_list|()
 condition|)
 block|{
+comment|// special case
+return|return
 name|EmptyNodeState
 operator|.
 name|compareAgainstEmptyState
@@ -668,8 +678,7 @@ name|this
 argument_list|,
 name|diff
 argument_list|)
-expr_stmt|;
-comment|// special case
+return|;
 block|}
 elseif|else
 if|if
@@ -687,9 +696,7 @@ name|SegmentNodeState
 operator|)
 name|base
 decl_stmt|;
-if|if
-condition|(
-operator|!
+return|return
 name|recordId
 operator|.
 name|equals
@@ -698,8 +705,7 @@ name|that
 operator|.
 name|recordId
 argument_list|)
-condition|)
-block|{
+operator|||
 name|getTemplate
 argument_list|()
 operator|.
@@ -720,11 +726,11 @@ name|recordId
 argument_list|,
 name|diff
 argument_list|)
-expr_stmt|;
-block|}
+return|;
 block|}
 else|else
 block|{
+return|return
 name|super
 operator|.
 name|compareAgainstBaseState
@@ -733,7 +739,7 @@ name|base
 argument_list|,
 name|diff
 argument_list|)
-expr_stmt|;
+return|;
 comment|// fallback
 block|}
 block|}

@@ -607,7 +607,7 @@ comment|//------------------------------------------------------< NodeStateDiff>
 annotation|@
 name|Override
 specifier|public
-name|void
+name|boolean
 name|childNodeAdded
 parameter_list|(
 name|String
@@ -660,11 +660,14 @@ name|CONFLICT
 argument_list|)
 expr_stmt|;
 block|}
+return|return
+literal|true
+return|;
 block|}
 annotation|@
 name|Override
 specifier|public
-name|void
+name|boolean
 name|childNodeChanged
 parameter_list|(
 name|String
@@ -693,6 +696,9 @@ argument_list|,
 name|conflictHandler
 argument_list|)
 expr_stmt|;
+return|return
+literal|true
+return|;
 block|}
 comment|//------------------------------------------------------------< private>---
 specifier|private

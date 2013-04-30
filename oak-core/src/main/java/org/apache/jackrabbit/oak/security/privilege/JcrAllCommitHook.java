@@ -346,7 +346,7 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|void
+name|boolean
 name|childNodeAdded
 parameter_list|(
 name|String
@@ -536,11 +536,14 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+return|return
+literal|true
+return|;
 block|}
 annotation|@
 name|Override
 specifier|public
-name|void
+name|boolean
 name|childNodeChanged
 parameter_list|(
 name|String
@@ -595,6 +598,9 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+return|return
+literal|true
+return|;
 block|}
 block|}
 block|}

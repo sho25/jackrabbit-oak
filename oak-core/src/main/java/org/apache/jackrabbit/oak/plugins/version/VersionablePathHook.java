@@ -422,7 +422,7 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|void
+name|boolean
 name|propertyAdded
 parameter_list|(
 name|PropertyState
@@ -514,11 +514,14 @@ name|versionablePath
 argument_list|)
 expr_stmt|;
 block|}
+return|return
+literal|true
+return|;
 block|}
 annotation|@
 name|Override
 specifier|public
-name|void
+name|boolean
 name|childNodeAdded
 parameter_list|(
 name|String
@@ -528,6 +531,7 @@ name|NodeState
 name|after
 parameter_list|)
 block|{
+return|return
 name|childNodeChanged
 argument_list|(
 name|name
@@ -536,12 +540,12 @@ name|EMPTY_NODE
 argument_list|,
 name|after
 argument_list|)
-expr_stmt|;
+return|;
 block|}
 annotation|@
 name|Override
 specifier|public
-name|void
+name|boolean
 name|childNodeChanged
 parameter_list|(
 name|String
@@ -565,6 +569,7 @@ argument_list|,
 name|name
 argument_list|)
 decl_stmt|;
+return|return
 name|after
 operator|.
 name|compareAgainstBaseState
@@ -579,7 +584,7 @@ argument_list|,
 name|node
 argument_list|)
 argument_list|)
-expr_stmt|;
+return|;
 block|}
 block|}
 specifier|private
