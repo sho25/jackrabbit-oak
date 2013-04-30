@@ -740,7 +740,7 @@ name|String
 name|getName
 parameter_list|()
 block|{
-name|enterNoStateCheck
+name|enter
 argument_list|()
 expr_stmt|;
 return|return
@@ -754,7 +754,7 @@ name|boolean
 name|isRoot
 parameter_list|()
 block|{
-name|enterNoStateCheck
+name|enter
 argument_list|()
 expr_stmt|;
 return|return
@@ -770,7 +770,7 @@ name|String
 name|getPath
 parameter_list|()
 block|{
-name|enterNoStateCheck
+name|enter
 argument_list|()
 expr_stmt|;
 return|return
@@ -827,7 +827,7 @@ name|TreeLocation
 name|getLocation
 parameter_list|()
 block|{
-name|enterNoStateCheck
+name|enter
 argument_list|()
 expr_stmt|;
 return|return
@@ -846,7 +846,7 @@ name|exists
 parameter_list|()
 block|{
 return|return
-name|enterNoStateCheck
+name|enter
 argument_list|()
 return|;
 block|}
@@ -884,7 +884,7 @@ name|Tree
 name|getParentOrNull
 parameter_list|()
 block|{
-name|enterNoStateCheck
+name|enter
 argument_list|()
 expr_stmt|;
 if|if
@@ -1138,7 +1138,7 @@ argument_list|(
 name|name
 argument_list|)
 expr_stmt|;
-name|enterNoStateCheck
+name|enter
 argument_list|()
 expr_stmt|;
 return|return
@@ -1343,7 +1343,7 @@ name|boolean
 name|remove
 parameter_list|()
 block|{
-name|enter
+name|checkExists
 argument_list|()
 expr_stmt|;
 if|if
@@ -1438,7 +1438,7 @@ name|String
 name|name
 parameter_list|)
 block|{
-name|enter
+name|checkExists
 argument_list|()
 expr_stmt|;
 if|if
@@ -1521,7 +1521,7 @@ name|boolean
 name|enable
 parameter_list|)
 block|{
-name|enter
+name|checkExists
 argument_list|()
 expr_stmt|;
 if|if
@@ -1555,7 +1555,7 @@ name|String
 name|name
 parameter_list|)
 block|{
-name|enter
+name|checkExists
 argument_list|()
 expr_stmt|;
 if|if
@@ -1792,7 +1792,7 @@ name|PropertyState
 name|property
 parameter_list|)
 block|{
-name|enter
+name|checkExists
 argument_list|()
 expr_stmt|;
 name|nodeBuilder
@@ -1824,7 +1824,7 @@ name|T
 name|value
 parameter_list|)
 block|{
-name|enter
+name|checkExists
 argument_list|()
 expr_stmt|;
 name|nodeBuilder
@@ -1864,7 +1864,7 @@ argument_list|>
 name|type
 parameter_list|)
 block|{
-name|enter
+name|checkExists
 argument_list|()
 expr_stmt|;
 name|nodeBuilder
@@ -1894,7 +1894,7 @@ name|String
 name|name
 parameter_list|)
 block|{
-name|enter
+name|checkExists
 argument_list|()
 expr_stmt|;
 name|nodeBuilder
@@ -2318,21 +2318,21 @@ return|;
 block|}
 specifier|private
 name|void
-name|enter
+name|checkExists
 parameter_list|()
 block|{
 name|checkState
 argument_list|(
-name|enterNoStateCheck
+name|enter
 argument_list|()
 argument_list|,
-literal|"This tree is not connected"
+literal|"This tree does not exist"
 argument_list|)
 expr_stmt|;
 block|}
 specifier|private
 name|boolean
-name|enterNoStateCheck
+name|enter
 parameter_list|()
 block|{
 name|root
