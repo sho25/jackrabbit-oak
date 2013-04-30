@@ -37,16 +37,6 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Ignore
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
 name|Test
 import|;
 end_import
@@ -1874,8 +1864,6 @@ block|}
 block|}
 annotation|@
 name|Test
-annotation|@
-name|Ignore
 specifier|public
 name|void
 name|addExistingNodeBranchLoses1
@@ -1964,8 +1952,6 @@ block|}
 block|}
 annotation|@
 name|Test
-annotation|@
-name|Ignore
 specifier|public
 name|void
 name|addExistingNodeBranchLoses2
@@ -2207,8 +2193,6 @@ block|}
 block|}
 annotation|@
 name|Test
-annotation|@
-name|Ignore
 specifier|public
 name|void
 name|removeRemovedNodeBranchLoses1
@@ -2297,8 +2281,6 @@ block|}
 block|}
 annotation|@
 name|Test
-annotation|@
-name|Ignore
 specifier|public
 name|void
 name|removeRemovedNodeBranchLoses2
@@ -2540,8 +2522,6 @@ block|}
 block|}
 annotation|@
 name|Test
-annotation|@
-name|Ignore
 specifier|public
 name|void
 name|removeChangedNodeBranchLoses1
@@ -2630,8 +2610,6 @@ block|}
 block|}
 annotation|@
 name|Test
-annotation|@
-name|Ignore
 specifier|public
 name|void
 name|removeChangedNodeBranchLoses2
@@ -2873,8 +2851,6 @@ block|}
 block|}
 annotation|@
 name|Test
-annotation|@
-name|Ignore
 specifier|public
 name|void
 name|changeRemovedNodeBranchLoses1
@@ -2963,8 +2939,6 @@ block|}
 block|}
 annotation|@
 name|Test
-annotation|@
-name|Ignore
 specifier|public
 name|void
 name|changeRemovedNodeBranchLoses2
