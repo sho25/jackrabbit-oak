@@ -317,6 +317,16 @@ name|LoggerFactory
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|MarkerFactory
+import|;
+end_import
+
 begin_comment
 comment|/**  * TODO document  */
 end_comment
@@ -803,6 +813,24 @@ operator|==
 literal|null
 condition|)
 block|{
+name|log
+operator|.
+name|error
+argument_list|(
+name|MarkerFactory
+operator|.
+name|getMarker
+argument_list|(
+literal|"observation"
+argument_list|)
+argument_list|,
+literal|"Registering event listener {} with filter {}"
+argument_list|,
+name|listener
+argument_list|,
+name|filter
+argument_list|)
+expr_stmt|;
 name|collector
 operator|=
 operator|new
@@ -834,6 +862,24 @@ expr_stmt|;
 block|}
 else|else
 block|{
+name|log
+operator|.
+name|debug
+argument_list|(
+name|MarkerFactory
+operator|.
+name|getMarker
+argument_list|(
+literal|"observation"
+argument_list|)
+argument_list|,
+literal|"Changing event listener {} to filter {}"
+argument_list|,
+name|listener
+argument_list|,
+name|filter
+argument_list|)
+expr_stmt|;
 name|collector
 operator|.
 name|updateFilter
