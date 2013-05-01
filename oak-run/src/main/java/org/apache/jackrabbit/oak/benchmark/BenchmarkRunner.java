@@ -404,6 +404,13 @@ name|cacheSize
 operator|*
 name|MB
 argument_list|)
+block|,
+name|OakRepositoryFixture
+operator|.
+name|getTar
+argument_list|(
+literal|"data.tar"
+argument_list|)
 block|}
 decl_stmt|;
 name|Benchmark

@@ -47,7 +47,7 @@ name|easymock
 operator|.
 name|EasyMock
 operator|.
-name|createMock
+name|createControl
 import|;
 end_import
 
@@ -145,16 +145,6 @@ begin_import
 import|import
 name|org
 operator|.
-name|easymock
-operator|.
-name|EasyMock
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
 name|junit
 operator|.
 name|Before
@@ -205,10 +195,13 @@ specifier|final
 name|NodeStateDiff
 name|diff
 init|=
-name|EasyMock
+name|createControl
+argument_list|()
 operator|.
 name|createMock
 argument_list|(
+literal|"diff"
+argument_list|,
 name|NodeStateDiff
 operator|.
 name|class
