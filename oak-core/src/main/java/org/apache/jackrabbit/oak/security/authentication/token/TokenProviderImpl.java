@@ -22,6 +22,24 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|api
+operator|.
+name|Type
+operator|.
+name|STRING
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -361,9 +379,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|namepath
+name|core
 operator|.
-name|NamePathMapper
+name|IdentifierManager
 import|;
 end_import
 
@@ -377,9 +395,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|core
+name|namepath
 operator|.
-name|IdentifierManager
+name|NamePathMapper
 import|;
 end_import
 
@@ -586,24 +604,6 @@ operator|.
 name|slf4j
 operator|.
 name|LoggerFactory
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|api
-operator|.
-name|Type
-operator|.
-name|STRING
 import|;
 end_import
 
@@ -1508,6 +1508,12 @@ name|tokenTree
 operator|==
 literal|null
 operator|||
+operator|!
+name|tokenTree
+operator|.
+name|exists
+argument_list|()
+operator|||
 name|userId
 operator|==
 literal|null
@@ -1983,6 +1989,11 @@ condition|(
 name|tokenTree
 operator|!=
 literal|null
+operator|&&
+name|tokenTree
+operator|.
+name|exists
+argument_list|()
 condition|)
 block|{
 try|try

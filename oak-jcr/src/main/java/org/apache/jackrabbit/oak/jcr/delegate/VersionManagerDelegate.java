@@ -475,6 +475,12 @@ condition|(
 name|t
 operator|==
 literal|null
+operator|||
+operator|!
+name|t
+operator|.
+name|exists
+argument_list|()
 condition|)
 block|{
 throw|throw

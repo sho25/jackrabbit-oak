@@ -520,6 +520,12 @@ condition|(
 name|version
 operator|==
 literal|null
+operator|||
+operator|!
+name|version
+operator|.
+name|exists
+argument_list|()
 condition|)
 block|{
 throw|throw

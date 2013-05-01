@@ -648,6 +648,12 @@ operator|(
 name|tree
 operator|==
 literal|null
+operator|||
+operator|!
+name|tree
+operator|.
+name|exists
+argument_list|()
 operator|)
 condition|?
 literal|null
