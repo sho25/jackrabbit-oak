@@ -1554,14 +1554,13 @@ operator|.
 name|isProtected
 argument_list|()
 operator|&&
+operator|!
 name|tree
 operator|.
-name|getChildOrNull
+name|hasChild
 argument_list|(
 name|name
 argument_list|)
-operator|==
-literal|null
 condition|)
 block|{
 throw|throw

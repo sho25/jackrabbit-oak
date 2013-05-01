@@ -141,16 +141,6 @@ name|javax
 operator|.
 name|annotation
 operator|.
-name|CheckForNull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|annotation
-operator|.
 name|Nonnull
 import|;
 end_import
@@ -749,8 +739,9 @@ name|permissionsTree
 argument_list|,
 name|principal
 argument_list|)
-operator|!=
-literal|null
+operator|.
+name|exists
+argument_list|()
 condition|)
 block|{
 name|refresh
@@ -799,7 +790,7 @@ name|t2
 init|=
 name|permissionsTree
 operator|.
-name|getChildOrNull
+name|getChild
 argument_list|(
 name|t
 operator|.
@@ -810,8 +801,9 @@ decl_stmt|;
 if|if
 condition|(
 name|t2
-operator|!=
-literal|null
+operator|.
+name|exists
+argument_list|()
 operator|&&
 operator|!
 name|t
@@ -1134,7 +1126,7 @@ return|;
 block|}
 comment|//------------------------------------------------------------< private>---
 annotation|@
-name|CheckForNull
+name|Nonnull
 specifier|private
 specifier|static
 name|ImmutableTree
@@ -1150,7 +1142,7 @@ block|{
 return|return
 name|permissionsTree
 operator|.
-name|getChildOrNull
+name|getChild
 argument_list|(
 name|Text
 operator|.
@@ -1235,8 +1227,9 @@ decl_stmt|;
 if|if
 condition|(
 name|t
-operator|!=
-literal|null
+operator|.
+name|exists
+argument_list|()
 condition|)
 block|{
 name|trees

@@ -467,7 +467,7 @@ name|bundle
 init|=
 name|bundles
 operator|.
-name|getChildOrNull
+name|getChild
 argument_list|(
 name|String
 operator|.
@@ -480,8 +480,9 @@ decl_stmt|;
 if|if
 condition|(
 name|bundle
-operator|!=
-literal|null
+operator|.
+name|exists
+argument_list|()
 condition|)
 block|{
 name|nextBundleId
@@ -586,7 +587,7 @@ name|getString
 argument_list|(
 name|event
 operator|.
-name|getChildOrNull
+name|getChild
 argument_list|(
 name|id
 argument_list|)
@@ -613,7 +614,7 @@ name|getString
 argument_list|(
 name|event
 operator|.
-name|getChildOrNull
+name|getChild
 argument_list|(
 name|id
 argument_list|)

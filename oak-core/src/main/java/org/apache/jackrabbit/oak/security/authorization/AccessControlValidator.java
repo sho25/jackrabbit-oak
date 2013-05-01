@@ -20,6 +20,40 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkNotNull
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|api
+operator|.
+name|CommitFailedException
+operator|.
+name|ACCESS
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -283,40 +317,6 @@ name|Text
 import|;
 end_import
 
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|Preconditions
-operator|.
-name|checkNotNull
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|api
-operator|.
-name|CommitFailedException
-operator|.
-name|ACCESS
-import|;
-end_import
-
 begin_comment
 comment|/**  * Validation for access control information changed by regular JCR (and Jackrabbit)  * access control management API.  */
 end_comment
@@ -549,7 +549,7 @@ name|checkNotNull
 argument_list|(
 name|parentAfter
 operator|.
-name|getChildOrNull
+name|getChild
 argument_list|(
 name|name
 argument_list|)
@@ -603,7 +603,7 @@ name|checkNotNull
 argument_list|(
 name|parentBefore
 operator|.
-name|getChildOrNull
+name|getChild
 argument_list|(
 name|name
 argument_list|)
@@ -616,7 +616,7 @@ name|checkNotNull
 argument_list|(
 name|parentAfter
 operator|.
-name|getChildOrNull
+name|getChild
 argument_list|(
 name|name
 argument_list|)
@@ -1043,14 +1043,16 @@ name|parent
 init|=
 name|aceNode
 operator|.
-name|getParentOrNull
+name|getParent
 argument_list|()
 decl_stmt|;
 if|if
 condition|(
+operator|!
 name|parent
-operator|==
-literal|null
+operator|.
+name|exists
+argument_list|()
 operator|||
 operator|!
 name|NT_REP_ACL
@@ -1262,7 +1264,7 @@ name|checkNotNull
 argument_list|(
 name|aceTree
 operator|.
-name|getParentOrNull
+name|getParent
 argument_list|()
 argument_list|)
 decl_stmt|;

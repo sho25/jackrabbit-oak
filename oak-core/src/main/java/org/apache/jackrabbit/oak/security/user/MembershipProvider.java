@@ -20,6 +20,42 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|api
+operator|.
+name|Type
+operator|.
+name|STRINGS
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|api
+operator|.
+name|Type
+operator|.
+name|WEAKREFERENCE
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -347,42 +383,6 @@ name|LoggerFactory
 import|;
 end_import
 
-begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|api
-operator|.
-name|Type
-operator|.
-name|STRINGS
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|api
-operator|.
-name|Type
-operator|.
-name|WEAKREFERENCE
-import|;
-end_import
-
 begin_comment
 comment|/**  * {@code MembershipProvider} implementation storing group membership information  * with the {@code Tree} associated with a given {@link org.apache.jackrabbit.api.security.user.Group}.  * Depending on the configuration there are two variants on how group members  * are recorded:  *  *<h3>Membership stored in multi-valued property</h3>  * This is the default way of storing membership information with the following  * characteristics:  *<ul>  *<li>Multivalued property {@link #REP_MEMBERS}</li>  *<li>Property type: {@link javax.jcr.PropertyType#WEAKREFERENCE}</li>  *<li>Used if the config option {@link org.apache.jackrabbit.oak.spi.security.user.UserConstants#PARAM_GROUP_MEMBERSHIP_SPLIT_SIZE} is missing or&lt;4</li>  *</ul>  *  *<h3>Membership stored in individual properties</h3>  * Variant to store group membership based on the  * {@link org.apache.jackrabbit.oak.spi.security.user.UserConstants#PARAM_GROUP_MEMBERSHIP_SPLIT_SIZE} configuration parameter:  *  *<ul>  *<li>Membership information stored underneath a {@link #REP_MEMBERS} node hierarchy</li>  *<li>Individual member information is stored each in a {@link javax.jcr.PropertyType#WEAKREFERENCE}  *     property</li>  *<li>Node hierarchy is split based on the {@link org.apache.jackrabbit.oak.spi.security.user.UserConstants#PARAM_GROUP_MEMBERSHIP_SPLIT_SIZE}  *     configuration parameter.</li>  *<li>{@link org.apache.jackrabbit.oak.spi.security.user.UserConstants#PARAM_GROUP_MEMBERSHIP_SPLIT_SIZE} must be greater than 4  *     in order to turn on this behavior</li>  *</ul>  *  *<h3>Compatibility</h3>  * This membership provider is able to deal with both options being present in  * the content. If the {@link org.apache.jackrabbit.oak.spi.security.user.UserConstants#PARAM_GROUP_MEMBERSHIP_SPLIT_SIZE} configuration  * parameter is modified later on, existing membership information is not  * modified or converted to the new structure.  */
 end_comment
@@ -665,7 +665,7 @@ name|membersTree
 init|=
 name|groupTree
 operator|.
-name|getChildOrNull
+name|getChild
 argument_list|(
 name|REP_MEMBERS
 argument_list|)
@@ -673,8 +673,9 @@ decl_stmt|;
 if|if
 condition|(
 name|membersTree
-operator|!=
-literal|null
+operator|.
+name|exists
+argument_list|()
 condition|)
 block|{
 throw|throw
@@ -896,7 +897,7 @@ name|membersTree
 init|=
 name|groupTree
 operator|.
-name|getChildOrNull
+name|getChild
 argument_list|(
 name|REP_MEMBERS
 argument_list|)
@@ -904,8 +905,9 @@ decl_stmt|;
 if|if
 condition|(
 name|membersTree
-operator|!=
-literal|null
+operator|.
+name|exists
+argument_list|()
 condition|)
 block|{
 comment|// FIXME: fix.. testing for property name in jr2 wasn't correct.
@@ -1143,7 +1145,7 @@ name|membersTree
 init|=
 name|groupTree
 operator|.
-name|getChildOrNull
+name|getChild
 argument_list|(
 name|REP_MEMBERS
 argument_list|)
@@ -1151,8 +1153,9 @@ decl_stmt|;
 if|if
 condition|(
 name|membersTree
-operator|!=
-literal|null
+operator|.
+name|exists
+argument_list|()
 condition|)
 block|{
 comment|// TODO OAK-482: add implementation

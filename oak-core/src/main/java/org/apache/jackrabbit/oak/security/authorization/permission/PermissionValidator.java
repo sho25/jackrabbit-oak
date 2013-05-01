@@ -22,6 +22,40 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkNotNull
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|api
+operator|.
+name|CommitFailedException
+operator|.
+name|ACCESS
+import|;
+end_import
+
+begin_import
 import|import
 name|javax
 operator|.
@@ -295,40 +329,6 @@ name|TreeUtil
 import|;
 end_import
 
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|Preconditions
-operator|.
-name|checkNotNull
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|api
-operator|.
-name|CommitFailedException
-operator|.
-name|ACCESS
-import|;
-end_import
-
 begin_comment
 comment|/**  * Validator implementation that checks for sufficient permission for all  * write operations executed by a given content session.  */
 end_comment
@@ -559,7 +559,7 @@ name|child
 init|=
 name|parentAfter
 operator|.
-name|getChildOrNull
+name|getChild
 argument_list|(
 name|childName
 argument_list|)
@@ -639,7 +639,7 @@ name|checkNotNull
 argument_list|(
 name|parentAfter
 operator|.
-name|getChildOrNull
+name|getChild
 argument_list|(
 name|name
 argument_list|)
@@ -716,7 +716,7 @@ name|childBefore
 init|=
 name|parentBefore
 operator|.
-name|getChildOrNull
+name|getChild
 argument_list|(
 name|name
 argument_list|)
@@ -726,7 +726,7 @@ name|childAfter
 init|=
 name|parentAfter
 operator|.
-name|getChildOrNull
+name|getChild
 argument_list|(
 name|name
 argument_list|)
@@ -763,7 +763,7 @@ name|checkNotNull
 argument_list|(
 name|parentBefore
 operator|.
-name|getChildOrNull
+name|getChild
 argument_list|(
 name|name
 argument_list|)

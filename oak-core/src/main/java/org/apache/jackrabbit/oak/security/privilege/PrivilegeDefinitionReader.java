@@ -294,7 +294,7 @@ name|definitionTree
 init|=
 name|privilegesTree
 operator|.
-name|getChildOrNull
+name|getChild
 argument_list|(
 name|privilegeName
 argument_list|)

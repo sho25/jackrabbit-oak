@@ -182,20 +182,6 @@ name|String
 name|name
 parameter_list|)
 function_decl|;
-comment|/**      * Get a child of this {@code Tree} instance.      *      * @param name The name of the child to retrieve.      * @return The child with the given {@code name} or {@code null} if no such      *         child exists or the child is not accessible.      * @deprecated use {@link #getChild(String)} and {@link #exists()} instead.      */
-annotation|@
-name|CheckForNull
-annotation|@
-name|Deprecated
-name|Tree
-name|getChildOrNull
-parameter_list|(
-annotation|@
-name|Nonnull
-name|String
-name|name
-parameter_list|)
-function_decl|;
 comment|/**      * Determine if a child of this {@code Tree} instance exists. If no child      * exists or an existing child isn't accessible this method returns {@code false}.      *      * @param name The name of the child      * @return {@code true} if and only if a child with the given {@code name}      *         exists and is accessible for the current content session.      */
 name|boolean
 name|hasChild

@@ -1188,16 +1188,18 @@ name|restrictions
 init|=
 name|aceTree
 operator|.
-name|getChildOrNull
+name|getChild
 argument_list|(
 name|REP_RESTRICTIONS
 argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|!
 name|restrictions
-operator|==
-literal|null
+operator|.
+name|exists
+argument_list|()
 condition|)
 block|{
 comment|// no rep:restrictions tree -> read from aceTree for backwards compatibility

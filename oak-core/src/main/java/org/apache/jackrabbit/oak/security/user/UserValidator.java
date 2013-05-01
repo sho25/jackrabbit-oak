@@ -20,6 +20,22 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkNotNull
+import|;
+end_import
+
+begin_import
 import|import
 name|javax
 operator|.
@@ -298,22 +314,6 @@ operator|.
 name|util
 operator|.
 name|Text
-import|;
-end_import
-
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|Preconditions
-operator|.
-name|checkNotNull
 import|;
 end_import
 
@@ -788,7 +788,7 @@ name|checkNotNull
 argument_list|(
 name|parentAfter
 operator|.
-name|getChildOrNull
+name|getChild
 argument_list|(
 name|name
 argument_list|)
@@ -904,14 +904,14 @@ name|UserValidator
 argument_list|(
 name|parentBefore
 operator|.
-name|getChildOrNull
+name|getChild
 argument_list|(
 name|name
 argument_list|)
 argument_list|,
 name|parentAfter
 operator|.
-name|getChildOrNull
+name|getChild
 argument_list|(
 name|name
 argument_list|)
@@ -940,7 +940,7 @@ name|node
 init|=
 name|parentBefore
 operator|.
-name|getChildOrNull
+name|getChild
 argument_list|(
 name|name
 argument_list|)
@@ -977,7 +977,7 @@ name|boolean
 name|isAdminUser
 parameter_list|(
 annotation|@
-name|Nullable
+name|Nonnull
 name|Tree
 name|userTree
 parameter_list|)
@@ -985,8 +985,9 @@ block|{
 if|if
 condition|(
 name|userTree
-operator|!=
-literal|null
+operator|.
+name|exists
+argument_list|()
 operator|&&
 name|isUser
 argument_list|(

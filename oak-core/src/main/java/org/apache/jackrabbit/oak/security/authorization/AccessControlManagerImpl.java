@@ -3803,7 +3803,7 @@ name|aclTree
 init|=
 name|accessControlledTree
 operator|.
-name|getChildOrNull
+name|getChild
 argument_list|(
 name|aclName
 argument_list|)
@@ -3811,8 +3811,9 @@ decl_stmt|;
 if|if
 condition|(
 name|aclTree
-operator|!=
-literal|null
+operator|.
+name|exists
+argument_list|()
 condition|)
 block|{
 name|List

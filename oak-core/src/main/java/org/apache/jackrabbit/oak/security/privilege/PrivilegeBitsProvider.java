@@ -388,7 +388,7 @@ name|defTree
 init|=
 name|privilegesTree
 operator|.
-name|getChildOrNull
+name|getChild
 argument_list|(
 name|checkNotNull
 argument_list|(
@@ -399,8 +399,9 @@ decl_stmt|;
 if|if
 condition|(
 name|defTree
-operator|!=
-literal|null
+operator|.
+name|exists
+argument_list|()
 condition|)
 block|{
 name|bits
