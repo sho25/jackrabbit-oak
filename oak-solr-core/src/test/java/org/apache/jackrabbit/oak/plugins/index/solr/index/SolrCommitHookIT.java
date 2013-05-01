@@ -24,6 +24,18 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertTrue
+import|;
+end_import
+
+begin_import
 import|import
 name|javax
 operator|.
@@ -181,18 +193,6 @@ name|Test
 import|;
 end_import
 
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertTrue
-import|;
-end_import
-
 begin_comment
 comment|/**  * Integration test for {@link org.apache.jackrabbit.oak.plugins.index.solr.index.SolrCommitHook}  */
 end_comment
@@ -256,7 +256,7 @@ argument_list|()
 decl_stmt|;
 name|r
 operator|.
-name|getTreeOrNull
+name|getTree
 argument_list|(
 literal|"/"
 argument_list|)
@@ -285,12 +285,12 @@ argument_list|)
 expr_stmt|;
 name|r
 operator|.
-name|getTreeOrNull
+name|getTree
 argument_list|(
 literal|"/"
 argument_list|)
 operator|.
-name|getChildOrNull
+name|getChild
 argument_list|(
 literal|"a"
 argument_list|)
@@ -314,17 +314,17 @@ argument_list|)
 expr_stmt|;
 name|r
 operator|.
-name|getTreeOrNull
+name|getTree
 argument_list|(
 literal|"/"
 argument_list|)
 operator|.
-name|getChildOrNull
+name|getChild
 argument_list|(
 literal|"a"
 argument_list|)
 operator|.
-name|getChildOrNull
+name|getChild
 argument_list|(
 literal|"b"
 argument_list|)
@@ -343,17 +343,17 @@ argument_list|)
 expr_stmt|;
 name|r
 operator|.
-name|getTreeOrNull
+name|getTree
 argument_list|(
 literal|"/"
 argument_list|)
 operator|.
-name|getChildOrNull
+name|getChild
 argument_list|(
 literal|"a"
 argument_list|)
 operator|.
-name|getChildOrNull
+name|getChild
 argument_list|(
 literal|"b"
 argument_list|)
@@ -462,12 +462,12 @@ argument_list|()
 decl_stmt|;
 name|r
 operator|.
-name|getTreeOrNull
+name|getTree
 argument_list|(
 literal|"/"
 argument_list|)
 operator|.
-name|getChildOrNull
+name|getChild
 argument_list|(
 literal|"z"
 argument_list|)
