@@ -95,6 +95,8 @@ function_decl|;
 comment|/**      * Get a tree location for a given absolute {@code path}      *      * @param path absolute path to the location      * @return the tree location for {@code path}      */
 annotation|@
 name|Nonnull
+annotation|@
+name|Deprecated
 name|TreeLocation
 name|getLocation
 parameter_list|(

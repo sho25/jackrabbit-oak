@@ -103,6 +103,8 @@ function_decl|;
 comment|/**      * @return the current location      */
 annotation|@
 name|Nonnull
+annotation|@
+name|Deprecated
 name|TreeLocation
 name|getLocation
 parameter_list|()

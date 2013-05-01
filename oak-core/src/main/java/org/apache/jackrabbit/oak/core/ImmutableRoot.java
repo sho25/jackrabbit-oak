@@ -352,6 +352,8 @@ annotation|@
 name|Nonnull
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|TreeLocation
 name|getLocation
