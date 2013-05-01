@@ -20,6 +20,22 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkNotNull
+import|;
+end_import
+
+begin_import
 import|import
 name|javax
 operator|.
@@ -209,22 +225,6 @@ name|VersionConstants
 import|;
 end_import
 
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|Preconditions
-operator|.
-name|checkNotNull
-import|;
-end_import
-
 begin_comment
 comment|/**  * {@code ReadWriteVersionManager}...  */
 end_comment
@@ -396,19 +396,11 @@ literal|" is not versionable"
 argument_list|)
 throw|;
 block|}
-name|TreeLocation
-name|location
-init|=
-name|versionable
-operator|.
-name|getLocation
-argument_list|()
-decl_stmt|;
 if|if
 condition|(
 name|isCheckedOut
 argument_list|(
-name|location
+name|versionable
 argument_list|)
 condition|)
 block|{
@@ -470,7 +462,7 @@ argument_list|()
 operator|.
 name|getTreeOrNull
 argument_list|(
-name|location
+name|versionable
 operator|.
 name|getPath
 argument_list|()
@@ -535,20 +527,12 @@ literal|" is not versionable"
 argument_list|)
 throw|;
 block|}
-name|TreeLocation
-name|location
-init|=
-name|versionable
-operator|.
-name|getLocation
-argument_list|()
-decl_stmt|;
 if|if
 condition|(
 operator|!
 name|isCheckedOut
 argument_list|(
-name|location
+name|versionable
 argument_list|)
 condition|)
 block|{

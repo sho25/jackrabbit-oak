@@ -285,20 +285,82 @@ name|Tree
 name|tree
 parameter_list|)
 block|{
-return|return
-name|isCheckedOut
-argument_list|(
+if|if
+condition|(
 name|checkNotNull
 argument_list|(
 name|tree
 argument_list|)
 operator|.
-name|getLocation
+name|exists
+argument_list|()
+condition|)
+block|{
+name|PropertyState
+name|p
+init|=
+name|tree
+operator|.
+name|getProperty
+argument_list|(
+name|VersionConstants
+operator|.
+name|JCR_ISCHECKEDOUT
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|p
+operator|!=
+literal|null
+condition|)
+block|{
+return|return
+name|p
+operator|.
+name|getValue
+argument_list|(
+name|Type
+operator|.
+name|BOOLEAN
+argument_list|)
+return|;
+block|}
+elseif|else
+if|if
+condition|(
+name|tree
+operator|.
+name|isRoot
+argument_list|()
+condition|)
+block|{
+return|return
+literal|true
+return|;
+block|}
+block|}
+else|else
+block|{
+comment|// FIXME: this actually means access to the tree is restricted
+comment|// and may result in wrong isCheckedOut value. This should never
+comment|// be the case in a commit hook because it operates on non-access-
+comment|// controlled NodeStates. This means consistency is not at risk
+comment|// but it may mean oak-jcr sees a node as checked out even though
+comment|// it is in fact read-only because of a checked-in ancestor.
+block|}
+comment|// otherwise return checkedOut status of parent
+return|return
+name|isCheckedOut
+argument_list|(
+name|tree
+operator|.
+name|getParent
 argument_list|()
 argument_list|)
 return|;
 block|}
-comment|/**      * Returns {@code true} if the tree at the given absolute Oak path is      * checked out; otherwise {@code false}.      *      * @param absOakPath an absolute path.      * @return whether the tree at the given location is checked out or not.      */
+comment|/**      * Returns {@code true} if the tree at the given absolute Oak path is      * checked out; otherwise {@code false}.      *      * @param absOakPath an absolute path.      * @return whether the tree at the given path is checked out or not.      */
 specifier|public
 name|boolean
 name|isCheckedOut
@@ -315,7 +377,7 @@ argument_list|(
 name|getWorkspaceRoot
 argument_list|()
 operator|.
-name|getLocation
+name|getTree
 argument_list|(
 name|checkNotNull
 argument_list|(
@@ -591,99 +653,6 @@ operator|new
 name|IdentifierManager
 argument_list|(
 name|getWorkspaceRoot
-argument_list|()
-argument_list|)
-return|;
-block|}
-specifier|protected
-specifier|static
-name|boolean
-name|isCheckedOut
-parameter_list|(
-annotation|@
-name|Nonnull
-name|TreeLocation
-name|location
-parameter_list|)
-block|{
-name|Tree
-name|t
-init|=
-name|checkNotNull
-argument_list|(
-name|location
-argument_list|)
-operator|.
-name|getTree
-argument_list|()
-decl_stmt|;
-if|if
-condition|(
-name|t
-operator|!=
-literal|null
-condition|)
-block|{
-name|PropertyState
-name|p
-init|=
-name|t
-operator|.
-name|getProperty
-argument_list|(
-name|VersionConstants
-operator|.
-name|JCR_ISCHECKEDOUT
-argument_list|)
-decl_stmt|;
-if|if
-condition|(
-name|p
-operator|!=
-literal|null
-condition|)
-block|{
-return|return
-name|p
-operator|.
-name|getValue
-argument_list|(
-name|Type
-operator|.
-name|BOOLEAN
-argument_list|)
-return|;
-block|}
-elseif|else
-if|if
-condition|(
-name|t
-operator|.
-name|isRoot
-argument_list|()
-condition|)
-block|{
-return|return
-literal|true
-return|;
-block|}
-block|}
-else|else
-block|{
-comment|// FIXME: this actually means access to the tree is restricted
-comment|// and may result in wrong isCheckedOut value. This should never
-comment|// be the case in a commit hook because it operates on non-access-
-comment|// controlled NodeStates. This means consistency is not at risk
-comment|// but it may mean oak-jcr sees a node as checked out even though
-comment|// it is in fact read-only because of a checked-in ancestor.
-block|}
-comment|// otherwise return checkedOut status of parent
-return|return
-name|isCheckedOut
-argument_list|(
-name|location
-operator|.
-name|getParent
 argument_list|()
 argument_list|)
 return|;
