@@ -497,7 +497,7 @@ name|events
 init|=
 name|root
 operator|.
-name|getTreeOrNull
+name|getTree
 argument_list|(
 name|ObservationConstants
 operator|.
@@ -507,8 +507,9 @@ decl_stmt|;
 if|if
 condition|(
 name|events
-operator|!=
-literal|null
+operator|.
+name|exists
+argument_list|()
 condition|)
 block|{
 name|events

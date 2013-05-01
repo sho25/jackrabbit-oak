@@ -1105,7 +1105,7 @@ condition|(
 name|success
 condition|)
 block|{
-name|getTreeOrNull
+name|getTree
 argument_list|(
 name|getParentPath
 argument_list|(
@@ -1116,7 +1116,7 @@ operator|.
 name|updateChildOrder
 argument_list|()
 expr_stmt|;
-name|getTreeOrNull
+name|getTree
 argument_list|(
 name|getParentPath
 argument_list|(
@@ -1187,7 +1187,7 @@ condition|(
 name|success
 condition|)
 block|{
-name|getTreeOrNull
+name|getTree
 argument_list|(
 name|getParentPath
 argument_list|(

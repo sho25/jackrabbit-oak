@@ -776,7 +776,7 @@ name|getOrCreate
 argument_list|(
 name|root
 operator|.
-name|getTreeOrNull
+name|getTree
 argument_list|(
 literal|'/'
 operator|+
@@ -924,7 +924,7 @@ name|listenerSpec
 init|=
 name|root
 operator|.
-name|getTreeOrNull
+name|getTree
 argument_list|(
 name|LISTENER_PATH
 operator|+
@@ -937,8 +937,9 @@ decl_stmt|;
 if|if
 condition|(
 name|listenerSpec
-operator|!=
-literal|null
+operator|.
+name|exists
+argument_list|()
 condition|)
 block|{
 name|listenerSpec

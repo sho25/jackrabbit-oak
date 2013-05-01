@@ -22,6 +22,26 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|nodetype
+operator|.
+name|NodeTypeConstants
+operator|.
+name|NODE_TYPES_PATH
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -277,26 +297,6 @@ name|ValueFactoryImpl
 import|;
 end_import
 
-begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|plugins
-operator|.
-name|nodetype
-operator|.
-name|NodeTypeConstants
-operator|.
-name|NODE_TYPES_PATH
-import|;
-end_import
-
 begin_comment
 comment|/**  * {@code BuiltInNodeTypes} is a utility class that registers the built-in  * node types required for a JCR repository running on Oak.  */
 end_comment
@@ -346,7 +346,7 @@ block|{
 return|return
 name|root
 operator|.
-name|getTreeOrNull
+name|getTree
 argument_list|(
 name|NODE_TYPES_PATH
 argument_list|)
@@ -385,7 +385,7 @@ block|{
 return|return
 name|root
 operator|.
-name|getTreeOrNull
+name|getTree
 argument_list|(
 literal|"/"
 argument_list|)
@@ -439,7 +439,7 @@ name|getNamespaceMap
 argument_list|(
 name|root
 operator|.
-name|getTreeOrNull
+name|getTree
 argument_list|(
 literal|"/"
 argument_list|)
