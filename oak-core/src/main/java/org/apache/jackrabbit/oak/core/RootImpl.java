@@ -1063,7 +1063,7 @@ name|destParent
 init|=
 name|rootTree
 operator|.
-name|getTreeOrNull
+name|getTree
 argument_list|(
 name|getParentPath
 argument_list|(
@@ -1073,9 +1073,11 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|!
 name|destParent
-operator|==
-literal|null
+operator|.
+name|exists
+argument_list|()
 condition|)
 block|{
 return|return
