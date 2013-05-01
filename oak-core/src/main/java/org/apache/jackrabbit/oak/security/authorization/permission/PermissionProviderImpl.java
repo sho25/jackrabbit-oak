@@ -1558,8 +1558,15 @@ decl_stmt|;
 while|while
 condition|(
 name|t
-operator|!=
-literal|null
+operator|.
+name|exists
+argument_list|()
+operator|&&
+operator|!
+name|t
+operator|.
+name|isRoot
+argument_list|()
 operator|&&
 operator|!
 name|JcrConstants
@@ -1687,7 +1694,7 @@ name|t
 operator|=
 name|t
 operator|.
-name|getParentOrNull
+name|getParent
 argument_list|()
 expr_stmt|;
 block|}

@@ -586,31 +586,11 @@ return|return
 name|path
 return|;
 block|}
-comment|// FIXME this in contrast to @NonNull of the Tree contract this method might return null.
-comment|// revisit Tree contract and implementation
-annotation|@
-name|CheckForNull
 annotation|@
 name|Override
 specifier|public
 name|ImmutableTree
 name|getParent
-parameter_list|()
-block|{
-return|return
-name|parentProvider
-operator|.
-name|getParent
-argument_list|()
-return|;
-block|}
-annotation|@
-name|Override
-annotation|@
-name|Deprecated
-specifier|public
-name|ImmutableTree
-name|getParentOrNull
 parameter_list|()
 block|{
 return|return
@@ -1071,9 +1051,13 @@ name|ImmutableTree
 name|getParent
 parameter_list|()
 block|{
-return|return
-literal|null
-return|;
+throw|throw
+operator|new
+name|IllegalStateException
+argument_list|(
+literal|"root tree does not have a parent"
+argument_list|)
+throw|;
 block|}
 block|}
 decl_stmt|;

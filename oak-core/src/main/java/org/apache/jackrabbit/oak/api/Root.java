@@ -28,7 +28,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * The root of a {@link Tree}.  *<p/>  * The data returned by this class filtered for the access rights that are set  * in the {@link ContentSession} that created this object.  *<p/>  * All root instances created by a content session become invalid after the  * content session is closed. Any method called on an invalid root instance  * will throw an {@code InvalidStateException}.  *<p/>  * {@link Tree} instances may become disconnected after a call to {@link #refresh()},  * {@link #rebase()} or {@link #commit()}. Any access to disconnected tree instances  * - except for  {@link Tree#getName()}, {@link Tree#isRoot()}, {@link Tree#getPath()},  * {@link Tree#getParentOrNull()} and {@link Tree#exists()} - will cause an  * {@code InvalidStateException}.  * TODO document iterability / existence (OAK-798)  */
+comment|/**  * The root of a {@link Tree}.  *<p/>  * The data returned by this class filtered for the access rights that are set  * in the {@link ContentSession} that created this object.  *<p/>  * All root instances created by a content session become invalid after the  * content session is closed. Any method called on an invalid root instance  * will throw an {@code InvalidStateException}.  *<p/>  * {@link Tree} instances may become disconnected after a call to {@link #refresh()},  * {@link #rebase()} or {@link #commit()}. Any access to disconnected tree instances  * - except for  {@link Tree#getName()}, {@link Tree#isRoot()}, {@link Tree#getPath()},  * {@link Tree#getParent()} and {@link Tree#exists()} - will cause an  * {@code InvalidStateException}.  * TODO document iterability / existence (OAK-798)  */
 end_comment
 
 begin_interface

@@ -49,7 +49,7 @@ name|junit
 operator|.
 name|Assert
 operator|.
-name|assertNull
+name|assertTrue
 import|;
 end_import
 
@@ -61,7 +61,7 @@ name|junit
 operator|.
 name|Assert
 operator|.
-name|assertTrue
+name|fail
 import|;
 end_import
 
@@ -464,14 +464,23 @@ name|isRoot
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|assertNull
-argument_list|(
+try|try
+block|{
 name|tree
 operator|.
 name|getParent
 argument_list|()
-argument_list|)
 expr_stmt|;
+name|fail
+argument_list|()
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|IllegalStateException
+name|expected
+parameter_list|)
+block|{ }
 name|assertEquals
 argument_list|(
 literal|""
@@ -516,14 +525,23 @@ operator|.
 name|EMPTY
 argument_list|)
 decl_stmt|;
-name|assertNull
-argument_list|(
+try|try
+block|{
 name|tree
 operator|.
 name|getParent
 argument_list|()
-argument_list|)
 expr_stmt|;
+name|fail
+argument_list|()
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|IllegalStateException
+name|expected
+parameter_list|)
+block|{ }
 name|ImmutableTree
 name|child
 init|=
