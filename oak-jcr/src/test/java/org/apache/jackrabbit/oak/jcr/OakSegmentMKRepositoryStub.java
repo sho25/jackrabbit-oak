@@ -187,7 +187,7 @@ name|plugins
 operator|.
 name|segment
 operator|.
-name|MongoStore
+name|SegmentNodeStore
 import|;
 end_import
 
@@ -205,7 +205,9 @@ name|plugins
 operator|.
 name|segment
 operator|.
-name|SegmentNodeStore
+name|mongo
+operator|.
+name|MongoStore
 import|;
 end_import
 

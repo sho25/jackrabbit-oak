@@ -234,6 +234,7 @@ import|;
 end_import
 
 begin_class
+specifier|public
 class|class
 name|SegmentNodeState
 extends|extends
@@ -261,6 +262,7 @@ name|template
 init|=
 literal|null
 decl_stmt|;
+specifier|public
 name|SegmentNodeState
 parameter_list|(
 name|SegmentStore
@@ -289,6 +291,7 @@ name|id
 argument_list|)
 expr_stmt|;
 block|}
+specifier|public
 name|RecordId
 name|getRecordId
 parameter_list|()

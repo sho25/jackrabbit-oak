@@ -200,6 +200,7 @@ import|;
 end_import
 
 begin_class
+specifier|public
 class|class
 name|Segment
 block|{
@@ -374,6 +375,7 @@ name|Template
 argument_list|>
 name|templates
 decl_stmt|;
+specifier|public
 name|Segment
 parameter_list|(
 name|SegmentStore
