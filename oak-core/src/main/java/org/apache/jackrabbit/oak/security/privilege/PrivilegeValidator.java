@@ -20,6 +20,24 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|api
+operator|.
+name|CommitFailedException
+operator|.
+name|CONSTRAINT
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -280,24 +298,6 @@ operator|.
 name|util
 operator|.
 name|Text
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|api
-operator|.
-name|CommitFailedException
-operator|.
-name|CONSTRAINT
 import|;
 end_import
 
@@ -721,16 +721,18 @@ name|privilegesTree
 init|=
 name|root
 operator|.
-name|getTreeOrNull
+name|getTree
 argument_list|(
 name|PRIVILEGES_PATH
 argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|!
 name|privilegesTree
-operator|==
-literal|null
+operator|.
+name|exists
+argument_list|()
 condition|)
 block|{
 throw|throw

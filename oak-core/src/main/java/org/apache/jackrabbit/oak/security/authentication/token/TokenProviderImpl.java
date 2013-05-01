@@ -1091,7 +1091,7 @@ name|NodeUtil
 argument_list|(
 name|root
 operator|.
-name|getTreeOrNull
+name|getTree
 argument_list|(
 name|user
 operator|.
@@ -1565,6 +1565,11 @@ condition|(
 name|tokenTree
 operator|!=
 literal|null
+operator|&&
+name|tokenTree
+operator|.
+name|exists
+argument_list|()
 condition|)
 block|{
 try|try
@@ -1637,6 +1642,11 @@ condition|(
 name|tokenTree
 operator|!=
 literal|null
+operator|&&
+name|tokenTree
+operator|.
+name|exists
+argument_list|()
 condition|)
 block|{
 name|NodeUtil
@@ -1954,7 +1964,7 @@ block|{
 return|return
 name|root
 operator|.
-name|getTreeOrNull
+name|getTree
 argument_list|(
 operator|(
 operator|(

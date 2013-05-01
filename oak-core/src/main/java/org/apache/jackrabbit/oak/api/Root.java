@@ -23,16 +23,6 @@ name|javax
 operator|.
 name|annotation
 operator|.
-name|CheckForNull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|annotation
-operator|.
 name|Nonnull
 import|;
 end_import
@@ -80,18 +70,6 @@ name|String
 name|path
 parameter_list|)
 function_decl|;
-comment|/**      * Retrieve the {@code Tree} at the given absolute {@code path}. The path      * must resolve to a tree in this root.      *      * @param path absolute path to the tree      * @return tree at the given path or {@code null} if no such tree exists or      *         if the tree at {@code path} is not accessible.      * @deprecated Use {@link #getTree(String)} and {@link Tree#exists()} instead.      */
-annotation|@
-name|CheckForNull
-annotation|@
-name|Deprecated
-name|Tree
-name|getTreeOrNull
-parameter_list|(
-name|String
-name|path
-parameter_list|)
-function_decl|;
 comment|/**      * Get a tree location for a given absolute {@code path}      *      * @param path absolute path to the location      * @return the tree location for {@code path}      */
 annotation|@
 name|Nonnull
@@ -104,17 +82,17 @@ name|String
 name|path
 parameter_list|)
 function_decl|;
-comment|/**      * Rebase this root instance to the latest revision. After a call to this method,      * trees obtained through {@link #getTreeOrNull(String)} may become disconnected.      */
+comment|/**      * Rebase this root instance to the latest revision. After a call to this method,      * trees obtained through {@link #getTree(String)} may become disconnected.      */
 name|void
 name|rebase
 parameter_list|()
 function_decl|;
-comment|/**      * Reverts all changes made to this root and refreshed to the latest trunk.      * After a call to this method, trees obtained through {@link #getTreeOrNull(String)}      * may become disconnected.      */
+comment|/**      * Reverts all changes made to this root and refreshed to the latest trunk.      * After a call to this method, trees obtained through {@link #getTree(String)}      * may become disconnected.      */
 name|void
 name|refresh
 parameter_list|()
 function_decl|;
-comment|/**      * Atomically apply all changes made to the tree beneath this root to the      * underlying store and refreshes this root. After a call to this method,      * all trees obtained through {@link #getTreeOrNull(String)} become invalid and fresh      * instances must be obtained.      *      * @throws CommitFailedException      */
+comment|/**      * Atomically apply all changes made to the tree beneath this root to the      * underlying store and refreshes this root. After a call to this method,      * all trees obtained through {@link #getTree(String)} become invalid and fresh      * instances must be obtained.      *      * @throws CommitFailedException      */
 name|void
 name|commit
 parameter_list|()

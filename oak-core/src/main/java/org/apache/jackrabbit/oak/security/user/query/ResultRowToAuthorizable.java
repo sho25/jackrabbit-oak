@@ -371,7 +371,7 @@ name|tree
 init|=
 name|root
 operator|.
-name|getTreeOrNull
+name|getTree
 argument_list|(
 name|resultPath
 argument_list|)
@@ -389,8 +389,15 @@ decl_stmt|;
 while|while
 condition|(
 name|tree
-operator|!=
-literal|null
+operator|.
+name|exists
+argument_list|()
+operator|&&
+operator|!
+name|tree
+operator|.
+name|isRoot
+argument_list|()
 operator|&&
 name|type
 operator|==
@@ -401,7 +408,7 @@ name|tree
 operator|=
 name|tree
 operator|.
-name|getParentOrNull
+name|getParent
 argument_list|()
 expr_stmt|;
 name|type
@@ -417,8 +424,9 @@ block|}
 if|if
 condition|(
 name|tree
-operator|!=
-literal|null
+operator|.
+name|exists
+argument_list|()
 operator|&&
 operator|(
 name|targetType

@@ -25,16 +25,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|Collections
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|HashMap
 import|;
 end_import
@@ -196,7 +186,7 @@ name|privilegesTree
 operator|=
 name|root
 operator|.
-name|getTreeOrNull
+name|getTree
 argument_list|(
 name|PRIVILEGES_PATH
 argument_list|)
@@ -213,22 +203,6 @@ name|PrivilegeDefinition
 argument_list|>
 name|readDefinitions
 parameter_list|()
-block|{
-if|if
-condition|(
-name|privilegesTree
-operator|==
-literal|null
-condition|)
-block|{
-return|return
-name|Collections
-operator|.
-name|emptyMap
-argument_list|()
-return|;
-block|}
-else|else
 block|{
 name|Map
 argument_list|<
@@ -291,7 +265,6 @@ block|}
 return|return
 name|definitions
 return|;
-block|}
 block|}
 comment|/**      * Retrieve the privilege definition with the specified {@code privilegeName}.      *      * @param privilegeName The name of a registered privilege definition.      * @return The privilege definition with the specified name or {@code null}      *         if the name doesn't refer to a registered privilege.      */
 annotation|@

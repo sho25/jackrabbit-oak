@@ -20,6 +20,22 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkNotNull
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -66,16 +82,6 @@ operator|.
 name|util
 operator|.
 name|Set
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|CheckForNull
 import|;
 end_import
 
@@ -155,22 +161,6 @@ name|PrivilegeConstants
 import|;
 end_import
 
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|Preconditions
-operator|.
-name|checkNotNull
-import|;
-end_import
-
 begin_comment
 comment|/**  * Reads and writes privilege definitions from and to the repository content  * without applying any validation.  */
 end_comment
@@ -239,8 +229,9 @@ decl_stmt|;
 if|if
 condition|(
 name|privilegesTree
-operator|!=
-literal|null
+operator|.
+name|exists
+argument_list|()
 operator|&&
 name|privilegesTree
 operator|.
@@ -280,7 +271,7 @@ block|}
 block|}
 comment|/**      * Returns the root tree for all privilege definitions stored in the content      * repository.      *      * @return The privileges root.      */
 annotation|@
-name|CheckForNull
+name|Nonnull
 name|Tree
 name|getPrivilegesTree
 parameter_list|()
@@ -288,7 +279,7 @@ block|{
 return|return
 name|root
 operator|.
-name|getTreeOrNull
+name|getTree
 argument_list|(
 name|PRIVILEGES_PATH
 argument_list|)
@@ -363,9 +354,11 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
+operator|!
 name|privilegesTree
-operator|==
-literal|null
+operator|.
+name|exists
+argument_list|()
 condition|)
 block|{
 return|return
@@ -495,9 +488,11 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
+operator|!
 name|privilegesTree
-operator|==
-literal|null
+operator|.
+name|exists
+argument_list|()
 condition|)
 block|{
 return|return

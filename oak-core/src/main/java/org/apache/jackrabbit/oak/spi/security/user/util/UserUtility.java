@@ -311,7 +311,7 @@ name|AuthorizableType
 name|getType
 parameter_list|(
 annotation|@
-name|Nullable
+name|Nonnull
 name|Tree
 name|authorizableNode
 parameter_list|)
@@ -319,14 +319,6 @@ block|{
 name|String
 name|ntName
 init|=
-operator|(
-name|authorizableNode
-operator|==
-literal|null
-operator|)
-condition|?
-literal|null
-else|:
 name|TreeUtil
 operator|.
 name|getPrimaryTypeName
