@@ -660,7 +660,10 @@ name|exists
 parameter_list|()
 block|{
 return|return
-literal|true
+name|state
+operator|.
+name|exists
+argument_list|()
 return|;
 block|}
 annotation|@
