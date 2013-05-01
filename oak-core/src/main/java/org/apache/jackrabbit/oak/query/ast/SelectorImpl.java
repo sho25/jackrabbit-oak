@@ -1418,7 +1418,14 @@ name|t
 operator|=
 name|t
 operator|.
-name|getParentOrNull
+name|isRoot
+argument_list|()
+condition|?
+literal|null
+else|:
+name|t
+operator|.
+name|getParent
 argument_list|()
 expr_stmt|;
 block|}
@@ -1441,7 +1448,7 @@ name|t
 operator|=
 name|t
 operator|.
-name|getChildOrNull
+name|getChild
 argument_list|(
 name|p
 argument_list|)

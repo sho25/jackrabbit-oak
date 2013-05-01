@@ -18,6 +18,54 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertEquals
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertNotNull
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertNull
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertTrue
+import|;
+end_import
+
+begin_import
 import|import
 name|org
 operator|.
@@ -125,54 +173,6 @@ name|Test
 import|;
 end_import
 
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertEquals
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertNotNull
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertNull
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertTrue
-import|;
-end_import
-
 begin_class
 specifier|public
 class|class
@@ -212,7 +212,7 @@ name|tree
 init|=
 name|root
 operator|.
-name|getTreeOrNull
+name|getTree
 argument_list|(
 literal|"/"
 argument_list|)
@@ -288,7 +288,7 @@ name|TreeImpl
 operator|)
 name|root
 operator|.
-name|getTreeOrNull
+name|getTree
 argument_list|(
 literal|"/"
 argument_list|)
@@ -319,7 +319,7 @@ name|immutable
 operator|=
 name|immutable
 operator|.
-name|getChildOrNull
+name|getChild
 argument_list|(
 literal|"x"
 argument_list|)
@@ -338,7 +338,7 @@ name|immutable
 operator|=
 name|immutable
 operator|.
-name|getChildOrNull
+name|getChild
 argument_list|(
 literal|"y"
 argument_list|)
@@ -357,7 +357,7 @@ name|immutable
 operator|=
 name|immutable
 operator|.
-name|getChildOrNull
+name|getChild
 argument_list|(
 literal|"z"
 argument_list|)
@@ -468,7 +468,7 @@ name|assertNull
 argument_list|(
 name|tree
 operator|.
-name|getParentOrNull
+name|getParent
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -520,7 +520,7 @@ name|assertNull
 argument_list|(
 name|tree
 operator|.
-name|getParentOrNull
+name|getParent
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -529,7 +529,7 @@ name|child
 init|=
 name|tree
 operator|.
-name|getChildOrNull
+name|getChild
 argument_list|(
 literal|"x"
 argument_list|)
@@ -538,7 +538,7 @@ name|assertNotNull
 argument_list|(
 name|child
 operator|.
-name|getParentOrNull
+name|getParent
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -548,7 +548,7 @@ literal|"/"
 argument_list|,
 name|child
 operator|.
-name|getParentOrNull
+name|getParent
 argument_list|()
 operator|.
 name|getPath
@@ -586,7 +586,7 @@ try|try
 block|{
 name|disconnected
 operator|.
-name|getParentOrNull
+name|getParent
 argument_list|()
 expr_stmt|;
 block|}
