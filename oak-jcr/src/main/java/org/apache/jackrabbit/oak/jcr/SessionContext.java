@@ -644,7 +644,7 @@ operator|.
 name|getRoot
 argument_list|()
 operator|.
-name|getTreeOrNull
+name|getTree
 argument_list|(
 literal|"/"
 argument_list|)

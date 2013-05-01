@@ -1476,7 +1476,7 @@ argument_list|(
 name|info
 argument_list|)
 expr_stmt|;
-name|assertTrue
+name|assertFalse
 argument_list|(
 name|root
 operator|.
