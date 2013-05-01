@@ -1090,6 +1090,12 @@ condition|(
 name|tree
 operator|==
 literal|null
+operator|||
+operator|!
+name|tree
+operator|.
+name|exists
+argument_list|()
 condition|)
 block|{
 continue|continue;
@@ -1457,6 +1463,12 @@ condition|(
 name|t
 operator|==
 literal|null
+operator|||
+operator|!
+name|t
+operator|.
+name|exists
+argument_list|()
 condition|)
 block|{
 return|return

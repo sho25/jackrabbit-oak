@@ -151,22 +151,6 @@ name|oak
 operator|.
 name|api
 operator|.
-name|TreeLocation
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|api
-operator|.
 name|Type
 import|;
 end_import
@@ -252,11 +236,11 @@ annotation|@
 name|Nonnull
 specifier|protected
 specifier|abstract
-name|TreeLocation
-name|getVersionStorageLocation
+name|Tree
+name|getVersionStorage
 parameter_list|()
 function_decl|;
-comment|/**      * @return the {@code Root} of the workspace.      */
+comment|/**     /**      * @return the {@code Root} of the workspace.      */
 annotation|@
 name|Nonnull
 specifier|protected
@@ -433,7 +417,7 @@ name|TreeUtil
 operator|.
 name|getTree
 argument_list|(
-name|getVersionStorageLocation
+name|getVersionStorage
 argument_list|()
 argument_list|,
 name|getVersionHistoryPath
@@ -443,7 +427,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-comment|/**      * Returns the path of the version history for the given {@code uuid}.      * The returned path is relative to the version storage tree as returned      * by {@link #getVersionStorageLocation()}.      *      * @param uuid the uuid of the versionable node      * @return the relative path of the version history for the given uuid.      */
+comment|/**      * Returns the path of the version history for the given {@code uuid}.      * The returned path is relative to the version storage tree as returned      * by {@link #getVersionStorage()}.      *      * @param uuid the uuid of the versionable node      * @return the relative path of the version history for the given uuid.      */
 annotation|@
 name|Nonnull
 specifier|public

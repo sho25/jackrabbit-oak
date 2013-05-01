@@ -499,6 +499,12 @@ condition|(
 name|tree
 operator|==
 literal|null
+operator|||
+operator|!
+name|tree
+operator|.
+name|exists
+argument_list|()
 condition|)
 block|{
 return|return
