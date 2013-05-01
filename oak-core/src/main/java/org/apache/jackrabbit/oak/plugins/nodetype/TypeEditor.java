@@ -774,14 +774,31 @@ operator|==
 literal|null
 condition|)
 block|{
+name|Set
+argument_list|<
+name|String
+argument_list|>
+name|parentTypes
+init|=
+name|parent
+operator|.
+name|effective
+operator|.
+name|getTypeNames
+argument_list|()
+decl_stmt|;
 throw|throw
 name|constraintViolation
 argument_list|(
 literal|1
 argument_list|,
-literal|"Incorrect node type of child node "
+literal|"No matching child node definition found for child node "
 operator|+
 name|nodeName
+operator|+
+literal|" in any of the parent types "
+operator|+
+name|parentTypes
 argument_list|)
 throw|;
 block|}
@@ -872,13 +889,11 @@ argument_list|,
 name|getPath
 argument_list|()
 operator|+
+name|typeNames
+operator|+
 literal|": "
 operator|+
 name|message
-operator|+
-literal|" "
-operator|+
-name|typeNames
 argument_list|)
 return|;
 block|}
