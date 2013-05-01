@@ -20,6 +20,42 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertEquals
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertNull
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|fail
+import|;
+end_import
+
+begin_import
 import|import
 name|org
 operator|.
@@ -217,42 +253,6 @@ name|Test
 import|;
 end_import
 
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertEquals
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertNull
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|fail
-import|;
-end_import
-
 begin_class
 specifier|public
 class|class
@@ -405,7 +405,7 @@ name|tree
 init|=
 name|root
 operator|.
-name|getTreeOrNull
+name|getTree
 argument_list|(
 literal|"/"
 argument_list|)
@@ -507,7 +507,7 @@ name|rootTree
 init|=
 name|root
 operator|.
-name|getTreeOrNull
+name|getTree
 argument_list|(
 literal|"/"
 argument_list|)
@@ -529,7 +529,7 @@ name|xx1
 init|=
 name|root
 operator|.
-name|getTreeOrNull
+name|getTree
 argument_list|(
 name|PATH_X1
 argument_list|)
@@ -551,7 +551,7 @@ name|yy1
 init|=
 name|root
 operator|.
-name|getTreeOrNull
+name|getTree
 argument_list|(
 name|PATH_Y1
 argument_list|)
@@ -573,7 +573,7 @@ name|zz1
 init|=
 name|root
 operator|.
-name|getTreeOrNull
+name|getTree
 argument_list|(
 name|PATH_Z1
 argument_list|)

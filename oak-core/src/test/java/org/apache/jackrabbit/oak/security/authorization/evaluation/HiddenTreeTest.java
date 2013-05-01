@@ -22,6 +22,42 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertEquals
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertFalse
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertTrue
+import|;
+end_import
+
+begin_import
 import|import
 name|org
 operator|.
@@ -64,54 +100,6 @@ operator|.
 name|junit
 operator|.
 name|Test
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertEquals
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertFalse
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertNotNull
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertNull
 import|;
 end_import
 
@@ -162,14 +150,17 @@ name|parent
 operator|=
 name|root
 operator|.
-name|getTreeOrNull
+name|getTree
 argument_list|(
 name|hiddenParentPath
 argument_list|)
 expr_stmt|;
-name|assertNotNull
+name|assertTrue
 argument_list|(
 name|parent
+operator|.
+name|exists
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -210,14 +201,17 @@ name|void
 name|testGetHiddenTree
 parameter_list|()
 block|{
-name|assertNull
+name|assertFalse
 argument_list|(
 name|parent
 operator|.
-name|getChildOrNull
+name|getChild
 argument_list|(
 name|hiddenName
 argument_list|)
+operator|.
+name|exists
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -235,6 +229,9 @@ name|testGetHiddenChildren
 parameter_list|()
 block|{
 name|Iterable
+argument_list|<
+name|Tree
+argument_list|>
 name|children
 init|=
 name|parent

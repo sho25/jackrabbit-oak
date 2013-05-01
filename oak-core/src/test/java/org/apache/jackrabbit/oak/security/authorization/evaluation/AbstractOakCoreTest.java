@@ -22,6 +22,36 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkNotNull
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|JcrConstants
+operator|.
+name|NT_UNSTRUCTURED
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -191,36 +221,6 @@ name|Before
 import|;
 end_import
 
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|Preconditions
-operator|.
-name|checkNotNull
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|JcrConstants
-operator|.
-name|NT_UNSTRUCTURED
-import|;
-end_import
-
 begin_comment
 comment|/**  * Base class for all classes that attempt to test OAK API and OAK core functionality  * in combination with permission evaluation  */
 end_comment
@@ -273,7 +273,7 @@ name|NodeUtil
 argument_list|(
 name|root
 operator|.
-name|getTreeOrNull
+name|getTree
 argument_list|(
 literal|"/"
 argument_list|)
@@ -424,7 +424,7 @@ block|}
 comment|// remove all test content
 name|root
 operator|.
-name|getTreeOrNull
+name|getTree
 argument_list|(
 literal|"/a"
 argument_list|)

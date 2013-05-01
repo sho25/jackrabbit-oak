@@ -22,6 +22,30 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertSame
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertTrue
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -151,42 +175,6 @@ name|Test
 import|;
 end_import
 
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertNotNull
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertSame
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertTrue
-import|;
-end_import
-
 begin_comment
 comment|/**  * Test {@code AllPermissions}.  */
 end_comment
@@ -267,14 +255,17 @@ name|tree
 init|=
 name|root
 operator|.
-name|getTreeOrNull
+name|getTree
 argument_list|(
 name|path
 argument_list|)
 decl_stmt|;
-name|assertNotNull
+name|assertTrue
 argument_list|(
 name|tree
+operator|.
+name|exists
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|assertSame
@@ -383,14 +374,17 @@ name|tree
 init|=
 name|root
 operator|.
-name|getTreeOrNull
+name|getTree
 argument_list|(
 name|path
 argument_list|)
 decl_stmt|;
-name|assertNotNull
+name|assertTrue
 argument_list|(
 name|tree
+operator|.
+name|exists
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|assertTrue

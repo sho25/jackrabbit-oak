@@ -180,7 +180,7 @@ block|{
 return|return
 name|root
 operator|.
-name|getTreeOrNull
+name|getTree
 argument_list|(
 literal|"/"
 argument_list|)

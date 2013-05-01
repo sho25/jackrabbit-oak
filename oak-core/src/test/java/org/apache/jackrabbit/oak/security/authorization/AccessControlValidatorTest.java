@@ -20,6 +20,42 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertEquals
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertTrue
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|fail
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -105,9 +141,9 @@ name|spi
 operator|.
 name|security
 operator|.
-name|privilege
+name|authorization
 operator|.
-name|PrivilegeConstants
+name|AbstractAccessControlTest
 import|;
 end_import
 
@@ -125,9 +161,9 @@ name|spi
 operator|.
 name|security
 operator|.
-name|authorization
+name|privilege
 operator|.
-name|AbstractAccessControlTest
+name|PrivilegeConstants
 import|;
 end_import
 
@@ -174,42 +210,6 @@ operator|.
 name|junit
 operator|.
 name|Test
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertEquals
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertTrue
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|fail
 import|;
 end_import
 
@@ -271,7 +271,7 @@ name|NodeUtil
 argument_list|(
 name|root
 operator|.
-name|getTreeOrNull
+name|getTree
 argument_list|(
 literal|"/"
 argument_list|)
@@ -318,7 +318,7 @@ name|testRoot
 init|=
 name|root
 operator|.
-name|getTreeOrNull
+name|getTree
 argument_list|(
 name|testPath
 argument_list|)
@@ -326,8 +326,9 @@ decl_stmt|;
 if|if
 condition|(
 name|testRoot
-operator|!=
-literal|null
+operator|.
+name|exists
+argument_list|()
 condition|)
 block|{
 name|testRoot
@@ -362,7 +363,7 @@ name|NodeUtil
 argument_list|(
 name|root
 operator|.
-name|getTreeOrNull
+name|getTree
 argument_list|(
 name|testPath
 argument_list|)

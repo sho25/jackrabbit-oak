@@ -22,6 +22,42 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertEquals
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertNull
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|fail
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -293,26 +329,6 @@ name|spi
 operator|.
 name|security
 operator|.
-name|privilege
-operator|.
-name|PrivilegeConstants
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|spi
-operator|.
-name|security
-operator|.
 name|authorization
 operator|.
 name|AbstractAccessControlTest
@@ -336,6 +352,26 @@ operator|.
 name|principal
 operator|.
 name|EveryonePrincipal
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|security
+operator|.
+name|privilege
+operator|.
+name|PrivilegeConstants
 import|;
 end_import
 
@@ -382,42 +418,6 @@ operator|.
 name|junit
 operator|.
 name|Test
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertEquals
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertNull
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|fail
 import|;
 end_import
 
@@ -494,7 +494,7 @@ name|NodeUtil
 argument_list|(
 name|root
 operator|.
-name|getTreeOrNull
+name|getTree
 argument_list|(
 literal|"/"
 argument_list|)
@@ -615,7 +615,7 @@ name|test
 init|=
 name|root
 operator|.
-name|getTreeOrNull
+name|getTree
 argument_list|(
 name|testPath
 argument_list|)
@@ -623,8 +623,9 @@ decl_stmt|;
 if|if
 condition|(
 name|test
-operator|!=
-literal|null
+operator|.
+name|exists
+argument_list|()
 condition|)
 block|{
 name|test
@@ -679,12 +680,12 @@ block|{
 return|return
 name|root
 operator|.
-name|getTreeOrNull
+name|getTree
 argument_list|(
 name|PERMISSIONS_STORE_PATH
 argument_list|)
 operator|.
-name|getChildOrNull
+name|getChild
 argument_list|(
 name|adminSession
 operator|.
@@ -692,7 +693,7 @@ name|getWorkspaceName
 argument_list|()
 argument_list|)
 operator|.
-name|getChildOrNull
+name|getChild
 argument_list|(
 name|principalName
 argument_list|)
@@ -844,7 +845,7 @@ name|NodeUtil
 argument_list|(
 name|root
 operator|.
-name|getTreeOrNull
+name|getTree
 argument_list|(
 name|testPath
 operator|+
@@ -1016,7 +1017,7 @@ expr_stmt|;
 comment|// remove duplicate policy entry again
 name|root
 operator|.
-name|getTreeOrNull
+name|getTree
 argument_list|(
 name|testPath
 operator|+
@@ -1059,7 +1060,7 @@ name|testAce
 init|=
 name|root
 operator|.
-name|getTreeOrNull
+name|getTree
 argument_list|(
 name|testPath
 operator|+
@@ -1193,7 +1194,7 @@ name|restrictionsNode
 init|=
 name|root
 operator|.
-name|getTreeOrNull
+name|getTree
 argument_list|(
 name|restritionsPath
 argument_list|)
@@ -1260,7 +1261,7 @@ expr_stmt|;
 comment|// remove the restriction again
 name|root
 operator|.
-name|getTreeOrNull
+name|getTree
 argument_list|(
 name|restritionsPath
 argument_list|)
@@ -1356,7 +1357,7 @@ name|aclTree
 init|=
 name|root
 operator|.
-name|getTreeOrNull
+name|getTree
 argument_list|(
 name|testPath
 operator|+
@@ -1462,7 +1463,7 @@ name|aclTree
 init|=
 name|root
 operator|.
-name|getTreeOrNull
+name|getTree
 argument_list|(
 name|testPath
 operator|+
@@ -1608,7 +1609,7 @@ name|aclTree
 init|=
 name|root
 operator|.
-name|getTreeOrNull
+name|getTree
 argument_list|(
 name|testPath
 operator|+

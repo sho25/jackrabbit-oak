@@ -311,16 +311,18 @@ name|c
 init|=
 name|root
 operator|.
-name|getTreeOrNull
+name|getTree
 argument_list|(
 name|path
 argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|!
 name|c
-operator|==
-literal|null
+operator|.
+name|exists
+argument_list|()
 condition|)
 block|{
 comment|// TODO create intermediary?
@@ -460,7 +462,7 @@ name|t
 operator|=
 name|t
 operator|.
-name|getChildOrNull
+name|getChild
 argument_list|(
 name|p
 argument_list|)

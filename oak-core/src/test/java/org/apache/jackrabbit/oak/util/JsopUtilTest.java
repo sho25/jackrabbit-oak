@@ -18,6 +18,60 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|junit
+operator|.
+name|framework
+operator|.
+name|Assert
+operator|.
+name|assertEquals
+import|;
+end_import
+
+begin_import
+import|import static
+name|junit
+operator|.
+name|framework
+operator|.
+name|Assert
+operator|.
+name|assertFalse
+import|;
+end_import
+
+begin_import
+import|import static
+name|junit
+operator|.
+name|framework
+operator|.
+name|Assert
+operator|.
+name|assertTrue
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|api
+operator|.
+name|Type
+operator|.
+name|STRING
+import|;
+end_import
+
+begin_import
 import|import
 name|org
 operator|.
@@ -89,60 +143,6 @@ name|Test
 import|;
 end_import
 
-begin_import
-import|import static
-name|junit
-operator|.
-name|framework
-operator|.
-name|Assert
-operator|.
-name|assertEquals
-import|;
-end_import
-
-begin_import
-import|import static
-name|junit
-operator|.
-name|framework
-operator|.
-name|Assert
-operator|.
-name|assertFalse
-import|;
-end_import
-
-begin_import
-import|import static
-name|junit
-operator|.
-name|framework
-operator|.
-name|Assert
-operator|.
-name|assertTrue
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|api
-operator|.
-name|Type
-operator|.
-name|STRING
-import|;
-end_import
-
 begin_class
 specifier|public
 class|class
@@ -173,7 +173,7 @@ name|t
 init|=
 name|root
 operator|.
-name|getTreeOrNull
+name|getTree
 argument_list|(
 literal|"/"
 argument_list|)
@@ -211,7 +211,7 @@ name|t
 operator|=
 name|root
 operator|.
-name|getTreeOrNull
+name|getTree
 argument_list|(
 literal|"/"
 argument_list|)
@@ -230,7 +230,7 @@ name|t
 operator|=
 name|t
 operator|.
-name|getChildOrNull
+name|getChild
 argument_list|(
 literal|"test"
 argument_list|)
@@ -271,7 +271,7 @@ literal|0
 argument_list|,
 name|t
 operator|.
-name|getChildOrNull
+name|getChild
 argument_list|(
 literal|"b"
 argument_list|)
@@ -284,7 +284,7 @@ name|t
 operator|=
 name|t
 operator|.
-name|getChildOrNull
+name|getChild
 argument_list|(
 literal|"a"
 argument_list|)
@@ -349,7 +349,7 @@ name|t
 operator|=
 name|root
 operator|.
-name|getTreeOrNull
+name|getTree
 argument_list|(
 literal|"/"
 argument_list|)
