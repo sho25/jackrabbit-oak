@@ -1875,6 +1875,28 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+comment|// leave original xpath string as a comment
+name|buff
+operator|.
+name|append
+argument_list|(
+literal|" /* xpath: "
+argument_list|)
+expr_stmt|;
+name|buff
+operator|.
+name|append
+argument_list|(
+name|query
+argument_list|)
+expr_stmt|;
+name|buff
+operator|.
+name|append
+argument_list|(
+literal|" */"
+argument_list|)
+expr_stmt|;
 return|return
 name|buff
 operator|.
