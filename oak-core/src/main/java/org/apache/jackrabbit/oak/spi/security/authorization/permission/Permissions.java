@@ -117,7 +117,7 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|api
+name|core
 operator|.
 name|TreeLocation
 import|;

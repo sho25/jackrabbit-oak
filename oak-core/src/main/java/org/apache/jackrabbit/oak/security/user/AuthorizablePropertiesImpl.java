@@ -177,7 +177,7 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|api
+name|core
 operator|.
 name|TreeLocation
 import|;
@@ -1440,8 +1440,6 @@ return|;
 block|}
 annotation|@
 name|Nonnull
-annotation|@
-name|Deprecated
 specifier|private
 specifier|static
 name|TreeLocation
@@ -1457,10 +1455,12 @@ block|{
 name|TreeLocation
 name|loc
 init|=
-name|tree
+name|TreeLocation
 operator|.
-name|getLocation
-argument_list|()
+name|create
+argument_list|(
+name|tree
+argument_list|)
 decl_stmt|;
 for|for
 control|(

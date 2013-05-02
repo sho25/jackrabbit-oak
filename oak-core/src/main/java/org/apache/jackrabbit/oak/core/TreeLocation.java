@@ -91,6 +91,16 @@ name|javax
 operator|.
 name|annotation
 operator|.
+name|CheckForNull
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|annotation
+operator|.
 name|Nonnull
 import|;
 end_import
@@ -153,36 +163,20 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|api
-operator|.
-name|TreeLocation
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
 name|commons
 operator|.
 name|PathUtils
 import|;
 end_import
 
+begin_comment
+comment|/**  * A {@code TreeLocation} denotes a location inside a tree.  *<p>  * It can either refer to a inner node (that is a {@link Tree}), to a leaf (that is a  * {@link PropertyState}) or to an invalid location which refers to neither of the former.  * {@code TreeLocation} instances provide methods for navigating trees such that navigation  * always results in new {@code TreeLocation} instances. Navigation never fails. Errors are  * deferred until the underlying item itself is accessed. That is, if a {@code TreeLocation}  * points to an item which does not exist or is unavailable otherwise (i.e. due to access  * control restrictions) accessing the tree will return {@code null} at this point.  */
+end_comment
+
 begin_class
-annotation|@
-name|Deprecated
 specifier|public
 specifier|abstract
 class|class
-name|TreeLocations
-implements|implements
 name|TreeLocation
 block|{
 comment|/**      * Create a new {@code TreeLocation} instance for a {@code tree}      */
@@ -281,8 +275,41 @@ literal|"/"
 argument_list|)
 return|;
 block|}
+comment|/**      * Navigate to the parent or an invalid location for the root of the hierarchy.      * @return a {@code TreeLocation} for the parent of this location.      */
 annotation|@
-name|Override
+name|Nonnull
+specifier|public
+specifier|abstract
+name|TreeLocation
+name|getParent
+parameter_list|()
+function_decl|;
+comment|/**      * Determine whether the underlying {@link org.apache.jackrabbit.oak.api.Tree} or      * {@link org.apache.jackrabbit.oak.api.PropertyState} for this {@code TreeLocation}      * is available.      * @return  {@code true} if the underlying item is available and has not been disconnected.      * @see org.apache.jackrabbit.oak.api.Tree#exists()      */
+specifier|public
+specifier|abstract
+name|boolean
+name|exists
+parameter_list|()
+function_decl|;
+comment|/**      * The path of this location      * @return  path      */
+annotation|@
+name|Nonnull
+specifier|public
+specifier|abstract
+name|String
+name|getPath
+parameter_list|()
+function_decl|;
+comment|/**      * Remove the underlying item.      *      * @return {@code true} if the item was removed, {@code false} otherwise.      */
+specifier|public
+specifier|abstract
+name|boolean
+name|remove
+parameter_list|()
+function_decl|;
+comment|/**      * Navigate to a child of the given {@code name}.      * @param name  name of the child      * @return  this default implementation return a non existing location      */
+annotation|@
+name|Nonnull
 specifier|public
 name|TreeLocation
 name|getChild
@@ -301,9 +328,9 @@ name|name
 argument_list|)
 return|;
 block|}
-comment|/**      * @return {@code null}      */
+comment|/**      * Get the underlying {@link org.apache.jackrabbit.oak.api.Tree} for this {@code TreeLocation}.      * @return  this default implementation return {@code null}.      */
 annotation|@
-name|Override
+name|CheckForNull
 specifier|public
 name|Tree
 name|getTree
@@ -313,9 +340,9 @@ return|return
 literal|null
 return|;
 block|}
-comment|/**      * @return {@code null}      */
+comment|/**      * Get the underlying {@link org.apache.jackrabbit.oak.api.PropertyState} for this {@code TreeLocation}.      * @return  this default implementation return {@code null}.      */
 annotation|@
-name|Override
+name|CheckForNull
 specifier|public
 name|PropertyState
 name|getProperty
@@ -356,7 +383,7 @@ specifier|static
 class|class
 name|NodeLocation
 extends|extends
-name|TreeLocations
+name|TreeLocation
 block|{
 specifier|private
 specifier|final
@@ -524,7 +551,7 @@ specifier|static
 class|class
 name|PropertyLocation
 extends|extends
-name|TreeLocations
+name|TreeLocation
 block|{
 specifier|private
 specifier|final
@@ -657,7 +684,7 @@ specifier|final
 class|class
 name|NullLocation
 extends|extends
-name|TreeLocations
+name|TreeLocation
 block|{
 specifier|public
 specifier|static

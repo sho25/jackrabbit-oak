@@ -100,15 +100,6 @@ name|boolean
 name|exists
 parameter_list|()
 function_decl|;
-comment|/**      * @return the current location      */
-annotation|@
-name|Nonnull
-annotation|@
-name|Deprecated
-name|TreeLocation
-name|getLocation
-parameter_list|()
-function_decl|;
 comment|/**      * @return the possibly non existent parent of this {@code Tree}.      * @throws IllegalStateException if called on the root tree.      */
 annotation|@
 name|Nonnull

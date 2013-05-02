@@ -70,18 +70,6 @@ name|String
 name|path
 parameter_list|)
 function_decl|;
-comment|/**      * Get a tree location for a given absolute {@code path}      * @param path absolute path to the location      * @return the tree location for {@code path}      * @deprecated use {@link #getTree(String)}      */
-annotation|@
-name|Nonnull
-annotation|@
-name|Deprecated
-name|TreeLocation
-name|getLocation
-parameter_list|(
-name|String
-name|path
-parameter_list|)
-function_decl|;
 comment|/**      * Rebase this root instance to the latest revision. After a call to this method,      * trees obtained through {@link #getTree(String)} may become non existing.      */
 name|void
 name|rebase
