@@ -855,15 +855,6 @@ name|getName
 argument_list|()
 argument_list|)
 decl_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-name|name
-argument_list|)
-expr_stmt|;
 name|copy
 argument_list|(
 name|childId
@@ -1074,17 +1065,6 @@ argument_list|(
 name|name
 argument_list|)
 decl_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"- "
-operator|+
-name|oakName
-argument_list|)
-expr_stmt|;
 if|if
 condition|(
 name|sourceState
