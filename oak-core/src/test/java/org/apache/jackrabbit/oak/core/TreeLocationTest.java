@@ -21,24 +21,6 @@ begin_import
 import|import static
 name|org
 operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|core
-operator|.
-name|NullLocation
-operator|.
-name|NULL
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
 name|junit
 operator|.
 name|Assert
@@ -216,6 +198,10 @@ specifier|private
 name|Root
 name|root
 decl_stmt|;
+specifier|private
+name|TreeLocation
+name|nullLocation
+decl_stmt|;
 annotation|@
 name|Before
 specifier|public
@@ -319,6 +305,18 @@ operator|.
 name|commit
 argument_list|()
 expr_stmt|;
+name|nullLocation
+operator|=
+name|root
+operator|.
+name|getLocation
+argument_list|(
+literal|"/"
+argument_list|)
+operator|.
+name|getParent
+argument_list|()
+expr_stmt|;
 block|}
 annotation|@
 name|After
@@ -342,7 +340,7 @@ block|{
 name|TreeLocation
 name|xyz
 init|=
-name|NULL
+name|nullLocation
 operator|.
 name|getChild
 argument_list|(
@@ -402,7 +400,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-name|NULL
+name|nullLocation
 argument_list|,
 name|xyz
 operator|.
@@ -436,7 +434,7 @@ argument_list|)
 decl_stmt|;
 name|assertEquals
 argument_list|(
-name|NULL
+name|nullLocation
 argument_list|,
 name|rootLocation
 operator|.

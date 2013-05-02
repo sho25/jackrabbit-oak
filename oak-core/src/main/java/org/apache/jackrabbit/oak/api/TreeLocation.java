@@ -37,24 +37,6 @@ name|Nonnull
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|api
-operator|.
-name|Tree
-operator|.
-name|Status
-import|;
-end_import
-
 begin_comment
 comment|/**  * A {@code TreeLocation} denotes a location inside a tree.  * It can either refer to a inner node (that is a {@link org.apache.jackrabbit.oak.api.Tree}),  * to a leaf (that is a {@link org.apache.jackrabbit.oak.api.PropertyState}) or to an  * invalid location which refers to neither of the former.  * {@code TreeLocation} instances provide methods for navigating trees. {@code TreeLocation}  * instances are immutable and navigating a tree always results in new {@code TreeLocation}  * instances. Navigation never fails. Errors are deferred until the underlying item itself is  * accessed. That is, if a {@code TreeLocation} points to an item which does not exist or  * is unavailable otherwise (i.e. due to access control restrictions) accessing the tree  * will return {@code null} at this point.  * @deprecated Use {@link Tree} and {@link Tree#exists()} instead.  */
 end_comment
@@ -102,13 +84,6 @@ name|PropertyState
 name|getProperty
 parameter_list|()
 function_decl|;
-comment|/**      * Get the {@link org.apache.jackrabbit.oak.api.Tree.Status} of the underlying item for this      * {@code TreeLocation}.      * @return  underlying status or {@code null} if not available.      */
-annotation|@
-name|CheckForNull
-name|Status
-name|getStatus
-parameter_list|()
-function_decl|;
 comment|/**      * The path of this location      * @return  path      */
 annotation|@
 name|Nonnull
@@ -120,14 +95,6 @@ comment|/**      * Remove the underlying item.      *      * @return {@code true
 name|boolean
 name|remove
 parameter_list|()
-function_decl|;
-comment|/**      * Set the underlying property of this {@code TreeLocation}. If the underlying item is      * not a property, this method return {@code false}.      * @param property The property to set      * @return {@code true} if the property state was set, {@code false} otherwise.      */
-name|boolean
-name|set
-parameter_list|(
-name|PropertyState
-name|property
-parameter_list|)
 function_decl|;
 block|}
 end_interface
