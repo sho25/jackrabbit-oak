@@ -1114,6 +1114,7 @@ name|format
 argument_list|(
 name|FILE_NAME_FORMAT
 argument_list|,
+operator|++
 name|index
 argument_list|)
 decl_stmt|;
