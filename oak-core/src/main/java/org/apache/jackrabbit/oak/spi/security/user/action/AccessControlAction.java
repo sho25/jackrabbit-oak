@@ -614,7 +614,31 @@ operator|.
 name|getID
 argument_list|()
 operator|+
-literal|"; omit ac setup"
+literal|"; omit ac setup."
+argument_list|)
+expr_stmt|;
+return|return;
+block|}
+if|if
+condition|(
+name|groupPrivilegeNames
+operator|.
+name|length
+operator|==
+literal|0
+operator|&&
+name|userPrivilegeNames
+operator|.
+name|length
+operator|==
+literal|0
+condition|)
+block|{
+name|log
+operator|.
+name|debug
+argument_list|(
+literal|"No privileges configured for groups and users; omit ac setup."
 argument_list|)
 expr_stmt|;
 return|return;
