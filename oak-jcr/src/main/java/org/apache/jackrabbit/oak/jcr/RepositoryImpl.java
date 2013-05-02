@@ -505,13 +505,13 @@ parameter_list|)
 throws|throws
 name|RepositoryException
 block|{
+comment|// TODO implement auto refresh configuration. See OAK-803, OAK-88
 specifier|final
 name|boolean
 name|autoRefresh
 init|=
 literal|true
 decl_stmt|;
-comment|// TODO implement auto refresh configuration
 try|try
 block|{
 name|ContentSession
