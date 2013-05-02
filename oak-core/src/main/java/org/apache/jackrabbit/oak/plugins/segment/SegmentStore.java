@@ -114,6 +114,10 @@ name|UUID
 name|segmentId
 parameter_list|)
 function_decl|;
+name|void
+name|close
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 
