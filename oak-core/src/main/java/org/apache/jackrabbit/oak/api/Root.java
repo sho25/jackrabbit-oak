@@ -28,7 +28,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * The root of a {@link Tree}.  *<p/>  * The data returned by this class filtered for the access rights that are set  * in the {@link ContentSession} that created this object.  *<p/>  * All root instances created by a content session become invalid after the  * content session is closed. Any method called on an invalid root instance  * will throw an {@code InvalidStateException}.  *<p/>  * {@link Tree} instances may become disconnected after a call to {@link #refresh()},  * {@link #rebase()} or {@link #commit()}. Any access to disconnected tree instances  * - except for  {@link Tree#getName()}, {@link Tree#isRoot()}, {@link Tree#getPath()},  * {@link Tree#getParent()} and {@link Tree#exists()} - will cause an  * {@code InvalidStateException}.  * TODO document iterability / existence (OAK-798)  */
+comment|/**  * A {@code Root} instance serves as a container for a {@link Tree}. It is  * obtained from a {@link ContentSession}, which governs accessibility and  * visibility of the {@code Tree} and its sub trees.  *<p>  * All root instances created by a content session become invalid after the  * content session is closed. Any method called on an invalid root instance  * will throw an {@code InvalidStateException}.  *<p>  * {@link Tree} instances may become non existing after a call to  * {@link #refresh()}, {@link #rebase()} or {@link #commit()}. Any write  * access to non existing {@code Tree} instances will cause an  * {@code InvalidStateException}.  * @see Tree Existence and iterability of trees  */
 end_comment
 
 begin_interface
@@ -70,7 +70,7 @@ name|String
 name|path
 parameter_list|)
 function_decl|;
-comment|/**      * Get a tree location for a given absolute {@code path}      *      * @param path absolute path to the location      * @return the tree location for {@code path}      */
+comment|/**      * Get a tree location for a given absolute {@code path}      * @param path absolute path to the location      * @return the tree location for {@code path}      * @deprecated use {@link #getTree(String)}      */
 annotation|@
 name|Nonnull
 annotation|@
@@ -82,17 +82,17 @@ name|String
 name|path
 parameter_list|)
 function_decl|;
-comment|/**      * Rebase this root instance to the latest revision. After a call to this method,      * trees obtained through {@link #getTree(String)} may become disconnected.      */
+comment|/**      * Rebase this root instance to the latest revision. After a call to this method,      * trees obtained through {@link #getTree(String)} may become non existing.      */
 name|void
 name|rebase
 parameter_list|()
 function_decl|;
-comment|/**      * Reverts all changes made to this root and refreshed to the latest trunk.      * After a call to this method, trees obtained through {@link #getTree(String)}      * may become disconnected.      */
+comment|/**      * Reverts all changes made to this root and refreshed to the latest trunk.      * After a call to this method, trees obtained through {@link #getTree(String)}      * may become non existing.      */
 name|void
 name|refresh
 parameter_list|()
 function_decl|;
-comment|/**      * Atomically apply all changes made to the tree beneath this root to the      * underlying store and refreshes this root. After a call to this method,      * all trees obtained through {@link #getTree(String)} become invalid and fresh      * instances must be obtained.      *      * @throws CommitFailedException      */
+comment|/**      * Atomically apply all changes made to the tree contained in this root to the      * underlying store and refreshes this root. After a call to this method,      * trees obtained through {@link #getTree(String)} may become non existing.      *      * @throws CommitFailedException      */
 name|void
 name|commit
 parameter_list|()
