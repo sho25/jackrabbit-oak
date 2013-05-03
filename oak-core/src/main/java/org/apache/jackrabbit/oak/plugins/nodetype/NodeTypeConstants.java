@@ -96,6 +96,11 @@ name|NT_REP_SYSTEM
 init|=
 literal|"rep:system"
 decl_stmt|;
+name|String
+name|NT_REP_NODE_TYPES
+init|=
+literal|"rep:nodeTypes"
+decl_stmt|;
 comment|/**      * Additional name constants not present in JcrConstants      */
 name|String
 name|JCR_CREATEDBY
