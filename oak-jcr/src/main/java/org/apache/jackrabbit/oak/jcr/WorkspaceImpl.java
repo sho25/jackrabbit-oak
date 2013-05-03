@@ -18,26 +18,6 @@ package|;
 end_package
 
 begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|plugins
-operator|.
-name|nodetype
-operator|.
-name|NodeTypeConstants
-operator|.
-name|NODE_TYPES_PATH
-import|;
-end_import
-
-begin_import
 import|import
 name|java
 operator|.
@@ -427,6 +407,26 @@ name|InputSource
 import|;
 end_import
 
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|nodetype
+operator|.
+name|NodeTypeConstants
+operator|.
+name|NODE_TYPES_PATH
+import|;
+end_import
+
 begin_comment
 comment|/**  * TODO document  */
 end_comment
@@ -783,6 +783,11 @@ name|getOakPathOrThrowNotFound
 argument_list|(
 name|destAbsPath
 argument_list|)
+argument_list|,
+name|sessionContext
+operator|.
+name|getAccessManager
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -915,6 +920,11 @@ name|destAbsPath
 argument_list|)
 argument_list|,
 literal|false
+argument_list|,
+name|sessionContext
+operator|.
+name|getAccessManager
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}

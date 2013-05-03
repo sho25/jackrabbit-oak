@@ -1758,6 +1758,11 @@ name|destAbsPath
 argument_list|)
 argument_list|,
 literal|true
+argument_list|,
+name|sessionContext
+operator|.
+name|getAccessManager
+argument_list|()
 argument_list|)
 expr_stmt|;
 return|return
@@ -2689,10 +2694,10 @@ decl_stmt|;
 return|return
 name|sessionContext
 operator|.
-name|getPermissionProvider
+name|getAccessManager
 argument_list|()
 operator|.
-name|isGranted
+name|hasPermissions
 argument_list|(
 name|oakPath
 argument_list|,
@@ -2734,13 +2739,7 @@ throw|throw
 operator|new
 name|AccessControlException
 argument_list|(
-literal|"Access control violation: path = "
-operator|+
-name|absPath
-operator|+
-literal|", actions = "
-operator|+
-name|actions
+literal|"Access denied."
 argument_list|)
 throw|;
 block|}
