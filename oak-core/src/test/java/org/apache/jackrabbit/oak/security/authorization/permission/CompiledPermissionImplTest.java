@@ -2194,7 +2194,7 @@ name|ALLOW_ALL_REGULAR
 argument_list|,
 name|cp
 argument_list|,
-name|nodePaths
+name|node2Path
 argument_list|)
 expr_stmt|;
 block|}
