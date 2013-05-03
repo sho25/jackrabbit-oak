@@ -27,27 +27,7 @@ name|java
 operator|.
 name|io
 operator|.
-name|ByteArrayInputStream
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
 name|IOException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|InputStream
 import|;
 end_import
 
@@ -158,16 +138,6 @@ operator|.
 name|jcr
 operator|.
 name|RepositoryException
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|jcr
-operator|.
-name|Session
 import|;
 end_import
 
@@ -365,9 +335,37 @@ name|apache
 operator|.
 name|jackrabbit
 operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|xml
+operator|.
+name|ImportBehavior
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
 name|test
 operator|.
 name|NotExecutableException
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Ignore
 import|;
 end_import
 
@@ -402,24 +400,8 @@ specifier|public
 class|class
 name|UserImportTest
 extends|extends
-name|AbstractUserTest
+name|AbstractImportTest
 block|{
-specifier|private
-specifier|static
-specifier|final
-name|String
-name|USERPATH
-init|=
-literal|"/rep:security/rep:authorizables/rep:users"
-decl_stmt|;
-specifier|private
-specifier|static
-specifier|final
-name|String
-name|GROUPPATH
-init|=
-literal|"/rep:security/rep:authorizables/rep:groups"
-decl_stmt|;
 specifier|private
 name|JackrabbitSession
 name|jrSession
@@ -540,11 +522,7 @@ name|void
 name|testImportUser
 parameter_list|()
 throws|throws
-name|RepositoryException
-throws|,
-name|IOException
-throws|,
-name|SAXException
+name|Exception
 block|{
 name|String
 name|xml
@@ -821,11 +799,7 @@ name|void
 name|testImportGroup
 parameter_list|()
 throws|throws
-name|RepositoryException
-throws|,
-name|IOException
-throws|,
-name|SAXException
+name|Exception
 block|{
 name|String
 name|xml
@@ -1036,13 +1010,7 @@ name|void
 name|testImportGroupIntoUsersTree
 parameter_list|()
 throws|throws
-name|RepositoryException
-throws|,
-name|IOException
-throws|,
-name|SAXException
-throws|,
-name|NotExecutableException
+name|Exception
 block|{
 name|String
 name|xml
@@ -1197,13 +1165,7 @@ name|void
 name|testImportAuthorizableId
 parameter_list|()
 throws|throws
-name|IOException
-throws|,
-name|RepositoryException
-throws|,
-name|SAXException
-throws|,
-name|NotExecutableException
+name|Exception
 block|{
 comment|// importing an authorizable with an jcr:uuid that doesn't match the
 comment|// hash of the given ID -> getAuthorizable(String id) will not find the
@@ -1335,13 +1297,7 @@ name|void
 name|testExistingPrincipal
 parameter_list|()
 throws|throws
-name|RepositoryException
-throws|,
-name|NotExecutableException
-throws|,
-name|IOException
-throws|,
-name|SAXException
+name|Exception
 block|{
 name|Principal
 name|existing
@@ -1486,11 +1442,7 @@ name|void
 name|testConflictingPrincipalsWithinImport
 parameter_list|()
 throws|throws
-name|IOException
-throws|,
-name|RepositoryException
-throws|,
-name|NotExecutableException
+name|Exception
 block|{
 name|String
 name|xml
@@ -1526,16 +1478,6 @@ operator|+
 literal|"</sv:node>"
 operator|+
 literal|"</sv:node>"
-decl_stmt|;
-name|Node
-name|target
-init|=
-name|superuser
-operator|.
-name|getNode
-argument_list|(
-name|GROUPPATH
-argument_list|)
 decl_stmt|;
 try|try
 block|{
@@ -1578,13 +1520,7 @@ name|void
 name|testMultiValuedPrincipalName
 parameter_list|()
 throws|throws
-name|RepositoryException
-throws|,
-name|IOException
-throws|,
-name|SAXException
-throws|,
-name|NotExecutableException
+name|Exception
 block|{
 name|String
 name|xml
@@ -1753,13 +1689,7 @@ name|void
 name|testPlainTextPassword
 parameter_list|()
 throws|throws
-name|RepositoryException
-throws|,
-name|IOException
-throws|,
-name|SAXException
-throws|,
-name|NotExecutableException
+name|Exception
 block|{
 name|String
 name|plainPw
@@ -1902,13 +1832,7 @@ name|void
 name|testMultiValuedPassword
 parameter_list|()
 throws|throws
-name|RepositoryException
-throws|,
-name|IOException
-throws|,
-name|SAXException
-throws|,
-name|NotExecutableException
+name|Exception
 block|{
 name|String
 name|xml
@@ -2081,13 +2005,7 @@ name|void
 name|testIncompleteUser
 parameter_list|()
 throws|throws
-name|RepositoryException
-throws|,
-name|IOException
-throws|,
-name|SAXException
-throws|,
-name|NotExecutableException
+name|Exception
 block|{
 name|List
 argument_list|<
@@ -2231,13 +2149,7 @@ name|void
 name|testIncompleteGroup
 parameter_list|()
 throws|throws
-name|IOException
-throws|,
-name|RepositoryException
-throws|,
-name|SAXException
-throws|,
-name|NotExecutableException
+name|Exception
 block|{
 name|String
 name|xml
@@ -2339,13 +2251,7 @@ name|void
 name|testImportWithIntermediatePath
 parameter_list|()
 throws|throws
-name|IOException
-throws|,
-name|RepositoryException
-throws|,
-name|SAXException
-throws|,
-name|NotExecutableException
+name|Exception
 block|{
 name|String
 name|xml
@@ -2570,13 +2476,7 @@ name|void
 name|testImportNewMembers
 parameter_list|()
 throws|throws
-name|IOException
-throws|,
-name|RepositoryException
-throws|,
-name|SAXException
-throws|,
-name|NotExecutableException
+name|Exception
 block|{
 name|String
 name|xml
@@ -2765,13 +2665,7 @@ name|void
 name|testImportNewMembersReverseOrder
 parameter_list|()
 throws|throws
-name|IOException
-throws|,
-name|RepositoryException
-throws|,
-name|SAXException
-throws|,
-name|NotExecutableException
+name|Exception
 block|{
 comment|// group is imported before the member
 name|String
@@ -2957,13 +2851,7 @@ name|void
 name|testImportMembers
 parameter_list|()
 throws|throws
-name|RepositoryException
-throws|,
-name|IOException
-throws|,
-name|SAXException
-throws|,
-name|NotExecutableException
+name|Exception
 block|{
 name|Authorizable
 name|admin
@@ -3167,13 +3055,7 @@ name|void
 name|testImportNonExistingMemberIgnore
 parameter_list|()
 throws|throws
-name|IOException
-throws|,
-name|RepositoryException
-throws|,
-name|SAXException
-throws|,
-name|NotExecutableException
+name|Exception
 block|{
 name|Node
 name|n
@@ -3265,16 +3147,6 @@ literal|"</sv:node>"
 operator|+
 literal|"</sv:node>"
 decl_stmt|;
-name|Node
-name|target
-init|=
-name|superuser
-operator|.
-name|getNode
-argument_list|(
-name|GROUPPATH
-argument_list|)
-decl_stmt|;
 try|try
 block|{
 name|doImport
@@ -3282,7 +3154,10 @@ argument_list|(
 name|GROUPPATH
 argument_list|,
 name|xml
-comment|/*, UserImporter.ImportBehavior.IGNORE*/
+argument_list|,
+name|ImportBehavior
+operator|.
+name|IGNORE
 argument_list|)
 expr_stmt|;
 comment|// there should be no exception during import,
@@ -3339,160 +3214,150 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|//TODO test UserImporter.ImportBehavior != ignore
-comment|//    public void testImportNonExistingMemberAbort() throws IOException, RepositoryException, SAXException, NotExecutableException {
-comment|//        Node n = testRootNode.addNode(nodeName1, ntUnstructured);
-comment|//        n.addMixin(mixReferenceable);
-comment|//
-comment|//        List<String> invalid = new ArrayList<String>();
-comment|//        invalid.add(UUID.randomUUID().toString()); // random uuid
-comment|//        invalid.add(n.getUUID()); // uuid of non-authorizable node
-comment|//
-comment|//        for (String id : invalid) {
-comment|//            String xml = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>" +
-comment|//                    "<sv:node sv:name=\"gFolder\" xmlns:mix=\"http://www.jcp.org/jcr/mix/1.0\" xmlns:nt=\"http://www.jcp.org/jcr/nt/1.0\" xmlns:fn_old=\"http://www.w3.org/2004/10/xpath-functions\" xmlns:fn=\"http://www.w3.org/2005/xpath-functions\" xmlns:xs=\"http://www.w3.org/2001/XMLSchema\" xmlns:sv=\"http://www.jcp.org/jcr/sv/1.0\" xmlns:rep=\"internal\" xmlns:jcr=\"http://www.jcp.org/jcr/1.0\">" +
-comment|//                    "<sv:property sv:name=\"jcr:primaryType\" sv:type=\"Name\"><sv:value>rep:AuthorizableFolder</sv:value></sv:property>" +
-comment|//                        "<sv:node sv:name=\"g1\"><sv:property sv:name=\"jcr:primaryType\" sv:type=\"Name\"><sv:value>rep:Group</sv:value></sv:property>" +
-comment|//                        "<sv:property sv:name=\"jcr:uuid\" sv:type=\"String\"><sv:value>0120a4f9-196a-3f9e-b9f5-23f31f914da7</sv:value></sv:property>" +
-comment|//                        "<sv:property sv:name=\"rep:principalName\" sv:type=\"String\"><sv:value>g1</sv:value></sv:property>" +
-comment|//                        "<sv:property sv:name=\"rep:members\" sv:type=\"WeakReference\"><sv:value>" +id+ "</sv:value></sv:property>" +
-comment|//                        "</sv:node>" +
-comment|//                    "</sv:node>";
-comment|//            NodeImpl target = (NodeImpl) sImpl.getNode(umgr.getGroupsPath());
-comment|//            try {
-comment|//                doImport(target, xml, UserImporter.ImportBehavior.ABORT);
-comment|//                // import behavior ABORT -> should throw.
-comment|//                fail("importing invalid members -> must throw.");
-comment|//            } catch (SAXException e) {
-comment|//                // success as well
-comment|//            } finally {
-comment|//                sImpl.refresh(false);
-comment|//            }
-comment|//        }
-comment|//    }
-comment|//
-comment|//    public void testImportNonExistingMemberBestEffort() throws IOException, RepositoryException, SAXException, NotExecutableException {
-comment|//        if (umgr.hasMemberSplitSize()) {
-comment|//            throw new NotExecutableException();
-comment|//        }
-comment|//
-comment|//        Node n = testRootNode.addNode(nodeName1, ntUnstructured);
-comment|//        n.addMixin(mixReferenceable);
-comment|//
-comment|//        List<String> invalid = new ArrayList<String>();
-comment|//        invalid.add(UUID.randomUUID().toString()); // random uuid
-comment|//        invalid.add(n.getUUID()); // uuid of non-authorizable node
-comment|//
-comment|//        for (String id : invalid) {
-comment|//            String xml = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>" +
-comment|//                    "<sv:node sv:name=\"gFolder\" xmlns:mix=\"http://www.jcp.org/jcr/mix/1.0\" xmlns:nt=\"http://www.jcp.org/jcr/nt/1.0\" xmlns:fn_old=\"http://www.w3.org/2004/10/xpath-functions\" xmlns:fn=\"http://www.w3.org/2005/xpath-functions\" xmlns:xs=\"http://www.w3.org/2001/XMLSchema\" xmlns:sv=\"http://www.jcp.org/jcr/sv/1.0\" xmlns:rep=\"internal\" xmlns:jcr=\"http://www.jcp.org/jcr/1.0\">" +
-comment|//                    "<sv:property sv:name=\"jcr:primaryType\" sv:type=\"Name\"><sv:value>rep:AuthorizableFolder</sv:value></sv:property>" +
-comment|//                        "<sv:node sv:name=\"g1\"><sv:property sv:name=\"jcr:primaryType\" sv:type=\"Name\"><sv:value>rep:Group</sv:value></sv:property>" +
-comment|//                        "<sv:property sv:name=\"jcr:uuid\" sv:type=\"String\"><sv:value>0120a4f9-196a-3f9e-b9f5-23f31f914da7</sv:value></sv:property>" +
-comment|//                        "<sv:property sv:name=\"rep:principalName\" sv:type=\"String\"><sv:value>g1</sv:value></sv:property>" +
-comment|//                        "<sv:property sv:name=\"rep:members\" sv:type=\"WeakReference\"><sv:value>" +id+ "</sv:value></sv:property>" +
-comment|//                        "</sv:node>" +
-comment|//                    "</sv:node>";
-comment|//            NodeImpl target = (NodeImpl) sImpl.getNode(umgr.getGroupsPath());
-comment|//            try {
-comment|//                // BESTEFFORT behavior -> must import non-existing members.
-comment|//                doImport(target, xml, UserImporter.ImportBehavior.BESTEFFORT);
-comment|//                Authorizable a = umgr.getAuthorizable("g1");
-comment|//                if (a.isGroup()) {
-comment|//                    // the rep:members property must contain the invalid value
-comment|//                    boolean found = false;
-comment|//                    NodeImpl grNode = ((AuthorizableImpl) a).getNode();
-comment|//                    for (Value memberValue : grNode.getProperty(UserConstants.P_MEMBERS).getValues()) {
-comment|//                        assertEquals(PropertyType.WEAKREFERENCE, memberValue.getType());
-comment|//                        if (id.equals(memberValue.getString())) {
-comment|//                            found = true;
-comment|//                            break;
-comment|//                        }
-comment|//                    }
-comment|//                    assertTrue("ImportBehavior.BESTEFFORT must import non-existing members.",found);
-comment|//
-comment|//                    // declared members must not list the invalid entry.
-comment|//                    assertNotDeclaredMember((Group) a, id);
-comment|//                } else {
-comment|//                    fail("'g1' was not imported as Group.");
-comment|//                }
-comment|//            } finally {
-comment|//                sImpl.refresh(false);
-comment|//            }
-comment|//        }
-comment|//    }
-comment|//
-comment|//    public void testImportNonExistingMemberBestEffort2() throws IOException, RepositoryException, SAXException, NotExecutableException {
-comment|//
-comment|//        String g1Id = "0120a4f9-196a-3f9e-b9f5-23f31f914da7";
-comment|//        String nonExistingId = "b2f5ff47-4366-31b6-a533-d8dc3614845d"; // groupId of 'g' group.
-comment|//        if (umgr.getAuthorizable("g") != null || umgr.hasMemberSplitSize()) {
-comment|//            throw new NotExecutableException();
-comment|//        }
-comment|//
-comment|//        String xml = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>" +
-comment|//                "<sv:node sv:name=\"gFolder\" xmlns:mix=\"http://www.jcp.org/jcr/mix/1.0\" xmlns:nt=\"http://www.jcp.org/jcr/nt/1.0\" xmlns:fn_old=\"http://www.w3.org/2004/10/xpath-functions\" xmlns:fn=\"http://www.w3.org/2005/xpath-functions\" xmlns:xs=\"http://www.w3.org/2001/XMLSchema\" xmlns:sv=\"http://www.jcp.org/jcr/sv/1.0\" xmlns:rep=\"internal\" xmlns:jcr=\"http://www.jcp.org/jcr/1.0\">" +
-comment|//                "<sv:property sv:name=\"jcr:primaryType\" sv:type=\"Name\"><sv:value>rep:AuthorizableFolder</sv:value></sv:property>" +
-comment|//                "<sv:node sv:name=\"g1\"><sv:property sv:name=\"jcr:primaryType\" sv:type=\"Name\"><sv:value>rep:Group</sv:value></sv:property>" +
-comment|//                "<sv:property sv:name=\"jcr:uuid\" sv:type=\"String\"><sv:value>" + g1Id + "</sv:value></sv:property>" +
-comment|//                "<sv:property sv:name=\"rep:principalName\" sv:type=\"String\"><sv:value>g1</sv:value></sv:property>" +
-comment|//                "<sv:property sv:name=\"rep:members\" sv:type=\"WeakReference\"><sv:value>" +nonExistingId+ "</sv:value></sv:property>" +
-comment|//                "</sv:node>" +
-comment|//                "</sv:node>";
-comment|//
-comment|//        String xml2 = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>" +
-comment|//                "<sv:node sv:name=\"g\" xmlns:mix=\"http://www.jcp.org/jcr/mix/1.0\" xmlns:nt=\"http://www.jcp.org/jcr/nt/1.0\" xmlns:fn_old=\"http://www.w3.org/2004/10/xpath-functions\" xmlns:fn=\"http://www.w3.org/2005/xpath-functions\" xmlns:xs=\"http://www.w3.org/2001/XMLSchema\" xmlns:sv=\"http://www.jcp.org/jcr/sv/1.0\" xmlns:rep=\"internal\" xmlns:jcr=\"http://www.jcp.org/jcr/1.0\">" +
-comment|//                "<sv:property sv:name=\"jcr:primaryType\" sv:type=\"Name\"><sv:value>rep:Group</sv:value></sv:property>" +
-comment|//                "<sv:property sv:name=\"jcr:uuid\" sv:type=\"String\"><sv:value>" + nonExistingId + "</sv:value></sv:property>" +
-comment|//                "<sv:property sv:name=\"rep:principalName\" sv:type=\"String\"><sv:value>g</sv:value></sv:property>" +
-comment|//                "<sv:property sv:name=\"rep:members\" sv:type=\"WeakReference\"><sv:value>" + g1Id + "</sv:value></sv:property>" +
-comment|//                "</sv:node>";
-comment|//
-comment|//        NodeImpl target = (NodeImpl) sImpl.getNode(umgr.getGroupsPath());
-comment|//        try {
-comment|//            // BESTEFFORT behavior -> must import non-existing members.
-comment|//            doImport(target, xml, UserImporter.ImportBehavior.BESTEFFORT);
-comment|//            Authorizable g1 = umgr.getAuthorizable("g1");
-comment|//            if (g1.isGroup()) {
-comment|//                // the rep:members property must contain the invalid value
-comment|//                boolean found = false;
-comment|//                NodeImpl grNode = ((AuthorizableImpl) g1).getNode();
-comment|//                for (Value memberValue : grNode.getProperty(UserConstants.P_MEMBERS).getValues()) {
-comment|//                    assertEquals(PropertyType.WEAKREFERENCE, memberValue.getType());
-comment|//                    if (nonExistingId.equals(memberValue.getString())) {
-comment|//                        found = true;
-comment|//                        break;
-comment|//                    }
-comment|//                }
-comment|//                assertTrue("ImportBehavior.BESTEFFORT must import non-existing members.",found);
-comment|//            } else {
-comment|//                fail("'g1' was not imported as Group.");
-comment|//            }
-comment|//
-comment|//            /*
-comment|//            now try to import the 'g' group that has a circular group
-comment|//            membership references.
-comment|//            expected:
-comment|//            - group is imported
-comment|//            - circular membership is ignored
-comment|//            - g is member of g1
-comment|//            - g1 isn't member of g
-comment|//            */
-comment|//            target = (NodeImpl) target.getNode("gFolder");
-comment|//            doImport(target, xml2, UserImporter.ImportBehavior.BESTEFFORT);
-comment|//
-comment|//            Authorizable g = umgr.getAuthorizable("g");
-comment|//            assertNotNull(g);
-comment|//            if (g.isGroup()) {
-comment|//                assertNotDeclaredMember((Group) g, g1Id);
-comment|//            } else {
-comment|//                fail("'g' was not imported as Group.");
-comment|//            }
-comment|//
-comment|//        } finally {
-comment|//            sImpl.refresh(false);
-comment|//        }
-comment|//    }
+annotation|@
+name|Ignore
+argument_list|(
+literal|"OAK-414"
+argument_list|)
+annotation|@
+name|Test
+specifier|public
+name|void
+name|testImportNonExistingMemberAbort
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|Node
+name|n
+init|=
+name|testRootNode
+operator|.
+name|addNode
+argument_list|(
+name|nodeName1
+argument_list|,
+name|ntUnstructured
+argument_list|)
+decl_stmt|;
+name|n
+operator|.
+name|addMixin
+argument_list|(
+name|mixReferenceable
+argument_list|)
+expr_stmt|;
+name|List
+argument_list|<
+name|String
+argument_list|>
+name|invalid
+init|=
+operator|new
+name|ArrayList
+argument_list|<
+name|String
+argument_list|>
+argument_list|()
+decl_stmt|;
+name|invalid
+operator|.
+name|add
+argument_list|(
+name|UUID
+operator|.
+name|randomUUID
+argument_list|()
+operator|.
+name|toString
+argument_list|()
+argument_list|)
+expr_stmt|;
+comment|// random uuid
+name|invalid
+operator|.
+name|add
+argument_list|(
+name|n
+operator|.
+name|getUUID
+argument_list|()
+argument_list|)
+expr_stmt|;
+comment|// uuid of non-authorizable node
+for|for
+control|(
+name|String
+name|id
+range|:
+name|invalid
+control|)
+block|{
+name|String
+name|xml
+init|=
+literal|"<?xml version=\"1.0\" encoding=\"UTF-8\"?>"
+operator|+
+literal|"<sv:node sv:name=\"gFolder\" xmlns:mix=\"http://www.jcp.org/jcr/mix/1.0\" xmlns:nt=\"http://www.jcp.org/jcr/nt/1.0\" xmlns:fn_old=\"http://www.w3.org/2004/10/xpath-functions\" xmlns:fn=\"http://www.w3.org/2005/xpath-functions\" xmlns:xs=\"http://www.w3.org/2001/XMLSchema\" xmlns:sv=\"http://www.jcp.org/jcr/sv/1.0\" xmlns:rep=\"internal\" xmlns:jcr=\"http://www.jcp.org/jcr/1.0\">"
+operator|+
+literal|"<sv:property sv:name=\"jcr:primaryType\" sv:type=\"Name\"><sv:value>rep:AuthorizableFolder</sv:value></sv:property>"
+operator|+
+literal|"<sv:node sv:name=\"g1\"><sv:property sv:name=\"jcr:primaryType\" sv:type=\"Name\"><sv:value>rep:Group</sv:value></sv:property>"
+operator|+
+literal|"<sv:property sv:name=\"jcr:uuid\" sv:type=\"String\"><sv:value>0120a4f9-196a-3f9e-b9f5-23f31f914da7</sv:value></sv:property>"
+operator|+
+literal|"<sv:property sv:name=\"rep:principalName\" sv:type=\"String\"><sv:value>g1</sv:value></sv:property>"
+operator|+
+literal|"<sv:property sv:name=\"rep:members\" sv:type=\"WeakReference\"><sv:value>"
+operator|+
+name|id
+operator|+
+literal|"</sv:value></sv:property>"
+operator|+
+literal|"</sv:node>"
+operator|+
+literal|"</sv:node>"
+decl_stmt|;
+try|try
+block|{
+name|doImport
+argument_list|(
+name|GROUPPATH
+argument_list|,
+name|xml
+argument_list|,
+name|ImportBehavior
+operator|.
+name|ABORT
+argument_list|)
+expr_stmt|;
+comment|// import behavior ABORT -> should throw.
+name|fail
+argument_list|(
+literal|"importing invalid members -> must throw."
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|SAXException
+name|e
+parameter_list|)
+block|{
+comment|// success as well
+block|}
+finally|finally
+block|{
+name|superuser
+operator|.
+name|refresh
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+block|}
 annotation|@
 name|Test
 specifier|public
@@ -3536,16 +3401,6 @@ operator|+
 literal|"</sv:node>"
 operator|+
 literal|"</sv:node>"
-decl_stmt|;
-name|Node
-name|target
-init|=
-name|superuser
-operator|.
-name|getNode
-argument_list|(
-name|GROUPPATH
-argument_list|)
 decl_stmt|;
 try|try
 block|{
@@ -3608,29 +3463,93 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|//TODO test UserImporter.ImportBehavior != ignore
-comment|//    public void testImportSelfAsGroupAbort() throws Exception {
-comment|//
-comment|//        String invalidId = "0120a4f9-196a-3f9e-b9f5-23f31f914da7"; // uuid of the group itself
-comment|//        String xml = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>" +
-comment|//                "<sv:node sv:name=\"gFolder\" xmlns:mix=\"http://www.jcp.org/jcr/mix/1.0\" xmlns:nt=\"http://www.jcp.org/jcr/nt/1.0\" xmlns:fn_old=\"http://www.w3.org/2004/10/xpath-functions\" xmlns:fn=\"http://www.w3.org/2005/xpath-functions\" xmlns:xs=\"http://www.w3.org/2001/XMLSchema\" xmlns:sv=\"http://www.jcp.org/jcr/sv/1.0\" xmlns:rep=\"internal\" xmlns:jcr=\"http://www.jcp.org/jcr/1.0\">" +
-comment|//                "<sv:property sv:name=\"jcr:primaryType\" sv:type=\"Name\"><sv:value>rep:AuthorizableFolder</sv:value></sv:property>" +
-comment|//                "<sv:node sv:name=\"g1\"><sv:property sv:name=\"jcr:primaryType\" sv:type=\"Name\"><sv:value>rep:Group</sv:value></sv:property>" +
-comment|//                "<sv:property sv:name=\"jcr:uuid\" sv:type=\"String\"><sv:value>"+invalidId+"</sv:value></sv:property>" +
-comment|//                "<sv:property sv:name=\"rep:principalName\" sv:type=\"String\"><sv:value>g1</sv:value></sv:property>" +
-comment|//                "<sv:property sv:name=\"rep:members\" sv:type=\"WeakReference\"><sv:value>" +invalidId+ "</sv:value></sv:property>" +
-comment|//                "</sv:node>" +
-comment|//                "</sv:node>";
-comment|//        NodeImpl target = (NodeImpl) sImpl.getNode(umgr.getGroupsPath());
-comment|//        try {
-comment|//            doImport(target, xml, UserImporter.ImportBehavior.ABORT);
-comment|//            fail("Importing self as group with ImportBehavior.ABORT must fail.");
-comment|//        } catch (SAXException e) {
-comment|//            // success.
-comment|//        }finally {
-comment|//            sImpl.refresh(false);
-comment|//        }
-comment|//    }
+annotation|@
+name|Ignore
+argument_list|(
+literal|"OAK-414"
+argument_list|)
+annotation|@
+name|Test
+specifier|public
+name|void
+name|testImportSelfAsGroupAbort
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|String
+name|invalidId
+init|=
+literal|"0120a4f9-196a-3f9e-b9f5-23f31f914da7"
+decl_stmt|;
+comment|// uuid of the group itself
+name|String
+name|xml
+init|=
+literal|"<?xml version=\"1.0\" encoding=\"UTF-8\"?>"
+operator|+
+literal|"<sv:node sv:name=\"gFolder\" xmlns:mix=\"http://www.jcp.org/jcr/mix/1.0\" xmlns:nt=\"http://www.jcp.org/jcr/nt/1.0\" xmlns:fn_old=\"http://www.w3.org/2004/10/xpath-functions\" xmlns:fn=\"http://www.w3.org/2005/xpath-functions\" xmlns:xs=\"http://www.w3.org/2001/XMLSchema\" xmlns:sv=\"http://www.jcp.org/jcr/sv/1.0\" xmlns:rep=\"internal\" xmlns:jcr=\"http://www.jcp.org/jcr/1.0\">"
+operator|+
+literal|"<sv:property sv:name=\"jcr:primaryType\" sv:type=\"Name\"><sv:value>rep:AuthorizableFolder</sv:value></sv:property>"
+operator|+
+literal|"<sv:node sv:name=\"g1\"><sv:property sv:name=\"jcr:primaryType\" sv:type=\"Name\"><sv:value>rep:Group</sv:value></sv:property>"
+operator|+
+literal|"<sv:property sv:name=\"jcr:uuid\" sv:type=\"String\"><sv:value>"
+operator|+
+name|invalidId
+operator|+
+literal|"</sv:value></sv:property>"
+operator|+
+literal|"<sv:property sv:name=\"rep:principalName\" sv:type=\"String\"><sv:value>g1</sv:value></sv:property>"
+operator|+
+literal|"<sv:property sv:name=\"rep:members\" sv:type=\"WeakReference\"><sv:value>"
+operator|+
+name|invalidId
+operator|+
+literal|"</sv:value></sv:property>"
+operator|+
+literal|"</sv:node>"
+operator|+
+literal|"</sv:node>"
+decl_stmt|;
+try|try
+block|{
+name|doImport
+argument_list|(
+name|GROUPPATH
+argument_list|,
+name|xml
+argument_list|,
+name|ImportBehavior
+operator|.
+name|ABORT
+argument_list|)
+expr_stmt|;
+name|fail
+argument_list|(
+literal|"Importing self as group with ImportBehavior.ABORT must fail."
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|SAXException
+name|e
+parameter_list|)
+block|{
+comment|// success.
+block|}
+finally|finally
+block|{
+name|superuser
+operator|.
+name|refresh
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
+block|}
+block|}
 annotation|@
 name|Test
 specifier|public
@@ -3638,13 +3557,7 @@ name|void
 name|testImportImpersonation
 parameter_list|()
 throws|throws
-name|IOException
-throws|,
-name|RepositoryException
-throws|,
-name|SAXException
-throws|,
-name|NotExecutableException
+name|Exception
 block|{
 name|String
 name|xml
@@ -3678,16 +3591,6 @@ operator|+
 literal|"</sv:node>"
 operator|+
 literal|"</sv:node>"
-decl_stmt|;
-name|Node
-name|target
-init|=
-name|superuser
-operator|.
-name|getNode
-argument_list|(
-name|USERPATH
-argument_list|)
 decl_stmt|;
 try|try
 block|{
@@ -3790,13 +3693,7 @@ name|void
 name|testImportInvalidImpersonationIgnore
 parameter_list|()
 throws|throws
-name|IOException
-throws|,
-name|RepositoryException
-throws|,
-name|SAXException
-throws|,
-name|NotExecutableException
+name|Exception
 block|{
 name|List
 argument_list|<
@@ -4025,35 +3922,146 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|//TODO test UserImporter.ImportBehavior != ignore
-comment|//    public void testImportInvalidImpersonationAbort() throws IOException, RepositoryException, SAXException, NotExecutableException {
-comment|//        List<String> invalid = new ArrayList<String>();
-comment|//        invalid.add("anybody"); // an non-existing princ-name
-comment|//        invalid.add("administrators"); // a group
-comment|//        invalid.add("t"); // principal of the user itself.
-comment|//
-comment|//        for (String principalName : invalid) {
-comment|//            String xml = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
-comment|//                    "<sv:node sv:name=\"t\" xmlns:mix=\"http://www.jcp.org/jcr/mix/1.0\" xmlns:nt=\"http://www.jcp.org/jcr/nt/1.0\" xmlns:fn_old=\"http://www.w3.org/2004/10/xpath-functions\" xmlns:fn=\"http://www.w3.org/2005/xpath-functions\" xmlns:xs=\"http://www.w3.org/2001/XMLSchema\" xmlns:sv=\"http://www.jcp.org/jcr/sv/1.0\" xmlns:rep=\"internal\" xmlns:jcr=\"http://www.jcp.org/jcr/1.0\">" +
-comment|//                    "<sv:property sv:name=\"jcr:primaryType\" sv:type=\"Name\"><sv:value>rep:User</sv:value></sv:property>" +
-comment|//                    "<sv:property sv:name=\"jcr:uuid\" sv:type=\"String\"><sv:value>e358efa4-89f5-3062-b10d-d7316b65649e</sv:value></sv:property>" +
-comment|//                    "<sv:property sv:name=\"rep:password\" sv:type=\"String\"><sv:value>{sha1}8efd86fb78a56a5145ed7739dcb00c78581c5375</sv:value></sv:property>" +
-comment|//                    "<sv:property sv:name=\"rep:principalName\" sv:type=\"String\"><sv:value>t</sv:value></sv:property><sv:property sv:name=\"rep:impersonators\" sv:type=\"String\"><sv:value>" +principalName+ "</sv:value></sv:property>" +
-comment|//                    "</sv:node>";
-comment|//            Subject subj = new Subject();
-comment|//            subj.getPrincipals().add(new PrincipalImpl(principalName));
-comment|//
-comment|//            NodeImpl target = (NodeImpl) sImpl.getNode(umgr.getUsersPath());
-comment|//            try {
-comment|//                doImport(target, xml, UserImporter.ImportBehavior.ABORT);
-comment|//                fail("UserImporter.ImportBehavior.ABORT -> importing invalid impersonators must throw.");
-comment|//            } catch (SAXException e) {
-comment|//                // success
-comment|//            } finally {
-comment|//                sImpl.refresh(false);
-comment|//            }
-comment|//        }
-comment|//    }
+annotation|@
+name|Ignore
+argument_list|(
+literal|"OAK-414"
+argument_list|)
+annotation|@
+name|Test
+specifier|public
+name|void
+name|testImportInvalidImpersonationAbort
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|List
+argument_list|<
+name|String
+argument_list|>
+name|invalid
+init|=
+operator|new
+name|ArrayList
+argument_list|<
+name|String
+argument_list|>
+argument_list|()
+decl_stmt|;
+name|invalid
+operator|.
+name|add
+argument_list|(
+literal|"anybody"
+argument_list|)
+expr_stmt|;
+comment|// an non-existing princ-name
+name|invalid
+operator|.
+name|add
+argument_list|(
+literal|"administrators"
+argument_list|)
+expr_stmt|;
+comment|// a group
+name|invalid
+operator|.
+name|add
+argument_list|(
+literal|"t"
+argument_list|)
+expr_stmt|;
+comment|// principal of the user itself.
+for|for
+control|(
+name|String
+name|principalName
+range|:
+name|invalid
+control|)
+block|{
+name|String
+name|xml
+init|=
+literal|"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
+operator|+
+literal|"<sv:node sv:name=\"t\" xmlns:mix=\"http://www.jcp.org/jcr/mix/1.0\" xmlns:nt=\"http://www.jcp.org/jcr/nt/1.0\" xmlns:fn_old=\"http://www.w3.org/2004/10/xpath-functions\" xmlns:fn=\"http://www.w3.org/2005/xpath-functions\" xmlns:xs=\"http://www.w3.org/2001/XMLSchema\" xmlns:sv=\"http://www.jcp.org/jcr/sv/1.0\" xmlns:rep=\"internal\" xmlns:jcr=\"http://www.jcp.org/jcr/1.0\">"
+operator|+
+literal|"<sv:property sv:name=\"jcr:primaryType\" sv:type=\"Name\"><sv:value>rep:User</sv:value></sv:property>"
+operator|+
+literal|"<sv:property sv:name=\"jcr:uuid\" sv:type=\"String\"><sv:value>e358efa4-89f5-3062-b10d-d7316b65649e</sv:value></sv:property>"
+operator|+
+literal|"<sv:property sv:name=\"rep:password\" sv:type=\"String\"><sv:value>{sha1}8efd86fb78a56a5145ed7739dcb00c78581c5375</sv:value></sv:property>"
+operator|+
+literal|"<sv:property sv:name=\"rep:principalName\" sv:type=\"String\"><sv:value>t</sv:value></sv:property><sv:property sv:name=\"rep:impersonators\" sv:type=\"String\"><sv:value>"
+operator|+
+name|principalName
+operator|+
+literal|"</sv:value></sv:property>"
+operator|+
+literal|"</sv:node>"
+decl_stmt|;
+name|Subject
+name|subj
+init|=
+operator|new
+name|Subject
+argument_list|()
+decl_stmt|;
+name|subj
+operator|.
+name|getPrincipals
+argument_list|()
+operator|.
+name|add
+argument_list|(
+operator|new
+name|PrincipalImpl
+argument_list|(
+name|principalName
+argument_list|)
+argument_list|)
+expr_stmt|;
+try|try
+block|{
+name|doImport
+argument_list|(
+name|USERPATH
+argument_list|,
+name|xml
+argument_list|,
+name|ImportBehavior
+operator|.
+name|ABORT
+argument_list|)
+expr_stmt|;
+name|fail
+argument_list|(
+literal|"UserImporter.ImportBehavior.ABORT -> importing invalid impersonators must throw."
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|SAXException
+name|e
+parameter_list|)
+block|{
+comment|// success
+block|}
+finally|finally
+block|{
+name|superuser
+operator|.
+name|refresh
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+block|}
 annotation|@
 name|Test
 specifier|public
@@ -4061,11 +4069,7 @@ name|void
 name|testImportUuidCollisionRemoveExisting
 parameter_list|()
 throws|throws
-name|RepositoryException
-throws|,
-name|IOException
-throws|,
-name|SAXException
+name|Exception
 block|{
 name|String
 name|xml
@@ -4169,11 +4173,7 @@ name|void
 name|testImportUuidCollisionRemoveExisting2
 parameter_list|()
 throws|throws
-name|RepositoryException
-throws|,
-name|IOException
-throws|,
-name|SAXException
+name|Exception
 block|{
 name|String
 name|xml
@@ -4281,11 +4281,7 @@ name|void
 name|testImportUuidCollisionThrow
 parameter_list|()
 throws|throws
-name|RepositoryException
-throws|,
-name|IOException
-throws|,
-name|SAXException
+name|Exception
 block|{
 name|String
 name|xml
@@ -4404,17 +4400,346 @@ block|}
 block|}
 block|}
 annotation|@
+name|Ignore
+argument_list|(
+literal|"OAK-414"
+argument_list|)
+annotation|@
+name|Test
+specifier|public
+name|void
+name|testImportGroupMembersFromNodesBestEffort
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|String
+name|xml
+init|=
+literal|"<?xml version=\"1.0\" encoding=\"UTF-8\"?><sv:node sv:name=\"s\" xmlns:mix=\"http://www.jcp.org/jcr/mix/1.0\" xmlns:sling=\"http://sling.apache.org/jcr/sling/1.0\" xmlns:nt=\"http://www.jcp.org/jcr/nt/1.0\" xmlns:fn_old=\"http://www.w3.org/2004/10/xpath-functions\" xmlns:fn=\"http://www.w3.org/2005/xpath-functions\" xmlns:xs=\"http://www.w3.org/2001/XMLSchema\" xmlns:jcr=\"http://www.jcp.org/jcr/1.0\" xmlns:sv=\"http://www.jcp.org/jcr/sv/1.0\" xmlns:rep=\"internal\"><sv:property sv:name=\"jcr:primaryType\" sv:type=\"Name\"><sv:value>rep:AuthorizableFolder</sv:value></sv:property><sv:property sv:name=\"jcr:created\" sv:type=\"Date\"><sv:value>2010-08-17T18:22:20.086+02:00</sv:value></sv:property><sv:property sv:name=\"jcr:createdBy\" sv:type=\"String\"><sv:value>admin</sv:value></sv:property><sv:node sv:name=\"sh\"><sv:property sv:name=\"jcr:primaryType\" sv:type=\"Name\"><sv:value>rep:AuthorizableFolder</sv:value></sv:property><sv:property sv:name=\"jcr:created\" sv:type=\"Date\"><sv:value>2010-08-17T18:22:20.086+02:00</sv:value></sv:property><sv:property sv:name=\"jcr:createdBy\" sv:type=\"String\"><sv:value>admin</sv:value></sv:property><sv:node sv:name=\"shrimps\"><sv:property sv:name=\"jcr:primaryType\" sv:type=\"Name\"><sv:value>rep:Group</sv:value></sv:property><sv:property sv:name=\"jcr:uuid\" sv:type=\"String\"><sv:value>08429aec-6f09-30db-8c83-1a2a57fc760c</sv:value></sv:property><sv:property sv:name=\"jcr:created\" sv:type=\"Date\">"
+operator|+
+literal|"<sv:value>2010-08-17T18:22:20.086+02:00</sv:value></sv:property><sv:property sv:name=\"jcr:createdBy\" sv:type=\"String\"><sv:value>admin</sv:value></sv:property><sv:property sv:name=\"rep:principalName\" sv:type=\"String\"><sv:value>shrimps</sv:value></sv:property><sv:node sv:name=\"rep:members\"><sv:property sv:name=\"jcr:primaryType\" sv:type=\"Name\"><sv:value>rep:Members</sv:value></sv:property><sv:node sv:name=\"adi\"><sv:property sv:name=\"jcr:primaryType\" sv:type=\"Name\"><sv:value>rep:Members</sv:value></sv:property><sv:node sv:name=\"adi\"><sv:property sv:name=\"jcr:primaryType\" sv:type=\"Name\"><sv:value>rep:Members</sv:value></sv:property><sv:property sv:name=\"adi\" sv:type=\"WeakReference\"><sv:value>c46335eb-267e-3e1c-9e5b-017acb4cd799</sv:value></sv:property><sv:property sv:name=\"admin\" sv:type=\"WeakReference\"><sv:value>21232f29-7a57-35a7-8389-4a0e4a801fc3</sv:value></sv:property></sv:node><sv:node sv:name=\"angi\"><sv:property sv:name=\"jcr:primaryType\" sv:type=\"Name\"><sv:value>rep:Members</sv:value></sv:property><sv:property sv:name=\"angi\" sv:type=\"WeakReference\"><sv:value>a468b64f-b1df-377c-b325-20d97aaa1ad9</sv:value></sv:property><sv:property sv:name=\"anonymous\" sv:type=\"WeakReference\"><sv:value>294de355-7d9d-30b3-92d8-a1e6aab028cf</sv:value></sv:property><sv:property sv:name=\"cati\" sv:type=\"WeakReference\"><sv:value>f08910b6-41c8-3cb9-a648-1dddd14b132d</sv:value></sv:property></sv:node></sv:node><sv:n"
+operator|+
+literal|"ode sv:name=\"debbi\"><sv:property sv:name=\"jcr:primaryType\" sv:type=\"Name\"><sv:value>rep:Members</sv:value></sv:property><sv:node sv:name=\"debbi\"><sv:property sv:name=\"jcr:primaryType\" sv:type=\"Name\"><sv:value>rep:Members</sv:value></sv:property><sv:property sv:name=\"debbi\" sv:type=\"WeakReference\"><sv:value>d53bedf9-ebb8-3117-a8b8-162d32b4bee2</sv:value></sv:property><sv:property sv:name=\"eddi\" sv:type=\"WeakReference\"><sv:value>1795fa1a-3d20-3a64-996e-eaaeb520a01e</sv:value></sv:property><sv:property sv:name=\"gabi\" sv:type=\"WeakReference\"><sv:value>a0d499c7-5105-3663-8611-a32779a57104</sv:value></sv:property><sv:property sv:name=\"hansi\" sv:type=\"WeakReference\"><sv:value>9ea4d671-8ed1-399a-8401-59487a14d00a</sv:value></sv:property></sv:node><sv:node sv:name=\"hari\"><sv:property sv:name=\"jcr:primaryType\" sv:type=\"Name\"><sv:value>rep:Members</sv:value></sv:property><sv:property sv:name=\"hari\" sv:type=\"WeakReference\"><sv:value>a9bcf1e4-d7b9-3a22-a297-5c812d938889</sv:value></sv:property><sv:property sv:name=\"lisi\" sv:type=\"WeakReference\"><sv:value>dc3a8f16-70d6-3bea-a9b7-b65048a0ac40</sv:value></sv:property></sv:node><sv:node sv:name=\"luzi\"><sv:property sv:name=\"jcr:primaryType\" sv:type=\"Name\"><sv:value>rep:Members</sv:value></sv:property><sv:property sv:name=\"luzi\" sv:type=\"WeakReference\"><sv:value>9ec299fd-3461-3f1a-9749-92a76f2516eb</sv:value></sv:property><sv:property sv:name=\"pipi\" sv:type="
+operator|+
+literal|"\"WeakReference\"><sv:value>16d5d24f-5b09-3199-9bd4-e5f57bf11237</sv:value></sv:property><sv:property sv:name=\"susi\" sv:type=\"WeakReference\"><sv:value>536931d8-0dec-318c-b3db-9612bdd004d4</sv:value></sv:property></sv:node></sv:node></sv:node></sv:node></sv:node></sv:node>"
+decl_stmt|;
+name|List
+argument_list|<
+name|String
+argument_list|>
+name|createdUsers
+init|=
+operator|new
+name|LinkedList
+argument_list|<
+name|String
+argument_list|>
+argument_list|()
+decl_stmt|;
+name|Node
+name|groupsNode
+init|=
+name|superuser
+operator|.
+name|getNode
+argument_list|(
+name|GROUPPATH
+argument_list|)
+decl_stmt|;
+try|try
+block|{
+name|String
+index|[]
+name|users
+init|=
+block|{
+literal|"angi"
+block|,
+literal|"adi"
+block|,
+literal|"hansi"
+block|,
+literal|"lisi"
+block|,
+literal|"luzi"
+block|,
+literal|"susi"
+block|,
+literal|"pipi"
+block|,
+literal|"hari"
+block|,
+literal|"gabi"
+block|,
+literal|"eddi"
+block|,
+literal|"debbi"
+block|,
+literal|"cati"
+block|,
+literal|"admin"
+block|,
+literal|"anonymous"
+block|}
+decl_stmt|;
+name|doImport
+argument_list|(
+name|groupsNode
+operator|.
+name|getPath
+argument_list|()
+argument_list|,
+name|xml
+argument_list|,
+name|ImportBehavior
+operator|.
+name|BESTEFFORT
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+operator|!
+name|userMgr
+operator|.
+name|isAutoSave
+argument_list|()
+condition|)
+block|{
+name|superuser
+operator|.
+name|save
+argument_list|()
+expr_stmt|;
+block|}
+for|for
+control|(
+name|String
+name|user
+range|:
+name|users
+control|)
+block|{
+if|if
+condition|(
+name|userMgr
+operator|.
+name|getAuthorizable
+argument_list|(
+name|user
+argument_list|)
+operator|==
+literal|null
+condition|)
+block|{
+name|userMgr
+operator|.
+name|createUser
+argument_list|(
+name|user
+argument_list|,
+name|user
+argument_list|)
+expr_stmt|;
+name|createdUsers
+operator|.
+name|add
+argument_list|(
+name|user
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+if|if
+condition|(
+operator|!
+name|userMgr
+operator|.
+name|isAutoSave
+argument_list|()
+condition|)
+block|{
+name|superuser
+operator|.
+name|save
+argument_list|()
+expr_stmt|;
+block|}
+name|Authorizable
+name|aShrimps
+init|=
+name|userMgr
+operator|.
+name|getAuthorizable
+argument_list|(
+literal|"shrimps"
+argument_list|)
+decl_stmt|;
+name|assertNotNull
+argument_list|(
+name|aShrimps
+argument_list|)
+expr_stmt|;
+name|assertTrue
+argument_list|(
+name|aShrimps
+operator|.
+name|isGroup
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|Group
+name|gShrimps
+init|=
+operator|(
+name|Group
+operator|)
+name|aShrimps
+decl_stmt|;
+for|for
+control|(
+name|String
+name|user
+range|:
+name|users
+control|)
+block|{
+name|assertTrue
+argument_list|(
+name|user
+operator|+
+literal|" should be member of "
+operator|+
+name|gShrimps
+argument_list|,
+name|gShrimps
+operator|.
+name|isMember
+argument_list|(
+name|userMgr
+operator|.
+name|getAuthorizable
+argument_list|(
+name|user
+argument_list|)
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+finally|finally
+block|{
+name|superuser
+operator|.
+name|refresh
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
+for|for
+control|(
+name|String
+name|user
+range|:
+name|createdUsers
+control|)
+block|{
+name|Authorizable
+name|a
+init|=
+name|userMgr
+operator|.
+name|getAuthorizable
+argument_list|(
+name|user
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|a
+operator|!=
+literal|null
+operator|&&
+operator|!
+name|a
+operator|.
+name|isGroup
+argument_list|()
+condition|)
+block|{
+name|a
+operator|.
+name|remove
+argument_list|()
+expr_stmt|;
+block|}
+block|}
+if|if
+condition|(
+operator|!
+name|userMgr
+operator|.
+name|isAutoSave
+argument_list|()
+condition|)
+block|{
+name|superuser
+operator|.
+name|save
+argument_list|()
+expr_stmt|;
+block|}
+for|for
+control|(
+name|NodeIterator
+name|it
+init|=
+name|groupsNode
+operator|.
+name|getNodes
+argument_list|()
+init|;
+name|it
+operator|.
+name|hasNext
+argument_list|()
+condition|;
+control|)
+block|{
+name|it
+operator|.
+name|nextNode
+argument_list|()
+operator|.
+name|remove
+argument_list|()
+expr_stmt|;
+block|}
+if|if
+condition|(
+operator|!
+name|userMgr
+operator|.
+name|isAutoSave
+argument_list|()
+condition|)
+block|{
+name|superuser
+operator|.
+name|save
+argument_list|()
+expr_stmt|;
+block|}
+block|}
+block|}
+annotation|@
 name|Test
 specifier|public
 name|void
 name|testImportGroupMembersFromNodes
 parameter_list|()
 throws|throws
-name|RepositoryException
-throws|,
-name|IOException
-throws|,
-name|SAXException
+name|Exception
 block|{
 name|String
 name|xml
@@ -4726,222 +5051,6 @@ name|save
 argument_list|()
 expr_stmt|;
 block|}
-block|}
-block|}
-comment|//TODO test UserImporter.ImportBehavior != ignore
-comment|//    public void testImportGroupMembersFromNodesBestEffort() throws RepositoryException, IOException, SAXException {
-comment|//        String xml = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><sv:node sv:name=\"s\" xmlns:mix=\"http://www.jcp.org/jcr/mix/1.0\" xmlns:sling=\"http://sling.apache.org/jcr/sling/1.0\" xmlns:nt=\"http://www.jcp.org/jcr/nt/1.0\" xmlns:fn_old=\"http://www.w3.org/2004/10/xpath-functions\" xmlns:fn=\"http://www.w3.org/2005/xpath-functions\" xmlns:xs=\"http://www.w3.org/2001/XMLSchema\" xmlns:jcr=\"http://www.jcp.org/jcr/1.0\" xmlns:sv=\"http://www.jcp.org/jcr/sv/1.0\" xmlns:rep=\"internal\"><sv:property sv:name=\"jcr:primaryType\" sv:type=\"Name\"><sv:value>rep:AuthorizableFolder</sv:value></sv:property><sv:property sv:name=\"jcr:created\" sv:type=\"Date\"><sv:value>2010-08-17T18:22:20.086+02:00</sv:value></sv:property><sv:property sv:name=\"jcr:createdBy\" sv:type=\"String\"><sv:value>admin</sv:value></sv:property><sv:node sv:name=\"sh\"><sv:property sv:name=\"jcr:primaryType\" sv:type=\"Name\"><sv:value>rep:AuthorizableFolder</sv:value></sv:property><sv:property sv:name=\"jcr:created\" sv:type=\"Date\"><sv:value>2010-08-17T18:22:20.086+02:00</sv:value></sv:property><sv:property sv:name=\"jcr:createdBy\" sv:type=\"String\"><sv:value>admin</sv:value></sv:property><sv:node sv:name=\"shrimps\"><sv:property sv:name=\"jcr:primaryType\" sv:type=\"Name\"><sv:value>rep:Group</sv:value></sv:property><sv:property sv:name=\"jcr:uuid\" sv:type=\"String\"><sv:value>08429aec-6f09-30db-8c83-1a2a57fc760c</sv:value></sv:property><sv:property sv:name=\"jcr:created\" sv:type=\"Date\">" +
-comment|//                     "<sv:value>2010-08-17T18:22:20.086+02:00</sv:value></sv:property><sv:property sv:name=\"jcr:createdBy\" sv:type=\"String\"><sv:value>admin</sv:value></sv:property><sv:property sv:name=\"rep:principalName\" sv:type=\"String\"><sv:value>shrimps</sv:value></sv:property><sv:node sv:name=\"rep:members\"><sv:property sv:name=\"jcr:primaryType\" sv:type=\"Name\"><sv:value>rep:Members</sv:value></sv:property><sv:node sv:name=\"adi\"><sv:property sv:name=\"jcr:primaryType\" sv:type=\"Name\"><sv:value>rep:Members</sv:value></sv:property><sv:node sv:name=\"adi\"><sv:property sv:name=\"jcr:primaryType\" sv:type=\"Name\"><sv:value>rep:Members</sv:value></sv:property><sv:property sv:name=\"adi\" sv:type=\"WeakReference\"><sv:value>c46335eb-267e-3e1c-9e5b-017acb4cd799</sv:value></sv:property><sv:property sv:name=\"admin\" sv:type=\"WeakReference\"><sv:value>21232f29-7a57-35a7-8389-4a0e4a801fc3</sv:value></sv:property></sv:node><sv:node sv:name=\"angi\"><sv:property sv:name=\"jcr:primaryType\" sv:type=\"Name\"><sv:value>rep:Members</sv:value></sv:property><sv:property sv:name=\"angi\" sv:type=\"WeakReference\"><sv:value>a468b64f-b1df-377c-b325-20d97aaa1ad9</sv:value></sv:property><sv:property sv:name=\"anonymous\" sv:type=\"WeakReference\"><sv:value>294de355-7d9d-30b3-92d8-a1e6aab028cf</sv:value></sv:property><sv:property sv:name=\"cati\" sv:type=\"WeakReference\"><sv:value>f08910b6-41c8-3cb9-a648-1dddd14b132d</sv:value></sv:property></sv:node></sv:node><sv:n" +
-comment|//                     "ode sv:name=\"debbi\"><sv:property sv:name=\"jcr:primaryType\" sv:type=\"Name\"><sv:value>rep:Members</sv:value></sv:property><sv:node sv:name=\"debbi\"><sv:property sv:name=\"jcr:primaryType\" sv:type=\"Name\"><sv:value>rep:Members</sv:value></sv:property><sv:property sv:name=\"debbi\" sv:type=\"WeakReference\"><sv:value>d53bedf9-ebb8-3117-a8b8-162d32b4bee2</sv:value></sv:property><sv:property sv:name=\"eddi\" sv:type=\"WeakReference\"><sv:value>1795fa1a-3d20-3a64-996e-eaaeb520a01e</sv:value></sv:property><sv:property sv:name=\"gabi\" sv:type=\"WeakReference\"><sv:value>a0d499c7-5105-3663-8611-a32779a57104</sv:value></sv:property><sv:property sv:name=\"hansi\" sv:type=\"WeakReference\"><sv:value>9ea4d671-8ed1-399a-8401-59487a14d00a</sv:value></sv:property></sv:node><sv:node sv:name=\"hari\"><sv:property sv:name=\"jcr:primaryType\" sv:type=\"Name\"><sv:value>rep:Members</sv:value></sv:property><sv:property sv:name=\"hari\" sv:type=\"WeakReference\"><sv:value>a9bcf1e4-d7b9-3a22-a297-5c812d938889</sv:value></sv:property><sv:property sv:name=\"lisi\" sv:type=\"WeakReference\"><sv:value>dc3a8f16-70d6-3bea-a9b7-b65048a0ac40</sv:value></sv:property></sv:node><sv:node sv:name=\"luzi\"><sv:property sv:name=\"jcr:primaryType\" sv:type=\"Name\"><sv:value>rep:Members</sv:value></sv:property><sv:property sv:name=\"luzi\" sv:type=\"WeakReference\"><sv:value>9ec299fd-3461-3f1a-9749-92a76f2516eb</sv:value></sv:property><sv:property sv:name=\"pipi\" sv:type=" +
-comment|//                     "\"WeakReference\"><sv:value>16d5d24f-5b09-3199-9bd4-e5f57bf11237</sv:value></sv:property><sv:property sv:name=\"susi\" sv:type=\"WeakReference\"><sv:value>536931d8-0dec-318c-b3db-9612bdd004d4</sv:value></sv:property></sv:node></sv:node></sv:node></sv:node></sv:node></sv:node>";
-comment|//
-comment|//        List<String> createdUsers = new LinkedList<String>();
-comment|//        NodeImpl groupsNode = (NodeImpl) sImpl.getNode(umgr.getGroupsPath());
-comment|//        try {
-comment|//            String[] users = {"angi", "adi", "hansi", "lisi", "luzi", "susi", "pipi", "hari", "gabi", "eddi",
-comment|//                              "debbi", "cati", "admin", "anonymous"};
-comment|//
-comment|//            doImport(groupsNode, xml, UserImporter.ImportBehavior.BESTEFFORT);
-comment|//            if (!umgr.isAutoSave()) {
-comment|//                sImpl.save();
-comment|//            }
-comment|//
-comment|//            for (String user : users) {
-comment|//                if (umgr.getAuthorizable(user) == null) {
-comment|//                    umgr.createUser(user, user);
-comment|//                    createdUsers.add(user);
-comment|//                }
-comment|//            }
-comment|//            if (!umgr.isAutoSave()) {
-comment|//                sImpl.save();
-comment|//            }
-comment|//
-comment|//            Authorizable aShrimps = umgr.getAuthorizable("shrimps");
-comment|//            assertNotNull(aShrimps);
-comment|//            assertTrue(aShrimps.isGroup());
-comment|//
-comment|//            Group gShrimps = (Group) aShrimps;
-comment|//            for (String user : users) {
-comment|//                assertTrue(user + " should be member of " + gShrimps, gShrimps.isMember(umgr.getAuthorizable(user)));
-comment|//            }
-comment|//
-comment|//
-comment|//        } finally {
-comment|//            sImpl.refresh(false);
-comment|//            for (String user : createdUsers) {
-comment|//                Authorizable a = umgr.getAuthorizable(user);
-comment|//                if (a != null&& !a.isGroup()) {
-comment|//                    a.remove();
-comment|//                }
-comment|//            }
-comment|//            if (!umgr.isAutoSave()) {
-comment|//                sImpl.save();
-comment|//            }
-comment|//            for (NodeIterator it = groupsNode.getNodes(); it.hasNext(); ) {
-comment|//                it.nextNode().remove();
-comment|//            }
-comment|//            if (!umgr.isAutoSave()) {
-comment|//                sImpl.save();
-comment|//            }
-comment|//        }
-comment|//    }
-specifier|private
-name|void
-name|doImport
-parameter_list|(
-name|String
-name|parentPath
-parameter_list|,
-name|String
-name|xml
-parameter_list|)
-throws|throws
-name|IOException
-throws|,
-name|SAXException
-throws|,
-name|RepositoryException
-block|{
-name|InputStream
-name|in
-init|=
-operator|new
-name|ByteArrayInputStream
-argument_list|(
-name|xml
-operator|.
-name|getBytes
-argument_list|(
-literal|"UTF-8"
-argument_list|)
-argument_list|)
-decl_stmt|;
-name|superuser
-operator|.
-name|importXML
-argument_list|(
-name|parentPath
-argument_list|,
-name|in
-argument_list|,
-name|ImportUUIDBehavior
-operator|.
-name|IMPORT_UUID_COLLISION_THROW
-argument_list|)
-expr_stmt|;
-block|}
-specifier|private
-name|void
-name|doImport
-parameter_list|(
-name|String
-name|parentPath
-parameter_list|,
-name|String
-name|xml
-parameter_list|,
-name|int
-name|importUUIDBehavior
-parameter_list|)
-throws|throws
-name|IOException
-throws|,
-name|SAXException
-throws|,
-name|RepositoryException
-block|{
-name|InputStream
-name|in
-init|=
-operator|new
-name|ByteArrayInputStream
-argument_list|(
-name|xml
-operator|.
-name|getBytes
-argument_list|(
-literal|"UTF-8"
-argument_list|)
-argument_list|)
-decl_stmt|;
-name|superuser
-operator|.
-name|importXML
-argument_list|(
-name|parentPath
-argument_list|,
-name|in
-argument_list|,
-name|importUUIDBehavior
-argument_list|)
-expr_stmt|;
-block|}
-specifier|private
-specifier|static
-name|void
-name|assertNotDeclaredMember
-parameter_list|(
-name|Group
-name|gr
-parameter_list|,
-name|String
-name|potentialID
-parameter_list|,
-name|Session
-name|session
-parameter_list|)
-throws|throws
-name|RepositoryException
-block|{
-comment|// declared members must not list the invalid entry.
-name|Iterator
-argument_list|<
-name|Authorizable
-argument_list|>
-name|it
-init|=
-name|gr
-operator|.
-name|getDeclaredMembers
-argument_list|()
-decl_stmt|;
-while|while
-condition|(
-name|it
-operator|.
-name|hasNext
-argument_list|()
-condition|)
-block|{
-name|Authorizable
-name|member
-init|=
-name|it
-operator|.
-name|next
-argument_list|()
-decl_stmt|;
-name|assertFalse
-argument_list|(
-name|potentialID
-operator|.
-name|equals
-argument_list|(
-name|session
-operator|.
-name|getNode
-argument_list|(
-name|member
-operator|.
-name|getPath
-argument_list|()
-argument_list|)
-operator|.
-name|getIdentifier
-argument_list|()
-argument_list|)
-argument_list|)
-expr_stmt|;
 block|}
 block|}
 block|}

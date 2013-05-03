@@ -90,6 +90,12 @@ specifier|public
 interface|interface
 name|ProtectedItemImporter
 block|{
+comment|/**      * Parameter name for the import behavior configuration option.      */
+name|String
+name|PARAM_IMPORT_BEHAVIOR
+init|=
+literal|"importBehavior"
+decl_stmt|;
 comment|/**      * Initializes the importer.      *      * @param session The session that is running the import.      * @param root The root associated with the import.      * @param namePathMapper The name/path mapper used to translate names      * between their jcr and oak form.      * @param isWorkspaceImport A flag indicating whether the import has been      * started from the {@link javax.jcr.Workspace} or from the      * {@link javax.jcr.Session}. Implementations are free to implement both      * types of imports or only a single one. For example it doesn't make sense      * to allow for importing versions along with a Session import as      * version operations are required to never leave transient changes behind.      * @param uuidBehavior The uuid behavior specified with the import call.      * @param referenceTracker The uuid/reference helper.      * @return {@code true} if this importer was successfully initialized and      * is able to handle an import with the given setup; {@code false} otherwise.      */
 name|boolean
 name|init

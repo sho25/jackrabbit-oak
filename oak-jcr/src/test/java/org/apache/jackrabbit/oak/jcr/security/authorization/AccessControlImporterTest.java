@@ -1275,7 +1275,7 @@ comment|/**      * Imports a resource-based ACL containing a single entry.      
 annotation|@
 name|Ignore
 argument_list|(
-literal|""
+literal|"OAK-414"
 argument_list|)
 comment|// FIXME
 specifier|public
@@ -1526,6 +1526,12 @@ expr_stmt|;
 block|}
 block|}
 comment|/**      * Imports a resource-based ACL containing a single entry for a policy that      * already exists.      *      * @throws Exception      */
+annotation|@
+name|Ignore
+argument_list|(
+literal|"OAK-414"
+argument_list|)
+comment|// FIXME
 specifier|public
 name|void
 name|testImportPolicyExists
@@ -1533,15 +1539,6 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-comment|// FIXME this test does not work anymore, since the normal behavior is replace
-comment|// FIXME all ACEs for an import. maybe control this behavior via uuid-flag.
-if|if
-condition|(
-literal|true
-condition|)
-block|{
-return|return;
-block|}
 name|Node
 name|target
 init|=
