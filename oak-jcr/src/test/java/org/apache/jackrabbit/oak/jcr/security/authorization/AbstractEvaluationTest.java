@@ -1357,7 +1357,7 @@ name|EMPTY_RESTRICTIONS
 argument_list|)
 return|;
 block|}
-specifier|private
+specifier|protected
 name|JackrabbitAccessControlList
 name|modify
 parameter_list|(
