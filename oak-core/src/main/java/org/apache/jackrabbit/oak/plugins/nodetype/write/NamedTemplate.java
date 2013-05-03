@@ -323,7 +323,7 @@ name|String
 name|getOakNameOrThrowConstraintViolation
 parameter_list|(
 annotation|@
-name|Nonnull
+name|CheckForNull
 name|String
 name|jcrName
 parameter_list|)
@@ -429,7 +429,7 @@ index|[]
 name|getOakNamesOrThrowConstraintViolation
 parameter_list|(
 annotation|@
-name|Nonnull
+name|CheckForNull
 name|String
 index|[]
 name|jcrNames
