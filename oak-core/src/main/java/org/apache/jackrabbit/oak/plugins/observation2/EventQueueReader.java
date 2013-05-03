@@ -358,6 +358,10 @@ argument_list|>
 name|getEventBundle
 parameter_list|(
 specifier|final
+name|EventCollector
+name|collector
+parameter_list|,
+specifier|final
 name|String
 name|id
 parameter_list|)
@@ -420,6 +424,8 @@ block|{
 return|return
 name|createEvent
 argument_list|(
+name|collector
+argument_list|,
 name|event
 argument_list|,
 name|id
@@ -550,6 +556,9 @@ specifier|private
 name|Event
 name|createEvent
 parameter_list|(
+name|EventCollector
+name|collector
+parameter_list|,
 name|Tree
 name|event
 parameter_list|,
@@ -626,6 +635,8 @@ return|return
 operator|new
 name|EventImpl
 argument_list|(
+name|collector
+argument_list|,
 name|type
 argument_list|,
 name|path
@@ -642,6 +653,8 @@ argument_list|,
 name|date
 argument_list|,
 name|userData
+argument_list|,
+literal|false
 argument_list|)
 return|;
 block|}
