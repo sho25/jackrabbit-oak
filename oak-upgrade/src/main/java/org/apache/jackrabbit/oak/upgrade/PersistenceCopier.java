@@ -11,7 +11,9 @@ name|apache
 operator|.
 name|jackrabbit
 operator|.
-name|core
+name|oak
+operator|.
+name|upgrade
 package|;
 end_package
 

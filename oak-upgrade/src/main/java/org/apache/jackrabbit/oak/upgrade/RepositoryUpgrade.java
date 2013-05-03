@@ -11,7 +11,9 @@ name|apache
 operator|.
 name|jackrabbit
 operator|.
-name|core
+name|oak
+operator|.
+name|upgrade
 package|;
 end_package
 
@@ -1082,36 +1084,6 @@ name|shutdown
 argument_list|()
 expr_stmt|;
 block|}
-block|}
-comment|/**      * Copies the contents of the given source repository to the given      * target node store.      *<p>      * The source repository<strong>must not be modified</strong> while      * the copy operation is running to avoid an inconsistent copy.      *      * @param source source repository directory      * @param target target node store      * @throws RepositoryException if the copy operation fails      * @throws IOException if the target repository can not be initialized      */
-specifier|public
-specifier|static
-name|void
-name|copy
-parameter_list|(
-name|RepositoryImpl
-name|source
-parameter_list|,
-name|NodeStore
-name|target
-parameter_list|)
-throws|throws
-name|RepositoryException
-block|{
-operator|new
-name|RepositoryUpgrade
-argument_list|(
-name|source
-operator|.
-name|getRepositoryContext
-argument_list|()
-argument_list|,
-name|target
-argument_list|)
-operator|.
-name|copy
-argument_list|()
-expr_stmt|;
 block|}
 comment|/**      * Creates a tool for copying the full contents of the source repository      * to the given target repository. Any existing content in the target      * repository will be overwritten.      *      * @param source source repository context      * @param target target node store      */
 specifier|public
