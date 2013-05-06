@@ -148,7 +148,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Service that provides Lucene based {@link IndexEditor}s  *   * @see LuceneIndexDiff  * @see IndexEditorProvider  *   */
+comment|/**  * Service that provides Lucene based {@link IndexEditor}s  *   * @see LuceneIndexEditor  * @see IndexEditorProvider  *   */
 end_comment
 
 begin_class
@@ -192,7 +192,7 @@ condition|)
 block|{
 return|return
 operator|new
-name|LuceneIndexDiff
+name|LuceneIndexEditor
 argument_list|(
 name|builder
 argument_list|)

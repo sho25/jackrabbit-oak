@@ -27,24 +27,6 @@ name|org
 operator|.
 name|apache
 operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|plugins
-operator|.
-name|index
-operator|.
-name|IndexConstants
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
 name|lucene
 operator|.
 name|analysis
@@ -87,8 +69,6 @@ begin_interface
 specifier|public
 interface|interface
 name|LuceneIndexConstants
-extends|extends
-name|IndexConstants
 block|{
 name|String
 name|TYPE_LUCENE
@@ -115,6 +95,12 @@ name|StandardAnalyzer
 argument_list|(
 name|VERSION
 argument_list|)
+decl_stmt|;
+comment|/**      * include only certain property types in the index      */
+name|String
+name|INCLUDE_PROPERTY_TYPES
+init|=
+literal|"includePropertyTypes"
 decl_stmt|;
 block|}
 end_interface

@@ -138,7 +138,9 @@ argument_list|(
 operator|new
 name|LuceneInitializerHelper
 argument_list|(
-literal|"/oak:index/luceneGlobal"
+literal|"luceneGlobal"
+argument_list|,
+literal|null
 argument_list|)
 argument_list|)
 operator|.
