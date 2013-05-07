@@ -549,7 +549,7 @@ argument_list|,
 literal|1024
 argument_list|)
 decl_stmt|;
-comment|/**      * When trying to access revisions that are older than this many milliseconds, a warning is logged.      */
+comment|/**      * When trying to access revisions that are older than this many      * milliseconds, a warning is logged. The default is one minute.      */
 specifier|private
 specifier|static
 specifier|final
@@ -562,7 +562,9 @@ name|getInteger
 argument_list|(
 literal|"oak.mongoMK.revisionAge"
 argument_list|,
-literal|10000
+literal|60
+operator|*
+literal|1000
 argument_list|)
 decl_stmt|;
 comment|/**      * Enable background operations      */
@@ -585,6 +587,19 @@ argument_list|,
 literal|"true"
 argument_list|)
 argument_list|)
+decl_stmt|;
+comment|/**      * How long to remember the relative order of old revision of all cluster      * nodes, in milliseconds. The default is one hour.      */
+specifier|private
+specifier|static
+specifier|final
+name|int
+name|REMEMBER_REVISION_ORDER_MILLIS
+init|=
+literal|60
+operator|*
+literal|60
+operator|*
+literal|1000
 decl_stmt|;
 comment|/**      * The delay for asynchronous operations (delayed commit propagation and      * cache update).      */
 comment|// TODO test observation with multiple Oak instances
@@ -723,10 +738,10 @@ specifier|private
 specifier|final
 name|RevisionComparator
 name|revisionComparator
-init|=
-operator|new
-name|RevisionComparator
-argument_list|()
+decl_stmt|;
+specifier|private
+name|boolean
+name|stopBackground
 decl_stmt|;
 name|MongoMK
 parameter_list|(
@@ -787,6 +802,9 @@ argument_list|(
 name|store
 argument_list|)
 expr_stmt|;
+comment|// TODO we should ensure revisions generated from now on
+comment|// are never "older" than revisions already in the repository for
+comment|// this cluster id
 name|cid
 operator|=
 name|clusterNodeInfo
@@ -807,6 +825,16 @@ operator|.
 name|clusterId
 operator|=
 name|cid
+expr_stmt|;
+name|this
+operator|.
+name|revisionComparator
+operator|=
+operator|new
+name|RevisionComparator
+argument_list|(
+name|clusterId
+argument_list|)
 expr_stmt|;
 name|this
 operator|.
@@ -849,6 +877,29 @@ name|build
 argument_list|()
 expr_stmt|;
 name|init
+argument_list|()
+expr_stmt|;
+comment|// initial reading of the revisions of other cluster nodes
+name|backgroundRead
+argument_list|()
+expr_stmt|;
+name|revisionComparator
+operator|.
+name|add
+argument_list|(
+name|headRevision
+argument_list|,
+name|Revision
+operator|.
+name|getCurrentTimestamp
+argument_list|()
+operator|+
+literal|1
+argument_list|)
+expr_stmt|;
+name|headRevision
+operator|=
+name|newRevision
 argument_list|()
 expr_stmt|;
 name|LOG
@@ -1052,6 +1103,8 @@ if|if
 condition|(
 operator|!
 name|ENABLE_BACKGROUND_OPS
+operator|||
+name|stopBackground
 condition|)
 block|{
 return|return;
@@ -1192,6 +1245,19 @@ operator|.
 name|LAST_REV
 argument_list|)
 decl_stmt|;
+name|boolean
+name|hasNewRevisions
+init|=
+literal|false
+decl_stmt|;
+name|long
+name|timestamp
+init|=
+name|Revision
+operator|.
+name|getCurrentTimestamp
+argument_list|()
+decl_stmt|;
 for|for
 control|(
 name|Entry
@@ -1269,13 +1335,6 @@ operator|>
 literal|0
 condition|)
 block|{
-comment|// TODO invalidating the whole cache is not really needed,
-comment|// instead only those children that are cached could be checked
-name|store
-operator|.
-name|invalidateCache
-argument_list|()
-expr_stmt|;
 name|lastKnownRevision
 operator|.
 name|put
@@ -1284,6 +1343,148 @@ name|machineId
 argument_list|,
 name|r
 argument_list|)
+expr_stmt|;
+name|hasNewRevisions
+operator|=
+literal|true
+expr_stmt|;
+name|revisionComparator
+operator|.
+name|add
+argument_list|(
+name|r
+argument_list|,
+name|timestamp
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+if|if
+condition|(
+name|hasNewRevisions
+condition|)
+block|{
+comment|// TODO invalidating the whole cache is not really needed,
+comment|// instead only those children that are cached could be checked
+name|store
+operator|.
+name|invalidateCache
+argument_list|()
+expr_stmt|;
+comment|// add a new revision, so that changes are visible
+name|Revision
+name|r
+init|=
+name|Revision
+operator|.
+name|newRevision
+argument_list|(
+name|clusterId
+argument_list|)
+decl_stmt|;
+comment|// the latest revisions of the current cluster node
+comment|// happened before the latest revisions of other cluster nodes
+name|revisionComparator
+operator|.
+name|add
+argument_list|(
+name|r
+argument_list|,
+name|timestamp
+operator|-
+literal|1
+argument_list|)
+expr_stmt|;
+comment|// the head revision is after other revisions
+name|headRevision
+operator|=
+name|Revision
+operator|.
+name|newRevision
+argument_list|(
+name|clusterId
+argument_list|)
+expr_stmt|;
+block|}
+name|revisionComparator
+operator|.
+name|purge
+argument_list|(
+name|timestamp
+operator|-
+name|REMEMBER_REVISION_ORDER_MILLIS
+argument_list|)
+expr_stmt|;
+block|}
+comment|/**      * Ensure the revision visible from now on, possibly by updating the head      * revision, so that the changes that occurred are visible.      *       * @param revision the revision      */
+name|void
+name|publishRevision
+parameter_list|(
+name|Revision
+name|revision
+parameter_list|)
+block|{
+if|if
+condition|(
+name|revisionComparator
+operator|.
+name|compare
+argument_list|(
+name|headRevision
+argument_list|,
+name|revision
+argument_list|)
+operator|>=
+literal|0
+condition|)
+block|{
+comment|// already visible
+return|return;
+block|}
+name|int
+name|clusterNodeId
+init|=
+name|revision
+operator|.
+name|getClusterId
+argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|clusterNodeId
+operator|==
+name|this
+operator|.
+name|clusterId
+condition|)
+block|{
+return|return;
+block|}
+name|long
+name|timestamp
+init|=
+name|Revision
+operator|.
+name|getCurrentTimestamp
+argument_list|()
+decl_stmt|;
+name|revisionComparator
+operator|.
+name|add
+argument_list|(
+name|revision
+argument_list|,
+name|timestamp
+argument_list|)
+expr_stmt|;
+comment|// TODO invalidating the whole cache is not really needed,
+comment|// but how to ensure we invalidate the right part of the cache?
+comment|// possibly simply wait for the background thread to pick
+comment|// up the changes, but this depends on how often this method is called
+name|store
+operator|.
+name|invalidateCache
+argument_list|()
 expr_stmt|;
 comment|// add a new revision, so that changes are visible
 name|headRevision
@@ -1295,8 +1496,29 @@ argument_list|(
 name|clusterId
 argument_list|)
 expr_stmt|;
-block|}
-block|}
+comment|// the latest revisions of the current cluster node
+comment|// happened before the latest revisions of other cluster nodes
+name|revisionComparator
+operator|.
+name|add
+argument_list|(
+name|headRevision
+argument_list|,
+name|timestamp
+operator|-
+literal|1
+argument_list|)
+expr_stmt|;
+comment|// the head revision is after other revisions
+name|headRevision
+operator|=
+name|Revision
+operator|.
+name|newRevision
+argument_list|(
+name|clusterId
+argument_list|)
+expr_stmt|;
 block|}
 name|void
 name|backgroundWrite
@@ -1518,6 +1740,16 @@ name|void
 name|dispose
 parameter_list|()
 block|{
+comment|// force background write (with asyncDelay> 0, the root wouldn't be written)
+comment|// TODO make this more obvious / explicit
+comment|// TODO tests should also work if this is not done
+name|asyncDelay
+operator|=
+literal|0
+expr_stmt|;
+name|runBackgroundOperations
+argument_list|()
+expr_stmt|;
 if|if
 condition|(
 operator|!
@@ -1786,13 +2018,10 @@ name|x
 argument_list|)
 return|;
 block|}
-else|else
-block|{
 comment|// not part of branch identified by requestedRevision
 return|return
 literal|false
 return|;
-block|}
 block|}
 comment|// assert: x is not a branch commit
 name|b
@@ -1822,46 +2051,13 @@ name|getBase
 argument_list|()
 expr_stmt|;
 block|}
-if|if
-condition|(
-name|x
-operator|.
-name|getClusterId
-argument_list|()
-operator|==
-name|this
-operator|.
-name|clusterId
-operator|&&
-name|requestRevision
-operator|.
-name|getClusterId
-argument_list|()
-operator|==
-name|this
-operator|.
-name|clusterId
-condition|)
-block|{
-comment|// both revisions were created by this cluster instance:
-comment|// compare timestamps and counters
 return|return
-name|requestRevision
+name|revisionComparator
 operator|.
-name|compareRevisionTime
+name|compare
 argument_list|(
-name|x
-argument_list|)
-operator|>=
-literal|0
-return|;
-block|}
-comment|// TODO currently we only compare the timestamps
-return|return
 name|requestRevision
-operator|.
-name|compareRevisionTime
-argument_list|(
+argument_list|,
 name|x
 argument_list|)
 operator|>=
@@ -1883,7 +2079,6 @@ name|Revision
 name|previous
 parameter_list|)
 block|{
-comment|// TODO currently we only compare the timestamps
 return|return
 name|revisionComparator
 operator|.
@@ -3796,6 +3991,27 @@ parameter_list|)
 throws|throws
 name|MicroKernelException
 block|{
+if|if
+condition|(
+operator|!
+name|PathUtils
+operator|.
+name|isAbsolute
+argument_list|(
+name|path
+argument_list|)
+condition|)
+block|{
+throw|throw
+operator|new
+name|MicroKernelException
+argument_list|(
+literal|"Path is not absolute: "
+operator|+
+name|path
+argument_list|)
+throw|;
+block|}
 name|revisionId
 operator|=
 name|revisionId
@@ -4364,26 +4580,6 @@ name|value
 operator|=
 literal|null
 expr_stmt|;
-name|commit
-operator|.
-name|getDiff
-argument_list|()
-operator|.
-name|tag
-argument_list|(
-literal|'^'
-argument_list|)
-operator|.
-name|key
-argument_list|(
-name|path
-argument_list|)
-operator|.
-name|value
-argument_list|(
-literal|null
-argument_list|)
-expr_stmt|;
 block|}
 else|else
 block|{
@@ -4396,26 +4592,6 @@ argument_list|()
 operator|.
 name|trim
 argument_list|()
-expr_stmt|;
-name|commit
-operator|.
-name|getDiff
-argument_list|()
-operator|.
-name|tag
-argument_list|(
-literal|'^'
-argument_list|)
-operator|.
-name|key
-argument_list|(
-name|path
-argument_list|)
-operator|.
-name|value
-argument_list|(
-name|value
-argument_list|)
 expr_stmt|;
 block|}
 name|String
@@ -4534,6 +4710,7 @@ name|baseRevId
 argument_list|)
 throw|;
 block|}
+elseif|else
 if|if
 condition|(
 name|nodeExists
@@ -4646,6 +4823,31 @@ argument_list|(
 literal|"Node not found: "
 operator|+
 name|sourcePath
+operator|+
+literal|" in revision "
+operator|+
+name|baseRevId
+argument_list|)
+throw|;
+block|}
+elseif|else
+if|if
+condition|(
+name|nodeExists
+argument_list|(
+name|targetPath
+argument_list|,
+name|baseRevId
+argument_list|)
+condition|)
+block|{
+throw|throw
+operator|new
+name|MicroKernelException
+argument_list|(
+literal|"Node already exists: "
+operator|+
+name|targetPath
 operator|+
 literal|" in revision "
 operator|+
@@ -5167,7 +5369,7 @@ name|rev
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Get the latest revision where the node was alive at or before the      * provided revision.      *      * @param nodeMap the node map      * @param maxRev the maximum revision to return      * @return the earliest revision, or null if the node is deleted at the      *         given revision      */
+comment|/**      * Get the earliest (oldest) revision where the node was alive at or before      * the provided revision, if the node was alive at the given revision.      *       * @param nodeMap the node map      * @param maxRev the maximum revision to return      * @return the earliest revision, or null if the node is deleted at the      *         given revision      */
 specifier|private
 name|Revision
 name|getLiveRevision
@@ -5200,7 +5402,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-comment|/**     * Get the latest revision where the node was alive at or before the     * provided revision.     *     * @param nodeMap the node map     * @param maxRev the maximum revision to return     * @param validRevisions the set of revisions already checked against      *                      maxRev and considered valid.     * @return the earliest revision, or null if the node is deleted at the     *         given revision     */
+comment|/**      * Get the earliest (oldest) revision where the node was alive at or before      * the provided revision, if the node was alive at the given revision.      *       * @param nodeMap the node map      * @param maxRev the maximum revision to return      * @param validRevisions the set of revisions already checked against maxRev      *            and considered valid.      * @return the earliest revision, or null if the node is deleted at the      *         given revision      */
 specifier|private
 name|Revision
 name|getLiveRevision
@@ -5253,16 +5455,6 @@ operator|.
 name|DELETED
 argument_list|)
 decl_stmt|;
-name|Revision
-name|firstRev
-init|=
-literal|null
-decl_stmt|;
-name|String
-name|value
-init|=
-literal|null
-decl_stmt|;
 if|if
 condition|(
 name|valueMap
@@ -5274,6 +5466,12 @@ return|return
 literal|null
 return|;
 block|}
+comment|// first, search the newest deleted revision
+name|Revision
+name|deletedRev
+init|=
+literal|null
+decl_stmt|;
 if|if
 condition|(
 name|valueMap
@@ -5311,6 +5509,30 @@ name|keySet
 argument_list|()
 control|)
 block|{
+name|String
+name|value
+init|=
+name|valueMap
+operator|.
+name|get
+argument_list|(
+name|r
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+operator|!
+literal|"true"
+operator|.
+name|equals
+argument_list|(
+name|value
+argument_list|)
+condition|)
+block|{
+comment|// only look at deleted revisions now
+continue|continue;
+block|}
 name|Revision
 name|propRev
 init|=
@@ -5347,7 +5569,7 @@ continue|continue;
 block|}
 if|if
 condition|(
-name|firstRev
+name|deletedRev
 operator|==
 literal|null
 operator|||
@@ -5355,25 +5577,44 @@ name|isRevisionNewer
 argument_list|(
 name|propRev
 argument_list|,
-name|firstRev
+name|deletedRev
 argument_list|)
 condition|)
 block|{
-name|firstRev
+name|deletedRev
 operator|=
 name|propRev
 expr_stmt|;
+block|}
+block|}
+comment|// now search the oldest non-deleted revision that is newer than the
+comment|// newest deleted revision
+name|Revision
+name|liveRev
+init|=
+literal|null
+decl_stmt|;
+for|for
+control|(
+name|String
+name|r
+range|:
+name|valueMap
+operator|.
+name|keySet
+argument_list|()
+control|)
+block|{
+name|String
 name|value
-operator|=
+init|=
 name|valueMap
 operator|.
 name|get
 argument_list|(
 name|r
 argument_list|)
-expr_stmt|;
-block|}
-block|}
+decl_stmt|;
 if|if
 condition|(
 literal|"true"
@@ -5384,15 +5625,85 @@ name|value
 argument_list|)
 condition|)
 block|{
-return|return
+comment|// ignore deleted revisions
+continue|continue;
+block|}
+name|Revision
+name|propRev
+init|=
+name|Revision
+operator|.
+name|fromString
+argument_list|(
+name|r
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|deletedRev
+operator|!=
 literal|null
-return|;
+operator|&&
+name|isRevisionNewer
+argument_list|(
+name|deletedRev
+argument_list|,
+name|propRev
+argument_list|)
+condition|)
+block|{
+comment|// the node was deleted later on
+continue|continue;
+block|}
+if|if
+condition|(
+name|isRevisionNewer
+argument_list|(
+name|propRev
+argument_list|,
+name|maxRev
+argument_list|)
+operator|||
+operator|!
+name|isValidRevision
+argument_list|(
+name|propRev
+argument_list|,
+name|maxRev
+argument_list|,
+name|nodeMap
+argument_list|,
+name|validRevisions
+argument_list|)
+condition|)
+block|{
+continue|continue;
+block|}
+if|if
+condition|(
+name|liveRev
+operator|==
+literal|null
+operator|||
+name|isRevisionNewer
+argument_list|(
+name|liveRev
+argument_list|,
+name|propRev
+argument_list|)
+condition|)
+block|{
+name|liveRev
+operator|=
+name|propRev
+expr_stmt|;
+block|}
 block|}
 return|return
-name|firstRev
+name|liveRev
 return|;
 block|}
-comment|/**      * Get the revision of the latest change made to this node.      *       * @param nodeMap the document      * @param before the returned value is guaranteed to be older than this revision      * @param onlyCommitted whether only committed changes should be considered      * @param handler the conflict handler, which is called for un-committed revisions      *                preceding<code>before</code>.      * @return the revision, or null if deleted      */
+comment|/**      * Get the revision of the latest change made to this node.      *       * @param nodeMap the document      * @param readRevision the returned value is guaranteed to _not_ match this revision,      *              but it might be in this branch      * @param onlyCommitted whether only committed changes should be considered      * @param handler the conflict handler, which is called for un-committed revisions      *                preceding<code>before</code>.      * @return the revision, or null if deleted      */
 annotation|@
 name|SuppressWarnings
 argument_list|(
@@ -5412,7 +5723,7 @@ argument_list|>
 name|nodeMap
 parameter_list|,
 name|Revision
-name|before
+name|except
 parameter_list|,
 name|boolean
 name|onlyCommitted
@@ -5432,6 +5743,7 @@ return|return
 literal|null
 return|;
 block|}
+comment|// TODO remove "except"
 name|SortedSet
 argument_list|<
 name|String
@@ -5612,11 +5924,12 @@ condition|)
 block|{
 if|if
 condition|(
-name|isRevisionNewer
-argument_list|(
-name|before
-argument_list|,
+operator|!
 name|propRev
+operator|.
+name|equals
+argument_list|(
+name|except
 argument_list|)
 condition|)
 block|{
@@ -5629,7 +5942,7 @@ name|isValidRevision
 argument_list|(
 name|propRev
 argument_list|,
-name|before
+name|except
 argument_list|,
 name|nodeMap
 argument_list|,
@@ -6601,6 +6914,10 @@ parameter_list|()
 block|{
 while|while
 condition|(
+name|delay
+operator|!=
+literal|0
+operator|&&
 operator|!
 name|isDisposed
 operator|.
@@ -6938,6 +7255,16 @@ name|path
 argument_list|)
 argument_list|)
 return|;
+block|}
+specifier|public
+name|void
+name|stopBackground
+parameter_list|()
+block|{
+name|stopBackground
+operator|=
+literal|true
+expr_stmt|;
 block|}
 block|}
 end_class

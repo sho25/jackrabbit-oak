@@ -227,8 +227,8 @@ name|r
 argument_list|)
 return|;
 block|}
-specifier|synchronized
 specifier|public
+specifier|synchronized
 name|void
 name|removeCommit
 parameter_list|(

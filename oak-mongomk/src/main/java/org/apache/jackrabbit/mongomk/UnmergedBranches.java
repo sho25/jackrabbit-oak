@@ -188,6 +188,7 @@ literal|false
 argument_list|)
 decl_stmt|;
 comment|/**      * The revision comparator.      */
+comment|// TODO use the same comparator as MongoMK?
 specifier|private
 specifier|final
 name|Revision
@@ -199,7 +200,9 @@ operator|new
 name|Revision
 operator|.
 name|RevisionComparator
-argument_list|()
+argument_list|(
+literal|0
+argument_list|)
 decl_stmt|;
 comment|/**      * Initialize with un-merged branches from<code>store</code> for this      *<code>clusterId</code>.      *      * @param store the document store.      * @param clusterId the cluster node id of the local MongoMK.      */
 name|void

@@ -259,6 +259,17 @@ name|void
 name|invalidateCache
 parameter_list|()
 function_decl|;
+comment|/**      * Invalidate the document cache for the given key.      *       * @param collection the collection      * @param key the key      */
+name|void
+name|invalidateCache
+parameter_list|(
+name|Collection
+name|collection
+parameter_list|,
+name|String
+name|key
+parameter_list|)
+function_decl|;
 comment|/**      * Dispose this instance.      */
 name|void
 name|dispose

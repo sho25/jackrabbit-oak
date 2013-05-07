@@ -242,7 +242,7 @@ specifier|private
 specifier|static
 specifier|final
 name|Logger
-name|log
+name|LOG
 init|=
 name|LoggerFactory
 operator|.
@@ -461,7 +461,7 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -1176,7 +1176,6 @@ argument_list|)
 throw|;
 block|}
 block|}
-specifier|private
 name|void
 name|log
 parameter_list|(
@@ -1189,7 +1188,7 @@ condition|(
 name|USE_LOGGER
 condition|)
 block|{
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(

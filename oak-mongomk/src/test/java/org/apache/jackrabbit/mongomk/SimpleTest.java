@@ -434,10 +434,15 @@ decl_stmt|;
 name|Revision
 name|rev
 init|=
+name|Revision
+operator|.
+name|fromString
+argument_list|(
 name|mk
 operator|.
-name|newRevision
+name|getHeadRevision
 argument_list|()
+argument_list|)
 decl_stmt|;
 name|Node
 name|n

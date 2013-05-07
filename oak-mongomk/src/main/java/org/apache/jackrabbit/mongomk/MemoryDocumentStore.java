@@ -1658,6 +1658,21 @@ return|return
 literal|false
 return|;
 block|}
+annotation|@
+name|Override
+specifier|public
+name|void
+name|invalidateCache
+parameter_list|(
+name|Collection
+name|collection
+parameter_list|,
+name|String
+name|key
+parameter_list|)
+block|{
+comment|// ignore
+block|}
 block|}
 end_class
 

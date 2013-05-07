@@ -794,7 +794,9 @@ name|comp
 init|=
 operator|new
 name|RevisionComparator
-argument_list|()
+argument_list|(
+literal|0
+argument_list|)
 decl_stmt|;
 name|Revision
 name|r1
@@ -886,7 +888,9 @@ name|comp
 init|=
 operator|new
 name|RevisionComparator
-argument_list|()
+argument_list|(
+literal|0
+argument_list|)
 decl_stmt|;
 name|Revision
 name|r1c1
@@ -1032,9 +1036,9 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"1: r120-0-1:20; "
+literal|"1:\n r120-0-1:20\n"
 operator|+
-literal|"2: r200-0-2:10; "
+literal|"2:\n r200-0-2:10\n"
 argument_list|,
 name|comp
 operator|.
@@ -1070,8 +1074,10 @@ name|r2c2
 argument_list|)
 argument_list|)
 expr_stmt|;
+comment|// r3c2 is still "in the future"
 name|assertEquals
 argument_list|(
+operator|-
 literal|1
 argument_list|,
 name|comp
@@ -1107,9 +1113,9 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"1: r120-0-1:20 r130-0-1:30; "
+literal|"1:\n r120-0-1:20 r130-0-1:30\n"
 operator|+
-literal|"2: r200-0-2:10 r300-0-2:30; "
+literal|"2:\n r200-0-2:10 r300-0-2:30\n"
 argument_list|,
 name|comp
 operator|.
@@ -1215,9 +1221,9 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"1: r120-0-1:20 r130-0-1:30; "
+literal|"1:\n r120-0-1:20 r130-0-1:30\n"
 operator|+
-literal|"2: r300-0-2:30; "
+literal|"2:\n r300-0-2:30\n"
 argument_list|,
 name|comp
 operator|.
@@ -1234,9 +1240,9 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"1: r130-0-1:30; "
+literal|"1:\n r130-0-1:30\n"
 operator|+
-literal|"2: r300-0-2:30; "
+literal|"2:\n r300-0-2:30\n"
 argument_list|,
 name|comp
 operator|.
@@ -1264,9 +1270,9 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"1: r130-0-1:30; "
+literal|"1:\n r130-0-1:30\n"
 operator|+
-literal|"2: r301-1-2:30; "
+literal|"2:\n r301-1-2:30\n"
 argument_list|,
 name|comp
 operator|.

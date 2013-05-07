@@ -794,11 +794,13 @@ name|UpdateOp
 argument_list|>
 argument_list|()
 decl_stmt|;
+comment|// operations are added to this list before they are executed,
+comment|// so that all operations can be rolled back if there is a conflict
 name|ArrayList
 argument_list|<
 name|UpdateOp
 argument_list|>
-name|done
+name|opLog
 init|=
 operator|new
 name|ArrayList
@@ -1157,7 +1159,7 @@ argument_list|,
 name|commitRootDepth
 argument_list|)
 expr_stmt|;
-name|done
+name|opLog
 operator|.
 name|add
 argument_list|(
@@ -1207,7 +1209,7 @@ argument_list|,
 name|commitValue
 argument_list|)
 expr_stmt|;
-name|done
+name|opLog
 operator|.
 name|add
 argument_list|(
@@ -1242,7 +1244,7 @@ name|rollback
 argument_list|(
 name|newNodes
 argument_list|,
-name|done
+name|opLog
 argument_list|)
 expr_stmt|;
 name|String
@@ -1472,6 +1474,11 @@ block|}
 block|}
 argument_list|)
 decl_stmt|;
+name|MicroKernelException
+name|conflict
+init|=
+literal|null
+decl_stmt|;
 if|if
 condition|(
 name|newestRev
@@ -1491,7 +1498,8 @@ operator|.
 name|isNew
 condition|)
 block|{
-throw|throw
+name|conflict
+operator|=
 operator|new
 name|MicroKernelException
 argument_list|(
@@ -1511,7 +1519,7 @@ literal|"; document "
 operator|+
 name|map
 argument_list|)
-throw|;
+expr_stmt|;
 block|}
 block|}
 else|else
@@ -1523,7 +1531,8 @@ operator|.
 name|isNew
 condition|)
 block|{
-throw|throw
+name|conflict
+operator|=
 operator|new
 name|MicroKernelException
 argument_list|(
@@ -1545,8 +1554,9 @@ literal|"; document "
 operator|+
 name|map
 argument_list|)
-throw|;
+expr_stmt|;
 block|}
+elseif|else
 if|if
 condition|(
 name|mk
@@ -1572,7 +1582,8 @@ argument_list|)
 operator|)
 condition|)
 block|{
-throw|throw
+name|conflict
+operator|=
 operator|new
 name|MicroKernelException
 argument_list|(
@@ -1598,8 +1609,34 @@ literal|"; document "
 operator|+
 name|map
 argument_list|)
-throw|;
+expr_stmt|;
 block|}
+block|}
+if|if
+condition|(
+name|conflict
+operator|!=
+literal|null
+condition|)
+block|{
+if|if
+condition|(
+name|newestRev
+operator|!=
+literal|null
+condition|)
+block|{
+name|mk
+operator|.
+name|publishRevision
+argument_list|(
+name|newestRev
+argument_list|)
+expr_stmt|;
+block|}
+throw|throw
+name|conflict
+throw|;
 block|}
 comment|// if we get here the modification was successful
 comment|// -> check for collisions and conflict (concurrent updates
@@ -2760,15 +2797,6 @@ argument_list|(
 name|targetPath
 argument_list|)
 expr_stmt|;
-block|}
-specifier|public
-name|JsopWriter
-name|getDiff
-parameter_list|()
-block|{
-return|return
-name|diff
-return|;
 block|}
 specifier|private
 name|void
