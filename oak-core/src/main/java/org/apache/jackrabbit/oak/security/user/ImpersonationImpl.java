@@ -237,7 +237,7 @@ name|security
 operator|.
 name|principal
 operator|.
-name|PrincipalImpl
+name|AdminPrincipal
 import|;
 end_import
 
@@ -257,7 +257,7 @@ name|security
 operator|.
 name|principal
 operator|.
-name|AdminPrincipal
+name|PrincipalImpl
 import|;
 end_import
 
