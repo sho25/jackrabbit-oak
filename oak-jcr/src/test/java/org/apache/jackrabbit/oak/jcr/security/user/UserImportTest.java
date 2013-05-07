@@ -227,6 +227,24 @@ name|security
 operator|.
 name|user
 operator|.
+name|AuthorizableExistsException
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|api
+operator|.
+name|security
+operator|.
+name|user
+operator|.
 name|Group
 import|;
 end_import
@@ -312,7 +330,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Testing user/group import with default {@link org.apache.jackrabbit.oak.spi.xml.ImportBehavior}  *  * TODO: add tests specifying 'rep:authorizableID' and nodeName != userId  */
+comment|/**  * Testing user/group import with default {@link org.apache.jackrabbit.oak.spi.xml.ImportBehavior}  */
 end_comment
 
 begin_class
@@ -364,7 +382,7 @@ decl_stmt|;
 name|Node
 name|target
 init|=
-name|superuser
+name|adminSession
 operator|.
 name|getNode
 argument_list|(
@@ -390,7 +408,7 @@ argument_list|)
 expr_stmt|;
 name|assertTrue
 argument_list|(
-name|superuser
+name|adminSession
 operator|.
 name|hasPendingChanges
 argument_list|()
@@ -473,7 +491,7 @@ expr_stmt|;
 name|Node
 name|n
 init|=
-name|superuser
+name|adminSession
 operator|.
 name|getNode
 argument_list|(
@@ -567,7 +585,7 @@ argument_list|)
 expr_stmt|;
 comment|// saving changes of the import -> must succeed. add mandatory
 comment|// props should have been created.
-name|superuser
+name|adminSession
 operator|.
 name|save
 argument_list|()
@@ -575,7 +593,7 @@ expr_stmt|;
 block|}
 finally|finally
 block|{
-name|superuser
+name|adminSession
 operator|.
 name|refresh
 argument_list|(
@@ -602,7 +620,7 @@ operator|.
 name|remove
 argument_list|()
 expr_stmt|;
-name|superuser
+name|adminSession
 operator|.
 name|save
 argument_list|()
@@ -637,7 +655,7 @@ decl_stmt|;
 name|Node
 name|target
 init|=
-name|superuser
+name|adminSession
 operator|.
 name|getNode
 argument_list|(
@@ -663,7 +681,7 @@ argument_list|)
 expr_stmt|;
 name|assertTrue
 argument_list|(
-name|superuser
+name|adminSession
 operator|.
 name|hasPendingChanges
 argument_list|()
@@ -718,7 +736,7 @@ expr_stmt|;
 name|Node
 name|n
 init|=
-name|superuser
+name|adminSession
 operator|.
 name|getNode
 argument_list|(
@@ -778,7 +796,7 @@ argument_list|)
 expr_stmt|;
 comment|// saving changes of the import -> must succeed. add mandatory
 comment|// props should have been created.
-name|superuser
+name|adminSession
 operator|.
 name|save
 argument_list|()
@@ -786,7 +804,7 @@ expr_stmt|;
 block|}
 finally|finally
 block|{
-name|superuser
+name|adminSession
 operator|.
 name|refresh
 argument_list|(
@@ -813,7 +831,7 @@ operator|.
 name|remove
 argument_list|()
 expr_stmt|;
-name|superuser
+name|adminSession
 operator|.
 name|save
 argument_list|()
@@ -850,7 +868,7 @@ comment|/*          importing a group below the users-path:          - nonProtec
 name|Node
 name|target
 init|=
-name|superuser
+name|adminSession
 operator|.
 name|getNode
 argument_list|(
@@ -876,7 +894,7 @@ argument_list|)
 expr_stmt|;
 name|assertTrue
 argument_list|(
-name|superuser
+name|adminSession
 operator|.
 name|hasPendingChanges
 argument_list|()
@@ -907,7 +925,7 @@ comment|//assertFalse(target.hasProperty("g/rep:principalName"));  TODO: adjust 
 comment|// saving changes of the import -> must fail
 try|try
 block|{
-name|superuser
+name|adminSession
 operator|.
 name|save
 argument_list|()
@@ -929,7 +947,7 @@ block|}
 block|}
 finally|finally
 block|{
-name|superuser
+name|adminSession
 operator|.
 name|refresh
 argument_list|(
@@ -956,7 +974,7 @@ operator|.
 name|remove
 argument_list|()
 expr_stmt|;
-name|superuser
+name|adminSession
 operator|.
 name|save
 argument_list|()
@@ -1004,7 +1022,7 @@ decl_stmt|;
 name|Node
 name|target
 init|=
-name|superuser
+name|adminSession
 operator|.
 name|getNode
 argument_list|(
@@ -1030,7 +1048,7 @@ argument_list|)
 expr_stmt|;
 name|assertTrue
 argument_list|(
-name|superuser
+name|adminSession
 operator|.
 name|hasPendingChanges
 argument_list|()
@@ -1087,7 +1105,7 @@ expr_stmt|;
 block|}
 finally|finally
 block|{
-name|superuser
+name|adminSession
 operator|.
 name|refresh
 argument_list|(
@@ -1117,7 +1135,7 @@ operator|(
 operator|(
 name|JackrabbitSession
 operator|)
-name|superuser
+name|adminSession
 operator|)
 operator|.
 name|getPrincipalManager
@@ -1211,7 +1229,7 @@ argument_list|,
 name|xml
 argument_list|)
 expr_stmt|;
-name|superuser
+name|adminSession
 operator|.
 name|save
 argument_list|()
@@ -1232,7 +1250,7 @@ comment|// success
 block|}
 finally|finally
 block|{
-name|superuser
+name|adminSession
 operator|.
 name|refresh
 argument_list|(
@@ -1294,7 +1312,7 @@ argument_list|,
 name|xml
 argument_list|)
 expr_stmt|;
-name|superuser
+name|adminSession
 operator|.
 name|save
 argument_list|()
@@ -1315,7 +1333,7 @@ comment|// success
 block|}
 finally|finally
 block|{
-name|superuser
+name|adminSession
 operator|.
 name|refresh
 argument_list|(
@@ -1350,7 +1368,7 @@ comment|/*          importing a group with a multi-valued rep:principalName prop
 name|Node
 name|target
 init|=
-name|superuser
+name|adminSession
 operator|.
 name|getNode
 argument_list|(
@@ -1376,7 +1394,7 @@ argument_list|)
 expr_stmt|;
 name|assertTrue
 argument_list|(
-name|superuser
+name|adminSession
 operator|.
 name|hasPendingChanges
 argument_list|()
@@ -1436,7 +1454,7 @@ expr_stmt|;
 comment|// saving changes of the import -> must fail as mandatory prop is missing
 try|try
 block|{
-name|superuser
+name|adminSession
 operator|.
 name|save
 argument_list|()
@@ -1458,7 +1476,7 @@ block|}
 block|}
 finally|finally
 block|{
-name|superuser
+name|adminSession
 operator|.
 name|refresh
 argument_list|(
@@ -1485,7 +1503,7 @@ operator|.
 name|remove
 argument_list|()
 expr_stmt|;
-name|superuser
+name|adminSession
 operator|.
 name|save
 argument_list|()
@@ -1531,7 +1549,7 @@ decl_stmt|;
 name|Node
 name|target
 init|=
-name|superuser
+name|adminSession
 operator|.
 name|getNode
 argument_list|(
@@ -1557,7 +1575,7 @@ argument_list|)
 expr_stmt|;
 name|assertTrue
 argument_list|(
-name|superuser
+name|adminSession
 operator|.
 name|hasPendingChanges
 argument_list|()
@@ -1576,7 +1594,7 @@ decl_stmt|;
 name|Node
 name|n
 init|=
-name|superuser
+name|adminSession
 operator|.
 name|getNode
 argument_list|(
@@ -1627,7 +1645,7 @@ expr_stmt|;
 block|}
 finally|finally
 block|{
-name|superuser
+name|adminSession
 operator|.
 name|refresh
 argument_list|(
@@ -1667,7 +1685,7 @@ comment|/*          importing a user with a multi-valued rep:password property  
 name|Node
 name|target
 init|=
-name|superuser
+name|adminSession
 operator|.
 name|getNode
 argument_list|(
@@ -1693,7 +1711,7 @@ argument_list|)
 expr_stmt|;
 name|assertTrue
 argument_list|(
-name|superuser
+name|adminSession
 operator|.
 name|hasPendingChanges
 argument_list|()
@@ -1753,7 +1771,7 @@ expr_stmt|;
 block|}
 finally|finally
 block|{
-name|superuser
+name|adminSession
 operator|.
 name|refresh
 argument_list|(
@@ -1780,7 +1798,7 @@ operator|.
 name|remove
 argument_list|()
 expr_stmt|;
-name|superuser
+name|adminSession
 operator|.
 name|save
 argument_list|()
@@ -1853,7 +1871,7 @@ block|{
 name|Node
 name|target
 init|=
-name|superuser
+name|adminSession
 operator|.
 name|getNode
 argument_list|(
@@ -1872,7 +1890,7 @@ expr_stmt|;
 comment|// saving changes of the import -> must fail as mandatory prop is missing
 try|try
 block|{
-name|superuser
+name|adminSession
 operator|.
 name|save
 argument_list|()
@@ -1894,7 +1912,7 @@ block|}
 block|}
 finally|finally
 block|{
-name|superuser
+name|adminSession
 operator|.
 name|refresh
 argument_list|(
@@ -1921,7 +1939,7 @@ operator|.
 name|remove
 argument_list|()
 expr_stmt|;
-name|superuser
+name|adminSession
 operator|.
 name|save
 argument_list|()
@@ -1958,7 +1976,7 @@ decl_stmt|;
 name|Node
 name|target
 init|=
-name|superuser
+name|adminSession
 operator|.
 name|getNode
 argument_list|(
@@ -1999,7 +2017,7 @@ argument_list|)
 expr_stmt|;
 name|assertFalse
 argument_list|(
-name|superuser
+name|adminSession
 operator|.
 name|propertyExists
 argument_list|(
@@ -2015,7 +2033,7 @@ expr_stmt|;
 block|}
 finally|finally
 block|{
-name|superuser
+name|adminSession
 operator|.
 name|refresh
 argument_list|(
@@ -2042,7 +2060,7 @@ operator|.
 name|remove
 argument_list|()
 expr_stmt|;
-name|superuser
+name|adminSession
 operator|.
 name|save
 argument_list|()
@@ -2076,7 +2094,7 @@ comment|/*          importing a group without rep:principalName property        
 name|Node
 name|target
 init|=
-name|superuser
+name|adminSession
 operator|.
 name|getNode
 argument_list|(
@@ -2095,7 +2113,7 @@ expr_stmt|;
 comment|// saving changes of the import -> must fail as mandatory prop is missing
 try|try
 block|{
-name|superuser
+name|adminSession
 operator|.
 name|save
 argument_list|()
@@ -2117,7 +2135,7 @@ block|}
 block|}
 finally|finally
 block|{
-name|superuser
+name|adminSession
 operator|.
 name|refresh
 argument_list|(
@@ -2144,7 +2162,7 @@ operator|.
 name|remove
 argument_list|()
 expr_stmt|;
-name|superuser
+name|adminSession
 operator|.
 name|save
 argument_list|()
@@ -2205,7 +2223,7 @@ decl_stmt|;
 name|Node
 name|target
 init|=
-name|superuser
+name|adminSession
 operator|.
 name|getNode
 argument_list|(
@@ -2231,7 +2249,7 @@ argument_list|)
 expr_stmt|;
 name|assertTrue
 argument_list|(
-name|superuser
+name|adminSession
 operator|.
 name|hasPendingChanges
 argument_list|()
@@ -2286,7 +2304,7 @@ expr_stmt|;
 name|Node
 name|n
 init|=
-name|superuser
+name|adminSession
 operator|.
 name|getNode
 argument_list|(
@@ -2368,7 +2386,7 @@ expr_stmt|;
 block|}
 finally|finally
 block|{
-name|superuser
+name|adminSession
 operator|.
 name|refresh
 argument_list|(
@@ -2426,7 +2444,7 @@ decl_stmt|;
 name|Node
 name|target
 init|=
-name|superuser
+name|adminSession
 operator|.
 name|getNode
 argument_list|(
@@ -2481,7 +2499,7 @@ expr_stmt|;
 name|Node
 name|n
 init|=
-name|superuser
+name|adminSession
 operator|.
 name|getNode
 argument_list|(
@@ -2513,7 +2531,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// getWeakReferences only works upon save.
-name|superuser
+name|adminSession
 operator|.
 name|save
 argument_list|()
@@ -2531,7 +2549,7 @@ expr_stmt|;
 block|}
 finally|finally
 block|{
-name|superuser
+name|adminSession
 operator|.
 name|refresh
 argument_list|(
@@ -2559,7 +2577,7 @@ name|remove
 argument_list|()
 expr_stmt|;
 block|}
-name|superuser
+name|adminSession
 operator|.
 name|save
 argument_list|()
@@ -2612,7 +2630,7 @@ decl_stmt|;
 name|Node
 name|target
 init|=
-name|superuser
+name|adminSession
 operator|.
 name|getNode
 argument_list|(
@@ -2667,7 +2685,7 @@ expr_stmt|;
 name|Node
 name|n
 init|=
-name|superuser
+name|adminSession
 operator|.
 name|getNode
 argument_list|(
@@ -2699,7 +2717,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// getWeakReferences only works upon save.
-name|superuser
+name|adminSession
 operator|.
 name|save
 argument_list|()
@@ -2717,7 +2735,7 @@ expr_stmt|;
 block|}
 finally|finally
 block|{
-name|superuser
+name|adminSession
 operator|.
 name|refresh
 argument_list|(
@@ -2745,7 +2763,7 @@ name|remove
 argument_list|()
 expr_stmt|;
 block|}
-name|superuser
+name|adminSession
 operator|.
 name|save
 argument_list|()
@@ -2787,7 +2805,7 @@ block|}
 name|String
 name|uuid
 init|=
-name|superuser
+name|adminSession
 operator|.
 name|getNode
 argument_list|(
@@ -2830,7 +2848,7 @@ decl_stmt|;
 name|Node
 name|target
 init|=
-name|superuser
+name|adminSession
 operator|.
 name|getNode
 argument_list|(
@@ -2865,7 +2883,7 @@ name|g1
 argument_list|)
 expr_stmt|;
 comment|// getWeakReferences only works upon save.
-name|superuser
+name|adminSession
 operator|.
 name|save
 argument_list|()
@@ -2932,7 +2950,7 @@ expr_stmt|;
 block|}
 finally|finally
 block|{
-name|superuser
+name|adminSession
 operator|.
 name|refresh
 argument_list|(
@@ -2949,7 +2967,7 @@ operator|.
 name|remove
 argument_list|()
 expr_stmt|;
-name|superuser
+name|adminSession
 operator|.
 name|save
 argument_list|()
@@ -3083,7 +3101,7 @@ expr_stmt|;
 block|}
 finally|finally
 block|{
-name|superuser
+name|adminSession
 operator|.
 name|refresh
 argument_list|(
@@ -3121,7 +3139,7 @@ decl_stmt|;
 name|Node
 name|target
 init|=
-name|superuser
+name|adminSession
 operator|.
 name|getNode
 argument_list|(
@@ -3152,7 +3170,7 @@ argument_list|)
 expr_stmt|;
 comment|// saving changes of the import -> must succeed. add mandatory
 comment|// props should have been created.
-name|superuser
+name|adminSession
 operator|.
 name|save
 argument_list|()
@@ -3160,7 +3178,7 @@ expr_stmt|;
 block|}
 finally|finally
 block|{
-name|superuser
+name|adminSession
 operator|.
 name|refresh
 argument_list|(
@@ -3187,7 +3205,7 @@ operator|.
 name|remove
 argument_list|()
 expr_stmt|;
-name|superuser
+name|adminSession
 operator|.
 name|save
 argument_list|()
@@ -3225,7 +3243,7 @@ decl_stmt|;
 name|Node
 name|target
 init|=
-name|superuser
+name|adminSession
 operator|.
 name|getNode
 argument_list|(
@@ -3241,7 +3259,7 @@ argument_list|,
 name|xml
 argument_list|)
 expr_stmt|;
-name|superuser
+name|adminSession
 operator|.
 name|save
 argument_list|()
@@ -3261,7 +3279,7 @@ argument_list|)
 expr_stmt|;
 comment|// saving changes of the import -> must succeed. add mandatory
 comment|// props should have been created.
-name|superuser
+name|adminSession
 operator|.
 name|save
 argument_list|()
@@ -3269,7 +3287,7 @@ expr_stmt|;
 block|}
 finally|finally
 block|{
-name|superuser
+name|adminSession
 operator|.
 name|refresh
 argument_list|(
@@ -3296,7 +3314,7 @@ operator|.
 name|remove
 argument_list|()
 expr_stmt|;
-name|superuser
+name|adminSession
 operator|.
 name|save
 argument_list|()
@@ -3333,7 +3351,7 @@ decl_stmt|;
 name|Node
 name|target
 init|=
-name|superuser
+name|adminSession
 operator|.
 name|getNode
 argument_list|(
@@ -3376,7 +3394,7 @@ comment|// success.
 block|}
 finally|finally
 block|{
-name|superuser
+name|adminSession
 operator|.
 name|refresh
 argument_list|(
@@ -3403,7 +3421,7 @@ operator|.
 name|remove
 argument_list|()
 expr_stmt|;
-name|superuser
+name|adminSession
 operator|.
 name|save
 argument_list|()
@@ -3447,7 +3465,7 @@ decl_stmt|;
 name|Node
 name|target
 init|=
-name|superuser
+name|adminSession
 operator|.
 name|getNode
 argument_list|(
@@ -3537,7 +3555,7 @@ name|isAutoSave
 argument_list|()
 condition|)
 block|{
-name|superuser
+name|adminSession
 operator|.
 name|save
 argument_list|()
@@ -3559,7 +3577,7 @@ name|isAutoSave
 argument_list|()
 condition|)
 block|{
-name|superuser
+name|adminSession
 operator|.
 name|save
 argument_list|()
@@ -3629,7 +3647,7 @@ block|}
 block|}
 finally|finally
 block|{
-name|superuser
+name|adminSession
 operator|.
 name|refresh
 argument_list|(
@@ -3683,7 +3701,7 @@ name|isAutoSave
 argument_list|()
 condition|)
 block|{
-name|superuser
+name|adminSession
 operator|.
 name|save
 argument_list|()
@@ -3724,12 +3742,724 @@ name|isAutoSave
 argument_list|()
 condition|)
 block|{
-name|superuser
+name|adminSession
 operator|.
 name|save
 argument_list|()
 expr_stmt|;
 block|}
+block|}
+block|}
+comment|/**      * @since OAK 1.0 : Importing rep:authorizableId      */
+annotation|@
+name|Test
+specifier|public
+name|void
+name|testImportUserWithAuthorizableId
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|String
+name|xml
+init|=
+literal|"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
+operator|+
+literal|"<sv:node sv:name=\"t\" xmlns:mix=\"http://www.jcp.org/jcr/mix/1.0\" xmlns:nt=\"http://www.jcp.org/jcr/nt/1.0\" xmlns:fn_old=\"http://www.w3.org/2004/10/xpath-functions\" xmlns:fn=\"http://www.w3.org/2005/xpath-functions\" xmlns:xs=\"http://www.w3.org/2001/XMLSchema\" xmlns:sv=\"http://www.jcp.org/jcr/sv/1.0\" xmlns:rep=\"internal\" xmlns:jcr=\"http://www.jcp.org/jcr/1.0\">"
+operator|+
+literal|"<sv:property sv:name=\"jcr:primaryType\" sv:type=\"Name\"><sv:value>rep:User</sv:value></sv:property>"
+operator|+
+literal|"<sv:property sv:name=\"jcr:uuid\" sv:type=\"String\"><sv:value>e358efa4-89f5-3062-b10d-d7316b65649e</sv:value></sv:property>"
+operator|+
+literal|"<sv:property sv:name=\"rep:authorizableId\" sv:type=\"String\"><sv:value>t</sv:value></sv:property>"
+operator|+
+literal|"<sv:property sv:name=\"rep:password\" sv:type=\"String\"><sv:value>{sha1}8efd86fb78a56a5145ed7739dcb00c78581c5375</sv:value></sv:property>"
+operator|+
+literal|"<sv:property sv:name=\"rep:principalName\" sv:type=\"String\"><sv:value>t</sv:value></sv:property>"
+operator|+
+literal|"</sv:node>"
+decl_stmt|;
+name|doImport
+argument_list|(
+name|USERPATH
+argument_list|,
+name|xml
+argument_list|)
+expr_stmt|;
+name|Authorizable
+name|newUser
+init|=
+name|userMgr
+operator|.
+name|getAuthorizable
+argument_list|(
+literal|"t"
+argument_list|)
+decl_stmt|;
+name|assertNotNull
+argument_list|(
+name|newUser
+argument_list|)
+expr_stmt|;
+name|assertFalse
+argument_list|(
+name|newUser
+operator|.
+name|isGroup
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"t"
+argument_list|,
+name|newUser
+operator|.
+name|getID
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|assertTrue
+argument_list|(
+name|adminSession
+operator|.
+name|propertyExists
+argument_list|(
+name|newUser
+operator|.
+name|getPath
+argument_list|()
+operator|+
+literal|"/rep:authorizableId"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"t"
+argument_list|,
+name|adminSession
+operator|.
+name|getProperty
+argument_list|(
+name|newUser
+operator|.
+name|getPath
+argument_list|()
+operator|+
+literal|"/rep:authorizableId"
+argument_list|)
+operator|.
+name|getString
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|adminSession
+operator|.
+name|save
+argument_list|()
+expr_stmt|;
+block|}
+comment|/**      * @since OAK 1.0 : Importing rep:authorizableId      */
+annotation|@
+name|Test
+specifier|public
+name|void
+name|testImportGroupWithAuthorizableId
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|String
+name|xml
+init|=
+literal|"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
+operator|+
+literal|"<sv:node sv:name=\"g\" xmlns:mix=\"http://www.jcp.org/jcr/mix/1.0\" xmlns:nt=\"http://www.jcp.org/jcr/nt/1.0\" xmlns:fn_old=\"http://www.w3.org/2004/10/xpath-functions\" xmlns:fn=\"http://www.w3.org/2005/xpath-functions\" xmlns:xs=\"http://www.w3.org/2001/XMLSchema\" xmlns:sv=\"http://www.jcp.org/jcr/sv/1.0\" xmlns:rep=\"internal\" xmlns:jcr=\"http://www.jcp.org/jcr/1.0\">"
+operator|+
+literal|"<sv:property sv:name=\"jcr:primaryType\" sv:type=\"Name\"><sv:value>rep:Group</sv:value></sv:property>"
+operator|+
+literal|"<sv:property sv:name=\"jcr:uuid\" sv:type=\"String\"><sv:value>b2f5ff47-4366-31b6-a533-d8dc3614845d</sv:value></sv:property>"
+operator|+
+literal|"<sv:property sv:name=\"rep:principalName\" sv:type=\"String\"><sv:value>g</sv:value></sv:property>"
+operator|+
+literal|"<sv:property sv:name=\"rep:authorizableId\" sv:type=\"String\"><sv:value>g</sv:value></sv:property>"
+operator|+
+literal|"</sv:node>"
+decl_stmt|;
+name|doImport
+argument_list|(
+name|GROUPPATH
+argument_list|,
+name|xml
+argument_list|)
+expr_stmt|;
+name|Authorizable
+name|newGroup
+init|=
+name|userMgr
+operator|.
+name|getAuthorizable
+argument_list|(
+literal|"g"
+argument_list|)
+decl_stmt|;
+name|assertNotNull
+argument_list|(
+name|newGroup
+argument_list|)
+expr_stmt|;
+name|assertTrue
+argument_list|(
+name|newGroup
+operator|.
+name|isGroup
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"g"
+argument_list|,
+name|newGroup
+operator|.
+name|getID
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|assertTrue
+argument_list|(
+name|adminSession
+operator|.
+name|propertyExists
+argument_list|(
+name|newGroup
+operator|.
+name|getPath
+argument_list|()
+operator|+
+literal|"/rep:authorizableId"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"g"
+argument_list|,
+name|adminSession
+operator|.
+name|getProperty
+argument_list|(
+name|newGroup
+operator|.
+name|getPath
+argument_list|()
+operator|+
+literal|"/rep:authorizableId"
+argument_list|)
+operator|.
+name|getString
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|adminSession
+operator|.
+name|save
+argument_list|()
+expr_stmt|;
+block|}
+comment|/**      * @since OAK 1.0 : Importing rep:authorizableId      */
+annotation|@
+name|Test
+specifier|public
+name|void
+name|testImportUserWithIdDifferentFromNodeName
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|String
+name|xml
+init|=
+literal|"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
+operator|+
+literal|"<sv:node sv:name=\"t_diff\" xmlns:mix=\"http://www.jcp.org/jcr/mix/1.0\" xmlns:nt=\"http://www.jcp.org/jcr/nt/1.0\" xmlns:fn_old=\"http://www.w3.org/2004/10/xpath-functions\" xmlns:fn=\"http://www.w3.org/2005/xpath-functions\" xmlns:xs=\"http://www.w3.org/2001/XMLSchema\" xmlns:sv=\"http://www.jcp.org/jcr/sv/1.0\" xmlns:rep=\"internal\" xmlns:jcr=\"http://www.jcp.org/jcr/1.0\">"
+operator|+
+literal|"<sv:property sv:name=\"jcr:primaryType\" sv:type=\"Name\"><sv:value>rep:User</sv:value></sv:property>"
+operator|+
+literal|"<sv:property sv:name=\"jcr:uuid\" sv:type=\"String\"><sv:value>e358efa4-89f5-3062-b10d-d7316b65649e</sv:value></sv:property>"
+operator|+
+literal|"<sv:property sv:name=\"rep:authorizableId\" sv:type=\"String\"><sv:value>t</sv:value></sv:property>"
+operator|+
+literal|"<sv:property sv:name=\"rep:password\" sv:type=\"String\"><sv:value>{sha1}8efd86fb78a56a5145ed7739dcb00c78581c5375</sv:value></sv:property>"
+operator|+
+literal|"<sv:property sv:name=\"rep:principalName\" sv:type=\"String\"><sv:value>t</sv:value></sv:property>"
+operator|+
+literal|"</sv:node>"
+decl_stmt|;
+name|String
+name|userPath
+init|=
+name|USERPATH
+operator|+
+literal|"t_diff"
+decl_stmt|;
+try|try
+block|{
+name|doImport
+argument_list|(
+name|USERPATH
+argument_list|,
+name|xml
+argument_list|)
+expr_stmt|;
+name|Authorizable
+name|newUser
+init|=
+name|userMgr
+operator|.
+name|getAuthorizable
+argument_list|(
+literal|"t"
+argument_list|)
+decl_stmt|;
+name|userPath
+operator|=
+name|newUser
+operator|.
+name|getPath
+argument_list|()
+expr_stmt|;
+name|assertNotNull
+argument_list|(
+name|newUser
+argument_list|)
+expr_stmt|;
+name|assertFalse
+argument_list|(
+name|newUser
+operator|.
+name|isGroup
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"t"
+argument_list|,
+name|newUser
+operator|.
+name|getID
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|assertTrue
+argument_list|(
+name|adminSession
+operator|.
+name|propertyExists
+argument_list|(
+name|newUser
+operator|.
+name|getPath
+argument_list|()
+operator|+
+literal|"/rep:authorizableId"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"t"
+argument_list|,
+name|adminSession
+operator|.
+name|getProperty
+argument_list|(
+name|newUser
+operator|.
+name|getPath
+argument_list|()
+operator|+
+literal|"/rep:authorizableId"
+argument_list|)
+operator|.
+name|getString
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|adminSession
+operator|.
+name|save
+argument_list|()
+expr_stmt|;
+block|}
+finally|finally
+block|{
+name|adminSession
+operator|.
+name|refresh
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|adminSession
+operator|.
+name|nodeExists
+argument_list|(
+name|userPath
+argument_list|)
+condition|)
+block|{
+name|adminSession
+operator|.
+name|getNode
+argument_list|(
+name|userPath
+argument_list|)
+operator|.
+name|remove
+argument_list|()
+expr_stmt|;
+name|adminSession
+operator|.
+name|save
+argument_list|()
+expr_stmt|;
+block|}
+block|}
+block|}
+comment|/**      * Same as {@link #testImportUserWithIdDifferentFromNodeName} but with      * different order of properties.      * @since OAK 1.0 : Importing rep:authorizableId      */
+annotation|@
+name|Test
+specifier|public
+name|void
+name|testImportUserWithIdDifferentFromNodeName2
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|String
+name|xml
+init|=
+literal|"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
+operator|+
+literal|"<sv:node sv:name=\"t_diff\" xmlns:mix=\"http://www.jcp.org/jcr/mix/1.0\" xmlns:nt=\"http://www.jcp.org/jcr/nt/1.0\" xmlns:fn_old=\"http://www.w3.org/2004/10/xpath-functions\" xmlns:fn=\"http://www.w3.org/2005/xpath-functions\" xmlns:xs=\"http://www.w3.org/2001/XMLSchema\" xmlns:sv=\"http://www.jcp.org/jcr/sv/1.0\" xmlns:rep=\"internal\" xmlns:jcr=\"http://www.jcp.org/jcr/1.0\">"
+operator|+
+literal|"<sv:property sv:name=\"jcr:primaryType\" sv:type=\"Name\"><sv:value>rep:User</sv:value></sv:property>"
+operator|+
+literal|"<sv:property sv:name=\"jcr:uuid\" sv:type=\"String\"><sv:value>e358efa4-89f5-3062-b10d-d7316b65649e</sv:value></sv:property>"
+operator|+
+literal|"<sv:property sv:name=\"rep:password\" sv:type=\"String\"><sv:value>{sha1}8efd86fb78a56a5145ed7739dcb00c78581c5375</sv:value></sv:property>"
+operator|+
+literal|"<sv:property sv:name=\"rep:principalName\" sv:type=\"String\"><sv:value>t</sv:value></sv:property>"
+operator|+
+literal|"<sv:property sv:name=\"rep:authorizableId\" sv:type=\"String\"><sv:value>t</sv:value></sv:property>"
+operator|+
+literal|"</sv:node>"
+decl_stmt|;
+name|String
+name|userPath
+init|=
+name|USERPATH
+operator|+
+literal|"t_diff"
+decl_stmt|;
+try|try
+block|{
+name|doImport
+argument_list|(
+name|USERPATH
+argument_list|,
+name|xml
+argument_list|)
+expr_stmt|;
+name|Authorizable
+name|newUser
+init|=
+name|userMgr
+operator|.
+name|getAuthorizable
+argument_list|(
+literal|"t"
+argument_list|)
+decl_stmt|;
+name|userPath
+operator|=
+name|newUser
+operator|.
+name|getPath
+argument_list|()
+expr_stmt|;
+name|assertNotNull
+argument_list|(
+name|newUser
+argument_list|)
+expr_stmt|;
+name|assertFalse
+argument_list|(
+name|newUser
+operator|.
+name|isGroup
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"t"
+argument_list|,
+name|newUser
+operator|.
+name|getID
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|assertTrue
+argument_list|(
+name|adminSession
+operator|.
+name|propertyExists
+argument_list|(
+name|newUser
+operator|.
+name|getPath
+argument_list|()
+operator|+
+literal|"/rep:authorizableId"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"t"
+argument_list|,
+name|adminSession
+operator|.
+name|getProperty
+argument_list|(
+name|newUser
+operator|.
+name|getPath
+argument_list|()
+operator|+
+literal|"/rep:authorizableId"
+argument_list|)
+operator|.
+name|getString
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|adminSession
+operator|.
+name|save
+argument_list|()
+expr_stmt|;
+block|}
+finally|finally
+block|{
+name|adminSession
+operator|.
+name|refresh
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|adminSession
+operator|.
+name|nodeExists
+argument_list|(
+name|userPath
+argument_list|)
+condition|)
+block|{
+name|adminSession
+operator|.
+name|getNode
+argument_list|(
+name|userPath
+argument_list|)
+operator|.
+name|remove
+argument_list|()
+expr_stmt|;
+name|adminSession
+operator|.
+name|save
+argument_list|()
+expr_stmt|;
+block|}
+block|}
+block|}
+comment|/**      * @since OAK 1.0 : Importing rep:authorizableId      */
+annotation|@
+name|Test
+specifier|public
+name|void
+name|testImportUserWithExistingId
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|String
+name|existingId
+init|=
+literal|"admin"
+decl_stmt|;
+name|String
+name|xml
+init|=
+literal|"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
+operator|+
+literal|"<sv:node sv:name=\"t_diff\" xmlns:mix=\"http://www.jcp.org/jcr/mix/1.0\" xmlns:nt=\"http://www.jcp.org/jcr/nt/1.0\" xmlns:fn_old=\"http://www.w3.org/2004/10/xpath-functions\" xmlns:fn=\"http://www.w3.org/2005/xpath-functions\" xmlns:xs=\"http://www.w3.org/2001/XMLSchema\" xmlns:sv=\"http://www.jcp.org/jcr/sv/1.0\" xmlns:rep=\"internal\" xmlns:jcr=\"http://www.jcp.org/jcr/1.0\">"
+operator|+
+literal|"<sv:property sv:name=\"jcr:primaryType\" sv:type=\"Name\"><sv:value>rep:User</sv:value></sv:property>"
+operator|+
+literal|"<sv:property sv:name=\"jcr:uuid\" sv:type=\"String\"><sv:value>e358efa4-89f5-3062-b10d-d7316b65649e</sv:value></sv:property>"
+operator|+
+literal|"<sv:property sv:name=\"rep:password\" sv:type=\"String\"><sv:value>{sha1}8efd86fb78a56a5145ed7739dcb00c78581c5375</sv:value></sv:property>"
+operator|+
+literal|"<sv:property sv:name=\"rep:principalName\" sv:type=\"String\"><sv:value>t</sv:value></sv:property>"
+operator|+
+literal|"<sv:property sv:name=\"rep:authorizableId\" sv:type=\"String\"><sv:value>"
+operator|+
+name|existingId
+operator|+
+literal|"</sv:value></sv:property>"
+operator|+
+literal|"</sv:node>"
+decl_stmt|;
+try|try
+block|{
+name|doImport
+argument_list|(
+name|USERPATH
+argument_list|,
+name|xml
+argument_list|)
+expr_stmt|;
+name|fail
+argument_list|(
+literal|"Reuse of existing ID must be detected."
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|AuthorizableExistsException
+name|e
+parameter_list|)
+block|{
+comment|// success
+block|}
+finally|finally
+block|{
+name|adminSession
+operator|.
+name|refresh
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+comment|/**      * @since OAK 1.0 : Importing rep:authorizableId      */
+annotation|@
+name|Test
+specifier|public
+name|void
+name|testImportUserWithIdCollision
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|String
+name|collidingId
+init|=
+literal|"t"
+decl_stmt|;
+name|String
+name|xml
+init|=
+literal|"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
+operator|+
+literal|"<sv:node sv:name=\"uFolder\" xmlns:mix=\"http://www.jcp.org/jcr/mix/1.0\" xmlns:nt=\"http://www.jcp.org/jcr/nt/1.0\" xmlns:fn_old=\"http://www.w3.org/2004/10/xpath-functions\" xmlns:fn=\"http://www.w3.org/2005/xpath-functions\" xmlns:xs=\"http://www.w3.org/2001/XMLSchema\" xmlns:sv=\"http://www.jcp.org/jcr/sv/1.0\" xmlns:rep=\"internal\" xmlns:jcr=\"http://www.jcp.org/jcr/1.0\">"
+operator|+
+literal|"<sv:property sv:name=\"jcr:primaryType\" sv:type=\"Name\"><sv:value>rep:AuthorizableFolder</sv:value></sv:property>"
+operator|+
+literal|"<sv:node sv:name=\"t1\" xmlns:mix=\"http://www.jcp.org/jcr/mix/1.0\" xmlns:nt=\"http://www.jcp.org/jcr/nt/1.0\" xmlns:fn_old=\"http://www.w3.org/2004/10/xpath-functions\" xmlns:fn=\"http://www.w3.org/2005/xpath-functions\" xmlns:xs=\"http://www.w3.org/2001/XMLSchema\" xmlns:sv=\"http://www.jcp.org/jcr/sv/1.0\" xmlns:rep=\"internal\" xmlns:jcr=\"http://www.jcp.org/jcr/1.0\">"
+operator|+
+literal|"<sv:property sv:name=\"jcr:primaryType\" sv:type=\"Name\"><sv:value>rep:User</sv:value></sv:property>"
+operator|+
+literal|"<sv:property sv:name=\"jcr:uuid\" sv:type=\"String\"><sv:value>e358efa4-89f5-3062-b10d-d7316b65649e</sv:value></sv:property>"
+operator|+
+literal|"<sv:property sv:name=\"rep:password\" sv:type=\"String\"><sv:value>{sha1}8efd86fb78a56a5145ed7739dcb00c78581c5375</sv:value></sv:property>"
+operator|+
+literal|"<sv:property sv:name=\"rep:principalName\" sv:type=\"String\"><sv:value>t</sv:value></sv:property>"
+operator|+
+literal|"<sv:property sv:name=\"rep:authorizableId\" sv:type=\"String\"><sv:value>"
+operator|+
+name|collidingId
+operator|+
+literal|"</sv:value></sv:property>"
+operator|+
+literal|"</sv:node>"
+operator|+
+literal|"<sv:node sv:name=\"t2\" xmlns:mix=\"http://www.jcp.org/jcr/mix/1.0\" xmlns:nt=\"http://www.jcp.org/jcr/nt/1.0\" xmlns:fn_old=\"http://www.w3.org/2004/10/xpath-functions\" xmlns:fn=\"http://www.w3.org/2005/xpath-functions\" xmlns:xs=\"http://www.w3.org/2001/XMLSchema\" xmlns:sv=\"http://www.jcp.org/jcr/sv/1.0\" xmlns:rep=\"internal\" xmlns:jcr=\"http://www.jcp.org/jcr/1.0\">"
+operator|+
+literal|"<sv:property sv:name=\"jcr:primaryType\" sv:type=\"Name\"><sv:value>rep:User</sv:value></sv:property>"
+operator|+
+literal|"<sv:property sv:name=\"jcr:uuid\" sv:type=\"String\"><sv:value>0f826a89-cf68-3399-85f4-cf320c1a5842</sv:value></sv:property>"
+operator|+
+literal|"<sv:property sv:name=\"rep:password\" sv:type=\"String\"><sv:value>{sha1}8efd86fb78a56a5145ed7739dcb00c78581c5375</sv:value></sv:property>"
+operator|+
+literal|"<sv:property sv:name=\"rep:principalName\" sv:type=\"String\"><sv:value>t</sv:value></sv:property>"
+operator|+
+literal|"<sv:property sv:name=\"rep:authorizableId\" sv:type=\"String\"><sv:value>"
+operator|+
+name|collidingId
+operator|+
+literal|"</sv:value></sv:property>"
+operator|+
+literal|"</sv:node>"
+operator|+
+literal|"</sv:node>"
+decl_stmt|;
+try|try
+block|{
+name|doImport
+argument_list|(
+name|USERPATH
+argument_list|,
+name|xml
+argument_list|)
+expr_stmt|;
+name|fail
+argument_list|(
+literal|"Reuse of existing ID must be detected."
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|AuthorizableExistsException
+name|e
+parameter_list|)
+block|{
+comment|// success
+block|}
+finally|finally
+block|{
+name|adminSession
+operator|.
+name|refresh
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 block|}
