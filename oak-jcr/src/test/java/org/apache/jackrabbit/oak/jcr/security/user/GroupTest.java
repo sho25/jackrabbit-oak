@@ -3467,12 +3467,6 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/**      * @since oak 1.0 cyclic group membership added in a single set of transient      *        modifications must be detected upon save.      */
-annotation|@
-name|Ignore
-argument_list|(
-literal|"OAK-615"
-argument_list|)
 annotation|@
 name|Test
 specifier|public
@@ -3553,24 +3547,16 @@ name|group3
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|assertTrue
+name|assertFalse
 argument_list|(
+literal|"Cyclic group membership must be detected."
+argument_list|,
 name|group3
 operator|.
 name|addMember
 argument_list|(
 name|group1
 argument_list|)
-argument_list|)
-expr_stmt|;
-name|superuser
-operator|.
-name|save
-argument_list|()
-expr_stmt|;
-name|fail
-argument_list|(
-literal|"Cyclic group membership must be detected"
 argument_list|)
 expr_stmt|;
 block|}

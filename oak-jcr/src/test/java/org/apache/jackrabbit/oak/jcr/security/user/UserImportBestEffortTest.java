@@ -527,12 +527,6 @@ block|}
 block|}
 block|}
 annotation|@
-name|Ignore
-argument_list|(
-literal|"OAK-414"
-argument_list|)
-comment|// FIXME
-annotation|@
 name|Test
 specifier|public
 name|void
@@ -735,6 +729,113 @@ literal|"'g1' was not imported as Group."
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+annotation|@
+name|Ignore
+argument_list|(
+literal|"OAK-615"
+argument_list|)
+comment|// FIXME
+annotation|@
+name|Test
+specifier|public
+name|void
+name|testImportCircularMembership
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|String
+name|g1Id
+init|=
+literal|"0120a4f9-196a-3f9e-b9f5-23f31f914da7"
+decl_stmt|;
+name|String
+name|nonExistingId
+init|=
+literal|"b2f5ff47-4366-31b6-a533-d8dc3614845d"
+decl_stmt|;
+comment|// groupId of 'g' group.
+if|if
+condition|(
+name|userMgr
+operator|.
+name|getAuthorizable
+argument_list|(
+literal|"g"
+argument_list|)
+operator|!=
+literal|null
+condition|)
+block|{
+throw|throw
+operator|new
+name|NotExecutableException
+argument_list|()
+throw|;
+block|}
+name|String
+name|xml
+init|=
+literal|"<?xml version=\"1.0\" encoding=\"UTF-8\"?>"
+operator|+
+literal|"<sv:node sv:name=\"gFolder\" xmlns:mix=\"http://www.jcp.org/jcr/mix/1.0\" xmlns:nt=\"http://www.jcp.org/jcr/nt/1.0\" xmlns:fn_old=\"http://www.w3.org/2004/10/xpath-functions\" xmlns:fn=\"http://www.w3.org/2005/xpath-functions\" xmlns:xs=\"http://www.w3.org/2001/XMLSchema\" xmlns:sv=\"http://www.jcp.org/jcr/sv/1.0\" xmlns:rep=\"internal\" xmlns:jcr=\"http://www.jcp.org/jcr/1.0\">"
+operator|+
+literal|"<sv:property sv:name=\"jcr:primaryType\" sv:type=\"Name\"><sv:value>rep:AuthorizableFolder</sv:value></sv:property>"
+operator|+
+literal|"<sv:node sv:name=\"g1\"><sv:property sv:name=\"jcr:primaryType\" sv:type=\"Name\"><sv:value>rep:Group</sv:value></sv:property>"
+operator|+
+literal|"<sv:property sv:name=\"jcr:uuid\" sv:type=\"String\"><sv:value>"
+operator|+
+name|g1Id
+operator|+
+literal|"</sv:value></sv:property>"
+operator|+
+literal|"<sv:property sv:name=\"rep:principalName\" sv:type=\"String\"><sv:value>g1</sv:value></sv:property>"
+operator|+
+literal|"<sv:property sv:name=\"rep:members\" sv:type=\"WeakReference\"><sv:value>"
+operator|+
+name|nonExistingId
+operator|+
+literal|"</sv:value></sv:property>"
+operator|+
+literal|"</sv:node>"
+operator|+
+literal|"</sv:node>"
+decl_stmt|;
+name|String
+name|xml2
+init|=
+literal|"<?xml version=\"1.0\" encoding=\"UTF-8\"?>"
+operator|+
+literal|"<sv:node sv:name=\"g\" xmlns:mix=\"http://www.jcp.org/jcr/mix/1.0\" xmlns:nt=\"http://www.jcp.org/jcr/nt/1.0\" xmlns:fn_old=\"http://www.w3.org/2004/10/xpath-functions\" xmlns:fn=\"http://www.w3.org/2005/xpath-functions\" xmlns:xs=\"http://www.w3.org/2001/XMLSchema\" xmlns:sv=\"http://www.jcp.org/jcr/sv/1.0\" xmlns:rep=\"internal\" xmlns:jcr=\"http://www.jcp.org/jcr/1.0\">"
+operator|+
+literal|"<sv:property sv:name=\"jcr:primaryType\" sv:type=\"Name\"><sv:value>rep:Group</sv:value></sv:property>"
+operator|+
+literal|"<sv:property sv:name=\"jcr:uuid\" sv:type=\"String\"><sv:value>"
+operator|+
+name|nonExistingId
+operator|+
+literal|"</sv:value></sv:property>"
+operator|+
+literal|"<sv:property sv:name=\"rep:principalName\" sv:type=\"String\"><sv:value>g</sv:value></sv:property>"
+operator|+
+literal|"<sv:property sv:name=\"rep:members\" sv:type=\"WeakReference\"><sv:value>"
+operator|+
+name|g1Id
+operator|+
+literal|"</sv:value></sv:property>"
+operator|+
+literal|"</sv:node>"
+decl_stmt|;
+comment|// BESTEFFORT behavior -> must import non-existing members.
+name|doImport
+argument_list|(
+name|GROUPPATH
+argument_list|,
+name|xml
+argument_list|)
+expr_stmt|;
 comment|/*         now try to import the 'g' group that has a circular group         membership references.         expected:         - group is imported         - circular membership is ignored         - g is member of g1         - g1 isn't member of g         */
 name|doImport
 argument_list|(
@@ -843,7 +944,7 @@ name|save
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * Same as {@link #testImportUuidCollisionRemoveExisting} with the single      * difference that the inital import is saved before being overwritten.      */
+comment|/**      * Same as {@link #testImportUuidCollisionRemoveExisting} with the single      * difference that the initial import is saved before being overwritten.      */
 annotation|@
 name|Test
 specifier|public
