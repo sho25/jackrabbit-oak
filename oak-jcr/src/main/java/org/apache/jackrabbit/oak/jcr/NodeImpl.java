@@ -4737,6 +4737,12 @@ operator|.
 name|NODE_TYPE_MANAGEMENT
 argument_list|)
 operator|&&
+operator|!
+name|dlg
+operator|.
+name|isProtected
+argument_list|()
+operator|&&
 name|dlg
 operator|.
 name|canAddMixin

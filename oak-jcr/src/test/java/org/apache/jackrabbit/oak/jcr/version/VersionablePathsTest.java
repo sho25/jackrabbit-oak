@@ -45,16 +45,6 @@ name|javax
 operator|.
 name|jcr
 operator|.
-name|Session
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|jcr
-operator|.
 name|version
 operator|.
 name|VersionManager
@@ -87,18 +77,8 @@ name|AbstractJCRTest
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
-name|Test
-import|;
-end_import
-
 begin_comment
-comment|/**  * VersionablePathsTest... TODO  *<p/>  * FIXME: versionablePath only adjusted AFTER move/rename has been persisted.  */
+comment|/**  * VersionablePathsTest... TODO  */
 end_comment
 
 begin_class
@@ -108,39 +88,6 @@ name|VersionablePathsTest
 extends|extends
 name|AbstractJCRTest
 block|{
-comment|// FIXME: shouldn't be needed (OAK-602)
-specifier|private
-name|Session
-name|tmpSession
-decl_stmt|;
-annotation|@
-name|Override
-specifier|protected
-name|void
-name|tearDown
-parameter_list|()
-throws|throws
-name|Exception
-block|{
-if|if
-condition|(
-name|tmpSession
-operator|!=
-literal|null
-condition|)
-block|{
-name|tmpSession
-operator|.
-name|logout
-argument_list|()
-expr_stmt|;
-block|}
-name|super
-operator|.
-name|tearDown
-argument_list|()
-expr_stmt|;
-block|}
 specifier|private
 name|VersionManager
 name|getVersionManager
@@ -148,16 +95,8 @@ parameter_list|()
 throws|throws
 name|RepositoryException
 block|{
-name|tmpSession
-operator|=
-name|getHelper
-argument_list|()
-operator|.
-name|getSuperuserSession
-argument_list|()
-expr_stmt|;
 return|return
-name|tmpSession
+name|superuser
 operator|.
 name|getWorkspace
 argument_list|()
@@ -166,8 +105,6 @@ name|getVersionManager
 argument_list|()
 return|;
 block|}
-annotation|@
-name|Test
 specifier|public
 name|void
 name|testVersionablePaths
@@ -253,8 +190,6 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-annotation|@
-name|Test
 specifier|public
 name|void
 name|testVersionablePathsAfterRename
@@ -311,16 +246,6 @@ name|superuser
 operator|.
 name|save
 argument_list|()
-expr_stmt|;
-comment|// FIXME: test node is stale after move
-name|node1
-operator|=
-name|testRootNode
-operator|.
-name|getNode
-argument_list|(
-name|nodeName2
-argument_list|)
 expr_stmt|;
 name|Node
 name|vh
@@ -386,8 +311,6 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-annotation|@
-name|Test
 specifier|public
 name|void
 name|testVersionablePathsAfterMove
@@ -458,16 +381,6 @@ operator|.
 name|save
 argument_list|()
 expr_stmt|;
-comment|// FIXME: node1 is stale after move
-name|node1
-operator|=
-name|node2
-operator|.
-name|getNode
-argument_list|(
-name|nodeName1
-argument_list|)
-expr_stmt|;
 name|assertEquals
 argument_list|(
 name|destPath
@@ -542,8 +455,6 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-annotation|@
-name|Test
 specifier|public
 name|void
 name|testVersionablePathsAfterParentMove
@@ -623,20 +534,6 @@ name|superuser
 operator|.
 name|save
 argument_list|()
-expr_stmt|;
-comment|// FIXME: node3 is stale after move
-name|node3
-operator|=
-name|node2
-operator|.
-name|getNode
-argument_list|(
-name|nodeName1
-operator|+
-literal|'/'
-operator|+
-name|nodeName3
-argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(

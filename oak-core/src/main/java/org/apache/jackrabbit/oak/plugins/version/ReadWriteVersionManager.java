@@ -581,6 +581,10 @@ specifier|final
 name|NodeBuilder
 name|workspaceRoot
 decl_stmt|;
+specifier|private
+name|ReadOnlyNodeTypeManager
+name|ntMgr
+decl_stmt|;
 name|ReadWriteVersionManager
 parameter_list|(
 name|NodeBuilder
@@ -658,7 +662,15 @@ name|ReadOnlyNodeTypeManager
 name|getNodeTypeManager
 parameter_list|()
 block|{
-return|return
+if|if
+condition|(
+name|ntMgr
+operator|==
+literal|null
+condition|)
+block|{
+name|ntMgr
+operator|=
 name|ReadOnlyNodeTypeManager
 operator|.
 name|getInstance
@@ -670,6 +682,10 @@ name|NamePathMapper
 operator|.
 name|DEFAULT
 argument_list|)
+expr_stmt|;
+block|}
+return|return
+name|ntMgr
 return|;
 block|}
 comment|/**      * Gets or creates the version history for the given      * {@code versionable} node.      *      * @param versionable the versionable node.      * @return the version history node.      * @throws IllegalArgumentException if the given node does not have a      *                                  {@code jcr:uuid} property.      */
