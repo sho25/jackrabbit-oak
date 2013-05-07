@@ -933,6 +933,9 @@ operator|.
 name|matchesNodeType
 argument_list|(
 name|node
+argument_list|,
+name|getPath
+argument_list|()
 argument_list|)
 condition|)
 block|{
