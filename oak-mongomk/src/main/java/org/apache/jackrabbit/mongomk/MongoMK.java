@@ -891,10 +891,10 @@ name|headRevision
 argument_list|,
 name|Revision
 operator|.
-name|getCurrentTimestamp
-argument_list|()
-operator|+
-literal|1
+name|newRevision
+argument_list|(
+literal|0
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|headRevision
@@ -1250,13 +1250,27 @@ name|hasNewRevisions
 init|=
 literal|false
 decl_stmt|;
-name|long
-name|timestamp
+comment|// the (old) head occurred first
+name|Revision
+name|headSeen
 init|=
 name|Revision
 operator|.
-name|getCurrentTimestamp
-argument_list|()
+name|newRevision
+argument_list|(
+literal|0
+argument_list|)
+decl_stmt|;
+comment|// then we saw this new revision (from another cluster node)
+name|Revision
+name|otherSeen
+init|=
+name|Revision
+operator|.
+name|newRevision
+argument_list|(
+literal|0
+argument_list|)
 decl_stmt|;
 for|for
 control|(
@@ -1354,7 +1368,7 @@ name|add
 argument_list|(
 name|r
 argument_list|,
-name|timestamp
+name|otherSeen
 argument_list|)
 expr_stmt|;
 block|}
@@ -1390,9 +1404,7 @@ name|add
 argument_list|(
 name|r
 argument_list|,
-name|timestamp
-operator|-
-literal|1
+name|headSeen
 argument_list|)
 expr_stmt|;
 comment|// the head revision is after other revisions
@@ -1410,113 +1422,12 @@ name|revisionComparator
 operator|.
 name|purge
 argument_list|(
-name|timestamp
-operator|-
-name|REMEMBER_REVISION_ORDER_MILLIS
-argument_list|)
-expr_stmt|;
-block|}
-comment|/**      * Ensure the revision visible from now on, possibly by updating the head      * revision, so that the changes that occurred are visible.      *       * @param revision the revision      */
-name|void
-name|publishRevision
-parameter_list|(
-name|Revision
-name|revision
-parameter_list|)
-block|{
-if|if
-condition|(
-name|revisionComparator
-operator|.
-name|compare
-argument_list|(
-name|headRevision
-argument_list|,
-name|revision
-argument_list|)
-operator|>=
-literal|0
-condition|)
-block|{
-comment|// already visible
-return|return;
-block|}
-name|int
-name|clusterNodeId
-init|=
-name|revision
-operator|.
-name|getClusterId
-argument_list|()
-decl_stmt|;
-if|if
-condition|(
-name|clusterNodeId
-operator|==
-name|this
-operator|.
-name|clusterId
-condition|)
-block|{
-return|return;
-block|}
-name|long
-name|timestamp
-init|=
 name|Revision
 operator|.
 name|getCurrentTimestamp
 argument_list|()
-decl_stmt|;
-name|revisionComparator
-operator|.
-name|add
-argument_list|(
-name|revision
-argument_list|,
-name|timestamp
-argument_list|)
-expr_stmt|;
-comment|// TODO invalidating the whole cache is not really needed,
-comment|// but how to ensure we invalidate the right part of the cache?
-comment|// possibly simply wait for the background thread to pick
-comment|// up the changes, but this depends on how often this method is called
-name|store
-operator|.
-name|invalidateCache
-argument_list|()
-expr_stmt|;
-comment|// add a new revision, so that changes are visible
-name|headRevision
-operator|=
-name|Revision
-operator|.
-name|newRevision
-argument_list|(
-name|clusterId
-argument_list|)
-expr_stmt|;
-comment|// the latest revisions of the current cluster node
-comment|// happened before the latest revisions of other cluster nodes
-name|revisionComparator
-operator|.
-name|add
-argument_list|(
-name|headRevision
-argument_list|,
-name|timestamp
 operator|-
-literal|1
-argument_list|)
-expr_stmt|;
-comment|// the head revision is after other revisions
-name|headRevision
-operator|=
-name|Revision
-operator|.
-name|newRevision
-argument_list|(
-name|clusterId
+name|REMEMBER_REVISION_ORDER_MILLIS
 argument_list|)
 expr_stmt|;
 block|}
@@ -5703,7 +5614,7 @@ return|return
 name|liveRev
 return|;
 block|}
-comment|/**      * Get the revision of the latest change made to this node.      *       * @param nodeMap the document      * @param readRevision the returned value is guaranteed to _not_ match this revision,      *              but it might be in this branch      * @param onlyCommitted whether only committed changes should be considered      * @param handler the conflict handler, which is called for un-committed revisions      *                preceding<code>before</code>.      * @return the revision, or null if deleted      */
+comment|/**      * Get the revision of the latest change made to this node.      *       * @param nodeMap the document      * @param changeRev the revision of the current change      * @param onlyCommitted whether only committed changes should be considered      * @param handler the conflict handler, which is called for un-committed revisions      *                preceding<code>before</code>.      * @return the revision, or null if deleted      */
 annotation|@
 name|SuppressWarnings
 argument_list|(
@@ -5723,10 +5634,7 @@ argument_list|>
 name|nodeMap
 parameter_list|,
 name|Revision
-name|except
-parameter_list|,
-name|boolean
-name|onlyCommitted
+name|changeRev
 parameter_list|,
 name|CollisionHandler
 name|handler
@@ -5743,7 +5651,6 @@ return|return
 literal|null
 return|;
 block|}
-comment|// TODO remove "except"
 name|SortedSet
 argument_list|<
 name|String
@@ -5910,6 +5817,27 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+name|isRevisionNewer
+argument_list|(
+name|propRev
+argument_list|,
+name|changeRev
+argument_list|)
+condition|)
+block|{
+comment|// we have seen a previous change from another cluster node
+comment|// (which might be conflicting or not) - we need to make
+comment|// sure this change is visible from now on
+name|publishRevision
+argument_list|(
+name|propRev
+argument_list|,
+name|changeRev
+argument_list|)
+expr_stmt|;
+block|}
+if|if
+condition|(
 name|newestRev
 operator|==
 literal|null
@@ -5929,20 +5857,18 @@ name|propRev
 operator|.
 name|equals
 argument_list|(
-name|except
+name|changeRev
 argument_list|)
 condition|)
 block|{
 if|if
 condition|(
-name|onlyCommitted
-operator|&&
 operator|!
 name|isValidRevision
 argument_list|(
 name|propRev
 argument_list|,
-name|except
+name|changeRev
 argument_list|,
 name|nodeMap
 argument_list|,
@@ -6023,6 +5949,136 @@ block|}
 return|return
 name|newestRev
 return|;
+block|}
+comment|/**      * Ensure the revision visible from now on, possibly by updating the head      * revision, so that the changes that occurred are visible.      *       * @param foreignRevision the revision from another cluster node      * @param changeRevision the local revision that is sorted after the foreign revision      */
+specifier|private
+name|void
+name|publishRevision
+parameter_list|(
+name|Revision
+name|foreignRevision
+parameter_list|,
+name|Revision
+name|changeRevision
+parameter_list|)
+block|{
+if|if
+condition|(
+name|revisionComparator
+operator|.
+name|compare
+argument_list|(
+name|headRevision
+argument_list|,
+name|foreignRevision
+argument_list|)
+operator|>=
+literal|0
+condition|)
+block|{
+comment|// already visible
+return|return;
+block|}
+name|int
+name|clusterNodeId
+init|=
+name|foreignRevision
+operator|.
+name|getClusterId
+argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|clusterNodeId
+operator|==
+name|this
+operator|.
+name|clusterId
+condition|)
+block|{
+return|return;
+block|}
+comment|// the (old) head occurred first
+name|Revision
+name|headSeen
+init|=
+name|Revision
+operator|.
+name|newRevision
+argument_list|(
+literal|0
+argument_list|)
+decl_stmt|;
+comment|// then we saw this new revision (from another cluster node)
+name|Revision
+name|otherSeen
+init|=
+name|Revision
+operator|.
+name|newRevision
+argument_list|(
+literal|0
+argument_list|)
+decl_stmt|;
+comment|// and after that, the current change
+name|Revision
+name|changeSeen
+init|=
+name|Revision
+operator|.
+name|newRevision
+argument_list|(
+literal|0
+argument_list|)
+decl_stmt|;
+name|revisionComparator
+operator|.
+name|add
+argument_list|(
+name|foreignRevision
+argument_list|,
+name|otherSeen
+argument_list|)
+expr_stmt|;
+comment|// TODO invalidating the whole cache is not really needed,
+comment|// but how to ensure we invalidate the right part of the cache?
+comment|// possibly simply wait for the background thread to pick
+comment|// up the changes, but this depends on how often this method is called
+name|store
+operator|.
+name|invalidateCache
+argument_list|()
+expr_stmt|;
+comment|// the latest revisions of the current cluster node
+comment|// happened before the latest revisions of other cluster nodes
+name|revisionComparator
+operator|.
+name|add
+argument_list|(
+name|headRevision
+argument_list|,
+name|headSeen
+argument_list|)
+expr_stmt|;
+name|revisionComparator
+operator|.
+name|add
+argument_list|(
+name|changeRevision
+argument_list|,
+name|changeSeen
+argument_list|)
+expr_stmt|;
+comment|// the head revision is after other revisions
+name|headRevision
+operator|=
+name|Revision
+operator|.
+name|newRevision
+argument_list|(
+name|clusterId
+argument_list|)
+expr_stmt|;
 block|}
 specifier|private
 specifier|static

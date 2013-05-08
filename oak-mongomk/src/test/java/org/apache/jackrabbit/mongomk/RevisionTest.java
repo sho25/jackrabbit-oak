@@ -1022,7 +1022,15 @@ name|add
 argument_list|(
 name|r2c1
 argument_list|,
-literal|20
+operator|new
+name|Revision
+argument_list|(
+literal|0x20
+argument_list|,
+literal|0
+argument_list|,
+literal|0
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|comp
@@ -1031,14 +1039,22 @@ name|add
 argument_list|(
 name|r2c2
 argument_list|,
-literal|10
+operator|new
+name|Revision
+argument_list|(
+literal|0x10
+argument_list|,
+literal|0
+argument_list|,
+literal|0
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"1:\n r120-0-1:20\n"
+literal|"1:\n r120-0-1:r20-0-0\n"
 operator|+
-literal|"2:\n r200-0-2:10\n"
+literal|"2:\n r200-0-2:r10-0-0\n"
 argument_list|,
 name|comp
 operator|.
@@ -1074,7 +1090,7 @@ name|r2c2
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// r3c2 is still "in the future"
+comment|// both r3cx are still "in the future"
 name|assertEquals
 argument_list|(
 operator|-
@@ -1099,7 +1115,15 @@ name|add
 argument_list|(
 name|r3c1
 argument_list|,
-literal|30
+operator|new
+name|Revision
+argument_list|(
+literal|0x30
+argument_list|,
+literal|0
+argument_list|,
+literal|0
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|comp
@@ -1108,14 +1132,22 @@ name|add
 argument_list|(
 name|r3c2
 argument_list|,
-literal|30
+operator|new
+name|Revision
+argument_list|(
+literal|0x30
+argument_list|,
+literal|0
+argument_list|,
+literal|0
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"1:\n r120-0-1:20 r130-0-1:30\n"
+literal|"1:\n r120-0-1:r20-0-0 r130-0-1:r30-0-0\n"
 operator|+
-literal|"2:\n r200-0-2:10 r300-0-2:30\n"
+literal|"2:\n r200-0-2:r10-0-0 r300-0-2:r30-0-0\n"
 argument_list|,
 name|comp
 operator|.
@@ -1216,14 +1248,14 @@ name|comp
 operator|.
 name|purge
 argument_list|(
-literal|10
+literal|0x10
 argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"1:\n r120-0-1:20 r130-0-1:30\n"
+literal|"1:\n r120-0-1:r20-0-0 r130-0-1:r30-0-0\n"
 operator|+
-literal|"2:\n r300-0-2:30\n"
+literal|"2:\n r300-0-2:r30-0-0\n"
 argument_list|,
 name|comp
 operator|.
@@ -1235,14 +1267,14 @@ name|comp
 operator|.
 name|purge
 argument_list|(
-literal|20
+literal|0x20
 argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"1:\n r130-0-1:30\n"
+literal|"1:\n r130-0-1:r30-0-0\n"
 operator|+
-literal|"2:\n r300-0-2:30\n"
+literal|"2:\n r300-0-2:r30-0-0\n"
 argument_list|,
 name|comp
 operator|.
@@ -1265,14 +1297,22 @@ argument_list|,
 literal|2
 argument_list|)
 argument_list|,
-literal|30
+operator|new
+name|Revision
+argument_list|(
+literal|0x30
+argument_list|,
+literal|0
+argument_list|,
+literal|0
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"1:\n r130-0-1:30\n"
+literal|"1:\n r130-0-1:r30-0-0\n"
 operator|+
-literal|"2:\n r301-1-2:30\n"
+literal|"2:\n r301-1-2:r30-0-0\n"
 argument_list|,
 name|comp
 operator|.
@@ -1284,7 +1324,7 @@ name|comp
 operator|.
 name|purge
 argument_list|(
-literal|30
+literal|0x30
 argument_list|)
 expr_stmt|;
 name|assertEquals
