@@ -1578,7 +1578,7 @@ name|SECURITY_CREDENTIALS
 argument_list|,
 name|user
 operator|.
-name|getPassword
+name|getLdapPassword
 argument_list|()
 argument_list|)
 expr_stmt|;

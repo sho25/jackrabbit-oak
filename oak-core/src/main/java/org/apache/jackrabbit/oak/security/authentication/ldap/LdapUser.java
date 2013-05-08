@@ -240,6 +240,15 @@ name|getPassword
 parameter_list|()
 block|{
 return|return
+literal|null
+return|;
+block|}
+specifier|public
+name|String
+name|getLdapPassword
+parameter_list|()
+block|{
+return|return
 name|pwd
 return|;
 block|}
