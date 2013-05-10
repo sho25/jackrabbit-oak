@@ -104,7 +104,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * AuthenticationConfiguration... TODO  */
+comment|/**  * Interface for the authentication setup.  */
 end_comment
 
 begin_interface
@@ -120,9 +120,19 @@ init|=
 literal|"org.apache.jackrabbit.oak.authentication.options"
 decl_stmt|;
 name|String
+name|PARAM_TOKEN_OPTIONS
+init|=
+literal|"org.apache.jackrabbit.oak.authentication.token.options"
+decl_stmt|;
+name|String
 name|PARAM_APP_NAME
 init|=
 literal|"org.apache.jackrabbit.oak.auth.appName"
+decl_stmt|;
+name|String
+name|DEFAULT_APP_NAME
+init|=
+literal|"jackrabbit.oak"
 decl_stmt|;
 annotation|@
 name|Nonnull
