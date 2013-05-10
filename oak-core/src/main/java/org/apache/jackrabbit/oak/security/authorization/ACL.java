@@ -1390,7 +1390,7 @@ return|return
 literal|true
 return|;
 block|}
-comment|// TODO
+comment|// TODO: OAK-814
 specifier|private
 name|boolean
 name|isRedundantOrExtending

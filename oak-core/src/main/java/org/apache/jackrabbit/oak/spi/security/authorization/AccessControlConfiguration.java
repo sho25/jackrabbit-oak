@@ -158,7 +158,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * {@code AccessControlContextProvider}...  */
+comment|/**  * Configuration for access control management and permission evaluation.  */
 end_comment
 
 begin_interface

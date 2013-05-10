@@ -275,15 +275,11 @@ argument_list|(
 name|other
 argument_list|)
 operator|&&
-name|getValue
-argument_list|()
+name|property
 operator|.
 name|equals
 argument_list|(
-name|other
-operator|.
-name|getValue
-argument_list|()
+name|property
 argument_list|)
 return|;
 block|}
