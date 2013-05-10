@@ -306,7 +306,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Jr2CompatibilityTest... TODO  */
+comment|/**  * Test compatibility with Jackrabbit 2.x using the  * {@link AccessControlConstants#PARAM_PERMISSIONS_JR2} configuration parameter.  */
 end_comment
 
 begin_class

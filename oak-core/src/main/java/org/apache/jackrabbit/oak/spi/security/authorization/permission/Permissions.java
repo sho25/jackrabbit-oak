@@ -198,7 +198,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Permissions... TODO  */
+comment|/**  * Provides constants for permissions used in the OAK access evaluation as well  * as permission related utility methods.  */
 end_comment
 
 begin_class
@@ -407,6 +407,7 @@ name|WORKSPACE_MANAGEMENT
 operator|<<
 literal|1
 decl_stmt|;
+comment|/**      * @since OAK 1.0      */
 specifier|public
 specifier|static
 specifier|final

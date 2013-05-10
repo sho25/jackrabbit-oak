@@ -116,7 +116,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * OpenPermissionProvider... TODO  */
+comment|/**  * Permission provider implementation that grants full access everywhere.  */
 end_comment
 
 begin_class
