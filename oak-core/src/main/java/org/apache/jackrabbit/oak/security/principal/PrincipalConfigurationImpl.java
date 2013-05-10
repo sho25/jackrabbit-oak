@@ -156,7 +156,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * PrincipalConfigurationImpl... TODO  */
+comment|/**  * Default implementation of the {@code PrincipalConfiguration}  */
 end_comment
 
 begin_class

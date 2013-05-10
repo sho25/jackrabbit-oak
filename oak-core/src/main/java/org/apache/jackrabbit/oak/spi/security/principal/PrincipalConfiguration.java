@@ -100,7 +100,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * PrincipalConfig... TODO  */
+comment|/**  * Configuration interface for principal management.  */
 end_comment
 
 begin_interface
@@ -110,6 +110,7 @@ name|PrincipalConfiguration
 extends|extends
 name|SecurityConfiguration
 block|{
+comment|/**      * Returns an instance of {@link PrincipalManager} that can be used      * to query and retrieve principals such as needed for JCR access control      * management.      *      * @param root The target root.      * @param namePathMapper The {@code NamePathMapper} to be used.      * @return An instance of {@link PrincipalManager}.      * @see {@link org.apache.jackrabbit.api.JackrabbitSession#getPrincipalManager()}      */
 annotation|@
 name|Nonnull
 name|PrincipalManager
@@ -122,6 +123,7 @@ name|NamePathMapper
 name|namePathMapper
 parameter_list|)
 function_decl|;
+comment|/**      * Returns an instance of the OAK {@link PrincipalProvider}.      *      *<h3>Backwards compatibility with Jackrabbit 2.x</h3>      *<h4>Configuration of Principal Providers</h4>      * In Jackrabbit 2.x the configuration of principal providers was tied to      * the LoginModule configuration and thus mixing authentication concerns      * with the principal management. Since OAK makes the {@code PrincipalProvider}      * a public interface of the SPI, it's configuration goes along with the      * configuration of the JCR level {@link PrincipalManager}. The authentication      * setup may have access to the principal configuration if the      * {@link org.apache.jackrabbit.oak.spi.security.SecurityProvider} is      * made available in the {@link org.apache.jackrabbit.oak.spi.security.authentication.AuthenticationConfiguration}.      *      *<h4>Multiple Sources for Principals</h4>      * In Jackrabbit 2.x it was possible to configure multiple principal providers.      * As of OAK there is only one single principal provider implementation      * responsible for a given workspace. If principals originate from different      * sources it is recommended to use the {@link CompositePrincipalProvider}      * to combine the different sources.      *      * @param root The target {@code Root}.      * @param namePathMapper The {@code NamePathMapper} to be used.      * @return An instance of {@link PrincipalProvider}.      */
 annotation|@
 name|Nonnull
 name|PrincipalProvider
