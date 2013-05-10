@@ -122,7 +122,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * UserConfiguration...  * TODO: OAK-522  */
+comment|/**  * Configuration interface for user management.  */
 end_comment
 
 begin_interface
@@ -139,12 +139,6 @@ literal|"org.apache.jackrabbit.oak.user.options"
 decl_stmt|;
 annotation|@
 name|Nonnull
-name|AuthorizableActionProvider
-name|getAuthorizableActionProvider
-parameter_list|()
-function_decl|;
-annotation|@
-name|Nonnull
 name|UserManager
 name|getUserManager
 parameter_list|(
@@ -154,6 +148,12 @@ parameter_list|,
 name|NamePathMapper
 name|namePathMapper
 parameter_list|)
+function_decl|;
+annotation|@
+name|Nonnull
+name|AuthorizableActionProvider
+name|getAuthorizableActionProvider
+parameter_list|()
 function_decl|;
 block|}
 end_interface
