@@ -597,6 +597,9 @@ name|definition
 operator|.
 name|getRequiredType
 argument_list|()
+operator|.
+name|tag
+argument_list|()
 return|;
 block|}
 block|}

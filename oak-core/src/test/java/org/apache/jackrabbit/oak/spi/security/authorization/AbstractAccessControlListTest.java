@@ -1462,6 +1462,9 @@ name|def
 operator|.
 name|getRequiredType
 argument_list|()
+operator|.
+name|tag
+argument_list|()
 argument_list|,
 name|reqType
 argument_list|)

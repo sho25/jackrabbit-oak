@@ -57,7 +57,7 @@ begin_class
 specifier|public
 specifier|final
 class|class
-name|InvalidPrincipal
+name|InvalidTestPrincipal
 implements|implements
 name|Principal
 block|{
@@ -67,7 +67,7 @@ name|String
 name|name
 decl_stmt|;
 specifier|public
-name|InvalidPrincipal
+name|InvalidTestPrincipal
 parameter_list|(
 name|String
 name|name

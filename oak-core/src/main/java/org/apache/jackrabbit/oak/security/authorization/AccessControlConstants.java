@@ -150,6 +150,12 @@ literal|"rep:nodePath"
 decl_stmt|;
 comment|/**      * @since OAK 1.0      */
 name|String
+name|REP_NT_NAMES
+init|=
+literal|"rep:ntNames"
+decl_stmt|;
+comment|/**      * @since OAK 1.0      */
+name|String
 name|REP_RESTRICTIONS
 init|=
 literal|"rep:restrictions"

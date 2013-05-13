@@ -153,9 +153,6 @@ name|property
 operator|.
 name|getType
 argument_list|()
-operator|.
-name|tag
-argument_list|()
 argument_list|,
 name|isMandatory
 argument_list|,

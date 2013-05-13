@@ -24,54 +24,6 @@ package|;
 end_package
 
 begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertEquals
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertFalse
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertTrue
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|fail
-import|;
-end_import
-
-begin_import
 import|import
 name|java
 operator|.
@@ -93,11 +45,15 @@ end_import
 
 begin_import
 import|import
-name|javax
+name|org
 operator|.
-name|jcr
+name|apache
 operator|.
-name|PropertyType
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|TestNameMapper
 import|;
 end_import
 
@@ -111,7 +67,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|TestNameMapper
+name|api
+operator|.
+name|Type
 import|;
 end_import
 
@@ -205,6 +163,54 @@ name|Test
 import|;
 end_import
 
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertEquals
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertFalse
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertTrue
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|fail
+import|;
+end_import
+
 begin_comment
 comment|/**  * Tests for {@link RestrictionDefinitionImpl}.  */
 end_comment
@@ -291,7 +297,7 @@ name|RestrictionDefinitionImpl
 argument_list|(
 name|name
 argument_list|,
-name|PropertyType
+name|Type
 operator|.
 name|NAME
 argument_list|,
@@ -350,7 +356,7 @@ parameter_list|()
 block|{
 name|assertEquals
 argument_list|(
-name|PropertyType
+name|Type
 operator|.
 name|NAME
 argument_list|,
@@ -391,7 +397,7 @@ name|RestrictionDefinitionImpl
 argument_list|(
 literal|null
 argument_list|,
-name|PropertyType
+name|Type
 operator|.
 name|BOOLEAN
 argument_list|,
@@ -421,7 +427,7 @@ name|RestrictionDefinitionImpl
 argument_list|(
 name|name
 argument_list|,
-name|PropertyType
+name|Type
 operator|.
 name|BOOLEAN
 argument_list|,
@@ -451,7 +457,7 @@ name|RestrictionDefinitionImpl
 argument_list|(
 name|name
 argument_list|,
-name|PropertyType
+name|Type
 operator|.
 name|UNDEFINED
 argument_list|,
@@ -492,7 +498,7 @@ name|RestrictionDefinitionImpl
 argument_list|(
 name|name
 argument_list|,
-name|PropertyType
+name|Type
 operator|.
 name|NAME
 argument_list|,
@@ -514,7 +520,7 @@ name|RestrictionDefinitionImpl
 argument_list|(
 name|name
 argument_list|,
-name|PropertyType
+name|Type
 operator|.
 name|NAME
 argument_list|,
@@ -577,7 +583,7 @@ name|RestrictionDefinitionImpl
 argument_list|(
 name|name
 argument_list|,
-name|PropertyType
+name|Type
 operator|.
 name|STRING
 argument_list|,
@@ -597,7 +603,7 @@ name|RestrictionDefinitionImpl
 argument_list|(
 literal|"otherName"
 argument_list|,
-name|PropertyType
+name|Type
 operator|.
 name|NAME
 argument_list|,
@@ -617,9 +623,9 @@ name|RestrictionDefinitionImpl
 argument_list|(
 name|name
 argument_list|,
-name|PropertyType
+name|Type
 operator|.
-name|NAME
+name|NAMES
 argument_list|,
 literal|false
 argument_list|,
@@ -663,12 +669,12 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|int
+name|Type
 name|getRequiredType
 parameter_list|()
 block|{
 return|return
-name|PropertyType
+name|Type
 operator|.
 name|NAME
 return|;
