@@ -4698,6 +4698,8 @@ index|]
 expr_stmt|;
 comment|// the '-' can be part of a name,
 comment|// for example in "fn:lower-case"
+comment|// the '.' can be part of a name,
+comment|// for example in "@offloading.status"
 if|if
 condition|(
 name|type
@@ -4714,6 +4716,13 @@ name|i
 index|]
 operator|!=
 literal|'-'
+operator|&&
+name|chars
+index|[
+name|i
+index|]
+operator|!=
+literal|'.'
 condition|)
 block|{
 break|break;
