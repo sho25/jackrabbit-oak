@@ -808,12 +808,7 @@ name|PARAM_IMPORT_BEHAVIOR
 argument_list|,
 name|ImportBehavior
 operator|.
-name|nameFromValue
-argument_list|(
-name|ImportBehavior
-operator|.
-name|IGNORE
-argument_list|)
+name|NAME_ABORT
 argument_list|)
 decl_stmt|;
 name|importBehavior
