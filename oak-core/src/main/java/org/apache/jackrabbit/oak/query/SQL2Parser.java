@@ -710,7 +710,7 @@ specifier|private
 name|boolean
 name|supportSQL1
 decl_stmt|;
-comment|/**      * Create a new parser. A parser can be re-used, but it is not thread safe.      *      */
+comment|/**      * Create a new parser. A parser can be re-used, but it is not thread safe.      *       * @param types the node with the node type information      */
 specifier|public
 name|SQL2Parser
 parameter_list|(

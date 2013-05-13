@@ -163,9 +163,6 @@ argument_list|>
 name|getMixinTypes
 parameter_list|()
 function_decl|;
-comment|/**      * Get the node type.      *       * @return the node type restriction or<code>null</code> if none is set.      */
-comment|//    @CheckForNull
-comment|//    String getNodeType();
 comment|/**      * Get the complete query statement. The statement should only be used for      * logging purposes.      *       * @return the query statement (possibly null)      */
 annotation|@
 name|Nullable
