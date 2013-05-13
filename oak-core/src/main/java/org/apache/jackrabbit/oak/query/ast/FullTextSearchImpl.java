@@ -211,6 +211,26 @@ name|PropertyValues
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|query
+operator|.
+name|QueryIndex
+operator|.
+name|FulltextQueryIndex
+import|;
+end_import
+
 begin_comment
 comment|/**  * A fulltext "contains(...)" condition.  */
 end_comment
@@ -513,6 +533,19 @@ name|boolean
 name|evaluate
 parameter_list|()
 block|{
+if|if
+condition|(
+name|selector
+operator|.
+name|index
+operator|instanceof
+name|FulltextQueryIndex
+condition|)
+block|{
+return|return
+literal|true
+return|;
+block|}
 name|StringBuilder
 name|buff
 init|=

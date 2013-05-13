@@ -84,6 +84,15 @@ name|String
 name|getIndexName
 parameter_list|()
 function_decl|;
+comment|/**      * A maker interface which means this index supports may support more than      * just the minimal fulltext query syntax. If this index is used, then the      * query engine does not verify the fulltext constraint(s) for the given      * selector.      */
+specifier|public
+interface|interface
+name|FulltextQueryIndex
+extends|extends
+name|QueryIndex
+block|{
+comment|// marker interface
+block|}
 comment|//    /**
 comment|//     * Return the possible index plans for the given filter and sort order.
 comment|//     * Please note this method is supposed to run quickly. That means it should
