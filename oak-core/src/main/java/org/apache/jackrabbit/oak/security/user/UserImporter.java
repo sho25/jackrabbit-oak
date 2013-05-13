@@ -808,7 +808,7 @@ name|PARAM_IMPORT_BEHAVIOR
 argument_list|,
 name|ImportBehavior
 operator|.
-name|NAME_ABORT
+name|NAME_IGNORE
 argument_list|)
 decl_stmt|;
 name|importBehavior
