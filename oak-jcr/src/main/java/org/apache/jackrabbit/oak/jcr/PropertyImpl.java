@@ -2020,11 +2020,30 @@ literal|0
 condition|)
 block|{
 comment|// retrieve the type from the property definition
+comment|// do not require exact match (see OAK-815)
 name|PropertyDefinition
 name|definition
 init|=
-name|internalGetDefinition
+name|getDefinitionProvider
 argument_list|()
+operator|.
+name|getDefinition
+argument_list|(
+name|dlg
+operator|.
+name|getParent
+argument_list|()
+operator|.
+name|getTree
+argument_list|()
+argument_list|,
+name|dlg
+operator|.
+name|getPropertyState
+argument_list|()
+argument_list|,
+literal|false
+argument_list|)
 decl_stmt|;
 if|if
 condition|(
