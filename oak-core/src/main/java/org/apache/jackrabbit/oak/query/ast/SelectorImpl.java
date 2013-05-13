@@ -1090,6 +1090,59 @@ name|f
 argument_list|)
 expr_stmt|;
 block|}
+comment|// rep:excerpt handling: create a (fake) restriction
+comment|// "rep:excerpt is not null" to let the index know that
+comment|// we will need the excerpt
+for|for
+control|(
+name|ColumnImpl
+name|c
+range|:
+name|query
+operator|.
+name|getColumns
+argument_list|()
+control|)
+block|{
+if|if
+condition|(
+name|c
+operator|.
+name|getSelector
+argument_list|()
+operator|==
+name|this
+condition|)
+block|{
+if|if
+condition|(
+name|c
+operator|.
+name|getColumnName
+argument_list|()
+operator|.
+name|equals
+argument_list|(
+literal|"rep:excerpt"
+argument_list|)
+condition|)
+block|{
+name|f
+operator|.
+name|restrictProperty
+argument_list|(
+literal|"rep:excerpt"
+argument_list|,
+name|Operator
+operator|.
+name|NOT_EQUAL
+argument_list|,
+literal|null
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+block|}
 comment|// all conditions can be pushed to the selectors -
 comment|// except in some cases to "outer joined" selectors,
 comment|// but the exceptions are handled in the condition
@@ -1343,10 +1396,10 @@ return|;
 block|}
 block|}
 block|}
+comment|// no matches found
 return|return
 literal|false
 return|;
-comment|// no matches found
 block|}
 comment|/**      * Get the current absolute path (including workspace name)      *      * @return the path      */
 specifier|public

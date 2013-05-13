@@ -203,6 +203,15 @@ name|selectorName
 argument_list|)
 expr_stmt|;
 block|}
+specifier|public
+name|SelectorImpl
+name|getSelector
+parameter_list|()
+block|{
+return|return
+name|selector
+return|;
+block|}
 block|}
 end_class
 
