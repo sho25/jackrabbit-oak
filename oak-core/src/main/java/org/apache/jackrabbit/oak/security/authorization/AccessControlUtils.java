@@ -155,28 +155,8 @@ name|PrincipalImpl
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
 begin_comment
-comment|/**  * AccessControlUtils... TODO  */
+comment|/**  * Access control specific utility methods  */
 end_comment
 
 begin_class
@@ -201,22 +181,11 @@ name|AccessControlUtils
 implements|implements
 name|AccessControlConstants
 block|{
-comment|/**      * logger instance      */
+comment|/**      *  Private constructor to avoid instantiation      */
 specifier|private
-specifier|static
-specifier|final
-name|Logger
-name|log
-init|=
-name|LoggerFactory
-operator|.
-name|getLogger
-argument_list|(
 name|AccessControlUtils
-operator|.
-name|class
-argument_list|)
-decl_stmt|;
+parameter_list|()
+block|{}
 specifier|public
 specifier|static
 name|void

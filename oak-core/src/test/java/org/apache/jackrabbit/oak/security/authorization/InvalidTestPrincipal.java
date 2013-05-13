@@ -29,28 +29,8 @@ name|Principal
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
 begin_comment
-comment|/**  * InvalidPrincipal... TODO  */
+comment|/**  * Test principal implementation which doesn't implement the OAK specific  * principal marker interface.  */
 end_comment
 
 begin_class

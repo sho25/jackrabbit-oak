@@ -454,7 +454,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * {@code AccessControlConfigurationImpl} ... TODO  */
+comment|/**  * Default implementation of the {@code AccessControlConfiguration}.  */
 end_comment
 
 begin_class

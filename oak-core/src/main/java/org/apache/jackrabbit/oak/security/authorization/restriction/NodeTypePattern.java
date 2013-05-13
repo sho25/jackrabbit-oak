@@ -156,7 +156,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * NodeTypePattern... TODO  */
+comment|/**  * Implementation of the {@link RestrictionPattern} interface that returns  * {@code true} if the primary type of the target tree (or the parent of a  * target property) is contained in the configured node type name. This allows  * to limit certain operations (e.g. adding or removing a child tree) to  * nodes with a specific node type.  */
 end_comment
 
 begin_class

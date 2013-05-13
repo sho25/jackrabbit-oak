@@ -62,7 +62,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * SystemSubject... TODO  */
+comment|/**  * Internal utility providing access to a system internal subject instance.  */
 end_comment
 
 begin_class
@@ -80,6 +80,11 @@ init|=
 name|createSystemSubject
 argument_list|()
 decl_stmt|;
+comment|/**      * Private constructor      */
+specifier|private
+name|SystemSubject
+parameter_list|()
+block|{}
 specifier|private
 specifier|static
 name|Subject

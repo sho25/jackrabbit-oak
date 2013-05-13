@@ -310,7 +310,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * UserConfigurationImpl... TODO  */
+comment|/**  * Default implementation of the {@link UserConfiguration}.  */
 end_comment
 
 begin_class

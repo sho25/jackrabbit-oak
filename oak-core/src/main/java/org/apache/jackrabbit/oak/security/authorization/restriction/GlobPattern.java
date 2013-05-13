@@ -379,7 +379,6 @@ name|PropertyState
 name|property
 parameter_list|)
 block|{
-comment|// TODO
 name|String
 name|path
 init|=

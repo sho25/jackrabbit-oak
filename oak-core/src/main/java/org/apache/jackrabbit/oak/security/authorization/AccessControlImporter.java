@@ -20,22 +20,6 @@ package|;
 end_package
 
 begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|Preconditions
-operator|.
-name|checkNotNull
-import|;
-end_import
-
-begin_import
 import|import
 name|java
 operator|.
@@ -451,8 +435,24 @@ name|LoggerFactory
 import|;
 end_import
 
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkNotNull
+import|;
+end_import
+
 begin_comment
-comment|/**  * AccessControlImporter... TODO  */
+comment|/**  * {@link ProtectedNodeImporter} implementation that handles access control lists,  * entries and restrictions.  */
 end_comment
 
 begin_class
@@ -1282,7 +1282,6 @@ argument_list|(
 name|principalName
 argument_list|)
 expr_stmt|;
-comment|// TODO: review handling of unknown principals
 if|if
 condition|(
 name|principal

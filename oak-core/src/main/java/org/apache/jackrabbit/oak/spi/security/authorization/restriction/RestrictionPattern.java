@@ -76,7 +76,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * RestrictionPattern... TODO  */
+comment|/**  * Interface used to verify if a given {@code restriction} applies to a given  * item or path.  */
 end_comment
 
 begin_interface
@@ -84,6 +84,7 @@ specifier|public
 interface|interface
 name|RestrictionPattern
 block|{
+comment|/**      * Returns {@code true} if the underlying restriction matches the specified      * tree or property state.      *      * @param tree The target tree or the parent of the target property.      * @param property The target property state or {@code null} if the target      * item is a tree.      * @return {@code true} if the underlying restriction matches the specified      * tree or property state; {@code false} otherwise.      */
 name|boolean
 name|matches
 parameter_list|(
@@ -98,6 +99,7 @@ name|PropertyState
 name|property
 parameter_list|)
 function_decl|;
+comment|/**      * Returns {@code true} if the underlying restriction matches the specified      * path.      *      * @param path The path of the target item.      * @return {@code true} if the underlying restriction matches the specified      * path; {@code false} otherwise.      */
 name|boolean
 name|matches
 parameter_list|(
@@ -107,6 +109,7 @@ name|String
 name|path
 parameter_list|)
 function_decl|;
+comment|/**      * Default implementation of the {@code RestrictionPattern} that always      * returns {@code true} and thus matches all items or paths.      */
 name|RestrictionPattern
 name|EMPTY
 init|=
