@@ -56,6 +56,26 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|memory
+operator|.
+name|EmptyNodeState
+operator|.
+name|MISSING_NODE
+import|;
+end_import
+
+begin_import
 import|import
 name|javax
 operator|.
@@ -286,6 +306,18 @@ name|isVersionable
 init|=
 literal|null
 decl_stmt|;
+specifier|private
+name|NodeState
+name|before
+decl_stmt|;
+specifier|private
+name|NodeState
+name|after
+decl_stmt|;
+specifier|private
+name|boolean
+name|wasReadOnly
+decl_stmt|;
 specifier|public
 name|VersionEditor
 parameter_list|(
@@ -380,6 +412,18 @@ parameter_list|)
 throws|throws
 name|CommitFailedException
 block|{
+name|this
+operator|.
+name|before
+operator|=
+name|before
+expr_stmt|;
+name|this
+operator|.
+name|after
+operator|=
+name|after
+expr_stmt|;
 if|if
 condition|(
 name|isVersionable
@@ -392,6 +436,39 @@ name|getOrCreateVersionHistory
 argument_list|(
 name|node
 argument_list|)
+expr_stmt|;
+block|}
+comment|// calculate wasReadOnly state
+if|if
+condition|(
+name|after
+operator|.
+name|exists
+argument_list|()
+operator|||
+name|isVersionable
+argument_list|()
+condition|)
+block|{
+comment|// deleted or versionable -> check if it was checked in
+name|wasReadOnly
+operator|=
+name|wasCheckedIn
+argument_list|()
+expr_stmt|;
+block|}
+else|else
+block|{
+comment|// otherwise inherit from parent
+name|wasReadOnly
+operator|=
+name|parent
+operator|!=
+literal|null
+operator|&&
+name|parent
+operator|.
+name|wasReadOnly
 expr_stmt|;
 block|}
 block|}
@@ -409,7 +486,7 @@ name|after
 parameter_list|)
 throws|throws
 name|CommitFailedException
-block|{      }
+block|{     }
 annotation|@
 name|Override
 specifier|public
@@ -423,8 +500,7 @@ block|{
 if|if
 condition|(
 operator|!
-name|isVersionable
-argument_list|()
+name|wasReadOnly
 condition|)
 block|{
 return|return;
@@ -459,12 +535,6 @@ condition|)
 block|{
 return|return;
 block|}
-if|if
-condition|(
-name|wasCheckedIn
-argument_list|()
-condition|)
-block|{
 name|throwCheckedIn
 argument_list|(
 literal|"Cannot add property "
@@ -478,7 +548,6 @@ literal|" on checked in node"
 argument_list|)
 expr_stmt|;
 block|}
-block|}
 annotation|@
 name|Override
 specifier|public
@@ -491,6 +560,8 @@ parameter_list|,
 name|PropertyState
 name|after
 parameter_list|)
+throws|throws
+name|CommitFailedException
 block|{
 if|if
 condition|(
@@ -613,8 +684,7 @@ block|}
 elseif|else
 if|if
 condition|(
-name|wasCheckedIn
-argument_list|()
+name|wasReadOnly
 condition|)
 block|{
 name|throwCheckedIn
@@ -643,9 +713,7 @@ parameter_list|)
 block|{
 if|if
 condition|(
-operator|!
-name|isVersionable
-argument_list|()
+name|wasReadOnly
 condition|)
 block|{
 if|if
@@ -655,9 +723,6 @@ name|isVersionProperty
 argument_list|(
 name|before
 argument_list|)
-operator|&&
-name|wasCheckedIn
-argument_list|()
 condition|)
 block|{
 name|throwProtected
@@ -686,7 +751,7 @@ name|childNodeChanged
 argument_list|(
 name|name
 argument_list|,
-name|EMPTY_NODE
+name|MISSING_NODE
 argument_list|,
 name|after
 argument_list|)
@@ -746,7 +811,7 @@ name|this
 argument_list|,
 name|vMgr
 argument_list|,
-name|EMPTY_NODE
+name|MISSING_NODE
 operator|.
 name|builder
 argument_list|()
@@ -767,7 +832,7 @@ literal|null
 condition|)
 block|{
 comment|// this is not 100% correct, because t.getPath() will
-comment|// not return the correct path for nodeAfter, but is
+comment|// not return the correct path for node after, but is
 comment|// sufficient to check if it is versionable
 name|Tree
 name|t
@@ -775,10 +840,7 @@ init|=
 operator|new
 name|ReadOnlyTree
 argument_list|(
-name|node
-operator|.
-name|getNodeState
-argument_list|()
+name|after
 argument_list|)
 decl_stmt|;
 name|isVersionable
@@ -823,25 +885,10 @@ name|boolean
 name|wasCheckedIn
 parameter_list|()
 block|{
-name|NodeState
-name|state
-init|=
-name|node
-operator|.
-name|getBaseState
-argument_list|()
-decl_stmt|;
-if|if
-condition|(
-name|state
-operator|!=
-literal|null
-condition|)
-block|{
 name|PropertyState
 name|prop
 init|=
-name|state
+name|before
 operator|.
 name|getProperty
 argument_list|(
@@ -868,7 +915,6 @@ operator|.
 name|BOOLEAN
 argument_list|)
 return|;
-block|}
 block|}
 comment|// new node or not versionable, check parent
 return|return
@@ -937,6 +983,7 @@ parameter_list|)
 throws|throws
 name|UncheckedRepositoryException
 block|{
+comment|// TODO: still necessary?
 throw|throw
 operator|new
 name|UncheckedRepositoryException

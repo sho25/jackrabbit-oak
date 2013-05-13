@@ -362,7 +362,7 @@ argument_list|(
 name|getVersionManagerDelegate
 argument_list|()
 operator|.
-name|getVersionHistory
+name|createVersionHistory
 argument_list|(
 name|dlg
 operator|.

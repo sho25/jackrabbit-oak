@@ -328,12 +328,39 @@ annotation|@
 name|Nonnull
 specifier|public
 name|VersionHistoryDelegate
+name|createVersionHistory
+parameter_list|(
+annotation|@
+name|Nonnull
+name|NodeDelegate
+name|versionHistory
+parameter_list|)
+throws|throws
+name|RepositoryException
+block|{
+return|return
+operator|new
+name|VersionHistoryDelegate
+argument_list|(
+name|sessionDelegate
+argument_list|,
+name|getTree
+argument_list|(
+name|versionHistory
+argument_list|)
+argument_list|)
+return|;
+block|}
+annotation|@
+name|Nonnull
+specifier|public
+name|VersionHistoryDelegate
 name|getVersionHistory
 parameter_list|(
 annotation|@
 name|Nonnull
 name|NodeDelegate
-name|nodeDelegate
+name|versionable
 parameter_list|)
 throws|throws
 name|RepositoryException
@@ -347,7 +374,7 @@ name|getVersionHistory
 argument_list|(
 name|getTree
 argument_list|(
-name|nodeDelegate
+name|versionable
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -366,7 +393,7 @@ literal|"Node does not"
 operator|+
 literal|" have a version history: "
 operator|+
-name|nodeDelegate
+name|versionable
 operator|.
 name|getPath
 argument_list|()
@@ -392,7 +419,7 @@ parameter_list|(
 annotation|@
 name|Nonnull
 name|NodeDelegate
-name|nodeDelegate
+name|versionable
 parameter_list|)
 throws|throws
 name|RepositoryException
@@ -406,7 +433,7 @@ name|getBaseVersion
 argument_list|(
 name|getTree
 argument_list|(
-name|nodeDelegate
+name|versionable
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -425,7 +452,7 @@ literal|"Node does not"
 operator|+
 literal|" have a base version: "
 operator|+
-name|nodeDelegate
+name|versionable
 operator|.
 name|getPath
 argument_list|()

@@ -67,6 +67,15 @@ name|CONSTRAINT
 init|=
 literal|"Constraint"
 decl_stmt|;
+comment|/**      * Type name for version violation errors.      */
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|VERSION
+init|=
+literal|"Version"
+decl_stmt|;
 comment|/** Serial version UID */
 specifier|private
 specifier|static
