@@ -107,8 +107,30 @@ name|Test
 import|;
 end_import
 
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|security
+operator|.
+name|privilege
+operator|.
+name|PrivilegeConstants
+operator|.
+name|JCR_NODE_TYPE_DEFINITION_MANAGEMENT
+import|;
+end_import
+
 begin_comment
-comment|/**  * Permission evaluation tests related to {@link #JCR_NODE_TYPE_DEFINITION_MANAGEMENT} privilege.  */
+comment|/**  * Permission evaluation tests related to  * {@link org.apache.jackrabbit.oak.spi.security.privilege.PrivilegeConstants#JCR_NODE_TYPE_DEFINITION_MANAGEMENT}  * privilege.  */
 end_comment
 
 begin_class
@@ -118,15 +140,6 @@ name|NodeTypeDefinitionManagementTest
 extends|extends
 name|AbstractEvaluationTest
 block|{
-comment|// TODO: replace with JCR privilege constant (JSR-333)
-specifier|private
-specifier|static
-specifier|final
-name|String
-name|JCR_NODE_TYPE_DEFINITION_MANAGEMENT
-init|=
-literal|"jcr:nodeTypeDefinitionManagement"
-decl_stmt|;
 annotation|@
 name|Override
 annotation|@
