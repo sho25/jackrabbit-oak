@@ -22,40 +22,6 @@ package|;
 end_package
 
 begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|Preconditions
-operator|.
-name|checkNotNull
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|api
-operator|.
-name|CommitFailedException
-operator|.
-name|ACCESS
-import|;
-end_import
-
-begin_import
 import|import
 name|javax
 operator|.
@@ -329,6 +295,40 @@ name|TreeUtil
 import|;
 end_import
 
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkNotNull
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|api
+operator|.
+name|CommitFailedException
+operator|.
+name|ACCESS
+import|;
+end_import
+
 begin_comment
 comment|/**  * Validator implementation that checks for sufficient permission for all  * write operations executed by a given content session.  */
 end_comment
@@ -339,7 +339,6 @@ name|PermissionValidator
 extends|extends
 name|DefaultValidator
 block|{
-comment|/* TODO      * - OAK-710: Renaming nodes or Move with same parent are reflected as remove+add -> needs special handling      */
 specifier|private
 specifier|final
 name|Tree
@@ -1216,8 +1215,12 @@ operator|&&
 operator|!
 name|provider
 operator|.
-name|jr2Permissions
-argument_list|()
+name|requiresJr2Permissions
+argument_list|(
+name|Permissions
+operator|.
+name|USER_MANAGEMENT
+argument_list|)
 condition|)
 block|{
 name|perm
@@ -1441,8 +1444,12 @@ operator|&&
 operator|!
 name|provider
 operator|.
-name|jr2Permissions
-argument_list|()
+name|requiresJr2Permissions
+argument_list|(
+name|Permissions
+operator|.
+name|USER_MANAGEMENT
+argument_list|)
 condition|)
 block|{
 name|perm
@@ -1492,9 +1499,7 @@ name|name
 argument_list|)
 return|;
 block|}
-comment|// TODO
 specifier|public
-specifier|static
 name|boolean
 name|noTraverse
 parameter_list|(
@@ -1504,6 +1509,30 @@ parameter_list|,
 name|long
 name|defaultPermission
 parameter_list|)
+block|{
+if|if
+condition|(
+name|defaultPermission
+operator|==
+name|Permissions
+operator|.
+name|REMOVE_NODE
+operator|&&
+name|provider
+operator|.
+name|requiresJr2Permissions
+argument_list|(
+name|Permissions
+operator|.
+name|REMOVE_NODE
+argument_list|)
+condition|)
+block|{
+return|return
+literal|false
+return|;
+block|}
+else|else
 block|{
 return|return
 name|permission
@@ -1530,6 +1559,7 @@ name|Permissions
 operator|.
 name|REMOVE_NODE
 return|;
+block|}
 block|}
 comment|// TODO
 specifier|private

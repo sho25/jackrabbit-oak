@@ -4140,7 +4140,7 @@ literal|"/property"
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// removing the child node succeed even if subtree cannot be removed.
+comment|// removing the child node succeed even if a property in the subtree cannot be removed.
 name|testSession
 operator|.
 name|getNode
