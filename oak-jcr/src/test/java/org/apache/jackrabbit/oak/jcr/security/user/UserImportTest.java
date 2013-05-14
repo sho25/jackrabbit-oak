@@ -325,6 +325,16 @@ name|org
 operator|.
 name|junit
 operator|.
+name|Ignore
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
 name|Test
 import|;
 end_import
@@ -840,6 +850,11 @@ block|}
 block|}
 block|}
 comment|/**      * @since OAK 1.0 : constraintviolation is no longer detected during import      * but only upon save.      */
+annotation|@
+name|Ignore
+argument_list|(
+literal|"OAK-821"
+argument_list|)
 annotation|@
 name|Test
 specifier|public
@@ -3155,7 +3170,6 @@ argument_list|,
 name|xml
 argument_list|)
 expr_stmt|;
-comment|//TODO different IgnoreBehavior needed?
 comment|// re-import should succeed if UUID-behavior is set accordingly
 name|doImport
 argument_list|(
@@ -3264,7 +3278,6 @@ operator|.
 name|save
 argument_list|()
 expr_stmt|;
-comment|//TODO different IgnoreBehavior needed?
 comment|// re-import should succeed if UUID-behavior is set accordingly
 name|doImport
 argument_list|(
