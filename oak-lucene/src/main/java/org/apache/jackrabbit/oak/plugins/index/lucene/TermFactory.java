@@ -98,6 +98,27 @@ name|path
 argument_list|)
 return|;
 block|}
+specifier|public
+specifier|static
+name|Term
+name|newFulltextTerm
+parameter_list|(
+name|String
+name|ft
+parameter_list|)
+block|{
+return|return
+operator|new
+name|Term
+argument_list|(
+name|FieldNames
+operator|.
+name|FULLTEXT
+argument_list|,
+name|ft
+argument_list|)
+return|;
+block|}
 block|}
 end_class
 

@@ -50,6 +50,20 @@ import|;
 end_import
 
 begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|lucene
+operator|.
+name|document
+operator|.
+name|TextField
+import|;
+end_import
+
+begin_import
 import|import static
 name|org
 operator|.
@@ -68,6 +82,28 @@ operator|.
 name|FieldNames
 operator|.
 name|PATH
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|index
+operator|.
+name|lucene
+operator|.
+name|FieldNames
+operator|.
+name|FULLTEXT
 import|;
 end_import
 
@@ -162,6 +198,27 @@ operator|new
 name|StringField
 argument_list|(
 name|name
+argument_list|,
+name|value
+argument_list|,
+name|NO
+argument_list|)
+return|;
+block|}
+specifier|public
+specifier|static
+name|Field
+name|newFulltextField
+parameter_list|(
+name|String
+name|value
+parameter_list|)
+block|{
+return|return
+operator|new
+name|TextField
+argument_list|(
+name|FULLTEXT
 argument_list|,
 name|value
 argument_list|,

@@ -75,6 +75,15 @@ name|PATH
 init|=
 literal|":path"
 decl_stmt|;
+comment|/**      * Name of the field that contains the fulltext index.      */
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|FULLTEXT
+init|=
+literal|":fulltext"
+decl_stmt|;
 comment|/**      * Used to select only the PATH field from the lucene documents      */
 specifier|public
 specifier|static
