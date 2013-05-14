@@ -2007,7 +2007,8 @@ name|RepositoryException
 block|{
 try|try
 block|{
-comment|// FIXME: checkIsLive is not part of the public root interface... execute the check using another method.
+comment|// Note: Root#checkIsLive is not part of the public root interface.
+comment|// therefore execute the check using another method.
 name|root
 operator|.
 name|getBlobFactory
