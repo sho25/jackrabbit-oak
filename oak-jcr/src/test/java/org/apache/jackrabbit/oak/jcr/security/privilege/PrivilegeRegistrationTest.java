@@ -326,7 +326,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * CustomPrivilegeTest...  *  * TODO: more tests for cyclic aggregation  */
+comment|/**  * Test privilege registration.  */
 end_comment
 
 begin_class
