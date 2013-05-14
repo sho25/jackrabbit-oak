@@ -427,10 +427,6 @@ name|LoggerFactory
 import|;
 end_import
 
-begin_comment
-comment|/**  * ACL... TODO  */
-end_comment
-
 begin_class
 specifier|abstract
 class|class
