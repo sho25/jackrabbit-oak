@@ -54,17 +54,11 @@ name|TYPE_AC
 init|=
 literal|4
 decl_stmt|;
-comment|// node type definition content
-name|int
-name|TYPE_NODE_TYPE
-init|=
-literal|8
-decl_stmt|;
 comment|// hidden trees
 name|int
 name|TYPE_HIDDEN
 init|=
-literal|16
+literal|8
 decl_stmt|;
 name|TreeTypeProvider
 name|EMPTY
