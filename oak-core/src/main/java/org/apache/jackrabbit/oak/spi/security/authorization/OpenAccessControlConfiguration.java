@@ -220,10 +220,7 @@ name|Override
 specifier|public
 name|RestrictionProvider
 name|getRestrictionProvider
-parameter_list|(
-name|NamePathMapper
-name|namePathMapper
-parameter_list|)
+parameter_list|()
 block|{
 throw|throw
 operator|new

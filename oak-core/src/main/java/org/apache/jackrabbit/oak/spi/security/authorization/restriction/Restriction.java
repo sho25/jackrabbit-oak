@@ -35,16 +35,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|jcr
-operator|.
-name|Value
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -75,13 +65,6 @@ annotation|@
 name|Nonnull
 name|PropertyState
 name|getProperty
-parameter_list|()
-function_decl|;
-comment|/**      * The JCR value of this restriction object contained in {@link #getProperty()}.      *      * @return The JCR value of this restriction.      */
-annotation|@
-name|Nonnull
-name|Value
-name|getValue
 parameter_list|()
 function_decl|;
 block|}

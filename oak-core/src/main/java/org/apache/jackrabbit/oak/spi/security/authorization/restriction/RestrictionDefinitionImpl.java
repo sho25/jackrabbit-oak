@@ -74,22 +74,6 @@ import|;
 end_import
 
 begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|namepath
-operator|.
-name|NamePathMapper
-import|;
-end_import
-
-begin_import
 import|import static
 name|com
 operator|.
@@ -106,7 +90,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * RestrictionDefinitionImpl... TODO  */
+comment|/**  * Default implementation of the {@link RestrictionDefinition} interface.  */
 end_comment
 
 begin_class
@@ -131,12 +115,7 @@ specifier|final
 name|boolean
 name|isMandatory
 decl_stmt|;
-specifier|private
-specifier|final
-name|NamePathMapper
-name|namePathMapper
-decl_stmt|;
-comment|/**      * Create a new instance.      *      * @param name           The oak name of the restriction definition.      * @param type           The required type of this definition. Any valid JCR      *                       {@link javax.jcr.PropertyType} except {@link javax.jcr.PropertyType#UNDEFINED}      *                       is allowed.      * @param isMandatory    A boolean indicating if the restriction is mandatory.      * @param namePathMapper The name path mapper used to calculate the JCR name.      */
+comment|/**      * Create a new instance.      *      * @param name           The oak name of the restriction definition.      * @param type           The required type of this definition. Any valid JCR      *                       {@link javax.jcr.PropertyType} except {@link javax.jcr.PropertyType#UNDEFINED}      *                       is allowed.      * @param isMandatory    A boolean indicating if the restriction is mandatory.      */
 specifier|public
 name|RestrictionDefinitionImpl
 parameter_list|(
@@ -150,11 +129,6 @@ name|type
 parameter_list|,
 name|boolean
 name|isMandatory
-parameter_list|,
-annotation|@
-name|Nonnull
-name|NamePathMapper
-name|namePathMapper
 parameter_list|)
 block|{
 name|this
@@ -198,24 +172,6 @@ name|isMandatory
 operator|=
 name|isMandatory
 expr_stmt|;
-name|this
-operator|.
-name|namePathMapper
-operator|=
-name|checkNotNull
-argument_list|(
-name|namePathMapper
-argument_list|)
-expr_stmt|;
-block|}
-specifier|protected
-name|NamePathMapper
-name|getNamePathMapper
-parameter_list|()
-block|{
-return|return
-name|namePathMapper
-return|;
 block|}
 comment|//----------------------------------------------< RestrictionDefinition>---
 annotation|@
@@ -229,25 +185,6 @@ parameter_list|()
 block|{
 return|return
 name|name
-return|;
-block|}
-annotation|@
-name|Nonnull
-annotation|@
-name|Override
-specifier|public
-name|String
-name|getJcrName
-parameter_list|()
-block|{
-return|return
-name|namePathMapper
-operator|.
-name|getJcrName
-argument_list|(
-name|getName
-argument_list|()
-argument_list|)
 return|;
 block|}
 annotation|@

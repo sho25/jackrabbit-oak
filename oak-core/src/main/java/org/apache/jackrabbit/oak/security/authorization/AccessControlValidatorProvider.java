@@ -438,11 +438,7 @@ init|=
 name|acConfig
 operator|.
 name|getRestrictionProvider
-argument_list|(
-name|NamePathMapper
-operator|.
-name|DEFAULT
-argument_list|)
+argument_list|()
 decl_stmt|;
 name|Map
 argument_list|<

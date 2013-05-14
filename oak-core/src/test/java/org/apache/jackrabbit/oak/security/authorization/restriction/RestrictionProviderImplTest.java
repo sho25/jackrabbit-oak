@@ -222,9 +222,7 @@ name|provider
 operator|=
 operator|new
 name|RestrictionProviderImpl
-argument_list|(
-name|namePathMapper
-argument_list|)
+argument_list|()
 expr_stmt|;
 block|}
 annotation|@

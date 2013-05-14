@@ -353,7 +353,7 @@ name|jcrPath
 parameter_list|,
 name|List
 argument_list|<
-name|JackrabbitAccessControlEntry
+name|ACE
 argument_list|>
 name|entries
 parameter_list|,
@@ -622,14 +622,14 @@ name|Exception
 block|{
 name|List
 argument_list|<
-name|JackrabbitAccessControlEntry
+name|ACE
 argument_list|>
 name|entries
 init|=
 operator|new
 name|ArrayList
 argument_list|<
-name|JackrabbitAccessControlEntry
+name|ACE
 argument_list|>
 argument_list|()
 decl_stmt|;
@@ -647,6 +647,8 @@ argument_list|,
 literal|true
 argument_list|,
 literal|null
+argument_list|,
+name|namePathMapper
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -669,6 +671,8 @@ argument_list|,
 literal|false
 argument_list|,
 literal|null
+argument_list|,
+name|namePathMapper
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -812,6 +816,8 @@ name|Restriction
 operator|>
 name|emptySet
 argument_list|()
+argument_list|,
+name|namePathMapper
 argument_list|)
 argument_list|)
 argument_list|)
@@ -877,6 +883,8 @@ argument_list|,
 literal|false
 argument_list|,
 literal|null
+argument_list|,
+name|namePathMapper
 argument_list|)
 decl_stmt|;
 name|ACE
@@ -892,6 +900,8 @@ argument_list|,
 literal|true
 argument_list|,
 literal|null
+argument_list|,
+name|namePathMapper
 argument_list|)
 decl_stmt|;
 name|ACE
@@ -910,6 +920,8 @@ argument_list|,
 literal|true
 argument_list|,
 literal|null
+argument_list|,
+name|namePathMapper
 argument_list|)
 decl_stmt|;
 name|JackrabbitAccessControlList
@@ -1142,6 +1154,8 @@ argument_list|,
 literal|false
 argument_list|,
 literal|null
+argument_list|,
+name|namePathMapper
 argument_list|)
 decl_stmt|;
 name|ACE
@@ -1157,6 +1171,8 @@ argument_list|,
 literal|true
 argument_list|,
 literal|null
+argument_list|,
+name|namePathMapper
 argument_list|)
 decl_stmt|;
 name|ACE
@@ -1175,6 +1191,8 @@ argument_list|,
 literal|true
 argument_list|,
 literal|null
+argument_list|,
+name|namePathMapper
 argument_list|)
 decl_stmt|;
 name|JackrabbitAccessControlList

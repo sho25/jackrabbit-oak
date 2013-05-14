@@ -193,12 +193,7 @@ annotation|@
 name|Nonnull
 name|RestrictionProvider
 name|getRestrictionProvider
-parameter_list|(
-annotation|@
-name|Nonnull
-name|NamePathMapper
-name|namePathMapper
-parameter_list|)
+parameter_list|()
 function_decl|;
 annotation|@
 name|Nonnull

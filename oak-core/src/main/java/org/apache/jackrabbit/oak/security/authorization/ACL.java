@@ -457,14 +457,14 @@ specifier|private
 specifier|final
 name|List
 argument_list|<
-name|JackrabbitAccessControlEntry
+name|ACE
 argument_list|>
 name|entries
 init|=
 operator|new
 name|ArrayList
 argument_list|<
-name|JackrabbitAccessControlEntry
+name|ACE
 argument_list|>
 argument_list|()
 decl_stmt|;
@@ -502,7 +502,7 @@ annotation|@
 name|Nullable
 name|List
 argument_list|<
-name|JackrabbitAccessControlEntry
+name|ACE
 argument_list|>
 name|entries
 parameter_list|,
@@ -560,7 +560,7 @@ name|Override
 specifier|public
 name|List
 argument_list|<
-name|JackrabbitAccessControlEntry
+name|ACE
 argument_list|>
 name|getEntries
 parameter_list|()
@@ -582,7 +582,7 @@ parameter_list|)
 throws|throws
 name|RepositoryException
 block|{
-name|JackrabbitAccessControlEntry
+name|ACE
 name|entry
 init|=
 name|checkACE
@@ -706,6 +706,20 @@ argument_list|()
 argument_list|)
 control|)
 block|{
+name|String
+name|jcrName
+init|=
+name|getNamePathMapper
+argument_list|()
+operator|.
+name|getJcrName
+argument_list|(
+name|def
+operator|.
+name|getName
+argument_list|()
+argument_list|)
+decl_stmt|;
 if|if
 condition|(
 name|def
@@ -723,10 +737,7 @@ name|restrictions
 operator|.
 name|containsKey
 argument_list|(
-name|def
-operator|.
-name|getJcrName
-argument_list|()
+name|jcrName
 argument_list|)
 operator|)
 condition|)
@@ -737,10 +748,7 @@ name|AccessControlException
 argument_list|(
 literal|"Mandatory restriction "
 operator|+
-name|def
-operator|.
-name|getJcrName
-argument_list|()
+name|jcrName
 operator|+
 literal|" is missing."
 argument_list|)
@@ -787,7 +795,7 @@ expr_stmt|;
 for|for
 control|(
 name|String
-name|name
+name|jcrName
 range|:
 name|restrictions
 operator|.
@@ -795,6 +803,17 @@ name|keySet
 argument_list|()
 control|)
 block|{
+name|String
+name|oakName
+init|=
+name|getNamePathMapper
+argument_list|()
+operator|.
+name|getOakName
+argument_list|(
+name|jcrName
+argument_list|)
+decl_stmt|;
 name|rs
 operator|.
 name|add
@@ -807,13 +826,13 @@ argument_list|(
 name|getOakPath
 argument_list|()
 argument_list|,
-name|name
+name|oakName
 argument_list|,
 name|restrictions
 operator|.
 name|get
 argument_list|(
-name|name
+name|oakName
 argument_list|)
 argument_list|)
 argument_list|)
@@ -833,6 +852,9 @@ argument_list|,
 name|isAllow
 argument_list|,
 name|rs
+argument_list|,
+name|getNamePathMapper
+argument_list|()
 argument_list|)
 decl_stmt|;
 if|if
@@ -881,7 +903,7 @@ parameter_list|)
 throws|throws
 name|RepositoryException
 block|{
-name|JackrabbitAccessControlEntry
+name|ACE
 name|src
 init|=
 name|checkACE
@@ -889,7 +911,7 @@ argument_list|(
 name|srcEntry
 argument_list|)
 decl_stmt|;
-name|JackrabbitAccessControlEntry
+name|ACE
 name|dest
 init|=
 operator|(
@@ -1123,7 +1145,7 @@ argument_list|()
 decl_stmt|;
 name|List
 argument_list|<
-name|JackrabbitAccessControlEntry
+name|ACE
 argument_list|>
 name|subList
 init|=
@@ -1140,7 +1162,7 @@ argument_list|,
 operator|new
 name|Predicate
 argument_list|<
-name|JackrabbitAccessControlEntry
+name|ACE
 argument_list|>
 argument_list|()
 block|{
@@ -1152,7 +1174,7 @@ name|apply
 parameter_list|(
 annotation|@
 name|Nullable
-name|JackrabbitAccessControlEntry
+name|ACE
 name|ace
 parameter_list|)
 block|{
@@ -1475,6 +1497,9 @@ argument_list|,
 name|existing
 operator|.
 name|getRestrictions
+argument_list|()
+argument_list|,
+name|getNamePathMapper
 argument_list|()
 argument_list|)
 return|;

@@ -470,6 +470,8 @@ argument_list|,
 name|isAllow
 argument_list|,
 literal|null
+argument_list|,
+name|namePathMapper
 argument_list|)
 return|;
 block|}

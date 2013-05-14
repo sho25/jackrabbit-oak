@@ -65,13 +65,6 @@ name|String
 name|getName
 parameter_list|()
 function_decl|;
-comment|/**      * The jcr name of this restriction definition.      *      * @return The jcr name.      */
-annotation|@
-name|Nonnull
-name|String
-name|getJcrName
-parameter_list|()
-function_decl|;
 comment|/**      * The required type as defined by this definition.      *      * @return The required type which must be a valid {@link javax.jcr.PropertyType}.      */
 name|Type
 name|getRequiredType

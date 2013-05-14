@@ -762,7 +762,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Test abstract {@code ACL} implementation.  *<p/>  * TODO: test restrictions  */
+comment|/**  * Test abstract {@code ACL} implementation.  */
 end_comment
 
 begin_class
@@ -869,7 +869,7 @@ annotation|@
 name|Nonnull
 name|List
 argument_list|<
-name|JackrabbitAccessControlEntry
+name|ACE
 argument_list|>
 name|entries
 parameter_list|,
@@ -1500,6 +1500,8 @@ argument_list|,
 literal|true
 argument_list|,
 literal|null
+argument_list|,
+name|namePathMapper
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1587,6 +1589,8 @@ argument_list|)
 expr_stmt|;
 name|List
 argument_list|<
+name|?
+extends|extends
 name|JackrabbitAccessControlEntry
 argument_list|>
 name|entries
@@ -1627,6 +1631,8 @@ argument_list|)
 expr_stmt|;
 name|List
 argument_list|<
+name|?
+extends|extends
 name|JackrabbitAccessControlEntry
 argument_list|>
 name|entriesAfter
@@ -1938,6 +1944,8 @@ name|Restriction
 operator|>
 name|emptySet
 argument_list|()
+argument_list|,
+name|namePathMapper
 argument_list|)
 decl_stmt|;
 try|try
@@ -3661,6 +3669,8 @@ argument_list|)
 expr_stmt|;
 name|List
 argument_list|<
+name|?
+extends|extends
 name|JackrabbitAccessControlEntry
 argument_list|>
 name|entries
@@ -3809,6 +3819,8 @@ argument_list|)
 expr_stmt|;
 name|List
 argument_list|<
+name|?
+extends|extends
 name|JackrabbitAccessControlEntry
 argument_list|>
 name|entries
@@ -4592,8 +4604,6 @@ argument_list|,
 name|type
 argument_list|,
 name|isMandatory
-argument_list|,
-name|namePathMapper
 argument_list|)
 expr_stmt|;
 block|}
@@ -4639,7 +4649,7 @@ parameter_list|,
 annotation|@
 name|Nonnull
 name|String
-name|jcrName
+name|oakName
 parameter_list|,
 annotation|@
 name|Nonnull
@@ -4654,12 +4664,12 @@ condition|(
 operator|!
 name|supported
 operator|.
-name|getJcrName
+name|getName
 argument_list|()
 operator|.
 name|equals
 argument_list|(
-name|jcrName
+name|oakName
 argument_list|)
 condition|)
 block|{
@@ -4702,7 +4712,7 @@ name|namePathMapper
 operator|.
 name|getOakName
 argument_list|(
-name|jcrName
+name|oakName
 argument_list|)
 argument_list|,
 name|value
@@ -4726,8 +4736,6 @@ name|supported
 operator|.
 name|isMandatory
 argument_list|()
-argument_list|,
-name|namePathMapper
 argument_list|)
 return|;
 block|}
@@ -4747,7 +4755,7 @@ parameter_list|,
 annotation|@
 name|Nonnull
 name|String
-name|jcrName
+name|oakName
 parameter_list|,
 annotation|@
 name|Nonnull
@@ -4763,12 +4771,12 @@ condition|(
 operator|!
 name|supported
 operator|.
-name|getJcrName
+name|getName
 argument_list|()
 operator|.
 name|equals
 argument_list|(
-name|jcrName
+name|oakName
 argument_list|)
 condition|)
 block|{
@@ -4820,7 +4828,7 @@ name|namePathMapper
 operator|.
 name|getOakName
 argument_list|(
-name|jcrName
+name|oakName
 argument_list|)
 argument_list|,
 name|Arrays
@@ -4846,8 +4854,6 @@ name|supported
 operator|.
 name|isMandatory
 argument_list|()
-argument_list|,
-name|namePathMapper
 argument_list|)
 return|;
 block|}

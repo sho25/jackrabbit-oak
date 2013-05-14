@@ -219,10 +219,7 @@ name|getAccessControlConfiguration
 argument_list|()
 operator|.
 name|getRestrictionProvider
-argument_list|(
-name|getNamePathMapper
 argument_list|()
-argument_list|)
 expr_stmt|;
 block|}
 return|return
