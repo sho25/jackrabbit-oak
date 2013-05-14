@@ -121,10 +121,6 @@ name|TreeUtil
 import|;
 end_import
 
-begin_comment
-comment|/**  * PrivilegeContext... TODO  */
-end_comment
-
 begin_class
 specifier|final
 class|class

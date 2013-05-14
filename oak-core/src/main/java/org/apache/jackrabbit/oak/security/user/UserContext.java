@@ -135,10 +135,6 @@ name|Text
 import|;
 end_import
 
-begin_comment
-comment|/**  * UserContext... TODO  */
-end_comment
-
 begin_class
 specifier|final
 class|class

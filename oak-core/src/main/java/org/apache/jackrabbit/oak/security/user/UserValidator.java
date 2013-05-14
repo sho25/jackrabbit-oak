@@ -897,7 +897,6 @@ parameter_list|)
 throws|throws
 name|CommitFailedException
 block|{
-comment|// TODO: anything to do here?
 return|return
 operator|new
 name|UserValidator
