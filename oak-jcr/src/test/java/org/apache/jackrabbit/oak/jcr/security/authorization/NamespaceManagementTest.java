@@ -97,6 +97,26 @@ begin_import
 import|import
 name|org
 operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|security
+operator|.
+name|privilege
+operator|.
+name|PrivilegeConstants
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|junit
 operator|.
 name|After
@@ -124,7 +144,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Permission evaluation tests related to {@link #JCR_NAMESPACE_MANAGEMENT} privilege.  */
+comment|/**  * Permission evaluation tests related to {@link PrivilegeConstants#JCR_NAMESPACE_MANAGEMENT} privilege.  */
 end_comment
 
 begin_class
@@ -134,15 +154,6 @@ name|NamespaceManagementTest
 extends|extends
 name|AbstractEvaluationTest
 block|{
-comment|// TODO: replace with JCR privilege constant (JSR-333)
-specifier|private
-specifier|static
-specifier|final
-name|String
-name|JCR_NAMESPACE_MANAGEMENT
-init|=
-literal|"jcr:namespaceManagement"
-decl_stmt|;
 annotation|@
 name|Override
 annotation|@
@@ -161,6 +172,8 @@ argument_list|()
 expr_stmt|;
 name|assertHasRepoPrivilege
 argument_list|(
+name|PrivilegeConstants
+operator|.
 name|JCR_NAMESPACE_MANAGEMENT
 argument_list|,
 literal|false
@@ -409,6 +422,8 @@ name|modify
 argument_list|(
 literal|null
 argument_list|,
+name|PrivilegeConstants
+operator|.
 name|JCR_NAMESPACE_MANAGEMENT
 operator|.
 name|toString
@@ -419,6 +434,8 @@ argument_list|)
 expr_stmt|;
 name|assertHasRepoPrivilege
 argument_list|(
+name|PrivilegeConstants
+operator|.
 name|JCR_NAMESPACE_MANAGEMENT
 argument_list|,
 literal|true
@@ -428,6 +445,8 @@ name|modify
 argument_list|(
 literal|null
 argument_list|,
+name|PrivilegeConstants
+operator|.
 name|JCR_NAMESPACE_MANAGEMENT
 operator|.
 name|toString
@@ -438,6 +457,8 @@ argument_list|)
 expr_stmt|;
 name|assertHasRepoPrivilege
 argument_list|(
+name|PrivilegeConstants
+operator|.
 name|JCR_NAMESPACE_MANAGEMENT
 argument_list|,
 literal|false
@@ -457,6 +478,8 @@ name|modify
 argument_list|(
 literal|null
 argument_list|,
+name|PrivilegeConstants
+operator|.
 name|JCR_NAMESPACE_MANAGEMENT
 operator|.
 name|toString
@@ -500,6 +523,8 @@ name|modify
 argument_list|(
 literal|null
 argument_list|,
+name|PrivilegeConstants
+operator|.
 name|JCR_NAMESPACE_MANAGEMENT
 operator|.
 name|toString

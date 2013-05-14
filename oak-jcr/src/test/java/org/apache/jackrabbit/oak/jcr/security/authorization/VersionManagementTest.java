@@ -37,7 +37,27 @@ name|javax
 operator|.
 name|jcr
 operator|.
+name|ItemNotFoundException
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|jcr
+operator|.
 name|Node
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|jcr
+operator|.
+name|PathNotFoundException
 import|;
 end_import
 
@@ -60,6 +80,18 @@ operator|.
 name|security
 operator|.
 name|AccessControlEntry
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|jcr
+operator|.
+name|security
+operator|.
+name|AccessControlList
 import|;
 end_import
 
@@ -119,40 +151,6 @@ name|apache
 operator|.
 name|jackrabbit
 operator|.
-name|api
-operator|.
-name|security
-operator|.
-name|JackrabbitAccessControlList
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|commons
-operator|.
-name|jackrabbit
-operator|.
-name|authorization
-operator|.
-name|AccessControlUtils
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
 name|test
 operator|.
 name|NotExecutableException
@@ -194,11 +192,6 @@ comment|/**  * Test access control evaluation for version operations.  */
 end_comment
 
 begin_class
-annotation|@
-name|Ignore
-argument_list|(
-literal|"OAK-168"
-argument_list|)
 specifier|public
 class|class
 name|VersionManagementTest
@@ -432,12 +425,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-annotation|@
-name|Ignore
-argument_list|(
-literal|"OAK-168"
-argument_list|)
-comment|// FIXME: waiting for basic version mgt
 annotation|@
 name|Test
 specifier|public
@@ -889,6 +876,13 @@ operator|.
 name|checkout
 argument_list|()
 expr_stmt|;
+name|testSession
+operator|.
+name|refresh
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
 name|assertFalse
 argument_list|(
 name|testAcMgr
@@ -904,13 +898,16 @@ name|versionPrivileges
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|AccessControlList
+name|acl
+init|=
 name|allow
 argument_list|(
 name|SYSTEM
 argument_list|,
 name|versionPrivileges
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 try|try
 block|{
 name|Node
@@ -956,24 +953,12 @@ block|}
 finally|finally
 block|{
 comment|// revert privilege modification (manually remove the ACE added)
-name|JackrabbitAccessControlList
-name|systemAcl
-init|=
-name|AccessControlUtils
-operator|.
-name|getAccessControlList
-argument_list|(
-name|acMgr
-argument_list|,
-name|SYSTEM
-argument_list|)
-decl_stmt|;
 for|for
 control|(
 name|AccessControlEntry
 name|entry
 range|:
-name|systemAcl
+name|acl
 operator|.
 name|getAccessControlEntries
 argument_list|()
@@ -995,7 +980,7 @@ argument_list|()
 argument_list|)
 condition|)
 block|{
-name|systemAcl
+name|acl
 operator|.
 name|removeAccessControlEntry
 argument_list|(
@@ -1010,7 +995,7 @@ name|setPolicy
 argument_list|(
 name|SYSTEM
 argument_list|,
-name|systemAcl
+name|acl
 argument_list|)
 expr_stmt|;
 name|superuser
@@ -1021,12 +1006,6 @@ expr_stmt|;
 block|}
 block|}
 comment|/**      * @since oak      */
-annotation|@
-name|Ignore
-argument_list|(
-literal|"OAK-168"
-argument_list|)
-comment|// FIXME: waiting for basic version mgt
 annotation|@
 name|Test
 specifier|public
@@ -1060,7 +1039,7 @@ decl_stmt|;
 name|VersionHistory
 name|vh
 init|=
-name|v
+name|n
 operator|.
 name|getVersionHistory
 argument_list|()
@@ -1083,6 +1062,13 @@ operator|.
 name|checkout
 argument_list|()
 expr_stmt|;
+name|testSession
+operator|.
+name|refresh
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
 name|assertFalse
 argument_list|(
 name|testAcMgr
@@ -1098,6 +1084,9 @@ name|versionPrivileges
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|AccessControlList
+name|acl
+init|=
 name|deny
 argument_list|(
 name|SYSTEM
@@ -1109,7 +1098,7 @@ operator|.
 name|JCR_READ
 argument_list|)
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 try|try
 block|{
 comment|// version information must still be accessible
@@ -1155,24 +1144,12 @@ expr_stmt|;
 block|}
 finally|finally
 block|{
-name|JackrabbitAccessControlList
-name|systemAcl
-init|=
-name|AccessControlUtils
-operator|.
-name|getAccessControlList
-argument_list|(
-name|acMgr
-argument_list|,
-name|SYSTEM
-argument_list|)
-decl_stmt|;
 for|for
 control|(
 name|AccessControlEntry
 name|entry
 range|:
-name|systemAcl
+name|acl
 operator|.
 name|getAccessControlEntries
 argument_list|()
@@ -1194,7 +1171,7 @@ argument_list|()
 argument_list|)
 condition|)
 block|{
-name|systemAcl
+name|acl
 operator|.
 name|removeAccessControlEntry
 argument_list|(
@@ -1207,9 +1184,9 @@ name|acMgr
 operator|.
 name|setPolicy
 argument_list|(
-literal|"/jcr:system"
+name|SYSTEM
 argument_list|,
-name|systemAcl
+name|acl
 argument_list|)
 expr_stmt|;
 name|superuser
@@ -1220,12 +1197,6 @@ expr_stmt|;
 block|}
 block|}
 comment|/**      * @since oak (DIFF: jr required jcr:versionManagement privilege on the version store)      */
-annotation|@
-name|Ignore
-argument_list|(
-literal|"OAK-168"
-argument_list|)
-comment|// FIXME: waiting for basic version mgt
 annotation|@
 name|Test
 specifier|public
@@ -1364,12 +1335,6 @@ expr_stmt|;
 block|}
 comment|/**      * @since oak (DIFF: jr required jcr:versionManagement privilege on the version store)      */
 annotation|@
-name|Ignore
-argument_list|(
-literal|"OAK-168"
-argument_list|)
-comment|// FIXME: waiting for basic version mgt
-annotation|@
 name|Test
 specifier|public
 name|void
@@ -1501,7 +1466,7 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|AccessDeniedException
+name|PathNotFoundException
 name|e
 parameter_list|)
 block|{
@@ -1530,7 +1495,7 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|AccessDeniedException
+name|ItemNotFoundException
 name|e
 parameter_list|)
 block|{
@@ -1559,7 +1524,7 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|AccessDeniedException
+name|ItemNotFoundException
 name|e
 parameter_list|)
 block|{
