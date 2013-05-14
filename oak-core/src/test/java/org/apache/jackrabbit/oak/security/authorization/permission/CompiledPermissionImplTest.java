@@ -705,10 +705,6 @@ name|assertTrue
 import|;
 end_import
 
-begin_comment
-comment|/**  * CompiledPermissionImplTest... TODO  */
-end_comment
-
 begin_class
 specifier|public
 class|class

@@ -762,7 +762,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Test abstract {@code ACL} implementation.  *<p/>  * TODO: test restrictions  * TODO: add test with multiple entries  */
+comment|/**  * Test abstract {@code ACL} implementation.  *<p/>  * TODO: test restrictions  */
 end_comment
 
 begin_class
