@@ -730,7 +730,6 @@ argument_list|(
 name|name
 argument_list|)
 decl_stmt|;
-comment|// TODO
 return|return
 name|nextValidator
 argument_list|(
@@ -776,7 +775,6 @@ name|child
 argument_list|)
 condition|)
 block|{
-comment|// TODO: check again
 throw|throw
 operator|new
 name|CommitFailedException
@@ -1359,7 +1357,7 @@ name|name
 argument_list|)
 condition|)
 block|{
-comment|// TODO OAK-796: jcr:uuid is never set using a method on JCR API -> omit permission check
+comment|// TODO: OAK-796 (jcr:uuid is never set using a method on JCR API -> omit permission check)
 name|perm
 operator|=
 name|Permissions
@@ -1561,7 +1559,6 @@ name|REMOVE_NODE
 return|;
 block|}
 block|}
-comment|// TODO
 specifier|private
 name|boolean
 name|isVersionstorageTree
@@ -1592,7 +1589,6 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-comment|// TODO
 specifier|private
 name|Tree
 name|getVersionHistoryTree
@@ -1660,7 +1656,6 @@ expr_stmt|;
 block|}
 else|else
 block|{
-comment|// TODO:
 throw|throw
 operator|new
 name|CommitFailedException
