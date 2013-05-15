@@ -83,6 +83,14 @@ specifier|final
 class|class
 name|TypeCodes
 block|{
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|EMPTY_ARRAY
+init|=
+literal|"[0]:"
+decl_stmt|;
 specifier|private
 specifier|static
 specifier|final
