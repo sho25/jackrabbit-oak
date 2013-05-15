@@ -46,7 +46,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * UserConstants...  */
+comment|/**  * User management related constants.  */
 end_comment
 
 begin_interface
