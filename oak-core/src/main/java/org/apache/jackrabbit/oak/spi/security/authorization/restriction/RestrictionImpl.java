@@ -203,6 +203,8 @@ name|property
 operator|.
 name|equals
 argument_list|(
+name|other
+operator|.
 name|property
 argument_list|)
 return|;

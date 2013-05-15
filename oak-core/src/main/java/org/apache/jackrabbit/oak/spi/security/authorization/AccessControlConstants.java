@@ -13,6 +13,8 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
+name|spi
+operator|.
 name|security
 operator|.
 name|authorization
@@ -132,7 +134,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Constants for this access control management implementation.  */
+comment|/**  * Constants for the default access control management implementation and  * and for built-in access control related node types.  */
 end_comment
 
 begin_interface
@@ -170,7 +172,7 @@ name|REP_NODE_PATH
 init|=
 literal|"rep:nodePath"
 decl_stmt|;
-comment|/**      * @since OAK 1.0      */
+comment|/**      * Name of the optional access control restriction by node type name.      * The corresponding restriction type is {@link org.apache.jackrabbit.oak.api.Type#NAMES}.      *      * @since OAK 1.0      */
 name|String
 name|REP_NT_NAMES
 init|=
