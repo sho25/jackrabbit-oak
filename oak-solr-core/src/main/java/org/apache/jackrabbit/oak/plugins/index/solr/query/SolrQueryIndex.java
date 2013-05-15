@@ -1178,6 +1178,7 @@ name|solrQuery
 return|;
 block|}
 specifier|private
+specifier|static
 name|String
 name|createRangeQuery
 parameter_list|(
@@ -1252,6 +1253,7 @@ argument_list|()
 return|;
 block|}
 specifier|private
+specifier|static
 name|String
 name|purgePath
 parameter_list|(
@@ -1274,6 +1276,7 @@ return|;
 block|}
 comment|// partially borrowed from SolrPluginUtils#partialEscape
 specifier|private
+specifier|static
 name|CharSequence
 name|partialEscape
 parameter_list|(
@@ -1601,8 +1604,8 @@ name|String
 name|columnName
 parameter_list|)
 block|{
-name|String
-name|s
+name|Object
+name|o
 init|=
 name|doc
 operator|.
@@ -1610,16 +1613,22 @@ name|getFieldValue
 argument_list|(
 name|columnName
 argument_list|)
-operator|.
-name|toString
-argument_list|()
 decl_stmt|;
 return|return
+name|o
+operator|==
+literal|null
+condition|?
+literal|null
+else|:
 name|PropertyValues
 operator|.
 name|newString
 argument_list|(
-name|s
+name|o
+operator|.
+name|toString
+argument_list|()
 argument_list|)
 return|;
 block|}
