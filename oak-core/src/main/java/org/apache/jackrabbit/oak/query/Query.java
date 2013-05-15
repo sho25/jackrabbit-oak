@@ -743,6 +743,15 @@ name|JCR_SCORE
 init|=
 literal|"jcr:score"
 decl_stmt|;
+comment|/**      * The "rep:excerpt" pseudo-property.      */
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|REP_EXCERPT
+init|=
+literal|"rep:excerpt"
+decl_stmt|;
 specifier|private
 specifier|static
 specifier|final
