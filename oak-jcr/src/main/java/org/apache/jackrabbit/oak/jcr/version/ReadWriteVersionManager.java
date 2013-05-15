@@ -691,16 +691,8 @@ name|CommitFailedException
 operator|.
 name|VERSION
 argument_list|)
-operator|&&
-name|exception
-operator|.
-name|getCode
-argument_list|()
-operator|==
-literal|1
 condition|)
 block|{
-comment|// FIXME: hardcoded exception code
 return|return
 operator|new
 name|VersionException

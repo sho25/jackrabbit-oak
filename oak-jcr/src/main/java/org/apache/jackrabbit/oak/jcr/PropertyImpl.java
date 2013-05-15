@@ -429,20 +429,14 @@ argument_list|(
 operator|new
 name|ItemReadOperation
 argument_list|<
-name|NodeImpl
-argument_list|<
-name|?
-argument_list|>
+name|Node
 argument_list|>
 argument_list|()
 block|{
 annotation|@
 name|Override
 specifier|public
-name|NodeImpl
-argument_list|<
-name|?
-argument_list|>
+name|Node
 name|perform
 parameter_list|()
 throws|throws
@@ -472,29 +466,22 @@ block|}
 else|else
 block|{
 return|return
-operator|new
-name|NodeImpl
-argument_list|<
-name|NodeDelegate
-argument_list|>
+name|sessionContext
+operator|.
+name|createNodeOrNull
 argument_list|(
 name|dlg
 operator|.
 name|getParent
 argument_list|()
-argument_list|,
-name|sessionContext
 argument_list|)
 return|;
 block|}
 block|}
 block|}
-block|)
-function|;
+argument_list|)
+return|;
 block|}
-end_class
-
-begin_function
 annotation|@
 name|Override
 specifier|public
@@ -534,9 +521,6 @@ block|}
 argument_list|)
 return|;
 block|}
-end_function
-
-begin_function
 annotation|@
 name|Override
 specifier|public
@@ -576,9 +560,6 @@ block|}
 argument_list|)
 return|;
 block|}
-end_function
-
-begin_function
 annotation|@
 name|Override
 specifier|public
@@ -619,9 +600,6 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
-end_function
-
-begin_function
 annotation|@
 name|Override
 specifier|public
@@ -645,13 +623,7 @@ name|this
 argument_list|)
 expr_stmt|;
 block|}
-end_function
-
-begin_comment
 comment|//-----------------------------------------------------------< Property>---
-end_comment
-
-begin_function
 annotation|@
 name|Override
 specifier|public
@@ -684,9 +656,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-end_function
-
-begin_function
 annotation|@
 name|Override
 specifier|public
@@ -728,9 +697,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-end_function
-
-begin_function
 annotation|@
 name|Override
 specifier|public
@@ -769,9 +735,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-end_function
-
-begin_function
 annotation|@
 name|Override
 specifier|public
@@ -825,9 +788,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-end_function
-
-begin_function
 annotation|@
 name|Override
 specifier|public
@@ -866,9 +826,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-end_function
-
-begin_function
 annotation|@
 name|Override
 specifier|public
@@ -907,9 +864,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-end_function
-
-begin_function
 annotation|@
 name|Override
 specifier|public
@@ -934,9 +888,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-end_function
-
-begin_function
 annotation|@
 name|Override
 specifier|public
@@ -961,9 +912,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-end_function
-
-begin_function
 annotation|@
 name|Override
 specifier|public
@@ -1002,9 +950,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-end_function
-
-begin_function
 annotation|@
 name|Override
 specifier|public
@@ -1043,9 +988,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-end_function
-
-begin_function
 annotation|@
 name|Override
 specifier|public
@@ -1070,9 +1012,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-end_function
-
-begin_function
 annotation|@
 name|Override
 specifier|public
@@ -1111,9 +1050,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-end_function
-
-begin_function
 annotation|@
 name|Override
 annotation|@
@@ -1162,9 +1098,6 @@ block|}
 argument_list|)
 return|;
 block|}
-end_function
-
-begin_function
 annotation|@
 name|Override
 annotation|@
@@ -1225,9 +1158,6 @@ name|NO_VALUES
 argument_list|)
 return|;
 block|}
-end_function
-
-begin_function
 annotation|@
 name|Override
 annotation|@
@@ -1247,9 +1177,6 @@ name|getString
 argument_list|()
 return|;
 block|}
-end_function
-
-begin_function
 annotation|@
 name|SuppressWarnings
 argument_list|(
@@ -1274,9 +1201,6 @@ name|getStream
 argument_list|()
 return|;
 block|}
-end_function
-
-begin_function
 annotation|@
 name|Override
 annotation|@
@@ -1296,9 +1220,6 @@ name|getBinary
 argument_list|()
 return|;
 block|}
-end_function
-
-begin_function
 annotation|@
 name|Override
 specifier|public
@@ -1316,9 +1237,6 @@ name|getLong
 argument_list|()
 return|;
 block|}
-end_function
-
-begin_function
 annotation|@
 name|Override
 specifier|public
@@ -1336,9 +1254,6 @@ name|getDouble
 argument_list|()
 return|;
 block|}
-end_function
-
-begin_function
 annotation|@
 name|Override
 annotation|@
@@ -1358,9 +1273,6 @@ name|getDecimal
 argument_list|()
 return|;
 block|}
-end_function
-
-begin_function
 annotation|@
 name|Override
 annotation|@
@@ -1380,9 +1292,6 @@ name|getDate
 argument_list|()
 return|;
 block|}
-end_function
-
-begin_function
 annotation|@
 name|Override
 specifier|public
@@ -1400,9 +1309,6 @@ name|getBoolean
 argument_list|()
 return|;
 block|}
-end_function
-
-begin_function
 annotation|@
 name|Override
 annotation|@
@@ -1721,9 +1627,6 @@ block|}
 argument_list|)
 return|;
 block|}
-end_function
-
-begin_function
 annotation|@
 name|Override
 annotation|@
@@ -1835,9 +1738,6 @@ block|}
 argument_list|)
 return|;
 block|}
-end_function
-
-begin_function
 annotation|@
 name|Override
 specifier|public
@@ -1855,9 +1755,6 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-end_function
-
-begin_function
 annotation|@
 name|Override
 annotation|@
@@ -1924,9 +1821,6 @@ return|return
 name|lengths
 return|;
 block|}
-end_function
-
-begin_function
 annotation|@
 name|Override
 annotation|@
@@ -1966,9 +1860,6 @@ block|}
 argument_list|)
 return|;
 block|}
-end_function
-
-begin_function
 annotation|@
 name|Override
 specifier|public
@@ -2014,9 +1905,6 @@ block|}
 argument_list|)
 return|;
 block|}
-end_function
-
-begin_function
 annotation|@
 name|Override
 specifier|public
@@ -2059,13 +1947,7 @@ block|}
 argument_list|)
 return|;
 block|}
-end_function
-
-begin_comment
 comment|//------------------------------------------------------------< internal>---
-end_comment
-
-begin_function
 annotation|@
 name|Override
 specifier|protected
@@ -2099,13 +1981,7 @@ literal|true
 argument_list|)
 return|;
 block|}
-end_function
-
-begin_comment
 comment|/**      * Return the length of the specified JCR value object.      *      * @param value The value.      * @return The length of the given value.      * @throws RepositoryException If an error occurs.      */
-end_comment
-
-begin_function
 specifier|private
 specifier|static
 name|long
@@ -2152,9 +2028,6 @@ argument_list|()
 return|;
 block|}
 block|}
-end_function
-
-begin_function
 specifier|private
 name|void
 name|internalRemove
@@ -2193,9 +2066,6 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
-end_function
-
-begin_function
 specifier|private
 name|void
 name|internalSetValue
@@ -2269,9 +2139,6 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
-end_function
-
-begin_function
 specifier|private
 name|void
 name|internalSetValues
@@ -2352,8 +2219,8 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
-end_function
+block|}
+end_class
 
-unit|}
 end_unit
 

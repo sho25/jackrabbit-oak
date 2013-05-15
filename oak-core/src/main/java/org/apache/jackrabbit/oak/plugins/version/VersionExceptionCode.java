@@ -20,17 +20,32 @@ package|;
 end_package
 
 begin_comment
-comment|/**  *<code>VersionExceptionType</code> contains the states for version related  * commit failures.  */
+comment|/**  *<code>VersionExceptionCode</code> contains the codes for version related  * commit failures.  */
 end_comment
 
 begin_enum
 specifier|public
 enum|enum
-name|VersionExceptionType
+name|VersionExceptionCode
 block|{
+name|UNEXPECTED_REPOSITORY_EXCEPTION
+argument_list|(
+literal|"Unexpected RepositoryException"
+argument_list|)
+block|,
 name|NODE_CHECKED_IN
 argument_list|(
 literal|"Node is checked in"
+argument_list|)
+block|,
+name|NO_SUCH_VERSION
+argument_list|(
+literal|"No such Version"
+argument_list|)
+block|,
+name|OPV_ABORT_ITEM_PRESENT
+argument_list|(
+literal|"Item with OPV ABORT action present"
 argument_list|)
 block|;
 specifier|private
@@ -39,7 +54,7 @@ name|String
 name|desc
 decl_stmt|;
 specifier|private
-name|VersionExceptionType
+name|VersionExceptionCode
 parameter_list|(
 name|String
 name|desc

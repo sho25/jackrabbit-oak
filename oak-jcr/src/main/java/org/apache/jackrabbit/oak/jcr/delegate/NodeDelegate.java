@@ -2630,20 +2630,21 @@ name|child
 argument_list|)
 return|;
 block|}
-comment|/**      * Remove the node if not root. Does nothing otherwise      */
+comment|/**      * Remove this node. This operation never succeeds for the root node.      *      * @return {@code true} if the node was removed; {@code false} otherwise.      */
 specifier|public
-name|void
+name|boolean
 name|remove
 parameter_list|()
 throws|throws
 name|InvalidItemStateException
 block|{
+return|return
 name|getTree
 argument_list|()
 operator|.
 name|remove
 argument_list|()
-expr_stmt|;
+return|;
 block|}
 comment|/**      * Enables or disabled orderable children on the underlying tree.      *      * @param enable whether to enable or disable orderable children.      */
 specifier|public
