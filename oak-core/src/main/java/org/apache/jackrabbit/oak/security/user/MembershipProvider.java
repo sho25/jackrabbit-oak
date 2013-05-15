@@ -937,7 +937,7 @@ name|exists
 argument_list|()
 condition|)
 block|{
-comment|// FIXME: fix.. testing for property name in jr2 wasn't correct.
+comment|// FIXME: testing for property name in jr2 wasn't correct.
 comment|// TODO OAK-482: add implementation
 throw|throw
 operator|new

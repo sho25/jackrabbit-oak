@@ -1933,14 +1933,6 @@ block|}
 name|Authorizable
 name|auth
 init|=
-operator|(
-name|groupTree
-operator|==
-literal|null
-operator|)
-condition|?
-literal|null
-else|:
 name|userManager
 operator|.
 name|getAuthorizable
