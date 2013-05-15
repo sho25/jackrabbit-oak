@@ -2559,9 +2559,21 @@ name|DENY_THIS
 argument_list|,
 name|cp
 argument_list|,
-name|nodePaths
+name|node1Path
 argument_list|)
 expr_stmt|;
+name|assertReadStatus
+argument_list|(
+name|ReadStatus
+operator|.
+name|ALLOW_THIS
+argument_list|,
+name|cp
+argument_list|,
+name|node2Path
+argument_list|)
+expr_stmt|;
+comment|// TODO: need to change RestrictionPattern in order to get ALLOW_ALL_REGULAR
 name|cp
 operator|=
 name|createPermissions
