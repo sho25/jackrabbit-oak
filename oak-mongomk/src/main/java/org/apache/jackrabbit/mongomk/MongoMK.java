@@ -721,6 +721,12 @@ specifier|private
 name|AtomicInteger
 name|simpleRevisionCounter
 decl_stmt|;
+comment|/**      * The comparator for revisions.      */
+specifier|private
+specifier|final
+name|RevisionComparator
+name|revisionComparator
+decl_stmt|;
 comment|/**      * Unmerged branches of this MongoMK instance.      */
 comment|// TODO at some point, open (unmerged) branches
 comment|// need to be garbage collected (in-memory and on disk)
@@ -732,12 +738,6 @@ init|=
 operator|new
 name|UnmergedBranches
 argument_list|()
-decl_stmt|;
-comment|/**      * The comparator for revisions.      */
-specifier|private
-specifier|final
-name|RevisionComparator
-name|revisionComparator
 decl_stmt|;
 specifier|private
 name|boolean
@@ -1805,6 +1805,15 @@ name|String
 name|path
 parameter_list|)
 block|{
+comment|// TODO only log if there are new revisions available for the given node
+if|if
+condition|(
+name|LOG
+operator|.
+name|isDebugEnabled
+argument_list|()
+condition|)
+block|{
 if|if
 condition|(
 name|headRevision
@@ -1822,7 +1831,7 @@ condition|)
 block|{
 name|LOG
 operator|.
-name|warn
+name|debug
 argument_list|(
 literal|"Requesting an old revision for path "
 operator|+
@@ -1847,25 +1856,6 @@ literal|1000
 operator|)
 operator|+
 literal|" seconds old"
-argument_list|)
-expr_stmt|;
-if|if
-condition|(
-name|LOG
-operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
-name|LOG
-operator|.
-name|warn
-argument_list|(
-literal|"Requesting an old revision"
-argument_list|,
-operator|new
-name|Exception
-argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -7321,6 +7311,14 @@ name|stopBackground
 operator|=
 literal|true
 expr_stmt|;
+block|}
+name|RevisionComparator
+name|getRevisionComparator
+parameter_list|()
+block|{
+return|return
+name|revisionComparator
+return|;
 block|}
 block|}
 end_class

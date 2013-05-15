@@ -1472,8 +1472,8 @@ block|}
 block|}
 argument_list|)
 decl_stmt|;
-name|MicroKernelException
-name|conflict
+name|String
+name|conflictMessage
 init|=
 literal|null
 decl_stmt|;
@@ -1496,27 +1496,15 @@ operator|.
 name|isNew
 condition|)
 block|{
-name|conflict
+name|conflictMessage
 operator|=
-operator|new
-name|MicroKernelException
-argument_list|(
 literal|"The node "
 operator|+
 name|op
 operator|.
 name|path
 operator|+
-literal|" does not exist or is already deleted "
-operator|+
-literal|"before "
-operator|+
-name|revision
-operator|+
-literal|"; document "
-operator|+
-name|map
-argument_list|)
+literal|" does not exist or is already deleted"
 expr_stmt|;
 block|}
 block|}
@@ -1529,29 +1517,17 @@ operator|.
 name|isNew
 condition|)
 block|{
-name|conflict
+name|conflictMessage
 operator|=
-operator|new
-name|MicroKernelException
-argument_list|(
 literal|"The node "
 operator|+
 name|op
 operator|.
 name|path
 operator|+
-literal|" was already added in revision "
+literal|" was already added in revision\n"
 operator|+
 name|newestRev
-operator|+
-literal|"; before "
-operator|+
-name|revision
-operator|+
-literal|"; document "
-operator|+
-name|map
-argument_list|)
 expr_stmt|;
 block|}
 elseif|else
@@ -1580,45 +1556,71 @@ argument_list|)
 operator|)
 condition|)
 block|{
-name|conflict
+name|conflictMessage
 operator|=
-operator|new
-name|MicroKernelException
-argument_list|(
 literal|"The node "
 operator|+
 name|op
 operator|.
 name|path
 operator|+
-literal|" was changed in revision "
+literal|" was changed in revision\n"
 operator|+
 name|newestRev
 operator|+
-literal|", which was applied after the base revision "
+literal|", which was applied after the base revision\n"
 operator|+
 name|baseRevision
-operator|+
-literal|"; before "
-operator|+
-name|revision
-operator|+
-literal|"; document "
-operator|+
-name|map
-argument_list|)
 expr_stmt|;
 block|}
 block|}
 if|if
 condition|(
-name|conflict
+name|conflictMessage
 operator|!=
 literal|null
 condition|)
 block|{
+name|conflictMessage
+operator|+=
+literal|", before\n"
+operator|+
+name|revision
+operator|+
+literal|"; document:\n"
+operator|+
+name|map
+operator|.
+name|toString
+argument_list|()
+operator|.
+name|replaceAll
+argument_list|(
+literal|", _"
+argument_list|,
+literal|",\n_"
+argument_list|)
+operator|.
+name|replaceAll
+argument_list|(
+literal|"}, "
+argument_list|,
+literal|"},\n"
+argument_list|)
+operator|+
+literal|",\nrevision order:\n"
+operator|+
+name|mk
+operator|.
+name|getRevisionComparator
+argument_list|()
+expr_stmt|;
 throw|throw
-name|conflict
+operator|new
+name|MicroKernelException
+argument_list|(
+name|conflictMessage
+argument_list|)
 throw|;
 block|}
 comment|// if we get here the modification was successful
