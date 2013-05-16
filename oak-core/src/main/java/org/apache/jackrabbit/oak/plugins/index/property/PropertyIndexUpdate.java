@@ -348,12 +348,6 @@ name|String
 argument_list|>
 name|mixinTypes
 decl_stmt|;
-comment|/**      * The node where the index definition is stored.      */
-specifier|private
-specifier|final
-name|NodeBuilder
-name|node
-decl_stmt|;
 comment|/**      * The node where the index content is stored.      */
 specifier|private
 specifier|final
@@ -411,12 +405,6 @@ name|path
 expr_stmt|;
 name|this
 operator|.
-name|node
-operator|=
-name|node
-expr_stmt|;
-name|this
-operator|.
 name|store
 operator|=
 name|store
@@ -464,8 +452,6 @@ expr_stmt|;
 block|}
 name|index
 operator|=
-name|this
-operator|.
 name|node
 operator|.
 name|child
