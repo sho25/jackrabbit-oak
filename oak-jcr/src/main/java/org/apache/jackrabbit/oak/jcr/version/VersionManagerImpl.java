@@ -1654,16 +1654,9 @@ throws|throws
 name|RepositoryException
 block|{
 return|return
-name|TODO
-operator|.
-name|unimplemented
-argument_list|()
-operator|.
-name|returnValue
-argument_list|(
 literal|null
-argument_list|)
 return|;
+comment|//TODO.unimplemented().returnValue(null);
 block|}
 annotation|@
 name|Override
