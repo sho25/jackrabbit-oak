@@ -337,7 +337,7 @@ name|compatValue
 init|=
 name|params
 operator|.
-name|getConfigValue
+name|getNullableConfigValue
 argument_list|(
 name|AccessControlConstants
 operator|.
@@ -352,16 +352,7 @@ name|Permissions
 operator|.
 name|getPermissions
 argument_list|(
-name|params
-operator|.
-name|getConfigValue
-argument_list|(
-name|AccessControlConstants
-operator|.
-name|PARAM_PERMISSIONS_JR2
-argument_list|,
 name|compatValue
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

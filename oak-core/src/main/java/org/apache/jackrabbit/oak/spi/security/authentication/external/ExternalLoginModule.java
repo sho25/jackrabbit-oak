@@ -234,7 +234,7 @@ name|syncHandler
 init|=
 name|options
 operator|.
-name|getConfigValue
+name|getNullableConfigValue
 argument_list|(
 name|PARAM_SYNC_HANDLER
 argument_list|,
@@ -403,7 +403,7 @@ name|smValue
 init|=
 name|options
 operator|.
-name|getConfigValue
+name|getNullableConfigValue
 argument_list|(
 name|PARAM_SYNC_MODE
 argument_list|,
