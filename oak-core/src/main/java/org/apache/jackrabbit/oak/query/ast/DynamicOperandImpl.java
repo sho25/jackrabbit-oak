@@ -110,6 +110,13 @@ name|int
 name|getPropertyType
 parameter_list|()
 function_decl|;
+comment|/**      * Get the property existence condition for this operand, if this operand is      * used as part of a condition.      *       * @return the property existence condition, or null if none      */
+specifier|public
+specifier|abstract
+name|PropertyExistenceImpl
+name|getPropertyExistence
+parameter_list|()
+function_decl|;
 block|}
 end_class
 

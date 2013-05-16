@@ -202,6 +202,17 @@ block|}
 annotation|@
 name|Override
 specifier|public
+name|PropertyExistenceImpl
+name|getPropertyExistence
+parameter_list|()
+block|{
+return|return
+literal|null
+return|;
+block|}
+annotation|@
+name|Override
+specifier|public
 name|PropertyValue
 name|currentProperty
 parameter_list|()

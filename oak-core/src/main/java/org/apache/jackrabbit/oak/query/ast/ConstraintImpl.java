@@ -21,6 +21,16 @@ end_package
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Set
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -54,6 +64,16 @@ specifier|public
 specifier|abstract
 name|boolean
 name|evaluate
+parameter_list|()
+function_decl|;
+comment|/**      * Get the set of property existence conditions that can be derived for this      * condition. For example, for the condition "x=1 or x=2", the property      * existence condition is "x is not null". For the condition "x=1 or y=2",      * there is no such condition. For the condition "x=1 and y=1", there are      * two (x is not null, and y is not null).      *       * @return the common property existence condition (possibly empty)      */
+specifier|public
+specifier|abstract
+name|Set
+argument_list|<
+name|PropertyExistenceImpl
+argument_list|>
+name|getPropertyExistenceConditions
 parameter_list|()
 function_decl|;
 comment|/**      * Apply the condition to the filter, further restricting the filter if      * possible. This may also verify the data types are compatible, and that      * paths are valid.      *      * @param f the filter      */
