@@ -240,6 +240,26 @@ import|;
 end_import
 
 begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
+import|;
+end_import
+
+begin_import
 import|import static
 name|com
 operator|.
@@ -266,6 +286,21 @@ name|ReadWriteVersionManager
 extends|extends
 name|ReadOnlyVersionManager
 block|{
+specifier|private
+specifier|static
+specifier|final
+name|Logger
+name|log
+init|=
+name|LoggerFactory
+operator|.
+name|getLogger
+argument_list|(
+name|ReadWriteVersionManager
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 specifier|private
 specifier|final
 name|Tree
@@ -499,7 +534,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-comment|/**      * Performs a checkout on a versionable tree.      *      * @param versionable the versionable node to check out.      * @throws InvalidItemStateException if the current root has pending      *                                   changes.      * @throws UnsupportedRepositoryOperationException      *                                   if the versionable tree isn't actually      *                                   versionable.      * @throws RepositoryException       if an error occurs while checking the      *                                   node type of the tree.      */
+comment|/**      * Performs a checkout on a versionable tree.      *      * @param versionable the versionable node to check out.      * @throws UnsupportedRepositoryOperationException      *                                   if the versionable tree isn't actually      *                                   versionable.      * @throws RepositoryException       if an error occurs while checking the      *                                   node type of the tree.      */
 specifier|public
 name|void
 name|checkout
@@ -516,24 +551,6 @@ name|InvalidItemStateException
 throws|,
 name|RepositoryException
 block|{
-if|if
-condition|(
-name|workspaceRoot
-operator|.
-name|hasPendingChanges
-argument_list|()
-condition|)
-block|{
-throw|throw
-operator|new
-name|InvalidItemStateException
-argument_list|(
-literal|"Unable to perform checkout. "
-operator|+
-literal|"Session has pending changes."
-argument_list|)
-throw|;
-block|}
 if|if
 condition|(
 operator|!
@@ -565,6 +582,26 @@ name|versionable
 argument_list|)
 condition|)
 block|{
+if|if
+condition|(
+name|workspaceRoot
+operator|.
+name|hasPendingChanges
+argument_list|()
+condition|)
+block|{
+comment|// TODO: perform checkout on separate root and refresh session
+comment|//       while keeping pending changes.
+name|log
+operator|.
+name|warn
+argument_list|(
+literal|"Session has pending changes. Checkout operation will "
+operator|+
+literal|"save those changes as well."
+argument_list|)
+expr_stmt|;
+block|}
 name|versionable
 operator|.
 name|setProperty
