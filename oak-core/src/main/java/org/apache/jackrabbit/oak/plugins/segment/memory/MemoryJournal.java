@@ -183,7 +183,6 @@ end_import
 
 begin_class
 specifier|public
-specifier|final
 class|class
 name|MemoryJournal
 implements|implements
