@@ -295,7 +295,7 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
-while|while
+if|if
 condition|(
 name|testRootNode
 operator|.
@@ -316,6 +316,14 @@ name|remove
 argument_list|()
 expr_stmt|;
 block|}
+name|testRootNode
+operator|.
+name|getSession
+argument_list|()
+operator|.
+name|save
+argument_list|()
+expr_stmt|;
 name|Node
 name|resource
 init|=
