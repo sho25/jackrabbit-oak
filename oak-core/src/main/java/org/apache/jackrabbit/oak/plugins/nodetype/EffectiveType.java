@@ -77,6 +77,20 @@ name|jackrabbit
 operator|.
 name|JcrConstants
 operator|.
+name|JCR_MANDATORY
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|JcrConstants
+operator|.
 name|JCR_MIXINTYPES
 import|;
 end_import
@@ -266,6 +280,24 @@ operator|.
 name|api
 operator|.
 name|Type
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|state
+operator|.
+name|ChildNodeEntry
 import|;
 end_import
 
@@ -623,13 +655,16 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-operator|!
 name|definition
 operator|.
 name|exists
 argument_list|()
 condition|)
 block|{
+return|return
+name|definition
+return|;
+block|}
 name|definition
 operator|=
 name|definitions
@@ -639,7 +674,6 @@ argument_list|(
 name|undefinedType
 argument_list|)
 expr_stmt|;
-block|}
 if|if
 condition|(
 name|definition
@@ -651,11 +685,45 @@ block|{
 return|return
 name|definition
 return|;
-comment|// TODO: Fall back to residual definitions until we have consensus on OAK-709
-comment|//          } else {
-comment|//              throw new ConstraintViolationException(
-comment|//                    "No matching definition found for property " + propertyName);
 block|}
+comment|// OAK-822: a mandatory definition always overrides residual ones
+comment|// TODO: unnecessary if the OAK-713 fallback wasn't needed below
+for|for
+control|(
+name|ChildNodeEntry
+name|entry
+range|:
+name|definitions
+operator|.
+name|getChildNodeEntries
+argument_list|()
+control|)
+block|{
+name|definition
+operator|=
+name|entry
+operator|.
+name|getNodeState
+argument_list|()
+expr_stmt|;
+if|if
+condition|(
+name|definition
+operator|.
+name|getBoolean
+argument_list|(
+name|JCR_MANDATORY
+argument_list|)
+condition|)
+block|{
+return|return
+name|definition
+return|;
+block|}
+block|}
+comment|// TODO: Fall back to residual definitions until we have consensus on OAK-713
+comment|//          throw new ConstraintViolationException(
+comment|//                "No matching definition found for property " + propertyName);
 block|}
 comment|// Find matching residual property definition
 for|for
@@ -857,14 +925,6 @@ argument_list|(
 name|nodeName
 argument_list|)
 decl_stmt|;
-if|if
-condition|(
-name|definitions
-operator|.
-name|exists
-argument_list|()
-condition|)
-block|{
 for|for
 control|(
 name|String
@@ -896,10 +956,45 @@ name|definition
 return|;
 block|}
 block|}
-comment|// TODO: Fall back to residual definitions until we have consensus on OAK-709
-comment|//              throw new ConstraintViolationException(
-comment|//                      "Incorrect node type of child node " + nodeName);
+comment|// OAK-822: a mandatory definition always overrides alternatives
+comment|// TODO: unnecessary if the OAK-713 fallback wasn't needed below
+for|for
+control|(
+name|ChildNodeEntry
+name|entry
+range|:
+name|definitions
+operator|.
+name|getChildNodeEntries
+argument_list|()
+control|)
+block|{
+name|NodeState
+name|definition
+init|=
+name|entry
+operator|.
+name|getNodeState
+argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|definition
+operator|.
+name|getBoolean
+argument_list|(
+name|JCR_MANDATORY
+argument_list|)
+condition|)
+block|{
+return|return
+name|definition
+return|;
 block|}
+block|}
+comment|// TODO: Fall back to residual definitions until we have consensus on OAK-713
+comment|//          throw new ConstraintViolationException(
+comment|//                  "Incorrect node type of child node " + nodeName);
 block|}
 comment|// Find matching residual child node definition
 for|for
