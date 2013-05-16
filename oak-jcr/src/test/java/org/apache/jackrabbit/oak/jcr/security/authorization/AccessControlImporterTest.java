@@ -812,7 +812,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Imports a resource-based ACL containing a single entry.      *      * @throws Exception      */
 specifier|public
 name|void
 name|testImportACLOnly
@@ -1059,13 +1058,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Imports a resource-based ACL containing a single entry.      *      * @throws Exception      */
-annotation|@
-name|Ignore
-argument_list|(
-literal|"OAK-414"
-argument_list|)
-comment|// FIXME
 specifier|public
 name|void
 name|testImportACLRemoveACE
@@ -1175,7 +1167,6 @@ operator|.
 name|getAccessControlEntries
 argument_list|()
 decl_stmt|;
-comment|//FIXME assert fails
 name|assertEquals
 argument_list|(
 literal|1
@@ -1271,13 +1262,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Imports a resource-based ACL containing a single entry.      *      * @throws Exception      */
-annotation|@
-name|Ignore
-argument_list|(
-literal|"OAK-414"
-argument_list|)
-comment|// FIXME
 specifier|public
 name|void
 name|testImportACLUnknown
@@ -1304,7 +1288,6 @@ argument_list|(
 literal|"rep:AccessControllable"
 argument_list|)
 expr_stmt|;
-comment|//FIXME import fails
 name|doImport
 argument_list|(
 name|target
