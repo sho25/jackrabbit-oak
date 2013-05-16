@@ -642,7 +642,9 @@ name|Privilege
 index|[]
 block|{
 name|getPrivilegeManager
-argument_list|()
+argument_list|(
+name|root
+argument_list|)
 operator|.
 name|getPrivilege
 argument_list|(

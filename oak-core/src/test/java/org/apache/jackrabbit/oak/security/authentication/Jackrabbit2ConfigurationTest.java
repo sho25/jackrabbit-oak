@@ -213,7 +213,7 @@ argument_list|(
 name|getUserConfiguration
 argument_list|()
 operator|.
-name|getConfigurationParameters
+name|getParameters
 argument_list|()
 argument_list|)
 decl_stmt|;

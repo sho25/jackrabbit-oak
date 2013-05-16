@@ -948,7 +948,9 @@ operator|.
 name|getTree
 argument_list|(
 name|getUserManager
-argument_list|()
+argument_list|(
+name|root
+argument_list|)
 operator|.
 name|getAuthorizable
 argument_list|(
@@ -1431,7 +1433,9 @@ operator|.
 name|getTree
 argument_list|(
 name|getUserManager
-argument_list|()
+argument_list|(
+name|root
+argument_list|)
 operator|.
 name|getAuthorizable
 argument_list|(

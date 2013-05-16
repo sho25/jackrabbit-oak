@@ -169,7 +169,7 @@ block|{
 annotation|@
 name|Nonnull
 name|ConfigurationParameters
-name|getConfigurationParameters
+name|getParameters
 parameter_list|()
 function_decl|;
 annotation|@
@@ -233,7 +233,7 @@ annotation|@
 name|Override
 specifier|public
 name|ConfigurationParameters
-name|getConfigurationParameters
+name|getParameters
 parameter_list|()
 block|{
 return|return

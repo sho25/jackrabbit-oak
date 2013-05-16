@@ -347,7 +347,7 @@ name|config
 operator|=
 name|securityProvider
 operator|.
-name|getConfiguration
+name|getParameters
 argument_list|(
 name|PARAM_USER_OPTIONS
 argument_list|)
@@ -366,7 +366,7 @@ annotation|@
 name|Override
 specifier|public
 name|ConfigurationParameters
-name|getConfigurationParameters
+name|getParameters
 parameter_list|()
 block|{
 return|return
@@ -415,7 +415,7 @@ argument_list|(
 operator|new
 name|UserValidatorProvider
 argument_list|(
-name|getConfigurationParameters
+name|getParameters
 argument_list|()
 argument_list|)
 argument_list|)

@@ -491,7 +491,9 @@ name|UserManager
 name|userMgr
 init|=
 name|getUserManager
-argument_list|()
+argument_list|(
+name|root
+argument_list|)
 decl_stmt|;
 name|everyoneGroup
 operator|=
@@ -571,7 +573,9 @@ name|UserManager
 name|userMgr
 init|=
 name|getUserManager
-argument_list|()
+argument_list|(
+name|root
+argument_list|)
 decl_stmt|;
 name|testUser
 operator|=
@@ -739,7 +743,9 @@ name|UserManager
 name|userMgr
 init|=
 name|getUserManager
-argument_list|()
+argument_list|(
+name|root
+argument_list|)
 decl_stmt|;
 name|testGroup
 operator|=
@@ -1191,7 +1197,9 @@ name|UserManager
 name|userMgr
 init|=
 name|getUserManager
-argument_list|()
+argument_list|(
+name|root
+argument_list|)
 decl_stmt|;
 name|testUser
 operator|=

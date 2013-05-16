@@ -212,11 +212,12 @@ condition|)
 block|{
 name|restrictionProvider
 operator|=
-name|getSecurityProvider
-argument_list|()
+name|getConfig
+argument_list|(
+name|AccessControlConfiguration
 operator|.
-name|getAccessControlConfiguration
-argument_list|()
+name|class
+argument_list|)
 operator|.
 name|getRestrictionProvider
 argument_list|()

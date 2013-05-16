@@ -258,7 +258,9 @@ name|UserManager
 name|userMgr
 init|=
 name|getUserManager
-argument_list|()
+argument_list|(
+name|root
+argument_list|)
 decl_stmt|;
 name|user
 operator|=
@@ -277,7 +279,7 @@ argument_list|,
 name|getUserConfiguration
 argument_list|()
 operator|.
-name|getConfigurationParameters
+name|getParameters
 argument_list|()
 argument_list|,
 name|root

@@ -589,8 +589,12 @@ name|acConfig
 operator|=
 name|securityProvider
 operator|.
-name|getAccessControlConfiguration
-argument_list|()
+name|getConfiguration
+argument_list|(
+name|AccessControlConfiguration
+operator|.
+name|class
+argument_list|)
 expr_stmt|;
 if|if
 condition|(
@@ -668,7 +672,7 @@ argument_list|()
 argument_list|,
 name|acConfig
 operator|.
-name|getConfigurationParameters
+name|getParameters
 argument_list|()
 operator|.
 name|getConfigValue

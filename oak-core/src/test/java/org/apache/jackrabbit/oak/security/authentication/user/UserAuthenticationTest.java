@@ -290,7 +290,9 @@ argument_list|(
 name|userId
 argument_list|,
 name|getUserManager
-argument_list|()
+argument_list|(
+name|root
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -352,7 +354,9 @@ argument_list|(
 literal|null
 argument_list|,
 name|getUserManager
-argument_list|()
+argument_list|(
+name|root
+argument_list|)
 argument_list|)
 decl_stmt|;
 name|assertFalse

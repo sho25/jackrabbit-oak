@@ -355,7 +355,9 @@ block|}
 name|userManager
 operator|=
 name|getUserManager
-argument_list|()
+argument_list|(
+name|root
+argument_list|)
 expr_stmt|;
 block|}
 annotation|@

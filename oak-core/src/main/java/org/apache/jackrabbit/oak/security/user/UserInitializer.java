@@ -604,8 +604,12 @@ name|userConfiguration
 init|=
 name|securityProvider
 operator|.
-name|getUserConfiguration
-argument_list|()
+name|getConfiguration
+argument_list|(
+name|UserConfiguration
+operator|.
+name|class
+argument_list|)
 decl_stmt|;
 name|UserManager
 name|userManager
@@ -769,7 +773,7 @@ name|params
 init|=
 name|userConfiguration
 operator|.
-name|getConfigurationParameters
+name|getParameters
 argument_list|()
 decl_stmt|;
 name|String

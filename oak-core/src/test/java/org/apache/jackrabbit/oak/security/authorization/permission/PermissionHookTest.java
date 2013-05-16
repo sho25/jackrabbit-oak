@@ -731,7 +731,9 @@ name|principals
 control|)
 block|{
 name|getUserManager
-argument_list|()
+argument_list|(
+name|root
+argument_list|)
 operator|.
 name|getAuthorizable
 argument_list|(
@@ -888,7 +890,9 @@ name|Group
 name|gr
 init|=
 name|getUserManager
-argument_list|()
+argument_list|(
+name|root
+argument_list|)
 operator|.
 name|createGroup
 argument_list|(

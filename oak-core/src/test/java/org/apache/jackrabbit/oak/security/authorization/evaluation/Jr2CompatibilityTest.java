@@ -677,7 +677,9 @@ name|Authorizable
 name|user
 init|=
 name|getUserManager
-argument_list|()
+argument_list|(
+name|root
+argument_list|)
 operator|.
 name|getAuthorizable
 argument_list|(

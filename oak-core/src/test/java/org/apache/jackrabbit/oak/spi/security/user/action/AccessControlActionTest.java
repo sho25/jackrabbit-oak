@@ -395,7 +395,9 @@ name|UserManager
 name|userMgr
 init|=
 name|getUserManager
-argument_list|()
+argument_list|(
+name|root
+argument_list|)
 decl_stmt|;
 name|User
 name|u
@@ -475,7 +477,9 @@ name|UserManager
 name|userMgr
 init|=
 name|getUserManager
-argument_list|()
+argument_list|(
+name|root
+argument_list|)
 decl_stmt|;
 name|Group
 name|gr
@@ -619,7 +623,9 @@ name|Privilege
 index|[]
 block|{
 name|getPrivilegeManager
-argument_list|()
+argument_list|(
+name|root
+argument_list|)
 operator|.
 name|getPrivilege
 argument_list|(

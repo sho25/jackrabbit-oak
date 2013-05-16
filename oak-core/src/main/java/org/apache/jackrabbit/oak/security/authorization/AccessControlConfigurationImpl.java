@@ -495,7 +495,7 @@ name|config
 operator|=
 name|securityProvider
 operator|.
-name|getConfiguration
+name|getParameters
 argument_list|(
 name|PARAM_ACCESS_CONTROL_OPTIONS
 argument_list|)
@@ -522,7 +522,7 @@ annotation|@
 name|Override
 specifier|public
 name|ConfigurationParameters
-name|getConfigurationParameters
+name|getParameters
 parameter_list|()
 block|{
 return|return

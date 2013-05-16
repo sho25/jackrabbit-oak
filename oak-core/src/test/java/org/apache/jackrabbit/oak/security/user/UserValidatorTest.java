@@ -588,7 +588,9 @@ name|User
 name|user
 init|=
 name|getUserManager
-argument_list|()
+argument_list|(
+name|root
+argument_list|)
 operator|.
 name|createUser
 argument_list|(
@@ -657,7 +659,9 @@ name|User
 name|user
 init|=
 name|getUserManager
-argument_list|()
+argument_list|(
+name|root
+argument_list|)
 operator|.
 name|createUser
 argument_list|(
@@ -989,7 +993,9 @@ name|UserManager
 name|userMgr
 init|=
 name|getUserManager
-argument_list|()
+argument_list|(
+name|root
+argument_list|)
 decl_stmt|;
 name|Authorizable
 name|admin
@@ -1094,7 +1100,9 @@ name|UserManager
 name|userMgr
 init|=
 name|getUserManager
-argument_list|()
+argument_list|(
+name|root
+argument_list|)
 decl_stmt|;
 name|Authorizable
 name|admin
@@ -1500,7 +1508,9 @@ name|UserManager
 name|userMgr
 init|=
 name|getUserManager
-argument_list|()
+argument_list|(
+name|root
+argument_list|)
 decl_stmt|;
 try|try
 block|{
@@ -1701,7 +1711,7 @@ return|return
 name|getUserConfiguration
 argument_list|()
 operator|.
-name|getConfigurationParameters
+name|getParameters
 argument_list|()
 return|;
 block|}
