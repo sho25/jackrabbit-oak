@@ -29,6 +29,22 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
+name|api
+operator|.
+name|CommitFailedException
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
 name|spi
 operator|.
 name|state
@@ -74,7 +90,7 @@ specifier|public
 interface|interface
 name|EditorProvider
 block|{
-comment|/**      * Returns an editor for processing changes between the given two states.      * Returns {@code null} if the changes don't require processing.      *<p>      * An implementation of this method should generally not compare the      * given before and after states, as the caller is expected to compare      * the states and invoke the respective callback methods on the      * {@link Editor} instance returned by this method. Instead the      * implementation can use the opportunity for other preparatory work.      *      * @param before  original root state      * @param after   modified root state      * @param builder node builder based on the after state      * @return editor for processing the changes, or {@code null}      */
+comment|/**      * Returns an editor for processing changes between the given two states.      * Returns {@code null} if the changes don't require processing.      *<p>      * An implementation of this method should generally not compare the      * given before and after states, as the caller is expected to compare      * the states and invoke the respective callback methods on the      * {@link Editor} instance returned by this method. Instead the      * implementation can use the opportunity for other preparatory work.      *      * @param before  original root state      * @param after   modified root state      * @param builder node builder based on the after state      * @return editor for processing the changes, or {@code null}      * @throws CommitFailedException if processing failed      */
 annotation|@
 name|CheckForNull
 name|Editor
@@ -89,6 +105,8 @@ parameter_list|,
 name|NodeBuilder
 name|builder
 parameter_list|)
+throws|throws
+name|CommitFailedException
 function_decl|;
 block|}
 end_interface
