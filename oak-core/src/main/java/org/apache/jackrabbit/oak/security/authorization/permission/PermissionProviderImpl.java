@@ -824,6 +824,7 @@ operator|.
 name|TYPE_AC
 case|:
 comment|// TODO: review if read-ac permission is never fine-granular
+comment|// TODO: replace by calling #getReadStatus
 return|return
 name|canReadAccessControlContent
 argument_list|(
