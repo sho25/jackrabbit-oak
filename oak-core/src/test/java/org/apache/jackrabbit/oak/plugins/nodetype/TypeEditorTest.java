@@ -47,7 +47,7 @@ name|easymock
 operator|.
 name|EasyMock
 operator|.
-name|createMock
+name|createControl
 import|;
 end_import
 
@@ -77,16 +77,6 @@ end_import
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Collections
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -98,24 +88,6 @@ operator|.
 name|api
 operator|.
 name|CommitFailedException
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|plugins
-operator|.
-name|memory
-operator|.
-name|EmptyNodeState
 import|;
 end_import
 
@@ -208,16 +180,6 @@ operator|.
 name|state
 operator|.
 name|NodeState
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|easymock
-operator|.
-name|EasyMock
 import|;
 end_import
 
@@ -386,6 +348,9 @@ block|{
 name|EffectiveType
 name|effective
 init|=
+name|createControl
+argument_list|()
+operator|.
 name|createMock
 argument_list|(
 name|EffectiveType
@@ -463,6 +428,9 @@ block|{
 name|EffectiveType
 name|effective
 init|=
+name|createControl
+argument_list|()
+operator|.
 name|createMock
 argument_list|(
 name|EffectiveType
@@ -560,6 +528,9 @@ block|{
 name|EffectiveType
 name|effective
 init|=
+name|createControl
+argument_list|()
+operator|.
 name|createMock
 argument_list|(
 name|EffectiveType
@@ -632,6 +603,9 @@ block|{
 name|EffectiveType
 name|effective
 init|=
+name|createControl
+argument_list|()
+operator|.
 name|createMock
 argument_list|(
 name|EffectiveType
