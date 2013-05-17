@@ -197,7 +197,7 @@ name|common
 operator|.
 name|collect
 operator|.
-name|ImmutableList
+name|ImmutableSet
 import|;
 end_import
 
@@ -606,16 +606,6 @@ operator|.
 name|junit
 operator|.
 name|Before
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
-name|Ignore
 import|;
 end_import
 
@@ -2579,12 +2569,6 @@ argument_list|)
 expr_stmt|;
 block|}
 annotation|@
-name|Ignore
-argument_list|(
-literal|"OAK-814"
-argument_list|)
-comment|// TODO
-annotation|@
 name|Test
 specifier|public
 name|void
@@ -2718,12 +2702,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-annotation|@
-name|Ignore
-argument_list|(
-literal|"OAK-814"
-argument_list|)
-comment|// TODO
 annotation|@
 name|Test
 specifier|public
@@ -2892,12 +2870,6 @@ argument_list|)
 expr_stmt|;
 block|}
 annotation|@
-name|Ignore
-argument_list|(
-literal|"OAK-814"
-argument_list|)
-comment|// TODO
-annotation|@
 name|Test
 specifier|public
 name|void
@@ -2920,7 +2892,7 @@ name|grPriv
 init|=
 name|privilegesFromNames
 argument_list|(
-literal|"rep:write"
+name|REP_WRITE
 argument_list|)
 decl_stmt|;
 name|Privilege
@@ -3116,19 +3088,16 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|assertTrue
+name|assertEquals
 argument_list|(
-name|allows
+name|ImmutableSet
 operator|.
-name|containsAll
-argument_list|(
-name|ImmutableList
-operator|.
-name|of
+name|copyOf
 argument_list|(
 name|expected
 argument_list|)
-argument_list|)
+argument_list|,
+name|allows
 argument_list|)
 expr_stmt|;
 name|assertEquals
@@ -3141,23 +3110,26 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|assertEquals
+name|assertArrayEquals
 argument_list|(
 name|privilegesFromNames
 argument_list|(
 name|JCR_REMOVE_CHILD_NODES
 argument_list|)
-index|[
-literal|0
-index|]
 argument_list|,
 name|denies
 operator|.
-name|iterator
-argument_list|()
+name|toArray
+argument_list|(
+operator|new
+name|Privilege
+index|[
+name|denies
 operator|.
-name|next
+name|size
 argument_list|()
+index|]
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

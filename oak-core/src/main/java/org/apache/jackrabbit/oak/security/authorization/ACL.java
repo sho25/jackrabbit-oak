@@ -33,18 +33,6 @@ begin_import
 import|import
 name|java
 operator|.
-name|security
-operator|.
-name|acl
-operator|.
-name|Group
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
 name|util
 operator|.
 name|ArrayList
@@ -216,22 +204,6 @@ operator|.
 name|collect
 operator|.
 name|Lists
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|api
-operator|.
-name|security
-operator|.
-name|JackrabbitAccessControlEntry
 import|;
 end_import
 
@@ -1198,20 +1170,12 @@ argument_list|)
 decl_stmt|;
 for|for
 control|(
-name|JackrabbitAccessControlEntry
-name|ace
+name|ACE
+name|existing
 range|:
 name|subList
 control|)
 block|{
-name|ACE
-name|existing
-init|=
-operator|(
-name|ACE
-operator|)
-name|ace
-decl_stmt|;
 name|PrivilegeBits
 name|existingBits
 init|=
@@ -1246,12 +1210,15 @@ condition|)
 block|{
 if|if
 condition|(
-name|isRedundantOrExtending
-argument_list|(
-name|existing
-argument_list|,
 name|entry
-argument_list|)
+operator|.
+name|isAllow
+argument_list|()
+operator|==
+name|existing
+operator|.
+name|isAllow
+argument_list|()
 condition|)
 block|{
 if|if
@@ -1264,6 +1231,7 @@ name|entryBits
 argument_list|)
 condition|)
 block|{
+comment|// no changes
 return|return
 literal|false
 return|;
@@ -1314,8 +1282,10 @@ literal|true
 return|;
 block|}
 block|}
-comment|// clean up redundant privileges defined by the existing entry
-comment|// and append the new entry at the end of the list.
+else|else
+block|{
+comment|// existing is complementary entry -> clean up redundant
+comment|// privileges defined by the existing entry
 name|PrivilegeBits
 name|updated
 init|=
@@ -1344,7 +1314,7 @@ name|entries
 operator|.
 name|remove
 argument_list|(
-name|ace
+name|existing
 argument_list|)
 expr_stmt|;
 block|}
@@ -1375,7 +1345,7 @@ name|entries
 operator|.
 name|remove
 argument_list|(
-name|ace
+name|existing
 argument_list|)
 expr_stmt|;
 name|entries
@@ -1396,6 +1366,7 @@ block|}
 comment|/* else: no collision that requires adjusting the existing entry.*/
 block|}
 block|}
+block|}
 comment|// finally add the new entry at the end of the list
 name|entries
 operator|.
@@ -1406,56 +1377,6 @@ argument_list|)
 expr_stmt|;
 return|return
 literal|true
-return|;
-block|}
-comment|// TODO: OAK-814
-specifier|private
-name|boolean
-name|isRedundantOrExtending
-parameter_list|(
-name|ACE
-name|existing
-parameter_list|,
-name|ACE
-name|entry
-parameter_list|)
-block|{
-return|return
-name|existing
-operator|.
-name|isAllow
-argument_list|()
-operator|==
-name|entry
-operator|.
-name|isAllow
-argument_list|()
-operator|&&
-operator|(
-operator|!
-operator|(
-name|existing
-operator|.
-name|getPrincipal
-argument_list|()
-operator|instanceof
-name|Group
-operator|)
-operator|||
-name|entries
-operator|.
-name|indexOf
-argument_list|(
-name|existing
-argument_list|)
-operator|==
-name|entries
-operator|.
-name|size
-argument_list|()
-operator|-
-literal|1
-operator|)
 return|;
 block|}
 specifier|private
