@@ -1216,7 +1216,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|2
+literal|22
 argument_list|,
 name|e
 operator|.
