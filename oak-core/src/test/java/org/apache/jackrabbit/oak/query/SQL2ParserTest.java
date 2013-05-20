@@ -19,6 +19,18 @@ end_package
 
 begin_import
 import|import static
+name|junit
+operator|.
+name|framework
+operator|.
+name|Assert
+operator|.
+name|assertTrue
+import|;
+end_import
+
+begin_import
+import|import static
 name|org
 operator|.
 name|apache
@@ -237,6 +249,44 @@ operator|.
 name|convert
 argument_list|(
 literal|"/jcr:root/test/*/nt:resource[@jcr:encoding]"
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+comment|/**      * @see<a      *      href="https://issues.apache.org/jira/browse/OAK-OAK-830">OAK-OAK-830:      *      XPathToSQL2Converter fails to wrap or clauses</a>      */
+annotation|@
+name|Test
+specifier|public
+name|void
+name|testUnwrappedOr
+parameter_list|()
+throws|throws
+name|ParseException
+block|{
+name|String
+name|q
+init|=
+operator|new
+name|XPathToSQL2Converter
+argument_list|()
+operator|.
+name|convert
+argument_list|(
+literal|"/jcr:root/home//test/* [@type='t1' or @type='t2' or @type='t3']"
+argument_list|)
+decl_stmt|;
+name|String
+name|token
+init|=
+literal|"and ((b.[type] = 't1' or b.[type] = 't2') or b.[type] = 't3')"
+decl_stmt|;
+name|assertTrue
+argument_list|(
+name|q
+operator|.
+name|contains
+argument_list|(
+name|token
 argument_list|)
 argument_list|)
 expr_stmt|;
