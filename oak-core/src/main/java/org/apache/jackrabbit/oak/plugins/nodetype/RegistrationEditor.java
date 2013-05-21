@@ -1821,17 +1821,6 @@ name|type
 operator|.
 name|setProperty
 argument_list|(
-name|OAK_PROTECTED_CHILD_NODES
-argument_list|,
-literal|false
-argument_list|,
-name|BOOLEAN
-argument_list|)
-expr_stmt|;
-name|type
-operator|.
-name|setProperty
-argument_list|(
 name|OAK_NAMED_SINGLE_VALUED_PROPERTIES
 argument_list|,
 name|empty
