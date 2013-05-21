@@ -123,6 +123,11 @@ init|=
 literal|"path"
 decl_stmt|;
 name|String
+name|INDEX_DATA_CHILD_NAME_FS
+init|=
+literal|"data"
+decl_stmt|;
+name|String
 name|INDEX_PATH
 init|=
 literal|"index"
