@@ -1863,6 +1863,23 @@ operator|==
 literal|0
 condition|)
 block|{
+if|if
+condition|(
+name|targetType
+operator|==
+name|PropertyType
+operator|.
+name|UNDEFINED
+condition|)
+block|{
+comment|// default to string when no other type hints are available
+name|targetType
+operator|=
+name|PropertyType
+operator|.
+name|STRING
+expr_stmt|;
+block|}
 return|return
 name|MemoryPropertyBuilder
 operator|.
@@ -1872,7 +1889,7 @@ name|Type
 operator|.
 name|fromTag
 argument_list|(
-name|type
+name|targetType
 argument_list|,
 literal|false
 argument_list|)
