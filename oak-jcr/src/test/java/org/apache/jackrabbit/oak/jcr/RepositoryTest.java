@@ -5159,12 +5159,6 @@ expr_stmt|;
 block|}
 block|}
 annotation|@
-name|Ignore
-argument_list|(
-literal|"OAK-510"
-argument_list|)
-comment|// FIXME: OAK-510
-annotation|@
 name|Test
 specifier|public
 name|void
