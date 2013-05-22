@@ -65,16 +65,6 @@ name|AbstractQueryTest
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
-name|Ignore
-import|;
-end_import
-
 begin_comment
 comment|/**  * Tests the Lucene index using multiple threads.  */
 end_comment
@@ -93,11 +83,9 @@ name|THREAD_COUNT
 init|=
 literal|3
 decl_stmt|;
-annotation|@
-name|Ignore
 specifier|public
 name|void
-name|testConcurrent
+name|disabledTestConcurrent
 parameter_list|()
 throws|throws
 name|Exception
