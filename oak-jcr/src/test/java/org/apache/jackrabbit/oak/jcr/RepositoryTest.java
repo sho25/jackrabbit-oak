@@ -33,6 +33,22 @@ begin_import
 import|import static
 name|org
 operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|commons
+operator|.
+name|JcrUtils
+operator|.
+name|getChildNodes
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
 name|junit
 operator|.
 name|Assert
@@ -495,6 +511,18 @@ name|jcr
 operator|.
 name|nodetype
 operator|.
+name|NodeDefinition
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|jcr
+operator|.
+name|nodetype
+operator|.
 name|NodeType
 import|;
 end_import
@@ -594,20 +622,6 @@ operator|.
 name|jackrabbit
 operator|.
 name|JcrConstants
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|commons
-operator|.
-name|JcrUtils
 import|;
 end_import
 
@@ -13556,10 +13570,8 @@ comment|// TODO: use getNode("jcr:childNodeDefinition[1]") once that works
 for|for
 control|(
 name|Node
-name|definition
+name|child
 range|:
-name|JcrUtils
-operator|.
 name|getChildNodes
 argument_list|(
 name|node
@@ -13568,12 +13580,21 @@ literal|"jcr:childNodeDefinition"
 argument_list|)
 control|)
 block|{
+name|NodeDefinition
 name|definition
+init|=
+name|child
 operator|.
 name|getDefinition
 argument_list|()
+decl_stmt|;
+comment|// OAK-829
+name|definition
+operator|.
+name|getDefaultPrimaryType
+argument_list|()
 expr_stmt|;
-comment|// should not throw
+comment|// OAK-826
 block|}
 block|}
 comment|//------------------------------------------------------------< private>---
