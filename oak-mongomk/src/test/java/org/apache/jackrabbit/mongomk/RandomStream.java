@@ -82,6 +82,8 @@ name|seed
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|int
 name|read
@@ -124,6 +126,8 @@ operator|&
 literal|255
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|int
 name|read

@@ -218,6 +218,8 @@ argument_list|>
 argument_list|>
 argument_list|()
 decl_stmt|;
+annotation|@
+name|Override
 specifier|public
 name|Map
 argument_list|<
@@ -246,6 +248,8 @@ name|key
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Map
 argument_list|<
@@ -338,6 +342,8 @@ return|return
 name|copy
 return|;
 block|}
+annotation|@
+name|Override
 annotation|@
 name|Nonnull
 specifier|public
@@ -496,6 +502,8 @@ return|return
 name|list
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|remove
@@ -1507,6 +1515,8 @@ return|return
 literal|true
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|toString

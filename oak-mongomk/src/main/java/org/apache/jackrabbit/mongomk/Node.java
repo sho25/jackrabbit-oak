@@ -233,6 +233,8 @@ name|properties
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|toString
@@ -623,6 +625,8 @@ operator|=
 name|rev
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|toString

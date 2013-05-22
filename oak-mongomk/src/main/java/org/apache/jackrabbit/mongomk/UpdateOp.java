@@ -691,6 +691,8 @@ return|return
 name|reverse
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|toString
@@ -753,6 +755,8 @@ comment|/**          * The value, if any.          */
 name|Object
 name|value
 decl_stmt|;
+annotation|@
+name|Override
 specifier|public
 name|String
 name|toString

@@ -516,6 +516,8 @@ return|return
 name|r
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|toString
@@ -590,6 +592,8 @@ return|return
 name|counter
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|int
 name|hashCode
@@ -615,6 +619,8 @@ operator|^
 name|clusterId
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|equals
@@ -708,6 +714,8 @@ comment|/**          * The (local) revision; the time when this revision was see
 name|Revision
 name|seenAt
 decl_stmt|;
+annotation|@
+name|Override
 specifier|public
 name|String
 name|toString
@@ -1506,6 +1514,8 @@ return|return
 name|result
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|toString

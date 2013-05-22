@@ -661,6 +661,8 @@ operator|new
 name|InputStream
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|close
@@ -674,6 +676,8 @@ literal|true
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|int
 name|read
@@ -728,6 +732,8 @@ operator|new
 name|InputStream
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|close
@@ -741,6 +747,8 @@ literal|true
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|int
 name|read
