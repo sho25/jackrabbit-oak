@@ -76,6 +76,14 @@ name|MultiSessionQueryTest
 extends|extends
 name|AbstractQueryTest
 block|{
+specifier|private
+specifier|static
+specifier|final
+name|boolean
+name|DISABLED
+init|=
+literal|true
+decl_stmt|;
 specifier|final
 specifier|static
 name|int
@@ -85,11 +93,19 @@ literal|3
 decl_stmt|;
 specifier|public
 name|void
-name|disabledTestConcurrent
+name|testConcurrent
 parameter_list|()
 throws|throws
 name|Exception
 block|{
+if|if
+condition|(
+name|DISABLED
+condition|)
+block|{
+return|return;
+block|}
+comment|// test disabled for now
 specifier|final
 name|Exception
 index|[]
