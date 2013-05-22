@@ -92,7 +92,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A red-write implementation of the Lucene {@link Directory} (a flat list of  * files) that allows to store Lucene index content in an Oak repository.  */
+comment|/**  * A read-write implementation of the Lucene {@link Directory} (a flat list of  * files) that allows to store Lucene index content in an Oak repository.  */
 end_comment
 
 begin_class
