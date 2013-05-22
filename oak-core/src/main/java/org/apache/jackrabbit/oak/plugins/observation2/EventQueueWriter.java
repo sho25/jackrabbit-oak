@@ -578,10 +578,6 @@ specifier|final
 name|String
 name|path
 decl_stmt|;
-specifier|private
-name|int
-name|eventId
-decl_stmt|;
 specifier|public
 name|EventQueueWriter
 parameter_list|(
