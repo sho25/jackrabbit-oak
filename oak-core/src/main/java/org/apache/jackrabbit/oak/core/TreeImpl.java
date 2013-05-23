@@ -1267,6 +1267,7 @@ name|hasOrderableChildren
 argument_list|()
 condition|)
 block|{
+comment|// FIXME (OAK-842) child order not updated when parent is not accessible
 name|parent
 operator|.
 name|nodeBuilder
@@ -2371,6 +2372,7 @@ argument_list|>
 name|getOrderedChildNames
 parameter_list|()
 block|{
+comment|// FIXME (OAK-842) take access control restriction into consideration
 assert|assert
 name|hasOrderableChildren
 argument_list|()
