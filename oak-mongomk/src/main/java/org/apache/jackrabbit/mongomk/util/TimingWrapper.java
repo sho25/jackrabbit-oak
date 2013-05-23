@@ -502,13 +502,6 @@ argument_list|)
 throw|;
 block|}
 block|}
-specifier|public
-name|void
-name|dispose
-parameter_list|()
-block|{
-comment|// do nothing
-block|}
 annotation|@
 name|Override
 specifier|public
