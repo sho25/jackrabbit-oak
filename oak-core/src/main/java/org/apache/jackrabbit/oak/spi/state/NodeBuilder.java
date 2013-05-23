@@ -197,15 +197,22 @@ name|NodeState
 name|nodeState
 parameter_list|)
 function_decl|;
-comment|/**      * Remove a child node. This method has no effect if a      * name of the given {@code name} does not exist.      *      * @param name  name of the child node      * @return this builder      */
+comment|/**      * Remove a child node. This method has no effect if a      * name of the given {@code name} does not exist.      *      * @param name  name of the child node      * @return this builder      * @deprecated Use {@link #remove()}      */
 annotation|@
 name|Nonnull
+annotation|@
+name|Deprecated
 name|NodeBuilder
 name|removeChildNode
 parameter_list|(
 name|String
 name|name
 parameter_list|)
+function_decl|;
+comment|/**      * Remove this child node from its parent.      */
+name|void
+name|remove
+parameter_list|()
 function_decl|;
 comment|/**      * Returns the current number of properties.      *      * @return number of properties      */
 name|long
