@@ -922,6 +922,9 @@ argument_list|(
 name|name
 argument_list|)
 expr_stmt|;
+name|updated
+argument_list|()
+expr_stmt|;
 return|return
 literal|true
 return|;
