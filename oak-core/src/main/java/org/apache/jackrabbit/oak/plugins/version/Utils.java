@@ -204,7 +204,10 @@ block|{
 name|String
 name|primaryType
 init|=
+name|checkNotNull
+argument_list|(
 name|node
+argument_list|)
 operator|.
 name|getName
 argument_list|(

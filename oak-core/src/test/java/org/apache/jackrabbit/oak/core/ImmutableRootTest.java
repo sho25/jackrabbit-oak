@@ -342,25 +342,6 @@ try|try
 block|{
 name|root
 operator|.
-name|getQueryEngine
-argument_list|()
-expr_stmt|;
-name|fail
-argument_list|()
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|UnsupportedOperationException
-name|e
-parameter_list|)
-block|{
-comment|// success
-block|}
-try|try
-block|{
-name|root
-operator|.
 name|move
 argument_list|(
 literal|"/x"

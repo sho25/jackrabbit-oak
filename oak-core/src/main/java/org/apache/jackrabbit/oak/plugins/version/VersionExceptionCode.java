@@ -47,6 +47,11 @@ name|OPV_ABORT_ITEM_PRESENT
 argument_list|(
 literal|"Item with OPV ABORT action present"
 argument_list|)
+block|,
+name|NO_VERSION_TO_RESTORE
+argument_list|(
+literal|"No suitable version to restore"
+argument_list|)
 block|;
 specifier|private
 specifier|final

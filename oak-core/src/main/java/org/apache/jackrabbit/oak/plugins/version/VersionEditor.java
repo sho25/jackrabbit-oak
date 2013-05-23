@@ -506,6 +506,8 @@ name|Type
 operator|.
 name|REFERENCE
 argument_list|)
+argument_list|,
+literal|null
 argument_list|)
 expr_stmt|;
 return|return;
@@ -682,6 +684,8 @@ name|Type
 operator|.
 name|REFERENCE
 argument_list|)
+argument_list|,
+literal|null
 argument_list|)
 expr_stmt|;
 block|}

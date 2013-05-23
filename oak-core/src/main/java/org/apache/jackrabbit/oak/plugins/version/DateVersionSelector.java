@@ -174,9 +174,18 @@ name|JcrConstants
 operator|.
 name|JCR_ROOTVERSION
 argument_list|)
+operator|||
+name|name
+operator|.
+name|equals
+argument_list|(
+name|JcrConstants
+operator|.
+name|JCR_VERSIONLABELS
+argument_list|)
 condition|)
 block|{
-comment|// ignore root version
+comment|// ignore root version and labels node
 continue|continue;
 block|}
 name|long
