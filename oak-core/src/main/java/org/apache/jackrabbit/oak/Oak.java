@@ -253,6 +253,24 @@ name|plugins
 operator|.
 name|index
 operator|.
+name|AsyncIndexUpdate
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|index
+operator|.
 name|CompositeIndexEditorProvider
 import|;
 end_import
@@ -797,6 +815,13 @@ name|defaultWorkspaceName
 init|=
 name|DEFAULT_WORKSPACE_NAME
 decl_stmt|;
+comment|/**      * Flag controlling the asynchronous indexing behavior. If false (default)      * there will be no background indexing happening.      *       */
+specifier|private
+name|boolean
+name|asyncIndexing
+init|=
+literal|false
+decl_stmt|;
 specifier|public
 name|Oak
 parameter_list|(
@@ -1182,6 +1207,22 @@ return|return
 name|this
 return|;
 block|}
+comment|/**      * Enable the asynchronous (background) indexing behavior.      *       * Please not that when enabling the background indexer, you need to take      * care of calling      *<code>#shutdown<code> on the<code>executor<code> provided for this Oak instance.      *       */
+specifier|public
+name|Oak
+name|withAsyncIndexing
+parameter_list|()
+block|{
+name|this
+operator|.
+name|asyncIndexing
+operator|=
+literal|true
+expr_stmt|;
+return|return
+name|this
+return|;
+block|}
 annotation|@
 name|Nonnull
 specifier|public
@@ -1266,6 +1307,22 @@ argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|asyncIndexing
+condition|)
+block|{
+operator|new
+name|AsyncIndexUpdate
+argument_list|(
+name|store
+argument_list|,
+name|executor
+argument_list|,
+name|indexEditors
+argument_list|)
+expr_stmt|;
+block|}
 comment|// FIXME: OAK-810 move to proper workspace initialization
 comment|// initialize default workspace
 name|Iterable
