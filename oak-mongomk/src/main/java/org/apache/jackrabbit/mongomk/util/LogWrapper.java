@@ -117,6 +117,11 @@ begin_class
 specifier|public
 class|class
 name|LogWrapper
+parameter_list|<
+name|T
+extends|extends
+name|MicroKernel
+parameter_list|>
 implements|implements
 name|MicroKernel
 block|{
@@ -167,7 +172,7 @@ argument_list|()
 decl_stmt|;
 specifier|private
 specifier|final
-name|MicroKernel
+name|T
 name|mk
 decl_stmt|;
 specifier|private
@@ -183,7 +188,7 @@ decl_stmt|;
 specifier|public
 name|LogWrapper
 parameter_list|(
-name|MicroKernel
+name|T
 name|mk
 parameter_list|)
 block|{
@@ -193,6 +198,15 @@ name|mk
 operator|=
 name|mk
 expr_stmt|;
+block|}
+specifier|public
+name|T
+name|unwrap
+parameter_list|()
+block|{
+return|return
+name|mk
+return|;
 block|}
 annotation|@
 name|Override
