@@ -2344,12 +2344,15 @@ control|)
 block|{
 name|builder
 operator|.
-name|removeChildNode
+name|getChildNode
 argument_list|(
 literal|"test"
 operator|+
 name|i
 argument_list|)
+operator|.
+name|remove
+argument_list|()
 expr_stmt|;
 block|}
 name|NodeState

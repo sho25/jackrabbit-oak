@@ -146,7 +146,7 @@ name|String
 name|name
 parameter_list|)
 function_decl|;
-comment|/**      * Returns a builder for constructing changes to the named child node.      * If the named child node does not already exist, a new empty child      * node is automatically created as the base state of the returned      * child builder. Otherwise the existing child node state is used      * as the base state of the returned builder.      *<p>      * All updates to the returned child builder will implicitly affect      * also this builder, as if a      * {@code setNode(name, childBuilder.getNodeState())} method call      * had been made after each update. Repeated calls to this method with      * the same name will return the same child builder instance until an      * explicit {@link #setChildNode(String, NodeState)} or      * {@link #removeChildNode(String)} call is made, at which point the link      * between this builder and a previously returned child builder for      * that child node name will get broken.      *      * @since Oak 0.6      * @param name name of the child node      * @return child builder      */
+comment|/**      * Returns a builder for constructing changes to the named child node.      * If the named child node does not already exist, a new empty child      * node is automatically created as the base state of the returned      * child builder. Otherwise the existing child node state is used      * as the base state of the returned builder.      *<p>      * All updates to the returned child builder will implicitly affect      * also this builder, as if a      * {@code setNode(name, childBuilder.getNodeState())} method call      * had been made after each update. Repeated calls to this method with      * the same name will return the same child builder instance until an      * explicit {@link #setChildNode(String, NodeState)} or      * {@link #remove())} call is made, at which point the link      * between this builder and a previously returned child builder for      * that child node name will get broken.      *      * @since Oak 0.6      * @param name name of the child node      * @return child builder      */
 annotation|@
 name|Nonnull
 name|NodeBuilder
@@ -197,20 +197,8 @@ name|NodeState
 name|nodeState
 parameter_list|)
 function_decl|;
-comment|/**      * Remove a child node. This method has no effect if a      * name of the given {@code name} does not exist.      *      * @param name  name of the child node      * @return this builder      * @deprecated Use {@link #remove()}      */
-annotation|@
-name|Nonnull
-annotation|@
-name|Deprecated
-name|NodeBuilder
-name|removeChildNode
-parameter_list|(
-name|String
-name|name
-parameter_list|)
-function_decl|;
-comment|/**      * Remove this child node from its parent.      */
-name|void
+comment|/**      * Remove this child node from its parent.      * @return {@code true} for existing nodes, {@code false} otherwise      */
+name|boolean
 name|remove
 parameter_list|()
 function_decl|;

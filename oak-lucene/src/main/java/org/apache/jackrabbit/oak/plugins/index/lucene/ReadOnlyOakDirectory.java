@@ -22,6 +22,24 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|api
+operator|.
+name|Type
+operator|.
+name|BINARY
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -179,24 +197,6 @@ name|NoLockFactory
 import|;
 end_import
 
-begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|api
-operator|.
-name|Type
-operator|.
-name|BINARY
-import|;
-end_import
-
 begin_comment
 comment|/**  * A read-only implementation of the Lucene {@link Directory} (a flat list of  * files) that only allows reading of the Lucene index content stored in an Oak  * repository.  */
 end_comment
@@ -296,10 +296,13 @@ name|IOException
 block|{
 name|directoryBuilder
 operator|.
-name|removeChildNode
+name|getChildNode
 argument_list|(
 name|name
 argument_list|)
+operator|.
+name|remove
+argument_list|()
 expr_stmt|;
 block|}
 annotation|@

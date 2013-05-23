@@ -314,10 +314,13 @@ name|after
 expr_stmt|;
 name|builder
 operator|.
-name|removeChildNode
+name|getChildNode
 argument_list|(
 literal|":hidden"
 argument_list|)
+operator|.
+name|remove
+argument_list|()
 expr_stmt|;
 name|after
 operator|=

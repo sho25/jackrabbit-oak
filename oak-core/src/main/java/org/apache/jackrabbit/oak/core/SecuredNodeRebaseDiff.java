@@ -408,10 +408,13 @@ parameter_list|)
 block|{
 name|builder
 operator|.
-name|removeChildNode
+name|getChildNode
 argument_list|(
 name|name
 argument_list|)
+operator|.
+name|remove
+argument_list|()
 expr_stmt|;
 block|}
 block|}

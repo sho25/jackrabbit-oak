@@ -22,6 +22,52 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|JcrConstants
+operator|.
+name|JCR_SYSTEM
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|nodetype
+operator|.
+name|NodeTypeConstants
+operator|.
+name|JCR_NODE_TYPES
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertEquals
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -68,6 +114,20 @@ operator|.
 name|util
 operator|.
 name|Set
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|collect
+operator|.
+name|Sets
 import|;
 end_import
 
@@ -195,7 +255,7 @@ name|plugins
 operator|.
 name|index
 operator|.
-name|IndexUpdateProvider
+name|IndexEditorProvider
 import|;
 end_import
 
@@ -213,7 +273,7 @@ name|plugins
 operator|.
 name|index
 operator|.
-name|IndexEditorProvider
+name|IndexUpdateProvider
 import|;
 end_import
 
@@ -439,66 +499,6 @@ name|Test
 import|;
 end_import
 
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|collect
-operator|.
-name|Sets
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|JcrConstants
-operator|.
-name|JCR_SYSTEM
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|plugins
-operator|.
-name|nodetype
-operator|.
-name|NodeTypeConstants
-operator|.
-name|JCR_NODE_TYPES
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertEquals
-import|;
-end_import
-
 begin_comment
 comment|/**  * {@code NodeTypeIndexTest} performs tests on {@link NodeTypeIndex}.  */
 end_comment
@@ -589,10 +589,13 @@ argument_list|()
 decl_stmt|;
 name|root
 operator|.
-name|removeChildNode
+name|getChildNode
 argument_list|(
 literal|"rep:security"
 argument_list|)
+operator|.
+name|remove
+argument_list|()
 expr_stmt|;
 comment|// interferes with tests
 name|addFolder

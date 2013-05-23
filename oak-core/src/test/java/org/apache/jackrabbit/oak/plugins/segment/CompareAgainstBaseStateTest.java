@@ -744,10 +744,13 @@ argument_list|)
 decl_stmt|;
 name|builder
 operator|.
-name|removeChildNode
+name|getChildNode
 argument_list|(
 literal|"baz"
 argument_list|)
+operator|.
+name|remove
+argument_list|()
 expr_stmt|;
 name|NodeState
 name|after
