@@ -22,6 +22,42 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertFalse
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertTrue
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|fail
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -229,26 +265,6 @@ name|spi
 operator|.
 name|security
 operator|.
-name|authorization
-operator|.
-name|AccessControlConstants
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|spi
-operator|.
-name|security
-operator|.
 name|ConfigurationParameters
 import|;
 end_import
@@ -270,6 +286,26 @@ operator|.
 name|authorization
 operator|.
 name|AccessControlConfiguration
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|security
+operator|.
+name|authorization
+operator|.
+name|AccessControlConstants
 import|;
 end_import
 
@@ -319,53 +355,7 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Ignore
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
 name|Test
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertFalse
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertTrue
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|fail
 import|;
 end_import
 
@@ -707,12 +697,6 @@ block|}
 block|}
 block|}
 annotation|@
-name|Ignore
-argument_list|(
-literal|"OAK-781"
-argument_list|)
-comment|// FIXME
-annotation|@
 name|Test
 specifier|public
 name|void
@@ -840,12 +824,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-annotation|@
-name|Ignore
-argument_list|(
-literal|"OAK-781"
-argument_list|)
-comment|// FIXME
 annotation|@
 name|Test
 specifier|public

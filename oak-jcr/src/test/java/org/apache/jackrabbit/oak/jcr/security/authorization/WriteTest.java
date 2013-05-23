@@ -803,12 +803,6 @@ argument_list|()
 expr_stmt|;
 block|}
 annotation|@
-name|Ignore
-argument_list|(
-literal|"OAK-781"
-argument_list|)
-comment|// FIXME
-annotation|@
 name|Test
 specifier|public
 name|void
@@ -986,12 +980,6 @@ block|{
 comment|// success
 block|}
 block|}
-annotation|@
-name|Ignore
-argument_list|(
-literal|"OAK-781"
-argument_list|)
-comment|// FIXME
 annotation|@
 name|Test
 specifier|public
@@ -1327,12 +1315,6 @@ comment|// success
 block|}
 block|}
 annotation|@
-name|Ignore
-argument_list|(
-literal|"OAK-781"
-argument_list|)
-comment|// FIXME
-annotation|@
 name|Test
 specifier|public
 name|void
@@ -1463,7 +1445,7 @@ operator|.
 name|remove
 argument_list|()
 expr_stmt|;
-name|superuser
+name|testSession
 operator|.
 name|save
 argument_list|()

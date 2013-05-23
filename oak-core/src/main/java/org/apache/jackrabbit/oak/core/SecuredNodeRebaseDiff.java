@@ -88,7 +88,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This implementation of {@code RebaseDiff} implements a  * {@link org.apache.jackrabbit.oak.spi.state.NodeStateDiff}  * for applying changes made on top of secure node states  * to a node builder for the underlying non secure node state  * of the before state. That is, the only expected conflicts  * are adding an existing property and adding an existing node.  * These conflicts correspond to the shadowing of hidden properties  * and nodes in transient space, respectively.  *  * @see SecureNodeState  */
+comment|/**  * This implementation of {@code RebaseDiff} implements a  * {@link org.apache.jackrabbit.oak.spi.state.NodeStateDiff}  * for applying changes made on top of secure node states  * to a node builder for the underlying non secure node state  * of the before state.  *  * @see SecureNodeState  */
 end_comment
 
 begin_class
@@ -172,6 +172,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
+comment|/**      * This conflict corresponds to the shadowing of an invisible property.      * @param builder  parent builder      * @param before existing property      * @param after  added property      */
 annotation|@
 name|Override
 specifier|protected
@@ -295,6 +296,7 @@ name|before
 argument_list|)
 throw|;
 block|}
+comment|/**      * This conflict corresponds to the shadowing of an invisible node      * @param builder  parent builder      * @param before existing property      * @param after  added property      */
 annotation|@
 name|Override
 specifier|protected
@@ -387,6 +389,7 @@ name|before
 argument_list|)
 throw|;
 block|}
+comment|/**      * This conflict occurs when deleting a node that has an invisible child node.      * @param builder  parent builder      * @param name      * @param before  deleted node      */
 annotation|@
 name|Override
 specifier|protected
@@ -403,9 +406,13 @@ name|NodeState
 name|before
 parameter_list|)
 block|{
-comment|// FIXME Should never be called. OAK-781 should fix this.
-comment|//        throw new IllegalStateException("Unexpected conflict: delete changed node: " +
-comment|//                name + " : " + before);
+name|builder
+operator|.
+name|removeChildNode
+argument_list|(
+name|name
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 end_class
