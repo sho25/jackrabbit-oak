@@ -247,16 +247,6 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Ignore
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
 name|Test
 import|;
 end_import
@@ -621,8 +611,6 @@ expr_stmt|;
 block|}
 comment|/**      * Test for OAK-841      */
 annotation|@
-name|Ignore
-annotation|@
 name|Test
 specifier|public
 name|void
@@ -687,6 +675,40 @@ name|root
 operator|.
 name|commit
 argument_list|()
+expr_stmt|;
+name|setTravesalFallback
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
+name|assertQuery
+argument_list|(
+literal|"select [jcr:path] from [nt:base] where [pid] = 'value'"
+argument_list|,
+name|ImmutableList
+operator|.
+name|of
+argument_list|(
+literal|"/node-1"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertQuery
+argument_list|(
+literal|"select [jcr:path] from [nt:base] where [pid] = ''"
+argument_list|,
+name|ImmutableList
+operator|.
+name|of
+argument_list|(
+literal|"/node-2"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|setTravesalFallback
+argument_list|(
+literal|true
+argument_list|)
 expr_stmt|;
 block|}
 block|}

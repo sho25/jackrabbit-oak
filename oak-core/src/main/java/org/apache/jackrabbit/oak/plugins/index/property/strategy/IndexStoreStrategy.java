@@ -29,7 +29,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|List
+name|Set
 import|;
 end_import
 
@@ -180,7 +180,7 @@ parameter_list|(
 name|NodeState
 name|index
 parameter_list|,
-name|List
+name|Set
 argument_list|<
 name|String
 argument_list|>

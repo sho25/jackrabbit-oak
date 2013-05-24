@@ -698,7 +698,7 @@ name|state
 argument_list|,
 name|Collections
 operator|.
-name|singletonList
+name|singleton
 argument_list|(
 name|key
 argument_list|)

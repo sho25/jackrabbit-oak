@@ -785,7 +785,7 @@ argument_list|()
 argument_list|,
 name|Collections
 operator|.
-name|singletonList
+name|singleton
 argument_list|(
 literal|"key"
 argument_list|)
