@@ -734,10 +734,6 @@ specifier|private
 specifier|final
 name|UnmergedBranches
 name|branches
-init|=
-operator|new
-name|UnmergedBranches
-argument_list|()
 decl_stmt|;
 specifier|private
 name|boolean
@@ -844,6 +840,16 @@ name|builder
 operator|.
 name|getAsyncDelay
 argument_list|()
+expr_stmt|;
+name|this
+operator|.
+name|branches
+operator|=
+operator|new
+name|UnmergedBranches
+argument_list|(
+name|revisionComparator
+argument_list|)
 expr_stmt|;
 comment|//TODO Use size based weigher
 name|nodeCache
@@ -5604,7 +5610,7 @@ return|return
 name|liveRev
 return|;
 block|}
-comment|/**      * Get the revision of the latest change made to this node.      *       * @param nodeMap the document      * @param changeRev the revision of the current change      * @param onlyCommitted whether only committed changes should be considered      * @param handler the conflict handler, which is called for un-committed revisions      *                preceding<code>before</code>.      * @return the revision, or null if deleted      */
+comment|/**      * Get the revision of the latest change made to this node.      *       * @param nodeMap the document      * @param changeRev the revision of the current change      * @param handler the conflict handler, which is called for un-committed revisions      *                preceding<code>before</code>.      * @return the revision, or null if deleted      */
 annotation|@
 name|SuppressWarnings
 argument_list|(
@@ -6453,7 +6459,9 @@ throw|throw
 operator|new
 name|MicroKernelException
 argument_list|(
-literal|"Conflicting concurrent change"
+literal|"Conflicting concurrent change. Update operation failed: "
+operator|+
+name|op
 argument_list|)
 throw|;
 block|}
