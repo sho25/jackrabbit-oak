@@ -108,6 +108,9 @@ decl_stmt|;
 specifier|private
 specifier|final
 name|Type
+argument_list|<
+name|?
+argument_list|>
 name|type
 decl_stmt|;
 specifier|private
@@ -125,6 +128,9 @@ name|String
 name|name
 parameter_list|,
 name|Type
+argument_list|<
+name|?
+argument_list|>
 name|type
 parameter_list|,
 name|boolean
@@ -191,6 +197,9 @@ annotation|@
 name|Override
 specifier|public
 name|Type
+argument_list|<
+name|?
+argument_list|>
 name|getRequiredType
 parameter_list|()
 block|{

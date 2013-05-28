@@ -459,6 +459,9 @@ annotation|@
 name|Override
 specifier|public
 name|Type
+argument_list|<
+name|?
+argument_list|>
 name|getRequiredType
 parameter_list|()
 block|{

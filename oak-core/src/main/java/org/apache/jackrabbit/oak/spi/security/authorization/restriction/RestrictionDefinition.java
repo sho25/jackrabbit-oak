@@ -67,6 +67,9 @@ parameter_list|()
 function_decl|;
 comment|/**      * The required type as defined by this definition.      *      * @return The required type which must be a valid {@link javax.jcr.PropertyType}.      */
 name|Type
+argument_list|<
+name|?
+argument_list|>
 name|getRequiredType
 parameter_list|()
 function_decl|;

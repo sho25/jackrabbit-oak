@@ -448,6 +448,9 @@ argument_list|)
 throw|;
 block|}
 name|Type
+argument_list|<
+name|?
+argument_list|>
 name|requiredType
 init|=
 name|definition
@@ -605,6 +608,9 @@ argument_list|)
 throw|;
 block|}
 name|Type
+argument_list|<
+name|?
+argument_list|>
 name|requiredType
 init|=
 name|definition
@@ -1029,6 +1035,9 @@ argument_list|)
 throw|;
 block|}
 name|Type
+argument_list|<
+name|?
+argument_list|>
 name|type
 init|=
 name|entry

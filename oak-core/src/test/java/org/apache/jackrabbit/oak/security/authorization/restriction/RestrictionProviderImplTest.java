@@ -27,16 +27,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|HashMap
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|List
 import|;
 end_import
@@ -297,6 +287,22 @@ end_import
 
 begin_import
 import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|collect
+operator|.
+name|Maps
+operator|.
+name|newHashMap
+import|;
+end_import
+
+begin_import
+import|import static
 name|org
 operator|.
 name|junit
@@ -548,8 +554,7 @@ name|RestrictionPattern
 argument_list|>
 name|map
 init|=
-operator|new
-name|HashMap
+name|newHashMap
 argument_list|()
 decl_stmt|;
 name|map
