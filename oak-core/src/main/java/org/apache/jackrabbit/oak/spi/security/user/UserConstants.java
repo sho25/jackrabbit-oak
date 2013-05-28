@@ -177,11 +177,11 @@ name|PARAM_ADMIN_ID
 init|=
 literal|"adminId"
 decl_stmt|;
-comment|/**      * Configuration option defining the ID of the administrator user.      */
+comment|/**      * Configuration option defining if the admin password should be omitted      * upon user creation.      */
 name|String
-name|PARAM_ADMIN_PW
+name|PARAM_OMIT_ADMIN_PW
 init|=
-literal|"adminPw"
+literal|"omitAdminPw"
 decl_stmt|;
 comment|/**      * Default value for {@link #PARAM_ADMIN_ID}      */
 name|String

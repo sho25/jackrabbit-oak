@@ -1085,7 +1085,7 @@ literal|false
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * @since OAK 1.0 The configuration defines if and how the password of the      * admin user is being set.      */
+comment|/**      * @since OAK 1.0 The configuration defines if the password of the      * admin user is being set.      */
 annotation|@
 name|Test
 specifier|public
@@ -1099,7 +1099,7 @@ name|Map
 argument_list|<
 name|String
 argument_list|,
-name|String
+name|Object
 argument_list|>
 name|userParams
 init|=
@@ -1124,9 +1124,9 @@ name|put
 argument_list|(
 name|UserConstants
 operator|.
-name|PARAM_ADMIN_PW
+name|PARAM_OMIT_ADMIN_PW
 argument_list|,
-literal|null
+literal|true
 argument_list|)
 expr_stmt|;
 name|ConfigurationParameters
