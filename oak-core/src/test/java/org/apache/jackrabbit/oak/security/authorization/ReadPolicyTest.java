@@ -163,10 +163,8 @@ extends|extends
 name|AbstractAccessControlTest
 block|{
 specifier|private
-name|Set
-argument_list|<
 name|String
-argument_list|>
+index|[]
 name|readPaths
 decl_stmt|;
 annotation|@
