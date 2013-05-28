@@ -291,7 +291,7 @@ operator|.
 name|REMOVE_NODE
 argument_list|)
 decl_stmt|;
-comment|/**      * Configuration parameter to enable full read access to regular nodes and      * properties at the specified paths.      */
+comment|/**      * Configuration parameter to enable full read access to regular nodes and      * properties at the specified paths.      *      * @since OAK 1.0      */
 name|String
 name|PARAM_READ_PATHS
 init|=
@@ -319,7 +319,7 @@ operator|.
 name|PRIVILEGES_PATH
 block|}
 decl_stmt|;
-comment|/**      * Configuration parameter specifying additional principals that should be      * treated as 'administrator' thus get granted full permissions on the      * complete repository content.      */
+comment|/**      * Configuration parameter specifying additional principals that should be      * treated as 'administrator' thus get granted full permissions on the      * complete repository content.      *      * @since OAK 1.0      */
 name|String
 name|PARAM_ADMINISTRATOR_PRINCIPALS
 init|=
