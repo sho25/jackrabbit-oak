@@ -4179,7 +4179,6 @@ parameter_list|)
 throws|throws
 name|RepositoryException
 block|{
-comment|// TODO: specify sort order
 name|StringBuilder
 name|stmt
 init|=
@@ -4297,6 +4296,13 @@ operator|.
 name|append
 argument_list|(
 literal|']'
+argument_list|)
+expr_stmt|;
+name|stmt
+operator|.
+name|append
+argument_list|(
+literal|" order by jcr:path"
 argument_list|)
 expr_stmt|;
 try|try
