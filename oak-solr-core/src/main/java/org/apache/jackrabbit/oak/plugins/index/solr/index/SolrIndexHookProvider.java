@@ -419,9 +419,7 @@ literal|"Creating a Solr index hook"
 argument_list|)
 expr_stmt|;
 block|}
-name|IndexEditor
-name|indexHook
-init|=
+return|return
 operator|new
 name|SolrIndexDiff
 argument_list|(
@@ -437,9 +435,6 @@ operator|.
 name|getConfiguration
 argument_list|()
 argument_list|)
-decl_stmt|;
-return|return
-name|indexHook
 return|;
 block|}
 catch|catch

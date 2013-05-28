@@ -25,16 +25,6 @@ end_package
 
 begin_import
 import|import
-name|javax
-operator|.
-name|jcr
-operator|.
-name|PropertyType
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -281,19 +271,6 @@ return|return
 name|CommitPolicy
 operator|.
 name|SOFT
-return|;
-block|}
-annotation|@
-name|Override
-specifier|public
-name|String
-name|getCoreName
-parameter_list|()
-block|{
-return|return
-name|SolrServerConfigurationDefaults
-operator|.
-name|CORE_NAME
 return|;
 block|}
 block|}

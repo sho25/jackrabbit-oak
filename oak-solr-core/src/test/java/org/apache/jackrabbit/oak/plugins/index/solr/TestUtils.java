@@ -729,17 +729,6 @@ operator|.
 name|HARD
 return|;
 block|}
-annotation|@
-name|Override
-specifier|public
-name|String
-name|getCoreName
-parameter_list|()
-block|{
-return|return
-literal|"oak"
-return|;
-block|}
 block|}
 return|;
 block|}

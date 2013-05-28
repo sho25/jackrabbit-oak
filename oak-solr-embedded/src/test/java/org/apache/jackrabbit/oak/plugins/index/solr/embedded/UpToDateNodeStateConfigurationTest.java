@@ -141,7 +141,7 @@ name|junit
 operator|.
 name|Assert
 operator|.
-name|assertNull
+name|assertNotNull
 import|;
 end_import
 
@@ -179,7 +179,7 @@ name|jsop
 init|=
 literal|"^\"a\":1 ^\"b\":2 ^\"c\":3 +\"x\":{} +\"y\":{} +\"z\":{} "
 operator|+
-literal|"+\"oak:index\":{\"solrIdx\":{\"coreName\":\"cn\", \"solrHome\":\"sh\", \"solrConfig\":\"sc\"}} "
+literal|"+\"oak:index\":{\"solrIdx\":{\"coreName\":\"cn\", \"solrHomePath\":\"sh\", \"solrConfigPath\":\"sc\"}} "
 decl_stmt|;
 name|microKernel
 operator|.
@@ -231,13 +231,48 @@ argument_list|,
 name|path
 argument_list|)
 decl_stmt|;
+name|SolrServerConfiguration
+name|solrServerConfiguration
+init|=
+name|upToDateNodeStateConfiguration
+operator|.
+name|getSolrServerConfiguration
+argument_list|()
+decl_stmt|;
+name|assertNotNull
+argument_list|(
+name|solrServerConfiguration
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"sh"
+argument_list|,
+name|solrServerConfiguration
+operator|.
+name|getSolrHomePath
+argument_list|()
+argument_list|)
+expr_stmt|;
+comment|// property defined in the node state
 name|assertEquals
 argument_list|(
 literal|"cn"
 argument_list|,
-name|upToDateNodeStateConfiguration
+name|solrServerConfiguration
 operator|.
 name|getCoreName
+argument_list|()
+argument_list|)
+expr_stmt|;
+comment|// property defined in the node state
+name|assertEquals
+argument_list|(
+literal|"sc"
+argument_list|,
+name|solrServerConfiguration
+operator|.
+name|getSolrConfigPath
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -279,11 +314,11 @@ argument_list|,
 name|path
 argument_list|)
 decl_stmt|;
-name|assertNull
+name|assertNotNull
 argument_list|(
 name|upToDateNodeStateConfiguration
 operator|.
-name|getCoreName
+name|getSolrServerConfiguration
 argument_list|()
 argument_list|)
 expr_stmt|;
