@@ -351,6 +351,26 @@ end_import
 
 begin_import
 import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
+import|;
+end_import
+
+begin_import
+import|import
 name|com
 operator|.
 name|google
@@ -370,6 +390,22 @@ name|FileStore
 implements|implements
 name|SegmentStore
 block|{
+comment|/** Logger instance */
+specifier|private
+specifier|static
+specifier|final
+name|Logger
+name|log
+init|=
+name|LoggerFactory
+operator|.
+name|getLogger
+argument_list|(
+name|FileStore
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 specifier|private
 specifier|static
 specifier|final
@@ -482,6 +518,32 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+comment|// http://www.oracle.com/technetwork/java/hotspotfaq-138619.html#64bit_detection
+if|if
+condition|(
+literal|"32"
+operator|.
+name|equals
+argument_list|(
+name|System
+operator|.
+name|getProperty
+argument_list|(
+literal|"sun.arch.data.model"
+argument_list|)
+argument_list|)
+condition|)
+block|{
+name|log
+operator|.
+name|warn
+argument_list|(
+literal|"TarMK will only work with small repositories"
+operator|+
+literal|" in a 32 bit JVM. Consider switching to a 64 bit JVM."
+argument_list|)
+expr_stmt|;
+block|}
 name|checkNotNull
 argument_list|(
 name|directory
