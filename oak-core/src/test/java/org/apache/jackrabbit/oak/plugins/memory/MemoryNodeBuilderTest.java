@@ -316,10 +316,15 @@ argument_list|)
 expr_stmt|;
 name|base
 operator|=
+name|ModifiedNodeState
+operator|.
+name|squeeze
+argument_list|(
 name|builder
 operator|.
 name|getNodeState
 argument_list|()
+argument_list|)
 expr_stmt|;
 block|}
 annotation|@
