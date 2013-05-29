@@ -1575,6 +1575,10 @@ block|{
 specifier|protected
 name|long
 name|revision
+init|=
+name|rootBuilder
+operator|.
+name|baseRevision
 decl_stmt|;
 specifier|protected
 name|MutableNodeState
@@ -1610,37 +1614,16 @@ operator|.
 name|baseRevision
 condition|)
 block|{
-comment|// the root builder's base state has been reset: re-get
-comment|// state from parent.
-name|MutableNodeState
-name|parentState
-init|=
-operator|(
-name|MutableNodeState
-operator|)
-name|parent
-operator|.
-name|head
+comment|// the root builder's base state has been reset: transition back
+comment|// to unconnected and connect again if necessary.
+return|return
+operator|new
+name|UnconnectedHead
 argument_list|()
 operator|.
-name|getCurrentNodeState
+name|update
 argument_list|()
-decl_stmt|;
-name|state
-operator|=
-name|parentState
-operator|.
-name|getMutableChildNode
-argument_list|(
-name|name
-argument_list|)
-expr_stmt|;
-name|revision
-operator|=
-name|rootBuilder
-operator|.
-name|baseRevision
-expr_stmt|;
+return|;
 block|}
 return|return
 name|this
