@@ -5400,6 +5400,7 @@ block|}
 block|}
 specifier|private
 specifier|static
+specifier|final
 class|class
 name|ReadPolicy
 implements|implements
@@ -5425,11 +5426,9 @@ specifier|public
 name|String
 name|getName
 parameter_list|()
-throws|throws
-name|RepositoryException
 block|{
 return|return
-literal|"Grants read access on configured trees (default: node types, namespaces and privileges)."
+literal|"Grants read access on configured trees."
 return|;
 block|}
 block|}
