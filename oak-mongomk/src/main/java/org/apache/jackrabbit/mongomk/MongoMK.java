@@ -1723,6 +1723,15 @@ operator|.
 name|dispose
 argument_list|()
 expr_stmt|;
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Disposed MongoMK with clusterNodeId: {}"
+argument_list|,
+name|clusterId
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 comment|/**      * Get the node for the given path and revision. The returned object might      * not be modified directly.      *      * @param path      * @param rev      * @return the node      */

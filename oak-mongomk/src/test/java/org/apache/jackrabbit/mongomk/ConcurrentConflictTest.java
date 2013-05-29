@@ -306,9 +306,11 @@ argument_list|()
 decl_stmt|;
 annotation|@
 name|Before
+annotation|@
+name|Override
 specifier|public
 name|void
-name|setup
+name|initMongoMK
 parameter_list|()
 block|{
 name|logBuffer
@@ -365,6 +367,11 @@ literal|null
 argument_list|)
 expr_stmt|;
 block|}
+name|mk
+operator|.
+name|dispose
+argument_list|()
+expr_stmt|;
 for|for
 control|(
 name|int
