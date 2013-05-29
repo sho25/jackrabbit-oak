@@ -1429,10 +1429,10 @@ block|{
 annotation|@
 name|Override
 name|void
-name|uncommittedModification
+name|concurrentModification
 parameter_list|(
 name|Revision
-name|uncommitted
+name|other
 parameter_list|)
 block|{
 if|if
@@ -1465,7 +1465,7 @@ argument_list|()
 operator|.
 name|add
 argument_list|(
-name|uncommitted
+name|other
 argument_list|)
 expr_stmt|;
 block|}
@@ -1589,23 +1589,11 @@ name|revision
 operator|+
 literal|"; document:\n"
 operator|+
+name|Utils
+operator|.
+name|formatDocument
+argument_list|(
 name|map
-operator|.
-name|toString
-argument_list|()
-operator|.
-name|replaceAll
-argument_list|(
-literal|", _"
-argument_list|,
-literal|",\n_"
-argument_list|)
-operator|.
-name|replaceAll
-argument_list|(
-literal|"}, "
-argument_list|,
-literal|"},\n"
 argument_list|)
 operator|+
 literal|",\nrevision order:\n"
@@ -1655,9 +1643,6 @@ argument_list|()
 control|)
 block|{
 comment|// mark collisions on commit root
-name|Collision
-name|c
-init|=
 operator|new
 name|Collision
 argument_list|(
@@ -1669,25 +1654,12 @@ name|op
 argument_list|,
 name|revision
 argument_list|)
-decl_stmt|;
-name|boolean
-name|success
-init|=
-name|c
 operator|.
 name|mark
 argument_list|(
 name|store
 argument_list|)
-decl_stmt|;
-if|if
-condition|(
-operator|!
-name|success
-condition|)
-block|{
-comment|// TODO: fail this commit
-block|}
+expr_stmt|;
 block|}
 block|}
 block|}

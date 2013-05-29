@@ -5610,7 +5610,7 @@ return|return
 name|liveRev
 return|;
 block|}
-comment|/**      * Get the revision of the latest change made to this node.      *       * @param nodeMap the document      * @param changeRev the revision of the current change      * @param handler the conflict handler, which is called for un-committed revisions      *                preceding<code>before</code>.      * @return the revision, or null if deleted      */
+comment|/**      * Get the revision of the latest change made to this node.      *       * @param nodeMap the document      * @param changeRev the revision of the current change      * @param handler the conflict handler, which is called for concurrent changes      *                preceding<code>before</code>.      * @return the revision, or null if deleted      */
 annotation|@
 name|SuppressWarnings
 argument_list|(
@@ -5879,7 +5879,7 @@ condition|)
 block|{
 name|handler
 operator|.
-name|uncommittedModification
+name|concurrentModification
 argument_list|(
 name|propRev
 argument_list|)

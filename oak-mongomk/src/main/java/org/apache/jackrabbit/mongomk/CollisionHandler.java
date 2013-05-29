@@ -36,23 +36,23 @@ block|{
 annotation|@
 name|Override
 name|void
-name|uncommittedModification
+name|concurrentModification
 parameter_list|(
 name|Revision
-name|uncommitted
+name|other
 parameter_list|)
 block|{
 comment|// do nothing
 block|}
 block|}
 decl_stmt|;
-comment|/**      * Callback for an uncommitted modification in {@link Revision}      *<code>uncommitted</code>.      *      * @param uncommitted the uncommitted revision of the change.      */
+comment|/**      * Callback for an concurrent modification in {@link Revision}      *<code>other</code>.      *      * @param other the revision of the concurrent change.      */
 specifier|abstract
 name|void
-name|uncommittedModification
+name|concurrentModification
 parameter_list|(
 name|Revision
-name|uncommitted
+name|other
 parameter_list|)
 function_decl|;
 block|}
