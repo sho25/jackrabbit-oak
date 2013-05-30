@@ -810,7 +810,7 @@ decl_stmt|;
 name|stores
 operator|=
 operator|new
-name|FileStore
+name|SegmentStore
 index|[
 name|cluster
 operator|.
