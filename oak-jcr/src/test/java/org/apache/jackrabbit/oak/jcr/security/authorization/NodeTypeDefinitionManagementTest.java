@@ -252,7 +252,7 @@ name|ntd
 operator|.
 name|setName
 argument_list|(
-literal|"testNodeType"
+literal|"testRegisterNodeType"
 argument_list|)
 expr_stmt|;
 name|ntd
@@ -346,7 +346,7 @@ index|]
 operator|.
 name|setName
 argument_list|(
-literal|"anotherNodeType"
+literal|"anotherRegisterNodeType"
 argument_list|)
 expr_stmt|;
 name|ntds
@@ -514,7 +514,7 @@ name|ntd
 operator|.
 name|setName
 argument_list|(
-literal|"testNodeType"
+literal|"testRegisterNodeTypeWithPrivilege"
 argument_list|)
 expr_stmt|;
 name|ntd
@@ -567,7 +567,7 @@ index|]
 operator|.
 name|setName
 argument_list|(
-literal|"anotherNodeType"
+literal|"anotherRegisterNodeTypeWithPrivilege"
 argument_list|)
 expr_stmt|;
 name|ntds
@@ -643,7 +643,7 @@ name|ntd
 operator|.
 name|setName
 argument_list|(
-literal|"testNodeType"
+literal|"testUnregisterNodeType"
 argument_list|)
 expr_stmt|;
 name|ntd
