@@ -13595,6 +13595,12 @@ name|getDefaultPrimaryType
 argument_list|()
 expr_stmt|;
 comment|// OAK-826
+name|definition
+operator|.
+name|getRequiredPrimaryTypes
+argument_list|()
+expr_stmt|;
+comment|// OAK-826
 block|}
 block|}
 comment|//------------------------------------------------------------< private>---
