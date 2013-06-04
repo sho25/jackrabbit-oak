@@ -1660,6 +1660,18 @@ name|NodeStateDiff
 name|diff
 parameter_list|)
 block|{
+if|if
+condition|(
+name|this
+operator|==
+name|base
+condition|)
+block|{
+return|return
+literal|true
+return|;
+comment|// no differences
+block|}
 for|for
 control|(
 name|Map
