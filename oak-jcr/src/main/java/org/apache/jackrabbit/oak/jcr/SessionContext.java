@@ -129,6 +129,16 @@ name|javax
 operator|.
 name|jcr
 operator|.
+name|UnsupportedRepositoryOperationException
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|jcr
+operator|.
 name|ValueFactory
 import|;
 end_import
@@ -1485,6 +1495,8 @@ specifier|public
 name|ObservationManager
 name|getObservationManager
 parameter_list|()
+throws|throws
+name|UnsupportedRepositoryOperationException
 block|{
 if|if
 condition|(
@@ -1501,11 +1513,30 @@ operator|.
 name|getContentRepository
 argument_list|()
 decl_stmt|;
+if|if
+condition|(
+operator|!
+operator|(
+name|contentRepository
+operator|instanceof
+name|ContentRepositoryImpl
+operator|)
+condition|)
+block|{
+throw|throw
+operator|new
+name|UnsupportedRepositoryOperationException
+argument_list|(
+literal|"Observation not supported"
+argument_list|)
+throw|;
+block|}
 name|observationManager
 operator|=
 operator|new
 name|ObservationManagerImpl
 argument_list|(
+comment|// FIXME avoid casting to implementation
 operator|(
 operator|(
 name|ContentRepositoryImpl
