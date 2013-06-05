@@ -1506,7 +1506,6 @@ operator|=
 operator|new
 name|ObservationManagerImpl
 argument_list|(
-comment|// FIXME don't cast
 operator|(
 operator|(
 name|ContentRepositoryImpl

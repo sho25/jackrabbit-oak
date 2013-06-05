@@ -13,9 +13,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|plugins
+name|spi
 operator|.
-name|observation
+name|commit
 package|;
 end_package
 
@@ -48,7 +48,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * TODO unify with Observer or CommitHook  */
+comment|/**  * TODO unify with either Observer or CommitHook  */
 end_comment
 
 begin_interface
