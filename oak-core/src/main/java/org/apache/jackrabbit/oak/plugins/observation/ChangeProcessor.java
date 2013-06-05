@@ -443,6 +443,23 @@ argument_list|>
 name|filterRef
 decl_stmt|;
 specifier|private
+specifier|final
+name|AtomicReference
+argument_list|<
+name|String
+argument_list|>
+name|userDataRef
+init|=
+operator|new
+name|AtomicReference
+argument_list|<
+name|String
+argument_list|>
+argument_list|(
+literal|null
+argument_list|)
+decl_stmt|;
+specifier|private
 specifier|volatile
 name|boolean
 name|running
@@ -538,6 +555,22 @@ operator|.
 name|set
 argument_list|(
 name|filter
+argument_list|)
+expr_stmt|;
+block|}
+specifier|public
+name|void
+name|setUserData
+parameter_list|(
+name|String
+name|userData
+parameter_list|)
+block|{
+name|userDataRef
+operator|.
+name|set
+argument_list|(
+name|userData
 argument_list|)
 expr_stmt|;
 block|}
@@ -1607,7 +1640,7 @@ name|String
 name|jcrPath
 parameter_list|)
 block|{
-comment|// TODO support, identifier, info
+comment|// TODO support identifier, info
 return|return
 operator|new
 name|EventImpl
@@ -1634,9 +1667,9 @@ operator|.
 name|getDate
 argument_list|()
 argument_list|,
-name|changes
+name|userDataRef
 operator|.
-name|getUserData
+name|get
 argument_list|()
 argument_list|,
 name|changes
