@@ -706,6 +706,14 @@ return|return
 name|executor
 return|;
 block|}
+name|ContentRepository
+name|getContentRepository
+parameter_list|()
+block|{
+return|return
+name|contentRepository
+return|;
+block|}
 block|}
 end_class
 

@@ -18,6 +18,22 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkNotNull
+import|;
+end_import
+
+begin_import
 import|import
 name|javax
 operator|.
@@ -100,6 +116,44 @@ operator|.
 name|api
 operator|.
 name|ContentSession
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|observation
+operator|.
+name|ChangeDispatcher
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|observation
+operator|.
+name|ChangeDispatcher
+operator|.
+name|Listener
 import|;
 end_import
 
@@ -253,22 +307,6 @@ name|NodeStore
 import|;
 end_import
 
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|Preconditions
-operator|.
-name|checkNotNull
-import|;
-end_import
-
 begin_comment
 comment|/**  * {@code MicroKernel}-based implementation of  * the {@link ContentRepository} interface.  */
 end_comment
@@ -304,6 +342,11 @@ specifier|private
 specifier|final
 name|QueryIndexProvider
 name|indexProvider
+decl_stmt|;
+specifier|private
+specifier|final
+name|ChangeDispatcher
+name|changeDispatcher
 decl_stmt|;
 comment|/**      * Creates an content repository instance based on the given, already      * initialized components.      *      * @param nodeStore            the node store this repository is based upon.      * @param commitHook           the hook to use for processing commits      * @param defaultWorkspaceName the default workspace name;      * @param indexProvider        index provider      * @param securityProvider     The configured security provider.      */
 specifier|public
@@ -384,6 +427,16 @@ else|:
 operator|new
 name|CompositeQueryIndexProvider
 argument_list|()
+expr_stmt|;
+name|this
+operator|.
+name|changeDispatcher
+operator|=
+operator|new
+name|ChangeDispatcher
+argument_list|(
+name|nodeStore
+argument_list|)
 expr_stmt|;
 block|}
 annotation|@
@@ -485,6 +538,8 @@ name|nodeStore
 argument_list|,
 name|commitHook
 argument_list|,
+name|changeDispatcher
+argument_list|,
 name|indexProvider
 argument_list|)
 return|;
@@ -496,6 +551,18 @@ parameter_list|()
 block|{
 return|return
 name|nodeStore
+return|;
+block|}
+specifier|public
+name|Listener
+name|newListener
+parameter_list|()
+block|{
+return|return
+name|changeDispatcher
+operator|.
+name|newListener
+argument_list|()
 return|;
 block|}
 block|}
