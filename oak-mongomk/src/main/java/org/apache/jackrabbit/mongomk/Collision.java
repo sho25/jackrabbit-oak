@@ -468,15 +468,12 @@ return|return
 literal|false
 return|;
 block|}
-else|else
-block|{
 comment|// node is also commit root, but not yet committed
 comment|// i.e. a branch commit, which is not yet merged
 name|commitRootPath
 operator|=
 name|p
 expr_stmt|;
-block|}
 block|}
 else|else
 block|{

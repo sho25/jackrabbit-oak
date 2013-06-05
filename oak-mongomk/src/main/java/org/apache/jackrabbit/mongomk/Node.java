@@ -344,6 +344,15 @@ argument_list|,
 name|id
 argument_list|)
 expr_stmt|;
+name|Commit
+operator|.
+name|setModified
+argument_list|(
+name|op
+argument_list|,
+name|rev
+argument_list|)
+expr_stmt|;
 name|op
 operator|.
 name|setMapEntry
@@ -602,6 +611,9 @@ argument_list|<
 name|String
 argument_list|>
 argument_list|()
+decl_stmt|;
+name|boolean
+name|hasMore
 decl_stmt|;
 name|Children
 parameter_list|(
