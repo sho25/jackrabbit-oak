@@ -305,9 +305,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|core
+name|api
 operator|.
-name|ContentRepositoryImpl
+name|ContentSession
 import|;
 end_import
 
@@ -554,6 +554,24 @@ operator|.
 name|nodetype
 operator|.
 name|ReadOnlyNodeTypeManager
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|observation
+operator|.
+name|Observable
 import|;
 end_import
 
@@ -1513,13 +1531,22 @@ operator|.
 name|getContentRepository
 argument_list|()
 decl_stmt|;
+name|ContentSession
+name|contentSession
+init|=
+name|getSessionDelegate
+argument_list|()
+operator|.
+name|getContentSession
+argument_list|()
+decl_stmt|;
 if|if
 condition|(
 operator|!
 operator|(
-name|contentRepository
+name|contentSession
 operator|instanceof
-name|ContentRepositoryImpl
+name|Observable
 operator|)
 condition|)
 block|{
@@ -1527,7 +1554,9 @@ throw|throw
 operator|new
 name|UnsupportedRepositoryOperationException
 argument_list|(
-literal|"Observation not supported"
+literal|"Observation not supported for session "
+operator|+
+name|contentSession
 argument_list|)
 throw|;
 block|}
@@ -1536,19 +1565,7 @@ operator|=
 operator|new
 name|ObservationManagerImpl
 argument_list|(
-comment|// FIXME avoid casting to implementation
-operator|(
-operator|(
-name|ContentRepositoryImpl
-operator|)
-name|contentRepository
-operator|)
-argument_list|,
-name|getSessionDelegate
-argument_list|()
-operator|.
-name|getContentSession
-argument_list|()
+name|contentSession
 argument_list|,
 name|ReadOnlyNodeTypeManager
 operator|.

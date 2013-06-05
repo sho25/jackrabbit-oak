@@ -856,6 +856,7 @@ name|NodeStateDiff
 name|diff
 parameter_list|)
 block|{
+comment|// TODO wrap diff into access check wrapper
 name|after
 operator|.
 name|compareAgainstBaseState
