@@ -228,7 +228,6 @@ specifier|final
 name|boolean
 name|noLocal
 decl_stmt|;
-comment|// TODO implement filtering by noLocal
 specifier|public
 name|EventFilter
 parameter_list|(
@@ -399,6 +398,15 @@ name|path
 argument_list|,
 name|path
 argument_list|)
+return|;
+block|}
+specifier|public
+name|boolean
+name|excludeLocal
+parameter_list|()
+block|{
+return|return
+name|noLocal
 return|;
 block|}
 annotation|@

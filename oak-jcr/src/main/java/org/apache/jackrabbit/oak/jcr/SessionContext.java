@@ -1544,6 +1544,12 @@ operator|)
 name|contentRepository
 operator|)
 argument_list|,
+name|getSessionDelegate
+argument_list|()
+operator|.
+name|getContentSession
+argument_list|()
+argument_list|,
 name|ReadOnlyNodeTypeManager
 operator|.
 name|getInstance
