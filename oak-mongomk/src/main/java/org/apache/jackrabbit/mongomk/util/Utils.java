@@ -969,7 +969,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Formats a MongoDB document for use in a log message.      *       * @param document the MongoDB document.      * @return      */
+comment|/**      * Formats a MongoDB document for use in a log message.      *       * @param document the MongoDB document.      * @return the formatted string      */
 specifier|public
 specifier|static
 name|String

@@ -110,7 +110,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A logging microkernel implementation.  */
+comment|/**  * A logging microkernel implementation.  *   * @param<T> the wrapped microkernel  */
 end_comment
 
 begin_class
