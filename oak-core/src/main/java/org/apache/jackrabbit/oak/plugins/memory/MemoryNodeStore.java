@@ -420,7 +420,12 @@ name|this
 operator|.
 name|root
 operator|=
+name|ModifiedNodeState
+operator|.
+name|squeeze
+argument_list|(
 name|newRoot
+argument_list|)
 expr_stmt|;
 block|}
 annotation|@
@@ -449,6 +454,10 @@ name|compareAndSet
 argument_list|(
 name|base
 argument_list|,
+name|ModifiedNodeState
+operator|.
+name|squeeze
+argument_list|(
 name|checkNotNull
 argument_list|(
 name|hook
@@ -459,6 +468,7 @@ argument_list|(
 name|base
 argument_list|,
 name|root
+argument_list|)
 argument_list|)
 argument_list|)
 condition|)
