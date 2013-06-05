@@ -550,7 +550,7 @@ name|hook
 argument_list|,
 name|changeDispatcher
 operator|.
-name|createHook
+name|newHook
 argument_list|(
 name|this
 argument_list|)

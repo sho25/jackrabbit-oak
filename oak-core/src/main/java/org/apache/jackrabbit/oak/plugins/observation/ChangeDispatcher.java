@@ -243,6 +243,10 @@ name|TODO
 import|;
 end_import
 
+begin_comment
+comment|/**  * A {@code ChangeDispatcher} instance records changes to a {@link NodeStore}  * and dispatches them to interested parties.  *<p>  * The {@link #newHook(ContentSession)} method registers a hook for  * reporting changes. Actual changes are reported by calling  * {@link Hook#contentChanged(NodeState, NodeState)}. Such changes are considered  * to have occurred on the local cluster node and are recorded as such. Changes  * that occurred in-between calls to any hook registered with a change processor  * are considered to have occurred on a different cluster node and are recorded as such.  *<p>  * The {@link #newListener()} registers a listener for receiving changes reported  * into a change dispatcher by any of its hooks.  */
+end_comment
+
 begin_class
 specifier|public
 class|class
@@ -268,11 +272,14 @@ argument_list|()
 decl_stmt|;
 specifier|private
 name|NodeState
-name|previous
+name|previousRoot
 decl_stmt|;
+comment|/**      * Create a new instance for recording changes to {@code store}.      * @param store  the node store to record changes for      */
 specifier|public
 name|ChangeDispatcher
 parameter_list|(
+annotation|@
+name|Nonnull
 name|NodeStore
 name|store
 parameter_list|)
@@ -283,7 +290,7 @@ name|store
 operator|=
 name|store
 expr_stmt|;
-name|previous
+name|previousRoot
 operator|=
 name|checkNotNull
 argument_list|(
@@ -294,11 +301,12 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * Create a new {@link Hook} for reporting changes occurring in the      * passed {@code contentSession}. The content session is used to      * determine the user associated with the changes recorded through this      * hook and to determine the originating session of changes.      * @param contentSession  session which will be associated with any changes reported      *                        through this hook.      * @return a new {@code Hook} instance      */
 annotation|@
 name|Nonnull
 specifier|public
 name|Hook
-name|createHook
+name|newHook
 parameter_list|(
 name|ContentSession
 name|contentSession
@@ -312,6 +320,7 @@ name|contentSession
 argument_list|)
 return|;
 block|}
+comment|/**      * Create a new {@link Listener} for receiving changes reported into      * this change dispatcher. Listeners need to be {@link Listener#dispose() disposed}      * when no longer needed.      * @return  a new {@code Listener} instance.      */
 annotation|@
 name|Nonnull
 specifier|public
@@ -421,7 +430,7 @@ if|if
 condition|(
 name|root
 operator|!=
-name|previous
+name|previousRoot
 condition|)
 block|{
 name|ChangeSet
@@ -431,12 +440,12 @@ name|ChangeSet
 operator|.
 name|external
 argument_list|(
-name|previous
+name|previousRoot
 argument_list|,
 name|root
 argument_list|)
 decl_stmt|;
-name|previous
+name|previousRoot
 operator|=
 name|root
 expr_stmt|;
@@ -469,14 +478,14 @@ name|ChangeSet
 operator|.
 name|local
 argument_list|(
-name|previous
+name|previousRoot
 argument_list|,
 name|root
 argument_list|,
 name|contentSession
 argument_list|)
 decl_stmt|;
-name|previous
+name|previousRoot
 operator|=
 name|root
 expr_stmt|;
@@ -583,6 +592,7 @@ return|;
 block|}
 block|}
 comment|//------------------------------------------------------------< Sink>---
+comment|/**      * Hook for reporting changes. Actual changes are reported by calling      * {@link Hook#contentChanged(NodeState, NodeState)}. Such changes are considered      * to have occurred on the local cluster node and are recorded as such. Changes      * that occurred in-between calls to any hook registered with a change processor      * are considered to have occurred on a different cluster node and are recorded as such.      */
 specifier|public
 class|class
 name|Hook
@@ -641,6 +651,7 @@ expr_stmt|;
 block|}
 block|}
 comment|//------------------------------------------------------------< Listener>---
+comment|/**      * Listener for receiving changes reported into a change dispatcher by any of its hooks.      */
 specifier|public
 class|class
 name|Listener
@@ -658,6 +669,7 @@ operator|.
 name|newLinkedBlockingQueue
 argument_list|()
 decl_stmt|;
+comment|/**          * Free up any resources associated by this hook.          */
 specifier|public
 name|void
 name|dispose
@@ -669,6 +681,7 @@ name|this
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**          * Poll for changes reported to this listener.          * @return  {@code ChangeSet} of the changes or {@code null} if no changes occurred since          *          the last call to this method.          */
 annotation|@
 name|CheckForNull
 specifier|public
@@ -728,6 +741,7 @@ expr_stmt|;
 block|}
 block|}
 comment|//------------------------------------------------------------< ChangeSet>---
+comment|/**      * Instances of this class represent changes to a node store. In addition they      * record meta data associated with such changes like whether a change occurred      * on the local cluster node, the user causing the changes and the date the changes      * where persisted.      */
 specifier|public
 specifier|abstract
 specifier|static
@@ -744,7 +758,6 @@ specifier|final
 name|NodeState
 name|after
 decl_stmt|;
-specifier|public
 specifier|static
 name|ChangeSet
 name|local
@@ -776,7 +789,6 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-specifier|public
 specifier|static
 name|ChangeSet
 name|external
@@ -821,12 +833,14 @@ operator|=
 name|after
 expr_stmt|;
 block|}
+comment|/**          * Determine whether these changes originate from the local cluster node          * or an external cluster node.          * @return  {@code true} iff the changes originate from a remote cluster node.          */
 specifier|public
 specifier|abstract
 name|boolean
 name|isExternal
 parameter_list|()
 function_decl|;
+comment|/**          * Determine whether these changes where caused by the passed content          * session.          * @param contentSession  content session to test for          * @return  {@code true} iff these changes where cause by the passed content session.          *          Always {@code false} if {@link #isExternal()} is {@code true}.          */
 specifier|public
 specifier|abstract
 name|boolean
@@ -836,18 +850,21 @@ name|ContentSession
 name|contentSession
 parameter_list|)
 function_decl|;
+comment|/**          * Determine the user associated with these changes.          * @return  user id or {@link ObservationConstants#OAK_UNKNOWN} if {@link #isExternal()} is {@code true}.          */
 specifier|public
 specifier|abstract
 name|String
 name|getUserId
 parameter_list|()
 function_decl|;
+comment|/**          * Determine the date when these changes where persisted.          * @return  date or {@code 0} if {@link #isExternal()} is {@code true}.          */
 specifier|public
 specifier|abstract
 name|long
 name|getDate
 parameter_list|()
 function_decl|;
+comment|/**          * {@link NodeStateDiff} of the changes          * @param diff  node state diff instance for traversing the changes.          */
 specifier|public
 name|void
 name|diff
