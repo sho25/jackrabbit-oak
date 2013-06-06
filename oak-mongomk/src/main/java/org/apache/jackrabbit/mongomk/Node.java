@@ -615,6 +615,9 @@ decl_stmt|;
 name|boolean
 name|hasMore
 decl_stmt|;
+name|long
+name|offset
+decl_stmt|;
 name|Children
 parameter_list|(
 name|String

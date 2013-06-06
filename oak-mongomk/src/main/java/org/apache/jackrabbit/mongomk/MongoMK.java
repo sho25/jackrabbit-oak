@@ -2764,6 +2764,9 @@ name|int
 name|limit
 parameter_list|)
 block|{
+comment|// TODO use offset, to avoid O(n^2) and running out of memory
+comment|// to do that, use the *name* of the last entry of the previous batch of children
+comment|// as the starting point
 name|String
 name|from
 init|=
@@ -4751,19 +4754,47 @@ expr_stmt|;
 block|}
 else|else
 block|{
-comment|// avoid overflow (if maxChildNodes is Integer.MAX_VALUE)
-name|max
-operator|=
-name|Math
-operator|.
-name|max
-argument_list|(
-name|maxChildNodes
-argument_list|,
+comment|// use long to avoid overflows
+name|long
+name|m
+init|=
 name|maxChildNodes
 operator|+
-literal|1
+literal|1L
+operator|+
+name|offset
+decl_stmt|;
+name|max
+operator|=
+operator|(
+name|int
+operator|)
+name|Math
+operator|.
+name|min
+argument_list|(
+name|m
+argument_list|,
+name|Integer
+operator|.
+name|MAX_VALUE
 argument_list|)
+expr_stmt|;
+block|}
+if|if
+condition|(
+name|offset
+operator|>
+literal|0
+condition|)
+block|{
+comment|// TODO workaround for missing offset
+comment|// support in getChildren
+name|max
+operator|=
+name|Integer
+operator|.
+name|MAX_VALUE
 expr_stmt|;
 block|}
 name|Children
