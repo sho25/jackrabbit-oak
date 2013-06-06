@@ -110,6 +110,11 @@ name|PrincipalConfiguration
 extends|extends
 name|SecurityConfiguration
 block|{
+name|String
+name|NAME
+init|=
+literal|"org.apache.jackrabbit.oak.principal"
+decl_stmt|;
 comment|/**      * Returns an instance of {@link PrincipalManager} that can be used      * to query and retrieve principals such as needed for JCR access control      * management.      *      * @param root The target root.      * @param namePathMapper The {@code NamePathMapper} to be used.      * @return An instance of {@link PrincipalManager}.      * @see {@link org.apache.jackrabbit.api.JackrabbitSession#getPrincipalManager()}      */
 annotation|@
 name|Nonnull

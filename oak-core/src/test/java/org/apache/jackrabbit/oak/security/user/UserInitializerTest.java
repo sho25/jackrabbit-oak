@@ -1141,7 +1141,7 @@ name|of
 argument_list|(
 name|UserConfiguration
 operator|.
-name|PARAM_USER_OPTIONS
+name|NAME
 argument_list|,
 operator|new
 name|ConfigurationParameters

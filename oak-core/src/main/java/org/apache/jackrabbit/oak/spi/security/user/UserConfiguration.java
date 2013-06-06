@@ -133,9 +133,9 @@ extends|extends
 name|SecurityConfiguration
 block|{
 name|String
-name|PARAM_USER_OPTIONS
+name|NAME
 init|=
-literal|"org.apache.jackrabbit.oak.user.options"
+literal|"org.apache.jackrabbit.oak.user"
 decl_stmt|;
 annotation|@
 name|Nonnull

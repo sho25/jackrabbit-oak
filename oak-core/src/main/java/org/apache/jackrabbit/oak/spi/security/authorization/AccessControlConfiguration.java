@@ -169,9 +169,9 @@ extends|extends
 name|SecurityConfiguration
 block|{
 name|String
-name|PARAM_ACCESS_CONTROL_OPTIONS
+name|NAME
 init|=
-literal|"org.apache.jackrabbit.oak.accesscontrol.options"
+literal|"org.apache.jackrabbit.oak.accesscontrol"
 decl_stmt|;
 annotation|@
 name|Nonnull

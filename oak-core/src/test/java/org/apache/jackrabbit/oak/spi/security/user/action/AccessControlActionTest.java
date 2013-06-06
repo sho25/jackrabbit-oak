@@ -375,7 +375,7 @@ name|of
 argument_list|(
 name|UserConfiguration
 operator|.
-name|PARAM_USER_OPTIONS
+name|NAME
 argument_list|,
 name|userConfig
 argument_list|)

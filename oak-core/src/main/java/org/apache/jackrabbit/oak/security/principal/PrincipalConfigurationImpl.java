@@ -93,7 +93,7 @@ name|spi
 operator|.
 name|security
 operator|.
-name|SecurityConfiguration
+name|ConfigurationBase
 import|;
 end_import
 
@@ -184,17 +184,10 @@ specifier|public
 class|class
 name|PrincipalConfigurationImpl
 extends|extends
-name|SecurityConfiguration
-operator|.
-name|Default
+name|ConfigurationBase
 implements|implements
 name|PrincipalConfiguration
 block|{
-specifier|private
-specifier|final
-name|SecurityProvider
-name|securityProvider
-decl_stmt|;
 specifier|public
 name|PrincipalConfigurationImpl
 parameter_list|(
@@ -202,13 +195,13 @@ name|SecurityProvider
 name|securityProvider
 parameter_list|)
 block|{
-name|this
-operator|.
+name|super
+argument_list|(
 name|securityProvider
-operator|=
-name|securityProvider
+argument_list|)
 expr_stmt|;
 block|}
+comment|//---------------------------------------------< PrincipalConfiguration>---
 annotation|@
 name|Nonnull
 annotation|@
@@ -260,7 +253,8 @@ block|{
 name|UserConfiguration
 name|uc
 init|=
-name|securityProvider
+name|getSecurityProvider
+argument_list|()
 operator|.
 name|getConfiguration
 argument_list|(
@@ -279,6 +273,20 @@ name|uc
 argument_list|,
 name|namePathMapper
 argument_list|)
+return|;
+block|}
+comment|//----------------------------------------------< SecurityConfiguration>---
+annotation|@
+name|Nonnull
+annotation|@
+name|Override
+specifier|public
+name|String
+name|getName
+parameter_list|()
+block|{
+return|return
+name|NAME
 return|;
 block|}
 block|}

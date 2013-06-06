@@ -128,6 +128,11 @@ name|PrivilegeConfiguration
 extends|extends
 name|SecurityConfiguration
 block|{
+name|String
+name|NAME
+init|=
+literal|"org.apache.jackrabbit.oak.privilege"
+decl_stmt|;
 comment|/**      * Creates a new instance of {@link PrivilegeManager}.      *      * @param root           The root for which the privilege manager should be created.      * @param namePathMapper The name and path mapper to be used.      * @return A new {@code PrivilegeManager}.      */
 annotation|@
 name|Nonnull

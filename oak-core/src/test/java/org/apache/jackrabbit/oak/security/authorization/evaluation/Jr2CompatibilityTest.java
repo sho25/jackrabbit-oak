@@ -572,7 +572,7 @@ name|of
 argument_list|(
 name|AccessControlConfiguration
 operator|.
-name|PARAM_ACCESS_CONTROL_OPTIONS
+name|NAME
 argument_list|,
 name|acConfig
 argument_list|)

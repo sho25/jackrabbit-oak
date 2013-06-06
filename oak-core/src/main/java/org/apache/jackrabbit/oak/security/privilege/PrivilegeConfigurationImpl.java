@@ -167,7 +167,7 @@ name|spi
 operator|.
 name|security
 operator|.
-name|Context
+name|ConfigurationBase
 import|;
 end_import
 
@@ -185,7 +185,7 @@ name|spi
 operator|.
 name|security
 operator|.
-name|SecurityConfiguration
+name|Context
 import|;
 end_import
 
@@ -218,9 +218,7 @@ specifier|public
 class|class
 name|PrivilegeConfigurationImpl
 extends|extends
-name|SecurityConfiguration
-operator|.
-name|Default
+name|ConfigurationBase
 implements|implements
 name|PrivilegeConfiguration
 block|{
@@ -266,6 +264,19 @@ argument_list|()
 return|;
 block|}
 comment|//----------------------------------------------< SecurityConfiguration>---
+annotation|@
+name|Nonnull
+annotation|@
+name|Override
+specifier|public
+name|String
+name|getName
+parameter_list|()
+block|{
+return|return
+name|NAME
+return|;
+block|}
 annotation|@
 name|Nonnull
 annotation|@

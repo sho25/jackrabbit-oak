@@ -356,9 +356,9 @@ name|getConfigValue
 argument_list|(
 name|name
 argument_list|,
-operator|new
 name|ConfigurationParameters
-argument_list|()
+operator|.
+name|EMPTY
 argument_list|)
 return|;
 block|}
