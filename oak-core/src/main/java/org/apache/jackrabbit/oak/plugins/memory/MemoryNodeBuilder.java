@@ -374,11 +374,28 @@ name|Head
 name|head
 parameter_list|()
 block|{
-return|return
+name|Head
+name|newHead
+init|=
 name|head
 operator|.
 name|update
 argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|newHead
+operator|!=
+name|head
+condition|)
+block|{
+name|head
+operator|=
+name|newHead
+expr_stmt|;
+block|}
+return|return
+name|newHead
 return|;
 block|}
 comment|/**      * @return  {@code true} iff this is the root builder      */
@@ -1319,7 +1336,7 @@ specifier|static
 class|class
 name|Head
 block|{
-comment|/**          * Update the {@link MemoryNodeBuilder#head} of this builder by apply any pending          * state transition.          * @return  the new head of the associated builder.          */
+comment|/**          * Returns the up-to-date head of the associated builder. In most          * cases the returned value will be the current head instance, but          * a different head can be returned if a state transition is needed.          * The returned value is then used as the new current head of the          * builder.          *          * @return up-to-date head of the associated builder          */
 specifier|public
 specifier|abstract
 name|Head
@@ -1389,14 +1406,19 @@ name|Head
 name|update
 parameter_list|()
 block|{
-if|if
-condition|(
-name|revision
-operator|!=
+name|long
+name|rootRevision
+init|=
 name|rootHead
 argument_list|()
 operator|.
 name|revision
+decl_stmt|;
+if|if
+condition|(
+name|revision
+operator|!=
+name|rootRevision
 condition|)
 block|{
 comment|// root revision changed: recursively re-get state from parent
@@ -1428,9 +1450,8 @@ operator|instanceof
 name|MutableNodeState
 condition|)
 block|{
+comment|// transition state to ConnectedHead
 return|return
-name|head
-operator|=
 operator|new
 name|ConnectedHead
 argument_list|(
@@ -1443,18 +1464,16 @@ return|;
 block|}
 else|else
 block|{
+comment|// update to match the latest revision
 name|state
 operator|=
 name|newState
 expr_stmt|;
-block|}
 name|revision
 operator|=
-name|rootHead
-argument_list|()
-operator|.
-name|revision
+name|rootRevision
 expr_stmt|;
+block|}
 block|}
 return|return
 name|this
@@ -1490,21 +1509,23 @@ operator|.
 name|getMutableNodeState
 argument_list|()
 decl_stmt|;
-name|head
-operator|=
-operator|new
-name|ConnectedHead
-argument_list|(
+name|MutableNodeState
+name|state
+init|=
 name|parentState
 operator|.
 name|getMutableChildNode
 argument_list|(
 name|name
 argument_list|)
-argument_list|)
-expr_stmt|;
+decl_stmt|;
+comment|// triggers a head state transition at next access
 return|return
-name|head
+operator|new
+name|ConnectedHead
+argument_list|(
+name|state
+argument_list|)
 operator|.
 name|getMutableNodeState
 argument_list|()
@@ -1625,9 +1646,12 @@ name|update
 argument_list|()
 return|;
 block|}
+else|else
+block|{
 return|return
 name|this
 return|;
+block|}
 block|}
 annotation|@
 name|Override
