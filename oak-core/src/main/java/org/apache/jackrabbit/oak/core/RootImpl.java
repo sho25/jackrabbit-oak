@@ -819,13 +819,10 @@ specifier|private
 name|NodeStoreBranch
 name|branch
 decl_stmt|;
+comment|/**      * Unsecured builder for the root tree      */
 specifier|private
 name|NodeBuilder
-name|rawBuilder
-decl_stmt|;
-specifier|private
-name|NodeBuilder
-name|secureBuilder
+name|builder
 decl_stmt|;
 comment|/** Sentinel for the next move operation to take place on the this root */
 specifier|private
@@ -945,26 +942,27 @@ operator|.
 name|getHead
 argument_list|()
 decl_stmt|;
-name|rawBuilder
+name|builder
 operator|=
 name|root
 operator|.
 name|builder
 argument_list|()
 expr_stmt|;
+name|NodeBuilder
 name|secureBuilder
-operator|=
+init|=
 operator|new
 name|SecureNodeBuilder
 argument_list|(
-name|rawBuilder
+name|builder
 argument_list|,
 name|getRootContext
 argument_list|(
 name|root
 argument_list|)
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 name|rootTree
 operator|=
 operator|new
@@ -1904,7 +1902,7 @@ name|getRootState
 parameter_list|()
 block|{
 return|return
-name|rawBuilder
+name|builder
 operator|.
 name|getNodeState
 argument_list|()
@@ -2005,7 +2003,7 @@ operator|.
 name|getHead
 argument_list|()
 decl_stmt|;
-name|rawBuilder
+name|builder
 operator|.
 name|reset
 argument_list|(
