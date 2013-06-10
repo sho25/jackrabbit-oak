@@ -287,6 +287,12 @@ argument_list|()
 operator|.
 name|getDB
 argument_list|()
+argument_list|,
+operator|new
+name|MongoMK
+operator|.
+name|Builder
+argument_list|()
 argument_list|)
 return|;
 block|}
