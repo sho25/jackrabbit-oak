@@ -7898,11 +7898,12 @@ specifier|final
 name|long
 name|DEFAULT_MEMORY_CACHE_SIZE
 init|=
-literal|1
-operator|<<
-literal|28
+literal|256
+operator|*
+literal|1024
+operator|*
+literal|1024
 decl_stmt|;
-comment|// 256MB
 specifier|private
 name|DocumentStore
 name|documentStore

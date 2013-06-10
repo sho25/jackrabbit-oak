@@ -1018,6 +1018,11 @@ argument_list|)
 expr_stmt|;
 comment|// update if key exists -> must succeed
 name|Map
+argument_list|<
+name|String
+argument_list|,
+name|Object
+argument_list|>
 name|doc
 init|=
 name|docStore

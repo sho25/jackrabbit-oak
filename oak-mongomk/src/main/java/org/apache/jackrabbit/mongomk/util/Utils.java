@@ -368,7 +368,7 @@ operator|instanceof
 name|BasicDBObject
 condition|)
 block|{
-comment|//Based on emperical testing using JAMM
+comment|// Based on emperical testing using JAMM
 name|size
 operator|+=
 literal|176
