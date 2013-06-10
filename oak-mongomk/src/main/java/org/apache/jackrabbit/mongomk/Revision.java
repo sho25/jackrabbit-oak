@@ -121,6 +121,11 @@ specifier|private
 name|int
 name|clusterId
 decl_stmt|;
+comment|/**      * The string representation.      */
+specifier|private
+name|String
+name|string
+decl_stmt|;
 specifier|public
 name|Revision
 parameter_list|(
@@ -523,7 +528,15 @@ name|String
 name|toString
 parameter_list|()
 block|{
-return|return
+if|if
+condition|(
+name|string
+operator|==
+literal|null
+condition|)
+block|{
+name|string
+operator|=
 operator|new
 name|StringBuilder
 argument_list|(
@@ -572,6 +585,10 @@ argument_list|)
 operator|.
 name|toString
 argument_list|()
+expr_stmt|;
+block|}
+return|return
+name|string
 return|;
 block|}
 specifier|public
