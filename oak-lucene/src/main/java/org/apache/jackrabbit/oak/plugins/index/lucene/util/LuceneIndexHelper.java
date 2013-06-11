@@ -411,7 +411,7 @@ name|name
 argument_list|,
 name|propertyTypes
 argument_list|,
-literal|false
+literal|null
 argument_list|)
 return|;
 block|}
@@ -438,7 +438,7 @@ name|String
 argument_list|>
 name|propertyTypes
 parameter_list|,
-name|boolean
+name|String
 name|async
 parameter_list|)
 block|{
@@ -498,6 +498,8 @@ expr_stmt|;
 if|if
 condition|(
 name|async
+operator|!=
+literal|null
 condition|)
 block|{
 name|index
@@ -506,7 +508,7 @@ name|setProperty
 argument_list|(
 name|ASYNC_PROPERTY_NAME
 argument_list|,
-literal|true
+name|async
 argument_list|)
 expr_stmt|;
 block|}
@@ -586,7 +588,7 @@ name|propertyTypes
 argument_list|,
 name|path
 argument_list|,
-literal|false
+literal|null
 argument_list|)
 return|;
 block|}
@@ -618,7 +620,7 @@ name|Nonnull
 name|String
 name|path
 parameter_list|,
-name|boolean
+name|String
 name|async
 parameter_list|)
 block|{
@@ -692,6 +694,8 @@ expr_stmt|;
 if|if
 condition|(
 name|async
+operator|!=
+literal|null
 condition|)
 block|{
 name|index
@@ -700,7 +704,7 @@ name|setProperty
 argument_list|(
 name|ASYNC_PROPERTY_NAME
 argument_list|,
-literal|true
+name|async
 argument_list|)
 expr_stmt|;
 block|}

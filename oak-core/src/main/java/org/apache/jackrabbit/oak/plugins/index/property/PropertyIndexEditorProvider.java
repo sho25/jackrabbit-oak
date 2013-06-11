@@ -107,6 +107,24 @@ name|NodeBuilder
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|state
+operator|.
+name|NodeState
+import|;
+end_import
+
 begin_comment
 comment|/**  * Service that provides PropertyIndex based editors.  *   * @see PropertyIndexEditor  * @see IndexEditorProvider  *   */
 end_comment
@@ -145,7 +163,10 @@ name|String
 name|type
 parameter_list|,
 name|NodeBuilder
-name|builder
+name|definition
+parameter_list|,
+name|NodeState
+name|root
 parameter_list|)
 block|{
 if|if
@@ -162,7 +183,9 @@ return|return
 operator|new
 name|PropertyIndexEditor
 argument_list|(
-name|builder
+name|definition
+argument_list|,
+name|root
 argument_list|)
 return|;
 block|}

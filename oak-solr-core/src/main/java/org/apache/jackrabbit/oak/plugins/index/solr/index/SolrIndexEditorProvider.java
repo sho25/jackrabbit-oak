@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  *      http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
+comment|/*  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  *     http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
 end_comment
 
 begin_package
@@ -24,12 +24,38 @@ package|;
 end_package
 
 begin_import
-import|import
-name|javax
+import|import static
+name|org
 operator|.
-name|annotation
+name|apache
 operator|.
-name|CheckForNull
+name|felix
+operator|.
+name|scr
+operator|.
+name|annotations
+operator|.
+name|ReferencePolicy
+operator|.
+name|STATIC
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|felix
+operator|.
+name|scr
+operator|.
+name|annotations
+operator|.
+name|ReferencePolicyOption
+operator|.
+name|GREEDY
 import|;
 end_import
 
@@ -77,39 +103,23 @@ name|scr
 operator|.
 name|annotations
 operator|.
-name|ReferencePolicy
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|felix
-operator|.
-name|scr
-operator|.
-name|annotations
-operator|.
-name|ReferencePolicyOption
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|felix
-operator|.
-name|scr
-operator|.
-name|annotations
-operator|.
 name|Service
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|api
+operator|.
+name|CommitFailedException
 import|;
 end_import
 
@@ -251,24 +261,22 @@ begin_import
 import|import
 name|org
 operator|.
-name|slf4j
+name|apache
 operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
+name|jackrabbit
 operator|.
-name|slf4j
+name|oak
 operator|.
-name|LoggerFactory
+name|spi
+operator|.
+name|state
+operator|.
+name|NodeState
 import|;
 end_import
 
 begin_comment
-comment|/**  * Service that provides {@link SolrIndexHookProvider} based {@link IndexEditor}s.  *  * @see org.apache.jackrabbit.oak.plugins.index.IndexEditorProvider  */
+comment|/**  * Service that provides Lucene based {@link IndexEditor}s  *   * @see SolrIndexEditor  * @see IndexEditorProvider  *   */
 end_comment
 
 begin_class
@@ -283,37 +291,19 @@ name|class
 argument_list|)
 specifier|public
 class|class
-name|SolrIndexHookProvider
+name|SolrIndexEditorProvider
 implements|implements
 name|IndexEditorProvider
 block|{
-specifier|private
-specifier|final
-name|Logger
-name|log
-init|=
-name|LoggerFactory
-operator|.
-name|getLogger
-argument_list|(
-name|SolrIndexHookProvider
-operator|.
-name|class
-argument_list|)
-decl_stmt|;
 annotation|@
 name|Reference
 argument_list|(
 name|policyOption
 operator|=
-name|ReferencePolicyOption
-operator|.
 name|GREEDY
 argument_list|,
 name|policy
 operator|=
-name|ReferencePolicy
-operator|.
 name|STATIC
 argument_list|)
 specifier|private
@@ -325,14 +315,10 @@ name|Reference
 argument_list|(
 name|policyOption
 operator|=
-name|ReferencePolicyOption
-operator|.
 name|GREEDY
 argument_list|,
 name|policy
 operator|=
-name|ReferencePolicy
-operator|.
 name|STATIC
 argument_list|)
 specifier|private
@@ -340,11 +326,7 @@ name|OakSolrConfigurationProvider
 name|oakSolrConfigurationProvider
 decl_stmt|;
 specifier|public
-name|SolrIndexHookProvider
-parameter_list|()
-block|{     }
-specifier|public
-name|SolrIndexHookProvider
+name|SolrIndexEditorProvider
 parameter_list|(
 name|SolrServerProvider
 name|solrServerProvider
@@ -366,10 +348,12 @@ operator|=
 name|oakSolrConfigurationProvider
 expr_stmt|;
 block|}
+specifier|public
+name|SolrIndexEditorProvider
+parameter_list|()
+block|{     }
 annotation|@
 name|Override
-annotation|@
-name|CheckForNull
 specifier|public
 name|Editor
 name|getIndexEditor
@@ -378,8 +362,13 @@ name|String
 name|type
 parameter_list|,
 name|NodeBuilder
-name|builder
+name|definition
+parameter_list|,
+name|NodeState
+name|root
 parameter_list|)
+throws|throws
+name|CommitFailedException
 block|{
 if|if
 condition|(
@@ -403,27 +392,11 @@ condition|)
 block|{
 try|try
 block|{
-if|if
-condition|(
-name|log
-operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
-name|log
-operator|.
-name|debug
-argument_list|(
-literal|"Creating a Solr index hook"
-argument_list|)
-expr_stmt|;
-block|}
 return|return
 operator|new
-name|SolrIndexDiff
+name|SolrIndexEditor
 argument_list|(
-name|builder
+name|definition
 argument_list|,
 name|solrServerProvider
 operator|.
@@ -443,14 +416,11 @@ name|Exception
 name|e
 parameter_list|)
 block|{
-name|log
-operator|.
-name|error
-argument_list|(
-literal|"unable to create Solr IndexHook "
-argument_list|,
+comment|// TODO Auto-generated catch block
 name|e
-argument_list|)
+operator|.
+name|printStackTrace
+argument_list|()
 expr_stmt|;
 block|}
 block|}

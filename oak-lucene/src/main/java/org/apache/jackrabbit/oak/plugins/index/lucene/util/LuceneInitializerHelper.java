@@ -181,10 +181,10 @@ name|String
 name|filePath
 decl_stmt|;
 specifier|private
-name|boolean
+name|String
 name|async
 init|=
-literal|false
+literal|null
 decl_stmt|;
 specifier|public
 name|LuceneInitializerHelper
@@ -268,7 +268,7 @@ parameter_list|()
 block|{
 name|async
 operator|=
-literal|true
+literal|"async"
 expr_stmt|;
 return|return
 name|this
