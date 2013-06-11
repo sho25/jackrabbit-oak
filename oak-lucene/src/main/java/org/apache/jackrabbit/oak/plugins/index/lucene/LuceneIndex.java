@@ -1871,6 +1871,18 @@ block|{
 comment|// lucene cannot handle child-level property restrictions
 continue|continue;
 block|}
+if|if
+condition|(
+literal|"rep:excerpt"
+operator|.
+name|equals
+argument_list|(
+name|name
+argument_list|)
+condition|)
+block|{
+continue|continue;
+block|}
 name|String
 name|first
 init|=
