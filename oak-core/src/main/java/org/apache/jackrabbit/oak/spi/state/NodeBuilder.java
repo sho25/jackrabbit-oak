@@ -182,7 +182,7 @@ name|String
 name|name
 parameter_list|)
 function_decl|;
-comment|/**      * Adds or replaces a subtree.      *      * @param name name of the child node containing the new subtree      * @param nodeState subtree      * @return this builder      */
+comment|/**      * Adds or replaces a subtree.      *      * @param name name of the child node containing the new subtree      * @param nodeState subtree      * @return child builder      */
 annotation|@
 name|Nonnull
 name|NodeBuilder
