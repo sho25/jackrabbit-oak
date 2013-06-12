@@ -20,6 +20,22 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkNotNull
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -342,22 +358,6 @@ operator|.
 name|slf4j
 operator|.
 name|LoggerFactory
-import|;
-end_import
-
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|Preconditions
-operator|.
-name|checkNotNull
 import|;
 end_import
 
@@ -981,6 +981,9 @@ operator|.
 name|getLatestRoot
 argument_list|()
 decl_stmt|;
+if|if
+condition|(
+operator|!
 name|currentRoot
 operator|.
 name|copy
@@ -989,7 +992,22 @@ name|srcPath
 argument_list|,
 name|destPath
 argument_list|)
-expr_stmt|;
+condition|)
+block|{
+throw|throw
+operator|new
+name|RepositoryException
+argument_list|(
+literal|"Cannot copy node at "
+operator|+
+name|srcPath
+operator|+
+literal|" to "
+operator|+
+name|destPath
+argument_list|)
+throw|;
+block|}
 name|currentRoot
 operator|.
 name|commit
@@ -1158,6 +1176,9 @@ argument_list|)
 expr_stmt|;
 try|try
 block|{
+if|if
+condition|(
+operator|!
 name|moveRoot
 operator|.
 name|move
@@ -1166,7 +1187,22 @@ name|srcPath
 argument_list|,
 name|destPath
 argument_list|)
-expr_stmt|;
+condition|)
+block|{
+throw|throw
+operator|new
+name|RepositoryException
+argument_list|(
+literal|"Cannot move node at "
+operator|+
+name|srcPath
+operator|+
+literal|" to "
+operator|+
+name|destPath
+argument_list|)
+throw|;
+block|}
 if|if
 condition|(
 operator|!
