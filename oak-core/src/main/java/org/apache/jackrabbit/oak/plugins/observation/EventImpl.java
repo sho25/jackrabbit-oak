@@ -271,7 +271,9 @@ block|{
 name|collector
 operator|.
 name|userInfoAccessedWithoutExternalCheck
-argument_list|()
+argument_list|(
+name|this
+argument_list|)
 expr_stmt|;
 block|}
 if|if
@@ -282,7 +284,9 @@ block|{
 name|collector
 operator|.
 name|userInfoAccessedFromExternalEvent
-argument_list|()
+argument_list|(
+name|this
+argument_list|)
 expr_stmt|;
 block|}
 return|return
@@ -338,7 +342,9 @@ block|{
 name|collector
 operator|.
 name|userInfoAccessedWithoutExternalCheck
-argument_list|()
+argument_list|(
+name|this
+argument_list|)
 expr_stmt|;
 block|}
 if|if
@@ -349,7 +355,9 @@ block|{
 name|collector
 operator|.
 name|userInfoAccessedFromExternalEvent
-argument_list|()
+argument_list|(
+name|this
+argument_list|)
 expr_stmt|;
 block|}
 return|return
@@ -374,7 +382,9 @@ block|{
 name|collector
 operator|.
 name|dateAccessedWithoutExternalCheck
-argument_list|()
+argument_list|(
+name|this
+argument_list|)
 expr_stmt|;
 block|}
 if|if
@@ -385,7 +395,9 @@ block|{
 name|collector
 operator|.
 name|dateAccessedFromExternalEvent
-argument_list|()
+argument_list|(
+name|this
+argument_list|)
 expr_stmt|;
 block|}
 return|return

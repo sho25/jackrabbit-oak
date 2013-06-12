@@ -855,7 +855,10 @@ block|}
 specifier|synchronized
 name|void
 name|userInfoAccessedWithoutExternalCheck
-parameter_list|()
+parameter_list|(
+name|Event
+name|event
+parameter_list|)
 block|{
 if|if
 condition|(
@@ -877,7 +880,9 @@ literal|" is trying to access"
 operator|+
 literal|" event user information without checking for whether"
 operator|+
-literal|" the event is external"
+literal|" the event is external on "
+operator|+
+name|event
 argument_list|)
 expr_stmt|;
 name|userInfoAccessedWithoutExternalsCheck
@@ -889,7 +894,10 @@ block|}
 specifier|synchronized
 name|void
 name|userInfoAccessedFromExternalEvent
-parameter_list|()
+parameter_list|(
+name|Event
+name|event
+parameter_list|)
 block|{
 if|if
 condition|(
@@ -909,7 +917,9 @@ name|listener
 operator|+
 literal|" is trying to access"
 operator|+
-literal|" event user information from an external event"
+literal|" event user information from an external event on "
+operator|+
+name|event
 argument_list|)
 expr_stmt|;
 name|userInfoAccessedFromExternalEvent
@@ -921,7 +931,10 @@ block|}
 specifier|synchronized
 name|void
 name|dateAccessedWithoutExternalCheck
-parameter_list|()
+parameter_list|(
+name|Event
+name|event
+parameter_list|)
 block|{
 if|if
 condition|(
@@ -943,7 +956,9 @@ literal|" is trying to access"
 operator|+
 literal|" event date information without checking for whether"
 operator|+
-literal|" the event is external"
+literal|" the event is external on "
+operator|+
+name|event
 argument_list|)
 expr_stmt|;
 name|dateAccessedWithoutExternalsCheck
@@ -955,7 +970,10 @@ block|}
 specifier|synchronized
 name|void
 name|dateAccessedFromExternalEvent
-parameter_list|()
+parameter_list|(
+name|Event
+name|event
+parameter_list|)
 block|{
 if|if
 condition|(
@@ -975,7 +993,9 @@ name|listener
 operator|+
 literal|" is trying to access"
 operator|+
-literal|" event date information from an external event"
+literal|" event date information from an external event on "
+operator|+
+name|event
 argument_list|)
 expr_stmt|;
 name|dateAccessedFromExternalEvent
