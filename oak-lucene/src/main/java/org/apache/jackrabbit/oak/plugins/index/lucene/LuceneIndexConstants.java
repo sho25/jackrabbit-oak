@@ -132,24 +132,6 @@ name|INDEX_PATH
 init|=
 literal|"index"
 decl_stmt|;
-comment|/**      * Lucene writer timeout write lock setting      */
-name|int
-name|TO_WRITE_LOCK_MS
-init|=
-literal|50
-decl_stmt|;
-comment|/**      * Controls how many retries should happen when there is a writer lock      * timeout      */
-name|int
-name|TO_MAX_RETRIES
-init|=
-literal|3
-decl_stmt|;
-comment|/**      * Controls how much sleep (ms) should happen when there is a writer lock      * timeout      */
-name|int
-name|TO_SLEEP_MS
-init|=
-literal|30
-decl_stmt|;
 block|}
 end_interface
 

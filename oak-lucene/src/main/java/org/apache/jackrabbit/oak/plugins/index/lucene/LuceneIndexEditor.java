@@ -245,28 +245,6 @@ name|lucene
 operator|.
 name|LuceneIndexConstants
 operator|.
-name|TO_WRITE_LOCK_MS
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|plugins
-operator|.
-name|index
-operator|.
-name|lucene
-operator|.
-name|LuceneIndexConstants
-operator|.
 name|VERSION
 import|;
 end_import
@@ -290,6 +268,22 @@ operator|.
 name|TermFactory
 operator|.
 name|newPathTerm
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|lucene
+operator|.
+name|store
+operator|.
+name|NoLockFactory
+operator|.
+name|getNoLockFactory
 import|;
 end_import
 
@@ -841,13 +835,6 @@ name|SerialMergeScheduler
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|config
-operator|.
-name|setWriteLockTimeout
-argument_list|(
-name|TO_WRITE_LOCK_MS
-argument_list|)
-expr_stmt|;
 return|return
 name|config
 return|;
@@ -922,15 +909,24 @@ operator|.
 name|mkdirs
 argument_list|()
 expr_stmt|;
+comment|// TODO: close() is never called
+comment|// TODO: no locking used
+comment|// --> using the FS backend for the index is in any case
+comment|//     troublesome in clustering scenarios and for backup
+comment|//     etc. so instead of fixing these issues we'd better
+comment|//     work on making the in-content index work without
+comment|//     problems (or look at the Solr indexer as alternative)
 return|return
 name|FSDirectory
 operator|.
 name|open
 argument_list|(
 name|file
+argument_list|,
+name|getNoLockFactory
+argument_list|()
 argument_list|)
 return|;
-comment|// TODO: close() is never called
 block|}
 catch|catch
 parameter_list|(
