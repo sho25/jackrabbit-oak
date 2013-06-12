@@ -10048,8 +10048,6 @@ name|RepositoryException
 operator|.
 name|class
 argument_list|)
-annotation|@
-name|Ignore
 specifier|public
 name|void
 name|moveToDescendant
