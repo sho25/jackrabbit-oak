@@ -460,9 +460,7 @@ operator|.
 name|getWeigher
 argument_list|()
 argument_list|)
-operator|.
-name|recordStats
-argument_list|()
+comment|//.recordStats() FIXME: OAK-863
 operator|.
 name|maximumWeight
 argument_list|(
