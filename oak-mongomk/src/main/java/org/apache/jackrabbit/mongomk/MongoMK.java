@@ -3537,6 +3537,27 @@ return|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Nonnull
+specifier|public
+name|String
+name|checkpoint
+parameter_list|(
+name|long
+name|lifetime
+parameter_list|)
+throws|throws
+name|MicroKernelException
+block|{
+comment|// FIXME: need to signal to the garbage collector that this revision
+comment|// should not be collected until the requested lifetime is over
+return|return
+name|getHeadRevision
+argument_list|()
+return|;
+block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|getRevisionHistory

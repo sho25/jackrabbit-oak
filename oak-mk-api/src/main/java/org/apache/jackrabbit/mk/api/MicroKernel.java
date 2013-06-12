@@ -54,6 +54,18 @@ parameter_list|()
 throws|throws
 name|MicroKernelException
 function_decl|;
+comment|/**      * Creates a new checkpoint of the latest head revision. The checkpoint      * guarantees that revision to remain valid and accessible for at least      * as long as requested.      *      * @param lifetime time (in milliseconds) that the checkpoint should      *                 remain available      * @return revision id of the created checkpoint      * @throws MicroKernelException if the checkpoint could not be created      */
+annotation|@
+name|Nonnull
+name|String
+name|checkpoint
+parameter_list|(
+name|long
+name|lifetime
+parameter_list|)
+throws|throws
+name|MicroKernelException
+function_decl|;
 comment|/**      * Returns a list of all currently available (historical) head revisions in      * chronological order since a specific point.<i>Private</i> branch      * revisions won't be included in the result.      *<p/>      * Format:      *<pre>      * [      *   {      *     "id" : "&lt;revisionId&gt;",      *     "ts" :&lt;revisionTimestamp&gt;,      *     "msg" : "&lt;commitMessage&gt;"      *   },      *   ...      * ]      *</pre>      * The {@code path} parameter allows to filter the revisions by path, i.e.      * only those revisions that affected the subtree rooted at {@code path}      * will be included.      *<p/>      * The {@code maxEntries} parameter allows to limit the number of revisions      * returned. if {@code maxEntries< 0} no limit will be applied. otherwise,      * if the number of revisions satisfying the specified {@code since} and      * {@code path} criteria exceeds {@code maxEntries}, only {@code maxEntries}      * entries will be returned (in chronological order, starting with the oldest).      *      * @param since      timestamp (ms) of earliest revision to be returned      * @param maxEntries maximum #entries to be returned;      *                   if< 0, no limit will be applied.      * @param path       optional path filter; if {@code null} or {@code ""} the      *                   default ({@code "/"}) will be assumed, i.e. no filter      *                   will be applied      * @return a list of revisions in chronological order in JSON format.      * @throws MicroKernelException if an error occurs      */
 name|String
 comment|/* jsonArray */

@@ -45,6 +45,16 @@ name|javax
 operator|.
 name|annotation
 operator|.
+name|CheckForNull
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|annotation
+operator|.
 name|Nonnull
 import|;
 end_import
@@ -97,6 +107,28 @@ name|inputStream
 parameter_list|)
 throws|throws
 name|IOException
+function_decl|;
+comment|/**      * Creates a new checkpoint of the latest root of the tree. The checkpoint      * remains valid for at least as long as requested and allows that state      * of the repository to be retrieved using the returned opaque string      * reference.      *      * @param lifetime time (in milliseconds,&gt; 0) that the checkpoint      *                 should remain available      * @return string reference of this checkpoint      */
+annotation|@
+name|Nonnull
+name|String
+name|checkpoint
+parameter_list|(
+name|long
+name|lifetime
+parameter_list|)
+function_decl|;
+comment|/**      * Starts a new branch from a previously created repository checkpoint.      *      * @param checkpoint string reference of a checkpoint      * @return new branch starting from the given checkpoint,      *         or {@code null} if the checkpoint is no longer available      */
+annotation|@
+name|CheckForNull
+name|NodeStoreBranch
+name|branch
+parameter_list|(
+annotation|@
+name|Nonnull
+name|String
+name|checkpoint
+parameter_list|)
 function_decl|;
 block|}
 end_interface

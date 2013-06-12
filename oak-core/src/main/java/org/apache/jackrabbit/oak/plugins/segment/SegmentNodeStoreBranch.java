@@ -202,6 +202,9 @@ name|store
 parameter_list|,
 name|SegmentWriter
 name|writer
+parameter_list|,
+name|SegmentNodeState
+name|base
 parameter_list|)
 block|{
 name|this
@@ -220,10 +223,7 @@ name|this
 operator|.
 name|base
 operator|=
-name|store
-operator|.
-name|getRoot
-argument_list|()
+name|base
 expr_stmt|;
 name|this
 operator|.
