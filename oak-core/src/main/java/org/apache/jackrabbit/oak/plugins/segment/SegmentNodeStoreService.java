@@ -788,8 +788,8 @@ name|Override
 annotation|@
 name|CheckForNull
 specifier|public
-name|NodeStoreBranch
-name|branch
+name|NodeState
+name|retrieve
 parameter_list|(
 annotation|@
 name|Nonnull
@@ -801,7 +801,7 @@ return|return
 name|getDelegate
 argument_list|()
 operator|.
-name|branch
+name|retrieve
 argument_list|(
 name|checkpoint
 argument_list|)

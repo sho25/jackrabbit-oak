@@ -118,11 +118,11 @@ name|long
 name|lifetime
 parameter_list|)
 function_decl|;
-comment|/**      * Starts a new branch from a previously created repository checkpoint.      *      * @param checkpoint string reference of a checkpoint      * @return new branch starting from the given checkpoint,      *         or {@code null} if the checkpoint is no longer available      */
+comment|/**      * Retrieves the root node from a previously created repository checkpoint.      *      * @param checkpoint string reference of a checkpoint      * @return the root node of the checkpoint,      *         or {@code null} if the checkpoint is no longer available      */
 annotation|@
 name|CheckForNull
-name|NodeStoreBranch
-name|branch
+name|NodeState
+name|retrieve
 parameter_list|(
 annotation|@
 name|Nonnull
