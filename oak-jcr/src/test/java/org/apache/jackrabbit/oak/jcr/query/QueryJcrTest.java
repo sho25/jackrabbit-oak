@@ -61,6 +61,22 @@ name|core
 operator|.
 name|query
 operator|.
+name|ExcerptTest
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|core
+operator|.
+name|query
+operator|.
 name|FulltextQueryTest
 import|;
 end_import
@@ -410,11 +426,19 @@ operator|.
 name|class
 argument_list|)
 expr_stmt|;
+name|suite
+operator|.
+name|addTestSuite
+argument_list|(
+name|ExcerptTest
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
 comment|// FAILURES
 comment|//
 comment|// suite.addTestSuite(QueryResultTest.class); // OAK-484
 comment|// suite.addTestSuite(ParentNodeTest.class); // OAK-309
-comment|// suite.addTestSuite(ExcerptTest.class); // OAK-318
 comment|// suite.addTestSuite(SimilarQueryTest.class); // OAK-319
 comment|// suite.addTestSuite(DerefTest.class); // OAK-321
 comment|// suite.addTestSuite(XPathAxisTest.class); // OAK-322

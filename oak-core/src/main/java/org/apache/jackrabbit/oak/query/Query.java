@@ -3018,15 +3018,10 @@ name|i
 return|;
 block|}
 block|}
-throw|throw
-operator|new
-name|IllegalArgumentException
-argument_list|(
-literal|"Column not found: "
-operator|+
-name|columnName
-argument_list|)
-throw|;
+return|return
+operator|-
+literal|1
+return|;
 block|}
 specifier|public
 name|PropertyValue
