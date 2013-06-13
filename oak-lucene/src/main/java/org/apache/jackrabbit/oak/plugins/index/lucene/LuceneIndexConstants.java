@@ -85,7 +85,7 @@ name|VERSION
 init|=
 name|Version
 operator|.
-name|LUCENE_42
+name|LUCENE_43
 decl_stmt|;
 name|Analyzer
 name|ANALYZER
@@ -126,11 +126,6 @@ name|String
 name|INDEX_DATA_CHILD_NAME_FS
 init|=
 literal|"data"
-decl_stmt|;
-name|String
-name|INDEX_PATH
-init|=
-literal|"index"
 decl_stmt|;
 block|}
 end_interface

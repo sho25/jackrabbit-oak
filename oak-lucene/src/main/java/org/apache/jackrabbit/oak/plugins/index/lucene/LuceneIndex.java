@@ -193,7 +193,7 @@ name|lucene
 operator|.
 name|LuceneIndexConstants
 operator|.
-name|INDEX_PATH
+name|PERSISTENCE_PATH
 import|;
 end_import
 
@@ -1079,7 +1079,7 @@ name|getString
 argument_list|(
 name|def
 argument_list|,
-name|INDEX_PATH
+name|PERSISTENCE_PATH
 argument_list|)
 operator|!=
 literal|null
@@ -1189,7 +1189,7 @@ name|getString
 argument_list|(
 name|def
 argument_list|,
-name|INDEX_PATH
+name|PERSISTENCE_PATH
 argument_list|)
 decl_stmt|;
 if|if
