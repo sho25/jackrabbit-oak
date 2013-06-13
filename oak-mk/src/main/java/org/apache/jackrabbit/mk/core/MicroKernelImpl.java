@@ -1820,9 +1820,14 @@ name|equals
 argument_list|(
 name|fromRevisionId
 argument_list|)
+operator|&&
+name|depth
+operator|==
+operator|-
+literal|1
 condition|)
 block|{
-comment|// specified range spans a single commit:
+comment|// specified range spans a single commit and depth is not limited:
 comment|// use diff stored in commit instead of building it dynamically
 return|return
 name|toCommit
