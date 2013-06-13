@@ -23,6 +23,26 @@ begin_import
 import|import
 name|java
 operator|.
+name|io
+operator|.
+name|PrintWriter
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|StringWriter
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|ArrayList
@@ -494,6 +514,11 @@ literal|null
 argument_list|)
 decl_stmt|;
 specifier|private
+specifier|final
+name|String
+name|initStacktrace
+decl_stmt|;
+specifier|private
 specifier|volatile
 name|boolean
 name|running
@@ -575,6 +600,58 @@ argument_list|(
 name|filter
 argument_list|)
 expr_stmt|;
+name|initStacktrace
+operator|=
+name|log
+operator|.
+name|isWarnEnabled
+argument_list|(
+name|DEPRECATED
+argument_list|)
+condition|?
+name|getStackTrace
+argument_list|()
+else|:
+literal|null
+expr_stmt|;
+block|}
+specifier|private
+specifier|static
+name|String
+name|getStackTrace
+parameter_list|()
+block|{
+name|StringWriter
+name|sw
+init|=
+operator|new
+name|StringWriter
+argument_list|()
+decl_stmt|;
+name|PrintWriter
+name|pw
+init|=
+operator|new
+name|PrintWriter
+argument_list|(
+name|sw
+argument_list|)
+decl_stmt|;
+operator|new
+name|Exception
+argument_list|()
+operator|.
+name|printStackTrace
+argument_list|(
+name|pw
+argument_list|)
+expr_stmt|;
+return|return
+name|sw
+operator|.
+name|toString
+argument_list|()
+return|;
 block|}
 specifier|public
 name|void
@@ -878,11 +955,15 @@ name|listener
 operator|+
 literal|" is trying to access"
 operator|+
-literal|" event user information without checking for whether"
-operator|+
-literal|" the event is external on "
+literal|" event user information on event "
 operator|+
 name|event
+operator|+
+literal|" without checking whether the event is external."
+operator|+
+literal|" The event listener was registered here: "
+operator|+
+name|initStacktrace
 argument_list|)
 expr_stmt|;
 name|userInfoAccessedWithoutExternalsCheck
@@ -917,9 +998,15 @@ name|listener
 operator|+
 literal|" is trying to access"
 operator|+
-literal|" event user information from an external event on "
+literal|" event user information for external event "
 operator|+
 name|event
+operator|+
+literal|'.'
+operator|+
+literal|" The event listener was registered here: "
+operator|+
+name|initStacktrace
 argument_list|)
 expr_stmt|;
 name|userInfoAccessedFromExternalEvent
@@ -954,11 +1041,15 @@ name|listener
 operator|+
 literal|" is trying to access"
 operator|+
-literal|" event date information without checking for whether"
-operator|+
-literal|" the event is external on "
+literal|" event date information on event "
 operator|+
 name|event
+operator|+
+literal|" without checking whether the event is external."
+operator|+
+literal|" The event listener was registered here: "
+operator|+
+name|initStacktrace
 argument_list|)
 expr_stmt|;
 name|dateAccessedWithoutExternalsCheck
@@ -993,9 +1084,15 @@ name|listener
 operator|+
 literal|" is trying to access"
 operator|+
-literal|" event date information from an external event on "
+literal|" event date information for external event "
 operator|+
 name|event
+operator|+
+literal|'.'
+operator|+
+literal|" The event listener was registered here: "
+operator|+
+name|initStacktrace
 argument_list|)
 expr_stmt|;
 name|dateAccessedFromExternalEvent
