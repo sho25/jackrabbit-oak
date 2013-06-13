@@ -799,7 +799,7 @@ argument_list|()
 decl_stmt|;
 comment|/**      * Number of {@link #updated} occurred so since the last      * purge.      */
 specifier|private
-name|int
+name|long
 name|modCount
 decl_stmt|;
 specifier|private
@@ -1616,15 +1616,9 @@ name|checkLive
 argument_list|()
 expr_stmt|;
 return|return
-operator|!
-name|getSecureBase
-argument_list|()
-operator|.
-name|equals
-argument_list|(
-name|getSecureRootState
-argument_list|()
-argument_list|)
+name|modCount
+operator|>
+literal|0
 return|;
 block|}
 annotation|@
@@ -1800,14 +1794,12 @@ if|if
 condition|(
 operator|++
 name|modCount
-operator|>
+operator|%
 name|PURGE_LIMIT
+operator|==
+literal|0
 condition|)
 block|{
-name|modCount
-operator|=
-literal|0
-expr_stmt|;
 name|purgePendingChanges
 argument_list|()
 expr_stmt|;
