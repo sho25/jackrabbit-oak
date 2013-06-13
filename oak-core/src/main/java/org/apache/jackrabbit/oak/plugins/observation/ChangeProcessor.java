@@ -23,26 +23,6 @@ begin_import
 import|import
 name|java
 operator|.
-name|io
-operator|.
-name|PrintWriter
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|StringWriter
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
 name|util
 operator|.
 name|ArrayList
@@ -515,7 +495,7 @@ argument_list|)
 decl_stmt|;
 specifier|private
 specifier|final
-name|String
+name|Exception
 name|initStacktrace
 decl_stmt|;
 specifier|private
@@ -609,49 +589,14 @@ argument_list|(
 name|DEPRECATED
 argument_list|)
 condition|?
-name|getStackTrace
-argument_list|()
+operator|new
+name|Exception
+argument_list|(
+literal|"Initialized here"
+argument_list|)
 else|:
 literal|null
 expr_stmt|;
-block|}
-specifier|private
-specifier|static
-name|String
-name|getStackTrace
-parameter_list|()
-block|{
-name|StringWriter
-name|sw
-init|=
-operator|new
-name|StringWriter
-argument_list|()
-decl_stmt|;
-name|PrintWriter
-name|pw
-init|=
-operator|new
-name|PrintWriter
-argument_list|(
-name|sw
-argument_list|)
-decl_stmt|;
-operator|new
-name|Exception
-argument_list|()
-operator|.
-name|printStackTrace
-argument_list|(
-name|pw
-argument_list|)
-expr_stmt|;
-return|return
-name|sw
-operator|.
-name|toString
-argument_list|()
-return|;
 block|}
 specifier|public
 name|void
@@ -962,7 +907,7 @@ operator|+
 literal|" without checking whether the event is external."
 operator|+
 literal|" The event listener was registered here: "
-operator|+
+argument_list|,
 name|initStacktrace
 argument_list|)
 expr_stmt|;
@@ -1005,7 +950,7 @@ operator|+
 literal|'.'
 operator|+
 literal|" The event listener was registered here: "
-operator|+
+argument_list|,
 name|initStacktrace
 argument_list|)
 expr_stmt|;
@@ -1048,7 +993,7 @@ operator|+
 literal|" without checking whether the event is external."
 operator|+
 literal|" The event listener was registered here: "
-operator|+
+argument_list|,
 name|initStacktrace
 argument_list|)
 expr_stmt|;
@@ -1091,7 +1036,7 @@ operator|+
 literal|'.'
 operator|+
 literal|" The event listener was registered here: "
-operator|+
+argument_list|,
 name|initStacktrace
 argument_list|)
 expr_stmt|;
