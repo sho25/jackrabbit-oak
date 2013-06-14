@@ -213,22 +213,12 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Ignore
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
 name|Test
 import|;
 end_import
 
 begin_comment
-comment|/**  * Tests the Lucene index using multiple threads.  */
+comment|/**  * Tests the Lucene index using multiple threads.  *   * See https://issues.apache.org/jira/browse/OAK-837  */
 end_comment
 
 begin_class
@@ -390,11 +380,6 @@ return|;
 block|}
 annotation|@
 name|Test
-annotation|@
-name|Ignore
-argument_list|(
-literal|"OAK-837"
-argument_list|)
 specifier|public
 name|void
 name|testConcurrent
