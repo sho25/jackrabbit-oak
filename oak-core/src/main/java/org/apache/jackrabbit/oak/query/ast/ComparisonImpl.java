@@ -266,11 +266,12 @@ operator|==
 literal|null
 condition|)
 block|{
+return|return
 name|Collections
 operator|.
 name|emptySet
 argument_list|()
-expr_stmt|;
+return|;
 block|}
 return|return
 name|Collections
