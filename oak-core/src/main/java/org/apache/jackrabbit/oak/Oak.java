@@ -1037,6 +1037,10 @@ literal|null
 decl_stmt|;
 if|if
 condition|(
+name|executor
+operator|!=
+literal|null
+operator|&&
 name|type
 operator|==
 name|Runnable
