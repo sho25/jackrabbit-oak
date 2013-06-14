@@ -903,7 +903,7 @@ argument_list|()
 argument_list|,
 name|oak
 operator|.
-name|getExecutorService
+name|getWhiteboard
 argument_list|()
 argument_list|,
 name|securityProvider

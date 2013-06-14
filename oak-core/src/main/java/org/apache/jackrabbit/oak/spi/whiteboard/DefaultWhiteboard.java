@@ -25,7 +25,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|Dictionary
+name|Map
 import|;
 end_import
 
@@ -57,7 +57,7 @@ name|T
 name|service
 parameter_list|,
 specifier|final
-name|Dictionary
+name|Map
 argument_list|<
 name|?
 argument_list|,
@@ -114,7 +114,7 @@ parameter_list|,
 name|Object
 name|service
 parameter_list|,
-name|Dictionary
+name|Map
 argument_list|<
 name|?
 argument_list|,
@@ -136,7 +136,7 @@ parameter_list|,
 name|Object
 name|service
 parameter_list|,
-name|Dictionary
+name|Map
 argument_list|<
 name|?
 argument_list|,

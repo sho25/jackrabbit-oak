@@ -21,18 +21,6 @@ end_package
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|concurrent
-operator|.
-name|ScheduledExecutorService
-import|;
-end_import
-
-begin_import
-import|import
 name|javax
 operator|.
 name|jcr
@@ -125,6 +113,24 @@ name|SecurityProvider
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|whiteboard
+operator|.
+name|Whiteboard
+import|;
+end_import
+
 begin_comment
 comment|/**  * Workaround to a JAAS class loading issue in OSGi environments.  *  * @see<a href="https://issues.apache.org/jira/browse/OAK-256">OAK-256</a>  */
 end_comment
@@ -142,8 +148,8 @@ parameter_list|(
 name|ContentRepository
 name|repository
 parameter_list|,
-name|ScheduledExecutorService
-name|executor
+name|Whiteboard
+name|whiteboard
 parameter_list|,
 name|SecurityProvider
 name|securityProvider
@@ -153,7 +159,7 @@ name|super
 argument_list|(
 name|repository
 argument_list|,
-name|executor
+name|whiteboard
 argument_list|,
 name|securityProvider
 argument_list|)
