@@ -295,12 +295,13 @@ operator|new
 name|JsopStream
 argument_list|()
 decl_stmt|;
+comment|/**      * List of all node paths which have been modified in this commit. In addition to the nodes      * which are actually changed it also contains there parent node paths      */
 specifier|private
 name|HashSet
 argument_list|<
 name|String
 argument_list|>
-name|changedNodes
+name|modifiedNodes
 init|=
 operator|new
 name|HashSet
@@ -770,12 +771,12 @@ literal|null
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Apply the changes to the document store (to update MongoDB).      *      * @param baseRevision the base revision of this commit. Currently only      *                     used for branch commits.      */
+comment|/**      * Apply the changes to the document store (to update MongoDB).      *      * @param baseBranchRevision the base revision of this commit. Currently only      *                     used for branch commits.      */
 name|void
 name|applyToDocumentStore
 parameter_list|(
 name|Revision
-name|baseRevision
+name|baseBranchRevision
 parameter_list|)
 block|{
 comment|// the value in _revisions.<revision> property of the commit root node
@@ -785,11 +786,11 @@ comment|// the visibility of the commit
 name|String
 name|commitValue
 init|=
-name|baseRevision
+name|baseBranchRevision
 operator|!=
 literal|null
 condition|?
-name|baseRevision
+name|baseBranchRevision
 operator|.
 name|toString
 argument_list|()
@@ -811,7 +812,7 @@ literal|null
 decl_stmt|;
 if|if
 condition|(
-name|baseRevision
+name|baseBranchRevision
 operator|!=
 literal|null
 condition|)
@@ -863,6 +864,7 @@ name|UpdateOp
 argument_list|>
 argument_list|()
 decl_stmt|;
+comment|//Compute the commit root
 for|for
 control|(
 name|String
@@ -2624,7 +2626,7 @@ control|(
 name|String
 name|path
 range|:
-name|changedNodes
+name|modifiedNodes
 control|)
 block|{
 name|ArrayList
@@ -2880,7 +2882,7 @@ condition|(
 literal|true
 condition|)
 block|{
-name|changedNodes
+name|modifiedNodes
 operator|.
 name|add
 argument_list|(
