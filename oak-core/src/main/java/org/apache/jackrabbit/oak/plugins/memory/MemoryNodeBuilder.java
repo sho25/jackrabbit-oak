@@ -806,6 +806,10 @@ parameter_list|()
 block|{
 if|if
 condition|(
+operator|!
+name|isRoot
+argument_list|()
+operator|&&
 name|exists
 argument_list|()
 condition|)
