@@ -189,22 +189,6 @@ name|core
 operator|.
 name|query
 operator|.
-name|LimitedAccessQueryTest
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|core
-operator|.
-name|query
-operator|.
 name|MixinTest
 import|;
 end_import
@@ -462,22 +446,6 @@ operator|.
 name|query
 operator|.
 name|SkipDeletedNodesTest
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|core
-operator|.
-name|query
-operator|.
-name|SkipDeniedNodesTest
 import|;
 end_import
 
@@ -790,7 +758,6 @@ operator|.
 name|class
 argument_list|)
 expr_stmt|;
-comment|// sns
 name|suite
 operator|.
 name|addTestSuite
@@ -800,7 +767,6 @@ operator|.
 name|class
 argument_list|)
 expr_stmt|;
-comment|// sns
 name|suite
 operator|.
 name|addTestSuite
@@ -810,7 +776,6 @@ operator|.
 name|class
 argument_list|)
 expr_stmt|;
-comment|// ws#clone
 name|suite
 operator|.
 name|addTestSuite
@@ -820,7 +785,6 @@ operator|.
 name|class
 argument_list|)
 expr_stmt|;
-comment|// versioning
 return|return
 name|suite
 return|;
