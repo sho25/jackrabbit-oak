@@ -77,6 +77,10 @@ name|apache
 operator|.
 name|jackrabbit
 operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
 name|mongomk
 operator|.
 name|impl
@@ -92,6 +96,10 @@ operator|.
 name|apache
 operator|.
 name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
 operator|.
 name|mongomk
 operator|.
@@ -109,6 +117,10 @@ name|apache
 operator|.
 name|jackrabbit
 operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
 name|mongomk
 operator|.
 name|impl
@@ -124,6 +136,10 @@ operator|.
 name|apache
 operator|.
 name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
 operator|.
 name|mongomk
 operator|.
@@ -143,6 +159,10 @@ name|apache
 operator|.
 name|jackrabbit
 operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
 name|mongomk
 operator|.
 name|impl
@@ -161,6 +181,10 @@ name|apache
 operator|.
 name|jackrabbit
 operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
 name|mongomk
 operator|.
 name|impl
@@ -178,6 +202,10 @@ operator|.
 name|apache
 operator|.
 name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
 operator|.
 name|mongomk
 operator|.

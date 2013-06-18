@@ -41,6 +41,10 @@ name|apache
 operator|.
 name|jackrabbit
 operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
 name|mongomk
 operator|.
 name|blob
