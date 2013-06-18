@@ -708,7 +708,7 @@ operator|.
 name|getListenerMBean
 argument_list|()
 argument_list|,
-literal|"ObservationListener"
+literal|"EventListener"
 argument_list|,
 name|tracker
 operator|.
