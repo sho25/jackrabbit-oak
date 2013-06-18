@@ -573,7 +573,7 @@ name|list
 operator|.
 name|size
 argument_list|()
-operator|>
+operator|>=
 name|limit
 condition|)
 block|{
