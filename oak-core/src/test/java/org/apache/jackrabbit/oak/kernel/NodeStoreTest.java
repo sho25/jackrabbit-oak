@@ -1683,18 +1683,6 @@ parameter_list|()
 throws|throws
 name|CommitFailedException
 block|{
-comment|// OAK-872
-name|Assume
-operator|.
-name|assumeTrue
-argument_list|(
-name|fixture
-operator|!=
-name|NodeStoreFixture
-operator|.
-name|MONGO_MK
-argument_list|)
-expr_stmt|;
 name|NodeStoreBranch
 name|branch
 init|=
@@ -2471,18 +2459,6 @@ parameter_list|()
 throws|throws
 name|CommitFailedException
 block|{
-comment|// OAK-872
-name|Assume
-operator|.
-name|assumeTrue
-argument_list|(
-name|fixture
-operator|!=
-name|NodeStoreFixture
-operator|.
-name|MONGO_MK
-argument_list|)
-expr_stmt|;
 name|compareAgainstBaseState
 argument_list|(
 name|KernelNodeState
