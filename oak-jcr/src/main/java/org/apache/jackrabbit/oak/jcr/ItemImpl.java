@@ -1345,14 +1345,6 @@ name|checkNotStale
 argument_list|()
 expr_stmt|;
 block|}
-specifier|protected
-specifier|abstract
-name|ItemDefinition
-name|internalGetDefinition
-parameter_list|()
-throws|throws
-name|RepositoryException
-function_decl|;
 name|void
 name|checkProtected
 parameter_list|()

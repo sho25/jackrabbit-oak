@@ -6071,9 +6071,7 @@ argument_list|)
 throw|;
 block|}
 comment|//------------------------------------------------------------< internal>---
-annotation|@
-name|Override
-specifier|protected
+specifier|private
 specifier|final
 name|NodeDefinition
 name|internalGetDefinition
