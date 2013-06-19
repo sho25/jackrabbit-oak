@@ -66,7 +66,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * TODO document  */
+comment|// michid doc
 end_comment
 
 begin_class

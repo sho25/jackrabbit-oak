@@ -65,6 +65,14 @@ name|NodeState
 import|;
 end_import
 
+begin_comment
+comment|// michid unify with NodeStateDiff
+end_comment
+
+begin_comment
+comment|// michid move
+end_comment
+
 begin_class
 specifier|public
 class|class

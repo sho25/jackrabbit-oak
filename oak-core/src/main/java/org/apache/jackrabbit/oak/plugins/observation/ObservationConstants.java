@@ -19,6 +19,10 @@ name|observation
 package|;
 end_package
 
+begin_comment
+comment|// michid doc
+end_comment
+
 begin_class
 specifier|public
 specifier|final

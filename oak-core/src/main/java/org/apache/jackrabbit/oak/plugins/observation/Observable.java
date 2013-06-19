@@ -39,6 +39,10 @@ name|Listener
 import|;
 end_import
 
+begin_comment
+comment|/**  * michid document  */
+end_comment
+
 begin_interface
 specifier|public
 interface|interface

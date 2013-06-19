@@ -321,6 +321,10 @@ name|MarkerFactory
 import|;
 end_import
 
+begin_comment
+comment|// michid doc (contentSession needs to implement Observable)
+end_comment
+
 begin_class
 specifier|public
 class|class

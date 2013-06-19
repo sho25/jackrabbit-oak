@@ -71,6 +71,10 @@ name|NodeStateDiff
 import|;
 end_import
 
+begin_comment
+comment|/**  * michid document  * michid move  */
+end_comment
+
 begin_class
 specifier|public
 specifier|abstract

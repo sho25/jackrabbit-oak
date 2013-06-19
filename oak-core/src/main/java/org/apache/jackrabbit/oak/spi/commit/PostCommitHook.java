@@ -48,7 +48,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * TODO unify with either Observer or CommitHook  */
+comment|/**  * michid unify with either Observer or CommitHook  */
 end_comment
 
 begin_interface
