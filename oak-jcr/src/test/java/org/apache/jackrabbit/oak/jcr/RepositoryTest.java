@@ -13991,11 +13991,9 @@ argument_list|)
 operator|.
 name|get
 argument_list|(
-literal|2
+name|time
 argument_list|,
-name|TimeUnit
-operator|.
-name|SECONDS
+name|timeUnit
 argument_list|)
 expr_stmt|;
 block|}
