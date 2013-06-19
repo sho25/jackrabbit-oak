@@ -465,10 +465,6 @@ name|LoggerFactory
 import|;
 end_import
 
-begin_comment
-comment|// michid doc
-end_comment
-
 begin_class
 class|class
 name|ChangeProcessor
@@ -1139,7 +1135,7 @@ name|ChangeSet
 name|changes
 parameter_list|)
 block|{
-comment|// michid parent nodes should be the root here
+comment|// FIXME parent nodes should be the root here
 name|this
 argument_list|(
 name|changes
