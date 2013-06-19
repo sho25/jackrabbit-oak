@@ -13721,7 +13721,7 @@ name|expected
 init|=
 name|Maps
 operator|.
-name|newHashMap
+name|newConcurrentMap
 argument_list|()
 decl_stmt|;
 specifier|private
