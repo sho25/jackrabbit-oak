@@ -12337,8 +12337,6 @@ block|}
 block|}
 annotation|@
 name|Test
-annotation|@
-name|Ignore
 specifier|public
 name|void
 name|observationDispose
@@ -12626,7 +12624,7 @@ argument_list|)
 operator|.
 name|get
 argument_list|(
-literal|2
+literal|10
 argument_list|,
 name|TimeUnit
 operator|.
