@@ -71,6 +71,24 @@ name|NodeStateDiff
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|state
+operator|.
+name|NodeStateUtils
+import|;
+end_import
+
 begin_class
 specifier|public
 specifier|abstract
@@ -424,6 +442,21 @@ name|NodeState
 name|after
 parameter_list|)
 block|{
+comment|// FIXME temporary solution to skip look ahead on hidden child nodes
+if|if
+condition|(
+name|NodeStateUtils
+operator|.
+name|isHidden
+argument_list|(
+name|name
+argument_list|)
+condition|)
+block|{
+return|return
+literal|true
+return|;
+block|}
 specifier|final
 name|SecurableNodeStateDiff
 name|childDiff

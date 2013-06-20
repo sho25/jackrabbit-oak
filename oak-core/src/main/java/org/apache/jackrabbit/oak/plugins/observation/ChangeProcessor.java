@@ -1701,9 +1701,9 @@ block|}
 else|else
 block|{
 return|return
-operator|new
 name|RecursingNodeStateDiff
-argument_list|()
+operator|.
+name|EMPTY
 return|;
 block|}
 block|}
