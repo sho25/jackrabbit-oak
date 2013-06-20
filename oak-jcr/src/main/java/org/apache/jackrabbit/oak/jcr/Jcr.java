@@ -18,6 +18,22 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkNotNull
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -464,18 +480,20 @@ import|;
 end_import
 
 begin_import
-import|import static
-name|com
+import|import
+name|org
 operator|.
-name|google
+name|apache
 operator|.
-name|common
+name|jackrabbit
 operator|.
-name|base
+name|oak
 operator|.
-name|Preconditions
+name|spi
 operator|.
-name|checkNotNull
+name|state
+operator|.
+name|NodeStore
 import|;
 end_import
 
@@ -620,6 +638,23 @@ operator|new
 name|Oak
 argument_list|(
 name|kernel
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+specifier|public
+name|Jcr
+parameter_list|(
+name|NodeStore
+name|store
+parameter_list|)
+block|{
+name|this
+argument_list|(
+operator|new
+name|Oak
+argument_list|(
+name|store
 argument_list|)
 argument_list|)
 expr_stmt|;
