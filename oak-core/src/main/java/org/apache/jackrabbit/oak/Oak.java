@@ -906,7 +906,7 @@ name|executor
 init|=
 name|newScheduledThreadPool
 argument_list|(
-literal|0
+literal|1
 argument_list|)
 decl_stmt|;
 specifier|private

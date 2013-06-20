@@ -553,6 +553,10 @@ operator|new
 name|ManyNodes
 argument_list|()
 block|,
+operator|new
+name|ObservationTest
+argument_list|()
+block|,
 name|ReadManyTest
 operator|.
 name|linear
