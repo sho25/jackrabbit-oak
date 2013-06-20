@@ -878,6 +878,9 @@ argument_list|()
 decl_stmt|;
 while|while
 condition|(
+operator|!
+name|stopping
+operator|&&
 name|changes
 operator|!=
 literal|null
