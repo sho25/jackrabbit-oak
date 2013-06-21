@@ -522,6 +522,15 @@ name|toString
 argument_list|()
 return|;
 block|}
+specifier|public
+name|String
+name|getPath
+parameter_list|()
+block|{
+return|return
+name|path
+return|;
+block|}
 comment|//-----------------------------< internal>---------------------------------
 specifier|private
 name|boolean

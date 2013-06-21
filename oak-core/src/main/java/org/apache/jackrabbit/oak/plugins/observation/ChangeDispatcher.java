@@ -72,6 +72,26 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|state
+operator|.
+name|NodeStateUtils
+operator|.
+name|getNode
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -827,13 +847,16 @@ name|long
 name|getDate
 parameter_list|()
 function_decl|;
-comment|/**          * {@link NodeStateDiff} of the changes          * @param diff  node state diff instance for traversing the changes.          */
+comment|/**          * {@link NodeStateDiff} of the changes          * @param diff  node state diff instance for traversing the changes.          * @param path  path where diffing should start          */
 specifier|public
 name|void
 name|diff
 parameter_list|(
 name|RecursingNodeStateDiff
 name|diff
+parameter_list|,
+name|String
+name|path
 parameter_list|)
 block|{
 name|NodeStateDiff
@@ -846,11 +869,21 @@ argument_list|(
 name|diff
 argument_list|)
 decl_stmt|;
+name|getNode
+argument_list|(
 name|after
+argument_list|,
+name|path
+argument_list|)
 operator|.
 name|compareAgainstBaseState
 argument_list|(
+name|getNode
+argument_list|(
 name|before
+argument_list|,
+name|path
+argument_list|)
 argument_list|,
 name|secureDiff
 argument_list|)
