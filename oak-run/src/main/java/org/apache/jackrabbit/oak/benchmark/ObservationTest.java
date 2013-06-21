@@ -456,6 +456,14 @@ argument_list|()
 argument_list|)
 argument_list|)
 decl_stmt|;
+name|long
+name|t0
+init|=
+name|System
+operator|.
+name|currentTimeMillis
+argument_list|()
+decl_stmt|;
 try|try
 block|{
 name|observationThroughput
@@ -474,6 +482,26 @@ expr_stmt|;
 block|}
 finally|finally
 block|{
+name|System
+operator|.
+name|out
+operator|.
+name|println
+argument_list|(
+literal|"Time elapsed: "
+operator|+
+operator|(
+name|System
+operator|.
+name|currentTimeMillis
+argument_list|()
+operator|-
+name|t0
+operator|)
+operator|+
+literal|" ms"
+argument_list|)
+expr_stmt|;
 name|session
 operator|.
 name|logout
