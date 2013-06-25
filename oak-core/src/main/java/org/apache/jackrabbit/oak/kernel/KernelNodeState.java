@@ -693,6 +693,15 @@ name|MAX_CHILD_NODE_NAMES
 init|=
 literal|100
 decl_stmt|;
+comment|/**      * Number of child nodes beyond which {@link MicroKernel#diff(String, String, String, int)}      * is used for diffing.      */
+specifier|public
+specifier|static
+specifier|final
+name|int
+name|LOCAL_DIFF_THRESHOLD
+init|=
+literal|10
+decl_stmt|;
 comment|/**      * Dummy cache instance for static {@link #NULL} kernel node state.      */
 specifier|private
 specifier|static
@@ -2328,7 +2337,7 @@ argument_list|)
 operator|&&
 name|childNodeCount
 operator|>
-name|MAX_CHILD_NODE_NAMES
+name|LOCAL_DIFF_THRESHOLD
 condition|)
 block|{
 comment|// use MK.diff() when there are 'many' child nodes
