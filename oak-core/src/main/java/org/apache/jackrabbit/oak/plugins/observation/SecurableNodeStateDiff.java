@@ -89,6 +89,10 @@ name|NodeStateUtils
 import|;
 end_import
 
+begin_comment
+comment|/**  * Base class for {@code NodeStateDiff} implementations that can be secured.  * That is its call back methods are only called when its receiver has sufficient  * rights to access respective items.  */
+end_comment
+
 begin_class
 specifier|public
 specifier|abstract

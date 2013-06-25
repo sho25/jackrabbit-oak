@@ -465,6 +465,10 @@ name|LoggerFactory
 import|;
 end_import
 
+begin_comment
+comment|/**  * A {@code ChangeProcessor} generates observation {@link javax.jcr.observation.Event}s  * based on a {@link EventFilter} and delivers them to an {@link javax.jcr.observation.EventListener}.  *<p>  * After instantiation a {@code ChangeProcessor} must be started in order for its  * {@link #run()} methods to be regularly executed and stopped in order to not  * execute its run method anymore.  */
+end_comment
+
 begin_class
 class|class
 name|ChangeProcessor
@@ -616,6 +620,7 @@ name|filter
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * Set the filter for the events this change processor will generate.      * @param filter      */
 specifier|public
 name|void
 name|setFilter
@@ -632,6 +637,7 @@ name|filter
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * Set the user data to return with {@link javax.jcr.observation.Event#getUserData()}.      * @param userData      */
 specifier|public
 name|void
 name|setUserData
@@ -648,7 +654,7 @@ name|userData
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Start the change processor on the passed {@code executor}.      * @param whiteboard      * @throws IllegalStateException if started already      */
+comment|/**      * Start this change processor      * @param whiteboard  the whiteboard instance to used for scheduling individual      *                    runs of this change processor.      * @throws IllegalStateException if started already      */
 specifier|public
 specifier|synchronized
 name|void

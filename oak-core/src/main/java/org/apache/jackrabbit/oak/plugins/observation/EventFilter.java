@@ -222,7 +222,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * TODO document  */
+comment|/**  * Filter for filtering observation events according to a certain criterion.  */
 end_comment
 
 begin_class
@@ -271,6 +271,7 @@ specifier|final
 name|boolean
 name|noLocal
 decl_stmt|;
+comment|/**      * Create a new instance of a filter for a certain criterion      * @param ntMgr      * @param namePathMapper      * @param eventTypes  event types to include encoded as a bit mask      * @param path        path to include      * @param deep        {@code true} if descendants of {@code path} should be included. {@code false} otherwise.      * @param uuids       uuids to include      * @param nodeTypeName  node type names to include      * @param noLocal       exclude session local events if {@code true}. Include otherwise.      * @throws NoSuchNodeTypeException  if any of the node types in {@code nodeTypeName} does not exist      * @throws RepositoryException      if an error occurs while reading from the node type manager.      * @see javax.jcr.observation.ObservationManager#addEventListener(javax.jcr.observation.EventListener,      * int, String, boolean, String[], String[], boolean)      */
 specifier|public
 name|EventFilter
 parameter_list|(
@@ -357,6 +358,7 @@ operator|=
 name|noLocal
 expr_stmt|;
 block|}
+comment|/**      * Match an event against this filter.      * @param eventType  type of the event      * @param path       path of the event      * @param associatedParentNode  associated parent node of the event      * @return  {@code true} if the filter matches this event. {@code false} otherwise.      */
 specifier|public
 name|boolean
 name|include
@@ -411,6 +413,7 @@ argument_list|)
 operator|)
 return|;
 block|}
+comment|/**      * Determine whether the children of a {@code path} would be matched by this filter      * @param path  path whose children to test      * @return  {@code true} if the children of {@code path} could be matched by this filter      */
 specifier|public
 name|boolean
 name|includeChildren
@@ -470,6 +473,7 @@ name|thatOakPath
 argument_list|)
 return|;
 block|}
+comment|/**      * @return  the no local flag of this filter      */
 specifier|public
 name|boolean
 name|excludeLocal
@@ -477,6 +481,16 @@ parameter_list|()
 block|{
 return|return
 name|noLocal
+return|;
+block|}
+comment|/**      * @return  path of this filter      */
+specifier|public
+name|String
+name|getPath
+parameter_list|()
+block|{
+return|return
+name|path
 return|;
 block|}
 annotation|@
@@ -536,15 +550,6 @@ argument_list|)
 operator|.
 name|toString
 argument_list|()
-return|;
-block|}
-specifier|public
-name|String
-name|getPath
-parameter_list|()
-block|{
-return|return
-name|path
 return|;
 block|}
 comment|//-----------------------------< internal>---------------------------------

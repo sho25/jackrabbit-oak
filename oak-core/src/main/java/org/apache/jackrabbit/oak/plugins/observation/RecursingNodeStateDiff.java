@@ -65,6 +65,10 @@ name|NodeState
 import|;
 end_import
 
+begin_comment
+comment|/**  * A {@code RecursingNodeStateDiff} extends {@link DefaultNodeStateDiff}  * with a factory method for diffing child nodes.  * In contrast to {@code DefaultNodeStateDiff}, {@link #childNodeChanged(String, NodeState, NodeState)}  * should<em>not</em> recurse into child nodes but rather only be concerned about whether to continue  * diffing or not. The {@link #createChildDiff(String, NodeState, NodeState)} will be called instead  * for diffing child nodes.  * TODO unify with NodeStateDiff  */
+end_comment
+
 begin_class
 specifier|public
 class|class
@@ -82,6 +86,7 @@ operator|new
 name|RecursingNodeStateDiff
 argument_list|()
 decl_stmt|;
+comment|/**      * Create a {@code RecursingNodeStateDiff} for a child node      * @param name  name of the child node      * @param before  before state of the child node      * @param after   after state of the child node      * @return  {@code RecursingNodeStateDiff} for the child node      */
 annotation|@
 name|Nonnull
 specifier|public
