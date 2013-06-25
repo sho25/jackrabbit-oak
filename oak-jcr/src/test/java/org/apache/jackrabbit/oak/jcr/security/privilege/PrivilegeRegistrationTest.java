@@ -73,18 +73,6 @@ end_import
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|concurrent
-operator|.
-name|Executors
-import|;
-end_import
-
-begin_import
-import|import
 name|javax
 operator|.
 name|jcr
@@ -269,9 +257,9 @@ name|spi
 operator|.
 name|security
 operator|.
-name|privilege
+name|principal
 operator|.
-name|PrivilegeConstants
+name|EveryonePrincipal
 import|;
 end_import
 
@@ -289,9 +277,9 @@ name|spi
 operator|.
 name|security
 operator|.
-name|principal
+name|privilege
 operator|.
-name|EveryonePrincipal
+name|PrivilegeConstants
 import|;
 end_import
 
@@ -382,16 +370,6 @@ operator|new
 name|MicroKernelImpl
 argument_list|(
 name|dir
-argument_list|)
-argument_list|)
-operator|.
-name|with
-argument_list|(
-name|Executors
-operator|.
-name|newScheduledThreadPool
-argument_list|(
-literal|1
 argument_list|)
 argument_list|)
 operator|.

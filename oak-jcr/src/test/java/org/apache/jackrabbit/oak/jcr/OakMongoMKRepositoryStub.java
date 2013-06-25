@@ -51,18 +51,6 @@ end_import
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|concurrent
-operator|.
-name|Executors
-import|;
-end_import
-
-begin_import
-import|import
 name|javax
 operator|.
 name|jcr
@@ -118,6 +106,16 @@ operator|.
 name|jcr
 operator|.
 name|UnsupportedRepositoryOperationException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|mongodb
+operator|.
+name|BasicDBObject
 import|;
 end_import
 
@@ -198,16 +196,6 @@ operator|.
 name|test
 operator|.
 name|RepositoryStub
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|mongodb
-operator|.
-name|BasicDBObject
 import|;
 end_import
 
@@ -370,18 +358,6 @@ argument_list|(
 name|m
 argument_list|)
 decl_stmt|;
-name|jcr
-operator|.
-name|with
-argument_list|(
-name|Executors
-operator|.
-name|newScheduledThreadPool
-argument_list|(
-literal|1
-argument_list|)
-argument_list|)
-expr_stmt|;
 name|this
 operator|.
 name|repository

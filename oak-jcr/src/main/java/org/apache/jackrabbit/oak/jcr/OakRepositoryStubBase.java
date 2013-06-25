@@ -49,18 +49,6 @@ end_import
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|concurrent
-operator|.
-name|Executors
-import|;
-end_import
-
-begin_import
-import|import
 name|javax
 operator|.
 name|jcr
@@ -243,18 +231,6 @@ name|dir
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|jcr
-operator|.
-name|with
-argument_list|(
-name|Executors
-operator|.
-name|newScheduledThreadPool
-argument_list|(
-literal|1
-argument_list|)
-argument_list|)
-expr_stmt|;
 name|preCreateRepository
 argument_list|(
 name|jcr
