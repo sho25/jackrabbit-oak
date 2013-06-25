@@ -1327,7 +1327,7 @@ argument_list|()
 decl_stmt|;
 name|LOG
 operator|.
-name|error
+name|debug
 argument_list|(
 name|msg
 argument_list|,
