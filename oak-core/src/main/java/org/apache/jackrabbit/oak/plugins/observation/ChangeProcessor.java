@@ -1164,7 +1164,7 @@ name|ChangeSet
 name|changes
 parameter_list|)
 block|{
-comment|// FIXME parent nodes should be the root here
+comment|// michid parent nodes should be the root here
 name|this
 argument_list|(
 name|changes

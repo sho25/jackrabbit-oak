@@ -90,7 +90,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Base class for {@code NodeStateDiff} implementations that can be secured.  * That is its call back methods are only called when its receiver has sufficient  * rights to access respective items.  */
+comment|/**  * Base class for {@code NodeStateDiff} implementations that can be secured.  * That is its call back methods are only called when its receiver has sufficient  * rights to access respective items.  * michid doc  * michid move  */
 end_comment
 
 begin_class
@@ -446,7 +446,7 @@ name|NodeState
 name|after
 parameter_list|)
 block|{
-comment|// FIXME temporary solution to skip look ahead on hidden child nodes
+comment|// michid temporary solution to skip look ahead on hidden child nodes
 if|if
 condition|(
 name|NodeStateUtils

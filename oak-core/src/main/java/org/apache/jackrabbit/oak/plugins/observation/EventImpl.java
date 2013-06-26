@@ -65,10 +65,6 @@ name|JackrabbitEvent
 import|;
 end_import
 
-begin_comment
-comment|/**  * TODO document  */
-end_comment
-
 begin_class
 specifier|public
 class|class

@@ -71,6 +71,10 @@ name|NodeStateDiff
 import|;
 end_import
 
+begin_comment
+comment|/**  * michid document  * michid move  */
+end_comment
+
 begin_class
 specifier|public
 class|class
@@ -161,7 +165,7 @@ name|PropertyState
 name|after
 parameter_list|)
 block|{
-comment|// TODO implement canRead
+comment|// michid implement canRead
 return|return
 literal|true
 return|;
@@ -182,7 +186,7 @@ name|NodeState
 name|after
 parameter_list|)
 block|{
-comment|// TODO implement canRead
+comment|// michid implement canRead
 return|return
 literal|true
 return|;
@@ -200,7 +204,7 @@ name|NodeState
 name|nodeState
 parameter_list|)
 block|{
-comment|// TODO implement secureBefore
+comment|// michid implement secureBefore
 return|return
 name|nodeState
 return|;
@@ -218,7 +222,7 @@ name|NodeState
 name|nodeState
 parameter_list|)
 block|{
-comment|// TODO implement secureAfter
+comment|// michid implement secureAfter
 return|return
 name|nodeState
 return|;
