@@ -21,6 +21,16 @@ end_package
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -84,6 +94,21 @@ name|operator
 parameter_list|,
 name|PropertyValue
 name|v
+parameter_list|)
+function_decl|;
+specifier|public
+specifier|abstract
+name|void
+name|restrictList
+parameter_list|(
+name|FilterImpl
+name|f
+parameter_list|,
+name|List
+argument_list|<
+name|PropertyValue
+argument_list|>
+name|list
 parameter_list|)
 function_decl|;
 comment|/**      * Check whether the condition can be applied to a selector (to restrict the      * selector). The method may return true if the operand can be evaluated      * when the given selector and all previous selectors in the join can be      * evaluated.      *      * @param s the selector      * @return true if the condition can be applied      */

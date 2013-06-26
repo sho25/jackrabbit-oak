@@ -73,6 +73,13 @@ function_decl|;
 name|boolean
 name|visit
 parameter_list|(
+name|InImpl
+name|node
+parameter_list|)
+function_decl|;
+name|boolean
+name|visit
+parameter_list|(
 name|DescendantNodeImpl
 name|node
 parameter_list|)

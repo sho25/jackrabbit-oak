@@ -21,6 +21,16 @@ end_package
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|jcr
@@ -292,6 +302,24 @@ name|v
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+annotation|@
+name|Override
+specifier|public
+name|void
+name|restrictList
+parameter_list|(
+name|FilterImpl
+name|f
+parameter_list|,
+name|List
+argument_list|<
+name|PropertyValue
+argument_list|>
+name|list
+parameter_list|)
+block|{
+comment|// optimizations of the type "jcr:score() in(a, b, c)" are not supported
 block|}
 annotation|@
 name|Override

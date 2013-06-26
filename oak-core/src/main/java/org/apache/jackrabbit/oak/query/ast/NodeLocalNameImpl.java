@@ -21,6 +21,16 @@ end_package
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|jcr
@@ -295,6 +305,24 @@ name|v
 parameter_list|)
 block|{
 comment|// TODO support LOCALNAME index conditions
+block|}
+annotation|@
+name|Override
+specifier|public
+name|void
+name|restrictList
+parameter_list|(
+name|FilterImpl
+name|f
+parameter_list|,
+name|List
+argument_list|<
+name|PropertyValue
+argument_list|>
+name|list
+parameter_list|)
+block|{
+comment|// optimizations of type "LOCALNAME(..) IN(A, B)" are not supported
 block|}
 annotation|@
 name|Override
