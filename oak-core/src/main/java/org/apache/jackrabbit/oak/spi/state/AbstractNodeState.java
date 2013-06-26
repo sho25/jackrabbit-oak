@@ -969,7 +969,7 @@ return|return
 literal|0
 return|;
 block|}
-comment|/**      * Compares the properties of {@code base} state with {@code this}      * state.      *      * @param base the base node state.      * @param diff the node state diff.      */
+comment|/**      * Compares the properties of {@code base} state with {@code this}      * state.      *      * @param base the base node state.      * @param diff the node state diff.      * @return {@code true} to continue the comparison, {@code false} to stop      */
 specifier|protected
 name|boolean
 name|comparePropertiesAgainstBaseState
