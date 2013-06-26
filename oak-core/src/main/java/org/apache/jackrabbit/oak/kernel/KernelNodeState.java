@@ -2360,6 +2360,7 @@ argument_list|,
 literal|0
 argument_list|)
 decl_stmt|;
+return|return
 name|processJsonDiff
 argument_list|(
 name|jsonDiff
@@ -2368,9 +2369,6 @@ name|kbase
 argument_list|,
 name|diff
 argument_list|)
-expr_stmt|;
-return|return
-literal|true
 return|;
 block|}
 block|}
@@ -2860,9 +2858,9 @@ name|isEmpty
 argument_list|()
 return|;
 block|}
-comment|/**      * Process the given JSON diff, which is the diff of of the {@code base}      * node state to this node state.      *      * @param jsonDiff the JSON diff.      * @param base the base node state.      * @param diff where diffs are reported to.      */
+comment|/**      * Process the given JSON diff, which is the diff of of the {@code base}      * node state to this node state.      *      * @param jsonDiff the JSON diff.      * @param base the base node state.      * @param diff where diffs are reported to.      * @return {@code true} to continue the comparison, {@code false} to stop      */
 specifier|private
-name|void
+name|boolean
 name|processJsonDiff
 parameter_list|(
 name|String
@@ -2884,15 +2882,25 @@ name|jsonDiff
 argument_list|)
 condition|)
 block|{
-return|return;
+return|return
+literal|true
+return|;
 block|}
+if|if
+condition|(
+operator|!
 name|comparePropertiesAgainstBaseState
 argument_list|(
 name|base
 argument_list|,
 name|diff
 argument_list|)
-expr_stmt|;
+condition|)
+block|{
+return|return
+literal|false
+return|;
+block|}
 name|JsopTokenizer
 name|t
 init|=
@@ -2902,9 +2910,14 @@ argument_list|(
 name|jsonDiff
 argument_list|)
 decl_stmt|;
+name|boolean
+name|continueComparison
+init|=
+literal|true
+decl_stmt|;
 while|while
 condition|(
-literal|true
+name|continueComparison
 condition|)
 block|{
 name|int
@@ -2979,6 +2992,8 @@ argument_list|(
 name|path
 argument_list|)
 decl_stmt|;
+name|continueComparison
+operator|=
 name|diff
 operator|.
 name|childNodeAdded
@@ -3015,6 +3030,8 @@ argument_list|(
 name|path
 argument_list|)
 decl_stmt|;
+name|continueComparison
+operator|=
 name|diff
 operator|.
 name|childNodeDeleted
@@ -3077,6 +3094,8 @@ argument_list|(
 name|path
 argument_list|)
 decl_stmt|;
+name|continueComparison
+operator|=
 name|diff
 operator|.
 name|childNodeChanged
@@ -3170,6 +3189,8 @@ argument_list|(
 name|from
 argument_list|)
 decl_stmt|;
+name|continueComparison
+operator|=
 name|diff
 operator|.
 name|childNodeDeleted
@@ -3184,6 +3205,14 @@ name|fromName
 argument_list|)
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+operator|!
+name|continueComparison
+condition|)
+block|{
+break|break;
+block|}
 name|String
 name|toName
 init|=
@@ -3194,6 +3223,8 @@ argument_list|(
 name|to
 argument_list|)
 decl_stmt|;
+name|continueComparison
+operator|=
 name|diff
 operator|.
 name|childNodeAdded
@@ -3234,6 +3265,9 @@ argument_list|)
 throw|;
 block|}
 block|}
+return|return
+name|continueComparison
+return|;
 block|}
 specifier|private
 name|String
