@@ -66,7 +66,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A {@code RecursingNodeStateDiff} extends {@link DefaultNodeStateDiff}  * with a factory method for diffing child nodes.  * In contrast to {@code DefaultNodeStateDiff}, {@link #childNodeChanged(String, NodeState, NodeState)}  * should<em>not</em> recurse into child nodes but rather only be concerned about whether to continue  * diffing or not. The {@link #createChildDiff(String, NodeState, NodeState)} will be called instead  * for diffing child nodes.  * michid unify with NodeStateDiff  * michid move  */
+comment|/**  * A {@code RecursingNodeStateDiff} extends {@link DefaultNodeStateDiff}  * with a factory method for diffing child nodes.  * In contrast to {@code DefaultNodeStateDiff}, {@link #childNodeChanged(String, NodeState, NodeState)}  * should<em>not</em> recurse into child nodes but rather only be concerned about whether to continue  * diffing or not. The {@link #createChildDiff(String, NodeState, NodeState)} will be called instead  * for diffing child nodes.  * TODO unify with NodeStateDiff  */
 end_comment
 
 begin_class
