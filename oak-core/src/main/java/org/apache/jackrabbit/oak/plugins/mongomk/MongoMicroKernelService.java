@@ -768,7 +768,7 @@ name|TYPE
 argument_list|,
 name|mk
 operator|.
-name|getNodeCacheStats
+name|getNodeChildrenCacheStats
 argument_list|()
 operator|.
 name|getName
