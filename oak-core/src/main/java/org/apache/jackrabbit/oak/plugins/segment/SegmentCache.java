@@ -81,6 +81,22 @@ name|CacheBuilder
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|cache
+operator|.
+name|CacheStats
+import|;
+end_import
+
 begin_comment
 comment|/**  * Combined memory and disk cache for segments.  */
 end_comment
@@ -110,6 +126,11 @@ argument_list|,
 name|Segment
 argument_list|>
 name|memoryCache
+decl_stmt|;
+specifier|private
+specifier|final
+name|CacheStats
+name|cacheStats
 decl_stmt|;
 comment|// private final Cache<UUID, File> diskCache;
 comment|// private final File diskCacheDirectory;
@@ -143,6 +164,9 @@ argument_list|(
 name|memoryCacheSize
 argument_list|)
 operator|.
+name|recordStats
+argument_list|()
+operator|.
 name|weigher
 argument_list|(
 name|Segment
@@ -159,6 +183,22 @@ comment|//                })
 operator|.
 name|build
 argument_list|()
+expr_stmt|;
+name|cacheStats
+operator|=
+operator|new
+name|CacheStats
+argument_list|(
+name|memoryCache
+argument_list|,
+literal|"Segment"
+argument_list|,
+name|Segment
+operator|.
+name|WEIGHER
+argument_list|,
+name|memoryCacheSize
+argument_list|)
 expr_stmt|;
 block|}
 specifier|public
@@ -253,6 +293,15 @@ argument_list|(
 name|segmentId
 argument_list|)
 expr_stmt|;
+block|}
+specifier|public
+name|CacheStats
+name|getCacheStats
+parameter_list|()
+block|{
+return|return
+name|cacheStats
+return|;
 block|}
 block|}
 end_class
