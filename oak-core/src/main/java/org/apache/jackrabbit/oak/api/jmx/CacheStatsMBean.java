@@ -94,20 +94,25 @@ name|long
 name|getElementCount
 parameter_list|()
 function_decl|;
+comment|/**      * The maximum weight of entries the cache may contain.      * @return  the maximum total weight of entries the cache may contain      */
+name|long
+name|getMaxTotalWeight
+parameter_list|()
+function_decl|;
 comment|/**      * Total weight of the complete cache. Depending on implementation it might be the amount      * of RAM taken by the cache      * @return to weight of the cache      */
 comment|//Computing weight is costly hence its an operation
 name|long
 name|estimateCurrentWeight
 parameter_list|()
 function_decl|;
-comment|/**      * The maximum weight of entries the cache may contain.      * @return  the maximum total weight of entries the cache may contain      */
-name|long
-name|getMaxTotalWeight
-parameter_list|()
-function_decl|;
 comment|/**      * Gathers the stats of the cache for logging.      */
 name|String
 name|cacheInfoAsString
+parameter_list|()
+function_decl|;
+comment|/**      * Reset the cache stats      */
+name|void
+name|resetCache
 parameter_list|()
 function_decl|;
 block|}
