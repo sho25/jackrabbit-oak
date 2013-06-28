@@ -129,7 +129,7 @@ operator|.
 name|cache
 operator|.
 name|CacheStats
-name|statsSnapShot
+name|lastSnapshot
 init|=
 operator|new
 name|com
@@ -468,12 +468,12 @@ name|Override
 specifier|public
 specifier|synchronized
 name|void
-name|resetCache
+name|resetStats
 parameter_list|()
 block|{
 comment|//Cache stats cannot be rest at Guava level. Instead we
 comment|//take a snapshot and then subtract it from future stats calls
-name|statsSnapShot
+name|lastSnapshot
 operator|=
 name|cache
 operator|.
@@ -673,7 +673,7 @@ argument_list|()
 operator|.
 name|minus
 argument_list|(
-name|statsSnapShot
+name|lastSnapshot
 argument_list|)
 return|;
 block|}

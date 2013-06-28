@@ -112,7 +112,7 @@ parameter_list|()
 function_decl|;
 comment|/**      * Reset the cache stats      */
 name|void
-name|resetCache
+name|resetStats
 parameter_list|()
 function_decl|;
 block|}
