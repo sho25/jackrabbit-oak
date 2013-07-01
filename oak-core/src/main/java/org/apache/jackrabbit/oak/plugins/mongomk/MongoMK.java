@@ -2969,11 +2969,7 @@ name|c
 init|=
 operator|new
 name|Children
-argument_list|(
-name|path
-argument_list|,
-name|rev
-argument_list|)
+argument_list|()
 decl_stmt|;
 name|Set
 argument_list|<
@@ -4146,7 +4142,11 @@ name|w
 argument_list|,
 name|fromChildren
 argument_list|,
+name|fromRev
+argument_list|,
 name|toChildren
+argument_list|,
+name|toRev
 argument_list|)
 expr_stmt|;
 block|}
@@ -4205,7 +4205,11 @@ name|w
 argument_list|,
 name|fromChildren
 argument_list|,
+name|fromRev
+argument_list|,
 name|toChildren
+argument_list|,
+name|toRev
 argument_list|)
 expr_stmt|;
 block|}
@@ -4506,8 +4510,14 @@ parameter_list|,
 name|Children
 name|fromChildren
 parameter_list|,
+name|Revision
+name|fromRev
+parameter_list|,
 name|Children
 name|toChildren
+parameter_list|,
+name|Revision
+name|toRev
 parameter_list|)
 block|{
 name|Set
@@ -4573,9 +4583,7 @@ name|getNode
 argument_list|(
 name|n
 argument_list|,
-name|fromChildren
-operator|.
-name|rev
+name|fromRev
 argument_list|)
 decl_stmt|;
 name|Node
@@ -4585,9 +4593,7 @@ name|getNode
 argument_list|(
 name|n
 argument_list|,
-name|toChildren
-operator|.
-name|rev
+name|toRev
 argument_list|)
 decl_stmt|;
 comment|// this is not fully correct:
@@ -7884,11 +7890,7 @@ name|c2
 init|=
 operator|new
 name|Children
-argument_list|(
-name|path
-argument_list|,
-name|rev
-argument_list|)
+argument_list|()
 decl_stmt|;
 name|TreeSet
 argument_list|<
