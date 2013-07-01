@@ -35,6 +35,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Map
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Set
 import|;
 end_import
@@ -130,6 +140,45 @@ return|;
 block|}
 annotation|@
 name|Override
+specifier|public
+name|Set
+argument_list|<
+name|SelectorImpl
+argument_list|>
+name|getSelectors
+parameter_list|()
+block|{
+return|return
+name|constraint
+operator|.
+name|getSelectors
+argument_list|()
+return|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|Map
+argument_list|<
+name|DynamicOperandImpl
+argument_list|,
+name|Set
+argument_list|<
+name|StaticOperandImpl
+argument_list|>
+argument_list|>
+name|getInMap
+parameter_list|()
+block|{
+return|return
+name|Collections
+operator|.
+name|emptyMap
+argument_list|()
+return|;
+block|}
+annotation|@
+name|Override
 name|boolean
 name|accept
 parameter_list|(
@@ -184,10 +233,9 @@ condition|)
 block|{
 comment|// we need to be careful with the condition
 comment|// "NOT (property IS NOT NULL)"
-comment|// (which is the same as
-comment|// "property IS NULL") because
-comment|// this might cause an index to ignore
-comment|// the join condition "property = x"
+comment|// (which is the same as "property IS NULL")
+comment|// because this might cause an index
+comment|// to ignore the join condition "property = x"
 comment|// for example in:
 comment|// "select * from a left outer join b on a.x = b.y
 comment|// where not b.y is not null"

@@ -25,6 +25,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Map
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Set
 import|;
 end_import
@@ -76,6 +86,31 @@ argument_list|>
 name|getPropertyExistenceConditions
 parameter_list|()
 function_decl|;
+comment|/**      * Get the set of selectors for the given condition.      *       * @return the set of selectors (possibly empty)      */
+specifier|public
+specifier|abstract
+name|Set
+argument_list|<
+name|SelectorImpl
+argument_list|>
+name|getSelectors
+parameter_list|()
+function_decl|;
+comment|/**      * Get the map of "in(..)" conditions.      *       * @return the map      */
+specifier|public
+specifier|abstract
+name|Map
+argument_list|<
+name|DynamicOperandImpl
+argument_list|,
+name|Set
+argument_list|<
+name|StaticOperandImpl
+argument_list|>
+argument_list|>
+name|getInMap
+parameter_list|()
+function_decl|;
 comment|/**      * Apply the condition to the filter, further restricting the filter if      * possible. This may also verify the data types are compatible, and that      * paths are valid.      *      * @param f the filter      */
 specifier|public
 specifier|abstract
@@ -86,7 +121,7 @@ name|FilterImpl
 name|f
 parameter_list|)
 function_decl|;
-comment|/**      * Push as much of the condition down to this selector, further restricting      * the selector condition if possible.      *      * @param s the selector      */
+comment|/**      * Push as much of the condition down to this selector, further restricting      * the selector condition if possible. This is important for a join: for      * example, the query      * "select * from a inner join b on a.x=b.x where a.y=1 and b.y=1", the      * condition "a.y=1" can be pushed down to "a", and the condition "b.y=1"      * can be pushed down to "b". That means it is possible to use an index in      * this case.      *      * @param s the selector      */
 specifier|public
 specifier|abstract
 name|void
