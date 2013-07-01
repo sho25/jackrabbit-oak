@@ -600,6 +600,21 @@ name|MongoMK
 implements|implements
 name|MicroKernel
 block|{
+comment|/**      * The threshold where special handling for many child node starts.      */
+specifier|static
+specifier|final
+name|int
+name|MANY_CHILDREN_THRESHOLD
+init|=
+name|Integer
+operator|.
+name|getInteger
+argument_list|(
+literal|"oak.mongoMK.manyChildren"
+argument_list|,
+literal|50
+argument_list|)
+decl_stmt|;
 specifier|private
 specifier|static
 specifier|final
@@ -673,21 +688,6 @@ literal|"oak.mongoMK.fastDiff"
 argument_list|,
 literal|"true"
 argument_list|)
-argument_list|)
-decl_stmt|;
-comment|/**      * The threshold where special handling for many child node starts.      */
-specifier|static
-specifier|final
-name|int
-name|MANY_CHILDREN_THRESHOLD
-init|=
-name|Integer
-operator|.
-name|getInteger
-argument_list|(
-literal|"oak.mongoMK.manyChildren"
-argument_list|,
-literal|50
 argument_list|)
 decl_stmt|;
 comment|/**      * How long to remember the relative order of old revision of all cluster      * nodes, in milliseconds. The default is one hour.      */
@@ -3807,7 +3807,6 @@ throw|;
 block|}
 block|}
 block|}
-specifier|private
 specifier|synchronized
 name|String
 name|diffImpl
