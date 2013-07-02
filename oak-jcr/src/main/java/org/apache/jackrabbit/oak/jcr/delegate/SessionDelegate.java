@@ -47,6 +47,18 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|TimeUnit
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|annotation
@@ -384,6 +396,22 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
+comment|// TODO implement auto refresh configuration. See OAK-803, OAK-88
+specifier|private
+specifier|static
+specifier|final
+name|long
+name|AUTO_REFRESH_INTERVAL
+init|=
+name|TimeUnit
+operator|.
+name|SECONDS
+operator|.
+name|toMillis
+argument_list|(
+literal|1
+argument_list|)
+decl_stmt|;
 specifier|private
 specifier|final
 name|ContentSession
@@ -408,6 +436,15 @@ decl_stmt|;
 specifier|private
 name|int
 name|sessionOpCount
+decl_stmt|;
+specifier|private
+name|long
+name|lastAccessed
+init|=
+name|System
+operator|.
+name|currentTimeMillis
+argument_list|()
 decl_stmt|;
 specifier|public
 name|SessionDelegate
@@ -447,12 +484,17 @@ name|root
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Called by {@link #perform(SessionOperation)} when the session needs to be      * refreshed before the actual {@link SessionOperation} is executed.      * This default implementation is empty.      */
-specifier|protected
+specifier|public
 name|void
-name|refresh
+name|refreshAtNextAccess
 parameter_list|()
-block|{     }
+block|{
+name|lastAccessed
+operator|=
+operator|-
+literal|1
+expr_stmt|;
+block|}
 comment|/**      * Performs the passed {@code SessionOperation} in a safe execution context. This      * context ensures that the session is refreshed if necessary and that refreshing      * occurs before the session operation is performed and the refreshing is done only      * once.      *      * @param sessionOperation  the {@code SessionOperation} to perform      * @param<T>  return type of {@code sessionOperation}      * @return  the result of {@code sessionOperation.perform()}      * @throws RepositoryException      */
 specifier|public
 specifier|synchronized
@@ -480,8 +522,32 @@ literal|0
 condition|)
 block|{
 comment|// Refresh and checks only for non re-entrant session operations
-name|refresh
+name|long
+name|now
+init|=
+name|System
+operator|.
+name|currentTimeMillis
 argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|now
+operator|>
+name|lastAccessed
+operator|+
+name|AUTO_REFRESH_INTERVAL
+condition|)
+block|{
+name|refresh
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+block|}
+name|lastAccessed
+operator|=
+name|now
 expr_stmt|;
 name|sessionOperation
 operator|.
@@ -1013,6 +1079,11 @@ operator|.
 name|commit
 argument_list|()
 expr_stmt|;
+name|refresh
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
@@ -1213,6 +1284,11 @@ name|moveRoot
 operator|.
 name|commit
 argument_list|()
+expr_stmt|;
+name|refresh
+argument_list|(
+literal|true
+argument_list|)
 expr_stmt|;
 block|}
 block|}

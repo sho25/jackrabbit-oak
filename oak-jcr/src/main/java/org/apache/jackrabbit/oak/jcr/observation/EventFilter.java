@@ -13,7 +13,7 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|plugins
+name|jcr
 operator|.
 name|observation
 package|;
