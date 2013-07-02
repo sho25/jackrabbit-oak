@@ -2759,7 +2759,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * @since OAK 1.0 As of OAK AccessControlManager#hasPrivilege will throw      * PathNotFoundException in case the node associated with a given path is      * not readable to the editing session.      */
+comment|/**      * @since OAK 1.0 As of OAK AccessControlManager#hasPrivilege will throw      * PathNotFoundException in case the node associated with a given path is      * not readable to the editing session (compatibility with the specification      * which was missing in jackrabbit).      */
 annotation|@
 name|Test
 specifier|public
