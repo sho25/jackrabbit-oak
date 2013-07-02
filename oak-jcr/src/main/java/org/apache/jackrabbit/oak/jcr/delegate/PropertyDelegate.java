@@ -199,11 +199,6 @@ block|{
 return|return
 name|parent
 operator|.
-name|exists
-argument_list|()
-operator|&&
-name|parent
-operator|.
 name|hasProperty
 argument_list|(
 name|name

@@ -1765,6 +1765,13 @@ name|relPath
 argument_list|)
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|parent
+operator|!=
+literal|null
+condition|)
+block|{
 name|String
 name|name
 init|=
@@ -1787,6 +1794,13 @@ argument_list|,
 name|name
 argument_list|)
 return|;
+block|}
+else|else
+block|{
+return|return
+literal|null
+return|;
+block|}
 block|}
 comment|/**      * Get a property. In contrast to {@link #getPropertyOrNull(String)} this      * method never returns {@code null}. In the case where no property exists      * at the given path, the returned property delegate throws an      * {@code InvalidItemStateException} on access. See See OAK-395.      *      * @param relPath oak path      * @return property at the path given by {@code relPath}.      */
 annotation|@
