@@ -921,7 +921,7 @@ literal|1
 argument_list|)
 return|;
 block|}
-comment|/**      * Deep copy of a map that may contain map values.      *       * @param source the source map      * @param target the target map      */
+comment|/**      * Deep copy of a map that may contain map values.      *       * @param source the source map      * @param target the target map      * @param<K> the type of the map key      */
 specifier|public
 specifier|static
 parameter_list|<
