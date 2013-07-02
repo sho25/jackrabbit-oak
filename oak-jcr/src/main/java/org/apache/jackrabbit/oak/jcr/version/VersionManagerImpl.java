@@ -584,7 +584,9 @@ name|SessionOperation
 argument_list|<
 name|Void
 argument_list|>
-argument_list|()
+argument_list|(
+literal|true
+argument_list|)
 block|{
 annotation|@
 name|Override
@@ -1030,7 +1032,9 @@ name|SessionOperation
 argument_list|<
 name|Void
 argument_list|>
-argument_list|()
+argument_list|(
+literal|true
+argument_list|)
 block|{
 annotation|@
 name|Override
@@ -1805,7 +1809,9 @@ name|SessionOperation
 argument_list|<
 name|Void
 argument_list|>
-argument_list|()
+argument_list|(
+literal|true
+argument_list|)
 block|{
 annotation|@
 name|Override
@@ -1901,7 +1907,9 @@ name|SessionOperation
 argument_list|<
 name|Version
 argument_list|>
-argument_list|()
+argument_list|(
+literal|true
+argument_list|)
 block|{
 annotation|@
 name|Override

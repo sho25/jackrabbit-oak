@@ -439,6 +439,12 @@ name|sessionOpCount
 decl_stmt|;
 specifier|private
 name|long
+name|updateCount
+init|=
+literal|0
+decl_stmt|;
+specifier|private
+name|long
 name|lastAccessed
 init|=
 name|System
@@ -485,6 +491,7 @@ argument_list|)
 expr_stmt|;
 block|}
 specifier|public
+specifier|synchronized
 name|void
 name|refreshAtNextAccess
 parameter_list|()
@@ -544,6 +551,9 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+name|updateCount
+operator|++
+expr_stmt|;
 block|}
 name|lastAccessed
 operator|=
@@ -572,6 +582,18 @@ block|{
 name|sessionOpCount
 operator|--
 expr_stmt|;
+if|if
+condition|(
+name|sessionOperation
+operator|.
+name|isUpdate
+argument_list|()
+condition|)
+block|{
+name|updateCount
+operator|++
+expr_stmt|;
+block|}
 block|}
 block|}
 annotation|@
@@ -618,6 +640,16 @@ literal|"This session has been closed."
 argument_list|)
 throw|;
 block|}
+block|}
+comment|/**      * @return session update counter      */
+specifier|public
+name|long
+name|getUpdateCount
+parameter_list|()
+block|{
+return|return
+name|updateCount
+return|;
 block|}
 annotation|@
 name|Nonnull
