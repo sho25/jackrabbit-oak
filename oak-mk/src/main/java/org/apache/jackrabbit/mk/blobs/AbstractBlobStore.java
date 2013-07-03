@@ -323,6 +323,7 @@ literal|1024
 operator|*
 literal|1024
 decl_stmt|;
+comment|/**      * The cache (16 MB).      */
 specifier|private
 name|Cache
 argument_list|<
@@ -340,7 +341,7 @@ name|newInstance
 argument_list|(
 name|this
 argument_list|,
-literal|8
+literal|16
 operator|*
 literal|1024
 operator|*
