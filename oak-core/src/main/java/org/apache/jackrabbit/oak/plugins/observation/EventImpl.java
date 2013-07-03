@@ -84,7 +84,7 @@ decl_stmt|;
 specifier|private
 specifier|final
 name|String
-name|path
+name|jcrPath
 decl_stmt|;
 specifier|private
 specifier|final
@@ -128,7 +128,7 @@ name|int
 name|type
 parameter_list|,
 name|String
-name|path
+name|jcrPath
 parameter_list|,
 name|String
 name|userID
@@ -162,9 +162,9 @@ name|type
 expr_stmt|;
 name|this
 operator|.
-name|path
+name|jcrPath
 operator|=
-name|path
+name|jcrPath
 expr_stmt|;
 name|this
 operator|.
@@ -233,7 +233,7 @@ throws|throws
 name|RepositoryException
 block|{
 return|return
-name|path
+name|jcrPath
 return|;
 block|}
 annotation|@
@@ -413,23 +413,23 @@ argument_list|)
 operator|)
 operator|&&
 operator|(
-name|path
+name|jcrPath
 operator|==
 literal|null
 condition|?
 name|that
 operator|.
-name|path
+name|jcrPath
 operator|==
 literal|null
 else|:
-name|path
+name|jcrPath
 operator|.
 name|equals
 argument_list|(
 name|that
 operator|.
-name|path
+name|jcrPath
 argument_list|)
 operator|)
 operator|&&
@@ -502,13 +502,13 @@ operator|*
 name|result
 operator|+
 operator|(
-name|path
+name|jcrPath
 operator|==
 literal|null
 condition|?
 literal|0
 else|:
-name|path
+name|jcrPath
 operator|.
 name|hashCode
 argument_list|()
@@ -627,9 +627,9 @@ literal|"type="
 operator|+
 name|type
 operator|+
-literal|", path='"
+literal|", jcrPath='"
 operator|+
-name|path
+name|jcrPath
 operator|+
 literal|'\''
 operator|+
