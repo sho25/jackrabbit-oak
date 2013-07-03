@@ -27,22 +27,6 @@ name|google
 operator|.
 name|common
 operator|.
-name|base
-operator|.
-name|Preconditions
-operator|.
-name|checkArgument
-import|;
-end_import
-
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
 name|collect
 operator|.
 name|Lists
@@ -399,11 +383,6 @@ name|sessionDelegate
 decl_stmt|;
 specifier|private
 specifier|final
-name|ContentSession
-name|contentSession
-decl_stmt|;
-specifier|private
-specifier|final
 name|ReadOnlyNodeTypeManager
 name|ntMgr
 decl_stmt|;
@@ -417,7 +396,7 @@ specifier|final
 name|Whiteboard
 name|whiteboard
 decl_stmt|;
-comment|/**      * Create a new instance based on a {@link ContentSession} that needs to implement      * {@link Observable}.      *      * @param contentSession   the content session in whose context this observation manager      *                         operates.      * @param nodeTypeManager  node type manager for the content session      * @param namePathMapper   name path mapper for the content session      * @param whiteboard      * @throws IllegalArgumentException if {@code contentSession} doesn't implement {@code Observable}.      */
+comment|/**      * Create a new instance based on a {@link ContentSession} that needs to implement      * {@link Observable}.      *      * @param sessionDelegate  session delegate of the session in whose context this observation manager      *                         operates.      * @param nodeTypeManager  node type manager for the content session      * @param namePathMapper   name path mapper for the content session      * @param whiteboard      * @throws IllegalArgumentException if {@code contentSession} doesn't implement {@code Observable}.      */
 specifier|public
 name|ObservationManagerImpl
 parameter_list|(
@@ -439,22 +418,6 @@ operator|.
 name|sessionDelegate
 operator|=
 name|sessionDelegate
-expr_stmt|;
-name|this
-operator|.
-name|contentSession
-operator|=
-name|sessionDelegate
-operator|.
-name|getContentSession
-argument_list|()
-expr_stmt|;
-name|checkArgument
-argument_list|(
-name|contentSession
-operator|instanceof
-name|Observable
-argument_list|)
 expr_stmt|;
 name|this
 operator|.
@@ -671,7 +634,10 @@ operator|=
 operator|new
 name|ChangeProcessor
 argument_list|(
-name|contentSession
+name|sessionDelegate
+operator|.
+name|getContentSession
+argument_list|()
 argument_list|,
 name|namePathMapper
 argument_list|,
