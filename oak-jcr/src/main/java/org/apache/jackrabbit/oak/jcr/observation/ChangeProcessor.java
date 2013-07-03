@@ -1084,9 +1084,9 @@ parameter_list|)
 block|{
 name|log
 operator|.
-name|error
+name|debug
 argument_list|(
-literal|"Unable to generate or send events"
+literal|"Error while dispatching observation events"
 argument_list|,
 name|e
 argument_list|)
@@ -1322,6 +1322,8 @@ name|hasNext
 argument_list|()
 condition|)
 block|{
+try|try
+block|{
 name|listener
 operator|.
 name|onEvent
@@ -1352,6 +1354,25 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|Exception
+name|e
+parameter_list|)
+block|{
+name|log
+operator|.
+name|warn
+argument_list|(
+literal|"Unhandled exception in observation listener: "
+operator|+
+name|listener
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
+block|}
 name|events
 operator|=
 operator|new
