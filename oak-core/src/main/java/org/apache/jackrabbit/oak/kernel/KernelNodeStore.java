@@ -461,6 +461,9 @@ argument_list|(
 name|cacheSize
 argument_list|)
 operator|.
+name|recordStats
+argument_list|()
+operator|.
 name|weigher
 argument_list|(
 name|weigher
