@@ -676,8 +676,15 @@ name|add
 argument_list|(
 literal|"averageLoadPenalty (nanos)"
 argument_list|,
+name|String
+operator|.
+name|format
+argument_list|(
+literal|"%1.2f"
+argument_list|,
 name|getAverageLoadPenalty
 argument_list|()
+argument_list|)
 argument_list|)
 operator|.
 name|add
