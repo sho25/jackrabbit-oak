@@ -88,6 +88,13 @@ specifier|private
 name|Node
 name|root
 decl_stmt|;
+comment|/**      * Iteration counter used to avoid the slit document edge case in MongoMK.      */
+specifier|private
+name|int
+name|iteration
+init|=
+literal|0
+decl_stmt|;
 annotation|@
 name|Override
 specifier|public
@@ -122,6 +129,9 @@ operator|.
 name|addNode
 argument_list|(
 literal|"SmallFileWriteTest"
+operator|+
+name|iteration
+operator|++
 argument_list|,
 literal|"nt:folder"
 argument_list|)
@@ -134,6 +144,11 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"deprecation"
+argument_list|)
 specifier|public
 name|void
 name|runTest
