@@ -1049,13 +1049,15 @@ specifier|public
 name|void
 name|clusterBranchInVisibility
 parameter_list|()
+throws|throws
+name|InterruptedException
 block|{
 name|MongoMK
 name|mk1
 init|=
 name|createMK
 argument_list|(
-literal|0
+literal|1
 argument_list|)
 decl_stmt|;
 name|mk1
@@ -1130,12 +1132,20 @@ argument_list|,
 literal|null
 argument_list|)
 expr_stmt|;
+comment|// mk1.merge only becomes visible to mk2 after async delay
+comment|// therefore dispose mk1 now to make sure it flushes
+comment|// unsaved last revisions
+name|mk1
+operator|.
+name|dispose
+argument_list|()
+expr_stmt|;
 name|MongoMK
 name|mk2
 init|=
 name|createMK
 argument_list|(
-literal|0
+literal|2
 argument_list|)
 decl_stmt|;
 name|String
@@ -1164,11 +1174,6 @@ literal|"{\"branchVisible\":{},\"regular\":{},\":childNodeCount\":2}"
 argument_list|,
 name|nodes
 argument_list|)
-expr_stmt|;
-name|mk1
-operator|.
-name|dispose
-argument_list|()
 expr_stmt|;
 name|mk2
 operator|.

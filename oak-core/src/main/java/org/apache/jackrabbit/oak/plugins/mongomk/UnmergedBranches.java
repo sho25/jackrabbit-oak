@@ -503,6 +503,8 @@ argument_list|(
 name|commits
 argument_list|,
 name|base
+argument_list|,
+name|comparator
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -563,6 +565,8 @@ name|checkNotNull
 argument_list|(
 name|base
 argument_list|)
+argument_list|,
+name|comparator
 argument_list|)
 decl_stmt|;
 synchronized|synchronized

@@ -961,7 +961,7 @@ name|val
 argument_list|)
 throw|;
 block|}
-specifier|private
+specifier|protected
 specifier|static
 name|Object
 name|resolveValue
