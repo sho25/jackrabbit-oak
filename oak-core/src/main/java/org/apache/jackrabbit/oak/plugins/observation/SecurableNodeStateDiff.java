@@ -92,7 +92,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Base class for {@code NodeStateDiff} implementations that can be secured.  * That is its call back methods are only called when its receiver has sufficient  * rights to access respective items.  */
+comment|/**  * Base class for {@code NodeStateDiff} implementations that can be secured.  * That is, its call back methods are only called when its receiver has sufficient  * rights to access the respective items.  *<p>  * Implementors must implement the {@link #create(SecurableNodeStateDiff, String, NodeState, NodeState)}  * factory method for creating {@code SecurableNodeStateDiff} instances for child nodes.  * Further implementors should override {@link #canRead(PropertyState, PropertyState)} and  * {@link #canRead(String, NodeState, NodeState)} and determine whether the passed states are  * accessible and the respective callbacks should thus be invoked. Finally implementors should override,  * {@link #secureBefore(String, NodeState)}, and {@link #secureAfter(String, NodeState)}} wrapping the  * passed node state into a node state that restricts access to accessible child nodes and properties.  */
 end_comment
 
 begin_class
@@ -103,15 +103,18 @@ name|SecurableNodeStateDiff
 implements|implements
 name|NodeStateDiff
 block|{
+comment|/**      * Parent diff      */
 specifier|private
 specifier|final
 name|SecurableNodeStateDiff
 name|parent
 decl_stmt|;
+comment|/**      * Unsecured diff this secured diff delegates to after it has determined      * that the items pertaining to a call back are accessible.      */
 specifier|private
 name|RecursingNodeStateDiff
 name|diff
 decl_stmt|;
+comment|/**      * Deferred {@link #childNodeChanged(String, NodeState, NodeState)} calls.      * Such calls are deferred until an accessible change in the respective sub tree      * is detected, as otherwise we might leak information restricted by access control      * to the call back.      */
 specifier|private
 name|Deferred
 name|deferred
@@ -132,17 +135,18 @@ parameter_list|)
 block|{
 name|this
 operator|.
-name|diff
+name|parent
 operator|=
-name|diff
+name|parent
 expr_stmt|;
 name|this
 operator|.
-name|parent
+name|diff
 operator|=
-name|parent
+name|diff
 expr_stmt|;
 block|}
+comment|/**      * Create a new child instance      * @param parent  parent of this instance      */
 specifier|protected
 name|SecurableNodeStateDiff
 parameter_list|(
@@ -160,6 +164,7 @@ name|EMPTY
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * Create a new instance wrapping a unsecured diff.      * @param diff  unsecured diff      */
 specifier|protected
 name|SecurableNodeStateDiff
 parameter_list|(
@@ -175,6 +180,7 @@ name|diff
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * Factory method for creating {@code SecurableNodeStateDiff} instances for child nodes.      * @param parent  parent diff      * @param name    name of the child node      * @param before  before state of the child node      * @param after   after state of the child node      * @return  {@code SecurableNodeStateDiff} for the child node {@code name}.      */
 annotation|@
 name|CheckForNull
 specifier|protected
@@ -195,6 +201,7 @@ name|NodeState
 name|after
 parameter_list|)
 function_decl|;
+comment|/**      * Determine whether a property is accessible      * @param before  before state of the property      * @param after   after state of the property      * @return  {@code true} if accessible, {@code false} otherwise.      */
 specifier|protected
 name|boolean
 name|canRead
@@ -210,6 +217,7 @@ return|return
 literal|true
 return|;
 block|}
+comment|/**      * Determine whether a node is accessible      * @param before  before state of the node      * @param after   after state of the node      * @return  {@code true} if accessible, {@code false} otherwise.      */
 specifier|protected
 name|boolean
 name|canRead
@@ -228,6 +236,7 @@ return|return
 literal|true
 return|;
 block|}
+comment|/**      * Secure the before state of a child node such that it only provides      * accessible child nodes and properties.      * @param name       name of the child node      * @param nodeState  before state of the child node      * @return  secured before state      */
 annotation|@
 name|Nonnull
 specifier|protected
@@ -245,6 +254,7 @@ return|return
 name|nodeState
 return|;
 block|}
+comment|/**      * Secure the after state of a child node such that it only provides      * accessible child nodes and properties.      * @param name       name of the child node      * @param nodeState  after state of the child node      * @return  secured after state      */
 annotation|@
 name|Nonnull
 specifier|protected
@@ -481,6 +491,7 @@ return|return
 literal|true
 return|;
 block|}
+comment|// Defer call back until accessible changes in the subtree are found
 name|deferred
 operator|=
 operator|new
@@ -639,6 +650,7 @@ argument_list|()
 return|;
 block|}
 comment|//------------------------------------------------------------< Deferred>---
+comment|/**      * A deferred method call implementing call by need semantics.      */
 specifier|private
 specifier|abstract
 specifier|static
