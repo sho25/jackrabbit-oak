@@ -20,6 +20,26 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|state
+operator|.
+name|NodeStateUtils
+operator|.
+name|isHidden
+import|;
+end_import
+
+begin_import
 import|import
 name|org
 operator|.
@@ -141,6 +161,13 @@ name|after
 parameter_list|)
 block|{
 return|return
+name|isHidden
+argument_list|(
+name|name
+argument_list|)
+condition|?
+literal|null
+else|:
 operator|new
 name|SecureNodeStateDiff
 argument_list|(
