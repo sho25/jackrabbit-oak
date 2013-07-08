@@ -81,24 +81,6 @@ name|PropertyState
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|plugins
-operator|.
-name|observation
-operator|.
-name|RecursingNodeStateDiff
-import|;
-end_import
-
 begin_comment
 comment|/**  * {@code NodeStateDiff} wrapper that passes only changes to non-hidden nodes and properties  * (i.e. ones whose names don't start with a colon) to the given delegate diff.  *  * @since Oak 0.9  */
 end_comment

@@ -91,6 +91,24 @@ name|NodeStateDiff
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|state
+operator|.
+name|RecursingNodeStateDiff
+import|;
+end_import
+
 begin_comment
 comment|/**  * Base class for {@code NodeStateDiff} implementations that can be secured.  * That is, its call back methods are only called when its receiver has sufficient  * rights to access the respective items.  *<p>  * Implementors must implement the {@link #create(SecurableNodeStateDiff, String, NodeState, NodeState)}  * factory method for creating {@code SecurableNodeStateDiff} instances for child nodes.  * Further implementors should override {@link #canRead(PropertyState, PropertyState)} and  * {@link #canRead(String, NodeState, NodeState)} and determine whether the passed states are  * accessible and the respective callbacks should thus be invoked. Finally implementors should override,  * {@link #secureBefore(String, NodeState)}, and {@link #secureAfter(String, NodeState)}} wrapping the  * passed node state into a node state that restricts access to accessible child nodes and properties.  */
 end_comment
