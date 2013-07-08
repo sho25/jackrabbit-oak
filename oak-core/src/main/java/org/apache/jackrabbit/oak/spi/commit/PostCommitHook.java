@@ -48,7 +48,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * TODO unify with either Observer or CommitHook  */
+comment|/**  * Extension point for observing content changes of an Oak  * {@link org.apache.jackrabbit.oak.api.Root}. Content changes are  * reported by passing the<em>before</em> and<em>after</em> state of the content  * tree to the {@link #contentChanged(NodeState, NodeState)} callback  * method.  */
 end_comment
 
 begin_interface
@@ -82,6 +82,7 @@ parameter_list|)
 block|{ }
 block|}
 decl_stmt|;
+comment|/**      * Observes a content change on the associated {@link org.apache.jackrabbit.oak.api.Root}.      *<p>      * Post-commit hooks are executed synchronously within the context of      * a repository instance, so to prevent delaying access to latest changes      * the after-commit hooks should avoid any potentially blocking operations.      *      * @param before content tree before the commit      * @param after content tree after the commit      */
 name|void
 name|contentChanged
 parameter_list|(
