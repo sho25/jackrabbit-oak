@@ -40,7 +40,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * An {@code Observable} supports attaching {@link Listener} instances for  * listening to changes in a {@code ContentRepository}.  * @see ChangeDispatcher  */
+comment|/**  * An {@code Observable} supports attaching {@link Listener} instances for  * listening to changes in a {@code ContentSession}.  * @see ChangeDispatcher  */
 end_comment
 
 begin_interface
