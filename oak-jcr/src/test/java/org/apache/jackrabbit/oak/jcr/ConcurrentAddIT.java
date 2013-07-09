@@ -141,14 +141,26 @@ name|fail
 import|;
 end_import
 
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assume
+operator|.
+name|assumeTrue
+import|;
+end_import
+
 begin_comment
-comment|/**  *<code>ConcurrentAddTest</code> adds nodes with multiple sessions in separate  * locations of the repository.  */
+comment|/**  *<code>ConcurrentAddIT</code> adds nodes with multiple sessions in separate  * locations of the repository.  */
 end_comment
 
 begin_class
 specifier|public
 class|class
-name|ConcurrentAddTest
+name|ConcurrentAddIT
 extends|extends
 name|AbstractRepositoryTest
 block|{
@@ -168,6 +180,19 @@ name|NODES_PER_WORKER
 init|=
 literal|100
 decl_stmt|;
+specifier|public
+name|ConcurrentAddIT
+parameter_list|(
+name|NodeStoreFixture
+name|fixture
+parameter_list|)
+block|{
+name|super
+argument_list|(
+name|fixture
+argument_list|)
+expr_stmt|;
+block|}
 annotation|@
 name|Test
 specifier|public
@@ -177,6 +202,16 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+comment|// OAK-786
+name|assumeTrue
+argument_list|(
+name|fixture
+operator|!=
+name|NodeStoreFixture
+operator|.
+name|SEGMENT_MK
+argument_list|)
+expr_stmt|;
 name|List
 argument_list|<
 name|Exception
