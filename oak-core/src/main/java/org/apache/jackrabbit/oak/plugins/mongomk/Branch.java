@@ -102,7 +102,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Contains commit information about a branch and its base revision.  */
+comment|/**  * Contains commit information about a branch and its base revision.  * TODO document  */
 end_comment
 
 begin_class
@@ -121,7 +121,7 @@ argument_list|>
 name|commits
 decl_stmt|;
 specifier|private
-specifier|final
+specifier|volatile
 name|Revision
 name|base
 decl_stmt|;
@@ -205,6 +205,21 @@ block|{
 return|return
 name|base
 return|;
+block|}
+specifier|public
+name|void
+name|setBase
+parameter_list|(
+name|Revision
+name|base
+parameter_list|)
+block|{
+name|this
+operator|.
+name|base
+operator|=
+name|base
+expr_stmt|;
 block|}
 specifier|synchronized
 name|void
