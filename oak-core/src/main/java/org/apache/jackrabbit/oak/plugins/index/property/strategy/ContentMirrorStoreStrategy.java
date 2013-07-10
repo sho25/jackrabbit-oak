@@ -343,6 +343,7 @@ expr_stmt|;
 block|}
 block|}
 specifier|private
+specifier|static
 name|void
 name|remove
 parameter_list|(
@@ -486,6 +487,7 @@ block|}
 block|}
 block|}
 specifier|private
+specifier|static
 name|void
 name|insert
 parameter_list|(
@@ -738,6 +740,11 @@ name|v
 operator|.
 name|getEstimatedCount
 argument_list|()
+expr_stmt|;
+comment|// "is not null" queries typically read more data
+name|count
+operator|*=
+literal|10
 expr_stmt|;
 block|}
 else|else

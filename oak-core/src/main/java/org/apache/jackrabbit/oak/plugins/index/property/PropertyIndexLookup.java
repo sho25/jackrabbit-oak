@@ -760,6 +760,7 @@ comment|/**      * Get the node with the index data for the given property, if t
 annotation|@
 name|Nullable
 specifier|private
+specifier|static
 name|NodeState
 name|getIndexDataNode
 parameter_list|(

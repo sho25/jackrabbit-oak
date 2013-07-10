@@ -615,8 +615,6 @@ comment|/**      * Flag to indicate whether individual property changes should  
 specifier|private
 name|boolean
 name|trackChanges
-init|=
-literal|false
 decl_stmt|;
 comment|/**      * Matching property value keys from the before state,      * or {@code null} if this node is not indexed.      */
 specifier|private
@@ -625,8 +623,6 @@ argument_list|<
 name|String
 argument_list|>
 name|beforeKeys
-init|=
-literal|null
 decl_stmt|;
 comment|/**      * Matching property value keys from the after state,      * or {@code null} if this node is not indexed.      */
 specifier|private
@@ -635,8 +631,6 @@ argument_list|<
 name|String
 argument_list|>
 name|afterKeys
-init|=
-literal|null
 decl_stmt|;
 specifier|public
 name|PropertyIndexEditor
@@ -958,11 +952,11 @@ name|NodeState
 name|state
 parameter_list|)
 block|{
+comment|// no type limitations
 return|return
 name|primaryTypes
 operator|==
 literal|null
-comment|// no type limitations
 operator|||
 name|primaryTypes
 operator|.
