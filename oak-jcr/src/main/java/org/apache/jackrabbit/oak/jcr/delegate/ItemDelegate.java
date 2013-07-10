@@ -158,11 +158,11 @@ parameter_list|()
 throws|throws
 name|InvalidItemStateException
 function_decl|;
-comment|/**      * Determine whether this item is stale      * @return  {@code true} iff stale      */
+comment|/**      * Determine whether the underlying item exists      * @return  {@code true} the underlying tree exists, {@code false} otherwise.      */
 specifier|public
 specifier|abstract
 name|boolean
-name|isStale
+name|exists
 parameter_list|()
 function_decl|;
 specifier|public
@@ -174,7 +174,8 @@ name|InvalidItemStateException
 block|{
 if|if
 condition|(
-name|isStale
+operator|!
+name|exists
 argument_list|()
 condition|)
 block|{

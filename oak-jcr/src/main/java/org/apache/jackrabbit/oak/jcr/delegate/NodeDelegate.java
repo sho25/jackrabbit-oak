@@ -1245,11 +1245,10 @@ annotation|@
 name|Override
 specifier|public
 name|boolean
-name|isStale
+name|exists
 parameter_list|()
 block|{
 return|return
-operator|!
 name|tree
 operator|.
 name|exists
