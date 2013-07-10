@@ -1162,7 +1162,7 @@ return|;
 block|}
 return|return
 operator|new
-name|ReadOnlyOakDirectory
+name|OakDirectory
 argument_list|(
 operator|new
 name|ReadOnlyBuilder

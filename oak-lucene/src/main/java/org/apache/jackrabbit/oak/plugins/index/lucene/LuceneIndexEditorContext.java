@@ -509,7 +509,7 @@ condition|)
 block|{
 return|return
 operator|new
-name|ReadWriteOakDirectory
+name|OakDirectory
 argument_list|(
 name|definition
 operator|.
