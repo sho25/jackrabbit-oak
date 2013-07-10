@@ -2261,7 +2261,9 @@ operator|=
 name|b
 operator|.
 name|getBase
-argument_list|()
+argument_list|(
+name|requestRevision
+argument_list|)
 expr_stmt|;
 block|}
 return|return
@@ -3476,6 +3478,16 @@ operator|!=
 literal|null
 condition|)
 block|{
+name|Revision
+name|base
+init|=
+name|branch
+operator|.
+name|getBase
+argument_list|(
+name|readRevision
+argument_list|)
+decl_stmt|;
 for|for
 control|(
 name|Iterator
@@ -3513,10 +3525,7 @@ name|isRevisionNewer
 argument_list|(
 name|r
 argument_list|,
-name|branch
-operator|.
-name|getBase
-argument_list|()
+name|base
 argument_list|)
 condition|)
 block|{
@@ -7669,13 +7678,6 @@ return|return
 name|branchRevisionId
 return|;
 block|}
-name|b
-operator|.
-name|setBase
-argument_list|(
-name|base
-argument_list|)
-expr_stmt|;
 comment|// add a pseudo commit to make sure current head of branch
 comment|// has a higher revision than base of branch
 name|Revision
@@ -7686,9 +7688,11 @@ argument_list|()
 decl_stmt|;
 name|b
 operator|.
-name|addCommit
+name|rebase
 argument_list|(
 name|head
+argument_list|,
+name|base
 argument_list|)
 expr_stmt|;
 return|return
