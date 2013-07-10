@@ -528,6 +528,15 @@ operator|=
 name|lastRevision
 expr_stmt|;
 block|}
+specifier|public
+name|Revision
+name|getLastRevision
+parameter_list|()
+block|{
+return|return
+name|lastRevision
+return|;
+block|}
 annotation|@
 name|Override
 specifier|public
