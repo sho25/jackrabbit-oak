@@ -81,6 +81,42 @@ begin_import
 import|import
 name|org
 operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|query
+operator|.
+name|fulltext
+operator|.
+name|FullTextExpression
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|query
+operator|.
+name|fulltext
+operator|.
+name|FullTextParser
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|junit
 operator|.
 name|Test
@@ -105,6 +141,26 @@ parameter_list|()
 throws|throws
 name|ParseException
 block|{
+name|assertEquals
+argument_list|(
+literal|"\"hello\" \"world\""
+argument_list|,
+name|convertPattern
+argument_list|(
+literal|"hello world"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"\"hello\" \"or\" \"world\""
+argument_list|,
+name|convertPattern
+argument_list|(
+literal|"hello or world"
+argument_list|)
+argument_list|)
+expr_stmt|;
 name|assertFalse
 argument_list|(
 name|test
@@ -155,6 +211,16 @@ parameter_list|()
 throws|throws
 name|ParseException
 block|{
+name|assertEquals
+argument_list|(
+literal|"\"hello\" OR \"world\""
+argument_list|,
+name|convertPattern
+argument_list|(
+literal|"hello OR world"
+argument_list|)
+argument_list|)
+expr_stmt|;
 name|assertTrue
 argument_list|(
 name|test
@@ -195,6 +261,16 @@ parameter_list|()
 throws|throws
 name|ParseException
 block|{
+name|assertEquals
+argument_list|(
+literal|"\"hello\" -\"world\""
+argument_list|,
+name|convertPattern
+argument_list|(
+literal|"hello -world"
+argument_list|)
+argument_list|)
+expr_stmt|;
 name|assertTrue
 argument_list|(
 name|test
@@ -225,6 +301,26 @@ parameter_list|()
 throws|throws
 name|ParseException
 block|{
+name|assertEquals
+argument_list|(
+literal|"\"hello world\""
+argument_list|,
+name|convertPattern
+argument_list|(
+literal|"\"hello world\""
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"\"hello world\" \"world\""
+argument_list|,
+name|convertPattern
+argument_list|(
+literal|"\"hello world\" world"
+argument_list|)
+argument_list|)
+expr_stmt|;
 name|assertTrue
 argument_list|(
 name|test
@@ -305,6 +401,16 @@ parameter_list|()
 throws|throws
 name|ParseException
 block|{
+name|assertEquals
+argument_list|(
+literal|"\"\\\"hello world\\\"\""
+argument_list|,
+name|convertPattern
+argument_list|(
+literal|"\"\\\"hello world\\\"\""
+argument_list|)
+argument_list|)
+expr_stmt|;
 name|assertFalse
 argument_list|(
 name|test
@@ -352,6 +458,56 @@ argument_list|(
 literal|"\\-1 2 3"
 argument_list|,
 literal|"-1 2 3"
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+specifier|public
+name|void
+name|boost
+parameter_list|()
+throws|throws
+name|ParseException
+block|{
+name|assertEquals
+argument_list|(
+literal|"\"hello\"^2"
+argument_list|,
+name|convertPattern
+argument_list|(
+literal|"hello^2"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"\"hello world\"^2"
+argument_list|,
+name|convertPattern
+argument_list|(
+literal|"\"hello world\"^2"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertTrue
+argument_list|(
+name|test
+argument_list|(
+literal|"hello^2"
+argument_list|,
+literal|"hello"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertTrue
+argument_list|(
+name|test
+argument_list|(
+literal|"\"hello\"^0.2"
+argument_list|,
+literal|"hello"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -498,6 +654,34 @@ block|}
 block|}
 specifier|private
 specifier|static
+name|String
+name|convertPattern
+parameter_list|(
+name|String
+name|pattern
+parameter_list|)
+throws|throws
+name|ParseException
+block|{
+name|FullTextExpression
+name|e
+init|=
+name|FullTextParser
+operator|.
+name|parse
+argument_list|(
+name|pattern
+argument_list|)
+decl_stmt|;
+return|return
+name|e
+operator|.
+name|toString
+argument_list|()
+return|;
+block|}
+specifier|private
+specifier|static
 name|boolean
 name|test
 parameter_list|(
@@ -510,13 +694,9 @@ parameter_list|)
 throws|throws
 name|ParseException
 block|{
-name|FullTextSearchImpl
-operator|.
 name|FullTextExpression
 name|e
 init|=
-name|FullTextSearchImpl
-operator|.
 name|FullTextParser
 operator|.
 name|parse

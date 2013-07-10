@@ -14,6 +14,8 @@ operator|.
 name|oak
 operator|.
 name|query
+operator|.
+name|fulltext
 package|;
 end_package
 
@@ -98,6 +100,22 @@ operator|.
 name|commons
 operator|.
 name|PathUtils
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|query
+operator|.
+name|Query
 import|;
 end_import
 
