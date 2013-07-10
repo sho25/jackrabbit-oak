@@ -2590,9 +2590,6 @@ argument_list|(
 name|e
 argument_list|)
 expr_stmt|;
-name|missCount
-operator|++
-expr_stmt|;
 return|return
 name|old
 return|;
@@ -2873,6 +2870,9 @@ operator|-=
 name|e
 operator|.
 name|memory
+expr_stmt|;
+name|evictionCount
+operator|++
 expr_stmt|;
 name|removeFromQueue
 argument_list|(
