@@ -157,7 +157,7 @@ parameter_list|)
 throws|throws
 name|MicroKernelException
 function_decl|;
-comment|/**      * Returns the number of child nodes of the specified node.      *<p/>      * This is a convenience method since this information could gathered by      * calling {@code getNodes(path, revisionId, 0, 0, 0, null)} and evaluating      * the {@code :childNodeCount} property.      *      * @param path       path denoting node      * @param revisionId revision id, if {@code null} the current head revision is assumed      * @return the number of child nodes      * @throws MicroKernelException if the specified node or revision does not exist or if another error occurs      */
+comment|/**      * Returns the number of child nodes of the specified node.      *<p/>      * This is a convenience method since the number of child nodes can be also      * determined by calling {@code getNodes(path, revisionId, 0, 0, 0, null)}      * and evaluating the {@code :childNodeCount} property.      *      * @param path       path denoting node      * @param revisionId revision id, if {@code null} the current head revision is assumed      * @return the number of child nodes      * @throws MicroKernelException if the specified node or revision does not exist or if another error occurs      */
 name|long
 name|getChildNodeCount
 parameter_list|(
