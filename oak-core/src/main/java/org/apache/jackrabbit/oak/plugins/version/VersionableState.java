@@ -652,7 +652,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *<code>VersionableState</code> provides methods to create a versionable state  * for a version based on a versionable node.  *<p>  * The restore implementation of this class does not handle the removeExisting  * flag. It is expected that this is handled on a higher level. If this is not  * done the uniqueness constraint on the jcr:uuid will kick in and fail the  * commit.  *</p>  */
+comment|/**  * {@code VersionableState} provides methods to create a versionable state  * for a version based on a versionable node.  *<p>  * The restore implementation of this class does not handle the removeExisting  * flag. It is expected that this is handled on a higher level. If this is not  * done the uniqueness constraint on the jcr:uuid will kick in and fail the  * commit.  *</p>  */
 end_comment
 
 begin_class
@@ -1276,7 +1276,7 @@ throw|;
 block|}
 block|}
 comment|//--------------------------< internal>------------------------------------
-comment|/**      * Restores the state from<code>src</code> to a child node of      *<code>destParent</code> with the same name as<code>src</code>.      *      * @param src the source node.      * @param destParent the parent of the destination node.      * @param name the name of the source node.      * @param selector the version selector.      */
+comment|/**      * Restores the state from {@code src} to a child node of      * {@code destParent} with the same name as {@code src}.      *      * @param src the source node.      * @param destParent the parent of the destination node.      * @param name the name of the source node.      * @param selector the version selector.      */
 specifier|private
 name|void
 name|restoreState
@@ -1882,7 +1882,7 @@ name|dest
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Restores children of a<code>src</code>.      */
+comment|/**      * Restores children of a {@code src}.      */
 specifier|private
 name|void
 name|restoreChildren
@@ -2956,7 +2956,6 @@ specifier|private
 interface|interface
 name|OPVProvider
 block|{
-specifier|public
 name|int
 name|getAction
 parameter_list|(

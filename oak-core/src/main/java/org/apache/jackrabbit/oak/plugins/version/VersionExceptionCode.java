@@ -20,7 +20,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  *<code>VersionExceptionCode</code> contains the codes for version related  * commit failures.  */
+comment|/**  * {@code VersionExceptionCode} contains the codes for version related  * commit failures.  */
 end_comment
 
 begin_enum
@@ -58,7 +58,6 @@ specifier|final
 name|String
 name|desc
 decl_stmt|;
-specifier|private
 name|VersionExceptionCode
 parameter_list|(
 name|String

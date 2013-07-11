@@ -846,7 +846,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-comment|/**      * Returns<code>true</code> if the node of this VersionDiff is versionable;      *<code>false</code> otherwise.      *       * @return whether the node is versionable.      */
+comment|/**      * Returns {@code true} if the node of this VersionDiff is versionable;      * {@code false} otherwise.      *      * @return whether the node is versionable.      */
 specifier|private
 name|boolean
 name|isVersionable
@@ -907,7 +907,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-comment|/**      * @return<code>true</code> if this node<b>was</b> checked in. That is,      *         this method checks the base state for the jcr:isCheckedOut      *         property.      */
+comment|/**      * @return {@code true} if this node<b>was</b> checked in. That is,      *         this method checks the base state for the jcr:isCheckedOut      *         property.      */
 specifier|private
 name|boolean
 name|wasCheckedIn

@@ -889,7 +889,7 @@ name|JCR_ROOTVERSION
 argument_list|)
 condition|)
 block|{
-comment|// jcr:versionableUuuid property
+comment|// jcr:versionableUuid property
 name|node
 operator|.
 name|setProperty
@@ -1194,7 +1194,7 @@ name|selector
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Restores a version from the history identified by<code>historyIdentifier</code>      * using the given version<code>selector</code>.      *      * @param historyIdentifier identifier of the version history node.      * @param selector the version selector.      * @param versionable the versionable node where the version is restored to.      * @throws CommitFailedException if an error occurs while restoring.      */
+comment|/**      * Restores a version from the history identified by {@code historyIdentifier}      * using the given version {@code selector}.      *      * @param historyIdentifier identifier of the version history node.      * @param selector the version selector.      * @param versionable the versionable node where the version is restored to.      * @throws CommitFailedException if an error occurs while restoring.      */
 name|void
 name|restore
 parameter_list|(
@@ -1350,7 +1350,7 @@ expr_stmt|;
 block|}
 comment|// TODO: more methods that modify versions
 comment|//------------------------------< internal>--------------------------------
-comment|/**      * Resolves the<code>relPath</code> based on the given<code>node</code>      * and returns the resulting node, possibly non-existing.      *      * @param node the resolved node.      * @param relPath a relative path.      * @return the resolved node.      */
+comment|/**      * Resolves the {@code relPath} based on the given {@code node}      * and returns the resulting node, possibly non-existing.      *      * @param node the resolved node.      * @param relPath a relative path.      * @return the resolved node.      */
 annotation|@
 name|Nonnull
 specifier|private

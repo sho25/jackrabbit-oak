@@ -20,6 +20,50 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkNotNull
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|JcrConstants
+operator|.
+name|JCR_PRIMARYTYPE
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|JcrConstants
+operator|.
+name|JCR_UUID
+import|;
+end_import
+
+begin_import
 import|import
 name|javax
 operator|.
@@ -79,60 +123,21 @@ name|NodeBuilder
 import|;
 end_import
 
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|Preconditions
-operator|.
-name|checkNotNull
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|JcrConstants
-operator|.
-name|JCR_PRIMARYTYPE
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|JcrConstants
-operator|.
-name|JCR_UUID
-import|;
-end_import
-
 begin_comment
-comment|/**  *<code>Utils</code> provide some utility methods.  */
+comment|/**  * {@code Utils} provide some utility methods.  */
 end_comment
 
 begin_class
 specifier|public
+specifier|final
 class|class
 name|Utils
 block|{
-comment|/**      * Returns the jcr:uuid value of given<code>node</code>.      *      * @param node a referenceable node.      * @return the value of the jcr:uuid property.      * @throws IllegalArgumentException if the node is not referenceable.      */
+specifier|private
+name|Utils
+parameter_list|()
+block|{     }
+comment|/**      * Returns the jcr:uuid value of given {@code node}.      *      * @param node a referenceable node.      * @return the value of the jcr:uuid property.      * @throws IllegalArgumentException if the node is not referenceable.      */
 annotation|@
 name|Nonnull
 specifier|static
@@ -186,7 +191,7 @@ name|STRING
 argument_list|)
 return|;
 block|}
-comment|/**      * Returns the<code>jcr:primaryType</code> value of the given      *<code>node</code>.      *      * @param node a node.      * @return the<code>jcr:primaryType</code> value.      * @throws IllegalStateException if the node does not have a<code>jcr:primaryType</code>      *                               property.      */
+comment|/**      * Returns the {@code jcr:primaryType} value of the given      * {@code node}.      *      * @param node a node.      * @return the {@code jcr:primaryType} value.      * @throws IllegalStateException if the node does not have a {@code jcr:primaryType}      *                               property.      */
 annotation|@
 name|Nonnull
 specifier|static

@@ -86,7 +86,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *<i>Inspired by Jackrabbit 2.x</i>  *<p/>  * This Class implements a version selector that selects a version by creation  * date. The selected version is the latest that is older or equal than the  * given date. If no version could be found<code>null</code> is returned  * unless the<code>returnLatest</code> flag is set to<code>true</code>, where  * the latest version is returned.  *<pre>  * V1.0 - 02-Sep-2006  * V1.1 - 03-Sep-2006  * V1.2 - 05-Sep-2006  *  * new DateVersionSelector("03-Sep-2006").select() -> V1.1  * new DateVersionSelector("04-Sep-2006").select() -> V1.1  * new DateVersionSelector("01-Sep-2006").select() -> null  * new DateVersionSelector("01-Sep-2006", true).select() -> V1.2  * new DateVersionSelector(null, true).select() -> V1.2  *</pre>  */
+comment|/**  *<i>Inspired by Jackrabbit 2.x</i>  *<p/>  * This Class implements a version selector that selects a version by creation  * date. The selected version is the latest that is older or equal than the  * given date. If no version could be found {@code null} is returned  * unless the {@code returnLatest} flag is set to {@code true}, where  * the latest version is returned.  *<pre>  * V1.0 - 02-Sep-2006  * V1.1 - 03-Sep-2006  * V1.2 - 05-Sep-2006  *  * new DateVersionSelector("03-Sep-2006").select() -> V1.1  * new DateVersionSelector("04-Sep-2006").select() -> V1.1  * new DateVersionSelector("01-Sep-2006").select() -> null  * new DateVersionSelector("01-Sep-2006", true).select() -> V1.2  * new DateVersionSelector(null, true).select() -> V1.2  *</pre>  */
 end_comment
 
 begin_class
@@ -102,7 +102,7 @@ specifier|final
 name|long
 name|timestamp
 decl_stmt|;
-comment|/**      * Creates a<code>DateVersionSelector</code> that will select the latest      * version of all those that are older than the given timestamp.      *      * @param timestamp reference timestamp      */
+comment|/**      * Creates a {@code DateVersionSelector} that will select the latest      * version of all those that are older than the given timestamp.      *      * @param timestamp reference timestamp      */
 specifier|public
 name|DateVersionSelector
 parameter_list|(
