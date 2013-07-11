@@ -351,16 +351,6 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-comment|// OAK-893
-name|assumeTrue
-argument_list|(
-name|fixture
-operator|!=
-name|NodeStoreFixture
-operator|.
-name|MONGO_MK
-argument_list|)
-expr_stmt|;
 name|List
 argument_list|<
 name|Session

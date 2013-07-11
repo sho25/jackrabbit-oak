@@ -128,7 +128,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A<code>Collision</code> happens when a commit modifies a node, which was  * also modified in another branch not visible to the current session. This  * includes the following situations:  *<ul>  *<li>Our commit goes to trunk and another session committed to a branch  * not yet merged back.</li>  *<li>Our commit goes to a branch and another session committed to trunk  * or some other branch.</li>  *</ul>  * Other collisions like concurrent commits to trunk are handled earlier and  * do not require collision marking. See {@link Commit#createOrUpdateNode()}.  */
+comment|/**  * A<code>Collision</code> happens when a commit modifies a node, which was  * also modified in another branch not visible to the current session. This  * includes the following situations:  *<ul>  *<li>Our commit goes to trunk and another session committed to a branch  * not yet merged back.</li>  *<li>Our commit goes to a branch and another session committed to trunk  * or some other branch.</li>  *</ul>  * Other collisions like concurrent commits to trunk are handled earlier and  * do not require collision marking.  * See {@link Commit#createOrUpdateNode(DocumentStore, UpdateOp)}.  */
 end_comment
 
 begin_class
@@ -447,9 +447,9 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-literal|"true"
+name|Utils
 operator|.
-name|equals
+name|isCommitted
 argument_list|(
 name|value
 argument_list|)
@@ -773,41 +773,22 @@ operator|.
 name|REVISIONS
 argument_list|)
 decl_stmt|;
-if|if
-condition|(
+return|return
 name|revisions
 operator|!=
 literal|null
 operator|&&
-name|revisions
+name|Utils
 operator|.
-name|containsKey
+name|isCommitted
 argument_list|(
-name|revision
-argument_list|)
-condition|)
-block|{
-name|String
-name|value
-init|=
 name|revisions
 operator|.
 name|get
 argument_list|(
 name|revision
 argument_list|)
-decl_stmt|;
-return|return
-literal|"true"
-operator|.
-name|equals
-argument_list|(
-name|value
 argument_list|)
-return|;
-block|}
-return|return
-literal|false
 return|;
 block|}
 block|}

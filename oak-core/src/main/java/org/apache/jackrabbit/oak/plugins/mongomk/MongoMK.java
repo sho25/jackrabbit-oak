@@ -2664,7 +2664,7 @@ return|return
 literal|false
 return|;
 block|}
-comment|/**      * Returns<code>true</code> if the given revision is set to committed in      * the revisions map. That is, the revision exists in the map and the string      * value is<code>"true"</code> or equals the<code>readRevision</code>.      *      * @param revision  the revision to check.      * @param readRevision the read revision.      * @param revisions the revisions map, or<code>null</code> if none is set.      * @return<code>true</code> if the revision is committed, otherwise      *<code>false</code>.      */
+comment|/**      * Returns<code>true</code> if the given revision      * {@link Utils#isCommitted(String)} in the revisions map and is visible      * from the<code>readRevision</code>.      *      * @param revision  the revision to check.      * @param readRevision the read revision.      * @param revisions the revisions map, or<code>null</code> if none is set.      * @return<code>true</code> if the revision is committed, otherwise      *<code>false</code>.      */
 specifier|private
 name|boolean
 name|isCommitted
@@ -2741,14 +2741,26 @@ return|;
 block|}
 if|if
 condition|(
-name|value
+name|Utils
 operator|.
-name|equals
+name|isCommitted
 argument_list|(
-literal|"true"
+name|value
 argument_list|)
 condition|)
 block|{
+comment|// resolve commit revision
+name|revision
+operator|=
+name|Utils
+operator|.
+name|resolveCommitRevision
+argument_list|(
+name|revision
+argument_list|,
+name|value
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|branches
@@ -2761,8 +2773,16 @@ operator|==
 literal|null
 condition|)
 block|{
+comment|// readRevision is not from a branch
+comment|// compare resolved revision as is
 return|return
-literal|true
+operator|!
+name|isRevisionNewer
+argument_list|(
+name|revision
+argument_list|,
+name|readRevision
+argument_list|)
 return|;
 block|}
 block|}
@@ -7450,15 +7470,6 @@ argument_list|(
 name|revisionId
 argument_list|)
 decl_stmt|;
-name|Commit
-operator|.
-name|setModified
-argument_list|(
-name|op
-argument_list|,
-name|revision
-argument_list|)
-expr_stmt|;
 name|Branch
 name|b
 init|=
@@ -7469,6 +7480,21 @@ argument_list|(
 name|revision
 argument_list|)
 decl_stmt|;
+name|Revision
+name|mergeCommit
+init|=
+name|newRevision
+argument_list|()
+decl_stmt|;
+name|Commit
+operator|.
+name|setModified
+argument_list|(
+name|op
+argument_list|,
+name|mergeCommit
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|b
@@ -7500,7 +7526,12 @@ operator|.
 name|toString
 argument_list|()
 argument_list|,
-literal|"true"
+literal|"c-"
+operator|+
+name|mergeCommit
+operator|.
+name|toString
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|op
@@ -7544,6 +7575,8 @@ operator|.
 name|applyTo
 argument_list|(
 name|unsavedLastRevisions
+argument_list|,
+name|mergeCommit
 argument_list|)
 expr_stmt|;
 name|branches
@@ -7573,8 +7606,7 @@ comment|// no commits in this branch -> do nothing
 block|}
 name|headRevision
 operator|=
-name|newRevision
-argument_list|()
+name|mergeCommit
 expr_stmt|;
 return|return
 name|headRevision

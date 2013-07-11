@@ -203,13 +203,16 @@ name|keySet
 argument_list|()
 return|;
 block|}
-comment|/**      * Applies all modifications from this instance to the<code>other</code>.      * A modification is only applied if there is no modification in other      * for a given path or if the other modification is earlier.      *      * @param other the other<code>UnsavedModifications</code>.      */
+comment|/**      * Applies all modifications from this instance to the<code>other</code>.      * A modification is only applied if there is no modification in other      * for a given path or if the other modification is earlier than the      * merge commit revision.      *      * @param other the other<code>UnsavedModifications</code>.      * @param mergeCommit the merge commit revision.      */
 specifier|public
 name|void
 name|applyTo
 parameter_list|(
 name|UnsavedModifications
 name|other
+parameter_list|,
+name|Revision
+name|mergeCommit
 parameter_list|)
 block|{
 for|for
@@ -263,10 +266,7 @@ name|r
 operator|.
 name|compareRevisionTime
 argument_list|(
-name|entry
-operator|.
-name|getValue
-argument_list|()
+name|mergeCommit
 argument_list|)
 operator|<
 literal|0
@@ -283,10 +283,7 @@ operator|.
 name|getKey
 argument_list|()
 argument_list|,
-name|entry
-operator|.
-name|getValue
-argument_list|()
+name|mergeCommit
 argument_list|)
 expr_stmt|;
 block|}

@@ -503,7 +503,7 @@ name|getModifications
 argument_list|()
 return|;
 block|}
-comment|/**      * Applies all unsaved modification of this branch to the given collection      * of unsaved trunk modifications. A modification is only applied if there      * is no modification in<code>trunk</code> for a given path or if the      *<code>trunk</code> modification is earlier.      *      * @param trunk the unsaved trunk modifications.      */
+comment|/**      * Applies all unsaved modification of this branch to the given collection      * of unsaved trunk modifications with the given merge commit revision.      *      * @param trunk the unsaved trunk modifications.      * @param mergeCommit the revision of the merge commit.      */
 specifier|public
 specifier|synchronized
 name|void
@@ -513,6 +513,11 @@ annotation|@
 name|Nonnull
 name|UnsavedModifications
 name|trunk
+parameter_list|,
+annotation|@
+name|Nonnull
+name|Revision
+name|mergeCommit
 parameter_list|)
 block|{
 name|checkNotNull
@@ -539,6 +544,8 @@ operator|.
 name|applyTo
 argument_list|(
 name|trunk
+argument_list|,
+name|mergeCommit
 argument_list|)
 expr_stmt|;
 block|}

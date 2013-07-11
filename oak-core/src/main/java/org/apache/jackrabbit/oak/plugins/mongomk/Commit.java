@@ -775,7 +775,7 @@ name|baseBranchRevision
 parameter_list|)
 block|{
 comment|// the value in _revisions.<revision> property of the commit root node
-comment|// regular commits use "true", which makes the commit visible to
+comment|// regular commits use "c", which makes the commit visible to
 comment|// other readers. branch commits use the base revision to indicate
 comment|// the visibility of the commit
 name|String
@@ -790,7 +790,7 @@ operator|.
 name|toString
 argument_list|()
 else|:
-literal|"true"
+literal|"c"
 decl_stmt|;
 name|DocumentStore
 name|store
