@@ -102,7 +102,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Contains commit information about a branch and its base revision.  * TODO document  */
+comment|/**  * Contains commit information about a branch and its base revision.  */
 end_comment
 
 begin_class
@@ -116,10 +116,11 @@ name|TreeMap
 argument_list|<
 name|Revision
 argument_list|,
-name|Commit
+name|BranchCommit
 argument_list|>
 name|commits
 decl_stmt|;
+comment|/**      * The initial base revision of this branch.      */
 specifier|private
 specifier|final
 name|Revision
@@ -166,7 +167,7 @@ name|TreeMap
 argument_list|<
 name|Revision
 argument_list|,
-name|Commit
+name|BranchCommit
 argument_list|>
 argument_list|(
 name|checkNotNull
@@ -192,7 +193,7 @@ argument_list|(
 name|r
 argument_list|,
 operator|new
-name|Commit
+name|BranchCommit
 argument_list|(
 name|base
 argument_list|)
@@ -218,7 +219,7 @@ name|Revision
 name|r
 parameter_list|)
 block|{
-name|Commit
+name|BranchCommit
 name|c
 init|=
 name|commits
@@ -298,13 +299,14 @@ argument_list|(
 name|head
 argument_list|,
 operator|new
-name|Commit
+name|BranchCommit
 argument_list|(
 name|base
 argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * Adds a new commit with revision<code>r</code> to this branch.      *      * @param r the revision of the branch commit to add.      */
 specifier|synchronized
 name|void
 name|addCommit
@@ -347,7 +349,7 @@ argument_list|(
 name|r
 argument_list|,
 operator|new
-name|Commit
+name|BranchCommit
 argument_list|(
 name|commits
 operator|.
@@ -362,6 +364,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * @return the commits to this branch.      */
 specifier|synchronized
 name|SortedSet
 argument_list|<
@@ -402,6 +405,7 @@ return|return
 name|revisions
 return|;
 block|}
+comment|/**      * @return<code>true</code> if this branch contains any commits;      *<code>false</code> otherwise.      */
 specifier|synchronized
 name|boolean
 name|hasCommits
@@ -415,6 +419,7 @@ name|isEmpty
 argument_list|()
 return|;
 block|}
+comment|/**      * Checks if this branch contains a commit with the given revision.      *      * @param r the revision of a commit.      * @return<code>true</code> if this branch contains a commit with the given      *         revision;<code>false</code> otherwise.      */
 specifier|synchronized
 name|boolean
 name|containsCommit
@@ -434,6 +439,7 @@ name|r
 argument_list|)
 return|;
 block|}
+comment|/**      * Removes the commit with the given revision<code>r</code>. Does nothing      * if there is no such commit.      *      * @param r the revision of the commit to remove.      */
 specifier|public
 specifier|synchronized
 name|void
@@ -442,14 +448,14 @@ parameter_list|(
 annotation|@
 name|Nonnull
 name|Revision
-name|rev
+name|r
 parameter_list|)
 block|{
 name|commits
 operator|.
 name|remove
 argument_list|(
-name|rev
+name|r
 argument_list|)
 expr_stmt|;
 block|}
@@ -467,7 +473,7 @@ name|Revision
 name|r
 parameter_list|)
 block|{
-name|Commit
+name|BranchCommit
 name|c
 init|=
 name|commits
@@ -527,7 +533,7 @@ argument_list|)
 expr_stmt|;
 for|for
 control|(
-name|Commit
+name|BranchCommit
 name|c
 range|:
 name|commits
@@ -590,7 +596,7 @@ condition|)
 block|{
 continue|continue;
 block|}
-name|Commit
+name|BranchCommit
 name|c
 init|=
 name|commits
@@ -633,7 +639,7 @@ specifier|private
 specifier|static
 specifier|final
 class|class
-name|Commit
+name|BranchCommit
 block|{
 specifier|private
 specifier|final
@@ -649,7 +655,7 @@ specifier|final
 name|Revision
 name|base
 decl_stmt|;
-name|Commit
+name|BranchCommit
 parameter_list|(
 name|Revision
 name|base
