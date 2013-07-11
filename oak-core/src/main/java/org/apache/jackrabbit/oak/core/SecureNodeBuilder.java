@@ -133,6 +133,26 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|InputStream
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|annotation
@@ -172,6 +192,22 @@ operator|.
 name|base
 operator|.
 name|Predicate
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|api
+operator|.
+name|Blob
 import|;
 end_import
 
@@ -1203,6 +1239,27 @@ argument_list|()
 argument_list|)
 return|;
 block|}
+block|}
+annotation|@
+name|Override
+specifier|public
+name|Blob
+name|createBlob
+parameter_list|(
+name|InputStream
+name|stream
+parameter_list|)
+throws|throws
+name|IOException
+block|{
+return|return
+name|builder
+operator|.
+name|createBlob
+argument_list|(
+name|stream
+argument_list|)
+return|;
 block|}
 comment|//------------------------------------------------------< inner classes>---
 comment|/**      * Predicate for testing whether a given property is readable.      */
