@@ -923,7 +923,6 @@ name|getChildNodeCount
 argument_list|()
 return|;
 block|}
-comment|/**      * This implementation does not respect ordered child nodes, but always      * returns them in some implementation specific order.      *<p/>      *      * @return the children.      */
 annotation|@
 name|Override
 specifier|public
