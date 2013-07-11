@@ -577,7 +577,7 @@ name|oak
 operator|.
 name|core
 operator|.
-name|ReadOnlyTree
+name|ImmutableTree
 import|;
 end_import
 
@@ -2193,11 +2193,11 @@ parameter_list|)
 throws|throws
 name|RepositoryException
 block|{
-name|ReadOnlyTree
+name|ImmutableTree
 name|tree
 init|=
 operator|new
-name|ReadOnlyTree
+name|ImmutableTree
 argument_list|(
 name|dest
 operator|.
@@ -2446,7 +2446,7 @@ operator|.
 name|isNodeType
 argument_list|(
 operator|new
-name|ReadOnlyTree
+name|ImmutableTree
 argument_list|(
 name|child
 operator|.
@@ -2810,11 +2810,11 @@ return|return
 literal|false
 return|;
 block|}
-name|ReadOnlyTree
+name|ImmutableTree
 name|tree
 init|=
 operator|new
-name|ReadOnlyTree
+name|ImmutableTree
 argument_list|(
 name|node
 operator|.
@@ -2849,11 +2849,11 @@ parameter_list|)
 throws|throws
 name|RepositoryException
 block|{
-name|ReadOnlyTree
+name|ImmutableTree
 name|parentTree
 init|=
 operator|new
-name|ReadOnlyTree
+name|ImmutableTree
 argument_list|(
 name|parent
 operator|.
@@ -2861,11 +2861,11 @@ name|getNodeState
 argument_list|()
 argument_list|)
 decl_stmt|;
-name|ReadOnlyTree
+name|ImmutableTree
 name|childTree
 init|=
 operator|new
-name|ReadOnlyTree
+name|ImmutableTree
 argument_list|(
 name|parentTree
 argument_list|,
@@ -2934,7 +2934,7 @@ operator|.
 name|getDefinition
 argument_list|(
 operator|new
-name|ReadOnlyTree
+name|ImmutableTree
 argument_list|(
 name|node
 operator|.

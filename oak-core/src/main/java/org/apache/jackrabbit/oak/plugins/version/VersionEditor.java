@@ -163,7 +163,7 @@ name|oak
 operator|.
 name|core
 operator|.
-name|ReadOnlyTree
+name|ImmutableTree
 import|;
 end_import
 
@@ -866,7 +866,7 @@ name|Tree
 name|t
 init|=
 operator|new
-name|ReadOnlyTree
+name|ImmutableTree
 argument_list|(
 name|after
 argument_list|)

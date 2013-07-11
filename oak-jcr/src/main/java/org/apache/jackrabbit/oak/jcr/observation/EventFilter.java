@@ -155,7 +155,7 @@ name|oak
 operator|.
 name|core
 operator|.
-name|ReadOnlyTree
+name|ImmutableTree
 import|;
 end_import
 
@@ -347,7 +347,7 @@ operator|||
 name|includeByType
 argument_list|(
 operator|new
-name|ReadOnlyTree
+name|ImmutableTree
 argument_list|(
 name|associatedParentNode
 argument_list|)

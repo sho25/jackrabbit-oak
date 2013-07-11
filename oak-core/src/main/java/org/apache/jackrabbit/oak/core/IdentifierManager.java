@@ -627,13 +627,13 @@ if|if
 condition|(
 name|tree
 operator|instanceof
-name|ReadOnlyTree
+name|ImmutableTree
 condition|)
 block|{
 return|return
 operator|(
 operator|(
-name|ReadOnlyTree
+name|ImmutableTree
 operator|)
 name|tree
 operator|)
