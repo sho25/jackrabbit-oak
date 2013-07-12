@@ -18,6 +18,60 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|core
+operator|.
+name|IdentifierManager
+operator|.
+name|getIdentifier
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertEquals
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertNull
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|fail
+import|;
+end_import
+
+begin_import
 import|import
 name|org
 operator|.
@@ -196,42 +250,6 @@ operator|.
 name|junit
 operator|.
 name|Test
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertEquals
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertNull
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|fail
 import|;
 end_import
 
@@ -498,8 +516,6 @@ name|assertEquals
 argument_list|(
 name|ID_ROOT
 argument_list|,
-name|identifierManager
-operator|.
 name|getIdentifier
 argument_list|(
 name|rootTree
@@ -520,8 +536,6 @@ name|assertEquals
 argument_list|(
 name|ID_X1
 argument_list|,
-name|identifierManager
-operator|.
 name|getIdentifier
 argument_list|(
 name|xx1
@@ -542,8 +556,6 @@ name|assertEquals
 argument_list|(
 name|ID_Y1
 argument_list|,
-name|identifierManager
-operator|.
 name|getIdentifier
 argument_list|(
 name|yy1
@@ -564,8 +576,6 @@ name|assertEquals
 argument_list|(
 name|ID_Z1
 argument_list|,
-name|identifierManager
-operator|.
 name|getIdentifier
 argument_list|(
 name|zz1

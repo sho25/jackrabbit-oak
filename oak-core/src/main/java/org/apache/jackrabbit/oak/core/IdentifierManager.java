@@ -596,6 +596,7 @@ comment|/**      * Return the identifier of a tree.      *      * @param tree  a
 annotation|@
 name|Nonnull
 specifier|public
+specifier|static
 name|String
 name|getIdentifier
 parameter_list|(

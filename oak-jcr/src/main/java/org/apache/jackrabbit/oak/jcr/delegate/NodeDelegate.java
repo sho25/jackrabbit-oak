@@ -1281,10 +1281,7 @@ throws|throws
 name|InvalidItemStateException
 block|{
 return|return
-name|sessionDelegate
-operator|.
-name|getIdManager
-argument_list|()
+name|IdentifierManager
 operator|.
 name|getIdentifier
 argument_list|(

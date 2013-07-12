@@ -36,6 +36,42 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|core
+operator|.
+name|IdentifierManager
+operator|.
+name|generateUUID
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|core
+operator|.
+name|IdentifierManager
+operator|.
+name|getIdentifier
+import|;
+end_import
+
+begin_import
 import|import
 name|javax
 operator|.
@@ -358,8 +394,6 @@ name|authorizableTree
 parameter_list|)
 block|{
 return|return
-name|identifierManager
-operator|.
 name|getIdentifier
 argument_list|(
 name|authorizableTree
@@ -379,8 +413,6 @@ name|authorizableId
 parameter_list|)
 block|{
 return|return
-name|IdentifierManager
-operator|.
 name|generateUUID
 argument_list|(
 name|authorizableId
