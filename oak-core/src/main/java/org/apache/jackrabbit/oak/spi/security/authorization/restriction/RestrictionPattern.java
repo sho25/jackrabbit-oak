@@ -109,6 +109,11 @@ name|String
 name|path
 parameter_list|)
 function_decl|;
+comment|/**      * Returns {@code true} if the underlying restriction matches for repository      * level permissions.      *      * @return {@code true} if the underlying restriction matches for repository      * level permissions that are not associated with a path or a dedicated item;      * {@code false} otherwise.      */
+name|boolean
+name|matches
+parameter_list|()
+function_decl|;
 comment|/**      * Default implementation of the {@code RestrictionPattern} that always      * returns {@code true} and thus matches all items or paths.      */
 name|RestrictionPattern
 name|EMPTY
@@ -149,6 +154,17 @@ name|Nonnull
 name|String
 name|path
 parameter_list|)
+block|{
+return|return
+literal|true
+return|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|boolean
+name|matches
+parameter_list|()
 block|{
 return|return
 literal|true

@@ -436,6 +436,18 @@ name|path
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
+specifier|public
+name|boolean
+name|matches
+parameter_list|()
+block|{
+comment|// repository level permissions never match any glob pattern
+return|return
+literal|false
+return|;
+block|}
 comment|//-------------------------------------------------------------< Object>---
 comment|/**      * @see Object#hashCode()      */
 annotation|@

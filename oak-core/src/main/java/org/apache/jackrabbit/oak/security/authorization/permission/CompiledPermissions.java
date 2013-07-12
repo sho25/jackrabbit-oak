@@ -93,6 +93,40 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
+name|core
+operator|.
+name|ImmutableTree
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|security
+operator|.
+name|privilege
+operator|.
+name|PrivilegeBitsProvider
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
 name|spi
 operator|.
 name|security
@@ -114,6 +148,21 @@ specifier|public
 interface|interface
 name|CompiledPermissions
 block|{
+name|void
+name|refresh
+parameter_list|(
+annotation|@
+name|Nonnull
+name|ImmutableTree
+name|permissionsTree
+parameter_list|,
+annotation|@
+name|Nonnull
+name|PrivilegeBitsProvider
+name|bitsProvider
+parameter_list|)
+function_decl|;
+comment|/**      *      * @param tree      * @param property      * @return      */
 annotation|@
 name|Nonnull
 name|ReadStatus
@@ -130,6 +179,7 @@ name|PropertyState
 name|property
 parameter_list|)
 function_decl|;
+comment|/**      *      * @param permissions      * @return      */
 name|boolean
 name|isGranted
 parameter_list|(
@@ -137,6 +187,7 @@ name|long
 name|permissions
 parameter_list|)
 function_decl|;
+comment|/**      *      * @param parent      * @param property      * @param permissions      * @return      */
 name|boolean
 name|isGranted
 parameter_list|(
@@ -154,6 +205,7 @@ name|long
 name|permissions
 parameter_list|)
 function_decl|;
+comment|/**      *      * @param path Path of an OAK tree      * @param permissions      * @return      */
 name|boolean
 name|isGranted
 parameter_list|(
@@ -166,6 +218,7 @@ name|long
 name|permissions
 parameter_list|)
 function_decl|;
+comment|/**      *      * @param tree      * @return      */
 annotation|@
 name|Nonnull
 name|Set
@@ -180,6 +233,7 @@ name|Tree
 name|tree
 parameter_list|)
 function_decl|;
+comment|/**      *      * @param tree      * @param privilegeNames      * @return      */
 name|boolean
 name|hasPrivileges
 parameter_list|(

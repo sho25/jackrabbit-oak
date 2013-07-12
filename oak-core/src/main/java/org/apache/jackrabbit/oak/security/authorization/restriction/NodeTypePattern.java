@@ -265,6 +265,18 @@ return|return
 literal|false
 return|;
 block|}
+annotation|@
+name|Override
+specifier|public
+name|boolean
+name|matches
+parameter_list|()
+block|{
+comment|// node type pattern never matches for repository level permissions
+return|return
+literal|false
+return|;
+block|}
 comment|//-------------------------------------------------------------< Object>---
 comment|/**      * @see Object#hashCode()      */
 annotation|@
