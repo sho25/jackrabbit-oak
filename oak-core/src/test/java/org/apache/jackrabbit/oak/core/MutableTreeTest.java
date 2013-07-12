@@ -318,13 +318,13 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * TreeImplTest...  */
+comment|/**  * MutableTreeTest...  */
 end_comment
 
 begin_class
 specifier|public
 class|class
-name|TreeImplTest
+name|MutableTreeTest
 extends|extends
 name|OakBaseTest
 block|{
@@ -2181,7 +2181,7 @@ name|assertTrue
 argument_list|(
 operator|(
 operator|(
-name|TreeImpl
+name|MutableTree
 operator|)
 name|tree
 operator|)
@@ -2208,7 +2208,7 @@ name|assertFalse
 argument_list|(
 operator|(
 operator|(
-name|TreeImpl
+name|MutableTree
 operator|)
 name|tree
 operator|)
@@ -2240,7 +2240,7 @@ name|assertTrue
 argument_list|(
 operator|(
 operator|(
-name|TreeImpl
+name|MutableTree
 operator|)
 name|tree
 operator|)
@@ -2272,7 +2272,7 @@ name|assertFalse
 argument_list|(
 operator|(
 operator|(
-name|TreeImpl
+name|MutableTree
 operator|)
 name|tree
 operator|)

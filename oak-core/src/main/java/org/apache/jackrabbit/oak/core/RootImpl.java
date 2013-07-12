@@ -775,7 +775,7 @@ decl_stmt|;
 comment|/**      * Current root {@code Tree}      */
 specifier|private
 specifier|final
-name|TreeImpl
+name|MutableTree
 name|rootTree
 decl_stmt|;
 comment|/**      * Current branch this root operates on      */
@@ -930,7 +930,7 @@ decl_stmt|;
 name|rootTree
 operator|=
 operator|new
-name|TreeImpl
+name|MutableTree
 argument_list|(
 name|this
 argument_list|,
@@ -1049,7 +1049,7 @@ block|}
 name|checkLive
 argument_list|()
 expr_stmt|;
-name|TreeImpl
+name|MutableTree
 name|destParent
 init|=
 name|rootTree
@@ -1199,7 +1199,7 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|TreeImpl
+name|MutableTree
 name|getTree
 parameter_list|(
 annotation|@
@@ -1980,7 +1980,7 @@ argument_list|)
 return|;
 block|}
 comment|//---------------------------------------------------------< MoveRecord>---
-comment|/**      * Instances of this class record move operations which took place on this root.      * They form a singly linked list where each move instance points to the next one.      * The last entry in the list is always an empty slot to be filled in by calling      * {@code setMove()}. This fills the slot with the source and destination of the move      * and links this move to the next one which will be the new empty slot.      *      * Moves can be applied to {@code TreeImpl} instances by calling {@code apply()},      * which will execute all moves in the list on the passed tree instance      */
+comment|/**      * Instances of this class record move operations which took place on this root.      * They form a singly linked list where each move instance points to the next one.      * The last entry in the list is always an empty slot to be filled in by calling      * {@code setMove()}. This fills the slot with the source and destination of the move      * and links this move to the next one which will be the new empty slot.      *      * Moves can be applied to {@code MutableTree} instances by calling {@code apply()},      * which will execute all moves in the list on the passed tree instance      */
 class|class
 name|Move
 block|{
@@ -1991,7 +1991,7 @@ name|source
 decl_stmt|;
 comment|/** Parent tree of the destination */
 specifier|private
-name|TreeImpl
+name|MutableTree
 name|destParent
 decl_stmt|;
 comment|/** Name at the destination */
@@ -2011,7 +2011,7 @@ parameter_list|(
 name|String
 name|source
 parameter_list|,
-name|TreeImpl
+name|MutableTree
 name|destParent
 parameter_list|,
 name|String
@@ -2048,7 +2048,7 @@ comment|/**          * Apply this and all subsequent moves to the passed tree in
 name|Move
 name|apply
 parameter_list|(
-name|TreeImpl
+name|MutableTree
 name|tree
 parameter_list|)
 block|{

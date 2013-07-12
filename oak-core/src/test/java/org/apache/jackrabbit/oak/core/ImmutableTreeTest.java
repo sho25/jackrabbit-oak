@@ -296,11 +296,11 @@ name|void
 name|testGetPath
 parameter_list|()
 block|{
-name|TreeImpl
+name|MutableTree
 name|tree
 init|=
 operator|(
-name|TreeImpl
+name|MutableTree
 operator|)
 name|root
 operator|.
@@ -642,11 +642,11 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|TreeImpl
+name|MutableTree
 name|t
 init|=
 operator|(
-name|TreeImpl
+name|MutableTree
 operator|)
 name|root
 operator|.

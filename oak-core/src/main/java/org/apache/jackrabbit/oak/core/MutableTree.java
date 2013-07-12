@@ -472,7 +472,7 @@ end_import
 begin_class
 specifier|public
 class|class
-name|TreeImpl
+name|MutableTree
 extends|extends
 name|AbstractTree
 block|{
@@ -484,7 +484,7 @@ name|root
 decl_stmt|;
 comment|/**      * Parent of this tree. Null for the root.      */
 specifier|private
-name|TreeImpl
+name|MutableTree
 name|parent
 decl_stmt|;
 comment|/** Pointer into the list of pending moves */
@@ -492,7 +492,7 @@ specifier|private
 name|Move
 name|pendingMoves
 decl_stmt|;
-name|TreeImpl
+name|MutableTree
 parameter_list|(
 name|RootImpl
 name|root
@@ -533,12 +533,12 @@ argument_list|)
 expr_stmt|;
 block|}
 specifier|private
-name|TreeImpl
+name|MutableTree
 parameter_list|(
 name|RootImpl
 name|root
 parameter_list|,
-name|TreeImpl
+name|MutableTree
 name|parent
 parameter_list|,
 name|String
@@ -595,7 +595,7 @@ block|}
 annotation|@
 name|Override
 specifier|protected
-name|TreeImpl
+name|MutableTree
 name|createChild
 parameter_list|(
 name|String
@@ -604,7 +604,7 @@ parameter_list|)
 block|{
 return|return
 operator|new
-name|TreeImpl
+name|MutableTree
 argument_list|(
 name|root
 argument_list|,
@@ -680,7 +680,7 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|TreeImpl
+name|MutableTree
 name|getParent
 parameter_list|()
 block|{
@@ -1250,7 +1250,7 @@ parameter_list|)
 block|{
 return|return
 operator|!
-name|TreeImpl
+name|MutableTree
 operator|.
 name|this
 operator|.
@@ -1549,7 +1549,7 @@ comment|/**      * Move this tree to the parent at {@code destParent} with the n
 name|void
 name|moveTo
 parameter_list|(
-name|TreeImpl
+name|MutableTree
 name|destParent
 parameter_list|,
 name|String
@@ -1568,7 +1568,7 @@ block|}
 comment|/**      * Get a possibly non existing tree.      * @param path the path to the tree      * @return a {@link Tree} instance for the child at {@code path}.      */
 annotation|@
 name|CheckForNull
-name|TreeImpl
+name|MutableTree
 name|getTree
 parameter_list|(
 annotation|@
@@ -1588,7 +1588,7 @@ argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|TreeImpl
+name|MutableTree
 name|child
 init|=
 name|this
@@ -1607,7 +1607,7 @@ block|{
 name|child
 operator|=
 operator|new
-name|TreeImpl
+name|MutableTree
 argument_list|(
 name|root
 argument_list|,
