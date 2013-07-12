@@ -557,6 +557,10 @@ operator|new
 name|ObservationTest
 argument_list|()
 block|,
+operator|new
+name|FlatTreeWithAceForSamePrincipalTest
+argument_list|()
+block|,
 name|ReadManyTest
 operator|.
 name|linear
