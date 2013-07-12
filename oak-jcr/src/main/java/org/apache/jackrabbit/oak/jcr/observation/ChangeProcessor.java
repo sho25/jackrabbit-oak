@@ -1141,11 +1141,6 @@ name|afterParentNode
 decl_stmt|;
 specifier|private
 specifier|final
-name|EventGeneratingNodeStateDiff
-name|parent
-decl_stmt|;
-specifier|private
-specifier|final
 name|String
 name|name
 decl_stmt|;
@@ -1186,9 +1181,6 @@ parameter_list|,
 name|NodeState
 name|afterParentNode
 parameter_list|,
-name|EventGeneratingNodeStateDiff
-name|parent
-parameter_list|,
 name|String
 name|name
 parameter_list|)
@@ -1222,12 +1214,6 @@ operator|.
 name|afterParentNode
 operator|=
 name|afterParentNode
-expr_stmt|;
-name|this
-operator|.
-name|parent
-operator|=
-name|parent
 expr_stmt|;
 name|this
 operator|.
@@ -1263,8 +1249,6 @@ argument_list|>
 argument_list|(
 name|PURGE_LIMIT
 argument_list|)
-argument_list|,
-literal|null
 argument_list|,
 literal|null
 argument_list|,
@@ -1815,8 +1799,6 @@ argument_list|,
 name|before
 argument_list|,
 name|after
-argument_list|,
-name|this
 argument_list|,
 name|name
 argument_list|)
