@@ -509,8 +509,6 @@ argument_list|(
 literal|""
 argument_list|,
 name|builder
-argument_list|,
-literal|false
 argument_list|)
 expr_stmt|;
 name|this
@@ -560,8 +558,6 @@ name|getChildNode
 argument_list|(
 name|name
 argument_list|)
-argument_list|,
-literal|false
 argument_list|)
 expr_stmt|;
 name|this

@@ -580,6 +580,8 @@ argument_list|(
 name|parentAfter
 argument_list|,
 name|treeAfter
+argument_list|,
+name|after
 argument_list|)
 expr_stmt|;
 return|return
@@ -647,6 +649,8 @@ argument_list|(
 name|parentAfter
 argument_list|,
 name|treeAfter
+argument_list|,
+name|after
 argument_list|)
 expr_stmt|;
 return|return
@@ -695,6 +699,9 @@ name|parentAfter
 parameter_list|,
 name|Tree
 name|treeAfter
+parameter_list|,
+name|NodeState
+name|nodeAfter
 parameter_list|)
 throws|throws
 name|CommitFailedException
@@ -712,6 +719,8 @@ argument_list|(
 name|parentAfter
 argument_list|,
 name|treeAfter
+argument_list|,
+name|nodeAfter
 argument_list|)
 expr_stmt|;
 block|}
@@ -854,6 +863,9 @@ name|Tree
 name|parent
 parameter_list|,
 name|Tree
+name|policyTree
+parameter_list|,
+name|NodeState
 name|policyNode
 parameter_list|)
 throws|throws
@@ -867,7 +879,7 @@ name|REP_REPO_POLICY
 operator|.
 name|equals
 argument_list|(
-name|policyNode
+name|policyTree
 operator|.
 name|getName
 argument_list|()
@@ -914,7 +926,7 @@ name|validPolicyNames
 operator|.
 name|contains
 argument_list|(
-name|policyNode
+name|policyTree
 operator|.
 name|getName
 argument_list|()
@@ -928,7 +940,7 @@ literal|3
 argument_list|,
 literal|"Invalid policy name "
 operator|+
-name|policyNode
+name|policyTree
 operator|.
 name|getName
 argument_list|()

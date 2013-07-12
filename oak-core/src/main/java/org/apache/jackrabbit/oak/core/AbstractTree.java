@@ -358,7 +358,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * {@code AbstractTree} provides default implementations for most  * read methods of {@code Tree}. Furthermore it handles the  * {@link #setOrderableChildren(boolean) ordering} of child nodes  * and controls visibility of internal items.  */
+comment|/**  * {@code AbstractTree} provides default implementations for most  * read methods of {@code Tree}. Furthermore it handles the  * {@link #setOrderableChildren(boolean) ordering} of child nodes  * and hides internal items.  */
 end_comment
 
 begin_class
@@ -396,12 +396,6 @@ operator|.
 name|CONFLICT_NAME
 block|}
 decl_stmt|;
-comment|/**      * Flag to control visibility of internal properties      */
-specifier|private
-specifier|final
-name|boolean
-name|showInternalProperties
-decl_stmt|;
 comment|/**      * Name of this tree      */
 specifier|protected
 name|String
@@ -412,7 +406,7 @@ specifier|protected
 name|NodeBuilder
 name|nodeBuilder
 decl_stmt|;
-comment|/**      * Create a new {@code AbstractTree} instance      * @param name  name of the tree      * @param nodeBuilder  {@code NodeBuilder} for the underlying node state      * @param showInternalProperties  whether to show internal properties      */
+comment|/**      * Create a new {@code AbstractTree} instance      * @param name  name of the tree      * @param nodeBuilder  {@code NodeBuilder} for the underlying node state      */
 specifier|protected
 name|AbstractTree
 parameter_list|(
@@ -425,9 +419,6 @@ annotation|@
 name|Nonnull
 name|NodeBuilder
 name|nodeBuilder
-parameter_list|,
-name|boolean
-name|showInternalProperties
 parameter_list|)
 block|{
 name|this
@@ -447,12 +438,6 @@ name|checkNotNull
 argument_list|(
 name|nodeBuilder
 argument_list|)
-expr_stmt|;
-name|this
-operator|.
-name|showInternalProperties
-operator|=
-name|showInternalProperties
 expr_stmt|;
 block|}
 comment|/**      * Factory method for creating child trees      * @param name  name of the child tree      * @return  child tree of this tree with the given {@code name}      */
@@ -785,8 +770,6 @@ name|name
 parameter_list|)
 block|{
 return|return
-name|showInternalProperties
-operator|||
 operator|!
 name|isHidden
 argument_list|(
@@ -818,8 +801,6 @@ parameter_list|)
 block|{
 return|return
 operator|(
-name|showInternalProperties
-operator|||
 operator|!
 name|isHidden
 argument_list|(
@@ -891,8 +872,6 @@ name|propertyState
 parameter_list|)
 block|{
 return|return
-name|showInternalProperties
-operator|||
 operator|!
 name|isHidden
 argument_list|(
