@@ -1136,6 +1136,9 @@ name|destPath
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|updated
+argument_list|()
+expr_stmt|;
 block|}
 return|return
 name|success
@@ -1189,6 +1192,9 @@ argument_list|)
 argument_list|)
 operator|.
 name|updateChildOrder
+argument_list|()
+expr_stmt|;
+name|updated
 argument_list|()
 expr_stmt|;
 block|}
