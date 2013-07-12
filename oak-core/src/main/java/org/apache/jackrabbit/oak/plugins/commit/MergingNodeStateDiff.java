@@ -287,7 +287,7 @@ name|oak
 operator|.
 name|core
 operator|.
-name|TreeImpl
+name|AbstractTree
 import|;
 end_import
 
@@ -1512,7 +1512,7 @@ name|target
 operator|.
 name|getProperty
 argument_list|(
-name|TreeImpl
+name|AbstractTree
 operator|.
 name|OAK_CHILD_ORDER
 argument_list|)
@@ -1589,7 +1589,7 @@ name|target
 operator|.
 name|getProperty
 argument_list|(
-name|TreeImpl
+name|AbstractTree
 operator|.
 name|OAK_CHILD_ORDER
 argument_list|)

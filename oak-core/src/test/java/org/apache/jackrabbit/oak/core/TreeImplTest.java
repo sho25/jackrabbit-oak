@@ -2191,7 +2191,7 @@ argument_list|()
 operator|.
 name|hasProperty
 argument_list|(
-name|TreeImpl
+name|AbstractTree
 operator|.
 name|OAK_CHILD_ORDER
 argument_list|)
@@ -2218,7 +2218,7 @@ argument_list|()
 operator|.
 name|hasProperty
 argument_list|(
-name|TreeImpl
+name|AbstractTree
 operator|.
 name|OAK_CHILD_ORDER
 argument_list|)
@@ -2250,7 +2250,7 @@ argument_list|()
 operator|.
 name|hasProperty
 argument_list|(
-name|TreeImpl
+name|AbstractTree
 operator|.
 name|OAK_CHILD_ORDER
 argument_list|)
@@ -2282,7 +2282,7 @@ argument_list|()
 operator|.
 name|hasProperty
 argument_list|(
-name|TreeImpl
+name|AbstractTree
 operator|.
 name|OAK_CHILD_ORDER
 argument_list|)

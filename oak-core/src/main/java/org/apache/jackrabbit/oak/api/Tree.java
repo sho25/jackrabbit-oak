@@ -113,6 +113,8 @@ name|CheckForNull
 name|PropertyState
 name|getProperty
 parameter_list|(
+annotation|@
+name|Nonnull
 name|String
 name|name
 parameter_list|)
@@ -123,6 +125,8 @@ name|CheckForNull
 name|Status
 name|getPropertyStatus
 parameter_list|(
+annotation|@
+name|Nonnull
 name|String
 name|name
 parameter_list|)
@@ -131,6 +135,8 @@ comment|/**      * Determine if a property state exists and is accessible.      
 name|boolean
 name|hasProperty
 parameter_list|(
+annotation|@
+name|Nonnull
 name|String
 name|name
 parameter_list|)
@@ -200,6 +206,8 @@ name|Nonnull
 name|Tree
 name|addChild
 parameter_list|(
+annotation|@
+name|Nonnull
 name|String
 name|name
 parameter_list|)
@@ -239,6 +247,8 @@ parameter_list|>
 name|void
 name|setProperty
 parameter_list|(
+annotation|@
+name|Nonnull
 name|String
 name|name
 parameter_list|,
@@ -255,6 +265,8 @@ parameter_list|>
 name|void
 name|setProperty
 parameter_list|(
+annotation|@
+name|Nonnull
 name|String
 name|name
 parameter_list|,
@@ -274,6 +286,8 @@ comment|/**      * Remove the property with the given name. This method has no e
 name|void
 name|removeProperty
 parameter_list|(
+annotation|@
+name|Nonnull
 name|String
 name|name
 parameter_list|)

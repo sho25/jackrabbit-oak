@@ -20,6 +20,40 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkNotNull
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|api
+operator|.
+name|CommitFailedException
+operator|.
+name|ACCESS
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -155,7 +189,7 @@ name|oak
 operator|.
 name|core
 operator|.
-name|TreeImpl
+name|AbstractTree
 import|;
 end_import
 
@@ -300,40 +334,6 @@ operator|.
 name|util
 operator|.
 name|Text
-import|;
-end_import
-
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|Preconditions
-operator|.
-name|checkNotNull
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|api
-operator|.
-name|CommitFailedException
-operator|.
-name|ACCESS
 import|;
 end_import
 
@@ -942,7 +942,7 @@ name|policyNode
 operator|.
 name|hasProperty
 argument_list|(
-name|TreeImpl
+name|AbstractTree
 operator|.
 name|OAK_CHILD_ORDER
 argument_list|)

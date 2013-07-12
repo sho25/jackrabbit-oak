@@ -22,6 +22,54 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertEquals
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertFalse
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertNull
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertTrue
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -101,7 +149,7 @@ name|oak
 operator|.
 name|core
 operator|.
-name|TreeImpl
+name|AbstractTree
 import|;
 end_import
 
@@ -125,56 +173,8 @@ name|Test
 import|;
 end_import
 
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertEquals
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertFalse
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertNull
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertTrue
-import|;
-end_import
-
 begin_comment
-comment|/**  * Test for the hidden {@link TreeImpl#OAK_CHILD_ORDER} property  */
+comment|/**  * Test for the hidden {@link AbstractTree#OAK_CHILD_ORDER} property  */
 end_comment
 
 begin_class
@@ -246,7 +246,7 @@ name|a
 operator|.
 name|hasProperty
 argument_list|(
-name|TreeImpl
+name|AbstractTree
 operator|.
 name|OAK_CHILD_ORDER
 argument_list|)
@@ -276,7 +276,7 @@ name|a
 operator|.
 name|getProperty
 argument_list|(
-name|TreeImpl
+name|AbstractTree
 operator|.
 name|OAK_CHILD_ORDER
 argument_list|)
@@ -402,7 +402,7 @@ name|a
 operator|.
 name|getPropertyStatus
 argument_list|(
-name|TreeImpl
+name|AbstractTree
 operator|.
 name|OAK_CHILD_ORDER
 argument_list|)
