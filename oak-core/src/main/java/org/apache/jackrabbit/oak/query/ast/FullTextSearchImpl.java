@@ -523,6 +523,9 @@ operator|+
 name|propertyName
 expr_stmt|;
 block|}
+comment|// temporary workaround to support using an index for
+comment|// "contains(*, 'x') or contains(a, x') or contains(b, 'x')"
+comment|// propertyName = "*";
 name|builder
 operator|.
 name|append
@@ -651,6 +654,9 @@ name|boolean
 name|evaluate
 parameter_list|()
 block|{
+comment|// disable evaluation if a fulltext index is used, as
+comment|// we don't know what exact options are used in the fulltext index
+comment|// (stop word, special characters,...)
 if|if
 condition|(
 name|selector
@@ -834,10 +840,6 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|// TODO fulltext conditions: need a way to disable evaluation
-comment|// if a fulltext index is used, to avoid filtering too much
-comment|// (we don't know what exact options are used in the fulltext index)
-comment|// (stop word, special characters,...)
 name|PropertyValue
 name|v
 init|=
@@ -855,6 +857,8 @@ name|FullTextParser
 operator|.
 name|parse
 argument_list|(
+name|propertyName
+argument_list|,
 name|v
 operator|.
 name|getValue

@@ -253,7 +253,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * @see<a      *      href="https://issues.apache.org/jira/browse/OAK-OAK-830">OAK-OAK-830:      *      XPathToSQL2Converter fails to wrap or clauses</a>      */
+comment|// see OAK-OAK-830: XPathToSQL2Converter fails to wrap or clauses
 annotation|@
 name|Test
 specifier|public

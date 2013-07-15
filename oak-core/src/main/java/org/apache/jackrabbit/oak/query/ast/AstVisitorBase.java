@@ -199,7 +199,7 @@ parameter_list|)
 block|{
 name|node
 operator|.
-name|getRight
+name|getLeft
 argument_list|()
 operator|.
 name|accept
@@ -209,7 +209,7 @@ argument_list|)
 expr_stmt|;
 name|node
 operator|.
-name|getLeft
+name|getRight
 argument_list|()
 operator|.
 name|accept

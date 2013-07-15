@@ -167,6 +167,8 @@ name|path
 parameter_list|)
 block|{
 comment|// TODO normalize the path (remove superfluous ".." and "." where possible)
+comment|// possibly using
+comment|//  PropertyValues.getOakPath(name, query.getNamePathMapper());
 name|query
 operator|.
 name|validatePath

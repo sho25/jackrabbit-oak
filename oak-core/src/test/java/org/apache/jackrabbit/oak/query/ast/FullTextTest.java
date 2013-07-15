@@ -670,6 +670,8 @@ name|FullTextParser
 operator|.
 name|parse
 argument_list|(
+literal|null
+argument_list|,
 name|pattern
 argument_list|)
 decl_stmt|;
@@ -701,6 +703,8 @@ name|FullTextParser
 operator|.
 name|parse
 argument_list|(
+literal|null
+argument_list|,
 name|pattern
 argument_list|)
 decl_stmt|;

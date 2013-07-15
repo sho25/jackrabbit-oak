@@ -38,6 +38,11 @@ decl_stmt|;
 specifier|private
 specifier|final
 name|String
+name|propertyName
+decl_stmt|;
+specifier|private
+specifier|final
+name|String
 name|text
 decl_stmt|;
 specifier|private
@@ -59,6 +64,9 @@ specifier|public
 name|FullTextTerm
 parameter_list|(
 name|String
+name|propertyName
+parameter_list|,
+name|String
 name|text
 parameter_list|,
 name|boolean
@@ -71,6 +79,12 @@ name|String
 name|boost
 parameter_list|)
 block|{
+name|this
+operator|.
+name|propertyName
+operator|=
+name|propertyName
+expr_stmt|;
 name|this
 operator|.
 name|text
@@ -286,7 +300,7 @@ name|String
 name|value
 parameter_list|)
 block|{
-comment|// for testFulltextIntercapSQL
+comment|// toLowerCase for testFulltextIntercapSQL
 name|value
 operator|=
 name|value
@@ -372,6 +386,35 @@ operator|.
 name|append
 argument_list|(
 literal|'-'
+argument_list|)
+expr_stmt|;
+block|}
+if|if
+condition|(
+name|propertyName
+operator|!=
+literal|null
+operator|&&
+literal|"*"
+operator|.
+name|equals
+argument_list|(
+name|propertyName
+argument_list|)
+condition|)
+block|{
+comment|// TODO support property name conditions
+comment|// (currently disabled)
+name|buff
+operator|.
+name|append
+argument_list|(
+name|propertyName
+argument_list|)
+operator|.
+name|append
+argument_list|(
+literal|':'
 argument_list|)
 expr_stmt|;
 block|}
@@ -481,6 +524,15 @@ name|buff
 operator|.
 name|toString
 argument_list|()
+return|;
+block|}
+specifier|public
+name|String
+name|getPropertyName
+parameter_list|()
+block|{
+return|return
+name|propertyName
 return|;
 block|}
 annotation|@
