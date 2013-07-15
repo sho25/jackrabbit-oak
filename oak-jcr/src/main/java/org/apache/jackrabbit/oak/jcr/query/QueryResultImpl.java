@@ -792,15 +792,6 @@ init|=
 name|getSelectorNames
 argument_list|()
 decl_stmt|;
-specifier|final
-name|String
-name|selectorName
-init|=
-name|selectorNames
-index|[
-literal|0
-index|]
-decl_stmt|;
 if|if
 condition|(
 name|getSelectorNames
@@ -811,13 +802,26 @@ operator|>
 literal|1
 condition|)
 block|{
-comment|// use the first selector
-comment|// TODO verify using the first selector is allowed according to the specification,
+comment|// TODO verify using the last selector is allowed according to the specification,
 comment|// otherwise just allow it when using XPath queries, or make XPath queries
 comment|// look like they only contain one selector
 comment|// throw new RepositoryException("Query contains more than one selector: " +
 comment|//        Arrays.toString(getSelectorNames()));
 block|}
+comment|// use the last selector
+specifier|final
+name|String
+name|selectorName
+init|=
+name|selectorNames
+index|[
+name|selectorNames
+operator|.
+name|length
+operator|-
+literal|1
+index|]
+decl_stmt|;
 name|Iterator
 argument_list|<
 name|NodeImpl
