@@ -1313,16 +1313,13 @@ literal|null
 condition|)
 block|{
 comment|// make sure that the index node exist, even with no content
-name|NodeBuilder
-name|index
-init|=
 name|definition
 operator|.
 name|child
 argument_list|(
 name|INDEX_CONTENT_NODE_NAME
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 comment|// check uniqueness constraints when leaving the root
 if|if
 condition|(
@@ -1338,9 +1335,9 @@ argument_list|()
 condition|)
 block|{
 name|NodeState
-name|state
+name|indexMeta
 init|=
-name|index
+name|definition
 operator|.
 name|getNodeState
 argument_list|()
@@ -1359,7 +1356,7 @@ name|STORE
 operator|.
 name|count
 argument_list|(
-name|state
+name|indexMeta
 argument_list|,
 name|singleton
 argument_list|(

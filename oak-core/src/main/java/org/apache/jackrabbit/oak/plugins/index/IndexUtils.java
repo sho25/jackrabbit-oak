@@ -481,7 +481,7 @@ return|return
 name|index
 return|;
 block|}
-comment|/**      * Create a new property2 index definition below the given {@code indexNode}.      *      * @param index         The oak:index node builder      * @param indexDefName  The name of the new property index.      * @param reindex       {@code true} if the the reindex flag should be turned on.      * @param unique        {@code true} if the index is expected the assert property      *                      uniqueness.      * @param propertyNames The property names that should be indexed.      * @param declaringNodeTypeNames The declaring node type names or {@code null}.      * @return the NodeBuilder of the new index definition.      */
+comment|/**      * Create a new property index definition below the given {@code indexNode}.      *      * @param index         The oak:index node builder      * @param indexDefName  The name of the new property index.      * @param reindex       {@code true} if the the reindex flag should be turned on.      * @param unique        {@code true} if the index is expected the assert property      *                      uniqueness.      * @param propertyNames The property names that should be indexed.      * @param declaringNodeTypeNames The declaring node type names or {@code null}.      * @return the NodeBuilder of the new index definition.      */
 specifier|public
 specifier|static
 name|NodeBuilder

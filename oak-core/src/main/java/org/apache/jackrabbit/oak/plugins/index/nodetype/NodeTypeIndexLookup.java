@@ -329,7 +329,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-comment|/**      * Returns the paths that match the given node types.      *      * @param filter the filter (used for logging)      * @param nodeTypes the names of the node types to match.      * @return the matched paths (the result might contain duplicate entries)      */
+comment|/**      * Returns the paths that match the given node types.      *      * @param filter the filter (used for logging)      * @return the matched paths (the result might contain duplicate entries)      */
 specifier|public
 name|Iterable
 argument_list|<

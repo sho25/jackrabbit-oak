@@ -58,6 +58,11 @@ name|ASYNC_PROPERTY_NAME
 init|=
 literal|"async"
 decl_stmt|;
+name|String
+name|ENTRY_COUNT_PROPERTY_NAME
+init|=
+literal|"entryCount"
+decl_stmt|;
 comment|/**      * Marks a unique property index.      */
 name|String
 name|UNIQUE_PROPERTY_NAME
