@@ -209,22 +209,6 @@ name|NodeStore
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|util
-operator|.
-name|TODO
-import|;
-end_import
-
 begin_comment
 comment|/**  * A {@code ChangeDispatcher} instance records changes to a {@link NodeStore}  * and dispatches them to interested parties.  *<p>  * The {@link #newHook(ContentSession)} method registers a hook for  * reporting changes. Actual changes are reported by calling  * {@link Hook#contentChanged(NodeState, NodeState)}. Such changes are considered  * to have occurred on the local cluster node and are recorded as such. Changes  * that occurred in-between calls to any hook registered with a change processor  * are considered to have occurred on a different cluster node and are recorded as such.  *<p>  * The {@link #newListener()} registers a listener for receiving changes reported  * into a change dispatcher by any of its hooks.  */
 end_comment
@@ -970,22 +954,6 @@ name|InternalChangeSet
 extends|extends
 name|ChangeSet
 block|{
-specifier|private
-specifier|static
-specifier|final
-name|String
-name|DUMMY_USER_DATA
-init|=
-name|TODO
-operator|.
-name|dummyImplementation
-argument_list|()
-operator|.
-name|returnValueOrNull
-argument_list|(
-literal|"oak:not implemented"
-argument_list|)
-decl_stmt|;
 specifier|private
 specifier|final
 name|ContentSession
