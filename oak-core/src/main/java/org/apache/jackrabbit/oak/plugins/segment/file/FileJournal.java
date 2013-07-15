@@ -94,14 +94,14 @@ name|FileStore
 name|store
 parameter_list|,
 name|NodeState
-name|root
+name|head
 parameter_list|)
 block|{
 name|super
 argument_list|(
 name|store
 argument_list|,
-name|root
+name|head
 argument_list|)
 expr_stmt|;
 name|this

@@ -213,7 +213,7 @@ name|SegmentStore
 name|store
 parameter_list|,
 name|NodeState
-name|root
+name|head
 parameter_list|)
 block|{
 name|this
@@ -247,7 +247,7 @@ name|writer
 operator|.
 name|writeNode
 argument_list|(
-name|root
+name|head
 argument_list|)
 operator|.
 name|getRecordId
