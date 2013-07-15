@@ -516,6 +516,8 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|writeBlob
@@ -1089,6 +1091,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|int
 name|readBlob
@@ -1483,6 +1487,8 @@ operator|.
 name|data
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Data
 name|load
@@ -1563,6 +1569,8 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
+annotation|@
+name|Override
 specifier|public
 name|long
 name|getBlobLength
@@ -2042,6 +2050,8 @@ operator|=
 name|pos
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|equals
@@ -2106,6 +2116,8 @@ operator|.
 name|pos
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|int
 name|hashCode
@@ -2134,6 +2146,8 @@ operator|)
 name|pos
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|toString
@@ -2201,6 +2215,8 @@ operator|=
 name|data
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|toString
@@ -2244,6 +2260,8 @@ else|:
 name|s
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|int
 name|getMemory

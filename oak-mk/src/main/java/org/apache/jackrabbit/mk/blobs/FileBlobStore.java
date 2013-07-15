@@ -188,8 +188,6 @@ parameter_list|(
 name|String
 name|dir
 parameter_list|)
-throws|throws
-name|IOException
 block|{
 name|baseDir
 operator|=
