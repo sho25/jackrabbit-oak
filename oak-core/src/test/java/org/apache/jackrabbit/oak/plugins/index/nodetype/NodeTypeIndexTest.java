@@ -587,6 +587,7 @@ operator|.
 name|builder
 argument_list|()
 decl_stmt|;
+comment|// remove "rep:security" as it interferes with tests
 name|root
 operator|.
 name|getChildNode
@@ -597,7 +598,6 @@ operator|.
 name|remove
 argument_list|()
 expr_stmt|;
-comment|// interferes with tests
 name|addFolder
 argument_list|(
 name|root
@@ -862,6 +862,7 @@ argument_list|)
 return|;
 block|}
 specifier|private
+specifier|static
 name|void
 name|checkCursor
 parameter_list|(
@@ -960,6 +961,7 @@ argument_list|)
 expr_stmt|;
 block|}
 specifier|private
+specifier|static
 name|NodeBuilder
 name|addFolder
 parameter_list|(
@@ -1070,6 +1072,7 @@ name|file
 return|;
 block|}
 specifier|private
+specifier|static
 name|NodeBuilder
 name|addChild
 parameter_list|(
