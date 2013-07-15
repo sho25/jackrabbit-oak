@@ -2505,7 +2505,7 @@ name|main
 block|}
 return|;
 block|}
-comment|/**      * Apply the changes to the MongoMK (to update the cache).      */
+comment|/**      * Apply the changes to the MongoMK (to update the cache).      *       * @param isBranchCommit whether this is a commit to a branch      */
 specifier|public
 name|void
 name|applyToCache

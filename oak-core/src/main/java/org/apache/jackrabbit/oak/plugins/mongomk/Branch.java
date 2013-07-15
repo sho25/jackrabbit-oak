@@ -635,6 +635,7 @@ return|return
 literal|null
 return|;
 block|}
+comment|/**      * Information about a commit within a branch.      */
 specifier|private
 specifier|static
 specifier|final
