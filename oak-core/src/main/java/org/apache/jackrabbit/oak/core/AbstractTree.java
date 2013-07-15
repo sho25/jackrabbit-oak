@@ -440,6 +440,21 @@ name|nodeBuilder
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * @return  the underlying {@code NodeState} of this tree      */
+annotation|@
+name|Nonnull
+specifier|public
+name|NodeState
+name|getNodeState
+parameter_list|()
+block|{
+return|return
+name|nodeBuilder
+operator|.
+name|getNodeState
+argument_list|()
+return|;
+block|}
 comment|/**      * Factory method for creating child trees      * @param name  name of the child tree      * @return  child tree of this tree with the given {@code name}      */
 annotation|@
 name|Nonnull
@@ -1028,20 +1043,6 @@ argument_list|)
 return|;
 block|}
 comment|//------------------------------------------------------------< internal>---
-comment|/**      * @return  the underlying {@code NodeState} of this tree      */
-annotation|@
-name|Nonnull
-name|NodeState
-name|getNodeState
-parameter_list|()
-block|{
-return|return
-name|nodeBuilder
-operator|.
-name|getNodeState
-argument_list|()
-return|;
-block|}
 comment|/**      * The identifier of a tree is the value of its {@code jcr:uuid} property.      * If no such property exists the identifier is a slash ({@code/}) if the      * tree is the root. Otherwise the identifier is the tree's {@code name} appended      * to its parent's identifier separated by a slash ({@code/}).      * @return  the identifier of this tree      */
 annotation|@
 name|Nonnull

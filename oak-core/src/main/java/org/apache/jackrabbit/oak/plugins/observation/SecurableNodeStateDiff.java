@@ -65,6 +65,22 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
+name|api
+operator|.
+name|Tree
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
 name|spi
 operator|.
 name|state
@@ -110,7 +126,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Base class for {@code NodeStateDiff} implementations that can be secured.  * That is, its call back methods are only called when its receiver has sufficient  * rights to access the respective items.  *<p>  * Implementors must implement the {@link #create(SecurableNodeStateDiff, String, NodeState, NodeState)}  * factory method for creating {@code SecurableNodeStateDiff} instances for child nodes.  * Further implementors should override {@link #canRead(PropertyState, PropertyState)} and  * {@link #canRead(String, NodeState, NodeState)} and determine whether the passed states are  * accessible and the respective callbacks should thus be invoked. Finally implementors should override,  * {@link #secureBefore(String, NodeState)}, and {@link #secureAfter(String, NodeState)}} wrapping the  * passed node state into a node state that restricts access to accessible child nodes and properties.  */
+comment|/**  * Base class for {@code NodeStateDiff} implementations that can be secured.  * That is, its call back methods are only called when its receiver has sufficient  * rights to access the respective items.  *<p>  * Implementors must implement the {@link #create(SecurableNodeStateDiff, String, NodeState, NodeState)}  * factory method for creating {@code SecurableNodeStateDiff} instances for child nodes.  * Further implementors should override {@link #canRead(Tree, PropertyState, Tree, PropertyState)} and  * {@link #canRead(Tree, Tree)} and determine whether the passed states are  * accessible and the respective callbacks should thus be invoked. Finally implementors should override,  * {@link #secureBefore(String, NodeState)}, and {@link #secureAfter(String, NodeState)}} wrapping the  * passed node state into a node state that restricts access to accessible child nodes and properties.  */
 end_comment
 
 begin_class
@@ -126,6 +142,18 @@ specifier|private
 specifier|final
 name|SecurableNodeStateDiff
 name|parent
+decl_stmt|;
+comment|/**      * Tree before the changes      */
+specifier|protected
+specifier|final
+name|Tree
+name|beforeTree
+decl_stmt|;
+comment|/**      * Tree after the changes      */
+specifier|protected
+specifier|final
+name|Tree
+name|afterTree
 decl_stmt|;
 comment|/**      * Unsecured diff this secured diff delegates to after it has determined      * that the items pertaining to a call back are accessible.      */
 specifier|private
@@ -147,6 +175,12 @@ parameter_list|(
 name|SecurableNodeStateDiff
 name|parent
 parameter_list|,
+name|Tree
+name|beforeTree
+parameter_list|,
+name|Tree
+name|afterTree
+parameter_list|,
 name|RecursingNodeStateDiff
 name|diff
 parameter_list|)
@@ -159,22 +193,57 @@ name|parent
 expr_stmt|;
 name|this
 operator|.
+name|beforeTree
+operator|=
+name|beforeTree
+expr_stmt|;
+name|this
+operator|.
+name|afterTree
+operator|=
+name|afterTree
+expr_stmt|;
+name|this
+operator|.
 name|diff
 operator|=
 name|diff
 expr_stmt|;
 block|}
-comment|/**      * Create a new child instance      * @param parent  parent of this instance      */
+comment|/**      * Create a new child instance      * @param parent  parent of this instance      * @param beforeParent parent tree before the changes      * @param afterParent parent tree after the changes      * @param name  name of the child node      */
 specifier|protected
 name|SecurableNodeStateDiff
 parameter_list|(
 name|SecurableNodeStateDiff
 name|parent
+parameter_list|,
+name|Tree
+name|beforeParent
+parameter_list|,
+name|Tree
+name|afterParent
+parameter_list|,
+name|String
+name|name
 parameter_list|)
 block|{
 name|this
 argument_list|(
 name|parent
+argument_list|,
+name|beforeParent
+operator|.
+name|getChild
+argument_list|(
+name|name
+argument_list|)
+argument_list|,
+name|afterParent
+operator|.
+name|getChild
+argument_list|(
+name|name
+argument_list|)
 argument_list|,
 name|RecursingNodeStateDiff
 operator|.
@@ -182,17 +251,27 @@ name|EMPTY
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Create a new instance wrapping a unsecured diff.      * @param diff  unsecured diff      */
+comment|/**      * Create a new instance wrapping a unsecured diff.      * @param diff  unsecured diff      * @param beforeTree parent tree before the changes      * @param afterTree parent tree after the changes      */
 specifier|protected
 name|SecurableNodeStateDiff
 parameter_list|(
 name|RecursingNodeStateDiff
 name|diff
+parameter_list|,
+name|Tree
+name|beforeTree
+parameter_list|,
+name|Tree
+name|afterTree
 parameter_list|)
 block|{
 name|this
 argument_list|(
 literal|null
+argument_list|,
+name|beforeTree
+argument_list|,
+name|afterTree
 argument_list|,
 name|diff
 argument_list|)
@@ -219,13 +298,19 @@ name|NodeState
 name|after
 parameter_list|)
 function_decl|;
-comment|/**      * Determine whether a property is accessible      * @param before  before state of the property      * @param after   after state of the property      * @return  {@code true} if accessible, {@code false} otherwise.      */
+comment|/**      * Determine whether a property is accessible      * @param beforeParent parent before the changes      * @param before  before state of the property      * @param afterParent parent after the changes      * @param after   after state of the property      * @return  {@code true} if accessible, {@code false} otherwise.      */
 specifier|protected
 name|boolean
 name|canRead
 parameter_list|(
+name|Tree
+name|beforeParent
+parameter_list|,
 name|PropertyState
 name|before
+parameter_list|,
+name|Tree
+name|afterParent
 parameter_list|,
 name|PropertyState
 name|after
@@ -240,13 +325,10 @@ specifier|protected
 name|boolean
 name|canRead
 parameter_list|(
-name|String
-name|name
-parameter_list|,
-name|NodeState
+name|Tree
 name|before
 parameter_list|,
-name|NodeState
+name|Tree
 name|after
 parameter_list|)
 block|{
@@ -290,6 +372,7 @@ return|return
 name|nodeState
 return|;
 block|}
+comment|//------------------------------------------------------------< NodeStateDiff>---
 annotation|@
 name|Override
 specifier|public
@@ -304,7 +387,11 @@ if|if
 condition|(
 name|canRead
 argument_list|(
+name|beforeTree
+argument_list|,
 literal|null
+argument_list|,
+name|afterTree
 argument_list|,
 name|after
 argument_list|)
@@ -346,7 +433,11 @@ if|if
 condition|(
 name|canRead
 argument_list|(
+name|beforeTree
+argument_list|,
 name|before
+argument_list|,
+name|afterTree
 argument_list|,
 name|after
 argument_list|)
@@ -387,7 +478,11 @@ if|if
 condition|(
 name|canRead
 argument_list|(
+name|beforeTree
+argument_list|,
 name|before
+argument_list|,
+name|afterTree
 argument_list|,
 literal|null
 argument_list|)
@@ -429,11 +524,19 @@ if|if
 condition|(
 name|canRead
 argument_list|(
+name|beforeTree
+operator|.
+name|getChild
+argument_list|(
 name|name
+argument_list|)
 argument_list|,
-literal|null
-argument_list|,
-name|after
+name|afterTree
+operator|.
+name|getChild
+argument_list|(
+name|name
+argument_list|)
 argument_list|)
 condition|)
 block|{
@@ -615,11 +718,19 @@ if|if
 condition|(
 name|canRead
 argument_list|(
+name|beforeTree
+operator|.
+name|getChild
+argument_list|(
 name|name
+argument_list|)
 argument_list|,
-name|before
-argument_list|,
-literal|null
+name|afterTree
+operator|.
+name|getChild
+argument_list|(
+name|name
+argument_list|)
 argument_list|)
 condition|)
 block|{
