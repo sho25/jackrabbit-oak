@@ -8513,55 +8513,7 @@ operator|.
 name|save
 argument_list|()
 expr_stmt|;
-comment|// Make sure they are still not accessible through another session
-name|assertFalse
-argument_list|(
-name|session2
-operator|.
-name|itemExists
-argument_list|(
-literal|"/node1"
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|assertFalse
-argument_list|(
-name|session2
-operator|.
-name|itemExists
-argument_list|(
-literal|"/node1/node2"
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|assertFalse
-argument_list|(
-name|session2
-operator|.
-name|itemExists
-argument_list|(
-literal|"/node1/node3"
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|assertFalse
-argument_list|(
-name|session2
-operator|.
-name|itemExists
-argument_list|(
-literal|"/node1/node3/property1"
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|session2
-operator|.
-name|refresh
-argument_list|(
-literal|false
-argument_list|)
-expr_stmt|;
-comment|// Make sure they are accessible through another session after refresh
+comment|// Make sure these items are still accessible through another session
 name|assertTrue
 argument_list|(
 name|session2
@@ -9184,7 +9136,7 @@ literal|"node1"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|assertFalse
+name|assertTrue
 argument_list|(
 name|session1
 operator|.
@@ -9197,7 +9149,6 @@ literal|"node2"
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// was not visible during save
 name|assertTrue
 argument_list|(
 name|session2
@@ -9211,7 +9162,6 @@ literal|"node1"
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// save refreshes
 name|assertTrue
 argument_list|(
 name|session2
@@ -9538,7 +9488,7 @@ literal|"node"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|assertTrue
+name|assertFalse
 argument_list|(
 name|session2
 operator|.
