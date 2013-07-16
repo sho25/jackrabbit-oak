@@ -416,7 +416,7 @@ name|Override
 annotation|@
 name|Nonnull
 specifier|public
-name|NodeStoreBranch
+name|SegmentNodeStoreBranch
 name|branch
 parameter_list|()
 block|{
