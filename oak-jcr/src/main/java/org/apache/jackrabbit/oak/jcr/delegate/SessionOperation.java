@@ -81,6 +81,16 @@ return|return
 name|update
 return|;
 block|}
+comment|/**      * Return {@code true} if this operation refreshed the transient space      * @return      */
+specifier|public
+name|boolean
+name|isRefresh
+parameter_list|()
+block|{
+return|return
+literal|false
+return|;
+block|}
 specifier|protected
 name|void
 name|checkPreconditions

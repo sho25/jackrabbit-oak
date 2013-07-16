@@ -36,17 +36,7 @@ import|;
 end_import
 
 begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
-begin_import
-import|import
+import|import static
 name|java
 operator|.
 name|util
@@ -54,6 +44,32 @@ operator|.
 name|concurrent
 operator|.
 name|TimeUnit
+operator|.
+name|MILLISECONDS
+import|;
+end_import
+
+begin_import
+import|import static
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|TimeUnit
+operator|.
+name|MINUTES
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
 import|;
 end_import
 
@@ -396,26 +412,15 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-comment|// TODO implement auto refresh configuration. See OAK-803, OAK-88
-specifier|private
-specifier|static
-specifier|final
-name|long
-name|AUTO_REFRESH_INTERVAL
-init|=
-name|TimeUnit
-operator|.
-name|SECONDS
-operator|.
-name|toMillis
-argument_list|(
-literal|1
-argument_list|)
-decl_stmt|;
 specifier|private
 specifier|final
 name|ContentSession
 name|contentSession
+decl_stmt|;
+specifier|private
+specifier|final
+name|long
+name|refreshInterval
 decl_stmt|;
 specifier|private
 specifier|final
@@ -426,6 +431,11 @@ specifier|private
 specifier|final
 name|IdentifierManager
 name|idManager
+decl_stmt|;
+specifier|private
+specifier|final
+name|Exception
+name|initStackTrace
 decl_stmt|;
 specifier|private
 name|boolean
@@ -452,6 +462,7 @@ operator|.
 name|currentTimeMillis
 argument_list|()
 decl_stmt|;
+comment|/**      * Create a new session delegate for a {@code ContentSession}. The refresh behaviour of the      * session is governed by the value of the {@code refreshInterval} argument: if the session      * has been idle longer than that value, an implicit refresh will take place.      * @param contentSession  the content session      * @param refreshInterval  refresh interval in seconds or {@code -1} for never.      */
 specifier|public
 name|SessionDelegate
 parameter_list|(
@@ -459,6 +470,9 @@ annotation|@
 name|Nonnull
 name|ContentSession
 name|contentSession
+parameter_list|,
+name|long
+name|refreshInterval
 parameter_list|)
 block|{
 name|this
@@ -469,6 +483,12 @@ name|checkNotNull
 argument_list|(
 name|contentSession
 argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|refreshInterval
+operator|=
+name|refreshInterval
 expr_stmt|;
 name|this
 operator|.
@@ -487,6 +507,16 @@ operator|new
 name|IdentifierManager
 argument_list|(
 name|root
+argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|initStackTrace
+operator|=
+operator|new
+name|Exception
+argument_list|(
+literal|"The session was created here:"
 argument_list|)
 expr_stmt|;
 block|}
@@ -537,15 +567,80 @@ operator|.
 name|currentTimeMillis
 argument_list|()
 decl_stmt|;
+name|long
+name|timeElapsed
+init|=
+name|now
+operator|-
+name|lastAccessed
+decl_stmt|;
 if|if
 condition|(
-name|now
-operator|>
-name|lastAccessed
-operator|+
-name|AUTO_REFRESH_INTERVAL
+operator|!
+name|sessionOperation
+operator|.
+name|isRefresh
+argument_list|()
 condition|)
 block|{
+comment|// Don't refresh if this operation is a refresh operation itself
+if|if
+condition|(
+name|refreshInterval
+operator|>
+literal|0
+operator|&&
+name|timeElapsed
+operator|>
+name|MILLISECONDS
+operator|.
+name|convert
+argument_list|(
+literal|1
+argument_list|,
+name|MINUTES
+argument_list|)
+condition|)
+block|{
+comment|// Warn if the refresh interval is neither zero nor never (-1) and this
+comment|// session has been idle too long
+name|log
+operator|.
+name|warn
+argument_list|(
+literal|"This session has been idle for "
+operator|+
+name|MINUTES
+operator|.
+name|convert
+argument_list|(
+name|timeElapsed
+argument_list|,
+name|MILLISECONDS
+argument_list|)
+operator|+
+literal|" minutes and might be out of date. Consider using a fresh session or explicitly"
+operator|+
+literal|" refresh the session."
+argument_list|,
+name|initStackTrace
+argument_list|)
+expr_stmt|;
+block|}
+if|if
+condition|(
+name|refreshInterval
+operator|!=
+operator|-
+literal|1
+operator|&&
+name|timeElapsed
+operator|>=
+name|refreshInterval
+condition|)
+block|{
+comment|// Refresh if the refresh interval is not never (-1) and the session
+comment|// has been idle too long
 name|refresh
 argument_list|(
 literal|true
@@ -554,6 +649,7 @@ expr_stmt|;
 name|updateCount
 operator|++
 expr_stmt|;
+block|}
 block|}
 name|lastAccessed
 operator|=

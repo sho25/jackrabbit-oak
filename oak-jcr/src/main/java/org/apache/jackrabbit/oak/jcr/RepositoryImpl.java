@@ -35,6 +35,18 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|TimeUnit
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|annotation
@@ -262,6 +274,22 @@ argument_list|(
 name|RepositoryImpl
 operator|.
 name|class
+argument_list|)
+decl_stmt|;
+comment|// TODO implement auto refresh configuration. See OAK-803, OAK-88
+specifier|private
+specifier|static
+specifier|final
+name|long
+name|AUTO_REFRESH_INTERVAL
+init|=
+name|TimeUnit
+operator|.
+name|SECONDS
+operator|.
+name|toMillis
+argument_list|(
+literal|1
 argument_list|)
 decl_stmt|;
 specifier|private
@@ -539,6 +567,8 @@ operator|new
 name|SessionDelegate
 argument_list|(
 name|contentSession
+argument_list|,
+name|AUTO_REFRESH_INTERVAL
 argument_list|)
 argument_list|)
 decl_stmt|;
