@@ -397,7 +397,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"time "
+literal|"setup time "
 operator|+
 operator|(
 name|end
