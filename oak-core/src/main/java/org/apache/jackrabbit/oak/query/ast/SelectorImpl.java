@@ -343,7 +343,7 @@ name|oak
 operator|.
 name|query
 operator|.
-name|Query
+name|QueryImpl
 import|;
 end_import
 
@@ -1612,7 +1612,7 @@ name|propertyName
 operator|.
 name|equals
 argument_list|(
-name|Query
+name|QueryImpl
 operator|.
 name|JCR_PATH
 argument_list|)
@@ -1654,7 +1654,7 @@ name|propertyName
 operator|.
 name|equals
 argument_list|(
-name|Query
+name|QueryImpl
 operator|.
 name|JCR_SCORE
 argument_list|)
@@ -1665,7 +1665,7 @@ name|currentRow
 operator|.
 name|getValue
 argument_list|(
-name|Query
+name|QueryImpl
 operator|.
 name|JCR_SCORE
 argument_list|)
@@ -1678,7 +1678,7 @@ name|propertyName
 operator|.
 name|equals
 argument_list|(
-name|Query
+name|QueryImpl
 operator|.
 name|REP_EXCERPT
 argument_list|)
@@ -1689,7 +1689,7 @@ name|currentRow
 operator|.
 name|getValue
 argument_list|(
-name|Query
+name|QueryImpl
 operator|.
 name|REP_EXCERPT
 argument_list|)
@@ -1715,7 +1715,7 @@ specifier|public
 name|void
 name|init
 parameter_list|(
-name|Query
+name|QueryImpl
 name|query
 parameter_list|)
 block|{

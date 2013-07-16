@@ -1829,7 +1829,7 @@ name|row
 operator|.
 name|getValue
 argument_list|(
-name|Query
+name|QueryImpl
 operator|.
 name|JCR_PATH
 argument_list|)

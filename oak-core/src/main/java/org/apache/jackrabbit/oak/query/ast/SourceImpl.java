@@ -41,7 +41,7 @@ name|oak
 operator|.
 name|query
 operator|.
-name|Query
+name|QueryImpl
 import|;
 end_import
 
@@ -194,7 +194,7 @@ specifier|abstract
 name|void
 name|init
 parameter_list|(
-name|Query
+name|QueryImpl
 name|query
 parameter_list|)
 function_decl|;

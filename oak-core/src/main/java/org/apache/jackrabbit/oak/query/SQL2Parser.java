@@ -730,7 +730,7 @@ expr_stmt|;
 block|}
 comment|/**      * Parse the statement and return the query.      *      * @param query the query string      * @return the query      * @throws ParseException if parsing fails      */
 specifier|public
-name|Query
+name|AbstractQuery
 name|parse
 parameter_list|(
 name|String
@@ -833,11 +833,11 @@ name|addColumnIfNecessary
 argument_list|(
 name|list
 argument_list|,
-name|Query
+name|QueryImpl
 operator|.
 name|JCR_PATH
 argument_list|,
-name|Query
+name|QueryImpl
 operator|.
 name|JCR_PATH
 argument_list|)
@@ -846,11 +846,11 @@ name|addColumnIfNecessary
 argument_list|(
 name|list
 argument_list|,
-name|Query
+name|QueryImpl
 operator|.
 name|JCR_SCORE
 argument_list|,
-name|Query
+name|QueryImpl
 operator|.
 name|JCR_SCORE
 argument_list|)
@@ -939,11 +939,11 @@ literal|"<end>"
 argument_list|)
 throw|;
 block|}
-name|Query
+name|QueryImpl
 name|q
 init|=
 operator|new
-name|Query
+name|QueryImpl
 argument_list|(
 name|statement
 argument_list|,

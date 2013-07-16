@@ -151,7 +151,7 @@ argument_list|>
 block|{
 specifier|private
 specifier|final
-name|Query
+name|QueryImpl
 name|query
 decl_stmt|;
 specifier|private
@@ -174,7 +174,7 @@ name|orderValues
 decl_stmt|;
 name|ResultRowImpl
 parameter_list|(
-name|Query
+name|QueryImpl
 name|query
 parameter_list|,
 name|String
@@ -370,7 +370,7 @@ name|columnName
 operator|.
 name|startsWith
 argument_list|(
-name|Query
+name|QueryImpl
 operator|.
 name|REP_EXCERPT
 argument_list|)

@@ -47,7 +47,7 @@ name|oak
 operator|.
 name|query
 operator|.
-name|Query
+name|QueryImpl
 import|;
 end_import
 
@@ -61,7 +61,7 @@ class|class
 name|AstElement
 block|{
 specifier|protected
-name|Query
+name|QueryImpl
 name|query
 decl_stmt|;
 specifier|abstract
@@ -146,7 +146,7 @@ specifier|public
 name|void
 name|setQuery
 parameter_list|(
-name|Query
+name|QueryImpl
 name|query
 parameter_list|)
 block|{

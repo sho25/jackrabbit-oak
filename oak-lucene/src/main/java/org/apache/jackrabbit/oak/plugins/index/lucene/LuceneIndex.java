@@ -341,7 +341,7 @@ name|oak
 operator|.
 name|query
 operator|.
-name|Query
+name|QueryImpl
 operator|.
 name|JCR_PATH
 import|;

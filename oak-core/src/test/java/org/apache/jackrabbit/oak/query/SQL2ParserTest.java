@@ -141,6 +141,10 @@ name|Test
 import|;
 end_import
 
+begin_comment
+comment|/**  * Tests the SQL-2 parser.  */
+end_comment
+
 begin_class
 specifier|public
 class|class

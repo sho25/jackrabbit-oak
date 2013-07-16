@@ -485,7 +485,7 @@ parameter_list|)
 throws|throws
 name|ParseException
 block|{
-name|Query
+name|AbstractQuery
 name|q
 init|=
 name|parseQuery
@@ -503,7 +503,7 @@ argument_list|()
 return|;
 block|}
 specifier|private
-name|Query
+name|AbstractQuery
 name|parseQuery
 parameter_list|(
 name|String
@@ -813,7 +813,7 @@ name|offset
 argument_list|)
 throw|;
 block|}
-name|Query
+name|AbstractQuery
 name|q
 init|=
 name|parseQuery
@@ -940,7 +940,7 @@ specifier|public
 name|QueryIndex
 name|getBestIndex
 parameter_list|(
-name|Query
+name|QueryImpl
 name|query
 parameter_list|,
 name|NodeState

@@ -1429,7 +1429,7 @@ name|Property
 argument_list|(
 name|currentSelector
 argument_list|,
-name|Query
+name|QueryImpl
 operator|.
 name|JCR_PATH
 argument_list|)
@@ -1462,7 +1462,7 @@ argument_list|)
 operator|.
 name|append
 argument_list|(
-name|Query
+name|QueryImpl
 operator|.
 name|JCR_PATH
 argument_list|)
@@ -1489,7 +1489,7 @@ name|Property
 argument_list|(
 name|currentSelector
 argument_list|,
-name|Query
+name|QueryImpl
 operator|.
 name|JCR_SCORE
 argument_list|)
@@ -1522,7 +1522,7 @@ argument_list|)
 operator|.
 name|append
 argument_list|(
-name|Query
+name|QueryImpl
 operator|.
 name|JCR_SCORE
 argument_list|)

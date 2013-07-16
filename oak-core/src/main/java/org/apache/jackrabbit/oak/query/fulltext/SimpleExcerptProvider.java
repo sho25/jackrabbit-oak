@@ -115,7 +115,7 @@ name|oak
 operator|.
 name|query
 operator|.
-name|Query
+name|QueryImpl
 import|;
 end_import
 
@@ -237,7 +237,7 @@ parameter_list|,
 name|String
 name|columnName
 parameter_list|,
-name|Query
+name|QueryImpl
 name|query
 parameter_list|,
 name|boolean

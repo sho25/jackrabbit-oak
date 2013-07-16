@@ -118,12 +118,12 @@ name|Result
 block|{
 specifier|protected
 specifier|final
-name|Query
+name|AbstractQuery
 name|query
 decl_stmt|;
 name|ResultImpl
 parameter_list|(
-name|Query
+name|AbstractQuery
 name|query
 parameter_list|)
 block|{

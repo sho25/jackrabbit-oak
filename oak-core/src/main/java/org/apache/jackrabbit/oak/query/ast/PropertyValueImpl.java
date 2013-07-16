@@ -171,7 +171,7 @@ name|oak
 operator|.
 name|query
 operator|.
-name|Query
+name|QueryImpl
 import|;
 end_import
 
@@ -448,7 +448,7 @@ name|propertyName
 operator|.
 name|equals
 argument_list|(
-name|Query
+name|QueryImpl
 operator|.
 name|JCR_PATH
 argument_list|)

@@ -87,7 +87,7 @@ name|oak
 operator|.
 name|query
 operator|.
-name|Query
+name|QueryImpl
 import|;
 end_import
 
@@ -241,7 +241,7 @@ name|selector
 operator|.
 name|currentProperty
 argument_list|(
-name|Query
+name|QueryImpl
 operator|.
 name|JCR_SCORE
 argument_list|)
@@ -331,7 +331,7 @@ name|f
 operator|.
 name|restrictProperty
 argument_list|(
-name|Query
+name|QueryImpl
 operator|.
 name|JCR_SCORE
 argument_list|,

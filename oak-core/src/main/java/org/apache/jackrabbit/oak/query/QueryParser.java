@@ -55,7 +55,7 @@ name|getSupportedLanguages
 parameter_list|()
 function_decl|;
 comment|/**      * Parses the given query string, expressed in the specified language.      *      * TODO: Include name mapping information      *      * @param query query string      * @param language query language      * @return parsed query      * @throws ParseException if the query string could not be parsed      */
-name|Query
+name|AbstractQuery
 name|parse
 parameter_list|(
 name|String
