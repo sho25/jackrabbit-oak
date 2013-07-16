@@ -155,18 +155,6 @@ name|PrivilegeConstants
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|h2
-operator|.
-name|util
-operator|.
-name|Profiler
-import|;
-end_import
-
 begin_class
 specifier|public
 class|class
@@ -177,13 +165,6 @@ block|{
 specifier|private
 name|Session
 name|reader
-decl_stmt|;
-name|Profiler
-name|profiler
-init|=
-operator|new
-name|Profiler
-argument_list|()
 decl_stmt|;
 annotation|@
 name|Override
@@ -392,11 +373,6 @@ name|toCharArray
 argument_list|()
 argument_list|)
 argument_list|)
-expr_stmt|;
-name|profiler
-operator|.
-name|startCollecting
-argument_list|()
 expr_stmt|;
 name|long
 name|end
