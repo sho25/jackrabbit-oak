@@ -229,6 +229,14 @@ name|recordId
 argument_list|)
 expr_stmt|;
 block|}
+name|RecordId
+name|getRecordId
+parameter_list|()
+block|{
+return|return
+name|recordId
+return|;
+block|}
 annotation|@
 name|Override
 annotation|@
