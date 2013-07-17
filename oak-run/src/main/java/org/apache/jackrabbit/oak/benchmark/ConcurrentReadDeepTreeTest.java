@@ -60,6 +60,19 @@ name|cnt
 init|=
 literal|10000
 decl_stmt|;
+specifier|public
+name|ConcurrentReadDeepTreeTest
+parameter_list|(
+name|boolean
+name|runAsAdmin
+parameter_list|)
+block|{
+name|super
+argument_list|(
+name|runAsAdmin
+argument_list|)
+expr_stmt|;
+block|}
 annotation|@
 name|Override
 specifier|protected
@@ -94,7 +107,7 @@ argument_list|(
 operator|new
 name|RandomRead
 argument_list|(
-name|loginAnonymous
+name|getTestSession
 argument_list|()
 argument_list|)
 argument_list|)
@@ -113,7 +126,7 @@ block|{
 name|Session
 name|testSession
 init|=
-name|loginAnonymous
+name|getTestSession
 argument_list|()
 decl_stmt|;
 name|RandomRead
