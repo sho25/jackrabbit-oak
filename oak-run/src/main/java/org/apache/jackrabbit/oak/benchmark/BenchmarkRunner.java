@@ -430,7 +430,7 @@ argument_list|)
 operator|.
 name|defaultsTo
 argument_list|(
-literal|1000
+literal|20
 argument_list|)
 decl_stmt|;
 name|OptionSet
