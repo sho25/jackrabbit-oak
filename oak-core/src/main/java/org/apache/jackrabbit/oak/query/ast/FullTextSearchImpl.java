@@ -386,6 +386,13 @@ literal|1
 argument_list|)
 expr_stmt|;
 block|}
+comment|// temporary workaround to support using an index for
+comment|// "contains(a/*, 'x') or contains(a/a, x') or contains(a/b, 'x')"
+comment|// TODO this behavior does not match the specification
+name|propertyName
+operator|=
+literal|null
+expr_stmt|;
 if|if
 condition|(
 name|propertyName
@@ -523,9 +530,6 @@ operator|+
 name|propertyName
 expr_stmt|;
 block|}
-comment|// temporary workaround to support using an index for
-comment|// "contains(*, 'x') or contains(a, x') or contains(b, 'x')"
-comment|// propertyName = "*";
 name|builder
 operator|.
 name|append

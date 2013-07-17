@@ -179,7 +179,7 @@ annotation|@
 name|Test
 specifier|public
 name|void
-name|fulltext
+name|fulltextOrWithinText
 parameter_list|()
 throws|throws
 name|Exception
@@ -305,7 +305,7 @@ name|assertEquals
 argument_list|(
 literal|"[nt:base] as [nt:base] /* traverse \"*\" "
 operator|+
-literal|"where contains([nt:base].[text], cast('hello OR hallo' as string)) */"
+literal|"where contains([nt:base].[*], cast('hello OR hallo' as string)) */"
 argument_list|,
 name|getResult
 argument_list|(

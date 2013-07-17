@@ -236,9 +236,9 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"[nt:base] as [nt:base] /* +text:{* TO *} +(+:fulltext:hello +:fulltext:or +:fulltext:hallo) "
+literal|"[nt:base] as [nt:base] /* +:fulltext:hello +:fulltext:or +:fulltext:hallo "
 operator|+
-literal|"where contains([nt:base].[text], cast('hello OR hallo' as string)) */"
+literal|"where contains([nt:base].[*], cast('hello OR hallo' as string)) */"
 argument_list|,
 name|getResult
 argument_list|(
