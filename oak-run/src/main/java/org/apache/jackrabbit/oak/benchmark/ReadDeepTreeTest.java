@@ -18,7 +18,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * Randomly read 100000 items from the deep tree.  */
+comment|/**  * Randomly read 1000 items from the deep tree.  */
 end_comment
 
 begin_class
@@ -32,7 +32,7 @@ specifier|private
 name|int
 name|cnt
 init|=
-literal|100000
+literal|1000
 decl_stmt|;
 specifier|public
 name|ReadDeepTreeTest
