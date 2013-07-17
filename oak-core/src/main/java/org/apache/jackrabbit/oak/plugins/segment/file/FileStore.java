@@ -113,6 +113,22 @@ name|collect
 operator|.
 name|Maps
 operator|.
+name|newConcurrentMap
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|collect
+operator|.
+name|Maps
+operator|.
 name|newHashMap
 import|;
 end_import
@@ -869,7 +885,7 @@ name|SegmentReference
 argument_list|>
 name|references
 init|=
-name|newHashMap
+name|newConcurrentMap
 argument_list|()
 decl_stmt|;
 specifier|private
@@ -1554,7 +1570,6 @@ block|}
 annotation|@
 name|Override
 specifier|public
-specifier|synchronized
 name|Segment
 name|readSegment
 parameter_list|(
@@ -1925,7 +1940,6 @@ block|}
 annotation|@
 name|Override
 specifier|public
-specifier|synchronized
 name|void
 name|deleteSegment
 parameter_list|(
