@@ -1415,7 +1415,7 @@ decl_stmt|;
 if|if
 condition|(
 operator|!
-name|types
+name|type
 operator|.
 name|exists
 argument_list|()
