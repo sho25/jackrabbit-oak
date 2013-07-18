@@ -1961,6 +1961,8 @@ block|{
 name|assertTrue
 argument_list|(
 name|jsop
+argument_list|,
+name|jsop
 operator|.
 name|contains
 argument_list|(
@@ -2009,6 +2011,8 @@ control|)
 block|{
 name|assertTrue
 argument_list|(
+name|jsop
+argument_list|,
 name|jsop
 operator|.
 name|contains
@@ -2071,6 +2075,8 @@ expr_stmt|;
 name|assertTrue
 argument_list|(
 name|jsop
+argument_list|,
+name|jsop
 operator|.
 name|contains
 argument_list|(
@@ -2111,6 +2117,8 @@ argument_list|)
 expr_stmt|;
 name|assertTrue
 argument_list|(
+name|jsop
+argument_list|,
 name|jsop
 operator|.
 name|contains
@@ -2153,6 +2161,8 @@ expr_stmt|;
 name|assertTrue
 argument_list|(
 name|jsop
+argument_list|,
+name|jsop
 operator|.
 name|contains
 argument_list|(
@@ -2194,6 +2204,8 @@ expr_stmt|;
 name|assertTrue
 argument_list|(
 name|jsop
+argument_list|,
+name|jsop
 operator|.
 name|contains
 argument_list|(
@@ -2234,6 +2246,8 @@ argument_list|)
 expr_stmt|;
 name|assertTrue
 argument_list|(
+name|jsop
+argument_list|,
 name|jsop
 operator|.
 name|contains
