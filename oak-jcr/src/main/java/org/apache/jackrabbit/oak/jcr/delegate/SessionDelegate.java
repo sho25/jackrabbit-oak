@@ -462,6 +462,12 @@ operator|.
 name|currentTimeMillis
 argument_list|()
 decl_stmt|;
+specifier|private
+name|boolean
+name|refreshAtNextAccess
+init|=
+literal|false
+decl_stmt|;
 comment|/**      * Create a new session delegate for a {@code ContentSession}. The refresh behaviour of the      * session is governed by the value of the {@code refreshInterval} argument: if the session      * has been idle longer than that value, an implicit refresh will take place.      * @param contentSession  the content session      * @param refreshInterval  refresh interval in seconds or {@code -1} for never.      */
 specifier|public
 name|SessionDelegate
@@ -526,10 +532,9 @@ name|void
 name|refreshAtNextAccess
 parameter_list|()
 block|{
-name|lastAccessed
+name|refreshAtNextAccess
 operator|=
-operator|-
-literal|1
+literal|true
 expr_stmt|;
 block|}
 comment|/**      * Performs the passed {@code SessionOperation} in a safe execution context. This      * context ensures that the session is refreshed if necessary and that refreshing      * occurs before the session operation is performed and the refreshing is done only      * once.      *      * @param sessionOperation  the {@code SessionOperation} to perform      * @param<T>  return type of {@code sessionOperation}      * @return  the result of {@code sessionOperation.perform()}      * @throws RepositoryException      */
@@ -574,6 +579,7 @@ name|now
 operator|-
 name|lastAccessed
 decl_stmt|;
+comment|// Don't refresh if this operation is a refresh operation itself
 if|if
 condition|(
 operator|!
@@ -583,12 +589,10 @@ name|isRefresh
 argument_list|()
 condition|)
 block|{
-comment|// Don't refresh if this operation is a refresh operation itself
 if|if
 condition|(
-name|refreshInterval
-operator|>
-literal|0
+operator|!
+name|refreshAtNextAccess
 operator|&&
 name|timeElapsed
 operator|>
@@ -602,8 +606,7 @@ name|MINUTES
 argument_list|)
 condition|)
 block|{
-comment|// Warn if the refresh interval is neither zero nor never (-1) and this
-comment|// session has been idle too long
+comment|// Warn if this session has been idle too long
 name|log
 operator|.
 name|warn
@@ -629,18 +632,18 @@ expr_stmt|;
 block|}
 if|if
 condition|(
-name|refreshInterval
-operator|!=
-operator|-
-literal|1
-operator|&&
+name|refreshAtNextAccess
+operator|||
 name|timeElapsed
 operator|>=
 name|refreshInterval
 condition|)
 block|{
-comment|// Refresh if the refresh interval is not never (-1) and the session
-comment|// has been idle too long
+comment|// Refresh if forced or if the session has been idle too long
+name|refreshAtNextAccess
+operator|=
+literal|false
+expr_stmt|;
 name|refresh
 argument_list|(
 literal|true
