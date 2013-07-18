@@ -3045,10 +3045,10 @@ name|after
 argument_list|)
 decl_stmt|;
 return|return
-name|a
-operator|.
-name|equals
+name|fastEquals
 argument_list|(
+name|a
+argument_list|,
 name|b
 argument_list|)
 operator|||
