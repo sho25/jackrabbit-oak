@@ -1293,6 +1293,8 @@ argument_list|,
 name|Permissions
 operator|.
 name|NO_PERMISSION
+argument_list|,
+literal|false
 argument_list|)
 expr_stmt|;
 return|return
@@ -1360,6 +1362,8 @@ argument_list|,
 name|Permissions
 operator|.
 name|NO_PERMISSION
+argument_list|,
+literal|false
 argument_list|)
 return|;
 block|}
@@ -1429,6 +1433,8 @@ argument_list|,
 name|Permissions
 operator|.
 name|READ_ACCESS_CONTROL
+argument_list|,
+literal|true
 argument_list|)
 decl_stmt|;
 name|AccessControlPolicy
@@ -1544,6 +1550,8 @@ argument_list|,
 name|Permissions
 operator|.
 name|READ_ACCESS_CONTROL
+argument_list|,
+literal|true
 argument_list|)
 decl_stmt|;
 name|Root
@@ -1768,6 +1776,8 @@ argument_list|,
 name|Permissions
 operator|.
 name|READ_ACCESS_CONTROL
+argument_list|,
+literal|true
 argument_list|)
 decl_stmt|;
 name|AccessControlPolicy
@@ -1973,6 +1983,8 @@ argument_list|,
 name|Permissions
 operator|.
 name|MODIFY_ACCESS_CONTROL
+argument_list|,
+literal|true
 argument_list|)
 decl_stmt|;
 name|setNodeBasedAcl
@@ -2120,6 +2132,8 @@ argument_list|,
 name|Permissions
 operator|.
 name|MODIFY_ACCESS_CONTROL
+argument_list|,
+literal|true
 argument_list|)
 decl_stmt|;
 name|ACL
@@ -2267,6 +2281,8 @@ argument_list|,
 name|Permissions
 operator|.
 name|MODIFY_ACCESS_CONTROL
+argument_list|,
+literal|true
 argument_list|)
 decl_stmt|;
 name|ACL
@@ -2589,12 +2605,8 @@ name|ace
 argument_list|)
 decl_stmt|;
 name|Tree
-name|aclTree
+name|tree
 init|=
-name|getAclTree
-argument_list|(
-name|path
-argument_list|,
 name|getTree
 argument_list|(
 name|path
@@ -2602,7 +2614,18 @@ argument_list|,
 name|Permissions
 operator|.
 name|MODIFY_ACCESS_CONTROL
+argument_list|,
+literal|true
 argument_list|)
+decl_stmt|;
+name|Tree
+name|aclTree
+init|=
+name|getAclTree
+argument_list|(
+name|path
+argument_list|,
+name|tree
 argument_list|)
 decl_stmt|;
 if|if
@@ -2713,6 +2736,8 @@ argument_list|,
 name|Permissions
 operator|.
 name|MODIFY_ACCESS_CONTROL
+argument_list|,
+literal|true
 argument_list|)
 decl_stmt|;
 name|Tree
@@ -3205,6 +3230,8 @@ argument_list|,
 name|Permissions
 operator|.
 name|READ_ACCESS_CONTROL
+argument_list|,
+literal|false
 argument_list|)
 return|;
 block|}
@@ -3359,6 +3386,9 @@ name|oakPath
 parameter_list|,
 name|long
 name|permissions
+parameter_list|,
+name|boolean
+name|checkAcContent
 parameter_list|)
 throws|throws
 name|RepositoryException
@@ -3430,9 +3460,12 @@ argument_list|,
 name|permissions
 argument_list|)
 expr_stmt|;
-comment|// check if the tree is access controlled
+block|}
+comment|// check if the tree defines access controlled content
 if|if
 condition|(
+name|checkAcContent
+operator|&&
 name|acConfig
 operator|.
 name|getContext
@@ -3458,7 +3491,6 @@ operator|+
 literal|" defines access control content."
 argument_list|)
 throw|;
-block|}
 block|}
 return|return
 name|tree
@@ -4674,6 +4706,8 @@ name|absPath
 argument_list|)
 argument_list|,
 name|permissions
+argument_list|,
+literal|false
 argument_list|)
 expr_stmt|;
 block|}
@@ -4791,6 +4825,9 @@ name|provider
 parameter_list|,
 name|long
 name|permissions
+parameter_list|,
+name|boolean
+name|checkAcContent
 parameter_list|)
 throws|throws
 name|RepositoryException
@@ -4839,6 +4876,8 @@ name|absPath
 argument_list|)
 argument_list|,
 name|permissions
+argument_list|,
+name|checkAcContent
 argument_list|)
 expr_stmt|;
 block|}
