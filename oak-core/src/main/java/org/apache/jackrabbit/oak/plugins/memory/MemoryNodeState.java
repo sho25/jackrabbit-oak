@@ -767,13 +767,9 @@ block|}
 elseif|else
 if|if
 condition|(
-operator|!
 name|after
-operator|.
-name|equals
-argument_list|(
+operator|!=
 name|before
-argument_list|)
 condition|)
 block|{
 if|if

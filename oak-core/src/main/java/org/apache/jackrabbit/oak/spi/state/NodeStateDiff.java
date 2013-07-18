@@ -82,7 +82,7 @@ name|NodeState
 name|after
 parameter_list|)
 function_decl|;
-comment|/**      * Called for all changed child nodes.      *      * @param name name of the changed child node      * @param before child node state before the change      * @param after child node state after the change      * @return {@code true} to continue the comparison, {@code false} to stop      */
+comment|/**      * Called for all child nodes that may contain changes between the before      * and after states. The comparison implementation is expected to make an      * effort to avoid calling this method on child nodes under which nothing      * has changed.      *      * @param name name of the changed child node      * @param before child node state before the change      * @param after child node state after the change      * @return {@code true} to continue the comparison, {@code false} to stop      */
 name|boolean
 name|childNodeChanged
 parameter_list|(

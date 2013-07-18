@@ -742,15 +742,12 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-operator|!
-name|beforeChild
-operator|.
-name|equals
-argument_list|(
 name|afterChild
-argument_list|)
+operator|!=
+name|beforeChild
 condition|)
 block|{
+comment|// TODO: fastEquals?
 if|if
 condition|(
 operator|!

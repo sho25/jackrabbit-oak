@@ -1896,13 +1896,10 @@ block|}
 elseif|else
 if|if
 condition|(
-operator|!
 name|before
-operator|.
-name|equals
-argument_list|(
+operator|!=
 name|after
-argument_list|)
+comment|// TODO: fastEquals?
 operator|&&
 operator|!
 name|diff
