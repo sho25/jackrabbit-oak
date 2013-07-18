@@ -600,13 +600,7 @@ name|SessionDelegate
 argument_list|(
 name|contentSession
 argument_list|,
-name|isAdmin
-argument_list|(
-name|contentSession
-argument_list|)
-condition|?
-literal|0
-else|:
+comment|/* isAdmin(contentSession) ? 0 : */
 name|AUTO_REFRESH_INTERVAL
 argument_list|)
 argument_list|)
