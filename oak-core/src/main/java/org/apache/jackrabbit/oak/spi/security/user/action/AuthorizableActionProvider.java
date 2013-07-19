@@ -34,7 +34,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * {@code AuthorizableActionProvider} is used to provide {@code AuthorizableAction}s  * for each instance of {@code UserManager}.  */
+comment|/**  * {@code AuthorizableActionProvider} is used to provide {@code AuthorizableAction}s  * for each instance of {@code UserManager}.  *  * @since OAK 1.0  */
 end_comment
 
 begin_interface

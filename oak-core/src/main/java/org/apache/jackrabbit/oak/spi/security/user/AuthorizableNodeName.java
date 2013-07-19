@@ -36,7 +36,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * The {@code AuthorizableNodeName} is in charge of generating a valid node  * name from a given authorizable ID.  */
+comment|/**  * The {@code AuthorizableNodeName} is in charge of generating a valid node  * name from a given authorizable ID.  *  * @since OAK 1.0  */
 end_comment
 
 begin_interface
