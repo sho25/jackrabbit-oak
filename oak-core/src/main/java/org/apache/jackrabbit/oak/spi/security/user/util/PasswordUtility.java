@@ -250,6 +250,7 @@ name|ENCODING
 init|=
 literal|"UTF-8"
 decl_stmt|;
+comment|/**      * @since OAK 1.0      */
 specifier|private
 specifier|static
 specifier|final
