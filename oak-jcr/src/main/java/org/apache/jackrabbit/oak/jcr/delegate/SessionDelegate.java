@@ -464,6 +464,12 @@ argument_list|()
 decl_stmt|;
 specifier|private
 name|boolean
+name|warnIfIdle
+init|=
+literal|true
+decl_stmt|;
+specifier|private
+name|boolean
 name|refreshAtNextAccess
 init|=
 literal|false
@@ -591,6 +597,8 @@ condition|)
 block|{
 if|if
 condition|(
+name|warnIfIdle
+operator|&&
 operator|!
 name|refreshAtNextAccess
 operator|&&
@@ -606,7 +614,7 @@ name|MINUTES
 argument_list|)
 condition|)
 block|{
-comment|// Warn if this session has been idle too long
+comment|// Warn once if this session has been idle too long
 name|log
 operator|.
 name|warn
@@ -628,6 +636,10 @@ literal|" refresh the session."
 argument_list|,
 name|initStackTrace
 argument_list|)
+expr_stmt|;
+name|warnIfIdle
+operator|=
+literal|false
 expr_stmt|;
 block|}
 if|if
