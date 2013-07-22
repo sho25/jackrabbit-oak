@@ -19,6 +19,26 @@ name|xml
 package|;
 end_package
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Collections
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|Nonnull
+import|;
+end_import
+
 begin_comment
 comment|/**  * Information about a node being imported. This class is used  * by the XML import handlers to pass the parsed node information to the  * import process.  *<p>  * An instance of this class is simply a container for the node name,  * node uuidentifier, and the node type information. See the {@link PropInfo}  * class for the related carrier of property information.  */
 end_comment
@@ -43,8 +63,10 @@ decl_stmt|;
 comment|/**      * Names of the mixin types of the node being imported.      */
 specifier|private
 specifier|final
+name|Iterable
+argument_list|<
 name|String
-index|[]
+argument_list|>
 name|mixinTypeNames
 decl_stmt|;
 comment|/**      * UUID of the node being imported.      */
@@ -63,8 +85,10 @@ parameter_list|,
 name|String
 name|primaryTypeName
 parameter_list|,
+name|Iterable
+argument_list|<
 name|String
-index|[]
+argument_list|>
 name|mixinTypeNames
 parameter_list|,
 name|String
@@ -87,6 +111,20 @@ name|this
 operator|.
 name|mixinTypeNames
 operator|=
+operator|(
+name|mixinTypeNames
+operator|==
+literal|null
+operator|)
+condition|?
+name|Collections
+operator|.
+expr|<
+name|String
+operator|>
+name|emptyList
+argument_list|()
+else|:
 name|mixinTypeNames
 expr_stmt|;
 name|this
@@ -117,9 +155,13 @@ name|primaryTypeName
 return|;
 block|}
 comment|/**      * Returns the names of the mixin types of the node being imported.      *      * @return mixin type names      */
+annotation|@
+name|Nonnull
 specifier|public
+name|Iterable
+argument_list|<
 name|String
-index|[]
+argument_list|>
 name|getMixinTypeNames
 parameter_list|()
 block|{

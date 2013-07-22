@@ -23,6 +23,16 @@ end_package
 
 begin_import
 import|import
+name|java
+operator|.
+name|security
+operator|.
+name|AccessControlException
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|jcr
@@ -38,16 +48,6 @@ operator|.
 name|jcr
 operator|.
 name|NodeIterator
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|jcr
-operator|.
-name|RepositoryException
 import|;
 end_import
 
@@ -268,7 +268,7 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|RepositoryException
+name|AccessControlException
 name|e
 parameter_list|)
 block|{

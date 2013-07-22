@@ -18,22 +18,6 @@ package|;
 end_package
 
 begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|Preconditions
-operator|.
-name|checkNotNull
-import|;
-end_import
-
-begin_import
 import|import
 name|java
 operator|.
@@ -748,6 +732,22 @@ operator|.
 name|xml
 operator|.
 name|ProtectedItemImporter
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkNotNull
 import|;
 end_import
 
@@ -1760,9 +1760,46 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|//-----------------------------------------------------------< internal>---
+specifier|public
+name|void
+name|refresh
+parameter_list|(
+name|boolean
+name|includeRoot
+parameter_list|)
+block|{
+if|if
+condition|(
+name|includeRoot
+condition|)
+block|{
+name|getSessionDelegate
+argument_list|()
+operator|.
+name|getRoot
+argument_list|()
+operator|.
+name|refresh
+argument_list|()
+expr_stmt|;
+block|}
+if|if
+condition|(
+name|permissionProvider
+operator|!=
+literal|null
+condition|)
+block|{
+name|permissionProvider
+operator|.
+name|refresh
+argument_list|()
+expr_stmt|;
+block|}
+block|}
 annotation|@
 name|Nonnull
+specifier|public
 name|AccessManager
 name|getAccessManager
 parameter_list|()
@@ -1778,6 +1815,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
+comment|//-----------------------------------------------------------< internal>---
 name|void
 name|dispose
 parameter_list|()
@@ -1800,24 +1838,6 @@ operator|.
 name|clear
 argument_list|()
 expr_stmt|;
-block|}
-name|void
-name|refresh
-parameter_list|()
-block|{
-if|if
-condition|(
-name|permissionProvider
-operator|!=
-literal|null
-condition|)
-block|{
-name|permissionProvider
-operator|.
-name|refresh
-argument_list|()
-expr_stmt|;
-block|}
 block|}
 comment|//------------------------------------------------------------< private>---
 annotation|@
