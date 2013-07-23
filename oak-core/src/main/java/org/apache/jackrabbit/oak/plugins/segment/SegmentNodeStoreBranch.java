@@ -672,6 +672,11 @@ name|newHead
 argument_list|)
 condition|)
 block|{
+name|NodeState
+name|previousBase
+init|=
+name|base
+decl_stmt|;
 name|base
 operator|=
 name|newHead
@@ -684,7 +689,7 @@ name|committed
 operator|.
 name|contentChanged
 argument_list|(
-name|originalBase
+name|previousBase
 operator|.
 name|getChildNode
 argument_list|(
@@ -979,6 +984,11 @@ name|newHead
 argument_list|)
 condition|)
 block|{
+name|NodeState
+name|previousBase
+init|=
+name|base
+decl_stmt|;
 name|base
 operator|=
 name|newHead
@@ -991,7 +1001,7 @@ name|committed
 operator|.
 name|contentChanged
 argument_list|(
-name|originalBase
+name|previousBase
 operator|.
 name|getChildNode
 argument_list|(
