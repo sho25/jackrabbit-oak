@@ -113,6 +113,24 @@ name|AbstractQueryTest
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|query
+operator|.
+name|ast
+operator|.
+name|FullTextSearchImpl
+import|;
+end_import
+
 begin_comment
 comment|/**  * Tests the fulltext index.  */
 end_comment
@@ -234,9 +252,48 @@ operator|.
 name|JCR_SQL2
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|FullTextSearchImpl
+operator|.
+name|OAK_890_ADVANCED_FT_SEARCH
+condition|)
+block|{
+comment|// TODO the plan should actually be:
+comment|//            assertEquals("[nt:base] as [nt:base] /* " +
+comment|//                    "+((text:hallo text:hello)~1) +text:{* TO *} " +
+comment|//                    "ft:(text:\"hallo\" OR text:\"hello\") " +
+comment|//                    "where contains([nt:base].[text], cast('hello OR hallo' as string)) */",
+comment|//                    getResult(q.execute(), "plan"));
 name|assertEquals
 argument_list|(
-literal|"[nt:base] as [nt:base] /* +:fulltext:hello +:fulltext:or +:fulltext:hallo "
+literal|"[nt:base] as [nt:base] /* "
+operator|+
+literal|"+((:fulltext:hallo* :fulltext:hello*)~1) +text:{* TO *} "
+operator|+
+literal|"ft:(text:\"hallo\" OR text:\"hello\") "
+operator|+
+literal|"where contains([nt:base].[text], cast('hello OR hallo' as string)) */"
+argument_list|,
+name|getResult
+argument_list|(
+name|q
+operator|.
+name|execute
+argument_list|()
+argument_list|,
+literal|"plan"
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+name|assertEquals
+argument_list|(
+literal|"[nt:base] as [nt:base] /* "
+operator|+
+literal|"+:fulltext:hello +:fulltext:or +:fulltext:hallo "
 operator|+
 literal|"where contains([nt:base].[*], cast('hello OR hallo' as string)) */"
 argument_list|,
@@ -266,9 +323,30 @@ operator|.
 name|JCR_SQL2
 argument_list|)
 expr_stmt|;
-comment|// TODO OAK-902
-comment|// assertEquals("/testroot/node1, /testroot/node2, /testroot/node3",
-comment|//        getResult(q.execute(), "path"));
+if|if
+condition|(
+name|FullTextSearchImpl
+operator|.
+name|OAK_890_ADVANCED_FT_SEARCH
+condition|)
+block|{
+name|assertEquals
+argument_list|(
+literal|"/testroot/node1, /testroot/node2, /testroot/node3"
+argument_list|,
+name|getResult
+argument_list|(
+name|q
+operator|.
+name|execute
+argument_list|()
+argument_list|,
+literal|"path"
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+block|}
 comment|// lowercase "or" mean search for the term "or"
 name|sql2
 operator|=
@@ -347,21 +425,114 @@ argument_list|,
 literal|"hello"
 argument_list|)
 expr_stmt|;
+name|Node
+name|n2
+init|=
+name|testRootNode
+operator|.
+name|addNode
+argument_list|(
+literal|"node2"
+argument_list|)
+decl_stmt|;
+name|n2
+operator|.
+name|setProperty
+argument_list|(
+literal|"text"
+argument_list|,
+literal|"hallo"
+argument_list|)
+expr_stmt|;
+name|Node
+name|n3
+init|=
+name|testRootNode
+operator|.
+name|addNode
+argument_list|(
+literal|"node3"
+argument_list|)
+decl_stmt|;
+name|n3
+operator|.
+name|setProperty
+argument_list|(
+literal|"text"
+argument_list|,
+literal|"hello hallo"
+argument_list|)
+expr_stmt|;
 name|session
 operator|.
 name|save
 argument_list|()
 expr_stmt|;
+name|Query
+name|q
+decl_stmt|;
 name|String
 name|sql2
 init|=
 literal|"select [jcr:path] as [path] from [nt:base] "
 operator|+
-literal|"where contains([node1/text], 'hello') order by [jcr:path]"
+literal|"where ISCHILDNODE([/testroot])"
+operator|+
+literal|" AND CONTAINS(text, 'hallo')"
 decl_stmt|;
-name|Query
+if|if
+condition|(
+name|FullTextSearchImpl
+operator|.
+name|OAK_890_ADVANCED_FT_SEARCH
+condition|)
+block|{
 name|q
-decl_stmt|;
+operator|=
+name|qm
+operator|.
+name|createQuery
+argument_list|(
+literal|"explain "
+operator|+
+name|sql2
+argument_list|,
+name|Query
+operator|.
+name|JCR_SQL2
+argument_list|)
+expr_stmt|;
+comment|// TODO the plan should actually be:
+comment|//          assertEquals("[nt:base] as [nt:base] /* " +
+comment|//                  "+text:hallo +:path:/testroot/* +text:{* TO *} " +
+comment|//                  "ft:(text:\"hallo\") " +
+comment|//                  "where (ischildnode([nt:base], [/testroot])) " +
+comment|//                  "and (contains([nt:base].[text], cast('hallo' as string))) */",
+comment|//                  getResult(q.execute(), "plan"));
+name|assertEquals
+argument_list|(
+literal|"[nt:base] as [nt:base] /* "
+operator|+
+literal|"+:fulltext:hallo* +:path:/testroot/* +text:{* TO *} "
+operator|+
+literal|"ft:(text:\"hallo\") "
+operator|+
+literal|"where (ischildnode([nt:base], [/testroot])) "
+operator|+
+literal|"and (contains([nt:base].[text], cast('hallo' as string))) */"
+argument_list|,
+name|getResult
+argument_list|(
+name|q
+operator|.
+name|execute
+argument_list|()
+argument_list|,
+literal|"plan"
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
 name|q
 operator|=
 name|qm
@@ -375,8 +546,258 @@ operator|.
 name|JCR_SQL2
 argument_list|)
 expr_stmt|;
-comment|// TODO OAK-913
-comment|// assertEquals("/testroot", getResult(q.execute(), "path"));
+name|assertEquals
+argument_list|(
+literal|"/testroot/node2, /testroot/node3"
+argument_list|,
+name|getResult
+argument_list|(
+name|q
+operator|.
+name|execute
+argument_list|()
+argument_list|,
+literal|"path"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|sql2
+operator|=
+literal|"select [jcr:path] as [path] from [nt:base] "
+operator|+
+literal|"where contains([node1/text], 'hello') order by [jcr:path]"
+expr_stmt|;
+name|q
+operator|=
+name|qm
+operator|.
+name|createQuery
+argument_list|(
+name|sql2
+argument_list|,
+name|Query
+operator|.
+name|JCR_SQL2
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|FullTextSearchImpl
+operator|.
+name|OAK_890_ADVANCED_FT_SEARCH
+condition|)
+block|{
+name|assertEquals
+argument_list|(
+literal|"/testroot"
+argument_list|,
+name|getResult
+argument_list|(
+name|q
+operator|.
+name|execute
+argument_list|()
+argument_list|,
+literal|"path"
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+name|sql2
+operator|=
+literal|"select [jcr:path] as [path] from [nt:base] "
+operator|+
+literal|"where contains([node2/text], 'hello OR hallo') order by [jcr:path]"
+expr_stmt|;
+name|q
+operator|=
+name|qm
+operator|.
+name|createQuery
+argument_list|(
+literal|"explain "
+operator|+
+name|sql2
+argument_list|,
+name|Query
+operator|.
+name|JCR_SQL2
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|FullTextSearchImpl
+operator|.
+name|OAK_890_ADVANCED_FT_SEARCH
+condition|)
+block|{
+comment|// TODO the plan should actually be:
+comment|//            assertEquals("[nt:base] as [nt:base] /* " +
+comment|//                    "(text:hallo text:hello)~1 " +
+comment|//                    "ft:(node2/text:\"hallo\" OR node2/text:\"hello\") " +
+comment|//                    "parent:node2 " +
+comment|//                    "where contains([nt:base].[node2/text], cast('hello OR hallo' as string)) */",
+comment|//                    getResult(q.execute(), "plan"));
+name|assertEquals
+argument_list|(
+literal|"[nt:base] as [nt:base] /* "
+operator|+
+literal|"(:fulltext:hallo* :fulltext:hello*)~1 "
+operator|+
+literal|"ft:(node2/text:\"hallo\" OR node2/text:\"hello\") "
+operator|+
+literal|"parent:node2 "
+operator|+
+literal|"where contains([nt:base].[node2/text], cast('hello OR hallo' as string)) */"
+argument_list|,
+name|getResult
+argument_list|(
+name|q
+operator|.
+name|execute
+argument_list|()
+argument_list|,
+literal|"plan"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|q
+operator|=
+name|qm
+operator|.
+name|createQuery
+argument_list|(
+name|sql2
+argument_list|,
+name|Query
+operator|.
+name|JCR_SQL2
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"/testroot"
+argument_list|,
+name|getResult
+argument_list|(
+name|q
+operator|.
+name|execute
+argument_list|()
+argument_list|,
+literal|"path"
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+name|assertEquals
+argument_list|(
+literal|"[nt:base] as [nt:base] /* "
+operator|+
+literal|"+:fulltext:hello +:fulltext:or +:fulltext:hallo "
+operator|+
+literal|"where contains([nt:base].[node2/*], cast('hello OR hallo' as string)) */"
+argument_list|,
+name|getResult
+argument_list|(
+name|q
+operator|.
+name|execute
+argument_list|()
+argument_list|,
+literal|"plan"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|q
+operator|=
+name|qm
+operator|.
+name|createQuery
+argument_list|(
+name|sql2
+argument_list|,
+name|Query
+operator|.
+name|JCR_SQL2
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|""
+argument_list|,
+name|getResult
+argument_list|(
+name|q
+operator|.
+name|execute
+argument_list|()
+argument_list|,
+literal|"path"
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+name|sql2
+operator|=
+literal|"select [jcr:path] as [path] from [nt:base] "
+operator|+
+literal|"where contains([node1/text], 'hello') "
+operator|+
+literal|"and contains([node2/text], 'hallo') "
+operator|+
+literal|"order by [jcr:path]"
+expr_stmt|;
+name|q
+operator|=
+name|qm
+operator|.
+name|createQuery
+argument_list|(
+literal|"explain "
+operator|+
+name|sql2
+argument_list|,
+name|Query
+operator|.
+name|JCR_SQL2
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|FullTextSearchImpl
+operator|.
+name|OAK_890_ADVANCED_FT_SEARCH
+condition|)
+block|{
+comment|// TODO OAK-890
+name|assertEquals
+argument_list|(
+literal|"[nt:base] as [nt:base] /* "
+operator|+
+literal|"Not yet implemented "
+operator|+
+literal|"where (contains([nt:base].[node1/text], cast('hello' as string))) "
+operator|+
+literal|"and (contains([nt:base].[node2/text], cast('hallo' as string))) */"
+argument_list|,
+name|getResult
+argument_list|(
+name|q
+operator|.
+name|execute
+argument_list|()
+argument_list|,
+literal|"plan"
+argument_list|)
+argument_list|)
+expr_stmt|;
+comment|//            q = qm.createQuery(sql2, Query.JCR_SQL2);
+comment|//            assertEquals("/testroot",
+comment|//                    getResult(q.execute(), "path"));
+block|}
 block|}
 specifier|static
 name|String

@@ -51,6 +51,24 @@ name|oak
 operator|.
 name|query
 operator|.
+name|fulltext
+operator|.
+name|FullTextExpression
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|query
+operator|.
 name|index
 operator|.
 name|FilterImpl
@@ -96,6 +114,19 @@ argument_list|>
 name|getPropertyExistenceConditions
 parameter_list|()
 function_decl|;
+comment|/**      * Get the (combined) full-text constraint. For constraints of the form      * "contains(*, 'x') or contains(*, 'y')", the combined expression is      * returned. If there is none, null is returned. For constraints of the form      * "contains(*, 'x') or z=1", null is returned as the full-text index cannot      * be used in this case for filtering (as it might filter out the z=1      * nodes).      *       * @param s the selector      * @return the full-text constraint, if there is any, or null if not      */
+specifier|protected
+name|FullTextExpression
+name|getFullTextConstraint
+parameter_list|(
+name|SelectorImpl
+name|s
+parameter_list|)
+block|{
+return|return
+literal|null
+return|;
+block|}
 comment|/**      * Get the set of selectors for the given condition.      *       * @return the set of selectors (possibly empty)      */
 specifier|public
 specifier|abstract

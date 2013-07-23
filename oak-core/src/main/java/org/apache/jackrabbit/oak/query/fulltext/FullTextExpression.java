@@ -152,6 +152,16 @@ name|hashCode
 argument_list|()
 return|;
 block|}
+comment|/**      * Let the expression call the applicable visit method of the visitor.       *       * @param v the visitor      * @return true if the visit method returned true      */
+specifier|public
+specifier|abstract
+name|boolean
+name|accept
+parameter_list|(
+name|FullTextVisitor
+name|v
+parameter_list|)
+function_decl|;
 block|}
 end_class
 

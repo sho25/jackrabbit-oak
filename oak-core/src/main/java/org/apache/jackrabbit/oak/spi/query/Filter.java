@@ -95,6 +95,24 @@ name|PropertyValue
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|query
+operator|.
+name|fulltext
+operator|.
+name|FullTextExpression
+import|;
+end_import
+
 begin_comment
 comment|/**  * The filter for an index lookup that contains a number of restrictions that  * are combined with AND. Possible restrictions are a property restriction, a  * path restriction, a node type restriction, and a fulltext restriction.  *<p>  * A property restriction could be that the property must exist, or that the  * property value has to be within a certain range.  *<p>  * A path restriction could be a restriction to a certain subtree, a parent of a  * certain path, or equality to a certain path.  */
 end_comment
@@ -118,6 +136,11 @@ argument_list|<
 name|String
 argument_list|>
 name|getFulltextConditions
+parameter_list|()
+function_decl|;
+comment|/**      * Get the fulltext search condition expression, if any.      *       * @return the condition (null if none)      */
+name|FullTextExpression
+name|getFullTextConstraint
 parameter_list|()
 function_decl|;
 comment|/**      * Get the property restriction for the given property, if any.      *      * @param propertyName the property name      * @return the restriction, or null if there is no restriction for this property      */
