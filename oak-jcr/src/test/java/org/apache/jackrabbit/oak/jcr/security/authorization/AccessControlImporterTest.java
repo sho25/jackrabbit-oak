@@ -1890,6 +1890,16 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+if|if
+condition|(
+operator|!
+name|isSessionImport
+argument_list|()
+condition|)
+block|{
+return|return;
+comment|// FIXME
+block|}
 name|Node
 name|target
 init|=
