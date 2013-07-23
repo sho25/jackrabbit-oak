@@ -575,6 +575,10 @@ name|LoginLogoutTest
 argument_list|()
 block|,
 operator|new
+name|NamespaceTest
+argument_list|()
+block|,
+operator|new
 name|ReadPropertyTest
 argument_list|()
 block|,
