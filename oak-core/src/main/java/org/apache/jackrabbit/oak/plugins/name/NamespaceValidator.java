@@ -194,7 +194,9 @@ throw|throw
 operator|new
 name|CommitFailedException
 argument_list|(
-literal|"Namespace"
+name|CommitFailedException
+operator|.
+name|NAMESPACE
 argument_list|,
 literal|1
 argument_list|,
@@ -238,7 +240,9 @@ throw|throw
 operator|new
 name|CommitFailedException
 argument_list|(
-literal|"Namespace"
+name|CommitFailedException
+operator|.
+name|NAMESPACE
 argument_list|,
 literal|2
 argument_list|,
@@ -270,7 +274,9 @@ throw|throw
 operator|new
 name|CommitFailedException
 argument_list|(
-literal|"Namespace"
+name|CommitFailedException
+operator|.
+name|NAMESPACE
 argument_list|,
 literal|3
 argument_list|,
@@ -310,7 +316,9 @@ throw|throw
 operator|new
 name|CommitFailedException
 argument_list|(
-literal|"Namespace"
+name|CommitFailedException
+operator|.
+name|NAMESPACE
 argument_list|,
 literal|4
 argument_list|,
@@ -401,7 +409,9 @@ return|return
 operator|new
 name|CommitFailedException
 argument_list|(
-literal|"Namespace"
+name|CommitFailedException
+operator|.
+name|NAMESPACE
 argument_list|,
 literal|5
 argument_list|,

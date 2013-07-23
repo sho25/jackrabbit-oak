@@ -21,6 +21,16 @@ begin_import
 import|import
 name|javax
 operator|.
+name|annotation
+operator|.
+name|Nonnull
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
 name|jcr
 operator|.
 name|AccessDeniedException
@@ -34,6 +44,16 @@ operator|.
 name|jcr
 operator|.
 name|InvalidItemStateException
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|jcr
+operator|.
+name|NamespaceException
 import|;
 end_import
 
@@ -99,6 +119,18 @@ name|javax
 operator|.
 name|jcr
 operator|.
+name|security
+operator|.
+name|AccessControlException
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|jcr
+operator|.
 name|version
 operator|.
 name|VersionException
@@ -146,6 +178,15 @@ name|ACCESS
 init|=
 literal|"Access"
 decl_stmt|;
+comment|/**      * Type name for access control violation errors.      */
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|ACCESS_CONTROL
+init|=
+literal|"AccessControl"
+decl_stmt|;
 comment|/**      * Type name for constraint violation errors.      */
 specifier|public
 specifier|static
@@ -154,6 +195,60 @@ name|String
 name|CONSTRAINT
 init|=
 literal|"Constraint"
+decl_stmt|;
+comment|/**      * Type name for referencial integrity violation errors.      */
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|INTEGRITY
+init|=
+literal|"Integrity"
+decl_stmt|;
+comment|/**      * Type name for lock violation errors.      */
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|LOCK
+init|=
+literal|"Lock"
+decl_stmt|;
+comment|/**      * Type name for name violation errors.      */
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|NAME
+init|=
+literal|"Name"
+decl_stmt|;
+comment|/**      * Type name for namespace violation errors.      */
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|NAMESPACE
+init|=
+literal|"Namespace"
+decl_stmt|;
+comment|/**      * Type name for node type violation errors.      */
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|NODE_TYPE
+init|=
+literal|"NodeType"
+decl_stmt|;
+comment|/**      * Type name for state violation errors.      */
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|STATE
+init|=
+literal|"State"
 decl_stmt|;
 comment|/**      * Type name for version violation errors.      */
 specifier|public
@@ -164,7 +259,7 @@ name|VERSION
 init|=
 literal|"Version"
 decl_stmt|;
-comment|/** Serial version UID */
+comment|/**      * Serial version UID      */
 specifier|private
 specifier|static
 specifier|final
@@ -332,6 +427,19 @@ name|ACCESS
 argument_list|)
 return|;
 block|}
+comment|/**      * Checks whether this is an access control violation exception.      *      * @return {@code true} iff this is an access control violation exception      */
+specifier|public
+name|boolean
+name|isAccessControlViolation
+parameter_list|()
+block|{
+return|return
+name|isOfType
+argument_list|(
+name|ACCESS_CONTROL
+argument_list|)
+return|;
+block|}
 comment|/**      * Checks whether this is a constraint violation exception.      *      * @return {@code true} iff this is a constraint violation exception      */
 specifier|public
 name|boolean
@@ -381,6 +489,27 @@ name|RepositoryException
 name|asRepositoryException
 parameter_list|()
 block|{
+return|return
+name|asRepositoryException
+argument_list|(
+name|this
+operator|.
+name|getMessage
+argument_list|()
+argument_list|)
+return|;
+block|}
+comment|/**      * Wraps the given {@link CommitFailedException} instance using the      * appropriate {@link javax.jcr.RepositoryException} subclass based on the      * {@link CommitFailedException#getType() type} of the given exception.      *      * @param message The exception message.      * @return matching repository exception      */
+specifier|public
+name|RepositoryException
+name|asRepositoryException
+parameter_list|(
+annotation|@
+name|Nonnull
+name|String
+name|message
+parameter_list|)
+block|{
 if|if
 condition|(
 name|isConstraintViolation
@@ -391,6 +520,8 @@ return|return
 operator|new
 name|ConstraintViolationException
 argument_list|(
+name|message
+argument_list|,
 name|this
 argument_list|)
 return|;
@@ -400,7 +531,26 @@ if|if
 condition|(
 name|isOfType
 argument_list|(
-literal|"Type"
+name|NAMESPACE
+argument_list|)
+condition|)
+block|{
+return|return
+operator|new
+name|NamespaceException
+argument_list|(
+name|message
+argument_list|,
+name|this
+argument_list|)
+return|;
+block|}
+elseif|else
+if|if
+condition|(
+name|isOfType
+argument_list|(
+name|NODE_TYPE
 argument_list|)
 condition|)
 block|{
@@ -408,6 +558,8 @@ return|return
 operator|new
 name|NoSuchNodeTypeException
 argument_list|(
+name|message
+argument_list|,
 name|this
 argument_list|)
 return|;
@@ -423,6 +575,25 @@ return|return
 operator|new
 name|AccessDeniedException
 argument_list|(
+name|message
+argument_list|,
+name|this
+argument_list|)
+return|;
+block|}
+elseif|else
+if|if
+condition|(
+name|isAccessControlViolation
+argument_list|()
+condition|)
+block|{
+return|return
+operator|new
+name|AccessControlException
+argument_list|(
+name|message
+argument_list|,
 name|this
 argument_list|)
 return|;
@@ -432,7 +603,7 @@ if|if
 condition|(
 name|isOfType
 argument_list|(
-literal|"Integrity"
+name|INTEGRITY
 argument_list|)
 condition|)
 block|{
@@ -440,6 +611,8 @@ return|return
 operator|new
 name|ReferentialIntegrityException
 argument_list|(
+name|message
+argument_list|,
 name|this
 argument_list|)
 return|;
@@ -449,7 +622,7 @@ if|if
 condition|(
 name|isOfType
 argument_list|(
-literal|"State"
+name|STATE
 argument_list|)
 condition|)
 block|{
@@ -457,6 +630,8 @@ return|return
 operator|new
 name|InvalidItemStateException
 argument_list|(
+name|message
+argument_list|,
 name|this
 argument_list|)
 return|;
@@ -466,7 +641,7 @@ if|if
 condition|(
 name|isOfType
 argument_list|(
-literal|"Version"
+name|VERSION
 argument_list|)
 condition|)
 block|{
@@ -474,6 +649,8 @@ return|return
 operator|new
 name|VersionException
 argument_list|(
+name|message
+argument_list|,
 name|this
 argument_list|)
 return|;
@@ -483,7 +660,7 @@ if|if
 condition|(
 name|isOfType
 argument_list|(
-literal|"Lock"
+name|LOCK
 argument_list|)
 condition|)
 block|{
@@ -491,6 +668,8 @@ return|return
 operator|new
 name|LockException
 argument_list|(
+name|message
+argument_list|,
 name|this
 argument_list|)
 return|;
@@ -501,6 +680,8 @@ return|return
 operator|new
 name|RepositoryException
 argument_list|(
+name|message
+argument_list|,
 name|this
 argument_list|)
 return|;

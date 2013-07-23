@@ -571,13 +571,13 @@ name|assertTrue
 argument_list|(
 name|e
 operator|.
-name|isAccessViolation
+name|isAccessControlViolation
 argument_list|()
 argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"OakAccess0004: Invalid policy node: Order of children is not stable."
+literal|"OakAccessControl0004: Invalid policy node: Order of children is not stable."
 argument_list|,
 name|e
 operator|.
@@ -635,7 +635,7 @@ name|assertTrue
 argument_list|(
 name|e
 operator|.
-name|isAccessViolation
+name|isAccessControlViolation
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -702,7 +702,7 @@ name|assertTrue
 argument_list|(
 name|e
 operator|.
-name|isAccessViolation
+name|isAccessControlViolation
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -806,7 +806,7 @@ name|assertTrue
 argument_list|(
 name|e
 operator|.
-name|isAccessViolation
+name|isAccessControlViolation
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -911,7 +911,7 @@ name|assertTrue
 argument_list|(
 name|e
 operator|.
-name|isAccessViolation
+name|isAccessControlViolation
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1014,7 +1014,7 @@ name|assertTrue
 argument_list|(
 name|e
 operator|.
-name|isAccessViolation
+name|isAccessControlViolation
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1117,7 +1117,7 @@ name|assertTrue
 argument_list|(
 name|e
 operator|.
-name|isAccessViolation
+name|isAccessControlViolation
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1207,7 +1207,7 @@ name|assertTrue
 argument_list|(
 name|e
 operator|.
-name|isAccessViolation
+name|isAccessControlViolation
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1305,7 +1305,7 @@ name|assertTrue
 argument_list|(
 name|e
 operator|.
-name|isAccessViolation
+name|isAccessControlViolation
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1373,7 +1373,7 @@ name|assertTrue
 argument_list|(
 name|e
 operator|.
-name|isAccessViolation
+name|isAccessControlViolation
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1449,7 +1449,7 @@ name|assertTrue
 argument_list|(
 name|e
 operator|.
-name|isAccessViolation
+name|isAccessControlViolation
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1533,7 +1533,7 @@ name|assertTrue
 argument_list|(
 name|e
 operator|.
-name|isAccessViolation
+name|isAccessControlViolation
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1597,7 +1597,7 @@ name|assertTrue
 argument_list|(
 name|e
 operator|.
-name|isAccessViolation
+name|isAccessControlViolation
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1661,7 +1661,7 @@ name|assertTrue
 argument_list|(
 name|e
 operator|.
-name|isAccessViolation
+name|isAccessControlViolation
 argument_list|()
 argument_list|)
 expr_stmt|;

@@ -393,11 +393,6 @@ argument_list|()
 expr_stmt|;
 block|}
 annotation|@
-name|Ignore
-argument_list|(
-literal|"OAK-767 : Implement Node#removeMixin"
-argument_list|)
-annotation|@
 name|Test
 specifier|public
 name|void
@@ -467,11 +462,6 @@ block|{
 comment|// success
 block|}
 block|}
-annotation|@
-name|Ignore
-argument_list|(
-literal|"OAK-767 : Implement Node#removeMixin"
-argument_list|)
 annotation|@
 name|Test
 specifier|public

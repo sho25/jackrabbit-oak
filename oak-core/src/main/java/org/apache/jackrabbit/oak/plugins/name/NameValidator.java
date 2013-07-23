@@ -245,7 +245,9 @@ throw|throw
 operator|new
 name|CommitFailedException
 argument_list|(
-literal|"Name"
+name|CommitFailedException
+operator|.
+name|NAME
 argument_list|,
 literal|1
 argument_list|,
@@ -340,7 +342,9 @@ throw|throw
 operator|new
 name|CommitFailedException
 argument_list|(
-literal|"Name"
+name|CommitFailedException
+operator|.
+name|NAME
 argument_list|,
 literal|2
 argument_list|,
@@ -380,7 +384,9 @@ throw|throw
 operator|new
 name|CommitFailedException
 argument_list|(
-literal|"Name"
+name|CommitFailedException
+operator|.
+name|NAME
 argument_list|,
 literal|3
 argument_list|,
