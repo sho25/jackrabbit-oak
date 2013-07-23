@@ -18,58 +18,6 @@ package|;
 end_package
 
 begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|Preconditions
-operator|.
-name|checkNotNull
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|commons
-operator|.
-name|PathUtils
-operator|.
-name|getName
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|commons
-operator|.
-name|PathUtils
-operator|.
-name|getParentPath
-import|;
-end_import
-
-begin_import
 import|import
 name|java
 operator|.
@@ -713,6 +661,58 @@ name|NodeStoreBranch
 import|;
 end_import
 
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkNotNull
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|commons
+operator|.
+name|PathUtils
+operator|.
+name|getName
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|commons
+operator|.
+name|PathUtils
+operator|.
+name|getParentPath
+import|;
+end_import
+
 begin_class
 specifier|public
 class|class
@@ -788,7 +788,7 @@ specifier|private
 name|NodeBuilder
 name|builder
 decl_stmt|;
-comment|/** Sentinel for the next move operation to take place on the this root */
+comment|/**      * Sentinel for the next move operation to take place on the this root      */
 specifier|private
 name|Move
 name|lastMove
@@ -1003,6 +1003,15 @@ name|void
 name|checkLive
 parameter_list|()
 block|{      }
+specifier|protected
+name|String
+name|getWorkspaceName
+parameter_list|()
+block|{
+return|return
+name|workspaceName
+return|;
+block|}
 comment|//---------------------------------------------------------------< Root>---
 annotation|@
 name|Override
@@ -1979,26 +1988,26 @@ argument_list|)
 return|;
 block|}
 comment|//---------------------------------------------------------< MoveRecord>---
-comment|/**      * Instances of this class record move operations which took place on this root.      * They form a singly linked list where each move instance points to the next one.      * The last entry in the list is always an empty slot to be filled in by calling      * {@code setMove()}. This fills the slot with the source and destination of the move      * and links this move to the next one which will be the new empty slot.      *      * Moves can be applied to {@code MutableTree} instances by calling {@code apply()},      * which will execute all moves in the list on the passed tree instance      */
+comment|/**      * Instances of this class record move operations which took place on this root.      * They form a singly linked list where each move instance points to the next one.      * The last entry in the list is always an empty slot to be filled in by calling      * {@code setMove()}. This fills the slot with the source and destination of the move      * and links this move to the next one which will be the new empty slot.      *<p/>      * Moves can be applied to {@code MutableTree} instances by calling {@code apply()},      * which will execute all moves in the list on the passed tree instance      */
 class|class
 name|Move
 block|{
-comment|/** source path */
+comment|/**          * source path          */
 specifier|private
 name|String
 name|source
 decl_stmt|;
-comment|/** Parent tree of the destination */
+comment|/**          * Parent tree of the destination          */
 specifier|private
 name|MutableTree
 name|destParent
 decl_stmt|;
-comment|/** Name at the destination */
+comment|/**          * Name at the destination          */
 specifier|private
 name|String
 name|destName
 decl_stmt|;
-comment|/** Pointer to the next move. {@code null} if this is the last, empty slot */
+comment|/**          * Pointer to the next move. {@code null} if this is the last, empty slot          */
 specifier|private
 name|Move
 name|next
