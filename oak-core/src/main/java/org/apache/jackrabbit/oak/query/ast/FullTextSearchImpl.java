@@ -285,7 +285,7 @@ specifier|final
 name|boolean
 name|OAK_890_ADVANCED_FT_SEARCH
 init|=
-literal|false
+literal|true
 decl_stmt|;
 comment|/**      * Compatibility for Jackrabbit 2.0 single quoted phrase queries.      * (contains(., "word ''hello world'' word")       * These are queries that delimit a phrase with a single quote      * instead, as in the spec, using double quotes.      */
 specifier|public
