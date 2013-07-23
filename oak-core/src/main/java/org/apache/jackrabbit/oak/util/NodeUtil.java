@@ -197,6 +197,16 @@ name|javax
 operator|.
 name|jcr
 operator|.
+name|AccessDeniedException
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|jcr
+operator|.
 name|RepositoryException
 import|;
 end_import
@@ -476,17 +486,6 @@ block|}
 annotation|@
 name|Nonnull
 specifier|public
-name|NameMapper
-name|getNameMapper
-parameter_list|()
-block|{
-return|return
-name|mapper
-return|;
-block|}
-annotation|@
-name|Nonnull
-specifier|public
 name|Tree
 name|getTree
 parameter_list|()
@@ -600,6 +599,7 @@ else|:
 literal|null
 return|;
 block|}
+comment|/**      * Adds a new child tree with the given name and primary type name.      * This method is a shortcut for calling {@link Tree#addChild(String)} and      * {@link Tree#setProperty(String, Object, org.apache.jackrabbit.oak.api.Type)}      * where the property name is {@link JcrConstants#JCR_PRIMARYTYPE}.      * Note, that this method in addition verifies if the created tree exists      * and is accessible in order to avoid {@link IllegalStateException} upon      * subsequent modification of the new child.      *      * @param name            The name of the child item.      * @param primaryTypeName The name of the primary node type.      * @return The new child node with the specified name and primary type.      * @throws AccessDeniedException If the child does not exist after creation.      */
 annotation|@
 name|Nonnull
 specifier|public
@@ -610,8 +610,10 @@ name|String
 name|name
 parameter_list|,
 name|String
-name|primaryNodeTypeName
+name|primaryTypeName
 parameter_list|)
+throws|throws
+name|AccessDeniedException
 block|{
 name|Tree
 name|child
@@ -623,6 +625,21 @@ argument_list|(
 name|name
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+operator|!
+name|child
+operator|.
+name|exists
+argument_list|()
+condition|)
+block|{
+throw|throw
+operator|new
+name|AccessDeniedException
+argument_list|()
+throw|;
+block|}
 name|NodeUtil
 name|childUtil
 init|=
@@ -642,13 +659,14 @@ name|JcrConstants
 operator|.
 name|JCR_PRIMARYTYPE
 argument_list|,
-name|primaryNodeTypeName
+name|primaryTypeName
 argument_list|)
 expr_stmt|;
 return|return
 name|childUtil
 return|;
 block|}
+comment|/**      * Combination of {@link #getChild(String)} and {@link #addChild(String, String)}      * in case no tree exists with the specified name.      *      * @param name            The name of the child item.      * @param primaryTypeName The name of the primary node type.      * @return The new child node with the specified name and primary type.      * @throws AccessDeniedException If the child does not exist after creation.      */
 annotation|@
 name|Nonnull
 specifier|public
@@ -661,6 +679,8 @@ parameter_list|,
 name|String
 name|primaryTypeName
 parameter_list|)
+throws|throws
+name|AccessDeniedException
 block|{
 name|NodeUtil
 name|child
@@ -687,7 +707,7 @@ name|primaryTypeName
 argument_list|)
 return|;
 block|}
-comment|/**      * TODO: clean up. workaround for OAK-426      *<p/>      * Create the tree at the specified relative path including all missing      * intermediate trees using the specified {@code primaryTypeName}. This      * method treats ".." parent element and "." as current element and      * resolves them accordingly; in case of a relative path containing parent      * elements this may lead to tree creating outside the tree structure      * defined by this {@code NodeUtil}.      *      * @param relativePath    A relative OAK path that may contain parent and      *                        current elements.      * @param primaryTypeName A oak name of a primary node type that is used      *                        to create the missing trees.      * @return The node util of the tree at the specified {@code relativePath}.      */
+comment|/**      * TODO: clean up. workaround for OAK-426      *<p/>      * Create the tree at the specified relative path including all missing      * intermediate trees using the specified {@code primaryTypeName}. This      * method treats ".." parent element and "." as current element and      * resolves them accordingly; in case of a relative path containing parent      * elements this may lead to tree creating outside the tree structure      * defined by this {@code NodeUtil}.      *      * @param relativePath    A relative OAK path that may contain parent and      *                        current elements.      * @param primaryTypeName A oak name of a primary node type that is used      *                        to create the missing trees.      * @return The node util of the tree at the specified {@code relativePath}.      * @throws AccessDeniedException If the any intermediate tree does not exist      *                               and cannot be created.      */
 annotation|@
 name|Nonnull
 specifier|public
@@ -700,6 +720,8 @@ parameter_list|,
 name|String
 name|primaryTypeName
 parameter_list|)
+throws|throws
+name|AccessDeniedException
 block|{
 if|if
 condition|(
@@ -900,7 +922,7 @@ name|name
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Returns the boolean representation of the property with the specified      * {@code propertyName}. If the property does not exist or      * {@link org.apache.jackrabbit.oak.api.PropertyState#isArray() is an array}      * this method returns {@code false}.      *      * @param name The name of the property.      * @return the boolean representation of the property state with the given      * name. This utility returns {@code false} if the property does not exist      * or is an multivalued property.      */
+comment|/**      * Returns the boolean representation of the property with the specified      * {@code propertyName}. If the property does not exist or      * {@link org.apache.jackrabbit.oak.api.PropertyState#isArray() is an array}      * this method returns {@code false}.      *      * @param name The name of the property.      * @return the boolean representation of the property state with the given      *         name. This utility returns {@code false} if the property does not exist      *         or is an multivalued property.      */
 specifier|public
 name|boolean
 name|getBoolean

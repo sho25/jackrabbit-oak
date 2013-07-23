@@ -31,6 +31,16 @@ end_import
 
 begin_import
 import|import
+name|javax
+operator|.
+name|jcr
+operator|.
+name|AccessDeniedException
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -394,6 +404,8 @@ specifier|private
 name|NodeUtil
 name|createAcl
 parameter_list|()
+throws|throws
+name|AccessDeniedException
 block|{
 name|NodeUtil
 name|testRoot
@@ -479,6 +491,8 @@ name|String
 modifier|...
 name|privilegeNames
 parameter_list|)
+throws|throws
+name|AccessDeniedException
 block|{
 name|NodeUtil
 name|ace
@@ -520,6 +534,8 @@ specifier|public
 name|void
 name|testPolicyWithOutChildOrder
 parameter_list|()
+throws|throws
+name|AccessDeniedException
 block|{
 name|NodeUtil
 name|testRoot
@@ -647,6 +663,8 @@ specifier|public
 name|void
 name|testAddInvalidRepoPolicy
 parameter_list|()
+throws|throws
+name|Exception
 block|{
 name|NodeUtil
 name|testRoot
@@ -725,6 +743,8 @@ specifier|public
 name|void
 name|testAddPolicyWithAcContent
 parameter_list|()
+throws|throws
+name|Exception
 block|{
 name|NodeUtil
 name|acl
@@ -830,6 +850,8 @@ specifier|public
 name|void
 name|testAddRepoPolicyWithAcContent
 parameter_list|()
+throws|throws
+name|Exception
 block|{
 name|NodeUtil
 name|acl
@@ -935,6 +957,8 @@ specifier|public
 name|void
 name|testAddAceWithAcContent
 parameter_list|()
+throws|throws
+name|Exception
 block|{
 name|NodeUtil
 name|acl
@@ -1038,6 +1062,8 @@ specifier|public
 name|void
 name|testAddRestrictionWithAcContent
 parameter_list|()
+throws|throws
+name|Exception
 block|{
 name|NodeUtil
 name|acl
@@ -1141,6 +1167,8 @@ specifier|public
 name|void
 name|testAddIsolatedPolicy
 parameter_list|()
+throws|throws
+name|Exception
 block|{
 name|String
 index|[]
@@ -1232,6 +1260,8 @@ specifier|public
 name|void
 name|testAddIsolatedAce
 parameter_list|()
+throws|throws
+name|Exception
 block|{
 name|String
 index|[]
@@ -1330,6 +1360,8 @@ specifier|public
 name|void
 name|testAddIsolatedRestriction
 parameter_list|()
+throws|throws
+name|Exception
 block|{
 name|NodeUtil
 name|node
@@ -1397,6 +1429,8 @@ specifier|public
 name|void
 name|testInvalidPrivilege
 parameter_list|()
+throws|throws
+name|Exception
 block|{
 name|NodeUtil
 name|acl

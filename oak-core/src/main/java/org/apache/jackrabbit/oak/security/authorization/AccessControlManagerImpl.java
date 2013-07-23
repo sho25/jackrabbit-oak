@@ -3632,7 +3632,7 @@ return|return
 literal|null
 return|;
 block|}
-comment|/**      *      * @param oakPath the Oak path as specified with the ac mgr call.      * @param tree    the access controlled node.      * @return the new acl tree.      */
+comment|/**      * @param oakPath the Oak path as specified with the ac mgr call.      * @param tree    the access controlled node.      * @return the new acl tree.      * @throws AccessDeniedException In case the new acl tree is not accessible.      */
 annotation|@
 name|Nonnull
 specifier|private
@@ -3649,6 +3649,8 @@ name|Nonnull
 name|Tree
 name|tree
 parameter_list|)
+throws|throws
+name|AccessDeniedException
 block|{
 if|if
 condition|(
@@ -5458,7 +5460,7 @@ decl_stmt|;
 specifier|private
 name|ReadPolicy
 parameter_list|()
-block|{}
+block|{         }
 annotation|@
 name|Override
 specifier|public

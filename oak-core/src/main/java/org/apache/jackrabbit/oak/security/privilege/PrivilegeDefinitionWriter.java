@@ -65,16 +65,6 @@ name|javax
 operator|.
 name|jcr
 operator|.
-name|AccessDeniedException
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|jcr
-operator|.
 name|RepositoryException
 import|;
 end_import
@@ -536,6 +526,8 @@ parameter_list|,
 name|PrivilegeDefinition
 name|definition
 parameter_list|)
+throws|throws
+name|RepositoryException
 block|{
 name|String
 name|name

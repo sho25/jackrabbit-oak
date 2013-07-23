@@ -545,6 +545,8 @@ specifier|public
 name|void
 name|testGetRestrictionPattern
 parameter_list|()
+throws|throws
+name|Exception
 block|{
 name|Map
 argument_list|<

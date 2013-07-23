@@ -18,18 +18,6 @@ package|;
 end_package
 
 begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|fail
-import|;
-end_import
-
-begin_import
 import|import
 name|java
 operator|.
@@ -149,6 +137,18 @@ name|Test
 import|;
 end_import
 
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|fail
+import|;
+end_import
+
 begin_comment
 comment|/**  * UniquePropertyTest...  */
 end_comment
@@ -165,7 +165,7 @@ name|void
 name|testUniqueness
 parameter_list|()
 throws|throws
-name|CommitFailedException
+name|Exception
 block|{
 name|Root
 name|root
