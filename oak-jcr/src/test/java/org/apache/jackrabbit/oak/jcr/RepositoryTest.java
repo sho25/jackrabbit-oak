@@ -305,18 +305,6 @@ name|jcr
 operator|.
 name|nodetype
 operator|.
-name|ConstraintViolationException
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|jcr
-operator|.
-name|nodetype
-operator|.
 name|NodeDefinition
 import|;
 end_import
@@ -11172,8 +11160,6 @@ name|logout
 argument_list|()
 expr_stmt|;
 block|}
-try|try
-block|{
 name|testNode
 operator|.
 name|removeMixin
@@ -11181,18 +11167,6 @@ argument_list|(
 literal|"mix:test"
 argument_list|)
 expr_stmt|;
-name|fail
-argument_list|(
-literal|"Expected ConstraintViolationException"
-argument_list|)
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|ConstraintViolationException
-name|expected
-parameter_list|)
-block|{         }
 block|}
 annotation|@
 name|Test
