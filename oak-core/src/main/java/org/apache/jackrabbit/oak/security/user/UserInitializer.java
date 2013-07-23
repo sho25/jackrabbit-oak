@@ -20,6 +20,22 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkNotNull
+import|;
+end_import
+
+begin_import
 import|import
 name|javax
 operator|.
@@ -475,22 +491,6 @@ name|LoggerFactory
 import|;
 end_import
 
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|Preconditions
-operator|.
-name|checkNotNull
-import|;
-end_import
-
 begin_comment
 comment|/**  * Creates initial set of users to be present in a given workspace. This  * implementation uses the {@code UserManager} such as defined by the  * user configuration.  *<p/>  * Currently the following users are created:  *<p/>  *<ul>  *<li>An administrator user using {@link UserConstants#PARAM_ADMIN_ID}  * or {@link UserConstants#DEFAULT_ADMIN_ID} if the config option is missing.</li>  *<li>An administrator user using {@link UserConstants#PARAM_ANONYMOUS_ID}  * or {@link UserConstants#DEFAULT_ANONYMOUS_ID} if the config option is  * missing.</li>  *</ul>  *<p/>  * In addition this initializer sets up index definitions for the following  * user related properties:  *<p/>  *<ul>  *<li>{@link UserConstants#REP_AUTHORIZABLE_ID}</li>  *<li>{@link UserConstants#REP_PRINCIPAL_NAME}</li>  *<li>{@link UserConstants#REP_MEMBERS}</li>  *</ul>  */
 end_comment
@@ -590,6 +590,10 @@ argument_list|(
 name|EmptyHook
 operator|.
 name|INSTANCE
+argument_list|,
+name|PostCommitHook
+operator|.
+name|EMPTY
 argument_list|)
 expr_stmt|;
 block|}

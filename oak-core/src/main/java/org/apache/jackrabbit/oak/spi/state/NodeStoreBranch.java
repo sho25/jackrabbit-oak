@@ -63,6 +63,24 @@ name|CommitHook
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|commit
+operator|.
+name|PostCommitHook
+import|;
+end_import
+
 begin_comment
 comment|/**  * An instance of this class represents a private branch of the tree in a  * {@link NodeStore} to which transient changes can be applied and later merged  * back or discarded.  */
 end_comment
@@ -116,7 +134,7 @@ name|String
 name|target
 parameter_list|)
 function_decl|;
-comment|/**      * Merges the changes in this branch to the main content tree.      *      * @param hook the commit hook to apply while merging changes      * @return the node state resulting from the merge.      * @throws CommitFailedException if the merge failed      * @throws IllegalStateException if the branch is already merged      */
+comment|/**      * Merges the changes in this branch to the main content tree.      * Merging is done by rebasing the changes in this branch on top of      * the current head revision followed by a fast forward merge.      *      * @param hook the commit hook to apply while merging changes      * @param committed the post commit hook to call after a successful merge      * @return the node state resulting from the merge.      * @throws CommitFailedException if the merge failed      * @throws IllegalStateException if the branch is already merged      */
 annotation|@
 name|Nonnull
 name|NodeState
@@ -126,6 +144,9 @@ annotation|@
 name|Nonnull
 name|CommitHook
 name|hook
+parameter_list|,
+name|PostCommitHook
+name|committed
 parameter_list|)
 throws|throws
 name|CommitFailedException

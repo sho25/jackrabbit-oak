@@ -258,6 +258,7 @@ comment|/**  * TODO document  */
 end_comment
 
 begin_class
+specifier|public
 class|class
 name|JsopDiff
 implements|implements

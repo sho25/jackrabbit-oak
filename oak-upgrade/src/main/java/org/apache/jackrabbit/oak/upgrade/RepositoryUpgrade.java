@@ -799,6 +799,24 @@ name|oak
 operator|.
 name|spi
 operator|.
+name|commit
+operator|.
+name|PostCommitHook
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
 name|state
 operator|.
 name|NodeBuilder
@@ -1194,6 +1212,10 @@ operator|new
 name|RegistrationEditorProvider
 argument_list|()
 argument_list|)
+argument_list|,
+name|PostCommitHook
+operator|.
+name|EMPTY
 argument_list|)
 expr_stmt|;
 comment|// TODO: default hooks?
