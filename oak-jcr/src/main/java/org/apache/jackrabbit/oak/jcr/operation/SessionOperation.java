@@ -15,7 +15,7 @@ name|oak
 operator|.
 name|jcr
 operator|.
-name|delegate
+name|operation
 package|;
 end_package
 
@@ -91,14 +91,14 @@ return|return
 literal|false
 return|;
 block|}
-specifier|protected
+specifier|public
 name|void
 name|checkPreconditions
 parameter_list|()
 throws|throws
 name|RepositoryException
-block|{}
-specifier|protected
+block|{     }
+specifier|public
 specifier|abstract
 name|T
 name|perform
