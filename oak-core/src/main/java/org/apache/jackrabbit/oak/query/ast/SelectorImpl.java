@@ -377,6 +377,24 @@ name|oak
 operator|.
 name|query
 operator|.
+name|fulltext
+operator|.
+name|SimpleExcerptProvider
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|query
+operator|.
 name|index
 operator|.
 name|FilterImpl
@@ -1719,14 +1737,29 @@ name|REP_EXCERPT
 argument_list|)
 condition|)
 block|{
-return|return
-name|currentRow
+comment|// The excerpt itself is calculated at runtime (this is weird,
+comment|// but Jackrabbit 2.x supports that, see OAK-318).
+comment|// We store the search token (the full-text condition text)
+comment|// in this column (which is also weird), as this is needed for highlighting
+name|String
+name|searchToken
+init|=
+name|SimpleExcerptProvider
 operator|.
-name|getValue
+name|extractFulltext
 argument_list|(
-name|QueryImpl
+name|query
 operator|.
-name|REP_EXCERPT
+name|getConstraint
+argument_list|()
+argument_list|)
+decl_stmt|;
+return|return
+name|PropertyValues
+operator|.
+name|newString
+argument_list|(
+name|searchToken
 argument_list|)
 return|;
 block|}

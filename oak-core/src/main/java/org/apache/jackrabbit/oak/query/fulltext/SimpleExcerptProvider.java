@@ -115,7 +115,7 @@ name|oak
 operator|.
 name|query
 operator|.
-name|QueryImpl
+name|Query
 import|;
 end_import
 
@@ -237,8 +237,11 @@ parameter_list|,
 name|String
 name|columnName
 parameter_list|,
-name|QueryImpl
+name|Query
 name|query
+parameter_list|,
+name|String
+name|searchToken
 parameter_list|,
 name|boolean
 name|highlight
@@ -458,21 +461,13 @@ expr_stmt|;
 block|}
 block|}
 block|}
-name|String
-name|searchToken
-init|=
-name|extractFulltext
-argument_list|(
-name|query
-operator|.
-name|getConstraint
-argument_list|()
-argument_list|)
-decl_stmt|;
 if|if
 condition|(
 name|highlight
-operator|&&
+condition|)
+block|{
+if|if
+condition|(
 name|searchToken
 operator|!=
 literal|null
@@ -486,6 +481,7 @@ argument_list|,
 name|searchToken
 argument_list|)
 return|;
+block|}
 block|}
 return|return
 name|noHighlight
@@ -541,7 +537,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-specifier|private
+specifier|public
 specifier|static
 name|String
 name|extractFulltext
@@ -550,6 +546,8 @@ name|ConstraintImpl
 name|c
 parameter_list|)
 block|{
+comment|// TODO instanceof should not be used,
+comment|// as it will break without us noticing if we extend the AST
 if|if
 condition|(
 name|c

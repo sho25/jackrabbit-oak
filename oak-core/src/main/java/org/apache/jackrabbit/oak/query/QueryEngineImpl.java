@@ -485,7 +485,7 @@ parameter_list|)
 throws|throws
 name|ParseException
 block|{
-name|AbstractQuery
+name|Query
 name|q
 init|=
 name|parseQuery
@@ -503,7 +503,7 @@ argument_list|()
 return|;
 block|}
 specifier|private
-name|AbstractQuery
+name|Query
 name|parseQuery
 parameter_list|(
 name|String
@@ -813,7 +813,7 @@ name|offset
 argument_list|)
 throw|;
 block|}
-name|AbstractQuery
+name|Query
 name|q
 init|=
 name|parseQuery

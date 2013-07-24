@@ -950,6 +950,23 @@ return|return
 name|propertyType
 return|;
 block|}
+annotation|@
+name|Override
+specifier|public
+name|PropertyValueImpl
+name|createCopy
+parameter_list|()
+block|{
+return|return
+operator|new
+name|PropertyValueImpl
+argument_list|(
+name|selectorName
+argument_list|,
+name|propertyName
+argument_list|)
+return|;
+block|}
 block|}
 end_class
 

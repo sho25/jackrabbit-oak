@@ -133,7 +133,7 @@ name|query
 operator|.
 name|ast
 operator|.
-name|SelectorImpl
+name|OrderingImpl
 import|;
 end_import
 
@@ -156,13 +156,13 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A "select" or "union" query.  */
+comment|/**  * A "select" or "union" query.  *<p>  * Lifecycle: use the constructor to create a new object. Call init() to  * initialize the bind variable map. If the query is re-executed, a new instance  * is created.  */
 end_comment
 
 begin_interface
 specifier|public
 interface|interface
-name|AbstractQuery
+name|Query
 block|{
 name|void
 name|setRootTree
@@ -236,12 +236,24 @@ index|[]
 name|getColumns
 parameter_list|()
 function_decl|;
-name|List
-argument_list|<
-name|SelectorImpl
-argument_list|>
-name|getSelectors
+name|int
+name|getColumnIndex
+parameter_list|(
+name|String
+name|columnName
+parameter_list|)
+function_decl|;
+name|String
+index|[]
+name|getSelectorNames
 parameter_list|()
+function_decl|;
+name|int
+name|getSelectorIndex
+parameter_list|(
+name|String
+name|selectorName
+parameter_list|)
 function_decl|;
 name|Iterator
 argument_list|<
@@ -253,6 +265,44 @@ function_decl|;
 name|long
 name|getSize
 parameter_list|()
+function_decl|;
+name|void
+name|setExplain
+parameter_list|(
+name|boolean
+name|explain
+parameter_list|)
+function_decl|;
+name|void
+name|setMeasure
+parameter_list|(
+name|boolean
+name|measure
+parameter_list|)
+function_decl|;
+name|void
+name|init
+parameter_list|()
+function_decl|;
+name|void
+name|setOrderings
+parameter_list|(
+name|OrderingImpl
+index|[]
+name|orderings
+parameter_list|)
+function_decl|;
+comment|/**      * Get the query plan. The query must already be prepared.      *       * @return the query plan      */
+name|String
+name|getPlan
+parameter_list|()
+function_decl|;
+name|Tree
+name|getTree
+parameter_list|(
+name|String
+name|path
+parameter_list|)
 function_decl|;
 block|}
 end_interface

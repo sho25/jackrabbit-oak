@@ -234,6 +234,12 @@ name|hashCode
 argument_list|()
 return|;
 block|}
+specifier|public
+specifier|abstract
+name|DynamicOperandImpl
+name|createCopy
+parameter_list|()
+function_decl|;
 block|}
 end_class
 

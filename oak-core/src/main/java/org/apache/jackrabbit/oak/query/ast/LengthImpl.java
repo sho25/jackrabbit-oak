@@ -427,6 +427,24 @@ operator|.
 name|LONG
 return|;
 block|}
+annotation|@
+name|Override
+specifier|public
+name|DynamicOperandImpl
+name|createCopy
+parameter_list|()
+block|{
+return|return
+operator|new
+name|LengthImpl
+argument_list|(
+name|propertyValue
+operator|.
+name|createCopy
+argument_list|()
+argument_list|)
+return|;
+block|}
 block|}
 end_class
 

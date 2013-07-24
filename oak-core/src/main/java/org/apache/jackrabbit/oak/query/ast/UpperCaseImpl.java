@@ -365,6 +365,24 @@ operator|.
 name|STRING
 return|;
 block|}
+annotation|@
+name|Override
+specifier|public
+name|DynamicOperandImpl
+name|createCopy
+parameter_list|()
+block|{
+return|return
+operator|new
+name|UpperCaseImpl
+argument_list|(
+name|operand
+operator|.
+name|createCopy
+argument_list|()
+argument_list|)
+return|;
+block|}
 block|}
 end_class
 

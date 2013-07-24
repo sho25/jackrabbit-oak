@@ -391,6 +391,21 @@ operator|.
 name|STRING
 return|;
 block|}
+annotation|@
+name|Override
+specifier|public
+name|DynamicOperandImpl
+name|createCopy
+parameter_list|()
+block|{
+return|return
+operator|new
+name|NodeLocalNameImpl
+argument_list|(
+name|selectorName
+argument_list|)
+return|;
+block|}
 block|}
 end_class
 
