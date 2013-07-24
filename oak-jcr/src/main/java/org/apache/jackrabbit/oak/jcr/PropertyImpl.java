@@ -299,7 +299,7 @@ name|jcr
 operator|.
 name|operation
 operator|.
-name|ItemOperation
+name|PropertyOperation
 import|;
 end_import
 
@@ -408,7 +408,7 @@ return|return
 name|perform
 argument_list|(
 operator|new
-name|ItemOperation
+name|PropertyOperation
 argument_list|<
 name|Node
 argument_list|>
@@ -428,7 +428,7 @@ block|{
 name|NodeDelegate
 name|parent
 init|=
-name|dlg
+name|property
 operator|.
 name|getParent
 argument_list|()
@@ -453,10 +453,7 @@ name|sessionContext
 operator|.
 name|createNodeOrNull
 argument_list|(
-name|dlg
-operator|.
-name|getParent
-argument_list|()
+name|parent
 argument_list|)
 return|;
 block|}
@@ -476,7 +473,7 @@ return|return
 name|safePerform
 argument_list|(
 operator|new
-name|ItemOperation
+name|PropertyOperation
 argument_list|<
 name|Boolean
 argument_list|>
@@ -492,7 +489,7 @@ name|perform
 parameter_list|()
 block|{
 return|return
-name|dlg
+name|property
 operator|.
 name|getStatus
 argument_list|()
@@ -517,7 +514,7 @@ return|return
 name|safePerform
 argument_list|(
 operator|new
-name|ItemOperation
+name|PropertyOperation
 argument_list|<
 name|Boolean
 argument_list|>
@@ -533,7 +530,7 @@ name|perform
 parameter_list|()
 block|{
 return|return
-name|dlg
+name|property
 operator|.
 name|getStatus
 argument_list|()
@@ -1089,7 +1086,7 @@ return|return
 name|perform
 argument_list|(
 operator|new
-name|ItemOperation
+name|PropertyOperation
 argument_list|<
 name|Value
 argument_list|>
@@ -1111,7 +1108,7 @@ name|ValueFactoryImpl
 operator|.
 name|createValue
 argument_list|(
-name|dlg
+name|property
 operator|.
 name|getSingleState
 argument_list|()
@@ -1140,7 +1137,7 @@ return|return
 name|perform
 argument_list|(
 operator|new
-name|ItemOperation
+name|PropertyOperation
 argument_list|<
 name|List
 argument_list|<
@@ -1168,7 +1165,7 @@ name|ValueFactoryImpl
 operator|.
 name|createValues
 argument_list|(
-name|dlg
+name|property
 operator|.
 name|getMultiState
 argument_list|()
@@ -1352,7 +1349,7 @@ return|return
 name|perform
 argument_list|(
 operator|new
-name|ItemOperation
+name|PropertyOperation
 argument_list|<
 name|Node
 argument_list|>
@@ -1369,6 +1366,7 @@ parameter_list|()
 throws|throws
 name|RepositoryException
 block|{
+comment|// TODO: avoid nested calls
 name|Value
 name|value
 init|=
@@ -1672,7 +1670,7 @@ return|return
 name|perform
 argument_list|(
 operator|new
-name|ItemOperation
+name|PropertyOperation
 argument_list|<
 name|Property
 argument_list|>
@@ -1689,6 +1687,7 @@ parameter_list|()
 throws|throws
 name|RepositoryException
 block|{
+comment|// TODO: avoid nested calls
 name|Value
 name|value
 init|=
@@ -1868,7 +1867,7 @@ return|return
 name|perform
 argument_list|(
 operator|new
-name|ItemOperation
+name|PropertyOperation
 argument_list|<
 name|PropertyDefinition
 argument_list|>
@@ -1891,7 +1890,7 @@ argument_list|()
 operator|.
 name|getDefinition
 argument_list|(
-name|dlg
+name|property
 operator|.
 name|getParent
 argument_list|()
@@ -1899,7 +1898,7 @@ operator|.
 name|getTree
 argument_list|()
 argument_list|,
-name|dlg
+name|property
 operator|.
 name|getPropertyState
 argument_list|()
@@ -1925,7 +1924,7 @@ return|return
 name|perform
 argument_list|(
 operator|new
-name|ItemOperation
+name|PropertyOperation
 argument_list|<
 name|Integer
 argument_list|>
@@ -1943,7 +1942,7 @@ throws|throws
 name|RepositoryException
 block|{
 return|return
-name|dlg
+name|property
 operator|.
 name|getPropertyState
 argument_list|()
@@ -1972,7 +1971,7 @@ return|return
 name|perform
 argument_list|(
 operator|new
-name|ItemOperation
+name|PropertyOperation
 argument_list|<
 name|Boolean
 argument_list|>
@@ -1990,7 +1989,7 @@ throws|throws
 name|RepositoryException
 block|{
 return|return
-name|dlg
+name|property
 operator|.
 name|getPropertyState
 argument_list|()
