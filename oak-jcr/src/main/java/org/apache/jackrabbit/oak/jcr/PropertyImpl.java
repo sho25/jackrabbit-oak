@@ -575,9 +575,6 @@ parameter_list|)
 throws|throws
 name|RepositoryException
 block|{
-name|checkAlive
-argument_list|()
-expr_stmt|;
 name|visitor
 operator|.
 name|visit

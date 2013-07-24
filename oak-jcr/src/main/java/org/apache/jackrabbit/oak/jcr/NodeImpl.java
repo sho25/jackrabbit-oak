@@ -1216,7 +1216,6 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * @see Item#accept(javax.jcr.ItemVisitor)      */
 annotation|@
 name|Override
 specifier|public
@@ -1229,9 +1228,6 @@ parameter_list|)
 throws|throws
 name|RepositoryException
 block|{
-name|checkAlive
-argument_list|()
-expr_stmt|;
 name|visitor
 operator|.
 name|visit
@@ -4762,9 +4758,7 @@ parameter_list|)
 throws|throws
 name|RepositoryException
 block|{
-name|checkAlive
-argument_list|()
-expr_stmt|;
+comment|// TODO: use perform()
 name|checkValidWorkspace
 argument_list|(
 name|workspaceName
@@ -4790,9 +4784,7 @@ parameter_list|)
 throws|throws
 name|RepositoryException
 block|{
-name|checkAlive
-argument_list|()
-expr_stmt|;
+comment|// TODO: use perform()
 name|checkValidWorkspace
 argument_list|(
 name|srcWorkspace
