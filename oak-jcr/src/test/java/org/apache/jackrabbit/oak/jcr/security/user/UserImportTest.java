@@ -849,7 +849,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/**      * @since OAK 1.0 : constraintviolation is no longer detected during import      * but only upon save.      */
+comment|/**      * @since OAK 1.0 : constraintviolation is no longer detected during import      *        but only upon save.      */
 annotation|@
 name|Ignore
 argument_list|(
@@ -925,7 +925,11 @@ argument_list|(
 literal|"g"
 argument_list|)
 decl_stmt|;
-comment|//assertNull(newGroup); TODO: adjust test to oak requirements
+name|assertNotNull
+argument_list|(
+name|newGroup
+argument_list|)
+expr_stmt|;
 name|assertTrue
 argument_list|(
 name|target
@@ -936,7 +940,16 @@ literal|"g"
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|//assertFalse(target.hasProperty("g/rep:principalName"));  TODO: adjust test to oak requirements
+name|assertTrue
+argument_list|(
+name|target
+operator|.
+name|hasProperty
+argument_list|(
+literal|"g/rep:principalName"
+argument_list|)
+argument_list|)
+expr_stmt|;
 comment|// saving changes of the import -> must fail
 try|try
 block|{
@@ -1669,7 +1682,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * @since OAK 1.0 : password property is not longer mandatory -> multivalued      * property will just be ignored (instead of throwing ConstraintViolationException      * upon save).      */
+comment|/**      * @since OAK 1.0 : password property is not longer mandatory -> multivalued      *        property will just be ignored (instead of throwing ConstraintViolationException      *        upon save).      */
 annotation|@
 name|Test
 specifier|public
@@ -4144,7 +4157,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/**      * Same as {@link #testImportUserWithIdDifferentFromNodeName} but with      * different order of properties.      * @since OAK 1.0 : Importing rep:authorizableId      */
+comment|/**      * Same as {@link #testImportUserWithIdDifferentFromNodeName} but with      * different order of properties.      *      * @since OAK 1.0 : Importing rep:authorizableId      */
 annotation|@
 name|Test
 specifier|public
