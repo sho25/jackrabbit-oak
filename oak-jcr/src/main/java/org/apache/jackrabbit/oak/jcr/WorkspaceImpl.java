@@ -1239,20 +1239,6 @@ block|{
 name|ensureIsAlive
 argument_list|()
 expr_stmt|;
-name|Root
-name|writeRoot
-init|=
-name|sessionContext
-operator|.
-name|getSessionDelegate
-argument_list|()
-operator|.
-name|getContentSession
-argument_list|()
-operator|.
-name|getLatestRoot
-argument_list|()
-decl_stmt|;
 return|return
 operator|new
 name|ImportHandler
@@ -1260,8 +1246,6 @@ argument_list|(
 name|parentAbsPath
 argument_list|,
 name|sessionContext
-argument_list|,
-name|writeRoot
 argument_list|,
 name|uuidBehavior
 argument_list|,
@@ -1415,7 +1399,7 @@ parameter_list|(
 name|IOException
 name|ignore
 parameter_list|)
-block|{}
+block|{                 }
 block|}
 block|}
 block|}

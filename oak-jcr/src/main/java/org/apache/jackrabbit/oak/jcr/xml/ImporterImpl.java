@@ -783,6 +783,27 @@ name|absPath
 argument_list|)
 throw|;
 block|}
+if|if
+condition|(
+name|isWorkspaceImport
+operator|&&
+name|sessionContext
+operator|.
+name|getSessionDelegate
+argument_list|()
+operator|.
+name|hasPendingChanges
+argument_list|()
+condition|)
+block|{
+throw|throw
+operator|new
+name|RepositoryException
+argument_list|(
+literal|"Pending changes on session. Cannot run workspace import."
+argument_list|)
+throw|;
+block|}
 name|importTargetTree
 operator|=
 name|root
@@ -985,7 +1006,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-specifier|protected
+specifier|private
 name|Tree
 name|createTree
 parameter_list|(
@@ -1137,7 +1158,7 @@ return|return
 name|child
 return|;
 block|}
-specifier|protected
+specifier|private
 name|void
 name|createProperty
 parameter_list|(
@@ -1275,7 +1296,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-specifier|protected
+specifier|private
 name|Tree
 name|resolveUUIDConflict
 parameter_list|(

@@ -18,24 +18,6 @@ package|;
 end_package
 
 begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|commons
-operator|.
-name|PathUtils
-operator|.
-name|getParentPath
-import|;
-end_import
-
-begin_import
 import|import
 name|java
 operator|.
@@ -617,6 +599,24 @@ name|SAXException
 import|;
 end_import
 
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|commons
+operator|.
+name|PathUtils
+operator|.
+name|getParentPath
+import|;
+end_import
+
 begin_comment
 comment|/**  * TODO document  */
 end_comment
@@ -970,7 +970,7 @@ literal|null
 return|;
 block|}
 block|}
-comment|/**      * Returns the node at the specified absolute path in the workspace or      * {@code null} if no such node exists.      *      * @param absPath An absolute path.      * @return the specified {@code Node} or {@code null}.      * @throws RepositoryException   If another error occurs.      */
+comment|/**      * Returns the node at the specified absolute path in the workspace or      * {@code null} if no such node exists.      *      * @param absPath An absolute path.      * @return the specified {@code Node} or {@code null}.      * @throws RepositoryException If another error occurs.      */
 annotation|@
 name|CheckForNull
 specifier|public
@@ -1024,7 +1024,7 @@ block|}
 argument_list|)
 return|;
 block|}
-comment|/**      * Returns the property at the specified absolute path in the workspace or      * {@code null} if no such node exists.      *      * @param absPath An absolute path.      * @return the specified {@code Property} or {@code null}.      * @throws RepositoryException   if another error occurs.      */
+comment|/**      * Returns the property at the specified absolute path in the workspace or      * {@code null} if no such node exists.      *      * @param absPath An absolute path.      * @return the specified {@code Property} or {@code null}.      * @throws RepositoryException if another error occurs.      */
 annotation|@
 name|CheckForNull
 specifier|public
@@ -1121,7 +1121,7 @@ argument_list|)
 return|;
 block|}
 block|}
-comment|/**      * Returns the node at the specified absolute path in the workspace. If no      * such node exists, then it returns the property at the specified path.      * If no such property exists, then it return {@code null}.      *      * @param absPath An absolute path.      * @return the specified {@code Item} or {@code null}.      * @throws RepositoryException   if another error occurs.      */
+comment|/**      * Returns the node at the specified absolute path in the workspace. If no      * such node exists, then it returns the property at the specified path.      * If no such property exists, then it return {@code null}.      *      * @param absPath An absolute path.      * @return the specified {@code Item} or {@code null}.      * @throws RepositoryException if another error occurs.      */
 annotation|@
 name|CheckForNull
 specifier|public
@@ -2137,11 +2137,6 @@ name|parentAbsPath
 argument_list|,
 name|sessionContext
 argument_list|,
-name|sd
-operator|.
-name|getRoot
-argument_list|()
-argument_list|,
 name|uuidBehavior
 argument_list|,
 literal|false
@@ -2271,11 +2266,11 @@ parameter_list|(
 name|IOException
 name|ignore
 parameter_list|)
-block|{}
+block|{                 }
 block|}
 block|}
 block|}
-comment|/**      * Exports content at the given path using the given exporter.      *      * @param path of the node to be exported      * @param exporter document or system view exporter      * @throws SAXException if the SAX event handler failed      * @throws RepositoryException if another error occurs      */
+comment|/**      * Exports content at the given path using the given exporter.      *      * @param path     of the node to be exported      * @param exporter document or system view exporter      * @throws SAXException        if the SAX event handler failed      * @throws RepositoryException if another error occurs      */
 specifier|private
 specifier|synchronized
 name|void
