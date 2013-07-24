@@ -27,9 +27,7 @@ name|javax
 operator|.
 name|jcr
 operator|.
-name|security
-operator|.
-name|AccessControlException
+name|Node
 import|;
 end_import
 
@@ -39,7 +37,9 @@ name|javax
 operator|.
 name|jcr
 operator|.
-name|Node
+name|security
+operator|.
+name|AccessControlException
 import|;
 end_import
 
@@ -85,6 +85,11 @@ name|addMixin
 argument_list|(
 literal|"rep:RepoAccessControllable"
 argument_list|)
+expr_stmt|;
+name|superuser
+operator|.
+name|save
+argument_list|()
 expr_stmt|;
 name|doImport
 argument_list|(
