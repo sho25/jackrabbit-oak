@@ -3446,6 +3446,8 @@ argument_list|)
 return|;
 block|}
 comment|/**      * Remove this node. This operation never succeeds for the root node.      *      * @return {@code true} if the node was removed; {@code false} otherwise.      */
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|remove

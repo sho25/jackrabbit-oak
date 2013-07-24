@@ -685,9 +685,22 @@ operator|.
 name|checkAlive
 argument_list|()
 expr_stmt|;
-name|checkProtected
+if|if
+condition|(
+name|dlg
+operator|.
+name|isProtected
 argument_list|()
-expr_stmt|;
+condition|)
+block|{
+throw|throw
+operator|new
+name|ConstraintViolationException
+argument_list|(
+literal|"Item is protected."
+argument_list|)
+throw|;
+block|}
 block|}
 block|}
 comment|/**      * Perform the passed {@link org.apache.jackrabbit.oak.jcr.ItemImpl.ItemReadOperation}.      * @param op  operation to perform      * @param<U>  return type of the operation      * @return  the result of {@code op.perform()}      * @throws RepositoryException as thrown by {@code op.perform()}.      */
@@ -1439,29 +1452,6 @@ literal|']'
 return|;
 block|}
 comment|//-----------------------------------------------------------< internal>---
-name|void
-name|checkProtected
-parameter_list|()
-throws|throws
-name|RepositoryException
-block|{
-if|if
-condition|(
-name|dlg
-operator|.
-name|isProtected
-argument_list|()
-condition|)
-block|{
-throw|throw
-operator|new
-name|ConstraintViolationException
-argument_list|(
-literal|"Item is protected."
-argument_list|)
-throw|;
-block|}
-block|}
 name|void
 name|checkProtected
 parameter_list|(

@@ -239,6 +239,15 @@ name|boolean
 name|exists
 parameter_list|()
 function_decl|;
+comment|/**      * Removes this item.      *      * @return {@code true} if this item was removed;      *         or {@code false} if this is the root node that can't be removed      */
+specifier|public
+specifier|abstract
+name|boolean
+name|remove
+parameter_list|()
+throws|throws
+name|InvalidItemStateException
+function_decl|;
 block|}
 end_class
 
