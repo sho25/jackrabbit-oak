@@ -810,6 +810,19 @@ name|uuidBehavior
 operator|=
 name|uuidBehavior
 expr_stmt|;
+name|userID
+operator|=
+name|sessionContext
+operator|.
+name|getSessionDelegate
+argument_list|()
+operator|.
+name|getAuthInfo
+argument_list|()
+operator|.
+name|getUserID
+argument_list|()
+expr_stmt|;
 name|importTargetTree
 operator|=
 name|root
@@ -836,6 +849,7 @@ name|absPath
 argument_list|)
 throw|;
 block|}
+comment|// TODO: review usage of write-root and object obtained from session-context (OAK-931)
 name|VersionManager
 name|vMgr
 init|=
@@ -893,19 +907,6 @@ argument_list|(
 name|NODE_TYPES_PATH
 argument_list|)
 expr_stmt|;
-name|userID
-operator|=
-name|sessionContext
-operator|.
-name|getSessionDelegate
-argument_list|()
-operator|.
-name|getAuthInfo
-argument_list|()
-operator|.
-name|getUserID
-argument_list|()
-expr_stmt|;
 name|accessManager
 operator|=
 name|sessionContext
@@ -935,6 +936,7 @@ operator|.
 name|getDefinitionProvider
 argument_list|()
 expr_stmt|;
+comment|// TODO: end
 name|refTracker
 operator|=
 operator|new
