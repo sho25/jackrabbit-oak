@@ -80,7 +80,7 @@ end_comment
 begin_class
 specifier|public
 class|class
-name|PropertyWriteTest
+name|WritePropertyTest
 extends|extends
 name|AbstractEvaluationTest
 block|{
