@@ -20,42 +20,6 @@ package|;
 end_package
 
 begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|Preconditions
-operator|.
-name|checkNotNull
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|plugins
-operator|.
-name|memory
-operator|.
-name|EmptyNodeState
-operator|.
-name|MISSING_NODE
-import|;
-end_import
-
-begin_import
 import|import
 name|javax
 operator|.
@@ -218,6 +182,42 @@ operator|.
 name|state
 operator|.
 name|NodeState
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkNotNull
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|memory
+operator|.
+name|EmptyNodeState
+operator|.
+name|MISSING_NODE
 import|;
 end_import
 
@@ -753,7 +753,7 @@ name|before
 argument_list|)
 condition|)
 block|{
-name|throwProtected
+name|throwCheckedIn
 argument_list|(
 literal|"Cannot delete property on checked in node"
 argument_list|)
