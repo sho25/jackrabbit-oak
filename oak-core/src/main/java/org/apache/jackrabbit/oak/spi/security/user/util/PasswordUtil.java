@@ -209,7 +209,7 @@ begin_class
 specifier|public
 specifier|final
 class|class
-name|PasswordUtility
+name|PasswordUtil
 block|{
 specifier|private
 specifier|static
@@ -221,7 +221,7 @@ name|LoggerFactory
 operator|.
 name|getLogger
 argument_list|(
-name|PasswordUtility
+name|PasswordUtil
 operator|.
 name|class
 argument_list|)
@@ -285,7 +285,7 @@ literal|1000
 decl_stmt|;
 comment|/**      * Avoid instantiation      */
 specifier|private
-name|PasswordUtility
+name|PasswordUtil
 parameter_list|()
 block|{}
 comment|/**      * Generates a hash of the specified password with the default values      * for algorithm, salt-size and number of iterations.      *      * @param password The password to be hashed.      * @return The password hash.      * @throws NoSuchAlgorithmException If {@link #DEFAULT_ALGORITHM} is not supported.      * @throws UnsupportedEncodingException If utf-8 is not supported.      */

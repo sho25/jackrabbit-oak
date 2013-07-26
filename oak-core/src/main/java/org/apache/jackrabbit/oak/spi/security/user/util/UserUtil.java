@@ -165,12 +165,12 @@ begin_class
 specifier|public
 specifier|final
 class|class
-name|UserUtility
+name|UserUtil
 implements|implements
 name|UserConstants
 block|{
 specifier|private
-name|UserUtility
+name|UserUtil
 parameter_list|()
 block|{     }
 annotation|@

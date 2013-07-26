@@ -515,7 +515,7 @@ name|user
 operator|.
 name|util
 operator|.
-name|UserUtility
+name|UserUtil
 import|;
 end_import
 
@@ -705,7 +705,7 @@ name|userMgr
 operator|.
 name|getAuthorizable
 argument_list|(
-name|UserUtility
+name|UserUtil
 operator|.
 name|getAdminId
 argument_list|(
@@ -720,7 +720,7 @@ name|userMgr
 operator|.
 name|getAuthorizable
 argument_list|(
-name|UserUtility
+name|UserUtil
 operator|.
 name|getAnonymousId
 argument_list|(
@@ -746,7 +746,7 @@ name|userMgr
 operator|.
 name|getAuthorizable
 argument_list|(
-name|UserUtility
+name|UserUtil
 operator|.
 name|getAdminId
 argument_list|(
@@ -831,7 +831,7 @@ name|userMgr
 operator|.
 name|getAuthorizable
 argument_list|(
-name|UserUtility
+name|UserUtil
 operator|.
 name|getAnonymousId
 argument_list|(
@@ -916,7 +916,7 @@ name|userMgr
 operator|.
 name|getAuthorizable
 argument_list|(
-name|UserUtility
+name|UserUtil
 operator|.
 name|getAdminId
 argument_list|(
@@ -946,7 +946,7 @@ name|userMgr
 operator|.
 name|getAuthorizable
 argument_list|(
-name|UserUtility
+name|UserUtil
 operator|.
 name|getAnonymousId
 argument_list|(

@@ -193,7 +193,7 @@ name|user
 operator|.
 name|util
 operator|.
-name|PasswordUtility
+name|PasswordUtil
 import|;
 end_import
 
@@ -427,7 +427,7 @@ operator|&&
 operator|(
 name|forceMatch
 operator|||
-name|PasswordUtility
+name|PasswordUtil
 operator|.
 name|isPlainTextPassword
 argument_list|(

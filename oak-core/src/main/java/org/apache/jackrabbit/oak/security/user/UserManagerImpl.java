@@ -527,7 +527,7 @@ name|user
 operator|.
 name|util
 operator|.
-name|PasswordUtility
+name|PasswordUtil
 import|;
 end_import
 
@@ -549,7 +549,7 @@ name|user
 operator|.
 name|util
 operator|.
-name|UserUtility
+name|UserUtil
 import|;
 end_import
 
@@ -1671,7 +1671,7 @@ return|;
 block|}
 if|if
 condition|(
-name|UserUtility
+name|UserUtil
 operator|.
 name|isType
 argument_list|(
@@ -1703,7 +1703,7 @@ block|}
 elseif|else
 if|if
 condition|(
-name|UserUtility
+name|UserUtil
 operator|.
 name|isType
 argument_list|(
@@ -1956,7 +1956,7 @@ if|if
 condition|(
 name|forceHash
 operator|||
-name|PasswordUtility
+name|PasswordUtil
 operator|.
 name|isPlainTextPassword
 argument_list|(
@@ -1968,7 +1968,7 @@ try|try
 block|{
 name|pwHash
 operator|=
-name|PasswordUtility
+name|PasswordUtil
 operator|.
 name|buildPasswordHash
 argument_list|(

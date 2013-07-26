@@ -531,7 +531,7 @@ name|user
 operator|.
 name|util
 operator|.
-name|PasswordUtility
+name|PasswordUtil
 import|;
 end_import
 
@@ -1227,7 +1227,7 @@ decl_stmt|;
 name|String
 name|keyHash
 init|=
-name|PasswordUtility
+name|PasswordUtil
 operator|.
 name|buildPasswordHash
 argument_list|(
@@ -2591,7 +2591,7 @@ operator|==
 literal|null
 operator|||
 operator|!
-name|PasswordUtility
+name|PasswordUtil
 operator|.
 name|isSame
 argument_list|(

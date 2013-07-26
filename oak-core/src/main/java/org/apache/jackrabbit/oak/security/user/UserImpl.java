@@ -185,7 +185,7 @@ name|user
 operator|.
 name|util
 operator|.
-name|PasswordUtility
+name|PasswordUtil
 import|;
 end_import
 
@@ -207,7 +207,7 @@ name|user
 operator|.
 name|util
 operator|.
-name|UserUtility
+name|UserUtil
 import|;
 end_import
 
@@ -287,7 +287,7 @@ argument_list|)
 expr_stmt|;
 name|isAdmin
 operator|=
-name|UserUtility
+name|UserUtil
 operator|.
 name|getAdminId
 argument_list|(
@@ -322,7 +322,7 @@ operator|==
 literal|null
 operator|||
 operator|!
-name|UserUtility
+name|UserUtil
 operator|.
 name|isType
 argument_list|(
@@ -548,7 +548,7 @@ decl_stmt|;
 if|if
 condition|(
 operator|!
-name|PasswordUtility
+name|PasswordUtil
 operator|.
 name|isSame
 argument_list|(

@@ -227,7 +227,7 @@ name|user
 operator|.
 name|util
 operator|.
-name|PasswordUtility
+name|PasswordUtil
 import|;
 end_import
 
@@ -249,7 +249,7 @@ name|user
 operator|.
 name|util
 operator|.
-name|UserUtility
+name|UserUtil
 import|;
 end_import
 
@@ -381,7 +381,7 @@ name|provider
 expr_stmt|;
 name|authorizableType
 operator|=
-name|UserUtility
+name|UserUtil
 operator|.
 name|getType
 argument_list|(
@@ -648,7 +648,7 @@ argument_list|(
 name|name
 argument_list|)
 operator|&&
-name|PasswordUtility
+name|PasswordUtil
 operator|.
 name|isPlainTextPassword
 argument_list|(
@@ -797,7 +797,7 @@ decl_stmt|;
 name|AuthorizableType
 name|type
 init|=
-name|UserUtility
+name|UserUtil
 operator|.
 name|getType
 argument_list|(
@@ -807,7 +807,7 @@ decl_stmt|;
 name|String
 name|authRoot
 init|=
-name|UserUtility
+name|UserUtil
 operator|.
 name|getAuthorizableRootPath
 argument_list|(
@@ -1005,7 +1005,7 @@ name|userTree
 argument_list|)
 decl_stmt|;
 return|return
-name|UserUtility
+name|UserUtil
 operator|.
 name|getAdminId
 argument_list|(

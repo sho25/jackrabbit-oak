@@ -285,7 +285,7 @@ name|user
 operator|.
 name|util
 operator|.
-name|UserUtility
+name|UserUtil
 import|;
 end_import
 
@@ -462,7 +462,7 @@ decl_stmt|;
 name|String
 name|anonymousID
 init|=
-name|UserUtility
+name|UserUtil
 operator|.
 name|getAnonymousId
 argument_list|(
@@ -505,7 +505,7 @@ block|{
 name|String
 name|anonymousID
 init|=
-name|UserUtility
+name|UserUtil
 operator|.
 name|getAnonymousId
 argument_list|(
@@ -1015,7 +1015,7 @@ decl_stmt|;
 name|String
 name|adminId
 init|=
-name|UserUtility
+name|UserUtil
 operator|.
 name|getAdminId
 argument_list|(

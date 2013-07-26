@@ -555,7 +555,7 @@ name|user
 operator|.
 name|util
 operator|.
-name|UserUtility
+name|UserUtil
 import|;
 end_import
 
@@ -862,7 +862,7 @@ block|{
 name|String
 name|adminId
 init|=
-name|UserUtility
+name|UserUtil
 operator|.
 name|getAdminId
 argument_list|(

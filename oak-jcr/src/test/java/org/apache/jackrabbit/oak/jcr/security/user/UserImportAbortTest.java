@@ -75,6 +75,20 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|collect
+operator|.
+name|ImmutableList
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -132,6 +146,31 @@ name|UserImportAbortTest
 extends|extends
 name|AbstractImportTest
 block|{
+annotation|@
+name|Override
+specifier|protected
+name|List
+argument_list|<
+name|String
+argument_list|>
+name|getPathsToRemove
+parameter_list|()
+block|{
+return|return
+name|ImmutableList
+operator|.
+name|of
+argument_list|(
+name|GROUPPATH
+operator|+
+literal|"/gFolder"
+argument_list|,
+name|USERPATH
+operator|+
+literal|"/t"
+argument_list|)
+return|;
+block|}
 annotation|@
 name|Override
 specifier|protected
@@ -326,16 +365,6 @@ parameter_list|)
 block|{
 comment|// success.
 block|}
-finally|finally
-block|{
-name|adminSession
-operator|.
-name|refresh
-argument_list|(
-literal|false
-argument_list|)
-expr_stmt|;
-block|}
 block|}
 annotation|@
 name|Test
@@ -396,7 +425,9 @@ literal|"<sv:property sv:name=\"jcr:uuid\" sv:type=\"String\"><sv:value>e358efa4
 operator|+
 literal|"<sv:property sv:name=\"rep:password\" sv:type=\"String\"><sv:value>{sha1}8efd86fb78a56a5145ed7739dcb00c78581c5375</sv:value></sv:property>"
 operator|+
-literal|"<sv:property sv:name=\"rep:principalName\" sv:type=\"String\"><sv:value>t</sv:value></sv:property><sv:property sv:name=\"rep:impersonators\" sv:type=\"String\"><sv:value>"
+literal|"<sv:property sv:name=\"rep:principalName\" sv:type=\"String\"><sv:value>t</sv:value></sv:property>"
+operator|+
+literal|"<sv:property sv:name=\"rep:impersonators\" sv:type=\"String\"><sv:value>"
 operator|+
 name|principalName
 operator|+

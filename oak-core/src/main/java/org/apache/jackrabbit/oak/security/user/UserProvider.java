@@ -361,7 +361,7 @@ name|user
 operator|.
 name|util
 operator|.
-name|UserUtility
+name|UserUtil
 import|;
 end_import
 
@@ -847,7 +847,7 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|UserUtility
+name|UserUtil
 operator|.
 name|isType
 argument_list|(

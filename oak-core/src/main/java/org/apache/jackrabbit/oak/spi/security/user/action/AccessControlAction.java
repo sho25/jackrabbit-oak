@@ -327,7 +327,7 @@ name|user
 operator|.
 name|util
 operator|.
-name|UserUtility
+name|UserUtil
 import|;
 end_import
 
@@ -960,7 +960,7 @@ name|getID
 argument_list|()
 decl_stmt|;
 return|return
-name|UserUtility
+name|UserUtil
 operator|.
 name|getAdminId
 argument_list|(
@@ -972,7 +972,7 @@ argument_list|(
 name|userId
 argument_list|)
 operator|||
-name|UserUtility
+name|UserUtil
 operator|.
 name|getAnonymousId
 argument_list|(

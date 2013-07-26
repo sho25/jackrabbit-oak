@@ -46,7 +46,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * User management related constants.  */
+comment|/**  * User management related constants. Please note that all names and paths  * are OAK names/paths and therefore are not suited to be used in JCR context  * with remapped namespaces.  */
 end_comment
 
 begin_interface

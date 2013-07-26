@@ -27,28 +27,6 @@ begin_import
 import|import
 name|org
 operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|spi
-operator|.
-name|security
-operator|.
-name|user
-operator|.
-name|util
-operator|.
-name|PasswordUtility
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
 name|junit
 operator|.
 name|Test
@@ -156,7 +134,7 @@ end_import
 begin_class
 specifier|public
 class|class
-name|PasswordUtilityTest
+name|PasswordUtilTest
 block|{
 specifier|private
 specifier|static
@@ -276,7 +254,7 @@ name|put
 argument_list|(
 name|pw
 argument_list|,
-name|PasswordUtility
+name|PasswordUtil
 operator|.
 name|buildPasswordHash
 argument_list|(
@@ -315,7 +293,7 @@ block|{
 name|String
 name|pwHash
 init|=
-name|PasswordUtility
+name|PasswordUtil
 operator|.
 name|buildPasswordHash
 argument_list|(
@@ -456,13 +434,13 @@ decl_stmt|;
 name|String
 name|pwHash
 init|=
-name|PasswordUtility
+name|PasswordUtil
 operator|.
 name|buildPasswordHash
 argument_list|(
 name|pw
 argument_list|,
-name|PasswordUtility
+name|PasswordUtil
 operator|.
 name|DEFAULT_ALGORITHM
 argument_list|,
@@ -540,7 +518,7 @@ block|{
 name|String
 name|pwHash
 init|=
-name|PasswordUtility
+name|PasswordUtil
 operator|.
 name|buildPasswordHash
 argument_list|(
@@ -548,11 +526,11 @@ literal|"pw"
 argument_list|,
 name|invalid
 argument_list|,
-name|PasswordUtility
+name|PasswordUtil
 operator|.
 name|DEFAULT_SALT_SIZE
 argument_list|,
-name|PasswordUtility
+name|PasswordUtil
 operator|.
 name|DEFAULT_ITERATIONS
 argument_list|)
@@ -598,7 +576,7 @@ name|pw
 operator|+
 literal|" should be plain text."
 argument_list|,
-name|PasswordUtility
+name|PasswordUtil
 operator|.
 name|isPlainTextPassword
 argument_list|(
@@ -619,7 +597,7 @@ name|Exception
 block|{
 name|assertTrue
 argument_list|(
-name|PasswordUtility
+name|PasswordUtil
 operator|.
 name|isPlainTextPassword
 argument_list|(
@@ -654,7 +632,7 @@ name|pwHash
 operator|+
 literal|" should not be plain text."
 argument_list|,
-name|PasswordUtility
+name|PasswordUtil
 operator|.
 name|isPlainTextPassword
 argument_list|(
@@ -704,7 +682,7 @@ literal|", "
 operator|+
 name|pwHash
 argument_list|,
-name|PasswordUtility
+name|PasswordUtil
 operator|.
 name|isSame
 argument_list|(
@@ -723,7 +701,7 @@ decl_stmt|;
 name|String
 name|pwHash
 init|=
-name|PasswordUtility
+name|PasswordUtil
 operator|.
 name|buildPasswordHash
 argument_list|(
@@ -746,7 +724,7 @@ literal|"', "
 operator|+
 name|pwHash
 argument_list|,
-name|PasswordUtility
+name|PasswordUtil
 operator|.
 name|isSame
 argument_list|(
@@ -758,7 +736,7 @@ argument_list|)
 expr_stmt|;
 name|pwHash
 operator|=
-name|PasswordUtility
+name|PasswordUtil
 operator|.
 name|buildPasswordHash
 argument_list|(
@@ -781,7 +759,7 @@ literal|"', "
 operator|+
 name|pwHash
 argument_list|,
-name|PasswordUtility
+name|PasswordUtil
 operator|.
 name|isSame
 argument_list|(
@@ -793,7 +771,7 @@ argument_list|)
 expr_stmt|;
 name|pwHash
 operator|=
-name|PasswordUtility
+name|PasswordUtil
 operator|.
 name|buildPasswordHash
 argument_list|(
@@ -818,7 +796,7 @@ literal|"', "
 operator|+
 name|pwHash
 argument_list|,
-name|PasswordUtility
+name|PasswordUtil
 operator|.
 name|isSame
 argument_list|(
@@ -868,7 +846,7 @@ name|assertFalse
 argument_list|(
 name|pw
 argument_list|,
-name|PasswordUtility
+name|PasswordUtil
 operator|.
 name|isSame
 argument_list|(
@@ -882,7 +860,7 @@ name|assertFalse
 argument_list|(
 name|pwHash
 argument_list|,
-name|PasswordUtility
+name|PasswordUtil
 operator|.
 name|isSame
 argument_list|(
@@ -903,7 +881,7 @@ name|assertFalse
 argument_list|(
 name|previous
 argument_list|,
-name|PasswordUtility
+name|PasswordUtil
 operator|.
 name|isSame
 argument_list|(
@@ -938,7 +916,7 @@ comment|// test vector from http://tools.ietf.org/html/rfc6070
 name|String
 name|hash
 init|=
-name|PasswordUtility
+name|PasswordUtil
 operator|.
 name|generateHash
 argument_list|(
@@ -946,7 +924,7 @@ literal|"pass\0word"
 argument_list|,
 name|algo
 argument_list|,
-name|PasswordUtility
+name|PasswordUtil
 operator|.
 name|convertBytesToHex
 argument_list|(

@@ -197,7 +197,7 @@ name|user
 operator|.
 name|util
 operator|.
-name|UserUtility
+name|UserUtil
 import|;
 end_import
 
@@ -379,7 +379,7 @@ decl_stmt|;
 name|AuthorizableType
 name|type
 init|=
-name|UserUtility
+name|UserUtil
 operator|.
 name|getType
 argument_list|(
@@ -413,7 +413,7 @@ argument_list|()
 expr_stmt|;
 name|type
 operator|=
-name|UserUtility
+name|UserUtil
 operator|.
 name|getType
 argument_list|(

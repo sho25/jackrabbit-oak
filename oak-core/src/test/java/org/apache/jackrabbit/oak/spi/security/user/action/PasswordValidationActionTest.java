@@ -293,7 +293,7 @@ name|user
 operator|.
 name|util
 operator|.
-name|PasswordUtility
+name|PasswordUtil
 import|;
 end_import
 
@@ -770,7 +770,7 @@ block|{
 name|String
 name|hashed
 init|=
-name|PasswordUtility
+name|PasswordUtil
 operator|.
 name|buildPasswordHash
 argument_list|(
@@ -825,7 +825,7 @@ argument_list|)
 decl_stmt|;
 name|assertFalse
 argument_list|(
-name|PasswordUtility
+name|PasswordUtil
 operator|.
 name|isPlainTextPassword
 argument_list|(
@@ -835,7 +835,7 @@ argument_list|)
 expr_stmt|;
 name|assertTrue
 argument_list|(
-name|PasswordUtility
+name|PasswordUtil
 operator|.
 name|isSame
 argument_list|(
@@ -886,7 +886,7 @@ expr_stmt|;
 name|String
 name|hashed
 init|=
-name|PasswordUtility
+name|PasswordUtil
 operator|.
 name|buildPasswordHash
 argument_list|(

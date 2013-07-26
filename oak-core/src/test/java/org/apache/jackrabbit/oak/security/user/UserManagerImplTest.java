@@ -319,7 +319,7 @@ name|user
 operator|.
 name|util
 operator|.
-name|PasswordUtility
+name|PasswordUtil
 import|;
 end_import
 
@@ -585,7 +585,7 @@ argument_list|)
 expr_stmt|;
 name|assertTrue
 argument_list|(
-name|PasswordUtility
+name|PasswordUtil
 operator|.
 name|isSame
 argument_list|(
@@ -652,7 +652,7 @@ condition|)
 block|{
 name|assertTrue
 argument_list|(
-name|PasswordUtility
+name|PasswordUtil
 operator|.
 name|isSame
 argument_list|(
@@ -667,7 +667,7 @@ else|else
 block|{
 name|assertFalse
 argument_list|(
-name|PasswordUtility
+name|PasswordUtil
 operator|.
 name|isSame
 argument_list|(

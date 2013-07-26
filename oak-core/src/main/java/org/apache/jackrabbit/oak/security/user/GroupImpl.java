@@ -245,7 +245,7 @@ name|user
 operator|.
 name|util
 operator|.
-name|UserUtility
+name|UserUtil
 import|;
 end_import
 
@@ -340,7 +340,7 @@ operator|==
 literal|null
 operator|||
 operator|!
-name|UserUtility
+name|UserUtil
 operator|.
 name|isType
 argument_list|(

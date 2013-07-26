@@ -155,7 +155,7 @@ name|user
 operator|.
 name|util
 operator|.
-name|UserUtility
+name|UserUtil
 import|;
 end_import
 
@@ -216,7 +216,7 @@ condition|)
 block|{
 name|path
 operator|=
-name|UserUtility
+name|UserUtil
 operator|.
 name|getAuthorizableRootPath
 argument_list|(
@@ -240,7 +240,7 @@ condition|)
 block|{
 name|path
 operator|=
-name|UserUtility
+name|UserUtil
 operator|.
 name|getAuthorizableRootPath
 argument_list|(
@@ -256,7 +256,7 @@ else|else
 block|{
 name|path
 operator|=
-name|UserUtility
+name|UserUtil
 operator|.
 name|getAuthorizableRootPath
 argument_list|(

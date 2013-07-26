@@ -347,7 +347,7 @@ name|user
 operator|.
 name|util
 operator|.
-name|UserUtility
+name|UserUtil
 import|;
 end_import
 
@@ -923,7 +923,7 @@ name|getParameters
 argument_list|()
 decl_stmt|;
 return|return
-name|UserUtility
+name|UserUtil
 operator|.
 name|getAnonymousId
 argument_list|(

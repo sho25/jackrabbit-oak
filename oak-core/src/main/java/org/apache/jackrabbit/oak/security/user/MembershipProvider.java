@@ -297,7 +297,7 @@ name|user
 operator|.
 name|util
 operator|.
-name|UserUtility
+name|UserUtil
 import|;
 end_import
 
@@ -1316,7 +1316,7 @@ parameter_list|)
 block|{
 if|if
 condition|(
-name|UserUtility
+name|UserUtil
 operator|.
 name|isType
 argument_list|(
@@ -1615,7 +1615,7 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|UserUtility
+name|UserUtil
 operator|.
 name|isType
 argument_list|(
@@ -1787,7 +1787,7 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|UserUtility
+name|UserUtil
 operator|.
 name|isType
 argument_list|(

@@ -243,7 +243,7 @@ name|user
 operator|.
 name|util
 operator|.
-name|PasswordUtility
+name|PasswordUtil
 import|;
 end_import
 
@@ -466,7 +466,7 @@ condition|)
 block|{
 name|success
 operator|=
-name|PasswordUtility
+name|PasswordUtil
 operator|.
 name|isSame
 argument_list|(
