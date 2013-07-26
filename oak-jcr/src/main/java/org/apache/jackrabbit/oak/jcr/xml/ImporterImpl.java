@@ -467,6 +467,24 @@ name|spi
 operator|.
 name|xml
 operator|.
+name|Importer
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|xml
+operator|.
 name|NodeInfo
 import|;
 end_import
@@ -713,7 +731,7 @@ specifier|private
 name|ProtectedNodeImporter
 name|pnImporter
 decl_stmt|;
-comment|/**      * Creates a new {@code SessionImporter} instance.      */
+comment|/**      * Creates a new importer instance.      * @param absPath  The absolute JCR paths such as passed to the JCR call.      * @param sessionContext The context of the editing session      * @param root The write {@code Root}, which in case of a workspace import      * is different from the {@code Root} associated with the editing session.      * @param uuidBehavior The uuid behavior      * @param isWorkspaceImport {@code true} if this is a workspace import,      * {@code false} otherwise.      * @throws javax.jcr.RepositoryException If the initial validation of the      * path or the state of target node/session fails.      */
 specifier|public
 name|ImporterImpl
 parameter_list|(

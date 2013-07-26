@@ -207,6 +207,24 @@ name|spi
 operator|.
 name|xml
 operator|.
+name|Importer
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|xml
+operator|.
 name|NodeInfo
 import|;
 end_import
@@ -351,7 +369,7 @@ specifier|private
 name|BufferedStringValue
 name|textHandler
 decl_stmt|;
-comment|/**      * Constructs a new {@code DocViewImportHandler}.      *      * @param importer     the importer      * @param valueFactory a value factory      */
+comment|/**      * Constructs a new {@code DocViewImportHandler}.      *      * @param importer     the importer      * @param valueFactory a value factory      * @param helper The namespace helper      */
 name|DocViewImportHandler
 parameter_list|(
 name|Importer

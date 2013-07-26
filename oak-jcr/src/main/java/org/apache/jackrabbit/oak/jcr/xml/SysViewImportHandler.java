@@ -155,6 +155,24 @@ name|spi
 operator|.
 name|xml
 operator|.
+name|Importer
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|xml
+operator|.
 name|NodeInfo
 import|;
 end_import
@@ -290,7 +308,7 @@ specifier|private
 name|BufferedStringValue
 name|currentPropValue
 decl_stmt|;
-comment|/**      * Constructs a new {@code SysViewImportHandler}.      *      * @param importer     the underlying importer      * @param valueFactory the value factory      */
+comment|/**      * Constructs a new {@code SysViewImportHandler}.      *      * @param importer     the underlying importer      * @param valueFactory the value factory      * @param helper the namespace helper      */
 name|SysViewImportHandler
 parameter_list|(
 name|Importer

@@ -193,6 +193,24 @@ begin_import
 import|import
 name|org
 operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|xml
+operator|.
+name|Importer
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|xml
 operator|.
 name|sax
@@ -387,7 +405,7 @@ name|createCurrentPrefixMap
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * Initializes the underlying {@link Importer} instance. This method      * is called by the XML parser when the XML document starts.      *      * @throws SAXException if the importer can not be initialized      * @see DefaultHandler#startDocument()      */
+comment|/**      * Initializes the underlying {@link org.apache.jackrabbit.oak.spi.xml.Importer} instance. This method      * is called by the XML parser when the XML document starts.      *      * @throws SAXException if the importer can not be initialized      * @see DefaultHandler#startDocument()      */
 annotation|@
 name|Override
 specifier|public
@@ -420,7 +438,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**      * Closes the underlying {@link Importer} instance. This method      * is called by the XML parser when the XML document ends.      *      * @throws SAXException if the importer can not be closed      * @see DefaultHandler#endDocument()      */
+comment|/**      * Closes the underlying {@link org.apache.jackrabbit.oak.spi.xml.Importer} instance. This method      * is called by the XML parser when the XML document ends.      *      * @throws SAXException if the importer can not be closed      * @see DefaultHandler#endDocument()      */
 annotation|@
 name|Override
 specifier|public

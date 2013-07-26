@@ -364,7 +364,7 @@ specifier|private
 name|boolean
 name|base64
 decl_stmt|;
-comment|/**      * Constructs a new empty {@code BufferedStringValue}.      */
+comment|/**      * Constructs a new empty {@code BufferedStringValue}.      *      * @param valueFactory The value factory      * @param namePathMapper the name/path mapper      */
 specifier|protected
 name|BufferedStringValue
 parameter_list|(
