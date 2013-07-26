@@ -262,31 +262,31 @@ name|REP_WRITE
 init|=
 literal|"rep:write"
 decl_stmt|;
-comment|/**      * Internal (oak) name of the rep:readNodes privilege      */
+comment|/**      * Internal (oak) name of the rep:readNodes privilege      *      * @since OAK 1.0      */
 name|String
 name|REP_READ_NODES
 init|=
 literal|"rep:readNodes"
 decl_stmt|;
-comment|/**      * Internal (oak) name of the rep:readProperties privilege      */
+comment|/**      * Internal (oak) name of the rep:readProperties privilege      *      * @since OAK 1.0      */
 name|String
 name|REP_READ_PROPERTIES
 init|=
 literal|"rep:readProperties"
 decl_stmt|;
-comment|/**      * Internal (oak) name of the rep:addProperties privilege      */
+comment|/**      * Internal (oak) name of the rep:addProperties privilege      *      * @since OAK 1.0      */
 name|String
 name|REP_ADD_PROPERTIES
 init|=
 literal|"rep:addProperties"
 decl_stmt|;
-comment|/**      * Internal (oak) name of the rep:alterProperties privilege      */
+comment|/**      * Internal (oak) name of the rep:alterProperties privilege      *      * @since OAK 1.0      */
 name|String
 name|REP_ALTER_PROPERTIES
 init|=
 literal|"rep:alterProperties"
 decl_stmt|;
-comment|/**      * Internal (oak) name of the rep:removeProperties privilege      */
+comment|/**      * Internal (oak) name of the rep:removeProperties privilege      *      * @since OAK 1.0      */
 name|String
 name|REP_REMOVE_PROPERTIES
 init|=
