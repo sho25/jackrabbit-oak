@@ -43,16 +43,6 @@ end_import
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|UUID
-import|;
-end_import
-
-begin_import
-import|import
 name|javax
 operator|.
 name|security
@@ -60,20 +50,6 @@ operator|.
 name|auth
 operator|.
 name|Subject
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|collect
-operator|.
-name|ImmutableList
 import|;
 end_import
 
@@ -110,24 +86,6 @@ operator|.
 name|user
 operator|.
 name|Authorizable
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|api
-operator|.
-name|security
-operator|.
-name|user
-operator|.
-name|Group
 import|;
 end_import
 
@@ -215,6 +173,30 @@ name|Test
 import|;
 end_import
 
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertFalse
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|fail
+import|;
+end_import
+
 begin_comment
 comment|/**  * Testing {@link ImportBehavior#IGNORE} for user/group import  */
 end_comment
@@ -242,119 +224,13 @@ block|}
 annotation|@
 name|Override
 specifier|protected
-name|List
-argument_list|<
 name|String
-argument_list|>
-name|getPathsToRemove
+name|getTargetPath
 parameter_list|()
 block|{
 return|return
-name|ImmutableList
-operator|.
-name|of
-argument_list|(
-name|GROUPPATH
-operator|+
-literal|"/gFolder"
-argument_list|,
 name|USERPATH
-operator|+
-literal|"/t"
-argument_list|)
 return|;
-block|}
-annotation|@
-name|Test
-specifier|public
-name|void
-name|testImportSelfAsGroupIgnore
-parameter_list|()
-throws|throws
-name|Exception
-block|{
-name|String
-name|invalidId
-init|=
-literal|"0120a4f9-196a-3f9e-b9f5-23f31f914da7"
-decl_stmt|;
-comment|// uuid of the group itself
-name|String
-name|xml
-init|=
-literal|"<?xml version=\"1.0\" encoding=\"UTF-8\"?>"
-operator|+
-literal|"<sv:node sv:name=\"gFolder\" xmlns:mix=\"http://www.jcp.org/jcr/mix/1.0\" xmlns:nt=\"http://www.jcp.org/jcr/nt/1.0\" xmlns:fn_old=\"http://www.w3.org/2004/10/xpath-functions\" xmlns:fn=\"http://www.w3.org/2005/xpath-functions\" xmlns:xs=\"http://www.w3.org/2001/XMLSchema\" xmlns:sv=\"http://www.jcp.org/jcr/sv/1.0\" xmlns:rep=\"internal\" xmlns:jcr=\"http://www.jcp.org/jcr/1.0\">"
-operator|+
-literal|"<sv:property sv:name=\"jcr:primaryType\" sv:type=\"Name\"><sv:value>rep:AuthorizableFolder</sv:value></sv:property>"
-operator|+
-literal|"<sv:node sv:name=\"g1\"><sv:property sv:name=\"jcr:primaryType\" sv:type=\"Name\"><sv:value>rep:Group</sv:value></sv:property>"
-operator|+
-literal|"<sv:property sv:name=\"jcr:uuid\" sv:type=\"String\"><sv:value>"
-operator|+
-name|invalidId
-operator|+
-literal|"</sv:value></sv:property>"
-operator|+
-literal|"<sv:property sv:name=\"rep:principalName\" sv:type=\"String\"><sv:value>g1</sv:value></sv:property>"
-operator|+
-literal|"<sv:property sv:name=\"rep:members\" sv:type=\"WeakReference\"><sv:value>"
-operator|+
-name|invalidId
-operator|+
-literal|"</sv:value></sv:property>"
-operator|+
-literal|"</sv:node>"
-operator|+
-literal|"</sv:node>"
-decl_stmt|;
-name|doImport
-argument_list|(
-name|GROUPPATH
-argument_list|,
-name|xml
-argument_list|)
-expr_stmt|;
-comment|// no exception during import -> member must have been ignored though.
-name|Authorizable
-name|a
-init|=
-name|userMgr
-operator|.
-name|getAuthorizable
-argument_list|(
-literal|"g1"
-argument_list|)
-decl_stmt|;
-if|if
-condition|(
-name|a
-operator|.
-name|isGroup
-argument_list|()
-condition|)
-block|{
-name|assertNotDeclaredMember
-argument_list|(
-operator|(
-name|Group
-operator|)
-name|a
-argument_list|,
-name|invalidId
-argument_list|,
-name|adminSession
-argument_list|)
-expr_stmt|;
-block|}
-else|else
-block|{
-name|fail
-argument_list|(
-literal|"'g1' was not imported as Group."
-argument_list|)
-expr_stmt|;
-block|}
 block|}
 annotation|@
 name|Test
@@ -456,7 +332,8 @@ try|try
 block|{
 name|doImport
 argument_list|(
-name|USERPATH
+name|getTargetPath
+argument_list|()
 argument_list|,
 name|xml
 argument_list|)
@@ -566,147 +443,6 @@ block|{
 name|fail
 argument_list|(
 literal|"Importing 't' didn't create a User."
-argument_list|)
-expr_stmt|;
-block|}
-block|}
-finally|finally
-block|{
-name|adminSession
-operator|.
-name|refresh
-argument_list|(
-literal|false
-argument_list|)
-expr_stmt|;
-block|}
-block|}
-block|}
-annotation|@
-name|Test
-specifier|public
-name|void
-name|testImportNonExistingMemberIgnore
-parameter_list|()
-throws|throws
-name|Exception
-block|{
-name|List
-argument_list|<
-name|String
-argument_list|>
-name|invalid
-init|=
-operator|new
-name|ArrayList
-argument_list|<
-name|String
-argument_list|>
-argument_list|()
-decl_stmt|;
-name|invalid
-operator|.
-name|add
-argument_list|(
-name|UUID
-operator|.
-name|randomUUID
-argument_list|()
-operator|.
-name|toString
-argument_list|()
-argument_list|)
-expr_stmt|;
-comment|// random uuid
-name|invalid
-operator|.
-name|add
-argument_list|(
-name|getExistingUUID
-argument_list|()
-argument_list|)
-expr_stmt|;
-comment|// uuid of non-authorizable node
-for|for
-control|(
-name|String
-name|id
-range|:
-name|invalid
-control|)
-block|{
-name|String
-name|xml
-init|=
-literal|"<?xml version=\"1.0\" encoding=\"UTF-8\"?>"
-operator|+
-literal|"<sv:node sv:name=\"gFolder\" xmlns:mix=\"http://www.jcp.org/jcr/mix/1.0\" xmlns:nt=\"http://www.jcp.org/jcr/nt/1.0\" xmlns:fn_old=\"http://www.w3.org/2004/10/xpath-functions\" xmlns:fn=\"http://www.w3.org/2005/xpath-functions\" xmlns:xs=\"http://www.w3.org/2001/XMLSchema\" xmlns:sv=\"http://www.jcp.org/jcr/sv/1.0\" xmlns:rep=\"internal\" xmlns:jcr=\"http://www.jcp.org/jcr/1.0\">"
-operator|+
-literal|"<sv:property sv:name=\"jcr:primaryType\" sv:type=\"Name\"><sv:value>rep:AuthorizableFolder</sv:value></sv:property>"
-operator|+
-literal|"<sv:node sv:name=\"g1\"><sv:property sv:name=\"jcr:primaryType\" sv:type=\"Name\"><sv:value>rep:Group</sv:value></sv:property>"
-operator|+
-literal|"<sv:property sv:name=\"jcr:uuid\" sv:type=\"String\"><sv:value>0120a4f9-196a-3f9e-b9f5-23f31f914da7</sv:value></sv:property>"
-operator|+
-literal|"<sv:property sv:name=\"rep:principalName\" sv:type=\"String\"><sv:value>g1</sv:value></sv:property>"
-operator|+
-literal|"<sv:property sv:name=\"rep:members\" sv:type=\"WeakReference\"><sv:value>"
-operator|+
-name|id
-operator|+
-literal|"</sv:value></sv:property>"
-operator|+
-literal|"</sv:node>"
-operator|+
-literal|"</sv:node>"
-decl_stmt|;
-try|try
-block|{
-comment|// there should be no exception during import,
-comment|// but invalid members must be ignored.
-name|doImport
-argument_list|(
-name|GROUPPATH
-argument_list|,
-name|xml
-argument_list|)
-expr_stmt|;
-name|Authorizable
-name|a
-init|=
-name|userMgr
-operator|.
-name|getAuthorizable
-argument_list|(
-literal|"g1"
-argument_list|)
-decl_stmt|;
-if|if
-condition|(
-name|a
-operator|.
-name|isGroup
-argument_list|()
-condition|)
-block|{
-name|assertNotDeclaredMember
-argument_list|(
-operator|(
-name|Group
-operator|)
-name|a
-argument_list|,
-name|id
-argument_list|,
-name|adminSession
-argument_list|)
-expr_stmt|;
-block|}
-else|else
-block|{
-name|fail
-argument_list|(
-literal|"'g1' was not imported as Group."
 argument_list|)
 expr_stmt|;
 block|}

@@ -43,6 +43,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|UUID
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|jcr
@@ -92,13 +102,13 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Testing {@link ImportBehavior#ABORT} for user import  */
+comment|/**  * Testing {@link org.apache.jackrabbit.oak.spi.xml.ImportBehavior#ABORT} for group import  */
 end_comment
 
 begin_class
 specifier|public
 class|class
-name|UserImportAbortTest
+name|GroupImportAbortTest
 extends|extends
 name|AbstractImportTest
 block|{
@@ -123,14 +133,14 @@ name|getTargetPath
 parameter_list|()
 block|{
 return|return
-name|USERPATH
+name|GROUPPATH
 return|;
 block|}
 annotation|@
 name|Test
 specifier|public
 name|void
-name|testImportInvalidImpersonationAbort
+name|testImportNonExistingMemberAbort
 parameter_list|()
 throws|throws
 name|Exception
@@ -152,22 +162,29 @@ name|invalid
 operator|.
 name|add
 argument_list|(
-literal|"administrators"
+name|UUID
+operator|.
+name|randomUUID
+argument_list|()
+operator|.
+name|toString
+argument_list|()
 argument_list|)
 expr_stmt|;
-comment|// a group
+comment|// random uuid
 name|invalid
 operator|.
 name|add
 argument_list|(
-literal|"t"
+name|getExistingUUID
+argument_list|()
 argument_list|)
 expr_stmt|;
-comment|// principal of the user itself.
+comment|// uuid of non-authorizable node
 for|for
 control|(
 name|String
-name|principalName
+name|id
 range|:
 name|invalid
 control|)
@@ -175,23 +192,25 @@ block|{
 name|String
 name|xml
 init|=
-literal|"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
+literal|"<?xml version=\"1.0\" encoding=\"UTF-8\"?>"
 operator|+
-literal|"<sv:node sv:name=\"t\" xmlns:mix=\"http://www.jcp.org/jcr/mix/1.0\" xmlns:nt=\"http://www.jcp.org/jcr/nt/1.0\" xmlns:fn_old=\"http://www.w3.org/2004/10/xpath-functions\" xmlns:fn=\"http://www.w3.org/2005/xpath-functions\" xmlns:xs=\"http://www.w3.org/2001/XMLSchema\" xmlns:sv=\"http://www.jcp.org/jcr/sv/1.0\" xmlns:rep=\"internal\" xmlns:jcr=\"http://www.jcp.org/jcr/1.0\">"
+literal|"<sv:node sv:name=\"gFolder\" xmlns:mix=\"http://www.jcp.org/jcr/mix/1.0\" xmlns:nt=\"http://www.jcp.org/jcr/nt/1.0\" xmlns:fn_old=\"http://www.w3.org/2004/10/xpath-functions\" xmlns:fn=\"http://www.w3.org/2005/xpath-functions\" xmlns:xs=\"http://www.w3.org/2001/XMLSchema\" xmlns:sv=\"http://www.jcp.org/jcr/sv/1.0\" xmlns:rep=\"internal\" xmlns:jcr=\"http://www.jcp.org/jcr/1.0\">"
 operator|+
-literal|"<sv:property sv:name=\"jcr:primaryType\" sv:type=\"Name\"><sv:value>rep:User</sv:value></sv:property>"
+literal|"<sv:property sv:name=\"jcr:primaryType\" sv:type=\"Name\"><sv:value>rep:AuthorizableFolder</sv:value></sv:property>"
 operator|+
-literal|"<sv:property sv:name=\"jcr:uuid\" sv:type=\"String\"><sv:value>e358efa4-89f5-3062-b10d-d7316b65649e</sv:value></sv:property>"
+literal|"<sv:node sv:name=\"g1\"><sv:property sv:name=\"jcr:primaryType\" sv:type=\"Name\"><sv:value>rep:Group</sv:value></sv:property>"
 operator|+
-literal|"<sv:property sv:name=\"rep:password\" sv:type=\"String\"><sv:value>{sha1}8efd86fb78a56a5145ed7739dcb00c78581c5375</sv:value></sv:property>"
+literal|"<sv:property sv:name=\"jcr:uuid\" sv:type=\"String\"><sv:value>0120a4f9-196a-3f9e-b9f5-23f31f914da7</sv:value></sv:property>"
 operator|+
-literal|"<sv:property sv:name=\"rep:principalName\" sv:type=\"String\"><sv:value>t</sv:value></sv:property>"
+literal|"<sv:property sv:name=\"rep:principalName\" sv:type=\"String\"><sv:value>g1</sv:value></sv:property>"
 operator|+
-literal|"<sv:property sv:name=\"rep:impersonators\" sv:type=\"String\"><sv:value>"
+literal|"<sv:property sv:name=\"rep:members\" sv:type=\"WeakReference\"><sv:value>"
 operator|+
-name|principalName
+name|id
 operator|+
 literal|"</sv:value></sv:property>"
+operator|+
+literal|"</sv:node>"
 operator|+
 literal|"</sv:node>"
 decl_stmt|;
@@ -205,9 +224,10 @@ argument_list|,
 name|xml
 argument_list|)
 expr_stmt|;
+comment|// import behavior ABORT -> should throw.
 name|fail
 argument_list|(
-literal|"UserImporter.ImportBehavior.ABORT -> importing invalid impersonators must throw."
+literal|"importing invalid members -> must throw."
 argument_list|)
 expr_stmt|;
 block|}
@@ -217,7 +237,7 @@ name|RepositoryException
 name|e
 parameter_list|)
 block|{
-comment|// success
+comment|// success as well
 block|}
 finally|finally
 block|{
@@ -235,36 +255,43 @@ annotation|@
 name|Test
 specifier|public
 name|void
-name|testImportNonExistingImpersonationAbort
+name|testImportSelfAsGroupAbort
 parameter_list|()
 throws|throws
 name|Exception
 block|{
 name|String
-name|nonExistingPrincipalName
+name|invalidId
 init|=
-literal|"anybody"
+literal|"0120a4f9-196a-3f9e-b9f5-23f31f914da7"
 decl_stmt|;
+comment|// uuid of the group itself
 name|String
 name|xml
 init|=
-literal|"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
+literal|"<?xml version=\"1.0\" encoding=\"UTF-8\"?>"
 operator|+
-literal|"<sv:node sv:name=\"t\" xmlns:mix=\"http://www.jcp.org/jcr/mix/1.0\" xmlns:nt=\"http://www.jcp.org/jcr/nt/1.0\" xmlns:fn_old=\"http://www.w3.org/2004/10/xpath-functions\" xmlns:fn=\"http://www.w3.org/2005/xpath-functions\" xmlns:xs=\"http://www.w3.org/2001/XMLSchema\" xmlns:sv=\"http://www.jcp.org/jcr/sv/1.0\" xmlns:rep=\"internal\" xmlns:jcr=\"http://www.jcp.org/jcr/1.0\">"
+literal|"<sv:node sv:name=\"gFolder\" xmlns:mix=\"http://www.jcp.org/jcr/mix/1.0\" xmlns:nt=\"http://www.jcp.org/jcr/nt/1.0\" xmlns:fn_old=\"http://www.w3.org/2004/10/xpath-functions\" xmlns:fn=\"http://www.w3.org/2005/xpath-functions\" xmlns:xs=\"http://www.w3.org/2001/XMLSchema\" xmlns:sv=\"http://www.jcp.org/jcr/sv/1.0\" xmlns:rep=\"internal\" xmlns:jcr=\"http://www.jcp.org/jcr/1.0\">"
 operator|+
-literal|"<sv:property sv:name=\"jcr:primaryType\" sv:type=\"Name\"><sv:value>rep:User</sv:value></sv:property>"
+literal|"<sv:property sv:name=\"jcr:primaryType\" sv:type=\"Name\"><sv:value>rep:AuthorizableFolder</sv:value></sv:property>"
 operator|+
-literal|"<sv:property sv:name=\"jcr:uuid\" sv:type=\"String\"><sv:value>e358efa4-89f5-3062-b10d-d7316b65649e</sv:value></sv:property>"
+literal|"<sv:node sv:name=\"g1\"><sv:property sv:name=\"jcr:primaryType\" sv:type=\"Name\"><sv:value>rep:Group</sv:value></sv:property>"
 operator|+
-literal|"<sv:property sv:name=\"rep:password\" sv:type=\"String\"><sv:value>{sha1}8efd86fb78a56a5145ed7739dcb00c78581c5375</sv:value></sv:property>"
+literal|"<sv:property sv:name=\"jcr:uuid\" sv:type=\"String\"><sv:value>"
 operator|+
-literal|"<sv:property sv:name=\"rep:principalName\" sv:type=\"String\"><sv:value>t</sv:value></sv:property>"
-operator|+
-literal|"<sv:property sv:name=\"rep:impersonators\" sv:type=\"String\"><sv:value>"
-operator|+
-name|nonExistingPrincipalName
+name|invalidId
 operator|+
 literal|"</sv:value></sv:property>"
+operator|+
+literal|"<sv:property sv:name=\"rep:principalName\" sv:type=\"String\"><sv:value>g1</sv:value></sv:property>"
+operator|+
+literal|"<sv:property sv:name=\"rep:members\" sv:type=\"WeakReference\"><sv:value>"
+operator|+
+name|invalidId
+operator|+
+literal|"</sv:value></sv:property>"
+operator|+
+literal|"</sv:node>"
 operator|+
 literal|"</sv:node>"
 decl_stmt|;
@@ -280,7 +307,7 @@ argument_list|)
 expr_stmt|;
 name|fail
 argument_list|(
-literal|"UserImporter.ImportBehavior.ABORT -> importing invalid impersonators must throw."
+literal|"Importing self as group with ImportBehavior.ABORT must fail."
 argument_list|)
 expr_stmt|;
 block|}
@@ -290,17 +317,7 @@ name|RepositoryException
 name|e
 parameter_list|)
 block|{
-comment|// success
-block|}
-finally|finally
-block|{
-name|adminSession
-operator|.
-name|refresh
-argument_list|(
-literal|false
-argument_list|)
-expr_stmt|;
+comment|// success.
 block|}
 block|}
 block|}
