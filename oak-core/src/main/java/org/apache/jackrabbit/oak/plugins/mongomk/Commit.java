@@ -246,16 +246,16 @@ decl_stmt|;
 comment|/**      * The maximum size of a document. If it is larger, it is split.      */
 comment|// TODO check which value is the best one
 comment|//private static final int MAX_DOCUMENT_SIZE = 16 * 1024;
-comment|// TODO disabled until document split is fully implemented
+comment|// TODO set to 512 KB currently, should be changed later on
 specifier|private
 specifier|static
 specifier|final
 name|int
 name|MAX_DOCUMENT_SIZE
 init|=
-name|Integer
-operator|.
-name|MAX_VALUE
+literal|512
+operator|*
+literal|1024
 decl_stmt|;
 comment|/**      * Whether to purge old revisions if a node gets too large. If false, old      * revisions are stored in a separate document. If true, old revisions are      * removed (purged).      */
 specifier|private
@@ -265,6 +265,15 @@ name|boolean
 name|PURGE_OLD_REVISIONS
 init|=
 literal|true
+decl_stmt|;
+comment|/**      * Revisions that are newer than this (in minutes) are kept in the newest      * document.      */
+specifier|private
+specifier|static
+specifier|final
+name|int
+name|SPLIT_MINUTES
+init|=
+literal|5
 decl_stmt|;
 specifier|private
 specifier|final
@@ -2466,6 +2475,35 @@ expr_stmt|;
 block|}
 else|else
 block|{
+name|long
+name|ageMillis
+init|=
+name|Revision
+operator|.
+name|getCurrentTimestamp
+argument_list|()
+operator|-
+name|propRev
+operator|.
+name|getTimestamp
+argument_list|()
+decl_stmt|;
+name|long
+name|ageMinutes
+init|=
+name|ageMillis
+operator|/
+literal|1000
+operator|/
+literal|60
+decl_stmt|;
+if|if
+condition|(
+name|ageMinutes
+operator|>
+name|SPLIT_MINUTES
+condition|)
+block|{
 name|old
 operator|.
 name|setMapEntry
@@ -2480,6 +2518,24 @@ argument_list|,
 name|v
 argument_list|)
 expr_stmt|;
+block|}
+else|else
+block|{
+name|main
+operator|.
+name|setMap
+argument_list|(
+name|key
+argument_list|,
+name|propRev
+operator|.
+name|toString
+argument_list|()
+argument_list|,
+name|v
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 block|}
 block|}

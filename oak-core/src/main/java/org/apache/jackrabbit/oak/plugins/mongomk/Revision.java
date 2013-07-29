@@ -595,6 +595,7 @@ return|return
 name|string
 return|;
 block|}
+comment|/**      * Get the timestamp in milliseconds since 1970.      *       * @return the timestamp      */
 specifier|public
 name|long
 name|getTimestamp
