@@ -710,20 +710,22 @@ specifier|final
 name|MutableTree
 name|rootTree
 decl_stmt|;
+comment|/**      * Secured builder for the root tree      */
+specifier|private
+specifier|final
+name|SecureNodeBuilder
+name|secureBuilder
+decl_stmt|;
+comment|/**      * Unsecured builder for the root tree      */
+specifier|private
+specifier|final
+name|NodeBuilder
+name|builder
+decl_stmt|;
 comment|/**      * Current branch this root operates on      */
 specifier|private
 name|NodeStoreBranch
 name|branch
-decl_stmt|;
-comment|/**      * Unsecured builder for the root tree      */
-specifier|private
-name|NodeBuilder
-name|builder
-decl_stmt|;
-comment|/**      * Secured builder for the root tree      */
-specifier|private
-name|SecureNodeBuilder
-name|secureBuilder
 decl_stmt|;
 comment|/**      * Sentinel for the next move operation to take place on the this root      */
 specifier|private
@@ -1249,17 +1251,6 @@ parameter_list|()
 block|{
 try|try
 block|{
-name|NodeState
-name|base
-init|=
-name|branch
-operator|.
-name|getBase
-argument_list|()
-decl_stmt|;
-name|NodeState
-name|newHead
-init|=
 name|branch
 operator|.
 name|merge
@@ -1269,7 +1260,7 @@ argument_list|()
 argument_list|,
 name|postHook
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 return|return
 literal|null
 return|;
