@@ -277,7 +277,7 @@ init|=
 literal|"their value"
 decl_stmt|;
 specifier|private
-name|RootImpl
+name|Root
 name|ourRoot
 decl_stmt|;
 specifier|private
@@ -391,9 +391,6 @@ argument_list|()
 expr_stmt|;
 name|ourRoot
 operator|=
-operator|(
-name|RootImpl
-operator|)
 name|session
 operator|.
 name|getLatestRoot

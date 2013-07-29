@@ -401,7 +401,7 @@ if|if
 condition|(
 name|root
 operator|instanceof
-name|RootImpl
+name|AbstractRoot
 condition|)
 block|{
 return|return
@@ -410,7 +410,7 @@ name|ImmutableTree
 argument_list|(
 operator|(
 operator|(
-name|RootImpl
+name|AbstractRoot
 operator|)
 name|root
 operator|)

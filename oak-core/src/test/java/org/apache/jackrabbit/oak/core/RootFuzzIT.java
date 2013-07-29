@@ -29,7 +29,7 @@ name|oak
 operator|.
 name|core
 operator|.
-name|RootImplFuzzIT
+name|RootFuzzIT
 operator|.
 name|Operation
 operator|.
@@ -49,7 +49,7 @@ name|oak
 operator|.
 name|core
 operator|.
-name|RootImplFuzzIT
+name|RootFuzzIT
 operator|.
 name|Operation
 operator|.
@@ -69,7 +69,7 @@ name|oak
 operator|.
 name|core
 operator|.
-name|RootImplFuzzIT
+name|RootFuzzIT
 operator|.
 name|Operation
 operator|.
@@ -89,7 +89,7 @@ name|oak
 operator|.
 name|core
 operator|.
-name|RootImplFuzzIT
+name|RootFuzzIT
 operator|.
 name|Operation
 operator|.
@@ -109,7 +109,7 @@ name|oak
 operator|.
 name|core
 operator|.
-name|RootImplFuzzIT
+name|RootFuzzIT
 operator|.
 name|Operation
 operator|.
@@ -129,7 +129,7 @@ name|oak
 operator|.
 name|core
 operator|.
-name|RootImplFuzzIT
+name|RootFuzzIT
 operator|.
 name|Operation
 operator|.
@@ -149,7 +149,7 @@ name|oak
 operator|.
 name|core
 operator|.
-name|RootImplFuzzIT
+name|RootFuzzIT
 operator|.
 name|Operation
 operator|.
@@ -249,6 +249,22 @@ name|oak
 operator|.
 name|api
 operator|.
+name|Root
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|api
+operator|.
 name|Tree
 import|;
 end_import
@@ -281,7 +297,7 @@ name|oak
 operator|.
 name|core
 operator|.
-name|RootImplFuzzIT
+name|RootFuzzIT
 operator|.
 name|Operation
 operator|.
@@ -346,13 +362,13 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Fuzz test running random sequences of operations on {@link Tree}.  * Run with -DRootImplFuzzIT-seed=42 to set a specific seed (i.e. 42);  */
+comment|/**  * Fuzz test running random sequences of operations on {@link Tree}.  * Run with -DRootFuzzIT-seed=42 to set a specific seed (i.e. 42);  */
 end_comment
 
 begin_class
 specifier|public
 class|class
-name|RootImplFuzzIT
+name|RootFuzzIT
 block|{
 specifier|static
 specifier|final
@@ -363,7 +379,7 @@ name|LoggerFactory
 operator|.
 name|getLogger
 argument_list|(
-name|RootImplFuzzIT
+name|RootFuzzIT
 operator|.
 name|class
 argument_list|)
@@ -386,7 +402,7 @@ name|Integer
 operator|.
 name|getInteger
 argument_list|(
-name|RootImplFuzzIT
+name|RootFuzzIT
 operator|.
 name|class
 operator|.
@@ -420,7 +436,7 @@ name|KernelNodeStore
 name|store1
 decl_stmt|;
 specifier|private
-name|RootImpl
+name|SystemRoot
 name|root1
 decl_stmt|;
 specifier|private
@@ -428,7 +444,7 @@ name|KernelNodeStore
 name|store2
 decl_stmt|;
 specifier|private
-name|RootImpl
+name|SystemRoot
 name|root2
 decl_stmt|;
 specifier|private
@@ -750,7 +766,7 @@ specifier|abstract
 name|void
 name|apply
 parameter_list|(
-name|RootImpl
+name|Root
 name|root
 parameter_list|)
 function_decl|;
@@ -797,7 +813,7 @@ name|Override
 name|void
 name|apply
 parameter_list|(
-name|RootImpl
+name|Root
 name|root
 parameter_list|)
 block|{
@@ -866,7 +882,7 @@ name|Override
 name|void
 name|apply
 parameter_list|(
-name|RootImpl
+name|Root
 name|root
 parameter_list|)
 block|{
@@ -971,7 +987,7 @@ name|Override
 name|void
 name|apply
 parameter_list|(
-name|RootImpl
+name|Root
 name|root
 parameter_list|)
 block|{
@@ -1054,7 +1070,7 @@ name|Override
 name|void
 name|apply
 parameter_list|(
-name|RootImpl
+name|Root
 name|root
 parameter_list|)
 block|{
@@ -1143,7 +1159,7 @@ name|Override
 name|void
 name|apply
 parameter_list|(
-name|RootImpl
+name|Root
 name|root
 parameter_list|)
 block|{
@@ -1230,7 +1246,7 @@ name|Override
 name|void
 name|apply
 parameter_list|(
-name|RootImpl
+name|Root
 name|root
 parameter_list|)
 block|{
@@ -1281,7 +1297,7 @@ name|Override
 name|void
 name|apply
 parameter_list|(
-name|RootImpl
+name|Root
 name|root
 parameter_list|)
 block|{
@@ -1310,7 +1326,7 @@ name|Override
 name|void
 name|apply
 parameter_list|(
-name|RootImpl
+name|Root
 name|root
 parameter_list|)
 block|{

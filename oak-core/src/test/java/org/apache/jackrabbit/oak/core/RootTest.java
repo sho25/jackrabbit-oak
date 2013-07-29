@@ -246,7 +246,7 @@ end_import
 begin_class
 specifier|public
 class|class
-name|RootImplTest
+name|RootTest
 extends|extends
 name|OakBaseTest
 block|{

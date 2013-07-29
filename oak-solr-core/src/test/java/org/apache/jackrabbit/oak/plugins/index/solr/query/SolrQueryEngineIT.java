@@ -264,7 +264,7 @@ block|{
 name|Root
 name|root
 init|=
-name|createRootImpl
+name|createRoot
 argument_list|()
 decl_stmt|;
 name|Tree

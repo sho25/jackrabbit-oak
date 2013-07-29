@@ -538,11 +538,9 @@ block|{
 name|checkLive
 argument_list|()
 expr_stmt|;
-name|RootImpl
-name|root
-init|=
+return|return
 operator|new
-name|RootImpl
+name|AbstractRoot
 argument_list|(
 name|store
 argument_list|,
@@ -552,6 +550,8 @@ name|changeDispatcher
 operator|.
 name|newHook
 argument_list|(
+name|ContentSessionImpl
+operator|.
 name|this
 argument_list|)
 argument_list|,
@@ -596,9 +596,6 @@ name|this
 return|;
 block|}
 block|}
-decl_stmt|;
-return|return
-name|root
 return|;
 block|}
 annotation|@
