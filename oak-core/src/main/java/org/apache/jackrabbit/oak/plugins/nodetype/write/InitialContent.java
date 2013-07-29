@@ -111,7 +111,7 @@ name|oak
 operator|.
 name|core
 operator|.
-name|RootImpl
+name|SystemRoot
 import|;
 end_import
 
@@ -670,7 +670,7 @@ operator|.
 name|register
 argument_list|(
 operator|new
-name|RootImpl
+name|SystemRoot
 argument_list|(
 name|store
 argument_list|,

@@ -487,7 +487,7 @@ expr_stmt|;
 name|root1
 operator|=
 operator|new
-name|RootImpl
+name|SystemRoot
 argument_list|(
 name|store1
 argument_list|)
@@ -533,7 +533,7 @@ expr_stmt|;
 name|root2
 operator|=
 operator|new
-name|RootImpl
+name|SystemRoot
 argument_list|(
 name|store2
 argument_list|)
