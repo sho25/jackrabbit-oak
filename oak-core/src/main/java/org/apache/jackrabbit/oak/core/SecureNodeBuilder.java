@@ -319,6 +319,22 @@ name|NodeState
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|util
+operator|.
+name|LazyValue
+import|;
+end_import
+
 begin_class
 class|class
 name|SecureNodeBuilder
@@ -346,7 +362,10 @@ decl_stmt|;
 comment|/**      * Permissions provider for evaluating access rights to the underlying raw builder      */
 specifier|private
 specifier|final
+name|LazyValue
+argument_list|<
 name|PermissionProvider
+argument_list|>
 name|permissionProvider
 decl_stmt|;
 comment|/**      * Access control context for evaluating access rights to the underlying raw builder      */
@@ -380,7 +399,10 @@ name|builder
 parameter_list|,
 annotation|@
 name|Nonnull
+name|LazyValue
+argument_list|<
 name|PermissionProvider
+argument_list|>
 name|permissionProvider
 parameter_list|,
 annotation|@
@@ -1450,6 +1472,9 @@ name|getNodeState
 argument_list|()
 argument_list|,
 name|permissionProvider
+operator|.
+name|get
+argument_list|()
 argument_list|,
 name|acContext
 argument_list|)
