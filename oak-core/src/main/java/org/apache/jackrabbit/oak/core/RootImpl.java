@@ -945,6 +945,32 @@ return|return
 name|workspaceName
 return|;
 block|}
+comment|/**      * Factory method for creating a new {@code Root} instance, which      * reflects the latest state of the repository.      * @return  new Root instance      */
+specifier|protected
+name|Root
+name|newRoot
+parameter_list|()
+block|{
+return|return
+operator|new
+name|RootImpl
+argument_list|(
+name|store
+argument_list|,
+name|hook
+argument_list|,
+name|postHook
+argument_list|,
+name|workspaceName
+argument_list|,
+name|subject
+argument_list|,
+name|securityProvider
+argument_list|,
+name|indexProvider
+argument_list|)
+return|;
+block|}
 comment|//---------------------------------------------------------------< Root>---
 annotation|@
 name|Override

@@ -331,11 +331,10 @@ name|Root
 name|getLatestRoot
 parameter_list|()
 block|{
-throw|throw
-operator|new
-name|UnsupportedOperationException
+return|return
+name|newRoot
 argument_list|()
-throw|;
+return|;
 block|}
 annotation|@
 name|Override
