@@ -250,17 +250,17 @@ name|REP_PRIVILEGE_MANAGEMENT
 init|=
 literal|"rep:privilegeManagement"
 decl_stmt|;
-comment|/**      * Internal (oak) name of the rep:userManagement privilege      *      * @since OAK 1.0      */
-name|String
-name|REP_USER_MANAGEMENT
-init|=
-literal|"rep:userManagement"
-decl_stmt|;
 comment|/**      * Internal (oak) name of the rep:write privilege      */
 name|String
 name|REP_WRITE
 init|=
 literal|"rep:write"
+decl_stmt|;
+comment|/**      * Internal (oak) name of the rep:userManagement privilege      *      * @since OAK 1.0      */
+name|String
+name|REP_USER_MANAGEMENT
+init|=
+literal|"rep:userManagement"
 decl_stmt|;
 comment|/**      * Internal (oak) name of the rep:readNodes privilege      *      * @since OAK 1.0      */
 name|String
