@@ -119,11 +119,15 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
+name|spi
+operator|.
 name|security
 operator|.
-name|privilege
+name|authorization
 operator|.
-name|PrivilegeBitsProvider
+name|permission
+operator|.
+name|ReadStatus
 import|;
 end_import
 
@@ -141,11 +145,9 @@ name|spi
 operator|.
 name|security
 operator|.
-name|authorization
+name|privilege
 operator|.
-name|permission
-operator|.
-name|ReadStatus
+name|PrivilegeBitsProvider
 import|;
 end_import
 

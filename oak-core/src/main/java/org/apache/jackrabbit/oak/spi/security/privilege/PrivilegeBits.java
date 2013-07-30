@@ -13,6 +13,8 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
+name|spi
+operator|.
 name|security
 operator|.
 name|privilege
@@ -168,26 +170,6 @@ operator|.
 name|permission
 operator|.
 name|Permissions
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|spi
-operator|.
-name|security
-operator|.
-name|privilege
-operator|.
-name|PrivilegeConstants
 import|;
 end_import
 
@@ -485,6 +467,7 @@ operator|.
 name|EMPTY
 argument_list|)
 decl_stmt|;
+specifier|public
 specifier|static
 specifier|final
 name|Map
@@ -1999,6 +1982,7 @@ block|}
 comment|/**      * Package private method to calculate the privilege bits associated with a      * given built-in or custom privilege definition.      *      * @return an instance of {@code PrivilegeBits}      */
 annotation|@
 name|Nonnull
+specifier|public
 name|PrivilegeBits
 name|nextBits
 parameter_list|()
@@ -2029,6 +2013,7 @@ return|;
 block|}
 block|}
 comment|/**      * Write this instance as property to the specified tree.      *      * @param tree The target tree.      */
+specifier|public
 name|void
 name|writeTo
 parameter_list|(

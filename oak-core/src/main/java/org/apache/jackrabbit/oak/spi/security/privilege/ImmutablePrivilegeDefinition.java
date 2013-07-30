@@ -13,6 +13,8 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
+name|spi
+operator|.
 name|security
 operator|.
 name|privilege
@@ -77,33 +79,15 @@ name|ImmutableSet
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|spi
-operator|.
-name|security
-operator|.
-name|privilege
-operator|.
-name|PrivilegeDefinition
-import|;
-end_import
-
 begin_comment
 comment|/**  * Default implementation of the {@code PrivilegeDefinition} interface.  */
 end_comment
 
 begin_class
+specifier|public
+specifier|final
 class|class
-name|PrivilegeDefinitionImpl
+name|ImmutablePrivilegeDefinition
 implements|implements
 name|PrivilegeDefinition
 block|{
@@ -125,7 +109,8 @@ name|String
 argument_list|>
 name|declaredAggregateNames
 decl_stmt|;
-name|PrivilegeDefinitionImpl
+specifier|public
+name|ImmutablePrivilegeDefinition
 parameter_list|(
 name|String
 name|name
@@ -164,7 +149,8 @@ name|declaredAggregateNames
 argument_list|)
 expr_stmt|;
 block|}
-name|PrivilegeDefinitionImpl
+specifier|public
+name|ImmutablePrivilegeDefinition
 parameter_list|(
 name|String
 name|name
@@ -303,14 +289,14 @@ if|if
 condition|(
 name|o
 operator|instanceof
-name|PrivilegeDefinitionImpl
+name|ImmutablePrivilegeDefinition
 condition|)
 block|{
-name|PrivilegeDefinitionImpl
+name|ImmutablePrivilegeDefinition
 name|other
 init|=
 operator|(
-name|PrivilegeDefinitionImpl
+name|ImmutablePrivilegeDefinition
 operator|)
 name|o
 decl_stmt|;
