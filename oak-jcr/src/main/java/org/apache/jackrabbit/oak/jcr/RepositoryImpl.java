@@ -774,8 +774,7 @@ name|REFRESH_INTERVAL
 argument_list|)
 expr_stmt|;
 block|}
-else|else
-block|{
+elseif|else
 if|if
 condition|(
 name|attributes
@@ -797,7 +796,6 @@ operator|+
 literal|"'."
 argument_list|)
 throw|;
-block|}
 block|}
 if|if
 condition|(
