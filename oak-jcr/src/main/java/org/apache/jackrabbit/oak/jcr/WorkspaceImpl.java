@@ -1523,7 +1523,7 @@ name|getPrivilegeManager
 argument_list|()
 return|;
 block|}
-comment|//------------------------------------------------------------< internal>---
+comment|//-----------------------------------------------------------< internal>---
 name|ReadWriteNodeTypeManager
 name|getReadWriteNodeTypeManager
 parameter_list|()
