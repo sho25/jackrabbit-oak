@@ -46,6 +46,30 @@ specifier|public
 interface|interface
 name|RepositoryInitializer
 block|{
+comment|/**      * Default implementation that returns the given {@code state} without      * making any changes.      */
+name|RepositoryInitializer
+name|DEFAULT
+init|=
+operator|new
+name|RepositoryInitializer
+argument_list|()
+block|{
+annotation|@
+name|Override
+specifier|public
+name|NodeState
+name|initialize
+parameter_list|(
+name|NodeState
+name|state
+parameter_list|)
+block|{
+return|return
+name|state
+return|;
+block|}
+block|}
+decl_stmt|;
 comment|/**      * Initializes repository content. This method is called as soon as a      * repository becomes available. Note that the repository may already      * have been initialized, so the implementation of this method should      * check for that before blindly adding new content.      *      * @param state the current state of the repository      */
 name|NodeState
 name|initialize
