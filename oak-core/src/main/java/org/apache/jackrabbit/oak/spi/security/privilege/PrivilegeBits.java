@@ -190,7 +190,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * {@code PrivilegeBits} TODO  */
+comment|/**  * Internal representation of JCR privileges.  */
 end_comment
 
 begin_class

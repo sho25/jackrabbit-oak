@@ -80,7 +80,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * PrivilegeUtil... TODO  */
+comment|/**  * Privilege management related utility methods.  */
 end_comment
 
 begin_class
@@ -116,7 +116,7 @@ name|PRIVILEGES_PATH
 argument_list|)
 return|;
 block|}
-comment|/**      * @param definitionTree      * @return      */
+comment|/**      * Reads the privilege definition stored in the specified definition tree.      * Note, that this utility does not check the existence nor the node type      * of the specified tree.      *      * @param definitionTree An existing tree storing a privilege definition.      * @return A new instance of {@code PrivilegeDefinition}.      */
 annotation|@
 name|Nonnull
 specifier|public

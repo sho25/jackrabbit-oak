@@ -1003,7 +1003,6 @@ name|isAggregate
 argument_list|()
 condition|)
 block|{
-comment|// TODO: defensive check to prevent circular aggregation that might occur with inconsistent repositories
 name|aggr
 operator|.
 name|addAll

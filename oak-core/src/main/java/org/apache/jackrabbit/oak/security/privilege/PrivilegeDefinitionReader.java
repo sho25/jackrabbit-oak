@@ -61,16 +61,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nullable
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -346,15 +336,16 @@ name|boolean
 name|isPrivilegeDefinition
 parameter_list|(
 annotation|@
-name|Nullable
+name|Nonnull
 name|Tree
 name|tree
 parameter_list|)
 block|{
 return|return
 name|tree
-operator|!=
-literal|null
+operator|.
+name|exists
+argument_list|()
 operator|&&
 name|NT_REP_PRIVILEGE
 operator|.
