@@ -743,7 +743,7 @@ name|Map
 argument_list|<
 name|String
 argument_list|,
-name|Long
+name|Object
 argument_list|>
 name|attributes
 decl_stmt|;
@@ -756,7 +756,7 @@ name|Map
 argument_list|<
 name|String
 argument_list|,
-name|Long
+name|Object
 argument_list|>
 name|attributes
 parameter_list|)

@@ -737,6 +737,13 @@ name|this
 argument_list|,
 name|whiteboard
 argument_list|,
+name|Collections
+operator|.
+expr|<
+name|String
+argument_list|,
+name|Object
+operator|>
 name|singletonMap
 argument_list|(
 name|REFRESH_INTERVAL
