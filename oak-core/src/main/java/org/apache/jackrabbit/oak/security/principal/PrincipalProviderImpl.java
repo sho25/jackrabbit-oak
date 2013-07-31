@@ -432,7 +432,6 @@ comment|/**  * The {@code PrincipalProviderImpl} is a principal provider impleme
 end_comment
 
 begin_class
-specifier|public
 class|class
 name|PrincipalProviderImpl
 implements|implements
@@ -459,7 +458,6 @@ specifier|final
 name|UserManager
 name|userManager
 decl_stmt|;
-specifier|public
 name|PrincipalProviderImpl
 parameter_list|(
 annotation|@

@@ -83,6 +83,16 @@ name|Nonnull
 import|;
 end_import
 
+begin_import
+import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|Nullable
+import|;
+end_import
+
 begin_comment
 comment|/**  * The {@code PrincipalProvider} defines methods to provide access to sources  * of {@link Principal}s. This allows the security framework share any external  * sources for authorization and authentication, as may be used by a custom  * {@link javax.security.auth.spi.LoginModule} for example.  *  * A single {@code PrincipalProvider} implementation is expected to exposed  * principals from one single source. In contrast to the  * {@link org.apache.jackrabbit.api.security.principal.PrincipalManager}  * which will expose all known and accessible principals from possibly  * different sources. See also {@link CompositePrincipalProvider} for a  * mechanism to combine principals of different providers.  */
 end_comment
@@ -98,6 +108,8 @@ name|CheckForNull
 name|Principal
 name|getPrincipal
 parameter_list|(
+annotation|@
+name|Nonnull
 name|String
 name|principalName
 parameter_list|)
@@ -111,6 +123,8 @@ name|Group
 argument_list|>
 name|getGroupMembership
 parameter_list|(
+annotation|@
+name|Nonnull
 name|Principal
 name|principal
 parameter_list|)
@@ -126,6 +140,8 @@ name|Principal
 argument_list|>
 name|getPrincipals
 parameter_list|(
+annotation|@
+name|Nonnull
 name|String
 name|userID
 parameter_list|)
@@ -141,6 +157,8 @@ name|Principal
 argument_list|>
 name|findPrincipals
 parameter_list|(
+annotation|@
+name|Nullable
 name|String
 name|nameHint
 parameter_list|,
