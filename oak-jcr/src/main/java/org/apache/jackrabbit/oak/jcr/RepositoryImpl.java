@@ -34,20 +34,6 @@ import|;
 end_import
 
 begin_import
-import|import static
-name|java
-operator|.
-name|util
-operator|.
-name|concurrent
-operator|.
-name|TimeUnit
-operator|.
-name|SECONDS
-import|;
-end_import
-
-begin_import
 import|import
 name|java
 operator|.
@@ -368,10 +354,12 @@ specifier|final
 name|long
 name|DEFAULT_REFRESH_INTERVAL
 init|=
-name|SECONDS
+name|Long
 operator|.
-name|toMillis
+name|getLong
 argument_list|(
+literal|"default-refresh-interval"
+argument_list|,
 literal|1
 argument_list|)
 decl_stmt|;
@@ -766,11 +754,9 @@ condition|)
 block|{
 name|refreshInterval
 operator|=
-name|getLong
+name|getRefreshInterval
 argument_list|(
 name|attributes
-argument_list|,
-name|REFRESH_INTERVAL
 argument_list|)
 expr_stmt|;
 block|}
@@ -995,7 +981,7 @@ block|}
 specifier|private
 specifier|static
 name|Long
-name|getLong
+name|getRefreshInterval
 parameter_list|(
 name|Map
 argument_list|<
@@ -1004,9 +990,6 @@ argument_list|,
 name|Object
 argument_list|>
 name|attributes
-parameter_list|,
-name|String
-name|name
 parameter_list|)
 block|{
 return|return
@@ -1016,7 +999,7 @@ name|attributes
 operator|.
 name|get
 argument_list|(
-name|name
+name|REFRESH_INTERVAL
 argument_list|)
 argument_list|)
 return|;

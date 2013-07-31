@@ -64,6 +64,20 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|TimeUnit
+operator|.
+name|SECONDS
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -426,7 +440,7 @@ name|refreshAtNextAccess
 init|=
 literal|false
 decl_stmt|;
-comment|/**      * Create a new session delegate for a {@code ContentSession}. The refresh behaviour of the      * session is governed by the value of the {@code refreshInterval} argument: if the session      * has been idle longer than that value, an implicit refresh will take place.      * @param contentSession  the content session      * @param refreshInterval  refresh interval in seconds or {@code -1} for never.      */
+comment|/**      * Create a new session delegate for a {@code ContentSession}. The refresh behaviour of the      * session is governed by the value of the {@code refreshInterval} argument: if the session      * has been idle longer than that value, an implicit refresh will take place.      * In addition a refresh can always be scheduled from the next access by an explicit call      * to {@link #refreshAtNextAccess()}. This is typically done from within the observation event      * dispatcher in order.      *      * @param contentSession  the content session      * @param refreshInterval  refresh interval in seconds.      */
 specifier|public
 name|SessionDelegate
 parameter_list|(
@@ -452,7 +466,14 @@ name|this
 operator|.
 name|refreshInterval
 operator|=
+name|MILLISECONDS
+operator|.
+name|convert
+argument_list|(
 name|refreshInterval
+argument_list|,
+name|SECONDS
+argument_list|)
 expr_stmt|;
 name|this
 operator|.
