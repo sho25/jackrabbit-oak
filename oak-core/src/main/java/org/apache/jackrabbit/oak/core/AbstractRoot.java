@@ -1239,9 +1239,6 @@ block|{
 name|checkLive
 argument_list|()
 expr_stmt|;
-name|rebase
-argument_list|()
-expr_stmt|;
 name|purgePendingChanges
 argument_list|()
 expr_stmt|;
