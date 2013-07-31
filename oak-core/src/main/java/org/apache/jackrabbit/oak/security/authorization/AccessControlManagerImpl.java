@@ -463,6 +463,24 @@ name|apache
 operator|.
 name|jackrabbit
 operator|.
+name|commons
+operator|.
+name|jackrabbit
+operator|.
+name|authorization
+operator|.
+name|AccessControlUtils
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
 name|oak
 operator|.
 name|api
@@ -853,26 +871,6 @@ name|spi
 operator|.
 name|security
 operator|.
-name|privilege
-operator|.
-name|PrivilegeBitsProvider
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|spi
-operator|.
-name|security
-operator|.
 name|principal
 operator|.
 name|PrincipalConfiguration
@@ -896,6 +894,26 @@ operator|.
 name|principal
 operator|.
 name|PrincipalImpl
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|security
+operator|.
+name|privilege
+operator|.
+name|PrivilegeBitsProvider
 import|;
 end_import
 
@@ -1054,7 +1072,6 @@ comment|/**  * Default implementation of the {@code JackrabbitAccessControlManag
 end_comment
 
 begin_class
-specifier|public
 class|class
 name|AccessControlManagerImpl
 implements|implements
@@ -1124,7 +1141,6 @@ specifier|private
 name|PermissionProvider
 name|permissionProvider
 decl_stmt|;
-specifier|public
 name|AccessControlManagerImpl
 parameter_list|(
 annotation|@
@@ -1810,7 +1826,7 @@ name|tree
 operator|.
 name|hasChild
 argument_list|(
-name|AccessControlUtils
+name|Util
 operator|.
 name|getAclName
 argument_list|(
@@ -1837,7 +1853,7 @@ comment|// mixin set (e.g. due to a lock)
 name|String
 name|mixinName
 init|=
-name|AccessControlUtils
+name|Util
 operator|.
 name|getMixinName
 argument_list|(
@@ -1948,7 +1964,7 @@ argument_list|(
 name|absPath
 argument_list|)
 decl_stmt|;
-name|AccessControlUtils
+name|Util
 operator|.
 name|checkValidPolicy
 argument_list|(
@@ -2441,7 +2457,7 @@ decl_stmt|;
 name|String
 name|nodeName
 init|=
-name|AccessControlUtils
+name|Util
 operator|.
 name|generateAceName
 argument_list|(
@@ -2563,7 +2579,7 @@ argument_list|(
 name|absPath
 argument_list|)
 decl_stmt|;
-name|AccessControlUtils
+name|Util
 operator|.
 name|checkValidPolicy
 argument_list|(
@@ -2797,7 +2813,7 @@ parameter_list|)
 throws|throws
 name|RepositoryException
 block|{
-name|AccessControlUtils
+name|Util
 operator|.
 name|checkValidPrincipal
 argument_list|(
@@ -2887,7 +2903,7 @@ parameter_list|)
 throws|throws
 name|RepositoryException
 block|{
-name|AccessControlUtils
+name|Util
 operator|.
 name|checkValidPrincipal
 argument_list|(
@@ -2974,7 +2990,7 @@ parameter_list|)
 throws|throws
 name|RepositoryException
 block|{
-name|AccessControlUtils
+name|Util
 operator|.
 name|checkValidPrincipals
 argument_list|(
@@ -3585,7 +3601,7 @@ parameter_list|)
 block|{
 if|if
 condition|(
-name|AccessControlUtils
+name|Util
 operator|.
 name|isAccessControlled
 argument_list|(
@@ -3600,7 +3616,7 @@ block|{
 name|String
 name|aclName
 init|=
-name|AccessControlUtils
+name|Util
 operator|.
 name|getAclName
 argument_list|(
@@ -3657,7 +3673,7 @@ block|{
 if|if
 condition|(
 operator|!
-name|AccessControlUtils
+name|Util
 operator|.
 name|isAccessControlled
 argument_list|(
@@ -3684,7 +3700,7 @@ decl_stmt|;
 name|String
 name|mixinName
 init|=
-name|AccessControlUtils
+name|Util
 operator|.
 name|getMixinName
 argument_list|(
@@ -3757,7 +3773,7 @@ block|}
 name|String
 name|aclName
 init|=
-name|AccessControlUtils
+name|Util
 operator|.
 name|getAclName
 argument_list|(
@@ -3812,7 +3828,7 @@ decl_stmt|;
 name|String
 name|aclName
 init|=
-name|AccessControlUtils
+name|Util
 operator|.
 name|getAclName
 argument_list|(
@@ -3826,7 +3842,7 @@ operator|.
 name|exists
 argument_list|()
 operator|&&
-name|AccessControlUtils
+name|Util
 operator|.
 name|isAccessControlled
 argument_list|(
@@ -3882,7 +3898,7 @@ control|)
 block|{
 if|if
 condition|(
-name|AccessControlUtils
+name|Util
 operator|.
 name|isACE
 argument_list|(
@@ -4032,7 +4048,7 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|AccessControlUtils
+name|Util
 operator|.
 name|isACE
 argument_list|(

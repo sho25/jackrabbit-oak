@@ -22,18 +22,6 @@ package|;
 end_package
 
 begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertArrayEquals
-import|;
-end_import
-
-begin_import
 import|import
 name|java
 operator|.
@@ -217,9 +205,9 @@ name|apache
 operator|.
 name|jackrabbit
 operator|.
-name|oak
+name|commons
 operator|.
-name|security
+name|jackrabbit
 operator|.
 name|authorization
 operator|.
@@ -254,6 +242,18 @@ operator|.
 name|junit
 operator|.
 name|Test
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertArrayEquals
 import|;
 end_import
 

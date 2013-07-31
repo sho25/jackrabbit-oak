@@ -653,7 +653,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-name|AccessControlUtils
+name|Util
 operator|.
 name|checkValidPrincipal
 argument_list|(

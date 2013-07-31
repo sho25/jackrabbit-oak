@@ -176,34 +176,19 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Access control specific utility methods  */
+comment|/**  * Implementation specific access control utility methods  */
 end_comment
 
 begin_class
-specifier|public
 specifier|final
 class|class
-name|AccessControlUtils
-extends|extends
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|commons
-operator|.
-name|jackrabbit
-operator|.
-name|authorization
-operator|.
-name|AccessControlUtils
+name|Util
 implements|implements
 name|AccessControlConstants
 block|{
 comment|/**      *  Private constructor to avoid instantiation      */
 specifier|private
-name|AccessControlUtils
+name|Util
 parameter_list|()
 block|{}
 specifier|public
@@ -211,9 +196,13 @@ specifier|static
 name|void
 name|checkValidPrincipal
 parameter_list|(
+annotation|@
+name|Nullable
 name|Principal
 name|principal
 parameter_list|,
+annotation|@
+name|Nonnull
 name|PrincipalManager
 name|principalManager
 parameter_list|)
@@ -300,6 +289,8 @@ name|Principal
 argument_list|>
 name|principals
 parameter_list|,
+annotation|@
+name|Nonnull
 name|PrincipalManager
 name|principalManager
 parameter_list|)
@@ -329,8 +320,6 @@ range|:
 name|principals
 control|)
 block|{
-name|AccessControlUtils
-operator|.
 name|checkValidPrincipal
 argument_list|(
 name|principal
@@ -438,6 +427,8 @@ specifier|static
 name|boolean
 name|isAccessControlled
 parameter_list|(
+annotation|@
+name|Nullable
 name|String
 name|oakPath
 parameter_list|,
