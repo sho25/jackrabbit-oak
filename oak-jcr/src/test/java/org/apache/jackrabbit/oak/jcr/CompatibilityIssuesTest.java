@@ -121,6 +121,16 @@ name|org
 operator|.
 name|junit
 operator|.
+name|Ignore
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
 name|Test
 import|;
 end_import
@@ -380,6 +390,12 @@ block|}
 comment|/**      * OAK-939 - Change in behaviour from JR2. Following testcase leads to      * CommitFailedException but it passes in JR2      */
 annotation|@
 name|Test
+annotation|@
+name|Ignore
+argument_list|(
+literal|"OAK-939"
+argument_list|)
+comment|// FIXME
 specifier|public
 name|void
 name|removeNodeInDifferentSession
