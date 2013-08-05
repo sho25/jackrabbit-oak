@@ -258,7 +258,7 @@ name|ReadOnlyNodeTypeManager
 name|getNodeTypeManager
 parameter_list|()
 function_decl|;
-comment|/**      * Returns {@code true} if the tree is checked out; otherwise      * {@code false}.      *      * @param tree the tree to check.      * @return whether the tree is checked out or not.      */
+comment|/**      * Returns {@code true} if the tree is checked out; otherwise      * {@code false}. The root node is always considered checked out.      *      * @param tree the tree to check.      * @return whether the tree is checked out or not.      */
 specifier|public
 name|boolean
 name|isCheckedOut
@@ -310,7 +310,16 @@ name|BOOLEAN
 argument_list|)
 return|;
 block|}
-elseif|else
+block|}
+else|else
+block|{
+comment|// FIXME: this actually means access to the tree is restricted
+comment|// and may result in wrong isCheckedOut value. This should never
+comment|// be the case in a commit hook because it operates on non-access-
+comment|// controlled NodeStates. This means consistency is not at risk
+comment|// but it may mean oak-jcr sees a node as checked out even though
+comment|// it is in fact read-only because of a checked-in ancestor.
+block|}
 if|if
 condition|(
 name|tree
@@ -323,16 +332,8 @@ return|return
 literal|true
 return|;
 block|}
-block|}
 else|else
 block|{
-comment|// FIXME: this actually means access to the tree is restricted
-comment|// and may result in wrong isCheckedOut value. This should never
-comment|// be the case in a commit hook because it operates on non-access-
-comment|// controlled NodeStates. This means consistency is not at risk
-comment|// but it may mean oak-jcr sees a node as checked out even though
-comment|// it is in fact read-only because of a checked-in ancestor.
-block|}
 comment|// otherwise return checkedOut status of parent
 return|return
 name|isCheckedOut
@@ -343,6 +344,7 @@ name|getParent
 argument_list|()
 argument_list|)
 return|;
+block|}
 block|}
 comment|/**      * Returns {@code true} if the tree at the given absolute Oak path is      * checked out; otherwise {@code false}.      *      * @param absOakPath an absolute path.      * @return whether the tree at the given path is checked out or not.      */
 specifier|public

@@ -193,16 +193,6 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Ignore
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
 name|Test
 import|;
 end_import
@@ -249,6 +239,9 @@ name|sessions
 init|=
 operator|new
 name|ArrayList
+argument_list|<
+name|Session
+argument_list|>
 argument_list|()
 decl_stmt|;
 annotation|@
@@ -314,7 +307,10 @@ name|addAccessControlEntry
 argument_list|(
 name|admin
 argument_list|,
-literal|"/testNode"
+name|testNode
+operator|.
+name|getPath
+argument_list|()
 argument_list|,
 name|EveryonePrincipal
 operator|.
@@ -366,13 +362,11 @@ name|repository
 operator|=
 literal|null
 expr_stmt|;
+name|sessions
+operator|=
+literal|null
+expr_stmt|;
 block|}
-annotation|@
-name|Ignore
-argument_list|(
-literal|"OAK-930"
-argument_list|)
-comment|// FIXME
 annotation|@
 name|Test
 specifier|public
