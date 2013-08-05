@@ -2352,6 +2352,24 @@ parameter_list|)
 throws|throws
 name|RepositoryException
 block|{
+if|if
+condition|(
+name|BASIC_FROZEN_PROPERTIES
+operator|.
+name|contains
+argument_list|(
+name|prop
+operator|.
+name|getName
+argument_list|()
+argument_list|)
+condition|)
+block|{
+comment|// OAK-940: do not overwrite basic frozen properties
+return|return
+name|IGNORE
+return|;
+block|}
 return|return
 name|getOPV
 argument_list|(
