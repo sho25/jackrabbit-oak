@@ -527,6 +527,7 @@ block|}
 block|}
 annotation|@
 name|Test
+comment|// FIXME clarify expectations, move to auto refresh related tests. See OAK-938.
 specifier|public
 name|void
 name|testGetAuthorizableMultipleSessions
