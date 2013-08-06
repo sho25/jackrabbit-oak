@@ -475,7 +475,10 @@ name|Override
 specifier|public
 name|long
 name|getChildNodeCount
-parameter_list|()
+parameter_list|(
+name|long
+name|max
+parameter_list|)
 block|{
 return|return
 name|nodes

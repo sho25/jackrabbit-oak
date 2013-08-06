@@ -384,7 +384,10 @@ name|Override
 specifier|public
 name|long
 name|getChildNodeCount
-parameter_list|()
+parameter_list|(
+name|long
+name|max
+parameter_list|)
 block|{
 return|return
 literal|0
@@ -779,7 +782,9 @@ operator|&&
 name|that
 operator|.
 name|getChildNodeCount
-argument_list|()
+argument_list|(
+literal|1
+argument_list|)
 operator|==
 literal|0
 return|;

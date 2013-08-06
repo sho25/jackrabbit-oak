@@ -6812,7 +6812,9 @@ argument_list|,
 name|policyTree
 operator|.
 name|getChildrenCount
-argument_list|()
+argument_list|(
+literal|3
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|Iterator

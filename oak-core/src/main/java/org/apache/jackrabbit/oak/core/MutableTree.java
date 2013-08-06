@@ -948,7 +948,10 @@ name|Override
 specifier|public
 name|long
 name|getChildrenCount
-parameter_list|()
+parameter_list|(
+name|long
+name|max
+parameter_list|)
 block|{
 name|enter
 argument_list|()
@@ -957,7 +960,9 @@ return|return
 name|super
 operator|.
 name|getChildrenCount
-argument_list|()
+argument_list|(
+name|max
+argument_list|)
 return|;
 block|}
 annotation|@

@@ -608,7 +608,9 @@ init|=
 name|state
 operator|.
 name|getChildNodeCount
-argument_list|()
+argument_list|(
+literal|2
+argument_list|)
 decl_stmt|;
 if|if
 condition|(

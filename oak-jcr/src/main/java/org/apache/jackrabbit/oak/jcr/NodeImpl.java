@@ -976,6 +976,17 @@ name|Node
 implements|,
 name|JackrabbitNode
 block|{
+comment|/**      * The maximum returned value for {@link NodeIterator#getSize()}. If there      * are more nodes, the method returns -1.      */
+specifier|private
+specifier|static
+specifier|final
+name|long
+name|NODE_ITERATOR_MAX_SIZE
+init|=
+name|Long
+operator|.
+name|MAX_VALUE
+decl_stmt|;
 comment|/**      * logger instance      */
 specifier|private
 specifier|static
@@ -2826,7 +2837,7 @@ name|long
 name|size
 init|=
 operator|-
-literal|1
+literal|2
 decl_stmt|;
 annotation|@
 name|Override
@@ -2840,7 +2851,7 @@ condition|(
 name|size
 operator|==
 operator|-
-literal|1
+literal|2
 condition|)
 block|{
 try|try
@@ -2850,9 +2861,26 @@ operator|=
 name|node
 operator|.
 name|getChildCount
-argument_list|()
+argument_list|(
+name|NODE_ITERATOR_MAX_SIZE
+argument_list|)
 expr_stmt|;
 comment|// TODO: perform()
+if|if
+condition|(
+name|size
+operator|==
+name|Long
+operator|.
+name|MAX_VALUE
+condition|)
+block|{
+name|size
+operator|=
+operator|-
+literal|1
+expr_stmt|;
+block|}
 block|}
 catch|catch
 parameter_list|(

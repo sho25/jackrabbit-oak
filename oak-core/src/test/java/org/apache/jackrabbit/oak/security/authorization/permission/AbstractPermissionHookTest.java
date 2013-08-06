@@ -928,7 +928,11 @@ init|=
 name|parent
 operator|.
 name|getChildrenCount
-argument_list|()
+argument_list|(
+name|Long
+operator|.
+name|MAX_VALUE
+argument_list|)
 decl_stmt|;
 for|for
 control|(

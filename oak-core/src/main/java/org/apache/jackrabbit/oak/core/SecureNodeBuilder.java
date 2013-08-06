@@ -1385,7 +1385,10 @@ specifier|public
 specifier|synchronized
 name|long
 name|getChildNodeCount
-parameter_list|()
+parameter_list|(
+name|long
+name|max
+parameter_list|)
 block|{
 if|if
 condition|(
@@ -1400,7 +1403,9 @@ return|return
 name|builder
 operator|.
 name|getChildNodeCount
-argument_list|()
+argument_list|(
+name|max
+argument_list|)
 return|;
 block|}
 else|else

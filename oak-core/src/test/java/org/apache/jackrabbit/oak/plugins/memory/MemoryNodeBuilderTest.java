@@ -760,7 +760,9 @@ argument_list|,
 name|child
 operator|.
 name|getChildNodeCount
-argument_list|()
+argument_list|(
+literal|1
+argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// reconnect!

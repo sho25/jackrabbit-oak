@@ -157,10 +157,13 @@ parameter_list|)
 throws|throws
 name|IllegalStateException
 function_decl|;
-comment|/**      * Returns the current number of child nodes.      *      * @return number of child nodes      */
+comment|/**      * Returns the current number of child nodes.      *<p>      * If an implementation does know the exact value, it returns it (even if      * the value is higher than max). If the implementation does not know the      * exact value, and the child node count is higher than max, it may return      * Long.MAX_VALUE. The cost of the operation is at most O(max).      *       * @param max the maximum value      * @return number of child nodes      */
 name|long
 name|getChildNodeCount
-parameter_list|()
+parameter_list|(
+name|long
+name|max
+parameter_list|)
 function_decl|;
 comment|/**      * Returns the names of current child nodes.      *      * @return child node names      */
 annotation|@

@@ -1791,11 +1791,14 @@ block|}
 argument_list|)
 return|;
 block|}
-comment|/**      * Get the number of child nodes      *      * @return number of child nodes of the node      */
+comment|/**      * Get the number of child nodes      *<p>      * If an implementation does know the exact value, it returns it (even if      * the value is higher than max). If the implementation does not know the      * exact value, and the child node count is higher than max, it may return      * Long.MAX_VALUE. The cost of the operation is at most O(max).      *       * @param max the maximum value      * @return number of child nodes of the node      */
 specifier|public
 name|long
 name|getChildCount
-parameter_list|()
+parameter_list|(
+name|long
+name|max
+parameter_list|)
 throws|throws
 name|InvalidItemStateException
 block|{
@@ -1805,7 +1808,9 @@ name|getTree
 argument_list|()
 operator|.
 name|getChildrenCount
-argument_list|()
+argument_list|(
+name|max
+argument_list|)
 return|;
 block|}
 comment|/**      * Get child node      *      * @param relPath oak path      * @return node at the path given by {@code relPath} or {@code null} if      *         no such node exists      */

@@ -539,7 +539,11 @@ literal|"/"
 argument_list|)
 operator|.
 name|getChildrenCount
-argument_list|()
+argument_list|(
+name|Long
+operator|.
+name|MAX_VALUE
+argument_list|)
 decl_stmt|;
 name|long
 name|cntA
@@ -552,7 +556,11 @@ literal|"/a"
 argument_list|)
 operator|.
 name|getChildrenCount
-argument_list|()
+argument_list|(
+name|Long
+operator|.
+name|MAX_VALUE
+argument_list|)
 decl_stmt|;
 comment|// 'testUser' may only see 'regular' child nodes -> count must be adjusted.
 name|assertEquals
@@ -569,7 +577,11 @@ literal|"/"
 argument_list|)
 operator|.
 name|getChildrenCount
-argument_list|()
+argument_list|(
+name|Long
+operator|.
+name|MAX_VALUE
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|assertEquals
@@ -586,7 +598,11 @@ literal|"/a"
 argument_list|)
 operator|.
 name|getChildrenCount
-argument_list|()
+argument_list|(
+name|Long
+operator|.
+name|MAX_VALUE
+argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// for the following nodes the cnt must not differ
@@ -623,7 +639,11 @@ name|path
 argument_list|)
 operator|.
 name|getChildrenCount
-argument_list|()
+argument_list|(
+name|Long
+operator|.
+name|MAX_VALUE
+argument_list|)
 argument_list|,
 name|testRoot
 operator|.
@@ -633,7 +653,11 @@ name|path
 argument_list|)
 operator|.
 name|getChildrenCount
-argument_list|()
+argument_list|(
+name|Long
+operator|.
+name|MAX_VALUE
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

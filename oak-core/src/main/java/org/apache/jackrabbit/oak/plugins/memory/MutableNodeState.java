@@ -949,7 +949,10 @@ name|Override
 specifier|public
 name|long
 name|getChildNodeCount
-parameter_list|()
+parameter_list|(
+name|long
+name|max
+parameter_list|)
 block|{
 assert|assert
 name|base
@@ -964,6 +967,8 @@ argument_list|(
 name|base
 argument_list|,
 name|nodes
+argument_list|,
+name|max
 argument_list|)
 return|;
 block|}

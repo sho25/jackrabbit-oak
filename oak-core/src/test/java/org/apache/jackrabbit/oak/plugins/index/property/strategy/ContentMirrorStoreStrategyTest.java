@@ -551,7 +551,9 @@ argument_list|,
 name|index
 operator|.
 name|getChildNodeCount
-argument_list|()
+argument_list|(
+literal|1
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

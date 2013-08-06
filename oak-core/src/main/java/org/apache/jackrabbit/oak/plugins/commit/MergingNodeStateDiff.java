@@ -896,7 +896,9 @@ assert|assert
 name|conflictMarker
 operator|.
 name|getChildNodeCount
-argument_list|()
+argument_list|(
+literal|1
+argument_list|)
 operator|==
 literal|0
 assert|;

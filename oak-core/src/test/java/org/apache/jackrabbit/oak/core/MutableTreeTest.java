@@ -663,7 +663,9 @@ argument_list|,
 name|tree
 operator|.
 name|getChildrenCount
-argument_list|()
+argument_list|(
+literal|4
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -1290,7 +1292,9 @@ argument_list|,
 name|tree
 operator|.
 name|getChildrenCount
-argument_list|()
+argument_list|(
+literal|4
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|tree
@@ -1310,7 +1314,9 @@ argument_list|,
 name|tree
 operator|.
 name|getChildrenCount
-argument_list|()
+argument_list|(
+literal|3
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|tree
@@ -1327,7 +1333,9 @@ argument_list|,
 name|tree
 operator|.
 name|getChildrenCount
-argument_list|()
+argument_list|(
+literal|3
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|tree
@@ -1344,7 +1352,9 @@ argument_list|,
 name|tree
 operator|.
 name|getChildrenCount
-argument_list|()
+argument_list|(
+literal|5
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
