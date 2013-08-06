@@ -21,11 +21,51 @@ begin_import
 import|import static
 name|org
 operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|jcr
+operator|.
+name|RepositoryImpl
+operator|.
+name|REFRESH_INTERVAL
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertTrue
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
 name|junit
 operator|.
 name|Assert
 operator|.
 name|fail
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Collections
 import|;
 end_import
 
@@ -119,9 +159,15 @@ begin_import
 import|import
 name|org
 operator|.
-name|junit
+name|apache
 operator|.
-name|Ignore
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|api
+operator|.
+name|CommitFailedException
 import|;
 end_import
 
@@ -132,26 +178,6 @@ operator|.
 name|junit
 operator|.
 name|Test
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|HashMap
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Map
 import|;
 end_import
 
@@ -387,21 +413,15 @@ argument_list|()
 expr_stmt|;
 comment|// // this is where OAK throws ConstraintViolationException
 block|}
-comment|/**      * OAK-939 - Change in behaviour from JR2. Following testcase leads to      * CommitFailedException but it passes in JR2      */
+comment|/**      * OAK-939 - Change in behaviour from JR2. Following test case leads to      * CommitFailedException but it passes in JR2      */
 annotation|@
 name|Test
-annotation|@
-name|Ignore
-argument_list|(
-literal|"OAK-939"
-argument_list|)
-comment|// FIXME
 specifier|public
 name|void
 name|removeNodeInDifferentSession
 parameter_list|()
 throws|throws
-name|RepositoryException
+name|Throwable
 block|{
 specifier|final
 name|String
@@ -413,11 +433,11 @@ specifier|final
 name|String
 name|testNodePath
 init|=
-literal|"/"
+literal|'/'
 operator|+
 name|testNode
 decl_stmt|;
-comment|//Create the test node
+comment|// Create the test node
 name|Session
 name|session
 init|=
@@ -439,7 +459,7 @@ operator|.
 name|save
 argument_list|()
 expr_stmt|;
-comment|//TestCase would pass if the sessionRefreshInterval is set to zero
+comment|// Test case would pass if the sessionRefreshInterval is set to zero
 name|boolean
 name|refreshIntervalZero
 init|=
@@ -448,7 +468,7 @@ decl_stmt|;
 name|Session
 name|s3
 init|=
-name|createSessionWithRefreshInterval
+name|newSession
 argument_list|(
 name|refreshIntervalZero
 argument_list|)
@@ -456,7 +476,7 @@ decl_stmt|;
 name|Session
 name|s2
 init|=
-name|createSessionWithRefreshInterval
+name|newSession
 argument_list|(
 name|refreshIntervalZero
 argument_list|)
@@ -490,15 +510,35 @@ operator|.
 name|remove
 argument_list|()
 expr_stmt|;
+try|try
+block|{
 name|s3
 operator|.
 name|save
 argument_list|()
 expr_stmt|;
 block|}
+catch|catch
+parameter_list|(
+name|InvalidItemStateException
+name|e
+parameter_list|)
+block|{
+name|assertTrue
+argument_list|(
+name|e
+operator|.
+name|getCause
+argument_list|()
+operator|instanceof
+name|CommitFailedException
+argument_list|)
+expr_stmt|;
+block|}
+block|}
 specifier|private
 name|Session
-name|createSessionWithRefreshInterval
+name|newSession
 parameter_list|(
 name|boolean
 name|refreshIntervalZero
@@ -525,34 +565,6 @@ condition|(
 name|refreshIntervalZero
 condition|)
 block|{
-name|Map
-argument_list|<
-name|String
-argument_list|,
-name|Object
-argument_list|>
-name|attrs
-init|=
-operator|new
-name|HashMap
-argument_list|<
-name|String
-argument_list|,
-name|Object
-argument_list|>
-argument_list|()
-decl_stmt|;
-name|attrs
-operator|.
-name|put
-argument_list|(
-name|RepositoryImpl
-operator|.
-name|REFRESH_INTERVAL
-argument_list|,
-literal|0
-argument_list|)
-expr_stmt|;
 return|return
 operator|(
 operator|(
@@ -568,7 +580,19 @@ name|creds
 argument_list|,
 literal|null
 argument_list|,
-name|attrs
+name|Collections
+operator|.
+expr|<
+name|String
+argument_list|,
+name|Object
+operator|>
+name|singletonMap
+argument_list|(
+name|REFRESH_INTERVAL
+argument_list|,
+literal|0
+argument_list|)
 argument_list|)
 return|;
 block|}
