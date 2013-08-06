@@ -1228,6 +1228,18 @@ operator|>
 literal|1
 condition|)
 block|{
+name|LOG
+operator|.
+name|warn
+argument_list|(
+literal|"More than one relative parent for query "
+operator|+
+name|filter
+operator|.
+name|getQueryStatement
+argument_list|()
+argument_list|)
+expr_stmt|;
 comment|// there are multiple "parents", as in
 comment|// "contains(a/x, 'hello') and contains(b/x, 'world')"
 return|return
@@ -1279,7 +1291,7 @@ return|return
 literal|15
 return|;
 block|}
-comment|/**      * Get the set of relative paths of a full-text condition. For example, for      * the condition "contains(a/b, 'hello') and contains(c/d, 'world'), the set      * { "a", "c" } is returned. If there are no relative properties, then one entry      * is returned. If there is no expression, then an empty set is returned.      *       * @param ft the full-text expression      * @return the set of relative paths (possibly empty)      */
+comment|/**      * Get the set of relative paths of a full-text condition. For example, for      * the condition "contains(a/b, 'hello') and contains(c/d, 'world'), the set      * { "a", "c" } is returned. If there are no relative properties, then one      * entry is returned (the empty string). If there is no expression, then an      * empty set is returned.      *       * @param ft the full-text expression      * @return the set of relative paths (possibly empty)      */
 specifier|private
 specifier|static
 name|Set
@@ -2215,6 +2227,16 @@ argument_list|,
 name|nonFullTextConstraints
 argument_list|)
 decl_stmt|;
+name|int
+name|parentDepth
+init|=
+name|PathUtils
+operator|.
+name|getDepth
+argument_list|(
+name|parent
+argument_list|)
+decl_stmt|;
 if|if
 condition|(
 name|query
@@ -2222,7 +2244,9 @@ operator|!=
 literal|null
 condition|)
 block|{
+comment|// OAK-925
 comment|// TODO how to best avoid loading all entries in memory?
+comment|// (memory problem and performance problem)
 name|TopDocs
 name|docs
 init|=
@@ -2315,40 +2339,17 @@ block|{
 continue|continue;
 block|}
 comment|// get the base path
-for|for
-control|(
-name|int
-name|i
-init|=
-literal|0
-init|,
-name|size
-init|=
-name|PathUtils
-operator|.
-name|getDepth
-argument_list|(
-name|parent
-argument_list|)
-init|;
-name|i
-operator|<
-name|size
-condition|;
-name|i
-operator|++
-control|)
-block|{
 name|path
 operator|=
 name|PathUtils
 operator|.
-name|getParentPath
+name|getAncestorPath
 argument_list|(
 name|path
+argument_list|,
+name|parentDepth
 argument_list|)
 expr_stmt|;
-block|}
 comment|// avoid duplicate entries
 if|if
 condition|(
@@ -2709,6 +2710,7 @@ argument_list|)
 return|;
 block|}
 block|}
+comment|/**      * Get the Lucene query for the given filter.      *       * @param filter the filter, including full-text constraint      * @param reader the Lucene reader      * @param nonFullTextConstraints whether non-full-text constraints (such a      *            path, node type, and so on) should be added to the Lucene      *            query      * @return the Lucene query      */
 specifier|private
 specifier|static
 name|Query
@@ -4032,6 +4034,7 @@ name|p
 argument_list|)
 expr_stmt|;
 block|}
+comment|// TODO use tokenToQuery(String) if possible
 name|String
 name|text
 init|=
@@ -4116,6 +4119,7 @@ operator|.
 name|toLowerCase
 argument_list|()
 expr_stmt|;
+comment|// TODO if one condition, use wildcard - if multiple, use list of terms
 name|q
 operator|=
 operator|new
