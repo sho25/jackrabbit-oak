@@ -228,6 +228,14 @@ specifier|public
 class|class
 name|Commit
 block|{
+comment|/**      * Whether to purge old revisions if a node gets too large. If false, old      * revisions are stored in a separate document. If true, old revisions are      * removed (purged).      */
+specifier|static
+specifier|final
+name|boolean
+name|PURGE_OLD_REVISIONS
+init|=
+literal|true
+decl_stmt|;
 specifier|private
 specifier|static
 specifier|final
@@ -256,24 +264,6 @@ init|=
 literal|512
 operator|*
 literal|1024
-decl_stmt|;
-comment|/**      * Whether to purge old revisions if a node gets too large. If false, old      * revisions are stored in a separate document. If true, old revisions are      * removed (purged).      */
-specifier|private
-specifier|static
-specifier|final
-name|boolean
-name|PURGE_OLD_REVISIONS
-init|=
-literal|true
-decl_stmt|;
-comment|/**      * Revisions that are newer than this (in minutes) are kept in the newest      * document.      */
-specifier|private
-specifier|static
-specifier|final
-name|int
-name|SPLIT_MINUTES
-init|=
-literal|5
 decl_stmt|;
 specifier|private
 specifier|final
@@ -2488,20 +2478,14 @@ operator|.
 name|getTimestamp
 argument_list|()
 decl_stmt|;
-name|long
-name|ageMinutes
-init|=
-name|ageMillis
-operator|/
-literal|1000
-operator|/
-literal|60
-decl_stmt|;
 if|if
 condition|(
-name|ageMinutes
+name|ageMillis
 operator|>
-name|SPLIT_MINUTES
+name|mk
+operator|.
+name|getSplitDocumentAgeMillis
+argument_list|()
 condition|)
 block|{
 name|old
