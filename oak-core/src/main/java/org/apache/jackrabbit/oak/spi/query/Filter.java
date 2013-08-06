@@ -130,7 +130,7 @@ argument_list|>
 name|getPropertyRestrictions
 parameter_list|()
 function_decl|;
-comment|/**      * Get the fulltext search conditions, if any.      *      * @return the conditions (an empty collection if not used)      */
+comment|/**      * Get the fulltext search conditions, if any.      *      * @deprecated      * @return the conditions (an empty collection if not used)      */
 name|Collection
 argument_list|<
 name|String

@@ -802,20 +802,10 @@ name|boolean
 name|evaluate
 parameter_list|()
 block|{
-if|if
-condition|(
-name|OAK_890_ADVANCED_FT_SEARCH
-condition|)
-block|{
-comment|// the LuceneIndex implementation doesn't currently support
-comment|// queries that search for words *within* fields; the
-comment|// field value must match exactly
-block|}
-else|else
-block|{
-comment|// disable evaluation if a fulltext index is used, as
-comment|// we don't know what exact options are used in the fulltext index
-comment|// (stop word, special characters,...)
+comment|// disable evaluation if a fulltext index is used,
+comment|// to avoid running out of memory if the node is large,
+comment|// and because we might not implement all features
+comment|// such as index aggregation
 if|if
 condition|(
 name|selector
@@ -828,7 +818,6 @@ block|{
 return|return
 literal|true
 return|;
-block|}
 block|}
 name|StringBuilder
 name|buff
