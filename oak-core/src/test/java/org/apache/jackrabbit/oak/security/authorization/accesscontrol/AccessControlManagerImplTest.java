@@ -16,6 +16,8 @@ operator|.
 name|security
 operator|.
 name|authorization
+operator|.
+name|accesscontrol
 package|;
 end_package
 
@@ -611,6 +613,8 @@ name|security
 operator|.
 name|authorization
 operator|.
+name|accesscontrol
+operator|.
 name|AbstractAccessControlTest
 import|;
 end_import
@@ -631,6 +635,8 @@ name|security
 operator|.
 name|authorization
 operator|.
+name|accesscontrol
+operator|.
 name|AccessControlConstants
 import|;
 end_import
@@ -650,6 +656,8 @@ operator|.
 name|security
 operator|.
 name|authorization
+operator|.
+name|accesscontrol
 operator|.
 name|TestACL
 import|;

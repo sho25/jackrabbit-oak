@@ -16,18 +16,10 @@ operator|.
 name|security
 operator|.
 name|authorization
+operator|.
+name|accesscontrol
 package|;
 end_package
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Set
-import|;
-end_import
 
 begin_import
 import|import
@@ -75,6 +67,8 @@ name|security
 operator|.
 name|authorization
 operator|.
+name|accesscontrol
+operator|.
 name|AbstractAccessControlTest
 import|;
 end_import
@@ -95,7 +89,7 @@ name|security
 operator|.
 name|authorization
 operator|.
-name|AccessControlConfiguration
+name|AuthorizationConfiguration
 import|;
 end_import
 
@@ -114,6 +108,8 @@ operator|.
 name|security
 operator|.
 name|authorization
+operator|.
+name|accesscontrol
 operator|.
 name|AccessControlConstants
 import|;
@@ -188,7 +184,7 @@ name|options
 init|=
 name|getConfig
 argument_list|(
-name|AccessControlConfiguration
+name|AuthorizationConfiguration
 operator|.
 name|class
 argument_list|)
@@ -267,7 +263,7 @@ control|)
 block|{
 if|if
 condition|(
-literal|"org.apache.jackrabbit.oak.security.authorization.AccessControlManagerImpl$ReadPolicy"
+literal|"org.apache.jackrabbit.oak.security.authorization.accesscontrol.AccessControlManagerImpl$ReadPolicy"
 operator|.
 name|equals
 argument_list|(
@@ -350,7 +346,7 @@ control|)
 block|{
 if|if
 condition|(
-literal|"org.apache.jackrabbit.oak.security.authorization.AccessControlManagerImpl$ReadPolicy"
+literal|"org.apache.jackrabbit.oak.security.authorization.accesscontrol.AccessControlManagerImpl$ReadPolicy"
 operator|.
 name|equals
 argument_list|(

@@ -473,7 +473,7 @@ name|security
 operator|.
 name|authorization
 operator|.
-name|AccessControlConfiguration
+name|AuthorizationConfiguration
 import|;
 end_import
 
@@ -984,7 +984,7 @@ name|acMgr
 init|=
 name|getConfig
 argument_list|(
-name|AccessControlConfiguration
+name|AuthorizationConfiguration
 operator|.
 name|class
 argument_list|)

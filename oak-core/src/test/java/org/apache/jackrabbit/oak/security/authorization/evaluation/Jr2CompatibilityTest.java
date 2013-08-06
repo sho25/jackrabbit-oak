@@ -285,7 +285,7 @@ name|security
 operator|.
 name|authorization
 operator|.
-name|AccessControlConfiguration
+name|AuthorizationConfiguration
 import|;
 end_import
 
@@ -304,6 +304,8 @@ operator|.
 name|security
 operator|.
 name|authorization
+operator|.
+name|accesscontrol
 operator|.
 name|AccessControlConstants
 import|;
@@ -570,7 +572,7 @@ name|ImmutableMap
 operator|.
 name|of
 argument_list|(
-name|AccessControlConfiguration
+name|AuthorizationConfiguration
 operator|.
 name|NAME
 argument_list|,

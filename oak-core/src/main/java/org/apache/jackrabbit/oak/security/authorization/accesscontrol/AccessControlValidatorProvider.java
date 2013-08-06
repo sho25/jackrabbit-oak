@@ -16,6 +16,8 @@ operator|.
 name|security
 operator|.
 name|authorization
+operator|.
+name|accesscontrol
 package|;
 end_package
 
@@ -261,7 +263,7 @@ name|security
 operator|.
 name|authorization
 operator|.
-name|AccessControlConfiguration
+name|AuthorizationConfiguration
 import|;
 end_import
 
@@ -370,6 +372,7 @@ comment|/**  * {@code AccessControlValidatorProvider} aimed to provide a root va
 end_comment
 
 begin_class
+specifier|public
 class|class
 name|AccessControlValidatorProvider
 extends|extends
@@ -395,6 +398,7 @@ specifier|final
 name|SecurityProvider
 name|securityProvider
 decl_stmt|;
+specifier|public
 name|AccessControlValidatorProvider
 parameter_list|(
 annotation|@
@@ -449,7 +453,7 @@ name|restrictionProvider
 init|=
 name|getConfig
 argument_list|(
-name|AccessControlConfiguration
+name|AuthorizationConfiguration
 operator|.
 name|class
 argument_list|)

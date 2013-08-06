@@ -285,7 +285,7 @@ name|security
 operator|.
 name|authorization
 operator|.
-name|AccessControlConfiguration
+name|AuthorizationConfiguration
 import|;
 end_import
 
@@ -723,14 +723,14 @@ operator|.
 name|getPath
 argument_list|()
 decl_stmt|;
-name|AccessControlConfiguration
+name|AuthorizationConfiguration
 name|acConfig
 init|=
 name|securityProvider
 operator|.
 name|getConfiguration
 argument_list|(
-name|AccessControlConfiguration
+name|AuthorizationConfiguration
 operator|.
 name|class
 argument_list|)

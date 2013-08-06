@@ -16,6 +16,8 @@ operator|.
 name|security
 operator|.
 name|authorization
+operator|.
+name|accesscontrol
 package|;
 end_package
 
@@ -327,7 +329,7 @@ name|security
 operator|.
 name|authorization
 operator|.
-name|AccessControlConfiguration
+name|AuthorizationConfiguration
 import|;
 end_import
 
@@ -346,6 +348,8 @@ operator|.
 name|security
 operator|.
 name|authorization
+operator|.
+name|accesscontrol
 operator|.
 name|AccessControlConstants
 import|;
@@ -522,6 +526,7 @@ comment|/**  * {@link ProtectedNodeImporter} implementation that handles access 
 end_comment
 
 begin_class
+specifier|public
 class|class
 name|AccessControlImporter
 implements|implements
@@ -603,6 +608,7 @@ specifier|private
 name|MutableEntry
 name|entry
 decl_stmt|;
+specifier|public
 name|AccessControlImporter
 parameter_list|(
 name|SecurityProvider
@@ -662,14 +668,14 @@ condition|(
 name|isWorkspaceImport
 condition|)
 block|{
-name|AccessControlConfiguration
+name|AuthorizationConfiguration
 name|config
 init|=
 name|securityProvider
 operator|.
 name|getConfiguration
 argument_list|(
-name|AccessControlConfiguration
+name|AuthorizationConfiguration
 operator|.
 name|class
 argument_list|)

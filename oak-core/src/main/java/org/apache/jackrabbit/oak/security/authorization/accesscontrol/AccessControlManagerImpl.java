@@ -16,6 +16,8 @@ operator|.
 name|security
 operator|.
 name|authorization
+operator|.
+name|accesscontrol
 package|;
 end_package
 
@@ -705,6 +707,28 @@ name|security
 operator|.
 name|authorization
 operator|.
+name|AuthorizationConfiguration
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|security
+operator|.
+name|authorization
+operator|.
+name|accesscontrol
+operator|.
 name|ACE
 import|;
 end_import
@@ -725,25 +749,7 @@ name|security
 operator|.
 name|authorization
 operator|.
-name|AccessControlConfiguration
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|spi
-operator|.
-name|security
-operator|.
-name|authorization
+name|accesscontrol
 operator|.
 name|AccessControlConstants
 import|;
@@ -764,6 +770,8 @@ operator|.
 name|security
 operator|.
 name|authorization
+operator|.
+name|accesscontrol
 operator|.
 name|ImmutableACL
 import|;
@@ -1072,6 +1080,7 @@ comment|/**  * Default implementation of the {@code JackrabbitAccessControlManag
 end_comment
 
 begin_class
+specifier|public
 class|class
 name|AccessControlManagerImpl
 implements|implements
@@ -1106,7 +1115,7 @@ name|namePathMapper
 decl_stmt|;
 specifier|private
 specifier|final
-name|AccessControlConfiguration
+name|AuthorizationConfiguration
 name|acConfig
 decl_stmt|;
 specifier|private
@@ -1141,6 +1150,7 @@ specifier|private
 name|PermissionProvider
 name|permissionProvider
 decl_stmt|;
+specifier|public
 name|AccessControlManagerImpl
 parameter_list|(
 annotation|@
@@ -1213,7 +1223,7 @@ name|getConfig
 argument_list|(
 name|securityProvider
 argument_list|,
-name|AccessControlConfiguration
+name|AuthorizationConfiguration
 operator|.
 name|class
 argument_list|)

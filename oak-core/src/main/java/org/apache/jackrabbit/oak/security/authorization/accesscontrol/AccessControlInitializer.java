@@ -16,6 +16,8 @@ operator|.
 name|security
 operator|.
 name|authorization
+operator|.
+name|accesscontrol
 package|;
 end_package
 
@@ -179,6 +181,8 @@ name|security
 operator|.
 name|authorization
 operator|.
+name|accesscontrol
+operator|.
 name|AccessControlConstants
 import|;
 end_import
@@ -252,6 +256,7 @@ comment|/**  * Implementation of the {@code WorkspaceInitializer} interface that
 end_comment
 
 begin_class
+specifier|public
 class|class
 name|AccessControlInitializer
 implements|implements

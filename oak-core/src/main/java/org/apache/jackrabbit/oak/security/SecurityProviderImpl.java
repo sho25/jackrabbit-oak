@@ -79,7 +79,7 @@ name|security
 operator|.
 name|authorization
 operator|.
-name|AccessControlConfigurationImpl
+name|AuthorizationConfigurationImpl
 import|;
 end_import
 
@@ -227,7 +227,7 @@ name|security
 operator|.
 name|authorization
 operator|.
-name|AccessControlConfiguration
+name|AuthorizationConfiguration
 import|;
 end_import
 
@@ -471,7 +471,7 @@ block|}
 elseif|else
 if|if
 condition|(
-name|AccessControlConfiguration
+name|AuthorizationConfiguration
 operator|.
 name|class
 operator|==
@@ -571,13 +571,13 @@ block|}
 annotation|@
 name|Nonnull
 specifier|private
-name|AccessControlConfiguration
+name|AuthorizationConfiguration
 name|getAccessControlConfiguration
 parameter_list|()
 block|{
 return|return
 operator|new
-name|AccessControlConfigurationImpl
+name|AuthorizationConfigurationImpl
 argument_list|(
 name|this
 argument_list|)

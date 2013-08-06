@@ -164,7 +164,7 @@ end_comment
 begin_interface
 specifier|public
 interface|interface
-name|AccessControlConfiguration
+name|AuthorizationConfiguration
 extends|extends
 name|SecurityConfiguration
 block|{

@@ -119,7 +119,7 @@ name|security
 operator|.
 name|authorization
 operator|.
-name|AccessControlConfiguration
+name|AuthorizationConfiguration
 import|;
 end_import
 
@@ -138,6 +138,8 @@ operator|.
 name|security
 operator|.
 name|authorization
+operator|.
+name|accesscontrol
 operator|.
 name|AccessControlConstants
 import|;
@@ -333,7 +335,7 @@ name|securityProvider
 decl_stmt|;
 specifier|private
 specifier|final
-name|AccessControlConfiguration
+name|AuthorizationConfiguration
 name|acConfig
 decl_stmt|;
 specifier|private
@@ -374,7 +376,7 @@ name|securityProvider
 operator|.
 name|getConfiguration
 argument_list|(
-name|AccessControlConfiguration
+name|AuthorizationConfiguration
 operator|.
 name|class
 argument_list|)

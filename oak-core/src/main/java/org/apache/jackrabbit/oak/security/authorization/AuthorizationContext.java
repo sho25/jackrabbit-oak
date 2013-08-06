@@ -67,6 +67,8 @@ name|security
 operator|.
 name|authorization
 operator|.
+name|accesscontrol
+operator|.
 name|AccessControlConstants
 import|;
 end_import
@@ -158,7 +160,7 @@ end_import
 begin_class
 specifier|final
 class|class
-name|AccessControlContext
+name|AuthorizationContext
 implements|implements
 name|Context
 implements|,
@@ -173,11 +175,11 @@ name|Context
 name|INSTANCE
 init|=
 operator|new
-name|AccessControlContext
+name|AuthorizationContext
 argument_list|()
 decl_stmt|;
 specifier|private
-name|AccessControlContext
+name|AuthorizationContext
 parameter_list|()
 block|{     }
 specifier|static

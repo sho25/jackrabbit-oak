@@ -109,7 +109,7 @@ name|security
 operator|.
 name|authorization
 operator|.
-name|AccessControlConfiguration
+name|AuthorizationConfiguration
 import|;
 end_import
 
@@ -129,7 +129,7 @@ name|security
 operator|.
 name|authorization
 operator|.
-name|OpenAccessControlConfiguration
+name|OpenAuthorizationConfiguration
 import|;
 end_import
 
@@ -248,7 +248,7 @@ name|OpenAuthenticationConfiguration
 argument_list|()
 argument_list|,
 operator|new
-name|OpenAccessControlConfiguration
+name|OpenAuthorizationConfiguration
 argument_list|()
 argument_list|)
 return|;
@@ -292,7 +292,7 @@ block|}
 elseif|else
 if|if
 condition|(
-name|AccessControlConfiguration
+name|AuthorizationConfiguration
 operator|.
 name|class
 operator|==
@@ -304,7 +304,7 @@ operator|(
 name|T
 operator|)
 operator|new
-name|OpenAccessControlConfiguration
+name|OpenAuthorizationConfiguration
 argument_list|()
 return|;
 block|}
