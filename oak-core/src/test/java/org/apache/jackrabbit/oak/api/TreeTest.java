@@ -157,7 +157,7 @@ name|plugins
 operator|.
 name|commit
 operator|.
-name|ConflictValidator
+name|ConflictValidatorProvider
 import|;
 end_import
 
@@ -317,7 +317,7 @@ operator|.
 name|with
 argument_list|(
 operator|new
-name|ConflictValidator
+name|ConflictValidatorProvider
 argument_list|()
 argument_list|)
 operator|.
