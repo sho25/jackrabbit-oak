@@ -87,16 +87,6 @@ name|javax
 operator|.
 name|jcr
 operator|.
-name|LoginException
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|jcr
-operator|.
 name|RepositoryException
 import|;
 end_import
@@ -530,11 +520,9 @@ name|Test
 comment|// FIXME clarify expectations, move to auto refresh related tests. See OAK-938.
 specifier|public
 name|void
-name|testGetAuthorizableMultipleSessions
+name|testAutoRefreshSession
 parameter_list|()
 throws|throws
-name|LoginException
-throws|,
 name|RepositoryException
 block|{
 name|Session
@@ -565,12 +553,6 @@ argument_list|,
 literal|0
 argument_list|)
 expr_stmt|;
-name|String
-name|uid
-init|=
-name|createUserId
-argument_list|()
-decl_stmt|;
 name|User
 name|user
 init|=
@@ -601,6 +583,12 @@ name|adminSession
 operator|)
 operator|.
 name|getUserManager
+argument_list|()
+decl_stmt|;
+name|String
+name|uid
+init|=
+name|createUserId
 argument_list|()
 decl_stmt|;
 name|user
