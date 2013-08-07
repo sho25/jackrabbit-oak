@@ -974,9 +974,13 @@ name|observationManager
 decl_stmt|;
 name|SessionContext
 parameter_list|(
+annotation|@
+name|Nonnull
 name|RepositoryImpl
 name|repository
 parameter_list|,
+annotation|@
+name|Nonnull
 name|Whiteboard
 name|whiteboard
 parameter_list|,
@@ -988,6 +992,8 @@ name|Object
 argument_list|>
 name|attributes
 parameter_list|,
+annotation|@
+name|Nonnull
 specifier|final
 name|SessionDelegate
 name|delegate
@@ -1223,6 +1229,8 @@ name|getReadWriteNodeTypeManager
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Nonnull
 specifier|public
 name|Repository
 name|getRepository
@@ -1232,6 +1240,8 @@ return|return
 name|repository
 return|;
 block|}
+annotation|@
+name|Nonnull
 specifier|public
 name|SessionDelegate
 name|getSessionDelegate
