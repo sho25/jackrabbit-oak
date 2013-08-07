@@ -22,6 +22,22 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkNotNull
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -505,22 +521,6 @@ name|LoggerFactory
 import|;
 end_import
 
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|Preconditions
-operator|.
-name|checkNotNull
-import|;
-end_import
-
 begin_comment
 comment|/**  * {@link ProtectedNodeImporter} implementation that handles access control lists,  * entries and restrictions.  */
 end_comment
@@ -574,11 +574,6 @@ init|=
 literal|2
 decl_stmt|;
 specifier|private
-specifier|final
-name|SecurityProvider
-name|securityProvider
-decl_stmt|;
-specifier|private
 name|AccessControlManager
 name|acMgr
 decl_stmt|;
@@ -608,20 +603,6 @@ specifier|private
 name|MutableEntry
 name|entry
 decl_stmt|;
-specifier|public
-name|AccessControlImporter
-parameter_list|(
-name|SecurityProvider
-name|securityProvider
-parameter_list|)
-block|{
-name|this
-operator|.
-name|securityProvider
-operator|=
-name|securityProvider
-expr_stmt|;
-block|}
 comment|//----------------------------------------------< ProtectedItemImporter>---
 annotation|@
 name|Override
@@ -646,6 +627,9 @@ name|uuidBehavior
 parameter_list|,
 name|ReferenceChangeTracker
 name|referenceTracker
+parameter_list|,
+name|SecurityProvider
+name|securityProvider
 parameter_list|)
 block|{
 if|if

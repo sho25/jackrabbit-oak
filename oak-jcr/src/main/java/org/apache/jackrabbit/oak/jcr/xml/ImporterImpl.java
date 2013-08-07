@@ -20,6 +20,26 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|nodetype
+operator|.
+name|NodeTypeConstants
+operator|.
+name|NODE_TYPES_PATH
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -615,26 +635,6 @@ name|LoggerFactory
 import|;
 end_import
 
-begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|plugins
-operator|.
-name|nodetype
-operator|.
-name|NodeTypeConstants
-operator|.
-name|NODE_TYPES_PATH
-import|;
-end_import
-
 begin_class
 specifier|public
 class|class
@@ -993,6 +993,7 @@ name|getProtectedItemImporters
 argument_list|()
 control|)
 block|{
+comment|// FIXME this passes the session scoped name path mapper also for workspace imports
 if|if
 condition|(
 name|importer
@@ -1013,6 +1014,11 @@ argument_list|,
 name|uuidBehavior
 argument_list|,
 name|refTracker
+argument_list|,
+name|sessionContext
+operator|.
+name|getSecurityProvider
+argument_list|()
 argument_list|)
 condition|)
 block|{
