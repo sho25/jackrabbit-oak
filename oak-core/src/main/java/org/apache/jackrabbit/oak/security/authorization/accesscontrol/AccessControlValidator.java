@@ -77,6 +77,16 @@ name|javax
 operator|.
 name|jcr
 operator|.
+name|RepositoryException
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|jcr
+operator|.
 name|security
 operator|.
 name|AccessControlException
@@ -454,6 +464,24 @@ operator|.
 name|CommitFailedException
 operator|.
 name|ACCESS_CONTROL
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|api
+operator|.
+name|CommitFailedException
+operator|.
+name|OAK
 import|;
 end_import
 
@@ -1568,6 +1596,26 @@ argument_list|,
 literal|1
 argument_list|,
 literal|"Access control violation"
+argument_list|,
+name|e
+argument_list|)
+throw|;
+block|}
+catch|catch
+parameter_list|(
+name|RepositoryException
+name|e
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|CommitFailedException
+argument_list|(
+name|OAK
+argument_list|,
+literal|13
+argument_list|,
+literal|"Internal error"
 argument_list|,
 name|e
 argument_list|)

@@ -103,18 +103,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|jcr
-operator|.
-name|security
-operator|.
-name|AccessControlException
-import|;
-end_import
-
-begin_import
-import|import
 name|com
 operator|.
 name|google
@@ -662,7 +650,7 @@ argument_list|>
 name|restrictions
 parameter_list|)
 throws|throws
-name|AccessControlException
+name|RepositoryException
 block|{
 name|Iterator
 argument_list|<
@@ -743,7 +731,7 @@ name|Tree
 name|aceTree
 parameter_list|)
 throws|throws
-name|AccessControlException
+name|RepositoryException
 block|{
 name|base
 operator|.

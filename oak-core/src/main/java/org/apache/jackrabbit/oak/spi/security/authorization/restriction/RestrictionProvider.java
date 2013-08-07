@@ -102,7 +102,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * RestrictionProvider... TODO  */
+comment|/**  * Interface to manage the supported restrictions present with a given access  * control and permission management implementation.  *  * @since OAK 1.0  */
 end_comment
 
 begin_interface
@@ -110,6 +110,7 @@ specifier|public
 interface|interface
 name|RestrictionProvider
 block|{
+comment|/**      * Returns the restriction definitions supported by this provider implementation      * at the specified path.      *      * @param oakPath The path of the access controlled tree. A {@code null}      * path indicates that the supported restrictions for repository level      * policies should be returned.      * @return The set of supported restrictions at the given path.      */
 annotation|@
 name|Nonnull
 name|Set
@@ -124,6 +125,7 @@ name|String
 name|oakPath
 parameter_list|)
 function_decl|;
+comment|/**      * Creates a new single valued restriction for the specified parameters.      *      * @param oakPath The path of the access controlled tree or {@code null} if      * the target policies applies to the repository level.      * @param oakName The name of the restriction.      * @param value The value of the restriction.      * @return A new restriction instance.      * @throws AccessControlException If no matching restriction definition      * exists for the specified parameters.      * @throws RepositoryException If another error occurs.      */
 annotation|@
 name|Nonnull
 name|Restriction
@@ -145,8 +147,11 @@ name|Value
 name|value
 parameter_list|)
 throws|throws
+name|AccessControlException
+throws|,
 name|RepositoryException
 function_decl|;
+comment|/**      * Creates a new multi valued restriction for the specified parameters.      *      * @param oakPath The path of the access controlled tree or {@code null} if      * the target policies applies to the repository level.      * @param oakName The name of the restriction.      * @param values The values of the restriction.      * @return A new restriction instance.      * @throws AccessControlException If no matching restriction definition      * exists for the specified parameters.      * @throws RepositoryException If another error occurs.      */
 annotation|@
 name|Nonnull
 name|Restriction
@@ -169,8 +174,11 @@ modifier|...
 name|values
 parameter_list|)
 throws|throws
+name|AccessControlException
+throws|,
 name|RepositoryException
 function_decl|;
+comment|/**      * Read the valid restrictions stored in the specified ACE tree.      *      * @param oakPath The path of the access controlled tree or {@code null} if      * the target policies applies to the repository level.      * @param aceTree The tree corresponding to an ACE that may contain      * restrictions.      * @return The valid restrictions stored with the specified tree or an      * empty set.      */
 annotation|@
 name|Nonnull
 name|Set
@@ -190,6 +198,7 @@ name|Tree
 name|aceTree
 parameter_list|)
 function_decl|;
+comment|/**      * Writes the given restrictions to the specified ACE tree. Note, that this      * method does not validate the specified restrictions (see also      * {@link #validateRestrictions(String, org.apache.jackrabbit.oak.api.Tree)}).      *      * @param oakPath The path of the access controlled tree or {@code null} if      * the target policies applies to the repository level.      * @param aceTree The tree corresponding to an ACE that will have the      * specified restrictions added.      * @throws RepositoryException If an error occurs while writing the      * restrictions.      */
 name|void
 name|writeRestrictions
 parameter_list|(
@@ -206,8 +215,9 @@ argument_list|>
 name|restrictions
 parameter_list|)
 throws|throws
-name|AccessControlException
+name|RepositoryException
 function_decl|;
+comment|/**      * Validate the restrictions present with the specified ACE tree.      *      * @param oakPath The path of the access controlled tree or {@code null} if      * the target policies applies to the repository level.      * @param aceTree The tree corresponding to an ACE.      * @throws AccessControlException If any invalid restrictions are detected.      * @throws RepositoryException If another error occurs.      */
 name|void
 name|validateRestrictions
 parameter_list|(
@@ -223,7 +233,10 @@ name|aceTree
 parameter_list|)
 throws|throws
 name|AccessControlException
+throws|,
+name|RepositoryException
 function_decl|;
+comment|/**      * Creates the {@link RestrictionPattern} for the restriction information      * stored with specified tree.      *      * @param oakPath The path of the access controlled tree or {@code null} if      * the target policies applies to the repository level.      * @param tree The tree holding the restriction information.      * @return A new {@link RestrictionPattern} representing the restriction      * information present with the given tree.      */
 annotation|@
 name|Nonnull
 name|RestrictionPattern

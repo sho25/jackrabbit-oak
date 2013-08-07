@@ -109,16 +109,6 @@ name|javax
 operator|.
 name|jcr
 operator|.
-name|AccessDeniedException
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|jcr
-operator|.
 name|NamespaceRegistry
 import|;
 end_import
@@ -842,7 +832,7 @@ argument_list|>
 name|restrictions
 parameter_list|)
 throws|throws
-name|AccessDeniedException
+name|RepositoryException
 block|{
 comment|// validation of the restrictions is delegated to the commit hook
 comment|// see #validateRestrictions below
