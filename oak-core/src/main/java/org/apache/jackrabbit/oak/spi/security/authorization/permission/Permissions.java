@@ -1579,7 +1579,7 @@ expr_stmt|;
 block|}
 else|else
 block|{
-comment|// TODO: workspace-mgt
+comment|// FIXME: workspace-mgt (blocked by OAK-916)
 name|permission
 operator|=
 name|defaultPermission
