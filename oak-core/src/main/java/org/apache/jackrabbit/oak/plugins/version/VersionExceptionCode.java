@@ -52,6 +52,16 @@ name|NO_VERSION_TO_RESTORE
 argument_list|(
 literal|"No suitable version to restore"
 argument_list|)
+block|,
+name|LABEL_EXISTS
+argument_list|(
+literal|"Version label already exists"
+argument_list|)
+block|,
+name|NO_SUCH_VERSION_LABEL
+argument_list|(
+literal|"No such version label"
+argument_list|)
 block|;
 specifier|private
 specifier|final
