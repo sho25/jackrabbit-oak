@@ -822,7 +822,7 @@ parameter_list|)
 throws|throws
 name|CommitFailedException
 block|{
-comment|// TODO validate acl / ace / restriction removal
+comment|// nothing to do
 return|return
 literal|null
 return|;
