@@ -786,7 +786,7 @@ return|return
 literal|null
 return|;
 block|}
-comment|// TODO add to API
+comment|// TODO add to API (-> JCR-3637)
 annotation|@
 name|CheckForNull
 specifier|public
