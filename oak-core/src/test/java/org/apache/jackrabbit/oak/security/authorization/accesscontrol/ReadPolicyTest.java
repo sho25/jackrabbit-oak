@@ -109,9 +109,9 @@ name|security
 operator|.
 name|authorization
 operator|.
-name|accesscontrol
+name|permission
 operator|.
-name|AccessControlConstants
+name|PermissionConstants
 import|;
 end_import
 
@@ -198,11 +198,11 @@ name|options
 operator|.
 name|getConfigValue
 argument_list|(
-name|AccessControlConstants
+name|PermissionConstants
 operator|.
 name|PARAM_READ_PATHS
 argument_list|,
-name|AccessControlConstants
+name|PermissionConstants
 operator|.
 name|DEFAULT_READ_PATHS
 argument_list|)
