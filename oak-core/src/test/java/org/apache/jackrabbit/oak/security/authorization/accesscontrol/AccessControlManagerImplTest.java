@@ -10245,7 +10245,7 @@ name|length
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * @since OAK 1.0 : only accessible policies are returned by call succeeds      */
+comment|/**      * @since OAK 1.0 : only accessible policies are returned but not exception      * is raised.      */
 annotation|@
 name|Test
 specifier|public
