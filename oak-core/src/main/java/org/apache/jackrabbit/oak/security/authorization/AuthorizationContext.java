@@ -83,9 +83,15 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|util
+name|spi
 operator|.
-name|TreeLocation
+name|security
+operator|.
+name|authorization
+operator|.
+name|permission
+operator|.
+name|PermissionConstants
 import|;
 end_import
 
@@ -99,13 +105,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|security
+name|util
 operator|.
-name|authorization
-operator|.
-name|permission
-operator|.
-name|PermissionConstants
+name|TreeLocation
 import|;
 end_import
 

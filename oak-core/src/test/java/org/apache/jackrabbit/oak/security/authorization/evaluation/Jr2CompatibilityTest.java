@@ -305,9 +305,9 @@ name|security
 operator|.
 name|authorization
 operator|.
-name|accesscontrol
+name|permission
 operator|.
-name|AccessControlConstants
+name|PermissionConstants
 import|;
 end_import
 
@@ -362,7 +362,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Test compatibility with Jackrabbit 2.x using the  * {@link AccessControlConstants#PARAM_PERMISSIONS_JR2} configuration parameter.  */
+comment|/**  * Test compatibility with Jackrabbit 2.x using the  * {@link org.apache.jackrabbit.oak.spi.security.authorization.permission.PermissionConstants#PARAM_PERMISSIONS_JR2} configuration parameter.  */
 end_comment
 
 begin_class
@@ -546,11 +546,11 @@ name|Collections
 operator|.
 name|singletonMap
 argument_list|(
-name|AccessControlConstants
+name|PermissionConstants
 operator|.
 name|PARAM_PERMISSIONS_JR2
 argument_list|,
-name|AccessControlConstants
+name|PermissionConstants
 operator|.
 name|VALUE_PERMISSIONS_JR2
 argument_list|)

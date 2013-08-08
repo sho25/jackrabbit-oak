@@ -270,63 +270,6 @@ argument_list|,
 name|NT_REP_RESTRICTIONS
 argument_list|)
 decl_stmt|;
-comment|/**      * Configuration parameter to enforce backwards compatible permission      * validation with respect to user management and node removal:      *      *<ul>      *<li>User Management: As of OAK 1.0 creation/removal of user and      *     groups as well as modification of user/group specific protected properties      *     requires {@link org.apache.jackrabbit.oak.spi.security.authorization.permission.Permissions#USER_MANAGEMENT USER_MANAGEMENT}      *     permissions while in Jackrabbit 2.0 they were covered by regular item      *     write permissions.</li>      *<li>Removing Nodes: As of OAK 1.0 removing a node will succeed if the      *     removal is granted on that specific node irrespective of the permission      *     granted or denied within the subtree. This contrasts to JR 2.0 where      *     removal of a node only succeeded if all child items (nodes and properties)      *     could be removed.</li>      *</ul>      *      * In order to enforce backwards compatible behavior of the listed permissions      * above the access control configuration setup needs to contain the      * {@code #PARAM_PERMISSIONS_JR2} configuration parameter whose value is      * expected to be a comma separated string of permission names for which      * backwards compatible behavior should be turned on.<p>      *      * Currently the following values are respected:      *<ul>      *<li>"USER_MANAGEMENT" : to avoid enforcing {@link Permissions#USER_MANAGEMENT}      *     permission.</li>      *<li>"REMOVE_NODE" : to enforce permission checks for all items located      *     in the subtree in case of removal.</li>      *</ul>      * @since OAK 1.0      */
-name|String
-name|PARAM_PERMISSIONS_JR2
-init|=
-literal|"permissionsJr2"
-decl_stmt|;
-comment|/**      * Value of the {@link #PARAM_PERMISSIONS_JR2} configuration parameter that      * contains all value entries.      */
-name|String
-name|VALUE_PERMISSIONS_JR2
-init|=
-name|Permissions
-operator|.
-name|getString
-argument_list|(
-name|Permissions
-operator|.
-name|USER_MANAGEMENT
-operator||
-name|Permissions
-operator|.
-name|REMOVE_NODE
-argument_list|)
-decl_stmt|;
-comment|/**      * Configuration parameter to enable full read access to regular nodes and      * properties at the specified paths.      *      * @since OAK 1.0      */
-name|String
-name|PARAM_READ_PATHS
-init|=
-literal|"readPaths"
-decl_stmt|;
-comment|/**      * Default value for the {@link #PARAM_READ_PATHS} configuration parameter.      */
-name|String
-index|[]
-name|DEFAULT_READ_PATHS
-init|=
-operator|new
-name|String
-index|[]
-block|{
-name|NamespaceConstants
-operator|.
-name|NAMESPACES_PATH
-block|,
-name|NodeTypeConstants
-operator|.
-name|NODE_TYPES_PATH
-block|,
-name|PrivilegeConstants
-operator|.
-name|PRIVILEGES_PATH
-block|}
-decl_stmt|;
-comment|/**      * Configuration parameter specifying additional principals that should be      * treated as 'administrator' thus get granted full permissions on the      * complete repository content.      *      * @since OAK 1.0      */
-name|String
-name|PARAM_ADMINISTRATOR_PRINCIPALS
-init|=
-literal|"administratorPrincipals"
-decl_stmt|;
 block|}
 end_interface
 
