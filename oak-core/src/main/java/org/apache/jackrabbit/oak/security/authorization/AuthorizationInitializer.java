@@ -16,8 +16,6 @@ operator|.
 name|security
 operator|.
 name|authorization
-operator|.
-name|accesscontrol
 package|;
 end_package
 
@@ -254,13 +252,12 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Implementation of the {@code WorkspaceInitializer} interface that creates  * a property index definitions for {@link #REP_PRINCIPAL_NAME rep:principalName}  * properties defined with ACE nodes.  */
+comment|/**  * Implementation of the {@code WorkspaceInitializer} interface that  *<ul>  *<li>creates a property index definitions for  *     {@link #REP_PRINCIPAL_NAME rep:principalName} properties defined with ACE  *     nodes</li>  *<li>asserts that the permission store is setup and has dedicated entry for  *     this workspace.</li>  *</ul>.  */
 end_comment
 
 begin_class
-specifier|public
 class|class
-name|AccessControlInitializer
+name|AuthorizationInitializer
 implements|implements
 name|WorkspaceInitializer
 implements|,
