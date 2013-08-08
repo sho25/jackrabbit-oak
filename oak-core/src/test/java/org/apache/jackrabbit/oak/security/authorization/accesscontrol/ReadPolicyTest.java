@@ -148,7 +148,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Tests for the special {@code ReadPolicy} exposed at specified paths.  */
+comment|/**  * Tests for the special {@code ReadPolicy} exposed at specified paths.  *  * @since OAK 1.0  */
 end_comment
 
 begin_class
