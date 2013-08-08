@@ -253,6 +253,7 @@ name|NO_PERMISSION
 init|=
 literal|0
 decl_stmt|;
+comment|/**      * @since OAK 1.0      */
 specifier|public
 specifier|static
 specifier|final
@@ -261,6 +262,7 @@ name|READ_NODE
 init|=
 literal|1
 decl_stmt|;
+comment|/**      * @since OAK 1.0      */
 specifier|public
 specifier|static
 specifier|final
@@ -271,6 +273,7 @@ name|READ_NODE
 operator|<<
 literal|1
 decl_stmt|;
+comment|/**      * @since OAK 1.0      */
 specifier|public
 specifier|static
 specifier|final
@@ -281,6 +284,7 @@ name|READ_PROPERTY
 operator|<<
 literal|1
 decl_stmt|;
+comment|/**      * @since OAK 1.0      */
 specifier|public
 specifier|static
 specifier|final
