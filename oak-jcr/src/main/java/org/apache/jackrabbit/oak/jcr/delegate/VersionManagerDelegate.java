@@ -513,14 +513,29 @@ parameter_list|)
 throws|throws
 name|RepositoryException
 block|{
+comment|// perform the operation on a fresh root because
+comment|// it must not save pending changes in the workspace
+name|Root
+name|fresh
+init|=
+name|sessionDelegate
+operator|.
+name|getContentSession
+argument_list|()
+operator|.
+name|getLatestRoot
+argument_list|()
+decl_stmt|;
 name|versionManager
 operator|.
 name|checkout
 argument_list|(
-name|getTree
-argument_list|(
+name|fresh
+argument_list|,
 name|nodeDelegate
-argument_list|)
+operator|.
+name|getPath
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}

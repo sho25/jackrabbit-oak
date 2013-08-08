@@ -273,7 +273,39 @@ name|base
 operator|.
 name|Preconditions
 operator|.
+name|checkArgument
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
 name|checkNotNull
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkState
 import|;
 end_import
 
@@ -605,15 +637,20 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-comment|/**      * Performs a checkout on a versionable tree.      *      * @param versionable the versionable node to check out.      * @throws UnsupportedRepositoryOperationException      *                             if the versionable tree isn't actually      *                             versionable.      * @throws RepositoryException if an error occurs while checking the      *                             node type of the tree.      */
+comment|/**      * Performs a checkout on a versionable tree.      *      * @param workspaceRoot a fresh workspace root without pending changes.      * @param versionablePath the absolute path to the versionable node to check out.      * @throws UnsupportedRepositoryOperationException      *                             if the versionable tree isn't actually      *                             versionable.      * @throws RepositoryException if an error occurs while checking the      *                             node type of the tree.      * @throws IllegalStateException if the workspaceRoot has pending changes.      * @throws IllegalArgumentException if the<code>versionablePath</code> is      *                             not absolute.      */
 specifier|public
 name|void
 name|checkout
 parameter_list|(
 annotation|@
 name|Nonnull
-name|Tree
-name|versionable
+name|Root
+name|workspaceRoot
+parameter_list|,
+annotation|@
+name|Nonnull
+name|String
+name|versionablePath
 parameter_list|)
 throws|throws
 name|UnsupportedRepositoryOperationException
@@ -622,6 +659,35 @@ name|InvalidItemStateException
 throws|,
 name|RepositoryException
 block|{
+name|checkState
+argument_list|(
+operator|!
+name|workspaceRoot
+operator|.
+name|hasPendingChanges
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|checkArgument
+argument_list|(
+name|PathUtils
+operator|.
+name|isAbsolute
+argument_list|(
+name|versionablePath
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|Tree
+name|versionable
+init|=
+name|workspaceRoot
+operator|.
+name|getTree
+argument_list|(
+name|versionablePath
+argument_list|)
+decl_stmt|;
 if|if
 condition|(
 operator|!
@@ -653,26 +719,6 @@ name|versionable
 argument_list|)
 condition|)
 block|{
-if|if
-condition|(
-name|workspaceRoot
-operator|.
-name|hasPendingChanges
-argument_list|()
-condition|)
-block|{
-comment|// TODO: perform checkout on separate root and refresh session
-comment|//       while keeping pending changes.
-name|log
-operator|.
-name|warn
-argument_list|(
-literal|"Session has pending changes. Checkout operation will "
-operator|+
-literal|"save those changes as well."
-argument_list|)
-expr_stmt|;
-block|}
 name|versionable
 operator|.
 name|setProperty
@@ -690,8 +736,7 @@ argument_list|)
 expr_stmt|;
 try|try
 block|{
-name|getWorkspaceRoot
-argument_list|()
+name|workspaceRoot
 operator|.
 name|commit
 argument_list|()
@@ -706,8 +751,7 @@ name|CommitFailedException
 name|e
 parameter_list|)
 block|{
-name|getWorkspaceRoot
-argument_list|()
+name|workspaceRoot
 operator|.
 name|refresh
 argument_list|()
