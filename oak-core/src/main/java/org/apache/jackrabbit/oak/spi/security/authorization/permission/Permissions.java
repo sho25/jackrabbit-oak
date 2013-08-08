@@ -466,6 +466,7 @@ name|READ_NODE
 operator||
 name|READ_PROPERTY
 decl_stmt|;
+comment|/**      * @since OAK 1.0      */
 specifier|public
 specifier|static
 specifier|final
@@ -769,6 +770,7 @@ literal|"USER_MANAGEMENT"
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * Returns names of the specified permissions.      *      * @param permissions The permissions for which the string representation      * should be collected.      * @return The names of the given permissions.      */
 specifier|public
 specifier|static
 name|Set
@@ -874,6 +876,7 @@ name|names
 return|;
 block|}
 block|}
+comment|/**      * Returns the names of the specified permissions separated by ','.      *      * @param permissions The permissions for which the string representation      * should be collected.      * @return The names of the given permissions separated by ',' such      * that i can be passed to {@link Session#hasPermission(String, String)}      * and {@link Session#checkPermission(String, String)}.      */
 specifier|public
 specifier|static
 name|String
