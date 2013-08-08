@@ -390,11 +390,7 @@ name|f
 init|=
 operator|new
 name|FilterImpl
-argument_list|(
-literal|null
-argument_list|,
-literal|null
-argument_list|)
+argument_list|()
 decl_stmt|;
 name|f
 operator|.

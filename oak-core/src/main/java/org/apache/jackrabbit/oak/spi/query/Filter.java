@@ -105,6 +105,22 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
+name|api
+operator|.
+name|Tree
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
 name|query
 operator|.
 name|fulltext
@@ -141,6 +157,11 @@ function_decl|;
 comment|/**      * Get the fulltext search condition expression, if any.      *       * @return the condition (null if none)      */
 name|FullTextExpression
 name|getFullTextConstraint
+parameter_list|()
+function_decl|;
+comment|/**      * Get the root tree to read data.      *       * @return the tree      */
+name|Tree
+name|getRootTree
 parameter_list|()
 function_decl|;
 comment|/**      * Get the property restriction for the given property, if any.      *      * @param propertyName the property name      * @return the restriction, or null if there is no restriction for this property      */

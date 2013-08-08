@@ -3030,6 +3030,15 @@ operator|=
 name|rootTree
 expr_stmt|;
 block|}
+specifier|public
+name|Tree
+name|getRootTree
+parameter_list|()
+block|{
+return|return
+name|rootTree
+return|;
+block|}
 annotation|@
 name|Override
 specifier|public
