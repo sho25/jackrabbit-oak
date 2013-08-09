@@ -644,7 +644,7 @@ name|put
 argument_list|(
 name|PermissionConstants
 operator|.
-name|PARAM_ADMINISTRATOR_PRINCIPALS
+name|PARAM_ADMINISTRATIVE_PRINCIPALS
 argument_list|,
 operator|new
 name|String

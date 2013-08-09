@@ -242,9 +242,9 @@ argument_list|)
 decl_stmt|;
 comment|/**      * Configuration parameter specifying additional principals that should be      * treated as 'administrator' thus get granted full permissions on the      * complete repository content.      *      * @since OAK 1.0      */
 name|String
-name|PARAM_ADMINISTRATOR_PRINCIPALS
+name|PARAM_ADMINISTRATIVE_PRINCIPALS
 init|=
-literal|"administratorPrincipals"
+literal|"administrativePrincipals"
 decl_stmt|;
 comment|/**      * Configuration parameter to enable full read access to regular nodes and      * properties at the specified paths.      *      * @since OAK 1.0      */
 name|String

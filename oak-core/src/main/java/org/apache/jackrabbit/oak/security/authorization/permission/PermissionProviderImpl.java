@@ -1281,7 +1281,7 @@ argument_list|()
 operator|.
 name|getConfigValue
 argument_list|(
-name|PARAM_ADMINISTRATOR_PRINCIPALS
+name|PARAM_ADMINISTRATIVE_PRINCIPALS
 argument_list|,
 operator|new
 name|String
