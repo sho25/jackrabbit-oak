@@ -490,12 +490,6 @@ argument_list|()
 expr_stmt|;
 block|}
 annotation|@
-name|Ignore
-argument_list|(
-literal|"OAK-168"
-argument_list|)
-comment|// FIXME: waiting for basic version mgt
-annotation|@
 name|Test
 specifier|public
 name|void
@@ -1532,12 +1526,6 @@ comment|// success
 block|}
 block|}
 comment|/**      * @since oak      */
-annotation|@
-name|Ignore
-argument_list|(
-literal|"OAK-168"
-argument_list|)
-comment|// FIXME: waiting for basic version mgt
 annotation|@
 name|Test
 specifier|public
