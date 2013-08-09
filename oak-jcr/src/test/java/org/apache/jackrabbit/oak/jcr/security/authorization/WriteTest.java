@@ -2028,11 +2028,14 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|// FIXME OAK-869: This currently throws an IllegalStateException. Set correct test expectations
 annotation|@
 name|Test
 annotation|@
 name|Ignore
+argument_list|(
+literal|"OAK-869"
+argument_list|)
+comment|// FIXME: OAK-869
 specifier|public
 name|void
 name|testWriteOnParentWithNoReadePriv
