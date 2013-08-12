@@ -161,6 +161,12 @@ name|REP_REMOVE_VERSION_LABELS
 init|=
 literal|"rep:removeVersionLabels"
 decl_stmt|;
+comment|/**      * Prefix of the jcr:baseVersion value for a restore.      */
+name|String
+name|RESTORE_PREFIX
+init|=
+literal|"restore-"
+decl_stmt|;
 comment|/**      * Quote from JSR 283 Section "15.12.3 Activity Storage"<p/>      *<p/>      * Activities are persisted as nodes of type nt:activity under system-generated      * node names in activity storage below /jcr:system/jcr:activities.<br>      * Similar to the /jcr:system/jcr:versionStorage subgraph, the activity storage      * is a single repository wide store, but is reflected into each workspace.      */
 name|String
 name|ACTIVITIES_PATH

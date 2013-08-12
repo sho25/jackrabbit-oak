@@ -148,6 +148,26 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|version
+operator|.
+name|VersionConstants
+operator|.
+name|RESTORE_PREFIX
+import|;
+end_import
+
+begin_import
 import|import
 name|javax
 operator|.
@@ -336,6 +356,24 @@ operator|.
 name|version
 operator|.
 name|VersionStorage
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|version
+operator|.
+name|VersionConstants
 import|;
 end_import
 
@@ -1029,6 +1067,8 @@ name|setProperty
 argument_list|(
 name|JCR_BASEVERSION
 argument_list|,
+name|RESTORE_PREFIX
+operator|+
 name|vd
 operator|.
 name|getIdentifier
@@ -1039,8 +1079,6 @@ operator|.
 name|REFERENCE
 argument_list|)
 expr_stmt|;
-comment|// TODO: what if node was checked-out and restore is for current
-comment|//       base version? -> will not trigger VersionEditor
 block|}
 block|}
 comment|/**      * Add a version label to the given version history.      *      * @param versionHistory the version history.      * @param version the version.      * @param oakVersionLabel the version label.      * @param moveLabel whether to move the label if it already exists.      * @throws InvalidItemStateException if any of the nodes is stale.      * @throws LabelExistsVersionException if moveLabel is false, and an attempt      * is made to add a label that already exists in this version history.      * @throws VersionException if the specified version does not exist in this      * version history or if the specified version is the root version (jcr:rootVersion).      * @throws RepositoryException if another error occurs.      */
