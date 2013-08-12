@@ -19,6 +19,22 @@ end_package
 
 begin_import
 import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|collect
+operator|.
+name|Sets
+operator|.
+name|newTreeSet
+import|;
+end_import
+
+begin_import
+import|import static
 name|org
 operator|.
 name|apache
@@ -82,16 +98,6 @@ operator|.
 name|util
 operator|.
 name|Collections
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Map
 import|;
 end_import
 
@@ -271,18 +277,6 @@ name|javax
 operator|.
 name|jcr
 operator|.
-name|lock
-operator|.
-name|LockManager
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|jcr
-operator|.
 name|nodetype
 operator|.
 name|ConstraintViolationException
@@ -310,20 +304,6 @@ operator|.
 name|security
 operator|.
 name|AccessControlManager
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|collect
-operator|.
-name|Sets
 import|;
 end_import
 
@@ -737,28 +717,10 @@ specifier|final
 name|SessionDelegate
 name|sd
 decl_stmt|;
-specifier|private
-specifier|final
-name|Map
-argument_list|<
-name|String
-argument_list|,
-name|Object
-argument_list|>
-name|attributes
-decl_stmt|;
 name|SessionImpl
 parameter_list|(
 name|SessionContext
 name|sessionContext
-parameter_list|,
-name|Map
-argument_list|<
-name|String
-argument_list|,
-name|Object
-argument_list|>
-name|attributes
 parameter_list|)
 block|{
 name|this
@@ -775,12 +737,6 @@ name|sessionContext
 operator|.
 name|getSessionDelegate
 argument_list|()
-expr_stmt|;
-name|this
-operator|.
-name|attributes
-operator|=
-name|attributes
 expr_stmt|;
 block|}
 specifier|static
@@ -1328,11 +1284,12 @@ name|String
 argument_list|>
 name|names
 init|=
-name|Sets
-operator|.
-name|newHashSet
+name|newTreeSet
 argument_list|(
-name|attributes
+name|sessionContext
+operator|.
+name|getAttributes
+argument_list|()
 operator|.
 name|keySet
 argument_list|()
@@ -1392,18 +1349,27 @@ argument_list|(
 name|name
 argument_list|)
 decl_stmt|;
-return|return
+if|if
+condition|(
 name|attribute
 operator|==
 literal|null
-condition|?
-name|attributes
+condition|)
+block|{
+name|attribute
+operator|=
+name|sessionContext
+operator|.
+name|getAttributes
+argument_list|()
 operator|.
 name|get
 argument_list|(
 name|name
 argument_list|)
-else|:
+expr_stmt|;
+block|}
+return|return
 name|attribute
 return|;
 block|}
@@ -2803,21 +2769,6 @@ block|}
 block|}
 block|}
 annotation|@
-name|Nonnull
-specifier|private
-name|LockManager
-name|getLockManager
-parameter_list|()
-block|{
-return|return
-name|sessionContext
-operator|.
-name|getLockManager
-argument_list|()
-return|;
-block|}
-comment|/**      * @see javax.jcr.Session#addLockToken(String)      */
-annotation|@
 name|Override
 specifier|public
 name|void
@@ -2829,6 +2780,9 @@ parameter_list|)
 block|{
 try|try
 block|{
+name|getWorkspace
+argument_list|()
+operator|.
 name|getLockManager
 argument_list|()
 operator|.
@@ -2848,19 +2802,17 @@ name|log
 operator|.
 name|warn
 argument_list|(
-literal|"Unable to add lock token '{}' to this session: {}"
-argument_list|,
+literal|"Unable to add lock token "
+operator|+
 name|lt
+operator|+
+literal|" to session"
 argument_list|,
 name|e
-operator|.
-name|getMessage
-argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * @see javax.jcr.Session#getLockTokens()      */
 annotation|@
 name|Override
 annotation|@
@@ -2874,6 +2826,9 @@ block|{
 try|try
 block|{
 return|return
+name|getWorkspace
+argument_list|()
+operator|.
 name|getLockManager
 argument_list|()
 operator|.
@@ -2891,12 +2846,9 @@ name|log
 operator|.
 name|warn
 argument_list|(
-literal|"Unable to retrieve lock tokens for this session: {}"
+literal|"Unable to retrieve lock tokens from session"
 argument_list|,
 name|e
-operator|.
-name|getMessage
-argument_list|()
 argument_list|)
 expr_stmt|;
 return|return
@@ -2908,7 +2860,6 @@ index|]
 return|;
 block|}
 block|}
-comment|/**      * @see javax.jcr.Session#removeLockToken(String)      */
 annotation|@
 name|Override
 specifier|public
@@ -2921,10 +2872,13 @@ parameter_list|)
 block|{
 try|try
 block|{
+name|getWorkspace
+argument_list|()
+operator|.
 name|getLockManager
 argument_list|()
 operator|.
-name|addLockToken
+name|removeLockToken
 argument_list|(
 name|lt
 argument_list|)
@@ -2940,14 +2894,13 @@ name|log
 operator|.
 name|warn
 argument_list|(
-literal|"Unable to add lock token '{}' to this session: {}"
-argument_list|,
+literal|"Unable to remove lock token "
+operator|+
 name|lt
+operator|+
+literal|" from session"
 argument_list|,
 name|e
-operator|.
-name|getMessage
-argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
