@@ -135,18 +135,6 @@ name|javax
 operator|.
 name|jcr
 operator|.
-name|nodetype
-operator|.
-name|NodeTypeManager
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|jcr
-operator|.
 name|observation
 operator|.
 name|ObservationManager
@@ -1154,7 +1142,7 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|NodeTypeManager
+name|ReadWriteNodeTypeManager
 name|getNodeTypeManager
 parameter_list|()
 block|{
@@ -1521,15 +1509,6 @@ name|sessionContext
 operator|.
 name|getPrivilegeManager
 argument_list|()
-return|;
-block|}
-comment|//-----------------------------------------------------------< internal>---
-name|ReadWriteNodeTypeManager
-name|getReadWriteNodeTypeManager
-parameter_list|()
-block|{
-return|return
-name|nodeTypeManager
 return|;
 block|}
 comment|//------------------------------------------------------------< private>---

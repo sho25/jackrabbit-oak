@@ -1887,7 +1887,7 @@ throws|throws
 name|RepositoryException
 block|{
 return|return
-name|getDefinitionProvider
+name|getNodeTypeManager
 argument_list|()
 operator|.
 name|getDefinition

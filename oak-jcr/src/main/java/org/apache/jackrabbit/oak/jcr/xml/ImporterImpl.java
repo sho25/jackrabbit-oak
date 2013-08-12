@@ -873,6 +873,9 @@ name|vMgr
 init|=
 name|sessionContext
 operator|.
+name|getWorkspace
+argument_list|()
+operator|.
 name|getVersionManager
 argument_list|()
 decl_stmt|;
@@ -898,6 +901,9 @@ block|}
 if|if
 condition|(
 name|sessionContext
+operator|.
+name|getWorkspace
+argument_list|()
 operator|.
 name|getLockManager
 argument_list|()
@@ -944,14 +950,20 @@ name|effectiveNodeTypeProvider
 operator|=
 name|sessionContext
 operator|.
-name|getEffectiveNodeTypeProvider
+name|getWorkspace
+argument_list|()
+operator|.
+name|getNodeTypeManager
 argument_list|()
 expr_stmt|;
 name|definitionProvider
 operator|=
 name|sessionContext
 operator|.
-name|getDefinitionProvider
+name|getWorkspace
+argument_list|()
+operator|.
+name|getNodeTypeManager
 argument_list|()
 expr_stmt|;
 comment|// TODO: end
