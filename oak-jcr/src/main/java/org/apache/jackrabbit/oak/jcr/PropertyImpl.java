@@ -449,11 +449,13 @@ block|}
 else|else
 block|{
 return|return
-name|sessionContext
+name|NodeImpl
 operator|.
-name|createNodeOrNull
+name|createNode
 argument_list|(
 name|parent
+argument_list|,
+name|sessionContext
 argument_list|)
 return|;
 block|}

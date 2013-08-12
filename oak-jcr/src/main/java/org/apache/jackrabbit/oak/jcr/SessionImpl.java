@@ -1039,7 +1039,7 @@ name|NodeDelegate
 condition|)
 block|{
 return|return
-name|sessionContext
+name|NodeImpl
 operator|.
 name|createNodeOrNull
 argument_list|(
@@ -1047,6 +1047,8 @@ operator|(
 name|NodeDelegate
 operator|)
 name|item
+argument_list|,
+name|sessionContext
 argument_list|)
 return|;
 block|}
@@ -1112,7 +1114,7 @@ throws|throws
 name|RepositoryException
 block|{
 return|return
-name|sessionContext
+name|NodeImpl
 operator|.
 name|createNodeOrNull
 argument_list|(
@@ -1125,6 +1127,8 @@ argument_list|(
 name|absPath
 argument_list|)
 argument_list|)
+argument_list|,
+name|sessionContext
 argument_list|)
 return|;
 block|}
@@ -1544,11 +1548,13 @@ argument_list|)
 throw|;
 block|}
 return|return
-name|sessionContext
+name|NodeImpl
 operator|.
 name|createNodeOrNull
 argument_list|(
 name|nd
+argument_list|,
+name|sessionContext
 argument_list|)
 return|;
 block|}
@@ -1684,11 +1690,13 @@ argument_list|)
 throw|;
 block|}
 return|return
-name|sessionContext
+name|NodeImpl
 operator|.
 name|createNodeOrNull
 argument_list|(
 name|nd
+argument_list|,
+name|sessionContext
 argument_list|)
 return|;
 block|}

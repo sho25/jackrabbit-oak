@@ -795,7 +795,7 @@ throws|throws
 name|RepositoryException
 block|{
 return|return
-name|sessionContext
+name|NodeImpl
 operator|.
 name|createNodeOrNull
 argument_list|(
@@ -807,6 +807,8 @@ name|VersionConstants
 operator|.
 name|JCR_FROZENNODE
 argument_list|)
+argument_list|,
+name|sessionContext
 argument_list|)
 return|;
 block|}
