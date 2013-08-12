@@ -810,6 +810,7 @@ specifier|private
 name|ObservationManagerImpl
 name|observationManager
 decl_stmt|;
+specifier|public
 name|SessionContext
 parameter_list|(
 annotation|@
