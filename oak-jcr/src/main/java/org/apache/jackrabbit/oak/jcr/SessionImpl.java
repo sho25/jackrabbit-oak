@@ -717,6 +717,7 @@ specifier|final
 name|SessionDelegate
 name|sd
 decl_stmt|;
+specifier|public
 name|SessionImpl
 parameter_list|(
 name|SessionContext
