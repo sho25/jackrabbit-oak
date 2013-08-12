@@ -129,6 +129,20 @@ end_import
 
 begin_import
 import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|lucene
+operator|.
+name|analysis
+operator|.
+name|Analyzer
+import|;
+end_import
+
+begin_import
+import|import
 name|com
 operator|.
 name|google
@@ -163,6 +177,13 @@ name|QueryIndexProvider
 implements|,
 name|LuceneIndexConstants
 block|{
+comment|/**      * TODO how to inject this in an OSGi friendly way?      */
+specifier|protected
+name|Analyzer
+name|analyzer
+init|=
+name|ANALYZER
+decl_stmt|;
 annotation|@
 name|Override
 annotation|@
@@ -191,7 +212,6 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-comment|/**      * testing purposes      */
 specifier|protected
 name|LuceneIndex
 name|newLuceneIndex
@@ -200,7 +220,45 @@ block|{
 return|return
 operator|new
 name|LuceneIndex
-argument_list|()
+argument_list|(
+name|analyzer
+argument_list|)
+return|;
+block|}
+comment|/**      * sets the default analyzer that will be used at query time      */
+specifier|public
+name|void
+name|setAnalyzer
+parameter_list|(
+name|Analyzer
+name|analyzer
+parameter_list|)
+block|{
+name|this
+operator|.
+name|analyzer
+operator|=
+name|analyzer
+expr_stmt|;
+block|}
+comment|// ----- helper builder method
+specifier|public
+name|LuceneIndexProvider
+name|with
+parameter_list|(
+name|Analyzer
+name|analyzer
+parameter_list|)
+block|{
+name|this
+operator|.
+name|setAnalyzer
+argument_list|(
+name|analyzer
+argument_list|)
+expr_stmt|;
+return|return
+name|this
 return|;
 block|}
 block|}

@@ -44,6 +44,28 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|index
+operator|.
+name|lucene
+operator|.
+name|LuceneIndexConstants
+operator|.
+name|ANALYZER
+import|;
+end_import
+
+begin_import
 import|import
 name|org
 operator|.
@@ -181,6 +203,20 @@ name|NodeState
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|lucene
+operator|.
+name|analysis
+operator|.
+name|Analyzer
+import|;
+end_import
+
 begin_comment
 comment|/**  * Service that provides Lucene based {@link IndexEditor}s  *   * @see LuceneIndexEditor  * @see IndexEditorProvider  *   */
 end_comment
@@ -201,6 +237,13 @@ name|LuceneIndexEditorProvider
 implements|implements
 name|IndexEditorProvider
 block|{
+comment|/**      * TODO how to inject this in an OSGi friendly way?      */
+specifier|private
+name|Analyzer
+name|analyzer
+init|=
+name|ANALYZER
+decl_stmt|;
 annotation|@
 name|Override
 specifier|public
@@ -234,11 +277,49 @@ operator|new
 name|LuceneIndexEditor
 argument_list|(
 name|definition
+argument_list|,
+name|analyzer
 argument_list|)
 return|;
 block|}
 return|return
 literal|null
+return|;
+block|}
+comment|/**      * sets the default analyzer that will be used at index time      */
+specifier|public
+name|void
+name|setAnalyzer
+parameter_list|(
+name|Analyzer
+name|analyzer
+parameter_list|)
+block|{
+name|this
+operator|.
+name|analyzer
+operator|=
+name|analyzer
+expr_stmt|;
+block|}
+comment|// ----- helper builder method
+specifier|public
+name|LuceneIndexEditorProvider
+name|with
+parameter_list|(
+name|Analyzer
+name|analyzer
+parameter_list|)
+block|{
+name|this
+operator|.
+name|setAnalyzer
+argument_list|(
+name|analyzer
+argument_list|)
+expr_stmt|;
+return|return
+name|this
 return|;
 block|}
 block|}
