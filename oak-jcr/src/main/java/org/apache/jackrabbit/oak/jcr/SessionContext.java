@@ -1140,7 +1140,8 @@ name|getLockManager
 parameter_list|()
 block|{
 return|return
-name|workspace
+name|getWorkspace
+argument_list|()
 operator|.
 name|getLockManager
 argument_list|()
@@ -1152,7 +1153,8 @@ name|getNodeTypeManager
 parameter_list|()
 block|{
 return|return
-name|workspace
+name|getWorkspace
+argument_list|()
 operator|.
 name|getNodeTypeManager
 argument_list|()
@@ -1166,7 +1168,8 @@ throws|throws
 name|RepositoryException
 block|{
 return|return
-name|workspace
+name|getWorkspace
+argument_list|()
 operator|.
 name|getVersionManager
 argument_list|()
@@ -1178,7 +1181,8 @@ name|getEffectiveNodeTypeProvider
 parameter_list|()
 block|{
 return|return
-name|workspace
+name|getWorkspace
+argument_list|()
 operator|.
 name|getReadWriteNodeTypeManager
 argument_list|()
@@ -1190,7 +1194,8 @@ name|getDefinitionProvider
 parameter_list|()
 block|{
 return|return
-name|workspace
+name|getWorkspace
+argument_list|()
 operator|.
 name|getReadWriteNodeTypeManager
 argument_list|()
