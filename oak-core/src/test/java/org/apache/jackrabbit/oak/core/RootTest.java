@@ -259,16 +259,6 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Ignore
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
 name|Test
 import|;
 end_import
@@ -793,7 +783,7 @@ name|assertEquals
 argument_list|(
 name|Status
 operator|.
-name|EXISTING
+name|NEW
 argument_list|,
 name|z
 operator|.
@@ -985,7 +975,7 @@ name|assertEquals
 argument_list|(
 name|Status
 operator|.
-name|EXISTING
+name|NEW
 argument_list|,
 name|parent
 operator|.
@@ -997,7 +987,7 @@ name|assertEquals
 argument_list|(
 name|Status
 operator|.
-name|EXISTING
+name|NEW
 argument_list|,
 name|n
 operator|.
@@ -1921,12 +1911,6 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-annotation|@
-name|Ignore
-argument_list|(
-literal|"OAK-947"
-argument_list|)
-comment|// FIXME OAK-947
 specifier|public
 name|void
 name|rebasePreservesStatus
@@ -2040,12 +2024,6 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-annotation|@
-name|Ignore
-argument_list|(
-literal|"OAK-947"
-argument_list|)
-comment|// FIXME OAK-947
 specifier|public
 name|void
 name|purgePreservesStatus

@@ -469,6 +469,20 @@ name|String
 name|name
 parameter_list|)
 function_decl|;
+comment|/**      * @return  {@code true} iff {@code getStatus() == Status.NEW}      */
+specifier|protected
+specifier|abstract
+name|boolean
+name|isNew
+parameter_list|()
+function_decl|;
+comment|/**      * @return  {@code true} iff {@code getStatus() == Status.MODIFIED}      */
+specifier|protected
+specifier|abstract
+name|boolean
+name|isModified
+parameter_list|()
+function_decl|;
 comment|/**      * @return {@code true} if this tree has orderable children;      *         {@code false} otherwise.      */
 specifier|protected
 name|boolean
@@ -716,8 +730,6 @@ parameter_list|()
 block|{
 if|if
 condition|(
-name|nodeBuilder
-operator|.
 name|isNew
 argument_list|()
 condition|)
@@ -729,8 +741,6 @@ block|}
 elseif|else
 if|if
 condition|(
-name|nodeBuilder
-operator|.
 name|isModified
 argument_list|()
 condition|)
