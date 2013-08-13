@@ -189,6 +189,22 @@ name|core
 operator|.
 name|query
 operator|.
+name|SQL2NodeLocalNameTest
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|core
+operator|.
+name|query
+operator|.
 name|SQL2OffsetLimitTest
 import|;
 end_import
@@ -331,8 +347,15 @@ operator|.
 name|class
 argument_list|)
 expr_stmt|;
-comment|// FIXME See OAK-957: SQL2NodeLocalNameTest test failures
-comment|// suite.addTestSuite(SQL2NodeLocalNameTest.class);
+name|suite
+operator|.
+name|addTestSuite
+argument_list|(
+name|SQL2NodeLocalNameTest
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
 name|suite
 operator|.
 name|addTestSuite
