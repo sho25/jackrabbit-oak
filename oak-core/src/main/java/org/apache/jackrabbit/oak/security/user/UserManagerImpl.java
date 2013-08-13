@@ -763,9 +763,6 @@ parameter_list|)
 throws|throws
 name|RepositoryException
 block|{
-name|checkIsLive
-argument_list|()
-expr_stmt|;
 name|Authorizable
 name|authorizable
 init|=
@@ -814,9 +811,6 @@ parameter_list|)
 throws|throws
 name|RepositoryException
 block|{
-name|checkIsLive
-argument_list|()
-expr_stmt|;
 return|return
 name|getAuthorizable
 argument_list|(
@@ -841,9 +835,6 @@ parameter_list|)
 throws|throws
 name|RepositoryException
 block|{
-name|checkIsLive
-argument_list|()
-expr_stmt|;
 name|String
 name|oakPath
 init|=
@@ -933,9 +924,6 @@ parameter_list|)
 throws|throws
 name|RepositoryException
 block|{
-name|checkIsLive
-argument_list|()
-expr_stmt|;
 return|return
 name|getQueryManager
 argument_list|()
@@ -970,9 +958,6 @@ parameter_list|)
 throws|throws
 name|RepositoryException
 block|{
-name|checkIsLive
-argument_list|()
-expr_stmt|;
 return|return
 name|getQueryManager
 argument_list|()
@@ -1044,9 +1029,6 @@ parameter_list|)
 throws|throws
 name|RepositoryException
 block|{
-name|checkIsLive
-argument_list|()
-expr_stmt|;
 name|checkValidID
 argument_list|(
 name|userID
@@ -1249,9 +1231,6 @@ parameter_list|)
 throws|throws
 name|RepositoryException
 block|{
-name|checkIsLive
-argument_list|()
-expr_stmt|;
 name|checkValidID
 argument_list|(
 name|groupID
@@ -2025,38 +2004,6 @@ argument_list|,
 name|pwHash
 argument_list|)
 expr_stmt|;
-block|}
-specifier|private
-name|void
-name|checkIsLive
-parameter_list|()
-throws|throws
-name|RepositoryException
-block|{
-try|try
-block|{
-comment|// Note: Root#checkIsLive is not part of the public root interface.
-comment|// therefore execute the check using another method.
-name|root
-operator|.
-name|getBlobFactory
-argument_list|()
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|IllegalStateException
-name|e
-parameter_list|)
-block|{
-throw|throw
-operator|new
-name|RepositoryException
-argument_list|(
-literal|"User manager is no longer alive."
-argument_list|)
-throw|;
-block|}
 block|}
 specifier|private
 name|UserQueryManager
