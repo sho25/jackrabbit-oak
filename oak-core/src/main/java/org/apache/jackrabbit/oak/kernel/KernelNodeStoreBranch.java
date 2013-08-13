@@ -1157,6 +1157,9 @@ name|getRootState
 argument_list|(
 name|headRevision
 argument_list|)
+operator|.
+name|setBranch
+argument_list|()
 expr_stmt|;
 block|}
 specifier|private
@@ -1261,6 +1264,9 @@ name|getRootState
 argument_list|(
 name|headRevision
 argument_list|)
+operator|.
+name|setBranch
+argument_list|()
 decl_stmt|;
 if|if
 condition|(
@@ -1320,6 +1326,9 @@ name|getRootState
 argument_list|(
 name|headRevision
 argument_list|)
+operator|.
+name|setBranch
+argument_list|()
 expr_stmt|;
 name|success
 operator|=
