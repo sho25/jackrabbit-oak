@@ -2202,7 +2202,7 @@ block|}
 block|}
 return|;
 block|}
-comment|/**      * This implementation returns a {@link KernelNodeBuilder} unless this is not      * a root node or {@link #isBranch} is {@code true} in which case a      * {@link MemoryNodeBuilder} is returned.      *<p>      * TODO: this is a workaround to avoid creating branches from a branch      * until this is supported by the MicroKernel. See {@link KernelNodeState#builder()}.      */
+comment|/**      * This implementation returns a {@link KernelNodeBuilder} unless this is not      * a root node or {@link #isBranch} is {@code true} in which case a      * {@link MemoryNodeBuilder} is returned.      *<p>      * TODO: this is a workaround to avoid creating branches from a branch      * until this is supported by the MicroKernel.      */
 annotation|@
 name|Override
 specifier|public
