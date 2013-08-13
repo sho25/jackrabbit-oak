@@ -796,11 +796,10 @@ name|e
 parameter_list|)
 block|{
 throw|throw
-operator|new
-name|RepositoryException
-argument_list|(
 name|e
-argument_list|)
+operator|.
+name|asRepositoryException
+argument_list|()
 throw|;
 block|}
 finally|finally
