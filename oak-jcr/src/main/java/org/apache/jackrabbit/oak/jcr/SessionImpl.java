@@ -2105,13 +2105,6 @@ operator|.
 name|save
 argument_list|()
 expr_stmt|;
-name|sessionContext
-operator|.
-name|refresh
-argument_list|(
-literal|false
-argument_list|)
-expr_stmt|;
 return|return
 literal|null
 return|;
@@ -2156,13 +2149,6 @@ operator|.
 name|refresh
 argument_list|(
 name|keepChanges
-argument_list|)
-expr_stmt|;
-name|sessionContext
-operator|.
-name|refresh
-argument_list|(
-literal|false
 argument_list|)
 expr_stmt|;
 return|return

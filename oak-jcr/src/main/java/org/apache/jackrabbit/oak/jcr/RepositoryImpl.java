@@ -338,7 +338,7 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-comment|/**      * Name of the session attribute value determining the session refresh      * behaviour.      *      * @see SessionDelegate#SessionDelegate(ContentSession, long)      */
+comment|/**      * Name of the session attribute value determining the session refresh      * behaviour.      *      * @see SessionDelegate#SessionDelegate(ContentSession, SecurityProvider, long)      */
 specifier|public
 specifier|static
 specifier|final
@@ -830,6 +830,8 @@ operator|new
 name|SessionDelegate
 argument_list|(
 name|contentSession
+argument_list|,
+name|securityProvider
 argument_list|,
 name|refreshInterval
 argument_list|)
