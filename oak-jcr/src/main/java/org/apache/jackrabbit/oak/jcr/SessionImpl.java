@@ -2141,8 +2141,6 @@ specifier|public
 name|Void
 name|perform
 parameter_list|()
-throws|throws
-name|RepositoryException
 block|{
 name|sd
 operator|.

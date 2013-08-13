@@ -1504,9 +1504,6 @@ operator|new
 name|AccessManager
 argument_list|(
 name|delegate
-operator|.
-name|getPermissionProvider
-argument_list|()
 argument_list|)
 return|;
 block|}
