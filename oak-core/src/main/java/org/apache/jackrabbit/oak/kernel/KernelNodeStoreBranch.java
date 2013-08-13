@@ -1164,11 +1164,6 @@ name|void
 name|persistTransientHead
 parameter_list|()
 block|{
-name|KernelNodeState
-name|oldBase
-init|=
-name|base
-decl_stmt|;
 name|NodeState
 name|oldHead
 init|=
@@ -1340,10 +1335,6 @@ operator|!
 name|success
 condition|)
 block|{
-name|base
-operator|=
-name|oldBase
-expr_stmt|;
 name|head
 operator|=
 name|oldHead
