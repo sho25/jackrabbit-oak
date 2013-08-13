@@ -30,7 +30,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A {@code SessionOperation} provides an execution context for executing session scoped operations.  */
+comment|/**  * A {@code SessionOperation} provides an execution context for executing session scoped operations.  * @see org.apache.jackrabbit.oak.jcr.delegate.SessionDelegate#perform(SessionOperation)  */
 end_comment
 
 begin_class

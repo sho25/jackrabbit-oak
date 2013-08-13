@@ -516,7 +516,7 @@ operator|=
 literal|true
 expr_stmt|;
 block|}
-comment|/**      * Performs the passed {@code SessionOperation} in a safe execution context. This      * context ensures that the session is refreshed if necessary and that refreshing      * occurs before the session operation is performed and the refreshing is done only      * once.      *      * @param sessionOperation  the {@code SessionOperation} to perform      * @param<T>  return type of {@code sessionOperation}      * @return  the result of {@code sessionOperation.perform()}      * @throws RepositoryException      */
+comment|/**      * Performs the passed {@code SessionOperation} in a safe execution context. This      * context ensures that the session is refreshed if necessary and that refreshing      * occurs before the session operation is performed and the refreshing is done only      * once.      *      * @param sessionOperation  the {@code SessionOperation} to perform      * @param<T>  return type of {@code sessionOperation}      * @return  the result of {@code sessionOperation.perform()}      * @throws RepositoryException      * @see #getRoot()      */
 specifier|public
 specifier|synchronized
 parameter_list|<
@@ -678,6 +678,49 @@ name|updateCount
 operator|++
 expr_stmt|;
 block|}
+block|}
+block|}
+comment|/**      * Same as {@link #perform(SessionOperation)} unless this method expects      * {@link SessionOperation#perform}<em>not</em> to throw a {@code RepositoryException}.      * Such exceptions will be wrapped into a {@code RuntimeException} and rethrown as they      * are considered an internal error.      *      * @param sessionOperation  the {@code SessionOperation} to perform      * @param<T>  return type of {@code sessionOperation}      * @return  the result of {@code sessionOperation.perform()}      * @see #getRoot()      */
+specifier|public
+parameter_list|<
+name|T
+parameter_list|>
+name|T
+name|safePerform
+parameter_list|(
+name|SessionOperation
+argument_list|<
+name|T
+argument_list|>
+name|sessionOperation
+parameter_list|)
+block|{
+try|try
+block|{
+return|return
+name|perform
+argument_list|(
+name|sessionOperation
+argument_list|)
+return|;
+block|}
+catch|catch
+parameter_list|(
+name|RepositoryException
+name|e
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|RuntimeException
+argument_list|(
+literal|"Unexpected exception thrown by operation "
+operator|+
+name|sessionOperation
+argument_list|,
+name|e
+argument_list|)
+throw|;
 block|}
 block|}
 annotation|@
@@ -1609,10 +1652,9 @@ name|getQueryEngine
 argument_list|()
 return|;
 block|}
-comment|//-----------------------------------------------------------< internal>---
+comment|/**      * The current {@code Root} instance this session delegate instance operates on.      * To ensure the returned root reflects the correct repository revision access      * should only be done from within a {@link SessionOperation} closure through      * {@link #perform(SessionOperation)}.      *      * @return  current root      */
 annotation|@
 name|Nonnull
-comment|// FIXME this should be package private. OAK-672
 specifier|public
 name|Root
 name|getRoot
@@ -1622,6 +1664,7 @@ return|return
 name|root
 return|;
 block|}
+comment|//-----------------------------------------------------------< internal>---
 comment|/**      * Wraps the given {@link CommitFailedException} instance using the      * appropriate {@link RepositoryException} subclass based on the      * {@link CommitFailedException#getType() type} of the given exception.      *      * @param exception typed commit failure exception      * @return matching repository exception      */
 specifier|private
 specifier|static

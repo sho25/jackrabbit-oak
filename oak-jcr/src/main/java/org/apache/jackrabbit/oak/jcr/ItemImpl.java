@@ -715,35 +715,14 @@ argument_list|>
 name|op
 parameter_list|)
 block|{
-try|try
-block|{
 return|return
 name|sessionDelegate
 operator|.
-name|perform
+name|safePerform
 argument_list|(
 name|op
 argument_list|)
 return|;
-block|}
-catch|catch
-parameter_list|(
-name|RepositoryException
-name|e
-parameter_list|)
-block|{
-throw|throw
-operator|new
-name|RuntimeException
-argument_list|(
-literal|"Unexpected exception thrown by operation "
-operator|+
-name|op
-argument_list|,
-name|e
-argument_list|)
-throw|;
-block|}
 block|}
 comment|//---------------------------------------------------------------< Item>---
 comment|/**      * @see javax.jcr.Item#getName()      */
