@@ -1506,6 +1506,8 @@ comment|// count the entries
 name|Iterator
 argument_list|<
 name|?
+extends|extends
+name|ChildNodeEntry
 argument_list|>
 name|iterator
 init|=
@@ -1603,7 +1605,10 @@ name|name
 argument_list|)
 operator|||
 operator|(
-name|childNodeCount
+name|getChildNodeCount
+argument_list|(
+name|MAX_CHILD_NODE_NAMES
+argument_list|)
 operator|>
 name|MAX_CHILD_NODE_NAMES
 operator|&&
@@ -1660,7 +1665,10 @@ name|childPath
 operator|==
 literal|null
 operator|&&
-name|childNodeCount
+name|getChildNodeCount
+argument_list|(
+name|MAX_CHILD_NODE_NAMES
+argument_list|)
 operator|>
 name|MAX_CHILD_NODE_NAMES
 condition|)
@@ -1693,23 +1701,15 @@ operator|!=
 literal|null
 condition|)
 block|{
-if|if
-condition|(
+return|return
 name|state
-operator|!=
+operator|==
 name|NULL
-condition|)
-block|{
-return|return
+condition|?
+name|MISSING_NODE
+else|:
 name|state
 return|;
-block|}
-else|else
-block|{
-return|return
-name|MISSING_NODE
-return|;
-block|}
 block|}
 comment|// not able to tell from cache if node exists
 comment|// need to ask MicroKernel
@@ -1801,6 +1801,10 @@ argument_list|()
 expr_stmt|;
 if|if
 condition|(
+name|childNodeCount
+operator|<=
+name|MAX_CHILD_NODE_NAMES
+operator|&&
 name|childNodeCount
 operator|<=
 name|childNames
@@ -2426,7 +2430,10 @@ operator|.
 name|path
 argument_list|)
 operator|&&
-name|childNodeCount
+name|getChildNodeCount
+argument_list|(
+name|LOCAL_DIFF_THRESHOLD
+argument_list|)
 operator|>
 name|LOCAL_DIFF_THRESHOLD
 condition|)
