@@ -1162,6 +1162,41 @@ return|;
 block|}
 block|}
 comment|// TODO inefficient unless there are very few child nodes
+comment|// compare the exact child node count
+comment|// (before, we only compared up to 20 entries)
+name|c1
+operator|=
+name|getChildNodeCount
+argument_list|(
+name|Long
+operator|.
+name|MAX_VALUE
+argument_list|)
+expr_stmt|;
+name|c2
+operator|=
+name|other
+operator|.
+name|getChildNodeCount
+argument_list|(
+name|Long
+operator|.
+name|MAX_VALUE
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|c1
+operator|!=
+name|c2
+condition|)
+block|{
+return|return
+literal|false
+return|;
+block|}
+comment|// compare all child nodes recursively (this is potentially very slow,
+comment|// as it recursively calls equals)
 for|for
 control|(
 name|ChildNodeEntry
