@@ -143,6 +143,26 @@ name|LoggerFactory
 import|;
 end_import
 
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|mongomk
+operator|.
+name|Document
+operator|.
+name|ID
+import|;
+end_import
+
 begin_comment
 comment|/**  * Information about a cluster node.  */
 end_comment
@@ -175,15 +195,6 @@ name|String
 name|RANDOM_PREFIX
 init|=
 literal|"random:"
-decl_stmt|;
-comment|/**      * The cluster node id.      */
-specifier|private
-specifier|static
-specifier|final
-name|String
-name|ID_KEY
-init|=
-literal|"_id"
 decl_stmt|;
 comment|/**      * The machine id.      */
 specifier|private
@@ -488,13 +499,16 @@ name|update
 operator|.
 name|set
 argument_list|(
-name|ID_KEY
+name|ID
 argument_list|,
-literal|""
-operator|+
+name|String
+operator|.
+name|valueOf
+argument_list|(
 name|clusterNode
 operator|.
 name|id
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|update
@@ -656,14 +670,10 @@ block|{
 name|String
 name|key
 init|=
-literal|""
-operator|+
 name|doc
 operator|.
-name|get
-argument_list|(
-name|ID_KEY
-argument_list|)
+name|getId
+argument_list|()
 decl_stmt|;
 name|int
 name|id
