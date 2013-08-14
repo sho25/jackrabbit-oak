@@ -228,13 +228,13 @@ specifier|public
 class|class
 name|Commit
 block|{
-comment|/**      * Whether to purge old revisions if a node gets too large. If false, old      * revisions are stored in a separate document. If true, old revisions are      * removed (purged).      */
+comment|/**      * Whether to purge old revisions if a node gets too large. If false, old      * revisions are stored in a separate document. If true, old revisions are      * removed (purged).      * TODO: enable once document split and garbage collection implementation is complete.      */
 specifier|static
 specifier|final
 name|boolean
 name|PURGE_OLD_REVISIONS
 init|=
-literal|true
+literal|false
 decl_stmt|;
 specifier|private
 specifier|static
@@ -251,19 +251,16 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-comment|/**      * The maximum size of a document. If it is larger, it is split.      */
-comment|// TODO check which value is the best one
-comment|//private static final int MAX_DOCUMENT_SIZE = 16 * 1024;
-comment|// TODO set to 512 KB currently, should be changed later on
+comment|/**      * The maximum size of a document. If it is larger, it is split.      * TODO: check which value is the best one      *       Document splitting is currently disabled until the implementation      *       is complete.      */
 specifier|private
 specifier|static
 specifier|final
 name|int
 name|MAX_DOCUMENT_SIZE
 init|=
-literal|512
-operator|*
-literal|1024
+name|Integer
+operator|.
+name|MAX_VALUE
 decl_stmt|;
 specifier|private
 specifier|final
