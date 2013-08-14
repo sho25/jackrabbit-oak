@@ -85,6 +85,24 @@ name|NodeBuilder
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|state
+operator|.
+name|NodeState
+import|;
+end_import
+
 begin_comment
 comment|/**  * This class refines move and copy operations by delegating  * them to the underlying store if possible.  * @see KernelRootBuilder  */
 end_comment
@@ -101,7 +119,6 @@ specifier|final
 name|KernelRootBuilder
 name|root
 decl_stmt|;
-specifier|public
 name|KernelNodeBuilder
 parameter_list|(
 name|MemoryNodeBuilder
@@ -153,6 +170,46 @@ argument_list|,
 name|root
 argument_list|)
 return|;
+block|}
+comment|// TODO optimise this by caching similar to what we do in MemoryNodeBuilder
+annotation|@
+name|Override
+specifier|public
+name|NodeState
+name|getBaseState
+parameter_list|()
+block|{
+return|return
+name|getParent
+argument_list|()
+operator|.
+name|getBaseState
+argument_list|()
+operator|.
+name|getChildNode
+argument_list|(
+name|getName
+argument_list|()
+argument_list|)
+return|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|void
+name|reset
+parameter_list|(
+name|NodeState
+name|newBase
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|IllegalStateException
+argument_list|(
+literal|"Cannot reset a non-root builder"
+argument_list|)
+throw|;
 block|}
 comment|/**      * If {@code newParent} is a {@link KernelNodeBuilder} this implementation      * purges all pending changes before applying the move operation. This allows the      * underlying store to better optimise move operations instead of just seeing      * them as an added and a removed node.      * If {@code newParent} is not a {@code KernelNodeBuilder} the implementation      * falls back to the super class.      */
 annotation|@

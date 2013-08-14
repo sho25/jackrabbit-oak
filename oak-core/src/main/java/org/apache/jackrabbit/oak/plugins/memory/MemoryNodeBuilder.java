@@ -539,6 +539,28 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+comment|/**      * Accessor for parent builder      */
+specifier|protected
+specifier|final
+name|MemoryNodeBuilder
+name|getParent
+parameter_list|()
+block|{
+return|return
+name|parent
+return|;
+block|}
+comment|/**      * Accoessor for name      */
+specifier|protected
+specifier|final
+name|String
+name|getName
+parameter_list|()
+block|{
+return|return
+name|name
+return|;
+block|}
 comment|//--------------------------------------------------------< NodeBuilder>---
 annotation|@
 name|Override

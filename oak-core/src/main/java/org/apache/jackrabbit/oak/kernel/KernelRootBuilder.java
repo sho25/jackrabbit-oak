@@ -189,6 +189,11 @@ specifier|final
 name|NodeStore
 name|store
 decl_stmt|;
+comment|/**      * The base state of this builder, possibly non-existent if this builder      * represents a new node that didn't yet exist in the base content tree.      * This differs from the base state of super since the latter one reflects      * the base created by the last purge.      */
+specifier|private
+name|NodeState
+name|base
+decl_stmt|;
 comment|/**      * Private branch used to hold pending changes exceeding {@link #UPDATE_LIMIT}      */
 specifier|private
 name|NodeStoreBranch
@@ -201,7 +206,6 @@ name|updates
 init|=
 literal|0
 decl_stmt|;
-specifier|public
 name|KernelRootBuilder
 parameter_list|(
 name|KernelNodeState
@@ -218,6 +222,12 @@ argument_list|(
 name|base
 argument_list|)
 argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|base
+operator|=
+name|base
 expr_stmt|;
 name|this
 operator|.
@@ -238,6 +248,39 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|//--------------------------------------------------< MemoryNodeBuilder>---
+annotation|@
+name|Override
+specifier|public
+name|NodeState
+name|getBaseState
+parameter_list|()
+block|{
+return|return
+name|base
+return|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|void
+name|reset
+parameter_list|(
+name|NodeState
+name|newBase
+parameter_list|)
+block|{
+name|base
+operator|=
+name|newBase
+expr_stmt|;
+name|super
+operator|.
+name|reset
+argument_list|(
+name|newBase
+argument_list|)
+expr_stmt|;
+block|}
 annotation|@
 name|Override
 specifier|protected
@@ -406,6 +449,8 @@ argument_list|,
 name|target
 argument_list|)
 decl_stmt|;
+name|super
+operator|.
 name|reset
 argument_list|(
 name|branch
@@ -444,6 +489,8 @@ argument_list|,
 name|target
 argument_list|)
 decl_stmt|;
+name|super
+operator|.
 name|reset
 argument_list|(
 name|branch
@@ -469,6 +516,8 @@ name|getNodeState
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|super
+operator|.
 name|reset
 argument_list|(
 name|branch
