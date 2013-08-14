@@ -154,19 +154,6 @@ name|root
 argument_list|)
 return|;
 block|}
-annotation|@
-name|Override
-specifier|protected
-name|void
-name|updated
-parameter_list|()
-block|{
-name|root
-operator|.
-name|updated
-argument_list|()
-expr_stmt|;
-block|}
 comment|/**      * If {@code newParent} is a {@link KernelNodeBuilder} this implementation      * purges all pending changes before applying the move operation. This allows the      * underlying store to better optimise move operations instead of just seeing      * them as an added and a removed node.      * If {@code newParent} is not a {@code KernelNodeBuilder} the implementation      * falls back to the super class.      */
 annotation|@
 name|Override
