@@ -1422,13 +1422,8 @@ name|UpdateOp
 name|op
 parameter_list|)
 block|{
-name|Map
-argument_list|<
-name|String
-argument_list|,
-name|Object
-argument_list|>
-name|map
+name|Document
+name|doc
 init|=
 name|store
 operator|.
@@ -1475,7 +1470,7 @@ name|mk
 operator|.
 name|getNewestRevision
 argument_list|(
-name|map
+name|doc
 argument_list|,
 name|revision
 argument_list|,
@@ -1606,7 +1601,7 @@ name|isDelete
 operator|||
 name|isConflicting
 argument_list|(
-name|map
+name|doc
 argument_list|,
 name|op
 argument_list|)
@@ -1650,7 +1645,7 @@ name|Utils
 operator|.
 name|formatDocument
 argument_list|(
-name|map
+name|doc
 argument_list|)
 operator|+
 literal|",\nrevision order:\n"
@@ -1682,7 +1677,7 @@ literal|null
 operator|&&
 name|isConflicting
 argument_list|(
-name|map
+name|doc
 argument_list|,
 name|op
 argument_list|)
@@ -1703,7 +1698,7 @@ comment|// mark collisions on commit root
 operator|new
 name|Collision
 argument_list|(
-name|map
+name|doc
 argument_list|,
 name|r
 argument_list|,
@@ -1727,7 +1722,7 @@ name|Utils
 operator|.
 name|estimateMemoryUsage
 argument_list|(
-name|map
+name|doc
 argument_list|)
 decl_stmt|;
 if|if
@@ -1743,7 +1738,7 @@ name|split
 init|=
 name|splitDocument
 argument_list|(
-name|map
+name|doc
 argument_list|)
 decl_stmt|;
 comment|// TODO check if the new main document is actually smaller;
@@ -2099,29 +2094,17 @@ name|UpdateOp
 index|[]
 name|splitDocument
 parameter_list|(
-name|Map
-argument_list|<
-name|String
-argument_list|,
-name|Object
-argument_list|>
-name|map
+name|Document
+name|doc
 parameter_list|)
 block|{
 name|String
 name|id
 init|=
-operator|(
-name|String
-operator|)
-name|map
+name|doc
 operator|.
-name|get
-argument_list|(
-name|UpdateOp
-operator|.
-name|ID
-argument_list|)
+name|getId
+argument_list|()
 decl_stmt|;
 name|String
 name|path
@@ -2139,7 +2122,7 @@ init|=
 operator|(
 name|Long
 operator|)
-name|map
+name|doc
 operator|.
 name|get
 argument_list|(
@@ -2231,7 +2214,7 @@ name|Object
 argument_list|>
 name|e
 range|:
-name|map
+name|doc
 operator|.
 name|entrySet
 argument_list|()
@@ -2251,7 +2234,7 @@ name|key
 operator|.
 name|equals
 argument_list|(
-name|UpdateOp
+name|Document
 operator|.
 name|ID
 argument_list|)

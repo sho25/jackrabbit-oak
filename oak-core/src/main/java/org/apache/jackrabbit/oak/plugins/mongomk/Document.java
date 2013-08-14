@@ -29,6 +29,16 @@ name|TreeMap
 import|;
 end_import
 
+begin_import
+import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|CheckForNull
+import|;
+end_import
+
 begin_comment
 comment|/**  * A document corresponds to a node stored in the MongoMK. A document contains  * all the revisions of a node stored in the {@link DocumentStore}.  */
 end_comment
@@ -54,6 +64,32 @@ init|=
 operator|-
 literal|2428664083360273697L
 decl_stmt|;
+comment|/**      * The node id, which contains the depth of the path      * (0 for root, 1 for children of the root), and then the path.      */
+specifier|static
+specifier|final
+name|String
+name|ID
+init|=
+literal|"_id"
+decl_stmt|;
+comment|/**      * @return the id of this document or<code>null</code> if none is set.      */
+annotation|@
+name|CheckForNull
+specifier|public
+name|String
+name|getId
+parameter_list|()
+block|{
+return|return
+operator|(
+name|String
+operator|)
+name|get
+argument_list|(
+name|ID
+argument_list|)
+return|;
+block|}
 block|}
 end_class
 

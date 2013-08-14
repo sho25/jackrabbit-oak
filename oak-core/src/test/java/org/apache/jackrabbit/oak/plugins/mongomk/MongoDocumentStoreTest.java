@@ -666,7 +666,7 @@ name|updateOp
 operator|.
 name|set
 argument_list|(
-name|UpdateOp
+name|Document
 operator|.
 name|ID
 argument_list|,

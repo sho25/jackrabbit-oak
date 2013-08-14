@@ -2321,7 +2321,7 @@ operator|>
 literal|0
 return|;
 block|}
-comment|/**      * Checks if the revision is valid for the given node map. A revision is      * considered valid if the given node map is the root of the commit, or the      * commit root has the revision set. This method may read further nodes to      * perform this check.      * This method also takes pending branches into consideration.      * The<code>readRevision</code> identifies the read revision used by the      * client, which may be a branch revision logged in {@link #branches}.      * The revision<code>rev</code> is valid if it is part of the branch      * history of<code>readRevision</code>.      *      * @param rev     revision to check.      * @param readRevision the read revision of the client.      * @param nodeMap the node to check.      * @param validRevisions set of revisions already checked against      *<code>readRevision</code> and considered valid.      * @return<code>true</code> if the revision is valid;<code>false</code>      *         otherwise.      */
+comment|/**      * Checks if the revision is valid for the given document. A revision is      * considered valid if the given document is the root of the commit, or the      * commit root has the revision set. This method may read further documents      * to perform this check.      * This method also takes pending branches into consideration.      * The<code>readRevision</code> identifies the read revision used by the      * client, which may be a branch revision logged in {@link #branches}.      * The revision<code>rev</code> is valid if it is part of the branch      * history of<code>readRevision</code>.      *      * @param rev     revision to check.      * @param readRevision the read revision of the client.      * @param doc the document to check.      * @param validRevisions set of revisions already checked against      *<code>readRevision</code> and considered valid.      * @return<code>true</code> if the revision is valid;<code>false</code>      *         otherwise.      */
 name|boolean
 name|isValidRevision
 parameter_list|(
@@ -2337,13 +2337,8 @@ name|readRevision
 parameter_list|,
 annotation|@
 name|Nonnull
-name|Map
-argument_list|<
-name|String
-argument_list|,
-name|Object
-argument_list|>
-name|nodeMap
+name|Document
+name|doc
 parameter_list|,
 annotation|@
 name|Nonnull
@@ -2389,7 +2384,7 @@ argument_list|,
 name|String
 argument_list|>
 operator|)
-name|nodeMap
+name|doc
 operator|.
 name|get
 argument_list|(
@@ -2467,7 +2462,7 @@ argument_list|,
 name|Integer
 argument_list|>
 operator|)
-name|nodeMap
+name|doc
 operator|.
 name|get
 argument_list|(
@@ -2515,17 +2510,10 @@ name|Utils
 operator|.
 name|getPathFromId
 argument_list|(
-operator|(
-name|String
-operator|)
-name|nodeMap
+name|doc
 operator|.
-name|get
-argument_list|(
-name|UpdateOp
-operator|.
-name|ID
-argument_list|)
+name|getId
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|commitRootPath
@@ -2563,14 +2551,10 @@ name|warn
 argument_list|(
 literal|"Node {} does not have commit root reference for revision {}"
 argument_list|,
-name|nodeMap
+name|doc
 operator|.
-name|get
-argument_list|(
-name|UpdateOp
-operator|.
-name|ID
-argument_list|)
+name|getId
+argument_list|()
 argument_list|,
 name|rev
 argument_list|)
@@ -2579,7 +2563,7 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
-name|nodeMap
+name|doc
 operator|.
 name|toString
 argument_list|()
@@ -2590,7 +2574,7 @@ literal|false
 return|;
 block|}
 comment|// get root of commit
-name|nodeMap
+name|doc
 operator|=
 name|store
 operator|.
@@ -2612,7 +2596,7 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|nodeMap
+name|doc
 operator|==
 literal|null
 condition|)
@@ -2642,7 +2626,7 @@ argument_list|,
 name|String
 argument_list|>
 operator|)
-name|nodeMap
+name|doc
 operator|.
 name|get
 argument_list|(
@@ -3159,28 +3143,16 @@ continue|continue;
 block|}
 comment|// TODO put the whole node in the cache
 name|String
-name|id
-init|=
-name|doc
-operator|.
-name|get
-argument_list|(
-name|UpdateOp
-operator|.
-name|ID
-argument_list|)
-operator|.
-name|toString
-argument_list|()
-decl_stmt|;
-name|String
 name|p
 init|=
 name|Utils
 operator|.
 name|getPathFromId
 argument_list|(
-name|id
+name|doc
+operator|.
+name|getId
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|c
@@ -3218,13 +3190,8 @@ argument_list|(
 name|path
 argument_list|)
 decl_stmt|;
-name|Map
-argument_list|<
-name|String
-argument_list|,
-name|Object
-argument_list|>
-name|map
+name|Document
+name|doc
 init|=
 name|store
 operator|.
@@ -3241,7 +3208,7 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|map
+name|doc
 operator|==
 literal|null
 condition|)
@@ -3255,7 +3222,7 @@ name|min
 init|=
 name|getLiveRevision
 argument_list|(
-name|map
+name|doc
 argument_list|,
 name|readRevision
 argument_list|)
@@ -3288,7 +3255,7 @@ control|(
 name|String
 name|key
 range|:
-name|map
+name|doc
 operator|.
 name|keySet
 argument_list|()
@@ -3310,7 +3277,7 @@ block|}
 name|Object
 name|v
 init|=
-name|map
+name|doc
 operator|.
 name|get
 argument_list|(
@@ -3461,7 +3428,7 @@ argument_list|,
 name|String
 argument_list|>
 operator|)
-name|map
+name|doc
 operator|.
 name|get
 argument_list|(
@@ -4605,14 +4572,7 @@ name|id
 init|=
 name|doc
 operator|.
-name|get
-argument_list|(
-name|UpdateOp
-operator|.
-name|ID
-argument_list|)
-operator|.
-name|toString
+name|getId
 argument_list|()
 decl_stmt|;
 name|String
@@ -6407,18 +6367,13 @@ name|rev
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Get the earliest (oldest) revision where the node was alive at or before      * the provided revision, if the node was alive at the given revision.      *       * @param nodeMap the node map      * @param maxRev the maximum revision to return      * @return the earliest revision, or null if the node is deleted at the      *         given revision      */
+comment|/**      * Get the earliest (oldest) revision where the node was alive at or before      * the provided revision, if the node was alive at the given revision.      *       * @param doc the document      * @param maxRev the maximum revision to return      * @return the earliest revision, or null if the node is deleted at the      *         given revision      */
 specifier|private
 name|Revision
 name|getLiveRevision
 parameter_list|(
-name|Map
-argument_list|<
-name|String
-argument_list|,
-name|Object
-argument_list|>
-name|nodeMap
+name|Document
+name|doc
 parameter_list|,
 name|Revision
 name|maxRev
@@ -6427,7 +6382,7 @@ block|{
 return|return
 name|getLiveRevision
 argument_list|(
-name|nodeMap
+name|doc
 argument_list|,
 name|maxRev
 argument_list|,
@@ -6440,18 +6395,13 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-comment|/**      * Get the earliest (oldest) revision where the node was alive at or before      * the provided revision, if the node was alive at the given revision.      *       * @param nodeMap the node map      * @param maxRev the maximum revision to return      * @param validRevisions the set of revisions already checked against maxRev      *            and considered valid.      * @return the earliest revision, or null if the node is deleted at the      *         given revision      */
+comment|/**      * Get the earliest (oldest) revision where the node was alive at or before      * the provided revision, if the node was alive at the given revision.      *       * @param doc the document      * @param maxRev the maximum revision to return      * @param validRevisions the set of revisions already checked against maxRev      *            and considered valid.      * @return the earliest revision, or null if the node is deleted at the      *         given revision      */
 specifier|private
 name|Revision
 name|getLiveRevision
 parameter_list|(
-name|Map
-argument_list|<
-name|String
-argument_list|,
-name|Object
-argument_list|>
-name|nodeMap
+name|Document
+name|doc
 parameter_list|,
 name|Revision
 name|maxRev
@@ -6484,7 +6434,7 @@ argument_list|,
 name|String
 argument_list|>
 operator|)
-name|nodeMap
+name|doc
 operator|.
 name|get
 argument_list|(
@@ -6598,7 +6548,7 @@ name|propRev
 argument_list|,
 name|maxRev
 argument_list|,
-name|nodeMap
+name|doc
 argument_list|,
 name|validRevisions
 argument_list|)
@@ -6710,7 +6660,7 @@ name|propRev
 argument_list|,
 name|maxRev
 argument_list|,
-name|nodeMap
+name|doc
 argument_list|,
 name|validRevisions
 argument_list|)
@@ -6742,7 +6692,7 @@ return|return
 name|liveRev
 return|;
 block|}
-comment|/**      * Get the revision of the latest change made to this node.      *       * @param nodeMap the document      * @param changeRev the revision of the current change      * @param handler the conflict handler, which is called for concurrent changes      *                preceding<code>before</code>.      * @return the revision, or null if deleted      */
+comment|/**      * Get the revision of the latest change made to this node.      *       * @param doc the document      * @param changeRev the revision of the current change      * @param handler the conflict handler, which is called for concurrent changes      *                preceding<code>before</code>.      * @return the revision, or null if deleted      */
 annotation|@
 name|SuppressWarnings
 argument_list|(
@@ -6753,13 +6703,8 @@ name|Nullable
 name|Revision
 name|getNewestRevision
 parameter_list|(
-name|Map
-argument_list|<
-name|String
-argument_list|,
-name|Object
-argument_list|>
-name|nodeMap
+name|Document
+name|doc
 parameter_list|,
 name|Revision
 name|changeRev
@@ -6770,7 +6715,7 @@ parameter_list|)
 block|{
 if|if
 condition|(
-name|nodeMap
+name|doc
 operator|==
 literal|null
 condition|)
@@ -6799,7 +6744,7 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|nodeMap
+name|doc
 operator|.
 name|containsKey
 argument_list|(
@@ -6822,7 +6767,7 @@ argument_list|,
 name|String
 argument_list|>
 operator|)
-name|nodeMap
+name|doc
 operator|.
 name|get
 argument_list|(
@@ -6839,7 +6784,7 @@ expr_stmt|;
 block|}
 if|if
 condition|(
-name|nodeMap
+name|doc
 operator|.
 name|containsKey
 argument_list|(
@@ -6862,7 +6807,7 @@ argument_list|,
 name|Integer
 argument_list|>
 operator|)
-name|nodeMap
+name|doc
 operator|.
 name|get
 argument_list|(
@@ -6893,7 +6838,7 @@ argument_list|,
 name|String
 argument_list|>
 operator|)
-name|nodeMap
+name|doc
 operator|.
 name|get
 argument_list|(
@@ -6999,7 +6944,7 @@ name|propRev
 argument_list|,
 name|changeRev
 argument_list|,
-name|nodeMap
+name|doc
 argument_list|,
 operator|new
 name|HashSet

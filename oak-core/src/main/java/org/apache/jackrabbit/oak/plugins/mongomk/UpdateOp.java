@@ -60,14 +60,6 @@ specifier|public
 class|class
 name|UpdateOp
 block|{
-comment|/**      * The node id, which contains the depth of the path      * (0 for root, 1 for children of the root), and then the path.      */
-specifier|static
-specifier|final
-name|String
-name|ID
-init|=
-literal|"_id"
-decl_stmt|;
 comment|/**      * The last revision. Key: machine id, value: revision.      */
 specifier|static
 specifier|final
