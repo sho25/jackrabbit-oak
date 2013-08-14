@@ -87,16 +87,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|Map
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|UUID
 import|;
 end_import
@@ -622,12 +612,7 @@ decl_stmt|;
 comment|// keys between "0" and "a" includes all possible numbers
 name|List
 argument_list|<
-name|Map
-argument_list|<
-name|String
-argument_list|,
-name|Object
-argument_list|>
+name|Document
 argument_list|>
 name|list
 init|=
@@ -662,12 +647,7 @@ literal|0
 decl_stmt|;
 for|for
 control|(
-name|Map
-argument_list|<
-name|String
-argument_list|,
-name|Object
-argument_list|>
+name|Document
 name|doc
 range|:
 name|list

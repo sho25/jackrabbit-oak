@@ -129,15 +129,10 @@ name|name
 return|;
 block|}
 block|}
-comment|/**      * Get a document.      *<p>      * The returned map is a clone (the caller can modify it without affecting      * the stored version).      *       * @param collection the collection      * @param key the key      * @return the map, or null if not found      */
+comment|/**      * Get a document.      *<p>      * The returned document is a clone (the caller can modify it without affecting      * the stored version).      *       * @param collection the collection      * @param key the key      * @return the document, or null if not found      */
 annotation|@
 name|CheckForNull
-name|Map
-argument_list|<
-name|String
-argument_list|,
-name|Object
-argument_list|>
+name|Document
 name|find
 parameter_list|(
 name|Collection
@@ -147,15 +142,10 @@ name|String
 name|key
 parameter_list|)
 function_decl|;
-comment|/**      * Get a document, ignoring the cache if the cached entry is older than the      * specified time.      *<p>      * The returned map is a clone (the caller can modify it without affecting      * the stored version).      *       * @param collection the collection      * @param key the key      * @param maxCacheAge the maximum age of the cached document      * @return the map, or null if not found      */
+comment|/**      * Get a document, ignoring the cache if the cached entry is older than the      * specified time.      *<p>      * The returned document is a clone (the caller can modify it without affecting      * the stored version).      *       * @param collection the collection      * @param key the key      * @param maxCacheAge the maximum age of the cached document      * @return the document, or null if not found      */
 annotation|@
 name|CheckForNull
-name|Map
-argument_list|<
-name|String
-argument_list|,
-name|Object
-argument_list|>
+name|Document
 name|find
 parameter_list|(
 name|Collection
@@ -173,12 +163,7 @@ annotation|@
 name|Nonnull
 name|List
 argument_list|<
-name|Map
-argument_list|<
-name|String
-argument_list|,
-name|Object
-argument_list|>
+name|Document
 argument_list|>
 name|query
 parameter_list|(
@@ -200,12 +185,7 @@ annotation|@
 name|Nonnull
 name|List
 argument_list|<
-name|Map
-argument_list|<
-name|String
-argument_list|,
-name|Object
-argument_list|>
+name|Document
 argument_list|>
 name|query
 parameter_list|(
@@ -256,12 +236,7 @@ function_decl|;
 comment|/**      * Create or update a document. For MongoDb, this is using "findAndModify" with      * the "upsert" flag (insert or update).      *      * @param collection the collection      * @param update the update operation      * @return the old document      * @throws MicroKernelException if the operation failed.      */
 annotation|@
 name|Nonnull
-name|Map
-argument_list|<
-name|String
-argument_list|,
-name|Object
-argument_list|>
+name|Document
 name|createOrUpdate
 parameter_list|(
 name|Collection
@@ -273,15 +248,10 @@ parameter_list|)
 throws|throws
 name|MicroKernelException
 function_decl|;
-comment|/**      * Performs a conditional update (e.g. using      * {@link UpdateOp.Operation.Type#CONTAINS_MAP_ENTRY} and only updates the      * document if the condition is<code>true</code>.      *      * @param collection the collection      * @param update the update operation with the condition      * @return the old document or<code>null</code> if the condition is not met.      * @throws MicroKernelException if the operation failed.      */
+comment|/**      * Performs a conditional update (e.g. using      * {@link UpdateOp.Operation.Type#CONTAINS_MAP_ENTRY} and only updates the      * document if the condition is<code>true</code>.      *      *      * @param collection the collection      * @param update the update operation with the condition      * @return the old document or<code>null</code> if the condition is not met.      * @throws MicroKernelException if the operation failed.      */
 annotation|@
 name|CheckForNull
-name|Map
-argument_list|<
-name|String
-argument_list|,
-name|Object
-argument_list|>
+name|Document
 name|findAndUpdate
 parameter_list|(
 name|Collection

@@ -1299,12 +1299,7 @@ argument_list|)
 expr_stmt|;
 name|List
 argument_list|<
-name|Map
-argument_list|<
-name|String
-argument_list|,
-name|Object
-argument_list|>
+name|Document
 argument_list|>
 name|docs
 init|=
