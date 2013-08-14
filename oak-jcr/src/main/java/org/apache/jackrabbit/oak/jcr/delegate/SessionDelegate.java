@@ -1779,6 +1779,20 @@ return|return
 name|root
 return|;
 block|}
+annotation|@
+name|Override
+specifier|public
+name|String
+name|toString
+parameter_list|()
+block|{
+return|return
+name|contentSession
+operator|.
+name|toString
+argument_list|()
+return|;
+block|}
 comment|//-----------------------------------------------------------< internal>---
 comment|/**      * Wraps the given {@link CommitFailedException} instance using the      * appropriate {@link RepositoryException} subclass based on the      * {@link CommitFailedException#getType() type} of the given exception.      *      * @param exception typed commit failure exception      * @return matching repository exception      */
 specifier|private
