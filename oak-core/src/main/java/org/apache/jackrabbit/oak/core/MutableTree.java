@@ -1768,87 +1768,25 @@ argument_list|()
 return|;
 block|}
 comment|//-----------------------------------------------------------< internal>---
-comment|/**      * Set the parent and name of this tree.      * @param parent  parent of this tree      * @param name  name of this tree      */
+comment|/**      * Move this tree to the parent at {@code destParent} with the new name      * {@code destName}.      * @param destParent new parent for this tree      * @param destName   new name for this tree      */
 name|void
-name|setParentAndName
-parameter_list|(
-name|MutableTree
-name|parent
-parameter_list|,
-name|String
-name|name
-parameter_list|)
-block|{
-name|this
-operator|.
-name|name
-operator|=
-name|name
-expr_stmt|;
-name|this
-operator|.
-name|parent
-operator|=
-name|parent
-expr_stmt|;
-block|}
-comment|/**      * Move this tree to the parent at {@code destParent} with the new name      * {@code newName}.      * @param newParent new parent for this tree      * @param newName   new name for this tree      */
-name|boolean
 name|moveTo
 parameter_list|(
 name|MutableTree
-name|newParent
+name|destParent
 parameter_list|,
 name|String
-name|newName
+name|destName
 parameter_list|)
 block|{
 name|name
 operator|=
-name|newName
+name|destName
 expr_stmt|;
 name|parent
 operator|=
-name|newParent
+name|destParent
 expr_stmt|;
-comment|// FIXME this falls back to MemoryNodeBuilder#moveTo if newParent is a SecureNodeState
-return|return
-name|nodeBuilder
-operator|.
-name|moveTo
-argument_list|(
-name|newParent
-operator|.
-name|nodeBuilder
-argument_list|,
-name|newName
-argument_list|)
-return|;
-block|}
-comment|/**      * Copy this tree to the parent at {@code destParent} with the new name      * {@code newName}.      * @param newParent new parent for this tree      * @param newName   new name for this tree      */
-name|boolean
-name|copyTo
-parameter_list|(
-name|MutableTree
-name|newParent
-parameter_list|,
-name|String
-name|newName
-parameter_list|)
-block|{
-comment|// FIXME this falls back to MemoryNodeBuilder#copyTo if newParent is a SecureNodeState
-return|return
-name|nodeBuilder
-operator|.
-name|copyTo
-argument_list|(
-name|newParent
-operator|.
-name|nodeBuilder
-argument_list|,
-name|newName
-argument_list|)
-return|;
 block|}
 comment|/**      * Get a possibly non existing tree.      * @param path the path to the tree      * @return a {@link Tree} instance for the child at {@code path}.      */
 annotation|@
