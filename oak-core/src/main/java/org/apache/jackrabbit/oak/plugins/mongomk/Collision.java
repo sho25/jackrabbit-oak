@@ -152,7 +152,7 @@ argument_list|)
 decl_stmt|;
 specifier|private
 specifier|final
-name|Document
+name|NodeDocument
 name|document
 decl_stmt|;
 specifier|private
@@ -174,7 +174,7 @@ name|Collision
 parameter_list|(
 annotation|@
 name|Nonnull
-name|Document
+name|NodeDocument
 name|document
 parameter_list|,
 annotation|@
@@ -262,10 +262,12 @@ block|{
 return|return;
 block|}
 comment|// their commit wins, we have to mark ourRev
-name|Document
+name|NodeDocument
 name|newDoc
 init|=
-name|Utils
+name|Collection
+operator|.
+name|NODES
 operator|.
 name|newDocument
 argument_list|()
@@ -331,7 +333,7 @@ name|markCommitRoot
 parameter_list|(
 annotation|@
 name|Nonnull
-name|Document
+name|NodeDocument
 name|document
 parameter_list|,
 annotation|@
@@ -563,8 +565,6 @@ name|store
 operator|.
 name|find
 argument_list|(
-name|DocumentStore
-operator|.
 name|Collection
 operator|.
 name|NODES
@@ -609,8 +609,6 @@ name|store
 operator|.
 name|createOrUpdate
 argument_list|(
-name|DocumentStore
-operator|.
 name|Collection
 operator|.
 name|NODES

@@ -568,8 +568,6 @@ name|store
 operator|.
 name|create
 argument_list|(
-name|DocumentStore
-operator|.
 name|Collection
 operator|.
 name|CLUSTER_NODES
@@ -626,7 +624,7 @@ decl_stmt|;
 comment|// keys between "0" and "a" includes all possible numbers
 name|List
 argument_list|<
-name|Document
+name|ClusterNodeInfoDocument
 argument_list|>
 name|list
 init|=
@@ -634,8 +632,6 @@ name|store
 operator|.
 name|query
 argument_list|(
-name|DocumentStore
-operator|.
 name|Collection
 operator|.
 name|CLUSTER_NODES
@@ -775,8 +771,6 @@ name|store
 operator|.
 name|remove
 argument_list|(
-name|DocumentStore
-operator|.
 name|Collection
 operator|.
 name|CLUSTER_NODES
@@ -813,8 +807,6 @@ name|store
 operator|.
 name|remove
 argument_list|(
-name|DocumentStore
-operator|.
 name|Collection
 operator|.
 name|CLUSTER_NODES
@@ -932,8 +924,6 @@ name|store
 operator|.
 name|createOrUpdate
 argument_list|(
-name|DocumentStore
-operator|.
 name|Collection
 operator|.
 name|CLUSTER_NODES
@@ -999,8 +989,6 @@ name|store
 operator|.
 name|createOrUpdate
 argument_list|(
-name|DocumentStore
-operator|.
 name|Collection
 operator|.
 name|CLUSTER_NODES

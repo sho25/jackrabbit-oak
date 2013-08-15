@@ -23,26 +23,6 @@ begin_import
 import|import static
 name|org
 operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|plugins
-operator|.
-name|mongomk
-operator|.
-name|DocumentStore
-operator|.
-name|Collection
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
 name|junit
 operator|.
 name|Assert
@@ -1299,7 +1279,7 @@ argument_list|)
 expr_stmt|;
 name|List
 argument_list|<
-name|Document
+name|NodeDocument
 argument_list|>
 name|docs
 init|=

@@ -479,26 +479,6 @@ name|plugins
 operator|.
 name|mongomk
 operator|.
-name|DocumentStore
-operator|.
-name|Collection
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|plugins
-operator|.
-name|mongomk
-operator|.
 name|Node
 operator|.
 name|Children
@@ -1518,8 +1498,6 @@ name|store
 operator|.
 name|find
 argument_list|(
-name|DocumentStore
-operator|.
 name|Collection
 operator|.
 name|NODES
@@ -1940,8 +1918,6 @@ name|store
 operator|.
 name|createOrUpdate
 argument_list|(
-name|DocumentStore
-operator|.
 name|Collection
 operator|.
 name|NODES
@@ -2580,8 +2556,6 @@ name|store
 operator|.
 name|find
 argument_list|(
-name|DocumentStore
-operator|.
 name|Collection
 operator|.
 name|NODES
@@ -3058,7 +3032,7 @@ argument_list|)
 decl_stmt|;
 name|List
 argument_list|<
-name|Document
+name|NodeDocument
 argument_list|>
 name|list
 init|=
@@ -3066,8 +3040,6 @@ name|store
 operator|.
 name|query
 argument_list|(
-name|DocumentStore
-operator|.
 name|Collection
 operator|.
 name|NODES
@@ -3118,7 +3090,7 @@ expr_stmt|;
 block|}
 for|for
 control|(
-name|Document
+name|NodeDocument
 name|doc
 range|:
 name|list
@@ -3197,8 +3169,6 @@ name|store
 operator|.
 name|find
 argument_list|(
-name|DocumentStore
-operator|.
 name|Collection
 operator|.
 name|NODES
@@ -4530,7 +4500,7 @@ argument_list|)
 decl_stmt|;
 name|List
 argument_list|<
-name|Document
+name|NodeDocument
 argument_list|>
 name|list
 init|=
@@ -4538,8 +4508,6 @@ name|store
 operator|.
 name|query
 argument_list|(
-name|DocumentStore
-operator|.
 name|Collection
 operator|.
 name|NODES
@@ -4561,7 +4529,7 @@ argument_list|)
 decl_stmt|;
 for|for
 control|(
-name|Document
+name|NodeDocument
 name|doc
 range|:
 name|list
@@ -7530,8 +7498,6 @@ name|store
 operator|.
 name|findAndUpdate
 argument_list|(
-name|DocumentStore
-operator|.
 name|Collection
 operator|.
 name|NODES
