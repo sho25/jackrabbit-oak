@@ -293,19 +293,19 @@ implements|implements
 name|NodeBuilder
 block|{
 comment|/**      * Parent builder, or {@code null} for a root builder.      */
-specifier|protected
+specifier|private
 specifier|final
 name|MemoryNodeBuilder
 name|parent
 decl_stmt|;
 comment|/**      * Name of this child node within the parent builder,      * or {@code null} for a root builder.      */
-specifier|protected
+specifier|private
 specifier|final
 name|String
 name|name
 decl_stmt|;
 comment|/**      * Root builder, or {@code this} for the root builder itself.      */
-specifier|protected
+specifier|private
 specifier|final
 name|MemoryNodeBuilder
 name|rootBuilder
