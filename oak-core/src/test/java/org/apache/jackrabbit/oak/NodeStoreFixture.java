@@ -164,6 +164,17 @@ block|{
 annotation|@
 name|Override
 specifier|public
+name|String
+name|toString
+parameter_list|()
+block|{
+return|return
+literal|"SegmentMK Fixture"
+return|;
+block|}
+annotation|@
+name|Override
+specifier|public
 name|NodeStore
 name|createNodeStore
 parameter_list|()
@@ -200,6 +211,17 @@ operator|new
 name|NodeStoreFixture
 argument_list|()
 block|{
+annotation|@
+name|Override
+specifier|public
+name|String
+name|toString
+parameter_list|()
+block|{
+return|return
+literal|"MongoMK Fixture"
+return|;
+block|}
 annotation|@
 name|Override
 specifier|public
@@ -280,6 +302,17 @@ operator|new
 name|NodeStoreFixture
 argument_list|()
 block|{
+annotation|@
+name|Override
+specifier|public
+name|String
+name|toString
+parameter_list|()
+block|{
+return|return
+literal|"MKImpl Fixture"
+return|;
+block|}
 annotation|@
 name|Override
 specifier|public
