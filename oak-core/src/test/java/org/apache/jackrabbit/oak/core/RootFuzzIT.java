@@ -650,9 +650,7 @@ name|random
 init|=
 operator|new
 name|Random
-argument_list|(
-name|SEED
-argument_list|)
+argument_list|()
 decl_stmt|;
 specifier|private
 specifier|final
@@ -720,6 +718,13 @@ name|fixture
 operator|+
 literal|" and seed "
 operator|+
+name|SEED
+argument_list|)
+expr_stmt|;
+name|random
+operator|.
+name|setSeed
+argument_list|(
 name|SEED
 argument_list|)
 expr_stmt|;
