@@ -60,62 +60,6 @@ specifier|public
 class|class
 name|UpdateOp
 block|{
-comment|/**      * The last revision. Key: machine id, value: revision.      */
-specifier|static
-specifier|final
-name|String
-name|LAST_REV
-init|=
-literal|"_lastRev"
-decl_stmt|;
-comment|/**      * The list of recent revisions for this node, where this node is the      * root of the commit. Key: revision, value: true or the base revision of an      * un-merged branch commit.      */
-specifier|static
-specifier|final
-name|String
-name|REVISIONS
-init|=
-literal|"_revisions"
-decl_stmt|;
-comment|/**      * The list of revision to root commit depth mappings to find out if a      * revision is actually committed.      */
-specifier|static
-specifier|final
-name|String
-name|COMMIT_ROOT
-init|=
-literal|"_commitRoot"
-decl_stmt|;
-comment|/**      * The number of previous documents (documents that contain old revisions of      * this node). This property is only set if multiple documents per node      * exist. This is the case when a node is updated very often in a short      * time, such that the document gets very big.      */
-specifier|static
-specifier|final
-name|String
-name|PREVIOUS
-init|=
-literal|"_prev"
-decl_stmt|;
-comment|/**      * Whether this node is deleted. Key: revision, value: true/false.      */
-specifier|static
-specifier|final
-name|String
-name|DELETED
-init|=
-literal|"_deleted"
-decl_stmt|;
-comment|/**      * Revision collision markers set by commits with modifications, which      * overlap with un-merged branch commits.      * Key: revision, value:      */
-specifier|static
-specifier|final
-name|String
-name|COLLISIONS
-init|=
-literal|"_collisions"
-decl_stmt|;
-comment|/**      * The modified time (5 second resolution).      */
-specifier|static
-specifier|final
-name|String
-name|MODIFIED
-init|=
-literal|"_modified"
-decl_stmt|;
 specifier|final
 name|String
 name|path

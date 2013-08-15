@@ -383,7 +383,7 @@ name|op
 operator|.
 name|setMapEntry
 argument_list|(
-name|UpdateOp
+name|NodeDocument
 operator|.
 name|DELETED
 argument_list|,

@@ -299,7 +299,7 @@ name|doc
 operator|.
 name|get
 argument_list|(
-name|UpdateOp
+name|NodeDocument
 operator|.
 name|REVISIONS
 argument_list|)

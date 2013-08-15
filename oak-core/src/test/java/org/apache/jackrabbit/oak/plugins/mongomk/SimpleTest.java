@@ -475,7 +475,7 @@ name|op
 operator|.
 name|setMapEntry
 argument_list|(
-name|UpdateOp
+name|NodeDocument
 operator|.
 name|REVISIONS
 argument_list|,
@@ -3143,13 +3143,8 @@ literal|null
 argument_list|)
 expr_stmt|;
 comment|// root node must not have the revision
-name|Map
-argument_list|<
-name|String
-argument_list|,
-name|Object
-argument_list|>
-name|rootNode
+name|NodeDocument
+name|rootDoc
 init|=
 name|store
 operator|.
@@ -3164,38 +3159,16 @@ argument_list|)
 decl_stmt|;
 name|assertFalse
 argument_list|(
-operator|(
-operator|(
-name|Map
-argument_list|<
-name|?
-argument_list|,
-name|?
-argument_list|>
-operator|)
-name|rootNode
+name|rootDoc
 operator|.
-name|get
-argument_list|(
-name|UpdateOp
-operator|.
-name|REVISIONS
-argument_list|)
-operator|)
-operator|.
-name|containsKey
+name|containsRevision
 argument_list|(
 name|head
 argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// test node must have head in revisions
-name|Map
-argument_list|<
-name|String
-argument_list|,
-name|Object
-argument_list|>
+name|NodeDocument
 name|node
 init|=
 name|store
@@ -3211,26 +3184,9 @@ argument_list|)
 decl_stmt|;
 name|assertTrue
 argument_list|(
-operator|(
-operator|(
-name|Map
-argument_list|<
-name|?
-argument_list|,
-name|?
-argument_list|>
-operator|)
 name|node
 operator|.
-name|get
-argument_list|(
-name|UpdateOp
-operator|.
-name|REVISIONS
-argument_list|)
-operator|)
-operator|.
-name|containsKey
+name|containsRevision
 argument_list|(
 name|head
 argument_list|)
@@ -3238,12 +3194,7 @@ argument_list|)
 expr_stmt|;
 comment|// foo must not have head in revisions and must refer to test
 comment|// as commit root (depth = 1)
-name|Map
-argument_list|<
-name|String
-argument_list|,
-name|Object
-argument_list|>
+name|NodeDocument
 name|foo
 init|=
 name|store
@@ -3263,7 +3214,7 @@ name|foo
 operator|.
 name|get
 argument_list|(
-name|UpdateOp
+name|NodeDocument
 operator|.
 name|REVISIONS
 argument_list|)
@@ -3288,7 +3239,7 @@ name|foo
 operator|.
 name|get
 argument_list|(
-name|UpdateOp
+name|NodeDocument
 operator|.
 name|COMMIT_ROOT
 argument_list|)
@@ -3316,7 +3267,7 @@ literal|null
 argument_list|)
 expr_stmt|;
 comment|// root node is root of commit
-name|rootNode
+name|rootDoc
 operator|=
 name|store
 operator|.
@@ -3340,11 +3291,11 @@ argument_list|,
 name|?
 argument_list|>
 operator|)
-name|rootNode
+name|rootDoc
 operator|.
 name|get
 argument_list|(
-name|UpdateOp
+name|NodeDocument
 operator|.
 name|REVISIONS
 argument_list|)
@@ -3357,12 +3308,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// /bar refers to root nodes a commit root
-name|Map
-argument_list|<
-name|String
-argument_list|,
-name|Object
-argument_list|>
+name|NodeDocument
 name|bar
 init|=
 name|store
@@ -3393,7 +3339,7 @@ name|bar
 operator|.
 name|get
 argument_list|(
-name|UpdateOp
+name|NodeDocument
 operator|.
 name|COMMIT_ROOT
 argument_list|)
@@ -3436,7 +3382,7 @@ name|bar
 operator|.
 name|get
 argument_list|(
-name|UpdateOp
+name|NodeDocument
 operator|.
 name|COMMIT_ROOT
 argument_list|)
