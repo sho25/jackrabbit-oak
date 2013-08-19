@@ -5557,7 +5557,7 @@ init|=
 name|newRevision
 argument_list|()
 decl_stmt|;
-name|Commit
+name|NodeDocument
 operator|.
 name|setModified
 argument_list|(

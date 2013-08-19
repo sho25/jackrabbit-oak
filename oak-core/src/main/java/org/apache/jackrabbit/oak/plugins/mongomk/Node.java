@@ -370,7 +370,7 @@ argument_list|,
 name|id
 argument_list|)
 expr_stmt|;
-name|Commit
+name|NodeDocument
 operator|.
 name|setModified
 argument_list|(
