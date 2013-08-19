@@ -193,7 +193,6 @@ name|fixture
 argument_list|)
 expr_stmt|;
 block|}
-comment|// FIXME slow on MongoMK
 annotation|@
 name|Before
 specifier|public
@@ -203,6 +202,7 @@ parameter_list|()
 throws|throws
 name|CommitFailedException
 block|{
+comment|// FIXME slow on MongoMK. See OAK-964
 name|assumeTrue
 argument_list|(
 name|fixture
