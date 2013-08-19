@@ -37,6 +37,10 @@ name|SessionOperation
 import|;
 end_import
 
+begin_comment
+comment|/**  * Interceptor for operations being performed in a session.  *  */
+end_comment
+
 begin_interface
 specifier|public
 interface|interface
@@ -77,7 +81,7 @@ parameter_list|)
 block|{         }
 block|}
 decl_stmt|;
-comment|/**      * Invoked before the sessionOperation is performed. SessionOperation MUST only be      * used for reading purpose and implementation must not invoke the {@link SessionOperation#perform}      *      * @param delegate sessionDelegate performing the operation      * @param operation operation to perform      */
+comment|/**      * Invoked before the sessionOperation is performed.      *      *<p>      * An implementation of this method should not perform content access or any other      * repository operation. The {@link SessionDelegate} and {@link SessionOperation} must only be used      * to extract information e.g. session Id, type of operation etc.      *      * Further {@link SessionOperation#perform} is invoked      * by the caller and implementers MUST not invoke it      *</p>      *      * @param delegate sessionDelegate performing the operation      * @param operation operation to perform      */
 name|void
 name|before
 parameter_list|(
@@ -88,7 +92,7 @@ name|SessionOperation
 name|operation
 parameter_list|)
 function_decl|;
-comment|/**      * Invoked after the sessionOperation is performed. SessionOperation MUST only be      * used for reading purpose and implementation must not invoke the {@link SessionOperation#perform}      *      * @param delegate sessionDelegate performing the operation      * @param operation operation to perform      */
+comment|/**      * Invoked after the sessionOperation is performed.      *      *<p>      * An implementation of this method should not perform content access or any other      * repository operation. The {@link SessionDelegate} and {@link SessionOperation} must only be used      * to extract information e.g. session Id, type of operation etc.      *      * Further {@link SessionOperation#perform} is invoked      * by the caller and implementers MUST not invoke it      *</p>      *      * @param delegate sessionDelegate performing the operation      * @param operation operation to perform      */
 name|void
 name|after
 parameter_list|(
