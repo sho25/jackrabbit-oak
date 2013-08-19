@@ -69,9 +69,14 @@ end_import
 
 begin_class
 specifier|public
+specifier|final
 class|class
 name|OakAssert
 block|{
+specifier|private
+name|OakAssert
+parameter_list|()
+block|{     }
 specifier|public
 specifier|static
 name|void
