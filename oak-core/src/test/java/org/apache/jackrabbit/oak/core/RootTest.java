@@ -1055,7 +1055,6 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|// FIXME fails on SegmentMK
 annotation|@
 name|Test
 specifier|public
@@ -1065,6 +1064,7 @@ parameter_list|()
 throws|throws
 name|CommitFailedException
 block|{
+comment|// FIXME fails on SegmentMK. See OAK-963
 name|assumeTrue
 argument_list|(
 name|fixture
