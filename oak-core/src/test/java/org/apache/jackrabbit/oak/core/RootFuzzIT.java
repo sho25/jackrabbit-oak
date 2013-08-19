@@ -840,7 +840,7 @@ operator|||
 name|EXECUTE_MONGO_MK
 argument_list|)
 expr_stmt|;
-comment|// FIXME fails on SegmentMK. Needs further analysis
+comment|// FIXME fails on SegmentMK. See OAK-965
 name|assumeTrue
 argument_list|(
 name|fixture
