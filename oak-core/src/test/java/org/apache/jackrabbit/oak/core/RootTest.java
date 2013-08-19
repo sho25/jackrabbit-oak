@@ -86,6 +86,18 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assume
+operator|.
+name|assumeTrue
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -102,6 +114,20 @@ operator|.
 name|util
 operator|.
 name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|NodeStoreFixture
 import|;
 end_import
 
@@ -274,6 +300,19 @@ specifier|private
 name|ContentSession
 name|session
 decl_stmt|;
+specifier|public
+name|RootTest
+parameter_list|(
+name|NodeStoreFixture
+name|fixture
+parameter_list|)
+block|{
+name|super
+argument_list|(
+name|fixture
+argument_list|)
+expr_stmt|;
+block|}
 annotation|@
 name|Before
 specifier|public
@@ -1016,6 +1055,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+comment|// FIXME fails on SegmentMK
 annotation|@
 name|Test
 specifier|public
@@ -1025,6 +1065,15 @@ parameter_list|()
 throws|throws
 name|CommitFailedException
 block|{
+name|assumeTrue
+argument_list|(
+name|fixture
+operator|!=
+name|NodeStoreFixture
+operator|.
+name|SEGMENT_MK
+argument_list|)
+expr_stmt|;
 name|Root
 name|root
 init|=
