@@ -1064,16 +1064,6 @@ parameter_list|()
 throws|throws
 name|CommitFailedException
 block|{
-comment|// FIXME fails on SegmentMK. See OAK-963
-name|assumeTrue
-argument_list|(
-name|fixture
-operator|!=
-name|NodeStoreFixture
-operator|.
-name|SEGMENT_MK
-argument_list|)
-expr_stmt|;
 name|Root
 name|root
 init|=
@@ -1099,7 +1089,7 @@ operator|.
 name|commit
 argument_list|()
 expr_stmt|;
-name|assertFalse
+name|assertTrue
 argument_list|(
 name|root
 operator|.
