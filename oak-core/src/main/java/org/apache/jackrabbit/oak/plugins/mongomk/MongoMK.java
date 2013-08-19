@@ -607,6 +607,38 @@ name|DB
 import|;
 end_import
 
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkNotNull
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkState
+import|;
+end_import
+
 begin_comment
 comment|/**  * A MicroKernel implementation that stores the data in a MongoDB.  */
 end_comment
@@ -1965,18 +1997,28 @@ comment|/**      * Get the node for the given path and revision. The returned ob
 name|Node
 name|getNode
 parameter_list|(
+annotation|@
+name|Nonnull
 name|String
 name|path
 parameter_list|,
+annotation|@
+name|Nonnull
 name|Revision
 name|rev
 parameter_list|)
 block|{
 name|checkRevisionAge
 argument_list|(
+name|checkNotNull
+argument_list|(
 name|rev
+argument_list|)
 argument_list|,
+name|checkNotNull
+argument_list|(
 name|path
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|String
@@ -4459,8 +4501,6 @@ name|sourcePath
 argument_list|,
 name|targetPath
 argument_list|,
-name|baseRev
-argument_list|,
 name|commit
 argument_list|)
 expr_stmt|;
@@ -4578,8 +4618,6 @@ argument_list|(
 name|sourcePath
 argument_list|,
 name|targetPath
-argument_list|,
-name|baseRev
 argument_list|,
 name|commit
 argument_list|)
@@ -4922,9 +4960,6 @@ parameter_list|,
 name|String
 name|targetPath
 parameter_list|,
-name|Revision
-name|baseRev
-parameter_list|,
 name|Commit
 name|commit
 parameter_list|)
@@ -4936,8 +4971,6 @@ argument_list|,
 name|sourcePath
 argument_list|,
 name|targetPath
-argument_list|,
-name|baseRev
 argument_list|,
 name|commit
 argument_list|)
@@ -4953,9 +4986,6 @@ parameter_list|,
 name|String
 name|targetPath
 parameter_list|,
-name|Revision
-name|baseRev
-parameter_list|,
 name|Commit
 name|commit
 parameter_list|)
@@ -4967,8 +4997,6 @@ argument_list|,
 name|sourcePath
 argument_list|,
 name|targetPath
-argument_list|,
-name|baseRev
 argument_list|,
 name|commit
 argument_list|)
@@ -4987,9 +5015,6 @@ parameter_list|,
 name|String
 name|targetPath
 parameter_list|,
-name|Revision
-name|baseRev
-parameter_list|,
 name|Commit
 name|commit
 parameter_list|)
@@ -5007,7 +5032,10 @@ name|getNode
 argument_list|(
 name|sourcePath
 argument_list|,
-name|baseRev
+name|commit
+operator|.
+name|getBaseRevision
+argument_list|()
 argument_list|)
 decl_stmt|;
 comment|// Node might be deleted already
@@ -5072,7 +5100,10 @@ name|getChildren
 argument_list|(
 name|sourcePath
 argument_list|,
-name|baseRev
+name|commit
+operator|.
+name|getBaseRevision
+argument_list|()
 argument_list|,
 name|Integer
 operator|.
@@ -5119,8 +5150,6 @@ name|srcChildPath
 argument_list|,
 name|destChildPath
 argument_list|,
-name|baseRev
-argument_list|,
 name|commit
 argument_list|)
 expr_stmt|;
@@ -5145,9 +5174,18 @@ name|rev
 init|=
 name|commit
 operator|.
-name|getRevision
+name|getBaseRevision
 argument_list|()
 decl_stmt|;
+name|checkState
+argument_list|(
+name|rev
+operator|!=
+literal|null
+argument_list|,
+literal|"Base revision of commit must not be null"
+argument_list|)
+expr_stmt|;
 name|commit
 operator|.
 name|removeNode

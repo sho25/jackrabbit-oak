@@ -89,6 +89,16 @@ name|javax
 operator|.
 name|annotation
 operator|.
+name|CheckForNull
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|annotation
+operator|.
 name|Nonnull
 import|;
 end_import
@@ -452,13 +462,26 @@ operator|/
 literal|5
 return|;
 block|}
-specifier|public
+comment|/**      * The revision for this new commit. That is, the changes within this commit      * will be visible with this revision.      *      * @return the revision for this new commit.      */
+annotation|@
+name|Nonnull
 name|Revision
 name|getRevision
 parameter_list|()
 block|{
 return|return
 name|revision
+return|;
+block|}
+comment|/**      * Returns the base revision for this commit. That is, the revision passed      * to {@link MongoMK#commit(String, String, String, String)}. The base      * revision may be<code>null</code>, e.g. for the initial commit of the      * root node, when there is no base revision.      *      * @return the base revision of this commit or<code>null</code>.      */
+annotation|@
+name|CheckForNull
+name|Revision
+name|getBaseRevision
+parameter_list|()
+block|{
+return|return
+name|baseRevision
 return|;
 block|}
 name|void

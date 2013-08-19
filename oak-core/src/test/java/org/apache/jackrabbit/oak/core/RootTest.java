@@ -3024,16 +3024,6 @@ parameter_list|()
 throws|throws
 name|CommitFailedException
 block|{
-comment|// FIXME Fails on MongoMK. See OAK-962
-name|assumeTrue
-argument_list|(
-name|fixture
-operator|!=
-name|NodeStoreFixture
-operator|.
-name|MONGO_MK
-argument_list|)
-expr_stmt|;
 name|Root
 name|root
 init|=

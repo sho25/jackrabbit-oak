@@ -10119,12 +10119,6 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-annotation|@
-name|Ignore
-argument_list|(
-literal|"OAK-962"
-argument_list|)
-comment|// FIXME OAK-962
 specifier|public
 name|void
 name|oak962
