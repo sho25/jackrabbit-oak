@@ -35,16 +35,6 @@ name|junit
 operator|.
 name|framework
 operator|.
-name|TestCase
-import|;
-end_import
-
-begin_import
-import|import
-name|junit
-operator|.
-name|framework
-operator|.
 name|TestSuite
 import|;
 end_import
@@ -494,6 +484,24 @@ operator|.
 name|query
 operator|.
 name|XPathAxisTest
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|jcr
+operator|.
+name|tck
+operator|.
+name|TCKBase
 import|;
 end_import
 
@@ -516,16 +524,39 @@ specifier|public
 class|class
 name|QueryJcrTest
 extends|extends
-name|TestCase
+name|TCKBase
 block|{
+specifier|public
+name|QueryJcrTest
+parameter_list|()
+block|{
+name|super
+argument_list|(
+literal|"Jackrabbit query tests"
+argument_list|)
+expr_stmt|;
+block|}
 specifier|public
 specifier|static
 name|Test
 name|suite
 parameter_list|()
 block|{
+return|return
+operator|new
+name|QueryJcrTest
+argument_list|()
+return|;
+block|}
+annotation|@
+name|Override
+specifier|protected
+name|void
+name|addTests
+parameter_list|()
+block|{
 name|TestSuite
-name|suite
+name|tests
 init|=
 operator|new
 name|ConcurrentTestSuite
@@ -533,7 +564,7 @@ argument_list|(
 literal|"Jackrabbit query tests"
 argument_list|)
 decl_stmt|;
-name|suite
+name|tests
 operator|.
 name|addTestSuite
 argument_list|(
@@ -542,7 +573,7 @@ operator|.
 name|class
 argument_list|)
 expr_stmt|;
-name|suite
+name|tests
 operator|.
 name|addTestSuite
 argument_list|(
@@ -551,7 +582,7 @@ operator|.
 name|class
 argument_list|)
 expr_stmt|;
-name|suite
+name|tests
 operator|.
 name|addTestSuite
 argument_list|(
@@ -560,7 +591,7 @@ operator|.
 name|class
 argument_list|)
 expr_stmt|;
-name|suite
+name|tests
 operator|.
 name|addTestSuite
 argument_list|(
@@ -569,7 +600,7 @@ operator|.
 name|class
 argument_list|)
 expr_stmt|;
-name|suite
+name|tests
 operator|.
 name|addTestSuite
 argument_list|(
@@ -578,7 +609,7 @@ operator|.
 name|class
 argument_list|)
 expr_stmt|;
-name|suite
+name|tests
 operator|.
 name|addTestSuite
 argument_list|(
@@ -587,7 +618,7 @@ operator|.
 name|class
 argument_list|)
 expr_stmt|;
-name|suite
+name|tests
 operator|.
 name|addTestSuite
 argument_list|(
@@ -596,7 +627,7 @@ operator|.
 name|class
 argument_list|)
 expr_stmt|;
-name|suite
+name|tests
 operator|.
 name|addTestSuite
 argument_list|(
@@ -605,7 +636,7 @@ operator|.
 name|class
 argument_list|)
 expr_stmt|;
-name|suite
+name|tests
 operator|.
 name|addTestSuite
 argument_list|(
@@ -614,7 +645,7 @@ operator|.
 name|class
 argument_list|)
 expr_stmt|;
-name|suite
+name|tests
 operator|.
 name|addTestSuite
 argument_list|(
@@ -623,7 +654,7 @@ operator|.
 name|class
 argument_list|)
 expr_stmt|;
-name|suite
+name|tests
 operator|.
 name|addTestSuite
 argument_list|(
@@ -632,7 +663,7 @@ operator|.
 name|class
 argument_list|)
 expr_stmt|;
-name|suite
+name|tests
 operator|.
 name|addTestSuite
 argument_list|(
@@ -641,7 +672,7 @@ operator|.
 name|class
 argument_list|)
 expr_stmt|;
-name|suite
+name|tests
 operator|.
 name|addTestSuite
 argument_list|(
@@ -650,7 +681,7 @@ operator|.
 name|class
 argument_list|)
 expr_stmt|;
-name|suite
+name|tests
 operator|.
 name|addTestSuite
 argument_list|(
@@ -659,7 +690,7 @@ operator|.
 name|class
 argument_list|)
 expr_stmt|;
-name|suite
+name|tests
 operator|.
 name|addTestSuite
 argument_list|(
@@ -668,7 +699,7 @@ operator|.
 name|class
 argument_list|)
 expr_stmt|;
-name|suite
+name|tests
 operator|.
 name|addTestSuite
 argument_list|(
@@ -677,7 +708,7 @@ operator|.
 name|class
 argument_list|)
 expr_stmt|;
-name|suite
+name|tests
 operator|.
 name|addTestSuite
 argument_list|(
@@ -686,7 +717,7 @@ operator|.
 name|class
 argument_list|)
 expr_stmt|;
-name|suite
+name|tests
 operator|.
 name|addTestSuite
 argument_list|(
@@ -695,7 +726,7 @@ operator|.
 name|class
 argument_list|)
 expr_stmt|;
-name|suite
+name|tests
 operator|.
 name|addTestSuite
 argument_list|(
@@ -704,7 +735,7 @@ operator|.
 name|class
 argument_list|)
 expr_stmt|;
-name|suite
+name|tests
 operator|.
 name|addTestSuite
 argument_list|(
@@ -713,7 +744,7 @@ operator|.
 name|class
 argument_list|)
 expr_stmt|;
-name|suite
+name|tests
 operator|.
 name|addTestSuite
 argument_list|(
@@ -722,7 +753,7 @@ operator|.
 name|class
 argument_list|)
 expr_stmt|;
-name|suite
+name|tests
 operator|.
 name|addTestSuite
 argument_list|(
@@ -731,7 +762,7 @@ operator|.
 name|class
 argument_list|)
 expr_stmt|;
-name|suite
+name|tests
 operator|.
 name|addTestSuite
 argument_list|(
@@ -740,7 +771,7 @@ operator|.
 name|class
 argument_list|)
 expr_stmt|;
-name|suite
+name|tests
 operator|.
 name|addTestSuite
 argument_list|(
@@ -749,7 +780,7 @@ operator|.
 name|class
 argument_list|)
 expr_stmt|;
-name|suite
+name|tests
 operator|.
 name|addTestSuite
 argument_list|(
@@ -758,7 +789,7 @@ operator|.
 name|class
 argument_list|)
 expr_stmt|;
-name|suite
+name|tests
 operator|.
 name|addTestSuite
 argument_list|(
@@ -767,7 +798,7 @@ operator|.
 name|class
 argument_list|)
 expr_stmt|;
-name|suite
+name|tests
 operator|.
 name|addTestSuite
 argument_list|(
@@ -776,7 +807,7 @@ operator|.
 name|class
 argument_list|)
 expr_stmt|;
-name|suite
+name|tests
 operator|.
 name|addTestSuite
 argument_list|(
@@ -785,9 +816,11 @@ operator|.
 name|class
 argument_list|)
 expr_stmt|;
-return|return
-name|suite
-return|;
+name|addTest
+argument_list|(
+name|tests
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 end_class
