@@ -2517,16 +2517,6 @@ parameter_list|()
 throws|throws
 name|CommitFailedException
 block|{
-comment|// FIXME this fails on SegmentMK. See OAK-965
-name|assumeTrue
-argument_list|(
-name|fixture
-operator|!=
-name|NodeStoreFixture
-operator|.
-name|SEGMENT_MK
-argument_list|)
-expr_stmt|;
 name|NodeStore
 name|store1
 init|=

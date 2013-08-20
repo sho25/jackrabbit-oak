@@ -182,18 +182,6 @@ import|;
 end_import
 
 begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assume
-operator|.
-name|assumeTrue
-import|;
-end_import
-
-begin_import
 import|import
 name|java
 operator|.
@@ -606,25 +594,6 @@ argument_list|)
 decl_stmt|;
 specifier|private
 specifier|static
-name|boolean
-name|EXECUTE_SEGMENT_MK
-init|=
-name|Boolean
-operator|.
-name|getBoolean
-argument_list|(
-name|RootFuzzIT
-operator|.
-name|class
-operator|.
-name|getSimpleName
-argument_list|()
-operator|+
-literal|"-with-segment-mk"
-argument_list|)
-decl_stmt|;
-specifier|private
-specifier|static
 specifier|final
 name|Random
 name|random
@@ -809,18 +778,6 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-comment|// FIXME fails on SegmentMK. See OAK-965
-name|assumeTrue
-argument_list|(
-name|fixture
-operator|!=
-name|NodeStoreFixture
-operator|.
-name|SEGMENT_MK
-operator|||
-name|EXECUTE_SEGMENT_MK
-argument_list|)
-expr_stmt|;
 for|for
 control|(
 name|Operation
