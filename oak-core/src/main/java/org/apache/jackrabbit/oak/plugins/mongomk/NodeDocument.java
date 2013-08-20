@@ -241,8 +241,6 @@ class|class
 name|NodeDocument
 extends|extends
 name|Document
-implements|implements
-name|CacheValue
 block|{
 specifier|private
 specifier|static
@@ -258,14 +256,6 @@ name|NodeDocument
 operator|.
 name|class
 argument_list|)
-decl_stmt|;
-specifier|private
-specifier|static
-specifier|final
-name|long
-name|serialVersionUID
-init|=
-literal|6713219541688419314L
 decl_stmt|;
 comment|/**      * Marker document, which indicates the document does not exist.      */
 specifier|public
@@ -634,6 +624,8 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+name|data
+operator|.
 name|containsKey
 argument_list|(
 name|REVISIONS
@@ -666,6 +658,8 @@ expr_stmt|;
 block|}
 if|if
 condition|(
+name|data
+operator|.
 name|containsKey
 argument_list|(
 name|COMMIT_ROOT
@@ -2115,6 +2109,8 @@ name|Object
 argument_list|>
 name|e
 range|:
+name|data
+operator|.
 name|entrySet
 argument_list|()
 control|)
@@ -2455,23 +2451,6 @@ argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
-block|}
-comment|//-----------------------------< CacheValue>-------------------------------
-annotation|@
-name|Override
-specifier|public
-name|int
-name|getMemory
-parameter_list|()
-block|{
-return|return
-name|Utils
-operator|.
-name|estimateMemoryUsage
-argument_list|(
-name|this
-argument_list|)
-return|;
 block|}
 comment|//----------------------------< internal>----------------------------------
 comment|/**      * Checks that revision x is newer than another revision.      *      * @param x the revision to check      * @param previous the presumed earlier revision      * @return true if x is newer      */

@@ -1645,12 +1645,10 @@ name|revision
 operator|+
 literal|"; document:\n"
 operator|+
-name|Utils
-operator|.
-name|formatDocument
-argument_list|(
 name|doc
-argument_list|)
+operator|.
+name|format
+argument_list|()
 operator|+
 literal|",\nrevision order:\n"
 operator|+
@@ -1719,23 +1717,16 @@ expr_stmt|;
 block|}
 block|}
 block|}
-name|int
-name|size
-init|=
-name|Utils
-operator|.
-name|estimateMemoryUsage
-argument_list|(
-name|doc
-argument_list|)
-decl_stmt|;
 if|if
 condition|(
 name|doc
 operator|!=
 literal|null
 operator|&&
-name|size
+name|doc
+operator|.
+name|getMemory
+argument_list|()
 operator|>
 name|MAX_DOCUMENT_SIZE
 condition|)

@@ -272,12 +272,10 @@ operator|.
 name|newDocument
 argument_list|()
 decl_stmt|;
-name|Utils
-operator|.
-name|deepCopyMap
-argument_list|(
 name|document
-argument_list|,
+operator|.
+name|deepCopy
+argument_list|(
 name|newDoc
 argument_list|)
 expr_stmt|;
@@ -315,12 +313,10 @@ name|ourRev
 operator|+
 literal|", document:\n"
 operator|+
-name|Utils
-operator|.
-name|formatDocument
-argument_list|(
 name|newDoc
-argument_list|)
+operator|.
+name|format
+argument_list|()
 argument_list|)
 throw|;
 block|}
@@ -622,12 +618,7 @@ name|revision
 parameter_list|,
 annotation|@
 name|Nonnull
-name|Map
-argument_list|<
-name|String
-argument_list|,
-name|Object
-argument_list|>
+name|Document
 name|document
 parameter_list|)
 throws|throws
@@ -643,12 +634,10 @@ name|revision
 operator|+
 literal|", document: "
 operator|+
-name|Utils
-operator|.
-name|formatDocument
-argument_list|(
 name|document
-argument_list|)
+operator|.
+name|format
+argument_list|()
 argument_list|)
 throw|;
 block|}

@@ -828,18 +828,6 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-comment|// FIXME takes too long on MongoMK. See OAK-926
-name|assumeTrue
-argument_list|(
-name|fixture
-operator|!=
-name|NodeStoreFixture
-operator|.
-name|MONGO_MK
-operator|||
-name|EXECUTE_MONGO_MK
-argument_list|)
-expr_stmt|;
 comment|// FIXME fails on SegmentMK. See OAK-965
 name|assumeTrue
 argument_list|(

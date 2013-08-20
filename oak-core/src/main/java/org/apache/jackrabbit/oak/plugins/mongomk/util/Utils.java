@@ -1097,42 +1097,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Formats a MongoDB document for use in a log message.      *       * @param document the MongoDB document.      * @return the formatted string      */
-specifier|public
-specifier|static
-name|String
-name|formatDocument
-parameter_list|(
-name|Map
-argument_list|<
-name|String
-argument_list|,
-name|Object
-argument_list|>
-name|document
-parameter_list|)
-block|{
-return|return
-name|document
-operator|.
-name|toString
-argument_list|()
-operator|.
-name|replaceAll
-argument_list|(
-literal|", _"
-argument_list|,
-literal|",\n_"
-argument_list|)
-operator|.
-name|replaceAll
-argument_list|(
-literal|"}, "
-argument_list|,
-literal|"},\n"
-argument_list|)
-return|;
-block|}
 comment|/**      * Returns the lower key limit to retrieve the children of the given      *<code>path</code>.      *      * @param path a path.      * @return the lower key limit.      */
 specifier|public
 specifier|static

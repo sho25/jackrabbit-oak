@@ -31,16 +31,6 @@ end_import
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Map
-import|;
-end_import
-
-begin_import
-import|import
 name|javax
 operator|.
 name|annotation
@@ -84,7 +74,7 @@ specifier|public
 interface|interface
 name|DocumentStore
 block|{
-comment|/**      * Get a document.      *<p>      * The returned document is a clone (the caller can modify it without affecting      * the stored version).      *       * @param collection the collection      * @param key the key      * @return the document, or null if not found      */
+comment|/**      * Get a document.      *<p>      * The returned document is immutable.      *       * @param collection the collection      * @param key the key      * @return the document, or null if not found      */
 annotation|@
 name|CheckForNull
 argument_list|<
@@ -105,7 +95,7 @@ name|String
 name|key
 parameter_list|)
 function_decl|;
-comment|/**      * Get a document, ignoring the cache if the cached entry is older than the      * specified time.      *<p>      * The returned document is a clone (the caller can modify it without affecting      * the stored version).      *       * @param collection the collection      * @param key the key      * @param maxCacheAge the maximum age of the cached document      * @return the document, or null if not found      */
+comment|/**      * Get a document, ignoring the cache if the cached entry is older than the      * specified time.      *<p>      * The returned document is immutable.      *       * @param collection the collection      * @param key the key      * @param maxCacheAge the maximum age of the cached document      * @return the document, or null if not found      */
 annotation|@
 name|CheckForNull
 argument_list|<
@@ -129,7 +119,7 @@ name|int
 name|maxCacheAge
 parameter_list|)
 function_decl|;
-comment|/**      * Get a list of documents where the key is greater than a start value and      * less than an end value.      *       * @param collection the collection      * @param fromKey the start value (excluding)      * @param toKey the end value (excluding)      * @param limit the maximum number of entries to return      * @return the list (possibly empty)      */
+comment|/**      * Get a list of documents where the key is greater than a start value and      * less than an end value. The returned documents are immutable.      *       * @param collection the collection      * @param fromKey the start value (excluding)      * @param toKey the end value (excluding)      * @param limit the maximum number of entries to return      * @return the list (possibly empty)      */
 annotation|@
 name|Nonnull
 argument_list|<
@@ -159,7 +149,7 @@ name|int
 name|limit
 parameter_list|)
 function_decl|;
-comment|/**      * Get a list of documents where the key is greater than a start value and      * less than an end value.      *       * @param collection the collection      * @param fromKey the start value (excluding)      * @param toKey the end value (excluding)      * @param indexedProperty the name of the indexed property (optional)      * @param startValue the minimum value of the indexed property      * @param limit the maximum number of entries to return      * @return the list (possibly empty)      */
+comment|/**      * Get a list of documents where the key is greater than a start value and      * less than an end value. The returned documents are immutable.      *       * @param collection the collection      * @param fromKey the start value (excluding)      * @param toKey the end value (excluding)      * @param indexedProperty the name of the indexed property (optional)      * @param startValue the minimum value of the indexed property      * @param limit the maximum number of entries to return      * @return the list (possibly empty)      */
 annotation|@
 name|Nonnull
 argument_list|<
@@ -236,7 +226,7 @@ argument_list|>
 name|updateOps
 parameter_list|)
 function_decl|;
-comment|/**      * Create or update a document. For MongoDb, this is using "findAndModify" with      * the "upsert" flag (insert or update).      *      * @param collection the collection      * @param update the update operation      * @return the old document or<code>null</code> if it didn't exist before.      * @throws MicroKernelException if the operation failed.      */
+comment|/**      * Create or update a document. For MongoDb, this is using "findAndModify" with      * the "upsert" flag (insert or update). The returned document is immutable.      *      * @param collection the collection      * @param update the update operation      * @return the old document or<code>null</code> if it didn't exist before.      * @throws MicroKernelException if the operation failed.      */
 annotation|@
 name|CheckForNull
 argument_list|<
@@ -259,7 +249,7 @@ parameter_list|)
 throws|throws
 name|MicroKernelException
 function_decl|;
-comment|/**      * Performs a conditional update (e.g. using      * {@link UpdateOp.Operation.Type#CONTAINS_MAP_ENTRY} and only updates the      * document if the condition is<code>true</code>.      *      *      * @param collection the collection      * @param update the update operation with the condition      * @return the old document or<code>null</code> if the condition is not met.      * @throws MicroKernelException if the operation failed.      */
+comment|/**      * Performs a conditional update (e.g. using      * {@link UpdateOp.Operation.Type#CONTAINS_MAP_ENTRY} and only updates the      * document if the condition is<code>true</code>. The returned document is      * immutable.      *      * @param collection the collection      * @param update the update operation with the condition      * @return the old document or<code>null</code> if the condition is not met.      * @throws MicroKernelException if the operation failed.      */
 annotation|@
 name|CheckForNull
 argument_list|<

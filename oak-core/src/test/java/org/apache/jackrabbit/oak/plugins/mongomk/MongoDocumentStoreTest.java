@@ -435,13 +435,8 @@ argument_list|,
 name|updateOp
 argument_list|)
 expr_stmt|;
-name|Map
-argument_list|<
-name|String
-argument_list|,
-name|Object
-argument_list|>
-name|obj
+name|NodeDocument
+name|doc
 init|=
 name|docStore
 operator|.
@@ -470,7 +465,7 @@ argument_list|,
 name|?
 argument_list|>
 operator|)
-name|obj
+name|doc
 operator|.
 name|get
 argument_list|(
@@ -503,7 +498,7 @@ init|=
 operator|(
 name|Long
 operator|)
-name|obj
+name|doc
 operator|.
 name|get
 argument_list|(
@@ -528,7 +523,7 @@ init|=
 operator|(
 name|String
 operator|)
-name|obj
+name|doc
 operator|.
 name|get
 argument_list|(
@@ -553,7 +548,7 @@ argument_list|,
 literal|"/"
 argument_list|)
 expr_stmt|;
-name|obj
+name|doc
 operator|=
 name|docStore
 operator|.
@@ -568,7 +563,7 @@ argument_list|)
 expr_stmt|;
 name|assertTrue
 argument_list|(
-name|obj
+name|doc
 operator|==
 literal|null
 argument_list|)
@@ -1040,12 +1035,7 @@ literal|true
 argument_list|)
 expr_stmt|;
 comment|// update if key exists -> must succeed
-name|Map
-argument_list|<
-name|String
-argument_list|,
-name|Object
-argument_list|>
+name|NodeDocument
 name|doc
 init|=
 name|docStore
@@ -1077,11 +1067,11 @@ argument_list|,
 literal|"/node"
 argument_list|)
 expr_stmt|;
-name|assertTrue
+name|assertNotNull
 argument_list|(
 name|doc
 operator|.
-name|containsKey
+name|get
 argument_list|(
 literal|"prop"
 argument_list|)
@@ -1160,11 +1150,11 @@ argument_list|,
 literal|"/node"
 argument_list|)
 expr_stmt|;
-name|assertTrue
+name|assertNotNull
 argument_list|(
 name|doc
 operator|.
-name|containsKey
+name|get
 argument_list|(
 literal|"prop"
 argument_list|)

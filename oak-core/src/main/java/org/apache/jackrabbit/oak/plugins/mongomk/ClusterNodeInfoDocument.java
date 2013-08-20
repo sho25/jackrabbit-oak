@@ -29,16 +29,7 @@ class|class
 name|ClusterNodeInfoDocument
 extends|extends
 name|Document
-block|{
-specifier|private
-specifier|static
-specifier|final
-name|long
-name|serialVersionUID
-init|=
-literal|4392051250296984718L
-decl_stmt|;
-block|}
+block|{  }
 end_class
 
 end_unit
