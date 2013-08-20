@@ -674,6 +674,14 @@ parameter_list|)
 throws|throws
 name|RepositoryException
 block|{
+comment|// Synchronize to avoid conflicting refreshes from concurrent JCR API calls
+if|if
+condition|(
+name|sessionOpCount
+operator|==
+literal|0
+condition|)
+block|{
 name|interceptor
 operator|.
 name|before
@@ -683,14 +691,6 @@ argument_list|,
 name|sessionOperation
 argument_list|)
 expr_stmt|;
-comment|// Synchronize to avoid conflicting refreshes from concurrent JCR API calls
-if|if
-condition|(
-name|sessionOpCount
-operator|==
-literal|0
-condition|)
-block|{
 comment|// Refresh and checks only for non re-entrant session operations
 name|long
 name|now
