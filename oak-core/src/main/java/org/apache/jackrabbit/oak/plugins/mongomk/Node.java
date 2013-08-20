@@ -624,9 +624,8 @@ argument_list|()
 decl_stmt|;
 name|boolean
 name|hasMore
-decl_stmt|;
-name|long
-name|offset
+init|=
+literal|false
 decl_stmt|;
 annotation|@
 name|Override
