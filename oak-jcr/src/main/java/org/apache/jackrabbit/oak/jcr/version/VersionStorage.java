@@ -37,6 +37,18 @@ name|apache
 operator|.
 name|jackrabbit
 operator|.
+name|JcrConstants
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
 name|oak
 operator|.
 name|api
@@ -77,6 +89,22 @@ name|Tree
 import|;
 end_import
 
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkNotNull
+import|;
+end_import
+
 begin_comment
 comment|/**  * Simple abstraction of the version storage.  */
 end_comment
@@ -86,15 +114,28 @@ specifier|public
 class|class
 name|VersionStorage
 block|{
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|VERSION_STORAGE_PATH
+init|=
+literal|'/'
+operator|+
+name|JcrConstants
+operator|.
+name|JCR_SYSTEM
+operator|+
+literal|'/'
+operator|+
+name|JcrConstants
+operator|.
+name|JCR_VERSIONSTORAGE
+decl_stmt|;
 specifier|private
 specifier|final
 name|Root
 name|root
-decl_stmt|;
-specifier|private
-specifier|final
-name|Tree
-name|versionStorage
 decl_stmt|;
 specifier|public
 name|VersionStorage
@@ -103,11 +144,6 @@ annotation|@
 name|Nonnull
 name|Root
 name|versionStorageRoot
-parameter_list|,
-annotation|@
-name|Nonnull
-name|Tree
-name|versionStorageTree
 parameter_list|)
 block|{
 name|this
@@ -116,12 +152,6 @@ name|root
 operator|=
 name|versionStorageRoot
 expr_stmt|;
-name|this
-operator|.
-name|versionStorage
-operator|=
-name|versionStorageTree
-expr_stmt|;
 block|}
 comment|/**      * The version storage tree. I.e. the tree at path      *<code>/jcr:system/jcr:versionStorage</code>, though the returned      * tree instance may not necessarily return this path on      * {@link Tree#getPath()}!      *      * @return the version storage tree.      */
 name|Tree
@@ -129,7 +159,10 @@ name|getTree
 parameter_list|()
 block|{
 return|return
-name|versionStorage
+name|getVersionStorageTree
+argument_list|(
+name|root
+argument_list|)
 return|;
 block|}
 comment|/**      * Commits changes made to the version storage tree.      *      * @throws CommitFailedException if the commit fails.      */
@@ -155,6 +188,31 @@ operator|.
 name|refresh
 argument_list|()
 expr_stmt|;
+block|}
+comment|/**      * Returns the version storage tree for the given workspace.      * @param workspaceRoot the root of the workspace.      * @return the version storage tree.      */
+specifier|private
+specifier|static
+name|Tree
+name|getVersionStorageTree
+parameter_list|(
+annotation|@
+name|Nonnull
+name|Root
+name|workspaceRoot
+parameter_list|)
+block|{
+comment|// TODO: this assumes the version store is in the same workspace.
+return|return
+name|checkNotNull
+argument_list|(
+name|workspaceRoot
+argument_list|)
+operator|.
+name|getTree
+argument_list|(
+name|VERSION_STORAGE_PATH
+argument_list|)
+return|;
 block|}
 block|}
 end_class
