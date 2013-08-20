@@ -2461,7 +2461,6 @@ condition|)
 block|{
 continue|continue;
 block|}
-comment|// TODO put the whole node in the cache
 name|String
 name|p
 init|=
