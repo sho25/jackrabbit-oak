@@ -414,8 +414,6 @@ operator|=
 operator|new
 name|UpdateOp
 argument_list|(
-name|path
-argument_list|,
 name|id
 argument_list|,
 literal|false
@@ -1503,7 +1501,8 @@ literal|"The node "
 operator|+
 name|op
 operator|.
-name|path
+name|getKey
+argument_list|()
 operator|+
 literal|" does not exist or is already deleted"
 expr_stmt|;
@@ -1524,7 +1523,8 @@ literal|"The node "
 operator|+
 name|op
 operator|.
-name|path
+name|getKey
+argument_list|()
 operator|+
 literal|" was already added in revision\n"
 operator|+
@@ -1563,7 +1563,8 @@ literal|"The node "
 operator|+
 name|op
 operator|.
-name|path
+name|getKey
+argument_list|()
 operator|+
 literal|" was changed in revision\n"
 operator|+

@@ -403,8 +403,6 @@ init|=
 operator|new
 name|UpdateOp
 argument_list|(
-name|commitRootPath
-argument_list|,
 name|Utils
 operator|.
 name|getIdFromPath

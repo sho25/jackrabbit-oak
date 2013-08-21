@@ -352,8 +352,6 @@ init|=
 operator|new
 name|UpdateOp
 argument_list|(
-name|path
-argument_list|,
 name|id
 argument_list|,
 name|isNew

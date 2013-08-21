@@ -390,8 +390,6 @@ name|UpdateOp
 argument_list|(
 literal|"/"
 argument_list|,
-literal|"/"
-argument_list|,
 literal|true
 argument_list|)
 decl_stmt|;
@@ -630,8 +628,6 @@ init|=
 operator|new
 name|UpdateOp
 argument_list|(
-name|path
-argument_list|,
 name|path
 argument_list|,
 literal|true
@@ -928,8 +924,6 @@ name|UpdateOp
 argument_list|(
 literal|"/node"
 argument_list|,
-literal|"/node"
-argument_list|,
 literal|true
 argument_list|)
 decl_stmt|;
@@ -960,8 +954,6 @@ operator|=
 operator|new
 name|UpdateOp
 argument_list|(
-literal|"/node"
-argument_list|,
 literal|"/node"
 argument_list|,
 literal|false
@@ -1007,8 +999,6 @@ operator|=
 operator|new
 name|UpdateOp
 argument_list|(
-literal|"/node"
-argument_list|,
 literal|"/node"
 argument_list|,
 literal|false
@@ -1094,8 +1084,6 @@ operator|=
 operator|new
 name|UpdateOp
 argument_list|(
-literal|"/node"
-argument_list|,
 literal|"/node"
 argument_list|,
 literal|false
@@ -1717,8 +1705,6 @@ name|UpdateOp
 argument_list|(
 name|path
 argument_list|,
-name|path
-argument_list|,
 literal|true
 argument_list|)
 decl_stmt|;
@@ -1790,8 +1776,6 @@ init|=
 operator|new
 name|UpdateOp
 argument_list|(
-name|path
-argument_list|,
 name|path
 argument_list|,
 literal|false

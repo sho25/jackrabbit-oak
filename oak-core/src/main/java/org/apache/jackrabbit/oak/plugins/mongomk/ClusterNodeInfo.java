@@ -484,8 +484,6 @@ init|=
 operator|new
 name|UpdateOp
 argument_list|(
-literal|null
-argument_list|,
 literal|""
 operator|+
 name|clusterNode
@@ -896,8 +894,6 @@ init|=
 operator|new
 name|UpdateOp
 argument_list|(
-literal|null
-argument_list|,
 literal|""
 operator|+
 name|id
@@ -967,8 +963,6 @@ init|=
 operator|new
 name|UpdateOp
 argument_list|(
-literal|null
-argument_list|,
 literal|""
 operator|+
 name|id

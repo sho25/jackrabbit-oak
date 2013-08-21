@@ -52,7 +52,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A MongoDB "update" operation for one node.  */
+comment|/**  * A MongoDB "update" operation for one document.  */
 end_comment
 
 begin_class
@@ -60,10 +60,6 @@ specifier|public
 class|class
 name|UpdateOp
 block|{
-specifier|final
-name|String
-name|path
-decl_stmt|;
 specifier|final
 name|String
 name|key
@@ -93,12 +89,9 @@ name|Operation
 argument_list|>
 argument_list|()
 decl_stmt|;
-comment|/**      * Create an update operation for the given document. The commit root is assumed      * to be the path, unless this is changed later on.      *       * @param path the node path (for nodes)      * @param key the primary key      * @param isNew whether this is a new document      */
+comment|/**      * Create an update operation for the given document. The commit root is assumed      * to be the path, unless this is changed later on.      *      * @param key the primary key      * @param isNew whether this is a new document      */
 name|UpdateOp
 parameter_list|(
-name|String
-name|path
-parameter_list|,
 name|String
 name|key
 parameter_list|,
@@ -108,12 +101,6 @@ parameter_list|)
 block|{
 name|this
 operator|.
-name|path
-operator|=
-name|path
-expr_stmt|;
-name|this
-operator|.
 name|key
 operator|=
 name|key
@@ -124,14 +111,6 @@ name|isNew
 operator|=
 name|isNew
 expr_stmt|;
-block|}
-name|String
-name|getPath
-parameter_list|()
-block|{
-return|return
-name|path
-return|;
 block|}
 name|String
 name|getKey
@@ -570,8 +549,6 @@ init|=
 operator|new
 name|UpdateOp
 argument_list|(
-name|path
-argument_list|,
 name|key
 argument_list|,
 name|isNew

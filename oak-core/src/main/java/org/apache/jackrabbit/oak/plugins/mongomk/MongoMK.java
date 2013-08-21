@@ -5635,8 +5635,6 @@ init|=
 operator|new
 name|UpdateOp
 argument_list|(
-literal|"/"
-argument_list|,
 name|Utils
 operator|.
 name|getIdFromPath
