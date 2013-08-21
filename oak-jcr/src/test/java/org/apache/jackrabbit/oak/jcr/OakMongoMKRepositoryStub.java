@@ -338,6 +338,15 @@ argument_list|(
 literal|1
 argument_list|)
 operator|.
+name|memoryCacheSize
+argument_list|(
+literal|64
+operator|*
+literal|1024
+operator|*
+literal|1024
+argument_list|)
+operator|.
 name|setMongoDB
 argument_list|(
 name|connection
