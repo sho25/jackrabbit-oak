@@ -147,7 +147,7 @@ begin_class
 annotation|@
 name|RunWith
 argument_list|(
-name|Parameterized
+name|Parallelized
 operator|.
 name|class
 argument_list|)
