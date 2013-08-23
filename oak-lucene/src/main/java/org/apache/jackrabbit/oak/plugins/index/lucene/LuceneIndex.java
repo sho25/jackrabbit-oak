@@ -547,6 +547,26 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
+name|plugins
+operator|.
+name|index
+operator|.
+name|aggregate
+operator|.
+name|NodeAggregator
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
 name|query
 operator|.
 name|fulltext
@@ -1156,11 +1176,19 @@ specifier|final
 name|Analyzer
 name|analyzer
 decl_stmt|;
+specifier|private
+specifier|final
+name|NodeAggregator
+name|aggregator
+decl_stmt|;
 specifier|public
 name|LuceneIndex
 parameter_list|(
 name|Analyzer
 name|analyzer
+parameter_list|,
+name|NodeAggregator
+name|aggregator
 parameter_list|)
 block|{
 name|this
@@ -1168,6 +1196,12 @@ operator|.
 name|analyzer
 operator|=
 name|analyzer
+expr_stmt|;
+name|this
+operator|.
+name|aggregator
+operator|=
+name|aggregator
 expr_stmt|;
 block|}
 annotation|@
@@ -2145,19 +2179,6 @@ name|String
 argument_list|>
 argument_list|()
 decl_stmt|;
-name|HashSet
-argument_list|<
-name|String
-argument_list|>
-name|seenPaths
-init|=
-operator|new
-name|HashSet
-argument_list|<
-name|String
-argument_list|>
-argument_list|()
-decl_stmt|;
 name|Query
 name|query
 init|=
@@ -2170,16 +2191,6 @@ argument_list|,
 name|nonFullTextConstraints
 argument_list|,
 name|analyzer
-argument_list|)
-decl_stmt|;
-name|int
-name|parentDepth
-init|=
-name|PathUtils
-operator|.
-name|getDepth
-argument_list|(
-name|parent
 argument_list|)
 decl_stmt|;
 if|if
@@ -2257,65 +2268,20 @@ operator|=
 literal|"/"
 expr_stmt|;
 block|}
-if|if
-condition|(
-operator|!
-name|parent
-operator|.
-name|isEmpty
-argument_list|()
-condition|)
-block|{
-comment|// ensure the path ends with the given
-comment|// relative path
-if|if
-condition|(
-operator|!
-name|path
-operator|.
-name|endsWith
-argument_list|(
-literal|"/"
-operator|+
-name|parent
-argument_list|)
-condition|)
-block|{
-continue|continue;
-block|}
-comment|// get the base path
-name|path
-operator|=
-name|PathUtils
-operator|.
-name|getAncestorPath
-argument_list|(
-name|path
-argument_list|,
-name|parentDepth
-argument_list|)
-expr_stmt|;
-comment|// avoid duplicate entries
-if|if
-condition|(
-name|seenPaths
-operator|.
-name|contains
-argument_list|(
-name|path
-argument_list|)
-condition|)
-block|{
-continue|continue;
-block|}
-name|seenPaths
-operator|.
-name|add
-argument_list|(
-name|path
-argument_list|)
-expr_stmt|;
-block|}
+comment|//                                if (!parent.isEmpty()) {
+comment|//                                    // ensure the path ends with the given
+comment|//                                    // relative path
+comment|//                                    if (!path.endsWith("/" + parent)) {
+comment|//                                        continue;
+comment|//                                    }
+comment|//                                    // get the base path
+comment|//                                    path = PathUtils.getAncestorPath(path, parentDepth);
+comment|//                                    // avoid duplicate entries
+comment|//                                    if (seenPaths.contains(path)) {
+comment|//                                        continue;
+comment|//                                    }
+comment|//                                    seenPaths.add(path);
+comment|//                                }
 name|paths
 operator|.
 name|add
@@ -3441,13 +3407,6 @@ operator|new
 name|BooleanQuery
 argument_list|()
 decl_stmt|;
-name|q
-operator|.
-name|setMinimumNumberShouldMatch
-argument_list|(
-literal|1
-argument_list|)
-expr_stmt|;
 for|for
 control|(
 name|FullTextExpression
@@ -3620,14 +3579,10 @@ operator|>=
 literal|0
 condition|)
 block|{
+comment|//do not add constraints on child nodes properties
 name|p
 operator|=
-name|PathUtils
-operator|.
-name|getName
-argument_list|(
-name|p
-argument_list|)
+literal|"*"
 expr_stmt|;
 block|}
 name|Query
@@ -4593,6 +4548,17 @@ expr_stmt|;
 block|}
 return|return
 name|out
+return|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|NodeAggregator
+name|getNodeAggregator
+parameter_list|()
+block|{
+return|return
+name|aggregator
 return|;
 block|}
 block|}

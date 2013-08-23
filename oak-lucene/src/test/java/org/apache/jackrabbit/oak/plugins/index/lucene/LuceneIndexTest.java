@@ -583,6 +583,8 @@ operator|new
 name|LuceneIndex
 argument_list|(
 name|analyzer
+argument_list|,
+literal|null
 argument_list|)
 decl_stmt|;
 name|FilterImpl
@@ -795,6 +797,8 @@ operator|new
 name|LuceneIndex
 argument_list|(
 name|analyzer
+argument_list|,
+literal|null
 argument_list|)
 decl_stmt|;
 name|FilterImpl
@@ -1049,6 +1053,8 @@ operator|new
 name|LuceneIndex
 argument_list|(
 name|analyzer
+argument_list|,
+literal|null
 argument_list|)
 decl_stmt|;
 name|FilterImpl

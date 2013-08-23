@@ -21,6 +21,36 @@ end_package
 
 begin_import
 import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|CheckForNull
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|index
+operator|.
+name|aggregate
+operator|.
+name|NodeAggregator
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -92,6 +122,13 @@ extends|extends
 name|QueryIndex
 block|{
 comment|// marker interface
+comment|/**          * Returns the NodeAggregator responsible for providing the aggregation          * settings or null if aggregation is not available/desired          *           */
+annotation|@
+name|CheckForNull
+name|NodeAggregator
+name|getNodeAggregator
+parameter_list|()
+function_decl|;
 block|}
 comment|//    /**
 comment|//     * Return the possible index plans for the given filter and sort order.

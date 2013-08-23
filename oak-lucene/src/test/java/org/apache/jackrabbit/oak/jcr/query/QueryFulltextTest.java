@@ -269,7 +269,7 @@ name|assertEquals
 argument_list|(
 literal|"[nt:base] as [nt:base] /* "
 operator|+
-literal|"+((:fulltext:hallo* :fulltext:hello*)~1) +text:{* TO *} "
+literal|"aggregate +(:fulltext:hallo* :fulltext:hello*) +text:{* TO *} "
 operator|+
 literal|"ft:(text:\"hallo\" OR text:\"hello\") "
 operator|+
@@ -513,7 +513,7 @@ name|assertEquals
 argument_list|(
 literal|"[nt:base] as [nt:base] /* "
 operator|+
-literal|"+:fulltext:hallo* +:path:/testroot/* +text:{* TO *} "
+literal|"aggregate +:fulltext:hallo* +:path:/testroot/* +text:{* TO *} "
 operator|+
 literal|"ft:(text:\"hallo\") "
 operator|+
@@ -642,7 +642,7 @@ name|assertEquals
 argument_list|(
 literal|"[nt:base] as [nt:base] /* "
 operator|+
-literal|"(:fulltext:hallo* :fulltext:hello*)~1 "
+literal|":fulltext:hallo* :fulltext:hello* "
 operator|+
 literal|"ft:(node2/text:\"hallo\" OR node2/text:\"hello\") "
 operator|+
