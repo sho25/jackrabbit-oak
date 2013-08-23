@@ -37,6 +37,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Arrays
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|annotation
@@ -424,14 +434,24 @@ name|add
 argument_list|(
 literal|"uuids"
 argument_list|,
+name|Arrays
+operator|.
+name|toString
+argument_list|(
 name|uuids
+argument_list|)
 argument_list|)
 operator|.
 name|add
 argument_list|(
 literal|"node types"
 argument_list|,
+name|Arrays
+operator|.
+name|toString
+argument_list|(
 name|nodeTypeOakName
+argument_list|)
 argument_list|)
 operator|.
 name|add
