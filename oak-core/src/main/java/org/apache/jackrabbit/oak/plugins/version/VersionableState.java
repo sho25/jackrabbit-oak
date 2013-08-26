@@ -1413,7 +1413,7 @@ operator|.
 name|remove
 argument_list|()
 expr_stmt|;
-name|restoreNode
+name|restoreCopiedNode
 argument_list|(
 name|src
 argument_list|,
@@ -1455,7 +1455,7 @@ throws|,
 name|CommitFailedException
 block|{
 comment|// 15.7.2 Restoring Type and Identifier
-name|restoreFrozen
+name|restoreFrozenTypeAndUUID
 argument_list|(
 name|frozen
 argument_list|,
@@ -1649,7 +1649,7 @@ block|}
 comment|/**      * Restores the basic frozen properties (jcr:primaryType, jcr:mixinTypes      * and jcr:uuid).      */
 specifier|private
 name|void
-name|restoreFrozen
+name|restoreFrozenTypeAndUUID
 parameter_list|(
 annotation|@
 name|Nonnull
@@ -1738,7 +1738,7 @@ block|}
 comment|/**      * Restore a copied node.      */
 specifier|private
 name|void
-name|restoreNode
+name|restoreCopiedNode
 parameter_list|(
 name|NodeBuilder
 name|src
@@ -1767,7 +1767,7 @@ name|NT_FROZENNODE
 argument_list|)
 condition|)
 block|{
-name|restoreFrozen
+name|restoreFrozenTypeAndUUID
 argument_list|(
 name|src
 argument_list|,
@@ -1780,9 +1780,54 @@ name|src
 argument_list|,
 name|dest
 argument_list|,
-name|OPVForceCopy
+operator|new
+name|OPVProvider
+argument_list|()
+block|{
+annotation|@
+name|Override
+specifier|public
+name|int
+name|getAction
+parameter_list|(
+name|NodeBuilder
+name|src
+parameter_list|,
+name|NodeBuilder
+name|dest
+parameter_list|,
+name|PropertyState
+name|prop
+parameter_list|)
+throws|throws
+name|RepositoryException
+block|{
+comment|// copy back, except for basic frozen props
+if|if
+condition|(
+name|BASIC_FROZEN_PROPERTIES
 operator|.
-name|INSTANCE
+name|contains
+argument_list|(
+name|prop
+operator|.
+name|getName
+argument_list|()
+argument_list|)
+condition|)
+block|{
+return|return
+name|IGNORE
+return|;
+block|}
+else|else
+block|{
+return|return
+name|COPY
+return|;
+block|}
+block|}
+block|}
 argument_list|,
 literal|true
 argument_list|)
@@ -1953,7 +1998,7 @@ operator|.
 name|remove
 argument_list|()
 expr_stmt|;
-name|restoreNode
+name|restoreCopiedNode
 argument_list|(
 name|srcChild
 argument_list|,
