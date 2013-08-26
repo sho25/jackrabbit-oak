@@ -1623,8 +1623,6 @@ name|Node
 name|perform
 parameter_list|()
 throws|throws
-name|ItemNotFoundException
-throws|,
 name|RepositoryException
 block|{
 name|NodeDelegate
@@ -2107,6 +2105,17 @@ argument_list|()
 expr_stmt|;
 return|return
 literal|null
+return|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|boolean
+name|isSave
+parameter_list|()
+block|{
+return|return
+literal|true
 return|;
 block|}
 block|}
