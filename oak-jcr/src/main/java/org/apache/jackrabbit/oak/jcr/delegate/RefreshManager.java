@@ -155,13 +155,10 @@ name|threadSaveCount
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Called before the passed {@code sessionOperation} is performed. This method      * refreshes the session according to the rules given in the class comment.      *      * @param delegate  session on which the {@code sessionOperation} is executed      * @param sessionOperation  the operation to be executed      * @return  {@code true} if a refreshed, {@code false} otherwise.      */
+comment|/**      * Called before the passed {@code sessionOperation} is performed. This method      * determines whether a session needs to be refreshed according to the rules      * given in the class comment.      *      * @param sessionOperation  the operation to be executed      * @return  {@code true} if a refreshed, {@code false} otherwise.      */
 name|boolean
-name|refreshIfNecessary
+name|needsRefresh
 parameter_list|(
-name|SessionDelegate
-name|delegate
-parameter_list|,
 name|SessionOperation
 argument_list|<
 name|?
@@ -276,13 +273,6 @@ operator|=
 name|getOr0
 argument_list|(
 name|threadSaveCount
-argument_list|)
-expr_stmt|;
-name|delegate
-operator|.
-name|refresh
-argument_list|(
-literal|true
 argument_list|)
 expr_stmt|;
 return|return
