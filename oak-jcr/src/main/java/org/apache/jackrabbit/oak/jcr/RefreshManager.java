@@ -14,8 +14,6 @@ operator|.
 name|oak
 operator|.
 name|jcr
-operator|.
-name|delegate
 package|;
 end_package
 
@@ -65,6 +63,26 @@ name|SessionOperation
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
+import|;
+end_import
+
 begin_comment
 comment|/**  * This class contains the auto refresh logic for sessions, which is done to enhance backwards  * compatibility with Jackrabbit 2.  *<p>  * A sessions is automatically refreshed when  *<ul>  *<li>it has not been accessed for the number of seconds specified by the  *         {@code refreshInterval} parameter,</li>  *<li>an observation event has been delivered to a listener registered from within this  *         session,</li>  *<li>an updated occurred through a different session from<em>within the same  *         thread.</em></li>  *</ul>  * TODO: refactor this using the strategy pattern composing the different refresh behaviours.  * See OAK-960  */
 end_comment
@@ -74,6 +92,21 @@ specifier|public
 class|class
 name|RefreshManager
 block|{
+specifier|private
+specifier|static
+specifier|final
+name|Logger
+name|log
+init|=
+name|LoggerFactory
+operator|.
+name|getLogger
+argument_list|(
+name|RefreshManager
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 specifier|private
 specifier|final
 name|Exception
@@ -156,6 +189,7 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Called before the passed {@code sessionOperation} is performed. This method      * determines whether a session needs to be refreshed according to the rules      * given in the class comment.      *      * @param sessionOperation  the operation to be executed      * @return  {@code true} if a refreshed, {@code false} otherwise.      */
+specifier|public
 name|boolean
 name|needsRefresh
 parameter_list|(
@@ -227,8 +261,6 @@ condition|)
 block|{
 comment|// TODO replace logging with JMX monitoring. See OAK-941
 comment|// Warn once if this session has been idle too long
-name|SessionDelegate
-operator|.
 name|log
 operator|.
 name|warn
@@ -314,6 +346,7 @@ return|return
 literal|false
 return|;
 block|}
+specifier|public
 name|void
 name|refreshAtNextAccess
 parameter_list|()
