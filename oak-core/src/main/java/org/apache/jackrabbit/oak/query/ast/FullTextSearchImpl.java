@@ -627,6 +627,22 @@ name|emptySet
 argument_list|()
 return|;
 block|}
+comment|// makes no sense in applying a property existence constrain when that
+comment|// property is on a different node
+if|if
+condition|(
+name|relativePath
+operator|!=
+literal|null
+condition|)
+block|{
+return|return
+name|Collections
+operator|.
+name|emptySet
+argument_list|()
+return|;
+block|}
 return|return
 name|Collections
 operator|.
