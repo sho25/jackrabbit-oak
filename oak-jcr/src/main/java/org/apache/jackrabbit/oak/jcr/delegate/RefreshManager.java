@@ -66,7 +66,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This class contains the auto refresh logic for sessions, which is done to enhance backwards  * compatibility with Jackrabbit 2.  *<p>  * A sessions is automatically refreshed when  *<ul>  *<li>it has not been accessed for the number of seconds specified by the  *         {@code refreshInterval} parameter,</li>  *<li>an observation event has been delivered to a listener registered from within this  *         session,</li>  *<li>an updated occurred through a different session from<em>within the same  *         thread.</em></li>  *</ul>  */
+comment|/**  * This class contains the auto refresh logic for sessions, which is done to enhance backwards  * compatibility with Jackrabbit 2.  *<p>  * A sessions is automatically refreshed when  *<ul>  *<li>it has not been accessed for the number of seconds specified by the  *         {@code refreshInterval} parameter,</li>  *<li>an observation event has been delivered to a listener registered from within this  *         session,</li>  *<li>an updated occurred through a different session from<em>within the same  *         thread.</em></li>  *</ul>  * TODO: refactor this using the strategy pattern composing the different refresh behaviours.  * See OAK-960  */
 end_comment
 
 begin_class
@@ -209,6 +209,10 @@ operator|&&
 operator|!
 name|refreshAtNextAccess
 operator|&&
+operator|!
+name|hasInThreadCommit
+argument_list|()
+operator|&&
 name|timeElapsed
 operator|>
 name|MILLISECONDS
@@ -221,6 +225,7 @@ name|MINUTES
 argument_list|)
 condition|)
 block|{
+comment|// TODO replace logging with JMX monitoring. See OAK-941
 comment|// Warn once if this session has been idle too long
 name|SessionDelegate
 operator|.
