@@ -432,7 +432,7 @@ name|SelectorImpl
 argument_list|>
 name|s2
 init|=
-name|constraint1
+name|constraint2
 operator|.
 name|getSelectors
 argument_list|()
