@@ -66,7 +66,7 @@ import|;
 end_import
 
 begin_comment
-comment|/** * michid document */
+comment|/**  * This class contains the auto refresh logic for sessions, which is done to enhance backwards  * compatibility with Jackrabbit 2.  *<p>  * A sessions is automatically refreshed when  *<ul>  *<li>it has not been accessed for the number of seconds specified by the  *         {@code refreshInterval} parameter,</li>  *<li>an observation event has been delivered to a listener registered from within this  *         session,</li>  *<li>an updated occurred through a different session from<em>within the same  *         thread.</em></li>  *</ul>  */
 end_comment
 
 begin_class
@@ -155,6 +155,7 @@ name|threadSaveCount
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * Called before the passed {@code sessionOperation} is performed. This method      * refreshes the session according to the rules given in the class comment.      *      * @param delegate  session on which the {@code sessionOperation} is executed      * @param sessionOperation  the operation to be executed      * @return  {@code true} if a refreshed, {@code false} otherwise.      */
 name|boolean
 name|refreshIfNecessary
 parameter_list|(
