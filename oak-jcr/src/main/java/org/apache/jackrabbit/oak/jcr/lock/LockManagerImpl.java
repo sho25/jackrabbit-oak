@@ -45,6 +45,16 @@ name|javax
 operator|.
 name|jcr
 operator|.
+name|InvalidItemStateException
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|jcr
+operator|.
 name|Node
 import|;
 end_import
@@ -734,7 +744,7 @@ condition|)
 block|{
 throw|throw
 operator|new
-name|LockException
+name|InvalidItemStateException
 argument_list|(
 literal|"Unable to lock a node with pending changes"
 argument_list|)
