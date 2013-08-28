@@ -288,15 +288,6 @@ argument_list|,
 literal|0
 argument_list|)
 decl_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-name|diff
-argument_list|)
-expr_stmt|;
 name|assertTrue
 argument_list|(
 name|diff
