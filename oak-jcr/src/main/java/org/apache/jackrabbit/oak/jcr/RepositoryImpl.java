@@ -366,7 +366,7 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-comment|/**      * Name of the session attribute value determining the session refresh      * behaviour.      *      * @see SessionDelegate#SessionDelegate(ContentSession, RefreshManager, SecurityProvider)      */
+comment|/**      * Name of the session attribute value determining the session refresh      * interval in seconds.      *      * @see RefreshManager      */
 specifier|public
 specifier|static
 specifier|final
@@ -388,7 +388,9 @@ name|getLong
 argument_list|(
 literal|"default-refresh-interval"
 argument_list|,
-literal|1
+name|Long
+operator|.
+name|MAX_VALUE
 argument_list|)
 decl_stmt|;
 specifier|private
