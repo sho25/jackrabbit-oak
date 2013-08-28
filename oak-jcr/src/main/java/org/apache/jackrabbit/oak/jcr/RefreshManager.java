@@ -182,10 +182,8 @@ name|threadSaveCount
 expr_stmt|;
 name|sessionSaveCount
 operator|=
-name|getOr0
-argument_list|(
-name|threadSaveCount
-argument_list|)
+name|getThreadSaveCount
+argument_list|()
 expr_stmt|;
 block|}
 comment|/**      * Called before the passed {@code sessionOperation} is performed. This method      * determines whether a session needs to be refreshed according to the rules      * given in the class comment.      *      * @param sessionOperation  the operation to be executed      * @return  {@code true} if a refreshed, {@code false} otherwise.      */
@@ -307,10 +305,8 @@ literal|false
 expr_stmt|;
 name|sessionSaveCount
 operator|=
-name|getOr0
-argument_list|(
-name|threadSaveCount
-argument_list|)
+name|getThreadSaveCount
+argument_list|()
 expr_stmt|;
 return|return
 literal|true
@@ -325,6 +321,7 @@ name|isSave
 argument_list|()
 condition|)
 block|{
+comment|// Force refreshing on access through other sessions on the same thread
 name|threadSaveCount
 operator|.
 name|set
@@ -332,14 +329,27 @@ argument_list|(
 name|sessionSaveCount
 operator|=
 operator|(
-name|getOr0
-argument_list|(
-name|threadSaveCount
-argument_list|)
+name|getThreadSaveCount
+argument_list|()
 operator|+
 literal|1
 operator|)
 argument_list|)
+expr_stmt|;
+block|}
+if|if
+condition|(
+name|sessionOperation
+operator|.
+name|isRefresh
+argument_list|()
+condition|)
+block|{
+comment|// Avoid further refreshing if this is already a refresh operation
+name|sessionSaveCount
+operator|=
+name|getThreadSaveCount
+argument_list|()
 expr_stmt|;
 block|}
 return|return
@@ -365,30 +375,21 @@ comment|// If the threadLocal counter differs from our seen sessionSaveCount so 
 comment|// some other session would have done a commit. If that is the case a refresh would
 comment|// be required
 return|return
-name|getOr0
-argument_list|(
-name|threadSaveCount
-argument_list|)
+name|getThreadSaveCount
+argument_list|()
 operator|!=
 name|sessionSaveCount
 return|;
 block|}
 specifier|private
-specifier|static
 name|int
-name|getOr0
-parameter_list|(
-name|ThreadLocal
-argument_list|<
-name|Integer
-argument_list|>
-name|threadLocal
-parameter_list|)
+name|getThreadSaveCount
+parameter_list|()
 block|{
 name|Integer
 name|c
 init|=
-name|threadLocal
+name|threadSaveCount
 operator|.
 name|get
 argument_list|()
