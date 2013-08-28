@@ -519,7 +519,7 @@ name|queryManager
 decl_stmt|;
 specifier|private
 specifier|final
-name|LockManager
+name|LockManagerImpl
 name|lockManager
 decl_stmt|;
 specifier|private
@@ -1046,7 +1046,7 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|LockManager
+name|LockManagerImpl
 name|getLockManager
 parameter_list|()
 block|{
