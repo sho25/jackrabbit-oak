@@ -2256,6 +2256,14 @@ parameter_list|)
 throws|throws
 name|RepositoryException
 block|{
+name|boolean
+name|wasLockable
+init|=
+name|isNodeType
+argument_list|(
+name|MIX_LOCKABLE
+argument_list|)
+decl_stmt|;
 name|Tree
 name|tree
 init|=
@@ -2315,6 +2323,39 @@ argument_list|,
 name|NAMES
 argument_list|)
 expr_stmt|;
+name|boolean
+name|isLockable
+init|=
+name|isNodeType
+argument_list|(
+name|MIX_LOCKABLE
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|wasLockable
+operator|&&
+operator|!
+name|isLockable
+operator|&&
+name|holdsLock
+argument_list|(
+literal|false
+argument_list|)
+condition|)
+block|{
+comment|// TODO: This should probably be done in a commit hook
+name|unlock
+argument_list|()
+expr_stmt|;
+name|sessionDelegate
+operator|.
+name|refresh
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+block|}
 comment|// We need to remove all protected properties and child nodes
 comment|// associated with the removed mixin type, as there's no way for
 comment|// the client to do that. Other items defined in this mixin type
