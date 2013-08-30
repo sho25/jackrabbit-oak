@@ -1072,6 +1072,13 @@ operator|)
 operator|)
 operator|!=
 literal|0
+operator|&&
+name|context
+operator|.
+name|includeProperty
+argument_list|(
+name|pname
+argument_list|)
 condition|)
 block|{
 if|if

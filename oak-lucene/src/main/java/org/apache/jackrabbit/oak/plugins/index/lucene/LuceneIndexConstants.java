@@ -122,6 +122,12 @@ name|INCLUDE_PROPERTY_TYPES
 init|=
 literal|"includePropertyTypes"
 decl_stmt|;
+comment|/**      * exclude certain properties by name      */
+name|String
+name|EXCLUDE_PROPERTY_NAMES
+init|=
+literal|"excludePropertyNames"
+decl_stmt|;
 name|String
 name|PERSISTENCE_NAME
 init|=
