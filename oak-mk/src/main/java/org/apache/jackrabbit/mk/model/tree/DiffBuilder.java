@@ -209,7 +209,7 @@ operator|new
 name|JsopBuilder
 argument_list|()
 decl_stmt|;
-comment|// maps (key: the target node, value: the path to the target)
+comment|// maps (key: the target node, value: list of paths to the target)
 comment|// for tracking added/removed nodes; this allows us
 comment|// to detect 'move' operations
 comment|// TODO performance problem: this class uses NodeState as a hash key,
