@@ -247,7 +247,7 @@ name|oak
 operator|.
 name|jcr
 operator|.
-name|RefreshManager
+name|RefreshStrategy
 import|;
 end_import
 
@@ -419,8 +419,8 @@ name|contentSession
 decl_stmt|;
 specifier|private
 specifier|final
-name|RefreshManager
-name|refreshManager
+name|RefreshStrategy
+name|refreshStrategy
 decl_stmt|;
 specifier|private
 specifier|final
@@ -453,7 +453,7 @@ name|updateCount
 init|=
 literal|0
 decl_stmt|;
-comment|/**      * Create a new session delegate for a {@code ContentSession}. The refresh behaviour of the      * session is governed by the value of the {@code refreshInterval} argument: if the session      * has been idle longer than that value, an implicit refresh will take place.      * In addition a refresh can always be scheduled from the next access by an explicit call      * to {@link #refreshAtNextAccess()}. This is typically done from within the observation event      * dispatcher in order.      *      * @param contentSession  the content session      * @param refreshManager  the refresh manager used to handle auto refreshing this session      * @param securityProvider the security provider      */
+comment|/**      * Create a new session delegate for a {@code ContentSession}. The refresh behaviour of the      * session is governed by the value of the {@code refreshInterval} argument: if the session      * has been idle longer than that value, an implicit refresh will take place.      * In addition a refresh can always be scheduled from the next access by an explicit call      * to {@link #refreshAtNextAccess()}. This is typically done from within the observation event      * dispatcher in order.      *      * @param contentSession  the content session      * @param refreshStrategy  the refresh strategy used for auto refreshing this session      * @param securityProvider the security provider      */
 specifier|public
 name|SessionDelegate
 parameter_list|(
@@ -462,8 +462,8 @@ name|Nonnull
 name|ContentSession
 name|contentSession
 parameter_list|,
-name|RefreshManager
-name|refreshManager
+name|RefreshStrategy
+name|refreshStrategy
 parameter_list|,
 name|SecurityProvider
 name|securityProvider
@@ -480,11 +480,11 @@ argument_list|)
 expr_stmt|;
 name|this
 operator|.
-name|refreshManager
+name|refreshStrategy
 operator|=
 name|checkNotNull
 argument_list|(
-name|refreshManager
+name|refreshStrategy
 argument_list|)
 expr_stmt|;
 name|this
@@ -542,10 +542,16 @@ name|void
 name|refreshAtNextAccess
 parameter_list|()
 block|{
-name|refreshManager
+name|refreshStrategy
 operator|.
-name|refreshAtNextAccess
-argument_list|()
+name|accept
+argument_list|(
+name|RefreshStrategy
+operator|.
+name|Once
+operator|.
+name|RESETTING_VISITOR
+argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Performs the passed {@code SessionOperation} in a safe execution context. This      * context ensures that the session is refreshed if necessary and that refreshing      * occurs before the session operation is performed and the refreshing is done only      * once.      *      * @param sessionOperation  the {@code SessionOperation} to perform      * @param<T>  return type of {@code sessionOperation}      * @return  the result of {@code sessionOperation.perform()}      * @throws RepositoryException      * @see #getRoot()      */
@@ -577,7 +583,7 @@ block|{
 comment|// Refresh and precondition checks only for non re-entrant session operations
 if|if
 condition|(
-name|refreshManager
+name|refreshStrategy
 operator|.
 name|needsRefresh
 argument_list|(
@@ -589,6 +595,11 @@ name|refresh
 argument_list|(
 literal|true
 argument_list|)
+expr_stmt|;
+name|refreshStrategy
+operator|.
+name|refreshed
+argument_list|()
 expr_stmt|;
 name|updateCount
 operator|++
@@ -627,6 +638,35 @@ condition|)
 block|{
 name|updateCount
 operator|++
+expr_stmt|;
+block|}
+if|if
+condition|(
+name|sessionOperation
+operator|.
+name|isSave
+argument_list|()
+condition|)
+block|{
+name|refreshStrategy
+operator|.
+name|saved
+argument_list|()
+expr_stmt|;
+block|}
+elseif|else
+if|if
+condition|(
+name|sessionOperation
+operator|.
+name|isRefresh
+argument_list|()
+condition|)
+block|{
+name|refreshStrategy
+operator|.
+name|refreshed
+argument_list|()
 expr_stmt|;
 block|}
 block|}
