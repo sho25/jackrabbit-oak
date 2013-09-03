@@ -148,6 +148,8 @@ argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
+try|try
+block|{
 name|int
 name|i
 init|=
@@ -202,6 +204,15 @@ operator|.
 name|save
 argument_list|()
 expr_stmt|;
+block|}
+finally|finally
+block|{
+name|session
+operator|.
+name|logout
+argument_list|()
+expr_stmt|;
+block|}
 block|}
 catch|catch
 parameter_list|(
