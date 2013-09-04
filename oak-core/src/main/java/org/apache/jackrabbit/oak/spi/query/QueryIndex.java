@@ -121,8 +121,7 @@ name|FulltextQueryIndex
 extends|extends
 name|QueryIndex
 block|{
-comment|// marker interface
-comment|/**          * Returns the NodeAggregator responsible for providing the aggregation          * settings or null if aggregation is not available/desired          *           */
+comment|/**          * Returns the NodeAggregator responsible for providing the aggregation          * settings or null if aggregation is not available/desired.          *           * @return the node aggregator or null          */
 annotation|@
 name|CheckForNull
 name|NodeAggregator
