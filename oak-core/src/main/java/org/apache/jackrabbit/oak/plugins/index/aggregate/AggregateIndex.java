@@ -452,7 +452,7 @@ name|getNodeAggregator
 argument_list|()
 return|;
 block|}
-comment|// ----- aggregation aware cursor
+comment|/**      * An aggregation aware cursor.      */
 specifier|private
 specifier|static
 class|class
@@ -489,14 +489,10 @@ argument_list|<
 name|String
 argument_list|>
 name|aggregates
-init|=
-literal|null
 decl_stmt|;
 specifier|private
 name|String
 name|item
-init|=
-literal|null
 decl_stmt|;
 specifier|public
 name|AggregationCursor
@@ -662,10 +658,9 @@ parameter_list|()
 block|{
 if|if
 condition|(
+operator|!
 name|hasNext
 argument_list|()
-operator|==
-literal|false
 condition|)
 block|{
 throw|throw
