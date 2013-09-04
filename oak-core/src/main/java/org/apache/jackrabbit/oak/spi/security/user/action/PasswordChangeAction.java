@@ -210,7 +210,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * {@code PasswordChangeAction} asserts that the upon  * {@link #onPasswordChange(org.apache.jackrabbit.api.security.user.User, String,  * org.apache.jackrabbit.oak.api.Root, org.apache.jackrabbit.oak.namepath.NamePathMapper)}  * a different, non-null password is specified.  *  * @see org.apache.jackrabbit.api.security.user.User#changePassword(String)  * @see org.apache.jackrabbit.api.security.user.User#changePassword(String, String)  */
+comment|/**  * {@code PasswordChangeAction} asserts that the upon  * {@link #onPasswordChange(org.apache.jackrabbit.api.security.user.User, String,  * org.apache.jackrabbit.oak.api.Root, org.apache.jackrabbit.oak.namepath.NamePathMapper)}  * a different, non-null password is specified.  *  * @see org.apache.jackrabbit.api.security.user.User#changePassword(String)  * @see org.apache.jackrabbit.api.security.user.User#changePassword(String, String)  *  * @since OAK 1.0  */
 end_comment
 
 begin_class
