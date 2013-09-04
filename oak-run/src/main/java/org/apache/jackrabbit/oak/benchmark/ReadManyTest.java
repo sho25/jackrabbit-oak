@@ -955,15 +955,6 @@ name|save
 argument_list|()
 expr_stmt|;
 comment|// save once every 1k leaf entries
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-name|j
-argument_list|)
-expr_stmt|;
 block|}
 block|}
 block|}
