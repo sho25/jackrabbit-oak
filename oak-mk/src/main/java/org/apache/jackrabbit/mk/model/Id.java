@@ -104,7 +104,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-comment|/**      * Creates an {@code Id} instance from a long.      *      * @param l a long      * @return an {@code Id} instance      */
+comment|/**      * Creates an {@code Id} instance from a long.      *      * @param value a long      * @return an {@code Id} instance      */
 specifier|public
 specifier|static
 name|Id
