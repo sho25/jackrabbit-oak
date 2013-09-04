@@ -627,8 +627,9 @@ name|emptySet
 argument_list|()
 return|;
 block|}
-comment|// makes no sense in applying a property existence constrain when that
-comment|// property is on a different node
+name|String
+name|fullName
+decl_stmt|;
 if|if
 condition|(
 name|relativePath
@@ -636,12 +637,24 @@ operator|!=
 literal|null
 condition|)
 block|{
-return|return
-name|Collections
+name|fullName
+operator|=
+name|PathUtils
 operator|.
-name|emptySet
-argument_list|()
-return|;
+name|concat
+argument_list|(
+name|relativePath
+argument_list|,
+name|propertyName
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+name|fullName
+operator|=
+name|propertyName
+expr_stmt|;
 block|}
 return|return
 name|Collections
@@ -655,7 +668,7 @@ name|selector
 argument_list|,
 name|selectorName
 argument_list|,
-name|propertyName
+name|fullName
 argument_list|)
 argument_list|)
 return|;
