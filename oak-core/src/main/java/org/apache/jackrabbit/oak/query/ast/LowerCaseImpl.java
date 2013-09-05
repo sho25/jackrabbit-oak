@@ -260,6 +260,7 @@ argument_list|(
 name|STRING
 argument_list|)
 decl_stmt|;
+comment|// TODO toLowerCase(): document the Turkish locale problem
 return|return
 name|PropertyValues
 operator|.
