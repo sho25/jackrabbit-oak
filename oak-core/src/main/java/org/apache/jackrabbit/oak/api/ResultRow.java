@@ -26,10 +26,12 @@ specifier|public
 interface|interface
 name|ResultRow
 block|{
+comment|/**      * The path, assuming there is only one selector.      *       * @return the path      * @throws IllegalArgumentException if there are multiple selectors      */
 name|String
 name|getPath
 parameter_list|()
 function_decl|;
+comment|/**      * The path for the given selector name.      *       * @param selectorName the selector name (null if there is only one selector)      * @return the path      * @throws IllegalArgumentException if the selector was not found,      *      or if there are multiple selectors but the passed selectorName is null      */
 name|String
 name|getPath
 parameter_list|(
@@ -37,6 +39,7 @@ name|String
 name|selectorName
 parameter_list|)
 function_decl|;
+comment|/**      * The property value.      *       * @param columnName the column name      * @return the value      * @throws IllegalArgumentException if the column was not found      */
 name|PropertyValue
 name|getValue
 parameter_list|(
@@ -44,6 +47,7 @@ name|String
 name|columnName
 parameter_list|)
 function_decl|;
+comment|/**      * Get the list of values.      *       * @return the values      */
 name|PropertyValue
 index|[]
 name|getValues

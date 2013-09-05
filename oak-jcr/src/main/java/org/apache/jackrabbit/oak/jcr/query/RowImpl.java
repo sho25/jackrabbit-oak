@@ -114,6 +114,11 @@ specifier|final
 name|ResultRow
 name|row
 decl_stmt|;
+specifier|private
+specifier|final
+name|String
+name|pathSelector
+decl_stmt|;
 specifier|public
 name|RowImpl
 parameter_list|(
@@ -122,6 +127,9 @@ name|result
 parameter_list|,
 name|ResultRow
 name|row
+parameter_list|,
+name|String
+name|pathSelector
 parameter_list|)
 block|{
 name|this
@@ -135,6 +143,12 @@ operator|.
 name|row
 operator|=
 name|row
+expr_stmt|;
+name|this
+operator|.
+name|pathSelector
+operator|=
+name|pathSelector
 expr_stmt|;
 block|}
 annotation|@
@@ -199,7 +213,9 @@ argument_list|(
 name|row
 operator|.
 name|getPath
-argument_list|()
+argument_list|(
+name|pathSelector
+argument_list|)
 argument_list|)
 return|;
 block|}

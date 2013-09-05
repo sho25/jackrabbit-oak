@@ -32,6 +32,12 @@ index|[]
 name|getColumnNames
 parameter_list|()
 function_decl|;
+comment|/**      * Get the distinct selector names of all columns. The list is ordered as      * selectors appear in the result. For columns without selector, an empty      * entry (null) is used.      *       * @return the distinct selector names      */
+name|String
+index|[]
+name|getColumnSelectorNames
+parameter_list|()
+function_decl|;
 comment|/**      * Get the list of selector names.      *      * @return the selector names      */
 name|String
 index|[]
