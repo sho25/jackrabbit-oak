@@ -307,16 +307,6 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Ignore
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
 name|Test
 import|;
 end_import
@@ -2187,8 +2177,6 @@ literal|"deprecation"
 argument_list|)
 annotation|@
 name|Test
-annotation|@
-name|Ignore
 specifier|public
 name|void
 name|fnNameEncoding
@@ -2269,7 +2257,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"/123456_test_name"
+literal|""
 argument_list|,
 name|getPaths
 argument_list|(

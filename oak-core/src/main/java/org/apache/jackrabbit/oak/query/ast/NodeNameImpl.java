@@ -317,20 +317,14 @@ operator|.
 name|currentPath
 argument_list|()
 decl_stmt|;
-comment|// Name escaping (convert space to _x0020_)
 name|String
 name|name
 init|=
-name|ISO9075
-operator|.
-name|encode
-argument_list|(
 name|PathUtils
 operator|.
 name|getName
 argument_list|(
 name|path
-argument_list|)
 argument_list|)
 decl_stmt|;
 return|return

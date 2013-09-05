@@ -127,20 +127,6 @@ name|PropertyValues
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|util
-operator|.
-name|ISO9075
-import|;
-end_import
-
 begin_comment
 comment|/**  * The function "localname(..)".  */
 end_comment
@@ -279,16 +265,6 @@ name|currentPath
 argument_list|()
 argument_list|)
 decl_stmt|;
-comment|// Name escaping (convert space to _x0020_)
-name|name
-operator|=
-name|ISO9075
-operator|.
-name|encode
-argument_list|(
-name|name
-argument_list|)
-expr_stmt|;
 name|int
 name|colon
 init|=
