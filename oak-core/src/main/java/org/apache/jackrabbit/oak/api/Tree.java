@@ -19,20 +19,6 @@ end_package
 
 begin_import
 import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|Function
-import|;
-end_import
-
-begin_import
-import|import
 name|javax
 operator|.
 name|annotation
@@ -58,6 +44,20 @@ operator|.
 name|annotation
 operator|.
 name|Nullable
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Function
 import|;
 end_import
 
@@ -237,7 +237,7 @@ name|boolean
 name|enable
 parameter_list|)
 function_decl|;
-comment|/**      * Orders this {@code Tree} before the sibling tree with the given      * {@code name}. Calling this method for the first time on this      * {@code Tree} or any of its siblings will persist the current order      * of siblings and maintain it from this point on.      *      * @param name the name of the sibling node where this tree is ordered      *             before. This tree will become the last sibling if      *             {@code name} is {@code null}.      * @return {@code false} if there is no sibling with the given      *         {@code name} and no reordering was performed;      *         {@code true} otherwise.      */
+comment|/**      * Orders this {@code Tree} before the sibling tree with the given      * {@code name}. Calling this method for the first time on this      * {@code Tree} or any of its siblings will persist the current order      * of siblings and maintain it from this point on.      *      * @param name the name of the sibling node where this tree is ordered      *             before. This tree will become the last sibling if      *             {@code name} is {@code null}.      * @return {@code false} if there is no sibling with the given      *         {@code name} or no reordering was performed;      *         {@code true} otherwise.      */
 name|boolean
 name|orderBefore
 parameter_list|(
