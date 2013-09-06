@@ -844,6 +844,42 @@ operator|instanceof
 name|FulltextQueryIndex
 condition|)
 block|{
+comment|// first verify if a property level condition exists and if that
+comment|// condition checks out, this takes out some extra rows from the index
+comment|// aggregation bits
+if|if
+condition|(
+name|relativePath
+operator|==
+literal|null
+operator|&&
+name|propertyName
+operator|!=
+literal|null
+condition|)
+block|{
+name|PropertyValue
+name|p
+init|=
+name|selector
+operator|.
+name|currentProperty
+argument_list|(
+name|propertyName
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|p
+operator|==
+literal|null
+condition|)
+block|{
+return|return
+literal|false
+return|;
+block|}
+block|}
 return|return
 literal|true
 return|;
