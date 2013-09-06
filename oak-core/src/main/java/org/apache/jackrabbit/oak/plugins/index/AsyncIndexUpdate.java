@@ -79,16 +79,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|Calendar
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|concurrent
 operator|.
 name|TimeUnit
@@ -353,7 +343,7 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-comment|/**      * Name of the hidden node under which information about the      * checkpoints seen and indexed by each async indexer is kept.      */
+comment|/**      * Name of the hidden node under which information about the checkpoints      * seen and indexed by each async indexer is kept.      */
 specifier|private
 specifier|static
 specifier|final
@@ -924,12 +914,9 @@ name|setProperty
 argument_list|(
 literal|"async-start"
 argument_list|,
-name|Calendar
+name|System
 operator|.
-name|getInstance
-argument_list|()
-operator|.
-name|getTimeInMillis
+name|currentTimeMillis
 argument_list|()
 argument_list|,
 name|Type
@@ -972,12 +959,9 @@ name|setProperty
 argument_list|(
 literal|"async-done"
 argument_list|,
-name|Calendar
+name|System
 operator|.
-name|getInstance
-argument_list|()
-operator|.
-name|getTimeInMillis
+name|currentTimeMillis
 argument_list|()
 argument_list|,
 name|Type
