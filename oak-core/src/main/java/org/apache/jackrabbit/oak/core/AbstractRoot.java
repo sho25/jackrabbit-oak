@@ -757,6 +757,7 @@ name|long
 name|modCount
 decl_stmt|;
 specifier|private
+specifier|final
 name|LazyValue
 argument_list|<
 name|PermissionProvider
@@ -1184,8 +1185,9 @@ expr_stmt|;
 if|if
 condition|(
 name|permissionProvider
-operator|!=
-literal|null
+operator|.
+name|hasValue
+argument_list|()
 condition|)
 block|{
 name|permissionProvider
@@ -1227,8 +1229,9 @@ expr_stmt|;
 if|if
 condition|(
 name|permissionProvider
-operator|!=
-literal|null
+operator|.
+name|hasValue
+argument_list|()
 condition|)
 block|{
 name|permissionProvider

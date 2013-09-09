@@ -42,6 +42,18 @@ name|T
 name|createValue
 parameter_list|()
 function_decl|;
+comment|/**      * @return  {@code true} iff {@link #get()} has been called at least once.      */
+specifier|public
+name|boolean
+name|hasValue
+parameter_list|()
+block|{
+return|return
+name|value
+operator|!=
+literal|null
+return|;
+block|}
 comment|/**      * Get value. Calls {@link #createValue()} if called for the first time.      * @return  the value      */
 specifier|public
 name|T
