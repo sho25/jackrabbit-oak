@@ -248,6 +248,23 @@ parameter_list|()
 throws|throws
 name|InvalidItemStateException
 function_decl|;
+comment|/**      * Save the subtree rooted at this item.      *      * @throws RepositoryException      */
+specifier|public
+name|void
+name|save
+parameter_list|()
+throws|throws
+name|RepositoryException
+block|{
+name|sessionDelegate
+operator|.
+name|save
+argument_list|(
+name|getPath
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 end_class
 

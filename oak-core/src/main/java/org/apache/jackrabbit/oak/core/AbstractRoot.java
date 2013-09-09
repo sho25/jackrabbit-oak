@@ -18,6 +18,58 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkNotNull
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|commons
+operator|.
+name|PathUtils
+operator|.
+name|getName
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|commons
+operator|.
+name|PathUtils
+operator|.
+name|getParentPath
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -96,6 +148,20 @@ operator|.
 name|auth
 operator|.
 name|Subject
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|collect
+operator|.
+name|Lists
 import|;
 end_import
 
@@ -590,58 +656,6 @@ operator|.
 name|util
 operator|.
 name|LazyValue
-import|;
-end_import
-
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|Preconditions
-operator|.
-name|checkNotNull
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|commons
-operator|.
-name|PathUtils
-operator|.
-name|getName
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|commons
-operator|.
-name|PathUtils
-operator|.
-name|getParentPath
 import|;
 end_import
 
@@ -1232,7 +1246,12 @@ name|Override
 specifier|public
 name|void
 name|commit
-parameter_list|()
+parameter_list|(
+specifier|final
+name|CommitHook
+modifier|...
+name|hooks
+parameter_list|)
 throws|throws
 name|CommitFailedException
 block|{
@@ -1273,7 +1292,9 @@ operator|.
 name|merge
 argument_list|(
 name|getCommitHook
-argument_list|()
+argument_list|(
+name|hooks
+argument_list|)
 argument_list|,
 name|postHook
 argument_list|)
@@ -1311,11 +1332,15 @@ name|refresh
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * Combine the globally defined commit hook(s) with the hooks and      * validators defined by the various security related configurations.      *      * @return A commit hook combining repository global commit hook(s) with      *         the pluggable hooks defined with the security modules.      */
+comment|/**      * Combine the passed {@code hooks}, the globally defined commit hook(s) and the hooks and      * validators defined by the various security related configurations.      *      * @return A commit hook combining repository global commit hook(s) with the pluggable hooks      *         defined with the security modules and the padded {@code hooks}.      * @param hooks      */
 specifier|private
 name|CommitHook
 name|getCommitHook
-parameter_list|()
+parameter_list|(
+name|CommitHook
+index|[]
+name|hooks
+parameter_list|)
 block|{
 name|List
 argument_list|<
@@ -1323,12 +1348,12 @@ name|CommitHook
 argument_list|>
 name|commitHooks
 init|=
-operator|new
-name|ArrayList
-argument_list|<
-name|CommitHook
-argument_list|>
-argument_list|()
+name|Lists
+operator|.
+name|newArrayList
+argument_list|(
+name|hooks
+argument_list|)
 decl_stmt|;
 name|commitHooks
 operator|.
@@ -1466,7 +1491,7 @@ name|commitHooks
 argument_list|)
 return|;
 block|}
-comment|/**      * TODO: review again once the permission validation is completed.      * Build a read only subject for the {@link #commit()} call that makes the      * principals and the permission provider available to the commit hooks.      *      * @return a new read only subject.      */
+comment|/**      * TODO: review again once the permission validation is completed.      * Build a read only subject for the {@link #commit(CommitHook...)} call that makes the      * principals and the permission provider available to the commit hooks.      *      * @return a new read only subject.      */
 specifier|private
 name|Subject
 name|getCommitSubject

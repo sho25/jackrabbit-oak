@@ -18,6 +18,18 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|java
+operator|.
+name|lang
+operator|.
+name|String
+operator|.
+name|format
+import|;
+end_import
+
+begin_import
 import|import
 name|javax
 operator|.
@@ -74,6 +86,16 @@ operator|.
 name|jcr
 operator|.
 name|RepositoryException
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|jcr
+operator|.
+name|UnsupportedRepositoryOperationException
 import|;
 end_import
 
@@ -149,18 +171,6 @@ name|VersionException
 import|;
 end_import
 
-begin_import
-import|import static
-name|java
-operator|.
-name|lang
-operator|.
-name|String
-operator|.
-name|format
-import|;
-end_import
-
 begin_comment
 comment|/**  * Main exception thrown by methods defined on the {@code ContentSession}  * interface indicating that committing a given set of changes failed.  */
 end_comment
@@ -208,7 +218,7 @@ name|CONSTRAINT
 init|=
 literal|"Constraint"
 decl_stmt|;
-comment|/**      * Type name for referencial integrity violation errors.      */
+comment|/**      * Type name for referential integrity violation errors.      */
 specifier|public
 specifier|static
 specifier|final
@@ -279,6 +289,15 @@ name|String
 name|LABEL_EXISTS
 init|=
 literal|"LabelExists"
+decl_stmt|;
+comment|/**      * Unsupported operation or feature      */
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|UNSUPPORTED
+init|=
+literal|"Unsupported"
 decl_stmt|;
 comment|/**      * Serial version UID      */
 specifier|private
@@ -707,6 +726,25 @@ block|{
 return|return
 operator|new
 name|LockException
+argument_list|(
+name|message
+argument_list|,
+name|this
+argument_list|)
+return|;
+block|}
+elseif|else
+if|if
+condition|(
+name|isOfType
+argument_list|(
+name|UNSUPPORTED
+argument_list|)
+condition|)
+block|{
+return|return
+operator|new
+name|UnsupportedRepositoryOperationException
 argument_list|(
 name|message
 argument_list|,
