@@ -131,7 +131,7 @@ name|document
 decl_stmt|;
 specifier|private
 specifier|final
-name|String
+name|Revision
 name|theirRev
 decl_stmt|;
 specifier|private
@@ -141,7 +141,7 @@ name|ourOp
 decl_stmt|;
 specifier|private
 specifier|final
-name|String
+name|Revision
 name|ourRev
 decl_stmt|;
 name|Collision
@@ -184,9 +184,6 @@ name|checkNotNull
 argument_list|(
 name|theirRev
 argument_list|)
-operator|.
-name|toString
-argument_list|()
 expr_stmt|;
 name|this
 operator|.
@@ -205,9 +202,6 @@ name|checkNotNull
 argument_list|(
 name|ourRev
 argument_list|)
-operator|.
-name|toString
-argument_list|()
 expr_stmt|;
 block|}
 comment|/**      * Marks the collision in the document store. Either our or their      * revision is annotated with a collision marker. Their revision is      * marked if it is not yet committed, otherwise our revision is marked.      *       * @param store the document store.      * @throws MicroKernelException if the mark operation fails.      */
@@ -244,7 +238,9 @@ operator|.
 name|NODES
 operator|.
 name|newDocument
-argument_list|()
+argument_list|(
+name|store
+argument_list|)
 decl_stmt|;
 name|document
 operator|.
@@ -308,7 +304,7 @@ name|document
 parameter_list|,
 annotation|@
 name|Nonnull
-name|String
+name|Revision
 name|revision
 parameter_list|,
 annotation|@
@@ -317,6 +313,14 @@ name|DocumentStore
 name|store
 parameter_list|)
 block|{
+name|String
+name|rev
+init|=
+name|revision
+operator|.
+name|toString
+argument_list|()
+decl_stmt|;
 name|String
 name|p
 init|=
@@ -377,7 +381,7 @@ name|document
 operator|.
 name|getCommitRootPath
 argument_list|(
-name|revision
+name|rev
 argument_list|)
 expr_stmt|;
 if|if
@@ -389,7 +393,7 @@ condition|)
 block|{
 name|throwNoCommitRootException
 argument_list|(
-name|revision
+name|rev
 argument_list|,
 name|document
 argument_list|)
@@ -452,7 +456,7 @@ name|NodeDocument
 operator|.
 name|COLLISIONS
 argument_list|,
-name|revision
+name|rev
 argument_list|,
 literal|true
 argument_list|)
