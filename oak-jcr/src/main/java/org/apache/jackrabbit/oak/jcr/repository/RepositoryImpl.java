@@ -14,6 +14,8 @@ operator|.
 name|oak
 operator|.
 name|jcr
+operator|.
+name|repository
 package|;
 end_package
 
@@ -249,6 +251,26 @@ name|oak
 operator|.
 name|jcr
 operator|.
+name|session
+operator|.
+name|RefreshStrategy
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|jcr
+operator|.
+name|session
+operator|.
 name|RefreshStrategy
 operator|.
 name|LogOnce
@@ -266,6 +288,8 @@ operator|.
 name|oak
 operator|.
 name|jcr
+operator|.
+name|session
 operator|.
 name|RefreshStrategy
 operator|.
@@ -285,6 +309,8 @@ name|oak
 operator|.
 name|jcr
 operator|.
+name|session
+operator|.
 name|RefreshStrategy
 operator|.
 name|ThreadSynchronising
@@ -303,9 +329,29 @@ name|oak
 operator|.
 name|jcr
 operator|.
+name|session
+operator|.
 name|RefreshStrategy
 operator|.
 name|Timed
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|jcr
+operator|.
+name|session
+operator|.
+name|SessionContext
 import|;
 end_import
 
@@ -410,7 +456,7 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-comment|/**      * Name of the session attribute value determining the session refresh      * interval in seconds.      *      * @see RefreshStrategy      */
+comment|/**      * Name of the session attribute value determining the session refresh      * interval in seconds.      *      * @see org.apache.jackrabbit.oak.jcr.session.RefreshStrategy      */
 specifier|public
 specifier|static
 specifier|final
@@ -896,6 +942,8 @@ name|context
 init|=
 name|createSessionContext
 argument_list|(
+name|securityProvider
+argument_list|,
 name|createAttributes
 argument_list|(
 name|refreshInterval
@@ -950,6 +998,9 @@ specifier|protected
 name|SessionContext
 name|createSessionContext
 parameter_list|(
+name|SecurityProvider
+name|securityProvider
+parameter_list|,
 name|Map
 argument_list|<
 name|String
@@ -968,28 +1019,14 @@ name|SessionContext
 argument_list|(
 name|this
 argument_list|,
+name|securityProvider
+argument_list|,
 name|whiteboard
 argument_list|,
 name|attributes
 argument_list|,
 name|delegate
 argument_list|)
-return|;
-block|}
-name|SecurityProvider
-name|getSecurityProvider
-parameter_list|()
-block|{
-return|return
-name|securityProvider
-return|;
-block|}
-name|ContentRepository
-name|getContentRepository
-parameter_list|()
-block|{
-return|return
-name|contentRepository
 return|;
 block|}
 comment|//------------------------------------------------------------< private>---

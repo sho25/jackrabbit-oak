@@ -15,6 +15,8 @@ name|oak
 operator|.
 name|jcr
 operator|.
+name|session
+operator|.
 name|operation
 package|;
 end_package

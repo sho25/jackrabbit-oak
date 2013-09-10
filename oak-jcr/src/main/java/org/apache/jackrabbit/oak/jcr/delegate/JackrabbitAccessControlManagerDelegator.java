@@ -129,6 +129,8 @@ name|oak
 operator|.
 name|jcr
 operator|.
+name|session
+operator|.
 name|operation
 operator|.
 name|SessionOperation

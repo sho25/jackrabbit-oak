@@ -325,6 +325,8 @@ name|oak
 operator|.
 name|jcr
 operator|.
+name|session
+operator|.
 name|RefreshStrategy
 import|;
 end_import
@@ -340,6 +342,8 @@ operator|.
 name|oak
 operator|.
 name|jcr
+operator|.
+name|session
 operator|.
 name|operation
 operator|.

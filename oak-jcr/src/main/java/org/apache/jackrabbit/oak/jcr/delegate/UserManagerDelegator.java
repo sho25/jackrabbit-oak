@@ -179,6 +179,8 @@ name|oak
 operator|.
 name|jcr
 operator|.
+name|session
+operator|.
 name|operation
 operator|.
 name|UserManagerOperation
@@ -186,7 +188,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This implementation of {@code UserManager} delegates back to a  * delegatee wrapping each call into a {@link UserManager} closure.  *  * @see SessionDelegate#perform(org.apache.jackrabbit.oak.jcr.operation.SessionOperation)  */
+comment|/**  * This implementation of {@code UserManager} delegates back to a  * delegatee wrapping each call into a {@link UserManager} closure.  *  * @see SessionDelegate#perform(org.apache.jackrabbit.oak.jcr.session.operation.SessionOperation)  */
 end_comment
 
 begin_class

@@ -14,6 +14,8 @@ operator|.
 name|oak
 operator|.
 name|jcr
+operator|.
+name|session
 package|;
 end_package
 
@@ -690,6 +692,8 @@ operator|.
 name|oak
 operator|.
 name|jcr
+operator|.
+name|session
 operator|.
 name|operation
 operator|.

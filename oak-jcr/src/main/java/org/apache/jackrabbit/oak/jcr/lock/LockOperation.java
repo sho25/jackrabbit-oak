@@ -51,6 +51,8 @@ name|oak
 operator|.
 name|jcr
 operator|.
+name|session
+operator|.
 name|SessionContext
 import|;
 end_import
@@ -102,6 +104,8 @@ operator|.
 name|oak
 operator|.
 name|jcr
+operator|.
+name|session
 operator|.
 name|operation
 operator|.

@@ -237,6 +237,8 @@ name|oak
 operator|.
 name|jcr
 operator|.
+name|repository
+operator|.
 name|RepositoryImpl
 import|;
 end_import

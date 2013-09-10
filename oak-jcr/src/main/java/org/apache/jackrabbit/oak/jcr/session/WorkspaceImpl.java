@@ -14,8 +14,48 @@ operator|.
 name|oak
 operator|.
 name|jcr
+operator|.
+name|session
 package|;
 end_package
+
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|commons
+operator|.
+name|PathUtils
+operator|.
+name|getParentPath
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|nodetype
+operator|.
+name|NodeTypeConstants
+operator|.
+name|NODE_TYPES_PATH
+import|;
+end_import
 
 begin_import
 import|import
@@ -339,9 +379,9 @@ name|oak
 operator|.
 name|jcr
 operator|.
-name|operation
+name|query
 operator|.
-name|SessionOperation
+name|QueryManagerImpl
 import|;
 end_import
 
@@ -357,9 +397,11 @@ name|oak
 operator|.
 name|jcr
 operator|.
-name|query
+name|session
 operator|.
-name|QueryManagerImpl
+name|operation
+operator|.
+name|SessionOperation
 import|;
 end_import
 
@@ -486,44 +528,6 @@ operator|.
 name|sax
 operator|.
 name|SAXException
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|commons
-operator|.
-name|PathUtils
-operator|.
-name|getParentPath
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|plugins
-operator|.
-name|nodetype
-operator|.
-name|NodeTypeConstants
-operator|.
-name|NODE_TYPES_PATH
 import|;
 end_import
 
