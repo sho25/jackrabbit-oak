@@ -3853,7 +3853,7 @@ else|else
 block|{
 return|return
 operator|new
-name|PrefixQuery
+name|TermQuery
 argument_list|(
 name|newFulltextTerm
 argument_list|(

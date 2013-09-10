@@ -269,7 +269,7 @@ name|assertEquals
 argument_list|(
 literal|"[nt:base] as [nt:base] /* "
 operator|+
-literal|"aggregate +(:fulltext:hallo* :fulltext:hello*) +text:{* TO *} "
+literal|"aggregate +(:fulltext:hallo :fulltext:hello) +text:{* TO *} "
 operator|+
 literal|"ft:(text:\"hallo\" OR text:\"hello\") "
 operator|+

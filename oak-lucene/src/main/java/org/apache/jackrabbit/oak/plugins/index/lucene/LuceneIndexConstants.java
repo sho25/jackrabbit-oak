@@ -47,7 +47,7 @@ name|analysis
 operator|.
 name|standard
 operator|.
-name|StandardAnalyzer
+name|ClassicAnalyzer
 import|;
 end_import
 
@@ -107,7 +107,7 @@ name|Analyzer
 name|ANALYZER
 init|=
 operator|new
-name|StandardAnalyzer
+name|ClassicAnalyzer
 argument_list|(
 name|VERSION
 argument_list|,
