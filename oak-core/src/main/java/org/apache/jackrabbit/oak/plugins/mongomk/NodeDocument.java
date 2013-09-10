@@ -2928,9 +2928,13 @@ name|String
 argument_list|>
 name|splitRevs
 init|=
-name|Maps
-operator|.
-name|newTreeMap
+operator|new
+name|TreeMap
+argument_list|<
+name|Revision
+argument_list|,
+name|String
+argument_list|>
 argument_list|(
 name|context
 operator|.
