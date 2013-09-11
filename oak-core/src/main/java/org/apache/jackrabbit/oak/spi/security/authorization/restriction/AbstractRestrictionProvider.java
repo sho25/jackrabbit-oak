@@ -337,6 +337,8 @@ decl_stmt|;
 specifier|public
 name|AbstractRestrictionProvider
 parameter_list|(
+annotation|@
+name|Nonnull
 name|Map
 argument_list|<
 name|String
