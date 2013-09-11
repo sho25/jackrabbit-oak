@@ -187,9 +187,11 @@ name|AbstractAuthorizableAction
 implements|implements
 name|AuthorizableAction
 block|{
-comment|// TODO OAK-521:: review again
-specifier|protected
-specifier|abstract
+comment|//-------------------------------------------------< AuthorizableAction>---
+comment|/**      * Doesn't perform any action.      */
+annotation|@
+name|Override
+specifier|public
 name|void
 name|init
 parameter_list|(
@@ -199,9 +201,10 @@ parameter_list|,
 name|ConfigurationParameters
 name|config
 parameter_list|)
-function_decl|;
-comment|//-------------------------------------------------< AuthorizableAction>---
-comment|/**      * Doesn't perform any action.      *      * @see AuthorizableAction#onCreate(org.apache.jackrabbit.api.security.user.Group, org.apache.jackrabbit.oak.api.Root, org.apache.jackrabbit.oak.namepath.NamePathMapper)      */
+block|{
+comment|// nothing to do
+block|}
+comment|/**      * Doesn't perform any action.      */
 annotation|@
 name|Override
 specifier|public
@@ -228,7 +231,7 @@ name|RepositoryException
 block|{
 comment|// nothing to do
 block|}
-comment|/**      * Doesn't perform any action.      *      * @see AuthorizableAction#onCreate(org.apache.jackrabbit.api.security.user.User, String, org.apache.jackrabbit.oak.api.Root, org.apache.jackrabbit.oak.namepath.NamePathMapper)      */
+comment|/**      * Doesn't perform any action.      */
 annotation|@
 name|Override
 specifier|public
@@ -260,7 +263,7 @@ name|RepositoryException
 block|{
 comment|// nothing to do
 block|}
-comment|/**      * Doesn't perform any action.      *      * @see AuthorizableAction#onRemove(org.apache.jackrabbit.api.security.user.Authorizable, org.apache.jackrabbit.oak.api.Root, org.apache.jackrabbit.oak.namepath.NamePathMapper)      */
+comment|/**      * Doesn't perform any action.      */
 annotation|@
 name|Override
 specifier|public
@@ -287,7 +290,7 @@ name|RepositoryException
 block|{
 comment|// nothing to do
 block|}
-comment|/**      * Doesn't perform any action.      *      * @see AuthorizableAction#onPasswordChange(org.apache.jackrabbit.api.security.user.User, String, org.apache.jackrabbit.oak.api.Root, org.apache.jackrabbit.oak.namepath.NamePathMapper)      */
+comment|/**      * Doesn't perform any action.      */
 annotation|@
 name|Override
 specifier|public

@@ -255,10 +255,10 @@ specifier|private
 name|Pattern
 name|pattern
 decl_stmt|;
-comment|//-----------------------------------------< AbstractAuthorizableAction>---
+comment|//-------------------------------------------------< AuthorizableAction>---
 annotation|@
 name|Override
-specifier|protected
+specifier|public
 name|void
 name|init
 parameter_list|(
@@ -274,14 +274,15 @@ name|constraint
 init|=
 name|config
 operator|.
-name|getNullableConfigValue
+name|getConfigValue
 argument_list|(
 name|CONSTRAINT
 argument_list|,
-operator|(
-name|String
-operator|)
 literal|null
+argument_list|,
+name|String
+operator|.
+name|class
 argument_list|)
 decl_stmt|;
 if|if
@@ -298,7 +299,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|//-------------------------------------------------< AuthorizableAction>---
 annotation|@
 name|Override
 specifier|public
@@ -357,9 +357,9 @@ literal|true
 argument_list|)
 expr_stmt|;
 block|}
-comment|//------------------------------------------------------< Configuration>---
+comment|//------------------------------------------------------------< private>---
 comment|/**      * Set the password constraint.      *      * @param constraint A regular expression that can be used to validate a new password.      */
-specifier|public
+specifier|private
 name|void
 name|setConstraint
 parameter_list|(
@@ -401,7 +401,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|//------------------------------------------------------------< private>---
 comment|/**      * Validate the specified password.      *      * @param password The password to be validated      * @param forceMatch If true the specified password is always validated;      * otherwise only if it is a plain text password.      * @throws RepositoryException If the specified password is too short or      * doesn't match the specified password pattern.      */
 specifier|private
 name|void

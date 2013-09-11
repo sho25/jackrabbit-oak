@@ -1460,6 +1460,8 @@ block|{
 name|AuthorizableNodeName
 name|generator
 init|=
+name|checkNotNull
+argument_list|(
 name|config
 operator|.
 name|getConfigValue
@@ -1469,6 +1471,11 @@ argument_list|,
 name|AuthorizableNodeName
 operator|.
 name|DEFAULT
+argument_list|,
+name|AuthorizableNodeName
+operator|.
+name|class
+argument_list|)
 argument_list|)
 decl_stmt|;
 return|return

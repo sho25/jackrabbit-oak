@@ -318,6 +318,7 @@ argument_list|<
 name|String
 argument_list|,
 name|String
+index|[]
 argument_list|>
 name|map
 init|=
@@ -327,6 +328,7 @@ argument_list|<
 name|String
 argument_list|,
 name|String
+index|[]
 argument_list|>
 argument_list|()
 decl_stmt|;
@@ -338,9 +340,14 @@ name|AccessControlAction
 operator|.
 name|GROUP_PRIVILEGE_NAMES
 argument_list|,
+operator|new
+name|String
+index|[]
+block|{
 name|PrivilegeConstants
 operator|.
 name|JCR_READ
+block|}
 argument_list|)
 expr_stmt|;
 name|map
@@ -351,9 +358,14 @@ name|AccessControlAction
 operator|.
 name|USER_PRIVILEGE_NAMES
 argument_list|,
+operator|new
+name|String
+index|[]
+block|{
 name|PrivilegeConstants
 operator|.
 name|JCR_ALL
+block|}
 argument_list|)
 expr_stmt|;
 name|ConfigurationParameters

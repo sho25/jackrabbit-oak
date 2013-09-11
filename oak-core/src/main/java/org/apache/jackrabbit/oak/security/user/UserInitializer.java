@@ -830,11 +830,15 @@ name|emptyToNull
 argument_list|(
 name|params
 operator|.
-name|getNullableConfigValue
+name|getConfigValue
 argument_list|(
 name|PARAM_ANONYMOUS_ID
 argument_list|,
 name|DEFAULT_ANONYMOUS_ID
+argument_list|,
+name|String
+operator|.
+name|class
 argument_list|)
 argument_list|)
 decl_stmt|;
