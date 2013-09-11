@@ -171,7 +171,7 @@ block|{
 name|String
 name|NAME
 init|=
-literal|"org.apache.jackrabbit.oak.accesscontrol"
+literal|"org.apache.jackrabbit.oak.authorization"
 decl_stmt|;
 annotation|@
 name|Nonnull
