@@ -17,6 +17,16 @@ name|benchmark
 package|;
 end_package
 
+begin_import
+import|import
+name|javax
+operator|.
+name|jcr
+operator|.
+name|Session
+import|;
+end_import
+
 begin_comment
 comment|/**  * Randomly read 1000 items from the deep tree.  */
 end_comment
@@ -72,10 +82,15 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|randomRead
-argument_list|(
+name|Session
+name|testSession
+init|=
 name|getTestSession
 argument_list|()
+decl_stmt|;
+name|randomRead
+argument_list|(
+name|testSession
 argument_list|,
 name|allPaths
 argument_list|,
@@ -83,6 +98,11 @@ name|itemsToRead
 argument_list|,
 literal|true
 argument_list|)
+expr_stmt|;
+name|testSession
+operator|.
+name|logout
+argument_list|()
 expr_stmt|;
 block|}
 block|}
