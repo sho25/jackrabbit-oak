@@ -646,7 +646,6 @@ name|TokenProviderImpl
 implements|implements
 name|TokenProvider
 block|{
-comment|/**      * logger instance      */
 specifier|private
 specifier|static
 specifier|final
