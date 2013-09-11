@@ -171,6 +171,8 @@ name|attributeName
 parameter_list|)
 function_decl|;
 comment|/**      * Returns the set of principals associated with this {@code AuthInfo} instance.      *      * @return A set of principals.      */
+annotation|@
+name|Nonnull
 name|Set
 argument_list|<
 name|Principal
