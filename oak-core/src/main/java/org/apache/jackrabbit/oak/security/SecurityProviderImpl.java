@@ -401,7 +401,7 @@ name|scs
 operator|.
 name|add
 argument_list|(
-name|getAccessControlConfiguration
+name|getAuthorizationConfiguration
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -482,7 +482,7 @@ return|return
 operator|(
 name|T
 operator|)
-name|getAccessControlConfiguration
+name|getAuthorizationConfiguration
 argument_list|()
 return|;
 block|}
@@ -572,7 +572,7 @@ annotation|@
 name|Nonnull
 specifier|private
 name|AuthorizationConfiguration
-name|getAccessControlConfiguration
+name|getAuthorizationConfiguration
 parameter_list|()
 block|{
 return|return
