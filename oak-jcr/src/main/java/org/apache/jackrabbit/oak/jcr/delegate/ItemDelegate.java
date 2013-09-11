@@ -178,7 +178,10 @@ throw|throw
 operator|new
 name|InvalidItemStateException
 argument_list|(
-literal|"This item does not exist anymore"
+literal|"This item does not exist anymore : "
+operator|+
+name|getPath
+argument_list|()
 argument_list|)
 throw|;
 block|}
