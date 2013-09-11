@@ -103,6 +103,15 @@ literal|false
 return|;
 block|}
 specifier|public
+name|boolean
+name|isLogout
+parameter_list|()
+block|{
+return|return
+literal|false
+return|;
+block|}
+specifier|public
 name|void
 name|checkPreconditions
 parameter_list|()

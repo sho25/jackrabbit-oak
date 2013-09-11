@@ -172,6 +172,11 @@ name|sessionOperation
 operator|.
 name|isSave
 argument_list|()
+operator|||
+name|sessionOperation
+operator|.
+name|isLogout
+argument_list|()
 condition|)
 block|{
 return|return
