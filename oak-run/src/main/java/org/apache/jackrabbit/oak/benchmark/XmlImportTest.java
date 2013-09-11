@@ -179,6 +179,11 @@ operator|.
 name|save
 argument_list|()
 expr_stmt|;
+name|adminSession
+operator|.
+name|logout
+argument_list|()
+expr_stmt|;
 block|}
 block|}
 end_class
