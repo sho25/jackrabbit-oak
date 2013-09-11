@@ -1012,6 +1012,9 @@ name|REP_GLOB
 argument_list|,
 name|r
 operator|.
+name|getDefinition
+argument_list|()
+operator|.
 name|getName
 argument_list|()
 argument_list|)
@@ -1091,6 +1094,9 @@ name|REP_NT_NAMES
 argument_list|,
 name|r
 operator|.
+name|getDefinition
+argument_list|()
+operator|.
 name|getName
 argument_list|()
 argument_list|)
@@ -1102,6 +1108,9 @@ operator|.
 name|NAMES
 argument_list|,
 name|r
+operator|.
+name|getDefinition
+argument_list|()
 operator|.
 name|getRequiredType
 argument_list|()
@@ -1204,6 +1213,9 @@ name|REP_NT_NAMES
 argument_list|,
 name|r
 operator|.
+name|getDefinition
+argument_list|()
+operator|.
 name|getName
 argument_list|()
 argument_list|)
@@ -1215,6 +1227,9 @@ operator|.
 name|NAMES
 argument_list|,
 name|r
+operator|.
+name|getDefinition
+argument_list|()
 operator|.
 name|getRequiredType
 argument_list|()
@@ -1317,6 +1332,9 @@ name|REP_NT_NAMES
 argument_list|,
 name|r
 operator|.
+name|getDefinition
+argument_list|()
+operator|.
 name|getName
 argument_list|()
 argument_list|)
@@ -1328,6 +1346,9 @@ operator|.
 name|NAMES
 argument_list|,
 name|r
+operator|.
+name|getDefinition
+argument_list|()
 operator|.
 name|getRequiredType
 argument_list|()
@@ -1434,6 +1455,9 @@ name|REP_NT_NAMES
 argument_list|,
 name|r
 operator|.
+name|getDefinition
+argument_list|()
+operator|.
 name|getName
 argument_list|()
 argument_list|)
@@ -1445,6 +1469,9 @@ operator|.
 name|NAMES
 argument_list|,
 name|r
+operator|.
+name|getDefinition
+argument_list|()
 operator|.
 name|getRequiredType
 argument_list|()
@@ -1548,6 +1575,9 @@ name|REP_NT_NAMES
 argument_list|,
 name|r
 operator|.
+name|getDefinition
+argument_list|()
+operator|.
 name|getName
 argument_list|()
 argument_list|)
@@ -1559,6 +1589,9 @@ operator|.
 name|NAMES
 argument_list|,
 name|r
+operator|.
+name|getDefinition
+argument_list|()
 operator|.
 name|getRequiredType
 argument_list|()

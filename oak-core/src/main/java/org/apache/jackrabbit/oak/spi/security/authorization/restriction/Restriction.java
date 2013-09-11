@@ -57,9 +57,14 @@ begin_interface
 specifier|public
 interface|interface
 name|Restriction
-extends|extends
-name|RestrictionDefinition
 block|{
+comment|/**      * Returns the underlying restriction definition.      *      * @return the restriction definition that applies to this restriction.      */
+annotation|@
+name|Nonnull
+name|RestrictionDefinition
+name|getDefinition
+parameter_list|()
+function_decl|;
 comment|/**      * The OAK property state associated with this restriction.      *      * @return An {@code PropertyState}.      */
 annotation|@
 name|Nonnull

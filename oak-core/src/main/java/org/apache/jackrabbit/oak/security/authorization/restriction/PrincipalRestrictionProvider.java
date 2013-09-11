@@ -692,6 +692,9 @@ name|equals
 argument_list|(
 name|r
 operator|.
+name|getDefinition
+argument_list|()
+operator|.
 name|getName
 argument_list|()
 argument_list|)
