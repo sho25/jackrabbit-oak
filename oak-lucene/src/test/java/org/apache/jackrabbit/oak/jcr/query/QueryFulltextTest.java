@@ -567,6 +567,13 @@ literal|"select [jcr:path] as [path] from [nt:base] "
 operator|+
 literal|"where contains([node1/text], 'hello') order by [jcr:path]"
 expr_stmt|;
+comment|//      q = qm.createQuery("explain " + sql2, Query.JCR_SQL2);
+comment|//    assertEquals("[nt:base] as [nt:base] /* " +
+comment|//            "+text:hallo +:path:/testroot/* +text:{* TO *} " +
+comment|//            "ft:(text:\"hallo\") " +
+comment|//            "where (ischildnode([nt:base], [/testroot])) " +
+comment|//            "and (contains([nt:base].[text], cast('hallo' as string))) */",
+comment|//            getResult(q.execute(), "plan"));
 name|q
 operator|=
 name|qm
@@ -642,7 +649,7 @@ name|assertEquals
 argument_list|(
 literal|"[nt:base] as [nt:base] /* "
 operator|+
-literal|":fulltext:hallo* :fulltext:hello* "
+literal|"aggregate :fulltext:hallo* :fulltext:hello* "
 operator|+
 literal|"ft:(node2/text:\"hallo\" OR node2/text:\"hello\") "
 operator|+
@@ -777,7 +784,7 @@ name|assertEquals
 argument_list|(
 literal|"[nt:base] as [nt:base] /* "
 operator|+
-literal|"Not yet implemented "
+literal|"aggregate Not yet implemented "
 operator|+
 literal|"where (contains([nt:base].[node1/text], cast('hello' as string))) "
 operator|+
@@ -794,9 +801,21 @@ literal|"plan"
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|//            q = qm.createQuery(sql2, Query.JCR_SQL2);
-comment|//            assertEquals("/testroot",
-comment|//                    getResult(q.execute(), "path"));
+name|q
+operator|=
+name|qm
+operator|.
+name|createQuery
+argument_list|(
+name|sql2
+argument_list|,
+name|Query
+operator|.
+name|JCR_SQL2
+argument_list|)
+expr_stmt|;
+comment|// assertEquals("/testroot",
+comment|//        getResult(q.execute(), "path"));
 block|}
 block|}
 specifier|static

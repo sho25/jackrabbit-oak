@@ -435,6 +435,7 @@ name|NodeState
 name|root
 parameter_list|)
 block|{
+comment|// TODO don't call getCost for such queries
 if|if
 condition|(
 name|filter
