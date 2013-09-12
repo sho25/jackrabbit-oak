@@ -135,6 +135,22 @@ name|base
 operator|.
 name|Preconditions
 operator|.
+name|checkArgument
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
 name|checkNotNull
 import|;
 end_import
@@ -254,6 +270,15 @@ literal|"/"
 argument_list|)
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|doc
+operator|==
+literal|null
+condition|)
+block|{
+return|return;
+block|}
 name|SortedMap
 argument_list|<
 name|Revision
@@ -317,6 +342,9 @@ name|remove
 argument_list|(
 name|head
 argument_list|)
+operator|.
+name|asTrunkRevision
+argument_list|()
 decl_stmt|;
 while|while
 condition|(
@@ -343,6 +371,9 @@ name|remove
 argument_list|(
 name|base
 argument_list|)
+operator|.
+name|asTrunkRevision
+argument_list|()
 expr_stmt|;
 block|}
 name|branches
@@ -362,7 +393,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Create a branch with an initial commit revision.      *      * @param base the base revision of the branch.      * @param initial the initial commit to the branch.      * @return the branch.      */
+comment|/**      * Create a branch with an initial commit revision.      *      * @param base the base revision of the branch.      * @param initial the initial commit to the branch.      * @return the branch.      * @throws IllegalArgumentException if      */
 annotation|@
 name|Nonnull
 name|Branch
@@ -379,6 +410,37 @@ name|Revision
 name|initial
 parameter_list|)
 block|{
+name|checkArgument
+argument_list|(
+operator|!
+name|checkNotNull
+argument_list|(
+name|base
+argument_list|)
+operator|.
+name|isBranch
+argument_list|()
+argument_list|,
+literal|"base is not a trunk revision: %s"
+argument_list|,
+name|base
+argument_list|)
+expr_stmt|;
+name|checkArgument
+argument_list|(
+name|checkNotNull
+argument_list|(
+name|initial
+argument_list|)
+operator|.
+name|isBranch
+argument_list|()
+argument_list|,
+literal|"initial is not a branch revision: %s"
+argument_list|,
+name|initial
+argument_list|)
+expr_stmt|;
 name|SortedSet
 argument_list|<
 name|Revision
@@ -398,10 +460,7 @@ name|commits
 operator|.
 name|add
 argument_list|(
-name|checkNotNull
-argument_list|(
 name|initial
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|Branch
@@ -412,10 +471,7 @@ name|Branch
 argument_list|(
 name|commits
 argument_list|,
-name|checkNotNull
-argument_list|(
 name|base
-argument_list|)
 argument_list|,
 name|comparator
 argument_list|)

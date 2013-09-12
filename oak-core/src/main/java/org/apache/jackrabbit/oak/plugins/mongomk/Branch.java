@@ -126,6 +126,7 @@ specifier|final
 name|Revision
 name|base
 decl_stmt|;
+comment|/**      * Create a new branch instance with an initial set of commits and a given      * base revision.      *      * @param commits the initial branch commits.      * @param base the base commit.      * @param comparator the revision comparator.      * @throws IllegalArgumentException if base is a branch revision.      */
 name|Branch
 parameter_list|(
 annotation|@
@@ -149,14 +150,27 @@ name|RevisionComparator
 name|comparator
 parameter_list|)
 block|{
-name|this
-operator|.
-name|base
-operator|=
+name|checkArgument
+argument_list|(
+operator|!
 name|checkNotNull
 argument_list|(
 name|base
 argument_list|)
+operator|.
+name|isBranch
+argument_list|()
+argument_list|,
+literal|"base is not a trunk revision: %s"
+argument_list|,
+name|base
+argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|base
+operator|=
+name|base
 expr_stmt|;
 name|this
 operator|.
@@ -191,6 +205,9 @@ operator|.
 name|put
 argument_list|(
 name|r
+operator|.
+name|asBranchRevision
+argument_list|()
 argument_list|,
 operator|new
 name|BranchCommit
@@ -202,6 +219,8 @@ expr_stmt|;
 block|}
 block|}
 comment|/**      * @return the initial base of this branch.      */
+annotation|@
+name|Nonnull
 name|Revision
 name|getBase
 parameter_list|()
@@ -211,10 +230,14 @@ name|base
 return|;
 block|}
 comment|/**      * Returns the base revision for the given branch revision<code>r</code>.      *      * @param r revision of a commit in this branch.      * @return the base revision for<code>r</code>.      * @throws IllegalArgumentException if<code>r</code> is not a commit of      *                                  this branch.      */
+annotation|@
+name|Nonnull
 specifier|synchronized
 name|Revision
 name|getBase
 parameter_list|(
+annotation|@
+name|Nonnull
 name|Revision
 name|r
 parameter_list|)
@@ -226,7 +249,13 @@ name|commits
 operator|.
 name|get
 argument_list|(
+name|checkNotNull
+argument_list|(
 name|r
+argument_list|)
+operator|.
+name|asBranchRevision
+argument_list|()
 argument_list|)
 decl_stmt|;
 if|if
@@ -255,18 +284,53 @@ name|getBase
 argument_list|()
 return|;
 block|}
-comment|/**      * Rebases the last commit of this branch to the given revision.      *      * @param head the new head of the branch.      * @param base rebase to this revision.      */
+comment|/**      * Rebases the last commit of this branch to the given revision.      *      * @param head the new head of the branch.      * @param base rebase to this revision.      * @throws IllegalArgumentException if head is a trunk revision or base is a      *                                  branch revision.      */
 specifier|synchronized
 name|void
 name|rebase
 parameter_list|(
+annotation|@
+name|Nonnull
 name|Revision
 name|head
 parameter_list|,
+annotation|@
+name|Nonnull
 name|Revision
 name|base
 parameter_list|)
 block|{
+name|checkArgument
+argument_list|(
+name|checkNotNull
+argument_list|(
+name|head
+argument_list|)
+operator|.
+name|isBranch
+argument_list|()
+argument_list|,
+literal|"Not a branch revision: %s"
+argument_list|,
+name|head
+argument_list|)
+expr_stmt|;
+name|checkArgument
+argument_list|(
+operator|!
+name|checkNotNull
+argument_list|(
+name|base
+argument_list|)
+operator|.
+name|isBranch
+argument_list|()
+argument_list|,
+literal|"Not a trunk revision: %s"
+argument_list|,
+name|base
+argument_list|)
+expr_stmt|;
 name|Revision
 name|last
 init|=
@@ -306,7 +370,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Adds a new commit with revision<code>r</code> to this branch.      *      * @param r the revision of the branch commit to add.      */
+comment|/**      * Adds a new commit with revision<code>r</code> to this branch.      *      * @param r the revision of the branch commit to add.      * @throws IllegalArgumentException if r is not a branch revision.      */
 specifier|synchronized
 name|void
 name|addCommit
@@ -317,6 +381,21 @@ name|Revision
 name|r
 parameter_list|)
 block|{
+name|checkArgument
+argument_list|(
+name|checkNotNull
+argument_list|(
+name|r
+argument_list|)
+operator|.
+name|isBranch
+argument_list|()
+argument_list|,
+literal|"Not a branch revision: %s"
+argument_list|,
+name|r
+argument_list|)
+expr_stmt|;
 name|Revision
 name|last
 init|=
@@ -435,11 +514,17 @@ name|commits
 operator|.
 name|containsKey
 argument_list|(
+name|checkNotNull
+argument_list|(
 name|r
+argument_list|)
+operator|.
+name|asBranchRevision
+argument_list|()
 argument_list|)
 return|;
 block|}
-comment|/**      * Removes the commit with the given revision<code>r</code>. Does nothing      * if there is no such commit.      *      * @param r the revision of the commit to remove.      */
+comment|/**      * Removes the commit with the given revision<code>r</code>. Does nothing      * if there is no such commit.      *      * @param r the revision of the commit to remove.      * @throws IllegalArgumentException if r is not a branch revision.      */
 specifier|public
 specifier|synchronized
 name|void
@@ -451,6 +536,21 @@ name|Revision
 name|r
 parameter_list|)
 block|{
+name|checkArgument
+argument_list|(
+name|checkNotNull
+argument_list|(
+name|r
+argument_list|)
+operator|.
+name|isBranch
+argument_list|()
+argument_list|,
+literal|"Not a branch revision: %s"
+argument_list|,
+name|r
+argument_list|)
+expr_stmt|;
 name|commits
 operator|.
 name|remove
@@ -459,7 +559,7 @@ name|r
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Gets the unsaved modifications for the given branch commit revision.      *      * @param r a branch commit revision.      * @return the unsaved modification for the given branch commit.      * @throws IllegalArgumentException if there is no commit with the given      *                                  revision.      */
+comment|/**      * Gets the unsaved modifications for the given branch commit revision.      *      * @param r a branch commit revision.      * @return the unsaved modification for the given branch commit.      * @throws IllegalArgumentException r is not a branch revision or if there      *                                  is no commit with the given revision.      */
 annotation|@
 name|Nonnull
 specifier|public
@@ -473,6 +573,21 @@ name|Revision
 name|r
 parameter_list|)
 block|{
+name|checkArgument
+argument_list|(
+name|checkNotNull
+argument_list|(
+name|r
+argument_list|)
+operator|.
+name|isBranch
+argument_list|()
+argument_list|,
+literal|"Not a branch revision: %s"
+argument_list|,
+name|r
+argument_list|)
+expr_stmt|;
 name|BranchCommit
 name|c
 init|=
@@ -571,6 +686,13 @@ name|Revision
 name|readRevision
 parameter_list|)
 block|{
+name|readRevision
+operator|=
+name|readRevision
+operator|.
+name|asBranchRevision
+argument_list|()
+expr_stmt|;
 for|for
 control|(
 name|Revision
