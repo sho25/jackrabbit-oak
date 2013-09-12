@@ -188,7 +188,7 @@ name|addAll
 argument_list|(
 name|doc
 operator|.
-name|getRevisionsMap
+name|getLocalRevisions
 argument_list|()
 operator|.
 name|keySet
@@ -308,7 +308,7 @@ name|revs
 init|=
 name|doc
 operator|.
-name|getRevisionsMap
+name|getLocalRevisions
 argument_list|()
 decl_stmt|;
 comment|// one remaining in the local revisions map
