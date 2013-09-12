@@ -49,6 +49,22 @@ begin_import
 import|import
 name|org
 operator|.
+name|apache
+operator|.
+name|felix
+operator|.
+name|scr
+operator|.
+name|annotations
+operator|.
+name|Component
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|osgi
 operator|.
 name|service
@@ -64,6 +80,13 @@ comment|/**  * Abstract base implementation for the various security configurati
 end_comment
 
 begin_class
+annotation|@
+name|Component
+argument_list|(
+name|componentAbstract
+operator|=
+literal|true
+argument_list|)
 specifier|public
 specifier|abstract
 class|class
