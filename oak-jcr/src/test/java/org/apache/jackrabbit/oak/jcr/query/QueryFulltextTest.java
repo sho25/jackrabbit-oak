@@ -314,7 +314,7 @@ decl_stmt|;
 name|String
 name|xpath
 init|=
-literal|"//*[jcr:contains(., 'hello')]/rep:excerpt(.)"
+literal|"//*[jcr:contains(., 'hello')]/rep:excerpt(.) order by jcr:path descending"
 decl_stmt|;
 name|q
 operator|=
@@ -434,7 +434,7 @@ argument_list|)
 expr_stmt|;
 name|xpath
 operator|=
-literal|"//*[jcr:contains(., 'hello')]/rep:excerpt(.)"
+literal|"//*[jcr:contains(., 'hello')]/rep:excerpt(.) order by jcr:path descending"
 expr_stmt|;
 name|q
 operator|=
