@@ -287,15 +287,6 @@ name|JACKRABBIT_2_SINGLE_QUOTED_PHRASE
 init|=
 literal|true
 decl_stmt|;
-comment|/**      * Compatibility for Jackrabbit 2.0 queries with ampersand.      * (contains(., "max&moritz"))      * The ampersand is converted to a space, and a search is made for the       * two words "max" and "moritz" (not a phrase search).      */
-specifier|public
-specifier|static
-specifier|final
-name|boolean
-name|JACKRABBIT_2_AMPERSAND_TO_SPACE
-init|=
-literal|true
-decl_stmt|;
 specifier|private
 specifier|final
 name|String
