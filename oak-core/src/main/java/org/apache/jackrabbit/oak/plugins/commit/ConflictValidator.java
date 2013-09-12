@@ -503,19 +503,19 @@ argument_list|()
 argument_list|)
 decl_stmt|;
 comment|//Conflict details are not made part of ExceptionMessage instead they are
-comment|//logged. This to avoid exposing property details to the calller as it might not have
+comment|//logged. This to avoid exposing property details to the caller as it might not have
 comment|//permission to access it
 if|if
 condition|(
 name|log
 operator|.
-name|isWarnEnabled
+name|isDebugEnabled
 argument_list|()
 condition|)
 block|{
 name|log
 operator|.
-name|warn
+name|debug
 argument_list|(
 name|getConflictMessage
 argument_list|()
