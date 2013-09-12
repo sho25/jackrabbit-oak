@@ -19,6 +19,16 @@ name|mongomk
 package|;
 end_package
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Comparator
+import|;
+end_import
+
 begin_comment
 comment|/**  * Provides revision related context.  */
 end_comment
@@ -42,9 +52,10 @@ parameter_list|()
 function_decl|;
 comment|/**      * @return the revision comparator.      */
 specifier|public
+name|Comparator
+argument_list|<
 name|Revision
-operator|.
-name|RevisionComparator
+argument_list|>
 name|getRevisionComparator
 parameter_list|()
 function_decl|;

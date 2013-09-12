@@ -126,7 +126,7 @@ specifier|final
 name|Revision
 name|base
 decl_stmt|;
-comment|/**      * Create a new branch instance with an initial set of commits and a given      * base revision.      *      * @param commits the initial branch commits.      * @param base the base commit.      * @param comparator the revision comparator.      * @throws IllegalArgumentException if base is a branch revision.      */
+comment|/**      * Create a new branch instance with an initial set of commits and a given      * base revision.      *      * @param commits the initial branch commits.      * @param base the base commit.      * @throws IllegalArgumentException if base is a branch revision.      */
 name|Branch
 parameter_list|(
 annotation|@
@@ -141,13 +141,6 @@ annotation|@
 name|Nonnull
 name|Revision
 name|base
-parameter_list|,
-annotation|@
-name|Nonnull
-name|Revision
-operator|.
-name|RevisionComparator
-name|comparator
 parameter_list|)
 block|{
 name|checkArgument
@@ -184,10 +177,10 @@ argument_list|,
 name|BranchCommit
 argument_list|>
 argument_list|(
-name|checkNotNull
-argument_list|(
+name|commits
+operator|.
 name|comparator
-argument_list|)
+argument_list|()
 argument_list|)
 expr_stmt|;
 for|for
