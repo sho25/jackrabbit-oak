@@ -617,8 +617,6 @@ argument_list|()
 decl_stmt|;
 name|boolean
 name|hasMore
-init|=
-literal|false
 decl_stmt|;
 annotation|@
 name|Override

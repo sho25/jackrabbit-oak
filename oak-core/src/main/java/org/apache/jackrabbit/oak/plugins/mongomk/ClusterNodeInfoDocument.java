@@ -29,7 +29,9 @@ class|class
 name|ClusterNodeInfoDocument
 extends|extends
 name|Document
-block|{  }
+block|{
+comment|// marker interface
+block|}
 end_class
 
 end_unit

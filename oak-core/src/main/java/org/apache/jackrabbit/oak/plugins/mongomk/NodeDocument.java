@@ -368,11 +368,25 @@ name|NodeDocument
 extends|extends
 name|Document
 block|{
-specifier|private
+comment|/**      * Marker document, which indicates the document does not exist.      */
+specifier|public
+specifier|static
+specifier|final
+name|NodeDocument
+name|NULL
+init|=
+operator|new
+name|NodeDocument
+argument_list|(
+operator|new
+name|MemoryDocumentStore
+argument_list|()
+argument_list|)
+decl_stmt|;
 specifier|static
 specifier|final
 name|Logger
-name|log
+name|LOG
 init|=
 name|LoggerFactory
 operator|.
@@ -382,6 +396,40 @@ name|NodeDocument
 operator|.
 name|class
 argument_list|)
+decl_stmt|;
+comment|/**      * A size threshold after which to consider a document a split candidate.      * TODO: check which value is the best one      */
+specifier|static
+specifier|final
+name|int
+name|SPLIT_CANDIDATE_THRESHOLD
+init|=
+literal|32
+operator|*
+literal|1024
+decl_stmt|;
+comment|/**      * Only split off at least this number of revisions.      */
+specifier|static
+specifier|final
+name|int
+name|REVISIONS_SPLIT_OFF_SIZE
+init|=
+literal|1000
+decl_stmt|;
+comment|/**      * Revision collision markers set by commits with modifications, which      * overlap with un-merged branch commits.      * Key: revision, value:      */
+specifier|static
+specifier|final
+name|String
+name|COLLISIONS
+init|=
+literal|"_collisions"
+decl_stmt|;
+comment|/**      * The modified time (5 second resolution).      */
+specifier|static
+specifier|final
+name|String
+name|MODIFIED
+init|=
+literal|"_modified"
 decl_stmt|;
 specifier|private
 specifier|static
@@ -405,39 +453,6 @@ name|Revision
 argument_list|,
 name|Range
 argument_list|>
-argument_list|()
-argument_list|)
-decl_stmt|;
-comment|/**      * A size threshold after which to consider a document a split candidate.      * TODO: check which value is the best one      */
-specifier|static
-specifier|final
-name|int
-name|SPLIT_CANDIDATE_THRESHOLD
-init|=
-literal|32
-operator|*
-literal|1024
-decl_stmt|;
-comment|/**      * Only split off at least this number of revisions.      */
-specifier|static
-specifier|final
-name|int
-name|REVISIONS_SPLIT_OFF_SIZE
-init|=
-literal|1000
-decl_stmt|;
-comment|/**      * Marker document, which indicates the document does not exist.      */
-specifier|public
-specifier|static
-specifier|final
-name|NodeDocument
-name|NULL
-init|=
-operator|new
-name|NodeDocument
-argument_list|(
-operator|new
-name|MemoryDocumentStore
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -468,22 +483,6 @@ name|DELETED
 init|=
 literal|"_deleted"
 decl_stmt|;
-comment|/**      * Revision collision markers set by commits with modifications, which      * overlap with un-merged branch commits.      * Key: revision, value:      */
-specifier|static
-specifier|final
-name|String
-name|COLLISIONS
-init|=
-literal|"_collisions"
-decl_stmt|;
-comment|/**      * The modified time (5 second resolution).      */
-specifier|static
-specifier|final
-name|String
-name|MODIFIED
-init|=
-literal|"_modified"
-decl_stmt|;
 comment|/**      * The list of recent revisions for this node, where this node is the      * root of the commit. Key: revision, value: true or the base revision of an      * un-merged branch commit.      */
 specifier|private
 specifier|static
@@ -502,6 +501,10 @@ name|LAST_REV
 init|=
 literal|"_lastRev"
 decl_stmt|;
+specifier|final
+name|DocumentStore
+name|store
+decl_stmt|;
 specifier|private
 specifier|final
 name|long
@@ -511,11 +514,6 @@ name|System
 operator|.
 name|currentTimeMillis
 argument_list|()
-decl_stmt|;
-specifier|private
-specifier|final
-name|DocumentStore
-name|store
 decl_stmt|;
 name|NodeDocument
 parameter_list|(
@@ -1079,7 +1077,7 @@ literal|null
 return|;
 block|}
 block|}
-comment|/**      * Get the revision of the latest change made to this node.      *      * @param changeRev the revision of the current change      * @param handler the conflict handler, which is called for concurrent changes      *                preceding<code>before</code>.      * @return the revision, or null if deleted      */
+comment|/**      * Get the revision of the latest change made to this node.      *      * @param context the revision context      * @param changeRev the revision of the current change      * @param handler the conflict handler, which is called for concurrent changes      *                preceding<code>before</code>.      * @return the revision, or null if deleted      */
 annotation|@
 name|SuppressWarnings
 argument_list|(
@@ -2087,7 +2085,7 @@ operator|||
 name|deleted
 return|;
 block|}
-comment|/**      * Get the earliest (oldest) revision where the node was alive at or before      * the provided revision, if the node was alive at the given revision.      *      * @param maxRev the maximum revision to return      * @param validRevisions the set of revisions already checked against maxRev      *            and considered valid.      * @return the earliest revision, or null if the node is deleted at the      *         given revision      */
+comment|/**      * Get the earliest (oldest) revision where the node was alive at or before      * the provided revision, if the node was alive at the given revision.      *       * @param context the revision context      * @param maxRev the maximum revision to return      * @param validRevisions the set of revisions already checked against maxRev      *            and considered valid.      * @return the earliest revision, or null if the node is deleted at the      *         given revision      */
 annotation|@
 name|CheckForNull
 specifier|public
@@ -3696,7 +3694,7 @@ condition|)
 block|{
 comment|// shouldn't happen, either node is commit root for a revision
 comment|// or has a reference to the commit root
-name|log
+name|LOG
 operator|.
 name|warn
 argument_list|(
@@ -4161,6 +4159,7 @@ comment|/**      * Get the latest property value that is larger or equal the min
 annotation|@
 name|CheckForNull
 specifier|private
+specifier|static
 name|String
 name|getLatestValue
 parameter_list|(
@@ -4289,7 +4288,6 @@ return|return
 name|value
 return|;
 block|}
-specifier|private
 name|Map
 argument_list|<
 name|String
@@ -4741,16 +4739,15 @@ name|map
 return|;
 block|}
 comment|/**      * Returns previous {@link NodeDocument}, which include the given revision.      * If the<code>revision</code> is<code>null</code>, then all previous      * documents are returned.      *      * @param revision the revision to match or<code>null</code>.      * @return previous documents.      */
-specifier|private
 name|Iterable
 argument_list|<
 name|NodeDocument
 argument_list|>
 name|getPreviousDocs
 parameter_list|(
-specifier|final
 annotation|@
 name|Nullable
+specifier|final
 name|Revision
 name|revision
 parameter_list|)
@@ -4902,7 +4899,7 @@ operator|==
 literal|null
 condition|)
 block|{
-name|log
+name|LOG
 operator|.
 name|warn
 argument_list|(
@@ -5032,6 +5029,7 @@ return|return
 name|previous
 return|;
 block|}
+comment|/**      * A range of revisions.      */
 specifier|private
 specifier|static
 specifier|final

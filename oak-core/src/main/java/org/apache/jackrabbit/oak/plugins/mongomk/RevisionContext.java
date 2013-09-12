@@ -39,19 +39,16 @@ interface|interface
 name|RevisionContext
 block|{
 comment|/**      * @return the branches of the local MongoMK instance, which are not yet      *         merged.      */
-specifier|public
 name|UnmergedBranches
 name|getBranches
 parameter_list|()
 function_decl|;
 comment|/**      * @return the pending modifications.      */
-specifier|public
 name|UnsavedModifications
 name|getPendingModifications
 parameter_list|()
 function_decl|;
 comment|/**      * @return the revision comparator.      */
-specifier|public
 name|Comparator
 argument_list|<
 name|Revision
@@ -60,7 +57,6 @@ name|getRevisionComparator
 parameter_list|()
 function_decl|;
 comment|/**      * Ensure the revision visible from now on, possibly by updating the head      * revision, so that the changes that occurred are visible.      *      * @param foreignRevision the revision from another cluster node      * @param changeRevision the local revision that is sorted after the foreign revision      */
-specifier|public
 name|void
 name|publishRevision
 parameter_list|(
@@ -72,7 +68,6 @@ name|changeRevision
 parameter_list|)
 function_decl|;
 comment|/**      * @return the cluster id of the local MongoMK instance.      */
-specifier|public
 name|int
 name|getClusterId
 parameter_list|()

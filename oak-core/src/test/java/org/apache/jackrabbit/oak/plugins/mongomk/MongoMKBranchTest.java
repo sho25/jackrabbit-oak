@@ -49,6 +49,20 @@ begin_import
 import|import
 name|org
 operator|.
+name|json
+operator|.
+name|simple
+operator|.
+name|parser
+operator|.
+name|ParseException
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|junit
 operator|.
 name|Test
@@ -102,7 +116,7 @@ name|MongoMKBranchTest
 extends|extends
 name|BaseMongoMKTest
 block|{
-comment|/**      * Creates the following revision history:      *<pre>      *   + rev1 (first commit with /child1)      *   |\      *   | + branchRev1 (branch from rev1)      *   | + branchRev11 (branch commit /child1/foo:1)      *   |      *   + rev2 (second commit with /child2)      *   |\      *   | + branchRev2 (brach from rev2)      *</pre>      * The test reads /child from<code>branchRev2</code> and expects      * the version from the first commit.      */
+comment|/**      * Creates the following revision history:      *<pre>      *   + rev1 (first commit with /child1)      *   |\      *   | + branchRev1 (branch from rev1)      *   | + branchRev11 (branch commit /child1/foo:1)      *   |      *   + rev2 (second commit with /child2)      *   |\      *   | + branchRev2 (brach from rev2)      *</pre>      * The test reads /child from<code>branchRev2</code> and expects      * the version from the first commit.      *       * @throws ParseException       */
 annotation|@
 name|Test
 specifier|public
@@ -110,7 +124,7 @@ name|void
 name|isolatedBranches
 parameter_list|()
 throws|throws
-name|Exception
+name|ParseException
 block|{
 name|String
 name|rev1
@@ -427,9 +441,6 @@ literal|null
 argument_list|)
 decl_stmt|;
 comment|// trunk commit under /test/node
-name|String
-name|rev1
-init|=
 name|mk
 operator|.
 name|commit
@@ -442,7 +453,7 @@ literal|null
 argument_list|,
 literal|null
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 comment|// branch commit on /
 name|String
 name|branchRev2
@@ -588,9 +599,6 @@ literal|null
 argument_list|)
 decl_stmt|;
 comment|// branch commit under /test/node
-name|String
-name|branchRev1
-init|=
 name|mk
 operator|.
 name|commit
@@ -603,7 +611,7 @@ name|branchRev
 argument_list|,
 literal|null
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 comment|// trunk commit on /
 name|String
 name|rev2

@@ -32,7 +32,7 @@ specifier|public
 interface|interface
 name|CommandExecutor
 block|{
-comment|/**      * Executes the given {@link Command} and returns the result.      *      *<p>      * If an retry behavior is specified this will be taken care of by the implementation as well.      *</p>      *      * @param command      * @return The result of the execution.      * @throws Exception If an error occurred while executing.      */
+comment|/**      * Executes the given {@link Command} and returns the result.      *      *<p>      * If an retry behavior is specified this will be taken care of by the implementation as well.      *</p>      *      * @param<T> the command type      * @param command      * @return The result of the execution.      * @throws Exception If an error occurred while executing.      */
 parameter_list|<
 name|T
 parameter_list|>

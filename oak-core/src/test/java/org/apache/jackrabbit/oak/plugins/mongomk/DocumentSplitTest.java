@@ -65,16 +65,6 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Ignore
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
 name|Test
 import|;
 end_import
@@ -205,12 +195,12 @@ name|keySet
 argument_list|()
 argument_list|)
 expr_stmt|;
+comment|// MongoMK initializes with a root node with a single revision
 name|int
 name|numRevs
 init|=
 literal|1
 decl_stmt|;
-comment|// MongoMK initializes with a root node with a single revision
 name|revisions
 operator|.
 name|add

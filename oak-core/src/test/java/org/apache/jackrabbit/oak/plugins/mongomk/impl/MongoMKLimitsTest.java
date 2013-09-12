@@ -105,8 +105,6 @@ specifier|public
 name|void
 name|pathLimit
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|String
 name|path
@@ -206,8 +204,6 @@ specifier|public
 name|void
 name|overMaxBSONLimit
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|String
 name|path
