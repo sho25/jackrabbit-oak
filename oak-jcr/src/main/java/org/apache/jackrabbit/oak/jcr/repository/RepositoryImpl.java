@@ -1044,6 +1044,16 @@ argument_list|()
 argument_list|)
 return|;
 block|}
+comment|/**      * Returns the descriptors associated with the repository      * @return repository descriptor      */
+specifier|protected
+name|Descriptors
+name|getDescriptors
+parameter_list|()
+block|{
+return|return
+name|descriptors
+return|;
+block|}
 comment|//------------------------------------------------------------< private>---
 specifier|private
 specifier|static
