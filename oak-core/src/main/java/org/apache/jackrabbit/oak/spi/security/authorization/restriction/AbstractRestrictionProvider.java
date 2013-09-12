@@ -506,6 +506,8 @@ name|of
 argument_list|(
 name|value
 argument_list|)
+argument_list|,
+name|tag
 argument_list|)
 expr_stmt|;
 block|}

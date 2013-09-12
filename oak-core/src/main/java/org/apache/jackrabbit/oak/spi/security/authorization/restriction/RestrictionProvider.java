@@ -208,7 +208,7 @@ name|Tree
 name|aceTree
 parameter_list|)
 function_decl|;
-comment|/**      * Writes the given restrictions to the specified ACE tree. Note, that this      * method does not validate the specified restrictions (see also      * {@link #validateRestrictions(String, org.apache.jackrabbit.oak.api.Tree)}).      *      * @param oakPath The path of the access controlled tree or {@code null} if      * the target policies applies to the repository level.      * @param aceTree The tree corresponding to an ACE that will have the      * specified restrictions added.      * @param restrictions The set of restrictions to be written to the specified      * tree.      * @throws RepositoryException If an error occurs while writing the      * restrictions.      */
+comment|/**      * Writes the given restrictions to the specified ACE tree. Note, that this      * method does not need to validate the specified restrictions (see also      * {@link #validateRestrictions(String, org.apache.jackrabbit.oak.api.Tree)}).      *      * @param oakPath The path of the access controlled tree or {@code null} if      * the target policies applies to the repository level.      * @param aceTree The tree corresponding to an ACE that will have the      * specified restrictions added.      * @param restrictions The set of restrictions to be written to the specified      * tree.      * @throws RepositoryException If an error occurs while writing the      * restrictions.      */
 name|void
 name|writeRestrictions
 parameter_list|(
