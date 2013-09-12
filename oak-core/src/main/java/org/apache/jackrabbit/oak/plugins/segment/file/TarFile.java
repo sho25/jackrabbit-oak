@@ -76,7 +76,7 @@ end_import
 begin_class
 specifier|abstract
 class|class
-name|SegmentFile
+name|TarFile
 block|{
 specifier|protected
 specifier|static
