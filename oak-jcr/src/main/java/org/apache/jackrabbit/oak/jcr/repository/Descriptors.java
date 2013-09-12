@@ -45,16 +45,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|HashMap
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|Map
 import|;
 end_import
@@ -66,6 +56,18 @@ operator|.
 name|util
 operator|.
 name|Properties
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|ConcurrentHashMap
 import|;
 end_import
 
@@ -751,7 +753,7 @@ block|{
 name|descriptors
 operator|=
 operator|new
-name|HashMap
+name|ConcurrentHashMap
 argument_list|<
 name|String
 argument_list|,
@@ -2056,7 +2058,7 @@ expr_stmt|;
 block|}
 block|}
 comment|//------------------------------------------< private>---
-specifier|private
+specifier|public
 name|void
 name|put
 parameter_list|(
