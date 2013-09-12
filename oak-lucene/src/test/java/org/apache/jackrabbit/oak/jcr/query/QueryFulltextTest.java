@@ -113,24 +113,6 @@ name|AbstractQueryTest
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|query
-operator|.
-name|ast
-operator|.
-name|FullTextSearchImpl
-import|;
-end_import
-
 begin_comment
 comment|/**  * Tests the fulltext index.  */
 end_comment
@@ -252,13 +234,6 @@ operator|.
 name|JCR_SQL2
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|FullTextSearchImpl
-operator|.
-name|OAK_890_ADVANCED_FT_SEARCH
-condition|)
-block|{
 comment|// TODO the plan should actually be:
 comment|//            assertEquals("[nt:base] as [nt:base] /* " +
 comment|//                    "+((text:hallo text:hello)~1) +text:{* TO *} " +
@@ -286,67 +261,6 @@ literal|"plan"
 argument_list|)
 argument_list|)
 expr_stmt|;
-block|}
-else|else
-block|{
-name|assertEquals
-argument_list|(
-literal|"[nt:base] as [nt:base] /* "
-operator|+
-literal|"+:fulltext:hello +:fulltext:or +:fulltext:hallo "
-operator|+
-literal|"where contains([nt:base].[*], cast('hello OR hallo' as string)) */"
-argument_list|,
-name|getResult
-argument_list|(
-name|q
-operator|.
-name|execute
-argument_list|()
-argument_list|,
-literal|"plan"
-argument_list|)
-argument_list|)
-expr_stmt|;
-comment|// verify the result
-comment|// uppercase "OR" mean logical "or"
-name|q
-operator|=
-name|qm
-operator|.
-name|createQuery
-argument_list|(
-name|sql2
-argument_list|,
-name|Query
-operator|.
-name|JCR_SQL2
-argument_list|)
-expr_stmt|;
-if|if
-condition|(
-name|FullTextSearchImpl
-operator|.
-name|OAK_890_ADVANCED_FT_SEARCH
-condition|)
-block|{
-name|assertEquals
-argument_list|(
-literal|"/testroot/node1, /testroot/node2, /testroot/node3"
-argument_list|,
-name|getResult
-argument_list|(
-name|q
-operator|.
-name|execute
-argument_list|()
-argument_list|,
-literal|"path"
-argument_list|)
-argument_list|)
-expr_stmt|;
-block|}
-block|}
 comment|// lowercase "or" mean search for the term "or"
 name|sql2
 operator|=
@@ -480,13 +394,6 @@ literal|"where ISCHILDNODE([/testroot])"
 operator|+
 literal|" AND CONTAINS(text, 'hallo')"
 decl_stmt|;
-if|if
-condition|(
-name|FullTextSearchImpl
-operator|.
-name|OAK_890_ADVANCED_FT_SEARCH
-condition|)
-block|{
 name|q
 operator|=
 name|qm
@@ -532,7 +439,6 @@ literal|"plan"
 argument_list|)
 argument_list|)
 expr_stmt|;
-block|}
 name|q
 operator|=
 name|qm
@@ -587,13 +493,6 @@ operator|.
 name|JCR_SQL2
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|FullTextSearchImpl
-operator|.
-name|OAK_890_ADVANCED_FT_SEARCH
-condition|)
-block|{
 name|assertEquals
 argument_list|(
 literal|"/testroot"
@@ -609,7 +508,6 @@ literal|"path"
 argument_list|)
 argument_list|)
 expr_stmt|;
-block|}
 name|sql2
 operator|=
 literal|"select [jcr:path] as [path] from [nt:base] "
@@ -631,13 +529,6 @@ operator|.
 name|JCR_SQL2
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|FullTextSearchImpl
-operator|.
-name|OAK_890_ADVANCED_FT_SEARCH
-condition|)
-block|{
 comment|// TODO the plan should actually be:
 comment|//            assertEquals("[nt:base] as [nt:base] /* " +
 comment|//                    "(text:hallo text:hello)~1 " +
@@ -696,57 +587,6 @@ literal|"path"
 argument_list|)
 argument_list|)
 expr_stmt|;
-block|}
-else|else
-block|{
-name|assertEquals
-argument_list|(
-literal|"[nt:base] as [nt:base] /* "
-operator|+
-literal|"+:fulltext:hello +:fulltext:or +:fulltext:hallo "
-operator|+
-literal|"where contains([nt:base].[node2/*], cast('hello OR hallo' as string)) */"
-argument_list|,
-name|getResult
-argument_list|(
-name|q
-operator|.
-name|execute
-argument_list|()
-argument_list|,
-literal|"plan"
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|q
-operator|=
-name|qm
-operator|.
-name|createQuery
-argument_list|(
-name|sql2
-argument_list|,
-name|Query
-operator|.
-name|JCR_SQL2
-argument_list|)
-expr_stmt|;
-name|assertEquals
-argument_list|(
-literal|""
-argument_list|,
-name|getResult
-argument_list|(
-name|q
-operator|.
-name|execute
-argument_list|()
-argument_list|,
-literal|"path"
-argument_list|)
-argument_list|)
-expr_stmt|;
-block|}
 name|sql2
 operator|=
 literal|"select [jcr:path] as [path] from [nt:base] "
@@ -772,13 +612,6 @@ operator|.
 name|JCR_SQL2
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|FullTextSearchImpl
-operator|.
-name|OAK_890_ADVANCED_FT_SEARCH
-condition|)
-block|{
 comment|// TODO OAK-890
 name|assertEquals
 argument_list|(
@@ -816,7 +649,6 @@ argument_list|)
 expr_stmt|;
 comment|// assertEquals("/testroot",
 comment|//        getResult(q.execute(), "path"));
-block|}
 block|}
 specifier|static
 name|String

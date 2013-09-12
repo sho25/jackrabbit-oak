@@ -169,24 +169,6 @@ begin_import
 import|import
 name|org
 operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|query
-operator|.
-name|ast
-operator|.
-name|FullTextSearchImpl
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
 name|junit
 operator|.
 name|Test
@@ -697,13 +679,6 @@ operator|.
 name|JCR_SQL2
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|FullTextSearchImpl
-operator|.
-name|OAK_890_ADVANCED_FT_SEARCH
-condition|)
-block|{
 name|assertEquals
 argument_list|(
 literal|"[nt:base] as [nt:base] /* traverse \"*\" "
@@ -721,27 +696,6 @@ literal|"plan"
 argument_list|)
 argument_list|)
 expr_stmt|;
-block|}
-else|else
-block|{
-name|assertEquals
-argument_list|(
-literal|"[nt:base] as [nt:base] /* traverse \"*\" "
-operator|+
-literal|"where contains([nt:base].[*], cast('hello OR hallo' as string)) */"
-argument_list|,
-name|getResult
-argument_list|(
-name|q
-operator|.
-name|execute
-argument_list|()
-argument_list|,
-literal|"plan"
-argument_list|)
-argument_list|)
-expr_stmt|;
-block|}
 comment|// verify the result
 comment|// uppercase "OR" mean logical "or"
 name|q

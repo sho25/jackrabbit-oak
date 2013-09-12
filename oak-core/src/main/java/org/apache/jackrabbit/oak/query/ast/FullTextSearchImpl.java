@@ -278,15 +278,6 @@ name|FullTextSearchImpl
 extends|extends
 name|ConstraintImpl
 block|{
-comment|/**      * Feature flag.       * Disabled until OAK-890 is fully implemented.      * Enable for testing OAK-890 related changes.      */
-specifier|public
-specifier|static
-specifier|final
-name|boolean
-name|OAK_890_ADVANCED_FT_SEARCH
-init|=
-literal|true
-decl_stmt|;
 comment|/**      * Compatibility for Jackrabbit 2.0 single quoted phrase queries.      * (contains(., "word ''hello world'' word")       * These are queries that delimit a phrase with a single quote      * instead, as in the spec, using double quotes.      */
 specifier|public
 specifier|static
@@ -411,20 +402,6 @@ name|slash
 operator|+
 literal|1
 argument_list|)
-expr_stmt|;
-block|}
-if|if
-condition|(
-operator|!
-name|OAK_890_ADVANCED_FT_SEARCH
-condition|)
-block|{
-comment|// temporary workaround to support using an index for
-comment|// "contains(a/*, 'x') or contains(a/a, x') or contains(a/b, 'x')"
-comment|// TODO this behavior does not match the specification
-name|propertyName
-operator|=
-literal|null
 expr_stmt|;
 block|}
 if|if
@@ -711,11 +688,6 @@ name|propertyName
 decl_stmt|;
 if|if
 condition|(
-name|OAK_890_ADVANCED_FT_SEARCH
-condition|)
-block|{
-if|if
-condition|(
 name|relativePath
 operator|!=
 literal|null
@@ -744,7 +716,6 @@ argument_list|,
 name|p
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 return|return
 name|FullTextParser
