@@ -932,8 +932,6 @@ argument_list|(
 name|contentSession
 argument_list|,
 name|refreshStrategy
-argument_list|,
-name|securityProvider
 argument_list|)
 decl_stmt|;
 name|SessionContext

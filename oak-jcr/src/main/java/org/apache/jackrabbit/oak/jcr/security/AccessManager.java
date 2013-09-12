@@ -175,6 +175,9 @@ name|AccessManager
 parameter_list|(
 name|SessionDelegate
 name|delegate
+parameter_list|,
+name|PermissionProvider
+name|permissionProvider
 parameter_list|)
 block|{
 name|this
@@ -187,10 +190,7 @@ name|this
 operator|.
 name|permissionProvider
 operator|=
-name|delegate
-operator|.
-name|getPermissionProvider
-argument_list|()
+name|permissionProvider
 expr_stmt|;
 block|}
 specifier|public
@@ -229,6 +229,11 @@ name|Boolean
 name|perform
 parameter_list|()
 block|{
+name|permissionProvider
+operator|.
+name|refresh
+argument_list|()
+expr_stmt|;
 return|return
 name|permissionProvider
 operator|.
@@ -286,6 +291,11 @@ name|Boolean
 name|perform
 parameter_list|()
 block|{
+name|permissionProvider
+operator|.
+name|refresh
+argument_list|()
+expr_stmt|;
 return|return
 name|permissionProvider
 operator|.
