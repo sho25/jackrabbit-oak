@@ -107,6 +107,16 @@ name|Entry
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|TreeMap
+import|;
+end_import
+
 begin_comment
 comment|/**  *  */
 end_comment
@@ -926,7 +936,16 @@ argument_list|>
 argument_list|>
 name|iter
 init|=
+operator|new
+name|TreeMap
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
+argument_list|(
 name|properties
+argument_list|)
 operator|.
 name|entrySet
 argument_list|()
