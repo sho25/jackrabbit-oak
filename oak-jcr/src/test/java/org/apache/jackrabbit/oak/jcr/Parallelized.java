@@ -79,6 +79,26 @@ name|RunnerScheduler
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
+import|;
+end_import
+
 begin_comment
 comment|/**  * Extension of the {@link Parameterized} test runner, which runs tests in  * parallel.  */
 end_comment
@@ -90,6 +110,27 @@ name|Parallelized
 extends|extends
 name|Parameterized
 block|{
+comment|/**      * Logger instance. Unused by this class, but present to force early      * auto-initialization of the logging system and thus to avoid warnings      * about concurrent initialization.      */
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unused"
+argument_list|)
+specifier|private
+specifier|static
+specifier|final
+name|Logger
+name|log
+init|=
+name|LoggerFactory
+operator|.
+name|getLogger
+argument_list|(
+name|Parallelized
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 specifier|private
 specifier|static
 class|class
