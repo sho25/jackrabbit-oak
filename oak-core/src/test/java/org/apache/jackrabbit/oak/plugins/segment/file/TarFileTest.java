@@ -156,7 +156,11 @@ name|void
 name|tearDown
 parameter_list|()
 block|{
-comment|// file.delete();
+name|file
+operator|.
+name|delete
+argument_list|()
+expr_stmt|;
 block|}
 annotation|@
 name|Test
