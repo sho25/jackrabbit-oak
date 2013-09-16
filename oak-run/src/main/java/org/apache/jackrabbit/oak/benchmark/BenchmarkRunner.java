@@ -582,12 +582,12 @@ operator|new
 name|ReadPropertyTest
 argument_list|()
 block|,
-name|GetNodeTest
+name|MessedUpCharacterCaseGetNodeTest
 operator|.
 name|withAdmin
 argument_list|()
 block|,
-name|GetNodeTest
+name|MessedUpCharacterCaseGetNodeTest
 operator|.
 name|withAnonymous
 argument_list|()
