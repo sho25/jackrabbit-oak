@@ -90,14 +90,14 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * {@code MessedUpCharacterCaseGetNodeTest} implements a performance test, which reads  * nodes from the repository. To determine the effect of access control  * evaluation the test can either run with anonymous or with admin.  */
+comment|/**  * {@code GetNodeTest} implements a performance test, which reads  * nodes from the repository. To determine the effect of access control  * evaluation the test can either run with anonymous or with admin.  */
 end_comment
 
 begin_class
 specifier|public
 specifier|abstract
 class|class
-name|MessedUpCharacterCaseGetNodeTest
+name|GetNodeTest
 extends|extends
 name|AbstractTest
 block|{
@@ -118,7 +118,7 @@ parameter_list|()
 block|{
 return|return
 operator|new
-name|MessedUpCharacterCaseGetNodeTest
+name|GetNodeTest
 argument_list|(
 literal|"GetNodeWithAdmin"
 argument_list|)
@@ -146,7 +146,7 @@ parameter_list|()
 block|{
 return|return
 operator|new
-name|MessedUpCharacterCaseGetNodeTest
+name|GetNodeTest
 argument_list|(
 literal|"GetNodeWithAnonymous"
 argument_list|)
@@ -167,7 +167,7 @@ block|}
 return|;
 block|}
 specifier|protected
-name|MessedUpCharacterCaseGetNodeTest
+name|GetNodeTest
 parameter_list|(
 name|String
 name|name
@@ -221,7 +221,7 @@ argument_list|()
 operator|.
 name|addNode
 argument_list|(
-name|MessedUpCharacterCaseGetNodeTest
+name|GetNodeTest
 operator|.
 name|class
 operator|.
