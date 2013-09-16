@@ -1128,7 +1128,15 @@ range|:
 name|changedNodes
 control|)
 block|{
-comment|// set commit root on changed nodes
+comment|// set commit root on changed nodes unless it's the
+comment|// commit root itself
+if|if
+condition|(
+name|op
+operator|!=
+name|commitRoot
+condition|)
+block|{
 name|NodeDocument
 operator|.
 name|setCommitRoot
@@ -1140,6 +1148,7 @@ argument_list|,
 name|commitRootDepth
 argument_list|)
 expr_stmt|;
+block|}
 name|opLog
 operator|.
 name|add

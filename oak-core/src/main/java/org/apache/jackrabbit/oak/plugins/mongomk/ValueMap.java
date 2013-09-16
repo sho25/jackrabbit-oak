@@ -250,6 +250,8 @@ operator|.
 name|getPreviousDocs
 argument_list|(
 literal|null
+argument_list|,
+name|property
 argument_list|)
 operator|.
 name|iterator
@@ -347,6 +349,8 @@ operator|.
 name|getPreviousDocs
 argument_list|(
 literal|null
+argument_list|,
+name|property
 argument_list|)
 control|)
 block|{
@@ -472,6 +476,8 @@ operator|.
 name|getPreviousDocs
 argument_list|(
 name|r
+argument_list|,
+name|property
 argument_list|)
 control|)
 block|{
