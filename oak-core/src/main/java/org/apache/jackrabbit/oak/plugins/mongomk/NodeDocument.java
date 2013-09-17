@@ -1143,7 +1143,7 @@ literal|null
 return|;
 block|}
 block|}
-comment|/**      * Get the revision of the latest change made to this node.      *      * @param context the revision context      * @param changeRev the revision of the current change      * @param handler the conflict handler, which is called for concurrent changes      *                preceding<code>before</code>.      * @return the revision, or null if deleted      */
+comment|/**      * Get the revision of the latest change made to this node.      *      * @param context the revision context      * @param changeRev the revision of the current change      * @param handler the conflict handler, which is called for concurrent changes      *                preceding<code>changeRev</code>.      * @return the revision, or null if deleted      */
 annotation|@
 name|SuppressWarnings
 argument_list|(
@@ -1183,11 +1183,14 @@ name|reverseOrder
 argument_list|()
 argument_list|)
 decl_stmt|;
+comment|// no need to look at all commits. the primary document
+comment|// always contains at least one commit, including all
+comment|// branch commits which are not yet merged
 name|revisions
 operator|.
 name|addAll
 argument_list|(
-name|getRevisions
+name|getLocalRevisions
 argument_list|()
 operator|.
 name|keySet
@@ -1198,29 +1201,8 @@ name|revisions
 operator|.
 name|addAll
 argument_list|(
-name|getCommitRoot
+name|getLocalCommitRoot
 argument_list|()
-operator|.
-name|keySet
-argument_list|()
-argument_list|)
-expr_stmt|;
-name|Map
-argument_list|<
-name|String
-argument_list|,
-name|String
-argument_list|>
-name|deletedMap
-init|=
-name|getDeleted
-argument_list|()
-decl_stmt|;
-name|revisions
-operator|.
-name|addAll
-argument_list|(
-name|deletedMap
 operator|.
 name|keySet
 argument_list|()
@@ -1354,7 +1336,8 @@ block|}
 name|String
 name|value
 init|=
-name|deletedMap
+name|getDeleted
+argument_list|()
 operator|.
 name|get
 argument_list|(
@@ -4690,29 +4673,6 @@ block|}
 block|}
 return|return
 name|value
-return|;
-block|}
-annotation|@
-name|Nonnull
-specifier|private
-name|Map
-argument_list|<
-name|String
-argument_list|,
-name|String
-argument_list|>
-name|getRevisions
-parameter_list|()
-block|{
-return|return
-name|ValueMap
-operator|.
-name|create
-argument_list|(
-name|this
-argument_list|,
-name|REVISIONS
-argument_list|)
 return|;
 block|}
 annotation|@
