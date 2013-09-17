@@ -157,7 +157,7 @@ index|]
 decl_stmt|;
 specifier|private
 name|int
-name|length
+name|size
 init|=
 literal|0
 decl_stmt|;
@@ -297,20 +297,19 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
-name|int
-name|n
-init|=
+name|size
+operator|=
 name|list
 operator|.
 name|size
 argument_list|()
-decl_stmt|;
+expr_stmt|;
 name|offsets
 operator|=
 operator|new
 name|int
 index|[
-name|n
+name|size
 index|]
 expr_stmt|;
 name|values
@@ -321,7 +320,7 @@ argument_list|<
 name|?
 argument_list|>
 index|[
-name|n
+name|size
 index|]
 expr_stmt|;
 for|for
@@ -333,7 +332,7 @@ literal|0
 init|;
 name|i
 operator|<
-name|n
+name|size
 condition|;
 name|i
 operator|++
@@ -411,7 +410,7 @@ name|offsets
 argument_list|,
 literal|0
 argument_list|,
-name|length
+name|size
 argument_list|,
 name|offset
 argument_list|)
@@ -479,7 +478,7 @@ name|i
 expr_stmt|;
 if|if
 condition|(
-name|length
+name|size
 operator|<
 name|offsets
 operator|.
@@ -500,7 +499,7 @@ name|i
 operator|+
 literal|1
 argument_list|,
-name|length
+name|size
 operator|-
 name|i
 argument_list|)
@@ -519,7 +518,7 @@ name|i
 operator|+
 literal|1
 argument_list|,
-name|length
+name|size
 operator|-
 name|i
 argument_list|)
@@ -534,7 +533,7 @@ init|=
 operator|new
 name|int
 index|[
-name|length
+name|size
 operator|+
 name|SIZE_INCREMENT
 index|]
@@ -568,7 +567,7 @@ name|i
 operator|+
 literal|1
 argument_list|,
-name|length
+name|size
 operator|-
 name|i
 argument_list|)
@@ -590,7 +589,7 @@ argument_list|<
 name|?
 argument_list|>
 index|[
-name|length
+name|size
 operator|+
 name|SIZE_INCREMENT
 index|]
@@ -624,7 +623,7 @@ name|i
 operator|+
 literal|1
 argument_list|,
-name|length
+name|size
 operator|-
 name|i
 argument_list|)
@@ -662,6 +661,9 @@ argument_list|>
 argument_list|(
 name|value
 argument_list|)
+expr_stmt|;
+name|size
+operator|++
 expr_stmt|;
 return|return
 name|value
