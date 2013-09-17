@@ -1449,7 +1449,7 @@ name|log
 operator|.
 name|warn
 argument_list|(
-literal|"Item#refresh is no longer supported. Please use Session#refresh"
+literal|"Item#refresh invokes Session#refresh!"
 argument_list|)
 expr_stmt|;
 name|perform
