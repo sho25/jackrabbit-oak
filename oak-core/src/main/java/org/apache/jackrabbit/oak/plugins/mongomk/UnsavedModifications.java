@@ -247,10 +247,7 @@ operator|.
 name|getKey
 argument_list|()
 argument_list|,
-name|entry
-operator|.
-name|getValue
-argument_list|()
+name|mergeCommit
 argument_list|)
 decl_stmt|;
 if|if
