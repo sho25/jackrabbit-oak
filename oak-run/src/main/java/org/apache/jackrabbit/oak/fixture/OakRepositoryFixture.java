@@ -953,6 +953,14 @@ parameter_list|(
 specifier|final
 name|File
 name|base
+parameter_list|,
+specifier|final
+name|int
+name|maxFileSize
+parameter_list|,
+specifier|final
+name|boolean
+name|memoryMapping
 parameter_list|)
 block|{
 return|return
@@ -1032,6 +1040,10 @@ name|base
 argument_list|,
 name|unique
 argument_list|)
+argument_list|,
+name|maxFileSize
+argument_list|,
+name|memoryMapping
 argument_list|)
 expr_stmt|;
 name|Oak
