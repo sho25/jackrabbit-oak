@@ -1445,6 +1445,12 @@ parameter_list|)
 throws|throws
 name|RepositoryException
 block|{
+if|if
+condition|(
+operator|!
+name|keepChanges
+condition|)
+block|{
 name|log
 operator|.
 name|warn
@@ -1452,6 +1458,7 @@ argument_list|(
 literal|"Item#refresh invokes Session#refresh!"
 argument_list|)
 expr_stmt|;
+block|}
 name|perform
 argument_list|(
 operator|new
