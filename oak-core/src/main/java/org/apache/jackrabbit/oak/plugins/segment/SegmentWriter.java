@@ -129,18 +129,6 @@ end_import
 
 begin_import
 import|import static
-name|javax
-operator|.
-name|jcr
-operator|.
-name|PropertyType
-operator|.
-name|BINARY
-import|;
-end_import
-
-begin_import
-import|import static
 name|org
 operator|.
 name|apache
