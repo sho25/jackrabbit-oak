@@ -3610,7 +3610,7 @@ operator|>=
 literal|0
 condition|)
 block|{
-comment|//do not add constraints on child nodes properties
+comment|// do not add constraints on child nodes properties
 name|p
 operator|=
 literal|"*"
@@ -3915,7 +3915,6 @@ literal|'?'
 block|}
 decl_stmt|;
 comment|/**      * Tries to merge back tokens that are split on relevant fulltext query      * wildcards ('*' or '?')      *       *       * @param text      * @param analyzer      * @return      */
-specifier|private
 specifier|static
 name|List
 argument_list|<
