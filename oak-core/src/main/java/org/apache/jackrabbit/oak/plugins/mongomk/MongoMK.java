@@ -2671,10 +2671,31 @@ operator|new
 name|Children
 argument_list|()
 decl_stmt|;
+comment|// retrieve one more than requested to check if there
+comment|// are potentially more than 'limit' nodes
 name|int
 name|rawLimit
 init|=
+operator|(
+name|int
+operator|)
+name|Math
+operator|.
+name|min
+argument_list|(
+operator|(
+operator|(
+name|long
+operator|)
 name|limit
+operator|)
+operator|+
+literal|1
+argument_list|,
+name|Integer
+operator|.
+name|MAX_VALUE
+argument_list|)
 decl_stmt|;
 name|Set
 argument_list|<
@@ -4506,7 +4527,9 @@ condition|)
 block|{
 name|max
 operator|=
-name|MANY_CHILDREN_THRESHOLD
+name|Integer
+operator|.
+name|MAX_VALUE
 expr_stmt|;
 name|maxChildNodes
 operator|=
@@ -4521,9 +4544,12 @@ comment|// use long to avoid overflows
 name|long
 name|m
 init|=
+operator|(
+operator|(
+name|long
+operator|)
 name|maxChildNodes
-operator|+
-literal|1L
+operator|)
 operator|+
 name|offset
 decl_stmt|;
@@ -4542,22 +4568,6 @@ name|Integer
 operator|.
 name|MAX_VALUE
 argument_list|)
-expr_stmt|;
-block|}
-if|if
-condition|(
-name|offset
-operator|>
-literal|0
-condition|)
-block|{
-comment|// TODO workaround for missing offset
-comment|// support in getChildren
-name|max
-operator|=
-name|Integer
-operator|.
-name|MAX_VALUE
 expr_stmt|;
 block|}
 name|Children
