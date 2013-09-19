@@ -2671,31 +2671,10 @@ operator|new
 name|Children
 argument_list|()
 decl_stmt|;
-comment|// retrieve one more than requested to check if there
-comment|// are potentially more than 'limit' nodes
 name|int
 name|rawLimit
 init|=
-operator|(
-name|int
-operator|)
-name|Math
-operator|.
-name|min
-argument_list|(
-operator|(
-operator|(
-name|long
-operator|)
 name|limit
-operator|)
-operator|+
-literal|1
-argument_list|,
-name|Integer
-operator|.
-name|MAX_VALUE
-argument_list|)
 decl_stmt|;
 name|Set
 argument_list|<
