@@ -23,16 +23,6 @@ end_package
 
 begin_import
 import|import
-name|java
-operator|.
-name|security
-operator|.
-name|AccessController
-import|;
-end_import
-
-begin_import
-import|import
 name|javax
 operator|.
 name|annotation
@@ -344,6 +334,11 @@ name|long
 name|jr2Permissions
 decl_stmt|;
 specifier|private
+specifier|final
+name|Subject
+name|subject
+decl_stmt|;
+specifier|private
 name|ReadOnlyNodeTypeManager
 name|ntMgr
 decl_stmt|;
@@ -360,6 +355,9 @@ name|PermissionValidatorProvider
 parameter_list|(
 name|SecurityProvider
 name|securityProvider
+parameter_list|,
+name|Subject
+name|subject
 parameter_list|)
 block|{
 name|this
@@ -415,6 +413,12 @@ name|getPermissions
 argument_list|(
 name|compatValue
 argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|subject
+operator|=
+name|subject
 expr_stmt|;
 block|}
 comment|//--------------------------------------------------< ValidatorProvider>---
@@ -581,19 +585,6 @@ name|PermissionProvider
 name|getPermissionProvider
 parameter_list|()
 block|{
-name|Subject
-name|subject
-init|=
-name|Subject
-operator|.
-name|getSubject
-argument_list|(
-name|AccessController
-operator|.
-name|getContext
-argument_list|()
-argument_list|)
-decl_stmt|;
 if|if
 condition|(
 name|subject

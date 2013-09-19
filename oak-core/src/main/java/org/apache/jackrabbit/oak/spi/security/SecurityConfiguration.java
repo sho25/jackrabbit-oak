@@ -51,6 +51,18 @@ end_import
 
 begin_import
 import|import
+name|javax
+operator|.
+name|security
+operator|.
+name|auth
+operator|.
+name|Subject
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -202,6 +214,9 @@ name|getValidators
 parameter_list|(
 name|String
 name|workspaceName
+parameter_list|,
+name|Subject
+name|subject
 parameter_list|)
 function_decl|;
 annotation|@
@@ -322,6 +337,9 @@ name|getValidators
 parameter_list|(
 name|String
 name|workspaceName
+parameter_list|,
+name|Subject
+name|subject
 parameter_list|)
 block|{
 return|return
