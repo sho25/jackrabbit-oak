@@ -4637,8 +4637,10 @@ parameter_list|)
 throws|throws
 name|RepositoryException
 block|{
+name|Iterable
+argument_list|<
 name|String
-index|[]
+argument_list|>
 name|privNames
 init|=
 name|checkNotNull
@@ -4664,11 +4666,7 @@ name|HashSet
 argument_list|<
 name|Privilege
 argument_list|>
-argument_list|(
-name|privNames
-operator|.
-name|length
-argument_list|)
+argument_list|()
 decl_stmt|;
 for|for
 control|(

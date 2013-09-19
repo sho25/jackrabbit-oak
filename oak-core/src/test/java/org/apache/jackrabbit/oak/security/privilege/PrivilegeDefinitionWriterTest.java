@@ -200,6 +200,20 @@ import|;
 end_import
 
 begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|collect
+operator|.
+name|Iterables
+import|;
+end_import
+
+begin_import
 import|import static
 name|java
 operator|.
@@ -516,6 +530,10 @@ block|,
 name|JCR_MODIFY_ACCESS_CONTROL
 block|}
 argument_list|,
+name|Iterables
+operator|.
+name|toArray
+argument_list|(
 name|TreeUtil
 operator|.
 name|getStrings
@@ -523,6 +541,11 @@ argument_list|(
 name|tmpTree
 argument_list|,
 name|REP_AGGREGATES
+argument_list|)
+argument_list|,
+name|String
+operator|.
+name|class
 argument_list|)
 argument_list|)
 expr_stmt|;
