@@ -20,6 +20,18 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|java
+operator|.
+name|util
+operator|.
+name|Arrays
+operator|.
+name|asList
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -876,6 +888,8 @@ argument_list|(
 name|privilegeName
 argument_list|,
 literal|false
+argument_list|,
+literal|null
 argument_list|)
 decl_stmt|;
 name|definitions
@@ -909,11 +923,14 @@ name|privilegeName
 argument_list|,
 literal|false
 argument_list|,
+name|asList
+argument_list|(
 name|AGGREGATE_PRIVILEGES
 operator|.
 name|get
 argument_list|(
 name|privilegeName
+argument_list|)
 argument_list|)
 argument_list|)
 decl_stmt|;

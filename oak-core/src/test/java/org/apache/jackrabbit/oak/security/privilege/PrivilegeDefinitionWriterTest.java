@@ -21,16 +21,6 @@ end_package
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Collections
-import|;
-end_import
-
-begin_import
-import|import
 name|javax
 operator|.
 name|jcr
@@ -211,6 +201,18 @@ end_import
 
 begin_import
 import|import static
+name|java
+operator|.
+name|util
+operator|.
+name|Arrays
+operator|.
+name|asList
+import|;
+end_import
+
+begin_import
+import|import static
 name|org
 operator|.
 name|junit
@@ -311,13 +313,7 @@ name|JCR_READ
 argument_list|,
 literal|true
 argument_list|,
-name|Collections
-operator|.
-expr|<
-name|String
-operator|>
-name|emptySet
-argument_list|()
+literal|null
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -399,13 +395,7 @@ literal|"newName"
 argument_list|,
 literal|true
 argument_list|,
-name|Collections
-operator|.
-expr|<
-name|String
-operator|>
-name|emptySet
-argument_list|()
+literal|null
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -464,9 +454,12 @@ literal|"tmp"
 argument_list|,
 literal|true
 argument_list|,
+name|asList
+argument_list|(
 name|JCR_READ_ACCESS_CONTROL
 argument_list|,
 name|JCR_MODIFY_ACCESS_CONTROL
+argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
