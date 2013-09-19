@@ -7430,7 +7430,7 @@ name|this
 operator|.
 name|timing
 operator|=
-literal|true
+name|timing
 expr_stmt|;
 return|return
 name|this
