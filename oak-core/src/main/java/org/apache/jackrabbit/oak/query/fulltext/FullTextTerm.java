@@ -289,7 +289,7 @@ argument_list|(
 name|c
 argument_list|)
 operator|||
-literal|" +-:&"
+literal|" +-:&/"
 operator|.
 name|indexOf
 argument_list|(
