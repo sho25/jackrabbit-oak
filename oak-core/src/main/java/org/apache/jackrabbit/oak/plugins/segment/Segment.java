@@ -274,12 +274,14 @@ specifier|final
 name|int
 name|MEDIUM_LIMIT
 init|=
+operator|(
 literal|1
 operator|<<
 operator|(
 literal|16
 operator|-
 literal|2
+operator|)
 operator|)
 operator|+
 name|SMALL_LIMIT
