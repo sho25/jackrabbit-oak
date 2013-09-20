@@ -206,6 +206,24 @@ import|;
 end_import
 
 begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|state
+operator|.
+name|NodeState
+import|;
+end_import
+
+begin_import
 import|import static
 name|org
 operator|.
@@ -252,11 +270,11 @@ name|Nonnull
 annotation|@
 name|Override
 specifier|public
-name|void
+name|NodeState
 name|initialize
 parameter_list|(
-name|NodeBuilder
-name|builder
+name|NodeState
+name|workspaceRoot
 parameter_list|,
 name|String
 name|workspaceName
@@ -268,6 +286,14 @@ name|CommitHook
 name|commitHook
 parameter_list|)
 block|{
+name|NodeBuilder
+name|root
+init|=
+name|workspaceRoot
+operator|.
+name|builder
+argument_list|()
+decl_stmt|;
 comment|// property index for rep:principalName stored in ACEs
 name|NodeBuilder
 name|index
@@ -276,7 +302,7 @@ name|IndexUtils
 operator|.
 name|getOrCreateOakIndex
 argument_list|(
-name|builder
+name|root
 argument_list|)
 decl_stmt|;
 if|if
@@ -332,7 +358,7 @@ comment|// create the permission store and the root for this workspace.
 name|NodeBuilder
 name|permissionStore
 init|=
-name|builder
+name|root
 operator|.
 name|child
 argument_list|(
@@ -401,6 +427,12 @@ name|NAME
 argument_list|)
 expr_stmt|;
 block|}
+return|return
+name|root
+operator|.
+name|getNodeState
+argument_list|()
+return|;
 block|}
 block|}
 end_class

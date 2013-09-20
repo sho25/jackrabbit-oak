@@ -508,9 +508,14 @@ block|{
 name|NodeState
 name|root
 init|=
+operator|new
 name|InitialContent
+argument_list|()
 operator|.
-name|INITIAL_CONTENT
+name|initialize
+argument_list|(
+name|EMPTY_NODE
+argument_list|)
 decl_stmt|;
 comment|// Add index definition
 name|NodeBuilder
@@ -889,9 +894,14 @@ block|{
 name|NodeState
 name|root
 init|=
+operator|new
 name|InitialContent
+argument_list|()
 operator|.
-name|INITIAL_CONTENT
+name|initialize
+argument_list|(
+name|EMPTY_NODE
+argument_list|)
 decl_stmt|;
 comment|// Add index definition
 name|NodeBuilder
@@ -1208,9 +1218,14 @@ block|{
 name|NodeState
 name|root
 init|=
+operator|new
 name|InitialContent
+argument_list|()
 operator|.
-name|INITIAL_CONTENT
+name|initialize
+argument_list|(
+name|EMPTY_NODE
+argument_list|)
 decl_stmt|;
 comment|// Add index definitions
 name|NodeBuilder

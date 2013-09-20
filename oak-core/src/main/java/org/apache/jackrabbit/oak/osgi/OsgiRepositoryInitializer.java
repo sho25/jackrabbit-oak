@@ -67,7 +67,7 @@ name|spi
 operator|.
 name|state
 operator|.
-name|NodeBuilder
+name|NodeState
 import|;
 end_import
 
@@ -118,13 +118,14 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|void
+name|NodeState
 name|initialize
 parameter_list|(
-name|NodeBuilder
-name|builder
+name|NodeState
+name|state
 parameter_list|)
 block|{
+return|return
 operator|new
 name|CompositeInitializer
 argument_list|(
@@ -134,9 +135,9 @@ argument_list|)
 operator|.
 name|initialize
 argument_list|(
-name|builder
+name|state
 argument_list|)
-expr_stmt|;
+return|;
 block|}
 annotation|@
 name|Override
