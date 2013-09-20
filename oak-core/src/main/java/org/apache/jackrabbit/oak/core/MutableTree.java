@@ -1824,7 +1824,6 @@ name|parent
 operator|=
 name|newParent
 expr_stmt|;
-comment|// FIXME this falls back to MemoryNodeBuilder#moveTo if newParent is a SecureNodeState
 return|return
 name|nodeBuilder
 operator|.
@@ -1849,7 +1848,6 @@ name|String
 name|newName
 parameter_list|)
 block|{
-comment|// FIXME this falls back to MemoryNodeBuilder#copyTo if newParent is a SecureNodeState
 return|return
 name|nodeBuilder
 operator|.

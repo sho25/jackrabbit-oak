@@ -1480,7 +1480,7 @@ expr_stmt|;
 block|}
 block|}
 comment|/**      * @return path of this builder.      */
-specifier|protected
+specifier|public
 specifier|final
 name|String
 name|getPath
