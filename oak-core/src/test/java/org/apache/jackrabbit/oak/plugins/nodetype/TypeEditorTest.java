@@ -225,14 +225,9 @@ decl_stmt|;
 name|NodeState
 name|root
 init|=
-operator|new
 name|InitialContent
-argument_list|()
 operator|.
-name|initialize
-argument_list|(
-name|EMPTY_NODE
-argument_list|)
+name|INITIAL_CONTENT
 decl_stmt|;
 name|NodeBuilder
 name|builder

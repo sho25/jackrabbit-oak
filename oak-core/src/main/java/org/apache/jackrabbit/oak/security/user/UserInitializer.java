@@ -23,16 +23,6 @@ begin_import
 import|import
 name|javax
 operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
 name|jcr
 operator|.
 name|RepositoryException
@@ -381,7 +371,7 @@ name|spi
 operator|.
 name|state
 operator|.
-name|NodeState
+name|NodeBuilder
 import|;
 end_import
 
@@ -503,15 +493,13 @@ expr_stmt|;
 block|}
 comment|//-----------------------------------------------< WorkspaceInitializer>---
 annotation|@
-name|Nonnull
-annotation|@
 name|Override
 specifier|public
-name|NodeState
+name|void
 name|initialize
 parameter_list|(
-name|NodeState
-name|workspaceRoot
+name|NodeBuilder
+name|builder
 parameter_list|,
 name|String
 name|workspaceName
@@ -542,7 +530,10 @@ name|branch
 operator|.
 name|setRoot
 argument_list|(
-name|workspaceRoot
+name|builder
+operator|.
+name|getNodeState
+argument_list|()
 argument_list|)
 expr_stmt|;
 try|try
@@ -882,6 +873,16 @@ name|commit
 argument_list|()
 expr_stmt|;
 block|}
+name|builder
+operator|.
+name|reset
+argument_list|(
+name|store
+operator|.
+name|getRoot
+argument_list|()
+argument_list|)
+expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
@@ -929,12 +930,6 @@ name|e
 argument_list|)
 throw|;
 block|}
-return|return
-name|store
-operator|.
-name|getRoot
-argument_list|()
-return|;
 block|}
 block|}
 end_class
