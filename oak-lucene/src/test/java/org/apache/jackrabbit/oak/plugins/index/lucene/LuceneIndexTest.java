@@ -141,11 +141,11 @@ name|oak
 operator|.
 name|plugins
 operator|.
-name|memory
+name|nodetype
 operator|.
-name|EmptyNodeState
+name|NodeTypeConstants
 operator|.
-name|EMPTY_NODE
+name|JCR_NODE_TYPES
 import|;
 end_import
 
@@ -163,9 +163,11 @@ name|plugins
 operator|.
 name|nodetype
 operator|.
-name|NodeTypeConstants
+name|write
 operator|.
-name|JCR_NODE_TYPES
+name|InitialContent
+operator|.
+name|INITIAL_CONTENT
 import|;
 end_import
 
@@ -210,26 +212,6 @@ operator|.
 name|index
 operator|.
 name|IndexUpdateProvider
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|plugins
-operator|.
-name|nodetype
-operator|.
-name|write
-operator|.
-name|InitialContent
 import|;
 end_import
 
@@ -507,14 +489,7 @@ specifier|private
 name|NodeState
 name|root
 init|=
-operator|new
-name|InitialContent
-argument_list|()
-operator|.
-name|initialize
-argument_list|(
-name|EMPTY_NODE
-argument_list|)
+name|INITIAL_CONTENT
 decl_stmt|;
 specifier|private
 name|NodeBuilder
