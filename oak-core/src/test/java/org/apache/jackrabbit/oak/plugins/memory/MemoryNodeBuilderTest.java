@@ -878,7 +878,12 @@ literal|"new"
 argument_list|)
 argument_list|)
 expr_stmt|;
+operator|(
+operator|(
+name|MemoryNodeBuilder
+operator|)
 name|root
+operator|)
 operator|.
 name|reset
 argument_list|(
@@ -943,7 +948,12 @@ argument_list|(
 literal|"y"
 argument_list|)
 expr_stmt|;
+operator|(
+operator|(
+name|MemoryNodeBuilder
+operator|)
 name|root
+operator|)
 operator|.
 name|reset
 argument_list|(

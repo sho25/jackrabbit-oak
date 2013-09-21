@@ -109,7 +109,20 @@ name|AbstractNodeStore
 implements|implements
 name|NodeStore
 block|{
-comment|/**      * This default implementation is equal to first rebasing the builder      * and then applying it to a new branch and immediately merging it back.      *<p>      *<em>Note:</em> it is the caller's responsibility to ensure atomicity.      *      * @param builder  the builder whose changes to apply      * @param commitHook the commit hook to apply while merging changes      * @param committed  the pos commit hook      * @return the node state resulting from the merge.      * @throws CommitFailedException      */
+comment|/**      * Replaces the base state of the given builder and throws away all      * changes in it. The effect of this method is equivalent to replacing      * the builder (and the connected subtree) with a new builder returned      * by {@code state.builder()}.      *      * @param state new base state      * @throws IllegalArgumentException if the builder is not acquired      *                                  from a root state of this store      */
+specifier|protected
+specifier|abstract
+name|void
+name|reset
+parameter_list|(
+name|NodeBuilder
+name|builder
+parameter_list|,
+name|NodeState
+name|state
+parameter_list|)
+function_decl|;
+comment|/**      * This default implementation is equal to first rebasing the builder      * and then applying it to a new branch and immediately merging it back.      *<p>      *<em>Note:</em> it is the caller's responsibility to ensure atomicity.      *      * @param builder  the builder whose changes to apply      * @param commitHook the commit hook to apply while merging changes      * @param committed  the pos commit hook      * @return the node state resulting from the merge.      * @throws CommitFailedException      * @throws IllegalArgumentException if the builder is not acquired      *                                  from a root state of this store      */
 annotation|@
 name|Override
 specifier|public
@@ -173,10 +186,10 @@ argument_list|,
 name|committed
 argument_list|)
 decl_stmt|;
-name|builder
-operator|.
 name|reset
 argument_list|(
+name|builder
+argument_list|,
 name|merged
 argument_list|)
 expr_stmt|;
@@ -184,7 +197,7 @@ return|return
 name|merged
 return|;
 block|}
-comment|/**      * This default implementation is equal to applying the differences between      * the builders base state and its head state to a fresh builder on the      * stores root state using {@link ConflictAnnotatingRebaseDiff} for resolving      * conflicts.      * @param builder  the builder to rebase      * @return the node state resulting from the rebase.      */
+comment|/**      * This default implementation is equal to applying the differences between      * the builders base state and its head state to a fresh builder on the      * stores root state using {@link ConflictAnnotatingRebaseDiff} for resolving      * conflicts.      * @param builder  the builder to rebase      * @return the node state resulting from the rebase.      * @throws IllegalArgumentException if the builder is not acquired      *                                  from a root state of this store      */
 annotation|@
 name|Override
 specifier|public
@@ -216,12 +229,24 @@ operator|.
 name|getBaseState
 argument_list|()
 decl_stmt|;
-name|builder
-operator|.
-name|reset
-argument_list|(
+name|NodeState
+name|newBase
+init|=
 name|getRoot
 argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|base
+operator|!=
+name|newBase
+condition|)
+block|{
+name|reset
+argument_list|(
+name|builder
+argument_list|,
+name|newBase
 argument_list|)
 expr_stmt|;
 name|head
@@ -237,14 +262,19 @@ name|builder
 argument_list|)
 argument_list|)
 expr_stmt|;
-return|return
+name|head
+operator|=
 name|builder
 operator|.
 name|getNodeState
 argument_list|()
+expr_stmt|;
+block|}
+return|return
+name|head
 return|;
 block|}
-comment|/**      * This default implementation is equal resetting the builder to the root of      * the store and returning the resulting node state from the builder.      * @param builder the builder to reset      * @return the node state resulting from the reset.      */
+comment|/**      * This default implementation is equal resetting the builder to the root of      * the store and returning the resulting node state from the builder.      * @param builder the builder to reset      * @return the node state resulting from the reset.      * @throws IllegalArgumentException if the builder is not acquired      *                                  from a root state of this store      */
 annotation|@
 name|Override
 specifier|public
@@ -257,19 +287,21 @@ name|NodeBuilder
 name|builder
 parameter_list|)
 block|{
-name|builder
-operator|.
-name|reset
-argument_list|(
+name|NodeState
+name|head
+init|=
 name|getRoot
 argument_list|()
+decl_stmt|;
+name|reset
+argument_list|(
+name|builder
+argument_list|,
+name|head
 argument_list|)
 expr_stmt|;
 return|return
-name|builder
-operator|.
-name|getNodeState
-argument_list|()
+name|head
 return|;
 block|}
 comment|//------------------------------------------------------------< Object>--

@@ -143,7 +143,7 @@ name|NodeState
 name|getRoot
 parameter_list|()
 function_decl|;
-comment|/**      * Merges the changes from the passed {@code builder} into      * the store.      *      * @param builder  the builder whose changes to apply      * @param commitHook the commit hook to apply while merging changes      * @param committed  the post commit hook      * @return the node state resulting from the merge.      * @throws CommitFailedException if the merge failed      */
+comment|/**      * Merges the changes from the passed {@code builder} into      * the store.      *      * @param builder  the builder whose changes to apply      * @param commitHook the commit hook to apply while merging changes      * @param committed  the post commit hook      * @return the node state resulting from the merge.      * @throws CommitFailedException if the merge failed      * @throws IllegalArgumentException if the builder is not acquired      *                                  from a root state of this store      */
 annotation|@
 name|Nonnull
 name|NodeState
@@ -165,7 +165,7 @@ parameter_list|)
 throws|throws
 name|CommitFailedException
 function_decl|;
-comment|/**      * Rebase the changes in the passed {@code builder} on top of the current root state.      * @param builder  the builder to rebase      * @return the node state resulting from the rebase.      */
+comment|/**      * Rebase the changes in the passed {@code builder} on top of the current root state.      *      * @param builder  the builder to rebase      * @return the node state resulting from the rebase.      * @throws IllegalArgumentException if the builder is not acquired      *                                  from a root state of this store      */
 annotation|@
 name|Nonnull
 name|NodeState
@@ -177,7 +177,7 @@ name|NodeBuilder
 name|builder
 parameter_list|)
 function_decl|;
-comment|/**      * Reset the passed {@code builder} by throwing away all its changes and      * setting its base state to the current root state.      * @param builder the builder to reset      * @return the node state resulting from the reset.      */
+comment|/**      * Reset the passed {@code builder} by throwing away all its changes and      * setting its base state to the current root state.      *      * @param builder the builder to reset      * @return the node state resulting from the reset.      * @throws IllegalArgumentException if the builder is not acquired      *                                  from a root state of this store      */
 name|NodeState
 name|reset
 parameter_list|(
