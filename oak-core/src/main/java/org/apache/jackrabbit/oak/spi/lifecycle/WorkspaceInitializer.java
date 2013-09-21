@@ -21,16 +21,6 @@ end_package
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -79,7 +69,7 @@ name|spi
 operator|.
 name|state
 operator|.
-name|NodeState
+name|NodeBuilder
 import|;
 end_import
 
@@ -100,15 +90,13 @@ name|WorkspaceInitializer
 argument_list|()
 block|{
 annotation|@
-name|Nonnull
-annotation|@
 name|Override
 specifier|public
-name|NodeState
+name|void
 name|initialize
 parameter_list|(
-name|NodeState
-name|workspaceRoot
+name|NodeBuilder
+name|builder
 parameter_list|,
 name|String
 name|workspaceName
@@ -119,21 +107,15 @@ parameter_list|,
 name|CommitHook
 name|commitHook
 parameter_list|)
-block|{
-return|return
-name|workspaceRoot
-return|;
-block|}
+block|{         }
 block|}
 decl_stmt|;
-comment|/**      * Initialize the content of a new workspace. This method is called before      * the workspace becomes available.      *      * @param workspaceRoot The workspace root state.      * @param workspaceName The name of the workspace that is being initialized.      * @param indexProvider The query index provider used within this workspace.      * @param commitHook    The commit hook(s) defined for this workspace.      * @return The modified workspace root state.      */
-annotation|@
-name|Nonnull
-name|NodeState
+comment|/**      * Initialize the content of a new workspace. This method is called before      * the workspace becomes available.      *      * @param builder       builder for accessing and modifying the workspace      * @param workspaceName The name of the workspace that is being initialized.      * @param indexProvider The query index provider used within this workspace.      * @param commitHook    The commit hook(s) defined for this workspace.      * @return The modified workspace root state.      */
+name|void
 name|initialize
 parameter_list|(
-name|NodeState
-name|workspaceRoot
+name|NodeBuilder
+name|builder
 parameter_list|,
 name|String
 name|workspaceName
