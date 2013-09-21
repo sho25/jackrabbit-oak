@@ -19,6 +19,16 @@ end_package
 
 begin_import
 import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|Nonnull
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -67,7 +77,7 @@ name|spi
 operator|.
 name|state
 operator|.
-name|NodeState
+name|NodeBuilder
 import|;
 end_import
 
@@ -118,14 +128,15 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|NodeState
+name|void
 name|initialize
 parameter_list|(
-name|NodeState
-name|state
+annotation|@
+name|Nonnull
+name|NodeBuilder
+name|builder
 parameter_list|)
 block|{
-return|return
 operator|new
 name|CompositeInitializer
 argument_list|(
@@ -135,9 +146,9 @@ argument_list|)
 operator|.
 name|initialize
 argument_list|(
-name|state
+name|builder
 argument_list|)
-return|;
+expr_stmt|;
 block|}
 annotation|@
 name|Override

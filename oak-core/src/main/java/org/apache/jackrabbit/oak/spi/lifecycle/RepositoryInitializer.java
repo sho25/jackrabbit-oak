@@ -21,6 +21,16 @@ end_package
 
 begin_import
 import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|Nonnull
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -33,7 +43,7 @@ name|spi
 operator|.
 name|state
 operator|.
-name|NodeState
+name|NodeBuilder
 import|;
 end_import
 
@@ -46,7 +56,7 @@ specifier|public
 interface|interface
 name|RepositoryInitializer
 block|{
-comment|/**      * Default implementation that returns the given {@code state} without      * making any changes.      */
+comment|/**      * Default implementation makes no changes to the repository.      */
 name|RepositoryInitializer
 name|DEFAULT
 init|=
@@ -57,25 +67,25 @@ block|{
 annotation|@
 name|Override
 specifier|public
-name|NodeState
+name|void
 name|initialize
 parameter_list|(
-name|NodeState
-name|state
+annotation|@
+name|Nonnull
+name|NodeBuilder
+name|builder
 parameter_list|)
-block|{
-return|return
-name|state
-return|;
-block|}
+block|{         }
 block|}
 decl_stmt|;
-comment|/**      * Initializes repository content. This method is called as soon as a      * repository becomes available. Note that the repository may already      * have been initialized, so the implementation of this method should      * check for that before blindly adding new content.      *      * @param state the current state of the repository      */
-name|NodeState
+comment|/**      * Initializes repository content. This method is called as soon as a      * repository becomes available. Note that the repository may already      * have been initialized, so the implementation of this method should      * check for that before blindly adding new content.      *      * @param builder builder for accessing and modifying repository content      */
+name|void
 name|initialize
 parameter_list|(
-name|NodeState
-name|state
+annotation|@
+name|Nonnull
+name|NodeBuilder
+name|builder
 parameter_list|)
 function_decl|;
 block|}

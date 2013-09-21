@@ -175,6 +175,28 @@ begin_import
 import|import static
 name|org
 operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|nodetype
+operator|.
+name|write
+operator|.
+name|InitialContent
+operator|.
+name|INITIAL_CONTENT
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
 name|junit
 operator|.
 name|Assert
@@ -508,14 +530,7 @@ block|{
 name|NodeState
 name|root
 init|=
-operator|new
-name|InitialContent
-argument_list|()
-operator|.
-name|initialize
-argument_list|(
-name|EMPTY_NODE
-argument_list|)
+name|INITIAL_CONTENT
 decl_stmt|;
 comment|// Add index definition
 name|NodeBuilder
@@ -894,14 +909,7 @@ block|{
 name|NodeState
 name|root
 init|=
-operator|new
-name|InitialContent
-argument_list|()
-operator|.
-name|initialize
-argument_list|(
-name|EMPTY_NODE
-argument_list|)
+name|INITIAL_CONTENT
 decl_stmt|;
 comment|// Add index definition
 name|NodeBuilder
@@ -1218,14 +1226,7 @@ block|{
 name|NodeState
 name|root
 init|=
-operator|new
-name|InitialContent
-argument_list|()
-operator|.
-name|initialize
-argument_list|(
-name|EMPTY_NODE
-argument_list|)
+name|INITIAL_CONTENT
 decl_stmt|;
 comment|// Add index definitions
 name|NodeBuilder

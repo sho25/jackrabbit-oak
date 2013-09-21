@@ -55,11 +55,11 @@ name|oak
 operator|.
 name|plugins
 operator|.
-name|memory
+name|nodetype
 operator|.
-name|EmptyNodeState
+name|NodeTypeConstants
 operator|.
-name|EMPTY_NODE
+name|JCR_NODE_TYPES
 import|;
 end_import
 
@@ -77,9 +77,11 @@ name|plugins
 operator|.
 name|nodetype
 operator|.
-name|NodeTypeConstants
+name|write
 operator|.
-name|JCR_NODE_TYPES
+name|InitialContent
+operator|.
+name|INITIAL_CONTENT
 import|;
 end_import
 
@@ -90,26 +92,6 @@ operator|.
 name|text
 operator|.
 name|ParseException
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|plugins
-operator|.
-name|nodetype
-operator|.
-name|write
-operator|.
-name|InitialContent
 import|;
 end_import
 
@@ -155,14 +137,7 @@ specifier|final
 name|NodeState
 name|types
 init|=
-operator|new
-name|InitialContent
-argument_list|()
-operator|.
-name|initialize
-argument_list|(
-name|EMPTY_NODE
-argument_list|)
+name|INITIAL_CONTENT
 operator|.
 name|getChildNode
 argument_list|(
