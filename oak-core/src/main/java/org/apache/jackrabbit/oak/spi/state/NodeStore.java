@@ -187,13 +187,6 @@ name|NodeBuilder
 name|builder
 parameter_list|)
 function_decl|;
-comment|/**      * Creates a new branch of the tree to which transient changes can be applied.      *      * @return branch      */
-annotation|@
-name|Nonnull
-name|NodeStoreBranch
-name|branch
-parameter_list|()
-function_decl|;
 comment|/**      * Create a {@link Blob} from the given input stream. The input stream      * is closed after this method returns.      * @param inputStream  The input stream for the {@code Blob}      * @return  The {@code Blob} representing {@code inputStream}      * @throws IOException  If an error occurs while reading from the stream      */
 name|Blob
 name|createBlob

@@ -122,6 +122,15 @@ name|NodeState
 name|state
 parameter_list|)
 function_decl|;
+comment|/**      * Creates a new branch of the tree to which transient changes can be applied.      *      * @return branch      */
+annotation|@
+name|Nonnull
+specifier|protected
+specifier|abstract
+name|NodeStoreBranch
+name|branch
+parameter_list|()
+function_decl|;
 comment|/**      * This default implementation is equal to first rebasing the builder      * and then applying it to a new branch and immediately merging it back.      *<p>      *<em>Note:</em> it is the caller's responsibility to ensure atomicity.      *      * @param builder  the builder whose changes to apply      * @param commitHook the commit hook to apply while merging changes      * @param committed  the pos commit hook      * @return the node state resulting from the merge.      * @throws CommitFailedException      * @throws IllegalArgumentException if the builder is not acquired      *                                  from a root state of this store      */
 annotation|@
 name|Override

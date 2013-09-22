@@ -1060,7 +1060,7 @@ block|}
 block|}
 annotation|@
 name|Override
-specifier|public
+specifier|protected
 name|NodeStoreBranch
 name|branch
 parameter_list|()

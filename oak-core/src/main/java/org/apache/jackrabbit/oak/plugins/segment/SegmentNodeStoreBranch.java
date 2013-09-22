@@ -49,20 +49,6 @@ end_import
 
 begin_import
 import|import static
-name|java
-operator|.
-name|util
-operator|.
-name|concurrent
-operator|.
-name|TimeUnit
-operator|.
-name|SECONDS
-import|;
-end_import
-
-begin_import
-import|import static
 name|org
 operator|.
 name|apache
@@ -288,15 +274,6 @@ decl_stmt|;
 specifier|private
 name|long
 name|maximumBackoff
-init|=
-name|MILLISECONDS
-operator|.
-name|convert
-argument_list|(
-literal|10
-argument_list|,
-name|SECONDS
-argument_list|)
 decl_stmt|;
 name|SegmentNodeStoreBranch
 parameter_list|(
@@ -308,6 +285,9 @@ name|writer
 parameter_list|,
 name|SegmentNodeState
 name|base
+parameter_list|,
+name|long
+name|maximumBackoff
 parameter_list|)
 block|{
 name|this
@@ -334,19 +314,11 @@ name|head
 operator|=
 name|base
 expr_stmt|;
-block|}
-name|void
-name|setMaximumBackoff
-parameter_list|(
-name|long
-name|max
-parameter_list|)
-block|{
 name|this
 operator|.
 name|maximumBackoff
 operator|=
-name|max
+name|maximumBackoff
 expr_stmt|;
 block|}
 annotation|@
