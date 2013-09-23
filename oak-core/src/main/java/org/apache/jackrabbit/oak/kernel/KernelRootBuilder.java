@@ -411,8 +411,13 @@ name|branch
 operator|=
 name|store
 operator|.
-name|branch
+name|createBranch
+argument_list|(
+name|store
+operator|.
+name|getRoot
 argument_list|()
+argument_list|)
 expr_stmt|;
 name|NodeState
 name|head

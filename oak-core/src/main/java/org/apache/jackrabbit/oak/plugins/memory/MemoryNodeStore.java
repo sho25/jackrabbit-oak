@@ -423,8 +423,11 @@ annotation|@
 name|Override
 specifier|protected
 name|NodeStoreBranch
-name|branch
-parameter_list|()
+name|createBranch
+parameter_list|(
+name|NodeState
+name|base
+parameter_list|)
 block|{
 return|return
 operator|new
@@ -432,10 +435,7 @@ name|MemoryNodeStoreBranch
 argument_list|(
 name|this
 argument_list|,
-name|root
-operator|.
-name|get
-argument_list|()
+name|base
 argument_list|)
 return|;
 block|}
