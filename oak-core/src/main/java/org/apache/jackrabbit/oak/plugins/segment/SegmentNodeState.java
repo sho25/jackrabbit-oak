@@ -656,6 +656,8 @@ operator|new
 name|SegmentRootBuilder
 argument_list|(
 name|this
+argument_list|,
+name|store
 argument_list|)
 return|;
 block|}
