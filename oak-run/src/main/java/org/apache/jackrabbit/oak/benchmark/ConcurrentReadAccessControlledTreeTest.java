@@ -205,6 +205,9 @@ name|itemsToRead
 parameter_list|,
 name|int
 name|bgReaders
+parameter_list|,
+name|boolean
+name|doReport
 parameter_list|)
 block|{
 name|super
@@ -214,6 +217,8 @@ argument_list|,
 name|itemsToRead
 argument_list|,
 name|bgReaders
+argument_list|,
+name|doReport
 argument_list|)
 expr_stmt|;
 block|}
@@ -529,8 +534,6 @@ name|RandomRead
 argument_list|(
 name|getTestSession
 argument_list|()
-argument_list|,
-literal|false
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -558,8 +561,6 @@ operator|new
 name|RandomRead
 argument_list|(
 name|testSession
-argument_list|,
-literal|true
 argument_list|)
 decl_stmt|;
 name|randomRead
@@ -585,18 +586,10 @@ name|Session
 name|testSession
 decl_stmt|;
 specifier|private
-specifier|final
-name|boolean
-name|doReport
-decl_stmt|;
-specifier|private
 name|RandomRead
 parameter_list|(
 name|Session
 name|testSession
-parameter_list|,
-name|boolean
-name|doReport
 parameter_list|)
 block|{
 name|this
@@ -604,12 +597,6 @@ operator|.
 name|testSession
 operator|=
 name|testSession
-expr_stmt|;
-name|this
-operator|.
-name|doReport
-operator|=
-name|doReport
 expr_stmt|;
 block|}
 specifier|public
@@ -626,8 +613,6 @@ argument_list|,
 name|allPaths
 argument_list|,
 name|itemsToRead
-argument_list|,
-name|doReport
 argument_list|)
 expr_stmt|;
 block|}

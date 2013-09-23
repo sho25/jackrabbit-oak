@@ -46,6 +46,9 @@ name|runAsAdmin
 parameter_list|,
 name|int
 name|itemsToRead
+parameter_list|,
+name|boolean
+name|doReport
 parameter_list|)
 block|{
 name|super
@@ -55,6 +58,8 @@ argument_list|,
 name|itemsToRead
 argument_list|,
 literal|0
+argument_list|,
+name|doReport
 argument_list|)
 expr_stmt|;
 block|}
@@ -95,8 +100,6 @@ argument_list|,
 name|allPaths
 argument_list|,
 name|itemsToRead
-argument_list|,
-literal|true
 argument_list|)
 expr_stmt|;
 name|testSession

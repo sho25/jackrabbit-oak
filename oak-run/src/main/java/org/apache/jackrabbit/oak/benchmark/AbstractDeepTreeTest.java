@@ -153,6 +153,11 @@ name|int
 name|bgReaders
 decl_stmt|;
 specifier|protected
+specifier|final
+name|boolean
+name|doReport
+decl_stmt|;
+specifier|protected
 name|Session
 name|adminSession
 decl_stmt|;
@@ -178,6 +183,9 @@ name|itemsToRead
 parameter_list|,
 name|int
 name|bgReaders
+parameter_list|,
+name|boolean
+name|doReport
 parameter_list|)
 block|{
 name|this
@@ -197,6 +205,12 @@ operator|.
 name|bgReaders
 operator|=
 name|bgReaders
+expr_stmt|;
+name|this
+operator|.
+name|doReport
+operator|=
+name|doReport
 expr_stmt|;
 block|}
 annotation|@
@@ -493,7 +507,6 @@ expr_stmt|;
 block|}
 block|}
 specifier|protected
-specifier|static
 name|void
 name|randomRead
 parameter_list|(
@@ -508,9 +521,6 @@ name|allPaths
 parameter_list|,
 name|int
 name|cnt
-parameter_list|,
-name|boolean
-name|doReport
 parameter_list|)
 throws|throws
 name|RepositoryException
