@@ -928,10 +928,12 @@ operator|>
 literal|3
 condition|)
 block|{
+comment|// the total count is extrapolated from the the number
+comment|// of values counted so far to the total number of values
 name|count
 operator|=
 name|count
-operator|/
+operator|*
 name|size
 operator|/
 name|i
