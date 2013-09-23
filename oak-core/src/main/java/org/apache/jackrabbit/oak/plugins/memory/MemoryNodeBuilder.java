@@ -561,6 +561,7 @@ return|return
 name|name
 return|;
 block|}
+comment|/**      * Throws away all changes in this builder and resets the base to the      * given node state.      *      * @param newBase new base state      */
 specifier|public
 name|void
 name|reset
@@ -582,8 +583,32 @@ expr_stmt|;
 name|head
 argument_list|()
 operator|.
-name|reset
+name|setState
+argument_list|(
+name|newBase
+argument_list|)
+expr_stmt|;
+block|}
+comment|/**      * Replaces the current state of this builder with the given node state.      * The base state remains unchanged.      *      * @param newHead new head state      */
+specifier|protected
+name|void
+name|set
+parameter_list|(
+name|NodeState
+name|newHead
+parameter_list|)
+block|{
+name|baseRevision
+operator|++
+expr_stmt|;
+comment|// this forces all sub-builders to refresh their heads
+name|head
 argument_list|()
+operator|.
+name|setState
+argument_list|(
+name|newHead
+argument_list|)
 expr_stmt|;
 block|}
 comment|//--------------------------------------------------------< NodeBuilder>---
@@ -1619,8 +1644,11 @@ parameter_list|()
 function_decl|;
 specifier|public
 name|void
-name|reset
-parameter_list|()
+name|setState
+parameter_list|(
+name|NodeState
+name|state
+parameter_list|)
 block|{
 throw|throw
 operator|new
@@ -2027,15 +2055,20 @@ name|Override
 specifier|public
 specifier|final
 name|void
-name|reset
-parameter_list|()
+name|setState
+parameter_list|(
+name|NodeState
+name|state
+parameter_list|)
 block|{
+name|this
+operator|.
 name|state
 operator|=
 operator|new
 name|MutableNodeState
 argument_list|(
-name|base
+name|state
 argument_list|)
 expr_stmt|;
 name|revision
