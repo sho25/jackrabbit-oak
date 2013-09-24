@@ -173,7 +173,7 @@ block|{
 specifier|private
 specifier|static
 specifier|final
-name|long
+name|int
 name|MB
 init|=
 literal|1024

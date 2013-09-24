@@ -772,7 +772,7 @@ name|int
 name|port
 parameter_list|,
 specifier|final
-name|long
+name|int
 name|cacheSize
 parameter_list|)
 block|{
