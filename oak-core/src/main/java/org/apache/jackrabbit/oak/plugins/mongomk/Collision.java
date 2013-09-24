@@ -144,6 +144,11 @@ specifier|final
 name|Revision
 name|ourRev
 decl_stmt|;
+specifier|private
+specifier|final
+name|RevisionContext
+name|context
+decl_stmt|;
 name|Collision
 parameter_list|(
 annotation|@
@@ -165,6 +170,11 @@ annotation|@
 name|Nonnull
 name|Revision
 name|ourRev
+parameter_list|,
+annotation|@
+name|Nonnull
+name|RevisionContext
+name|context
 parameter_list|)
 block|{
 name|this
@@ -201,6 +211,15 @@ operator|=
 name|checkNotNull
 argument_list|(
 name|ourRev
+argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|context
+operator|=
+name|checkNotNull
+argument_list|(
+name|context
 argument_list|)
 expr_stmt|;
 block|}
@@ -256,6 +275,11 @@ argument_list|(
 name|newDoc
 argument_list|,
 name|ourOp
+argument_list|,
+name|context
+operator|.
+name|getRevisionComparator
+argument_list|()
 argument_list|)
 expr_stmt|;
 if|if
@@ -313,14 +337,6 @@ name|DocumentStore
 name|store
 parameter_list|)
 block|{
-name|String
-name|rev
-init|=
-name|revision
-operator|.
-name|toString
-argument_list|()
-decl_stmt|;
 name|String
 name|p
 init|=
@@ -381,7 +397,7 @@ name|document
 operator|.
 name|getCommitRootPath
 argument_list|(
-name|rev
+name|revision
 argument_list|)
 expr_stmt|;
 if|if
@@ -393,7 +409,7 @@ condition|)
 block|{
 name|throwNoCommitRootException
 argument_list|(
-name|rev
+name|revision
 argument_list|,
 name|document
 argument_list|)
@@ -417,8 +433,9 @@ argument_list|,
 literal|false
 argument_list|)
 decl_stmt|;
-name|document
-operator|=
+name|NodeDocument
+name|commitRoot
+init|=
 name|store
 operator|.
 name|find
@@ -429,14 +446,14 @@ name|NODES
 argument_list|,
 name|op
 operator|.
-name|getKey
+name|getId
 argument_list|()
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 comment|// check commit status of revision
 if|if
 condition|(
-name|document
+name|commitRoot
 operator|.
 name|isCommitted
 argument_list|(
@@ -456,12 +473,12 @@ name|NodeDocument
 operator|.
 name|COLLISIONS
 argument_list|,
-name|rev
+name|revision
 argument_list|,
 literal|true
 argument_list|)
 expr_stmt|;
-name|document
+name|commitRoot
 operator|=
 name|store
 operator|.
@@ -477,7 +494,7 @@ expr_stmt|;
 comment|// check again on old document right before our update was applied
 if|if
 condition|(
-name|document
+name|commitRoot
 operator|.
 name|isCommitted
 argument_list|(
@@ -519,7 +536,7 @@ name|throwNoCommitRootException
 parameter_list|(
 annotation|@
 name|Nonnull
-name|String
+name|Revision
 name|revision
 parameter_list|,
 annotation|@

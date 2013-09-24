@@ -416,9 +416,6 @@ argument_list|(
 name|key
 argument_list|,
 name|rev
-operator|.
-name|toString
-argument_list|()
 argument_list|,
 name|properties
 operator|.

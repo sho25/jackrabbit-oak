@@ -583,9 +583,6 @@ argument_list|(
 name|key
 argument_list|,
 name|revision
-operator|.
-name|toString
-argument_list|()
 argument_list|,
 name|value
 argument_list|)
@@ -1333,7 +1330,7 @@ name|NODES
 argument_list|,
 name|op
 operator|.
-name|key
+name|id
 argument_list|)
 expr_stmt|;
 block|}
@@ -1494,7 +1491,7 @@ literal|"The node "
 operator|+
 name|op
 operator|.
-name|getKey
+name|getId
 argument_list|()
 operator|+
 literal|" does not exist or is already deleted"
@@ -1516,7 +1513,7 @@ literal|"The node "
 operator|+
 name|op
 operator|.
-name|getKey
+name|getId
 argument_list|()
 operator|+
 literal|" was already added in revision\n"
@@ -1556,7 +1553,7 @@ literal|"The node "
 operator|+
 name|op
 operator|.
-name|getKey
+name|getId
 argument_list|()
 operator|+
 literal|" was changed in revision\n"
@@ -1646,6 +1643,8 @@ argument_list|,
 name|op
 argument_list|,
 name|revision
+argument_list|,
+name|mk
 argument_list|)
 operator|.
 name|mark
