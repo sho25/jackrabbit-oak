@@ -611,7 +611,6 @@ operator|!=
 literal|']'
 condition|)
 block|{
-comment|// TODO error handling?
 name|log
 operator|.
 name|debug
@@ -636,7 +635,6 @@ operator|==
 literal|null
 condition|)
 block|{
-comment|// TODO error handling?
 name|log
 operator|.
 name|debug
