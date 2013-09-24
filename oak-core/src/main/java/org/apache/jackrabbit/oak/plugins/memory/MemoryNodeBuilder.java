@@ -1654,7 +1654,7 @@ throw|throw
 operator|new
 name|IllegalStateException
 argument_list|(
-literal|"Cannot reset a non-root builder"
+literal|"Cannot set the state of a non-root builder"
 argument_list|)
 throw|;
 block|}
