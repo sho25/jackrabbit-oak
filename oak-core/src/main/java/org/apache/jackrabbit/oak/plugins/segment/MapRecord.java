@@ -498,6 +498,14 @@ argument_list|>
 name|getEntries
 parameter_list|()
 function_decl|;
+specifier|abstract
+name|boolean
+name|compareAgainstEmptyMap
+parameter_list|(
+name|MapDiff
+name|diff
+parameter_list|)
+function_decl|;
 interface|interface
 name|MapDiff
 block|{
