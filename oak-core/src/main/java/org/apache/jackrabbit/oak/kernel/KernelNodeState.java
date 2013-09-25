@@ -2923,14 +2923,19 @@ name|i
 operator|++
 control|)
 block|{
+comment|// size() returns length of string
 name|memory
 operator|+=
+literal|12
+operator|+
 name|propState
 operator|.
 name|size
 argument_list|(
 name|i
 argument_list|)
+operator|*
+literal|2
 expr_stmt|;
 block|}
 block|}
