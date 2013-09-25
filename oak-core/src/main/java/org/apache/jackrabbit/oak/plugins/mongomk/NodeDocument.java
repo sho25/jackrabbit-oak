@@ -413,6 +413,16 @@ literal|32
 operator|*
 literal|1024
 decl_stmt|;
+comment|/**      * A document size threshold after which a split is forced even if      * {@link #REVISIONS_SPLIT_OFF_SIZE} is not reached.      */
+specifier|static
+specifier|final
+name|int
+name|FORCE_SPLIT_THRESHOLD
+init|=
+literal|1024
+operator|*
+literal|1024
+decl_stmt|;
 comment|/**      * Only split off at least this number of revisions.      */
 specifier|static
 specifier|final
@@ -2149,7 +2159,8 @@ name|RevisionContext
 name|context
 parameter_list|)
 block|{
-comment|// only consider if there are enough commits
+comment|// only consider if there are enough commits,
+comment|// unless document is really big
 if|if
 condition|(
 name|getLocalRevisions
@@ -2165,6 +2176,11 @@ name|size
 argument_list|()
 operator|<=
 name|REVISIONS_SPLIT_OFF_SIZE
+operator|&&
+name|getMemory
+argument_list|()
+operator|<
+name|FORCE_SPLIT_THRESHOLD
 condition|)
 block|{
 return|return
@@ -2568,9 +2584,16 @@ name|low
 operator|!=
 literal|null
 operator|&&
+operator|(
 name|numValues
 operator|>=
 name|REVISIONS_SPLIT_OFF_SIZE
+operator|||
+name|getMemory
+argument_list|()
+operator|>
+name|FORCE_SPLIT_THRESHOLD
+operator|)
 condition|)
 block|{
 comment|// enough revisions to split off
@@ -4244,10 +4267,11 @@ class|class
 name|Children
 implements|implements
 name|CacheValue
+implements|,
+name|Cloneable
 block|{
 comment|/**          * The child node names, ordered as stored in MongoDB.          */
-specifier|final
-name|List
+name|ArrayList
 argument_list|<
 name|String
 argument_list|>
@@ -4299,6 +4323,63 @@ block|}
 return|return
 name|size
 return|;
+block|}
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unchecked"
+argument_list|)
+annotation|@
+name|Override
+specifier|public
+name|Children
+name|clone
+parameter_list|()
+block|{
+try|try
+block|{
+name|Children
+name|clone
+init|=
+operator|(
+name|Children
+operator|)
+name|super
+operator|.
+name|clone
+argument_list|()
+decl_stmt|;
+name|clone
+operator|.
+name|childNames
+operator|=
+operator|(
+name|ArrayList
+argument_list|<
+name|String
+argument_list|>
+operator|)
+name|childNames
+operator|.
+name|clone
+argument_list|()
+expr_stmt|;
+return|return
+name|clone
+return|;
+block|}
+catch|catch
+parameter_list|(
+name|CloneNotSupportedException
+name|e
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|RuntimeException
+argument_list|()
+throw|;
+block|}
 block|}
 block|}
 comment|/**      * A property value / revision combination.      */
