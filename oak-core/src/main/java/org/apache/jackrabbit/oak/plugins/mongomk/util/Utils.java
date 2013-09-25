@@ -360,8 +360,27 @@ name|entrySet
 argument_list|()
 control|)
 block|{
+if|if
+condition|(
+name|e
+operator|.
+name|getKey
+argument_list|()
+operator|instanceof
+name|Revision
+condition|)
+block|{
 name|size
 operator|+=
+literal|32
+expr_stmt|;
+block|}
+else|else
+block|{
+name|size
+operator|+=
+literal|48
+operator|+
 name|e
 operator|.
 name|getKey
@@ -375,6 +394,7 @@ argument_list|()
 operator|*
 literal|2
 expr_stmt|;
+block|}
 name|Object
 name|o
 init|=
@@ -392,6 +412,8 @@ condition|)
 block|{
 name|size
 operator|+=
+literal|48
+operator|+
 operator|(
 operator|(
 name|String
@@ -415,7 +437,7 @@ condition|)
 block|{
 name|size
 operator|+=
-literal|8
+literal|16
 expr_stmt|;
 block|}
 elseif|else
@@ -428,7 +450,7 @@ condition|)
 block|{
 name|size
 operator|+=
-literal|4
+literal|8
 expr_stmt|;
 block|}
 elseif|else
@@ -465,7 +487,7 @@ operator|instanceof
 name|BasicDBObject
 condition|)
 block|{
-comment|// Based on emperical testing using JAMM
+comment|// Based on empirical testing using JAMM
 name|size
 operator|+=
 literal|176
@@ -474,14 +496,30 @@ name|size
 operator|+=
 name|map
 operator|.
-name|entrySet
-argument_list|()
-operator|.
 name|size
 argument_list|()
 operator|*
 literal|136
 expr_stmt|;
+block|}
+else|else
+block|{
+comment|// overhead for some other kind of map
+name|size
+operator|+=
+literal|112
+expr_stmt|;
+comment|// TreeMap (80) + unmodifiable wrapper (32)
+name|size
+operator|+=
+name|map
+operator|.
+name|size
+argument_list|()
+operator|*
+literal|64
+expr_stmt|;
+comment|// 64 bytes per entry
 block|}
 return|return
 name|size

@@ -61,6 +61,8 @@ name|value
 parameter_list|)
 block|{
 return|return
+literal|48
+operator|+
 name|key
 operator|.
 name|length

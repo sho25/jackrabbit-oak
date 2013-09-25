@@ -4274,7 +4274,7 @@ block|{
 name|int
 name|size
 init|=
-literal|8
+literal|114
 decl_stmt|;
 for|for
 control|(
@@ -4293,7 +4293,7 @@ argument_list|()
 operator|*
 literal|2
 operator|+
-literal|8
+literal|56
 expr_stmt|;
 block|}
 return|return
