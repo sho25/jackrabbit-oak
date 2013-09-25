@@ -81,6 +81,24 @@ name|QueryManager
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|benchmark
+operator|.
+name|util
+operator|.
+name|OakIndexUtils
+import|;
+end_import
+
 begin_comment
 comment|/**  * Run a simple query of the form "//*[@testcount=...]".  */
 end_comment
@@ -256,6 +274,22 @@ name|save
 argument_list|()
 expr_stmt|;
 block|}
+operator|new
+name|OakIndexUtils
+operator|.
+name|PropertyIndex
+argument_list|()
+operator|.
+name|property
+argument_list|(
+literal|"testcount"
+argument_list|)
+operator|.
+name|create
+argument_list|(
+name|session
+argument_list|)
+expr_stmt|;
 block|}
 annotation|@
 name|Override
