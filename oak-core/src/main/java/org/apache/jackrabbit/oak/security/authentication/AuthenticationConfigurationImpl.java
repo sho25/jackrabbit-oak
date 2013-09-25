@@ -401,7 +401,7 @@ name|NAME
 return|;
 block|}
 comment|//----------------------------------------< AuthenticationConfiguration>---
-comment|/**      * Create a {@code LoginContextProvider} using standard      * {@link javax.security.auth.login.Configuration#getConfiguration() JAAS}      * functionality. In case no login configuration for the specified app name      * can be retrieve this implementation uses the default as defined by      * {@link ConfigurationUtil#getDefaultConfiguration(ConfigurationParameters)}.      *<p>      * The {@link LoginContextProvider} implementation is intended to be used with      *<ul>      *<li>Regular login using JAAS {@link javax.security.auth.spi.LoginModule} or</li>      *<li>Pre-authenticated subjects in which case any authentication      *     related validation is omitted</li>      *</ul>      *      *<h4>Configuration Options</h4>      *<ul>      *<li>{@link #PARAM_APP_NAME}: The appName passed to      *     {@code Configuration#getAppConfigurationEntry(String)}. The default      *     value is {@link #DEFAULT_APP_NAME}.</li>      *</ul>      *      * @param contentRepository The content repository.      * @return An new instance of {@link LoginContextProviderImpl}.      */
+comment|/**      * Create a {@code LoginContextProvider} using standard      * {@link javax.security.auth.login.Configuration#getConfiguration() JAAS}      * functionality. In case no login configuration for the specified app name      * can be retrieve this implementation uses the default as defined by      * {@link ConfigurationUtil#getDefaultConfiguration(ConfigurationParameters)}.      *<p>      * The {@link LoginContextProvider} implementation is intended to be used with      *<ul>      *<li>Regular login using JAAS {@link javax.security.auth.spi.LoginModule} or</li>      *<li>Pre-authenticated subjects in which case any authentication      *     related validation is omitted</li>      *</ul>      *      *<h4>Configuration Options</h4>      *<ul>      *<li>{@link #PARAM_APP_NAME}: The appName passed to      *     {@code Configuration#getAppConfigurationEntry(String)}. The default      *     value is {@link #DEFAULT_APP_NAME}.</li>      *</ul>      *      * @param contentRepository The content repository.      * @return An new instance of {@link LoginContextProvider}.      */
 annotation|@
 name|Nonnull
 annotation|@
@@ -518,7 +518,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-comment|/**      * Returns a new instance of {@link TokenProviderImpl}.      *      *<h4>Configuration Options</h4>      *<ul>      *<li>{@link #PARAM_TOKEN_OPTIONS}: The configuration parameters for      *     the token provider which allows to change the default expiration time      *     and the length of the generated token.</li>      *</ul>      *      * @param root The target root.      * @return A new instance of {@link TokenProviderImpl}.      */
+comment|/**      * Returns a new instance of {@link TokenProvider}.      *      *<h4>Configuration Options</h4>      *<ul>      *<li>{@link #PARAM_TOKEN_OPTIONS}: The configuration parameters for      *     the token provider which allows to change the default expiration time      *     and the length of the generated token.</li>      *</ul>      *      * @param root The target root.      * @return A new instance of {@link TokenProvider}.      */
 annotation|@
 name|Nonnull
 annotation|@
