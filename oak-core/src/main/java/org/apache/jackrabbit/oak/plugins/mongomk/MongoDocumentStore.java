@@ -1171,7 +1171,7 @@ argument_list|)
 decl_stmt|;
 name|queryBuilder
 operator|.
-name|greaterThanEquals
+name|greaterThan
 argument_list|(
 name|fromKey
 argument_list|)

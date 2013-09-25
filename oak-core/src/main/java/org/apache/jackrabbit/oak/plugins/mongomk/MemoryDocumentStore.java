@@ -553,6 +553,8 @@ operator|.
 name|subMap
 argument_list|(
 name|fromKey
+operator|+
+literal|"\0"
 argument_list|,
 name|toKey
 argument_list|)
