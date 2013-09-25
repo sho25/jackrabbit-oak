@@ -948,28 +948,14 @@ condition|(
 name|running
 condition|)
 block|{
-try|try
-block|{
-comment|// rate-limit, to avoid 100% cpu usage
-name|Thread
-operator|.
-name|sleep
-argument_list|(
-literal|10
-argument_list|)
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|InterruptedException
-name|e
-parameter_list|)
-block|{
-comment|// ignore
-block|}
 name|job
 operator|.
 name|run
+argument_list|()
+expr_stmt|;
+name|Thread
+operator|.
+name|yield
 argument_list|()
 expr_stmt|;
 block|}
