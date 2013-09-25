@@ -2765,7 +2765,7 @@ decl_stmt|;
 comment|// path String
 name|memory
 operator|+=
-literal|12
+literal|48
 operator|+
 name|path
 operator|.
@@ -2777,7 +2777,7 @@ expr_stmt|;
 comment|// revision String
 name|memory
 operator|+=
-literal|12
+literal|48
 operator|+
 name|revision
 operator|.
@@ -2796,7 +2796,7 @@ condition|)
 block|{
 name|memory
 operator|+=
-literal|12
+literal|48
 operator|+
 name|hash
 operator|.
@@ -2824,7 +2824,7 @@ condition|)
 block|{
 name|memory
 operator|+=
-literal|12
+literal|48
 operator|+
 name|id
 operator|.
@@ -2863,7 +2863,7 @@ block|{
 comment|// name
 name|memory
 operator|+=
-literal|12
+literal|48
 operator|+
 name|entry
 operator|.
@@ -2924,9 +2924,12 @@ operator|++
 control|)
 block|{
 comment|// size() returns length of string
+comment|// overhead:
+comment|// - 8 bytes per reference in values list
+comment|// - 48 bytes per string
 name|memory
 operator|+=
-literal|12
+literal|56
 operator|+
 name|propState
 operator|.
