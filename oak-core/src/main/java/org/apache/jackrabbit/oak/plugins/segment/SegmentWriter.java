@@ -117,6 +117,22 @@ end_import
 
 begin_import
 import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|collect
+operator|.
+name|Lists
+operator|.
+name|newArrayList
+import|;
+end_import
+
+begin_import
+import|import static
 name|java
 operator|.
 name|util
@@ -624,7 +640,7 @@ condition|)
 block|{
 name|store
 operator|.
-name|createSegment
+name|writeSegment
 argument_list|(
 name|uuid
 argument_list|,
@@ -638,14 +654,13 @@ name|length
 argument_list|,
 name|length
 argument_list|,
+name|newArrayList
+argument_list|(
 name|uuids
 operator|.
 name|keySet
 argument_list|()
-argument_list|,
-name|strings
-argument_list|,
-name|templates
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|uuid
@@ -3122,7 +3137,7 @@ name|align
 decl_stmt|;
 name|store
 operator|.
-name|createSegment
+name|writeSegment
 argument_list|(
 name|segmentId
 argument_list|,
@@ -3138,26 +3153,6 @@ expr|<
 name|UUID
 operator|>
 name|emptyList
-argument_list|()
-argument_list|,
-name|Collections
-operator|.
-expr|<
-name|String
-argument_list|,
-name|RecordId
-operator|>
-name|emptyMap
-argument_list|()
-argument_list|,
-name|Collections
-operator|.
-expr|<
-name|Template
-argument_list|,
-name|RecordId
-operator|>
-name|emptyMap
 argument_list|()
 argument_list|)
 expr_stmt|;
