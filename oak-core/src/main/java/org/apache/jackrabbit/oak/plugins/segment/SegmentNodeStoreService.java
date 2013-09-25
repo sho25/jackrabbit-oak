@@ -802,8 +802,9 @@ expr_stmt|;
 name|SegmentCache
 name|sc
 init|=
-operator|new
 name|SegmentCache
+operator|.
+name|create
 argument_list|(
 name|cache
 operator|*

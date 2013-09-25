@@ -523,8 +523,9 @@ name|this
 argument_list|(
 name|db
 argument_list|,
-operator|new
 name|SegmentCache
+operator|.
+name|create
 argument_list|(
 name|cacheSize
 argument_list|)

@@ -21,26 +21,6 @@ begin_import
 import|import
 name|java
 operator|.
-name|text
-operator|.
-name|SimpleDateFormat
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Date
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
 name|util
 operator|.
 name|Map
@@ -830,7 +810,6 @@ argument_list|)
 argument_list|)
 argument_list|)
 return|;
-comment|//return (new SimpleDateFormat("mm:ss:SSS")).format(new Date(millis));
 block|}
 comment|/**      * Based on http://stackoverflow.com/a/3758880/1035417      */
 specifier|private

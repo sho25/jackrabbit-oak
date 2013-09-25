@@ -461,8 +461,9 @@ specifier|final
 name|SegmentCache
 name|cache
 init|=
-operator|new
 name|SegmentCache
+operator|.
+name|create
 argument_list|()
 decl_stmt|;
 specifier|public
