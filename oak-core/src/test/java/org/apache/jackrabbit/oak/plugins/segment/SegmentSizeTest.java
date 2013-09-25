@@ -1303,6 +1303,15 @@ name|size
 argument_list|()
 decl_stmt|;
 name|writer
+operator|=
+operator|new
+name|SegmentWriter
+argument_list|(
+name|store
+argument_list|)
+expr_stmt|;
+comment|// avoid cross-segment caching
+name|writer
 operator|.
 name|writeNode
 argument_list|(
