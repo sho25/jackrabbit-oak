@@ -704,21 +704,6 @@ name|MicroKernel
 implements|,
 name|RevisionContext
 block|{
-specifier|private
-specifier|static
-specifier|final
-name|Logger
-name|LOG
-init|=
-name|LoggerFactory
-operator|.
-name|getLogger
-argument_list|(
-name|MongoMK
-operator|.
-name|class
-argument_list|)
-decl_stmt|;
 comment|/**      * The threshold where special handling for many child node starts.      */
 specifier|static
 specifier|final
@@ -752,6 +737,21 @@ literal|"oak.mongoMK.lirsCache"
 argument_list|,
 literal|"false"
 argument_list|)
+argument_list|)
+decl_stmt|;
+specifier|private
+specifier|static
+specifier|final
+name|Logger
+name|LOG
+init|=
+name|LoggerFactory
+operator|.
+name|getLogger
+argument_list|(
+name|MongoMK
+operator|.
+name|class
 argument_list|)
 decl_stmt|;
 comment|/**      * Do not cache more than this number of children for a document.      */
@@ -843,6 +843,12 @@ literal|60
 operator|*
 literal|1000
 decl_stmt|;
+comment|/**      * The MongoDB store (might be used by multiple MongoMKs).      */
+specifier|protected
+specifier|final
+name|DocumentStore
+name|store
+decl_stmt|;
 comment|/**      * The delay for asynchronous operations (delayed commit propagation and      * cache update).      */
 specifier|protected
 name|int
@@ -859,12 +865,6 @@ init|=
 operator|new
 name|AtomicBoolean
 argument_list|()
-decl_stmt|;
-comment|/**      * The MongoDB store (might be used by multiple MongoMKs).      */
-specifier|private
-specifier|final
-name|DocumentStore
-name|store
 decl_stmt|;
 comment|/**      * The MongoDB blob store.      */
 specifier|private
