@@ -19,10 +19,15 @@ name|segment
 package|;
 end_package
 
+begin_comment
+comment|/**  * Record within a segment.  */
+end_comment
+
 begin_class
 class|class
 name|Record
 block|{
+comment|/**      * Identifier of this record.      */
 specifier|private
 specifier|final
 name|RecordId
@@ -42,6 +47,7 @@ operator|=
 name|id
 expr_stmt|;
 block|}
+comment|/**      * Returns the identifier of this record.      *      * @return record identifier      */
 specifier|public
 name|RecordId
 name|getRecordId
@@ -49,6 +55,60 @@ parameter_list|()
 block|{
 return|return
 name|id
+return|;
+block|}
+comment|/**      * Returns the segment offset of this record.      *      * @return segment offset of this record      */
+specifier|protected
+name|int
+name|getOffset
+parameter_list|()
+block|{
+return|return
+name|id
+operator|.
+name|getOffset
+argument_list|()
+return|;
+block|}
+comment|/**      * Returns the segment offset of the given byte position in this record.      *      * @param position byte position within this record      * @return segment offset of the given byte position      */
+specifier|protected
+name|int
+name|getOffset
+parameter_list|(
+name|int
+name|position
+parameter_list|)
+block|{
+return|return
+name|getOffset
+argument_list|()
+operator|+
+name|position
+return|;
+block|}
+comment|/**      * Returns the segment offset of a byte position in this record.      * The position is calculated from the given number of raw bytes and      * record identifiers.      *      * @param bytes number of raw bytes before the position      * @param ids number of record identifiers before the position      * @return segment offset of the specified byte position      */
+specifier|protected
+name|int
+name|getOffset
+parameter_list|(
+name|int
+name|bytes
+parameter_list|,
+name|int
+name|ids
+parameter_list|)
+block|{
+return|return
+name|getOffset
+argument_list|(
+name|bytes
+operator|+
+name|ids
+operator|*
+name|Segment
+operator|.
+name|RECORD_ID_BYTES
+argument_list|)
 return|;
 block|}
 block|}
