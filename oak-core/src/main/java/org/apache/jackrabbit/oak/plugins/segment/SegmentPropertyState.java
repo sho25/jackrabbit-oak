@@ -300,12 +300,6 @@ name|size
 init|=
 literal|1
 decl_stmt|;
-if|if
-condition|(
-name|isArray
-argument_list|()
-condition|)
-block|{
 name|Segment
 name|segment
 init|=
@@ -319,6 +313,12 @@ name|getSegmentId
 argument_list|()
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|isArray
+argument_list|()
+condition|)
+block|{
 name|size
 operator|=
 name|segment
@@ -358,6 +358,8 @@ return|return
 operator|new
 name|ListRecord
 argument_list|(
+name|segment
+argument_list|,
 name|listId
 argument_list|,
 name|size

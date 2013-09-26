@@ -568,6 +568,23 @@ argument_list|)
 argument_list|)
 return|;
 block|}
+comment|/**      * Returns the identified segment.      *      * @param uuid segment identifier      */
+name|Segment
+name|getSegment
+parameter_list|(
+name|UUID
+name|uuid
+parameter_list|)
+block|{
+return|return
+name|store
+operator|.
+name|readSegment
+argument_list|(
+name|uuid
+argument_list|)
+return|;
+block|}
 comment|/**      * Reads the given number of bytes starting from the given position      * in this segment.      *      * @param position position within segment      * @param buffer target buffer      * @param offset offset within target buffer      * @param length number of bytes to read      */
 name|void
 name|readBytes
@@ -1046,6 +1063,8 @@ init|=
 operator|new
 name|ListRecord
 argument_list|(
+name|this
+argument_list|,
 name|internalReadRecordId
 argument_list|(
 name|pos
@@ -1945,6 +1964,8 @@ init|=
 operator|new
 name|ListRecord
 argument_list|(
+name|this
+argument_list|,
 name|internalReadRecordId
 argument_list|(
 name|pos

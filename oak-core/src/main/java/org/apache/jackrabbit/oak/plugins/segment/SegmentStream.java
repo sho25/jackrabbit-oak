@@ -785,10 +785,14 @@ decl_stmt|;
 name|BlockRecord
 name|block
 init|=
-name|reader
-operator|.
-name|readBlock
+operator|new
+name|BlockRecord
 argument_list|(
+name|blocks
+operator|.
+name|getSegment
+argument_list|()
+argument_list|,
 name|blocks
 operator|.
 name|getEntry
@@ -807,8 +811,6 @@ name|block
 operator|.
 name|read
 argument_list|(
-name|reader
-argument_list|,
 name|blockOffset
 argument_list|,
 name|b

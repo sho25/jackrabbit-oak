@@ -80,6 +80,9 @@ name|size
 decl_stmt|;
 name|BlockRecord
 parameter_list|(
+name|Segment
+name|segment
+parameter_list|,
 name|RecordId
 name|id
 parameter_list|,
@@ -89,6 +92,8 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
+name|segment
+argument_list|,
 name|id
 argument_list|)
 expr_stmt|;
@@ -99,14 +104,11 @@ operator|=
 name|size
 expr_stmt|;
 block|}
-comment|/**      * Reads bytes from this block. Up to the given number of bytes are      * read starting from the given position within this block. The number      * of bytes read is returned.      *      * @param reader segment reader      * @param position position within this block      * @param buffer target buffer      * @param offset offset within the target buffer      * @param length maximum number of bytes to read      * @return number of bytes that could be read      */
+comment|/**      * Reads bytes from this block. Up to the given number of bytes are      * read starting from the given position within this block. The number      * of bytes read is returned.      *      * @param position position within this block      * @param buffer target buffer      * @param offset offset within the target buffer      * @param length maximum number of bytes to read      * @return number of bytes that could be read      */
 specifier|public
 name|int
 name|read
 parameter_list|(
-name|SegmentReader
-name|reader
-parameter_list|,
 name|int
 name|position
 parameter_list|,
@@ -169,14 +171,15 @@ operator|>
 literal|0
 condition|)
 block|{
-name|reader
+name|getSegment
+argument_list|()
 operator|.
 name|readBytes
 argument_list|(
-name|getRecordId
-argument_list|()
-argument_list|,
+name|getOffset
+argument_list|(
 name|position
+argument_list|)
 argument_list|,
 name|buffer
 argument_list|,
