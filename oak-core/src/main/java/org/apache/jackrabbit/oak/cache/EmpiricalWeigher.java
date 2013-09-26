@@ -60,7 +60,14 @@ name|CacheValue
 name|value
 parameter_list|)
 block|{
-return|return
+name|int
+name|size
+init|=
+literal|168
+decl_stmt|;
+comment|// overhead for each cache entry
+name|size
+operator|+=
 literal|48
 operator|+
 name|key
@@ -69,11 +76,18 @@ name|length
 argument_list|()
 operator|*
 literal|2
-operator|+
+expr_stmt|;
+comment|// string key
+name|size
+operator|+=
 name|value
 operator|.
 name|getMemory
 argument_list|()
+expr_stmt|;
+comment|// value
+return|return
+name|size
 return|;
 block|}
 block|}

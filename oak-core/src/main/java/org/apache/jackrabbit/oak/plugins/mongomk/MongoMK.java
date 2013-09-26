@@ -6964,13 +6964,28 @@ argument_list|(
 name|removed
 argument_list|)
 expr_stmt|;
+for|for
+control|(
+name|String
+name|name
+range|:
+name|added
+control|)
+block|{
+comment|// make sure the name string does not contain
+comment|// unnecessary baggage
 name|set
 operator|.
-name|addAll
+name|add
 argument_list|(
-name|added
+operator|new
+name|String
+argument_list|(
+name|name
+argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 name|c2
 operator|.
 name|children
@@ -7086,11 +7101,17 @@ operator|!=
 literal|null
 condition|)
 block|{
+comment|// make sure the name string does not contain
+comment|// unnecessary baggage
 name|names
 operator|.
 name|add
 argument_list|(
+operator|new
+name|String
+argument_list|(
 name|name
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -7107,15 +7128,21 @@ range|:
 name|added
 control|)
 block|{
+comment|// make sure the name string does not contain
+comment|// unnecessary baggage
 name|names
 operator|.
 name|add
+argument_list|(
+operator|new
+name|String
 argument_list|(
 name|PathUtils
 operator|.
 name|getName
 argument_list|(
 name|childPath
+argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
