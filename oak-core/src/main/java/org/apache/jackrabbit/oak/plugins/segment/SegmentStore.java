@@ -44,6 +44,10 @@ specifier|public
 interface|interface
 name|SegmentStore
 block|{
+name|SegmentWriter
+name|getWriter
+parameter_list|()
+function_decl|;
 name|Journal
 name|getJournal
 parameter_list|(

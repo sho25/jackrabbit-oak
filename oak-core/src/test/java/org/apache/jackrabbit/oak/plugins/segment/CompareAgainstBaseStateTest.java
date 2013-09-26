@@ -204,11 +204,10 @@ specifier|final
 name|SegmentWriter
 name|writer
 init|=
-operator|new
-name|SegmentWriter
-argument_list|(
 name|store
-argument_list|)
+operator|.
+name|getWriter
+argument_list|()
 decl_stmt|;
 specifier|private
 specifier|final

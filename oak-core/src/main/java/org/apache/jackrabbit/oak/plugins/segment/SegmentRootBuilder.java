@@ -57,8 +57,8 @@ parameter_list|(
 name|SegmentNodeState
 name|base
 parameter_list|,
-name|SegmentStore
-name|store
+name|SegmentWriter
+name|writer
 parameter_list|)
 block|{
 name|super
@@ -70,11 +70,7 @@ name|this
 operator|.
 name|writer
 operator|=
-operator|new
-name|SegmentWriter
-argument_list|(
-name|store
-argument_list|)
+name|writer
 expr_stmt|;
 block|}
 annotation|@
