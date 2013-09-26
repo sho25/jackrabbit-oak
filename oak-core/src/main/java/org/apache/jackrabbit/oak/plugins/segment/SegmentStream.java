@@ -773,15 +773,6 @@ name|position
 argument_list|)
 expr_stmt|;
 block|}
-name|SegmentReader
-name|reader
-init|=
-operator|new
-name|SegmentReader
-argument_list|(
-name|store
-argument_list|)
-decl_stmt|;
 name|BlockRecord
 name|block
 init|=
@@ -797,8 +788,6 @@ name|blocks
 operator|.
 name|getEntry
 argument_list|(
-name|reader
-argument_list|,
 name|blockIndex
 argument_list|)
 argument_list|,

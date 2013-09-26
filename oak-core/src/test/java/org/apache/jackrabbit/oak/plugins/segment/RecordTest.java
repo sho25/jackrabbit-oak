@@ -704,8 +704,6 @@ name|one
 operator|.
 name|getEntry
 argument_list|(
-name|reader
-argument_list|,
 literal|0
 argument_list|)
 argument_list|)
@@ -728,8 +726,6 @@ name|level1
 operator|.
 name|getEntry
 argument_list|(
-name|reader
-argument_list|,
 literal|0
 argument_list|)
 argument_list|)
@@ -742,8 +738,6 @@ name|level1
 operator|.
 name|getEntry
 argument_list|(
-name|reader
-argument_list|,
 name|LEVEL_SIZE
 operator|-
 literal|1
@@ -770,8 +764,6 @@ name|level1p
 operator|.
 name|getEntry
 argument_list|(
-name|reader
-argument_list|,
 literal|0
 argument_list|)
 argument_list|)
@@ -784,8 +776,6 @@ name|level1p
 operator|.
 name|getEntry
 argument_list|(
-name|reader
-argument_list|,
 name|LEVEL_SIZE
 argument_list|)
 argument_list|)
@@ -810,8 +800,6 @@ name|level2
 operator|.
 name|getEntry
 argument_list|(
-name|reader
-argument_list|,
 literal|0
 argument_list|)
 argument_list|)
@@ -824,8 +812,6 @@ name|level2
 operator|.
 name|getEntry
 argument_list|(
-name|reader
-argument_list|,
 name|LEVEL_SIZE
 operator|*
 name|LEVEL_SIZE
@@ -856,8 +842,6 @@ name|level2p
 operator|.
 name|getEntry
 argument_list|(
-name|reader
-argument_list|,
 literal|0
 argument_list|)
 argument_list|)
@@ -870,8 +854,6 @@ name|level2p
 operator|.
 name|getEntry
 argument_list|(
-name|reader
-argument_list|,
 name|LEVEL_SIZE
 operator|*
 name|LEVEL_SIZE

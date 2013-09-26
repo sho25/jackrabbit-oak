@@ -148,9 +148,6 @@ specifier|public
 name|RecordId
 name|getEntry
 parameter_list|(
-name|SegmentReader
-name|reader
-parameter_list|,
 name|int
 name|index
 parameter_list|)
@@ -229,8 +226,6 @@ name|bucket
 operator|.
 name|getEntry
 argument_list|(
-name|reader
-argument_list|,
 name|bucketOffset
 argument_list|)
 return|;
