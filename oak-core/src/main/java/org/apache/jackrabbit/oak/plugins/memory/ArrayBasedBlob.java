@@ -49,20 +49,6 @@ name|Nonnull
 import|;
 end_import
 
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|Charsets
-import|;
-end_import
-
 begin_comment
 comment|/**  * This {@code Blob} implementations is based on an array of bytes.  */
 end_comment
@@ -94,25 +80,6 @@ name|value
 operator|=
 name|value
 expr_stmt|;
-block|}
-annotation|@
-name|Override
-specifier|public
-name|String
-name|toString
-parameter_list|()
-block|{
-return|return
-operator|new
-name|String
-argument_list|(
-name|value
-argument_list|,
-name|Charsets
-operator|.
-name|UTF_8
-argument_list|)
-return|;
 block|}
 annotation|@
 name|Nonnull

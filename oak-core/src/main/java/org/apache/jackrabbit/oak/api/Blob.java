@@ -58,12 +58,6 @@ name|long
 name|length
 parameter_list|()
 function_decl|;
-comment|/**      * The SHA-256 digest of the underlying stream      * @return      */
-name|byte
-index|[]
-name|sha256
-parameter_list|()
-function_decl|;
 block|}
 end_interface
 

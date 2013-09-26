@@ -101,16 +101,6 @@ end_import
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Arrays
-import|;
-end_import
-
-begin_import
-import|import
 name|javax
 operator|.
 name|jcr
@@ -368,7 +358,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Create the jsop diff between {@code before} and {@code after} for      * debugging purposes.      *<p>      * This method does not store binaries but returns them inlined      * in the format      *<pre>      *   "Blob{" + Arrays.toString(blob.sha256()) + "}"      *</pre>.      *      * @param before  before node state      * @param after  after node state      * @return  jsop diff between {@code before} and {@code after}      */
+comment|/**      * Create the jsop diff between {@code before} and {@code after} for      * debugging purposes.      *<p>      * This method does not store binaries but returns them inlined      * in the format<code>Blob{...}</code>, where the<code>...</code>      * is implementation-dependent - typically the SHA256 hash of the binary.      *      * @param before  before node state      * @param after  after node state      * @return  jsop diff between {@code before} and {@code after}      */
 specifier|public
 specifier|static
 name|String
@@ -429,15 +419,7 @@ block|{
 return|return
 literal|"Blob{"
 operator|+
-name|Arrays
-operator|.
-name|toString
-argument_list|(
 name|blob
-operator|.
-name|sha256
-argument_list|()
-argument_list|)
 operator|+
 literal|'}'
 return|;
