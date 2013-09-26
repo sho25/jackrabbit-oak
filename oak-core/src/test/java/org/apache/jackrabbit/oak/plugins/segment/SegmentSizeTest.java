@@ -1082,11 +1082,6 @@ name|getNodeState
 argument_list|()
 argument_list|)
 decl_stmt|;
-name|writer
-operator|.
-name|flush
-argument_list|()
-expr_stmt|;
 name|Segment
 name|segment
 init|=
@@ -1113,6 +1108,12 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|writer
+operator|.
+name|flush
+argument_list|()
+expr_stmt|;
+comment|// force flushing of the previous segment
 name|builder
 operator|=
 name|state
@@ -1138,11 +1139,6 @@ operator|.
 name|getNodeState
 argument_list|()
 argument_list|)
-expr_stmt|;
-name|writer
-operator|.
-name|flush
-argument_list|()
 expr_stmt|;
 name|segment
 operator|=
@@ -1209,11 +1205,6 @@ operator|.
 name|getRecordId
 argument_list|()
 decl_stmt|;
-name|writer
-operator|.
-name|flush
-argument_list|()
-expr_stmt|;
 name|Segment
 name|segment
 init|=
@@ -1278,11 +1269,6 @@ operator|.
 name|getRecordId
 argument_list|()
 decl_stmt|;
-name|writer
-operator|.
-name|flush
-argument_list|()
-expr_stmt|;
 name|int
 name|base
 init|=
@@ -1330,11 +1316,6 @@ name|state
 argument_list|)
 operator|.
 name|getRecordId
-argument_list|()
-expr_stmt|;
-name|writer
-operator|.
-name|flush
 argument_list|()
 expr_stmt|;
 name|Segment

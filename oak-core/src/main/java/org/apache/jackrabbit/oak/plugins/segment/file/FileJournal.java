@@ -170,6 +170,7 @@ name|head
 argument_list|)
 condition|)
 block|{
+comment|// flushes the segment if needed
 try|try
 block|{
 name|store

@@ -509,6 +509,11 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 return|return
+name|data
+operator|.
+name|position
+argument_list|()
+operator|+
 name|pos
 return|;
 block|}
@@ -538,7 +543,7 @@ block|{
 return|return
 name|data
 operator|.
-name|limit
+name|remaining
 argument_list|()
 return|;
 block|}

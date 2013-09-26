@@ -398,11 +398,6 @@ name|getNodeState
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|writer
-operator|.
-name|flush
-argument_list|()
-expr_stmt|;
 block|}
 annotation|@
 name|Override
@@ -488,11 +483,6 @@ operator|.
 name|getNodeState
 argument_list|()
 argument_list|)
-expr_stmt|;
-name|writer
-operator|.
-name|flush
-argument_list|()
 expr_stmt|;
 block|}
 block|}
@@ -600,11 +590,6 @@ name|getNodeState
 argument_list|()
 argument_list|)
 decl_stmt|;
-name|writer
-operator|.
-name|flush
-argument_list|()
-expr_stmt|;
 comment|// use optimistic locking to update the journal
 if|if
 condition|(
@@ -854,11 +839,6 @@ name|getNodeState
 argument_list|()
 argument_list|)
 decl_stmt|;
-name|writer
-operator|.
-name|flush
-argument_list|()
-expr_stmt|;
 if|if
 condition|(
 name|store
@@ -939,11 +919,6 @@ name|getNodeState
 argument_list|()
 argument_list|)
 decl_stmt|;
-name|writer
-operator|.
-name|flush
-argument_list|()
-expr_stmt|;
 if|if
 condition|(
 name|store

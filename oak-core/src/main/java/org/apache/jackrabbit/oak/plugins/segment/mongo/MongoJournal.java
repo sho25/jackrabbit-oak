@@ -1236,11 +1236,6 @@ operator|.
 name|getRecordId
 argument_list|()
 decl_stmt|;
-name|writer
-operator|.
-name|flush
-argument_list|()
-expr_stmt|;
 name|base
 operator|=
 name|newBase
