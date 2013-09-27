@@ -4831,7 +4831,7 @@ return|return
 operator|new
 name|SegmentNodeState
 argument_list|(
-name|store
+name|dummySegment
 argument_list|,
 name|recordId
 argument_list|)

@@ -573,6 +573,14 @@ block|{
 break|break;
 block|}
 block|}
+name|Segment
+name|segment
+init|=
+name|writer
+operator|.
+name|getDummySegment
+argument_list|()
+decl_stmt|;
 for|for
 control|(
 name|TarFile
@@ -702,7 +710,7 @@ argument_list|,
 operator|new
 name|SegmentNodeState
 argument_list|(
-name|this
+name|segment
 argument_list|,
 name|recordId
 argument_list|)

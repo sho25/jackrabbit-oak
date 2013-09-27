@@ -248,8 +248,6 @@ operator|new
 name|SegmentNodeState
 argument_list|(
 name|segment
-operator|.
-name|store
 argument_list|,
 name|value
 argument_list|)

@@ -3018,8 +3018,12 @@ block|}
 if|if
 condition|(
 operator|!
+name|AbstractNodeState
+operator|.
 name|comparePropertiesAgainstBaseState
 argument_list|(
+name|this
+argument_list|,
 name|base
 argument_list|,
 name|diff
