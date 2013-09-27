@@ -147,8 +147,8 @@ argument_list|>
 block|{
 specifier|private
 specifier|final
-name|SegmentStore
-name|store
+name|Segment
+name|segment
 decl_stmt|;
 specifier|private
 specifier|final
@@ -166,8 +166,8 @@ name|value
 decl_stmt|;
 name|MapEntry
 parameter_list|(
-name|SegmentStore
-name|store
+name|Segment
+name|segment
 parameter_list|,
 name|String
 name|name
@@ -181,11 +181,11 @@ parameter_list|)
 block|{
 name|this
 operator|.
-name|store
+name|segment
 operator|=
 name|checkNotNull
 argument_list|(
-name|store
+name|segment
 argument_list|)
 expr_stmt|;
 name|this
@@ -247,6 +247,8 @@ return|return
 operator|new
 name|SegmentNodeState
 argument_list|(
+name|segment
+operator|.
 name|store
 argument_list|,
 name|value

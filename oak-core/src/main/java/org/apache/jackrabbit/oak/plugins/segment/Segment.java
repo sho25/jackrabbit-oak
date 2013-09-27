@@ -333,11 +333,11 @@ return|;
 block|}
 block|}
 decl_stmt|;
-specifier|private
 specifier|final
 name|SegmentStore
 name|store
 decl_stmt|;
+comment|// TODO: should be private
 specifier|private
 specifier|final
 name|UUID

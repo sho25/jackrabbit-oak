@@ -1489,7 +1489,7 @@ name|MapRecord
 operator|.
 name|readMap
 argument_list|(
-name|store
+name|segment
 argument_list|,
 name|childNodesId
 argument_list|)
@@ -3204,7 +3204,7 @@ name|MapRecord
 operator|.
 name|readMap
 argument_list|(
-name|store
+name|segment
 argument_list|,
 name|childNodesId
 argument_list|)

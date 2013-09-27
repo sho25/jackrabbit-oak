@@ -1624,7 +1624,7 @@ return|return
 operator|new
 name|MapLeaf
 argument_list|(
-name|store
+name|dummySegment
 argument_list|,
 name|id
 argument_list|,
@@ -1766,7 +1766,7 @@ return|return
 operator|new
 name|MapBranch
 argument_list|(
-name|store
+name|dummySegment
 argument_list|,
 name|mapId
 argument_list|,
@@ -1879,7 +1879,7 @@ name|MapRecord
 operator|.
 name|readMap
 argument_list|(
-name|store
+name|dummySegment
 argument_list|,
 name|baseId
 argument_list|)
@@ -1915,7 +1915,7 @@ return|return
 operator|new
 name|MapLeaf
 argument_list|(
-name|store
+name|dummySegment
 argument_list|,
 name|id
 argument_list|,
@@ -1949,7 +1949,7 @@ name|MapRecord
 operator|.
 name|readMap
 argument_list|(
-name|store
+name|dummySegment
 argument_list|,
 name|baseId
 argument_list|)
@@ -2326,7 +2326,7 @@ return|return
 operator|new
 name|MapLeaf
 argument_list|(
-name|store
+name|dummySegment
 argument_list|,
 name|id
 argument_list|,
@@ -2872,7 +2872,7 @@ argument_list|(
 operator|new
 name|MapEntry
 argument_list|(
-name|store
+name|dummySegment
 argument_list|,
 name|name
 argument_list|,
