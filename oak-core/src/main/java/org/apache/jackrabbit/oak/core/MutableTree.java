@@ -1884,6 +1884,9 @@ argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|enter
+argument_list|()
+expr_stmt|;
 name|MutableTree
 name|child
 init|=
