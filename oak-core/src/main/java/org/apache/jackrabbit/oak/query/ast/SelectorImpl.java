@@ -509,6 +509,20 @@ name|NodeState
 import|;
 end_import
 
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|collect
+operator|.
+name|ImmutableSet
+import|;
+end_import
+
 begin_comment
 comment|/**  * A selector within a query.  */
 end_comment
@@ -525,6 +539,7 @@ specifier|protected
 name|QueryIndex
 name|index
 decl_stmt|;
+comment|/**      * the node type associated with the {@link #nodeTypeName}      */
 specifier|private
 specifier|final
 name|NodeState
@@ -545,6 +560,7 @@ specifier|final
 name|boolean
 name|matchesAllTypes
 decl_stmt|;
+comment|/**      * all of the matching supertypes, or empty if the {@link #matchesAllTypes} flag is set      */
 specifier|private
 specifier|final
 name|Set
@@ -553,6 +569,7 @@ name|String
 argument_list|>
 name|supertypes
 decl_stmt|;
+comment|/**      * all of the matching primary subtypes, or empty if the {@link #matchesAllTypes} flag is set      */
 specifier|private
 specifier|final
 name|Set
@@ -561,6 +578,7 @@ name|String
 argument_list|>
 name|primaryTypes
 decl_stmt|;
+comment|/**      * all of the matching mixin types, or empty if the {@link #matchesAllTypes}      * flag is set      */
 specifier|private
 specifier|final
 name|Set
@@ -636,6 +654,14 @@ argument_list|(
 name|nodeTypeName
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+operator|!
+name|this
+operator|.
+name|matchesAllTypes
+condition|)
+block|{
 name|this
 operator|.
 name|supertypes
@@ -714,6 +740,37 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+else|else
+block|{
+name|this
+operator|.
+name|supertypes
+operator|=
+name|ImmutableSet
+operator|.
+name|of
+argument_list|()
+expr_stmt|;
+name|this
+operator|.
+name|primaryTypes
+operator|=
+name|ImmutableSet
+operator|.
+name|of
+argument_list|()
+expr_stmt|;
+name|this
+operator|.
+name|mixinTypes
+operator|=
+name|ImmutableSet
+operator|.
+name|of
+argument_list|()
+expr_stmt|;
+block|}
+block|}
 specifier|public
 name|String
 name|getSelectorName
@@ -732,6 +789,7 @@ return|return
 name|matchesAllTypes
 return|;
 block|}
+comment|/**      * @return all of the matching supertypes, or empty if the      *         {@link #matchesAllTypes} flag is set      */
 annotation|@
 name|Nonnull
 specifier|public
@@ -746,6 +804,7 @@ return|return
 name|supertypes
 return|;
 block|}
+comment|/**      * @return all of the matching primary subtypes, or empty if the      *         {@link #matchesAllTypes} flag is set      */
 annotation|@
 name|Nonnull
 specifier|public
@@ -760,6 +819,7 @@ return|return
 name|primaryTypes
 return|;
 block|}
+comment|/**      * @return all of the matching mixin types, or empty if the      *         {@link #matchesAllTypes} flag is set      */
 annotation|@
 name|Nonnull
 specifier|public
@@ -816,16 +876,6 @@ name|String
 name|toString
 parameter_list|()
 block|{
-name|String
-name|nodeTypeName
-init|=
-name|nodeType
-operator|.
-name|getName
-argument_list|(
-name|JCR_NODETYPENAME
-argument_list|)
-decl_stmt|;
 return|return
 name|quote
 argument_list|(
