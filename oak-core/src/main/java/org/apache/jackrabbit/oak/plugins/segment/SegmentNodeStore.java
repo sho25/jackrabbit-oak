@@ -808,11 +808,6 @@ throws|throws
 name|IOException
 block|{
 return|return
-operator|new
-name|SegmentBlob
-argument_list|(
-name|reader
-argument_list|,
 name|store
 operator|.
 name|getWriter
@@ -821,7 +816,6 @@ operator|.
 name|writeStream
 argument_list|(
 name|stream
-argument_list|)
 argument_list|)
 return|;
 block|}

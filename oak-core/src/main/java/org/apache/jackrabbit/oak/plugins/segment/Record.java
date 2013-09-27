@@ -373,6 +373,22 @@ name|RECORD_ID_BYTES
 argument_list|)
 return|;
 block|}
+comment|//------------------------------------------------------------< Object>--
+annotation|@
+name|Override
+specifier|public
+name|String
+name|toString
+parameter_list|()
+block|{
+return|return
+name|getRecordId
+argument_list|()
+operator|.
+name|toString
+argument_list|()
+return|;
+block|}
 block|}
 end_class
 
