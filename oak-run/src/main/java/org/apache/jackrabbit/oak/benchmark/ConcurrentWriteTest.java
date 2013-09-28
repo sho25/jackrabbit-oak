@@ -18,30 +18,30 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * A {@link ConcurrentReadTest} with a single writer thread that continuously  * updates the nodes being accessed by the readers.  */
+comment|/**  * A variant of {@link ConcurrentReadTest} with a that tests the performance  * of a single writer thread that continuously updates the nodes being  * updated by background writers. No reader threads are used in this test.  */
 end_comment
 
 begin_class
 specifier|public
 class|class
-name|ConcurrentReadWriteTest
+name|ConcurrentWriteTest
 extends|extends
 name|ConcurrentReadTest
 block|{
 specifier|public
-name|ConcurrentReadWriteTest
+name|ConcurrentWriteTest
 parameter_list|()
 block|{
 name|super
 argument_list|(
+literal|0
+argument_list|,
 name|getScale
 argument_list|(
 literal|20
 argument_list|)
 argument_list|,
-literal|1
-argument_list|,
-literal|true
+literal|false
 argument_list|)
 expr_stmt|;
 block|}

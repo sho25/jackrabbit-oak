@@ -698,6 +698,14 @@ name|ConcurrentReadWriteTest
 argument_list|()
 block|,
 operator|new
+name|ConcurrentWriteReadTest
+argument_list|()
+block|,
+operator|new
+name|ConcurrentWriteTest
+argument_list|()
+block|,
+operator|new
 name|SimpleSearchTest
 argument_list|()
 block|,
