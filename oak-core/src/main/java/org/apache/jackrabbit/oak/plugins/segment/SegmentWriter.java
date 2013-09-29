@@ -1875,12 +1875,10 @@ literal|null
 condition|)
 block|{
 return|return
-name|MapRecord
+name|dummySegment
 operator|.
 name|readMap
 argument_list|(
-name|dummySegment
-argument_list|,
 name|baseId
 argument_list|)
 return|;
@@ -1945,12 +1943,10 @@ comment|// FIXME: messy code with lots of duplication
 name|MapRecord
 name|base
 init|=
-name|MapRecord
+name|dummySegment
 operator|.
 name|readMap
 argument_list|(
-name|dummySegment
-argument_list|,
 name|baseId
 argument_list|)
 decl_stmt|;

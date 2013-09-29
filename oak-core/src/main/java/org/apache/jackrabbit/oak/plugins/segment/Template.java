@@ -1469,12 +1469,10 @@ name|offset
 argument_list|)
 decl_stmt|;
 return|return
-name|MapRecord
+name|segment
 operator|.
 name|readMap
 argument_list|(
-name|segment
-argument_list|,
 name|childNodesId
 argument_list|)
 return|;
@@ -3193,12 +3191,10 @@ decl_stmt|;
 name|MapRecord
 name|children
 init|=
-name|MapRecord
+name|segment
 operator|.
 name|readMap
 argument_list|(
-name|segment
-argument_list|,
 name|childNodesId
 argument_list|)
 decl_stmt|;
