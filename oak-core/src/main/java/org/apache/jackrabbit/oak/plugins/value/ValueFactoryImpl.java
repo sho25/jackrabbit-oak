@@ -135,16 +135,6 @@ name|javax
 operator|.
 name|jcr
 operator|.
-name|UnsupportedRepositoryOperationException
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|jcr
-operator|.
 name|Value
 import|;
 end_import
@@ -317,7 +307,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|core
+name|plugins
+operator|.
+name|identifier
 operator|.
 name|IdentifierManager
 import|;

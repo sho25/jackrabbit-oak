@@ -13,27 +13,11 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|jcr
+name|plugins
 operator|.
 name|observation
 package|;
 end_package
-
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|Objects
-operator|.
-name|toStringHelper
-import|;
-end_import
 
 begin_import
 import|import
@@ -171,11 +155,28 @@ name|ReadOnlyNodeTypeManager
 import|;
 end_import
 
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Objects
+operator|.
+name|toStringHelper
+import|;
+end_import
+
 begin_comment
 comment|/**  * Filter for filtering observation events according to a certain criterion.  */
 end_comment
 
 begin_class
+specifier|public
 class|class
 name|EventFilter
 block|{

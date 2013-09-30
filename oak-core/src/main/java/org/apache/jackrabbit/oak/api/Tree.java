@@ -90,7 +90,7 @@ name|String
 name|getName
 parameter_list|()
 function_decl|;
-comment|/**      * @return {@code true} if this is the root      */
+comment|/**      * @return {@code true} iff this is the root      */
 name|boolean
 name|isRoot
 parameter_list|()

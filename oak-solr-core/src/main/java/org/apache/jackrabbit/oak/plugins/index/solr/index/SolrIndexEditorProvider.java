@@ -24,42 +24,6 @@ package|;
 end_package
 
 begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|felix
-operator|.
-name|scr
-operator|.
-name|annotations
-operator|.
-name|ReferencePolicy
-operator|.
-name|STATIC
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|felix
-operator|.
-name|scr
-operator|.
-name|annotations
-operator|.
-name|ReferencePolicyOption
-operator|.
-name|GREEDY
-import|;
-end_import
-
-begin_import
 import|import
 name|org
 operator|.
@@ -272,6 +236,42 @@ operator|.
 name|state
 operator|.
 name|NodeState
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|felix
+operator|.
+name|scr
+operator|.
+name|annotations
+operator|.
+name|ReferencePolicy
+operator|.
+name|STATIC
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|felix
+operator|.
+name|scr
+operator|.
+name|annotations
+operator|.
+name|ReferencePolicyOption
+operator|.
+name|GREEDY
 import|;
 end_import
 

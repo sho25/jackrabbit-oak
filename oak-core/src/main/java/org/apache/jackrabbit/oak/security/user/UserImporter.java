@@ -20,40 +20,6 @@ package|;
 end_package
 
 begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|Preconditions
-operator|.
-name|checkNotNull
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|api
-operator|.
-name|Type
-operator|.
-name|STRINGS
-import|;
-end_import
-
-begin_import
 import|import
 name|java
 operator|.
@@ -431,9 +397,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|core
+name|namepath
 operator|.
-name|IdentifierManager
+name|NamePathMapper
 import|;
 end_import
 
@@ -447,9 +413,11 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|namepath
+name|plugins
 operator|.
-name|NamePathMapper
+name|identifier
+operator|.
+name|IdentifierManager
 import|;
 end_import
 
@@ -688,6 +656,40 @@ operator|.
 name|slf4j
 operator|.
 name|LoggerFactory
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkNotNull
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|api
+operator|.
+name|Type
+operator|.
+name|STRINGS
 import|;
 end_import
 

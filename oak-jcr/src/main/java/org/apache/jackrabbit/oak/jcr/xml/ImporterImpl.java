@@ -20,26 +20,6 @@ package|;
 end_package
 
 begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|plugins
-operator|.
-name|nodetype
-operator|.
-name|NodeTypeConstants
-operator|.
-name|NODE_TYPES_PATH
-import|;
-end_import
-
-begin_import
 import|import
 name|java
 operator|.
@@ -377,9 +357,11 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|core
+name|jcr
 operator|.
-name|IdentifierManager
+name|security
+operator|.
+name|AccessManager
 import|;
 end_import
 
@@ -411,11 +393,11 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|jcr
+name|plugins
 operator|.
-name|security
+name|identifier
 operator|.
-name|AccessManager
+name|IdentifierManager
 import|;
 end_import
 
@@ -654,6 +636,26 @@ operator|.
 name|slf4j
 operator|.
 name|LoggerFactory
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|nodetype
+operator|.
+name|NodeTypeConstants
+operator|.
+name|NODE_TYPES_PATH
 import|;
 end_import
 

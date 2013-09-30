@@ -13,7 +13,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|core
+name|plugins
+operator|.
+name|identifier
 package|;
 end_package
 
@@ -27,7 +29,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|core
+name|plugins
+operator|.
+name|identifier
 operator|.
 name|IdentifierManager
 operator|.
@@ -174,6 +178,24 @@ operator|.
 name|api
 operator|.
 name|Type
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|identifier
+operator|.
+name|IdentifierManager
 import|;
 end_import
 

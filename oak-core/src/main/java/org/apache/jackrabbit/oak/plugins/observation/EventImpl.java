@@ -13,7 +13,7 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|jcr
+name|plugins
 operator|.
 name|observation
 package|;
@@ -70,7 +70,6 @@ comment|/**  * TODO document  */
 end_comment
 
 begin_class
-specifier|public
 class|class
 name|EventImpl
 implements|implements
@@ -121,7 +120,6 @@ specifier|final
 name|boolean
 name|external
 decl_stmt|;
-specifier|public
 name|EventImpl
 parameter_list|(
 name|int
