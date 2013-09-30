@@ -92,6 +92,11 @@ argument_list|>
 block|{
 specifier|private
 specifier|final
+name|int
+name|index
+decl_stmt|;
+specifier|private
+specifier|final
 name|String
 name|name
 decl_stmt|;
@@ -105,6 +110,9 @@ name|type
 decl_stmt|;
 name|PropertyTemplate
 parameter_list|(
+name|int
+name|index
+parameter_list|,
 name|String
 name|name
 parameter_list|,
@@ -115,6 +123,12 @@ argument_list|>
 name|type
 parameter_list|)
 block|{
+name|this
+operator|.
+name|index
+operator|=
+name|index
+expr_stmt|;
 name|this
 operator|.
 name|name
@@ -147,6 +161,13 @@ argument_list|)
 expr_stmt|;
 name|this
 operator|.
+name|index
+operator|=
+literal|0
+expr_stmt|;
+comment|// TODO: is this used anywhere
+name|this
+operator|.
 name|name
 operator|=
 name|state
@@ -163,6 +184,15 @@ operator|.
 name|getType
 argument_list|()
 expr_stmt|;
+block|}
+specifier|public
+name|int
+name|getIndex
+parameter_list|()
+block|{
+return|return
+name|index
+return|;
 block|}
 specifier|public
 name|String

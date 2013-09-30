@@ -1635,6 +1635,8 @@ operator|=
 operator|new
 name|PropertyTemplate
 argument_list|(
+name|i
+argument_list|,
 name|readString
 argument_list|(
 name|propertyNameId
