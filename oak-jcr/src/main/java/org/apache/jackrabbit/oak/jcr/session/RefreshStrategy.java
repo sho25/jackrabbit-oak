@@ -279,6 +279,38 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+comment|/**      * Force the next call to {@link #needsRefresh(SessionOperation)} to return {@code true} for      * every {@link Once} strategy in this composite.      *<p>      * This method is safe for calling concurrently to any other method of this class.      */
+specifier|public
+name|void
+name|refreshAtNextAccess
+parameter_list|()
+block|{
+name|accept
+argument_list|(
+operator|new
+name|Visitor
+argument_list|()
+block|{
+annotation|@
+name|Override
+specifier|public
+name|void
+name|visit
+parameter_list|(
+name|Once
+name|strategy
+parameter_list|)
+block|{
+name|strategy
+operator|.
+name|reset
+argument_list|()
+expr_stmt|;
+block|}
+block|}
+argument_list|)
+expr_stmt|;
+block|}
 comment|/**      * Visitor for traversing the composite.      */
 specifier|public
 specifier|static
@@ -360,6 +392,7 @@ argument_list|)
 decl_stmt|;
 comment|/** Value returned from {@code needsRefresh} */
 specifier|protected
+specifier|volatile
 name|boolean
 name|refresh
 decl_stmt|;
@@ -437,35 +470,6 @@ name|Once
 extends|extends
 name|Default
 block|{
-comment|/** Visitor for resetting this refresh strategy */
-specifier|public
-specifier|static
-specifier|final
-name|Visitor
-name|RESETTING_VISITOR
-init|=
-operator|new
-name|Visitor
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|visit
-parameter_list|(
-name|Once
-name|strategy
-parameter_list|)
-block|{
-name|strategy
-operator|.
-name|reset
-argument_list|()
-expr_stmt|;
-block|}
-block|}
-decl_stmt|;
 comment|/**          * @param enabled  whether this refresh strategy is initially enabled          */
 specifier|public
 name|Once
