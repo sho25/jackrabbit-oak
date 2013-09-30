@@ -272,6 +272,9 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+name|Tree
+name|c
+init|=
 name|root
 operator|.
 name|getTree
@@ -283,15 +286,24 @@ name|addChild
 argument_list|(
 literal|"content"
 argument_list|)
+decl_stmt|;
+name|c
 operator|.
 name|addChild
 argument_list|(
-literal|"testFullTextTermName"
+literal|"testFullTextTermNameSimple"
+argument_list|)
+expr_stmt|;
+name|c
+operator|.
+name|addChild
+argument_list|(
+literal|"testFullTextTermNameFile.txt"
 argument_list|)
 expr_stmt|;
 name|assertQuery
 argument_list|(
-literal|"//*[jcr:contains(., 'testFullTextTermName')]"
+literal|"//*[jcr:contains(., 'testFullTextTermNameSimple')]"
 argument_list|,
 literal|"xpath"
 argument_list|,
@@ -299,7 +311,21 @@ name|ImmutableList
 operator|.
 name|of
 argument_list|(
-literal|"/content/testFullTextTermName"
+literal|"/content/testFullTextTermNameSimple"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertQuery
+argument_list|(
+literal|"//*[jcr:contains(., 'testFullTextTermNameFile.txt')]"
+argument_list|,
+literal|"xpath"
+argument_list|,
+name|ImmutableList
+operator|.
+name|of
+argument_list|(
+literal|"/content/testFullTextTermNameFile.txt"
 argument_list|)
 argument_list|)
 expr_stmt|;
