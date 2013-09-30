@@ -172,6 +172,14 @@ name|ID
 init|=
 literal|"_id"
 decl_stmt|;
+comment|/**      * The modification count on the document. This is an long value      * incremented on every modification.      */
+specifier|static
+specifier|final
+name|String
+name|MOD_COUNT
+init|=
+literal|"_modCount"
+decl_stmt|;
 comment|/**      * The data of this document.      */
 specifier|protected
 name|Map
@@ -213,6 +221,24 @@ operator|)
 name|get
 argument_list|(
 name|ID
+argument_list|)
+return|;
+block|}
+comment|/**      * @return the modification count of this document or<code>null</code> if      *         none is set.      */
+annotation|@
+name|CheckForNull
+specifier|public
+name|Number
+name|getModCount
+parameter_list|()
+block|{
+return|return
+operator|(
+name|Number
+operator|)
+name|get
+argument_list|(
+name|MOD_COUNT
 argument_list|)
 return|;
 block|}

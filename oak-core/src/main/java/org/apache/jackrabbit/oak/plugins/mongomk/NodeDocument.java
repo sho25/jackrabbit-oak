@@ -543,6 +543,8 @@ name|asList
 argument_list|(
 name|ID
 argument_list|,
+name|MOD_COUNT
+argument_list|,
 name|MODIFIED
 argument_list|,
 name|PREVIOUS
