@@ -158,6 +158,7 @@ operator|=
 name|isNew
 expr_stmt|;
 block|}
+specifier|public
 name|String
 name|getId
 parameter_list|()
