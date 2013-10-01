@@ -81,6 +81,18 @@ name|util
 operator|.
 name|concurrent
 operator|.
+name|ConcurrentHashMap
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
 name|atomic
 operator|.
 name|AtomicInteger
@@ -294,16 +306,16 @@ name|totalLogTime
 decl_stmt|;
 specifier|private
 specifier|final
-name|HashMap
+name|Map
 argument_list|<
 name|String
 argument_list|,
 name|Integer
 argument_list|>
-name|commonCalls
+name|slowCalls
 init|=
 operator|new
-name|HashMap
+name|ConcurrentHashMap
 argument_list|<
 name|String
 argument_list|,
@@ -1611,7 +1623,6 @@ throw|;
 block|}
 block|}
 specifier|private
-specifier|synchronized
 name|void
 name|logCommonCall
 parameter_list|(
@@ -1646,7 +1657,7 @@ condition|)
 block|{
 return|return;
 block|}
-name|HashMap
+name|Map
 argument_list|<
 name|String
 argument_list|,
@@ -1654,7 +1665,7 @@ name|Integer
 argument_list|>
 name|map
 init|=
-name|commonCalls
+name|slowCalls
 decl_stmt|;
 name|Integer
 name|oldCount
@@ -2247,7 +2258,7 @@ operator|+
 literal|"%"
 argument_list|)
 expr_stmt|;
-name|HashMap
+name|Map
 argument_list|<
 name|String
 argument_list|,
@@ -2255,7 +2266,7 @@ name|Integer
 argument_list|>
 name|map
 init|=
-name|commonCalls
+name|slowCalls
 decl_stmt|;
 name|int
 name|top
@@ -2350,14 +2361,14 @@ condition|)
 block|{
 name|log
 argument_list|(
-literal|"common call "
+literal|"slow call "
 operator|+
 name|e
 operator|.
 name|getValue
 argument_list|()
 operator|+
-literal|" "
+literal|" millis: "
 operator|+
 name|e
 operator|.
@@ -2379,12 +2390,24 @@ break|break;
 block|}
 block|}
 block|}
+if|if
+condition|(
+name|i
+operator|>=
+name|map
+operator|.
+name|size
+argument_list|()
+condition|)
+block|{
+break|break;
+block|}
 name|max
 operator|=
 name|best
 expr_stmt|;
 block|}
-name|commonCalls
+name|slowCalls
 operator|.
 name|clear
 argument_list|()
