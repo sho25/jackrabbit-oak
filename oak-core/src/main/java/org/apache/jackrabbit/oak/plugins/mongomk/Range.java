@@ -133,10 +133,16 @@ name|compareRevisionTime
 argument_list|(
 name|low
 argument_list|)
-operator|>
+operator|>=
 literal|0
 argument_list|,
-literal|"High Revision must be later than low Revision"
+literal|"High Revision must be later than low Revision, high="
+operator|+
+name|high
+operator|+
+literal|" low="
+operator|+
+name|low
 argument_list|)
 expr_stmt|;
 block|}
