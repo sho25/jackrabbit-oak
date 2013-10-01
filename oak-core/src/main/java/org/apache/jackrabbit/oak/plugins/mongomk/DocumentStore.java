@@ -226,6 +226,31 @@ argument_list|>
 name|updateOps
 parameter_list|)
 function_decl|;
+comment|/**      * Update documents with the given keys. Only existing documents are      * updated.      *      * @param<T> the document type.      * @param collection the collection.      * @param keys the keys of the documents to update.      * @param updateOp the update operation to apply to each of the documents.      */
+parameter_list|<
+name|T
+extends|extends
+name|Document
+parameter_list|>
+name|void
+name|update
+parameter_list|(
+name|Collection
+argument_list|<
+name|T
+argument_list|>
+name|collection
+parameter_list|,
+name|List
+argument_list|<
+name|String
+argument_list|>
+name|keys
+parameter_list|,
+name|UpdateOp
+name|updateOp
+parameter_list|)
+function_decl|;
 comment|/**      * Create or update a document. For MongoDb, this is using "findAndModify" with      * the "upsert" flag (insert or update). The returned document is immutable.      *      * @param<T> the document type      * @param collection the collection      * @param update the update operation      * @return the old document or<code>null</code> if it didn't exist before.      * @throws MicroKernelException if the operation failed.      */
 annotation|@
 name|CheckForNull

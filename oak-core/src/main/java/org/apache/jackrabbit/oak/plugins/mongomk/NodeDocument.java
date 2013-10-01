@@ -2044,7 +2044,8 @@ name|entry
 range|:
 name|op
 operator|.
-name|changes
+name|getChanges
+argument_list|()
 operator|.
 name|entrySet
 argument_list|()

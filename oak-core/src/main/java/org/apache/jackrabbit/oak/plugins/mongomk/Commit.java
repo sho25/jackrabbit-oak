@@ -945,6 +945,7 @@ condition|(
 name|op
 operator|.
 name|isNew
+argument_list|()
 condition|)
 block|{
 name|NodeDocument
@@ -1021,6 +1022,7 @@ operator|&&
 name|commitRoot
 operator|.
 name|isNew
+argument_list|()
 condition|)
 block|{
 comment|// no updates and root of commit is also new. that is,
@@ -1178,6 +1180,7 @@ operator|!
 name|commitRoot
 operator|.
 name|isNew
+argument_list|()
 condition|)
 block|{
 name|NodeDocument
@@ -1478,11 +1481,13 @@ condition|(
 name|op
 operator|.
 name|isDelete
+argument_list|()
 operator|||
 operator|!
 name|op
 operator|.
 name|isNew
+argument_list|()
 condition|)
 block|{
 name|conflictMessage
@@ -1505,6 +1510,7 @@ condition|(
 name|op
 operator|.
 name|isNew
+argument_list|()
 condition|)
 block|{
 name|conflictMessage
@@ -1537,6 +1543,7 @@ operator|(
 name|op
 operator|.
 name|isDelete
+argument_list|()
 operator|||
 name|isConflicting
 argument_list|(
@@ -1972,6 +1979,7 @@ operator|&&
 name|op
 operator|.
 name|isNew
+argument_list|()
 decl_stmt|;
 name|boolean
 name|isWritten
@@ -1990,6 +1998,7 @@ operator|&&
 name|op
 operator|.
 name|isDelete
+argument_list|()
 decl_stmt|;
 name|mk
 operator|.
