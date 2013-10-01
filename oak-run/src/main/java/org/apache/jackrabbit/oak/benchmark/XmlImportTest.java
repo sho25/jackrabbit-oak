@@ -72,6 +72,10 @@ specifier|private
 name|Node
 name|testRoot
 decl_stmt|;
+specifier|private
+name|int
+name|counter
+decl_stmt|;
 annotation|@
 name|Override
 specifier|protected
@@ -139,6 +143,9 @@ argument_list|()
 operator|.
 name|getSimpleName
 argument_list|()
+operator|+
+name|counter
+operator|++
 decl_stmt|;
 name|testRoot
 operator|=
