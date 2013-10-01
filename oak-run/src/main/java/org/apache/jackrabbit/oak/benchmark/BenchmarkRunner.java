@@ -678,6 +678,10 @@ name|withAnonymous
 argument_list|()
 block|,
 operator|new
+name|GetDeepNodeTest
+argument_list|()
+block|,
+operator|new
 name|SetPropertyTest
 argument_list|()
 block|,
