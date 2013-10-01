@@ -1614,10 +1614,7 @@ name|writeInt
 argument_list|(
 name|entry
 operator|.
-name|getName
-argument_list|()
-operator|.
-name|hashCode
+name|getHash
 argument_list|()
 argument_list|)
 expr_stmt|;

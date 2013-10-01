@@ -161,6 +161,7 @@ name|RecordId
 name|key
 decl_stmt|;
 specifier|private
+specifier|final
 name|RecordId
 name|value
 decl_stmt|;
@@ -212,6 +213,18 @@ name|value
 operator|=
 name|value
 expr_stmt|;
+block|}
+specifier|public
+name|int
+name|getHash
+parameter_list|()
+block|{
+return|return
+name|name
+operator|.
+name|hashCode
+argument_list|()
+return|;
 block|}
 comment|//----------------------------------------------------< ChildNodeEntry>--
 annotation|@
@@ -286,22 +299,11 @@ name|RecordId
 name|value
 parameter_list|)
 block|{
-name|RecordId
-name|old
-init|=
-name|this
-operator|.
-name|value
-decl_stmt|;
-name|this
-operator|.
-name|value
-operator|=
-name|value
-expr_stmt|;
-return|return
-name|old
-return|;
+throw|throw
+operator|new
+name|UnsupportedOperationException
+argument_list|()
+throw|;
 block|}
 comment|//--------------------------------------------------------< Comparable>--
 annotation|@
