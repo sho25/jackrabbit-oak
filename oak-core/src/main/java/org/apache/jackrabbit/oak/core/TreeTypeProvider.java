@@ -36,6 +36,11 @@ specifier|public
 interface|interface
 name|TreeTypeProvider
 block|{
+name|int
+name|TYPE_NONE
+init|=
+literal|0
+decl_stmt|;
 comment|// regular trees
 name|int
 name|TYPE_DEFAULT
