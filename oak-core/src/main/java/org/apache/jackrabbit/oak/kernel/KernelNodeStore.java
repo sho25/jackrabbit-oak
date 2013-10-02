@@ -277,6 +277,22 @@ name|oak
 operator|.
 name|cache
 operator|.
+name|CacheLIRS
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|cache
+operator|.
 name|CacheStats
 import|;
 end_import
@@ -559,7 +575,7 @@ name|this
 operator|.
 name|cache
 operator|=
-name|CacheBuilder
+name|CacheLIRS
 operator|.
 name|newBuilder
 argument_list|()
@@ -785,6 +801,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Returns a string representation the head state of this node store.      */
+annotation|@
+name|Override
 specifier|public
 name|String
 name|toString
