@@ -377,12 +377,10 @@ argument_list|(
 literal|"Token is expired"
 argument_list|)
 expr_stmt|;
-name|tokenProvider
-operator|.
-name|removeToken
-argument_list|(
 name|tokenInfo
-argument_list|)
+operator|.
+name|remove
+argument_list|()
 expr_stmt|;
 return|return
 literal|false
@@ -398,12 +396,10 @@ name|tokenCredentials
 argument_list|)
 condition|)
 block|{
-name|tokenProvider
-operator|.
-name|resetTokenExpiration
-argument_list|(
 name|tokenInfo
-argument_list|,
+operator|.
+name|resetExpiration
+argument_list|(
 name|loginTime
 argument_list|)
 expr_stmt|;

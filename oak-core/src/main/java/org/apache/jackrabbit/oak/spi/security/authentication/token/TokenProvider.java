@@ -140,29 +140,6 @@ name|String
 name|token
 parameter_list|)
 function_decl|;
-comment|/**      * Tries to remove the login token and all related information. This method      * returns {@code true} if the removal was successful.      *      * @param tokenInfo The {@code TokenInfo} associated with the login token to      * be removed.      * @return {@code true} if the removal was successful, {@code false} otherwise.      */
-name|boolean
-name|removeToken
-parameter_list|(
-annotation|@
-name|Nonnull
-name|TokenInfo
-name|tokenInfo
-parameter_list|)
-function_decl|;
-comment|/**      * Resets the expiration time of the login token associated with the given      * {@code TokenInfo}. Whether and when the expiration time of a given login      * token is being reset is an implementation detail. Implementations that      * don't allow for resetting the token's expiration time at all will always      * return {@code false}.      *      * @param tokenInfo The {@code TokenInfo} associated with the login token to      * be reset.      * @param loginTime The current login time.      * @return {@code true} if the expiration time has been reset, false otherwise.      */
-name|boolean
-name|resetTokenExpiration
-parameter_list|(
-annotation|@
-name|Nonnull
-name|TokenInfo
-name|tokenInfo
-parameter_list|,
-name|long
-name|loginTime
-parameter_list|)
-function_decl|;
 block|}
 end_interface
 
