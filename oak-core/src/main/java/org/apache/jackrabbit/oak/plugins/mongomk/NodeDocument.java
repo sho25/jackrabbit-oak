@@ -409,7 +409,7 @@ specifier|final
 name|int
 name|SPLIT_CANDIDATE_THRESHOLD
 init|=
-literal|32
+literal|8
 operator|*
 literal|1024
 decl_stmt|;
@@ -419,7 +419,7 @@ specifier|final
 name|int
 name|FORCE_SPLIT_THRESHOLD
 init|=
-literal|1024
+literal|16
 operator|*
 literal|1024
 decl_stmt|;
@@ -429,7 +429,7 @@ specifier|final
 name|int
 name|REVISIONS_SPLIT_OFF_SIZE
 init|=
-literal|1000
+literal|100
 decl_stmt|;
 comment|/**      * Revision collision markers set by commits with modifications, which      * overlap with un-merged branch commits.      * Key: revision, value:      */
 specifier|static
