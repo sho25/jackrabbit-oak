@@ -306,13 +306,6 @@ argument_list|()
 index|]
 argument_list|)
 decl_stmt|;
-name|Arrays
-operator|.
-name|sort
-argument_list|(
-name|uris
-argument_list|)
-expr_stmt|;
 return|return
 name|uris
 return|;
