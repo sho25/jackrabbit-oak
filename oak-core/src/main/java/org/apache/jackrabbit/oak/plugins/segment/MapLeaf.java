@@ -231,7 +231,7 @@ name|d
 operator|=
 name|Integer
 operator|.
-name|compare
+name|valueOf
 argument_list|(
 name|segment
 operator|.
@@ -246,8 +246,16 @@ operator|*
 literal|4
 argument_list|)
 argument_list|)
-argument_list|,
+argument_list|)
+operator|.
+name|compareTo
+argument_list|(
+name|Integer
+operator|.
+name|valueOf
+argument_list|(
 name|hash
+argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
