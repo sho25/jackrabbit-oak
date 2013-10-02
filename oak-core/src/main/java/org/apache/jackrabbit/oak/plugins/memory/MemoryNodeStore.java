@@ -909,6 +909,12 @@ name|root
 argument_list|)
 argument_list|)
 decl_stmt|;
+synchronized|synchronized
+init|(
+name|this
+init|)
+block|{
+comment|// FIXME temporarily synchronized to work around the race described in OAK-1055
 name|store
 operator|.
 name|root
@@ -932,6 +938,7 @@ argument_list|,
 name|merged
 argument_list|)
 expr_stmt|;
+block|}
 return|return
 name|merged
 return|;

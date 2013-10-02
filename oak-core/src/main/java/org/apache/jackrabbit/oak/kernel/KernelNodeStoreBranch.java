@@ -945,15 +945,6 @@ parameter_list|)
 throws|throws
 name|CommitFailedException
 block|{
-name|committed
-operator|.
-name|contentChanged
-argument_list|(
-name|base
-argument_list|,
-name|base
-argument_list|)
-expr_stmt|;
 name|branchState
 operator|=
 operator|new
