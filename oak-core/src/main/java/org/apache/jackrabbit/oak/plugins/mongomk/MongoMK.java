@@ -6154,18 +6154,6 @@ argument_list|,
 name|rev
 argument_list|)
 decl_stmt|;
-comment|// remove from the cache
-name|nodeCache
-operator|.
-name|invalidate
-argument_list|(
-name|path
-operator|+
-literal|"@"
-operator|+
-name|rev
-argument_list|)
-expr_stmt|;
 if|if
 condition|(
 name|n
@@ -6221,18 +6209,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|// Remove the node from the cache
-name|nodeCache
-operator|.
-name|invalidate
-argument_list|(
-name|path
-operator|+
-literal|"@"
-operator|+
-name|rev
-argument_list|)
-expr_stmt|;
 block|}
 specifier|public
 specifier|static
