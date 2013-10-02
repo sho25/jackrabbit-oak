@@ -1471,6 +1471,9 @@ name|getEntry
 argument_list|(
 literal|"one"
 argument_list|)
+operator|.
+name|getValue
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|assertNull
@@ -1542,6 +1545,9 @@ name|getEntry
 argument_list|(
 literal|"one"
 argument_list|)
+operator|.
+name|getValue
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|assertEquals
@@ -1554,6 +1560,9 @@ name|getEntry
 argument_list|(
 literal|"two"
 argument_list|)
+operator|.
+name|getValue
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|assertNull
@@ -1678,6 +1687,9 @@ literal|"key"
 operator|+
 name|i
 argument_list|)
+operator|.
+name|getValue
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -1810,6 +1822,9 @@ literal|"key"
 operator|+
 name|i
 argument_list|)
+operator|.
+name|getValue
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}

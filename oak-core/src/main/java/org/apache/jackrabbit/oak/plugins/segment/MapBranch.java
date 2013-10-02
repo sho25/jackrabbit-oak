@@ -367,7 +367,7 @@ return|;
 block|}
 annotation|@
 name|Override
-name|RecordId
+name|MapEntry
 name|getEntry
 parameter_list|(
 name|String
