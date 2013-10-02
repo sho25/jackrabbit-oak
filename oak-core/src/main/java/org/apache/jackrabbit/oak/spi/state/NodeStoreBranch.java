@@ -90,7 +90,7 @@ specifier|public
 interface|interface
 name|NodeStoreBranch
 block|{
-comment|/**      * Returns the base state of this branch.      * The base state is the state of the tree as it was at the time      * {@link NodeStore#branch()} was used to obtain this instance.      *      * @return root node state      */
+comment|/**      * Returns the base state of this branch.      * The base state is the state of the tree as it was at the time      * this branch was created.      *      * @return root node state      */
 annotation|@
 name|Nonnull
 name|NodeState

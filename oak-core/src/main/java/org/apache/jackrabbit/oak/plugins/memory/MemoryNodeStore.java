@@ -247,24 +247,6 @@ name|spi
 operator|.
 name|state
 operator|.
-name|AbstractNodeStoreBranch
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|spi
-operator|.
-name|state
-operator|.
 name|ConflictAnnotatingRebaseDiff
 import|;
 end_import
@@ -770,8 +752,8 @@ specifier|private
 specifier|static
 class|class
 name|MemoryNodeStoreBranch
-extends|extends
-name|AbstractNodeStoreBranch
+implements|implements
+name|NodeStoreBranch
 block|{
 comment|/** The underlying store to which this branch belongs */
 specifier|private
@@ -993,6 +975,21 @@ operator|new
 name|UnsupportedOperationException
 argument_list|()
 throw|;
+block|}
+comment|//------------------------------------------------------------< Object>---
+annotation|@
+name|Override
+specifier|public
+name|String
+name|toString
+parameter_list|()
+block|{
+return|return
+name|root
+operator|.
+name|toString
+argument_list|()
+return|;
 block|}
 comment|// ----------------------------------------------------< private>---
 specifier|private

@@ -225,24 +225,6 @@ name|spi
 operator|.
 name|state
 operator|.
-name|AbstractNodeStoreBranch
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|spi
-operator|.
-name|state
-operator|.
 name|ConflictAnnotatingRebaseDiff
 import|;
 end_import
@@ -283,6 +265,24 @@ name|NodeState
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|state
+operator|.
+name|NodeStoreBranch
+import|;
+end_import
+
 begin_comment
 comment|/**  * {@code NodeStoreBranch} based on {@link MicroKernel} branching and merging.  * This implementation keeps changes in memory up to a certain limit and writes  * them back to the Microkernel branch when the limit is exceeded.  */
 end_comment
@@ -290,8 +290,8 @@ end_comment
 begin_class
 class|class
 name|KernelNodeStoreBranch
-extends|extends
-name|AbstractNodeStoreBranch
+implements|implements
+name|NodeStoreBranch
 block|{
 comment|/** The underlying store to which this branch belongs */
 specifier|private
