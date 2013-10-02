@@ -146,17 +146,6 @@ specifier|public
 class|class
 name|SegmentCache
 block|{
-specifier|private
-specifier|static
-specifier|final
-name|int
-name|DEFAULT_MEMORY_CACHE_SIZE
-init|=
-literal|1
-operator|<<
-literal|28
-decl_stmt|;
-comment|// 256MB
 specifier|protected
 specifier|final
 name|int
@@ -264,19 +253,6 @@ name|maximumSize
 operator|=
 name|maximumSize
 expr_stmt|;
-block|}
-specifier|public
-specifier|static
-name|SegmentCache
-name|create
-parameter_list|()
-block|{
-return|return
-name|create
-argument_list|(
-name|DEFAULT_MEMORY_CACHE_SIZE
-argument_list|)
-return|;
 block|}
 specifier|public
 specifier|static
