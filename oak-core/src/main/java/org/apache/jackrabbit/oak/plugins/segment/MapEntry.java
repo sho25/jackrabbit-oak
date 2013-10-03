@@ -202,10 +202,12 @@ name|getHash
 parameter_list|()
 block|{
 return|return
-name|name
+name|MapRecord
 operator|.
-name|hashCode
-argument_list|()
+name|getHash
+argument_list|(
+name|name
+argument_list|)
 return|;
 block|}
 comment|//----------------------------------------------------< ChildNodeEntry>--
@@ -306,16 +308,12 @@ argument_list|()
 operator|.
 name|compare
 argument_list|(
-name|name
-operator|.
-name|hashCode
+name|getHash
 argument_list|()
 argument_list|,
 name|that
 operator|.
-name|name
-operator|.
-name|hashCode
+name|getHash
 argument_list|()
 argument_list|)
 operator|.
