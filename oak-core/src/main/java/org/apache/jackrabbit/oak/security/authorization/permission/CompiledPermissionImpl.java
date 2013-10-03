@@ -365,11 +365,6 @@ name|principals
 decl_stmt|;
 specifier|private
 specifier|final
-name|RestrictionProvider
-name|restrictionProvider
-decl_stmt|;
-specifier|private
-specifier|final
 name|Map
 argument_list|<
 name|String
@@ -459,12 +454,6 @@ name|principals
 expr_stmt|;
 name|this
 operator|.
-name|restrictionProvider
-operator|=
-name|restrictionProvider
-expr_stmt|;
-name|this
-operator|.
 name|bitsProvider
 operator|=
 name|bitsProvider
@@ -511,7 +500,7 @@ index|]
 operator|=
 name|p
 operator|+
-literal|"/"
+literal|'/'
 expr_stmt|;
 block|}
 name|userTrees
