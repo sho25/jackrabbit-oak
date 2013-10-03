@@ -91,12 +91,13 @@ argument_list|()
 operator|.
 name|addNode
 argument_list|(
-name|GetNodeTest
-operator|.
-name|class
+name|getClass
+argument_list|()
 operator|.
 name|getSimpleName
 argument_list|()
+operator|+
+name|TEST_ID
 argument_list|,
 literal|"nt:unstructured"
 argument_list|)

@@ -128,7 +128,9 @@ argument_list|()
 operator|.
 name|addNode
 argument_list|(
-literal|"SmallFileWriteTest"
+literal|"SmallFileWrite"
+operator|+
+name|TEST_ID
 operator|+
 name|iteration
 operator|++

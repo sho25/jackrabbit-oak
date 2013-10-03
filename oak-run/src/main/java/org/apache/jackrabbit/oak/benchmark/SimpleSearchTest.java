@@ -196,6 +196,8 @@ operator|.
 name|addNode
 argument_list|(
 literal|"testroot"
+operator|+
+name|TEST_ID
 argument_list|,
 literal|"nt:unstructured"
 argument_list|)

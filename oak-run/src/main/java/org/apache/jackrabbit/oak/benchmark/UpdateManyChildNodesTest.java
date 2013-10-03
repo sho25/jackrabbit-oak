@@ -58,6 +58,16 @@ name|UpdateManyChildNodesTest
 extends|extends
 name|AbstractTest
 block|{
+specifier|protected
+specifier|static
+specifier|final
+name|String
+name|ROOT_NODE_NAME
+init|=
+literal|"update"
+operator|+
+name|TEST_ID
+decl_stmt|;
 specifier|private
 specifier|static
 specifier|final
@@ -105,7 +115,7 @@ argument_list|()
 operator|.
 name|addNode
 argument_list|(
-literal|"testnode"
+name|ROOT_NODE_NAME
 argument_list|,
 literal|"nt:unstructured"
 argument_list|)
@@ -212,7 +222,7 @@ argument_list|()
 operator|.
 name|getNode
 argument_list|(
-literal|"testnode"
+name|ROOT_NODE_NAME
 argument_list|)
 operator|.
 name|remove

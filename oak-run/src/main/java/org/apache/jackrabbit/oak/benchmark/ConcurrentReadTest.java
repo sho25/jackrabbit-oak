@@ -86,6 +86,16 @@ name|NODE_COUNT
 init|=
 literal|100
 decl_stmt|;
+specifier|protected
+specifier|static
+specifier|final
+name|String
+name|ROOT_NODE_NAME
+init|=
+literal|"test"
+operator|+
+name|TEST_ID
+decl_stmt|;
 specifier|private
 specifier|final
 name|int
@@ -179,7 +189,7 @@ argument_list|()
 operator|.
 name|addNode
 argument_list|(
-literal|"testroot"
+name|ROOT_NODE_NAME
 argument_list|,
 literal|"nt:unstructured"
 argument_list|)
@@ -394,7 +404,9 @@ argument_list|()
 operator|.
 name|getNode
 argument_list|(
-literal|"testroot/node"
+name|ROOT_NODE_NAME
+operator|+
+literal|"/node"
 operator|+
 name|a
 operator|+
@@ -507,7 +519,9 @@ argument_list|()
 operator|.
 name|getNode
 argument_list|(
-literal|"testroot/node"
+name|ROOT_NODE_NAME
+operator|+
+literal|"/node"
 operator|+
 name|a
 operator|+
@@ -623,7 +637,7 @@ argument_list|()
 operator|.
 name|getNode
 argument_list|(
-literal|"testroot"
+name|ROOT_NODE_NAME
 argument_list|)
 decl_stmt|;
 for|for

@@ -155,7 +155,13 @@ argument_list|()
 operator|.
 name|addNode
 argument_list|(
-literal|"SmallFileReadTest"
+name|getClass
+argument_list|()
+operator|.
+name|getSimpleName
+argument_list|()
+operator|+
+name|TEST_ID
 argument_list|,
 literal|"nt:folder"
 argument_list|)

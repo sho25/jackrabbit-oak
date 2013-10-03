@@ -865,7 +865,9 @@ argument_list|()
 operator|.
 name|addNode
 argument_list|(
-literal|"content"
+literal|"c"
+operator|+
+name|TEST_ID
 argument_list|)
 expr_stmt|;
 for|for

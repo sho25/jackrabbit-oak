@@ -241,6 +241,8 @@ argument_list|()
 operator|.
 name|getSimpleName
 argument_list|()
+operator|+
+name|TEST_ID
 decl_stmt|;
 name|Node
 name|rn
