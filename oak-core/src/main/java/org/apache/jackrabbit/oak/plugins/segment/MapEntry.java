@@ -91,24 +91,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|spi
-operator|.
-name|state
-operator|.
-name|NodeState
-import|;
-end_import
-
-begin_import
-import|import
 name|com
 operator|.
 name|google
@@ -245,7 +227,7 @@ name|Override
 annotation|@
 name|Nonnull
 specifier|public
-name|NodeState
+name|SegmentNodeState
 name|getNodeState
 parameter_list|()
 block|{
