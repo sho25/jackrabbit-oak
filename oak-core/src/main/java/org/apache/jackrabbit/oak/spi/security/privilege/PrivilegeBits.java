@@ -1248,7 +1248,6 @@ expr_stmt|;
 block|}
 else|else
 block|{
-comment|// todo: what about add+alter (but not remove?)
 if|if
 condition|(
 operator|(
@@ -1267,7 +1266,6 @@ operator|.
 name|ADD_PROPERTY
 expr_stmt|;
 block|}
-elseif|else
 if|if
 condition|(
 operator|(
@@ -1286,7 +1284,6 @@ operator|.
 name|MODIFY_PROPERTY
 expr_stmt|;
 block|}
-elseif|else
 if|if
 condition|(
 operator|(
