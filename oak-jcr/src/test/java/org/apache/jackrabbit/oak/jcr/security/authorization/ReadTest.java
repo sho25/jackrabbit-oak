@@ -2514,6 +2514,13 @@ argument_list|(
 literal|"rep:Permissions"
 argument_list|)
 operator|&&
+name|node
+operator|.
+name|hasProperty
+argument_list|(
+literal|"rep:accessControlledPath"
+argument_list|)
+operator|&&
 name|path
 operator|.
 name|equals
