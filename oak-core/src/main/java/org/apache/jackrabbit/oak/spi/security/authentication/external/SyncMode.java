@@ -328,7 +328,7 @@ name|SyncMode
 name|fromStrings
 parameter_list|(
 name|String
-index|[]
+modifier|...
 name|names
 parameter_list|)
 block|{

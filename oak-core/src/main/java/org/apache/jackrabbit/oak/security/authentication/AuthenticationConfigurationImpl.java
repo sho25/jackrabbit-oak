@@ -541,9 +541,9 @@ name|getConfigValue
 argument_list|(
 name|PARAM_TOKEN_OPTIONS
 argument_list|,
-operator|new
 name|ConfigurationParameters
-argument_list|()
+operator|.
+name|EMPTY
 argument_list|)
 decl_stmt|;
 name|UserConfiguration

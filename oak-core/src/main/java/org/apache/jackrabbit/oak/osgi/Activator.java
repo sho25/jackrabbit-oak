@@ -1248,8 +1248,9 @@ decl_stmt|;
 name|ConfigurationParameters
 name|securityConfig
 init|=
-operator|new
 name|ConfigurationParameters
+operator|.
+name|of
 argument_list|(
 name|ImmutableMap
 operator|.
@@ -1259,8 +1260,9 @@ name|UserConfiguration
 operator|.
 name|NAME
 argument_list|,
-operator|new
 name|ConfigurationParameters
+operator|.
+name|of
 argument_list|(
 name|userMap
 argument_list|)
@@ -1269,8 +1271,9 @@ name|AuthorizationConfiguration
 operator|.
 name|NAME
 argument_list|,
-operator|new
 name|ConfigurationParameters
+operator|.
+name|of
 argument_list|(
 name|authorizMap
 argument_list|)

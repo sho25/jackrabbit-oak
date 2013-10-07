@@ -309,9 +309,9 @@ parameter_list|()
 block|{
 name|this
 argument_list|(
-operator|new
 name|ConfigurationParameters
-argument_list|()
+operator|.
+name|EMPTY
 argument_list|)
 expr_stmt|;
 block|}

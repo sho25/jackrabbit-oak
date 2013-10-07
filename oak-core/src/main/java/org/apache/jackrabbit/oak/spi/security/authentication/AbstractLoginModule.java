@@ -643,8 +643,9 @@ name|this
 operator|.
 name|options
 operator|=
-operator|new
 name|ConfigurationParameters
+operator|.
+name|of
 argument_list|(
 name|options
 argument_list|)

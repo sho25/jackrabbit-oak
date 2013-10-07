@@ -525,8 +525,9 @@ expr_stmt|;
 name|ConfigurationParameters
 name|config
 init|=
-operator|new
 name|ConfigurationParameters
+operator|.
+name|of
 argument_list|(
 name|ImmutableMap
 operator|.
@@ -536,8 +537,9 @@ name|UserConfiguration
 operator|.
 name|NAME
 argument_list|,
-operator|new
 name|ConfigurationParameters
+operator|.
+name|of
 argument_list|(
 name|userParams
 argument_list|)

@@ -393,7 +393,7 @@ block|{
 return|return
 name|ConfigurationParameters
 operator|.
-name|newInstance
+name|of
 argument_list|(
 name|params
 argument_list|,

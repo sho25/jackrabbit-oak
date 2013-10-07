@@ -467,7 +467,7 @@ name|config
 operator|=
 name|ConfigurationParameters
 operator|.
-name|newInstance
+name|of
 argument_list|(
 name|context
 operator|.

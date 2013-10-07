@@ -386,9 +386,9 @@ argument_list|()
 expr_stmt|;
 name|defaultConfig
 operator|=
-operator|new
 name|ConfigurationParameters
-argument_list|()
+operator|.
+name|EMPTY
 expr_stmt|;
 name|defaultUserPath
 operator|=
@@ -525,8 +525,9 @@ name|UserProvider
 argument_list|(
 name|root
 argument_list|,
-operator|new
 name|ConfigurationParameters
+operator|.
+name|of
 argument_list|(
 name|options
 argument_list|)
