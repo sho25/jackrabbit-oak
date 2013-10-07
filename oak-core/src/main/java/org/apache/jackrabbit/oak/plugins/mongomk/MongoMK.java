@@ -4727,7 +4727,6 @@ block|}
 annotation|@
 name|Override
 specifier|public
-specifier|synchronized
 name|String
 name|getNodes
 parameter_list|(
