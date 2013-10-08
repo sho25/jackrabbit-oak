@@ -726,6 +726,10 @@ name|NamespaceTest
 argument_list|()
 block|,
 operator|new
+name|NamespaceRegistryTest
+argument_list|()
+block|,
+operator|new
 name|ReadPropertyTest
 argument_list|()
 block|,
