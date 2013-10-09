@@ -1998,16 +1998,10 @@ name|tree
 parameter_list|)
 block|{
 return|return
-operator|!
 name|tree
 operator|.
-name|getName
+name|exists
 argument_list|()
-operator|.
-name|startsWith
-argument_list|(
-literal|":"
-argument_list|)
 return|;
 block|}
 block|}
@@ -2631,7 +2625,7 @@ block|}
 block|}
 block|}
 block|}
-comment|/**      * Set a property      *      * @param propertyState      * @return the set property      */
+comment|/**      * Set a property      *      * @return the set property      */
 annotation|@
 name|Nonnull
 specifier|public
@@ -4456,7 +4450,12 @@ throw|throw
 operator|new
 name|InvalidItemStateException
 argument_list|(
-literal|"Item is stale"
+literal|"Item is stale "
+operator|+
+name|tree
+operator|.
+name|getPath
+argument_list|()
 argument_list|)
 throw|;
 block|}
