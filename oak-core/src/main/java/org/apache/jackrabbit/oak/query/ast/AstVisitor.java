@@ -185,6 +185,13 @@ function_decl|;
 name|boolean
 name|visit
 parameter_list|(
+name|PropertyInexistenceImpl
+name|node
+parameter_list|)
+function_decl|;
+name|boolean
+name|visit
+parameter_list|(
 name|PropertyValueImpl
 name|node
 parameter_list|)
