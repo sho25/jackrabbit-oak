@@ -19,27 +19,64 @@ name|index
 operator|.
 name|solr
 operator|.
-name|embedded
+name|configuration
 package|;
 end_package
 
 begin_comment
-comment|/**  * {@link org.apache.solr.client.solrj.SolrServer} configuration provider.  */
+comment|/**  * The default {@link org.apache.jackrabbit.oak.plugins.index.solr.configuration.OakSolrConfigurationProvider}  */
 end_comment
 
-begin_interface
+begin_class
 specifier|public
-interface|interface
-name|SolrServerConfigurationProvider
+class|class
+name|DefaultSolrConfigurationProvider
+implements|implements
+name|OakSolrConfigurationProvider
 block|{
-comment|/**      * Provide a {@lin SolrServerConfiguration} to be used to initialize a specific      * {@link org.apache.solr.client.solrj.SolrServer} implementation.      *      * @return the {@link SolrServerConfiguration} holding the configuration parameters      */
+specifier|private
+specifier|final
+name|OakSolrConfiguration
+name|defaultConfiguration
+decl_stmt|;
 specifier|public
-name|SolrServerConfiguration
-name|getSolrServerConfiguration
+name|DefaultSolrConfigurationProvider
 parameter_list|()
-function_decl|;
+block|{
+name|defaultConfiguration
+operator|=
+operator|new
+name|DefaultSolrConfiguration
+argument_list|()
+expr_stmt|;
 block|}
-end_interface
+specifier|public
+name|DefaultSolrConfigurationProvider
+parameter_list|(
+name|OakSolrConfiguration
+name|configuration
+parameter_list|)
+block|{
+name|this
+operator|.
+name|defaultConfiguration
+operator|=
+name|configuration
+expr_stmt|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|OakSolrConfiguration
+name|getConfiguration
+parameter_list|()
+block|{
+return|return
+name|defaultConfiguration
+return|;
+block|}
+block|}
+end_class
 
 end_unit
 

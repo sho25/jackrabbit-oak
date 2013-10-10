@@ -18,28 +18,72 @@ operator|.
 name|index
 operator|.
 name|solr
+operator|.
+name|configuration
 package|;
 end_package
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|state
+operator|.
+name|NodeState
+import|;
+end_import
+
 begin_comment
-comment|/**  * Enum for describing Solr commit policy used in a certain instance  */
+comment|/**  * A {@link OakSolrNodeStateConfiguration} whose {@link org.apache.jackrabbit.oak.spi.state.NodeState} is given once  * and never updated so that the configuration is fixed.  */
 end_comment
 
-begin_enum
+begin_class
 specifier|public
-enum|enum
-name|CommitPolicy
+class|class
+name|FixedNodeStateConfiguration
+extends|extends
+name|OakSolrNodeStateConfiguration
 block|{
-comment|/**      * for default Solr commit      */
-name|HARD
-block|,
-comment|/**      * for Solr soft commit      */
-name|SOFT
-block|,
-comment|/**      * if no commits should be sent (relying on auto(soft)commit on the instance itself)      */
-name|AUTO
+specifier|private
+specifier|final
+name|NodeState
+name|configurationNodeState
+decl_stmt|;
+specifier|public
+name|FixedNodeStateConfiguration
+parameter_list|(
+name|NodeState
+name|configurationNodeState
+parameter_list|)
+block|{
+name|this
+operator|.
+name|configurationNodeState
+operator|=
+name|configurationNodeState
+expr_stmt|;
 block|}
-end_enum
+annotation|@
+name|Override
+specifier|protected
+name|NodeState
+name|getConfigurationNodeState
+parameter_list|()
+block|{
+return|return
+name|configurationNodeState
+return|;
+block|}
+block|}
+end_class
 
 end_unit
 

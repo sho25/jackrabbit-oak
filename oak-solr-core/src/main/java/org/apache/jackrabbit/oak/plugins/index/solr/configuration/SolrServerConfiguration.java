@@ -19,7 +19,7 @@ name|index
 operator|.
 name|solr
 operator|.
-name|embedded
+name|configuration
 package|;
 end_package
 
@@ -163,7 +163,7 @@ return|return
 name|coreName
 return|;
 block|}
-comment|/**      * get the {@link HttpConfiguration} holding parameters for enabling Solr      * server with HTTP bindings      *      * @return a {@link HttpConfiguration} or<code>null</code> if not set      */
+comment|/**      * get the {@link org.apache.jackrabbit.oak.plugins.index.solr.configuration.SolrServerConfiguration.HttpConfiguration} holding parameters for enabling Solr      * server with HTTP bindings      *      * @return a {@link org.apache.jackrabbit.oak.plugins.index.solr.configuration.SolrServerConfiguration.HttpConfiguration} or<code>null</code> if not set      */
 specifier|public
 name|HttpConfiguration
 name|getHttpConfiguration
@@ -173,6 +173,7 @@ return|return
 name|httpConfiguration
 return|;
 block|}
+specifier|public
 class|class
 name|HttpConfiguration
 block|{

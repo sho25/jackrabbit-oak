@@ -18,41 +18,25 @@ operator|.
 name|index
 operator|.
 name|solr
+operator|.
+name|configuration
 package|;
 end_package
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|solr
-operator|.
-name|client
-operator|.
-name|solrj
-operator|.
-name|SolrServer
-import|;
-end_import
-
 begin_comment
-comment|/**  * Provider of {@link SolrServer}s instances  */
+comment|/**  * A provider for {@link org.apache.jackrabbit.oak.plugins.index.solr.configuration.OakSolrConfiguration}s  */
 end_comment
 
 begin_interface
 specifier|public
 interface|interface
-name|SolrServerProvider
+name|OakSolrConfigurationProvider
 block|{
-comment|/**      * provides an already initialized {@link SolrServer} to be used from within Oak      *      * @return a {@link SolrServer} instance      * @throws Exception if anything goes wrong while providing the {@link SolrServer}      */
+comment|/**      * Provides a Solr configuration for Oak      *      * @return a {@link org.apache.jackrabbit.oak.plugins.index.solr.configuration.OakSolrConfiguration}      */
 specifier|public
-name|SolrServer
-name|getSolrServer
+name|OakSolrConfiguration
+name|getConfiguration
 parameter_list|()
-throws|throws
-name|Exception
 function_decl|;
 block|}
 end_interface

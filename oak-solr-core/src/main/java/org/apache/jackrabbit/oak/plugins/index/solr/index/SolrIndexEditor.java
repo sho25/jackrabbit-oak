@@ -149,6 +149,8 @@ name|index
 operator|.
 name|solr
 operator|.
+name|configuration
+operator|.
 name|OakSolrConfiguration
 import|;
 end_import
@@ -168,6 +170,8 @@ operator|.
 name|index
 operator|.
 name|solr
+operator|.
+name|util
 operator|.
 name|OakSolrUtils
 import|;

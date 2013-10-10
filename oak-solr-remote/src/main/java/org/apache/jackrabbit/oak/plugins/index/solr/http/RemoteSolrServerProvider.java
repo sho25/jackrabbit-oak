@@ -139,7 +139,9 @@ name|index
 operator|.
 name|solr
 operator|.
-name|OakSolrUtils
+name|server
+operator|.
+name|SolrServerProvider
 import|;
 end_import
 
@@ -159,7 +161,9 @@ name|index
 operator|.
 name|solr
 operator|.
-name|SolrServerProvider
+name|util
+operator|.
+name|OakSolrUtils
 import|;
 end_import
 
@@ -1029,6 +1033,14 @@ block|{
 comment|// wait a bit
 try|try
 block|{
+if|if
+condition|(
+name|log
+operator|.
+name|isWarnEnabled
+argument_list|()
+condition|)
+block|{
 name|log
 operator|.
 name|warn
@@ -1038,6 +1050,7 @@ argument_list|,
 name|e
 argument_list|)
 expr_stmt|;
+block|}
 name|Thread
 operator|.
 name|sleep

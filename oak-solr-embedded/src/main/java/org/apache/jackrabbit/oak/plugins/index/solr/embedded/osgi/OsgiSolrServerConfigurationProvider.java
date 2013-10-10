@@ -131,7 +131,7 @@ name|index
 operator|.
 name|solr
 operator|.
-name|embedded
+name|configuration
 operator|.
 name|SolrServerConfiguration
 import|;
@@ -153,7 +153,7 @@ name|index
 operator|.
 name|solr
 operator|.
-name|embedded
+name|configuration
 operator|.
 name|SolrServerConfigurationDefaults
 import|;
@@ -175,7 +175,7 @@ name|index
 operator|.
 name|solr
 operator|.
-name|embedded
+name|configuration
 operator|.
 name|SolrServerConfigurationProvider
 import|;
@@ -225,7 +225,7 @@ literal|true
 argument_list|,
 name|label
 operator|=
-literal|"OSGi Solr server configuration provider"
+literal|"OSGi Embedded Solr server configuration provider"
 argument_list|)
 annotation|@
 name|Service

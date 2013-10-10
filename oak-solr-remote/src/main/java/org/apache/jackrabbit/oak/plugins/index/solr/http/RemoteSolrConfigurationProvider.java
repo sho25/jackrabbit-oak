@@ -103,6 +103,8 @@ name|index
 operator|.
 name|solr
 operator|.
+name|configuration
+operator|.
 name|CommitPolicy
 import|;
 end_import
@@ -123,6 +125,8 @@ name|index
 operator|.
 name|solr
 operator|.
+name|configuration
+operator|.
 name|OakSolrConfiguration
 import|;
 end_import
@@ -142,6 +146,8 @@ operator|.
 name|index
 operator|.
 name|solr
+operator|.
+name|configuration
 operator|.
 name|OakSolrConfigurationProvider
 import|;
@@ -622,6 +628,12 @@ name|pathParentFieldName
 expr_stmt|;
 break|break;
 block|}
+case|case
+name|NO_RESTRICTION
+case|:
+break|break;
+default|default:
+break|break;
 block|}
 return|return
 name|fieldName

@@ -19,9 +19,45 @@ name|index
 operator|.
 name|solr
 operator|.
-name|embedded
+name|configuration
 package|;
 end_package
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertEquals
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertFalse
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertNotNull
+import|;
+end_import
 
 begin_import
 import|import
@@ -109,44 +145,8 @@ name|Test
 import|;
 end_import
 
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertEquals
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertFalse
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertNotNull
-import|;
-end_import
-
 begin_comment
-comment|/**  * Testcase for {@link UpToDateNodeStateConfiguration}  */
+comment|/**  * Testcase for {@link org.apache.jackrabbit.oak.plugins.index.solr.configuration.UpToDateNodeStateConfiguration}  */
 end_comment
 
 begin_class
@@ -327,7 +327,7 @@ annotation|@
 name|Test
 specifier|public
 name|void
-name|testNodeStateNotFound
+name|testWrongNodeState
 parameter_list|()
 throws|throws
 name|Exception
@@ -335,7 +335,7 @@ block|{
 name|String
 name|path
 init|=
-literal|"some/path/to/somewhere/unknown"
+literal|"a"
 decl_stmt|;
 name|UpToDateNodeStateConfiguration
 name|upToDateNodeStateConfiguration
@@ -359,6 +359,15 @@ name|exists
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|assertNotNull
+argument_list|(
+name|upToDateNodeStateConfiguration
+operator|.
+name|getSolrServerConfiguration
+argument_list|()
+argument_list|)
+expr_stmt|;
+comment|// defaults are used
 block|}
 block|}
 end_class

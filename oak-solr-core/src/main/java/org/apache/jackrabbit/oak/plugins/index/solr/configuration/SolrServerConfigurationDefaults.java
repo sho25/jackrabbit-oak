@@ -19,12 +19,12 @@ name|index
 operator|.
 name|solr
 operator|.
-name|embedded
+name|configuration
 package|;
 end_package
 
 begin_comment
-comment|/**  * Defaults for embedded Solr server configurations.  */
+comment|/**  * Defaults for Solr server configurations.  */
 end_comment
 
 begin_class
@@ -38,7 +38,7 @@ specifier|final
 name|String
 name|SOLR_HOME_PATH
 init|=
-literal|"./"
+literal|"solr"
 decl_stmt|;
 specifier|public
 specifier|static
@@ -46,7 +46,7 @@ specifier|final
 name|String
 name|SOLR_CONFIG_PATH
 init|=
-literal|"./solr.xml"
+literal|"solr.xml"
 decl_stmt|;
 specifier|public
 specifier|static

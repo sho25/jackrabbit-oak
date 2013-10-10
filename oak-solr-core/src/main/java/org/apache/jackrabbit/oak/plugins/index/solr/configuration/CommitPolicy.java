@@ -18,26 +18,30 @@ operator|.
 name|index
 operator|.
 name|solr
+operator|.
+name|configuration
 package|;
 end_package
 
 begin_comment
-comment|/**  * A provider for {@link OakSolrConfiguration}s  */
+comment|/**  * Enum for describing Solr commit policy used in a certain instance  */
 end_comment
 
-begin_interface
+begin_enum
 specifier|public
-interface|interface
-name|OakSolrConfigurationProvider
+enum|enum
+name|CommitPolicy
 block|{
-comment|/**      * Provides a Solr configuration for Oak      *      * @return a {@link OakSolrConfiguration}      */
-specifier|public
-name|OakSolrConfiguration
-name|getConfiguration
-parameter_list|()
-function_decl|;
+comment|/**      * for default Solr commit      */
+name|HARD
+block|,
+comment|/**      * for Solr soft commit      */
+name|SOFT
+block|,
+comment|/**      * if no commits should be sent (relying on auto(soft)commit on the instance itself)      */
+name|AUTO
 block|}
-end_interface
+end_enum
 
 end_unit
 

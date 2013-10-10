@@ -18,6 +18,8 @@ operator|.
 name|index
 operator|.
 name|solr
+operator|.
+name|util
 package|;
 end_package
 
@@ -98,7 +100,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A {@link RepositoryInitializer} for Solr index  */
+comment|/**  * A {@link org.apache.jackrabbit.oak.spi.lifecycle.RepositoryInitializer} for Solr index  */
 end_comment
 
 begin_class

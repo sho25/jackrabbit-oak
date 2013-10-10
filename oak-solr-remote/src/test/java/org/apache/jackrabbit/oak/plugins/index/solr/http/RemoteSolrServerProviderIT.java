@@ -232,7 +232,6 @@ argument_list|(
 name|req
 argument_list|)
 decl_stmt|;
-comment|//        cloudSolrServer.shutdown();
 return|return
 name|request
 operator|!=

@@ -19,71 +19,27 @@ name|index
 operator|.
 name|solr
 operator|.
-name|embedded
+name|configuration
 package|;
 end_package
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|spi
-operator|.
-name|state
-operator|.
-name|NodeState
-import|;
-end_import
-
 begin_comment
-comment|/**  * A {@link OakSolrNodeStateConfiguration} whose {@link org.apache.jackrabbit.oak.spi.state.NodeState} is given once  * and never updated so that the configuration is fixed.  */
+comment|/**  * {@link org.apache.solr.client.solrj.SolrServer} configuration provider.  */
 end_comment
 
-begin_class
+begin_interface
 specifier|public
-class|class
-name|FixedNodeStateConfiguration
-extends|extends
-name|OakSolrNodeStateConfiguration
+interface|interface
+name|SolrServerConfigurationProvider
 block|{
-specifier|private
-specifier|final
-name|NodeState
-name|configurationNodeState
-decl_stmt|;
+comment|/**      * Provide a {@lin SolrServerConfiguration} to be used to initialize a specific      * {@link org.apache.solr.client.solrj.SolrServer} implementation.      *      * @return the {@link org.apache.jackrabbit.oak.plugins.index.solr.configuration.SolrServerConfiguration} holding the configuration parameters      */
 specifier|public
-name|FixedNodeStateConfiguration
-parameter_list|(
-name|NodeState
-name|configurationNodeState
-parameter_list|)
-block|{
-name|this
-operator|.
-name|configurationNodeState
-operator|=
-name|configurationNodeState
-expr_stmt|;
-block|}
-annotation|@
-name|Override
-specifier|protected
-name|NodeState
-name|getConfigurationNodeState
+name|SolrServerConfiguration
+name|getSolrServerConfiguration
 parameter_list|()
-block|{
-return|return
-name|configurationNodeState
-return|;
+function_decl|;
 block|}
-block|}
-end_class
+end_interface
 
 end_unit
 
