@@ -209,6 +209,27 @@ name|NAMESPACE_SV
 argument_list|)
 argument_list|)
 decl_stmt|;
+name|String
+name|EMPTY_KEY
+init|=
+literal|"oak:empty"
+decl_stmt|;
+comment|// index nodes for faster lookup
+name|String
+name|NSDATA
+init|=
+literal|"oak:namespaces"
+decl_stmt|;
+name|String
+name|NSDATA_URIS
+init|=
+literal|"oak:uris"
+decl_stmt|;
+name|String
+name|NSDATA_PREFIXES
+init|=
+literal|"oak:prefixes"
+decl_stmt|;
 block|}
 end_interface
 

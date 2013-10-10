@@ -71,6 +71,22 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
+name|core
+operator|.
+name|ImmutableTree
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
 name|spi
 operator|.
 name|commit
@@ -172,6 +188,28 @@ decl_stmt|;
 specifier|public
 name|NameValidator
 parameter_list|(
+name|NodeState
+name|root
+parameter_list|)
+block|{
+name|this
+operator|.
+name|prefixes
+operator|=
+name|Namespaces
+operator|.
+name|getNamespacePrefixesAsSet
+argument_list|(
+operator|new
+name|ImmutableTree
+argument_list|(
+name|root
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+name|NameValidator
+parameter_list|(
 name|Set
 argument_list|<
 name|String
@@ -251,9 +289,13 @@ name|NAME
 argument_list|,
 literal|1
 argument_list|,
-literal|"Invalid namespace prefix: "
+literal|"Invalid namespace prefix("
 operator|+
-name|name
+name|prefixes
+operator|+
+literal|"): "
+operator|+
+name|prefix
 argument_list|)
 throw|;
 block|}
