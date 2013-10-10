@@ -544,6 +544,8 @@ specifier|public
 name|boolean
 name|commit
 parameter_list|()
+throws|throws
+name|LoginException
 block|{
 if|if
 condition|(
@@ -745,10 +747,31 @@ name|tc
 argument_list|)
 expr_stmt|;
 block|}
+else|else
+block|{
+comment|// failed to create token -> fail commit()
+name|log
+operator|.
+name|debug
+argument_list|(
+literal|"TokenProvider failed to create a login token for user "
+operator|+
+name|userId
+argument_list|)
+expr_stmt|;
+throw|throw
+operator|new
+name|LoginException
+argument_list|(
+literal|"Failed to create login token for user "
+operator|+
+name|userId
+argument_list|)
+throw|;
+block|}
 block|}
 block|}
 comment|// the login attempt on this module did not succeed: clear state
-comment|// and check if another successful login asks for a new token to be created.
 name|clearState
 argument_list|()
 expr_stmt|;
