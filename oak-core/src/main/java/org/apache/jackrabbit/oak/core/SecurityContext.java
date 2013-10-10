@@ -329,15 +329,6 @@ argument_list|(
 name|parent
 operator|.
 name|readStatus
-argument_list|,
-name|acContext
-operator|.
-name|hasChildItems
-argument_list|(
-name|parent
-operator|.
-name|base
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

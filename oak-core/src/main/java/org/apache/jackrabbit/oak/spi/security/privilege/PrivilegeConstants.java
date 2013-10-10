@@ -135,6 +135,22 @@ name|NT_REP_PRIVILEGE
 init|=
 literal|"rep:Privilege"
 decl_stmt|;
+comment|/**      * Node type names associated with privilege content      */
+name|Set
+argument_list|<
+name|String
+argument_list|>
+name|PRIVILEGE_NODETYPE_NAMES
+init|=
+name|ImmutableSet
+operator|.
+name|of
+argument_list|(
+name|NT_REP_PRIVILEGES
+argument_list|,
+name|NT_REP_PRIVILEGE
+argument_list|)
+decl_stmt|;
 comment|/**      * Name of the privilege definition property that stores the internal representation      * of this privilege.      */
 name|String
 name|REP_BITS
