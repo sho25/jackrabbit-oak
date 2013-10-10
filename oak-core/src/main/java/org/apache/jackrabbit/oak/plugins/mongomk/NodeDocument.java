@@ -419,7 +419,7 @@ specifier|final
 name|int
 name|FORCE_SPLIT_THRESHOLD
 init|=
-literal|16
+literal|256
 operator|*
 literal|1024
 decl_stmt|;
