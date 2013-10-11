@@ -101,25 +101,19 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|jcr
-operator|.
-name|ValueFactory
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
 operator|.
 name|jackrabbit
 operator|.
-name|commons
+name|oak
 operator|.
-name|NamespaceHelper
+name|jcr
+operator|.
+name|session
+operator|.
+name|SessionContext
 import|;
 end_import
 
@@ -308,26 +302,21 @@ specifier|private
 name|BufferedStringValue
 name|currentPropValue
 decl_stmt|;
-comment|/**      * Constructs a new {@code SysViewImportHandler}.      *      * @param importer     the underlying importer      * @param valueFactory the value factory      * @param helper the namespace helper      */
+comment|/**      * Constructs a new {@code SysViewImportHandler}.      *      * @param importer     the underlying importer      * @param sessionContext the session context      */
 name|SysViewImportHandler
 parameter_list|(
 name|Importer
 name|importer
 parameter_list|,
-name|ValueFactory
-name|valueFactory
-parameter_list|,
-name|NamespaceHelper
-name|helper
+name|SessionContext
+name|sessionContext
 parameter_list|)
 block|{
 name|super
 argument_list|(
 name|importer
 argument_list|,
-name|valueFactory
-argument_list|,
-name|helper
+name|sessionContext
 argument_list|)
 expr_stmt|;
 block|}
@@ -858,7 +847,10 @@ operator|=
 operator|new
 name|BufferedStringValue
 argument_list|(
-name|valueFactory
+name|sessionContext
+operator|.
+name|getValueFactory
+argument_list|()
 argument_list|,
 name|currentNamePathMapper
 argument_list|()

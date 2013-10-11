@@ -50,6 +50,26 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|name
+operator|.
+name|Namespaces
+operator|.
+name|getNamespaceURI
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -69,6 +89,22 @@ name|CheckForNull
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|api
+operator|.
+name|Tree
+import|;
+end_import
+
 begin_comment
 comment|/**  * Name mapper with local namespace mappings.  */
 end_comment
@@ -81,6 +117,19 @@ name|LocalNameMapper
 extends|extends
 name|GlobalNameMapper
 block|{
+specifier|public
+name|LocalNameMapper
+parameter_list|(
+name|Tree
+name|tree
+parameter_list|)
+block|{
+name|super
+argument_list|(
+name|tree
+argument_list|)
+expr_stmt|;
+block|}
 specifier|private
 specifier|static
 name|boolean
@@ -224,11 +273,10 @@ decl_stmt|;
 name|String
 name|uri
 init|=
-name|getNamespaceMap
-argument_list|()
-operator|.
-name|get
+name|getNamespaceURI
 argument_list|(
+name|tree
+argument_list|,
 name|oakPrefix
 argument_list|)
 decl_stmt|;
@@ -538,11 +586,10 @@ block|}
 comment|// Check that a global mapping is present and not remapped
 name|uri
 operator|=
-name|getNamespaceMap
-argument_list|()
-operator|.
-name|get
+name|getNamespaceURI
 argument_list|(
+name|tree
+argument_list|,
 name|jcrPrefix
 argument_list|)
 expr_stmt|;

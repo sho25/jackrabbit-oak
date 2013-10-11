@@ -51,16 +51,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|jcr
-operator|.
-name|ValueFactory
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -117,9 +107,9 @@ name|oak
 operator|.
 name|jcr
 operator|.
-name|session
+name|delegate
 operator|.
-name|SessionContext
+name|SessionDelegate
 import|;
 end_import
 
@@ -135,9 +125,9 @@ name|oak
 operator|.
 name|jcr
 operator|.
-name|delegate
+name|session
 operator|.
-name|SessionDelegate
+name|SessionContext
 import|;
 end_import
 
@@ -307,11 +297,6 @@ name|importer
 decl_stmt|;
 specifier|private
 specifier|final
-name|NamespaceHelper
-name|helper
-decl_stmt|;
-specifier|private
-specifier|final
 name|boolean
 name|isWorkspaceImport
 decl_stmt|;
@@ -408,17 +393,6 @@ name|sd
 operator|.
 name|getRoot
 argument_list|()
-expr_stmt|;
-name|helper
-operator|=
-operator|new
-name|NamespaceHelper
-argument_list|(
-name|sessionContext
-operator|.
-name|getSession
-argument_list|()
-argument_list|)
 expr_stmt|;
 name|importer
 operator|=
@@ -655,7 +629,14 @@ name|SAXException
 block|{
 try|try
 block|{
-name|helper
+operator|new
+name|NamespaceHelper
+argument_list|(
+name|sessionContext
+operator|.
+name|getSession
+argument_list|()
+argument_list|)
 operator|.
 name|registerNamespace
 argument_list|(
@@ -777,14 +758,6 @@ condition|)
 block|{
 comment|// the namespace of the first element determines the type of XML
 comment|// (system view/document view)
-name|ValueFactory
-name|vf
-init|=
-name|sessionContext
-operator|.
-name|getValueFactory
-argument_list|()
-decl_stmt|;
 if|if
 condition|(
 name|NamespaceConstants
@@ -804,9 +777,7 @@ name|SysViewImportHandler
 argument_list|(
 name|importer
 argument_list|,
-name|vf
-argument_list|,
-name|helper
+name|sessionContext
 argument_list|)
 expr_stmt|;
 block|}
@@ -819,9 +790,7 @@ name|DocViewImportHandler
 argument_list|(
 name|importer
 argument_list|,
-name|vf
-argument_list|,
-name|helper
+name|sessionContext
 argument_list|)
 expr_stmt|;
 block|}

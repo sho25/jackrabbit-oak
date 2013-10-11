@@ -18,6 +18,42 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertEquals
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertNull
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|fail
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -69,15 +105,15 @@ end_import
 
 begin_import
 import|import
-name|com
+name|org
 operator|.
-name|google
+name|apache
 operator|.
-name|common
+name|jackrabbit
 operator|.
-name|collect
+name|oak
 operator|.
-name|ImmutableMap
+name|TestGlobalNameMapper
 import|;
 end_import
 
@@ -92,38 +128,16 @@ import|;
 end_import
 
 begin_import
-import|import static
-name|org
+import|import
+name|com
 operator|.
-name|junit
+name|google
 operator|.
-name|Assert
+name|common
 operator|.
-name|assertEquals
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
+name|collect
 operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertNull
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|fail
+name|ImmutableMap
 import|;
 end_import
 
@@ -173,26 +187,10 @@ name|NameMapper
 name|mapper
 init|=
 operator|new
-name|GlobalNameMapper
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|protected
-name|Map
-argument_list|<
-name|String
-argument_list|,
-name|String
-argument_list|>
-name|getNamespaceMap
-parameter_list|()
-block|{
-return|return
+name|TestGlobalNameMapper
+argument_list|(
 name|NAMESPACES
-return|;
-block|}
-block|}
+argument_list|)
 decl_stmt|;
 annotation|@
 name|Test
