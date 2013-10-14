@@ -82,7 +82,11 @@ name|manager
 operator|.
 name|createQuery
 argument_list|(
-literal|"SELECT * FROM [nt:base] AS n WHERE ISDESCENDANTNODE(n, '/testroot') AND testcount="
+literal|"SELECT * FROM [nt:base] AS n WHERE ISDESCENDANTNODE(n, '/"
+operator|+
+name|testNodeName
+operator|+
+literal|"') AND testcount="
 operator|+
 name|i
 argument_list|,

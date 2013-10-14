@@ -126,6 +126,13 @@ specifier|private
 name|Node
 name|root
 decl_stmt|;
+name|String
+name|testNodeName
+init|=
+literal|"test"
+operator|+
+name|TEST_ID
+decl_stmt|;
 specifier|protected
 name|Query
 name|createQuery
@@ -156,7 +163,11 @@ name|manager
 operator|.
 name|createQuery
 argument_list|(
-literal|"/jcr:root/testroot//element(*,nt:base)[@testcount="
+literal|"/jcr:root/"
+operator|+
+name|testNodeName
+operator|+
+literal|"//element(*,nt:base)[@testcount="
 operator|+
 name|i
 operator|+
@@ -195,7 +206,7 @@ argument_list|()
 operator|.
 name|addNode
 argument_list|(
-literal|"testroot"
+name|testNodeName
 argument_list|,
 literal|"nt:unstructured"
 argument_list|)

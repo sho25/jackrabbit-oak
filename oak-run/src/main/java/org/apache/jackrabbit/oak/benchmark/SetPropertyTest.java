@@ -66,6 +66,13 @@ specifier|private
 name|Node
 name|node
 decl_stmt|;
+name|String
+name|testNodeName
+init|=
+literal|"test"
+operator|+
+name|TEST_ID
+decl_stmt|;
 annotation|@
 name|Override
 specifier|public
@@ -95,7 +102,7 @@ argument_list|()
 operator|.
 name|addNode
 argument_list|(
-literal|"testnode"
+name|testNodeName
 argument_list|,
 literal|"nt:unstructured"
 argument_list|)
@@ -196,7 +203,7 @@ argument_list|()
 operator|.
 name|getNode
 argument_list|(
-literal|"testnode"
+name|testNodeName
 argument_list|)
 operator|.
 name|remove
