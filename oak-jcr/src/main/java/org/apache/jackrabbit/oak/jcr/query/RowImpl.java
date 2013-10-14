@@ -458,6 +458,13 @@ name|values
 index|[
 name|i
 index|]
+operator|!=
+literal|null
+operator|&&
+name|values
+index|[
+name|i
+index|]
 operator|.
 name|isArray
 argument_list|()
