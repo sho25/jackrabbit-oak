@@ -609,6 +609,10 @@ argument_list|(
 name|workspaceName
 argument_list|,
 name|versionablePath
+argument_list|,
+name|Type
+operator|.
+name|PATH
 argument_list|)
 expr_stmt|;
 block|}
