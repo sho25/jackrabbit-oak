@@ -1588,10 +1588,18 @@ name|revision
 operator|+
 literal|"; document:\n"
 operator|+
+operator|(
+name|doc
+operator|==
+literal|null
+condition|?
+literal|""
+else|:
 name|doc
 operator|.
 name|format
 argument_list|()
+operator|)
 operator|+
 literal|",\nrevision order:\n"
 operator|+
