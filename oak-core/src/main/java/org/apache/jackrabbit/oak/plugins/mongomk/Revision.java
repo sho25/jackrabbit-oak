@@ -1393,7 +1393,15 @@ throw|throw
 operator|new
 name|IllegalArgumentException
 argument_list|(
-literal|"Can not add an earlier revision"
+literal|"Can not add an earlier revision: "
+operator|+
+name|last
+operator|.
+name|revision
+operator|+
+literal|"> "
+operator|+
+name|r
 argument_list|)
 throw|;
 block|}
