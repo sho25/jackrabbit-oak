@@ -1425,18 +1425,27 @@ return|return
 literal|false
 return|;
 block|}
-comment|/**      * Returns a {@link Node} as seen at the given<code>readRevision</code>.      *      * @param context      the revision context.      * @param readRevision the read revision.      * @return the node or<code>null</code> if the node doesn't exist at the      *         given read revision.      */
+comment|/**      * Returns a {@link Node} as seen at the given<code>readRevision</code>.      *      * @param context      the revision context.      * @param readRevision the read revision.      * @param lastModified the revision when this node was last modified, but      *                     the value is potentially not yet reflected in this      *                     document.      *                     See {@link RevisionContext#getPendingModifications()}.      * @return the node or<code>null</code> if the node doesn't exist at the      *         given read revision.      */
 annotation|@
 name|CheckForNull
 specifier|public
 name|Node
 name|getNodeAtRevision
 parameter_list|(
+annotation|@
+name|Nonnull
 name|RevisionContext
 name|context
 parameter_list|,
+annotation|@
+name|Nonnull
 name|Revision
 name|readRevision
+parameter_list|,
+annotation|@
+name|Nullable
+name|Revision
+name|lastModified
 parameter_list|)
 block|{
 name|Set
@@ -1636,19 +1645,6 @@ argument_list|()
 argument_list|)
 decl_stmt|;
 comment|// overlay with unsaved last modified from this instance
-name|Revision
-name|lastModified
-init|=
-name|context
-operator|.
-name|getPendingModifications
-argument_list|()
-operator|.
-name|get
-argument_list|(
-name|path
-argument_list|)
-decl_stmt|;
 if|if
 condition|(
 name|lastModified
@@ -3222,7 +3218,7 @@ block|}
 argument_list|)
 return|;
 block|}
-comment|/**      * Returns the local value map for the given key. Returns<code>null</code>      * if no such value map exists.      *      * @param key the key.      * @return local value map.      */
+comment|/**      * Returns the local value map for the given key.      *      * @param key the key.      * @return local value map.      */
 annotation|@
 name|Nonnull
 name|SortedMap

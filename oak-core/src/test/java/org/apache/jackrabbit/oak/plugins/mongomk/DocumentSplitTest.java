@@ -391,11 +391,11 @@ block|}
 comment|// check if document is still there
 name|assertNotNull
 argument_list|(
-name|doc
-operator|.
-name|getNodeAtRevision
-argument_list|(
 name|mk
+operator|.
+name|getNode
+argument_list|(
+literal|"/"
 argument_list|,
 name|Revision
 operator|.
@@ -680,11 +680,11 @@ block|}
 name|Node
 name|node
 init|=
-name|doc
-operator|.
-name|getNodeAtRevision
-argument_list|(
 name|mk
+operator|.
+name|getNode
+argument_list|(
+literal|"/foo"
 argument_list|,
 name|Revision
 operator|.
