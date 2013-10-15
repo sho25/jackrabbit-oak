@@ -80,7 +80,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Content change validator. An instance of this interface is used to  * validate changes against a specific {@link NodeState}.  */
+comment|/**  * Content change validator. An instance of this interface is used to  * validate changes against a specific {@link NodeState}.  *  * @see<a href="http://jackrabbit.apache.org/oak/docs/nodestate.html#Commit_validators"  *>Commit validators</a>  */
 end_comment
 
 begin_interface

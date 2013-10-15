@@ -98,7 +98,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This commit hook implementation processes changes to be committed  * using the {@link Editor} instance provided by the {@link EditorProvider}  * passed to the constructor.  *  * @since Oak 0.7  */
+comment|/**  * This commit hook implementation processes changes to be committed  * using the {@link Editor} instance provided by the {@link EditorProvider}  * passed to the constructor.  *  * @since Oak 0.7  * @see<a href="http://jackrabbit.apache.org/oak/docs/nodestate.html#Commit_editors"  *>Commit editors</a>  */
 end_comment
 
 begin_class

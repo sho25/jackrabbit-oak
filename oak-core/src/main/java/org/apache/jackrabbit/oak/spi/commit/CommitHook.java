@@ -64,7 +64,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Extension point for validating and modifying content changes. Available  * commit hooks are called in sequence to process incoming content changes  * before they get persisted and shared with other clients.  *<p>  * A commit hook can throw a {@link CommitFailedException} for a particular  * change to prevent it from being persisted, or it can modify the changes  * for example to update an in-content index or to add auto-generated content.  *<p>  * Note that instead of implementing this interface directly, most commit  * editors and validators are better expressed as implementations of the  * more specific extension interfaces defined in this package.  */
+comment|/**  * Extension point for validating and modifying content changes. Available  * commit hooks are called in sequence to process incoming content changes  * before they get persisted and shared with other clients.  *<p>  * A commit hook can throw a {@link CommitFailedException} for a particular  * change to prevent it from being persisted, or it can modify the changes  * for example to update an in-content index or to add auto-generated content.  *<p>  * Note that instead of implementing this interface directly, most commit  * editors and validators are better expressed as implementations of the  * more specific extension interfaces defined in this package.  *  * @see<a href="http://jackrabbit.apache.org/oak/docs/nodestate.html#The_commit_hook_mechanism"  *>The commit hook mechanism</a>  */
 end_comment
 
 begin_interface

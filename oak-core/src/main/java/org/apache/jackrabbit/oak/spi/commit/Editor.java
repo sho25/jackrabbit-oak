@@ -98,7 +98,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Content change editor. An editor receives information about changes  * to the content tree and can reject the changes by throwing a  * {@link CommitFailedException} or adjust them using the {@link NodeBuilder}  * instance passed to the {@link EditorProvider} that returned this editor.  * Note that the given builder can contain updates from multiple different  * editors, so its state might not match exactly the state of the given  * after state.  *  * @since Oak 0.7  */
+comment|/**  * Content change editor. An editor receives information about changes  * to the content tree and can reject the changes by throwing a  * {@link CommitFailedException} or adjust them using the {@link NodeBuilder}  * instance passed to the {@link EditorProvider} that returned this editor.  * Note that the given builder can contain updates from multiple different  * editors, so its state might not match exactly the state of the given  * after state.  *  * @since Oak 0.7  * @see<a href="http://jackrabbit.apache.org/oak/docs/nodestate.html#Commit_editors"  *>Commit editors</a>  */
 end_comment
 
 begin_interface

@@ -82,7 +82,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Extension point for content change editors. Used by the {@link EditorHook}  * class to allow multiple components to process content changes during just  * a single content diff.  *  * @since Oak 0.7  */
+comment|/**  * Extension point for content change editors. Used by the {@link EditorHook}  * class to allow multiple components to process content changes during just  * a single content diff.  *  * @since Oak 0.7  * @see<a href="http://jackrabbit.apache.org/oak/docs/nodestate.html#Commit_editors"  *>Commit editors</a>  */
 end_comment
 
 begin_interface
