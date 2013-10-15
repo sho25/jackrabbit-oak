@@ -1064,6 +1064,14 @@ name|ReadManyTest
 operator|.
 name|NODES
 argument_list|)
+block|,
+operator|new
+name|ConcurrentCreateNodesTest
+argument_list|()
+block|,
+operator|new
+name|SequentialCreateNodesTest
+argument_list|()
 block|,         }
 decl_stmt|;
 name|Set
