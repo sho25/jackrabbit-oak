@@ -155,24 +155,6 @@ name|QueryIndexProvider
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|spi
-operator|.
-name|state
-operator|.
-name|NodeState
-import|;
-end_import
-
 begin_comment
 comment|/**  * A "select" or "union" query.  *<p>  * Lifecycle: use the constructor to create a new object. Call init() to  * initialize the bind variable map. If the query is re-executed, a new instance  * is created.  */
 end_comment
@@ -183,17 +165,10 @@ interface|interface
 name|Query
 block|{
 name|void
-name|setRootTree
+name|setExecutionContext
 parameter_list|(
-name|Tree
-name|rootTree
-parameter_list|)
-function_decl|;
-name|void
-name|setRootState
-parameter_list|(
-name|NodeState
-name|rootState
+name|ExecutionContext
+name|context
 parameter_list|)
 function_decl|;
 name|void

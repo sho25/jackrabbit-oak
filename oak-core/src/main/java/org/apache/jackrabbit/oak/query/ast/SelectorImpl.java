@@ -1134,11 +1134,6 @@ name|query
 operator|.
 name|getStatement
 argument_list|()
-argument_list|,
-name|query
-operator|.
-name|getRootTree
-argument_list|()
 argument_list|)
 decl_stmt|;
 name|f

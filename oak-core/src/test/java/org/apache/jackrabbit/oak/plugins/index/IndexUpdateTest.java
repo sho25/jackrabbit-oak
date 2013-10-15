@@ -1304,8 +1304,6 @@ argument_list|(
 name|selector
 argument_list|,
 literal|"SELECT * FROM [nt:base]"
-argument_list|,
-literal|null
 argument_list|)
 decl_stmt|;
 return|return

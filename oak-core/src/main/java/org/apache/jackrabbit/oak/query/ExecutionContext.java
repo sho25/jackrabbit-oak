@@ -135,7 +135,7 @@ operator|=
 name|indexProvider
 expr_stmt|;
 block|}
-comment|/**      * @return Root node state of the content tree against which the query runs.      */
+comment|/**      *       * Used to evaluate the query (ie. read the existing node types, index      * definitions), doesn't need to be a secured version of a node state      *       * @return Root node state of the content tree against which the query runs.      */
 annotation|@
 name|Nonnull
 specifier|public
@@ -147,7 +147,7 @@ return|return
 name|rootState
 return|;
 block|}
-comment|/**      * @return Root tree of the content tree against which the query runs.      */
+comment|/**      *       * Used to create the actual query results from the indexed paths, needs to      * be a secured version of a tree to take into account ACLs      *       * @return Root tree of the content tree against which the query runs.      */
 annotation|@
 name|Nonnull
 specifier|public
