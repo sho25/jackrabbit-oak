@@ -1819,7 +1819,7 @@ specifier|private
 name|int
 name|stackSize
 decl_stmt|;
-comment|/**          * The stack of recently referenced elements. This includes all hot entries,          * the recently referenced cold entries, and all non-resident cold entries.          */
+comment|/**          * The stack of recently referenced elements. This includes all hot entries,          * the recently referenced cold entries, and all non-resident cold entries.          *<p>          * There is always at least one entry: the head entry.          */
 specifier|private
 name|Entry
 argument_list|<
@@ -1829,7 +1829,7 @@ name|V
 argument_list|>
 name|stack
 decl_stmt|;
-comment|/**          * The queue of resident cold entries.          */
+comment|/**          * The queue of resident cold entries.          *<p>          * There is always at least one entry: the head entry.          */
 specifier|private
 name|Entry
 argument_list|<
@@ -1839,7 +1839,7 @@ name|V
 argument_list|>
 name|queue
 decl_stmt|;
-comment|/**          * The queue of non-resident cold entries.          */
+comment|/**          * The queue of non-resident cold entries.          *<p>          * There is always at least one entry: the head entry.          */
 specifier|private
 name|Entry
 argument_list|<
@@ -2332,7 +2332,7 @@ name|wasEnd
 condition|)
 block|{
 comment|// if moving the last entry, the last entry
-comment|// could not be cold, which is not allowed
+comment|// could now be cold, which is not allowed
 name|pruneStack
 argument_list|()
 expr_stmt|;
@@ -2369,6 +2369,8 @@ name|e
 argument_list|)
 expr_stmt|;
 comment|// which means a hot entry needs to become cold
+comment|// (this entry is cold, that means there is at least one
+comment|// more entry in the stack, which must be hot)
 name|convertOldestHotToCold
 argument_list|()
 expr_stmt|;
@@ -3005,18 +3007,22 @@ argument_list|>
 name|newCold
 parameter_list|)
 block|{
-comment|// ensure there are not too many hot entries:
-comment|// left shift of 5 is multiplication by 32, that means if there are less
-comment|// than 1/32 (3.125%) cold entries, a new hot entry needs to become cold
+comment|// ensure there are not too many hot entries: right shift of 5 is
+comment|// division by 32, that means if there are only 1/32 (3.125%) or
+comment|// less cold entries, a hot entry needs to become cold
 while|while
 condition|(
-operator|(
 name|queueSize
-operator|<<
+operator|<=
+operator|(
+name|mapSize
+operator|>>>
 literal|5
 operator|)
-operator|<
-name|mapSize
+operator|&&
+name|stackSize
+operator|>
+literal|0
 condition|)
 block|{
 name|convertOldestHotToCold
@@ -3153,6 +3159,21 @@ name|stack
 operator|.
 name|stackPrev
 decl_stmt|;
+if|if
+condition|(
+name|last
+operator|==
+name|stack
+condition|)
+block|{
+comment|// never remove the stack head itself (this would mean the
+comment|// internal structure of the cache is corrupt)
+throw|throw
+operator|new
+name|IllegalStateException
+argument_list|()
+throw|;
+block|}
 comment|// remove from stack - which is done anyway in the stack pruning, but we
 comment|// can do it here as well
 name|removeFromStack
@@ -3195,12 +3216,11 @@ name|stack
 operator|.
 name|stackPrev
 decl_stmt|;
+comment|// must stop at a hot entry or the stack head,
+comment|// but the stack head itself is also hot, so we
+comment|// don't have to test it
 if|if
 condition|(
-name|last
-operator|==
-name|stack
-operator|||
 name|last
 operator|.
 name|isHot
