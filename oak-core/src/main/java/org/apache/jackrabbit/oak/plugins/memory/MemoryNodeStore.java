@@ -227,24 +227,6 @@ name|oak
 operator|.
 name|spi
 operator|.
-name|commit
-operator|.
-name|PostCommitHook
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|spi
-operator|.
 name|state
 operator|.
 name|ConflictAnnotatingRebaseDiff
@@ -414,7 +396,7 @@ name|get
 argument_list|()
 return|;
 block|}
-comment|/**      * This implementation is equal to first rebasing the builder and then applying it to a      * new branch and immediately merging it back.      * @param builder  the builder whose changes to apply      * @param commitHook the commit hook to apply while merging changes      * @param committed  the pos commit hook      * @return the node state resulting from the merge.      * @throws CommitFailedException      * @throws IllegalArgumentException if the builder is not acquired from a root state of      *                                  this store      */
+comment|/**      * This implementation is equal to first rebasing the builder and then applying it to a      * new branch and immediately merging it back.      * @param builder  the builder whose changes to apply      * @param commitHook the commit hook to apply while merging changes      * @return the node state resulting from the merge.      * @throws CommitFailedException      * @throws IllegalArgumentException if the builder is not acquired from a root state of      *                                  this store      */
 annotation|@
 name|Override
 specifier|public
@@ -431,9 +413,6 @@ annotation|@
 name|Nonnull
 name|CommitHook
 name|commitHook
-parameter_list|,
-name|PostCommitHook
-name|committed
 parameter_list|)
 throws|throws
 name|CommitFailedException
@@ -488,8 +467,6 @@ operator|.
 name|merge
 argument_list|(
 name|commitHook
-argument_list|,
-name|committed
 argument_list|)
 decl_stmt|;
 operator|(
@@ -860,9 +837,6 @@ name|merge
 parameter_list|(
 name|CommitHook
 name|hook
-parameter_list|,
-name|PostCommitHook
-name|committed
 parameter_list|)
 throws|throws
 name|CommitFailedException
@@ -891,12 +865,6 @@ name|root
 argument_list|)
 argument_list|)
 decl_stmt|;
-synchronized|synchronized
-init|(
-name|this
-init|)
-block|{
-comment|// FIXME temporarily synchronized to work around the race described in OAK-1055
 name|store
 operator|.
 name|root
@@ -911,16 +879,6 @@ operator|=
 literal|null
 expr_stmt|;
 comment|// Mark as merged
-name|committed
-operator|.
-name|contentChanged
-argument_list|(
-name|base
-argument_list|,
-name|merged
-argument_list|)
-expr_stmt|;
-block|}
 return|return
 name|merged
 return|;

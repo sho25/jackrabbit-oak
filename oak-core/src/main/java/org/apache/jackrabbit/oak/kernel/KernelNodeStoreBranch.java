@@ -205,24 +205,6 @@ name|oak
 operator|.
 name|spi
 operator|.
-name|commit
-operator|.
-name|PostCommitHook
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|spi
-operator|.
 name|state
 operator|.
 name|ConflictAnnotatingRebaseDiff
@@ -671,9 +653,6 @@ annotation|@
 name|Nonnull
 name|CommitHook
 name|hook
-parameter_list|,
-name|PostCommitHook
-name|committed
 parameter_list|)
 throws|throws
 name|CommitFailedException
@@ -686,11 +665,6 @@ argument_list|(
 name|checkNotNull
 argument_list|(
 name|hook
-argument_list|)
-argument_list|,
-name|checkNotNull
-argument_list|(
-name|committed
 argument_list|)
 argument_list|)
 return|;
@@ -833,15 +807,12 @@ annotation|@
 name|Nonnull
 name|CommitHook
 name|hook
-parameter_list|,
-name|PostCommitHook
-name|committed
 parameter_list|)
 throws|throws
 name|CommitFailedException
 function_decl|;
 block|}
-comment|/**      * Instances of this class represent a branch whose base and head are the same.      *<p>      * Transitions to:      *<ul>      *<li>{@link InMemory} on {@link #setRoot(NodeState)} if the new root differs      *         from the current base</li>.      *<li>{@link Merged} on {@link #merge(CommitHook, PostCommitHook)}</li>      *</ul>      */
+comment|/**      * Instances of this class represent a branch whose base and head are the same.      *<p>      * Transitions to:      *<ul>      *<li>{@link InMemory} on {@link #setRoot(NodeState)} if the new root differs      *         from the current base</li>.      *<li>{@link Merged} on {@link #merge(CommitHook)}</li>      *</ul>      */
 specifier|private
 class|class
 name|Unmodified
@@ -938,9 +909,6 @@ name|merge
 parameter_list|(
 name|CommitHook
 name|hook
-parameter_list|,
-name|PostCommitHook
-name|committed
 parameter_list|)
 throws|throws
 name|CommitFailedException
@@ -958,7 +926,7 @@ name|base
 return|;
 block|}
 block|}
-comment|/**      * Instances of this class represent a branch whose base and head differ.      * All changes are kept in memory.      *<p>      * Transitions to:      *<ul>      *<li>{@link Unmodified} on {@link #setRoot(NodeState)} if the new root is the same      *         as the base of this branch or      *<li>{@link Persisted} otherwise.      *<li>{@link Merged} on {@link #merge(CommitHook, PostCommitHook)}</li>      *</ul>      */
+comment|/**      * Instances of this class represent a branch whose base and head differ.      * All changes are kept in memory.      *<p>      * Transitions to:      *<ul>      *<li>{@link Unmodified} on {@link #setRoot(NodeState)} if the new root is the same      *         as the base of this branch or      *<li>{@link Persisted} otherwise.      *<li>{@link Merged} on {@link #merge(CommitHook)}</li>      *</ul>      */
 specifier|private
 class|class
 name|InMemory
@@ -1123,9 +1091,6 @@ name|merge
 parameter_list|(
 name|CommitHook
 name|hook
-parameter_list|,
-name|PostCommitHook
-name|committed
 parameter_list|)
 throws|throws
 name|CommitFailedException
@@ -1139,6 +1104,13 @@ try|try
 block|{
 name|rebase
 argument_list|()
+expr_stmt|;
+name|store
+operator|.
+name|beforeCommit
+argument_list|(
+name|base
+argument_list|)
 expr_stmt|;
 name|NodeState
 name|toCommit
@@ -1188,12 +1160,10 @@ argument_list|,
 name|base
 argument_list|)
 decl_stmt|;
-name|committed
+name|store
 operator|.
-name|contentChanged
+name|localCommit
 argument_list|(
-name|base
-argument_list|,
 name|newHead
 argument_list|)
 expr_stmt|;
@@ -1231,6 +1201,16 @@ throw|;
 block|}
 finally|finally
 block|{
+name|store
+operator|.
+name|afterCommit
+argument_list|(
+name|store
+operator|.
+name|getRoot
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|mergeLock
 operator|.
 name|unlock
@@ -1239,7 +1219,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/**      * Instances of this class represent a branch whose base and head differ.      * All changes are persisted to an underlying branch in the {@code MicroKernel}.      *<p>      * Transitions to:      *<ul>      *<li>{@link Unmodified} on {@link #setRoot(NodeState)} if the new root is the same      *         as the base of this branch.      *<li>{@link Merged} on {@link #merge(CommitHook, PostCommitHook)}</li>      *</ul>      */
+comment|/**      * Instances of this class represent a branch whose base and head differ.      * All changes are persisted to an underlying branch in the {@code MicroKernel}.      *<p>      * Transitions to:      *<ul>      *<li>{@link Unmodified} on {@link #setRoot(NodeState)} if the new root is the same      *         as the base of this branch.      *<li>{@link Merged} on {@link #merge(CommitHook)}</li>      *</ul>      */
 specifier|private
 class|class
 name|Persisted
@@ -1448,9 +1428,6 @@ name|merge
 parameter_list|(
 name|CommitHook
 name|hook
-parameter_list|,
-name|PostCommitHook
-name|committed
 parameter_list|)
 throws|throws
 name|CommitFailedException
@@ -1464,6 +1441,13 @@ try|try
 block|{
 name|rebase
 argument_list|()
+expr_stmt|;
+name|store
+operator|.
+name|beforeCommit
+argument_list|(
+name|base
+argument_list|)
 expr_stmt|;
 name|NodeState
 name|toCommit
@@ -1490,15 +1474,6 @@ name|base
 argument_list|)
 condition|)
 block|{
-name|committed
-operator|.
-name|contentChanged
-argument_list|(
-name|base
-argument_list|,
-name|base
-argument_list|)
-expr_stmt|;
 name|branchState
 operator|=
 operator|new
@@ -1549,12 +1524,10 @@ argument_list|(
 name|head
 argument_list|)
 decl_stmt|;
-name|committed
+name|store
 operator|.
-name|contentChanged
+name|localCommit
 argument_list|(
-name|base
-argument_list|,
 name|newRoot
 argument_list|)
 expr_stmt|;
@@ -1593,6 +1566,16 @@ throw|;
 block|}
 finally|finally
 block|{
+name|store
+operator|.
+name|afterCommit
+argument_list|(
+name|store
+operator|.
+name|getRoot
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|mergeLock
 operator|.
 name|unlock
@@ -1741,9 +1724,6 @@ name|merge
 parameter_list|(
 name|CommitHook
 name|hook
-parameter_list|,
-name|PostCommitHook
-name|committed
 parameter_list|)
 throws|throws
 name|CommitFailedException

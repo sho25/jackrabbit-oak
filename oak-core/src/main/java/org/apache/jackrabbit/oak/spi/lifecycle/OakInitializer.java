@@ -59,7 +59,7 @@ name|plugins
 operator|.
 name|index
 operator|.
-name|IndexUpdateProvider
+name|IndexEditorProvider
 import|;
 end_import
 
@@ -77,7 +77,7 @@ name|plugins
 operator|.
 name|index
 operator|.
-name|IndexEditorProvider
+name|IndexUpdateProvider
 import|;
 end_import
 
@@ -114,24 +114,6 @@ operator|.
 name|commit
 operator|.
 name|EditorHook
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|spi
-operator|.
-name|commit
-operator|.
-name|PostCommitHook
 import|;
 end_import
 
@@ -255,10 +237,6 @@ argument_list|(
 name|indexEditor
 argument_list|)
 argument_list|)
-argument_list|,
-name|PostCommitHook
-operator|.
-name|EMPTY
 argument_list|)
 expr_stmt|;
 block|}
@@ -366,10 +344,6 @@ argument_list|(
 name|indexEditor
 argument_list|)
 argument_list|)
-argument_list|,
-name|PostCommitHook
-operator|.
-name|EMPTY
 argument_list|)
 expr_stmt|;
 block|}

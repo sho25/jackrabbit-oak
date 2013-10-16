@@ -40,7 +40,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * An {@code Observable} supports attaching {@link Listener} instances for  * listening to changes in a {@code ContentSession}.  * @see ChangeDispatcher  */
+comment|/**  * An {@code Observable} supports attaching {@link Listener} instances for  * listening to content changes.  *  * @see ChangeDispatcher  */
 end_comment
 
 begin_interface
@@ -48,7 +48,7 @@ specifier|public
 interface|interface
 name|Observable
 block|{
-comment|/**      * Register a new {@code Listener}. Clients need to call      * {@link ChangeDispatcher.Listener#dispose()} when to free      * up any resources associated with the listener when done.      * @return a fresh {@code Listener} instance.      */
+comment|/**      * Register a new {@code Listener}. Clients need to call      * {@link ChangeDispatcher.Listener#dispose()} to free      * up any resources associated with the listener when done.      * @return a fresh {@code Listener} instance.      */
 name|Listener
 name|newListener
 parameter_list|()
