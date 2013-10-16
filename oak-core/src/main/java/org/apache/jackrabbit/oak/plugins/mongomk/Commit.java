@@ -253,8 +253,8 @@ argument_list|)
 decl_stmt|;
 specifier|private
 specifier|final
-name|MongoMK
-name|mk
+name|MongoNodeStore
+name|nodeStore
 decl_stmt|;
 specifier|private
 specifier|final
@@ -337,8 +337,8 @@ argument_list|()
 decl_stmt|;
 name|Commit
 parameter_list|(
-name|MongoMK
-name|mk
+name|MongoNodeStore
+name|nodeStore
 parameter_list|,
 name|Revision
 name|baseRevision
@@ -361,9 +361,9 @@ name|revision
 expr_stmt|;
 name|this
 operator|.
-name|mk
+name|nodeStore
 operator|=
-name|mk
+name|nodeStore
 expr_stmt|;
 block|}
 name|UpdateOp
@@ -749,7 +749,7 @@ decl_stmt|;
 name|DocumentStore
 name|store
 init|=
-name|mk
+name|nodeStore
 operator|.
 name|getDocumentStore
 argument_list|()
@@ -1282,7 +1282,7 @@ block|{
 name|DocumentStore
 name|store
 init|=
-name|mk
+name|nodeStore
 operator|.
 name|getDocumentStore
 argument_list|()
@@ -1409,7 +1409,7 @@ name|doc
 operator|.
 name|getNewestRevision
 argument_list|(
-name|mk
+name|nodeStore
 argument_list|,
 name|revision
 argument_list|,
@@ -1530,7 +1530,7 @@ block|}
 elseif|else
 if|if
 condition|(
-name|mk
+name|nodeStore
 operator|.
 name|isRevisionNewer
 argument_list|(
@@ -1603,7 +1603,7 @@ operator|)
 operator|+
 literal|",\nrevision order:\n"
 operator|+
-name|mk
+name|nodeStore
 operator|.
 name|getRevisionComparator
 argument_list|()
@@ -1659,7 +1659,7 @@ name|op
 argument_list|,
 name|revision
 argument_list|,
-name|mk
+name|nodeStore
 argument_list|)
 operator|.
 name|mark
@@ -1684,7 +1684,7 @@ operator|>
 name|SPLIT_CANDIDATE_THRESHOLD
 condition|)
 block|{
-name|mk
+name|nodeStore
 operator|.
 name|addSplitCandidate
 argument_list|(
@@ -1738,7 +1738,7 @@ name|op
 argument_list|,
 name|baseRevision
 argument_list|,
-name|mk
+name|nodeStore
 argument_list|)
 return|;
 block|}
@@ -2008,7 +2008,7 @@ operator|.
 name|isDelete
 argument_list|()
 decl_stmt|;
-name|mk
+name|nodeStore
 operator|.
 name|applyChanges
 argument_list|(
