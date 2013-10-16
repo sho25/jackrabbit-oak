@@ -1574,15 +1574,6 @@ block|}
 comment|// since impersonators may be imported later on, postpone processing
 comment|// to the end.
 comment|// see -> process References
-name|TextValue
-index|[]
-name|tvs
-init|=
-name|propInfo
-operator|.
-name|getTextValues
-argument_list|()
-decl_stmt|;
 name|referenceTracker
 operator|.
 name|processedReference
@@ -1595,7 +1586,10 @@ operator|.
 name|getID
 argument_list|()
 argument_list|,
-name|tvs
+name|propInfo
+operator|.
+name|getTextValues
+argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -2352,8 +2346,12 @@ block|}
 name|void
 name|addMembers
 parameter_list|(
+name|List
+argument_list|<
+name|?
+extends|extends
 name|TextValue
-index|[]
+argument_list|>
 name|tvs
 parameter_list|)
 block|{
@@ -2875,8 +2873,12 @@ parameter_list|(
 name|String
 name|userId
 parameter_list|,
+name|List
+argument_list|<
+name|?
+extends|extends
 name|TextValue
-index|[]
+argument_list|>
 name|values
 parameter_list|)
 block|{

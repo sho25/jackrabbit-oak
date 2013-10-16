@@ -678,17 +678,6 @@ argument_list|,
 literal|null
 argument_list|)
 decl_stmt|;
-name|TextValue
-index|[]
-name|values
-init|=
-operator|new
-name|TextValue
-index|[]
-block|{
-name|textHandler
-block|}
-decl_stmt|;
 name|ArrayList
 argument_list|<
 name|PropInfo
@@ -722,7 +711,7 @@ name|PropertyType
 operator|.
 name|STRING
 argument_list|,
-name|values
+name|textHandler
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -824,12 +813,12 @@ argument_list|(
 name|uri
 argument_list|)
 operator|+
-literal|":"
+literal|':'
 operator|+
 name|name
 return|;
 block|}
-comment|/**      * Processes the given {@code name}, i.e. decodes it and checks      * the format of the decoded name.      *      * @param nameInfo name to process      * @return the decoded and valid jcr name or the original name if it is      *         not encoded or if the resulting decoded name would be illegal.      */
+comment|/**      * Processes the given {@code name}, i.e. decodes it and checks      * the format of the decoded name.      *      * @param nameInfo name to process      * @return the decoded and valid jcr name or the original name if it is      *         not encoded or if the resulting decoded name would be illegal.      * @throws javax.jcr.RepositoryException      */
 specifier|private
 name|NameInfo
 name|processName
@@ -1050,6 +1039,8 @@ block|}
 name|NameInfo
 name|propNameInfo
 init|=
+name|processName
+argument_list|(
 operator|new
 name|NameInfo
 argument_list|(
@@ -1060,15 +1051,8 @@ argument_list|(
 name|i
 argument_list|)
 argument_list|)
-decl_stmt|;
-name|propNameInfo
-operator|=
-name|processName
-argument_list|(
-name|propNameInfo
 argument_list|)
-expr_stmt|;
-comment|// value(s)
+decl_stmt|;
 name|String
 name|attrValue
 init|=
@@ -1079,42 +1063,6 @@ argument_list|(
 name|i
 argument_list|)
 decl_stmt|;
-name|TextValue
-index|[]
-name|propValues
-decl_stmt|;
-comment|// always assume single-valued property for the time being
-comment|// until a way of properly serializing/detecting multi-valued
-comment|// properties on re-import is found (see JCR-325);
-comment|// see also DocViewSAXEventGenerator#leavingProperties(Node, int)
-comment|// TODO proper multi-value serialization support
-name|propValues
-operator|=
-operator|new
-name|TextValue
-index|[
-literal|1
-index|]
-expr_stmt|;
-name|propValues
-index|[
-literal|0
-index|]
-operator|=
-operator|new
-name|StringValue
-argument_list|(
-name|attrValue
-argument_list|,
-name|sessionContext
-operator|.
-name|getValueFactory
-argument_list|()
-argument_list|,
-name|currentNamePathMapper
-argument_list|()
-argument_list|)
-expr_stmt|;
 if|if
 condition|(
 name|NamespaceRegistry
@@ -1236,6 +1184,28 @@ block|}
 block|}
 else|else
 block|{
+comment|// always assume single-valued property for the time being
+comment|// until a way of properly serializing/detecting multi-valued
+comment|// properties on re-import is found (see JCR-325);
+comment|// see also DocViewSAXEventGenerator#leavingProperties(Node, int)
+comment|// TODO proper multi-value serialization support
+name|TextValue
+name|tv
+init|=
+operator|new
+name|StringValue
+argument_list|(
+name|attrValue
+argument_list|,
+name|sessionContext
+operator|.
+name|getValueFactory
+argument_list|()
+argument_list|,
+name|currentNamePathMapper
+argument_list|()
+argument_list|)
+decl_stmt|;
 name|props
 operator|.
 name|add
@@ -1252,7 +1222,7 @@ name|PropertyType
 operator|.
 name|UNDEFINED
 argument_list|,
-name|propValues
+name|tv
 argument_list|)
 argument_list|)
 expr_stmt|;

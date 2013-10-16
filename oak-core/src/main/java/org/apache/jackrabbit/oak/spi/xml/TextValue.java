@@ -39,16 +39,6 @@ name|Value
 import|;
 end_import
 
-begin_import
-import|import
-name|javax
-operator|.
-name|jcr
-operator|.
-name|ValueFormatException
-import|;
-end_import
-
 begin_comment
 comment|/**  * {@code TextValue} represents a serialized property value read  * from a System or Document View XML document.  */
 end_comment
@@ -69,8 +59,6 @@ name|int
 name|targetType
 parameter_list|)
 throws|throws
-name|ValueFormatException
-throws|,
 name|RepositoryException
 function_decl|;
 comment|/**      * Dispose this value, i.e. free all bound resources. Once a value has      * been disposed, further method invocations will cause an IOException      * to be thrown.      */
