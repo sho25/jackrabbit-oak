@@ -245,6 +245,7 @@ name|MAX_SIZE
 init|=
 literal|250
 decl_stmt|;
+comment|// TODO define size or make configurable
 specifier|private
 specifier|final
 name|Map
