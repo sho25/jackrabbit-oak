@@ -18,38 +18,6 @@ package|;
 end_package
 
 begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|Preconditions
-operator|.
-name|checkArgument
-import|;
-end_import
-
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|Preconditions
-operator|.
-name|checkNotNull
-import|;
-end_import
-
-begin_import
 import|import
 name|java
 operator|.
@@ -465,6 +433,38 @@ name|NodeStoreBranch
 import|;
 end_import
 
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkArgument
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkNotNull
+import|;
+end_import
+
 begin_comment
 comment|/**  * {@code NodeStore} implementations against {@link MicroKernel}.  */
 end_comment
@@ -807,17 +807,6 @@ argument_list|,
 name|DEFAULT_CACHE_SIZE
 argument_list|)
 expr_stmt|;
-block|}
-annotation|@
-name|Nonnull
-specifier|public
-name|Observer
-name|getObserver
-parameter_list|()
-block|{
-return|return
-name|observer
-return|;
 block|}
 specifier|public
 name|void
