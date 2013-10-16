@@ -25,6 +25,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|NavigableMap
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|SortedSet
 import|;
 end_import
@@ -46,6 +56,18 @@ operator|.
 name|util
 operator|.
 name|TreeSet
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|ConcurrentSkipListMap
 import|;
 end_import
 
@@ -112,7 +134,7 @@ block|{
 comment|/**      * The commits to the branch      */
 specifier|private
 specifier|final
-name|TreeMap
+name|ConcurrentSkipListMap
 argument_list|<
 name|Revision
 argument_list|,
@@ -170,7 +192,7 @@ operator|.
 name|commits
 operator|=
 operator|new
-name|TreeMap
+name|ConcurrentSkipListMap
 argument_list|<
 name|Revision
 argument_list|,
@@ -225,7 +247,6 @@ block|}
 comment|/**      * Returns the base revision for the given branch revision<code>r</code>.      *      * @param r revision of a commit in this branch.      * @return the base revision for<code>r</code>.      * @throws IllegalArgumentException if<code>r</code> is not a commit of      *                                  this branch.      */
 annotation|@
 name|Nonnull
-specifier|synchronized
 name|Revision
 name|getBase
 parameter_list|(
@@ -278,7 +299,6 @@ argument_list|()
 return|;
 block|}
 comment|/**      * Rebases the last commit of this branch to the given revision.      *      * @param head the new head of the branch.      * @param base rebase to this revision.      * @throws IllegalArgumentException if head is a trunk revision or base is a      *                                  branch revision.      */
-specifier|synchronized
 name|void
 name|rebase
 parameter_list|(
@@ -364,7 +384,6 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Adds a new commit with revision<code>r</code> to this branch.      *      * @param r the revision of the branch commit to add.      * @throws IllegalArgumentException if r is not a branch revision.      */
-specifier|synchronized
 name|void
 name|addCommit
 parameter_list|(
@@ -437,7 +456,6 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * @return the commits to this branch.      */
-specifier|synchronized
 name|SortedSet
 argument_list|<
 name|Revision
@@ -445,40 +463,14 @@ argument_list|>
 name|getCommits
 parameter_list|()
 block|{
-name|SortedSet
-argument_list|<
-name|Revision
-argument_list|>
-name|revisions
-init|=
-operator|new
-name|TreeSet
-argument_list|<
-name|Revision
-argument_list|>
-argument_list|(
-name|commits
-operator|.
-name|comparator
-argument_list|()
-argument_list|)
-decl_stmt|;
-name|revisions
-operator|.
-name|addAll
-argument_list|(
+return|return
 name|commits
 operator|.
 name|keySet
 argument_list|()
-argument_list|)
-expr_stmt|;
-return|return
-name|revisions
 return|;
 block|}
 comment|/**      * @return<code>true</code> if this branch contains any commits;      *<code>false</code> otherwise.      */
-specifier|synchronized
 name|boolean
 name|hasCommits
 parameter_list|()
@@ -492,7 +484,6 @@ argument_list|()
 return|;
 block|}
 comment|/**      * Checks if this branch contains a commit with the given revision.      *      * @param r the revision of a commit.      * @return<code>true</code> if this branch contains a commit with the given      *         revision;<code>false</code> otherwise.      */
-specifier|synchronized
 name|boolean
 name|containsCommit
 parameter_list|(
@@ -519,7 +510,6 @@ return|;
 block|}
 comment|/**      * Removes the commit with the given revision<code>r</code>. Does nothing      * if there is no such commit.      *      * @param r the revision of the commit to remove.      * @throws IllegalArgumentException if r is not a branch revision.      */
 specifier|public
-specifier|synchronized
 name|void
 name|removeCommit
 parameter_list|(
@@ -556,7 +546,6 @@ comment|/**      * Gets the unsaved modifications for the given branch commit re
 annotation|@
 name|Nonnull
 specifier|public
-specifier|synchronized
 name|UnsavedModifications
 name|getModifications
 parameter_list|(
@@ -619,7 +608,6 @@ return|;
 block|}
 comment|/**      * Applies all unsaved modification of this branch to the given collection      * of unsaved trunk modifications with the given merge commit revision.      *      * @param trunk the unsaved trunk modifications.      * @param mergeCommit the revision of the merge commit.      */
 specifier|public
-specifier|synchronized
 name|void
 name|applyTo
 parameter_list|(
@@ -668,7 +656,6 @@ comment|/**      * Gets the most recent unsaved last revision at<code>readRevisi
 annotation|@
 name|CheckForNull
 specifier|public
-specifier|synchronized
 name|Revision
 name|getUnsavedLastRevision
 parameter_list|(
