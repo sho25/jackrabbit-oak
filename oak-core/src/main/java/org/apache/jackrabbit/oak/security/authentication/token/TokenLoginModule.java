@@ -873,8 +873,7 @@ block|{
 name|AuthenticationConfiguration
 name|authConfig
 init|=
-name|getSecurityProvider
-argument_list|()
+name|securityProvider
 operator|.
 name|getConfiguration
 argument_list|(

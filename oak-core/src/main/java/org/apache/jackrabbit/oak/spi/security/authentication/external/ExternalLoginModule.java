@@ -47,6 +47,16 @@ begin_import
 import|import
 name|javax
 operator|.
+name|annotation
+operator|.
+name|Nonnull
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
 name|jcr
 operator|.
 name|SimpleCredentials
@@ -64,6 +74,24 @@ operator|.
 name|login
 operator|.
 name|LoginException
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|api
+operator|.
+name|security
+operator|.
+name|user
+operator|.
+name|UserManager
 import|;
 end_import
 
@@ -215,6 +243,8 @@ name|loginSucceeded
 parameter_list|()
 function_decl|;
 comment|/**      * TODO      *      * @return      */
+annotation|@
+name|Nonnull
 specifier|protected
 specifier|abstract
 name|ExternalUser
@@ -222,6 +252,8 @@ name|getExternalUser
 parameter_list|()
 function_decl|;
 comment|/**      * TODO      *      * @return      * @throws SyncException      */
+annotation|@
+name|Nonnull
 specifier|protected
 name|SyncHandler
 name|getSyncHandler
@@ -400,6 +432,31 @@ init|=
 name|getRoot
 argument_list|()
 decl_stmt|;
+name|UserManager
+name|userManager
+init|=
+name|getUserManager
+argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|root
+operator|==
+literal|null
+operator|||
+name|userManager
+operator|==
+literal|null
+condition|)
+block|{
+throw|throw
+operator|new
+name|LoginException
+argument_list|(
+literal|"Cannot synchronize user."
+argument_list|)
+throw|;
+block|}
 name|Object
 name|smValue
 init|=
@@ -447,8 +504,7 @@ name|handler
 operator|.
 name|initialize
 argument_list|(
-name|getUserManager
-argument_list|()
+name|userManager
 argument_list|,
 name|root
 argument_list|,
