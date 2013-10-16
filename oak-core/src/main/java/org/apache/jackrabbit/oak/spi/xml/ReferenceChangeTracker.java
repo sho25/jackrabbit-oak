@@ -101,7 +101,7 @@ decl_stmt|;
 comment|/**      * list of processed reference properties that might need correcting      */
 specifier|private
 specifier|final
-name|ArrayList
+name|List
 argument_list|<
 name|Object
 argument_list|>
