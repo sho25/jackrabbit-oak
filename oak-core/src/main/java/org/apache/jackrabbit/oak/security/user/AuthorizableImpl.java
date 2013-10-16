@@ -1072,6 +1072,11 @@ operator|new
 name|AuthorizablePropertiesImpl
 argument_list|(
 name|this
+argument_list|,
+name|userManager
+operator|.
+name|getNamePathMapper
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
