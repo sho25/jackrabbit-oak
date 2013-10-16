@@ -2672,7 +2672,7 @@ name|writeResult
 init|=
 name|dbCollection
 operator|.
-name|updateMulti
+name|update
 argument_list|(
 name|query
 operator|.
@@ -2680,6 +2680,14 @@ name|get
 argument_list|()
 argument_list|,
 name|update
+argument_list|,
+literal|false
+argument_list|,
+literal|true
+argument_list|,
+name|WriteConcern
+operator|.
+name|SAFE
 argument_list|)
 decl_stmt|;
 if|if
