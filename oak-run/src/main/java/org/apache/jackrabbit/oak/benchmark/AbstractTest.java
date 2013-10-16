@@ -191,6 +191,8 @@ class|class
 name|AbstractTest
 extends|extends
 name|Benchmark
+implements|implements
+name|CSVResultGenerator
 block|{
 comment|/**      * A random string to guarantee concurrently running tests don't overwrite      * each others changes (for example in a cluster).      *<p>      * The probability of duplicates, for 50 concurrent processes, is less than      * 1 in 1 million.      */
 specifier|static
@@ -319,6 +321,27 @@ specifier|private
 name|int
 name|concurrency
 decl_stmt|;
+specifier|private
+name|PrintStream
+name|out
+decl_stmt|;
+annotation|@
+name|Override
+specifier|public
+name|void
+name|setPrintStream
+parameter_list|(
+name|PrintStream
+name|out
+parameter_list|)
+block|{
+name|this
+operator|.
+name|out
+operator|=
+name|out
+expr_stmt|;
+block|}
 specifier|protected
 specifier|static
 name|int
@@ -440,9 +463,6 @@ argument_list|<
 name|RepositoryFixture
 argument_list|>
 name|fixtures
-parameter_list|,
-name|PrintStream
-name|out
 parameter_list|)
 block|{
 name|System
