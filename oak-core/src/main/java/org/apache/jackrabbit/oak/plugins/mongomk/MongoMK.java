@@ -668,6 +668,16 @@ name|backgroundWrite
 argument_list|()
 expr_stmt|;
 block|}
+name|void
+name|runBackgroundOperations
+parameter_list|()
+block|{
+name|nodeStore
+operator|.
+name|runBackgroundOperations
+argument_list|()
+expr_stmt|;
+block|}
 name|MongoNodeStore
 name|getNodeStore
 parameter_list|()
