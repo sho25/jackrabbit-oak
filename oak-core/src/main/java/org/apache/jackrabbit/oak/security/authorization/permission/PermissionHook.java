@@ -1551,6 +1551,7 @@ return|;
 block|}
 block|}
 specifier|private
+specifier|final
 class|class
 name|Acl
 block|{
@@ -2196,7 +2197,7 @@ block|{
 name|String
 name|name
 init|=
-literal|"c"
+literal|'c'
 operator|+
 name|String
 operator|.
@@ -2437,6 +2438,7 @@ block|}
 block|}
 block|}
 specifier|private
+specifier|final
 class|class
 name|AcEntry
 block|{

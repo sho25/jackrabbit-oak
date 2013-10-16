@@ -95,7 +95,7 @@ name|oak
 operator|.
 name|core
 operator|.
-name|ImmutableTree
+name|ImmutableRoot
 import|;
 end_import
 
@@ -117,7 +117,7 @@ name|authorization
 operator|.
 name|permission
 operator|.
-name|ReadStatus
+name|RepositoryPermission
 import|;
 end_import
 
@@ -135,9 +135,11 @@ name|spi
 operator|.
 name|security
 operator|.
-name|privilege
+name|authorization
 operator|.
-name|PrivilegeBitsProvider
+name|permission
+operator|.
+name|TreePermission
 import|;
 end_import
 
@@ -155,20 +157,21 @@ name|refresh
 parameter_list|(
 annotation|@
 name|Nonnull
-name|ImmutableTree
-name|permissionsTree
+name|ImmutableRoot
+name|root
 parameter_list|,
 annotation|@
 name|Nonnull
-name|PrivilegeBitsProvider
-name|bitsProvider
+name|String
+name|workspaceName
 parameter_list|)
 function_decl|;
-comment|/**      *      * @param tree      * @param property      * @return      */
-annotation|@
-name|Nonnull
-name|ReadStatus
-name|getReadStatus
+name|RepositoryPermission
+name|getRepositoryPermission
+parameter_list|()
+function_decl|;
+name|TreePermission
+name|getTreePermission
 parameter_list|(
 annotation|@
 name|Nonnull
@@ -176,17 +179,9 @@ name|Tree
 name|tree
 parameter_list|,
 annotation|@
-name|Nullable
-name|PropertyState
-name|property
-parameter_list|)
-function_decl|;
-comment|/**      *      * @param permissions      * @return      */
-name|boolean
-name|isGranted
-parameter_list|(
-name|long
-name|permissions
+name|Nonnull
+name|TreePermission
+name|parentPermission
 parameter_list|)
 function_decl|;
 comment|/**      *      * @param parent      * @param property      * @param permissions      * @return      */

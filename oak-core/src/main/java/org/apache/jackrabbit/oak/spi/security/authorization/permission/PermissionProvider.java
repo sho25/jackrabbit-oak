@@ -128,9 +128,12 @@ modifier|...
 name|privilegeNames
 parameter_list|)
 function_decl|;
-comment|/**      *      * @param tree      * @param property      * @return      */
-name|ReadStatus
-name|getReadStatus
+name|RepositoryPermission
+name|getRepositoryPermission
+parameter_list|()
+function_decl|;
+name|TreePermission
+name|getTreePermission
 parameter_list|(
 annotation|@
 name|Nonnull
@@ -138,17 +141,9 @@ name|Tree
 name|tree
 parameter_list|,
 annotation|@
-name|Nullable
-name|PropertyState
-name|property
-parameter_list|)
-function_decl|;
-comment|/**      * Returns {@code true} if the specified repository level permissions are      * {@code granted}; false otherwise.      *      * @param repositoryPermissions Any valid repository level permission such as      * for example:      *<ul>      *<li>{@link Permissions#NAMESPACE_MANAGEMENT}</li>      *<li>{@link Permissions#NODE_TYPE_DEFINITION_MANAGEMENT}</li>      *<li>{@link Permissions#PRIVILEGE_MANAGEMENT}</li>      *<li>{@link Permissions#WORKSPACE_MANAGEMENT}</li>      *</ul>      * @return {@code true} if the specified repository level permissions are      * {@code granted}; false otherwise.      */
-name|boolean
-name|isGranted
-parameter_list|(
-name|long
-name|repositoryPermissions
+name|Nonnull
+name|TreePermission
+name|parentPermission
 parameter_list|)
 function_decl|;
 comment|/**      *      * @param parent      * @param property      * @param permissions      * @return      */
