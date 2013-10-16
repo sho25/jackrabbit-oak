@@ -685,7 +685,7 @@ name|path
 argument_list|)
 condition|)
 block|{
-name|loadPermissionsFromTree
+name|loadPermissionEntries
 argument_list|(
 name|path
 argument_list|,
@@ -723,7 +723,7 @@ name|path
 argument_list|)
 condition|)
 block|{
-name|loadPermissionsFromTree
+name|loadPermissionEntries
 argument_list|(
 name|path
 argument_list|,
@@ -966,7 +966,7 @@ block|}
 specifier|private
 specifier|static
 name|void
-name|loadPermissionsFromTree
+name|loadPermissionEntries
 parameter_list|(
 annotation|@
 name|Nonnull
