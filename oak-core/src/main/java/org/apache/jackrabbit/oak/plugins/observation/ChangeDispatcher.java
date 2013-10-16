@@ -826,6 +826,9 @@ name|sessionId
 parameter_list|)
 block|{
 return|return
+operator|!
+name|isExternal
+operator|&&
 name|Objects
 operator|.
 name|equal

@@ -1072,7 +1072,6 @@ name|get
 argument_list|()
 decl_stmt|;
 comment|// FIXME don't rely on toString for session id
-comment|// FIXME make cluster node id part of session id to make session id unique across all cluster nodes
 if|if
 condition|(
 operator|!
