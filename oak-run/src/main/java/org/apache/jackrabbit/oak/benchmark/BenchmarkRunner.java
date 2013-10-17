@@ -845,6 +845,10 @@ name|CreateManyChildNodesTest
 argument_list|()
 block|,
 operator|new
+name|CreateManyNodesTest
+argument_list|()
+block|,
+operator|new
 name|UpdateManyChildNodesTest
 argument_list|()
 block|,
