@@ -18,6 +18,38 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkArgument
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkNotNull
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -339,6 +371,24 @@ name|spi
 operator|.
 name|commit
 operator|.
+name|CommitInfo
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|commit
+operator|.
 name|EmptyObserver
 import|;
 end_import
@@ -430,38 +480,6 @@ operator|.
 name|state
 operator|.
 name|NodeStoreBranch
-import|;
-end_import
-
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|Preconditions
-operator|.
-name|checkArgument
-import|;
-end_import
-
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|Preconditions
-operator|.
-name|checkNotNull
 import|;
 end_import
 
@@ -916,7 +934,7 @@ return|return
 name|root
 return|;
 block|}
-comment|/**      * This implementation delegates to {@link KernelRootBuilder#merge(CommitHook)}      * if {@code builder} is a {@link KernelNodeBuilder} instance. Otherwise it throws      * an {@code IllegalArgumentException}.      */
+comment|/**      * This implementation delegates to {@link KernelRootBuilder#merge(CommitHook, CommitInfo)}      * if {@code builder} is a {@link KernelNodeBuilder} instance. Otherwise it throws      * an {@code IllegalArgumentException}.      */
 annotation|@
 name|Override
 specifier|public
@@ -932,6 +950,11 @@ annotation|@
 name|Nonnull
 name|CommitHook
 name|commitHook
+parameter_list|,
+annotation|@
+name|Nonnull
+name|CommitInfo
+name|info
 parameter_list|)
 throws|throws
 name|CommitFailedException
@@ -953,7 +976,15 @@ operator|)
 operator|.
 name|merge
 argument_list|(
+name|checkNotNull
+argument_list|(
 name|commitHook
+argument_list|)
+argument_list|,
+name|checkNotNull
+argument_list|(
+name|info
+argument_list|)
 argument_list|)
 return|;
 block|}
@@ -1365,6 +1396,9 @@ name|localCommit
 parameter_list|(
 name|NodeState
 name|root
+parameter_list|,
+name|CommitInfo
+name|info
 parameter_list|)
 block|{
 name|changeDispatcher
@@ -1372,6 +1406,8 @@ operator|.
 name|localCommit
 argument_list|(
 name|root
+argument_list|,
+name|info
 argument_list|)
 expr_stmt|;
 block|}

@@ -21,6 +21,22 @@ end_package
 
 begin_import
 import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkNotNull
+import|;
+end_import
+
+begin_import
+import|import static
 name|java
 operator|.
 name|util
@@ -144,6 +160,24 @@ operator|.
 name|commit
 operator|.
 name|CommitHook
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|commit
+operator|.
+name|CommitInfo
 import|;
 end_import
 
@@ -475,6 +509,9 @@ name|optimisticMerge
 parameter_list|(
 name|CommitHook
 name|hook
+parameter_list|,
+name|CommitInfo
+name|info
 parameter_list|)
 throws|throws
 name|CommitFailedException
@@ -605,6 +642,8 @@ argument_list|(
 name|base
 argument_list|,
 name|newHead
+argument_list|,
+name|info
 argument_list|)
 condition|)
 block|{
@@ -694,6 +733,9 @@ name|hook
 parameter_list|,
 name|long
 name|timeout
+parameter_list|,
+name|CommitInfo
+name|info
 parameter_list|)
 throws|throws
 name|CommitFailedException
@@ -800,6 +842,8 @@ argument_list|(
 name|before
 argument_list|,
 name|after
+argument_list|,
+name|info
 argument_list|)
 condition|)
 block|{
@@ -880,6 +924,8 @@ argument_list|(
 name|after
 argument_list|,
 name|newHead
+argument_list|,
+name|info
 argument_list|)
 condition|)
 block|{
@@ -919,12 +965,29 @@ specifier|synchronized
 name|NodeState
 name|merge
 parameter_list|(
+annotation|@
+name|Nonnull
 name|CommitHook
 name|hook
+parameter_list|,
+annotation|@
+name|Nonnull
+name|CommitInfo
+name|info
 parameter_list|)
 throws|throws
 name|CommitFailedException
 block|{
+name|checkNotNull
+argument_list|(
+name|hook
+argument_list|)
+expr_stmt|;
+name|checkNotNull
+argument_list|(
+name|info
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|base
@@ -940,6 +1003,8 @@ init|=
 name|optimisticMerge
 argument_list|(
 name|hook
+argument_list|,
+name|info
 argument_list|)
 decl_stmt|;
 if|if
@@ -954,6 +1019,8 @@ argument_list|(
 name|hook
 argument_list|,
 name|timeout
+argument_list|,
+name|info
 argument_list|)
 expr_stmt|;
 block|}

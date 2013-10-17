@@ -857,6 +857,24 @@ name|spi
 operator|.
 name|commit
 operator|.
+name|CommitInfo
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|commit
+operator|.
 name|EditorHook
 import|;
 end_import
@@ -1232,6 +1250,10 @@ operator|new
 name|RegistrationEditorProvider
 argument_list|()
 argument_list|)
+argument_list|,
+name|CommitInfo
+operator|.
+name|EMPTY
 argument_list|)
 expr_stmt|;
 comment|// TODO: default hooks?

@@ -109,6 +109,24 @@ name|CommitHook
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|commit
+operator|.
+name|CommitInfo
+import|;
+end_import
+
 begin_comment
 comment|/**  * Storage abstraction for trees. At any given point in time the stored  * tree is rooted at a single immutable node state.  *<p>  * This is a low-level interface that doesn't cover functionality like  * merging concurrent changes or rejecting new tree states based on some  * higher-level consistency constraints.  */
 end_comment
@@ -125,7 +143,7 @@ name|NodeState
 name|getRoot
 parameter_list|()
 function_decl|;
-comment|/**      * Merges the changes from the passed {@code builder} into      * the store.      *      * @param builder  the builder whose changes to apply      * @param commitHook the commit hook to apply while merging changes      * @return the node state resulting from the merge.      * @throws CommitFailedException if the merge failed      * @throws IllegalArgumentException if the builder is not acquired      *                                  from a root state of this store      */
+comment|/**      * Merges the changes from the passed {@code builder} into      * the store.      *      * @param builder  the builder whose changes to apply      * @param commitHook the commit hook to apply while merging changes      * @param info commit info associated with this merge operation      * @return the node state resulting from the merge.      * @throws CommitFailedException if the merge failed      * @throws IllegalArgumentException if the builder is not acquired      *                                  from a root state of this store      */
 annotation|@
 name|Nonnull
 name|NodeState
@@ -140,6 +158,11 @@ annotation|@
 name|Nonnull
 name|CommitHook
 name|commitHook
+parameter_list|,
+annotation|@
+name|Nonnull
+name|CommitInfo
+name|info
 parameter_list|)
 throws|throws
 name|CommitFailedException

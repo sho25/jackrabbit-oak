@@ -303,24 +303,6 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|plugins
-operator|.
-name|observation
-operator|.
-name|CommitInfoEditorProvider
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
 name|spi
 operator|.
 name|state
@@ -384,10 +366,6 @@ block|,
 name|MicroKernel
 operator|.
 name|CONFLICT_NAME
-block|,
-name|CommitInfoEditorProvider
-operator|.
-name|COMMIT_INFO
 block|}
 decl_stmt|;
 comment|/**      * Name of this tree      */
