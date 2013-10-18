@@ -550,7 +550,7 @@ name|getType
 parameter_list|(
 annotation|@
 name|Nonnull
-name|Tree
+name|ImmutableTree
 name|tree
 parameter_list|,
 annotation|@
@@ -562,12 +562,10 @@ block|{
 comment|// TODO: OAK-753 decide on where to filter out hidden items.
 comment|// TODO: deal with hidden properties
 return|return
-name|ImmutableTree
+name|tree
 operator|.
 name|getType
-argument_list|(
-name|tree
-argument_list|)
+argument_list|()
 return|;
 block|}
 annotation|@

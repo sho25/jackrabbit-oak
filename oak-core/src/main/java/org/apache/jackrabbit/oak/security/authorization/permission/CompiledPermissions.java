@@ -77,9 +77,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|api
+name|core
 operator|.
-name|Tree
+name|ImmutableRoot
 import|;
 end_import
 
@@ -95,7 +95,7 @@ name|oak
 operator|.
 name|core
 operator|.
-name|ImmutableRoot
+name|ImmutableTree
 import|;
 end_import
 
@@ -175,7 +175,7 @@ name|getTreePermission
 parameter_list|(
 annotation|@
 name|Nonnull
-name|Tree
+name|ImmutableTree
 name|tree
 parameter_list|,
 annotation|@
@@ -184,13 +184,13 @@ name|TreePermission
 name|parentPermission
 parameter_list|)
 function_decl|;
-comment|/**      *      * @param parent      * @param property      * @param permissions      * @return      */
+comment|/**      *      *      * @param parent      * @param property      * @param permissions      * @return      */
 name|boolean
 name|isGranted
 parameter_list|(
 annotation|@
 name|Nonnull
-name|Tree
+name|ImmutableTree
 name|parent
 parameter_list|,
 annotation|@
@@ -215,7 +215,7 @@ name|long
 name|permissions
 parameter_list|)
 function_decl|;
-comment|/**      *      * @param tree      * @return      */
+comment|/**      *      *      * @param tree      * @return      */
 annotation|@
 name|Nonnull
 name|Set
@@ -226,17 +226,17 @@ name|getPrivileges
 parameter_list|(
 annotation|@
 name|Nullable
-name|Tree
+name|ImmutableTree
 name|tree
 parameter_list|)
 function_decl|;
-comment|/**      *      * @param tree      * @param privilegeNames      * @return      */
+comment|/**      *      *      * @param tree      * @param privilegeNames      * @return      */
 name|boolean
 name|hasPrivileges
 parameter_list|(
 annotation|@
 name|Nullable
-name|Tree
+name|ImmutableTree
 name|tree
 parameter_list|,
 name|String

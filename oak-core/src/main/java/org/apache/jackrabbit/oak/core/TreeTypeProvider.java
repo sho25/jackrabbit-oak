@@ -53,17 +53,23 @@ name|TYPE_VERSION
 init|=
 literal|2
 decl_stmt|;
+comment|// permissions store
+name|int
+name|TYPE_PERMISSION_STORE
+init|=
+literal|4
+decl_stmt|;
 comment|// access control content
 name|int
 name|TYPE_AC
 init|=
-literal|4
+literal|8
 decl_stmt|;
 comment|// hidden trees
 name|int
 name|TYPE_HIDDEN
 init|=
-literal|8
+literal|16
 decl_stmt|;
 name|TreeTypeProvider
 name|EMPTY
