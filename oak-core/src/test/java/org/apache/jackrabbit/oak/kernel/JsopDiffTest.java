@@ -214,9 +214,7 @@ name|diff
 operator|=
 operator|new
 name|JsopDiff
-argument_list|(
-literal|null
-argument_list|)
+argument_list|()
 expr_stmt|;
 name|diff
 operator|.
@@ -239,9 +237,7 @@ name|diff
 operator|=
 operator|new
 name|JsopDiff
-argument_list|(
-literal|null
-argument_list|)
+argument_list|()
 expr_stmt|;
 name|diff
 operator|.
@@ -273,9 +269,7 @@ name|diff
 operator|=
 operator|new
 name|JsopDiff
-argument_list|(
-literal|null
-argument_list|)
+argument_list|()
 expr_stmt|;
 name|diff
 operator|.
@@ -308,9 +302,7 @@ name|diff
 operator|=
 operator|new
 name|JsopDiff
-argument_list|(
-literal|null
-argument_list|)
+argument_list|()
 expr_stmt|;
 name|diff
 operator|.
@@ -342,9 +334,7 @@ name|diff
 operator|=
 operator|new
 name|JsopDiff
-argument_list|(
-literal|null
-argument_list|)
+argument_list|()
 expr_stmt|;
 name|diff
 operator|.
@@ -415,9 +405,7 @@ name|diff
 operator|=
 operator|new
 name|JsopDiff
-argument_list|(
-literal|null
-argument_list|)
+argument_list|()
 expr_stmt|;
 name|diff
 operator|.
@@ -442,9 +430,7 @@ name|diff
 operator|=
 operator|new
 name|JsopDiff
-argument_list|(
-literal|null
-argument_list|)
+argument_list|()
 expr_stmt|;
 name|diff
 operator|.
@@ -471,9 +457,7 @@ name|diff
 operator|=
 operator|new
 name|JsopDiff
-argument_list|(
-literal|null
-argument_list|)
+argument_list|()
 expr_stmt|;
 name|diff
 operator|.
