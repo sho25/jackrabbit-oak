@@ -289,7 +289,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"^\"/foo\":\"dou:1.23\""
+literal|"^\"/foo\":1.23"
 argument_list|,
 name|diff
 operator|.
@@ -297,7 +297,6 @@ name|toString
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|// TODO: 1.23?
 name|diff
 operator|=
 operator|new
