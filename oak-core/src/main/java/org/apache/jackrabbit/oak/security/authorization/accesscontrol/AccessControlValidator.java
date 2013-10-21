@@ -1659,10 +1659,6 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|mixinNames
-operator|!=
-literal|null
-operator|&&
 name|Iterables
 operator|.
 name|contains

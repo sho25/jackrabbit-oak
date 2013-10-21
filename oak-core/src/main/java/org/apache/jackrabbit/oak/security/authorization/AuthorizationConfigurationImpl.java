@@ -880,8 +880,7 @@ name|root
 argument_list|,
 name|principals
 argument_list|,
-name|getSecurityProvider
-argument_list|()
+name|this
 argument_list|)
 return|;
 block|}
