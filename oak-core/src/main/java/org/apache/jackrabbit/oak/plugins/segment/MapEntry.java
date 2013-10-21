@@ -52,6 +52,26 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|segment
+operator|.
+name|MapRecord
+operator|.
+name|HASH_MASK
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -310,11 +330,15 @@ name|compare
 argument_list|(
 name|getHash
 argument_list|()
+operator|&
+name|HASH_MASK
 argument_list|,
 name|that
 operator|.
 name|getHash
 argument_list|()
+operator|&
+name|HASH_MASK
 argument_list|)
 operator|.
 name|compare
