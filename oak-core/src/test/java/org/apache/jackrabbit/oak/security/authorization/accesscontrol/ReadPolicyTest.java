@@ -23,6 +23,16 @@ end_package
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Set
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|jcr
@@ -67,9 +77,7 @@ name|security
 operator|.
 name|authorization
 operator|.
-name|accesscontrol
-operator|.
-name|AbstractAccessControlTest
+name|AuthorizationConfiguration
 import|;
 end_import
 
@@ -89,7 +97,9 @@ name|security
 operator|.
 name|authorization
 operator|.
-name|AuthorizationConfiguration
+name|accesscontrol
+operator|.
+name|AbstractAccessControlTest
 import|;
 end_import
 
@@ -159,8 +169,10 @@ extends|extends
 name|AbstractAccessControlTest
 block|{
 specifier|private
+name|Set
+argument_list|<
 name|String
-index|[]
+argument_list|>
 name|readPaths
 decl_stmt|;
 annotation|@

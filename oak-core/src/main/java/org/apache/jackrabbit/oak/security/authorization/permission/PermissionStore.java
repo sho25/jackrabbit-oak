@@ -232,6 +232,7 @@ comment|/**  * The Permission store reads the principal based access control per
 end_comment
 
 begin_class
+specifier|final
 class|class
 name|PermissionStore
 implements|implements
