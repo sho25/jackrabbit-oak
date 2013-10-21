@@ -127,7 +127,7 @@ name|addNode
 argument_list|(
 name|ROOT_NODE_NAME
 argument_list|,
-literal|"nt:unstructured"
+literal|"nt:folder"
 argument_list|)
 decl_stmt|;
 for|for
@@ -153,7 +153,7 @@ literal|"node"
 operator|+
 name|i
 argument_list|,
-literal|"nt:unstructured"
+literal|"nt:folder"
 argument_list|)
 expr_stmt|;
 block|}
