@@ -144,6 +144,8 @@ operator|.
 name|getSimpleName
 argument_list|()
 operator|+
+name|TEST_ID
+operator|+
 name|counter
 operator|++
 decl_stmt|;

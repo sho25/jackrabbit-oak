@@ -228,7 +228,7 @@ argument_list|)
 decl_stmt|;
 specifier|static
 name|AtomicInteger
-name|counter
+name|nodeNameCounter
 init|=
 operator|new
 name|AtomicInteger
@@ -247,7 +247,7 @@ name|Integer
 operator|.
 name|toHexString
 argument_list|(
-name|counter
+name|nodeNameCounter
 operator|.
 name|getAndIncrement
 argument_list|()
