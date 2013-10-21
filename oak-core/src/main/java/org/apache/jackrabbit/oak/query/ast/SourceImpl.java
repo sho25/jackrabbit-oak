@@ -115,6 +115,11 @@ specifier|protected
 name|boolean
 name|outerJoinRightHandSide
 decl_stmt|;
+comment|/**      * Whether this selector is the parent of a descendent or parent-child join.      * Access rights don't need to be checked in such selectors (unless there      * are conditions on the selector).      */
+specifier|protected
+name|boolean
+name|isParent
+decl_stmt|;
 comment|/**      * Set the complete constraint of the query (the WHERE ... condition).      *      * @param queryConstraint the constraint      */
 specifier|public
 name|void
@@ -279,6 +284,14 @@ specifier|abstract
 name|boolean
 name|next
 parameter_list|()
+function_decl|;
+specifier|abstract
+name|void
+name|setParent
+parameter_list|(
+name|JoinConditionImpl
+name|joinCondition
+parameter_list|)
 function_decl|;
 block|}
 end_class

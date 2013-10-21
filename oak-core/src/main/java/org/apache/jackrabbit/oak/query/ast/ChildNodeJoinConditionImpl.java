@@ -396,6 +396,22 @@ parameter_list|)
 block|{
 comment|// nothing to do
 block|}
+annotation|@
+name|Override
+specifier|public
+name|boolean
+name|isParent
+parameter_list|(
+name|SourceImpl
+name|source
+parameter_list|)
+block|{
+return|return
+name|source
+operator|==
+name|parentSelector
+return|;
+block|}
 block|}
 end_class
 

@@ -1285,6 +1285,32 @@ operator|.
 name|next
 argument_list|()
 expr_stmt|;
+if|if
+condition|(
+name|isParent
+condition|)
+block|{
+comment|// we must not check whether the _parent_ is readable
+comment|// for joins of type
+comment|// "select [b].[jcr:primaryType]
+comment|// from [nt:base] as [a]
+comment|// inner join [nt:base] as [b]
+comment|// on isdescendantnode([b], [a])
+comment|// where [b].[jcr:path] = $path"
+comment|// because if we did, we would filter out
+comment|// correct results
+block|}
+else|else
+block|{
+comment|// we must check whether the _child_ is readable
+comment|// (even if no properties are read) for joins of type
+comment|// "select [a].[jcr:primaryType]
+comment|// from [nt:base] as [a]
+comment|// inner join [nt:base] as [b]
+comment|// on isdescendantnode([b], [a])
+comment|// where [a].[jcr:path] = $path"
+comment|// because not checking would reveal existence
+comment|// of the child node
 name|Tree
 name|tree
 init|=
@@ -1311,6 +1337,7 @@ condition|)
 block|{
 continue|continue;
 block|}
+block|}
 if|if
 condition|(
 operator|!
@@ -1318,9 +1345,7 @@ name|matchesAllTypes
 operator|&&
 operator|!
 name|evaluateTypeMatch
-argument_list|(
-name|tree
-argument_list|)
+argument_list|()
 condition|)
 block|{
 continue|continue;
@@ -1374,11 +1399,36 @@ block|}
 specifier|private
 name|boolean
 name|evaluateTypeMatch
-parameter_list|(
+parameter_list|()
+block|{
 name|Tree
 name|tree
-parameter_list|)
+init|=
+name|getTree
+argument_list|(
+name|currentRow
+operator|.
+name|getPath
+argument_list|()
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|tree
+operator|==
+literal|null
+operator|||
+operator|!
+name|tree
+operator|.
+name|exists
+argument_list|()
+condition|)
 block|{
+return|return
+literal|false
+return|;
+block|}
 name|PropertyState
 name|primary
 init|=
@@ -1931,6 +1981,32 @@ operator|.
 name|hashCode
 argument_list|()
 return|;
+block|}
+annotation|@
+name|Override
+specifier|protected
+name|void
+name|setParent
+parameter_list|(
+name|JoinConditionImpl
+name|joinCondition
+parameter_list|)
+block|{
+if|if
+condition|(
+name|joinCondition
+operator|.
+name|isParent
+argument_list|(
+name|this
+argument_list|)
+condition|)
+block|{
+name|isParent
+operator|=
+literal|true
+expr_stmt|;
+block|}
 block|}
 block|}
 end_class

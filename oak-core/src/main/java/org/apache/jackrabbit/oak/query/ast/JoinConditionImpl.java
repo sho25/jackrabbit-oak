@@ -93,6 +93,16 @@ name|SelectorImpl
 name|s
 parameter_list|)
 function_decl|;
+comment|/**      * Check whether the given source is the parent of the join condition, as      * selector "[b]" is the parent of the join condition      * "isdescendantnode([a], [b])".      *       * @param source the source      * @return true if the source is the parent      */
+specifier|public
+specifier|abstract
+name|boolean
+name|isParent
+parameter_list|(
+name|SourceImpl
+name|source
+parameter_list|)
+function_decl|;
 block|}
 end_class
 
