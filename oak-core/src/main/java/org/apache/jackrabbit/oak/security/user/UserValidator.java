@@ -1053,7 +1053,7 @@ block|{
 name|String
 name|id
 init|=
-name|UserProvider
+name|UserUtil
 operator|.
 name|getAuthorizableId
 argument_list|(
@@ -1113,7 +1113,7 @@ block|{
 name|String
 name|id
 init|=
-name|UserProvider
+name|UserUtil
 operator|.
 name|getAuthorizableId
 argument_list|(

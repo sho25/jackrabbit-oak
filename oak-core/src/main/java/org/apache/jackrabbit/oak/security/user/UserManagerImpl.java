@@ -1607,7 +1607,7 @@ block|}
 return|return
 name|getAuthorizable
 argument_list|(
-name|userProvider
+name|UserUtil
 operator|.
 name|getAuthorizableId
 argument_list|(
@@ -1753,7 +1753,7 @@ return|return
 operator|new
 name|UserImpl
 argument_list|(
-name|userProvider
+name|UserUtil
 operator|.
 name|getAuthorizableId
 argument_list|(
@@ -1785,7 +1785,7 @@ return|return
 operator|new
 name|GroupImpl
 argument_list|(
-name|userProvider
+name|UserUtil
 operator|.
 name|getAuthorizableId
 argument_list|(
