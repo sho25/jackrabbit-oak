@@ -419,7 +419,8 @@ argument_list|()
 operator|.
 name|getResourceAsStream
 argument_list|(
-literal|"deepTree.xml"
+name|getImportFileName
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|adminSession
@@ -570,6 +571,15 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
+specifier|protected
+name|String
+name|getImportFileName
+parameter_list|()
+block|{
+return|return
+literal|"deepTree.xml"
+return|;
 block|}
 specifier|protected
 name|void
