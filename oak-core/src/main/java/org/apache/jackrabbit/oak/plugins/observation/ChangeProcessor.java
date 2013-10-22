@@ -709,6 +709,7 @@ init|=
 literal|false
 decl_stmt|;
 specifier|private
+specifier|volatile
 name|Runnable
 name|deferredUnregister
 decl_stmt|;
