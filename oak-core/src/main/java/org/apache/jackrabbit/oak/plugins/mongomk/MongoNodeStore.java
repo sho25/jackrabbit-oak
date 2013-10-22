@@ -2594,6 +2594,8 @@ name|size
 argument_list|()
 operator|>
 name|limit
+operator|*
+literal|2
 condition|)
 block|{
 name|it
@@ -2605,6 +2607,8 @@ argument_list|(
 name|it
 argument_list|,
 name|limit
+operator|*
+literal|2
 argument_list|)
 expr_stmt|;
 block|}
