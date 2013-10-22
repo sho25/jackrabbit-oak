@@ -158,6 +158,11 @@ init|=
 literal|"rep:accessControlledPath"
 decl_stmt|;
 name|String
+name|REP_NUM_PERMISSIONS
+init|=
+literal|"rep:numPermissions"
+decl_stmt|;
+name|String
 name|REP_IS_ALLOW
 init|=
 literal|"rep:isAllow"
