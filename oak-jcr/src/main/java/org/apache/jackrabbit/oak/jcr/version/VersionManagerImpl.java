@@ -782,9 +782,6 @@ argument_list|)
 expr_stmt|;
 name|sessionDelegate
 operator|.
-name|getRoot
-argument_list|()
-operator|.
 name|commit
 argument_list|()
 expr_stmt|;
@@ -1210,9 +1207,6 @@ name|vd
 argument_list|)
 expr_stmt|;
 name|sessionDelegate
-operator|.
-name|getRoot
-argument_list|()
 operator|.
 name|commit
 argument_list|()

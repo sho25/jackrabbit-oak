@@ -351,15 +351,6 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|checkArgument
-argument_list|(
-name|info
-operator|!=
-literal|null
-argument_list|,
-literal|"Trunk commit must have a CommitInfo"
-argument_list|)
-expr_stmt|;
 name|afterTrunkCommit
 argument_list|(
 name|c

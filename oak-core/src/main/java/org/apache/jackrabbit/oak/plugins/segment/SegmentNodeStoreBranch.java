@@ -115,6 +115,16 @@ end_import
 
 begin_import
 import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|Nullable
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -971,7 +981,7 @@ name|CommitHook
 name|hook
 parameter_list|,
 annotation|@
-name|Nonnull
+name|Nullable
 name|CommitInfo
 name|info
 parameter_list|)
@@ -981,11 +991,6 @@ block|{
 name|checkNotNull
 argument_list|(
 name|hook
-argument_list|)
-expr_stmt|;
-name|checkNotNull
-argument_list|(
-name|info
 argument_list|)
 expr_stmt|;
 if|if

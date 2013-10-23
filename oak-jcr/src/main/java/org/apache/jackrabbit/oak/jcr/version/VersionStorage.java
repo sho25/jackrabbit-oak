@@ -53,22 +53,6 @@ name|oak
 operator|.
 name|api
 operator|.
-name|CommitFailedException
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|api
-operator|.
 name|Root
 import|;
 end_import
@@ -153,6 +137,14 @@ operator|=
 name|versionStorageRoot
 expr_stmt|;
 block|}
+name|Root
+name|getRoot
+parameter_list|()
+block|{
+return|return
+name|root
+return|;
+block|}
 comment|/**      * The version storage tree. I.e. the tree at path      *<code>/jcr:system/jcr:versionStorage</code>, though the returned      * tree instance may not necessarily return this path on      * {@link Tree#getPath()}!      *      * @return the version storage tree.      */
 name|Tree
 name|getTree
@@ -164,19 +156,6 @@ argument_list|(
 name|root
 argument_list|)
 return|;
-block|}
-comment|/**      * Commits changes made to the version storage tree.      *      * @throws CommitFailedException if the commit fails.      */
-name|void
-name|commit
-parameter_list|()
-throws|throws
-name|CommitFailedException
-block|{
-name|root
-operator|.
-name|commit
-argument_list|()
-expr_stmt|;
 block|}
 comment|/**      * Reverts all changes made to the version storage tree.      */
 name|void

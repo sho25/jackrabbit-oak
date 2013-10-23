@@ -2757,9 +2757,7 @@ name|builder
 argument_list|,
 name|CONFLICT_HOOK
 argument_list|,
-name|CommitInfo
-operator|.
-name|EMPTY
+literal|null
 argument_list|)
 decl_stmt|;
 if|if
@@ -2936,9 +2934,7 @@ name|branch
 argument_list|,
 name|CONFLICT_HOOK
 argument_list|,
-name|CommitInfo
-operator|.
-name|EMPTY
+literal|null
 argument_list|)
 decl_stmt|;
 if|if

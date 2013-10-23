@@ -169,6 +169,16 @@ end_import
 
 begin_import
 import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|Nullable
+import|;
+end_import
+
+begin_import
+import|import
 name|com
 operator|.
 name|google
@@ -433,7 +443,7 @@ name|CommitHook
 name|commitHook
 parameter_list|,
 annotation|@
-name|Nonnull
+name|Nullable
 name|CommitInfo
 name|info
 parameter_list|)
@@ -450,11 +460,6 @@ expr_stmt|;
 name|checkNotNull
 argument_list|(
 name|commitHook
-argument_list|)
-expr_stmt|;
-name|checkNotNull
-argument_list|(
-name|info
 argument_list|)
 expr_stmt|;
 name|rebase
@@ -868,7 +873,7 @@ name|CommitHook
 name|hook
 parameter_list|,
 annotation|@
-name|Nonnull
+name|Nullable
 name|CommitInfo
 name|info
 parameter_list|)

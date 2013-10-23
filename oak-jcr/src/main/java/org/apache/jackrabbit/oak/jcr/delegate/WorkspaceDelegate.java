@@ -532,10 +532,15 @@ operator|.
 name|perform
 argument_list|()
 expr_stmt|;
-name|root
+name|context
+operator|.
+name|getSessionDelegate
+argument_list|()
 operator|.
 name|commit
-argument_list|()
+argument_list|(
+name|root
+argument_list|)
 expr_stmt|;
 name|sessionDelegate
 operator|.

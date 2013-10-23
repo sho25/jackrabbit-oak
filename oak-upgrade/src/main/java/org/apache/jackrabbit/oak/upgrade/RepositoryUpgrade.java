@@ -857,7 +857,7 @@ name|spi
 operator|.
 name|commit
 operator|.
-name|CommitInfo
+name|CommitHook
 import|;
 end_import
 
@@ -1237,12 +1237,10 @@ argument_list|,
 name|idxToPrefix
 argument_list|)
 expr_stmt|;
-name|target
-operator|.
-name|merge
-argument_list|(
-name|builder
-argument_list|,
+comment|// TODO: default hooks?
+name|CommitHook
+name|hook
+init|=
 operator|new
 name|EditorHook
 argument_list|(
@@ -1250,13 +1248,18 @@ operator|new
 name|RegistrationEditorProvider
 argument_list|()
 argument_list|)
-argument_list|,
-name|CommitInfo
+decl_stmt|;
+name|target
 operator|.
-name|EMPTY
+name|merge
+argument_list|(
+name|builder
+argument_list|,
+name|hook
+argument_list|,
+literal|null
 argument_list|)
 expr_stmt|;
-comment|// TODO: default hooks?
 block|}
 catch|catch
 parameter_list|(

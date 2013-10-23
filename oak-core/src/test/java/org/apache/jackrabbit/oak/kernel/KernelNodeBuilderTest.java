@@ -285,9 +285,7 @@ name|EmptyHook
 operator|.
 name|INSTANCE
 argument_list|,
-name|CommitInfo
-operator|.
-name|EMPTY
+literal|null
 argument_list|)
 expr_stmt|;
 block|}
@@ -436,9 +434,7 @@ name|EmptyHook
 operator|.
 name|INSTANCE
 argument_list|,
-name|CommitInfo
-operator|.
-name|EMPTY
+literal|null
 argument_list|)
 expr_stmt|;
 block|}

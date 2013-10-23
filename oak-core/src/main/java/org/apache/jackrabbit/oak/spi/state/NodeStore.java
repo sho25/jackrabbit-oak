@@ -61,6 +61,16 @@ end_import
 
 begin_import
 import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|Nullable
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -143,7 +153,7 @@ name|NodeState
 name|getRoot
 parameter_list|()
 function_decl|;
-comment|/**      * Merges the changes from the passed {@code builder} into      * the store.      *      * @param builder  the builder whose changes to apply      * @param commitHook the commit hook to apply while merging changes      * @param info commit info associated with this merge operation      * @return the node state resulting from the merge.      * @throws CommitFailedException if the merge failed      * @throws IllegalArgumentException if the builder is not acquired      *                                  from a root state of this store      */
+comment|/**      * Merges the changes from the passed {@code builder} into      * the store.      *      * @param builder  the builder whose changes to apply      * @param commitHook the commit hook to apply while merging changes      * @param info commit info associated with this merge operation,      *             or {@code null} if no local commit information is available      * @return the node state resulting from the merge.      * @throws CommitFailedException if the merge failed      * @throws IllegalArgumentException if the builder is not acquired      *                                  from a root state of this store      */
 annotation|@
 name|Nonnull
 name|NodeState
@@ -160,7 +170,7 @@ name|CommitHook
 name|commitHook
 parameter_list|,
 annotation|@
-name|Nonnull
+name|Nullable
 name|CommitInfo
 name|info
 parameter_list|)

@@ -1640,9 +1640,7 @@ name|c
 argument_list|,
 name|isBranch
 argument_list|,
-name|CommitInfo
-operator|.
-name|EMPTY
+literal|null
 argument_list|)
 expr_stmt|;
 block|}
@@ -3513,7 +3511,7 @@ name|CommitHook
 name|commitHook
 parameter_list|,
 annotation|@
-name|Nonnull
+name|Nullable
 name|CommitInfo
 name|info
 parameter_list|)
