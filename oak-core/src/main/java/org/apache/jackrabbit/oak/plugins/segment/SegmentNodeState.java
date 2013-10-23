@@ -1601,6 +1601,11 @@ argument_list|()
 argument_list|,
 name|that
 operator|.
+name|getSegment
+argument_list|()
+argument_list|,
+name|that
+operator|.
 name|getRecordId
 argument_list|()
 argument_list|,
