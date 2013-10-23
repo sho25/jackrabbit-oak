@@ -560,7 +560,7 @@ specifier|final
 name|boolean
 name|matchesAllTypes
 decl_stmt|;
-comment|/**      * all of the matching supertypes, or empty if the {@link #matchesAllTypes} flag is set      */
+comment|/**      * All of the matching supertypes, or empty if the {@link #matchesAllTypes}      * flag is set      */
 specifier|private
 specifier|final
 name|Set
@@ -569,7 +569,7 @@ name|String
 argument_list|>
 name|supertypes
 decl_stmt|;
-comment|/**      * all of the matching primary subtypes, or empty if the {@link #matchesAllTypes} flag is set      */
+comment|/**      * All of the matching primary subtypes, or empty if the      * {@link #matchesAllTypes} flag is set      */
 specifier|private
 specifier|final
 name|Set
@@ -578,7 +578,7 @@ name|String
 argument_list|>
 name|primaryTypes
 decl_stmt|;
-comment|/**      * all of the matching mixin types, or empty if the {@link #matchesAllTypes}      * flag is set      */
+comment|/**      * All of the matching mixin types, or empty if the {@link #matchesAllTypes}      * flag is set      */
 specifier|private
 specifier|final
 name|Set
@@ -1536,7 +1536,7 @@ return|return
 literal|false
 return|;
 block|}
-comment|/**      * Get the current absolute path (including workspace name)      *      * @return the path      */
+comment|/**      * Get the current absolute Oak path (normalized).      *      * @return the path      */
 specifier|public
 name|String
 name|currentPath
@@ -1584,9 +1584,33 @@ name|path
 argument_list|)
 return|;
 block|}
+comment|/**      * The value for the given selector for the current node.      *       * @param propertyName the JCR (not normalized) property name      * @return the property value      */
 specifier|public
 name|PropertyValue
 name|currentProperty
+parameter_list|(
+name|String
+name|propertyName
+parameter_list|)
+block|{
+name|String
+name|pn
+init|=
+name|normalizePropertyName
+argument_list|(
+name|propertyName
+argument_list|)
+decl_stmt|;
+return|return
+name|currentOakProperty
+argument_list|(
+name|pn
+argument_list|)
+return|;
+block|}
+specifier|public
+name|PropertyValue
+name|currentOakProperty
 parameter_list|(
 name|String
 name|propertyName

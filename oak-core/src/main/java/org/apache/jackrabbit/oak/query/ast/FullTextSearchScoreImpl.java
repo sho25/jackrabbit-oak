@@ -239,7 +239,7 @@ name|p
 init|=
 name|selector
 operator|.
-name|currentProperty
+name|currentOakProperty
 argument_list|(
 name|QueryImpl
 operator|.

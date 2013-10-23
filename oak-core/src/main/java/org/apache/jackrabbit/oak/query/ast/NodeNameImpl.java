@@ -327,6 +327,7 @@ argument_list|(
 name|path
 argument_list|)
 decl_stmt|;
+comment|// TODO reverse namespace remapping?
 return|return
 name|PropertyValues
 operator|.

@@ -143,12 +143,11 @@ block|{
 name|String
 name|p
 init|=
-name|validateAndNormalizePath
+name|normalizePath
 argument_list|(
 name|path
 argument_list|)
 decl_stmt|;
-comment|// TODO normalize paths
 return|return
 name|selector
 operator|.
@@ -303,7 +302,7 @@ block|{
 name|String
 name|p
 init|=
-name|validateAndNormalizePath
+name|normalizePath
 argument_list|(
 name|path
 argument_list|)
@@ -322,7 +321,6 @@ name|EXACT
 argument_list|)
 expr_stmt|;
 block|}
-comment|// TODO validate absolute path
 block|}
 annotation|@
 name|Override

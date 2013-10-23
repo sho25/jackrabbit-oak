@@ -292,7 +292,6 @@ operator|.
 name|currentPath
 argument_list|()
 decl_stmt|;
-comment|// TODO normalize paths; support more complex relative path (".." and so on)
 if|if
 condition|(
 name|selector2Path
@@ -313,6 +312,14 @@ argument_list|)
 return|;
 block|}
 name|String
+name|pn
+init|=
+name|normalizePath
+argument_list|(
+name|selector2Path
+argument_list|)
+decl_stmt|;
+name|String
 name|p
 init|=
 name|PathUtils
@@ -321,7 +328,7 @@ name|concat
 argument_list|(
 name|p2
 argument_list|,
-name|selector2Path
+name|pn
 argument_list|)
 decl_stmt|;
 return|return
@@ -418,7 +425,14 @@ expr_stmt|;
 block|}
 else|else
 block|{
-comment|// TODO normalize paths; support more complex relative path (".." and so on)
+name|String
+name|pn
+init|=
+name|normalizePath
+argument_list|(
+name|selector2Path
+argument_list|)
+decl_stmt|;
 name|String
 name|p
 init|=
@@ -428,7 +442,7 @@ name|concat
 argument_list|(
 name|p2
 argument_list|,
-name|selector2Path
+name|pn
 argument_list|)
 decl_stmt|;
 name|f
@@ -519,10 +533,6 @@ operator|.
 name|EXACT
 argument_list|)
 expr_stmt|;
-block|}
-else|else
-block|{
-comment|// TODO normalize paths; support relative path (".." and so on)
 block|}
 block|}
 block|}

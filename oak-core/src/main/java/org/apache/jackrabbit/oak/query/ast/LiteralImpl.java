@@ -214,6 +214,7 @@ name|PropertyValue
 name|currentValue
 parameter_list|()
 block|{
+comment|// TODO namespace remapping?
 return|return
 name|value
 return|;

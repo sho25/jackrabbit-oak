@@ -305,15 +305,29 @@ return|;
 block|}
 comment|// the parent of the root is the root,
 comment|// so we need to special case this
-return|return
-operator|!
+if|if
+condition|(
 name|PathUtils
 operator|.
 name|denotesRoot
 argument_list|(
 name|local
 argument_list|)
-operator|&&
+condition|)
+block|{
+return|return
+literal|false
+return|;
+block|}
+name|String
+name|path
+init|=
+name|normalizePath
+argument_list|(
+name|parentPath
+argument_list|)
+decl_stmt|;
+return|return
 name|PathUtils
 operator|.
 name|getParentPath
@@ -323,7 +337,7 @@ argument_list|)
 operator|.
 name|equals
 argument_list|(
-name|parentPath
+name|path
 argument_list|)
 return|;
 block|}
@@ -350,7 +364,7 @@ block|{
 name|String
 name|path
 init|=
-name|validateAndNormalizePath
+name|normalizePath
 argument_list|(
 name|parentPath
 argument_list|)

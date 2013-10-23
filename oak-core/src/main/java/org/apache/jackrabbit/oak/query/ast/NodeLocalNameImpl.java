@@ -294,6 +294,7 @@ operator|+
 literal|1
 argument_list|)
 decl_stmt|;
+comment|// TODO reverse namespace remapping?
 return|return
 name|PropertyValues
 operator|.
