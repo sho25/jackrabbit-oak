@@ -684,11 +684,13 @@ parameter_list|)
 throws|throws
 name|MicroKernelException
 block|{
-comment|// FIXME: need to signal to the garbage collector that this revision
-comment|// should not be collected until the requested lifetime is over
 return|return
-name|getHeadRevision
-argument_list|()
+name|nodeStore
+operator|.
+name|checkpoint
+argument_list|(
+name|lifetime
+argument_list|)
 return|;
 block|}
 annotation|@
@@ -2515,16 +2517,6 @@ name|commit
 operator|.
 name|apply
 argument_list|()
-expr_stmt|;
-name|nodeStore
-operator|.
-name|setHeadRevision
-argument_list|(
-name|commit
-operator|.
-name|getRevision
-argument_list|()
-argument_list|)
 expr_stmt|;
 name|success
 operator|=
