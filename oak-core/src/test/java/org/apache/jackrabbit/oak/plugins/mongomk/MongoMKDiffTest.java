@@ -1832,8 +1832,6 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-annotation|@
-name|Ignore
 specifier|public
 name|void
 name|diffForChangeBelowManyChildren
@@ -1901,7 +1899,7 @@ argument_list|,
 literal|null
 argument_list|)
 expr_stmt|;
-comment|// wait a while, _modified has 5 seconds granularity
+comment|// wait a while, _modified has 5 seconds resolution
 name|Thread
 operator|.
 name|sleep
