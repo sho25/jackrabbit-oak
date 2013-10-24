@@ -260,7 +260,9 @@ init|=
 name|listener
 operator|.
 name|getChanges
-argument_list|()
+argument_list|(
+literal|1000
+argument_list|)
 decl_stmt|;
 if|if
 condition|(
@@ -324,28 +326,6 @@ name|before
 operator|=
 name|r
 expr_stmt|;
-block|}
-else|else
-block|{
-comment|// avoid busy wait
-try|try
-block|{
-name|Thread
-operator|.
-name|sleep
-argument_list|(
-literal|10
-argument_list|)
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|InterruptedException
-name|e
-parameter_list|)
-block|{
-comment|// ignore
-block|}
 block|}
 block|}
 block|}
