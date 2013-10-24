@@ -1402,6 +1402,10 @@ operator|+
 literal|"> "
 operator|+
 name|r
+operator|+
+literal|"; current cluster node is "
+operator|+
+name|currentClusterNodeId
 argument_list|)
 throw|;
 block|}

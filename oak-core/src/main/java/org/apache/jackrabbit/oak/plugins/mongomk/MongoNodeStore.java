@@ -3845,22 +3845,47 @@ condition|)
 block|{
 return|return;
 block|}
-synchronized|synchronized
-init|(
-name|this
-init|)
-block|{
 try|try
 block|{
+comment|// does not create new revisions
 name|backgroundSplit
 argument_list|()
 expr_stmt|;
+comment|// we need to protect backgroundRead as well,
+comment|// as increment set the head revision in the read operation
+comment|// (the read operation might see changes from other cluster nodes,
+comment|// and so create a new head revision for the current cluster node,
+comment|// to order revisions)
+name|Lock
+name|writeLock
+init|=
+name|backgroundOperationLock
+operator|.
+name|writeLock
+argument_list|()
+decl_stmt|;
+name|writeLock
+operator|.
+name|lock
+argument_list|()
+expr_stmt|;
+try|try
+block|{
 name|backgroundWrite
 argument_list|()
 expr_stmt|;
 name|backgroundRead
 argument_list|()
 expr_stmt|;
+block|}
+finally|finally
+block|{
+name|writeLock
+operator|.
+name|unlock
+argument_list|()
+expr_stmt|;
+block|}
 block|}
 catch|catch
 parameter_list|(
@@ -3892,7 +3917,6 @@ argument_list|,
 name|e
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 specifier|private
@@ -4331,21 +4355,6 @@ condition|)
 block|{
 return|return;
 block|}
-name|Lock
-name|writeLock
-init|=
-name|backgroundOperationLock
-operator|.
-name|writeLock
-argument_list|()
-decl_stmt|;
-name|writeLock
-operator|.
-name|lock
-argument_list|()
-expr_stmt|;
-try|try
-block|{
 name|ArrayList
 argument_list|<
 name|String
@@ -4697,15 +4706,6 @@ operator|=
 literal|null
 expr_stmt|;
 block|}
-block|}
-block|}
-finally|finally
-block|{
-name|writeLock
-operator|.
-name|unlock
-argument_list|()
-expr_stmt|;
 block|}
 block|}
 comment|//-----------------------------< internal>---------------------------------
