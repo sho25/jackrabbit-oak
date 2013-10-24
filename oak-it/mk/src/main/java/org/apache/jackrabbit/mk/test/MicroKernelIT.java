@@ -6353,6 +6353,13 @@ literal|null
 argument_list|)
 argument_list|)
 decl_stmt|;
+name|obj1
+operator|.
+name|remove
+argument_list|(
+literal|":source-path"
+argument_list|)
+expr_stmt|;
 name|assertEquals
 argument_list|(
 name|obj
