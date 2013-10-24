@@ -194,6 +194,24 @@ specifier|public
 class|class
 name|Utils
 block|{
+comment|/**      * Make sure the name string does not contain unnecessary baggage (shared      * strings).      *<p>      * This is only needed for older versions of Java (before Java 7 update 6).      * See also      * http://mail.openjdk.java.net/pipermail/core-libs-dev/2012-May/010257.html      *       * @param x the string      * @return the new string      */
+specifier|public
+specifier|static
+name|String
+name|unshareString
+parameter_list|(
+name|String
+name|x
+parameter_list|)
+block|{
+return|return
+operator|new
+name|String
+argument_list|(
+name|x
+argument_list|)
+return|;
+block|}
 specifier|public
 specifier|static
 name|int
@@ -505,11 +523,12 @@ block|}
 else|else
 block|{
 comment|// overhead for some other kind of map
+comment|// TreeMap (80) + unmodifiable wrapper (32)
 name|size
 operator|+=
 literal|112
 expr_stmt|;
-comment|// TreeMap (80) + unmodifiable wrapper (32)
+comment|// 64 bytes per entry
 name|size
 operator|+=
 name|map
@@ -519,7 +538,6 @@ argument_list|()
 operator|*
 literal|64
 expr_stmt|;
-comment|// 64 bytes per entry
 block|}
 return|return
 name|size

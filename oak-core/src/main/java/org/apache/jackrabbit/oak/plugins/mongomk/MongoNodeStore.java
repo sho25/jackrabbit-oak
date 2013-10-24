@@ -3203,14 +3203,13 @@ range|:
 name|added
 control|)
 block|{
-comment|// make sure the name string does not contain
-comment|// unnecessary baggage
 name|set
 operator|.
 name|add
 argument_list|(
-operator|new
-name|String
+name|Utils
+operator|.
+name|unshareString
 argument_list|(
 name|name
 argument_list|)
@@ -3332,14 +3331,13 @@ operator|!=
 literal|null
 condition|)
 block|{
-comment|// make sure the name string does not contain
-comment|// unnecessary baggage
 name|names
 operator|.
 name|add
 argument_list|(
-operator|new
-name|String
+name|Utils
+operator|.
+name|unshareString
 argument_list|(
 name|name
 argument_list|)
@@ -3359,14 +3357,13 @@ range|:
 name|added
 control|)
 block|{
-comment|// make sure the name string does not contain
-comment|// unnecessary baggage
 name|names
 operator|.
 name|add
 argument_list|(
-operator|new
-name|String
+name|Utils
+operator|.
+name|unshareString
 argument_list|(
 name|PathUtils
 operator|.
