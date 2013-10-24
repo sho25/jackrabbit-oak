@@ -610,6 +610,7 @@ comment|/**  * TODO: WIP  * FIXME: decide on where to filter out hidden items (O
 end_comment
 
 begin_class
+specifier|final
 class|class
 name|CompiledPermissionImpl
 implements|implements

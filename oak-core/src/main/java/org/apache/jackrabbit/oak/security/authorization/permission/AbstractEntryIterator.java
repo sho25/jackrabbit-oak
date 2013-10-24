@@ -66,7 +66,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * EntryIterator... TODO  */
+comment|/**  * Base class for PermissionEntry iterators.  */
 end_comment
 
 begin_class
@@ -104,16 +104,13 @@ condition|(
 name|next
 operator|==
 literal|null
-condition|)
-block|{
-comment|// lazy initialization
-if|if
-condition|(
+operator|&&
 name|nextEntries
 operator|==
 literal|null
 condition|)
 block|{
+comment|// lazy initialization
 name|nextEntries
 operator|=
 name|Iterators
@@ -124,7 +121,6 @@ expr_stmt|;
 name|seekNext
 argument_list|()
 expr_stmt|;
-block|}
 block|}
 return|return
 name|next
