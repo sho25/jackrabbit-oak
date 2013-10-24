@@ -145,6 +145,24 @@ name|api
 operator|.
 name|Type
 operator|.
+name|DATE
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|api
+operator|.
+name|Type
+operator|.
 name|NAME
 import|;
 end_import
@@ -300,6 +318,31 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * Create a {@code PropertyState} from a date. No validation is performed      * on the string passed for {@code value}.      *      * @param name  The name of the property state      * @param value  The value of the property state      * @return  The new property state of type {@link Type#DATE}      */
+specifier|public
+specifier|static
+name|PropertyState
+name|dateProperty
+parameter_list|(
+name|String
+name|name
+parameter_list|,
+name|String
+name|value
+parameter_list|)
+block|{
+return|return
+operator|new
+name|GenericPropertyState
+argument_list|(
+name|name
+argument_list|,
+name|value
+argument_list|,
+name|DATE
+argument_list|)
+return|;
+block|}
 comment|/**      * Create a {@code PropertyState} from a name. No validation is performed      * on the string passed for {@code value}.      * @param name  The name of the property state      * @param value  The value of the property state      * @return  The new property state of type {@link Type#NAME}      */
 specifier|public
 specifier|static
@@ -449,6 +492,8 @@ operator|.
 name|convert
 argument_list|(
 name|value
+argument_list|,
+name|type
 argument_list|)
 return|;
 block|}

@@ -447,7 +447,7 @@ argument_list|)
 return|;
 block|}
 specifier|public
-name|Long
+name|String
 name|getDate
 parameter_list|()
 throws|throws

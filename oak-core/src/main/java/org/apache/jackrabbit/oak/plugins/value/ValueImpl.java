@@ -439,7 +439,12 @@ name|PropertyType
 operator|.
 name|BINARY
 case|:
-name|long
+case|case
+name|PropertyType
+operator|.
+name|DATE
+case|:
+name|String
 name|value
 init|=
 name|propertyState
@@ -473,11 +478,6 @@ case|case
 name|PropertyType
 operator|.
 name|DOUBLE
-case|:
-case|case
-name|PropertyType
-operator|.
-name|DATE
 case|:
 case|case
 name|PropertyType

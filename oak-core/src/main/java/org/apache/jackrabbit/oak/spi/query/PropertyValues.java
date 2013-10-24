@@ -582,7 +582,7 @@ specifier|static
 name|PropertyValue
 name|newDate
 parameter_list|(
-name|Long
+name|String
 name|value
 parameter_list|)
 block|{
@@ -590,9 +590,9 @@ return|return
 operator|new
 name|PropertyStateValue
 argument_list|(
-name|LongPropertyState
+name|GenericPropertyState
 operator|.
-name|createDateProperty
+name|dateProperty
 argument_list|(
 literal|""
 argument_list|,

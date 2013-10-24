@@ -467,14 +467,14 @@ name|Function
 argument_list|<
 name|T
 argument_list|,
-name|Long
+name|String
 argument_list|>
 argument_list|()
 block|{
 annotation|@
 name|Override
 specifier|public
-name|Long
+name|String
 name|apply
 parameter_list|(
 name|T
@@ -487,7 +487,7 @@ argument_list|(
 name|value
 argument_list|)
 operator|.
-name|toDate
+name|toString
 argument_list|()
 return|;
 block|}
@@ -1037,7 +1037,7 @@ name|index
 argument_list|)
 argument_list|)
 operator|.
-name|toDate
+name|toString
 argument_list|()
 return|;
 case|case

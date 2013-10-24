@@ -257,7 +257,7 @@ operator|)
 name|getConverter
 argument_list|()
 operator|.
-name|toDate
+name|toString
 argument_list|()
 return|;
 case|case

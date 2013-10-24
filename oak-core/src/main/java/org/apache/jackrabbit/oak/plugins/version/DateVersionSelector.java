@@ -85,6 +85,20 @@ name|NodeBuilder
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|util
+operator|.
+name|ISO8601
+import|;
+end_import
+
 begin_comment
 comment|/**  *<i>Inspired by Jackrabbit 2.x</i>  *<p/>  * This Class implements a version selector that selects a version by creation  * date. The selected version is the latest that is older or equal than the  * given date. If no version could be found {@code null} is returned  * unless the {@code returnLatest} flag is set to {@code true}, where  * the latest version is returned.  *<pre>  * V1.0 - 02-Sep-2006  * V1.1 - 03-Sep-2006  * V1.2 - 05-Sep-2006  *  * new DateVersionSelector("03-Sep-2006").select() -> V1.1  * new DateVersionSelector("04-Sep-2006").select() -> V1.1  * new DateVersionSelector("01-Sep-2006").select() -> null  * new DateVersionSelector("01-Sep-2006", true).select() -> V1.2  * new DateVersionSelector(null, true).select() -> V1.2  *</pre>  */
 end_comment
@@ -106,7 +120,7 @@ comment|/**      * Creates a {@code DateVersionSelector} that will select the la
 specifier|public
 name|DateVersionSelector
 parameter_list|(
-name|long
+name|String
 name|timestamp
 parameter_list|)
 block|{
@@ -114,7 +128,15 @@ name|this
 operator|.
 name|timestamp
 operator|=
+name|ISO8601
+operator|.
+name|parse
+argument_list|(
 name|timestamp
+argument_list|)
+operator|.
+name|getTimeInMillis
+argument_list|()
 expr_stmt|;
 block|}
 annotation|@
@@ -191,6 +213,10 @@ block|}
 name|long
 name|c
 init|=
+name|ISO8601
+operator|.
+name|parse
+argument_list|(
 name|v
 operator|.
 name|getProperty
@@ -206,6 +232,10 @@ name|Type
 operator|.
 name|DATE
 argument_list|)
+argument_list|)
+operator|.
+name|getTimeInMillis
+argument_list|()
 decl_stmt|;
 if|if
 condition|(
