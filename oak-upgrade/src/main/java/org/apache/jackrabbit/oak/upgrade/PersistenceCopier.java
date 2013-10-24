@@ -1895,10 +1895,7 @@ name|name
 argument_list|,
 name|value
 operator|.
-name|getCalendar
-argument_list|()
-operator|.
-name|getTimeInMillis
+name|getString
 argument_list|()
 argument_list|,
 name|Type
