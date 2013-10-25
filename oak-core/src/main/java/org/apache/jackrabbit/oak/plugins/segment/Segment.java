@@ -248,17 +248,21 @@ literal|1
 operator|+
 literal|2
 decl_stmt|;
-comment|/**      * The limit on segment references within one segment. Since record      * identifiers use one byte to indicate the referenced segment, a single      * segment can hold references to up to 256 segments.      */
+comment|/**      * The limit on segment references within one segment. Since record      * identifiers use one byte to indicate the referenced segment, a single      * segment can hold references to up to 255 segments plus itself.      */
 specifier|static
 specifier|final
 name|int
 name|SEGMENT_REFERENCE_LIMIT
 init|=
+operator|(
 literal|1
 operator|<<
 literal|8
+operator|)
+operator|-
+literal|1
 decl_stmt|;
-comment|// 256
+comment|// 255
 comment|/**      * The number of bytes (or bits of address space) to use for the      * alignment boundary of segment records.      */
 specifier|static
 specifier|final
@@ -787,15 +791,12 @@ name|int
 name|pos
 parameter_list|)
 block|{
+name|UUID
+name|refid
+decl_stmt|;
 name|int
 name|refpos
 init|=
-name|data
-operator|.
-name|position
-argument_list|()
-operator|+
-operator|(
 name|data
 operator|.
 name|get
@@ -804,13 +805,27 @@ name|pos
 argument_list|)
 operator|&
 literal|0xff
-operator|)
+decl_stmt|;
+if|if
+condition|(
+name|refpos
+operator|!=
+literal|0xff
+condition|)
+block|{
+name|refpos
+operator|=
+name|data
+operator|.
+name|position
+argument_list|()
+operator|+
+name|refpos
 operator|*
 literal|16
-decl_stmt|;
-name|UUID
+expr_stmt|;
 name|refid
-init|=
+operator|=
 operator|new
 name|UUID
 argument_list|(
@@ -830,7 +845,15 @@ operator|+
 literal|8
 argument_list|)
 argument_list|)
-decl_stmt|;
+expr_stmt|;
+block|}
+else|else
+block|{
+name|refid
+operator|=
+name|uuid
+expr_stmt|;
+block|}
 name|int
 name|offset
 init|=

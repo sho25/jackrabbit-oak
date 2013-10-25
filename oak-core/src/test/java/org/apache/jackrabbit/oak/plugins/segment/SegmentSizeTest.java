@@ -261,7 +261,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|40
+literal|24
 argument_list|,
 name|getSize
 argument_list|(
@@ -306,7 +306,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|56
+literal|40
 argument_list|,
 name|getSize
 argument_list|(
@@ -340,7 +340,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|56
+literal|40
 argument_list|,
 name|getSize
 argument_list|(
@@ -381,7 +381,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|84
+literal|68
 argument_list|,
 name|getSize
 argument_list|(
@@ -710,7 +710,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|36
+literal|20
 argument_list|,
 name|getSize
 argument_list|(
@@ -785,7 +785,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|160
+literal|144
 argument_list|,
 name|getSize
 argument_list|(
@@ -856,7 +856,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|280
+literal|264
 argument_list|,
 name|getSize
 argument_list|(
@@ -940,7 +940,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|372
+literal|356
 argument_list|,
 name|getSize
 argument_list|(
@@ -1011,7 +1011,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|428
+literal|412
 argument_list|,
 name|getSize
 argument_list|(
@@ -1116,7 +1116,7 @@ argument_list|)
 decl_stmt|;
 name|assertEquals
 argument_list|(
-literal|26760
+literal|26744
 argument_list|,
 name|Segment
 operator|.
@@ -1179,7 +1179,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|144
+literal|128
 argument_list|,
 name|Segment
 operator|.
