@@ -223,6 +223,9 @@ argument_list|,
 name|bgReaders
 argument_list|,
 name|doReport
+argument_list|,
+operator|!
+name|randomUser
 argument_list|)
 expr_stmt|;
 name|this
