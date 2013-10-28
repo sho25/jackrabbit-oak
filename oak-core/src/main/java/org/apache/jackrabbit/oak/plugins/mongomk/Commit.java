@@ -1397,7 +1397,7 @@ condition|)
 block|{
 name|NodeDocument
 operator|.
-name|setChildNodesStatus
+name|setChildrenFlag
 argument_list|(
 name|op
 argument_list|,
@@ -1434,7 +1434,7 @@ literal|null
 operator|&&
 name|nd
 operator|.
-name|hasChildNodes
+name|hasChildren
 argument_list|()
 condition|)
 block|{
@@ -1442,7 +1442,7 @@ continue|continue;
 block|}
 name|NodeDocument
 operator|.
-name|setChildNodesStatus
+name|setChildrenFlag
 argument_list|(
 name|op
 argument_list|,
@@ -1480,11 +1480,11 @@ literal|null
 operator|&&
 name|nd
 operator|.
-name|hasChildNodes
+name|hasChildren
 argument_list|()
 condition|)
 block|{
-comment|//Status already set to true. Nothing to do
+comment|//Flag already set to true. Nothing to do
 continue|continue;
 block|}
 else|else
@@ -1499,7 +1499,7 @@ argument_list|)
 decl_stmt|;
 name|NodeDocument
 operator|.
-name|setChildNodesStatus
+name|setChildrenFlag
 argument_list|(
 name|updateParentOp
 argument_list|,

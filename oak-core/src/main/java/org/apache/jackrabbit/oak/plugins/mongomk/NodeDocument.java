@@ -536,9 +536,9 @@ specifier|private
 specifier|static
 specifier|final
 name|String
-name|HAS_CHILD_NODE
+name|CHILDREN_FLAG
 init|=
-literal|"_hasChildNodes"
+literal|"_children"
 decl_stmt|;
 comment|/**      * Properties to ignore when a document is split.      */
 specifier|private
@@ -564,7 +564,7 @@ name|PREVIOUS
 argument_list|,
 name|LAST_REV
 argument_list|,
-name|HAS_CHILD_NODE
+name|CHILDREN_FLAG
 argument_list|)
 decl_stmt|;
 specifier|final
@@ -689,23 +689,31 @@ block|}
 comment|/**      * @return the approximate number of children for this node.      */
 specifier|public
 name|boolean
-name|hasChildNodes
+name|hasChildren
 parameter_list|()
 block|{
-return|return
-name|checkNotNull
-argument_list|(
+name|Boolean
+name|childrenFlag
+init|=
 operator|(
 name|Boolean
 operator|)
 name|get
 argument_list|(
-name|HAS_CHILD_NODE
+name|CHILDREN_FLAG
 argument_list|)
-argument_list|)
+decl_stmt|;
+return|return
+name|childrenFlag
+operator|!=
+literal|null
+condition|?
+name|childrenFlag
 operator|.
 name|booleanValue
 argument_list|()
+else|:
+literal|false
 return|;
 block|}
 comment|/**      * @return a map of the last known revision for each clusterId.      */
@@ -1541,7 +1549,7 @@ name|path
 argument_list|,
 name|readRevision
 argument_list|,
-name|hasChildNodes
+name|hasChildren
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -3374,7 +3382,7 @@ comment|//-------------------------< UpdateOp modifiers>------------------------
 specifier|public
 specifier|static
 name|void
-name|setChildNodesStatus
+name|setChildrenFlag
 parameter_list|(
 annotation|@
 name|Nonnull
@@ -3392,7 +3400,7 @@ argument_list|)
 operator|.
 name|set
 argument_list|(
-name|HAS_CHILD_NODE
+name|CHILDREN_FLAG
 argument_list|,
 name|Boolean
 operator|.

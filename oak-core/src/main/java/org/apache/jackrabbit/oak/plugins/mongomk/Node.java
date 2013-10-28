@@ -457,15 +457,6 @@ argument_list|,
 literal|false
 argument_list|)
 expr_stmt|;
-name|NodeDocument
-operator|.
-name|setChildNodesStatus
-argument_list|(
-name|op
-argument_list|,
-literal|false
-argument_list|)
-expr_stmt|;
 for|for
 control|(
 name|String

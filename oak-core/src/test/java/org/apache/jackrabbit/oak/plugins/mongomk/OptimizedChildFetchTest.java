@@ -238,7 +238,7 @@ argument_list|)
 expr_stmt|;
 name|assertTrue
 argument_list|(
-name|getChildStatus
+name|hasChildren
 argument_list|(
 literal|"/root"
 argument_list|)
@@ -246,7 +246,7 @@ argument_list|)
 expr_stmt|;
 name|assertTrue
 argument_list|(
-name|getChildStatus
+name|hasChildren
 argument_list|(
 literal|"/root/a"
 argument_list|)
@@ -254,7 +254,7 @@ argument_list|)
 expr_stmt|;
 name|assertFalse
 argument_list|(
-name|getChildStatus
+name|hasChildren
 argument_list|(
 literal|"/root/a/b"
 argument_list|)
@@ -417,7 +417,7 @@ expr_stmt|;
 block|}
 specifier|private
 name|boolean
-name|getChildStatus
+name|hasChildren
 parameter_list|(
 name|String
 name|path
@@ -448,7 +448,7 @@ decl_stmt|;
 return|return
 name|nd
 operator|.
-name|hasChildNodes
+name|hasChildren
 argument_list|()
 return|;
 block|}
