@@ -644,7 +644,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A {@code ChangeProcessor} generates observation {@link javax.jcr.observation.Event}s  * based on a {@link EventFilter} and delivers them to an {@link javax.jcr.observation.EventListener}.  *<p>  * After instantiation a {@code ChangeProcessor} must be started in order for its  * {@link #run()} methods to be regularly executed and stopped in order to not  * execute its run method anymore.  */
+comment|/**  * A {@code ChangeProcessor} generates observation {@link javax.jcr.observation.Event}s  * based on a {@link EventFilter} and delivers them to an {@link javax.jcr.observation.EventListener}.  *<p>  * After instantiation a {@code ChangeProcessor} must be started in order for its  * {@link ListenerThread listener thread's} run methods to be regularly  * executed and stopped in order to not execute its run method anymore.  */
 end_comment
 
 begin_class
