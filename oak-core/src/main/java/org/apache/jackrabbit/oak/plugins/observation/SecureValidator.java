@@ -303,34 +303,13 @@ annotation|@
 name|Override
 specifier|protected
 name|NodeState
-name|secureBefore
+name|secure
 parameter_list|(
-name|String
-name|name
-parameter_list|,
 name|NodeState
 name|nodeState
 parameter_list|)
 block|{
-comment|// TODO implement secureBefore
-return|return
-name|nodeState
-return|;
-block|}
-annotation|@
-name|Override
-specifier|protected
-name|NodeState
-name|secureAfter
-parameter_list|(
-name|String
-name|name
-parameter_list|,
-name|NodeState
-name|nodeState
-parameter_list|)
-block|{
-comment|// TODO implement secureAfter
+comment|// TODO implement secure
 return|return
 name|nodeState
 return|;

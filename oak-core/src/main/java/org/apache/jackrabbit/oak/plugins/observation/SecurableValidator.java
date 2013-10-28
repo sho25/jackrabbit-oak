@@ -124,7 +124,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Base class for {@code Validator} implementations that can be secured.  * That is, with exception of {@link Validator#childNodeChanged(String, NodeState, NodeState)},  * the call back methods of the wrapped validator are only called when its receiver has sufficient  * rights to access the respective items.  *<p>  * Implementors must implement the {@link #create(Tree, Tree, Validator)} factory method for  * creating {@code SecurableValidator} instances. Further implementors should override  * {@link #canRead(Tree, PropertyState, Tree, PropertyState)} and {@link #canRead(Tree, Tree)}  * to determine whether the passed states are accessible. Finally implementors should override,  * {@link #secureBefore(String, NodeState)}, and {@link #secureAfter(String, NodeState)}} wrapping  * the passed node state into a node state that restricts access to accessible child nodes and  * properties.  */
+comment|/**  * Base class for {@code Validator} implementations that can be secured.  * That is, with exception of {@link Validator#childNodeChanged(String, NodeState, NodeState)},  * the call back methods of the wrapped validator are only called when its receiver has sufficient  * rights to access the respective items.  *<p>  * Implementors must implement the {@link #create(Tree, Tree, Validator)} factory method for  * creating {@code SecurableValidator} instances. Further implementors should override  * {@link #canRead(Tree, PropertyState, Tree, PropertyState)} and {@link #canRead(Tree, Tree)}  * to determine whether the passed states are accessible. Finally implementors should override,  * {@link #secure(NodeState)} wrapping the passed node state into a node state that restricts access  * to accessible child nodes and  * properties.  */
 end_comment
 
 begin_class
@@ -242,34 +242,13 @@ return|return
 literal|true
 return|;
 block|}
-comment|/**      * Secure the before state of a child node such that it only provides      * accessible child nodes and properties.      * @param name       name of the child node      * @param nodeState  before state of the child node      * @return  secured before state      */
+comment|/**      * Secure a node state such that it only provides accessible child nodes and properties.      * @param nodeState  unsecured node state      * @return  secured before state      */
 annotation|@
 name|Nonnull
 specifier|protected
 name|NodeState
-name|secureBefore
+name|secure
 parameter_list|(
-name|String
-name|name
-parameter_list|,
-name|NodeState
-name|nodeState
-parameter_list|)
-block|{
-return|return
-name|nodeState
-return|;
-block|}
-comment|/**      * Secure the after state of a child node such that it only provides      * accessible child nodes and properties.      * @param name       name of the child node      * @param nodeState  after state of the child node      * @return  secured after state      */
-annotation|@
-name|Nonnull
-specifier|protected
-name|NodeState
-name|secureAfter
-parameter_list|(
-name|String
-name|name
-parameter_list|,
 name|NodeState
 name|nodeState
 parameter_list|)
@@ -293,7 +272,23 @@ name|after
 parameter_list|)
 throws|throws
 name|CommitFailedException
-block|{     }
+block|{
+name|validator
+operator|.
+name|enter
+argument_list|(
+name|secure
+argument_list|(
+name|before
+argument_list|)
+argument_list|,
+name|secure
+argument_list|(
+name|after
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
 annotation|@
 name|Override
 specifier|public
@@ -308,7 +303,23 @@ name|after
 parameter_list|)
 throws|throws
 name|CommitFailedException
-block|{     }
+block|{
+name|validator
+operator|.
+name|leave
+argument_list|(
+name|secure
+argument_list|(
+name|before
+argument_list|)
+argument_list|,
+name|secure
+argument_list|(
+name|after
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
 annotation|@
 name|Override
 specifier|public
@@ -463,10 +474,8 @@ name|childNodeAdded
 argument_list|(
 name|name
 argument_list|,
-name|secureAfter
+name|secure
 argument_list|(
-name|name
-argument_list|,
 name|after
 argument_list|)
 argument_list|)
@@ -532,17 +541,13 @@ name|childNodeChanged
 argument_list|(
 name|name
 argument_list|,
-name|secureBefore
+name|secure
 argument_list|(
-name|name
-argument_list|,
 name|before
 argument_list|)
 argument_list|,
-name|secureAfter
+name|secure
 argument_list|(
-name|name
-argument_list|,
 name|after
 argument_list|)
 argument_list|)
@@ -618,10 +623,8 @@ name|childNodeDeleted
 argument_list|(
 name|name
 argument_list|,
-name|secureBefore
+name|secure
 argument_list|(
-name|name
-argument_list|,
 name|before
 argument_list|)
 argument_list|)
