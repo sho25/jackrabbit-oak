@@ -986,6 +986,10 @@ decl_stmt|;
 comment|// FIXME don't rely on toString for session id
 if|if
 condition|(
+name|changes
+operator|!=
+literal|null
+operator|&&
 operator|!
 operator|(
 name|filter
