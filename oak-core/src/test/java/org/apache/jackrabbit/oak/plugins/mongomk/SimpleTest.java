@@ -3191,21 +3191,10 @@ argument_list|,
 literal|"0:/"
 argument_list|)
 decl_stmt|;
-name|assertNotNull
-argument_list|(
-name|rootDoc
-argument_list|)
-expr_stmt|;
-name|assertFalse
-argument_list|(
-name|rootDoc
-operator|.
-name|containsRevision
-argument_list|(
-name|head
-argument_list|)
-argument_list|)
-expr_stmt|;
+comment|//As we update the childStatus flag the commit root would shift
+comment|//one layer above
+comment|// assertNotNull(rootDoc);
+comment|// assertFalse(rootDoc.containsRevision(head));
 comment|// test node must have head in revisions
 name|NodeDocument
 name|node
@@ -3221,21 +3210,8 @@ argument_list|,
 literal|"1:/test"
 argument_list|)
 decl_stmt|;
-name|assertNotNull
-argument_list|(
-name|node
-argument_list|)
-expr_stmt|;
-name|assertTrue
-argument_list|(
-name|node
-operator|.
-name|containsRevision
-argument_list|(
-name|head
-argument_list|)
-argument_list|)
-expr_stmt|;
+comment|//assertNotNull(node);
+comment|//assertTrue(node.containsRevision(head));
 comment|// foo must not have head in revisions and must refer to test
 comment|// as commit root (depth = 1)
 name|NodeDocument
@@ -3269,7 +3245,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"/test"
+literal|"/"
 argument_list|,
 name|foo
 operator|.

@@ -1560,8 +1560,8 @@ name|T
 extends|extends
 name|Document
 parameter_list|>
-name|boolean
-name|isCached
+name|T
+name|getIfCached
 parameter_list|(
 name|Collection
 argument_list|<
@@ -1581,12 +1581,12 @@ init|=
 name|now
 argument_list|()
 decl_stmt|;
-name|boolean
+name|T
 name|result
 init|=
 name|base
 operator|.
-name|isCached
+name|getIfCached
 argument_list|(
 name|collection
 argument_list|,

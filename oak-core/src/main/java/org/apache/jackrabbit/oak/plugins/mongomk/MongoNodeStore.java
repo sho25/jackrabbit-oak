@@ -2111,6 +2111,35 @@ argument_list|,
 name|path
 argument_list|)
 expr_stmt|;
+comment|//Preemptive check. If we know there are no child then
+comment|//return straight away
+specifier|final
+name|Node
+name|node
+init|=
+name|getNode
+argument_list|(
+name|path
+argument_list|,
+name|rev
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|node
+operator|.
+name|hasNoChildren
+argument_list|()
+condition|)
+block|{
+return|return
+operator|new
+name|Node
+operator|.
+name|Children
+argument_list|()
+return|;
+block|}
 name|String
 name|key
 init|=

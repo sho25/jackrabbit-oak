@@ -1469,8 +1469,6 @@ operator|*
 name|NodeDocument
 operator|.
 name|REVISIONS_SPLIT_OFF_SIZE
-operator|+
-literal|1
 argument_list|,
 name|revs
 operator|.

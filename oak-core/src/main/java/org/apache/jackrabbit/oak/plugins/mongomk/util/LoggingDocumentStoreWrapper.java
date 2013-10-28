@@ -1245,8 +1245,8 @@ name|T
 extends|extends
 name|Document
 parameter_list|>
-name|boolean
-name|isCached
+name|T
+name|getIfCached
 parameter_list|(
 specifier|final
 name|Collection
@@ -1277,14 +1277,14 @@ argument_list|(
 operator|new
 name|Callable
 argument_list|<
-name|Boolean
+name|T
 argument_list|>
 argument_list|()
 block|{
 annotation|@
 name|Override
 specifier|public
-name|Boolean
+name|T
 name|call
 parameter_list|()
 throws|throws
@@ -1293,7 +1293,7 @@ block|{
 return|return
 name|store
 operator|.
-name|isCached
+name|getIfCached
 argument_list|(
 name|collection
 argument_list|,

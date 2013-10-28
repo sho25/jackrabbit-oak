@@ -326,14 +326,16 @@ name|void
 name|dispose
 parameter_list|()
 function_decl|;
-comment|/**      * Check whether the given document is in the cache.      *       * @param<T> the document type      * @param collection the collection      * @param key the key      * @return true if yes      */
-parameter_list|<
+comment|/**      * Fetches the cached document. If document is not present in cache<code>null</code> would be returned      *      * @param<T> the document type      * @param collection the collection      * @param key the key      * @return cached document if present. Otherwise null      */
+annotation|@
+name|CheckForNull
+argument_list|<
 name|T
 extends|extends
 name|Document
-parameter_list|>
-name|boolean
-name|isCached
+argument_list|>
+name|T
+name|getIfCached
 parameter_list|(
 name|Collection
 argument_list|<

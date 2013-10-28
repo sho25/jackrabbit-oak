@@ -1898,8 +1898,8 @@ name|T
 extends|extends
 name|Document
 parameter_list|>
-name|boolean
-name|isCached
+name|T
+name|getIfCached
 parameter_list|(
 name|Collection
 argument_list|<
@@ -1912,7 +1912,12 @@ name|key
 parameter_list|)
 block|{
 return|return
-literal|false
+name|find
+argument_list|(
+name|collection
+argument_list|,
+name|key
+argument_list|)
 return|;
 block|}
 annotation|@
