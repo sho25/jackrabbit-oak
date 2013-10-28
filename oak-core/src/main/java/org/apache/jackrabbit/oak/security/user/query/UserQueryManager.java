@@ -639,6 +639,10 @@ decl_stmt|;
 name|String
 name|searchRoot
 init|=
+name|namePathMapper
+operator|.
+name|getJcrPath
+argument_list|(
 name|QueryUtil
 operator|.
 name|getSearchRoot
@@ -650,10 +654,15 @@ argument_list|()
 argument_list|,
 name|config
 argument_list|)
+argument_list|)
 decl_stmt|;
 name|String
 name|ntName
 init|=
+name|namePathMapper
+operator|.
+name|getJcrName
+argument_list|(
 name|QueryUtil
 operator|.
 name|getNodeTypeName
@@ -662,6 +671,7 @@ name|builder
 operator|.
 name|getSelectorType
 argument_list|()
+argument_list|)
 argument_list|)
 decl_stmt|;
 name|statement
