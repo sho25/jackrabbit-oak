@@ -251,6 +251,8 @@ begin_class
 specifier|public
 class|class
 name|ChangeDispatcher
+implements|implements
+name|Observable
 block|{
 specifier|private
 specifier|final
@@ -307,6 +309,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Create a new {@link Listener} for receiving changes reported into      * this change dispatcher. Listeners need to be {@link Listener#dispose() disposed}      * when no longer needed.      * @return  a new {@code Listener} instance.      */
+annotation|@
+name|Override
 annotation|@
 name|Nonnull
 specifier|public
