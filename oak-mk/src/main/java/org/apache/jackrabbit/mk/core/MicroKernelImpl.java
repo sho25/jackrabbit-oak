@@ -2381,6 +2381,12 @@ literal|0
 condition|)
 block|{
 return|return
+name|revisionId
+operator|!=
+literal|null
+condition|?
+name|revisionId
+else|:
 name|getHeadRevision
 argument_list|()
 return|;
