@@ -314,7 +314,7 @@ argument_list|()
 expr_stmt|;
 try|try
 block|{
-name|testRootNode
+name|node
 operator|.
 name|removeMixin
 argument_list|(
