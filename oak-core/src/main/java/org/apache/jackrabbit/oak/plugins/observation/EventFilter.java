@@ -20,6 +20,22 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Objects
+operator|.
+name|toStringHelper
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -155,22 +171,6 @@ name|ReadOnlyNodeTypeManager
 import|;
 end_import
 
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|Objects
-operator|.
-name|toStringHelper
-import|;
-end_import
-
 begin_comment
 comment|/**  * Filter for filtering observation events according to a certain criterion.  */
 end_comment
@@ -215,9 +215,9 @@ decl_stmt|;
 specifier|private
 specifier|final
 name|boolean
-name|noLocal
+name|includeLocal
 decl_stmt|;
-comment|/**      * Create a new instance of a filter for a certain criterion      *      * @param ntMgr      * @param eventTypes  event types to include encoded as a bit mask      * @param path        path to include      * @param deep        {@code true} if descendants of {@code path} should be included. {@code false} otherwise.      * @param uuids       uuids to include      * @param nodeTypeName  node type names to include      * @param noLocal       exclude session local events if {@code true}. Include otherwise.      * @throws NoSuchNodeTypeException  if any of the node types in {@code nodeTypeName} does not exist      * @throws RepositoryException      if an error occurs while reading from the node type manager.      * @see javax.jcr.observation.ObservationManager#addEventListener(javax.jcr.observation.EventListener,      * int, String, boolean, String[], String[], boolean)      */
+comment|/**      * Create a new instance of a filter for a certain criterion      *      * @param ntMgr      * @param eventTypes  event types to include encoded as a bit mask      * @param path        path to include      * @param deep        {@code true} if descendants of {@code path} should be included. {@code false} otherwise.      * @param uuids       uuids to include      * @param nodeTypeName  node type names to include      * @param includeLocal  include session local events if {@code true}. Exclude otherwise.      * @throws NoSuchNodeTypeException  if any of the node types in {@code nodeTypeName} does not exist      * @throws RepositoryException      if an error occurs while reading from the node type manager.      * @see javax.jcr.observation.ObservationManager#addEventListener(javax.jcr.observation.EventListener,      * int, String, boolean, String[], String[], boolean)      */
 specifier|public
 name|EventFilter
 parameter_list|(
@@ -242,7 +242,7 @@ index|[]
 name|nodeTypeName
 parameter_list|,
 name|boolean
-name|noLocal
+name|includeLocal
 parameter_list|)
 block|{
 name|this
@@ -283,9 +283,9 @@ name|nodeTypeName
 expr_stmt|;
 name|this
 operator|.
-name|noLocal
+name|includeLocal
 operator|=
-name|noLocal
+name|includeLocal
 expr_stmt|;
 block|}
 comment|/**      * Match an event against this filter.      * @param eventType  type of the event      * @param associatedParent  associated parent node of the event      * @return  {@code true} if the filter matches this event. {@code false} otherwise.      */
@@ -329,6 +329,22 @@ name|includeByUuid
 argument_list|(
 name|associatedParent
 argument_list|)
+return|;
+block|}
+comment|/**      * Determine whether session local changes should be included.      * @param local  {@code true} for session local changes, {@code false} otherwise.      * @return  {@code true} if the changes are included with this filter. {@code false} otherwise.      */
+specifier|public
+name|boolean
+name|include
+parameter_list|(
+name|boolean
+name|local
+parameter_list|)
+block|{
+return|return
+name|includeLocal
+operator|||
+operator|!
+name|local
 return|;
 block|}
 comment|/**      * Determine whether the children of a {@code path} would be matched by this filter      * @param path  path whose children to test      * @return  {@code true} if the children of {@code path} could be matched by this filter      */
@@ -375,16 +391,6 @@ name|path
 argument_list|,
 name|path
 argument_list|)
-return|;
-block|}
-comment|/**      * @return  the no local flag of this filter      */
-specifier|public
-name|boolean
-name|excludeLocal
-parameter_list|()
-block|{
-return|return
-name|noLocal
 return|;
 block|}
 comment|/**      * @return  path of this filter      */
@@ -457,9 +463,9 @@ argument_list|)
 operator|.
 name|add
 argument_list|(
-literal|"noLocal"
+literal|"includeLocal"
 argument_list|,
-name|noLocal
+name|includeLocal
 argument_list|)
 operator|.
 name|toString

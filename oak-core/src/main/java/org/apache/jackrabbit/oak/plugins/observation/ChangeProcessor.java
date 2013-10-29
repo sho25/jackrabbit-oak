@@ -643,13 +643,10 @@ name|changes
 operator|!=
 literal|null
 operator|&&
-operator|!
-operator|(
 name|filter
 operator|.
-name|excludeLocal
-argument_list|()
-operator|&&
+name|include
+argument_list|(
 name|changes
 operator|.
 name|isLocal
@@ -659,7 +656,7 @@ operator|.
 name|toString
 argument_list|()
 argument_list|)
-operator|)
+argument_list|)
 condition|)
 block|{
 name|String

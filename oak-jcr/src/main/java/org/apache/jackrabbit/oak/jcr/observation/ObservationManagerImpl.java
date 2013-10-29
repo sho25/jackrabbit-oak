@@ -20,6 +20,22 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|collect
+operator|.
+name|Lists
+operator|.
+name|newArrayList
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -361,22 +377,6 @@ name|MarkerFactory
 import|;
 end_import
 
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|collect
-operator|.
-name|Lists
-operator|.
-name|newArrayList
-import|;
-end_import
-
 begin_class
 specifier|public
 class|class
@@ -610,6 +610,7 @@ argument_list|(
 name|nodeTypeName
 argument_list|)
 argument_list|,
+operator|!
 name|noLocal
 argument_list|)
 decl_stmt|;
