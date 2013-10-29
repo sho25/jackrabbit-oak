@@ -90,7 +90,7 @@ argument_list|>
 name|getSupportedQueryLanguages
 parameter_list|()
 function_decl|;
-comment|/**      * Parse the query (check if it's valid) and get the list of bind variable names.      *      * @param statement      * @param language      * @return the list of bind variable names      * @throws ParseException      */
+comment|/**      * Parse the query (check if it's valid) and get the list of bind variable names.      *      * @param statement      * @param language      * @param namePathMapper the name and path mapper to use      * @return the list of bind variable names      * @throws ParseException      */
 name|List
 argument_list|<
 name|String
@@ -102,6 +102,9 @@ name|statement
 parameter_list|,
 name|String
 name|language
+parameter_list|,
+name|NamePathMapper
+name|namePathMapper
 parameter_list|)
 throws|throws
 name|ParseException

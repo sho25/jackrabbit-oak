@@ -667,6 +667,8 @@ argument_list|(
 name|statement
 argument_list|,
 name|language
+argument_list|,
+name|sessionContext
 argument_list|)
 return|;
 block|}

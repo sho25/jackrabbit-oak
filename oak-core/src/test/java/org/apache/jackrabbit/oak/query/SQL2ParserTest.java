@@ -175,6 +175,8 @@ init|=
 operator|new
 name|SQL2Parser
 argument_list|(
+literal|null
+argument_list|,
 name|types
 argument_list|)
 decl_stmt|;

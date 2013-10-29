@@ -467,6 +467,9 @@ name|statement
 parameter_list|,
 name|String
 name|language
+parameter_list|,
+name|NamePathMapper
+name|namePathMapper
 parameter_list|)
 throws|throws
 name|ParseException
@@ -482,6 +485,8 @@ name|language
 argument_list|,
 name|getExecutionContext
 argument_list|()
+argument_list|,
+name|namePathMapper
 argument_list|)
 decl_stmt|;
 return|return
@@ -504,6 +509,9 @@ name|language
 parameter_list|,
 name|ExecutionContext
 name|context
+parameter_list|,
+name|NamePathMapper
+name|namePathMapper
 parameter_list|)
 throws|throws
 name|ParseException
@@ -553,6 +561,8 @@ init|=
 operator|new
 name|SQL2Parser
 argument_list|(
+name|namePathMapper
+argument_list|,
 name|types
 argument_list|)
 decl_stmt|;
@@ -707,7 +717,9 @@ name|ParseException
 name|e
 parameter_list|)
 block|{
-throw|throw
+name|ParseException
+name|e2
+init|=
 operator|new
 name|ParseException
 argument_list|(
@@ -722,6 +734,16 @@ argument_list|()
 argument_list|,
 literal|0
 argument_list|)
+decl_stmt|;
+name|e2
+operator|.
+name|initCause
+argument_list|(
+name|e
+argument_list|)
+expr_stmt|;
+throw|throw
+name|e2
 throw|;
 block|}
 block|}
@@ -824,6 +846,8 @@ argument_list|,
 name|language
 argument_list|,
 name|context
+argument_list|,
+name|namePathMapper
 argument_list|)
 decl_stmt|;
 name|q
