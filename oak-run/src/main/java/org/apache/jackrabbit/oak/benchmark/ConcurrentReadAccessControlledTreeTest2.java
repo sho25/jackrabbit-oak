@@ -236,6 +236,9 @@ name|principals
 init|=
 operator|new
 name|ArrayList
+argument_list|<
+name|Principal
+argument_list|>
 argument_list|()
 decl_stmt|;
 specifier|public
@@ -247,9 +250,6 @@ parameter_list|,
 name|int
 name|itemsToRead
 parameter_list|,
-name|int
-name|bgReaders
-parameter_list|,
 name|boolean
 name|doReport
 parameter_list|)
@@ -259,8 +259,6 @@ argument_list|(
 name|runAsAdmin
 argument_list|,
 name|itemsToRead
-argument_list|,
-name|bgReaders
 argument_list|,
 name|doReport
 argument_list|)
