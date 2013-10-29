@@ -1114,7 +1114,9 @@ argument_list|()
 return|;
 block|}
 comment|/**      * Create the filter condition for planning or execution.      *       * @param preparing whether a filter for the prepare phase should be made       * @return the filter      */
-specifier|private
+annotation|@
+name|Override
+specifier|public
 name|Filter
 name|createFilter
 parameter_list|(

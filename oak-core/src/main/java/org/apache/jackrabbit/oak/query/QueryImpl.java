@@ -2382,6 +2382,23 @@ name|prepare
 argument_list|()
 expr_stmt|;
 block|}
+comment|/**      *<b>!Test purpose only!<b>      *       * this creates a filter for the given query      *       */
+name|Filter
+name|createFilter
+parameter_list|(
+name|boolean
+name|preparing
+parameter_list|)
+block|{
+return|return
+name|source
+operator|.
+name|createFilter
+argument_list|(
+name|preparing
+argument_list|)
+return|;
+block|}
 comment|/**      * An iterator over result rows.      */
 class|class
 name|RowIterator
