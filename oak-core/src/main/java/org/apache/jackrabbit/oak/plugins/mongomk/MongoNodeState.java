@@ -369,7 +369,6 @@ name|boolean
 name|exists
 parameter_list|()
 block|{
-comment|// TODO: implement
 return|return
 literal|true
 return|;
@@ -457,6 +456,7 @@ name|this
 argument_list|)
 return|;
 block|}
+comment|//------------------------------< internal>--------------------------------
 block|}
 end_class
 
