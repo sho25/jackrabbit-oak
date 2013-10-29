@@ -152,7 +152,7 @@ specifier|final
 name|String
 name|path
 decl_stmt|;
-specifier|private
+specifier|public
 name|MoveDetector
 parameter_list|(
 name|MoveValidator
