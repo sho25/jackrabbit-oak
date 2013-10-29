@@ -215,9 +215,14 @@ decl_stmt|;
 specifier|private
 specifier|final
 name|boolean
-name|includeLocal
+name|includeSessionLocal
 decl_stmt|;
-comment|/**      * Create a new instance of a filter for a certain criterion      *      * @param ntMgr      * @param eventTypes  event types to include encoded as a bit mask      * @param path        path to include      * @param deep        {@code true} if descendants of {@code path} should be included. {@code false} otherwise.      * @param uuids       uuids to include      * @param nodeTypeName  node type names to include      * @param includeLocal  include session local events if {@code true}. Exclude otherwise.      * @throws NoSuchNodeTypeException  if any of the node types in {@code nodeTypeName} does not exist      * @throws RepositoryException      if an error occurs while reading from the node type manager.      * @see javax.jcr.observation.ObservationManager#addEventListener(javax.jcr.observation.EventListener,      * int, String, boolean, String[], String[], boolean)      */
+specifier|private
+specifier|final
+name|boolean
+name|includeClusterExternal
+decl_stmt|;
+comment|/**      * Create a new instance of a filter for a certain criterion      *      * @param ntMgr      * @param eventTypes  event types to include encoded as a bit mask      * @param path        path to include      * @param deep        {@code true} if descendants of {@code path} should be included.      *                    {@code false} otherwise.      * @param uuids       uuids to include      * @param nodeTypeName              node type names to include      * @param includeSessionLocal       include session local events if {@code true}.      *                                  Exclude otherwise.      * @param includeClusterExternal    include cluster external events if {@code true}.      *                                  Exclude otherwise.      * @throws NoSuchNodeTypeException  if any of the node types in {@code nodeTypeName} does not      *                                  exist      * @throws RepositoryException      if an error occurs while reading from the node type manager.      * @see javax.jcr.observation.ObservationManager#addEventListener(javax.jcr.observation.EventListener, int, String, boolean, String[], String[], boolean) */
 specifier|public
 name|EventFilter
 parameter_list|(
@@ -242,7 +247,10 @@ index|[]
 name|nodeTypeName
 parameter_list|,
 name|boolean
-name|includeLocal
+name|includeSessionLocal
+parameter_list|,
+name|boolean
+name|includeClusterExternal
 parameter_list|)
 block|{
 name|this
@@ -283,9 +291,15 @@ name|nodeTypeName
 expr_stmt|;
 name|this
 operator|.
-name|includeLocal
+name|includeSessionLocal
 operator|=
-name|includeLocal
+name|includeSessionLocal
+expr_stmt|;
+name|this
+operator|.
+name|includeClusterExternal
+operator|=
+name|includeClusterExternal
 expr_stmt|;
 block|}
 comment|/**      * Match an event against this filter.      * @param eventType  type of the event      * @param associatedParent  associated parent node of the event      * @return  {@code true} if the filter matches this event. {@code false} otherwise.      */
@@ -331,20 +345,36 @@ name|associatedParent
 argument_list|)
 return|;
 block|}
-comment|/**      * Determine whether session local changes should be included.      * @param local  {@code true} for session local changes, {@code false} otherwise.      * @return  {@code true} if the changes are included with this filter. {@code false} otherwise.      */
+comment|/**      * Determine whether session local changes should be included.      * @param isLocal  {@code true} for session local changes, {@code false} otherwise.      * @return  {@code true} if the changes are included with this filter. {@code false} otherwise.      */
 specifier|public
 name|boolean
-name|include
+name|includeSessionLocal
 parameter_list|(
 name|boolean
-name|local
+name|isLocal
 parameter_list|)
 block|{
 return|return
-name|includeLocal
+name|includeSessionLocal
 operator|||
 operator|!
-name|local
+name|isLocal
+return|;
+block|}
+comment|/**      * Determine whether cluster external changes should be included.      * @param isExternal  {@code true} for cluster external changes, {@code false} otherwise.      * @return  {@code true} if the changes are included with this filter. {@code false} otherwise.      */
+specifier|public
+name|boolean
+name|includeClusterExternal
+parameter_list|(
+name|boolean
+name|isExternal
+parameter_list|)
+block|{
+return|return
+name|includeClusterExternal
+operator|||
+operator|!
+name|isExternal
 return|;
 block|}
 comment|/**      * Determine whether the children of a {@code path} would be matched by this filter      * @param path  path whose children to test      * @return  {@code true} if the children of {@code path} could be matched by this filter      */
@@ -463,9 +493,16 @@ argument_list|)
 operator|.
 name|add
 argument_list|(
-literal|"includeLocal"
+literal|"includeSessionLocal"
 argument_list|,
-name|includeLocal
+name|includeSessionLocal
+argument_list|)
+operator|.
+name|add
+argument_list|(
+literal|"includeClusterExternal"
+argument_list|,
+name|includeClusterExternal
 argument_list|)
 operator|.
 name|toString

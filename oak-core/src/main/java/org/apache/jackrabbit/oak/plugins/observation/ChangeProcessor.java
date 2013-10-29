@@ -680,7 +680,7 @@ literal|null
 operator|&&
 name|filter
 operator|.
-name|include
+name|includeSessionLocal
 argument_list|(
 name|changes
 operator|.
@@ -691,6 +691,18 @@ operator|.
 name|toString
 argument_list|()
 argument_list|)
+argument_list|)
+operator|&&
+name|filter
+operator|.
+name|includeClusterExternal
+argument_list|(
+name|changes
+operator|.
+name|getCommitInfo
+argument_list|()
+operator|==
+literal|null
 argument_list|)
 condition|)
 block|{
