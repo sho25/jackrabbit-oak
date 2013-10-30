@@ -3560,7 +3560,9 @@ condition|(
 name|b
 operator|.
 name|getBase
-argument_list|()
+argument_list|(
+name|branchHead
+argument_list|)
 operator|.
 name|equals
 argument_list|(
