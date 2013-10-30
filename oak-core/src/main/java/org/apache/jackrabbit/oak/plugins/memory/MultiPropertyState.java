@@ -20,6 +20,22 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkArgument
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -150,22 +166,6 @@ operator|.
 name|Conversions
 operator|.
 name|Converter
-import|;
-end_import
-
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|Preconditions
-operator|.
-name|checkArgument
 import|;
 end_import
 
@@ -487,7 +487,7 @@ argument_list|(
 name|value
 argument_list|)
 operator|.
-name|toString
+name|toDate
 argument_list|()
 return|;
 block|}

@@ -288,6 +288,22 @@ return|return
 name|date
 return|;
 block|}
+comment|/**          * Convert to date. This default implementation delegates to {@link #toCalendar()}          * and returns the {@code ISO8601.format(Calendar)} value of the calendar.          * @return  date representation of the converted value          * @throws IllegalArgumentException  if the string cannot be parsed into a date          */
+specifier|public
+name|String
+name|toDate
+parameter_list|()
+block|{
+return|return
+name|ISO8601
+operator|.
+name|format
+argument_list|(
+name|toCalendar
+argument_list|()
+argument_list|)
+return|;
+block|}
 comment|/**          * Convert to boolean. This default implementation is based on {@code Boolean.parseBoolean(String)}.          * @return  boolean representation of the converted value          */
 specifier|public
 name|boolean

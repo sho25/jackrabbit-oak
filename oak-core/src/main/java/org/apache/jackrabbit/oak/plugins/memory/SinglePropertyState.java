@@ -20,6 +20,34 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkArgument
+import|;
+end_import
+
+begin_import
+import|import static
+name|java
+operator|.
+name|util
+operator|.
+name|Collections
+operator|.
+name|singleton
+import|;
+end_import
+
+begin_import
 import|import
 name|javax
 operator|.
@@ -72,34 +100,6 @@ operator|.
 name|Conversions
 operator|.
 name|Converter
-import|;
-end_import
-
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|Preconditions
-operator|.
-name|checkArgument
-import|;
-end_import
-
-begin_import
-import|import static
-name|java
-operator|.
-name|util
-operator|.
-name|Collections
-operator|.
-name|singleton
 import|;
 end_import
 
@@ -257,7 +257,7 @@ operator|)
 name|getConverter
 argument_list|()
 operator|.
-name|toString
+name|toDate
 argument_list|()
 return|;
 case|case
