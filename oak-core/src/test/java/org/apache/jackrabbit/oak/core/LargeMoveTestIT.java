@@ -202,7 +202,7 @@ parameter_list|()
 throws|throws
 name|CommitFailedException
 block|{
-comment|// FIXME slow on MongoMK. See OAK-964
+comment|// FIXME slow on MongoMK and MongoNS. See OAK-964
 name|assumeTrue
 argument_list|(
 name|fixture
@@ -210,6 +210,12 @@ operator|!=
 name|NodeStoreFixture
 operator|.
 name|MONGO_MK
+operator|&&
+name|fixture
+operator|!=
+name|NodeStoreFixture
+operator|.
+name|MONGO_NS
 argument_list|)
 expr_stmt|;
 name|session
