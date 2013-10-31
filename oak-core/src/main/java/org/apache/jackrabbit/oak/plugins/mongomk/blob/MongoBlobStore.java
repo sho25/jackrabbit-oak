@@ -273,6 +273,8 @@ name|currentTimeMillis
 argument_list|()
 argument_list|)
 expr_stmt|;
+comment|// TODO check the return value
+comment|// TODO verify insert is fast if the entry already exists
 name|getBlobCollection
 argument_list|()
 operator|.
