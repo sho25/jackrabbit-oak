@@ -322,7 +322,6 @@ name|String
 name|path
 decl_stmt|;
 comment|/**      * the restriction pattern for this entry      */
-specifier|private
 specifier|final
 name|RestrictionPattern
 name|restriction
