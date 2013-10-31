@@ -1513,6 +1513,25 @@ operator|.
 name|getTree
 argument_list|()
 decl_stmt|;
+if|if
+condition|(
+name|versionableTree
+operator|==
+literal|null
+condition|)
+block|{
+comment|// for PropertyLocations
+name|versionableTree
+operator|=
+name|tl
+operator|.
+name|getParent
+argument_list|()
+operator|.
+name|getTree
+argument_list|()
+expr_stmt|;
+block|}
 name|TreePermission
 name|pp
 init|=
