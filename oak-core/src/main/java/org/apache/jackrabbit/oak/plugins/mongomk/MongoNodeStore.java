@@ -1381,6 +1381,7 @@ name|start
 argument_list|()
 expr_stmt|;
 block|}
+specifier|public
 name|void
 name|dispose
 parameter_list|()
@@ -3471,15 +3472,40 @@ name|Revision
 name|revision
 parameter_list|)
 block|{
+name|Node
+name|root
+init|=
+name|getNode
+argument_list|(
+literal|"/"
+argument_list|,
+name|revision
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|root
+operator|==
+literal|null
+condition|)
+block|{
+throw|throw
+operator|new
+name|IllegalStateException
+argument_list|(
+literal|"root node does not exist at revision "
+operator|+
+name|revision
+argument_list|)
+throw|;
+block|}
 return|return
 operator|new
 name|MongoNodeState
 argument_list|(
 name|this
 argument_list|,
-literal|"/"
-argument_list|,
-name|revision
+name|root
 argument_list|)
 return|;
 block|}
@@ -4014,6 +4040,21 @@ expr_stmt|;
 block|}
 return|return
 name|rev
+return|;
+block|}
+comment|/**      * Returns the {@link Blob} with the given blobId.      *      * @param blobId the blobId of the blob.      * @return the blob.      */
+annotation|@
+name|Nonnull
+name|Blob
+name|getBlob
+parameter_list|(
+name|String
+name|blobId
+parameter_list|)
+block|{
+comment|// TODO: implement blob handling
+return|return
+literal|null
 return|;
 block|}
 comment|//------------------------< Observable>------------------------------------

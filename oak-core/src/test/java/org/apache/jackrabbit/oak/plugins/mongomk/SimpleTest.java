@@ -660,7 +660,7 @@ argument_list|)
 decl_stmt|;
 name|assertEquals
 argument_list|(
-literal|"{\":id\":\"/@r1-0-1\",\":childNodeCount\":0}"
+literal|"{\":id\":\"/@r0-0-1\",\":childNodeCount\":0}"
 argument_list|,
 name|r0
 argument_list|)

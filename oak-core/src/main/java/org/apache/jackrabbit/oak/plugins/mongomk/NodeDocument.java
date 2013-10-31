@@ -1553,6 +1553,11 @@ name|hasChildren
 argument_list|()
 argument_list|)
 decl_stmt|;
+name|Revision
+name|lastRevision
+init|=
+name|min
+decl_stmt|;
 for|for
 control|(
 name|String
@@ -1654,7 +1659,37 @@ argument_list|,
 name|v
 argument_list|)
 expr_stmt|;
+comment|// keep track of when this node was last modified
+if|if
+condition|(
+name|value
+operator|!=
+literal|null
+operator|&&
+name|isRevisionNewer
+argument_list|(
+name|context
+argument_list|,
+name|value
+operator|.
+name|revision
+argument_list|,
+name|lastRevision
+argument_list|)
+condition|)
+block|{
+name|lastRevision
+operator|=
+name|value
+operator|.
+name|revision
+expr_stmt|;
 block|}
+block|}
+comment|// lastRevision now points to the revision when this node was
+comment|// last modified directly. but it may also have been 'modified'
+comment|// by an operation on a descendant node, which is tracked in
+comment|// _lastRev.
 comment|// when was this node last modified?
 name|Branch
 name|branch
@@ -1668,11 +1703,6 @@ name|getBranch
 argument_list|(
 name|readRevision
 argument_list|)
-decl_stmt|;
-name|Revision
-name|lastRevision
-init|=
-literal|null
 decl_stmt|;
 name|Map
 argument_list|<
@@ -1804,14 +1834,19 @@ name|readRevision
 argument_list|)
 condition|)
 block|{
+comment|// the node has a _lastRev which is newer than readRevision
+comment|// this means we don't know when if this node was
+comment|// modified by an operation on a descendant node between
+comment|// current lastRevision and readRevision. therefore we have
+comment|// to stay on the safe side and use readRevision
+name|lastRevision
+operator|=
+name|readRevision
+expr_stmt|;
 continue|continue;
 block|}
 if|if
 condition|(
-name|lastRevision
-operator|==
-literal|null
-operator|||
 name|isRevisionNewer
 argument_list|(
 name|context
@@ -1861,19 +1896,6 @@ operator|=
 name|r
 expr_stmt|;
 block|}
-block|}
-if|if
-condition|(
-name|lastRevision
-operator|==
-literal|null
-condition|)
-block|{
-comment|// use readRevision if none found
-name|lastRevision
-operator|=
-name|readRevision
-expr_stmt|;
 block|}
 name|n
 operator|.

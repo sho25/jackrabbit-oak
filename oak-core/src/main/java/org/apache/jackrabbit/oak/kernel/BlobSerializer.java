@@ -38,6 +38,7 @@ comment|/**  * Customizable mechanism for mapping {@link Blob} instances to corr
 end_comment
 
 begin_class
+specifier|public
 class|class
 name|BlobSerializer
 block|{

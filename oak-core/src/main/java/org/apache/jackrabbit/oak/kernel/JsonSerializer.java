@@ -238,6 +238,7 @@ comment|/**  * Utility class for serializing node and property states to JSON.  
 end_comment
 
 begin_class
+specifier|public
 class|class
 name|JsonSerializer
 block|{
@@ -379,6 +380,7 @@ name|blobs
 argument_list|)
 expr_stmt|;
 block|}
+specifier|public
 name|JsonSerializer
 parameter_list|(
 name|JsopBuilder
@@ -625,6 +627,7 @@ name|endObject
 argument_list|()
 expr_stmt|;
 block|}
+specifier|public
 name|void
 name|serialize
 parameter_list|(
