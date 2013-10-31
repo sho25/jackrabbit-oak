@@ -248,6 +248,11 @@ argument_list|,
 literal|"text/plain"
 argument_list|)
 expr_stmt|;
+name|root
+operator|.
+name|commit
+argument_list|()
+expr_stmt|;
 name|assertQuery
 argument_list|(
 literal|"//*[jcr:contains(., 'text/plain')]"
@@ -300,6 +305,11 @@ name|addChild
 argument_list|(
 literal|"testFullTextTermNameFile.txt"
 argument_list|)
+expr_stmt|;
+name|root
+operator|.
+name|commit
+argument_list|()
 expr_stmt|;
 name|assertQuery
 argument_list|(
