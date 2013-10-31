@@ -1223,10 +1223,10 @@ argument_list|()
 argument_list|)
 condition|)
 block|{
+comment|// no differences
 return|return
 literal|true
 return|;
-comment|// no differences
 block|}
 comment|// TODO: use diff, similar to KernelNodeState
 block|}
@@ -1245,7 +1245,6 @@ return|;
 block|}
 comment|//------------------------------< internal>--------------------------------
 comment|/**      * FIXME: copied from KernelNodeState.      *      * Read a {@code PropertyState} from a {@link JsopReader}      * @param name  The name of the property state      * @param reader  The reader      * @return new property state      */
-specifier|private
 name|PropertyState
 name|readProperty
 parameter_list|(
@@ -1559,7 +1558,6 @@ throw|;
 block|}
 block|}
 comment|/**      * FIXME: copied from KernelNodeState.      *      * Read a multi valued {@code PropertyState} from a {@link JsopReader}      * @param name  The name of the property state      * @param reader  The reader      * @return new property state      */
-specifier|private
 name|PropertyState
 name|readArrayProperty
 parameter_list|(

@@ -151,8 +151,6 @@ comment|/**      * Number of updated not yet persisted to the private {@link #br
 specifier|private
 name|int
 name|updates
-init|=
-literal|0
 decl_stmt|;
 name|MongoRootBuilder
 parameter_list|(

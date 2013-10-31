@@ -3475,9 +3475,9 @@ specifier|private
 name|NodeDocument
 name|addToCache
 parameter_list|(
-specifier|final
 annotation|@
 name|Nonnull
+specifier|final
 name|NodeDocument
 name|doc
 parameter_list|)
@@ -3597,6 +3597,7 @@ block|}
 annotation|@
 name|Nonnull
 specifier|private
+specifier|static
 name|QueryBuilder
 name|createQueryForUpdate
 parameter_list|(
@@ -3698,6 +3699,7 @@ comment|/**      * Creates a MongoDB update object from the given UpdateOp.     
 annotation|@
 name|Nonnull
 specifier|private
+specifier|static
 name|DBObject
 name|createUpdate
 parameter_list|(

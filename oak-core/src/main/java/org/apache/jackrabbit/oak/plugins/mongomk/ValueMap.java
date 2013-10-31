@@ -162,6 +162,7 @@ class|class
 name|ValueMap
 block|{
 specifier|static
+specifier|final
 name|SortedMap
 argument_list|<
 name|Revision
@@ -199,15 +200,15 @@ name|String
 argument_list|>
 name|create
 parameter_list|(
-specifier|final
 annotation|@
 name|Nonnull
+specifier|final
 name|NodeDocument
 name|doc
 parameter_list|,
-specifier|final
 annotation|@
 name|Nonnull
+specifier|final
 name|String
 name|property
 parameter_list|)

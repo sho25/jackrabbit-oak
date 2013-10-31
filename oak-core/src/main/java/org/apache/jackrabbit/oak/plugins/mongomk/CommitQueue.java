@@ -20,6 +20,22 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkNotNull
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -145,38 +161,6 @@ name|LoggerFactory
 import|;
 end_import
 
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|Preconditions
-operator|.
-name|checkArgument
-import|;
-end_import
-
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|Preconditions
-operator|.
-name|checkNotNull
-import|;
-end_import
-
 begin_comment
 comment|/**  *<code>CommitQueue</code> ensures a sequence of commits consistent with the  * commit revision even if commits did not complete in this sequence.  */
 end_comment
@@ -185,7 +169,6 @@ begin_class
 class|class
 name|CommitQueue
 block|{
-specifier|private
 specifier|static
 specifier|final
 name|Logger
@@ -455,13 +438,11 @@ name|info
 parameter_list|)
 block|{
 assert|assert
-operator|(
 operator|!
 name|commits
 operator|.
 name|isEmpty
 argument_list|()
-operator|)
 assert|;
 name|boolean
 name|isHead

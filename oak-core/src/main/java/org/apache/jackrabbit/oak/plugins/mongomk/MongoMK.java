@@ -1687,6 +1687,7 @@ block|}
 block|}
 block|}
 specifier|private
+specifier|static
 name|void
 name|addPathsForDiff
 parameter_list|(
