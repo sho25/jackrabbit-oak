@@ -599,6 +599,14 @@ specifier|private
 name|int
 name|scanCount
 decl_stmt|;
+specifier|private
+name|Tree
+name|lastTree
+decl_stmt|;
+specifier|private
+name|String
+name|lastPath
+decl_stmt|;
 comment|/**      * The selector condition can be evaluated when the given selector is      * evaluated. For example, for the query      * "select * from nt:base a inner join nt:base b where a.x = 1 and b.y = 2",      * the condition "a.x = 1" can be evaluated when evaluating selector a. The      * other part of the condition can't be evaluated until b is available.      */
 specifier|private
 name|ConstraintImpl
@@ -1557,6 +1565,7 @@ name|getPath
 argument_list|()
 return|;
 block|}
+comment|/**      * Get the tree at the current path.      *       * @return the current tree, or null      */
 specifier|public
 name|Tree
 name|currentTree
@@ -1584,6 +1593,47 @@ name|getTree
 argument_list|(
 name|path
 argument_list|)
+return|;
+block|}
+comment|/**      * Get the tree at the given path.      *       * @param path the path      * @return the tree, or null      */
+name|Tree
+name|getTree
+parameter_list|(
+name|String
+name|path
+parameter_list|)
+block|{
+if|if
+condition|(
+name|lastPath
+operator|==
+literal|null
+operator|||
+operator|!
+name|path
+operator|.
+name|equals
+argument_list|(
+name|lastPath
+argument_list|)
+condition|)
+block|{
+name|lastTree
+operator|=
+name|query
+operator|.
+name|getTree
+argument_list|(
+name|path
+argument_list|)
+expr_stmt|;
+name|lastPath
+operator|=
+name|path
+expr_stmt|;
+block|}
+return|return
+name|lastTree
 return|;
 block|}
 comment|/**      * The value for the given selector for the current node.      *       * @param propertyName the JCR (not normalized) property name      * @return the property value      */

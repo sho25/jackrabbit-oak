@@ -968,6 +968,8 @@ block|}
 name|Tree
 name|tree
 init|=
+name|selector
+operator|.
 name|getTree
 argument_list|(
 name|path

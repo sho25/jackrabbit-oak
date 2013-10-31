@@ -558,13 +558,10 @@ block|}
 name|Tree
 name|tree
 init|=
-name|getTree
-argument_list|(
 name|selector
 operator|.
-name|currentPath
+name|currentTree
 argument_list|()
-argument_list|)
 decl_stmt|;
 if|if
 condition|(
