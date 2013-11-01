@@ -645,15 +645,15 @@ name|exists
 parameter_list|()
 block|{
 return|return
-name|builder
-operator|.
-name|exists
-argument_list|()
-operator|&&
 name|getSecurityContext
 argument_list|()
 operator|.
 name|canReadThisNode
+argument_list|()
+operator|&&
+name|builder
+operator|.
+name|exists
 argument_list|()
 return|;
 comment|// TODO: isNew()?
