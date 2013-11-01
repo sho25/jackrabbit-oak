@@ -138,20 +138,12 @@ name|getUpdateCount
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * Performs a sanity check on this item and the associated session.      *      * @throws RepositoryException if this item has been rendered invalid      *                             for some reason or the associated session      *                             has been logged out      */
-specifier|public
-specifier|synchronized
-name|void
-name|checkAlive
+comment|/**      * Checks whether the session has changed since this delegate instance      * was last accessed, thus triggering an {@link #update() update} of the      * internal state of this delegate.      *      * @return {@code true} if the session was recently updated,      *         {@code false} if not      */
+specifier|protected
+name|boolean
+name|checkUpdate
 parameter_list|()
-throws|throws
-name|RepositoryException
 block|{
-name|sessionDelegate
-operator|.
-name|checkAlive
-argument_list|()
-expr_stmt|;
 name|long
 name|sessionCount
 init|=
@@ -167,8 +159,49 @@ operator|!=
 name|sessionCount
 condition|)
 block|{
+name|updateCount
+operator|=
+name|sessionCount
+expr_stmt|;
+name|update
+argument_list|()
+expr_stmt|;
+return|return
+literal|true
+return|;
+block|}
+else|else
+block|{
+return|return
+literal|false
+return|;
+block|}
+block|}
+comment|/**      * Called by {@link #checkUpdate()} to update the internal state of this      * delegate.      */
+specifier|protected
+name|void
+name|update
+parameter_list|()
+block|{     }
+comment|/**      * Performs a sanity check on this item and the associated session.      *      * @throws RepositoryException if this item has been rendered invalid      *                             for some reason or the associated session      *                             has been logged out      */
+specifier|public
+specifier|synchronized
+name|void
+name|checkAlive
+parameter_list|()
+throws|throws
+name|RepositoryException
+block|{
+name|sessionDelegate
+operator|.
+name|checkAlive
+argument_list|()
+expr_stmt|;
 if|if
 condition|(
+name|checkUpdate
+argument_list|()
+operator|&&
 operator|!
 name|exists
 argument_list|()
@@ -178,17 +211,9 @@ throw|throw
 operator|new
 name|InvalidItemStateException
 argument_list|(
-literal|"This item does not exist anymore : "
-operator|+
-name|getPath
-argument_list|()
+literal|"This item does not exist anymore"
 argument_list|)
 throw|;
-block|}
-name|updateCount
-operator|=
-name|sessionCount
-expr_stmt|;
 block|}
 block|}
 comment|/**      * Get the name of this item      * @return oak name of this item      */
