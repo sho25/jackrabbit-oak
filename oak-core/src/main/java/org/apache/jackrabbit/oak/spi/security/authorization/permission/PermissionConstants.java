@@ -163,6 +163,11 @@ init|=
 literal|"rep:numPermissions"
 decl_stmt|;
 name|String
+name|REP_TIMESTAMP
+init|=
+literal|"rep:timestamp"
+decl_stmt|;
+name|String
 name|REP_IS_ALLOW
 init|=
 literal|"rep:isAllow"

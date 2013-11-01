@@ -657,6 +657,7 @@ block|}
 block|}
 else|else
 block|{
+specifier|final
 name|int
 name|depth
 init|=
@@ -667,6 +668,7 @@ argument_list|(
 name|path
 argument_list|)
 decl_stmt|;
+specifier|final
 name|int
 name|otherDepth
 init|=
@@ -681,12 +683,7 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|PathUtils
-operator|.
-name|getDepth
-argument_list|(
-name|path
-argument_list|)
+name|depth
 operator|==
 name|otherDepth
 condition|)

@@ -95,20 +95,6 @@ end_import
 
 begin_import
 import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|collect
-operator|.
-name|ImmutableList
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -246,6 +232,26 @@ operator|.
 name|accesscontrol
 operator|.
 name|AccessControlValidatorProvider
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|security
+operator|.
+name|authorization
+operator|.
+name|permission
+operator|.
+name|PermissionEntryCache
 import|;
 end_import
 
@@ -579,6 +585,20 @@ name|ProtectedItemImporter
 import|;
 end_import
 
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|collect
+operator|.
+name|ImmutableList
+import|;
+end_import
+
 begin_comment
 comment|/**  * Default implementation of the {@code AccessControlConfiguration}.  */
 end_comment
@@ -608,6 +628,15 @@ name|ConfigurationBase
 implements|implements
 name|AuthorizationConfiguration
 block|{
+specifier|private
+specifier|final
+name|PermissionEntryCache
+name|permissionEntryCache
+init|=
+operator|new
+name|PermissionEntryCache
+argument_list|()
+decl_stmt|;
 specifier|public
 name|AuthorizationConfigurationImpl
 parameter_list|()
@@ -707,6 +736,8 @@ name|workspaceName
 argument_list|,
 name|getRestrictionProvider
 argument_list|()
+argument_list|,
+name|permissionEntryCache
 argument_list|)
 argument_list|)
 return|;
@@ -881,6 +912,11 @@ argument_list|,
 name|principals
 argument_list|,
 name|this
+argument_list|,
+name|permissionEntryCache
+operator|.
+name|createLocalCache
+argument_list|()
 argument_list|)
 return|;
 block|}
