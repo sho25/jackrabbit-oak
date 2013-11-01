@@ -41,6 +41,22 @@ name|google
 operator|.
 name|common
 operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkState
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
 name|collect
 operator|.
 name|Iterables
@@ -414,16 +430,22 @@ specifier|final
 name|NodeBuilder
 name|builder
 decl_stmt|;
-comment|/**      * Internal revision counter for the base state of this builder. The counter      * is incremented in the root builder whenever its base state is reset.      * Each builder instance has its own copy of this revision counter for      * quickly checking whether its security context needs updating      * @see #reset(org.apache.jackrabbit.oak.spi.state.NodeState)      * @see #securityContext      */
-specifier|private
-name|long
-name|baseRevision
-decl_stmt|;
-comment|/**      * Security context of this subtree. Use {@link #getSecurityContext()} for obtaining      * an up to date security context.      */
+comment|/**      * Security context of this subtree, updated whenever the base revision      * changes.      */
 specifier|private
 name|SecurityContext
 name|securityContext
+init|=
+literal|null
 decl_stmt|;
+comment|// initialized lazily
+comment|/**      * Possibly outdated reference to the security context of the root      * builder. Used to detect when the base state (and thus the security      * context) of the root builder has changed, and trigger an update of      * the security context of this builder.      *      * @see #securityContext      */
+specifier|private
+name|SecurityContext
+name|rootContext
+init|=
+literal|null
+decl_stmt|;
+comment|// initialized lazily
 name|SecureNodeBuilder
 parameter_list|(
 annotation|@
@@ -587,7 +609,6 @@ name|getSecurityContext
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|// TODO: baseContext?
 block|}
 return|return
 name|base
@@ -671,13 +692,26 @@ name|void
 name|baseChanged
 parameter_list|()
 block|{
-name|baseRevision
-operator|++
+name|checkState
+argument_list|(
+name|parent
+operator|==
+literal|null
+argument_list|)
 expr_stmt|;
 name|securityContext
 operator|=
 literal|null
 expr_stmt|;
+comment|// trigger re-evaluation of the context
+name|rootContext
+operator|=
+literal|null
+expr_stmt|;
+name|getSecurityContext
+argument_list|()
+expr_stmt|;
+comment|// sets both securityContext and rootContext
 block|}
 annotation|@
 name|Override
@@ -1555,7 +1589,7 @@ name|newName
 argument_list|)
 return|;
 block|}
-comment|/**      * Security context of this subtree. This accessor memoises the security context      * as long as {@link #reset(NodeState)} has not been called.      */
+comment|/**      * Security context of this subtree.      */
 specifier|private
 name|SecurityContext
 name|getSecurityContext
@@ -1567,13 +1601,21 @@ name|securityContext
 operator|==
 literal|null
 operator|||
+name|rootContext
+operator|!=
 name|rootBuilder
 operator|.
-name|baseRevision
-operator|!=
-name|baseRevision
+name|securityContext
 condition|)
 block|{
+name|NodeState
+name|base
+init|=
+name|builder
+operator|.
+name|getBaseState
+argument_list|()
+decl_stmt|;
 if|if
 condition|(
 name|parent
@@ -1586,10 +1628,7 @@ operator|=
 operator|new
 name|SecurityContext
 argument_list|(
-name|builder
-operator|.
-name|getNodeState
-argument_list|()
+name|base
 argument_list|,
 name|permissionProvider
 operator|.
@@ -1599,40 +1638,39 @@ argument_list|,
 name|acContext
 argument_list|)
 expr_stmt|;
+name|rootContext
+operator|=
+name|securityContext
+expr_stmt|;
 block|}
 else|else
 block|{
-name|securityContext
-operator|=
+name|SecurityContext
+name|parentContext
+init|=
 name|parent
 operator|.
 name|getSecurityContext
 argument_list|()
+decl_stmt|;
+name|securityContext
+operator|=
+name|parentContext
 operator|.
 name|getChildContext
 argument_list|(
 name|name
 argument_list|,
+name|base
+argument_list|)
+expr_stmt|;
+name|rootContext
+operator|=
 name|parent
 operator|.
-name|builder
-operator|.
-name|getChildNode
-argument_list|(
-name|name
-argument_list|)
-operator|.
-name|getBaseState
-argument_list|()
-argument_list|)
+name|rootContext
 expr_stmt|;
 block|}
-name|baseRevision
-operator|=
-name|rootBuilder
-operator|.
-name|baseRevision
-expr_stmt|;
 block|}
 return|return
 name|securityContext
