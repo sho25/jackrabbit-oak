@@ -623,6 +623,13 @@ name|NodeState
 name|newBase
 parameter_list|)
 block|{
+name|checkState
+argument_list|(
+name|parent
+operator|==
+literal|null
+argument_list|)
+expr_stmt|;
 name|base
 operator|=
 name|checkNotNull
@@ -631,15 +638,16 @@ name|newBase
 argument_list|)
 expr_stmt|;
 name|baseRevision
-operator|++
-expr_stmt|;
-name|head
+operator|=
+name|rootHead
 argument_list|()
 operator|.
 name|setState
 argument_list|(
 name|newBase
 argument_list|)
+operator|+
+literal|1
 expr_stmt|;
 block|}
 comment|/**      * Replaces the current state of this builder with the given node state.      * The base state remains unchanged.      *      * @param newHead new head state      */
@@ -651,11 +659,17 @@ name|NodeState
 name|newHead
 parameter_list|)
 block|{
-name|baseRevision
-operator|++
+name|checkState
+argument_list|(
+name|parent
+operator|==
+literal|null
+argument_list|)
 expr_stmt|;
-comment|// this forces all sub-builders to refresh their heads
-name|head
+comment|// updating the base revision forces all sub-builders to refresh
+name|baseRevision
+operator|=
+name|rootHead
 argument_list|()
 operator|.
 name|setState
@@ -1810,22 +1824,6 @@ name|boolean
 name|isModified
 parameter_list|()
 function_decl|;
-specifier|public
-name|void
-name|setState
-parameter_list|(
-name|NodeState
-name|state
-parameter_list|)
-block|{
-throw|throw
-operator|new
-name|IllegalStateException
-argument_list|(
-literal|"Cannot set the state of a non-root builder"
-argument_list|)
-throw|;
-block|}
 block|}
 specifier|private
 class|class
@@ -1837,7 +1835,7 @@ specifier|private
 name|long
 name|revision
 init|=
-literal|0
+name|baseRevision
 decl_stmt|;
 specifier|private
 name|NodeState
@@ -2217,11 +2215,9 @@ return|return
 name|this
 return|;
 block|}
-annotation|@
-name|Override
 specifier|public
 specifier|final
-name|void
+name|long
 name|setState
 parameter_list|(
 name|NodeState
@@ -2238,9 +2234,16 @@ argument_list|(
 name|state
 argument_list|)
 expr_stmt|;
+comment|// To be able to make a distinction between set() and reset(), we
 name|revision
 operator|++
 expr_stmt|;
+comment|// increment the revision twice and
+return|return
+name|revision
+operator|++
+return|;
+comment|// return the intermediate value
 block|}
 block|}
 block|}
