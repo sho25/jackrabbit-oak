@@ -206,7 +206,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *<code>PermissionStoreImpl</code>...  */
+comment|/**  * {@code PermissionStoreImpl}...  */
 end_comment
 
 begin_class
