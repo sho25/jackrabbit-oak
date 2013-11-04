@@ -20,6 +20,22 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkNotNull
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -118,6 +134,8 @@ name|ReadOnlyBuilder
 implements|implements
 name|NodeBuilder
 block|{
+annotation|@
+name|Nonnull
 specifier|private
 specifier|final
 name|NodeState
@@ -126,6 +144,8 @@ decl_stmt|;
 specifier|public
 name|ReadOnlyBuilder
 parameter_list|(
+annotation|@
+name|Nonnull
 name|NodeState
 name|state
 parameter_list|)
@@ -134,7 +154,10 @@ name|this
 operator|.
 name|state
 operator|=
+name|checkNotNull
+argument_list|(
 name|state
+argument_list|)
 expr_stmt|;
 block|}
 specifier|protected
@@ -188,6 +211,8 @@ return|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Nonnull
 specifier|public
 name|NodeState
 name|getNodeState
@@ -199,6 +224,8 @@ return|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Nonnull
 specifier|public
 name|NodeState
 name|getBaseState

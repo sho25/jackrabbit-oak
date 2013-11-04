@@ -348,6 +348,8 @@ name|long
 name|baseRevision
 decl_stmt|;
 comment|/**      * The base state of this builder, possibly non-existent if this builder      * represents a new node that didn't yet exist in the base content tree.      */
+annotation|@
+name|Nonnull
 specifier|private
 name|NodeState
 name|base
@@ -619,6 +621,8 @@ specifier|public
 name|void
 name|reset
 parameter_list|(
+annotation|@
+name|Nonnull
 name|NodeState
 name|newBase
 parameter_list|)
@@ -681,6 +685,8 @@ block|}
 comment|//--------------------------------------------------------< NodeBuilder>---
 annotation|@
 name|Override
+annotation|@
+name|Nonnull
 specifier|public
 name|NodeState
 name|getNodeState
@@ -696,6 +702,8 @@ return|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Nonnull
 specifier|public
 name|NodeState
 name|getBaseState

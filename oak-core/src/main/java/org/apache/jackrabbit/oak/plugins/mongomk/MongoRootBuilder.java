@@ -37,6 +37,16 @@ end_import
 
 begin_import
 import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|Nonnull
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -138,6 +148,8 @@ name|MongoNodeStore
 name|store
 decl_stmt|;
 comment|/**      * The base state of this builder, possibly non-existent if this builder      * represents a new node that didn't yet exist in the base content tree.      * This differs from the base state of super since the latter one reflects      * the base created by the last purge.      */
+annotation|@
+name|Nonnull
 specifier|private
 name|NodeState
 name|base
@@ -196,6 +208,8 @@ block|}
 comment|//--------------------------------------------------< MemoryNodeBuilder>---
 annotation|@
 name|Override
+annotation|@
+name|Nonnull
 specifier|public
 name|NodeState
 name|getBaseState
@@ -211,13 +225,18 @@ specifier|public
 name|void
 name|reset
 parameter_list|(
+annotation|@
+name|Nonnull
 name|NodeState
 name|newBase
 parameter_list|)
 block|{
 name|base
 operator|=
+name|checkNotNull
+argument_list|(
 name|newBase
+argument_list|)
 expr_stmt|;
 name|super
 operator|.

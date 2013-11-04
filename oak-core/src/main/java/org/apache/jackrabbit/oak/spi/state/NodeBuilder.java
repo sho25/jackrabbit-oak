@@ -123,9 +123,9 @@ name|NodeState
 name|getNodeState
 parameter_list|()
 function_decl|;
-comment|/**      * Returns the original base state that this builder is modifying.      * Returns {@code null} if this builder represents a new node that      * didn't exist in the base content tree.      *      * @return base node state, or {@code null}      */
+comment|/**      * Returns the original base state that this builder is modifying.      * The return value may be non-existent (i.e. its {@code exists} method      * returns {@code false}) if this builder represents a new node that      * didn't exist in the base content tree.      *      * @return base node state, possibly non-existent      */
 annotation|@
-name|CheckForNull
+name|Nonnull
 name|NodeState
 name|getBaseState
 parameter_list|()
