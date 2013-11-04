@@ -1369,6 +1369,17 @@ operator|.
 name|applyToDocumentStore
 argument_list|()
 expr_stmt|;
+name|commit
+operator|.
+name|applyToCache
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
+comment|// make sure _lastRev is written back to store
+name|backgroundWrite
+argument_list|()
+expr_stmt|;
 block|}
 else|else
 block|{
@@ -1417,13 +1428,6 @@ name|void
 name|dispose
 parameter_list|()
 block|{
-comment|// force background write (with asyncDelay> 0, the root wouldn't be written)
-comment|// TODO make this more obvious / explicit
-comment|// TODO tests should also work if this is not done
-name|asyncDelay
-operator|=
-literal|0
-expr_stmt|;
 name|runBackgroundOperations
 argument_list|()
 expr_stmt|;
@@ -3080,17 +3084,7 @@ name|branchRev
 argument_list|)
 expr_stmt|;
 block|}
-comment|// track unsaved modifications of nodes that were not
-comment|// written in the commit (implicitly modified parent)
-comment|// or any modification if this is a branch commit
-if|if
-condition|(
-operator|!
-name|isWritten
-operator|||
-name|isBranchCommit
-condition|)
-block|{
+comment|// write back _lastRev with background thread
 name|Revision
 name|prev
 init|=
@@ -3158,19 +3152,6 @@ name|msg
 argument_list|)
 throw|;
 block|}
-block|}
-block|}
-else|else
-block|{
-comment|// the document was updated:
-comment|// we no longer need to update it in a background process
-name|unsaved
-operator|.
-name|remove
-argument_list|(
-name|path
-argument_list|)
-expr_stmt|;
 block|}
 name|String
 name|key
@@ -5153,14 +5134,6 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
-name|long
-name|now
-init|=
-name|Revision
-operator|.
-name|getCurrentTimestamp
-argument_list|()
-decl_stmt|;
 name|UpdateOp
 name|updateOp
 init|=
@@ -5227,28 +5200,6 @@ condition|(
 name|r
 operator|==
 literal|null
-condition|)
-block|{
-continue|continue;
-block|}
-comment|// FIXME: with below code fragment the root (and other nodes
-comment|// 'close' to the root) will not be updated in MongoDB when there
-comment|// are frequent changes.
-if|if
-condition|(
-name|Revision
-operator|.
-name|getTimestampDifference
-argument_list|(
-name|now
-argument_list|,
-name|r
-operator|.
-name|getTimestamp
-argument_list|()
-argument_list|)
-operator|<
-name|asyncDelay
 condition|)
 block|{
 continue|continue;

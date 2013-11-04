@@ -953,25 +953,6 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|baseBranchRevision
-operator|==
-literal|null
-condition|)
-block|{
-comment|// only apply _lastRev for trunk commits, _lastRev for
-comment|// branch commits only become visible on merge
-name|NodeDocument
-operator|.
-name|setLastRev
-argument_list|(
-name|op
-argument_list|,
-name|revision
-argument_list|)
-expr_stmt|;
-block|}
-if|if
-condition|(
 name|op
 operator|.
 name|isNew
