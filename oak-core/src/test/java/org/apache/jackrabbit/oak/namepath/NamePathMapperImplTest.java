@@ -1112,6 +1112,10 @@ block|,
 literal|"/.."
 block|,
 literal|"/foo/../.."
+block|,
+literal|"foo::bar"
+block|,
+literal|"foo:bar:baz"
 block|}
 decl_stmt|;
 for|for

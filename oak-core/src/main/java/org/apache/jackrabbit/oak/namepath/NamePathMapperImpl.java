@@ -1077,12 +1077,19 @@ operator|==
 name|slash
 operator|+
 literal|1
+comment|// "x/:y"
 operator|||
 name|i
 operator|==
 name|colon
 operator|+
 name|i
+comment|// "x::y"
+operator|||
+name|colon
+operator|>
+name|slash
+comment|// "x:y:z"
 operator|||
 name|i
 operator|+
@@ -1091,10 +1098,10 @@ operator|==
 name|length
 condition|)
 block|{
+comment|// "x:"
 return|return
 literal|true
 return|;
-comment|// colon following slash/colon or as last char
 block|}
 name|colon
 operator|=
@@ -1111,12 +1118,14 @@ operator|==
 name|slash
 operator|+
 literal|1
+comment|// "x//y"
 operator|||
 name|i
 operator|==
 name|colon
 operator|+
 name|i
+comment|// "x:/y"
 operator|||
 name|i
 operator|+
@@ -1125,10 +1134,10 @@ operator|==
 name|length
 condition|)
 block|{
+comment|// "x/"
 return|return
 literal|true
 return|;
-comment|// colon following slash/colon or as last char
 block|}
 name|slash
 operator|=
