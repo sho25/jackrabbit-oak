@@ -66,7 +66,7 @@ name|InputStream
 block|{
 specifier|private
 specifier|final
-name|AbstractBlobStore
+name|BlobStore
 name|store
 decl_stmt|;
 specifier|private
@@ -86,7 +86,7 @@ decl_stmt|;
 specifier|public
 name|BlobStoreInputStream
 parameter_list|(
-name|AbstractBlobStore
+name|BlobStore
 name|store
 parameter_list|,
 name|String
