@@ -492,12 +492,6 @@ specifier|final
 name|DocumentStore
 name|store
 decl_stmt|;
-comment|/**      * The MongoDB blob store.      */
-specifier|private
-specifier|final
-name|BlobStore
-name|blobStore
-decl_stmt|;
 comment|/**      * Diff cache.      */
 specifier|private
 specifier|final
@@ -536,15 +530,6 @@ operator|=
 name|nodeStore
 operator|.
 name|getDocumentStore
-argument_list|()
-expr_stmt|;
-name|this
-operator|.
-name|blobStore
-operator|=
-name|builder
-operator|.
-name|getBlobStore
 argument_list|()
 expr_stmt|;
 name|diffCache
@@ -2715,12 +2700,15 @@ block|{
 try|try
 block|{
 return|return
-name|blobStore
+name|nodeStore
 operator|.
-name|getBlobLength
+name|getBlob
 argument_list|(
 name|blobId
 argument_list|)
+operator|.
+name|length
+argument_list|()
 return|;
 block|}
 catch|catch
@@ -2766,7 +2754,10 @@ block|{
 try|try
 block|{
 return|return
-name|blobStore
+name|nodeStore
+operator|.
+name|getBlobStore
+argument_list|()
 operator|.
 name|readBlob
 argument_list|(
@@ -2812,7 +2803,10 @@ block|{
 try|try
 block|{
 return|return
-name|blobStore
+name|nodeStore
+operator|.
+name|getBlobStore
+argument_list|()
 operator|.
 name|writeBlob
 argument_list|(
