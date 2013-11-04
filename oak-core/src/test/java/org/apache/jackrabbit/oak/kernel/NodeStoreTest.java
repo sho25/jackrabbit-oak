@@ -355,16 +355,6 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Assume
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
 name|Before
 import|;
 end_import
@@ -1025,12 +1015,14 @@ parameter_list|()
 throws|throws
 name|CommitFailedException
 block|{
-comment|// this test only works with a KernelNodeStore
+comment|// FIXME OAK-1131
 name|assumeTrue
 argument_list|(
-name|store
-operator|instanceof
-name|KernelNodeStore
+name|fixture
+operator|!=
+name|NodeStoreFixture
+operator|.
+name|MONGO_NS
 argument_list|)
 expr_stmt|;
 specifier|final
@@ -1045,12 +1037,7 @@ literal|2
 index|]
 decl_stmt|;
 comment|// { before, after }
-operator|(
-operator|(
-name|KernelNodeStore
-operator|)
-name|store
-operator|)
+name|fixture
 operator|.
 name|setObserver
 argument_list|(
@@ -1071,6 +1058,17 @@ name|NodeState
 name|after
 parameter_list|)
 block|{
+if|if
+condition|(
+operator|!
+name|before
+operator|.
+name|equals
+argument_list|(
+name|after
+argument_list|)
+condition|)
+block|{
 name|states
 index|[
 literal|0
@@ -1085,6 +1083,7 @@ index|]
 operator|=
 name|after
 expr_stmt|;
+block|}
 block|}
 block|}
 argument_list|)
@@ -2800,8 +2799,6 @@ parameter_list|()
 throws|throws
 name|CommitFailedException
 block|{
-name|Assume
-operator|.
 name|assumeTrue
 argument_list|(
 name|fixture
