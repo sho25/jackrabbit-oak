@@ -140,14 +140,11 @@ name|Blob
 name|blob
 parameter_list|)
 block|{
-comment|// TODO: implement correct blob handling
 return|return
-name|super
-operator|.
-name|serialize
-argument_list|(
 name|blob
-argument_list|)
+operator|.
+name|toString
+argument_list|()
 return|;
 block|}
 block|}
