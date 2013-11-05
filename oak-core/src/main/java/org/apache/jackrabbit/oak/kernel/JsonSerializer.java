@@ -243,6 +243,18 @@ class|class
 name|JsonSerializer
 block|{
 specifier|private
+specifier|static
+specifier|final
+name|JsonFilter
+name|DEFAULT_FILTER
+init|=
+operator|new
+name|JsonFilter
+argument_list|(
+literal|"{\"properties\":[\"*\", \"-:childNodeCount\"]}"
+argument_list|)
+decl_stmt|;
+specifier|private
 specifier|final
 name|JsopBuilder
 name|json
@@ -404,11 +416,7 @@ name|Integer
 operator|.
 name|MAX_VALUE
 argument_list|,
-operator|new
-name|JsonFilter
-argument_list|(
-literal|"{\"properties\":[\"*\", \"-:childNodeCount\"]}"
-argument_list|)
+name|DEFAULT_FILTER
 argument_list|,
 name|blobs
 argument_list|)
