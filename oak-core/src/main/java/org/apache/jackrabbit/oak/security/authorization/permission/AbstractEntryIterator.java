@@ -41,30 +41,6 @@ name|NoSuchElementException
 import|;
 end_import
 
-begin_import
-import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|CheckForNull
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|collect
-operator|.
-name|Iterators
-import|;
-end_import
-
 begin_comment
 comment|/**  * Base class for PermissionEntry iterators.  */
 end_comment
