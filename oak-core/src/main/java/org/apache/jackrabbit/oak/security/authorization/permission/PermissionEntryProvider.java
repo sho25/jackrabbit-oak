@@ -68,7 +68,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *<code>PermissionEntryProvider</code> provides permission entries for a given set of principals.  * It may internally hold a cache to improve performance and usually operates on the permission store.  */
+comment|/**  * {@code PermissionEntryProvider} provides permission entries for a given set of principals.  * It may internally hold a cache to improve performance and usually operates on the permission store.  */
 end_comment
 
 begin_interface

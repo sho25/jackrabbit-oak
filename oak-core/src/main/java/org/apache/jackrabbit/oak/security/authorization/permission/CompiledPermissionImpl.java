@@ -3324,8 +3324,22 @@ extends|extends
 name|AbstractEntryIterator
 block|{
 specifier|private
+specifier|final
 name|boolean
 name|isUser
+decl_stmt|;
+comment|// the ordered permission entries at a given path in the hierarchy
+specifier|private
+name|Iterator
+argument_list|<
+name|PermissionEntry
+argument_list|>
+name|nextEntries
+init|=
+name|Iterators
+operator|.
+name|emptyIterator
+argument_list|()
 decl_stmt|;
 specifier|private
 name|TreePermissionImpl
@@ -3357,7 +3371,7 @@ name|isUser
 expr_stmt|;
 block|}
 annotation|@
-name|CheckForNull
+name|Override
 specifier|protected
 name|void
 name|seekNext
