@@ -1015,16 +1015,6 @@ parameter_list|()
 throws|throws
 name|CommitFailedException
 block|{
-comment|// FIXME OAK-1131
-name|assumeTrue
-argument_list|(
-name|fixture
-operator|!=
-name|NodeStoreFixture
-operator|.
-name|MONGO_NS
-argument_list|)
-expr_stmt|;
 specifier|final
 name|NodeState
 index|[]

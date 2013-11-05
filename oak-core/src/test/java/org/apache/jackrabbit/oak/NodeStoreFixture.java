@@ -470,6 +470,11 @@ operator|.
 name|Builder
 argument_list|()
 operator|.
+name|setObserver
+argument_list|(
+name|observer
+argument_list|)
+operator|.
 name|getNodeStore
 argument_list|()
 return|;

@@ -689,7 +689,7 @@ argument_list|)
 decl_stmt|;
 name|assertEquals
 argument_list|(
-literal|"{\":id\":\"/@r2-0-1\",\"test\":{},\":childNodeCount\":1}"
+literal|"{\":id\":\"/@r1-0-1\",\"test\":{},\":childNodeCount\":1}"
 argument_list|,
 name|r1
 argument_list|)
@@ -718,7 +718,7 @@ argument_list|)
 decl_stmt|;
 name|assertEquals
 argument_list|(
-literal|"{\":id\":\"/@r3-0-1\",\"test\":{},\":childNodeCount\":1}"
+literal|"{\":id\":\"/@r2-0-1\",\"test\":{},\":childNodeCount\":1}"
 argument_list|,
 name|r2
 argument_list|)
@@ -749,7 +749,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"{\":id\":\"/@r4-0-1\",\"test\":{},\":childNodeCount\":1}"
+literal|"{\":id\":\"/@r3-0-1\",\"test\":{},\":childNodeCount\":1}"
 argument_list|,
 name|r3
 argument_list|)
@@ -777,7 +777,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"{\":id\":\"/test@r4-0-1\",\"a\":{},\"b\":{},\":childNodeCount\":2}"
+literal|"{\":id\":\"/test@r3-0-1\",\"a\":{},\"b\":{},\":childNodeCount\":2}"
 argument_list|,
 name|r3
 argument_list|)
@@ -808,7 +808,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"{\":id\":\"/@r5-0-1\",\"test\":{},\":childNodeCount\":1}"
+literal|"{\":id\":\"/@r4-0-1\",\"test\":{},\":childNodeCount\":1}"
 argument_list|,
 name|r4
 argument_list|)
@@ -836,7 +836,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"{\":id\":\"/test@r5-0-1\",\"a\":{},\"b\":{},\":childNodeCount\":2}"
+literal|"{\":id\":\"/test@r4-0-1\",\"a\":{},\"b\":{},\":childNodeCount\":2}"
 argument_list|,
 name|r4
 argument_list|)
@@ -864,7 +864,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"{\":id\":\"/test/a@r5-0-1\",\"x\":1,\":childNodeCount\":0}"
+literal|"{\":id\":\"/test/a@r4-0-1\",\"x\":1,\":childNodeCount\":0}"
 argument_list|,
 name|r4
 argument_list|)
@@ -892,7 +892,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"{\":id\":\"/test/b@r4-0-1\",\":childNodeCount\":0}"
+literal|"{\":id\":\"/test/b@r3-0-1\",\":childNodeCount\":0}"
 argument_list|,
 name|r4
 argument_list|)
