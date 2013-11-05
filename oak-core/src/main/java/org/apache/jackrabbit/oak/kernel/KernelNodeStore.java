@@ -929,11 +929,6 @@ argument_list|()
 argument_list|)
 condition|)
 block|{
-name|NodeState
-name|before
-init|=
-name|root
-decl_stmt|;
 name|root
 operator|=
 name|getRootState
@@ -945,9 +940,9 @@ name|observer
 operator|.
 name|contentChanged
 argument_list|(
-name|before
-argument_list|,
 name|root
+argument_list|,
+literal|null
 argument_list|)
 expr_stmt|;
 block|}

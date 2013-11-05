@@ -21,6 +21,26 @@ end_package
 
 begin_import
 import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|Nonnull
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|Nullable
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -65,11 +85,15 @@ specifier|public
 name|void
 name|contentChanged
 parameter_list|(
+annotation|@
+name|Nonnull
 name|NodeState
-name|before
+name|root
 parameter_list|,
-name|NodeState
-name|after
+annotation|@
+name|Nullable
+name|CommitInfo
+name|info
 parameter_list|)
 block|{
 comment|// do nothing
