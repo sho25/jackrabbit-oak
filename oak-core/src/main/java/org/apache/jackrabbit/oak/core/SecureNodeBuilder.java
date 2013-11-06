@@ -868,7 +868,7 @@ condition|(
 name|getTreePermission
 argument_list|()
 operator|.
-name|canReadAll
+name|canReadProperties
 argument_list|()
 condition|)
 block|{
@@ -918,7 +918,7 @@ condition|(
 name|getTreePermission
 argument_list|()
 operator|.
-name|canReadAll
+name|canReadProperties
 argument_list|()
 condition|)
 block|{
@@ -929,17 +929,8 @@ name|getProperties
 argument_list|()
 return|;
 block|}
-elseif|else
-if|if
-condition|(
-name|getTreePermission
-argument_list|()
-operator|.
-name|canRead
-argument_list|()
-condition|)
+else|else
 block|{
-comment|// TODO: check DENY_PROPERTIES?
 return|return
 name|filter
 argument_list|(
@@ -952,13 +943,6 @@ operator|new
 name|ReadablePropertyPredicate
 argument_list|()
 argument_list|)
-return|;
-block|}
-else|else
-block|{
-return|return
-name|emptyList
-argument_list|()
 return|;
 block|}
 block|}
