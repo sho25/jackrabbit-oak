@@ -25,16 +25,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|Collection
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|UUID
 import|;
 end_import
@@ -74,18 +64,12 @@ name|UUID
 name|segmentId
 parameter_list|)
 function_decl|;
-comment|/**      * Writes the given segment to the segment store.      *      * @param segmentId segment identifier      * @param referencedSegmentIds identifiers of all the referenced segments      * @param bytes byte buffer that contains the raw contents of the segment      * @param offset start offset within the byte buffer      * @param length length of the segment      */
+comment|/**      * Writes the given segment to the segment store.      *      * @param segmentId segment identifier      * @param bytes byte buffer that contains the raw contents of the segment      * @param offset start offset within the byte buffer      * @param length length of the segment      */
 name|void
 name|writeSegment
 parameter_list|(
 name|UUID
 name|segmentId
-parameter_list|,
-name|Collection
-argument_list|<
-name|UUID
-argument_list|>
-name|referencedSegmentIds
 parameter_list|,
 name|byte
 index|[]
