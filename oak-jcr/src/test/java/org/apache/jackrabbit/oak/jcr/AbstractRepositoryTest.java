@@ -260,6 +260,12 @@ block|,
 block|{
 name|NodeStoreFixture
 operator|.
+name|MONGO_NS
+block|}
+block|,
+block|{
+name|NodeStoreFixture
+operator|.
 name|SEGMENT_MK
 block|}
 block|,         }
