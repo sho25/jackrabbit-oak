@@ -3096,7 +3096,7 @@ name|lastRevision
 argument_list|)
 return|;
 block|}
-comment|/**      * Apply the changes of a node to the cache.      *      * @param rev the revision      * @param path the path      * @param isNew whether this is a new node      * @param isDelete whether the node is deleted      * @param isWritten whether the MongoDB documented was added / updated      * @param isBranchCommit whether this is from a branch commit      * @param added the list of added child nodes      * @param removed the list of removed child nodes      *      */
+comment|/**      * Apply the changes of a node to the cache.      *      * @param rev the revision      * @param path the path      * @param isNew whether this is a new node      * @param isDelete whether the node is deleted      * @param pendingLastRev whether the node has a pending _lastRev to write      * @param isBranchCommit whether this is from a branch commit      * @param added the list of added child nodes      * @param removed the list of removed child nodes      *      */
 specifier|public
 name|void
 name|applyChanges
@@ -3114,7 +3114,7 @@ name|boolean
 name|isDelete
 parameter_list|,
 name|boolean
-name|isWritten
+name|pendingLastRev
 parameter_list|,
 name|boolean
 name|isBranchCommit
@@ -3165,6 +3165,13 @@ name|branchRev
 argument_list|)
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|isBranchCommit
+operator|||
+name|pendingLastRev
+condition|)
+block|{
 comment|// write back _lastRev with background thread
 name|Revision
 name|prev
@@ -3232,6 +3239,7 @@ argument_list|(
 name|msg
 argument_list|)
 throw|;
+block|}
 block|}
 block|}
 name|String

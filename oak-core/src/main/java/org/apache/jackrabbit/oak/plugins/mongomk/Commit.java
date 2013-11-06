@@ -1001,6 +1001,18 @@ name|isNew
 argument_list|()
 condition|)
 block|{
+comment|// for new nodes we can safely set _lastRev on insert.
+comment|// for existing nodes the _lastRev is updated by the
+comment|// background thread to avoid concurrent updates
+name|NodeDocument
+operator|.
+name|setLastRev
+argument_list|(
+name|op
+argument_list|,
+name|revision
+argument_list|)
+expr_stmt|;
 name|newNodes
 operator|.
 name|add
@@ -1115,6 +1127,20 @@ name|revision
 argument_list|)
 expr_stmt|;
 block|}
+comment|// setting _lastRev is only safe on insert. now the
+comment|// background thread needs to take care of it
+name|NodeDocument
+operator|.
+name|unsetLastRev
+argument_list|(
+name|op
+argument_list|,
+name|revision
+operator|.
+name|getClusterId
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|changedNodes
 operator|.
 name|add
@@ -2219,11 +2245,24 @@ name|isNew
 argument_list|()
 decl_stmt|;
 name|boolean
-name|isWritten
+name|pendingLastRev
 init|=
 name|op
-operator|!=
+operator|==
 literal|null
+operator|||
+operator|!
+name|NodeDocument
+operator|.
+name|hasLastRev
+argument_list|(
+name|op
+argument_list|,
+name|revision
+operator|.
+name|getClusterId
+argument_list|()
+argument_list|)
 decl_stmt|;
 name|boolean
 name|isDelete
@@ -2249,7 +2288,7 @@ name|isNew
 argument_list|,
 name|isDelete
 argument_list|,
-name|isWritten
+name|pendingLastRev
 argument_list|,
 name|isBranchCommit
 argument_list|,
