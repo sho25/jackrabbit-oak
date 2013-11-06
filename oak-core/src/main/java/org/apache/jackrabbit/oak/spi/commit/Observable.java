@@ -13,34 +13,24 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|plugins
+name|spi
 operator|.
-name|observation
+name|commit
 package|;
 end_package
 
 begin_import
 import|import
-name|org
+name|java
 operator|.
-name|apache
+name|io
 operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|plugins
-operator|.
-name|observation
-operator|.
-name|ChangeDispatcher
-operator|.
-name|Listener
+name|Closeable
 import|;
 end_import
 
 begin_comment
-comment|/**  * An {@code Observable} supports attaching {@link Listener} instances for  * listening to content changes.  *  * @see ChangeDispatcher  */
+comment|/**  * An {@code Observable} supports attaching {@link Observer} instances for  * listening to content changes.  *  * @see Observable  */
 end_comment
 
 begin_interface
@@ -48,10 +38,13 @@ specifier|public
 interface|interface
 name|Observable
 block|{
-comment|/**      * Register a new {@code Listener}. Clients need to call      * {@link ChangeDispatcher.Listener#dispose()} to free      * up any resources associated with the listener when done.      * @return a fresh {@code Listener} instance.      */
-name|Listener
-name|newListener
-parameter_list|()
+comment|/**      * Register a new {@code Observer}. Clients need to call {@link Closeable#close()}       * to stop getting notifications on the registered observer and to free up any resources      * associated with the registration.      *       * @return a {@code Closeable} instance.      */
+name|Closeable
+name|addObserver
+parameter_list|(
+name|Observer
+name|observer
+parameter_list|)
 function_decl|;
 block|}
 end_interface
