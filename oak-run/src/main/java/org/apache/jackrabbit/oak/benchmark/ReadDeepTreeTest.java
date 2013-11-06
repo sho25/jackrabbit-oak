@@ -168,7 +168,7 @@ specifier|protected
 name|Node
 name|testRoot
 decl_stmt|;
-specifier|private
+specifier|protected
 name|Session
 name|testSession
 decl_stmt|;
