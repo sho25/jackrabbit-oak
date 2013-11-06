@@ -1004,12 +1004,6 @@ specifier|final
 name|BlobStore
 name|blobStore
 decl_stmt|;
-comment|/**      * The node store observer.      */
-specifier|private
-specifier|final
-name|Observer
-name|observer
-decl_stmt|;
 specifier|public
 name|MongoNodeStore
 parameter_list|(
@@ -1026,15 +1020,6 @@ operator|=
 name|builder
 operator|.
 name|getBlobStore
-argument_list|()
-expr_stmt|;
-name|this
-operator|.
-name|observer
-operator|=
-name|builder
-operator|.
-name|getObserver
 argument_list|()
 expr_stmt|;
 if|if
@@ -1601,18 +1586,6 @@ comment|// head changed
 name|headRevision
 operator|=
 name|newHead
-expr_stmt|;
-name|observer
-operator|.
-name|contentChanged
-argument_list|(
-name|getRoot
-argument_list|(
-name|newHead
-argument_list|)
-argument_list|,
-literal|null
-argument_list|)
 expr_stmt|;
 block|}
 return|return
