@@ -432,6 +432,9 @@ name|merge
 parameter_list|(
 name|KernelNodeState
 name|branchHead
+parameter_list|,
+name|CommitInfo
+name|info
 parameter_list|)
 block|{
 return|return
@@ -454,6 +457,9 @@ name|toPersist
 parameter_list|,
 name|KernelNodeState
 name|base
+parameter_list|,
+name|CommitInfo
+name|info
 parameter_list|)
 block|{
 name|JsopDiff

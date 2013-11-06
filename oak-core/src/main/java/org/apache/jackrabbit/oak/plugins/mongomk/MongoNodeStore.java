@@ -1640,7 +1640,7 @@ name|clusterId
 argument_list|)
 return|;
 block|}
-comment|/**      * Creates a new commit. The caller must acknowledge the commit either with      * {@link #done(Commit, boolean)} or {@link #canceled(Commit)}, depending      * on the result of the commit.      *      * @param base the base revision for the commit or<code>null</code> if the      *             commit should use the current head revision as base.      * @return a new commit.      */
+comment|/**      * Creates a new commit. The caller must acknowledge the commit either with      * {@link #done(Commit, boolean, CommitInfo)} or {@link #canceled(Commit)},      * depending on the result of the commit.      *      * @param base the base revision for the commit or<code>null</code> if the      *             commit should use the current head revision as base.      * @return a new commit.      */
 annotation|@
 name|Nonnull
 name|Commit
@@ -1728,6 +1728,11 @@ name|c
 parameter_list|,
 name|boolean
 name|isBranch
+parameter_list|,
+annotation|@
+name|Nullable
+name|CommitInfo
+name|info
 parameter_list|)
 block|{
 try|try
@@ -1740,7 +1745,7 @@ name|c
 argument_list|,
 name|isBranch
 argument_list|,
-literal|null
+name|info
 argument_list|)
 expr_stmt|;
 block|}
@@ -3717,6 +3722,11 @@ annotation|@
 name|Nonnull
 name|Revision
 name|branchHead
+parameter_list|,
+annotation|@
+name|Nullable
+name|CommitInfo
+name|info
 parameter_list|)
 block|{
 name|Branch
@@ -3942,6 +3952,8 @@ argument_list|(
 name|commit
 argument_list|,
 literal|false
+argument_list|,
+name|info
 argument_list|)
 expr_stmt|;
 block|}

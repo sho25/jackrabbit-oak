@@ -414,6 +414,9 @@ name|merge
 parameter_list|(
 name|MongoNodeState
 name|branchHead
+parameter_list|,
+name|CommitInfo
+name|info
 parameter_list|)
 block|{
 return|return
@@ -429,6 +432,8 @@ name|branchHead
 operator|.
 name|getRevision
 argument_list|()
+argument_list|,
+name|info
 argument_list|)
 argument_list|)
 return|;
@@ -446,6 +451,10 @@ parameter_list|,
 specifier|final
 name|MongoNodeState
 name|base
+parameter_list|,
+specifier|final
+name|CommitInfo
+name|info
 parameter_list|)
 block|{
 name|MongoNodeState
@@ -486,6 +495,8 @@ block|}
 block|}
 argument_list|,
 name|base
+argument_list|,
+name|info
 argument_list|)
 decl_stmt|;
 if|if
@@ -556,6 +567,8 @@ block|}
 block|}
 argument_list|,
 name|base
+argument_list|,
+literal|null
 argument_list|)
 return|;
 block|}
@@ -609,6 +622,8 @@ block|}
 block|}
 argument_list|,
 name|base
+argument_list|,
+literal|null
 argument_list|)
 return|;
 block|}
@@ -694,7 +709,7 @@ argument_list|)
 throw|;
 block|}
 comment|//------------------------------< internal>--------------------------------
-comment|/**      * Persist some changes on top of the given base state.      *      * @param op the changes to persist.      * @param base the base state.      * @return the result state.      */
+comment|/**      * Persist some changes on top of the given base state.      *      * @param op the changes to persist.      * @param base the base state.      * @param info the commit info.      * @return the result state.      */
 specifier|private
 name|MongoNodeState
 name|persist
@@ -704,6 +719,9 @@ name|op
 parameter_list|,
 name|MongoNodeState
 name|base
+parameter_list|,
+name|CommitInfo
+name|info
 parameter_list|)
 block|{
 name|boolean
@@ -770,6 +788,8 @@ argument_list|()
 operator|.
 name|isBranch
 argument_list|()
+argument_list|,
+name|info
 argument_list|)
 expr_stmt|;
 block|}

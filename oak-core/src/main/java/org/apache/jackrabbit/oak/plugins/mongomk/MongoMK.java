@@ -2508,6 +2508,8 @@ argument_list|(
 name|commit
 argument_list|,
 name|isBranch
+argument_list|,
+literal|null
 argument_list|)
 expr_stmt|;
 block|}
@@ -2615,6 +2617,8 @@ operator|.
 name|merge
 argument_list|(
 name|revision
+argument_list|,
+literal|null
 argument_list|)
 operator|.
 name|toString

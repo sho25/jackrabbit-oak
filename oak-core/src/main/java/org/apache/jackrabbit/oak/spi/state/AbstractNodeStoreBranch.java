@@ -303,7 +303,7 @@ name|N
 name|base
 parameter_list|)
 function_decl|;
-comment|/**      * Merges the branch head and returns the result state of the merge.      *      * @param branchHead the head of the branch to merge.      * @return the result state of the merge.      */
+comment|/**      * Merges the branch head and returns the result state of the merge.      *      * @param branchHead the head of the branch to merge.      * @param info the commit info or<code>null</code> if none available.      * @return the result state of the merge.      */
 specifier|protected
 specifier|abstract
 name|N
@@ -311,9 +311,12 @@ name|merge
 parameter_list|(
 name|N
 name|branchHead
+parameter_list|,
+name|CommitInfo
+name|info
 parameter_list|)
 function_decl|;
-comment|/**      * Persists the changes between<code>toPersist</code> and<code>base</code>      * to the underlying store.      *<p>      * While this method does not declare any exceptions to be thrown, an      * implementation may still throw a runtime exception specific to the      * concrete implementation of this node store branch.      *      * @param toPersist the state with the changes on top of<code>base</code>.      * @param base the base state.      * @return the state with the persisted changes.      */
+comment|/**      * Persists the changes between<code>toPersist</code> and<code>base</code>      * to the underlying store.      *<p>      * While this method does not declare any exceptions to be thrown, an      * implementation may still throw a runtime exception specific to the      * concrete implementation of this node store branch.      *      * @param toPersist the state with the changes on top of<code>base</code>.      * @param base the base state.      * @param info the commit info or<code>null</code> if there is none.      * @return the state with the persisted changes.      */
 specifier|protected
 specifier|abstract
 name|N
@@ -324,6 +327,9 @@ name|toPersist
 parameter_list|,
 name|N
 name|base
+parameter_list|,
+name|CommitInfo
+name|info
 parameter_list|)
 function_decl|;
 comment|/**      * Perform a potentially optimized copy operation directly on the underlying      * store.      *<p>      * This base class ensures that preconditions are met (e.g. the source      * exists), which means an implementation of this method just needs to      * perform the copy operation.      *<p>      * While this method does not declare any exceptions to be thrown, an      * implementation may still throw a runtime exception specific to the      * concrete implementation of this node store branch.      *      * @param source the source of the copy operation.      * @param target the destination of the copy operation.      * @param base the base state.      * @return the result of the copy operation.      */
@@ -1173,6 +1179,8 @@ argument_list|(
 name|toCommit
 argument_list|,
 name|base
+argument_list|,
+name|info
 argument_list|)
 decl_stmt|;
 name|dispatcher
@@ -1514,6 +1522,8 @@ argument_list|(
 name|toCommit
 argument_list|,
 name|head
+argument_list|,
+name|info
 argument_list|)
 expr_stmt|;
 name|NodeState
@@ -1526,6 +1536,8 @@ operator|.
 name|merge
 argument_list|(
 name|head
+argument_list|,
+name|info
 argument_list|)
 decl_stmt|;
 name|dispatcher
@@ -1592,6 +1604,8 @@ argument_list|(
 name|newHead
 argument_list|,
 name|head
+argument_list|,
+literal|null
 argument_list|)
 expr_stmt|;
 block|}
