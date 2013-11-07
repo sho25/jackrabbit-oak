@@ -1582,17 +1582,6 @@ name|NodeState
 name|newHead
 parameter_list|)
 block|{
-if|if
-condition|(
-operator|!
-name|newHead
-operator|.
-name|equals
-argument_list|(
-name|head
-argument_list|)
-condition|)
-block|{
 name|head
 operator|=
 name|AbstractNodeStoreBranch
@@ -1608,7 +1597,6 @@ argument_list|,
 literal|null
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 comment|/**      * Instances of this class represent a branch that has already been merged.      * All methods throw an {@code IllegalStateException}.      *<p>      * Transitions to: none.      */
