@@ -327,16 +327,6 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Ignore
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
 name|Test
 import|;
 end_import
@@ -1586,11 +1576,6 @@ block|}
 block|}
 comment|/**      * @since oak 1.0 cyclic group membership added in a single set of transient      *        modifications must be detected upon save.      */
 annotation|@
-name|Ignore
-argument_list|(
-literal|"OAK-615"
-argument_list|)
-annotation|@
 name|Test
 specifier|public
 name|void
@@ -1767,11 +1752,6 @@ comment|// success
 block|}
 finally|finally
 block|{
-name|root
-operator|.
-name|refresh
-argument_list|()
-expr_stmt|;
 if|if
 condition|(
 name|group1
