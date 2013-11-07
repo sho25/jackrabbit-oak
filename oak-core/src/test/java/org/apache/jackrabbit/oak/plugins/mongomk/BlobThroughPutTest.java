@@ -161,16 +161,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|Map
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|Random
 import|;
 end_import
@@ -429,7 +419,7 @@ specifier|final
 name|String
 name|remoteServer
 init|=
-literal|"chetanm-desk:27017/test"
+literal|"remote:27017/test"
 decl_stmt|;
 annotation|@
 name|Ignore
