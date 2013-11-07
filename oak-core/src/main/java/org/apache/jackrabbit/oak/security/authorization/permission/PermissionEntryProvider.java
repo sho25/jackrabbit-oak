@@ -72,10 +72,11 @@ comment|/**  * {@code PermissionEntryProvider} provides permission entries for a
 end_comment
 
 begin_interface
-specifier|public
 interface|interface
 name|PermissionEntryProvider
 block|{
+annotation|@
+name|Nonnull
 name|Iterator
 argument_list|<
 name|PermissionEntry
@@ -88,6 +89,8 @@ name|EntryPredicate
 name|predicate
 parameter_list|)
 function_decl|;
+annotation|@
+name|Nonnull
 name|Collection
 argument_list|<
 name|PermissionEntry
@@ -100,6 +103,8 @@ name|Tree
 name|accessControlledTree
 parameter_list|)
 function_decl|;
+annotation|@
+name|Nonnull
 name|Collection
 argument_list|<
 name|PermissionEntry

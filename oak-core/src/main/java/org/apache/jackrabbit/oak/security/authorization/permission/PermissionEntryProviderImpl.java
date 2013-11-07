@@ -178,11 +178,10 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * {@code PermissionEntryProviderImpl} ...  */
+comment|/**  * {@code PermissionEntryProviderImpl} ...  TODO  */
 end_comment
 
 begin_class
-specifier|public
 class|class
 name|PermissionEntryProviderImpl
 implements|implements
@@ -244,7 +243,6 @@ operator|.
 name|Local
 name|cache
 decl_stmt|;
-specifier|protected
 name|PermissionEntryProviderImpl
 parameter_list|(
 annotation|@
@@ -448,6 +446,8 @@ name|init
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Nonnull
 specifier|public
 name|Iterator
 argument_list|<
@@ -487,6 +487,8 @@ argument_list|)
 return|;
 block|}
 block|}
+annotation|@
+name|Nonnull
 specifier|public
 name|Collection
 argument_list|<

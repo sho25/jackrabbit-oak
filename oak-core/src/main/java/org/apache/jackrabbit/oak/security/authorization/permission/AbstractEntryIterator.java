@@ -42,7 +42,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Base class for PermissionEntry iterators.  */
+comment|/**  * Base class for {@code PermissionEntry} iterators.  */
 end_comment
 
 begin_class

@@ -95,6 +95,16 @@ end_import
 
 begin_import
 import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|Nonnull
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -114,7 +124,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * {@code PermissionEntryCache} caches the permission entries of principals. The cache is held globally and contains  * a version of the principal permission entries of the session that read them last. each session gets a lazy copy of  * the cache and needs to verify if each cached principal permission set still reflects the state that the session sees.  * every newly loaded principal permission set can be pushed down to the base cache if it does not exist there yet, or  * if it's newer.  *  * Todo:  * - currently only the entries of 'everyone' are globally cached. this should be improved to dynamically cache those  *   principals that are used often  * - report cache usage metrics  * - limit size of local caches based on ppe sizes. the current implementation loads all ppes. this can get a memory  *   problem, as well as a performance problem for principals with many entries. principals with many entries must  *   fallback to the direct store.load() methods when providing the entries. if those principals with many entries  *   are used often, they might get elected to live in the global cache; memory permitting.  */
+comment|/**  * {@code PermissionEntryCache} caches the permission entries of principals.  * The cache is held globally and contains a version of the principal permission  * entries of the session that read them last. Each session gets a lazy copy of  * the cache and needs to verify if each cached principal permission set still  * reflects the state that the session sees.  * Every newly loaded principal permission set can be pushed down to the base  * cache if it does not exist there yet, or if it's newer.  *  * Todo:  * - currently only the entries of 'everyone' are globally cached. this should be improved to dynamically cache those  *   principals that are used often  * - report cache usage metrics  * - limit size of local caches based on ppe sizes. the current implementation loads all ppes. this can get a memory  *   problem, as well as a performance problem for principals with many entries. principals with many entries must  *   fallback to the direct store.load() methods when providing the entries. if those principals with many entries  *   are used often, they might get elected to live in the global cache; memory permitting.  */
 end_comment
 
 begin_class
@@ -141,6 +151,8 @@ name|PrincipalPermissionEntries
 argument_list|>
 argument_list|()
 decl_stmt|;
+annotation|@
+name|Nonnull
 specifier|public
 name|Local
 name|createLocalCache
@@ -156,6 +168,8 @@ specifier|public
 name|void
 name|flush
 parameter_list|(
+annotation|@
+name|Nonnull
 name|Set
 argument_list|<
 name|String
@@ -212,7 +226,7 @@ name|String
 argument_list|>
 argument_list|()
 decl_stmt|;
-specifier|public
+specifier|private
 name|Local
 parameter_list|()
 block|{
@@ -224,13 +238,19 @@ name|base
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Nonnull
 specifier|public
 name|PrincipalPermissionEntries
 name|getEntries
 parameter_list|(
+annotation|@
+name|Nonnull
 name|PermissionStore
 name|store
 parameter_list|,
+annotation|@
+name|Nonnull
 name|String
 name|principalName
 parameter_list|)
@@ -327,8 +347,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|// currently we only cache 'everyones' entries. but the cache should dynamically cache the principals
-comment|// that are used often.
+comment|/*             Currently this cache only handles entries for the Everyone principal.             TODO: the cache should dynamically cache the principals that are used often.             */
 if|if
 condition|(
 name|EveryonePrincipal
@@ -388,9 +407,13 @@ specifier|public
 name|void
 name|load
 parameter_list|(
+annotation|@
+name|Nonnull
 name|PermissionStore
 name|store
 parameter_list|,
+annotation|@
+name|Nonnull
 name|Map
 argument_list|<
 name|String
@@ -402,6 +425,8 @@ argument_list|>
 argument_list|>
 name|pathEntryMap
 parameter_list|,
+annotation|@
+name|Nonnull
 name|String
 name|principalName
 parameter_list|)
@@ -510,18 +535,26 @@ specifier|public
 name|void
 name|load
 parameter_list|(
+annotation|@
+name|Nonnull
 name|PermissionStore
 name|store
 parameter_list|,
+annotation|@
+name|Nonnull
 name|Collection
 argument_list|<
 name|PermissionEntry
 argument_list|>
 name|ret
 parameter_list|,
+annotation|@
+name|Nonnull
 name|String
 name|principalName
 parameter_list|,
+annotation|@
+name|Nonnull
 name|String
 name|path
 parameter_list|)
@@ -554,9 +587,13 @@ specifier|public
 name|boolean
 name|hasEntries
 parameter_list|(
+annotation|@
+name|Nonnull
 name|PermissionStore
 name|store
 parameter_list|,
+annotation|@
+name|Nonnull
 name|String
 name|principalName
 parameter_list|)
@@ -577,9 +614,13 @@ specifier|public
 name|long
 name|getNumEntries
 parameter_list|(
+annotation|@
+name|Nonnull
 name|PermissionStore
 name|store
 parameter_list|,
+annotation|@
+name|Nonnull
 name|String
 name|principalName
 parameter_list|)
@@ -604,6 +645,8 @@ specifier|public
 name|void
 name|flush
 parameter_list|(
+annotation|@
+name|Nonnull
 name|Set
 argument_list|<
 name|String
