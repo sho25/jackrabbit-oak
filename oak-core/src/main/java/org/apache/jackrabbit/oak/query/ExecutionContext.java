@@ -88,10 +88,11 @@ specifier|public
 class|class
 name|ExecutionContext
 block|{
+comment|/**      * Base state used for index lookups.      */
 specifier|private
 specifier|final
 name|NodeState
-name|rootState
+name|baseState
 decl_stmt|;
 specifier|private
 specifier|final
@@ -107,7 +108,7 @@ specifier|public
 name|ExecutionContext
 parameter_list|(
 name|NodeState
-name|rootState
+name|baseState
 parameter_list|,
 name|Tree
 name|rootTree
@@ -118,9 +119,9 @@ parameter_list|)
 block|{
 name|this
 operator|.
-name|rootState
+name|baseState
 operator|=
-name|rootState
+name|baseState
 expr_stmt|;
 name|this
 operator|.
@@ -135,16 +136,16 @@ operator|=
 name|indexProvider
 expr_stmt|;
 block|}
-comment|/**      *       * Used to evaluate the query (ie. read the existing node types, index      * definitions), doesn't need to be a secured version of a node state      *       * @return Root node state of the content tree against which the query runs.      */
+comment|/**      * Used to evaluate the query (ie. read the existing node types, index      * definitions), doesn't need to be a secured version of a node state      *       * @return base state of the content tree against which the query runs.      */
 annotation|@
 name|Nonnull
 specifier|public
 name|NodeState
-name|getRootState
+name|getBaseState
 parameter_list|()
 block|{
 return|return
-name|rootState
+name|baseState
 return|;
 block|}
 comment|/**      *       * Used to create the actual query results from the indexed paths, needs to      * be a secured version of a tree to take into account ACLs      *       * @return Root tree of the content tree against which the query runs.      */
@@ -159,7 +160,7 @@ return|return
 name|rootTree
 return|;
 block|}
-comment|/**      * @return Index provider for indexes matching the state of the content tree as      * returned from {@link #getRootState()}.      */
+comment|/**      * @return Index provider for indexes matching the state of the content tree as      * returned from {@link #getBaseState()}.      */
 annotation|@
 name|Nonnull
 specifier|public

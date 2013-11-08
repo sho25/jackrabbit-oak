@@ -2147,7 +2147,7 @@ name|RowIterator
 argument_list|(
 name|context
 operator|.
-name|getRootState
+name|getBaseState
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -2374,7 +2374,7 @@ name|getPlan
 argument_list|(
 name|context
 operator|.
-name|getRootState
+name|getBaseState
 argument_list|()
 argument_list|)
 return|;
@@ -3109,7 +3109,7 @@ name|getBestIndex
 argument_list|(
 name|context
 operator|.
-name|getRootState
+name|getBaseState
 argument_list|()
 argument_list|,
 name|filter
