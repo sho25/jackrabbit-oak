@@ -172,7 +172,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Filter for filtering observation events according to a certain criterion.  */
+comment|/**  * Filter for filtering observation events according to a certain criterion.  * FIXME rename. EventFilter clashes with the same named interface in JCR 2.1  */
 end_comment
 
 begin_class
