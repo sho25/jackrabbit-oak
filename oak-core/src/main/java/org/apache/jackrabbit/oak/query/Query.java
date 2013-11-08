@@ -137,24 +137,6 @@ name|OrderingImpl
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|spi
-operator|.
-name|query
-operator|.
-name|QueryIndexProvider
-import|;
-end_import
-
 begin_comment
 comment|/**  * A "select" or "union" query.  *<p>  * Lifecycle: use the constructor to create a new object. Call init() to  * initialize the bind variable map. If the query is re-executed, a new instance  * is created.  */
 end_comment
@@ -203,10 +185,10 @@ name|value
 parameter_list|)
 function_decl|;
 name|void
-name|setIndexProvider
+name|setTraversalFallback
 parameter_list|(
-name|QueryIndexProvider
-name|indexProvider
+name|boolean
+name|traversal
 parameter_list|)
 function_decl|;
 name|void
