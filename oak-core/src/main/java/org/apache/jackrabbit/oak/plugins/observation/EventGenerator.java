@@ -1156,7 +1156,7 @@ name|include
 argument_list|(
 name|NODE_REMOVED
 argument_list|,
-name|beforeTree
+name|afterTree
 argument_list|)
 condition|)
 block|{
