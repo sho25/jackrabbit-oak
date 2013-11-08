@@ -310,6 +310,7 @@ name|mask
 return|;
 block|}
 comment|/**      * Maximum segment size. Record identifiers are stored as three-byte      * sequences with the first byte indicating the segment and the next      * two the offset within that segment. Since all records are aligned      * at four-byte boundaries, the two bytes can address up to 256kB of      * record data.      */
+specifier|public
 specifier|static
 specifier|final
 name|int
