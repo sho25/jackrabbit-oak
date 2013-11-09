@@ -458,8 +458,11 @@ name|with
 argument_list|(
 operator|new
 name|SolrIndexInitializer
-argument_list|()
+argument_list|(
+literal|false
 argument_list|)
+argument_list|)
+comment|// synchronous
 operator|.
 name|with
 argument_list|(
