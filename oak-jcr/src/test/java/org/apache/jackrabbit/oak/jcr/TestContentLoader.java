@@ -839,16 +839,11 @@ name|setProperty
 argument_list|(
 literal|"jcr:data"
 argument_list|,
-operator|new
-name|BinaryValue
-argument_list|(
 literal|"Hello w\u00F6rld."
+argument_list|,
+name|PropertyType
 operator|.
-name|getBytes
-argument_list|(
-name|ENCODING
-argument_list|)
-argument_list|)
+name|BINARY
 argument_list|)
 expr_stmt|;
 name|resource
@@ -1328,28 +1323,17 @@ argument_list|,
 literal|"text/plain"
 argument_list|)
 expr_stmt|;
-name|byte
-index|[]
-name|bytes
-init|=
-literal|"Hello w\u00F6rld."
-operator|.
-name|getBytes
-argument_list|(
-name|ENCODING
-argument_list|)
-decl_stmt|;
 name|resource
 operator|.
 name|setProperty
 argument_list|(
 name|name
 argument_list|,
-operator|new
-name|BinaryValue
-argument_list|(
-name|bytes
-argument_list|)
+literal|"Hello w\u00F6rld."
+argument_list|,
+name|PropertyType
+operator|.
+name|BINARY
 argument_list|)
 expr_stmt|;
 name|resource

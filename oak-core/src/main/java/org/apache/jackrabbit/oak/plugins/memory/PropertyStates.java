@@ -557,8 +557,9 @@ name|blobs
 operator|.
 name|add
 argument_list|(
-operator|new
-name|ValueBasedBlob
+name|ValueImpl
+operator|.
+name|getBlob
 argument_list|(
 name|value
 argument_list|)
