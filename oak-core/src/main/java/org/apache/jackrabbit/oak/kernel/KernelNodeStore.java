@@ -777,7 +777,7 @@ operator|=
 operator|new
 name|ChangeDispatcher
 argument_list|(
-name|this
+name|root
 argument_list|)
 expr_stmt|;
 block|}

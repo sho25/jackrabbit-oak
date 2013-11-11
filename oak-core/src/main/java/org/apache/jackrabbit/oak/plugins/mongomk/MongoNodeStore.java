@@ -1409,7 +1409,8 @@ operator|=
 operator|new
 name|ChangeDispatcher
 argument_list|(
-name|this
+name|getRoot
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|commitQueue
