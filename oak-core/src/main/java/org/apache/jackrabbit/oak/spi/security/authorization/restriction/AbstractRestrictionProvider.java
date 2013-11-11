@@ -1184,9 +1184,6 @@ argument_list|(
 name|propertyState
 argument_list|,
 name|definition
-operator|.
-name|isMandatory
-argument_list|()
 argument_list|)
 return|;
 block|}

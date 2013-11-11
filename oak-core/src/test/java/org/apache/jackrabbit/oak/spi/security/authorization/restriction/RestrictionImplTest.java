@@ -506,7 +506,7 @@ argument_list|)
 argument_list|,
 name|Type
 operator|.
-name|STRINGS
+name|NAMES
 argument_list|)
 argument_list|,
 literal|true

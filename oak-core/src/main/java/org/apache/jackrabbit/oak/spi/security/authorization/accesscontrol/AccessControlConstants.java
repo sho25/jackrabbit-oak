@@ -86,11 +86,17 @@ name|REP_NODE_PATH
 init|=
 literal|"rep:nodePath"
 decl_stmt|;
-comment|/**      * Name of the optional access control restriction by node type name.      * The corresponding restriction type is {@link org.apache.jackrabbit.oak.api.Type#NAMES}.      *      * @since OAK 1.0      */
+comment|/**      * Name of the optional multivalued access control restriction by node type name.      * The corresponding restriction type is {@link org.apache.jackrabbit.oak.api.Type#NAMES}.      *      * @since OAK 1.0      */
 name|String
 name|REP_NT_NAMES
 init|=
 literal|"rep:ntNames"
+decl_stmt|;
+comment|/**      * Name of the optional multivalued access control restriction which matches by name space prefix.      * The corresponding restriction type is {@link org.apache.jackrabbit.oak.api.Type#STRINGS}.      *      * @since OAK 1.0      */
+name|String
+name|REP_PREFIXES
+init|=
+literal|"rep:prefixes"
 decl_stmt|;
 comment|/**      * @since OAK 1.0      */
 name|String
