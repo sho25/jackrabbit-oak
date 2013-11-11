@@ -427,11 +427,11 @@ literal|8
 operator|*
 literal|1024
 decl_stmt|;
-comment|/**      * A document size threshold after which a split is forced even if      * {@link #REVISIONS_SPLIT_OFF_SIZE} is not reached.      */
+comment|/**      * A document size threshold after which a split is forced even if      * {@link #NUM_REVS_THRESHOLD} is not reached.      */
 specifier|static
 specifier|final
 name|int
-name|FORCE_SPLIT_THRESHOLD
+name|DOC_SIZE_THRESHOLD
 init|=
 literal|256
 operator|*
@@ -441,9 +441,17 @@ comment|/**      * Only split off at least this number of revisions.      */
 specifier|static
 specifier|final
 name|int
-name|REVISIONS_SPLIT_OFF_SIZE
+name|NUM_REVS_THRESHOLD
 init|=
 literal|100
+decl_stmt|;
+comment|/**      * The split ratio. Only split data to an old document when at least      * 30% of the data can be moved.      */
+specifier|static
+specifier|final
+name|float
+name|SPLIT_RATIO
+init|=
+literal|0.3f
 decl_stmt|;
 comment|/**      * Revision collision markers set by commits with modifications, which      * overlap with un-merged branch commits.      * Key: revision, value:      */
 specifier|static
@@ -2242,12 +2250,12 @@ operator|.
 name|size
 argument_list|()
 operator|<=
-name|REVISIONS_SPLIT_OFF_SIZE
+name|NUM_REVS_THRESHOLD
 operator|&&
 name|getMemory
 argument_list|()
 operator|<
-name|FORCE_SPLIT_THRESHOLD
+name|DOC_SIZE_THRESHOLD
 condition|)
 block|{
 return|return
@@ -2654,12 +2662,12 @@ operator|&&
 operator|(
 name|numValues
 operator|>=
-name|REVISIONS_SPLIT_OFF_SIZE
+name|NUM_REVS_THRESHOLD
 operator|||
 name|getMemory
 argument_list|()
 operator|>
-name|FORCE_SPLIT_THRESHOLD
+name|DOC_SIZE_THRESHOLD
 operator|)
 condition|)
 block|{
@@ -2808,6 +2816,44 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+comment|// check size of old document
+name|NodeDocument
+name|oldDoc
+init|=
+operator|new
+name|NodeDocument
+argument_list|(
+name|store
+argument_list|)
+decl_stmt|;
+name|MemoryDocumentStore
+operator|.
+name|applyChanges
+argument_list|(
+name|oldDoc
+argument_list|,
+name|old
+argument_list|,
+name|context
+operator|.
+name|getRevisionComparator
+argument_list|()
+argument_list|)
+expr_stmt|;
+comment|// only split if half of the data can be moved to old document
+if|if
+condition|(
+name|oldDoc
+operator|.
+name|getMemory
+argument_list|()
+operator|>
+name|getMemory
+argument_list|()
+operator|*
+name|SPLIT_RATIO
+condition|)
+block|{
 name|splitOps
 operator|.
 name|add
@@ -2822,6 +2868,7 @@ argument_list|(
 name|main
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 return|return
 name|splitOps

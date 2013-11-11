@@ -264,7 +264,7 @@ argument_list|()
 operator|<=
 name|NodeDocument
 operator|.
-name|REVISIONS_SPLIT_OFF_SIZE
+name|NUM_REVS_THRESHOLD
 condition|)
 block|{
 name|revisions
@@ -540,7 +540,7 @@ argument_list|()
 operator|<=
 name|NodeDocument
 operator|.
-name|REVISIONS_SPLIT_OFF_SIZE
+name|NUM_REVS_THRESHOLD
 condition|)
 block|{
 if|if
@@ -819,7 +819,7 @@ argument_list|()
 operator|<=
 name|NodeDocument
 operator|.
-name|REVISIONS_SPLIT_OFF_SIZE
+name|NUM_REVS_THRESHOLD
 condition|)
 block|{
 name|commitRoots
@@ -1013,7 +1013,7 @@ argument_list|()
 operator|<=
 name|NodeDocument
 operator|.
-name|REVISIONS_SPLIT_OFF_SIZE
+name|NUM_REVS_THRESHOLD
 condition|)
 block|{
 name|revisions
@@ -1339,7 +1339,7 @@ name|i
 operator|<
 name|NodeDocument
 operator|.
-name|REVISIONS_SPLIT_OFF_SIZE
+name|NUM_REVS_THRESHOLD
 condition|;
 name|i
 operator|++
@@ -1468,7 +1468,7 @@ literal|3
 operator|*
 name|NodeDocument
 operator|.
-name|REVISIONS_SPLIT_OFF_SIZE
+name|NUM_REVS_THRESHOLD
 argument_list|,
 name|revs
 operator|.
