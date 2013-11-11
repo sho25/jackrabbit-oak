@@ -754,6 +754,20 @@ argument_list|(
 name|c
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|c
+operator|.
+name|isEmpty
+argument_list|()
+condition|)
+block|{
+comment|// no changes to persist. return base state and let
+comment|// finally clause cancel the commit
+return|return
+name|base
+return|;
+block|}
 name|rev
 operator|=
 name|store

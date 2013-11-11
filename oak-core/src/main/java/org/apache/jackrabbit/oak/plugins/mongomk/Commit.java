@@ -681,6 +681,17 @@ name|path
 argument_list|)
 expr_stmt|;
 block|}
+name|boolean
+name|isEmpty
+parameter_list|()
+block|{
+return|return
+name|operations
+operator|.
+name|isEmpty
+argument_list|()
+return|;
+block|}
 comment|/**      * Apply the changes to the document store and the cache.      */
 name|void
 name|apply
