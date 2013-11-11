@@ -1389,25 +1389,9 @@ operator|>
 literal|0
 condition|)
 block|{
-throw|throw
-operator|new
-name|IllegalArgumentException
-argument_list|(
-literal|"Can not add an earlier revision: "
-operator|+
-name|last
-operator|.
-name|revision
-operator|+
-literal|"> "
-operator|+
-name|r
-operator|+
-literal|"; current cluster node is "
-operator|+
-name|currentClusterNodeId
-argument_list|)
-throw|;
+comment|/*                         throw new IllegalArgumentException(                                 "Can not add an earlier revision: " + last.revision + "> " + r +                                  "; current cluster node is " + currentClusterNodeId);                         */
+comment|// quick fix for OAK-1167
+return|return;
 block|}
 name|newList
 operator|=
