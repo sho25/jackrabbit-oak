@@ -600,6 +600,14 @@ argument_list|)
 expr_stmt|;
 try|try
 block|{
+comment|// OAK-874: No artificial XPath selector name in wildcards
+name|parser
+operator|.
+name|setIncludeSelectorNameInWildcardColumns
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
 return|return
 name|parser
 operator|.

@@ -1229,7 +1229,7 @@ literal|"jcr:path"
 argument_list|,
 literal|"jcr:score"
 argument_list|,
-literal|"a.jcr:primaryType"
+literal|"jcr:primaryType"
 argument_list|)
 argument_list|,
 name|newHashSet
