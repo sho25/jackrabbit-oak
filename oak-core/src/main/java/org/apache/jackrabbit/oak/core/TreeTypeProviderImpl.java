@@ -104,7 +104,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * DefaultTreeTypeProvider... TODO  */
+comment|/**  * Default implementation of the {@link TreeTypeProvider} interface.  */
 end_comment
 
 begin_class

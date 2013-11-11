@@ -28,7 +28,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * TreeTypeProvider... TODO  */
+comment|/**  * Interface that allows to distinguish different types of {@code Tree} instances  * depending on their node type, location in the tree or name.  */
 end_comment
 
 begin_interface
