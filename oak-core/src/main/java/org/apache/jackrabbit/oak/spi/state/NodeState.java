@@ -242,7 +242,7 @@ name|NodeBuilder
 name|builder
 parameter_list|()
 function_decl|;
-comment|/**      * Compares this node state against the given base state. Any differences      * are reported by calling the relevant added/changed/deleted methods of      * the given handler.      *<p>      * TODO: Define the behavior of this method with regards to      * iterability/existence of child nodes.      *      * @param base base state      * @param diff handler of node state differences      * @since 0ak 0.4, return value added in 0.7      */
+comment|/**      * Compares this node state against the given base state. Any differences      * are reported by calling the relevant added/changed/deleted methods of      * the given handler.      *<p>      * TODO: Define the behavior of this method with regards to      * iterability/existence of child nodes.      *      * @param base base state      * @param diff handler of node state differences      * @return {@code true} if the full diff was performed, or      *         {@code false} if it was aborted as requested by the handler      *         (see the {@link NodeStateDiff} contract for more details)      * @since 0ak 0.4, return value added in 0.7      */
 name|boolean
 name|compareAgainstBaseState
 parameter_list|(
