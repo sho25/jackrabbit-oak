@@ -441,7 +441,7 @@ operator|.
 name|getConfiguration
 argument_list|()
 expr_stmt|;
-comment|// FIXME: workaround for Java7 behavior. needs clean up (see OAK-497)
+comment|// NOTE: workaround for Java7 behavior (see OAK-497)
 if|if
 condition|(
 name|loginConfig
