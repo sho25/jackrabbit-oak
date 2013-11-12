@@ -461,9 +461,8 @@ end_comment
 
 begin_class
 specifier|public
-specifier|abstract
 class|class
-name|AbstractPermissionHookTest
+name|PermissionHookTest
 extends|extends
 name|AbstractAccessControlTest
 implements|implements
