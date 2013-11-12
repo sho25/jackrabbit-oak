@@ -730,8 +730,6 @@ argument_list|>
 name|restrictions
 parameter_list|)
 throws|throws
-name|AccessControlException
-throws|,
 name|RepositoryException
 block|{
 return|return
