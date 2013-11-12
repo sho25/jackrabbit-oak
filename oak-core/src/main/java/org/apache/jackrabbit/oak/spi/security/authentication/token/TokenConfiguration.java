@@ -68,7 +68,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * TokenConfiguration... TODO  */
+comment|/**  * Configuration for token management.  */
 end_comment
 
 begin_interface
