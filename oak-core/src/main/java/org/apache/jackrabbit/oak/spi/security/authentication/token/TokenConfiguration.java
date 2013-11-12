@@ -18,6 +18,8 @@ operator|.
 name|security
 operator|.
 name|authentication
+operator|.
+name|token
 package|;
 end_package
 
@@ -43,7 +45,7 @@ name|oak
 operator|.
 name|api
 operator|.
-name|ContentRepository
+name|Root
 import|;
 end_import
 
@@ -66,38 +68,33 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Interface for the authentication setup.  */
+comment|/**  * TokenConfiguration... TODO  */
 end_comment
 
 begin_interface
 specifier|public
 interface|interface
-name|AuthenticationConfiguration
+name|TokenConfiguration
 extends|extends
 name|SecurityConfiguration
 block|{
 name|String
 name|NAME
 init|=
-literal|"org.apache.jackrabbit.oak.authentication"
+literal|"org.apache.jackrabbit.oak.authentication.token"
 decl_stmt|;
 name|String
-name|PARAM_APP_NAME
+name|PARAM_TOKEN_OPTIONS
 init|=
-literal|"org.apache.jackrabbit.oak.authentication.appName"
-decl_stmt|;
-name|String
-name|DEFAULT_APP_NAME
-init|=
-literal|"jackrabbit.oak"
+literal|"org.apache.jackrabbit.oak.authentication.token"
 decl_stmt|;
 annotation|@
 name|Nonnull
-name|LoginContextProvider
-name|getLoginContextProvider
+name|TokenProvider
+name|getTokenProvider
 parameter_list|(
-name|ContentRepository
-name|contentRepository
+name|Root
+name|root
 parameter_list|)
 function_decl|;
 block|}

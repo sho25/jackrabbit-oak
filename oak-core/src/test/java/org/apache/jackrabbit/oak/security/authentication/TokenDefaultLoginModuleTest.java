@@ -223,7 +223,7 @@ name|security
 operator|.
 name|authentication
 operator|.
-name|AuthenticationConfiguration
+name|ImpersonationCredentials
 import|;
 end_import
 
@@ -243,7 +243,9 @@ name|security
 operator|.
 name|authentication
 operator|.
-name|ImpersonationCredentials
+name|token
+operator|.
+name|TokenConfiguration
 import|;
 end_import
 
@@ -1129,15 +1131,15 @@ operator|.
 name|getLatestRoot
 argument_list|()
 decl_stmt|;
-name|AuthenticationConfiguration
-name|authConfig
+name|TokenConfiguration
+name|tc
 init|=
 name|getSecurityProvider
 argument_list|()
 operator|.
 name|getConfiguration
 argument_list|(
-name|AuthenticationConfiguration
+name|TokenConfiguration
 operator|.
 name|class
 argument_list|)
@@ -1145,7 +1147,7 @@ decl_stmt|;
 name|TokenProvider
 name|tp
 init|=
-name|authConfig
+name|tc
 operator|.
 name|getTokenProvider
 argument_list|(

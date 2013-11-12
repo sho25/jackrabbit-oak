@@ -660,7 +660,6 @@ comment|/**  * Default implementation of the {@code TokenProvider} interface tha
 end_comment
 
 begin_class
-specifier|public
 class|class
 name|TokenProviderImpl
 implements|implements
@@ -825,7 +824,6 @@ specifier|final
 name|IdentifierManager
 name|identifierManager
 decl_stmt|;
-specifier|public
 name|TokenProviderImpl
 parameter_list|(
 name|Root
