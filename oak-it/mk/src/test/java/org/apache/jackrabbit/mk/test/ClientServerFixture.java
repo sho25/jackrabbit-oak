@@ -101,22 +101,6 @@ name|Server
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|mk
-operator|.
-name|test
-operator|.
-name|MicroKernelFixture
-import|;
-end_import
-
 begin_class
 specifier|public
 class|class
