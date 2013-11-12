@@ -1257,10 +1257,7 @@ condition|(
 name|memberTree
 operator|!=
 literal|null
-condition|)
-block|{
-if|if
-condition|(
+operator|&&
 name|mp
 operator|.
 name|isCyclicMembership
@@ -1286,7 +1283,6 @@ name|parentAfter
 argument_list|)
 argument_list|)
 throw|;
-block|}
 block|}
 block|}
 block|}
