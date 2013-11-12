@@ -121,22 +121,8 @@ name|AbstractJCRTest
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|test
-operator|.
-name|NotExecutableException
-import|;
-end_import
-
 begin_comment
-comment|/**  *<code>VersionableTest</code> contains tests for method relevant to  * versionable nodes.  */
+comment|/**  * {@code VersionableTest} contains tests for method relevant to  * versionable nodes.  */
 end_comment
 
 begin_class

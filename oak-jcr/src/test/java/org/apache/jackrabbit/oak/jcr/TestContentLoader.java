@@ -247,20 +247,6 @@ name|EveryonePrincipal
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|value
-operator|.
-name|BinaryValue
-import|;
-end_import
-
 begin_class
 specifier|public
 class|class
