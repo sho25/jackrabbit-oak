@@ -579,7 +579,7 @@ decl_stmt|;
 comment|// TODO: correct?
 name|dispatcher
 operator|.
-name|beforeCommit
+name|contentChanged
 argument_list|(
 name|store
 operator|.
@@ -587,13 +587,15 @@ name|getRoot
 argument_list|(
 name|before
 argument_list|)
+argument_list|,
+literal|null
 argument_list|)
 expr_stmt|;
 try|try
 block|{
 name|dispatcher
 operator|.
-name|localCommit
+name|contentChanged
 argument_list|(
 name|root
 argument_list|,
@@ -605,9 +607,11 @@ finally|finally
 block|{
 name|dispatcher
 operator|.
-name|afterCommit
+name|contentChanged
 argument_list|(
 name|root
+argument_list|,
+literal|null
 argument_list|)
 expr_stmt|;
 block|}

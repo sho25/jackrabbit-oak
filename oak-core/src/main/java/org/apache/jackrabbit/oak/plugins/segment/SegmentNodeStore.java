@@ -515,7 +515,7 @@ parameter_list|)
 block|{
 name|changeDispatcher
 operator|.
-name|beforeCommit
+name|contentChanged
 argument_list|(
 name|base
 operator|.
@@ -523,6 +523,8 @@ name|getChildNode
 argument_list|(
 name|ROOT
 argument_list|)
+argument_list|,
+literal|null
 argument_list|)
 expr_stmt|;
 try|try
@@ -547,7 +549,7 @@ condition|)
 block|{
 name|changeDispatcher
 operator|.
-name|localCommit
+name|contentChanged
 argument_list|(
 name|head
 operator|.
@@ -574,10 +576,12 @@ finally|finally
 block|{
 name|changeDispatcher
 operator|.
-name|afterCommit
+name|contentChanged
 argument_list|(
 name|getRoot
 argument_list|()
+argument_list|,
+literal|null
 argument_list|)
 expr_stmt|;
 block|}

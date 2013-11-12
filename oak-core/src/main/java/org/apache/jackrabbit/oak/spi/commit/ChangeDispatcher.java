@@ -36,22 +36,6 @@ import|;
 end_import
 
 begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|Preconditions
-operator|.
-name|checkState
-import|;
-end_import
-
-begin_import
 import|import
 name|java
 operator|.
@@ -63,15 +47,11 @@ end_import
 
 begin_import
 import|import
-name|java
+name|javax
 operator|.
-name|util
+name|annotation
 operator|.
-name|concurrent
-operator|.
-name|atomic
-operator|.
-name|AtomicLong
+name|Nonnull
 import|;
 end_import
 
@@ -81,7 +61,7 @@ name|javax
 operator|.
 name|annotation
 operator|.
-name|Nonnull
+name|Nullable
 import|;
 end_import
 
@@ -104,7 +84,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A {@code ChangeDispatcher} instance records changes to a  * {@link org.apache.jackrabbit.oak.spi.state.NodeStore}  * and dispatches them to interested parties.  *<p>  * Actual changes are reported by calling {@link #beforeCommit(NodeState)},  * {@link #localCommit(NodeState, CommitInfo)} and {@link #afterCommit(NodeState)} in that order:  *<pre>       NodeState root = store.getRoot();       branch.rebase();       changeDispatcher.beforeCommit(root);       try {           NodeState head = branch.getHead();           branch.merge();           changeDispatcher.localCommit(head);       } finally {           changeDispatcher.afterCommit(store.getRoot());       }  *</pre>  *<p>  * The {@link #addObserver(Observer)} method registers an {@link Observer} for receiving  * notifications about all changes reported to this instance.  */
+comment|/**  * A {@code ChangeDispatcher} instance dispatches content changes  * to registered {@link Observer}s.  *<p>  * Changes are reported by calling {@link #contentChanged(NodeState, CommitInfo)}.  *<p>  * The {@link #addObserver(Observer)} method registers an {@link Observer} for receiving  * notifications for all changes reported to this instance.  */
 end_comment
 
 begin_class
@@ -113,7 +93,18 @@ class|class
 name|ChangeDispatcher
 implements|implements
 name|Observable
+implements|,
+name|Observer
 block|{
+comment|// TODO make the queue size configurable
+specifier|private
+specifier|static
+specifier|final
+name|int
+name|QUEUE_SIZE
+init|=
+literal|8192
+decl_stmt|;
 specifier|private
 specifier|final
 name|CompositeObserver
@@ -129,7 +120,7 @@ specifier|private
 name|NodeState
 name|root
 decl_stmt|;
-comment|/**      * Create a new instance for recording changes to a {@code NodeStore}      * @param root  current root node state of the node store      */
+comment|/**      * Create a new instance for dispatching content changes      * @param root  current root node state      */
 specifier|public
 name|ChangeDispatcher
 parameter_list|(
@@ -162,7 +153,6 @@ name|Observer
 name|observer
 parameter_list|)
 block|{
-comment|// FIXME don't hard code queue size
 specifier|final
 name|BackgroundObserver
 name|backgroundObserver
@@ -172,7 +162,7 @@ name|BackgroundObserver
 argument_list|(
 name|observer
 argument_list|,
-literal|8192
+name|QUEUE_SIZE
 argument_list|)
 decl_stmt|;
 name|backgroundObserver
@@ -219,83 +209,12 @@ block|}
 block|}
 return|;
 block|}
-specifier|private
-specifier|final
-name|AtomicLong
-name|changeCount
-init|=
-operator|new
-name|AtomicLong
-argument_list|(
-literal|0
-argument_list|)
-decl_stmt|;
-specifier|private
-name|boolean
-name|inLocalCommit
-parameter_list|()
-block|{
-return|return
-name|changeCount
-operator|.
-name|get
-argument_list|()
-operator|%
-literal|2
-operator|==
-literal|1
-return|;
-block|}
-comment|/**      * Call with the latest persisted root node state right before persisting further changes.      * Calling this method marks this instance to be inside a local commit.      *<p>      * The differences from the root node state passed to the last call to      * {@link #afterCommit(NodeState)} to {@code root} are reported as cluster external      * changes to any listener.      *      * @param root  latest persisted root node state.      * @throws IllegalStateException  if inside a local commit      */
-specifier|public
-specifier|synchronized
-name|void
-name|beforeCommit
-parameter_list|(
 annotation|@
-name|Nonnull
-name|NodeState
-name|root
-parameter_list|)
-block|{
-name|checkState
-argument_list|(
-operator|!
-name|inLocalCommit
-argument_list|()
-argument_list|)
-expr_stmt|;
-name|checkNotNull
-argument_list|(
-name|root
-argument_list|)
-expr_stmt|;
-name|changeCount
-operator|.
-name|incrementAndGet
-argument_list|()
-expr_stmt|;
-name|observers
-operator|.
-name|contentChanged
-argument_list|(
-name|root
-argument_list|,
-literal|null
-argument_list|)
-expr_stmt|;
-name|this
-operator|.
-name|root
-operator|=
-name|root
-expr_stmt|;
-block|}
-comment|/**      * Call right after changes have been successfully persisted passing      * the new root node state resulting from the persist operation.      *<p>      * The differences from the root node state passed to the last call to      * {@link #beforeCommit(NodeState)} to {@code root} are reported as      * cluster local changes to any listener in case non-{@code null}      * commit information is provided. If no local commit information is      * given, then no local changes are reported and the committed changes      * will only show up as an aggregate with any concurrent external changes      * reported during the {@link #afterCommit(NodeState)} call.      *      * @param root root node state just persisted      * @param info commit information      * @throws IllegalStateException  if not inside a local commit      */
+name|Override
 specifier|public
 specifier|synchronized
 name|void
-name|localCommit
+name|contentChanged
 parameter_list|(
 annotation|@
 name|Nonnull
@@ -303,17 +222,11 @@ name|NodeState
 name|root
 parameter_list|,
 annotation|@
-name|Nonnull
+name|Nullable
 name|CommitInfo
 name|info
 parameter_list|)
 block|{
-name|checkState
-argument_list|(
-name|inLocalCommit
-argument_list|()
-argument_list|)
-expr_stmt|;
 name|checkNotNull
 argument_list|(
 name|root
@@ -333,50 +246,6 @@ operator|.
 name|root
 operator|=
 name|root
-expr_stmt|;
-block|}
-comment|/**      * Call to mark the end of a persist operation passing the latest persisted root node state.      * Calling this method marks this instance to not be inside a local commit.      *<p>      * The difference from the root node state passed to the las call to      * {@link #localCommit(NodeState, CommitInfo)} to {@code root} are reported as cluster external      * changes to any listener.       * @param root  latest persisted root node state.      * @throws IllegalStateException  if not inside a local commit      */
-specifier|public
-specifier|synchronized
-name|void
-name|afterCommit
-parameter_list|(
-annotation|@
-name|Nonnull
-name|NodeState
-name|root
-parameter_list|)
-block|{
-name|checkState
-argument_list|(
-name|inLocalCommit
-argument_list|()
-argument_list|)
-expr_stmt|;
-name|checkNotNull
-argument_list|(
-name|root
-argument_list|)
-expr_stmt|;
-name|observers
-operator|.
-name|contentChanged
-argument_list|(
-name|root
-argument_list|,
-literal|null
-argument_list|)
-expr_stmt|;
-name|this
-operator|.
-name|root
-operator|=
-name|root
-expr_stmt|;
-name|changeCount
-operator|.
-name|incrementAndGet
-argument_list|()
 expr_stmt|;
 block|}
 block|}
