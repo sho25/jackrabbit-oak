@@ -96,6 +96,7 @@ import|;
 end_import
 
 begin_class
+specifier|final
 class|class
 name|AuthorizableWrapper
 parameter_list|<
