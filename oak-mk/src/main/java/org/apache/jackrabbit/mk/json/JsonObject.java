@@ -82,6 +82,7 @@ name|JsonObject
 argument_list|>
 argument_list|()
 decl_stmt|;
+comment|/**      * Reads a JSON object from the given tokenizer. The opening '{' of the      * object should already have been consumed from the tokenizer before      * this method is called.      *      * @param t tokenizer      * @return JSON object      */
 specifier|public
 specifier|static
 name|JsonObject
