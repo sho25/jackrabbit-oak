@@ -125,20 +125,6 @@ name|ByteStreams
 import|;
 end_import
 
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|io
-operator|.
-name|NullOutputStream
-import|;
-end_import
-
 begin_class
 specifier|abstract
 class|class
@@ -339,8 +325,9 @@ name|copy
 argument_list|(
 name|stream
 argument_list|,
-operator|new
-name|NullOutputStream
+name|ByteStreams
+operator|.
+name|nullOutputStream
 argument_list|()
 argument_list|)
 expr_stmt|;
