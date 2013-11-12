@@ -913,6 +913,15 @@ return|return
 literal|false
 return|;
 block|}
+comment|// Flush any pending records
+name|store
+operator|.
+name|getWriter
+argument_list|()
+operator|.
+name|flush
+argument_list|()
+expr_stmt|;
 name|BasicDBObjectBuilder
 name|builder
 init|=

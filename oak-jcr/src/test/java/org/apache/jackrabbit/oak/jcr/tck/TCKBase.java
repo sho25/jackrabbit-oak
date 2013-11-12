@@ -304,8 +304,20 @@ name|isAvailable
 argument_list|()
 condition|)
 block|{
-comment|// disabled for now. see OAK-1087
-comment|// Setup.wrap(this, OakSegmentMKRepositoryStub.class.getName());
+name|Setup
+operator|.
+name|wrap
+argument_list|(
+name|this
+argument_list|,
+name|OakSegmentMKRepositoryStub
+operator|.
+name|class
+operator|.
+name|getName
+argument_list|()
+argument_list|)
+expr_stmt|;
 block|}
 if|if
 condition|(
