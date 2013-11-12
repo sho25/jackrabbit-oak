@@ -643,6 +643,16 @@ name|this
 operator|.
 name|options
 operator|=
+operator|(
+name|options
+operator|==
+literal|null
+operator|)
+condition|?
+name|ConfigurationParameters
+operator|.
+name|EMPTY
+else|:
 name|ConfigurationParameters
 operator|.
 name|of

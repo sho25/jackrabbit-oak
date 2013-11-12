@@ -328,10 +328,6 @@ block|{
 if|if
 condition|(
 name|properties
-operator|==
-literal|null
-operator|||
-name|properties
 operator|.
 name|isEmpty
 argument_list|()
@@ -418,10 +414,6 @@ parameter_list|)
 block|{
 if|if
 condition|(
-name|properties
-operator|==
-literal|null
-operator|||
 name|properties
 operator|.
 name|isEmpty
@@ -527,10 +519,6 @@ block|{
 if|if
 condition|(
 name|map
-operator|==
-literal|null
-operator|||
-name|map
 operator|.
 name|isEmpty
 argument_list|()
@@ -629,7 +617,7 @@ name|key
 argument_list|)
 return|;
 block|}
-comment|/**      * Returns the value of the configuration entry with the given {@code key}      * applying the following rules:      *      *<ul>      *<li>If this instance doesn't contain a configuration entry with that      *     key the specified {@code defaultValue} will be returned.</li>      *<li>If {@code defaultValue} is {@code null} the original value will      *     be returned.</li>      *<li>If the configured value is {@code null} this method will always      *     return {@code null}.</li>      *<li>If neither {@code defaultValue} nor the configured value is      *     {@code null} an attempt is made to convert the configured value to      *     match the type of the default value.</li>      *</ul>      *      * TODO: shouldn't a NULL configuration value be treated the same as missing one, in respect to the default value handling? I don't think it's intuitive that NULL is returned.      *      * @param key The name of the configuration option.      * @param defaultValue The default value to return if no such entry exists      * or to use for conversion.      * @param targetClass The target class      * @return The original or converted configuration value or {@code null}.      */
+comment|/**      * Returns the value of the configuration entry with the given {@code key}      * applying the following rules:      *      *<ul>      *<li>If this instance doesn't contain a configuration entry with that      *     key the specified {@code defaultValue} will be returned.</li>      *<li>If {@code defaultValue} is {@code null} the original value will      *     be returned.</li>      *<li>If the configured value is {@code null} this method will always      *     return {@code null}.</li>      *<li>If neither {@code defaultValue} nor the configured value is      *     {@code null} an attempt is made to convert the configured value to      *     match the type of the default value.</li>      *</ul>      *      * @param key The name of the configuration option.      * @param defaultValue The default value to return if no such entry exists      * or to use for conversion.      * @param targetClass The target class      * @return The original or converted configuration value or {@code null}.      */
 annotation|@
 name|CheckForNull
 specifier|public
@@ -735,7 +723,9 @@ return|;
 block|}
 else|else
 block|{
-return|return
+name|T
+name|value
+init|=
 name|convert
 argument_list|(
 name|property
@@ -744,6 +734,17 @@ name|defaultValue
 argument_list|,
 literal|null
 argument_list|)
+decl_stmt|;
+return|return
+operator|(
+name|value
+operator|==
+literal|null
+operator|)
+condition|?
+name|defaultValue
+else|:
+name|value
 return|;
 block|}
 block|}
@@ -1080,6 +1081,8 @@ name|clazz
 operator|.
 name|getName
 argument_list|()
+argument_list|,
+name|e
 argument_list|)
 throw|;
 block|}
