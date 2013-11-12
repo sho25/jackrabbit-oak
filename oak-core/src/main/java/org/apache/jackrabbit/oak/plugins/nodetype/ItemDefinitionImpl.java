@@ -20,22 +20,6 @@ package|;
 end_package
 
 begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|Preconditions
-operator|.
-name|checkNotNull
-import|;
-end_import
-
-begin_import
 import|import
 name|javax
 operator|.
@@ -115,6 +99,22 @@ name|NamePathMapper
 import|;
 end_import
 
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkNotNull
+import|;
+end_import
+
 begin_comment
 comment|/**  *<pre>  * [nt:{propertyDefinition,childNodeDefinition}]  * - jcr:name (NAME) protected   * - jcr:autoCreated (BOOLEAN) protected mandatory  * - jcr:mandatory (BOOLEAN) protected mandatory  * - jcr:onParentVersion (STRING) protected mandatory  *< 'COPY', 'VERSION', 'INITIALIZE', 'COMPUTE', 'IGNORE', 'ABORT'  * - jcr:protected (BOOLEAN) protected mandatory  *   ...  *</pre>  */
 end_comment
@@ -161,38 +161,6 @@ argument_list|(
 name|type
 argument_list|)
 expr_stmt|;
-block|}
-name|String
-name|getOakName
-parameter_list|()
-block|{
-name|String
-name|oakName
-init|=
-name|getName
-argument_list|(
-name|JcrConstants
-operator|.
-name|JCR_NAME
-argument_list|)
-decl_stmt|;
-if|if
-condition|(
-name|oakName
-operator|==
-literal|null
-condition|)
-block|{
-name|oakName
-operator|=
-name|NodeTypeConstants
-operator|.
-name|RESIDUAL_NAME
-expr_stmt|;
-block|}
-return|return
-name|oakName
-return|;
 block|}
 comment|//-----------------------------------------------------< ItemDefinition>---
 annotation|@
