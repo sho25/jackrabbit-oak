@@ -1157,10 +1157,6 @@ decl_stmt|;
 if|if
 condition|(
 name|everyoneGroup
-operator|!=
-literal|null
-operator|&&
-name|everyoneGroup
 operator|instanceof
 name|GroupImpl
 condition|)
