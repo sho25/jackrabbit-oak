@@ -1370,7 +1370,7 @@ return|;
 block|}
 annotation|@
 name|CheckForNull
-specifier|private
+specifier|public
 name|String
 name|resolveUUID
 parameter_list|(
