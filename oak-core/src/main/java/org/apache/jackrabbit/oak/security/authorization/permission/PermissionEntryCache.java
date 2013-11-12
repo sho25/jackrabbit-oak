@@ -189,6 +189,7 @@ argument_list|)
 expr_stmt|;
 block|}
 specifier|public
+specifier|final
 class|class
 name|Local
 block|{
