@@ -290,6 +290,16 @@ argument_list|()
 decl_stmt|;
 name|reset
 argument_list|(
+name|branch
+operator|.
+name|getBase
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|super
+operator|.
+name|reset
+argument_list|(
 name|head
 argument_list|)
 expr_stmt|;

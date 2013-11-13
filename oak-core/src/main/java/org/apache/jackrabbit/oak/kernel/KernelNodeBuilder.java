@@ -127,7 +127,7 @@ name|base
 init|=
 literal|null
 decl_stmt|;
-specifier|protected
+specifier|private
 name|NodeState
 name|rootBase
 init|=

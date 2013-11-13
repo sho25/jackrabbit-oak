@@ -744,7 +744,8 @@ name|exists
 argument_list|()
 operator|&&
 operator|!
-name|base
+name|getBaseState
+argument_list|()
 operator|.
 name|exists
 argument_list|()
