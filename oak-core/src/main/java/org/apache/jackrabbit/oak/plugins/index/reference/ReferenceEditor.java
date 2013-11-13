@@ -1450,7 +1450,13 @@ name|getType
 argument_list|()
 operator|==
 name|REFERENCE
-comment|/* || before.getType() == REFERENCES */
+operator|||
+name|before
+operator|.
+name|getType
+argument_list|()
+operator|==
+name|REFERENCES
 condition|)
 block|{
 name|put
@@ -1464,8 +1470,16 @@ argument_list|(
 name|STRINGS
 argument_list|)
 argument_list|,
+name|concat
+argument_list|(
 name|getPath
 argument_list|()
+argument_list|,
+name|before
+operator|.
+name|getName
+argument_list|()
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -1477,7 +1491,13 @@ name|getType
 argument_list|()
 operator|==
 name|WEAKREFERENCE
-comment|/* || before.getType() == WEAKREFERENCES */
+operator|||
+name|before
+operator|.
+name|getType
+argument_list|()
+operator|==
+name|WEAKREFERENCES
 condition|)
 block|{
 name|put
@@ -1491,8 +1511,16 @@ argument_list|(
 name|STRINGS
 argument_list|)
 argument_list|,
+name|concat
+argument_list|(
 name|getPath
 argument_list|()
+argument_list|,
+name|before
+operator|.
+name|getName
+argument_list|()
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -1560,7 +1588,13 @@ name|getType
 argument_list|()
 operator|==
 name|REFERENCE
-comment|/* || after.getType() == REFERENCES */
+operator|||
+name|after
+operator|.
+name|getType
+argument_list|()
+operator|==
+name|REFERENCES
 condition|)
 block|{
 name|put
@@ -1574,8 +1608,16 @@ argument_list|(
 name|STRINGS
 argument_list|)
 argument_list|,
+name|concat
+argument_list|(
 name|getPath
 argument_list|()
+argument_list|,
+name|after
+operator|.
+name|getName
+argument_list|()
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -1587,7 +1629,13 @@ name|getType
 argument_list|()
 operator|==
 name|WEAKREFERENCE
-comment|/* || after.getType() == WEAKREFERENCES */
+operator|||
+name|after
+operator|.
+name|getType
+argument_list|()
+operator|==
+name|WEAKREFERENCES
 condition|)
 block|{
 name|put
@@ -1601,8 +1649,16 @@ argument_list|(
 name|STRINGS
 argument_list|)
 argument_list|,
+name|concat
+argument_list|(
 name|getPath
 argument_list|()
+argument_list|,
+name|after
+operator|.
+name|getName
+argument_list|()
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
