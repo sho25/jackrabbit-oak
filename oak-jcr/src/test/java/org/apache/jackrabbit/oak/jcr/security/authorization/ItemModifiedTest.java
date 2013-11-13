@@ -84,16 +84,10 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Tests for<a href>OAK-1177</a>  */
+comment|/**  * Tests for<a href="https://issues.apache.org/jira/browse/OAK-1177">OAK-1177</a>  */
 end_comment
 
 begin_class
-annotation|@
-name|Ignore
-argument_list|(
-literal|"OAK-1177"
-argument_list|)
-comment|// FIXME: OAK-1177
 specifier|public
 class|class
 name|ItemModifiedTest
