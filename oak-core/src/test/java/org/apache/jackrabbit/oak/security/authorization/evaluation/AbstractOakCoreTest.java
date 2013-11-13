@@ -504,7 +504,7 @@ name|getLatestRoot
 argument_list|()
 return|;
 block|}
-comment|/**      * Setup simple allow/deny permissions (without restrictions).      *      * @param path      * @param principal      * @param isAllow      * @param privilegeNames      * @throws Exception      */
+comment|/**      * Same as {@link #setupPermission(org.apache.jackrabbit.oak.api.Root, String, java.security.Principal, boolean, String...)}      * where the specified root is the current root associated with the admin      * session created in the test setup.      *      * @param path The path of the access controlled tree.      * @param principal The principal for which new ACE is being created.      * @param isAllow {@code true} if privileges are granted; {@code false} otherwise.      * @param privilegeNames The privilege names.      * @throws Exception If an error occurs.      */
 specifier|protected
 name|void
 name|setupPermission
@@ -545,7 +545,7 @@ name|privilegeNames
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Setup simple allow/deny permissions (without restrictions).      *      * @param path      * @param principal      * @param isAllow      * @param privilegeNames      * @throws Exception      */
+comment|/**      * Setup simple allow/deny permissions (without restrictions).      *      * @param root The editing root.      * @param path The path of the access controlled tree.      * @param principal The principal for which new ACE is being created.      * @param isAllow {@code true} if privileges are granted; {@code false} otherwise.      * @param privilegeNames The privilege names.      * @throws Exception If an error occurs.      */
 specifier|protected
 name|void
 name|setupPermission
