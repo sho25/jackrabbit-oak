@@ -53,6 +53,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|io
+operator|.
+name|InputStream
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|annotation
@@ -73,7 +83,7 @@ name|oak
 operator|.
 name|api
 operator|.
-name|BlobFactory
+name|Blob
 import|;
 end_import
 
@@ -521,13 +531,18 @@ block|}
 return|;
 block|}
 annotation|@
-name|Nonnull
-annotation|@
 name|Override
+annotation|@
+name|Nonnull
 specifier|public
-name|BlobFactory
-name|getBlobFactory
-parameter_list|()
+name|Blob
+name|createBlob
+parameter_list|(
+annotation|@
+name|Nonnull
+name|InputStream
+name|stream
+parameter_list|)
 block|{
 throw|throw
 operator|new

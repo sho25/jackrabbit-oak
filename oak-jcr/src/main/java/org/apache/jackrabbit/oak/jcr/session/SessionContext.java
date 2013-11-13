@@ -1081,9 +1081,6 @@ name|delegate
 operator|.
 name|getRoot
 argument_list|()
-operator|.
-name|getBlobFactory
-argument_list|()
 argument_list|,
 name|namePathMapper
 argument_list|)

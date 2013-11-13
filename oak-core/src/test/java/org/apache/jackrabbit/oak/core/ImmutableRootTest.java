@@ -43,6 +43,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|io
+operator|.
+name|ByteArrayInputStream
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -350,8 +360,18 @@ try|try
 block|{
 name|root
 operator|.
-name|getBlobFactory
-argument_list|()
+name|createBlob
+argument_list|(
+operator|new
+name|ByteArrayInputStream
+argument_list|(
+operator|new
+name|byte
+index|[
+literal|0
+index|]
+argument_list|)
+argument_list|)
 expr_stmt|;
 name|fail
 argument_list|()

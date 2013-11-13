@@ -414,9 +414,6 @@ operator|new
 name|ValueFactoryImpl
 argument_list|(
 name|root
-operator|.
-name|getBlobFactory
-argument_list|()
 argument_list|,
 name|NamePathMapper
 operator|.

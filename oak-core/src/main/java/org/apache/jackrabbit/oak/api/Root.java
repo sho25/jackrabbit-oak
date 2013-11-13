@@ -19,6 +19,26 @@ end_package
 
 begin_import
 import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|InputStream
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|annotation
@@ -144,12 +164,19 @@ name|QueryEngine
 name|getQueryEngine
 parameter_list|()
 function_decl|;
-comment|/**      * Returns the blob factory (TODO: review if that really belongs to the OAK-API. see also todos on BlobFactory)      *      * @return the blob factory.      */
+comment|/**      * Reads (and closes) the given stream and returns a {@link Blob} that      * contains that binary. The returned blob will remain valid at least      * until the {@link ContentSession} of this root is closed, or longer      * if it has been committed as a part of a content update.      *<p>      * The implementation may decide to persist the blob at any point      * during or between this method method call and a {@link #commit()}      * that includes the blob, but the blob will become visible to other      * sessions only after such a commit.      *      * @param stream the stream for reading the binary      * @return the blob that was created      * @throws IOException if the stream could not be read      */
 annotation|@
 name|Nonnull
-name|BlobFactory
-name|getBlobFactory
-parameter_list|()
+name|Blob
+name|createBlob
+parameter_list|(
+annotation|@
+name|Nonnull
+name|InputStream
+name|stream
+parameter_list|)
+throws|throws
+name|IOException
 function_decl|;
 comment|/**      * Get the {@code ContentSession} from which this root was acquired      *       * @return the associated ContentSession      *       * @throws UnsupportedOperationException      */
 annotation|@
