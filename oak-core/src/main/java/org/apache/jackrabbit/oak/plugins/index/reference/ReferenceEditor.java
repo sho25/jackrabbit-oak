@@ -194,6 +194,50 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|index
+operator|.
+name|reference
+operator|.
+name|NodeReferenceConstants
+operator|.
+name|REF_NAME
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|index
+operator|.
+name|reference
+operator|.
+name|NodeReferenceConstants
+operator|.
+name|WEAK_REF_NAME
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -416,22 +460,6 @@ block|{
 comment|// TODO
 comment|// - look into using a storage strategy (trees)
 comment|// - what happens when you move a node? who updates the backlinks?
-specifier|private
-specifier|final
-specifier|static
-name|String
-name|REF_NAME
-init|=
-literal|":references"
-decl_stmt|;
-specifier|private
-specifier|final
-specifier|static
-name|String
-name|WEAK_REF_NAME
-init|=
-literal|":weakreferences"
-decl_stmt|;
 comment|/** Parent editor, or {@code null} if this is the root editor. */
 specifier|private
 specifier|final
