@@ -69,16 +69,6 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Ignore
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
 name|Test
 import|;
 end_import
@@ -94,12 +84,6 @@ name|ItemModifiedTest
 extends|extends
 name|AbstractEvaluationTest
 block|{
-annotation|@
-name|Ignore
-argument_list|(
-literal|"OAK-1177"
-argument_list|)
-comment|// FIXME: OAK-1177
 annotation|@
 name|Test
 specifier|public
@@ -160,12 +144,6 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-annotation|@
-name|Ignore
-argument_list|(
-literal|"OAK-1177"
-argument_list|)
-comment|// FIXME: OAK-1177
 annotation|@
 name|Test
 specifier|public
@@ -299,12 +277,6 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-annotation|@
-name|Ignore
-argument_list|(
-literal|"OAK-1177"
-argument_list|)
-comment|// FIXME: OAK-1177
 annotation|@
 name|Test
 specifier|public
