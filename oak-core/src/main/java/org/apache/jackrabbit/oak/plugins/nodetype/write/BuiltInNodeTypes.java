@@ -383,7 +383,7 @@ operator|=
 operator|new
 name|ValueFactoryImpl
 argument_list|(
-literal|null
+name|root
 argument_list|,
 operator|new
 name|NamePathMapperImpl
