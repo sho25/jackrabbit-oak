@@ -1450,13 +1450,7 @@ name|getType
 argument_list|()
 operator|==
 name|REFERENCE
-operator|||
-name|before
-operator|.
-name|getType
-argument_list|()
-operator|==
-name|REFERENCES
+comment|/* || before.getType() == REFERENCES */
 condition|)
 block|{
 name|put
@@ -1483,13 +1477,7 @@ name|getType
 argument_list|()
 operator|==
 name|WEAKREFERENCE
-operator|||
-name|before
-operator|.
-name|getType
-argument_list|()
-operator|==
-name|WEAKREFERENCES
+comment|/* || before.getType() == WEAKREFERENCES */
 condition|)
 block|{
 name|put
@@ -1572,13 +1560,7 @@ name|getType
 argument_list|()
 operator|==
 name|REFERENCE
-operator|||
-name|after
-operator|.
-name|getType
-argument_list|()
-operator|==
-name|REFERENCES
+comment|/* || after.getType() == REFERENCES */
 condition|)
 block|{
 name|put
@@ -1605,13 +1587,7 @@ name|getType
 argument_list|()
 operator|==
 name|WEAKREFERENCE
-operator|||
-name|after
-operator|.
-name|getType
-argument_list|()
-operator|==
-name|WEAKREFERENCES
+comment|/* || after.getType() == WEAKREFERENCES */
 condition|)
 block|{
 name|put
