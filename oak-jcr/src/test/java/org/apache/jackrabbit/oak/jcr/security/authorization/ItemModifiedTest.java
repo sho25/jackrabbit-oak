@@ -88,6 +88,12 @@ comment|/**  * Tests for<a href="https://issues.apache.org/jira/browse/OAK-1177"
 end_comment
 
 begin_class
+annotation|@
+name|Ignore
+argument_list|(
+literal|"OAK-1177"
+argument_list|)
+comment|// FIXME: OAK-1177
 specifier|public
 class|class
 name|ItemModifiedTest
@@ -288,6 +294,53 @@ name|child
 operator|.
 name|getPath
 argument_list|()
+argument_list|)
+decl_stmt|;
+name|assertFalse
+argument_list|(
+name|n
+operator|.
+name|isModified
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Ignore
+argument_list|(
+literal|"OAK-1177"
+argument_list|)
+comment|// FIXME: OAK-1177
+annotation|@
+name|Test
+specifier|public
+name|void
+name|testModified4
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+comment|//Deny access to properties
+name|deny
+argument_list|(
+name|path
+argument_list|,
+name|privilegesFromName
+argument_list|(
+name|PrivilegeConstants
+operator|.
+name|REP_READ_PROPERTIES
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|Node
+name|n
+init|=
+name|testSession
+operator|.
+name|getNode
+argument_list|(
+name|childNPath
 argument_list|)
 decl_stmt|;
 name|assertFalse
