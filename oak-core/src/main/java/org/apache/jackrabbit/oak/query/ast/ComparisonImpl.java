@@ -389,6 +389,8 @@ return|;
 block|}
 comment|// "the value of operand2 is converted to the
 comment|// property type of the value of operand1"
+try|try
+block|{
 name|p2
 operator|=
 name|convertValueToType
@@ -398,6 +400,18 @@ argument_list|,
 name|p1
 argument_list|)
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|IllegalArgumentException
+name|ex
+parameter_list|)
+block|{
+comment|// unable to convert, just skip this node
+return|return
+literal|false
+return|;
+block|}
 return|return
 name|evaluate
 argument_list|(
