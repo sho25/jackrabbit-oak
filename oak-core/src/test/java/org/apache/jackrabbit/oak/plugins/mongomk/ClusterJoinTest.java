@@ -298,7 +298,7 @@ block|}
 comment|// must only see /foo, /baz and /qux @rev2
 name|assertEquals
 argument_list|(
-literal|3
+literal|3L
 argument_list|,
 name|obj
 operator|.
@@ -372,7 +372,7 @@ continue|continue;
 block|}
 name|assertNodesExist
 argument_list|(
-name|rev2
+name|rev3
 argument_list|,
 literal|"/"
 operator|+
@@ -383,7 +383,7 @@ block|}
 comment|// must only see all nodes @rev3
 name|assertEquals
 argument_list|(
-literal|5
+literal|5L
 argument_list|,
 name|obj
 operator|.
