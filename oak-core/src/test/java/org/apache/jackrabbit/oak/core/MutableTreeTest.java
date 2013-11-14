@@ -387,16 +387,6 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Ignore
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
 name|Test
 import|;
 end_import
@@ -2751,12 +2741,6 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-annotation|@
-name|Ignore
-argument_list|(
-literal|"OAK-1188"
-argument_list|)
-comment|// FIXME OAK-1188
 specifier|public
 name|void
 name|testBlob
@@ -2832,7 +2816,7 @@ argument_list|()
 operator|.
 name|available
 argument_list|()
-operator|>
+operator|>=
 literal|0
 argument_list|)
 expr_stmt|;
@@ -2845,7 +2829,7 @@ argument_list|()
 operator|.
 name|available
 argument_list|()
-operator|>
+operator|>=
 literal|0
 argument_list|)
 expr_stmt|;
