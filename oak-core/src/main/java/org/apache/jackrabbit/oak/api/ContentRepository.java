@@ -101,6 +101,13 @@ name|LoginException
 throws|,
 name|NoSuchWorkspaceException
 function_decl|;
+comment|/**      * Returns the repository descriptors which contain all or a subset of the descriptors defined in      * {@link javax.jcr.Repository}.      *      * @return the repository descriptors      */
+annotation|@
+name|Nonnull
+name|Descriptors
+name|getDescriptors
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 
