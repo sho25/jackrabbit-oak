@@ -3842,20 +3842,8 @@ operator|==
 literal|null
 condition|)
 block|{
-comment|// shouldn't happen, either node is commit root for a revision
-comment|// or has a reference to the commit root
-name|LOG
-operator|.
-name|warn
-argument_list|(
-literal|"Node {} does not have commit root reference for revision {}"
-argument_list|,
-name|getId
-argument_list|()
-argument_list|,
-name|rev
-argument_list|)
-expr_stmt|;
+comment|// may happen for a commit root document, which hasn't been
+comment|// updated with the commit revision yet
 return|return
 literal|null
 return|;
