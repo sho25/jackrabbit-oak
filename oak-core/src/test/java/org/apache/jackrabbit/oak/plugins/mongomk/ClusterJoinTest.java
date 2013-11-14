@@ -95,8 +95,6 @@ extends|extends
 name|AbstractMongoConnectionTest
 block|{
 annotation|@
-name|Ignore
-annotation|@
 name|Test
 specifier|public
 name|void
@@ -380,7 +378,7 @@ name|name
 argument_list|)
 expr_stmt|;
 block|}
-comment|// must only see all nodes @rev3
+comment|// must now see all nodes @rev3
 name|assertEquals
 argument_list|(
 literal|5L

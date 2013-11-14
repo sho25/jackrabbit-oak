@@ -56,17 +56,6 @@ argument_list|>
 name|getRevisionComparator
 parameter_list|()
 function_decl|;
-comment|/**      * Ensure the revision visible from now on, possibly by updating the head      * revision, so that the changes that occurred are visible.      *      * @param foreignRevision the revision from another cluster node      * @param changeRevision the local revision that is sorted after the foreign revision      */
-name|void
-name|publishRevision
-parameter_list|(
-name|Revision
-name|foreignRevision
-parameter_list|,
-name|Revision
-name|changeRevision
-parameter_list|)
-function_decl|;
 comment|/**      * @return the cluster id of the local MongoMK instance.      */
 name|int
 name|getClusterId

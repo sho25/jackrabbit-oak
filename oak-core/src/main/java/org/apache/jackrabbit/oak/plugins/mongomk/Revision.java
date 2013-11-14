@@ -1389,9 +1389,25 @@ operator|>
 literal|0
 condition|)
 block|{
-comment|/*                         throw new IllegalArgumentException(                                 "Can not add an earlier revision: " + last.revision + "> " + r +                                  "; current cluster node is " + currentClusterNodeId);                         */
-comment|// quick fix for OAK-1167
-return|return;
+throw|throw
+operator|new
+name|IllegalArgumentException
+argument_list|(
+literal|"Can not add an earlier revision: "
+operator|+
+name|last
+operator|.
+name|revision
+operator|+
+literal|"> "
+operator|+
+name|r
+operator|+
+literal|"; current cluster node is "
+operator|+
+name|currentClusterNodeId
+argument_list|)
+throw|;
 block|}
 name|newList
 operator|=
@@ -1531,6 +1547,26 @@ if|if
 condition|(
 name|range1
 operator|==
+name|FUTURE
+operator|&&
+name|range2
+operator|==
+name|FUTURE
+condition|)
+block|{
+return|return
+name|o1
+operator|.
+name|compareRevisionTime
+argument_list|(
+name|o2
+argument_list|)
+return|;
+block|}
+if|if
+condition|(
+name|range1
+operator|==
 literal|null
 operator|||
 name|range2
@@ -1617,6 +1653,22 @@ operator|==
 literal|null
 condition|)
 block|{
+if|if
+condition|(
+name|r
+operator|.
+name|getClusterId
+argument_list|()
+operator|!=
+name|currentClusterNodeId
+condition|)
+block|{
+comment|// this is from a cluster node we did not see yet
+comment|// see also OAK-1170
+return|return
+name|FUTURE
+return|;
+block|}
 return|return
 literal|null
 return|;

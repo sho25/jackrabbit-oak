@@ -1270,32 +1270,6 @@ control|)
 block|{
 if|if
 condition|(
-name|isRevisionNewer
-argument_list|(
-name|context
-argument_list|,
-name|r
-argument_list|,
-name|changeRev
-argument_list|)
-condition|)
-block|{
-comment|// we have seen a previous change from another cluster node
-comment|// (which might be conflicting or not) - we need to make
-comment|// sure this change is visible from now on
-comment|// TODO verify this is really needed
-name|context
-operator|.
-name|publishRevision
-argument_list|(
-name|r
-argument_list|,
-name|changeRev
-argument_list|)
-expr_stmt|;
-block|}
-if|if
-condition|(
 operator|!
 name|r
 operator|.
@@ -1307,7 +1281,6 @@ condition|)
 block|{
 if|if
 condition|(
-operator|!
 name|isValidRevision
 argument_list|(
 name|context
@@ -1325,16 +1298,6 @@ argument_list|()
 argument_list|)
 condition|)
 block|{
-name|handler
-operator|.
-name|concurrentModification
-argument_list|(
-name|r
-argument_list|)
-expr_stmt|;
-block|}
-else|else
-block|{
 name|newestRev
 operator|=
 name|r
@@ -1342,6 +1305,16 @@ expr_stmt|;
 comment|// found newest revision, no need to check more revisions
 comment|// revisions are sorted newest first
 break|break;
+block|}
+else|else
+block|{
+name|handler
+operator|.
+name|concurrentModification
+argument_list|(
+name|r
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 block|}

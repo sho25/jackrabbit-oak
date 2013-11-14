@@ -223,8 +223,10 @@ name|context
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Marks the collision in the document store. Either our or their      * revision is annotated with a collision marker. Their revision is      * marked if it is not yet committed, otherwise our revision is marked.      *       * @param store the document store.      * @throws MicroKernelException if the mark operation fails.      */
-name|void
+comment|/**      * Marks the collision in the document store. Either our or their      * revision is annotated with a collision marker. Their revision is      * marked if it is not yet committed, otherwise our revision is marked.      *       * @param store the document store.      * @return the revision that was marked. Either our or their.      * @throws MicroKernelException if the mark operation fails.      */
+annotation|@
+name|Nonnull
+name|Revision
 name|mark
 parameter_list|(
 name|DocumentStore
@@ -246,7 +248,9 @@ name|store
 argument_list|)
 condition|)
 block|{
-return|return;
+return|return
+name|theirRev
+return|;
 block|}
 comment|// their commit wins, we have to mark ourRev
 name|NodeDocument
@@ -314,6 +318,9 @@ argument_list|()
 argument_list|)
 throw|;
 block|}
+return|return
+name|ourRev
+return|;
 block|}
 comment|/**      * Marks the commit root of the change to the given<code>document</code> in      *<code>revision</code>.      *       * @param document the MongoDB document.      * @param revision the revision of the commit to annotated with a collision      *            marker.      * @param store the document store.      * @return<code>true</code> if the commit for the given revision was marked      *         successfully;<code>false</code> otherwise.      */
 specifier|private
