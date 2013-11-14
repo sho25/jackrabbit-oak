@@ -53,9 +53,9 @@ name|TYPE_VERSION
 init|=
 literal|2
 decl_stmt|;
-comment|// permissions store
+comment|// repository internal content such as e.g. permissions store
 name|int
-name|TYPE_PERMISSION_STORE
+name|TYPE_INTERNAL
 init|=
 literal|4
 decl_stmt|;

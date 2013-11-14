@@ -1357,7 +1357,7 @@ block|}
 case|case
 name|TreeTypeProvider
 operator|.
-name|TYPE_PERMISSION_STORE
+name|TYPE_INTERNAL
 case|:
 return|return
 name|TreePermission
@@ -1609,7 +1609,7 @@ block|}
 case|case
 name|TreeTypeProvider
 operator|.
-name|TYPE_PERMISSION_STORE
+name|TYPE_INTERNAL
 case|:
 return|return
 literal|false
@@ -2298,7 +2298,7 @@ block|}
 case|case
 name|TreeTypeProvider
 operator|.
-name|TYPE_PERMISSION_STORE
+name|TYPE_INTERNAL
 case|:
 return|return
 name|PrivilegeBits

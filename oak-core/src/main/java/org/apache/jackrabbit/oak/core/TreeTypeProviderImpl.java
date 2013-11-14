@@ -194,11 +194,11 @@ name|TYPE_VERSION
 expr_stmt|;
 break|break;
 case|case
-name|TYPE_PERMISSION_STORE
+name|TYPE_INTERNAL
 case|:
 name|type
 operator|=
-name|TYPE_PERMISSION_STORE
+name|TYPE_INTERNAL
 expr_stmt|;
 break|break;
 case|case
@@ -266,7 +266,7 @@ condition|)
 block|{
 name|type
 operator|=
-name|TYPE_PERMISSION_STORE
+name|TYPE_INTERNAL
 expr_stmt|;
 block|}
 elseif|else
