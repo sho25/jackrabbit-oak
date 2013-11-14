@@ -1120,7 +1120,6 @@ expr_stmt|;
 name|updated
 argument_list|()
 expr_stmt|;
-block|}
 comment|// remember all move operations for further processing in the commit hooks.
 name|moveInfo
 operator|.
@@ -1131,6 +1130,7 @@ argument_list|,
 name|destPath
 argument_list|)
 expr_stmt|;
+block|}
 return|return
 name|success
 return|;
