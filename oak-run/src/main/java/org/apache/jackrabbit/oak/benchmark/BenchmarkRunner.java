@@ -810,9 +810,11 @@ argument_list|)
 argument_list|,
 literal|256
 operator|*
-literal|1024
+name|MB
+argument_list|,
+name|cacheSize
 operator|*
-literal|1024
+name|MB
 argument_list|,
 name|mmap
 operator|.

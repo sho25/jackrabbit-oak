@@ -1263,6 +1263,10 @@ name|int
 name|maxFileSize
 parameter_list|,
 specifier|final
+name|int
+name|cacheSize
+parameter_list|,
+specifier|final
 name|boolean
 name|memoryMapping
 parameter_list|)
@@ -1346,6 +1350,8 @@ name|unique
 argument_list|)
 argument_list|,
 name|maxFileSize
+argument_list|,
+name|cacheSize
 argument_list|,
 name|memoryMapping
 argument_list|)
