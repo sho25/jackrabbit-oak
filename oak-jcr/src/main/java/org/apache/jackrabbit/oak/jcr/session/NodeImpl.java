@@ -849,6 +849,22 @@ end_import
 
 begin_import
 import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|collect
+operator|.
+name|Sets
+operator|.
+name|newLinkedHashSet
+import|;
+end_import
+
+begin_import
+import|import static
 name|java
 operator|.
 name|util
@@ -932,6 +948,24 @@ operator|.
 name|Type
 operator|.
 name|NAMES
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|util
+operator|.
+name|TreeUtil
+operator|.
+name|getNames
 import|;
 end_import
 
@@ -4803,6 +4837,7 @@ specifier|public
 name|void
 name|removeMixin
 parameter_list|(
+specifier|final
 name|String
 name|mixinName
 parameter_list|)
@@ -4858,6 +4893,82 @@ argument_list|(
 literal|"Cannot remove mixin type. Node is checked in."
 argument_list|)
 throw|;
+block|}
+comment|// check for NODE_TYPE_MANAGEMENT permission here as we cannot
+comment|// distinguish between a combination of removeMixin and addMixin
+comment|// and Node#remove plus subsequent addNode when it comes to
+comment|// autocreated properties like jcr:create, jcr:uuid and so forth.
+name|Set
+argument_list|<
+name|String
+argument_list|>
+name|mixins
+init|=
+name|newLinkedHashSet
+argument_list|(
+name|getNames
+argument_list|(
+name|dlg
+operator|.
+name|getTree
+argument_list|()
+argument_list|,
+name|JCR_MIXINTYPES
+argument_list|)
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+operator|!
+name|mixins
+operator|.
+name|isEmpty
+argument_list|()
+operator|&&
+name|mixins
+operator|.
+name|remove
+argument_list|(
+name|getOakName
+argument_list|(
+name|mixinName
+argument_list|)
+argument_list|)
+condition|)
+block|{
+name|PropertyState
+name|prop
+init|=
+name|PropertyStates
+operator|.
+name|createProperty
+argument_list|(
+name|JCR_MIXINTYPES
+argument_list|,
+name|mixins
+argument_list|,
+name|NAMES
+argument_list|)
+decl_stmt|;
+name|sessionContext
+operator|.
+name|getAccessManager
+argument_list|()
+operator|.
+name|checkPermissions
+argument_list|(
+name|dlg
+operator|.
+name|getTree
+argument_list|()
+argument_list|,
+name|prop
+argument_list|,
+name|Permissions
+operator|.
+name|NODE_TYPE_MANAGEMENT
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 annotation|@
