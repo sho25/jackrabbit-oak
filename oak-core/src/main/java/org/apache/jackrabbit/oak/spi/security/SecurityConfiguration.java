@@ -51,13 +51,19 @@ end_import
 
 begin_import
 import|import
-name|javax
+name|org
 operator|.
-name|security
+name|apache
 operator|.
-name|auth
+name|jackrabbit
 operator|.
-name|Subject
+name|oak
+operator|.
+name|spi
+operator|.
+name|commit
+operator|.
+name|CommitHook
 import|;
 end_import
 
@@ -75,7 +81,7 @@ name|spi
 operator|.
 name|commit
 operator|.
-name|CommitHook
+name|CommitInfo
 import|;
 end_import
 
@@ -215,8 +221,8 @@ parameter_list|(
 name|String
 name|workspaceName
 parameter_list|,
-name|Subject
-name|subject
+name|CommitInfo
+name|commitInfo
 parameter_list|)
 function_decl|;
 annotation|@
@@ -338,8 +344,8 @@ parameter_list|(
 name|String
 name|workspaceName
 parameter_list|,
-name|Subject
-name|subject
+name|CommitInfo
+name|commitInfo
 parameter_list|)
 block|{
 return|return

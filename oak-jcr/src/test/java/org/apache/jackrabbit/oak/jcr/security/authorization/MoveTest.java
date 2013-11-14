@@ -213,7 +213,7 @@ argument_list|()
 expr_stmt|;
 name|fail
 argument_list|(
-literal|"Move requires add and remove permission."
+literal|"Move requires addChildNodes and removeChildNodes privilege."
 argument_list|)
 expr_stmt|;
 block|}
@@ -258,7 +258,7 @@ argument_list|()
 expr_stmt|;
 name|fail
 argument_list|(
-literal|"Move requires add and remove permission."
+literal|"Move requires addChildNodes and removeChildNodes privilege."
 argument_list|)
 expr_stmt|;
 block|}
@@ -330,7 +330,7 @@ argument_list|()
 expr_stmt|;
 name|fail
 argument_list|(
-literal|"Move requires add and remove permission."
+literal|"Move requires addChildNodes and removeChildNodes privilege."
 argument_list|)
 expr_stmt|;
 block|}
@@ -400,7 +400,7 @@ argument_list|)
 expr_stmt|;
 name|fail
 argument_list|(
-literal|"Move requires add and remove permission."
+literal|"Move requires addChildNodes and removeChildNodes privilege."
 argument_list|)
 expr_stmt|;
 block|}
@@ -443,7 +443,7 @@ argument_list|)
 expr_stmt|;
 name|fail
 argument_list|(
-literal|"Move requires add and remove permission."
+literal|"Move requires addChildNodes and removeChildNodes privilege."
 argument_list|)
 expr_stmt|;
 block|}
@@ -511,7 +511,7 @@ argument_list|)
 expr_stmt|;
 name|fail
 argument_list|(
-literal|"Move requires add and remove permission."
+literal|"Move requires addChildNodes and removeChildNodes privilege."
 argument_list|)
 expr_stmt|;
 block|}
