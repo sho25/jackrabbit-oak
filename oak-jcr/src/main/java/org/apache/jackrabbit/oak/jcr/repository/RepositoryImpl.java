@@ -497,7 +497,7 @@ name|REFRESH_INTERVAL
 init|=
 literal|"oak.refresh-interval"
 decl_stmt|;
-specifier|private
+specifier|protected
 specifier|final
 name|DescriptorsImpl
 name|descriptors
