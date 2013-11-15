@@ -331,16 +331,6 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Ignore
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
 name|Test
 import|;
 end_import
@@ -801,8 +791,6 @@ expr_stmt|;
 block|}
 comment|/**      * Verify garbage collection can run concurrently with commits.      *       * @throws Exception if an error occurs      */
 annotation|@
-name|Ignore
-annotation|@
 name|Test
 specifier|public
 name|void
@@ -844,9 +832,9 @@ expr_stmt|;
 block|}
 block|}
 argument_list|,
-literal|100
+literal|10
 argument_list|,
-literal|20
+literal|2
 argument_list|,
 name|TimeUnit
 operator|.
@@ -880,7 +868,7 @@ literal|0
 init|;
 name|i
 operator|<
-literal|20
+literal|2000
 condition|;
 name|i
 operator|++
@@ -906,7 +894,7 @@ name|Thread
 operator|.
 name|sleep
 argument_list|(
-literal|10
+literal|1
 argument_list|)
 expr_stmt|;
 name|mk
@@ -929,7 +917,7 @@ name|Thread
 operator|.
 name|sleep
 argument_list|(
-literal|30
+literal|3
 argument_list|)
 expr_stmt|;
 name|mk
@@ -962,8 +950,6 @@ block|}
 comment|/**      * Verify garbage collection can run concurrently with branch& merge.      *       * @throws Exception if an error occurs      */
 annotation|@
 name|Test
-annotation|@
-name|Ignore
 specifier|public
 name|void
 name|testConcurrentMergeGC
