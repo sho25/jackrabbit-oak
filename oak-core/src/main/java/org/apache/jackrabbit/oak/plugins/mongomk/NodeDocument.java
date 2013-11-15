@@ -531,7 +531,6 @@ init|=
 literal|"_revisions"
 decl_stmt|;
 comment|/**      * The last revision. Key: machine id, value: revision.      */
-specifier|private
 specifier|static
 specifier|final
 name|String
@@ -588,6 +587,16 @@ argument_list|,
 name|Range
 argument_list|>
 name|previous
+decl_stmt|;
+comment|/**      * Time at which this object was check for cache consistency      */
+specifier|private
+name|long
+name|lastCheckTime
+init|=
+name|System
+operator|.
+name|currentTimeMillis
+argument_list|()
 decl_stmt|;
 specifier|private
 specifier|final
@@ -722,6 +731,49 @@ name|booleanValue
 argument_list|()
 else|:
 literal|false
+return|;
+block|}
+comment|/**      * Mark this instance as up-to-date wrt state in persistence store      * @param checkTime time at which the check was performed      */
+specifier|public
+name|void
+name|markUptodate
+parameter_list|(
+name|long
+name|checkTime
+parameter_list|)
+block|{
+name|this
+operator|.
+name|lastCheckTime
+operator|=
+name|checkTime
+expr_stmt|;
+block|}
+comment|/**      * Returns true if the document has already been checked for consistency      * in current cycle      * @param lastCheckTime time at which current cycle started      */
+specifier|public
+name|boolean
+name|isUptodate
+parameter_list|(
+name|long
+name|lastCheckTime
+parameter_list|)
+block|{
+return|return
+name|lastCheckTime
+operator|<=
+name|this
+operator|.
+name|lastCheckTime
+return|;
+block|}
+comment|/**      * Returns the last time when this object was checked for consistency      */
+specifier|public
+name|long
+name|getLastCheckTime
+parameter_list|()
+block|{
+return|return
+name|lastCheckTime
 return|;
 block|}
 comment|/**      * @return a map of the last known revision for each clusterId.      */
