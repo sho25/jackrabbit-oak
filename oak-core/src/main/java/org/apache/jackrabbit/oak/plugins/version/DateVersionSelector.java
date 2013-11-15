@@ -176,6 +176,21 @@ name|getChildNodeNames
 argument_list|()
 control|)
 block|{
+comment|// OAK-1192 skip hidden child nodes
+if|if
+condition|(
+name|name
+operator|.
+name|charAt
+argument_list|(
+literal|0
+argument_list|)
+operator|==
+literal|':'
+condition|)
+block|{
+continue|continue;
+block|}
 name|NodeBuilder
 name|v
 init|=
