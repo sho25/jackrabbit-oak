@@ -151,6 +151,20 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|atomic
+operator|.
+name|AtomicLong
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|annotation
@@ -590,13 +604,18 @@ name|previous
 decl_stmt|;
 comment|/**      * Time at which this object was check for cache consistency      */
 specifier|private
-name|long
+specifier|final
+name|AtomicLong
 name|lastCheckTime
 init|=
+operator|new
+name|AtomicLong
+argument_list|(
 name|System
 operator|.
 name|currentTimeMillis
 argument_list|()
+argument_list|)
 decl_stmt|;
 specifier|private
 specifier|final
@@ -745,8 +764,11 @@ block|{
 name|this
 operator|.
 name|lastCheckTime
-operator|=
+operator|.
+name|set
+argument_list|(
 name|checkTime
+argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Returns true if the document has already been checked for consistency      * in current cycle      * @param lastCheckTime time at which current cycle started      */
@@ -764,6 +786,9 @@ operator|<=
 name|this
 operator|.
 name|lastCheckTime
+operator|.
+name|get
+argument_list|()
 return|;
 block|}
 comment|/**      * Returns the last time when this object was checked for consistency      */
@@ -774,6 +799,9 @@ parameter_list|()
 block|{
 return|return
 name|lastCheckTime
+operator|.
+name|get
+argument_list|()
 return|;
 block|}
 comment|/**      * @return a map of the last known revision for each clusterId.      */

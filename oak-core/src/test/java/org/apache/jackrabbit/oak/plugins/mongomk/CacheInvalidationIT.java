@@ -515,12 +515,12 @@ operator|.
 name|invalidationCount
 argument_list|)
 expr_stmt|;
-comment|//All excluding /a and /a/d would be updated
+comment|//All excluding /a and /a/d would be updated. Also we exclude / from processing
 name|assertEquals
 argument_list|(
 name|totalPaths
 operator|-
-literal|2
+literal|3
 argument_list|,
 name|result
 operator|.
