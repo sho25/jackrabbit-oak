@@ -1727,9 +1727,6 @@ name|NodeDocument
 name|uptodateRoot
 parameter_list|)
 block|{
-comment|//TODO Should this be done under lock
-comment|//            Lock lock = getAndLock(key);
-comment|//            try {
 name|NodeDocument
 name|doc
 init|=
@@ -1794,9 +1791,6 @@ name|time
 argument_list|)
 expr_stmt|;
 block|}
-comment|//            } finally {
-comment|//                lock.unlock();
-comment|//            }
 block|}
 specifier|private
 name|void
