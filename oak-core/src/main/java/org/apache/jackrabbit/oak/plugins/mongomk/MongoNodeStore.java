@@ -4762,8 +4762,6 @@ condition|(
 name|hasNewRevisions
 condition|)
 block|{
-comment|// TODO invalidating the whole cache is not really needed,
-comment|// instead only those children that are cached could be checked
 name|store
 operator|.
 name|invalidateCache

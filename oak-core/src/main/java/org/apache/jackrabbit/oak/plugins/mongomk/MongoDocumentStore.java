@@ -725,6 +725,8 @@ name|void
 name|invalidateCache
 parameter_list|()
 block|{
+comment|//TODO Check if we should use LinearInvalidator for small cache sizes as
+comment|//that would lead to lesser number of queries
 name|CacheInvalidator
 operator|.
 name|createHierarchicalInvalidator
