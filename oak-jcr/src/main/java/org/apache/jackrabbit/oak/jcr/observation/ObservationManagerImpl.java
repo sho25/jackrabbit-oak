@@ -297,7 +297,7 @@ name|plugins
 operator|.
 name|observation
 operator|.
-name|EventFilter
+name|ExcludeExternal
 import|;
 end_import
 
@@ -315,7 +315,7 @@ name|plugins
 operator|.
 name|observation
 operator|.
-name|ExcludeExternal
+name|FilterProvider
 import|;
 end_import
 
@@ -614,11 +614,11 @@ operator|instanceof
 name|ExcludeExternal
 operator|)
 decl_stmt|;
-name|EventFilter
-name|filter
+name|FilterProvider
+name|filterProvider
 init|=
 operator|new
-name|EventFilter
+name|FilterProvider
 argument_list|(
 name|ntMgr
 argument_list|,
@@ -671,7 +671,7 @@ literal|"Registering event listener {} with filter {}"
 argument_list|,
 name|listener
 argument_list|,
-name|filter
+name|filterProvider
 argument_list|)
 expr_stmt|;
 name|ListenerTracker
@@ -746,7 +746,7 @@ name|namePathMapper
 argument_list|,
 name|tracker
 argument_list|,
-name|filter
+name|filterProvider
 argument_list|)
 expr_stmt|;
 name|processors
@@ -778,14 +778,14 @@ literal|"Changing event listener {} to filter {}"
 argument_list|,
 name|listener
 argument_list|,
-name|filter
+name|filterProvider
 argument_list|)
 expr_stmt|;
 name|processor
 operator|.
-name|setFilter
+name|setFilterProvider
 argument_list|(
-name|filter
+name|filterProvider
 argument_list|)
 expr_stmt|;
 block|}
