@@ -760,6 +760,8 @@ operator|.
 name|getNodeState
 argument_list|()
 argument_list|,
+name|path
+argument_list|,
 name|provider
 operator|.
 name|getFilter

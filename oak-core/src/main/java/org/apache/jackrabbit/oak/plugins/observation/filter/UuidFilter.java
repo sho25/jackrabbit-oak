@@ -347,7 +347,6 @@ name|NodeState
 name|after
 parameter_list|)
 block|{
-comment|// FIXME shouldn't we pass the respective child node states here!?
 return|return
 operator|new
 name|UuidFilter
