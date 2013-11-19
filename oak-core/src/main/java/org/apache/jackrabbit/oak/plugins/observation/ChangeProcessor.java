@@ -764,6 +764,8 @@ name|provider
 operator|.
 name|getFilter
 argument_list|(
+name|beforeTree
+argument_list|,
 name|afterTree
 argument_list|)
 argument_list|,

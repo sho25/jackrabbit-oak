@@ -536,6 +536,9 @@ name|Filter
 name|getFilter
 parameter_list|(
 name|ImmutableTree
+name|beforeTree
+parameter_list|,
+name|ImmutableTree
 name|afterTree
 parameter_list|)
 block|{
@@ -555,6 +558,8 @@ argument_list|(
 operator|new
 name|PathFilter
 argument_list|(
+name|beforeTree
+argument_list|,
 name|afterTree
 argument_list|,
 name|path
@@ -627,6 +632,11 @@ argument_list|(
 operator|new
 name|UuidFilter
 argument_list|(
+name|beforeTree
+operator|.
+name|getNodeState
+argument_list|()
+argument_list|,
 name|afterTree
 operator|.
 name|getNodeState
@@ -670,6 +680,8 @@ argument_list|(
 operator|new
 name|NodeTypeFilter
 argument_list|(
+name|beforeTree
+argument_list|,
 name|afterTree
 argument_list|,
 name|ntManager
