@@ -802,6 +802,8 @@ block|}
 comment|/**      * Verify garbage collection can run concurrently with commits.      *       * @throws Exception if an error occurs      */
 annotation|@
 name|Test
+annotation|@
+name|Ignore
 specifier|public
 name|void
 name|testConcurrentGC
