@@ -527,7 +527,7 @@ name|String
 argument_list|>
 argument_list|()
 decl_stmt|;
-name|Set
+name|Iterable
 argument_list|<
 name|String
 argument_list|>
