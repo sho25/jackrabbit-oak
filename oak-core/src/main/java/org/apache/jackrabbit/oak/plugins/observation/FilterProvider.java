@@ -402,7 +402,7 @@ name|Filters
 operator|.
 name|all
 argument_list|(
-comment|// TODO add filter based on access rights of the reading session
+comment|// TODO add filter based on access rights of the reading session. See OAK-1163
 operator|new
 name|PathFilter
 argument_list|(
