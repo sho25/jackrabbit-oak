@@ -957,9 +957,15 @@ decl_stmt|;
 if|if
 condition|(
 name|childFilter
-operator|!=
+operator|==
 literal|null
 condition|)
+block|{
+return|return
+literal|null
+return|;
+block|}
+else|else
 block|{
 name|childFilters
 operator|.
