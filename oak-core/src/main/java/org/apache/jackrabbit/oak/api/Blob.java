@@ -46,7 +46,7 @@ specifier|public
 interface|interface
 name|Blob
 block|{
-comment|/**      * Returns a new stream for this value object. Multiple calls to this      * methods return equal instances: {@code getNewStream().equals(getNewStream())}.      * @return a new stream for this value based on an internal conversion.      */
+comment|/**      * Returns a new stream for this blob. The streams returned from      * multiple calls to this method are byte wise equals. That is,      * subsequent calls to {@link java.io.InputStream#read() read}      * return the same sequence of bytes as long as neither call throws      * an exception.      *      * @return a new stream for this blob      */
 annotation|@
 name|Nonnull
 name|InputStream
