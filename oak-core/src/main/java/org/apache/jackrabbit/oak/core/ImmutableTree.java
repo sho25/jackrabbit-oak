@@ -164,6 +164,7 @@ extends|extends
 name|AbstractTree
 block|{
 comment|/**      * Underlying node state      */
+specifier|private
 specifier|final
 name|NodeState
 name|state
@@ -862,7 +863,16 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|//------------------------------------------------------------< internal>---
+comment|//--------------------------------------------------------------------------
+specifier|public
+name|NodeState
+name|unwrap
+parameter_list|()
+block|{
+return|return
+name|state
+return|;
+block|}
 specifier|public
 name|int
 name|getType
