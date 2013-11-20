@@ -136,7 +136,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * TODO PathFilter...  * TODO Clarify: filter applies to parent  */
+comment|/**  * {@code EventTypeFilter} filters based on the path of the<em>associated parent node</em> as  * defined by {@link javax.jcr.observation.ObservationManager#addEventListener(         javax.jcr.observation.EventListener, int, String, boolean, String[], String[], boolean)         ObservationManager.addEventListener()}.  */
 end_comment
 
 begin_class
@@ -166,6 +166,7 @@ specifier|final
 name|boolean
 name|deep
 decl_stmt|;
+comment|/**      * Create a new {@code Filter} instance that includes an event when the path of the      * associated parent node matches the one of this filter or - when the {@code deep}      * flag is set - is a descendant of the path of this filter.      *      * @param beforeTree  associated parent before state      * @param afterTree   associated parent after state      * @param path        path to match      */
 specifier|public
 name|PathFilter
 parameter_list|(

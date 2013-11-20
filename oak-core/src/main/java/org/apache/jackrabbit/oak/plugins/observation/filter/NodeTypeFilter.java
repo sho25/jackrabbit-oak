@@ -138,7 +138,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * TODO NodeTypeFilter...  * TODO Clarify: filter applies to parent  */
+comment|/**  * {@code EventTypeFilter} filters based on the node type of the  *<em>associated parent node</em> as defined by  * {@link javax.jcr.observation.ObservationManager#addEventListener(         javax.jcr.observation.EventListener, int, String, boolean, String[], String[], boolean)         ObservationManager.addEventListener()}.  */
 end_comment
 
 begin_class
@@ -169,6 +169,7 @@ name|String
 index|[]
 name|ntNames
 decl_stmt|;
+comment|/**      * Create a new {@code Filter} instance that includes an event when the type of the      * associated parent node is of one of the node types in {@code ntNames}.      *      * @param beforeTree  associated parent before state      * @param afterTree   associated parent after state      * @param ntManager   node type manager used to determine type inhabitation      * @param ntNames     node type names to match      */
 specifier|public
 name|NodeTypeFilter
 parameter_list|(
@@ -397,7 +398,6 @@ argument_list|)
 return|;
 block|}
 comment|//------------------------------------------------------------< private>---
-comment|/**      * Checks whether to include an event based on the type of the associated      * parent node and the node type filter.      *      * @return whether to include the event based on the type of the associated      *         parent node.      */
 specifier|private
 name|boolean
 name|includeByType

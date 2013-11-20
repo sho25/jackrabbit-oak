@@ -90,7 +90,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * TODO EventTypeFilter...  */
+comment|/**  * {@code EventTypeFilter} filters based on event types as defined  * by {@link javax.jcr.observation.ObservationManager#addEventListener(         javax.jcr.observation.EventListener, int, String, boolean, String[], String[], boolean)         ObservationManager.addEventListener()}.  */
 end_comment
 
 begin_class
@@ -105,6 +105,7 @@ specifier|final
 name|int
 name|eventTypes
 decl_stmt|;
+comment|/**      * Create a new {@code Filter} instance that includes all events matching      * the {@code eventTypes} bit mask. That is, a given event is included if      * the corresponding bit in {@code eventType} is set.      *      * @param eventTypes  bit mask encoding the types of events to include      *      * @see Event      */
 specifier|public
 name|EventTypeFilter
 parameter_list|(

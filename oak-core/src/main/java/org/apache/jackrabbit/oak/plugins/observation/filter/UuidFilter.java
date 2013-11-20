@@ -132,7 +132,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * TODO UuidFilter  * TODO Clarify: filter applies to parent  */
+comment|/**  * {@code EventTypeFilter} filters based on the uuid of the  *<em>associated parent node</em> as defined by  * {@link javax.jcr.observation.ObservationManager#addEventListener(         javax.jcr.observation.EventListener, int, String, boolean, String[], String[], boolean)         ObservationManager.addEventListener()}.  */
 end_comment
 
 begin_class
@@ -158,6 +158,7 @@ name|String
 index|[]
 name|uuids
 decl_stmt|;
+comment|/**      * Create a new {@code Filter} instance that includes an event when the uuid of the      * associated parent node matches one of the uuids of this filter.      *      * @param before  associated parent before state      * @param after   associated parent after state      * @param uuids   uuids to match      */
 specifier|public
 name|UuidFilter
 parameter_list|(
