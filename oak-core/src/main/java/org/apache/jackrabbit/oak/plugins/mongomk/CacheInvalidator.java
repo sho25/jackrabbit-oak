@@ -1178,7 +1178,7 @@ name|startTime
 expr_stmt|;
 name|LOG
 operator|.
-name|info
+name|debug
 argument_list|(
 literal|"Cache invalidation details - {}"
 argument_list|,
