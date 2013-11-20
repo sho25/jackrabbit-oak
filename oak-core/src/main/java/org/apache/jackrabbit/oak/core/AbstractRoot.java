@@ -213,6 +213,22 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
+name|api
+operator|.
+name|Tree
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
 name|commons
 operator|.
 name|PathUtils
@@ -393,7 +409,7 @@ name|spi
 operator|.
 name|commit
 operator|.
-name|MoveInfo
+name|MoveTracker
 import|;
 end_import
 
@@ -776,11 +792,11 @@ argument_list|()
 decl_stmt|;
 comment|/**      * Simple info object used to collect all move operations (source + dest)      * for further processing in those commit hooks that wish to distinguish      * between simple add/remove and move operations.      * Please note that this information will only allow to perform best-effort      * matching as depending on the sequence of modifications some operations      * may no longer be detected as changes in the commit hook due to way the      * diff is compiled.      */
 specifier|private
-name|MoveInfo
-name|moveInfo
+name|MoveTracker
+name|moveTracker
 init|=
 operator|new
-name|MoveInfo
+name|MoveTracker
 argument_list|()
 decl_stmt|;
 comment|/**      * Number of {@link #updated} occurred.      */
@@ -1024,6 +1040,16 @@ return|return
 literal|false
 return|;
 block|}
+name|Tree
+operator|.
+name|Status
+name|status
+init|=
+name|source
+operator|.
+name|getStatus
+argument_list|()
+decl_stmt|;
 name|String
 name|newName
 init|=
@@ -1121,13 +1147,15 @@ name|updated
 argument_list|()
 expr_stmt|;
 comment|// remember all move operations for further processing in the commit hooks.
-name|moveInfo
+name|moveTracker
 operator|.
 name|addMove
 argument_list|(
 name|sourcePath
 argument_list|,
 name|destPath
+argument_list|,
+name|status
 argument_list|)
 expr_stmt|;
 block|}
@@ -1439,7 +1467,7 @@ argument_list|(
 name|session
 argument_list|)
 argument_list|,
-name|moveInfo
+name|moveTracker
 argument_list|,
 name|message
 argument_list|)
@@ -1488,7 +1516,7 @@ name|refresh
 argument_list|()
 expr_stmt|;
 block|}
-name|moveInfo
+name|moveTracker
 operator|.
 name|clear
 argument_list|()

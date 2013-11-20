@@ -147,10 +147,10 @@ argument_list|()
 decl_stmt|;
 specifier|private
 specifier|final
-name|MoveInfo
-name|moveInfo
+name|MoveTracker
+name|moveTracker
 decl_stmt|;
-comment|/**      * Creates a commit info for the given session and user.      *      * @param sessionId session identifier      * @param subject Subject identifying the user      * @param moveInfo Information regarding move operations associated with this commit.      * @param message message attached to this commit, or {@code null}      */
+comment|/**      * Creates a commit info for the given session and user.      *      * @param sessionId session identifier      * @param subject Subject identifying the user      * @param moveTracker Information regarding move operations associated with this commit.      * @param message message attached to this commit, or {@code null}      */
 specifier|public
 name|CommitInfo
 parameter_list|(
@@ -166,8 +166,8 @@ name|subject
 parameter_list|,
 annotation|@
 name|Nonnull
-name|MoveInfo
-name|moveInfo
+name|MoveTracker
+name|moveTracker
 parameter_list|,
 annotation|@
 name|Nullable
@@ -195,9 +195,9 @@ name|message
 expr_stmt|;
 name|this
 operator|.
-name|moveInfo
+name|moveTracker
 operator|=
-name|moveInfo
+name|moveTracker
 expr_stmt|;
 block|}
 comment|/**      * @return  id of the committing session      */
@@ -288,12 +288,12 @@ block|}
 annotation|@
 name|Nonnull
 specifier|public
-name|MoveInfo
-name|getMoveInfo
+name|MoveTracker
+name|getMoveTracker
 parameter_list|()
 block|{
 return|return
-name|moveInfo
+name|moveTracker
 return|;
 block|}
 comment|/**      * @return message attached to this commit      */
@@ -362,9 +362,9 @@ argument_list|)
 operator|.
 name|add
 argument_list|(
-literal|"moveInfo"
+literal|"moveTracker"
 argument_list|,
-name|moveInfo
+name|moveTracker
 argument_list|)
 operator|.
 name|toString

@@ -1397,12 +1397,11 @@ name|REMOVE_NODE
 expr_stmt|;
 block|}
 block|}
-comment|// modify_child_node_collection permission is granted through
-comment|// privileges on the parent
+comment|// modify_child_node_collection permission
 if|if
 condition|(
 operator|(
-name|parentPrivs
+name|privs
 operator|&
 name|ADD_CHILD_NODES
 operator|)
@@ -1410,7 +1409,7 @@ operator|==
 name|ADD_CHILD_NODES
 operator|&&
 operator|(
-name|parentPrivs
+name|privs
 operator|&
 name|REMOVE_CHILD_NODES
 operator|)
