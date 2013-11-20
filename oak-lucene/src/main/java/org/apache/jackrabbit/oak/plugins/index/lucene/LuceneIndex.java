@@ -2753,6 +2753,25 @@ name|getPropertyRestrictions
 argument_list|()
 control|)
 block|{
+if|if
+condition|(
+name|pr
+operator|.
+name|first
+operator|==
+literal|null
+operator|&&
+name|pr
+operator|.
+name|last
+operator|==
+literal|null
+condition|)
+block|{
+comment|// ignore property existence checks, Lucene can't to 'property
+comment|// is not null' queries (OAK-1208)
+continue|continue;
+block|}
 name|String
 name|name
 init|=
