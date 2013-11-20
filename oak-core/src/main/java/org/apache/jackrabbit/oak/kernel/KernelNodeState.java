@@ -973,6 +973,17 @@ argument_list|,
 literal|"{\"properties\":[\"*\",\":hash\",\":id\"]}"
 argument_list|)
 decl_stmt|;
+name|checkNotNull
+argument_list|(
+name|json
+argument_list|,
+literal|"No node found at path [%s] for revision [%s]"
+argument_list|,
+name|path
+argument_list|,
+name|revision
+argument_list|)
+expr_stmt|;
 name|JsopReader
 name|reader
 init|=

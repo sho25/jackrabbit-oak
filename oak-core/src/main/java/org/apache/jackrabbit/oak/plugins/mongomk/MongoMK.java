@@ -413,6 +413,22 @@ name|Utils
 import|;
 end_import
 
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkNotNull
+import|;
+end_import
+
 begin_comment
 comment|/**  * A MicroKernel implementation that stores the data in a MongoDB.  */
 end_comment
@@ -1014,11 +1030,37 @@ literal|null
 condition|)
 block|{
 comment|// TODO implement correct behavior if the node does't/didn't exist
+name|String
+name|msg
+init|=
+name|String
+operator|.
+name|format
+argument_list|(
+literal|"Diff is only supported if the node exists in both cases. "
+operator|+
+literal|"Node [%s], fromRev [%s] -> %s, toRev [%s] -> %s"
+argument_list|,
+name|path
+argument_list|,
+name|fromRev
+argument_list|,
+name|from
+operator|!=
+literal|null
+argument_list|,
+name|toRev
+argument_list|,
+name|to
+operator|!=
+literal|null
+argument_list|)
+decl_stmt|;
 throw|throw
 operator|new
 name|MicroKernelException
 argument_list|(
-literal|"Diff is only supported if the node exists in both cases"
+name|msg
 argument_list|)
 throw|;
 block|}
@@ -1851,6 +1893,28 @@ comment|// this is not fully correct:
 comment|// a change is detected if the node changed recently,
 comment|// even if the revisions are well in the past
 comment|// if this is a problem it would need to be changed
+name|checkNotNull
+argument_list|(
+name|n1
+argument_list|,
+literal|"Node at [%s] not found for fromRev [%s]"
+argument_list|,
+name|n
+argument_list|,
+name|fromRev
+argument_list|)
+expr_stmt|;
+name|checkNotNull
+argument_list|(
+name|n2
+argument_list|,
+literal|"Node at [%s] not found for toRev [%s]"
+argument_list|,
+name|n
+argument_list|,
+name|toRev
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 operator|!
