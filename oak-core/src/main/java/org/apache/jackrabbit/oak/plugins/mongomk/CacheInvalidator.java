@@ -931,6 +931,13 @@ decl_stmt|;
 comment|//Change in level or last element
 if|if
 condition|(
+operator|!
+name|sameLevelNodes
+operator|.
+name|isEmpty
+argument_list|()
+operator|&&
+operator|(
 operator|(
 name|hasMore
 operator|&&
@@ -948,15 +955,8 @@ name|level
 argument_list|()
 operator|)
 operator|||
-operator|(
 operator|!
 name|hasMore
-operator|&&
-operator|!
-name|sameLevelNodes
-operator|.
-name|isEmpty
-argument_list|()
 operator|)
 condition|)
 block|{
@@ -996,6 +996,23 @@ argument_list|,
 name|keys
 argument_list|)
 decl_stmt|;
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"Checking for changed nodes at level {} with {} paths"
+argument_list|,
+name|tn
+operator|.
+name|level
+argument_list|()
+argument_list|,
+name|sameLevelNodes
+operator|.
+name|size
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|result
 operator|.
 name|queryCount
