@@ -3228,7 +3228,7 @@ name|Test
 argument_list|(
 name|expected
 operator|=
-name|MicroKernelException
+name|Throwable
 operator|.
 name|class
 argument_list|)
