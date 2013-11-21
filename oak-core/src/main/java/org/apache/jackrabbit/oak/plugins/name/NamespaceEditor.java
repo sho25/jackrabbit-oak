@@ -361,7 +361,7 @@ end_comment
 
 begin_class
 class|class
-name|NamespaceValidator
+name|NamespaceEditor
 extends|extends
 name|DefaultEditor
 block|{
@@ -382,7 +382,7 @@ name|NodeState
 name|namespaces
 decl_stmt|;
 specifier|public
-name|NamespaceValidator
+name|NamespaceEditor
 parameter_list|(
 name|NodeState
 name|root

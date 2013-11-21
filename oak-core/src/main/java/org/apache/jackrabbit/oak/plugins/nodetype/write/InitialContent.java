@@ -205,7 +205,7 @@ name|plugins
 operator|.
 name|name
 operator|.
-name|NamespaceValidatorProvider
+name|NamespaceEditorProvider
 import|;
 end_import
 
@@ -726,7 +726,7 @@ operator|new
 name|CompositeEditorProvider
 argument_list|(
 operator|new
-name|NamespaceValidatorProvider
+name|NamespaceEditorProvider
 argument_list|()
 argument_list|,
 operator|new

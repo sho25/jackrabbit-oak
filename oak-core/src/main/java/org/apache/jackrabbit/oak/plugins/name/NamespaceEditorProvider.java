@@ -207,7 +207,7 @@ name|class
 argument_list|)
 specifier|public
 class|class
-name|NamespaceValidatorProvider
+name|NamespaceEditorProvider
 implements|implements
 name|EditorProvider
 block|{
@@ -234,7 +234,7 @@ operator|new
 name|SubtreeEditor
 argument_list|(
 operator|new
-name|NamespaceValidator
+name|NamespaceEditor
 argument_list|(
 name|before
 argument_list|,
