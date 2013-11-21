@@ -260,6 +260,26 @@ parameter_list|)
 throws|throws
 name|MicroKernelException
 function_decl|;
+comment|/**      * Resets the branch identified by {@code branchRevisionId} to an ancestor      * branch commit identified by {@code ancestorRevisionId}.      *      * @param branchRevisionId id of the private branch revision      * @param ancestorRevisionId id of the ancestor commit to reset the branch to.      * @return the id of the new head of the branch. This may not necessarily      *         be the same as {@code ancestorRevisionId}. An implementation is      *         free to create a new id for the reset branch.      * @throws MicroKernelException if {@code branchRevisionId} doesn't exist,      *                              if it's not a branch revision, if {@code ancestorRevisionId}      *                              is not a revision on that branch or if another error occurs.      */
+annotation|@
+name|Nonnull
+name|String
+comment|/* revisionId */
+name|reset
+parameter_list|(
+annotation|@
+name|Nonnull
+name|String
+name|branchRevisionId
+parameter_list|,
+annotation|@
+name|Nonnull
+name|String
+name|ancestorRevisionId
+parameter_list|)
+throws|throws
+name|MicroKernelException
+function_decl|;
 comment|//--------------------------------------------------< BLOB READ/WRITE ops>
 comment|/**      * Returns the length of the specified blob.      *      * @param blobId blob identifier      * @return length of the specified blob      * @throws MicroKernelException if the specified blob does not exist or if another error occurs      */
 name|long
