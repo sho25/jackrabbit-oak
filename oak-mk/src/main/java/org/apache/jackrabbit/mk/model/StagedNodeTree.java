@@ -407,6 +407,22 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
+if|if
+condition|(
+name|nodeName
+operator|.
+name|isEmpty
+argument_list|()
+condition|)
+block|{
+throw|throw
+operator|new
+name|Exception
+argument_list|(
+literal|"cannot add a node with an empty name"
+argument_list|)
+throw|;
+block|}
 name|StagedNode
 name|parent
 init|=
@@ -536,6 +552,22 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
+if|if
+condition|(
+name|propName
+operator|.
+name|isEmpty
+argument_list|()
+condition|)
+block|{
+throw|throw
+operator|new
+name|Exception
+argument_list|(
+literal|"cannot set a property with an empty name"
+argument_list|)
+throw|;
+block|}
 name|StagedNode
 name|node
 init|=

@@ -3224,12 +3224,6 @@ argument_list|)
 expr_stmt|;
 block|}
 annotation|@
-name|Ignore
-argument_list|(
-literal|"OAK-552"
-argument_list|)
-comment|// FIXME OAK-552
-annotation|@
 name|Test
 argument_list|(
 name|expected
