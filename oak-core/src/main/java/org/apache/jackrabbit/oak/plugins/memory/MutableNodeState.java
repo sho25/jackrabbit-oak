@@ -557,6 +557,19 @@ return|return
 literal|false
 return|;
 block|}
+name|boolean
+name|isReplaced
+parameter_list|(
+name|NodeState
+name|before
+parameter_list|)
+block|{
+return|return
+name|base
+operator|!=
+name|before
+return|;
+block|}
 comment|/**      * Remove the child node with the given {@code name}.      * @param name  name of the child node to remove      * @return  {@code true} if a child node {@code name} existed, {@code false} otherwise.      */
 name|boolean
 name|removeChildNode

@@ -206,9 +206,6 @@ name|AbstractOakCoreTest
 block|{
 annotation|@
 name|Test
-annotation|@
-name|Ignore
-comment|// FIXME OAK-709 - see TODO in SecureNodeBuilder.exists()
 specifier|public
 name|void
 name|testShadowInvisibleNode
