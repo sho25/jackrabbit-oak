@@ -161,6 +161,9 @@ name|getRecordIdIfAvailable
 parameter_list|(
 name|InputStream
 name|stream
+parameter_list|,
+name|SegmentStore
+name|store
 parameter_list|)
 block|{
 if|if
@@ -185,6 +188,12 @@ operator|.
 name|position
 operator|==
 literal|0
+operator|&&
+name|sstream
+operator|.
+name|store
+operator|==
+name|store
 condition|)
 block|{
 return|return
