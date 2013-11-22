@@ -704,7 +704,7 @@ if|if
 condition|(
 name|mProvider
 operator|.
-name|isCyclicMembership
+name|isMember
 argument_list|(
 name|newMember
 operator|.
@@ -712,6 +712,8 @@ name|getTree
 argument_list|()
 argument_list|,
 name|contentId
+argument_list|,
+literal|true
 argument_list|)
 condition|)
 block|{

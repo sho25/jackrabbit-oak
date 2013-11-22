@@ -74,10 +74,22 @@ name|NT_REP_GROUP
 init|=
 literal|"rep:Group"
 decl_stmt|;
+annotation|@
+name|Deprecated
 name|String
 name|NT_REP_MEMBERS
 init|=
 literal|"rep:Members"
+decl_stmt|;
+name|String
+name|NT_REP_MEMBER_REFERENCES_LIST
+init|=
+literal|"rep:MemberReferencesList"
+decl_stmt|;
+name|String
+name|NT_REP_MEMBER_REFERENCES
+init|=
+literal|"rep:MemberReferences"
 decl_stmt|;
 name|String
 name|MIX_REP_IMPERSONATABLE
@@ -108,6 +120,11 @@ name|String
 name|REP_MEMBERS
 init|=
 literal|"rep:members"
+decl_stmt|;
+name|String
+name|REP_MEMBERS_LIST
+init|=
+literal|"rep:membersList"
 decl_stmt|;
 name|String
 name|REP_IMPERSONATORS
@@ -152,6 +169,7 @@ argument_list|,
 name|REP_IMPERSONATORS
 argument_list|)
 decl_stmt|;
+comment|/**      * TODO: remove?      */
 name|Collection
 argument_list|<
 name|String
@@ -169,6 +187,10 @@ argument_list|,
 name|NT_REP_GROUP
 argument_list|,
 name|NT_REP_MEMBERS
+argument_list|,
+name|NT_REP_MEMBER_REFERENCES
+argument_list|,
+name|NT_REP_MEMBER_REFERENCES_LIST
 argument_list|)
 decl_stmt|;
 comment|/**      * Configuration option defining the ID of the administrator user.      */
@@ -237,7 +259,9 @@ name|DEFAULT_DEPTH
 init|=
 literal|2
 decl_stmt|;
-comment|/**      * Its value determines the maximum number of members within a given      * content structure until additional intermediate structuring is being      * added. This may for example be used to      *<ul>      *<li>switch storing group members in JCR properties or nodes</li>      *<li>define maximum number of members is a multivalued property</li>      *<li>define maximum number of member properties within a given      *     node structure</li>      *</ul>      */
+comment|/**      * Its value determines the maximum number of members within a given      * content structure until additional intermediate structuring is being      * added. This may for example be used to      *<ul>      *<li>switch storing group members in JCR properties or nodes</li>      *<li>define maximum number of members is a multivalued property</li>      *<li>define maximum number of member properties within a given      *     node structure</li>      *</ul>      *      * @deprecated since oak 1.0      */
+annotation|@
+name|Deprecated
 name|String
 name|PARAM_GROUP_MEMBERSHIP_SPLIT_SIZE
 init|=

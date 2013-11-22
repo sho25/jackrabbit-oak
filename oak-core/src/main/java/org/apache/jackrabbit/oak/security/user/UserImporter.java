@@ -1683,7 +1683,7 @@ name|isValid
 argument_list|(
 name|def
 argument_list|,
-name|NT_REP_GROUP
+name|NT_REP_MEMBER_REFERENCES
 argument_list|,
 literal|true
 argument_list|)
@@ -2781,15 +2781,12 @@ range|:
 name|nonExisting
 control|)
 block|{
+comment|// TODO: check. was: membershipProvider.addMember(groupTree, member.name, member.contentId);
 name|membershipProvider
 operator|.
 name|addMember
 argument_list|(
 name|groupTree
-argument_list|,
-name|member
-operator|.
-name|name
 argument_list|,
 name|member
 operator|.

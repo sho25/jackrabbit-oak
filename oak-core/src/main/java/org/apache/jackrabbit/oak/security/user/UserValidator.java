@@ -1260,11 +1260,13 @@ literal|null
 operator|&&
 name|mp
 operator|.
-name|isCyclicMembership
+name|isMember
 argument_list|(
 name|memberTree
 argument_list|,
 name|groupContentId
+argument_list|,
+literal|true
 argument_list|)
 condition|)
 block|{

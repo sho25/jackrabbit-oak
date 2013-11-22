@@ -692,7 +692,12 @@ operator|.
 name|REP_MEMBERS
 block|}
 argument_list|,
-literal|null
+operator|new
+name|String
+index|[]
+block|{
+name|NT_REP_MEMBER_REFERENCES
+block|}
 argument_list|)
 expr_stmt|;
 block|}
