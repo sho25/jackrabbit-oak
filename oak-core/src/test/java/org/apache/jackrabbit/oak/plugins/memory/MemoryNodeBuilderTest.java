@@ -233,16 +233,6 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Ignore
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
 name|Test
 import|;
 end_import
@@ -1941,9 +1931,6 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-annotation|@
-name|Ignore
-comment|// FIXME OAK-1114
 specifier|public
 name|void
 name|testMoveToDescendant
@@ -1957,7 +1944,7 @@ operator|.
 name|builder
 argument_list|()
 decl_stmt|;
-name|assertFalse
+name|assertTrue
 argument_list|(
 name|rootBuilder
 operator|.
@@ -1976,6 +1963,16 @@ literal|"x"
 argument_list|)
 argument_list|,
 literal|"xx"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertFalse
+argument_list|(
+name|rootBuilder
+operator|.
+name|hasChildNode
+argument_list|(
+literal|"x"
 argument_list|)
 argument_list|)
 expr_stmt|;

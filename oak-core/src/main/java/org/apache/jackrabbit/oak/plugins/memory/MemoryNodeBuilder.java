@@ -1023,6 +1023,7 @@ literal|false
 return|;
 block|}
 block|}
+comment|/**      * This implementation has the same semantics as adding this node      * with name {@code newName} as a new child of {@code newParent} followed      * by removing this node. As a consequence this implementation allows      * moving this node into the subtree rooted here, the result of which      * is the same as removing this node.      *<p>      * See also {@link NodeBuilder#moveTo(NodeBuilder, String) the general contract}      * for {@code MoveTo}.      *      * @param newParent  builder for the new parent.      * @param newName  name of this child at the new parent      * @return  {@code true} on success, {@code false} otherwise      */
 annotation|@
 name|Override
 specifier|public
@@ -1117,7 +1118,6 @@ return|;
 block|}
 else|else
 block|{
-comment|// Move to descendant
 return|return
 literal|false
 return|;
