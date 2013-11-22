@@ -1478,7 +1478,7 @@ name|Override
 annotation|@
 name|Nonnull
 specifier|public
-name|NodeBuilder
+name|SegmentRootBuilder
 name|builder
 parameter_list|()
 block|{
