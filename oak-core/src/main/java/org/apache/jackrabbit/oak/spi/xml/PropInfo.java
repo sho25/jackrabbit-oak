@@ -45,6 +45,16 @@ name|javax
 operator|.
 name|annotation
 operator|.
+name|CheckForNull
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|annotation
+operator|.
 name|Nonnull
 import|;
 end_import
@@ -412,6 +422,8 @@ name|STRING
 return|;
 block|}
 block|}
+annotation|@
+name|CheckForNull
 specifier|public
 name|String
 name|getName
@@ -430,6 +442,8 @@ return|return
 name|type
 return|;
 block|}
+annotation|@
+name|Nonnull
 specifier|public
 name|TextValue
 name|getTextValue
@@ -463,6 +477,8 @@ literal|0
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Nonnull
 specifier|public
 name|List
 argument_list|<
@@ -477,6 +493,8 @@ return|return
 name|values
 return|;
 block|}
+annotation|@
+name|Nonnull
 specifier|public
 name|Value
 name|getValue
@@ -518,6 +536,8 @@ name|targetType
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Nonnull
 specifier|public
 name|List
 argument_list|<

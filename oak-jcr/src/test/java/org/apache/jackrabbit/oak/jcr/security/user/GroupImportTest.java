@@ -27,6 +27,26 @@ name|java
 operator|.
 name|util
 operator|.
+name|ArrayList
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|HashSet
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Iterator
 import|;
 end_import
@@ -48,6 +68,26 @@ operator|.
 name|util
 operator|.
 name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Set
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|UUID
 import|;
 end_import
 
@@ -77,7 +117,27 @@ name|javax
 operator|.
 name|jcr
 operator|.
+name|PropertyType
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|jcr
+operator|.
 name|RepositoryException
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|jcr
+operator|.
+name|Value
 import|;
 end_import
 
@@ -90,6 +150,18 @@ operator|.
 name|nodetype
 operator|.
 name|ConstraintViolationException
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|JcrConstants
 import|;
 end_import
 
@@ -146,6 +218,38 @@ operator|.
 name|user
 operator|.
 name|UserConstants
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|xml
+operator|.
+name|ImportBehavior
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|test
+operator|.
+name|NotExecutableException
 import|;
 end_import
 
@@ -1139,121 +1243,6 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|String
-name|xml
-init|=
-literal|"<?xml version=\"1.0\" encoding=\"UTF-8\"?>"
-operator|+
-literal|"<sv:node sv:name=\"s\" xmlns:mix=\"http://www.jcp.org/jcr/mix/1.0\" xmlns:sling=\"http://sling.apache.org/jcr/sling/1.0\" xmlns:nt=\"http://www.jcp.org/jcr/nt/1.0\" xmlns:fn_old=\"http://www.w3.org/2004/10/xpath-functions\" xmlns:fn=\"http://www.w3.org/2005/xpath-functions\" xmlns:xs=\"http://www.w3.org/2001/XMLSchema\" xmlns:jcr=\"http://www.jcp.org/jcr/1.0\" xmlns:sv=\"http://www.jcp.org/jcr/sv/1.0\" xmlns:rep=\"internal\">"
-operator|+
-literal|"<sv:property sv:name=\"jcr:primaryType\" sv:type=\"Name\"><sv:value>rep:AuthorizableFolder</sv:value></sv:property>"
-operator|+
-literal|"<sv:property sv:name=\"jcr:created\" sv:type=\"Date\"><sv:value>2010-08-17T18:22:20.086+02:00</sv:value></sv:property>"
-operator|+
-literal|"<sv:property sv:name=\"jcr:createdBy\" sv:type=\"String\"><sv:value>admin</sv:value></sv:property>"
-operator|+
-literal|"<sv:node sv:name=\"sh\">"
-operator|+
-literal|"<sv:property sv:name=\"jcr:primaryType\" sv:type=\"Name\"><sv:value>rep:AuthorizableFolder</sv:value></sv:property>"
-operator|+
-literal|"<sv:property sv:name=\"jcr:created\" sv:type=\"Date\"><sv:value>2010-08-17T18:22:20.086+02:00</sv:value></sv:property>"
-operator|+
-literal|"<sv:property sv:name=\"jcr:createdBy\" sv:type=\"String\"><sv:value>admin</sv:value></sv:property>"
-operator|+
-literal|"<sv:node sv:name=\"shrimps\">"
-operator|+
-literal|"<sv:property sv:name=\"jcr:primaryType\" sv:type=\"Name\"><sv:value>rep:Group</sv:value></sv:property>"
-operator|+
-literal|"<sv:property sv:name=\"jcr:uuid\" sv:type=\"String\"><sv:value>08429aec-6f09-30db-8c83-1a2a57fc760c</sv:value></sv:property>"
-operator|+
-literal|"<sv:property sv:name=\"jcr:created\" sv:type=\"Date\"><sv:value>2010-08-17T18:22:20.086+02:00</sv:value></sv:property>"
-operator|+
-literal|"<sv:property sv:name=\"jcr:createdBy\" sv:type=\"String\"><sv:value>admin</sv:value></sv:property>"
-operator|+
-literal|"<sv:property sv:name=\"rep:principalName\" sv:type=\"String\"><sv:value>shrimps</sv:value></sv:property>"
-operator|+
-literal|"<sv:node sv:name=\"rep:members\">"
-operator|+
-literal|"<sv:property sv:name=\"jcr:primaryType\" sv:type=\"Name\"><sv:value>rep:Members</sv:value></sv:property>"
-operator|+
-literal|"<sv:node sv:name=\"adi\">"
-operator|+
-literal|"<sv:property sv:name=\"jcr:primaryType\" sv:type=\"Name\"><sv:value>rep:Members</sv:value></sv:property>"
-operator|+
-literal|"<sv:node sv:name=\"adi\">"
-operator|+
-literal|"<sv:property sv:name=\"jcr:primaryType\" sv:type=\"Name\"><sv:value>rep:Members</sv:value></sv:property>"
-operator|+
-literal|"<sv:property sv:name=\"adi\" sv:type=\"WeakReference\"><sv:value>c46335eb-267e-3e1c-9e5b-017acb4cd799</sv:value></sv:property>"
-operator|+
-literal|"<sv:property sv:name=\"admin\" sv:type=\"WeakReference\"><sv:value>21232f29-7a57-35a7-8389-4a0e4a801fc3</sv:value></sv:property>"
-operator|+
-literal|"</sv:node>"
-operator|+
-literal|"<sv:node sv:name=\"angi\">"
-operator|+
-literal|"<sv:property sv:name=\"jcr:primaryType\" sv:type=\"Name\"><sv:value>rep:Members</sv:value></sv:property>"
-operator|+
-literal|"<sv:property sv:name=\"angi\" sv:type=\"WeakReference\"><sv:value>a468b64f-b1df-377c-b325-20d97aaa1ad9</sv:value></sv:property>"
-operator|+
-literal|"<sv:property sv:name=\"anonymous\" sv:type=\"WeakReference\"><sv:value>294de355-7d9d-30b3-92d8-a1e6aab028cf</sv:value></sv:property>"
-operator|+
-literal|"<sv:property sv:name=\"cati\" sv:type=\"WeakReference\"><sv:value>f08910b6-41c8-3cb9-a648-1dddd14b132d</sv:value></sv:property>"
-operator|+
-literal|"</sv:node>"
-operator|+
-literal|"</sv:node>"
-operator|+
-literal|"<sv:node sv:name=\"debbi\">"
-operator|+
-literal|"<sv:property sv:name=\"jcr:primaryType\" sv:type=\"Name\"><sv:value>rep:Members</sv:value></sv:property>"
-operator|+
-literal|"<sv:node sv:name=\"debbi\">"
-operator|+
-literal|"<sv:property sv:name=\"jcr:primaryType\" sv:type=\"Name\"><sv:value>rep:Members</sv:value></sv:property>"
-operator|+
-literal|"<sv:property sv:name=\"debbi\" sv:type=\"WeakReference\"><sv:value>d53bedf9-ebb8-3117-a8b8-162d32b4bee2</sv:value></sv:property>"
-operator|+
-literal|"<sv:property sv:name=\"eddi\" sv:type=\"WeakReference\"><sv:value>1795fa1a-3d20-3a64-996e-eaaeb520a01e</sv:value></sv:property>"
-operator|+
-literal|"<sv:property sv:name=\"gabi\" sv:type=\"WeakReference\"><sv:value>a0d499c7-5105-3663-8611-a32779a57104</sv:value></sv:property>"
-operator|+
-literal|"<sv:property sv:name=\"hansi\" sv:type=\"WeakReference\"><sv:value>9ea4d671-8ed1-399a-8401-59487a14d00a</sv:value></sv:property>"
-operator|+
-literal|"</sv:node>"
-operator|+
-literal|"<sv:node sv:name=\"hari\">"
-operator|+
-literal|"<sv:property sv:name=\"jcr:primaryType\" sv:type=\"Name\"><sv:value>rep:Members</sv:value></sv:property>"
-operator|+
-literal|"<sv:property sv:name=\"hari\" sv:type=\"WeakReference\"><sv:value>a9bcf1e4-d7b9-3a22-a297-5c812d938889</sv:value></sv:property>"
-operator|+
-literal|"<sv:property sv:name=\"lisi\" sv:type=\"WeakReference\"><sv:value>dc3a8f16-70d6-3bea-a9b7-b65048a0ac40</sv:value></sv:property>"
-operator|+
-literal|"</sv:node>"
-operator|+
-literal|"<sv:node sv:name=\"luzi\">"
-operator|+
-literal|"<sv:property sv:name=\"jcr:primaryType\" sv:type=\"Name\"><sv:value>rep:Members</sv:value></sv:property>"
-operator|+
-literal|"<sv:property sv:name=\"luzi\" sv:type=\"WeakReference\"><sv:value>9ec299fd-3461-3f1a-9749-92a76f2516eb</sv:value></sv:property>"
-operator|+
-literal|"<sv:property sv:name=\"pipi\" sv:type=\"WeakReference\"><sv:value>16d5d24f-5b09-3199-9bd4-e5f57bf11237</sv:value></sv:property>"
-operator|+
-literal|"<sv:property sv:name=\"susi\" sv:type=\"WeakReference\"><sv:value>536931d8-0dec-318c-b3db-9612bdd004d4</sv:value></sv:property>"
-operator|+
-literal|"</sv:node>"
-operator|+
-literal|"</sv:node>"
-operator|+
-literal|"</sv:node>"
-operator|+
-literal|"</sv:node>"
-operator|+
-literal|"</sv:node>"
-operator|+
-literal|"</sv:node>"
-decl_stmt|;
 name|List
 argument_list|<
 name|String
@@ -1367,7 +1356,13 @@ argument_list|(
 name|getTargetPath
 argument_list|()
 argument_list|,
-name|xml
+name|getClass
+argument_list|()
+operator|.
+name|getSimpleName
+argument_list|()
+operator|+
+literal|"-testImportGroupMembersFromNodes.xml"
 argument_list|)
 expr_stmt|;
 if|if
@@ -1397,11 +1392,15 @@ argument_list|)
 decl_stmt|;
 name|assertNotNull
 argument_list|(
+literal|"Shrimps authorizable must exist"
+argument_list|,
 name|aShrimps
 argument_list|)
 expr_stmt|;
 name|assertTrue
 argument_list|(
+literal|"Shrimps authorizable must be a group"
+argument_list|,
 name|aShrimps
 operator|.
 name|isGroup
@@ -1433,6 +1432,370 @@ operator|+
 name|gShrimps
 argument_list|,
 name|gShrimps
+operator|.
+name|isMember
+argument_list|(
+name|userMgr
+operator|.
+name|getAuthorizable
+argument_list|(
+name|user
+argument_list|)
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+finally|finally
+block|{
+name|adminSession
+operator|.
+name|refresh
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
+for|for
+control|(
+name|String
+name|user
+range|:
+name|createdUsers
+control|)
+block|{
+name|Authorizable
+name|a
+init|=
+name|userMgr
+operator|.
+name|getAuthorizable
+argument_list|(
+name|user
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|a
+operator|!=
+literal|null
+operator|&&
+operator|!
+name|a
+operator|.
+name|isGroup
+argument_list|()
+condition|)
+block|{
+name|a
+operator|.
+name|remove
+argument_list|()
+expr_stmt|;
+block|}
+block|}
+for|for
+control|(
+name|NodeIterator
+name|it
+init|=
+name|target
+operator|.
+name|getNodes
+argument_list|()
+init|;
+name|it
+operator|.
+name|hasNext
+argument_list|()
+condition|;
+control|)
+block|{
+name|it
+operator|.
+name|nextNode
+argument_list|()
+operator|.
+name|remove
+argument_list|()
+expr_stmt|;
+block|}
+name|adminSession
+operator|.
+name|save
+argument_list|()
+expr_stmt|;
+block|}
+block|}
+comment|/**      * @since OAK 1.0 : Importing new rep:MembershipReferences structure      */
+annotation|@
+name|Test
+specifier|public
+name|void
+name|testImportGroupMembersFromOakNodes
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|List
+argument_list|<
+name|String
+argument_list|>
+name|createdUsers
+init|=
+operator|new
+name|LinkedList
+argument_list|<
+name|String
+argument_list|>
+argument_list|()
+decl_stmt|;
+name|Node
+name|target
+init|=
+name|getTargetNode
+argument_list|()
+decl_stmt|;
+try|try
+block|{
+for|for
+control|(
+name|int
+name|i
+init|=
+literal|0
+init|;
+name|i
+operator|<
+literal|32
+condition|;
+name|i
+operator|++
+control|)
+block|{
+name|String
+name|user
+init|=
+literal|"testUser"
+operator|+
+name|i
+decl_stmt|;
+if|if
+condition|(
+name|userMgr
+operator|.
+name|getAuthorizable
+argument_list|(
+name|user
+argument_list|)
+operator|==
+literal|null
+condition|)
+block|{
+name|userMgr
+operator|.
+name|createUser
+argument_list|(
+name|user
+argument_list|,
+name|user
+argument_list|)
+expr_stmt|;
+name|createdUsers
+operator|.
+name|add
+argument_list|(
+name|user
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+if|if
+condition|(
+operator|!
+name|userMgr
+operator|.
+name|isAutoSave
+argument_list|()
+condition|)
+block|{
+name|adminSession
+operator|.
+name|save
+argument_list|()
+expr_stmt|;
+block|}
+name|doImport
+argument_list|(
+name|getTargetPath
+argument_list|()
+argument_list|,
+name|getClass
+argument_list|()
+operator|.
+name|getSimpleName
+argument_list|()
+operator|+
+literal|"-testImportGroupMembersFromOakNodes.xml"
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+operator|!
+name|userMgr
+operator|.
+name|isAutoSave
+argument_list|()
+condition|)
+block|{
+name|adminSession
+operator|.
+name|save
+argument_list|()
+expr_stmt|;
+block|}
+name|Authorizable
+name|authorizable
+init|=
+name|userMgr
+operator|.
+name|getAuthorizable
+argument_list|(
+literal|"testGroup"
+argument_list|)
+decl_stmt|;
+name|assertNotNull
+argument_list|(
+literal|"testGroup authorizable must exist"
+argument_list|,
+name|authorizable
+argument_list|)
+expr_stmt|;
+name|assertTrue
+argument_list|(
+literal|"testGroup authorizable must be a group"
+argument_list|,
+name|authorizable
+operator|.
+name|isGroup
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|Group
+name|testGroup
+init|=
+operator|(
+name|Group
+operator|)
+name|authorizable
+decl_stmt|;
+for|for
+control|(
+name|int
+name|i
+init|=
+literal|0
+init|;
+name|i
+operator|<
+literal|32
+condition|;
+name|i
+operator|++
+control|)
+block|{
+name|String
+name|user
+init|=
+literal|"testUser"
+operator|+
+name|i
+decl_stmt|;
+name|assertTrue
+argument_list|(
+name|user
+operator|+
+literal|" should be member of "
+operator|+
+name|testGroup
+argument_list|,
+name|testGroup
+operator|.
+name|isMember
+argument_list|(
+name|userMgr
+operator|.
+name|getAuthorizable
+argument_list|(
+name|user
+argument_list|)
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+name|authorizable
+operator|=
+name|userMgr
+operator|.
+name|getAuthorizable
+argument_list|(
+literal|"shrimps"
+argument_list|)
+expr_stmt|;
+name|assertNotNull
+argument_list|(
+literal|"shrimps authorizable must exist"
+argument_list|,
+name|authorizable
+argument_list|)
+expr_stmt|;
+name|assertTrue
+argument_list|(
+literal|"shrimps authorizable must be a group"
+argument_list|,
+name|authorizable
+operator|.
+name|isGroup
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|testGroup
+operator|=
+operator|(
+name|Group
+operator|)
+name|authorizable
+expr_stmt|;
+for|for
+control|(
+name|int
+name|i
+init|=
+literal|0
+init|;
+name|i
+operator|<
+literal|32
+condition|;
+name|i
+operator|++
+control|)
+block|{
+name|String
+name|user
+init|=
+literal|"testUser"
+operator|+
+name|i
+decl_stmt|;
+name|assertTrue
+argument_list|(
+name|user
+operator|+
+literal|" should be member of "
+operator|+
+name|testGroup
+argument_list|,
+name|testGroup
 operator|.
 name|isMember
 argument_list|(
