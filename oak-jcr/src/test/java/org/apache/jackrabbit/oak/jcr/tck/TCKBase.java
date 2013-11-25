@@ -304,20 +304,8 @@ name|isAvailable
 argument_list|()
 condition|)
 block|{
-name|Setup
-operator|.
-name|wrap
-argument_list|(
-name|this
-argument_list|,
-name|OakSegmentMKRepositoryStub
-operator|.
-name|class
-operator|.
-name|getName
-argument_list|()
-argument_list|)
-expr_stmt|;
+comment|// disabled see OAK-1191
+comment|// Setup.wrap(this, OakSegmentMKRepositoryStub.class.getName());
 block|}
 if|if
 condition|(
