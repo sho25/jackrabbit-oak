@@ -20,40 +20,6 @@ package|;
 end_package
 
 begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|collect
-operator|.
-name|Sets
-operator|.
-name|newTreeSet
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|commons
-operator|.
-name|PathUtils
-operator|.
-name|getParentPath
-import|;
-end_import
-
-begin_import
 import|import
 name|java
 operator|.
@@ -555,11 +521,9 @@ name|oak
 operator|.
 name|jcr
 operator|.
-name|session
+name|security
 operator|.
-name|operation
-operator|.
-name|SessionOperation
+name|AccessManager
 import|;
 end_import
 
@@ -575,9 +539,11 @@ name|oak
 operator|.
 name|jcr
 operator|.
-name|security
+name|session
 operator|.
-name|AccessManager
+name|operation
+operator|.
+name|SessionOperation
 import|;
 end_import
 
@@ -682,6 +648,40 @@ operator|.
 name|sax
 operator|.
 name|SAXException
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|collect
+operator|.
+name|Sets
+operator|.
+name|newTreeSet
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|commons
+operator|.
+name|PathUtils
+operator|.
+name|getParentPath
 import|;
 end_import
 
@@ -1967,11 +1967,6 @@ argument_list|,
 name|destOakPath
 argument_list|,
 literal|true
-argument_list|,
-name|sessionContext
-operator|.
-name|getAccessManager
-argument_list|()
 argument_list|)
 expr_stmt|;
 return|return

@@ -41,26 +41,11 @@ name|Session
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
-name|Ignore
-import|;
-end_import
-
 begin_comment
 comment|/**  * Permission evaluation tests for move operations.  */
 end_comment
 
 begin_class
-annotation|@
-name|Ignore
-argument_list|(
-literal|"OAK-710 : permission validator doesn't detect move"
-argument_list|)
 specifier|public
 class|class
 name|WorkspaceMoveTest
