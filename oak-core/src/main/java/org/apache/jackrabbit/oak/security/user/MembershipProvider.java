@@ -155,11 +155,11 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|plugins
+name|spi
 operator|.
-name|memory
+name|query
 operator|.
-name|PropertyStates
+name|PropertyValues
 import|;
 end_import
 
@@ -893,23 +893,22 @@ name|identifierManager
 operator|.
 name|getPath
 argument_list|(
-name|PropertyStates
+name|PropertyValues
 operator|.
-name|createProperty
+name|newWeakReference
 argument_list|(
-literal|""
-argument_list|,
 name|value
-argument_list|,
-name|Type
-operator|.
-name|WEAKREFERENCE
 argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// filter by authorizable type, and/or get inherited members
 if|if
 condition|(
+name|next
+operator|!=
+literal|null
+operator|&&
+operator|(
 name|includeInherited
 operator|||
 name|authorizableType
@@ -917,6 +916,7 @@ operator|!=
 name|AuthorizableType
 operator|.
 name|AUTHORIZABLE
+operator|)
 condition|)
 block|{
 name|Tree

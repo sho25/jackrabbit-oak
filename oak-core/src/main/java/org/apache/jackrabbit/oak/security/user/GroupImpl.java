@@ -942,6 +942,9 @@ block|}
 else|else
 block|{
 name|Iterator
+argument_list|<
+name|String
+argument_list|>
 name|oakPaths
 init|=
 name|getMembershipProvider
