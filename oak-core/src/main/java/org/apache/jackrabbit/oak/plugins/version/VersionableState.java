@@ -2985,6 +2985,21 @@ parameter_list|)
 throws|throws
 name|RepositoryException
 block|{
+comment|// ignore hidden tree
+if|if
+condition|(
+name|childName
+operator|.
+name|startsWith
+argument_list|(
+literal|":"
+argument_list|)
+condition|)
+block|{
+return|return
+name|IGNORE
+return|;
+block|}
 name|ImmutableTree
 name|parentTree
 init|=
