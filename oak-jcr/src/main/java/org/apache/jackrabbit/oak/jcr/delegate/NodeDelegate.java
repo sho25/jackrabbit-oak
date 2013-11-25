@@ -1054,7 +1054,7 @@ specifier|final
 name|Tree
 name|tree
 decl_stmt|;
-specifier|protected
+specifier|public
 name|NodeDelegate
 parameter_list|(
 name|SessionDelegate

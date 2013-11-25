@@ -1088,11 +1088,9 @@ name|ResultRowImpl
 argument_list|(
 name|this
 argument_list|,
-operator|new
-name|String
-index|[
-literal|0
-index|]
+name|Tree
+operator|.
+name|EMPTY_ARRAY
 argument_list|,
 operator|new
 name|PropertyValue

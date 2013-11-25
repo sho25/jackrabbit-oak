@@ -309,6 +309,17 @@ name|String
 name|name
 parameter_list|)
 function_decl|;
+comment|/**      * Empty array of trees.      */
+name|Tree
+index|[]
+name|EMPTY_ARRAY
+init|=
+operator|new
+name|Tree
+index|[
+literal|0
+index|]
+decl_stmt|;
 comment|/**      * Mapping from a Tree instance to its name.      */
 name|Function
 argument_list|<

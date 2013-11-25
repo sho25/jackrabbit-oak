@@ -39,6 +39,14 @@ name|String
 name|selectorName
 parameter_list|)
 function_decl|;
+comment|/**      * The tree for the given selector name.      *      * @param selectorName the selector name (null if there is only one selector)      * @return the tree      * @throws IllegalArgumentException if the selector was not found,      *      or if there are multiple selectors but the passed selectorName is null      */
+name|Tree
+name|getTree
+parameter_list|(
+name|String
+name|selectorName
+parameter_list|)
+function_decl|;
 comment|/**      * The property value.      *       * @param columnName the column name      * @return the value      * @throws IllegalArgumentException if the column was not found      */
 name|PropertyValue
 name|getValue
