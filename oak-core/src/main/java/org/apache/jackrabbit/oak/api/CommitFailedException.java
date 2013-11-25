@@ -290,6 +290,15 @@ name|LABEL_EXISTS
 init|=
 literal|"LabelExists"
 decl_stmt|;
+comment|/**      * Type name for merge errors.      */
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|MERGE
+init|=
+literal|"Merge"
+decl_stmt|;
 comment|/**      * Unsupported operation or feature      */
 specifier|public
 specifier|static

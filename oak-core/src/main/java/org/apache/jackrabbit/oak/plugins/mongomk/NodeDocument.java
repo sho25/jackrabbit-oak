@@ -3650,7 +3650,7 @@ block|}
 specifier|public
 specifier|static
 name|void
-name|unsetCollision
+name|removeCollision
 parameter_list|(
 annotation|@
 name|Nonnull
@@ -3668,7 +3668,7 @@ argument_list|(
 name|op
 argument_list|)
 operator|.
-name|unsetMapEntry
+name|removeMapEntry
 argument_list|(
 name|COLLISIONS
 argument_list|,

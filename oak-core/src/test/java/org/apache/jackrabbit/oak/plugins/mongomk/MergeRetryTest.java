@@ -494,8 +494,6 @@ block|}
 block|}
 comment|/**      * Test for OAK-1202      */
 annotation|@
-name|Ignore
-annotation|@
 name|Test
 specifier|public
 name|void

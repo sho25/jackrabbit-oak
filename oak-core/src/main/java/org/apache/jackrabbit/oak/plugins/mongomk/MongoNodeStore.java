@@ -68,6 +68,24 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|api
+operator|.
+name|CommitFailedException
+operator|.
+name|MERGE
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -3956,7 +3974,7 @@ operator|.
 name|iterator
 argument_list|()
 decl_stmt|;
-comment|// first revision is the ancestor
+comment|// first revision is the ancestor (tailSet is inclusive)
 comment|// do not clear collision for this revision
 name|it
 operator|.
@@ -3973,7 +3991,7 @@ condition|)
 block|{
 name|NodeDocument
 operator|.
-name|unsetCollision
+name|removeCollision
 argument_list|(
 name|rootOp
 argument_list|,
@@ -4042,6 +4060,8 @@ name|Nullable
 name|CommitInfo
 name|info
 parameter_list|)
+throws|throws
+name|CommitFailedException
 block|{
 name|Branch
 name|b
@@ -4224,11 +4244,14 @@ expr_stmt|;
 block|}
 else|else
 block|{
-comment|// TODO: use non-MK exception type
 throw|throw
 operator|new
-name|MicroKernelException
+name|CommitFailedException
 argument_list|(
+name|MERGE
+argument_list|,
+literal|2
+argument_list|,
 literal|"Conflicting concurrent change. Update operation failed: "
 operator|+
 name|op
