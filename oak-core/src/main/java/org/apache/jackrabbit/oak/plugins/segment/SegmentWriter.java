@@ -1538,7 +1538,7 @@ operator|>
 literal|0xffff
 operator|||
 name|refCount
-operator|>
+operator|>=
 name|Segment
 operator|.
 name|SEGMENT_REFERENCE_LIMIT
