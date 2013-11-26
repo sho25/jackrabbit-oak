@@ -23,6 +23,22 @@ end_package
 
 begin_import
 import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkNotNull
+import|;
+end_import
+
+begin_import
+import|import static
 name|org
 operator|.
 name|apache
@@ -352,9 +368,13 @@ comment|/**      * Create a new instance of a {@code EventGenerator} reporting e
 specifier|public
 name|EventGenerator
 parameter_list|(
+annotation|@
+name|Nonnull
 name|Filter
 name|filter
 parameter_list|,
+annotation|@
+name|Nonnull
 name|Listener
 name|listener
 parameter_list|)
@@ -363,13 +383,19 @@ name|this
 operator|.
 name|filter
 operator|=
+name|checkNotNull
+argument_list|(
 name|filter
+argument_list|)
 expr_stmt|;
 name|this
 operator|.
 name|listener
 operator|=
+name|checkNotNull
+argument_list|(
 name|listener
+argument_list|)
 expr_stmt|;
 block|}
 annotation|@
