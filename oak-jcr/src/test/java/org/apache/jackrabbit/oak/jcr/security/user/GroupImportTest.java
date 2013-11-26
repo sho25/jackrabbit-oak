@@ -137,6 +137,24 @@ name|apache
 operator|.
 name|jackrabbit
 operator|.
+name|api
+operator|.
+name|security
+operator|.
+name|user
+operator|.
+name|User
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
 name|oak
 operator|.
 name|spi
@@ -1893,6 +1911,92 @@ name|adminSession
 operator|.
 name|save
 argument_list|()
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+specifier|public
+name|void
+name|testImportNewMembersLateSave
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|String
+name|xml
+init|=
+literal|"<?xml version=\"1.0\" encoding=\"UTF-8\"?>"
+operator|+
+literal|"<sv:node sv:name=\"gFolder\" xmlns:mix=\"http://www.jcp.org/jcr/mix/1.0\" xmlns:nt=\"http://www.jcp.org/jcr/nt/1.0\" xmlns:fn_old=\"http://www.w3.org/2004/10/xpath-functions\" xmlns:fn=\"http://www.w3.org/2005/xpath-functions\" xmlns:xs=\"http://www.w3.org/2001/XMLSchema\" xmlns:sv=\"http://www.jcp.org/jcr/sv/1.0\" xmlns:rep=\"internal\" xmlns:jcr=\"http://www.jcp.org/jcr/1.0\">"
+operator|+
+literal|"<sv:property sv:name=\"jcr:primaryType\" sv:type=\"Name\">"
+operator|+
+literal|"<sv:value>rep:AuthorizableFolder</sv:value>"
+operator|+
+literal|"</sv:property>"
+operator|+
+literal|"<sv:node sv:name=\"g1\">"
+operator|+
+literal|"<sv:property sv:name=\"jcr:primaryType\" sv:type=\"Name\"><sv:value>rep:Group</sv:value></sv:property>"
+operator|+
+literal|"<sv:property sv:name=\"jcr:uuid\" sv:type=\"String\"><sv:value>0120a4f9-196a-3f9e-b9f5-23f31f914da7</sv:value></sv:property>"
+operator|+
+literal|"<sv:property sv:name=\"rep:principalName\" sv:type=\"String\"><sv:value>g1</sv:value></sv:property>"
+operator|+
+literal|"<sv:property sv:name=\"rep:members\" sv:type=\"WeakReference\"><sv:value>a468b64f-b1df-377c-b325-20d97aaa1ad9</sv:value></sv:property>"
+operator|+
+literal|"</sv:node>"
+operator|+
+literal|"</sv:node>"
+decl_stmt|;
+name|doImport
+argument_list|(
+name|getTargetPath
+argument_list|()
+argument_list|,
+name|xml
+argument_list|)
+expr_stmt|;
+name|User
+name|user
+init|=
+name|userMgr
+operator|.
+name|createUser
+argument_list|(
+literal|"angi"
+argument_list|,
+literal|"pw"
+argument_list|)
+decl_stmt|;
+name|adminSession
+operator|.
+name|save
+argument_list|()
+expr_stmt|;
+name|Group
+name|g1
+init|=
+operator|(
+name|Group
+operator|)
+name|userMgr
+operator|.
+name|getAuthorizable
+argument_list|(
+literal|"g1"
+argument_list|)
+decl_stmt|;
+comment|// not BEST_EFFORT -> member is not resolved
+name|assertFalse
+argument_list|(
+name|g1
+operator|.
+name|isMember
+argument_list|(
+name|user
+argument_list|)
+argument_list|)
 expr_stmt|;
 block|}
 block|}
