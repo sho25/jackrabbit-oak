@@ -536,7 +536,7 @@ argument_list|(
 name|n
 argument_list|)
 operator|.
-name|unwrap
+name|getNodeState
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -891,7 +891,7 @@ argument_list|(
 name|seg
 argument_list|)
 operator|.
-name|unwrap
+name|getNodeState
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1035,12 +1035,12 @@ name|nextValidator
 argument_list|,
 name|source
 operator|.
-name|unwrap
+name|getNodeState
 argument_list|()
 argument_list|,
 name|dest
 operator|.
-name|unwrap
+name|getNodeState
 argument_list|()
 argument_list|)
 decl_stmt|;

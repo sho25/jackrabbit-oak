@@ -865,15 +865,6 @@ return|;
 block|}
 comment|//--------------------------------------------------------------------------
 specifier|public
-name|NodeState
-name|unwrap
-parameter_list|()
-block|{
-return|return
-name|state
-return|;
-block|}
-specifier|public
 name|int
 name|getType
 parameter_list|()

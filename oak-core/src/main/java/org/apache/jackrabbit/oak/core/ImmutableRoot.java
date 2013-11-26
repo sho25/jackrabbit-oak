@@ -18,6 +18,40 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkArgument
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|commons
+operator|.
+name|PathUtils
+operator|.
+name|elements
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -202,40 +236,6 @@ operator|.
 name|state
 operator|.
 name|NodeState
-import|;
-end_import
-
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|Preconditions
-operator|.
-name|checkArgument
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|commons
-operator|.
-name|PathUtils
-operator|.
-name|elements
 import|;
 end_import
 
@@ -517,7 +517,7 @@ name|ExecutionContext
 argument_list|(
 name|rootTree
 operator|.
-name|unwrap
+name|getNodeState
 argument_list|()
 argument_list|,
 name|rootTree
