@@ -632,11 +632,11 @@ specifier|final
 name|int
 name|BLOB_SIZE
 init|=
-literal|10
+literal|32
 operator|*
 literal|1024
 decl_stmt|;
-comment|//> MongoMK inline limit
+comment|//> blob inline limit
 specifier|private
 specifier|static
 class|class
