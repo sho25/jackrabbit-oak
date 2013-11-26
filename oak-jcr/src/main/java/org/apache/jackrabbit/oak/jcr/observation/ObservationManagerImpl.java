@@ -315,7 +315,7 @@ name|plugins
 operator|.
 name|observation
 operator|.
-name|FilterProvider
+name|JcrFilterProvider
 import|;
 end_import
 
@@ -650,11 +650,11 @@ operator|instanceof
 name|ExcludeExternal
 operator|)
 decl_stmt|;
-name|FilterProvider
+name|JcrFilterProvider
 name|filterProvider
 init|=
 operator|new
-name|FilterProvider
+name|JcrFilterProvider
 argument_list|(
 name|ntMgr
 argument_list|,

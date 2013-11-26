@@ -394,7 +394,7 @@ end_comment
 begin_class
 specifier|public
 class|class
-name|FilterProvider
+name|JcrFilterProvider
 block|{
 specifier|private
 specifier|static
@@ -458,9 +458,9 @@ specifier|final
 name|boolean
 name|includeClusterExternal
 decl_stmt|;
-comment|/**      * Create a new instance of a {@code FilterProvider} for certain criteria      *      * @param ntManager   node type manager      * @param eventTypes  event types to include encoded as a bit mask      * @param path        path to include      * @param deep        {@code true} if descendants of {@code path} should be included.      *                    {@code false} otherwise.      * @param uuids       uuids to include      * @param nodeTypeName              node type names to include      * @param includeSessionLocal       include session local events if {@code true}.      *                                  Exclude otherwise.      * @param includeClusterExternal    include cluster external events if {@code true}.      *                                  Exclude otherwise.      *      * @see javax.jcr.observation.ObservationManager#addEventListener(javax.jcr.observation.EventListener, int, String, boolean, String[], String[], boolean) */
+comment|/**      * Create a new instance of a {@code JcrFilterProvider} for certain criteria      *      * @param ntManager   node type manager      * @param eventTypes  event types to include encoded as a bit mask      * @param path        path to include      * @param deep        {@code true} if descendants of {@code path} should be included.      *                    {@code false} otherwise.      * @param uuids       uuids to include      * @param nodeTypeName              node type names to include      * @param includeSessionLocal       include session local events if {@code true}.      *                                  Exclude otherwise.      * @param includeClusterExternal    include cluster external events if {@code true}.      *                                  Exclude otherwise.      *      * @see javax.jcr.observation.ObservationManager#addEventListener(javax.jcr.observation.EventListener, int, String, boolean, String[], String[], boolean) */
 specifier|public
-name|FilterProvider
+name|JcrFilterProvider
 parameter_list|(
 name|ReadOnlyNodeTypeManager
 name|ntManager
