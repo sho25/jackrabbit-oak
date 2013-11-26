@@ -287,6 +287,26 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
+name|plugins
+operator|.
+name|observation
+operator|.
+name|filter
+operator|.
+name|FilterProvider
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
 name|spi
 operator|.
 name|commit
@@ -468,7 +488,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A {@code ChangeProcessor} generates observation {@link javax.jcr.observation.Event}s  * based on a {@link JcrFilterProvider filter} and delivers them to an {@link EventListener}.  *<p>  * After instantiation a {@code ChangeProcessor} must be started in order to start  * delivering observation events and stopped to stop doing so.  */
+comment|/**  * A {@code ChangeProcessor} generates observation {@link javax.jcr.observation.Event}s  * based on a {@link FilterProvider filter} and delivers them to an {@link EventListener}.  *<p>  * After instantiation a {@code ChangeProcessor} must be started in order to start  * delivering observation events and stopped to stop doing so.  */
 end_comment
 
 begin_class
@@ -522,7 +542,7 @@ specifier|private
 specifier|final
 name|AtomicReference
 argument_list|<
-name|JcrFilterProvider
+name|FilterProvider
 argument_list|>
 name|filterProvider
 decl_stmt|;
@@ -553,7 +573,7 @@ parameter_list|,
 name|ListenerTracker
 name|tracker
 parameter_list|,
-name|JcrFilterProvider
+name|FilterProvider
 name|filter
 parameter_list|)
 block|{
@@ -600,7 +620,7 @@ operator|=
 operator|new
 name|AtomicReference
 argument_list|<
-name|JcrFilterProvider
+name|FilterProvider
 argument_list|>
 argument_list|(
 name|filter
@@ -612,7 +632,7 @@ specifier|public
 name|void
 name|setFilterProvider
 parameter_list|(
-name|JcrFilterProvider
+name|FilterProvider
 name|filter
 parameter_list|)
 block|{
@@ -755,7 +775,7 @@ condition|)
 block|{
 try|try
 block|{
-name|JcrFilterProvider
+name|FilterProvider
 name|provider
 init|=
 name|filterProvider
