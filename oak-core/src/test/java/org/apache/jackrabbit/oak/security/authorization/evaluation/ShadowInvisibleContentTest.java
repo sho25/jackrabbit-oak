@@ -339,9 +339,6 @@ block|}
 block|}
 annotation|@
 name|Test
-annotation|@
-name|Ignore
-comment|// TODO incomplete implementation of PermissionValidator.childNodeChanged()
 specifier|public
 name|void
 name|testShadowInvisibleProperty
@@ -375,6 +372,19 @@ operator|.
 name|REP_READ_PROPERTIES
 argument_list|)
 expr_stmt|;
+name|setupPermission
+argument_list|(
+literal|"/a"
+argument_list|,
+name|testPrincipal
+argument_list|,
+literal|false
+argument_list|,
+name|PrivilegeConstants
+operator|.
+name|REP_ALTER_PROPERTIES
+argument_list|)
+expr_stmt|;
 name|Root
 name|testRoot
 init|=
@@ -398,7 +408,7 @@ name|a
 operator|.
 name|getProperty
 argument_list|(
-literal|"x"
+literal|"aProp"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -407,9 +417,9 @@ name|a
 operator|.
 name|setProperty
 argument_list|(
-literal|"x"
+literal|"aProp"
 argument_list|,
-literal|"xValue1"
+literal|"aValue1"
 argument_list|)
 expr_stmt|;
 name|assertNotNull
@@ -418,7 +428,7 @@ name|a
 operator|.
 name|getProperty
 argument_list|(
-literal|"x"
+literal|"aProp"
 argument_list|)
 argument_list|)
 expr_stmt|;
