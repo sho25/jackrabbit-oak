@@ -388,7 +388,7 @@ argument_list|(
 literal|"/a"
 argument_list|)
 decl_stmt|;
-comment|// /a/x not visible to this session
+comment|// /a/aProp not visible to this session
 name|assertNull
 argument_list|(
 name|a
@@ -409,7 +409,7 @@ literal|"aProp"
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// shadow /a/x with transient property of the same name
+comment|// shadow /a/aProp with transient property of the same name
 name|a
 operator|.
 name|setProperty
@@ -469,9 +469,6 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-annotation|@
-name|Ignore
-comment|// FIXME how do we handle the case where the shadowing item is the same as the shadowing item?
 specifier|public
 name|void
 name|testShadowInvisibleProperty2
@@ -505,6 +502,19 @@ operator|.
 name|REP_READ_PROPERTIES
 argument_list|)
 expr_stmt|;
+name|setupPermission
+argument_list|(
+literal|"/a"
+argument_list|,
+name|testPrincipal
+argument_list|,
+literal|false
+argument_list|,
+name|PrivilegeConstants
+operator|.
+name|REP_ALTER_PROPERTIES
+argument_list|)
+expr_stmt|;
 name|Root
 name|testRoot
 init|=
@@ -521,25 +531,35 @@ argument_list|(
 literal|"/a"
 argument_list|)
 decl_stmt|;
-comment|// /a/x not visible to this session
+comment|// /a/aProp not visible to this session
 name|assertNull
 argument_list|(
 name|a
 operator|.
 name|getProperty
 argument_list|(
-literal|"x"
+literal|"aProp"
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// shadow /a/x with transient property of the same name
+name|assertFalse
+argument_list|(
+name|a
+operator|.
+name|hasProperty
+argument_list|(
+literal|"aProp"
+argument_list|)
+argument_list|)
+expr_stmt|;
+comment|// shadow /a/aProp with transient property of the same name *and value*
 name|a
 operator|.
 name|setProperty
 argument_list|(
-literal|"x"
+literal|"aProp"
 argument_list|,
-literal|"xValue"
+literal|"aValue"
 argument_list|)
 expr_stmt|;
 name|assertNotNull
@@ -548,36 +568,47 @@ name|a
 operator|.
 name|getProperty
 argument_list|(
-literal|"x"
+literal|"aProp"
 argument_list|)
 argument_list|)
 expr_stmt|;
-try|try
-block|{
+name|assertTrue
+argument_list|(
+name|a
+operator|.
+name|hasProperty
+argument_list|(
+literal|"aProp"
+argument_list|)
+argument_list|)
+expr_stmt|;
+comment|// after commit() normal access control again takes over
 name|testRoot
 operator|.
 name|commit
 argument_list|()
 expr_stmt|;
-name|fail
-argument_list|()
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|CommitFailedException
-name|e
-parameter_list|)
-block|{
-name|assertTrue
+comment|// does not fail since no changes are detected, even when write access is denied
+name|assertNull
 argument_list|(
-name|e
+name|a
 operator|.
-name|isAccessViolation
-argument_list|()
+name|getProperty
+argument_list|(
+literal|"aProp"
+argument_list|)
 argument_list|)
 expr_stmt|;
-block|}
+name|assertFalse
+argument_list|(
+name|a
+operator|.
+name|hasProperty
+argument_list|(
+literal|"aProp"
+argument_list|)
+argument_list|)
+expr_stmt|;
 block|}
 annotation|@
 name|Ignore
