@@ -1761,6 +1761,27 @@ return|;
 block|}
 else|else
 block|{
+comment|// check if the path is an SNS path with an index> 1 and throw a PathNotFoundException instead (see OAK-1216)
+if|if
+condition|(
+name|getOakPathKeepIndex
+argument_list|(
+name|jcrPath
+argument_list|)
+operator|!=
+literal|null
+condition|)
+block|{
+throw|throw
+operator|new
+name|PathNotFoundException
+argument_list|(
+name|jcrPath
+argument_list|)
+throw|;
+block|}
+else|else
+block|{
 throw|throw
 operator|new
 name|RepositoryException
@@ -1770,6 +1791,7 @@ operator|+
 name|jcrPath
 argument_list|)
 throw|;
+block|}
 block|}
 block|}
 comment|/**      * Returns the Oak path for the given JCR path, or throws a      * {@link javax.jcr.PathNotFoundException} if the path can not be mapped.      *      * @param jcrPath JCR path      * @return Oak path      * @throws javax.jcr.PathNotFoundException if the path can not be mapped      */
