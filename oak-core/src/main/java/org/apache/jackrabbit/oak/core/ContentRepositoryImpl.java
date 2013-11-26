@@ -1602,12 +1602,13 @@ literal|true
 argument_list|,
 literal|true
 argument_list|)
+comment|// SNS are not supported (OAK-1224)
 operator|.
 name|put
 argument_list|(
 name|NODE_TYPE_MANAGEMENT_SAME_NAME_SIBLINGS_SUPPORTED
 argument_list|,
-name|trueValue
+name|falseValue
 argument_list|,
 literal|true
 argument_list|,
