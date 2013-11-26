@@ -670,6 +670,16 @@ operator|instanceof
 name|ExcludeExternal
 operator|)
 decl_stmt|;
+name|String
+name|oakPath
+init|=
+name|namePathMapper
+operator|.
+name|getOakPath
+argument_list|(
+name|absPath
+argument_list|)
+decl_stmt|;
 name|FilterProvider
 name|filterProvider
 init|=
@@ -681,9 +691,6 @@ argument_list|,
 name|eventTypes
 argument_list|,
 name|oakPath
-argument_list|(
-name|absPath
-argument_list|)
 argument_list|,
 name|isDeep
 argument_list|,
@@ -979,23 +986,6 @@ argument_list|()
 throw|;
 block|}
 comment|//------------------------------------------------------------< private>---
-specifier|private
-name|String
-name|oakPath
-parameter_list|(
-name|String
-name|jcrPath
-parameter_list|)
-block|{
-return|return
-name|namePathMapper
-operator|.
-name|getOakPath
-argument_list|(
-name|jcrPath
-argument_list|)
-return|;
-block|}
 comment|/**      * Validates the given node type names.      *      * @param nodeTypeNames the node type names.      * @return the node type names as oak names.      * @throws javax.jcr.nodetype.NoSuchNodeTypeException if one of the node type names refers to      *                                 an non-existing node type.      * @throws javax.jcr.RepositoryException     if an error occurs while reading from the      *                                 node type manager.      */
 annotation|@
 name|CheckForNull
