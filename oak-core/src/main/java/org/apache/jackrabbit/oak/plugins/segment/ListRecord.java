@@ -62,11 +62,10 @@ specifier|final
 name|int
 name|LEVEL_SIZE
 init|=
-literal|1
-operator|<<
-literal|8
+name|Segment
+operator|.
+name|SEGMENT_REFERENCE_LIMIT
 decl_stmt|;
-comment|// 256
 specifier|private
 specifier|final
 name|int
