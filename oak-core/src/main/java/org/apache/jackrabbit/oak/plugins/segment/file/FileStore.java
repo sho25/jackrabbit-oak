@@ -348,11 +348,8 @@ specifier|final
 name|int
 name|DEFAULT_MEMORY_CACHE_SIZE
 init|=
-literal|1
-operator|<<
-literal|28
+literal|256
 decl_stmt|;
-comment|// 256MB
 specifier|private
 specifier|static
 specifier|final
@@ -439,7 +436,7 @@ name|File
 name|directory
 parameter_list|,
 name|int
-name|maxFileSize
+name|maxFileSizeMB
 parameter_list|,
 name|boolean
 name|memoryMapping
@@ -451,7 +448,7 @@ name|this
 argument_list|(
 name|directory
 argument_list|,
-name|maxFileSize
+name|maxFileSizeMB
 argument_list|,
 name|DEFAULT_MEMORY_CACHE_SIZE
 argument_list|,
@@ -466,10 +463,10 @@ name|File
 name|directory
 parameter_list|,
 name|int
-name|maxFileSize
+name|maxFileSizeMB
 parameter_list|,
 name|int
-name|cacheSize
+name|cacheSizeMB
 parameter_list|,
 name|boolean
 name|memoryMapping
@@ -479,7 +476,7 @@ name|IOException
 block|{
 name|super
 argument_list|(
-name|cacheSize
+name|cacheSizeMB
 argument_list|)
 expr_stmt|;
 name|checkNotNull
@@ -500,7 +497,9 @@ name|this
 operator|.
 name|maxFileSize
 operator|=
-name|maxFileSize
+name|maxFileSizeMB
+operator|*
+name|MB
 expr_stmt|;
 name|this
 operator|.
@@ -563,7 +562,7 @@ name|TarFile
 argument_list|(
 name|file
 argument_list|,
-name|maxFileSize
+name|maxFileSizeMB
 argument_list|,
 name|memoryMapping
 argument_list|)
@@ -630,7 +629,7 @@ name|TarFile
 argument_list|(
 name|file
 argument_list|,
-name|maxFileSize
+name|maxFileSizeMB
 argument_list|,
 name|memoryMapping
 argument_list|)

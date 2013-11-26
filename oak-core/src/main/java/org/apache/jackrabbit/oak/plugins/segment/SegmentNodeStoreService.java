@@ -119,7 +119,7 @@ name|com
 operator|.
 name|mongodb
 operator|.
-name|Mongo
+name|MongoClient
 import|;
 end_import
 
@@ -506,7 +506,11 @@ name|Property
 argument_list|(
 name|description
 operator|=
-literal|"TarMK maximum file size"
+literal|"TarMK maximum file size (MB)"
+argument_list|,
+name|intValue
+operator|=
+literal|256
 argument_list|)
 specifier|public
 specifier|static
@@ -589,21 +593,11 @@ init|=
 literal|"cache"
 decl_stmt|;
 specifier|private
-specifier|static
-specifier|final
-name|int
-name|MB
-init|=
-literal|1024
-operator|*
-literal|1024
-decl_stmt|;
-specifier|private
 name|String
 name|name
 decl_stmt|;
 specifier|private
-name|Mongo
+name|MongoClient
 name|mongo
 decl_stmt|;
 specifier|private
@@ -768,10 +762,9 @@ name|getProperty
 argument_list|(
 name|SIZE
 argument_list|,
-literal|"268435456"
+literal|"256"
 argument_list|)
 expr_stmt|;
-comment|// 256MB
 block|}
 name|mongo
 operator|=
@@ -864,7 +857,7 @@ decl_stmt|;
 name|mongo
 operator|=
 operator|new
-name|Mongo
+name|MongoClient
 argument_list|(
 name|host
 argument_list|,
@@ -884,8 +877,6 @@ name|db
 argument_list|)
 argument_list|,
 name|cache
-operator|*
-name|MB
 argument_list|)
 expr_stmt|;
 block|}

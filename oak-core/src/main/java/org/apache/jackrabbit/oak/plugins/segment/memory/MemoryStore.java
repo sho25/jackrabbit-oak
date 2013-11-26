@@ -233,9 +233,7 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
-literal|1024
-operator|*
-literal|1024
+literal|0
 argument_list|)
 expr_stmt|;
 name|NodeBuilder

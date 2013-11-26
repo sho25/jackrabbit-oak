@@ -267,7 +267,7 @@ name|com
 operator|.
 name|mongodb
 operator|.
-name|Mongo
+name|MongoClient
 import|;
 end_import
 
@@ -1077,7 +1077,7 @@ name|port
 parameter_list|,
 specifier|final
 name|int
-name|cacheSize
+name|cacheSizeMB
 parameter_list|)
 block|{
 return|return
@@ -1093,7 +1093,7 @@ index|[]
 name|stores
 decl_stmt|;
 specifier|private
-name|Mongo
+name|MongoClient
 name|mongo
 decl_stmt|;
 annotation|@
@@ -1132,7 +1132,7 @@ expr_stmt|;
 name|mongo
 operator|=
 operator|new
-name|Mongo
+name|MongoClient
 argument_list|(
 name|host
 argument_list|,
@@ -1171,7 +1171,7 @@ argument_list|(
 name|unique
 argument_list|)
 argument_list|,
-name|cacheSize
+name|cacheSizeMB
 argument_list|)
 expr_stmt|;
 name|Oak
@@ -1260,11 +1260,11 @@ name|base
 parameter_list|,
 specifier|final
 name|int
-name|maxFileSize
+name|maxFileSizeMB
 parameter_list|,
 specifier|final
 name|int
-name|cacheSize
+name|cacheSizeMB
 parameter_list|,
 specifier|final
 name|boolean
@@ -1349,9 +1349,9 @@ argument_list|,
 name|unique
 argument_list|)
 argument_list|,
-name|maxFileSize
+name|maxFileSizeMB
 argument_list|,
-name|cacheSize
+name|cacheSizeMB
 argument_list|,
 name|memoryMapping
 argument_list|)

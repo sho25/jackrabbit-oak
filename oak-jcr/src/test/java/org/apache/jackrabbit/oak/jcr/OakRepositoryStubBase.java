@@ -239,10 +239,6 @@ name|int
 name|MAX_FILE_SIZE
 init|=
 literal|64
-operator|*
-literal|1024
-operator|*
-literal|1024
 decl_stmt|;
 specifier|private
 specifier|static
@@ -251,10 +247,6 @@ name|int
 name|CACHE_SIZE
 init|=
 literal|32
-operator|*
-literal|1024
-operator|*
-literal|1024
 decl_stmt|;
 specifier|private
 specifier|static

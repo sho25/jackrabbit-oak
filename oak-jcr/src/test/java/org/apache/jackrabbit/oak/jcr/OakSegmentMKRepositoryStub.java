@@ -103,7 +103,7 @@ name|com
 operator|.
 name|mongodb
 operator|.
-name|Mongo
+name|MongoClient
 import|;
 end_import
 
@@ -295,7 +295,7 @@ argument_list|)
 decl_stmt|;
 specifier|private
 specifier|final
-name|Mongo
+name|MongoClient
 name|connection
 decl_stmt|;
 specifier|private
@@ -330,7 +330,7 @@ operator|.
 name|connection
 operator|=
 operator|new
-name|Mongo
+name|MongoClient
 argument_list|(
 name|HOST
 argument_list|,
@@ -360,10 +360,6 @@ name|DB
 argument_list|)
 argument_list|,
 literal|4
-operator|*
-literal|1024
-operator|*
-literal|1024
 argument_list|)
 argument_list|)
 argument_list|)
@@ -473,11 +469,11 @@ parameter_list|()
 block|{
 try|try
 block|{
-name|Mongo
+name|MongoClient
 name|mongo
 init|=
 operator|new
-name|Mongo
+name|MongoClient
 argument_list|(
 name|HOST
 argument_list|,

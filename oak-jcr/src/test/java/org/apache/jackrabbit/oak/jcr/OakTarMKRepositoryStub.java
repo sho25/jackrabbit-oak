@@ -305,9 +305,7 @@ name|FileStore
 argument_list|(
 name|directory
 argument_list|,
-literal|1024
-operator|*
-literal|1024
+literal|1
 argument_list|,
 literal|false
 argument_list|)

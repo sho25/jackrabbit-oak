@@ -793,8 +793,6 @@ name|options
 argument_list|)
 argument_list|,
 name|cacheSize
-operator|*
-name|MB
 argument_list|)
 block|,
 name|OakRepositoryFixture
@@ -809,12 +807,8 @@ name|options
 argument_list|)
 argument_list|,
 literal|256
-operator|*
-name|MB
 argument_list|,
 name|cacheSize
-operator|*
-name|MB
 argument_list|,
 name|mmap
 operator|.

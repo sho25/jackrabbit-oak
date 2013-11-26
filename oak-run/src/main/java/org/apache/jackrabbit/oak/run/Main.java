@@ -515,20 +515,6 @@ name|Queues
 import|;
 end_import
 
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|collect
-operator|.
-name|Sets
-import|;
-end_import
-
 begin_class
 specifier|public
 class|class
@@ -815,10 +801,6 @@ argument_list|(
 name|file
 argument_list|,
 literal|256
-operator|*
-literal|1024
-operator|*
-literal|1024
 argument_list|,
 literal|false
 argument_list|)
@@ -1349,10 +1331,6 @@ name|newdir
 argument_list|)
 argument_list|,
 literal|256
-operator|*
-literal|1024
-operator|*
-literal|1024
 argument_list|,
 literal|true
 argument_list|)
