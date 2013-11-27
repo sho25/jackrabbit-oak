@@ -200,6 +200,25 @@ name|OrCondition
 operator|)
 name|where
 decl_stmt|;
+if|if
+condition|(
+name|or
+operator|.
+name|getCommonLeftPart
+argument_list|()
+operator|!=
+literal|null
+condition|)
+block|{
+comment|// @x = 1 or @x = 2
+comment|// is automatically converted to
+comment|// @x in (1, 2)
+comment|// within the query engine
+block|}
+else|else
+block|{
+comment|// @x = 1 or @y = 2
+comment|// or similar
 name|Statement
 name|s1
 init|=
@@ -281,6 +300,7 @@ argument_list|,
 name|s2
 argument_list|)
 return|;
+block|}
 block|}
 return|return
 name|this
