@@ -225,6 +225,16 @@ end_import
 
 begin_import
 import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|Nonnull
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -452,11 +462,11 @@ return|;
 block|}
 block|}
 decl_stmt|;
+specifier|private
 specifier|final
 name|SegmentStore
 name|store
 decl_stmt|;
-comment|// TODO: should be private
 specifier|private
 specifier|final
 name|UUID
@@ -608,6 +618,17 @@ argument_list|)
 expr_stmt|;
 return|return
 name|pos
+return|;
+block|}
+comment|/**      * Returns the store that contains this segment.      *      * @return containing segment store      */
+annotation|@
+name|Nonnull
+name|SegmentStore
+name|getStore
+parameter_list|()
+block|{
+return|return
+name|store
 return|;
 block|}
 specifier|public

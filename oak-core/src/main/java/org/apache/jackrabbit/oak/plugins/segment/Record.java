@@ -225,6 +225,21 @@ operator|=
 name|offset
 expr_stmt|;
 block|}
+comment|/**      * Returns the store that contains this record.      *      * @return containing segment store      */
+annotation|@
+name|Nonnull
+specifier|protected
+name|SegmentStore
+name|getStore
+parameter_list|()
+block|{
+return|return
+name|segment
+operator|.
+name|getStore
+argument_list|()
+return|;
+block|}
 comment|/**      * Returns the segment that contains this record.      *      * @return segment that contains this record      */
 specifier|protected
 specifier|synchronized
