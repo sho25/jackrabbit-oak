@@ -774,6 +774,7 @@ block|{
 name|beforeRead
 argument_list|()
 expr_stmt|;
+comment|// FIXME use super.getPropertyStatus here. See OAK-1232
 name|PropertyState
 name|head
 init|=
