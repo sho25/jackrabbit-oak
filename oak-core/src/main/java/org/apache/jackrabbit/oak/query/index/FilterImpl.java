@@ -974,6 +974,37 @@ block|{
 case|case
 name|EQUAL
 case|:
+if|if
+condition|(
+name|x
+operator|.
+name|first
+operator|!=
+literal|null
+operator|&&
+name|x
+operator|.
+name|last
+operator|==
+name|x
+operator|.
+name|first
+operator|&&
+name|x
+operator|.
+name|firstIncluding
+operator|&&
+name|x
+operator|.
+name|lastIncluding
+condition|)
+block|{
+comment|// there is already an equality condition on this property
+comment|// we will keep this, as it could be a multi-valued property
+comment|// (unlike in databases, "x = 1 and x = 2" can match a node
+comment|// if x is a multi-valued property with value "{1, 2}")
+return|return;
+block|}
 name|x
 operator|.
 name|first
