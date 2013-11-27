@@ -835,6 +835,9 @@ argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|writeJournals
+argument_list|()
+expr_stmt|;
 block|}
 block|}
 specifier|public
