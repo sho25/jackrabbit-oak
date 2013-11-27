@@ -34,6 +34,7 @@ comment|/**  *<code>StableRevisionComparator</code> implements a revision compar
 end_comment
 
 begin_class
+specifier|public
 class|class
 name|StableRevisionComparator
 implements|implements

@@ -191,6 +191,16 @@ argument_list|>
 name|nextIterator
 parameter_list|()
 function_decl|;
+comment|/**      * Provides details about this iterator      */
+specifier|public
+name|String
+name|description
+parameter_list|()
+block|{
+return|return
+literal|""
+return|;
+block|}
 comment|//----------------------------< Iterator>----------------------------------
 annotation|@
 name|Override
@@ -375,7 +385,10 @@ throw|throw
 operator|new
 name|IllegalStateException
 argument_list|(
-literal|"First element of next iterator must be greater than previous iterator"
+name|description
+argument_list|()
+operator|+
+literal|" First element of next iterator must be greater than previous iterator"
 argument_list|)
 throw|;
 block|}
