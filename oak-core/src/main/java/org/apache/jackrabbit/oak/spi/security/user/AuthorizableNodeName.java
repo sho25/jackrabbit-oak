@@ -23,6 +23,16 @@ end_package
 
 begin_import
 import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|Nonnull
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -53,9 +63,13 @@ name|Default
 argument_list|()
 decl_stmt|;
 comment|/**      * Generates a node name from the specified {@code authorizableId}.      *      * @param authorizableId The ID of the authorizable to be created.      * @return A valid node name.      */
+annotation|@
+name|Nonnull
 name|String
 name|generateNodeName
 parameter_list|(
+annotation|@
+name|Nonnull
 name|String
 name|authorizableId
 parameter_list|)
@@ -69,10 +83,14 @@ name|AuthorizableNodeName
 block|{
 annotation|@
 name|Override
+annotation|@
+name|Nonnull
 specifier|public
 name|String
 name|generateNodeName
 parameter_list|(
+annotation|@
+name|Nonnull
 name|String
 name|authorizableId
 parameter_list|)

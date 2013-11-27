@@ -13,6 +13,8 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
+name|spi
+operator|.
 name|security
 operator|.
 name|principal
@@ -160,6 +162,7 @@ comment|/**  * Default implementation of the {@code PrincipalManager} interface.
 end_comment
 
 begin_class
+specifier|public
 class|class
 name|PrincipalManagerImpl
 implements|implements
@@ -170,6 +173,7 @@ specifier|final
 name|PrincipalProvider
 name|principalProvider
 decl_stmt|;
+specifier|public
 name|PrincipalManagerImpl
 parameter_list|(
 annotation|@
