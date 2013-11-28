@@ -882,11 +882,6 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-annotation|@
-name|Ignore
-argument_list|(
-literal|"OAK-1155"
-argument_list|)
 specifier|public
 name|void
 name|costMaxEstimation
@@ -944,18 +939,18 @@ name|getNodeState
 argument_list|()
 decl_stmt|;
 comment|// 100 nodes in the index:
-comment|// with a single level /content cost is 6250000
-comment|// adding a second level /content/data cost jumps to 1.544804416E9
+comment|// with a single level /content cost is 121
+comment|// adding a second level /content/data cost is133
 comment|// 101 nodes in the index:
-comment|// with a single level /content cost is 100
-comment|// adding a second level /content/data stays at 100
-comment|// 100 nodes, 12 levels deep, cost is 2.147483647E9
-comment|// 101 nodes, 12 levels deep, cost is 6.7108864E7
+comment|// with a single level /content cost is 121
+comment|// adding a second level /content/data cost is 133
+comment|// 100 nodes, 12 levels deep, cost is 345
+comment|// 101 nodes, 12 levels deep, cost is 345
 comment|// threshold for estimation (PropertyIndexLookup.MAX_COST) is at 100
 name|int
 name|nodes
 init|=
-literal|100
+literal|101
 decl_stmt|;
 name|int
 name|levels
