@@ -266,6 +266,8 @@ name|toString
 argument_list|()
 argument_list|)
 expr_stmt|;
+comment|// further narrowing will not change the restriction,
+comment|// to account for multi-valued properties
 name|f
 operator|.
 name|restrictProperty
@@ -281,7 +283,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"(1..2]"
+literal|"[1..2]"
 argument_list|,
 name|f
 operator|.
@@ -309,7 +311,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"(1..2)"
+literal|"[1..2]"
 argument_list|,
 name|f
 operator|.
@@ -322,6 +324,8 @@ name|toString
 argument_list|()
 argument_list|)
 expr_stmt|;
+comment|// this should replace the range with an equality
+comment|// (which is faster, and correct even when using multi-valued properties)
 name|f
 operator|.
 name|restrictProperty
@@ -335,11 +339,18 @@ argument_list|,
 name|two
 argument_list|)
 expr_stmt|;
-name|assertTrue
+name|assertEquals
 argument_list|(
+literal|"2"
+argument_list|,
 name|f
 operator|.
-name|isAlwaysFalse
+name|getPropertyRestriction
+argument_list|(
+literal|"x"
+argument_list|)
+operator|.
+name|toString
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -461,6 +472,8 @@ name|toString
 argument_list|()
 argument_list|)
 expr_stmt|;
+comment|// further narrowing will not change the restriction,
+comment|// to account for multi-valued properties
 name|f
 operator|.
 name|restrictProperty
@@ -474,11 +487,18 @@ argument_list|,
 name|one
 argument_list|)
 expr_stmt|;
-name|assertTrue
+name|assertEquals
 argument_list|(
+literal|"1"
+argument_list|,
 name|f
 operator|.
-name|isAlwaysFalse
+name|getPropertyRestriction
+argument_list|(
+literal|"x"
+argument_list|)
+operator|.
+name|toString
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -516,6 +536,8 @@ name|toString
 argument_list|()
 argument_list|)
 expr_stmt|;
+comment|// further narrowing will not change the restriction,
+comment|// to account for multi-valued properties
 name|f
 operator|.
 name|restrictProperty
@@ -529,11 +551,18 @@ argument_list|,
 name|one
 argument_list|)
 expr_stmt|;
-name|assertTrue
+name|assertEquals
 argument_list|(
+literal|"1"
+argument_list|,
 name|f
 operator|.
-name|isAlwaysFalse
+name|getPropertyRestriction
+argument_list|(
+literal|"x"
+argument_list|)
+operator|.
+name|toString
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -599,6 +628,8 @@ name|toString
 argument_list|()
 argument_list|)
 expr_stmt|;
+comment|// this should replace the range with an equality
+comment|// (which is faster, and correct even when using multi-valued properties)
 name|f
 operator|.
 name|restrictProperty
@@ -612,11 +643,18 @@ argument_list|,
 name|two
 argument_list|)
 expr_stmt|;
-name|assertTrue
+name|assertEquals
 argument_list|(
+literal|"2"
+argument_list|,
 name|f
 operator|.
-name|isAlwaysFalse
+name|getPropertyRestriction
+argument_list|(
+literal|"x"
+argument_list|)
+operator|.
+name|toString
 argument_list|()
 argument_list|)
 expr_stmt|;

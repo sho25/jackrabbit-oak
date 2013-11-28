@@ -999,22 +999,25 @@ operator|.
 name|lastIncluding
 condition|)
 block|{
-comment|// there is already an equality condition on this property
-comment|// we will keep this, as it could be a multi-valued property
-comment|// (unlike in databases, "x = 1 and x = 2" can match a node
-comment|// if x is a multi-valued property with value "{1, 2}")
-return|return;
+comment|// we keep the old equality condition if there is one;
+comment|// we can not use setAlwaysFalse, as this would not be correct
+comment|// for multi-valued properties:
+comment|// unlike in databases, "x = 1 and x = 2" can match a node
+comment|// if x is a multi-valued property with value {1, 2}
 block|}
+else|else
+block|{
+comment|// all other conditions (range conditions) are replaced with this one
+comment|// (we can not use setAlwaysFalse for the same reason as above)
 name|x
 operator|.
 name|first
 operator|=
-name|maxValue
-argument_list|(
-name|oldFirst
-argument_list|,
+name|x
+operator|.
+name|last
+operator|=
 name|v
-argument_list|)
 expr_stmt|;
 name|x
 operator|.
@@ -1022,43 +1025,11 @@ name|firstIncluding
 operator|=
 name|x
 operator|.
-name|first
-operator|==
-name|oldFirst
-condition|?
-name|x
-operator|.
-name|firstIncluding
-else|:
-literal|true
-expr_stmt|;
-name|x
-operator|.
-name|last
-operator|=
-name|minValue
-argument_list|(
-name|oldLast
-argument_list|,
-name|v
-argument_list|)
-expr_stmt|;
-name|x
-operator|.
 name|lastIncluding
 operator|=
-name|x
-operator|.
-name|last
-operator|==
-name|oldLast
-condition|?
-name|x
-operator|.
-name|lastIncluding
-else|:
 literal|true
 expr_stmt|;
+block|}
 break|break;
 case|case
 name|NOT_EQUAL
@@ -1082,6 +1053,16 @@ break|break;
 case|case
 name|GREATER_THAN
 case|:
+comment|// we don't narrow the range because of multi-valued properties
+if|if
+condition|(
+name|x
+operator|.
+name|first
+operator|==
+literal|null
+condition|)
+block|{
 name|x
 operator|.
 name|first
@@ -1099,10 +1080,21 @@ name|firstIncluding
 operator|=
 literal|false
 expr_stmt|;
+block|}
 break|break;
 case|case
 name|GREATER_OR_EQUAL
 case|:
+comment|// we don't narrow the range because of multi-valued properties
+if|if
+condition|(
+name|x
+operator|.
+name|first
+operator|==
+literal|null
+condition|)
+block|{
 name|x
 operator|.
 name|first
@@ -1130,10 +1122,21 @@ name|firstIncluding
 else|:
 literal|true
 expr_stmt|;
+block|}
 break|break;
 case|case
 name|LESS_THAN
 case|:
+comment|// we don't narrow the range because of multi-valued properties
+if|if
+condition|(
+name|x
+operator|.
+name|last
+operator|==
+literal|null
+condition|)
+block|{
 name|x
 operator|.
 name|last
@@ -1151,10 +1154,21 @@ name|lastIncluding
 operator|=
 literal|false
 expr_stmt|;
+block|}
 break|break;
 case|case
 name|LESS_OR_EQUAL
 case|:
+comment|// we don't narrow the range because of multi-valued properties
+if|if
+condition|(
+name|x
+operator|.
+name|last
+operator|==
+literal|null
+condition|)
+block|{
 name|x
 operator|.
 name|last
@@ -1182,10 +1196,21 @@ name|lastIncluding
 else|:
 literal|true
 expr_stmt|;
+block|}
 break|break;
 case|case
 name|LIKE
 case|:
+comment|// we don't narrow the range because of multi-valued properties
+if|if
+condition|(
+name|x
+operator|.
+name|first
+operator|==
+literal|null
+condition|)
+block|{
 comment|// LIKE is handled in the fulltext index
 name|x
 operator|.
@@ -1199,6 +1224,7 @@ name|first
 operator|=
 name|v
 expr_stmt|;
+block|}
 break|break;
 case|case
 name|IN
