@@ -1669,7 +1669,7 @@ operator|new
 name|EditorHook
 argument_list|(
 operator|new
-name|ReferenceEditorProvider
+name|GroupEditorProvider
 argument_list|()
 argument_list|)
 argument_list|,
@@ -1677,7 +1677,7 @@ operator|new
 name|EditorHook
 argument_list|(
 operator|new
-name|GroupEditorProvider
+name|ReferenceEditorProvider
 argument_list|()
 argument_list|)
 argument_list|)
