@@ -705,6 +705,8 @@ operator|!
 name|noLocal
 argument_list|,
 name|includeExternal
+argument_list|,
+name|permissionProvider
 argument_list|)
 decl_stmt|;
 name|ChangeProcessor
@@ -804,8 +806,6 @@ name|sessionDelegate
 operator|.
 name|getContentSession
 argument_list|()
-argument_list|,
-name|permissionProvider
 argument_list|,
 name|namePathMapper
 argument_list|,

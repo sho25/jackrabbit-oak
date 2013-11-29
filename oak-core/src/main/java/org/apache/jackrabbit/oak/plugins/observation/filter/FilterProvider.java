@@ -97,28 +97,6 @@ name|CommitInfo
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|spi
-operator|.
-name|security
-operator|.
-name|authorization
-operator|.
-name|permission
-operator|.
-name|TreePermission
-import|;
-end_import
-
 begin_comment
 comment|/**  * Instance of this class provide a {@link Filter} for observation  * events and a filter for commits.  */
 end_comment
@@ -143,7 +121,7 @@ name|CommitInfo
 name|info
 parameter_list|)
 function_decl|;
-comment|/**      * Factory method for creating a {@code Filter} for the passed before and after      * states and the given tree permissions of the reading session.      *      * @param beforeTree  before state      * @param afterTree   after state      * @param treePermission  tree permission of the corresponding tree of the reading session      * @return new {@code Filter} instance      */
+comment|/**      * Factory method for creating a {@code Filter} for the passed before and after      * states and the given tree permissions of the reading session.      *      * @param beforeTree  before state      * @param afterTree   after state      * @return new {@code Filter} instance      */
 annotation|@
 name|Nonnull
 name|Filter
@@ -158,14 +136,9 @@ annotation|@
 name|Nonnull
 name|ImmutableTree
 name|afterTree
-parameter_list|,
-annotation|@
-name|Nonnull
-name|TreePermission
-name|treePermission
 parameter_list|)
 function_decl|;
-comment|/**      * Path of the subtree to which the the filter returned by      * {@link #getFilter(ImmutableTree, ImmutableTree, TreePermission)} applies.      * @return path to which the filter applies.      */
+comment|/**      * Path of the subtree to which the the filter returned by      * {@link #getFilter(ImmutableTree, ImmutableTree)} applies.      * @return path to which the filter applies.      */
 annotation|@
 name|Nonnull
 name|String
