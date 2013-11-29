@@ -74,15 +74,15 @@ name|MoveValidator
 extends|extends
 name|Validator
 block|{
-comment|/**      * Called when a moved node has been detected.      *      * @param sourcePath  path of the node before the move      * @param destPath    path of the node after the move      * @param moved       the moved node state      * @throws CommitFailedException  if validation fails.      */
+comment|/**      * Called when a moved node has been detected.      *      * @param sourcePath  path of the node before the move      * @param name        name of the node after the move      * @param moved       the node state moved here      * @throws CommitFailedException  if validation fails.      * remove      */
 name|void
 name|move
 parameter_list|(
 name|String
-name|sourcePath
+name|name
 parameter_list|,
 name|String
-name|destPath
+name|sourcePath
 parameter_list|,
 name|NodeState
 name|moved

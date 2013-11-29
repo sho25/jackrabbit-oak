@@ -91,10 +91,10 @@ name|void
 name|move
 parameter_list|(
 name|String
-name|sourcePath
+name|name
 parameter_list|,
 name|String
-name|destPath
+name|sourcePath
 parameter_list|,
 name|NodeState
 name|moved

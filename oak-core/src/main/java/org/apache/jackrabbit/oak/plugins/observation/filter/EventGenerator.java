@@ -234,7 +234,7 @@ name|NodeState
 name|before
 parameter_list|)
 function_decl|;
-comment|/**          * Include a moved node          * @param sourcePath  source path of the move operation          * @param destPath  destination path of the move operation          * @param moved the moved node          * @return  {@code true} if the node should be included          */
+comment|/**          * Include a moved node          * @param sourcePath  source path of the move operation          * @param name        name of the moved node          * @param moved       the moved node          * @return  {@code true} if the node should be included          */
 name|boolean
 name|includeMove
 parameter_list|(
@@ -242,7 +242,7 @@ name|String
 name|sourcePath
 parameter_list|,
 name|String
-name|destPath
+name|name
 parameter_list|,
 name|NodeState
 name|moved
@@ -333,7 +333,7 @@ name|NodeState
 name|before
 parameter_list|)
 function_decl|;
-comment|/**          * Notification for a moved node          * @param sourcePath  source of the moved node          * @param destPath  destination of the moved node          * @param moved  moved node          */
+comment|/**          * Notification for a moved node          * @param sourcePath  source of the moved node          * @param name        name of the moved node          * @param moved       moved node          */
 name|void
 name|nodeMoved
 parameter_list|(
@@ -341,7 +341,7 @@ name|String
 name|sourcePath
 parameter_list|,
 name|String
-name|destPath
+name|name
 parameter_list|,
 name|NodeState
 name|moved
@@ -405,10 +405,10 @@ name|void
 name|move
 parameter_list|(
 name|String
-name|sourcePath
+name|name
 parameter_list|,
 name|String
-name|destPath
+name|sourcePath
 parameter_list|,
 name|NodeState
 name|moved
@@ -424,7 +424,7 @@ name|includeMove
 argument_list|(
 name|sourcePath
 argument_list|,
-name|destPath
+name|name
 argument_list|,
 name|moved
 argument_list|)
@@ -436,7 +436,7 @@ name|nodeMoved
 argument_list|(
 name|sourcePath
 argument_list|,
-name|destPath
+name|name
 argument_list|,
 name|moved
 argument_list|)

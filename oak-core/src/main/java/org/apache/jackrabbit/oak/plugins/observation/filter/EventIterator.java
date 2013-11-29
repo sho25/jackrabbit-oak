@@ -125,22 +125,6 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|commons
-operator|.
-name|PathUtils
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
 name|spi
 operator|.
 name|commit
@@ -285,11 +269,6 @@ name|after
 decl_stmt|;
 specifier|private
 specifier|final
-name|String
-name|path
-decl_stmt|;
-specifier|private
-specifier|final
 name|Filter
 name|filter
 decl_stmt|;
@@ -362,8 +341,6 @@ argument_list|(
 name|EventIterator
 operator|.
 name|this
-argument_list|,
-name|path
 argument_list|)
 argument_list|)
 argument_list|,
@@ -445,7 +422,7 @@ name|after
 parameter_list|)
 function_decl|;
 block|}
-comment|/**      * Create a new instance of a {@code EventIterator} reporting events to the      * passed {@code listener} after filtering with the passed {@code filter}.      *      * @param before  before state      * @param after   after state      * @parem path    common path to the before and after states      * @param filter  filter for filtering changes      * @param listener  listener for listening to the filtered changes      */
+comment|/**      * Create a new instance of a {@code EventIterator} reporting events to the      * passed {@code listener} after filtering with the passed {@code filter}.      *      * @param before  before state      * @param after   after state      * @param filter  filter for filtering changes      * @param listener  listener for listening to the filtered changes      */
 specifier|public
 name|EventIterator
 parameter_list|(
@@ -458,11 +435,6 @@ annotation|@
 name|Nonnull
 name|NodeState
 name|after
-parameter_list|,
-annotation|@
-name|Nonnull
-name|String
-name|path
 parameter_list|,
 annotation|@
 name|Nonnull
@@ -501,15 +473,6 @@ operator|=
 name|checkNotNull
 argument_list|(
 name|after
-argument_list|)
-expr_stmt|;
-name|this
-operator|.
-name|path
-operator|=
-name|checkNotNull
-argument_list|(
-name|path
 argument_list|)
 expr_stmt|;
 name|this
@@ -582,15 +545,6 @@ argument_list|(
 name|before
 argument_list|,
 name|after
-argument_list|,
-name|PathUtils
-operator|.
-name|concat
-argument_list|(
-name|path
-argument_list|,
-name|name
-argument_list|)
 argument_list|,
 name|childFilter
 argument_list|,

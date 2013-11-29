@@ -574,7 +574,7 @@ name|String
 name|sourcePath
 parameter_list|,
 name|String
-name|destPath
+name|name
 parameter_list|,
 name|NodeState
 name|moved
@@ -596,7 +596,7 @@ name|includeMove
 argument_list|(
 name|sourcePath
 argument_list|,
-name|destPath
+name|name
 argument_list|,
 name|moved
 argument_list|)
@@ -1002,7 +1002,7 @@ name|String
 name|sourcePath
 parameter_list|,
 name|String
-name|destPath
+name|name
 parameter_list|,
 name|NodeState
 name|moved
@@ -1025,7 +1025,7 @@ name|includeMove
 argument_list|(
 name|sourcePath
 argument_list|,
-name|destPath
+name|name
 argument_list|,
 name|moved
 argument_list|)

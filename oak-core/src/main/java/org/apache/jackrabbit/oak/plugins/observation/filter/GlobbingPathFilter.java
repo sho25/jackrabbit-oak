@@ -72,24 +72,6 @@ import|;
 end_import
 
 begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|commons
-operator|.
-name|PathUtils
-operator|.
-name|getName
-import|;
-end_import
-
-begin_import
 import|import
 name|javax
 operator|.
@@ -467,7 +449,7 @@ name|String
 name|sourcePath
 parameter_list|,
 name|String
-name|destPath
+name|name
 parameter_list|,
 name|NodeState
 name|moved
@@ -476,10 +458,7 @@ block|{
 return|return
 name|includeItem
 argument_list|(
-name|getName
-argument_list|(
-name|destPath
-argument_list|)
+name|name
 argument_list|)
 return|;
 block|}

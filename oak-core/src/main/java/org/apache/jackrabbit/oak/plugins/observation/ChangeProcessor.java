@@ -783,11 +783,6 @@ argument_list|()
 argument_list|,
 name|provider
 operator|.
-name|getPath
-argument_list|()
-argument_list|,
-name|provider
-operator|.
 name|getFilter
 argument_list|(
 name|beforeTree

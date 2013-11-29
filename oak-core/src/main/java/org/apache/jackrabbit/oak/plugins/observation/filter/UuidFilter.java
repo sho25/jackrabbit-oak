@@ -458,7 +458,7 @@ name|String
 name|sourcePath
 parameter_list|,
 name|String
-name|destPath
+name|name
 parameter_list|,
 name|NodeState
 name|moved
