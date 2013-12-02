@@ -376,11 +376,10 @@ name|getHead
 parameter_list|()
 block|{
 return|return
-name|head
-operator|.
-name|getChildNode
+operator|new
+name|SegmentRootState
 argument_list|(
-name|ROOT
+name|head
 argument_list|)
 return|;
 block|}
