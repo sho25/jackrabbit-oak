@@ -524,7 +524,7 @@ literal|3
 argument_list|,
 name|result
 operator|.
-name|uptodateCount
+name|upToDateCount
 argument_list|)
 expr_stmt|;
 comment|//3 queries would be fired for [/] [/a] [/a/b, /a/c, /a/d]
@@ -651,7 +651,7 @@ literal|2
 argument_list|,
 name|result
 operator|.
-name|uptodateCount
+name|upToDateCount
 argument_list|)
 expr_stmt|;
 comment|//Only one query would be fired
