@@ -97,11 +97,13 @@ name|Record
 block|{
 comment|/**      * The segment that contains this record, or initially some other segment      * in the same store. The reference is lazily updated when the      * {@link #getSegment()} method is first called to prevent the potentially      * costly pre-loading of segments that might actually not be needed.      */
 specifier|private
+specifier|volatile
 name|Segment
 name|segment
 decl_stmt|;
 comment|/**      * Identifier of the segment that contains this record. The value of      * this identifier never changes, but the exact instance reference may      * get updated by the {@link #getSegment()} method to indicate that      * lazy initialization has happened.      */
 specifier|private
+specifier|volatile
 name|UUID
 name|uuid
 decl_stmt|;
@@ -293,7 +295,6 @@ return|;
 block|}
 comment|/**      * Returns the identifier of this record.      *      * @return record identifier      */
 specifier|public
-specifier|synchronized
 name|RecordId
 name|getRecordId
 parameter_list|()

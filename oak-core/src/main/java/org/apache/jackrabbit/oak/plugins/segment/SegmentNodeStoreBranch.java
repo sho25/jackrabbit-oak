@@ -559,6 +559,10 @@ operator|*=
 literal|2
 control|)
 block|{
+name|rebase
+argument_list|()
+expr_stmt|;
+comment|// rebase to latest head, a no-op if already there
 name|long
 name|start
 init|=
@@ -567,6 +571,33 @@ operator|.
 name|nanoTime
 argument_list|()
 decl_stmt|;
+if|if
+condition|(
+name|base
+operator|.
+name|hasProperty
+argument_list|(
+literal|"token"
+argument_list|)
+operator|&&
+name|base
+operator|.
+name|getLong
+argument_list|(
+literal|"timeout"
+argument_list|)
+operator|>=
+name|System
+operator|.
+name|currentTimeMillis
+argument_list|()
+condition|)
+block|{
+comment|// someone else has a pessimistic lock on the journal,
+comment|// so we should not try to commit anything
+block|}
+else|else
+block|{
 comment|// apply commit hooks on the rebased changes
 name|NodeBuilder
 name|builder
@@ -618,32 +649,6 @@ decl_stmt|;
 comment|// use optimistic locking to update the journal
 if|if
 condition|(
-name|base
-operator|.
-name|hasProperty
-argument_list|(
-literal|"token"
-argument_list|)
-operator|&&
-name|base
-operator|.
-name|getLong
-argument_list|(
-literal|"timeout"
-argument_list|)
-operator|>=
-name|System
-operator|.
-name|currentTimeMillis
-argument_list|()
-condition|)
-block|{
-comment|// someone else has a pessimistic lock on the journal,
-comment|// so we should not try to commit anything
-block|}
-elseif|else
-if|if
-condition|(
 name|store
 operator|.
 name|setHead
@@ -669,6 +674,7 @@ operator|-
 literal|1
 return|;
 block|}
+block|}
 comment|// someone else was faster, so restore state and retry later
 name|base
 operator|=
@@ -678,9 +684,9 @@ name|head
 operator|=
 name|originalHead
 expr_stmt|;
-name|Thread
+name|RANDOM
 operator|.
-name|sleep
+name|wait
 argument_list|(
 name|backoff
 argument_list|,
@@ -691,10 +697,6 @@ argument_list|(
 literal|1000000
 argument_list|)
 argument_list|)
-expr_stmt|;
-comment|// rebase to latest head before trying again
-name|rebase
-argument_list|()
 expr_stmt|;
 name|long
 name|stop
@@ -791,7 +793,34 @@ name|now
 condition|)
 block|{
 comment|// locked by someone else, wait until unlocked or expired
-comment|// TODO: explicit sleep needed to avoid spinning?
+name|RANDOM
+operator|.
+name|wait
+argument_list|(
+name|Math
+operator|.
+name|min
+argument_list|(
+name|before
+operator|.
+name|getLong
+argument_list|(
+literal|"timeout"
+argument_list|)
+operator|-
+name|now
+argument_list|,
+literal|1000
+argument_list|)
+argument_list|,
+name|RANDOM
+operator|.
+name|nextInt
+argument_list|(
+literal|1000000
+argument_list|)
+argument_list|)
+expr_stmt|;
 block|}
 else|else
 block|{
@@ -1000,6 +1029,11 @@ operator|!=
 name|head
 condition|)
 block|{
+synchronized|synchronized
+init|(
+name|RANDOM
+init|)
+block|{
 try|try
 block|{
 name|long
@@ -1049,6 +1083,15 @@ argument_list|,
 name|e
 argument_list|)
 throw|;
+block|}
+finally|finally
+block|{
+name|RANDOM
+operator|.
+name|notifyAll
+argument_list|()
+expr_stmt|;
+block|}
 block|}
 block|}
 return|return
