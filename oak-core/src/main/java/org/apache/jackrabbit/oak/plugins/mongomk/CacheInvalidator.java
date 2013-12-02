@@ -1668,7 +1668,7 @@ block|{
 return|return
 name|doc
 operator|.
-name|isUptodate
+name|isUpToDate
 argument_list|(
 name|time
 argument_list|)
@@ -1842,7 +1842,7 @@ condition|)
 block|{
 name|doc
 operator|.
-name|markUptodate
+name|markUpToDate
 argument_list|(
 name|time
 argument_list|)

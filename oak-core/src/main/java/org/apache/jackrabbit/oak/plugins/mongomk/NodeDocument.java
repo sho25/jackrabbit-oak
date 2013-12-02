@@ -545,6 +545,7 @@ init|=
 literal|"_revisions"
 decl_stmt|;
 comment|/**      * The last revision. Key: machine id, value: revision.      */
+specifier|private
 specifier|static
 specifier|final
 name|String
@@ -770,17 +771,15 @@ else|:
 literal|false
 return|;
 block|}
-comment|/**      * Mark this instance as up-to-date wrt state in persistence store      * @param checkTime time at which the check was performed      */
+comment|/**      * Mark this instance as up-to-date (matches the state in persistence      * store).      *       * @param checkTime time at which the check was performed      */
 specifier|public
 name|void
-name|markUptodate
+name|markUpToDate
 parameter_list|(
 name|long
 name|checkTime
 parameter_list|)
 block|{
-name|this
-operator|.
 name|lastCheckTime
 operator|.
 name|set
@@ -789,10 +788,10 @@ name|checkTime
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Returns true if the document has already been checked for consistency      * in current cycle      * @param lastCheckTime time at which current cycle started      */
+comment|/**      * Returns true if the document has already been checked for consistency      * in current cycle.      *       * @param lastCheckTime time at which current cycle started      * @return if the document was checked      */
 specifier|public
 name|boolean
-name|isUptodate
+name|isUpToDate
 parameter_list|(
 name|long
 name|lastCheckTime
@@ -809,7 +808,7 @@ name|get
 argument_list|()
 return|;
 block|}
-comment|/**      * Returns the last time when this object was checked for consistency      */
+comment|/**      * Returns the last time when this object was checked for consistency.      *       * @return the last check time      */
 specifier|public
 name|long
 name|getLastCheckTime

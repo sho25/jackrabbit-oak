@@ -1545,7 +1545,7 @@ name|IllegalStateException
 argument_list|(
 literal|"Missing "
 operator|+
-name|NodeDocument
+name|Document
 operator|.
 name|MOD_COUNT
 argument_list|)
