@@ -546,7 +546,7 @@ name|propertyBuilder
 operator|=
 name|PropertyBuilder
 operator|.
-name|create
+name|array
 argument_list|(
 name|Type
 operator|.
@@ -555,8 +555,6 @@ argument_list|,
 name|UserConstants
 operator|.
 name|REP_MEMBERS
-argument_list|,
-literal|true
 argument_list|)
 expr_stmt|;
 block|}
@@ -868,7 +866,7 @@ name|prop
 operator|=
 name|PropertyBuilder
 operator|.
-name|create
+name|array
 argument_list|(
 name|Type
 operator|.
@@ -877,8 +875,6 @@ argument_list|,
 name|UserConstants
 operator|.
 name|REP_MEMBERS
-argument_list|,
-literal|true
 argument_list|)
 expr_stmt|;
 block|}

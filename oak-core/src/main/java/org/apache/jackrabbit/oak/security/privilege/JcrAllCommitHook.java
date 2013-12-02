@@ -414,15 +414,13 @@ name|propertyBuilder
 operator|=
 name|PropertyBuilder
 operator|.
-name|create
+name|array
 argument_list|(
 name|Type
 operator|.
 name|NAME
 argument_list|,
 name|REP_AGGREGATES
-argument_list|,
-literal|true
 argument_list|)
 expr_stmt|;
 block|}
