@@ -1260,7 +1260,13 @@ literal|0
 init|;
 name|i
 operator|<
-literal|100000
+literal|2
+operator|*
+name|Segment
+operator|.
+name|MAX_SEGMENT_SIZE
+operator|+
+literal|1000
 condition|;
 name|i
 operator|++
