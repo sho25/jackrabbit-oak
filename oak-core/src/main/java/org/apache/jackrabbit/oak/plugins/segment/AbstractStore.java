@@ -373,11 +373,11 @@ name|id
 argument_list|)
 condition|)
 block|{
-try|try
-block|{
 name|currentlyWaiting
 operator|++
 expr_stmt|;
+try|try
+block|{
 name|wait
 argument_list|()
 expr_stmt|;
