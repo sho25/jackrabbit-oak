@@ -442,7 +442,9 @@ parameter_list|(
 name|IllegalStateException
 name|expected
 parameter_list|)
-block|{         }
+block|{
+comment|// success
+block|}
 name|builder
 operator|.
 name|removeValue
