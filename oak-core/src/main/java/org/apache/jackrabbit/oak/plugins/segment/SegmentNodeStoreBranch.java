@@ -438,8 +438,7 @@ name|newBase
 init|=
 name|store
 operator|.
-name|getHead
-argument_list|()
+name|head
 decl_stmt|;
 if|if
 condition|(
@@ -749,6 +748,8 @@ name|info
 parameter_list|)
 throws|throws
 name|CommitFailedException
+throws|,
+name|InterruptedException
 block|{
 while|while
 condition|(
@@ -760,8 +761,7 @@ name|before
 init|=
 name|store
 operator|.
-name|getHead
-argument_list|()
+name|head
 decl_stmt|;
 name|long
 name|now
