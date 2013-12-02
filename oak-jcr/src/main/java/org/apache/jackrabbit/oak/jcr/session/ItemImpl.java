@@ -335,11 +335,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|plugins
+name|util
 operator|.
-name|memory
-operator|.
-name|MemoryPropertyBuilder
+name|PropertyBuilder
 import|;
 end_import
 
@@ -1802,7 +1800,7 @@ name|STRING
 expr_stmt|;
 block|}
 return|return
-name|MemoryPropertyBuilder
+name|PropertyBuilder
 operator|.
 name|array
 argument_list|(

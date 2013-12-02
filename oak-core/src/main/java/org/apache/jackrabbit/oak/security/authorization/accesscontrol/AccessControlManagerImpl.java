@@ -983,24 +983,6 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|spi
-operator|.
-name|state
-operator|.
-name|PropertyBuilder
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
 name|util
 operator|.
 name|NodeUtil
@@ -1019,7 +1001,7 @@ name|oak
 operator|.
 name|util
 operator|.
-name|PropertyUtil
+name|PropertyBuilder
 import|;
 end_import
 
@@ -3793,9 +3775,9 @@ block|{
 name|PropertyBuilder
 name|pb
 init|=
-name|PropertyUtil
+name|PropertyBuilder
 operator|.
-name|getPropertyBuilder
+name|copy
 argument_list|(
 name|Type
 operator|.

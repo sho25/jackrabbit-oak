@@ -101,11 +101,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|plugins
+name|util
 operator|.
-name|memory
-operator|.
-name|MemoryPropertyBuilder
+name|PropertyBuilder
 import|;
 end_import
 
@@ -142,24 +140,6 @@ operator|.
 name|state
 operator|.
 name|NodeBuilder
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|spi
-operator|.
-name|state
-operator|.
-name|PropertyBuilder
 import|;
 end_import
 
@@ -373,7 +353,7 @@ name|String
 argument_list|>
 name|merged
 init|=
-name|MemoryPropertyBuilder
+name|PropertyBuilder
 operator|.
 name|array
 argument_list|(
