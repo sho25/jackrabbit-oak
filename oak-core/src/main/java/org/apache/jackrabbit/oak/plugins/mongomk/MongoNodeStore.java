@@ -3159,7 +3159,6 @@ return|;
 block|}
 annotation|@
 name|CheckForNull
-specifier|private
 name|Node
 name|readNode
 parameter_list|(

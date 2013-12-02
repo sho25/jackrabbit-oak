@@ -553,6 +553,7 @@ name|newline
 argument_list|()
 expr_stmt|;
 block|}
+comment|/**      * Update the "lastRev" and "modified" properties for the specified node      * document.      *       * @param path the path      */
 specifier|public
 name|void
 name|touchNode

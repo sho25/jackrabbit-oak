@@ -319,7 +319,7 @@ name|int
 name|invalidationCount
 decl_stmt|;
 name|int
-name|uptodateCount
+name|upToDateCount
 decl_stmt|;
 name|int
 name|cacheSize
@@ -347,9 +347,9 @@ literal|"invalidationCount="
 operator|+
 name|invalidationCount
 operator|+
-literal|", uptodateCount="
+literal|", upToDateCount="
 operator|+
-name|uptodateCount
+name|upToDateCount
 operator|+
 literal|", cacheSize="
 operator|+
@@ -563,7 +563,7 @@ name|keySet
 argument_list|()
 argument_list|)
 decl_stmt|;
-comment|//Fetch only the lastRev map and id
+comment|// Fetch only the lastRev map and id
 specifier|final
 name|BasicDBObject
 name|keys
@@ -571,7 +571,7 @@ init|=
 operator|new
 name|BasicDBObject
 argument_list|(
-name|NodeDocument
+name|Document
 operator|.
 name|ID
 argument_list|,
@@ -582,14 +582,14 @@ name|keys
 operator|.
 name|put
 argument_list|(
-name|NodeDocument
+name|Document
 operator|.
 name|MOD_COUNT
 argument_list|,
 literal|1
 argument_list|)
 expr_stmt|;
-comment|//Fetch lastRev for each such node
+comment|// Fetch lastRev for each such node
 name|DBCursor
 name|cursor
 init|=
@@ -633,7 +633,7 @@ name|obj
 operator|.
 name|get
 argument_list|(
-name|NodeDocument
+name|Document
 operator|.
 name|ID
 argument_list|)
@@ -648,7 +648,7 @@ name|obj
 operator|.
 name|get
 argument_list|(
-name|NodeDocument
+name|Document
 operator|.
 name|MOD_COUNT
 argument_list|)
@@ -708,7 +708,7 @@ else|else
 block|{
 name|result
 operator|.
-name|uptodateCount
+name|upToDateCount
 operator|++
 expr_stmt|;
 block|}
@@ -725,6 +725,44 @@ name|HierarchicalInvalidator
 extends|extends
 name|CacheInvalidator
 block|{
+specifier|private
+specifier|static
+specifier|final
+name|TreeTraverser
+argument_list|<
+name|TreeNode
+argument_list|>
+name|TRAVERSER
+init|=
+operator|new
+name|TreeTraverser
+argument_list|<
+name|TreeNode
+argument_list|>
+argument_list|()
+block|{
+annotation|@
+name|Override
+specifier|public
+name|Iterable
+argument_list|<
+name|TreeNode
+argument_list|>
+name|children
+parameter_list|(
+name|TreeNode
+name|root
+parameter_list|)
+block|{
+return|return
+name|root
+operator|.
+name|children
+argument_list|()
+return|;
+block|}
+block|}
+decl_stmt|;
 specifier|private
 specifier|final
 name|DBCollection
@@ -801,7 +839,7 @@ name|keySet
 argument_list|()
 argument_list|)
 decl_stmt|;
-comment|//Invalidation stats
+comment|// Invalidation stats
 name|result
 operator|.
 name|cacheSize
@@ -811,8 +849,8 @@ operator|.
 name|size
 argument_list|()
 expr_stmt|;
-comment|//Time at which the check is started. All NodeDocuments which
-comment|//are found to be uptodate would be marked touched at this time
+comment|// Time at which the check is started. All NodeDocuments which
+comment|// are found to be up-to-date would be marked touched at this time
 specifier|final
 name|long
 name|startTime
@@ -864,7 +902,7 @@ operator|.
 name|newHashMap
 argument_list|()
 decl_stmt|;
-comment|//Fetch only the lastRev map and id
+comment|// Fetch only the lastRev map and id
 specifier|final
 name|BasicDBObject
 name|keys
@@ -872,7 +910,7 @@ init|=
 operator|new
 name|BasicDBObject
 argument_list|(
-name|NodeDocument
+name|Document
 operator|.
 name|ID
 argument_list|,
@@ -883,7 +921,7 @@ name|keys
 operator|.
 name|put
 argument_list|(
-name|NodeDocument
+name|Document
 operator|.
 name|MOD_COUNT
 argument_list|,
@@ -907,8 +945,8 @@ operator|.
 name|next
 argument_list|()
 decl_stmt|;
-comment|//Root node would already have been processed
-comment|//Allows us to save on the extra query for /
+comment|// Root node would already have been processed
+comment|// Allows us to save on the extra query for /
 if|if
 condition|(
 name|tn
@@ -926,8 +964,8 @@ argument_list|)
 expr_stmt|;
 continue|continue;
 block|}
-comment|//Collect nodes at same level in tree if
-comment|//they are not uptodate.
+comment|// Collect nodes at same level in tree if
+comment|// they are not up-to-date.
 if|if
 condition|(
 name|tn
@@ -940,7 +978,7 @@ condition|)
 block|{
 name|result
 operator|.
-name|uptodateCount
+name|upToDateCount
 operator|++
 expr_stmt|;
 block|}
@@ -968,7 +1006,7 @@ operator|.
 name|hasNext
 argument_list|()
 decl_stmt|;
-comment|//Change in level or last element
+comment|// Change in level or last element
 if|if
 condition|(
 operator|!
@@ -1020,7 +1058,7 @@ name|keySet
 argument_list|()
 argument_list|)
 decl_stmt|;
-comment|//Fetch lastRev and modCount for each such nodes
+comment|// Fetch lastRev and modCount for each such nodes
 name|DBCursor
 name|cursor
 init|=
@@ -1081,7 +1119,7 @@ name|obj
 operator|.
 name|get
 argument_list|(
-name|NodeDocument
+name|Document
 operator|.
 name|MOD_COUNT
 argument_list|)
@@ -1096,7 +1134,7 @@ name|obj
 operator|.
 name|get
 argument_list|(
-name|NodeDocument
+name|Document
 operator|.
 name|ID
 argument_list|)
@@ -1149,7 +1187,7 @@ condition|)
 block|{
 name|result
 operator|.
-name|uptodateCount
+name|upToDateCount
 operator|++
 expr_stmt|;
 name|tn2
@@ -1174,7 +1212,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|//Remove the processed nodes
+comment|// Remove the processed nodes
 name|sameLevelNodes
 operator|.
 name|remove
@@ -1186,8 +1224,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|//NodeDocument present in cache but not in database
-comment|//Remove such nodes from cache
+comment|// NodeDocument present in cache but not in database
+comment|// Remove such nodes from cache
 if|if
 condition|(
 operator|!
@@ -1242,8 +1280,8 @@ argument_list|,
 name|result
 argument_list|)
 expr_stmt|;
-comment|//TODO collect the list of ids which are invalidated such that entries for only those
-comment|//ids are removed from the Document Children Cache
+comment|// TODO collect the list of ids which are invalidated such that entries for only those
+comment|// ids are removed from the Document Children Cache
 return|return
 name|result
 return|;
@@ -1319,43 +1357,6 @@ return|return
 name|root
 return|;
 block|}
-specifier|private
-specifier|static
-name|TreeTraverser
-argument_list|<
-name|TreeNode
-argument_list|>
-name|TRAVERSER
-init|=
-operator|new
-name|TreeTraverser
-argument_list|<
-name|TreeNode
-argument_list|>
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|Iterable
-argument_list|<
-name|TreeNode
-argument_list|>
-name|children
-parameter_list|(
-name|TreeNode
-name|root
-parameter_list|)
-block|{
-return|return
-name|root
-operator|.
-name|children
-argument_list|()
-return|;
-block|}
-block|}
-decl_stmt|;
 specifier|private
 class|class
 name|TreeNode
@@ -1676,9 +1677,9 @@ return|;
 block|}
 else|else
 block|{
-comment|//If doc is not present in cache then its already
-comment|//uptodate i.e. no further consistency check required
-comment|//for this document
+comment|// If doc is not present in cache then its already
+comment|// up-to-date i.e. no further consistency check required
+comment|// for this document
 return|return
 literal|true
 return|;
@@ -1734,7 +1735,7 @@ name|long
 name|cacheCheckTime
 parameter_list|,
 name|NodeDocument
-name|uptodateRoot
+name|upToDateRoot
 parameter_list|)
 block|{
 for|for
@@ -1754,11 +1755,11 @@ name|markUptodate
 argument_list|(
 name|cacheCheckTime
 argument_list|,
-name|uptodateRoot
+name|upToDateRoot
 argument_list|)
 expr_stmt|;
 block|}
-comment|///Update the parent after child
+comment|// Update the parent after child
 name|markUptodate
 argument_list|(
 name|getId
@@ -1766,7 +1767,7 @@ argument_list|()
 argument_list|,
 name|cacheCheckTime
 argument_list|,
-name|uptodateRoot
+name|upToDateRoot
 argument_list|)
 expr_stmt|;
 block|}
@@ -1781,7 +1782,7 @@ name|long
 name|time
 parameter_list|,
 name|NodeDocument
-name|uptodateRoot
+name|upToDateRoot
 parameter_list|)
 block|{
 name|NodeDocument
@@ -1807,7 +1808,7 @@ condition|)
 block|{
 return|return;
 block|}
-comment|//Only mark the cachedDoc uptodate if
+comment|// Only mark the cachedDoc up-to-date if
 comment|// 1. it got created i.e. cached document creation
 comment|//    time is greater or same as the time of the root node on which markUptodate
 comment|//    is invoked. As in typical cache population child node would be added
@@ -1815,7 +1816,7 @@ comment|//    later than the parent.
 comment|//    If the creation time is less then it means that parent got replaced/updated later
 comment|//    and hence its _lastRev property would not truly reflect the state of child nodes
 comment|//    present in cache
-comment|// 2. OR Check if both documents have been marked uptodate in last cycle. As in that case
+comment|// 2. OR Check if both documents have been marked up-to-date in last cycle. As in that case
 comment|//    previous cycle would have done the required checks
 if|if
 condition|(
@@ -1824,7 +1825,7 @@ operator|.
 name|getCreated
 argument_list|()
 operator|>=
-name|uptodateRoot
+name|upToDateRoot
 operator|.
 name|getCreated
 argument_list|()
@@ -1834,7 +1835,7 @@ operator|.
 name|getLastCheckTime
 argument_list|()
 operator|==
-name|uptodateRoot
+name|upToDateRoot
 operator|.
 name|getLastCheckTime
 argument_list|()
