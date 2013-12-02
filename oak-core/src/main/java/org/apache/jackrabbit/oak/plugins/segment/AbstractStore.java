@@ -56,26 +56,6 @@ import|;
 end_import
 
 begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|plugins
-operator|.
-name|segment
-operator|.
-name|SegmentIdFactory
-operator|.
-name|isDataSegmentId
-import|;
-end_import
-
-begin_import
 import|import
 name|java
 operator|.
@@ -186,6 +166,13 @@ name|currentlyLoading
 init|=
 name|newHashSet
 argument_list|()
+decl_stmt|;
+comment|/**      * Number of threads that are currently waiting for segments to be loaded.      * Used to avoid extra {@link #notifyAll()} calls when nobody is waiting.      */
+specifier|private
+name|int
+name|currentlyWaiting
+init|=
+literal|0
 decl_stmt|;
 specifier|private
 specifier|final
@@ -388,6 +375,9 @@ condition|)
 block|{
 try|try
 block|{
+name|currentlyWaiting
+operator|++
+expr_stmt|;
 name|wait
 argument_list|()
 expr_stmt|;
@@ -408,6 +398,12 @@ argument_list|,
 name|e
 argument_list|)
 throw|;
+block|}
+finally|finally
+block|{
+name|currentlyWaiting
+operator|--
+expr_stmt|;
 block|}
 name|segment
 operator|=
@@ -476,9 +472,17 @@ argument_list|(
 name|id
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|currentlyWaiting
+operator|>
+literal|0
+condition|)
+block|{
 name|notifyAll
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 block|}
 block|}
