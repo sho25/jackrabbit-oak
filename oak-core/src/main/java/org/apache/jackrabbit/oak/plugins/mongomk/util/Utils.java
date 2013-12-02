@@ -510,6 +510,28 @@ name|o
 argument_list|)
 expr_stmt|;
 block|}
+elseif|else
+if|if
+condition|(
+name|o
+operator|==
+literal|null
+condition|)
+block|{
+comment|// zero
+block|}
+else|else
+block|{
+throw|throw
+operator|new
+name|IllegalArgumentException
+argument_list|(
+literal|"Can't estimate memory usage of "
+operator|+
+name|o
+argument_list|)
+throw|;
+block|}
 block|}
 if|if
 condition|(
