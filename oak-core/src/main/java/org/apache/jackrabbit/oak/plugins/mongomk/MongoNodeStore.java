@@ -870,6 +870,14 @@ literal|60
 operator|*
 literal|1000
 decl_stmt|;
+comment|/**      * The maximum number of document to update at once in a multi update.      */
+specifier|static
+specifier|final
+name|int
+name|BACKGROUND_MULTI_UPDATE_LIMIT
+init|=
+literal|10000
+decl_stmt|;
 comment|/**      * The MongoDB store (might be used by multiple MongoMKs).      */
 specifier|protected
 specifier|final
@@ -5821,8 +5829,10 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|// update if this is the last path or
-comment|// revision is not equal to last revision
+comment|// call update if any of the following is true:
+comment|// - this is the last path
+comment|// - revision is not equal to last revision (size of ids didn't change)
+comment|// - the update limit is reached
 if|if
 condition|(
 name|i
@@ -5840,6 +5850,13 @@ name|ids
 operator|.
 name|size
 argument_list|()
+operator|||
+name|ids
+operator|.
+name|size
+argument_list|()
+operator|>=
+name|BACKGROUND_MULTI_UPDATE_LIMIT
 condition|)
 block|{
 name|store
