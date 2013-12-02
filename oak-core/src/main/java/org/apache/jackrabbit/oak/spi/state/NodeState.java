@@ -141,6 +141,21 @@ name|String
 name|name
 parameter_list|)
 function_decl|;
+comment|/**      * Returns the string values of the named property. The implementation      * is equivalent to the following code, but may be optimized.      *<pre>      * PropertyState property = state.getProperty(name);      * if (property != null&& property.getType() == Type.STRINGS) {      *     return property.getValue(Type.STRINGS);      * } else {      *     return Collections.emptyList();      * }      *</pre>      *      * @param name property name      * @return string values of the named property, or an empty collection      */
+annotation|@
+name|Nonnull
+name|Iterable
+argument_list|<
+name|String
+argument_list|>
+name|getStrings
+parameter_list|(
+annotation|@
+name|Nonnull
+name|String
+name|name
+parameter_list|)
+function_decl|;
 comment|/**      * Returns the name value of the named property. The implementation      * is equivalent to the following code, but may be optimized.      *<pre>      * PropertyState property = state.getProperty(name);      * if (property != null&& property.getType() == Type.NAME) {      *     return property.getValue(Type.NAME);      * } else {      *     return null;      * }      *</pre>      *      * @param name property name      * @return name value of the named property, or {@code null}      */
 annotation|@
 name|CheckForNull
