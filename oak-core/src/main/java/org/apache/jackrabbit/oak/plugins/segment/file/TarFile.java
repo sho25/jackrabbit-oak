@@ -191,8 +191,13 @@ block|}
 block|}
 specifier|private
 specifier|final
-name|FileAccess
+name|File
 name|file
+decl_stmt|;
+specifier|private
+specifier|final
+name|FileAccess
+name|access
 decl_stmt|;
 specifier|private
 name|int
@@ -265,6 +270,12 @@ argument_list|,
 name|maxFileSize
 argument_list|)
 expr_stmt|;
+name|this
+operator|.
+name|file
+operator|=
+name|file
+expr_stmt|;
 if|if
 condition|(
 name|memoryMapping
@@ -272,7 +283,7 @@ condition|)
 block|{
 name|this
 operator|.
-name|file
+name|access
 operator|=
 operator|new
 name|MappedAccess
@@ -289,7 +300,7 @@ else|else
 block|{
 name|this
 operator|.
-name|file
+name|access
 operator|=
 operator|new
 name|RandomAccess
@@ -319,7 +330,7 @@ name|buffer
 init|=
 name|this
 operator|.
-name|file
+name|access
 operator|.
 name|read
 argument_list|(
@@ -478,7 +489,7 @@ literal|null
 condition|)
 block|{
 return|return
-name|file
+name|access
 operator|.
 name|read
 argument_list|(
@@ -836,7 +847,7 @@ index|]
 operator|=
 literal|0
 expr_stmt|;
-name|file
+name|access
 operator|.
 name|write
 argument_list|(
@@ -853,7 +864,7 @@ name|position
 operator|+=
 name|BLOCK_SIZE
 expr_stmt|;
-name|file
+name|access
 operator|.
 name|write
 argument_list|(
@@ -901,7 +912,7 @@ operator|<
 name|BLOCK_SIZE
 condition|)
 block|{
-name|file
+name|access
 operator|.
 name|write
 argument_list|(
@@ -929,12 +940,12 @@ parameter_list|()
 throws|throws
 name|IOException
 block|{
-name|file
+name|access
 operator|.
 name|flush
 argument_list|()
 expr_stmt|;
-name|file
+name|access
 operator|.
 name|close
 argument_list|()
@@ -1094,6 +1105,21 @@ block|}
 block|}
 return|return
 name|number
+return|;
+block|}
+comment|//------------------------------------------------------------< Object>--
+annotation|@
+name|Override
+specifier|public
+name|String
+name|toString
+parameter_list|()
+block|{
+return|return
+name|file
+operator|.
+name|toString
+argument_list|()
 return|;
 block|}
 block|}

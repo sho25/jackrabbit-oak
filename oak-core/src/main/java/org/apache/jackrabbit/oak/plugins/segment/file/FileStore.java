@@ -229,6 +229,16 @@ end_import
 
 begin_import
 import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|Nonnull
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -1029,6 +1039,8 @@ return|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Nonnull
 specifier|protected
 name|Segment
 name|loadSegment
@@ -1036,8 +1048,6 @@ parameter_list|(
 name|UUID
 name|id
 parameter_list|)
-throws|throws
-name|Exception
 block|{
 for|for
 control|(
@@ -1046,6 +1056,8 @@ name|file
 range|:
 name|dataFiles
 control|)
+block|{
+try|try
 block|{
 name|ByteBuffer
 name|buffer
@@ -1077,6 +1089,25 @@ argument_list|,
 name|buffer
 argument_list|)
 return|;
+block|}
+block|}
+catch|catch
+parameter_list|(
+name|IOException
+name|e
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|RuntimeException
+argument_list|(
+literal|"Failed to access data file "
+operator|+
+name|file
+argument_list|,
+name|e
+argument_list|)
+throw|;
 block|}
 block|}
 for|for
@@ -1087,6 +1118,8 @@ range|:
 name|bulkFiles
 control|)
 block|{
+try|try
+block|{
 name|ByteBuffer
 name|buffer
 init|=
@@ -1117,6 +1150,25 @@ argument_list|,
 name|buffer
 argument_list|)
 return|;
+block|}
+block|}
+catch|catch
+parameter_list|(
+name|IOException
+name|e
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|RuntimeException
+argument_list|(
+literal|"Failed to access bulk file "
+operator|+
+name|file
+argument_list|,
+name|e
+argument_list|)
+throw|;
 block|}
 block|}
 throw|throw
