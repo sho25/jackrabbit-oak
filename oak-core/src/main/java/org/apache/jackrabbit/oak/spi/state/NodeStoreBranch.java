@@ -122,28 +122,6 @@ name|NodeState
 name|newRoot
 parameter_list|)
 function_decl|;
-comment|/**      * Moves a node in this private branch.      *      * @param source source path      * @param target target path      * @return  {@code true} iff the move succeeded      * @throws IllegalStateException if the branch is already merged      */
-name|boolean
-name|move
-parameter_list|(
-name|String
-name|source
-parameter_list|,
-name|String
-name|target
-parameter_list|)
-function_decl|;
-comment|/**      * Copies a node in this private branch.      *      * @param source source path      * @param target target path      * @return  {@code true} iff the copy succeeded      * @throws IllegalStateException if the branch is already merged      */
-name|boolean
-name|copy
-parameter_list|(
-name|String
-name|source
-parameter_list|,
-name|String
-name|target
-parameter_list|)
-function_decl|;
 comment|/**      * Merges the changes in this branch to the main content tree.      * Merging is done by rebasing the changes in this branch on top of      * the current head revision followed by a fast forward merge.      *      * @param hook the commit hook to apply while merging changes      * @param info commit info associated with this merge operation,      *             or {@code null} if no local commit information is available      * @return the node state resulting from the merge.      * @throws CommitFailedException if the merge failed      * @throws IllegalStateException if the branch is already merged      */
 annotation|@
 name|Nonnull

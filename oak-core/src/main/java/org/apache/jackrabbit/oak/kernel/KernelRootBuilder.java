@@ -131,24 +131,6 @@ name|NodeState
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|spi
-operator|.
-name|state
-operator|.
-name|NodeStoreBranch
-import|;
-end_import
-
 begin_comment
 comment|/**  * This implementation tracks the number of pending changes and purges them to  * a private branch of the underlying store if a certain threshold is met.  */
 end_comment
@@ -192,7 +174,7 @@ name|base
 decl_stmt|;
 comment|/**      * Private branch used to hold pending changes exceeding {@link #UPDATE_LIMIT}      */
 specifier|private
-name|NodeStoreBranch
+name|KernelNodeStoreBranch
 name|branch
 decl_stmt|;
 comment|/**      * Number of updated not yet persisted to the private {@link #branch}      */

@@ -447,24 +447,6 @@ name|NodeStore
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|spi
-operator|.
-name|state
-operator|.
-name|NodeStoreBranch
-import|;
-end_import
-
 begin_comment
 comment|/**  * {@code NodeStore} implementations against {@link MicroKernel}.  */
 end_comment
@@ -1152,7 +1134,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-name|NodeStoreBranch
+name|KernelNodeStoreBranch
 name|createBranch
 parameter_list|(
 name|KernelNodeState

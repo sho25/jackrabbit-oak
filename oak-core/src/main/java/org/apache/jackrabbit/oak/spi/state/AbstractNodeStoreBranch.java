@@ -582,8 +582,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-annotation|@
-name|Override
+comment|/**      * Moves a node in this private branch.      *      * @param source source path      * @param target target path      * @return  {@code true} iff the move succeeded      * @throws IllegalStateException if the branch is already merged      */
 specifier|public
 name|boolean
 name|move
@@ -711,8 +710,7 @@ return|return
 literal|true
 return|;
 block|}
-annotation|@
-name|Override
+comment|/**      * Copies a node in this private branch.      *      * @param source source path      * @param target target path      * @return  {@code true} iff the copy succeeded      * @throws IllegalStateException if the branch is already merged      */
 specifier|public
 name|boolean
 name|copy
