@@ -785,6 +785,14 @@ name|RevisionContext
 implements|,
 name|Observable
 block|{
+comment|/**      * The maximum number of document to update at once in a multi update.      */
+specifier|static
+specifier|final
+name|int
+name|BACKGROUND_MULTI_UPDATE_LIMIT
+init|=
+literal|10000
+decl_stmt|;
 specifier|private
 specifier|static
 specifier|final
@@ -869,14 +877,6 @@ operator|*
 literal|60
 operator|*
 literal|1000
-decl_stmt|;
-comment|/**      * The maximum number of document to update at once in a multi update.      */
-specifier|static
-specifier|final
-name|int
-name|BACKGROUND_MULTI_UPDATE_LIMIT
-init|=
-literal|10000
 decl_stmt|;
 comment|/**      * The MongoDB store (might be used by multiple MongoMKs).      */
 specifier|protected

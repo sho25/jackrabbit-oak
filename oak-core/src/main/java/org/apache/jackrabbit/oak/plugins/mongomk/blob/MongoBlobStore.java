@@ -129,6 +129,16 @@ name|com
 operator|.
 name|mongodb
 operator|.
+name|MongoException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|mongodb
+operator|.
 name|QueryBuilder
 import|;
 end_import
@@ -275,6 +285,8 @@ argument_list|)
 expr_stmt|;
 comment|// TODO check the return value
 comment|// TODO verify insert is fast if the entry already exists
+try|try
+block|{
 name|getBlobCollection
 argument_list|()
 operator|.
@@ -283,6 +295,17 @@ argument_list|(
 name|mongoBlob
 argument_list|)
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|MongoException
+operator|.
+name|DuplicateKey
+name|e
+parameter_list|)
+block|{
+comment|// the same block was already stored before: ignore
+block|}
 block|}
 annotation|@
 name|Override

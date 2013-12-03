@@ -37,7 +37,7 @@ name|com
 operator|.
 name|mongodb
 operator|.
-name|Mongo
+name|MongoClient
 import|;
 end_import
 
@@ -47,7 +47,7 @@ name|com
 operator|.
 name|mongodb
 operator|.
-name|MongoOptions
+name|MongoClientOptions
 import|;
 end_import
 
@@ -77,7 +77,7 @@ name|db
 decl_stmt|;
 specifier|private
 specifier|final
-name|Mongo
+name|MongoClient
 name|mongo
 decl_stmt|;
 comment|/**      * Constructs a new {@code MongoConnection}.      *      * @param host The host address.      * @param port The port.      * @param database The database name.      * @throws Exception If an error occurred while trying to connect.      */
@@ -96,25 +96,26 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
-name|MongoOptions
+name|MongoClientOptions
 name|options
 init|=
 operator|new
-name|MongoOptions
-argument_list|()
-decl_stmt|;
-name|options
+name|MongoClientOptions
 operator|.
-name|setThreadsAllowedToBlockForConnectionMultiplier
+name|Builder
+argument_list|()
+operator|.
+name|threadsAllowedToBlockForConnectionMultiplier
 argument_list|(
 literal|100
 argument_list|)
-expr_stmt|;
-name|mongo
-operator|=
-operator|new
-name|Mongo
-argument_list|(
+operator|.
+name|build
+argument_list|()
+decl_stmt|;
+name|ServerAddress
+name|serverAddress
+init|=
 operator|new
 name|ServerAddress
 argument_list|(
@@ -122,6 +123,13 @@ name|host
 argument_list|,
 name|port
 argument_list|)
+decl_stmt|;
+name|mongo
+operator|=
+operator|new
+name|MongoClient
+argument_list|(
+name|serverAddress
 argument_list|,
 name|options
 argument_list|)
