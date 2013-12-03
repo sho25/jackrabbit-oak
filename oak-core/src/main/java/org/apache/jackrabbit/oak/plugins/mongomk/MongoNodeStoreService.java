@@ -20,6 +20,26 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|whiteboard
+operator|.
+name|WhiteboardUtils
+operator|.
+name|registerMBean
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -56,6 +76,16 @@ operator|.
 name|util
 operator|.
 name|Properties
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|mongodb
+operator|.
+name|DB
 import|;
 end_import
 
@@ -138,6 +168,22 @@ operator|.
 name|jmx
 operator|.
 name|CacheStatsMBean
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|osgi
+operator|.
+name|ObserverTracker
 import|;
 end_import
 
@@ -309,36 +355,6 @@ name|LoggerFactory
 import|;
 end_import
 
-begin_import
-import|import
-name|com
-operator|.
-name|mongodb
-operator|.
-name|DB
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|spi
-operator|.
-name|whiteboard
-operator|.
-name|WhiteboardUtils
-operator|.
-name|registerMBean
-import|;
-end_import
-
 begin_comment
 comment|/**  * The OSGi service to start/stop a MongoNodeStore instance.  */
 end_comment
@@ -493,6 +509,10 @@ decl_stmt|;
 specifier|private
 name|MongoNodeStore
 name|store
+decl_stmt|;
+specifier|private
+name|ObserverTracker
+name|observerTracker
 decl_stmt|;
 specifier|private
 specifier|final
@@ -681,6 +701,14 @@ argument_list|(
 name|mk
 argument_list|,
 name|context
+argument_list|)
+expr_stmt|;
+name|observerTracker
+operator|=
+operator|new
+name|ObserverTracker
+argument_list|(
+name|store
 argument_list|)
 expr_stmt|;
 name|reg
@@ -911,6 +939,11 @@ name|void
 name|deactivate
 parameter_list|()
 block|{
+name|observerTracker
+operator|.
+name|stop
+argument_list|()
+expr_stmt|;
 for|for
 control|(
 name|Registration
