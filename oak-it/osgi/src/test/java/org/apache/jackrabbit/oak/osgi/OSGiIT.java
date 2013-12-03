@@ -686,11 +686,12 @@ name|println
 argument_list|(
 name|repository
 operator|.
-name|login
-argument_list|()
+name|getDescriptor
+argument_list|(
+name|Repository
 operator|.
-name|getRootNode
-argument_list|()
+name|REP_NAME_DESC
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
