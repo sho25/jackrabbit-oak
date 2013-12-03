@@ -692,6 +692,13 @@ name|MAX_VALUE
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|IndexUtils
+operator|.
+name|createReferenceIndex
+argument_list|(
+name|index
+argument_list|)
+expr_stmt|;
 block|}
 name|NodeState
 name|base
