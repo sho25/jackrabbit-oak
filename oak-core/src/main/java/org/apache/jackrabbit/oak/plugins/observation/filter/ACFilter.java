@@ -73,9 +73,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|core
+name|api
 operator|.
-name|ImmutableTree
+name|Tree
 import|;
 end_import
 
@@ -154,12 +154,12 @@ name|Filter
 block|{
 specifier|private
 specifier|final
-name|ImmutableTree
+name|Tree
 name|beforeTree
 decl_stmt|;
 specifier|private
 specifier|final
-name|ImmutableTree
+name|Tree
 name|afterTree
 decl_stmt|;
 specifier|private
@@ -173,12 +173,12 @@ name|ACFilter
 parameter_list|(
 annotation|@
 name|Nonnull
-name|ImmutableTree
+name|Tree
 name|beforeTree
 parameter_list|,
 annotation|@
 name|Nonnull
-name|ImmutableTree
+name|Tree
 name|afterTree
 parameter_list|,
 annotation|@

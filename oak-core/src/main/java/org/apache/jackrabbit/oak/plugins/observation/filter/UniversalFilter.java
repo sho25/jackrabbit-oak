@@ -117,9 +117,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|core
+name|api
 operator|.
-name|ImmutableTree
+name|Tree
 import|;
 end_import
 
@@ -176,12 +176,12 @@ name|Filter
 block|{
 specifier|private
 specifier|final
-name|ImmutableTree
+name|Tree
 name|beforeTree
 decl_stmt|;
 specifier|private
 specifier|final
-name|ImmutableTree
+name|Tree
 name|afterTree
 decl_stmt|;
 specifier|private
@@ -193,7 +193,7 @@ specifier|private
 specifier|final
 name|Predicate
 argument_list|<
-name|ImmutableTree
+name|Tree
 argument_list|>
 name|predicate
 decl_stmt|;
@@ -203,12 +203,12 @@ name|UniversalFilter
 parameter_list|(
 annotation|@
 name|Nonnull
-name|ImmutableTree
+name|Tree
 name|beforeRootTree
 parameter_list|,
 annotation|@
 name|Nonnull
-name|ImmutableTree
+name|Tree
 name|afterRootTree
 parameter_list|,
 annotation|@
@@ -220,7 +220,7 @@ annotation|@
 name|Nonnull
 name|Predicate
 argument_list|<
-name|ImmutableTree
+name|Tree
 argument_list|>
 name|predicate
 parameter_list|)
@@ -270,7 +270,7 @@ block|{
 comment|/**          * Map a property event.          * @param filter  filter instance on which respective call back occurred.          * @param before  before state or {@code null} for          *                {@link Filter#propertyAdded(PropertyState)}          * @param after   after state or {@code null} for          *                {@link Filter#propertyDeleted(PropertyState)}          * @return a tree instance for basing the filtering criterion (predicate) upon          */
 annotation|@
 name|Nonnull
-name|ImmutableTree
+name|Tree
 name|select
 parameter_list|(
 annotation|@
@@ -292,7 +292,7 @@ function_decl|;
 comment|/**          * Map a node event.          * @param filter  filter instance on which respective call back occurred.          * @param before  before state or {@code null} for          *                {@link Filter#childNodeAdded(String, NodeState)}          * @param after   after state or {@code null} for          *                {@link Filter#childNodeDeleted(String, NodeState)}          * @return a tree instance for basing the filtering criterion (predicate) upon          */
 annotation|@
 name|Nonnull
-name|ImmutableTree
+name|Tree
 name|select
 parameter_list|(
 annotation|@
@@ -319,7 +319,7 @@ function_decl|;
 block|}
 comment|/**      * @return  before tree this filter acts upon      */
 specifier|public
-name|ImmutableTree
+name|Tree
 name|getBeforeTree
 parameter_list|()
 block|{
@@ -329,7 +329,7 @@ return|;
 block|}
 comment|/**      * @return  after tree this filter acts upon      */
 specifier|public
-name|ImmutableTree
+name|Tree
 name|getAfterTree
 parameter_list|()
 block|{

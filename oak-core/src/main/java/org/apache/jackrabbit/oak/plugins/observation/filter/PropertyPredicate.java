@@ -61,9 +61,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|core
+name|api
 operator|.
-name|ImmutableTree
+name|Tree
 import|;
 end_import
 
@@ -78,7 +78,7 @@ name|PropertyPredicate
 implements|implements
 name|Predicate
 argument_list|<
-name|ImmutableTree
+name|Tree
 argument_list|>
 block|{
 specifier|private
@@ -127,7 +127,7 @@ specifier|public
 name|boolean
 name|apply
 parameter_list|(
-name|ImmutableTree
+name|Tree
 name|tree
 parameter_list|)
 block|{

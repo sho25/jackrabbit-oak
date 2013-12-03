@@ -51,9 +51,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|core
+name|api
 operator|.
-name|ImmutableTree
+name|Tree
 import|;
 end_import
 
@@ -129,16 +129,16 @@ name|getFilter
 parameter_list|(
 annotation|@
 name|Nonnull
-name|ImmutableTree
+name|Tree
 name|beforeTree
 parameter_list|,
 annotation|@
 name|Nonnull
-name|ImmutableTree
+name|Tree
 name|afterTree
 parameter_list|)
 function_decl|;
-comment|/**      * Path of the subtree to which the the filter returned by      * {@link #getFilter(ImmutableTree, ImmutableTree)} applies.      * @return path to which the filter applies.      */
+comment|/**      * Path of the subtree to which the the filter returned by      * {@link #getFilter(Tree, Tree)} applies.      * @return path to which the filter applies.      */
 annotation|@
 name|Nonnull
 name|String
