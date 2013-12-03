@@ -38,6 +38,7 @@ import|;
 end_import
 
 begin_class
+specifier|public
 class|class
 name|SegmentRootBuilder
 extends|extends
