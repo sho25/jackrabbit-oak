@@ -1508,8 +1508,10 @@ parameter_list|)
 block|{
 throw|throw
 operator|new
-name|RuntimeException
+name|IllegalStateException
 argument_list|(
+literal|"Failed to read privileges"
+argument_list|,
 name|e
 argument_list|)
 throw|;
