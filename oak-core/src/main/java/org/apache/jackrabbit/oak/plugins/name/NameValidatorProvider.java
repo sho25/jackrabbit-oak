@@ -269,7 +269,7 @@ argument_list|(
 name|NSDATA
 argument_list|)
 operator|.
-name|getString
+name|getStrings
 argument_list|(
 name|NSDATA_PREFIXES
 argument_list|)
