@@ -1739,6 +1739,7 @@ return|;
 block|}
 annotation|@
 name|Nonnull
+specifier|public
 name|DocumentStore
 name|getDocumentStore
 parameter_list|()
