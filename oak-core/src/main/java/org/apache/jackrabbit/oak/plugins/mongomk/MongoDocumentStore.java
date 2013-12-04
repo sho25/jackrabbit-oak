@@ -1814,9 +1814,14 @@ operator|.
 name|NODES
 condition|)
 block|{
-comment|//noinspection unchecked
-name|cachedDoc
-operator|=
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unchecked"
+argument_list|)
+name|T
+name|doc
+init|=
 operator|(
 name|T
 operator|)
@@ -1829,6 +1834,10 @@ operator|.
 name|getId
 argument_list|()
 argument_list|)
+decl_stmt|;
+name|cachedDoc
+operator|=
+name|doc
 expr_stmt|;
 if|if
 condition|(
@@ -3324,7 +3333,14 @@ return|return
 literal|null
 return|;
 block|}
-return|return
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unchecked"
+argument_list|)
+name|T
+name|doc
+init|=
 operator|(
 name|T
 operator|)
@@ -3334,6 +3350,9 @@ name|getIfPresent
 argument_list|(
 name|key
 argument_list|)
+decl_stmt|;
+return|return
+name|doc
 return|;
 block|}
 comment|/**      * Applies an update to the nodes cache. This method does not acquire      * a lock for the document. The caller must ensure it holds a lock for      * the updated document. See striped {@link #locks}.      *      * @param<T> the document type.      * @param collection the document collection.      * @param oldDoc the old document or<code>null</code> if the update is for      *               a new document (insert).      * @param updateOp the update operation.      */

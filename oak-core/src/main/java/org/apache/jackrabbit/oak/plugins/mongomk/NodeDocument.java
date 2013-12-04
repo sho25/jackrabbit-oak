@@ -467,7 +467,7 @@ name|SPLIT_RATIO
 init|=
 literal|0.3f
 decl_stmt|;
-comment|/**      * Revision collision markers set by commits with modifications, which      * overlap with un-merged branch commits.      * Key: revision, value:      */
+comment|/**      * Revision collision markers set by commits with modifications, which      * overlap with un-merged branch commits.      * Key: revision, value: always true      */
 specifier|static
 specifier|final
 name|String
@@ -508,7 +508,7 @@ argument_list|>
 argument_list|()
 argument_list|)
 decl_stmt|;
-comment|/**      * The list of revision to root commit depth mappings to find out if a      * revision is actually committed.      */
+comment|/**      * The list of revision to root commit depth mappings to find out if a      * revision is actually committed. Depth 0 means the commit is in the root node,      * depth 1 means one node below the root, and so on.      */
 specifier|private
 specifier|static
 specifier|final
@@ -517,7 +517,7 @@ name|COMMIT_ROOT
 init|=
 literal|"_commitRoot"
 decl_stmt|;
-comment|/**      * The number of previous documents (documents that contain old revisions of      * this node). This property is only set if multiple documents per node      * exist. This is the case when a node is updated very often in a short      * time, such that the document gets very big.      */
+comment|/**      * The number of previous documents (documents that contain old revisions of      * this node). This property is only set if multiple documents per node      * exist. This is the case when a node is updated very often in a short      * time, such that the document gets very big.      *<p>      * Key: high revision      *<p>      * Value: low revision      */
 specifier|private
 specifier|static
 specifier|final
@@ -535,7 +535,7 @@ name|DELETED
 init|=
 literal|"_deleted"
 decl_stmt|;
-comment|/**      * The list of recent revisions for this node, where this node is the      * root of the commit. Key: revision, value: true or the base revision of an      * un-merged branch commit.      */
+comment|/**      * The list of recent revisions for this node, where this node is the      * root of the commit.       *<p>      * Key: revision.      *<p>      * Value: "c" for a regular (non-branch) commit,       * "c-" + base revision of the successfully merged branch commit,      * "b" + base revision of an un-merged branch commit      */
 specifier|private
 specifier|static
 specifier|final
@@ -544,7 +544,7 @@ name|REVISIONS
 init|=
 literal|"_revisions"
 decl_stmt|;
-comment|/**      * The last revision. Key: machine id, value: revision.      */
+comment|/**      * The last revision.       *<p>      * Key: machine id, in the form "r0-0-1".      *<p>      * Value: the revision.      */
 specifier|private
 specifier|static
 specifier|final
