@@ -1524,7 +1524,7 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|void
+name|boolean
 name|authenticate
 parameter_list|(
 name|LdapUser
@@ -1603,6 +1603,9 @@ operator|.
 name|close
 argument_list|()
 expr_stmt|;
+return|return
+literal|true
+return|;
 block|}
 catch|catch
 parameter_list|(
