@@ -603,6 +603,8 @@ name|MODE_CREATE_USER
 argument_list|)
 condition|)
 block|{
+comment|// sync user without password.
+comment|// TODO: what intermediate path to use for the user creation?
 name|User
 name|user
 init|=
@@ -669,6 +671,7 @@ name|MODE_CREATE_GROUPS
 argument_list|)
 condition|)
 block|{
+comment|// TODO: what intermediate path to use for the group creation?
 name|Group
 name|group
 init|=
