@@ -1077,6 +1077,7 @@ operator|==
 name|object
 condition|)
 block|{
+comment|// don't use fastEquals here due to value sharing
 return|return
 literal|true
 return|;
