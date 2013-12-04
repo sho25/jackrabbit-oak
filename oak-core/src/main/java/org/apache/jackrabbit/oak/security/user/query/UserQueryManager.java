@@ -654,6 +654,8 @@ argument_list|(
 name|statement
 argument_list|,
 name|namePathMapper
+argument_list|,
+name|userManager
 argument_list|)
 decl_stmt|;
 name|String
