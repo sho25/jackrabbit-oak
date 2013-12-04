@@ -1037,7 +1037,6 @@ name|Override
 annotation|@
 name|Nonnull
 specifier|public
-specifier|synchronized
 name|String
 name|checkpoint
 parameter_list|(
@@ -1196,7 +1195,6 @@ name|Override
 annotation|@
 name|CheckForNull
 specifier|public
-specifier|synchronized
 name|NodeState
 name|retrieve
 parameter_list|(
