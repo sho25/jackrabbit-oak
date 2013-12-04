@@ -83,7 +83,7 @@ name|plugins
 operator|.
 name|segment
 operator|.
-name|SegmentNodeState
+name|SegmentNodeBuilder
 import|;
 end_import
 
@@ -101,7 +101,7 @@ name|plugins
 operator|.
 name|segment
 operator|.
-name|SegmentRootBuilder
+name|SegmentNodeState
 import|;
 end_import
 
@@ -361,7 +361,7 @@ name|getHead
 argument_list|()
 argument_list|)
 decl_stmt|;
-name|SegmentRootBuilder
+name|SegmentNodeBuilder
 name|builder
 init|=
 name|state

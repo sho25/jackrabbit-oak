@@ -826,7 +826,7 @@ name|checkArgument
 argument_list|(
 name|builder
 operator|instanceof
-name|SegmentRootBuilder
+name|SegmentNodeBuilder
 argument_list|)
 expr_stmt|;
 name|NodeState
@@ -973,7 +973,7 @@ name|checkArgument
 argument_list|(
 name|builder
 operator|instanceof
-name|SegmentRootBuilder
+name|SegmentNodeBuilder
 argument_list|)
 expr_stmt|;
 name|NodeState
@@ -1095,7 +1095,7 @@ operator|.
 name|getRecordId
 argument_list|()
 decl_stmt|;
-name|SegmentRootBuilder
+name|SegmentNodeBuilder
 name|builder
 init|=
 name|ns
@@ -1290,7 +1290,7 @@ argument_list|(
 name|base
 argument_list|)
 expr_stmt|;
-name|SegmentRootBuilder
+name|SegmentNodeBuilder
 name|builder
 init|=
 name|base
