@@ -65,6 +65,16 @@ name|java
 operator|.
 name|io
 operator|.
+name|ByteArrayInputStream
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
 name|File
 import|;
 end_import
@@ -96,20 +106,6 @@ operator|.
 name|util
 operator|.
 name|Map
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|commons
-operator|.
-name|lang
-operator|.
-name|RandomStringUtils
 import|;
 end_import
 
@@ -156,24 +152,6 @@ operator|.
 name|api
 operator|.
 name|CommitFailedException
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|plugins
-operator|.
-name|memory
-operator|.
-name|StringBasedBlob
 import|;
 end_import
 
@@ -324,6 +302,16 @@ operator|.
 name|junit
 operator|.
 name|Before
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Ignore
 import|;
 end_import
 
@@ -633,6 +621,11 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
+annotation|@
+name|Ignore
+argument_list|(
+literal|"OAK-1159 duplicate content"
+argument_list|)
 specifier|public
 name|void
 name|testSharedContent
@@ -662,18 +655,22 @@ argument_list|(
 name|source
 argument_list|)
 decl_stmt|;
-comment|// ~60k
+comment|// ~100k
 name|Blob
 name|blob
 init|=
-operator|new
-name|StringBasedBlob
-argument_list|(
-name|RandomStringUtils
+name|store
 operator|.
-name|random
+name|createBlob
 argument_list|(
-literal|10240
+operator|new
+name|ByteArrayInputStream
+argument_list|(
+operator|new
+name|byte
+index|[
+literal|100000
+index|]
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -872,7 +869,7 @@ operator|.
 name|getName
 argument_list|()
 operator|+
-literal|" is expected to have size< "
+literal|" is expected to have size<= "
 operator|+
 name|expected
 operator|.

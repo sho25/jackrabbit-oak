@@ -1277,11 +1277,15 @@ name|out
 operator|.
 name|format
 argument_list|(
-literal|"%6dkB in %6d data segments%n"
+literal|"%6dMB in %6d data segments%n"
 argument_list|,
 name|dataSize
 operator|/
+operator|(
 literal|1024
+operator|*
+literal|1024
+operator|)
 argument_list|,
 name|dataCount
 argument_list|)
