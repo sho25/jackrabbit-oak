@@ -49,6 +49,16 @@ name|javax
 operator|.
 name|annotation
 operator|.
+name|CheckForNull
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|annotation
+operator|.
 name|Nonnull
 import|;
 end_import
@@ -179,7 +189,6 @@ name|ExternalLoginModule
 extends|extends
 name|AbstractLoginModule
 block|{
-comment|/**      * logger instance      */
 specifier|private
 specifier|static
 specifier|final
@@ -244,7 +253,7 @@ parameter_list|()
 function_decl|;
 comment|/**      * TODO      *      * @return      */
 annotation|@
-name|Nonnull
+name|CheckForNull
 specifier|protected
 specifier|abstract
 name|ExternalUser
@@ -498,8 +507,18 @@ name|smValue
 argument_list|)
 expr_stmt|;
 block|}
+name|ExternalUser
+name|eu
+init|=
+name|getExternalUser
+argument_list|()
+decl_stmt|;
 if|if
 condition|(
+name|eu
+operator|!=
+literal|null
+operator|&&
 name|handler
 operator|.
 name|initialize
@@ -518,8 +537,7 @@ name|handler
 operator|.
 name|sync
 argument_list|(
-name|getExternalUser
-argument_list|()
+name|eu
 argument_list|)
 expr_stmt|;
 name|root

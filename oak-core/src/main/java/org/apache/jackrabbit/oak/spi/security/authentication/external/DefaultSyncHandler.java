@@ -615,10 +615,7 @@ operator|.
 name|getId
 argument_list|()
 argument_list|,
-name|externalUser
-operator|.
-name|getPassword
-argument_list|()
+literal|null
 argument_list|,
 name|externalUser
 operator|.
