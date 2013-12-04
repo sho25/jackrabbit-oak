@@ -141,12 +141,6 @@ argument_list|,
 literal|1000
 argument_list|)
 decl_stmt|;
-comment|/**      * The underlying store      */
-specifier|private
-specifier|final
-name|MongoNodeStore
-name|store
-decl_stmt|;
 comment|/**      * The base state of this builder, possibly non-existent if this builder      * represents a new node that didn't yet exist in the base content tree.      * This differs from the base state of super since the latter one reflects      * the base created by the last purge.      */
 annotation|@
 name|Nonnull
@@ -175,6 +169,8 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
+name|store
+argument_list|,
 name|checkNotNull
 argument_list|(
 name|base
@@ -186,12 +182,6 @@ operator|.
 name|base
 operator|=
 name|base
-expr_stmt|;
-name|this
-operator|.
-name|store
-operator|=
-name|store
 expr_stmt|;
 name|this
 operator|.

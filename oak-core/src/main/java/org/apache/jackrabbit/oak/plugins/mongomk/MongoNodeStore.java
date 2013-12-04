@@ -6321,6 +6321,21 @@ return|return
 name|blobSerializer
 return|;
 block|}
+name|Iterator
+argument_list|<
+name|Blob
+argument_list|>
+name|getReferencedBlobsIterator
+parameter_list|()
+block|{
+return|return
+operator|new
+name|BlobReferenceIterator
+argument_list|(
+name|this
+argument_list|)
+return|;
+block|}
 block|}
 end_class
 
