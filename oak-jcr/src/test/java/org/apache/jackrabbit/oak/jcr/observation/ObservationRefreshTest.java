@@ -303,6 +303,16 @@ name|org
 operator|.
 name|junit
 operator|.
+name|Ignore
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
 name|Test
 import|;
 end_import
@@ -688,6 +698,12 @@ name|logout
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Ignore
+argument_list|(
+literal|"OAK-1267"
+argument_list|)
+comment|// FIXME: OAK-1267
 annotation|@
 name|Test
 specifier|public
