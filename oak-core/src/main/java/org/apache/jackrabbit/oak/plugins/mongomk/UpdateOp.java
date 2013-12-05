@@ -210,6 +210,7 @@ return|return
 name|id
 return|;
 block|}
+specifier|public
 name|boolean
 name|isNew
 parameter_list|()

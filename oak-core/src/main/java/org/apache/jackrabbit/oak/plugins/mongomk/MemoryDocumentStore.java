@@ -1030,7 +1030,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-specifier|private
+specifier|public
 specifier|static
 name|boolean
 name|checkConditions
