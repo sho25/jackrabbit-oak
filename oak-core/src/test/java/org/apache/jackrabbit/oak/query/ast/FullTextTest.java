@@ -162,7 +162,7 @@ control|(
 name|char
 name|c
 range|:
-literal|"aäßzAZÄ09+㍠"
+literal|"a\u00e4\u00dfzAZ\u00c409+\u3360"
 operator|.
 name|toCharArray
 argument_list|()

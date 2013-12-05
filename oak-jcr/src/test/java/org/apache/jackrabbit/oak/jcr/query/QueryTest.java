@@ -372,7 +372,7 @@ block|{
 block|{
 literal|"three"
 block|,
-literal|"äöü"
+literal|"\u00e4\u00f6\u00fc"
 block|}
 block|,
 block|{
@@ -384,7 +384,7 @@ block|,
 block|{
 literal|"one"
 block|,
-literal|"㍠㍡㍢㍣㍤㍥㍦㍧㍨㍩"
+literal|"\u3360\u3361\u3362\u3363\u3364\u3365\u3366\u3367\u3368\u3369"
 block|}
 block|,          }
 decl_stmt|;
