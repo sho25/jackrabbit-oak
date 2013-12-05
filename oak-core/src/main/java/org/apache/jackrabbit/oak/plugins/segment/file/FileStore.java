@@ -943,7 +943,13 @@ name|log
 operator|.
 name|warn
 argument_list|(
-literal|"Failed to flush TarMK state"
+literal|"Failed to flush the TarMK at"
+operator|+
+name|FileStore
+operator|.
+name|this
+operator|.
+name|directory
 argument_list|,
 name|e
 argument_list|)
@@ -1139,26 +1145,58 @@ block|}
 annotation|@
 name|Override
 specifier|public
-specifier|synchronized
 name|void
 name|close
 parameter_list|()
 block|{
 try|try
 block|{
-name|super
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
+comment|// avoid deadlocks while joining the flush thread
 name|timeToClose
 operator|.
 name|countDown
 argument_list|()
 expr_stmt|;
+try|try
+block|{
 name|flushThread
 operator|.
 name|join
+argument_list|()
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|InterruptedException
+name|e
+parameter_list|)
+block|{
+name|Thread
+operator|.
+name|currentThread
+argument_list|()
+operator|.
+name|interrupt
+argument_list|()
+expr_stmt|;
+name|log
+operator|.
+name|warn
+argument_list|(
+literal|"Interrupted while joining the TarMK flush thread"
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
+block|}
+synchronized|synchronized
+init|(
+name|this
+init|)
+block|{
+name|super
+operator|.
+name|close
 argument_list|()
 expr_stmt|;
 name|flush
@@ -1214,9 +1252,10 @@ argument_list|()
 expr_stmt|;
 comment|// for any memory-mappings that are no longer used
 block|}
+block|}
 catch|catch
 parameter_list|(
-name|Exception
+name|IOException
 name|e
 parameter_list|)
 block|{
@@ -1224,6 +1263,10 @@ throw|throw
 operator|new
 name|RuntimeException
 argument_list|(
+literal|"Failed to close the TarMK at "
+operator|+
+name|directory
+argument_list|,
 name|e
 argument_list|)
 throw|;
