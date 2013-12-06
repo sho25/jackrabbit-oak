@@ -159,6 +159,9 @@ name|isIndexed
 parameter_list|(
 name|String
 name|path
+parameter_list|,
+name|Filter
+name|f
 parameter_list|)
 block|{
 name|PropertyIndexLookup
@@ -180,7 +183,7 @@ name|JCR_PRIMARYTYPE
 argument_list|,
 name|path
 argument_list|,
-literal|null
+name|f
 argument_list|)
 operator|&&
 name|lookup
@@ -191,7 +194,7 @@ name|JCR_MIXINTYPES
 argument_list|,
 name|path
 argument_list|,
-literal|null
+name|f
 argument_list|)
 condition|)
 block|{
@@ -273,6 +276,8 @@ name|substring
 argument_list|(
 name|slash
 argument_list|)
+argument_list|,
+name|f
 argument_list|)
 return|;
 block|}
@@ -298,7 +303,7 @@ name|lookup
 operator|.
 name|getCost
 argument_list|(
-literal|null
+name|filter
 argument_list|,
 name|JCR_PRIMARYTYPE
 argument_list|,
@@ -315,7 +320,7 @@ name|lookup
 operator|.
 name|getCost
 argument_list|(
-literal|null
+name|filter
 argument_list|,
 name|JCR_MIXINTYPES
 argument_list|,

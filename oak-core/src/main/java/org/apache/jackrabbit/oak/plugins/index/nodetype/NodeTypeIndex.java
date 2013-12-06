@@ -202,6 +202,8 @@ name|filter
 operator|.
 name|getPath
 argument_list|()
+argument_list|,
+name|filter
 argument_list|)
 condition|)
 block|{
@@ -262,6 +264,8 @@ name|filter
 operator|.
 name|getPath
 argument_list|()
+argument_list|,
+name|filter
 argument_list|)
 condition|)
 block|{
