@@ -522,6 +522,7 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Increment the value.      *       * @param property the key      * @param value the increment      */
+specifier|public
 name|void
 name|increment
 parameter_list|(
