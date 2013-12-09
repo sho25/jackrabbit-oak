@@ -674,6 +674,10 @@ control|)
 block|{
 name|assertTrue
 argument_list|(
+literal|"document should contain revision "
+operator|+
+name|rev
+argument_list|,
 name|doc
 operator|.
 name|containsRevision
