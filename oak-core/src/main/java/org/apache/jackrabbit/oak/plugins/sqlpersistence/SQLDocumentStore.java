@@ -398,50 +398,17 @@ name|SQLDocumentStore
 implements|implements
 name|DocumentStore
 block|{
-comment|/**      * Creates a {@linkplain SQLDocumentStore} instance using an embedded H2      * database.      */
+comment|/**      * Creates a {@linkplain SQLDocumentStore} instance using an embedded H2      * database in in-memory mode.      */
 specifier|public
 name|SQLDocumentStore
 parameter_list|()
 block|{
 try|try
 block|{
-name|File
-name|dbDir
-init|=
-operator|new
-name|File
-argument_list|(
-literal|"."
-argument_list|,
-literal|"db"
-argument_list|)
-decl_stmt|;
-if|if
-condition|(
-operator|!
-name|dbDir
-operator|.
-name|exists
-argument_list|()
-condition|)
-block|{
-name|dbDir
-operator|.
-name|mkdirs
-argument_list|()
-expr_stmt|;
-block|}
 name|String
 name|jdbcurl
 init|=
-literal|"jdbc:h2:"
-operator|+
-name|dbDir
-operator|.
-name|getCanonicalPath
-argument_list|()
-operator|+
-literal|"/revs"
+literal|"jdbc:h2:mem:oaknodes"
 decl_stmt|;
 name|initialize
 argument_list|(
@@ -1022,22 +989,6 @@ operator|.
 name|createStatement
 argument_list|()
 decl_stmt|;
-comment|// statement below needed while this is tested as a drop-in for the
-comment|// memory document store
-name|stmt
-operator|.
-name|execute
-argument_list|(
-literal|"drop table if exists CLUSTERNODES"
-argument_list|)
-expr_stmt|;
-name|stmt
-operator|.
-name|execute
-argument_list|(
-literal|"drop table if exists NODES"
-argument_list|)
-expr_stmt|;
 name|stmt
 operator|.
 name|execute
