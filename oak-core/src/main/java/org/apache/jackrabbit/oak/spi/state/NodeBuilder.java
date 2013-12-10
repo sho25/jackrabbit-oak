@@ -325,6 +325,16 @@ name|String
 name|name
 parameter_list|)
 function_decl|;
+comment|/**      * Returns the name value of the named property. The implementation      * is equivalent to the following code, but may be optimized.      *<pre>      * PropertyState property = builder.getProperty(name);      * if (property != null&& property.getType() == Type.STRING) {      *     return property.getValue(Type.STRING);      * } else {      *     return null;      * }      *</pre>      *      * @param name property name      * @return string value of the named property, or {@code null}      */
+annotation|@
+name|CheckForNull
+name|String
+name|getString
+parameter_list|(
+name|String
+name|name
+parameter_list|)
+function_decl|;
 comment|/**      * Returns the name value of the named property. The implementation      * is equivalent to the following code, but may be optimized.      *<pre>      * PropertyState property = builder.getProperty(name);      * if (property != null&& property.getType() == Type.NAME) {      *     return property.getValue(Type.NAME);      * } else {      *     return null;      * }      *</pre>      *      * @param name property name      * @return name value of the named property, or {@code null}      */
 annotation|@
 name|CheckForNull
