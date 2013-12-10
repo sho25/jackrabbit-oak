@@ -387,7 +387,9 @@ name|principalConfiguration
 init|=
 operator|new
 name|CompositePrincipalConfiguration
-argument_list|()
+argument_list|(
+name|this
+argument_list|)
 decl_stmt|;
 specifier|private
 name|CompositeTokenConfiguration
@@ -395,7 +397,9 @@ name|tokenConfiguration
 init|=
 operator|new
 name|CompositeTokenConfiguration
-argument_list|()
+argument_list|(
+name|this
+argument_list|)
 decl_stmt|;
 specifier|private
 name|ConfigurationParameters
@@ -752,8 +756,6 @@ operator|(
 name|TokenConfiguration
 operator|)
 name|service
-argument_list|,
-name|this
 argument_list|)
 expr_stmt|;
 block|}
@@ -773,8 +775,6 @@ operator|(
 name|PrincipalConfiguration
 operator|)
 name|service
-argument_list|,
-name|this
 argument_list|)
 expr_stmt|;
 block|}

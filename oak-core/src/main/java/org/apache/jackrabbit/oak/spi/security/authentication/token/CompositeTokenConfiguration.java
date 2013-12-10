@@ -105,6 +105,24 @@ name|CompositeConfiguration
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|security
+operator|.
+name|SecurityProvider
+import|;
+end_import
+
 begin_comment
 comment|/** * {@link TokenConfiguration} that combines different token provider implementations. */
 end_comment
@@ -124,13 +142,20 @@ name|TokenConfiguration
 block|{
 specifier|public
 name|CompositeTokenConfiguration
-parameter_list|()
+parameter_list|(
+annotation|@
+name|Nonnull
+name|SecurityProvider
+name|securityProvider
+parameter_list|)
 block|{
 name|super
 argument_list|(
 name|TokenConfiguration
 operator|.
 name|NAME
+argument_list|,
+name|securityProvider
 argument_list|)
 expr_stmt|;
 block|}

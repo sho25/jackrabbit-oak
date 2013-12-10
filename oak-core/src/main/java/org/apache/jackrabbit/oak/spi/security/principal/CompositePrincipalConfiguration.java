@@ -127,6 +127,24 @@ name|CompositeConfiguration
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|security
+operator|.
+name|SecurityProvider
+import|;
+end_import
+
 begin_comment
 comment|/**  * {@link PrincipalConfiguration} that combines different principal provider  * implementations that share a common principal manager implementation.  */
 end_comment
@@ -146,13 +164,20 @@ name|PrincipalConfiguration
 block|{
 specifier|public
 name|CompositePrincipalConfiguration
-parameter_list|()
+parameter_list|(
+annotation|@
+name|Nonnull
+name|SecurityProvider
+name|securityProvider
+parameter_list|)
 block|{
 name|super
 argument_list|(
 name|PrincipalConfiguration
 operator|.
 name|NAME
+argument_list|,
+name|securityProvider
 argument_list|)
 expr_stmt|;
 block|}
