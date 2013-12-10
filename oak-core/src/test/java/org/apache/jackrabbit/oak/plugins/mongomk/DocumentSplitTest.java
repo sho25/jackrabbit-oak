@@ -674,7 +674,7 @@ control|)
 block|{
 name|assertTrue
 argument_list|(
-literal|"document should contain revision "
+literal|"document should contain revision (or have revision in commit root path):"
 operator|+
 name|rev
 argument_list|,
@@ -684,6 +684,15 @@ name|containsRevision
 argument_list|(
 name|rev
 argument_list|)
+operator|||
+name|doc
+operator|.
+name|getCommitRootPath
+argument_list|(
+name|rev
+argument_list|)
+operator|!=
+literal|null
 argument_list|)
 expr_stmt|;
 name|assertTrue
