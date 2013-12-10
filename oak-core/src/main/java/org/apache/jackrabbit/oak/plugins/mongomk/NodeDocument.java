@@ -2869,7 +2869,7 @@ argument_list|(
 name|store
 argument_list|)
 decl_stmt|;
-name|MemoryDocumentStore
+name|UpdateUtils
 operator|.
 name|applyChanges
 argument_list|(

@@ -272,7 +272,7 @@ argument_list|(
 name|newDoc
 argument_list|)
 expr_stmt|;
-name|MemoryDocumentStore
+name|UpdateUtils
 operator|.
 name|applyChanges
 argument_list|(
