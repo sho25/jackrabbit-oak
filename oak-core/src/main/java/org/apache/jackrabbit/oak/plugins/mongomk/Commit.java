@@ -1023,9 +1023,16 @@ name|isNew
 argument_list|()
 condition|)
 block|{
-comment|// for new nodes we can safely set _lastRev on insert.
-comment|// for existing nodes the _lastRev is updated by the
-comment|// background thread to avoid concurrent updates
+if|if
+condition|(
+name|baseBranchRevision
+operator|==
+literal|null
+condition|)
+block|{
+comment|// for new non-branch nodes we can safely set _lastRev on
+comment|// insert. for existing nodes the _lastRev is updated by
+comment|// the background thread to avoid concurrent updates
 name|NodeDocument
 operator|.
 name|setLastRev
@@ -1035,6 +1042,7 @@ argument_list|,
 name|revision
 argument_list|)
 expr_stmt|;
+block|}
 name|newNodes
 operator|.
 name|add

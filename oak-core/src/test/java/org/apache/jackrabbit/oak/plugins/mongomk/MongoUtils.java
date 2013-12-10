@@ -118,7 +118,7 @@ specifier|static
 name|Exception
 name|exception
 decl_stmt|;
-comment|/**      * Get a connection if available. If not available, null is returned. If      * called again, the same connection is returned, or null is returned if      * there was an error.      *       * @return the connection or null      */
+comment|/**      * Get a connection if available. If not available, null is returned.      *       * @return the connection or null      */
 specifier|public
 specifier|static
 name|MongoConnection

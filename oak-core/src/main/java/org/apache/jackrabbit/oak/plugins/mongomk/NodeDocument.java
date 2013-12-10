@@ -85,16 +85,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|Iterator
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|List
 import|;
 end_import
@@ -1819,7 +1809,11 @@ name|lastModified
 argument_list|)
 expr_stmt|;
 block|}
-comment|// filter out revisions newer than branch base
+name|Revision
+name|branchBase
+init|=
+literal|null
+decl_stmt|;
 if|if
 condition|(
 name|branch
@@ -1827,66 +1821,15 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|Revision
-name|base
-init|=
+name|branchBase
+operator|=
 name|branch
 operator|.
 name|getBase
 argument_list|(
 name|readRevision
 argument_list|)
-decl_stmt|;
-for|for
-control|(
-name|Iterator
-argument_list|<
-name|Revision
-argument_list|>
-name|it
-init|=
-name|lastRevs
-operator|.
-name|values
-argument_list|()
-operator|.
-name|iterator
-argument_list|()
-init|;
-name|it
-operator|.
-name|hasNext
-argument_list|()
-condition|;
-control|)
-block|{
-name|Revision
-name|r
-init|=
-name|it
-operator|.
-name|next
-argument_list|()
-decl_stmt|;
-if|if
-condition|(
-name|isRevisionNewer
-argument_list|(
-name|context
-argument_list|,
-name|r
-argument_list|,
-name|base
-argument_list|)
-condition|)
-block|{
-name|it
-operator|.
-name|remove
-argument_list|()
 expr_stmt|;
-block|}
-block|}
 block|}
 for|for
 control|(
@@ -1913,7 +1856,7 @@ argument_list|)
 condition|)
 block|{
 comment|// the node has a _lastRev which is newer than readRevision
-comment|// this means we don't know when if this node was
+comment|// this means we don't know when this node was
 comment|// modified by an operation on a descendant node between
 comment|// current lastRevision and readRevision. therefore we have
 comment|// to stay on the safe side and use readRevision
@@ -1922,6 +1865,33 @@ operator|=
 name|readRevision
 expr_stmt|;
 continue|continue;
+block|}
+elseif|else
+if|if
+condition|(
+name|branchBase
+operator|!=
+literal|null
+operator|&&
+name|isRevisionNewer
+argument_list|(
+name|context
+argument_list|,
+name|r
+argument_list|,
+name|branchBase
+argument_list|)
+condition|)
+block|{
+comment|// readRevision is on a branch and the node has a
+comment|// _lastRev which is newer than the base of the branch
+comment|// we cannot use this _lastRev because it is not visible
+comment|// from this branch. highest possible revision of visible
+comment|// changes is the base of the branch
+name|r
+operator|=
+name|branchBase
+expr_stmt|;
 block|}
 if|if
 condition|(
@@ -1972,6 +1942,9 @@ block|{
 name|lastRevision
 operator|=
 name|r
+operator|.
+name|asBranchRevision
+argument_list|()
 expr_stmt|;
 block|}
 block|}
@@ -4482,6 +4455,43 @@ operator|.
 name|getKey
 argument_list|()
 decl_stmt|;
+comment|// resolve revision
+name|NodeDocument
+name|commitRoot
+init|=
+name|getCommitRoot
+argument_list|(
+name|propRev
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|commitRoot
+operator|==
+literal|null
+condition|)
+block|{
+continue|continue;
+block|}
+name|String
+name|commitValue
+init|=
+name|commitRoot
+operator|.
+name|getCommitValue
+argument_list|(
+name|propRev
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|commitValue
+operator|==
+literal|null
+condition|)
+block|{
+continue|continue;
+block|}
 if|if
 condition|(
 name|min
@@ -4494,7 +4504,14 @@ name|context
 argument_list|,
 name|min
 argument_list|,
+name|Utils
+operator|.
+name|resolveCommitRevision
+argument_list|(
 name|propRev
+argument_list|,
+name|commitValue
+argument_list|)
 argument_list|)
 condition|)
 block|{
@@ -4514,9 +4531,17 @@ name|validRevisions
 argument_list|)
 condition|)
 block|{
+comment|// TODO: need to check older revisions as well?
 name|latestRev
 operator|=
+name|Utils
+operator|.
+name|resolveCommitRevision
+argument_list|(
 name|propRev
+argument_list|,
+name|commitValue
+argument_list|)
 expr_stmt|;
 name|value
 operator|=

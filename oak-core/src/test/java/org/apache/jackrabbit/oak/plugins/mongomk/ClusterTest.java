@@ -299,16 +299,6 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Ignore
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
 name|Test
 import|;
 end_import
@@ -1324,8 +1314,6 @@ argument_list|()
 expr_stmt|;
 block|}
 comment|/**      * Test for OAK-1254      */
-annotation|@
-name|Ignore
 annotation|@
 name|Test
 specifier|public
@@ -2518,17 +2506,6 @@ name|String
 name|path
 parameter_list|)
 block|{
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"traversing: "
-operator|+
-name|path
-argument_list|)
-expr_stmt|;
 for|for
 control|(
 name|ChildNodeEntry
