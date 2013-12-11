@@ -115,6 +115,12 @@ name|isValid
 argument_list|(
 name|path
 argument_list|)
+operator|:
+literal|"Invalid path ["
+operator|+
+name|path
+operator|+
+literal|"]"
 assert|;
 return|return
 name|denotesRootPath
@@ -194,6 +200,12 @@ name|isValid
 argument_list|(
 name|path
 argument_list|)
+operator|:
+literal|"Invalid path ["
+operator|+
+name|path
+operator|+
+literal|"]"
 assert|;
 return|return
 name|isAbsolutePath
@@ -269,6 +281,12 @@ name|isValid
 argument_list|(
 name|path
 argument_list|)
+operator|:
+literal|"Invalid path ["
+operator|+
+name|path
+operator|+
+literal|"]"
 assert|;
 if|if
 condition|(
@@ -387,6 +405,12 @@ name|isValid
 argument_list|(
 name|path
 argument_list|)
+operator|:
+literal|"Invalid path ["
+operator|+
+name|path
+operator|+
+literal|"]"
 assert|;
 if|if
 condition|(
@@ -517,6 +541,12 @@ name|isValid
 argument_list|(
 name|path
 argument_list|)
+operator|:
+literal|"Invalid path ["
+operator|+
+name|path
+operator|+
+literal|"]"
 assert|;
 if|if
 condition|(
@@ -618,6 +648,12 @@ name|isValid
 argument_list|(
 name|path
 argument_list|)
+operator|:
+literal|"Invalid path ["
+operator|+
+name|path
+operator|+
+literal|"]"
 assert|;
 specifier|final
 name|Iterator
@@ -838,6 +874,12 @@ name|isValid
 argument_list|(
 name|parentPath
 argument_list|)
+operator|:
+literal|"Invalid parent path ["
+operator|+
+name|parentPath
+operator|+
+literal|"]"
 assert|;
 name|int
 name|parentLen
@@ -981,12 +1023,24 @@ name|isValid
 argument_list|(
 name|parentPath
 argument_list|)
+operator|:
+literal|"Invalid parent path ["
+operator|+
+name|parentPath
+operator|+
+literal|"]"
 assert|;
 assert|assert
 name|isValid
 argument_list|(
 name|subPath
 argument_list|)
+operator|:
+literal|"Invalid sub path ["
+operator|+
+name|subPath
+operator|+
+literal|"]"
 assert|;
 comment|// special cases
 if|if
@@ -1091,12 +1145,24 @@ name|isValid
 argument_list|(
 name|ancestor
 argument_list|)
+operator|:
+literal|"Invalid parent path ["
+operator|+
+name|ancestor
+operator|+
+literal|"]"
 assert|;
 assert|assert
 name|isValid
 argument_list|(
 name|path
 argument_list|)
+operator|:
+literal|"Invalid path ["
+operator|+
+name|ancestor
+operator|+
+literal|"]"
 assert|;
 if|if
 condition|(
@@ -1172,12 +1238,24 @@ name|isValid
 argument_list|(
 name|parentPath
 argument_list|)
+operator|:
+literal|"Invalid parent path ["
+operator|+
+name|parentPath
+operator|+
+literal|"]"
 assert|;
 assert|assert
 name|isValid
 argument_list|(
 name|path
 argument_list|)
+operator|:
+literal|"Invalid path ["
+operator|+
+name|path
+operator|+
+literal|"]"
 assert|;
 if|if
 condition|(
@@ -1261,6 +1339,12 @@ name|isValid
 argument_list|(
 name|path
 argument_list|)
+operator|:
+literal|"Invalid path ["
+operator|+
+name|path
+operator|+
+literal|"]"
 assert|;
 return|return
 name|path
