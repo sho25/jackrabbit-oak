@@ -13,7 +13,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|osgi
+name|spi
+operator|.
+name|whiteboard
 package|;
 end_package
 
@@ -123,32 +125,14 @@ name|NodeState
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|spi
-operator|.
-name|whiteboard
-operator|.
-name|AbstractServiceTracker
-import|;
-end_import
-
 begin_comment
-comment|/**  * This IndexEditor provider combines all index editors of all available OSGi  * IndexEditor providers.  */
+comment|/**  * Dynamic {@link IndexEditorProvider} based on the available  * whiteboard services.  */
 end_comment
 
 begin_class
 specifier|public
 class|class
-name|OsgiIndexEditorProvider
+name|WhiteboardIndexEditorProvider
 extends|extends
 name|AbstractServiceTracker
 argument_list|<
@@ -158,7 +142,7 @@ implements|implements
 name|IndexEditorProvider
 block|{
 specifier|public
-name|OsgiIndexEditorProvider
+name|WhiteboardIndexEditorProvider
 parameter_list|()
 block|{
 name|super

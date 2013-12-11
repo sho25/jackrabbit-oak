@@ -13,7 +13,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|osgi
+name|spi
+operator|.
+name|whiteboard
 package|;
 end_package
 
@@ -121,32 +123,14 @@ name|CompositeActionProvider
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|spi
-operator|.
-name|whiteboard
-operator|.
-name|AbstractServiceTracker
-import|;
-end_import
-
 begin_comment
-comment|/**  * OsgiAuthorizableActionProvider... TODO  */
+comment|/**  * Dynamic {@link AuthorizableActionProvider} based on the available  * whiteboard services.  */
 end_comment
 
 begin_class
 specifier|public
 class|class
-name|OsgiAuthorizableActionProvider
+name|WhiteboardAuthorizableActionProvider
 extends|extends
 name|AbstractServiceTracker
 argument_list|<
@@ -156,7 +140,7 @@ implements|implements
 name|AuthorizableActionProvider
 block|{
 specifier|public
-name|OsgiAuthorizableActionProvider
+name|WhiteboardAuthorizableActionProvider
 parameter_list|()
 block|{
 name|super
