@@ -993,6 +993,20 @@ name|stmt
 operator|.
 name|execute
 argument_list|(
+literal|"drop table if exists CLUSTERNODES"
+argument_list|)
+expr_stmt|;
+name|stmt
+operator|.
+name|execute
+argument_list|(
+literal|"drop table if exists NODES"
+argument_list|)
+expr_stmt|;
+name|stmt
+operator|.
+name|execute
+argument_list|(
 literal|"create table if not exists CLUSTERNODES(ID varchar primary key, MODIFIED bigint, MODCOUNT bigint, DATA varchar)"
 argument_list|)
 expr_stmt|;
