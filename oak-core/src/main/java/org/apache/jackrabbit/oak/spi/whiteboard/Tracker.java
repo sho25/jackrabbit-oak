@@ -25,56 +25,34 @@ name|java
 operator|.
 name|util
 operator|.
-name|Map
+name|List
 import|;
 end_import
+
+begin_comment
+comment|/**  * Tracker for whiteboard services.  */
+end_comment
 
 begin_interface
 specifier|public
 interface|interface
-name|Whiteboard
-block|{
-comment|/**      * Publishes the given service to the whiteboard. Use the returned      * registration object to unregister the service.      *      * @param type type of the service      * @param service service instance      * @param properties service properties      * @return service registration      */
-parameter_list|<
-name|T
-parameter_list|>
-name|Registration
-name|register
-parameter_list|(
-name|Class
-argument_list|<
-name|T
-argument_list|>
-name|type
-parameter_list|,
-name|T
-name|service
-parameter_list|,
-name|Map
-argument_list|<
-name|?
-argument_list|,
-name|?
-argument_list|>
-name|properties
-parameter_list|)
-function_decl|;
-comment|/**      * Starts tracking services of the given type.      *      * @param type type of the services to track      * @return service tracker      */
-parameter_list|<
-name|T
-parameter_list|>
 name|Tracker
+parameter_list|<
+name|T
+parameter_list|>
+block|{
+comment|/**      * Returns the currently available services of the tracked type.      *      * @return available services      */
+name|List
 argument_list|<
 name|T
 argument_list|>
-name|track
-parameter_list|(
-name|Class
-argument_list|<
-name|T
-argument_list|>
-name|type
-parameter_list|)
+name|getServices
+parameter_list|()
+function_decl|;
+comment|/**      * Stops tracking.      */
+name|void
+name|stop
+parameter_list|()
 function_decl|;
 block|}
 end_interface

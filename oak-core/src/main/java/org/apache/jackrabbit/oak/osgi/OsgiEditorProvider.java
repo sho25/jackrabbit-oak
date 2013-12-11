@@ -133,6 +133,24 @@ name|NodeState
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|whiteboard
+operator|.
+name|AbstractServiceTracker
+import|;
+end_import
+
 begin_comment
 comment|/**  * This editor provider combines all editors of all available OSGi editor  * providers.  */
 end_comment

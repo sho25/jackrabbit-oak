@@ -412,15 +412,6 @@ comment|/**  * {@code InitialContent} implements a {@link RepositoryInitializer}
 end_comment
 
 begin_class
-annotation|@
-name|Component
-annotation|@
-name|Service
-argument_list|(
-name|RepositoryInitializer
-operator|.
-name|class
-argument_list|)
 specifier|public
 class|class
 name|InitialContent
