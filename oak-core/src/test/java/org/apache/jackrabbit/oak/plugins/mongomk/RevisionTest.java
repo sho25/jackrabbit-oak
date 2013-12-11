@@ -1033,7 +1033,7 @@ name|r3c2
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// now we declare r1+r2 of c1 to be after r1+r2 of c2
+comment|// now we declare r2+r3 of c1 to be after r2+r3 of c2
 name|comp
 operator|.
 name|add
@@ -1356,6 +1356,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * OAK-1274      */
 annotation|@
 name|Ignore
 annotation|@
