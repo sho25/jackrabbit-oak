@@ -29,18 +29,6 @@ name|UUID
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|concurrent
-operator|.
-name|Callable
-import|;
-end_import
-
 begin_interface
 specifier|public
 interface|interface
@@ -92,22 +80,6 @@ function_decl|;
 name|void
 name|close
 parameter_list|()
-function_decl|;
-parameter_list|<
-name|T
-parameter_list|>
-name|T
-name|getRecord
-parameter_list|(
-name|RecordId
-name|id
-parameter_list|,
-name|Callable
-argument_list|<
-name|T
-argument_list|>
-name|loader
-parameter_list|)
 function_decl|;
 comment|/**      * Checks whether the given object is a record of the given type and      * is stored in this segment store.      *      * @param object possible record object      * @param type record type      * @return {@code true} if the object is a record of the given type      *         from this store, {@code false} otherwise      */
 name|boolean
