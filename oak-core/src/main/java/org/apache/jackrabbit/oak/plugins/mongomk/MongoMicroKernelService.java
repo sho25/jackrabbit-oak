@@ -167,13 +167,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|plugins
+name|osgi
 operator|.
-name|mongomk
-operator|.
-name|util
-operator|.
-name|MongoConnection
+name|OsgiWhiteboard
 import|;
 end_import
 
@@ -187,11 +183,13 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|spi
+name|plugins
 operator|.
-name|whiteboard
+name|mongomk
 operator|.
-name|OsgiWhiteboard
+name|util
+operator|.
+name|MongoConnection
 import|;
 end_import
 
