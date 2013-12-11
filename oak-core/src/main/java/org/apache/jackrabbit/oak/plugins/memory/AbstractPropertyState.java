@@ -13,7 +13,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|api
+name|plugins
+operator|.
+name|memory
 package|;
 end_package
 
@@ -45,8 +47,40 @@ name|Iterables
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|api
+operator|.
+name|PropertyState
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|api
+operator|.
+name|Type
+import|;
+end_import
+
 begin_comment
-comment|/**  * Abstract base class for {@link PropertyState} implementations. This  * class provides default implementations of basic {@link Object} methods,  * for consistency across all property states.  */
+comment|/**  * Abstract base class for {@link org.apache.jackrabbit.oak.api.PropertyState} implementations. This  * class provides default implementations of basic {@link Object} methods,  * for consistency across all property states.  */
 end_comment
 
 begin_class
