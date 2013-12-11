@@ -96,15 +96,6 @@ name|Observable
 implements|,
 name|Observer
 block|{
-comment|// TODO make the queue size configurable
-specifier|private
-specifier|static
-specifier|final
-name|int
-name|QUEUE_SIZE
-init|=
-literal|8192
-decl_stmt|;
 specifier|private
 specifier|final
 name|CompositeObserver
@@ -140,7 +131,7 @@ name|root
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Register a new {@link Observer} for receiving notifications about changes reported to      * this change dispatcher. Changes are reported asynchronously. Clients need to      * call {@link java.io.Closeable#close()} close} on the returned {@code Closeable} instance      * to stop receiving notifications.      *      * @return  a {@link Closeable} instance      */
+comment|/**      * Register a new {@link Observer} for receiving notifications about changes reported to      * this change dispatcher. Changes are reported synchronously and clients need to ensure      * to no block any length of time (e.g. by relaying through a {@link BackgroundObserver}).      *<p>      * Clients need to call {@link java.io.Closeable#close()} close} on the returned      * {@code Closeable} instance to stop receiving notifications.      *      * @return  a {@link Closeable} instance      */
 annotation|@
 name|Override
 annotation|@
@@ -149,23 +140,12 @@ specifier|public
 name|Closeable
 name|addObserver
 parameter_list|(
+specifier|final
 name|Observer
 name|observer
 parameter_list|)
 block|{
-specifier|final
-name|BackgroundObserver
-name|backgroundObserver
-init|=
-operator|new
-name|BackgroundObserver
-argument_list|(
 name|observer
-argument_list|,
-name|QUEUE_SIZE
-argument_list|)
-decl_stmt|;
-name|backgroundObserver
 operator|.
 name|contentChanged
 argument_list|(
@@ -178,7 +158,7 @@ name|observers
 operator|.
 name|addObserver
 argument_list|(
-name|backgroundObserver
+name|observer
 argument_list|)
 expr_stmt|;
 return|return
@@ -193,16 +173,11 @@ name|void
 name|close
 parameter_list|()
 block|{
-name|backgroundObserver
-operator|.
-name|stop
-argument_list|()
-expr_stmt|;
 name|observers
 operator|.
 name|removeObserver
 argument_list|(
-name|backgroundObserver
+name|observer
 argument_list|)
 expr_stmt|;
 block|}

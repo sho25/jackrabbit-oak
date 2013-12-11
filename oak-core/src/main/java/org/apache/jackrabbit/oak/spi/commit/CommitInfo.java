@@ -20,6 +20,38 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Objects
+operator|.
+name|toStringHelper
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkNotNull
+import|;
+end_import
+
+begin_import
 import|import
 name|javax
 operator|.
@@ -68,22 +100,6 @@ operator|.
 name|permission
 operator|.
 name|PermissionProvider
-import|;
-end_import
-
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|Objects
-operator|.
-name|toStringHelper
 import|;
 end_import
 
@@ -173,7 +189,10 @@ name|this
 operator|.
 name|sessionId
 operator|=
+name|checkNotNull
+argument_list|(
 name|sessionId
+argument_list|)
 expr_stmt|;
 name|this
 operator|.
@@ -193,19 +212,25 @@ name|this
 operator|.
 name|permissionProvider
 operator|=
+name|checkNotNull
+argument_list|(
 name|permissionProvider
+argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|moveTracker
+operator|=
+name|checkNotNull
+argument_list|(
+name|moveTracker
+argument_list|)
 expr_stmt|;
 name|this
 operator|.
 name|message
 operator|=
 name|message
-expr_stmt|;
-name|this
-operator|.
-name|moveTracker
-operator|=
-name|moveTracker
 expr_stmt|;
 block|}
 comment|/**      * @return  id of the committing session      */
