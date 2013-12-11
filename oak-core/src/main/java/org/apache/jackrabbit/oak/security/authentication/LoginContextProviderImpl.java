@@ -252,7 +252,6 @@ comment|/**  * {@code LoginContextProvider}  */
 end_comment
 
 begin_class
-specifier|public
 class|class
 name|LoginContextProviderImpl
 implements|implements
@@ -293,7 +292,6 @@ specifier|final
 name|SecurityProvider
 name|securityProvider
 decl_stmt|;
-specifier|public
 name|LoginContextProviderImpl
 parameter_list|(
 name|String

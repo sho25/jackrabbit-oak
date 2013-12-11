@@ -202,7 +202,6 @@ comment|/**  * Default implementation of the {@link CallbackHandler} interface. 
 end_comment
 
 begin_class
-specifier|public
 class|class
 name|CallbackHandlerImpl
 implements|implements
@@ -228,7 +227,6 @@ specifier|final
 name|SecurityProvider
 name|securityProvider
 decl_stmt|;
-specifier|public
 name|CallbackHandlerImpl
 parameter_list|(
 name|Credentials
