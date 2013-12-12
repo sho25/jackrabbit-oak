@@ -1523,7 +1523,7 @@ name|assertTrue
 argument_list|(
 name|previous
 operator|.
-name|compareRevisionTime
+name|compareRevisionTimeThenClusterId
 argument_list|(
 name|entry
 operator|.

@@ -2135,15 +2135,6 @@ name|ex
 operator|=
 literal|"conflict expected"
 expr_stmt|;
-comment|// afterwards, this cluster node should synchronize
-name|unseenChanges
-index|[
-name|mkId
-index|]
-operator|.
-name|clear
-argument_list|()
-expr_stmt|;
 block|}
 else|else
 block|{
