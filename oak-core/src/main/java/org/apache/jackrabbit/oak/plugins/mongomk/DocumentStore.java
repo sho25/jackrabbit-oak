@@ -119,7 +119,7 @@ name|int
 name|maxCacheAge
 parameter_list|)
 function_decl|;
-comment|/**      * Get a list of documents where the key is greater than a start value and      * less than an end value. The returned documents are immutable.      *       * @param<T> the document type      * @param collection the collection      * @param fromKey the start value (excluding)      * @param toKey the end value (excluding)      * @param limit the maximum number of entries to return      * @return the list (possibly empty)      */
+comment|/**      * Get a list of documents where the key is greater than a start value and      * less than an end value, sorted by the key.      *<p>      * The returned documents are immutable.      *       * @param<T> the document type      * @param collection the collection      * @param fromKey the start value (excluding)      * @param toKey the end value (excluding)      * @param limit the maximum number of entries to return (starting with the lowest key)      * @return the list (possibly empty)      */
 annotation|@
 name|Nonnull
 argument_list|<
