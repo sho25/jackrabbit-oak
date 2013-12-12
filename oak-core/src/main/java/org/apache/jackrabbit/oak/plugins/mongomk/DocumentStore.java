@@ -274,7 +274,7 @@ parameter_list|)
 throws|throws
 name|MicroKernelException
 function_decl|;
-comment|/**      * Performs a conditional update (e.g. using      * {@link UpdateOp.Operation.Type#CONTAINS_MAP_ENTRY} and only updates the      * document if the condition is<code>true</code>. The returned document is      * immutable.      *      * @param<T> the document type      * @param collection the collection      * @param update the update operation with the condition      * @return the old document or<code>null</code> if the condition is not met.      * @throws MicroKernelException if the operation failed.      */
+comment|/**      * Performs a conditional update (e.g. using      * {@link UpdateOp.Operation.Type#CONTAINS_MAP_ENTRY} and only updates the      * document if the condition is<code>true</code>. The returned document is      * immutable.      *      * @param<T> the document type      * @param collection the collection      * @param update the update operation with the condition      * @return the old document or<code>null</code> if the condition is not met or      *         if the document wasn't found      * @throws MicroKernelException if the operation failed.      */
 annotation|@
 name|CheckForNull
 argument_list|<
