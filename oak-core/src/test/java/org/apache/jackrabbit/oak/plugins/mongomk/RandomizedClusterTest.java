@@ -218,7 +218,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A simple randomized single-instance test.  */
+comment|/**  * A simple randomized dual-instance test.  */
 end_comment
 
 begin_class
