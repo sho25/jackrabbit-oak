@@ -261,6 +261,13 @@ operator|.
 name|getPendingModifications
 argument_list|()
 decl_stmt|;
+name|paths
+operator|.
+name|add
+argument_list|(
+literal|"/"
+argument_list|)
+expr_stmt|;
 for|for
 control|(
 name|String
