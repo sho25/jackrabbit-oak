@@ -339,7 +339,7 @@ name|RepositoryException
 block|{
 comment|// TODO row score
 return|return
-literal|0
+literal|0.01
 return|;
 block|}
 annotation|@
@@ -356,7 +356,7 @@ name|RepositoryException
 block|{
 comment|// TODO row score
 return|return
-literal|0
+literal|0.01
 return|;
 block|}
 annotation|@
