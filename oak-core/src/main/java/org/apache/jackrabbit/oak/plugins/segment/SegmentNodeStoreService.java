@@ -354,10 +354,6 @@ argument_list|(
 name|description
 operator|=
 literal|"TarMK mode (64 for memory mapping, 32 for normal file access)"
-argument_list|,
-name|value
-operator|=
-literal|"64"
 argument_list|)
 specifier|public
 specifier|static
