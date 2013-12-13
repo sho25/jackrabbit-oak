@@ -562,11 +562,6 @@ name|PERSIST
 decl_stmt|;
 specifier|private
 specifier|final
-name|ReadOnlyNodeTypeManager
-name|ntManager
-decl_stmt|;
-specifier|private
-specifier|final
 name|int
 name|eventTypes
 decl_stmt|;
@@ -607,13 +602,10 @@ specifier|final
 name|PermissionProvider
 name|permissionProvider
 decl_stmt|;
-comment|/**      * Create a new instance of a {@code JcrFilterProvider} for certain criteria      *      * @param ntManager   node type manager      * @param eventTypes  event types to include encoded as a bit mask      * @param path        path to include      * @param deep        {@code true} if descendants of {@code path} should be included.      *                    {@code false} otherwise.      * @param uuids       uuids to include      * @param nodeTypeName              node type names to include      * @param includeSessionLocal       include session local events if {@code true}.      *                                  Exclude otherwise.      * @param includeClusterExternal    include cluster external events if {@code true}.      *                                  Exclude otherwise.      * @param permissionProvider        permission provider to evaluate events against      * @see javax.jcr.observation.ObservationManager#addEventListener(javax.jcr.observation.EventListener, int, String, boolean, String[], String[], boolean) */
+comment|/**      * Create a new instance of a {@code JcrFilterProvider} for certain criteria      *      * @param eventTypes  event types to include encoded as a bit mask      * @param path        path to include      * @param deep        {@code true} if descendants of {@code path} should be included.      *                    {@code false} otherwise.      * @param uuids       uuids to include      * @param nodeTypeName              node type names to include      * @param includeSessionLocal       include session local events if {@code true}.      *                                  Exclude otherwise.      * @param includeClusterExternal    include cluster external events if {@code true}.      *                                  Exclude otherwise.      * @param permissionProvider        permission provider to evaluate events against      * @see javax.jcr.observation.ObservationManager#addEventListener(javax.jcr.observation.EventListener, int, String, boolean, String[], String[], boolean) */
 specifier|public
 name|JcrFilterProvider
 parameter_list|(
-name|ReadOnlyNodeTypeManager
-name|ntManager
-parameter_list|,
 name|int
 name|eventTypes
 parameter_list|,
@@ -641,12 +633,6 @@ name|PermissionProvider
 name|permissionProvider
 parameter_list|)
 block|{
-name|this
-operator|.
-name|ntManager
-operator|=
-name|ntManager
-expr_stmt|;
 name|this
 operator|.
 name|eventTypes
@@ -744,6 +730,9 @@ name|beforeTree
 parameter_list|,
 name|Tree
 name|afterTree
+parameter_list|,
+name|ReadOnlyNodeTypeManager
+name|ntManager
 parameter_list|)
 block|{
 name|String

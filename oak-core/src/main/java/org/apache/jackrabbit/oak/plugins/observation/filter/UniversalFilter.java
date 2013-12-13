@@ -318,6 +318,8 @@ parameter_list|)
 function_decl|;
 block|}
 comment|/**      * @return  before tree this filter acts upon      */
+annotation|@
+name|Nonnull
 specifier|public
 name|Tree
 name|getBeforeTree
@@ -328,6 +330,8 @@ name|beforeTree
 return|;
 block|}
 comment|/**      * @return  after tree this filter acts upon      */
+annotation|@
+name|Nonnull
 specifier|public
 name|Tree
 name|getAfterTree

@@ -69,6 +69,24 @@ name|oak
 operator|.
 name|plugins
 operator|.
+name|nodetype
+operator|.
+name|ReadOnlyNodeTypeManager
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
 name|observation
 operator|.
 name|filter
@@ -121,7 +139,7 @@ name|CommitInfo
 name|info
 parameter_list|)
 function_decl|;
-comment|/**      * Factory method for creating a {@code Filter} for the passed before and after      * states and the given tree permissions of the reading session.      *      * @param beforeTree  before state      * @param afterTree   after state      * @return new {@code Filter} instance      */
+comment|/**      * Factory method for creating a {@code Filter} for the passed before and after      * states and the given tree permissions of the reading session.      *      * @param beforeTree  before state      * @param afterTree   after state      * @param ntManager   node type manager used by node type filters      * @return new {@code Filter} instance      */
 annotation|@
 name|Nonnull
 name|Filter
@@ -136,9 +154,14 @@ annotation|@
 name|Nonnull
 name|Tree
 name|afterTree
+parameter_list|,
+annotation|@
+name|Nonnull
+name|ReadOnlyNodeTypeManager
+name|ntManager
 parameter_list|)
 function_decl|;
-comment|/**      * Path of the subtree to which the the filter returned by      * {@link #getFilter(Tree, Tree)} applies.      * @return path to which the filter applies.      */
+comment|/**      * Path of the subtree to which the the filter returned by      * {@link #getFilter(Tree, Tree, org.apache.jackrabbit.oak.plugins.nodetype.ReadOnlyNodeTypeManager)}      * applies.      * @return path to which the filter applies.      */
 annotation|@
 name|Nonnull
 name|String

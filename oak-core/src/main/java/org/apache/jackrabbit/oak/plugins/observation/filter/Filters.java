@@ -186,6 +186,8 @@ name|Filters
 parameter_list|()
 block|{     }
 comment|/**      * A filter that matches if and only if any of the filters passed to this      * method matches.      * @param filters  filters of which any must match      * @return {@code true} if any of {@code filters} match.      */
+annotation|@
+name|Nonnull
 specifier|public
 specifier|static
 name|Filter
@@ -215,6 +217,8 @@ argument_list|)
 return|;
 block|}
 comment|/**      * A filter that matches if and only if all of the filters passed to this      * method matches.      * @param filters  filters of which all must match      * @return {@code true} if all of {@code filters} match.      */
+annotation|@
+name|Nonnull
 specifier|public
 specifier|static
 name|Filter
@@ -244,6 +248,8 @@ argument_list|)
 return|;
 block|}
 comment|/**      * @return  Filter that includes everything      */
+annotation|@
+name|Nonnull
 specifier|public
 specifier|static
 name|Filter
@@ -255,6 +261,8 @@ name|INCLUDE_ALL
 return|;
 block|}
 comment|/**      * @return  Filter that excludes everything      */
+annotation|@
+name|Nonnull
 specifier|public
 specifier|static
 name|Filter
@@ -265,11 +273,16 @@ return|return
 name|EXCLUDE_ALL
 return|;
 block|}
-specifier|private
+comment|/**      * A filter that matches if and only if any of the filters passed to this      * method matches.      * @param filters  filters of which any must match      * @return {@code true} if any of {@code filters} match.      */
+annotation|@
+name|Nonnull
+specifier|public
 specifier|static
 name|Filter
 name|any
 parameter_list|(
+annotation|@
+name|Nonnull
 specifier|final
 name|List
 argument_list|<
@@ -280,7 +293,10 @@ parameter_list|)
 block|{
 if|if
 condition|(
+name|checkNotNull
+argument_list|(
 name|filters
+argument_list|)
 operator|.
 name|isEmpty
 argument_list|()
@@ -687,11 +703,16 @@ block|}
 return|;
 block|}
 block|}
-specifier|private
+comment|/**      * A filter that matches if and only if all of the filters passed to this      * method matches.      * @param filters  filters of which all must match      * @return {@code true} if all of {@code filters} match.      */
+annotation|@
+name|Nonnull
+specifier|public
 specifier|static
 name|Filter
 name|all
 parameter_list|(
+annotation|@
+name|Nonnull
 specifier|final
 name|List
 argument_list|<
@@ -702,7 +723,10 @@ parameter_list|)
 block|{
 if|if
 condition|(
+name|checkNotNull
+argument_list|(
 name|filters
+argument_list|)
 operator|.
 name|isEmpty
 argument_list|()

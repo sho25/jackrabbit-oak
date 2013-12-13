@@ -686,8 +686,6 @@ init|=
 operator|new
 name|JcrFilterProvider
 argument_list|(
-name|ntMgr
-argument_list|,
 name|eventTypes
 argument_list|,
 name|oakPath
@@ -808,6 +806,8 @@ name|getContentSession
 argument_list|()
 argument_list|,
 name|namePathMapper
+argument_list|,
+name|ntMgr
 argument_list|,
 name|tracker
 argument_list|,

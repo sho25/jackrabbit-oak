@@ -23,6 +23,22 @@ end_package
 
 begin_import
 import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkNotNull
+import|;
+end_import
+
+begin_import
+import|import static
 name|org
 operator|.
 name|apache
@@ -240,9 +256,13 @@ comment|/**      * @param path      path to select from      * @param selector  
 specifier|public
 name|RelativePathSelector
 parameter_list|(
+annotation|@
+name|Nonnull
 name|String
 name|path
 parameter_list|,
+annotation|@
+name|Nonnull
 name|Selector
 name|selector
 parameter_list|)
@@ -251,13 +271,19 @@ name|this
 operator|.
 name|path
 operator|=
+name|checkNotNull
+argument_list|(
 name|path
+argument_list|)
 expr_stmt|;
 name|this
 operator|.
 name|selector
 operator|=
+name|checkNotNull
+argument_list|(
 name|selector
+argument_list|)
 expr_stmt|;
 block|}
 annotation|@
