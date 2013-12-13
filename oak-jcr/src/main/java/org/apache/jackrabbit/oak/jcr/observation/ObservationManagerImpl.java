@@ -752,6 +752,8 @@ name|namePathMapper
 argument_list|,
 name|ntMgr
 argument_list|,
+name|permissionProvider
+argument_list|,
 name|tracker
 argument_list|,
 name|filterProvider
@@ -993,13 +995,6 @@ name|validateNodeTypeNames
 argument_list|(
 name|nodeTypeName
 argument_list|)
-argument_list|)
-argument_list|,
-name|filterBuilder
-operator|.
-name|accessControl
-argument_list|(
-name|permissionProvider
 argument_list|)
 argument_list|)
 argument_list|)
