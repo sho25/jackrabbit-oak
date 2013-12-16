@@ -208,7 +208,7 @@ specifier|public
 class|class
 name|LuceneOakRepositoryStub
 extends|extends
-name|OakRepositoryStubBase
+name|OakTarMKRepositoryStub
 block|{
 specifier|public
 name|LuceneOakRepositoryStub

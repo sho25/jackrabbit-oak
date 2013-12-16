@@ -327,6 +327,11 @@ argument_list|)
 argument_list|)
 argument_list|)
 decl_stmt|;
+name|preCreateRepository
+argument_list|(
+name|jcr
+argument_list|)
+expr_stmt|;
 name|this
 operator|.
 name|repository
@@ -423,6 +428,15 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * Override in base class and perform additional configuration on the      * {@link Jcr} builder before the repository is created.      *      * @param jcr the builder.      */
+specifier|protected
+name|void
+name|preCreateRepository
+parameter_list|(
+name|Jcr
+name|jcr
+parameter_list|)
+block|{     }
 comment|/**      * Returns the configured repository instance.      *      * @return the configured repository instance.      */
 annotation|@
 name|Override
