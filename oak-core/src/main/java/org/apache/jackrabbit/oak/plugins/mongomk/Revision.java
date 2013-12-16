@@ -122,16 +122,19 @@ name|lastRevisionCount
 decl_stmt|;
 comment|/**      * The timestamp in milliseconds since 1970 (unlike in seconds as in      * MongoDB). The timestamp is local to the machine that generated the      * revision, such that timestamps of revisions can only be compared if the      * machine id is the same.      */
 specifier|private
+specifier|final
 name|long
 name|timestamp
 decl_stmt|;
 comment|/**      * An incrementing counter, for commits that occur within the same      * millisecond.      */
 specifier|private
+specifier|final
 name|int
 name|counter
 decl_stmt|;
 comment|/**      * The cluster id (the MongoDB machine id).      */
 specifier|private
+specifier|final
 name|int
 name|clusterId
 decl_stmt|;
@@ -712,9 +715,7 @@ argument_list|,
 literal|16
 argument_list|)
 decl_stmt|;
-name|Revision
-name|r
-init|=
+return|return
 operator|new
 name|Revision
 argument_list|(
@@ -726,9 +727,6 @@ name|clusterId
 argument_list|,
 name|isBranch
 argument_list|)
-decl_stmt|;
-return|return
-name|r
 return|;
 block|}
 annotation|@
@@ -775,6 +773,11 @@ name|clusterId
 argument_list|)
 return|;
 block|}
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"UnusedDeclaration"
+argument_list|)
 specifier|public
 name|String
 name|toReadableString
