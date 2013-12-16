@@ -699,7 +699,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Stop this change processor if running. After returning from this methods no further      * events will be delivered.      * @throws IllegalStateException if not yet started or stopped already      */
+comment|/**      * Stop this change processor if running. After returning from this methods no further      * events will be delivered.      * FIXME relax this contract. See OAK-1290      * @throws IllegalStateException if not yet started or stopped already      */
 specifier|public
 specifier|synchronized
 name|void
@@ -893,11 +893,6 @@ name|hasNext
 argument_list|()
 condition|)
 block|{
-synchronized|synchronized
-init|(
-name|this
-init|)
-block|{
 if|if
 condition|(
 operator|!
@@ -915,7 +910,6 @@ name|events
 argument_list|)
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 block|}
