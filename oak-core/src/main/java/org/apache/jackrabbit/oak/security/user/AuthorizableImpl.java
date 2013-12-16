@@ -20,6 +20,24 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|api
+operator|.
+name|Type
+operator|.
+name|STRING
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -276,24 +294,6 @@ operator|.
 name|slf4j
 operator|.
 name|LoggerFactory
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|api
-operator|.
-name|Type
-operator|.
-name|STRING
 import|;
 end_import
 
@@ -851,6 +851,23 @@ argument_list|(
 name|otherAuth
 operator|.
 name|userManager
+argument_list|)
+return|;
+block|}
+elseif|else
+if|if
+condition|(
+name|obj
+operator|instanceof
+name|Authorizable
+condition|)
+block|{
+return|return
+name|obj
+operator|.
+name|equals
+argument_list|(
+name|this
 argument_list|)
 return|;
 block|}
