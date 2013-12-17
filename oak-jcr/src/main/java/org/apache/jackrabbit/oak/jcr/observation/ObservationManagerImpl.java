@@ -37,6 +37,20 @@ end_import
 
 begin_import
 import|import static
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|TimeUnit
+operator|.
+name|MILLISECONDS
+import|;
+end_import
+
+begin_import
+import|import static
 name|org
 operator|.
 name|apache
@@ -514,7 +528,7 @@ specifier|private
 specifier|static
 specifier|final
 name|Logger
-name|log
+name|LOG
 init|=
 name|LoggerFactory
 operator|.
@@ -524,6 +538,14 @@ name|ObservationManagerImpl
 operator|.
 name|class
 argument_list|)
+decl_stmt|;
+specifier|private
+specifier|static
+specifier|final
+name|int
+name|STOP_TIME_OUT
+init|=
+literal|1000
 decl_stmt|;
 specifier|public
 specifier|static
@@ -686,10 +708,10 @@ range|:
 name|toBeStopped
 control|)
 block|{
-name|processor
-operator|.
 name|stop
-argument_list|()
+argument_list|(
+name|processor
+argument_list|)
 expr_stmt|;
 block|}
 block|}
@@ -725,7 +747,7 @@ operator|==
 literal|null
 condition|)
 block|{
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -778,7 +800,7 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -844,7 +866,7 @@ name|String
 name|message
 parameter_list|)
 block|{
-name|log
+name|LOG
 operator|.
 name|warn
 argument_list|(
@@ -1030,7 +1052,7 @@ name|String
 name|message
 parameter_list|)
 block|{
-name|log
+name|LOG
 operator|.
 name|warn
 argument_list|(
@@ -1105,10 +1127,10 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|processor
-operator|.
 name|stop
-argument_list|()
+argument_list|(
+name|processor
+argument_list|)
 expr_stmt|;
 comment|// needs to happen outside synchronization
 block|}
@@ -1289,6 +1311,48 @@ block|}
 return|return
 name|oakNames
 return|;
+block|}
+specifier|private
+specifier|static
+name|void
+name|stop
+parameter_list|(
+name|ChangeProcessor
+name|processor
+parameter_list|)
+block|{
+if|if
+condition|(
+operator|!
+name|processor
+operator|.
+name|stopAndWait
+argument_list|(
+name|STOP_TIME_OUT
+argument_list|,
+name|MILLISECONDS
+argument_list|)
+condition|)
+block|{
+name|LOG
+operator|.
+name|warn
+argument_list|(
+name|OBSERVATION
+argument_list|,
+literal|"Timed out waiting for change processor to stop after "
+operator|+
+name|STOP_TIME_OUT
+operator|+
+literal|" milliseconds. Falling back to asynchronous stop."
+argument_list|)
+expr_stmt|;
+name|processor
+operator|.
+name|stop
+argument_list|()
+expr_stmt|;
+block|}
 block|}
 block|}
 end_class
