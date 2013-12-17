@@ -404,6 +404,8 @@ decl_stmt|;
 specifier|private
 name|String
 name|basePath
+init|=
+literal|"/"
 decl_stmt|;
 specifier|private
 name|Condition
