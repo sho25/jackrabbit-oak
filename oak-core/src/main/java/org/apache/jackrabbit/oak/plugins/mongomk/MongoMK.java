@@ -638,6 +638,7 @@ name|runBackgroundOperations
 argument_list|()
 expr_stmt|;
 block|}
+specifier|public
 name|MongoNodeStore
 name|getNodeStore
 parameter_list|()
