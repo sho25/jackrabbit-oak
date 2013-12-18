@@ -570,7 +570,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|// FIXME: OAK-1118
 specifier|public
 name|void
 name|testRemoveAddMixVersionable1
@@ -637,12 +636,10 @@ operator|.
 name|save
 argument_list|()
 expr_stmt|;
-name|assertFalse
+name|assertEquals
 argument_list|(
 name|vhId
-operator|.
-name|equals
-argument_list|(
+argument_list|,
 name|node
 operator|.
 name|getVersionHistory
@@ -650,7 +647,6 @@ argument_list|()
 operator|.
 name|getUUID
 argument_list|()
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
