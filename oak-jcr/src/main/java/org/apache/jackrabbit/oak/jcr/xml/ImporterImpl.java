@@ -2212,8 +2212,13 @@ name|id
 argument_list|)
 expr_stmt|;
 block|}
+comment|// resolve conflict if there is one or force
+comment|// conflict resolution when behavior is IMPORT_UUID_CREATE_NEW.
+comment|// the latter will always create a new UUID even if no
+comment|// conflicting node exists. see OAK-1244
 if|if
 condition|(
+operator|(
 name|conflicting
 operator|!=
 literal|null
@@ -2222,6 +2227,13 @@ name|conflicting
 operator|.
 name|exists
 argument_list|()
+operator|)
+operator|||
+name|uuidBehavior
+operator|==
+name|ImportUUIDBehavior
+operator|.
+name|IMPORT_UUID_CREATE_NEW
 condition|)
 block|{
 comment|// resolve uuid conflict
