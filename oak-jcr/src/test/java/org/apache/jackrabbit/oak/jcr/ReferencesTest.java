@@ -1793,7 +1793,7 @@ block|}
 comment|// OAK-1257
 specifier|public
 name|void
-name|testMVAddAltering
+name|testMVAddReferences
 parameter_list|()
 throws|throws
 name|RepositoryException
