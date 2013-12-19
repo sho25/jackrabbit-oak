@@ -23,6 +23,16 @@ begin_import
 import|import
 name|java
 operator|.
+name|security
+operator|.
+name|Principal
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|ArrayList
@@ -36,6 +46,16 @@ operator|.
 name|util
 operator|.
 name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Set
 import|;
 end_import
 
@@ -169,7 +189,7 @@ name|spi
 operator|.
 name|commit
 operator|.
-name|CommitInfo
+name|MoveTracker
 import|;
 end_import
 
@@ -702,8 +722,15 @@ name|String
 name|workspaceName
 parameter_list|,
 specifier|final
-name|CommitInfo
-name|commitInfo
+name|Set
+argument_list|<
+name|Principal
+argument_list|>
+name|principals
+parameter_list|,
+specifier|final
+name|MoveTracker
+name|moveTracker
 parameter_list|)
 block|{
 return|return
@@ -757,7 +784,9 @@ name|getValidators
 argument_list|(
 name|workspaceName
 argument_list|,
-name|commitInfo
+name|principals
+argument_list|,
+name|moveTracker
 argument_list|)
 return|;
 block|}

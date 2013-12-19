@@ -2138,6 +2138,11 @@ argument_list|()
 argument_list|,
 name|delegate
 operator|.
+name|getWorkspaceName
+argument_list|()
+argument_list|,
+name|delegate
+operator|.
 name|getAuthInfo
 argument_list|()
 operator|.

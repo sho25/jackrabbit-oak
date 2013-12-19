@@ -826,6 +826,11 @@ argument_list|()
 argument_list|,
 name|session
 operator|.
+name|getWorkspaceName
+argument_list|()
+argument_list|,
+name|session
+operator|.
 name|getAuthInfo
 argument_list|()
 operator|.

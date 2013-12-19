@@ -375,7 +375,7 @@ name|spi
 operator|.
 name|commit
 operator|.
-name|CommitInfo
+name|MoveTracker
 import|;
 end_import
 
@@ -760,8 +760,14 @@ parameter_list|(
 name|String
 name|workspaceName
 parameter_list|,
-name|CommitInfo
-name|commitInfo
+name|Set
+argument_list|<
+name|Principal
+argument_list|>
+name|principals
+parameter_list|,
+name|MoveTracker
+name|moveTracker
 parameter_list|)
 block|{
 return|return
@@ -779,7 +785,11 @@ argument_list|(
 name|getSecurityProvider
 argument_list|()
 argument_list|,
-name|commitInfo
+name|workspaceName
+argument_list|,
+name|principals
+argument_list|,
+name|moveTracker
 argument_list|)
 argument_list|,
 operator|new
@@ -902,6 +912,9 @@ parameter_list|(
 name|Root
 name|root
 parameter_list|,
+name|String
+name|workspaceName
+parameter_list|,
 name|Set
 argument_list|<
 name|Principal
@@ -914,6 +927,8 @@ operator|new
 name|PermissionProviderImpl
 argument_list|(
 name|root
+argument_list|,
+name|workspaceName
 argument_list|,
 name|principals
 argument_list|,

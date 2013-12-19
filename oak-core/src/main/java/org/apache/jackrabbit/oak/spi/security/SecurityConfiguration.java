@@ -23,6 +23,16 @@ begin_import
 import|import
 name|java
 operator|.
+name|security
+operator|.
+name|Principal
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|Collections
@@ -36,6 +46,16 @@ operator|.
 name|util
 operator|.
 name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Set
 import|;
 end_import
 
@@ -81,7 +101,7 @@ name|spi
 operator|.
 name|commit
 operator|.
-name|CommitInfo
+name|MoveTracker
 import|;
 end_import
 
@@ -221,8 +241,14 @@ parameter_list|(
 name|String
 name|workspaceName
 parameter_list|,
-name|CommitInfo
-name|commitInfo
+name|Set
+argument_list|<
+name|Principal
+argument_list|>
+name|principals
+parameter_list|,
+name|MoveTracker
+name|moveTracker
 parameter_list|)
 function_decl|;
 annotation|@
@@ -344,8 +370,14 @@ parameter_list|(
 name|String
 name|workspaceName
 parameter_list|,
-name|CommitInfo
-name|commitInfo
+name|Set
+argument_list|<
+name|Principal
+argument_list|>
+name|principals
+parameter_list|,
+name|MoveTracker
+name|moveTracker
 parameter_list|)
 block|{
 return|return

@@ -598,6 +598,11 @@ name|testRoot
 argument_list|,
 name|testSession
 operator|.
+name|getWorkspaceName
+argument_list|()
+argument_list|,
+name|testSession
+operator|.
 name|getAuthInfo
 argument_list|()
 operator|.

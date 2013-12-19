@@ -207,6 +207,11 @@ name|root
 parameter_list|,
 annotation|@
 name|Nonnull
+name|String
+name|workspaceName
+parameter_list|,
+annotation|@
+name|Nonnull
 name|Set
 argument_list|<
 name|Principal

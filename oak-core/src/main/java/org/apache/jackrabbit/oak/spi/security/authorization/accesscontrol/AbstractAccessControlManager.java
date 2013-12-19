@@ -393,6 +393,11 @@ name|root
 decl_stmt|;
 specifier|private
 specifier|final
+name|String
+name|workspaceName
+decl_stmt|;
+specifier|private
+specifier|final
 name|NamePathMapper
 name|namePathMapper
 decl_stmt|;
@@ -434,6 +439,18 @@ operator|.
 name|root
 operator|=
 name|root
+expr_stmt|;
+name|this
+operator|.
+name|workspaceName
+operator|=
+name|root
+operator|.
+name|getContentSession
+argument_list|()
+operator|.
+name|getWorkspaceName
+argument_list|()
 expr_stmt|;
 name|this
 operator|.
@@ -664,6 +681,8 @@ name|getPermissionProvider
 argument_list|(
 name|root
 argument_list|,
+name|workspaceName
+argument_list|,
 name|principals
 argument_list|)
 decl_stmt|;
@@ -736,6 +755,8 @@ operator|.
 name|getPermissionProvider
 argument_list|(
 name|root
+argument_list|,
+name|workspaceName
 argument_list|,
 name|principals
 argument_list|)
@@ -1027,6 +1048,8 @@ operator|.
 name|getPermissionProvider
 argument_list|(
 name|root
+argument_list|,
+name|workspaceName
 argument_list|,
 name|getPrincipals
 argument_list|()

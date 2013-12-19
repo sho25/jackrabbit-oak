@@ -476,6 +476,11 @@ name|root
 parameter_list|,
 annotation|@
 name|Nonnull
+name|String
+name|workspaceName
+parameter_list|,
+annotation|@
+name|Nonnull
 name|Set
 argument_list|<
 name|Principal
@@ -505,13 +510,7 @@ name|this
 operator|.
 name|workspaceName
 operator|=
-name|root
-operator|.
-name|getContentSession
-argument_list|()
-operator|.
-name|getWorkspaceName
-argument_list|()
+name|workspaceName
 expr_stmt|;
 name|this
 operator|.
