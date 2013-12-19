@@ -1184,19 +1184,6 @@ name|head
 argument_list|)
 condition|)
 block|{
-if|if
-condition|(
-operator|!
-name|builder
-operator|.
-name|hasProperty
-argument_list|(
-name|MoveDetector
-operator|.
-name|SOURCE_PATH
-argument_list|)
-condition|)
-block|{
 name|builder
 operator|.
 name|setProperty
@@ -1208,7 +1195,6 @@ argument_list|,
 name|path
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 annotation|@
