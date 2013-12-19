@@ -111,7 +111,7 @@ name|api
 operator|.
 name|Type
 operator|.
-name|STRING
+name|NAME
 import|;
 end_import
 
@@ -333,7 +333,7 @@ name|plugins
 operator|.
 name|memory
 operator|.
-name|MultiStringPropertyState
+name|MultiGenericPropertyState
 import|;
 end_import
 
@@ -857,7 +857,7 @@ name|PropertyBuilder
 operator|.
 name|copy
 argument_list|(
-name|STRING
+name|NAME
 argument_list|,
 name|parent
 operator|.
@@ -940,7 +940,7 @@ name|PropertyBuilder
 operator|.
 name|copy
 argument_list|(
-name|STRING
+name|NAME
 argument_list|,
 name|nodeBuilder
 operator|.
@@ -1219,9 +1219,9 @@ name|nodeBuilder
 operator|.
 name|setProperty
 argument_list|(
-name|MultiStringPropertyState
+name|MultiGenericPropertyState
 operator|.
-name|stringProperty
+name|nameProperty
 argument_list|(
 name|OAK_CHILD_ORDER
 argument_list|,
@@ -1614,13 +1614,16 @@ argument_list|)
 expr_stmt|;
 block|}
 name|PropertyBuilder
+argument_list|<
+name|String
+argument_list|>
 name|builder
 init|=
 name|PropertyBuilder
 operator|.
 name|array
 argument_list|(
-name|STRING
+name|NAME
 argument_list|,
 name|OAK_CHILD_ORDER
 argument_list|)
@@ -1930,9 +1933,9 @@ name|nodeBuilder
 operator|.
 name|setProperty
 argument_list|(
-name|MultiStringPropertyState
+name|MultiGenericPropertyState
 operator|.
-name|stringProperty
+name|nameProperty
 argument_list|(
 name|OAK_CHILD_ORDER
 argument_list|,

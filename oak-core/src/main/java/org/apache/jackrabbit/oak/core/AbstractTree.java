@@ -155,7 +155,7 @@ name|api
 operator|.
 name|Type
 operator|.
-name|STRING
+name|NAME
 import|;
 end_import
 
@@ -595,7 +595,7 @@ name|childOrder
 operator|.
 name|getValue
 argument_list|(
-name|STRING
+name|NAME
 argument_list|,
 name|index
 operator|++
