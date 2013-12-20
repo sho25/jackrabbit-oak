@@ -87,14 +87,16 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|api
+name|spi
 operator|.
-name|Tree
+name|state
+operator|.
+name|NodeState
 import|;
 end_import
 
 begin_comment
-comment|/**  * Predicate on property values. This property holds if and only if  * the tree has a property of the given {@code name} and the given  * {@code propertyPredicate} holds on that property.  */
+comment|/**  * Predicate on property values. This property holds if and only if  * the node has a property of the given {@code name} and the given  * {@code propertyPredicate} holds on that property.  */
 end_comment
 
 begin_class
@@ -104,7 +106,7 @@ name|PropertyPredicate
 implements|implements
 name|Predicate
 argument_list|<
-name|Tree
+name|NodeState
 argument_list|>
 block|{
 specifier|private
@@ -163,14 +165,14 @@ specifier|public
 name|boolean
 name|apply
 parameter_list|(
-name|Tree
-name|tree
+name|NodeState
+name|node
 parameter_list|)
 block|{
 name|PropertyState
 name|property
 init|=
-name|tree
+name|node
 operator|.
 name|getProperty
 argument_list|(

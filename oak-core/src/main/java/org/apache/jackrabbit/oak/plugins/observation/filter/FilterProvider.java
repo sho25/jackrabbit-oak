@@ -51,40 +51,6 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|api
-operator|.
-name|Tree
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|plugins
-operator|.
-name|nodetype
-operator|.
-name|ReadOnlyNodeTypeManager
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
 name|plugins
 operator|.
 name|observation
@@ -115,6 +81,24 @@ name|CommitInfo
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|state
+operator|.
+name|NodeState
+import|;
+end_import
+
 begin_comment
 comment|/**  * Instance of this class provide a {@link Filter} for observation  * events and a filter for commits.  */
 end_comment
@@ -139,7 +123,7 @@ name|CommitInfo
 name|info
 parameter_list|)
 function_decl|;
-comment|/**      * Factory method for creating a {@code Filter} for the passed before and after      * states and the given tree permissions of the reading session.      *      * @param beforeTree  before state      * @param afterTree   after state      * @param ntManager   node type manager used by node type filters      * @return new {@code Filter} instance      */
+comment|/**      * Factory method for creating a {@code Filter} for the passed before and after      * states.      *      * @param before  before state      * @param after   after state      * @return new {@code Filter} instance      */
 annotation|@
 name|Nonnull
 name|Filter
@@ -147,21 +131,16 @@ name|getFilter
 parameter_list|(
 annotation|@
 name|Nonnull
-name|Tree
-name|beforeTree
+name|NodeState
+name|before
 parameter_list|,
 annotation|@
 name|Nonnull
-name|Tree
-name|afterTree
-parameter_list|,
-annotation|@
-name|Nonnull
-name|ReadOnlyNodeTypeManager
-name|ntManager
+name|NodeState
+name|after
 parameter_list|)
 function_decl|;
-comment|/**      * Path of the subtree to which the the filter returned by      * {@link #getFilter(Tree, Tree, org.apache.jackrabbit.oak.plugins.nodetype.ReadOnlyNodeTypeManager)}      * applies.      * @return path to which the filter applies.      */
+comment|/**      * Path of the subtree to which the the filter returned by      * {@link #getFilter(NodeState, NodeState)} applies.      * @return path to which the filter applies.      */
 annotation|@
 name|Nonnull
 name|String

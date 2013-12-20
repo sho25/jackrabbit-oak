@@ -772,8 +772,6 @@ argument_list|()
 argument_list|,
 name|namePathMapper
 argument_list|,
-name|ntMgr
-argument_list|,
 name|permissionProvider
 argument_list|,
 name|tracker

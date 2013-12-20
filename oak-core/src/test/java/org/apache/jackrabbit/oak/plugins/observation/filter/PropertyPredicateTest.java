@@ -123,9 +123,11 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|core
+name|spi
 operator|.
-name|ImmutableTree
+name|state
+operator|.
+name|NodeState
 import|;
 end_import
 
@@ -374,7 +376,7 @@ expr_stmt|;
 block|}
 specifier|private
 specifier|static
-name|ImmutableTree
+name|NodeState
 name|createWithProperty
 parameter_list|(
 name|String
@@ -385,9 +387,6 @@ name|value
 parameter_list|)
 block|{
 return|return
-operator|new
-name|ImmutableTree
-argument_list|(
 name|EMPTY_NODE
 operator|.
 name|builder
@@ -402,7 +401,6 @@ argument_list|)
 operator|.
 name|getNodeState
 argument_list|()
-argument_list|)
 return|;
 block|}
 block|}

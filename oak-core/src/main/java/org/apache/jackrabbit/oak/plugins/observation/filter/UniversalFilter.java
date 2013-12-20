@@ -117,22 +117,6 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|api
-operator|.
-name|Tree
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
 name|plugins
 operator|.
 name|observation
@@ -164,7 +148,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * An universal {@code Filter} implementation, which can be parametrised by  * a {@link Selector} and a {@code Predicate}. The selector maps a call back  * on this filter to a tree. That tree is in turn passed to the predicate for  * determining whether to include or to exclude the respective event.  */
+comment|/**  * An universal {@code Filter} implementation, which can be parametrised by  * a {@link Selector} and a {@code Predicate}. The selector maps a call back  * on this filter to a {@code NodeState}. That node state is in turn passed  * to the predicate for determining whether to include or to exclude the  * respective event.  */
 end_comment
 
 begin_class
@@ -176,13 +160,13 @@ name|Filter
 block|{
 specifier|private
 specifier|final
-name|Tree
-name|beforeTree
+name|NodeState
+name|beforeState
 decl_stmt|;
 specifier|private
 specifier|final
-name|Tree
-name|afterTree
+name|NodeState
+name|afterState
 decl_stmt|;
 specifier|private
 specifier|final
@@ -193,23 +177,23 @@ specifier|private
 specifier|final
 name|Predicate
 argument_list|<
-name|Tree
+name|NodeState
 argument_list|>
 name|predicate
 decl_stmt|;
-comment|/**      * Create a new instance of an universal filter rooted at the passed trees.      *      * @param beforeRootTree  root of the before tree      * @param afterRootTree   root of the after tree      * @param selector        selector for selecting the tree to match the predicate against      * @param predicate       predicate for determining whether to include or to exclude an event      */
+comment|/**      * Create a new instance of an universal filter rooted at the passed trees.      *      * @param before          before state      * @param after           after state      * @param selector        selector for selecting the tree to match the predicate against      * @param predicate       predicate for determining whether to include or to exclude an event      */
 specifier|public
 name|UniversalFilter
 parameter_list|(
 annotation|@
 name|Nonnull
-name|Tree
-name|beforeRootTree
+name|NodeState
+name|before
 parameter_list|,
 annotation|@
 name|Nonnull
-name|Tree
-name|afterRootTree
+name|NodeState
+name|after
 parameter_list|,
 annotation|@
 name|Nonnull
@@ -220,36 +204,36 @@ annotation|@
 name|Nonnull
 name|Predicate
 argument_list|<
-name|Tree
+name|NodeState
 argument_list|>
 name|predicate
 parameter_list|)
 block|{
 name|this
 operator|.
+name|beforeState
+operator|=
+name|checkNotNull
+argument_list|(
+name|before
+argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|afterState
+operator|=
+name|checkNotNull
+argument_list|(
+name|after
+argument_list|)
+expr_stmt|;
+name|this
+operator|.
 name|predicate
 operator|=
 name|checkNotNull
 argument_list|(
 name|predicate
-argument_list|)
-expr_stmt|;
-name|this
-operator|.
-name|beforeTree
-operator|=
-name|checkNotNull
-argument_list|(
-name|beforeRootTree
-argument_list|)
-expr_stmt|;
-name|this
-operator|.
-name|afterTree
-operator|=
-name|checkNotNull
-argument_list|(
-name|afterRootTree
 argument_list|)
 expr_stmt|;
 name|this
@@ -262,15 +246,15 @@ name|selector
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * A selector instance maps call backs on {@code Filters} to tree instances,      * which should be used for determining inclusion or exclusion of the associated event.      */
+comment|/**      * A selector instance maps call backs on {@code Filters} to {@code NodeState} instances,      * which should be used for determining inclusion or exclusion of the associated event.      */
 specifier|public
 interface|interface
 name|Selector
 block|{
-comment|/**          * Map a property event.          * @param filter  filter instance on which respective call back occurred.          * @param before  before state or {@code null} for          *                {@link Filter#propertyAdded(PropertyState)}          * @param after   after state or {@code null} for          *                {@link Filter#propertyDeleted(PropertyState)}          * @return a tree instance for basing the filtering criterion (predicate) upon          */
+comment|/**          * Map a property event.          * @param filter  filter instance on which respective call back occurred.          * @param before  before state or {@code null} for          *                {@link Filter#propertyAdded(PropertyState)}          * @param after   after state or {@code null} for          *                {@link Filter#propertyDeleted(PropertyState)}          * @return a {@code NodeState} instance for basing the filtering criterion (predicate) upon          */
 annotation|@
 name|Nonnull
-name|Tree
+name|NodeState
 name|select
 parameter_list|(
 annotation|@
@@ -289,10 +273,10 @@ name|PropertyState
 name|after
 parameter_list|)
 function_decl|;
-comment|/**          * Map a node event.          * @param filter  filter instance on which respective call back occurred.          * @param before  before state or {@code null} for          *                {@link Filter#childNodeAdded(String, NodeState)}          * @param after   after state or {@code null} for          *                {@link Filter#childNodeDeleted(String, NodeState)}          * @return a tree instance for basing the filtering criterion (predicate) upon          */
+comment|/**          * Map a node event.          * @param filter  filter instance on which respective call back occurred.          * @param name    name of the child node state          * @param before  before state or {@code null} for          *                {@link Filter#childNodeAdded(String, NodeState)}          * @param after   after state or {@code null} for          *                {@link Filter#childNodeDeleted(String, NodeState)}          * @return a NodeState instance for basing the filtering criterion (predicate) upon          */
 annotation|@
 name|Nonnull
-name|Tree
+name|NodeState
 name|select
 parameter_list|(
 annotation|@
@@ -317,28 +301,28 @@ name|after
 parameter_list|)
 function_decl|;
 block|}
-comment|/**      * @return  before tree this filter acts upon      */
+comment|/**      * @return  before state for this filter      */
 annotation|@
 name|Nonnull
 specifier|public
-name|Tree
-name|getBeforeTree
+name|NodeState
+name|getBeforeState
 parameter_list|()
 block|{
 return|return
-name|beforeTree
+name|beforeState
 return|;
 block|}
-comment|/**      * @return  after tree this filter acts upon      */
+comment|/**      * @return  after state for this filter      */
 annotation|@
 name|Nonnull
 specifier|public
-name|Tree
-name|getAfterTree
+name|NodeState
+name|getAfterState
 parameter_list|()
 block|{
 return|return
-name|afterTree
+name|afterState
 return|;
 block|}
 annotation|@
@@ -586,16 +570,16 @@ return|return
 operator|new
 name|UniversalFilter
 argument_list|(
-name|beforeTree
+name|beforeState
 operator|.
-name|getChild
+name|getChildNode
 argument_list|(
 name|name
 argument_list|)
 argument_list|,
-name|afterTree
+name|afterState
 operator|.
-name|getChild
+name|getChildNode
 argument_list|(
 name|name
 argument_list|)

@@ -103,7 +103,7 @@ name|oak
 operator|.
 name|api
 operator|.
-name|Tree
+name|Type
 import|;
 end_import
 
@@ -117,14 +117,16 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|api
+name|spi
 operator|.
-name|Type
+name|state
+operator|.
+name|NodeState
 import|;
 end_import
 
 begin_comment
-comment|/**  * A predicate for matching against a list of UUIDs. This predicate holds  * whenever the tree passed to its apply functions has a {@code jcr:uuid}  * property and the value of that property matches any of the UUIDs that  * has been passed to the predicate's constructor.  */
+comment|/**  * A predicate for matching against a list of UUIDs. This predicate holds  * whenever the {@code NodeState} passed to its apply functions has a {@code jcr:uuid}  * property and the value of that property matches any of the UUIDs that  * has been passed to the predicate's constructor.  */
 end_comment
 
 begin_class
@@ -134,7 +136,7 @@ name|UuidPredicate
 implements|implements
 name|Predicate
 argument_list|<
-name|Tree
+name|NodeState
 argument_list|>
 block|{
 specifier|private
@@ -170,8 +172,8 @@ specifier|public
 name|boolean
 name|apply
 parameter_list|(
-name|Tree
-name|tree
+name|NodeState
+name|node
 parameter_list|)
 block|{
 if|if
@@ -190,7 +192,7 @@ block|}
 name|PropertyState
 name|uuidProperty
 init|=
-name|tree
+name|node
 operator|.
 name|getProperty
 argument_list|(
