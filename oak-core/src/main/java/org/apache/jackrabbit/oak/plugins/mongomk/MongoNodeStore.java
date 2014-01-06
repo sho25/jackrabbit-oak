@@ -5441,6 +5441,34 @@ operator|>
 literal|0
 condition|)
 block|{
+if|if
+condition|(
+operator|!
+name|hasNewRevisions
+condition|)
+block|{
+comment|// publish our revision once before any foreign revision
+comment|// the latest revisions of the current cluster node
+comment|// happened before the latest revisions of other cluster nodes
+name|revisionComparator
+operator|.
+name|add
+argument_list|(
+name|Revision
+operator|.
+name|newRevision
+argument_list|(
+name|clusterId
+argument_list|)
+argument_list|,
+name|headSeen
+argument_list|)
+expr_stmt|;
+block|}
+name|hasNewRevisions
+operator|=
+literal|true
+expr_stmt|;
 name|lastKnownRevision
 operator|.
 name|put
@@ -5449,10 +5477,6 @@ name|machineId
 argument_list|,
 name|r
 argument_list|)
-expr_stmt|;
-name|hasNewRevisions
-operator|=
-literal|true
 expr_stmt|;
 name|revisionComparator
 operator|.
@@ -5480,28 +5504,6 @@ name|docChildrenCache
 operator|.
 name|invalidateAll
 argument_list|()
-expr_stmt|;
-comment|// add a new revision, so that changes are visible
-name|Revision
-name|r
-init|=
-name|Revision
-operator|.
-name|newRevision
-argument_list|(
-name|clusterId
-argument_list|)
-decl_stmt|;
-comment|// the latest revisions of the current cluster node
-comment|// happened before the latest revisions of other cluster nodes
-name|revisionComparator
-operator|.
-name|add
-argument_list|(
-name|r
-argument_list|,
-name|headSeen
-argument_list|)
 expr_stmt|;
 comment|// the head revision is after other revisions
 name|setHeadRevision
