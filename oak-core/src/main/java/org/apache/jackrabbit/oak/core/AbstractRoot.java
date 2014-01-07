@@ -866,11 +866,6 @@ specifier|final
 name|SecureNodeBuilder
 name|secureBuilder
 decl_stmt|;
-comment|/**      * Base state of the root tree      */
-specifier|private
-name|NodeState
-name|base
-decl_stmt|;
 comment|/**      * Sentinel for the next move operation to take place on the this root      */
 specifier|private
 name|Move
@@ -1015,16 +1010,12 @@ name|indexProvider
 operator|=
 name|indexProvider
 expr_stmt|;
-name|base
+name|builder
 operator|=
 name|store
 operator|.
 name|getRoot
 argument_list|()
-expr_stmt|;
-name|builder
-operator|=
-name|base
 operator|.
 name|builder
 argument_list|()
@@ -1424,6 +1415,7 @@ argument_list|()
 argument_list|)
 condition|)
 block|{
+comment|// TODO: do we need this?
 name|store
 operator|.
 name|rebase
@@ -1466,8 +1458,6 @@ block|{
 name|checkLive
 argument_list|()
 expr_stmt|;
-name|base
-operator|=
 name|store
 operator|.
 name|reset
@@ -1569,8 +1559,6 @@ argument_list|,
 name|message
 argument_list|)
 decl_stmt|;
-name|base
-operator|=
 name|store
 operator|.
 name|merge
@@ -1948,28 +1936,10 @@ name|getBaseState
 parameter_list|()
 block|{
 return|return
-name|base
-return|;
-block|}
-comment|/**      * Returns the secure view of this root's base state.      *      * @return secure base node state      */
-name|NodeState
-name|getSecureBase
-parameter_list|()
-block|{
-return|return
-operator|new
-name|SecureNodeState
-argument_list|(
-name|base
-argument_list|,
-name|permissionProvider
+name|builder
 operator|.
-name|get
+name|getBaseState
 argument_list|()
-argument_list|,
-name|getAcContext
-argument_list|()
-argument_list|)
 return|;
 block|}
 name|void
