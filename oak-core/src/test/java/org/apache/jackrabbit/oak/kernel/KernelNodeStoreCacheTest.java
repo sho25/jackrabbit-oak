@@ -359,6 +359,14 @@ argument_list|()
 decl_stmt|;
 name|assertTrue
 argument_list|(
+literal|"cachedReads: "
+operator|+
+name|cachedReads
+operator|+
+literal|" uncachedReads: "
+operator|+
+name|uncachedReads
+argument_list|,
 name|cachedReads
 operator|<
 name|uncachedReads
@@ -398,6 +406,14 @@ argument_list|()
 decl_stmt|;
 name|assertEquals
 argument_list|(
+literal|"cachedReads: "
+operator|+
+name|cachedReads
+operator|+
+literal|" uncachedReads: "
+operator|+
+name|uncachedReads
+argument_list|,
 name|cachedReads
 argument_list|,
 name|uncachedReads
@@ -437,6 +453,14 @@ argument_list|()
 decl_stmt|;
 name|assertTrue
 argument_list|(
+literal|"cachedReads: "
+operator|+
+name|cachedReads
+operator|+
+literal|" uncachedReads: "
+operator|+
+name|uncachedReads
+argument_list|,
 name|cachedReads
 operator|<
 name|uncachedReads
@@ -478,6 +502,14 @@ decl_stmt|;
 comment|// System.out.println("Cached reads: " + cachedReads);
 name|assertTrue
 argument_list|(
+literal|"cachedReads: "
+operator|+
+name|cachedReads
+operator|+
+literal|" uncachedReads: "
+operator|+
+name|uncachedReads
+argument_list|,
 name|cachedReads
 operator|<
 name|uncachedReads
