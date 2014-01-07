@@ -2970,7 +2970,7 @@ block|{
 name|String
 name|name
 init|=
-name|readIdentifier
+name|readPathSegment
 argument_list|()
 decl_stmt|;
 name|buff
@@ -3072,7 +3072,7 @@ name|buff
 operator|.
 name|append
 argument_list|(
-name|readIdentifier
+name|readPathSegment
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -3776,7 +3776,7 @@ name|Property
 argument_list|(
 name|currentSelector
 argument_list|,
-name|readIdentifier
+name|readPathSegment
 argument_list|()
 argument_list|)
 return|;
