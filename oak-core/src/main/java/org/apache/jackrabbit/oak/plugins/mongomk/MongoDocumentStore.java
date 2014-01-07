@@ -2441,15 +2441,9 @@ name|DBObject
 name|value
 init|=
 operator|new
-name|BasicDBObject
+name|RevisionEntry
 argument_list|(
-name|k
-operator|.
-name|getRevision
-argument_list|()
-operator|.
-name|toString
-argument_list|()
+name|r
 argument_list|,
 name|op
 operator|.
