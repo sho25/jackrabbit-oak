@@ -543,22 +543,20 @@ operator|.
 name|equals
 argument_list|(
 operator|(
+operator|(
 name|AuthorizableImpl
 operator|)
 name|o
-argument_list|)
+operator|)
 operator|.
 name|dlg
-block|)
-empty_stmt|;
+argument_list|)
+return|;
 block|}
 return|return
 literal|false
 return|;
 block|}
-end_class
-
-begin_function
 annotation|@
 name|Override
 specifier|public
@@ -573,8 +571,8 @@ name|toString
 argument_list|()
 return|;
 block|}
-end_function
+block|}
+end_class
 
-unit|}
 end_unit
 
