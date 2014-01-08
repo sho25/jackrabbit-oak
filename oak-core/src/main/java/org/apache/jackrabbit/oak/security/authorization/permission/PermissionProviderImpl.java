@@ -491,6 +491,13 @@ annotation|@
 name|Nonnull
 name|AuthorizationConfiguration
 name|acConfig
+parameter_list|,
+annotation|@
+name|Nonnull
+name|PermissionEntryCache
+operator|.
+name|Local
+name|cache
 parameter_list|)
 block|{
 name|this
@@ -560,6 +567,8 @@ argument_list|,
 name|principals
 argument_list|,
 name|acConfig
+argument_list|,
+name|cache
 argument_list|)
 expr_stmt|;
 block|}

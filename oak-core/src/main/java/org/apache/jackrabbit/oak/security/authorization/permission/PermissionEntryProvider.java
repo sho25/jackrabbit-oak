@@ -117,6 +117,10 @@ name|String
 name|accessControlledPath
 parameter_list|)
 function_decl|;
+name|void
+name|flush
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 
