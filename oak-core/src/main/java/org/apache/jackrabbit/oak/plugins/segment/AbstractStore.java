@@ -133,7 +133,7 @@ literal|1024
 operator|*
 literal|1024
 decl_stmt|;
-specifier|private
+specifier|protected
 specifier|final
 name|Cache
 argument_list|<
