@@ -61,6 +61,26 @@ name|xpath
 operator|.
 name|Expression
 operator|.
+name|AndCondition
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|query
+operator|.
+name|xpath
+operator|.
+name|Expression
+operator|.
 name|OrCondition
 import|;
 end_import
@@ -217,8 +237,10 @@ comment|// within the query engine
 block|}
 else|else
 block|{
+comment|// conditions of type
 comment|// @x = 1 or @y = 2
-comment|// or similar
+comment|// or similar are converted to
+comment|// (@x = 1) union (@y = 2)
 name|Statement
 name|s1
 init|=
@@ -301,6 +323,20 @@ name|s2
 argument_list|)
 return|;
 block|}
+block|}
+elseif|else
+if|if
+condition|(
+name|where
+operator|instanceof
+name|AndCondition
+condition|)
+block|{
+comment|// TODO
+comment|// conditions of type
+comment|// @a = 1 and (@x = 1 or @y = 2)
+comment|// could be automatically converted to
+comment|// (@a = 1 and @x = 1) union (@a = 1 and @y = 2)
 block|}
 return|return
 name|this
