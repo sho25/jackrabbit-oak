@@ -151,7 +151,7 @@ name|nodetype
 operator|.
 name|NodeTypeConstants
 operator|.
-name|OAK_SUPERTYPES
+name|REP_SUPERTYPES
 import|;
 end_import
 
@@ -1432,7 +1432,7 @@ name|type
 operator|.
 name|getProperty
 argument_list|(
-name|OAK_SUPERTYPES
+name|REP_SUPERTYPES
 argument_list|)
 decl_stmt|;
 return|return

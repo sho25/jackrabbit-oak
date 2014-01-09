@@ -425,7 +425,7 @@ name|nodetype
 operator|.
 name|NodeTypeConstants
 operator|.
-name|OAK_MANDATORY_CHILD_NODES
+name|REP_MANDATORY_CHILD_NODES
 import|;
 end_import
 
@@ -445,7 +445,7 @@ name|nodetype
 operator|.
 name|NodeTypeConstants
 operator|.
-name|OAK_MANDATORY_PROPERTIES
+name|REP_MANDATORY_PROPERTIES
 import|;
 end_import
 
@@ -465,7 +465,7 @@ name|nodetype
 operator|.
 name|NodeTypeConstants
 operator|.
-name|OAK_NAMED_CHILD_NODE_DEFINITIONS
+name|REP_NAMED_CHILD_NODE_DEFINITIONS
 import|;
 end_import
 
@@ -485,7 +485,7 @@ name|nodetype
 operator|.
 name|NodeTypeConstants
 operator|.
-name|OAK_NAMED_PROPERTY_DEFINITIONS
+name|REP_NAMED_PROPERTY_DEFINITIONS
 import|;
 end_import
 
@@ -505,7 +505,7 @@ name|nodetype
 operator|.
 name|NodeTypeConstants
 operator|.
-name|OAK_RESIDUAL_CHILD_NODE_DEFINITIONS
+name|REP_RESIDUAL_CHILD_NODE_DEFINITIONS
 import|;
 end_import
 
@@ -525,7 +525,7 @@ name|nodetype
 operator|.
 name|NodeTypeConstants
 operator|.
-name|OAK_RESIDUAL_PROPERTY_DEFINITIONS
+name|REP_RESIDUAL_PROPERTY_DEFINITIONS
 import|;
 end_import
 
@@ -545,7 +545,7 @@ name|nodetype
 operator|.
 name|NodeTypeConstants
 operator|.
-name|OAK_SUPERTYPES
+name|REP_SUPERTYPES
 import|;
 end_import
 
@@ -647,7 +647,7 @@ name|type
 operator|.
 name|getNames
 argument_list|(
-name|OAK_SUPERTYPES
+name|REP_SUPERTYPES
 argument_list|)
 argument_list|,
 name|name
@@ -673,7 +673,7 @@ block|{
 return|return
 name|nameSetContains
 argument_list|(
-name|OAK_MANDATORY_PROPERTIES
+name|REP_MANDATORY_PROPERTIES
 argument_list|,
 name|name
 argument_list|)
@@ -691,7 +691,7 @@ block|{
 return|return
 name|getNameSet
 argument_list|(
-name|OAK_MANDATORY_PROPERTIES
+name|REP_MANDATORY_PROPERTIES
 argument_list|)
 return|;
 block|}
@@ -705,7 +705,7 @@ block|{
 return|return
 name|nameSetContains
 argument_list|(
-name|OAK_MANDATORY_CHILD_NODES
+name|REP_MANDATORY_CHILD_NODES
 argument_list|,
 name|name
 argument_list|)
@@ -723,7 +723,7 @@ block|{
 return|return
 name|getNameSet
 argument_list|(
-name|OAK_MANDATORY_CHILD_NODES
+name|REP_MANDATORY_CHILD_NODES
 argument_list|)
 return|;
 block|}
@@ -771,7 +771,9 @@ condition|)
 block|{
 name|escapedName
 operator|=
-literal|"oak:primaryType"
+name|NodeTypeConstants
+operator|.
+name|REP_PRIMARY_TYPE
 expr_stmt|;
 block|}
 elseif|else
@@ -787,7 +789,9 @@ condition|)
 block|{
 name|escapedName
 operator|=
-literal|"oak:mixinTypes"
+name|NodeTypeConstants
+operator|.
+name|REP_MIXIN_TYPES
 expr_stmt|;
 block|}
 elseif|else
@@ -803,7 +807,9 @@ condition|)
 block|{
 name|escapedName
 operator|=
-literal|"oak:uuid"
+name|NodeTypeConstants
+operator|.
+name|REP_UUID
 expr_stmt|;
 block|}
 else|else
@@ -866,7 +872,7 @@ name|type
 operator|.
 name|getChildNode
 argument_list|(
-name|OAK_NAMED_PROPERTY_DEFINITIONS
+name|REP_NAMED_PROPERTY_DEFINITIONS
 argument_list|)
 operator|.
 name|getChildNode
@@ -972,7 +978,7 @@ name|type
 operator|.
 name|getChildNode
 argument_list|(
-name|OAK_RESIDUAL_PROPERTY_DEFINITIONS
+name|REP_RESIDUAL_PROPERTY_DEFINITIONS
 argument_list|)
 decl_stmt|;
 name|NodeState
@@ -1078,7 +1084,7 @@ name|type
 operator|.
 name|getChildNode
 argument_list|(
-name|OAK_NAMED_CHILD_NODE_DEFINITIONS
+name|REP_NAMED_CHILD_NODE_DEFINITIONS
 argument_list|)
 operator|.
 name|getChildNode
@@ -1180,7 +1186,7 @@ name|type
 operator|.
 name|getChildNode
 argument_list|(
-name|OAK_RESIDUAL_CHILD_NODE_DEFINITIONS
+name|REP_RESIDUAL_CHILD_NODE_DEFINITIONS
 argument_list|)
 decl_stmt|;
 for|for
@@ -1270,7 +1276,7 @@ name|type
 operator|.
 name|getChildNode
 argument_list|(
-name|OAK_NAMED_CHILD_NODE_DEFINITIONS
+name|REP_NAMED_CHILD_NODE_DEFINITIONS
 argument_list|)
 operator|.
 name|getChildNode
@@ -1285,7 +1291,7 @@ name|type
 operator|.
 name|getChildNode
 argument_list|(
-name|OAK_RESIDUAL_CHILD_NODE_DEFINITIONS
+name|REP_RESIDUAL_CHILD_NODE_DEFINITIONS
 argument_list|)
 decl_stmt|;
 for|for
@@ -1393,7 +1399,7 @@ name|type
 operator|.
 name|getNames
 argument_list|(
-name|OAK_SUPERTYPES
+name|REP_SUPERTYPES
 argument_list|)
 argument_list|)
 expr_stmt|;

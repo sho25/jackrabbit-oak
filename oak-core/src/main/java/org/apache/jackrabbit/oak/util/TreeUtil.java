@@ -415,7 +415,7 @@ name|nodetype
 operator|.
 name|NodeTypeConstants
 operator|.
-name|OAK_NAMED_CHILD_NODE_DEFINITIONS
+name|REP_NAMED_CHILD_NODE_DEFINITIONS
 import|;
 end_import
 
@@ -435,7 +435,7 @@ name|nodetype
 operator|.
 name|NodeTypeConstants
 operator|.
-name|OAK_NAMED_PROPERTY_DEFINITIONS
+name|REP_NAMED_PROPERTY_DEFINITIONS
 import|;
 end_import
 
@@ -455,7 +455,7 @@ name|nodetype
 operator|.
 name|NodeTypeConstants
 operator|.
-name|OAK_RESIDUAL_CHILD_NODE_DEFINITIONS
+name|REP_RESIDUAL_CHILD_NODE_DEFINITIONS
 import|;
 end_import
 
@@ -1437,7 +1437,7 @@ name|type
 argument_list|,
 name|NodeTypeConstants
 operator|.
-name|OAK_PRIMARY_SUBTYPES
+name|REP_PRIMARY_SUBTYPES
 argument_list|)
 argument_list|,
 name|primary
@@ -1462,7 +1462,7 @@ name|type
 argument_list|,
 name|NodeTypeConstants
 operator|.
-name|OAK_MIXIN_SUBTYPES
+name|REP_MIXIN_SUBTYPES
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -1560,7 +1560,7 @@ parameter_list|)
 throws|throws
 name|RepositoryException
 block|{
-comment|// TODO: use a separate oak:autoCreatePropertyDefinitions
+comment|// TODO: use a separate rep:autoCreatePropertyDefinitions
 name|Tree
 name|properties
 init|=
@@ -1568,7 +1568,7 @@ name|type
 operator|.
 name|getChild
 argument_list|(
-name|OAK_NAMED_PROPERTY_DEFINITIONS
+name|REP_NAMED_PROPERTY_DEFINITIONS
 argument_list|)
 decl_stmt|;
 for|for
@@ -1596,14 +1596,18 @@ name|name
 operator|.
 name|equals
 argument_list|(
-literal|"oak:primaryType"
+name|NodeTypeConstants
+operator|.
+name|REP_PRIMARY_TYPE
 argument_list|)
 operator|||
 name|name
 operator|.
 name|equals
 argument_list|(
-literal|"oak:mixinTypes"
+name|NodeTypeConstants
+operator|.
+name|REP_MIXIN_TYPES
 argument_list|)
 condition|)
 block|{
@@ -1616,7 +1620,9 @@ name|name
 operator|.
 name|equals
 argument_list|(
-literal|"oak:uuid"
+name|NodeTypeConstants
+operator|.
+name|REP_UUID
 argument_list|)
 condition|)
 block|{
@@ -1711,7 +1717,7 @@ break|break;
 block|}
 block|}
 block|}
-comment|// TODO: use a separate oak:autoCreateChildNodeDefinitions
+comment|// TODO: use a separate rep:autoCreateChildNodeDefinitions
 comment|// Note that we use only named, non-SNS child node definitions
 comment|// as there can be no reasonable default values for residual or
 comment|// SNS child nodes
@@ -1722,7 +1728,7 @@ name|type
 operator|.
 name|getChild
 argument_list|(
-name|OAK_NAMED_CHILD_NODE_DEFINITIONS
+name|REP_NAMED_CHILD_NODE_DEFINITIONS
 argument_list|)
 decl_stmt|;
 for|for
@@ -2159,7 +2165,7 @@ name|type
 operator|.
 name|getChild
 argument_list|(
-name|OAK_NAMED_CHILD_NODE_DEFINITIONS
+name|REP_NAMED_CHILD_NODE_DEFINITIONS
 argument_list|)
 operator|.
 name|getChild
@@ -2205,7 +2211,7 @@ name|type
 operator|.
 name|getChild
 argument_list|(
-name|OAK_RESIDUAL_CHILD_NODE_DEFINITIONS
+name|REP_RESIDUAL_CHILD_NODE_DEFINITIONS
 argument_list|)
 decl_stmt|;
 name|String

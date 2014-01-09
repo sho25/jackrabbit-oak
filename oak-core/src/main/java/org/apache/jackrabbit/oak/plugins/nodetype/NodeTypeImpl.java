@@ -727,7 +727,7 @@ name|nodetype
 operator|.
 name|NodeTypeConstants
 operator|.
-name|OAK_DECLARING_NODE_TYPE
+name|REP_DECLARING_NODE_TYPE
 import|;
 end_import
 
@@ -747,7 +747,7 @@ name|nodetype
 operator|.
 name|NodeTypeConstants
 operator|.
-name|OAK_MIXIN_TYPES
+name|REP_MIXIN_TYPES
 import|;
 end_import
 
@@ -767,7 +767,7 @@ name|nodetype
 operator|.
 name|NodeTypeConstants
 operator|.
-name|OAK_NAMED_CHILD_NODE_DEFINITIONS
+name|REP_NAMED_CHILD_NODE_DEFINITIONS
 import|;
 end_import
 
@@ -787,7 +787,7 @@ name|nodetype
 operator|.
 name|NodeTypeConstants
 operator|.
-name|OAK_NAMED_PROPERTY_DEFINITIONS
+name|REP_NAMED_PROPERTY_DEFINITIONS
 import|;
 end_import
 
@@ -807,7 +807,7 @@ name|nodetype
 operator|.
 name|NodeTypeConstants
 operator|.
-name|OAK_PRIMARY_TYPE
+name|REP_PRIMARY_TYPE
 import|;
 end_import
 
@@ -827,7 +827,7 @@ name|nodetype
 operator|.
 name|NodeTypeConstants
 operator|.
-name|OAK_RESIDUAL_CHILD_NODE_DEFINITIONS
+name|REP_RESIDUAL_CHILD_NODE_DEFINITIONS
 import|;
 end_import
 
@@ -847,7 +847,7 @@ name|nodetype
 operator|.
 name|NodeTypeConstants
 operator|.
-name|OAK_RESIDUAL_PROPERTY_DEFINITIONS
+name|REP_RESIDUAL_PROPERTY_DEFINITIONS
 import|;
 end_import
 
@@ -867,7 +867,7 @@ name|nodetype
 operator|.
 name|NodeTypeConstants
 operator|.
-name|OAK_UUID
+name|REP_UUID
 import|;
 end_import
 
@@ -3131,7 +3131,7 @@ condition|)
 block|{
 name|escapedName
 operator|=
-name|OAK_PRIMARY_TYPE
+name|REP_PRIMARY_TYPE
 expr_stmt|;
 block|}
 elseif|else
@@ -3147,7 +3147,7 @@ condition|)
 block|{
 name|escapedName
 operator|=
-name|OAK_MIXIN_TYPES
+name|REP_MIXIN_TYPES
 expr_stmt|;
 block|}
 elseif|else
@@ -3163,7 +3163,7 @@ condition|)
 block|{
 name|escapedName
 operator|=
-name|OAK_UUID
+name|REP_UUID
 expr_stmt|;
 block|}
 return|return
@@ -3173,7 +3173,7 @@ name|definition
 operator|.
 name|getChild
 argument_list|(
-name|OAK_NAMED_PROPERTY_DEFINITIONS
+name|REP_NAMED_PROPERTY_DEFINITIONS
 argument_list|)
 operator|.
 name|getChild
@@ -3197,7 +3197,7 @@ name|definition
 operator|.
 name|getChild
 argument_list|(
-name|OAK_RESIDUAL_PROPERTY_DEFINITIONS
+name|REP_RESIDUAL_PROPERTY_DEFINITIONS
 argument_list|)
 argument_list|)
 return|;
@@ -3219,7 +3219,7 @@ name|definition
 operator|.
 name|getChild
 argument_list|(
-name|OAK_NAMED_CHILD_NODE_DEFINITIONS
+name|REP_NAMED_CHILD_NODE_DEFINITIONS
 argument_list|)
 operator|.
 name|getChild
@@ -3243,7 +3243,7 @@ name|definition
 operator|.
 name|getChild
 argument_list|(
-name|OAK_RESIDUAL_CHILD_NODE_DEFINITIONS
+name|REP_RESIDUAL_CHILD_NODE_DEFINITIONS
 argument_list|)
 argument_list|)
 return|;
@@ -3302,7 +3302,7 @@ name|getName
 argument_list|(
 name|def
 argument_list|,
-name|OAK_DECLARING_NODE_TYPE
+name|REP_DECLARING_NODE_TYPE
 argument_list|)
 decl_stmt|;
 if|if
@@ -3398,7 +3398,7 @@ name|getName
 argument_list|(
 name|def
 argument_list|,
-name|OAK_DECLARING_NODE_TYPE
+name|REP_DECLARING_NODE_TYPE
 argument_list|)
 decl_stmt|;
 if|if

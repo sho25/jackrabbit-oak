@@ -619,7 +619,7 @@ name|nodetype
 operator|.
 name|NodeTypeConstants
 operator|.
-name|OAK_CHILD_NODE_DEFINITION
+name|REP_DECLARING_NODE_TYPE
 import|;
 end_import
 
@@ -639,7 +639,7 @@ name|nodetype
 operator|.
 name|NodeTypeConstants
 operator|.
-name|OAK_CHILD_NODE_DEFINITIONS
+name|REP_HAS_PROTECTED_RESIDUAL_CHILD_NODES
 import|;
 end_import
 
@@ -659,7 +659,7 @@ name|nodetype
 operator|.
 name|NodeTypeConstants
 operator|.
-name|OAK_DECLARING_NODE_TYPE
+name|REP_HAS_PROTECTED_RESIDUAL_PROPERTIES
 import|;
 end_import
 
@@ -679,7 +679,7 @@ name|nodetype
 operator|.
 name|NodeTypeConstants
 operator|.
-name|OAK_HAS_PROTECTED_RESIDUAL_CHILD_NODES
+name|REP_MANDATORY_CHILD_NODES
 import|;
 end_import
 
@@ -699,7 +699,7 @@ name|nodetype
 operator|.
 name|NodeTypeConstants
 operator|.
-name|OAK_HAS_PROTECTED_RESIDUAL_PROPERTIES
+name|REP_MANDATORY_PROPERTIES
 import|;
 end_import
 
@@ -719,7 +719,7 @@ name|nodetype
 operator|.
 name|NodeTypeConstants
 operator|.
-name|OAK_MANDATORY_CHILD_NODES
+name|REP_MIXIN_SUBTYPES
 import|;
 end_import
 
@@ -739,7 +739,7 @@ name|nodetype
 operator|.
 name|NodeTypeConstants
 operator|.
-name|OAK_MANDATORY_PROPERTIES
+name|REP_MIXIN_TYPES
 import|;
 end_import
 
@@ -759,7 +759,7 @@ name|nodetype
 operator|.
 name|NodeTypeConstants
 operator|.
-name|OAK_MIXIN_SUBTYPES
+name|REP_NAMED_CHILD_NODE_DEFINITIONS
 import|;
 end_import
 
@@ -779,7 +779,7 @@ name|nodetype
 operator|.
 name|NodeTypeConstants
 operator|.
-name|OAK_MIXIN_TYPES
+name|REP_NAMED_PROPERTY_DEFINITIONS
 import|;
 end_import
 
@@ -799,7 +799,7 @@ name|nodetype
 operator|.
 name|NodeTypeConstants
 operator|.
-name|OAK_NAMED_CHILD_NODE_DEFINITIONS
+name|REP_NAMED_SINGLE_VALUED_PROPERTIES
 import|;
 end_import
 
@@ -819,7 +819,7 @@ name|nodetype
 operator|.
 name|NodeTypeConstants
 operator|.
-name|OAK_NAMED_PROPERTY_DEFINITIONS
+name|REP_PRIMARY_SUBTYPES
 import|;
 end_import
 
@@ -839,7 +839,7 @@ name|nodetype
 operator|.
 name|NodeTypeConstants
 operator|.
-name|OAK_NAMED_SINGLE_VALUED_PROPERTIES
+name|REP_PRIMARY_TYPE
 import|;
 end_import
 
@@ -859,7 +859,7 @@ name|nodetype
 operator|.
 name|NodeTypeConstants
 operator|.
-name|OAK_PRIMARY_SUBTYPES
+name|REP_PROTECTED_CHILD_NODES
 import|;
 end_import
 
@@ -879,7 +879,7 @@ name|nodetype
 operator|.
 name|NodeTypeConstants
 operator|.
-name|OAK_PRIMARY_TYPE
+name|REP_PROTECTED_PROPERTIES
 import|;
 end_import
 
@@ -899,7 +899,7 @@ name|nodetype
 operator|.
 name|NodeTypeConstants
 operator|.
-name|OAK_PROPERTY_DEFINITION
+name|REP_RESIDUAL_CHILD_NODE_DEFINITIONS
 import|;
 end_import
 
@@ -919,7 +919,7 @@ name|nodetype
 operator|.
 name|NodeTypeConstants
 operator|.
-name|OAK_PROPERTY_DEFINITIONS
+name|REP_RESIDUAL_PROPERTY_DEFINITIONS
 import|;
 end_import
 
@@ -939,7 +939,7 @@ name|nodetype
 operator|.
 name|NodeTypeConstants
 operator|.
-name|OAK_PROTECTED_CHILD_NODES
+name|REP_SUPERTYPES
 import|;
 end_import
 
@@ -959,92 +959,12 @@ name|nodetype
 operator|.
 name|NodeTypeConstants
 operator|.
-name|OAK_PROTECTED_PROPERTIES
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|plugins
-operator|.
-name|nodetype
-operator|.
-name|NodeTypeConstants
-operator|.
-name|OAK_RESIDUAL_CHILD_NODE_DEFINITIONS
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|plugins
-operator|.
-name|nodetype
-operator|.
-name|NodeTypeConstants
-operator|.
-name|OAK_RESIDUAL_PROPERTY_DEFINITIONS
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|plugins
-operator|.
-name|nodetype
-operator|.
-name|NodeTypeConstants
-operator|.
-name|OAK_SUPERTYPES
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|plugins
-operator|.
-name|nodetype
-operator|.
-name|NodeTypeConstants
-operator|.
-name|OAK_UUID
+name|REP_UUID
 import|;
 end_import
 
 begin_comment
-comment|/**  * Editor that validates the consistency of the in-content node type registry  * under {@code /jcr:system/jcr:nodeTypes} and maintains the access-optimized  * versions of node type information as defined in {@code oak:NodeType}.  *  *<ul>  *<li>validate new definitions</li>  *<li>detect collisions,</li>  *<li>prevent circular inheritance,</li>  *<li>reject modifications to definitions that render existing content invalid,</li>  *<li>prevent un-registration of built-in node types.</li>  *</ul>  */
+comment|/**  * Editor that validates the consistency of the in-content node type registry  * under {@code /jcr:system/jcr:nodeTypes} and maintains the access-optimized  * versions of node type information as defined in {@code rep:NodeType}.  *  *<ul>  *<li>validate new definitions</li>  *<li>detect collisions,</li>  *<li>prevent circular inheritance,</li>  *<li>reject modifications to definitions that render existing content invalid,</li>  *<li>prevent un-registration of built-in node types.</li>  *</ul>  */
 end_comment
 
 begin_class
@@ -1123,7 +1043,7 @@ name|type
 operator|.
 name|hasProperty
 argument_list|(
-name|OAK_SUPERTYPES
+name|REP_SUPERTYPES
 argument_list|)
 condition|)
 block|{
@@ -1142,7 +1062,7 @@ name|type
 operator|.
 name|setProperty
 argument_list|(
-name|OAK_SUPERTYPES
+name|REP_SUPERTYPES
 argument_list|,
 name|empty
 argument_list|,
@@ -1253,7 +1173,7 @@ name|getNames
 argument_list|(
 name|type
 argument_list|,
-name|OAK_SUPERTYPES
+name|REP_SUPERTYPES
 argument_list|)
 argument_list|,
 name|NT_BASE
@@ -1452,7 +1372,7 @@ name|addNameToList
 argument_list|(
 name|type
 argument_list|,
-name|OAK_SUPERTYPES
+name|REP_SUPERTYPES
 argument_list|,
 name|supername
 argument_list|)
@@ -1463,7 +1383,7 @@ name|type
 argument_list|,
 name|supertype
 argument_list|,
-name|OAK_SUPERTYPES
+name|REP_SUPERTYPES
 argument_list|)
 expr_stmt|;
 name|mergeNameList
@@ -1472,7 +1392,7 @@ name|type
 argument_list|,
 name|supertype
 argument_list|,
-name|OAK_MANDATORY_PROPERTIES
+name|REP_MANDATORY_PROPERTIES
 argument_list|)
 expr_stmt|;
 name|mergeNameList
@@ -1481,7 +1401,7 @@ name|type
 argument_list|,
 name|supertype
 argument_list|,
-name|OAK_MANDATORY_CHILD_NODES
+name|REP_MANDATORY_CHILD_NODES
 argument_list|)
 expr_stmt|;
 name|mergeNameList
@@ -1490,7 +1410,7 @@ name|type
 argument_list|,
 name|supertype
 argument_list|,
-name|OAK_PROTECTED_PROPERTIES
+name|REP_PROTECTED_PROPERTIES
 argument_list|)
 expr_stmt|;
 name|mergeNameList
@@ -1499,7 +1419,7 @@ name|type
 argument_list|,
 name|supertype
 argument_list|,
-name|OAK_PROTECTED_CHILD_NODES
+name|REP_PROTECTED_CHILD_NODES
 argument_list|)
 expr_stmt|;
 if|if
@@ -1508,7 +1428,7 @@ name|supertype
 operator|.
 name|getBoolean
 argument_list|(
-name|OAK_HAS_PROTECTED_RESIDUAL_PROPERTIES
+name|REP_HAS_PROTECTED_RESIDUAL_PROPERTIES
 argument_list|)
 condition|)
 block|{
@@ -1516,7 +1436,7 @@ name|type
 operator|.
 name|setProperty
 argument_list|(
-name|OAK_HAS_PROTECTED_RESIDUAL_PROPERTIES
+name|REP_HAS_PROTECTED_RESIDUAL_PROPERTIES
 argument_list|,
 literal|true
 argument_list|)
@@ -1528,7 +1448,7 @@ name|supertype
 operator|.
 name|getBoolean
 argument_list|(
-name|OAK_HAS_PROTECTED_RESIDUAL_CHILD_NODES
+name|REP_HAS_PROTECTED_RESIDUAL_CHILD_NODES
 argument_list|)
 condition|)
 block|{
@@ -1536,7 +1456,7 @@ name|type
 operator|.
 name|setProperty
 argument_list|(
-name|OAK_HAS_PROTECTED_RESIDUAL_CHILD_NODES
+name|REP_HAS_PROTECTED_RESIDUAL_CHILD_NODES
 argument_list|,
 literal|true
 argument_list|)
@@ -1548,7 +1468,7 @@ name|type
 argument_list|,
 name|supertype
 argument_list|,
-name|OAK_NAMED_SINGLE_VALUED_PROPERTIES
+name|REP_NAMED_SINGLE_VALUED_PROPERTIES
 argument_list|)
 expr_stmt|;
 name|mergeSubtree
@@ -1557,7 +1477,7 @@ name|type
 argument_list|,
 name|supertype
 argument_list|,
-name|OAK_NAMED_PROPERTY_DEFINITIONS
+name|REP_NAMED_PROPERTY_DEFINITIONS
 argument_list|,
 literal|2
 argument_list|)
@@ -1568,7 +1488,7 @@ name|type
 argument_list|,
 name|supertype
 argument_list|,
-name|OAK_RESIDUAL_PROPERTY_DEFINITIONS
+name|REP_RESIDUAL_PROPERTY_DEFINITIONS
 argument_list|,
 literal|1
 argument_list|)
@@ -1579,7 +1499,7 @@ name|type
 argument_list|,
 name|supertype
 argument_list|,
-name|OAK_NAMED_CHILD_NODE_DEFINITIONS
+name|REP_NAMED_CHILD_NODE_DEFINITIONS
 argument_list|,
 literal|2
 argument_list|)
@@ -1590,7 +1510,7 @@ name|type
 argument_list|,
 name|supertype
 argument_list|,
-name|OAK_RESIDUAL_CHILD_NODE_DEFINITIONS
+name|REP_RESIDUAL_CHILD_NODE_DEFINITIONS
 argument_list|,
 literal|1
 argument_list|)
@@ -1832,7 +1752,7 @@ name|name
 argument_list|)
 throw|;
 block|}
-comment|// Prepare the type node pre-compilation of the oak:NodeType info
+comment|// Prepare the type node pre-compilation of the rep:NodeType info
 name|Iterable
 argument_list|<
 name|String
@@ -1850,7 +1770,7 @@ name|JCR_PRIMARYTYPE
 argument_list|,
 name|NodeTypeConstants
 operator|.
-name|NT_OAK_NODE_TYPE
+name|NT_REP_NODE_TYPE
 argument_list|,
 name|NAME
 argument_list|)
@@ -1859,14 +1779,14 @@ name|type
 operator|.
 name|removeProperty
 argument_list|(
-name|OAK_SUPERTYPES
+name|REP_SUPERTYPES
 argument_list|)
 expr_stmt|;
 name|type
 operator|.
 name|setProperty
 argument_list|(
-name|OAK_PRIMARY_SUBTYPES
+name|REP_PRIMARY_SUBTYPES
 argument_list|,
 name|empty
 argument_list|,
@@ -1877,7 +1797,7 @@ name|type
 operator|.
 name|setProperty
 argument_list|(
-name|OAK_MANDATORY_PROPERTIES
+name|REP_MANDATORY_PROPERTIES
 argument_list|,
 name|empty
 argument_list|,
@@ -1888,7 +1808,7 @@ name|type
 operator|.
 name|setProperty
 argument_list|(
-name|OAK_MANDATORY_CHILD_NODES
+name|REP_MANDATORY_CHILD_NODES
 argument_list|,
 name|empty
 argument_list|,
@@ -1899,7 +1819,7 @@ name|type
 operator|.
 name|setProperty
 argument_list|(
-name|OAK_PROTECTED_PROPERTIES
+name|REP_PROTECTED_PROPERTIES
 argument_list|,
 name|empty
 argument_list|,
@@ -1910,7 +1830,7 @@ name|type
 operator|.
 name|setProperty
 argument_list|(
-name|OAK_PROTECTED_CHILD_NODES
+name|REP_PROTECTED_CHILD_NODES
 argument_list|,
 name|empty
 argument_list|,
@@ -1921,7 +1841,7 @@ name|type
 operator|.
 name|setProperty
 argument_list|(
-name|OAK_HAS_PROTECTED_RESIDUAL_PROPERTIES
+name|REP_HAS_PROTECTED_RESIDUAL_PROPERTIES
 argument_list|,
 literal|false
 argument_list|,
@@ -1932,7 +1852,7 @@ name|type
 operator|.
 name|setProperty
 argument_list|(
-name|OAK_HAS_PROTECTED_RESIDUAL_CHILD_NODES
+name|REP_HAS_PROTECTED_RESIDUAL_CHILD_NODES
 argument_list|,
 literal|false
 argument_list|,
@@ -1943,7 +1863,7 @@ name|type
 operator|.
 name|setProperty
 argument_list|(
-name|OAK_NAMED_SINGLE_VALUED_PROPERTIES
+name|REP_NAMED_SINGLE_VALUED_PROPERTIES
 argument_list|,
 name|empty
 argument_list|,
@@ -1954,7 +1874,7 @@ name|type
 operator|.
 name|getChildNode
 argument_list|(
-name|OAK_NAMED_PROPERTY_DEFINITIONS
+name|REP_NAMED_PROPERTY_DEFINITIONS
 argument_list|)
 operator|.
 name|remove
@@ -1964,7 +1884,7 @@ name|type
 operator|.
 name|getChildNode
 argument_list|(
-name|OAK_RESIDUAL_PROPERTY_DEFINITIONS
+name|REP_RESIDUAL_PROPERTY_DEFINITIONS
 argument_list|)
 operator|.
 name|remove
@@ -1974,7 +1894,7 @@ name|type
 operator|.
 name|getChildNode
 argument_list|(
-name|OAK_NAMED_CHILD_NODE_DEFINITIONS
+name|REP_NAMED_CHILD_NODE_DEFINITIONS
 argument_list|)
 operator|.
 name|remove
@@ -1984,7 +1904,7 @@ name|type
 operator|.
 name|getChildNode
 argument_list|(
-name|OAK_RESIDUAL_CHILD_NODE_DEFINITIONS
+name|REP_RESIDUAL_CHILD_NODE_DEFINITIONS
 argument_list|)
 operator|.
 name|remove
@@ -2194,7 +2114,7 @@ condition|)
 block|{
 name|escapedName
 operator|=
-name|OAK_PRIMARY_TYPE
+name|REP_PRIMARY_TYPE
 expr_stmt|;
 block|}
 elseif|else
@@ -2210,7 +2130,7 @@ condition|)
 block|{
 name|escapedName
 operator|=
-name|OAK_MIXIN_TYPES
+name|REP_MIXIN_TYPES
 expr_stmt|;
 block|}
 elseif|else
@@ -2226,7 +2146,7 @@ condition|)
 block|{
 name|escapedName
 operator|=
-name|OAK_UUID
+name|REP_UUID
 expr_stmt|;
 block|}
 name|definitions
@@ -2235,7 +2155,7 @@ name|type
 operator|.
 name|child
 argument_list|(
-name|OAK_NAMED_PROPERTY_DEFINITIONS
+name|REP_NAMED_PROPERTY_DEFINITIONS
 argument_list|)
 expr_stmt|;
 name|definitions
@@ -2246,7 +2166,7 @@ name|JCR_PRIMARYTYPE
 argument_list|,
 name|NodeTypeConstants
 operator|.
-name|NT_OAK_NAMED_PROPERTY_DEFINITIONS
+name|NT_REP_NAMED_PROPERTY_DEFINITIONS
 argument_list|,
 name|NAME
 argument_list|)
@@ -2275,7 +2195,7 @@ name|addNameToList
 argument_list|(
 name|type
 argument_list|,
-name|OAK_MANDATORY_PROPERTIES
+name|REP_MANDATORY_PROPERTIES
 argument_list|,
 name|propertyName
 argument_list|)
@@ -2296,7 +2216,7 @@ name|addNameToList
 argument_list|(
 name|type
 argument_list|,
-name|OAK_PROTECTED_PROPERTIES
+name|REP_PROTECTED_PROPERTIES
 argument_list|,
 name|propertyName
 argument_list|)
@@ -2311,7 +2231,7 @@ name|type
 operator|.
 name|child
 argument_list|(
-name|OAK_RESIDUAL_PROPERTY_DEFINITIONS
+name|REP_RESIDUAL_PROPERTY_DEFINITIONS
 argument_list|)
 expr_stmt|;
 comment|// - jcr:protected (BOOLEAN) protected mandatory
@@ -2329,7 +2249,7 @@ name|type
 operator|.
 name|setProperty
 argument_list|(
-name|OAK_HAS_PROTECTED_RESIDUAL_PROPERTIES
+name|REP_HAS_PROTECTED_RESIDUAL_PROPERTIES
 argument_list|,
 literal|true
 argument_list|)
@@ -2344,7 +2264,7 @@ name|JCR_PRIMARYTYPE
 argument_list|,
 name|NodeTypeConstants
 operator|.
-name|NT_OAK_PROPERTY_DEFINITIONS
+name|NT_REP_PROPERTY_DEFINITIONS
 argument_list|,
 name|NAME
 argument_list|)
@@ -2433,7 +2353,7 @@ name|addNameToList
 argument_list|(
 name|type
 argument_list|,
-name|OAK_NAMED_SINGLE_VALUED_PROPERTIES
+name|REP_NAMED_SINGLE_VALUED_PROPERTIES
 argument_list|,
 name|propertyName
 argument_list|)
@@ -2454,14 +2374,14 @@ name|JCR_PRIMARYTYPE
 argument_list|,
 name|NodeTypeConstants
 operator|.
-name|NT_OAK_PROPERTY_DEFINITION
+name|NT_REP_PROPERTY_DEFINITION
 argument_list|,
 name|NAME
 argument_list|)
 operator|.
 name|setProperty
 argument_list|(
-name|OAK_DECLARING_NODE_TYPE
+name|REP_DECLARING_NODE_TYPE
 argument_list|,
 name|typeName
 argument_list|,
@@ -2525,7 +2445,7 @@ name|type
 operator|.
 name|child
 argument_list|(
-name|OAK_NAMED_CHILD_NODE_DEFINITIONS
+name|REP_NAMED_CHILD_NODE_DEFINITIONS
 argument_list|)
 expr_stmt|;
 name|definitions
@@ -2536,7 +2456,7 @@ name|JCR_PRIMARYTYPE
 argument_list|,
 name|NodeTypeConstants
 operator|.
-name|NT_OAK_NAMED_CHILD_NODE_DEFINITIONS
+name|NT_REP_NAMED_CHILD_NODE_DEFINITIONS
 argument_list|,
 name|NAME
 argument_list|)
@@ -2565,7 +2485,7 @@ name|addNameToList
 argument_list|(
 name|type
 argument_list|,
-name|OAK_MANDATORY_CHILD_NODES
+name|REP_MANDATORY_CHILD_NODES
 argument_list|,
 name|childNodeName
 argument_list|)
@@ -2586,7 +2506,7 @@ name|addNameToList
 argument_list|(
 name|type
 argument_list|,
-name|OAK_PROTECTED_CHILD_NODES
+name|REP_PROTECTED_CHILD_NODES
 argument_list|,
 name|childNodeName
 argument_list|)
@@ -2601,7 +2521,7 @@ name|type
 operator|.
 name|child
 argument_list|(
-name|OAK_RESIDUAL_CHILD_NODE_DEFINITIONS
+name|REP_RESIDUAL_CHILD_NODE_DEFINITIONS
 argument_list|)
 expr_stmt|;
 comment|// - jcr:protected (BOOLEAN) protected mandatory
@@ -2619,7 +2539,7 @@ name|type
 operator|.
 name|setProperty
 argument_list|(
-name|OAK_HAS_PROTECTED_RESIDUAL_CHILD_NODES
+name|REP_HAS_PROTECTED_RESIDUAL_CHILD_NODES
 argument_list|,
 literal|true
 argument_list|)
@@ -2634,7 +2554,7 @@ name|JCR_PRIMARYTYPE
 argument_list|,
 name|NodeTypeConstants
 operator|.
-name|NT_OAK_CHILD_NODE_DEFINITIONS
+name|NT_REP_CHILD_NODE_DEFINITIONS
 argument_list|,
 name|NAME
 argument_list|)
@@ -2723,14 +2643,14 @@ name|JCR_PRIMARYTYPE
 argument_list|,
 name|NodeTypeConstants
 operator|.
-name|NT_OAK_CHILD_NODE_DEFINITION
+name|NT_REP_CHILD_NODE_DEFINITION
 argument_list|,
 name|NAME
 argument_list|)
 operator|.
 name|setProperty
 argument_list|(
-name|OAK_DECLARING_NODE_TYPE
+name|REP_DECLARING_NODE_TYPE
 argument_list|,
 name|typeName
 argument_list|,
@@ -2844,7 +2764,7 @@ decl_stmt|;
 name|String
 name|listName
 init|=
-name|OAK_PRIMARY_SUBTYPES
+name|REP_PRIMARY_SUBTYPES
 decl_stmt|;
 if|if
 condition|(
@@ -2858,7 +2778,7 @@ condition|)
 block|{
 name|listName
 operator|=
-name|OAK_MIXIN_SUBTYPES
+name|REP_MIXIN_SUBTYPES
 expr_stmt|;
 block|}
 for|for
@@ -2870,7 +2790,7 @@ name|getNames
 argument_list|(
 name|type
 argument_list|,
-name|OAK_SUPERTYPES
+name|REP_SUPERTYPES
 argument_list|)
 control|)
 block|{

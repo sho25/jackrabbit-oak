@@ -173,7 +173,7 @@ name|nodetype
 operator|.
 name|NodeTypeConstants
 operator|.
-name|OAK_MIXIN_SUBTYPES
+name|REP_MIXIN_SUBTYPES
 import|;
 end_import
 
@@ -193,7 +193,7 @@ name|nodetype
 operator|.
 name|NodeTypeConstants
 operator|.
-name|OAK_NAMED_SINGLE_VALUED_PROPERTIES
+name|REP_NAMED_SINGLE_VALUED_PROPERTIES
 import|;
 end_import
 
@@ -213,7 +213,7 @@ name|nodetype
 operator|.
 name|NodeTypeConstants
 operator|.
-name|OAK_PRIMARY_SUBTYPES
+name|REP_PRIMARY_SUBTYPES
 import|;
 end_import
 
@@ -233,7 +233,7 @@ name|nodetype
 operator|.
 name|NodeTypeConstants
 operator|.
-name|OAK_SUPERTYPES
+name|REP_SUPERTYPES
 import|;
 end_import
 
@@ -680,7 +680,7 @@ name|nodeType
 operator|.
 name|getNames
 argument_list|(
-name|OAK_SUPERTYPES
+name|REP_SUPERTYPES
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -701,7 +701,7 @@ name|nodeType
 operator|.
 name|getNames
 argument_list|(
-name|OAK_PRIMARY_SUBTYPES
+name|REP_PRIMARY_SUBTYPES
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -715,7 +715,7 @@ name|nodeType
 operator|.
 name|getNames
 argument_list|(
-name|OAK_MIXIN_SUBTYPES
+name|REP_MIXIN_SUBTYPES
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -855,7 +855,7 @@ name|nodeType
 operator|.
 name|getNames
 argument_list|(
-name|OAK_NAMED_SINGLE_VALUED_PROPERTIES
+name|REP_NAMED_SINGLE_VALUED_PROPERTIES
 argument_list|)
 return|;
 block|}
