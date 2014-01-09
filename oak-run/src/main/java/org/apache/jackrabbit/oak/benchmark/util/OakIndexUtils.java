@@ -249,7 +249,7 @@ argument_list|()
 operator|.
 name|hasNodeType
 argument_list|(
-literal|"oak:queryIndexDefinition"
+literal|"oak:QueryIndexDefinition"
 argument_list|)
 condition|)
 block|{

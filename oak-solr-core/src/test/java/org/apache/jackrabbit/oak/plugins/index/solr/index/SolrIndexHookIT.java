@@ -390,7 +390,7 @@ name|setProperty
 argument_list|(
 name|JCR_PRIMARYTYPE
 argument_list|,
-literal|"oak:queryIndexDefinition"
+literal|"oak:QueryIndexDefinition"
 argument_list|)
 operator|.
 name|setProperty
@@ -596,7 +596,7 @@ name|setProperty
 argument_list|(
 name|JCR_PRIMARYTYPE
 argument_list|,
-literal|"oak:queryIndexDefinition"
+literal|"oak:QueryIndexDefinition"
 argument_list|)
 operator|.
 name|setProperty
@@ -811,7 +811,7 @@ name|setProperty
 argument_list|(
 name|JCR_PRIMARYTYPE
 argument_list|,
-literal|"oak:queryIndexDefinition"
+literal|"oak:QueryIndexDefinition"
 argument_list|)
 operator|.
 name|setProperty

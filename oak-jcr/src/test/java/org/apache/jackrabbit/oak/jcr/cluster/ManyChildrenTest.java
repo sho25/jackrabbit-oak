@@ -20,18 +20,6 @@ package|;
 end_package
 
 begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertEquals
-import|;
-end_import
-
-begin_import
 import|import
 name|javax
 operator|.
@@ -170,6 +158,18 @@ operator|.
 name|junit
 operator|.
 name|Test
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertEquals
 import|;
 end_import
 
@@ -366,7 +366,7 @@ decl_stmt|;
 name|String
 name|nodeType
 init|=
-literal|"oak:unstructured"
+literal|"oak:Unstructured"
 decl_stmt|;
 if|if
 condition|(

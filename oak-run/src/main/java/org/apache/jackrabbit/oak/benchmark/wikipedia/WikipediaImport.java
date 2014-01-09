@@ -464,7 +464,7 @@ name|addNode
 argument_list|(
 literal|"wikipedia"
 argument_list|,
-literal|"oak:unstructured"
+literal|"oak:Unstructured"
 argument_list|)
 decl_stmt|;
 name|String

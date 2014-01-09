@@ -31,7 +31,7 @@ block|{
 name|String
 name|INDEX_DEFINITIONS_NODE_TYPE
 init|=
-literal|"oak:queryIndexDefinition"
+literal|"oak:QueryIndexDefinition"
 decl_stmt|;
 name|String
 name|INDEX_DEFINITIONS_NAME
