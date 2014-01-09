@@ -282,15 +282,7 @@ argument_list|(
 name|principalName
 argument_list|)
 expr_stmt|;
-name|entries
-operator|.
-name|put
-argument_list|(
-name|principalName
-argument_list|,
-name|ppe
-argument_list|)
-expr_stmt|;
+comment|//                entries.put(principalName, ppe);
 block|}
 else|else
 block|{
@@ -349,57 +341,13 @@ expr_stmt|;
 block|}
 block|}
 comment|/*             Currently this cache only handles entries for the Everyone principal.             TODO: the cache should dynamically cache the principals that are used often.             */
-if|if
-condition|(
-name|EveryonePrincipal
-operator|.
-name|NAME
-operator|.
-name|equals
-argument_list|(
-name|principalName
-argument_list|)
-condition|)
-block|{
-comment|// check if base cache has the entries
-name|PrincipalPermissionEntries
-name|baseppe
-init|=
-name|base
-operator|.
-name|get
-argument_list|(
-name|principalName
-argument_list|)
-decl_stmt|;
-if|if
-condition|(
-name|baseppe
-operator|==
-literal|null
-operator|||
-name|ppe
-operator|.
-name|getTimestamp
-argument_list|()
-operator|>
-name|baseppe
-operator|.
-name|getTimestamp
-argument_list|()
-condition|)
-block|{
-name|base
-operator|.
-name|put
-argument_list|(
-name|principalName
-argument_list|,
-name|ppe
-argument_list|)
-expr_stmt|;
-block|}
-block|}
+comment|//            if (EveryonePrincipal.NAME.equals(principalName)) {
+comment|//                // check if base cache has the entries
+comment|//                PrincipalPermissionEntries baseppe = base.get(principalName);
+comment|//                if (baseppe == null || ppe.getTimestamp()> baseppe.getTimestamp()) {
+comment|//                    base.put(principalName, ppe);
+comment|//                }
+comment|//            }
 return|return
 name|ppe
 return|;
