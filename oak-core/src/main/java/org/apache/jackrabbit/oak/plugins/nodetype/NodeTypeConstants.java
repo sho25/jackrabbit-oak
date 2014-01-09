@@ -101,6 +101,12 @@ name|NT_REP_NODE_TYPES
 init|=
 literal|"rep:nodeTypes"
 decl_stmt|;
+comment|/**      * @since oak 1.0      */
+name|String
+name|NT_REP_UNSTRUCTURED
+init|=
+literal|"rep:Unstructured"
+decl_stmt|;
 comment|/**      * Additional name constants not present in JcrConstants      */
 name|String
 name|JCR_CREATEDBY
