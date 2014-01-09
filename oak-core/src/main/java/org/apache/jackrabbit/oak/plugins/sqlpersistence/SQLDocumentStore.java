@@ -1010,6 +1010,11 @@ argument_list|(
 literal|"create table if not exists NODES(ID varchar primary key, MODIFIED bigint, MODCOUNT bigint, DATA varchar)"
 argument_list|)
 expr_stmt|;
+name|connection
+operator|.
+name|commit
+argument_list|()
+expr_stmt|;
 block|}
 annotation|@
 name|CheckForNull
