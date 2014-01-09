@@ -646,7 +646,9 @@ name|name
 operator|.
 name|equals
 argument_list|(
-literal|":conflict"
+name|MicroKernel
+operator|.
+name|CONFLICT
 argument_list|)
 condition|)
 block|{
