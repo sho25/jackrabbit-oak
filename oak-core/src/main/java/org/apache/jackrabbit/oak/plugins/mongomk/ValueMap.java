@@ -183,9 +183,9 @@ argument_list|,
 name|String
 argument_list|>
 argument_list|(
-operator|new
 name|StableRevisionComparator
-argument_list|()
+operator|.
+name|INSTANCE
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -280,9 +280,9 @@ name|doc
 operator|.
 name|getPreviousDocs
 argument_list|(
-literal|null
-argument_list|,
 name|property
+argument_list|,
+literal|null
 argument_list|)
 operator|.
 name|iterator
@@ -502,9 +502,9 @@ name|doc
 operator|.
 name|getPreviousDocs
 argument_list|(
-literal|null
-argument_list|,
 name|property
+argument_list|,
+literal|null
 argument_list|)
 control|)
 block|{
@@ -624,9 +624,9 @@ name|doc
 operator|.
 name|getPreviousDocs
 argument_list|(
-name|r
-argument_list|,
 name|property
+argument_list|,
+name|r
 argument_list|)
 control|)
 block|{

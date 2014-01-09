@@ -242,9 +242,9 @@ argument_list|,
 name|Entry
 argument_list|>
 argument_list|(
-operator|new
 name|StableRevisionComparator
-argument_list|()
+operator|.
+name|INSTANCE
 argument_list|)
 decl_stmt|;
 specifier|private
@@ -321,9 +321,9 @@ argument_list|<
 name|Revision
 argument_list|>
 argument_list|(
-operator|new
 name|StableRevisionComparator
-argument_list|()
+operator|.
+name|INSTANCE
 argument_list|)
 decl_stmt|;
 name|Revision

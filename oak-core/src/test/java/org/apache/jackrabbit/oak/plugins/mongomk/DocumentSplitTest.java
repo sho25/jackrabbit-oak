@@ -131,16 +131,6 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Ignore
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
 name|Test
 import|;
 end_import
@@ -1607,8 +1597,6 @@ expr_stmt|;
 block|}
 block|}
 annotation|@
-name|Ignore
-annotation|@
 name|Test
 comment|// OAK-1233
 specifier|public
@@ -1805,7 +1793,7 @@ literal|0
 init|;
 name|i
 operator|<
-literal|10000
+literal|1000
 condition|;
 name|i
 operator|++

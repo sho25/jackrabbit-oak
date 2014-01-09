@@ -514,14 +514,9 @@ name|Revision
 argument_list|>
 name|comparator
 init|=
-name|Collections
-operator|.
-name|reverseOrder
-argument_list|(
-operator|new
 name|StableRevisionComparator
-argument_list|()
-argument_list|)
+operator|.
+name|REVERSE
 decl_stmt|;
 specifier|public
 name|MongoDocumentStore
