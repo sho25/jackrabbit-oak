@@ -21,6 +21,16 @@ end_package
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -32,6 +42,24 @@ operator|.
 name|api
 operator|.
 name|PropertyState
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|nodetype
+operator|.
+name|NodeTypeConstants
 import|;
 end_import
 
@@ -108,16 +136,6 @@ import|;
 end_import
 
 begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|List
-import|;
-end_import
-
-begin_import
 import|import static
 name|com
 operator|.
@@ -155,6 +173,20 @@ name|apache
 operator|.
 name|jackrabbit
 operator|.
+name|JcrConstants
+operator|.
+name|JCR_PRIMARYTYPE
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
 name|oak
 operator|.
 name|api
@@ -162,6 +194,46 @@ operator|.
 name|Type
 operator|.
 name|NAMES
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|nodetype
+operator|.
+name|NodeTypeConstants
+operator|.
+name|MIX_REP_MERGE_CONFLICT
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|nodetype
+operator|.
+name|NodeTypeConstants
+operator|.
+name|REP_OURS
 import|;
 end_import
 
@@ -345,48 +417,8 @@ name|DELETE_DELETED_PROPERTY
 import|;
 end_import
 
-begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|plugins
-operator|.
-name|nodetype
-operator|.
-name|NodeTypeConstants
-operator|.
-name|MIX_REP_MERGE_CONFLICT
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|plugins
-operator|.
-name|nodetype
-operator|.
-name|NodeTypeConstants
-operator|.
-name|REP_OURS
-import|;
-end_import
-
 begin_comment
-comment|/**  * This {@link ConflictHandler} implementation resolves conflicts to  * {@link Resolution#THEIRS} and in addition marks nodes where a conflict  * occurred with the mixin {@code rep:MergeConflict}:  *  *<pre>  * [rep:MergeConflict]  *   mixin  *   primaryitem rep:ours  *   + rep:ours (nt:unstructured) protected IGNORE  *</pre>  *  * The {@code rep:ours} sub node contains our version of the node prior to  * the conflict.  *  * @see ConflictValidator  */
+comment|/**  * This {@link ConflictHandler} implementation resolves conflicts to  * {@link Resolution#THEIRS} and in addition marks nodes where a conflict  * occurred with the mixin {@code rep:MergeConflict}:  *  *<pre>  * [rep:MergeConflict]  *   mixin  *   primaryitem rep:ours  *   + rep:ours (rep:Unstructured) protected IGNORE  *</pre>  *  * The {@code rep:ours} sub node contains our version of the node prior to  * the conflict.  *  * @see ConflictValidator  */
 end_comment
 
 begin_class
@@ -816,13 +848,29 @@ name|NAMES
 argument_list|)
 expr_stmt|;
 block|}
-return|return
+name|NodeBuilder
+name|repOurs
+init|=
 name|parent
 operator|.
 name|child
 argument_list|(
 name|REP_OURS
 argument_list|)
+decl_stmt|;
+name|repOurs
+operator|.
+name|setProperty
+argument_list|(
+name|JCR_PRIMARYTYPE
+argument_list|,
+name|NodeTypeConstants
+operator|.
+name|NT_REP_UNSTRUCTURED
+argument_list|)
+expr_stmt|;
+return|return
+name|repOurs
 return|;
 block|}
 specifier|private
