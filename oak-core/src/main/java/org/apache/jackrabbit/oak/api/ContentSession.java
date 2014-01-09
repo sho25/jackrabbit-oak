@@ -60,7 +60,7 @@ name|String
 name|getWorkspaceName
 parameter_list|()
 function_decl|;
-comment|/**      * The current head root as seen by this content session. Use      * {@link Root#commit(org.apache.jackrabbit.oak.spi.commit.CommitHook...)}      * to atomically apply the changes made in that subtree the underlying      * Microkernel.      *<p>      * The root instance gives you a stable view of the tree at the time the      * root is acquired. In certain setups (i.e. clusters) changes committed      * through other sessions might not be immediately reflected through this      * call.<p>      * Please note this method is possibly expensive because it internally reads      * from the backend to detect if there were any changes (from any session).      *       * @return the current head root      */
+comment|/**      * The current head root as seen by this content session. Use      * {@link Root#commit()} to atomically apply the changes made in that      * subtree the underlying Microkernel.      *<p>      * The root instance gives you a stable view of the tree at the time the      * root is acquired. In certain setups (i.e. clusters) changes committed      * through other sessions might not be immediately reflected through this      * call.<p>      * Please note this method is possibly expensive because it internally reads      * from the backend to detect if there were any changes (from any session).      *       * @return the current head root      */
 annotation|@
 name|Nonnull
 name|Root

@@ -64,7 +64,7 @@ index|[]
 name|getKeys
 parameter_list|()
 function_decl|;
-comment|/**      * Returns {@code true} if {@code key} is a standard descriptor      * defined by the string constants in this interface and {@code false}      * if it is either a valid implementation-specific key or not a valid key.      *      * @param key a descriptor key.      * @return whether<code>key</code> is a standard descriptor.      */
+comment|/**      * Returns {@code true} if {@code key} is a standard descriptor      * defined by the string constants in this interface and {@code false}      * if it is either a valid implementation-specific key or not a valid key.      *      * @param key a descriptor key.      * @return whether {@code key} is a standard descriptor.      */
 name|boolean
 name|isStandardDescriptor
 parameter_list|(

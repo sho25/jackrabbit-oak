@@ -57,26 +57,8 @@ name|Nullable
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|spi
-operator|.
-name|commit
-operator|.
-name|CommitHook
-import|;
-end_import
-
 begin_comment
-comment|/**  * A {@code Root} instance serves as a container for a {@link Tree}. It is  * obtained from a {@link ContentSession}, which governs accessibility and  * visibility of the {@code Tree} and its sub trees.  *<p>  * All root instances created by a content session become invalid after the  * content session is closed. Any method called on an invalid root instance  * will throw an {@code InvalidStateException}.  *<p>  * {@link Tree} instances may become non existing after a call to  * {@link #refresh()}, {@link #rebase()} or {@link #commit(CommitHook... hooks)}.  * Any write access to non existing {@code Tree} instances will cause an  * {@code InvalidStateException}.  * @see Tree Existence and iterability of trees  */
+comment|/**  * A {@code Root} instance serves as a container for a {@link Tree}. It is  * obtained from a {@link ContentSession}, which governs accessibility and  * visibility of the {@code Tree} and its sub trees.  *<p>  * All root instances created by a content session become invalid after the  * content session is closed. Any method called on an invalid root instance  * will throw an {@code InvalidStateException}.  *<p>  * {@link Tree} instances may become non existing after a call to  * {@link #refresh()}, {@link #rebase()} or {@link #commit()}.  * Any write access to non existing {@code Tree} instances will cause an  * {@code InvalidStateException}.  * @see Tree Existence and iterability of trees  */
 end_comment
 
 begin_interface
@@ -84,7 +66,7 @@ specifier|public
 interface|interface
 name|Root
 block|{
-comment|/**      * Move the child located at {@code sourcePath} to a child at {@code destPath}.      * Both paths must be absolute and resolve to a child located beneath this      * root.<br>      *      * This method does nothing and returns {@code false} if      *<ul>      *<li>the tree at {@code sourcePath} does not exist or is not accessible,</li>      *<li>the parent of the tree at {@code destinationPath} does not exist or is not accessible,</li>      *<li>a tree already exists at {@code destinationPath}.</li>      *</ul>      * If a tree at {@code destinationPath} exists but is not accessible to the      * editing content session this method succeeds but a subsequent      * {@link #commit(CommitHook... hooks)} will detect the violation and fail.      *      * @param sourcePath The source path      * @param destPath The destination path      * @return {@code true} on success, {@code false} otherwise.      */
+comment|/**      * Move the child located at {@code sourcePath} to a child at {@code destPath}.      * Both paths must be absolute and resolve to a child located beneath this      * root.<br>      *      * This method does nothing and returns {@code false} if      *<ul>      *<li>the tree at {@code sourcePath} does not exist or is not accessible,</li>      *<li>the parent of the tree at {@code destinationPath} does not exist or is not accessible,</li>      *<li>a tree already exists at {@code destinationPath}.</li>      *</ul>      * If a tree at {@code destinationPath} exists but is not accessible to the      * editing content session this method succeeds but a subsequent      * {@link #commit()} will detect the violation and fail.      *      * @param sourcePath The source path      * @param destPath The destination path      * @return {@code true} on success, {@code false} otherwise.      */
 name|boolean
 name|move
 parameter_list|(
@@ -95,7 +77,7 @@ name|String
 name|destPath
 parameter_list|)
 function_decl|;
-comment|/**      * Copy the child located at {@code sourcePath} to a child at {@code destPath}.      * Both paths must be absolute and resolve to a child located in this root.<br>      *      * This method does nothing an returns {@code false} if      *<ul>      *<li>The tree at {@code sourcePath} does exist or is not accessible,</li>      *<li>the parent of the tree at {@code destinationPath} does not exist or is not accessible,</li>      *<li>a tree already exists at {@code destinationPath}.</li>      *</ul>      * If a tree at {@code destinationPath} exists but is not accessible to the      * editing content session this method succeeds but a subsequent      * {@link #commit(CommitHook... hooks)} will detect the violation and fail.      *      * @param sourcePath source path      * @param destPath destination path      * @return  {@code true} on success, {@code false} otherwise.      */
+comment|/**      * Copy the child located at {@code sourcePath} to a child at {@code destPath}.      * Both paths must be absolute and resolve to a child located in this root.<br>      *      * This method does nothing an returns {@code false} if      *<ul>      *<li>The tree at {@code sourcePath} does exist or is not accessible,</li>      *<li>the parent of the tree at {@code destinationPath} does not exist or is not accessible,</li>      *<li>a tree already exists at {@code destinationPath}.</li>      *</ul>      * If a tree at {@code destinationPath} exists but is not accessible to the      * editing content session this method succeeds but a subsequent      * {@link #commit()} will detect the violation and fail.      *      * @param sourcePath source path      * @param destPath destination path      * @return  {@code true} on success, {@code false} otherwise.      */
 name|boolean
 name|copy
 parameter_list|(
