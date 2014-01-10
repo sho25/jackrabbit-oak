@@ -169,30 +169,6 @@ argument_list|,
 name|REP_IMPERSONATORS
 argument_list|)
 decl_stmt|;
-comment|/**      * TODO: remove?      */
-name|Collection
-argument_list|<
-name|String
-argument_list|>
-name|NODE_TYPE_NAMES
-init|=
-name|ImmutableSet
-operator|.
-name|of
-argument_list|(
-name|NT_REP_AUTHORIZABLE
-argument_list|,
-name|NT_REP_USER
-argument_list|,
-name|NT_REP_GROUP
-argument_list|,
-name|NT_REP_MEMBERS
-argument_list|,
-name|NT_REP_MEMBER_REFERENCES
-argument_list|,
-name|NT_REP_MEMBER_REFERENCES_LIST
-argument_list|)
-decl_stmt|;
 comment|/**      * Configuration option defining the ID of the administrator user.      */
 name|String
 name|PARAM_ADMIN_ID

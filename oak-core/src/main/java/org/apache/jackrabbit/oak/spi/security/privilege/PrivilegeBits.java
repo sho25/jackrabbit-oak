@@ -2200,7 +2200,7 @@ name|Data
 name|other
 parameter_list|)
 function_decl|;
-comment|/**          * Checks if all {@code otherBits} is already included in {@code bits}.          *<p>          * Truth table:          *<pre>          * | b\o | 0 | 1 |          * |  0  | 1 | 0 |          * |  1 |  1 | 1 |          *</pre>          * @param bits the super set of bits          * @param otherBits the bits to check against          * @return<code>true</code> if all other bits are included in bits.          */
+comment|/**          * Checks if all {@code otherBits} is already included in {@code bits}.          *<p>          * Truth table:          *<pre>          * | b\o | 0 | 1 |          * |  0  | 1 | 0 |          * |  1 |  1 | 1 |          *</pre>          * @param bits the super set of bits          * @param otherBits the bits to check against          * @return {@code true} if all other bits are included in bits.          */
 specifier|static
 name|boolean
 name|includes
@@ -2212,7 +2212,6 @@ name|long
 name|otherBits
 parameter_list|)
 block|{
-comment|// todo:  different check as 'and' check below. which one is faster?
 return|return
 operator|(
 name|bits
@@ -2225,7 +2224,7 @@ operator|-
 literal|1
 return|;
 block|}
-comment|/**          * Checks if all {@code otherBits} is already included in {@code bits}.          *<p>          * Truth table:          *<pre>          * | b\o | 0 | 1 |          * |  0  | 1 | 0 |          * |  1 |  1 | 1 |          *</pre>          * @param bits the super set of bits          * @param otherBits the bits to check against          * @return<code>true</code> if all other bits are included in bits.          */
+comment|/**          * Checks if all {@code otherBits} is already included in {@code bits}.          *<p>          * Truth table:          *<pre>          * | b\o | 0 | 1 |          * |  0  | 1 | 0 |          * |  1 |  1 | 1 |          *</pre>          * @param bits the super set of bits          * @param otherBits the bits to check against          * @return {@code true} if all other bits are included in bits.          */
 specifier|static
 name|boolean
 name|includes
