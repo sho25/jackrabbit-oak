@@ -16,8 +16,6 @@ operator|.
 name|plugins
 operator|.
 name|observation
-operator|.
-name|filter
 package|;
 end_package
 
@@ -96,6 +94,26 @@ operator|.
 name|api
 operator|.
 name|PropertyState
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|observation
+operator|.
+name|filter
+operator|.
+name|EventFilter
 import|;
 end_import
 

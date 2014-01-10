@@ -289,8 +289,6 @@ name|plugins
 operator|.
 name|observation
 operator|.
-name|filter
-operator|.
 name|EventIterator
 operator|.
 name|IterableListener

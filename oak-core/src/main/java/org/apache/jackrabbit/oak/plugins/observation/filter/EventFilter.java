@@ -61,8 +61,6 @@ name|plugins
 operator|.
 name|observation
 operator|.
-name|filter
-operator|.
 name|EventGenerator
 operator|.
 name|Listener
