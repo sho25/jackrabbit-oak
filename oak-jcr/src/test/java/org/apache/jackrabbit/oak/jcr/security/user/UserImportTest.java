@@ -277,6 +277,16 @@ name|org
 operator|.
 name|junit
 operator|.
+name|Ignore
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
 name|Test
 import|;
 end_import
@@ -358,6 +368,11 @@ comment|/**  * Testing user import with default {@link org.apache.jackrabbit.oak
 end_comment
 
 begin_class
+annotation|@
+name|Ignore
+argument_list|(
+literal|"Produces OOME. see OAK-1317"
+argument_list|)
 specifier|public
 class|class
 name|UserImportTest
