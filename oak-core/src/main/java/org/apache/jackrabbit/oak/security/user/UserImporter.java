@@ -2954,7 +2954,6 @@ range|:
 name|nonExisting
 control|)
 block|{
-comment|// TODO: check. was: membershipProvider.addMember(groupTree, member.name, member.contentId);
 name|membershipProvider
 operator|.
 name|addMember
