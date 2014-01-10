@@ -269,7 +269,7 @@ name|after
 decl_stmt|;
 specifier|private
 specifier|final
-name|Filter
+name|EventFilter
 name|filter
 decl_stmt|;
 specifier|private
@@ -438,7 +438,7 @@ name|after
 parameter_list|,
 annotation|@
 name|Nonnull
-name|Filter
+name|EventFilter
 name|filter
 parameter_list|,
 annotation|@
@@ -511,7 +511,7 @@ name|NodeState
 name|after
 parameter_list|)
 block|{
-name|Filter
+name|EventFilter
 name|childFilter
 init|=
 name|filter

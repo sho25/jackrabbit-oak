@@ -273,28 +273,6 @@ name|observation
 operator|.
 name|filter
 operator|.
-name|EventGenerator
-operator|.
-name|Filter
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|plugins
-operator|.
-name|observation
-operator|.
-name|filter
-operator|.
 name|UniversalFilter
 operator|.
 name|Selector
@@ -413,7 +391,7 @@ name|Condition
 block|{
 annotation|@
 name|Nonnull
-name|Filter
+name|EventFilter
 name|createFilter
 parameter_list|(
 annotation|@
@@ -1026,7 +1004,7 @@ name|Nonnull
 annotation|@
 name|Override
 specifier|public
-name|Filter
+name|EventFilter
 name|getFilter
 parameter_list|(
 annotation|@
@@ -1211,7 +1189,7 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|Filter
+name|EventFilter
 name|createFilter
 parameter_list|(
 name|NodeState
@@ -1268,7 +1246,7 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|Filter
+name|EventFilter
 name|createFilter
 parameter_list|(
 name|NodeState
@@ -1325,7 +1303,7 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|Filter
+name|EventFilter
 name|createFilter
 parameter_list|(
 name|NodeState
@@ -1376,7 +1354,7 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|Filter
+name|EventFilter
 name|createFilter
 parameter_list|(
 name|NodeState
@@ -1443,7 +1421,7 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|Filter
+name|EventFilter
 name|createFilter
 parameter_list|(
 name|NodeState
@@ -1550,7 +1528,7 @@ name|Nonnull
 annotation|@
 name|Override
 specifier|public
-name|Filter
+name|EventFilter
 name|createFilter
 parameter_list|(
 name|NodeState
@@ -1619,7 +1597,7 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|Filter
+name|EventFilter
 name|createFilter
 parameter_list|(
 name|NodeState
@@ -1634,7 +1612,7 @@ parameter_list|)
 block|{
 name|List
 argument_list|<
-name|Filter
+name|EventFilter
 argument_list|>
 name|filters
 init|=
@@ -1744,7 +1722,7 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|Filter
+name|EventFilter
 name|createFilter
 parameter_list|(
 name|NodeState
@@ -1759,7 +1737,7 @@ parameter_list|)
 block|{
 name|List
 argument_list|<
-name|Filter
+name|EventFilter
 argument_list|>
 name|filters
 init|=

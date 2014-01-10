@@ -177,28 +177,6 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|plugins
-operator|.
-name|observation
-operator|.
-name|filter
-operator|.
-name|EventGenerator
-operator|.
-name|Filter
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
 name|spi
 operator|.
 name|state
@@ -356,7 +334,7 @@ name|void
 name|emptyMatchesNothing
 parameter_list|()
 block|{
-name|Filter
+name|EventFilter
 name|rootFilter
 init|=
 operator|new
@@ -413,7 +391,7 @@ name|void
 name|singleMatchesSingle
 parameter_list|()
 block|{
-name|Filter
+name|EventFilter
 name|filter
 init|=
 operator|new
@@ -446,7 +424,7 @@ name|void
 name|starMatchesSingle
 parameter_list|()
 block|{
-name|Filter
+name|EventFilter
 name|filter
 init|=
 operator|new
@@ -479,7 +457,7 @@ name|void
 name|all
 parameter_list|()
 block|{
-name|Filter
+name|EventFilter
 name|filter
 init|=
 operator|new
@@ -562,7 +540,7 @@ name|void
 name|literal
 parameter_list|()
 block|{
-name|Filter
+name|EventFilter
 name|rootFilter
 init|=
 operator|new
@@ -596,7 +574,7 @@ name|a
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Filter
+name|EventFilter
 name|aFilter
 init|=
 name|rootFilter
@@ -637,7 +615,7 @@ name|b
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Filter
+name|EventFilter
 name|bFilter
 init|=
 name|aFilter
@@ -713,7 +691,7 @@ name|void
 name|starGlob
 parameter_list|()
 block|{
-name|Filter
+name|EventFilter
 name|rootFilter
 init|=
 operator|new
@@ -747,7 +725,7 @@ name|a
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Filter
+name|EventFilter
 name|aFilter
 init|=
 name|rootFilter
@@ -788,7 +766,7 @@ name|b
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Filter
+name|EventFilter
 name|bFilter
 init|=
 name|aFilter
@@ -864,7 +842,7 @@ name|void
 name|starStarGlob
 parameter_list|()
 block|{
-name|Filter
+name|EventFilter
 name|rootFilter
 init|=
 operator|new
@@ -898,7 +876,7 @@ name|x1
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Filter
+name|EventFilter
 name|x1Filter
 init|=
 name|rootFilter
@@ -939,7 +917,7 @@ name|y1
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Filter
+name|EventFilter
 name|y1Filter
 init|=
 name|x1Filter
@@ -980,7 +958,7 @@ name|x2
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Filter
+name|EventFilter
 name|x2Filter
 init|=
 name|y1Filter
@@ -1021,7 +999,7 @@ name|y2
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Filter
+name|EventFilter
 name|y2Filter
 init|=
 name|x2Filter
@@ -1062,7 +1040,7 @@ name|z
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Filter
+name|EventFilter
 name|zFilter
 init|=
 operator|(
@@ -1099,7 +1077,7 @@ name|void
 name|matchAtStart
 parameter_list|()
 block|{
-name|Filter
+name|EventFilter
 name|rootFilter
 init|=
 operator|new
@@ -1133,7 +1111,7 @@ name|a
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Filter
+name|EventFilter
 name|aFilter
 init|=
 name|rootFilter
@@ -1174,7 +1152,7 @@ name|b
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Filter
+name|EventFilter
 name|bFilter
 init|=
 name|aFilter
@@ -1236,7 +1214,7 @@ name|void
 name|multipleMatches
 parameter_list|()
 block|{
-name|Filter
+name|EventFilter
 name|filter
 init|=
 operator|new
@@ -1383,7 +1361,7 @@ name|void
 name|matchAtEnd
 parameter_list|()
 block|{
-name|Filter
+name|EventFilter
 name|filter
 init|=
 operator|new
@@ -1514,7 +1492,7 @@ name|void
 name|matchSuffix
 parameter_list|()
 block|{
-name|Filter
+name|EventFilter
 name|filter
 init|=
 operator|new

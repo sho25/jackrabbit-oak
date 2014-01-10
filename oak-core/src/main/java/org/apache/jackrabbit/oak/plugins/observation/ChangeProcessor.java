@@ -287,9 +287,7 @@ name|observation
 operator|.
 name|filter
 operator|.
-name|EventGenerator
-operator|.
-name|Filter
+name|EventFilter
 import|;
 end_import
 
@@ -889,7 +887,7 @@ operator|.
 name|getPath
 argument_list|()
 decl_stmt|;
-name|Filter
+name|EventFilter
 name|userFilter
 init|=
 name|provider
@@ -901,7 +899,7 @@ argument_list|,
 name|root
 argument_list|)
 decl_stmt|;
-name|Filter
+name|EventFilter
 name|acFilter
 init|=
 operator|new

@@ -51,28 +51,6 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|plugins
-operator|.
-name|observation
-operator|.
-name|filter
-operator|.
-name|EventGenerator
-operator|.
-name|Filter
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
 name|spi
 operator|.
 name|commit
@@ -100,7 +78,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Instance of this class provide a {@link Filter} for observation  * events and a filter for commits.  */
+comment|/**  * Instance of this class provide a {@link EventFilter} for observation  * events and a filter for commits.  */
 end_comment
 
 begin_interface
@@ -126,7 +104,7 @@ function_decl|;
 comment|/**      * Factory method for creating a {@code Filter} for the passed before and after      * states.      *      * @param before  before state      * @param after   after state      * @return new {@code Filter} instance      */
 annotation|@
 name|Nonnull
-name|Filter
+name|EventFilter
 name|getFilter
 parameter_list|(
 annotation|@

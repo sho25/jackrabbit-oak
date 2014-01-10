@@ -117,28 +117,6 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|plugins
-operator|.
-name|observation
-operator|.
-name|filter
-operator|.
-name|EventGenerator
-operator|.
-name|Filter
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
 name|spi
 operator|.
 name|state
@@ -156,7 +134,7 @@ specifier|public
 class|class
 name|UniversalFilter
 implements|implements
-name|Filter
+name|EventFilter
 block|{
 specifier|private
 specifier|final
@@ -251,7 +229,7 @@ specifier|public
 interface|interface
 name|Selector
 block|{
-comment|/**          * Map a property event.          * @param filter  filter instance on which respective call back occurred.          * @param before  before state or {@code null} for          *                {@link Filter#propertyAdded(PropertyState)}          * @param after   after state or {@code null} for          *                {@link Filter#propertyDeleted(PropertyState)}          * @return a {@code NodeState} instance for basing the filtering criterion (predicate) upon          */
+comment|/**          * Map a property event.          * @param filter  filter instance on which respective call back occurred.          * @param before  before state or {@code null} for          *                {@link EventFilter#propertyAdded(PropertyState)}          * @param after   after state or {@code null} for          *                {@link EventFilter#propertyDeleted(PropertyState)}          * @return a {@code NodeState} instance for basing the filtering criterion (predicate) upon          */
 annotation|@
 name|Nonnull
 name|NodeState
@@ -273,7 +251,7 @@ name|PropertyState
 name|after
 parameter_list|)
 function_decl|;
-comment|/**          * Map a node event.          * @param filter  filter instance on which respective call back occurred.          * @param name    name of the child node state          * @param before  before state or {@code null} for          *                {@link Filter#childNodeAdded(String, NodeState)}          * @param after   after state or {@code null} for          *                {@link Filter#childNodeDeleted(String, NodeState)}          * @return a NodeState instance for basing the filtering criterion (predicate) upon          */
+comment|/**          * Map a node event.          * @param filter  filter instance on which respective call back occurred.          * @param name    name of the child node state          * @param before  before state or {@code null} for          *                {@link EventFilter#childNodeAdded(String, NodeState)}          * @param after   after state or {@code null} for          *                {@link EventFilter#childNodeDeleted(String, NodeState)}          * @return a NodeState instance for basing the filtering criterion (predicate) upon          */
 annotation|@
 name|Nonnull
 name|NodeState
@@ -553,7 +531,7 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|Filter
+name|EventFilter
 name|create
 parameter_list|(
 name|String

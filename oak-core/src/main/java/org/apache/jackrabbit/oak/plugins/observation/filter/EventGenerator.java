@@ -63,16 +63,6 @@ name|javax
 operator|.
 name|annotation
 operator|.
-name|CheckForNull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|annotation
-operator|.
 name|Nonnull
 import|;
 end_import
@@ -146,7 +136,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * {@link Filter filter} and report changes between node states to the {@link Listener}.  */
+comment|/**  * {@link EventFilter filter} and report changes between node states to the {@link Listener}.  */
 end_comment
 
 begin_class
@@ -158,7 +148,7 @@ name|MoveValidator
 block|{
 specifier|private
 specifier|final
-name|Filter
+name|EventFilter
 name|filter
 decl_stmt|;
 specifier|private
@@ -166,105 +156,6 @@ specifier|final
 name|Listener
 name|listener
 decl_stmt|;
-comment|/**      * Filter for determining what changes to report the the {@link Listener}.      */
-specifier|public
-interface|interface
-name|Filter
-block|{
-comment|/**          * Include an added property          * @param after  added property          * @return  {@code true} if the property should be included          */
-name|boolean
-name|includeAdd
-parameter_list|(
-name|PropertyState
-name|after
-parameter_list|)
-function_decl|;
-comment|/**          * Include a changed property          * @param before  property before the change          * @param after  property after the change          * @return  {@code true} if the property should be included          */
-name|boolean
-name|includeChange
-parameter_list|(
-name|PropertyState
-name|before
-parameter_list|,
-name|PropertyState
-name|after
-parameter_list|)
-function_decl|;
-comment|/**          * Include a deleted property          * @param before  deleted property          * @return  {@code true} if the property should be included          */
-name|boolean
-name|includeDelete
-parameter_list|(
-name|PropertyState
-name|before
-parameter_list|)
-function_decl|;
-comment|/**          * Include an added node          * @param name name of the node          * @param after  added node          * @return  {@code true} if the node should be included          */
-name|boolean
-name|includeAdd
-parameter_list|(
-name|String
-name|name
-parameter_list|,
-name|NodeState
-name|after
-parameter_list|)
-function_decl|;
-comment|/**          * Include a changed node          * @param name name of the node          * @param before node before the change          * @param after  node after the change          * @return  {@code true} if the node should be included          */
-name|boolean
-name|includeChange
-parameter_list|(
-name|String
-name|name
-parameter_list|,
-name|NodeState
-name|before
-parameter_list|,
-name|NodeState
-name|after
-parameter_list|)
-function_decl|;
-comment|/**          * Include a deleted node          * @param name name of the node          * @param before deleted node          * @return  {@code true} if the node should be included          */
-name|boolean
-name|includeDelete
-parameter_list|(
-name|String
-name|name
-parameter_list|,
-name|NodeState
-name|before
-parameter_list|)
-function_decl|;
-comment|/**          * Include a moved node          * @param sourcePath  source path of the move operation          * @param name        name of the moved node          * @param moved       the moved node          * @return  {@code true} if the node should be included          */
-name|boolean
-name|includeMove
-parameter_list|(
-name|String
-name|sourcePath
-parameter_list|,
-name|String
-name|name
-parameter_list|,
-name|NodeState
-name|moved
-parameter_list|)
-function_decl|;
-comment|/**          * Factory for creating a filter instance for the given child node          * @param name  name of the child node          * @param before  before state of the child node          * @param after  after state of the child node          * @return  filter instance for filtering the child node or {@code null} to          *          exclude the sub tree rooted at this child node.          */
-annotation|@
-name|CheckForNull
-name|Filter
-name|create
-parameter_list|(
-name|String
-name|name
-parameter_list|,
-name|NodeState
-name|before
-parameter_list|,
-name|NodeState
-name|after
-parameter_list|)
-function_decl|;
-block|}
 comment|/**      * Listener for listening to changes.      */
 specifier|public
 interface|interface
@@ -370,7 +261,7 @@ name|EventGenerator
 parameter_list|(
 annotation|@
 name|Nonnull
-name|Filter
+name|EventFilter
 name|filter
 parameter_list|,
 annotation|@
@@ -739,7 +630,7 @@ name|NodeState
 name|after
 parameter_list|)
 block|{
-name|Filter
+name|EventFilter
 name|childFilter
 init|=
 name|filter

@@ -141,28 +141,6 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|plugins
-operator|.
-name|observation
-operator|.
-name|filter
-operator|.
-name|EventGenerator
-operator|.
-name|Filter
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
 name|spi
 operator|.
 name|state
@@ -172,7 +150,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This utility class provides common {@link Filter} instances  */
+comment|/**  * This utility class provides common {@link EventFilter} instances  */
 end_comment
 
 begin_class
@@ -190,13 +168,13 @@ annotation|@
 name|Nonnull
 specifier|public
 specifier|static
-name|Filter
+name|EventFilter
 name|any
 parameter_list|(
 annotation|@
 name|Nonnull
 specifier|final
-name|Filter
+name|EventFilter
 modifier|...
 name|filters
 parameter_list|)
@@ -221,13 +199,13 @@ annotation|@
 name|Nonnull
 specifier|public
 specifier|static
-name|Filter
+name|EventFilter
 name|all
 parameter_list|(
 annotation|@
 name|Nonnull
 specifier|final
-name|Filter
+name|EventFilter
 modifier|...
 name|filters
 parameter_list|)
@@ -252,7 +230,7 @@ annotation|@
 name|Nonnull
 specifier|public
 specifier|static
-name|Filter
+name|EventFilter
 name|includeAll
 parameter_list|()
 block|{
@@ -265,7 +243,7 @@ annotation|@
 name|Nonnull
 specifier|public
 specifier|static
-name|Filter
+name|EventFilter
 name|excludeAll
 parameter_list|()
 block|{
@@ -278,7 +256,7 @@ annotation|@
 name|Nonnull
 specifier|public
 specifier|static
-name|Filter
+name|EventFilter
 name|any
 parameter_list|(
 annotation|@
@@ -286,7 +264,7 @@ name|Nonnull
 specifier|final
 name|List
 argument_list|<
-name|Filter
+name|EventFilter
 argument_list|>
 name|filters
 parameter_list|)
@@ -330,7 +308,7 @@ else|else
 block|{
 return|return
 operator|new
-name|Filter
+name|EventFilter
 argument_list|()
 block|{
 annotation|@
@@ -345,7 +323,7 @@ parameter_list|)
 block|{
 for|for
 control|(
-name|Filter
+name|EventFilter
 name|filter
 range|:
 name|filters
@@ -385,7 +363,7 @@ parameter_list|)
 block|{
 for|for
 control|(
-name|Filter
+name|EventFilter
 name|filter
 range|:
 name|filters
@@ -424,7 +402,7 @@ parameter_list|)
 block|{
 for|for
 control|(
-name|Filter
+name|EventFilter
 name|filter
 range|:
 name|filters
@@ -464,7 +442,7 @@ parameter_list|)
 block|{
 for|for
 control|(
-name|Filter
+name|EventFilter
 name|filter
 range|:
 name|filters
@@ -509,7 +487,7 @@ parameter_list|)
 block|{
 for|for
 control|(
-name|Filter
+name|EventFilter
 name|filter
 range|:
 name|filters
@@ -553,7 +531,7 @@ parameter_list|)
 block|{
 for|for
 control|(
-name|Filter
+name|EventFilter
 name|filter
 range|:
 name|filters
@@ -598,7 +576,7 @@ parameter_list|)
 block|{
 for|for
 control|(
-name|Filter
+name|EventFilter
 name|filter
 range|:
 name|filters
@@ -630,7 +608,7 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|Filter
+name|EventFilter
 name|create
 parameter_list|(
 name|String
@@ -645,7 +623,7 @@ parameter_list|)
 block|{
 name|List
 argument_list|<
-name|Filter
+name|EventFilter
 argument_list|>
 name|childFilters
 init|=
@@ -656,13 +634,13 @@ argument_list|()
 decl_stmt|;
 for|for
 control|(
-name|Filter
+name|EventFilter
 name|filter
 range|:
 name|filters
 control|)
 block|{
-name|Filter
+name|EventFilter
 name|childFilter
 init|=
 name|filter
@@ -708,7 +686,7 @@ annotation|@
 name|Nonnull
 specifier|public
 specifier|static
-name|Filter
+name|EventFilter
 name|all
 parameter_list|(
 annotation|@
@@ -716,7 +694,7 @@ name|Nonnull
 specifier|final
 name|List
 argument_list|<
-name|Filter
+name|EventFilter
 argument_list|>
 name|filters
 parameter_list|)
@@ -760,7 +738,7 @@ else|else
 block|{
 return|return
 operator|new
-name|Filter
+name|EventFilter
 argument_list|()
 block|{
 annotation|@
@@ -775,7 +753,7 @@ parameter_list|)
 block|{
 for|for
 control|(
-name|Filter
+name|EventFilter
 name|filter
 range|:
 name|filters
@@ -816,7 +794,7 @@ parameter_list|)
 block|{
 for|for
 control|(
-name|Filter
+name|EventFilter
 name|filter
 range|:
 name|filters
@@ -856,7 +834,7 @@ parameter_list|)
 block|{
 for|for
 control|(
-name|Filter
+name|EventFilter
 name|filter
 range|:
 name|filters
@@ -897,7 +875,7 @@ parameter_list|)
 block|{
 for|for
 control|(
-name|Filter
+name|EventFilter
 name|filter
 range|:
 name|filters
@@ -943,7 +921,7 @@ parameter_list|)
 block|{
 for|for
 control|(
-name|Filter
+name|EventFilter
 name|filter
 range|:
 name|filters
@@ -988,7 +966,7 @@ parameter_list|)
 block|{
 for|for
 control|(
-name|Filter
+name|EventFilter
 name|filter
 range|:
 name|filters
@@ -1034,7 +1012,7 @@ parameter_list|)
 block|{
 for|for
 control|(
-name|Filter
+name|EventFilter
 name|filter
 range|:
 name|filters
@@ -1067,7 +1045,7 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|Filter
+name|EventFilter
 name|create
 parameter_list|(
 name|String
@@ -1082,7 +1060,7 @@ parameter_list|)
 block|{
 name|List
 argument_list|<
-name|Filter
+name|EventFilter
 argument_list|>
 name|childFilters
 init|=
@@ -1093,13 +1071,13 @@ argument_list|()
 decl_stmt|;
 for|for
 control|(
-name|Filter
+name|EventFilter
 name|filter
 range|:
 name|filters
 control|)
 block|{
-name|Filter
+name|EventFilter
 name|childFilter
 init|=
 name|filter

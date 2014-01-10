@@ -127,7 +127,7 @@ specifier|final
 class|class
 name|Selectors
 block|{
-comment|/**      * A selector returning the node for which a call back on {@link EventGenerator.Filter} was      * called or a non existing node in the case of a property call back.      */
+comment|/**      * A selector returning the node for which a call back on {@link EventFilter} was      * called or a non existing node in the case of a property call back.      */
 specifier|public
 specifier|static
 specifier|final
@@ -138,7 +138,7 @@ operator|new
 name|ThisSelector
 argument_list|()
 decl_stmt|;
-comment|/**      * A selector returning the parent node of the item for which a call back      * on {@link EventGenerator.Filter} was called.      */
+comment|/**      * A selector returning the parent node of the item for which a call back      * on {@link EventFilter} was called.      */
 specifier|public
 specifier|static
 specifier|final
