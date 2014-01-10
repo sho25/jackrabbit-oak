@@ -289,7 +289,7 @@ name|plugins
 operator|.
 name|observation
 operator|.
-name|EventIterator
+name|EventIterable
 operator|.
 name|IterableListener
 import|;

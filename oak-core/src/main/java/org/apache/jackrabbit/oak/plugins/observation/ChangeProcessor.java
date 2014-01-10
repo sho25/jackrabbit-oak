@@ -924,14 +924,14 @@ argument_list|,
 name|basePath
 argument_list|)
 decl_stmt|;
-name|EventIterator
+name|EventIterable
 argument_list|<
 name|Event
 argument_list|>
 name|events
 init|=
 operator|new
-name|EventIterator
+name|EventIterable
 argument_list|<
 name|Event
 argument_list|>

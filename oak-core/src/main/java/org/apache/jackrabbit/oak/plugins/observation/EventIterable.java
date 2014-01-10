@@ -226,7 +226,7 @@ end_comment
 begin_class
 specifier|public
 class|class
-name|EventIterator
+name|EventIterable
 parameter_list|<
 name|T
 parameter_list|>
@@ -248,7 +248,7 @@ name|LoggerFactory
 operator|.
 name|getLogger
 argument_list|(
-name|EventIterator
+name|EventIterable
 operator|.
 name|class
 argument_list|)
@@ -280,7 +280,7 @@ specifier|private
 specifier|final
 name|LinkedList
 argument_list|<
-name|EventIterator
+name|EventIterable
 argument_list|<
 name|T
 argument_list|>
@@ -328,7 +328,7 @@ function_decl|;
 block|}
 comment|/**      * Create a new instance of a {@code EventIterator} reporting events to the      * passed {@code listener} after filtering with the passed {@code filter}.      *      * @param before  before state      * @param after   after state      * @param filter  filter for filtering changes      * @param listener  listener for listening to the filtered changes      */
 specifier|public
-name|EventIterator
+name|EventIterable
 parameter_list|(
 annotation|@
 name|Nonnull
@@ -441,7 +441,7 @@ operator|.
 name|add
 argument_list|(
 operator|new
-name|EventIterator
+name|EventIterable
 argument_list|<
 name|T
 argument_list|>
