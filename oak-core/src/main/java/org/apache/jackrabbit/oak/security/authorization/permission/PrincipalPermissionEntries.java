@@ -89,7 +89,7 @@ decl_stmt|;
 comment|/**      * timestamp of the per-principal permission store      */
 specifier|private
 name|long
-name|timestamp
+name|modCount
 decl_stmt|;
 comment|/**      * map of permission entries, accessed by path      */
 specifier|private
@@ -145,26 +145,26 @@ return|;
 block|}
 specifier|public
 name|long
-name|getTimestamp
+name|getModCount
 parameter_list|()
 block|{
 return|return
-name|timestamp
+name|modCount
 return|;
 block|}
 specifier|public
 name|void
-name|setTimestamp
+name|setModCount
 parameter_list|(
 name|long
-name|timestamp
+name|modCount
 parameter_list|)
 block|{
 name|this
 operator|.
-name|timestamp
+name|modCount
 operator|=
-name|timestamp
+name|modCount
 expr_stmt|;
 block|}
 annotation|@

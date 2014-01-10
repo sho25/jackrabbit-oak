@@ -134,7 +134,7 @@ name|principalName
 parameter_list|)
 function_decl|;
 name|long
-name|getTimestamp
+name|getModCount
 parameter_list|(
 annotation|@
 name|Nonnull

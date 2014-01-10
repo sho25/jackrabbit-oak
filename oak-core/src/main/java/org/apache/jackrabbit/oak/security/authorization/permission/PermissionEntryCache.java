@@ -282,7 +282,15 @@ argument_list|(
 name|principalName
 argument_list|)
 expr_stmt|;
-comment|//                entries.put(principalName, ppe);
+name|entries
+operator|.
+name|put
+argument_list|(
+name|principalName
+argument_list|,
+name|ppe
+argument_list|)
+expr_stmt|;
 block|}
 else|else
 block|{
@@ -301,14 +309,14 @@ if|if
 condition|(
 name|store
 operator|.
-name|getTimestamp
+name|getModCount
 argument_list|(
 name|principalName
 argument_list|)
 operator|!=
 name|ppe
 operator|.
-name|getTimestamp
+name|getModCount
 argument_list|()
 condition|)
 block|{
@@ -341,13 +349,57 @@ expr_stmt|;
 block|}
 block|}
 comment|/*             Currently this cache only handles entries for the Everyone principal.             TODO: the cache should dynamically cache the principals that are used often.             */
-comment|//            if (EveryonePrincipal.NAME.equals(principalName)) {
-comment|//                // check if base cache has the entries
-comment|//                PrincipalPermissionEntries baseppe = base.get(principalName);
-comment|//                if (baseppe == null || ppe.getTimestamp()> baseppe.getTimestamp()) {
-comment|//                    base.put(principalName, ppe);
-comment|//                }
-comment|//            }
+if|if
+condition|(
+name|EveryonePrincipal
+operator|.
+name|NAME
+operator|.
+name|equals
+argument_list|(
+name|principalName
+argument_list|)
+condition|)
+block|{
+comment|// check if base cache has the entries
+name|PrincipalPermissionEntries
+name|baseppe
+init|=
+name|base
+operator|.
+name|get
+argument_list|(
+name|principalName
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|baseppe
+operator|==
+literal|null
+operator|||
+name|ppe
+operator|.
+name|getModCount
+argument_list|()
+operator|>
+name|baseppe
+operator|.
+name|getModCount
+argument_list|()
+condition|)
+block|{
+name|base
+operator|.
+name|put
+argument_list|(
+name|principalName
+argument_list|,
+name|ppe
+argument_list|)
+expr_stmt|;
+block|}
+block|}
 return|return
 name|ppe
 return|;

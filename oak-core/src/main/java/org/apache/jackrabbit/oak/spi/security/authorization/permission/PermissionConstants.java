@@ -163,9 +163,9 @@ init|=
 literal|"rep:numPermissions"
 decl_stmt|;
 name|String
-name|REP_TIMESTAMP
+name|REP_MOD_COUNT
 init|=
-literal|"rep:timestamp"
+literal|"rep:modCount"
 decl_stmt|;
 name|String
 name|REP_IS_ALLOW
