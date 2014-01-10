@@ -134,7 +134,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * OpenSecurityProvider... TODO: review if we really have the need for that once TODO in InitialContent is resolved  */
+comment|/**  * Rudimentary {@code SecurityProvider} implementation that allow every subject  * to authenticate and grants it full access everywhere. Note, that this  * implementation does not provide support for other security related features  * such as e.g. user or access control management.  *  * @see org.apache.jackrabbit.oak.spi.security.authentication.OpenAuthenticationConfiguration  * @see org.apache.jackrabbit.oak.spi.security.authorization.OpenAuthorizationConfiguration  */
 end_comment
 
 begin_class
