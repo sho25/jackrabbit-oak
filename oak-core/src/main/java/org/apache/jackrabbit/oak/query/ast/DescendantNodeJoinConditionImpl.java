@@ -365,7 +365,7 @@ name|Filter
 operator|.
 name|PathRestriction
 operator|.
-name|DIRECT_CHILDREN
+name|ALL_CHILDREN
 argument_list|)
 expr_stmt|;
 block|}
