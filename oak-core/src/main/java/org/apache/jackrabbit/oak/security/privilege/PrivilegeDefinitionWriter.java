@@ -274,7 +274,6 @@ comment|/**  * PrivilegeDefinitionWriter is responsible for writing privilege de
 end_comment
 
 begin_class
-specifier|public
 class|class
 name|PrivilegeDefinitionWriter
 implements|implements
@@ -415,7 +414,6 @@ specifier|private
 name|PrivilegeBits
 name|next
 decl_stmt|;
-specifier|public
 name|PrivilegeDefinitionWriter
 parameter_list|(
 name|Root
@@ -477,20 +475,11 @@ name|next
 operator|=
 name|PrivilegeBits
 operator|.
-name|BUILT_IN
-operator|.
-name|get
-argument_list|(
-name|REP_USER_MANAGEMENT
-argument_list|)
-operator|.
-name|nextBits
-argument_list|()
+name|NEXT_AFTER_BUILT_INS
 expr_stmt|;
 block|}
 block|}
 comment|/**      * Write the given privilege definition to the repository content.      *      * @param definition The new privilege definition.      * @throws RepositoryException If the definition can't be written.      */
-specifier|public
 name|void
 name|writeDefinition
 parameter_list|(
