@@ -1153,10 +1153,7 @@ condition|(
 name|acMgr
 operator|instanceof
 name|JackrabbitAccessControlManager
-condition|)
-block|{
-if|if
-condition|(
+operator|&&
 name|acMgr
 operator|instanceof
 name|PolicyOwner
@@ -1179,7 +1176,6 @@ name|principal
 argument_list|)
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 name|List
