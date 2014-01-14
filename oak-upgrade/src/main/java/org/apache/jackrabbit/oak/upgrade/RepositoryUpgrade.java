@@ -1710,6 +1710,11 @@ argument_list|(
 name|builder
 argument_list|)
 expr_stmt|;
+name|copyPrivileges
+argument_list|(
+name|builder
+argument_list|)
+expr_stmt|;
 name|copyVersionStore
 argument_list|(
 name|builder
@@ -2192,6 +2197,18 @@ block|}
 return|return
 name|properties
 return|;
+block|}
+specifier|private
+name|void
+name|copyPrivileges
+parameter_list|(
+name|NodeBuilder
+name|root
+parameter_list|)
+throws|throws
+name|RepositoryException
+block|{
+comment|// TODO
 block|}
 specifier|private
 name|void
