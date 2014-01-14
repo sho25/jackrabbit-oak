@@ -1449,29 +1449,122 @@ name|save
 argument_list|()
 expr_stmt|;
 block|}
-comment|// FIXME: adding replacement is not detected by node state diff.
-comment|//    @Test
-comment|//    public void testMoveAndAddReplacementAtSource() throws Exception {
-comment|//        allow(path, privilegesFromNames(new String[]{
-comment|//                Privilege.JCR_REMOVE_CHILD_NODES, Privilege.JCR_ADD_CHILD_NODES
-comment|//        }));
-comment|//        allow(siblingPath, privilegesFromNames(new String[] {
-comment|//                PrivilegeConstants.JCR_ADD_CHILD_NODES, PrivilegeConstants.JCR_NODE_TYPE_MANAGEMENT
-comment|//        }));
-comment|//
-comment|//        testSession.move(nodePath3, siblingDestPath);
-comment|//
-comment|//        Node sourceParent = testSession.getNode(childNPath);
-comment|//        Node replacement = sourceParent.addNode(Text.getName(nodePath3));
-comment|//        replacement.setProperty("movedProp", "val");
-comment|//
-comment|//        try {
-comment|//            testSession.save();
-comment|//            fail("Missing ADD_NODE and ADD_PROPERTY permission on source parent.");
-comment|//        } catch (AccessDeniedException e) {
-comment|//            // success
-comment|//        }
-comment|//    }
+annotation|@
+name|Test
+specifier|public
+name|void
+name|testMoveAndAddReplacementAtSource
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|allow
+argument_list|(
+name|path
+argument_list|,
+name|privilegesFromNames
+argument_list|(
+operator|new
+name|String
+index|[]
+block|{
+name|Privilege
+operator|.
+name|JCR_REMOVE_CHILD_NODES
+block|,
+name|Privilege
+operator|.
+name|JCR_ADD_CHILD_NODES
+block|}
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|allow
+argument_list|(
+name|siblingPath
+argument_list|,
+name|privilegesFromNames
+argument_list|(
+operator|new
+name|String
+index|[]
+block|{
+name|PrivilegeConstants
+operator|.
+name|JCR_ADD_CHILD_NODES
+block|,
+name|PrivilegeConstants
+operator|.
+name|JCR_NODE_TYPE_MANAGEMENT
+block|}
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|testSession
+operator|.
+name|move
+argument_list|(
+name|nodePath3
+argument_list|,
+name|siblingDestPath
+argument_list|)
+expr_stmt|;
+name|Node
+name|sourceParent
+init|=
+name|testSession
+operator|.
+name|getNode
+argument_list|(
+name|childNPath
+argument_list|)
+decl_stmt|;
+name|Node
+name|replacement
+init|=
+name|sourceParent
+operator|.
+name|addNode
+argument_list|(
+name|Text
+operator|.
+name|getName
+argument_list|(
+name|nodePath3
+argument_list|)
+argument_list|)
+decl_stmt|;
+name|replacement
+operator|.
+name|setProperty
+argument_list|(
+literal|"movedProp"
+argument_list|,
+literal|"val"
+argument_list|)
+expr_stmt|;
+try|try
+block|{
+name|testSession
+operator|.
+name|save
+argument_list|()
+expr_stmt|;
+name|fail
+argument_list|(
+literal|"Missing ADD_NODE and ADD_PROPERTY permission on source parent."
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|AccessDeniedException
+name|e
+parameter_list|)
+block|{
+comment|// success
+block|}
+block|}
 annotation|@
 name|Test
 specifier|public
