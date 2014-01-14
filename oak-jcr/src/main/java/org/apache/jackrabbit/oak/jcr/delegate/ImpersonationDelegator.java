@@ -20,22 +20,6 @@ package|;
 end_package
 
 begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|Preconditions
-operator|.
-name|checkArgument
-import|;
-end_import
-
-begin_import
 import|import
 name|java
 operator|.
@@ -123,11 +107,28 @@ name|SessionOperation
 import|;
 end_import
 
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkArgument
+import|;
+end_import
+
 begin_comment
 comment|/**  * This implementation of {@code Impersonation} delegates back to a  * delegatee wrapping each call into a {@link SessionOperation} closure.  *  * @see SessionDelegate#perform(SessionOperation)  */
 end_comment
 
 begin_class
+specifier|final
 class|class
 name|ImpersonationDelegator
 implements|implements

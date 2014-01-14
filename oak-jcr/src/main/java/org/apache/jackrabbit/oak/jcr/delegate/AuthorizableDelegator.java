@@ -1098,8 +1098,6 @@ name|String
 name|getPath
 parameter_list|()
 throws|throws
-name|UnsupportedRepositoryOperationException
-throws|,
 name|RepositoryException
 block|{
 return|return
