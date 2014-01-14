@@ -39,6 +39,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|UUID
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -559,6 +569,17 @@ name|NodeStore
 name|createNodeStore
 parameter_list|()
 block|{
+name|String
+name|id
+init|=
+name|UUID
+operator|.
+name|randomUUID
+argument_list|()
+operator|.
+name|toString
+argument_list|()
+decl_stmt|;
 return|return
 operator|new
 name|MongoMK
@@ -568,7 +589,9 @@ argument_list|()
 operator|.
 name|setMongoJDBC
 argument_list|(
-literal|"jdbc:h2:mem:oaknodes"
+literal|"jdbc:h2:mem:"
+operator|+
+name|id
 argument_list|,
 literal|"sa"
 argument_list|,
@@ -600,7 +623,9 @@ argument_list|()
 operator|.
 name|setMongoJDBC
 argument_list|(
-literal|"jdbc:h2:mem:oaknodes"
+literal|"jdbc:h2:mem:oaknodes-"
+operator|+
+name|clusterNodeId
 argument_list|,
 literal|"sa"
 argument_list|,
