@@ -425,7 +425,7 @@ name|plugins
 operator|.
 name|nodetype
 operator|.
-name|RegistrationEditorProvider
+name|TypeEditorProvider
 import|;
 end_import
 
@@ -1955,7 +1955,7 @@ operator|new
 name|CompositeEditorProvider
 argument_list|(
 operator|new
-name|RegistrationEditorProvider
+name|TypeEditorProvider
 argument_list|()
 argument_list|,
 operator|new

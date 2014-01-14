@@ -860,7 +860,7 @@ name|assertTrue
 argument_list|(
 name|e
 operator|.
-name|isAccessControlViolation
+name|isConstraintViolation
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -967,7 +967,7 @@ name|assertTrue
 argument_list|(
 name|e
 operator|.
-name|isAccessControlViolation
+name|isConstraintViolation
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1072,7 +1072,7 @@ name|assertTrue
 argument_list|(
 name|e
 operator|.
-name|isAccessControlViolation
+name|isConstraintViolation
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1177,7 +1177,7 @@ name|assertTrue
 argument_list|(
 name|e
 operator|.
-name|isAccessControlViolation
+name|isConstraintViolation
 argument_list|()
 argument_list|)
 expr_stmt|;

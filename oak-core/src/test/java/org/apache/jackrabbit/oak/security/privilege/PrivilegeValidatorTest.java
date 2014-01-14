@@ -233,6 +233,18 @@ end_import
 
 begin_import
 import|import static
+name|junit
+operator|.
+name|framework
+operator|.
+name|Assert
+operator|.
+name|assertTrue
+import|;
+end_import
+
+begin_import
+import|import static
 name|org
 operator|.
 name|junit
@@ -406,13 +418,11 @@ name|e
 parameter_list|)
 block|{
 comment|// success
-name|assertEquals
+name|assertTrue
 argument_list|(
-literal|"OakConstraint0048: PrivilegeBits are missing."
-argument_list|,
 name|e
 operator|.
-name|getMessage
+name|isConstraintViolation
 argument_list|()
 argument_list|)
 expr_stmt|;
