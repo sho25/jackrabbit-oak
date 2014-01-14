@@ -692,6 +692,7 @@ parameter_list|)
 block|{         }
 block|}
 decl_stmt|;
+comment|/**      * Creates a new empty {@link NodeStore} instance. An implementation must      * ensure the returned node store is indeed empty and is independent from      * instances returned from previous calls to this method.      *      * @return a new node store instance.      */
 specifier|public
 specifier|abstract
 name|NodeStore
