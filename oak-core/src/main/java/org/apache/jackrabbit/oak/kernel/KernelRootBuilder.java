@@ -503,6 +503,13 @@ block|{
 name|purge
 argument_list|()
 expr_stmt|;
+name|boolean
+name|success
+init|=
+literal|false
+decl_stmt|;
+try|try
+block|{
 name|branch
 operator|.
 name|merge
@@ -512,6 +519,43 @@ argument_list|,
 name|info
 argument_list|)
 expr_stmt|;
+name|success
+operator|=
+literal|true
+expr_stmt|;
+block|}
+finally|finally
+block|{
+if|if
+condition|(
+operator|!
+name|success
+condition|)
+block|{
+comment|// need to adjust base and head of this builder
+comment|// in case branch.merge() did a rebase and then
+comment|// a commit hook failed the merge
+name|super
+operator|.
+name|reset
+argument_list|(
+name|branch
+operator|.
+name|getHead
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|base
+operator|=
+name|branch
+operator|.
+name|getBase
+argument_list|()
+expr_stmt|;
+block|}
+block|}
 return|return
 name|reset
 argument_list|()
