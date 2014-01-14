@@ -313,12 +313,8 @@ operator|.
 name|SEGMENT_MK
 block|}
 block|,
-block|{
-name|NodeStoreFixture
-operator|.
-name|MONGO_JDBC
+comment|// {NodeStoreFixture.MONGO_JDBC},
 block|}
-block|,         }
 decl_stmt|;
 return|return
 name|Arrays
