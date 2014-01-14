@@ -949,6 +949,17 @@ throw|;
 block|}
 if|if
 condition|(
+name|importTargetTree
+operator|.
+name|getStatus
+argument_list|()
+operator|!=
+name|Tree
+operator|.
+name|Status
+operator|.
+name|NEW
+operator|&&
 name|sessionContext
 operator|.
 name|getWorkspace
