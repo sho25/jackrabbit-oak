@@ -1400,22 +1400,6 @@ block|{
 name|checkLive
 argument_list|()
 expr_stmt|;
-if|if
-condition|(
-operator|!
-name|store
-operator|.
-name|getRoot
-argument_list|()
-operator|.
-name|equals
-argument_list|(
-name|getBaseState
-argument_list|()
-argument_list|)
-condition|)
-block|{
-comment|// TODO: do we need this?
 name|store
 operator|.
 name|rebase
@@ -1444,7 +1428,6 @@ operator|.
 name|refresh
 argument_list|()
 expr_stmt|;
-block|}
 block|}
 block|}
 annotation|@
