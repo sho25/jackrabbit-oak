@@ -396,7 +396,11 @@ name|head
 operator|=
 operator|new
 name|UnconnectedHead
-argument_list|()
+argument_list|(
+name|baseRevision
+argument_list|,
+name|base
+argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Creates a new in-memory node state builder rooted at      * and based on the passed {@code base} state.      * @param base base state of the new builder      */
@@ -2011,15 +2015,33 @@ block|{
 specifier|private
 name|long
 name|revision
-init|=
-name|baseRevision
 decl_stmt|;
 specifier|private
 name|NodeState
 name|state
-init|=
-name|base
 decl_stmt|;
+name|UnconnectedHead
+parameter_list|(
+name|long
+name|revision
+parameter_list|,
+name|NodeState
+name|state
+parameter_list|)
+block|{
+name|this
+operator|.
+name|revision
+operator|=
+name|revision
+expr_stmt|;
+name|this
+operator|.
+name|state
+operator|=
+name|state
+expr_stmt|;
+block|}
 annotation|@
 name|Override
 specifier|public
@@ -2291,10 +2313,16 @@ condition|)
 block|{
 comment|// the root builder's base state has been reset: transition back
 comment|// to unconnected and connect again if necessary.
+comment|// No need to pass base() instead of base as the subsequent
+comment|// call to update will take care of updating to the latest state.
 return|return
 operator|new
 name|UnconnectedHead
-argument_list|()
+argument_list|(
+name|baseRevision
+argument_list|,
+name|base
+argument_list|)
 operator|.
 name|update
 argument_list|()
@@ -2443,6 +2471,7 @@ specifier|public
 name|RootHead
 parameter_list|()
 block|{
+comment|// Base of root is always up to date. No need to call base()
 name|super
 argument_list|(
 operator|new
