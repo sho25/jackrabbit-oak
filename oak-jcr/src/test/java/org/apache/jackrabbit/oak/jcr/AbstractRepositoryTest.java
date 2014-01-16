@@ -520,6 +520,17 @@ argument_list|()
 operator|.
 name|login
 argument_list|(
+name|getAdminCredentials
+argument_list|()
+argument_list|)
+return|;
+block|}
+specifier|protected
+name|SimpleCredentials
+name|getAdminCredentials
+parameter_list|()
+block|{
+return|return
 operator|new
 name|SimpleCredentials
 argument_list|(
@@ -529,7 +540,6 @@ literal|"admin"
 operator|.
 name|toCharArray
 argument_list|()
-argument_list|)
 argument_list|)
 return|;
 block|}
