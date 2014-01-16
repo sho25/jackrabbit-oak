@@ -410,7 +410,7 @@ literal|"org.apache.felix"
 argument_list|,
 literal|"org.apache.felix.scr"
 argument_list|,
-literal|"1.6.0"
+literal|"1.8.0"
 argument_list|)
 argument_list|,
 name|mavenBundle
