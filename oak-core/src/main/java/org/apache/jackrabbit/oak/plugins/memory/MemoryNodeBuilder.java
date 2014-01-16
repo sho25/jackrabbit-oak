@@ -2184,6 +2184,7 @@ operator|.
 name|modified
 argument_list|(
 name|base
+argument_list|()
 argument_list|,
 name|state
 argument_list|)
