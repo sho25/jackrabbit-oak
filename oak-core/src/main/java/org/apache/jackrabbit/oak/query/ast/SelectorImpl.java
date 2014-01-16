@@ -1660,18 +1660,19 @@ name|pn
 argument_list|)
 return|;
 block|}
+comment|/**      * Get the property value. The property name may be relative. The special      * property names "jcr:path", "jcr:score" and "rep:excerpt" are supported.      *       * @param oakPropertyName (must already be normalized)      * @return the property value or null if not found      */
 specifier|public
 name|PropertyValue
 name|currentOakProperty
 parameter_list|(
 name|String
-name|propertyName
+name|oakPropertyName
 parameter_list|)
 block|{
 name|boolean
 name|relative
 init|=
-name|propertyName
+name|oakPropertyName
 operator|.
 name|indexOf
 argument_list|(
@@ -1704,7 +1705,7 @@ name|PathUtils
 operator|.
 name|getParentPath
 argument_list|(
-name|propertyName
+name|oakPropertyName
 argument_list|)
 argument_list|)
 control|)
@@ -1771,13 +1772,13 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-name|propertyName
+name|oakPropertyName
 operator|=
 name|PathUtils
 operator|.
 name|getName
 argument_list|(
-name|propertyName
+name|oakPropertyName
 argument_list|)
 expr_stmt|;
 block|}
@@ -1800,7 +1801,7 @@ return|;
 block|}
 if|if
 condition|(
-name|propertyName
+name|oakPropertyName
 operator|.
 name|equals
 argument_list|(
@@ -1848,7 +1849,7 @@ block|}
 elseif|else
 if|if
 condition|(
-name|propertyName
+name|oakPropertyName
 operator|.
 name|equals
 argument_list|(
@@ -1872,7 +1873,7 @@ block|}
 elseif|else
 if|if
 condition|(
-name|propertyName
+name|oakPropertyName
 operator|.
 name|equals
 argument_list|(
@@ -1902,7 +1903,7 @@ name|t
 operator|.
 name|getProperty
 argument_list|(
-name|propertyName
+name|oakPropertyName
 argument_list|)
 argument_list|)
 return|;

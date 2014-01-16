@@ -237,7 +237,7 @@ block|}
 name|String
 name|pn
 init|=
-name|normalizePath
+name|normalizePropertyName
 argument_list|(
 name|propertyName
 argument_list|)
