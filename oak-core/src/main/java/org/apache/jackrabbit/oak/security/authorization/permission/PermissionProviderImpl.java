@@ -639,6 +639,8 @@ name|Nullable
 name|Tree
 name|tree
 parameter_list|,
+annotation|@
+name|Nonnull
 name|String
 modifier|...
 name|privilegeNames

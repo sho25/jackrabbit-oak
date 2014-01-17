@@ -1713,6 +1713,8 @@ name|Nullable
 name|ImmutableTree
 name|tree
 parameter_list|,
+annotation|@
+name|Nonnull
 name|String
 modifier|...
 name|privilegeNames
