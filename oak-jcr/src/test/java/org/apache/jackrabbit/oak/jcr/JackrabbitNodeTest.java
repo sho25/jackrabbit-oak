@@ -599,9 +599,8 @@ operator|.
 name|rename
 argument_list|(
 name|name
-operator|.
-name|toUpperCase
-argument_list|()
+operator|+
+literal|'X'
 argument_list|)
 expr_stmt|;
 name|superuser
