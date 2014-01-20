@@ -118,7 +118,7 @@ specifier|public
 interface|interface
 name|IndexEditorProvider
 block|{
-comment|/**      * Each provider knows how to produce a certain type of index. If the      *<code>type</code> param is of an unknown value, the provider is expected      * to return {@code null}.      *       *<p>      * The<code>definition</code> builder must points to the index definition      * node under which the indexer is expected to store the index content.      *</p>      *       * @param type  index type      * @param definition index definition node builder, used for updates      * @param root root node state, used for things like node type information      * @return index update editor, or {@code null} if type is unknown      */
+comment|/**      * Each provider knows how to produce a certain type of index. If the      *<code>type</code> param is of an unknown value, the provider is expected      * to return {@code null}.      *       *<p>      * The<code>definition</code> builder must points to the index definition      * node under which the indexer is expected to store the index content.      *</p>      *       * @param type  index type      * @param definition index definition node builder, used for updates      * @param root root node state, used for things like node type information      * @param callback used to register for index update notifications      * @return index update editor, or {@code null} if type is unknown      */
 annotation|@
 name|CheckForNull
 name|Editor
@@ -138,6 +138,11 @@ annotation|@
 name|Nonnull
 name|NodeState
 name|root
+parameter_list|,
+annotation|@
+name|CheckForNull
+name|IndexUpdateCallback
+name|callback
 parameter_list|)
 throws|throws
 name|CommitFailedException

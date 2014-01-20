@@ -124,6 +124,18 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertFalse
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -545,6 +557,21 @@ argument_list|,
 literal|"rootIndex"
 argument_list|,
 name|INDEX_CONTENT_NODE_NAME
+argument_list|)
+expr_stmt|;
+name|assertFalse
+argument_list|(
+name|root
+operator|.
+name|getChildNode
+argument_list|(
+name|INDEX_DEFINITIONS_NAME
+argument_list|)
+operator|.
+name|hasChildNode
+argument_list|(
+literal|":conflict"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|PropertyIndexLookup

@@ -39,7 +39,7 @@ name|lucene
 operator|.
 name|LuceneIndexConstants
 operator|.
-name|TYPE_LUCENE
+name|ANALYZER
 import|;
 end_import
 
@@ -61,7 +61,7 @@ name|lucene
 operator|.
 name|LuceneIndexConstants
 operator|.
-name|ANALYZER
+name|TYPE_LUCENE
 import|;
 end_import
 
@@ -146,6 +146,24 @@ operator|.
 name|index
 operator|.
 name|IndexEditorProvider
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|index
+operator|.
+name|IndexUpdateCallback
 import|;
 end_import
 
@@ -258,6 +276,9 @@ name|definition
 parameter_list|,
 name|NodeState
 name|root
+parameter_list|,
+name|IndexUpdateCallback
+name|callback
 parameter_list|)
 throws|throws
 name|CommitFailedException
@@ -279,6 +300,8 @@ argument_list|(
 name|definition
 argument_list|,
 name|analyzer
+argument_list|,
+name|callback
 argument_list|)
 return|;
 block|}

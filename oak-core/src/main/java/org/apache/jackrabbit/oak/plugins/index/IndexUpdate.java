@@ -401,6 +401,12 @@ init|=
 name|newArrayList
 argument_list|()
 decl_stmt|;
+comment|/**      * Callback for the 'before' events of the indexing job      */
+specifier|private
+specifier|final
+name|IndexUpdateCallback
+name|updateCallback
+decl_stmt|;
 name|IndexUpdate
 parameter_list|(
 name|IndexEditorProvider
@@ -414,6 +420,9 @@ name|root
 parameter_list|,
 name|NodeBuilder
 name|builder
+parameter_list|,
+name|IndexUpdateCallback
+name|updateCallback
 parameter_list|)
 block|{
 name|this
@@ -448,6 +457,12 @@ name|checkNotNull
 argument_list|(
 name|builder
 argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|updateCallback
+operator|=
+name|updateCallback
 expr_stmt|;
 block|}
 specifier|private
@@ -504,6 +519,14 @@ argument_list|(
 name|name
 argument_list|)
 argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|updateCallback
+operator|=
+name|parent
+operator|.
+name|updateCallback
 expr_stmt|;
 block|}
 annotation|@
@@ -651,6 +674,8 @@ argument_list|,
 name|definition
 argument_list|,
 name|root
+argument_list|,
+name|updateCallback
 argument_list|)
 decl_stmt|;
 if|if

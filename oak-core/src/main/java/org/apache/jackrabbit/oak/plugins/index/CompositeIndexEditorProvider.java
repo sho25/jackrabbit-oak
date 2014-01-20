@@ -229,6 +229,9 @@ name|builder
 parameter_list|,
 name|NodeState
 name|root
+parameter_list|,
+name|IndexUpdateCallback
+name|callback
 parameter_list|)
 block|{
 return|return
@@ -333,6 +336,9 @@ name|builder
 parameter_list|,
 name|NodeState
 name|root
+parameter_list|,
+name|IndexUpdateCallback
+name|callback
 parameter_list|)
 throws|throws
 name|CommitFailedException
@@ -368,6 +374,8 @@ argument_list|,
 name|builder
 argument_list|,
 name|root
+argument_list|,
+name|callback
 argument_list|)
 decl_stmt|;
 if|if
