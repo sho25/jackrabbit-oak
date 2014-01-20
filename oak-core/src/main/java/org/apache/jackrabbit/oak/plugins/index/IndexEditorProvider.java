@@ -140,7 +140,7 @@ name|NodeState
 name|root
 parameter_list|,
 annotation|@
-name|CheckForNull
+name|Nonnull
 name|IndexUpdateCallback
 name|callback
 parameter_list|)

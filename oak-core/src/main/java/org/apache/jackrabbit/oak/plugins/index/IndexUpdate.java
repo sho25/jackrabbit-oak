@@ -401,7 +401,7 @@ init|=
 name|newArrayList
 argument_list|()
 decl_stmt|;
-comment|/**      * Callback for the 'before' events of the indexing job      */
+comment|/**      * Callback for the update events of the indexing job      */
 specifier|private
 specifier|final
 name|IndexUpdateCallback
@@ -462,7 +462,10 @@ name|this
 operator|.
 name|updateCallback
 operator|=
+name|checkNotNull
+argument_list|(
 name|updateCallback
+argument_list|)
 expr_stmt|;
 block|}
 specifier|private

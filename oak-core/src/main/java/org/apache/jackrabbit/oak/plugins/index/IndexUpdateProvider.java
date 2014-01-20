@@ -119,6 +119,27 @@ implements|implements
 name|EditorProvider
 block|{
 specifier|private
+specifier|static
+specifier|final
+name|IndexUpdateCallback
+name|NOOP_CALLBACK
+init|=
+operator|new
+name|IndexUpdateCallback
+argument_list|()
+block|{
+annotation|@
+name|Override
+specifier|public
+name|void
+name|indexUpdate
+parameter_list|()
+block|{
+comment|// do nothing
+block|}
+block|}
+decl_stmt|;
+specifier|private
 specifier|final
 name|IndexEditorProvider
 name|provider
@@ -200,7 +221,7 @@ name|after
 argument_list|,
 name|builder
 argument_list|,
-literal|null
+name|NOOP_CALLBACK
 argument_list|)
 return|;
 block|}
