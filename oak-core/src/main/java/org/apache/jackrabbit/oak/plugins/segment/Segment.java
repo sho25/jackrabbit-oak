@@ -529,6 +529,9 @@ parameter_list|(
 name|SegmentStore
 name|store
 parameter_list|,
+name|SegmentIdFactory
+name|factory
+parameter_list|,
 name|UUID
 name|uuid
 parameter_list|,
@@ -644,8 +647,9 @@ index|[
 name|i
 index|]
 operator|=
-operator|new
-name|UUID
+name|factory
+operator|.
+name|getSegmentId
 argument_list|(
 name|data
 operator|.

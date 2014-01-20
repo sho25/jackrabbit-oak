@@ -91,26 +91,6 @@ begin_import
 import|import static
 name|org
 operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|plugins
-operator|.
-name|segment
-operator|.
-name|SegmentIdFactory
-operator|.
-name|newBulkSegmentId
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
 name|junit
 operator|.
 name|Assert
@@ -987,6 +967,13 @@ name|testListWithLotsOfReferences
 parameter_list|()
 block|{
 comment|// OAK-1184
+name|SegmentIdFactory
+name|factory
+init|=
+operator|new
+name|SegmentIdFactory
+argument_list|()
+decl_stmt|;
 name|List
 argument_list|<
 name|RecordId
@@ -1018,6 +1005,8 @@ argument_list|(
 operator|new
 name|RecordId
 argument_list|(
+name|factory
+operator|.
 name|newBulkSegmentId
 argument_list|()
 argument_list|,

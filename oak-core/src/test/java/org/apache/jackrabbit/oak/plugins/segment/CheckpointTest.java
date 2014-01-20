@@ -243,7 +243,9 @@ name|store
 operator|.
 name|retrieve
 argument_list|(
+operator|new
 name|SegmentIdFactory
+argument_list|()
 operator|.
 name|newDataSegmentId
 argument_list|()

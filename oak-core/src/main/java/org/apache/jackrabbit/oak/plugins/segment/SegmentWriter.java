@@ -360,46 +360,6 @@ import|;
 end_import
 
 begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|plugins
-operator|.
-name|segment
-operator|.
-name|SegmentIdFactory
-operator|.
-name|newBulkSegmentId
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|plugins
-operator|.
-name|segment
-operator|.
-name|SegmentIdFactory
-operator|.
-name|newDataSegmentId
-import|;
-end_import
-
-begin_import
 import|import
 name|java
 operator|.
@@ -761,6 +721,11 @@ specifier|final
 name|SegmentStore
 name|store
 decl_stmt|;
+specifier|private
+specifier|final
+name|SegmentIdFactory
+name|factory
+decl_stmt|;
 comment|/**      * Cache of recently stored string and template records, used to      * avoid storing duplicates of frequently occurring data.      * Should only be accessed from synchronized blocks to prevent corruption.      */
 specifier|private
 specifier|final
@@ -814,9 +779,6 @@ decl_stmt|;
 specifier|private
 name|UUID
 name|uuid
-init|=
-name|newDataSegmentId
-argument_list|()
 decl_stmt|;
 comment|/**      * Insertion-ordered map from the UUIDs of referenced segments to the      * respective single-byte UUID index values used when serializing      * record identifiers.      */
 specifier|private
@@ -886,6 +848,9 @@ name|SegmentWriter
 parameter_list|(
 name|SegmentStore
 name|store
+parameter_list|,
+name|SegmentIdFactory
+name|factory
 parameter_list|)
 block|{
 name|this
@@ -896,6 +861,21 @@ name|store
 expr_stmt|;
 name|this
 operator|.
+name|factory
+operator|=
+name|factory
+expr_stmt|;
+name|this
+operator|.
+name|uuid
+operator|=
+name|factory
+operator|.
+name|newDataSegmentId
+argument_list|()
+expr_stmt|;
+name|this
+operator|.
 name|dummySegment
 operator|=
 operator|new
@@ -903,6 +883,10 @@ name|Segment
 argument_list|(
 name|store
 argument_list|,
+name|factory
+argument_list|,
+name|factory
+operator|.
 name|newBulkSegmentId
 argument_list|()
 argument_list|,
@@ -1290,6 +1274,8 @@ argument_list|)
 expr_stmt|;
 name|uuid
 operator|=
+name|factory
+operator|.
 name|newDataSegmentId
 argument_list|()
 expr_stmt|;
@@ -3918,6 +3904,8 @@ block|{
 name|UUID
 name|uuid
 init|=
+name|factory
+operator|.
 name|newBulkSegmentId
 argument_list|()
 decl_stmt|;
@@ -4233,6 +4221,8 @@ block|{
 name|UUID
 name|id
 init|=
+name|factory
+operator|.
 name|newBulkSegmentId
 argument_list|()
 decl_stmt|;

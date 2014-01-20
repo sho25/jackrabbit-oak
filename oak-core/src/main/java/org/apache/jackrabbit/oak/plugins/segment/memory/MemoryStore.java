@@ -447,11 +447,8 @@ expr_stmt|;
 name|Segment
 name|segment
 init|=
-operator|new
-name|Segment
+name|createSegment
 argument_list|(
-name|this
-argument_list|,
 name|segmentId
 argument_list|,
 name|buffer
