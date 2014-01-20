@@ -684,7 +684,7 @@ name|TarFile
 argument_list|(
 name|file
 argument_list|,
-name|maxFileSizeMB
+name|maxFileSize
 argument_list|,
 name|memoryMapping
 argument_list|)
@@ -751,7 +751,7 @@ name|TarFile
 argument_list|(
 name|file
 argument_list|,
-name|maxFileSizeMB
+name|maxFileSize
 argument_list|,
 name|memoryMapping
 argument_list|)
