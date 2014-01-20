@@ -125,6 +125,23 @@ name|MongoConnection
 name|getConnection
 parameter_list|()
 block|{
+return|return
+name|getConnection
+argument_list|(
+name|DB
+argument_list|)
+return|;
+block|}
+comment|/**      * Get a connection if available. If not available, null is returned.      *       * @param dbName the database name      * @return the connection or null      */
+specifier|public
+specifier|static
+name|MongoConnection
+name|getConnection
+parameter_list|(
+name|String
+name|dbName
+parameter_list|)
+block|{
 if|if
 condition|(
 name|exception
@@ -152,7 +169,7 @@ name|HOST
 argument_list|,
 name|PORT
 argument_list|,
-name|DB
+name|dbName
 argument_list|)
 expr_stmt|;
 name|mongoConnection
