@@ -35,51 +35,19 @@ name|CommitFailedException
 import|;
 end_import
 
-begin_class
+begin_interface
 specifier|public
-specifier|abstract
-class|class
+interface|interface
 name|IndexUpdateCallback
 block|{
-specifier|private
-name|boolean
-name|dirty
-init|=
-literal|false
-decl_stmt|;
-specifier|public
 name|void
 name|indexUpdate
 parameter_list|()
 throws|throws
 name|CommitFailedException
-block|{
-if|if
-condition|(
-operator|!
-name|dirty
-condition|)
-block|{
-name|dirty
-operator|=
-literal|true
-expr_stmt|;
-name|beforeIndex
-argument_list|()
-expr_stmt|;
-block|}
-block|}
-comment|/**      * Called when the indexer finds the first changes that need indexing when      * running the diff      */
-specifier|abstract
-specifier|protected
-name|void
-name|beforeIndex
-parameter_list|()
-throws|throws
-name|CommitFailedException
 function_decl|;
 block|}
-end_class
+end_interface
 
 end_unit
 
