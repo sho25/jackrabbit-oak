@@ -448,8 +448,6 @@ parameter_list|)
 throws|throws
 name|RepositoryException
 block|{
-comment|// TODO proper node type registration... (OAK-66, OAK-411)
-comment|// TODO handle inter-type dependencies (OAK-66, OAK-411)
 name|Root
 name|root
 init|=
