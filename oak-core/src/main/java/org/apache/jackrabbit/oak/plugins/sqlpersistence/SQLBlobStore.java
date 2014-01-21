@@ -101,6 +101,16 @@ end_import
 
 begin_import
 import|import
+name|javax
+operator|.
+name|sql
+operator|.
+name|DataSource
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -146,24 +156,6 @@ operator|.
 name|StringUtils
 import|;
 end_import
-
-begin_import
-import|import
-name|sun
-operator|.
-name|jdbc
-operator|.
-name|odbc
-operator|.
-name|ee
-operator|.
-name|DataSource
-import|;
-end_import
-
-begin_comment
-comment|// mostly copied from DbBlobStore, removing the ConnectionPool dependency
-end_comment
 
 begin_class
 specifier|public
