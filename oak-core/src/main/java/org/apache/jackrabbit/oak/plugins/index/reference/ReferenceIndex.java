@@ -419,6 +419,20 @@ name|Predicate
 import|;
 end_import
 
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|collect
+operator|.
+name|ImmutableSet
+import|;
+end_import
+
 begin_comment
 comment|/**  * Provides a QueryIndex that does lookups for node references based on a custom  * index saved on hidden property names  *   */
 end_comment
@@ -714,7 +728,12 @@ name|indexRoot
 argument_list|,
 name|index
 argument_list|,
-literal|null
+name|ImmutableSet
+operator|.
+name|of
+argument_list|(
+name|uuid
+argument_list|)
 argument_list|)
 decl_stmt|;
 if|if
