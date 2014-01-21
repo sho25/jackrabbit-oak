@@ -3223,6 +3223,18 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
+specifier|public
+name|void
+name|setReadWriteMode
+parameter_list|(
+name|String
+name|readWriteMode
+parameter_list|)
+block|{
+comment|// ignored
+block|}
 block|}
 end_class
 

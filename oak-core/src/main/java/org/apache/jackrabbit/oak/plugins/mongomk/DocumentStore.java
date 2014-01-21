@@ -347,6 +347,14 @@ name|String
 name|key
 parameter_list|)
 function_decl|;
+comment|/**      * Set the level of guarantee for read and write operations, if supported by this backend.      *       * @param readWriteMode the read/write mode      */
+name|void
+name|setReadWriteMode
+parameter_list|(
+name|String
+name|readWriteMode
+parameter_list|)
+function_decl|;
 block|}
 end_interface
 
