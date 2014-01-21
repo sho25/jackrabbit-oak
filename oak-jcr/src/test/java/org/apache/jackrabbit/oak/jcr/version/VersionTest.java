@@ -577,7 +577,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|// OAK-1009
+comment|// OAK-1009& OAK-1346
 specifier|public
 name|void
 name|testFrozenUUID
@@ -613,7 +613,7 @@ name|addNode
 argument_list|(
 name|nodeName2
 argument_list|,
-name|ntUnstructured
+literal|"nt:folder"
 argument_list|)
 decl_stmt|;
 name|superuser
@@ -632,6 +632,19 @@ operator|.
 name|getVersionManager
 argument_list|()
 decl_stmt|;
+name|Version
+name|v
+init|=
+name|vMgr
+operator|.
+name|checkpoint
+argument_list|(
+name|n
+operator|.
+name|getPath
+argument_list|()
+argument_list|)
+decl_stmt|;
 name|vMgr
 operator|.
 name|checkpoint
@@ -643,7 +656,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 name|Version
-name|v
+name|baseVersion
 init|=
 name|vMgr
 operator|.
@@ -658,7 +671,7 @@ decl_stmt|;
 name|Node
 name|frozenChild
 init|=
-name|v
+name|baseVersion
 operator|.
 name|getFrozenNode
 argument_list|()
@@ -689,6 +702,15 @@ argument_list|)
 operator|.
 name|getString
 argument_list|()
+argument_list|)
+expr_stmt|;
+name|vMgr
+operator|.
+name|restore
+argument_list|(
+name|v
+argument_list|,
+literal|true
 argument_list|)
 expr_stmt|;
 block|}

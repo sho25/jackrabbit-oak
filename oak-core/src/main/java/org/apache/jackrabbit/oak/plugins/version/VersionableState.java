@@ -1767,12 +1767,16 @@ if|if
 condition|(
 name|id
 operator|.
-name|length
-argument_list|()
-operator|>
-literal|0
+name|indexOf
+argument_list|(
+literal|'/'
+argument_list|)
+operator|==
+operator|-
+literal|1
 condition|)
 block|{
+comment|// only restore jcr:uuid if id is in fact a uuid
 name|dest
 operator|.
 name|setProperty
