@@ -686,6 +686,7 @@ extends|extends
 name|AbstractNodeState
 block|{
 comment|/**      * Maximum number of child nodes kept in memory.      */
+specifier|public
 specifier|static
 specifier|final
 name|int
