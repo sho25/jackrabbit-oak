@@ -443,7 +443,7 @@ name|plugins
 operator|.
 name|sqlpersistence
 operator|.
-name|SQLBlobStore
+name|RDBBlobStore
 import|;
 end_import
 
@@ -461,7 +461,7 @@ name|plugins
 operator|.
 name|sqlpersistence
 operator|.
-name|SQLDocumentStore
+name|RDBDocumentStore
 import|;
 end_import
 
@@ -3976,7 +3976,7 @@ operator|.
 name|documentStore
 operator|=
 operator|new
-name|SQLDocumentStore
+name|RDBDocumentStore
 argument_list|(
 name|jdbcurl
 argument_list|,
@@ -3990,7 +3990,7 @@ operator|.
 name|blobStore
 operator|=
 operator|new
-name|SQLBlobStore
+name|RDBBlobStore
 argument_list|(
 name|jdbcurl
 argument_list|,

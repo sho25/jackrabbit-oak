@@ -160,13 +160,13 @@ end_import
 begin_class
 specifier|public
 class|class
-name|SQLBlobStore
+name|RDBBlobStore
 extends|extends
 name|AbstractBlobStore
 block|{
-comment|/**      * Creates a {@linkplain SQLBlobStore} instance using an embedded H2      * database in in-memory mode.      */
+comment|/**      * Creates a {@linkplain RDBBlobStore} instance using an embedded H2      * database in in-memory mode.      */
 specifier|public
-name|SQLBlobStore
+name|RDBBlobStore
 parameter_list|()
 block|{
 try|try
@@ -206,16 +206,16 @@ throw|throw
 operator|new
 name|MicroKernelException
 argument_list|(
-literal|"initializing SQL blob store"
+literal|"initializing RDB blob store"
 argument_list|,
 name|ex
 argument_list|)
 throw|;
 block|}
 block|}
-comment|/**      * Creates a {@linkplain SQLBlobStore} instance using the provided JDBC      * connection information.      */
+comment|/**      * Creates a {@linkplain RDBBlobStore} instance using the provided JDBC      * connection information.      */
 specifier|public
-name|SQLBlobStore
+name|RDBBlobStore
 parameter_list|(
 name|String
 name|jdbcurl
@@ -259,16 +259,16 @@ throw|throw
 operator|new
 name|MicroKernelException
 argument_list|(
-literal|"initializing SQL blob store"
+literal|"initializing RDB blob store"
 argument_list|,
 name|ex
 argument_list|)
 throw|;
 block|}
 block|}
-comment|/**      * Creates a {@linkplain SQLBlobStore} instance using the provided      * {@link DataSource}.      */
+comment|/**      * Creates a {@linkplain RDBBlobStore} instance using the provided      * {@link DataSource}.      */
 specifier|public
-name|SQLBlobStore
+name|RDBBlobStore
 parameter_list|(
 name|DataSource
 name|ds
@@ -295,7 +295,7 @@ throw|throw
 operator|new
 name|MicroKernelException
 argument_list|(
-literal|"initializing SQL blob store"
+literal|"initializing RDB blob store"
 argument_list|,
 name|ex
 argument_list|)

@@ -35,23 +35,23 @@ name|plugins
 operator|.
 name|sqlpersistence
 operator|.
-name|SQLBlobStore
+name|RDBBlobStore
 import|;
 end_import
 
 begin_comment
-comment|/**  * Tests the SQLBlobStore implementation.  */
+comment|/**  * Tests the RDBBlobStore implementation.  */
 end_comment
 
 begin_class
 specifier|public
 class|class
-name|SQLBlobStoreTest
+name|RDBBlobStoreTest
 extends|extends
 name|AbstractBlobStoreTest
 block|{
 specifier|private
-name|SQLBlobStore
+name|RDBBlobStore
 name|blobStore
 decl_stmt|;
 specifier|public
@@ -64,7 +64,7 @@ block|{
 name|blobStore
 operator|=
 operator|new
-name|SQLBlobStore
+name|RDBBlobStore
 argument_list|()
 expr_stmt|;
 name|blobStore
