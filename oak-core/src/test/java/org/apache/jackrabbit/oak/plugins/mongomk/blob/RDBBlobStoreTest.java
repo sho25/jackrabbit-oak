@@ -33,7 +33,7 @@ name|oak
 operator|.
 name|plugins
 operator|.
-name|sqlpersistence
+name|rdbpersistence
 operator|.
 name|RDBBlobStore
 import|;
