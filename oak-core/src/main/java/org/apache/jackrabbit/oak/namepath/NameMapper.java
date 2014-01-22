@@ -19,6 +19,16 @@ end_package
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Map
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|annotation
@@ -82,9 +92,16 @@ parameter_list|)
 throws|throws
 name|RepositoryException
 function_decl|;
-comment|/**      * Returns whether the mapper has prefix remappings; when there aren't      * any, prefixed names do not need to be converted at all      *       * @return {@code true} if prefixes have been remapped      */
-name|boolean
-name|hasSessionLocalMappings
+comment|/**      * Returns the local namespace prefix mappings, or an empty map if      * there aren't any local mappings.      *      * @return local namespace prefix to URI mappings      */
+annotation|@
+name|Nonnull
+name|Map
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
+name|getSessionLocalMappings
 parameter_list|()
 function_decl|;
 comment|/**      * Returns the JCR name for the given Oak name. The given name is      * expected to have come from a valid Oak repository that contains      * only valid names with proper namespace mappings. If that's not      * the case, either a programming error or a repository corruption      * has occurred and an appropriate unchecked exception gets thrown.      *      * @param oakName Oak name      * @return JCR name      */

@@ -1147,6 +1147,8 @@ argument_list|,
 name|constraint
 argument_list|,
 name|columnArray
+argument_list|,
+name|namePathMapper
 argument_list|)
 decl_stmt|;
 name|q

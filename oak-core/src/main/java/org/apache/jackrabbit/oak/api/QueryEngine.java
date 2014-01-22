@@ -18,6 +18,18 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|java
+operator|.
+name|util
+operator|.
+name|Collections
+operator|.
+name|emptyMap
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -57,22 +69,6 @@ name|Set
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|namepath
-operator|.
-name|NamePathMapper
-import|;
-end_import
-
 begin_comment
 comment|/**  * The query engine allows to parse and execute queries.  *<p>  * What query languages are supported depends on the registered query parsers.  */
 end_comment
@@ -90,7 +86,7 @@ argument_list|>
 name|getSupportedQueryLanguages
 parameter_list|()
 function_decl|;
-comment|/**      * Parse the query (check if it's valid) and get the list of bind variable names.      *      * @param statement      * @param language      * @param namePathMapper the name and path mapper to use      * @return the list of bind variable names      * @throws ParseException      */
+comment|/**      * Parse the query (check if it's valid) and get the list of bind variable names.      *      * @param statement query statement      * @param language query language      * @param mappings namespace prefix mappings      * @return the list of bind variable names      * @throws ParseException      */
 name|List
 argument_list|<
 name|String
@@ -103,13 +99,18 @@ parameter_list|,
 name|String
 name|language
 parameter_list|,
-name|NamePathMapper
-name|namePathMapper
+name|Map
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
+name|mappings
 parameter_list|)
 throws|throws
 name|ParseException
 function_decl|;
-comment|/**      * Execute a query and get the result.      *      * @param statement the query statement      * @param language the language      * @param limit the maximum result set size (may not be negative)      * @param offset the number of rows to skip (may not be negative)      * @param bindings the bind variable value bindings      * @param namePathMapper the name and path mapper to use      * @return the result      * @throws ParseException if the statement could not be parsed      * @throws IllegalArgumentException if there was an error executing the query      */
+comment|/**      * Execute a query and get the result.      *      * @param statement the query statement      * @param language the language      * @param limit the maximum result set size (may not be negative)      * @param offset the number of rows to skip (may not be negative)      * @param bindings the bind variable value bindings      * @param mappings namespace prefix mappings      * @return the result      * @throws ParseException if the statement could not be parsed      * @throws IllegalArgumentException if there was an error executing the query      */
 name|Result
 name|executeQuery
 parameter_list|(
@@ -135,12 +136,41 @@ name|PropertyValue
 argument_list|>
 name|bindings
 parameter_list|,
-name|NamePathMapper
-name|namePathMapper
+name|Map
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
+name|mappings
 parameter_list|)
 throws|throws
 name|ParseException
 function_decl|;
+comment|/**      * Empty set of variables bindings. Useful as an argument to      * {@link #executeQuery(String, String, long, long, Map, Map)} when      * there are no variables in a query.      */
+name|Map
+argument_list|<
+name|String
+argument_list|,
+name|PropertyValue
+argument_list|>
+name|NO_BINDINGS
+init|=
+name|emptyMap
+argument_list|()
+decl_stmt|;
+comment|/**      * Empty set of namespace prefix mappings. Useful as an argument to      * {@link #getBindVariableNames(String, String, Map)} and      * {@link #executeQuery(String, String, long, long, Map, Map)} when      * there are no local namespace mappings.      */
+name|Map
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
+name|NO_MAPPINGS
+init|=
+name|emptyMap
+argument_list|()
+decl_stmt|;
 block|}
 end_interface
 

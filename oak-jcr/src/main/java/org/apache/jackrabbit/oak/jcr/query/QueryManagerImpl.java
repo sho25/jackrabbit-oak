@@ -669,6 +669,9 @@ argument_list|,
 name|language
 argument_list|,
 name|sessionContext
+operator|.
+name|getSessionLocalMappings
+argument_list|()
 argument_list|)
 return|;
 block|}
@@ -747,6 +750,9 @@ argument_list|,
 name|bindMap
 argument_list|,
 name|sessionContext
+operator|.
+name|getSessionLocalMappings
+argument_list|()
 argument_list|)
 decl_stmt|;
 return|return

@@ -504,7 +504,7 @@ argument_list|)
 block|{
 annotation|@
 name|Override
-specifier|protected
+specifier|public
 name|Map
 argument_list|<
 name|String

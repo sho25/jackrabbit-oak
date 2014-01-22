@@ -497,6 +497,24 @@ name|transform
 import|;
 end_import
 
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|api
+operator|.
+name|QueryEngine
+operator|.
+name|NO_MAPPINGS
+import|;
+end_import
+
 begin_comment
 comment|/**  * TODO document  */
 end_comment
@@ -1156,11 +1174,7 @@ literal|0
 argument_list|,
 name|bindings
 argument_list|,
-operator|new
-name|NamePathMapper
-operator|.
-name|Default
-argument_list|()
+name|NO_MAPPINGS
 argument_list|)
 decl_stmt|;
 return|return
@@ -1698,11 +1712,7 @@ literal|0
 argument_list|,
 name|bindings
 argument_list|,
-operator|new
-name|NamePathMapper
-operator|.
-name|Default
-argument_list|()
+name|NO_MAPPINGS
 argument_list|)
 decl_stmt|;
 name|String
