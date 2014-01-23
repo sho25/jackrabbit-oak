@@ -95,6 +95,16 @@ end_import
 
 begin_import
 import|import
+name|javax
+operator|.
+name|sql
+operator|.
+name|DataSource
+import|;
+end_import
+
+begin_import
+import|import
 name|com
 operator|.
 name|google
@@ -3961,10 +3971,10 @@ return|return
 name|this
 return|;
 block|}
-comment|/**          * Sets a JDBC connection to use. By default an in-memory store is used.          * @return this          */
+comment|/**          * Sets a JDBC connection URL to use for the RDB document store.          *           * @return this          */
 specifier|public
 name|Builder
-name|setMongoJDBC
+name|setRDBConnection
 parameter_list|(
 name|String
 name|jdbcurl
@@ -3976,7 +3986,8 @@ name|String
 name|password
 parameter_list|)
 block|{
-comment|// TODO maybe we need different connections for document store and node store
+comment|// TODO maybe we need different connections for document store and
+comment|// node store
 name|this
 operator|.
 name|documentStore
@@ -4003,6 +4014,41 @@ argument_list|,
 name|username
 argument_list|,
 name|password
+argument_list|)
+expr_stmt|;
+return|return
+name|this
+return|;
+block|}
+comment|/**          * Sets a {@link DataSource} to use for the RDB document store.          *           * @return this          */
+specifier|public
+name|Builder
+name|setRDBConnection
+parameter_list|(
+name|DataSource
+name|ds
+parameter_list|)
+block|{
+comment|// TODO maybe we need different connections for document store and
+comment|// node store
+name|this
+operator|.
+name|documentStore
+operator|=
+operator|new
+name|RDBDocumentStore
+argument_list|(
+name|ds
+argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|blobStore
+operator|=
+operator|new
+name|RDBBlobStore
+argument_list|(
+name|ds
 argument_list|)
 expr_stmt|;
 return|return

@@ -443,7 +443,7 @@ operator|.
 name|Builder
 argument_list|()
 operator|.
-name|setMongoJDBC
+name|setRDBConnection
 argument_list|(
 literal|"jdbc:h2:mem:"
 operator|+
@@ -477,7 +477,7 @@ operator|.
 name|Builder
 argument_list|()
 operator|.
-name|setMongoJDBC
+name|setRDBConnection
 argument_list|(
 literal|"jdbc:h2:mem:oaknodes-"
 operator|+

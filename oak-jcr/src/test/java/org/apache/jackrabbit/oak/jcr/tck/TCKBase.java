@@ -299,6 +299,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+comment|// Setup.wrap(this, OakDocumentRDBRepositoryStub.class.getName());
 block|}
 specifier|abstract
 specifier|protected
