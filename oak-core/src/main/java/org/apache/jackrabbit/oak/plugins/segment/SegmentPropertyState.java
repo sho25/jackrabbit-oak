@@ -1133,12 +1133,14 @@ return|return
 operator|(
 name|T
 operator|)
-operator|new
-name|SegmentBlob
-argument_list|(
 name|segment
-argument_list|,
+operator|.
+name|createBlob
+argument_list|(
 name|id
+operator|.
+name|getOffset
+argument_list|()
 argument_list|)
 return|;
 comment|// load binaries lazily

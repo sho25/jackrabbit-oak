@@ -21,6 +21,16 @@ end_package
 
 begin_import
 import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|Nullable
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|util
@@ -95,6 +105,14 @@ extends|extends
 name|Record
 argument_list|>
 name|type
+parameter_list|)
+function_decl|;
+comment|/**      * Read a blob from external storage.      *      * @param reference blob reference      * @return external blob      */
+name|ExternalBlob
+name|readBlob
+parameter_list|(
+name|String
+name|reference
 parameter_list|)
 function_decl|;
 block|}
