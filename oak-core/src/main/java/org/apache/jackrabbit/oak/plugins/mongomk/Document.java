@@ -404,6 +404,19 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+comment|/**      * Determines if this document is sealed or not      * @return true if document is sealed.      */
+specifier|public
+name|boolean
+name|isSealed
+parameter_list|()
+block|{
+return|return
+name|sealed
+operator|.
+name|get
+argument_list|()
+return|;
+block|}
 comment|/**      * Performs a deep copy of the data within this document to the given target.      *      * @param target the target document.      */
 specifier|public
 name|void
