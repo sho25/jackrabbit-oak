@@ -33,6 +33,16 @@ name|javax
 operator|.
 name|annotation
 operator|.
+name|CheckForNull
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|annotation
+operator|.
 name|Nonnull
 import|;
 end_import
@@ -56,6 +66,13 @@ function_decl|;
 comment|/**      * Returns the length of this blob or -1 if unknown.      *      * @return the length of this blob.      */
 name|long
 name|length
+parameter_list|()
+function_decl|;
+comment|/**      * Returns a secure reference to this blob, or {@code null} if such      * a reference is not available.      *      * @see<a href="https://issues.apache.org/jira/browse/OAK-834">OAK-834</a>      * @return binary reference, or {@code null}      */
+annotation|@
+name|CheckForNull
+name|String
+name|getReference
 parameter_list|()
 function_decl|;
 block|}

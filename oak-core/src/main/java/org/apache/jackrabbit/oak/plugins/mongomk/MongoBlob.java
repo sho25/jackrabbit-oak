@@ -35,6 +35,16 @@ name|javax
 operator|.
 name|annotation
 operator|.
+name|CheckForNull
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|annotation
+operator|.
 name|Nonnull
 import|;
 end_import
@@ -187,6 +197,20 @@ argument_list|)
 throw|;
 block|}
 block|}
+annotation|@
+name|Override
+annotation|@
+name|CheckForNull
+specifier|public
+name|String
+name|getReference
+parameter_list|()
+block|{
+return|return
+literal|null
+return|;
+block|}
+comment|//------------------------------------------------------------< Object>--
 annotation|@
 name|Override
 specifier|public
