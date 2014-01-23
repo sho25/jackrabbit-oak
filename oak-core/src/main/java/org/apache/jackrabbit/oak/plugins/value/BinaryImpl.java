@@ -43,9 +43,9 @@ begin_import
 import|import
 name|javax
 operator|.
-name|jcr
+name|annotation
 operator|.
-name|Binary
+name|CheckForNull
 import|;
 end_import
 
@@ -69,6 +69,20 @@ name|RepositoryException
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|api
+operator|.
+name|ReferenceBinary
+import|;
+end_import
+
 begin_comment
 comment|/**  * TODO document  */
 end_comment
@@ -77,7 +91,7 @@ begin_class
 class|class
 name|BinaryImpl
 implements|implements
-name|Binary
+name|ReferenceBinary
 block|{
 specifier|private
 specifier|final
@@ -127,6 +141,9 @@ block|{
 return|return
 name|value
 operator|.
+name|getBlob
+argument_list|()
+operator|.
 name|getNewStream
 argument_list|()
 return|;
@@ -150,9 +167,7 @@ block|{
 name|InputStream
 name|stream
 init|=
-name|value
-operator|.
-name|getNewStream
+name|getStream
 argument_list|()
 decl_stmt|;
 try|try
@@ -238,7 +253,10 @@ default|default:
 return|return
 name|value
 operator|.
-name|getStreamLength
+name|getBlob
+argument_list|()
+operator|.
+name|length
 argument_list|()
 return|;
 block|}
@@ -251,6 +269,26 @@ name|dispose
 parameter_list|()
 block|{
 comment|// nothing to do
+block|}
+comment|//---------------------------------------------------< ReferenceBinary>--
+annotation|@
+name|Override
+annotation|@
+name|CheckForNull
+specifier|public
+name|String
+name|getReference
+parameter_list|()
+block|{
+return|return
+name|value
+operator|.
+name|getBlob
+argument_list|()
+operator|.
+name|getReference
+argument_list|()
+return|;
 block|}
 block|}
 end_class
