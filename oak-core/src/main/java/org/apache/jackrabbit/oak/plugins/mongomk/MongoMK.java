@@ -958,7 +958,6 @@ throw|;
 block|}
 block|}
 block|}
-specifier|synchronized
 name|String
 name|diffImpl
 parameter_list|(
@@ -1190,7 +1189,7 @@ name|w
 operator|.
 name|value
 argument_list|(
-name|toValue
+literal|null
 argument_list|)
 expr_stmt|;
 block|}
