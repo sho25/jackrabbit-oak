@@ -353,6 +353,8 @@ class|class
 name|NodeDocument
 extends|extends
 name|Document
+implements|implements
+name|CachedNodeDocument
 block|{
 comment|/**      * Marker document, which indicates the document does not exist.      */
 specifier|public
@@ -369,6 +371,14 @@ name|MemoryDocumentStore
 argument_list|()
 argument_list|)
 decl_stmt|;
+static|static
+block|{
+name|NULL
+operator|.
+name|seal
+argument_list|()
+expr_stmt|;
+block|}
 specifier|static
 specifier|final
 name|Logger
@@ -573,12 +583,7 @@ decl_stmt|;
 specifier|private
 specifier|final
 name|long
-name|time
-init|=
-name|System
-operator|.
-name|currentTimeMillis
-argument_list|()
+name|creationTime
 decl_stmt|;
 name|NodeDocument
 parameter_list|(
@@ -589,6 +594,30 @@ name|store
 parameter_list|)
 block|{
 name|this
+argument_list|(
+name|store
+argument_list|,
+name|System
+operator|.
+name|currentTimeMillis
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+comment|/**      * Required for serialization      *      * @param store      * @param creationTime time at which it was created. Would be different from current time      *                     in case of being resurrected from a serialized for      */
+specifier|public
+name|NodeDocument
+parameter_list|(
+annotation|@
+name|Nonnull
+name|DocumentStore
+name|store
+parameter_list|,
+name|long
+name|creationTime
+parameter_list|)
+block|{
+name|this
 operator|.
 name|store
 operator|=
@@ -596,6 +625,12 @@ name|checkNotNull
 argument_list|(
 name|store
 argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|creationTime
+operator|=
+name|creationTime
 expr_stmt|;
 block|}
 comment|/**      * Gets the value map for the given key. This method is similar to {@link      * #get(String)} but will always return a value map. The returned value map      * may span multiple documents if the values of the given<code>key</code>      * were split off to {@link #PREVIOUS} documents.      *      * @param key a string key.      * @return the map associated with the key.      */
@@ -672,7 +707,7 @@ name|getCreated
 parameter_list|()
 block|{
 return|return
-name|time
+name|creationTime
 return|;
 block|}
 comment|/**      * @return the approximate number of children for this node.      */
