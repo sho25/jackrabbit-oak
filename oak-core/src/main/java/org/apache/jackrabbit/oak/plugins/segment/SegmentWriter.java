@@ -4226,8 +4226,6 @@ argument_list|(
 name|dummySegment
 argument_list|,
 name|id
-argument_list|,
-literal|true
 argument_list|)
 return|;
 block|}
@@ -4300,8 +4298,6 @@ argument_list|(
 name|dummySegment
 argument_list|,
 name|id
-argument_list|,
-literal|false
 argument_list|)
 return|;
 block|}
