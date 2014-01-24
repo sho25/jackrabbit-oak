@@ -50,7 +50,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * An iterator that pre-fetches a number of items in order to calculate the size  * of the result if possible. This iterator loads at least a number of items,  * and then tries to load some more items until the timeout is reached or the  * maximum number of entries are read.  *<p>  * Prefeching is only done when size() is called.  *   * @param<K> the iterator data type  */
+comment|/**  * An iterator that pre-fetches a number of items in order to calculate the size  * of the result if possible. This iterator loads at least a number of items,  * and then tries to load some more items until the timeout is reached or the  * maximum number of entries are read.  *<p>  * Prefetching is only done when size() is called.  *   * @param<K> the iterator data type  */
 end_comment
 
 begin_class
