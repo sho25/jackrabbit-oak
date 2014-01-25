@@ -355,6 +355,9 @@ argument_list|(
 name|this
 argument_list|)
 operator|.
+name|omitNullValues
+argument_list|()
+operator|.
 name|add
 argument_list|(
 literal|"sessionId"
