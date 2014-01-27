@@ -1111,6 +1111,9 @@ decl_stmt|;
 specifier|private
 name|Executor
 name|executor
+init|=
+name|defaultExecutorService
+argument_list|()
 decl_stmt|;
 comment|/**      * Default {@code ScheduledExecutorService} used for scheduling background tasks.      * This default spawns up to 32 background thread on an as need basis. Idle      * threads are pruned after one minute.      * @return  fresh ScheduledExecutorService      */
 specifier|public
@@ -1641,26 +1644,6 @@ operator|instanceof
 name|Observable
 condition|)
 block|{
-name|Executor
-name|executor
-init|=
-name|Oak
-operator|.
-name|this
-operator|.
-name|executor
-operator|==
-literal|null
-condition|?
-name|defaultExecutorService
-argument_list|()
-else|:
-name|Oak
-operator|.
-name|this
-operator|.
-name|executor
-decl_stmt|;
 name|BackgroundObserver
 name|backgroundObserver
 init|=
