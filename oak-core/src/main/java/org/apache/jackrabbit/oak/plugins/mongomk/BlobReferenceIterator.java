@@ -556,7 +556,7 @@ condition|)
 block|{
 name|p
 operator|=
-name|MongoNodeState
+name|MongoPropertyState
 operator|.
 name|readArrayProperty
 argument_list|(
@@ -625,7 +625,7 @@ else|else
 block|{
 name|p
 operator|=
-name|MongoNodeState
+name|MongoPropertyState
 operator|.
 name|readProperty
 argument_list|(
