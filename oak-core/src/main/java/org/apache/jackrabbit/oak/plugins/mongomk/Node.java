@@ -676,6 +676,15 @@ return|return
 name|size
 return|;
 block|}
+specifier|static
+specifier|final
+name|Children
+name|NO_CHILDREN
+init|=
+operator|new
+name|Children
+argument_list|()
+decl_stmt|;
 comment|/**      * A list of children for a node.      */
 specifier|static
 class|class

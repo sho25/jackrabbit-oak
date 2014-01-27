@@ -2105,6 +2105,19 @@ range|:
 name|addOrRemove
 control|)
 block|{
+if|if
+condition|(
+name|PathUtils
+operator|.
+name|denotesRoot
+argument_list|(
+name|p
+argument_list|)
+condition|)
+block|{
+comment|// special case: root node was added
+continue|continue;
+block|}
 name|String
 name|parent
 init|=
