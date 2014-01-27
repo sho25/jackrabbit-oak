@@ -20,6 +20,34 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkNotNull
+import|;
+end_import
+
+begin_import
+import|import static
+name|java
+operator|.
+name|util
+operator|.
+name|AbstractMap
+operator|.
+name|SimpleImmutableEntry
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -55,7 +83,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|SortedMap
+name|TreeMap
 import|;
 end_import
 
@@ -76,46 +104,6 @@ operator|.
 name|annotation
 operator|.
 name|Nullable
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|plugins
-operator|.
-name|mongomk
-operator|.
-name|util
-operator|.
-name|Utils
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
 import|;
 end_import
 
@@ -218,30 +206,42 @@ import|;
 end_import
 
 begin_import
-import|import static
-name|com
+import|import
+name|org
 operator|.
-name|google
+name|apache
 operator|.
-name|common
+name|jackrabbit
 operator|.
-name|base
+name|oak
 operator|.
-name|Preconditions
+name|plugins
 operator|.
-name|checkNotNull
+name|mongomk
+operator|.
+name|util
+operator|.
+name|Utils
 import|;
 end_import
 
 begin_import
-import|import static
-name|java
+import|import
+name|org
 operator|.
-name|util
+name|slf4j
 operator|.
-name|AbstractMap
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
 operator|.
-name|SimpleImmutableEntry
+name|slf4j
+operator|.
+name|LoggerFactory
 import|;
 end_import
 
@@ -681,7 +681,7 @@ name|iterator
 argument_list|()
 argument_list|)
 decl_stmt|;
-name|SortedMap
+name|TreeMap
 argument_list|<
 name|Revision
 argument_list|,
