@@ -23,16 +23,6 @@ end_package
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|CheckForNull
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -66,23 +56,57 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Filter for determining what changes to report the the event listener.  */
+comment|/**  * Event filter that hides all non-visible content.  */
 end_comment
 
-begin_interface
+begin_class
 specifier|public
-interface|interface
+class|class
+name|VisibleFilter
+implements|implements
 name|EventFilter
 block|{
-comment|/**      * Include an added property      * @param after  added property      * @return  {@code true} if the property should be included      */
+specifier|private
+name|boolean
+name|isVisible
+parameter_list|(
+name|String
+name|name
+parameter_list|)
+block|{
+return|return
+operator|!
+name|name
+operator|.
+name|startsWith
+argument_list|(
+literal|":"
+argument_list|)
+return|;
+block|}
+annotation|@
+name|Override
+specifier|public
 name|boolean
 name|includeAdd
 parameter_list|(
 name|PropertyState
 name|after
 parameter_list|)
-function_decl|;
-comment|/**      * Include a changed property      * @param before  property before the change      * @param after  property after the change      * @return  {@code true} if the property should be included      */
+block|{
+return|return
+name|isVisible
+argument_list|(
+name|after
+operator|.
+name|getName
+argument_list|()
+argument_list|)
+return|;
+block|}
+annotation|@
+name|Override
+specifier|public
 name|boolean
 name|includeChange
 parameter_list|(
@@ -92,16 +116,40 @@ parameter_list|,
 name|PropertyState
 name|after
 parameter_list|)
-function_decl|;
-comment|/**      * Include a deleted property      * @param before  deleted property      * @return  {@code true} if the property should be included      */
+block|{
+return|return
+name|isVisible
+argument_list|(
+name|after
+operator|.
+name|getName
+argument_list|()
+argument_list|)
+return|;
+block|}
+annotation|@
+name|Override
+specifier|public
 name|boolean
 name|includeDelete
 parameter_list|(
 name|PropertyState
 name|before
 parameter_list|)
-function_decl|;
-comment|/**      * Include an added node      * @param name name of the node      * @param after  added node      * @return  {@code true} if the node should be included      */
+block|{
+return|return
+name|isVisible
+argument_list|(
+name|before
+operator|.
+name|getName
+argument_list|()
+argument_list|)
+return|;
+block|}
+annotation|@
+name|Override
+specifier|public
 name|boolean
 name|includeAdd
 parameter_list|(
@@ -111,8 +159,17 @@ parameter_list|,
 name|NodeState
 name|after
 parameter_list|)
-function_decl|;
-comment|/**      * Include a changed node      * @param name name of the node      * @param before node before the change      * @param after  node after the change      * @return  {@code true} if the node should be included      */
+block|{
+return|return
+name|isVisible
+argument_list|(
+name|name
+argument_list|)
+return|;
+block|}
+annotation|@
+name|Override
+specifier|public
 name|boolean
 name|includeChange
 parameter_list|(
@@ -125,8 +182,17 @@ parameter_list|,
 name|NodeState
 name|after
 parameter_list|)
-function_decl|;
-comment|/**      * Include a deleted node      * @param name name of the node      * @param before deleted node      * @return  {@code true} if the node should be included      */
+block|{
+return|return
+name|isVisible
+argument_list|(
+name|name
+argument_list|)
+return|;
+block|}
+annotation|@
+name|Override
+specifier|public
 name|boolean
 name|includeDelete
 parameter_list|(
@@ -136,8 +202,17 @@ parameter_list|,
 name|NodeState
 name|before
 parameter_list|)
-function_decl|;
-comment|/**      * Include a moved node      * @param sourcePath  source path of the move operation      * @param name        name of the moved node      * @param moved       the moved node      * @return  {@code true} if the node should be included      */
+block|{
+return|return
+name|isVisible
+argument_list|(
+name|name
+argument_list|)
+return|;
+block|}
+annotation|@
+name|Override
+specifier|public
 name|boolean
 name|includeMove
 parameter_list|(
@@ -150,10 +225,17 @@ parameter_list|,
 name|NodeState
 name|moved
 parameter_list|)
-function_decl|;
-comment|/**      * Factory for creating a filter instance for the given child node      * @param name  name of the child node      * @param before  before state of the child node      * @param after  after state of the child node      * @return  filter instance for filtering the child node or {@code null} to      *          exclude the sub tree rooted at this child node.      */
+block|{
+return|return
+name|isVisible
+argument_list|(
+name|name
+argument_list|)
+return|;
+block|}
 annotation|@
-name|CheckForNull
+name|Override
+specifier|public
 name|EventFilter
 name|create
 parameter_list|(
@@ -166,9 +248,28 @@ parameter_list|,
 name|NodeState
 name|after
 parameter_list|)
-function_decl|;
+block|{
+if|if
+condition|(
+name|isVisible
+argument_list|(
+name|name
+argument_list|)
+condition|)
+block|{
+return|return
+name|this
+return|;
 block|}
-end_interface
+else|else
+block|{
+return|return
+literal|null
+return|;
+block|}
+block|}
+block|}
+end_class
 
 end_unit
 
