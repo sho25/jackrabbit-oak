@@ -107,7 +107,7 @@ name|oak
 operator|.
 name|jcr
 operator|.
-name|OakMongoMKRepositoryStub
+name|OakMongoNSRepositoryStub
 import|;
 end_import
 
@@ -294,7 +294,7 @@ comment|//Setup.wrap(this, OakSegmentMKRepositoryStub.class.getName());
 block|}
 if|if
 condition|(
-name|OakMongoMKRepositoryStub
+name|OakMongoNSRepositoryStub
 operator|.
 name|isMongoDBAvailable
 argument_list|()
@@ -306,7 +306,7 @@ name|wrap
 argument_list|(
 name|this
 argument_list|,
-name|OakMongoMKRepositoryStub
+name|OakMongoNSRepositoryStub
 operator|.
 name|class
 operator|.
