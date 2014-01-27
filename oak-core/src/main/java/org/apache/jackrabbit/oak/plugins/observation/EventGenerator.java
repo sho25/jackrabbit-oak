@@ -1037,6 +1037,7 @@ name|before
 operator|.
 name|getName
 argument_list|()
+argument_list|)
 operator|&&
 name|filter
 operator|.
@@ -1053,7 +1054,6 @@ argument_list|,
 name|this
 operator|.
 name|after
-argument_list|)
 argument_list|)
 condition|)
 block|{
