@@ -105,14 +105,14 @@ specifier|abstract
 class|class
 name|AbstractMongoConnectionTest
 extends|extends
-name|MongoMKTestBase
+name|DocumentMKTestBase
 block|{
 specifier|protected
 name|MongoConnection
 name|mongoConnection
 decl_stmt|;
 specifier|protected
-name|MongoMK
+name|DocumentMK
 name|mk
 decl_stmt|;
 annotation|@
@@ -163,7 +163,7 @@ expr_stmt|;
 name|mk
 operator|=
 operator|new
-name|MongoMK
+name|DocumentMK
 operator|.
 name|Builder
 argument_list|()

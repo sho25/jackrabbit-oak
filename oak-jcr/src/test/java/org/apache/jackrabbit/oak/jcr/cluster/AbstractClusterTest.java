@@ -150,7 +150,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A base class for MongoMK cluster tests.  */
+comment|/**  * A base class for DocumentMK cluster tests.  */
 end_comment
 
 begin_class

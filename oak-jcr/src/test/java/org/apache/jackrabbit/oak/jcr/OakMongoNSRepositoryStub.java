@@ -61,7 +61,7 @@ name|plugins
 operator|.
 name|document
 operator|.
-name|MongoMK
+name|DocumentMK
 import|;
 end_import
 
@@ -79,7 +79,7 @@ name|plugins
 operator|.
 name|document
 operator|.
-name|MongoNodeStore
+name|DocumentNodeStore
 import|;
 end_import
 
@@ -104,7 +104,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A repository stub using the MongoNodeStore.  */
+comment|/**  * A repository stub using the DocumentNodeStore.  */
 end_comment
 
 begin_class
@@ -139,11 +139,11 @@ name|MongoConnection
 name|connection
 parameter_list|)
 block|{
-name|MongoNodeStore
+name|DocumentNodeStore
 name|store
 init|=
 operator|new
-name|MongoMK
+name|DocumentMK
 operator|.
 name|Builder
 argument_list|()

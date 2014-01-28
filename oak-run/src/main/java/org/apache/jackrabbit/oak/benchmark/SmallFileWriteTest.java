@@ -88,7 +88,7 @@ specifier|private
 name|Node
 name|root
 decl_stmt|;
-comment|/**      * Iteration counter used to avoid the slit document edge case in MongoMK.      */
+comment|/**      * Iteration counter used to avoid the slit document edge case in DocumentMK.      */
 specifier|private
 name|int
 name|iteration

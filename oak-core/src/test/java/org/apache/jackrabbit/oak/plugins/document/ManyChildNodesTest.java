@@ -202,11 +202,11 @@ operator|new
 name|TestStore
 argument_list|()
 decl_stmt|;
-name|MongoMK
+name|DocumentMK
 name|mk
 init|=
 operator|new
-name|MongoMK
+name|DocumentMK
 operator|.
 name|Builder
 argument_list|()
@@ -247,7 +247,7 @@ literal|0
 init|;
 name|i
 operator|<
-name|MongoNodeState
+name|DocumentNodeState
 operator|.
 name|MAX_FETCH_SIZE
 operator|*
@@ -309,12 +309,12 @@ argument_list|()
 expr_stmt|;
 block|}
 comment|// maximum fetch size is MAX_FETCH_SIZE plus one because
-comment|// MongoNodeStore will use this value to find out if there
+comment|// DocumentNodeStore will use this value to find out if there
 comment|// are more child nodes than requested
 name|int
 name|maxFetchSize
 init|=
-name|MongoNodeState
+name|DocumentNodeState
 operator|.
 name|MAX_FETCH_SIZE
 operator|+

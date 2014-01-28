@@ -82,7 +82,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Tests related to background write operation in MongoNodeStore.  */
+comment|/**  * Tests related to background write operation in DocumentNodeStore.  */
 end_comment
 
 begin_class
@@ -98,11 +98,11 @@ name|void
 name|limitMultiUpdate
 parameter_list|()
 block|{
-name|MongoMK
+name|DocumentMK
 name|mk
 init|=
 operator|new
-name|MongoMK
+name|DocumentMK
 operator|.
 name|Builder
 argument_list|()
@@ -154,7 +154,7 @@ operator|.
 name|size
 argument_list|()
 operator|<
-name|MongoNodeStore
+name|DocumentNodeStore
 operator|.
 name|BACKGROUND_MULTI_UPDATE_LIMIT
 operator|*
@@ -354,7 +354,7 @@ operator|.
 name|size
 argument_list|()
 operator|<=
-name|MongoNodeStore
+name|DocumentNodeStore
 operator|.
 name|BACKGROUND_MULTI_UPDATE_LIMIT
 argument_list|)

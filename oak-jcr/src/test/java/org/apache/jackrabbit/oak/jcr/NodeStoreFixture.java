@@ -77,7 +77,7 @@ name|plugins
 operator|.
 name|document
 operator|.
-name|MongoMK
+name|DocumentMK
 import|;
 end_import
 
@@ -111,7 +111,7 @@ name|plugins
 operator|.
 name|document
 operator|.
-name|MongoNodeStore
+name|DocumentNodeStore
 import|;
 end_import
 
@@ -272,7 +272,7 @@ operator|new
 name|CloseableNodeStore
 argument_list|(
 operator|new
-name|MongoMK
+name|DocumentMK
 operator|.
 name|Builder
 argument_list|()
@@ -313,11 +313,11 @@ operator|.
 name|getDB
 argument_list|()
 decl_stmt|;
-name|MongoMK
+name|DocumentMK
 name|mk
 init|=
 operator|new
-name|MongoMK
+name|DocumentMK
 operator|.
 name|Builder
 argument_list|()
@@ -438,7 +438,7 @@ argument_list|()
 decl_stmt|;
 return|return
 operator|new
-name|MongoMK
+name|DocumentMK
 operator|.
 name|Builder
 argument_list|()
@@ -472,7 +472,7 @@ try|try
 block|{
 return|return
 operator|new
-name|MongoMK
+name|DocumentMK
 operator|.
 name|Builder
 argument_list|()
@@ -517,12 +517,12 @@ if|if
 condition|(
 name|nodeStore
 operator|instanceof
-name|MongoNodeStore
+name|DocumentNodeStore
 condition|)
 block|{
 operator|(
 operator|(
-name|MongoNodeStore
+name|DocumentNodeStore
 operator|)
 name|nodeStore
 operator|)
@@ -597,7 +597,7 @@ parameter_list|()
 block|{
 return|return
 operator|new
-name|MongoMK
+name|DocumentMK
 operator|.
 name|Builder
 argument_list|()
@@ -639,7 +639,7 @@ argument_list|()
 decl_stmt|;
 return|return
 operator|new
-name|MongoMK
+name|DocumentMK
 operator|.
 name|Builder
 argument_list|()
@@ -678,12 +678,12 @@ if|if
 condition|(
 name|nodeStore
 operator|instanceof
-name|MongoNodeStore
+name|DocumentNodeStore
 condition|)
 block|{
 operator|(
 operator|(
-name|MongoNodeStore
+name|DocumentNodeStore
 operator|)
 name|nodeStore
 operator|)
@@ -736,13 +736,13 @@ name|Closeable
 block|{
 specifier|private
 specifier|final
-name|MongoMK
+name|DocumentMK
 name|kernel
 decl_stmt|;
 specifier|public
 name|CloseableNodeStore
 parameter_list|(
-name|MongoMK
+name|DocumentMK
 name|kernel
 parameter_list|)
 block|{

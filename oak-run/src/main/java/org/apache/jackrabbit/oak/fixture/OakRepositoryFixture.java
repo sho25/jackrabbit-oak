@@ -111,7 +111,7 @@ name|plugins
 operator|.
 name|document
 operator|.
-name|MongoMK
+name|DocumentMK
 import|;
 end_import
 
@@ -129,7 +129,7 @@ name|plugins
 operator|.
 name|document
 operator|.
-name|MongoNodeStore
+name|DocumentNodeStore
 import|;
 end_import
 
@@ -616,7 +616,7 @@ else|:
 name|unique
 decl_stmt|;
 specifier|private
-name|MongoMK
+name|DocumentMK
 index|[]
 name|kernels
 decl_stmt|;
@@ -646,7 +646,7 @@ decl_stmt|;
 name|kernels
 operator|=
 operator|new
-name|MongoMK
+name|DocumentMK
 index|[
 name|cluster
 operator|.
@@ -689,7 +689,7 @@ name|i
 index|]
 operator|=
 operator|new
-name|MongoMK
+name|DocumentMK
 operator|.
 name|Builder
 argument_list|()
@@ -766,7 +766,7 @@ argument_list|()
 expr_stmt|;
 for|for
 control|(
-name|MongoMK
+name|DocumentMK
 name|kernel
 range|:
 name|kernels
@@ -877,7 +877,7 @@ else|:
 name|unique
 decl_stmt|;
 specifier|private
-name|MongoNodeStore
+name|DocumentNodeStore
 index|[]
 name|stores
 decl_stmt|;
@@ -907,7 +907,7 @@ decl_stmt|;
 name|stores
 operator|=
 operator|new
-name|MongoNodeStore
+name|DocumentNodeStore
 index|[
 name|cluster
 operator|.
@@ -950,7 +950,7 @@ name|i
 index|]
 operator|=
 operator|new
-name|MongoMK
+name|DocumentMK
 operator|.
 name|Builder
 argument_list|()
@@ -1026,7 +1026,7 @@ argument_list|()
 expr_stmt|;
 for|for
 control|(
-name|MongoNodeStore
+name|DocumentNodeStore
 name|store
 range|:
 name|stores

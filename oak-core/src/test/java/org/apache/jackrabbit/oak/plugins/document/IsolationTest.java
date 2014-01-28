@@ -38,7 +38,7 @@ specifier|public
 class|class
 name|IsolationTest
 extends|extends
-name|BaseMongoMKTest
+name|BaseDocumentMKTest
 block|{
 annotation|@
 name|Test

@@ -246,7 +246,7 @@ specifier|public
 class|class
 name|DocumentSplitTest
 extends|extends
-name|BaseMongoMKTest
+name|BaseDocumentMKTest
 block|{
 annotation|@
 name|Test
@@ -265,7 +265,7 @@ operator|.
 name|getDocumentStore
 argument_list|()
 decl_stmt|;
-name|MongoNodeStore
+name|DocumentNodeStore
 name|ns
 init|=
 name|mk
@@ -543,7 +543,7 @@ operator|.
 name|getDocumentStore
 argument_list|()
 decl_stmt|;
-name|MongoNodeStore
+name|DocumentNodeStore
 name|ns
 init|=
 name|mk
@@ -1038,7 +1038,7 @@ operator|.
 name|getDocumentStore
 argument_list|()
 decl_stmt|;
-name|MongoNodeStore
+name|DocumentNodeStore
 name|ns
 init|=
 name|mk
@@ -1277,7 +1277,7 @@ operator|new
 name|MemoryBlobStore
 argument_list|()
 decl_stmt|;
-name|MongoMK
+name|DocumentMK
 operator|.
 name|Builder
 name|builder
@@ -1285,7 +1285,7 @@ decl_stmt|;
 name|builder
 operator|=
 operator|new
-name|MongoMK
+name|DocumentMK
 operator|.
 name|Builder
 argument_list|()
@@ -1307,7 +1307,7 @@ argument_list|(
 literal|0
 argument_list|)
 expr_stmt|;
-name|MongoMK
+name|DocumentMK
 name|mk1
 init|=
 name|builder
@@ -1333,7 +1333,7 @@ argument_list|,
 literal|null
 argument_list|)
 expr_stmt|;
-comment|// make sure the new node is visible to other MongoMK instances
+comment|// make sure the new node is visible to other DocumentMK instances
 name|mk1
 operator|.
 name|backgroundWrite
@@ -1342,7 +1342,7 @@ expr_stmt|;
 name|builder
 operator|=
 operator|new
-name|MongoMK
+name|DocumentMK
 operator|.
 name|Builder
 argument_list|()
@@ -1364,7 +1364,7 @@ argument_list|(
 literal|0
 argument_list|)
 expr_stmt|;
-name|MongoMK
+name|DocumentMK
 name|mk2
 init|=
 name|builder
@@ -1380,7 +1380,7 @@ decl_stmt|;
 name|builder
 operator|=
 operator|new
-name|MongoMK
+name|DocumentMK
 operator|.
 name|Builder
 argument_list|()
@@ -1402,7 +1402,7 @@ argument_list|(
 literal|0
 argument_list|)
 expr_stmt|;
-name|MongoMK
+name|DocumentMK
 name|mk3
 init|=
 name|builder
@@ -1665,14 +1665,14 @@ argument_list|()
 decl_stmt|;
 name|List
 argument_list|<
-name|MongoMK
+name|DocumentMK
 argument_list|>
 name|mks
 init|=
 operator|new
 name|ArrayList
 argument_list|<
-name|MongoMK
+name|DocumentMK
 argument_list|>
 argument_list|()
 decl_stmt|;
@@ -1691,13 +1691,13 @@ name|i
 operator|++
 control|)
 block|{
-name|MongoMK
+name|DocumentMK
 operator|.
 name|Builder
 name|builder
 init|=
 operator|new
-name|MongoMK
+name|DocumentMK
 operator|.
 name|Builder
 argument_list|()
@@ -1719,7 +1719,7 @@ argument_list|(
 literal|0
 argument_list|)
 expr_stmt|;
-name|MongoMK
+name|DocumentMK
 name|mk
 init|=
 name|builder
@@ -1833,7 +1833,7 @@ argument_list|()
 argument_list|)
 decl_stmt|;
 comment|// pick mk
-name|MongoMK
+name|DocumentMK
 name|mk
 init|=
 name|mks
@@ -1843,7 +1843,7 @@ argument_list|(
 name|mkIdx
 argument_list|)
 decl_stmt|;
-name|MongoNodeStore
+name|DocumentNodeStore
 name|ns
 init|=
 name|mk
@@ -2074,7 +2074,7 @@ expr_stmt|;
 block|}
 for|for
 control|(
-name|MongoMK
+name|DocumentMK
 name|mk
 range|:
 name|mks
@@ -2093,7 +2093,7 @@ name|syncMKs
 parameter_list|(
 name|List
 argument_list|<
-name|MongoMK
+name|DocumentMK
 argument_list|>
 name|mks
 parameter_list|,

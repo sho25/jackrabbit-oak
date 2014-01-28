@@ -193,7 +193,7 @@ literal|1000
 decl_stmt|;
 specifier|private
 specifier|final
-name|MongoNodeStore
+name|DocumentNodeStore
 name|nodeStore
 decl_stmt|;
 specifier|private
@@ -235,7 +235,7 @@ decl_stmt|;
 specifier|public
 name|BlobReferenceIterator
 parameter_list|(
-name|MongoNodeStore
+name|DocumentNodeStore
 name|nodeStore
 parameter_list|)
 block|{
@@ -556,7 +556,7 @@ condition|)
 block|{
 name|p
 operator|=
-name|MongoPropertyState
+name|DocumentPropertyState
 operator|.
 name|readArrayProperty
 argument_list|(
@@ -625,7 +625,7 @@ else|else
 block|{
 name|p
 operator|=
-name|MongoPropertyState
+name|DocumentPropertyState
 operator|.
 name|readProperty
 argument_list|(

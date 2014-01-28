@@ -81,7 +81,7 @@ name|plugins
 operator|.
 name|document
 operator|.
-name|MongoMK
+name|DocumentMK
 import|;
 end_import
 
@@ -363,7 +363,7 @@ name|i
 index|]
 operator|=
 operator|new
-name|MongoMK
+name|DocumentMK
 operator|.
 name|Builder
 argument_list|()

@@ -49,7 +49,7 @@ name|mergeRevs
 decl_stmt|;
 name|MergeCommit
 parameter_list|(
-name|MongoNodeStore
+name|DocumentNodeStore
 name|nodeStore
 parameter_list|,
 name|Revision

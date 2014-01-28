@@ -238,7 +238,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A repository stub implementation for Oak on MongoMK  */
+comment|/**  * A repository stub implementation for Oak on DocumentMK  */
 end_comment
 
 begin_class

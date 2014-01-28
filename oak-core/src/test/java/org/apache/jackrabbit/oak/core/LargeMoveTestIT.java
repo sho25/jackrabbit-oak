@@ -202,7 +202,7 @@ parameter_list|()
 throws|throws
 name|CommitFailedException
 block|{
-comment|// FIXME slow on MongoMK and MongoNS. See OAK-964
+comment|// FIXME slow on DocumentMK and MongoNS. See OAK-964
 name|assumeTrue
 argument_list|(
 name|fixture

@@ -273,7 +273,7 @@ argument_list|)
 decl_stmt|;
 specifier|private
 specifier|final
-name|MongoNodeStore
+name|DocumentNodeStore
 name|nodeStore
 decl_stmt|;
 specifier|private
@@ -371,7 +371,7 @@ argument_list|()
 decl_stmt|;
 name|Commit
 parameter_list|(
-name|MongoNodeStore
+name|DocumentNodeStore
 name|nodeStore
 parameter_list|,
 name|Revision
@@ -496,7 +496,7 @@ return|return
 name|revision
 return|;
 block|}
-comment|/**      * Returns the base revision for this commit. That is, the revision passed      * to {@link MongoMK#commit(String, String, String, String)}. The base      * revision may be<code>null</code>, e.g. for the initial commit of the      * root node, when there is no base revision.      *      * @return the base revision of this commit or<code>null</code>.      */
+comment|/**      * Returns the base revision for this commit. That is, the revision passed      * to {@link DocumentMK#commit(String, String, String, String)}. The base      * revision may be<code>null</code>, e.g. for the initial commit of the      * root node, when there is no base revision.      *      * @return the base revision of this commit or<code>null</code>.      */
 annotation|@
 name|CheckForNull
 name|Revision
@@ -2038,7 +2038,7 @@ name|nodeStore
 argument_list|)
 return|;
 block|}
-comment|/**      * Apply the changes to the MongoMK (to update the cache).      *       * @param isBranchCommit whether this is a commit to a branch      */
+comment|/**      * Apply the changes to the DocumentMK (to update the cache).      *       * @param isBranchCommit whether this is a commit to a branch      */
 specifier|public
 name|void
 name|applyToCache

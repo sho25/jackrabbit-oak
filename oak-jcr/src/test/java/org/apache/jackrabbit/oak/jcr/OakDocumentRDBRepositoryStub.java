@@ -155,7 +155,7 @@ name|plugins
 operator|.
 name|document
 operator|.
-name|MongoMK
+name|DocumentMK
 import|;
 end_import
 
@@ -378,11 +378,11 @@ name|String
 name|password
 parameter_list|)
 block|{
-name|MongoMK
+name|DocumentMK
 name|m
 init|=
 operator|new
-name|MongoMK
+name|DocumentMK
 operator|.
 name|Builder
 argument_list|()

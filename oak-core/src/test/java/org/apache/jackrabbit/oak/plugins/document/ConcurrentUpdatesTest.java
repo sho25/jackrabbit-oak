@@ -60,7 +60,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Performs non-conflicting property updates on MongoMK with multiple threads.  */
+comment|/**  * Performs non-conflicting property updates on DocumentMK with multiple threads.  */
 end_comment
 
 begin_class

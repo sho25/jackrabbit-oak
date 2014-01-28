@@ -220,11 +220,11 @@ throws|throws
 name|Exception
 block|{
 specifier|final
-name|MongoNodeStore
+name|DocumentNodeStore
 name|store
 init|=
 operator|new
-name|MongoMK
+name|DocumentMK
 operator|.
 name|Builder
 argument_list|()
@@ -329,11 +329,11 @@ name|CommitInfo
 name|info
 parameter_list|)
 block|{
-name|MongoNodeState
+name|DocumentNodeState
 name|after
 init|=
 operator|(
-name|MongoNodeState
+name|DocumentNodeState
 operator|)
 name|root
 decl_stmt|;

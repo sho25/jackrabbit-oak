@@ -190,7 +190,7 @@ specifier|public
 class|class
 name|OptimizedChildFetchTest
 extends|extends
-name|BaseMongoMKTest
+name|BaseDocumentMKTest
 block|{
 specifier|private
 name|TestDocumentStore
@@ -204,13 +204,13 @@ annotation|@
 name|Before
 specifier|public
 name|void
-name|initMongoMK
+name|initDocumentMK
 parameter_list|()
 block|{
 name|mk
 operator|=
 operator|new
-name|MongoMK
+name|DocumentMK
 operator|.
 name|Builder
 argument_list|()
@@ -428,10 +428,10 @@ name|void
 name|resetMK
 parameter_list|()
 block|{
-name|disposeMongoMK
+name|disposeDocumentMK
 argument_list|()
 expr_stmt|;
-name|initMongoMK
+name|initDocumentMK
 argument_list|()
 expr_stmt|;
 block|}

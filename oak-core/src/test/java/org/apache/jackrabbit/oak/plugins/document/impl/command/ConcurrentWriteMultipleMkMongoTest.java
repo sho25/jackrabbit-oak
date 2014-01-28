@@ -107,7 +107,7 @@ name|plugins
 operator|.
 name|document
 operator|.
-name|MongoMK
+name|DocumentMK
 import|;
 end_import
 
@@ -267,11 +267,11 @@ operator|.
 name|toString
 argument_list|()
 decl_stmt|;
-name|MongoMK
+name|DocumentMK
 name|mk
 init|=
 operator|new
-name|MongoMK
+name|DocumentMK
 operator|.
 name|Builder
 argument_list|()
@@ -541,7 +541,7 @@ parameter_list|(
 name|String
 name|id
 parameter_list|,
-name|MongoMK
+name|DocumentMK
 name|mk
 parameter_list|,
 name|String

@@ -66,7 +66,7 @@ specifier|public
 class|class
 name|ConflictTest
 extends|extends
-name|BaseMongoMKTest
+name|BaseDocumentMKTest
 block|{
 annotation|@
 name|Test

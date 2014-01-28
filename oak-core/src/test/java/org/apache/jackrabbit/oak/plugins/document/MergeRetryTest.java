@@ -381,7 +381,7 @@ operator|new
 name|MemoryBlobStore
 argument_list|()
 decl_stmt|;
-name|MongoMK
+name|DocumentMK
 name|mk1
 init|=
 name|createMK
@@ -395,7 +395,7 @@ argument_list|,
 name|bs
 argument_list|)
 decl_stmt|;
-name|MongoMK
+name|DocumentMK
 name|mk2
 init|=
 name|createMK
@@ -526,7 +526,7 @@ operator|new
 name|MemoryBlobStore
 argument_list|()
 decl_stmt|;
-name|MongoMK
+name|DocumentMK
 name|mk1
 init|=
 name|createMK
@@ -540,7 +540,7 @@ argument_list|,
 name|bs
 argument_list|)
 decl_stmt|;
-name|MongoMK
+name|DocumentMK
 name|mk2
 init|=
 name|createMK
@@ -741,7 +741,7 @@ block|}
 block|}
 block|}
 specifier|private
-name|MongoMK
+name|DocumentMK
 name|createMK
 parameter_list|(
 name|int
@@ -759,7 +759,7 @@ parameter_list|)
 block|{
 return|return
 operator|new
-name|MongoMK
+name|DocumentMK
 operator|.
 name|Builder
 argument_list|()

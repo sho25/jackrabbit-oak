@@ -106,13 +106,13 @@ argument_list|,
 literal|null
 argument_list|)
 expr_stmt|;
-comment|// start a new MongoMK instance. this instance sees /foo
-comment|// because it started after the commit on the first MongoMK
-name|MongoMK
+comment|// start a new DocumentMK instance. this instance sees /foo
+comment|// because it started after the commit on the first DocumentMK
+name|DocumentMK
 name|mk2
 init|=
 operator|new
-name|MongoMK
+name|DocumentMK
 operator|.
 name|Builder
 argument_list|()
@@ -138,8 +138,8 @@ argument_list|()
 decl_stmt|;
 try|try
 block|{
-comment|// this creates a first commit from the second MongoMK instance
-comment|// the first MongoMK instance does not see this yet
+comment|// this creates a first commit from the second DocumentMK instance
+comment|// the first DocumentMK instance does not see this yet
 name|mk2
 operator|.
 name|commit
@@ -153,8 +153,8 @@ argument_list|,
 literal|null
 argument_list|)
 expr_stmt|;
-comment|// create a commit on the first MongoMK. this commit revision
-comment|// is higher than the previous commit on the second MongoMK
+comment|// create a commit on the first DocumentMK. this commit revision
+comment|// is higher than the previous commit on the second DocumentMK
 name|rev2
 operator|=
 name|mk
@@ -205,7 +205,7 @@ literal|null
 argument_list|)
 argument_list|)
 decl_stmt|;
-comment|// make changes from second MongoMK visible
+comment|// make changes from second DocumentMK visible
 name|mk2
 operator|.
 name|runBackgroundOperations

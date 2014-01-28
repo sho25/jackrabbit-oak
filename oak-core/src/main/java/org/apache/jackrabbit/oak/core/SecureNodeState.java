@@ -991,7 +991,7 @@ comment|// TODO: A further optimization would be to return the raw
 comment|// underlying node state even for non-leaf nodes if we can
 comment|// tell in advance that the full subtree is readable. Then
 comment|// we also wouldn't need the above getChildNodeCount() call
-comment|// that's somewhat expensive on the MongoMK.
+comment|// that's somewhat expensive on the DocumentMK.
 return|return
 name|input
 return|;

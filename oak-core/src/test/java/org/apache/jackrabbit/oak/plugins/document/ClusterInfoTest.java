@@ -128,11 +128,11 @@ operator|new
 name|MemoryDocumentStore
 argument_list|()
 decl_stmt|;
-name|MongoNodeStore
+name|DocumentNodeStore
 name|ns1
 init|=
 operator|new
-name|MongoMK
+name|DocumentMK
 operator|.
 name|Builder
 argument_list|()
@@ -150,11 +150,11 @@ operator|.
 name|getNodeStore
 argument_list|()
 decl_stmt|;
-name|MongoNodeStore
+name|DocumentNodeStore
 name|ns2
 init|=
 operator|new
-name|MongoMK
+name|DocumentMK
 operator|.
 name|Builder
 argument_list|()

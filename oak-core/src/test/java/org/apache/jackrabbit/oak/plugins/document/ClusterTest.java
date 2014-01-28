@@ -396,7 +396,7 @@ operator|new
 name|MemoryBlobStore
 argument_list|()
 decl_stmt|;
-name|MongoMK
+name|DocumentMK
 operator|.
 name|Builder
 name|builder
@@ -404,7 +404,7 @@ decl_stmt|;
 name|builder
 operator|=
 operator|new
-name|MongoMK
+name|DocumentMK
 operator|.
 name|Builder
 argument_list|()
@@ -426,7 +426,7 @@ argument_list|(
 literal|0
 argument_list|)
 expr_stmt|;
-name|MongoMK
+name|DocumentMK
 name|mk1
 init|=
 name|builder
@@ -442,7 +442,7 @@ decl_stmt|;
 name|builder
 operator|=
 operator|new
-name|MongoMK
+name|DocumentMK
 operator|.
 name|Builder
 argument_list|()
@@ -464,7 +464,7 @@ argument_list|(
 literal|0
 argument_list|)
 expr_stmt|;
-name|MongoMK
+name|DocumentMK
 name|mk2
 init|=
 name|builder
@@ -480,7 +480,7 @@ decl_stmt|;
 name|builder
 operator|=
 operator|new
-name|MongoMK
+name|DocumentMK
 operator|.
 name|Builder
 argument_list|()
@@ -502,7 +502,7 @@ argument_list|(
 literal|0
 argument_list|)
 expr_stmt|;
-name|MongoMK
+name|DocumentMK
 name|mk3
 init|=
 name|builder
@@ -902,7 +902,7 @@ operator|new
 name|MemoryBlobStore
 argument_list|()
 decl_stmt|;
-name|MongoMK
+name|DocumentMK
 name|mk1
 init|=
 name|createMK
@@ -947,7 +947,7 @@ operator|.
 name|runBackgroundOperations
 argument_list|()
 expr_stmt|;
-name|MongoMK
+name|DocumentMK
 name|mk2
 init|=
 name|createMK
@@ -992,7 +992,7 @@ operator|.
 name|runBackgroundOperations
 argument_list|()
 expr_stmt|;
-name|MongoMK
+name|DocumentMK
 name|mk3
 init|=
 name|createMK
@@ -1037,7 +1037,7 @@ operator|.
 name|runBackgroundOperations
 argument_list|()
 expr_stmt|;
-name|MongoMK
+name|DocumentMK
 name|mk4
 init|=
 name|createMK
@@ -1069,7 +1069,7 @@ operator|.
 name|runBackgroundOperations
 argument_list|()
 expr_stmt|;
-name|MongoMK
+name|DocumentMK
 name|mk5
 init|=
 name|createMK
@@ -1142,7 +1142,7 @@ name|void
 name|clusterNodeId
 parameter_list|()
 block|{
-name|MongoMK
+name|DocumentMK
 name|mk1
 init|=
 name|createMK
@@ -1150,7 +1150,7 @@ argument_list|(
 literal|0
 argument_list|)
 decl_stmt|;
-name|MongoMK
+name|DocumentMK
 name|mk2
 init|=
 name|createMK
@@ -1204,7 +1204,7 @@ parameter_list|()
 throws|throws
 name|InterruptedException
 block|{
-name|MongoMK
+name|DocumentMK
 name|mk1
 init|=
 name|createMK
@@ -1292,7 +1292,7 @@ operator|.
 name|dispose
 argument_list|()
 expr_stmt|;
-name|MongoMK
+name|DocumentMK
 name|mk2
 init|=
 name|createMK
@@ -1343,7 +1343,7 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|MongoMK
+name|DocumentMK
 name|mk1
 init|=
 name|createMK
@@ -1371,7 +1371,7 @@ operator|.
 name|runBackgroundOperations
 argument_list|()
 expr_stmt|;
-name|MongoMK
+name|DocumentMK
 name|mk2
 init|=
 name|createMK
@@ -1381,7 +1381,7 @@ argument_list|,
 literal|0
 argument_list|)
 decl_stmt|;
-name|MongoMK
+name|DocumentMK
 name|mk3
 init|=
 name|createMK
@@ -1834,7 +1834,7 @@ name|void
 name|conflict
 parameter_list|()
 block|{
-name|MongoMK
+name|DocumentMK
 name|mk1
 init|=
 name|createMK
@@ -1844,7 +1844,7 @@ argument_list|,
 literal|0
 argument_list|)
 decl_stmt|;
-name|MongoMK
+name|DocumentMK
 name|mk2
 init|=
 name|createMK
@@ -1994,7 +1994,7 @@ parameter_list|()
 throws|throws
 name|InterruptedException
 block|{
-name|MongoMK
+name|DocumentMK
 name|mk1
 init|=
 name|createMK
@@ -2002,7 +2002,7 @@ argument_list|(
 literal|1
 argument_list|)
 decl_stmt|;
-name|MongoMK
+name|DocumentMK
 name|mk2
 init|=
 name|createMK
@@ -2223,7 +2223,7 @@ name|void
 name|rollbackAfterConflict
 parameter_list|()
 block|{
-name|MongoMK
+name|DocumentMK
 name|mk1
 init|=
 name|createMK
@@ -2231,7 +2231,7 @@ argument_list|(
 literal|1
 argument_list|)
 decl_stmt|;
-name|MongoMK
+name|DocumentMK
 name|mk2
 init|=
 name|createMK
@@ -2354,7 +2354,7 @@ expr_stmt|;
 block|}
 block|}
 specifier|private
-name|MongoMK
+name|DocumentMK
 name|createMK
 parameter_list|(
 name|int
@@ -2371,7 +2371,7 @@ argument_list|)
 return|;
 block|}
 specifier|private
-name|MongoMK
+name|DocumentMK
 name|createMK
 parameter_list|(
 name|int
@@ -2399,7 +2399,7 @@ argument_list|()
 decl_stmt|;
 return|return
 operator|new
-name|MongoMK
+name|DocumentMK
 operator|.
 name|Builder
 argument_list|()
@@ -2468,7 +2468,7 @@ return|;
 block|}
 block|}
 specifier|private
-name|MongoMK
+name|DocumentMK
 name|createMK
 parameter_list|(
 name|int
@@ -2486,7 +2486,7 @@ parameter_list|)
 block|{
 return|return
 operator|new
-name|MongoMK
+name|DocumentMK
 operator|.
 name|Builder
 argument_list|()

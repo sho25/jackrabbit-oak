@@ -221,7 +221,7 @@ argument_list|)
 decl_stmt|;
 specifier|private
 specifier|final
-name|MongoNodeStore
+name|DocumentNodeStore
 name|store
 decl_stmt|;
 specifier|private
@@ -254,7 +254,7 @@ name|dispatcher
 decl_stmt|;
 name|CommitQueue
 parameter_list|(
-name|MongoNodeStore
+name|DocumentNodeStore
 name|store
 parameter_list|,
 name|ChangeDispatcher

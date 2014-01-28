@@ -1919,9 +1919,9 @@ name|MicroKernelImpl
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|// this(new MongoMK.Builder().open());
+comment|// this(new DocumentMK.Builder().open());
 comment|// this(new LogWrapper(new MicroKernelImpl()));
-comment|// this(new LogWrapper(new MongoMK.Builder().open()));
+comment|// this(new LogWrapper(new DocumentMK.Builder().open()));
 block|}
 comment|/**      * Sets the default workspace name that should be used in case of login      * with {@code null} workspace name. If this method has not been called      * some internal default value will be used.      *      * @param defaultWorkspaceName The name of the default workspace.      * @return this builder.      */
 annotation|@

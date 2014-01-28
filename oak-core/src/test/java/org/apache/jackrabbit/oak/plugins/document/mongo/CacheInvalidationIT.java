@@ -117,7 +117,7 @@ name|plugins
 operator|.
 name|document
 operator|.
-name|MongoMK
+name|DocumentMK
 import|;
 end_import
 
@@ -135,7 +135,7 @@ name|plugins
 operator|.
 name|document
 operator|.
-name|MongoNodeStore
+name|DocumentNodeStore
 import|;
 end_import
 
@@ -341,11 +341,11 @@ extends|extends
 name|AbstractMongoConnectionTest
 block|{
 specifier|private
-name|MongoNodeStore
+name|DocumentNodeStore
 name|c1
 decl_stmt|;
 specifier|private
-name|MongoNodeStore
+name|DocumentNodeStore
 name|c2
 decl_stmt|;
 annotation|@
@@ -827,7 +827,7 @@ specifier|private
 name|void
 name|refreshHead
 parameter_list|(
-name|MongoNodeStore
+name|DocumentNodeStore
 name|store
 parameter_list|)
 block|{
@@ -858,7 +858,7 @@ specifier|static
 name|MongoDocumentStore
 name|ds
 parameter_list|(
-name|MongoNodeStore
+name|DocumentNodeStore
 name|ns
 parameter_list|)
 block|{
@@ -1013,14 +1013,14 @@ specifier|private
 name|void
 name|runBgOps
 parameter_list|(
-name|MongoNodeStore
+name|DocumentNodeStore
 modifier|...
 name|stores
 parameter_list|)
 block|{
 for|for
 control|(
-name|MongoNodeStore
+name|DocumentNodeStore
 name|ns
 range|:
 name|stores
@@ -1034,7 +1034,7 @@ expr_stmt|;
 block|}
 block|}
 specifier|private
-name|MongoNodeStore
+name|DocumentNodeStore
 name|createNS
 parameter_list|(
 name|int
@@ -1053,7 +1053,7 @@ argument_list|()
 decl_stmt|;
 return|return
 operator|new
-name|MongoMK
+name|DocumentMK
 operator|.
 name|Builder
 argument_list|()

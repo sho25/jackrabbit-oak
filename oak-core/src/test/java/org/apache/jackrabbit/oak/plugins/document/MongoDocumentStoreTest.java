@@ -357,7 +357,7 @@ name|getDB
 argument_list|()
 argument_list|,
 operator|new
-name|MongoMK
+name|DocumentMK
 operator|.
 name|Builder
 argument_list|()
@@ -1320,7 +1320,7 @@ literal|0
 init|;
 name|i
 operator|<
-name|MongoMK
+name|DocumentMK
 operator|.
 name|MANY_CHILDREN_THRESHOLD
 operator|*
@@ -1395,14 +1395,14 @@ argument_list|(
 literal|"/"
 argument_list|)
 argument_list|,
-name|MongoMK
+name|DocumentMK
 operator|.
 name|MANY_CHILDREN_THRESHOLD
 argument_list|)
 decl_stmt|;
 name|assertEquals
 argument_list|(
-name|MongoMK
+name|DocumentMK
 operator|.
 name|MANY_CHILDREN_THRESHOLD
 argument_list|,

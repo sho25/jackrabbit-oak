@@ -229,7 +229,7 @@ argument_list|()
 operator|.
 name|description
 argument_list|(
-literal|"MongoConnection for Oak MongoMK"
+literal|"MongoConnection for Oak DocumentMK"
 argument_list|)
 operator|.
 name|threadsAllowedToBlockForConnectionMultiplier

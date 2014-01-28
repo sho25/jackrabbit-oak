@@ -154,7 +154,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A document corresponds to a node stored in the MongoMK. A document contains  * all the revisions of a node stored in the {@link DocumentStore}.  */
+comment|/**  * A document corresponds to a node stored in the DocumentMK. A document contains  * all the revisions of a node stored in the {@link DocumentStore}.  */
 end_comment
 
 begin_class

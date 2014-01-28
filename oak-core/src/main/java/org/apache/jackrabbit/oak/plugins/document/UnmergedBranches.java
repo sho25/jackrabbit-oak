@@ -168,7 +168,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *<code>UnmergedBranches</code> contains all un-merged branches of a MongoMK  * instance.  */
+comment|/**  *<code>UnmergedBranches</code> contains all un-merged branches of a DocumentMK  * instance.  */
 end_comment
 
 begin_class

@@ -38,7 +38,7 @@ specifier|public
 interface|interface
 name|RevisionContext
 block|{
-comment|/**      * @return the branches of the local MongoMK instance, which are not yet      *         merged.      */
+comment|/**      * @return the branches of the local DocumentMK instance, which are not yet      *         merged.      */
 name|UnmergedBranches
 name|getBranches
 parameter_list|()
@@ -56,7 +56,7 @@ argument_list|>
 name|getRevisionComparator
 parameter_list|()
 function_decl|;
-comment|/**      * @return the cluster id of the local MongoMK instance.      */
+comment|/**      * @return the cluster id of the local DocumentMK instance.      */
 name|int
 name|getClusterId
 parameter_list|()

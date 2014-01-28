@@ -323,7 +323,7 @@ name|plugins
 operator|.
 name|document
 operator|.
-name|MongoMK
+name|DocumentMK
 import|;
 end_import
 
@@ -860,7 +860,7 @@ parameter_list|(
 name|DB
 name|db
 parameter_list|,
-name|MongoMK
+name|DocumentMK
 operator|.
 name|Builder
 name|builder
@@ -1005,7 +1005,7 @@ name|NodeDocument
 argument_list|>
 name|createOffHeapCache
 parameter_list|(
-name|MongoMK
+name|DocumentMK
 operator|.
 name|Builder
 name|builder

@@ -161,11 +161,11 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|MongoNodeStore
+name|DocumentNodeStore
 name|s
 init|=
 operator|new
-name|MongoMK
+name|DocumentMK
 operator|.
 name|Builder
 argument_list|()

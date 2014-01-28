@@ -147,7 +147,7 @@ name|plugins
 operator|.
 name|document
 operator|.
-name|MongoMK
+name|DocumentMK
 import|;
 end_import
 
@@ -200,7 +200,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A repository stub implementation for Oak on MongoMK  */
+comment|/**  * A repository stub implementation for Oak on DocumentMK  */
 end_comment
 
 begin_class
@@ -415,11 +415,11 @@ name|MongoConnection
 name|connection
 parameter_list|)
 block|{
-name|MongoMK
+name|DocumentMK
 name|m
 init|=
 operator|new
-name|MongoMK
+name|DocumentMK
 operator|.
 name|Builder
 argument_list|()

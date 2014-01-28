@@ -109,7 +109,7 @@ operator|new
 name|MemoryBlobStore
 argument_list|()
 decl_stmt|;
-name|MongoMK
+name|DocumentMK
 operator|.
 name|Builder
 name|builder
@@ -117,7 +117,7 @@ decl_stmt|;
 name|builder
 operator|=
 operator|new
-name|MongoMK
+name|DocumentMK
 operator|.
 name|Builder
 argument_list|()
@@ -134,7 +134,7 @@ argument_list|(
 name|bs
 argument_list|)
 expr_stmt|;
-name|MongoMK
+name|DocumentMK
 name|mk1
 init|=
 name|builder
@@ -150,7 +150,7 @@ decl_stmt|;
 name|builder
 operator|=
 operator|new
-name|MongoMK
+name|DocumentMK
 operator|.
 name|Builder
 argument_list|()
@@ -167,7 +167,7 @@ argument_list|(
 name|bs
 argument_list|)
 expr_stmt|;
-name|MongoMK
+name|DocumentMK
 name|mk2
 init|=
 name|builder

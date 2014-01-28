@@ -206,7 +206,7 @@ literal|false
 decl_stmt|;
 comment|// private static final boolean MONGO_DB = true;
 specifier|private
-name|MongoMK
+name|DocumentMK
 name|mk
 decl_stmt|;
 specifier|private
@@ -1327,17 +1327,17 @@ return|;
 block|}
 specifier|private
 specifier|static
-name|MongoMK
+name|DocumentMK
 name|createMK
 parameter_list|()
 block|{
-name|MongoMK
+name|DocumentMK
 operator|.
 name|Builder
 name|builder
 init|=
 operator|new
-name|MongoMK
+name|DocumentMK
 operator|.
 name|Builder
 argument_list|()
