@@ -568,15 +568,9 @@ condition|(
 operator|!
 name|encoded
 operator|.
-name|toUpperCase
-argument_list|()
-operator|.
-name|equals
+name|equalsIgnoreCase
 argument_list|(
 name|raw
-operator|.
-name|toUpperCase
-argument_list|()
 argument_list|)
 condition|)
 block|{
