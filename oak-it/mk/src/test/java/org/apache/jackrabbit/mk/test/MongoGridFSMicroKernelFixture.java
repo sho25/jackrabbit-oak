@@ -45,7 +45,7 @@ name|oak
 operator|.
 name|plugins
 operator|.
-name|mongomk
+name|document
 operator|.
 name|blob
 operator|.

@@ -207,7 +207,7 @@ name|oak
 operator|.
 name|plugins
 operator|.
-name|mongomk
+name|document
 operator|.
 name|Collection
 import|;
@@ -225,7 +225,7 @@ name|oak
 operator|.
 name|plugins
 operator|.
-name|mongomk
+name|document
 operator|.
 name|Document
 import|;
@@ -243,7 +243,7 @@ name|oak
 operator|.
 name|plugins
 operator|.
-name|mongomk
+name|document
 operator|.
 name|DocumentStore
 import|;
@@ -261,7 +261,7 @@ name|oak
 operator|.
 name|plugins
 operator|.
-name|mongomk
+name|document
 operator|.
 name|Revision
 import|;
@@ -279,7 +279,7 @@ name|oak
 operator|.
 name|plugins
 operator|.
-name|mongomk
+name|document
 operator|.
 name|StableRevisionComparator
 import|;
@@ -297,7 +297,7 @@ name|oak
 operator|.
 name|plugins
 operator|.
-name|mongomk
+name|document
 operator|.
 name|UpdateOp
 import|;
@@ -315,7 +315,7 @@ name|oak
 operator|.
 name|plugins
 operator|.
-name|mongomk
+name|document
 operator|.
 name|UpdateUtils
 import|;

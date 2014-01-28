@@ -153,7 +153,7 @@ name|oak
 operator|.
 name|plugins
 operator|.
-name|mongomk
+name|document
 operator|.
 name|MongoMK
 import|;
