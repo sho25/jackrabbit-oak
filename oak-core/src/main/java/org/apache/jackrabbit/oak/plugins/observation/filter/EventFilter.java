@@ -112,20 +112,6 @@ name|NodeState
 name|after
 parameter_list|)
 function_decl|;
-comment|/**      * Include a changed node      * @param name name of the node      * @param before node before the change      * @param after  node after the change      * @return  {@code true} if the node should be included      */
-name|boolean
-name|includeChange
-parameter_list|(
-name|String
-name|name
-parameter_list|,
-name|NodeState
-name|before
-parameter_list|,
-name|NodeState
-name|after
-parameter_list|)
-function_decl|;
 comment|/**      * Include a deleted node      * @param name name of the node      * @param before deleted node      * @return  {@code true} if the node should be included      */
 name|boolean
 name|includeDelete
@@ -149,6 +135,17 @@ name|name
 parameter_list|,
 name|NodeState
 name|moved
+parameter_list|)
+function_decl|;
+comment|/**      * Include a reordered node      * @param name        name of the reordered node      * @param reordered   the reordered node      * @return  {@code true} if the node should be included      */
+name|boolean
+name|includeReorder
+parameter_list|(
+name|String
+name|name
+parameter_list|,
+name|NodeState
+name|reordered
 parameter_list|)
 function_decl|;
 comment|/**      * Factory for creating a filter instance for the given child node      * @param name  name of the child node      * @param before  before state of the child node      * @param after  after state of the child node      * @return  filter instance for filtering the child node or {@code null} to      *          exclude the sub tree rooted at this child node.      */
