@@ -29,6 +29,16 @@ name|java
 operator|.
 name|io
 operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
 name|InputStream
 import|;
 end_import
@@ -125,7 +135,7 @@ name|String
 name|blobId
 parameter_list|)
 throws|throws
-name|Exception
+name|IOException
 block|{
 name|Command
 argument_list|<
@@ -173,7 +183,7 @@ name|int
 name|length
 parameter_list|)
 throws|throws
-name|Exception
+name|IOException
 block|{
 name|Command
 argument_list|<
@@ -216,7 +226,7 @@ name|InputStream
 name|is
 parameter_list|)
 throws|throws
-name|Exception
+name|IOException
 block|{
 name|Command
 argument_list|<

@@ -27,67 +27,63 @@ name|IOException
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|InputStream
-import|;
-end_import
-
 begin_comment
-comment|/**  * An interface to store and read large binary objects.  */
+comment|/**  * A blob store that support garbage collection.  */
 end_comment
 
 begin_interface
 specifier|public
 interface|interface
+name|GarbageCollectableBlobStore
+extends|extends
 name|BlobStore
 block|{
-comment|/**      * Write a blob from an input stream.      * This method closes the input stream.      *      * @param in the input stream      * @return the blob id      */
+comment|/**      * Set the block size used by this blob store, if the blob store splits      * binaries into blocks. If not, this setting is ignored.      *       * @param x the block size in bytes.      */
+name|void
+name|setBlockSize
+parameter_list|(
+name|int
+name|x
+parameter_list|)
+function_decl|;
+comment|/**      * Write a blob from a temporary file. The temporary file is removed      * afterwards. A file based blob stores might simply rename the file, so      * that no additional writes are necessary.      *      * @param tempFilePath the temporary file      * @return the blob id      */
 name|String
 name|writeBlob
 parameter_list|(
-name|InputStream
-name|in
+name|String
+name|tempFileName
 parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
-comment|/**      * Read a number of bytes from a blob.      *       * @param blobId the blob id      * @param pos the position within the blob      * @param buff the target byte array      * @param off the offset within the target array      * @param length the number of bytes to read      * @return the number of bytes read      */
+comment|/**      * Remove all unused blocks.      *       * @return the number of removed blocks      */
 name|int
-name|readBlob
-parameter_list|(
-name|String
-name|blobId
-parameter_list|,
-name|long
-name|pos
-parameter_list|,
-name|byte
-index|[]
-name|buff
-parameter_list|,
-name|int
-name|off
-parameter_list|,
-name|int
-name|length
-parameter_list|)
+name|sweep
+parameter_list|()
 throws|throws
 name|IOException
 function_decl|;
-comment|/**      * Get the length of the blob.      *       * @param blobId the blob id      * @return the length      */
-name|long
-name|getBlobLength
-parameter_list|(
-name|String
-name|blobId
-parameter_list|)
+comment|/**      * Start the mark phase.      */
+name|void
+name|startMark
+parameter_list|()
 throws|throws
 name|IOException
+function_decl|;
+comment|/**      * Clear all objects marked as "transiently in use".      */
+name|void
+name|clearInUse
+parameter_list|()
+function_decl|;
+comment|/**      * Clear the cache.      */
+name|void
+name|clearCache
+parameter_list|()
+function_decl|;
+comment|/**      * Get the minimum block size (if there is any).      *       * @return the block size      */
+name|long
+name|getBlockSizeMin
+parameter_list|()
 function_decl|;
 block|}
 end_interface

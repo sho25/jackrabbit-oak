@@ -253,7 +253,7 @@ name|byte
 index|[]
 name|readFully
 parameter_list|(
-name|AbstractBlobStore
+name|BlobStore
 name|store
 parameter_list|,
 name|String

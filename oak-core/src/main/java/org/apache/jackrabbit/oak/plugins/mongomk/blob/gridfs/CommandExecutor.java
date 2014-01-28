@@ -23,6 +23,16 @@ name|gridfs
 package|;
 end_package
 
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
 begin_comment
 comment|/**  * The executor part of the<a href="http://en.wikipedia.org/wiki/Command_pattern">Command Pattern</a>.  *  *<p>  * The implementation of this class contains the business logic to execute a command.  *</p>  *  * @see<a href="http://en.wikipedia.org/wiki/Command_pattern">Command Pattern</a>  * @see Command  */
 end_comment
@@ -32,7 +42,7 @@ specifier|public
 interface|interface
 name|CommandExecutor
 block|{
-comment|/**      * Executes the given {@link Command} and returns the result.      *      *<p>      * If an retry behavior is specified this will be taken care of by the implementation as well.      *</p>      *      * @param<T> the command type      * @param command      * @return The result of the execution.      * @throws Exception If an error occurred while executing.      */
+comment|/**      * Executes the given {@link Command} and returns the result.      *      *<p>      * If an retry behavior is specified this will be taken care of by the implementation as well.      *</p>      *      * @param<T> the command type      * @param command      * @return The result of the execution.      * @throws IOException If an error occurred while executing.      */
 parameter_list|<
 name|T
 parameter_list|>
@@ -46,7 +56,7 @@ argument_list|>
 name|command
 parameter_list|)
 throws|throws
-name|Exception
+name|IOException
 function_decl|;
 block|}
 end_interface

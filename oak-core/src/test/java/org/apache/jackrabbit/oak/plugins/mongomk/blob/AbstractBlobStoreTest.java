@@ -193,7 +193,7 @@ name|mk
 operator|.
 name|blobs
 operator|.
-name|AbstractBlobStore
+name|BlobStore
 import|;
 end_import
 
@@ -226,6 +226,22 @@ operator|.
 name|blobs
 operator|.
 name|FileBlobStore
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|mk
+operator|.
+name|blobs
+operator|.
+name|GarbageCollectableBlobStore
 import|;
 end_import
 
@@ -302,7 +318,7 @@ class|class
 name|AbstractBlobStoreTest
 block|{
 specifier|public
-name|AbstractBlobStore
+name|GarbageCollectableBlobStore
 name|store
 decl_stmt|;
 comment|/**      * Should be overridden by subclasses to set the {@link #store} variable.      *       * @throws Exception      */
@@ -1771,7 +1787,7 @@ specifier|static
 name|void
 name|extractFiles
 parameter_list|(
-name|AbstractBlobStore
+name|BlobStore
 name|store
 parameter_list|,
 name|String
@@ -1951,7 +1967,7 @@ specifier|static
 name|String
 name|addFiles
 parameter_list|(
-name|AbstractBlobStore
+name|BlobStore
 name|store
 parameter_list|,
 name|String

@@ -242,7 +242,7 @@ index|[]
 name|data
 parameter_list|)
 throws|throws
-name|Exception
+name|IOException
 block|{
 name|String
 name|id
@@ -479,7 +479,7 @@ name|void
 name|startMark
 parameter_list|()
 throws|throws
-name|Exception
+name|IOException
 block|{
 name|minLastModified
 operator|=
@@ -617,7 +617,7 @@ name|int
 name|sweep
 parameter_list|()
 throws|throws
-name|Exception
+name|IOException
 block|{
 name|DBObject
 name|query
