@@ -15,7 +15,9 @@ name|oak
 operator|.
 name|plugins
 operator|.
-name|rdbpersistence
+name|document
+operator|.
+name|rdb
 package|;
 end_package
 

@@ -5287,6 +5287,7 @@ name|clusterId
 return|;
 block|}
 comment|//----------------------< background operations>---------------------------
+specifier|public
 name|void
 name|runBackgroundOperations
 parameter_list|()

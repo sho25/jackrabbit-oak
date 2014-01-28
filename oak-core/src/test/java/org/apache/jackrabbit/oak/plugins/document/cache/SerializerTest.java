@@ -137,6 +137,8 @@ name|plugins
 operator|.
 name|document
 operator|.
+name|memory
+operator|.
 name|MemoryDocumentStore
 import|;
 end_import

@@ -165,6 +165,7 @@ implements|implements
 name|CacheValue
 block|{
 comment|/**      * The node id, which contains the depth of the path      * (0 for root, 1 for children of the root), and then the path.      */
+specifier|public
 specifier|static
 specifier|final
 name|String
@@ -173,6 +174,7 @@ init|=
 literal|"_id"
 decl_stmt|;
 comment|/**      * The modification count on the document. This is an long value      * incremented on every modification.      */
+specifier|public
 specifier|static
 specifier|final
 name|String

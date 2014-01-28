@@ -233,6 +233,26 @@ name|plugins
 operator|.
 name|document
 operator|.
+name|memory
+operator|.
+name|MemoryDocumentStore
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|document
+operator|.
 name|util
 operator|.
 name|Utils
@@ -438,6 +458,7 @@ init|=
 literal|"_collisions"
 decl_stmt|;
 comment|/**      * The modified time (5 second resolution).      */
+specifier|public
 specifier|static
 specifier|final
 name|String
