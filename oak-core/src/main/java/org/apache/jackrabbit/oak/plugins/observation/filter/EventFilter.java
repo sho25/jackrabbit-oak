@@ -137,10 +137,13 @@ name|NodeState
 name|moved
 parameter_list|)
 function_decl|;
-comment|/**      * Include a reordered node      * @param name        name of the reordered node      * @param reordered   the reordered node      * @return  {@code true} if the node should be included      */
+comment|/**      * Include a reordered node      * @param destName    name of the {@code orderBefore()} destination node      * @param name        name of the reordered node      * @param reordered   the reordered node      * @return  {@code true} if the node should be included      */
 name|boolean
 name|includeReorder
 parameter_list|(
+name|String
+name|destName
+parameter_list|,
 name|String
 name|name
 parameter_list|,

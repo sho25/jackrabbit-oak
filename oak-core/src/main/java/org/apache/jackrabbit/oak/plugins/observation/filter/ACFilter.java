@@ -438,6 +438,7 @@ name|NodeState
 name|moved
 parameter_list|)
 block|{
+comment|// TODO: check access to the source path, it might not be accessible
 return|return
 name|treePermission
 operator|.
@@ -459,12 +460,16 @@ name|boolean
 name|includeReorder
 parameter_list|(
 name|String
+name|destName
+parameter_list|,
+name|String
 name|name
 parameter_list|,
 name|NodeState
 name|reordered
 parameter_list|)
 block|{
+comment|// TODO: check access to the dest name, it might not be accessible
 return|return
 name|treePermission
 operator|.
