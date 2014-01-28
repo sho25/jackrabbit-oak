@@ -433,11 +433,11 @@ literal|true
 argument_list|,
 name|label
 operator|=
-literal|"%oak.mongons.label"
+literal|"%oak.documentns.label"
 argument_list|,
 name|description
 operator|=
-literal|"%oak.mongons.description"
+literal|"%oak.documentns.description"
 argument_list|,
 name|policy
 operator|=
@@ -788,14 +788,14 @@ name|isInfoEnabled
 argument_list|()
 condition|)
 block|{
-comment|//Take care around not logging the uri directly as it
-comment|//might contain passwords
+comment|// Take care around not logging the uri directly as it
+comment|// might contain passwords
 name|String
 name|type
 init|=
 name|useMK
 condition|?
-literal|"MicroKernel"
+literal|"MK"
 else|:
 literal|"NodeStore"
 decl_stmt|;
@@ -803,7 +803,7 @@ name|logger
 operator|.
 name|info
 argument_list|(
-literal|"Starting MongoDB {} with host={}, db={}, cache size (MB)={}, Off Heap Cache size (MB)={}"
+literal|"Starting Document{} with host={}, db={}, cache size (MB)={}, Off Heap Cache size (MB)={}"
 argument_list|,
 operator|new
 name|Object

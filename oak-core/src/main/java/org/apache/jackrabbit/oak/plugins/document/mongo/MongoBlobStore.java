@@ -17,7 +17,7 @@ name|plugins
 operator|.
 name|document
 operator|.
-name|blob
+name|mongo
 package|;
 end_package
 

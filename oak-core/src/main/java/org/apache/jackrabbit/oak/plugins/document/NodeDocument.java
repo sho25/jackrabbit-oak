@@ -4452,7 +4452,7 @@ name|CacheValue
 implements|,
 name|Cloneable
 block|{
-comment|/**          * The child node names, ordered as stored in MongoDB.          */
+comment|/**          * The child node names, ordered as stored in DocumentStore.          */
 name|ArrayList
 argument_list|<
 name|String

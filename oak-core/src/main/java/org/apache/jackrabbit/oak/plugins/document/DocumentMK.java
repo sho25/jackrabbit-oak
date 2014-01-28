@@ -413,7 +413,7 @@ name|plugins
 operator|.
 name|document
 operator|.
-name|blob
+name|mongo
 operator|.
 name|MongoBlobStore
 import|;
@@ -536,7 +536,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A MicroKernel implementation that stores the data in a MongoDB.  */
+comment|/**  * A MicroKernel implementation that stores the data in a {@link DocumentStore}.  */
 end_comment
 
 begin_class
@@ -556,7 +556,7 @@ name|Integer
 operator|.
 name|getInteger
 argument_list|(
-literal|"oak.mongoMK.manyChildren"
+literal|"oak.documentMK.manyChildren"
 argument_list|,
 literal|50
 argument_list|)
@@ -575,7 +575,7 @@ name|System
 operator|.
 name|getProperty
 argument_list|(
-literal|"oak.mongoMK.lirsCache"
+literal|"oak.documentMK.lirsCache"
 argument_list|,
 literal|"false"
 argument_list|)
@@ -596,19 +596,19 @@ name|System
 operator|.
 name|getProperty
 argument_list|(
-literal|"oak.mongoMK.fastDiff"
+literal|"oak.documentMK.fastDiff"
 argument_list|,
 literal|"true"
 argument_list|)
 argument_list|)
 decl_stmt|;
-comment|/**      * The MongoDB store.      */
+comment|/**      * The node store.      */
 specifier|protected
 specifier|final
 name|DocumentNodeStore
 name|nodeStore
 decl_stmt|;
-comment|/**      * The MongoDB store (might be used by multiple MongoMKs).      */
+comment|/**      * The document store (might be used by multiple DocumentMKs).      */
 specifier|protected
 specifier|final
 name|DocumentStore
@@ -673,7 +673,7 @@ name|CacheStats
 argument_list|(
 name|diffCache
 argument_list|,
-literal|"MongoMk-DiffCache"
+literal|"DocumentMk-DiffCache"
 argument_list|,
 name|builder
 operator|.
@@ -1314,7 +1314,7 @@ expr_stmt|;
 block|}
 block|}
 comment|// TODO this does not work well for large child node lists
-comment|// use a MongoDB index instead
+comment|// use a document store index instead
 name|int
 name|max
 init|=
@@ -3933,7 +3933,7 @@ name|Integer
 operator|.
 name|getInteger
 argument_list|(
-literal|"oak.mongoMK.clusterId"
+literal|"oak.documentMK.clusterId"
 argument_list|,
 literal|0
 argument_list|)

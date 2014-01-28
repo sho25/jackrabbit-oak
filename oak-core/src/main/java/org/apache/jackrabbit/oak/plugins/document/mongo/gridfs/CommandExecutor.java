@@ -17,76 +17,49 @@ name|plugins
 operator|.
 name|document
 operator|.
-name|blob
+name|mongo
 operator|.
 name|gridfs
 package|;
 end_package
 
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
 begin_comment
-comment|/**  * Base {@code Command} implementation.  *  * @param<T> The result type of the {@code Command}.  */
+comment|/**  * The executor part of the<a href="http://en.wikipedia.org/wiki/Command_pattern">Command Pattern</a>.  *  *<p>  * The implementation of this class contains the business logic to execute a command.  *</p>  *  * @see<a href="http://en.wikipedia.org/wiki/Command_pattern">Command Pattern</a>  * @see Command  */
 end_comment
 
-begin_class
+begin_interface
 specifier|public
-specifier|abstract
-class|class
-name|BaseCommand
+interface|interface
+name|CommandExecutor
+block|{
+comment|/**      * Executes the given {@link Command} and returns the result.      *      *<p>      * If an retry behavior is specified this will be taken care of by the implementation as well.      *</p>      *      * @param<T> the command type      * @param command      * @return The result of the execution.      * @throws IOException If an error occurred while executing.      */
 parameter_list|<
 name|T
 parameter_list|>
-implements|implements
+name|T
+name|execute
+parameter_list|(
 name|Command
 argument_list|<
 name|T
 argument_list|>
-block|{
-comment|/**      * Constructs a base command.      */
-specifier|public
-name|BaseCommand
-parameter_list|()
-block|{     }
-annotation|@
-name|Override
-specifier|public
-name|int
-name|getNumOfRetries
-parameter_list|()
-block|{
-return|return
-literal|0
-return|;
-block|}
-annotation|@
-name|Override
-specifier|public
-name|boolean
-name|needsRetry
-parameter_list|(
-name|Exception
-name|e
+name|command
 parameter_list|)
-block|{
-return|return
-literal|false
-return|;
+throws|throws
+name|IOException
+function_decl|;
 block|}
-annotation|@
-name|Override
-specifier|public
-name|boolean
-name|needsRetry
-parameter_list|(
-name|T
-name|result
-parameter_list|)
-block|{
-return|return
-literal|false
-return|;
-block|}
-block|}
-end_class
+end_interface
 
 end_unit
 

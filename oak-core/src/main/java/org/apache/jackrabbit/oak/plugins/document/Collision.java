@@ -322,7 +322,7 @@ return|return
 name|ourRev
 return|;
 block|}
-comment|/**      * Marks the commit root of the change to the given<code>document</code> in      *<code>revision</code>.      *       * @param document the MongoDB document.      * @param revision the revision of the commit to annotated with a collision      *            marker.      * @param store the document store.      * @return<code>true</code> if the commit for the given revision was marked      *         successfully;<code>false</code> otherwise.      */
+comment|/**      * Marks the commit root of the change to the given<code>document</code> in      *<code>revision</code>.      *       * @param document the document.      * @param revision the revision of the commit to annotated with a collision      *            marker.      * @param store the document store.      * @return<code>true</code> if the commit for the given revision was marked      *         successfully;<code>false</code> otherwise.      */
 specifier|private
 specifier|static
 name|boolean

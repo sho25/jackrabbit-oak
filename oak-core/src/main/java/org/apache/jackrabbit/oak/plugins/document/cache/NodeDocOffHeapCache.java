@@ -665,7 +665,7 @@ name|CacheStats
 argument_list|(
 name|offHeapCache
 argument_list|,
-literal|"MongoMk-Documents-L2"
+literal|"DocumentMk-Documents-L2"
 argument_list|,
 name|builder
 operator|.

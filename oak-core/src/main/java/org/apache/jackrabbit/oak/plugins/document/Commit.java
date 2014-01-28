@@ -761,7 +761,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Apply the changes to the document store (to update MongoDB).      */
+comment|/**      * Apply the changes to the document store.      */
 name|void
 name|applyToDocumentStore
 parameter_list|()
@@ -772,7 +772,7 @@ literal|null
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Apply the changes to the document store (to update MongoDB).      *      * @param baseBranchRevision the base revision of this commit. Currently only      *                     used for branch commits.      */
+comment|/**      * Apply the changes to the document store.      *      * @param baseBranchRevision the base revision of this commit. Currently only      *                     used for branch commits.      */
 name|void
 name|applyToDocumentStore
 parameter_list|(

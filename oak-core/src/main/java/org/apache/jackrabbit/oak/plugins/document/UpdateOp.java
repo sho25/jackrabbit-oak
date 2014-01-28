@@ -98,7 +98,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A MongoDB "update" operation for one document.  */
+comment|/**  * A DocumentStore "update" operation for one document.  */
 end_comment
 
 begin_class
@@ -698,14 +698,14 @@ operator|+
 name|changes
 return|;
 block|}
-comment|/**      * A MongoDB operation for a given key within a document.       */
+comment|/**      * A DocumentStore operation for a given key within a document.      */
 specifier|public
 specifier|static
 specifier|final
 class|class
 name|Operation
 block|{
-comment|/**          * The MongoDB operation type.          */
+comment|/**          * The DocumentStore operation type.          */
 specifier|public
 enum|enum
 name|Type

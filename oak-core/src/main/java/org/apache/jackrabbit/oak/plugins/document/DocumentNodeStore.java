@@ -744,7 +744,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Implementation of a NodeStore on MongoDB.  */
+comment|/**  * Implementation of a NodeStore on {@link DocumentStore}.  */
 end_comment
 
 begin_class
@@ -793,7 +793,7 @@ name|Integer
 operator|.
 name|getInteger
 argument_list|(
-literal|"oak.mongoMK.childrenCacheLimit"
+literal|"oak.documentMK.childrenCacheLimit"
 argument_list|,
 literal|16
 operator|*
@@ -811,7 +811,7 @@ name|Integer
 operator|.
 name|getInteger
 argument_list|(
-literal|"oak.mongoMK.revisionAge"
+literal|"oak.documentMK.revisionAge"
 argument_list|,
 literal|60
 operator|*
@@ -833,7 +833,7 @@ name|System
 operator|.
 name|getProperty
 argument_list|(
-literal|"oak.mongoMK.backgroundOps"
+literal|"oak.documentMK.backgroundOps"
 argument_list|,
 literal|"true"
 argument_list|)
@@ -852,7 +852,7 @@ literal|60
 operator|*
 literal|1000
 decl_stmt|;
-comment|/**      * The MongoDB store (might be used by multiple MongoMKs).      */
+comment|/**      * The document store (might be used by multiple node stores).      */
 specifier|protected
 specifier|final
 name|DocumentStore
@@ -1038,7 +1038,7 @@ specifier|final
 name|CacheStats
 name|docChildrenCacheStats
 decl_stmt|;
-comment|/**      * The MongoDB blob store.      */
+comment|/**      * The blob store.      */
 specifier|private
 specifier|final
 name|BlobStore
@@ -1216,7 +1216,7 @@ name|Integer
 operator|.
 name|getInteger
 argument_list|(
-literal|"oak.mongoMK.clusterId"
+literal|"oak.documentMK.clusterId"
 argument_list|,
 name|cid
 argument_list|)
@@ -1313,7 +1313,7 @@ name|CacheStats
 argument_list|(
 name|nodeCache
 argument_list|,
-literal|"MongoMk-Node"
+literal|"DocumentMk-Node"
 argument_list|,
 name|builder
 operator|.
@@ -1345,7 +1345,7 @@ name|CacheStats
 argument_list|(
 name|nodeChildrenCache
 argument_list|,
-literal|"MongoMk-NodeChildren"
+literal|"DocumentMk-NodeChildren"
 argument_list|,
 name|builder
 operator|.
@@ -1377,7 +1377,7 @@ name|CacheStats
 argument_list|(
 name|docChildrenCache
 argument_list|,
-literal|"MongoMk-DocChildren"
+literal|"DocumentMk-DocChildren"
 argument_list|,
 name|builder
 operator|.
@@ -3779,7 +3779,7 @@ argument_list|)
 decl_stmt|;
 comment|// incomplete cache entries must not be updated with
 comment|// names at the end of the list because there might be
-comment|// a next name in MongoDB smaller than the one added
+comment|// a next name in DocumentStore smaller than the one added
 if|if
 condition|(
 operator|!
@@ -5069,7 +5069,7 @@ throws|throws
 name|CommitFailedException
 block|{
 return|return
-name|asMongoRootBuilder
+name|asDocumentRootBuilder
 argument_list|(
 name|builder
 argument_list|)
@@ -5097,7 +5097,7 @@ name|builder
 parameter_list|)
 block|{
 return|return
-name|asMongoRootBuilder
+name|asDocumentRootBuilder
 argument_list|(
 name|builder
 argument_list|)
@@ -5119,7 +5119,7 @@ name|builder
 parameter_list|)
 block|{
 return|return
-name|asMongoRootBuilder
+name|asDocumentRootBuilder
 argument_list|(
 name|builder
 argument_list|)
@@ -6145,7 +6145,7 @@ block|}
 specifier|private
 specifier|static
 name|DocumentRootBuilder
-name|asMongoRootBuilder
+name|asDocumentRootBuilder
 parameter_list|(
 name|NodeBuilder
 name|builder

@@ -251,7 +251,7 @@ name|UpdateOp
 name|updateOp
 parameter_list|)
 function_decl|;
-comment|/**      * Create or update a document. For MongoDb, this is using "findAndModify" with      * the "upsert" flag (insert or update). The returned document is immutable.      *      * @param<T> the document type      * @param collection the collection      * @param update the update operation      * @return the old document or<code>null</code> if it didn't exist before.      * @throws MicroKernelException if the operation failed.      */
+comment|/**      * Create or update a document. For MongoDB, this is using "findAndModify" with      * the "upsert" flag (insert or update). The returned document is immutable.      *      * @param<T> the document type      * @param collection the collection      * @param update the update operation      * @return the old document or<code>null</code> if it didn't exist before.      * @throws MicroKernelException if the operation failed.      */
 annotation|@
 name|CheckForNull
 argument_list|<
