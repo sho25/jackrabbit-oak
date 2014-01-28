@@ -381,6 +381,16 @@ name|JCR_ALL
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|assertFalse
+argument_list|(
+name|testSession
+operator|.
+name|nodeExists
+argument_list|(
+name|childNPath
+argument_list|)
+argument_list|)
+expr_stmt|;
 name|testSession
 operator|.
 name|getWorkspace
@@ -460,12 +470,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-annotation|@
-name|Ignore
-argument_list|(
-literal|"OAK-920"
-argument_list|)
-comment|// FIXME
 annotation|@
 name|Test
 specifier|public
@@ -582,12 +586,6 @@ argument_list|)
 expr_stmt|;
 block|}
 annotation|@
-name|Ignore
-argument_list|(
-literal|"OAK-920"
-argument_list|)
-comment|// FIXME
-annotation|@
 name|Test
 specifier|public
 name|void
@@ -604,7 +602,7 @@ name|privilegesFromName
 argument_list|(
 name|Privilege
 operator|.
-name|JCR_LOCK_MANAGEMENT
+name|JCR_READ_ACCESS_CONTROL
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -616,7 +614,7 @@ name|privilegesFromName
 argument_list|(
 name|PrivilegeConstants
 operator|.
-name|REP_WRITE
+name|JCR_ALL
 argument_list|)
 argument_list|)
 expr_stmt|;
