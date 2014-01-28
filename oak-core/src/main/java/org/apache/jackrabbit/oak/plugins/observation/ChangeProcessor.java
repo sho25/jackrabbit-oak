@@ -850,11 +850,11 @@ argument_list|,
 name|basePath
 argument_list|)
 decl_stmt|;
-name|EventGenerator
+name|EventQueue
 name|events
 init|=
 operator|new
-name|EventGenerator
+name|EventQueue
 argument_list|(
 name|namePathMapper
 argument_list|,
