@@ -867,6 +867,17 @@ parameter_list|)
 block|{
 if|if
 condition|(
+name|fullQueue
+argument_list|()
+condition|)
+block|{
+return|return
+literal|false
+return|;
+block|}
+elseif|else
+if|if
+condition|(
 name|beforeEvent
 argument_list|()
 condition|)
@@ -919,7 +930,6 @@ argument_list|,
 name|after
 argument_list|)
 expr_stmt|;
-return|return
 name|addChildDiff
 argument_list|(
 name|name
@@ -928,6 +938,10 @@ name|MISSING_NODE
 argument_list|,
 name|after
 argument_list|)
+expr_stmt|;
+return|return
+name|afterEvent
+argument_list|()
 return|;
 block|}
 else|else
@@ -955,11 +969,21 @@ parameter_list|)
 block|{
 if|if
 condition|(
-name|beforeEvent
+name|fullQueue
 argument_list|()
 condition|)
 block|{
 return|return
+literal|false
+return|;
+block|}
+elseif|else
+if|if
+condition|(
+name|beforeEvent
+argument_list|()
+condition|)
+block|{
 name|addChildDiff
 argument_list|(
 name|name
@@ -968,6 +992,10 @@ name|before
 argument_list|,
 name|after
 argument_list|)
+expr_stmt|;
+return|return
+name|afterEvent
+argument_list|()
 return|;
 block|}
 else|else
@@ -992,6 +1020,17 @@ parameter_list|)
 block|{
 if|if
 condition|(
+name|fullQueue
+argument_list|()
+condition|)
+block|{
+return|return
+literal|false
+return|;
+block|}
+elseif|else
+if|if
+condition|(
 name|beforeEvent
 argument_list|()
 condition|)
@@ -1005,7 +1044,6 @@ argument_list|,
 name|before
 argument_list|)
 expr_stmt|;
-return|return
 name|addChildDiff
 argument_list|(
 name|name
@@ -1014,6 +1052,10 @@ name|before
 argument_list|,
 name|MISSING_NODE
 argument_list|)
+expr_stmt|;
+return|return
+name|afterEvent
+argument_list|()
 return|;
 block|}
 else|else
@@ -1026,7 +1068,7 @@ block|}
 comment|//-------------------------------------------------------< private>--
 comment|/**          * Schedules a continuation for processing changes within the given          * child node, if changes within that subtree should be processed.          */
 specifier|private
-name|boolean
+name|void
 name|addChildDiff
 parameter_list|(
 name|String
@@ -1078,21 +1120,41 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+comment|/**          * Increases the event counter and checks whether the event should          * be processed, i.e. whether the initial skip count has been reached.          */
+specifier|private
+name|boolean
+name|beforeEvent
+parameter_list|()
+block|{
+return|return
+operator|++
+name|counter
+operator|>
+name|skip
+return|;
+block|}
+comment|/**          * Checks whether the diff queue has reached the maximum size limit,          * and postpones further processing of the current diff to later.          * Even though this postponement increases the size of the queue          * beyond the limit, doing so ultimately forces property-only          * diffs to the beginning of the queue, and thus helps to          * automatically clean up the backlog.          */
+specifier|private
+name|boolean
+name|fullQueue
+parameter_list|()
+block|{
 if|if
 condition|(
+name|counter
+operator|>
+name|skip
+comment|// must have processed at least one event
+operator|&&
 name|continuations
 operator|.
 name|size
 argument_list|()
-operator|>
+operator|>=
 name|MAX_QUEUED_CONTINUATIONS
 condition|)
 block|{
-comment|// Postpone further processing of the current continuation.
-comment|// Even though this increases the size of the queue beyond
-comment|// the limit, doing so ultimately forces property-only
-comment|// diffs to the beginning of the queue, and thus helps
-comment|// automatically clean up the backlog.
 name|continuations
 operator|.
 name|add
@@ -1115,29 +1177,15 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 return|return
-literal|false
+literal|true
 return|;
 block|}
 else|else
 block|{
 return|return
-name|afterEvent
-argument_list|()
+literal|false
 return|;
 block|}
-block|}
-comment|/**          * Increases the event counter and checks whether the event should          * be processed, i.e. whether the initial skip count has been reached.          */
-specifier|private
-name|boolean
-name|beforeEvent
-parameter_list|()
-block|{
-return|return
-operator|++
-name|counter
-operator|>
-name|skip
-return|;
 block|}
 comment|/**          * Checks whether enough events have already been processed in this          * continuation. If that is the case, we postpone further processing          * to a new continuation that will first skip all the initial events          * we've already seen. Otherwise we let the current diff continue.          */
 specifier|private
