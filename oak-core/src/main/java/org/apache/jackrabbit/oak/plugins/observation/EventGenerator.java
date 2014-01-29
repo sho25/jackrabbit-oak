@@ -316,7 +316,7 @@ specifier|private
 specifier|final
 name|LinkedList
 argument_list|<
-name|Continuation
+name|Runnable
 argument_list|>
 name|continuations
 init|=
@@ -389,26 +389,13 @@ name|isEmpty
 argument_list|()
 condition|)
 block|{
-name|Continuation
-name|c
-init|=
 name|continuations
 operator|.
 name|removeFirst
 argument_list|()
-decl_stmt|;
-name|c
 operator|.
-name|after
-operator|.
-name|compareAgainstBaseState
-argument_list|(
-name|c
-operator|.
-name|before
-argument_list|,
-name|c
-argument_list|)
+name|run
+argument_list|()
 expr_stmt|;
 block|}
 block|}
@@ -417,6 +404,8 @@ class|class
 name|Continuation
 implements|implements
 name|NodeStateDiff
+implements|,
+name|Runnable
 block|{
 comment|/**          * Filtered handler of detected content changes.          */
 specifier|private
@@ -488,6 +477,25 @@ operator|.
 name|skip
 operator|=
 name|skip
+expr_stmt|;
+block|}
+comment|//------------------------------------------------------< Runnable>--
+comment|/**          * Continues the content diff from the point where this          * continuation was created.          */
+annotation|@
+name|Override
+specifier|public
+name|void
+name|run
+parameter_list|()
+block|{
+name|after
+operator|.
+name|compareAgainstBaseState
+argument_list|(
+name|before
+argument_list|,
+name|this
+argument_list|)
 expr_stmt|;
 block|}
 comment|//-------------------------------------------------< NodeStateDiff>--
