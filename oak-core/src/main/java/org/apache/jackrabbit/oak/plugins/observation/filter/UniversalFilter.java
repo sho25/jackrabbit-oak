@@ -229,7 +229,7 @@ specifier|public
 interface|interface
 name|Selector
 block|{
-comment|/**          * Map a property event.          * @param filter  filter instance on which respective call back occurred.          * @param before  before state or {@code null} for          *                {@link EventFilter#propertyAdded(PropertyState)}          * @param after   after state or {@code null} for          *                {@link EventFilter#propertyDeleted(PropertyState)}          * @return a {@code NodeState} instance for basing the filtering criterion (predicate) upon          */
+comment|/**          * Map a property event.          * @param filter  filter instance on which respective call back occurred.          * @param before  before state or {@code null} for          *                {@link EventFilter#includeAdd(PropertyState)}          * @param after   after state or {@code null} for          *                {@link EventFilter#includeDelete(PropertyState)}          * @return a {@code NodeState} instance for basing the filtering criterion (predicate) upon          */
 annotation|@
 name|Nonnull
 name|NodeState
@@ -251,7 +251,7 @@ name|PropertyState
 name|after
 parameter_list|)
 function_decl|;
-comment|/**          * Map a node event.          * @param filter  filter instance on which respective call back occurred.          * @param name    name of the child node state          * @param before  before state or {@code null} for          *                {@link EventFilter#childNodeAdded(String, NodeState)}          * @param after   after state or {@code null} for          *                {@link EventFilter#childNodeDeleted(String, NodeState)}          * @return a NodeState instance for basing the filtering criterion (predicate) upon          */
+comment|/**          * Map a node event.          * @param filter  filter instance on which respective call back occurred.          * @param name    name of the child node state          * @param before  before state or {@code null} for          *                {@link EventFilter#includeAdd(String, NodeState)}          * @param after   after state or {@code null} for          *                {@link EventFilter#includeDelete(String, NodeState)}          * @return a NodeState instance for basing the filtering criterion (predicate) upon          */
 annotation|@
 name|Nonnull
 name|NodeState

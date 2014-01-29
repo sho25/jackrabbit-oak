@@ -83,6 +83,7 @@ implements|implements
 name|EventFilter
 block|{
 specifier|private
+specifier|static
 name|boolean
 name|isVisible
 parameter_list|(

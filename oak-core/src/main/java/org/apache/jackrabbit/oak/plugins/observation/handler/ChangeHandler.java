@@ -153,7 +153,7 @@ name|NodeState
 name|moved
 parameter_list|)
 function_decl|;
-comment|/**      * Notification for a reordered node      * @param destName    name of the {@code orderBefore()} destination node      * @param name        name of the moved node      * @param moved       moved node      */
+comment|/**      * Notification for a reordered node      * @param destName    name of the {@code orderBefore()} destination node      * @param name        name of the moved node      * @param reordered       moved node      */
 name|void
 name|nodeReordered
 parameter_list|(
