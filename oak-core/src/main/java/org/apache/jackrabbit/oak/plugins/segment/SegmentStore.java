@@ -21,21 +21,21 @@ end_package
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nullable
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|util
 operator|.
 name|UUID
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|CheckForNull
 import|;
 end_import
 
@@ -48,6 +48,9 @@ name|SegmentWriter
 name|getWriter
 parameter_list|()
 function_decl|;
+comment|/**      * Returns the named journal.      *      * @param name journal name      * @return named journal, or {@code null} if not found      */
+annotation|@
+name|CheckForNull
 name|Journal
 name|getJournal
 parameter_list|(
@@ -55,6 +58,9 @@ name|String
 name|name
 parameter_list|)
 function_decl|;
+comment|/**      * Reads the identified segment from this store.      *      * @param segmentId segment identifier      * @return identified segment, or {@code null} if not found      */
+annotation|@
+name|CheckForNull
 name|Segment
 name|readSegment
 parameter_list|(

@@ -53,6 +53,22 @@ end_import
 
 begin_import
 import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkState
+import|;
+end_import
+
+begin_import
+import|import static
 name|java
 operator|.
 name|lang
@@ -535,6 +551,15 @@ operator|.
 name|getJournal
 argument_list|(
 name|journal
+argument_list|)
+expr_stmt|;
+name|checkState
+argument_list|(
+name|this
+operator|.
+name|journal
+operator|!=
+literal|null
 argument_list|)
 expr_stmt|;
 name|this
