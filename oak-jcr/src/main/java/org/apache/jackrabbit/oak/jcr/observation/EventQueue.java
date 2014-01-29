@@ -447,7 +447,7 @@ if|if
 condition|(
 name|generator
 operator|.
-name|isComplete
+name|isDone
 argument_list|()
 condition|)
 block|{
@@ -502,7 +502,7 @@ if|if
 condition|(
 name|generator
 operator|.
-name|isComplete
+name|isDone
 argument_list|()
 condition|)
 block|{
@@ -570,7 +570,7 @@ condition|(
 operator|!
 name|generator
 operator|.
-name|isComplete
+name|isDone
 argument_list|()
 condition|)
 block|{
