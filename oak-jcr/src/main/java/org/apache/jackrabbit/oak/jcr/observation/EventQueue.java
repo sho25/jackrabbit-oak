@@ -345,7 +345,7 @@ init|=
 operator|new
 name|QueueingHandler
 argument_list|(
-name|queue
+name|this
 argument_list|,
 name|mapper
 argument_list|,
@@ -432,6 +432,22 @@ argument_list|,
 name|after
 argument_list|,
 name|handler
+argument_list|)
+expr_stmt|;
+block|}
+comment|/**      * Called by the {@link QueueingHandler} to add new events to the queue.      */
+name|void
+name|addEvent
+parameter_list|(
+name|Event
+name|event
+parameter_list|)
+block|{
+name|queue
+operator|.
+name|add
+argument_list|(
+name|event
 argument_list|)
 expr_stmt|;
 block|}

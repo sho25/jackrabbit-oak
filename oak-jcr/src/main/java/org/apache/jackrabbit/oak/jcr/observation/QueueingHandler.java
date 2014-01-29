@@ -65,29 +65,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|LinkedList
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|Map
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|jcr
-operator|.
-name|observation
-operator|.
-name|Event
 import|;
 end_import
 
@@ -312,10 +290,7 @@ name|afterReferenceable
 decl_stmt|;
 specifier|private
 specifier|final
-name|LinkedList
-argument_list|<
-name|Event
-argument_list|>
+name|EventQueue
 name|queue
 decl_stmt|;
 specifier|private
@@ -340,10 +315,7 @@ name|after
 decl_stmt|;
 name|QueueingHandler
 parameter_list|(
-name|LinkedList
-argument_list|<
-name|Event
-argument_list|>
+name|EventQueue
 name|queue
 parameter_list|,
 name|NamePathMapper
@@ -806,7 +778,7 @@ parameter_list|)
 block|{
 name|queue
 operator|.
-name|add
+name|addEvent
 argument_list|(
 operator|new
 name|ItemEvent
@@ -847,7 +819,7 @@ parameter_list|)
 block|{
 name|queue
 operator|.
-name|add
+name|addEvent
 argument_list|(
 operator|new
 name|ItemEvent
@@ -885,7 +857,7 @@ parameter_list|)
 block|{
 name|queue
 operator|.
-name|add
+name|addEvent
 argument_list|(
 operator|new
 name|ItemEvent
@@ -926,7 +898,7 @@ parameter_list|)
 block|{
 name|queue
 operator|.
-name|add
+name|addEvent
 argument_list|(
 operator|new
 name|NodeEvent
@@ -968,7 +940,7 @@ parameter_list|)
 block|{
 name|queue
 operator|.
-name|add
+name|addEvent
 argument_list|(
 operator|new
 name|NodeEvent
@@ -1014,7 +986,7 @@ parameter_list|)
 block|{
 name|queue
 operator|.
-name|add
+name|addEvent
 argument_list|(
 operator|new
 name|NodeEvent
@@ -1094,7 +1066,7 @@ parameter_list|)
 block|{
 name|queue
 operator|.
-name|add
+name|addEvent
 argument_list|(
 operator|new
 name|NodeEvent
