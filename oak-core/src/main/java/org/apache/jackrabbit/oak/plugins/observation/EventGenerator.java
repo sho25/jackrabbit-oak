@@ -554,7 +554,7 @@ name|beforeSet
 init|=
 name|newLinkedHashSet
 argument_list|(
-name|after
+name|before
 operator|.
 name|getValue
 argument_list|(
@@ -570,7 +570,7 @@ name|afterSet
 init|=
 name|newLinkedHashSet
 argument_list|(
-name|before
+name|after
 operator|.
 name|getValue
 argument_list|(
