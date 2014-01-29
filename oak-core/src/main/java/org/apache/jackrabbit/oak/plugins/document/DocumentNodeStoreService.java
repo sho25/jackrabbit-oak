@@ -903,6 +903,9 @@ expr_stmt|;
 name|registerJMXBeans
 argument_list|(
 name|mk
+operator|.
+name|getNodeStore
+argument_list|()
 argument_list|,
 name|context
 argument_list|)
@@ -1133,8 +1136,8 @@ specifier|private
 name|void
 name|registerJMXBeans
 parameter_list|(
-name|DocumentMK
-name|mk
+name|DocumentNodeStore
+name|store
 parameter_list|,
 name|BundleContext
 name|context
@@ -1161,7 +1164,7 @@ name|CacheStatsMBean
 operator|.
 name|class
 argument_list|,
-name|mk
+name|store
 operator|.
 name|getNodeCacheStats
 argument_list|()
@@ -1170,7 +1173,7 @@ name|CacheStatsMBean
 operator|.
 name|TYPE
 argument_list|,
-name|mk
+name|store
 operator|.
 name|getNodeCacheStats
 argument_list|()
@@ -1192,7 +1195,7 @@ name|CacheStatsMBean
 operator|.
 name|class
 argument_list|,
-name|mk
+name|store
 operator|.
 name|getNodeChildrenCacheStats
 argument_list|()
@@ -1201,7 +1204,7 @@ name|CacheStatsMBean
 operator|.
 name|TYPE
 argument_list|,
-name|mk
+name|store
 operator|.
 name|getNodeChildrenCacheStats
 argument_list|()
@@ -1223,7 +1226,7 @@ name|CacheStatsMBean
 operator|.
 name|class
 argument_list|,
-name|mk
+name|store
 operator|.
 name|getDiffCacheStats
 argument_list|()
@@ -1232,7 +1235,7 @@ name|CacheStatsMBean
 operator|.
 name|TYPE
 argument_list|,
-name|mk
+name|store
 operator|.
 name|getDiffCacheStats
 argument_list|()
@@ -1254,7 +1257,7 @@ name|CacheStatsMBean
 operator|.
 name|class
 argument_list|,
-name|mk
+name|store
 operator|.
 name|getDocChildrenCacheStats
 argument_list|()
@@ -1263,7 +1266,7 @@ name|CacheStatsMBean
 operator|.
 name|TYPE
 argument_list|,
-name|mk
+name|store
 operator|.
 name|getDocChildrenCacheStats
 argument_list|()
@@ -1276,7 +1279,7 @@ expr_stmt|;
 name|DocumentStore
 name|ds
 init|=
-name|mk
+name|store
 operator|.
 name|getDocumentStore
 argument_list|()
