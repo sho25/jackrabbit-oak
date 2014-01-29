@@ -165,9 +165,7 @@ name|plugins
 operator|.
 name|observation
 operator|.
-name|handler
-operator|.
-name|ChangeHandler
+name|EventHandler
 import|;
 end_import
 
@@ -243,7 +241,7 @@ begin_class
 class|class
 name|QueueingHandler
 implements|implements
-name|ChangeHandler
+name|EventHandler
 block|{
 comment|/**      * Dummy session identifier used to identify external commits.      */
 specifier|private
@@ -739,7 +737,7 @@ comment|//-----------------------------------------------------< ChangeHandler>-
 annotation|@
 name|Override
 specifier|public
-name|ChangeHandler
+name|EventHandler
 name|getChildHandler
 parameter_list|(
 name|String

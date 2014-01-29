@@ -16,8 +16,6 @@ operator|.
 name|plugins
 operator|.
 name|observation
-operator|.
-name|handler
 package|;
 end_package
 
@@ -66,18 +64,18 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Handler of content changes. Used to decouple processing of changes  * from the content diff logic that detects them.  *<p>  * As the content diff recurses down the content tree, it will call the  * {@link #getChildHandler(String, NodeState, NodeState)} method to  * specialize the handler instance for each node under which changes are  * detected. The other handler methods always apply to the properties  * and direct children of the node for which that handler instance is  * specialized. The handler is expected to keep track of contextual  * information like the path or identifier of the current node based on  * the sequence of those specialization calls.  *<p>  * All names and paths passed to handler methods use unmapped Oak names.  */
+comment|/**  * Handler of content change events. Used to decouple processing of changes  * from the content diff logic that detects them.  *<p>  * As the content diff recurses down the content tree, it will call the  * {@link #getChildHandler(String, NodeState, NodeState)} method to  * specialize the handler instance for each node under which changes are  * detected. The other handler methods always apply to the properties  * and direct children of the node for which that handler instance is  * specialized. The handler is expected to keep track of contextual  * information like the path or identifier of the current node based on  * the sequence of those specialization calls.  *<p>  * All names and paths passed to handler methods use unmapped Oak names.  */
 end_comment
 
 begin_interface
 specifier|public
 interface|interface
-name|ChangeHandler
+name|EventHandler
 block|{
-comment|/**      * Returns a handler of changes within the given child node, or      * {@code null} if changes within that child are not to be processed.      *      * @param name  name of the child node      * @param before before state of the child node, possibly non-existent      * @param after  after state of the child node, possibly non-existent      * @return handler of changes within the child node, or {@code null}      */
+comment|/**      * Returns a handler of events within the given child node, or      * {@code null} if changes within that child are not to be processed.      *      * @param name  name of the child node      * @param before before state of the child node, possibly non-existent      * @param after  after state of the child node, possibly non-existent      * @return handler of events within the child node, or {@code null}      */
 annotation|@
 name|CheckForNull
-name|ChangeHandler
+name|EventHandler
 name|getChildHandler
 parameter_list|(
 name|String

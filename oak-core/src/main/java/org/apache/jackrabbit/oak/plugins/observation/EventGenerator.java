@@ -203,18 +203,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|event
-operator|.
-name|ChangeListener
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -226,26 +214,6 @@ operator|.
 name|api
 operator|.
 name|PropertyState
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|plugins
-operator|.
-name|observation
-operator|.
-name|handler
-operator|.
-name|ChangeHandler
 import|;
 end_import
 
@@ -286,7 +254,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Continuation-based content diff implementation that generates  * {@link ChangeHandler} callbacks by recursing down a content diff  * in a way that guarantees that only a finite number of callbacks  * will be made during a {@link #generate()} method call, regardless  * of how large or complex the content diff is.  *<p>  * A simple usage pattern would look like this:  *<pre>  * EventGenerator generator = new EventGenerator(before, after, handler);  * while (generator.isDone()) {  *     generator.generate();  * }  *</pre>  */
+comment|/**  * Continuation-based content diff implementation that generates  * {@link EventHandler} callbacks by recursing down a content diff  * in a way that guarantees that only a finite number of callbacks  * will be made during a {@link #generate()} method call, regardless  * of how large or complex the content diff is.  *<p>  * A simple usage pattern would look like this:  *<pre>  * EventGenerator generator = new EventGenerator(before, after, handler);  * while (generator.isDone()) {  *     generator.generate();  * }  *</pre>  */
 end_comment
 
 begin_class
@@ -339,7 +307,7 @@ name|after
 parameter_list|,
 annotation|@
 name|Nonnull
-name|ChangeHandler
+name|EventHandler
 name|handler
 parameter_list|)
 block|{
@@ -374,7 +342,7 @@ name|isEmpty
 argument_list|()
 return|;
 block|}
-comment|/**      * Generates a finite number of {@link ChangeListener} callbacks based      * on the content changes that have yet to be processed. Further processing      * (even if no callbacks were made) may be postponed to a future      * {@link #generate()} call, until the {@link #isDone()} method finally      * return {@code true}.      */
+comment|/**      * Generates a finite number of {@link EventHandler} callbacks based      * on the content changes that have yet to be processed. Further processing      * (even if no callbacks were made) may be postponed to a future      * {@link #generate()} call, until the {@link #isDone()} method finally      * return {@code true}.      */
 specifier|public
 name|void
 name|generate
@@ -410,7 +378,7 @@ block|{
 comment|/**          * Filtered handler of detected content changes.          */
 specifier|private
 specifier|final
-name|ChangeHandler
+name|EventHandler
 name|handler
 decl_stmt|;
 comment|/**          * Before state, possibly non-existent.          */
@@ -441,7 +409,7 @@ decl_stmt|;
 specifier|private
 name|Continuation
 parameter_list|(
-name|ChangeHandler
+name|EventHandler
 name|handler
 parameter_list|,
 name|NodeState
@@ -1089,7 +1057,7 @@ name|NodeState
 name|after
 parameter_list|)
 block|{
-name|ChangeHandler
+name|EventHandler
 name|h
 init|=
 name|handler

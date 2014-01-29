@@ -16,8 +16,6 @@ operator|.
 name|plugins
 operator|.
 name|observation
-operator|.
-name|handler
 package|;
 end_package
 
@@ -86,7 +84,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Filtered change handler. This decorator class applies an {@link EventFilter}  * on all detected changes, and forwards the filtered changes to a given  * delegate change handler.  */
+comment|/**  * Filtered event handler. This decorator class applies an {@link EventFilter}  * on all detected changes, and forwards the filtered change events to a given  * delegate handler.  */
 end_comment
 
 begin_class
@@ -94,7 +92,7 @@ specifier|public
 class|class
 name|FilteredHandler
 implements|implements
-name|ChangeHandler
+name|EventHandler
 block|{
 specifier|private
 specifier|final
@@ -103,7 +101,7 @@ name|filter
 decl_stmt|;
 specifier|private
 specifier|final
-name|ChangeHandler
+name|EventHandler
 name|handler
 decl_stmt|;
 specifier|public
@@ -112,7 +110,7 @@ parameter_list|(
 name|EventFilter
 name|filter
 parameter_list|,
-name|ChangeHandler
+name|EventHandler
 name|handler
 parameter_list|)
 block|{
@@ -134,7 +132,7 @@ name|Override
 annotation|@
 name|CheckForNull
 specifier|public
-name|ChangeHandler
+name|EventHandler
 name|getChildHandler
 parameter_list|(
 name|String
@@ -168,7 +166,7 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|ChangeHandler
+name|EventHandler
 name|h
 init|=
 name|handler
