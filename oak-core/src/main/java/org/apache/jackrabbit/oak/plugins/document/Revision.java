@@ -513,23 +513,29 @@ return|return
 name|timestamp
 return|;
 block|}
-comment|/**      * Get the difference between two timestamps (a - b) in milliseconds.      *       * @param a the first timestamp      * @param b the second timestamp      * @return the difference in milliseconds      */
+comment|/**      * Get the timestamp difference between two revisions (r1 - r2) in      * milliseconds.      *       * @param r1 the first revision      * @param r2 the second revision      * @return the difference in milliseconds      */
 specifier|public
 specifier|static
 name|long
 name|getTimestampDifference
 parameter_list|(
-name|long
-name|a
+name|Revision
+name|r1
 parameter_list|,
-name|long
-name|b
+name|Revision
+name|r2
 parameter_list|)
 block|{
 return|return
-name|a
+name|r1
+operator|.
+name|getTimestamp
+argument_list|()
 operator|-
-name|b
+name|r2
+operator|.
+name|getTimestamp
+argument_list|()
 return|;
 block|}
 specifier|public
