@@ -7,6 +7,24 @@ begin_comment
 comment|/**  * The Oak Security Layer.  *  * See<a href="README.md">README.md</a> for more details.  */
 end_comment
 
+begin_annotation
+annotation|@
+name|Version
+argument_list|(
+literal|"0.16"
+argument_list|)
+end_annotation
+
+begin_annotation
+annotation|@
+name|Export
+argument_list|(
+name|optional
+operator|=
+literal|"provide:=true"
+argument_list|)
+end_annotation
+
 begin_package
 package|package
 name|org
@@ -20,6 +38,30 @@ operator|.
 name|security
 package|;
 end_package
+
+begin_import
+import|import
+name|aQute
+operator|.
+name|bnd
+operator|.
+name|annotation
+operator|.
+name|Version
+import|;
+end_import
+
+begin_import
+import|import
+name|aQute
+operator|.
+name|bnd
+operator|.
+name|annotation
+operator|.
+name|Export
+import|;
+end_import
 
 end_unit
 

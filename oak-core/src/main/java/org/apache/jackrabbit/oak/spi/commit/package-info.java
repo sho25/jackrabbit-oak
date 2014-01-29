@@ -4,7 +4,7 @@ comment|/*  * Licensed to the Apache Software Foundation (ASF) under one or more
 end_comment
 
 begin_comment
-comment|/**  * Oak repository API  */
+comment|/**  * Oak plugins. This package contains various oak-core extensions that are  * (still) too small to be placed into their own Maven components.  */
 end_comment
 
 begin_annotation
@@ -35,7 +35,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|api
+name|spi
+operator|.
+name|commit
 package|;
 end_package
 
@@ -47,7 +49,7 @@ name|bnd
 operator|.
 name|annotation
 operator|.
-name|Export
+name|Version
 import|;
 end_import
 
@@ -59,7 +61,7 @@ name|bnd
 operator|.
 name|annotation
 operator|.
-name|Version
+name|Export
 import|;
 end_import
 

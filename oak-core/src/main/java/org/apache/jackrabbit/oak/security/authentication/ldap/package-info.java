@@ -4,7 +4,11 @@ comment|/*  * Licensed to the Apache Software Foundation (ASF) under one or more
 end_comment
 
 begin_comment
-comment|/**  * Oak repository API  */
+comment|// for now also export this package so that the jaas login modules so that they can be instantiated via a felix LoginModuleFactory
+end_comment
+
+begin_comment
+comment|// todo: find better solution
 end_comment
 
 begin_annotation
@@ -35,7 +39,11 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|api
+name|security
+operator|.
+name|authentication
+operator|.
+name|ldap
 package|;
 end_package
 
@@ -47,7 +55,7 @@ name|bnd
 operator|.
 name|annotation
 operator|.
-name|Export
+name|Version
 import|;
 end_import
 
@@ -59,7 +67,7 @@ name|bnd
 operator|.
 name|annotation
 operator|.
-name|Version
+name|Export
 import|;
 end_import
 
