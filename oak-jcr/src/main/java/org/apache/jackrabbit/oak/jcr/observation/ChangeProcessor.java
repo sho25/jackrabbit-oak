@@ -13,7 +13,7 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|plugins
+name|jcr
 operator|.
 name|observation
 package|;
@@ -442,7 +442,6 @@ comment|/**  * A {@code ChangeProcessor} generates observation {@link javax.jcr.
 end_comment
 
 begin_class
-specifier|public
 class|class
 name|ChangeProcessor
 implements|implements
