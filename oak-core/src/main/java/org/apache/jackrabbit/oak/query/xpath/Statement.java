@@ -652,6 +652,8 @@ argument_list|,
 name|QueryImpl
 operator|.
 name|JCR_PATH
+argument_list|,
+literal|false
 argument_list|)
 operator|.
 name|toString
@@ -714,6 +716,8 @@ argument_list|,
 name|QueryImpl
 operator|.
 name|JCR_SCORE
+argument_list|,
+literal|false
 argument_list|)
 operator|.
 name|toString
@@ -782,6 +786,8 @@ argument_list|(
 name|columnSelector
 argument_list|,
 literal|"*"
+argument_list|,
+literal|false
 argument_list|)
 operator|.
 name|toString

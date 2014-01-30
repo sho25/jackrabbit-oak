@@ -889,6 +889,8 @@ argument_list|(
 name|currentSelector
 argument_list|,
 literal|"rep:excerpt"
+argument_list|,
+literal|false
 argument_list|)
 decl_stmt|;
 name|statement
@@ -962,6 +964,8 @@ argument_list|(
 name|currentSelector
 argument_list|,
 literal|"rep:excerpt"
+argument_list|,
+literal|false
 argument_list|)
 decl_stmt|;
 name|statement
@@ -3089,6 +3093,8 @@ name|buff
 operator|.
 name|toString
 argument_list|()
+argument_list|,
+literal|false
 argument_list|)
 return|;
 block|}
@@ -3199,6 +3205,8 @@ name|buff
 operator|.
 name|toString
 argument_list|()
+argument_list|,
+literal|true
 argument_list|)
 return|;
 block|}
@@ -3759,6 +3767,8 @@ argument_list|(
 name|currentSelector
 argument_list|,
 literal|"*"
+argument_list|,
+literal|false
 argument_list|)
 return|;
 block|}
@@ -3772,6 +3782,8 @@ name|currentSelector
 argument_list|,
 name|readPathSegment
 argument_list|()
+argument_list|,
+literal|false
 argument_list|)
 return|;
 block|}
