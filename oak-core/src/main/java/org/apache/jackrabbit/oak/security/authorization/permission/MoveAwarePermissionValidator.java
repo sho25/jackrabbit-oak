@@ -812,7 +812,7 @@ name|sourcePath
 init|=
 name|moveTracker
 operator|.
-name|getOriginalSourcePath
+name|getSourcePath
 argument_list|(
 name|child
 operator|.
