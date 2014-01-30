@@ -311,9 +311,9 @@ name|JoinConditionImpl
 name|joinCondition
 parameter_list|)
 function_decl|;
-comment|/**      *<b>!Test purpose only!<b>      *       * this creates a filter for the given query      *       */
-specifier|abstract
+comment|/**      *<b>!Test purpose only!<b>      *       * this creates a filter for the given query      *       * @param preparing whether this this the prepare phase      * @return a new filter      */
 specifier|public
+specifier|abstract
 name|Filter
 name|createFilter
 parameter_list|(

@@ -255,6 +255,10 @@ name|ImmutableSet
 import|;
 end_import
 
+begin_comment
+comment|/**  * This class can extract excerpts from node.  */
+end_comment
+
 begin_class
 specifier|public
 class|class
