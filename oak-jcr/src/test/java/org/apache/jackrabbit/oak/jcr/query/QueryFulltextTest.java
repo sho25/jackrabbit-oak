@@ -314,7 +314,7 @@ decl_stmt|;
 name|String
 name|xpath
 init|=
-literal|"//*[jcr:contains(., 'hello')]/rep:excerpt(.) order by jcr:path descending"
+literal|"//*[jcr:contains(., 'hello')]/rep:excerpt(.) order by @jcr:path"
 decl_stmt|;
 name|q
 operator|=
@@ -344,6 +344,14 @@ operator|.
 name|nextRow
 argument_list|()
 expr_stmt|;
+name|String
+name|path
+init|=
+name|row
+operator|.
+name|getPath
+argument_list|()
+decl_stmt|;
 name|s
 operator|=
 name|row
@@ -358,7 +366,13 @@ argument_list|()
 expr_stmt|;
 name|assertTrue
 argument_list|(
+name|path
+operator|+
+literal|":"
+operator|+
 name|s
+operator|+
+literal|" (1)"
 argument_list|,
 name|s
 operator|.
@@ -372,7 +386,13 @@ argument_list|)
 expr_stmt|;
 name|assertTrue
 argument_list|(
+name|path
+operator|+
+literal|":"
+operator|+
 name|s
+operator|+
+literal|" (2)"
 argument_list|,
 name|s
 operator|.
@@ -391,6 +411,13 @@ operator|.
 name|nextRow
 argument_list|()
 expr_stmt|;
+name|path
+operator|=
+name|row
+operator|.
+name|getPath
+argument_list|()
+expr_stmt|;
 name|s
 operator|=
 name|row
@@ -406,7 +433,13 @@ expr_stmt|;
 comment|// TODO is this expected?
 name|assertTrue
 argument_list|(
+name|path
+operator|+
+literal|":"
+operator|+
 name|s
+operator|+
+literal|" (3)"
 argument_list|,
 name|s
 operator|.
@@ -420,7 +453,13 @@ argument_list|)
 expr_stmt|;
 name|assertTrue
 argument_list|(
+name|path
+operator|+
+literal|":"
+operator|+
 name|s
+operator|+
+literal|" (4)"
 argument_list|,
 name|s
 operator|.
@@ -434,7 +473,7 @@ argument_list|)
 expr_stmt|;
 name|xpath
 operator|=
-literal|"//*[jcr:contains(., 'hello')]/rep:excerpt(.) order by jcr:path descending"
+literal|"//*[jcr:contains(., 'hello')]/rep:excerpt(.) order by @jcr:path"
 expr_stmt|;
 name|q
 operator|=
@@ -464,6 +503,13 @@ operator|.
 name|nextRow
 argument_list|()
 expr_stmt|;
+name|path
+operator|=
+name|row
+operator|.
+name|getPath
+argument_list|()
+expr_stmt|;
 name|s
 operator|=
 name|row
@@ -478,7 +524,13 @@ argument_list|()
 expr_stmt|;
 name|assertTrue
 argument_list|(
+name|path
+operator|+
+literal|":"
+operator|+
 name|s
+operator|+
+literal|" (5)"
 argument_list|,
 name|s
 operator|.
@@ -492,7 +544,13 @@ argument_list|)
 expr_stmt|;
 name|assertTrue
 argument_list|(
+name|path
+operator|+
+literal|":"
+operator|+
 name|s
+operator|+
+literal|" (6)"
 argument_list|,
 name|s
 operator|.
@@ -511,6 +569,13 @@ operator|.
 name|nextRow
 argument_list|()
 expr_stmt|;
+name|path
+operator|=
+name|row
+operator|.
+name|getPath
+argument_list|()
+expr_stmt|;
 name|s
 operator|=
 name|row
@@ -526,7 +591,13 @@ expr_stmt|;
 comment|// TODO is this expected?
 name|assertTrue
 argument_list|(
+name|path
+operator|+
+literal|":"
+operator|+
 name|s
+operator|+
+literal|" (7)"
 argument_list|,
 name|s
 operator|.
@@ -540,7 +611,13 @@ argument_list|)
 expr_stmt|;
 name|assertTrue
 argument_list|(
+name|path
+operator|+
+literal|":"
+operator|+
 name|s
+operator|+
+literal|" (8)"
 argument_list|,
 name|s
 operator|.
