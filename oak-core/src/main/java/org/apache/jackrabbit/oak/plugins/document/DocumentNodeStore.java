@@ -643,6 +643,26 @@ name|document
 operator|.
 name|util
 operator|.
+name|StringValue
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|document
+operator|.
+name|util
+operator|.
 name|TimingDocumentStoreWrapper
 import|;
 end_import
@@ -1073,12 +1093,12 @@ specifier|private
 name|AtomicInteger
 name|simpleRevisionCounter
 decl_stmt|;
-comment|/**      * The node cache.      *      * Key: path@rev, value: node      */
+comment|/**      * The node cache.      *      * Key: PathRev, value: Node      */
 specifier|private
 specifier|final
 name|Cache
 argument_list|<
-name|String
+name|CacheValue
 argument_list|,
 name|Node
 argument_list|>
@@ -1089,12 +1109,12 @@ specifier|final
 name|CacheStats
 name|nodeCacheStats
 decl_stmt|;
-comment|/**      * Child node cache.      *      * Key: start-name/path@rev, value: children      */
+comment|/**      * Child node cache.      *      * Key: PathRev, value: Children      */
 specifier|private
 specifier|final
 name|Cache
 argument_list|<
-name|String
+name|CacheValue
 argument_list|,
 name|Node
 operator|.
@@ -1107,12 +1127,12 @@ specifier|final
 name|CacheStats
 name|nodeChildrenCacheStats
 decl_stmt|;
-comment|/**      * Child doc cache.      */
+comment|/**      * Child doc cache.      *      * Key: StringValue, value: Children      */
 specifier|private
 specifier|final
 name|Cache
 argument_list|<
-name|String
+name|CacheValue
 argument_list|,
 name|NodeDocument
 operator|.
@@ -1125,12 +1145,12 @@ specifier|final
 name|CacheStats
 name|docChildrenCacheStats
 decl_stmt|;
-comment|/**      * Diff cache.      */
+comment|/**      * Diff cache.      *      * Key: PathRev, value: Diff      */
 specifier|private
 specifier|final
 name|Cache
 argument_list|<
-name|String
+name|CacheValue
 argument_list|,
 name|Diff
 argument_list|>
@@ -2420,14 +2440,16 @@ argument_list|)
 expr_stmt|;
 try|try
 block|{
-name|String
+name|PathRev
 name|key
 init|=
+operator|new
+name|PathRev
+argument_list|(
 name|path
-operator|+
-literal|"@"
-operator|+
+argument_list|,
 name|rev
+argument_list|)
 decl_stmt|;
 name|Node
 name|node
@@ -2574,7 +2596,7 @@ operator|.
 name|getLastRevision
 argument_list|()
 decl_stmt|;
-name|String
+name|PathRev
 name|key
 init|=
 name|childNodeCacheKey
@@ -3050,6 +3072,15 @@ name|limit
 argument_list|)
 return|;
 block|}
+name|CacheValue
+name|key
+init|=
+operator|new
+name|StringValue
+argument_list|(
+name|path
+argument_list|)
+decl_stmt|;
 comment|// check cache
 name|NodeDocument
 operator|.
@@ -3060,7 +3091,7 @@ name|docChildrenCache
 operator|.
 name|getIfPresent
 argument_list|(
-name|path
+name|key
 argument_list|)
 decl_stmt|;
 if|if
@@ -3150,7 +3181,7 @@ name|docChildrenCache
 operator|.
 name|put
 argument_list|(
-name|path
+name|key
 argument_list|,
 name|c
 argument_list|)
@@ -3312,7 +3343,7 @@ name|docChildrenCache
 operator|.
 name|put
 argument_list|(
-name|path
+name|key
 argument_list|,
 name|clone
 argument_list|)
@@ -3740,7 +3771,7 @@ throw|;
 block|}
 block|}
 block|}
-name|String
+name|CacheValue
 name|key
 init|=
 name|childNodeCacheKey
@@ -3875,6 +3906,15 @@ name|isEmpty
 argument_list|()
 condition|)
 block|{
+name|CacheValue
+name|docChildrenKey
+init|=
+operator|new
+name|StringValue
+argument_list|(
+name|path
+argument_list|)
+decl_stmt|;
 name|NodeDocument
 operator|.
 name|Children
@@ -3884,7 +3924,7 @@ name|docChildrenCache
 operator|.
 name|getIfPresent
 argument_list|(
-name|path
+name|docChildrenKey
 argument_list|)
 decl_stmt|;
 if|if
@@ -4053,7 +4093,7 @@ name|docChildrenCache
 operator|.
 name|put
 argument_list|(
-name|path
+name|docChildrenKey
 argument_list|,
 name|docChildren
 argument_list|)
@@ -5146,19 +5186,12 @@ name|Node
 name|base
 parameter_list|)
 block|{
-name|String
+name|PathRev
 name|key
 init|=
-name|checkNotNull
+operator|new
+name|PathRev
 argument_list|(
-name|base
-argument_list|)
-operator|.
-name|getLastRevision
-argument_list|()
-operator|+
-literal|"-"
-operator|+
 name|checkNotNull
 argument_list|(
 name|node
@@ -5173,6 +5206,15 @@ name|node
 operator|.
 name|getPath
 argument_list|()
+argument_list|,
+name|checkNotNull
+argument_list|(
+name|base
+argument_list|)
+operator|.
+name|getLastRevision
+argument_list|()
+argument_list|)
 decl_stmt|;
 try|try
 block|{
@@ -5297,18 +5339,25 @@ return|return
 literal|""
 return|;
 block|}
-name|String
+name|PathRev
 name|key
 init|=
-name|fromRevisionId
-operator|+
-literal|"-"
-operator|+
+operator|new
+name|PathRev
+argument_list|(
 name|toRevisionId
 operator|+
 literal|"-"
 operator|+
 name|path
+argument_list|,
+name|Revision
+operator|.
+name|fromString
+argument_list|(
+name|fromRevisionId
+argument_list|)
+argument_list|)
 decl_stmt|;
 try|try
 block|{
@@ -7569,7 +7618,7 @@ block|}
 block|}
 specifier|private
 specifier|static
-name|String
+name|PathRev
 name|childNodeCacheKey
 parameter_list|(
 annotation|@
@@ -7589,6 +7638,9 @@ name|name
 parameter_list|)
 block|{
 return|return
+operator|new
+name|PathRev
+argument_list|(
 operator|(
 name|name
 operator|==
@@ -7600,10 +7652,9 @@ name|name
 operator|)
 operator|+
 name|path
-operator|+
-literal|"@"
-operator|+
+argument_list|,
 name|readRevision
+argument_list|)
 return|;
 block|}
 specifier|private

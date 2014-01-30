@@ -514,7 +514,7 @@ name|ForwardingCache
 operator|.
 name|SimpleForwardingCache
 argument_list|<
-name|String
+name|CacheValue
 argument_list|,
 name|NodeDocument
 argument_list|>
@@ -549,7 +549,7 @@ specifier|private
 specifier|final
 name|Cache
 argument_list|<
-name|String
+name|CacheValue
 argument_list|,
 name|NodeDocReference
 argument_list|>
@@ -578,7 +578,7 @@ name|NodeDocOffHeapCache
 parameter_list|(
 name|Cache
 argument_list|<
-name|String
+name|CacheValue
 argument_list|,
 name|NodeDocument
 argument_list|>
@@ -586,7 +586,7 @@ name|delegate
 parameter_list|,
 name|ForwardingListener
 argument_list|<
-name|String
+name|CacheValue
 argument_list|,
 name|NodeDocument
 argument_list|>
@@ -804,7 +804,7 @@ name|NodeDocument
 name|get
 parameter_list|(
 specifier|final
-name|String
+name|CacheValue
 name|key
 parameter_list|,
 specifier|final
@@ -882,7 +882,7 @@ name|Override
 specifier|public
 name|ImmutableMap
 argument_list|<
-name|String
+name|CacheValue
 argument_list|,
 name|NodeDocument
 argument_list|>
@@ -902,7 +902,7 @@ literal|"unchecked"
 argument_list|)
 name|List
 argument_list|<
-name|String
+name|CacheValue
 argument_list|>
 name|list
 init|=
@@ -913,7 +913,7 @@ argument_list|(
 operator|(
 name|Iterable
 argument_list|<
-name|String
+name|CacheValue
 argument_list|>
 operator|)
 name|keys
@@ -921,7 +921,7 @@ argument_list|)
 decl_stmt|;
 name|ImmutableMap
 argument_list|<
-name|String
+name|CacheValue
 argument_list|,
 name|NodeDocument
 argument_list|>
@@ -956,7 +956,7 @@ block|}
 comment|//Look up value from L2
 name|Map
 argument_list|<
-name|String
+name|CacheValue
 argument_list|,
 name|NodeDocument
 argument_list|>
@@ -971,7 +971,7 @@ argument_list|)
 decl_stmt|;
 for|for
 control|(
-name|String
+name|CacheValue
 name|key
 range|:
 name|list
@@ -1122,7 +1122,7 @@ name|Override
 specifier|public
 name|Map
 argument_list|<
-name|String
+name|CacheValue
 argument_list|,
 name|?
 extends|extends
@@ -1309,7 +1309,7 @@ name|PrimaryRemovalListener
 implements|implements
 name|RemovalListener
 argument_list|<
-name|String
+name|CacheValue
 argument_list|,
 name|NodeDocument
 argument_list|>
@@ -1322,7 +1322,7 @@ name|onRemoval
 parameter_list|(
 name|RemovalNotification
 argument_list|<
-name|String
+name|CacheValue
 argument_list|,
 name|NodeDocument
 argument_list|>
@@ -1424,7 +1424,7 @@ name|SecondaryRemovalListener
 implements|implements
 name|RemovalListener
 argument_list|<
-name|String
+name|CacheValue
 argument_list|,
 name|NodeDocReference
 argument_list|>
@@ -1437,7 +1437,7 @@ name|onRemoval
 parameter_list|(
 name|RemovalNotification
 argument_list|<
-name|String
+name|CacheValue
 argument_list|,
 name|NodeDocReference
 argument_list|>
@@ -1512,13 +1512,13 @@ name|documentPointer
 decl_stmt|;
 specifier|private
 specifier|final
-name|String
+name|CacheValue
 name|key
 decl_stmt|;
 specifier|public
 name|NodeDocReference
 parameter_list|(
-name|String
+name|CacheValue
 name|key
 parameter_list|,
 name|NodeDocument

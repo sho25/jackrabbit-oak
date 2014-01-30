@@ -42,7 +42,7 @@ name|EmpiricalWeigher
 implements|implements
 name|Weigher
 argument_list|<
-name|String
+name|CacheValue
 argument_list|,
 name|CacheValue
 argument_list|>
@@ -53,7 +53,7 @@ specifier|public
 name|int
 name|weigh
 parameter_list|(
-name|String
+name|CacheValue
 name|key
 parameter_list|,
 name|CacheValue
@@ -68,16 +68,12 @@ decl_stmt|;
 comment|// overhead for each cache entry
 name|size
 operator|+=
-literal|48
-operator|+
 name|key
 operator|.
-name|length
+name|getMemory
 argument_list|()
-operator|*
-literal|2
 expr_stmt|;
-comment|// string key
+comment|// key
 name|size
 operator|+=
 name|value
