@@ -2742,17 +2742,6 @@ name|save
 argument_list|()
 expr_stmt|;
 block|}
-annotation|@
-name|Test
-specifier|public
-name|void
-name|testMoveAndMoveSubTreeBack
-parameter_list|()
-throws|throws
-name|Exception
-block|{
-comment|// TODO
-block|}
 block|}
 end_class
 
