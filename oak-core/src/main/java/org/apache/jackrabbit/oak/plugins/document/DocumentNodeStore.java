@@ -871,7 +871,6 @@ name|class
 argument_list|)
 decl_stmt|;
 comment|/**      * Do not cache more than this number of children for a document.      */
-specifier|private
 specifier|static
 specifier|final
 name|int
