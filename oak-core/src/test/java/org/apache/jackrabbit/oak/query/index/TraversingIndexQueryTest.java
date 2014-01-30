@@ -1122,7 +1122,7 @@ comment|// 'socialgraph_test_group' and isdescendantnode(a, '/home') /* xpath:
 comment|// /jcr:root/home//*[id='socialgraph_test_group'] */
 name|assertQuery
 argument_list|(
-literal|"/jcr:root/home//*[id='socialgraph_test_group']"
+literal|"/jcr:root/home//*[@id='socialgraph_test_group']"
 argument_list|,
 literal|"xpath"
 argument_list|,
@@ -1143,7 +1143,7 @@ comment|// /jcr:root/home//social/relationships//*[id='socialgraph_test_group']
 comment|// */
 name|assertQuery
 argument_list|(
-literal|"/jcr:root/home//social/relationships//*[id='socialgraph_test_group']"
+literal|"/jcr:root/home//social/relationships//*[@id='socialgraph_test_group']"
 argument_list|,
 literal|"xpath"
 argument_list|,
