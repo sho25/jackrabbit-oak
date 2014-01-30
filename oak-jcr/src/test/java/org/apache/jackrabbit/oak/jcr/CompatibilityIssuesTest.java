@@ -2028,7 +2028,7 @@ name|qm
 operator|.
 name|createQuery
 argument_list|(
-literal|"/jcr:root/home//social/relationships/following//*[id='aaron.mcdonald@mailinator.com']"
+literal|"/jcr:root/home//social/relationships/following//*[@id='aaron.mcdonald@mailinator.com']"
 argument_list|,
 name|Query
 operator|.
