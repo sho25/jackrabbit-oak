@@ -165,7 +165,7 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|TestGlobalNameMapper
+name|TestNameMapper
 import|;
 end_import
 
@@ -179,7 +179,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|TestNameMapper
+name|namepath
+operator|.
+name|GlobalNameMapper
 import|;
 end_import
 
@@ -745,7 +747,7 @@ name|NameMapper
 name|nameMapper
 init|=
 operator|new
-name|TestGlobalNameMapper
+name|GlobalNameMapper
 argument_list|(
 name|Collections
 operator|.

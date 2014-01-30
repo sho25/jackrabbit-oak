@@ -489,7 +489,7 @@ name|LocalNameMapper
 argument_list|(
 name|context
 operator|.
-name|getRootTree
+name|getRoot
 argument_list|()
 argument_list|)
 block|{

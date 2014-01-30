@@ -39,7 +39,7 @@ name|oak
 operator|.
 name|api
 operator|.
-name|Tree
+name|Root
 import|;
 end_import
 
@@ -96,8 +96,8 @@ name|baseState
 decl_stmt|;
 specifier|private
 specifier|final
-name|Tree
-name|rootTree
+name|Root
+name|root
 decl_stmt|;
 specifier|private
 specifier|final
@@ -110,8 +110,8 @@ parameter_list|(
 name|NodeState
 name|baseState
 parameter_list|,
-name|Tree
-name|rootTree
+name|Root
+name|root
 parameter_list|,
 name|QueryIndexProvider
 name|indexProvider
@@ -125,9 +125,9 @@ name|baseState
 expr_stmt|;
 name|this
 operator|.
-name|rootTree
+name|root
 operator|=
-name|rootTree
+name|root
 expr_stmt|;
 name|this
 operator|.
@@ -148,16 +148,16 @@ return|return
 name|baseState
 return|;
 block|}
-comment|/**      *       * Used to create the actual query results from the indexed paths, needs to      * be a secured version of a tree to take into account ACLs      *       * @return Root tree of the content tree against which the query runs.      */
+comment|/**      * Used to create the actual query results from the indexed paths, needs to      * be a secured version of a tree to take into account ACLs      *       * @return root of the content tree against which the query runs.      */
 annotation|@
 name|Nonnull
 specifier|public
-name|Tree
-name|getRootTree
+name|Root
+name|getRoot
 parameter_list|()
 block|{
 return|return
-name|rootTree
+name|root
 return|;
 block|}
 comment|/**      * @return Index provider for indexes matching the state of the content tree as      * returned from {@link #getBaseState()}.      */

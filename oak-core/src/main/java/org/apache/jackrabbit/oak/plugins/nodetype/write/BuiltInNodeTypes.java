@@ -392,11 +392,6 @@ operator|new
 name|GlobalNameMapper
 argument_list|(
 name|root
-operator|.
-name|getTree
-argument_list|(
-literal|"/"
-argument_list|)
 argument_list|)
 argument_list|)
 argument_list|)

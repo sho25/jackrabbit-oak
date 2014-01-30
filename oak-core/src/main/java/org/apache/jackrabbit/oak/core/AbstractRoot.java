@@ -1842,7 +1842,9 @@ argument_list|(
 name|getBaseState
 argument_list|()
 argument_list|,
-name|rootTree
+name|AbstractRoot
+operator|.
+name|this
 argument_list|,
 name|provider
 argument_list|)

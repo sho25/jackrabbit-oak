@@ -502,7 +502,9 @@ operator|.
 name|getNodeState
 argument_list|()
 argument_list|,
-name|rootTree
+name|ImmutableRoot
+operator|.
+name|this
 argument_list|,
 operator|new
 name|PropertyIndexProvider

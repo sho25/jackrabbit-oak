@@ -1011,11 +1011,6 @@ name|delegate
 operator|.
 name|getRoot
 argument_list|()
-operator|.
-name|getTree
-argument_list|(
-literal|"/"
-argument_list|)
 argument_list|)
 block|{
 annotation|@
@@ -1031,6 +1026,10 @@ name|getSessionLocalMappings
 parameter_list|()
 block|{
 return|return
+name|SessionContext
+operator|.
+name|this
+operator|.
 name|namespaces
 operator|.
 name|getSessionLocalMappings
