@@ -108,7 +108,10 @@ parameter_list|()
 block|{
 return|return
 literal|16
-operator|*
+comment|// shallow size
+operator|+
+literal|40
+operator|+
 name|value
 operator|.
 name|length
@@ -116,6 +119,7 @@ argument_list|()
 operator|*
 literal|2
 return|;
+comment|// value
 block|}
 annotation|@
 name|Override

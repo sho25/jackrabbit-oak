@@ -7921,6 +7921,11 @@ name|getMemory
 parameter_list|()
 block|{
 return|return
+literal|16
+comment|// shallow size
+operator|+
+literal|40
+operator|+
 name|diff
 operator|.
 name|length
@@ -7928,6 +7933,7 @@ argument_list|()
 operator|*
 literal|2
 return|;
+comment|// diff string
 block|}
 block|}
 comment|/**      * A background thread.      */

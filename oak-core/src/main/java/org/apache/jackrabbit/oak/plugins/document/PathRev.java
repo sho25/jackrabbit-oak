@@ -128,7 +128,7 @@ literal|24
 comment|// shallow size
 operator|+
 literal|40
-operator|*
+operator|+
 name|path
 operator|.
 name|length
