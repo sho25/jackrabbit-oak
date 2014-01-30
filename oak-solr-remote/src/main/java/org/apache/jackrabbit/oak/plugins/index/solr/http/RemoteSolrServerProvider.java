@@ -423,7 +423,7 @@ name|value
 operator|=
 name|DEFAULT_HTTP_URL
 argument_list|,
-name|name
+name|label
 operator|=
 literal|"Solr HTTP URL"
 argument_list|)
@@ -442,7 +442,7 @@ name|value
 operator|=
 name|DEFAULT_ZK_HOST
 argument_list|,
-name|name
+name|label
 operator|=
 literal|"ZooKeeper host"
 argument_list|)
@@ -461,7 +461,7 @@ name|value
 operator|=
 name|DEFAULT_COLLECTION
 argument_list|,
-name|name
+name|label
 operator|=
 literal|"Solr collection"
 argument_list|)
@@ -480,7 +480,7 @@ name|intValue
 operator|=
 name|DEFAULT_SHARDS_NO
 argument_list|,
-name|name
+name|label
 operator|=
 literal|"No. of collection shards"
 argument_list|)
@@ -499,7 +499,7 @@ name|intValue
 operator|=
 name|DEFAULT_REPLICATION_FACTOR
 argument_list|,
-name|name
+name|label
 operator|=
 literal|"Replication factor"
 argument_list|)
@@ -518,7 +518,7 @@ name|value
 operator|=
 literal|""
 argument_list|,
-name|name
+name|label
 operator|=
 literal|"Solr configuration directory"
 argument_list|)

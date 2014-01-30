@@ -353,7 +353,7 @@ name|value
 operator|=
 literal|"/oak:index/solrIdx"
 argument_list|,
-name|name
+name|label
 operator|=
 literal|"configuration path"
 argument_list|,

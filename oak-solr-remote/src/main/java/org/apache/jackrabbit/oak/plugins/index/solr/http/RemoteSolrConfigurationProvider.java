@@ -249,7 +249,7 @@ name|value
 operator|=
 name|DEFAULT_DESC_FIELD
 argument_list|,
-name|name
+name|label
 operator|=
 literal|"field for descendants search"
 argument_list|)
@@ -268,7 +268,7 @@ name|value
 operator|=
 name|DEFAULT_CHILD_FIELD
 argument_list|,
-name|name
+name|label
 operator|=
 literal|"field for children search"
 argument_list|)
@@ -287,7 +287,7 @@ name|value
 operator|=
 name|DEFAULT_PARENT_FIELD
 argument_list|,
-name|name
+name|label
 operator|=
 literal|"field for parent search"
 argument_list|)
@@ -306,7 +306,7 @@ name|value
 operator|=
 name|DEFAULT_PATH_FIELD
 argument_list|,
-name|name
+name|label
 operator|=
 literal|"field for path search"
 argument_list|)
