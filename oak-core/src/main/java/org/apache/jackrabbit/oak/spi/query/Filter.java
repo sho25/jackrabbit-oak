@@ -130,7 +130,9 @@ argument_list|>
 name|getPropertyRestrictions
 parameter_list|()
 function_decl|;
-comment|/**      * Get the fulltext search conditions, if any.      *      * @deprecated      * @return the conditions (an empty collection if not used)      */
+comment|/**      * Get the fulltext search conditions, if any.      *      * @return the conditions (an empty collection if not used)      */
+annotation|@
+name|Deprecated
 name|Collection
 argument_list|<
 name|String
@@ -350,7 +352,7 @@ name|buff
 operator|.
 name|append
 argument_list|(
-literal|' '
+literal|')'
 argument_list|)
 expr_stmt|;
 return|return
