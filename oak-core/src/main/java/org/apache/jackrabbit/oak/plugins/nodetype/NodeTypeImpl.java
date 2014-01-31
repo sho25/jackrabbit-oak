@@ -970,6 +970,7 @@ argument_list|)
 decl_stmt|;
 comment|/**      * Name pattern for the property and child node definition nodes.      * Used to pick out the SNS indices from the names so the definitions      * can be sorted in the same order they were created. This in turn      * makes accessing node type information more deterministic.      */
 specifier|private
+specifier|static
 specifier|final
 name|Pattern
 name|DEFINITION_PATTERN
