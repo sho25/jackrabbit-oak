@@ -209,11 +209,6 @@ name|NAMESPACE_SV
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|String
-name|REP_EMPTY
-init|=
-literal|"rep:empty"
-decl_stmt|;
 comment|// index nodes for faster lookup
 name|String
 name|REP_NSDATA

@@ -165,7 +165,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|TestNameMapper
+name|namepath
+operator|.
+name|GlobalNameMapper
 import|;
 end_import
 
@@ -181,7 +183,7 @@ name|oak
 operator|.
 name|namepath
 operator|.
-name|GlobalNameMapper
+name|LocalNameMapper
 import|;
 end_import
 
@@ -338,6 +340,18 @@ operator|.
 name|collect
 operator|.
 name|Lists
+import|;
+end_import
+
+begin_import
+import|import static
+name|java
+operator|.
+name|util
+operator|.
+name|Collections
+operator|.
+name|singletonMap
 import|;
 end_import
 
@@ -893,8 +907,22 @@ operator|new
 name|NamePathMapperImpl
 argument_list|(
 operator|new
-name|TestNameMapper
-argument_list|()
+name|LocalNameMapper
+argument_list|(
+name|singletonMap
+argument_list|(
+literal|"oak"
+argument_list|,
+literal|"http://jackrabbit.apache.org"
+argument_list|)
+argument_list|,
+name|singletonMap
+argument_list|(
+literal|"jcr"
+argument_list|,
+literal|"http://jackrabbit.apache.org"
+argument_list|)
+argument_list|)
 argument_list|)
 decl_stmt|;
 comment|// map of jcr-path to oak path
@@ -947,24 +975,12 @@ expr_stmt|;
 name|String
 name|oakPath
 init|=
-literal|'/'
-operator|+
-name|TestNameMapper
-operator|.
-name|TEST_PREFIX
-operator|+
-literal|":testPath"
+literal|"/oak:testPath"
 decl_stmt|;
 name|String
 name|jcrPath
 init|=
-literal|'/'
-operator|+
-name|TestNameMapper
-operator|.
-name|TEST_LOCAL_PREFIX
-operator|+
-literal|":testPath"
+literal|"/jcr:testPath"
 decl_stmt|;
 name|paths
 operator|.
@@ -977,13 +993,7 @@ argument_list|)
 expr_stmt|;
 name|jcrPath
 operator|=
-literal|"/{"
-operator|+
-name|TestNameMapper
-operator|.
-name|TEST_URI
-operator|+
-literal|"}testPath"
+literal|"/{http://jackrabbit.apache.org}testPath"
 expr_stmt|;
 name|paths
 operator|.
