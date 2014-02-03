@@ -794,7 +794,6 @@ import|;
 end_import
 
 begin_class
-specifier|public
 specifier|abstract
 class|class
 name|AbstractRoot
@@ -921,7 +920,6 @@ block|}
 block|}
 decl_stmt|;
 comment|/**      * New instance bases on a given {@link NodeStore} and a workspace      *      * @param store            node store      * @param hook             the commit hook      * @param workspaceName    name of the workspace      * @param subject          the subject.      * @param securityProvider the security configuration.      * @param indexProvider    the query index provider.      */
-specifier|protected
 name|AbstractRoot
 parameter_list|(
 name|NodeStore
