@@ -207,7 +207,7 @@ name|getReference
 parameter_list|()
 block|{
 return|return
-literal|null
+name|id
 return|;
 block|}
 comment|//------------------------------------------------------------< Object>--

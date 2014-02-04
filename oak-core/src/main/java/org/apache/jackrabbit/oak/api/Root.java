@@ -43,6 +43,16 @@ name|javax
 operator|.
 name|annotation
 operator|.
+name|CheckForNull
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|annotation
+operator|.
 name|Nonnull
 import|;
 end_import
@@ -159,6 +169,18 @@ name|stream
 parameter_list|)
 throws|throws
 name|IOException
+function_decl|;
+comment|/**      * Get a blob by its reference.      * @param reference  reference to the blob      * @return  blob or {@code null} if the reference does not resolve to a blob.      * @see Blob#getReference()      */
+annotation|@
+name|CheckForNull
+name|Blob
+name|getBlob
+parameter_list|(
+annotation|@
+name|Nonnull
+name|String
+name|reference
+parameter_list|)
 function_decl|;
 comment|/**      * Get the {@code ContentSession} from which this root was acquired      *       * @return the associated ContentSession      *       * @throws UnsupportedOperationException      */
 annotation|@

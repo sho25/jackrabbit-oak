@@ -5530,26 +5530,6 @@ throw|;
 block|}
 block|}
 block|}
-comment|/**      * Returns the {@link Blob} with the given blobId.      *      * @param blobId the blobId of the blob.      * @return the blob.      */
-annotation|@
-name|Nonnull
-name|Blob
-name|getBlob
-parameter_list|(
-name|String
-name|blobId
-parameter_list|)
-block|{
-return|return
-operator|new
-name|DocumentBlob
-argument_list|(
-name|blobStore
-argument_list|,
-name|blobId
-argument_list|)
-return|;
-block|}
 comment|//------------------------< Observable>------------------------------------
 annotation|@
 name|Override
@@ -5733,6 +5713,29 @@ argument_list|(
 name|blobStore
 argument_list|,
 name|id
+argument_list|)
+return|;
+block|}
+comment|/**      * Returns the {@link Blob} with the given blobId.      *      * @param blobId the blobId of the blob.      * @return the blob.      */
+annotation|@
+name|Override
+annotation|@
+name|Nonnull
+specifier|public
+name|Blob
+name|getBlob
+parameter_list|(
+name|String
+name|blobId
+parameter_list|)
+block|{
+return|return
+operator|new
+name|DocumentBlob
+argument_list|(
+name|blobStore
+argument_list|,
+name|blobId
 argument_list|)
 return|;
 block|}

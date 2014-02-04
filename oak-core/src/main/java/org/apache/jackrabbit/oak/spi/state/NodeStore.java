@@ -200,6 +200,8 @@ name|builder
 parameter_list|)
 function_decl|;
 comment|/**      * Create a {@link Blob} from the given input stream. The input stream      * is closed after this method returns.      * @param inputStream  The input stream for the {@code Blob}      * @return  The {@code Blob} representing {@code inputStream}      * @throws IOException  If an error occurs while reading from the stream      */
+annotation|@
+name|Nonnull
 name|Blob
 name|createBlob
 parameter_list|(
@@ -208,6 +210,18 @@ name|inputStream
 parameter_list|)
 throws|throws
 name|IOException
+function_decl|;
+comment|/**      * Get a blob by its reference.      * @param reference  reference to the blob      * @return  blob or {@code null} if the reference does not resolve to a blob.      * @see Blob#getReference()      */
+annotation|@
+name|CheckForNull
+name|Blob
+name|getBlob
+parameter_list|(
+annotation|@
+name|Nonnull
+name|String
+name|reference
+parameter_list|)
 function_decl|;
 comment|/**      * Creates a new checkpoint of the latest root of the tree. The checkpoint      * remains valid for at least as long as requested and allows that state      * of the repository to be retrieved using the returned opaque string      * reference.      *      * @param lifetime time (in milliseconds,&gt; 0) that the checkpoint      *                 should remain available      * @return string reference of this checkpoint      */
 annotation|@
