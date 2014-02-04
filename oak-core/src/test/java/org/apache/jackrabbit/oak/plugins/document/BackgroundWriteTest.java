@@ -311,6 +311,11 @@ operator|.
 name|runBackgroundOperations
 argument_list|()
 expr_stmt|;
+name|mk
+operator|.
+name|dispose
+argument_list|()
+expr_stmt|;
 block|}
 specifier|private
 specifier|static

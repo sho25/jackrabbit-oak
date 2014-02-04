@@ -600,6 +600,11 @@ operator|.
 name|close
 argument_list|()
 expr_stmt|;
+name|store
+operator|.
+name|dispose
+argument_list|()
+expr_stmt|;
 for|for
 control|(
 name|Exception

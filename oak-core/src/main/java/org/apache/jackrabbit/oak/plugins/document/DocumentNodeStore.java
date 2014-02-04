@@ -8065,6 +8065,11 @@ name|getAsyncDelay
 argument_list|()
 expr_stmt|;
 block|}
+else|else
+block|{
+comment|// node store not in use anymore
+break|break;
+block|}
 block|}
 block|}
 block|}

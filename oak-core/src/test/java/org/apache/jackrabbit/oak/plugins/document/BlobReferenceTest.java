@@ -313,6 +313,11 @@ name|isEmpty
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|s
+operator|.
+name|dispose
+argument_list|()
+expr_stmt|;
 block|}
 specifier|static
 name|InputStream
