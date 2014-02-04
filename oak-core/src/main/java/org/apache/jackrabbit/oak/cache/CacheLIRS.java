@@ -2235,7 +2235,7 @@ comment|/**          * The size of the LIRS queue for non-resident cold entries.
 name|int
 name|queue2Size
 decl_stmt|;
-comment|/**          * The map array. The size is always a power of 2.          */
+comment|/**          * The map array. The size is always a power of 2. The bit mask that is          * applied to the key hash code to get the index in the map array. The          * mask is the length of the array minus one.          */
 name|Entry
 argument_list|<
 name|K
@@ -2293,11 +2293,6 @@ comment|/**          * The average memory used by one entry.          */
 specifier|private
 name|int
 name|averageMemory
-decl_stmt|;
-comment|/**          * The bit mask that is applied to the key hash code to get the index in the          * map array. The mask is the length of the array minus one.          */
-specifier|private
-name|int
-name|mask
 decl_stmt|;
 comment|/**          * The LIRS stack size.          */
 specifier|private
@@ -2443,13 +2438,6 @@ argument_list|,
 name|l
 argument_list|)
 decl_stmt|;
-comment|// the bit mask has all bits set
-name|mask
-operator|=
-name|len
-operator|-
-literal|1
-expr_stmt|;
 comment|// initialize the stack and queue heads
 name|stack
 operator|=
@@ -2514,10 +2502,30 @@ name|queueNext
 operator|=
 name|queue2
 expr_stmt|;
-comment|// first set to null - avoiding out of memory
+comment|// first set to a small array, to avoiding out of memory
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unchecked"
+argument_list|)
+name|Entry
+argument_list|<
+name|K
+argument_list|,
+name|V
+argument_list|>
+index|[]
+name|small
+init|=
+operator|new
+name|Entry
+index|[
+literal|1
+index|]
+decl_stmt|;
 name|entries
 operator|=
-literal|null
+name|small
 expr_stmt|;
 annotation|@
 name|SuppressWarnings
@@ -3392,6 +3400,16 @@ parameter_list|)
 throws|throws
 name|ExecutionException
 block|{
+if|if
+condition|(
+name|loader
+operator|==
+literal|null
+condition|)
+block|{
+comment|// no loader - no refresh
+return|return;
+block|}
 name|V
 name|value
 decl_stmt|;
@@ -3622,6 +3640,26 @@ name|memory
 operator|=
 name|memory
 expr_stmt|;
+name|Entry
+argument_list|<
+name|K
+argument_list|,
+name|V
+argument_list|>
+index|[]
+name|array
+init|=
+name|entries
+decl_stmt|;
+name|int
+name|mask
+init|=
+name|array
+operator|.
+name|length
+operator|-
+literal|1
+decl_stmt|;
 name|int
 name|index
 init|=
@@ -3633,12 +3671,12 @@ name|e
 operator|.
 name|mapNext
 operator|=
-name|entries
+name|array
 index|[
 name|index
 index|]
 expr_stmt|;
-name|entries
+name|array
 index|[
 name|index
 index|]
@@ -3692,6 +3730,26 @@ name|int
 name|hash
 parameter_list|)
 block|{
+name|Entry
+argument_list|<
+name|K
+argument_list|,
+name|V
+argument_list|>
+index|[]
+name|array
+init|=
+name|entries
+decl_stmt|;
+name|int
+name|mask
+init|=
+name|array
+operator|.
+name|length
+operator|-
+literal|1
+decl_stmt|;
 name|int
 name|index
 init|=
@@ -3707,7 +3765,7 @@ name|V
 argument_list|>
 name|e
 init|=
-name|entries
+name|array
 index|[
 name|index
 index|]
@@ -3733,7 +3791,7 @@ name|key
 argument_list|)
 condition|)
 block|{
-name|entries
+name|array
 index|[
 name|index
 index|]
@@ -4138,6 +4196,26 @@ name|int
 name|hash
 parameter_list|)
 block|{
+name|Entry
+argument_list|<
+name|K
+argument_list|,
+name|V
+argument_list|>
+index|[]
+name|array
+init|=
+name|entries
+decl_stmt|;
+name|int
+name|mask
+init|=
+name|array
+operator|.
+name|length
+operator|-
+literal|1
+decl_stmt|;
 name|int
 name|index
 init|=
@@ -4153,7 +4231,7 @@ name|V
 argument_list|>
 name|e
 init|=
-name|entries
+name|array
 index|[
 name|index
 index|]
