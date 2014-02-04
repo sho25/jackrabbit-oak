@@ -6374,10 +6374,8 @@ operator|.
 name|getPaths
 argument_list|()
 operator|.
-name|size
+name|isEmpty
 argument_list|()
-operator|==
-literal|0
 condition|)
 block|{
 return|return;
@@ -6449,8 +6447,6 @@ operator|.
 name|size
 argument_list|()
 condition|;
-name|i
-operator|++
 control|)
 block|{
 name|String
@@ -6480,6 +6476,9 @@ operator|==
 literal|null
 condition|)
 block|{
+name|i
+operator|++
+expr_stmt|;
 continue|continue;
 block|}
 name|int
@@ -6543,6 +6542,9 @@ name|p
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|i
+operator|++
+expr_stmt|;
 block|}
 elseif|else
 if|if
@@ -6568,6 +6570,9 @@ name|p
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|i
+operator|++
+expr_stmt|;
 block|}
 comment|// call update if any of the following is true:
 comment|// - this is the second-to-last or last path (update last path, the
@@ -6579,7 +6584,7 @@ condition|(
 name|i
 operator|+
 literal|2
-operator|>=
+operator|>
 name|paths
 operator|.
 name|size
