@@ -3240,6 +3240,11 @@ argument_list|(
 name|weigher
 argument_list|)
 operator|.
+name|averageWeight
+argument_list|(
+literal|2000
+argument_list|)
+operator|.
 name|maximumWeight
 argument_list|(
 name|maxWeight
