@@ -1764,6 +1764,12 @@ name|fetchSize
 init|=
 name|INITIAL_FETCH_SIZE
 decl_stmt|;
+specifier|private
+name|int
+name|currentRemaining
+init|=
+name|fetchSize
+decl_stmt|;
 name|ChildNodeEntryIterator
 parameter_list|()
 block|{
@@ -1807,6 +1813,19 @@ return|return
 literal|true
 return|;
 block|}
+elseif|else
+if|if
+condition|(
+name|currentRemaining
+operator|>
+literal|0
+condition|)
+block|{
+comment|// current returned less than fetchSize
+return|return
+literal|false
+return|;
+block|}
 name|fetchMore
 argument_list|()
 expr_stmt|;
@@ -1847,6 +1866,9 @@ operator|.
 name|getName
 argument_list|()
 expr_stmt|;
+name|currentRemaining
+operator|--
+expr_stmt|;
 return|return
 name|entry
 return|;
@@ -1885,6 +1907,10 @@ operator|.
 name|iterator
 argument_list|()
 decl_stmt|;
+name|currentRemaining
+operator|=
+name|fetchSize
+expr_stmt|;
 name|fetchSize
 operator|=
 name|Math
