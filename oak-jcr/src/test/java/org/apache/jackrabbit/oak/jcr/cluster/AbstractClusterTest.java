@@ -149,6 +149,24 @@ name|Before
 import|;
 end_import
 
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|jcr
+operator|.
+name|AbstractRepositoryTest
+operator|.
+name|dispose
+import|;
+end_import
+
 begin_comment
 comment|/**  * A base class for DocumentMK cluster tests.  */
 end_comment
@@ -237,9 +255,17 @@ expr_stmt|;
 block|}
 name|r1
 operator|=
+name|dispose
+argument_list|(
+name|r1
+argument_list|)
+expr_stmt|;
 name|r2
 operator|=
-literal|null
+name|dispose
+argument_list|(
+name|r2
+argument_list|)
 expr_stmt|;
 if|if
 condition|(

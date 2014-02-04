@@ -297,6 +297,24 @@ name|Test
 import|;
 end_import
 
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|jcr
+operator|.
+name|AbstractRepositoryTest
+operator|.
+name|dispose
+import|;
+end_import
+
 begin_comment
 comment|/**  * Test privilege registration.  */
 end_comment
@@ -425,7 +443,10 @@ argument_list|()
 expr_stmt|;
 name|repository
 operator|=
-literal|null
+name|dispose
+argument_list|(
+name|repository
+argument_list|)
 expr_stmt|;
 name|privilegeManager
 operator|=

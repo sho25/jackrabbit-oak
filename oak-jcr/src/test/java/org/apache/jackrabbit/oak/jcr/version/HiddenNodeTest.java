@@ -259,6 +259,24 @@ begin_import
 import|import static
 name|org
 operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|jcr
+operator|.
+name|AbstractRepositoryTest
+operator|.
+name|dispose
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
 name|junit
 operator|.
 name|Assert
@@ -387,6 +405,13 @@ operator|=
 literal|null
 expr_stmt|;
 block|}
+name|repo
+operator|=
+name|dispose
+argument_list|(
+name|repo
+argument_list|)
+expr_stmt|;
 block|}
 annotation|@
 name|Test

@@ -165,6 +165,24 @@ begin_import
 import|import static
 name|org
 operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|jcr
+operator|.
+name|AbstractRepositoryTest
+operator|.
+name|dispose
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
 name|junit
 operator|.
 name|Assert
@@ -191,6 +209,9 @@ name|MONGO_NS
 decl_stmt|;
 comment|//    NodeStoreFixture fixture = NodeStoreFixture.MONGO_MK;
 comment|//    NodeStoreFixture fixture = NodeStoreFixture.SEGMENT_MK;
+name|Repository
+name|repository
+decl_stmt|;
 name|Session
 name|session
 decl_stmt|;
@@ -222,9 +243,8 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|Repository
-name|rep
-init|=
+name|repository
+operator|=
 operator|new
 name|Jcr
 argument_list|(
@@ -233,10 +253,10 @@ argument_list|)
 operator|.
 name|createRepository
 argument_list|()
-decl_stmt|;
+expr_stmt|;
 name|session
 operator|=
-name|rep
+name|repository
 operator|.
 name|login
 argument_list|(
@@ -272,6 +292,13 @@ name|session
 operator|.
 name|logout
 argument_list|()
+expr_stmt|;
+name|repository
+operator|=
+name|dispose
+argument_list|(
+name|repository
+argument_list|)
 expr_stmt|;
 name|fixture
 operator|.

@@ -245,6 +245,24 @@ name|Before
 import|;
 end_import
 
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|jcr
+operator|.
+name|AbstractRepositoryTest
+operator|.
+name|dispose
+import|;
+end_import
+
 begin_comment
 comment|/**  * Base class for randomized tests.  */
 end_comment
@@ -518,11 +536,17 @@ block|}
 block|}
 name|jackrabbitRepository
 operator|=
-literal|null
+name|dispose
+argument_list|(
+name|jackrabbitRepository
+argument_list|)
 expr_stmt|;
 name|oakRepository
 operator|=
-literal|null
+name|dispose
+argument_list|(
+name|oakRepository
+argument_list|)
 expr_stmt|;
 block|}
 specifier|protected
