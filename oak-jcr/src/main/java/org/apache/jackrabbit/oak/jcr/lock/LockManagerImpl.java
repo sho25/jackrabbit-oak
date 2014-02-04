@@ -365,6 +365,7 @@ literal|false
 argument_list|)
 condition|)
 block|{
+comment|// TODO: check ownership?
 name|String
 name|token
 init|=
