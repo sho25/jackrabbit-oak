@@ -445,7 +445,7 @@ operator|.
 name|commit
 argument_list|()
 expr_stmt|;
-name|setTravesalFallback
+name|setTravesalEnabled
 argument_list|(
 literal|false
 argument_list|)
@@ -517,7 +517,7 @@ literal|"/a"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|setTravesalFallback
+name|setTravesalEnabled
 argument_list|(
 literal|false
 argument_list|)

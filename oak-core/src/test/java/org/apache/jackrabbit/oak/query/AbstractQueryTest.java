@@ -1842,10 +1842,10 @@ return|;
 block|}
 specifier|protected
 name|void
-name|setTravesalFallback
+name|setTravesalEnabled
 parameter_list|(
 name|boolean
-name|traversal
+name|traversalEnabled
 parameter_list|)
 block|{
 operator|(
@@ -1855,9 +1855,9 @@ operator|)
 name|qe
 operator|)
 operator|.
-name|setTraversalFallback
+name|setTraversalEnabled
 argument_list|(
-name|traversal
+name|traversalEnabled
 argument_list|)
 expr_stmt|;
 block|}

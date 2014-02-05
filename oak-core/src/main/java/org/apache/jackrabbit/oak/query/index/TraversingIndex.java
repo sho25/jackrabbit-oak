@@ -197,6 +197,23 @@ if|if
 condition|(
 name|filter
 operator|.
+name|getFullTextConstraint
+argument_list|()
+operator|!=
+literal|null
+condition|)
+block|{
+comment|// not an appropriate index for full-text search
+return|return
+name|Double
+operator|.
+name|POSITIVE_INFINITY
+return|;
+block|}
+if|if
+condition|(
+name|filter
+operator|.
 name|isAlwaysFalse
 argument_list|()
 condition|)

@@ -1052,15 +1052,13 @@ name|NodeState
 name|after
 parameter_list|)
 block|{
+comment|// disables property name checks
 name|typeChanged
 operator|=
-operator|(
 name|typePredicate
 operator|==
 literal|null
-operator|)
 expr_stmt|;
-comment|// disables property name checks
 name|beforeKeys
 operator|=
 literal|null
@@ -1409,6 +1407,7 @@ block|}
 block|}
 block|}
 specifier|private
+specifier|static
 name|boolean
 name|isTypeProperty
 parameter_list|(

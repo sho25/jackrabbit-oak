@@ -407,7 +407,7 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|setTravesalFallback
+name|setTravesalEnabled
 argument_list|(
 literal|false
 argument_list|)
@@ -554,7 +554,7 @@ literal|"/f"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|setTravesalFallback
+name|setTravesalEnabled
 argument_list|(
 literal|true
 argument_list|)

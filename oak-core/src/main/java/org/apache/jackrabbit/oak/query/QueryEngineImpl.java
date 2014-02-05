@@ -364,10 +364,10 @@ argument_list|,
 name|JQOM
 argument_list|)
 decl_stmt|;
-comment|/**      * Whether fallback to the traversing index is supported if no other index      * is available. This is enabled by default and can be disabled for testing      * purposes.      */
+comment|/**      * Whether node traversal is enabled. This is enabled by default, and can be      * disabled for testing purposes.      */
 specifier|private
 name|boolean
-name|traversalFallback
+name|traversalEnabled
 init|=
 literal|true
 decl_stmt|;
@@ -911,9 +911,9 @@ block|}
 block|}
 name|q
 operator|.
-name|setTraversalFallback
+name|setTraversalEnabled
 argument_list|(
-name|traversalFallback
+name|traversalEnabled
 argument_list|)
 expr_stmt|;
 name|q
@@ -930,17 +930,17 @@ return|;
 block|}
 specifier|protected
 name|void
-name|setTraversalFallback
+name|setTraversalEnabled
 parameter_list|(
 name|boolean
-name|traversal
+name|traversalEnabled
 parameter_list|)
 block|{
 name|this
 operator|.
-name|traversalFallback
+name|traversalEnabled
 operator|=
-name|traversal
+name|traversalEnabled
 expr_stmt|;
 block|}
 block|}

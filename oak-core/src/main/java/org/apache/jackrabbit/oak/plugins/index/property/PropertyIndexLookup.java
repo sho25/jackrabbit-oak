@@ -422,6 +422,16 @@ specifier|public
 class|class
 name|PropertyIndexLookup
 block|{
+comment|/**      * The cost overhead to use the index in number of read operations.      */
+specifier|private
+specifier|static
+specifier|final
+name|int
+name|COST_OVERHEAD
+init|=
+literal|2
+decl_stmt|;
+comment|/**      * The maximum cost when the index can be used.      */
 specifier|private
 specifier|static
 specifier|final
@@ -709,6 +719,8 @@ name|POSITIVE_INFINITY
 return|;
 block|}
 return|return
+name|COST_OVERHEAD
+operator|+
 name|getStrategy
 argument_list|(
 name|indexMeta

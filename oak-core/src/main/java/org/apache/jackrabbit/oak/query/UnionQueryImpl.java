@@ -535,7 +535,7 @@ annotation|@
 name|Override
 specifier|public
 name|void
-name|setTraversalFallback
+name|setTraversalEnabled
 parameter_list|(
 name|boolean
 name|traversal
@@ -543,14 +543,14 @@ parameter_list|)
 block|{
 name|left
 operator|.
-name|setTraversalFallback
+name|setTraversalEnabled
 argument_list|(
 name|traversal
 argument_list|)
 expr_stmt|;
 name|right
 operator|.
-name|setTraversalFallback
+name|setTraversalEnabled
 argument_list|(
 name|traversal
 argument_list|)

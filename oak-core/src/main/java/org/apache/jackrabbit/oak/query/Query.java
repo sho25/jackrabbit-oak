@@ -162,10 +162,10 @@ name|value
 parameter_list|)
 function_decl|;
 name|void
-name|setTraversalFallback
+name|setTraversalEnabled
 parameter_list|(
 name|boolean
-name|traversal
+name|traversalEnabled
 parameter_list|)
 function_decl|;
 name|void

@@ -510,7 +510,7 @@ operator|.
 name|commit
 argument_list|()
 expr_stmt|;
-name|setTravesalFallback
+name|setTravesalEnabled
 argument_list|(
 literal|false
 argument_list|)
@@ -571,7 +571,7 @@ literal|"/content/y"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|setTravesalFallback
+name|setTravesalEnabled
 argument_list|(
 literal|true
 argument_list|)
@@ -672,7 +672,7 @@ operator|.
 name|commit
 argument_list|()
 expr_stmt|;
-name|setTravesalFallback
+name|setTravesalEnabled
 argument_list|(
 literal|false
 argument_list|)
@@ -713,7 +713,7 @@ literal|"/node-3"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|setTravesalFallback
+name|setTravesalEnabled
 argument_list|(
 literal|true
 argument_list|)

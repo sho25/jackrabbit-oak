@@ -645,7 +645,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|2.0
+literal|6.0
 argument_list|,
 name|index
 operator|.
@@ -688,7 +688,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|1.0
+literal|5.0
 argument_list|,
 name|index
 operator|.
@@ -729,7 +729,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|3.0
+literal|7.0
 argument_list|,
 name|index
 operator|.
