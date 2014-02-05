@@ -249,6 +249,10 @@ name|String
 name|getPlan
 parameter_list|()
 function_decl|;
+name|double
+name|getEstimatedCost
+parameter_list|()
+function_decl|;
 name|Tree
 name|getTree
 parameter_list|(

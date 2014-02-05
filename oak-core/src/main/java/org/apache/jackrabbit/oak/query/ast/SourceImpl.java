@@ -279,10 +279,10 @@ name|NodeState
 name|rootState
 parameter_list|)
 function_decl|;
-comment|/**      * Prepare executing the query (recursively). This method will decide which      * index to use.      */
+comment|/**      * Prepare executing the query (recursively). This method will decide which      * index to use.      *       * @return the estimated cost      */
 specifier|public
 specifier|abstract
-name|void
+name|double
 name|prepare
 parameter_list|()
 function_decl|;

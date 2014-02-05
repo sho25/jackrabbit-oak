@@ -807,7 +807,8 @@ if|if
 condition|(
 name|selector
 operator|.
-name|index
+name|getIndex
+argument_list|()
 operator|instanceof
 name|FulltextQueryIndex
 condition|)

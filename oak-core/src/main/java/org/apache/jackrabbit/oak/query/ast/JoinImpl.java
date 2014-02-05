@@ -503,20 +503,34 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|void
+name|double
 name|prepare
 parameter_list|()
 block|{
+comment|// the estimated cost is the cost of the left selector,
+comment|// plus twice the cost of the right selector (we expect
+comment|// two rows for the right selector for each node
+comment|// on the left selector)
+name|double
+name|cost
+init|=
 name|left
 operator|.
 name|prepare
 argument_list|()
-expr_stmt|;
+decl_stmt|;
+name|cost
+operator|+=
+literal|2
+operator|*
 name|right
 operator|.
 name|prepare
 argument_list|()
 expr_stmt|;
+return|return
+name|cost
+return|;
 block|}
 annotation|@
 name|Override
