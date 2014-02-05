@@ -268,10 +268,6 @@ name|session
 operator|.
 name|getLatestRoot
 argument_list|()
-argument_list|,
-name|TreeTypeProvider
-operator|.
-name|EMPTY
 argument_list|)
 expr_stmt|;
 block|}

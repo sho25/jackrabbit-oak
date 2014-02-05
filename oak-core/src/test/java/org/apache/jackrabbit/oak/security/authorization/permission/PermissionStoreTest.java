@@ -678,7 +678,7 @@ name|t
 argument_list|,
 name|TreePermission
 operator|.
-name|ALL
+name|EMPTY
 argument_list|)
 argument_list|)
 expr_stmt|;

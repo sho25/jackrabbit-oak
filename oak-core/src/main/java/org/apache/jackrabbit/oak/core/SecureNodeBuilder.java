@@ -1784,12 +1784,6 @@ operator|new
 name|ImmutableTree
 argument_list|(
 name|base
-argument_list|,
-operator|new
-name|TreeTypeProviderImpl
-argument_list|(
-name|acContext
-argument_list|)
 argument_list|)
 decl_stmt|;
 name|treePermission

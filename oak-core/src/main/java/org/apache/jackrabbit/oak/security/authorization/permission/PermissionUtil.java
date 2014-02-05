@@ -547,31 +547,6 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-specifier|public
-specifier|static
-name|int
-name|getType
-parameter_list|(
-annotation|@
-name|Nonnull
-name|ImmutableTree
-name|tree
-parameter_list|,
-annotation|@
-name|Nullable
-name|PropertyState
-name|property
-parameter_list|)
-block|{
-comment|// TODO: OAK-753 decide on where to filter out hidden items.
-comment|// TODO: deal with hidden properties
-return|return
-name|tree
-operator|.
-name|getType
-argument_list|()
-return|;
-block|}
 annotation|@
 name|CheckForNull
 specifier|public

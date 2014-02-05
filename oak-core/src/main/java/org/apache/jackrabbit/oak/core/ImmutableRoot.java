@@ -264,11 +264,6 @@ annotation|@
 name|Nonnull
 name|Root
 name|root
-parameter_list|,
-annotation|@
-name|Nonnull
-name|TreeTypeProvider
-name|typeProvider
 parameter_list|)
 block|{
 if|if
@@ -292,8 +287,6 @@ operator|)
 operator|.
 name|getBaseState
 argument_list|()
-argument_list|,
-name|typeProvider
 argument_list|)
 expr_stmt|;
 block|}
