@@ -147,9 +147,11 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|core
+name|plugins
 operator|.
-name|AbstractTree
+name|tree
+operator|.
+name|TreeConstants
 import|;
 end_import
 
@@ -174,7 +176,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Test for the hidden {@link AbstractTree#OAK_CHILD_ORDER} property  */
+comment|/**  * Test for the hidden {@link org.apache.jackrabbit.oak.plugins.tree.TreeConstants#OAK_CHILD_ORDER} property  */
 end_comment
 
 begin_class
@@ -246,7 +248,7 @@ name|a
 operator|.
 name|hasProperty
 argument_list|(
-name|AbstractTree
+name|TreeConstants
 operator|.
 name|OAK_CHILD_ORDER
 argument_list|)
@@ -276,7 +278,7 @@ name|a
 operator|.
 name|getProperty
 argument_list|(
-name|AbstractTree
+name|TreeConstants
 operator|.
 name|OAK_CHILD_ORDER
 argument_list|)
@@ -402,7 +404,7 @@ name|a
 operator|.
 name|getPropertyStatus
 argument_list|(
-name|AbstractTree
+name|TreeConstants
 operator|.
 name|OAK_CHILD_ORDER
 argument_list|)

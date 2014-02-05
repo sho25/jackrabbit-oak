@@ -13,7 +13,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|util
+name|plugins
+operator|.
+name|tree
 package|;
 end_package
 
@@ -142,6 +144,24 @@ operator|.
 name|api
 operator|.
 name|Tree
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|tree
+operator|.
+name|TreeLocation
 import|;
 end_import
 

@@ -85,9 +85,11 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|core
+name|plugins
 operator|.
-name|AbstractTree
+name|tree
+operator|.
+name|TreeConstants
 import|;
 end_import
 
@@ -144,7 +146,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This conflict handler instance takes care of properly merging conflicts  * occurring by concurrent reorder operations.  *  * @see AbstractTree#OAK_CHILD_ORDER  */
+comment|/**  * This conflict handler instance takes care of properly merging conflicts  * occurring by concurrent reorder operations.  *  * @see org.apache.jackrabbit.oak.plugins.tree.TreeConstants#OAK_CHILD_ORDER  */
 end_comment
 
 begin_class
@@ -541,7 +543,7 @@ name|p
 parameter_list|)
 block|{
 return|return
-name|AbstractTree
+name|TreeConstants
 operator|.
 name|OAK_CHILD_ORDER
 operator|.

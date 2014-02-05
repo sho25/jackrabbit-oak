@@ -69,9 +69,11 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|core
+name|plugins
 operator|.
-name|AbstractTree
+name|tree
+operator|.
+name|TreeConstants
 import|;
 end_import
 
@@ -1522,7 +1524,7 @@ name|target
 operator|.
 name|getProperty
 argument_list|(
-name|AbstractTree
+name|TreeConstants
 operator|.
 name|OAK_CHILD_ORDER
 argument_list|)
@@ -1597,7 +1599,7 @@ name|target
 operator|.
 name|getProperty
 argument_list|(
-name|AbstractTree
+name|TreeConstants
 operator|.
 name|OAK_CHILD_ORDER
 argument_list|)

@@ -13,7 +13,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|core
+name|plugins
+operator|.
+name|tree
 package|;
 end_package
 
@@ -363,15 +365,6 @@ name|AbstractTree
 implements|implements
 name|Tree
 block|{
-comment|/**      * Name of the internal property that contains the child order      */
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|OAK_CHILD_ORDER
-init|=
-literal|":childOrder"
-decl_stmt|;
 comment|// TODO: make this configurable
 specifier|private
 specifier|static
@@ -508,11 +501,13 @@ name|nodeBuilder
 operator|.
 name|hasProperty
 argument_list|(
+name|TreeConstants
+operator|.
 name|OAK_CHILD_ORDER
 argument_list|)
 return|;
 block|}
-comment|/**      * Returns the list of child names considering its ordering      * when the {@link #OAK_CHILD_ORDER} property is set.      *      * @return the list of child names.      */
+comment|/**      * Returns the list of child names considering its ordering      * when the {@link org.apache.jackrabbit.oak.plugins.tree.TreeConstants#OAK_CHILD_ORDER} property is set.      *      * @return the list of child names.      */
 annotation|@
 name|Nonnull
 specifier|protected
@@ -563,6 +558,8 @@ name|nodeBuilder
 operator|.
 name|getProperty
 argument_list|(
+name|TreeConstants
+operator|.
 name|OAK_CHILD_ORDER
 argument_list|)
 decl_stmt|;
@@ -633,7 +630,7 @@ argument_list|()
 return|;
 block|}
 block|}
-comment|//------------------------------------------------------------< Tree>---
+comment|//---------------------------------------------------------------< Tree>---
 annotation|@
 name|Override
 specifier|public

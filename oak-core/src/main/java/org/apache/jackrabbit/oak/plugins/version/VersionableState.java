@@ -577,7 +577,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|core
+name|plugins
+operator|.
+name|tree
 operator|.
 name|ImmutableTree
 import|;

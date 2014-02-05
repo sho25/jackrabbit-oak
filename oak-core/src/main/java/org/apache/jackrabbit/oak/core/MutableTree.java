@@ -193,6 +193,42 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
+name|plugins
+operator|.
+name|tree
+operator|.
+name|AbstractTree
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|tree
+operator|.
+name|TreeConstants
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
 name|spi
 operator|.
 name|state
@@ -846,6 +882,8 @@ name|nodeBuilder
 operator|.
 name|getProperty
 argument_list|(
+name|TreeConstants
+operator|.
 name|OAK_CHILD_ORDER
 argument_list|)
 argument_list|)
@@ -927,6 +965,8 @@ name|nodeBuilder
 operator|.
 name|getProperty
 argument_list|(
+name|TreeConstants
+operator|.
 name|OAK_CHILD_ORDER
 argument_list|)
 argument_list|)
@@ -982,6 +1022,8 @@ name|nodeBuilder
 operator|.
 name|removeProperty
 argument_list|(
+name|TreeConstants
+operator|.
 name|OAK_CHILD_ORDER
 argument_list|)
 expr_stmt|;
@@ -1204,6 +1246,8 @@ name|MultiGenericPropertyState
 operator|.
 name|nameProperty
 argument_list|(
+name|TreeConstants
+operator|.
 name|OAK_CHILD_ORDER
 argument_list|,
 name|Iterables
@@ -1522,7 +1566,7 @@ return|return
 name|child
 return|;
 block|}
-comment|/**      * Update the child order with children that have been removed or added.      * Added children are appended to the end of the {@link #OAK_CHILD_ORDER}      * property.      */
+comment|/**      * Update the child order with children that have been removed or added.      * Added children are appended to the end of the {@link org.apache.jackrabbit.oak.plugins.tree.TreeConstants#OAK_CHILD_ORDER}      * property.      */
 name|void
 name|updateChildOrder
 parameter_list|()
@@ -1606,6 +1650,8 @@ name|array
 argument_list|(
 name|NAME
 argument_list|,
+name|TreeConstants
+operator|.
 name|OAK_CHILD_ORDER
 argument_list|)
 decl_stmt|;
@@ -1856,7 +1902,7 @@ return|return
 name|movesApplied
 return|;
 block|}
-comment|/**      * Ensures that the {@link #OAK_CHILD_ORDER} exists. This method will create      * the property if it doesn't exist and initialize the value with the names      * of the children as returned by {@link NodeBuilder#getChildNodeNames()}.      */
+comment|/**      * Ensures that the {@link org.apache.jackrabbit.oak.plugins.tree.TreeConstants#OAK_CHILD_ORDER} exists. This method will create      * the property if it doesn't exist and initialize the value with the names      * of the children as returned by {@link NodeBuilder#getChildNodeNames()}.      */
 specifier|private
 name|void
 name|ensureChildOrderProperty
@@ -1869,6 +1915,8 @@ name|nodeBuilder
 operator|.
 name|hasProperty
 argument_list|(
+name|TreeConstants
+operator|.
 name|OAK_CHILD_ORDER
 argument_list|)
 condition|)
@@ -1881,6 +1929,8 @@ name|MultiGenericPropertyState
 operator|.
 name|nameProperty
 argument_list|(
+name|TreeConstants
+operator|.
 name|OAK_CHILD_ORDER
 argument_list|,
 name|nodeBuilder
