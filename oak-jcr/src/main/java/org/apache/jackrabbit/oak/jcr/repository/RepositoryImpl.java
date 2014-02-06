@@ -1253,6 +1253,8 @@ argument_list|(
 name|contentSession
 argument_list|,
 name|refreshStrategy
+argument_list|,
+name|statisticManager
 argument_list|)
 block|{
 comment|// Defer session MBean registration to avoid cluttering the

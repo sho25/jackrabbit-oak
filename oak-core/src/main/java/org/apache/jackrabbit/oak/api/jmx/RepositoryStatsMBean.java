@@ -55,6 +55,51 @@ name|CompositeData
 name|getSessionLogin
 parameter_list|()
 function_decl|;
+comment|/**      * @see org.apache.jackrabbit.api.stats.RepositoryStatistics.Type#SESSION_READ_COUNTER      */
+name|CompositeData
+name|getSessionReadCount
+parameter_list|()
+function_decl|;
+comment|/**      * @see org.apache.jackrabbit.api.stats.RepositoryStatistics.Type#SESSION_READ_DURATION      */
+name|CompositeData
+name|getSessionReadDuration
+parameter_list|()
+function_decl|;
+comment|/**      * @see org.apache.jackrabbit.api.stats.RepositoryStatistics.Type#SESSION_READ_AVERAGE      */
+name|CompositeData
+name|getSessionReadAverage
+parameter_list|()
+function_decl|;
+comment|/**      * @see org.apache.jackrabbit.api.stats.RepositoryStatistics.Type#SESSION_WRITE_COUNTER      */
+name|CompositeData
+name|getSessionWriteCount
+parameter_list|()
+function_decl|;
+comment|/**      * @see org.apache.jackrabbit.api.stats.RepositoryStatistics.Type#SESSION_READ_DURATION      */
+name|CompositeData
+name|getSessionWriteDuration
+parameter_list|()
+function_decl|;
+comment|/**      * @see org.apache.jackrabbit.api.stats.RepositoryStatistics.Type#SESSION_WRITE_AVERAGE      */
+name|CompositeData
+name|getSessionWriteAverage
+parameter_list|()
+function_decl|;
+comment|/**      * @see org.apache.jackrabbit.api.stats.RepositoryStatistics.Type#QUERY_COUNT      */
+name|CompositeData
+name|getQueryCount
+parameter_list|()
+function_decl|;
+comment|/**      * @see org.apache.jackrabbit.api.stats.RepositoryStatistics.Type#QUERY_DURATION      */
+name|CompositeData
+name|getQueryDuration
+parameter_list|()
+function_decl|;
+comment|/**      * @see org.apache.jackrabbit.api.stats.RepositoryStatistics.Type#QUERY_AVERAGE      */
+name|CompositeData
+name|getQueryAverage
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 
