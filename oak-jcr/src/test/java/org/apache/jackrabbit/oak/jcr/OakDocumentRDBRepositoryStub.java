@@ -224,7 +224,7 @@ name|System
 operator|.
 name|getProperty
 argument_list|(
-literal|"rdb.jcbc-user"
+literal|"rdb.jdbc-user"
 argument_list|,
 literal|"sa"
 argument_list|)
