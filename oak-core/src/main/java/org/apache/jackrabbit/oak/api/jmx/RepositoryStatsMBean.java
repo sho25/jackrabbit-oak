@@ -100,6 +100,21 @@ name|CompositeData
 name|getQueryAverage
 parameter_list|()
 function_decl|;
+comment|/**      * @see org.apache.jackrabbit.api.stats.RepositoryStatistics.Type#OBSERVATION_EVENT_COUNTER      */
+name|CompositeData
+name|getObservationEventCount
+parameter_list|()
+function_decl|;
+comment|/**      * @see org.apache.jackrabbit.api.stats.RepositoryStatistics.Type#OBSERVATION_EVENT_DURATION      */
+name|CompositeData
+name|getObservationEventDuration
+parameter_list|()
+function_decl|;
+comment|/**      * @see org.apache.jackrabbit.api.stats.RepositoryStatistics.Type#OBSERVATION_EVENT_AVERAGE      */
+name|CompositeData
+name|getObservationEventAverage
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 

@@ -1542,7 +1542,7 @@ operator|=
 operator|new
 name|ObservationManagerImpl
 argument_list|(
-name|delegate
+name|this
 argument_list|,
 name|ReadOnlyNodeTypeManager
 operator|.
@@ -1558,8 +1558,6 @@ argument_list|)
 argument_list|,
 name|getPermissionProvider
 argument_list|()
-argument_list|,
-name|namePathMapper
 argument_list|,
 name|whiteboard
 argument_list|)
