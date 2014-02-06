@@ -387,26 +387,6 @@ name|isAbsolute
 import|;
 end_import
 
-begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|spi
-operator|.
-name|state
-operator|.
-name|NodeStateUtils
-operator|.
-name|isHidden
-import|;
-end_import
-
 begin_class
 class|class
 name|MutableTree
@@ -610,7 +590,7 @@ name|beforeRead
 argument_list|()
 expr_stmt|;
 return|return
-name|isVisible
+name|internalExists
 argument_list|()
 return|;
 block|}
@@ -863,7 +843,6 @@ name|hasOrderableChildren
 argument_list|()
 condition|)
 block|{
-comment|// FIXME (OAK-842) child order not updated when parent is not accessible
 name|parent
 operator|.
 name|nodeBuilder
@@ -1815,7 +1794,7 @@ expr_stmt|;
 if|if
 condition|(
 operator|!
-name|isVisible
+name|internalExists
 argument_list|()
 condition|)
 block|{
@@ -1827,25 +1806,6 @@ literal|"This tree does not exist"
 argument_list|)
 throw|;
 block|}
-block|}
-comment|/**      * Internal method for checking whether this node exists and is visible      * (i.e. not hidden).      *      * @return {@code true} if the node is visible, {@code false} if not      */
-specifier|private
-name|boolean
-name|isVisible
-parameter_list|()
-block|{
-return|return
-operator|!
-name|isHidden
-argument_list|(
-name|name
-argument_list|)
-operator|&&
-name|nodeBuilder
-operator|.
-name|exists
-argument_list|()
-return|;
 block|}
 specifier|private
 name|boolean
