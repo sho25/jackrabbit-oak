@@ -24,22 +24,11 @@ end_comment
 begin_interface
 specifier|public
 interface|interface
-name|FastCopyMove
+name|FastMove
 block|{
 comment|/**      * Move the {@code source} builder to this builder with the      * given new name      * @param source  source to move to this builder      * @param newName  the new name      * @return  {@code true} on success, {@code false} otherwise      */
 name|boolean
 name|moveFrom
-parameter_list|(
-name|KernelNodeBuilder
-name|source
-parameter_list|,
-name|String
-name|newName
-parameter_list|)
-function_decl|;
-comment|/**      * Copy the {@code source} builder to this builder with the      * given new name      * @param source  source to copy to this builder      * @param newName  the new name      * @return  {@code true} on success, {@code false} otherwise      */
-name|boolean
-name|copyFrom
 parameter_list|(
 name|KernelNodeBuilder
 name|source

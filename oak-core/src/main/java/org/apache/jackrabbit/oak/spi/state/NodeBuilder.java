@@ -265,21 +265,6 @@ name|String
 name|newName
 parameter_list|)
 function_decl|;
-comment|/**      * Copy this child to a new parent with a new name.      * @param newParent  builder for the new parent.      * @param newName  name of this child at the new parent      * @return  {@code true} on success, {@code false} otherwise      */
-name|boolean
-name|copyTo
-parameter_list|(
-annotation|@
-name|Nonnull
-name|NodeBuilder
-name|newParent
-parameter_list|,
-annotation|@
-name|Nonnull
-name|String
-name|newName
-parameter_list|)
-function_decl|;
 comment|/**      * Returns the current number of properties.      *      * @return number of properties      */
 name|long
 name|getPropertyCount

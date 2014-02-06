@@ -1460,30 +1460,6 @@ name|newName
 argument_list|)
 return|;
 block|}
-comment|/**      * Copy this tree to the parent at {@code destParent} with the new name      * {@code newName}.      * @param newParent new parent for this tree      * @param newName   new name for this tree      */
-name|boolean
-name|copyTo
-parameter_list|(
-name|MutableTree
-name|newParent
-parameter_list|,
-name|String
-name|newName
-parameter_list|)
-block|{
-return|return
-name|nodeBuilder
-operator|.
-name|copyTo
-argument_list|(
-name|newParent
-operator|.
-name|nodeBuilder
-argument_list|,
-name|newName
-argument_list|)
-return|;
-block|}
 comment|/**      * Get a possibly non existing tree.      * @param path the path to the tree      * @return a {@link Tree} instance for the child at {@code path}.      */
 annotation|@
 name|CheckForNull

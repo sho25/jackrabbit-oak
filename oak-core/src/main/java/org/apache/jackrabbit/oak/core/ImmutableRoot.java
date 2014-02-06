@@ -445,8 +445,6 @@ name|UnsupportedOperationException
 argument_list|()
 throw|;
 block|}
-annotation|@
-name|Override
 specifier|public
 name|boolean
 name|copy
