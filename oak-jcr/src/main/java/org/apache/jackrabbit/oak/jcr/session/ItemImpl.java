@@ -335,7 +335,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|util
+name|plugins
+operator|.
+name|memory
 operator|.
 name|PropertyBuilder
 import|;
