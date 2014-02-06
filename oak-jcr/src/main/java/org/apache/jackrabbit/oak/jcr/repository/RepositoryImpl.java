@@ -805,6 +805,8 @@ operator|new
 name|StatisticManager
 argument_list|(
 name|whiteboard
+argument_list|,
+name|scheduledExecutor
 argument_list|)
 expr_stmt|;
 block|}
