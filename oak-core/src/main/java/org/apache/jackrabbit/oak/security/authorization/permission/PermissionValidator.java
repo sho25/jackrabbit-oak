@@ -1623,7 +1623,6 @@ expr_stmt|;
 block|}
 else|else
 block|{
-comment|// FIXME: OAK-710 (identify renaming/move of nodes that only required MODIFY_CHILD_NODE_COLLECTION permission)
 name|perm
 operator|=
 name|defaultPermission
