@@ -439,7 +439,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**      * Creates a {@linkplain RDBDocumentStore} instance using the provided {@link DataSource}.      */
+comment|/**      * Creates a {@linkplain RDBDocumentStore} instance using the provided      * {@link DataSource}.      */
 specifier|public
 name|RDBDocumentStore
 parameter_list|(
@@ -2484,6 +2484,22 @@ name|SQLException
 name|ex
 parameter_list|)
 block|{
+try|try
+block|{
+name|connection
+operator|.
+name|rollback
+argument_list|()
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|SQLException
+name|e
+parameter_list|)
+block|{
+comment|// TODO
+block|}
 throw|throw
 operator|new
 name|MicroKernelException
@@ -2586,6 +2602,22 @@ name|SQLException
 name|ex
 parameter_list|)
 block|{
+try|try
+block|{
+name|connection
+operator|.
+name|rollback
+argument_list|()
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|SQLException
+name|e
+parameter_list|)
+block|{
+comment|// TODO
+block|}
 throw|throw
 operator|new
 name|MicroKernelException
