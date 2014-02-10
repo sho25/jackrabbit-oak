@@ -709,16 +709,15 @@ return|;
 block|}
 try|try
 block|{
-name|ExternalUser
 name|externalUser
-init|=
+operator|=
 name|idp
 operator|.
 name|authenticate
 argument_list|(
 name|credentials
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 if|if
 condition|(
 name|externalUser
@@ -726,13 +725,6 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|log
-operator|.
-name|debug
-argument_list|(
-literal|"Adding Credentials to shared state."
-argument_list|)
-expr_stmt|;
 comment|//noinspection unchecked
 name|sharedState
 operator|.
@@ -741,13 +733,6 @@ argument_list|(
 name|SHARED_KEY_CREDENTIALS
 argument_list|,
 name|credentials
-argument_list|)
-expr_stmt|;
-name|log
-operator|.
-name|debug
-argument_list|(
-literal|"Adding login name to shared state."
 argument_list|)
 expr_stmt|;
 comment|//noinspection unchecked
@@ -1144,10 +1129,6 @@ name|super
 operator|.
 name|clearState
 argument_list|()
-expr_stmt|;
-name|idp
-operator|=
-literal|null
 expr_stmt|;
 name|externalUser
 operator|=

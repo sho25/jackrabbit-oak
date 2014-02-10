@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*************************************************************************  *  * ADOBE CONFIDENTIAL  * ___________________  *  *  Copyright ${today.year} Adobe Systems Incorporated  *  All Rights Reserved.  *  * NOTICE:  All information contained herein is, and remains  * the property of Adobe Systems Incorporated and its suppliers,  * if any.  The intellectual and technical concepts contained  * herein are proprietary to Adobe Systems Incorporated and its  * suppliers and are protected by trade secret or copyright law.  * Dissemination of this information or reproduction of this material  * is strictly forbidden unless prior written permission is obtained  * from Adobe Systems Incorporated.  **************************************************************************/
+comment|/*  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  *      http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
 end_comment
 
 begin_package
@@ -94,7 +94,7 @@ name|expirationTime
 return|;
 block|}
 specifier|public
-name|void
+name|Authorizable
 name|setExpirationTime
 parameter_list|(
 name|long
@@ -107,6 +107,9 @@ name|expirationTime
 operator|=
 name|expirationTime
 expr_stmt|;
+return|return
+name|this
+return|;
 block|}
 comment|/**          * Defines the set of group names that are automatically added to synced authorizable.          * @return set of group names.          */
 specifier|public
@@ -122,7 +125,7 @@ name|autoMembership
 return|;
 block|}
 specifier|public
-name|void
+name|Authorizable
 name|setAutoMembership
 parameter_list|(
 name|Set
@@ -138,6 +141,9 @@ name|autoMembership
 operator|=
 name|autoMembership
 expr_stmt|;
+return|return
+name|this
+return|;
 block|}
 comment|/**          * Defines the mapping from external to internal property names. Only the external properties defined as keys of          * this map are synced with the mapped internal properties.          *          * Example:          *<xmp>          *     {          *         "cn": "givenName",          *         "c": "country"          *     }          *</xmp>          *          * The implicit properties like userid, groupname, password must not be mapped.          *          * @return the property mapping          */
 specifier|public
@@ -155,7 +161,7 @@ name|propertyMapping
 return|;
 block|}
 specifier|public
-name|void
+name|Authorizable
 name|setPropertyMapping
 parameter_list|(
 name|Map
@@ -173,6 +179,9 @@ name|propertyMapping
 operator|=
 name|propertyMapping
 expr_stmt|;
+return|return
+name|this
+return|;
 block|}
 comment|/**          * Defines the authorizables intermediate path prefix that is used when creating new authorizables. This prefix          * is always prepended to the path provided by the {@link ExternalIdentity}.          * @return the intermediate path prefix.          */
 specifier|public
@@ -185,7 +194,7 @@ name|pathPrefix
 return|;
 block|}
 specifier|public
-name|void
+name|Authorizable
 name|setPathPrefix
 parameter_list|(
 name|String
@@ -198,6 +207,9 @@ name|pathPrefix
 operator|=
 name|pathPrefix
 expr_stmt|;
+return|return
+name|this
+return|;
 block|}
 block|}
 comment|/**      * User specific config.      */
@@ -227,7 +239,7 @@ name|membershipExpirationTime
 return|;
 block|}
 specifier|public
-name|void
+name|User
 name|setMembershipExpirationTime
 parameter_list|(
 name|long
@@ -240,6 +252,9 @@ name|membershipExpirationTime
 operator|=
 name|membershipExpirationTime
 expr_stmt|;
+return|return
+name|this
+return|;
 block|}
 comment|/**          * Returns the maximum depth of group nesting when membership relations are synced. A value of 0 effectively          * disables group membership lookup. A value of 1 only adds the direct groups of a user. This value has no effect          * when syncing individual groups only when syncing a users membership ancestry.          * @return the group nesting depth          */
 specifier|public
@@ -252,7 +267,7 @@ name|groupNestingDepth
 return|;
 block|}
 specifier|public
-name|void
+name|User
 name|setGroupNestingDepth
 parameter_list|(
 name|long
@@ -265,6 +280,9 @@ name|groupNestingDepth
 operator|=
 name|groupNestingDepth
 expr_stmt|;
+return|return
+name|this
+return|;
 block|}
 block|}
 comment|/**      * Group specific config      */
