@@ -1059,7 +1059,7 @@ name|commit
 argument_list|(
 name|userData
 argument_list|,
-literal|null
+literal|"/"
 argument_list|)
 expr_stmt|;
 block|}
