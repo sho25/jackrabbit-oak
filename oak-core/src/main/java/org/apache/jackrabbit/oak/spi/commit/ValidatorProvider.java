@@ -61,7 +61,7 @@ name|javax
 operator|.
 name|annotation
 operator|.
-name|Nonnull
+name|CheckForNull
 import|;
 end_import
 
@@ -77,9 +77,9 @@ name|ValidatorProvider
 implements|implements
 name|EditorProvider
 block|{
-comment|/**      * Returns a validator for checking the changes between the given      * two root states.      *      * @param before original root state      * @param after  modified root state      * @param info   metadata about this commit      * @return validator for checking the modifications      */
+comment|/**      * Returns a validator for checking the changes between the given      * two root states.      *      * @param before original root state      * @param after  modified root state      * @param info   metadata about this commit      * @return validator for checking the modifications,      *         or {@code null} if this validator is not needed for this commit      */
 annotation|@
-name|Nonnull
+name|CheckForNull
 specifier|protected
 specifier|abstract
 name|Validator
@@ -99,7 +99,7 @@ comment|//----------------------------------------------------< EditorProvider>-
 annotation|@
 name|Override
 annotation|@
-name|Nonnull
+name|CheckForNull
 specifier|public
 specifier|final
 name|Editor
