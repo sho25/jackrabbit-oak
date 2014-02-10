@@ -24,7 +24,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * ExternalGroup... TODO  */
+comment|/**  * ExternalGroup defines a group that is provided by an external system.  */
 end_comment
 
 begin_interface
@@ -32,8 +32,8 @@ specifier|public
 interface|interface
 name|ExternalGroup
 extends|extends
-name|ExternalUser
-block|{ }
+name|ExternalIdentity
+block|{  }
 end_interface
 
 end_unit

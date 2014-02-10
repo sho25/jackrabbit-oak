@@ -244,10 +244,7 @@ specifier|private
 name|boolean
 name|success
 decl_stmt|;
-specifier|private
-name|LdapSearch
-name|search
-decl_stmt|;
+comment|//    private LdapSearch search;
 comment|//--------------------------------------------------------< LoginModule>---
 annotation|@
 name|Override
@@ -292,18 +289,7 @@ name|options
 argument_list|)
 expr_stmt|;
 comment|//TODO
-name|search
-operator|=
-operator|new
-name|JndiLdapSearch
-argument_list|(
-operator|new
-name|LdapSettings
-argument_list|(
-name|options
-argument_list|)
-argument_list|)
-expr_stmt|;
+comment|//        search = new JndiLdapSearch(new LdapProviderConfig(options));
 block|}
 annotation|@
 name|Override
@@ -427,71 +413,16 @@ operator|=
 name|getExternalUser
 argument_list|()
 expr_stmt|;
-if|if
-condition|(
-name|ldapUser
-operator|!=
-literal|null
-operator|&&
-name|search
-operator|.
-name|findUser
-argument_list|(
-name|ldapUser
-argument_list|)
-condition|)
-block|{
-if|if
-condition|(
-name|search
-operator|.
-name|authenticate
-argument_list|(
-name|ldapUser
-argument_list|)
-condition|)
-block|{
-name|success
-operator|=
-literal|true
-expr_stmt|;
-name|log
-operator|.
-name|debug
-argument_list|(
-literal|"Adding Credentials to shared state."
-argument_list|)
-expr_stmt|;
-name|sharedState
-operator|.
-name|put
-argument_list|(
-name|SHARED_KEY_CREDENTIALS
-argument_list|,
-name|credentials
-argument_list|)
-expr_stmt|;
-name|log
-operator|.
-name|debug
-argument_list|(
-literal|"Adding login name to shared state."
-argument_list|)
-expr_stmt|;
-name|sharedState
-operator|.
-name|put
-argument_list|(
-name|SHARED_KEY_LOGIN_NAME
-argument_list|,
-name|ldapUser
-operator|.
-name|getId
-argument_list|()
-argument_list|)
-expr_stmt|;
-block|}
-block|}
+comment|//        if (ldapUser != null&& search.findUser(ldapUser)) {
+comment|//            if (search.authenticate(ldapUser)) {
+comment|//                success = true;
+comment|//                log.debug("Adding Credentials to shared state.");
+comment|//                sharedState.put(SHARED_KEY_CREDENTIALS, credentials);
+comment|//
+comment|//                log.debug("Adding login name to shared state.");
+comment|//                sharedState.put(SHARED_KEY_LOGIN_NAME, ldapUser.getId());
+comment|//            }
+comment|//        }
 return|return
 name|success
 return|;
@@ -521,14 +452,9 @@ name|ldapUser
 operator|=
 literal|null
 expr_stmt|;
-name|search
-operator|=
-literal|null
-expr_stmt|;
+comment|//        search = null;
 block|}
 comment|//------------------------------------------------< ExternalLoginModule>---
-annotation|@
-name|Override
 specifier|protected
 name|boolean
 name|loginSucceeded
@@ -538,8 +464,6 @@ return|return
 name|success
 return|;
 block|}
-annotation|@
-name|Override
 specifier|protected
 name|LdapUser
 name|getExternalUser
@@ -591,21 +515,7 @@ operator|.
 name|getPassword
 argument_list|()
 decl_stmt|;
-return|return
-operator|new
-name|LdapUser
-argument_list|(
-name|uid
-argument_list|,
-operator|new
-name|String
-argument_list|(
-name|pwd
-argument_list|)
-argument_list|,
-name|search
-argument_list|)
-return|;
+comment|//                return new LdapUser(uid, new String(pwd), search);
 block|}
 block|}
 return|return

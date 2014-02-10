@@ -750,7 +750,7 @@ specifier|private
 name|void
 name|syncAuthorizable
 parameter_list|(
-name|ExternalUser
+name|ExternalIdentity
 name|externalUser
 parameter_list|,
 name|Authorizable

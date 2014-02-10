@@ -86,7 +86,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * SyncHandler... TODO  */
+comment|/**  * SyncHandler is used to sync users and groups from an external source an {@link ExternalUserProvider}.  * One sync task always operates within a {@link SyncContext} and is associated with a {@link SyncConfig}.  *  * todo:  * - cleanup expired authorizables ?  *  */
 end_comment
 
 begin_interface

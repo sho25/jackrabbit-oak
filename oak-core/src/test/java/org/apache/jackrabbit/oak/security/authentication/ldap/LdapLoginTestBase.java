@@ -687,7 +687,7 @@ name|options
 operator|.
 name|put
 argument_list|(
-name|LdapSettings
+name|LdapProviderConfig
 operator|.
 name|KEY_HOST
 argument_list|,
@@ -698,7 +698,7 @@ name|options
 operator|.
 name|put
 argument_list|(
-name|LdapSettings
+name|LdapProviderConfig
 operator|.
 name|KEY_PORT
 argument_list|,
@@ -717,7 +717,7 @@ name|options
 operator|.
 name|put
 argument_list|(
-name|LdapSettings
+name|LdapProviderConfig
 operator|.
 name|KEY_AUTHDN
 argument_list|,
@@ -730,7 +730,7 @@ name|options
 operator|.
 name|put
 argument_list|(
-name|LdapSettings
+name|LdapProviderConfig
 operator|.
 name|KEY_AUTHPW
 argument_list|,
@@ -743,7 +743,7 @@ name|options
 operator|.
 name|put
 argument_list|(
-name|LdapSettings
+name|LdapProviderConfig
 operator|.
 name|KEY_USERROOT
 argument_list|,
@@ -756,7 +756,7 @@ name|options
 operator|.
 name|put
 argument_list|(
-name|LdapSettings
+name|LdapProviderConfig
 operator|.
 name|KEY_GROUPROOT
 argument_list|,
@@ -769,7 +769,7 @@ name|options
 operator|.
 name|put
 argument_list|(
-name|LdapSettings
+name|LdapProviderConfig
 operator|.
 name|KEY_AUTOCREATEUSER
 operator|+
@@ -782,7 +782,7 @@ name|options
 operator|.
 name|put
 argument_list|(
-name|LdapSettings
+name|LdapProviderConfig
 operator|.
 name|KEY_AUTOCREATEGROUP
 operator|+
@@ -797,7 +797,7 @@ name|options
 operator|.
 name|put
 argument_list|(
-name|LdapSettings
+name|LdapProviderConfig
 operator|.
 name|KEY_GROUPFILTER
 argument_list|,
@@ -814,7 +814,7 @@ name|options
 operator|.
 name|put
 argument_list|(
-name|LdapSettings
+name|LdapProviderConfig
 operator|.
 name|KEY_GROUPMEMBERSHIPATTRIBUTE
 argument_list|,
