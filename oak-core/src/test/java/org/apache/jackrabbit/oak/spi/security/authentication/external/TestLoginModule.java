@@ -501,7 +501,7 @@ annotation|@
 name|Override
 specifier|public
 name|Principal
-name|getPrincipal
+name|getPrincipalName
 parameter_list|()
 block|{
 return|return

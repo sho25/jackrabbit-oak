@@ -67,26 +67,8 @@ name|Root
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|spi
-operator|.
-name|security
-operator|.
-name|ConfigurationParameters
-import|;
-end_import
-
 begin_comment
-comment|/**  * SyncHandler is used to sync users and groups from an external source an {@link ExternalUserProvider}.  * One sync task always operates within a {@link SyncContext} and is associated with a {@link SyncConfig}.  *  * todo:  * - cleanup expired authorizables ?  *  */
+comment|/**  * SyncHandler is used to sync users and groups from an {@link ExternalIdentityProvider}.  * The synchronization performed within the scope of a {@link SyncContext} which is acquired during the  * {@link #createContext(ExternalIdentityProvider, org.apache.jackrabbit.api.security.user.UserManager, org.apache.jackrabbit.oak.api.Root)} call.  *  * The exact configuration is managed by the sync handler instance. The system may contain several sync handler  * implementations with different configurations. those are managed by the {@link SyncManager}.  *  * @see org.apache.jackrabbit.oak.spi.security.authentication.external.SyncContext  * @see org.apache.jackrabbit.oak.spi.security.authentication.external.SyncManager  */
 end_comment
 
 begin_interface
@@ -94,9 +76,24 @@ specifier|public
 interface|interface
 name|SyncHandler
 block|{
-name|boolean
-name|initialize
+comment|/**      * Returns the name of this sync handler.      * @return sync handler name      */
+annotation|@
+name|Nonnull
+name|String
+name|getName
+parameter_list|()
+function_decl|;
+comment|/**      * Initializes a sync context which is used to start the sync operations.      *      * @param idp the external identity provider used for syncing      * @param userManager user manager for managing authorizables      * @param root root of the current tree      * @return the sync context      * @throws SyncException if an error occurs      */
+annotation|@
+name|Nonnull
+name|SyncContext
+name|createContext
 parameter_list|(
+annotation|@
+name|Nonnull
+name|ExternalIdentityProvider
+name|idp
+parameter_list|,
 annotation|@
 name|Nonnull
 name|UserManager
@@ -106,27 +103,6 @@ annotation|@
 name|Nonnull
 name|Root
 name|root
-parameter_list|,
-annotation|@
-name|Nonnull
-name|SyncMode
-name|mode
-parameter_list|,
-annotation|@
-name|Nonnull
-name|ConfigurationParameters
-name|options
-parameter_list|)
-throws|throws
-name|SyncException
-function_decl|;
-name|boolean
-name|sync
-parameter_list|(
-annotation|@
-name|Nonnull
-name|ExternalUser
-name|externalUser
 parameter_list|)
 throws|throws
 name|SyncException

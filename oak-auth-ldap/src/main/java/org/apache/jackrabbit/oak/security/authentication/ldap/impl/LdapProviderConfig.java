@@ -511,6 +511,39 @@ name|PARAM_USER_EXTRA_FILTER
 init|=
 literal|"user.extraFilter"
 decl_stmt|;
+comment|/**      * @see Identity#makeDnPath()      */
+specifier|public
+specifier|static
+specifier|final
+name|boolean
+name|PARAM_USER_MAKE_DN_PATH_DEFAULT
+init|=
+literal|false
+decl_stmt|;
+comment|/**      * @see Identity#makeDnPath()      */
+annotation|@
+name|Property
+argument_list|(
+name|label
+operator|=
+literal|"User DN paths"
+argument_list|,
+name|description
+operator|=
+literal|"Controls if the DN should be used for calculating a portion of the intermediate path."
+argument_list|,
+name|boolValue
+operator|=
+name|PARAM_USER_MAKE_DN_PATH_DEFAULT
+argument_list|)
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|PARAM_USER_MAKE_DN_PATH
+init|=
+literal|"user.makeDnPath"
+decl_stmt|;
 comment|/**      * @see Identity#getBaseDN()      */
 specifier|public
 specifier|static
@@ -656,6 +689,39 @@ name|PARAM_GROUP_EXTRA_FILTER
 init|=
 literal|"group.extraFilter"
 decl_stmt|;
+comment|/**      * @see Identity#makeDnPath()      */
+specifier|public
+specifier|static
+specifier|final
+name|boolean
+name|PARAM_GROUP_MAKE_DN_PATH_DEFAULT
+init|=
+literal|false
+decl_stmt|;
+comment|/**      * @see Identity#makeDnPath()      */
+annotation|@
+name|Property
+argument_list|(
+name|label
+operator|=
+literal|"Group DN paths"
+argument_list|,
+name|description
+operator|=
+literal|"Controls if the DN should be used for calculating a portion of the intermediate path."
+argument_list|,
+name|boolValue
+operator|=
+name|PARAM_GROUP_MAKE_DN_PATH_DEFAULT
+argument_list|)
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|PARAM_GROUP_MAKE_DN_PATH
+init|=
+literal|"group.makeDnPath"
+decl_stmt|;
 comment|/**      * @see #getGroupMemberAttribute()      */
 specifier|public
 specifier|static
@@ -715,6 +781,10 @@ decl_stmt|;
 specifier|private
 name|String
 name|filterTemplate
+decl_stmt|;
+specifier|private
+name|boolean
+name|makeDnPath
 decl_stmt|;
 comment|/**          * Configures the base DN for searches of this kind of identity          * @return the base DN          */
 annotation|@
@@ -865,6 +935,37 @@ expr_stmt|;
 name|filterTemplate
 operator|=
 literal|null
+expr_stmt|;
+return|return
+name|this
+return|;
+block|}
+comment|/**          * Configures if the identities DN should be used to generate a portion of the authorizables intermediate path.          * @return {@code true} if the DN is used a intermediate path.          */
+specifier|public
+name|boolean
+name|makeDnPath
+parameter_list|()
+block|{
+return|return
+name|makeDnPath
+return|;
+block|}
+comment|/**          * Sets the intermediate path flag.          * @param makeDnPath {@code true} to use the DN as intermediate path          * @return {@code this}          * @see #makeDnPath()          */
+annotation|@
+name|Nonnull
+specifier|public
+name|Identity
+name|setMakeDnPath
+parameter_list|(
+name|boolean
+name|makeDnPath
+parameter_list|)
+block|{
+name|this
+operator|.
+name|makeDnPath
+operator|=
+name|makeDnPath
 expr_stmt|;
 return|return
 name|this
@@ -1331,6 +1432,18 @@ argument_list|,
 name|PARAM_USER_OBJECTCLASS_DEFAULT
 argument_list|)
 argument_list|)
+operator|.
+name|setMakeDnPath
+argument_list|(
+name|params
+operator|.
+name|getConfigValue
+argument_list|(
+name|PARAM_USER_MAKE_DN_PATH
+argument_list|,
+name|PARAM_USER_MAKE_DN_PATH_DEFAULT
+argument_list|)
+argument_list|)
 expr_stmt|;
 name|cfg
 operator|.
@@ -1382,6 +1495,18 @@ argument_list|(
 name|PARAM_GROUP_OBJECTCLASS
 argument_list|,
 name|PARAM_GROUP_OBJECTCLASS_DEFAULT
+argument_list|)
+argument_list|)
+operator|.
+name|setMakeDnPath
+argument_list|(
+name|params
+operator|.
+name|getConfigValue
+argument_list|(
+name|PARAM_GROUP_MAKE_DN_PATH
+argument_list|,
+name|PARAM_GROUP_MAKE_DN_PATH_DEFAULT
 argument_list|)
 argument_list|)
 expr_stmt|;

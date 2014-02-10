@@ -322,32 +322,6 @@ name|ExternalLoginModule
 operator|.
 name|PARAM_SYNC_HANDLER_NAME
 decl_stmt|;
-annotation|@
-name|Property
-argument_list|(
-name|value
-operator|=
-literal|"default"
-argument_list|,
-name|label
-operator|=
-literal|"Sync Mode"
-argument_list|,
-comment|// TODO!!!
-name|description
-operator|=
-literal|"a comma separated list of sync modes. allowed values: 'user','group','default','update'"
-argument_list|)
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|PARAM_SYNC_MODE
-init|=
-name|ExternalLoginModule
-operator|.
-name|PARAM_SYNC_MODE
-decl_stmt|;
 comment|/**      * default configuration for the login modules      */
 specifier|private
 name|ConfigurationParameters

@@ -86,6 +86,13 @@ name|String
 name|getId
 parameter_list|()
 function_decl|;
+comment|/**      * Returns the principal name of this identity. This usually corresponds to      * {@link org.apache.jackrabbit.api.security.user.Authorizable#getPrincipal()}.{@link java.security.Principal#getName()}      * @return the principal name      */
+annotation|@
+name|Nonnull
+name|String
+name|getPrincipalName
+parameter_list|()
+function_decl|;
 comment|/**      * Returns the desired intermediate relative path of the authorizable to be created. For example, one could map      * an external hierarchy into the local users and groups hierarchy.      *      * @return the intermediate path or {@code null} or empty.      */
 annotation|@
 name|CheckForNull
@@ -115,11 +122,6 @@ argument_list|,
 name|?
 argument_list|>
 name|getProperties
-parameter_list|()
-function_decl|;
-comment|// todo: really?
-name|Principal
-name|getPrincipal
 parameter_list|()
 function_decl|;
 block|}
