@@ -99,6 +99,24 @@ name|spi
 operator|.
 name|commit
 operator|.
+name|CommitInfo
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|commit
+operator|.
 name|MoveTracker
 import|;
 end_import
@@ -463,9 +481,9 @@ expr_stmt|;
 block|}
 comment|//--------------------------------------------------< ValidatorProvider>---
 annotation|@
-name|Nonnull
-annotation|@
 name|Override
+annotation|@
+name|Nonnull
 specifier|public
 name|Validator
 name|getRootValidator
@@ -475,6 +493,9 @@ name|before
 parameter_list|,
 name|NodeState
 name|after
+parameter_list|,
+name|CommitInfo
+name|info
 parameter_list|)
 block|{
 name|PermissionProvider

@@ -72,7 +72,7 @@ specifier|public
 interface|interface
 name|CommitHook
 block|{
-comment|/**      * Validates and/or modifies the given content change before it gets      * persisted.      *      * @param before content tree before the commit      * @param after content tree prepared for the commit      * @return content tree to be committed      * @throws CommitFailedException if the commit should be rejected      */
+comment|/**      * Validates and/or modifies the given content change before it gets      * persisted.      *      * @param before content tree before the commit      * @param after content tree prepared for the commit      * @param info metadata associated with this commit      * @return content tree to be committed      * @throws CommitFailedException if the commit should be rejected      */
 annotation|@
 name|Nonnull
 name|NodeState
@@ -83,6 +83,9 @@ name|before
 parameter_list|,
 name|NodeState
 name|after
+parameter_list|,
+name|CommitInfo
+name|info
 parameter_list|)
 throws|throws
 name|CommitFailedException

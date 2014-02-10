@@ -349,6 +349,24 @@ name|spi
 operator|.
 name|commit
 operator|.
+name|CommitInfo
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|commit
+operator|.
 name|EditorHook
 import|;
 end_import
@@ -636,6 +654,10 @@ argument_list|(
 name|before
 argument_list|,
 name|after
+argument_list|,
+name|CommitInfo
+operator|.
+name|EMPTY
 argument_list|)
 decl_stmt|;
 comment|// first check that the index content nodes exist
@@ -824,6 +846,10 @@ argument_list|(
 name|before
 argument_list|,
 name|after
+argument_list|,
+name|CommitInfo
+operator|.
+name|EMPTY
 argument_list|)
 decl_stmt|;
 comment|// first check that the index content nodes exist
@@ -1002,6 +1028,10 @@ argument_list|(
 name|before
 argument_list|,
 name|after
+argument_list|,
+name|CommitInfo
+operator|.
+name|EMPTY
 argument_list|)
 decl_stmt|;
 comment|// first check that the index content nodes exist
@@ -1207,6 +1237,10 @@ argument_list|(
 name|before
 argument_list|,
 name|after
+argument_list|,
+name|CommitInfo
+operator|.
+name|EMPTY
 argument_list|)
 decl_stmt|;
 comment|// check that the index content nodes exist

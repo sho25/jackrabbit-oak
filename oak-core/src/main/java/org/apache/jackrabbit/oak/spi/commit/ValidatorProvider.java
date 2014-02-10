@@ -77,7 +77,7 @@ name|ValidatorProvider
 implements|implements
 name|EditorProvider
 block|{
-comment|/**      * Returns a validator for checking the changes between the given      * two root states.      *      * @param before original root state      * @param after  modified root state      * @return validator for checking the modifications      */
+comment|/**      * Returns a validator for checking the changes between the given      * two root states.      *      * @param before original root state      * @param after  modified root state      * @param info   metadata about this commit      * @return validator for checking the modifications      */
 annotation|@
 name|Nonnull
 specifier|protected
@@ -90,6 +90,9 @@ name|before
 parameter_list|,
 name|NodeState
 name|after
+parameter_list|,
+name|CommitInfo
+name|info
 parameter_list|)
 function_decl|;
 comment|//----------------------------------------------------< EditorProvider>--
@@ -110,6 +113,9 @@ name|after
 parameter_list|,
 name|NodeBuilder
 name|builder
+parameter_list|,
+name|CommitInfo
+name|info
 parameter_list|)
 block|{
 return|return
@@ -118,6 +124,8 @@ argument_list|(
 name|before
 argument_list|,
 name|after
+argument_list|,
+name|info
 argument_list|)
 return|;
 block|}

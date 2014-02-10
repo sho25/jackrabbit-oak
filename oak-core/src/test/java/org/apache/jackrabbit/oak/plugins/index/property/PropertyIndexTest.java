@@ -385,6 +385,24 @@ name|spi
 operator|.
 name|commit
 operator|.
+name|CommitInfo
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|commit
+operator|.
 name|EditorHook
 import|;
 end_import
@@ -458,16 +476,6 @@ operator|.
 name|state
 operator|.
 name|NodeState
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
-name|Ignore
 import|;
 end_import
 
@@ -655,6 +663,10 @@ argument_list|(
 name|before
 argument_list|,
 name|after
+argument_list|,
+name|CommitInfo
+operator|.
+name|EMPTY
 argument_list|)
 decl_stmt|;
 name|FilterImpl
@@ -1044,6 +1056,10 @@ argument_list|(
 name|before
 argument_list|,
 name|after
+argument_list|,
+name|CommitInfo
+operator|.
+name|EMPTY
 argument_list|)
 decl_stmt|;
 name|FilterImpl
@@ -1263,6 +1279,10 @@ argument_list|(
 name|before
 argument_list|,
 name|after
+argument_list|,
+name|CommitInfo
+operator|.
+name|EMPTY
 argument_list|)
 decl_stmt|;
 name|FilterImpl
@@ -1652,6 +1672,10 @@ argument_list|(
 name|before
 argument_list|,
 name|after
+argument_list|,
+name|CommitInfo
+operator|.
+name|EMPTY
 argument_list|)
 decl_stmt|;
 name|FilterImpl
@@ -1985,6 +2009,10 @@ argument_list|(
 name|before
 argument_list|,
 name|after
+argument_list|,
+name|CommitInfo
+operator|.
+name|EMPTY
 argument_list|)
 decl_stmt|;
 name|FilterImpl
@@ -2341,6 +2369,10 @@ argument_list|(
 name|before
 argument_list|,
 name|after
+argument_list|,
+name|CommitInfo
+operator|.
+name|EMPTY
 argument_list|)
 decl_stmt|;
 name|FilterImpl
@@ -2577,6 +2609,10 @@ argument_list|(
 name|before
 argument_list|,
 name|after
+argument_list|,
+name|CommitInfo
+operator|.
+name|EMPTY
 argument_list|)
 expr_stmt|;
 comment|// should throw
@@ -2707,6 +2743,10 @@ argument_list|(
 name|before
 argument_list|,
 name|after
+argument_list|,
+name|CommitInfo
+operator|.
+name|EMPTY
 argument_list|)
 expr_stmt|;
 comment|// should not throw
@@ -2844,6 +2884,10 @@ argument_list|(
 name|before
 argument_list|,
 name|after
+argument_list|,
+name|CommitInfo
+operator|.
+name|EMPTY
 argument_list|)
 expr_stmt|;
 comment|// should throw
@@ -2984,6 +3028,10 @@ argument_list|(
 name|before
 argument_list|,
 name|after
+argument_list|,
+name|CommitInfo
+operator|.
+name|EMPTY
 argument_list|)
 expr_stmt|;
 comment|// should not throw

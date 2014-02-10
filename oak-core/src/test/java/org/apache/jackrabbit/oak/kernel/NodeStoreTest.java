@@ -706,7 +706,9 @@ name|EmptyHook
 operator|.
 name|INSTANCE
 argument_list|,
-literal|null
+name|CommitInfo
+operator|.
+name|EMPTY
 argument_list|)
 expr_stmt|;
 block|}
@@ -1058,7 +1060,9 @@ name|EmptyHook
 operator|.
 name|INSTANCE
 argument_list|,
-literal|null
+name|CommitInfo
+operator|.
+name|EMPTY
 argument_list|)
 expr_stmt|;
 comment|// Assert changes are present in the trunk
@@ -1302,7 +1306,9 @@ name|EmptyHook
 operator|.
 name|INSTANCE
 argument_list|,
-literal|null
+name|CommitInfo
+operator|.
+name|EMPTY
 argument_list|)
 expr_stmt|;
 name|NodeState
@@ -1497,6 +1503,9 @@ name|before
 parameter_list|,
 name|NodeState
 name|after
+parameter_list|,
+name|CommitInfo
+name|info
 parameter_list|)
 block|{
 name|NodeBuilder
@@ -1533,7 +1542,9 @@ return|;
 block|}
 block|}
 argument_list|,
-literal|null
+name|CommitInfo
+operator|.
+name|EMPTY
 argument_list|)
 expr_stmt|;
 name|NodeState
@@ -1696,7 +1707,9 @@ name|EmptyHook
 operator|.
 name|INSTANCE
 argument_list|,
-literal|null
+name|CommitInfo
+operator|.
+name|EMPTY
 argument_list|)
 expr_stmt|;
 name|NodeState
@@ -1740,7 +1753,9 @@ name|EmptyHook
 operator|.
 name|INSTANCE
 argument_list|,
-literal|null
+name|CommitInfo
+operator|.
+name|EMPTY
 argument_list|)
 expr_stmt|;
 name|Diff
@@ -1847,7 +1862,9 @@ name|EmptyHook
 operator|.
 name|INSTANCE
 argument_list|,
-literal|null
+name|CommitInfo
+operator|.
+name|EMPTY
 argument_list|)
 expr_stmt|;
 name|diff
@@ -1990,7 +2007,9 @@ name|EmptyHook
 operator|.
 name|INSTANCE
 argument_list|,
-literal|null
+name|CommitInfo
+operator|.
+name|EMPTY
 argument_list|)
 expr_stmt|;
 name|diff
@@ -2131,7 +2150,9 @@ name|EmptyHook
 operator|.
 name|INSTANCE
 argument_list|,
-literal|null
+name|CommitInfo
+operator|.
+name|EMPTY
 argument_list|)
 expr_stmt|;
 name|diff
@@ -2255,7 +2276,9 @@ name|EmptyHook
 operator|.
 name|INSTANCE
 argument_list|,
-literal|null
+name|CommitInfo
+operator|.
+name|EMPTY
 argument_list|)
 expr_stmt|;
 name|diff
@@ -3142,7 +3165,9 @@ name|EmptyHook
 operator|.
 name|INSTANCE
 argument_list|,
-literal|null
+name|CommitInfo
+operator|.
+name|EMPTY
 argument_list|)
 expr_stmt|;
 return|return
@@ -3206,7 +3231,9 @@ name|EmptyHook
 operator|.
 name|INSTANCE
 argument_list|,
-literal|null
+name|CommitInfo
+operator|.
+name|EMPTY
 argument_list|)
 expr_stmt|;
 name|assertTrue
@@ -3245,7 +3272,9 @@ name|EmptyHook
 operator|.
 name|INSTANCE
 argument_list|,
-literal|null
+name|CommitInfo
+operator|.
+name|EMPTY
 argument_list|)
 expr_stmt|;
 name|assertTrue
@@ -3379,7 +3408,9 @@ name|EmptyHook
 operator|.
 name|INSTANCE
 argument_list|,
-literal|null
+name|CommitInfo
+operator|.
+name|EMPTY
 argument_list|)
 expr_stmt|;
 try|try
@@ -3407,6 +3438,9 @@ name|before
 parameter_list|,
 name|NodeState
 name|after
+parameter_list|,
+name|CommitInfo
+name|info
 parameter_list|)
 throws|throws
 name|CommitFailedException
@@ -3425,7 +3459,9 @@ throw|;
 block|}
 block|}
 argument_list|,
-literal|null
+name|CommitInfo
+operator|.
+name|EMPTY
 argument_list|)
 expr_stmt|;
 name|fail
@@ -3456,7 +3492,9 @@ name|EmptyHook
 operator|.
 name|INSTANCE
 argument_list|,
-literal|null
+name|CommitInfo
+operator|.
+name|EMPTY
 argument_list|)
 decl_stmt|;
 name|assertTrue
@@ -3555,7 +3593,9 @@ name|EmptyHook
 operator|.
 name|INSTANCE
 argument_list|,
-literal|null
+name|CommitInfo
+operator|.
+name|EMPTY
 argument_list|)
 expr_stmt|;
 name|NodeState

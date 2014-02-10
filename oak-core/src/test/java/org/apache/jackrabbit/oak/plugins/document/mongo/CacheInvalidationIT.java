@@ -211,6 +211,24 @@ name|spi
 operator|.
 name|commit
 operator|.
+name|CommitInfo
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|commit
+operator|.
 name|EmptyHook
 import|;
 end_import
@@ -447,7 +465,9 @@ name|EmptyHook
 operator|.
 name|INSTANCE
 argument_list|,
-literal|null
+name|CommitInfo
+operator|.
+name|EMPTY
 argument_list|)
 expr_stmt|;
 name|assertEquals
@@ -530,7 +550,9 @@ name|EmptyHook
 operator|.
 name|INSTANCE
 argument_list|,
-literal|null
+name|CommitInfo
+operator|.
+name|EMPTY
 argument_list|)
 expr_stmt|;
 comment|//Push pending changes at /a
@@ -620,7 +642,9 @@ name|EmptyHook
 operator|.
 name|INSTANCE
 argument_list|,
-literal|null
+name|CommitInfo
+operator|.
+name|EMPTY
 argument_list|)
 expr_stmt|;
 comment|//Push pending changes at /a
@@ -747,7 +771,9 @@ name|EmptyHook
 operator|.
 name|INSTANCE
 argument_list|,
-literal|null
+name|CommitInfo
+operator|.
+name|EMPTY
 argument_list|)
 expr_stmt|;
 comment|//Push pending changes at /a

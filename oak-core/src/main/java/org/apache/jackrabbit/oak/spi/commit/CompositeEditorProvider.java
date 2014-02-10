@@ -190,6 +190,9 @@ name|after
 parameter_list|,
 name|NodeBuilder
 name|builder
+parameter_list|,
+name|CommitInfo
+name|info
 parameter_list|)
 block|{
 return|return
@@ -319,6 +322,9 @@ name|after
 parameter_list|,
 name|NodeBuilder
 name|builder
+parameter_list|,
+name|CommitInfo
+name|info
 parameter_list|)
 throws|throws
 name|CommitFailedException
@@ -359,6 +365,8 @@ argument_list|,
 name|after
 argument_list|,
 name|builder
+argument_list|,
+name|info
 argument_list|)
 decl_stmt|;
 if|if

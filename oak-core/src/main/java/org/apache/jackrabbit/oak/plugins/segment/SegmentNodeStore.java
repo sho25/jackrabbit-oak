@@ -1369,7 +1369,7 @@ name|CommitHook
 name|hook
 parameter_list|,
 annotation|@
-name|Nullable
+name|Nonnull
 name|CommitInfo
 name|info
 parameter_list|)
@@ -1410,7 +1410,10 @@ name|this
 operator|.
 name|info
 operator|=
+name|checkNotNull
+argument_list|(
 name|info
+argument_list|)
 expr_stmt|;
 block|}
 specifier|private
@@ -1545,6 +1548,8 @@ argument_list|(
 name|before
 argument_list|,
 name|after
+argument_list|,
+name|info
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1605,6 +1610,8 @@ name|getChildNode
 argument_list|(
 name|ROOT
 argument_list|)
+argument_list|,
+name|info
 argument_list|)
 argument_list|)
 expr_stmt|;

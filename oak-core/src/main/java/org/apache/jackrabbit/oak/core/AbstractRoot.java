@@ -1495,6 +1495,9 @@ name|after
 parameter_list|,
 name|NodeBuilder
 name|builder
+parameter_list|,
+name|CommitInfo
+name|info
 parameter_list|)
 block|{
 return|return

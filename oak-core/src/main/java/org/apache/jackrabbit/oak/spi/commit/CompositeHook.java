@@ -203,6 +203,9 @@ name|before
 parameter_list|,
 name|NodeState
 name|after
+parameter_list|,
+name|CommitInfo
+name|info
 parameter_list|)
 throws|throws
 name|CommitFailedException
@@ -229,6 +232,8 @@ argument_list|(
 name|before
 argument_list|,
 name|newState
+argument_list|,
+name|info
 argument_list|)
 expr_stmt|;
 block|}

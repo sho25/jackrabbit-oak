@@ -122,7 +122,7 @@ name|NodeState
 name|newRoot
 parameter_list|)
 function_decl|;
-comment|/**      * Merges the changes in this branch to the main content tree.      * Merging is done by rebasing the changes in this branch on top of      * the current head revision followed by a fast forward merge.      *      * @param hook the commit hook to apply while merging changes      * @param info commit info associated with this merge operation,      *             or {@code null} if no local commit information is available      * @return the node state resulting from the merge.      * @throws CommitFailedException if the merge failed      * @throws IllegalStateException if the branch is already merged      */
+comment|/**      * Merges the changes in this branch to the main content tree.      * Merging is done by rebasing the changes in this branch on top of      * the current head revision followed by a fast forward merge.      *      * @param hook the commit hook to apply while merging changes      * @param info commit info associated with this merge operation      * @return the node state resulting from the merge.      * @throws CommitFailedException if the merge failed      * @throws IllegalStateException if the branch is already merged      */
 annotation|@
 name|Nonnull
 name|NodeState
@@ -134,7 +134,7 @@ name|CommitHook
 name|hook
 parameter_list|,
 annotation|@
-name|Nullable
+name|Nonnull
 name|CommitInfo
 name|info
 parameter_list|)

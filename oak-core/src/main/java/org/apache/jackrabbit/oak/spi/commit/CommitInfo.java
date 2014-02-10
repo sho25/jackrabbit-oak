@@ -113,6 +113,23 @@ name|OAK_UNKNOWN
 init|=
 literal|"oak:unknown"
 decl_stmt|;
+comment|/**      * Empty commit information object. Used as a dummy object when no      * metadata is known (or needed) about a commit.      */
+specifier|public
+specifier|static
+specifier|final
+name|CommitInfo
+name|EMPTY
+init|=
+operator|new
+name|CommitInfo
+argument_list|(
+name|OAK_UNKNOWN
+argument_list|,
+name|OAK_UNKNOWN
+argument_list|,
+literal|null
+argument_list|)
+decl_stmt|;
 specifier|private
 specifier|final
 name|String

@@ -149,6 +149,11 @@ annotation|@
 name|Nonnull
 name|NodeState
 name|after
+parameter_list|,
+annotation|@
+name|Nonnull
+name|CommitInfo
+name|info
 parameter_list|)
 throws|throws
 name|CommitFailedException
@@ -161,6 +166,11 @@ expr_stmt|;
 name|checkNotNull
 argument_list|(
 name|after
+argument_list|)
+expr_stmt|;
+name|checkNotNull
+argument_list|(
+name|info
 argument_list|)
 expr_stmt|;
 name|NodeBuilder
@@ -183,6 +193,8 @@ argument_list|,
 name|after
 argument_list|,
 name|builder
+argument_list|,
+name|info
 argument_list|)
 decl_stmt|;
 name|CommitFailedException
