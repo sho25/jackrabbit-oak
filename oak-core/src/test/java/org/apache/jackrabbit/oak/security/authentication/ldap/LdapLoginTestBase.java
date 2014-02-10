@@ -243,6 +243,8 @@ name|authentication
 operator|.
 name|external
 operator|.
+name|impl
+operator|.
 name|ExternalLoginModule
 import|;
 end_import

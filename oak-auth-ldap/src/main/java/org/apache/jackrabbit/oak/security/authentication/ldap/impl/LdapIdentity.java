@@ -18,6 +18,8 @@ operator|.
 name|authentication
 operator|.
 name|ldap
+operator|.
+name|impl
 package|;
 end_package
 
@@ -53,31 +55,11 @@ end_import
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Set
-import|;
-end_import
-
-begin_import
-import|import
 name|javax
 operator|.
 name|annotation
 operator|.
 name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nullable
 import|;
 end_import
 
@@ -144,28 +126,6 @@ operator|.
 name|external
 operator|.
 name|ExternalIdentityRef
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|spi
-operator|.
-name|security
-operator|.
-name|authentication
-operator|.
-name|external
-operator|.
-name|ExternalUser
 import|;
 end_import
 
