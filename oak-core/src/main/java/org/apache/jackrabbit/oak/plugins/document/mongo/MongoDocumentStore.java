@@ -1000,7 +1000,7 @@ name|CacheStats
 argument_list|(
 name|nodesCache
 argument_list|,
-literal|"MongoMk-Documents"
+literal|"DocumentMk-Documents"
 argument_list|,
 name|builder
 operator|.

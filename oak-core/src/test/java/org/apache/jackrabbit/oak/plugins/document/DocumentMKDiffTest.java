@@ -171,7 +171,7 @@ name|diff
 operator|.
 name|contains
 argument_list|(
-literal|"^\"prop2\":null"
+literal|"^\"/node1/node2/prop2\":null"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -181,7 +181,7 @@ name|diff
 operator|.
 name|contains
 argument_list|(
-literal|"^\"prop1\":\"val1 new\""
+literal|"^\"/node1/node2/prop1\":\"val1 new\""
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1380,7 +1380,7 @@ name|mk
 operator|.
 name|commit
 argument_list|(
-literal|"/level1"
+literal|""
 argument_list|,
 name|reverseDiff
 argument_list|,
@@ -1594,7 +1594,7 @@ name|mk
 operator|.
 name|commit
 argument_list|(
-literal|"/level1"
+literal|""
 argument_list|,
 name|reverseDiff
 argument_list|,
@@ -1788,7 +1788,7 @@ name|mk
 operator|.
 name|commit
 argument_list|(
-literal|"/level1"
+literal|""
 argument_list|,
 name|reverseDiff
 argument_list|,
