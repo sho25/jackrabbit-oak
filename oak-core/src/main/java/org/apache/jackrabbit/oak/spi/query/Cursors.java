@@ -105,6 +105,22 @@ name|oak
 operator|.
 name|query
 operator|.
+name|FilterIterators
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|query
+operator|.
 name|index
 operator|.
 name|IndexRowImpl
@@ -457,6 +473,7 @@ argument_list|()
 throw|;
 block|}
 block|}
+comment|/**      * This class allows to iterate over the parent nodes of the wrapped cursor.      */
 specifier|private
 specifier|static
 class|class
@@ -727,6 +744,16 @@ name|String
 name|input
 parameter_list|)
 block|{
+name|FilterIterators
+operator|.
+name|checkMemoryLimit
+argument_list|(
+name|known
+operator|.
+name|size
+argument_list|()
+argument_list|)
+expr_stmt|;
 comment|// Set.add returns true for new entries
 return|return
 name|known
@@ -1234,6 +1261,13 @@ operator|==
 literal|0
 condition|)
 block|{
+name|FilterIterators
+operator|.
+name|checkReadLimit
+argument_list|(
+name|readCount
+argument_list|)
+expr_stmt|;
 name|LOG
 operator|.
 name|warn

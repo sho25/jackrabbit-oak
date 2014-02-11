@@ -86,6 +86,102 @@ specifier|public
 class|class
 name|FilterIterators
 block|{
+comment|/**      * How many nodes a query may read at most into memory, for "order by" and      * "distinct" queries. If this limit is exceeded, the query throws an      * exception.      */
+specifier|public
+specifier|static
+specifier|final
+name|int
+name|QUERY_LIMIT_IN_MEMORY
+init|=
+name|Integer
+operator|.
+name|getInteger
+argument_list|(
+literal|"oak.queryLimitInMemory"
+argument_list|,
+literal|10000
+argument_list|)
+decl_stmt|;
+comment|/**      * How many nodes a query may read at most (raw read operations, including      * skipped nodes). If this limit is exceeded, the query throws an exception.      */
+specifier|public
+specifier|static
+specifier|final
+name|int
+name|QUERY_LIMIT_READS
+init|=
+name|Integer
+operator|.
+name|getInteger
+argument_list|(
+literal|"oak.queryLimitReads"
+argument_list|,
+literal|100000
+argument_list|)
+decl_stmt|;
+comment|/**      * Verify the number of in-memory nodes is below the limit.      *       * @param count the number of nodes      * @throws UnsupportedOperationException if the limit was exceeded      */
+specifier|public
+specifier|static
+name|void
+name|checkMemoryLimit
+parameter_list|(
+name|long
+name|count
+parameter_list|)
+block|{
+if|if
+condition|(
+name|count
+operator|>
+name|QUERY_LIMIT_IN_MEMORY
+condition|)
+block|{
+throw|throw
+operator|new
+name|UnsupportedOperationException
+argument_list|(
+literal|"The query read more than "
+operator|+
+name|QUERY_LIMIT_IN_MEMORY
+operator|+
+literal|" nodes in memory. "
+operator|+
+literal|"To avoid running out of memory, processing was stopped."
+argument_list|)
+throw|;
+block|}
+block|}
+comment|/**      * Verify the number of node read operations is below the limit.      *       * @param count the number of read operations      * @throws UnsupportedOperationException if the limit was exceeded      */
+specifier|public
+specifier|static
+name|void
+name|checkReadLimit
+parameter_list|(
+name|long
+name|count
+parameter_list|)
+block|{
+if|if
+condition|(
+name|count
+operator|>
+name|QUERY_LIMIT_READS
+condition|)
+block|{
+throw|throw
+operator|new
+name|UnsupportedOperationException
+argument_list|(
+literal|"The query read or traversed more than "
+operator|+
+name|QUERY_LIMIT_READS
+operator|+
+literal|" nodes. "
+operator|+
+literal|"To avoid affecting other tasks, processing was stopped."
+argument_list|)
+throw|;
+block|}
+block|}
 specifier|public
 specifier|static
 parameter_list|<
@@ -475,6 +571,14 @@ name|current
 argument_list|)
 condition|)
 block|{
+name|checkMemoryLimit
+argument_list|(
+name|distinctSet
+operator|.
+name|size
+argument_list|()
+argument_list|)
+expr_stmt|;
 return|return;
 block|}
 block|}
@@ -692,6 +796,14 @@ operator|.
 name|add
 argument_list|(
 name|x
+argument_list|)
+expr_stmt|;
+name|checkMemoryLimit
+argument_list|(
+name|list
+operator|.
+name|size
+argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// from time to time, sort and truncate
