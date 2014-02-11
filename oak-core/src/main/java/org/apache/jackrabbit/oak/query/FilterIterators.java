@@ -566,7 +566,7 @@ argument_list|()
 throw|;
 block|}
 block|}
-comment|/**      * An iterator that returns entries in sorted order. The internal list of sorted entries can be limited to a given number of entries,      * and the entries are only read when needed (on demand).      *       * @param<K> the entry type      */
+comment|/**      * An iterator that returns entries in sorted order. The internal list of      * sorted entries can be limited to a given number of entries, and the      * entries are only read when needed (on demand).      *       * @param<K> the entry type      */
 specifier|static
 class|class
 name|SortIterator
