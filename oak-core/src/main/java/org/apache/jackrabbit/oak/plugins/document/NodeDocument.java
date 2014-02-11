@@ -2026,37 +2026,6 @@ return|return
 name|n
 return|;
 block|}
-comment|/**      * Returns<code>true</code> if this node is considered deleted at the      * given<code>readRevision</code>.      *      * @param context the revision context.      * @param readRevision the read revision.      * @param validRevisions the set of revisions already checked against      *<code>readRevision</code> and considered valid.      * @return<code>true</code> if deleted,<code>false</code> otherwise.      */
-specifier|public
-name|boolean
-name|isDeleted
-parameter_list|(
-name|RevisionContext
-name|context
-parameter_list|,
-name|Revision
-name|readRevision
-parameter_list|,
-name|Set
-argument_list|<
-name|Revision
-argument_list|>
-name|validRevisions
-parameter_list|)
-block|{
-return|return
-name|getLiveRevision
-argument_list|(
-name|context
-argument_list|,
-name|readRevision
-argument_list|,
-name|validRevisions
-argument_list|)
-operator|==
-literal|null
-return|;
-block|}
 comment|/**      * Get the earliest (oldest) revision where the node was alive at or before      * the provided revision, if the node was alive at the given revision.      *       * @param context the revision context      * @param maxRev the maximum revision to return      * @param validRevisions the set of revisions already checked against maxRev      *            and considered valid.      * @return the earliest revision, or null if the node is deleted at the      *         given revision      */
 annotation|@
 name|CheckForNull

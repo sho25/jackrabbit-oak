@@ -154,7 +154,7 @@ operator|.
 name|size
 argument_list|()
 operator|<
-name|DocumentNodeStore
+name|UnsavedModifications
 operator|.
 name|BACKGROUND_MULTI_UPDATE_LIMIT
 operator|*
@@ -359,7 +359,7 @@ operator|.
 name|size
 argument_list|()
 operator|<=
-name|DocumentNodeStore
+name|UnsavedModifications
 operator|.
 name|BACKGROUND_MULTI_UPDATE_LIMIT
 argument_list|)
