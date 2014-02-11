@@ -274,7 +274,7 @@ name|Iterable
 argument_list|<
 name|?
 extends|extends
-name|ExternalGroup
+name|ExternalIdentityRef
 argument_list|>
 name|getGroups
 parameter_list|()
