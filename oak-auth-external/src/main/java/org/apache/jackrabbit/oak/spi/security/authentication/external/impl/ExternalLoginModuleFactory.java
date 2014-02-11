@@ -200,7 +200,7 @@ name|Property
 argument_list|(
 name|intValue
 operator|=
-literal|900
+literal|150
 argument_list|,
 name|label
 operator|=
