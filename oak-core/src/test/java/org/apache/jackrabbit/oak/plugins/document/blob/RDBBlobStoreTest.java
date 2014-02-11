@@ -111,7 +111,7 @@ condition|)
 block|{
 name|blobStore
 operator|.
-name|dispose
+name|close
 argument_list|()
 expr_stmt|;
 block|}

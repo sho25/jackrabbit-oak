@@ -27,6 +27,16 @@ name|java
 operator|.
 name|io
 operator|.
+name|Closeable
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
 name|IOException
 import|;
 end_import
@@ -185,6 +195,8 @@ class|class
 name|RDBBlobStore
 extends|extends
 name|AbstractBlobStore
+implements|implements
+name|Closeable
 block|{
 comment|/**      * Creates a {@linkplain RDBBlobStore} instance using an embedded H2      * database in in-memory mode.      */
 specifier|public
@@ -324,9 +336,11 @@ argument_list|)
 throw|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
-name|dispose
+name|close
 parameter_list|()
 block|{
 try|try
