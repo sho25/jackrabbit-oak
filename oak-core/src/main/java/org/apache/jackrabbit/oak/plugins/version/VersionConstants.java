@@ -403,6 +403,12 @@ operator|.
 name|REP_CONFIGURATIONS
 argument_list|)
 decl_stmt|;
+comment|/**      * Name of the hidden property that indicates the ID of the base version      * of a versionable node that has been copied.      */
+name|String
+name|HIDDEN_COPY_SOURCE
+init|=
+literal|":copySource"
+decl_stmt|;
 block|}
 end_interface
 
