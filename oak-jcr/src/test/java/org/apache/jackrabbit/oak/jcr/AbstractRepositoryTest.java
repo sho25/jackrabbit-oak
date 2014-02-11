@@ -289,36 +289,17 @@ name|Object
 index|[]
 index|[]
 block|{
-block|{
-name|NodeStoreFixture
-operator|.
-name|MK_IMPL
-block|}
-block|,
-block|{
-name|NodeStoreFixture
-operator|.
-name|MONGO_MK
-block|}
-block|,
-block|{
-name|NodeStoreFixture
-operator|.
-name|MONGO_NS
-block|}
-block|,
+comment|//                {NodeStoreFixture.MK_IMPL},
+comment|//                {NodeStoreFixture.MONGO_MK},
+comment|//                {NodeStoreFixture.MONGO_NS},
 block|{
 name|NodeStoreFixture
 operator|.
 name|SEGMENT_MK
 block|}
 block|,
-block|{
-name|NodeStoreFixture
-operator|.
-name|MONGO_JDBC
+comment|//                {NodeStoreFixture.MONGO_JDBC},
 block|}
-block|,         }
 decl_stmt|;
 return|return
 name|Arrays
