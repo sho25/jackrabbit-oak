@@ -282,11 +282,6 @@ name|root
 decl_stmt|;
 specifier|private
 specifier|final
-name|Root
-name|initialRoot
-decl_stmt|;
-specifier|private
-specifier|final
 name|SessionContext
 name|sessionContext
 decl_stmt|;
@@ -365,16 +360,6 @@ operator|.
 name|getSessionDelegate
 argument_list|()
 decl_stmt|;
-name|initialRoot
-operator|=
-name|sd
-operator|.
-name|getContentSession
-argument_list|()
-operator|.
-name|getLatestRoot
-argument_list|()
-expr_stmt|;
 name|root
 operator|=
 operator|(
@@ -404,8 +389,6 @@ argument_list|,
 name|sessionContext
 argument_list|,
 name|root
-argument_list|,
-name|initialRoot
 argument_list|,
 name|uuidBehavior
 argument_list|,
