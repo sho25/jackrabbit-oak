@@ -63,6 +63,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|HashSet
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Iterator
 import|;
 end_import
@@ -74,6 +84,16 @@ operator|.
 name|util
 operator|.
 name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Set
 import|;
 end_import
 
@@ -390,6 +410,60 @@ operator|.
 name|ast
 operator|.
 name|InImpl
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|query
+operator|.
+name|ast
+operator|.
+name|JoinConditionImpl
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|query
+operator|.
+name|ast
+operator|.
+name|JoinImpl
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|query
+operator|.
+name|ast
+operator|.
+name|JoinType
 import|;
 end_import
 
@@ -881,7 +955,6 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-specifier|final
 name|SourceImpl
 name|source
 decl_stmt|;
@@ -2402,6 +2475,30 @@ name|prepared
 operator|=
 literal|true
 expr_stmt|;
+name|List
+argument_list|<
+name|SourceImpl
+argument_list|>
+name|sources
+init|=
+name|source
+operator|.
+name|getInnerJoinSelectors
+argument_list|()
+decl_stmt|;
+name|List
+argument_list|<
+name|JoinConditionImpl
+argument_list|>
+name|conditions
+init|=
+name|source
+operator|.
+name|getInnerJoinConditions
+argument_list|()
+decl_stmt|;
+comment|//        if (sources.size()<= 1) {
+comment|// simple case (no join)
 name|estimatedCost
 operator|=
 name|source
@@ -2409,6 +2506,140 @@ operator|.
 name|prepare
 argument_list|()
 expr_stmt|;
+comment|//            return;
+comment|//        }
+comment|//        if (sources.size()< 6) {
+comment|//            // TODO iterate over all permutations
+comment|//        }
+comment|//
+comment|//        // use a greedy algorithm
+comment|//        SourceImpl result = null;
+comment|//        Set<SourceImpl> available = new HashSet<SourceImpl>();
+comment|//        while (sources.size()> 0) {
+comment|//            int bestIndex = 0;
+comment|//            double bestCost = Double.POSITIVE_INFINITY;
+comment|//            for (int i = 0; i< sources.size(); i++) {
+comment|//                SourceImpl source = buildJoin(result, sources.get(i).createClone(), conditions);
+comment|//                double cost = source.prepare();
+comment|//                if (cost<= bestCost) {
+comment|//                    bestCost = cost;
+comment|//                    bestIndex = i;
+comment|//                }
+comment|//            }
+comment|//            SourceImpl s = sources.get(bestIndex).createClone();
+comment|//            available.add(s);
+comment|//            sources.remove(bestIndex);
+comment|//            result = buildJoin(result, s, conditions);
+comment|//        }
+comment|//        source = result;
+block|}
+specifier|private
+specifier|static
+name|SourceImpl
+name|buildJoin
+parameter_list|(
+name|SourceImpl
+name|result
+parameter_list|,
+name|SourceImpl
+name|last
+parameter_list|,
+name|List
+argument_list|<
+name|JoinConditionImpl
+argument_list|>
+name|conditions
+parameter_list|)
+block|{
+if|if
+condition|(
+name|result
+operator|==
+literal|null
+condition|)
+block|{
+return|return
+name|last
+return|;
+block|}
+name|Set
+argument_list|<
+name|SourceImpl
+argument_list|>
+name|available
+init|=
+operator|new
+name|HashSet
+argument_list|<
+name|SourceImpl
+argument_list|>
+argument_list|()
+decl_stmt|;
+name|available
+operator|.
+name|addAll
+argument_list|(
+name|result
+operator|.
+name|getInnerJoinSelectors
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|available
+operator|.
+name|add
+argument_list|(
+name|last
+argument_list|)
+expr_stmt|;
+for|for
+control|(
+name|JoinConditionImpl
+name|j
+range|:
+name|conditions
+control|)
+block|{
+if|if
+condition|(
+name|j
+operator|.
+name|canEvaluate
+argument_list|(
+name|available
+argument_list|)
+condition|)
+block|{
+name|JoinImpl
+name|join
+init|=
+operator|new
+name|JoinImpl
+argument_list|(
+name|result
+argument_list|,
+name|last
+argument_list|,
+name|JoinType
+operator|.
+name|INNER
+argument_list|,
+name|j
+argument_list|)
+decl_stmt|;
+return|return
+name|join
+return|;
+block|}
+block|}
+comment|// this is an internal error
+throw|throw
+operator|new
+name|IllegalArgumentException
+argument_list|(
+literal|"No join condition was found"
+argument_list|)
+throw|;
 block|}
 comment|/**      *<b>!Test purpose only!<b>      *       * this creates a filter for the given query      *       */
 name|Filter

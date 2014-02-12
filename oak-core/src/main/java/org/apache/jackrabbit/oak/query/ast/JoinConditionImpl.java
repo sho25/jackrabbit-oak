@@ -21,6 +21,16 @@ end_package
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Set
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -101,6 +111,19 @@ name|isParent
 parameter_list|(
 name|SourceImpl
 name|source
+parameter_list|)
+function_decl|;
+comment|/**      * Whether the join condition can be evaluated if the given selectors are able to retrieve data.      *       * @param available the available selectors      * @return true if the condition can be evaluated      */
+specifier|public
+specifier|abstract
+name|boolean
+name|canEvaluate
+parameter_list|(
+name|Set
+argument_list|<
+name|SourceImpl
+argument_list|>
+name|available
 parameter_list|)
 function_decl|;
 block|}

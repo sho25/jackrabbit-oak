@@ -515,7 +515,8 @@ if|if
 condition|(
 name|s
 operator|.
-name|outerJoinRightHandSide
+name|isOuterJoinRightHandSide
+argument_list|()
 condition|)
 block|{
 comment|// we need to be careful with "property IS NULL"

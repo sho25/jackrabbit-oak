@@ -228,7 +228,8 @@ operator|.
 name|getSelector
 argument_list|()
 operator|.
-name|outerJoinRightHandSide
+name|isOuterJoinRightHandSide
+argument_list|()
 condition|)
 block|{
 comment|// we need to be careful with the condition

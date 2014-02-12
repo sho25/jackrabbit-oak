@@ -81,12 +81,12 @@ class|class
 name|SelectorExecutionPlan
 block|{
 specifier|public
-name|Filter
-name|filter
-decl_stmt|;
-specifier|public
 name|SelectorImpl
 name|selector
+decl_stmt|;
+specifier|public
+name|Filter
+name|filter
 decl_stmt|;
 specifier|public
 name|double

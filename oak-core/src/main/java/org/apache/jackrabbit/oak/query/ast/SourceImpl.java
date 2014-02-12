@@ -25,7 +25,17 @@ name|java
 operator|.
 name|util
 operator|.
-name|ArrayList
+name|Collections
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
 import|;
 end_import
 
@@ -93,69 +103,19 @@ name|SourceImpl
 extends|extends
 name|AstElement
 block|{
-comment|/**      * The WHERE clause of the query.      */
-specifier|protected
-name|ConstraintImpl
-name|queryConstraint
-decl_stmt|;
-comment|/**      * The join condition of this selector that can be evaluated at execution      * time. For the query "select * from nt:base as a inner join nt:base as b      * on a.x = b.x", the join condition "a.x = b.x" is only set for the      * selector b, as selector a can't evaluate it if it is executed first      * (until b is executed).      */
-specifier|protected
-name|JoinConditionImpl
-name|joinCondition
-decl_stmt|;
-comment|/**      * The list of all join conditions this selector is involved. For the query      * "select * from nt:base as a inner join nt:base as b on a.x =      * b.x", the join condition "a.x = b.x" is set for both selectors a and b,      * so both can check if the property x is set.      */
-specifier|protected
-name|ArrayList
-argument_list|<
-name|JoinConditionImpl
-argument_list|>
-name|allJoinConditions
-init|=
-operator|new
-name|ArrayList
-argument_list|<
-name|JoinConditionImpl
-argument_list|>
-argument_list|()
-decl_stmt|;
-comment|/**      * Whether this selector is the right hand side of a join.      */
-specifier|protected
-name|boolean
-name|join
-decl_stmt|;
-comment|/**      * Whether this selector is the left hand side of a left outer join.      * Right outer joins are converted to left outer join.      */
-specifier|protected
-name|boolean
-name|outerJoinLeftHandSide
-decl_stmt|;
-comment|/**      * Whether this selector is the right hand side of a left outer join.      * Right outer joins are converted to left outer join.      */
-specifier|protected
-name|boolean
-name|outerJoinRightHandSide
-decl_stmt|;
-comment|/**      * Whether this selector is the parent of a descendent or parent-child join.      * Access rights don't need to be checked in such selectors (unless there      * are conditions on the selector).      */
-specifier|protected
-name|boolean
-name|isParent
-decl_stmt|;
 comment|/**      * Set the complete constraint of the query (the WHERE ... condition).      *      * @param queryConstraint the constraint      */
 specifier|public
+specifier|abstract
 name|void
 name|setQueryConstraint
 parameter_list|(
 name|ConstraintImpl
 name|queryConstraint
 parameter_list|)
-block|{
-name|this
-operator|.
-name|queryConstraint
-operator|=
-name|queryConstraint
-expr_stmt|;
-block|}
+function_decl|;
 comment|/**      * Add the join condition (the ON ... condition).      *      * @param joinCondition the join condition      * @param forThisSelector if set, the join condition can only be evaluated      *        when all previous selectors are executed.      */
 specifier|public
+specifier|abstract
 name|void
 name|addJoinCondition
 parameter_list|(
@@ -165,29 +125,10 @@ parameter_list|,
 name|boolean
 name|forThisSelector
 parameter_list|)
-block|{
-if|if
-condition|(
-name|forThisSelector
-condition|)
-block|{
-name|this
-operator|.
-name|joinCondition
-operator|=
-name|joinCondition
-expr_stmt|;
-block|}
-name|allJoinConditions
-operator|.
-name|add
-argument_list|(
-name|joinCondition
-argument_list|)
-expr_stmt|;
-block|}
+function_decl|;
 comment|/**      * Set whether this source is the left hand side or right hand side of a left outer join.      *      * @param outerJoinLeftHandSide true if yes      * @param outerJoinRightHandSide true if yes      */
 specifier|public
+specifier|abstract
 name|void
 name|setOuterJoin
 parameter_list|(
@@ -197,20 +138,7 @@ parameter_list|,
 name|boolean
 name|outerJoinRightHandSide
 parameter_list|)
-block|{
-name|this
-operator|.
-name|outerJoinLeftHandSide
-operator|=
-name|outerJoinLeftHandSide
-expr_stmt|;
-name|this
-operator|.
-name|outerJoinRightHandSide
-operator|=
-name|outerJoinRightHandSide
-expr_stmt|;
-block|}
+function_decl|;
 comment|/**      * Initialize the query. This will 'wire' the selectors with the      * constraints.      *      * @param query the query      */
 specifier|public
 specifier|abstract
@@ -303,6 +231,13 @@ name|boolean
 name|next
 parameter_list|()
 function_decl|;
+comment|/**      * Create a shallow clone of this instance.      *       * @return the clone      */
+specifier|public
+specifier|abstract
+name|SourceImpl
+name|createClone
+parameter_list|()
+function_decl|;
 specifier|abstract
 name|void
 name|setParent
@@ -320,6 +255,39 @@ parameter_list|(
 name|boolean
 name|preparing
 parameter_list|)
+function_decl|;
+comment|/**      * Get all sources that are joined via inner join. (These can be swapped.)      *       * @return the list of selectors (sorted from left to right)      */
+specifier|public
+specifier|abstract
+name|List
+argument_list|<
+name|SourceImpl
+argument_list|>
+name|getInnerJoinSelectors
+parameter_list|()
+function_decl|;
+comment|/**      * Get the list of inner join conditions. (These match the inner join selectors.)      *       * @return the list of join conditions      */
+specifier|public
+name|List
+argument_list|<
+name|JoinConditionImpl
+argument_list|>
+name|getInnerJoinConditions
+parameter_list|()
+block|{
+return|return
+name|Collections
+operator|.
+name|emptyList
+argument_list|()
+return|;
+block|}
+comment|/**      * Whether any selector is the outer-join right hand side.      *       * @return true if there is any      */
+specifier|public
+specifier|abstract
+name|boolean
+name|isOuterJoinRightHandSide
+parameter_list|()
 function_decl|;
 block|}
 end_class
