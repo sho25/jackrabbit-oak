@@ -27,6 +27,16 @@ name|IOException
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Iterator
+import|;
+end_import
+
 begin_comment
 comment|/**  * A blob store that support garbage collection.  */
 end_comment
@@ -84,6 +94,42 @@ comment|/**      * Get the minimum block size (if there is any).      *       * 
 name|long
 name|getBlockSizeMin
 parameter_list|()
+function_decl|;
+comment|/**      * Gets all the identifiers.      *       * @param maxLastModifiedTime      *            the max last modified time to consider for retrieval      * @return the identifiers      * @throws Exception      *             the exception      */
+name|Iterator
+argument_list|<
+name|String
+argument_list|>
+name|getAllChunkIds
+parameter_list|(
+name|long
+name|maxLastModifiedTime
+parameter_list|)
+throws|throws
+name|Exception
+function_decl|;
+comment|/**      * Delete the blob with the given id.      *       * @param chunkId the chunk id      * @return true, if successful      * @throws Exception      *             the exception      */
+name|boolean
+name|deleteChunk
+parameter_list|(
+name|String
+name|chunkId
+parameter_list|)
+throws|throws
+name|Exception
+function_decl|;
+comment|/**      * Resolve chunks from the given Id.      *       * @param blobId the blob id      * @return the iterator      * @throws IOException      *             Signals that an I/O exception has occurred.      */
+name|Iterator
+argument_list|<
+name|String
+argument_list|>
+name|resolveChunks
+parameter_list|(
+name|String
+name|blobId
+parameter_list|)
+throws|throws
+name|IOException
 function_decl|;
 block|}
 end_interface
