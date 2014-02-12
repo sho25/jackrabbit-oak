@@ -371,6 +371,35 @@ return|return
 literal|"/"
 return|;
 block|}
+elseif|else
+if|if
+condition|(
+name|oakPath
+operator|.
+name|isEmpty
+argument_list|()
+condition|)
+block|{
+comment|// empty path: map to "."
+return|return
+literal|"."
+return|;
+block|}
+elseif|else
+if|if
+condition|(
+name|getSessionLocalMappings
+argument_list|()
+operator|.
+name|isEmpty
+argument_list|()
+condition|)
+block|{
+comment|// no local namespace mappings
+return|return
+name|oakPath
+return|;
+block|}
 name|PathListener
 name|listener
 init|=
@@ -477,21 +506,6 @@ argument_list|,
 name|listener
 argument_list|)
 expr_stmt|;
-comment|// empty path: map to "."
-if|if
-condition|(
-name|listener
-operator|.
-name|elements
-operator|.
-name|isEmpty
-argument_list|()
-condition|)
-block|{
-return|return
-literal|"."
-return|;
-block|}
 name|StringBuilder
 name|jcrPath
 init|=
