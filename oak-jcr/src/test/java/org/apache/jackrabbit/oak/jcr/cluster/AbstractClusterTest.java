@@ -209,7 +209,7 @@ block|{
 return|return
 name|NodeStoreFixture
 operator|.
-name|MONGO_NS
+name|DOCUMENT_NS
 return|;
 block|}
 annotation|@

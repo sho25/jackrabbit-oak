@@ -205,9 +205,9 @@ name|fixture
 init|=
 name|NodeStoreFixture
 operator|.
-name|MONGO_NS
+name|DOCUMENT_NS
 decl_stmt|;
-comment|//    NodeStoreFixture fixture = NodeStoreFixture.MONGO_MK;
+comment|//    NodeStoreFixture fixture = NodeStoreFixture.DOCUMENT_MK;
 comment|//    NodeStoreFixture fixture = NodeStoreFixture.SEGMENT_MK;
 name|Repository
 name|repository

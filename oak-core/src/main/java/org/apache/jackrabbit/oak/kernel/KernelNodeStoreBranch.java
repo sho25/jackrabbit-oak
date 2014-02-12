@@ -53,16 +53,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nullable
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -217,22 +207,6 @@ end_import
 
 begin_import
 import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|Preconditions
-operator|.
-name|checkNotNull
-import|;
-end_import
-
-begin_import
-import|import static
 name|org
 operator|.
 name|apache
@@ -265,12 +239,6 @@ argument_list|,
 name|KernelNodeState
 argument_list|>
 block|{
-comment|/** Lock for coordinating concurrent merge operations */
-specifier|private
-specifier|final
-name|Lock
-name|mergeLock
-decl_stmt|;
 specifier|private
 specifier|final
 name|BlobSerializer
@@ -371,16 +339,9 @@ name|kernelNodeStore
 argument_list|,
 name|dispatcher
 argument_list|,
+name|mergeLock
+argument_list|,
 name|base
-argument_list|)
-expr_stmt|;
-name|this
-operator|.
-name|mergeLock
-operator|=
-name|checkNotNull
-argument_list|(
-name|mergeLock
 argument_list|)
 expr_stmt|;
 block|}
@@ -659,11 +620,6 @@ parameter_list|)
 throws|throws
 name|CommitFailedException
 block|{
-name|mergeLock
-operator|.
-name|lock
-argument_list|()
-expr_stmt|;
 try|try
 block|{
 return|return
@@ -696,14 +652,6 @@ argument_list|,
 name|e
 argument_list|)
 throw|;
-block|}
-finally|finally
-block|{
-name|mergeLock
-operator|.
-name|unlock
-argument_list|()
-expr_stmt|;
 block|}
 block|}
 block|}

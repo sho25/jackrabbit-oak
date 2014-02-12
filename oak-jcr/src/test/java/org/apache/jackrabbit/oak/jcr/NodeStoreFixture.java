@@ -243,7 +243,7 @@ specifier|public
 specifier|static
 specifier|final
 name|NodeStoreFixture
-name|MONGO_MK
+name|DOCUMENT_MK
 init|=
 operator|new
 name|NodeStoreFixture
@@ -390,9 +390,9 @@ specifier|public
 specifier|static
 specifier|final
 name|NodeStoreFixture
-name|MONGO_NS
+name|DOCUMENT_NS
 init|=
-name|createMongoFixture
+name|createDocumentFixture
 argument_list|(
 literal|"mongodb://localhost:27017/oak"
 argument_list|)
@@ -401,7 +401,7 @@ specifier|public
 specifier|static
 specifier|final
 name|NodeStoreFixture
-name|MONGO_JDBC
+name|DOCUMENT_JDBC
 init|=
 operator|new
 name|NodeStoreFixture
@@ -565,7 +565,7 @@ decl_stmt|;
 specifier|public
 specifier|static
 name|NodeStoreFixture
-name|createMongoFixture
+name|createDocumentFixture
 parameter_list|(
 specifier|final
 name|String

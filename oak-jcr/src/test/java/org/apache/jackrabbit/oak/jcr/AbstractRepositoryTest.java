@@ -298,13 +298,13 @@ block|,
 block|{
 name|NodeStoreFixture
 operator|.
-name|MONGO_MK
+name|DOCUMENT_MK
 block|}
 block|,
 block|{
 name|NodeStoreFixture
 operator|.
-name|MONGO_NS
+name|DOCUMENT_NS
 block|}
 block|,
 block|{
@@ -316,7 +316,7 @@ block|,
 block|{
 name|NodeStoreFixture
 operator|.
-name|MONGO_JDBC
+name|DOCUMENT_JDBC
 block|}
 block|,         }
 decl_stmt|;

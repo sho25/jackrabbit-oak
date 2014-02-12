@@ -1050,6 +1050,16 @@ operator|new
 name|ReentrantReadWriteLock
 argument_list|()
 decl_stmt|;
+comment|/**      * Read/Write lock to coordinate merges. In most cases merges acquire a      * shared read lock and can proceed concurrently. An exclusive write lock      * is acquired when the merge fails even after some retries and a final      * retry cycle is done.      * See {@link DocumentNodeStoreBranch#merge(CommitHook, CommitInfo)}.      */
+specifier|private
+specifier|final
+name|ReadWriteLock
+name|mergeLock
+init|=
+operator|new
+name|ReentrantReadWriteLock
+argument_list|()
+decl_stmt|;
 comment|/**      * Enable using simple revisions (just a counter). This feature is useful      * for testing.      */
 specifier|private
 name|AtomicInteger
@@ -4207,6 +4217,8 @@ argument_list|(
 name|this
 argument_list|,
 name|base
+argument_list|,
+name|mergeLock
 argument_list|)
 return|;
 block|}
