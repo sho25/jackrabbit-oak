@@ -1190,7 +1190,6 @@ name|doc
 argument_list|)
 expr_stmt|;
 block|}
-comment|// FIXME to be atomic
 return|return
 literal|true
 return|;
