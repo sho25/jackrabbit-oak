@@ -736,7 +736,7 @@ return|return
 name|childName
 return|;
 block|}
-name|PropertyState
+name|SegmentPropertyState
 name|getProperty
 parameter_list|(
 name|Segment
