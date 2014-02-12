@@ -125,15 +125,15 @@ extends|extends
 name|AbstractMongoConnectionTest
 block|{
 specifier|public
-specifier|final
 specifier|static
+specifier|final
 name|String
 name|PATH
 init|=
 literal|"./target/repository/"
 decl_stmt|;
 comment|/**      * Gets the blob store.      *       * @return the blob store      * @throws Exception      *             the exception      */
-specifier|protected
+specifier|public
 specifier|static
 name|DataStoreBlobStore
 name|getBlobStore

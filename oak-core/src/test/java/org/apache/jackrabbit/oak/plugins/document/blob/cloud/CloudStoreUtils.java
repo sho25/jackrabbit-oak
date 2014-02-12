@@ -105,7 +105,7 @@ class|class
 name|CloudStoreUtils
 block|{
 comment|/**      * Gets the blob store.      *       * @return the blob store      * @throws Exception      *             the exception      */
-specifier|protected
+specifier|public
 specifier|static
 name|AbstractBlobStore
 name|getBlobStore

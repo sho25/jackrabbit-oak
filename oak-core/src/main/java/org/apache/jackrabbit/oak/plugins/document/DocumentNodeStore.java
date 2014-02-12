@@ -7980,6 +7980,7 @@ return|return
 name|blobSerializer
 return|;
 block|}
+specifier|public
 name|Iterator
 argument_list|<
 name|Blob
