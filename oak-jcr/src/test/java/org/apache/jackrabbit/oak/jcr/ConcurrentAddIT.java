@@ -18,6 +18,46 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|commons
+operator|.
+name|JcrUtils
+operator|.
+name|in
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertEquals
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|fail
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -103,6 +143,20 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|collect
+operator|.
+name|Iterators
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|junit
@@ -118,60 +172,6 @@ operator|.
 name|junit
 operator|.
 name|Test
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|collect
-operator|.
-name|Iterators
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|commons
-operator|.
-name|JcrUtils
-operator|.
-name|in
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertEquals
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|fail
 import|;
 end_import
 
@@ -466,6 +466,7 @@ argument_list|()
 argument_list|)
 decl_stmt|;
 comment|// use nt:unstructured to force conflicts on :childOrder property
+comment|// FIXME OAK-1420 revert to nt:unstructured
 name|Node
 name|test
 init|=
@@ -479,7 +480,7 @@ name|addNode
 argument_list|(
 literal|"test"
 argument_list|,
-literal|"nt:unstructured"
+literal|"oak:Unstructured"
 argument_list|)
 decl_stmt|;
 name|List
