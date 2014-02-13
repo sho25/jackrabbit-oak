@@ -58,6 +58,8 @@ specifier|private
 name|JdbcConnectionPool
 name|cp
 decl_stmt|;
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setUp
@@ -127,6 +129,8 @@ operator|=
 name|blobStore
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|tearDown

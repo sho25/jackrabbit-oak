@@ -28,6 +28,8 @@ name|MemoryBlobStoreTest
 extends|extends
 name|AbstractBlobStoreTest
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setUp
