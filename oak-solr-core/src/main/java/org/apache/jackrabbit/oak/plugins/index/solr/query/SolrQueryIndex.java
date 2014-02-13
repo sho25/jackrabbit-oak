@@ -490,7 +490,38 @@ operator|new
 name|StringBuilder
 argument_list|()
 decl_stmt|;
-comment|// TODO : handle node type restriction
+for|for
+control|(
+name|String
+name|pt
+range|:
+name|filter
+operator|.
+name|getPrimaryTypes
+argument_list|()
+control|)
+block|{
+name|queryBuilder
+operator|.
+name|append
+argument_list|(
+literal|"jcr\\:primaryType"
+argument_list|)
+operator|.
+name|append
+argument_list|(
+literal|':'
+argument_list|)
+operator|.
+name|append
+argument_list|(
+name|partialEscape
+argument_list|(
+name|pt
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
 name|Filter
 operator|.
 name|PathRestriction
@@ -653,7 +684,7 @@ literal|"/"
 argument_list|)
 condition|)
 block|{
-comment|// lucene cannot handle child-level property restrictions
+comment|// cannot handle child-level property restrictions
 continue|continue;
 block|}
 name|String
@@ -1115,26 +1146,14 @@ name|log
 operator|.
 name|debug
 argument_list|(
-operator|new
-name|StringBuilder
-argument_list|(
-literal|"JCR query: \n"
-operator|+
+literal|"JCR query {} has been converted to Solr query {}"
+argument_list|,
 name|filter
 operator|.
 name|getQueryStatement
 argument_list|()
-operator|+
-literal|" \nhas been converted to Solr query: \n"
-argument_list|)
-operator|.
-name|append
-argument_list|(
+argument_list|,
 name|solrQuery
-operator|.
-name|toString
-argument_list|()
-argument_list|)
 operator|.
 name|toString
 argument_list|()
