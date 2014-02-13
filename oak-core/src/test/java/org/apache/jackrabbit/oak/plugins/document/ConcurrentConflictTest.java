@@ -244,7 +244,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *<code>ConcurrentConflictTest</code>...  */
+comment|/**  * Updates multiple nodes in the same commit with multiple threads and verifies  * the commit is atomic.  */
 end_comment
 
 begin_class
@@ -299,7 +299,7 @@ specifier|final
 name|int
 name|NUM_TRANSFERS_PER_THREAD
 init|=
-literal|10
+literal|100
 decl_stmt|;
 specifier|private
 name|DocumentStore
@@ -464,8 +464,6 @@ literal|true
 argument_list|)
 expr_stmt|;
 block|}
-annotation|@
-name|Ignore
 annotation|@
 name|Test
 specifier|public
@@ -674,7 +672,14 @@ expr_stmt|;
 block|}
 name|log
 argument_list|(
-literal|"conflicts: "
+literal|"conflicts ("
+operator|+
+name|conflictSet
+operator|.
+name|cardinality
+argument_list|()
+operator|+
+literal|"): "
 operator|+
 name|conflictSet
 argument_list|)
