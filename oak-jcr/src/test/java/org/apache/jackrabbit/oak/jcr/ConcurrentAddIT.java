@@ -447,18 +447,6 @@ operator|.
 name|DOCUMENT_JDBC
 argument_list|)
 expr_stmt|;
-comment|// FIXME enable again once OAK-1420 is fixed
-name|Assume
-operator|.
-name|assumeTrue
-argument_list|(
-name|fixture
-operator|!=
-name|NodeStoreFixture
-operator|.
-name|DOCUMENT_NS
-argument_list|)
-expr_stmt|;
 name|List
 argument_list|<
 name|Exception
