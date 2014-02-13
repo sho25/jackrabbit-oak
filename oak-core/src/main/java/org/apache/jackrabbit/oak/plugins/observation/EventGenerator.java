@@ -315,7 +315,7 @@ parameter_list|)
 block|{
 name|continuations
 operator|.
-name|add
+name|addFirst
 argument_list|(
 operator|new
 name|Continuation
@@ -1082,7 +1082,7 @@ condition|)
 block|{
 name|continuations
 operator|.
-name|add
+name|addFirst
 argument_list|(
 operator|new
 name|Continuation
@@ -1135,7 +1135,7 @@ condition|)
 block|{
 name|continuations
 operator|.
-name|add
+name|addFirst
 argument_list|(
 operator|new
 name|Continuation
@@ -1182,7 +1182,7 @@ condition|)
 block|{
 name|continuations
 operator|.
-name|add
+name|addFirst
 argument_list|(
 operator|new
 name|Continuation
