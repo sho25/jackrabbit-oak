@@ -447,6 +447,18 @@ operator|.
 name|DOCUMENT_JDBC
 argument_list|)
 expr_stmt|;
+comment|// FIXME enable again once OAK-1420 is fixed
+name|Assume
+operator|.
+name|assumeTrue
+argument_list|(
+name|fixture
+operator|!=
+name|NodeStoreFixture
+operator|.
+name|DOCUMENT_NS
+argument_list|)
+expr_stmt|;
 name|List
 argument_list|<
 name|Exception
@@ -466,7 +478,6 @@ argument_list|()
 argument_list|)
 decl_stmt|;
 comment|// use nt:unstructured to force conflicts on :childOrder property
-comment|// FIXME OAK-1420 revert to nt:unstructured
 name|Node
 name|test
 init|=
@@ -480,7 +491,7 @@ name|addNode
 argument_list|(
 literal|"test"
 argument_list|,
-literal|"oak:Unstructured"
+literal|"nt:unstructured"
 argument_list|)
 decl_stmt|;
 name|List
