@@ -23,6 +23,16 @@ name|external
 package|;
 end_package
 
+begin_import
+import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|Nonnull
+import|;
+end_import
+
 begin_comment
 comment|/**  * ExternalGroup defines a group that is provided by an external system.  */
 end_comment
@@ -33,7 +43,20 @@ interface|interface
 name|ExternalGroup
 extends|extends
 name|ExternalIdentity
-block|{  }
+block|{
+comment|/**      * Returns an iterable of the declared (direct) members of this external group.      * @return the declared member      * @throws ExternalIdentityException if an error occurrs      */
+annotation|@
+name|Nonnull
+name|Iterable
+argument_list|<
+name|ExternalIdentityRef
+argument_list|>
+name|getDeclaredMembers
+parameter_list|()
+throws|throws
+name|ExternalIdentityException
+function_decl|;
+block|}
 end_interface
 
 end_unit

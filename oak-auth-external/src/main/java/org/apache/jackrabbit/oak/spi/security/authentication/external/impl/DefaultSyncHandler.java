@@ -1044,15 +1044,6 @@ name|SyncException
 throws|,
 name|ExternalIdentityException
 block|{
-name|String
-name|password
-init|=
-name|externalUser
-operator|.
-name|getPassword
-argument_list|()
-decl_stmt|;
-comment|// todo: make configurable
 name|Principal
 name|principal
 init|=
@@ -1077,7 +1068,7 @@ operator|.
 name|getId
 argument_list|()
 argument_list|,
-name|password
+literal|null
 argument_list|,
 name|principal
 argument_list|,
@@ -1228,7 +1219,7 @@ name|externalGroupRef
 range|:
 name|externalUser
 operator|.
-name|getGroups
+name|getDeclaredGroups
 argument_list|()
 control|)
 block|{

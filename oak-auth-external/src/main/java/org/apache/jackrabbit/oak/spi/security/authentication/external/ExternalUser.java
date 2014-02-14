@@ -23,16 +23,6 @@ name|external
 package|;
 end_package
 
-begin_import
-import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|CheckForNull
-import|;
-end_import
-
 begin_comment
 comment|/**  * ExternalUser defines a user provided by an external system.  */
 end_comment
@@ -43,15 +33,7 @@ interface|interface
 name|ExternalUser
 extends|extends
 name|ExternalIdentity
-block|{
-comment|/**      * Returns the plaintext password of this user if available. This is usually only the case when the      * external user is accessible during a login call.      *      * @return the password.      */
-annotation|@
-name|CheckForNull
-name|String
-name|getPassword
-parameter_list|()
-function_decl|;
-block|}
+block|{  }
 end_interface
 
 end_unit

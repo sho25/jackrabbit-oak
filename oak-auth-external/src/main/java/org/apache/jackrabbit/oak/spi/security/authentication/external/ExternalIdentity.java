@@ -27,16 +27,6 @@ begin_import
 import|import
 name|java
 operator|.
-name|security
-operator|.
-name|Principal
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
 name|util
 operator|.
 name|Map
@@ -93,24 +83,24 @@ name|String
 name|getPrincipalName
 parameter_list|()
 function_decl|;
-comment|/**      * Returns the desired intermediate relative path of the authorizable to be created. For example, one could map      * an external hierarchy into the local users and groups hierarchy.      *      * @return the intermediate path or {@code null} or empty.      */
+comment|/**      * Returns the desired intermediate relative path of the authorizable to be created. For example, one could map      * an external hierarchy into the local users and groups hierarchy. The provider must escape all characters so that      * the path is a valid JCR path. The path is always considered relative, even if it starts with a '/'.      *      * @return the intermediate path or {@code null} or empty.      */
 annotation|@
 name|CheckForNull
 name|String
 name|getIntermediatePath
 parameter_list|()
 function_decl|;
-comment|/**      * Returns an iterable of the declared groups of this external identity.      * @return the declared groups      */
+comment|/**      * Returns an iterable of the declared groups of this external identity.      * @return the declared groups      * @throws ExternalIdentityException if an error occurrs      */
 annotation|@
 name|Nonnull
 name|Iterable
 argument_list|<
-name|?
-extends|extends
 name|ExternalIdentityRef
 argument_list|>
-name|getGroups
+name|getDeclaredGroups
 parameter_list|()
+throws|throws
+name|ExternalIdentityException
 function_decl|;
 comment|/**      * Returns a map of properties of this external identity.      * @return the properties      */
 annotation|@

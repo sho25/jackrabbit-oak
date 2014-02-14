@@ -535,6 +535,11 @@ name|Credentials
 name|credentials
 decl_stmt|;
 comment|/**      * Default constructor for the OSGIi LoginModuleFactory case and the default non-OSGi JAAS case.      */
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"UnusedDeclaration"
+argument_list|)
 specifier|public
 name|ExternalLoginModule
 parameter_list|()
