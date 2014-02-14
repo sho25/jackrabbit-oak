@@ -2644,7 +2644,7 @@ return|return
 name|this
 return|;
 block|}
-comment|/**          * Sets a JDBC connection URL to use for the RDB document store.          *           * @return this          */
+comment|/**          * Sets a JDBC connection URL to use for the RDB document and blob          * stores.          *           * @return this          */
 specifier|public
 name|Builder
 name|setRDBConnection
@@ -2693,7 +2693,63 @@ return|return
 name|this
 return|;
 block|}
-comment|/**          * Sets a {@link DataSource} to use for the RDB document store.          *           * @return this          */
+comment|/**          * Sets a JDBC connection URLs to use for the RDB document and blob          * stores.          *           * @return this          */
+specifier|public
+name|Builder
+name|setRDBConnection
+parameter_list|(
+name|String
+name|dsjdbcurl
+parameter_list|,
+name|String
+name|dsusername
+parameter_list|,
+name|String
+name|dspassword
+parameter_list|,
+name|String
+name|bsjdbcurl
+parameter_list|,
+name|String
+name|bsusername
+parameter_list|,
+name|String
+name|bspassword
+parameter_list|)
+block|{
+name|this
+operator|.
+name|documentStore
+operator|=
+operator|new
+name|RDBDocumentStore
+argument_list|(
+name|dsjdbcurl
+argument_list|,
+name|dsusername
+argument_list|,
+name|dspassword
+argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|blobStore
+operator|=
+operator|new
+name|RDBBlobStore
+argument_list|(
+name|bsjdbcurl
+argument_list|,
+name|bsusername
+argument_list|,
+name|bspassword
+argument_list|)
+expr_stmt|;
+return|return
+name|this
+return|;
+block|}
+comment|/**          * Sets a {@link DataSource} to use for the RDB document and blob          * stores.          *           * @return this          */
 specifier|public
 name|Builder
 name|setRDBConnection
@@ -2702,8 +2758,6 @@ name|DataSource
 name|ds
 parameter_list|)
 block|{
-comment|// TODO maybe we need different connections for document store and
-comment|// node store
 name|this
 operator|.
 name|documentStore
@@ -2722,6 +2776,42 @@ operator|new
 name|RDBBlobStore
 argument_list|(
 name|ds
+argument_list|)
+expr_stmt|;
+return|return
+name|this
+return|;
+block|}
+comment|/**          * Sets a {@link DataSource}s to use for the RDB document and blob          * stores.          *           * @return this          */
+specifier|public
+name|Builder
+name|setRDBConnection
+parameter_list|(
+name|DataSource
+name|documentStoreDataSource
+parameter_list|,
+name|DataSource
+name|blobStoreDataSource
+parameter_list|)
+block|{
+name|this
+operator|.
+name|documentStore
+operator|=
+operator|new
+name|RDBDocumentStore
+argument_list|(
+name|documentStoreDataSource
+argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|blobStore
+operator|=
+operator|new
+name|RDBBlobStore
+argument_list|(
+name|blobStoreDataSource
 argument_list|)
 expr_stmt|;
 return|return
