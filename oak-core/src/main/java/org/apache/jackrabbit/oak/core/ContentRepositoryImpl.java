@@ -1902,12 +1902,13 @@ literal|true
 argument_list|,
 literal|true
 argument_list|)
+comment|// TODO OAK-118
 operator|.
 name|put
 argument_list|(
 name|OPTION_WORKSPACE_MANAGEMENT_SUPPORTED
 argument_list|,
-name|trueValue
+name|falseValue
 argument_list|,
 literal|true
 argument_list|,
@@ -1937,6 +1938,7 @@ literal|true
 argument_list|,
 literal|true
 argument_list|)
+comment|// TODO OAK-827
 operator|.
 name|put
 argument_list|(
@@ -1948,6 +1950,7 @@ literal|true
 argument_list|,
 literal|true
 argument_list|)
+comment|// TODO OAK-1403
 operator|.
 name|put
 argument_list|(
