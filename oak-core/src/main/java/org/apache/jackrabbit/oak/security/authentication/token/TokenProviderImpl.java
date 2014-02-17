@@ -2602,15 +2602,20 @@ parameter_list|)
 block|{
 name|log
 operator|.
-name|warn
+name|debug
 argument_list|(
-literal|"Error while resetting token expiration"
+literal|"Failed to reset token expiration"
 argument_list|,
 name|e
 operator|.
 name|getMessage
 argument_list|()
 argument_list|)
+expr_stmt|;
+name|root
+operator|.
+name|refresh
+argument_list|()
 expr_stmt|;
 block|}
 block|}
