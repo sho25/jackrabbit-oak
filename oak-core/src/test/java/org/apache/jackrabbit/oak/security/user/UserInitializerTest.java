@@ -1100,27 +1100,6 @@ name|class
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Tree
-name|members
-init|=
-name|oakIndex
-operator|.
-name|getChild
-argument_list|(
-literal|"members"
-argument_list|)
-decl_stmt|;
-name|assertIndexDefinition
-argument_list|(
-name|members
-argument_list|,
-name|UserConstants
-operator|.
-name|REP_MEMBERS
-argument_list|,
-literal|false
-argument_list|)
-expr_stmt|;
 block|}
 comment|/**      * @since OAK 1.0 The configuration defines if the password of the      * admin user is being set.      */
 annotation|@
