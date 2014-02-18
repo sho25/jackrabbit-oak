@@ -438,9 +438,12 @@ control|)
 block|{
 if|if
 condition|(
+name|privilegesTree
+operator|.
+name|hasChild
+argument_list|(
 name|privilegeName
-operator|!=
-literal|null
+argument_list|)
 condition|)
 block|{
 name|Tree
@@ -453,14 +456,6 @@ argument_list|(
 name|privilegeName
 argument_list|)
 decl_stmt|;
-if|if
-condition|(
-name|defTree
-operator|.
-name|exists
-argument_list|()
-condition|)
-block|{
 name|bits
 operator|.
 name|add
@@ -474,14 +469,15 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-block|}
 else|else
 block|{
 name|log
 operator|.
 name|debug
 argument_list|(
-literal|"Ignoring 'null' privilege name"
+literal|"Ignoring privilege name "
+operator|+
+name|privilegeName
 argument_list|)
 expr_stmt|;
 block|}

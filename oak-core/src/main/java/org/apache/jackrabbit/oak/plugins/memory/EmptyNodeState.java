@@ -21,38 +21,6 @@ end_package
 
 begin_import
 import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|Preconditions
-operator|.
-name|checkArgument
-import|;
-end_import
-
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|Preconditions
-operator|.
-name|checkNotNull
-import|;
-end_import
-
-begin_import
-import|import static
 name|java
 operator|.
 name|util
@@ -60,6 +28,26 @@ operator|.
 name|Collections
 operator|.
 name|emptyList
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|state
+operator|.
+name|AbstractNodeState
+operator|.
+name|checkValidName
 import|;
 end_import
 
@@ -423,18 +411,6 @@ name|String
 name|name
 parameter_list|)
 block|{
-name|checkArgument
-argument_list|(
-operator|!
-name|checkNotNull
-argument_list|(
-name|name
-argument_list|)
-operator|.
-name|isEmpty
-argument_list|()
-argument_list|)
-expr_stmt|;
 return|return
 literal|false
 return|;
@@ -453,16 +429,9 @@ name|String
 name|name
 parameter_list|)
 block|{
-name|checkArgument
-argument_list|(
-operator|!
-name|checkNotNull
+name|checkValidName
 argument_list|(
 name|name
-argument_list|)
-operator|.
-name|isEmpty
-argument_list|()
 argument_list|)
 expr_stmt|;
 return|return

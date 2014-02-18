@@ -236,7 +236,7 @@ name|N
 init|=
 name|KernelNodeState
 operator|.
-name|MAX_CHILD_NODE_NAMES
+name|MAX_CHILD_NAMES
 decl_stmt|;
 specifier|private
 name|NodeState

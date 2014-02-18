@@ -663,7 +663,7 @@ call|)
 argument_list|(
 name|KernelNodeState
 operator|.
-name|MAX_CHILD_NODE_NAMES
+name|MAX_CHILD_NAMES
 operator|*
 literal|1.5
 argument_list|)
@@ -759,7 +759,7 @@ name|get
 argument_list|(
 name|KernelNodeState
 operator|.
-name|MAX_CHILD_NODE_NAMES
+name|MAX_CHILD_NAMES
 operator|/
 literal|2
 argument_list|)

@@ -1681,7 +1681,7 @@ name|i
 operator|<=
 name|KernelNodeState
 operator|.
-name|MAX_CHILD_NODE_NAMES
+name|MAX_CHILD_NAMES
 condition|;
 name|i
 operator|++
@@ -3347,7 +3347,7 @@ name|compareAgainstBaseState
 argument_list|(
 name|KernelNodeState
 operator|.
-name|MAX_CHILD_NODE_NAMES
+name|MAX_CHILD_NAMES
 argument_list|)
 expr_stmt|;
 block|}

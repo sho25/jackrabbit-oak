@@ -172,7 +172,7 @@ argument_list|>
 name|getProperties
 parameter_list|()
 function_decl|;
-comment|/**      * Get a possibly non existing child of this {@code Tree}.      * @param name The name of the child to retrieve.      * @return The child with the given {@code name}.      */
+comment|/**      * Get a possibly non existing child of this {@code Tree}.      * @param name The name of the child to retrieve.      * @return The child with the given {@code name}.      * @throws IllegalArgumentException if the given name string is empty      *                                  or contains the forward slash character      */
 annotation|@
 name|Nonnull
 name|Tree
@@ -183,6 +183,8 @@ name|Nonnull
 name|String
 name|name
 parameter_list|)
+throws|throws
+name|IllegalArgumentException
 function_decl|;
 comment|/**      * Determine if a child of this {@code Tree} instance exists. If no child      * exists or an existing child isn't accessible this method returns {@code false}.      *      * @param name The name of the child      * @return {@code true} if and only if a child with the given {@code name}      *         exists and is accessible for the current content session.      */
 name|boolean

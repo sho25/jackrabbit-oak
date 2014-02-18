@@ -466,7 +466,7 @@ name|getNodeState
 argument_list|()
 return|;
 block|}
-comment|/**      * Factory method for creating child trees      * @param name  name of the child tree      * @return  child tree of this tree with the given {@code name}      */
+comment|/**      * Factory method for creating child trees      * @param name  name of the child tree      * @return child tree of this tree with the given {@code name}      * @throws IllegalArgumentException if the given name string is empty      *                                  or contains the forward slash character      */
 annotation|@
 name|Nonnull
 specifier|protected
@@ -479,6 +479,8 @@ name|Nonnull
 name|String
 name|name
 parameter_list|)
+throws|throws
+name|IllegalArgumentException
 function_decl|;
 comment|/**      * @return  {@code true} iff {@code getStatus() == Status.NEW}      */
 specifier|protected
@@ -795,16 +797,16 @@ name|exists
 parameter_list|()
 block|{
 return|return
+name|nodeBuilder
+operator|.
+name|exists
+argument_list|()
+operator|&&
 operator|!
 name|isHidden
 argument_list|(
 name|name
 argument_list|)
-operator|&&
-name|nodeBuilder
-operator|.
-name|exists
-argument_list|()
 return|;
 block|}
 annotation|@
@@ -1015,16 +1017,18 @@ name|name
 parameter_list|)
 block|{
 return|return
-name|createChild
-argument_list|(
-name|checkNotNull
+name|nodeBuilder
+operator|.
+name|hasChildNode
 argument_list|(
 name|name
 argument_list|)
+operator|&&
+operator|!
+name|isHidden
+argument_list|(
+name|name
 argument_list|)
-operator|.
-name|exists
-argument_list|()
 return|;
 block|}
 annotation|@

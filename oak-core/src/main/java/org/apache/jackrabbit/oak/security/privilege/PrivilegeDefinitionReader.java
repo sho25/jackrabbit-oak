@@ -293,6 +293,14 @@ condition|(
 name|privilegesTree
 operator|==
 literal|null
+operator|||
+operator|!
+name|privilegesTree
+operator|.
+name|hasChild
+argument_list|(
+name|privilegeName
+argument_list|)
 condition|)
 block|{
 return|return
@@ -342,11 +350,6 @@ name|tree
 parameter_list|)
 block|{
 return|return
-name|tree
-operator|.
-name|exists
-argument_list|()
-operator|&&
 name|NT_REP_PRIVILEGE
 operator|.
 name|equals
