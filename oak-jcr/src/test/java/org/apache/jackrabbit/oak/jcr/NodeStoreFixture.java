@@ -898,6 +898,13 @@ return|return
 name|createNodeStore
 argument_list|(
 name|uri
+operator|+
+literal|'-'
+operator|+
+name|System
+operator|.
+name|nanoTime
+argument_list|()
 argument_list|)
 return|;
 block|}
