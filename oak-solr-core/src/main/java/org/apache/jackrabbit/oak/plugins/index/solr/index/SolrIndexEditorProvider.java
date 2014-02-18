@@ -25,6 +25,16 @@ end_package
 
 begin_import
 import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|Nonnull
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -216,7 +226,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Solr based {@link IndexEditorProvider}  *  * @see SolrIndexEditor  *  */
+comment|/**  * Solr based {@link IndexEditorProvider}  *  * @see SolrIndexEditor  */
 end_comment
 
 begin_class
@@ -276,15 +286,23 @@ specifier|public
 name|Editor
 name|getIndexEditor
 parameter_list|(
+annotation|@
+name|Nonnull
 name|String
 name|type
 parameter_list|,
+annotation|@
+name|Nonnull
 name|NodeBuilder
 name|definition
 parameter_list|,
+annotation|@
+name|Nonnull
 name|NodeState
 name|root
 parameter_list|,
+annotation|@
+name|Nonnull
 name|IndexUpdateCallback
 name|callback
 parameter_list|)
