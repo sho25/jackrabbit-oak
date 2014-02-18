@@ -178,7 +178,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * SecurityConfiguration... TODO  */
+comment|/**  * Base interface for all security related configurations.  */
 end_comment
 
 begin_interface
@@ -214,6 +214,7 @@ name|RepositoryInitializer
 name|getRepositoryInitializer
 parameter_list|()
 function_decl|;
+comment|/**      * Returns the list of commit hooks that need to be executed for the      * specified workspace name.      *      * @param workspaceName The name of the workspace.      * @return A list of commit hooks.      */
 annotation|@
 name|Nonnull
 name|List
@@ -224,10 +225,13 @@ name|CommitHook
 argument_list|>
 name|getCommitHooks
 parameter_list|(
+annotation|@
+name|Nonnull
 name|String
 name|workspaceName
 parameter_list|)
 function_decl|;
+comment|/**      * Returns the list of validators that need to be executed for the specified      * workspace name.      *      * @param workspaceName The name of the workspace.      * @param principals The set of principals associated with the subject      * that is committing modifications.      * @param moveTracker The move tracker associated with the commit.      * @return A list of validators.      */
 annotation|@
 name|Nonnull
 name|List
@@ -238,19 +242,26 @@ name|ValidatorProvider
 argument_list|>
 name|getValidators
 parameter_list|(
+annotation|@
+name|Nonnull
 name|String
 name|workspaceName
 parameter_list|,
+annotation|@
+name|Nonnull
 name|Set
 argument_list|<
 name|Principal
 argument_list|>
 name|principals
 parameter_list|,
+annotation|@
+name|Nonnull
 name|MoveTracker
 name|moveTracker
 parameter_list|)
 function_decl|;
+comment|/**      * @return The list of protected item importers defined by this configuration.      */
 annotation|@
 name|Nonnull
 name|List
@@ -260,6 +271,7 @@ argument_list|>
 name|getProtectedItemImporters
 parameter_list|()
 function_decl|;
+comment|/**      * @return The context defined by this configuration.      */
 annotation|@
 name|Nonnull
 name|Context
