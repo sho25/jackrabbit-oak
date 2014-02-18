@@ -458,6 +458,17 @@ name|PRIVILEGE_MANAGEMENT
 operator|<<
 literal|1
 decl_stmt|;
+comment|/**      * @since OAK 1.0      */
+specifier|public
+specifier|static
+specifier|final
+name|long
+name|INDEX_DEFINITION_MANAGEMENT
+init|=
+name|USER_MANAGEMENT
+operator|<<
+literal|1
+decl_stmt|;
 specifier|public
 specifier|static
 specifier|final
@@ -531,6 +542,8 @@ operator||
 name|PRIVILEGE_MANAGEMENT
 operator||
 name|USER_MANAGEMENT
+operator||
+name|INDEX_DEFINITION_MANAGEMENT
 operator|)
 decl_stmt|;
 specifier|public
@@ -769,6 +782,15 @@ argument_list|(
 name|USER_MANAGEMENT
 argument_list|,
 literal|"USER_MANAGEMENT"
+argument_list|)
+expr_stmt|;
+name|PERMISSION_NAMES
+operator|.
+name|put
+argument_list|(
+name|INDEX_DEFINITION_MANAGEMENT
+argument_list|,
+literal|"INDEX_DEFINITION_MANAGEMENT"
 argument_list|)
 expr_stmt|;
 block|}

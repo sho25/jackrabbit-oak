@@ -109,6 +109,26 @@ name|apache
 operator|.
 name|jackrabbit
 operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|security
+operator|.
+name|privilege
+operator|.
+name|PrivilegeConstants
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
 name|test
 operator|.
 name|NotExecutableException
@@ -126,7 +146,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Permission evaluation tests related to {@link #REP_PRIVILEGE_MANAGEMENT} privilege.  */
+comment|/**  * Permission evaluation tests related to {@link org.apache.jackrabbit.oak.spi.security.privilege.PrivilegeConstants#REP_PRIVILEGE_MANAGEMENT} privilege.  */
 end_comment
 
 begin_class
@@ -136,14 +156,6 @@ name|PrivilegeManagementTest
 extends|extends
 name|AbstractEvaluationTest
 block|{
-specifier|private
-specifier|static
-specifier|final
-name|String
-name|REP_PRIVILEGE_MANAGEMENT
-init|=
-literal|"rep:privilegeManagement"
-decl_stmt|;
 annotation|@
 name|Override
 specifier|protected
@@ -161,6 +173,8 @@ expr_stmt|;
 comment|// test user must not be allowed
 name|assertHasRepoPrivilege
 argument_list|(
+name|PrivilegeConstants
+operator|.
 name|REP_PRIVILEGE_MANAGEMENT
 argument_list|,
 literal|false
@@ -379,6 +393,8 @@ name|modify
 argument_list|(
 literal|null
 argument_list|,
+name|PrivilegeConstants
+operator|.
 name|REP_PRIVILEGE_MANAGEMENT
 argument_list|,
 literal|true
@@ -386,6 +402,8 @@ argument_list|)
 expr_stmt|;
 name|assertHasRepoPrivilege
 argument_list|(
+name|PrivilegeConstants
+operator|.
 name|REP_PRIVILEGE_MANAGEMENT
 argument_list|,
 literal|true
@@ -395,6 +413,8 @@ name|modify
 argument_list|(
 literal|null
 argument_list|,
+name|PrivilegeConstants
+operator|.
 name|REP_PRIVILEGE_MANAGEMENT
 argument_list|,
 literal|false
@@ -402,6 +422,8 @@ argument_list|)
 expr_stmt|;
 name|assertHasRepoPrivilege
 argument_list|(
+name|PrivilegeConstants
+operator|.
 name|REP_PRIVILEGE_MANAGEMENT
 argument_list|,
 literal|false
@@ -421,6 +443,8 @@ name|modify
 argument_list|(
 literal|null
 argument_list|,
+name|PrivilegeConstants
+operator|.
 name|REP_PRIVILEGE_MANAGEMENT
 argument_list|,
 literal|true
@@ -469,6 +493,8 @@ name|modify
 argument_list|(
 literal|null
 argument_list|,
+name|PrivilegeConstants
+operator|.
 name|REP_PRIVILEGE_MANAGEMENT
 argument_list|,
 literal|false

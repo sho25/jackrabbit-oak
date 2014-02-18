@@ -308,6 +308,12 @@ name|REP_REMOVE_PROPERTIES
 init|=
 literal|"rep:removeProperties"
 decl_stmt|;
+comment|/**      * Internal (oak) name of the rep:indexDefinitionManagement privilege      *      * @since OAK 1.0      */
+name|String
+name|REP_INDEX_DEFINITION_MANAGEMENT
+init|=
+literal|"rep:indexDefinitionManagement"
+decl_stmt|;
 block|}
 end_interface
 

@@ -20,18 +20,6 @@ package|;
 end_package
 
 begin_import
-import|import static
-name|java
-operator|.
-name|util
-operator|.
-name|Arrays
-operator|.
-name|asList
-import|;
-end_import
-
-begin_import
 import|import
 name|java
 operator|.
@@ -269,6 +257,18 @@ name|NodeUtil
 import|;
 end_import
 
+begin_import
+import|import static
+name|java
+operator|.
+name|util
+operator|.
+name|Arrays
+operator|.
+name|asList
+import|;
+end_import
+
 begin_comment
 comment|/**  * PrivilegeDefinitionWriter is responsible for writing privilege definitions  * to the repository without applying any validation checks.  */
 end_comment
@@ -330,6 +330,8 @@ block|,
 name|REP_PRIVILEGE_MANAGEMENT
 block|,
 name|REP_USER_MANAGEMENT
+block|,
+name|REP_INDEX_DEFINITION_MANAGEMENT
 block|}
 decl_stmt|;
 comment|/**      * The internal names and aggregation definition of all built-in privileges      * that are aggregates (except for jcr:all).      */

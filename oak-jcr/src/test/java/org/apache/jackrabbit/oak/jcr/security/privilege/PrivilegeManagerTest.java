@@ -924,6 +924,23 @@ argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|assertTrue
+argument_list|(
+name|aggr
+operator|.
+name|remove
+argument_list|(
+name|privilegeManager
+operator|.
+name|getPrivilege
+argument_list|(
+name|PrivilegeConstants
+operator|.
+name|REP_INDEX_DEFINITION_MANAGEMENT
+argument_list|)
+argument_list|)
+argument_list|)
+expr_stmt|;
 comment|// there may be no privileges left
 name|assertTrue
 argument_list|(
