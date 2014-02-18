@@ -1530,6 +1530,19 @@ name|RepositoryException
 throws|,
 name|InterruptedException
 block|{
+name|assumeTrue
+argument_list|(
+name|fixture
+operator|.
+name|getClass
+argument_list|()
+operator|!=
+name|DocumentFixture
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
+comment|// FIXME OAK-1414
 specifier|final
 name|Node
 name|n
@@ -1696,6 +1709,19 @@ name|RepositoryException
 throws|,
 name|InterruptedException
 block|{
+name|assumeTrue
+argument_list|(
+name|fixture
+operator|.
+name|getClass
+argument_list|()
+operator|!=
+name|DocumentFixture
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
+comment|// FIXME OAK-1415
 specifier|final
 name|Node
 name|n
@@ -1862,6 +1888,19 @@ name|RepositoryException
 throws|,
 name|InterruptedException
 block|{
+name|assumeTrue
+argument_list|(
+name|fixture
+operator|.
+name|getClass
+argument_list|()
+operator|!=
+name|DocumentFixture
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
+comment|// FIXME OAK-1416
 specifier|final
 name|Node
 name|n
@@ -2210,6 +2249,19 @@ name|ExecutionException
 throws|,
 name|InterruptedException
 block|{
+name|assumeTrue
+argument_list|(
+name|fixture
+operator|.
+name|getClass
+argument_list|()
+operator|!=
+name|DocumentFixture
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
+comment|// FIXME OAK-1429
 name|Node
 name|n
 init|=
