@@ -135,14 +135,6 @@ specifier|final
 class|class
 name|TreeTypeProvider
 block|{
-specifier|public
-specifier|static
-specifier|final
-name|int
-name|TYPE_NONE
-init|=
-literal|0
-decl_stmt|;
 comment|// regular trees
 specifier|public
 specifier|static

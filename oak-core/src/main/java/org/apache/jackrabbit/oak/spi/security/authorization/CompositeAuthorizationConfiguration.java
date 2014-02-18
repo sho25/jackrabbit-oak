@@ -414,7 +414,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * {@link CompositeAuthorizationConfiguration} that combines different  * authorization models. This implementation has the following characteristics:  *  * TODO  */
+comment|/**  * {@link CompositeAuthorizationConfiguration} that combines different  * authorization models. This implementation has the following characteristics:  *  * TODO OAK-1268  */
 end_comment
 
 begin_class
@@ -609,12 +609,12 @@ argument_list|>
 name|principals
 parameter_list|)
 block|{
-comment|// TODO
+comment|// TODO OAK-1268
 throw|throw
 operator|new
 name|UnsupportedOperationException
 argument_list|(
-literal|"not yet implemented."
+literal|"not yet implemented (OAK-1268)"
 argument_list|)
 throw|;
 block|}

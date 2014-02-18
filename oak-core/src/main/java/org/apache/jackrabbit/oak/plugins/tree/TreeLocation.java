@@ -201,36 +201,6 @@ name|tree
 argument_list|)
 return|;
 block|}
-comment|/**      * Create a new {@code TreeLocation} instance for the specified {@code tree}      * and {@code property}.      */
-specifier|public
-specifier|static
-name|TreeLocation
-name|create
-parameter_list|(
-annotation|@
-name|Nonnull
-name|Tree
-name|tree
-parameter_list|,
-annotation|@
-name|Nonnull
-name|PropertyState
-name|property
-parameter_list|)
-block|{
-return|return
-operator|new
-name|PropertyLocation
-argument_list|(
-name|tree
-argument_list|,
-name|property
-operator|.
-name|getName
-argument_list|()
-argument_list|)
-return|;
-block|}
 comment|/**      * Create a new {@code TreeLocation} instance for the item      * at the given {@code path} in {@code root}.      */
 specifier|public
 specifier|static

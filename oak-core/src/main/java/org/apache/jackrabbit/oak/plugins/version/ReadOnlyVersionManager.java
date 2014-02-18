@@ -20,38 +20,6 @@ package|;
 end_package
 
 begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|Preconditions
-operator|.
-name|checkArgument
-import|;
-end_import
-
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|Preconditions
-operator|.
-name|checkNotNull
-import|;
-end_import
-
-begin_import
 import|import
 name|javax
 operator|.
@@ -223,6 +191,22 @@ name|TreeUtil
 import|;
 end_import
 
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkNotNull
+import|;
+end_import
+
 begin_comment
 comment|/**  * {@code ReadOnlyVersionManager} provides implementations for read-only  * version operations modeled after the ones available in {@link javax.jcr.version.VersionManager}.  */
 end_comment
@@ -347,33 +331,6 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-block|}
-comment|/**      * Returns {@code true} if the tree at the given absolute Oak path is      * checked out; otherwise {@code false}.      *      * @param absOakPath an absolute path.      * @return whether the tree at the given path is checked out or not.      */
-specifier|public
-name|boolean
-name|isCheckedOut
-parameter_list|(
-annotation|@
-name|Nonnull
-name|String
-name|absOakPath
-parameter_list|)
-block|{
-return|return
-name|isCheckedOut
-argument_list|(
-name|getWorkspaceRoot
-argument_list|()
-operator|.
-name|getTree
-argument_list|(
-name|checkNotNull
-argument_list|(
-name|absOakPath
-argument_list|)
-argument_list|)
-argument_list|)
-return|;
 block|}
 comment|/**      * Returns the tree representing the version history of the given      * versionable tree or {@code null} if none exists yet.      *      * @param versionable the versionable tree.      * @return the version history or {@code null} if none exists yet.      * @throws UnsupportedRepositoryOperationException      *                             if the versionable tree is not actually      *                             versionable.      * @throws RepositoryException if an error occurs while checking the node      *                             type of the tree.      */
 annotation|@

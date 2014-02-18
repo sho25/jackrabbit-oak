@@ -434,8 +434,6 @@ name|Value
 name|value
 parameter_list|)
 throws|throws
-name|AccessControlException
-throws|,
 name|RepositoryException
 block|{
 return|return
@@ -481,8 +479,6 @@ modifier|...
 name|values
 parameter_list|)
 throws|throws
-name|AccessControlException
-throws|,
 name|RepositoryException
 block|{
 return|return
@@ -640,8 +636,6 @@ name|Tree
 name|aceTree
 parameter_list|)
 throws|throws
-name|AccessControlException
-throws|,
 name|RepositoryException
 block|{
 name|Map

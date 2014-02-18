@@ -720,7 +720,6 @@ argument_list|(
 name|segmentId
 argument_list|)
 expr_stmt|;
-empty_stmt|;
 block|}
 block|}
 end_class

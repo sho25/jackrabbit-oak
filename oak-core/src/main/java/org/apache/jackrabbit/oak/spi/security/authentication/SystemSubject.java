@@ -129,7 +129,6 @@ name|Subject
 name|createSystemSubject
 parameter_list|()
 block|{
-comment|// TODO: workaround for OAK-1404
 name|Set
 argument_list|<
 name|?
@@ -153,7 +152,12 @@ init|=
 operator|new
 name|AuthInfoImpl
 argument_list|(
-literal|"system"
+name|SystemPrincipal
+operator|.
+name|INSTANCE
+operator|.
+name|getName
+argument_list|()
 argument_list|,
 literal|null
 argument_list|,

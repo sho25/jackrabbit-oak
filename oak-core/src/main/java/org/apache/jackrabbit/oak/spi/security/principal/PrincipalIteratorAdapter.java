@@ -63,16 +63,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|jcr
-operator|.
-name|RangeIterator
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -162,20 +152,6 @@ operator|.
 name|EMPTY
 argument_list|)
 decl_stmt|;
-comment|/**      * Creates an adapter for the given {@link javax.jcr.RangeIterator}.      *      * @param iterator iterator of {@link java.security.Principal}s      */
-specifier|public
-name|PrincipalIteratorAdapter
-parameter_list|(
-name|RangeIterator
-name|iterator
-parameter_list|)
-block|{
-name|super
-argument_list|(
-name|iterator
-argument_list|)
-expr_stmt|;
-block|}
 comment|/**      * Creates an adapter for the given {@link java.util.Iterator} of principals.      *      * @param iterator iterator of {@link java.security.Principal}s      */
 specifier|public
 name|PrincipalIteratorAdapter
