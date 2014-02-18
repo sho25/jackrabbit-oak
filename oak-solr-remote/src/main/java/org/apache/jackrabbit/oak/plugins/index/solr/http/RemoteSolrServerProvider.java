@@ -348,6 +348,10 @@ argument_list|,
 name|immediate
 operator|=
 literal|true
+argument_list|,
+name|label
+operator|=
+literal|"Remote Solr Server Provider"
 argument_list|)
 annotation|@
 name|Service
@@ -986,11 +990,41 @@ argument_list|)
 expr_stmt|;
 comment|// workaround for first request when the needed collection may not exist
 comment|// create specified collection if it doesn't exists
+try|try
+block|{
 name|createCollectionIfNeeded
 argument_list|(
 name|cloudSolrServer
 argument_list|)
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|Throwable
+name|t
+parameter_list|)
+block|{
+if|if
+condition|(
+name|log
+operator|.
+name|isWarnEnabled
+argument_list|()
+condition|)
+block|{
+name|log
+operator|.
+name|warn
+argument_list|(
+literal|"could not create the collection on {}, {}"
+argument_list|,
+name|solrZkHost
+argument_list|,
+name|t
+argument_list|)
+expr_stmt|;
+block|}
+block|}
 name|cloudSolrServer
 operator|.
 name|setDefaultCollection
@@ -1037,15 +1071,15 @@ if|if
 condition|(
 name|log
 operator|.
-name|isWarnEnabled
+name|isDebugEnabled
 argument_list|()
 condition|)
 block|{
 name|log
 operator|.
-name|warn
+name|debug
 argument_list|(
-literal|"wait a bit"
+literal|"server is not alive yet, wait a bit"
 argument_list|,
 name|e
 argument_list|)

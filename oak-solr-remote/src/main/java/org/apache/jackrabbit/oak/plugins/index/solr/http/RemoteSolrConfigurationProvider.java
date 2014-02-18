@@ -196,6 +196,14 @@ argument_list|(
 name|metatype
 operator|=
 literal|true
+argument_list|,
+name|immediate
+operator|=
+literal|true
+argument_list|,
+name|label
+operator|=
+literal|"Remote Solr Configuration Provider"
 argument_list|)
 annotation|@
 name|Service
