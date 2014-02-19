@@ -263,6 +263,9 @@ literal|"OakInitializer"
 argument_list|,
 literal|null
 argument_list|,
+operator|(
+name|String
+operator|)
 literal|null
 argument_list|)
 decl_stmt|;
@@ -390,6 +393,9 @@ literal|"OakInitializer"
 argument_list|,
 literal|null
 argument_list|,
+operator|(
+name|String
+operator|)
 literal|null
 argument_list|)
 decl_stmt|;

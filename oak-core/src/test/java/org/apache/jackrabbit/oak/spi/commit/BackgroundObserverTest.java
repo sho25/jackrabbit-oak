@@ -245,6 +245,9 @@ literal|"no-session"
 argument_list|,
 literal|null
 argument_list|,
+operator|(
+name|String
+operator|)
 literal|null
 argument_list|)
 decl_stmt|;
