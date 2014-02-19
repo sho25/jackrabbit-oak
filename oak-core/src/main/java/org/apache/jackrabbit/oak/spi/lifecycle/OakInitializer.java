@@ -262,11 +262,6 @@ argument_list|(
 literal|"OakInitializer"
 argument_list|,
 literal|null
-argument_list|,
-operator|(
-name|String
-operator|)
-literal|null
 argument_list|)
 decl_stmt|;
 name|store
@@ -391,11 +386,6 @@ name|CommitInfo
 argument_list|(
 literal|"OakInitializer"
 argument_list|,
-literal|null
-argument_list|,
-operator|(
-name|String
-operator|)
 literal|null
 argument_list|)
 decl_stmt|;

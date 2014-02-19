@@ -1610,8 +1610,6 @@ name|root
 operator|.
 name|commit
 argument_list|(
-literal|null
-argument_list|,
 name|path
 argument_list|)
 expr_stmt|;

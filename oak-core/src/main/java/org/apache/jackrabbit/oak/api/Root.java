@@ -145,11 +145,6 @@ parameter_list|(
 annotation|@
 name|Nullable
 name|String
-name|message
-parameter_list|,
-annotation|@
-name|Nullable
-name|String
 name|path
 parameter_list|)
 throws|throws
