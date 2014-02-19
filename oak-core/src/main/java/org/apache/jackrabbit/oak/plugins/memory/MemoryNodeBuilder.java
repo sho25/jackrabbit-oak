@@ -291,6 +291,26 @@ name|EMPTY_NODE
 import|;
 end_import
 
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|state
+operator|.
+name|AbstractNodeState
+operator|.
+name|checkValidName
+import|;
+end_import
+
 begin_comment
 comment|/**  * In-memory node state builder.  *<p>  * A {@code MemoryNodeBuilder} instance tracks uncommitted changes without  * relying on weak references or requiring hard references on the entire  * accessed subtree. It does this by relying on {@code MutableNodeState}  * instances for tracking<em>uncommitted changes</em> and on {@code Head}  * instances for tracking the connectedness of the builder. A builder keeps  * a reference to the parent builder and knows its own name, which is used  * to check for relevant changes in its parent builder and update its state  * accordingly.  *<p>  * A builder is in one of three possible states, which is tracked within  * its {@code Head} instance:  *<dl>  *<dt><em>unconnected</em></dt>  *<dd>  *     A child builder with no content changes starts in this state.  *     Before each access the unconnected builder checks its parent for  *     relevant changes.  *</dd>  *<dt><em>connected</em></dt>  *<dd>  *     Once a builder is first modified, it switches to the connected state  *     and records all modification in a shared {@code MutableNodeState}  *     instance. Before each access the connected builder checks whether its  *     parents base state has been reset and if so, resets its own base state  *     accordingly.  *</dd>  *<dt><em>root</em></dt>  *<dd>  *     Same as the connected state but only the root of the builder hierarchy  *     can have this state.  *</dd>  *</dl>  */
 end_comment
@@ -925,13 +945,15 @@ name|String
 name|name
 parameter_list|)
 block|{
-return|return
-name|createChildBuilder
-argument_list|(
-name|checkNotNull
+name|checkValidName
 argument_list|(
 name|name
 argument_list|)
+expr_stmt|;
+return|return
+name|createChildBuilder
+argument_list|(
+name|name
 argument_list|)
 return|;
 block|}
@@ -948,10 +970,7 @@ block|{
 return|return
 name|setChildNode
 argument_list|(
-name|checkNotNull
-argument_list|(
 name|name
-argument_list|)
 argument_list|,
 name|EMPTY_NODE
 argument_list|)
@@ -990,10 +1009,7 @@ argument_list|()
 operator|.
 name|setChildNode
 argument_list|(
-name|checkNotNull
-argument_list|(
 name|name
-argument_list|)
 argument_list|,
 name|checkNotNull
 argument_list|(
@@ -1067,7 +1083,7 @@ literal|false
 return|;
 block|}
 block|}
-comment|/**      * This implementation has the same semantics as adding this node      * with name {@code newName} as a new child of {@code newParent} followed      * by removing this node. As a consequence this implementation allows      * moving this node into the subtree rooted here, the result of which      * is the same as removing this node.      *<p>      * See also {@link NodeBuilder#moveTo(NodeBuilder, String) the general contract}      * for {@code MoveTo}.      *      * @param newParent  builder for the new parent.      * @param newName  name of this child at the new parent      * @return  {@code true} on success, {@code false} otherwise      */
+comment|/**      * This implementation has the same semantics as adding this node      * with name {@code newName} as a new child of {@code newParent} followed      * by removing this node. As a consequence this implementation allows      * moving this node into the subtree rooted here, the result of which      * is the same as removing this node.      *<p>      * See also {@link NodeBuilder#moveTo(NodeBuilder, String) the general contract}      * for {@code MoveTo}.      *      * @param newParent  builder for the new parent.      * @param newName  name of this child at the new parent      * @return  {@code true} on success, {@code false} otherwise      * @throws IllegalArgumentException if the given name string is empty      *                                  or contains the forward slash character      */
 annotation|@
 name|Override
 specifier|public
@@ -1080,13 +1096,15 @@ parameter_list|,
 name|String
 name|newName
 parameter_list|)
+throws|throws
+name|IllegalArgumentException
 block|{
 name|checkNotNull
 argument_list|(
 name|newParent
 argument_list|)
 expr_stmt|;
-name|checkNotNull
+name|checkValidName
 argument_list|(
 name|newName
 argument_list|)

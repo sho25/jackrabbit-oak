@@ -371,7 +371,7 @@ name|nodes
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Equivalent to      *<pre>      *   MutableNodeState child = getChildNode(name, true);      *   child.reset(state);      *   return child;      *</pre>      */
+comment|/**      * Equivalent to      *<pre>      *   MutableNodeState child = getChildNode(name, true);      *   child.reset(state);      *   return child;      *</pre>      *      * @throws IllegalArgumentException if the given name string is empty      *                                  or contains the forward slash character      */
 annotation|@
 name|Nonnull
 name|MutableNodeState
@@ -383,6 +383,8 @@ parameter_list|,
 name|NodeState
 name|state
 parameter_list|)
+throws|throws
+name|IllegalArgumentException
 block|{
 assert|assert
 name|base

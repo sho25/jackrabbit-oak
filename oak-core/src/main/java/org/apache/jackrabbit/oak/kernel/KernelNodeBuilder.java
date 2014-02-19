@@ -103,6 +103,26 @@ name|checkNotNull
 import|;
 end_import
 
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|state
+operator|.
+name|AbstractNodeState
+operator|.
+name|checkValidName
+import|;
+end_import
+
 begin_comment
 comment|/**  * This class refines move and copy operations by delegating  * them to the underlying store if possible.  * @see KernelRootBuilder  */
 end_comment
@@ -276,7 +296,7 @@ argument_list|(
 name|newParent
 argument_list|)
 expr_stmt|;
-name|checkNotNull
+name|checkValidName
 argument_list|(
 name|newName
 argument_list|)

@@ -1600,10 +1600,7 @@ name|SecureNodeBuilder
 argument_list|(
 name|this
 argument_list|,
-name|checkNotNull
-argument_list|(
 name|name
-argument_list|)
 argument_list|)
 return|;
 block|}
