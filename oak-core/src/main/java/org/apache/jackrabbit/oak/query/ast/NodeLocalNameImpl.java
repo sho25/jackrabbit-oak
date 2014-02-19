@@ -352,8 +352,11 @@ parameter_list|)
 block|{
 return|return
 name|s
-operator|==
+operator|.
+name|equals
+argument_list|(
 name|selector
+argument_list|)
 return|;
 block|}
 annotation|@

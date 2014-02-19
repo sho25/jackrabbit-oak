@@ -422,8 +422,11 @@ parameter_list|)
 block|{
 return|return
 name|s
-operator|==
+operator|.
+name|equals
+argument_list|(
 name|selector
+argument_list|)
 return|;
 block|}
 comment|/**      * Validate that the given value can be converted to a JCR name, and      * return the name.      *      * @param v the value      * @return name value, or {@code null} if the value can not be converted      */

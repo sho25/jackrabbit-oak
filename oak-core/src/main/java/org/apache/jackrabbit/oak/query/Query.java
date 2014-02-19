@@ -168,10 +168,6 @@ name|boolean
 name|traversalEnabled
 parameter_list|)
 function_decl|;
-name|void
-name|prepare
-parameter_list|()
-function_decl|;
 name|Result
 name|executeQuery
 parameter_list|()
@@ -233,10 +229,6 @@ name|measure
 parameter_list|)
 function_decl|;
 name|void
-name|init
-parameter_list|()
-function_decl|;
-name|void
 name|setOrderings
 parameter_list|(
 name|OrderingImpl
@@ -244,11 +236,22 @@ index|[]
 name|orderings
 parameter_list|)
 function_decl|;
+comment|/**      * Initialize the query. This will 'wire' selectors into constraints bind      * variables into expressions. It will also simplify expressions if      * possible, but will not prepare the query.      */
+name|void
+name|init
+parameter_list|()
+function_decl|;
+comment|/**      * Prepare the query. The cost is estimated and the execution plan is      * decided here.      */
+name|void
+name|prepare
+parameter_list|()
+function_decl|;
 comment|/**      * Get the query plan. The query must already be prepared.      *       * @return the query plan      */
 name|String
 name|getPlan
 parameter_list|()
 function_decl|;
+comment|/**      * Get the estimated cost.      *       * @return the estimated cost      */
 name|double
 name|getEstimatedCost
 parameter_list|()

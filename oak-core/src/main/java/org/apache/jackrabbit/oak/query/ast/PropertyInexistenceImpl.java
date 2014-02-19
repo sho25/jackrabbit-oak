@@ -532,8 +532,11 @@ block|}
 if|if
 condition|(
 name|s
-operator|==
+operator|.
+name|equals
+argument_list|(
 name|selector
+argument_list|)
 condition|)
 block|{
 name|s

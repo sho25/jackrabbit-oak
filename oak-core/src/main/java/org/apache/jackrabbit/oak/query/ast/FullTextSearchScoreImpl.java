@@ -307,8 +307,11 @@ name|f
 operator|.
 name|getSelector
 argument_list|()
-operator|==
+operator|.
+name|equals
+argument_list|(
 name|selector
+argument_list|)
 condition|)
 block|{
 if|if
@@ -372,8 +375,11 @@ parameter_list|)
 block|{
 return|return
 name|s
-operator|==
+operator|.
+name|equals
+argument_list|(
 name|selector
+argument_list|)
 return|;
 block|}
 annotation|@

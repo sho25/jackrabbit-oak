@@ -440,8 +440,11 @@ name|f
 operator|.
 name|getSelector
 argument_list|()
-operator|==
+operator|.
+name|equals
+argument_list|(
 name|selector1
+argument_list|)
 condition|)
 block|{
 name|PropertyValue
@@ -465,10 +468,12 @@ operator|.
 name|isPreparing
 argument_list|()
 operator|&&
-name|selector2
+name|f
 operator|.
 name|isPrepared
-argument_list|()
+argument_list|(
+name|selector2
+argument_list|)
 condition|)
 block|{
 comment|// during the prepare phase, if the selector is already
@@ -534,8 +539,11 @@ name|f
 operator|.
 name|getSelector
 argument_list|()
-operator|==
+operator|.
+name|equals
+argument_list|(
 name|selector2
+argument_list|)
 condition|)
 block|{
 name|PropertyValue
@@ -559,10 +567,12 @@ operator|.
 name|isPreparing
 argument_list|()
 operator|&&
-name|selector1
+name|f
 operator|.
 name|isPrepared
-argument_list|()
+argument_list|(
+name|selector1
+argument_list|)
 condition|)
 block|{
 comment|// during the prepare phase, if the selector is already
@@ -637,8 +647,11 @@ comment|// both properties may not be null
 if|if
 condition|(
 name|s
-operator|==
+operator|.
+name|equals
+argument_list|(
 name|selector1
+argument_list|)
 condition|)
 block|{
 name|PropertyExistenceImpl
@@ -674,8 +687,11 @@ elseif|else
 if|if
 condition|(
 name|s
-operator|==
+operator|.
+name|equals
+argument_list|(
 name|selector2
+argument_list|)
 condition|)
 block|{
 name|PropertyExistenceImpl

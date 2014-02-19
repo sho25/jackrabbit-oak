@@ -51,7 +51,9 @@ name|oak
 operator|.
 name|query
 operator|.
-name|QueryImpl
+name|plan
+operator|.
+name|ExecutionPlan
 import|;
 end_import
 
@@ -139,16 +141,6 @@ name|boolean
 name|outerJoinRightHandSide
 parameter_list|)
 function_decl|;
-comment|/**      * Initialize the query. This will 'wire' the selectors with the      * constraints.      *      * @param query the query      */
-specifier|public
-specifier|abstract
-name|void
-name|init
-parameter_list|(
-name|QueryImpl
-name|query
-parameter_list|)
-function_decl|;
 comment|/**      * Get the selector with the given name, or null if not found.      *      * @param selectorName the selector name      * @return the selector, or null      */
 specifier|public
 specifier|abstract
@@ -207,12 +199,29 @@ name|NodeState
 name|rootState
 parameter_list|)
 function_decl|;
-comment|/**      * Prepare executing the query (recursively). This method will decide which      * index to use.      *       * @return the estimated cost      */
+comment|/**      * Prepare executing the query (recursively). This will 'wire' the      * selectors with the join constraints, and decide which index to use.      *       * @return the execution plan      */
 specifier|public
 specifier|abstract
-name|double
+name|ExecutionPlan
 name|prepare
 parameter_list|()
+function_decl|;
+comment|/**      * Undo a prepare.      */
+specifier|public
+specifier|abstract
+name|void
+name|unprepare
+parameter_list|()
+function_decl|;
+comment|/**      * Re-apply a previously prepared plan. This will also 're-wire' the      * selectors with the join constraints      *       * @param p the plan to use      */
+specifier|public
+specifier|abstract
+name|void
+name|prepare
+parameter_list|(
+name|ExecutionPlan
+name|p
+parameter_list|)
 function_decl|;
 comment|/**      * Execute the query. The current node is set to before the first row.      *      * @param rootState root state of the given revision      */
 specifier|public
@@ -230,21 +239,6 @@ specifier|abstract
 name|boolean
 name|next
 parameter_list|()
-function_decl|;
-comment|/**      * Create a shallow clone of this instance.      *       * @return the clone      */
-specifier|public
-specifier|abstract
-name|SourceImpl
-name|createClone
-parameter_list|()
-function_decl|;
-specifier|abstract
-name|void
-name|setParent
-parameter_list|(
-name|JoinConditionImpl
-name|joinCondition
-parameter_list|)
 function_decl|;
 comment|/**      *<b>!Test purpose only!<b>      *       * this creates a filter for the given query      *       * @param preparing whether this this the prepare phase      * @return a new filter      */
 specifier|public

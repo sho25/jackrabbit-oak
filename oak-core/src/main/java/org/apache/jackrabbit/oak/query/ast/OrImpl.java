@@ -1005,9 +1005,13 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
+operator|!
 name|s2
-operator|!=
+operator|.
+name|equals
+argument_list|(
 name|s
+argument_list|)
 condition|)
 block|{
 comment|// a different selector

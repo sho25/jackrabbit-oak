@@ -59,14 +59,32 @@ name|JoinConditionImpl
 extends|extends
 name|AstElement
 block|{
-comment|/**      * A path with 6 elements, which is the expected average for a join.      */
+comment|/**      * The prefix for known paths.      */
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|SPECIAL_PATH_PREFIX
+init|=
+literal|"//"
+decl_stmt|;
+comment|/**      * A path for a join.      */
 specifier|protected
 specifier|static
 specifier|final
 name|String
 name|KNOWN_PATH
 init|=
-literal|"/path/from/the/join/selector"
+literal|"//path/from/join"
+decl_stmt|;
+comment|/**      * The parent path of the joined selector      */
+specifier|protected
+specifier|static
+specifier|final
+name|String
+name|KNOWN_PARENT_PATH
+init|=
+literal|"//parent/of/join"
 decl_stmt|;
 specifier|protected
 specifier|static

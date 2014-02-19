@@ -163,6 +163,11 @@ name|String
 name|getPath
 parameter_list|()
 function_decl|;
+comment|/**      * Get the plan for the path.      *       * @return the plan      */
+name|String
+name|getPathPlan
+parameter_list|()
+function_decl|;
 comment|/**      * Checks whether nodes of all types can match this filter.      *      * @return {@code true} iff there are no type restrictions      */
 name|boolean
 name|matchesAllTypes

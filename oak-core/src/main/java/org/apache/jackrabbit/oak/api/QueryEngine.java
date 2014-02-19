@@ -78,6 +78,30 @@ specifier|public
 interface|interface
 name|QueryEngine
 block|{
+comment|/**      * Empty set of variables bindings. Useful as an argument to      * {@link #executeQuery(String, String, long, long, Map, Map)} when      * there are no variables in a query.      */
+name|Map
+argument_list|<
+name|String
+argument_list|,
+name|PropertyValue
+argument_list|>
+name|NO_BINDINGS
+init|=
+name|emptyMap
+argument_list|()
+decl_stmt|;
+comment|/**      * Empty set of namespace prefix mappings. Useful as an argument to      * {@link #getBindVariableNames(String, String, Map)} and      * {@link #executeQuery(String, String, long, long, Map, Map)} when      * there are no local namespace mappings.      */
+name|Map
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
+name|NO_MAPPINGS
+init|=
+name|emptyMap
+argument_list|()
+decl_stmt|;
 comment|/**      * Get the set of supported query languages.      *      * @return the supported query languages      */
 name|Set
 argument_list|<
@@ -147,30 +171,6 @@ parameter_list|)
 throws|throws
 name|ParseException
 function_decl|;
-comment|/**      * Empty set of variables bindings. Useful as an argument to      * {@link #executeQuery(String, String, long, long, Map, Map)} when      * there are no variables in a query.      */
-name|Map
-argument_list|<
-name|String
-argument_list|,
-name|PropertyValue
-argument_list|>
-name|NO_BINDINGS
-init|=
-name|emptyMap
-argument_list|()
-decl_stmt|;
-comment|/**      * Empty set of namespace prefix mappings. Useful as an argument to      * {@link #getBindVariableNames(String, String, Map)} and      * {@link #executeQuery(String, String, long, long, Map, Map)} when      * there are no local namespace mappings.      */
-name|Map
-argument_list|<
-name|String
-argument_list|,
-name|String
-argument_list|>
-name|NO_MAPPINGS
-init|=
-name|emptyMap
-argument_list|()
-decl_stmt|;
 block|}
 end_interface
 

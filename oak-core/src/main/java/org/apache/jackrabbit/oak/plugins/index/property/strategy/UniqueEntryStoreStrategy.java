@@ -910,6 +910,8 @@ return|;
 block|}
 name|count
 operator|=
+literal|1
+operator|+
 name|index
 operator|.
 name|getChildNodeCount

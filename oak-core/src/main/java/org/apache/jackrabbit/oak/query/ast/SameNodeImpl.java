@@ -295,8 +295,11 @@ name|f
 operator|.
 name|getSelector
 argument_list|()
-operator|==
+operator|.
+name|equals
+argument_list|(
 name|selector
+argument_list|)
 condition|)
 block|{
 name|String
@@ -335,8 +338,11 @@ block|{
 if|if
 condition|(
 name|s
-operator|==
+operator|.
+name|equals
+argument_list|(
 name|selector
+argument_list|)
 condition|)
 block|{
 name|s
