@@ -172,7 +172,7 @@ argument_list|>
 name|getProperties
 parameter_list|()
 function_decl|;
-comment|/**      * Get a possibly non existing child of this {@code Tree}.      * @param name The name of the child to retrieve.      * @return The child with the given {@code name}.      * @throws IllegalArgumentException if the given name string is empty      *                                  or contains the forward slash character      */
+comment|/**      * Get a possibly non existing child of this {@code Tree}.      * @param name The name of the child to retrieve.      * @return The child with the given {@code name}.      * @throws IllegalArgumentException if the given name is invalid      */
 annotation|@
 name|Nonnull
 name|Tree
@@ -219,7 +219,7 @@ name|boolean
 name|remove
 parameter_list|()
 function_decl|;
-comment|/**      * Add a child with the given {@code name}. Does nothing if such a child      * already exists.      *      * @param name name of the child      * @return the {@code Tree} instance of the child with the given {@code name}.      */
+comment|/**      * Add a child with the given {@code name}. Does nothing if such a child      * already exists.      *      * @param name name of the child      * @return the {@code Tree} instance of the child with the given {@code name}.      * @throws IllegalArgumentException if the given name is invalid      */
 annotation|@
 name|Nonnull
 name|Tree
@@ -230,6 +230,8 @@ name|Nonnull
 name|String
 name|name
 parameter_list|)
+throws|throws
+name|IllegalArgumentException
 function_decl|;
 comment|/**      * Changes the nature of this tree such that the order of the children      * is kept stable. The expected behavior is as follows:      *<p/>      *<ol>      *<li>Calling {@code setOrderableChildren(true)} on a tree      * the first time will stabilize the order of existing children. Any      * subsequent {@link #addChild(String)} call is guaranteed to insert      * the new tree and the end of the child list.</li>      *<li>Calling {@code setOrderableChildren(true)} on a tree      * that already has its children ordered has no effect.</li>      *<li>Calling {@code setOrderableChildren(false)} on a tree that      * doesn't have ordered children has not effect</li>      *<li>Calling {@code setOrderableChildren(false)} on a tree      * with ordered children will remove the necessity to keep the child      * list stable. The order of children upon {@link #getChildren()} is      * subsequently undefined.</li>      *</ol>      *<p/>      * Calling {@link #orderBefore(String)} on a tree, implicitly enables      * orderable children on the parent tree.      *      * @param enable Enable (or disable) orderable children for this tree.      */
 name|void
@@ -239,7 +241,7 @@ name|boolean
 name|enable
 parameter_list|)
 function_decl|;
-comment|/**      * Orders this {@code Tree} before the sibling tree with the given      * {@code name}. Calling this method for the first time on this      * {@code Tree} or any of its siblings will persist the current order      * of siblings and maintain it from this point on.      *      * @param name the name of the sibling node where this tree is ordered      *             before. This tree will become the last sibling if      *             {@code name} is {@code null}.      * @return {@code false} if there is no sibling with the given      *         {@code name} or no reordering was performed;      *         {@code true} otherwise.      */
+comment|/**      * Orders this {@code Tree} before the sibling tree with the given      * {@code name}. Calling this method for the first time on this      * {@code Tree} or any of its siblings will persist the current order      * of siblings and maintain it from this point on.      *      * @param name the name of the sibling node where this tree is ordered      *             before. This tree will become the last sibling if      *             {@code name} is {@code null}.      * @return {@code false} if there is no sibling with the given      *         {@code name} or no reordering was performed;      *         {@code true} otherwise.      * @throws IllegalArgumentException if the given name is invalid      */
 name|boolean
 name|orderBefore
 parameter_list|(
@@ -249,7 +251,7 @@ name|String
 name|name
 parameter_list|)
 function_decl|;
-comment|/**      * Set a property state      *      * @param property The property state to set      */
+comment|/**      * Set a property state      *      * @param property The property state to set      * @throws IllegalArgumentException if the property name is invalid      */
 name|void
 name|setProperty
 parameter_list|(
@@ -259,7 +261,7 @@ name|PropertyState
 name|property
 parameter_list|)
 function_decl|;
-comment|/**      * Set a property state      *      * @param name  The name of this property      * @param value The value of this property      * @param<T>   The type of this property. Must be one of {@code String, Blob, byte[], Long, Integer, Double, Boolean, BigDecimal}      * @throws IllegalArgumentException if {@code T} is not one of the above types.      */
+comment|/**      * Set a property state      *      * @param name  The name of this property      * @param value The value of this property      * @param<T>   The type of this property. Must be one of {@code String, Blob, byte[], Long, Integer, Double, Boolean, BigDecimal}      * @throws IllegalArgumentException if {@code T} is not one of the above types,      *                                  or if the given name is invalid      */
 parameter_list|<
 name|T
 parameter_list|>
@@ -276,8 +278,10 @@ name|Nonnull
 name|T
 name|value
 parameter_list|)
+throws|throws
+name|IllegalArgumentException
 function_decl|;
-comment|/**      * Set a property state      *      * @param name  The name of this property      * @param value The value of this property      * @param type  The type of this property.      * @param<T>   The type of this property.      */
+comment|/**      * Set a property state      *      * @param name  The name of this property      * @param value The value of this property      * @param type  The type of this property.      * @param<T>   The type of this property.      * @throws IllegalArgumentException if the given name is invalid      */
 parameter_list|<
 name|T
 parameter_list|>
@@ -300,6 +304,8 @@ name|T
 argument_list|>
 name|type
 parameter_list|)
+throws|throws
+name|IllegalArgumentException
 function_decl|;
 comment|/**      * Remove the property with the given name. This method has no effect if a      * property of the given {@code name} does not exist.      *      * @param name The name of the property      */
 name|void
