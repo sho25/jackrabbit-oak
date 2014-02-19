@@ -382,6 +382,21 @@ block|{
 break|break;
 comment|// no more entries in this file
 block|}
+elseif|else
+if|if
+condition|(
+name|position
+operator|+
+name|BLOCK_SIZE
+operator|+
+name|size
+operator|>
+name|len
+condition|)
+block|{
+break|break;
+comment|// invalid entry, truncate the file at this point
+block|}
 try|try
 block|{
 name|UUID
