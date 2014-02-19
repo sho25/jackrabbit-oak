@@ -107,6 +107,12 @@ name|NT_REP_UNSTRUCTURED
 init|=
 literal|"rep:Unstructured"
 decl_stmt|;
+comment|/**      * @singe oak 1.0      */
+name|String
+name|NT_OAK_UNSTRUCTURED
+init|=
+literal|"oak:Unstructured"
+decl_stmt|;
 name|String
 name|NT_REP_NODE_TYPE
 init|=
