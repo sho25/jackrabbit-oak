@@ -86,6 +86,7 @@ specifier|public
 interface|interface
 name|Root
 block|{
+comment|/**      * Name of the entry of the commit path in the {@code info}      * map in {@link #commit(java.util.Map)}      */
 name|String
 name|COMMIT_PATH
 init|=
@@ -124,6 +125,7 @@ name|void
 name|refresh
 parameter_list|()
 function_decl|;
+comment|/**      * Atomically persists all changes made to the tree attached to this root.      *<p>      * If {@code info} contains a mapping for {@link #COMMIT_PATH} and the      * associated value is a string, implementations may throw a      * {@code CommitFailedException} if there are changes outside of the subtree      * designated by that path and the implementation does not support      * such partial commits. However all implementation must handler the      * case where a {@code path} designates a subtree that contains all      * unpersisted changes.      *<p>      * The {@code info} map is passed to the underlying storage      * as a part of the internal commit information attached to this commit.      * The commit information will be made available to local observers but      * will not be visible to observers on other cluster nodes.      *<p>      * After a successful operation the root is automatically      * {@link #refresh() refreshed}, such that trees previously obtained      * through {@link #getTree(String)} may become non existing.      */
 name|void
 name|commit
 parameter_list|(
@@ -138,7 +140,7 @@ parameter_list|)
 throws|throws
 name|CommitFailedException
 function_decl|;
-comment|/**      * Atomically persists all changes made to the tree attached to this root      * at the given {@code path}. An implementations may throw a      * {@code CommitFailedException} if there are changes outside of the subtree      * designated by {@code path} and the implementation does not support      * such partial commits. However all implementation must handler the      * case where a {@code path} designates a subtree that contains all      * unpersisted changes.      *<p>      * The message string (if given) is passed to the underlying storage      * as a part of the internal commit information attached to this commit.      * The commit information will be made available to local observers but      * will not be visible to observers on other cluster nodes.      *<p>      * After a successful operation the root is automatically      * {@link #refresh() refreshed}, such that trees previously obtained      * through {@link #getTree(String)} may become non existing.      *      * @param message custom message to be associated with this commit      * @param path of the subtree to commit      * @throws CommitFailedException if the commit failed      */
+comment|/**      * Atomically persists all changes made to the tree attached to this root      * at the given {@code path}. An implementation may throw a      * {@code CommitFailedException} if there are changes outside of the subtree      * designated by {@code path} and the implementation does not support      * such partial commits. However all implementation must handler the      * case where a {@code path} designates a subtree that contains all      * unpersisted changes.      *<p>      * After a successful operation the root is automatically      * {@link #refresh() refreshed}, such that trees previously obtained      * through {@link #getTree(String)} may become non existing.      *      * @param path of the subtree to commit      * @throws CommitFailedException if the commit failed      */
 name|void
 name|commit
 parameter_list|(
@@ -150,7 +152,7 @@ parameter_list|)
 throws|throws
 name|CommitFailedException
 function_decl|;
-comment|/**      * Atomically persists all changes made to the tree attached to this root.      * Calling this method is equivalent to calling the      * {@link #commit(String, String)} method with {@code null} parameters for      * {@code message} and {@code path}.      *      * @throws CommitFailedException if the commit failed      */
+comment|/**      * Atomically persists all changes made to the tree attached to this root.      * Calling this method is equivalent to calling the      * {@link #commit(String)} method with a {@code null} argument {@code path}.      *      * @throws CommitFailedException if the commit failed      */
 name|void
 name|commit
 parameter_list|()
