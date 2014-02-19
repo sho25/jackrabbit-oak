@@ -272,6 +272,24 @@ operator|=
 name|v
 expr_stmt|;
 block|}
+elseif|else
+if|if
+condition|(
+name|c
+operator|==
+name|latestDate
+condition|)
+block|{
+throw|throw
+operator|new
+name|RepositoryException
+argument_list|(
+literal|"two versions share the same jcr:created timestamp in history:"
+operator|+
+name|history
+argument_list|)
+throw|;
+block|}
 block|}
 return|return
 name|latestVersion
