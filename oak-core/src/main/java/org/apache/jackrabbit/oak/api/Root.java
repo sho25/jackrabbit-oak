@@ -39,6 +39,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Map
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|annotation
@@ -76,6 +86,11 @@ specifier|public
 interface|interface
 name|Root
 block|{
+name|String
+name|COMMIT_PATH
+init|=
+literal|"path"
+decl_stmt|;
 comment|/**      * Move the child located at {@code sourcePath} to a child at {@code destPath}.      * Both paths must be absolute and resolve to a child located beneath this      * root.<br>      *      * This method does nothing and returns {@code false} if      *<ul>      *<li>the tree at {@code sourcePath} does not exist or is not accessible,</li>      *<li>the parent of the tree at {@code destinationPath} does not exist or is not accessible,</li>      *<li>a tree already exists at {@code destinationPath}.</li>      *</ul>      * If a tree at {@code destinationPath} exists but is not accessible to the      * editing content session this method succeeds but a subsequent      * {@link #commit()} will detect the violation and fail.      *      * @param sourcePath The source path      * @param destPath The destination path      * @return {@code true} on success, {@code false} otherwise.      */
 name|boolean
 name|move
@@ -108,6 +123,20 @@ comment|/**      * Reverts all changes made to this root and refreshed to the la
 name|void
 name|refresh
 parameter_list|()
+function_decl|;
+name|void
+name|commit
+parameter_list|(
+name|Map
+argument_list|<
+name|String
+argument_list|,
+name|Object
+argument_list|>
+name|info
+parameter_list|)
+throws|throws
+name|CommitFailedException
 function_decl|;
 comment|/**      * Atomically persists all changes made to the tree attached to this root      * at the given {@code path}. An implementations may throw a      * {@code CommitFailedException} if there are changes outside of the subtree      * designated by {@code path} and the implementation does not support      * such partial commits. However all implementation must handler the      * case where a {@code path} designates a subtree that contains all      * unpersisted changes.      *<p>      * The message string (if given) is passed to the underlying storage      * as a part of the internal commit information attached to this commit.      * The commit information will be made available to local observers but      * will not be visible to observers on other cluster nodes.      *<p>      * After a successful operation the root is automatically      * {@link #refresh() refreshed}, such that trees previously obtained      * through {@link #getTree(String)} may become non existing.      *      * @param message custom message to be associated with this commit      * @param path of the subtree to commit      * @throws CommitFailedException if the commit failed      */
 name|void
