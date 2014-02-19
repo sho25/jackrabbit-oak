@@ -1922,7 +1922,17 @@ name|debug
 argument_list|(
 name|sessionMarker
 argument_list|,
+name|String
+operator|.
+name|format
+argument_list|(
+literal|"[%s] %s"
+argument_list|,
+name|toString
+argument_list|()
+argument_list|,
 name|desc
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
