@@ -2008,7 +2008,9 @@ name|String
 name|name
 parameter_list|)
 block|{
-comment|// TODO: review; cant' rely on autocreated/protected definition as this doesn't reveal if a given property is expected to be never modified after creation
+comment|// NOTE: we cannot rely on autocreated/protected definition as this
+comment|// doesn't reveal if a given property is expected to be never modified
+comment|// after creation.
 if|if
 condition|(
 name|JcrConstants
