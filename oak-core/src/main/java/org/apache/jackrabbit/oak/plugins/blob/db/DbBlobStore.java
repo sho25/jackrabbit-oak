@@ -11,9 +11,13 @@ name|apache
 operator|.
 name|jackrabbit
 operator|.
-name|mk
+name|oak
 operator|.
-name|blobs
+name|plugins
+operator|.
+name|blob
+operator|.
+name|db
 package|;
 end_package
 
@@ -124,6 +128,24 @@ operator|.
 name|commons
 operator|.
 name|StringUtils
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|blob
+operator|.
+name|AbstractBlobStore
 import|;
 end_import
 
@@ -541,7 +563,8 @@ name|convertBytesToHex
 argument_list|(
 name|blockId
 operator|.
-name|digest
+name|getDigest
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|prep
@@ -598,7 +621,8 @@ if|if
 condition|(
 name|blockId
 operator|.
-name|pos
+name|getPos
+argument_list|()
 operator|==
 literal|0
 condition|)
@@ -620,7 +644,8 @@ name|length
 operator|-
 name|blockId
 operator|.
-name|pos
+name|getPos
+argument_list|()
 argument_list|)
 decl_stmt|;
 if|if
@@ -659,7 +684,8 @@ name|int
 operator|)
 name|blockId
 operator|.
-name|pos
+name|getPos
+argument_list|()
 argument_list|,
 name|d2
 argument_list|,
@@ -763,7 +789,8 @@ name|convertBytesToHex
 argument_list|(
 name|blockId
 operator|.
-name|digest
+name|getDigest
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|PreparedStatement

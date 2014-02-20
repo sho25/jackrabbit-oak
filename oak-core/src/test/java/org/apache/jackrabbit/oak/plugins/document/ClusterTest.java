@@ -163,9 +163,11 @@ name|apache
 operator|.
 name|jackrabbit
 operator|.
-name|mk
+name|oak
 operator|.
-name|blobs
+name|spi
+operator|.
+name|blob
 operator|.
 name|BlobStore
 import|;
@@ -179,9 +181,11 @@ name|apache
 operator|.
 name|jackrabbit
 operator|.
-name|mk
+name|oak
 operator|.
-name|blobs
+name|spi
+operator|.
+name|blob
 operator|.
 name|MemoryBlobStore
 import|;

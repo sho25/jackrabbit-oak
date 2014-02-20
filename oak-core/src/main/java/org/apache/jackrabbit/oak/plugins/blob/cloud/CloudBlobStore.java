@@ -22,42 +22,6 @@ package|;
 end_package
 
 begin_import
-import|import static
-name|org
-operator|.
-name|jclouds
-operator|.
-name|blobstore
-operator|.
-name|options
-operator|.
-name|ListContainerOptions
-operator|.
-name|Builder
-operator|.
-name|maxResults
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|jclouds
-operator|.
-name|blobstore
-operator|.
-name|options
-operator|.
-name|PutOptions
-operator|.
-name|Builder
-operator|.
-name|multipart
-import|;
-end_import
-
-begin_import
 import|import
 name|java
 operator|.
@@ -157,11 +121,11 @@ name|apache
 operator|.
 name|jackrabbit
 operator|.
-name|mk
+name|oak
 operator|.
-name|blobs
+name|commons
 operator|.
-name|AbstractBlobStore
+name|StringUtils
 import|;
 end_import
 
@@ -175,9 +139,11 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|commons
+name|spi
 operator|.
-name|StringUtils
+name|blob
+operator|.
+name|AbstractBlobStore
 import|;
 end_import
 
@@ -274,6 +240,42 @@ operator|.
 name|slf4j
 operator|.
 name|LoggerFactory
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|jclouds
+operator|.
+name|blobstore
+operator|.
+name|options
+operator|.
+name|ListContainerOptions
+operator|.
+name|Builder
+operator|.
+name|maxResults
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|jclouds
+operator|.
+name|blobstore
+operator|.
+name|options
+operator|.
+name|PutOptions
+operator|.
+name|Builder
+operator|.
+name|multipart
 import|;
 end_import
 

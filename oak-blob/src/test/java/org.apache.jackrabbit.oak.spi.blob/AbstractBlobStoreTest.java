@@ -11,9 +11,11 @@ name|apache
 operator|.
 name|jackrabbit
 operator|.
-name|mk
+name|oak
 operator|.
-name|blobs
+name|spi
+operator|.
+name|blob
 package|;
 end_package
 
@@ -177,32 +179,6 @@ end_import
 
 begin_import
 import|import
-name|junit
-operator|.
-name|framework
-operator|.
-name|TestCase
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|commons
-operator|.
-name|IOUtilsTest
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -243,7 +219,49 @@ name|org
 operator|.
 name|junit
 operator|.
+name|After
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Before
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
 name|Test
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertEquals
 import|;
 end_import
 
@@ -256,8 +274,6 @@ specifier|public
 specifier|abstract
 class|class
 name|AbstractBlobStoreTest
-extends|extends
-name|TestCase
 block|{
 specifier|public
 name|AbstractBlobStore
@@ -265,7 +281,7 @@ name|store
 decl_stmt|;
 comment|/**      * Should be overridden by subclasses to set the {@link #store} variable.      */
 annotation|@
-name|Override
+name|Before
 specifier|public
 specifier|abstract
 name|void
@@ -275,7 +291,7 @@ throws|throws
 name|Exception
 function_decl|;
 annotation|@
-name|Override
+name|After
 specifier|public
 name|void
 name|tearDown
@@ -288,6 +304,8 @@ operator|=
 literal|null
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testWriteFile
@@ -389,6 +407,8 @@ argument_list|(
 name|tempFileName
 argument_list|)
 decl_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 name|data
@@ -446,6 +466,8 @@ argument_list|,
 literal|1
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 name|data
@@ -471,6 +493,8 @@ operator|+
 literal|"_wrong"
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|fail
 argument_list|()
 expr_stmt|;
@@ -484,6 +508,8 @@ block|{
 comment|// expected
 block|}
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testCombinedIdentifier
@@ -509,6 +535,8 @@ index|]
 argument_list|)
 argument_list|)
 decl_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|2
@@ -528,6 +556,8 @@ name|id
 operator|+
 name|id
 decl_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|4
@@ -554,6 +584,8 @@ name|combinedId
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testEmptyIdentifier
@@ -571,6 +603,8 @@ index|[
 literal|1
 index|]
 decl_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 operator|-
@@ -592,6 +626,8 @@ literal|1
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|0
@@ -605,6 +641,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testCloseStream
@@ -665,6 +703,8 @@ argument_list|(
 name|in
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertTrue
 argument_list|(
 name|closed
@@ -674,6 +714,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testExceptionWhileReading
@@ -754,6 +796,8 @@ operator|.
 name|getMessage
 argument_list|()
 decl_stmt|;
+name|Assert
+operator|.
 name|assertTrue
 argument_list|(
 name|msg
@@ -769,6 +813,8 @@ literal|0
 argument_list|)
 expr_stmt|;
 block|}
+name|Assert
+operator|.
 name|assertTrue
 argument_list|(
 name|closed
@@ -778,6 +824,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testIllegalIdentifier
@@ -812,6 +860,8 @@ argument_list|,
 literal|1
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|fail
 argument_list|()
 expr_stmt|;
@@ -833,6 +883,8 @@ argument_list|(
 literal|"ff"
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|fail
 argument_list|()
 expr_stmt|;
@@ -854,6 +906,8 @@ argument_list|(
 literal|"ff"
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|fail
 argument_list|()
 expr_stmt|;
@@ -867,6 +921,8 @@ block|{
 comment|// expected
 block|}
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testSmall
@@ -882,6 +938,8 @@ literal|300
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testMedium
@@ -897,6 +955,8 @@ literal|100
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testLarge
@@ -912,6 +972,8 @@ literal|10
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testGarbageCollection
@@ -1102,6 +1164,8 @@ argument_list|(
 name|id
 argument_list|)
 decl_stmt|;
+name|Assert
+operator|.
 name|assertTrue
 argument_list|(
 name|Arrays
@@ -1226,6 +1290,8 @@ operator|.
 name|sweep
 argument_list|()
 expr_stmt|;
+name|Assert
+operator|.
 name|assertTrue
 argument_list|(
 literal|"count: "
@@ -1277,6 +1343,8 @@ name|Exception
 name|e
 parameter_list|)
 block|{
+name|Assert
+operator|.
 name|assertTrue
 argument_list|(
 name|id
@@ -1298,6 +1366,8 @@ operator|++
 expr_stmt|;
 block|}
 block|}
+name|Assert
+operator|.
 name|assertTrue
 argument_list|(
 literal|"failedCount: "
@@ -1465,6 +1535,8 @@ argument_list|(
 name|expectedData
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 name|expectedLen
@@ -1536,15 +1608,48 @@ operator|.
 name|length
 argument_list|)
 expr_stmt|;
-name|IOUtilsTest
-operator|.
 name|assertEquals
 argument_list|(
 name|expectedData
+operator|.
+name|length
 argument_list|,
 name|got
+operator|.
+name|length
 argument_list|)
 expr_stmt|;
+for|for
+control|(
+name|int
+name|i
+init|=
+literal|0
+init|;
+name|i
+operator|<
+name|got
+operator|.
+name|length
+condition|;
+name|i
+operator|++
+control|)
+block|{
+name|assertEquals
+argument_list|(
+name|expectedData
+index|[
+name|i
+index|]
+argument_list|,
+name|got
+index|[
+name|i
+index|]
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 specifier|public
 name|byte
@@ -1635,6 +1740,8 @@ name|id
 argument_list|)
 expr_stmt|;
 block|}
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 name|len
@@ -1669,8 +1776,6 @@ argument_list|(
 literal|"target/temp"
 argument_list|)
 decl_stmt|;
-comment|//        DbBlobStore store = new DbBlobStore();
-comment|//        store.setConnectionPool(JdbcConnectionPool.create("jdbc:h2:target/test;log=0;undo_log=0", "", ""));
 name|String
 name|id
 init|=
@@ -2163,6 +2268,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+name|Assert
+operator|.
 name|assertTrue
 argument_list|(
 name|ids
@@ -2249,6 +2356,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+name|Assert
+operator|.
 name|assertTrue
 argument_list|(
 name|ret

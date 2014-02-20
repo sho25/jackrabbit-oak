@@ -11,9 +11,11 @@ name|apache
 operator|.
 name|jackrabbit
 operator|.
-name|mk
+name|oak
 operator|.
-name|blobs
+name|spi
+operator|.
+name|blob
 package|;
 end_package
 
@@ -211,9 +213,11 @@ name|apache
 operator|.
 name|jackrabbit
 operator|.
-name|mk
+name|oak
 operator|.
-name|util
+name|commons
+operator|.
+name|cache
 operator|.
 name|Cache
 import|;
