@@ -107,10 +107,6 @@ name|LoginException
 import|;
 end_import
 
-begin_comment
-comment|/**  * ExternalLoginModuleImpl... TODO  */
-end_comment
-
 begin_class
 specifier|public
 class|class

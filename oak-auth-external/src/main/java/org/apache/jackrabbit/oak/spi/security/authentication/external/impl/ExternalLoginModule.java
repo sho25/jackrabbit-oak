@@ -1072,7 +1072,7 @@ return|return
 literal|false
 return|;
 block|}
-comment|/**      * {@inheritDoc}      *      * @return An immutable set containing only the {@link SimpleCredentials} class.      */
+comment|/**      * @return An immutable set containing only the {@link SimpleCredentials} class.      */
 annotation|@
 name|Override
 specifier|protected
@@ -1083,7 +1083,7 @@ argument_list|>
 name|getSupportedCredentials
 parameter_list|()
 block|{
-comment|// todo: maybe delegate getSupportedCredentials to IDP
+comment|// TODO: maybe delegate getSupportedCredentials to IDP
 name|Class
 name|scClass
 init|=

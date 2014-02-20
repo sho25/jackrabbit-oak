@@ -891,7 +891,7 @@ operator|instanceof
 name|ExternalGroup
 condition|)
 block|{
-comment|// todo
+comment|// TODO
 return|return
 literal|false
 return|;

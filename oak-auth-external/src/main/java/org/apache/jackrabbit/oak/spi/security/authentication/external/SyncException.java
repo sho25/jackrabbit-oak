@@ -24,7 +24,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * SyncException... TODO  */
+comment|/**  * Exception thrown by methods defined on the {@code SyncHandler}  * interface indicating that user or group synchronization failed.  */
 end_comment
 
 begin_class
@@ -38,12 +38,12 @@ specifier|public
 name|SyncException
 parameter_list|(
 name|String
-name|s
+name|message
 parameter_list|)
 block|{
 name|super
 argument_list|(
-name|s
+name|message
 argument_list|)
 expr_stmt|;
 block|}
@@ -64,7 +64,7 @@ specifier|public
 name|SyncException
 parameter_list|(
 name|String
-name|s
+name|message
 parameter_list|,
 name|Throwable
 name|throwable
@@ -72,7 +72,7 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
-name|s
+name|message
 argument_list|,
 name|throwable
 argument_list|)
