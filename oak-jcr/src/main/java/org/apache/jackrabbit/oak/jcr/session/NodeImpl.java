@@ -6085,7 +6085,7 @@ argument_list|()
 operator|!=
 name|Status
 operator|.
-name|EXISTING
+name|UNCHANGED
 condition|)
 block|{
 throw|throw

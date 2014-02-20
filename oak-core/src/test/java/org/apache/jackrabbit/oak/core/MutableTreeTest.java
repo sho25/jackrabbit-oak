@@ -1687,7 +1687,7 @@ name|Tree
 operator|.
 name|Status
 operator|.
-name|EXISTING
+name|UNCHANGED
 argument_list|,
 name|tree
 operator|.
@@ -1747,7 +1747,7 @@ name|Tree
 operator|.
 name|Status
 operator|.
-name|EXISTING
+name|UNCHANGED
 argument_list|,
 name|tree
 operator|.
@@ -1805,7 +1805,7 @@ name|Tree
 operator|.
 name|Status
 operator|.
-name|EXISTING
+name|UNCHANGED
 argument_list|,
 name|tree
 operator|.
@@ -1989,7 +1989,7 @@ name|Tree
 operator|.
 name|Status
 operator|.
-name|EXISTING
+name|UNCHANGED
 argument_list|,
 name|tree
 operator|.
@@ -2035,7 +2035,7 @@ name|Tree
 operator|.
 name|Status
 operator|.
-name|EXISTING
+name|UNCHANGED
 argument_list|,
 name|tree
 operator|.
@@ -2161,7 +2161,7 @@ name|Tree
 operator|.
 name|Status
 operator|.
-name|EXISTING
+name|UNCHANGED
 argument_list|,
 name|tree
 operator|.
@@ -2662,7 +2662,7 @@ name|assertEquals
 argument_list|(
 name|Status
 operator|.
-name|EXISTING
+name|UNCHANGED
 argument_list|,
 name|x
 operator|.

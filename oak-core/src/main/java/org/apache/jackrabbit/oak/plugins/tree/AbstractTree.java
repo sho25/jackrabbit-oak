@@ -115,7 +115,7 @@ name|Tree
 operator|.
 name|Status
 operator|.
-name|EXISTING
+name|UNCHANGED
 import|;
 end_import
 
@@ -785,7 +785,7 @@ block|}
 else|else
 block|{
 return|return
-name|EXISTING
+name|UNCHANGED
 return|;
 block|}
 block|}
@@ -950,7 +950,7 @@ block|}
 else|else
 block|{
 return|return
-name|EXISTING
+name|UNCHANGED
 return|;
 block|}
 block|}

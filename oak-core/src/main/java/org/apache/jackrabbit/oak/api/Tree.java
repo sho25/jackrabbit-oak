@@ -74,8 +74,8 @@ comment|/**      * Status of an item in a {@code Tree}      */
 enum|enum
 name|Status
 block|{
-comment|/**          * Item is persisted          */
-name|EXISTING
+comment|/**          * Item is unchanged          */
+name|UNCHANGED
 block|,
 comment|/**          * Item is new          */
 name|NEW

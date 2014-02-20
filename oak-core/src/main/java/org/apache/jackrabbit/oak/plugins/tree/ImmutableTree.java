@@ -344,7 +344,7 @@ block|{
 return|return
 name|Status
 operator|.
-name|EXISTING
+name|UNCHANGED
 return|;
 block|}
 annotation|@
@@ -404,7 +404,7 @@ block|{
 return|return
 name|Status
 operator|.
-name|EXISTING
+name|UNCHANGED
 return|;
 block|}
 else|else
