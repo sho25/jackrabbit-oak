@@ -648,7 +648,12 @@ argument_list|<
 name|RowImpl
 argument_list|>
 argument_list|(
+name|sessionDelegate
+operator|.
+name|sync
+argument_list|(
 name|rowIterator
+argument_list|)
 argument_list|,
 name|PREFETCH_MIN
 argument_list|,
@@ -1046,7 +1051,12 @@ name|NodeDelegate
 argument_list|>
 argument_list|>
 argument_list|(
+name|sessionDelegate
+operator|.
+name|sync
+argument_list|(
 name|nodeIterator
+argument_list|)
 argument_list|,
 name|PREFETCH_MIN
 argument_list|,

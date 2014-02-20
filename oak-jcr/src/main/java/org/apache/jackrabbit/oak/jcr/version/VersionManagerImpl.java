@@ -20,6 +20,22 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkNotNull
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -277,24 +293,6 @@ name|oak
 operator|.
 name|jcr
 operator|.
-name|session
-operator|.
-name|SessionContext
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|jcr
-operator|.
 name|delegate
 operator|.
 name|NodeDelegate
@@ -387,25 +385,27 @@ name|jcr
 operator|.
 name|session
 operator|.
-name|operation
-operator|.
-name|SessionOperation
+name|SessionContext
 import|;
 end_import
 
 begin_import
-import|import static
-name|com
+import|import
+name|org
 operator|.
-name|google
+name|apache
 operator|.
-name|common
+name|jackrabbit
 operator|.
-name|base
+name|oak
 operator|.
-name|Preconditions
+name|jcr
 operator|.
-name|checkNotNull
+name|session
+operator|.
+name|operation
+operator|.
+name|SessionOperation
 import|;
 end_import
 
@@ -1257,6 +1257,7 @@ parameter_list|)
 throws|throws
 name|RepositoryException
 block|{
+comment|// TODO mind OAK-1370 when implementing this
 throw|throw
 operator|new
 name|UnsupportedRepositoryOperationException
@@ -1283,6 +1284,7 @@ parameter_list|)
 throws|throws
 name|RepositoryException
 block|{
+comment|// TODO mind OAK-1370 when implementing this
 throw|throw
 operator|new
 name|UnsupportedRepositoryOperationException
@@ -1303,6 +1305,7 @@ parameter_list|)
 throws|throws
 name|RepositoryException
 block|{
+comment|// TODO mind OAK-1370 when implementing this
 throw|throw
 operator|new
 name|UnsupportedRepositoryOperationException
