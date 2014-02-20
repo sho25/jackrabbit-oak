@@ -283,10 +283,6 @@ name|JCR_PRIMARYTYPE
 import|;
 end_import
 
-begin_comment
-comment|/**  * PermissionEntry... TODO  */
-end_comment
-
 begin_class
 specifier|final
 class|class

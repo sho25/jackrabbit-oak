@@ -347,6 +347,24 @@ name|spi
 operator|.
 name|security
 operator|.
+name|ConfigurationParameters
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|security
+operator|.
 name|authorization
 operator|.
 name|AuthorizationConfiguration
@@ -640,10 +658,6 @@ operator|.
 name|EMPTY
 import|;
 end_import
-
-begin_comment
-comment|/**  * TODO: WIP  * FIXME: decide on where to filter out hidden items (OAK-753)  */
-end_comment
 
 begin_class
 specifier|final
@@ -967,6 +981,14 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+name|ConfigurationParameters
+name|options
+init|=
+name|acConfig
+operator|.
+name|getParameters
+argument_list|()
+decl_stmt|;
 name|userStore
 operator|=
 operator|new
@@ -977,6 +999,8 @@ argument_list|,
 name|cache
 argument_list|,
 name|userNames
+argument_list|,
+name|options
 argument_list|)
 expr_stmt|;
 name|groupStore
@@ -989,6 +1013,8 @@ argument_list|,
 name|cache
 argument_list|,
 name|groupNames
+argument_list|,
+name|options
 argument_list|)
 expr_stmt|;
 name|typeProvider
@@ -1257,7 +1283,6 @@ name|TreeTypeProvider
 operator|.
 name|TYPE_HIDDEN
 case|:
-comment|// TODO: OAK-753 decide on where to filter out hidden items.
 return|return
 name|ALL
 return|;
@@ -1357,10 +1382,7 @@ return|;
 block|}
 else|else
 block|{
-comment|// TODO: may return wrong results in case of restrictions
-comment|// TODO that would match the path of the versionable node
-comment|// TODO (or item in the subtree) but that item no longer exists
-comment|// TODO -> evaluation by path would be more accurate (-> see #isGranted)
+comment|/**                          * NOTE: may return wrong results in case of restrictions                          * that would match the path of the versionable node                          * (or item in the subtree) but that item no longer exists                          * -> evaluation by path might be more accurate (-> see #isGranted)                          */
 while|while
 condition|(
 operator|!
@@ -1560,7 +1582,6 @@ name|TreeTypeProvider
 operator|.
 name|TYPE_HIDDEN
 case|:
-comment|// TODO: OAK-753 decide on where to filter out hidden items.
 return|return
 literal|true
 return|;
@@ -2306,7 +2327,6 @@ argument_list|()
 condition|)
 block|{
 comment|// unable to determine the location of the versionable item -> deny access.
-comment|// TODO : add proper handling for cases where the versionable node does not exist (anymore)
 return|return
 name|PrivilegeBits
 operator|.
@@ -3342,7 +3362,6 @@ name|boolean
 name|canReadAll
 parameter_list|()
 block|{
-comment|// TODO: best effort approach to detect full read-access within a given tree.
 return|return
 name|readStatus
 operator|!=
@@ -3361,7 +3380,6 @@ name|boolean
 name|canReadProperties
 parameter_list|()
 block|{
-comment|// TODO: best effort approach to detect full read-property permission
 return|return
 name|readStatus
 operator|!=

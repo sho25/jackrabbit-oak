@@ -297,10 +297,6 @@ name|ACCESS
 import|;
 end_import
 
-begin_comment
-comment|/**  * MoveAwarePermissionValidator... TODO  */
-end_comment
-
 begin_class
 specifier|public
 class|class
@@ -801,7 +797,6 @@ parameter_list|)
 throws|throws
 name|CommitFailedException
 block|{
-comment|// FIXME: respect and properly handle move-operations in the subtree
 name|String
 name|sourcePath
 init|=
@@ -896,7 +891,6 @@ parameter_list|)
 throws|throws
 name|CommitFailedException
 block|{
-comment|// FIXME: respect and properly handle move-operations in the subtree
 name|String
 name|destPath
 init|=

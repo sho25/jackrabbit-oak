@@ -105,10 +105,6 @@ name|PrivilegeConstants
 import|;
 end_import
 
-begin_comment
-comment|/**  * ReadStatus... TODO  */
-end_comment
-
 begin_class
 specifier|final
 class|class
@@ -458,10 +454,10 @@ name|boolean
 name|allowsAll
 parameter_list|()
 block|{
+comment|// NOTE: calculation of allows-all requires knowledge of permissions defined in the subtree
 return|return
 literal|false
 return|;
-comment|// TODO: calculation of allows-all requires knowledge of permissions defined in the subtree
 block|}
 block|}
 end_class
