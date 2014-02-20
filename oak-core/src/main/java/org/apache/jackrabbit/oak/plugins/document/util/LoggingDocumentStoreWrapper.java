@@ -77,7 +77,9 @@ name|apache
 operator|.
 name|jackrabbit
 operator|.
-name|mk
+name|oak
+operator|.
+name|commons
 operator|.
 name|json
 operator|.

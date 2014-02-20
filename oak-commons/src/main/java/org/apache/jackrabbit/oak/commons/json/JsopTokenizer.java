@@ -11,7 +11,9 @@ name|apache
 operator|.
 name|jackrabbit
 operator|.
-name|mk
+name|oak
+operator|.
+name|commons
 operator|.
 name|json
 package|;
@@ -1622,8 +1624,6 @@ if|if
 condition|(
 name|matches
 argument_list|(
-name|JsopReader
-operator|.
 name|END
 argument_list|)
 condition|)

@@ -16,24 +16,6 @@ package|;
 end_package
 
 begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|kernel
-operator|.
-name|KernelNodeStore
-operator|.
-name|DEFAULT_CACHE_SIZE
-import|;
-end_import
-
-begin_import
 import|import
 name|java
 operator|.
@@ -50,6 +32,22 @@ operator|.
 name|io
 operator|.
 name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|mk
+operator|.
+name|api
+operator|.
+name|MicroKernel
 import|;
 end_import
 
@@ -174,6 +172,24 @@ operator|.
 name|state
 operator|.
 name|NodeStore
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|kernel
+operator|.
+name|KernelNodeStore
+operator|.
+name|DEFAULT_CACHE_SIZE
 import|;
 end_import
 
@@ -430,8 +446,7 @@ return|return
 operator|new
 name|KernelNodeStore
 argument_list|(
-operator|new
-name|MicroKernelImpl
+name|createMicroKernel
 argument_list|()
 argument_list|,
 name|DEFAULT_CACHE_SIZE
@@ -450,6 +465,19 @@ parameter_list|)
 block|{         }
 block|}
 decl_stmt|;
+specifier|public
+specifier|static
+specifier|final
+name|MicroKernel
+name|createMicroKernel
+parameter_list|()
+block|{
+return|return
+operator|new
+name|MicroKernelImpl
+argument_list|()
+return|;
+block|}
 specifier|public
 specifier|abstract
 name|NodeStore
