@@ -253,7 +253,7 @@ literal|"Use SSL"
 argument_list|,
 name|description
 operator|=
-literal|"Indicates if an SSL connection should be used."
+literal|"Indicates if an SSL (LDAPs) connection should be used."
 argument_list|,
 name|boolValue
 operator|=
@@ -266,6 +266,72 @@ name|String
 name|PARAM_USE_SSL
 init|=
 literal|"host.ssl"
+decl_stmt|;
+comment|/**      * @see #useTLS()      */
+specifier|public
+specifier|static
+specifier|final
+name|boolean
+name|PARAM_USE_TLS_DEFAULT
+init|=
+literal|false
+decl_stmt|;
+comment|/**      * @see #useTLS()      */
+annotation|@
+name|Property
+argument_list|(
+name|label
+operator|=
+literal|"Use TLS"
+argument_list|,
+name|description
+operator|=
+literal|"Indicates if TLS should be started on connections."
+argument_list|,
+name|boolValue
+operator|=
+name|PARAM_USE_TLS_DEFAULT
+argument_list|)
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|PARAM_USE_TLS
+init|=
+literal|"host.tls"
+decl_stmt|;
+comment|/**      * @see #noCertCheck()      */
+specifier|public
+specifier|static
+specifier|final
+name|boolean
+name|PARAM_NO_CERT_CHECK_DEFAULT
+init|=
+literal|false
+decl_stmt|;
+comment|/**      * @see #noCertCheck()      */
+annotation|@
+name|Property
+argument_list|(
+name|label
+operator|=
+literal|"Disable certificate checking"
+argument_list|,
+name|description
+operator|=
+literal|"Indicates if server certificate validation should be disabled."
+argument_list|,
+name|boolValue
+operator|=
+name|PARAM_NO_CERT_CHECK_DEFAULT
+argument_list|)
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|PARAM_NO_CERT_CHECK
+init|=
+literal|"host.noCertCheck"
 decl_stmt|;
 comment|/**      * @see #getBindDN()      */
 specifier|public
@@ -1167,6 +1233,30 @@ name|PARAM_USE_SSL_DEFAULT
 argument_list|)
 argument_list|)
 operator|.
+name|setUseTLS
+argument_list|(
+name|params
+operator|.
+name|getConfigValue
+argument_list|(
+name|PARAM_USE_TLS
+argument_list|,
+name|PARAM_USE_TLS_DEFAULT
+argument_list|)
+argument_list|)
+operator|.
+name|setNoCertCheck
+argument_list|(
+name|params
+operator|.
+name|getConfigValue
+argument_list|(
+name|PARAM_NO_CERT_CHECK
+argument_list|,
+name|PARAM_NO_CERT_CHECK_DEFAULT
+argument_list|)
+argument_list|)
+operator|.
 name|setBindDN
 argument_list|(
 name|params
@@ -1372,6 +1462,18 @@ name|boolean
 name|useSSL
 init|=
 name|PARAM_USE_SSL_DEFAULT
+decl_stmt|;
+specifier|private
+name|boolean
+name|useTLS
+init|=
+name|PARAM_USE_TLS_DEFAULT
+decl_stmt|;
+specifier|private
+name|boolean
+name|noCertCheck
+init|=
+name|PARAM_NO_CERT_CHECK_DEFAULT
 decl_stmt|;
 specifier|private
 name|String
@@ -1596,6 +1698,68 @@ operator|.
 name|useSSL
 operator|=
 name|useSSL
+expr_stmt|;
+return|return
+name|this
+return|;
+block|}
+comment|/**      * Configures whether TLS connections should be used.      * The default is {@value #PARAM_USE_TLS_DEFAULT}.      *      * @return {@code true} if TLS should be used.      */
+specifier|public
+name|boolean
+name|useTLS
+parameter_list|()
+block|{
+return|return
+name|useTLS
+return|;
+block|}
+comment|/**      * Enables TLS connections.      * @param useTLS {@code true} to enable TLS      * @return {@code this}      * @see #useTLS()      */
+annotation|@
+name|Nonnull
+specifier|public
+name|LdapProviderConfig
+name|setUseTLS
+parameter_list|(
+name|boolean
+name|useTLS
+parameter_list|)
+block|{
+name|this
+operator|.
+name|useTLS
+operator|=
+name|useTLS
+expr_stmt|;
+return|return
+name|this
+return|;
+block|}
+comment|/**      * Configures whether certificates on SSL/TLS connections should be validated.      * The default is {@value #PARAM_NO_CERT_CHECK_DEFAULT}.      *      * @return {@code true} if certificates should not be validated      */
+specifier|public
+name|boolean
+name|noCertCheck
+parameter_list|()
+block|{
+return|return
+name|noCertCheck
+return|;
+block|}
+comment|/**      * Disables certificate validation.      * @param noCertCheck {@code true} to disable certificate validation      * @return {@code this}      * @see #noCertCheck()      */
+annotation|@
+name|Nonnull
+specifier|public
+name|LdapProviderConfig
+name|setNoCertCheck
+parameter_list|(
+name|boolean
+name|noCertCheck
+parameter_list|)
+block|{
+name|this
+operator|.
+name|noCertCheck
+operator|=
+name|noCertCheck
 expr_stmt|;
 return|return
 name|this

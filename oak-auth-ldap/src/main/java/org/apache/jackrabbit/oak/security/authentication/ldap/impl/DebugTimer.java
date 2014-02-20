@@ -156,9 +156,7 @@ name|b
 init|=
 operator|new
 name|StringBuilder
-argument_list|(
-literal|"("
-argument_list|)
+argument_list|()
 decl_stmt|;
 for|for
 control|(
@@ -183,6 +181,16 @@ operator|.
 name|append
 argument_list|(
 literal|", "
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+name|b
+operator|.
+name|append
+argument_list|(
+literal|"("
 argument_list|)
 expr_stmt|;
 block|}
@@ -231,7 +239,7 @@ name|String
 operator|.
 name|format
 argument_list|(
-literal|"%s=%f.2%s"
+literal|"%s=%.2f%s"
 argument_list|,
 name|t
 operator|.
