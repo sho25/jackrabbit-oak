@@ -208,12 +208,6 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-annotation|@
-name|Ignore
-argument_list|(
-literal|"OAK-1441"
-argument_list|)
-comment|// FIXME OAK-1441
 specifier|public
 name|void
 name|testGetHiddenTree
