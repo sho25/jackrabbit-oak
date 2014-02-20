@@ -171,6 +171,22 @@ operator|=
 name|name
 expr_stmt|;
 block|}
+comment|//------------------------------------------------------------< Object>---
+annotation|@
+name|Override
+specifier|public
+name|String
+name|toString
+parameter_list|()
+block|{
+return|return
+name|getPath
+argument_list|()
+operator|+
+literal|": {}"
+return|;
+block|}
+comment|//------------------------------------------------------------< Tree>---
 annotation|@
 name|Nonnull
 annotation|@

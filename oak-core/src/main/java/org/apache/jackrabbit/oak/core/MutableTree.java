@@ -1473,24 +1473,6 @@ name|updated
 argument_list|()
 expr_stmt|;
 block|}
-comment|//-----------------------------------------------------------< Object>---
-annotation|@
-name|Override
-specifier|public
-name|String
-name|toString
-parameter_list|()
-block|{
-return|return
-name|getPathInternal
-argument_list|()
-operator|+
-literal|": "
-operator|+
-name|getNodeState
-argument_list|()
-return|;
-block|}
 comment|//---------------------------------------------------------< internal>---
 comment|/**      * Set the parent and name of this tree.      * @param parent  parent of this tree      * @param name  name of this tree      */
 name|void

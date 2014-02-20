@@ -671,10 +671,10 @@ argument_list|()
 operator|+
 literal|"':"
 operator|+
-name|state
-operator|.
 name|toString
-argument_list|()
+argument_list|(
+name|state
+argument_list|)
 return|;
 block|}
 comment|//--------------------------------------------------------------------------
