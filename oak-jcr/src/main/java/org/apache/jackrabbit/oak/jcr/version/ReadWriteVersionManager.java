@@ -283,7 +283,7 @@ name|apache
 operator|.
 name|jackrabbit
 operator|.
-name|test
+name|util
 operator|.
 name|ISO8601
 import|;
