@@ -35,6 +35,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Collections
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|List
 import|;
 end_import
@@ -667,6 +677,10 @@ argument_list|(
 name|nodeAfter
 operator|.
 name|builder
+argument_list|,
+name|Collections
+operator|.
+name|EMPTY_MAP
 argument_list|)
 expr_stmt|;
 block|}

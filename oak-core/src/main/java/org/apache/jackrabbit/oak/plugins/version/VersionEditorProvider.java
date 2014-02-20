@@ -20,40 +20,6 @@ package|;
 end_package
 
 begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|JcrConstants
-operator|.
-name|JCR_SYSTEM
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|plugins
-operator|.
-name|nodetype
-operator|.
-name|NodeTypeConstants
-operator|.
-name|JCR_VERSIONSTORAGE
-import|;
-end_import
-
-begin_import
 import|import
 name|org
 operator|.
@@ -208,6 +174,40 @@ operator|.
 name|state
 operator|.
 name|NodeState
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|JcrConstants
+operator|.
+name|JCR_SYSTEM
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|nodetype
+operator|.
+name|NodeTypeConstants
+operator|.
+name|JCR_VERSIONSTORAGE
 import|;
 end_import
 
@@ -309,6 +309,8 @@ argument_list|(
 name|versionStorage
 argument_list|,
 name|builder
+argument_list|,
+name|info
 argument_list|)
 argument_list|,
 operator|new
