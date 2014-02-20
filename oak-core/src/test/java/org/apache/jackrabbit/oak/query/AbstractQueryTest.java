@@ -1664,16 +1664,39 @@ name|getRows
 argument_list|()
 control|)
 block|{
-name|lines
-operator|.
-name|add
-argument_list|(
+name|String
+name|r
+init|=
 name|readRow
 argument_list|(
 name|row
 argument_list|,
 name|pathsOnly
 argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|query
+operator|.
+name|startsWith
+argument_list|(
+literal|"explain "
+argument_list|)
+condition|)
+block|{
+name|r
+operator|=
+name|formatPlan
+argument_list|(
+name|r
+argument_list|)
+expr_stmt|;
+block|}
+name|lines
+operator|.
+name|add
+argument_list|(
+name|r
 argument_list|)
 expr_stmt|;
 block|}
@@ -3131,6 +3154,62 @@ argument_list|)
 expr_stmt|;
 return|return
 name|sql
+return|;
+block|}
+specifier|static
+name|String
+name|formatPlan
+parameter_list|(
+name|String
+name|plan
+parameter_list|)
+block|{
+name|plan
+operator|=
+name|plan
+operator|.
+name|replaceAll
+argument_list|(
+literal|" where "
+argument_list|,
+literal|"\n  where "
+argument_list|)
+expr_stmt|;
+name|plan
+operator|=
+name|plan
+operator|.
+name|replaceAll
+argument_list|(
+literal|" inner join "
+argument_list|,
+literal|"\n  inner join "
+argument_list|)
+expr_stmt|;
+name|plan
+operator|=
+name|plan
+operator|.
+name|replaceAll
+argument_list|(
+literal|" on "
+argument_list|,
+literal|"\n  on "
+argument_list|)
+expr_stmt|;
+name|plan
+operator|=
+name|plan
+operator|.
+name|replaceAll
+argument_list|(
+literal|" and "
+argument_list|,
+literal|"\n  and "
+argument_list|)
+expr_stmt|;
+return|return
+name|plan
 return|;
 block|}
 comment|/**      * A line reader that supports multi-line statements, where lines that start      * with a space belong to the previous line.      */
