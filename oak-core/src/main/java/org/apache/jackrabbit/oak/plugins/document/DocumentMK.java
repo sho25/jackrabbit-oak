@@ -475,7 +475,7 @@ name|getProperty
 argument_list|(
 literal|"oak.documentMK.lirsCache"
 argument_list|,
-literal|"true"
+literal|"false"
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -497,6 +497,21 @@ literal|"oak.documentMK.fastDiff"
 argument_list|,
 literal|"true"
 argument_list|)
+argument_list|)
+decl_stmt|;
+comment|/**      * The guava cache concurrency level.      */
+specifier|static
+specifier|final
+name|int
+name|CACHE_CONCURRENCY
+init|=
+name|Integer
+operator|.
+name|getInteger
+argument_list|(
+literal|"oak.documentMK.cacheConcurrency"
+argument_list|,
+literal|16
 argument_list|)
 decl_stmt|;
 comment|/**      * The node store.      */
@@ -1323,12 +1338,10 @@ argument_list|)
 expr_stmt|;
 name|rev
 operator|=
-name|nodeStore
+name|commit
 operator|.
 name|apply
-argument_list|(
-name|commit
-argument_list|)
+argument_list|()
 expr_stmt|;
 name|success
 operator|=
@@ -3364,6 +3377,11 @@ name|CacheBuilder
 operator|.
 name|newBuilder
 argument_list|()
+operator|.
+name|concurrencyLevel
+argument_list|(
+name|CACHE_CONCURRENCY
+argument_list|)
 operator|.
 name|weigher
 argument_list|(

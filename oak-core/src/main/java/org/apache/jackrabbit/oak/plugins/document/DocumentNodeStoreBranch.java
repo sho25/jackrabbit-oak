@@ -828,12 +828,10 @@ return|;
 block|}
 name|rev
 operator|=
-name|store
+name|c
 operator|.
 name|apply
-argument_list|(
-name|c
-argument_list|)
+argument_list|()
 expr_stmt|;
 name|success
 operator|=

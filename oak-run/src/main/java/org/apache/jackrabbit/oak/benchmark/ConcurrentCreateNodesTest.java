@@ -254,7 +254,14 @@ specifier|final
 name|int
 name|WORKER_COUNT
 init|=
+name|Integer
+operator|.
+name|getInteger
+argument_list|(
+literal|"workerCount"
+argument_list|,
 literal|20
+argument_list|)
 decl_stmt|;
 specifier|private
 specifier|static

@@ -222,6 +222,21 @@ return|return
 literal|false
 return|;
 block|}
+annotation|@
+name|Override
+specifier|public
+name|String
+name|toString
+parameter_list|()
+block|{
+return|return
+name|path
+operator|+
+literal|"@"
+operator|+
+name|revision
+return|;
+block|}
 block|}
 end_class
 
