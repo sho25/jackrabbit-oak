@@ -554,7 +554,7 @@ block|}
 name|void
 name|addNodeDiff
 parameter_list|(
-name|Node
+name|DocumentNodeState
 name|n
 parameter_list|)
 block|{
@@ -671,7 +671,7 @@ block|}
 name|void
 name|addNode
 parameter_list|(
-name|Node
+name|DocumentNodeState
 name|n
 parameter_list|)
 block|{

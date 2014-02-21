@@ -1352,7 +1352,7 @@ name|i
 operator|++
 control|)
 block|{
-name|Node
+name|DocumentNodeState
 name|n
 init|=
 operator|new

@@ -327,7 +327,7 @@ name|plugins
 operator|.
 name|document
 operator|.
-name|Node
+name|DocumentNodeState
 operator|.
 name|Children
 import|;
@@ -879,7 +879,7 @@ argument_list|(
 name|revisionId
 argument_list|)
 decl_stmt|;
-name|Node
+name|DocumentNodeState
 name|n
 init|=
 name|nodeStore
@@ -991,7 +991,7 @@ argument_list|(
 name|revisionId
 argument_list|)
 decl_stmt|;
-name|Node
+name|DocumentNodeState
 name|n
 init|=
 name|nodeStore
@@ -1943,7 +1943,7 @@ break|break;
 case|case
 literal|'-'
 case|:
-name|Node
+name|DocumentNodeState
 name|toRemove
 init|=
 name|nodeStore
@@ -2134,7 +2134,7 @@ name|targetPath
 argument_list|)
 expr_stmt|;
 block|}
-name|Node
+name|DocumentNodeState
 name|source
 init|=
 name|nodeStore
@@ -2257,7 +2257,7 @@ name|targetPath
 argument_list|)
 expr_stmt|;
 block|}
-name|Node
+name|DocumentNodeState
 name|source
 init|=
 name|nodeStore
@@ -2370,7 +2370,7 @@ name|String
 name|path
 parameter_list|)
 block|{
-name|Node
+name|DocumentNodeState
 name|n
 init|=
 operator|new

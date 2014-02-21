@@ -33,7 +33,7 @@ name|plugins
 operator|.
 name|document
 operator|.
-name|Node
+name|DocumentNodeState
 operator|.
 name|Children
 import|;
@@ -231,7 +231,7 @@ index|[]
 name|call
 parameter_list|()
 block|{
-name|Node
+name|DocumentNodeState
 name|n
 init|=
 name|generateNode
@@ -286,7 +286,7 @@ index|[]
 name|call
 parameter_list|()
 block|{
-name|Node
+name|DocumentNodeState
 name|n
 init|=
 name|generateNode
@@ -774,14 +774,14 @@ argument_list|()
 expr_stmt|;
 block|}
 specifier|static
-name|Node
+name|DocumentNodeState
 name|generateNode
 parameter_list|(
 name|int
 name|propertyCount
 parameter_list|)
 block|{
-name|Node
+name|DocumentNodeState
 name|n
 init|=
 operator|new

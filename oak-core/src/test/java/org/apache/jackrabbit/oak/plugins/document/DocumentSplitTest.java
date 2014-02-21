@@ -790,7 +790,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-name|Node
+name|DocumentNodeState
 name|node
 init|=
 name|ns
@@ -1988,7 +1988,7 @@ argument_list|(
 literal|"/test"
 argument_list|)
 decl_stmt|;
-name|Node
+name|DocumentNodeState
 name|n
 init|=
 name|doc

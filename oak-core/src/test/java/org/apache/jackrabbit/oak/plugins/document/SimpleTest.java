@@ -181,7 +181,7 @@ name|plugins
 operator|.
 name|document
 operator|.
-name|Node
+name|DocumentNodeState
 operator|.
 name|Children
 import|;
@@ -2081,7 +2081,7 @@ argument_list|,
 literal|null
 argument_list|)
 expr_stmt|;
-name|Node
+name|DocumentNodeState
 name|n
 init|=
 name|ns
@@ -2301,7 +2301,7 @@ argument_list|,
 literal|null
 argument_list|)
 decl_stmt|;
-name|Node
+name|DocumentNodeState
 name|n
 init|=
 name|ns

@@ -522,7 +522,7 @@ name|base
 parameter_list|)
 block|{
 specifier|final
-name|Node
+name|DocumentNodeState
 name|src
 init|=
 name|store
@@ -609,7 +609,7 @@ name|base
 parameter_list|)
 block|{
 specifier|final
-name|Node
+name|DocumentNodeState
 name|src
 init|=
 name|store

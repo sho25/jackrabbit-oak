@@ -1182,7 +1182,7 @@ name|Cache
 argument_list|<
 name|CacheValue
 argument_list|,
-name|Node
+name|DocumentNodeState
 operator|.
 name|Children
 argument_list|>
@@ -1537,7 +1537,7 @@ name|CacheStats
 argument_list|(
 name|nodeCache
 argument_list|,
-literal|"DocumentMk-Node"
+literal|"Document-NodeState"
 argument_list|,
 name|builder
 operator|.
@@ -1569,7 +1569,7 @@ name|CacheStats
 argument_list|(
 name|nodeChildrenCache
 argument_list|,
-literal|"DocumentMk-NodeChildren"
+literal|"Document-NodeChildren"
 argument_list|,
 name|builder
 operator|.
@@ -1601,7 +1601,7 @@ name|CacheStats
 argument_list|(
 name|docChildrenCache
 argument_list|,
-literal|"DocumentMk-DocChildren"
+literal|"Document-DocChildren"
 argument_list|,
 name|builder
 operator|.
@@ -1633,7 +1633,7 @@ name|CacheStats
 argument_list|(
 name|diffCache
 argument_list|,
-literal|"DocumentMk-DiffCache"
+literal|"Document-Diff"
 argument_list|,
 name|builder
 operator|.
@@ -1688,7 +1688,7 @@ argument_list|,
 name|head
 argument_list|)
 decl_stmt|;
-name|Node
+name|DocumentNodeState
 name|n
 init|=
 operator|new
@@ -2462,7 +2462,7 @@ block|}
 name|void
 name|copyNode
 parameter_list|(
-name|Node
+name|DocumentNodeState
 name|source
 parameter_list|,
 name|String
@@ -2487,7 +2487,7 @@ block|}
 name|void
 name|moveNode
 parameter_list|(
-name|Node
+name|DocumentNodeState
 name|source
 parameter_list|,
 name|String
@@ -2512,7 +2512,7 @@ block|}
 name|void
 name|markAsDeleted
 parameter_list|(
-name|Node
+name|DocumentNodeState
 name|node
 parameter_list|,
 name|Commit
@@ -2541,7 +2541,7 @@ comment|// recurse down the tree
 comment|// TODO causes issue with large number of children
 for|for
 control|(
-name|Node
+name|DocumentNodeState
 name|child
 range|:
 name|getChildNodes
@@ -2692,7 +2692,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-name|Node
+name|DocumentNodeState
 operator|.
 name|Children
 name|getChildren
@@ -2700,7 +2700,7 @@ parameter_list|(
 annotation|@
 name|Nonnull
 specifier|final
-name|Node
+name|DocumentNodeState
 name|parent
 parameter_list|,
 annotation|@
@@ -2728,7 +2728,7 @@ argument_list|()
 condition|)
 block|{
 return|return
-name|Node
+name|DocumentNodeState
 operator|.
 name|NO_CHILDREN
 return|;
@@ -2766,7 +2766,7 @@ argument_list|,
 name|name
 argument_list|)
 decl_stmt|;
-name|Node
+name|DocumentNodeState
 operator|.
 name|Children
 name|children
@@ -2790,7 +2790,7 @@ argument_list|,
 operator|new
 name|Callable
 argument_list|<
-name|Node
+name|DocumentNodeState
 operator|.
 name|Children
 argument_list|>
@@ -2799,7 +2799,7 @@ block|{
 annotation|@
 name|Override
 specifier|public
-name|Node
+name|DocumentNodeState
 operator|.
 name|Children
 name|call
@@ -2880,12 +2880,12 @@ return|return
 name|children
 return|;
 block|}
-name|Node
+name|DocumentNodeState
 operator|.
 name|Children
 name|readChildren
 parameter_list|(
-name|Node
+name|DocumentNodeState
 name|parent
 parameter_list|,
 name|String
@@ -2920,13 +2920,13 @@ name|NodeDocument
 argument_list|>
 name|docs
 decl_stmt|;
-name|Node
+name|DocumentNodeState
 operator|.
 name|Children
 name|c
 init|=
 operator|new
-name|Node
+name|DocumentNodeState
 operator|.
 name|Children
 argument_list|()
@@ -3012,7 +3012,7 @@ name|getId
 argument_list|()
 argument_list|)
 decl_stmt|;
-name|Node
+name|DocumentNodeState
 name|child
 init|=
 name|getNode
@@ -3611,7 +3611,7 @@ parameter_list|(
 specifier|final
 annotation|@
 name|Nonnull
-name|Node
+name|DocumentNodeState
 name|parent
 parameter_list|,
 specifier|final
@@ -3886,13 +3886,13 @@ argument_list|,
 literal|null
 argument_list|)
 decl_stmt|;
-name|Node
+name|DocumentNodeState
 operator|.
 name|Children
 name|c
 init|=
 operator|new
-name|Node
+name|DocumentNodeState
 operator|.
 name|Children
 argument_list|()
@@ -6919,7 +6919,7 @@ name|max
 init|=
 name|MANY_CHILDREN_THRESHOLD
 decl_stmt|;
-name|Node
+name|DocumentNodeState
 operator|.
 name|Children
 name|fromChildren
@@ -7283,7 +7283,7 @@ range|:
 name|paths
 control|)
 block|{
-name|Node
+name|DocumentNodeState
 name|fromNode
 init|=
 name|getNode
@@ -7293,7 +7293,7 @@ argument_list|,
 name|fromRev
 argument_list|)
 decl_stmt|;
-name|Node
+name|DocumentNodeState
 name|toNode
 init|=
 name|getNode
@@ -7504,7 +7504,7 @@ parameter_list|(
 name|JsopWriter
 name|w
 parameter_list|,
-name|Node
+name|DocumentNodeState
 operator|.
 name|Children
 name|fromChildren
@@ -7512,7 +7512,7 @@ parameter_list|,
 name|Revision
 name|fromRev
 parameter_list|,
-name|Node
+name|DocumentNodeState
 operator|.
 name|Children
 name|toChildren
@@ -7575,7 +7575,7 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|Node
+name|DocumentNodeState
 name|n1
 init|=
 name|getNode
@@ -7585,7 +7585,7 @@ argument_list|,
 name|fromRev
 argument_list|)
 decl_stmt|;
-name|Node
+name|DocumentNodeState
 name|n2
 init|=
 name|getNode
@@ -7842,7 +7842,7 @@ parameter_list|(
 name|boolean
 name|move
 parameter_list|,
-name|Node
+name|DocumentNodeState
 name|source
 parameter_list|,
 name|String
@@ -7858,7 +7858,7 @@ comment|// and fetch them via '$in' queries
 comment|// TODO Transient Node - Current logic does not account for operations which are part
 comment|// of this commit i.e. transient nodes. If its required it would need to be looked
 comment|// into
-name|Node
+name|DocumentNodeState
 name|newNode
 init|=
 operator|new
@@ -7905,7 +7905,7 @@ expr_stmt|;
 block|}
 for|for
 control|(
-name|Node
+name|DocumentNodeState
 name|child
 range|:
 name|getChildNodes
