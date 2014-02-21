@@ -354,7 +354,7 @@ name|query
 operator|.
 name|setQuery
 argument_list|(
-literal|"path_exact:\\/testRemoveNode\\/"
+literal|"path_exact:\\/testRemoveNode"
 argument_list|)
 expr_stmt|;
 name|assertTrue

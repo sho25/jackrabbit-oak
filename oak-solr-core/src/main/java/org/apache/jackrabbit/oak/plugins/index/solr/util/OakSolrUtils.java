@@ -35,16 +35,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -282,34 +272,6 @@ specifier|public
 class|class
 name|OakSolrUtils
 block|{
-comment|/**      * Check if a given Solr instance is alive      *       * @param solrServer      *            the {@link org.apache.solr.client.solrj.SolrServer} used to communicate with the Solr instance      * @return<code>true</code> if the given Solr instance is alive and responding      * @throws java.io.IOException      *             if any low level IO error occurs      * @throws org.apache.solr.client.solrj.SolrServerException      *             if any error occurs while trying to communicate with the Solr instance      */
-specifier|public
-specifier|static
-name|boolean
-name|checkServerAlive
-parameter_list|(
-annotation|@
-name|Nonnull
-name|SolrServer
-name|solrServer
-parameter_list|)
-throws|throws
-name|IOException
-throws|,
-name|SolrServerException
-block|{
-return|return
-name|solrServer
-operator|.
-name|ping
-argument_list|()
-operator|.
-name|getStatus
-argument_list|()
-operator|==
-literal|0
-return|;
-block|}
 comment|/**      * adapts the OSGi Solr {@link org.apache.jackrabbit.oak.spi.query.QueryIndexProvider} service      *       * @return a {@link org.apache.jackrabbit.oak.plugins.index.solr.query.SolrQueryIndexProvider}      */
 specifier|public
 specifier|static

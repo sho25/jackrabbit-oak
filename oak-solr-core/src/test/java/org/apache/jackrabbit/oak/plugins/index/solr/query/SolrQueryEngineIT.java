@@ -797,7 +797,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"/somenode/child1"
+literal|"/somenode"
 argument_list|,
 name|cursor
 operator|.
@@ -818,7 +818,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"/somenode/child2/descendant"
+literal|"/somenode/child1"
 argument_list|,
 name|cursor
 operator|.
@@ -860,7 +860,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"/somenode"
+literal|"/somenode/child2/descendant"
 argument_list|,
 name|cursor
 operator|.
