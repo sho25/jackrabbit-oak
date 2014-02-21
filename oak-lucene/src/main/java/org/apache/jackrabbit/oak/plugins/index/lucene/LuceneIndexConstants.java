@@ -69,7 +69,7 @@ name|VERSION
 init|=
 name|Version
 operator|.
-name|LUCENE_43
+name|LUCENE_46
 decl_stmt|;
 name|Analyzer
 name|ANALYZER
