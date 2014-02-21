@@ -197,10 +197,19 @@ condition|)
 block|{
 comment|// two sessions concurrently called orderBefore() on a Tree
 comment|// that was previously unordered.
+name|merge
+argument_list|(
+name|parent
+argument_list|,
+name|ours
+argument_list|,
+name|theirs
+argument_list|)
+expr_stmt|;
 return|return
 name|Resolution
 operator|.
-name|THEIRS
+name|MERGED
 return|;
 block|}
 else|else
@@ -347,7 +356,7 @@ name|getValue
 argument_list|(
 name|Type
 operator|.
-name|STRINGS
+name|NAMES
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -363,7 +372,7 @@ name|array
 argument_list|(
 name|Type
 operator|.
-name|STRING
+name|NAME
 argument_list|)
 operator|.
 name|assignFrom
@@ -383,7 +392,7 @@ name|getValue
 argument_list|(
 name|Type
 operator|.
-name|STRINGS
+name|NAMES
 argument_list|)
 control|)
 block|{
