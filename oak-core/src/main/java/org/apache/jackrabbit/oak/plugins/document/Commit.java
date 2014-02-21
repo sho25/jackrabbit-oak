@@ -569,7 +569,8 @@ name|key
 argument_list|(
 name|n
 operator|.
-name|path
+name|getPath
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|diff
@@ -674,14 +675,20 @@ name|Node
 name|n
 parameter_list|)
 block|{
+name|String
+name|path
+init|=
+name|n
+operator|.
+name|getPath
+argument_list|()
+decl_stmt|;
 if|if
 condition|(
 name|operations
 operator|.
 name|containsKey
 argument_list|(
-name|n
-operator|.
 name|path
 argument_list|)
 condition|)
@@ -691,8 +698,6 @@ name|msg
 init|=
 literal|"Node already added: "
 operator|+
-name|n
-operator|.
 name|path
 decl_stmt|;
 name|LOG
@@ -714,8 +719,6 @@ name|operations
 operator|.
 name|put
 argument_list|(
-name|n
-operator|.
 name|path
 argument_list|,
 name|n
@@ -730,8 +733,6 @@ name|addedNodes
 operator|.
 name|add
 argument_list|(
-name|n
-operator|.
 name|path
 argument_list|)
 expr_stmt|;

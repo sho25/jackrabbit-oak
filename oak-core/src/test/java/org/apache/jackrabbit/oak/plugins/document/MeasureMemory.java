@@ -143,6 +143,25 @@ name|OVERHEAD
 init|=
 literal|24
 decl_stmt|;
+specifier|static
+specifier|final
+name|DocumentNodeStore
+name|STORE
+init|=
+operator|new
+name|DocumentMK
+operator|.
+name|Builder
+argument_list|()
+operator|.
+name|setAsyncDelay
+argument_list|(
+literal|0
+argument_list|)
+operator|.
+name|getNodeStore
+argument_list|()
+decl_stmt|;
 annotation|@
 name|Test
 specifier|public
@@ -766,8 +785,10 @@ name|Node
 name|n
 init|=
 operator|new
-name|Node
+name|DocumentNodeState
 argument_list|(
+name|STORE
+argument_list|,
 operator|new
 name|String
 argument_list|(
@@ -808,9 +829,11 @@ literal|"property"
 operator|+
 name|i
 argument_list|,
-literal|"values "
+literal|"\"values "
 operator|+
 name|i
+operator|+
+literal|"\""
 argument_list|)
 expr_stmt|;
 block|}

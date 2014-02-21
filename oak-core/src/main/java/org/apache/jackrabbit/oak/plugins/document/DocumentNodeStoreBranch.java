@@ -466,6 +466,8 @@ argument_list|,
 operator|new
 name|CommitDiff
 argument_list|(
+name|store
+argument_list|,
 name|c
 argument_list|,
 name|store

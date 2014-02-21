@@ -2357,7 +2357,6 @@ block|}
 block|}
 block|}
 specifier|private
-specifier|static
 name|void
 name|parseAddNode
 parameter_list|(
@@ -2375,8 +2374,10 @@ name|Node
 name|n
 init|=
 operator|new
-name|Node
+name|DocumentNodeState
 argument_list|(
+name|nodeStore
+argument_list|,
 name|path
 argument_list|,
 name|commit

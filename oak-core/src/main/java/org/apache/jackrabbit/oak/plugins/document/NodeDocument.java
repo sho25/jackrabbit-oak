@@ -1596,17 +1596,17 @@ return|return
 literal|false
 return|;
 block|}
-comment|/**      * Returns a {@link Node} as seen at the given<code>readRevision</code>.      *      * @param context      the revision context.      * @param readRevision the read revision.      * @param lastModified the revision when this node was last modified, but      *                     the value is potentially not yet reflected in this      *                     document.      *                     See {@link RevisionContext#getPendingModifications()}.      * @return the node or<code>null</code> if the node doesn't exist at the      *         given read revision.      */
+comment|/**      * Returns a {@link DocumentNodeState} as seen at the given      *<code>readRevision</code>.      *      * @param nodeStore    the node store.      * @param readRevision the read revision.      * @param lastModified the revision when this node was last modified, but      *                     the value is potentially not yet reflected in this      *                     document.      *                     See {@link RevisionContext#getPendingModifications()}.      * @return the node or<code>null</code> if the node doesn't exist at the      *         given read revision.      */
 annotation|@
 name|CheckForNull
 specifier|public
-name|Node
+name|DocumentNodeState
 name|getNodeAtRevision
 parameter_list|(
 annotation|@
 name|Nonnull
-name|RevisionContext
-name|context
+name|DocumentNodeStore
+name|nodeStore
 parameter_list|,
 annotation|@
 name|Nonnull
@@ -1637,7 +1637,7 @@ name|min
 init|=
 name|getLiveRevision
 argument_list|(
-name|context
+name|nodeStore
 argument_list|,
 name|readRevision
 argument_list|,
@@ -1667,12 +1667,14 @@ name|getId
 argument_list|()
 argument_list|)
 decl_stmt|;
-name|Node
+name|DocumentNodeState
 name|n
 init|=
 operator|new
-name|Node
+name|DocumentNodeState
 argument_list|(
+name|nodeStore
+argument_list|,
 name|path
 argument_list|,
 name|readRevision
@@ -1714,7 +1716,7 @@ name|value
 init|=
 name|getLatestValue
 argument_list|(
-name|context
+name|nodeStore
 argument_list|,
 name|getLocalMap
 argument_list|(
@@ -1747,7 +1749,7 @@ name|value
 operator|=
 name|getLatestValue
 argument_list|(
-name|context
+name|nodeStore
 argument_list|,
 name|getValueMap
 argument_list|(
@@ -1803,7 +1805,7 @@ literal|null
 operator|&&
 name|isRevisionNewer
 argument_list|(
-name|context
+name|nodeStore
 argument_list|,
 name|value
 operator|.
@@ -1829,7 +1831,7 @@ comment|// when was this node last modified?
 name|Branch
 name|branch
 init|=
-name|context
+name|nodeStore
 operator|.
 name|getBranches
 argument_list|()
@@ -1867,7 +1869,7 @@ name|lastRevs
 operator|.
 name|put
 argument_list|(
-name|context
+name|nodeStore
 operator|.
 name|getClusterId
 argument_list|()
@@ -1914,7 +1916,7 @@ if|if
 condition|(
 name|isRevisionNewer
 argument_list|(
-name|context
+name|nodeStore
 argument_list|,
 name|r
 argument_list|,
@@ -1942,7 +1944,7 @@ literal|null
 operator|&&
 name|isRevisionNewer
 argument_list|(
-name|context
+name|nodeStore
 argument_list|,
 name|r
 argument_list|,
@@ -1964,7 +1966,7 @@ if|if
 condition|(
 name|isRevisionNewer
 argument_list|(
-name|context
+name|nodeStore
 argument_list|,
 name|r
 argument_list|,

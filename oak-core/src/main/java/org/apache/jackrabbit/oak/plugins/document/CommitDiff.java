@@ -215,6 +215,11 @@ name|NodeStateDiff
 block|{
 specifier|private
 specifier|final
+name|DocumentNodeStore
+name|store
+decl_stmt|;
+specifier|private
+specifier|final
 name|Commit
 name|commit
 decl_stmt|;
@@ -237,6 +242,11 @@ name|CommitDiff
 parameter_list|(
 annotation|@
 name|Nonnull
+name|DocumentNodeStore
+name|store
+parameter_list|,
+annotation|@
+name|Nonnull
 name|Commit
 name|commit
 parameter_list|,
@@ -248,6 +258,11 @@ parameter_list|)
 block|{
 name|this
 argument_list|(
+name|checkNotNull
+argument_list|(
+name|store
+argument_list|)
+argument_list|,
 name|checkNotNull
 argument_list|(
 name|commit
@@ -269,6 +284,9 @@ block|}
 specifier|private
 name|CommitDiff
 parameter_list|(
+name|DocumentNodeStore
+name|store
+parameter_list|,
 name|Commit
 name|commit
 parameter_list|,
@@ -282,6 +300,12 @@ name|BlobSerializer
 name|blobs
 parameter_list|)
 block|{
+name|this
+operator|.
+name|store
+operator|=
+name|store
+expr_stmt|;
 name|this
 operator|.
 name|commit
@@ -406,8 +430,10 @@ operator|.
 name|addNode
 argument_list|(
 operator|new
-name|Node
+name|DocumentNodeState
 argument_list|(
+name|store
+argument_list|,
 name|p
 argument_list|,
 name|commit
@@ -427,6 +453,8 @@ argument_list|,
 operator|new
 name|CommitDiff
 argument_list|(
+name|store
+argument_list|,
 name|commit
 argument_list|,
 name|p
@@ -476,6 +504,8 @@ argument_list|,
 operator|new
 name|CommitDiff
 argument_list|(
+name|store
+argument_list|,
 name|commit
 argument_list|,
 name|p
@@ -529,6 +559,8 @@ argument_list|,
 operator|new
 name|CommitDiff
 argument_list|(
+name|store
+argument_list|,
 name|commit
 argument_list|,
 name|p

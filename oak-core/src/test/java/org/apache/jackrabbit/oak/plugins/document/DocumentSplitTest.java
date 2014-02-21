@@ -2015,7 +2015,7 @@ name|value
 init|=
 name|n
 operator|.
-name|getProperty
+name|getPropertyAsString
 argument_list|(
 name|name
 argument_list|)
