@@ -3113,7 +3113,7 @@ name|nodeCacheSize
 operator|=
 name|memoryCacheSize
 operator|*
-literal|20
+literal|25
 operator|/
 literal|100
 expr_stmt|;
