@@ -432,6 +432,8 @@ name|filter
 argument_list|,
 name|rootState
 argument_list|)
+operator|-
+literal|0.05
 return|;
 block|}
 annotation|@
