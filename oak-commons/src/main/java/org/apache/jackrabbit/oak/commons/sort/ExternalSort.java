@@ -232,7 +232,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Source copied from a publicly available library.  * @see<a  *  href="https://code.google.com/p/externalsortinginjava/">https://code.google.com/p/externalsortinginjava</a>  *    * Goal: offer a generic external-memory sorting program in Java.  *   * It must be : - hackable (easy to adapt) - scalable to large files - sensibly efficient.  *   * This software is in the public domain.  *   * Usage: java org/apache/oak/commons/sort//ExternalSort somefile.txt out.txt  *   * You can change the default maximal number of temporary files with the -t flag: java  * org/apache/oak/commons/sort/ExternalSort somefile.txt out.txt -t 3  *   * For very large files, you might want to use an appropriate flag to allocate more memory to the  * Java VM: java -Xms2G org/apache/oak/commons/sort/ExternalSort somefile.txt out.txt  *   * By (in alphabetical order) Philippe Beaudoin, Eleftherios Chetzakis, Jon Elsas, Christan Grant,  * Daniel Haran, Daniel Lemire, Sugumaran Harikrishnan, Jerry Yang, First published: April 2010  * originally posted at http://lemire.me/blog/archives/2010/04/01/external-memory-sorting-in-java/  */
+comment|/**  * Source copied from a publicly available library.  * @see<a  *  href="https://code.google.com/p/externalsortinginjava/">https://code.google.com/p/externalsortinginjava</a>  *    * Goal: offer a generic external-memory sorting program in Java.  *   * It must be : - hackable (easy to adapt) - scalable to large files - sensibly efficient.  *   * This software is in the public domain.  *   * Usage: java org/apache/oak/commons/sort//ExternalSort somefile.txt out.txt  *   * You can change the default maximal number of temporary files with the -t flag: java  * org/apache/oak/commons/sort/ExternalSort somefile.txt out.txt -t 3  *   * You can change the default maximum memory available with the -m flag: java  * org/apache/oak/commons/sort/ExternalSort somefile.txt out.txt -m 8192  *   * For very large files, you might want to use an appropriate flag to allocate more memory to  * the Java VM: java -Xms2G org/apache/oak/commons/sort/ExternalSort somefile.txt out.txt  *   * By (in alphabetical order) Philippe Beaudoin, Eleftherios Chetzakis, Jon Elsas, Christan  * Grant, Daniel Haran, Daniel Lemire, Sugumaran Harikrishnan, Jerry Yang, First published:  * April 2010 originally posted at  * http://lemire.me/blog/archives/2010/04/01/external-memory-sorting-in-java/  */
 end_comment
 
 begin_class
@@ -276,6 +276,13 @@ name|DEFAULTMAXTEMPFILES
 init|=
 literal|1024
 decl_stmt|;
+comment|/**     * Defines the default maximum memory to be used while sorting (8 MB)     */
+specifier|static
+name|long
+name|DEFAULT_MAX_MEM_BYTES
+init|=
+literal|8388608L
+decl_stmt|;
 comment|// we divide the file into small blocks. If the blocks
 comment|// are too small, we shall create too many temporary files.
 comment|// If they are too big, we shall be using too much memory.
@@ -289,6 +296,9 @@ name|filetobesorted
 parameter_list|,
 name|int
 name|maxtmpfiles
+parameter_list|,
+name|long
+name|maxMemory
 parameter_list|)
 block|{
 name|long
@@ -326,33 +336,18 @@ operator|)
 decl_stmt|;
 comment|// on the other hand, we don't want to create many temporary
 comment|// files
-comment|// for naught. If blocksize is smaller than half the free
-comment|// memory, grow it.
-name|long
-name|freemem
-init|=
-name|Runtime
-operator|.
-name|getRuntime
-argument_list|()
-operator|.
-name|freeMemory
-argument_list|()
-decl_stmt|;
+comment|// for naught. If blocksize is less than maximum allowed memory,
+comment|// scale the blocksize to be equal to the maxMemory parameter
 if|if
 condition|(
 name|blocksize
 operator|<
-name|freemem
-operator|/
-literal|2
+name|maxMemory
 condition|)
 block|{
 name|blocksize
 operator|=
-name|freemem
-operator|/
-literal|2
+name|maxMemory
 expr_stmt|;
 block|}
 return|return
@@ -382,6 +377,8 @@ argument_list|,
 name|defaultcomparator
 argument_list|,
 name|DEFAULTMAXTEMPFILES
+argument_list|,
+name|DEFAULT_MAX_MEM_BYTES
 argument_list|,
 name|Charset
 operator|.
@@ -423,6 +420,8 @@ argument_list|,
 name|cmp
 argument_list|,
 name|DEFAULTMAXTEMPFILES
+argument_list|,
+name|DEFAULT_MAX_MEM_BYTES
 argument_list|,
 name|Charset
 operator|.
@@ -468,6 +467,8 @@ name|cmp
 argument_list|,
 name|DEFAULTMAXTEMPFILES
 argument_list|,
+name|DEFAULT_MAX_MEM_BYTES
+argument_list|,
 name|Charset
 operator|.
 name|defaultCharset
@@ -499,6 +500,9 @@ name|cmp
 parameter_list|,
 name|int
 name|maxtmpfiles
+parameter_list|,
+name|long
+name|maxMemory
 parameter_list|,
 name|Charset
 name|cs
@@ -558,6 +562,8 @@ argument_list|(
 name|file
 argument_list|,
 name|maxtmpfiles
+argument_list|,
+name|maxMemory
 argument_list|)
 decl_stmt|;
 comment|// in
@@ -762,6 +768,9 @@ parameter_list|,
 name|int
 name|maxtmpfiles
 parameter_list|,
+name|long
+name|maxMemory
+parameter_list|,
 name|Charset
 name|cs
 parameter_list|,
@@ -782,6 +791,8 @@ argument_list|,
 name|cmp
 argument_list|,
 name|maxtmpfiles
+argument_list|,
+name|maxMemory
 argument_list|,
 name|cs
 argument_list|,
@@ -1759,6 +1770,15 @@ name|out
 operator|.
 name|println
 argument_list|(
+literal|"-m or --maxmembytes (followed by a long): specify an upper bound on the memory"
+argument_list|)
+expr_stmt|;
+name|System
+operator|.
+name|out
+operator|.
+name|println
+argument_list|(
 literal|"-c or --charset (followed by a charset code): specify the character set to use (for sorting)"
 argument_list|)
 expr_stmt|;
@@ -1825,6 +1845,11 @@ name|int
 name|maxtmpfiles
 init|=
 name|DEFAULTMAXTEMPFILES
+decl_stmt|;
+name|long
+name|maxMemory
+init|=
+name|DEFAULT_MAX_MEM_BYTES
 decl_stmt|;
 name|Charset
 name|cs
@@ -2028,6 +2053,73 @@ operator|.
 name|println
 argument_list|(
 literal|"maxtmpfiles should be positive"
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+elseif|else
+if|if
+condition|(
+operator|(
+name|args
+index|[
+name|param
+index|]
+operator|.
+name|equals
+argument_list|(
+literal|"-m"
+argument_list|)
+operator|||
+name|args
+index|[
+name|param
+index|]
+operator|.
+name|equals
+argument_list|(
+literal|"--maxmembytes"
+argument_list|)
+operator|)
+operator|&&
+name|args
+operator|.
+name|length
+operator|>
+name|param
+operator|+
+literal|1
+condition|)
+block|{
+name|param
+operator|++
+expr_stmt|;
+name|maxMemory
+operator|=
+name|Long
+operator|.
+name|parseLong
+argument_list|(
+name|args
+index|[
+name|param
+index|]
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|headersize
+operator|<
+literal|0
+condition|)
+block|{
+name|System
+operator|.
+name|err
+operator|.
+name|println
+argument_list|(
+literal|"maxmembytes should be positive"
 argument_list|)
 expr_stmt|;
 block|}
@@ -2321,6 +2413,8 @@ argument_list|,
 name|comparator
 argument_list|,
 name|maxtmpfiles
+argument_list|,
+name|maxMemory
 argument_list|,
 name|cs
 argument_list|,

@@ -110,12 +110,15 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
-comment|/**      * Delete the blob with the given id.      *       * @param chunkId the chunk id      * @return true, if successful      * @throws Exception      *             the exception      */
+comment|/**      * Delete the blob with the given id.      *       * @param chunkId the chunk id      * @param maxLastModifiedTime      *            the max last modified time to consider for retrieval       * @return true, if successful      * @throws Exception      *             the exception      */
 name|boolean
 name|deleteChunk
 parameter_list|(
 name|String
 name|chunkId
+parameter_list|,
+name|long
+name|maxLastModifiedTime
 parameter_list|)
 throws|throws
 name|Exception

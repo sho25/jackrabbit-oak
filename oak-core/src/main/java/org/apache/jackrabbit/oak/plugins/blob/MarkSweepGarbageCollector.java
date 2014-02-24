@@ -521,23 +521,32 @@ name|DEFAULT_BATCH_COUNT
 init|=
 literal|2048
 decl_stmt|;
+comment|/** The max last modified time of blobs to consider for garbage collection. */
+specifier|private
+name|long
+name|maxLastModifiedTime
+decl_stmt|;
 comment|/** Run concurrently when possible. */
+specifier|private
 name|boolean
 name|runConcurrently
 init|=
 literal|true
 decl_stmt|;
 comment|/** The number of sweeper threads to use. */
+specifier|private
 name|int
 name|numSweepers
 init|=
 literal|1
 decl_stmt|;
 comment|/** The node store. */
+specifier|private
 name|DocumentNodeStore
 name|nodeStore
 decl_stmt|;
 comment|/** The garbage collector file state */
+specifier|private
 name|GarbageCollectorFileState
 name|fs
 decl_stmt|;
@@ -555,6 +564,32 @@ name|batchCount
 init|=
 name|DEFAULT_BATCH_COUNT
 decl_stmt|;
+comment|/**      * Gets the max last modified time considered for garbage collection.      *       * @return the max last modified time      */
+specifier|protected
+name|long
+name|getMaxLastModifiedTime
+parameter_list|()
+block|{
+return|return
+name|maxLastModifiedTime
+return|;
+block|}
+comment|/**      * Sets the max last modified time considered for garbage collection.      *       * @param maxLastModifiedTime the new max last modified time      */
+specifier|protected
+name|void
+name|setMaxLastModifiedTime
+parameter_list|(
+name|long
+name|maxLastModifiedTime
+parameter_list|)
+block|{
+name|this
+operator|.
+name|maxLastModifiedTime
+operator|=
+name|maxLastModifiedTime
+expr_stmt|;
+block|}
 comment|/**      * Gets the root.      *       * @return the root      */
 specifier|protected
 name|String
@@ -595,7 +630,7 @@ return|return
 name|numSweepers
 return|;
 block|}
-comment|/**      * Instantiates a new blob garbage collector.      *       * @param nodeStore      *            the node store      * @param root      *            the root      * @param batchCount      *            the batch count      * @param runBackendConcurrently      *            - run the backend iterate concurrently      * @param maxSweeperThreads      *            the max sweeper threads      * @throws IOException      *             Signals that an I/O exception has occurred.      */
+comment|/**      * @param nodeStore the node store      * @param root the root      * @param batchCount the batch count      * @param runBackendConcurrently - run the backend iterate concurrently      * @param maxSweeperThreads the max sweeper threads      * @param maxLastModifiedTime the max last modified time      * @throws IOException Signals that an I/O exception has occurred.      */
 specifier|public
 name|void
 name|init
@@ -614,6 +649,9 @@ name|runBackendConcurrently
 parameter_list|,
 name|int
 name|maxSweeperThreads
+parameter_list|,
+name|long
+name|maxLastModifiedTime
 parameter_list|)
 throws|throws
 name|IOException
@@ -641,6 +679,12 @@ operator|.
 name|numSweepers
 operator|=
 name|maxSweeperThreads
+expr_stmt|;
+name|this
+operator|.
+name|maxLastModifiedTime
+operator|=
+name|maxLastModifiedTime
 expr_stmt|;
 name|init
 argument_list|(
@@ -1440,6 +1484,7 @@ implements|implements
 name|Runnable
 block|{
 comment|/** The exception queue. */
+specifier|private
 name|ConcurrentLinkedQueue
 argument_list|<
 name|String
@@ -1447,6 +1492,7 @@ argument_list|>
 name|exceptionQueue
 decl_stmt|;
 comment|/** The ids to sweep. */
+specifier|private
 name|List
 argument_list|<
 name|String
@@ -1516,6 +1562,8 @@ operator|.
 name|deleteChunk
 argument_list|(
 name|id
+argument_list|,
+name|maxLastModifiedTime
 argument_list|)
 decl_stmt|;
 if|if
@@ -1555,7 +1603,7 @@ block|}
 block|}
 block|}
 block|}
-comment|/**      * Iterates the complete node tree.      *       * @param writer      *            the writer      * @return the list      * @throws Exception      *             the exception      */
+comment|/**      * Iterates the complete node tree.      *       * @return the list      * @throws Exception      *             the exception      */
 specifier|private
 name|List
 argument_list|<
@@ -1798,9 +1846,6 @@ name|BlobIdRetriever
 implements|implements
 name|Runnable
 block|{
-name|boolean
-name|finished
-decl_stmt|;
 annotation|@
 name|Override
 specifier|public
@@ -1865,7 +1910,7 @@ operator|)
 operator|.
 name|getAllChunkIds
 argument_list|(
-literal|0
+name|maxLastModifiedTime
 argument_list|)
 decl_stmt|;
 name|List
@@ -1963,10 +2008,6 @@ operator|.
 name|getAvailableRefs
 argument_list|()
 argument_list|)
-expr_stmt|;
-name|finished
-operator|=
-literal|true
 expr_stmt|;
 name|LOG
 operator|.

@@ -354,6 +354,7 @@ return|return
 name|count
 return|;
 block|}
+comment|/**      * Ignores the maxlastModifiedTime      */
 annotation|@
 name|Override
 specifier|public
@@ -362,6 +363,9 @@ name|deleteChunk
 parameter_list|(
 name|String
 name|chunkId
+parameter_list|,
+name|long
+name|maxLastModifiedTime
 parameter_list|)
 throws|throws
 name|Exception

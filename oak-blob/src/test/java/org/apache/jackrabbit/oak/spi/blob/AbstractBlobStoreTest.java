@@ -2310,6 +2310,8 @@ operator|.
 name|deleteChunk
 argument_list|(
 name|id
+argument_list|,
+literal|0
 argument_list|)
 expr_stmt|;
 block|}
