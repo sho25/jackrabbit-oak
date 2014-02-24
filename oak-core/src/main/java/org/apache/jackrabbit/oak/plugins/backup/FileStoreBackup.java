@@ -474,7 +474,7 @@ name|log
 operator|.
 name|debug
 argument_list|(
-literal|"Backup done in {} ms."
+literal|"Backup finished in {} ms."
 argument_list|,
 name|System
 operator|.
