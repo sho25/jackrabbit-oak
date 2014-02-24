@@ -656,27 +656,6 @@ return|return
 literal|false
 return|;
 block|}
-annotation|@
-name|Override
-specifier|public
-name|String
-name|toString
-parameter_list|()
-block|{
-return|return
-literal|"ImmutableTree '"
-operator|+
-name|getName
-argument_list|()
-operator|+
-literal|"':"
-operator|+
-name|toString
-argument_list|(
-name|state
-argument_list|)
-return|;
-block|}
 comment|//--------------------------------------------------------------------------
 specifier|public
 interface|interface
