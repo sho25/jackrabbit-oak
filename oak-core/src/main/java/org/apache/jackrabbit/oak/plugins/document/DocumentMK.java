@@ -2697,6 +2697,8 @@ argument_list|,
 name|username
 argument_list|,
 name|password
+argument_list|,
+name|this
 argument_list|)
 expr_stmt|;
 name|this
@@ -2753,6 +2755,8 @@ argument_list|,
 name|dsusername
 argument_list|,
 name|dspassword
+argument_list|,
+name|this
 argument_list|)
 expr_stmt|;
 name|this
@@ -2790,6 +2794,8 @@ operator|new
 name|RDBDocumentStore
 argument_list|(
 name|ds
+argument_list|,
+name|this
 argument_list|)
 expr_stmt|;
 name|this
@@ -2826,6 +2832,8 @@ operator|new
 name|RDBDocumentStore
 argument_list|(
 name|documentStoreDataSource
+argument_list|,
+name|this
 argument_list|)
 expr_stmt|;
 name|this
