@@ -1481,7 +1481,7 @@ name|commit
 init|=
 name|commitRoot
 operator|.
-name|clone
+name|shallowCopy
 argument_list|(
 name|commitRoot
 operator|.

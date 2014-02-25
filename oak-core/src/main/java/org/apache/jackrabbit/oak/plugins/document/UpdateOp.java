@@ -281,7 +281,7 @@ block|}
 comment|/**      * Creates an update operation for the document with the given id. The      * changes are shared with the this update operation.      *      * @param id the primary key.      */
 specifier|public
 name|UpdateOp
-name|clone
+name|shallowCopy
 parameter_list|(
 name|String
 name|id
@@ -298,6 +298,35 @@ argument_list|,
 name|isDelete
 argument_list|,
 name|changes
+argument_list|)
+return|;
+block|}
+comment|/**      * Creates a deep copy of this update operation. Changes to the returned      * {@code UpdateOp} do not affect this object.      *      * @return a copy of this operation.      */
+specifier|public
+name|UpdateOp
+name|copy
+parameter_list|()
+block|{
+return|return
+operator|new
+name|UpdateOp
+argument_list|(
+name|id
+argument_list|,
+name|isNew
+argument_list|,
+name|isDelete
+argument_list|,
+operator|new
+name|HashMap
+argument_list|<
+name|Key
+argument_list|,
+name|Operation
+argument_list|>
+argument_list|(
+name|changes
+argument_list|)
 argument_list|)
 return|;
 block|}

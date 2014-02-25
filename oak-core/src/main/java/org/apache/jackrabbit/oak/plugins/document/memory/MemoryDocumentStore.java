@@ -1327,7 +1327,7 @@ name|collection
 argument_list|,
 name|updateOp
 operator|.
-name|clone
+name|shallowCopy
 argument_list|(
 name|key
 argument_list|)
