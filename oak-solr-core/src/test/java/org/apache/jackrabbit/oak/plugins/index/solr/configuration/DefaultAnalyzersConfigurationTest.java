@@ -221,6 +221,16 @@ name|org
 operator|.
 name|junit
 operator|.
+name|Ignore
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
 name|Test
 import|;
 end_import
@@ -230,6 +240,12 @@ comment|/**  * Testcase for checking default analyzers configurations behave as 
 end_comment
 
 begin_class
+annotation|@
+name|Ignore
+argument_list|(
+literal|"OAK-1444"
+argument_list|)
+comment|// FIXME OAK-1444
 specifier|public
 class|class
 name|DefaultAnalyzersConfigurationTest
