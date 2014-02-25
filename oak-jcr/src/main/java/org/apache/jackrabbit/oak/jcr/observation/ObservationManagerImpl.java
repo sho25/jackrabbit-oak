@@ -1006,6 +1006,16 @@ name|all
 argument_list|(
 name|filterBuilder
 operator|.
+name|deleteSubtree
+argument_list|()
+argument_list|,
+name|filterBuilder
+operator|.
+name|moveSubtree
+argument_list|()
+argument_list|,
+name|filterBuilder
+operator|.
 name|path
 argument_list|(
 name|isDeep
