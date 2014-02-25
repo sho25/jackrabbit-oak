@@ -2683,8 +2683,6 @@ name|String
 name|password
 parameter_list|)
 block|{
-comment|// TODO maybe we need different connections for document store and
-comment|// node store
 name|this
 operator|.
 name|documentStore
