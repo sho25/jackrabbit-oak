@@ -692,7 +692,7 @@ name|getSimpleName
 argument_list|()
 argument_list|)
 decl_stmt|;
-comment|/**      * Significance level for the binomial test being performed to establish      * the {@code O(n log n)} performance bound.      * @see #assertOnLgn(String, Iterable, java.util.List)      */
+comment|/**      * Significance level for the binomial test being performed to establish      * the {@code O(n log n)} performance bound.      * @see #assertOnLgn(String, Iterable, java.util.List, boolean)      */
 specifier|public
 specifier|static
 specifier|final
@@ -1138,7 +1138,7 @@ name|nodeStore
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Assert that the actual runtime performance is bounded by {@code O(n log n)} where      * {@code n} is the size of the input.      *<p>      * This is done by comparing the slope of the measured running times against the      * slope of {@code n log n}  (i.e. {@code d/dn n log n = 1 + log n}) for the respective      * input size. The number of values for which the measured running time does not exceed that      * bound is used as a test statistic for the subsequent      *<a href="http://en.wikipedia.org/wiki/Binomial_test">binomial test</a>. The test passes      * if the binomial test with a significance level of {@link #ALPHA} passes and fails otherwise.      *      * @param name    name of the test      * @param scales  the sizes of the inputs      * @param executionTimes  the execution times corresponding to the {@code scales}      */
+comment|/**      * Assert that the actual runtime performance is bounded by {@code O(n log n)} where      * {@code n} is the size of the input.      *<p>      * This is done by comparing the slope of the measured running times against the      * slope of {@code n log n}  (i.e. {@code d/dn n log n = 1 + log n}) for the respective      * input size. The number of values for which the measured running time does not exceed that      * bound is used as a test statistic for the subsequent      *<a href="http://en.wikipedia.org/wiki/Binomial_test">binomial test</a>. The test passes      * if the binomial test with a significance level of {@link #ALPHA} passes and fails otherwise.      *      * @param name    name of the test      * @param scales  the sizes of the inputs      * @param executionTimes  the execution times corresponding to the {@code scales}      * @param knownIssue  log when the assertion doesn't hold but don't throw {@link AssertionError}      */
 specifier|private
 specifier|static
 name|void
@@ -1158,6 +1158,9 @@ argument_list|<
 name|Double
 argument_list|>
 name|executionTimes
+parameter_list|,
+name|boolean
+name|knownIssue
 parameter_list|)
 block|{
 name|Double
@@ -1373,6 +1376,8 @@ literal|"> "
 operator|+
 name|ALPHA
 argument_list|,
+name|knownIssue
+operator|||
 name|pass
 argument_list|)
 expr_stmt|;
@@ -1515,6 +1520,8 @@ argument_list|,
 name|scales
 argument_list|,
 name|executionTimes
+argument_list|,
+literal|false
 argument_list|)
 expr_stmt|;
 block|}
@@ -1530,19 +1537,6 @@ name|RepositoryException
 throws|,
 name|InterruptedException
 block|{
-name|assumeTrue
-argument_list|(
-name|fixture
-operator|.
-name|getClass
-argument_list|()
-operator|!=
-name|DocumentFixture
-operator|.
-name|class
-argument_list|)
-expr_stmt|;
-comment|// FIXME OAK-1414
 specifier|final
 name|Node
 name|n
@@ -1687,6 +1681,19 @@ name|t
 argument_list|)
 expr_stmt|;
 block|}
+name|boolean
+name|knownIssue
+init|=
+name|fixture
+operator|.
+name|getClass
+argument_list|()
+operator|==
+name|DocumentFixture
+operator|.
+name|class
+decl_stmt|;
+comment|// FIXME OAK-1414
 name|assertOnLgn
 argument_list|(
 literal|"large copy"
@@ -1694,6 +1701,8 @@ argument_list|,
 name|scales
 argument_list|,
 name|executionTimes
+argument_list|,
+name|knownIssue
 argument_list|)
 expr_stmt|;
 block|}
@@ -1709,19 +1718,6 @@ name|RepositoryException
 throws|,
 name|InterruptedException
 block|{
-name|assumeTrue
-argument_list|(
-name|fixture
-operator|.
-name|getClass
-argument_list|()
-operator|!=
-name|DocumentFixture
-operator|.
-name|class
-argument_list|)
-expr_stmt|;
-comment|// FIXME OAK-1415
 specifier|final
 name|Node
 name|n
@@ -1866,6 +1862,19 @@ name|t
 argument_list|)
 expr_stmt|;
 block|}
+name|boolean
+name|knownIssue
+init|=
+name|fixture
+operator|.
+name|getClass
+argument_list|()
+operator|==
+name|DocumentFixture
+operator|.
+name|class
+decl_stmt|;
+comment|// FIXME OAK-1415
 name|assertOnLgn
 argument_list|(
 literal|"large move"
@@ -1873,6 +1882,8 @@ argument_list|,
 name|scales
 argument_list|,
 name|executionTimes
+argument_list|,
+name|knownIssue
 argument_list|)
 expr_stmt|;
 block|}
@@ -1888,19 +1899,6 @@ name|RepositoryException
 throws|,
 name|InterruptedException
 block|{
-name|assumeTrue
-argument_list|(
-name|fixture
-operator|.
-name|getClass
-argument_list|()
-operator|!=
-name|DocumentFixture
-operator|.
-name|class
-argument_list|)
-expr_stmt|;
-comment|// FIXME OAK-1416
 specifier|final
 name|Node
 name|n
@@ -2049,6 +2047,19 @@ name|t
 argument_list|)
 expr_stmt|;
 block|}
+name|boolean
+name|knownIssue
+init|=
+name|fixture
+operator|.
+name|getClass
+argument_list|()
+operator|==
+name|DocumentFixture
+operator|.
+name|class
+decl_stmt|;
+comment|// FIXME OAK-1416
 name|assertOnLgn
 argument_list|(
 literal|"many siblings"
@@ -2056,6 +2067,8 @@ argument_list|,
 name|scales
 argument_list|,
 name|executionTimes
+argument_list|,
+name|knownIssue
 argument_list|)
 expr_stmt|;
 block|}
@@ -2233,6 +2246,8 @@ argument_list|,
 name|scales
 argument_list|,
 name|executionTimes
+argument_list|,
+literal|false
 argument_list|)
 expr_stmt|;
 block|}
@@ -2249,19 +2264,6 @@ name|ExecutionException
 throws|,
 name|InterruptedException
 block|{
-name|assumeTrue
-argument_list|(
-name|fixture
-operator|.
-name|getClass
-argument_list|()
-operator|!=
-name|DocumentFixture
-operator|.
-name|class
-argument_list|)
-expr_stmt|;
-comment|// FIXME OAK-1429
 name|Node
 name|n
 init|=
@@ -2380,6 +2382,19 @@ name|t
 argument_list|)
 expr_stmt|;
 block|}
+name|boolean
+name|knownIssue
+init|=
+name|fixture
+operator|.
+name|getClass
+argument_list|()
+operator|==
+name|DocumentFixture
+operator|.
+name|class
+decl_stmt|;
+comment|// FIXME OAK-1429
 name|assertOnLgn
 argument_list|(
 literal|"slow listeners"
@@ -2387,6 +2402,8 @@ argument_list|,
 name|scales
 argument_list|,
 name|executionTimes
+argument_list|,
+name|knownIssue
 argument_list|)
 expr_stmt|;
 block|}
