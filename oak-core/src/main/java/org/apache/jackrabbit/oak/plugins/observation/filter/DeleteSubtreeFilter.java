@@ -76,24 +76,24 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This {@code EventFilter} implementation excludes fat sub trees.  * That is, it excludes events for child nodes of added or removed  * nodes.  */
+comment|/**  * This {@code EventFilter} implementation excludes events for child nodes  * of removed nodes.  */
 end_comment
 
 begin_class
 specifier|public
 class|class
-name|FatTreeFilter
+name|DeleteSubtreeFilter
 implements|implements
 name|EventFilter
 block|{
 specifier|private
 specifier|static
 specifier|final
-name|FatTreeFilter
-name|INCLUDE
+name|DeleteSubtreeFilter
+name|INCLUDE_DELETE
 init|=
 operator|new
-name|FatTreeFilter
+name|DeleteSubtreeFilter
 argument_list|(
 literal|true
 argument_list|)
@@ -101,11 +101,11 @@ decl_stmt|;
 specifier|private
 specifier|static
 specifier|final
-name|FatTreeFilter
-name|EXCLUDE
+name|DeleteSubtreeFilter
+name|EXCLUDE_DELETE
 init|=
 operator|new
-name|FatTreeFilter
+name|DeleteSubtreeFilter
 argument_list|(
 literal|false
 argument_list|)
@@ -122,11 +122,11 @@ name|getInstance
 parameter_list|()
 block|{
 return|return
-name|INCLUDE
+name|INCLUDE_DELETE
 return|;
 block|}
 specifier|private
-name|FatTreeFilter
+name|DeleteSubtreeFilter
 parameter_list|(
 name|boolean
 name|include
@@ -198,7 +198,7 @@ name|after
 parameter_list|)
 block|{
 return|return
-name|include
+literal|true
 return|;
 block|}
 annotation|@
@@ -278,7 +278,7 @@ if|if
 condition|(
 name|this
 operator|==
-name|EXCLUDE
+name|EXCLUDE_DELETE
 condition|)
 block|{
 return|return
@@ -288,23 +288,19 @@ block|}
 elseif|else
 if|if
 condition|(
-name|before
-operator|==
-name|MISSING_NODE
-operator|||
 name|after
 operator|==
 name|MISSING_NODE
 condition|)
 block|{
 return|return
-name|EXCLUDE
+name|EXCLUDE_DELETE
 return|;
 block|}
 else|else
 block|{
 return|return
-name|INCLUDE
+name|INCLUDE_DELETE
 return|;
 block|}
 block|}
