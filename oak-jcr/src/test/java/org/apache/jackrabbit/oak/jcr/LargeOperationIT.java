@@ -717,7 +717,7 @@ literal|1024
 argument_list|,
 literal|1048576
 argument_list|,
-literal|20
+literal|40
 argument_list|)
 decl_stmt|;
 specifier|private
@@ -735,7 +735,7 @@ literal|128
 argument_list|,
 literal|131072
 argument_list|,
-literal|20
+literal|40
 argument_list|)
 decl_stmt|;
 specifier|private
