@@ -39,6 +39,22 @@ name|CheckForNull
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|api
+operator|.
+name|Blob
+import|;
+end_import
+
 begin_interface
 specifier|public
 interface|interface
@@ -114,7 +130,7 @@ name|type
 parameter_list|)
 function_decl|;
 comment|/**      * Read a blob from external storage.      *      * @param reference blob reference      * @return external blob      */
-name|ExternalBlob
+name|Blob
 name|readBlob
 parameter_list|(
 name|String

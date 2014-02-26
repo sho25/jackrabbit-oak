@@ -271,11 +271,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|plugins
+name|api
 operator|.
-name|segment
-operator|.
-name|AbstractStore
+name|Blob
 import|;
 end_import
 
@@ -293,7 +291,7 @@ name|plugins
 operator|.
 name|segment
 operator|.
-name|ExternalBlob
+name|AbstractStore
 import|;
 end_import
 
@@ -1773,7 +1771,7 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|ExternalBlob
+name|Blob
 name|readBlob
 parameter_list|(
 name|String
@@ -1787,6 +1785,7 @@ argument_list|(
 name|reference
 argument_list|)
 return|;
+comment|// FIXME: proper reference lookup
 block|}
 block|}
 end_class

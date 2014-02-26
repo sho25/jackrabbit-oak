@@ -91,7 +91,7 @@ name|javax
 operator|.
 name|annotation
 operator|.
-name|Nonnull
+name|CheckForNull
 import|;
 end_import
 
@@ -101,7 +101,23 @@ name|javax
 operator|.
 name|annotation
 operator|.
-name|Nullable
+name|Nonnull
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|api
+operator|.
+name|Blob
 import|;
 end_import
 
@@ -718,11 +734,11 @@ name|this
 return|;
 block|}
 annotation|@
-name|Nullable
-annotation|@
 name|Override
+annotation|@
+name|CheckForNull
 specifier|public
-name|ExternalBlob
+name|Blob
 name|readBlob
 parameter_list|(
 name|String

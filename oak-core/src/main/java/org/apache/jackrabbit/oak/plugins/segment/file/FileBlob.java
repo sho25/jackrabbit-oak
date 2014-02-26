@@ -31,11 +31,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|plugins
+name|api
 operator|.
-name|segment
-operator|.
-name|ExternalBlob
+name|Blob
 import|;
 end_import
 
@@ -94,7 +92,7 @@ specifier|public
 class|class
 name|FileBlob
 implements|implements
-name|ExternalBlob
+name|Blob
 block|{
 specifier|private
 specifier|final
@@ -115,6 +113,8 @@ operator|=
 name|path
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|getReference
@@ -123,6 +123,7 @@ block|{
 return|return
 name|path
 return|;
+comment|// FIXME: should be a secure reference
 block|}
 annotation|@
 name|Nonnull
