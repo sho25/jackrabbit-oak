@@ -293,9 +293,9 @@ name|plugins
 operator|.
 name|document
 operator|.
-name|mongo
+name|cache
 operator|.
-name|MongoDocumentStore
+name|CachingDocumentStore
 import|;
 end_import
 
@@ -1423,14 +1423,14 @@ if|if
 condition|(
 name|ds
 operator|instanceof
-name|MongoDocumentStore
+name|CachingDocumentStore
 condition|)
 block|{
-name|MongoDocumentStore
-name|mds
+name|CachingDocumentStore
+name|cds
 init|=
 operator|(
-name|MongoDocumentStore
+name|CachingDocumentStore
 operator|)
 name|ds
 decl_stmt|;
@@ -1446,7 +1446,7 @@ name|CacheStatsMBean
 operator|.
 name|class
 argument_list|,
-name|mds
+name|cds
 operator|.
 name|getCacheStats
 argument_list|()
@@ -1455,7 +1455,7 @@ name|CacheStatsMBean
 operator|.
 name|TYPE
 argument_list|,
-name|mds
+name|cds
 operator|.
 name|getCacheStats
 argument_list|()
