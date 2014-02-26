@@ -2329,6 +2329,10 @@ name|uuidFromNode
 argument_list|(
 name|history
 argument_list|)
+argument_list|,
+name|Type
+operator|.
+name|REFERENCE
 argument_list|)
 expr_stmt|;
 name|versionable
