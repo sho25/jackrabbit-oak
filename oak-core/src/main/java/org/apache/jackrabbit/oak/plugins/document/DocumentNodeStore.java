@@ -3546,7 +3546,9 @@ argument_list|,
 name|name
 argument_list|)
 decl_stmt|;
-return|return
+name|NodeDocument
+name|doc
+init|=
 name|store
 operator|.
 name|find
@@ -3562,6 +3564,28 @@ argument_list|(
 name|p
 argument_list|)
 argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|doc
+operator|==
+literal|null
+condition|)
+block|{
+throw|throw
+operator|new
+name|NullPointerException
+argument_list|(
+literal|"Document "
+operator|+
+name|p
+operator|+
+literal|" not found"
+argument_list|)
+throw|;
+block|}
+return|return
+name|doc
 return|;
 block|}
 block|}
