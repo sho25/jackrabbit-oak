@@ -261,7 +261,7 @@ argument_list|(
 name|queryStat
 argument_list|)
 argument_list|,
-literal|"QueryStats"
+literal|"QueryStat"
 argument_list|,
 literal|"Oak Query Statistics"
 argument_list|)
