@@ -73,16 +73,6 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Ignore
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
 name|Test
 import|;
 end_import
@@ -92,11 +82,6 @@ comment|/**  * Permission evaluation tests related to {@link JackrabbitNode#rena
 end_comment
 
 begin_class
-annotation|@
-name|Ignore
-argument_list|(
-literal|"OAK-770 : NodeImpl doesn't implement JackrabbitNode#rename"
-argument_list|)
 specifier|public
 class|class
 name|RenameTest
@@ -155,6 +140,16 @@ parameter_list|)
 block|{
 comment|// success.
 block|}
+block|}
+annotation|@
+name|Test
+specifier|public
+name|void
+name|testRename2
+parameter_list|()
+throws|throws
+name|Exception
+block|{
 comment|// give 'add_child_nodes' and 'nt-management' privilege
 comment|// -> not sufficient privileges for a renaming of the child
 name|allow
@@ -178,6 +173,16 @@ block|}
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Node
+name|child
+init|=
+name|testSession
+operator|.
+name|getNode
+argument_list|(
+name|childNPath
+argument_list|)
+decl_stmt|;
 try|try
 block|{
 operator|(
@@ -211,20 +216,58 @@ parameter_list|)
 block|{
 comment|// success.
 block|}
-comment|// add 'remove_child_nodes' at 'path
+block|}
+comment|/**      * @since OAK 1.0 : Renaming a node requires the same permission as moving it      * around. This behavior differs from Jackrabbit 2.x where renaming just      * required the ability to change the child collection of the parent.      */
+annotation|@
+name|Test
+specifier|public
+name|void
+name|testRename3
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+comment|// grant 'add_child_nodes', 'nt-management' and remove_child_nodes' at 'path
 comment|// -> rename of child must now succeed
 name|allow
 argument_list|(
 name|path
 argument_list|,
-name|privilegesFromName
+name|privilegesFromNames
 argument_list|(
+operator|new
+name|String
+index|[]
+block|{
+name|Privilege
+operator|.
+name|JCR_ADD_CHILD_NODES
+block|,
+name|Privilege
+operator|.
+name|JCR_NODE_TYPE_MANAGEMENT
+block|,
 name|Privilege
 operator|.
 name|JCR_REMOVE_CHILD_NODES
+block|,
+name|Privilege
+operator|.
+name|JCR_REMOVE_NODE
+block|}
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Node
+name|child
+init|=
+name|testSession
+operator|.
+name|getNode
+argument_list|(
+name|childNPath
+argument_list|)
+decl_stmt|;
 operator|(
 operator|(
 name|JackrabbitNode
