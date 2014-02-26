@@ -337,8 +337,9 @@ name|Test
 annotation|@
 name|Ignore
 argument_list|(
-literal|"OAK-1137"
+literal|"OAK-1472"
 argument_list|)
+comment|// FIXME OAK-1472
 specifier|public
 name|void
 name|addReferences
