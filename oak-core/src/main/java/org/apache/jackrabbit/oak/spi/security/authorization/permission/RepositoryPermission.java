@@ -24,7 +24,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * RepositoryPermission... TODO  */
+comment|/**  * RepositoryPermission... TODO  *  * @see org.apache.jackrabbit.oak.spi.security.authorization.permission.PermissionProvider#getRepositoryPermission()  */
 end_comment
 
 begin_interface
@@ -40,6 +40,7 @@ name|long
 name|repositoryPermissions
 parameter_list|)
 function_decl|;
+comment|/**      * {@code RepositoryPermission} instance that always returns {@code false}.      */
 name|RepositoryPermission
 name|EMPTY
 init|=
@@ -63,6 +64,7 @@ return|;
 block|}
 block|}
 decl_stmt|;
+comment|/**      * {@code RepositoryPermission} instance that always returns {@code true}.      */
 name|RepositoryPermission
 name|ALL
 init|=

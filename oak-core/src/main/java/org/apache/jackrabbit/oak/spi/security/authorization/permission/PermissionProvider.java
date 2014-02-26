@@ -86,7 +86,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * PermissionProvider... TODO  */
+comment|/**  * TODO  *  * @see org.apache.jackrabbit.oak.spi.security.authorization.AuthorizationConfiguration#getPermissionProvider(org.apache.jackrabbit.oak.api.Root, String, java.util.Set)  */
 end_comment
 
 begin_interface
@@ -94,12 +94,12 @@ specifier|public
 interface|interface
 name|PermissionProvider
 block|{
-comment|/**      *      */
+comment|/**      * Refresh this {@code PermissionProvider}. The implementation is expected      * to subsequently return permission evaluation results that reflect the      * most recent revision of the repository.      */
 name|void
 name|refresh
 parameter_list|()
 function_decl|;
-comment|/**      *      * @param tree      * @return      */
+comment|/**      * Returns the set of privilege names which are granted to the set of      * {@code Principal}s associated with this provider instance for the      * specified {@code Tree}.      *      * @param tree The {@code tree} for which the privileges should be retrieved.      * @return      */
 annotation|@
 name|Nonnull
 name|Set
@@ -114,7 +114,7 @@ name|Tree
 name|tree
 parameter_list|)
 function_decl|;
-comment|/**      *      * @param tree      * @param privilegeNames      * @return      */
+comment|/**      * Returns whether the principal set associated with this {@code PrivilegeManager}      * is granted the privileges identified by the specified privilege names      * for the given {@code tree}. In order to test for privileges being granted      * on a repository level rather than on a particular tree a {@code null} tree      * should be passed to this method.      *      *<p>      * Testing a name identifying an aggregate privilege is equivalent to testing      * each non aggregate privilege name.      *</p>      *      * @param tree The tree to test for privileges being granted.      * @param privilegeNames The name of the privileges.      * @return {@code true} if all privileges are granted; {@code false} otherwise.      */
 name|boolean
 name|hasPrivileges
 parameter_list|(
@@ -130,10 +130,12 @@ modifier|...
 name|privilegeNames
 parameter_list|)
 function_decl|;
+comment|/**      * Return the {@code RepositoryPermission} for the set of {@code Principal}s      * associated with this provider instance.      *      * @return The {@link org.apache.jackrabbit.oak.spi.security.authorization.permission.RepositoryPermission}      * for the set of {@code Principal}s this provider instance has been created for.      */
 name|RepositoryPermission
 name|getRepositoryPermission
 parameter_list|()
 function_decl|;
+comment|/**      * Return the {@coe TreePermission} for the set of {@code Principal}s associated      * with this provider at the specified {@code tree}.      *      * @param tree The tree for which the {@code TreePermission} object should be built.      * @param parentPermission The {@code TreePermission} object that has been      * obtained before for the parent tree.      * @return The {@code TreePermission} object for the specified {@code tree}.      */
 name|TreePermission
 name|getTreePermission
 parameter_list|(
@@ -148,14 +150,14 @@ name|TreePermission
 name|parentPermission
 parameter_list|)
 function_decl|;
-comment|/**      *      * @param parent      * @param property      * @param permissions      * @return      */
+comment|/**      * Test if the specified permissions are granted for the set of {@code Principal}s      * associated with this provider instance for the item identified by the      * given tree and optionally property. This method will only return {@code true}      * if all permissions are granted.      *      * @param tree The {@code Tree} to test the permissions for.      * @param property A {@code PropertyState} if the item to test is a property      * or {@code null} if the item is a {@code Tree}.      * @param permissions The permissions to be tested.      * @return {@code true} if the specified permissions are granted for the item identified      * by the given tree and optionally property state.      */
 name|boolean
 name|isGranted
 parameter_list|(
 annotation|@
 name|Nonnull
 name|Tree
-name|parent
+name|tree
 parameter_list|,
 annotation|@
 name|Nullable
@@ -166,7 +168,7 @@ name|long
 name|permissions
 parameter_list|)
 function_decl|;
-comment|/**      *      * @param oakPath      * @param jcrActions      * @return      */
+comment|/**      * Tests if the the specified actions are granted at the given path for      * the set of {@code Principal}s associated with this provider instance.      *<p>      * The {@code jcrActions} parameter is a comma separated list of action      * strings such as defined by {@link javax.jcr.Session} and passed to      * {@link javax.jcr.Session#hasPermission(String, String)}. When more than one      * action is specified in the {@code jcrActions} parameter, this method will      * only return {@code true} if all of them are granted on the specified path.      *</p>      *      * @param oakPath A valid oak path.      * @param jcrActions The JCR actions that should be tested separated by ','      * @return {@code true} if all actions are granted at the specified path;      * {@code false} otherwise.      */
 name|boolean
 name|isGranted
 parameter_list|(

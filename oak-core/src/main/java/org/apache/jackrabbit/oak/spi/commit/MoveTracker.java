@@ -138,7 +138,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * MoveTracker... TODO  */
+comment|/**  * Utility to keep track of the move operations that are performed between two  * calls to {@link org.apache.jackrabbit.oak.api.Root#commit}.  */
 end_comment
 
 begin_class

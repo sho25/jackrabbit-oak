@@ -147,10 +147,6 @@ name|Parameterized
 import|;
 end_import
 
-begin_comment
-comment|/**  * OakBaseTest... TODO  */
-end_comment
-
 begin_class
 annotation|@
 name|RunWith
