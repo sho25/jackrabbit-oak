@@ -186,6 +186,21 @@ return|return
 literal|true
 return|;
 block|}
+comment|/**      * Calls accept on the static operand in the native search constraint.      */
+annotation|@
+name|Override
+specifier|public
+name|boolean
+name|visit
+parameter_list|(
+name|NativeFunctionImpl
+name|node
+parameter_list|)
+block|{
+return|return
+literal|true
+return|;
+block|}
 comment|/**      * Calls accept on the two sources and the join condition in the join node.      */
 annotation|@
 name|Override

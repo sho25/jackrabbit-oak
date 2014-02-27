@@ -224,6 +224,13 @@ name|UpperCaseImpl
 name|node
 parameter_list|)
 function_decl|;
+name|boolean
+name|visit
+parameter_list|(
+name|NativeFunctionImpl
+name|nativeFunctionImpl
+parameter_list|)
+function_decl|;
 block|}
 end_interface
 
