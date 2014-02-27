@@ -611,12 +611,6 @@ block|}
 block|}
 comment|/**      * @since oak (DIFF: jr required jcr:versionManagement privilege on the version store)      */
 annotation|@
-name|Ignore
-argument_list|(
-literal|"OAK-168"
-argument_list|)
-comment|// FIXME: waiting for basic version mgt
-annotation|@
 name|Test
 specifier|public
 name|void
@@ -688,6 +682,11 @@ operator|.
 name|checkout
 argument_list|()
 expr_stmt|;
+name|testNode
+operator|.
+name|checkin
+argument_list|()
+expr_stmt|;
 comment|// removing a version must be allowed
 name|testNode
 operator|.
@@ -704,12 +703,6 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * @since oak (DIFF: jr required jcr:versionManagement privilege on the version store)      */
-annotation|@
-name|Ignore
-argument_list|(
-literal|"OAK-168"
-argument_list|)
-comment|// FIXME: waiting for basic version mgt
 annotation|@
 name|Test
 specifier|public
@@ -782,6 +775,11 @@ operator|.
 name|checkout
 argument_list|()
 expr_stmt|;
+name|testNode
+operator|.
+name|checkin
+argument_list|()
+expr_stmt|;
 comment|// remove ability to edit version information
 comment|// -> VersionHistory.removeVersion must not be allowed.
 name|modify
@@ -830,12 +828,6 @@ block|}
 block|}
 comment|/**      * @since oak (DIFF: jr required jcr:versionManagement privilege on the version store)      */
 annotation|@
-name|Ignore
-argument_list|(
-literal|"OAK-168"
-argument_list|)
-comment|// FIXME: waiting for basic version mgt
-annotation|@
 name|Test
 specifier|public
 name|void
@@ -868,6 +860,11 @@ decl_stmt|;
 name|n
 operator|.
 name|checkout
+argument_list|()
+expr_stmt|;
+name|n
+operator|.
+name|checkin
 argument_list|()
 expr_stmt|;
 name|testSession

@@ -62,6 +62,11 @@ name|NO_SUCH_VERSION_LABEL
 argument_list|(
 literal|"No such version label"
 argument_list|)
+block|,
+name|ROOT_VERSION_REMOVAL
+argument_list|(
+literal|"Attempt to remove root version"
+argument_list|)
 block|;
 specifier|private
 specifier|final

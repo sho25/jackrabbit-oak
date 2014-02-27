@@ -185,6 +185,12 @@ name|REP_REMOVE_VERSION_LABELS
 init|=
 literal|"rep:removeVersionLabels"
 decl_stmt|;
+comment|/**      * Version operation property name to remove version(s).      */
+name|String
+name|REP_REMOVE_VERSION
+init|=
+literal|"rep:removeVersion"
+decl_stmt|;
 comment|/**      * Prefix of the jcr:baseVersion value for a restore.      */
 name|String
 name|RESTORE_PREFIX
