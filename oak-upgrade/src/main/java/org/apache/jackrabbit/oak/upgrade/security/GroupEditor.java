@@ -275,7 +275,7 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-comment|// todo: /home/groups/* subtree might be configured differently
+comment|// todo: OAK-1480 wrong default. must be retrieved from configuration.
 specifier|private
 specifier|final
 specifier|static
