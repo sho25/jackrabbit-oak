@@ -45,7 +45,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|Dictionary
+name|List
 import|;
 end_import
 
@@ -55,7 +55,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|List
+name|Map
 import|;
 end_import
 
@@ -464,7 +464,7 @@ specifier|private
 name|void
 name|activate
 parameter_list|(
-name|Dictionary
+name|Map
 argument_list|<
 name|String
 argument_list|,

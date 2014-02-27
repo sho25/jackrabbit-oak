@@ -35,15 +35,11 @@ end_import
 
 begin_import
 import|import
-name|com
+name|java
 operator|.
-name|google
+name|util
 operator|.
-name|common
-operator|.
-name|collect
-operator|.
-name|Lists
+name|Map
 import|;
 end_import
 
@@ -167,20 +163,6 @@ begin_import
 import|import
 name|org
 operator|.
-name|osgi
-operator|.
-name|service
-operator|.
-name|component
-operator|.
-name|ComponentContext
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
 name|slf4j
 operator|.
 name|Logger
@@ -194,6 +176,20 @@ operator|.
 name|slf4j
 operator|.
 name|LoggerFactory
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|collect
+operator|.
+name|Lists
 import|;
 end_import
 
@@ -455,12 +451,17 @@ block|}
 comment|//----------------------------------------------------< SCR Integration>---
 annotation|@
 name|Activate
-specifier|protected
+specifier|private
 name|void
 name|activate
 parameter_list|(
-name|ComponentContext
-name|context
+name|Map
+argument_list|<
+name|String
+argument_list|,
+name|Object
+argument_list|>
+name|properties
 parameter_list|)
 block|{
 name|config
@@ -469,10 +470,7 @@ name|ConfigurationParameters
 operator|.
 name|of
 argument_list|(
-name|context
-operator|.
-name|getProperties
-argument_list|()
+name|properties
 argument_list|)
 expr_stmt|;
 block|}
