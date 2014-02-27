@@ -979,10 +979,46 @@ argument_list|(
 name|destAbsPath
 argument_list|)
 decl_stmt|;
-comment|// TODO: use perform()
+name|sessionDelegate
+operator|.
+name|perform
+argument_list|(
+operator|new
+name|SessionOperation
+argument_list|<
+name|Object
+argument_list|>
+argument_list|(
+literal|true
+argument_list|)
+block|{
+annotation|@
+name|Override
+specifier|public
+name|void
+name|checkPreconditions
+parameter_list|()
+throws|throws
+name|RepositoryException
+block|{
+name|super
+operator|.
+name|checkPreconditions
+argument_list|()
+expr_stmt|;
 name|ensureIsAlive
 argument_list|()
 expr_stmt|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|Object
+name|perform
+parameter_list|()
+throws|throws
+name|RepositoryException
+block|{
 name|sessionDelegate
 operator|.
 name|checkProtectedNode
@@ -1003,7 +1039,6 @@ name|destOakPath
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// TODO
 throw|throw
 operator|new
 name|UnsupportedRepositoryOperationException
@@ -1011,6 +1046,10 @@ argument_list|(
 literal|"Not implemented."
 argument_list|)
 throw|;
+block|}
+block|}
+argument_list|)
+expr_stmt|;
 block|}
 annotation|@
 name|Override
@@ -1021,6 +1060,7 @@ parameter_list|(
 name|String
 name|srcAbsPath
 parameter_list|,
+specifier|final
 name|String
 name|destAbsPath
 parameter_list|)
@@ -1045,10 +1085,46 @@ argument_list|(
 name|destAbsPath
 argument_list|)
 decl_stmt|;
-comment|// TODO: use perform()
+name|sessionDelegate
+operator|.
+name|perform
+argument_list|(
+operator|new
+name|SessionOperation
+argument_list|<
+name|Object
+argument_list|>
+argument_list|(
+literal|true
+argument_list|)
+block|{
+annotation|@
+name|Override
+specifier|public
+name|void
+name|checkPreconditions
+parameter_list|()
+throws|throws
+name|RepositoryException
+block|{
+name|super
+operator|.
+name|checkPreconditions
+argument_list|()
+expr_stmt|;
 name|ensureIsAlive
 argument_list|()
 expr_stmt|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|Object
+name|perform
+parameter_list|()
+throws|throws
+name|RepositoryException
+block|{
 name|sessionDelegate
 operator|.
 name|checkProtectedNode
@@ -1087,6 +1163,13 @@ argument_list|,
 name|destOakPath
 argument_list|,
 literal|false
+argument_list|)
+expr_stmt|;
+return|return
+literal|null
+return|;
+block|}
+block|}
 argument_list|)
 expr_stmt|;
 block|}
@@ -1262,7 +1345,7 @@ block|{
 name|ensureIsAlive
 argument_list|()
 expr_stmt|;
-comment|// TODO -> SPI
+comment|// FIXME: adjust implementation once OAK-118 is being addressed.
 return|return
 operator|new
 name|String
@@ -1470,12 +1553,11 @@ block|{
 name|ensureIsAlive
 argument_list|()
 expr_stmt|;
-comment|// TODO -> SPI
 throw|throw
 operator|new
 name|UnsupportedRepositoryOperationException
 argument_list|(
-literal|"TODO: Workspace.createWorkspace"
+literal|"OAK-118: Workspace.createWorkspace"
 argument_list|)
 throw|;
 block|}
@@ -1497,12 +1579,11 @@ block|{
 name|ensureIsAlive
 argument_list|()
 expr_stmt|;
-comment|// TODO -> SPI
 throw|throw
 operator|new
 name|UnsupportedRepositoryOperationException
 argument_list|(
-literal|"TODO: Workspace.createWorkspace"
+literal|"OAK-118: Workspace.createWorkspace"
 argument_list|)
 throw|;
 block|}
@@ -1521,12 +1602,11 @@ block|{
 name|ensureIsAlive
 argument_list|()
 expr_stmt|;
-comment|// TODO -> SPI
 throw|throw
 operator|new
 name|UnsupportedRepositoryOperationException
 argument_list|(
-literal|"TODO: Workspace.deleteWorkspace"
+literal|"OAK-118: Workspace.deleteWorkspace"
 argument_list|)
 throw|;
 block|}
@@ -1549,12 +1629,11 @@ block|{
 name|ensureIsAlive
 argument_list|()
 expr_stmt|;
-comment|// TODO -> SPI
 throw|throw
 operator|new
 name|UnsupportedRepositoryOperationException
 argument_list|(
-literal|"TODO: Workspace.createWorkspace"
+literal|"OAK-118: Workspace.createWorkspace"
 argument_list|)
 throw|;
 block|}
