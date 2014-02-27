@@ -403,7 +403,7 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Before
+name|Assume
 import|;
 end_import
 
@@ -413,7 +413,7 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Ignore
+name|Before
 import|;
 end_import
 
@@ -427,7 +427,38 @@ name|Test
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|runner
+operator|.
+name|RunWith
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|runners
+operator|.
+name|Parameterized
+import|;
+end_import
+
 begin_class
+annotation|@
+name|RunWith
+argument_list|(
+name|Parameterized
+operator|.
+name|class
+argument_list|)
 specifier|public
 class|class
 name|ObservationRefreshTest
@@ -700,12 +731,6 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-annotation|@
-name|Ignore
-argument_list|(
-literal|"OAK-1267"
-argument_list|)
-comment|// FIXME OAK-1267
 specifier|public
 name|void
 name|observation
@@ -717,6 +742,18 @@ name|InterruptedException
 throws|,
 name|ExecutionException
 block|{
+name|Assume
+operator|.
+name|assumeTrue
+argument_list|(
+name|fixture
+operator|!=
+name|NodeStoreFixture
+operator|.
+name|DOCUMENT_JDBC
+argument_list|)
+expr_stmt|;
+comment|// FIXME too slow. See OAK-1477
 specifier|final
 name|MyListener
 name|listener
@@ -1377,6 +1414,7 @@ implements|implements
 name|EventListener
 block|{
 specifier|private
+specifier|volatile
 name|String
 name|error
 init|=
