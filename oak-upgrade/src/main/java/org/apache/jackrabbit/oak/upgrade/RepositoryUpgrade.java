@@ -79,16 +79,6 @@ end_import
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Set
-import|;
-end_import
-
-begin_import
-import|import
 name|javax
 operator|.
 name|jcr
@@ -764,20 +754,6 @@ operator|.
 name|slf4j
 operator|.
 name|LoggerFactory
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|collect
-operator|.
-name|ImmutableSet
 import|;
 end_import
 
@@ -1626,6 +1602,12 @@ specifier|final
 name|NodeStore
 name|target
 decl_stmt|;
+specifier|private
+name|boolean
+name|copyBinariesByReference
+init|=
+literal|false
+decl_stmt|;
 comment|/**      * Copies the contents of the repository in the given source directory      * to the given target node store.      *      * @param source source repository directory      * @param target target node store      * @throws RepositoryException if the copy operation fails      */
 specifier|public
 specifier|static
@@ -1727,6 +1709,30 @@ operator|.
 name|target
 operator|=
 name|target
+expr_stmt|;
+block|}
+specifier|public
+name|boolean
+name|isCopyBinariesByReference
+parameter_list|()
+block|{
+return|return
+name|copyBinariesByReference
+return|;
+block|}
+specifier|public
+name|void
+name|setCopyBinariesByReference
+parameter_list|(
+name|boolean
+name|copyBinariesByReference
+parameter_list|)
+block|{
+name|this
+operator|.
+name|copyBinariesByReference
+operator|=
+name|copyBinariesByReference
 expr_stmt|;
 block|}
 comment|/**      * Copies the full content from the source to the target repository.      *<p>      * The source repository<strong>must not be modified</strong> while      * the copy operation is running to avoid an inconsistent copy.      *<p>      * This method leaves the search indexes of the target repository in      * an       * Note that both the source and the target repository must be closed      * during the copy operation as this method requires exclusive access      * to the repositories.      *      * @throws RepositoryException if the copy operation fails      */
@@ -3601,6 +3607,8 @@ argument_list|,
 name|nr
 argument_list|,
 name|VERSION_STORAGE_NODE_ID
+argument_list|,
+name|copyBinariesByReference
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -3618,6 +3626,8 @@ argument_list|,
 name|nr
 argument_list|,
 name|ACTIVITIES_NODE_ID
+argument_list|,
+name|copyBinariesByReference
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -3698,6 +3708,8 @@ argument_list|,
 name|nr
 argument_list|,
 name|ROOT_NODE_ID
+argument_list|,
+name|copyBinariesByReference
 argument_list|)
 decl_stmt|;
 for|for
