@@ -595,6 +595,14 @@ name|String
 argument_list|>
 name|discardedIds
 decl_stmt|;
+specifier|private
+specifier|final
+name|Set
+argument_list|<
+name|String
+argument_list|>
+name|versionStoreIds
+decl_stmt|;
 comment|/**      * set of ids that were added during this commit. we need it to reconcile      * moves      *       */
 specifier|private
 specifier|final
@@ -688,6 +696,13 @@ expr_stmt|;
 name|this
 operator|.
 name|discardedIds
+operator|=
+name|newHashSet
+argument_list|()
+expr_stmt|;
+name|this
+operator|.
+name|versionStoreIds
 operator|=
 name|newHashSet
 argument_list|()
@@ -800,6 +815,14 @@ operator|=
 name|parent
 operator|.
 name|discardedIds
+expr_stmt|;
+name|this
+operator|.
+name|versionStoreIds
+operator|=
+name|parent
+operator|.
+name|versionStoreIds
 expr_stmt|;
 name|this
 operator|.
@@ -931,6 +954,24 @@ operator|.
 name|addAll
 argument_list|(
 name|discardedIds
+argument_list|)
+expr_stmt|;
+comment|// remove ids that are actually deleted (that exist in the rmRefs.keySet())
+name|versionStoreIds
+operator|.
+name|removeAll
+argument_list|(
+name|rmRefs
+operator|.
+name|keySet
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|rmIds
+operator|.
+name|addAll
+argument_list|(
+name|versionStoreIds
 argument_list|)
 expr_stmt|;
 comment|// update references
@@ -1331,7 +1372,7 @@ condition|)
 block|{
 name|addAll
 argument_list|(
-name|discardedIds
+name|versionStoreIds
 argument_list|,
 name|before
 operator|.
@@ -1486,7 +1527,7 @@ condition|)
 block|{
 name|addAll
 argument_list|(
-name|discardedIds
+name|versionStoreIds
 argument_list|,
 name|after
 operator|.
