@@ -271,10 +271,6 @@ name|emptyList
 import|;
 end_import
 
-begin_comment
-comment|/**  * SecureNodeState...  *  * TODO: clarify if HIDDEN items should be filtered by this NodeState implementation  * TODO: clarify usage of ReadStatus in getChildNodeEntries  */
-end_comment
-
 begin_class
 class|class
 name|SecureNodeState
@@ -751,7 +747,6 @@ name|canRead
 argument_list|()
 condition|)
 block|{
-comment|// TODO: check DENY_CHILDREN?
 name|Iterable
 argument_list|<
 name|ChildNodeEntry
