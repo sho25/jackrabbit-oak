@@ -35,6 +35,16 @@ end_import
 
 begin_import
 import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|CheckForNull
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -46,6 +56,26 @@ operator|.
 name|api
 operator|.
 name|PropertyValue
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|index
+operator|.
+name|aggregate
+operator|.
+name|NodeAggregator
 import|;
 end_import
 
@@ -158,6 +188,26 @@ operator|.
 name|query
 operator|.
 name|QueryIndex
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|query
+operator|.
+name|QueryIndex
+operator|.
+name|FulltextQueryIndex
 import|;
 end_import
 
@@ -286,8 +336,16 @@ specifier|public
 class|class
 name|SolrQueryIndex
 implements|implements
-name|QueryIndex
+name|FulltextQueryIndex
 block|{
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|NATIVE_SOLR_QUERY
+init|=
+literal|"native*solr"
+decl_stmt|;
 specifier|private
 specifier|final
 name|Logger
@@ -325,6 +383,11 @@ specifier|final
 name|OakSolrConfiguration
 name|configuration
 decl_stmt|;
+specifier|private
+specifier|final
+name|NodeAggregator
+name|aggregator
+decl_stmt|;
 specifier|public
 name|SolrQueryIndex
 parameter_list|(
@@ -355,6 +418,13 @@ operator|.
 name|configuration
 operator|=
 name|configuration
+expr_stmt|;
+comment|// TODO this index should support aggregation in the same way as the Lucene index
+name|this
+operator|.
+name|aggregator
+operator|=
+literal|null
 expr_stmt|;
 block|}
 annotation|@
@@ -438,6 +508,21 @@ else|:
 literal|0
 operator|)
 return|;
+comment|//
+comment|//        FullTextExpression ft = filter.getFullTextConstraint();
+comment|//        if (ft == null) {
+comment|//            // TODO solr should only be triggered for full-text conditions
+comment|//            // return Double.POSITIVE_INFINITY;
+comment|//        }
+comment|//        int cost = 10;
+comment|//        Collection<PropertyRestriction> restrictions = filter.getPropertyRestrictions();
+comment|//        if (restrictions != null) {
+comment|//            cost /= 2;
+comment|//        }
+comment|//        if (filter.getPathRestriction() != null) {
+comment|//            cost /= 2;
+comment|//        }
+comment|//        return cost;
 block|}
 annotation|@
 name|Override
@@ -628,6 +713,46 @@ name|pr
 range|:
 name|propertyRestrictions
 control|)
+block|{
+comment|// native query support
+if|if
+condition|(
+name|NATIVE_SOLR_QUERY
+operator|.
+name|equals
+argument_list|(
+name|pr
+operator|.
+name|propertyName
+argument_list|)
+condition|)
+block|{
+name|queryBuilder
+operator|.
+name|append
+argument_list|(
+name|String
+operator|.
+name|valueOf
+argument_list|(
+name|pr
+operator|.
+name|first
+operator|.
+name|getValue
+argument_list|(
+name|pr
+operator|.
+name|first
+operator|.
+name|getType
+argument_list|()
+argument_list|)
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+else|else
 block|{
 if|if
 condition|(
@@ -992,6 +1117,7 @@ argument_list|(
 literal|"[unexpected!] not handled case"
 argument_list|)
 throw|;
+block|}
 block|}
 block|}
 name|queryBuilder
@@ -1398,6 +1524,24 @@ argument_list|(
 name|query
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|log
+operator|.
+name|isDebugEnabled
+argument_list|()
+condition|)
+block|{
+name|log
+operator|.
+name|debug
+argument_list|(
+literal|"getting response {}"
+argument_list|,
+name|queryResponse
+argument_list|)
+expr_stmt|;
+block|}
 name|cursor
 operator|=
 operator|new
@@ -1602,6 +1746,19 @@ literal|null
 return|;
 block|}
 block|}
+block|}
+annotation|@
+name|Override
+annotation|@
+name|CheckForNull
+specifier|public
+name|NodeAggregator
+name|getNodeAggregator
+parameter_list|()
+block|{
+return|return
+name|aggregator
+return|;
 block|}
 block|}
 end_class
