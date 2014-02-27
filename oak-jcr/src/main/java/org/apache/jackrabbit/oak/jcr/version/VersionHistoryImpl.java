@@ -20,22 +20,6 @@ package|;
 end_package
 
 begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|collect
-operator|.
-name|Iterators
-operator|.
-name|transform
-import|;
-end_import
-
-begin_import
 import|import
 name|java
 operator|.
@@ -324,18 +308,18 @@ import|;
 end_import
 
 begin_import
-import|import
-name|org
+import|import static
+name|com
 operator|.
-name|apache
+name|google
 operator|.
-name|jackrabbit
+name|common
 operator|.
-name|oak
+name|collect
 operator|.
-name|util
+name|Iterators
 operator|.
-name|TODO
+name|transform
 import|;
 end_import
 
