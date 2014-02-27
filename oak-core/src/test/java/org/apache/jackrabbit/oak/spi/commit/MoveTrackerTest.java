@@ -610,9 +610,8 @@ name|Test
 annotation|@
 name|Ignore
 argument_list|(
-literal|"OAK-710"
+literal|"Known Limitation of OAK-710"
 argument_list|)
-comment|// FIXME see OAK-710
 specifier|public
 name|void
 name|test12
