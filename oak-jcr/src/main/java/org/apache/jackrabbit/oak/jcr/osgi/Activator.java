@@ -588,6 +588,7 @@ name|ConfigurationParameters
 name|buildSecurityConfig
 parameter_list|()
 block|{
+comment|// FIXME OAK-1476: review configuration default values which are Adobe specific
 name|Map
 argument_list|<
 name|String
