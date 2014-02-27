@@ -569,7 +569,7 @@ operator|new
 name|WhiteboardExecutor
 argument_list|()
 decl_stmt|;
-comment|// TODO should not be hardcoded
+comment|// FIXME OAK-1476 : SecurityProvider implementation should not be hardcoded
 specifier|private
 specifier|final
 name|SecurityProvider
