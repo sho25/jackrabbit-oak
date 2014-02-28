@@ -41,6 +41,16 @@ end_import
 
 begin_import
 import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|Nonnull
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -201,6 +211,20 @@ begin_import
 import|import
 name|org
 operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|util
+operator|.
+name|Text
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|slf4j
 operator|.
 name|Logger
@@ -249,17 +273,12 @@ name|CONSTRAINT
 import|;
 end_import
 
-begin_comment
-comment|/**  */
-end_comment
-
 begin_class
 class|class
 name|GroupEditor
 extends|extends
 name|DefaultEditor
 block|{
-comment|/**      * default logger      */
 specifier|private
 specifier|static
 specifier|final
@@ -275,19 +294,11 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-comment|// todo: OAK-1480 wrong default. must be retrieved from configuration.
 specifier|private
 specifier|final
-specifier|static
 name|String
 index|[]
-name|ROOTS
-init|=
-block|{
-literal|"home"
-block|,
-literal|"groups"
-block|}
+name|groupsRoot
 decl_stmt|;
 specifier|private
 name|State
@@ -308,8 +319,15 @@ argument_list|()
 decl_stmt|;
 name|GroupEditor
 parameter_list|(
+annotation|@
+name|Nonnull
 name|NodeBuilder
 name|builder
+parameter_list|,
+annotation|@
+name|Nonnull
+name|String
+name|groupsPath
 parameter_list|)
 block|{
 name|this
@@ -320,6 +338,21 @@ operator|new
 name|State
 argument_list|(
 name|builder
+argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|groupsRoot
+operator|=
+name|Text
+operator|.
+name|explode
+argument_list|(
+name|groupsPath
+argument_list|,
+literal|'/'
+argument_list|,
+literal|false
 argument_list|)
 expr_stmt|;
 comment|// writer.setMembershipSizeThreshold(10); // uncomment to test different split sizes
@@ -338,7 +371,7 @@ name|state
 operator|.
 name|depth
 operator|<
-name|ROOTS
+name|groupsRoot
 operator|.
 name|length
 operator|&&
@@ -347,7 +380,7 @@ name|name
 operator|.
 name|equals
 argument_list|(
-name|ROOTS
+name|groupsRoot
 index|[
 name|state
 operator|.
