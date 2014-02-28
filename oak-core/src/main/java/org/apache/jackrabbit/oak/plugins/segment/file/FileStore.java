@@ -97,7 +97,7 @@ name|collect
 operator|.
 name|Lists
 operator|.
-name|newLinkedList
+name|newCopyOnWriteArrayList
 import|;
 end_import
 
@@ -192,16 +192,6 @@ operator|.
 name|nio
 operator|.
 name|ByteBuffer
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|LinkedList
 import|;
 end_import
 
@@ -468,24 +458,24 @@ name|memoryMapping
 decl_stmt|;
 specifier|private
 specifier|final
-name|LinkedList
+name|List
 argument_list|<
 name|TarFile
 argument_list|>
 name|bulkFiles
 init|=
-name|newLinkedList
+name|newCopyOnWriteArrayList
 argument_list|()
 decl_stmt|;
 specifier|private
 specifier|final
-name|LinkedList
+name|List
 argument_list|<
 name|TarFile
 argument_list|>
 name|dataFiles
 init|=
-name|newLinkedList
+name|newCopyOnWriteArrayList
 argument_list|()
 decl_stmt|;
 specifier|private
@@ -1500,7 +1490,7 @@ name|UUID
 name|id
 parameter_list|)
 block|{
-name|LinkedList
+name|List
 argument_list|<
 name|TarFile
 argument_list|>
@@ -1611,7 +1601,7 @@ name|length
 parameter_list|)
 block|{
 comment|// select whether to write a data or a bulk segment
-name|LinkedList
+name|List
 argument_list|<
 name|TarFile
 argument_list|>
@@ -1653,8 +1643,15 @@ operator|||
 operator|!
 name|files
 operator|.
-name|getLast
+name|get
+argument_list|(
+name|files
+operator|.
+name|size
 argument_list|()
+operator|-
+literal|1
+argument_list|)
 operator|.
 name|writeEntry
 argument_list|(
