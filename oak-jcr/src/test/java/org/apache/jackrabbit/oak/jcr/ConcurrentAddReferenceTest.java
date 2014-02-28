@@ -125,16 +125,6 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Ignore
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
 name|Test
 import|;
 end_import
@@ -194,7 +184,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *<code>ConcurrentAddIT</code> adds nodes with multiple sessions in separate  * locations of the repository and creates references to a single node.  */
+comment|/**  *<code>ConcurrentAddReferenceTest</code> adds nodes with multiple sessions in separate  * locations of the repository and creates references to a single node.  */
 end_comment
 
 begin_class
@@ -334,12 +324,6 @@ literal|"unchecked"
 argument_list|)
 annotation|@
 name|Test
-annotation|@
-name|Ignore
-argument_list|(
-literal|"OAK-1472"
-argument_list|)
-comment|// FIXME OAK-1472
 specifier|public
 name|void
 name|addReferences
