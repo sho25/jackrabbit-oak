@@ -298,7 +298,7 @@ if|if
 condition|(
 name|root
 operator|instanceof
-name|AbstractRoot
+name|MutableRoot
 condition|)
 block|{
 name|rootTree
@@ -308,7 +308,7 @@ name|ImmutableTree
 argument_list|(
 operator|(
 operator|(
-name|AbstractRoot
+name|MutableRoot
 operator|)
 name|root
 operator|)

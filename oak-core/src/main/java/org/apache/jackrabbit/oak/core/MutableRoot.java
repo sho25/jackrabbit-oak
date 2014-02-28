@@ -678,9 +678,8 @@ import|;
 end_import
 
 begin_class
-specifier|abstract
 class|class
-name|AbstractRoot
+name|MutableRoot
 implements|implements
 name|Root
 block|{
@@ -714,6 +713,11 @@ specifier|private
 specifier|final
 name|QueryIndexProvider
 name|indexProvider
+decl_stmt|;
+specifier|private
+specifier|final
+name|ContentSessionImpl
+name|session
 decl_stmt|;
 comment|/**      * Current root {@code Tree}      */
 specifier|private
@@ -785,7 +789,7 @@ argument_list|()
 operator|.
 name|getPermissionProvider
 argument_list|(
-name|AbstractRoot
+name|MutableRoot
 operator|.
 name|this
 argument_list|,
@@ -805,7 +809,7 @@ block|}
 block|}
 decl_stmt|;
 comment|/**      * New instance bases on a given {@link NodeStore} and a workspace      *      * @param store            node store      * @param hook             the commit hook      * @param workspaceName    name of the workspace      * @param subject          the subject.      * @param securityProvider the security configuration.      * @param indexProvider    the query index provider.      */
-name|AbstractRoot
+name|MutableRoot
 parameter_list|(
 name|NodeStore
 name|store
@@ -824,6 +828,9 @@ name|securityProvider
 parameter_list|,
 name|QueryIndexProvider
 name|indexProvider
+parameter_list|,
+name|ContentSessionImpl
+name|session
 parameter_list|)
 block|{
 name|this
@@ -877,6 +884,15 @@ name|indexProvider
 operator|=
 name|indexProvider
 expr_stmt|;
+name|this
+operator|.
+name|session
+operator|=
+name|checkNotNull
+argument_list|(
+name|session
+argument_list|)
+expr_stmt|;
 name|builder
 operator|=
 name|store
@@ -913,13 +929,29 @@ name|lastMove
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Called whenever a method on this instance or on any {@code Tree} instance      * obtained from this {@code Root} is called. This default implementation      * does nothing. Sub classes may override this method and throw an exception      * indicating that this {@code Root} instance is not live anymore (e.g. because      * the session has been logged out already).      */
-specifier|protected
+comment|/**      * Called whenever a method on this instance or on any {@code Tree} instance      * obtained from this {@code Root} is called. Throws an exception if this      * {@code Root} instance is not live anymore (e.g. because the session has      * been logged out already).      */
 name|void
 name|checkLive
 parameter_list|()
-block|{     }
+block|{
+name|session
+operator|.
+name|checkLive
+argument_list|()
+expr_stmt|;
+block|}
 comment|//---------------------------------------------------------------< Root>---
+annotation|@
+name|Override
+specifier|public
+name|ContentSession
+name|getContentSession
+parameter_list|()
+block|{
+return|return
+name|session
+return|;
+block|}
 annotation|@
 name|Override
 specifier|public
@@ -1595,7 +1627,7 @@ argument_list|(
 name|getBaseState
 argument_list|()
 argument_list|,
-name|AbstractRoot
+name|MutableRoot
 operator|.
 name|this
 argument_list|,

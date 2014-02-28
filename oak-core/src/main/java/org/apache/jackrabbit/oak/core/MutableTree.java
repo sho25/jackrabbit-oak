@@ -313,7 +313,7 @@ name|oak
 operator|.
 name|core
 operator|.
-name|AbstractRoot
+name|MutableRoot
 operator|.
 name|Move
 import|;
@@ -418,7 +418,7 @@ block|{
 comment|/**      * Underlying {@code Root} of this {@code Tree} instance      */
 specifier|private
 specifier|final
-name|AbstractRoot
+name|MutableRoot
 name|root
 decl_stmt|;
 comment|/**      * Parent of this tree. Null for the root.      */
@@ -433,7 +433,7 @@ name|pendingMoves
 decl_stmt|;
 name|MutableTree
 parameter_list|(
-name|AbstractRoot
+name|MutableRoot
 name|root
 parameter_list|,
 name|NodeBuilder
@@ -472,7 +472,7 @@ block|}
 specifier|private
 name|MutableTree
 parameter_list|(
-name|AbstractRoot
+name|MutableRoot
 name|root
 parameter_list|,
 name|MutableTree
