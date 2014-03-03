@@ -209,67 +209,17 @@ operator|.
 name|save
 argument_list|()
 expr_stmt|;
+comment|// lowercase "or" mean search for the term "or"
 name|String
 name|sql2
 init|=
 literal|"select [jcr:path] as [path] from [nt:base] "
 operator|+
-literal|"where contains([text], 'hello OR hallo') order by [jcr:path]"
-decl_stmt|;
-name|Query
-name|q
-decl_stmt|;
-name|q
-operator|=
-name|qm
-operator|.
-name|createQuery
-argument_list|(
-literal|"explain "
-operator|+
-name|sql2
-argument_list|,
-name|Query
-operator|.
-name|JCR_SQL2
-argument_list|)
-expr_stmt|;
-comment|// TODO the plan should actually be:
-comment|//            assertEquals("[nt:base] as [nt:base] /* " +
-comment|//                    "+((text:hallo text:hello)~1) +text:{* TO *} " +
-comment|//                    "ft:(text:\"hallo\" OR text:\"hello\") " +
-comment|//                    "where contains([nt:base].[text], cast('hello OR hallo' as string)) */",
-comment|//                    getResult(q.execute(), "plan"));
-name|assertEquals
-argument_list|(
-literal|"[nt:base] as [nt:base] /* "
-operator|+
-literal|"aggregate :fulltext:hallo :fulltext:hello "
-operator|+
-literal|"ft:(text:\"hallo\" OR text:\"hello\") "
-operator|+
-literal|"where contains([nt:base].[text], cast('hello OR hallo' as string)) */"
-argument_list|,
-name|getResult
-argument_list|(
-name|q
-operator|.
-name|execute
-argument_list|()
-argument_list|,
-literal|"plan"
-argument_list|)
-argument_list|)
-expr_stmt|;
-comment|// lowercase "or" mean search for the term "or"
-name|sql2
-operator|=
-literal|"select [jcr:path] as [path] from [nt:base] "
-operator|+
 literal|"where contains([text], 'hello or hallo') order by [jcr:path]"
-expr_stmt|;
+decl_stmt|;
+name|Query
 name|q
-operator|=
+init|=
 name|qm
 operator|.
 name|createQuery
@@ -280,7 +230,7 @@ name|Query
 operator|.
 name|JCR_SQL2
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 name|assertEquals
 argument_list|(
 literal|""
@@ -400,51 +350,6 @@ name|qm
 operator|.
 name|createQuery
 argument_list|(
-literal|"explain "
-operator|+
-name|sql2
-argument_list|,
-name|Query
-operator|.
-name|JCR_SQL2
-argument_list|)
-expr_stmt|;
-comment|// TODO the plan should actually be:
-comment|//          assertEquals("[nt:base] as [nt:base] /* " +
-comment|//                  "+text:hallo +:path:/testroot/* +text:{* TO *} " +
-comment|//                  "ft:(text:\"hallo\") " +
-comment|//                  "where (ischildnode([nt:base], [/testroot])) " +
-comment|//                  "and (contains([nt:base].[text], cast('hallo' as string))) */",
-comment|//                  getResult(q.execute(), "plan"));
-name|assertEquals
-argument_list|(
-literal|"[nt:base] as [nt:base] /* "
-operator|+
-literal|"aggregate +:fulltext:hallo* +:path:/testroot/* +text:{* TO *}"
-operator|+
-literal|"ft:(text:\"hallo\") "
-operator|+
-literal|"where (ischildnode([nt:base], [/testroot])) "
-operator|+
-literal|"and (contains([nt:base].[text], cast('hallo' as string))) */"
-argument_list|,
-name|getResult
-argument_list|(
-name|q
-operator|.
-name|execute
-argument_list|()
-argument_list|,
-literal|"plan"
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|q
-operator|=
-name|qm
-operator|.
-name|createQuery
-argument_list|(
 name|sql2
 argument_list|,
 name|Query
@@ -473,13 +378,6 @@ literal|"select [jcr:path] as [path] from [nt:base] "
 operator|+
 literal|"where contains([node1/text], 'hello') order by [jcr:path]"
 expr_stmt|;
-comment|//      q = qm.createQuery("explain " + sql2, Query.JCR_SQL2);
-comment|//    assertEquals("[nt:base] as [nt:base] /* " +
-comment|//            "+text:hallo +:path:/testroot/* +text:{* TO *} " +
-comment|//            "ft:(text:\"hallo\") " +
-comment|//            "where (ischildnode([nt:base], [/testroot])) " +
-comment|//            "and (contains([nt:base].[text], cast('hallo' as string))) */",
-comment|//            getResult(q.execute(), "plan"));
 name|q
 operator|=
 name|qm
@@ -520,51 +418,6 @@ name|qm
 operator|.
 name|createQuery
 argument_list|(
-literal|"explain "
-operator|+
-name|sql2
-argument_list|,
-name|Query
-operator|.
-name|JCR_SQL2
-argument_list|)
-expr_stmt|;
-comment|// TODO the plan should actually be:
-comment|//            assertEquals("[nt:base] as [nt:base] /* " +
-comment|//                    "(text:hallo text:hello)~1 " +
-comment|//                    "ft:(node2/text:\"hallo\" OR node2/text:\"hello\") " +
-comment|//                    "parent:node2 " +
-comment|//                    "where contains([nt:base].[node2/text], cast('hello OR hallo' as string)) */",
-comment|//                    getResult(q.execute(), "plan"));
-name|assertEquals
-argument_list|(
-literal|"[nt:base] as [nt:base] /* "
-operator|+
-literal|"aggregate :fulltext:hallo* :fulltext:hello* "
-operator|+
-literal|"ft:(node2/text:\"hallo\" OR node2/text:\"hello\") "
-operator|+
-literal|"parent:node2 "
-operator|+
-literal|"where contains([nt:base].[node2/text], cast('hello OR hallo' as string)) */"
-argument_list|,
-name|getResult
-argument_list|(
-name|q
-operator|.
-name|execute
-argument_list|()
-argument_list|,
-literal|"plan"
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|q
-operator|=
-name|qm
-operator|.
-name|createQuery
-argument_list|(
 name|sql2
 argument_list|,
 name|Query
@@ -587,68 +440,13 @@ literal|"path"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|sql2
-operator|=
-literal|"select [jcr:path] as [path] from [nt:base] "
-operator|+
-literal|"where contains([node1/text], 'hello') "
-operator|+
-literal|"and contains([node2/text], 'hallo') "
-operator|+
-literal|"order by [jcr:path]"
-expr_stmt|;
-name|q
-operator|=
-name|qm
-operator|.
-name|createQuery
-argument_list|(
-literal|"explain "
-operator|+
-name|sql2
-argument_list|,
-name|Query
-operator|.
-name|JCR_SQL2
-argument_list|)
-expr_stmt|;
 comment|// TODO OAK-890
-name|assertEquals
-argument_list|(
-literal|"[nt:base] as [nt:base] /* "
-operator|+
-literal|"aggregate Not yet implemented "
-operator|+
-literal|"where (contains([nt:base].[node1/text], cast('hello' as string))) "
-operator|+
-literal|"and (contains([nt:base].[node2/text], cast('hallo' as string))) */"
-argument_list|,
-name|getResult
-argument_list|(
-name|q
-operator|.
-name|execute
-argument_list|()
-argument_list|,
-literal|"plan"
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|q
-operator|=
-name|qm
-operator|.
-name|createQuery
-argument_list|(
-name|sql2
-argument_list|,
-name|Query
-operator|.
-name|JCR_SQL2
-argument_list|)
-expr_stmt|;
-comment|// assertEquals("/testroot",
-comment|//        getResult(q.execute(), "path"));
+comment|// sql2 = "select [jcr:path] as [path] from [nt:base] "
+comment|// + "where contains([node1/text], 'hello') "
+comment|// + "and contains([node2/text], 'hallo') "
+comment|// + "order by [jcr:path]";
+comment|// q = qm.createQuery(sql2, Query.JCR_SQL2);
+comment|// assertEquals("/testroot", getResult(q.execute(), "path"));
 block|}
 specifier|static
 name|String

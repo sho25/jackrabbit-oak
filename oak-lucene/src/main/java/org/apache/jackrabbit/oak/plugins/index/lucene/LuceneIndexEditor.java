@@ -160,6 +160,30 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|index
+operator|.
+name|lucene
+operator|.
+name|util
+operator|.
+name|LuceneIndexHelper
+operator|.
+name|skipTokenization
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -1217,6 +1241,12 @@ argument_list|(
 name|pname
 argument_list|,
 name|value
+argument_list|,
+operator|!
+name|skipTokenization
+argument_list|(
+name|pname
+argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
