@@ -74,7 +74,7 @@ specifier|public
 interface|interface
 name|DocumentStore
 block|{
-comment|/**      * Get a document.      *<p>      * The returned document is immutable.      *       * @param<T> the document type      * @param collection the collection      * @param key the key      * @return the document, or null if not found      */
+comment|/**      * Get the document with the given {@code key}. This is a convenience method      * and equivalent to {@link #find(Collection, String, int)} with a      * {@code maxCacheAge} of {@code Integer.MAX_VALUE}.      *<p>      * The returned document is immutable.      *       * @param<T> the document type      * @param collection the collection      * @param key the key      * @return the document, or null if not found      */
 annotation|@
 name|CheckForNull
 argument_list|<
@@ -95,7 +95,7 @@ name|String
 name|key
 parameter_list|)
 function_decl|;
-comment|/**      * Get a document, ignoring the cache if the cached entry is older than the      * specified time.      *<p>      * The returned document is immutable.      *       * @param<T> the document type      * @param collection the collection      * @param key the key      * @param maxCacheAge the maximum age of the cached document (in ms)      * @return the document, or null if not found      */
+comment|/**      * Get the document with the {@code key}. The implementation may serve the      * document from a cache, but the cached document must not be older than      * the given {@code maxCacheAge}. An implementation must invalidate a cached      * document when it detects it is outdated. That is, a subsequent call to      * {@link #find(Collection, String)} must return the newer version of the      * document.      *<p>      * The returned document is immutable.      *       * @param<T> the document type      * @param collection the collection      * @param key the key      * @param maxCacheAge the maximum age of the cached document (in ms)      * @return the document, or null if not found      */
 annotation|@
 name|CheckForNull
 argument_list|<
