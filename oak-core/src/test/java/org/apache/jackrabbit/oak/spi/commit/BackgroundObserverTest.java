@@ -327,7 +327,7 @@ literal|5
 argument_list|,
 name|TimeUnit
 operator|.
-name|MINUTES
+name|SECONDS
 argument_list|)
 argument_list|)
 expr_stmt|;
