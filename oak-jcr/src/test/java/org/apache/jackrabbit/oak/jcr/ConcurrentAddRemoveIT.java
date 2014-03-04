@@ -18,6 +18,18 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|fail
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -105,19 +117,17 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Test
+name|Assume
 import|;
 end_import
 
 begin_import
-import|import static
+import|import
 name|org
 operator|.
 name|junit
 operator|.
-name|Assert
-operator|.
-name|fail
+name|Test
 import|;
 end_import
 
@@ -177,6 +187,18 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+name|Assume
+operator|.
+name|assumeTrue
+argument_list|(
+name|fixture
+operator|!=
+name|NodeStoreFixture
+operator|.
+name|DOCUMENT_JDBC
+argument_list|)
+expr_stmt|;
+comment|// FIXME OAK-1488
 name|List
 argument_list|<
 name|Exception
