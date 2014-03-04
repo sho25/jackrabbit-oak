@@ -438,6 +438,15 @@ return|return
 name|delegate
 return|;
 block|}
+specifier|public
+name|SegmentStore
+name|getSegmentStore
+parameter_list|()
+block|{
+return|return
+name|store
+return|;
+block|}
 annotation|@
 name|Activate
 specifier|public
