@@ -746,15 +746,7 @@ block|{
 name|coreContainer
 operator|.
 name|load
-argument_list|(
-name|solrHomePath
-argument_list|,
-operator|new
-name|File
-argument_list|(
-name|solrConfigPath
-argument_list|)
-argument_list|)
+argument_list|()
 expr_stmt|;
 block|}
 finally|finally

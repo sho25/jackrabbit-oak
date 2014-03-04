@@ -1466,15 +1466,15 @@ name|String
 name|nativeQueryString
 parameter_list|)
 block|{
+comment|// the query string starts with ${supported-handler.selector}?
 return|return
 name|nativeQueryString
 operator|.
 name|matches
 argument_list|(
-literal|"\\w+\\?.*"
+literal|"(mlt|query|select|get)\\\\?.*"
 argument_list|)
 return|;
-comment|// the query string starts with ${handler.selector}?
 block|}
 specifier|private
 name|void
@@ -1493,17 +1493,19 @@ argument_list|,
 literal|"AND"
 argument_list|)
 expr_stmt|;
-comment|// TODO : change this to be not hard coded
 name|solrQuery
 operator|.
 name|setParam
 argument_list|(
 literal|"df"
 argument_list|,
-literal|"catch_all"
+name|configuration
+operator|.
+name|getCatchAllField
+argument_list|()
 argument_list|)
 expr_stmt|;
-comment|// TODO : can we handle this better?
+comment|// TODO : can we handle this better? e.g. with deep paging support?
 name|solrQuery
 operator|.
 name|setParam

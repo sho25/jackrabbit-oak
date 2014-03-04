@@ -112,6 +112,12 @@ name|CommitPolicy
 name|getCommitPolicy
 parameter_list|()
 function_decl|;
+comment|/**      * Provide a field name that is used as the default "catch all" field for searching over all the data      * @return a<code>String</code> representing the Solr field to be used as "catch all" field      */
+specifier|public
+name|String
+name|getCatchAllField
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 

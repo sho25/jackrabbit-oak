@@ -201,6 +201,20 @@ name|lucene
 operator|.
 name|util
 operator|.
+name|LuceneTestCase
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|lucene
+operator|.
+name|util
+operator|.
 name|Version
 import|;
 end_import
@@ -221,27 +235,24 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Ignore
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
 name|Test
 import|;
 end_import
 
 begin_comment
-comment|/**  * Testcase for checking default analyzers configurations behave as expected with regards to path related restrictions  *  * Note that default Solr analyzers for Oak should be equivalent to the ones programmtically defined here.  */
+comment|/**  * Testcase for checking default analyzers configurations behave as expected with regards to path related restrictions  *  * Note that default Solr analyzers for Oak should be equivalent to the ones programmatically defined here.  */
 end_comment
 
 begin_class
 annotation|@
-name|Ignore
+name|LuceneTestCase
+operator|.
+name|SuppressCodecs
+argument_list|(
+block|{
+literal|"Lucene3x"
+block|}
+argument_list|)
 specifier|public
 class|class
 name|DefaultAnalyzersConfigurationTest
@@ -408,7 +419,7 @@ name|ReverseStringFilter
 argument_list|(
 name|Version
 operator|.
-name|LUCENE_41
+name|LUCENE_47
 argument_list|,
 name|source
 argument_list|)
@@ -439,7 +450,7 @@ name|ReverseStringFilter
 argument_list|(
 name|Version
 operator|.
-name|LUCENE_41
+name|LUCENE_47
 argument_list|,
 name|filter
 argument_list|)
@@ -494,7 +505,7 @@ name|ReverseStringFilter
 argument_list|(
 name|Version
 operator|.
-name|LUCENE_41
+name|LUCENE_47
 argument_list|,
 name|source
 argument_list|)
@@ -504,7 +515,9 @@ operator|=
 operator|new
 name|LengthFilter
 argument_list|(
-literal|false
+name|Version
+operator|.
+name|LUCENE_47
 argument_list|,
 name|filter
 argument_list|,
@@ -560,7 +573,7 @@ name|ReverseStringFilter
 argument_list|(
 name|Version
 operator|.
-name|LUCENE_41
+name|LUCENE_47
 argument_list|,
 name|filter
 argument_list|)

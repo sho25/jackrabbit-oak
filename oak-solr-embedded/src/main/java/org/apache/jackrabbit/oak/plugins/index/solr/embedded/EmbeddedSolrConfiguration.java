@@ -305,6 +305,19 @@ operator|.
 name|SOFT
 return|;
 block|}
+annotation|@
+name|Override
+specifier|public
+name|String
+name|getCatchAllField
+parameter_list|()
+block|{
+return|return
+name|SolrServerConfigurationDefaults
+operator|.
+name|CATCHALL_FIELD
+return|;
+block|}
 block|}
 end_class
 

@@ -112,6 +112,14 @@ name|ANC_FIELD_NAME
 init|=
 literal|"path_anc"
 decl_stmt|;
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|CATCHALL_FIELD
+init|=
+literal|"catch_all"
+decl_stmt|;
 block|}
 end_class
 
