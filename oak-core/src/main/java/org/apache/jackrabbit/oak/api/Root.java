@@ -67,16 +67,6 @@ name|Nonnull
 import|;
 end_import
 
-begin_import
-import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nullable
-import|;
-end_import
-
 begin_comment
 comment|/**  * A {@code Root} instance serves as a container for a {@link Tree}. It is  * obtained from a {@link ContentSession}, which governs accessibility and  * visibility of the {@code Tree} and its sub trees.  *<p>  * All root instances created by a content session become invalid after the  * content session is closed. Any method called on an invalid root instance  * will throw an {@code InvalidStateException}.  *<p>  * {@link Tree} instances may become non existing after a call to  * {@link #refresh()}, {@link #rebase()} or {@link #commit()}.  * Any write access to non existing {@code Tree} instances will cause an  * {@code InvalidStateException}.  * @see Tree Existence and iterability of trees  */
 end_comment
@@ -125,10 +115,12 @@ name|void
 name|refresh
 parameter_list|()
 function_decl|;
-comment|/**      * Atomically persists all changes made to the tree attached to this root.      *<p>      * If {@code info} contains a mapping for {@link #COMMIT_PATH} and the      * associated value is a string, implementations may throw a      * {@code CommitFailedException} if there are changes outside of the subtree      * designated by that path and the implementation does not support      * such partial commits. However all implementation must handler the      * case where a {@code path} designates a subtree that contains all      * unpersisted changes.      *<p>      * The {@code info} map is passed to the underlying storage      * as a part of the internal commit information attached to this commit.      * The commit information will be made available to local observers but      * will not be visible to observers on other cluster nodes.      *<p>      * After a successful operation the root is automatically      * {@link #refresh() refreshed}, such that trees previously obtained      * through {@link #getTree(String)} may become non existing.      */
+comment|/**      * Atomically persists all changes made to the tree attached to this root.      *<p>      * If {@code info} contains a mapping for {@link #COMMIT_PATH} and the      * associated value is a string, implementations may throw a      * {@code CommitFailedException} if there are changes outside of the subtree      * designated by that path and the implementation does not support      * such partial commits. However all implementation must handler the      * case where a {@code path} designates a subtree that contains all      * unpersisted changes.      *<p>      * The {@code info} map is passed to the underlying storage      * as a part of the internal commit information attached to this commit.      * The commit information will be made available to local observers but      * will not be visible to observers on other cluster nodes.      *<p>      * After a successful operation the root is automatically      * {@link #refresh() refreshed}, such that trees previously obtained      * through {@link #getTree(String)} may become non existing.      *      * @param info commit information      * @throws CommitFailedException if the commit failed      */
 name|void
 name|commit
 parameter_list|(
+annotation|@
+name|Nonnull
 name|Map
 argument_list|<
 name|String
@@ -140,19 +132,7 @@ parameter_list|)
 throws|throws
 name|CommitFailedException
 function_decl|;
-comment|/**      * Atomically persists all changes made to the tree attached to this root      * at the given {@code path}. An implementation may throw a      * {@code CommitFailedException} if there are changes outside of the subtree      * designated by {@code path} and the implementation does not support      * such partial commits. However all implementation must handler the      * case where a {@code path} designates a subtree that contains all      * unpersisted changes.      *<p>      * After a successful operation the root is automatically      * {@link #refresh() refreshed}, such that trees previously obtained      * through {@link #getTree(String)} may become non existing.      *      * @param path of the subtree to commit      * @throws CommitFailedException if the commit failed      */
-name|void
-name|commit
-parameter_list|(
-annotation|@
-name|Nullable
-name|String
-name|path
-parameter_list|)
-throws|throws
-name|CommitFailedException
-function_decl|;
-comment|/**      * Atomically persists all changes made to the tree attached to this root.      * Calling this method is equivalent to calling the      * {@link #commit(String)} method with a {@code null} argument {@code path}.      *      * @throws CommitFailedException if the commit failed      */
+comment|/**      * Atomically persists all changes made to the tree attached to this root.      * Calling this method is equivalent to calling the      * {@link #commit(Map<String, Object> info)} method with an empty info map.      *      * @throws CommitFailedException if the commit failed      */
 name|void
 name|commit
 parameter_list|()

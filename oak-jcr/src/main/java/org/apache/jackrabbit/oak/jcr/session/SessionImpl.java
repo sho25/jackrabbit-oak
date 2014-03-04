@@ -2240,7 +2240,9 @@ block|{
 name|sd
 operator|.
 name|save
-argument_list|()
+argument_list|(
+literal|null
+argument_list|)
 expr_stmt|;
 return|return
 literal|null
