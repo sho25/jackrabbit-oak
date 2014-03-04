@@ -229,6 +229,18 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+name|Assume
+operator|.
+name|assumeTrue
+argument_list|(
+name|fixture
+operator|!=
+name|NodeStoreFixture
+operator|.
+name|DOCUMENT_JDBC
+argument_list|)
+expr_stmt|;
+comment|// FIXME OAK-1488
 name|List
 argument_list|<
 name|Exception
