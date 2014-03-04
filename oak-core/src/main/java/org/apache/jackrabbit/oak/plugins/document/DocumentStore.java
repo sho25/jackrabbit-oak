@@ -95,7 +95,7 @@ name|String
 name|key
 parameter_list|)
 function_decl|;
-comment|/**      * Get the document with the {@code key}. The implementation may serve the      * document from a cache, but the cached document must not be older than      * the given {@code maxCacheAge}. An implementation must invalidate a cached      * document when it detects it is outdated. That is, a subsequent call to      * {@link #find(Collection, String)} must return the newer version of the      * document.      *<p>      * The returned document is immutable.      *       * @param<T> the document type      * @param collection the collection      * @param key the key      * @param maxCacheAge the maximum age of the cached document (in ms)      * @return the document, or null if not found      */
+comment|/**      * Get the document with the {@code key}. The implementation may serve the      * document from a cache, but the cached document must not be older than      * the given {@code maxCacheAge} in milliseconds. An implementation must      * invalidate a cached document when it detects it is outdated. That is, a      * subsequent call to {@link #find(Collection, String)} must return the      * newer version of the document.      *<p>      * The returned document is immutable.      *       * @param<T> the document type      * @param collection the collection      * @param key the key      * @param maxCacheAge the maximum age of the cached document (in ms)      * @return the document, or null if not found      */
 annotation|@
 name|CheckForNull
 argument_list|<
