@@ -37,6 +37,30 @@ end_import
 
 begin_import
 import|import static
+name|java
+operator|.
+name|util
+operator|.
+name|Collections
+operator|.
+name|synchronizedList
+import|;
+end_import
+
+begin_import
+import|import static
+name|java
+operator|.
+name|util
+operator|.
+name|Collections
+operator|.
+name|synchronizedSet
+import|;
+end_import
+
+begin_import
+import|import static
 name|javax
 operator|.
 name|jcr
@@ -5313,10 +5337,16 @@ name|Expectation
 argument_list|>
 name|expected
 init|=
+name|synchronizedSet
+argument_list|(
 name|Sets
 operator|.
+expr|<
+name|Expectation
+operator|>
 name|newCopyOnWriteArraySet
 argument_list|()
+argument_list|)
 decl_stmt|;
 specifier|private
 specifier|final
@@ -5326,10 +5356,16 @@ name|Event
 argument_list|>
 name|unexpected
 init|=
+name|synchronizedList
+argument_list|(
 name|Lists
 operator|.
+expr|<
+name|Event
+operator|>
 name|newCopyOnWriteArrayList
 argument_list|()
+argument_list|)
 decl_stmt|;
 specifier|private
 specifier|volatile
