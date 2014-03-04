@@ -445,7 +445,6 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-block|}
 try|try
 block|{
 name|tempIndexes
@@ -501,6 +500,7 @@ argument_list|,
 name|e
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 block|}
