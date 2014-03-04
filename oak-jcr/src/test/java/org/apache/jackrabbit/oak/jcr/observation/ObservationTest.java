@@ -726,6 +726,14 @@ name|TEST_TYPE
 init|=
 literal|"mix:test"
 decl_stmt|;
+specifier|public
+specifier|static
+specifier|final
+name|int
+name|TIME_OUT
+init|=
+literal|2
+decl_stmt|;
 specifier|private
 name|Session
 name|observingSession
@@ -1029,7 +1037,7 @@ name|listener
 operator|.
 name|getMissing
 argument_list|(
-literal|2
+name|TIME_OUT
 argument_list|,
 name|TimeUnit
 operator|.
@@ -1182,7 +1190,7 @@ name|listener
 operator|.
 name|getMissing
 argument_list|(
-literal|2
+name|TIME_OUT
 argument_list|,
 name|TimeUnit
 operator|.
@@ -1309,7 +1317,7 @@ name|listener
 operator|.
 name|getMissing
 argument_list|(
-literal|2
+name|TIME_OUT
 argument_list|,
 name|TimeUnit
 operator|.
@@ -1390,7 +1398,7 @@ name|listener
 operator|.
 name|getMissing
 argument_list|(
-literal|2
+name|TIME_OUT
 argument_list|,
 name|TimeUnit
 operator|.
@@ -1558,7 +1566,7 @@ name|listener
 operator|.
 name|getMissing
 argument_list|(
-literal|2
+name|TIME_OUT
 argument_list|,
 name|TimeUnit
 operator|.
@@ -1624,7 +1632,7 @@ name|listener
 operator|.
 name|getMissing
 argument_list|(
-literal|2
+name|TIME_OUT
 argument_list|,
 name|TimeUnit
 operator|.
@@ -1684,7 +1692,7 @@ name|listener
 operator|.
 name|getMissing
 argument_list|(
-literal|2
+name|TIME_OUT
 argument_list|,
 name|TimeUnit
 operator|.
@@ -1838,7 +1846,7 @@ name|listener
 operator|.
 name|getMissing
 argument_list|(
-literal|2
+name|TIME_OUT
 argument_list|,
 name|TimeUnit
 operator|.
@@ -2005,7 +2013,7 @@ name|listener
 operator|.
 name|getMissing
 argument_list|(
-literal|2
+name|TIME_OUT
 argument_list|,
 name|TimeUnit
 operator|.
@@ -2137,7 +2145,7 @@ name|listener
 operator|.
 name|getMissing
 argument_list|(
-literal|2
+name|TIME_OUT
 argument_list|,
 name|TimeUnit
 operator|.
@@ -2355,7 +2363,7 @@ name|listener
 operator|.
 name|getMissing
 argument_list|(
-literal|2
+name|TIME_OUT
 argument_list|,
 name|TimeUnit
 operator|.
@@ -2542,7 +2550,7 @@ name|listener
 operator|.
 name|getMissing
 argument_list|(
-literal|2
+name|TIME_OUT
 argument_list|,
 name|TimeUnit
 operator|.
@@ -2747,7 +2755,7 @@ name|hasEvents
 operator|.
 name|get
 argument_list|(
-literal|2
+name|TIME_OUT
 argument_list|,
 name|TimeUnit
 operator|.
@@ -3160,7 +3168,7 @@ name|listener
 operator|.
 name|getMissing
 argument_list|(
-literal|2
+name|TIME_OUT
 argument_list|,
 name|TimeUnit
 operator|.
@@ -3471,7 +3479,7 @@ name|listener
 operator|.
 name|getMissing
 argument_list|(
-literal|2
+name|TIME_OUT
 argument_list|,
 name|TimeUnit
 operator|.
@@ -3619,7 +3627,7 @@ name|listener
 operator|.
 name|getMissing
 argument_list|(
-literal|2
+name|TIME_OUT
 argument_list|,
 name|TimeUnit
 operator|.
@@ -3763,7 +3771,7 @@ name|listener
 operator|.
 name|getMissing
 argument_list|(
-literal|2
+name|TIME_OUT
 argument_list|,
 name|TimeUnit
 operator|.
@@ -3950,7 +3958,7 @@ name|listener
 operator|.
 name|getMissing
 argument_list|(
-literal|2
+name|TIME_OUT
 argument_list|,
 name|TimeUnit
 operator|.
@@ -4169,7 +4177,7 @@ name|listener
 operator|.
 name|getMissing
 argument_list|(
-literal|2
+name|TIME_OUT
 argument_list|,
 name|TimeUnit
 operator|.
@@ -4436,7 +4444,7 @@ name|listener
 operator|.
 name|getMissing
 argument_list|(
-literal|2
+name|TIME_OUT
 argument_list|,
 name|TimeUnit
 operator|.
@@ -4696,7 +4704,7 @@ name|listener
 operator|.
 name|getMissing
 argument_list|(
-literal|2
+name|TIME_OUT
 argument_list|,
 name|TimeUnit
 operator|.
@@ -4852,7 +4860,7 @@ name|listener
 operator|.
 name|getMissing
 argument_list|(
-literal|2
+name|TIME_OUT
 argument_list|,
 name|TimeUnit
 operator|.
@@ -5021,7 +5029,7 @@ name|listener
 operator|.
 name|getMissing
 argument_list|(
-literal|2
+name|TIME_OUT
 argument_list|,
 name|TimeUnit
 operator|.
