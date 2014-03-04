@@ -5836,13 +5836,6 @@ name|found
 operator|=
 literal|true
 expr_stmt|;
-name|expected
-operator|.
-name|remove
-argument_list|(
-name|exp
-argument_list|)
-expr_stmt|;
 name|exp
 operator|.
 name|complete
