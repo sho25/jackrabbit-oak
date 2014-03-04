@@ -821,10 +821,6 @@ name|save
 argument_list|()
 expr_stmt|;
 block|}
-name|assertTrue
-argument_list|(
-literal|"Gave up waiting for events"
-argument_list|,
 name|Timer
 operator|.
 name|waitFor
@@ -851,7 +847,6 @@ literal|1000
 return|;
 block|}
 block|}
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|assertEquals
@@ -910,10 +905,6 @@ name|save
 argument_list|()
 expr_stmt|;
 block|}
-name|assertTrue
-argument_list|(
-literal|"Gave up waiting for events"
-argument_list|,
 name|Timer
 operator|.
 name|waitFor
@@ -940,7 +931,6 @@ literal|1000
 return|;
 block|}
 block|}
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|assertEquals
@@ -998,10 +988,6 @@ name|save
 argument_list|()
 expr_stmt|;
 block|}
-name|assertTrue
-argument_list|(
-literal|"Gave up waiting for events"
-argument_list|,
 name|Timer
 operator|.
 name|waitFor
@@ -1028,7 +1014,6 @@ literal|1100
 return|;
 block|}
 block|}
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|assertEquals
@@ -1086,10 +1071,6 @@ name|save
 argument_list|()
 expr_stmt|;
 block|}
-name|assertTrue
-argument_list|(
-literal|"Gave up waiting for events"
-argument_list|,
 name|Timer
 operator|.
 name|waitFor
@@ -1116,7 +1097,6 @@ literal|100
 return|;
 block|}
 block|}
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|assertEquals
@@ -1298,10 +1278,6 @@ name|save
 argument_list|()
 expr_stmt|;
 block|}
-name|assertTrue
-argument_list|(
-literal|"Gave up waiting for events"
-argument_list|,
 name|Timer
 operator|.
 name|waitFor
@@ -1328,7 +1304,6 @@ literal|1100
 return|;
 block|}
 block|}
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|assertEquals
