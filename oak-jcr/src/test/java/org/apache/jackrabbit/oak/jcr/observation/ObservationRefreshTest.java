@@ -527,7 +527,11 @@ specifier|final
 name|long
 name|CONDITION_TIMEOUT
 init|=
-literal|30000
+literal|10
+operator|*
+literal|60
+operator|*
+literal|1000
 decl_stmt|;
 specifier|private
 name|Session
