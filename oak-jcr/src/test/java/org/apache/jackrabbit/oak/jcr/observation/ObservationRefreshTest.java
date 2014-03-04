@@ -130,6 +130,18 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertTrue
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -805,6 +817,10 @@ name|save
 argument_list|()
 expr_stmt|;
 block|}
+name|assertTrue
+argument_list|(
+literal|"Gave up waiting for events"
+argument_list|,
 name|Timer
 operator|.
 name|waitFor
@@ -831,6 +847,7 @@ literal|1000
 return|;
 block|}
 block|}
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|assertEquals
@@ -889,6 +906,10 @@ name|save
 argument_list|()
 expr_stmt|;
 block|}
+name|assertTrue
+argument_list|(
+literal|"Gave up waiting for events"
+argument_list|,
 name|Timer
 operator|.
 name|waitFor
@@ -915,6 +936,7 @@ literal|1000
 return|;
 block|}
 block|}
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|assertEquals
@@ -972,6 +994,10 @@ name|save
 argument_list|()
 expr_stmt|;
 block|}
+name|assertTrue
+argument_list|(
+literal|"Gave up waiting for events"
+argument_list|,
 name|Timer
 operator|.
 name|waitFor
@@ -998,6 +1024,7 @@ literal|1100
 return|;
 block|}
 block|}
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|assertEquals
@@ -1055,6 +1082,10 @@ name|save
 argument_list|()
 expr_stmt|;
 block|}
+name|assertTrue
+argument_list|(
+literal|"Gave up waiting for events"
+argument_list|,
 name|Timer
 operator|.
 name|waitFor
@@ -1081,6 +1112,7 @@ literal|100
 return|;
 block|}
 block|}
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|assertEquals
@@ -1135,6 +1167,10 @@ operator|.
 name|save
 argument_list|()
 expr_stmt|;
+name|assertTrue
+argument_list|(
+literal|"Gave up waiting for events"
+argument_list|,
 name|Timer
 operator|.
 name|waitFor
@@ -1160,6 +1196,7 @@ return|;
 block|}
 block|}
 argument_list|)
+argument_list|)
 expr_stmt|;
 name|n
 operator|.
@@ -1179,6 +1216,10 @@ operator|.
 name|save
 argument_list|()
 expr_stmt|;
+name|assertTrue
+argument_list|(
+literal|"Gave up waiting for events"
+argument_list|,
 name|Timer
 operator|.
 name|waitFor
@@ -1204,6 +1245,7 @@ name|test100Exists
 return|;
 block|}
 block|}
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -1252,6 +1294,10 @@ name|save
 argument_list|()
 expr_stmt|;
 block|}
+name|assertTrue
+argument_list|(
+literal|"Gave up waiting for events"
+argument_list|,
 name|Timer
 operator|.
 name|waitFor
@@ -1278,6 +1324,7 @@ literal|1100
 return|;
 block|}
 block|}
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|assertEquals
