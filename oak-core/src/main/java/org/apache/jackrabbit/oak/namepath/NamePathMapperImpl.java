@@ -388,6 +388,8 @@ block|}
 elseif|else
 if|if
 condition|(
+name|nameMapper
+operator|.
 name|getSessionLocalMappings
 argument_list|()
 operator|.
@@ -1184,6 +1186,8 @@ operator|-
 literal|1
 operator|&&
 operator|!
+name|nameMapper
+operator|.
 name|getSessionLocalMappings
 argument_list|()
 operator|.
