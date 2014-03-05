@@ -256,7 +256,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Continuation-based content diff implementation that generates  * {@link EventHandler} callbacks by recursing down a content diff  * in a way that guarantees that only a finite number of callbacks  * will be made during a {@link #generate()} method call, regardless  * of how large or complex the content diff is.  *<p>  * A simple usage pattern would look like this:  *<pre>  * EventGenerator generator = new EventGenerator(before, after, handler);  * while (generator.isDone()) {  *     generator.generate();  * }  *</pre>  */
+comment|/**  * Continuation-based content diff implementation that generates  * {@link EventHandler} callbacks by recursing down a content diff  * in a way that guarantees that only a finite number of callbacks  * will be made during a {@link #generate()} method call, regardless  * of how large or complex the content diff is.  *<p>  * A simple usage pattern would look like this:  *<pre>  * EventGenerator generator = new EventGenerator(before, after, handler);  * while (!generator.isDone()) {  *     generator.generate();  * }  *</pre>  */
 end_comment
 
 begin_class
