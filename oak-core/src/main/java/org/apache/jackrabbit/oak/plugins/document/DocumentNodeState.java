@@ -517,6 +517,26 @@ name|oak
 operator|.
 name|plugins
 operator|.
+name|document
+operator|.
+name|DocumentMK
+operator|.
+name|MANY_CHILDREN_THRESHOLD
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
 name|memory
 operator|.
 name|EmptyNodeState
@@ -564,15 +584,6 @@ init|=
 name|INITIAL_FETCH_SIZE
 operator|<<
 literal|4
-decl_stmt|;
-comment|/**      * Number of child nodes beyond which {@link DocumentNodeStore#}      * is used for diffing.      */
-specifier|public
-specifier|static
-specifier|final
-name|int
-name|LOCAL_DIFF_THRESHOLD
-init|=
-literal|10
 decl_stmt|;
 specifier|private
 specifier|final
@@ -1359,10 +1370,10 @@ if|if
 condition|(
 name|getChildNodeCount
 argument_list|(
-name|LOCAL_DIFF_THRESHOLD
+name|MANY_CHILDREN_THRESHOLD
 argument_list|)
 operator|>
-name|LOCAL_DIFF_THRESHOLD
+name|MANY_CHILDREN_THRESHOLD
 condition|)
 block|{
 comment|// use DocumentNodeStore compare when there are many children

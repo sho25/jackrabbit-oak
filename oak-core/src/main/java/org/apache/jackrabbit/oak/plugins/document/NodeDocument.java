@@ -428,6 +428,7 @@ comment|/**  * A document storing data about a node.  */
 end_comment
 
 begin_class
+specifier|final
 specifier|public
 class|class
 name|NodeDocument
@@ -1293,25 +1294,6 @@ decl_stmt|;
 if|if
 condition|(
 name|depth
-operator|==
-literal|null
-condition|)
-block|{
-comment|// check full map
-name|depth
-operator|=
-name|getCommitRoot
-argument_list|()
-operator|.
-name|get
-argument_list|(
-name|revision
-argument_list|)
-expr_stmt|;
-block|}
-if|if
-condition|(
-name|depth
 operator|!=
 literal|null
 condition|)
@@ -1364,12 +1346,45 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-else|else
+comment|// check previous
+for|for
+control|(
+name|NodeDocument
+name|prev
+range|:
+name|getPreviousDocs
+argument_list|(
+name|COMMIT_ROOT
+argument_list|,
+name|revision
+argument_list|)
+control|)
 block|{
+name|String
+name|path
+init|=
+name|prev
+operator|.
+name|getCommitRootPath
+argument_list|(
+name|revision
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|path
+operator|!=
+literal|null
+condition|)
+block|{
+return|return
+name|path
+return|;
+block|}
+block|}
 return|return
 literal|null
 return|;
-block|}
 block|}
 comment|/**      * Get the revision of the latest change made to this node.      *      * @param context the revision context      * @param changeRev the revision of the current change      * @param handler the conflict handler, which is called for concurrent changes      *                preceding<code>changeRev</code>.      * @return the revision, or null if deleted      */
 annotation|@
@@ -3495,6 +3510,8 @@ argument_list|,
 name|String
 argument_list|>
 operator|)
+name|data
+operator|.
 name|get
 argument_list|(
 name|key
@@ -4684,6 +4701,22 @@ operator|.
 name|getKey
 argument_list|()
 decl_stmt|;
+comment|// ignore revisions newer than readRevision
+comment|// -> these are not visible anyway
+if|if
+condition|(
+name|isRevisionNewer
+argument_list|(
+name|context
+argument_list|,
+name|propRev
+argument_list|,
+name|readRevision
+argument_list|)
+condition|)
+block|{
+continue|continue;
+block|}
 comment|// resolve revision
 name|NodeDocument
 name|commitRoot

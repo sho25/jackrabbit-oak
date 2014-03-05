@@ -456,7 +456,7 @@ name|getInteger
 argument_list|(
 literal|"oak.documentMK.manyChildren"
 argument_list|,
-literal|50
+literal|10
 argument_list|)
 decl_stmt|;
 comment|/**      * Enable the LIRS cache.      */
