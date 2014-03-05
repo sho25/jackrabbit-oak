@@ -1165,10 +1165,6 @@ block|}
 name|String
 name|name
 init|=
-name|PathUtils
-operator|.
-name|getName
-argument_list|(
 name|c
 operator|.
 name|children
@@ -1179,7 +1175,6 @@ operator|(
 name|int
 operator|)
 name|i
-argument_list|)
 argument_list|)
 decl_stmt|;
 name|json

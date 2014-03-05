@@ -2121,7 +2121,7 @@ argument_list|)
 decl_stmt|;
 name|assertEquals
 argument_list|(
-literal|"[/test]"
+literal|"[test]"
 argument_list|,
 name|c
 operator|.
@@ -2167,7 +2167,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"[/test/a, /test/b]"
+literal|"[a, b]"
 argument_list|,
 name|c
 operator|.
