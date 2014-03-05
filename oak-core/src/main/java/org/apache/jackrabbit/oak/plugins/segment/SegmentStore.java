@@ -103,13 +103,6 @@ name|length
 parameter_list|)
 function_decl|;
 name|void
-name|deleteSegment
-parameter_list|(
-name|UUID
-name|segmentId
-parameter_list|)
-function_decl|;
-name|void
 name|close
 parameter_list|()
 function_decl|;

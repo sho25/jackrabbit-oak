@@ -1749,25 +1749,6 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|void
-name|deleteSegment
-parameter_list|(
-name|UUID
-name|segmentId
-parameter_list|)
-block|{
-comment|// TODO: implement
-name|super
-operator|.
-name|deleteSegment
-argument_list|(
-name|segmentId
-argument_list|)
-expr_stmt|;
-block|}
-annotation|@
-name|Override
-specifier|public
 name|Blob
 name|readBlob
 parameter_list|(
