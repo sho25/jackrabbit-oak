@@ -1182,6 +1182,10 @@ name|options
 argument_list|)
 argument_list|)
 block|,
+operator|new
+name|ConcurrentWriteACLTest
+argument_list|()
+block|,
 name|ReadManyTest
 operator|.
 name|linear
