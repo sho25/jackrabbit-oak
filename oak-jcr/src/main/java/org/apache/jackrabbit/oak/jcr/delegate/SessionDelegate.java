@@ -37,6 +37,18 @@ end_import
 
 begin_import
 import|import static
+name|java
+operator|.
+name|lang
+operator|.
+name|System
+operator|.
+name|nanoTime
+import|;
+end_import
+
+begin_import
+import|import static
 name|org
 operator|.
 name|apache
@@ -564,6 +576,14 @@ name|SessionStats
 name|sessionStats
 decl_stmt|;
 specifier|private
+specifier|volatile
+name|long
+name|lastAccessTimeNS
+init|=
+name|nanoTime
+argument_list|()
+decl_stmt|;
+specifier|private
 specifier|final
 name|AtomicLong
 name|readCounter
@@ -726,6 +746,18 @@ name|sessionStats
 return|;
 block|}
 specifier|public
+name|long
+name|getNanosecondsSinceLastAccess
+parameter_list|()
+block|{
+return|return
+name|nanoTime
+argument_list|()
+operator|-
+name|lastAccessTimeNS
+return|;
+block|}
+specifier|public
 name|void
 name|refreshAtNextAccess
 parameter_list|()
@@ -784,6 +816,12 @@ throws|throws
 name|RepositoryException
 block|{
 comment|// Synchronize to avoid conflicting refreshes from concurrent JCR API calls
+name|long
+name|t0
+init|=
+name|nanoTime
+argument_list|()
+decl_stmt|;
 if|if
 condition|(
 name|sessionOpCount
@@ -791,14 +829,37 @@ operator|==
 literal|0
 condition|)
 block|{
-comment|// Refresh and precondition checks only for non re-entrant session operations
+comment|// Refresh and precondition checks only for non re-entrant
+comment|// session operations. Don't refresh if this operation is a
+comment|// refresh operation itself or a save operation, which does an
+comment|// implicit refresh, or logout for obvious reasons.
 if|if
 condition|(
+operator|!
+name|sessionOperation
+operator|.
+name|isRefresh
+argument_list|()
+operator|&&
+operator|!
+name|sessionOperation
+operator|.
+name|isSave
+argument_list|()
+operator|&&
+operator|!
+name|sessionOperation
+operator|.
+name|isLogout
+argument_list|()
+operator|&&
 name|refreshStrategy
 operator|.
 name|needsRefresh
 argument_list|(
-name|sessionOperation
+name|t0
+operator|-
+name|lastAccessTimeNS
 argument_list|)
 condition|)
 block|{
@@ -822,14 +883,6 @@ name|checkPreconditions
 argument_list|()
 expr_stmt|;
 block|}
-name|long
-name|t0
-init|=
-name|System
-operator|.
-name|nanoTime
-argument_list|()
-decl_stmt|;
 try|try
 block|{
 name|sessionOpCount
@@ -854,11 +907,13 @@ return|;
 block|}
 finally|finally
 block|{
+name|lastAccessTimeNS
+operator|=
+name|t0
+expr_stmt|;
 name|long
 name|dt
 init|=
-name|System
-operator|.
 name|nanoTime
 argument_list|()
 operator|-
