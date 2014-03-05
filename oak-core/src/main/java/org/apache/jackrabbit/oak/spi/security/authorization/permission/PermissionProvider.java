@@ -99,7 +99,7 @@ name|void
 name|refresh
 parameter_list|()
 function_decl|;
-comment|/**      * Returns the set of privilege names which are granted to the set of      * {@code Principal}s associated with this provider instance for the      * specified {@code Tree}.      *      * @param tree The {@code tree} for which the privileges should be retrieved.      * @return      */
+comment|/**      * Returns the set of privilege names which are granted to the set of      * {@code Principal}s associated with this provider instance for the      * specified {@code Tree}.      *      * @param tree The {@code tree} for which the privileges should be retrieved.      * @return set of privilege names      */
 annotation|@
 name|Nonnull
 name|Set
@@ -135,7 +135,7 @@ name|RepositoryPermission
 name|getRepositoryPermission
 parameter_list|()
 function_decl|;
-comment|/**      * Return the {@coe TreePermission} for the set of {@code Principal}s associated      * with this provider at the specified {@code tree}.      *      * @param tree The tree for which the {@code TreePermission} object should be built.      * @param parentPermission The {@code TreePermission} object that has been      * obtained before for the parent tree.      * @return The {@code TreePermission} object for the specified {@code tree}.      */
+comment|/**      * Return the {@code TreePermission} for the set of {@code Principal}s associated      * with this provider at the specified {@code tree}.      *      * @param tree The tree for which the {@code TreePermission} object should be built.      * @param parentPermission The {@code TreePermission} object that has been      * obtained before for the parent tree.      * @return The {@code TreePermission} object for the specified {@code tree}.      */
 name|TreePermission
 name|getTreePermission
 parameter_list|(
