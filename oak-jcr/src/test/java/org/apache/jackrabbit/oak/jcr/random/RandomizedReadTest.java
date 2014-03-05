@@ -217,24 +217,11 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Ignore
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
 name|Test
 import|;
 end_import
 
 begin_class
-annotation|@
-name|Ignore
-comment|// FIXME
 specifier|public
 class|class
 name|RandomizedReadTest
@@ -380,6 +367,8 @@ literal|"/n1/n3/n9"
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|setupContent
@@ -536,6 +525,8 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|clearContent
@@ -832,6 +823,7 @@ block|}
 block|}
 block|}
 specifier|private
+specifier|static
 name|String
 name|getPath
 parameter_list|(
