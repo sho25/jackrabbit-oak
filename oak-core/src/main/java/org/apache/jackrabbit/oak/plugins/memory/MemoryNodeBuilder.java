@@ -352,6 +352,12 @@ specifier|private
 name|NodeState
 name|base
 decl_stmt|;
+comment|/**      * Head of the root builder.      */
+specifier|private
+specifier|final
+name|RootHead
+name|rootHead
+decl_stmt|;
 comment|/**      * Head of this builder. Always use {@link #head()} for accessing to      * ensure the connected state is correctly updated.      */
 specifier|private
 name|Head
@@ -412,12 +418,20 @@ name|baseRevision
 expr_stmt|;
 name|this
 operator|.
+name|rootHead
+operator|=
+name|parent
+operator|.
+name|rootHead
+expr_stmt|;
+name|this
+operator|.
 name|head
 operator|=
 operator|new
 name|UnconnectedHead
 argument_list|(
-name|baseRevision
+name|this
 argument_list|,
 name|base
 argument_list|)
@@ -468,11 +482,19 @@ argument_list|)
 expr_stmt|;
 name|this
 operator|.
-name|head
+name|rootHead
 operator|=
 operator|new
 name|RootHead
-argument_list|()
+argument_list|(
+name|this
+argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|head
+operator|=
+name|rootHead
 expr_stmt|;
 block|}
 comment|/**      * Update the head of this builder to reflect the actual connected state.      * @return  head of this builder      */
@@ -481,28 +503,11 @@ name|Head
 name|head
 parameter_list|()
 block|{
-name|Head
-name|newHead
-init|=
+return|return
 name|head
 operator|.
 name|update
 argument_list|()
-decl_stmt|;
-if|if
-condition|(
-name|newHead
-operator|!=
-name|head
-condition|)
-block|{
-name|head
-operator|=
-name|newHead
-expr_stmt|;
-block|}
-return|return
-name|newHead
 return|;
 block|}
 comment|/**      * @return  {@code true} iff this is the root builder      */
@@ -647,7 +652,6 @@ expr_stmt|;
 name|baseRevision
 operator|=
 name|rootHead
-argument_list|()
 operator|.
 name|setState
 argument_list|(
@@ -677,7 +681,6 @@ comment|// updating the base revision forces all sub-builders to refresh
 name|baseRevision
 operator|=
 name|rootHead
-argument_list|()
 operator|.
 name|setState
 argument_list|(
@@ -1493,6 +1496,8 @@ parameter_list|)
 block|{
 return|return
 name|head
+operator|.
+name|update
 argument_list|()
 operator|.
 name|getCurrentNodeState
@@ -1846,20 +1851,6 @@ argument_list|()
 return|;
 block|}
 specifier|private
-name|RootHead
-name|rootHead
-parameter_list|()
-block|{
-return|return
-operator|(
-name|RootHead
-operator|)
-name|rootBuilder
-operator|.
-name|head
-return|;
-block|}
-specifier|private
 name|StringBuilder
 name|getPath
 parameter_list|(
@@ -1918,58 +1909,42 @@ argument_list|()
 return|;
 block|}
 comment|//------------------------------------------------------------< Head>---
-comment|/**      * Subclasses of this base class represent the different states associated      * builders can have:<em>unconnected</em>,<em>connected</em>, and<em>root</em>.      * Its methods provide access to the node state being built by this builder.      */
+comment|/**      * Implementations of this interface represent the different states      * associated builders can have:<em>unconnected</em>,<em>connected</em>,      * and<em>root</em>. Its methods provide access to the node state being      * built by this builder.      */
 specifier|private
-specifier|abstract
-specifier|static
-class|class
+interface|interface
 name|Head
 block|{
 comment|/**          * Returns the up-to-date head of the associated builder. In most          * cases the returned value will be the current head instance, but          * a different head can be returned if a state transition is needed.          * The returned value is then used as the new current head of the          * builder.          *          * @return up-to-date head of the associated builder          */
-specifier|public
-specifier|abstract
 name|Head
 name|update
 parameter_list|()
 function_decl|;
 comment|/**          * Returns the current node state associated with this head. This state          * is only stable across one method call and must not be passed outside          * the {@code NodeBuilder} API boundary.          * @return  current head state.          */
-specifier|public
-specifier|abstract
 name|NodeState
 name|getCurrentNodeState
 parameter_list|()
 function_decl|;
 comment|/**          * Connects the builder to which this head belongs and all its parents          * and return the mutable node state associated with this head. This state          * is only stable across one method call and must not be passed outside          * the {@code NodeBuilder} API boundary.          * @return  current head state.          */
-specifier|public
-specifier|abstract
 name|MutableNodeState
 name|getMutableNodeState
 parameter_list|()
 function_decl|;
 comment|/**          * Returns the current nodes state associated with this head.          * @return  current head state.          */
-specifier|public
-specifier|abstract
 name|NodeState
 name|getImmutableNodeState
 parameter_list|()
 function_decl|;
 comment|/**          * Check whether the associated builder represents a modified node, which has          * either modified properties or removed or added child nodes.          * @return  {@code true} for a modified node          */
-specifier|public
-specifier|abstract
 name|boolean
 name|isModified
 parameter_list|()
 function_decl|;
 comment|/**          * Check whether the associated builder represents a node that          * used to exist but was replaced with other content.          *          * @return  {@code true} for a replaced node          */
-specifier|public
-specifier|abstract
 name|boolean
 name|isReplaced
 parameter_list|()
 function_decl|;
 comment|/**          * Check whether the named property is replaced.          *          * @param name property name          * @return {@code true} for a replaced property          */
-specifier|public
-specifier|abstract
 name|boolean
 name|isReplaced
 parameter_list|(
@@ -1979,11 +1954,22 @@ parameter_list|)
 function_decl|;
 block|}
 specifier|private
+specifier|static
 class|class
 name|UnconnectedHead
-extends|extends
+implements|implements
 name|Head
 block|{
+specifier|private
+specifier|final
+name|MemoryNodeBuilder
+name|builder
+decl_stmt|;
+specifier|private
+specifier|final
+name|RootHead
+name|rootHead
+decl_stmt|;
 specifier|private
 name|long
 name|revision
@@ -1994,8 +1980,8 @@ name|state
 decl_stmt|;
 name|UnconnectedHead
 parameter_list|(
-name|long
-name|revision
+name|MemoryNodeBuilder
+name|builder
 parameter_list|,
 name|NodeState
 name|state
@@ -2003,9 +1989,25 @@ parameter_list|)
 block|{
 name|this
 operator|.
+name|builder
+operator|=
+name|builder
+expr_stmt|;
+name|this
+operator|.
+name|rootHead
+operator|=
+name|builder
+operator|.
+name|rootHead
+expr_stmt|;
+name|this
+operator|.
 name|revision
 operator|=
-name|revision
+name|builder
+operator|.
+name|baseRevision
 expr_stmt|;
 name|this
 operator|.
@@ -2025,7 +2027,6 @@ name|long
 name|rootRevision
 init|=
 name|rootHead
-argument_list|()
 operator|.
 name|revision
 decl_stmt|;
@@ -2040,6 +2041,8 @@ comment|// root revision changed: recursively re-get state from parent
 name|NodeState
 name|parentState
 init|=
+name|builder
+operator|.
 name|parent
 operator|.
 name|head
@@ -2055,6 +2058,8 @@ name|parentState
 operator|.
 name|getChildNode
 argument_list|(
+name|builder
+operator|.
 name|name
 argument_list|)
 decl_stmt|;
@@ -2066,15 +2071,25 @@ name|MutableNodeState
 condition|)
 block|{
 comment|// transition state to ConnectedHead
-return|return
+name|builder
+operator|.
+name|head
+operator|=
 operator|new
 name|ConnectedHead
 argument_list|(
+name|builder
+argument_list|,
 operator|(
 name|MutableNodeState
 operator|)
 name|newState
 argument_list|)
+expr_stmt|;
+return|return
+name|builder
+operator|.
+name|head
 return|;
 block|}
 else|else
@@ -2116,6 +2131,8 @@ comment|// switch to connected state recursively up to the parent
 name|MutableNodeState
 name|parentState
 init|=
+name|builder
+operator|.
 name|parent
 operator|.
 name|head
@@ -2131,6 +2148,8 @@ name|parentState
 operator|.
 name|getMutableChildNode
 argument_list|(
+name|builder
+operator|.
 name|name
 argument_list|)
 decl_stmt|;
@@ -2139,6 +2158,8 @@ return|return
 operator|new
 name|ConnectedHead
 argument_list|(
+name|builder
+argument_list|,
 name|state
 argument_list|)
 operator|.
@@ -2177,6 +2198,8 @@ name|EqualsDiff
 operator|.
 name|modified
 argument_list|(
+name|builder
+operator|.
 name|base
 argument_list|()
 argument_list|,
@@ -2226,6 +2249,8 @@ name|add
 argument_list|(
 literal|"path"
 argument_list|,
+name|builder
+operator|.
 name|getPath
 argument_list|()
 argument_list|)
@@ -2236,18 +2261,20 @@ return|;
 block|}
 block|}
 specifier|private
+specifier|static
 class|class
 name|ConnectedHead
-extends|extends
+implements|implements
 name|Head
 block|{
+specifier|private
+specifier|final
+name|MemoryNodeBuilder
+name|builder
+decl_stmt|;
 specifier|protected
 name|long
 name|revision
-init|=
-name|rootBuilder
-operator|.
-name|baseRevision
 decl_stmt|;
 specifier|protected
 name|MutableNodeState
@@ -2256,10 +2283,29 @@ decl_stmt|;
 specifier|public
 name|ConnectedHead
 parameter_list|(
+name|MemoryNodeBuilder
+name|builder
+parameter_list|,
 name|MutableNodeState
 name|state
 parameter_list|)
 block|{
+name|this
+operator|.
+name|builder
+operator|=
+name|builder
+expr_stmt|;
+name|this
+operator|.
+name|revision
+operator|=
+name|builder
+operator|.
+name|rootBuilder
+operator|.
+name|baseRevision
+expr_stmt|;
 name|this
 operator|.
 name|state
@@ -2278,6 +2324,8 @@ if|if
 condition|(
 name|revision
 operator|!=
+name|builder
+operator|.
 name|rootBuilder
 operator|.
 name|baseRevision
@@ -2287,14 +2335,22 @@ comment|// the root builder's base state has been reset: transition back
 comment|// to unconnected and connect again if necessary.
 comment|// No need to pass base() instead of base as the subsequent
 comment|// call to update will take care of updating to the latest state.
-return|return
+name|builder
+operator|.
+name|head
+operator|=
 operator|new
 name|UnconnectedHead
 argument_list|(
-name|baseRevision
+name|builder
 argument_list|,
-name|base
+name|state
 argument_list|)
+expr_stmt|;
+return|return
+name|builder
+operator|.
+name|head
 operator|.
 name|update
 argument_list|()
@@ -2327,8 +2383,9 @@ parameter_list|()
 block|{
 comment|// incrementing the root revision triggers unconnected
 comment|// child state to re-get their state on next access
+name|builder
+operator|.
 name|rootHead
-argument_list|()
 operator|.
 name|revision
 operator|++
@@ -2363,6 +2420,8 @@ name|state
 operator|.
 name|isModified
 argument_list|(
+name|builder
+operator|.
 name|base
 argument_list|()
 argument_list|)
@@ -2380,6 +2439,8 @@ name|state
 operator|.
 name|isReplaced
 argument_list|(
+name|builder
+operator|.
 name|base
 argument_list|()
 argument_list|)
@@ -2400,6 +2461,8 @@ name|state
 operator|.
 name|isReplaced
 argument_list|(
+name|builder
+operator|.
 name|base
 argument_list|()
 argument_list|,
@@ -2424,6 +2487,8 @@ name|add
 argument_list|(
 literal|"path"
 argument_list|,
+name|builder
+operator|.
 name|getPath
 argument_list|()
 argument_list|)
@@ -2434,6 +2499,7 @@ return|;
 block|}
 block|}
 specifier|private
+specifier|static
 class|class
 name|RootHead
 extends|extends
@@ -2441,14 +2507,21 @@ name|ConnectedHead
 block|{
 specifier|public
 name|RootHead
-parameter_list|()
+parameter_list|(
+name|MemoryNodeBuilder
+name|builder
+parameter_list|)
 block|{
 comment|// Base of root is always up to date. No need to call base()
 name|super
 argument_list|(
+name|builder
+argument_list|,
 operator|new
 name|MutableNodeState
 argument_list|(
+name|builder
+operator|.
 name|base
 argument_list|)
 argument_list|)
