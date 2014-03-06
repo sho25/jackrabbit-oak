@@ -1513,8 +1513,7 @@ literal|" used as a mixin type"
 argument_list|)
 throw|;
 block|}
-else|else
-block|{
+elseif|else
 if|if
 condition|(
 name|type
@@ -1525,21 +1524,21 @@ name|JCR_IS_ABSTRACT
 argument_list|)
 condition|)
 block|{
-name|log
-operator|.
-name|warn
+throw|throw
+name|constraintViolation
 argument_list|(
+literal|7
+argument_list|,
 literal|"Abstract type "
 operator|+
 name|mixin
 operator|+
-literal|" used as a mixin type of node "
-operator|+
-name|getPath
-argument_list|()
+literal|" used as a mixin type"
 argument_list|)
-expr_stmt|;
+throw|;
 block|}
+else|else
+block|{
 name|list
 operator|.
 name|add
