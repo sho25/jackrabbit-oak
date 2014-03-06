@@ -33,6 +33,16 @@ begin_import
 import|import
 name|javax
 operator|.
+name|annotation
+operator|.
+name|Nullable
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
 name|jcr
 operator|.
 name|Node
@@ -225,9 +235,11 @@ return|return
 name|this
 return|;
 block|}
-comment|/**          * Create the index.          *<p>          * If this is not a Oak repository, this method does nothing.          *<p>          * If a matching index already exists, this method verifies that the          * definition matches. If no such index exists, a new one is created.          *           * @param session the session to use for creating the index          * @throws RepositoryException if writing to the repository failed, the          *             index definition is incorrect, or if such an index exists          *             but is not compatible with this definition (for example,          *             a different property is indexed)          */
+comment|/**          * Create the index.          *<p>          * If this is not a Oak repository, this method does nothing.          *<p>          * If a matching index already exists, this method verifies that the          * definition matches. If no such index exists, a new one is created.          *           * @param session the session to use for creating the index          * @return the index node          * @throws RepositoryException if writing to the repository failed, the          *             index definition is incorrect, or if such an index exists          *             but is not compatible with this definition (for example,          *             a different property is indexed)          */
 specifier|public
-name|void
+annotation|@
+name|Nullable
+name|Node
 name|create
 parameter_list|(
 name|Session
@@ -236,6 +248,37 @@ parameter_list|)
 throws|throws
 name|RepositoryException
 block|{
+return|return
+name|create
+argument_list|(
+name|session
+argument_list|,
+name|PropertyIndexEditorProvider
+operator|.
+name|TYPE
+argument_list|)
+return|;
+block|}
+specifier|public
+annotation|@
+name|Nullable
+name|Node
+name|create
+parameter_list|(
+name|Session
+name|session
+parameter_list|,
+name|String
+name|indexType
+parameter_list|)
+throws|throws
+name|RepositoryException
+block|{
+name|Node
+name|index
+init|=
+literal|null
+decl_stmt|;
 if|if
 condition|(
 operator|!
@@ -254,7 +297,9 @@ argument_list|)
 condition|)
 block|{
 comment|// not an Oak repository
-return|return;
+return|return
+name|index
+return|;
 block|}
 if|if
 condition|(
@@ -343,6 +388,8 @@ argument_list|()
 decl_stmt|;
 name|Node
 name|indexDef
+init|=
+literal|null
 decl_stmt|;
 if|if
 condition|(
@@ -392,9 +439,6 @@ name|INDEX_DEFINITIONS_NAME
 argument_list|)
 expr_stmt|;
 block|}
-name|Node
-name|index
-decl_stmt|;
 if|if
 condition|(
 name|indexDef
@@ -478,9 +522,7 @@ name|type
 operator|.
 name|equals
 argument_list|(
-name|PropertyIndexEditorProvider
-operator|.
-name|TYPE
+name|indexType
 argument_list|)
 condition|)
 block|{
@@ -731,7 +773,9 @@ argument_list|)
 throw|;
 block|}
 comment|// matches
-return|return;
+return|return
+name|index
+return|;
 block|}
 name|index
 operator|=
@@ -754,9 +798,7 @@ name|IndexConstants
 operator|.
 name|TYPE_PROPERTY_NAME
 argument_list|,
-name|PropertyIndexEditorProvider
-operator|.
-name|TYPE
+name|indexType
 argument_list|)
 expr_stmt|;
 name|index
@@ -814,6 +856,9 @@ operator|.
 name|save
 argument_list|()
 expr_stmt|;
+return|return
+name|index
+return|;
 block|}
 block|}
 block|}

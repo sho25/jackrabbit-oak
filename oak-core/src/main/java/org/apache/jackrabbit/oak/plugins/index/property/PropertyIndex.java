@@ -422,6 +422,22 @@ return|return
 literal|"property"
 return|;
 block|}
+comment|/**      * return the proper implementation of the Lookup      *       * @param root      * @return the lookup      */
+name|PropertyIndexLookup
+name|getLookup
+parameter_list|(
+name|NodeState
+name|root
+parameter_list|)
+block|{
+return|return
+operator|new
+name|PropertyIndexLookup
+argument_list|(
+name|root
+argument_list|)
+return|;
+block|}
 annotation|@
 name|Override
 specifier|public
@@ -455,8 +471,7 @@ block|}
 name|PropertyIndexLookup
 name|lookup
 init|=
-operator|new
-name|PropertyIndexLookup
+name|getLookup
 argument_list|(
 name|root
 argument_list|)
@@ -636,8 +651,7 @@ decl_stmt|;
 name|PropertyIndexLookup
 name|lookup
 init|=
-operator|new
-name|PropertyIndexLookup
+name|getLookup
 argument_list|(
 name|root
 argument_list|)
@@ -914,8 +928,7 @@ decl_stmt|;
 name|PropertyIndexLookup
 name|lookup
 init|=
-operator|new
-name|PropertyIndexLookup
+name|getLookup
 argument_list|(
 name|root
 argument_list|)
