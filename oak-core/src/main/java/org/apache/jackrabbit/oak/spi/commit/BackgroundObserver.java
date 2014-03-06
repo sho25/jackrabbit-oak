@@ -801,7 +801,7 @@ block|{
 specifier|private
 specifier|final
 name|AtomicBoolean
-name|ran
+name|completed
 init|=
 operator|new
 name|AtomicBoolean
@@ -812,7 +812,7 @@ decl_stmt|;
 specifier|private
 specifier|volatile
 name|Runnable
-name|task
+name|onComplete
 decl_stmt|;
 specifier|public
 name|ListenableFutureTask
@@ -845,20 +845,20 @@ literal|null
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**          * Set the on complete handler. The handler will run exactly once after          * the task terminated. If the task has already terminated at the time of          * this method call the handler will execute immediately.          *<p>          * Note: there is no guarantee to which handler will run when the method          * is called multiple times with different arguments.          * @param task          */
+comment|/**          * Set the on complete handler. The handler will run exactly once after          * the task terminated. If the task has already terminated at the time of          * this method call the handler will execute immediately.          *<p>          * Note: there is no guarantee to which handler will run when the method          * is called multiple times with different arguments.          * @param onComplete          */
 specifier|public
 name|void
 name|onComplete
 parameter_list|(
 name|Runnable
-name|task
+name|onComplete
 parameter_list|)
 block|{
 name|this
 operator|.
-name|task
+name|onComplete
 operator|=
-name|task
+name|onComplete
 expr_stmt|;
 if|if
 condition|(
@@ -868,7 +868,7 @@ condition|)
 block|{
 name|run
 argument_list|(
-name|task
+name|onComplete
 argument_list|)
 expr_stmt|;
 block|}
@@ -882,7 +882,7 @@ parameter_list|()
 block|{
 name|run
 argument_list|(
-name|task
+name|onComplete
 argument_list|)
 expr_stmt|;
 block|}
@@ -891,16 +891,16 @@ name|void
 name|run
 parameter_list|(
 name|Runnable
-name|runnable
+name|onComplete
 parameter_list|)
 block|{
 if|if
 condition|(
-name|runnable
+name|onComplete
 operator|!=
 literal|null
 operator|&&
-name|ran
+name|completed
 operator|.
 name|compareAndSet
 argument_list|(
@@ -910,7 +910,7 @@ literal|true
 argument_list|)
 condition|)
 block|{
-name|runnable
+name|onComplete
 operator|.
 name|run
 argument_list|()
