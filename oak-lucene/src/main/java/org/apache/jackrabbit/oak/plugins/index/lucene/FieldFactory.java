@@ -216,7 +216,7 @@ name|setIndexOptions
 argument_list|(
 name|IndexOptions
 operator|.
-name|DOCS_ONLY
+name|DOCS_AND_FREQS_AND_POSITIONS
 argument_list|)
 expr_stmt|;
 name|OAK_TYPE
