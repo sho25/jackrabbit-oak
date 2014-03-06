@@ -216,6 +216,26 @@ import|;
 end_import
 
 begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
+import|;
+end_import
+
+begin_import
 import|import static
 name|com
 operator|.
@@ -513,6 +533,21 @@ name|TypeEditor
 extends|extends
 name|DefaultEditor
 block|{
+specifier|private
+specifier|static
+specifier|final
+name|Logger
+name|log
+init|=
+name|LoggerFactory
+operator|.
+name|getLogger
+argument_list|(
+name|TypeEditor
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 specifier|private
 specifier|final
 name|TypeEditor
@@ -1378,7 +1413,8 @@ literal|" used as the primary type"
 argument_list|)
 throw|;
 block|}
-elseif|else
+else|else
+block|{
 if|if
 condition|(
 name|type
@@ -1389,21 +1425,21 @@ name|JCR_IS_ABSTRACT
 argument_list|)
 condition|)
 block|{
-throw|throw
-name|constraintViolation
+name|log
+operator|.
+name|warn
 argument_list|(
-literal|3
-argument_list|,
 literal|"Abstract type "
 operator|+
 name|primary
 operator|+
-literal|" used as the primary type"
+literal|" used as the primary type of node "
+operator|+
+name|getPath
+argument_list|()
 argument_list|)
-throw|;
+expr_stmt|;
 block|}
-else|else
-block|{
 name|list
 operator|.
 name|add
@@ -1477,7 +1513,8 @@ literal|" used as a mixin type"
 argument_list|)
 throw|;
 block|}
-elseif|else
+else|else
+block|{
 if|if
 condition|(
 name|type
@@ -1488,21 +1525,21 @@ name|JCR_IS_ABSTRACT
 argument_list|)
 condition|)
 block|{
-throw|throw
-name|constraintViolation
+name|log
+operator|.
+name|warn
 argument_list|(
-literal|7
-argument_list|,
 literal|"Abstract type "
 operator|+
 name|mixin
 operator|+
-literal|" used as a mixin type"
+literal|" used as a mixin type of node "
+operator|+
+name|getPath
+argument_list|()
 argument_list|)
-throw|;
+expr_stmt|;
 block|}
-else|else
-block|{
 name|list
 operator|.
 name|add

@@ -1204,6 +1204,9 @@ name|Nonnull
 name|String
 name|typeName
 parameter_list|,
+name|boolean
+name|explicitType
+parameter_list|,
 annotation|@
 name|Nonnull
 name|Tree
@@ -1251,6 +1254,9 @@ block|}
 elseif|else
 if|if
 condition|(
+name|explicitType
+comment|// OAK-1013: backwards compatibility
+operator|&&
 name|getBoolean
 argument_list|(
 name|type
@@ -1845,6 +1851,8 @@ argument_list|,
 name|name
 argument_list|,
 name|typeName
+argument_list|,
+literal|false
 argument_list|,
 name|typeRoot
 argument_list|,

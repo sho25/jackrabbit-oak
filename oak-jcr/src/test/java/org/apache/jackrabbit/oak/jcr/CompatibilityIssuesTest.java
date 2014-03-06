@@ -1455,13 +1455,6 @@ block|}
 block|}
 annotation|@
 name|Test
-argument_list|(
-name|expected
-operator|=
-name|ConstraintViolationException
-operator|.
-name|class
-argument_list|)
 specifier|public
 name|void
 name|addNodeTest
@@ -1588,10 +1581,33 @@ name|node
 operator|.
 name|addNode
 argument_list|(
-literal|"throw"
+literal|"nothrow"
 argument_list|)
 expr_stmt|;
-comment|// Throws ConstraintViolationException on Oak, works on Jackrabbit 2
+comment|// See OAK-1013
+try|try
+block|{
+name|node
+operator|.
+name|addNode
+argument_list|(
+literal|"throw"
+argument_list|,
+literal|"nt:base"
+argument_list|)
+expr_stmt|;
+name|fail
+argument_list|(
+literal|"Abstract primary type should cause ConstraintViolationException"
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|ConstraintViolationException
+name|expected
+parameter_list|)
+block|{         }
 name|session
 operator|.
 name|save

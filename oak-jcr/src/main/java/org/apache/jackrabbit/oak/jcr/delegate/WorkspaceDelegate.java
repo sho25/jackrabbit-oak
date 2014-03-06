@@ -975,6 +975,11 @@ parameter_list|)
 throws|throws
 name|RepositoryException
 block|{
+name|boolean
+name|explicitType
+init|=
+literal|true
+decl_stmt|;
 name|String
 name|primaryType
 init|=
@@ -992,6 +997,10 @@ operator|==
 literal|null
 condition|)
 block|{
+name|explicitType
+operator|=
+literal|false
+expr_stmt|;
 name|primaryType
 operator|=
 name|TreeUtil
@@ -1033,6 +1042,8 @@ argument_list|,
 name|destName
 argument_list|,
 name|primaryType
+argument_list|,
+name|explicitType
 argument_list|,
 name|typeRoot
 argument_list|,

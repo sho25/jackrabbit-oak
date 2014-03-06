@@ -3845,6 +3845,11 @@ return|return
 literal|null
 return|;
 block|}
+name|boolean
+name|explicitType
+init|=
+literal|true
+decl_stmt|;
 name|Tree
 name|typeRoot
 init|=
@@ -3865,6 +3870,10 @@ operator|==
 literal|null
 condition|)
 block|{
+name|explicitType
+operator|=
+literal|false
+expr_stmt|;
 name|typeName
 operator|=
 name|TreeUtil
@@ -3916,6 +3925,8 @@ argument_list|,
 name|name
 argument_list|,
 name|typeName
+argument_list|,
+name|explicitType
 argument_list|,
 name|typeRoot
 argument_list|)
@@ -4645,6 +4656,9 @@ parameter_list|,
 name|String
 name|typeName
 parameter_list|,
+name|boolean
+name|explicitType
+parameter_list|,
 name|Tree
 name|typeRoot
 parameter_list|)
@@ -4661,6 +4675,8 @@ argument_list|,
 name|name
 argument_list|,
 name|typeName
+argument_list|,
+name|explicitType
 argument_list|,
 name|typeRoot
 argument_list|,
