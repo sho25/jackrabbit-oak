@@ -1593,7 +1593,7 @@ name|addNode
 argument_list|(
 literal|"throw"
 argument_list|,
-literal|"nt:base"
+literal|"nt:hierarchyNode"
 argument_list|)
 expr_stmt|;
 name|fail

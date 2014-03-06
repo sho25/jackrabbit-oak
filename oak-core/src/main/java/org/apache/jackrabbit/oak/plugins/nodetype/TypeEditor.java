@@ -619,6 +619,10 @@ name|effective
 operator|=
 name|getEffectiveType
 argument_list|(
+literal|null
+argument_list|,
+literal|null
+argument_list|,
 name|primary
 argument_list|,
 name|mixins
@@ -690,6 +694,12 @@ name|effective
 operator|=
 name|getEffectiveType
 argument_list|(
+name|parent
+operator|.
+name|effective
+argument_list|,
+name|name
+argument_list|,
 name|primary
 argument_list|,
 name|mixins
@@ -1334,6 +1344,12 @@ specifier|private
 name|EffectiveType
 name|getEffectiveType
 parameter_list|(
+name|EffectiveType
+name|parent
+parameter_list|,
+name|String
+name|name
+parameter_list|,
 name|String
 name|primary
 parameter_list|,
@@ -1425,6 +1441,27 @@ name|JCR_IS_ABSTRACT
 argument_list|)
 condition|)
 block|{
+if|if
+condition|(
+name|parent
+operator|!=
+literal|null
+operator|&&
+name|primary
+operator|.
+name|equals
+argument_list|(
+name|parent
+operator|.
+name|getDefaultType
+argument_list|(
+name|name
+argument_list|)
+argument_list|)
+condition|)
+block|{
+comment|// OAK-1013: Allow (with a warning) an abstract primary
+comment|// type if it's the default type implied by the parent node
 name|log
 operator|.
 name|warn
@@ -1433,12 +1470,28 @@ literal|"Abstract type "
 operator|+
 name|primary
 operator|+
-literal|" used as the primary type of node "
+literal|" used as the default primary type of node "
 operator|+
 name|getPath
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
+else|else
+block|{
+throw|throw
+name|constraintViolation
+argument_list|(
+literal|2
+argument_list|,
+literal|"Abstract type "
+operator|+
+name|primary
+operator|+
+literal|" used as the primary type"
+argument_list|)
+throw|;
+block|}
 block|}
 name|list
 operator|.
