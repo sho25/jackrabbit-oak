@@ -458,6 +458,27 @@ name|void
 name|run
 parameter_list|()
 block|{
+if|if
+condition|(
+name|skip
+operator|==
+literal|0
+condition|)
+block|{
+comment|// Only call enter if this is not a continuation that hit
+comment|// the MAX_CHANGES_PER_CONTINUATION limit before
+name|handler
+operator|.
+name|enter
+argument_list|(
+name|before
+argument_list|,
+name|after
+argument_list|)
+expr_stmt|;
+block|}
+if|if
+condition|(
 name|after
 operator|.
 name|compareAgainstBaseState
@@ -466,7 +487,20 @@ name|before
 argument_list|,
 name|this
 argument_list|)
+condition|)
+block|{
+comment|// Only call leave if this continuation exists normally and not
+comment|// as a result of hitting the MAX_CHANGES_PER_CONTINUATION limit
+name|handler
+operator|.
+name|leave
+argument_list|(
+name|before
+argument_list|,
+name|after
+argument_list|)
 expr_stmt|;
+block|}
 block|}
 comment|//-------------------------------------------------< NodeStateDiff>--
 annotation|@
