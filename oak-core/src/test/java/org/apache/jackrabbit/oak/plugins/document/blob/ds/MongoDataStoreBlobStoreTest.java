@@ -77,9 +77,7 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|plugins
-operator|.
-name|document
+name|spi
 operator|.
 name|blob
 operator|.

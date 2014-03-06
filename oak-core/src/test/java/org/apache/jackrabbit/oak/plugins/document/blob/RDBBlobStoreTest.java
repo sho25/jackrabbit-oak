@@ -41,6 +41,24 @@ name|RDBBlobStore
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|blob
+operator|.
+name|AbstractBlobStoreTest
+import|;
+end_import
+
 begin_comment
 comment|/**  * Tests the RDBBlobStore implementation.  */
 end_comment

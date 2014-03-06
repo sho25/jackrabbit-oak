@@ -52,7 +52,12 @@ argument_list|(
 literal|128
 argument_list|)
 expr_stmt|;
+operator|(
+operator|(
+name|MemoryBlobStore
+operator|)
 name|store
+operator|)
 operator|.
 name|setBlockSizeMin
 argument_list|(

@@ -184,6 +184,15 @@ name|dispose
 argument_list|()
 expr_stmt|;
 block|}
+specifier|protected
+name|int
+name|getArtifactSize
+parameter_list|()
+block|{
+return|return
+literal|4160
+return|;
+block|}
 block|}
 end_class
 

@@ -229,16 +229,6 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Assert
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
 name|Before
 import|;
 end_import
@@ -265,6 +255,30 @@ name|assertEquals
 import|;
 end_import
 
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertTrue
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|fail
+import|;
+end_import
+
 begin_comment
 comment|/**  * Tests a BlobStore implementation.  */
 end_comment
@@ -275,8 +289,8 @@ specifier|abstract
 class|class
 name|AbstractBlobStoreTest
 block|{
-specifier|public
-name|AbstractBlobStore
+specifier|protected
+name|GarbageCollectableBlobStore
 name|store
 decl_stmt|;
 comment|/**      * Should be overridden by subclasses to set the {@link #store} variable.      */
@@ -303,6 +317,15 @@ name|store
 operator|=
 literal|null
 expr_stmt|;
+block|}
+specifier|protected
+name|int
+name|getArtifactSize
+parameter_list|()
+block|{
+return|return
+literal|2080
+return|;
 block|}
 annotation|@
 name|Test
@@ -407,8 +430,6 @@ argument_list|(
 name|tempFileName
 argument_list|)
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|data
@@ -466,8 +487,6 @@ argument_list|,
 literal|1
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|data
@@ -493,8 +512,6 @@ operator|+
 literal|"_wrong"
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|fail
 argument_list|()
 expr_stmt|;
@@ -535,8 +552,6 @@ index|]
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|2
@@ -556,8 +571,6 @@ name|id
 operator|+
 name|id
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|4
@@ -603,8 +616,6 @@ index|[
 literal|1
 index|]
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 operator|-
@@ -626,8 +637,6 @@ literal|1
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|0
@@ -703,8 +712,6 @@ argument_list|(
 name|in
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertTrue
 argument_list|(
 name|closed
@@ -796,8 +803,6 @@ operator|.
 name|getMessage
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertTrue
 argument_list|(
 name|msg
@@ -813,8 +818,6 @@ literal|0
 argument_list|)
 expr_stmt|;
 block|}
-name|Assert
-operator|.
 name|assertTrue
 argument_list|(
 name|closed
@@ -860,8 +863,6 @@ argument_list|,
 literal|1
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|fail
 argument_list|()
 expr_stmt|;
@@ -874,6 +875,26 @@ parameter_list|)
 block|{
 comment|// expected
 block|}
+block|}
+annotation|@
+name|Test
+specifier|public
+name|void
+name|testIllegalIdentifier2
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|byte
+index|[]
+name|data
+init|=
+operator|new
+name|byte
+index|[
+literal|1
+index|]
+decl_stmt|;
 try|try
 block|{
 name|store
@@ -883,8 +904,6 @@ argument_list|(
 literal|"ff"
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|fail
 argument_list|()
 expr_stmt|;
@@ -897,17 +916,47 @@ parameter_list|)
 block|{
 comment|// expected
 block|}
+block|}
+annotation|@
+name|Test
+specifier|public
+name|void
+name|testIllegalIdentifier3
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+if|if
+condition|(
+name|store
+operator|instanceof
+name|AbstractBlobStore
+condition|)
+block|{
+name|byte
+index|[]
+name|data
+init|=
+operator|new
+name|byte
+index|[
+literal|1
+index|]
+decl_stmt|;
 try|try
 block|{
+operator|(
+operator|(
+name|AbstractBlobStore
+operator|)
 name|store
+operator|)
 operator|.
 name|mark
 argument_list|(
 literal|"ff"
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|fail
 argument_list|()
 expr_stmt|;
@@ -919,6 +968,7 @@ name|e
 parameter_list|)
 block|{
 comment|// expected
+block|}
 block|}
 block|}
 annotation|@
@@ -1164,8 +1214,6 @@ argument_list|(
 name|id
 argument_list|)
 decl_stmt|;
-name|Assert
-operator|.
 name|assertTrue
 argument_list|(
 name|Arrays
@@ -1233,13 +1281,37 @@ condition|)
 block|{
 continue|continue;
 block|}
+if|if
+condition|(
 name|store
+operator|instanceof
+name|AbstractBlobStore
+condition|)
+block|{
+operator|(
+operator|(
+name|AbstractBlobStore
+operator|)
+name|store
+operator|)
 operator|.
 name|mark
 argument_list|(
 name|id
 argument_list|)
 expr_stmt|;
+block|}
+else|else
+block|{
+comment|// this should mark the id
+name|store
+operator|.
+name|getBlobLength
+argument_list|(
+name|id
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 name|count
 operator|=
@@ -1290,8 +1362,6 @@ operator|.
 name|sweep
 argument_list|()
 expr_stmt|;
-name|Assert
-operator|.
 name|assertTrue
 argument_list|(
 literal|"count: "
@@ -1343,8 +1413,6 @@ name|Exception
 name|e
 parameter_list|)
 block|{
-name|Assert
-operator|.
 name|assertTrue
 argument_list|(
 name|id
@@ -1366,8 +1434,6 @@ operator|++
 expr_stmt|;
 block|}
 block|}
-name|Assert
-operator|.
 name|assertTrue
 argument_list|(
 literal|"failedCount: "
@@ -1535,8 +1601,6 @@ argument_list|(
 name|expectedData
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|expectedLen
@@ -1740,8 +1804,6 @@ name|id
 argument_list|)
 expr_stmt|;
 block|}
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|len
@@ -1801,7 +1863,7 @@ specifier|static
 name|void
 name|extractFiles
 parameter_list|(
-name|AbstractBlobStore
+name|BlobStore
 name|store
 parameter_list|,
 name|String
@@ -1981,7 +2043,7 @@ specifier|static
 name|String
 name|addFiles
 parameter_list|(
-name|AbstractBlobStore
+name|BlobStore
 name|store
 parameter_list|,
 name|String
@@ -2222,7 +2284,7 @@ annotation|@
 name|Test
 specifier|public
 name|void
-name|testList
+name|list
 parameter_list|()
 throws|throws
 name|Exception
@@ -2268,8 +2330,6 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-name|Assert
-operator|.
 name|assertTrue
 argument_list|(
 name|ids
@@ -2283,7 +2343,7 @@ annotation|@
 name|Test
 specifier|public
 name|void
-name|testDelete
+name|delete
 parameter_list|()
 throws|throws
 name|Exception
@@ -2358,8 +2418,6 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-name|Assert
-operator|.
 name|assertTrue
 argument_list|(
 name|ret
@@ -2421,7 +2479,8 @@ name|randomStream
 argument_list|(
 name|i
 argument_list|,
-literal|4160
+name|getArtifactSize
+argument_list|()
 argument_list|)
 argument_list|)
 decl_stmt|;
