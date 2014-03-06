@@ -646,7 +646,7 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|isHttpRequest
+name|isSupportedHttpRequest
 argument_list|(
 name|nativeQueryString
 argument_list|)
@@ -1460,7 +1460,7 @@ return|;
 block|}
 specifier|private
 name|boolean
-name|isHttpRequest
+name|isSupportedHttpRequest
 parameter_list|(
 name|String
 name|nativeQueryString
