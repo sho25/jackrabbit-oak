@@ -2848,7 +2848,7 @@ name|noEvents
 operator|.
 name|wait
 argument_list|(
-literal|2
+name|TIME_OUT
 argument_list|,
 name|TimeUnit
 operator|.
@@ -2981,7 +2981,7 @@ name|unregistered
 operator|.
 name|get
 argument_list|(
-literal|2
+name|TIME_OUT
 argument_list|,
 name|TimeUnit
 operator|.
