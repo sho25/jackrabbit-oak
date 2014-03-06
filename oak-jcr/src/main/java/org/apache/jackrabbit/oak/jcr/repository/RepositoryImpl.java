@@ -385,6 +385,22 @@ name|oak
 operator|.
 name|stats
 operator|.
+name|Clock
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|stats
+operator|.
 name|StatisticManager
 import|;
 end_import
@@ -625,6 +641,11 @@ specifier|final
 name|SecurityProvider
 name|securityProvider
 decl_stmt|;
+specifier|private
+specifier|final
+name|Clock
+name|clock
+decl_stmt|;
 comment|/**      * {@link ThreadLocal} counter that keeps track of the save operations      * performed per thread so far. This is is then used to determine if      * the current session needs to be refreshed to see the changes done by      * another session in the same thread.      *<p>      *<b>Note</b> - This thread local is never cleared. However, we only      * store a {@link Long} instance and do not derive from      * {@link ThreadLocal} so that (class loader) leaks typically associated      * with thread locals do not occur.      */
 specifier|private
 specifier|final
@@ -723,6 +744,18 @@ name|StatisticManager
 argument_list|(
 name|whiteboard
 argument_list|,
+name|scheduledExecutor
+argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|clock
+operator|=
+operator|new
+name|Clock
+operator|.
+name|Fast
+argument_list|(
 name|scheduledExecutor
 argument_list|)
 expr_stmt|;
@@ -1174,6 +1207,8 @@ argument_list|,
 name|threadSaveCount
 argument_list|,
 name|statisticManager
+argument_list|,
+name|clock
 argument_list|)
 block|{
 comment|// Defer session MBean registration to avoid cluttering the

@@ -43,20 +43,6 @@ name|concurrent
 operator|.
 name|TimeUnit
 operator|.
-name|NANOSECONDS
-import|;
-end_import
-
-begin_import
-import|import static
-name|java
-operator|.
-name|util
-operator|.
-name|concurrent
-operator|.
-name|TimeUnit
-operator|.
 name|SECONDS
 import|;
 end_import
@@ -90,12 +76,12 @@ specifier|public
 interface|interface
 name|RefreshStrategy
 block|{
-comment|/**      * Determine whether the given session needs to refresh before the next      * session operation is performed.      *<p>      * This implementation returns {@code true} if and only if any of the      * individual refresh strategies passed to the constructor returns      * {@code true}.      *      * @param nanosecondsSinceLastAccess nanoseconds since last access      * @return  {@code true} if and only if the session needs to refresh.      */
+comment|/**      * Determine whether the given session needs to refresh before the next      * session operation is performed.      *<p>      * This implementation returns {@code true} if and only if any of the      * individual refresh strategies passed to the constructor returns      * {@code true}.      *      * @param secondsSinceLastAccess seconds since last access      * @return  {@code true} if and only if the session needs to refresh.      */
 name|boolean
 name|needsRefresh
 parameter_list|(
 name|long
-name|nanosecondsSinceLastAccess
+name|secondsSinceLastAccess
 parameter_list|)
 function_decl|;
 comment|/**      * Composite of zero or more {@code RefreshStrategy} instances,      * each of which covers a certain strategy.      */
@@ -128,13 +114,13 @@ operator|=
 name|refreshStrategies
 expr_stmt|;
 block|}
-comment|/**          * Determine whether the given session needs to refresh before the next          * session operation is performed.          *<p>          * This implementation returns {@code true} if and only if any of the          * individual refresh strategies passed to the constructor returns          * {@code true}.          *          * @param nanosecondsSinceLastAccess nanoseconds since last access          * @return  {@code true} if and only if the session needs to refresh.          */
+comment|/**          * Determine whether the given session needs to refresh before the next          * session operation is performed.          *<p>          * This implementation returns {@code true} if and only if any of the          * individual refresh strategies passed to the constructor returns          * {@code true}.          *          * @param secondsSinceLastAccess seconds since last access          * @return  {@code true} if and only if the session needs to refresh.          */
 specifier|public
 name|boolean
 name|needsRefresh
 parameter_list|(
 name|long
-name|nanosecondsSinceLastAccess
+name|secondsSinceLastAccess
 parameter_list|)
 block|{
 for|for
@@ -151,7 +137,7 @@ name|r
 operator|.
 name|needsRefresh
 argument_list|(
-name|nanosecondsSinceLastAccess
+name|secondsSinceLastAccess
 argument_list|)
 condition|)
 block|{
@@ -190,14 +176,7 @@ name|this
 operator|.
 name|interval
 operator|=
-name|NANOSECONDS
-operator|.
-name|convert
-argument_list|(
 name|interval
-argument_list|,
-name|SECONDS
-argument_list|)
 expr_stmt|;
 block|}
 annotation|@
@@ -207,11 +186,11 @@ name|boolean
 name|needsRefresh
 parameter_list|(
 name|long
-name|nanosecondsSinceLastAccess
+name|secondsSinceLastAccess
 parameter_list|)
 block|{
 return|return
-name|nanosecondsSinceLastAccess
+name|secondsSinceLastAccess
 operator|>
 name|interval
 return|;
@@ -222,8 +201,8 @@ specifier|public
 specifier|static
 class|class
 name|LogOnce
-implements|implements
-name|RefreshStrategy
+extends|extends
+name|Timed
 block|{
 specifier|private
 specifier|static
@@ -252,11 +231,6 @@ literal|"The session was created here:"
 argument_list|)
 decl_stmt|;
 specifier|private
-specifier|final
-name|long
-name|interval
-decl_stmt|;
-specifier|private
 name|boolean
 name|warnIfIdle
 init|=
@@ -270,21 +244,13 @@ name|long
 name|interval
 parameter_list|)
 block|{
-name|this
-operator|.
-name|interval
-operator|=
-name|NANOSECONDS
-operator|.
-name|convert
+name|super
 argument_list|(
 name|interval
-argument_list|,
-name|SECONDS
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**          * Log once          * @param nanosecondsSinceLastAccess nanoseconds since last access          * @return {@code false}          */
+comment|/**          * Log once          * @param secondsSinceLastAccess seconds since last access          * @return {@code false}          */
 annotation|@
 name|Override
 specifier|public
@@ -292,14 +258,17 @@ name|boolean
 name|needsRefresh
 parameter_list|(
 name|long
-name|nanosecondsSinceLastAccess
+name|secondsSinceLastAccess
 parameter_list|)
 block|{
 if|if
 condition|(
-name|nanosecondsSinceLastAccess
-operator|>
-name|interval
+name|super
+operator|.
+name|needsRefresh
+argument_list|(
+name|secondsSinceLastAccess
+argument_list|)
 operator|&&
 name|warnIfIdle
 condition|)
@@ -314,9 +283,9 @@ name|MINUTES
 operator|.
 name|convert
 argument_list|(
-name|nanosecondsSinceLastAccess
+name|secondsSinceLastAccess
 argument_list|,
-name|NANOSECONDS
+name|SECONDS
 argument_list|)
 operator|+
 literal|" minutes and might be out of date. "
