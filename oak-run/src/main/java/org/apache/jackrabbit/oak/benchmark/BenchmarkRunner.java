@@ -1262,7 +1262,14 @@ argument_list|)
 block|,
 operator|new
 name|ConcurrentWriteACLTest
-argument_list|()
+argument_list|(
+name|itemsToRead
+operator|.
+name|value
+argument_list|(
+name|options
+argument_list|)
+argument_list|)
 block|,
 operator|new
 name|ConcurrentEveryoneACLTest

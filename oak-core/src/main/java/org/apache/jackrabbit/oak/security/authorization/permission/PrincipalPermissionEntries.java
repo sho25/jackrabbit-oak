@@ -86,10 +86,10 @@ specifier|final
 name|String
 name|name
 decl_stmt|;
-comment|/**      * timestamp of the per-principal permission store      */
+comment|/**      * indicating if all entries were loaded.      */
 specifier|private
-name|long
-name|modCount
+name|boolean
+name|fullyLoaded
 decl_stmt|;
 comment|/**      * map of permission entries, accessed by path      */
 specifier|private
@@ -144,27 +144,27 @@ name|name
 return|;
 block|}
 specifier|public
-name|long
-name|getModCount
+name|boolean
+name|isFullyLoaded
 parameter_list|()
 block|{
 return|return
-name|modCount
+name|fullyLoaded
 return|;
 block|}
 specifier|public
 name|void
-name|setModCount
+name|setFullyLoaded
 parameter_list|(
-name|long
-name|modCount
+name|boolean
+name|fullyLoaded
 parameter_list|)
 block|{
 name|this
 operator|.
-name|modCount
+name|fullyLoaded
 operator|=
-name|modCount
+name|fullyLoaded
 expr_stmt|;
 block|}
 annotation|@
