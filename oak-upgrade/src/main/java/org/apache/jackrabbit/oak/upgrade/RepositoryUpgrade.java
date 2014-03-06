@@ -1952,7 +1952,9 @@ name|CompositeEditorProvider
 argument_list|(
 operator|new
 name|TypeEditorProvider
-argument_list|()
+argument_list|(
+literal|false
+argument_list|)
 argument_list|,
 operator|new
 name|IndexUpdateProvider

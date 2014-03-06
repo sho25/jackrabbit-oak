@@ -550,6 +550,11 @@ argument_list|)
 decl_stmt|;
 specifier|private
 specifier|final
+name|boolean
+name|strict
+decl_stmt|;
+specifier|private
+specifier|final
 name|TypeEditor
 name|parent
 decl_stmt|;
@@ -574,6 +579,9 @@ name|builder
 decl_stmt|;
 name|TypeEditor
 parameter_list|(
+name|boolean
+name|strict
+parameter_list|,
 name|NodeState
 name|types
 parameter_list|,
@@ -592,6 +600,12 @@ parameter_list|)
 throws|throws
 name|CommitFailedException
 block|{
+name|this
+operator|.
+name|strict
+operator|=
+name|strict
+expr_stmt|;
 name|this
 operator|.
 name|parent
@@ -662,6 +676,14 @@ parameter_list|)
 throws|throws
 name|CommitFailedException
 block|{
+name|this
+operator|.
+name|strict
+operator|=
+name|parent
+operator|.
+name|strict
+expr_stmt|;
 name|this
 operator|.
 name|parent
@@ -724,6 +746,12 @@ parameter_list|)
 block|{
 name|this
 operator|.
+name|strict
+operator|=
+literal|true
+expr_stmt|;
+name|this
+operator|.
 name|parent
 operator|=
 literal|null
@@ -759,8 +787,9 @@ name|builder
 argument_list|()
 expr_stmt|;
 block|}
+comment|/**      * Throws or logs the specified constraint violation.      *      * @param code code of this violation      * @param message description of the violation      * @throws CommitFailedException the constraint violation      */
 specifier|private
-name|CommitFailedException
+name|void
 name|constraintViolation
 parameter_list|(
 name|int
@@ -769,7 +798,15 @@ parameter_list|,
 name|String
 name|message
 parameter_list|)
+throws|throws
+name|CommitFailedException
 block|{
+name|String
+name|path
+init|=
+name|getPath
+argument_list|()
+decl_stmt|;
 if|if
 condition|(
 name|effective
@@ -777,38 +814,55 @@ operator|!=
 literal|null
 condition|)
 block|{
-return|return
+name|path
+operator|=
+name|path
+operator|+
+literal|"["
+operator|+
 name|effective
-operator|.
-name|constraintViolation
-argument_list|(
-name|code
-argument_list|,
-name|getPath
-argument_list|()
-argument_list|,
-name|message
-argument_list|)
-return|;
+operator|+
+literal|"]"
+expr_stmt|;
 block|}
-else|else
-block|{
-return|return
+name|CommitFailedException
+name|exception
+init|=
 operator|new
 name|CommitFailedException
 argument_list|(
 name|CONSTRAINT
 argument_list|,
-literal|0
+name|code
 argument_list|,
-name|getPath
-argument_list|()
+name|path
 operator|+
 literal|": "
 operator|+
 name|message
 argument_list|)
-return|;
+decl_stmt|;
+if|if
+condition|(
+name|strict
+condition|)
+block|{
+throw|throw
+name|exception
+throw|;
+block|}
+else|else
+block|{
+name|log
+operator|.
+name|warn
+argument_list|(
+name|exception
+operator|.
+name|getMessage
+argument_list|()
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 specifier|private
@@ -909,7 +963,6 @@ operator|==
 literal|null
 condition|)
 block|{
-throw|throw
 name|constraintViolation
 argument_list|(
 literal|4
@@ -918,7 +971,7 @@ literal|"No matching property definition found for "
 operator|+
 name|after
 argument_list|)
-throw|;
+expr_stmt|;
 block|}
 elseif|else
 if|if
@@ -959,14 +1012,13 @@ argument_list|)
 argument_list|)
 condition|)
 block|{
-throw|throw
 name|constraintViolation
 argument_list|(
 literal|12
 argument_list|,
 literal|"Invalid UUID value in the jcr:uuid property"
 argument_list|)
-throw|;
+expr_stmt|;
 block|}
 block|}
 else|else
@@ -1010,7 +1062,6 @@ name|name
 argument_list|)
 condition|)
 block|{
-throw|throw
 name|constraintViolation
 argument_list|(
 literal|22
@@ -1021,7 +1072,7 @@ name|name
 operator|+
 literal|" can not be removed"
 argument_list|)
-throw|;
+expr_stmt|;
 block|}
 block|}
 annotation|@
@@ -1077,7 +1128,6 @@ name|property
 argument_list|)
 condition|)
 block|{
-throw|throw
 name|editor
 operator|.
 name|constraintViolation
@@ -1090,7 +1140,7 @@ name|property
 operator|+
 literal|" not found in a new node"
 argument_list|)
-throw|;
+expr_stmt|;
 block|}
 block|}
 for|for
@@ -1117,7 +1167,6 @@ name|child
 argument_list|)
 condition|)
 block|{
-throw|throw
 name|editor
 operator|.
 name|constraintViolation
@@ -1130,7 +1179,7 @@ name|child
 operator|+
 literal|" not found in a new node"
 argument_list|)
-throw|;
+expr_stmt|;
 block|}
 block|}
 return|return
@@ -1226,7 +1275,6 @@ expr_stmt|;
 block|}
 else|else
 block|{
-throw|throw
 name|constraintViolation
 argument_list|(
 literal|4
@@ -1237,7 +1285,7 @@ literal|" for child node "
 operator|+
 name|name
 argument_list|)
-throw|;
+expr_stmt|;
 block|}
 block|}
 name|TypeEditor
@@ -1272,7 +1320,6 @@ name|effective
 argument_list|)
 condition|)
 block|{
-throw|throw
 name|constraintViolation
 argument_list|(
 literal|1
@@ -1287,7 +1334,7 @@ name|editor
 operator|.
 name|effective
 argument_list|)
-throw|;
+expr_stmt|;
 block|}
 return|return
 name|editor
@@ -1318,7 +1365,6 @@ name|name
 argument_list|)
 condition|)
 block|{
-throw|throw
 name|constraintViolation
 argument_list|(
 literal|26
@@ -1329,15 +1375,12 @@ name|name
 operator|+
 literal|" can not be removed"
 argument_list|)
-throw|;
+expr_stmt|;
 block|}
-else|else
-block|{
 return|return
 literal|null
 return|;
 comment|// no further checking needed for the removed subtree
-block|}
 block|}
 comment|//-----------------------------------------------------------< private>--
 specifier|private
@@ -1392,7 +1435,6 @@ name|exists
 argument_list|()
 condition|)
 block|{
-throw|throw
 name|constraintViolation
 argument_list|(
 literal|1
@@ -1403,7 +1445,7 @@ name|primary
 operator|+
 literal|" does not exist"
 argument_list|)
-throw|;
+expr_stmt|;
 block|}
 elseif|else
 if|if
@@ -1416,7 +1458,6 @@ name|JCR_ISMIXIN
 argument_list|)
 condition|)
 block|{
-throw|throw
 name|constraintViolation
 argument_list|(
 literal|2
@@ -1427,7 +1468,7 @@ name|primary
 operator|+
 literal|" used as the primary type"
 argument_list|)
-throw|;
+expr_stmt|;
 block|}
 else|else
 block|{
@@ -1479,7 +1520,6 @@ expr_stmt|;
 block|}
 else|else
 block|{
-throw|throw
 name|constraintViolation
 argument_list|(
 literal|2
@@ -1490,7 +1530,7 @@ name|primary
 operator|+
 literal|" used as the primary type"
 argument_list|)
-throw|;
+expr_stmt|;
 block|}
 block|}
 name|list
@@ -1528,7 +1568,6 @@ name|exists
 argument_list|()
 condition|)
 block|{
-throw|throw
 name|constraintViolation
 argument_list|(
 literal|5
@@ -1539,7 +1578,7 @@ name|mixin
 operator|+
 literal|" does not exist"
 argument_list|)
-throw|;
+expr_stmt|;
 block|}
 elseif|else
 if|if
@@ -1553,7 +1592,6 @@ name|JCR_ISMIXIN
 argument_list|)
 condition|)
 block|{
-throw|throw
 name|constraintViolation
 argument_list|(
 literal|6
@@ -1564,7 +1602,7 @@ name|mixin
 operator|+
 literal|" used as a mixin type"
 argument_list|)
-throw|;
+expr_stmt|;
 block|}
 elseif|else
 if|if
@@ -1577,7 +1615,6 @@ name|JCR_IS_ABSTRACT
 argument_list|)
 condition|)
 block|{
-throw|throw
 name|constraintViolation
 argument_list|(
 literal|7
@@ -1588,7 +1625,7 @@ name|mixin
 operator|+
 literal|" used as a mixin type"
 argument_list|)
-throw|;
+expr_stmt|;
 block|}
 else|else
 block|{
@@ -1966,7 +2003,6 @@ return|return;
 block|}
 block|}
 block|}
-throw|throw
 name|constraintViolation
 argument_list|(
 literal|5
@@ -1975,7 +2011,7 @@ literal|"Value constraint violation in "
 operator|+
 name|property
 argument_list|)
-throw|;
+expr_stmt|;
 block|}
 block|}
 end_class
