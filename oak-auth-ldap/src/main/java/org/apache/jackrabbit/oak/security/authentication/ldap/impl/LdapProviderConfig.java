@@ -403,10 +403,10 @@ comment|/**      * @see #getSearchTimeout()      */
 specifier|public
 specifier|static
 specifier|final
-name|int
+name|String
 name|PARAM_SEARCH_TIMEOUT_DEFAULT
 init|=
-literal|60000
+literal|"60s"
 decl_stmt|;
 comment|/**      * @see #getSearchTimeout()      */
 annotation|@
@@ -418,9 +418,9 @@ literal|"Search Timeout"
 argument_list|,
 name|description
 operator|=
-literal|"Time in milliseconds until a search times out."
+literal|"Time in until a search times out (eg: '1s' or '1m 30s')."
 argument_list|,
-name|intValue
+name|value
 operator|=
 name|PARAM_SEARCH_TIMEOUT_DEFAULT
 argument_list|)
@@ -1283,6 +1283,12 @@ argument_list|)
 operator|.
 name|setSearchTimeout
 argument_list|(
+name|ConfigurationParameters
+operator|.
+name|Milliseconds
+operator|.
+name|of
+argument_list|(
 name|params
 operator|.
 name|getConfigValue
@@ -1291,6 +1297,9 @@ name|PARAM_SEARCH_TIMEOUT
 argument_list|,
 name|PARAM_SEARCH_TIMEOUT_DEFAULT
 argument_list|)
+argument_list|)
+operator|.
+name|value
 argument_list|)
 operator|.
 name|setGroupMemberAttribute
@@ -1488,10 +1497,19 @@ init|=
 name|PARAM_BIND_PASSWORD_DEFAULT
 decl_stmt|;
 specifier|private
-name|int
+name|long
 name|searchTimeout
 init|=
+name|ConfigurationParameters
+operator|.
+name|Milliseconds
+operator|.
+name|of
+argument_list|(
 name|PARAM_SEARCH_TIMEOUT_DEFAULT
+argument_list|)
+operator|.
+name|value
 decl_stmt|;
 specifier|private
 name|String
@@ -1837,7 +1855,7 @@ return|;
 block|}
 comment|/**      * Configures the timeout in milliseconds that is used for all LDAP searches.      * The default is {@value #PARAM_SEARCH_TIMEOUT_DEFAULT}.      *      * @return the timeout in milliseconds.      */
 specifier|public
-name|int
+name|long
 name|getSearchTimeout
 parameter_list|()
 block|{
@@ -1845,14 +1863,14 @@ return|return
 name|searchTimeout
 return|;
 block|}
-comment|/**      * Sets the search timeout.      * @param searchTimeout the timeout in milliseconds      * @return {@code this}      * @see #setSearchTimeout(int)      */
+comment|/**      * Sets the search timeout.      * @param searchTimeout the timeout in milliseconds      * @return {@code this}      * @see #getSearchTimeout()      */
 annotation|@
 name|Nonnull
 specifier|public
 name|LdapProviderConfig
 name|setSearchTimeout
 parameter_list|(
-name|int
+name|long
 name|searchTimeout
 parameter_list|)
 block|{

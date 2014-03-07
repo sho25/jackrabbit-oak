@@ -204,12 +204,10 @@ comment|/**      * @see DefaultSyncConfig.User#getExpirationTime()      */
 specifier|public
 specifier|static
 specifier|final
-name|long
+name|String
 name|PARAM_USER_EXPIRATION_TIME_DEFAULT
 init|=
-literal|3600
-operator|*
-literal|1000
+literal|"1h"
 decl_stmt|;
 comment|/**      * @see DefaultSyncConfig.User#getExpirationTime()      */
 annotation|@
@@ -221,9 +219,9 @@ literal|"User Expiration Time"
 argument_list|,
 name|description
 operator|=
-literal|"Duration in milliseconds until a synced user gets expired."
+literal|"Duration until a synced user gets expired (eg. '1h 30m' or '1d')."
 argument_list|,
-name|longValue
+name|value
 operator|=
 name|PARAM_USER_EXPIRATION_TIME_DEFAULT
 argument_list|)
@@ -358,12 +356,10 @@ comment|/**      * @see DefaultSyncConfig.User#getMembershipExpirationTime()    
 specifier|public
 specifier|static
 specifier|final
-name|long
+name|String
 name|PARAM_USER_MEMBERSHIP_EXPIRATION_TIME_DEFAULT
 init|=
-literal|3600
-operator|*
-literal|1000
+literal|"1h"
 decl_stmt|;
 comment|/**      * @see DefaultSyncConfig.User#getMembershipExpirationTime()      */
 annotation|@
@@ -375,9 +371,9 @@ literal|"User Membership Expiration"
 argument_list|,
 name|description
 operator|=
-literal|"Time in milliseconds after which membership expires."
+literal|"Time after which membership expires (eg. '1h 30m' or '1d')."
 argument_list|,
-name|longValue
+name|value
 operator|=
 name|PARAM_USER_MEMBERSHIP_EXPIRATION_TIME_DEFAULT
 argument_list|)
@@ -432,14 +428,10 @@ comment|/**      * @see DefaultSyncConfig.Group#getExpirationTime()      */
 specifier|public
 specifier|static
 specifier|final
-name|long
+name|String
 name|PARAM_GROUP_EXPIRATION_TIME_DEFAULT
 init|=
-literal|24
-operator|*
-literal|3600
-operator|*
-literal|1000
+literal|"1d"
 decl_stmt|;
 comment|/**      * @see DefaultSyncConfig.Group#getExpirationTime()      */
 annotation|@
@@ -451,9 +443,9 @@ literal|"Group Expiration Time"
 argument_list|,
 name|description
 operator|=
-literal|"Duration in milliseconds until a synced group expires."
+literal|"Duration until a synced group expires (eg. '1h 30m' or '1d')."
 argument_list|,
-name|longValue
+name|value
 operator|=
 name|PARAM_GROUP_EXPIRATION_TIME_DEFAULT
 argument_list|)
@@ -895,6 +887,12 @@ argument_list|()
 operator|.
 name|setMembershipExpirationTime
 argument_list|(
+name|ConfigurationParameters
+operator|.
+name|Milliseconds
+operator|.
+name|of
+argument_list|(
 name|params
 operator|.
 name|getConfigValue
@@ -903,6 +901,9 @@ name|PARAM_USER_MEMBERSHIP_EXPIRATION_TIME
 argument_list|,
 name|PARAM_USER_MEMBERSHIP_EXPIRATION_TIME_DEFAULT
 argument_list|)
+argument_list|)
+operator|.
+name|value
 argument_list|)
 operator|.
 name|setMembershipNestingDepth
@@ -919,6 +920,12 @@ argument_list|)
 operator|.
 name|setExpirationTime
 argument_list|(
+name|ConfigurationParameters
+operator|.
+name|Milliseconds
+operator|.
+name|of
+argument_list|(
 name|params
 operator|.
 name|getConfigValue
@@ -927,6 +934,9 @@ name|PARAM_USER_EXPIRATION_TIME
 argument_list|,
 name|PARAM_USER_EXPIRATION_TIME_DEFAULT
 argument_list|)
+argument_list|)
+operator|.
+name|value
 argument_list|)
 operator|.
 name|setPathPrefix
@@ -975,6 +985,12 @@ argument_list|()
 operator|.
 name|setExpirationTime
 argument_list|(
+name|ConfigurationParameters
+operator|.
+name|Milliseconds
+operator|.
+name|of
+argument_list|(
 name|params
 operator|.
 name|getConfigValue
@@ -983,6 +999,9 @@ name|PARAM_GROUP_EXPIRATION_TIME
 argument_list|,
 name|PARAM_GROUP_EXPIRATION_TIME_DEFAULT
 argument_list|)
+argument_list|)
+operator|.
+name|value
 argument_list|)
 operator|.
 name|setPathPrefix
