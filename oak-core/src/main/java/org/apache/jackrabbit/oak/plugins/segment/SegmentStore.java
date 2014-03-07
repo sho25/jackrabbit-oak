@@ -123,22 +123,6 @@ name|void
 name|close
 parameter_list|()
 function_decl|;
-comment|/**      * Checks whether the given object is a record of the given type and      * is stored in this segment store.      *      * @param object possible record object      * @param type record type      * @return {@code true} if the object is a record of the given type      *         from this store, {@code false} otherwise      */
-name|boolean
-name|isInstance
-parameter_list|(
-name|Object
-name|object
-parameter_list|,
-name|Class
-argument_list|<
-name|?
-extends|extends
-name|Record
-argument_list|>
-name|type
-parameter_list|)
-function_decl|;
 comment|/**      * Read a blob from external storage.      *      * @param reference blob reference      * @return external blob      */
 name|Blob
 name|readBlob
