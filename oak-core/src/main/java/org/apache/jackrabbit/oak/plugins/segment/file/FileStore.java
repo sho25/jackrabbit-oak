@@ -1732,7 +1732,7 @@ block|}
 if|if
 condition|(
 name|segments
-operator|!=
+operator|==
 literal|null
 condition|)
 block|{
