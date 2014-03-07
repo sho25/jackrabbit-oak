@@ -41,6 +41,16 @@ end_import
 
 begin_import
 import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|Nonnull
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -64,14 +74,21 @@ name|SegmentWriter
 name|getWriter
 parameter_list|()
 function_decl|;
-comment|/**      * Returns the named journal.      *      * @param name journal name      * @return named journal, or {@code null} if not found      */
+comment|/**      * Returns the head state.      *      * @return head state      */
 annotation|@
-name|CheckForNull
-name|Journal
-name|getJournal
+name|Nonnull
+name|SegmentNodeState
+name|getHead
+parameter_list|()
+function_decl|;
+name|boolean
+name|setHead
 parameter_list|(
-name|String
-name|name
+name|SegmentNodeState
+name|base
+parameter_list|,
+name|SegmentNodeState
+name|head
 parameter_list|)
 function_decl|;
 comment|/**      * Reads the identified segment from this store.      *      * @param segmentId segment identifier      * @return identified segment, or {@code null} if not found      */

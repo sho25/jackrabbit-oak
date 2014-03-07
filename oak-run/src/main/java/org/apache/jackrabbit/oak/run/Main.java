@@ -1131,12 +1131,10 @@ name|add
 argument_list|(
 name|store
 operator|.
-name|getJournal
-argument_list|(
-literal|"root"
-argument_list|)
-operator|.
 name|getHead
+argument_list|()
+operator|.
+name|getRecordId
 argument_list|()
 operator|.
 name|getSegmentId
