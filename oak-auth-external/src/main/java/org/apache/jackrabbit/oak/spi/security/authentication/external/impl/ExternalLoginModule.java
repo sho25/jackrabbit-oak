@@ -559,6 +559,7 @@ operator|=
 name|osgiConfig
 expr_stmt|;
 block|}
+comment|//--------------------------------------------------------< LoginModule>---
 annotation|@
 name|Override
 specifier|public
@@ -1072,34 +1073,6 @@ return|return
 literal|false
 return|;
 block|}
-comment|/**      * @return An immutable set containing only the {@link SimpleCredentials} class.      */
-annotation|@
-name|Override
-specifier|protected
-name|Set
-argument_list|<
-name|Class
-argument_list|>
-name|getSupportedCredentials
-parameter_list|()
-block|{
-comment|// TODO: maybe delegate getSupportedCredentials to IDP
-name|Class
-name|scClass
-init|=
-name|SimpleCredentials
-operator|.
-name|class
-decl_stmt|;
-return|return
-name|Collections
-operator|.
-name|singleton
-argument_list|(
-name|scClass
-argument_list|)
-return|;
-block|}
 annotation|@
 name|Override
 specifier|public
@@ -1329,6 +1302,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
+comment|//------------------------------------------------< AbstractLoginModule>---
 annotation|@
 name|Override
 specifier|protected
@@ -1349,6 +1323,34 @@ name|credentials
 operator|=
 literal|null
 expr_stmt|;
+block|}
+comment|/**      * @return An immutable set containing only the {@link SimpleCredentials} class.      */
+annotation|@
+name|Override
+specifier|protected
+name|Set
+argument_list|<
+name|Class
+argument_list|>
+name|getSupportedCredentials
+parameter_list|()
+block|{
+comment|// TODO: maybe delegate getSupportedCredentials to IDP
+name|Class
+name|scClass
+init|=
+name|SimpleCredentials
+operator|.
+name|class
+decl_stmt|;
+return|return
+name|Collections
+operator|.
+name|singleton
+argument_list|(
+name|scClass
+argument_list|)
+return|;
 block|}
 block|}
 end_class
