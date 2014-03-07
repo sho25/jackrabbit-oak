@@ -374,7 +374,14 @@ condition|(
 name|authorizable
 operator|==
 literal|null
-operator|||
+condition|)
+block|{
+return|return
+literal|false
+return|;
+block|}
+if|if
+condition|(
 name|authorizable
 operator|.
 name|isGroup
@@ -385,7 +392,7 @@ throw|throw
 operator|new
 name|LoginException
 argument_list|(
-literal|"Unknown user "
+literal|"Not a user "
 operator|+
 name|userId
 argument_list|)
