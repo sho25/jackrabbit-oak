@@ -453,6 +453,7 @@ operator|)
 operator|+
 name|SMALL_LIMIT
 decl_stmt|;
+specifier|public
 specifier|static
 specifier|final
 name|Weigher
