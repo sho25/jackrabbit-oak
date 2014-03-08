@@ -689,6 +689,28 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
+name|plugins
+operator|.
+name|index
+operator|.
+name|lucene
+operator|.
+name|util
+operator|.
+name|MoreLikeThisHelper
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
 name|query
 operator|.
 name|fulltext
@@ -1069,6 +1091,22 @@ name|apache
 operator|.
 name|lucene
 operator|.
+name|queries
+operator|.
+name|mlt
+operator|.
+name|MoreLikeThis
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|lucene
+operator|.
 name|queryparser
 operator|.
 name|classic
@@ -1370,7 +1408,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Provides a QueryIndex that does lookups against a Lucene-based index  *   *<p>  * To define a lucene index on a subtree you have to add an  *<code>oak:index<code> node.  *   * Under it follows the index definition node that:  *<ul>  *<li>must be of type<code>oak:QueryIndexDefinition</code></li>  *<li>must have the<code>type</code> property set to<b><code>lucene</code></b></li>  *<li>must have the<code>async</code> property set to<b><code>async</code></b></li>  *</b></li>  *</ul>  *</p>  *<p>  * Optionally you can add  *<ul>  *<li>what subset of property types to be included in the index via the<code>includePropertyTypes<code> property</li>  *<li>a blacklist of property names: what property to be excluded from the index via the<code>excludePropertyNames<code> property</li>  *<li>the<code>reindex<code> flag which when set to<code>true<code>, triggers a full content re-index.</li>  *</ul>  *</p>  *<pre>  *<code>  * {  *     NodeBuilder index = root.child("oak:index");  *     index.child("lucene")  *         .setProperty("jcr:primaryType", "oak:QueryIndexDefinition", Type.NAME)  *         .setProperty("type", "lucene")  *         .setProperty("async", "async")  *         .setProperty("reindex", "true");  * }  *</code>  *</pre>  *   * @see QueryIndex  *   */
+comment|/**  * Provides a QueryIndex that does lookups against a Lucene-based index  *  *<p>  * To define a lucene index on a subtree you have to add an  *<code>oak:index<code> node.  *  * Under it follows the index definition node that:  *<ul>  *<li>must be of type<code>oak:QueryIndexDefinition</code></li>  *<li>must have the<code>type</code> property set to<b><code>lucene</code></b></li>  *<li>must have the<code>async</code> property set to<b><code>async</code></b></li>  *</b></li>  *</ul>  *</p>  *<p>  * Optionally you can add  *<ul>  *<li>what subset of property types to be included in the index via the<code>includePropertyTypes<code> property</li>  *<li>a blacklist of property names: what property to be excluded from the index via the<code>excludePropertyNames<code> property</li>  *<li>the<code>reindex<code> flag which when set to<code>true<code>, triggers a full content re-index.</li>  *</ul>  *</p>  *<pre>  *<code>  * {  *     NodeBuilder index = root.child("oak:index");  *     index.child("lucene")  *         .setProperty("jcr:primaryType", "oak:QueryIndexDefinition", Type.NAME)  *         .setProperty("type", "lucene")  *         .setProperty("async", "async")  *         .setProperty("reindex", "true");  * }  *</code>  *</pre>  *  * @see QueryIndex  *  */
 end_comment
 
 begin_class
@@ -1583,7 +1621,7 @@ return|return
 literal|15
 return|;
 block|}
-comment|/**      * Get the set of relative paths of a full-text condition. For example, for      * the condition "contains(a/b, 'hello') and contains(c/d, 'world'), the set      * { "a", "c" } is returned. If there are no relative properties, then one      * entry is returned (the empty string). If there is no expression, then an      * empty set is returned.      *       * @param ft the full-text expression      * @return the set of relative paths (possibly empty)      */
+comment|/**      * Get the set of relative paths of a full-text condition. For example, for      * the condition "contains(a/b, 'hello') and contains(c/d, 'world'), the set      * { "a", "c" } is returned. If there are no relative properties, then one      * entry is returned (the empty string). If there is no expression, then an      * empty set is returned.      *      * @param ft the full-text expression      * @return the set of relative paths (possibly empty)      */
 specifier|private
 specifier|static
 name|Set
@@ -2644,7 +2682,7 @@ argument_list|)
 return|;
 block|}
 block|}
-comment|/**      * Get the Lucene query for the given filter.      *       * @param filter the filter, including full-text constraint      * @param reader the Lucene reader      * @param nonFullTextConstraints whether non-full-text constraints (such a      *            path, node type, and so on) should be added to the Lucene      *            query      * @param analyzer the Lucene analyzer used for building the fulltext query      * @return the Lucene query      */
+comment|/**      * Get the Lucene query for the given filter.      *      * @param filter the filter, including full-text constraint      * @param reader the Lucene reader      * @param nonFullTextConstraints whether non-full-text constraints (such a      *            path, node type, and so on) should be added to the Lucene      *            query      * @param analyzer the Lucene analyzer used for building the fulltext query      * @return the Lucene query      */
 specifier|private
 specifier|static
 name|Query
@@ -2729,19 +2767,6 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|QueryParser
-name|queryParser
-init|=
-operator|new
-name|QueryParser
-argument_list|(
-name|VERSION
-argument_list|,
-literal|""
-argument_list|,
-name|analyzer
-argument_list|)
-decl_stmt|;
 name|String
 name|query
 init|=
@@ -2764,6 +2789,81 @@ argument_list|()
 argument_list|)
 argument_list|)
 decl_stmt|;
+name|QueryParser
+name|queryParser
+init|=
+operator|new
+name|QueryParser
+argument_list|(
+name|VERSION
+argument_list|,
+literal|""
+argument_list|,
+name|analyzer
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|query
+operator|.
+name|startsWith
+argument_list|(
+literal|"mlt?"
+argument_list|)
+condition|)
+block|{
+name|String
+name|mltQueryString
+init|=
+name|query
+operator|.
+name|replace
+argument_list|(
+literal|"mlt?"
+argument_list|,
+literal|""
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|reader
+operator|!=
+literal|null
+condition|)
+block|{
+name|Query
+name|moreLikeThis
+init|=
+name|MoreLikeThisHelper
+operator|.
+name|getMoreLikeThis
+argument_list|(
+name|reader
+argument_list|,
+name|analyzer
+argument_list|,
+name|mltQueryString
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|moreLikeThis
+operator|!=
+literal|null
+condition|)
+block|{
+name|qs
+operator|.
+name|add
+argument_list|(
+name|moreLikeThis
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+block|}
+else|else
+block|{
 try|try
 block|{
 name|qs
@@ -2792,6 +2892,7 @@ argument_list|(
 name|e
 argument_list|)
 throw|;
+block|}
 block|}
 block|}
 elseif|else
@@ -4716,7 +4817,7 @@ block|,
 literal|'?'
 block|}
 decl_stmt|;
-comment|/**      * Tries to merge back tokens that are split on relevant fulltext query      * wildcards ('*' or '?')      *       *       * @param text      * @param analyzer      * @return      */
+comment|/**      * Tries to merge back tokens that are split on relevant fulltext query      * wildcards ('*' or '?')      *      *      * @param text      * @param analyzer      * @return      */
 specifier|static
 name|List
 argument_list|<
