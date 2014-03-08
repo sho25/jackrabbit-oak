@@ -41,6 +41,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Collections
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|HashMap
 import|;
 end_import
@@ -645,6 +655,18 @@ parameter_list|()
 block|{
 return|return
 name|autoMembership
+operator|==
+literal|null
+condition|?
+name|Collections
+operator|.
+expr|<
+name|String
+operator|>
+name|emptySet
+argument_list|()
+else|:
+name|autoMembership
 return|;
 block|}
 comment|/**          * Sets the auto membership          * @param autoMembership the membership          * @return {@code this}          * @see #getAutoMembership()          */
@@ -696,6 +718,20 @@ parameter_list|()
 block|{
 return|return
 name|propertyMapping
+operator|==
+literal|null
+condition|?
+name|Collections
+operator|.
+expr|<
+name|String
+operator|,
+name|String
+operator|>
+name|emptyMap
+argument_list|()
+operator|:
+name|propertyMapping
 return|;
 block|}
 comment|/**          * Sets the property mapping.          * @param propertyMapping the mapping          * @return {@code this}          * @see #getPropertyMapping()          */
@@ -734,6 +770,12 @@ parameter_list|()
 block|{
 return|return
 name|pathPrefix
+operator|==
+literal|null
+condition|?
+literal|""
+else|:
+name|pathPrefix
 return|;
 block|}
 comment|/**          * Sets the path prefix.          * @param pathPrefix the path prefix.          * @return {@code this}          * @see #getPathPrefix()          */
@@ -751,12 +793,6 @@ name|this
 operator|.
 name|pathPrefix
 operator|=
-name|pathPrefix
-operator|==
-literal|null
-condition|?
-literal|""
-else|:
 name|pathPrefix
 expr_stmt|;
 return|return

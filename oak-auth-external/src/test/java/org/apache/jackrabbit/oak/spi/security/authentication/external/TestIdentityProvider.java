@@ -226,7 +226,7 @@ argument_list|)
 operator|.
 name|withProperty
 argument_list|(
-literal|"./email"
+literal|"email"
 argument_list|,
 literal|"test@testuser.com"
 argument_list|)
