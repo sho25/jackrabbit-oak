@@ -165,12 +165,6 @@ operator|.
 name|HttpServer
 argument_list|(
 name|SERVER_URL
-argument_list|,
-operator|new
-name|String
-index|[
-literal|0
-index|]
 argument_list|)
 expr_stmt|;
 block|}
