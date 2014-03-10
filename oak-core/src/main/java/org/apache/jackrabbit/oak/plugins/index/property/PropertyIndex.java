@@ -468,6 +468,21 @@ operator|.
 name|POSITIVE_INFINITY
 return|;
 block|}
+if|if
+condition|(
+name|filter
+operator|.
+name|containsNativeConstraint
+argument_list|()
+condition|)
+block|{
+comment|// not an appropriate index for native search
+return|return
+name|Double
+operator|.
+name|POSITIVE_INFINITY
+return|;
+block|}
 name|PropertyIndexLookup
 name|lookup
 init|=

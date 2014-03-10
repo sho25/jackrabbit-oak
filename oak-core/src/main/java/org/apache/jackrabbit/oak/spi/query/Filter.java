@@ -145,6 +145,11 @@ name|FullTextExpression
 name|getFullTextConstraint
 parameter_list|()
 function_decl|;
+comment|/**      * Whether the filter contains a native condition.      *       * @return true if it does      */
+name|boolean
+name|containsNativeConstraint
+parameter_list|()
+function_decl|;
 comment|/**      * Get the property restriction for the given property, if any.      *      * @param propertyName the property name      * @return the restriction, or null if there is no restriction for this property      */
 name|PropertyRestriction
 name|getPropertyRestriction
