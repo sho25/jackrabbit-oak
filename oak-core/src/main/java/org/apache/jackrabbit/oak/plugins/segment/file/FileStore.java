@@ -1328,6 +1328,13 @@ expr_stmt|;
 block|}
 block|}
 block|}
+if|if
+condition|(
+name|segments
+operator|!=
+literal|null
+condition|)
+block|{
 for|for
 control|(
 name|Segment
@@ -1356,6 +1363,7 @@ operator|.
 name|dropOldCacheEntries
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 block|}
 specifier|public
