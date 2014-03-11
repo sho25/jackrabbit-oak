@@ -412,6 +412,10 @@ specifier|protected
 name|ExternalIdentityProvider
 name|idp
 decl_stmt|;
+specifier|protected
+name|DefaultSyncConfig
+name|syncConfig
+decl_stmt|;
 annotation|@
 name|Before
 specifier|public
@@ -525,13 +529,12 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// set default sync config
-name|DefaultSyncConfig
-name|cfg
-init|=
+name|syncConfig
+operator|=
 operator|new
 name|DefaultSyncConfig
 argument_list|()
-decl_stmt|;
+expr_stmt|;
 name|Map
 argument_list|<
 name|String
@@ -585,7 +588,7 @@ argument_list|,
 literal|"profile/age"
 argument_list|)
 expr_stmt|;
-name|cfg
+name|syncConfig
 operator|.
 name|user
 argument_list|()
@@ -595,9 +598,19 @@ argument_list|(
 name|mapping
 argument_list|)
 expr_stmt|;
+name|syncConfig
+operator|.
+name|user
+argument_list|()
+operator|.
+name|setMembershipNestingDepth
+argument_list|(
+literal|1
+argument_list|)
+expr_stmt|;
 name|setSyncConfig
 argument_list|(
-name|cfg
+name|syncConfig
 argument_list|)
 expr_stmt|;
 block|}
