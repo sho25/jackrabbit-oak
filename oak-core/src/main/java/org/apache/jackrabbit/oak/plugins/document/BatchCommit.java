@@ -274,8 +274,6 @@ decl_stmt|;
 specifier|private
 name|boolean
 name|executing
-init|=
-literal|false
 decl_stmt|;
 name|BatchCommit
 parameter_list|(

@@ -585,11 +585,6 @@ name|INITIAL_FETCH_SIZE
 operator|<<
 literal|4
 decl_stmt|;
-specifier|private
-specifier|final
-name|DocumentNodeStore
-name|store
-decl_stmt|;
 specifier|final
 name|String
 name|path
@@ -618,6 +613,11 @@ decl_stmt|;
 specifier|final
 name|boolean
 name|hasChildren
+decl_stmt|;
+specifier|private
+specifier|final
+name|DocumentNodeStore
+name|store
 decl_stmt|;
 comment|/**      * TODO: OAK-1056      */
 specifier|private

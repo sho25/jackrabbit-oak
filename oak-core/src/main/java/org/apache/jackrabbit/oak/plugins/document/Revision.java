@@ -871,11 +871,6 @@ return|return
 name|sb
 return|;
 block|}
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"UnusedDeclaration"
-argument_list|)
 specifier|public
 name|String
 name|toReadableString

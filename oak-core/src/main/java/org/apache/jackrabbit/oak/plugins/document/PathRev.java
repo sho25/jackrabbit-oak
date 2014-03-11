@@ -66,8 +66,8 @@ comment|/**  * A cache key implementation, which is a combination of a path stri
 end_comment
 
 begin_class
-specifier|final
 specifier|public
+specifier|final
 class|class
 name|PathRev
 implements|implements

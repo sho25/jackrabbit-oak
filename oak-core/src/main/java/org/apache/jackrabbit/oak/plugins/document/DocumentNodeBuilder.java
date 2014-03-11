@@ -153,14 +153,10 @@ decl_stmt|;
 specifier|private
 name|NodeState
 name|base
-init|=
-literal|null
 decl_stmt|;
 specifier|private
 name|NodeState
 name|rootBase
-init|=
-literal|null
 decl_stmt|;
 name|DocumentNodeBuilder
 parameter_list|(

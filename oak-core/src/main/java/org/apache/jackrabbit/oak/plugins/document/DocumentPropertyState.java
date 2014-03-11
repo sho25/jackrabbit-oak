@@ -368,8 +368,6 @@ decl_stmt|;
 specifier|private
 name|PropertyState
 name|parsed
-init|=
-literal|null
 decl_stmt|;
 name|DocumentPropertyState
 parameter_list|(

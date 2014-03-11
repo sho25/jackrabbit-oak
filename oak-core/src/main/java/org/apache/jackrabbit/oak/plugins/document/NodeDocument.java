@@ -428,8 +428,8 @@ comment|/**  * A document storing data about a node.  */
 end_comment
 
 begin_class
-specifier|final
 specifier|public
+specifier|final
 class|class
 name|NodeDocument
 extends|extends
@@ -782,8 +782,9 @@ return|;
 block|}
 block|}
 comment|/**      * @return the system time this object was created.      */
+annotation|@
+name|Override
 specifier|public
-specifier|final
 name|long
 name|getCreated
 parameter_list|()
@@ -823,6 +824,8 @@ literal|false
 return|;
 block|}
 comment|/**      * Mark this instance as up-to-date (matches the state in persistence      * store).      *       * @param checkTime time at which the check was performed      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|markUpToDate
@@ -840,6 +843,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Returns true if the document has already been checked for consistency      * in current cycle.      *       * @param lastCheckTime time at which current cycle started      * @return if the document was checked      */
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isUpToDate
@@ -860,6 +865,8 @@ argument_list|()
 return|;
 block|}
 comment|/**      * Returns the last time when this object was checked for consistency.      *       * @return the last check time      */
+annotation|@
+name|Override
 specifier|public
 name|long
 name|getLastCheckTime
