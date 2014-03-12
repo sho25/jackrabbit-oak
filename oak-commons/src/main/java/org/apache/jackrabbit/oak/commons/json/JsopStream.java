@@ -69,6 +69,8 @@ literal|4
 index|]
 decl_stmt|;
 comment|// write
+annotation|@
+name|Override
 specifier|public
 name|JsopStream
 name|append
@@ -319,6 +321,8 @@ operator|=
 name|v2
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|JsopStream
 name|tag
@@ -340,6 +344,8 @@ return|return
 name|this
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|JsopStream
 name|array
@@ -361,6 +367,8 @@ return|return
 name|this
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|JsopStream
 name|encodedValue
@@ -390,6 +398,8 @@ return|return
 name|this
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|JsopStream
 name|endArray
@@ -408,6 +418,8 @@ return|return
 name|this
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|JsopStream
 name|endObject
@@ -426,6 +438,8 @@ return|return
 name|this
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|JsopStream
 name|key
@@ -460,6 +474,8 @@ return|return
 name|this
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|JsopStream
 name|newline
@@ -474,6 +490,8 @@ return|return
 name|this
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|JsopStream
 name|object
@@ -495,6 +513,8 @@ return|return
 name|this
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|JsopStream
 name|value
@@ -540,6 +560,8 @@ return|return
 name|this
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|JsopStream
 name|value
@@ -574,6 +596,8 @@ return|return
 name|this
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|JsopStream
 name|value
@@ -602,6 +626,8 @@ return|return
 name|this
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|resetReader
@@ -612,6 +638,8 @@ operator|=
 literal|0
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|resetWriter
@@ -626,6 +654,8 @@ operator|=
 literal|0
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setLineLength
@@ -654,6 +684,8 @@ expr_stmt|;
 block|}
 block|}
 comment|// read
+annotation|@
+name|Override
 specifier|public
 name|String
 name|getToken
@@ -732,6 +764,8 @@ argument_list|)
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|int
 name|getTokenType
@@ -746,6 +780,8 @@ operator|&
 literal|255
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|matches
@@ -794,6 +830,8 @@ operator|&
 literal|255
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|read
@@ -832,6 +870,8 @@ index|]
 argument_list|)
 throw|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|int
 name|read
@@ -884,6 +924,8 @@ operator|++
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|readRawValue
@@ -1040,6 +1082,8 @@ argument_list|)
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|readString
@@ -1052,6 +1096,8 @@ name|STRING
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|toString

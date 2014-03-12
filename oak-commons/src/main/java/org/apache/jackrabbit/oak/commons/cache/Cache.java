@@ -120,6 +120,8 @@ name|serialVersionUID
 init|=
 literal|1L
 decl_stmt|;
+annotation|@
+name|Override
 specifier|protected
 name|boolean
 name|removeEldestEntry
@@ -397,7 +399,6 @@ block|}
 block|}
 comment|/**      * A cacheable object.      */
 specifier|public
-specifier|static
 interface|interface
 name|Value
 block|{
@@ -409,7 +410,6 @@ function_decl|;
 block|}
 comment|/**      * A cache backend that can load objects from persistent storage.      *      * @param<K> the key class      * @param<V> the value class      */
 specifier|public
-specifier|static
 interface|interface
 name|Backend
 parameter_list|<

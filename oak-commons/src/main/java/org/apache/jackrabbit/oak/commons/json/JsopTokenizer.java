@@ -145,6 +145,8 @@ literal|0
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|resetReader
@@ -158,6 +160,8 @@ name|read
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|toString
@@ -168,6 +172,8 @@ name|jsop
 return|;
 block|}
 comment|/**      * Get the token type of the last token.      *      * @return the token type      */
+annotation|@
+name|Override
 specifier|public
 name|int
 name|getTokenType
@@ -178,6 +184,8 @@ name|lastType
 return|;
 block|}
 comment|/**      * Get the last token value if the the token type was STRING or NUMBER. For      * STRING, the text is decoded; for NUMBER, it is returned as parsed. In all      * other cases the result is undefined.      *      * @return the token      */
+annotation|@
+name|Override
 specifier|public
 name|String
 name|getToken
@@ -224,6 +232,8 @@ name|lastToken
 return|;
 block|}
 comment|/**      * Read a token which must match a given token type.      *      * @param type the token type      * @return the token (a null object when reading a null value)      * @throws IllegalStateException if the token type doesn't match      */
+annotation|@
+name|Override
 specifier|public
 name|String
 name|read
@@ -292,6 +302,8 @@ throw|;
 block|}
 block|}
 comment|/**      * Read a string.      *      * @return the de-escaped string      * @throws IllegalStateException if the token type doesn't match      */
+annotation|@
+name|Override
 specifier|public
 name|String
 name|readString
@@ -305,6 +317,8 @@ argument_list|)
 return|;
 block|}
 comment|/**      * Read a token which must match a given token type.      *      * @param type the token type      * @return true if there was a match      */
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|matches
@@ -332,6 +346,8 @@ literal|false
 return|;
 block|}
 comment|/**      * Read a token and return the token type.      *      * @return the token type      */
+annotation|@
+name|Override
 specifier|public
 name|int
 name|read
@@ -1519,6 +1535,8 @@ name|s
 return|;
 block|}
 comment|/**      * Read a value and return the raw Json representation. This includes arrays      * and nested arrays.      *      * @return the Json representation of the value      */
+annotation|@
+name|Override
 specifier|public
 name|String
 name|readRawValue

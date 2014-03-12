@@ -519,12 +519,9 @@ literal|1
 argument_list|)
 return|;
 block|}
-else|else
-block|{
 return|return
 name|name
 return|;
-block|}
 block|}
 comment|/**      * Calculate the number of elements in the path. The root path has zero      * elements.      *      * @param path the path      * @return the number of elements      */
 specifier|public

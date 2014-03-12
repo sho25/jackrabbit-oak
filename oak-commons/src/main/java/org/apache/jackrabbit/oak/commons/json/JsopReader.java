@@ -39,80 +39,54 @@ interface|interface
 name|JsopReader
 block|{
 comment|/**      * The token type that signals the end of the stream.      */
-specifier|static
-specifier|final
 name|int
 name|END
 init|=
 literal|0
 decl_stmt|;
 comment|/**      * The token type of a string value.      */
-specifier|public
-specifier|static
-specifier|final
 name|int
 name|STRING
 init|=
 literal|1
 decl_stmt|;
 comment|/**      * The token type of a number value.      */
-specifier|public
-specifier|static
-specifier|final
 name|int
 name|NUMBER
 init|=
 literal|2
 decl_stmt|;
 comment|/**      * The token type of the value "true".      */
-specifier|public
-specifier|static
-specifier|final
 name|int
 name|TRUE
 init|=
 literal|3
 decl_stmt|;
 comment|/**      * The token type of the value "false".      */
-specifier|public
-specifier|static
-specifier|final
 name|int
 name|FALSE
 init|=
 literal|4
 decl_stmt|;
 comment|/**      * The token type of "null".      */
-specifier|public
-specifier|static
-specifier|final
 name|int
 name|NULL
 init|=
 literal|5
 decl_stmt|;
 comment|/**      * The token type of a parse error.      */
-specifier|public
-specifier|static
-specifier|final
 name|int
 name|ERROR
 init|=
 literal|6
 decl_stmt|;
 comment|/**      * The token type of an identifier (an unquoted string), if supported by the reader.      */
-specifier|public
-specifier|static
-specifier|final
 name|int
 name|IDENTIFIER
 init|=
 literal|7
 decl_stmt|;
 comment|/**      * The token type of a comment, if supported by the reader.      */
-specifier|public
-specifier|static
-specifier|final
 name|int
 name|COMMENT
 init|=

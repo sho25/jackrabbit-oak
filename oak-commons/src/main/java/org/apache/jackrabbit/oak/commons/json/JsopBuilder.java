@@ -57,6 +57,8 @@ decl_stmt|,
 name|previous
 decl_stmt|;
 comment|/**      * Resets this instance.      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|resetWriter
@@ -74,6 +76,8 @@ literal|0
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setLineLength
@@ -88,6 +92,8 @@ name|length
 expr_stmt|;
 block|}
 comment|/**      * Append all entries of the given buffer.      *      * @param buffer the buffer      * @return this      */
+annotation|@
+name|Override
 specifier|public
 name|JsopBuilder
 name|append
@@ -109,6 +115,8 @@ name|this
 return|;
 block|}
 comment|/**      * Append a Jsop tag character.      *      * @param tag the string to append      * @return this      */
+annotation|@
+name|Override
 specifier|public
 name|JsopBuilder
 name|tag
@@ -157,6 +165,8 @@ name|this
 return|;
 block|}
 comment|/**      * Append a newline character.      *      * @return this      */
+annotation|@
+name|Override
 specifier|public
 name|JsopBuilder
 name|newline
@@ -174,6 +184,8 @@ name|this
 return|;
 block|}
 comment|/**      * Append '{'. A comma is appended first if needed.      *      * @return this      */
+annotation|@
+name|Override
 specifier|public
 name|JsopBuilder
 name|object
@@ -200,6 +212,8 @@ name|this
 return|;
 block|}
 comment|/**      * Append '}'.      *      * @return this      */
+annotation|@
+name|Override
 specifier|public
 name|JsopBuilder
 name|endObject
@@ -237,6 +251,8 @@ name|this
 return|;
 block|}
 comment|/**      * Append '['. A comma is appended first if needed.      *      * @return this      */
+annotation|@
+name|Override
 specifier|public
 name|JsopBuilder
 name|array
@@ -263,6 +279,8 @@ name|this
 return|;
 block|}
 comment|/**      * Append ']'.      *      * @return this      */
+annotation|@
+name|Override
 specifier|public
 name|JsopBuilder
 name|endArray
@@ -284,6 +302,8 @@ name|this
 return|;
 block|}
 comment|/**      * Append the key (in quotes) plus a colon. A comma is appended first if      * needed.      *      * @param name the key      * @return this      */
+annotation|@
+name|Override
 specifier|public
 name|JsopBuilder
 name|key
@@ -337,6 +357,8 @@ name|this
 return|;
 block|}
 comment|/**      * Append a number. A comma is appended first if needed.      *      * @param value the value      * @return this      */
+annotation|@
+name|Override
 specifier|public
 name|JsopBuilder
 name|value
@@ -358,6 +380,8 @@ argument_list|)
 return|;
 block|}
 comment|/**      * Append the boolean value 'true' or 'false'. A comma is appended first if      * needed.      *      * @param value the value      * @return this      */
+annotation|@
+name|Override
 specifier|public
 name|JsopBuilder
 name|value
@@ -379,6 +403,8 @@ argument_list|)
 return|;
 block|}
 comment|/**      * Append a string or null. A comma is appended first if needed.      *      * @param value the value      * @return this      */
+annotation|@
+name|Override
 specifier|public
 name|JsopBuilder
 name|value
@@ -398,6 +424,8 @@ argument_list|)
 return|;
 block|}
 comment|/**      * Append an already encoded value. A comma is appended first if needed.      *      * @param value the value      * @return this      */
+annotation|@
+name|Override
 specifier|public
 name|JsopBuilder
 name|encodedValue
@@ -497,6 +525,8 @@ block|}
 block|}
 block|}
 comment|/**      * Get the generated string.      */
+annotation|@
+name|Override
 specifier|public
 name|String
 name|toString

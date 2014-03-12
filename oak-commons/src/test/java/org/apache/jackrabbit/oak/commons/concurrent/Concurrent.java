@@ -81,14 +81,6 @@ class|class
 name|Concurrent
 block|{
 specifier|private
-specifier|static
-specifier|final
-name|boolean
-name|PROFILE
-init|=
-literal|false
-decl_stmt|;
-specifier|private
 name|Concurrent
 parameter_list|()
 block|{     }
