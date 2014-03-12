@@ -29,46 +29,51 @@ name|javax
 operator|.
 name|annotation
 operator|.
+name|CheckForNull
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|annotation
+operator|.
 name|Nonnull
 import|;
 end_import
 
 begin_comment
-comment|/**  * {@code SyncContext} is used as scope for sync operations. Implementations are free to associate any resources with  * the sync context. The sync context must not be accessed concurrently and must be closed after use.  */
+comment|/**  * Represents a synchronized identity managed by a {@link SyncHandler}.  */
 end_comment
 
 begin_interface
 specifier|public
 interface|interface
-name|SyncContext
+name|SyncedIdentity
 block|{
-comment|/**      * Synchronizes an external identity with the repository based on the respective configuration.      *      * @param identity the identity to sync.      * @return {@code true} if the given identity was synced; {@code false} for no change.      * @throws SyncException if an error occurrs      */
-name|boolean
-name|sync
-parameter_list|(
-annotation|@
-name|Nonnull
-name|ExternalIdentity
-name|identity
-parameter_list|)
-throws|throws
-name|SyncException
-function_decl|;
-comment|/**      * Synchronizes an authorizable with the corresponding external identity with the repository based on the respective      * configuration.      *      * @param id the id of the authorizable      * @return {@code true} if the given identity was synced; {@code false} for no change.      * @throws SyncException if an error occurrs      */
-name|boolean
-name|sync
-parameter_list|(
+comment|/**      * Returns the internal id or name of the corresponding authorizable.      * @return the id.      */
 annotation|@
 name|Nonnull
 name|String
-name|id
-parameter_list|)
-throws|throws
-name|SyncException
+name|getId
+parameter_list|()
 function_decl|;
-comment|/**      * Closes this context and releases any resources bound to it. Note that an implementation must not commit the      * {@link org.apache.jackrabbit.oak.api.Root} passed during the creation call. This is the responsibility of the      * application.      */
-name|void
-name|close
+comment|/**      * Returns the external reference of this identity.      * @return the reference or {@code null}      */
+annotation|@
+name|CheckForNull
+name|ExternalIdentityRef
+name|getExternalIdRef
+parameter_list|()
+function_decl|;
+comment|/**      * Checks if this identity represents a group.      * @return {@code true} if group.      */
+name|boolean
+name|isGroup
+parameter_list|()
+function_decl|;
+comment|/**      * Returns the time when this identity was last synced or a value less or equal to 0 if it was never synced.      * @return the time when this identity was last synced.      */
+name|long
+name|lastSynced
 parameter_list|()
 function_decl|;
 block|}
