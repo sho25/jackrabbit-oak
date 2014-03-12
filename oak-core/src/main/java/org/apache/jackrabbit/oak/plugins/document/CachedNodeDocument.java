@@ -54,6 +54,10 @@ name|long
 name|lastCheckTime
 parameter_list|)
 function_decl|;
+name|String
+name|getPath
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 

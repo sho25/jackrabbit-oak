@@ -347,15 +347,10 @@ block|{
 name|String
 name|p
 init|=
-name|Utils
-operator|.
-name|getPathFromId
-argument_list|(
 name|document
 operator|.
-name|getId
+name|getPath
 argument_list|()
-argument_list|)
 decl_stmt|;
 name|String
 name|commitRootPath
