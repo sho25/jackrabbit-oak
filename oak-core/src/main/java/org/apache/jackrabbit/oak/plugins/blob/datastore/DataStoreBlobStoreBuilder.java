@@ -37,20 +37,6 @@ name|org
 operator|.
 name|apache
 operator|.
-name|commons
-operator|.
-name|beanutils
-operator|.
-name|BeanUtils
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
 name|jackrabbit
 operator|.
 name|core
@@ -158,6 +144,22 @@ operator|.
 name|db
 operator|.
 name|ConnectionFactory
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|commons
+operator|.
+name|PropertiesUtil
 import|;
 end_import
 
@@ -302,7 +304,7 @@ operator|new
 name|DataStoreBlobStore
 argument_list|()
 expr_stmt|;
-name|BeanUtils
+name|PropertiesUtil
 operator|.
 name|populate
 argument_list|(
@@ -312,6 +314,8 @@ name|configuration
 operator|.
 name|getConfigMap
 argument_list|()
+argument_list|,
+literal|false
 argument_list|)
 expr_stmt|;
 operator|(
@@ -336,7 +340,7 @@ name|blobStore
 argument_list|)
 return|;
 block|}
-comment|/**      * Gets the data store based on the DataStoreProvider.      *       * @param dataStoreConfig      *            the data store config      * @param dataStoreType      *            the data store type      * @return the data store      * @throws RepositoryException      *             the repository exception      */
+comment|/**      * Gets the data store based on the DataStoreProvider.      *       * @param config      *            the data store config      * @return the data store      * @throws RepositoryException      *             the repository exception      */
 specifier|private
 name|DataStore
 name|getDataStore
@@ -350,9 +354,6 @@ block|{
 return|return
 name|getDataStore
 argument_list|(
-operator|(
-name|String
-operator|)
 name|config
 operator|.
 name|getProperty
@@ -395,7 +396,7 @@ operator|.
 name|newInstance
 argument_list|()
 decl_stmt|;
-name|BeanUtils
+name|PropertiesUtil
 operator|.
 name|populate
 argument_list|(
@@ -405,6 +406,8 @@ name|config
 operator|.
 name|getConfigMap
 argument_list|()
+argument_list|,
+literal|false
 argument_list|)
 expr_stmt|;
 if|if
@@ -605,7 +608,7 @@ return|;
 block|}
 block|}
 decl_stmt|;
-name|BeanUtils
+name|PropertiesUtil
 operator|.
 name|populate
 argument_list|(
@@ -615,6 +618,8 @@ name|config
 operator|.
 name|getConfigMap
 argument_list|()
+argument_list|,
+literal|false
 argument_list|)
 expr_stmt|;
 name|cachingStore

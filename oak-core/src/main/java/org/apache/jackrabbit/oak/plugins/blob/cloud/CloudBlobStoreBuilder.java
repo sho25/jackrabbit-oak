@@ -27,11 +27,13 @@ name|org
 operator|.
 name|apache
 operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
 name|commons
 operator|.
-name|beanutils
-operator|.
-name|BeanUtils
+name|PropertiesUtil
 import|;
 end_import
 
@@ -161,7 +163,7 @@ operator|new
 name|CloudBlobStore
 argument_list|()
 expr_stmt|;
-name|BeanUtils
+name|PropertiesUtil
 operator|.
 name|populate
 argument_list|(
@@ -171,6 +173,8 @@ name|configuration
 operator|.
 name|getConfigMap
 argument_list|()
+argument_list|,
+literal|false
 argument_list|)
 expr_stmt|;
 operator|(
