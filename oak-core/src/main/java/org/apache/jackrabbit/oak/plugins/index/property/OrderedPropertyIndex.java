@@ -125,6 +125,11 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
+specifier|private
+specifier|static
+name|boolean
+name|warned
+decl_stmt|;
 annotation|@
 name|Override
 specifier|public
@@ -167,13 +172,24 @@ name|root
 parameter_list|)
 block|{
 comment|//we don't want the index to be used yet
+if|if
+condition|(
+operator|!
+name|warned
+condition|)
+block|{
+name|warned
+operator|=
+literal|true
+expr_stmt|;
 name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"this index will always return Double.POSITIVE_INFINITY and therefore never work"
+literal|"This index always returns Double.POSITIVE_INFINITY and is therefore never used"
 argument_list|)
 expr_stmt|;
+block|}
 return|return
 name|Double
 operator|.
