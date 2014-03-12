@@ -68,8 +68,8 @@ comment|/**  * A cache value wrapping a simple string.  */
 end_comment
 
 begin_class
-specifier|final
 specifier|public
+specifier|final
 class|class
 name|StringValue
 implements|implements
