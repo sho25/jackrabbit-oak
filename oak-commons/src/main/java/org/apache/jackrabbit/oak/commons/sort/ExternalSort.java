@@ -271,6 +271,7 @@ argument_list|)
 expr_stmt|;
 block|}
 specifier|static
+specifier|final
 name|int
 name|DEFAULTMAXTEMPFILES
 init|=
@@ -278,6 +279,7 @@ literal|1024
 decl_stmt|;
 comment|/**     * Defines the default maximum memory to be used while sorting (8 MB)     */
 specifier|static
+specifier|final
 name|long
 name|DEFAULT_MAX_MEM_BYTES
 init|=
@@ -354,7 +356,7 @@ return|return
 name|blocksize
 return|;
 block|}
-comment|/**      * This will simply load the file by blocks of lines, then sort them in-memory, and write the      * result to temporary files that have to be merged later.      *       * @param file      *            some flat file      * @param cmp      *            string comparator      * @return a list of temporary flat files      */
+comment|/**      * This will simply load the file by blocks of lines, then sort them in-memory, and write the      * result to temporary files that have to be merged later.      *       * @param file      *            some flat file      * @return a list of temporary flat files      */
 specifier|public
 specifier|static
 name|List
@@ -480,7 +482,7 @@ name|distinct
 argument_list|)
 return|;
 block|}
-comment|/**      * This will simply load the file by blocks of lines, then sort them in-memory, and write the      * result to temporary files that have to be merged later. You can specify a bound on the number      * of temporary files that will be created.      *       * @param file      *            some flat file      * @param cmp      *            string comparator      * @param maxtmpfiles      *            maximal number of temporary files      * @param Charset      *            character set to use (can use Charset.defaultCharset())      * @param tmpdirectory      *            location of the temporary files (set to null for default location)      * @param distinct      *            Pass<code>true</code> if duplicate lines should be discarded.      * @param numHeader      *            number of lines to preclude before sorting starts      * @parame usegzip use gzip compression for the temporary files      * @return a list of temporary flat files      */
+comment|/**      * This will simply load the file by blocks of lines, then sort them in-memory, and write the      * result to temporary files that have to be merged later. You can specify a bound on the number      * of temporary files that will be created.      *       * @param file      *            some flat file      * @param cmp      *            string comparator      * @param maxtmpfiles      *            maximal number of temporary files      * @param cs      *            character set to use (can use Charset.defaultCharset())      * @param tmpdirectory      *            location of the temporary files (set to null for default location)      * @param distinct      *            Pass<code>true</code> if duplicate lines should be discarded.      * @param numHeader      *            number of lines to preclude before sorting starts      * @parame usegzip use gzip compression for the temporary files      * @return a list of temporary flat files      */
 specifier|public
 specifier|static
 name|List
@@ -554,6 +556,7 @@ name|cs
 argument_list|)
 argument_list|)
 decl_stmt|;
+comment|// in bytes
 name|long
 name|blocksize
 init|=
@@ -566,8 +569,6 @@ argument_list|,
 name|maxMemory
 argument_list|)
 decl_stmt|;
-comment|// in
-comment|// bytes
 try|try
 block|{
 name|List
@@ -602,12 +603,12 @@ operator|!=
 literal|null
 condition|)
 block|{
+comment|// in bytes
 name|long
 name|currentblocksize
 init|=
 literal|0
 decl_stmt|;
-comment|// in bytes
 while|while
 condition|(
 operator|(
@@ -747,7 +748,7 @@ return|return
 name|files
 return|;
 block|}
-comment|/**      * This will simply load the file by blocks of lines, then sort them in-memory, and write the      * result to temporary files that have to be merged later. You can specify a bound on the number      * of temporary files that will be created.      *       * @param file      *            some flat file      * @param cmp      *            string comparator      * @param maxtmpfiles      *            maximal number of temporary files      * @param Charset      *            character set to use (can use Charset.defaultCharset())      * @param tmpdirectory      *            location of the temporary files (set to null for default location)      * @param distinct      *            Pass<code>true</code> if duplicate lines should be discarded.      * @return a list of temporary flat files      */
+comment|/**      * This will simply load the file by blocks of lines, then sort them in-memory, and write the      * result to temporary files that have to be merged later. You can specify a bound on the number      * of temporary files that will be created.      *       * @param file      *            some flat file      * @param cmp      *            string comparator      * @param maxtmpfiles      *            maximal number of temporary files      * @param cs      *            character set to use (can use Charset.defaultCharset())      * @param tmpdirectory      *            location of the temporary files (set to null for default location)      * @param distinct      *            Pass<code>true</code> if duplicate lines should be discarded.      * @return a list of temporary flat files      */
 specifier|public
 specifier|static
 name|List
@@ -877,7 +878,7 @@ name|newtmpfile
 argument_list|)
 decl_stmt|;
 name|int
-name|ZIPBUFFERSIZE
+name|zipBufferSize
 init|=
 literal|2048
 decl_stmt|;
@@ -885,6 +886,7 @@ if|if
 condition|(
 name|usegzip
 condition|)
+block|{
 name|out
 operator|=
 operator|new
@@ -892,7 +894,7 @@ name|GZIPOutputStream
 argument_list|(
 name|out
 argument_list|,
-name|ZIPBUFFERSIZE
+name|zipBufferSize
 argument_list|)
 block|{
 block|{
@@ -908,6 +910,7 @@ constructor_decl|;
 block|}
 block|}
 expr_stmt|;
+block|}
 name|BufferedWriter
 name|fbw
 init|=
@@ -1028,7 +1031,7 @@ literal|false
 argument_list|)
 return|;
 block|}
-comment|/**      * This merges a bunch of temporary flat files      *       * @param files      * @param output      *            file      * @return The number of lines sorted. (P. Beaudoin)      */
+comment|/**      * This merges a bunch of temporary flat files      *       * @param files      * @param outputfile      *            file      * @return The number of lines sorted. (P. Beaudoin)      */
 specifier|public
 specifier|static
 name|int
@@ -1062,7 +1065,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-comment|/**      * This merges a bunch of temporary flat files      *       * @param files      * @param output      *            file      * @return The number of lines sorted. (P. Beaudoin)      */
+comment|/**      * This merges a bunch of temporary flat files      *       * @param files      * @param outputfile      *            file      * @return The number of lines sorted. (P. Beaudoin)      */
 specifier|public
 specifier|static
 name|int
@@ -1103,7 +1106,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-comment|/**      * This merges a bunch of temporary flat files      *       * @param files      * @param output      *            file      * @return The number of lines sorted. (P. Beaudoin)      */
+comment|/**      * This merges a bunch of temporary flat files      *       * @param files      * @param outputfile      *            file      * @return The number of lines sorted. (P. Beaudoin)      */
 specifier|public
 specifier|static
 name|int
@@ -1149,7 +1152,7 @@ name|distinct
 argument_list|)
 return|;
 block|}
-comment|/**      * This merges a bunch of temporary flat files      *       * @param files      *            The {@link List} of sorted {@link File}s to be merged.      * @param Charset      *            character set to use to load the strings      * @param distinct      *            Pass<code>true</code> if duplicate lines should be discarded. (elchetz@gmail.com)      * @param outputfile      *            The output {@link File} to merge the results to.      * @param cmp      *            The {@link Comparator} to use to compare {@link String}s.      * @param cs      *            The {@link Charset} to be used for the byte to character conversion.      * @param append      *            Pass<code>true</code> if result should append to {@link File} instead of      *            overwrite. Default to be false for overloading methods.      * @param usegzip      *            assumes we used gzip compression for temporary files      * @return The number of lines sorted. (P. Beaudoin)      * @since v0.1.4      */
+comment|/**      * This merges a bunch of temporary flat files      *       * @param files      *            The {@link List} of sorted {@link File}s to be merged.      * @param distinct      *            Pass<code>true</code> if duplicate lines should be discarded. (elchetz@gmail.com)      * @param outputfile      *            The output {@link File} to merge the results to.      * @param cmp      *            The {@link Comparator} to use to compare {@link String}s.      * @param cs      *            The {@link Charset} to be used for the byte to character conversion.      * @param append      *            Pass<code>true</code> if result should append to {@link File} instead of      *            overwrite. Default to be false for overloading methods.      * @param usegzip      *            assumes we used gzip compression for temporary files      * @return The number of lines sorted. (P. Beaudoin)      * @since v0.1.4      */
 specifier|public
 specifier|static
 name|int
@@ -1186,60 +1189,6 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
-name|PriorityQueue
-argument_list|<
-name|BinaryFileBuffer
-argument_list|>
-name|pq
-init|=
-operator|new
-name|PriorityQueue
-argument_list|<
-name|BinaryFileBuffer
-argument_list|>
-argument_list|(
-literal|11
-argument_list|,
-operator|new
-name|Comparator
-argument_list|<
-name|BinaryFileBuffer
-argument_list|>
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|int
-name|compare
-parameter_list|(
-name|BinaryFileBuffer
-name|i
-parameter_list|,
-name|BinaryFileBuffer
-name|j
-parameter_list|)
-block|{
-return|return
-name|cmp
-operator|.
-name|compare
-argument_list|(
-name|i
-operator|.
-name|peek
-argument_list|()
-argument_list|,
-name|j
-operator|.
-name|peek
-argument_list|()
-argument_list|)
-return|;
-block|}
-block|}
-argument_list|)
-decl_stmt|;
 name|ArrayList
 argument_list|<
 name|BinaryFileBuffer
@@ -1263,7 +1212,7 @@ control|)
 block|{
 specifier|final
 name|int
-name|BUFFERSIZE
+name|bufferSize
 init|=
 literal|2048
 decl_stmt|;
@@ -1297,7 +1246,7 @@ name|GZIPInputStream
 argument_list|(
 name|in
 argument_list|,
-name|BUFFERSIZE
+name|bufferSize
 argument_list|)
 argument_list|,
 name|cs
@@ -1381,16 +1330,18 @@ name|f
 range|:
 name|files
 control|)
+block|{
 name|f
 operator|.
 name|delete
 argument_list|()
 expr_stmt|;
+block|}
 return|return
 name|rowcounter
 return|;
 block|}
-comment|/**      * This merges several BinaryFileBuffer to an output writer.      *       * @param BufferedWriter      *            A buffer where we write the data.      * @param cmp      *            A comparator object that tells us how to sort the lines.      * @param distinct      *            Pass<code>true</code> if duplicate lines should be discarded. (elchetz@gmail.com)      * @param buffers      *            Where the data should be read.      * @return The number of lines sorted. (P. Beaudoin)      *       */
+comment|/**      * This merges several BinaryFileBuffer to an output writer.      *       * @param fbw      *            A buffer where we write the data.      * @param cmp      *            A comparator object that tells us how to sort the lines.      * @param distinct      *            Pass<code>true</code> if duplicate lines should be discarded. (elchetz@gmail.com)      * @param buffers      *            Where the data should be read.      * @return The number of lines sorted. (P. Beaudoin)      *       */
 specifier|public
 specifier|static
 name|int
@@ -1479,6 +1430,7 @@ name|bfb
 range|:
 name|buffers
 control|)
+block|{
 if|if
 condition|(
 operator|!
@@ -1487,6 +1439,7 @@ operator|.
 name|empty
 argument_list|()
 condition|)
+block|{
 name|pq
 operator|.
 name|add
@@ -1494,6 +1447,8 @@ argument_list|(
 name|bfb
 argument_list|)
 expr_stmt|;
+block|}
+block|}
 name|int
 name|rowcounter
 init|=
@@ -1610,17 +1565,19 @@ name|bfb
 range|:
 name|pq
 control|)
+block|{
 name|bfb
 operator|.
 name|close
 argument_list|()
 expr_stmt|;
 block|}
+block|}
 return|return
 name|rowcounter
 return|;
 block|}
-comment|/**      * This merges a bunch of temporary flat files      *       * @param files      *            The {@link List} of sorted {@link File}s to be merged.      * @param Charset      *            character set to use to load the strings      * @param distinct      *            Pass<code>true</code> if duplicate lines should be discarded. (elchetz@gmail.com)      * @param outputfile      *            The output {@link File} to merge the results to.      * @param cmp      *            The {@link Comparator} to use to compare {@link String}s.      * @param cs      *            The {@link Charset} to be used for the byte to character conversion.      * @return The number of lines sorted. (P. Beaudoin)      * @since v0.1.2      */
+comment|/**      * This merges a bunch of temporary flat files      *       * @param files      *            The {@link List} of sorted {@link File}s to be merged.      * @param distinct      *            Pass<code>true</code> if duplicate lines should be discarded. (elchetz@gmail.com)      * @param outputfile      *            The output {@link File} to merge the results to.      * @param cmp      *            The {@link Comparator} to use to compare {@link String}s.      * @param cs      *            The {@link Charset} to be used for the byte to character conversion.      * @return The number of lines sorted. (P. Beaudoin)      * @since v0.1.2      */
 specifier|public
 specifier|static
 name|int
@@ -1670,7 +1627,7 @@ literal|false
 argument_list|)
 return|;
 block|}
-comment|/**      * This merges a bunch of temporary flat files      *       * @param files      * @param output      *            file      * @param Charset      *            character set to use to load the strings      * @return The number of lines sorted. (P. Beaudoin)      */
+comment|/**      * This merges a bunch of temporary flat files      *       * @param files      * @param outputfile      *            file      * @param cs      *            character set to use to load the strings      * @return The number of lines sorted. (P. Beaudoin)      */
 specifier|public
 specifier|static
 name|int
@@ -1931,7 +1888,6 @@ block|}
 elseif|else
 if|if
 condition|(
-operator|(
 name|args
 index|[
 name|param
@@ -1951,7 +1907,6 @@ name|equals
 argument_list|(
 literal|"--help"
 argument_list|)
-operator|)
 condition|)
 block|{
 name|displayUsage
@@ -1962,7 +1917,6 @@ block|}
 elseif|else
 if|if
 condition|(
-operator|(
 name|args
 index|[
 name|param
@@ -1982,7 +1936,6 @@ name|equals
 argument_list|(
 literal|"--distinct"
 argument_list|)
-operator|)
 condition|)
 block|{
 name|distinct
@@ -2177,7 +2130,6 @@ block|}
 elseif|else
 if|if
 condition|(
-operator|(
 name|args
 index|[
 name|param
@@ -2197,7 +2149,6 @@ name|equals
 argument_list|(
 literal|"--gzip"
 argument_list|)
-operator|)
 condition|)
 block|{
 name|usegzip
@@ -2329,6 +2280,7 @@ name|inputfile
 operator|==
 literal|null
 condition|)
+block|{
 name|inputfile
 operator|=
 name|args
@@ -2336,6 +2288,7 @@ index|[
 name|param
 index|]
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -2343,6 +2296,7 @@ name|outputfile
 operator|==
 literal|null
 condition|)
+block|{
 name|outputfile
 operator|=
 name|args
@@ -2350,7 +2304,9 @@ index|[
 name|param
 index|]
 expr_stmt|;
+block|}
 else|else
+block|{
 name|System
 operator|.
 name|out
@@ -2365,6 +2321,7 @@ name|param
 index|]
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 if|if
@@ -2431,6 +2388,7 @@ if|if
 condition|(
 name|verbose
 condition|)
+block|{
 name|System
 operator|.
 name|out
@@ -2447,6 +2405,7 @@ operator|+
 literal|" tmp files"
 argument_list|)
 expr_stmt|;
+block|}
 name|mergeSortedFiles
 argument_list|(
 name|l
@@ -2652,9 +2611,11 @@ condition|(
 name|empty
 argument_list|()
 condition|)
+block|{
 return|return
 literal|null
 return|;
+block|}
 return|return
 name|this
 operator|.

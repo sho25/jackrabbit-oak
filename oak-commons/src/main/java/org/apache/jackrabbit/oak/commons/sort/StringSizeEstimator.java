@@ -35,16 +35,19 @@ name|StringSizeEstimator
 block|{
 specifier|private
 specifier|static
+specifier|final
 name|int
 name|OBJ_HEADER
 decl_stmt|;
 specifier|private
 specifier|static
+specifier|final
 name|int
 name|ARR_HEADER
 decl_stmt|;
 specifier|private
 specifier|static
+specifier|final
 name|int
 name|INT_FIELDS
 init|=
@@ -52,34 +55,38 @@ literal|12
 decl_stmt|;
 specifier|private
 specifier|static
+specifier|final
 name|int
 name|OBJ_REF
 decl_stmt|;
 specifier|private
 specifier|static
+specifier|final
 name|int
 name|OBJ_OVERHEAD
 decl_stmt|;
 specifier|private
 specifier|static
+specifier|final
 name|boolean
 name|IS_64_BIT_JVM
 decl_stmt|;
-comment|/** 	 * Private constructor to prevent instantiation. 	 */
+comment|/**      * Private constructor to prevent instantiation.      */
 specifier|private
 name|StringSizeEstimator
 parameter_list|()
-block|{ 	}
-comment|/** 	 * Class initializations. 	 */
+block|{     }
+comment|/**      * Class initializations.      */
 static|static
 block|{
 comment|// By default we assume 64 bit JVM
 comment|// (defensive approach since we will get
 comment|// larger estimations in case we are not sure)
-name|IS_64_BIT_JVM
-operator|=
+name|boolean
+name|is64Bit
+init|=
 literal|true
-expr_stmt|;
+decl_stmt|;
 comment|// check the system property "sun.arch.data.model"
 comment|// not very safe, as it might not work for all JVM implementations
 comment|// nevertheless the worst thing that might happen is that the JVM is 32bit
@@ -116,12 +123,16 @@ literal|1
 condition|)
 block|{
 comment|// If exists and is 32 bit then we assume a 32bit JVM
-name|IS_64_BIT_JVM
+name|is64Bit
 operator|=
 literal|false
 expr_stmt|;
 block|}
 block|}
+name|IS_64_BIT_JVM
+operator|=
+name|is64Bit
+expr_stmt|;
 comment|// The sizes below are a bit rough as we don't take into account
 comment|// advanced JVM options such as compressed oops
 comment|// however if our calculation is not accurate it'll be a bit over
@@ -161,7 +172,7 @@ operator|+
 name|ARR_HEADER
 expr_stmt|;
 block|}
-comment|/** 	 * Estimates the size of a {@link String} object in bytes. 	 *  	 * @param s The string to estimate memory footprint. 	 * @return The<strong>estimated</strong> size in bytes. 	 */
+comment|/**      * Estimates the size of a {@link String} object in bytes.      *       * @param s The string to estimate memory footprint.      * @return The<strong>estimated</strong> size in bytes.      */
 specifier|public
 specifier|static
 name|long
