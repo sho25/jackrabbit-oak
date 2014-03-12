@@ -638,6 +638,11 @@ specifier|final
 name|StatisticManager
 name|statisticManager
 decl_stmt|;
+specifier|private
+specifier|final
+name|int
+name|queueLength
+decl_stmt|;
 comment|/**      * Create a new instance based on a {@link ContentSession} that needs to implement      * {@link Observable}.      *      * @param sessionContext   session delegate of the session in whose context this observation manager      *                         operates.      * @param nodeTypeManager  node type manager for the content session      * @param whiteboard      * @throws IllegalArgumentException if {@code contentSession} doesn't implement {@code Observable}.      */
 specifier|public
 name|ObservationManagerImpl
@@ -653,6 +658,9 @@ name|permissionProvider
 parameter_list|,
 name|Whiteboard
 name|whiteboard
+parameter_list|,
+name|int
+name|queueLength
 parameter_list|)
 block|{
 name|this
@@ -688,12 +696,20 @@ name|whiteboard
 operator|=
 name|whiteboard
 expr_stmt|;
+name|this
+operator|.
 name|statisticManager
 operator|=
 name|sessionContext
 operator|.
 name|getStatisticManager
 argument_list|()
+expr_stmt|;
+name|this
+operator|.
+name|queueLength
+operator|=
+name|queueLength
 expr_stmt|;
 block|}
 specifier|public
@@ -807,6 +823,8 @@ argument_list|,
 name|filterProvider
 argument_list|,
 name|statisticManager
+argument_list|,
+name|queueLength
 argument_list|)
 expr_stmt|;
 name|processors

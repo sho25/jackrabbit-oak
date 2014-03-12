@@ -643,6 +643,11 @@ name|securityProvider
 decl_stmt|;
 specifier|private
 specifier|final
+name|int
+name|observationQueueLength
+decl_stmt|;
+specifier|private
+specifier|final
 name|Clock
 name|clock
 decl_stmt|;
@@ -699,6 +704,9 @@ annotation|@
 name|Nonnull
 name|SecurityProvider
 name|securityProvider
+parameter_list|,
+name|int
+name|observationQueueLength
 parameter_list|)
 block|{
 name|this
@@ -727,6 +735,12 @@ name|checkNotNull
 argument_list|(
 name|securityProvider
 argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|observationQueueLength
+operator|=
+name|observationQueueLength
 expr_stmt|;
 name|this
 operator|.
@@ -1150,6 +1164,8 @@ name|refreshInterval
 argument_list|)
 argument_list|,
 name|sessionDelegate
+argument_list|,
+name|observationQueueLength
 argument_list|)
 decl_stmt|;
 return|return
@@ -1346,6 +1362,9 @@ name|attributes
 parameter_list|,
 name|SessionDelegate
 name|delegate
+parameter_list|,
+name|int
+name|observationQueueLength
 parameter_list|)
 block|{
 return|return
@@ -1363,6 +1382,8 @@ argument_list|,
 name|attributes
 argument_list|,
 name|delegate
+argument_list|,
+name|observationQueueLength
 argument_list|)
 return|;
 block|}

@@ -155,6 +155,9 @@ name|whiteboard
 parameter_list|,
 name|SecurityProvider
 name|securityProvider
+parameter_list|,
+name|int
+name|observationQueueLength
 parameter_list|)
 block|{
 name|super
@@ -164,6 +167,8 @@ argument_list|,
 name|whiteboard
 argument_list|,
 name|securityProvider
+argument_list|,
+name|observationQueueLength
 argument_list|)
 expr_stmt|;
 block|}

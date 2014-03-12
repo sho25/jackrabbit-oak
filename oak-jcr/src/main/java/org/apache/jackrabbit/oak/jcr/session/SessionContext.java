@@ -856,6 +856,11 @@ name|delegate
 decl_stmt|;
 specifier|private
 specifier|final
+name|int
+name|observationQueueLength
+decl_stmt|;
+specifier|private
+specifier|final
 name|SessionNamespaces
 name|namespaces
 decl_stmt|;
@@ -971,6 +976,9 @@ name|Nonnull
 specifier|final
 name|SessionDelegate
 name|delegate
+parameter_list|,
+name|int
+name|observationQueueLength
 parameter_list|)
 block|{
 name|this
@@ -1023,6 +1031,12 @@ name|checkNotNull
 argument_list|(
 name|delegate
 argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|observationQueueLength
+operator|=
+name|observationQueueLength
 expr_stmt|;
 name|SessionStats
 name|sessionStats
@@ -1560,6 +1574,8 @@ name|getPermissionProvider
 argument_list|()
 argument_list|,
 name|whiteboard
+argument_list|,
+name|observationQueueLength
 argument_list|)
 expr_stmt|;
 block|}
