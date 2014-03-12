@@ -381,7 +381,7 @@ name|common
 operator|.
 name|collect
 operator|.
-name|Lists
+name|Iterators
 import|;
 end_import
 
@@ -2069,15 +2069,12 @@ throws|throws
 name|IOException
 block|{
 return|return
-name|Lists
+name|Iterators
 operator|.
-name|newArrayList
+name|singletonIterator
 argument_list|(
 name|blobId
 argument_list|)
-operator|.
-name|iterator
-argument_list|()
 return|;
 block|}
 class|class
