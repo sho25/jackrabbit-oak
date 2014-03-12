@@ -515,9 +515,9 @@ init|=
 operator|new
 name|EventGenerator
 argument_list|(
-name|previousRoot
+name|before
 argument_list|,
-name|root
+name|after
 argument_list|,
 name|handler
 argument_list|)
