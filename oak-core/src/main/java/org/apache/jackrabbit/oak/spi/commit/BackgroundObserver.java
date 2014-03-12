@@ -222,6 +222,21 @@ name|Observer
 implements|,
 name|Closeable
 block|{
+specifier|private
+specifier|static
+specifier|final
+name|Logger
+name|LOG
+init|=
+name|LoggerFactory
+operator|.
+name|getLogger
+argument_list|(
+name|BackgroundObserver
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 comment|/**      * Signal for the background thread to stop processing changes.      */
 specifier|private
 specifier|static
@@ -726,6 +741,11 @@ expr_stmt|;
 block|}
 comment|// Try to add this change to the queue without blocking, and
 comment|// mark the queue as full if there wasn't enough space
+name|boolean
+name|wasFull
+init|=
+name|full
+decl_stmt|;
 name|full
 operator|=
 operator|!
@@ -736,6 +756,22 @@ argument_list|(
 name|change
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|full
+operator|&&
+operator|!
+name|wasFull
+condition|)
+block|{
+name|LOG
+operator|.
+name|warn
+argument_list|(
+literal|"Revision queue is full. Further revisions will be compacted."
+argument_list|)
+expr_stmt|;
+block|}
 if|if
 condition|(
 operator|!
