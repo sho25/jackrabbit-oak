@@ -85,6 +85,12 @@ operator|.
 name|newSingleThreadScheduledExecutor
 argument_list|()
 decl_stmt|;
+specifier|final
+name|long
+name|limit
+init|=
+literal|20
+decl_stmt|;
 try|try
 block|{
 name|Clock
@@ -135,6 +141,21 @@ argument_list|()
 decl_stmt|;
 name|assertTrue
 argument_list|(
+literal|"unexpected drift: "
+operator|+
+name|Math
+operator|.
+name|abs
+argument_list|(
+name|drift
+argument_list|)
+operator|+
+literal|" (limit "
+operator|+
+name|limit
+operator|+
+literal|")"
+argument_list|,
 name|Math
 operator|.
 name|abs
@@ -142,7 +163,7 @@ argument_list|(
 name|drift
 argument_list|)
 operator|<
-literal|20
+name|limit
 argument_list|)
 expr_stmt|;
 comment|// Windows can have 15ms gaps
@@ -177,6 +198,21 @@ argument_list|()
 decl_stmt|;
 name|assertTrue
 argument_list|(
+literal|"unexpected drift: "
+operator|+
+name|Math
+operator|.
+name|abs
+argument_list|(
+name|drift
+argument_list|)
+operator|+
+literal|" (limit "
+operator|+
+name|limit
+operator|+
+literal|")"
+argument_list|,
 name|Math
 operator|.
 name|abs
@@ -184,7 +220,7 @@ argument_list|(
 name|drift
 argument_list|)
 operator|<
-literal|20
+name|limit
 argument_list|)
 expr_stmt|;
 block|}
