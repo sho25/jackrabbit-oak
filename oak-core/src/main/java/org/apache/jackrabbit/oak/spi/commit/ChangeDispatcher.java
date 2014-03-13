@@ -108,6 +108,7 @@ decl_stmt|;
 annotation|@
 name|Nonnull
 specifier|private
+specifier|volatile
 name|NodeState
 name|root
 decl_stmt|;
