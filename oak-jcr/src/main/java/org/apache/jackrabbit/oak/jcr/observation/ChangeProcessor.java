@@ -763,6 +763,7 @@ name|CompositeRegistration
 name|registration
 decl_stmt|;
 specifier|private
+specifier|volatile
 name|NodeState
 name|previousRoot
 decl_stmt|;
