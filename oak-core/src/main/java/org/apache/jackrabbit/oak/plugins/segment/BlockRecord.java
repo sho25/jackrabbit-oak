@@ -80,9 +80,6 @@ name|size
 decl_stmt|;
 name|BlockRecord
 parameter_list|(
-name|Segment
-name|segment
-parameter_list|,
 name|RecordId
 name|id
 parameter_list|,
@@ -92,8 +89,6 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
-name|segment
-argument_list|,
 name|id
 argument_list|)
 expr_stmt|;

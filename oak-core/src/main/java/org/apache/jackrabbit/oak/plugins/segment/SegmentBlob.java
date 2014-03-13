@@ -169,17 +169,12 @@ name|Blob
 block|{
 name|SegmentBlob
 parameter_list|(
-name|Segment
-name|segment
-parameter_list|,
 name|RecordId
 name|id
 parameter_list|)
 block|{
 name|super
 argument_list|(
-name|segment
-argument_list|,
 name|id
 argument_list|)
 expr_stmt|;
@@ -384,8 +379,6 @@ operator|new
 name|ListRecord
 argument_list|(
 name|segment
-argument_list|,
-name|segment
 operator|.
 name|readRecordId
 argument_list|(
@@ -401,9 +394,6 @@ return|return
 operator|new
 name|SegmentStream
 argument_list|(
-name|getStore
-argument_list|()
-argument_list|,
 name|getRecordId
 argument_list|()
 argument_list|,
@@ -475,6 +465,8 @@ name|UTF_8
 argument_list|)
 decl_stmt|;
 return|return
+name|segment
+operator|.
 name|getStore
 argument_list|()
 operator|.

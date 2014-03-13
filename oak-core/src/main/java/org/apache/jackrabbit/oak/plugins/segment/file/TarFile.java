@@ -496,7 +496,7 @@ name|ByteBuffer
 name|readEntry
 parameter_list|(
 name|UUID
-name|id
+name|uuid
 parameter_list|)
 throws|throws
 name|IOException
@@ -508,7 +508,7 @@ name|entries
 operator|.
 name|get
 argument_list|(
-name|id
+name|uuid
 argument_list|)
 decl_stmt|;
 if|if
@@ -539,7 +539,7 @@ name|boolean
 name|writeEntry
 parameter_list|(
 name|UUID
-name|id
+name|uuid
 parameter_list|,
 name|byte
 index|[]
@@ -584,7 +584,7 @@ name|byte
 index|[]
 name|n
 init|=
-name|id
+name|uuid
 operator|.
 name|toString
 argument_list|()
@@ -905,7 +905,7 @@ name|entries
 operator|.
 name|put
 argument_list|(
-name|id
+name|uuid
 argument_list|,
 operator|new
 name|TarEntry

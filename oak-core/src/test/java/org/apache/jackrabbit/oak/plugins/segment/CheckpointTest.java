@@ -261,15 +261,7 @@ name|store
 operator|.
 name|retrieve
 argument_list|(
-operator|new
-name|SegmentIdFactory
-argument_list|()
-operator|.
-name|newDataSegmentId
-argument_list|()
-operator|.
-name|toString
-argument_list|()
+literal|"missing-checkpoint"
 argument_list|)
 expr_stmt|;
 block|}

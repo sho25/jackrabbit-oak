@@ -449,11 +449,6 @@ init|=
 operator|new
 name|BlockRecord
 argument_list|(
-name|writer
-operator|.
-name|getDummySegment
-argument_list|()
-argument_list|,
 name|blockId
 argument_list|,
 name|bytes
@@ -963,11 +958,6 @@ name|ListRecord
 argument_list|(
 name|writer
 operator|.
-name|getDummySegment
-argument_list|()
-argument_list|,
-name|writer
-operator|.
 name|writeList
 argument_list|(
 name|list
@@ -988,8 +978,9 @@ comment|// OAK-1184
 name|SegmentIdFactory
 name|factory
 init|=
-operator|new
-name|SegmentIdFactory
+name|store
+operator|.
+name|getFactory
 argument_list|()
 decl_stmt|;
 name|List

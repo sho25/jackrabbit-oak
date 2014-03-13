@@ -128,9 +128,6 @@ name|bucketSize
 decl_stmt|;
 name|ListRecord
 parameter_list|(
-name|Segment
-name|segment
-parameter_list|,
 name|RecordId
 name|id
 parameter_list|,
@@ -140,8 +137,6 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
-name|segment
-argument_list|,
 name|id
 argument_list|)
 expr_stmt|;
@@ -263,8 +258,6 @@ init|=
 operator|new
 name|ListRecord
 argument_list|(
-name|segment
-argument_list|,
 name|id
 argument_list|,
 name|Math
@@ -401,8 +394,6 @@ init|=
 operator|new
 name|ListRecord
 argument_list|(
-name|segment
-argument_list|,
 name|id
 argument_list|,
 name|Math

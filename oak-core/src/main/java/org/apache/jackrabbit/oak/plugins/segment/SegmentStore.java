@@ -21,16 +21,6 @@ end_package
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|UUID
-import|;
-end_import
-
-begin_import
-import|import
 name|javax
 operator|.
 name|annotation
@@ -70,6 +60,10 @@ specifier|public
 interface|interface
 name|SegmentStore
 block|{
+name|SegmentIdFactory
+name|getFactory
+parameter_list|()
+function_decl|;
 name|SegmentWriter
 name|getWriter
 parameter_list|()
@@ -91,22 +85,30 @@ name|SegmentNodeState
 name|head
 parameter_list|)
 function_decl|;
+comment|/**      * Checks whether the identified segment exists in this store.      *      * @param id segment identifier      * @return {@code true} if the segment exists, {@code false} otherwise      */
+name|boolean
+name|containsSegment
+parameter_list|(
+name|SegmentId
+name|id
+parameter_list|)
+function_decl|;
 comment|/**      * Reads the identified segment from this store.      *      * @param segmentId segment identifier      * @return identified segment, or {@code null} if not found      */
 annotation|@
 name|CheckForNull
 name|Segment
 name|readSegment
 parameter_list|(
-name|UUID
+name|SegmentId
 name|segmentId
 parameter_list|)
 function_decl|;
-comment|/**      * Writes the given segment to the segment store.      *      * @param segmentId segment identifier      * @param bytes byte buffer that contains the raw contents of the segment      * @param offset start offset within the byte buffer      * @param length length of the segment      */
+comment|/**      * Writes the given segment to the segment store.      *      * @param id segment identifier      * @param bytes byte buffer that contains the raw contents of the segment      * @param offset start offset within the byte buffer      * @param length length of the segment      */
 name|void
 name|writeSegment
 parameter_list|(
-name|UUID
-name|segmentId
+name|SegmentId
+name|id
 parameter_list|,
 name|byte
 index|[]

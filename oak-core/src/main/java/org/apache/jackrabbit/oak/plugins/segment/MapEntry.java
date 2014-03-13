@@ -149,11 +149,6 @@ argument_list|>
 block|{
 specifier|private
 specifier|final
-name|Segment
-name|segment
-decl_stmt|;
-specifier|private
-specifier|final
 name|String
 name|name
 decl_stmt|;
@@ -169,9 +164,6 @@ name|value
 decl_stmt|;
 name|MapEntry
 parameter_list|(
-name|Segment
-name|segment
-parameter_list|,
 name|String
 name|name
 parameter_list|,
@@ -182,15 +174,6 @@ name|RecordId
 name|value
 parameter_list|)
 block|{
-name|this
-operator|.
-name|segment
-operator|=
-name|checkNotNull
-argument_list|(
-name|segment
-argument_list|)
-expr_stmt|;
 name|this
 operator|.
 name|name
@@ -264,8 +247,6 @@ return|return
 operator|new
 name|SegmentNodeState
 argument_list|(
-name|segment
-argument_list|,
 name|value
 argument_list|)
 return|;

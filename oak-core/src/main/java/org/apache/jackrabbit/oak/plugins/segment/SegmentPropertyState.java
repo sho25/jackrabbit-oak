@@ -511,9 +511,6 @@ decl_stmt|;
 specifier|public
 name|SegmentPropertyState
 parameter_list|(
-name|Segment
-name|segment
-parameter_list|,
 name|RecordId
 name|id
 parameter_list|,
@@ -523,8 +520,6 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
-name|segment
-argument_list|,
 name|id
 argument_list|)
 expr_stmt|;
@@ -598,8 +593,6 @@ return|return
 operator|new
 name|ListRecord
 argument_list|(
-name|segment
-argument_list|,
 name|listId
 argument_list|,
 name|size
@@ -1136,8 +1129,6 @@ operator|)
 operator|new
 name|SegmentBlob
 argument_list|(
-name|segment
-argument_list|,
 name|id
 argument_list|)
 return|;
