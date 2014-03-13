@@ -1645,6 +1645,15 @@ block|}
 block|}
 return|;
 block|}
+annotation|@
+name|Override
+specifier|public
+name|void
+name|clearCache
+parameter_list|()
+block|{
+comment|// no cache
+block|}
 block|}
 end_class
 
