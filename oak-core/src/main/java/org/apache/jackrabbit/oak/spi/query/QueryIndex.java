@@ -700,6 +700,7 @@ specifier|final
 name|Order
 name|order
 decl_stmt|;
+specifier|public
 name|OrderEntry
 parameter_list|(
 name|String
