@@ -260,9 +260,12 @@ argument_list|(
 name|idxDef
 argument_list|)
 decl_stmt|;
-name|SolrServerConfiguration
+name|EmbeddedSolrServerConfiguration
 name|solrServerConfiguration
 init|=
+operator|(
+name|EmbeddedSolrServerConfiguration
+operator|)
 name|fixedNodeStateConfiguration
 operator|.
 name|getSolrServerConfiguration

@@ -23,6 +23,28 @@ name|configuration
 package|;
 end_package
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|index
+operator|.
+name|solr
+operator|.
+name|server
+operator|.
+name|SolrServerProvider
+import|;
+end_import
+
 begin_comment
 comment|/**  * {@link org.apache.solr.client.solrj.SolrServer} configuration provider.  */
 end_comment
@@ -31,10 +53,18 @@ begin_interface
 specifier|public
 interface|interface
 name|SolrServerConfigurationProvider
+parameter_list|<
+name|S
+extends|extends
+name|SolrServerProvider
+parameter_list|>
 block|{
-comment|/**      * Provide a {@lin SolrServerConfiguration} to be used to initialize a specific      * {@link org.apache.solr.client.solrj.SolrServer} implementation.      *      * @return the {@link org.apache.jackrabbit.oak.plugins.index.solr.configuration.SolrServerConfiguration} holding the configuration parameters      */
+comment|/**      * Provide a {@link SolrServerConfiguration} to be used to initialize a specific      * {@link org.apache.solr.client.solrj.SolrServer} implementation.      *      * @return the {@link org.apache.jackrabbit.oak.plugins.index.solr.configuration.SolrServerConfiguration} holding the configuration parameters      */
 specifier|public
 name|SolrServerConfiguration
+argument_list|<
+name|S
+argument_list|>
 name|getSolrServerConfiguration
 parameter_list|()
 function_decl|;

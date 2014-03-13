@@ -264,7 +264,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Osgi Service that provides Solr based {@link org.apache.jackrabbit.oak.plugins.index.IndexEditor}s  *   * @see org.apache.jackrabbit.oak.plugins.index.solr.index.SolrIndexEditorProvider  * @see org.apache.jackrabbit.oak.plugins.index.IndexEditorProvider  */
+comment|/**  * Osgi Service that provides Solr based {@link org.apache.jackrabbit.oak.plugins.index.IndexEditor}s  *  * @see org.apache.jackrabbit.oak.plugins.index.solr.index.SolrIndexEditorProvider  * @see org.apache.jackrabbit.oak.plugins.index.IndexEditorProvider  */
 end_comment
 
 begin_class
@@ -306,10 +306,6 @@ specifier|private
 name|OakSolrConfigurationProvider
 name|oakSolrConfigurationProvider
 decl_stmt|;
-specifier|private
-name|SolrIndexEditorProvider
-name|solrIndexEditorProvider
-decl_stmt|;
 annotation|@
 name|Override
 annotation|@
@@ -341,11 +337,6 @@ parameter_list|)
 throws|throws
 name|CommitFailedException
 block|{
-name|Editor
-name|indexEditor
-init|=
-literal|null
-decl_stmt|;
 if|if
 condition|(
 name|solrServerProvider
@@ -355,14 +346,9 @@ operator|&&
 name|oakSolrConfigurationProvider
 operator|!=
 literal|null
-operator|&&
-name|solrIndexEditorProvider
-operator|==
-literal|null
 condition|)
 block|{
-name|solrIndexEditorProvider
-operator|=
+return|return
 operator|new
 name|SolrIndexEditorProvider
 argument_list|(
@@ -370,10 +356,6 @@ name|solrServerProvider
 argument_list|,
 name|oakSolrConfigurationProvider
 argument_list|)
-expr_stmt|;
-name|indexEditor
-operator|=
-name|solrIndexEditorProvider
 operator|.
 name|getIndexEditor
 argument_list|(
@@ -385,11 +367,14 @@ name|root
 argument_list|,
 name|callback
 argument_list|)
-expr_stmt|;
-block|}
-return|return
-name|indexEditor
 return|;
+block|}
+else|else
+block|{
+return|return
+literal|null
+return|;
+block|}
 block|}
 block|}
 end_class

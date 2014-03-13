@@ -19,7 +19,7 @@ name|index
 operator|.
 name|solr
 operator|.
-name|embedded
+name|server
 package|;
 end_package
 
@@ -79,22 +79,6 @@ name|org
 operator|.
 name|apache
 operator|.
-name|felix
-operator|.
-name|scr
-operator|.
-name|annotations
-operator|.
-name|Deactivate
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
 name|jackrabbit
 operator|.
 name|oak
@@ -123,7 +107,7 @@ name|solr
 operator|.
 name|configuration
 operator|.
-name|SolrServerConfiguration
+name|EmbeddedSolrServerConfiguration
 import|;
 end_import
 
@@ -146,28 +130,6 @@ operator|.
 name|configuration
 operator|.
 name|SolrServerConfigurationDefaults
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|plugins
-operator|.
-name|index
-operator|.
-name|solr
-operator|.
-name|server
-operator|.
-name|SolrServerProvider
 import|;
 end_import
 
@@ -276,7 +238,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Default implementation of {@link SolrServerProvider} which uses an  * {@link EmbeddedSolrServer} configured as per passed {@link SolrServerConfiguration}.  */
+comment|/**  * Default implementation of {@link org.apache.jackrabbit.oak.plugins.index.solr.server.SolrServerProvider} which uses an  * {@link EmbeddedSolrServer} configured as per passed {@link org.apache.jackrabbit.oak.plugins.index.solr.configuration.SolrServerConfiguration}.  */
 end_comment
 
 begin_class
@@ -301,13 +263,13 @@ argument_list|)
 decl_stmt|;
 specifier|private
 specifier|final
-name|SolrServerConfiguration
+name|EmbeddedSolrServerConfiguration
 name|solrServerConfiguration
 decl_stmt|;
 specifier|public
 name|EmbeddedSolrServerProvider
 parameter_list|(
-name|SolrServerConfiguration
+name|EmbeddedSolrServerConfiguration
 name|solrServerConfiguration
 parameter_list|)
 block|{
@@ -322,29 +284,6 @@ specifier|private
 name|SolrServer
 name|solrServer
 decl_stmt|;
-annotation|@
-name|Deactivate
-specifier|protected
-name|void
-name|deactivate
-parameter_list|()
-throws|throws
-name|Exception
-block|{
-if|if
-condition|(
-name|solrServer
-operator|!=
-literal|null
-condition|)
-block|{
-name|solrServer
-operator|.
-name|shutdown
-argument_list|()
-expr_stmt|;
-block|}
-block|}
 specifier|private
 name|SolrServer
 name|createSolrServer
@@ -376,7 +315,7 @@ operator|.
 name|getSolrConfigPath
 argument_list|()
 decl_stmt|;
-name|SolrServerConfiguration
+name|EmbeddedSolrServerConfiguration
 operator|.
 name|HttpConfiguration
 name|httpConfiguration

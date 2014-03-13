@@ -222,7 +222,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Osgi Service that provides Solr based {@link org.apache.jackrabbit.oak.spi.query.QueryIndex}es  *   * @see org.apache.jackrabbit.oak.plugins.index.solr.query.SolrQueryIndexProvider  * @see QueryIndexProvider  */
+comment|/**  * Osgi Service that provides Solr based {@link org.apache.jackrabbit.oak.spi.query.QueryIndex}es  *  * @see org.apache.jackrabbit.oak.plugins.index.solr.query.SolrQueryIndexProvider  * @see QueryIndexProvider  */
 end_comment
 
 begin_class
@@ -264,10 +264,6 @@ specifier|private
 name|OakSolrConfigurationProvider
 name|oakSolrConfigurationProvider
 decl_stmt|;
-specifier|private
-name|SolrQueryIndexProvider
-name|solrQueryIndexProvider
-decl_stmt|;
 annotation|@
 name|Override
 annotation|@
@@ -285,21 +281,6 @@ name|NodeState
 name|nodeState
 parameter_list|)
 block|{
-name|List
-argument_list|<
-name|?
-extends|extends
-name|QueryIndex
-argument_list|>
-name|queryIndexes
-init|=
-operator|new
-name|ArrayList
-argument_list|<
-name|QueryIndex
-argument_list|>
-argument_list|()
-decl_stmt|;
 if|if
 condition|(
 name|solrServerProvider
@@ -309,14 +290,9 @@ operator|&&
 name|oakSolrConfigurationProvider
 operator|!=
 literal|null
-operator|&&
-name|solrQueryIndexProvider
-operator|==
-literal|null
 condition|)
 block|{
-name|solrQueryIndexProvider
-operator|=
+return|return
 operator|new
 name|SolrQueryIndexProvider
 argument_list|(
@@ -324,20 +300,24 @@ name|solrServerProvider
 argument_list|,
 name|oakSolrConfigurationProvider
 argument_list|)
-expr_stmt|;
-name|queryIndexes
-operator|=
-name|solrQueryIndexProvider
 operator|.
 name|getQueryIndexes
 argument_list|(
 name|nodeState
 argument_list|)
-expr_stmt|;
-block|}
-return|return
-name|queryIndexes
 return|;
+block|}
+else|else
+block|{
+return|return
+operator|new
+name|ArrayList
+argument_list|<
+name|QueryIndex
+argument_list|>
+argument_list|()
+return|;
+block|}
 block|}
 block|}
 end_class

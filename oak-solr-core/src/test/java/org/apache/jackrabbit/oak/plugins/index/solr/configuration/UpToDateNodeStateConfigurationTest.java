@@ -24,42 +24,6 @@ package|;
 end_package
 
 begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertEquals
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertFalse
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertNotNull
-import|;
-end_import
-
-begin_import
 import|import
 name|org
 operator|.
@@ -142,6 +106,42 @@ operator|.
 name|junit
 operator|.
 name|Test
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertEquals
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertFalse
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertNotNull
 import|;
 end_import
 
@@ -231,9 +231,12 @@ argument_list|,
 name|path
 argument_list|)
 decl_stmt|;
-name|SolrServerConfiguration
+name|EmbeddedSolrServerConfiguration
 name|solrServerConfiguration
 init|=
+operator|(
+name|EmbeddedSolrServerConfiguration
+operator|)
 name|upToDateNodeStateConfiguration
 operator|.
 name|getSolrServerConfiguration

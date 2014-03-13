@@ -19,7 +19,7 @@ name|index
 operator|.
 name|solr
 operator|.
-name|embedded
+name|server
 package|;
 end_package
 
@@ -41,7 +41,7 @@ name|solr
 operator|.
 name|configuration
 operator|.
-name|SolrServerConfiguration
+name|EmbeddedSolrServerConfiguration
 import|;
 end_import
 
@@ -101,15 +101,33 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|SolrServerConfiguration
+name|EmbeddedSolrServerConfiguration
 name|solrServerConfiguration
 init|=
 operator|new
-name|SolrServerConfiguration
+name|EmbeddedSolrServerConfiguration
 argument_list|(
-literal|"target/solr"
+name|getClass
+argument_list|()
+operator|.
+name|getResource
+argument_list|(
+literal|"/solr"
+argument_list|)
+operator|.
+name|getFile
+argument_list|()
 argument_list|,
-literal|"target/solr/solr.xml"
+name|getClass
+argument_list|()
+operator|.
+name|getResource
+argument_list|(
+literal|"/solr/solr.xml"
+argument_list|)
+operator|.
+name|getFile
+argument_list|()
 argument_list|,
 literal|"oak"
 argument_list|)
