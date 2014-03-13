@@ -33,6 +33,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Random
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|concurrent
 operator|.
 name|ScheduledExecutorService
@@ -61,6 +71,22 @@ specifier|abstract
 class|class
 name|Clock
 block|{
+comment|/**      * Maximum amount (in ms) of random noise to include in the time      * signal reported by the {@link #SIMPLE} clock. Configurable by the      * "simple.clock.noise" system property to make it easier to test      * the effect of an inaccurate system clock.      */
+specifier|private
+specifier|static
+specifier|final
+name|int
+name|SIMPLE_CLOCK_NOISE
+init|=
+name|Integer
+operator|.
+name|getInteger
+argument_list|(
+literal|"simple.clock.noise"
+argument_list|,
+literal|0
+argument_list|)
+decl_stmt|;
 comment|/**      * Millisecond granularity of the {@link #ACCURATE} clock.      * Configurable by the "accurate.clock.granularity" system property      * to make it easier to test the effect of a slow-moving clock on      * code that relies on millisecond timestamps.      */
 specifier|private
 specifier|static
@@ -229,6 +255,70 @@ specifier|static
 name|Clock
 name|SIMPLE
 init|=
+name|createSimpleClock
+argument_list|()
+decl_stmt|;
+specifier|private
+specifier|static
+name|Clock
+name|createSimpleClock
+parameter_list|()
+block|{
+specifier|final
+name|int
+name|noise
+init|=
+name|SIMPLE_CLOCK_NOISE
+decl_stmt|;
+if|if
+condition|(
+name|noise
+operator|>
+literal|0
+condition|)
+block|{
+return|return
+operator|new
+name|Clock
+argument_list|()
+block|{
+specifier|private
+specifier|final
+name|Random
+name|random
+init|=
+operator|new
+name|Random
+argument_list|()
+decl_stmt|;
+annotation|@
+name|Override
+specifier|public
+specifier|synchronized
+name|long
+name|getTime
+parameter_list|()
+block|{
+return|return
+name|System
+operator|.
+name|currentTimeMillis
+argument_list|()
+operator|+
+name|random
+operator|.
+name|nextInt
+argument_list|(
+name|noise
+argument_list|)
+return|;
+block|}
+block|}
+return|;
+block|}
+else|else
+block|{
+return|return
 operator|new
 name|Clock
 argument_list|()
@@ -245,13 +335,12 @@ name|System
 operator|.
 name|currentTimeMillis
 argument_list|()
-operator|&
-operator|~
-literal|0xfL
 return|;
 block|}
 block|}
-decl_stmt|;
+return|;
+block|}
+block|}
 comment|/**      * Accurate clock implementation that uses interval timings from the      * {@link System#nanoTime()} method to calculate an as accurate as possible      * time based on occasional calls to {@link System#currentTimeMillis()}      * to prevent clock drift.      */
 specifier|public
 specifier|static
@@ -374,6 +463,14 @@ operator|.
 name|nanoTime
 argument_list|()
 expr_stmt|;
+comment|// Check whether the system time jumped ahead or back
+comment|// from what we'd expect based on the nanosecond interval.
+comment|// If the jump was small, it was probably caused by low
+comment|// granularity of the system time. In that case we reduce
+comment|// the jump to just 0.5ms to smoothen the reported time.
+comment|// This should still keep clock drift in check as long as
+comment|// the nanosecond timings drift on average less than 0.5ms
+comment|// per second.
 name|long
 name|jump
 init|=
@@ -383,47 +480,51 @@ name|now
 decl_stmt|;
 if|if
 condition|(
-name|jump
-operator|!=
 literal|0
-operator|&&
-name|Math
-operator|.
-name|abs
-argument_list|(
-name|jump
-argument_list|)
 operator|<
-name|SYNC_INTERVAL
+name|jump
+operator|&&
+name|jump
+operator|<
+literal|1000
 condition|)
 block|{
-comment|// currentTimeMillis() jumped a little bit, which was
-comment|// probably caused by its lower granularity instead of
-comment|// an adjustment to system time, so we reduce the jump
-comment|// to just 0.5ms to make the reported time smoother
+name|ms
+operator|=
+name|now
+expr_stmt|;
+name|ns
+operator|-=
+name|NS_IN_MS
+operator|/
+literal|2
+expr_stmt|;
+block|}
+elseif|else
+if|if
+condition|(
+literal|0
+operator|>
+name|jump
+operator|&&
+name|jump
+operator|>
+operator|-
+literal|1000
+condition|)
+block|{
+comment|// Note that the Math.max(..., 0) above will cause the
+comment|// reported time to stay constant for a while instead
+comment|// of going backwards because of this.
 name|ms
 operator|=
 name|now
 expr_stmt|;
 name|ns
 operator|+=
-name|Long
-operator|.
-name|signum
-argument_list|(
-name|jump
-argument_list|)
-operator|*
 name|NS_IN_MS
 operator|/
 literal|2
-expr_stmt|;
-block|}
-else|else
-block|{
-name|now
-operator|=
-name|ms
 expr_stmt|;
 block|}
 block|}
