@@ -431,6 +431,15 @@ argument_list|,
 literal|"3.2.6"
 argument_list|)
 argument_list|,
+name|mavenBundle
+argument_list|(
+literal|"org.ops4j.pax.logging"
+argument_list|,
+literal|"pax-logging-api"
+argument_list|,
+literal|"1.7.2"
+argument_list|)
+argument_list|,
 name|systemProperties
 argument_list|(
 operator|new
