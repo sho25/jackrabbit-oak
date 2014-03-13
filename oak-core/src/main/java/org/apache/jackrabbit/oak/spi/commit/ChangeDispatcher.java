@@ -108,7 +108,6 @@ decl_stmt|;
 annotation|@
 name|Nonnull
 specifier|private
-specifier|volatile
 name|NodeState
 name|root
 decl_stmt|;
@@ -138,6 +137,7 @@ name|Override
 annotation|@
 name|Nonnull
 specifier|public
+specifier|synchronized
 name|Closeable
 name|addObserver
 parameter_list|(
