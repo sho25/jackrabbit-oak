@@ -33,6 +33,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Properties
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -60,6 +70,24 @@ operator|.
 name|annotations
 operator|.
 name|ConfigurationPolicy
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|aws
+operator|.
+name|ext
+operator|.
+name|ds
+operator|.
+name|S3DataStore
 import|;
 end_import
 
@@ -141,16 +169,37 @@ argument_list|>
 name|config
 parameter_list|)
 block|{
-comment|//TODO Looks like there is no release of jackrabbit-aws-ext so far
-comment|//So need to wait for that
-comment|//        return new S3DataStore();
-throw|throw
+name|S3DataStore
+name|dataStore
+init|=
 operator|new
-name|IllegalStateException
+name|S3DataStore
+argument_list|()
+decl_stmt|;
+name|Properties
+name|properties
+init|=
+operator|new
+name|Properties
+argument_list|()
+decl_stmt|;
+name|properties
+operator|.
+name|putAll
 argument_list|(
-literal|"S3 support not complete"
+name|config
 argument_list|)
-throw|;
+expr_stmt|;
+name|dataStore
+operator|.
+name|setProperties
+argument_list|(
+name|properties
+argument_list|)
+expr_stmt|;
+return|return
+name|dataStore
+return|;
 block|}
 block|}
 end_class
