@@ -55,6 +55,24 @@ name|Blob
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|blob
+operator|.
+name|BlobStore
+import|;
+end_import
+
 begin_interface
 specifier|public
 interface|interface
@@ -132,6 +150,13 @@ parameter_list|(
 name|String
 name|reference
 parameter_list|)
+function_decl|;
+comment|/**      * Returns the external BlobStore (if configured) with this store      */
+annotation|@
+name|CheckForNull
+name|BlobStore
+name|getBlobStore
+parameter_list|()
 function_decl|;
 block|}
 end_interface
