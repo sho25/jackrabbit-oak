@@ -1281,10 +1281,6 @@ name|debug
 argument_list|(
 literal|"sync({}) -> {} {}"
 argument_list|,
-operator|new
-name|Object
-index|[]
-block|{
 name|identity
 operator|.
 name|getExternalId
@@ -1292,17 +1288,16 @@ argument_list|()
 operator|.
 name|getString
 argument_list|()
-block|,
+argument_list|,
 name|identity
 operator|.
 name|getId
 argument_list|()
-block|,
+argument_list|,
 name|timer
 operator|.
 name|getString
 argument_list|()
-block|}
 argument_list|)
 expr_stmt|;
 block|}
@@ -1618,22 +1613,17 @@ name|debug
 argument_list|(
 literal|"sync({}) -> {} {}"
 argument_list|,
-operator|new
-name|Object
-index|[]
-block|{
 name|id
-block|,
+argument_list|,
 name|ref
 operator|.
 name|getString
 argument_list|()
-block|,
+argument_list|,
 name|timer
 operator|.
 name|getString
 argument_list|()
-block|}
 argument_list|)
 expr_stmt|;
 block|}
@@ -3039,12 +3029,8 @@ name|REP_LAST_SYNCED
 operator|+
 literal|" not set."
 argument_list|,
-operator|new
-name|Object
-index|[]
-block|{
 name|type
-block|,
+argument_list|,
 name|auth
 operator|.
 name|isGroup
@@ -3053,12 +3039,11 @@ condition|?
 literal|"group"
 else|:
 literal|"user"
-block|,
+argument_list|,
 name|auth
 operator|.
 name|getID
 argument_list|()
-block|}
 argument_list|)
 expr_stmt|;
 block|}
@@ -3100,12 +3085,8 @@ name|REP_LAST_SYNCED
 operator|+
 literal|" expired ({}> {})"
 argument_list|,
-operator|new
-name|Object
-index|[]
-block|{
 name|type
-block|,
+argument_list|,
 name|auth
 operator|.
 name|isGroup
@@ -3114,12 +3095,12 @@ condition|?
 literal|"group"
 else|:
 literal|"user"
-block|,
+argument_list|,
 name|auth
 operator|.
 name|getID
 argument_list|()
-block|,
+argument_list|,
 name|now
 operator|-
 name|values
@@ -3129,9 +3110,8 @@ index|]
 operator|.
 name|getLong
 argument_list|()
-block|,
+argument_list|,
 name|expirationTime
-block|}
 argument_list|)
 expr_stmt|;
 block|}
@@ -3155,12 +3135,8 @@ name|debug
 argument_list|(
 literal|"{} of {} '{}' do not need sync."
 argument_list|,
-operator|new
-name|Object
-index|[]
-block|{
 name|type
-block|,
+argument_list|,
 name|auth
 operator|.
 name|isGroup
@@ -3169,12 +3145,11 @@ condition|?
 literal|"group"
 else|:
 literal|"user"
-block|,
+argument_list|,
 name|auth
 operator|.
 name|getID
 argument_list|()
-block|}
 argument_list|)
 expr_stmt|;
 block|}

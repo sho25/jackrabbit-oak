@@ -91,16 +91,6 @@ name|javax
 operator|.
 name|jcr
 operator|.
-name|RepositoryException
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|jcr
-operator|.
 name|SimpleCredentials
 import|;
 end_import
@@ -1211,10 +1201,6 @@ name|error
 argument_list|(
 literal|"Error while authenticating '{}' with {}"
 argument_list|,
-operator|new
-name|Object
-index|[]
-block|{
 name|userId
 operator|==
 literal|null
@@ -1222,14 +1208,13 @@ condition|?
 name|credentials
 else|:
 name|userId
-block|,
+argument_list|,
 name|idp
 operator|.
 name|getName
 argument_list|()
-block|,
+argument_list|,
 name|e
-block|}
 argument_list|)
 expr_stmt|;
 return|return
@@ -1248,15 +1233,11 @@ name|debug
 argument_list|(
 literal|"IDP {} throws login exception for '{}': {}"
 argument_list|,
-operator|new
-name|Object
-index|[]
-block|{
 name|idp
 operator|.
 name|getName
 argument_list|()
-block|,
+argument_list|,
 name|userId
 operator|==
 literal|null
@@ -1264,12 +1245,11 @@ condition|?
 name|credentials
 else|:
 name|userId
-block|,
+argument_list|,
 name|e
 operator|.
 name|getMessage
 argument_list|()
-block|}
 argument_list|)
 expr_stmt|;
 throw|throw
@@ -1288,15 +1268,11 @@ name|debug
 argument_list|(
 literal|"SyncHandler {} throws sync exception for '{}'"
 argument_list|,
-operator|new
-name|Object
-index|[]
-block|{
 name|syncHandler
 operator|.
 name|getName
 argument_list|()
-block|,
+argument_list|,
 name|userId
 operator|==
 literal|null
@@ -1304,9 +1280,8 @@ condition|?
 name|credentials
 else|:
 name|userId
-block|,
+argument_list|,
 name|e
-block|}
 argument_list|)
 expr_stmt|;
 name|LoginException
