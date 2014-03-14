@@ -158,6 +158,11 @@ name|BlobStore
 name|getBlobStore
 parameter_list|()
 function_decl|;
+comment|/**      * Triggers removal of segments that are no longer referenceable.      */
+name|void
+name|gc
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 

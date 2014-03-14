@@ -845,6 +845,15 @@ return|return
 literal|null
 return|;
 block|}
+annotation|@
+name|Override
+specifier|public
+name|void
+name|gc
+parameter_list|()
+block|{
+comment|// TODO: distributed gc
+block|}
 block|}
 end_class
 

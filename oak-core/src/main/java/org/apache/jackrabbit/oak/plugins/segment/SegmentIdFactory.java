@@ -272,6 +272,7 @@ name|store
 expr_stmt|;
 block|}
 comment|/**      * Returns all segment identifiers that are currently referenced in memory.      *      * @return referenced segment identifiers      */
+specifier|public
 specifier|synchronized
 name|Set
 argument_list|<
