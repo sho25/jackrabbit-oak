@@ -640,6 +640,11 @@ operator|=
 literal|null
 expr_stmt|;
 block|}
+name|destroyIDP
+argument_list|(
+name|idp
+argument_list|)
+expr_stmt|;
 name|idp
 operator|=
 literal|null
@@ -822,6 +827,15 @@ specifier|abstract
 name|ExternalIdentityProvider
 name|createIDP
 parameter_list|()
+function_decl|;
+specifier|protected
+specifier|abstract
+name|void
+name|destroyIDP
+parameter_list|(
+name|ExternalIdentityProvider
+name|idp
+parameter_list|)
 function_decl|;
 specifier|protected
 name|void

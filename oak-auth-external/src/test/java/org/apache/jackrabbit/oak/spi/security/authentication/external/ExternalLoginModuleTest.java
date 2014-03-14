@@ -319,6 +319,18 @@ argument_list|()
 return|;
 block|}
 annotation|@
+name|Override
+specifier|protected
+name|void
+name|destroyIDP
+parameter_list|(
+name|ExternalIdentityProvider
+name|idp
+parameter_list|)
+block|{
+comment|// ignore
+block|}
+annotation|@
 name|Test
 specifier|public
 name|void
