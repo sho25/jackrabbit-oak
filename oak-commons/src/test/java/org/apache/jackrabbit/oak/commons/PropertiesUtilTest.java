@@ -1107,7 +1107,7 @@ name|Map
 argument_list|<
 name|String
 argument_list|,
-name|String
+name|Object
 argument_list|>
 name|props
 init|=
@@ -1116,7 +1116,7 @@ name|HashMap
 argument_list|<
 name|String
 argument_list|,
-name|String
+name|Object
 argument_list|>
 argument_list|()
 decl_stmt|;
@@ -1231,7 +1231,7 @@ name|Map
 argument_list|<
 name|String
 argument_list|,
-name|String
+name|Object
 argument_list|>
 name|props
 init|=
@@ -1240,7 +1240,7 @@ name|HashMap
 argument_list|<
 name|String
 argument_list|,
-name|String
+name|Object
 argument_list|>
 argument_list|()
 decl_stmt|;

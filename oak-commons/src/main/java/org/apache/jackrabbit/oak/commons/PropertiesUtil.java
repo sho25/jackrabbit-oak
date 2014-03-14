@@ -115,6 +115,20 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Objects
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|slf4j
@@ -130,6 +144,22 @@ operator|.
 name|slf4j
 operator|.
 name|LoggerFactory
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Objects
+operator|.
+name|ToStringHelper
 import|;
 end_import
 
@@ -846,7 +876,7 @@ block|}
 end_class
 
 begin_comment
-comment|/**      * Populates the bean properties from properties instance      *      * @param instance bean to populate      * @param config propertires to set in the passed bean      * @param validate Flag to validate the configured bean property names against      *                 the configured bean class      */
+comment|/**      * Populates the bean properties from config instance. It supports coercing      *  values for simple types like Number, Integer, Long, Boolean etc. Complex      *  objects are not supported      *      * @param instance bean to populate      * @param config propertires to set in the passed bean      * @param validate Flag to validate the configured bean property names against      *                 the configured bean class      */
 end_comment
 
 begin_function
@@ -867,7 +897,7 @@ name|Map
 argument_list|<
 name|String
 argument_list|,
-name|String
+name|?
 argument_list|>
 name|config
 parameter_list|,
@@ -900,6 +930,16 @@ argument_list|(
 name|objectClass
 argument_list|)
 decl_stmt|;
+name|ToStringHelper
+name|toStringHelper
+init|=
+name|Objects
+operator|.
+name|toStringHelper
+argument_list|(
+name|instance
+argument_list|)
+decl_stmt|;
 for|for
 control|(
 name|Map
@@ -908,7 +948,7 @@ name|Entry
 argument_list|<
 name|String
 argument_list|,
-name|String
+name|?
 argument_list|>
 name|e
 range|:
@@ -972,7 +1012,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-name|String
+name|Object
 name|value
 init|=
 name|e
@@ -987,6 +1027,15 @@ argument_list|,
 name|name
 argument_list|,
 name|setter
+argument_list|,
+name|value
+argument_list|)
+expr_stmt|;
+name|toStringHelper
+operator|.
+name|add
+argument_list|(
+name|name
 argument_list|,
 name|value
 argument_list|)
@@ -1016,6 +1065,15 @@ argument_list|)
 throw|;
 block|}
 block|}
+name|log
+operator|.
+name|debug
+argument_list|(
+literal|"Configured object with properties {}"
+argument_list|,
+name|toStringHelper
+argument_list|)
+expr_stmt|;
 block|}
 end_function
 
@@ -1185,7 +1243,7 @@ parameter_list|,
 name|Method
 name|setter
 parameter_list|,
-name|String
+name|Object
 name|value
 parameter_list|)
 block|{
@@ -1275,11 +1333,11 @@ name|invoke
 argument_list|(
 name|instance
 argument_list|,
-name|Boolean
-operator|.
-name|valueOf
+name|toBoolean
 argument_list|(
 name|value
+argument_list|,
+literal|false
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1312,11 +1370,11 @@ name|invoke
 argument_list|(
 name|instance
 argument_list|,
-name|Integer
-operator|.
-name|valueOf
+name|toInteger
 argument_list|(
 name|value
+argument_list|,
+literal|0
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1349,11 +1407,11 @@ name|invoke
 argument_list|(
 name|instance
 argument_list|,
-name|Long
-operator|.
-name|valueOf
+name|toLong
 argument_list|(
 name|value
+argument_list|,
+literal|0
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1386,11 +1444,11 @@ name|invoke
 argument_list|(
 name|instance
 argument_list|,
-name|Double
-operator|.
-name|valueOf
+name|toDouble
 argument_list|(
 name|value
+argument_list|,
+literal|0
 argument_list|)
 argument_list|)
 expr_stmt|;
