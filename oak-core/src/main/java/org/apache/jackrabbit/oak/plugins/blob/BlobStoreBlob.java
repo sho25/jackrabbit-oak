@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  *      http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
+comment|/*  * Licensed to the Apache Software Foundation (ASF) under one  * or more contributor license agreements.  See the NOTICE file  * distributed with this work for additional information  * regarding copyright ownership.  The ASF licenses this file  * to you under the Apache License, Version 2.0 (the  * "License"); you may not use this file except in compliance  * with the License.  You may obtain a copy of the License at  *  *   http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing,  * software distributed under the License is distributed on an  * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY  * KIND, either express or implied.  See the License for the  * specific language governing permissions and limitations  * under the License.  */
 end_comment
 
 begin_package
@@ -15,9 +15,19 @@ name|oak
 operator|.
 name|plugins
 operator|.
-name|document
+name|blob
 package|;
 end_package
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
 
 begin_import
 import|import
@@ -77,24 +87,6 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|spi
-operator|.
-name|blob
-operator|.
-name|BlobStoreInputStream
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
 name|api
 operator|.
 name|Blob
@@ -108,7 +100,7 @@ end_comment
 begin_class
 specifier|public
 class|class
-name|DocumentBlob
+name|BlobStoreBlob
 implements|implements
 name|Blob
 block|{
@@ -123,7 +115,7 @@ name|String
 name|id
 decl_stmt|;
 specifier|public
-name|DocumentBlob
+name|BlobStoreBlob
 parameter_list|(
 name|BlobStore
 name|blobStore
@@ -154,17 +146,39 @@ name|InputStream
 name|getNewStream
 parameter_list|()
 block|{
+try|try
+block|{
 return|return
-operator|new
-name|BlobStoreInputStream
-argument_list|(
 name|blobStore
-argument_list|,
+operator|.
+name|getInputStream
+argument_list|(
 name|id
-argument_list|,
-literal|0
 argument_list|)
 return|;
+block|}
+catch|catch
+parameter_list|(
+name|IOException
+name|e
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|RuntimeException
+argument_list|(
+literal|"Error occurred while obtaining "
+operator|+
+literal|"InputStream for blobId ["
+operator|+
+name|id
+operator|+
+literal|"]"
+argument_list|,
+name|e
+argument_list|)
+throw|;
+block|}
 block|}
 annotation|@
 name|Override
@@ -197,6 +211,8 @@ argument_list|(
 literal|"Invalid blob id: "
 operator|+
 name|id
+argument_list|,
+name|e
 argument_list|)
 throw|;
 block|}
@@ -265,14 +281,14 @@ if|if
 condition|(
 name|other
 operator|instanceof
-name|DocumentBlob
+name|BlobStoreBlob
 condition|)
 block|{
-name|DocumentBlob
+name|BlobStoreBlob
 name|b
 init|=
 operator|(
-name|DocumentBlob
+name|BlobStoreBlob
 operator|)
 name|other
 decl_stmt|;

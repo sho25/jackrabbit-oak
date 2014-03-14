@@ -91,6 +91,16 @@ parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
+comment|/**      * Returns a new stream for given blobId. The streams returned from      * multiple calls to this method are byte wise equals. That is,      * subsequent calls to {@link java.io.InputStream#read() read}      * return the same sequence of bytes as long as neither call throws      * an exception.      *      * @param blobId the blob id      * @return a new stream for given blobId      */
+name|InputStream
+name|getInputStream
+parameter_list|(
+name|String
+name|blobId
+parameter_list|)
+throws|throws
+name|IOException
+function_decl|;
 block|}
 end_interface
 
