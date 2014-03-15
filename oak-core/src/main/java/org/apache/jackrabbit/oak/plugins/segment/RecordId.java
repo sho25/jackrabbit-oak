@@ -89,7 +89,7 @@ specifier|static
 name|RecordId
 name|fromString
 parameter_list|(
-name|SegmentIdFactory
+name|SegmentTracker
 name|factory
 parameter_list|,
 name|String

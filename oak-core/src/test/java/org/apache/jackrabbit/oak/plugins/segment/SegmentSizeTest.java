@@ -1049,6 +1049,9 @@ name|writer
 init|=
 name|store
 operator|.
+name|getTracker
+argument_list|()
+operator|.
 name|getWriter
 argument_list|()
 decl_stmt|;
@@ -1212,6 +1215,9 @@ name|writer
 init|=
 name|store
 operator|.
+name|getTracker
+argument_list|()
+operator|.
 name|getWriter
 argument_list|()
 decl_stmt|;
@@ -1276,6 +1282,9 @@ name|writer
 init|=
 name|store
 operator|.
+name|getTracker
+argument_list|()
+operator|.
 name|getWriter
 argument_list|()
 decl_stmt|;
@@ -1336,6 +1345,9 @@ comment|// avoid cross-segment caching
 name|writer
 operator|=
 name|store
+operator|.
+name|getTracker
+argument_list|()
 operator|.
 name|getWriter
 argument_list|()

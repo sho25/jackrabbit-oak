@@ -467,6 +467,12 @@ decl_stmt|;
 return|return
 name|segment
 operator|.
+name|getSegmentId
+argument_list|()
+operator|.
+name|getTracker
+argument_list|()
+operator|.
 name|getStore
 argument_list|()
 operator|.

@@ -78,12 +78,8 @@ specifier|public
 interface|interface
 name|SegmentStore
 block|{
-name|SegmentIdFactory
-name|getFactory
-parameter_list|()
-function_decl|;
-name|SegmentWriter
-name|getWriter
+name|SegmentTracker
+name|getTracker
 parameter_list|()
 function_decl|;
 comment|/**      * Returns the head state.      *      * @return head state      */

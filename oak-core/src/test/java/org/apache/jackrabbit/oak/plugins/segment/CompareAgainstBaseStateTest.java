@@ -215,6 +215,9 @@ operator|new
 name|MemoryStore
 argument_list|()
 operator|.
+name|getTracker
+argument_list|()
+operator|.
 name|getWriter
 argument_list|()
 operator|.

@@ -2096,15 +2096,6 @@ operator|new
 name|SegmentNodeBuilder
 argument_list|(
 name|this
-argument_list|,
-name|getSegment
-argument_list|()
-operator|.
-name|getStore
-argument_list|()
-operator|.
-name|getWriter
-argument_list|()
 argument_list|)
 return|;
 block|}

@@ -100,14 +100,14 @@ name|SegmentIdFactoryTest
 block|{
 specifier|private
 specifier|final
-name|SegmentIdFactory
+name|SegmentTracker
 name|factory
 init|=
 operator|new
 name|MemoryStore
 argument_list|()
 operator|.
-name|getFactory
+name|getTracker
 argument_list|()
 decl_stmt|;
 annotation|@

@@ -406,6 +406,9 @@ name|writer
 init|=
 name|store
 operator|.
+name|getTracker
+argument_list|()
+operator|.
 name|getWriter
 argument_list|()
 decl_stmt|;
@@ -975,12 +978,12 @@ name|testListWithLotsOfReferences
 parameter_list|()
 block|{
 comment|// OAK-1184
-name|SegmentIdFactory
+name|SegmentTracker
 name|factory
 init|=
 name|store
 operator|.
-name|getFactory
+name|getTracker
 argument_list|()
 decl_stmt|;
 name|List
@@ -1380,15 +1383,13 @@ decl_stmt|;
 name|Segment
 name|segment
 init|=
-name|store
-operator|.
-name|readSegment
-argument_list|(
 name|large
 operator|.
 name|getSegmentId
 argument_list|()
-argument_list|)
+operator|.
+name|getSegment
+argument_list|()
 decl_stmt|;
 name|assertEquals
 argument_list|(

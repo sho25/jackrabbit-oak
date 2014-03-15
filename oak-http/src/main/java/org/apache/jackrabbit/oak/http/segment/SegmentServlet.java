@@ -237,7 +237,7 @@ return|return
 name|getSegmentStore
 argument_list|()
 operator|.
-name|getFactory
+name|getTracker
 argument_list|()
 operator|.
 name|getSegmentId
@@ -285,7 +285,7 @@ argument_list|(
 name|getSegmentStore
 argument_list|()
 operator|.
-name|getFactory
+name|getTracker
 argument_list|()
 argument_list|,
 name|reader

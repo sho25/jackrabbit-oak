@@ -958,6 +958,9 @@ block|{
 return|return
 name|store
 operator|.
+name|getTracker
+argument_list|()
+operator|.
 name|getWriter
 argument_list|()
 operator|.

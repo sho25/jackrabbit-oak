@@ -1455,7 +1455,7 @@ name|id
 init|=
 name|store
 operator|.
-name|getFactory
+name|getTracker
 argument_list|()
 operator|.
 name|getSegmentId

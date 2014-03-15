@@ -93,9 +93,6 @@ name|SegmentNodeBuilder
 parameter_list|(
 name|SegmentNodeState
 name|base
-parameter_list|,
-name|SegmentWriter
-name|writer
 parameter_list|)
 block|{
 name|super
@@ -107,7 +104,19 @@ name|this
 operator|.
 name|writer
 operator|=
-name|writer
+name|base
+operator|.
+name|getRecordId
+argument_list|()
+operator|.
+name|getSegmentId
+argument_list|()
+operator|.
+name|getTracker
+argument_list|()
+operator|.
+name|getWriter
+argument_list|()
 expr_stmt|;
 block|}
 comment|//-------------------------------------------------< MemoryNodeBuilder>--
