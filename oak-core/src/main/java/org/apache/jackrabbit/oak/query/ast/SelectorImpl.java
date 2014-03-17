@@ -1214,6 +1214,15 @@ return|return
 name|plan
 return|;
 block|}
+specifier|public
+name|SelectorExecutionPlan
+name|getExecutionPlan
+parameter_list|()
+block|{
+return|return
+name|plan
+return|;
+block|}
 annotation|@
 name|Override
 specifier|public
