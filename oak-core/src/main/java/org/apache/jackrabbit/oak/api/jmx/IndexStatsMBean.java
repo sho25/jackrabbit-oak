@@ -44,20 +44,17 @@ name|STATUS_DONE
 init|=
 literal|"done"
 decl_stmt|;
-comment|/**      * @return The time the indexing job stared at, or<code>""</code> if it is      *         not currently running.      */
-specifier|public
+comment|/**      * @return The time the indexing job stared at, or {@code ""} if it is      *         not currently running.      */
 name|String
 name|getStart
 parameter_list|()
 function_decl|;
-comment|/**      * @return The time the indexing job finished at, or<code>""</code> if it      *         is still running.      */
-specifier|public
+comment|/**      * @return The time the indexing job finished at, or {@code ""} if it      *         is still running.      */
 name|String
 name|getDone
 parameter_list|()
 function_decl|;
 comment|/**      * Returns the current status of the indexing job      *       * @return the current status of the indexing job: {@value #STATUS_INIT},      *         {@value #STATUS_RUNNING} or {@value #STATUS_DONE}      */
-specifier|public
 name|String
 name|getStatus
 parameter_list|()

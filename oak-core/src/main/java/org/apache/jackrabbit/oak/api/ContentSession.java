@@ -38,7 +38,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Authentication session for accessing (TODO: a workspace inside) a content  * repository.  *<p>  * - retrieving information from persistent layer (MK) that are accessible to  *   a given JCR session  *  * - validate information being written back to the persistent layer. this includes  *   permission evaluation, node type and name constraints etc.  *  * - Provide access to authentication and authorization related information  *  * - The implementation of this and all related interfaces are intended to only  *   hold the state of the persistent layer at a given revision without any  *   session-related state modifications.  *<p>  * TODO: describe how this interface is intended to handle validation:  * nt, names, ac, constraints...  *<p>  * This interface is thread-safe.  */
+comment|/**  * Authentication session for accessing a content repository.  * A {@code ContentSession} provides access to the actual  * content through its {@link #getLatestRoot()} method.  *<p>  * This interface is thread-safe.  */
 end_comment
 
 begin_interface
@@ -55,7 +55,7 @@ name|AuthInfo
 name|getAuthInfo
 parameter_list|()
 function_decl|;
-comment|/**      * TODO clarify workspace handling      * The name of the workspace this {@code ContentSession} instance has      * been created for. If no workspace name has been specified during      * repository login this method will return the name of the default      * workspace.      *      * @return name of the workspace this instance has been created for or      * {@code null} if this content session is repository bound.      */
+comment|/**      * The name of the workspace this {@code ContentSession} instance has      * been created for. If no workspace name has been specified during      * repository login this method will return the name of the default      * workspace.      *<p>      * TODO clarify workspace handling once multiple workspaces are      * supported. See OAK-118.      *      * @return name of the workspace this instance has been created for or      * {@code null} if this content session is repository bound.      */
 name|String
 name|getWorkspaceName
 parameter_list|()
