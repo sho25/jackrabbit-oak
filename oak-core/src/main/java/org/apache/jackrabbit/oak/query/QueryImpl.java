@@ -2431,6 +2431,10 @@ literal|false
 decl_stmt|;
 if|if
 condition|(
+name|orderings
+operator|!=
+literal|null
+operator|&&
 name|selectors
 operator|.
 name|size
