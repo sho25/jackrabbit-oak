@@ -579,6 +579,52 @@ decl_stmt|;
 annotation|@
 name|Override
 specifier|public
+name|String
+name|toString
+parameter_list|()
+block|{
+return|return
+name|String
+operator|.
+name|format
+argument_list|(
+literal|"{ costPerExecution : %s,"
+operator|+
+literal|" costPerEntry : %s,"
+operator|+
+literal|" estimatedEntryCount : %s,"
+operator|+
+literal|" filter : %s,"
+operator|+
+literal|" isDelayed : %s,"
+operator|+
+literal|" isFulltextIndex : %s,"
+operator|+
+literal|" includesNodeData : %s,"
+operator|+
+literal|" sortOrder : %s }"
+argument_list|,
+name|costPerExecution
+argument_list|,
+name|costPerEntry
+argument_list|,
+name|estimatedEntryCount
+argument_list|,
+name|filter
+argument_list|,
+name|isDelayed
+argument_list|,
+name|isFulltextIndex
+argument_list|,
+name|includesNodeData
+argument_list|,
+name|sortOrder
+argument_list|)
+return|;
+block|}
+annotation|@
+name|Override
+specifier|public
 name|double
 name|getCostPerExecution
 parameter_list|()
@@ -787,6 +833,28 @@ parameter_list|()
 block|{
 return|return
 name|propertyType
+return|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|String
+name|toString
+parameter_list|()
+block|{
+return|return
+name|String
+operator|.
+name|format
+argument_list|(
+literal|"{ propertyName : %s, propertyType : %s, order : %s }"
+argument_list|,
+name|propertyName
+argument_list|,
+name|propertyType
+argument_list|,
+name|order
+argument_list|)
 return|;
 block|}
 block|}
