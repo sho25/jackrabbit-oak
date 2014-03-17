@@ -477,6 +477,17 @@ operator|.
 name|getNodeState
 argument_list|()
 decl_stmt|;
+if|if
+condition|(
+operator|!
+name|other
+operator|.
+name|equals
+argument_list|(
+name|after
+argument_list|)
+condition|)
+block|{
 name|addExistingNode
 argument_list|(
 name|builder
@@ -488,6 +499,7 @@ argument_list|,
 name|after
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 else|else
 block|{
