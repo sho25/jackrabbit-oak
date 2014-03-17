@@ -778,6 +778,13 @@ argument_list|(
 name|serverType
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|solrServerConfigurationProvider
+operator|!=
+literal|null
+condition|)
+block|{
 try|try
 block|{
 name|SolrServerConfiguration
@@ -814,13 +821,14 @@ name|log
 operator|.
 name|error
 argument_list|(
-literal|"could not get a SolrServerProvider of type {}, {}"
+literal|"could not get a SolrServerProvider of type {}"
 argument_list|,
 name|serverType
 argument_list|,
 name|e
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 block|}
