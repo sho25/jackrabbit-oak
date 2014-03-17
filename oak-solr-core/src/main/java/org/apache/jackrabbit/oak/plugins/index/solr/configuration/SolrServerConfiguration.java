@@ -180,7 +180,7 @@ return|;
 block|}
 specifier|public
 name|S
-name|newInstance
+name|getProvider
 parameter_list|()
 throws|throws
 name|NoSuchMethodException

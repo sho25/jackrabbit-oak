@@ -596,9 +596,7 @@ literal|"starting HTTP Solr server"
 argument_list|)
 expr_stmt|;
 block|}
-name|HttpSolrServer
-name|httpSolrServer
-init|=
+return|return
 operator|new
 name|HttpSolrServer
 argument_list|(
@@ -638,9 +636,6 @@ operator|.
 name|toString
 argument_list|()
 argument_list|)
-decl_stmt|;
-return|return
-name|httpSolrServer
 return|;
 block|}
 else|else

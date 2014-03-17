@@ -132,7 +132,7 @@ name|remoteSolrServerProvider
 init|=
 name|remoteSolrServerProviderSolrServerConfiguration
 operator|.
-name|newInstance
+name|getProvider
 argument_list|()
 decl_stmt|;
 name|assertNotNull
@@ -171,7 +171,7 @@ name|embeddedSolrServerProvider
 init|=
 name|embeddedSolrServerSolrServerConfiguration
 operator|.
-name|newInstance
+name|getProvider
 argument_list|()
 decl_stmt|;
 name|assertNotNull

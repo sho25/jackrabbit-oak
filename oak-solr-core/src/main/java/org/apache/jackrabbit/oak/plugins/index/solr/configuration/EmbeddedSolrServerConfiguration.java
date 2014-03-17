@@ -205,10 +205,12 @@ class|class
 name|HttpConfiguration
 block|{
 specifier|private
+specifier|final
 name|String
 name|context
 decl_stmt|;
 specifier|private
+specifier|final
 name|Integer
 name|httpPort
 decl_stmt|;

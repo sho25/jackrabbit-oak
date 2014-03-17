@@ -250,10 +250,12 @@ argument_list|()
 argument_list|)
 decl_stmt|;
 specifier|private
+specifier|final
 name|SolrServerProvider
 name|solrServerProvider
 decl_stmt|;
 specifier|private
+specifier|final
 name|OakSolrConfigurationProvider
 name|oakSolrConfigurationProvider
 decl_stmt|;
