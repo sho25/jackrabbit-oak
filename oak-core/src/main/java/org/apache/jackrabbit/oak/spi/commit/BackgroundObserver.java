@@ -333,6 +333,14 @@ specifier|private
 name|boolean
 name|full
 decl_stmt|;
+comment|/**      * Log a warning once when the queue is full. Reset once the queue is back empty.      */
+specifier|private
+specifier|volatile
+name|boolean
+name|warnOnFullQueue
+init|=
+literal|true
+decl_stmt|;
 comment|/**      * Current background task      */
 specifier|private
 specifier|volatile
@@ -629,16 +637,23 @@ literal|1000
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * Called whenever the queue is 90% full.      */
 specifier|protected
 name|void
 name|queueNearlyFull
 parameter_list|()
 block|{}
+comment|/**      * Called whenever the queue has been emptied.      */
 specifier|protected
 name|void
 name|queueEmpty
 parameter_list|()
-block|{}
+block|{
+name|warnOnFullQueue
+operator|=
+literal|true
+expr_stmt|;
+block|}
 comment|/**      * Clears the change queue and signals the background thread to stop      * without making any further {@link #contentChanged(NodeState, CommitInfo)}      * calls to the background observer. If the thread is currently in the      * middle of such a call, then that call is allowed to complete; i.e.      * the thread is not forcibly interrupted. This method returns immediately      * without blocking to wait for the thread to finish.      *<p>      * After a call to this method further calls to {@link #contentChanged(NodeState, CommitInfo)}      * will throw a {@code IllegalStateException}.      */
 annotation|@
 name|Override
@@ -766,11 +781,6 @@ expr_stmt|;
 block|}
 comment|// Try to add this change to the queue without blocking, and
 comment|// mark the queue as full if there wasn't enough space
-name|boolean
-name|wasFull
-init|=
-name|full
-decl_stmt|;
 name|full
 operator|=
 operator|!
@@ -785,10 +795,13 @@ if|if
 condition|(
 name|full
 operator|&&
-operator|!
-name|wasFull
+name|warnOnFullQueue
 condition|)
 block|{
+name|warnOnFullQueue
+operator|=
+literal|false
+expr_stmt|;
 name|LOG
 operator|.
 name|warn

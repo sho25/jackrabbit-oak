@@ -1037,6 +1037,11 @@ name|void
 name|queueNearlyFull
 parameter_list|()
 block|{
+name|super
+operator|.
+name|queueNearlyFull
+argument_list|()
+expr_stmt|;
 name|commitRateLimiter
 operator|.
 name|blockCommits
@@ -1050,6 +1055,11 @@ name|void
 name|queueEmpty
 parameter_list|()
 block|{
+name|super
+operator|.
+name|queueEmpty
+argument_list|()
+expr_stmt|;
 name|commitRateLimiter
 operator|.
 name|unblockCommits
