@@ -344,6 +344,19 @@ argument_list|(
 name|segment
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|id
+operator|.
+name|isBulkSegmentId
+argument_list|()
+condition|)
+block|{
+comment|// don't cache bulk segments
+return|return
+name|segment
+return|;
+block|}
 synchronized|synchronized
 init|(
 name|this
