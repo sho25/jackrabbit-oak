@@ -982,6 +982,16 @@ literal|null
 expr_stmt|;
 block|}
 block|}
+comment|/**      * needed for situations where you have to unwrap the      * SegmentNodeStoreService, to get the SegmentStore, like the failover      */
+specifier|public
+name|SegmentStore
+name|getSegmentStore
+parameter_list|()
+block|{
+return|return
+name|store
+return|;
+block|}
 comment|//------------------------------------------------------------< Observable>---
 annotation|@
 name|Override
