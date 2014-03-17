@@ -55,6 +55,26 @@ name|QueryIndex
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|query
+operator|.
+name|QueryIndex
+operator|.
+name|IndexPlan
+import|;
+end_import
+
 begin_comment
 comment|/**  * An execution plan for one selector in a query. The conditions of the given  * selectors are compiled into a filter, and the execution plan for the selector  * is to use a certain query index, which will result in an estimated cost to  * use that index to retrieve nodes for this index.  */
 end_comment
@@ -81,6 +101,11 @@ specifier|final
 name|QueryIndex
 name|index
 decl_stmt|;
+specifier|private
+specifier|final
+name|IndexPlan
+name|plan
+decl_stmt|;
 specifier|public
 name|SelectorExecutionPlan
 parameter_list|(
@@ -89,6 +114,9 @@ name|selector
 parameter_list|,
 name|QueryIndex
 name|index
+parameter_list|,
+name|IndexPlan
+name|plan
 parameter_list|,
 name|double
 name|estimatedCost
@@ -111,6 +139,12 @@ operator|.
 name|estimatedCost
 operator|=
 name|estimatedCost
+expr_stmt|;
+name|this
+operator|.
+name|plan
+operator|=
+name|plan
 expr_stmt|;
 block|}
 annotation|@
@@ -140,6 +174,15 @@ parameter_list|()
 block|{
 return|return
 name|index
+return|;
+block|}
+specifier|public
+name|IndexPlan
+name|getIndexPlan
+parameter_list|()
+block|{
+return|return
+name|plan
 return|;
 block|}
 block|}

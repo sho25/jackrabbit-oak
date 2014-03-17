@@ -235,6 +235,14 @@ name|Filter
 name|getFilter
 parameter_list|()
 function_decl|;
+comment|/**          * Use the given filter.          */
+name|void
+name|setFilter
+parameter_list|(
+name|Filter
+name|filter
+parameter_list|)
+function_decl|;
 comment|/**          * Whether the index is not always up-to-date.          *           * @return whether the index might be updated asynchronously          */
 name|boolean
 name|isDelayed
@@ -495,7 +503,6 @@ operator|.
 name|estimatedEntryCount
 decl_stmt|;
 specifier|private
-specifier|final
 name|Filter
 name|filter
 init|=
@@ -612,6 +619,23 @@ block|{
 return|return
 name|filter
 return|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|void
+name|setFilter
+parameter_list|(
+name|Filter
+name|filter
+parameter_list|)
+block|{
+name|this
+operator|.
+name|filter
+operator|=
+name|filter
+expr_stmt|;
 block|}
 annotation|@
 name|Override
