@@ -298,6 +298,10 @@ operator|=
 name|SolrServerConfigurationDefaults
 operator|.
 name|SOLR_HOME_PATH
+argument_list|,
+name|label
+operator|=
+literal|"Solr home directory"
 argument_list|)
 specifier|private
 specifier|static
@@ -315,6 +319,10 @@ operator|=
 name|SolrServerConfigurationDefaults
 operator|.
 name|CORE_NAME
+argument_list|,
+name|label
+operator|=
+literal|"Solr Core name"
 argument_list|)
 specifier|private
 specifier|static
@@ -332,6 +340,10 @@ operator|=
 name|SolrServerConfigurationDefaults
 operator|.
 name|SOLR_CONFIG_PATH
+argument_list|,
+name|label
+operator|=
+literal|"Path to specific Solr Core configuration"
 argument_list|)
 specifier|private
 specifier|static
@@ -344,11 +356,13 @@ decl_stmt|;
 annotation|@
 name|Property
 argument_list|(
-name|value
+name|intValue
 operator|=
-name|SolrServerConfigurationDefaults
-operator|.
-name|HTTP_PORT
+literal|0
+argument_list|,
+name|label
+operator|=
+literal|"Solr HTTP Endpoint port (optional)"
 argument_list|)
 specifier|private
 specifier|static
@@ -363,9 +377,11 @@ name|Property
 argument_list|(
 name|value
 operator|=
-name|SolrServerConfigurationDefaults
-operator|.
-name|CONTEXT
+literal|""
+argument_list|,
+name|label
+operator|=
+literal|"Solr HTTP Endpoint context (optional)"
 argument_list|)
 specifier|private
 specifier|static
