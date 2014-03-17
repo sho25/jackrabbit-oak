@@ -655,10 +655,7 @@ name|getSegmentId
 parameter_list|()
 block|{
 return|return
-name|refids
-index|[
-literal|0
-index|]
+name|id
 return|;
 block|}
 name|int
