@@ -277,6 +277,8 @@ specifier|synchronized
 name|void
 name|flush
 parameter_list|()
+throws|throws
+name|IOException
 block|{
 if|if
 condition|(
@@ -300,7 +302,13 @@ specifier|public
 name|void
 name|close
 parameter_list|()
-block|{     }
+throws|throws
+name|IOException
+block|{
+name|flush
+argument_list|()
+expr_stmt|;
+block|}
 block|}
 end_class
 

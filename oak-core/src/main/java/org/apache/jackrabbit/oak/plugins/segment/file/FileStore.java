@@ -1276,6 +1276,11 @@ init|(
 name|this
 init|)
 block|{
+name|boolean
+name|success
+init|=
+literal|true
+decl_stmt|;
 for|for
 control|(
 name|TarFile
@@ -1284,6 +1289,10 @@ range|:
 name|bulkFiles
 control|)
 block|{
+name|success
+operator|=
+name|success
+operator|&&
 name|file
 operator|.
 name|flush
@@ -1298,10 +1307,34 @@ range|:
 name|dataFiles
 control|)
 block|{
+name|success
+operator|=
+name|success
+operator|&&
 name|file
 operator|.
 name|flush
 argument_list|()
+expr_stmt|;
+block|}
+if|if
+condition|(
+operator|!
+name|success
+condition|)
+block|{
+name|log
+operator|.
+name|warn
+argument_list|(
+literal|"Failed to sync one ore more tar files with"
+operator|+
+literal|" the underlying file system, possibly because of"
+operator|+
+literal|" http://bugs.java.com/bugdatabase/view_bug.do?bug_id=6539707."
+operator|+
+literal|" Will retry later."
+argument_list|)
 expr_stmt|;
 block|}
 name|journalFile
