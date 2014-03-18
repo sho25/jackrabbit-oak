@@ -3211,7 +3211,7 @@ return|return
 name|id
 return|;
 block|}
-comment|/**      * Write a reference to an external blob.      *      * @param reference reference      * @param blobLength blob length      * @return record id      */
+comment|/**      * Write a reference to an external blob.      *      * @param reference reference      * @return record id      */
 specifier|private
 specifier|synchronized
 name|RecordId
@@ -3219,9 +3219,6 @@ name|writeValueRecord
 parameter_list|(
 name|String
 name|reference
-parameter_list|,
-name|long
-name|blobLength
 parameter_list|)
 block|{
 name|byte
@@ -3262,8 +3259,6 @@ name|VALUE
 argument_list|,
 literal|2
 operator|+
-literal|8
-operator|+
 name|length
 argument_list|)
 decl_stmt|;
@@ -3299,11 +3294,6 @@ operator|(
 name|byte
 operator|)
 name|len
-expr_stmt|;
-name|writeLong
-argument_list|(
-name|blobLength
-argument_list|)
 expr_stmt|;
 name|System
 operator|.
@@ -4254,11 +4244,6 @@ init|=
 name|writeValueRecord
 argument_list|(
 name|reference
-argument_list|,
-name|blob
-operator|.
-name|length
-argument_list|()
 argument_list|)
 decl_stmt|;
 return|return
@@ -4451,13 +4436,6 @@ return|return
 name|writeValueRecord
 argument_list|(
 name|blobId
-argument_list|,
-name|blobStore
-operator|.
-name|getBlobLength
-argument_list|(
-name|blobId
-argument_list|)
 argument_list|)
 return|;
 block|}
