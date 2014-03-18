@@ -2040,7 +2040,7 @@ name|removeCollision
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Try to create or update the node. If there was a conflict, this method      * throws an exception, even though the change is still applied.      *       * @param store the store      * @param op the operation      */
+comment|/**      * Try to create or update the node. If there was a conflict, this method      * throws an exception, even though the change is still applied.      *      * @param store the store      * @param op the operation      */
 specifier|private
 name|void
 name|createOrUpdateNode
@@ -2501,7 +2501,7 @@ name|nodeStore
 argument_list|)
 return|;
 block|}
-comment|/**      * Apply the changes to the DocumentNodeStore (to update the cache).      *       * @param before the revision right before this commit.      * @param isBranchCommit whether this is a commit to a branch      */
+comment|/**      * Apply the changes to the DocumentNodeStore (to update the cache).      *      * @param before the revision right before this commit.      * @param isBranchCommit whether this is a commit to a branch      */
 specifier|public
 name|void
 name|applyToCache

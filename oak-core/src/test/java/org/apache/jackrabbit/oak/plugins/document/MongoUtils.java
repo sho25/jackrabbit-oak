@@ -118,7 +118,7 @@ specifier|static
 name|Exception
 name|exception
 decl_stmt|;
-comment|/**      * Get a connection if available. If not available, null is returned.      *       * @return the connection or null      */
+comment|/**      * Get a connection if available. If not available, null is returned.      *      * @return the connection or null      */
 specifier|public
 specifier|static
 name|MongoConnection
@@ -132,7 +132,7 @@ name|DB
 argument_list|)
 return|;
 block|}
-comment|/**      * Get a connection if available. If not available, null is returned.      *       * @param dbName the database name      * @return the connection or null      */
+comment|/**      * Get a connection if available. If not available, null is returned.      *      * @param dbName the database name      * @return the connection or null      */
 specifier|public
 specifier|static
 name|MongoConnection
@@ -209,7 +209,7 @@ return|return
 name|mongoConnection
 return|;
 block|}
-comment|/**      * Drop all user defined collections. System collections are not dropped.      *       * @param db the connection      */
+comment|/**      * Drop all user defined collections. System collections are not dropped.      *      * @param db the connection      */
 specifier|public
 specifier|static
 name|void

@@ -450,7 +450,7 @@ name|commit
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * Query the index for retrieving all the entries      *       * @throws CommitFailedException      * @throws ParseException      * @throws RepositoryException      */
+comment|/**      * Query the index for retrieving all the entries      *      * @throws CommitFailedException      * @throws ParseException      * @throws RepositoryException      */
 annotation|@
 name|Test
 specifier|public
@@ -570,7 +570,7 @@ literal|true
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * test the index for returning the items related to a single key      *       * @throws CommitFailedException      * @throws ParseException      */
+comment|/**      * test the index for returning the items related to a single key      *      * @throws CommitFailedException      * @throws ParseException      */
 annotation|@
 name|Test
 specifier|public
@@ -759,7 +759,7 @@ literal|true
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * test the range query in case of '>' condition      * @throws Exception       */
+comment|/**      * test the range query in case of '>' condition      * @throws Exception      */
 annotation|@
 name|Test
 annotation|@
@@ -955,7 +955,7 @@ literal|true
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * test the range query in case of '>=' condition      * @throws Exception       */
+comment|/**      * test the range query in case of '>=' condition      * @throws Exception      */
 annotation|@
 name|Test
 annotation|@
@@ -1151,7 +1151,7 @@ literal|true
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * test the range query in case of '<' condition      *       * in this case as we're ascending we're expecting an empty resultset with the proper      * provider. not the lowcost one.      * @throws Exception       */
+comment|/**      * test the range query in case of '<' condition      *      * in this case as we're ascending we're expecting an empty resultset with the proper      * provider. not the lowcost one.      * @throws Exception      */
 annotation|@
 name|Test
 specifier|public
@@ -1382,7 +1382,7 @@ literal|true
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * test the range query in case of '<=' condition      *       * in this case as we're ascending we're expecting an empty resultset with the proper      * provider. not the lowcost one.      * @throws Exception       */
+comment|/**      * test the range query in case of '<=' condition      *      * in this case as we're ascending we're expecting an empty resultset with the proper      * provider. not the lowcost one.      * @throws Exception      */
 annotation|@
 name|Test
 specifier|public

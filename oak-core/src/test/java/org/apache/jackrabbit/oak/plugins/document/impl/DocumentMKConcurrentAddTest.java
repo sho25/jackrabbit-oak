@@ -331,7 +331,7 @@ name|clear
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * Creates NB_THREADS microkernels, each commiting two nodes (one parent,      * one child) in its own thread. The nodes being committed by separate      * threads do not overlap / conflict.      *       * @throws Exception       */
+comment|/**      * Creates NB_THREADS microkernels, each commiting two nodes (one parent,      * one child) in its own thread. The nodes being committed by separate      * threads do not overlap / conflict.      *      * @throws Exception      */
 annotation|@
 name|Test
 specifier|public

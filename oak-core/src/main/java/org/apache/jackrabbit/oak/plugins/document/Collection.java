@@ -30,7 +30,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * The collection types.  *   * @param<T> the document type  */
+comment|/**  * The collection types.  *  * @param<T> the document type  */
 end_comment
 
 begin_class

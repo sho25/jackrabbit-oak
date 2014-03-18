@@ -138,7 +138,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Test for MongoMK GC with {@link CloudBlobStore}  *   */
+comment|/**  * Test for MongoMK GC with {@link CloudBlobStore}  *  */
 end_comment
 
 begin_class

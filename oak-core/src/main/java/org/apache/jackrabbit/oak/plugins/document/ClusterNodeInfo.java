@@ -404,7 +404,7 @@ return|return
 name|id
 return|;
 block|}
-comment|/**      * Create a cluster node info instance for the store, with the       *       * @param store the document store (for the lease)      * @return the cluster node info      */
+comment|/**      * Create a cluster node info instance for the store, with the      *      * @param store the document store (for the lease)      * @return the cluster node info      */
 specifier|public
 specifier|static
 name|ClusterNodeInfo
@@ -425,7 +425,7 @@ name|WORKING_DIR
 argument_list|)
 return|;
 block|}
-comment|/**      * Create a cluster node info instance for the store.      *       * @param store the document store (for the lease)      * @param machineId the machine id (null for MAC address)      * @param instanceId the instance id (null for current working directory)      * @return the cluster node info      */
+comment|/**      * Create a cluster node info instance for the store.      *      * @param store the document store (for the lease)      * @param machineId the machine id (null for MAC address)      * @param instanceId the instance id (null for current working directory)      * @return the cluster node info      */
 specifier|public
 specifier|static
 name|ClusterNodeInfo
@@ -872,7 +872,7 @@ name|instanceId
 argument_list|)
 return|;
 block|}
-comment|/**      * Renew the cluster id lease. This method needs to be called once in a while,      * to ensure the same cluster id is not re-used by a different instance.      *       * @param nextCheckMillis the millisecond offset      */
+comment|/**      * Renew the cluster id lease. This method needs to be called once in a while,      * to ensure the same cluster id is not re-used by a different instance.      *      * @param nextCheckMillis the millisecond offset      */
 specifier|public
 name|void
 name|renewLease
@@ -1157,7 +1157,7 @@ literal|0
 return|;
 block|}
 block|}
-comment|/**      * Calculate the unique machine id. This is the lowest MAC address if      * available. As an alternative, a randomly generated UUID is used.      *       * @return the unique id      */
+comment|/**      * Calculate the unique machine id. This is the lowest MAC address if      * available. As an alternative, a randomly generated UUID is used.      *      * @return the unique id      */
 specifier|private
 specifier|static
 name|String

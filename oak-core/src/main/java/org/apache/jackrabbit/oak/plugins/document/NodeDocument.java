@@ -579,7 +579,7 @@ name|DELETED
 init|=
 literal|"_deleted"
 decl_stmt|;
-comment|/**      * The list of recent revisions for this node, where this node is the      * root of the commit.       *<p>      * Key: revision.      *<p>      * Value: "c" for a regular (non-branch) commit,       * "c-" + base revision of the successfully merged branch commit,      * "b" + base revision of an un-merged branch commit      */
+comment|/**      * The list of recent revisions for this node, where this node is the      * root of the commit.      *<p>      * Key: revision.      *<p>      * Value: "c" for a regular (non-branch) commit,      * "c-" + base revision of the successfully merged branch commit,      * "b" + base revision of an un-merged branch commit      */
 specifier|private
 specifier|static
 specifier|final
@@ -588,7 +588,7 @@ name|REVISIONS
 init|=
 literal|"_revisions"
 decl_stmt|;
-comment|/**      * The last revision.       *<p>      * Key: machine id, in the form "r0-0-1".      *<p>      * Value: the revision.      */
+comment|/**      * The last revision.      *<p>      * Key: machine id, in the form "r0-0-1".      *<p>      * Value: the revision.      */
 specifier|private
 specifier|static
 specifier|final
@@ -850,7 +850,7 @@ else|:
 literal|false
 return|;
 block|}
-comment|/**      * Mark this instance as up-to-date (matches the state in persistence      * store).      *       * @param checkTime time at which the check was performed      */
+comment|/**      * Mark this instance as up-to-date (matches the state in persistence      * store).      *      * @param checkTime time at which the check was performed      */
 annotation|@
 name|Override
 specifier|public
@@ -869,7 +869,7 @@ name|checkTime
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Returns true if the document has already been checked for consistency      * in current cycle.      *       * @param lastCheckTime time at which current cycle started      * @return if the document was checked      */
+comment|/**      * Returns true if the document has already been checked for consistency      * in current cycle.      *      * @param lastCheckTime time at which current cycle started      * @return if the document was checked      */
 annotation|@
 name|Override
 specifier|public
@@ -891,7 +891,7 @@ name|get
 argument_list|()
 return|;
 block|}
-comment|/**      * Returns the last time when this object was checked for consistency.      *       * @return the last check time      */
+comment|/**      * Returns the last time when this object was checked for consistency.      *      * @return the last check time      */
 annotation|@
 name|Override
 specifier|public
@@ -2089,7 +2089,7 @@ return|return
 name|n
 return|;
 block|}
-comment|/**      * Get the earliest (oldest) revision where the node was alive at or before      * the provided revision, if the node was alive at the given revision.      *       * @param context the revision context      * @param maxRev the maximum revision to return      * @param validRevisions the set of revisions already checked against maxRev      *            and considered valid.      * @return the earliest revision, or null if the node is deleted at the      *         given revision      */
+comment|/**      * Get the earliest (oldest) revision where the node was alive at or before      * the provided revision, if the node was alive at the given revision.      *      * @param context the revision context      * @param maxRev the maximum revision to return      * @param validRevisions the set of revisions already checked against maxRev      *            and considered valid.      * @return the earliest revision, or null if the node is deleted at the      *         given revision      */
 annotation|@
 name|CheckForNull
 specifier|public

@@ -399,7 +399,7 @@ return|return
 name|changes
 return|;
 block|}
-comment|/**      * Add a new or update an existing map entry.      * The property is a map of revisions / values.      *       * @param property the property      * @param revision the revision      * @param value the value      */
+comment|/**      * Add a new or update an existing map entry.      * The property is a map of revisions / values.      *      * @param property the property      * @param revision the revision      * @param value the value      */
 name|void
 name|setMapEntry
 parameter_list|(
@@ -459,7 +459,7 @@ name|op
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Remove a map entry.      * The property is a map of revisions / values.      *       * @param property the property      * @param revision the revision      */
+comment|/**      * Remove a map entry.      * The property is a map of revisions / values.      *      * @param property the property      * @param revision the revision      */
 specifier|public
 name|void
 name|removeMapEntry
@@ -511,7 +511,7 @@ name|op
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Set the property to the given value.      *       * @param property the property name      * @param value the value      */
+comment|/**      * Set the property to the given value.      *      * @param property the property name      * @param value the value      */
 name|void
 name|set
 parameter_list|(
@@ -561,7 +561,7 @@ name|op
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Do not set the property entry (after it has been set).      * The property is a map of revisions / values.      *       * @param property the property name      * @param revision the revision      */
+comment|/**      * Do not set the property entry (after it has been set).      * The property is a map of revisions / values.      *      * @param property the property name      * @param revision the revision      */
 name|void
 name|unsetMapEntry
 parameter_list|(
@@ -666,7 +666,7 @@ name|op
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Increment the value.      *       * @param property the key      * @param value the increment      */
+comment|/**      * Increment the value.      *      * @param property the key      * @param value the increment      */
 specifier|public
 name|void
 name|increment
@@ -828,7 +828,7 @@ specifier|public
 enum|enum
 name|Type
 block|{
-comment|/**              * Set the value.               * The sub-key is not used.              */
+comment|/**              * Set the value.              * The sub-key is not used.              */
 name|SET
 block|,
 comment|/**              * Increment the Long value with the provided Long value.              * The sub-key is not used.              */

@@ -210,7 +210,7 @@ operator|=
 name|branch
 expr_stmt|;
 block|}
-comment|/**      * Compare the time part of two revisions. If they contain the same time,      * the counter is compared.      *<p>      * This method requires that both revisions are from the same cluster node.      *       * @param other the other revision      * @return -1 if this revision occurred earlier, 1 if later, 0 if equal      * @throws IllegalArgumentException if the cluster ids don't match      */
+comment|/**      * Compare the time part of two revisions. If they contain the same time,      * the counter is compared.      *<p>      * This method requires that both revisions are from the same cluster node.      *      * @param other the other revision      * @return -1 if this revision occurred earlier, 1 if later, 0 if equal      * @throws IllegalArgumentException if the cluster ids don't match      */
 name|int
 name|compareRevisionTime
 parameter_list|(
@@ -296,7 +296,7 @@ return|return
 name|comp
 return|;
 block|}
-comment|/**      * Compare the time part of two revisions. If they contain the same time,      * the counter is compared. If the counter is the same, the cluster ids are      * compared.      *       * @param other the other revision      * @return -1 if this revision occurred earlier, 1 if later, 0 if equal      */
+comment|/**      * Compare the time part of two revisions. If they contain the same time,      * the counter is compared. If the counter is the same, the cluster ids are      * compared.      *      * @param other the other revision      * @return -1 if this revision occurred earlier, 1 if later, 0 if equal      */
 name|int
 name|compareRevisionTimeThenClusterId
 parameter_list|(
@@ -374,7 +374,7 @@ return|return
 name|comp
 return|;
 block|}
-comment|/**      * Compare the cluster node ids of both revisions.      *       * @param other the other revision      * @return -1 if this revision occurred earlier, 1 if later, 0 if equal      */
+comment|/**      * Compare the cluster node ids of both revisions.      *      * @param other the other revision      * @return -1 if this revision occurred earlier, 1 if later, 0 if equal      */
 name|int
 name|compareClusterId
 parameter_list|(
@@ -403,7 +403,7 @@ else|:
 literal|0
 return|;
 block|}
-comment|/**      * Create a simple revision id. The format is similar to MongoDB ObjectId.      *       * @param clusterId the unique machineId + processId      * @return the unique revision id      */
+comment|/**      * Create a simple revision id. The format is similar to MongoDB ObjectId.      *      * @param clusterId the unique machineId + processId      * @return the unique revision id      */
 specifier|static
 name|Revision
 name|newRevision
@@ -467,7 +467,7 @@ name|clusterId
 argument_list|)
 return|;
 block|}
-comment|/**      * Get the timestamp value of the current date and time. Within the same      * process, the returned value is never smaller than a previously returned      * value, even if the system time was changed.      *       * @return the timestamp      */
+comment|/**      * Get the timestamp value of the current date and time. Within the same      * process, the returned value is never smaller than a previously returned      * value, even if the system time was changed.      *      * @return the timestamp      */
 specifier|public
 specifier|static
 name|long
@@ -513,7 +513,7 @@ return|return
 name|timestamp
 return|;
 block|}
-comment|/**      * Get the timestamp difference between two revisions (r1 - r2) in      * milliseconds.      *       * @param r1 the first revision      * @param r2 the second revision      * @return the difference in milliseconds      */
+comment|/**      * Get the timestamp difference between two revisions (r1 - r2) in      * milliseconds.      *      * @param r1 the first revision      * @param r2 the second revision      * @return the difference in milliseconds      */
 specifier|public
 specifier|static
 name|long
@@ -985,7 +985,7 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/**      * Get the timestamp in milliseconds since 1970.      *       * @return the timestamp      */
+comment|/**      * Get the timestamp in milliseconds since 1970.      *      * @return the timestamp      */
 specifier|public
 name|long
 name|getTimestamp
@@ -1372,7 +1372,7 @@ specifier|private
 name|long
 name|oldestTimestamp
 decl_stmt|;
-comment|/**          * The cluster node id of the current cluster node. Revisions           * from this cluster node that are newer than the newest range          * (new local revisions)           * are considered to be the newest revisions overall.          */
+comment|/**          * The cluster node id of the current cluster node. Revisions          * from this cluster node that are newer than the newest range          * (new local revisions)          * are considered to be the newest revisions overall.          */
 specifier|private
 specifier|final
 name|int
@@ -1391,7 +1391,7 @@ operator|=
 name|currentClusterNodId
 expr_stmt|;
 block|}
-comment|/**          * Forget the order of older revisions. After calling this method, when comparing          * revisions that happened before the given value, the timestamp order is used          * (time dilation is ignored for older events).          *           * @param timestamp the time in milliseconds (see {@link #getCurrentTimestamp})          */
+comment|/**          * Forget the order of older revisions. After calling this method, when comparing          * revisions that happened before the given value, the timestamp order is used          * (time dilation is ignored for older events).          *          * @param timestamp the time in milliseconds (see {@link #getCurrentTimestamp})          */
 specifier|public
 name|void
 name|purge
@@ -1608,7 +1608,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-comment|/**          * Add the revision to the top of the queue for the given cluster node.          * If an entry for this timestamp already exists, it is replaced.          *           * @param r the revision          * @param seenAt the (local) revision where this revision was seen here          */
+comment|/**          * Add the revision to the top of the queue for the given cluster node.          * If an entry for this timestamp already exists, it is replaced.          *          * @param r the revision          * @param seenAt the (local) revision where this revision was seen here          */
 specifier|public
 name|void
 name|add

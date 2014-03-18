@@ -521,7 +521,7 @@ argument_list|(
 literal|"00000"
 argument_list|)
 decl_stmt|;
-comment|/**      * checks that the fist item/key is inserted with an empty property 'next'      *       * expected structure:      *       *<code>      * :index : {      *    :start : { :next=n0 },      *    n0 : {       *       :next=,      *       foo : {      *          bar: { match=true}      *       }      *    }      * }      *</code>      */
+comment|/**      * checks that the fist item/key is inserted with an empty property 'next'      *      * expected structure:      *      *<code>      * :index : {      *    :start : { :next=n0 },      *    n0 : {      *       :next=,      *       foo : {      *          bar: { match=true}      *       }      *    }      * }      *</code>      */
 annotation|@
 name|Test
 specifier|public
@@ -739,7 +739,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * test the saving of 2 new keys that comes already ordered      *       * final state of the index will be      *       *<code>      *    :index : {      *       :start : { :next=n0 },      *       n0 : { :next=n1 },      *       n1 : { :next= }             *    }      *</code>      */
+comment|/**      * test the saving of 2 new keys that comes already ordered      *      * final state of the index will be      *      *<code>      *    :index : {      *       :start : { :next=n0 },      *       n0 : { :next=n1 },      *       n1 : { :next= }      *    }      *</code>      */
 annotation|@
 name|Test
 specifier|public
@@ -1047,7 +1047,7 @@ name|children
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * test the iteration of the index with 2 shuffled items      *       *<code>      *    :index : {      *       :start : { :next=n1 },      *       n0 : { :next= },      *       n1 : { :next=n0 }      *    }      *</code>      */
+comment|/**      * test the iteration of the index with 2 shuffled items      *      *<code>      *    :index : {      *       :start : { :next=n1 },      *       n0 : { :next= },      *       n1 : { :next=n0 }      *    }      *</code>      */
 annotation|@
 name|SuppressWarnings
 argument_list|(
@@ -1346,7 +1346,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * test the iteration of the index with 2 shuffled items without the :start      * node      *       *<code>      *    :index : {      *       :start : { :next=n1 },      *       n0 : { :next= },      *       n1 : { :next=n0 }      *    }      *</code>      */
+comment|/**      * test the iteration of the index with 2 shuffled items without the :start      * node      *      *<code>      *    :index : {      *       :start : { :next=n1 },      *       n0 : { :next= },      *       n1 : { :next=n0 }      *    }      *</code>      */
 annotation|@
 name|SuppressWarnings
 argument_list|(
@@ -1647,7 +1647,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * test the iteration of the index with 2 shuffled items including the      * :start node as first      *       *<code>      *    :index : {      *       :start : { :next=n1 },      *       n0 : { :next= },      *       n1 : { :next=n0 }      *    }      *</code>      */
+comment|/**      * test the iteration of the index with 2 shuffled items including the      * :start node as first      *      *<code>      *    :index : {      *       :start : { :next=n1 },      *       n0 : { :next= },      *       n1 : { :next=n0 }      *    }      *</code>      */
 annotation|@
 name|SuppressWarnings
 argument_list|(
@@ -2007,7 +2007,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * test the iteration over an empty list when the :start is required. In      * this case :start should always be returned      *       *<code>      *    :index : {      *       :start : { :next= }      *    }      *</code>      */
+comment|/**      * test the iteration over an empty list when the :start is required. In      * this case :start should always be returned      *      *<code>      *    :index : {      *       :start : { :next= }      *    }      *</code>      */
 annotation|@
 name|Test
 specifier|public
@@ -2321,7 +2321,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * test the insert of two shuffled items      *       * Building final a structure like      *       *<code>      *    :index : {      *       :start : { :next=n1 },      *       n0 : { :next= },      *       n1 : { :next=n0 }      *    }      *</code>      *       * where:      *       *<code>      *    Stage 1      *    =======      *       *    :index : {      *       :start : { :next = n0 },      *       n0 : {      *          :next =       *       }      *    }      *       *    Stage 2      *    =======      *       *    :index : {      *       :start : { :next = n1 },      *       n0 : {      *          :next =      *       },      *       n1 : {      *          :next = n0      *       }      *    }      *</code>      */
+comment|/**      * test the insert of two shuffled items      *      * Building final a structure like      *      *<code>      *    :index : {      *       :start : { :next=n1 },      *       n0 : { :next= },      *       n1 : { :next=n0 }      *    }      *</code>      *      * where:      *      *<code>      *    Stage 1      *    =======      *      *    :index : {      *       :start : { :next = n0 },      *       n0 : {      *          :next =      *       }      *    }      *      *    Stage 2      *    =======      *      *    :index : {      *       :start : { :next = n1 },      *       n0 : {      *          :next =      *       },      *       n1 : {      *          :next = n0      *       }      *    }      *</code>      */
 annotation|@
 name|Test
 specifier|public
@@ -2543,7 +2543,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * test the insert of shuffled items      *       * Building a final structure like      *       *<code>      *    {      *       :start : { :next = n1 },      *       n0 : {      *          :next = ""      *       },      *       n1 : {      *          :next = n2      *       },      *       n2 : {      *          :next = n0      *       }      *    }      *</code>      *       * where:      *       *<code>      *    Stage 1      *    =======      *       *    {      *       :start : { :next = n0 },      *       n0 : {      *          :next =       *       }      *    }      *       *    Stage 2      *    =======      *       *    {      *       :start : { :next = n1 },      *       n0 : { :next = },      *       n1 : { :next = n0 }      *    }      *          *    Stage 3      *    =======      *          *    {      *       :start : { :next = n1 },      *       n0 : { :next = },      *       n1 : { :next = n2 },      *       n2 : { :next = n0 }      *    }      *          *    Stage 4      *    =======      *       *    {      *       :start : { :next = n1 },      *       n0 : { :next = n3 },      *       n1 : { :next = n2 },      *       n2 : { :next = n0 },      *       n3 : { :next = }      *    }      *</code>      */
+comment|/**      * test the insert of shuffled items      *      * Building a final structure like      *      *<code>      *    {      *       :start : { :next = n1 },      *       n0 : {      *          :next = ""      *       },      *       n1 : {      *          :next = n2      *       },      *       n2 : {      *          :next = n0      *       }      *    }      *</code>      *      * where:      *      *<code>      *    Stage 1      *    =======      *      *    {      *       :start : { :next = n0 },      *       n0 : {      *          :next =      *       }      *    }      *      *    Stage 2      *    =======      *      *    {      *       :start : { :next = n1 },      *       n0 : { :next = },      *       n1 : { :next = n0 }      *    }      *      *    Stage 3      *    =======      *      *    {      *       :start : { :next = n1 },      *       n0 : { :next = },      *       n1 : { :next = n2 },      *       n2 : { :next = n0 }      *    }      *      *    Stage 4      *    =======      *      *    {      *       :start : { :next = n1 },      *       n0 : { :next = n3 },      *       n1 : { :next = n2 },      *       n2 : { :next = n0 },      *       n3 : { :next = }      *    }      *</code>      */
 annotation|@
 name|Test
 specifier|public
@@ -2947,7 +2947,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * perform a test where the index gets updated if an already existent      * node/key gets updated by changing the key and the key contains only 1      * item.      *       * Where the second key is greater than the first.      *       *<code>      *    Stage 1      *    =======      *          *    :index : {      *       :start { :next = n0 },      *       n0 : {      *          :next =,      *          content : {      *             foobar : {      *                match = true      *             }      *          }      *       }      *    }      *          *    Stage 2      *    =======      *          *    :index : {      *       :start : { :next = n1 },      *       n1 : {      *          :next =,      *          content : {      *             foobar : {      *                match = true      *             }      *          }      *       }      *    }      *</code>      */
+comment|/**      * perform a test where the index gets updated if an already existent      * node/key gets updated by changing the key and the key contains only 1      * item.      *      * Where the second key is greater than the first.      *      *<code>      *    Stage 1      *    =======      *      *    :index : {      *       :start { :next = n0 },      *       n0 : {      *          :next =,      *          content : {      *             foobar : {      *                match = true      *             }      *          }      *       }      *    }      *      *    Stage 2      *    =======      *      *    :index : {      *       :start : { :next = n1 },      *       n1 : {      *          :next =,      *          content : {      *             foobar : {      *                match = true      *             }      *          }      *       }      *    }      *</code>      */
 annotation|@
 name|Test
 specifier|public
@@ -3300,7 +3300,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      *<p>      * find a previous item given a key in an index with 1 element only      *</p>      *       *<p>      *<i>it relies on the functionality of the store.update() for creating the      * index</i>      *</p>      *       *<code>      *    :index {      *       :start : { :next=n0 },      *       n0 = { :next= }      *    }      *</code>      */
+comment|/**      *<p>      * find a previous item given a key in an index with 1 element only      *</p>      *      *<p>      *<i>it relies on the functionality of the store.update() for creating the      * index</i>      *</p>      *      *<code>      *    :index {      *       :start : { :next=n0 },      *       n0 = { :next= }      *    }      *</code>      */
 annotation|@
 name|Test
 specifier|public
@@ -3434,7 +3434,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * test the use case where a document change the indexed property. For      * example document that change author.      *       *<p>      *<i>it relies on the functionality of the store.update() for creating the      * index</i>      *</p>      *       *<code>      *    Stage 1      *    =======      *          *    :index : {      *       :start : { :next = n0 },      *       n0 : {      *          :next = ,      *          content : {      *             one { match=true },      *             two { match=true }      *          }      *       }      *    }      *          *    Stage 2      *    =======      *          *    :index : {      *       :start : { :next = n0 },      *       n0 : {      *          :next = n1,      *          content : {      *             one : { match = true }      *          }      *       },      *       n1 : {      *          :next = ,      *          content : {      *             two : { match = true }      *          }      *       }      *    }      *</code>      */
+comment|/**      * test the use case where a document change the indexed property. For      * example document that change author.      *      *<p>      *<i>it relies on the functionality of the store.update() for creating the      * index</i>      *</p>      *      *<code>      *    Stage 1      *    =======      *      *    :index : {      *       :start : { :next = n0 },      *       n0 : {      *          :next = ,      *          content : {      *             one { match=true },      *             two { match=true }      *          }      *       }      *    }      *      *    Stage 2      *    =======      *      *    :index : {      *       :start : { :next = n0 },      *       n0 : {      *          :next = n1,      *          content : {      *             one : { match = true }      *          }      *       },      *       n1 : {      *          :next = ,      *          content : {      *             two : { match = true }      *          }      *       }      *    }      *</code>      */
 annotation|@
 name|Test
 specifier|public
@@ -4055,7 +4055,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * test when a document is deleted and is the only one under the indexed key      *       *<p>      *<i>it relies on the functionality of the store.update() for creating the      * index</i>      *</p>      *       *<code>      *    Stage 1      *    =======      *          *    :index : {      *       :start : { :next = n0 },      *       n0 : {      *          :next = ,      *          sampledoc : { match = true }      *       }      *    }      *          *    Stage 2      *    =======      *          *    :index : {      *       :start : { :next = }      *    }      *</code>      */
+comment|/**      * test when a document is deleted and is the only one under the indexed key      *      *<p>      *<i>it relies on the functionality of the store.update() for creating the      * index</i>      *</p>      *      *<code>      *    Stage 1      *    =======      *      *    :index : {      *       :start : { :next = n0 },      *       n0 : {      *          :next = ,      *          sampledoc : { match = true }      *       }      *    }      *      *    Stage 2      *    =======      *      *    :index : {      *       :start : { :next = }      *    }      *</code>      */
 annotation|@
 name|Test
 specifier|public
@@ -4166,7 +4166,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * test when the document is deleted but there're still some documents left      * under the indexed key      *       *<p>      *<i>it relies on the functionality of the store.update() for creating the      * index</i>      *</p>      *       *<code>      *    Stage 1      *    =======      *          *    :index : {      *       :start : { :next = n0 },      *       n0 : {      *          :next = ,      *          doc1 : { match=true },      *          doc2 : { match=true }      *       }      *    }      *          *    Stage 2      *    =======      *          *    :index : {      *       :start : { :next = n0 },      *       n0 : {      *          :next  =,      *          doc2 : { match = true }      *       }      *    }      *</code>      */
+comment|/**      * test when the document is deleted but there're still some documents left      * under the indexed key      *      *<p>      *<i>it relies on the functionality of the store.update() for creating the      * index</i>      *</p>      *      *<code>      *    Stage 1      *    =======      *      *    :index : {      *       :start : { :next = n0 },      *       n0 : {      *          :next = ,      *          doc1 : { match=true },      *          doc2 : { match=true }      *       }      *    }      *      *    Stage 2      *    =======      *      *    :index : {      *       :start : { :next = n0 },      *       n0 : {      *          :next  =,      *          doc2 : { match = true }      *       }      *    }      *</code>      */
 annotation|@
 name|Test
 specifier|public
@@ -4390,7 +4390,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * test when the only document is deleted from an indexed key but there're      * still some keys left in the index      *       *<p>      *<i>it relies on the functionality of the store.update() for creating the      * index</i>      *</p>      *       *<code>      *    Stage 1      *    =======      *          *    :index : {      *       :start : { :next = n1 },      *       n0 : {      *          :next = ,      *          content : {      *             doc0 : { match = true }      *          }      *       },      *       n1 : {      *          :next = n2,      *          content : {      *             doc1 : { match = true }      *          }      *       }      *       n2 : {      *          :next = n0,      *          content : {      *             doc2 : { match = true }      *          }      *       }      *    }      *          *    Stage 2      *    =======      *          *    :index : {      *       :start : { :next = n1 },      *       n0 : {      *          :next = ,      *          content : {      *             doc0 : { match = true }      *          }      *       },      *       n1 : {      *          :next = n0,      *          content : {      *             doc1 : { match = true }      *          }      *       }      *    }      *          *</code>      */
+comment|/**      * test when the only document is deleted from an indexed key but there're      * still some keys left in the index      *      *<p>      *<i>it relies on the functionality of the store.update() for creating the      * index</i>      *</p>      *      *<code>      *    Stage 1      *    =======      *      *    :index : {      *       :start : { :next = n1 },      *       n0 : {      *          :next = ,      *          content : {      *             doc0 : { match = true }      *          }      *       },      *       n1 : {      *          :next = n2,      *          content : {      *             doc1 : { match = true }      *          }      *       }      *       n2 : {      *          :next = n0,      *          content : {      *             doc2 : { match = true }      *          }      *       }      *    }      *      *    Stage 2      *    =======      *      *    :index : {      *       :start : { :next = n1 },      *       n0 : {      *          :next = ,      *          content : {      *             doc0 : { match = true }      *          }      *       },      *       n1 : {      *          :next = n0,      *          content : {      *             doc1 : { match = true }      *          }      *       }      *    }      *      *</code>      */
 annotation|@
 name|Test
 specifier|public
@@ -4813,7 +4813,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      *<p>test the insertion of 2 already ordered items</p>      *       *<p>expected</p>      *       *<code>      *      :index : {      *          :start : { :next=n0 },      *          n0 : { :next=n1 },      *          n1 : { :next=}      *      }      *</code>      */
+comment|/**      *<p>test the insertion of 2 already ordered items</p>      *      *<p>expected</p>      *      *<code>      *      :index : {      *          :start : { :next=n0 },      *          n0 : { :next=n1 },      *          n1 : { :next=}      *      }      *</code>      */
 annotation|@
 name|Test
 specifier|public
@@ -4951,7 +4951,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Tests the insert of 4 items that will always have to be added at the beginning of the list.      * Just to simulate the use-case of lastModified DESC.      *       *<code>      *      Stage 1      *      =======      *            *      :index : {      *          :start : { :next=n0 },      *          n0 : { :next= }      *      }      *            *      Stage 2      *      =======      *            *      :index : {      *          :start : { :next=n1 },      *          n0 : { :next= },      *          n1 : { :next=n0 }      *      }      *            *      Stage 3      *      =======      *            *      :index : {      *          :start : { :next=n2 },      *          n0 : { :next= },      *          n1 : { :next=n0 },      *          n2 : { :next=n1 }      *      }      *            *      Stage 4      *      =======      *            *      :index : {      *          :start : { :next=n3 },      *          n0 : { :next= },      *          n1 : { :next=n0 },      *          n2 : { :next=n1 },      *          n3 : { :next=n2 }      *      }      *</code>      */
+comment|/**      * Tests the insert of 4 items that will always have to be added at the beginning of the list.      * Just to simulate the use-case of lastModified DESC.      *      *<code>      *      Stage 1      *      =======      *      *      :index : {      *          :start : { :next=n0 },      *          n0 : { :next= }      *      }      *      *      Stage 2      *      =======      *      *      :index : {      *          :start : { :next=n1 },      *          n0 : { :next= },      *          n1 : { :next=n0 }      *      }      *      *      Stage 3      *      =======      *      *      :index : {      *          :start : { :next=n2 },      *          n0 : { :next= },      *          n1 : { :next=n0 },      *          n2 : { :next=n1 }      *      }      *      *      Stage 4      *      =======      *      *      :index : {      *          :start : { :next=n3 },      *          n0 : { :next= },      *          n1 : { :next=n0 },      *          n2 : { :next=n1 },      *          n3 : { :next=n2 }      *      }      *</code>      */
 annotation|@
 name|Test
 specifier|public
@@ -5359,7 +5359,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * test finding a previous item in a descending ordered index.      *       *<code>      *      Stage 1      *      =======      *            *      :index {      *          :start : { :next=n0 },      *          n0 : { :next= }      *      }      *            *      findPrevious(n0)=:start      *            *      Stage 2      *      =======      *            *      :index {      *          :start : { :next=n1 },      *          n0 : { :next= }      *          n1 : { :next=n0 }      *      }      *            *      findPrevious(n0)=n1;      *</code>      */
+comment|/**      * test finding a previous item in a descending ordered index.      *      *<code>      *      Stage 1      *      =======      *      *      :index {      *          :start : { :next=n0 },      *          n0 : { :next= }      *      }      *      *      findPrevious(n0)=:start      *      *      Stage 2      *      =======      *      *      :index {      *          :start : { :next=n1 },      *          n0 : { :next= }      *          n1 : { :next=n0 }      *      }      *      *      findPrevious(n0)=n1;      *</code>      */
 annotation|@
 name|Test
 specifier|public
@@ -5532,7 +5532,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * test the insert of 1 item in a descending order index. it should not really matter but just      * checking we don't break anything      *       * expecting      *       *<code>      *  :index : {      *      :start : { :next = n0 },      *      n0 : { :next = }      *  }      *</code>      */
+comment|/**      * test the insert of 1 item in a descending order index. it should not really matter but just      * checking we don't break anything      *      * expecting      *      *<code>      *  :index : {      *      :start : { :next = n0 },      *      n0 : { :next = }      *  }      *</code>      */
 annotation|@
 name|Test
 specifier|public
@@ -5627,7 +5627,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * test the insert of 4 shuffled items in a descending ordered index      *       * expected:      *       *<code>      *      :index : {      *          :start : { :next= n1},      *          n0 : { :next= n3},        *          n1 : { :next= n2},        *          n2: { :next= n0},        *          n3 : { :next= },        *      }      *</code>      */
+comment|/**      * test the insert of 4 shuffled items in a descending ordered index      *      * expected:      *      *<code>      *      :index : {      *          :start : { :next= n1},      *          n0 : { :next= n3},      *          n1 : { :next= n2},      *          n2: { :next= n0},      *          n3 : { :next= },      *      }      *</code>      */
 annotation|@
 name|Test
 specifier|public
@@ -5851,7 +5851,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * test the iteration of the descending index with 2 shuffled items      *       *<code>      *    :index : {      *       :start : { :next=n1 },      *       n0 : { :next= },      *       n1 : { :next=n0 }      *    }      *</code>      */
+comment|/**      * test the iteration of the descending index with 2 shuffled items      *      *<code>      *    :index : {      *       :start : { :next=n1 },      *       n0 : { :next= },      *       n1 : { :next=n0 }      *    }      *</code>      */
 annotation|@
 name|Test
 specifier|public

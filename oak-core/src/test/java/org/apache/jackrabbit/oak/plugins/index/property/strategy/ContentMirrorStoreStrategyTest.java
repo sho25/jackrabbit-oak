@@ -234,7 +234,7 @@ argument_list|(
 literal|"key"
 argument_list|)
 decl_stmt|;
-comment|/**      *<p>      * Tests the index pruning mechanism      *</p>      *<ul>      *<li>      * adds a few levels of nodes, nodes with an even index will have the      * 'match' property set</li>      *       *<li>      * pruning in this case means that whatever path that doesn't have a 'match'      * property is considered dead weight and should be removed from the index</li>      *</ul>      */
+comment|/**      *<p>      * Tests the index pruning mechanism      *</p>      *<ul>      *<li>      * adds a few levels of nodes, nodes with an even index will have the      * 'match' property set</li>      *      *<li>      * pruning in this case means that whatever path that doesn't have a 'match'      * property is considered dead weight and should be removed from the index</li>      *</ul>      */
 annotation|@
 name|Test
 specifier|public

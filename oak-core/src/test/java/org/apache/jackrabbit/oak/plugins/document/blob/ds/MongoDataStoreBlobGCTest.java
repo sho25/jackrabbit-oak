@@ -162,7 +162,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Test for MongoMK GC with {@link DataStoreBlobStore}  *   */
+comment|/**  * Test for MongoMK GC with {@link DataStoreBlobStore}  *  */
 end_comment
 
 begin_class

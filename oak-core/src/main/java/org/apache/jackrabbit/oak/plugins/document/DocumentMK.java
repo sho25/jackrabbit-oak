@@ -2620,7 +2620,7 @@ name|DEFAULT_MEMORY_CACHE_SIZE
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**          * Set the MongoDB connection to use. By default an in-memory store is used.          *           * @param db the MongoDB connection          * @return this          */
+comment|/**          * Set the MongoDB connection to use. By default an in-memory store is used.          *          * @param db the MongoDB connection          * @return this          */
 specifier|public
 name|Builder
 name|setMongoDB
@@ -2683,7 +2683,7 @@ return|return
 name|this
 return|;
 block|}
-comment|/**          * Sets a JDBC connection URL to use for the RDB document and blob          * stores.          *           * @return this          */
+comment|/**          * Sets a JDBC connection URL to use for the RDB document and blob          * stores.          *          * @return this          */
 specifier|public
 name|Builder
 name|setRDBConnection
@@ -2732,7 +2732,7 @@ return|return
 name|this
 return|;
 block|}
-comment|/**          * Sets a JDBC connection URLs to use for the RDB document and blob          * stores.          *           * @return this          */
+comment|/**          * Sets a JDBC connection URLs to use for the RDB document and blob          * stores.          *          * @return this          */
 specifier|public
 name|Builder
 name|setRDBConnection
@@ -2790,7 +2790,7 @@ return|return
 name|this
 return|;
 block|}
-comment|/**          * Sets a {@link DataSource} to use for the RDB document and blob          * stores.          *           * @return this          */
+comment|/**          * Sets a {@link DataSource} to use for the RDB document and blob          * stores.          *          * @return this          */
 specifier|public
 name|Builder
 name|setRDBConnection
@@ -2825,7 +2825,7 @@ return|return
 name|this
 return|;
 block|}
-comment|/**          * Sets a {@link DataSource}s to use for the RDB document and blob          * stores.          *           * @return this          */
+comment|/**          * Sets a {@link DataSource}s to use for the RDB document and blob          * stores.          *          * @return this          */
 specifier|public
 name|Builder
 name|setRDBConnection
@@ -2863,7 +2863,7 @@ return|return
 name|this
 return|;
 block|}
-comment|/**          * Use the timing document store wrapper.          *           * @param timing whether to use the timing wrapper.          * @return this          */
+comment|/**          * Use the timing document store wrapper.          *          * @param timing whether to use the timing wrapper.          * @return this          */
 specifier|public
 name|Builder
 name|setTiming
@@ -2918,7 +2918,7 @@ return|return
 name|logging
 return|;
 block|}
-comment|/**          * Set the document store to use. By default an in-memory store is used.          *           * @param documentStore the document store          * @return this          */
+comment|/**          * Set the document store to use. By default an in-memory store is used.          *          * @param documentStore the document store          * @return this          */
 specifier|public
 name|Builder
 name|setDocumentStore
@@ -2985,7 +2985,7 @@ return|return
 name|nodeStore
 return|;
 block|}
-comment|/**          * Set the blob store to use. By default an in-memory store is used.          *           * @param blobStore the blob store          * @return this          */
+comment|/**          * Set the blob store to use. By default an in-memory store is used.          *          * @param blobStore the blob store          * @return this          */
 specifier|public
 name|Builder
 name|setBlobStore
@@ -3027,7 +3027,7 @@ return|return
 name|blobStore
 return|;
 block|}
-comment|/**          * Set the cluster id to use. By default, 0 is used, meaning the cluster          * id is automatically generated.          *           * @param clusterId the cluster id          * @return this          */
+comment|/**          * Set the cluster id to use. By default, 0 is used, meaning the cluster          * id is automatically generated.          *          * @param clusterId the cluster id          * @return this          */
 specifier|public
 name|Builder
 name|setClusterId
@@ -3055,7 +3055,7 @@ return|return
 name|clusterId
 return|;
 block|}
-comment|/**          * Set the maximum delay to write the last revision to the root node. By          * default 1000 (meaning 1 second) is used.          *           * @param asyncDelay in milliseconds          * @return this          */
+comment|/**          * Set the maximum delay to write the last revision to the root node. By          * default 1000 (meaning 1 second) is used.          *          * @param asyncDelay in milliseconds          * @return this          */
 specifier|public
 name|Builder
 name|setAsyncDelay
@@ -3325,7 +3325,7 @@ return|return
 name|this
 return|;
 block|}
-comment|/**          * Open the DocumentMK instance using the configured options.          *           * @return the DocumentMK instance          */
+comment|/**          * Open the DocumentMK instance using the configured options.          *          * @return the DocumentMK instance          */
 specifier|public
 name|DocumentMK
 name|open

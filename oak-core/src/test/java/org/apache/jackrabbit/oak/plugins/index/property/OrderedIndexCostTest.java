@@ -491,7 +491,7 @@ name|INDEX_CONTENT_NODE_NAME
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * define e descending ordered index in the provided root      *       * @param root      * @throws IllegalArgumentException      * @throws RepositoryException      */
+comment|/**      * define e descending ordered index in the provided root      *      * @param root      * @throws IllegalArgumentException      * @throws RepositoryException      */
 specifier|private
 specifier|static
 name|void
@@ -515,7 +515,7 @@ name|DESC
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * define e Ascending ordered index in the provided root      *       * @param root      * @throws IllegalArgumentException      * @throws RepositoryException      */
+comment|/**      * define e Ascending ordered index in the provided root      *      * @param root      * @throws IllegalArgumentException      * @throws RepositoryException      */
 specifier|private
 specifier|static
 name|void
@@ -726,7 +726,7 @@ literal|0
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * tests the use-case where we ask for '>' of a date.      *       * As we're not testing the actual algorithm, part of {@code IndexLookup} we want to make sure      * the Index doesn't reply with "dont' serve" in special cases      */
+comment|/**      * tests the use-case where we ask for '>' of a date.      *      * As we're not testing the actual algorithm, part of {@code IndexLookup} we want to make sure      * the Index doesn't reply with "dont' serve" in special cases      */
 annotation|@
 name|Test
 annotation|@
@@ -870,7 +870,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * test that the '>=' use case is served from the index      * @throws RepositoryException       * @throws IllegalArgumentException       */
+comment|/**      * test that the '>=' use case is served from the index      * @throws RepositoryException      * @throws IllegalArgumentException      */
 annotation|@
 name|Test
 annotation|@
@@ -1022,7 +1022,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * when we run a '<' in an Ascending index it should not serve it      * @throws RepositoryException       * @throws IllegalArgumentException       */
+comment|/**      * when we run a '<' in an Ascending index it should not serve it      * @throws RepositoryException      * @throws IllegalArgumentException      */
 annotation|@
 name|Test
 annotation|@

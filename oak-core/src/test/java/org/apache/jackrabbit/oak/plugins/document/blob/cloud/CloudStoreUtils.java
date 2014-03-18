@@ -50,7 +50,7 @@ specifier|public
 class|class
 name|CloudStoreUtils
 block|{
-comment|/**      * Gets the blob store.      *       * @return the blob store      * @throws Exception      *             the exception      */
+comment|/**      * Gets the blob store.      *      * @return the blob store      * @throws Exception      *             the exception      */
 specifier|public
 specifier|static
 name|AbstractBlobStore

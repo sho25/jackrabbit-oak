@@ -104,7 +104,7 @@ specifier|final
 name|MongoClient
 name|mongo
 decl_stmt|;
-comment|/**      * Constructs a new connection using the specified MongoDB connection string.      * See also http://docs.mongodb.org/manual/reference/connection-string/      *       * @param uri the MongoDB URI      * @throws UnknownHostException      */
+comment|/**      * Constructs a new connection using the specified MongoDB connection string.      * See also http://docs.mongodb.org/manual/reference/connection-string/      *      * @param uri the MongoDB URI      * @throws UnknownHostException      */
 specifier|public
 name|MongoConnection
 parameter_list|(

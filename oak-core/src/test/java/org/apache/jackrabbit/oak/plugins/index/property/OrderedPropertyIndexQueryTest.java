@@ -740,7 +740,7 @@ name|commit
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * Query the index for retrieving all the entries      *       * @throws CommitFailedException      * @throws ParseException      * @throws RepositoryException      */
+comment|/**      * Query the index for retrieving all the entries      *      * @throws CommitFailedException      * @throws ParseException      * @throws RepositoryException      */
 annotation|@
 name|Test
 specifier|public
@@ -856,7 +856,7 @@ literal|true
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * test the index for returning the items related to a single key      *       * @throws CommitFailedException      * @throws ParseException      */
+comment|/**      * test the index for returning the items related to a single key      *      * @throws CommitFailedException      * @throws ParseException      */
 annotation|@
 name|Test
 specifier|public
@@ -1045,7 +1045,7 @@ literal|true
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * test the range query in case of '>' condition      *       * @throws CommitFailedException      * @throws ParseException      */
+comment|/**      * test the range query in case of '>' condition      *      * @throws CommitFailedException      * @throws ParseException      */
 annotation|@
 name|Test
 annotation|@
@@ -1282,7 +1282,7 @@ literal|true
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * test the range query in case of '>=' condition      * @throws CommitFailedException       * @throws ParseException       */
+comment|/**      * test the range query in case of '>=' condition      * @throws CommitFailedException      * @throws ParseException      */
 annotation|@
 name|Test
 annotation|@
@@ -1521,7 +1521,7 @@ literal|true
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * test the range query in case of '<' condition      *       * in this case as we're ascending we're expecting an empty resultset with the proper      * provider. not the lowcost one.      * @throws Exception       */
+comment|/**      * test the range query in case of '<' condition      *      * in this case as we're ascending we're expecting an empty resultset with the proper      * provider. not the lowcost one.      * @throws Exception      */
 annotation|@
 name|Test
 annotation|@
@@ -1718,7 +1718,7 @@ literal|true
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * test the range query in case of '<=' condition      *       * in this case as we're ascending we're expecting an empty resultset with the proper      * provider. not the lowcost one.      * @throws Exception       */
+comment|/**      * test the range query in case of '<=' condition      *      * in this case as we're ascending we're expecting an empty resultset with the proper      * provider. not the lowcost one.      * @throws Exception      */
 annotation|@
 name|Test
 annotation|@
@@ -2934,7 +2934,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * tests the output of a plan where the query is asked with where conditions that are not indexed      * but the ORDER BY are on the indexed property      *       * eg: SELECT * FROM [nt:base] WHERE pinned=1 ORDER BY lastModified      *       * @throws RepositoryException       * @throws IllegalArgumentException       * @throws CommitFailedException       */
+comment|/**      * tests the output of a plan where the query is asked with where conditions that are not indexed      * but the ORDER BY are on the indexed property      *      * eg: SELECT * FROM [nt:base] WHERE pinned=1 ORDER BY lastModified      *      * @throws RepositoryException      * @throws IllegalArgumentException      * @throws CommitFailedException      */
 annotation|@
 name|Test
 specifier|public
@@ -3258,7 +3258,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * query the index in case of mixed situation      *       * eg: SELECT * FROM [nt:base] WHERE pinned=1 ORDER BY lastModified      *       * @throws RepositoryException       * @throws IllegalArgumentException       * @throws CommitFailedException       * @throws ParseException       */
+comment|/**      * query the index in case of mixed situation      *      * eg: SELECT * FROM [nt:base] WHERE pinned=1 ORDER BY lastModified      *      * @throws RepositoryException      * @throws IllegalArgumentException      * @throws CommitFailedException      * @throws ParseException      */
 annotation|@
 name|Test
 specifier|public

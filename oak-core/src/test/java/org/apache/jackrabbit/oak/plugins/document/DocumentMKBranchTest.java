@@ -116,7 +116,7 @@ name|DocumentMKBranchTest
 extends|extends
 name|BaseDocumentMKTest
 block|{
-comment|/**      * Creates the following revision history:      *<pre>      *   + rev1 (first commit with /child1)      *   |\      *   | + branchRev1 (branch from rev1)      *   | + branchRev11 (branch commit /child1/foo:1)      *   |      *   + rev2 (second commit with /child2)      *   |\      *   | + branchRev2 (brach from rev2)      *</pre>      * The test reads /child from<code>branchRev2</code> and expects      * the version from the first commit.      *       * @throws ParseException       */
+comment|/**      * Creates the following revision history:      *<pre>      *   + rev1 (first commit with /child1)      *   |\      *   | + branchRev1 (branch from rev1)      *   | + branchRev11 (branch commit /child1/foo:1)      *   |      *   + rev2 (second commit with /child2)      *   |\      *   | + branchRev2 (brach from rev2)      *</pre>      * The test reads /child from<code>branchRev2</code> and expects      * the version from the first commit.      *      * @throws ParseException      */
 annotation|@
 name|Test
 specifier|public

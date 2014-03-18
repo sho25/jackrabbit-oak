@@ -74,7 +74,7 @@ specifier|public
 interface|interface
 name|DocumentStore
 block|{
-comment|/**      * Get the document with the given {@code key}. This is a convenience method      * and equivalent to {@link #find(Collection, String, int)} with a      * {@code maxCacheAge} of {@code Integer.MAX_VALUE}.      *<p>      * The returned document is immutable.      *       * @param<T> the document type      * @param collection the collection      * @param key the key      * @return the document, or null if not found      */
+comment|/**      * Get the document with the given {@code key}. This is a convenience method      * and equivalent to {@link #find(Collection, String, int)} with a      * {@code maxCacheAge} of {@code Integer.MAX_VALUE}.      *<p>      * The returned document is immutable.      *      * @param<T> the document type      * @param collection the collection      * @param key the key      * @return the document, or null if not found      */
 annotation|@
 name|CheckForNull
 argument_list|<
@@ -95,7 +95,7 @@ name|String
 name|key
 parameter_list|)
 function_decl|;
-comment|/**      * Get the document with the {@code key}. The implementation may serve the      * document from a cache, but the cached document must not be older than      * the given {@code maxCacheAge} in milliseconds. An implementation must      * invalidate a cached document when it detects it is outdated. That is, a      * subsequent call to {@link #find(Collection, String)} must return the      * newer version of the document.      *<p>      * The returned document is immutable.      *       * @param<T> the document type      * @param collection the collection      * @param key the key      * @param maxCacheAge the maximum age of the cached document (in ms)      * @return the document, or null if not found      */
+comment|/**      * Get the document with the {@code key}. The implementation may serve the      * document from a cache, but the cached document must not be older than      * the given {@code maxCacheAge} in milliseconds. An implementation must      * invalidate a cached document when it detects it is outdated. That is, a      * subsequent call to {@link #find(Collection, String)} must return the      * newer version of the document.      *<p>      * The returned document is immutable.      *      * @param<T> the document type      * @param collection the collection      * @param key the key      * @param maxCacheAge the maximum age of the cached document (in ms)      * @return the document, or null if not found      */
 annotation|@
 name|CheckForNull
 argument_list|<
@@ -119,7 +119,7 @@ name|int
 name|maxCacheAge
 parameter_list|)
 function_decl|;
-comment|/**      * Get a list of documents where the key is greater than a start value and      * less than an end value, sorted by the key.      *<p>      * The returned documents are immutable.      *       * @param<T> the document type      * @param collection the collection      * @param fromKey the start value (excluding)      * @param toKey the end value (excluding)      * @param limit the maximum number of entries to return (starting with the lowest key)      * @return the list (possibly empty)      */
+comment|/**      * Get a list of documents where the key is greater than a start value and      * less than an end value, sorted by the key.      *<p>      * The returned documents are immutable.      *      * @param<T> the document type      * @param collection the collection      * @param fromKey the start value (excluding)      * @param toKey the end value (excluding)      * @param limit the maximum number of entries to return (starting with the lowest key)      * @return the list (possibly empty)      */
 annotation|@
 name|Nonnull
 argument_list|<
@@ -149,7 +149,7 @@ name|int
 name|limit
 parameter_list|)
 function_decl|;
-comment|/**      * Get a list of documents where the key is greater than a start value and      * less than an end value. The returned documents are immutable.      *       * @param<T> the document type      * @param collection the collection      * @param fromKey the start value (excluding)      * @param toKey the end value (excluding)      * @param indexedProperty the name of the indexed property (optional)      * @param startValue the minimum value of the indexed property      * @param limit the maximum number of entries to return      * @return the list (possibly empty)      */
+comment|/**      * Get a list of documents where the key is greater than a start value and      * less than an end value. The returned documents are immutable.      *      * @param<T> the document type      * @param collection the collection      * @param fromKey the start value (excluding)      * @param toKey the end value (excluding)      * @param indexedProperty the name of the indexed property (optional)      * @param startValue the minimum value of the indexed property      * @param limit the maximum number of entries to return      * @return the list (possibly empty)      */
 annotation|@
 name|Nonnull
 argument_list|<
@@ -204,7 +204,7 @@ name|String
 name|key
 parameter_list|)
 function_decl|;
-comment|/**      * Try to create a list of documents.      *       * @param<T> the document type      * @param collection the collection      * @param updateOps the list of documents to add      * @return true if this worked (if none of the documents already existed)      */
+comment|/**      * Try to create a list of documents.      *      * @param<T> the document type      * @param collection the collection      * @param updateOps the list of documents to add      * @return true if this worked (if none of the documents already existed)      */
 parameter_list|<
 name|T
 extends|extends
@@ -302,7 +302,7 @@ name|void
 name|invalidateCache
 parameter_list|()
 function_decl|;
-comment|/**      * Invalidate the document cache for the given key.      *       * @param<T> the document type      * @param collection the collection      * @param key the key      */
+comment|/**      * Invalidate the document cache for the given key.      *      * @param<T> the document type      * @param collection the collection      * @param key the key      */
 parameter_list|<
 name|T
 extends|extends
@@ -347,7 +347,7 @@ name|String
 name|key
 parameter_list|)
 function_decl|;
-comment|/**      * Set the level of guarantee for read and write operations, if supported by this backend.      *       * @param readWriteMode the read/write mode      */
+comment|/**      * Set the level of guarantee for read and write operations, if supported by this backend.      *      * @param readWriteMode the read/write mode      */
 name|void
 name|setReadWriteMode
 parameter_list|(

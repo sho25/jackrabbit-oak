@@ -36,7 +36,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * convenience orderable object that represents a tuple of values and paths  *   * where the values are the indexed keys from the index and the paths are the path which hold the  * key  */
+comment|/**  * convenience orderable object that represents a tuple of values and paths  *  * where the values are the indexed keys from the index and the paths are the path which hold the  * key  */
 end_comment
 
 begin_class
@@ -68,7 +68,7 @@ argument_list|<
 name|ValuePathTuple
 argument_list|>
 block|{
-comment|/**           * the value for comparison           */
+comment|/**          * the value for comparison          */
 specifier|private
 name|String
 name|value
@@ -167,7 +167,7 @@ argument_list|<
 name|ValuePathTuple
 argument_list|>
 block|{
-comment|/**           * the value for comparison           */
+comment|/**          * the value for comparison          */
 specifier|private
 name|String
 name|value

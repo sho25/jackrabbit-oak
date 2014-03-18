@@ -362,7 +362,7 @@ name|ORDERED_PROPERTY
 init|=
 literal|"foo"
 decl_stmt|;
-comment|/**      * number of nodes to create for testing.      *       * It has been found during development that in some cases the order of the nodes creation      * within the persistence where the actual expected order.      *       * The higher the value the lower the chance for this to happen.      */
+comment|/**      * number of nodes to create for testing.      *      * It has been found during development that in some cases the order of the nodes creation      * within the persistence where the actual expected order.      *      * The higher the value the lower the chance for this to happen.      */
 specifier|protected
 specifier|static
 specifier|final
@@ -384,7 +384,7 @@ argument_list|(
 literal|"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
 argument_list|)
 decl_stmt|;
-comment|/**      * generate a list of values to be used as ordered set. Will return something like      * {@code value000, value001, value002, ...}      *       *       * @param amount      * @param direction the direction of the sorting      * @return a list of {@code amount} values ordered as specified by {@code direction}      */
+comment|/**      * generate a list of values to be used as ordered set. Will return something like      * {@code value000, value001, value002, ...}      *      *      * @param amount      * @param direction the direction of the sorting      * @return a list of {@code amount} values ordered as specified by {@code direction}      */
 specifier|protected
 specifier|static
 name|List
@@ -539,7 +539,7 @@ return|return
 name|values
 return|;
 block|}
-comment|/**      * as {@code generateOrderedValues(int, OrderDirection)} by forcing OrderDirection.ASC      *       * @param amount      * @return      */
+comment|/**      * as {@code generateOrderedValues(int, OrderDirection)} by forcing OrderDirection.ASC      *      * @param amount      * @return      */
 specifier|protected
 specifier|static
 name|List
@@ -642,7 +642,7 @@ name|createContentRepository
 argument_list|()
 return|;
 block|}
-comment|/**      * convenience method that adds a bunch of nodes in random order and return the order in which      * they should be presented by the OrderedIndex      *       * @param values the values of the property that will be indexed      * @param father the father under which add the nodes      * @param direction the direction of the items to be added.      * @return      */
+comment|/**      * convenience method that adds a bunch of nodes in random order and return the order in which      * they should be presented by the OrderedIndex      *      * @param values the values of the property that will be indexed      * @param father the father under which add the nodes      * @param direction the direction of the items to be added.      * @return      */
 annotation|@
 name|SuppressWarnings
 argument_list|(
@@ -808,7 +808,7 @@ return|return
 name|nodes
 return|;
 block|}
-comment|/**      * assert the right order of the returned resultset      *       * @param orderedSequence the right order in which the resultset should be returned      * @param resultset the resultset      */
+comment|/**      * assert the right order of the returned resultset      *      * @param orderedSequence the right order in which the resultset should be returned      * @param resultset the resultset      */
 specifier|protected
 name|void
 name|assertRightOrder
@@ -904,7 +904,7 @@ operator|++
 expr_stmt|;
 block|}
 block|}
-comment|/**      * convenience method for generating a list of ordered dates as string in ISO      * 8601:2000-compliant format.      *       * {@link http ://www.day.com/specs/jcr/2.0/3_Repository_Model.html#3.6.4.3%20From%20DATE%20To}.      *       * it will add or remove depending of the {@code direction} provided, 12hrs for every entry to      * be generated.      *       *       * @param amount      * @param direction the direction of the sorting. If null the {@code OrderDirection.ASC} will be      *            used      * @param start the date from which to start from in the generation      * @return a list of {@code amount} values ordered as specified by {@code direction}      */
+comment|/**      * convenience method for generating a list of ordered dates as string in ISO      * 8601:2000-compliant format.      *      * {@link http ://www.day.com/specs/jcr/2.0/3_Repository_Model.html#3.6.4.3%20From%20DATE%20To}.      *      * it will add or remove depending of the {@code direction} provided, 12hrs for every entry to      * be generated.      *      *      * @param amount      * @param direction the direction of the sorting. If null the {@code OrderDirection.ASC} will be      *            used      * @param start the date from which to start from in the generation      * @return a list of {@code amount} values ordered as specified by {@code direction}      */
 specifier|protected
 specifier|static
 name|List
@@ -1032,7 +1032,7 @@ return|return
 name|values
 return|;
 block|}
-comment|/**      * create a child node for the provided father      *       * @param father      * @param name the name of the node to create      * @param propName the name of the property to assign      * @param propValue the value of the property to assign      * @param type the type of the property      * @return the just added child      */
+comment|/**      * create a child node for the provided father      *      * @param father      * @param name the name of the node to create      * @param propName the name of the property to assign      * @param propValue the value of the property to assign      * @param type the type of the property      * @return the just added child      */
 annotation|@
 name|SuppressWarnings
 argument_list|(
@@ -1146,7 +1146,7 @@ return|return
 name|c
 return|;
 block|}
-comment|/**      * convenience method that adds a bunch of nodes in random order and return the order in which      * they should be presented by the OrderedIndex      *       * @param values the values of the property that will be indexed      * @param father the father under which add the nodes      * @return      */
+comment|/**      * convenience method that adds a bunch of nodes in random order and return the order in which      * they should be presented by the OrderedIndex      *      * @param values the values of the property that will be indexed      * @param father the father under which add the nodes      * @return      */
 annotation|@
 name|SuppressWarnings
 argument_list|(

@@ -223,7 +223,7 @@ name|context
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Marks the collision in the document store. Either our or their      * revision is annotated with a collision marker. Their revision is      * marked if it is not yet committed, otherwise our revision is marked.      *       * @param store the document store.      * @return the revision that was marked. Either our or their.      * @throws MicroKernelException if the mark operation fails.      */
+comment|/**      * Marks the collision in the document store. Either our or their      * revision is annotated with a collision marker. Their revision is      * marked if it is not yet committed, otherwise our revision is marked.      *      * @param store the document store.      * @return the revision that was marked. Either our or their.      * @throws MicroKernelException if the mark operation fails.      */
 annotation|@
 name|Nonnull
 name|Revision
@@ -322,7 +322,7 @@ return|return
 name|ourRev
 return|;
 block|}
-comment|/**      * Marks the commit root of the change to the given<code>document</code> in      *<code>revision</code>.      *       * @param document the document.      * @param revision the revision of the commit to annotated with a collision      *            marker.      * @param store the document store.      * @return<code>true</code> if the commit for the given revision was marked      *         successfully;<code>false</code> otherwise.      */
+comment|/**      * Marks the commit root of the change to the given<code>document</code> in      *<code>revision</code>.      *      * @param document the document.      * @param revision the revision of the commit to annotated with a collision      *            marker.      * @param store the document store.      * @return<code>true</code> if the commit for the given revision was marked      *         successfully;<code>false</code> otherwise.      */
 specifier|private
 specifier|static
 name|boolean

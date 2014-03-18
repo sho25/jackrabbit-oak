@@ -110,7 +110,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *<code>MergeSortedIterators</code> is a specialized implementation of a  * merge sort of already sorted iterators of some type of comparable elements.  * The input iterators must return the elements in sorted order according to  * the provided Comparator. In addition the sequence of iterators must also  * be sorted in a way that the first element of the next iterator is greater  * than the first element of the previous iterator.  *   * @param<T> the entry type  */
+comment|/**  *<code>MergeSortedIterators</code> is a specialized implementation of a  * merge sort of already sorted iterators of some type of comparable elements.  * The input iterators must return the elements in sorted order according to  * the provided Comparator. In addition the sequence of iterators must also  * be sorted in a way that the first element of the next iterator is greater  * than the first element of the previous iterator.  *  * @param<T> the entry type  */
 end_comment
 
 begin_class

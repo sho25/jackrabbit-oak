@@ -136,7 +136,7 @@ specifier|public
 class|class
 name|UpdateUtils
 block|{
-comment|/**      * Apply the changes to the in-memory document.      *       * @param doc      *            the target document.      * @param update      *            the changes to apply.      * @param comparator      *            the revision comparator.      */
+comment|/**      * Apply the changes to the in-memory document.      *      * @param doc      *            the target document.      * @param update      *            the changes to apply.      * @param comparator      *            the revision comparator.      */
 specifier|public
 specifier|static
 name|void

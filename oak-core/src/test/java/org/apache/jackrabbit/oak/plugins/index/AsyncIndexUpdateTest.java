@@ -444,7 +444,7 @@ return|return
 name|c
 return|;
 block|}
-comment|/**      * Async Index Test      *<ul>      *<li>Add an index definition</li>      *<li>Add some content</li>      *<li>Search& verify</li>      *</ul>      *       */
+comment|/**      * Async Index Test      *<ul>      *<li>Add an index definition</li>      *<li>Add some content</li>      *<li>Search& verify</li>      *</ul>      *      */
 annotation|@
 name|Test
 specifier|public
@@ -623,7 +623,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Async Index Test with 2 index defs at the same location      *<ul>      *<li>Add an index definition</li>      *<li>Add some content</li>      *<li>Search& verify</li>      *</ul>      *       */
+comment|/**      * Async Index Test with 2 index defs at the same location      *<ul>      *<li>Add an index definition</li>      *<li>Add some content</li>      *<li>Search& verify</li>      *</ul>      *      */
 annotation|@
 name|Test
 specifier|public
@@ -940,7 +940,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Async Index Test with 2 index defs at different tree locations      *<ul>      *<li>Add an index definition</li>      *<li>Add some content</li>      *<li>Search& verify</li>      *</ul>      *       */
+comment|/**      * Async Index Test with 2 index defs at different tree locations      *<ul>      *<li>Add an index definition</li>      *<li>Add some content</li>      *<li>Search& verify</li>      *</ul>      *      */
 annotation|@
 name|Test
 specifier|public

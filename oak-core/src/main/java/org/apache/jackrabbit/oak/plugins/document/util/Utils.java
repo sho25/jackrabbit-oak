@@ -313,7 +313,7 @@ argument_list|(
 literal|"UTF-8"
 argument_list|)
 decl_stmt|;
-comment|/**      * Make sure the name string does not contain unnecessary baggage (shared      * strings).      *<p>      * This is only needed for older versions of Java (before Java 7 update 6).      * See also      * http://mail.openjdk.java.net/pipermail/core-libs-dev/2012-May/010257.html      *       * @param x the string      * @return the new string      */
+comment|/**      * Make sure the name string does not contain unnecessary baggage (shared      * strings).      *<p>      * This is only needed for older versions of Java (before Java 7 update 6).      * See also      * http://mail.openjdk.java.net/pipermail/core-libs-dev/2012-May/010257.html      *      * @param x the string      * @return the new string      */
 specifier|public
 specifier|static
 name|String
@@ -697,7 +697,7 @@ return|return
 name|size
 return|;
 block|}
-comment|/**      * Generate a unique cluster id, similar to the machine id field in MongoDB ObjectId objects.      *       * @return the unique machine id      */
+comment|/**      * Generate a unique cluster id, similar to the machine id field in MongoDB ObjectId objects.      *      * @return the unique machine id      */
 specifier|public
 specifier|static
 name|int
@@ -1539,7 +1539,7 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/**      * Deep copy of a map that may contain map values.      *       * @param source the source map      * @param target the target map      * @param<K> the type of the map key      */
+comment|/**      * Deep copy of a map that may contain map values.      *      * @param source the source map      * @param target the target map      * @param<K> the type of the map key      */
 specifier|public
 specifier|static
 parameter_list|<

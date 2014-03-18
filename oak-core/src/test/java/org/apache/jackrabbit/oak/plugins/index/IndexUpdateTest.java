@@ -519,7 +519,7 @@ operator|.
 name|builder
 argument_list|()
 decl_stmt|;
-comment|/**      * Simple Test      *<ul>      *<li>Add an index definition</li>      *<li>Add some content</li>      *<li>Search& verify</li>      *</ul>      *       */
+comment|/**      * Simple Test      *<ul>      *<li>Add an index definition</li>      *<li>Add some content</li>      *<li>Search& verify</li>      *</ul>      *      */
 annotation|@
 name|Test
 specifier|public
