@@ -911,11 +911,11 @@ name|int
 name|hasBinary
 parameter_list|()
 block|{
-name|Integer
+name|Number
 name|flag
 init|=
 operator|(
-name|Integer
+name|Number
 operator|)
 name|get
 argument_list|(
