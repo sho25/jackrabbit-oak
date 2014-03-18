@@ -422,7 +422,6 @@ init|=
 literal|2
 decl_stmt|;
 comment|/**      * The maximum cost when the index can be used.      */
-specifier|private
 specifier|static
 specifier|final
 name|int
@@ -716,7 +715,6 @@ block|}
 comment|/**      * Get the node with the index definition for the given property, if there      * is an applicable index with data.      *       * @param propertyName the property name      * @param filter the filter (which contains information of all supertypes,      *            unless the filter matches all types)      * @return the node where the index definition (metadata) is stored (the      *         parent of ":index"), or null if no index definition or index data      *         node was found      */
 annotation|@
 name|Nullable
-specifier|private
 name|NodeState
 name|getIndexNode
 parameter_list|(

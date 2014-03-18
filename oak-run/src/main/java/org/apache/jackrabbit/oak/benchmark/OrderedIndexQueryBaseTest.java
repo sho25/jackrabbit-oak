@@ -296,6 +296,16 @@ name|String
 name|getQuery
 parameter_list|()
 function_decl|;
+annotation|@
+name|Override
+name|boolean
+name|isBatchSaving
+parameter_list|()
+block|{
+return|return
+literal|true
+return|;
+block|}
 block|}
 end_class
 

@@ -886,10 +886,6 @@ name|OrderedIndexInsertNoIndexTest
 argument_list|()
 block|,
 operator|new
-name|OrderByQueryTest
-argument_list|()
-block|,
-operator|new
 name|LoginTest
 argument_list|()
 block|,

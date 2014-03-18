@@ -109,7 +109,7 @@ name|index
 operator|.
 name|property
 operator|.
-name|OrderedPropertyIndexEditorProvider
+name|OrderedIndex
 import|;
 end_import
 
@@ -221,6 +221,14 @@ name|INDEXED_PROPERTY
 init|=
 literal|"indexedProperty"
 decl_stmt|;
+comment|/**      * size of the batch for saving      */
+specifier|static
+specifier|final
+name|int
+name|BATCH_SAVING_SIZE
+init|=
+literal|1024
+decl_stmt|;
 comment|/**     * node name below which creating the test data     */
 specifier|final
 name|String
@@ -244,6 +252,7 @@ comment|/**     * node under which all the test data will be filled in     */
 name|Node
 name|dump
 decl_stmt|;
+comment|/**      * insert a {@code numberOfNode} random nodes in the repository      *       * @param numberOfNodes      */
 name|void
 name|insertRandomNodes
 parameter_list|(
@@ -295,6 +304,44 @@ argument_list|,
 name|uuid
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|isBatchSaving
+argument_list|()
+condition|)
+block|{
+if|if
+condition|(
+name|i
+operator|%
+name|BATCH_SAVING_SIZE
+operator|==
+literal|0
+condition|)
+block|{
+name|session
+operator|.
+name|save
+argument_list|()
+expr_stmt|;
+block|}
+block|}
+else|else
+block|{
+name|session
+operator|.
+name|save
+argument_list|()
+expr_stmt|;
+block|}
+block|}
+if|if
+condition|(
+name|isBatchSaving
+argument_list|()
+condition|)
+block|{
+comment|// an extra save to catch any pending operations.
 name|session
 operator|.
 name|save
@@ -434,7 +481,7 @@ name|create
 argument_list|(
 name|session
 argument_list|,
-name|OrderedPropertyIndexEditorProvider
+name|OrderedIndex
 operator|.
 name|TYPE
 argument_list|)
@@ -457,7 +504,7 @@ block|}
 if|if
 condition|(
 operator|!
-name|OrderedPropertyIndexEditorProvider
+name|OrderedIndex
 operator|.
 name|TYPE
 operator|.
@@ -492,6 +539,15 @@ argument_list|()
 expr_stmt|;
 return|return
 name|index
+return|;
+block|}
+comment|/**      *       * @return true if you want batch saving during {@code insertRandomNodes} by      *         {@code BATCH_SAVE_SIZE}      */
+name|boolean
+name|isBatchSaving
+parameter_list|()
+block|{
+return|return
+literal|false
 return|;
 block|}
 block|}
