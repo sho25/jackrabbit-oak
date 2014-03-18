@@ -1857,9 +1857,19 @@ argument_list|(
 name|builder
 argument_list|)
 expr_stmt|;
+name|NodeState
+name|root
+init|=
+name|builder
+operator|.
+name|getNodeState
+argument_list|()
+decl_stmt|;
 name|copyVersionStore
 argument_list|(
 name|builder
+argument_list|,
+name|root
 argument_list|,
 name|uriToPrefix
 argument_list|,
@@ -1869,6 +1879,8 @@ expr_stmt|;
 name|copyWorkspaces
 argument_list|(
 name|builder
+argument_list|,
+name|root
 argument_list|,
 name|uriToPrefix
 argument_list|,
@@ -3666,6 +3678,9 @@ name|void
 name|copyVersionStore
 parameter_list|(
 name|NodeBuilder
+name|builder
+parameter_list|,
+name|NodeState
 name|root
 parameter_list|,
 name|Map
@@ -3710,7 +3725,7 @@ decl_stmt|;
 name|NodeBuilder
 name|system
 init|=
-name|root
+name|builder
 operator|.
 name|child
 argument_list|(
@@ -3727,6 +3742,8 @@ operator|new
 name|JackrabbitNodeState
 argument_list|(
 name|pm
+argument_list|,
+name|root
 argument_list|,
 name|uriToPrefix
 argument_list|,
@@ -3747,6 +3764,8 @@ name|JackrabbitNodeState
 argument_list|(
 name|pm
 argument_list|,
+name|root
+argument_list|,
 name|uriToPrefix
 argument_list|,
 name|ACTIVITIES_NODE_ID
@@ -3761,6 +3780,9 @@ name|void
 name|copyWorkspaces
 parameter_list|(
 name|NodeBuilder
+name|builder
+parameter_list|,
+name|NodeState
 name|root
 parameter_list|,
 name|Map
@@ -3829,6 +3851,8 @@ name|JackrabbitNodeState
 argument_list|(
 name|pm
 argument_list|,
+name|root
+argument_list|,
 name|uriToPrefix
 argument_list|,
 name|ROOT_NODE_ID
@@ -3847,7 +3871,7 @@ name|getProperties
 argument_list|()
 control|)
 block|{
-name|root
+name|builder
 operator|.
 name|setProperty
 argument_list|(
@@ -3885,7 +3909,7 @@ name|childName
 argument_list|)
 condition|)
 block|{
-name|root
+name|builder
 operator|.
 name|setChildNode
 argument_list|(
