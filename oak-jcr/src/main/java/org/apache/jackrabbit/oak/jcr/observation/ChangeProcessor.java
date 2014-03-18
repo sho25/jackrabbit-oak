@@ -1115,7 +1115,7 @@ argument_list|(
 name|runningMonitor
 argument_list|)
 decl_stmt|;
-comment|/**      * Try to stop this change processor if running. This method will wait      * the specified time for a pending event listener to complete. If      * no timeout occurred no further events will be delivered after this      * method returns.      *      * @param timeOut time this method will wait for an executing event      *                listener to complete.      * @param unit    time unit for {@code timeOut}      * @return {@code true} if no time out occurred and this change processor      *         could be stopped, {@code false} otherwise.      * @throws IllegalStateException if not yet started or stopped already      */
+comment|/**      * Try to stop this change processor if running. This method will wait      * the specified time for a pending event listener to complete. If      * no timeout occurred no further events will be delivered after this      * method returns.      *<p>      * Does nothing if stopped already.      *      * @param timeOut time this method will wait for an executing event      *                listener to complete.      * @param unit    time unit for {@code timeOut}      * @return {@code true} if no time out occurred and this change processor      *         could be stopped, {@code false} otherwise.      * @throws IllegalStateException if not yet started      */
 specifier|public
 specifier|synchronized
 name|boolean
@@ -1137,11 +1137,14 @@ argument_list|,
 literal|"Change processor not started"
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
 name|running
 operator|.
 name|stop
 argument_list|()
-expr_stmt|;
+condition|)
+block|{
 if|if
 condition|(
 name|runningMonitor
@@ -1170,8 +1173,17 @@ return|;
 block|}
 else|else
 block|{
+comment|// Timed out
 return|return
 literal|false
+return|;
+block|}
+block|}
+else|else
+block|{
+comment|// Stopped already
+return|return
+literal|true
 return|;
 block|}
 block|}
@@ -1191,11 +1203,14 @@ argument_list|,
 literal|"Change processor not started"
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
 name|running
 operator|.
 name|stop
 argument_list|()
-expr_stmt|;
+condition|)
+block|{
 name|registration
 operator|.
 name|unregister
@@ -1206,6 +1221,7 @@ operator|.
 name|leave
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 annotation|@
 name|Override
@@ -1554,23 +1570,25 @@ operator|!
 name|stopped
 return|;
 block|}
+comment|/**          * @return  {@code true} if this call set this guard to stopped,          *          {@code false} if another call set this guard to stopped before.          */
 specifier|public
-name|void
+name|boolean
 name|stop
 parameter_list|()
 block|{
-name|checkState
-argument_list|(
-operator|!
+name|boolean
+name|wasStopped
+init|=
 name|stopped
-argument_list|,
-literal|"Change processor already stopped"
-argument_list|)
-expr_stmt|;
+decl_stmt|;
 name|stopped
 operator|=
 literal|true
 expr_stmt|;
+return|return
+operator|!
+name|wasStopped
+return|;
 block|}
 block|}
 block|}
