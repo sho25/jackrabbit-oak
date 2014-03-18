@@ -133,20 +133,6 @@ name|google
 operator|.
 name|common
 operator|.
-name|base
-operator|.
-name|Preconditions
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
 name|collect
 operator|.
 name|Iterators
@@ -308,6 +294,22 @@ operator|.
 name|blob
 operator|.
 name|GarbageCollectableBlobStore
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkNotNull
 import|;
 end_import
 
@@ -608,6 +610,11 @@ literal|true
 decl_stmt|;
 try|try
 block|{
+name|checkNotNull
+argument_list|(
+name|stream
+argument_list|)
+expr_stmt|;
 name|String
 name|id
 init|=
@@ -760,6 +767,13 @@ name|IOException
 block|{
 try|try
 block|{
+name|checkNotNull
+argument_list|(
+name|blobId
+argument_list|,
+literal|"BlobId must be specified"
+argument_list|)
+expr_stmt|;
 return|return
 name|getDataRecord
 argument_list|(
@@ -1217,8 +1231,7 @@ name|blobId
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Preconditions
-operator|.
+block|}
 name|checkNotNull
 argument_list|(
 name|id
@@ -1228,7 +1241,6 @@ argument_list|,
 name|blobId
 argument_list|)
 expr_stmt|;
-block|}
 return|return
 name|id
 return|;

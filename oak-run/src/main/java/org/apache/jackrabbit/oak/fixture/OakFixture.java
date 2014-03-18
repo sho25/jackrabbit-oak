@@ -956,13 +956,6 @@ operator|.
 name|newInstance
 argument_list|()
 decl_stmt|;
-name|ds
-operator|.
-name|init
-argument_list|(
-literal|null
-argument_list|)
-expr_stmt|;
 name|PropertiesUtil
 operator|.
 name|populate
@@ -973,6 +966,13 @@ name|getConfig
 argument_list|()
 argument_list|,
 literal|false
+argument_list|)
+expr_stmt|;
+name|ds
+operator|.
+name|init
+argument_list|(
+literal|null
 argument_list|)
 expr_stmt|;
 name|blobStore
