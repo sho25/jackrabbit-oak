@@ -678,9 +678,9 @@ name|forJdbcUrl
 argument_list|(
 name|jdbcurl
 argument_list|,
-literal|"sa"
+name|username
 argument_list|,
-literal|""
+name|password
 argument_list|)
 decl_stmt|;
 name|initialize
