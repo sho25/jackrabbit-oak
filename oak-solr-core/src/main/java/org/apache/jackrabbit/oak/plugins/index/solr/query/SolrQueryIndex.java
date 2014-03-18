@@ -1764,7 +1764,7 @@ name|list
 control|)
 block|{
 name|String
-name|orTerm
+name|andTerm
 init|=
 name|getFullTextQuery
 argument_list|(
@@ -1775,12 +1775,12 @@ name|fullTextString
 operator|.
 name|append
 argument_list|(
-name|orTerm
+name|andTerm
 argument_list|)
 operator|.
 name|append
 argument_list|(
-literal|" OR "
+literal|" AND "
 argument_list|)
 expr_stmt|;
 block|}
