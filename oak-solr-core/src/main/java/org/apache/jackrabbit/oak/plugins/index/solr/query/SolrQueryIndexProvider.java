@@ -473,7 +473,7 @@ operator|.
 name|getSolrServer
 argument_list|()
 decl_stmt|;
-comment|// the query engine should be returned only if the serve is alive, otherwise other indexes should be used
+comment|// the query engine should be returned only if the server is alive, otherwise other indexes should be used
 if|if
 condition|(
 name|solrServer
