@@ -521,6 +521,30 @@ name|DEFAULT_BATCH_COUNT
 init|=
 literal|2048
 decl_stmt|;
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|NOT_RUNNING
+init|=
+literal|"NotRunning"
+decl_stmt|;
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|MARKING
+init|=
+literal|"Running-Marking"
+decl_stmt|;
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|SWEEPING
+init|=
+literal|"Running-Sweeping"
+decl_stmt|;
 comment|/** The max last modified time of blobs to consider for garbage collection. */
 specifier|private
 name|long
@@ -563,6 +587,28 @@ name|int
 name|batchCount
 init|=
 name|DEFAULT_BATCH_COUNT
+decl_stmt|;
+comment|/** Flag to indicate whether to run in a debug mode **/
+specifier|private
+name|boolean
+name|debugMode
+init|=
+name|Boolean
+operator|.
+name|getBoolean
+argument_list|(
+literal|"debugModeGC"
+argument_list|)
+operator||
+name|LOG
+operator|.
+name|isDebugEnabled
+argument_list|()
+decl_stmt|;
+comment|/** Flag to indicate the state of the gc **/
+specifier|private
+name|String
+name|state
 decl_stmt|;
 comment|/**      * Gets the max last modified time considered for garbage collection.      *       * @return the max last modified time      */
 specifier|protected
@@ -628,6 +674,16 @@ parameter_list|()
 block|{
 return|return
 name|numSweepers
+return|;
+block|}
+comment|/**      * Gets the state of the gc process.      *       * @return the state      */
+specifier|protected
+name|String
+name|getState
+parameter_list|()
+block|{
+return|return
+name|state
 return|;
 block|}
 comment|/**      * @param nodeStore the node store      * @param root the root      * @param batchCount the batch count      * @param runBackendConcurrently - run the backend iterate concurrently      * @param maxSweeperThreads the max sweeper threads      * @param maxLastModifiedTime the max last modified time      * @throws IOException Signals that an I/O exception has occurred.      */
@@ -788,6 +844,10 @@ operator|.
 name|complete
 argument_list|()
 expr_stmt|;
+name|state
+operator|=
+name|NOT_RUNNING
+expr_stmt|;
 block|}
 block|}
 comment|/**      * Mark phase of the GC.      *       * @throws Exception      *             the exception      */
@@ -798,6 +858,10 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+name|state
+operator|=
+name|MARKING
+expr_stmt|;
 name|LOG
 operator|.
 name|debug
@@ -1075,6 +1139,10 @@ parameter_list|()
 throws|throws
 name|IOException
 block|{
+name|state
+operator|=
+name|SWEEPING
+expr_stmt|;
 name|LOG
 operator|.
 name|debug
@@ -1700,6 +1768,24 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
+name|debugMode
+condition|)
+block|{
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"BlobId : "
+operator|+
+name|blob
+operator|.
+name|toString
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+if|if
+condition|(
 name|blob
 operator|.
 name|toString
@@ -1743,16 +1829,36 @@ name|hasNext
 argument_list|()
 condition|)
 block|{
-name|referencedBlobs
-operator|.
-name|add
-argument_list|(
+name|String
+name|id
+init|=
 name|idIter
 operator|.
 name|next
 argument_list|()
+decl_stmt|;
+name|referencedBlobs
+operator|.
+name|add
+argument_list|(
+name|id
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|debugMode
+condition|)
+block|{
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"chunkId : "
+operator|+
+name|id
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 block|}
 if|if

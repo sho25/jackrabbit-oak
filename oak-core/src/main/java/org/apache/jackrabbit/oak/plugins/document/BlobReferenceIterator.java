@@ -421,7 +421,15 @@ name|NODES
 argument_list|,
 name|fromKey
 argument_list|,
-literal|"999999"
+literal|";"
+argument_list|,
+name|NodeDocument
+operator|.
+name|HAS_BINARY_FLAG
+argument_list|,
+name|NodeDocument
+operator|.
+name|HAS_BINARY_VAL
 argument_list|,
 name|BATCH_SIZE
 argument_list|)
