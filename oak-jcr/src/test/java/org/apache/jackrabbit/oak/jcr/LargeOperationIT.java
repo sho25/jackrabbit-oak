@@ -1887,7 +1887,7 @@ name|knownIssue
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Assert adding many siblings scales linearly with the number of added siblings.      * @throws RepositoryException      * @throws InterruptedException      */
+comment|/**      * Assert adding siblings scales linearly with the number of already existing siblings.      * @throws RepositoryException      * @throws InterruptedException      */
 annotation|@
 name|Test
 specifier|public
@@ -1954,6 +1954,9 @@ parameter_list|)
 throws|throws
 name|RepositoryException
 block|{
+name|Node
+name|s
+init|=
 name|n
 operator|.
 name|addNode
@@ -1962,7 +1965,32 @@ literal|"s"
 operator|+
 name|scale
 argument_list|)
+decl_stmt|;
+for|for
+control|(
+name|int
+name|k
+init|=
+literal|0
+init|;
+name|k
+operator|<
+name|scale
+condition|;
+name|k
+operator|++
+control|)
+block|{
+name|s
+operator|.
+name|addNode
+argument_list|(
+literal|"s"
+operator|+
+name|k
+argument_list|)
 expr_stmt|;
+block|}
 block|}
 annotation|@
 name|Override
@@ -1996,7 +2024,7 @@ literal|0
 init|;
 name|k
 operator|<
-name|scale
+literal|100
 condition|;
 name|k
 operator|++
@@ -2006,7 +2034,7 @@ name|s
 operator|.
 name|addNode
 argument_list|(
-literal|"s"
+literal|"t"
 operator|+
 name|k
 argument_list|)
@@ -2039,7 +2067,7 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Adding {} siblings took {} ns/node"
+literal|"Adding 100 siblings next to {} siblings took {} ns/node"
 argument_list|,
 name|scale
 argument_list|,
@@ -2047,19 +2075,6 @@ name|t
 argument_list|)
 expr_stmt|;
 block|}
-name|boolean
-name|knownIssue
-init|=
-name|fixture
-operator|.
-name|getClass
-argument_list|()
-operator|==
-name|DocumentFixture
-operator|.
-name|class
-decl_stmt|;
-comment|// FIXME OAK-1416
 name|assertOnLgn
 argument_list|(
 literal|"many siblings"
@@ -2068,7 +2083,7 @@ name|scales
 argument_list|,
 name|executionTimes
 argument_list|,
-name|knownIssue
+literal|false
 argument_list|)
 expr_stmt|;
 block|}
@@ -2241,7 +2256,7 @@ block|}
 block|}
 name|assertOnLgn
 argument_list|(
-literal|"large number of pending moves"
+literal|"large number of pending events"
 argument_list|,
 name|scales
 argument_list|,
