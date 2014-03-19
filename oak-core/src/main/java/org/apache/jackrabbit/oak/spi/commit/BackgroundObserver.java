@@ -426,9 +426,6 @@ name|poll
 argument_list|()
 expr_stmt|;
 block|}
-name|queueEmpty
-argument_list|()
-expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
@@ -637,23 +634,15 @@ literal|1000
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Called whenever the queue is 90% full.      */
+comment|/**      * Called when ever an item has been added to the queue      * @param queueSize  size of the queue      */
 specifier|protected
 name|void
-name|queueNearlyFull
-parameter_list|()
-block|{}
-comment|/**      * Called whenever the queue has been emptied.      */
-specifier|protected
-name|void
-name|queueEmpty
-parameter_list|()
-block|{
-name|warnOnFullQueue
-operator|=
-literal|true
-expr_stmt|;
-block|}
+name|added
+parameter_list|(
+name|int
+name|queueSize
+parameter_list|)
+block|{ }
 comment|/**      * Clears the change queue and signals the background thread to stop      * without making any further {@link #contentChanged(NodeState, CommitInfo)}      * calls to the background observer. If the thread is currently in the      * middle of such a call, then that call is allowed to complete; i.e.      * the thread is not forcibly interrupted. This method returns immediately      * without blocking to wait for the thread to finish.      *<p>      * After a call to this method further calls to {@link #contentChanged(NodeState, CommitInfo)}      * will throw a {@code IllegalStateException}.      */
 annotation|@
 name|Override
@@ -823,22 +812,6 @@ operator|=
 name|change
 expr_stmt|;
 block|}
-if|if
-condition|(
-literal|10
-operator|*
-name|queue
-operator|.
-name|remainingCapacity
-argument_list|()
-operator|<
-name|queueLength
-condition|)
-block|{
-name|queueNearlyFull
-argument_list|()
-expr_stmt|;
-block|}
 comment|// Set the completion handler on the currently running task. Multiple calls
 comment|// to onComplete are not a problem here since we always pass the same value.
 comment|// Thus there is no question as to which of the handlers will effectively run.
@@ -847,6 +820,14 @@ operator|.
 name|onComplete
 argument_list|(
 name|completionHandler
+argument_list|)
+expr_stmt|;
+name|added
+argument_list|(
+name|queue
+operator|.
+name|size
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
