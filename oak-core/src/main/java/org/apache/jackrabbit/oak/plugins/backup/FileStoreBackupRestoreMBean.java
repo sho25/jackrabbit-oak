@@ -66,6 +66,16 @@ name|String
 name|getRestoreStatus
 parameter_list|()
 function_decl|;
+comment|/**      * Creates a new checkpoint of the latest root of the tree. The checkpoint      * remains valid for at least as long as requested and allows that state      * of the repository to be retrieved using the returned opaque string      * reference.      *      * @param lifetime time (in milliseconds,&gt; 0) that the checkpoint      *                 should remain available      * @return string reference of this checkpoint      */
+annotation|@
+name|Nonnull
+name|String
+name|checkpoint
+parameter_list|(
+name|long
+name|lifetime
+parameter_list|)
+function_decl|;
 block|}
 end_interface
 

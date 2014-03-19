@@ -690,6 +690,25 @@ operator|+
 literal|" minutes"
 return|;
 block|}
+annotation|@
+name|Override
+specifier|public
+name|String
+name|checkpoint
+parameter_list|(
+name|long
+name|lifetime
+parameter_list|)
+block|{
+return|return
+name|store
+operator|.
+name|checkpoint
+argument_list|(
+name|lifetime
+argument_list|)
+return|;
+block|}
 block|}
 end_class
 
