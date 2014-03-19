@@ -517,26 +517,6 @@ name|oak
 operator|.
 name|plugins
 operator|.
-name|document
-operator|.
-name|DocumentMK
-operator|.
-name|MANY_CHILDREN_THRESHOLD
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|plugins
-operator|.
 name|memory
 operator|.
 name|EmptyNodeState
@@ -1365,18 +1345,9 @@ return|return
 literal|true
 return|;
 block|}
-elseif|else
-if|if
-condition|(
-name|getChildNodeCount
-argument_list|(
-name|MANY_CHILDREN_THRESHOLD
-argument_list|)
-operator|>
-name|MANY_CHILDREN_THRESHOLD
-condition|)
+else|else
 block|{
-comment|// use DocumentNodeStore compare when there are many children
+comment|// use DocumentNodeStore compare
 return|return
 name|dispatch
 argument_list|(
