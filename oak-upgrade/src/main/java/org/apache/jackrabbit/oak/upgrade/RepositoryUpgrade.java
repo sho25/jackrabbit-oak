@@ -1887,6 +1887,13 @@ argument_list|,
 name|idxToPrefix
 argument_list|)
 expr_stmt|;
+name|logger
+operator|.
+name|info
+argument_list|(
+literal|"Applying default commit hooks"
+argument_list|)
+expr_stmt|;
 name|String
 name|groupsPath
 decl_stmt|;
@@ -3749,6 +3756,8 @@ name|uriToPrefix
 argument_list|,
 name|VERSION_STORAGE_NODE_ID
 argument_list|,
+literal|"/jcr:system/jcr:versionStorage"
+argument_list|,
 name|copyBinariesByReference
 argument_list|)
 argument_list|)
@@ -3769,6 +3778,8 @@ argument_list|,
 name|uriToPrefix
 argument_list|,
 name|ACTIVITIES_NODE_ID
+argument_list|,
+literal|"/jcr:system/jcr:activities"
 argument_list|,
 name|copyBinariesByReference
 argument_list|)
@@ -3856,6 +3867,8 @@ argument_list|,
 name|uriToPrefix
 argument_list|,
 name|ROOT_NODE_ID
+argument_list|,
+literal|"/"
 argument_list|,
 name|copyBinariesByReference
 argument_list|)
