@@ -220,6 +220,11 @@ name|repoStats
 decl_stmt|;
 specifier|private
 specifier|final
+name|TimeSeriesMax
+name|maxQueueLength
+decl_stmt|;
+specifier|private
+specifier|final
 name|CompositeRegistration
 name|registration
 decl_stmt|;
@@ -238,6 +243,14 @@ name|repoStats
 operator|=
 operator|new
 name|RepositoryStatisticsImpl
+argument_list|(
+name|executor
+argument_list|)
+expr_stmt|;
+name|maxQueueLength
+operator|=
+operator|new
+name|TimeSeriesMax
 argument_list|(
 name|executor
 argument_list|)
@@ -278,6 +291,8 @@ operator|new
 name|RepositoryStats
 argument_list|(
 name|repoStats
+argument_list|,
+name|maxQueueLength
 argument_list|)
 argument_list|,
 name|RepositoryStats
@@ -332,6 +347,15 @@ name|getCounter
 argument_list|(
 name|type
 argument_list|)
+return|;
+block|}
+specifier|public
+name|TimeSeriesMax
+name|maxQueLengthRecorder
+parameter_list|()
+block|{
+return|return
+name|maxQueueLength
 return|;
 block|}
 comment|/**      * Unregister all statistics previously registered with the whiteboard passed      * to the constructor.      */

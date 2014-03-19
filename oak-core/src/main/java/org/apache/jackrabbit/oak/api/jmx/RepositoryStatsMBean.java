@@ -115,6 +115,11 @@ name|CompositeData
 name|getObservationEventAverage
 parameter_list|()
 function_decl|;
+comment|/**      * Maximum length of observation queue in the respective time period.      */
+name|CompositeData
+name|getObservationQueueMaxLength
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 
