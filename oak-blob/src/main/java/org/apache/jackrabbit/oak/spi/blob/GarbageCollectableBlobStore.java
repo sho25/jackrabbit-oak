@@ -39,6 +39,16 @@ name|Iterator
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
 begin_comment
 comment|/**  * A blob store that support garbage collection.  */
 end_comment
@@ -110,12 +120,15 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
-comment|/**      * Delete the blob with the given id.      *       * @param chunkId the chunk id      * @param maxLastModifiedTime      *            the max last modified time to consider for retrieval       * @return true, if successful      * @throws Exception      *             the exception      */
+comment|/**      * Deletes the blobs with the given ids.      *      * @param chunkIds the chunk ids      * @param maxLastModifiedTime the max last modified time to consider for retrieval      * @return true, if successful      * @throws Exception the exception      */
 name|boolean
-name|deleteChunk
+name|deleteChunks
 parameter_list|(
+name|List
+argument_list|<
 name|String
-name|chunkId
+argument_list|>
+name|chunkIds
 parameter_list|,
 name|long
 name|maxLastModifiedTime
