@@ -436,7 +436,7 @@ name|length
 operator|+
 literal|1
 decl_stmt|;
-comment|//1 extra for root
+comment|// 1 extra for root
 name|NodeBuilder
 name|root
 init|=
@@ -595,7 +595,7 @@ annotation|@
 name|Test
 specifier|public
 name|void
-name|testCacheInvalidation_Hierarchical
+name|testCacheInvalidationHierarchical
 parameter_list|()
 throws|throws
 name|CommitFailedException
@@ -724,7 +724,7 @@ annotation|@
 name|Test
 specifier|public
 name|void
-name|testCacheInvalidation_Linear
+name|testCacheInvalidationLinear
 parameter_list|()
 throws|throws
 name|CommitFailedException
@@ -850,6 +850,7 @@ argument_list|)
 expr_stmt|;
 block|}
 specifier|private
+specifier|static
 name|void
 name|refreshHead
 parameter_list|(
@@ -899,6 +900,7 @@ argument_list|()
 return|;
 block|}
 specifier|private
+specifier|static
 name|void
 name|createTree
 parameter_list|(
@@ -967,6 +969,7 @@ name|builder
 return|;
 block|}
 specifier|private
+specifier|static
 name|void
 name|createPath
 parameter_list|(
@@ -1036,6 +1039,7 @@ argument_list|()
 expr_stmt|;
 block|}
 specifier|private
+specifier|static
 name|void
 name|runBgOps
 parameter_list|(
@@ -1060,6 +1064,7 @@ expr_stmt|;
 block|}
 block|}
 specifier|private
+specifier|static
 name|DocumentNodeStore
 name|createNS
 parameter_list|(
@@ -1096,12 +1101,12 @@ name|setClusterId
 argument_list|(
 name|clusterId
 argument_list|)
+comment|//Set delay to 0 so that effect of changes are immediately reflected
 operator|.
 name|setAsyncDelay
 argument_list|(
 literal|0
 argument_list|)
-comment|//Set delay to 0 so that effect of changes are immediately reflected
 operator|.
 name|getNodeStore
 argument_list|()
