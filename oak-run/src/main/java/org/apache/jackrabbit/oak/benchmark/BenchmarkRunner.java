@@ -924,6 +924,10 @@ name|SetPropertyTest
 argument_list|()
 block|,
 operator|new
+name|SetMultiPropertyTest
+argument_list|()
+block|,
+operator|new
 name|SmallFileReadTest
 argument_list|()
 block|,
