@@ -1079,7 +1079,9 @@ argument_list|)
 argument_list|)
 operator|.
 name|updateChildOrder
-argument_list|()
+argument_list|(
+literal|false
+argument_list|)
 expr_stmt|;
 name|getTree
 argument_list|(
@@ -1090,7 +1092,9 @@ argument_list|)
 argument_list|)
 operator|.
 name|updateChildOrder
-argument_list|()
+argument_list|(
+literal|false
+argument_list|)
 expr_stmt|;
 name|lastMove
 operator|=
