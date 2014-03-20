@@ -77,7 +77,7 @@ name|util
 operator|.
 name|concurrent
 operator|.
-name|ExecutorService
+name|Executor
 import|;
 end_import
 
@@ -89,7 +89,19 @@ name|util
 operator|.
 name|concurrent
 operator|.
-name|Future
+name|FutureTask
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|RunnableFuture
 import|;
 end_import
 
@@ -191,11 +203,11 @@ name|file
 decl_stmt|;
 specifier|private
 specifier|final
-name|ExecutorService
-name|executorService
+name|Executor
+name|executor
 decl_stmt|;
 specifier|private
-name|Future
+name|RunnableFuture
 argument_list|<
 name|Long
 argument_list|>
@@ -206,7 +218,7 @@ name|long
 name|backupEndTime
 decl_stmt|;
 specifier|private
-name|Future
+name|RunnableFuture
 argument_list|<
 name|Long
 argument_list|>
@@ -216,7 +228,7 @@ specifier|private
 name|long
 name|restoreEndTime
 decl_stmt|;
-comment|/**      * @param store  store to back up from or restore to      * @param file   file to back up to or restore from      * @param executorService  executor service for running the back up or restore operation      *                         in the background.      */
+comment|/**      * @param store  store to back up from or restore to      * @param file   file to back up to or restore from      * @param executor  executor for running the back up or restore operation      */
 specifier|public
 name|FileStoreBackupRestore
 parameter_list|(
@@ -232,8 +244,8 @@ name|file
 parameter_list|,
 annotation|@
 name|Nonnull
-name|ExecutorService
-name|executorService
+name|Executor
+name|executor
 parameter_list|)
 block|{
 name|this
@@ -256,11 +268,11 @@ argument_list|)
 expr_stmt|;
 name|this
 operator|.
-name|executorService
+name|executor
 operator|=
 name|checkNotNull
 argument_list|(
-name|executorService
+name|executor
 argument_list|)
 expr_stmt|;
 block|}
@@ -293,9 +305,11 @@ else|else
 block|{
 name|backupOp
 operator|=
-name|executorService
-operator|.
-name|submit
+operator|new
+name|FutureTask
+argument_list|<
+name|Long
+argument_list|>
 argument_list|(
 operator|new
 name|Callable
@@ -340,6 +354,13 @@ name|t0
 return|;
 block|}
 block|}
+argument_list|)
+expr_stmt|;
+name|executor
+operator|.
+name|execute
+argument_list|(
+name|backupOp
 argument_list|)
 expr_stmt|;
 return|return
@@ -493,9 +514,11 @@ else|else
 block|{
 name|restoreOp
 operator|=
-name|executorService
-operator|.
-name|submit
+operator|new
+name|FutureTask
+argument_list|<
+name|Long
+argument_list|>
 argument_list|(
 operator|new
 name|Callable
@@ -540,6 +563,13 @@ name|t0
 return|;
 block|}
 block|}
+argument_list|)
+expr_stmt|;
+name|executor
+operator|.
+name|execute
+argument_list|(
+name|restoreOp
 argument_list|)
 expr_stmt|;
 return|return
