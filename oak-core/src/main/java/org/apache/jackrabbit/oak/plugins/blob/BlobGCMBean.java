@@ -38,6 +38,11 @@ specifier|public
 interface|interface
 name|BlobGCMBean
 block|{
+name|String
+name|TYPE
+init|=
+literal|"BlobGarbageCollection"
+decl_stmt|;
 comment|/**      * Initiate a data store garbage collection operation      *      * @return  the status of the operation right after it was initiated      */
 annotation|@
 name|Nonnull
