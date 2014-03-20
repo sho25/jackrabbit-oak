@@ -457,7 +457,7 @@ block|{
 name|Segment
 name|remove
 init|=
-name|dataSegments
+name|segments
 operator|.
 name|removeLast
 argument_list|()
