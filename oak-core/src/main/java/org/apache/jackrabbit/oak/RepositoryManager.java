@@ -716,6 +716,7 @@ specifier|public
 name|String
 name|checkpoint
 parameter_list|(
+specifier|final
 name|long
 name|lifetime
 parameter_list|)
@@ -751,8 +752,10 @@ block|{
 return|return
 name|backupService
 operator|.
-name|getRestoreStatus
-argument_list|()
+name|checkpoint
+argument_list|(
+name|lifetime
+argument_list|)
 return|;
 block|}
 block|}
