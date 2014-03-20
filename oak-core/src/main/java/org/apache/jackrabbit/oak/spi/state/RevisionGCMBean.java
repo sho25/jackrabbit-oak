@@ -38,6 +38,11 @@ specifier|public
 interface|interface
 name|RevisionGCMBean
 block|{
+name|String
+name|TYPE
+init|=
+literal|"RevisionGarbageCollection"
+decl_stmt|;
 comment|/**      * Initiate a revision garbage collection operation      *      * @return  the status of the operation right after it was initiated      */
 annotation|@
 name|Nonnull
