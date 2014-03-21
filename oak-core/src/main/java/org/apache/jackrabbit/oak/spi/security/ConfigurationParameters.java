@@ -310,6 +310,13 @@ range|:
 name|params
 control|)
 block|{
+if|if
+condition|(
+name|cp
+operator|!=
+literal|null
+condition|)
+block|{
 name|m
 operator|.
 name|putAll
@@ -319,6 +326,7 @@ operator|.
 name|options
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 return|return
 name|m
