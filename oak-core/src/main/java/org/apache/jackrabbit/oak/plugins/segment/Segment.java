@@ -328,33 +328,6 @@ init|=
 literal|2
 decl_stmt|;
 comment|// align at the four-byte boundary
-specifier|static
-name|int
-name|align
-parameter_list|(
-name|int
-name|value
-parameter_list|)
-block|{
-name|int
-name|mask
-init|=
-operator|-
-literal|1
-operator|<<
-name|RECORD_ALIGN_BITS
-decl_stmt|;
-return|return
-operator|(
-name|value
-operator|+
-operator|~
-name|mask
-operator|)
-operator|&
-name|mask
-return|;
-block|}
 comment|/**      * Maximum segment size. Record identifiers are stored as three-byte      * sequences with the first byte indicating the segment and the next      * two the offset within that segment. Since all records are aligned      * at four-byte boundaries, the two bytes can address up to 256kB of      * record data.      */
 specifier|public
 specifier|static
