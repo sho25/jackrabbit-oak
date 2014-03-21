@@ -1961,7 +1961,7 @@ argument_list|()
 decl_stmt|;
 name|store
 operator|.
-name|createOrUpdate
+name|findAndUpdate
 argument_list|(
 name|NODES
 argument_list|,
@@ -1999,7 +1999,7 @@ argument_list|)
 expr_stmt|;
 name|store
 operator|.
-name|createOrUpdate
+name|findAndUpdate
 argument_list|(
 name|NODES
 argument_list|,
@@ -2032,7 +2032,7 @@ argument_list|)
 expr_stmt|;
 name|store
 operator|.
-name|createOrUpdate
+name|findAndUpdate
 argument_list|(
 name|NODES
 argument_list|,
