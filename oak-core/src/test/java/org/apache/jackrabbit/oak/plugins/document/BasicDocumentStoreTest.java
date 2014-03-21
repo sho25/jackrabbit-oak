@@ -182,13 +182,13 @@ decl_stmt|;
 specifier|public
 name|BasicDocumentStoreTest
 parameter_list|(
-name|DocumentStore
-name|ds
+name|DocumentStoreFixture
+name|dsf
 parameter_list|)
 block|{
 name|super
 argument_list|(
-name|ds
+name|dsf
 argument_list|)
 expr_stmt|;
 block|}
@@ -507,14 +507,11 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"max id for "
+literal|"max id length for "
 operator|+
 name|super
 operator|.
-name|ds
-operator|.
-name|getClass
-argument_list|()
+name|dsname
 operator|+
 literal|" was "
 operator|+
