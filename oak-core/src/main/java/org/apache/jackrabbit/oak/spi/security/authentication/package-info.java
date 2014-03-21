@@ -7,17 +7,7 @@ begin_annotation
 annotation|@
 name|Version
 argument_list|(
-literal|"0.16"
-argument_list|)
-end_annotation
-
-begin_annotation
-annotation|@
-name|Export
-argument_list|(
-name|optional
-operator|=
-literal|"provide:=true"
+literal|"0.17"
 argument_list|)
 end_annotation
 

@@ -277,6 +277,16 @@ name|UserAuthentication
 implements|implements
 name|Authentication
 block|{
+specifier|static
+specifier|final
+name|Credentials
+name|PRE_AUTHENTICATED
+init|=
+operator|new
+name|Credentials
+argument_list|()
+block|{ }
+decl_stmt|;
 specifier|private
 specifier|static
 specifier|final
@@ -344,6 +354,10 @@ operator|==
 literal|null
 operator|||
 name|userManager
+operator|==
+literal|null
+operator|||
+name|credentials
 operator|==
 literal|null
 condition|)
@@ -558,6 +572,10 @@ name|credentials
 operator|instanceof
 name|GuestCredentials
 operator|)
+operator|||
+name|credentials
+operator|==
+name|PRE_AUTHENTICATED
 expr_stmt|;
 block|}
 block|}
