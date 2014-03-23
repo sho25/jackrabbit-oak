@@ -10062,6 +10062,13 @@ name|addNode
 argument_list|(
 literal|"node"
 argument_list|)
+operator|.
+name|setProperty
+argument_list|(
+literal|"p"
+argument_list|,
+literal|"v1"
+argument_list|)
 expr_stmt|;
 name|session2
 operator|.
@@ -10077,7 +10084,7 @@ name|setProperty
 argument_list|(
 literal|"p"
 argument_list|,
-literal|"v"
+literal|"v2"
 argument_list|)
 expr_stmt|;
 name|assertTrue
