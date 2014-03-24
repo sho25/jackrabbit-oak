@@ -399,6 +399,20 @@ return|return
 name|changes
 return|;
 block|}
+comment|/**      * Checks if the UpdateOp has any change operation is registered with      * current update operation      *      * @return true if any change operation is created      */
+specifier|public
+name|boolean
+name|hasChanges
+parameter_list|()
+block|{
+return|return
+operator|!
+name|changes
+operator|.
+name|isEmpty
+argument_list|()
+return|;
+block|}
 comment|/**      * Add a new or update an existing map entry.      * The property is a map of revisions / values.      *      * @param property the property      * @param revision the revision      * @param value the value      */
 name|void
 name|setMapEntry
