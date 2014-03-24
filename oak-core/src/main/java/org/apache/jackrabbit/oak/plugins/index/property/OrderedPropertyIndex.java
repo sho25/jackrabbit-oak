@@ -711,7 +711,7 @@ decl_stmt|;
 name|boolean
 name|createPlan
 init|=
-literal|true
+literal|false
 decl_stmt|;
 if|if
 condition|(
@@ -732,6 +732,10 @@ comment|// open query: [property] is not null
 name|value
 operator|=
 literal|null
+expr_stmt|;
+name|createPlan
+operator|=
+literal|true
 expr_stmt|;
 block|}
 elseif|else
@@ -770,22 +774,123 @@ name|pr
 operator|.
 name|first
 expr_stmt|;
-comment|// ----------- DISABLING RANGE QUERIES FOR NOW. EASYING THE INTEGRATION WITH OAK-622 [BEGIN]
-comment|//                    } else if (pr.first != null&& !pr.first.equals(pr.last)) {
-comment|//                        // '>'& '>=' use cases
-comment|//                        if (lookup.isAscending(root, propertyName, filter)) {
-comment|//                            value = pr.first;
-comment|//                        } else {
-comment|//                            createPlan = false;
-comment|//                        }
-comment|//                    } else if (pr.last != null&& !pr.last.equals(pr.first)) {
-comment|//                        // '<'& '<='
-comment|//                        if (!lookup.isAscending(root, propertyName, filter)) {
-comment|//                            value = pr.last;
-comment|//                        } else {
-comment|//                            createPlan = false;
-comment|//                        }
-comment|// ----------- DISABLING RANGE QUERIES FOR NOW. EASYING THE INTEGRATION WITH OAK-622 [ END ]
+name|createPlan
+operator|=
+literal|true
+expr_stmt|;
+block|}
+elseif|else
+if|if
+condition|(
+name|pr
+operator|.
+name|first
+operator|!=
+literal|null
+operator|&&
+operator|!
+name|pr
+operator|.
+name|first
+operator|.
+name|equals
+argument_list|(
+name|pr
+operator|.
+name|last
+argument_list|)
+condition|)
+block|{
+comment|// '>'& '>=' use cases
+if|if
+condition|(
+name|lookup
+operator|.
+name|isAscending
+argument_list|(
+name|root
+argument_list|,
+name|propertyName
+argument_list|,
+name|filter
+argument_list|)
+condition|)
+block|{
+name|value
+operator|=
+name|pr
+operator|.
+name|first
+expr_stmt|;
+name|createPlan
+operator|=
+literal|true
+expr_stmt|;
+block|}
+else|else
+block|{
+name|createPlan
+operator|=
+literal|false
+expr_stmt|;
+block|}
+block|}
+elseif|else
+if|if
+condition|(
+name|pr
+operator|.
+name|last
+operator|!=
+literal|null
+operator|&&
+operator|!
+name|pr
+operator|.
+name|last
+operator|.
+name|equals
+argument_list|(
+name|pr
+operator|.
+name|first
+argument_list|)
+condition|)
+block|{
+comment|// '<'& '<='
+if|if
+condition|(
+operator|!
+name|lookup
+operator|.
+name|isAscending
+argument_list|(
+name|root
+argument_list|,
+name|propertyName
+argument_list|,
+name|filter
+argument_list|)
+condition|)
+block|{
+name|value
+operator|=
+name|pr
+operator|.
+name|last
+expr_stmt|;
+name|createPlan
+operator|=
+literal|true
+expr_stmt|;
+block|}
+else|else
+block|{
+name|createPlan
+operator|=
+literal|false
+expr_stmt|;
+block|}
 block|}
 if|if
 condition|(
@@ -820,7 +925,6 @@ name|Type
 operator|.
 name|UNDEFINED
 argument_list|,
-operator|(
 name|lookup
 operator|.
 name|isAscending
@@ -843,7 +947,6 @@ operator|.
 name|Order
 operator|.
 name|DESCENDING
-operator|)
 argument_list|)
 argument_list|)
 argument_list|)
@@ -955,7 +1058,6 @@ argument_list|(
 literal|"Not implemented yet."
 argument_list|)
 throw|;
-comment|//        return null;
 block|}
 annotation|@
 name|Override
