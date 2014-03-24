@@ -1535,10 +1535,11 @@ return|return
 literal|null
 return|;
 block|}
+comment|// newest revision is likely in the local deleted map
 name|String
 name|value
 init|=
-name|getDeleted
+name|getLocalDeleted
 argument_list|()
 operator|.
 name|get
@@ -1546,6 +1547,25 @@ argument_list|(
 name|newestRev
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|value
+operator|==
+literal|null
+condition|)
+block|{
+comment|// otherwise get from complete map
+name|value
+operator|=
+name|getDeleted
+argument_list|()
+operator|.
+name|get
+argument_list|(
+name|newestRev
+argument_list|)
+expr_stmt|;
+block|}
 if|if
 condition|(
 literal|"true"
