@@ -239,6 +239,13 @@ name|ScheduledExecutorService
 name|executor
 parameter_list|)
 block|{
+name|queryStat
+operator|.
+name|setEnabled
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
 name|repoStats
 operator|=
 operator|new
