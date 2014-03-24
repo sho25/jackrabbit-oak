@@ -1394,6 +1394,10 @@ name|SequentialCreateNodesTest
 argument_list|()
 block|,
 operator|new
+name|CreateManyIndexedNodesTest
+argument_list|()
+block|,
+operator|new
 name|GetPoliciesTest
 argument_list|()
 block|,         }
