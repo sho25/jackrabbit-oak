@@ -20,6 +20,22 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkState
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -225,22 +241,6 @@ name|UserManagerOperation
 import|;
 end_import
 
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|Preconditions
-operator|.
-name|checkState
-import|;
-end_import
-
 begin_comment
 comment|/**  * This implementation of {@code UserManager} delegates back to a  * delegatee wrapping each call into a {@link UserManager} closure.  *  * @see SessionDelegate#perform(org.apache.jackrabbit.oak.jcr.session.operation.SessionOperation)  */
 end_comment
@@ -321,6 +321,8 @@ name|Authorizable
 argument_list|>
 argument_list|(
 name|sessionDelegate
+argument_list|,
+literal|"getAuthorizable"
 argument_list|)
 block|{
 annotation|@
@@ -382,6 +384,8 @@ name|Authorizable
 argument_list|>
 argument_list|(
 name|sessionDelegate
+argument_list|,
+literal|"getAuthorizable"
 argument_list|)
 block|{
 annotation|@
@@ -445,6 +449,8 @@ name|Authorizable
 argument_list|>
 argument_list|(
 name|sessionDelegate
+argument_list|,
+literal|"getAuthorizableByPath"
 argument_list|)
 block|{
 annotation|@
@@ -516,6 +522,8 @@ argument_list|>
 argument_list|>
 argument_list|(
 name|sessionDelegate
+argument_list|,
+literal|"findAuthorizables"
 argument_list|)
 block|{
 annotation|@
@@ -631,6 +639,8 @@ argument_list|>
 argument_list|>
 argument_list|(
 name|sessionDelegate
+argument_list|,
+literal|"findAuthorizables"
 argument_list|)
 block|{
 annotation|@
@@ -740,6 +750,8 @@ argument_list|>
 argument_list|>
 argument_list|(
 name|sessionDelegate
+argument_list|,
+literal|"findAuthorizables"
 argument_list|)
 block|{
 annotation|@
@@ -845,6 +857,8 @@ name|User
 argument_list|>
 argument_list|(
 name|sessionDelegate
+argument_list|,
+literal|"createUser"
 argument_list|)
 block|{
 annotation|@
@@ -922,6 +936,8 @@ name|User
 argument_list|>
 argument_list|(
 name|sessionDelegate
+argument_list|,
+literal|"createUser"
 argument_list|)
 block|{
 annotation|@
@@ -991,6 +1007,8 @@ name|Group
 argument_list|>
 argument_list|(
 name|sessionDelegate
+argument_list|,
+literal|"createGroup"
 argument_list|)
 block|{
 annotation|@
@@ -1054,6 +1072,8 @@ name|Group
 argument_list|>
 argument_list|(
 name|sessionDelegate
+argument_list|,
+literal|"createGroup"
 argument_list|)
 block|{
 annotation|@
@@ -1121,6 +1141,8 @@ name|Group
 argument_list|>
 argument_list|(
 name|sessionDelegate
+argument_list|,
+literal|"createGroup"
 argument_list|)
 block|{
 annotation|@
@@ -1194,6 +1216,8 @@ name|Group
 argument_list|>
 argument_list|(
 name|sessionDelegate
+argument_list|,
+literal|"createGroup"
 argument_list|)
 block|{
 annotation|@
@@ -1253,6 +1277,8 @@ name|Boolean
 argument_list|>
 argument_list|(
 name|sessionDelegate
+argument_list|,
+literal|"isAutoSave"
 argument_list|)
 block|{
 annotation|@
@@ -1299,6 +1325,8 @@ name|Void
 argument_list|>
 argument_list|(
 name|sessionDelegate
+argument_list|,
+literal|"autoSave"
 argument_list|)
 block|{
 annotation|@

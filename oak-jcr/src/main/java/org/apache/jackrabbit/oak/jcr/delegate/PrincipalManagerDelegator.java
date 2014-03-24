@@ -150,7 +150,9 @@ name|SessionOperation
 argument_list|<
 name|Boolean
 argument_list|>
-argument_list|()
+argument_list|(
+literal|"hasPrincipal"
+argument_list|)
 block|{
 annotation|@
 name|Override
@@ -193,7 +195,9 @@ name|SessionOperation
 argument_list|<
 name|Principal
 argument_list|>
-argument_list|()
+argument_list|(
+literal|"getPrincipal"
+argument_list|)
 block|{
 annotation|@
 name|Override
@@ -236,7 +240,9 @@ name|SessionOperation
 argument_list|<
 name|PrincipalIterator
 argument_list|>
-argument_list|()
+argument_list|(
+literal|"findPrincipals"
+argument_list|)
 block|{
 annotation|@
 name|Override
@@ -283,7 +289,9 @@ name|SessionOperation
 argument_list|<
 name|PrincipalIterator
 argument_list|>
-argument_list|()
+argument_list|(
+literal|"findPrincipals"
+argument_list|)
 block|{
 annotation|@
 name|Override
@@ -328,7 +336,9 @@ name|SessionOperation
 argument_list|<
 name|PrincipalIterator
 argument_list|>
-argument_list|()
+argument_list|(
+literal|"getPrincipals"
+argument_list|)
 block|{
 annotation|@
 name|Override
@@ -371,7 +381,9 @@ name|SessionOperation
 argument_list|<
 name|PrincipalIterator
 argument_list|>
-argument_list|()
+argument_list|(
+literal|"getGroupMembership"
+argument_list|)
 block|{
 annotation|@
 name|Override
@@ -410,7 +422,9 @@ name|SessionOperation
 argument_list|<
 name|Principal
 argument_list|>
-argument_list|()
+argument_list|(
+literal|"getEveryone"
+argument_list|)
 block|{
 annotation|@
 name|Override

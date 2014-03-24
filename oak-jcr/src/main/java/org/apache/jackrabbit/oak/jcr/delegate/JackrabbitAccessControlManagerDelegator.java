@@ -223,7 +223,9 @@ argument_list|<
 name|JackrabbitAccessControlPolicy
 index|[]
 argument_list|>
-argument_list|()
+argument_list|(
+literal|"getApplicablePolicies"
+argument_list|)
 block|{
 annotation|@
 name|Override
@@ -273,7 +275,9 @@ argument_list|<
 name|JackrabbitAccessControlPolicy
 index|[]
 argument_list|>
-argument_list|()
+argument_list|(
+literal|"getPolicies"
+argument_list|)
 block|{
 annotation|@
 name|Override
@@ -326,7 +330,9 @@ argument_list|<
 name|AccessControlPolicy
 index|[]
 argument_list|>
-argument_list|()
+argument_list|(
+literal|"getEffectivePolicies"
+argument_list|)
 block|{
 annotation|@
 name|Override
@@ -386,7 +392,9 @@ name|SessionOperation
 argument_list|<
 name|Boolean
 argument_list|>
-argument_list|()
+argument_list|(
+literal|"hasPrivileges"
+argument_list|)
 block|{
 annotation|@
 name|Override
@@ -446,7 +454,9 @@ argument_list|<
 name|Privilege
 index|[]
 argument_list|>
-argument_list|()
+argument_list|(
+literal|"getPrivileges"
+argument_list|)
 block|{
 annotation|@
 name|Override

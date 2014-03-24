@@ -220,7 +220,9 @@ name|SessionOperation
 argument_list|<
 name|Boolean
 argument_list|>
-argument_list|()
+argument_list|(
+literal|"hasPermissions"
+argument_list|)
 block|{
 annotation|@
 name|Override
@@ -282,7 +284,9 @@ name|SessionOperation
 argument_list|<
 name|Boolean
 argument_list|>
-argument_list|()
+argument_list|(
+literal|"hasPermissions"
+argument_list|)
 block|{
 annotation|@
 name|Override

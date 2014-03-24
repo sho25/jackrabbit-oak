@@ -382,7 +382,9 @@ name|SessionOperation
 argument_list|<
 name|VersionHistory
 argument_list|>
-argument_list|()
+argument_list|(
+literal|"getContainingHistory"
+argument_list|)
 block|{
 annotation|@
 name|Override
@@ -435,7 +437,9 @@ name|SessionOperation
 argument_list|<
 name|Calendar
 argument_list|>
-argument_list|()
+argument_list|(
+literal|"getCreated"
+argument_list|)
 block|{
 annotation|@
 name|Override
@@ -494,7 +498,9 @@ name|SessionOperation
 argument_list|<
 name|Version
 argument_list|>
-argument_list|()
+argument_list|(
+literal|"getLinearPredecessor"
+argument_list|)
 block|{
 annotation|@
 name|Override
@@ -558,7 +564,9 @@ name|SessionOperation
 argument_list|<
 name|Version
 argument_list|>
-argument_list|()
+argument_list|(
+literal|"getLinearSuccessor"
+argument_list|)
 block|{
 annotation|@
 name|Override
@@ -704,7 +712,9 @@ argument_list|<
 name|Version
 index|[]
 argument_list|>
-argument_list|()
+argument_list|(
+literal|"getPredecessors"
+argument_list|)
 block|{
 annotation|@
 name|Override
@@ -793,7 +803,9 @@ argument_list|<
 name|Version
 index|[]
 argument_list|>
-argument_list|()
+argument_list|(
+literal|"getSuccessors"
+argument_list|)
 block|{
 annotation|@
 name|Override
@@ -909,7 +921,9 @@ name|SessionOperation
 argument_list|<
 name|Node
 argument_list|>
-argument_list|()
+argument_list|(
+literal|"getFrozenNode"
+argument_list|)
 block|{
 annotation|@
 name|Override

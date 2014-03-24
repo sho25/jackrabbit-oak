@@ -63,11 +63,16 @@ name|NodeOperation
 parameter_list|(
 name|NodeDelegate
 name|node
+parameter_list|,
+name|String
+name|name
 parameter_list|)
 block|{
 name|super
 argument_list|(
 name|node
+argument_list|,
+name|name
 argument_list|)
 expr_stmt|;
 name|this

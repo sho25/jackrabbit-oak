@@ -176,7 +176,9 @@ argument_list|<
 name|Privilege
 index|[]
 argument_list|>
-argument_list|()
+argument_list|(
+literal|"getRegisteredPrivileges"
+argument_list|)
 block|{
 annotation|@
 name|Override
@@ -224,7 +226,9 @@ name|SessionOperation
 argument_list|<
 name|Privilege
 argument_list|>
-argument_list|()
+argument_list|(
+literal|"getPrivilege"
+argument_list|)
 block|{
 annotation|@
 name|Override
@@ -284,7 +288,9 @@ name|SessionOperation
 argument_list|<
 name|Privilege
 argument_list|>
-argument_list|()
+argument_list|(
+literal|"registerPrivilege"
+argument_list|)
 block|{
 annotation|@
 name|Override

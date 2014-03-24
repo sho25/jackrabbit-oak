@@ -461,7 +461,9 @@ argument_list|<
 name|String
 argument_list|>
 argument_list|>
-argument_list|()
+argument_list|(
+literal|"parse"
+argument_list|)
 block|{
 annotation|@
 name|Override
@@ -534,7 +536,9 @@ name|SessionOperation
 argument_list|<
 name|QueryResult
 argument_list|>
-argument_list|()
+argument_list|(
+literal|"execute"
+argument_list|)
 block|{
 annotation|@
 name|Override

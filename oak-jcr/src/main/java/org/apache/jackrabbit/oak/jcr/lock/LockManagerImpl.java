@@ -272,7 +272,9 @@ argument_list|<
 name|String
 index|[]
 argument_list|>
-argument_list|()
+argument_list|(
+literal|"getLockTokens"
+argument_list|)
 block|{
 annotation|@
 name|Override
@@ -341,6 +343,8 @@ argument_list|(
 name|sessionContext
 argument_list|,
 name|lockToken
+argument_list|,
+literal|"addLockToken"
 argument_list|)
 block|{
 annotation|@
@@ -446,7 +450,9 @@ name|SessionOperation
 argument_list|<
 name|Boolean
 argument_list|>
-argument_list|()
+argument_list|(
+literal|"removeLockToken"
+argument_list|)
 block|{
 annotation|@
 name|Override
@@ -513,6 +519,8 @@ argument_list|(
 name|sessionContext
 argument_list|,
 name|absPath
+argument_list|,
+literal|"isLocked"
 argument_list|)
 block|{
 annotation|@
@@ -563,6 +571,8 @@ argument_list|(
 name|sessionContext
 argument_list|,
 name|absPath
+argument_list|,
+literal|"holdsLock"
 argument_list|)
 block|{
 annotation|@
@@ -619,6 +629,8 @@ argument_list|(
 name|sessionContext
 argument_list|,
 name|absPath
+argument_list|,
+literal|"getLock"
 argument_list|)
 block|{
 annotation|@
@@ -721,6 +733,8 @@ argument_list|(
 name|sessionContext
 argument_list|,
 name|absPath
+argument_list|,
+literal|"lock"
 argument_list|)
 block|{
 annotation|@
@@ -841,6 +855,8 @@ argument_list|(
 name|sessionContext
 argument_list|,
 name|absPath
+argument_list|,
+literal|"unlock"
 argument_list|)
 block|{
 annotation|@

@@ -20,6 +20,22 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkArgument
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -178,22 +194,6 @@ operator|.
 name|operation
 operator|.
 name|SessionOperation
-import|;
-end_import
-
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|Preconditions
-operator|.
-name|checkArgument
 import|;
 end_import
 
@@ -380,7 +380,9 @@ name|SessionOperation
 argument_list|<
 name|Boolean
 argument_list|>
-argument_list|()
+argument_list|(
+literal|"isGroup"
+argument_list|)
 block|{
 annotation|@
 name|Override
@@ -419,7 +421,9 @@ name|SessionOperation
 argument_list|<
 name|String
 argument_list|>
-argument_list|()
+argument_list|(
+literal|"getID"
+argument_list|)
 block|{
 annotation|@
 name|Override
@@ -460,7 +464,9 @@ name|SessionOperation
 argument_list|<
 name|Principal
 argument_list|>
-argument_list|()
+argument_list|(
+literal|"getPrincipal"
+argument_list|)
 block|{
 annotation|@
 name|Override
@@ -507,7 +513,9 @@ argument_list|<
 name|Group
 argument_list|>
 argument_list|>
-argument_list|()
+argument_list|(
+literal|"declaredMemberOf"
+argument_list|)
 block|{
 annotation|@
 name|Override
@@ -606,7 +614,9 @@ argument_list|<
 name|Group
 argument_list|>
 argument_list|>
-argument_list|()
+argument_list|(
+literal|"memberOf"
+argument_list|)
 block|{
 annotation|@
 name|Override
@@ -698,7 +708,9 @@ name|SessionOperation
 argument_list|<
 name|Void
 argument_list|>
-argument_list|()
+argument_list|(
+literal|"remove"
+argument_list|)
 block|{
 annotation|@
 name|Override
@@ -747,7 +759,9 @@ argument_list|<
 name|String
 argument_list|>
 argument_list|>
-argument_list|()
+argument_list|(
+literal|"getPropertyNames"
+argument_list|)
 block|{
 annotation|@
 name|Override
@@ -801,7 +815,9 @@ argument_list|<
 name|String
 argument_list|>
 argument_list|>
-argument_list|()
+argument_list|(
+literal|"getPropertyNames"
+argument_list|)
 block|{
 annotation|@
 name|Override
@@ -851,7 +867,9 @@ name|SessionOperation
 argument_list|<
 name|Boolean
 argument_list|>
-argument_list|()
+argument_list|(
+literal|"hasProperty"
+argument_list|)
 block|{
 annotation|@
 name|Override
@@ -901,7 +919,9 @@ name|SessionOperation
 argument_list|<
 name|Void
 argument_list|>
-argument_list|()
+argument_list|(
+literal|"setProperty"
+argument_list|)
 block|{
 annotation|@
 name|Override
@@ -956,7 +976,9 @@ name|SessionOperation
 argument_list|<
 name|Void
 argument_list|>
-argument_list|()
+argument_list|(
+literal|"setProperty"
+argument_list|)
 block|{
 annotation|@
 name|Override
@@ -1009,7 +1031,9 @@ argument_list|<
 name|Value
 index|[]
 argument_list|>
-argument_list|()
+argument_list|(
+literal|"getProperty"
+argument_list|)
 block|{
 annotation|@
 name|Override
@@ -1057,7 +1081,9 @@ name|SessionOperation
 argument_list|<
 name|Boolean
 argument_list|>
-argument_list|()
+argument_list|(
+literal|"removeProperty"
+argument_list|)
 block|{
 annotation|@
 name|Override
@@ -1100,7 +1126,9 @@ name|SessionOperation
 argument_list|<
 name|String
 argument_list|>
-argument_list|()
+argument_list|(
+literal|"getPath"
+argument_list|)
 block|{
 annotation|@
 name|Override

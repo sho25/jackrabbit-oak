@@ -239,7 +239,9 @@ name|SessionOperation
 argument_list|<
 name|Boolean
 argument_list|>
-argument_list|()
+argument_list|(
+literal|"isAdmin"
+argument_list|)
 block|{
 annotation|@
 name|Override
@@ -277,7 +279,9 @@ name|SessionOperation
 argument_list|<
 name|Credentials
 argument_list|>
-argument_list|()
+argument_list|(
+literal|"getCredentials"
+argument_list|)
 block|{
 annotation|@
 name|Override
@@ -317,7 +321,9 @@ name|SessionOperation
 argument_list|<
 name|Impersonation
 argument_list|>
-argument_list|()
+argument_list|(
+literal|"getImpersonation"
+argument_list|)
 block|{
 annotation|@
 name|Override
@@ -374,7 +380,9 @@ name|SessionOperation
 argument_list|<
 name|Void
 argument_list|>
-argument_list|()
+argument_list|(
+literal|"changePassword"
+argument_list|)
 block|{
 annotation|@
 name|Override
@@ -427,7 +435,9 @@ name|SessionOperation
 argument_list|<
 name|Void
 argument_list|>
-argument_list|()
+argument_list|(
+literal|"changePassword"
+argument_list|)
 block|{
 annotation|@
 name|Override
@@ -478,7 +488,9 @@ name|SessionOperation
 argument_list|<
 name|Void
 argument_list|>
-argument_list|()
+argument_list|(
+literal|"disable"
+argument_list|)
 block|{
 annotation|@
 name|Override
@@ -524,7 +536,9 @@ name|SessionOperation
 argument_list|<
 name|Boolean
 argument_list|>
-argument_list|()
+argument_list|(
+literal|"isDisabled"
+argument_list|)
 block|{
 annotation|@
 name|Override
@@ -566,7 +580,9 @@ name|SessionOperation
 argument_list|<
 name|String
 argument_list|>
-argument_list|()
+argument_list|(
+literal|"getDisabledReason"
+argument_list|)
 block|{
 annotation|@
 name|Override

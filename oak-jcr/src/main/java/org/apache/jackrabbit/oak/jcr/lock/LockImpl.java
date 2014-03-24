@@ -298,6 +298,8 @@ name|String
 argument_list|>
 argument_list|(
 name|delegate
+argument_list|,
+literal|"getLockOwner"
 argument_list|)
 block|{
 annotation|@
@@ -306,8 +308,6 @@ specifier|public
 name|String
 name|perform
 parameter_list|()
-throws|throws
-name|RepositoryException
 block|{
 return|return
 name|node
@@ -337,6 +337,8 @@ name|Boolean
 argument_list|>
 argument_list|(
 name|delegate
+argument_list|,
+literal|"isDeep"
 argument_list|)
 block|{
 annotation|@
@@ -345,8 +347,6 @@ specifier|public
 name|Boolean
 name|perform
 parameter_list|()
-throws|throws
-name|RepositoryException
 block|{
 return|return
 name|node
@@ -386,6 +386,8 @@ name|Boolean
 argument_list|>
 argument_list|(
 name|delegate
+argument_list|,
+literal|"isLive"
 argument_list|)
 block|{
 annotation|@
@@ -394,8 +396,6 @@ specifier|public
 name|Boolean
 name|perform
 parameter_list|()
-throws|throws
-name|RepositoryException
 block|{
 return|return
 name|node
@@ -427,6 +427,8 @@ name|String
 argument_list|>
 argument_list|(
 name|delegate
+argument_list|,
+literal|"getLockToken"
 argument_list|)
 block|{
 annotation|@
@@ -435,8 +437,6 @@ specifier|public
 name|String
 name|perform
 parameter_list|()
-throws|throws
-name|RepositoryException
 block|{
 name|String
 name|token
@@ -580,6 +580,8 @@ name|Boolean
 argument_list|>
 argument_list|(
 name|delegate
+argument_list|,
+literal|"isSessionScoped"
 argument_list|)
 block|{
 annotation|@
@@ -588,8 +590,6 @@ specifier|public
 name|Boolean
 name|perform
 parameter_list|()
-throws|throws
-name|RepositoryException
 block|{
 name|String
 name|path
@@ -632,6 +632,8 @@ name|Boolean
 argument_list|>
 argument_list|(
 name|delegate
+argument_list|,
+literal|"isLockOwningSessions"
 argument_list|)
 block|{
 annotation|@
@@ -640,8 +642,6 @@ specifier|public
 name|Boolean
 name|perform
 parameter_list|()
-throws|throws
-name|RepositoryException
 block|{
 name|String
 name|path

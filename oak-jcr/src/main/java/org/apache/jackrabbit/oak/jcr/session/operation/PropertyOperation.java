@@ -63,11 +63,16 @@ name|PropertyOperation
 parameter_list|(
 name|PropertyDelegate
 name|property
+parameter_list|,
+name|String
+name|name
 parameter_list|)
 block|{
 name|super
 argument_list|(
 name|property
+argument_list|,
+name|name
 argument_list|)
 expr_stmt|;
 name|this

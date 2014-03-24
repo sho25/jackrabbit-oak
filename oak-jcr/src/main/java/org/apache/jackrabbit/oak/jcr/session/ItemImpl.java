@@ -687,10 +687,15 @@ argument_list|>
 block|{
 specifier|protected
 name|ItemWriteOperation
-parameter_list|()
+parameter_list|(
+name|String
+name|name
+parameter_list|)
 block|{
 name|super
 argument_list|(
+name|name
+argument_list|,
 literal|true
 argument_list|)
 expr_stmt|;
@@ -812,6 +817,8 @@ name|String
 argument_list|>
 argument_list|(
 name|dlg
+argument_list|,
+literal|"getName"
 argument_list|)
 block|{
 annotation|@
@@ -873,6 +880,8 @@ name|String
 argument_list|>
 argument_list|(
 name|dlg
+argument_list|,
+literal|"getPath"
 argument_list|)
 block|{
 annotation|@
@@ -973,6 +982,8 @@ name|ItemDelegate
 argument_list|>
 argument_list|(
 name|dlg
+argument_list|,
+literal|"getAncestor"
 argument_list|)
 block|{
 annotation|@
@@ -1337,7 +1348,9 @@ name|ItemWriteOperation
 argument_list|<
 name|Void
 argument_list|>
-argument_list|()
+argument_list|(
+literal|"save"
+argument_list|)
 block|{
 annotation|@
 name|Override
@@ -1462,7 +1475,9 @@ name|SessionOperation
 argument_list|<
 name|Void
 argument_list|>
-argument_list|()
+argument_list|(
+literal|"refresh"
+argument_list|)
 block|{
 annotation|@
 name|Override

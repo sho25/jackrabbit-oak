@@ -1290,6 +1290,8 @@ name|Node
 argument_list|>
 argument_list|(
 name|dlg
+argument_list|,
+literal|"getParent"
 argument_list|)
 block|{
 annotation|@
@@ -1341,8 +1343,6 @@ argument_list|()
 throw|;
 block|}
 return|return
-name|NodeImpl
-operator|.
 name|createNode
 argument_list|(
 name|parent
@@ -1374,6 +1374,8 @@ name|Boolean
 argument_list|>
 argument_list|(
 name|dlg
+argument_list|,
+literal|"isNew"
 argument_list|)
 block|{
 annotation|@
@@ -1421,6 +1423,8 @@ name|Boolean
 argument_list|>
 argument_list|(
 name|dlg
+argument_list|,
+literal|"isModified"
 argument_list|)
 block|{
 annotation|@
@@ -1467,7 +1471,9 @@ name|ItemWriteOperation
 argument_list|<
 name|Void
 argument_list|>
-argument_list|()
+argument_list|(
+literal|"remove"
+argument_list|)
 block|{
 annotation|@
 name|Override
@@ -1507,10 +1513,8 @@ annotation|@
 name|Override
 specifier|public
 name|String
-name|description
+name|toString
 parameter_list|()
-throws|throws
-name|RepositoryException
 block|{
 return|return
 name|String
@@ -1645,7 +1649,9 @@ name|ItemWriteOperation
 argument_list|<
 name|Node
 argument_list|>
-argument_list|()
+argument_list|(
+literal|"addNode"
+argument_list|)
 block|{
 specifier|private
 name|NodeDelegate
@@ -1858,8 +1864,6 @@ operator|=
 name|added
 expr_stmt|;
 return|return
-name|NodeImpl
-operator|.
 name|createNode
 argument_list|(
 name|added
@@ -1872,7 +1876,7 @@ annotation|@
 name|Override
 specifier|public
 name|String
-name|description
+name|toString
 parameter_list|()
 block|{
 return|return
@@ -1917,7 +1921,9 @@ name|ItemWriteOperation
 argument_list|<
 name|Void
 argument_list|>
-argument_list|()
+argument_list|(
+literal|"orderBefore"
+argument_list|)
 block|{
 annotation|@
 name|Override
@@ -2083,13 +2089,6 @@ operator|.
 name|UNDEFINED
 condition|)
 block|{
-name|type
-operator|=
-name|value
-operator|.
-name|getType
-argument_list|()
-expr_stmt|;
 name|exactTypeMatch
 operator|=
 literal|false
@@ -3017,6 +3016,8 @@ name|Node
 argument_list|>
 argument_list|(
 name|dlg
+argument_list|,
+literal|"getNode"
 argument_list|)
 block|{
 annotation|@
@@ -3090,6 +3091,8 @@ name|NodeIterator
 argument_list|>
 argument_list|(
 name|dlg
+argument_list|,
+literal|"getNodes"
 argument_list|)
 block|{
 annotation|@
@@ -3225,6 +3228,8 @@ name|NodeIterator
 argument_list|>
 argument_list|(
 name|dlg
+argument_list|,
+literal|"getNodes"
 argument_list|)
 block|{
 annotation|@
@@ -3330,6 +3335,8 @@ name|NodeIterator
 argument_list|>
 argument_list|(
 name|dlg
+argument_list|,
+literal|"getNodes"
 argument_list|)
 block|{
 annotation|@
@@ -3442,6 +3449,8 @@ name|PropertyImpl
 argument_list|>
 argument_list|(
 name|dlg
+argument_list|,
+literal|"getProperty"
 argument_list|)
 block|{
 annotation|@
@@ -3523,6 +3532,8 @@ name|PropertyIterator
 argument_list|>
 argument_list|(
 name|dlg
+argument_list|,
+literal|"getProperties"
 argument_list|)
 block|{
 annotation|@
@@ -3595,6 +3606,8 @@ name|PropertyIterator
 argument_list|>
 argument_list|(
 name|dlg
+argument_list|,
+literal|"getProperties"
 argument_list|)
 block|{
 annotation|@
@@ -3700,6 +3713,8 @@ name|PropertyIterator
 argument_list|>
 argument_list|(
 name|dlg
+argument_list|,
+literal|"getProperties"
 argument_list|)
 block|{
 annotation|@
@@ -3801,6 +3816,8 @@ name|Item
 argument_list|>
 argument_list|(
 name|dlg
+argument_list|,
+literal|"getPrimaryItem"
 argument_list|)
 block|{
 annotation|@
@@ -3913,6 +3930,8 @@ name|String
 argument_list|>
 argument_list|(
 name|dlg
+argument_list|,
+literal|"getUUID"
 argument_list|)
 block|{
 annotation|@
@@ -3974,6 +3993,8 @@ name|String
 argument_list|>
 argument_list|(
 name|dlg
+argument_list|,
+literal|"getIdentifier"
 argument_list|)
 block|{
 annotation|@
@@ -4036,6 +4057,8 @@ name|PropertyIterator
 argument_list|>
 argument_list|(
 name|dlg
+argument_list|,
+literal|"internalGetReferences"
 argument_list|)
 block|{
 annotation|@
@@ -4278,6 +4301,8 @@ name|Boolean
 argument_list|>
 argument_list|(
 name|dlg
+argument_list|,
+literal|"hasNode"
 argument_list|)
 block|{
 annotation|@
@@ -4348,6 +4373,8 @@ name|Boolean
 argument_list|>
 argument_list|(
 name|dlg
+argument_list|,
+literal|"hasProperty"
 argument_list|)
 block|{
 annotation|@
@@ -4421,6 +4448,8 @@ name|Boolean
 argument_list|>
 argument_list|(
 name|dlg
+argument_list|,
+literal|"hasProperties"
 argument_list|)
 block|{
 annotation|@
@@ -4467,6 +4496,8 @@ name|NodeType
 argument_list|>
 argument_list|(
 name|dlg
+argument_list|,
+literal|"getPrimaryNodeType"
 argument_list|)
 block|{
 annotation|@
@@ -4558,6 +4589,8 @@ index|[]
 argument_list|>
 argument_list|(
 name|dlg
+argument_list|,
+literal|"getMixinNodeTypes"
 argument_list|)
 block|{
 annotation|@
@@ -4700,6 +4733,8 @@ name|Boolean
 argument_list|>
 argument_list|(
 name|dlg
+argument_list|,
+literal|"isNodeType"
 argument_list|)
 block|{
 annotation|@
@@ -4750,7 +4785,9 @@ name|ItemWriteOperation
 argument_list|<
 name|Void
 argument_list|>
-argument_list|()
+argument_list|(
+literal|"setPrimaryType"
+argument_list|)
 block|{
 annotation|@
 name|Override
@@ -4835,7 +4872,9 @@ name|ItemWriteOperation
 argument_list|<
 name|Void
 argument_list|>
-argument_list|()
+argument_list|(
+literal|"addMixin"
+argument_list|)
 block|{
 annotation|@
 name|Override
@@ -4923,7 +4962,9 @@ name|ItemWriteOperation
 argument_list|<
 name|Void
 argument_list|>
-argument_list|()
+argument_list|(
+literal|"removeMixin"
+argument_list|)
 block|{
 annotation|@
 name|Override
@@ -5086,6 +5127,8 @@ name|Boolean
 argument_list|>
 argument_list|(
 name|dlg
+argument_list|,
+literal|"canAddMixin"
 argument_list|)
 block|{
 annotation|@
@@ -5188,6 +5231,8 @@ name|NodeDefinition
 argument_list|>
 argument_list|(
 name|dlg
+argument_list|,
+literal|"getDefinition"
 argument_list|)
 block|{
 annotation|@
@@ -5274,6 +5319,8 @@ name|String
 argument_list|>
 argument_list|(
 name|dlg
+argument_list|,
+literal|"getCorrespondingNodePath"
 argument_list|)
 block|{
 annotation|@
@@ -5346,7 +5393,9 @@ name|ItemWriteOperation
 argument_list|<
 name|Void
 argument_list|>
-argument_list|()
+argument_list|(
+literal|"update"
+argument_list|)
 block|{
 annotation|@
 name|Override
@@ -5881,6 +5930,8 @@ argument_list|(
 name|sessionDelegate
 argument_list|,
 name|dlg
+argument_list|,
+literal|"isLocked"
 argument_list|)
 block|{
 annotation|@
@@ -5925,6 +5976,8 @@ argument_list|(
 name|sessionDelegate
 argument_list|,
 name|dlg
+argument_list|,
+literal|"holdsLock"
 argument_list|)
 block|{
 annotation|@
@@ -5975,6 +6028,8 @@ argument_list|(
 name|sessionDelegate
 argument_list|,
 name|dlg
+argument_list|,
+literal|"getLock"
 argument_list|)
 block|{
 annotation|@
@@ -6060,6 +6115,8 @@ argument_list|(
 name|sessionDelegate
 argument_list|,
 name|dlg
+argument_list|,
+literal|"lock"
 argument_list|)
 block|{
 annotation|@
@@ -6182,6 +6239,8 @@ argument_list|(
 name|sessionDelegate
 argument_list|,
 name|dlg
+argument_list|,
+literal|"unlock"
 argument_list|)
 block|{
 annotation|@
@@ -6316,7 +6375,9 @@ name|ItemWriteOperation
 argument_list|<
 name|Void
 argument_list|>
-argument_list|()
+argument_list|(
+literal|"removeSharedSet"
+argument_list|)
 block|{
 annotation|@
 name|Override
@@ -6747,7 +6808,9 @@ name|ItemWriteOperation
 argument_list|<
 name|Property
 argument_list|>
-argument_list|()
+argument_list|(
+literal|"internalSetProperty"
+argument_list|)
 block|{
 annotation|@
 name|Override
@@ -6811,10 +6874,8 @@ annotation|@
 name|Override
 specifier|public
 name|String
-name|description
+name|toString
 parameter_list|()
-throws|throws
-name|RepositoryException
 block|{
 return|return
 name|String
@@ -6924,7 +6985,9 @@ name|ItemWriteOperation
 argument_list|<
 name|Property
 argument_list|>
-argument_list|()
+argument_list|(
+literal|"internalSetProperty"
+argument_list|)
 block|{
 annotation|@
 name|Override
@@ -6988,10 +7051,8 @@ annotation|@
 name|Override
 specifier|public
 name|String
-name|description
+name|toString
 parameter_list|()
-throws|throws
-name|RepositoryException
 block|{
 return|return
 name|String
@@ -7101,7 +7162,9 @@ name|ItemWriteOperation
 argument_list|<
 name|Property
 argument_list|>
-argument_list|()
+argument_list|(
+literal|"internalRemoveProperty"
+argument_list|)
 block|{
 annotation|@
 name|Override
@@ -7162,10 +7225,8 @@ annotation|@
 name|Override
 specifier|public
 name|String
-name|description
+name|toString
 parameter_list|()
-throws|throws
-name|RepositoryException
 block|{
 return|return
 name|String
@@ -7240,7 +7301,9 @@ name|ItemWriteOperation
 argument_list|<
 name|Void
 argument_list|>
-argument_list|()
+argument_list|(
+literal|"rename"
+argument_list|)
 block|{
 annotation|@
 name|Override
@@ -7521,7 +7584,9 @@ name|ItemWriteOperation
 argument_list|<
 name|Void
 argument_list|>
-argument_list|()
+argument_list|(
+literal|"setMixins"
+argument_list|)
 block|{
 annotation|@
 name|Override

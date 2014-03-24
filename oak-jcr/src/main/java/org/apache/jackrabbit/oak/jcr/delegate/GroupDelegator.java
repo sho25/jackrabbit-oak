@@ -287,7 +287,9 @@ argument_list|<
 name|Authorizable
 argument_list|>
 argument_list|>
-argument_list|()
+argument_list|(
+literal|"getDeclaredMembers"
+argument_list|)
 block|{
 annotation|@
 name|Override
@@ -385,7 +387,9 @@ argument_list|<
 name|Authorizable
 argument_list|>
 argument_list|>
-argument_list|()
+argument_list|(
+literal|"getMembers"
+argument_list|)
 block|{
 annotation|@
 name|Override
@@ -481,7 +485,9 @@ name|SessionOperation
 argument_list|<
 name|Boolean
 argument_list|>
-argument_list|()
+argument_list|(
+literal|"isDeclaredMember"
+argument_list|)
 block|{
 annotation|@
 name|Override
@@ -532,7 +538,9 @@ name|SessionOperation
 argument_list|<
 name|Boolean
 argument_list|>
-argument_list|()
+argument_list|(
+literal|"isMember"
+argument_list|)
 block|{
 annotation|@
 name|Override
@@ -583,7 +591,9 @@ name|SessionOperation
 argument_list|<
 name|Boolean
 argument_list|>
-argument_list|()
+argument_list|(
+literal|"addMember"
+argument_list|)
 block|{
 annotation|@
 name|Override
@@ -634,7 +644,9 @@ name|SessionOperation
 argument_list|<
 name|Boolean
 argument_list|>
-argument_list|()
+argument_list|(
+literal|"removeMember"
+argument_list|)
 block|{
 annotation|@
 name|Override

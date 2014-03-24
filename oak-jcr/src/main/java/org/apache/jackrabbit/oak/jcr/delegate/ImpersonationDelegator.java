@@ -20,6 +20,22 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkArgument
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -104,22 +120,6 @@ operator|.
 name|operation
 operator|.
 name|SessionOperation
-import|;
-end_import
-
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|Preconditions
-operator|.
-name|checkArgument
 import|;
 end_import
 
@@ -231,7 +231,9 @@ name|SessionOperation
 argument_list|<
 name|PrincipalIterator
 argument_list|>
-argument_list|()
+argument_list|(
+literal|"getImpersonators"
+argument_list|)
 block|{
 annotation|@
 name|Override
@@ -276,7 +278,9 @@ name|SessionOperation
 argument_list|<
 name|Boolean
 argument_list|>
-argument_list|()
+argument_list|(
+literal|"grantImpersonation"
+argument_list|)
 block|{
 annotation|@
 name|Override
@@ -323,7 +327,9 @@ name|SessionOperation
 argument_list|<
 name|Boolean
 argument_list|>
-argument_list|()
+argument_list|(
+literal|"revokeImpersonation"
+argument_list|)
 block|{
 annotation|@
 name|Override
@@ -370,7 +376,9 @@ name|SessionOperation
 argument_list|<
 name|Boolean
 argument_list|>
-argument_list|()
+argument_list|(
+literal|"allows"
+argument_list|)
 block|{
 annotation|@
 name|Override

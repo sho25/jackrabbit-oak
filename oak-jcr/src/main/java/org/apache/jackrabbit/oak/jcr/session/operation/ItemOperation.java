@@ -73,8 +73,16 @@ name|ItemOperation
 parameter_list|(
 name|ItemDelegate
 name|item
+parameter_list|,
+name|String
+name|name
 parameter_list|)
 block|{
+name|super
+argument_list|(
+name|name
+argument_list|)
+expr_stmt|;
 name|this
 operator|.
 name|item

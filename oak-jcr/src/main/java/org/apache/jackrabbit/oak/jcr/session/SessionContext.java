@@ -1989,7 +1989,9 @@ name|SessionOperation
 argument_list|<
 name|Void
 argument_list|>
-argument_list|()
+argument_list|(
+literal|"unlockAllSessionScopedLocks"
+argument_list|)
 block|{
 annotation|@
 name|Override
@@ -1997,8 +1999,6 @@ specifier|public
 name|Void
 name|perform
 parameter_list|()
-throws|throws
-name|RepositoryException
 block|{
 name|Iterator
 argument_list|<

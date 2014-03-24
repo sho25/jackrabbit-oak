@@ -20,6 +20,22 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|collect
+operator|.
+name|Iterators
+operator|.
+name|transform
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -307,22 +323,6 @@ name|SessionOperation
 import|;
 end_import
 
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|collect
-operator|.
-name|Iterators
-operator|.
-name|transform
-import|;
-end_import
-
 begin_comment
 comment|/**  * {@code VersionHistoryImpl}...  */
 end_comment
@@ -388,7 +388,9 @@ name|SessionOperation
 argument_list|<
 name|String
 argument_list|>
-argument_list|()
+argument_list|(
+literal|"getVersionableIdentifier"
+argument_list|)
 block|{
 annotation|@
 name|Override
@@ -427,7 +429,9 @@ name|SessionOperation
 argument_list|<
 name|Version
 argument_list|>
-argument_list|()
+argument_list|(
+literal|"getRootVersion"
+argument_list|)
 block|{
 annotation|@
 name|Override
@@ -472,7 +476,9 @@ name|SessionOperation
 argument_list|<
 name|VersionIterator
 argument_list|>
-argument_list|()
+argument_list|(
+literal|"getAllLinearVersions"
+argument_list|)
 block|{
 annotation|@
 name|Override
@@ -562,7 +568,9 @@ name|SessionOperation
 argument_list|<
 name|VersionIterator
 argument_list|>
-argument_list|()
+argument_list|(
+literal|"getAllVersions"
+argument_list|)
 block|{
 annotation|@
 name|Override
@@ -694,7 +702,9 @@ name|SessionOperation
 argument_list|<
 name|Version
 argument_list|>
-argument_list|()
+argument_list|(
+literal|"getVersion"
+argument_list|)
 block|{
 annotation|@
 name|Override
@@ -747,7 +757,9 @@ name|SessionOperation
 argument_list|<
 name|Version
 argument_list|>
-argument_list|()
+argument_list|(
+literal|"getVersionByLabel"
+argument_list|)
 block|{
 annotation|@
 name|Override
@@ -820,6 +832,8 @@ argument_list|<
 name|Void
 argument_list|>
 argument_list|(
+literal|"addVersionLabel"
+argument_list|,
 literal|true
 argument_list|)
 block|{
@@ -895,6 +909,8 @@ argument_list|<
 name|Void
 argument_list|>
 argument_list|(
+literal|"removeVersionLabel"
+argument_list|,
 literal|true
 argument_list|)
 block|{
@@ -1012,7 +1028,9 @@ argument_list|<
 name|String
 index|[]
 argument_list|>
-argument_list|()
+argument_list|(
+literal|"getVersionLabels"
+argument_list|)
 block|{
 annotation|@
 name|Override
@@ -1134,7 +1152,9 @@ argument_list|<
 name|String
 index|[]
 argument_list|>
-argument_list|()
+argument_list|(
+literal|"getVersionLabels"
+argument_list|)
 block|{
 annotation|@
 name|Override
@@ -1237,6 +1257,8 @@ argument_list|<
 name|Void
 argument_list|>
 argument_list|(
+literal|"removeVersion"
+argument_list|,
 literal|true
 argument_list|)
 block|{

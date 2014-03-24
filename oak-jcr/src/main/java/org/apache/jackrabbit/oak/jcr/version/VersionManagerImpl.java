@@ -540,6 +540,8 @@ argument_list|<
 name|Void
 argument_list|>
 argument_list|(
+literal|"restore"
+argument_list|,
 literal|true
 argument_list|)
 block|{
@@ -981,6 +983,8 @@ argument_list|<
 name|Void
 argument_list|>
 argument_list|(
+literal|"restore"
+argument_list|,
 literal|true
 argument_list|)
 block|{
@@ -1365,7 +1369,9 @@ name|SessionOperation
 argument_list|<
 name|Boolean
 argument_list|>
-argument_list|()
+argument_list|(
+literal|"isCheckoutOut"
+argument_list|)
 block|{
 annotation|@
 name|Override
@@ -1454,7 +1460,9 @@ name|SessionOperation
 argument_list|<
 name|VersionHistory
 argument_list|>
-argument_list|()
+argument_list|(
+literal|"getVersionHistory"
+argument_list|)
 block|{
 annotation|@
 name|Override
@@ -1514,7 +1522,9 @@ name|SessionOperation
 argument_list|<
 name|Version
 argument_list|>
-argument_list|()
+argument_list|(
+literal|"getBaseVersion"
+argument_list|)
 block|{
 annotation|@
 name|Override
@@ -1719,6 +1729,8 @@ argument_list|<
 name|Void
 argument_list|>
 argument_list|(
+literal|"checkout"
+argument_list|,
 literal|true
 argument_list|)
 block|{
@@ -1817,6 +1829,8 @@ argument_list|<
 name|Version
 argument_list|>
 argument_list|(
+literal|"checkin"
+argument_list|,
 literal|true
 argument_list|)
 block|{

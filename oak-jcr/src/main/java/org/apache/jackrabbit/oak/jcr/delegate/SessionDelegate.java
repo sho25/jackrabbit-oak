@@ -1257,23 +1257,18 @@ argument_list|(
 literal|"Attempt to perform "
 operator|+
 name|sessionOperation
-operator|.
-name|description
-argument_list|()
 operator|+
-literal|" while another thread is concurrently writing"
+literal|" while another thread is "
 operator|+
-literal|" to "
+literal|"concurrently writing to "
 operator|+
 name|contentSession
 operator|+
-literal|". Blocking until the other"
+literal|". Blocking until the "
 operator|+
-literal|" thread is finished using this session. Please"
+literal|"other thread is finished using this session. Please review your code "
 operator|+
-literal|" review your code to avoid concurrent use of"
-operator|+
-literal|" a session."
+literal|"to avoid concurrent use of a session."
 argument_list|,
 name|trace
 argument_list|)
@@ -1306,21 +1301,18 @@ argument_list|(
 literal|"Attempt to perform "
 operator|+
 name|sessionOperation
-operator|.
-name|description
-argument_list|()
 operator|+
-literal|" while another thread is concurrently reading from "
+literal|" while another thread is "
+operator|+
+literal|"concurrently reading from "
 operator|+
 name|contentSession
 operator|+
-literal|". Blocking until the other thread"
+literal|". Blocking until the "
 operator|+
-literal|" is finished using this session. Please"
+literal|"other thread is finished using this session. Please review your code "
 operator|+
-literal|" review your code to avoid concurrent use of"
-operator|+
-literal|" a session."
+literal|"to avoid concurrent use of a session."
 argument_list|,
 name|trace
 argument_list|)
@@ -2578,8 +2570,6 @@ name|T
 argument_list|>
 name|ops
 parameter_list|)
-throws|throws
-name|RepositoryException
 block|{
 if|if
 condition|(
@@ -2587,21 +2577,6 @@ name|operationLogger
 operator|.
 name|isDebugEnabled
 argument_list|()
-condition|)
-block|{
-name|String
-name|desc
-init|=
-name|ops
-operator|.
-name|description
-argument_list|()
-decl_stmt|;
-if|if
-condition|(
-name|desc
-operator|!=
-literal|null
 condition|)
 block|{
 name|Marker
@@ -2639,11 +2614,10 @@ literal|"[%s] %s"
 argument_list|,
 name|sessionId
 argument_list|,
-name|desc
+name|ops
 argument_list|)
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 comment|/**      * Wraps the given {@link CommitFailedException} instance using the      * appropriate {@link RepositoryException} subclass based on the      * {@link CommitFailedException#getType() type} of the given exception.      *      * @param exception typed commit failure exception      * @return matching repository exception      */
