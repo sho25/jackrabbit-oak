@@ -126,7 +126,7 @@ parameter_list|()
 throws|throws
 name|RepositoryException
 function_decl|;
-comment|/**      * Provide details about the operation being performed      *      * @return operation description. Would return<code>null</code>      * if no description provided      */
+comment|/**      * Provide details about the operation being performed      *      * @return operation description. Would return {@code null}      * if no description provided      */
 specifier|public
 name|String
 name|description

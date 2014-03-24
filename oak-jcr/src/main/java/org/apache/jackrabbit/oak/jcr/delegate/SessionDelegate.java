@@ -221,6 +221,34 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|locks
+operator|.
+name|Lock
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|locks
+operator|.
+name|ReentrantLock
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|annotation
@@ -757,6 +785,16 @@ name|userData
 init|=
 literal|null
 decl_stmt|;
+comment|/**      * The lock used to guarantee synchronized execution of repository      * operations. An explicit lock is used instead of normal Java      * synchronization in order to be able to log attempts to concurrently      * use a session.      */
+specifier|private
+specifier|final
+name|Lock
+name|lock
+init|=
+operator|new
+name|ReentrantLock
+argument_list|()
+decl_stmt|;
 comment|/**      * Create a new session delegate for a {@code ContentSession}. The refresh behaviour of the      * session is governed by the value of the {@code refreshInterval} argument: if the session      * has been idle longer than that value, an implicit refresh will take place.      * In addition a refresh can always be scheduled from the next access by an explicit call      * to {@link #refreshAtNextAccess()}. This is typically done from within the observation event      * dispatcher in order.      *      * @param contentSession  the content session      * @param refreshStrategy  the refresh strategy used for auto refreshing this session      * @param statisticManager the statistics manager for tracking session operations      */
 specifier|public
 name|SessionDelegate
@@ -1102,15 +1140,30 @@ name|saveCount
 return|;
 block|}
 specifier|public
-specifier|synchronized
 name|void
 name|refreshAtNextAccess
 parameter_list|()
+block|{
+name|lock
+operator|.
+name|lock
+argument_list|()
+expr_stmt|;
+try|try
 block|{
 name|refreshAtNextAccess
 operator|=
 literal|true
 expr_stmt|;
+block|}
+finally|finally
+block|{
+name|lock
+operator|.
+name|unlock
+argument_list|()
+expr_stmt|;
+block|}
 block|}
 comment|/**      * Wrap the passed {@code iterator} in an iterator that synchronizes      * all access to the underlying session.      * @param iterator  iterator to synchronized      * @param<T>      * @return  synchronized iterator      */
 specifier|public
@@ -1143,7 +1196,6 @@ return|;
 block|}
 comment|/**      * Performs the passed {@code SessionOperation} in a safe execution context. This      * context ensures that the session is refreshed if necessary and that refreshing      * occurs before the session operation is performed and the refreshing is done only      * once.      *      * @param sessionOperation  the {@code SessionOperation} to perform      * @param<T>  return type of {@code sessionOperation}      * @return  the result of {@code sessionOperation.perform()}      * @throws RepositoryException      * @see #getRoot()      */
 specifier|public
-specifier|synchronized
 parameter_list|<
 name|T
 parameter_list|>
@@ -1159,7 +1211,6 @@ parameter_list|)
 throws|throws
 name|RepositoryException
 block|{
-comment|// Synchronize to avoid conflicting refreshes from concurrent JCR API calls
 name|long
 name|t0
 init|=
@@ -1168,6 +1219,121 @@ operator|.
 name|getTime
 argument_list|()
 decl_stmt|;
+comment|// Acquire the exclusive lock for accessing session internals.
+comment|// No other session should be holding the lock, so we log a
+comment|// message to let the user know of such cases.
+if|if
+condition|(
+operator|!
+name|lock
+operator|.
+name|tryLock
+argument_list|()
+condition|)
+block|{
+if|if
+condition|(
+name|sessionOperation
+operator|.
+name|isUpdate
+argument_list|()
+condition|)
+block|{
+name|Exception
+name|trace
+init|=
+operator|new
+name|Exception
+argument_list|(
+literal|"Stack trace of concurrent access to "
+operator|+
+name|contentSession
+argument_list|)
+decl_stmt|;
+name|log
+operator|.
+name|warn
+argument_list|(
+literal|"Attempt to perform "
+operator|+
+name|sessionOperation
+operator|.
+name|description
+argument_list|()
+operator|+
+literal|" while another thread is concurrently writing"
+operator|+
+literal|" to "
+operator|+
+name|contentSession
+operator|+
+literal|". Blocking until the other"
+operator|+
+literal|" thread is finished using this session. Please"
+operator|+
+literal|" review your code to avoid concurrent use of"
+operator|+
+literal|" a session."
+argument_list|,
+name|trace
+argument_list|)
+expr_stmt|;
+block|}
+elseif|else
+if|if
+condition|(
+name|log
+operator|.
+name|isDebugEnabled
+argument_list|()
+condition|)
+block|{
+name|Exception
+name|trace
+init|=
+operator|new
+name|Exception
+argument_list|(
+literal|"Stack trace of concurrent access to "
+operator|+
+name|contentSession
+argument_list|)
+decl_stmt|;
+name|log
+operator|.
+name|warn
+argument_list|(
+literal|"Attempt to perform "
+operator|+
+name|sessionOperation
+operator|.
+name|description
+argument_list|()
+operator|+
+literal|" while another thread is concurrently reading from "
+operator|+
+name|contentSession
+operator|+
+literal|". Blocking until the other thread"
+operator|+
+literal|" is finished using this session. Please"
+operator|+
+literal|" review your code to avoid concurrent use of"
+operator|+
+literal|" a session."
+argument_list|,
+name|trace
+argument_list|)
+expr_stmt|;
+block|}
+name|lock
+operator|.
+name|lock
+argument_list|()
+expr_stmt|;
+block|}
+try|try
+block|{
 if|if
 condition|(
 name|sessionOpCount
@@ -1264,6 +1430,8 @@ argument_list|()
 decl_stmt|;
 name|logOperationDetails
 argument_list|(
+name|contentSession
+argument_list|,
 name|sessionOperation
 argument_list|)
 expr_stmt|;
@@ -1397,6 +1565,15 @@ name|getThreadSaveCount
 argument_list|()
 expr_stmt|;
 block|}
+block|}
+block|}
+finally|finally
+block|{
+name|lock
+operator|.
+name|unlock
+argument_list|()
+expr_stmt|;
 block|}
 block|}
 comment|/**      * Same as {@link #perform(SessionOperation)} unless this method expects      * {@link SessionOperation#perform}<em>not</em> to throw a {@code RepositoryException}.      * Such exceptions will be wrapped into a {@code RuntimeException} and rethrown as they      * are considered an internal error.      *      * @param sessionOperation  the {@code SessionOperation} to perform      * @param<T>  return type of {@code sessionOperation}      * @return  the result of {@code sessionOperation.perform()}      * @see #getRoot()      */
@@ -2385,12 +2562,16 @@ return|;
 block|}
 comment|//------------------------------------------------------------< internal>---
 specifier|private
+specifier|static
 parameter_list|<
 name|T
 parameter_list|>
 name|void
 name|logOperationDetails
 parameter_list|(
+name|ContentSession
+name|session
+parameter_list|,
 name|SessionOperation
 argument_list|<
 name|T
@@ -2430,11 +2611,19 @@ name|MarkerFactory
 operator|.
 name|getMarker
 argument_list|(
-name|this
+name|session
 operator|.
 name|toString
 argument_list|()
 argument_list|)
+decl_stmt|;
+name|String
+name|sessionId
+init|=
+name|session
+operator|.
+name|toString
+argument_list|()
 decl_stmt|;
 name|operationLogger
 operator|.
@@ -2448,8 +2637,7 @@ name|format
 argument_list|(
 literal|"[%s] %s"
 argument_list|,
-name|toString
-argument_list|()
+name|sessionId
 argument_list|,
 name|desc
 argument_list|)
@@ -2521,12 +2709,12 @@ name|boolean
 name|hasNext
 parameter_list|()
 block|{
-synchronized|synchronized
-init|(
-name|SessionDelegate
+name|lock
 operator|.
-name|this
-init|)
+name|lock
+argument_list|()
+expr_stmt|;
+try|try
 block|{
 return|return
 name|iterator
@@ -2534,6 +2722,14 @@ operator|.
 name|hasNext
 argument_list|()
 return|;
+block|}
+finally|finally
+block|{
+name|lock
+operator|.
+name|unlock
+argument_list|()
+expr_stmt|;
 block|}
 block|}
 annotation|@
@@ -2543,12 +2739,12 @@ name|T
 name|next
 parameter_list|()
 block|{
-synchronized|synchronized
-init|(
-name|SessionDelegate
+name|lock
 operator|.
-name|this
-init|)
+name|lock
+argument_list|()
+expr_stmt|;
+try|try
 block|{
 return|return
 name|iterator
@@ -2556,6 +2752,14 @@ operator|.
 name|next
 argument_list|()
 return|;
+block|}
+finally|finally
+block|{
+name|lock
+operator|.
+name|unlock
+argument_list|()
+expr_stmt|;
 block|}
 block|}
 annotation|@
@@ -2565,16 +2769,24 @@ name|void
 name|remove
 parameter_list|()
 block|{
-synchronized|synchronized
-init|(
-name|SessionDelegate
+name|lock
 operator|.
-name|this
-init|)
+name|lock
+argument_list|()
+expr_stmt|;
+try|try
 block|{
 name|iterator
 operator|.
 name|remove
+argument_list|()
+expr_stmt|;
+block|}
+finally|finally
+block|{
+name|lock
+operator|.
+name|unlock
 argument_list|()
 expr_stmt|;
 block|}
