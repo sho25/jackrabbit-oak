@@ -2648,13 +2648,16 @@ name|DEFAULT_MEMORY_CACHE_SIZE
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**          * Set the MongoDB connection to use. By default an in-memory store is used.          *          * @param db the MongoDB connection          * @return this          */
+comment|/**          * Use the given MongoDB as backend storage for the DocumentNodeStore.          *          * @param db the MongoDB connection          * @param changesSizeMB the size in MB of the capped collection backing          *                      the MongoDiffCache.          * @return this          */
 specifier|public
 name|Builder
 name|setMongoDB
 parameter_list|(
 name|DB
 name|db
+parameter_list|,
+name|int
+name|changesSizeMB
 parameter_list|)
 block|{
 if|if
@@ -2724,6 +2727,8 @@ name|MongoDiffCache
 argument_list|(
 name|db
 argument_list|,
+name|changesSizeMB
+argument_list|,
 name|this
 argument_list|)
 expr_stmt|;
@@ -2731,6 +2736,24 @@ block|}
 block|}
 return|return
 name|this
+return|;
+block|}
+comment|/**          * Set the MongoDB connection to use. By default an in-memory store is used.          *          * @param db the MongoDB connection          * @return this          */
+specifier|public
+name|Builder
+name|setMongoDB
+parameter_list|(
+name|DB
+name|db
+parameter_list|)
+block|{
+return|return
+name|setMongoDB
+argument_list|(
+name|db
+argument_list|,
+literal|8
+argument_list|)
 return|;
 block|}
 comment|/**          * Sets a JDBC connection URL to use for the RDB document and blob          * stores.          *          * @return this          */

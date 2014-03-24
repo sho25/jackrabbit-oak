@@ -666,6 +666,14 @@ decl_stmt|;
 specifier|private
 specifier|static
 specifier|final
+name|int
+name|DEFAULT_CHANGES_SIZE
+init|=
+literal|256
+decl_stmt|;
+specifier|private
+specifier|static
+specifier|final
 name|String
 name|DEFAULT_DB
 init|=
@@ -777,6 +785,21 @@ name|String
 name|PROP_OFF_HEAP_CACHE
 init|=
 literal|"offHeapCache"
+decl_stmt|;
+annotation|@
+name|Property
+argument_list|(
+name|intValue
+operator|=
+name|DEFAULT_CHANGES_SIZE
+argument_list|)
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|PROP_CHANGES_SIZE
+init|=
+literal|"changesSize"
 decl_stmt|;
 comment|/**      * Boolean value indicating a blobStore is to be used      */
 specifier|public
@@ -1016,6 +1039,21 @@ argument_list|,
 name|DEFAULT_CACHE
 argument_list|)
 decl_stmt|;
+name|int
+name|changesSize
+init|=
+name|PropertiesUtil
+operator|.
+name|toInteger
+argument_list|(
+name|prop
+argument_list|(
+name|PROP_CHANGES_SIZE
+argument_list|)
+argument_list|,
+name|DEFAULT_CHANGES_SIZE
+argument_list|)
+decl_stmt|;
 name|boolean
 name|useMK
 init|=
@@ -1080,7 +1118,7 @@ name|log
 operator|.
 name|info
 argument_list|(
-literal|"Starting Document{} with host={}, db={}, cache size (MB)={}, Off Heap Cache size (MB)={}"
+literal|"Starting Document{} with host={}, db={}, cache size (MB)={}, Off Heap Cache size (MB)={}, 'changes' collection size (MB)={}"
 argument_list|,
 name|type
 argument_list|,
@@ -1094,6 +1132,8 @@ argument_list|,
 name|cacheSize
 argument_list|,
 name|offHeapCache
+argument_list|,
+name|changesSize
 argument_list|)
 expr_stmt|;
 name|log
@@ -1179,6 +1219,8 @@ operator|.
 name|setMongoDB
 argument_list|(
 name|mongoDB
+argument_list|,
+name|changesSize
 argument_list|)
 expr_stmt|;
 name|mk
