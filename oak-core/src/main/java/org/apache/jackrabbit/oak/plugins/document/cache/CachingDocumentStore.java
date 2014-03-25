@@ -67,7 +67,6 @@ extends|extends
 name|DocumentStore
 block|{
 comment|/**      * @return status information about the cache      */
-specifier|public
 name|CacheStats
 name|getCacheStats
 parameter_list|()
