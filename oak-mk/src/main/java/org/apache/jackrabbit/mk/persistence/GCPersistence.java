@@ -75,7 +75,7 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
-comment|/**      * Replace a commit. Introduced to replace dangling parent commits where      * a parent commit might be collected.      *       * @param id      *            commit id      * @param       * @return {@code true} if the commit was not marked before;      *         {@code false} otherwise      *       * @throws Exception if an error occurs      */
+comment|/**      * Replace a commit. Introduced to replace dangling parent commits where      * a parent commit might be collected.      *       * @param id commit id      * @param commit the commit      *      * @throws Exception if an error occurs      */
 name|void
 name|replaceCommit
 parameter_list|(

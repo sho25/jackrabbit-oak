@@ -110,7 +110,7 @@ parameter_list|)
 block|{         }
 block|}
 decl_stmt|;
-comment|/**      * Initialize the content of a new workspace. This method is called before      * the workspace becomes available.      *      * @param builder       builder for accessing and modifying the workspace      * @param workspaceName The name of the workspace that is being initialized.      * @param indexProvider The query index provider used within this workspace.      * @param commitHook    The commit hook(s) defined for this workspace.      * @return The modified workspace root state.      */
+comment|/**      * Initialize the content of a new workspace. This method is called before      * the workspace becomes available.      *      * @param builder       builder for accessing and modifying the workspace      * @param workspaceName The name of the workspace that is being initialized.      * @param indexProvider The query index provider used within this workspace.      * @param commitHook    The commit hook(s) defined for this workspace.      */
 name|void
 name|initialize
 parameter_list|(

@@ -420,7 +420,7 @@ return|return
 name|hashCode
 return|;
 block|}
-comment|/**      * This hash code implementation returns the hash code of the underlying stream      * @return      */
+comment|/**      * This hash code implementation returns the hash code of the underlying stream      * @return a byte array of the hash      */
 specifier|protected
 name|byte
 index|[]
@@ -450,7 +450,7 @@ literal|null
 return|;
 block|}
 comment|//------------------------------------------------------------< Object>--
-comment|/**      * To {@code Blob} instances are considered equal iff they have the      * same SHA-256 hash code  are equal.      * @param other      * @return      */
+comment|/**      * To {@code Blob} instances are considered equal iff they have the      * same SHA-256 hash code  are equal.      * @param other      */
 annotation|@
 name|Override
 specifier|public

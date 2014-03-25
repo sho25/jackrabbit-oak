@@ -186,7 +186,7 @@ name|TreePermission
 name|parentPermission
 parameter_list|)
 function_decl|;
-comment|/**      *      *      * @param parent      * @param property      * @param permissions      * @return      */
+comment|/**      *      *      * @param parent      * @param property      * @param permissions      * @return {@code true} if granted.      */
 name|boolean
 name|isGranted
 parameter_list|(
@@ -204,7 +204,7 @@ name|long
 name|permissions
 parameter_list|)
 function_decl|;
-comment|/**      *      * @param path Path of an OAK tree      * @param permissions      * @return      */
+comment|/**      *      * @param path Path of an OAK tree      * @param permissions      * @return {@code true} if granted.      */
 name|boolean
 name|isGranted
 parameter_list|(
@@ -217,7 +217,7 @@ name|long
 name|permissions
 parameter_list|)
 function_decl|;
-comment|/**      *      *      * @param tree      * @return      */
+comment|/**      *      *      * @param tree      * @return the set of privileges      */
 annotation|@
 name|Nonnull
 name|Set
@@ -232,7 +232,7 @@ name|ImmutableTree
 name|tree
 parameter_list|)
 function_decl|;
-comment|/**      *      *      * @param tree      * @param privilegeNames      * @return      */
+comment|/**      *      *      * @param tree      * @param privilegeNames      * @return {@code true} if the tree has privileges      */
 name|boolean
 name|hasPrivileges
 parameter_list|(

@@ -924,7 +924,7 @@ name|info
 argument_list|)
 return|;
 block|}
-comment|/**      * This implementation delegates to {@link KernelRootBuilder#rebase()} if {@code builder}      * is a {@link KernelNodeBuilder} instance. Otherwise Otherwise it throws an      * {@code IllegalArgumentException}.      * @param builder  the builder to rebase      * @return      */
+comment|/**      * This implementation delegates to {@link KernelRootBuilder#rebase()} if {@code builder}      * is a {@link KernelNodeBuilder} instance. Otherwise Otherwise it throws an      * {@code IllegalArgumentException}.      * @param builder  the builder to rebase      */
 annotation|@
 name|Override
 specifier|public
@@ -956,7 +956,7 @@ name|rebase
 argument_list|()
 return|;
 block|}
-comment|/**      * This implementation delegates to {@link KernelRootBuilder#reset()} if {@code builder}      * is a {@link KernelNodeBuilder} instance. Otherwise it throws an      * {@code IllegalArgumentException}.      * @param builder  the builder to rebase      * @return      */
+comment|/**      * This implementation delegates to {@link KernelRootBuilder#reset()} if {@code builder}      * is a {@link KernelNodeBuilder} instance. Otherwise it throws an      * {@code IllegalArgumentException}.      * @param builder  the builder to rebase      */
 annotation|@
 name|Override
 specifier|public

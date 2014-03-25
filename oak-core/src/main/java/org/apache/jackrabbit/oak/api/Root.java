@@ -132,7 +132,7 @@ parameter_list|)
 throws|throws
 name|CommitFailedException
 function_decl|;
-comment|/**      * Atomically persists all changes made to the tree attached to this root.      * Calling this method is equivalent to calling the      * {@link #commit(Map<String, Object> info)} method with an empty info map.      *      * @throws CommitFailedException if the commit failed      */
+comment|/**      * Atomically persists all changes made to the tree attached to this root.      * Calling this method is equivalent to calling the      * {@link #commit(Map info)} method with an empty info map.      *      * @throws CommitFailedException if the commit failed      */
 name|void
 name|commit
 parameter_list|()

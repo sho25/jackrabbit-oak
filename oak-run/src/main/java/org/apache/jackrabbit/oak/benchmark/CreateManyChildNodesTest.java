@@ -68,7 +68,7 @@ literal|"test"
 operator|+
 name|TEST_ID
 decl_stmt|;
-specifier|private
+specifier|protected
 specifier|static
 specifier|final
 name|int

@@ -1018,7 +1018,7 @@ else|:
 literal|null
 return|;
 block|}
-comment|/**      * retrieve an Iterable for going through the index in the right order without the :start node      *       * @param index the root of the index (:index)      * @return      */
+comment|/**      * retrieve an Iterable for going through the index in the right order without the :start node      *       * @param index the root of the index (:index)      * @return the iterable      */
 annotation|@
 name|Override
 annotation|@
@@ -1142,7 +1142,7 @@ return|return
 name|cne
 return|;
 block|}
-comment|/**      * search the index for the provided PropertyRestriction      *       * @param filter      * @param indexName      * @param indexMeta      * @param pr      * @return      */
+comment|/**      * search the index for the provided PropertyRestriction      *       * @param filter      * @param indexName      * @param indexMeta      * @param pr      * @return the iterable      */
 specifier|public
 name|Iterable
 argument_list|<
@@ -1182,7 +1182,7 @@ name|pr
 argument_list|)
 return|;
 block|}
-comment|/**      * queries through the index as other query() but provides the PropertyRestriction to be applied      * for advanced cases like range queries      *       * @param filter      * @param indexName      * @param indexMeta      * @param indexStorageNodeName      * @param pr      * @return      */
+comment|/**      * queries through the index as other query() but provides the PropertyRestriction to be applied      * for advanced cases like range queries      *       * @param filter      * @param indexName      * @param indexMeta      * @param indexStorageNodeName      * @param pr      * @return the iterable      */
 specifier|public
 name|Iterable
 argument_list|<

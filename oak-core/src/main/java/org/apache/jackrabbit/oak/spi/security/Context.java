@@ -123,7 +123,7 @@ name|Tree
 name|tree
 parameter_list|)
 function_decl|;
-comment|/**      * Reveals if the specified {@code TreeLocation} is defined by the security      * module that exposes this {@link Context} instance.      *      * @param tree The tree location to be tested.      * @return {@code true} if the specified tree location is related to or      * defined by the security module.      */
+comment|/**      * Reveals if the specified {@code TreeLocation} is defined by the security      * module that exposes this {@link Context} instance.      *      * @param location The tree location to be tested.      * @return {@code true} if the specified tree location is related to or      * defined by the security module.      */
 name|boolean
 name|definesLocation
 parameter_list|(

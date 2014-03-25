@@ -100,7 +100,7 @@ name|DefaultConflictHandler
 implements|implements
 name|ConflictHandler
 block|{
-comment|/**      * A {@code ConflictHandler} which always return {@link Resolution#OURS}.      */
+comment|/**      * A {@code ConflictHandler} which always return {@link org.apache.jackrabbit.oak.spi.commit.ConflictHandler.Resolution#OURS}.      */
 specifier|public
 specifier|static
 specifier|final
@@ -115,7 +115,7 @@ operator|.
 name|OURS
 argument_list|)
 decl_stmt|;
-comment|/**      * A {@code ConflictHandler} which always return {@link Resolution#THEIRS}.      */
+comment|/**      * A {@code ConflictHandler} which always return {@link org.apache.jackrabbit.oak.spi.commit.ConflictHandler.Resolution#THEIRS}.      */
 specifier|public
 specifier|static
 specifier|final

@@ -92,7 +92,7 @@ literal|false
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Returns {@code true} if this operation updates the the transient      * @return      */
+comment|/**      * Returns {@code true} if this operation updates the the transient      */
 specifier|public
 name|boolean
 name|isUpdate
@@ -102,7 +102,7 @@ return|return
 name|update
 return|;
 block|}
-comment|/**      * Return {@code true} if this operation refreshed the transient space      * @return      */
+comment|/**      * Return {@code true} if this operation refreshed the transient space      */
 specifier|public
 name|boolean
 name|isRefresh

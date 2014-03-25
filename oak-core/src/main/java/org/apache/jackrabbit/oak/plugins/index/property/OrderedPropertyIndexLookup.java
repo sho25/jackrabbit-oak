@@ -376,7 +376,7 @@ return|return
 name|cost
 return|;
 block|}
-comment|/**      * query the strategy for the provided constrains      *       * @param filter      * @param propertyName      * @param pr      * @return the resultset      */
+comment|/**      * query the strategy for the provided constrains      *       * @param filter      * @param propertyName      * @param pr      * @return the result set      */
 specifier|public
 name|Iterable
 argument_list|<
@@ -446,7 +446,7 @@ name|pr
 argument_list|)
 return|;
 block|}
-comment|/**      * return an estimated count to be used in IndexPlans.      *       * @param propertyName      * @param value      * @param filter      * @param pr      * @return      */
+comment|/**      * return an estimated count to be used in IndexPlans.      *       * @param propertyName      * @param value      * @param filter      * @param pr      * @return the estimated count      */
 specifier|public
 name|long
 name|getEstimatedEntryCount

@@ -68,7 +68,7 @@ name|int
 name|x
 parameter_list|)
 function_decl|;
-comment|/**      * Write a blob from a temporary file. The temporary file is removed      * afterwards. A file based blob stores might simply rename the file, so      * that no additional writes are necessary.      *      * @param tempFilePath the temporary file      * @return the blob id      */
+comment|/**      * Write a blob from a temporary file. The temporary file is removed      * afterwards. A file based blob stores might simply rename the file, so      * that no additional writes are necessary.      *      * @param tempFileName the temporary file name      * @return the blob id      */
 name|String
 name|writeBlob
 parameter_list|(

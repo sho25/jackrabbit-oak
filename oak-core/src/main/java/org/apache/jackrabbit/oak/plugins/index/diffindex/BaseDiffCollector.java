@@ -182,7 +182,7 @@ name|init
 init|=
 literal|false
 decl_stmt|;
-comment|/**      * @param before      *            initial state      * @param after      *            after state      * @param filter      *            filter that verifies of a NodeState qualifies or not      */
+comment|/**      * @param before initial state      * @param after after state      */
 specifier|public
 name|BaseDiffCollector
 parameter_list|(

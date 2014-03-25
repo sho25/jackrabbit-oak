@@ -418,7 +418,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This {@link ConflictHandler} implementation resolves conflicts to  * {@link Resolution#THEIRS} and in addition marks nodes where a conflict  * occurred with the mixin {@code rep:MergeConflict}:  *  *<pre>  * [rep:MergeConflict]  *   mixin  *   primaryitem rep:ours  *   + rep:ours (rep:Unstructured) protected IGNORE  *</pre>  *  * The {@code rep:ours} sub node contains our version of the node prior to  * the conflict.  *  * @see ConflictValidator  */
+comment|/**  * This {@link ConflictHandler} implementation resolves conflicts to  * {@link org.apache.jackrabbit.oak.spi.commit.ConflictHandler.Resolution#THEIRS} and in addition marks nodes where a  * conflict occurred with the mixin {@code rep:MergeConflict}:  *  *<pre>  * [rep:MergeConflict]  *   mixin  *   primaryitem rep:ours  *   + rep:ours (rep:Unstructured) protected IGNORE  *</pre>  *  * The {@code rep:ours} sub node contains our version of the node prior to  * the conflict.  *  * @see ConflictValidator  */
 end_comment
 
 begin_class

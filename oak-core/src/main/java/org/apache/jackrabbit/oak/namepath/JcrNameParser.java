@@ -44,7 +44,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Parses and validates JCR names. Upon successful completion of  * {@link #parse(String, Listener, int)}  * the specified listener is informed about the (resulting) JCR name.  * In case of failure {@link Listener#error(String)} is called indicating  * the reason.  */
+comment|/**  * Parses and validates JCR names. Upon successful completion of  * {@link #parse(String, Listener, int)}  * the specified listener is informed about the (resulting) JCR name.  * In case of failure {@link JcrNameParser.Listener#error(String)} is called indicating  * the reason.  */
 end_comment
 
 begin_class

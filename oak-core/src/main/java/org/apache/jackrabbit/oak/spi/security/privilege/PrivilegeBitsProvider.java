@@ -321,7 +321,7 @@ name|root
 argument_list|)
 return|;
 block|}
-comment|/**      * @param privilegeNames      * @return      */
+comment|/**      * Returns the bits for the given privilege names      * @param privilegeNames the names      * @return the privilege bits      */
 annotation|@
 name|Nonnull
 specifier|public
@@ -365,7 +365,7 @@ argument_list|)
 return|;
 block|}
 block|}
-comment|/**      * @param privilegeNames      * @return      */
+comment|/**      * Returns the bits for the given privilege names      * @param privilegeNames the names      * @return the privilege bits      */
 annotation|@
 name|Nonnull
 specifier|public
@@ -489,7 +489,7 @@ name|unmodifiable
 argument_list|()
 return|;
 block|}
-comment|/**      *      * @param privileges      * @param nameMapper      * @return      */
+comment|/**      * Returns the bits for the given privileges      *      * @param privileges the privileges      * @param nameMapper the name mapper      * @return the privilege bits      */
 annotation|@
 name|Nonnull
 specifier|public

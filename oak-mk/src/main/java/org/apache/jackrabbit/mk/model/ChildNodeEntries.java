@@ -151,7 +151,7 @@ name|newName
 parameter_list|)
 function_decl|;
 comment|//-------------------------------------------------------------< diff ops>
-comment|/**      * Returns those entries that exist in {@code other} but not in      * {@code this}.      *      * @param other      * @return      */
+comment|/**      * Returns those entries that exist in {@code other} but not in      * {@code this}.      *      * @param other      */
 name|Iterator
 argument_list|<
 name|ChildNodeEntry
@@ -163,7 +163,7 @@ name|ChildNodeEntries
 name|other
 parameter_list|)
 function_decl|;
-comment|/**      * Returns those entries that exist in {@code this} but not in      * {@code other}.      *      * @param other      * @return      */
+comment|/**      * Returns those entries that exist in {@code this} but not in      * {@code other}.      *      * @param other      */
 name|Iterator
 argument_list|<
 name|ChildNodeEntry
@@ -175,7 +175,7 @@ name|ChildNodeEntries
 name|other
 parameter_list|)
 function_decl|;
-comment|/**      * Returns {@code this} instance's entries that have namesakes in      * {@code other} but with different {@code id}s.      *      * @param other      * @return      */
+comment|/**      * Returns {@code this} instance's entries that have namesakes in      * {@code other} but with different {@code id}s.      *      * @param other      */
 name|Iterator
 argument_list|<
 name|ChildNodeEntry

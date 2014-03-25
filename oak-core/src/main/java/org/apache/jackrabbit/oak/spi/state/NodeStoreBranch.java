@@ -31,16 +31,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nullable
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -107,7 +97,7 @@ name|NodeState
 name|getBase
 parameter_list|()
 function_decl|;
-comment|/**      * Returns the head state of this branch.      * The head state is the state resulting from the      * base state by applying all subsequent modifications to this branch      * by {@link #setRoot(NodeState)}, {@link #move(String, String)},      * and {@link #copy(String, String)}.      *      * @return root node state      * @throws IllegalStateException if the branch is already merged      */
+comment|/**      * Returns the head state of this branch.      * The head state is the state resulting from the      * base state by applying all subsequent modifications to this branch      * by {@link #setRoot(NodeState)}.      *      * @return root node state      * @throws IllegalStateException if the branch is already merged      */
 annotation|@
 name|Nonnull
 name|NodeState

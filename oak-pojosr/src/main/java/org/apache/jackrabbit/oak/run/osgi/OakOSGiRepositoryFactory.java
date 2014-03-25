@@ -664,7 +664,7 @@ name|PojoServiceRegistry
 name|registry
 parameter_list|)
 block|{      }
-comment|/**      * @param descriptors      * @return      */
+comment|/**      * @param descriptors      * @return the bundle descriptors      */
 specifier|protected
 name|List
 argument_list|<

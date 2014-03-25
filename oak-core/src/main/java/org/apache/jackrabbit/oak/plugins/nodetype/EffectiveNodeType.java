@@ -1725,7 +1725,7 @@ name|propertyName
 argument_list|)
 throw|;
 block|}
-comment|/**      *      * @param childName The internal oak name of the target node.      * @param childEffective      * @return      * @throws ConstraintViolationException      */
+comment|/**      *      * @param childName The internal oak name of the target node.      * @param childEffective      * @return the node definition      * @throws ConstraintViolationException      */
 specifier|public
 name|NodeDefinition
 name|getNodeDefinition

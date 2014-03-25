@@ -647,7 +647,7 @@ block|}
 block|}
 block|}
 block|}
-comment|/**      *       * @param msb      * @param lsb      * @return      */
+comment|/**      *       * @param msb      * @param lsb      * @return the segment id      */
 specifier|public
 name|SegmentId
 name|getSegmentId

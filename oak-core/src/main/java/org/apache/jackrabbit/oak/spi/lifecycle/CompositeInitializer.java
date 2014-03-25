@@ -86,7 +86,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Composite repository initializer that delegates the  * {@link #initialize(NodeState)} call in sequence to all the  * component initializers.  */
+comment|/**  * Composite repository initializer that delegates the  * {@link #initialize(NodeBuilder)} call in sequence to all the  * component initializers.  */
 end_comment
 
 begin_class

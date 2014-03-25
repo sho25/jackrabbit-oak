@@ -290,7 +290,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Implementation of the {@link BlobStore} to store blobs in a cloud blob store.  *<p>  * Extends {@link AbstractBlobStore} and breaks the the binary to chunks for easier management.  */
+comment|/**  * Implementation of the {@link org.apache.jackrabbit.oak.spi.blob.BlobStore} to store blobs in a cloud blob store.  *<p>  * Extends {@link org.apache.jackrabbit.oak.spi.blob.AbstractBlobStore} and breaks the the binary to chunks for easier management.  */
 end_comment
 
 begin_class
@@ -434,7 +434,7 @@ operator|=
 name|cloudProvider
 expr_stmt|;
 block|}
-comment|/**      * Instantiates a connection to the cloud blob store.      *       * @param cloudProvider      *            the cloud provider      * @param accessKey      *            the access key      * @param secretKey      *            the secret key      * @param cloudContainer      *            the bucket      * @throws Exception      */
+comment|/**      * Instantiates a connection to the cloud blob store.      * @throws Exception if an error occurs      */
 specifier|public
 name|void
 name|init

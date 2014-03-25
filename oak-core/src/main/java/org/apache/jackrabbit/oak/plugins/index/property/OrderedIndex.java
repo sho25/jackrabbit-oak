@@ -122,7 +122,7 @@ return|return
 name|direction
 return|;
 block|}
-comment|/**          * retrieve an {@code OrderDirection} from a provided String. Will return null in case of          * no-match          *           * @param direction the direction of the sorting: ascending or descending          * @return          */
+comment|/**          * retrieve an {@code OrderDirection} from a provided String. Will return null in case of          * no-match          *           * @param direction the direction of the sorting: ascending or descending          * @return the direction          */
 annotation|@
 name|Nullable
 annotation|@

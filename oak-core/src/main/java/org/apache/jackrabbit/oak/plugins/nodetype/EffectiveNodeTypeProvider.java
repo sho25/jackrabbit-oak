@@ -102,7 +102,7 @@ name|String
 name|superName
 parameter_list|)
 function_decl|;
-comment|/**      * Calculates and returns the effective node types of the given node.      *      * @param targetNode the node for which the types should be calculated.      * @return all types of the given node      * @throws RepositoryException if the type information can not be accessed      * @see<a href="http://www.jcp.org/en/jsr/detail?id=283">JCR 2.0 Specification,      * Section 3.7.6.5</a> for the definition of the effective node type.      */
+comment|/**      * Calculates and returns the effective node types of the given node.      * Also see<a href="http://www.jcp.org/en/jsr/detail?id=283">JCR 2.0 Specification, Section 3.7.6.5</a>      * for the definition of the effective node type.      *      * @param targetNode the node for which the types should be calculated.      * @return all types of the given node      * @throws RepositoryException if the type information can not be accessed      * @see<a href="http://www.jcp.org/en/jsr/detail?id=283">JCR 2.0 Specification, Section 3.7.6.5</a>      */
 name|EffectiveNodeType
 name|getEffectiveNodeType
 parameter_list|(
@@ -112,7 +112,7 @@ parameter_list|)
 throws|throws
 name|RepositoryException
 function_decl|;
-comment|/**      * Calculates and returns the effective node types of the given tree.      *      * @param tree      * @return all node types of the given tree      * @throws RepositoryException if the type information can not be accessed,      * @see<a href="http://www.jcp.org/en/jsr/detail?id=283">JCR 2.0 Specification,      * Section 3.7.6.5</a> for the definition of the effective node type.      */
+comment|/**      * Calculates and returns the effective node types of the given tree.      * Also see<a href="http://www.jcp.org/en/jsr/detail?id=283">JCR 2.0 Specification, Section 3.7.6.5</a>      * for the definition of the effective node type.      *      * @param tree the tree      * @return all node types of the given tree      * @throws RepositoryException if the type information can not be accessed,      * @see<a href="http://www.jcp.org/en/jsr/detail?id=283">JCR 2.0 Specification, Section 3.7.6.5</a>      */
 name|EffectiveNodeType
 name|getEffectiveNodeType
 parameter_list|(

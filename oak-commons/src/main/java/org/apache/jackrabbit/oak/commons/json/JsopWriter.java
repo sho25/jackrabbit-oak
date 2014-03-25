@@ -38,7 +38,7 @@ name|JsopWriter
 name|object
 parameter_list|()
 function_decl|;
-comment|/**      * Append the key (in quotes) plus a colon. A comma is appended first if      * needed.      *      * @param name the key      * @return this      */
+comment|/**      * Append the key (in quotes) plus a colon. A comma is appended first if      * needed.      *      * @param key the key      * @return this      */
 name|JsopWriter
 name|key
 parameter_list|(
@@ -54,7 +54,7 @@ name|String
 name|value
 parameter_list|)
 function_decl|;
-comment|/**      * Append an already encoded value. A comma is appended first if needed.      *      * @param value the value      * @return this      */
+comment|/**      * Append an already encoded value. A comma is appended first if needed.      *      * @param raw the value      * @return this      */
 name|JsopWriter
 name|encodedValue
 parameter_list|(
@@ -80,7 +80,7 @@ name|char
 name|tag
 parameter_list|)
 function_decl|;
-comment|/**      * Append all entries of the given buffer.      *      * @param buffer the buffer      * @return this      */
+comment|/**      * Append all entries of the given writer.      *      * @param diff the writer      * @return this      */
 name|JsopWriter
 name|append
 parameter_list|(
@@ -88,7 +88,7 @@ name|JsopWriter
 name|diff
 parameter_list|)
 function_decl|;
-comment|/**      * Append a number. A comma is appended first if needed.      *      * @param value the value      * @return this      */
+comment|/**      * Append a number. A comma is appended first if needed.      *      * @param x the value      * @return this      */
 name|JsopWriter
 name|value
 parameter_list|(
@@ -96,7 +96,7 @@ name|long
 name|x
 parameter_list|)
 function_decl|;
-comment|/**      * Append the boolean value 'true' or 'false'. A comma is appended first if      * needed.      *      * @param value the value      * @return this      */
+comment|/**      * Append the boolean value 'true' or 'false'. A comma is appended first if      * needed.      *      * @param b the value      * @return this      */
 name|JsopWriter
 name|value
 parameter_list|(

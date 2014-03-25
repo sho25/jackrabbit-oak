@@ -220,7 +220,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Implementation of blob store for the MongoDB extending from  * {@link AbstractBlobStore}. It saves blobs into a separate collection in  * MongoDB (not using GridFS) and it supports basic garbage collection.  *  * FIXME: -Do we need to create commands for retry etc.? -Not sure if this is  * going to work for multiple MKs talking to same MongoDB?  */
+comment|/**  * Implementation of blob store for the MongoDB extending from  * {@link org.apache.jackrabbit.oak.spi.blob.AbstractBlobStore}. It saves blobs into a separate collection in  * MongoDB (not using GridFS) and it supports basic garbage collection.  *  * FIXME: -Do we need to create commands for retry etc.? -Not sure if this is  * going to work for multiple MKs talking to same MongoDB?  */
 end_comment
 
 begin_class
