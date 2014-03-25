@@ -1634,6 +1634,13 @@ argument_list|)
 expr_stmt|;
 name|stmt
 operator|.
+name|execute
+argument_list|(
+literal|"create table if not exists SETTINGS(ID varchar primary key, MODIFIED bigint, MODCOUNT bigint, DATA varchar)"
+argument_list|)
+expr_stmt|;
+name|stmt
+operator|.
 name|close
 argument_list|()
 expr_stmt|;
@@ -2608,6 +2615,20 @@ condition|)
 block|{
 return|return
 literal|"NODES"
+return|;
+block|}
+elseif|else
+if|if
+condition|(
+name|collection
+operator|==
+name|Collection
+operator|.
+name|SETTINGS
+condition|)
+block|{
+return|return
+literal|"SETTINGS"
 return|;
 block|}
 else|else
