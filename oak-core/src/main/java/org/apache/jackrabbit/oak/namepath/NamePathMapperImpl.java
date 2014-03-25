@@ -1079,6 +1079,18 @@ case|case
 literal|'['
 case|:
 comment|// possibly an index
+case|case
+literal|']'
+case|:
+comment|// illegal character if not part of index
+case|case
+literal|'|'
+case|:
+comment|// illegal character
+case|case
+literal|'*'
+case|:
+comment|// illegal character
 return|return
 literal|true
 return|;
