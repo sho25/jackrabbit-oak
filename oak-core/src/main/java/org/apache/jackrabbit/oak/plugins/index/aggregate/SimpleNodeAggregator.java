@@ -377,7 +377,10 @@ condition|)
 block|{
 name|levelsUp
 operator|=
-literal|1
+name|getDepth
+argument_list|(
+name|inc
+argument_list|)
 expr_stmt|;
 name|primaryType
 operator|.
