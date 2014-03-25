@@ -1831,7 +1831,7 @@ argument_list|(
 name|store
 argument_list|)
 expr_stmt|;
-comment|// FIXME OAK-1582 ClassCastException in MarkSweepGarbageCollector#init()
+comment|// FIXME OAK-1582 ClassCastException in MarkSweepGarbageCollector#init() if using KernelNodeStore
 name|registrations
 operator|.
 name|add
