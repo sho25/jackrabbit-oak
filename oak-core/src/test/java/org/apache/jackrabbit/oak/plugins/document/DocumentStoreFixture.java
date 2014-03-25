@@ -21,16 +21,6 @@ end_package
 
 begin_import
 import|import
-name|java
-operator|.
-name|sql
-operator|.
-name|SQLException
-import|;
-end_import
-
-begin_import
-import|import
 name|javax
 operator|.
 name|sql
@@ -232,6 +222,24 @@ specifier|public
 specifier|static
 specifier|final
 name|DocumentStoreFixture
+name|RDB_DB2
+init|=
+operator|new
+name|RDBFixture
+argument_list|(
+literal|"RDB-DB2"
+argument_list|,
+literal|"jdbc:db2://localhost:50000/OAK"
+argument_list|,
+literal|"oak"
+argument_list|,
+literal|"geheim"
+argument_list|)
+decl_stmt|;
+specifier|public
+specifier|static
+specifier|final
+name|DocumentStoreFixture
 name|MONGO
 init|=
 operator|new
@@ -411,7 +419,7 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|SQLException
+name|Exception
 name|ex
 parameter_list|)
 block|{
@@ -419,11 +427,13 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Postgres instance not available at "
+literal|"Database instance not available at "
 operator|+
 name|url
 operator|+
 literal|", skipping tests..."
+argument_list|,
+name|ex
 argument_list|)
 expr_stmt|;
 block|}

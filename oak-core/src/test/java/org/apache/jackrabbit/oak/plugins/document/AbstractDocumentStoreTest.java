@@ -162,6 +162,10 @@ block|,
 name|DocumentStoreFixture
 operator|.
 name|RDB_PG
+block|,
+name|DocumentStoreFixture
+operator|.
+name|RDB_DB2
 block|}
 decl_stmt|;
 for|for
