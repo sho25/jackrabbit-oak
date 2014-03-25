@@ -725,7 +725,9 @@ name|buf
 init|=
 operator|new
 name|StringBuffer
-argument_list|()
+argument_list|(
+name|length
+argument_list|)
 decl_stmt|;
 while|while
 condition|(
