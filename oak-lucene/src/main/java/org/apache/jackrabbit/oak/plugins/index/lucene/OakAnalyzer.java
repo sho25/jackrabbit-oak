@@ -85,9 +85,9 @@ name|lucene
 operator|.
 name|analysis
 operator|.
-name|core
+name|miscellaneous
 operator|.
-name|WhitespaceTokenizer
+name|WordDelimiterFilter
 import|;
 end_import
 
@@ -101,9 +101,9 @@ name|lucene
 operator|.
 name|analysis
 operator|.
-name|miscellaneous
+name|standard
 operator|.
-name|WordDelimiterFilter
+name|ClassicTokenizer
 import|;
 end_import
 
@@ -163,11 +163,11 @@ name|Reader
 name|reader
 parameter_list|)
 block|{
-name|WhitespaceTokenizer
+name|ClassicTokenizer
 name|src
 init|=
 operator|new
-name|WhitespaceTokenizer
+name|ClassicTokenizer
 argument_list|(
 name|matchVersion
 argument_list|,
