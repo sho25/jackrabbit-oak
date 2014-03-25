@@ -104,7 +104,7 @@ specifier|final
 name|String
 name|ID
 init|=
-literal|"/checkpoint"
+literal|"checkpoint"
 decl_stmt|;
 comment|/**      * Property name to store all checkpoint data. The data is stored as Revision => expiryTime      */
 specifier|private
@@ -113,7 +113,7 @@ specifier|final
 name|String
 name|PROP_CHECKPOINT
 init|=
-literal|"checkpoint"
+literal|"data"
 decl_stmt|;
 specifier|private
 specifier|final
@@ -223,7 +223,9 @@ name|store
 operator|.
 name|createOrUpdate
 argument_list|(
-name|NODES
+name|Collection
+operator|.
+name|SETTINGS
 argument_list|,
 name|op
 argument_list|)
@@ -234,6 +236,11 @@ return|;
 block|}
 comment|/**      * Returns the oldest valid checkpoint registered.      *      * @return oldest valid checkpoint registered. Might return null if no valid      * checkpoint found      */
 annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unchecked"
+argument_list|)
+annotation|@
 name|CheckForNull
 specifier|public
 name|Revision
@@ -241,14 +248,16 @@ name|getOldestRevisionToKeep
 parameter_list|()
 block|{
 comment|//Get uncached doc
-name|NodeDocument
+name|Document
 name|cdoc
 init|=
 name|store
 operator|.
 name|find
 argument_list|(
-name|NODES
+name|Collection
+operator|.
+name|SETTINGS
 argument_list|,
 name|ID
 argument_list|,
@@ -263,9 +272,17 @@ name|String
 argument_list|>
 name|checkpoints
 init|=
+operator|(
+name|SortedMap
+argument_list|<
+name|Revision
+argument_list|,
+name|String
+argument_list|>
+operator|)
 name|cdoc
 operator|.
-name|getLocalMap
+name|get
 argument_list|(
 name|PROP_CHECKPOINT
 argument_list|)
@@ -388,7 +405,9 @@ name|store
 operator|.
 name|findAndUpdate
 argument_list|(
-name|NODES
+name|Collection
+operator|.
+name|SETTINGS
 argument_list|,
 name|op
 argument_list|)
@@ -458,7 +477,9 @@ name|store
 operator|.
 name|createOrUpdate
 argument_list|(
-name|NODES
+name|Collection
+operator|.
+name|SETTINGS
 argument_list|,
 name|updateOp
 argument_list|)
