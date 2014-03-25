@@ -231,11 +231,6 @@ name|Boolean
 name|perform
 parameter_list|()
 block|{
-name|permissionProvider
-operator|.
-name|refresh
-argument_list|()
-expr_stmt|;
 return|return
 name|permissionProvider
 operator|.
@@ -295,11 +290,6 @@ name|Boolean
 name|perform
 parameter_list|()
 block|{
-name|permissionProvider
-operator|.
-name|refresh
-argument_list|()
-expr_stmt|;
 return|return
 name|permissionProvider
 operator|.
