@@ -339,6 +339,20 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|collect
+operator|.
+name|Sets
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -884,6 +898,22 @@ operator|.
 name|junit
 operator|.
 name|Test
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|collect
+operator|.
+name|Sets
+operator|.
+name|newHashSet
 import|;
 end_import
 
@@ -6995,10 +7025,15 @@ name|REP_PRINCIPAL_NAME
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|assertArrayEquals
+name|assertEquals
+argument_list|(
+name|newHashSet
 argument_list|(
 name|testPrivileges
+argument_list|)
 argument_list|,
+name|newHashSet
+argument_list|(
 name|privilegesFromNames
 argument_list|(
 name|TreeUtil
@@ -7008,6 +7043,7 @@ argument_list|(
 name|ace
 argument_list|,
 name|REP_PRIVILEGES
+argument_list|)
 argument_list|)
 argument_list|)
 argument_list|)
@@ -7079,11 +7115,17 @@ name|REP_PRIVILEGES
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|assertArrayEquals
+name|assertEquals
+argument_list|(
+name|newHashSet
 argument_list|(
 name|testPrivileges
+argument_list|)
 argument_list|,
+name|newHashSet
+argument_list|(
 name|privs
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|assertTrue
