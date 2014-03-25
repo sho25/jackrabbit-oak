@@ -109,6 +109,8 @@ operator|.
 name|newSingleThreadScheduledExecutor
 argument_list|()
 decl_stmt|;
+comment|// Set the drift limit to twice as high as granularity,
+comment|// plus 3ms for Thread.sleep() inaccuracy in the fast clock
 specifier|final
 name|long
 name|granularity
@@ -127,8 +129,9 @@ name|granularity
 operator|)
 operator|/
 literal|1000
+operator|+
+literal|3
 decl_stmt|;
-comment|// allow a drift twice as high
 specifier|final
 name|String
 name|diag
@@ -137,7 +140,9 @@ literal|"(estimated limit was "
 operator|+
 name|limit
 operator|+
-literal|"ms, measured granularity was "
+literal|"ms,"
+operator|+
+literal|" measured granularity was "
 operator|+
 operator|(
 name|granularity
@@ -197,14 +202,11 @@ argument_list|()
 decl_stmt|;
 name|assertTrue
 argument_list|(
-literal|"unexpected drift: "
+name|clock
 operator|+
-name|Math
-operator|.
-name|abs
-argument_list|(
+literal|" unexpected drift: "
+operator|+
 name|drift
-argument_list|)
 operator|+
 literal|"ms "
 operator|+
@@ -251,14 +253,11 @@ argument_list|()
 decl_stmt|;
 name|assertTrue
 argument_list|(
-literal|"unexpected drift: "
+name|clock
 operator|+
-name|Math
-operator|.
-name|abs
-argument_list|(
+literal|" unexpected drift ater 100ms: "
+operator|+
 name|drift
-argument_list|)
 operator|+
 literal|"ms "
 operator|+
