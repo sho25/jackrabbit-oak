@@ -53,37 +53,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|Collection
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Collections
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|Hashtable
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Iterator
 import|;
 end_import
 
@@ -163,15 +133,19 @@ end_import
 
 begin_import
 import|import
-name|com
+name|org
 operator|.
-name|google
+name|apache
 operator|.
-name|common
+name|jackrabbit
 operator|.
-name|base
+name|oak
 operator|.
-name|Predicate
+name|spi
+operator|.
+name|commit
+operator|.
+name|Observer
 import|;
 end_import
 
@@ -185,7 +159,7 @@ name|common
 operator|.
 name|base
 operator|.
-name|Predicates
+name|Predicate
 import|;
 end_import
 
@@ -228,24 +202,6 @@ operator|.
 name|collect
 operator|.
 name|Iterables
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|spi
-operator|.
-name|commit
-operator|.
-name|Observer
 import|;
 end_import
 
