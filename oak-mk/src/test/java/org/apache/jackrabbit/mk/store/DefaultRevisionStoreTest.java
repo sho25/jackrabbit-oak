@@ -508,7 +508,7 @@ name|commit
 argument_list|(
 literal|"/"
 argument_list|,
-literal|"+\"a\" : { \"c\":{}, \"d\":{} }"
+literal|"+\"a\" : { \"c\":{ \"d\":{}  }}"
 argument_list|,
 name|mk
 operator|.
