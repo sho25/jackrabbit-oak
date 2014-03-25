@@ -69,26 +69,6 @@ name|LoggerFactory
 import|;
 end_import
 
-begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|plugins
-operator|.
-name|document
-operator|.
-name|Collection
-operator|.
-name|NODES
-import|;
-end_import
-
 begin_comment
 comment|/**  * Checkpoints provide details around which revision are to be kept. Currently these  * are stored in NODES collection itself.  */
 end_comment
@@ -443,7 +423,9 @@ name|store
 operator|.
 name|find
 argument_list|(
-name|NODES
+name|Collection
+operator|.
+name|SETTINGS
 argument_list|,
 name|ID
 argument_list|)
