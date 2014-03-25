@@ -1535,12 +1535,22 @@ return|return
 literal|null
 return|;
 block|}
-comment|// newest revision is likely in the local deleted map
+comment|// the local deleted map contains the most recent revisions
+name|SortedMap
+argument_list|<
+name|Revision
+argument_list|,
 name|String
-name|value
+argument_list|>
+name|deleted
 init|=
 name|getLocalDeleted
 argument_list|()
+decl_stmt|;
+name|String
+name|value
+init|=
+name|deleted
 operator|.
 name|get
 argument_list|(
@@ -1552,9 +1562,32 @@ condition|(
 name|value
 operator|==
 literal|null
+operator|&&
+name|deleted
+operator|.
+name|headMap
+argument_list|(
+name|newestRev
+argument_list|)
+operator|.
+name|isEmpty
+argument_list|()
 condition|)
 block|{
-comment|// otherwise get from complete map
+comment|// newestRev is newer than most recent entry in local deleted
+comment|// no need to check previous docs
+return|return
+name|newestRev
+return|;
+block|}
+if|if
+condition|(
+name|value
+operator|==
+literal|null
+condition|)
+block|{
+comment|// get from complete map
 name|value
 operator|=
 name|getDeleted
