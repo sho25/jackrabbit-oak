@@ -1697,13 +1697,13 @@ block|{
 return|return
 name|nodeStore
 operator|.
-name|getBlob
+name|getBlobStore
+argument_list|()
+operator|.
+name|getBlobLength
 argument_list|(
 name|blobId
 argument_list|)
-operator|.
-name|length
-argument_list|()
 return|;
 block|}
 catch|catch
