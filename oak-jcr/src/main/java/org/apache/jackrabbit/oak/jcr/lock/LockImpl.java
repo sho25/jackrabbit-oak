@@ -485,9 +485,13 @@ return|return
 literal|null
 return|;
 block|}
-name|String
-name|owner
-init|=
+elseif|else
+if|if
+condition|(
+name|node
+operator|.
+name|isLockOwner
+argument_list|(
 name|context
 operator|.
 name|getSessionDelegate
@@ -498,39 +502,23 @@ argument_list|()
 operator|.
 name|getUserID
 argument_list|()
-decl_stmt|;
-if|if
-condition|(
-name|owner
-operator|==
-literal|null
-condition|)
-block|{
-name|owner
-operator|=
-literal|""
-expr_stmt|;
-block|}
-if|if
-condition|(
-name|owner
-operator|.
-name|equals
-argument_list|(
-name|node
-operator|.
-name|getLockOwner
-argument_list|()
 argument_list|)
 condition|)
 block|{
+comment|// The JCR spec allows the implementation to return the
+comment|// lock token even when the current session isn't already
+comment|// holding it. We use this feature to allow all sessions
+comment|// of the user who owns the lock to access its token.
 return|return
 name|token
 return|;
 block|}
+else|else
+block|{
 return|return
 literal|null
 return|;
+block|}
 block|}
 block|}
 argument_list|)
