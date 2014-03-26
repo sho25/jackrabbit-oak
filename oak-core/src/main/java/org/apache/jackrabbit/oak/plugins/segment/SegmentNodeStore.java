@@ -295,6 +295,24 @@ name|oak
 operator|.
 name|spi
 operator|.
+name|blob
+operator|.
+name|BlobStore
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
 name|commit
 operator|.
 name|ChangeDispatcher
@@ -982,14 +1000,68 @@ name|String
 name|reference
 parameter_list|)
 block|{
+comment|//Use of 'reference' here is bit overloaded. In terms of NodeStore API
+comment|//a blob reference refers to the secure reference obtained from Blob#getReference()
+comment|//However in SegmentStore terminology a blob is referred via 'external reference'
+comment|//That 'external reference' would map to blobId obtained from BlobStore#getBlobId
+name|BlobStore
+name|blobStore
+init|=
+name|store
+operator|.
+name|getBlobStore
+argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|blobStore
+operator|!=
+literal|null
+condition|)
+block|{
+name|String
+name|blobId
+init|=
+name|blobStore
+operator|.
+name|getBlobId
+argument_list|(
+name|reference
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|blobId
+operator|!=
+literal|null
+condition|)
+block|{
 return|return
 name|store
 operator|.
 name|readBlob
 argument_list|(
-name|reference
+name|blobId
 argument_list|)
 return|;
+block|}
+return|return
+literal|null
+return|;
+block|}
+throw|throw
+operator|new
+name|IllegalStateException
+argument_list|(
+literal|"Attempt to read external blob with blobId ["
+operator|+
+name|reference
+operator|+
+literal|"] "
+operator|+
+literal|"without specifying BlobStore"
+argument_list|)
+throw|;
 block|}
 annotation|@
 name|Override

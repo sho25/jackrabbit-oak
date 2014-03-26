@@ -1031,7 +1031,7 @@ name|addReference
 argument_list|(
 name|blob
 operator|.
-name|getReference
+name|getBlobId
 argument_list|()
 argument_list|)
 expr_stmt|;

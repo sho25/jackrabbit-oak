@@ -2221,7 +2221,7 @@ name|Blob
 name|readBlob
 parameter_list|(
 name|String
-name|reference
+name|blobId
 parameter_list|)
 block|{
 if|if
@@ -2237,7 +2237,7 @@ name|BlobStoreBlob
 argument_list|(
 name|blobStore
 argument_list|,
-name|reference
+name|blobId
 argument_list|)
 return|;
 block|}
@@ -2245,9 +2245,9 @@ throw|throw
 operator|new
 name|IllegalStateException
 argument_list|(
-literal|"Attempt to read external reference ["
+literal|"Attempt to read external blob with blobId ["
 operator|+
-name|reference
+name|blobId
 operator|+
 literal|"] "
 operator|+
