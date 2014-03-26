@@ -1400,6 +1400,10 @@ block|,
 operator|new
 name|GetPoliciesTest
 argument_list|()
+block|,
+operator|new
+name|ConcurrentFileWriteTest
+argument_list|()
 block|,         }
 decl_stmt|;
 name|Set
