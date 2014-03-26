@@ -216,6 +216,15 @@ name|Exception
 block|{     }
 annotation|@
 name|Override
+specifier|public
+name|void
+name|testEmptyIdentifier
+parameter_list|()
+throws|throws
+name|Exception
+block|{     }
+annotation|@
+name|Override
 annotation|@
 name|Test
 specifier|public
