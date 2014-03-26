@@ -29,6 +29,18 @@ name|Nonnull
 import|;
 end_import
 
+begin_import
+import|import
+name|javax
+operator|.
+name|management
+operator|.
+name|openmbean
+operator|.
+name|CompositeData
+import|;
+end_import
+
 begin_comment
 comment|/**  * MBean for backing up and restoring a {@code NodeStore}.  *  * @see org.apache.jackrabbit.oak.api.jmx.RepositoryManagementMBean  */
 end_comment
@@ -41,28 +53,28 @@ block|{
 comment|/**      * Initiate a backup operation.      *      * @return  the status of the operation right after it was initiated      */
 annotation|@
 name|Nonnull
-name|String
+name|CompositeData
 name|startBackup
 parameter_list|()
 function_decl|;
-comment|/**      * Backup status      *      * @return  the status of the ongoing operation or if none the terminal      * status of the last operation or {@code null} if none.      */
+comment|/**      * Backup status      *      * @return  the status of the ongoing operation or if none the terminal      * status of the last operation or<em>Status not available</em> if none.      */
 annotation|@
 name|Nonnull
-name|String
+name|CompositeData
 name|getBackupStatus
 parameter_list|()
 function_decl|;
 comment|/**      * Initiate a restore operation.      *      * @return  the status of the operation right after it was initiated      */
 annotation|@
 name|Nonnull
-name|String
+name|CompositeData
 name|startRestore
 parameter_list|()
 function_decl|;
-comment|/**      * Restore status      *      * @return  the status of the ongoing operation or if none the terminal      * status of the last operation or {@code null} if none.      */
+comment|/**      * Restore status      *      * @return  the status of the ongoing operation or if none the terminal      * status of the last operation or<em>Status not available</em> if none.      */
 annotation|@
 name|Nonnull
-name|String
+name|CompositeData
 name|getRestoreStatus
 parameter_list|()
 function_decl|;

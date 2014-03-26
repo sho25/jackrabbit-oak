@@ -29,6 +29,18 @@ name|Nonnull
 import|;
 end_import
 
+begin_import
+import|import
+name|javax
+operator|.
+name|management
+operator|.
+name|openmbean
+operator|.
+name|CompositeData
+import|;
+end_import
+
 begin_comment
 comment|/**  * MBean for starting and monitoring the progress of  * revision garbage collection.  *  * @see org.apache.jackrabbit.oak.api.jmx.RepositoryManagementMBean  */
 end_comment
@@ -46,14 +58,14 @@ decl_stmt|;
 comment|/**      * Initiate a revision garbage collection operation      *      * @return  the status of the operation right after it was initiated      */
 annotation|@
 name|Nonnull
-name|String
+name|CompositeData
 name|startRevisionGC
 parameter_list|()
 function_decl|;
-comment|/**      * Revision garbage collection status      *      * @return  the status of the ongoing operation or if none the terminal      * status of the last operation or {@code null} if none.      */
+comment|/**      * Revision garbage collection status      *      * @return  the status of the ongoing operation or if none the terminal      * status of the last operation or<em>Status not available</em> if none.      */
 annotation|@
 name|Nonnull
-name|String
+name|CompositeData
 name|getRevisionGCStatus
 parameter_list|()
 function_decl|;
