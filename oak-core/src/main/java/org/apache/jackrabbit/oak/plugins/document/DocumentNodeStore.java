@@ -1321,9 +1321,14 @@ name|BlobStoreBlob
 condition|)
 block|{
 return|return
+operator|(
+operator|(
+name|BlobStoreBlob
+operator|)
 name|blob
+operator|)
 operator|.
-name|toString
+name|getBlobId
 argument_list|()
 return|;
 block|}
@@ -1342,7 +1347,7 @@ name|getNewStream
 argument_list|()
 argument_list|)
 operator|.
-name|toString
+name|getBlobId
 argument_list|()
 expr_stmt|;
 block|}
@@ -6030,7 +6035,7 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|Blob
+name|BlobStoreBlob
 name|createBlob
 parameter_list|(
 name|InputStream
@@ -6105,7 +6110,7 @@ return|return
 literal|null
 return|;
 block|}
-comment|/**      * Returns the {@link Blob} with the given blobId.      *      * @param reference the reference of the blob.      * @return the blob.      */
+comment|/**      * Returns the {@link Blob} with the given blobId.      *      * @param blobId the blobId of the blob.      * @return the blob.      */
 specifier|public
 name|Blob
 name|getBlobFromBlobId

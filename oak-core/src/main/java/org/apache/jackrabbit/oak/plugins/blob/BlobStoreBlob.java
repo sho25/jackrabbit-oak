@@ -235,6 +235,15 @@ name|blobId
 argument_list|)
 return|;
 block|}
+specifier|public
+name|String
+name|getBlobId
+parameter_list|()
+block|{
+return|return
+name|blobId
+return|;
+block|}
 comment|//------------------------------------------------------------< Object>--
 annotation|@
 name|Override
