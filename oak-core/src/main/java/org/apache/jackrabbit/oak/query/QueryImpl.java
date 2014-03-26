@@ -4392,6 +4392,30 @@ if|if
 condition|(
 name|cost
 operator|<
+literal|0
+condition|)
+block|{
+name|LOG
+operator|.
+name|error
+argument_list|(
+literal|"cost below 0 for "
+operator|+
+name|index
+operator|.
+name|getIndexName
+argument_list|()
+operator|+
+literal|" is "
+operator|+
+name|cost
+argument_list|)
+expr_stmt|;
+block|}
+if|if
+condition|(
+name|cost
+operator|<
 name|bestCost
 condition|)
 block|{

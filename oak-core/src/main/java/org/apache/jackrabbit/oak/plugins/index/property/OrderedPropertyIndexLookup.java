@@ -204,7 +204,7 @@ comment|/**      * we're slightly more expensive than the standard PropertyIndex
 specifier|private
 specifier|static
 specifier|final
-name|int
+name|double
 name|COST_OVERHEAD
 init|=
 literal|3

@@ -416,7 +416,7 @@ comment|/**      * The cost overhead to use the index in number of read operatio
 specifier|private
 specifier|static
 specifier|final
-name|int
+name|double
 name|COST_OVERHEAD
 init|=
 literal|2
