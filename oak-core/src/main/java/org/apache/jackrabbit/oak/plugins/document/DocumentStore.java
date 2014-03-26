@@ -66,7 +66,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * The interface for the backend storage for documents.  */
+comment|/**  * The interface for the backend storage for documents.  *<p>  * For keys, the maximum length is 512 bytes in the UTF-8 representation.  */
 end_comment
 
 begin_interface
