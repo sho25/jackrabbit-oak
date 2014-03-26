@@ -17,6 +17,24 @@ name|query
 package|;
 end_package
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|api
+operator|.
+name|jmx
+operator|.
+name|QueryEngineSettingsMBean
+import|;
+end_import
+
 begin_comment
 comment|/**  * Settings of the query engine.  */
 end_comment
@@ -25,6 +43,8 @@ begin_class
 specifier|public
 class|class
 name|QueryEngineSettings
+implements|implements
+name|QueryEngineSettingsMBean
 block|{
 specifier|private
 specifier|static
@@ -69,6 +89,8 @@ init|=
 name|DEFAULT_QUERY_LIMIT_READS
 decl_stmt|;
 comment|/**      * Get the limit on how many nodes a query may read at most into memory, for      * "order by" and "distinct" queries. If this limit is exceeded, the query      * throws an exception.      *       * @return the limit      */
+annotation|@
+name|Override
 specifier|public
 name|long
 name|getLimitInMemory
@@ -79,6 +101,8 @@ name|limitInMemory
 return|;
 block|}
 comment|/**      * Change the limit.      *       * @param limitInMemory the new limit      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setLimitInMemory
@@ -95,6 +119,8 @@ name|limitInMemory
 expr_stmt|;
 block|}
 comment|/**      * Get the limit on how many nodes a query may read at most (raw read      * operations, including skipped nodes). If this limit is exceeded, the      * query throws an exception.      *       * @return the limit      */
+annotation|@
+name|Override
 specifier|public
 name|long
 name|getLimitReads
@@ -105,6 +131,8 @@ name|limitReads
 return|;
 block|}
 comment|/**      * Change the limit.      *       * @param limitReads the new limit      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setLimitReads
