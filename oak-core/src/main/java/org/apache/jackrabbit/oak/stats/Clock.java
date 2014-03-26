@@ -436,15 +436,6 @@ init|=
 literal|1000000
 decl_stmt|;
 specifier|private
-specifier|static
-specifier|final
-name|long
-name|SYNC_INTERVAL
-init|=
-literal|1000
-decl_stmt|;
-comment|// ms
-specifier|private
 name|long
 name|ms
 init|=
@@ -496,10 +487,17 @@ comment|//>= 0
 name|long
 name|msIncrease
 init|=
+operator|(
 name|nsIncrease
+operator|+
+name|NS_IN_MS
+operator|/
+literal|2
+operator|)
 operator|/
 name|NS_IN_MS
 decl_stmt|;
+comment|// round up
 if|if
 condition|(
 name|ACCURATE_CLOCK_GRANULARITY
@@ -514,11 +512,13 @@ operator|%
 name|ACCURATE_CLOCK_GRANULARITY
 expr_stmt|;
 block|}
+comment|// If last clock sync was less than one second ago, the nanosecond
+comment|// timer drift will be insignificant and there's no need to re-sync.
 if|if
 condition|(
 name|msIncrease
 operator|<
-name|SYNC_INTERVAL
+literal|1000
 condition|)
 block|{
 return|return
@@ -527,8 +527,8 @@ operator|+
 name|msIncrease
 return|;
 block|}
-else|else
-block|{
+comment|// Last clock sync was up to ten seconds ago, so we synchronize
+comment|// smoothly to avoid both drift and sudden jumps.
 name|long
 name|nowms
 init|=
@@ -537,36 +537,15 @@ operator|.
 name|getTime
 argument_list|()
 decl_stmt|;
-comment|// Check whether the system time jumped ahead or back
-comment|// from what we'd expect based on the nanosecond interval.
-comment|// If the jump was small, it was probably caused by low
-comment|// granularity of the system time. In that case we reduce
-comment|// the jump to just 0.5ms to smoothen the reported time.
-comment|// This should still keep clock drift in check as long as
-comment|// the nanosecond timings drift on average less than 0.5ms
-comment|// per second.
-name|long
-name|jump
-init|=
-name|nowms
-operator|-
-operator|(
-name|ms
-operator|+
-name|msIncrease
-operator|)
-decl_stmt|;
 if|if
 condition|(
-literal|0
+name|msIncrease
 operator|<
-name|jump
-operator|&&
-name|jump
-operator|<
-literal|1000
+literal|10000
 condition|)
 block|{
+comment|// 1) increase the ms and ns timestamps as if the estimated
+comment|//    ms increase was entirely correct
 name|ms
 operator|+=
 name|msIncrease
@@ -576,11 +555,53 @@ operator|+=
 name|msIncrease
 operator|*
 name|NS_IN_MS
+expr_stmt|;
+comment|// 2) compare the resulting time with the wall clock to see
+comment|//    if we're out of sync and to adjust accordingly
+name|long
+name|jump
+init|=
+name|nowms
 operator|-
+name|ms
+decl_stmt|;
+if|if
+condition|(
+name|jump
+operator|==
+literal|0
+condition|)
+block|{
+comment|// 2a) No deviation from wall clock.
+return|return
+name|ms
+return|;
+block|}
+elseif|else
+if|if
+condition|(
+literal|0
+operator|<
+name|jump
+operator|&&
+name|jump
+operator|<
+literal|100
+condition|)
+block|{
+comment|// 2b) The wall clock is up to 100ms ahead of us, probably
+comment|// because of its low granularity. Adjust the ns timestamp
+comment|// 0.1ms backward for future clock readings to jump that
+comment|// much ahead to eventually catch up with the wall clock.
+name|ns
+operator|-=
 name|NS_IN_MS
 operator|/
-literal|2
+literal|10
 expr_stmt|;
+return|return
+name|ms
+return|;
 block|}
 elseif|else
 if|if
@@ -592,28 +613,36 @@ operator|&&
 name|jump
 operator|>
 operator|-
-literal|1000
+literal|100
 condition|)
 block|{
-comment|// Note that the Math.max(..., 0) above will cause the
-comment|// reported time to stay constant for a while instead
-comment|// of going backwards because of this.
-name|ms
-operator|+=
-name|msIncrease
-expr_stmt|;
+comment|// 2c) The wall clock is up to 100ms behind us, probably
+comment|// because of its low granularity. Adjust the ns timestamp
+comment|// 0.1ms forward for future clock readings to stay constant
+comment|// (because of the Math.max(..., 0) above) for that long
+comment|// to eventually catch up with the wall clock.
 name|ns
 operator|+=
-name|msIncrease
-operator|*
-name|NS_IN_MS
-operator|+
 name|NS_IN_MS
 operator|/
-literal|2
+literal|10
 expr_stmt|;
+return|return
+name|ms
+return|;
 block|}
-else|else
+block|}
+comment|// Last clock sync was over 10s ago or the nanosecond timer has
+comment|// drifted more than 100ms from the wall clock, so it's best to
+comment|// to a hard sync with no smoothing.
+if|if
+condition|(
+name|nowms
+operator|>=
+name|ms
+operator|+
+literal|1000
+condition|)
 block|{
 name|ms
 operator|=
@@ -624,10 +653,36 @@ operator|=
 name|nowns
 expr_stmt|;
 block|}
+else|else
+block|{
+comment|// Prevent the clock from moving backwards by setting the
+comment|// ms timestamp to exactly 1s ahead of the last sync time
+comment|// (to account for the time between clock syncs), and
+comment|// adjusting the ns timestamp ahead so that the reported time
+comment|// will stall until the clock would again move ahead.
+name|ms
+operator|=
+name|ms
+operator|+
+literal|1000
+expr_stmt|;
+comment|// the 1s clock sync interval from above
+name|ns
+operator|=
+name|nowns
+operator|+
+operator|(
+name|ms
+operator|-
+name|nowms
+operator|)
+operator|*
+name|NS_IN_MS
+expr_stmt|;
+block|}
 return|return
 name|ms
 return|;
-block|}
 block|}
 annotation|@
 name|Override
