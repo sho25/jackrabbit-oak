@@ -1333,7 +1333,7 @@ name|add
 argument_list|(
 name|store
 operator|.
-name|getBlob
+name|getBlobFromBlobId
 argument_list|(
 name|value
 argument_list|)
