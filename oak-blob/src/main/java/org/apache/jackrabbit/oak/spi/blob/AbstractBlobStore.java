@@ -1098,7 +1098,7 @@ block|{
 name|checkArgument
 argument_list|(
 name|referenceKey
-operator|==
+operator|!=
 literal|null
 argument_list|,
 literal|"Reference key already initialized by default means. "
