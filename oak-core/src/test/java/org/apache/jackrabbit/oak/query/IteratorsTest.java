@@ -139,6 +139,14 @@ class|class
 name|IteratorsTest
 block|{
 specifier|private
+name|QueryEngineSettings
+name|settings
+init|=
+operator|new
+name|QueryEngineSettings
+argument_list|()
+decl_stmt|;
+specifier|private
 specifier|static
 specifier|final
 name|Comparator
@@ -197,6 +205,8 @@ name|newDistinct
 argument_list|(
 name|it
 argument_list|()
+argument_list|,
+name|settings
 argument_list|)
 argument_list|)
 argument_list|)
@@ -215,6 +225,8 @@ name|it
 argument_list|(
 literal|1
 argument_list|)
+argument_list|,
+name|settings
 argument_list|)
 argument_list|)
 argument_list|)
@@ -235,6 +247,8 @@ literal|1
 argument_list|,
 literal|2
 argument_list|)
+argument_list|,
+name|settings
 argument_list|)
 argument_list|)
 argument_list|)
@@ -263,6 +277,8 @@ literal|3
 argument_list|,
 literal|1
 argument_list|)
+argument_list|,
+name|settings
 argument_list|)
 argument_list|)
 argument_list|)
@@ -776,6 +792,8 @@ argument_list|,
 name|INT_COMP
 argument_list|,
 literal|0
+argument_list|,
+name|settings
 argument_list|)
 argument_list|)
 argument_list|)
@@ -798,6 +816,8 @@ argument_list|,
 name|INT_COMP
 argument_list|,
 literal|0
+argument_list|,
+name|settings
 argument_list|)
 argument_list|)
 argument_list|)
@@ -820,6 +840,8 @@ argument_list|,
 name|INT_COMP
 argument_list|,
 literal|1
+argument_list|,
+name|settings
 argument_list|)
 argument_list|)
 argument_list|)
@@ -842,6 +864,8 @@ argument_list|,
 name|INT_COMP
 argument_list|,
 literal|2
+argument_list|,
+name|settings
 argument_list|)
 argument_list|)
 argument_list|)
@@ -866,6 +890,8 @@ argument_list|,
 name|INT_COMP
 argument_list|,
 literal|1
+argument_list|,
+name|settings
 argument_list|)
 argument_list|)
 argument_list|)
@@ -890,6 +916,8 @@ argument_list|,
 name|INT_COMP
 argument_list|,
 literal|1
+argument_list|,
+name|settings
 argument_list|)
 argument_list|)
 argument_list|)
@@ -916,6 +944,8 @@ argument_list|,
 name|INT_COMP
 argument_list|,
 literal|2
+argument_list|,
+name|settings
 argument_list|)
 argument_list|)
 argument_list|)
@@ -942,6 +972,8 @@ argument_list|,
 name|INT_COMP
 argument_list|,
 literal|2
+argument_list|,
+name|settings
 argument_list|)
 argument_list|)
 argument_list|)
@@ -972,6 +1004,8 @@ argument_list|,
 name|INT_COMP
 argument_list|,
 literal|3
+argument_list|,
+name|settings
 argument_list|)
 argument_list|)
 argument_list|)
@@ -1015,6 +1049,8 @@ argument_list|,
 literal|0
 argument_list|,
 literal|null
+argument_list|,
+name|settings
 argument_list|)
 argument_list|)
 argument_list|)
@@ -1050,6 +1086,8 @@ argument_list|,
 literal|0
 argument_list|,
 literal|null
+argument_list|,
+name|settings
 argument_list|)
 argument_list|)
 argument_list|)
@@ -1085,6 +1123,8 @@ argument_list|,
 literal|0
 argument_list|,
 name|INT_COMP
+argument_list|,
+name|settings
 argument_list|)
 argument_list|)
 argument_list|)
@@ -1120,6 +1160,8 @@ argument_list|,
 literal|0
 argument_list|,
 name|INT_COMP
+argument_list|,
+name|settings
 argument_list|)
 argument_list|)
 argument_list|)
@@ -1153,6 +1195,8 @@ argument_list|,
 literal|0
 argument_list|,
 literal|null
+argument_list|,
+name|settings
 argument_list|)
 argument_list|)
 argument_list|)
@@ -1188,6 +1232,8 @@ argument_list|,
 literal|1
 argument_list|,
 literal|null
+argument_list|,
+name|settings
 argument_list|)
 argument_list|)
 argument_list|)
@@ -1221,6 +1267,8 @@ argument_list|,
 literal|1
 argument_list|,
 literal|null
+argument_list|,
+name|settings
 argument_list|)
 argument_list|)
 argument_list|)
@@ -1254,6 +1302,8 @@ argument_list|,
 literal|1
 argument_list|,
 literal|null
+argument_list|,
+name|settings
 argument_list|)
 argument_list|)
 argument_list|)
@@ -1287,6 +1337,8 @@ argument_list|,
 literal|1
 argument_list|,
 name|INT_COMP
+argument_list|,
+name|settings
 argument_list|)
 argument_list|)
 argument_list|)

@@ -86,39 +86,7 @@ specifier|public
 class|class
 name|FilterIterators
 block|{
-comment|/**      * How many nodes a query may read at most into memory, for "order by" and      * "distinct" queries. If this limit is exceeded, the query throws an      * exception.      */
-specifier|public
-specifier|static
-specifier|final
-name|int
-name|QUERY_LIMIT_IN_MEMORY
-init|=
-name|Integer
-operator|.
-name|getInteger
-argument_list|(
-literal|"oak.queryLimitInMemory"
-argument_list|,
-literal|10000
-argument_list|)
-decl_stmt|;
-comment|/**      * How many nodes a query may read at most (raw read operations, including      * skipped nodes). If this limit is exceeded, the query throws an exception.      */
-specifier|public
-specifier|static
-specifier|final
-name|int
-name|QUERY_LIMIT_READS
-init|=
-name|Integer
-operator|.
-name|getInteger
-argument_list|(
-literal|"oak.queryLimitReads"
-argument_list|,
-literal|100000
-argument_list|)
-decl_stmt|;
-comment|/**      * Verify the number of in-memory nodes is below the limit.      *       * @param count the number of nodes      * @throws UnsupportedOperationException if the limit was exceeded      */
+comment|/**      * Verify the number of in-memory nodes is below the limit.      *       * @param count the number of nodes      * @param maxMemoryEntries the maximum number of nodes      * @throws UnsupportedOperationException if the limit was exceeded      */
 specifier|public
 specifier|static
 name|void
@@ -126,13 +94,16 @@ name|checkMemoryLimit
 parameter_list|(
 name|long
 name|count
+parameter_list|,
+name|long
+name|maxMemoryEntries
 parameter_list|)
 block|{
 if|if
 condition|(
 name|count
 operator|>
-name|QUERY_LIMIT_IN_MEMORY
+name|maxMemoryEntries
 condition|)
 block|{
 throw|throw
@@ -141,7 +112,7 @@ name|UnsupportedOperationException
 argument_list|(
 literal|"The query read more than "
 operator|+
-name|QUERY_LIMIT_IN_MEMORY
+name|maxMemoryEntries
 operator|+
 literal|" nodes in memory. "
 operator|+
@@ -158,13 +129,16 @@ name|checkReadLimit
 parameter_list|(
 name|long
 name|count
+parameter_list|,
+name|long
+name|maxReadEntries
 parameter_list|)
 block|{
 if|if
 condition|(
 name|count
 operator|>
-name|QUERY_LIMIT_READS
+name|maxReadEntries
 condition|)
 block|{
 throw|throw
@@ -173,7 +147,7 @@ name|UnsupportedOperationException
 argument_list|(
 literal|"The query read or traversed more than "
 operator|+
-name|QUERY_LIMIT_READS
+name|maxReadEntries
 operator|+
 literal|" nodes. "
 operator|+
@@ -213,6 +187,9 @@ argument_list|<
 name|K
 argument_list|>
 name|orderBy
+parameter_list|,
+name|QueryEngineSettings
+name|settings
 parameter_list|)
 block|{
 if|if
@@ -227,6 +204,8 @@ operator|.
 name|newDistinct
 argument_list|(
 name|it
+argument_list|,
+name|settings
 argument_list|)
 expr_stmt|;
 block|}
@@ -286,6 +265,8 @@ argument_list|,
 name|orderBy
 argument_list|,
 name|max
+argument_list|,
+name|settings
 argument_list|)
 expr_stmt|;
 block|}
@@ -349,6 +330,9 @@ argument_list|<
 name|K
 argument_list|>
 name|it
+parameter_list|,
+name|QueryEngineSettings
+name|settings
 parameter_list|)
 block|{
 return|return
@@ -359,6 +343,8 @@ name|K
 argument_list|>
 argument_list|(
 name|it
+argument_list|,
+name|settings
 argument_list|)
 return|;
 block|}
@@ -455,6 +441,9 @@ name|orderBy
 parameter_list|,
 name|int
 name|max
+parameter_list|,
+name|QueryEngineSettings
+name|settings
 parameter_list|)
 block|{
 return|return
@@ -469,6 +458,8 @@ argument_list|,
 name|orderBy
 argument_list|,
 name|max
+argument_list|,
+name|settings
 argument_list|)
 return|;
 block|}
@@ -495,6 +486,11 @@ name|source
 decl_stmt|;
 specifier|private
 specifier|final
+name|long
+name|maxMemoryEntries
+decl_stmt|;
+specifier|private
+specifier|final
 name|HashSet
 argument_list|<
 name|K
@@ -516,6 +512,9 @@ argument_list|<
 name|K
 argument_list|>
 name|source
+parameter_list|,
+name|QueryEngineSettings
+name|settings
 parameter_list|)
 block|{
 name|this
@@ -523,6 +522,15 @@ operator|.
 name|source
 operator|=
 name|source
+expr_stmt|;
+name|this
+operator|.
+name|maxMemoryEntries
+operator|=
+name|settings
+operator|.
+name|getLimitInMemory
+argument_list|()
 expr_stmt|;
 name|distinctSet
 operator|=
@@ -577,6 +585,8 @@ name|distinctSet
 operator|.
 name|size
 argument_list|()
+argument_list|,
+name|maxMemoryEntries
 argument_list|)
 expr_stmt|;
 return|return;
@@ -693,6 +703,11 @@ name|source
 decl_stmt|;
 specifier|private
 specifier|final
+name|long
+name|maxMemoryEntries
+decl_stmt|;
+specifier|private
+specifier|final
 name|Comparator
 argument_list|<
 name|K
@@ -727,6 +742,9 @@ name|orderBy
 parameter_list|,
 name|int
 name|max
+parameter_list|,
+name|QueryEngineSettings
+name|settings
 parameter_list|)
 block|{
 name|this
@@ -746,6 +764,15 @@ operator|.
 name|max
 operator|=
 name|max
+expr_stmt|;
+name|this
+operator|.
+name|maxMemoryEntries
+operator|=
+name|settings
+operator|.
+name|getLimitInMemory
+argument_list|()
 expr_stmt|;
 block|}
 specifier|private
@@ -804,6 +831,8 @@ name|list
 operator|.
 name|size
 argument_list|()
+argument_list|,
+name|maxMemoryEntries
 argument_list|)
 expr_stmt|;
 comment|// from time to time, sort and truncate

@@ -1351,6 +1351,11 @@ argument_list|<
 name|String
 argument_list|>
 argument_list|()
+argument_list|,
+name|query
+operator|.
+name|getSettings
+argument_list|()
 argument_list|)
 expr_stmt|;
 return|return;
@@ -1543,6 +1548,11 @@ argument_list|,
 name|query
 operator|.
 name|getStatement
+argument_list|()
+argument_list|,
+name|query
+operator|.
+name|getSettings
 argument_list|()
 argument_list|)
 decl_stmt|;

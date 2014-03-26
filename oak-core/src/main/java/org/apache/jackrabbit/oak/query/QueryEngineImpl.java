@@ -513,6 +513,14 @@ argument_list|(
 name|JCR_NODE_TYPES
 argument_list|)
 decl_stmt|;
+name|QueryEngineSettings
+name|settings
+init|=
+name|context
+operator|.
+name|getSettings
+argument_list|()
+decl_stmt|;
 name|SQL2Parser
 name|parser
 init|=
@@ -522,6 +530,8 @@ argument_list|(
 name|mapper
 argument_list|,
 name|types
+argument_list|,
+name|settings
 argument_list|)
 decl_stmt|;
 if|if

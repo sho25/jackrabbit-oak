@@ -288,6 +288,11 @@ init|=
 operator|-
 literal|1
 decl_stmt|;
+specifier|private
+specifier|final
+name|QueryEngineSettings
+name|settings
+decl_stmt|;
 name|UnionQueryImpl
 parameter_list|(
 name|boolean
@@ -298,6 +303,9 @@ name|left
 parameter_list|,
 name|Query
 name|right
+parameter_list|,
+name|QueryEngineSettings
+name|settings
 parameter_list|)
 block|{
 name|this
@@ -317,6 +325,12 @@ operator|.
 name|right
 operator|=
 name|right
+expr_stmt|;
+name|this
+operator|.
+name|settings
+operator|=
+name|settings
 expr_stmt|;
 block|}
 annotation|@
@@ -1206,6 +1220,8 @@ argument_list|,
 name|offset
 argument_list|,
 name|orderBy
+argument_list|,
+name|settings
 argument_list|)
 expr_stmt|;
 return|return

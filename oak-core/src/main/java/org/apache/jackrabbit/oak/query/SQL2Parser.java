@@ -764,6 +764,11 @@ specifier|private
 name|NamePathMapper
 name|namePathMapper
 decl_stmt|;
+specifier|private
+specifier|final
+name|QueryEngineSettings
+name|settings
+decl_stmt|;
 comment|/**      * Create a new parser. A parser can be re-used, but it is not thread safe.      *       * @param namePathMapper the name-path mapper to use      * @param types the node with the node type information      */
 specifier|public
 name|SQL2Parser
@@ -773,6 +778,9 @@ name|namePathMapper
 parameter_list|,
 name|NodeState
 name|types
+parameter_list|,
+name|QueryEngineSettings
+name|settings
 parameter_list|)
 block|{
 name|this
@@ -788,6 +796,15 @@ operator|=
 name|checkNotNull
 argument_list|(
 name|types
+argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|settings
+operator|=
+name|checkNotNull
+argument_list|(
+name|settings
 argument_list|)
 expr_stmt|;
 block|}
@@ -919,6 +936,8 @@ argument_list|,
 name|q
 argument_list|,
 name|q2
+argument_list|,
+name|settings
 argument_list|)
 expr_stmt|;
 block|}
@@ -1149,6 +1168,8 @@ argument_list|,
 name|columnArray
 argument_list|,
 name|namePathMapper
+argument_list|,
+name|settings
 argument_list|)
 decl_stmt|;
 name|q

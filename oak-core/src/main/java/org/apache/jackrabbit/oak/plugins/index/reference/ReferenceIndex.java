@@ -605,6 +605,8 @@ argument_list|,
 name|name
 argument_list|,
 name|REF_NAME
+argument_list|,
+name|filter
 argument_list|)
 return|;
 block|}
@@ -646,6 +648,8 @@ argument_list|,
 name|name
 argument_list|,
 name|WEAK_REF_NAME
+argument_list|,
+name|filter
 argument_list|)
 return|;
 block|}
@@ -658,6 +662,11 @@ name|ArrayList
 argument_list|<
 name|String
 argument_list|>
+argument_list|()
+argument_list|,
+name|filter
+operator|.
+name|getQueryEngineSettings
 argument_list|()
 argument_list|)
 return|;
@@ -679,6 +688,9 @@ name|name
 parameter_list|,
 name|String
 name|index
+parameter_list|,
+name|Filter
+name|filter
 parameter_list|)
 block|{
 name|NodeState
@@ -713,6 +725,11 @@ name|ArrayList
 argument_list|<
 name|String
 argument_list|>
+argument_list|()
+argument_list|,
+name|filter
+operator|.
+name|getQueryEngineSettings
 argument_list|()
 argument_list|)
 return|;
@@ -840,6 +857,11 @@ return|return
 name|newPathCursor
 argument_list|(
 name|paths
+argument_list|,
+name|filter
+operator|.
+name|getQueryEngineSettings
+argument_list|()
 argument_list|)
 return|;
 block|}

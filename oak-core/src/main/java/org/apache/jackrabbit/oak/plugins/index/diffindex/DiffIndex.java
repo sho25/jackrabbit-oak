@@ -188,6 +188,11 @@ name|getResults
 argument_list|(
 name|filter
 argument_list|)
+argument_list|,
+name|filter
+operator|.
+name|getQueryEngineSettings
+argument_list|()
 argument_list|)
 return|;
 block|}

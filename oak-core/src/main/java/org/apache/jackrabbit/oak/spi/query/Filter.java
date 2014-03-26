@@ -107,6 +107,22 @@ name|oak
 operator|.
 name|query
 operator|.
+name|QueryEngineSettings
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|query
+operator|.
 name|fulltext
 operator|.
 name|FullTextExpression
@@ -143,6 +159,10 @@ function_decl|;
 comment|/**      * Get the fulltext search condition expression, if any.      *       * @return the condition (null if none)      */
 name|FullTextExpression
 name|getFullTextConstraint
+parameter_list|()
+function_decl|;
+name|QueryEngineSettings
+name|getQueryEngineSettings
 parameter_list|()
 function_decl|;
 comment|/**      * Whether the filter contains a native condition.      *       * @return true if it does      */

@@ -884,6 +884,11 @@ operator|.
 name|newPathCursor
 argument_list|(
 name|paths
+argument_list|,
+name|filter
+operator|.
+name|getQueryEngineSettings
+argument_list|()
 argument_list|)
 decl_stmt|;
 if|if
@@ -904,6 +909,11 @@ argument_list|,
 name|depth
 operator|-
 literal|1
+argument_list|,
+name|filter
+operator|.
+name|getQueryEngineSettings
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}

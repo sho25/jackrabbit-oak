@@ -178,6 +178,10 @@ argument_list|(
 literal|null
 argument_list|,
 name|types
+argument_list|,
+operator|new
+name|QueryEngineSettings
+argument_list|()
 argument_list|)
 decl_stmt|;
 annotation|@

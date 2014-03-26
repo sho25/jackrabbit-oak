@@ -107,6 +107,22 @@ name|oak
 operator|.
 name|query
 operator|.
+name|QueryEngineSettings
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|query
+operator|.
 name|ast
 operator|.
 name|Operator
@@ -389,6 +405,10 @@ name|class
 argument_list|)
 argument_list|,
 literal|""
+argument_list|,
+operator|new
+name|QueryEngineSettings
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|filter
@@ -535,6 +555,10 @@ name|class
 argument_list|)
 argument_list|,
 literal|""
+argument_list|,
+operator|new
+name|QueryEngineSettings
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|filter
@@ -683,6 +707,10 @@ name|class
 argument_list|)
 argument_list|,
 literal|""
+argument_list|,
+operator|new
+name|QueryEngineSettings
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|filter
@@ -826,6 +854,10 @@ name|class
 argument_list|)
 argument_list|,
 literal|""
+argument_list|,
+operator|new
+name|QueryEngineSettings
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|filter
@@ -1008,6 +1040,10 @@ argument_list|(
 name|selector
 argument_list|,
 literal|"select * from [nt:folder]"
+argument_list|,
+operator|new
+name|QueryEngineSettings
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|Cursor
