@@ -79,8 +79,6 @@ begin_class
 specifier|public
 class|class
 name|RDBDataSourceFactory
-extends|extends
-name|RDBMeta
 block|{
 specifier|public
 specifier|static
