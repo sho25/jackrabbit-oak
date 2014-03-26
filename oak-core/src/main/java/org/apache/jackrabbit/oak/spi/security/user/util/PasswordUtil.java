@@ -736,15 +736,20 @@ return|return
 literal|false
 return|;
 block|}
-comment|/**      * Compare two strings. The comparison is constant time: it will always loop      * over all characters and doesn't use conditional operations in the loop to      * make sure an attacker can not use a timing attack.      *       * @param a      * @param b      * @return true if both parameters contain the same data.      */
+comment|//------------------------------------------------------------< private>---
+comment|/**      * Compare two strings. The comparison is constant time: it will always loop      * over all characters and doesn't use conditional operations in the loop to      * make sure an attacker can not use a timing attack.      *      * @param a      * @param b      * @return true if both parameters contain the same data.      */
 specifier|private
 specifier|static
 name|boolean
 name|compareSecure
 parameter_list|(
+annotation|@
+name|Nullable
 name|String
 name|a
 parameter_list|,
+annotation|@
+name|Nullable
 name|String
 name|b
 parameter_list|)
@@ -856,7 +861,6 @@ operator|==
 literal|0
 return|;
 block|}
-comment|//------------------------------------------------------------< private>---
 specifier|private
 specifier|static
 name|String
