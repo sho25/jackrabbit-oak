@@ -629,7 +629,7 @@ block|{
 name|String
 name|jdbcurl
 init|=
-literal|"jdbc:h2:file:oaknodes"
+literal|"jdbc:h2:file:./target/oaknodes"
 decl_stmt|;
 name|DataSource
 name|ds
