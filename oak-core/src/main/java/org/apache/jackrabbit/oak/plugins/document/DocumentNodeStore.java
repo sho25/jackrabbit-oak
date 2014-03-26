@@ -6054,7 +6054,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-comment|/**      * Returns the {@link Blob} with the given blobId.      *      * @param reference the reference of the blob.      * @return the blob.      */
+comment|/**      * Returns the {@link Blob} with the given reference. Note that this method is meant to      * be used with secure reference obtained from Blob#reference which is different from blobId      *      * @param reference the reference of the blob.      * @return the blob.      */
 annotation|@
 name|Override
 specifier|public
@@ -6103,6 +6103,25 @@ argument_list|)
 expr_stmt|;
 return|return
 literal|null
+return|;
+block|}
+comment|/**      * Returns the {@link Blob} with the given blobId.      *      * @param reference the reference of the blob.      * @return the blob.      */
+specifier|public
+name|Blob
+name|getBlobFromBlobId
+parameter_list|(
+name|String
+name|blobId
+parameter_list|)
+block|{
+return|return
+operator|new
+name|BlobStoreBlob
+argument_list|(
+name|blobStore
+argument_list|,
+name|blobId
+argument_list|)
 return|;
 block|}
 annotation|@
