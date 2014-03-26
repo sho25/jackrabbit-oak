@@ -70,14 +70,13 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Checkpoints provide details around which revision are to be kept. Currently these  * are stored in NODES collection itself.  */
+comment|/**  * Checkpoints provide details around which revision are to be kept. These  * are stored in Settings collection.  */
 end_comment
 
 begin_class
 class|class
 name|Checkpoints
 block|{
-comment|/**      * Id of checkpoint document. It differs from normal convention of ID used for NodeDocument      * which back JCR Nodes as it is internal to DocumentNodeStore      */
 specifier|private
 specifier|static
 specifier|final
