@@ -112,7 +112,7 @@ decl_stmt|;
 specifier|private
 specifier|final
 name|String
-name|id
+name|blobId
 decl_stmt|;
 specifier|public
 name|BlobStoreBlob
@@ -121,7 +121,7 @@ name|BlobStore
 name|blobStore
 parameter_list|,
 name|String
-name|id
+name|blobId
 parameter_list|)
 block|{
 name|this
@@ -132,9 +132,9 @@ name|blobStore
 expr_stmt|;
 name|this
 operator|.
-name|id
+name|blobId
 operator|=
-name|id
+name|blobId
 expr_stmt|;
 block|}
 annotation|@
@@ -153,7 +153,7 @@ name|blobStore
 operator|.
 name|getInputStream
 argument_list|(
-name|id
+name|blobId
 argument_list|)
 return|;
 block|}
@@ -171,7 +171,7 @@ literal|"Error occurred while obtaining "
 operator|+
 literal|"InputStream for blobId ["
 operator|+
-name|id
+name|blobId
 operator|+
 literal|"]"
 argument_list|,
@@ -194,13 +194,13 @@ name|blobStore
 operator|.
 name|getBlobLength
 argument_list|(
-name|id
+name|blobId
 argument_list|)
 return|;
 block|}
 catch|catch
 parameter_list|(
-name|Exception
+name|IOException
 name|e
 parameter_list|)
 block|{
@@ -210,7 +210,7 @@ name|IllegalArgumentException
 argument_list|(
 literal|"Invalid blob id: "
 operator|+
-name|id
+name|blobId
 argument_list|,
 name|e
 argument_list|)
@@ -227,7 +227,12 @@ name|getReference
 parameter_list|()
 block|{
 return|return
-name|id
+name|blobStore
+operator|.
+name|getReference
+argument_list|(
+name|blobId
+argument_list|)
 return|;
 block|}
 comment|//------------------------------------------------------------< Object>--
@@ -239,7 +244,7 @@ name|toString
 parameter_list|()
 block|{
 return|return
-name|id
+name|blobId
 return|;
 block|}
 annotation|@
@@ -250,7 +255,7 @@ name|hashCode
 parameter_list|()
 block|{
 return|return
-name|id
+name|blobId
 operator|.
 name|hashCode
 argument_list|()
@@ -297,11 +302,11 @@ comment|// even if the id is different
 return|return
 name|b
 operator|.
-name|id
+name|blobId
 operator|.
 name|equals
 argument_list|(
-name|id
+name|blobId
 argument_list|)
 return|;
 block|}
