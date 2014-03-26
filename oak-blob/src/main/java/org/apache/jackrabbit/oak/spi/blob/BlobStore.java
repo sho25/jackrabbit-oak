@@ -39,6 +39,16 @@ name|InputStream
 import|;
 end_import
 
+begin_import
+import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|CheckForNull
+import|;
+end_import
+
 begin_comment
 comment|/**  * An interface to store and read large binary objects.  */
 end_comment
@@ -100,6 +110,26 @@ name|blobId
 parameter_list|)
 throws|throws
 name|IOException
+function_decl|;
+comment|/**      * Returns the blobId that referred by the given binary reference.      * Returns {@code null} if the reference is invalid, for example if it      * points to a blob that does not exist.      *      * @param reference binary reference      * @return matching blobId, or {@code null}      */
+annotation|@
+name|CheckForNull
+name|String
+name|getBlobId
+parameter_list|(
+name|String
+name|reference
+parameter_list|)
+function_decl|;
+comment|/**      * Returns a secure reference to blob referred by blobid, or {@code null} if no such      * reference is available.      *      * @param blobId blobId referring the blob for which reference is required      * @return binary reference, or {@code null}      */
+annotation|@
+name|CheckForNull
+name|String
+name|getReference
+parameter_list|(
+name|String
+name|blobId
+parameter_list|)
 function_decl|;
 block|}
 end_interface
