@@ -83,11 +83,7 @@ name|NAME
 init|=
 literal|"org.apache.jackrabbit.oak.authentication.token"
 decl_stmt|;
-name|String
-name|PARAM_TOKEN_OPTIONS
-init|=
-literal|"org.apache.jackrabbit.oak.authentication.token"
-decl_stmt|;
+comment|/**      * Returns a new instance of {@link org.apache.jackrabbit.oak.spi.security.authentication.token.TokenProvider}.      *      * @param root The target root.      * @return A new instance of {@link org.apache.jackrabbit.oak.spi.security.authentication.token.TokenProvider}.      */
 annotation|@
 name|Nonnull
 name|TokenProvider

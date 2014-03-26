@@ -339,7 +339,7 @@ name|NAME
 return|;
 block|}
 comment|//-------------------------------------------------< TokenConfiguration>---
-comment|/**      * Returns a new instance of {@link org.apache.jackrabbit.oak.spi.security.authentication.token.TokenProvider}.      *      *<h4>Configuration Options</h4>      *<ul>      *<li>{@link #PARAM_TOKEN_OPTIONS}: The configuration parameters for      *     the token provider which allows to change the default expiration time      *     and the length of the generated token.</li>      *</ul>      *      * @param root The target root.      * @return A new instance of {@link org.apache.jackrabbit.oak.spi.security.authentication.token.TokenProvider}.      */
+comment|/**      * Returns a new instance of {@link org.apache.jackrabbit.oak.spi.security.authentication.token.TokenProvider}.      *      * @param root The target root.      * @return A new instance of {@link org.apache.jackrabbit.oak.spi.security.authentication.token.TokenProvider}.      */
 annotation|@
 name|Nonnull
 annotation|@
@@ -352,21 +352,6 @@ name|Root
 name|root
 parameter_list|)
 block|{
-name|ConfigurationParameters
-name|tokenOptions
-init|=
-name|getParameters
-argument_list|()
-operator|.
-name|getConfigValue
-argument_list|(
-name|PARAM_TOKEN_OPTIONS
-argument_list|,
-name|ConfigurationParameters
-operator|.
-name|EMPTY
-argument_list|)
-decl_stmt|;
 name|UserConfiguration
 name|uc
 init|=
@@ -386,7 +371,8 @@ name|TokenProviderImpl
 argument_list|(
 name|root
 argument_list|,
-name|tokenOptions
+name|getParameters
+argument_list|()
 argument_list|,
 name|uc
 argument_list|)
