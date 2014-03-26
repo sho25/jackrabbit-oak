@@ -49,6 +49,16 @@ name|CheckForNull
 import|;
 end_import
 
+begin_import
+import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|Nonnull
+import|;
+end_import
+
 begin_comment
 comment|/**  * An interface to store and read large binary objects.  */
 end_comment
@@ -117,6 +127,8 @@ name|CheckForNull
 name|String
 name|getBlobId
 parameter_list|(
+annotation|@
+name|Nonnull
 name|String
 name|reference
 parameter_list|)
@@ -127,6 +139,8 @@ name|CheckForNull
 name|String
 name|getReference
 parameter_list|(
+annotation|@
+name|Nonnull
 name|String
 name|blobId
 parameter_list|)
