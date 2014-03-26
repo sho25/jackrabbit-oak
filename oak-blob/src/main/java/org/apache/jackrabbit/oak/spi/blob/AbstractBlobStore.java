@@ -135,6 +135,16 @@ begin_import
 import|import
 name|java
 operator|.
+name|security
+operator|.
+name|SecureRandom
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|ArrayDeque
@@ -356,6 +366,22 @@ operator|.
 name|slf4j
 operator|.
 name|LoggerFactory
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkArgument
 import|;
 end_import
 
@@ -796,6 +822,7 @@ literal|0
 argument_list|)
 return|;
 block|}
+comment|//--------------------------------------------< Blob Reference>
 annotation|@
 name|Override
 specifier|public
@@ -832,7 +859,8 @@ argument_list|(
 operator|new
 name|SecretKeySpec
 argument_list|(
-name|referenceKey
+name|getReferenceKey
+argument_list|()
 argument_list|,
 name|ALGORITHM
 argument_list|)
@@ -994,6 +1022,70 @@ return|return
 literal|null
 return|;
 block|}
+comment|/**      * Returns the reference key of this blob store. If one does not already      * exist, it is automatically created in an implementation-specific way.      * The default implementation simply creates a temporary random key that's      * valid only until the data store gets restarted. Subclasses can override      * and/or decorate this method to support a more persistent reference key.      *<p>      * This method is called only once during the lifetime of a data store      * instance and the return value is cached in memory, so it's no problem      * if the implementation is slow.      *      * @return reference key      */
+specifier|protected
+name|byte
+index|[]
+name|getOrCreateReferenceKey
+parameter_list|()
+block|{
+name|byte
+index|[]
+name|referenceKeyValue
+init|=
+operator|new
+name|byte
+index|[
+literal|256
+index|]
+decl_stmt|;
+operator|new
+name|SecureRandom
+argument_list|()
+operator|.
+name|nextBytes
+argument_list|(
+name|referenceKeyValue
+argument_list|)
+expr_stmt|;
+name|log
+operator|.
+name|info
+argument_list|(
+literal|"Reference key is not specified for the BlobStore in use. Generating a random key. For stable "
+operator|+
+literal|"reference ensure that reference key is specified"
+argument_list|)
+expr_stmt|;
+return|return
+name|referenceKeyValue
+return|;
+block|}
+comment|/**      * Returns the reference key of this data store. Synchronized to      * control concurrent access to the cached {@link #referenceKey} value.      *      * @return reference key      */
+specifier|private
+specifier|synchronized
+name|byte
+index|[]
+name|getReferenceKey
+parameter_list|()
+block|{
+if|if
+condition|(
+name|referenceKey
+operator|==
+literal|null
+condition|)
+block|{
+name|referenceKey
+operator|=
+name|getOrCreateReferenceKey
+argument_list|()
+expr_stmt|;
+block|}
+return|return
+name|referenceKey
+return|;
+block|}
 specifier|public
 name|void
 name|setReferenceKey
@@ -1003,6 +1095,17 @@ index|[]
 name|referenceKey
 parameter_list|)
 block|{
+name|checkArgument
+argument_list|(
+name|referenceKey
+operator|==
+literal|null
+argument_list|,
+literal|"Reference key already initialized by default means. "
+operator|+
+literal|"To explicitly set it, setReferenceKey must be invoked before its first use"
+argument_list|)
+expr_stmt|;
 name|this
 operator|.
 name|referenceKey
@@ -1019,10 +1122,8 @@ name|String
 name|encodedKey
 parameter_list|)
 block|{
-name|this
-operator|.
-name|referenceKey
-operator|=
+name|setReferenceKey
+argument_list|(
 name|BaseEncoding
 operator|.
 name|base64
@@ -1031,6 +1132,7 @@ operator|.
 name|decode
 argument_list|(
 name|encodedKey
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -1043,10 +1145,8 @@ name|String
 name|textKey
 parameter_list|)
 block|{
-name|this
-operator|.
-name|referenceKey
-operator|=
+name|setReferenceKey
+argument_list|(
 name|textKey
 operator|.
 name|getBytes
@@ -1054,6 +1154,7 @@ argument_list|(
 name|Charsets
 operator|.
 name|UTF_8
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
