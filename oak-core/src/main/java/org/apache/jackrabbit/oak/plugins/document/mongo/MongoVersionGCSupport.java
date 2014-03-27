@@ -77,6 +77,16 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|mongodb
+operator|.
+name|ReadPreference
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -164,6 +174,10 @@ operator|.
 name|transform
 import|;
 end_import
+
+begin_comment
+comment|/**  * Mongo specific version of VersionGCSupport which uses mongo queries  * to fetch required NodeDocuments  *  *<p>Version collection involves looking into old record and mostly unmodified  * documents. In such case read from secondaries are preferred</p>  */
+end_comment
 
 begin_class
 specifier|public
@@ -254,6 +268,14 @@ operator|.
 name|find
 argument_list|(
 name|query
+argument_list|)
+operator|.
+name|setReadPreference
+argument_list|(
+name|ReadPreference
+operator|.
+name|secondaryPreferred
+argument_list|()
 argument_list|)
 decl_stmt|;
 return|return

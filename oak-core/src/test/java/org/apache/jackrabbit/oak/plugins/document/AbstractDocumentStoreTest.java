@@ -97,7 +97,7 @@ name|ds
 operator|=
 name|dsf
 operator|.
-name|getDocumentStore
+name|createDocumentStore
 argument_list|()
 expr_stmt|;
 name|this

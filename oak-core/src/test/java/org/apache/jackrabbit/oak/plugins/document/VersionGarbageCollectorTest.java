@@ -397,7 +397,7 @@ name|setDocumentStore
 argument_list|(
 name|fixture
 operator|.
-name|getDocumentStore
+name|createDocumentStore
 argument_list|()
 argument_list|)
 operator|.
@@ -432,7 +432,7 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|fixture
+name|store
 operator|.
 name|dispose
 argument_list|()
@@ -715,15 +715,6 @@ argument_list|)
 expr_stmt|;
 comment|//TODO Add test scenario for deletion along with previous docs
 block|}
-annotation|@
-name|Test
-specifier|public
-name|void
-name|sample
-parameter_list|()
-throws|throws
-name|Exception
-block|{      }
 block|}
 end_class
 
