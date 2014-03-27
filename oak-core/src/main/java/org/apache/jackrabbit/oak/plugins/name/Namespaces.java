@@ -1498,6 +1498,51 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+name|i
+operator|==
+literal|0
+operator|&&
+name|Character
+operator|.
+name|isWhitespace
+argument_list|(
+name|ch
+argument_list|)
+condition|)
+block|{
+return|return
+literal|false
+return|;
+comment|// leading whitespace
+block|}
+elseif|else
+if|if
+condition|(
+name|i
+operator|==
+name|local
+operator|.
+name|length
+argument_list|()
+operator|-
+literal|1
+operator|&&
+name|Character
+operator|.
+name|isWhitespace
+argument_list|(
+name|ch
+argument_list|)
+condition|)
+block|{
+return|return
+literal|false
+return|;
+comment|// trailing whitespace
+block|}
+elseif|else
+if|if
+condition|(
 literal|"/:[]|*"
 operator|.
 name|indexOf
@@ -1513,6 +1558,7 @@ comment|// TODO: XMLChar check
 return|return
 literal|false
 return|;
+comment|// invalid name character
 block|}
 block|}
 comment|// TODO: Other name rules?
