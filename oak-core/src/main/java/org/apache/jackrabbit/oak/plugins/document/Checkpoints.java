@@ -266,6 +266,24 @@ argument_list|(
 name|PROP_CHECKPOINT
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|checkpoints
+operator|==
+literal|null
+condition|)
+block|{
+name|log
+operator|.
+name|debug
+argument_list|(
+literal|"No checkpoint registered so far"
+argument_list|)
+expr_stmt|;
+return|return
+literal|null
+return|;
+block|}
 specifier|final
 name|long
 name|currentTime
