@@ -6228,6 +6228,7 @@ return|;
 block|}
 comment|//----------------------< background operations>---------------------------
 specifier|public
+specifier|synchronized
 name|void
 name|runBackgroundOperations
 parameter_list|()

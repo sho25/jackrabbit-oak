@@ -1889,8 +1889,8 @@ operator|.
 name|open
 argument_list|()
 decl_stmt|;
-name|Session
-name|session
+name|Repository
+name|repository
 init|=
 operator|new
 name|Jcr
@@ -1903,6 +1903,11 @@ argument_list|)
 operator|.
 name|createRepository
 argument_list|()
+decl_stmt|;
+name|Session
+name|session
+init|=
+name|repository
 operator|.
 name|login
 argument_list|(
@@ -1922,6 +1927,11 @@ name|session
 operator|.
 name|logout
 argument_list|()
+expr_stmt|;
+name|dispose
+argument_list|(
+name|repository
+argument_list|)
 expr_stmt|;
 name|mk
 operator|.
