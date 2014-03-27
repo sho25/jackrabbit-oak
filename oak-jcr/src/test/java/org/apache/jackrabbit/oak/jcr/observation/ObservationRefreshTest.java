@@ -499,6 +499,14 @@ specifier|private
 specifier|static
 specifier|final
 name|String
+name|TEST_NODE_TYPE
+init|=
+literal|"oak:Unstructured"
+decl_stmt|;
+specifier|private
+specifier|static
+specifier|final
+name|String
 name|REFERENCEABLE_NODE
 init|=
 literal|"\"referenceable\""
@@ -622,6 +630,8 @@ operator|.
 name|addNode
 argument_list|(
 name|TEST_NODE
+argument_list|,
+name|TEST_NODE_TYPE
 argument_list|)
 decl_stmt|;
 name|n
