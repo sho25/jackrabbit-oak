@@ -204,6 +204,28 @@ name|String
 name|key
 parameter_list|)
 function_decl|;
+comment|/**      * Batch remove documents with given key.      *      * @param<T> the document type      * @param collection the collection      * @param keys list of keys      */
+parameter_list|<
+name|T
+extends|extends
+name|Document
+parameter_list|>
+name|void
+name|remove
+parameter_list|(
+name|Collection
+argument_list|<
+name|T
+argument_list|>
+name|collection
+parameter_list|,
+name|List
+argument_list|<
+name|String
+argument_list|>
+name|keys
+parameter_list|)
+function_decl|;
 comment|/**      * Try to create a list of documents.      *      * @param<T> the document type      * @param collection the collection      * @param updateOps the list of documents to add      * @return true if this worked (if none of the documents already existed)      */
 parameter_list|<
 name|T
