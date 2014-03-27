@@ -65,16 +65,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|HashSet
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|List
 import|;
 end_import
@@ -1566,9 +1556,11 @@ argument_list|,
 name|changeRev
 argument_list|,
 operator|new
-name|HashSet
+name|HashMap
 argument_list|<
 name|Revision
+argument_list|,
+name|String
 argument_list|>
 argument_list|()
 argument_list|)
@@ -1688,7 +1680,7 @@ return|return
 name|newestRev
 return|;
 block|}
-comment|/**      * Checks if the revision is valid for the given document. A revision is      * considered valid if the given document is the root of the commit, or the      * commit root has the revision set. This method may read further documents      * to perform this check.      * This method also takes pending branches into consideration.      * The<code>readRevision</code> identifies the read revision used by the      * client, which may be a branch revision logged in {@link RevisionContext#getBranches()}.      * The revision<code>rev</code> is valid if it is part of the branch      * history of<code>readRevision</code>.      *      * @param rev     revision to check.      * @param commitValue the commit value of the revision to check or      *<code>null</code> if unknown.      * @param readRevision the read revision of the client.      * @param validRevisions set of revisions already checked against      *<code>readRevision</code> and considered valid.      * @return<code>true</code> if the revision is valid;<code>false</code>      *         otherwise.      */
+comment|/**      * Checks if the revision is valid for the given document. A revision is      * considered valid if the given document is the root of the commit, or the      * commit root has the revision set. This method may read further documents      * to perform this check.      * This method also takes pending branches into consideration.      * The<code>readRevision</code> identifies the read revision used by the      * client, which may be a branch revision logged in {@link RevisionContext#getBranches()}.      * The revision<code>rev</code> is valid if it is part of the branch      * history of<code>readRevision</code>.      *      * @param rev     revision to check.      * @param commitValue the commit value of the revision to check or      *<code>null</code> if unknown.      * @param readRevision the read revision of the client.      * @param validRevisions map of revisions to commit value already checked      *                       against<code>readRevision</code> and considered      *                       valid.      * @return<code>true</code> if the revision is valid;<code>false</code>      *         otherwise.      */
 name|boolean
 name|isValidRevision
 parameter_list|(
@@ -1714,9 +1706,11 @@ name|readRevision
 parameter_list|,
 annotation|@
 name|Nonnull
-name|Set
+name|Map
 argument_list|<
 name|Revision
+argument_list|,
+name|String
 argument_list|>
 name|validRevisions
 parameter_list|)
@@ -1725,7 +1719,7 @@ if|if
 condition|(
 name|validRevisions
 operator|.
-name|contains
+name|containsKey
 argument_list|(
 name|rev
 argument_list|)
@@ -1772,9 +1766,11 @@ condition|)
 block|{
 name|validRevisions
 operator|.
-name|add
+name|put
 argument_list|(
 name|rev
+argument_list|,
+name|commitValue
 argument_list|)
 expr_stmt|;
 return|return
@@ -1808,17 +1804,17 @@ name|Revision
 name|lastModified
 parameter_list|)
 block|{
-name|Set
+name|Map
 argument_list|<
 name|Revision
+argument_list|,
+name|String
 argument_list|>
 name|validRevisions
 init|=
-operator|new
-name|HashSet
-argument_list|<
-name|Revision
-argument_list|>
+name|Maps
+operator|.
+name|newHashMap
 argument_list|()
 decl_stmt|;
 name|Revision
@@ -2212,7 +2208,7 @@ return|return
 name|n
 return|;
 block|}
-comment|/**      * Get the earliest (oldest) revision where the node was alive at or before      * the provided revision, if the node was alive at the given revision.      *      * @param context the revision context      * @param maxRev the maximum revision to return      * @param validRevisions the set of revisions already checked against maxRev      *            and considered valid.      * @return the earliest revision, or null if the node is deleted at the      *         given revision      */
+comment|/**      * Get the earliest (oldest) revision where the node was alive at or before      * the provided revision, if the node was alive at the given revision.      *      * @param context the revision context      * @param maxRev the maximum revision to return      * @param validRevisions the map of revisions to commit value already      *                       checked against maxRev and considered valid.      * @return the earliest revision, or null if the node is deleted at the      *         given revision      */
 annotation|@
 name|CheckForNull
 specifier|public
@@ -2225,9 +2221,11 @@ parameter_list|,
 name|Revision
 name|maxRev
 parameter_list|,
-name|Set
+name|Map
 argument_list|<
 name|Revision
+argument_list|,
+name|String
 argument_list|>
 name|validRevisions
 parameter_list|)
@@ -5348,7 +5346,7 @@ operator|>=
 literal|0
 return|;
 block|}
-comment|/**      * Get the latest property value that is larger or equal the min revision,      * and smaller or equal the readRevision revision.      *      * @param valueMap the sorted revision-value map      * @param min the minimum revision (null meaning unlimited)      * @param readRevision the maximum revision      * @param validRevisions set of revision considered valid against the given      *                       readRevision.      * @return the value, or null if not found      */
+comment|/**      * Get the latest property value that is larger or equal the min revision,      * and smaller or equal the readRevision revision.      *      * @param valueMap the sorted revision-value map      * @param min the minimum revision (null meaning unlimited)      * @param readRevision the maximum revision      * @param validRevisions map of revision to commit value considered valid      *                       against the given readRevision.      * @return the value, or null if not found      */
 annotation|@
 name|CheckForNull
 specifier|private
@@ -5382,9 +5380,11 @@ name|readRevision
 parameter_list|,
 annotation|@
 name|Nonnull
-name|Set
+name|Map
 argument_list|<
 name|Revision
+argument_list|,
+name|String
 argument_list|>
 name|validRevisions
 parameter_list|)
@@ -5441,6 +5441,23 @@ condition|)
 block|{
 continue|continue;
 block|}
+name|String
+name|commitValue
+init|=
+name|validRevisions
+operator|.
+name|get
+argument_list|(
+name|propRev
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|commitValue
+operator|==
+literal|null
+condition|)
+block|{
 comment|// resolve revision
 name|NodeDocument
 name|commitRoot
@@ -5459,16 +5476,15 @@ condition|)
 block|{
 continue|continue;
 block|}
-name|String
 name|commitValue
-init|=
+operator|=
 name|commitRoot
 operator|.
 name|getCommitValue
 argument_list|(
 name|propRev
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 if|if
 condition|(
 name|commitValue
@@ -5477,6 +5493,7 @@ literal|null
 condition|)
 block|{
 continue|continue;
+block|}
 block|}
 if|if
 condition|(
