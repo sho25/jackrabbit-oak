@@ -2353,17 +2353,24 @@ name|NodeState
 name|root
 parameter_list|)
 block|{
-comment|//        if (log.isDebugEnabled()) {
+if|if
+condition|(
 name|log
 operator|.
-name|info
+name|isDebugEnabled
+argument_list|()
+condition|)
+block|{
+name|log
+operator|.
+name|debug
 argument_list|(
 literal|"converting filter {}"
 argument_list|,
 name|filter
 argument_list|)
 expr_stmt|;
-comment|//        }
+block|}
 name|Cursor
 name|cursor
 decl_stmt|;
@@ -2377,17 +2384,24 @@ argument_list|(
 name|filter
 argument_list|)
 decl_stmt|;
-comment|//            if (log.isDebugEnabled()) {
+if|if
+condition|(
 name|log
 operator|.
-name|info
+name|isDebugEnabled
+argument_list|()
+condition|)
+block|{
+name|log
+operator|.
+name|debug
 argument_list|(
 literal|"sending query {}"
 argument_list|,
 name|query
 argument_list|)
 expr_stmt|;
-comment|//            }
+block|}
 name|QueryResponse
 name|queryResponse
 init|=
