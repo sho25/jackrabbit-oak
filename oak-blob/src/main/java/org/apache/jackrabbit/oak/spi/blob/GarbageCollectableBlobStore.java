@@ -50,7 +50,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A blob store that support garbage collection.  */
+comment|/**  * A blob store that supports garbage collection.  */
 end_comment
 
 begin_interface
