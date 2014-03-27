@@ -1373,6 +1373,27 @@ literal|"("
 argument_list|)
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|i
+operator|>
+literal|0
+operator|&&
+name|i
+operator|<
+name|pts
+operator|.
+name|length
+condition|)
+block|{
+name|queryBuilder
+operator|.
+name|append
+argument_list|(
+literal|"OR "
+argument_list|)
+expr_stmt|;
+block|}
 name|queryBuilder
 operator|.
 name|append
@@ -1398,29 +1419,6 @@ argument_list|(
 literal|" "
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|i
-operator|>
-literal|0
-operator|&&
-name|i
-operator|<
-name|pts
-operator|.
-name|length
-operator|-
-literal|1
-condition|)
-block|{
-name|queryBuilder
-operator|.
-name|append
-argument_list|(
-literal|"OR "
-argument_list|)
-expr_stmt|;
-block|}
 if|if
 condition|(
 name|i
@@ -2355,24 +2353,17 @@ name|NodeState
 name|root
 parameter_list|)
 block|{
-if|if
-condition|(
+comment|//        if (log.isDebugEnabled()) {
 name|log
 operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
-name|log
-operator|.
-name|debug
+name|info
 argument_list|(
 literal|"converting filter {}"
 argument_list|,
 name|filter
 argument_list|)
 expr_stmt|;
-block|}
+comment|//        }
 name|Cursor
 name|cursor
 decl_stmt|;
@@ -2386,24 +2377,17 @@ argument_list|(
 name|filter
 argument_list|)
 decl_stmt|;
-if|if
-condition|(
+comment|//            if (log.isDebugEnabled()) {
 name|log
 operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
-name|log
-operator|.
-name|debug
+name|info
 argument_list|(
 literal|"sending query {}"
 argument_list|,
 name|query
 argument_list|)
 expr_stmt|;
-block|}
+comment|//            }
 name|QueryResponse
 name|queryResponse
 init|=
