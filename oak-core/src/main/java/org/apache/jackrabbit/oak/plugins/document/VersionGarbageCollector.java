@@ -73,6 +73,20 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|collect
+operator|.
+name|ImmutableList
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -419,10 +433,15 @@ control|(
 name|NodeDocument
 name|prevDoc
 range|:
+name|ImmutableList
+operator|.
+name|copyOf
+argument_list|(
 name|doc
 operator|.
 name|getAllPreviousDocs
 argument_list|()
+argument_list|)
 control|)
 block|{
 name|docIdsToDelete
