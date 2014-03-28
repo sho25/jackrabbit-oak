@@ -4368,7 +4368,7 @@ return|;
 block|}
 comment|//Currently this method would fire one query per previous doc
 comment|//If that poses a problem we can try to find all prev doc by relying
-comment|//on property that all prevDoc id would starts<depth+2>:/path/to/node
+comment|//on property that all prevDoc id would starts<depth+2>:p/path/to/node
 return|return
 operator|new
 name|AbstractIterator
