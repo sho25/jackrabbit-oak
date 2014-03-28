@@ -1847,10 +1847,24 @@ name|gc
 operator|.
 name|init
 argument_list|(
+operator|new
+name|DocumentBlobReferenceRetriever
+argument_list|(
 name|store
+operator|.
+name|getReferencedBlobsIterator
+argument_list|()
+argument_list|)
+argument_list|,
+operator|(
+name|GarbageCollectableBlobStore
+operator|)
+name|store
+operator|.
+name|getBlobStore
+argument_list|()
 argument_list|)
 expr_stmt|;
-comment|// FIXME OAK-1582 ClassCastException in MarkSweepGarbageCollector#init() if using KernelNodeStore
 name|registrations
 operator|.
 name|add
@@ -1875,7 +1889,7 @@ name|BlobGCMBean
 operator|.
 name|TYPE
 argument_list|,
-literal|"Segment node store blob garbage collection"
+literal|"Document node store blob garbage collection"
 argument_list|)
 argument_list|)
 expr_stmt|;

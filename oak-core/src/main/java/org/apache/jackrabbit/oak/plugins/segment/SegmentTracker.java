@@ -123,6 +123,24 @@ name|Set
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|blob
+operator|.
+name|ReferenceCollector
+import|;
+end_import
+
 begin_comment
 comment|/**  * Tracker of references to segment identifiers and segment instances  * that are currently kept in memory.  */
 end_comment
