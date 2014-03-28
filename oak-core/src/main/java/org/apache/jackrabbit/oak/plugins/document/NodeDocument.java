@@ -147,6 +147,18 @@ name|util
 operator|.
 name|concurrent
 operator|.
+name|TimeUnit
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
 name|atomic
 operator|.
 name|AtomicLong
@@ -610,12 +622,12 @@ name|COLLISIONS
 init|=
 literal|"_collisions"
 decl_stmt|;
-comment|/**      * The modified time (5 second resolution).      */
+comment|/**      * The modified time in seconds (5 second resolution).      */
 specifier|public
 specifier|static
 specifier|final
 name|String
-name|MODIFIED
+name|MODIFIED_IN_SECS
 init|=
 literal|"_modified"
 decl_stmt|;
@@ -739,9 +751,9 @@ specifier|public
 specifier|static
 specifier|final
 name|String
-name|SD_MAX_REV_TS
+name|SD_MAX_REV_TIME_IN_SECS
 init|=
-literal|"_sdMaxRevTs"
+literal|"_sdMaxRevTime"
 decl_stmt|;
 comment|/**      * A document which is created from splitting a main document can be classified      * into multiple types depending on the content i.e. weather it contains      * REVISIONS, COMMIT_ROOT, property history etc      */
 specifier|public
@@ -869,7 +881,7 @@ name|ID
 argument_list|,
 name|MOD_COUNT
 argument_list|,
-name|MODIFIED
+name|MODIFIED_IN_SECS
 argument_list|,
 name|PREVIOUS
 argument_list|,
@@ -1085,7 +1097,7 @@ operator|&&
 name|deletedOnceFlag
 return|;
 block|}
-comment|/**      * Checks if this document has been modified after the given lastModifiedTime      *      * @param lastModifiedTime time to compare against      * @return<tt>true</tt> if this document was modified after the given      *  lastModifiedTime      */
+comment|/**      * Checks if this document has been modified after the given lastModifiedTime      *      * @param lastModifiedTime time to compare against in millis      * @return<tt>true</tt> if this document was modified after the given      *  lastModifiedTime      */
 specifier|public
 name|boolean
 name|hasBeenModifiedSince
@@ -1102,7 +1114,7 @@ name|Long
 operator|)
 name|get
 argument_list|(
-name|MODIFIED
+name|MODIFIED_IN_SECS
 argument_list|)
 decl_stmt|;
 return|return
@@ -1112,7 +1124,14 @@ literal|null
 operator|&&
 name|modified
 operator|>
+name|TimeUnit
+operator|.
+name|MILLISECONDS
+operator|.
+name|toSeconds
+argument_list|(
 name|lastModifiedTime
+argument_list|)
 return|;
 block|}
 comment|/**      * Determines if this document is a split document      *      * @return<tt>true</tt> if this document is a split document      */
@@ -4725,11 +4744,11 @@ argument_list|)
 operator|.
 name|set
 argument_list|(
-name|MODIFIED
+name|MODIFIED_IN_SECS
 argument_list|,
 name|Commit
 operator|.
-name|getModified
+name|getModifiedInSecs
 argument_list|(
 name|checkNotNull
 argument_list|(
@@ -5337,12 +5356,17 @@ argument_list|)
 operator|.
 name|set
 argument_list|(
-name|SD_MAX_REV_TS
+name|SD_MAX_REV_TIME_IN_SECS
 argument_list|,
+name|Commit
+operator|.
+name|getModifiedInSecs
+argument_list|(
 name|maxRev
 operator|.
 name|getTimestamp
 argument_list|()
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

@@ -4444,7 +4444,7 @@ argument_list|)
 operator|||
 name|NodeDocument
 operator|.
-name|MODIFIED
+name|MODIFIED_IN_SECS
 operator|.
 name|equals
 argument_list|(
@@ -7205,7 +7205,7 @@ name|minValue
 init|=
 name|Commit
 operator|.
-name|getModified
+name|getModifiedInSecs
 argument_list|(
 name|minTimestamp
 argument_list|)
@@ -7260,7 +7260,7 @@ name|toKey
 argument_list|,
 name|NodeDocument
 operator|.
-name|MODIFIED
+name|MODIFIED_IN_SECS
 argument_list|,
 name|minValue
 argument_list|,

@@ -971,7 +971,7 @@ name|put
 argument_list|(
 name|NodeDocument
 operator|.
-name|MODIFIED
+name|MODIFIED_IN_SECS
 argument_list|,
 operator|-
 literal|1L

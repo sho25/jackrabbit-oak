@@ -536,10 +536,11 @@ return|return
 name|op
 return|;
 block|}
+comment|/**      * Return time in seconds with 5 second resolution      *      * @param timestamp time in millis to convert      * @return      */
 specifier|public
 specifier|static
 name|long
-name|getModified
+name|getModifiedInSecs
 parameter_list|(
 name|long
 name|timestamp
@@ -558,23 +559,12 @@ argument_list|(
 name|timestamp
 argument_list|)
 decl_stmt|;
-name|timeInSec
-operator|=
+return|return
 name|timeInSec
 operator|-
 name|timeInSec
 operator|%
 literal|5
-expr_stmt|;
-return|return
-name|TimeUnit
-operator|.
-name|SECONDS
-operator|.
-name|toMillis
-argument_list|(
-name|timeInSec
-argument_list|)
 return|;
 block|}
 comment|/**      * The revision for this new commit. That is, the changes within this commit      * will be visible with this revision.      *      * @return the revision for this new commit.      */
