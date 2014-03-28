@@ -487,6 +487,15 @@ name|maxRevisionAge
 expr_stmt|;
 block|}
 specifier|public
+name|long
+name|getMaxRevisionAge
+parameter_list|()
+block|{
+return|return
+name|maxRevisionAge
+return|;
+block|}
+specifier|public
 specifier|static
 class|class
 name|VersionGCStats
