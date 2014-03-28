@@ -513,6 +513,27 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+else|else
+block|{
+if|if
+condition|(
+name|log
+operator|.
+name|isWarnEnabled
+argument_list|()
+condition|)
+block|{
+name|log
+operator|.
+name|warn
+argument_list|(
+literal|"cannot create Solr query index as SolrServer {} is unreachable"
+argument_list|,
+name|solrServer
+argument_list|)
+expr_stmt|;
+block|}
+block|}
 block|}
 catch|catch
 parameter_list|(
