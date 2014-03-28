@@ -602,7 +602,6 @@ operator|.
 name|isDataSegmentId
 argument_list|()
 operator|&&
-operator|!
 name|processed
 operator|.
 name|add
