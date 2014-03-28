@@ -255,7 +255,7 @@ parameter_list|(
 annotation|@
 name|Nonnull
 name|ImmutableTree
-name|parent
+name|tree
 parameter_list|,
 annotation|@
 name|Nullable

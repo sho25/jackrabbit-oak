@@ -78,7 +78,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * TreePermission... TODO  *  * @see PermissionProvider#getTreePermission(org.apache.jackrabbit.oak.api.Tree, TreePermission)  */
+comment|/**  * The {@code TreePermission} allow to evaluate permissions defined for a given  * {@code Tree} and it's properties.  *  * @see PermissionProvider#getTreePermission(org.apache.jackrabbit.oak.api.Tree, TreePermission)  */
 end_comment
 
 begin_interface

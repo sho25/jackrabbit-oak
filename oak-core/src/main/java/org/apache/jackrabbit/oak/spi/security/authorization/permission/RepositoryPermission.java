@@ -24,7 +24,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * RepositoryPermission... TODO  *  * @see org.apache.jackrabbit.oak.spi.security.authorization.permission.PermissionProvider#getRepositoryPermission()  */
+comment|/**  * The {@link RepositoryPermission} allows to evaluate permissions that have  * been defined on the repository level and which consequently are not bound  * to a particular item.  *  * @see org.apache.jackrabbit.oak.spi.security.authorization.permission.PermissionProvider#getRepositoryPermission()  */
 end_comment
 
 begin_interface

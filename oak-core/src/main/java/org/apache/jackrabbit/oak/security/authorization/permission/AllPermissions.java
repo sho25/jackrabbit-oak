@@ -263,7 +263,7 @@ name|boolean
 name|isGranted
 parameter_list|(
 name|ImmutableTree
-name|parent
+name|tree
 parameter_list|,
 name|PropertyState
 name|property

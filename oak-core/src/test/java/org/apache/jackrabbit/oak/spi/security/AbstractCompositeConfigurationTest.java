@@ -43,10 +43,6 @@ name|AbstractSecurityTest
 import|;
 end_import
 
-begin_comment
-comment|/**  * AbstractCompositeConfigurationTest... TODO  */
-end_comment
-
 begin_class
 specifier|public
 specifier|abstract
