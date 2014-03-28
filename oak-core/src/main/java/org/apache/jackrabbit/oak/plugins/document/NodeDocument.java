@@ -2697,6 +2697,8 @@ name|context
 parameter_list|)
 block|{
 comment|// did existence of node change after baseRevision?
+comment|// only check local deleted map, which contains the most
+comment|// recent values
 name|Map
 argument_list|<
 name|Revision
@@ -2705,7 +2707,7 @@ name|String
 argument_list|>
 name|deleted
 init|=
-name|getDeleted
+name|getLocalDeleted
 argument_list|()
 decl_stmt|;
 for|for
@@ -2956,12 +2958,7 @@ name|this
 argument_list|)
 throw|;
 block|}
-comment|// what's the most recent previous revision?
-name|Revision
-name|recentPrevious
-init|=
-literal|null
-decl_stmt|;
+comment|// collect ranges and create a histogram of the height
 name|Map
 argument_list|<
 name|Integer
@@ -3018,27 +3015,6 @@ argument_list|()
 condition|)
 block|{
 continue|continue;
-block|}
-if|if
-condition|(
-name|recentPrevious
-operator|==
-literal|null
-operator|||
-name|isRevisionNewer
-argument_list|(
-name|context
-argument_list|,
-name|rev
-argument_list|,
-name|recentPrevious
-argument_list|)
-condition|)
-block|{
-name|recentPrevious
-operator|=
-name|rev
-expr_stmt|;
 block|}
 name|Range
 name|r
@@ -3240,22 +3216,6 @@ continue|continue;
 block|}
 if|if
 condition|(
-name|recentPrevious
-operator|==
-literal|null
-operator|||
-name|isRevisionNewer
-argument_list|(
-name|context
-argument_list|,
-name|rev
-argument_list|,
-name|recentPrevious
-argument_list|)
-condition|)
-block|{
-if|if
-condition|(
 name|isCommitted
 argument_list|(
 name|rev
@@ -3274,7 +3234,6 @@ name|getValue
 argument_list|()
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 block|}

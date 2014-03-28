@@ -359,6 +359,31 @@ name|m
 argument_list|)
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|k
+operator|.
+name|getRevision
+argument_list|()
+operator|==
+literal|null
+condition|)
+block|{
+throw|throw
+operator|new
+name|IllegalArgumentException
+argument_list|(
+literal|"Cannot set map entry "
+operator|+
+name|k
+operator|.
+name|getName
+argument_list|()
+operator|+
+literal|" with null revision"
+argument_list|)
+throw|;
+block|}
 name|m
 operator|.
 name|put
