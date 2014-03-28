@@ -697,7 +697,7 @@ return|;
 block|}
 block|}
 comment|/**      *<code>PathCursor</code> implements a simple {@link Cursor} that iterates      * over a {@link String} based path {@link Iterable}.      */
-specifier|private
+specifier|public
 specifier|static
 class|class
 name|PathCursor
