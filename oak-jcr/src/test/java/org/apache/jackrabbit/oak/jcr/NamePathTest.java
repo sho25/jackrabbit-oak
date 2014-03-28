@@ -101,16 +101,6 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Ignore
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
 name|Test
 import|;
 end_import
@@ -443,12 +433,6 @@ argument_list|)
 expr_stmt|;
 block|}
 annotation|@
-name|Ignore
-argument_list|(
-literal|"OAK-1174"
-argument_list|)
-comment|// FIXME OAK-1174
-annotation|@
 name|Test
 specifier|public
 name|void
@@ -532,12 +516,6 @@ argument_list|)
 expr_stmt|;
 block|}
 annotation|@
-name|Ignore
-argument_list|(
-literal|"OAK-1174"
-argument_list|)
-comment|// FIXME OAK-1174
-annotation|@
 name|Test
 specifier|public
 name|void
@@ -580,12 +558,6 @@ argument_list|)
 expr_stmt|;
 block|}
 annotation|@
-name|Ignore
-argument_list|(
-literal|"OAK-1174"
-argument_list|)
-comment|// FIXME OAK-1174
-annotation|@
 name|Test
 specifier|public
 name|void
@@ -627,12 +599,6 @@ argument_list|)
 expr_stmt|;
 block|}
 annotation|@
-name|Ignore
-argument_list|(
-literal|"OAK-1174"
-argument_list|)
-comment|// FIXME OAK-1174
-annotation|@
 name|Test
 specifier|public
 name|void
@@ -651,8 +617,7 @@ name|ImmutableList
 operator|.
 name|of
 argument_list|(
-literal|"jcr:content "
-argument_list|,
+comment|//                "jcr:content ",  // FIXME OAK-1174
 literal|"content "
 argument_list|,
 literal|" content"
@@ -734,11 +699,6 @@ parameter_list|)
 throws|throws
 name|RepositoryException
 block|{
-name|RepositoryException
-name|exception
-init|=
-literal|null
-decl_stmt|;
 for|for
 control|(
 name|String
@@ -747,6 +707,34 @@ range|:
 name|paths
 control|)
 block|{
+name|testPath
+argument_list|(
+name|path
+argument_list|,
+name|session
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+specifier|private
+specifier|static
+name|void
+name|testPath
+parameter_list|(
+name|String
+name|path
+parameter_list|,
+name|Session
+name|session
+parameter_list|)
+throws|throws
+name|RepositoryException
+block|{
+name|RepositoryException
+name|exception
+init|=
+literal|null
+decl_stmt|;
 try|try
 block|{
 name|session
@@ -768,7 +756,6 @@ operator|=
 name|e
 expr_stmt|;
 block|}
-block|}
 name|session
 operator|.
 name|setNamespacePrefix
@@ -778,14 +765,6 @@ argument_list|,
 literal|"http://foo.bar"
 argument_list|)
 expr_stmt|;
-for|for
-control|(
-name|String
-name|path
-range|:
-name|paths
-control|)
-block|{
 try|try
 block|{
 name|session
@@ -822,7 +801,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-block|}
 specifier|private
 specifier|static
 name|void
@@ -840,11 +818,6 @@ parameter_list|)
 throws|throws
 name|RepositoryException
 block|{
-name|RepositoryException
-name|exception
-init|=
-literal|null
-decl_stmt|;
 for|for
 control|(
 name|String
@@ -853,6 +826,34 @@ range|:
 name|names
 control|)
 block|{
+name|testName
+argument_list|(
+name|name
+argument_list|,
+name|session
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+specifier|private
+specifier|static
+name|void
+name|testName
+parameter_list|(
+name|String
+name|name
+parameter_list|,
+name|Session
+name|session
+parameter_list|)
+throws|throws
+name|RepositoryException
+block|{
+name|Exception
+name|exception
+init|=
+literal|null
+decl_stmt|;
 try|try
 block|{
 name|session
@@ -887,7 +888,6 @@ literal|false
 argument_list|)
 expr_stmt|;
 block|}
-block|}
 name|session
 operator|.
 name|setNamespacePrefix
@@ -897,14 +897,6 @@ argument_list|,
 literal|"http://foo.bar"
 argument_list|)
 expr_stmt|;
-for|for
-control|(
-name|String
-name|name
-range|:
-name|names
-control|)
-block|{
 try|try
 block|{
 name|session
@@ -942,7 +934,6 @@ argument_list|,
 name|exception
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 block|}
