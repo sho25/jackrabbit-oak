@@ -369,7 +369,6 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-comment|// FIXME: OAK-1600
 for|for
 control|(
 name|int
