@@ -109,6 +109,20 @@ name|common
 operator|.
 name|collect
 operator|.
+name|Lists
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|collect
+operator|.
 name|Maps
 import|;
 end_import
@@ -901,6 +915,14 @@ return|;
 block|}
 block|}
 decl_stmt|;
+specifier|public
+specifier|static
+specifier|final
+name|int
+name|IN_QUERY_BATCH_SIZE
+init|=
+literal|250
+decl_stmt|;
 specifier|private
 specifier|final
 name|DBCollection
@@ -1123,7 +1145,7 @@ operator|.
 name|hasNext
 argument_list|()
 decl_stmt|;
-comment|// Change in level or last element
+comment|// Change in level of last element
 if|if
 condition|(
 operator|!
@@ -1155,6 +1177,42 @@ name|hasMore
 operator|)
 condition|)
 block|{
+name|List
+argument_list|<
+name|String
+argument_list|>
+name|sameLevelNodeIds
+init|=
+operator|new
+name|ArrayList
+argument_list|<
+name|String
+argument_list|>
+argument_list|(
+name|sameLevelNodes
+operator|.
+name|keySet
+argument_list|()
+argument_list|)
+decl_stmt|;
+for|for
+control|(
+name|List
+argument_list|<
+name|String
+argument_list|>
+name|idBatch
+range|:
+name|Lists
+operator|.
+name|partition
+argument_list|(
+name|sameLevelNodeIds
+argument_list|,
+name|IN_QUERY_BATCH_SIZE
+argument_list|)
+control|)
+block|{
 name|QueryBuilder
 name|query
 init|=
@@ -1169,10 +1227,7 @@ argument_list|)
 operator|.
 name|in
 argument_list|(
-name|sameLevelNodes
-operator|.
-name|keySet
-argument_list|()
+name|idBatch
 argument_list|)
 decl_stmt|;
 comment|// Fetch lastRev and modCount for each such nodes
@@ -1213,6 +1268,8 @@ operator|.
 name|queryCount
 operator|++
 expr_stmt|;
+try|try
+block|{
 for|for
 control|(
 name|DBObject
@@ -1340,6 +1397,16 @@ name|getId
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
+block|}
+finally|finally
+block|{
+name|cursor
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
+block|}
 block|}
 comment|// NodeDocument present in cache but not in database
 comment|// Remove such nodes from cache
