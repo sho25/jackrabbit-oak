@@ -354,15 +354,6 @@ argument_list|(
 name|path
 argument_list|)
 decl_stmt|;
-name|System
-operator|.
-name|err
-operator|.
-name|println
-argument_list|(
-literal|"checking data dir"
-argument_list|)
-expr_stmt|;
 if|if
 condition|(
 name|file
@@ -371,15 +362,6 @@ name|exists
 argument_list|()
 condition|)
 block|{
-name|System
-operator|.
-name|err
-operator|.
-name|println
-argument_list|(
-literal|"deleting data dir"
-argument_list|)
-expr_stmt|;
 name|assertTrue
 argument_list|(
 name|file
