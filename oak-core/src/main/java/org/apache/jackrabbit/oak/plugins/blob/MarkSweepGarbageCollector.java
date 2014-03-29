@@ -1678,7 +1678,7 @@ try|try
 block|{
 name|marker
 operator|.
-name|getReferences
+name|collectReferences
 argument_list|(
 operator|new
 name|ReferenceCollector

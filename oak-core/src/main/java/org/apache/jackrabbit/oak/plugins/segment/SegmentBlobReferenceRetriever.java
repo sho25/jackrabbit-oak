@@ -89,7 +89,7 @@ annotation|@
 name|Override
 specifier|public
 name|void
-name|getReferences
+name|collectReferences
 parameter_list|(
 specifier|final
 name|ReferenceCollector

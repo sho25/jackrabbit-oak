@@ -48,13 +48,11 @@ name|BlobReferenceRetriever
 block|{
 comment|/**      * Collect references.      *       * @param collector the collector to collect all references      * @return the references      * @throws Exception the exception      */
 name|void
-name|getReferences
+name|collectReferences
 parameter_list|(
 name|ReferenceCollector
 name|collector
 parameter_list|)
-throws|throws
-name|Exception
 function_decl|;
 block|}
 end_interface
