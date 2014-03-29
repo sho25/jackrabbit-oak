@@ -611,9 +611,6 @@ operator|new
 name|DocumentBlobReferenceRetriever
 argument_list|(
 name|store
-operator|.
-name|getReferencedBlobsIterator
-argument_list|()
 argument_list|)
 argument_list|,
 operator|(
