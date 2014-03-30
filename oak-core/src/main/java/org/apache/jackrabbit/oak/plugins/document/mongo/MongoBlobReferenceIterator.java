@@ -321,11 +321,18 @@ block|{
 name|initializeCursor
 argument_list|()
 expr_stmt|;
-if|if
+comment|//Some node which have the '_bin' flag set might not have any binaries in it
+comment|//so move forward if blobs is still empty and cursor has more elements
+while|while
 condition|(
 name|cursor
 operator|.
 name|hasNext
+argument_list|()
+operator|&&
+name|blobs
+operator|.
+name|isEmpty
 argument_list|()
 condition|)
 block|{
