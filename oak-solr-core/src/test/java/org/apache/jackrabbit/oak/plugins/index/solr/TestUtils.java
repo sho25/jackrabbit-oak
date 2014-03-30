@@ -305,6 +305,11 @@ argument_list|(
 literal|"*:*"
 argument_list|)
 expr_stmt|;
+name|server
+operator|.
+name|commit
+argument_list|()
+expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
