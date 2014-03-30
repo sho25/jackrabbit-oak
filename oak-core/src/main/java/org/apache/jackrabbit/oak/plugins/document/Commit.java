@@ -1046,14 +1046,11 @@ operator|==
 literal|null
 operator|)
 operator|||
-operator|(
+operator|!
 name|nd
 operator|.
 name|hasBinary
 argument_list|()
-operator|!=
-literal|1
-operator|)
 condition|)
 block|{
 name|UpdateOp
