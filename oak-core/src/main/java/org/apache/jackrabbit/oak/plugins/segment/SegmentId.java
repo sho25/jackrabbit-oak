@@ -43,6 +43,26 @@ argument_list|<
 name|SegmentId
 argument_list|>
 block|{
+comment|/**      * Checks whether this is a data segment identifier.      *      * @return {@code true} for a data segment, {@code false} otherwise      */
+specifier|public
+specifier|static
+name|boolean
+name|isDataSegmentId
+parameter_list|(
+name|long
+name|lsb
+parameter_list|)
+block|{
+return|return
+operator|(
+name|lsb
+operator|>>>
+literal|60
+operator|)
+operator|==
+literal|0xAL
+return|;
+block|}
 specifier|private
 specifier|final
 name|SegmentTracker
@@ -134,13 +154,10 @@ name|isDataSegmentId
 parameter_list|()
 block|{
 return|return
-operator|(
+name|isDataSegmentId
+argument_list|(
 name|lsb
-operator|>>>
-literal|60
-operator|)
-operator|==
-literal|0xAL
+argument_list|)
 return|;
 block|}
 comment|/**      * Checks whether this is a bulk segment identifier.      *      * @return {@code true} for a bulk segment, {@code false} otherwise      */
