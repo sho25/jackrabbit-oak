@@ -271,6 +271,20 @@ name|common
 operator|.
 name|base
 operator|.
+name|Stopwatch
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
 name|Strings
 import|;
 end_import
@@ -540,24 +554,6 @@ name|batchCount
 init|=
 name|DEFAULT_BATCH_COUNT
 decl_stmt|;
-comment|/** Flag to indicate whether to run in a debug mode **/
-specifier|private
-specifier|final
-name|boolean
-name|debugMode
-init|=
-name|Boolean
-operator|.
-name|getBoolean
-argument_list|(
-literal|"debugModeGC"
-argument_list|)
-operator|||
-name|LOG
-operator|.
-name|isDebugEnabled
-argument_list|()
-decl_stmt|;
 comment|/** Flag to indicate the state of the gc **/
 specifier|private
 name|String
@@ -790,24 +786,44 @@ name|Exception
 block|{
 try|try
 block|{
+name|Stopwatch
+name|sw
+init|=
+name|Stopwatch
+operator|.
+name|createStarted
+argument_list|()
+decl_stmt|;
 name|LOG
 operator|.
-name|debug
+name|info
 argument_list|(
-literal|"Starting garbage collector"
+literal|"Starting Blob garbage collection"
 argument_list|)
 expr_stmt|;
 name|mark
 argument_list|()
 expr_stmt|;
+name|int
+name|deleteCount
+init|=
 name|sweep
 argument_list|()
-expr_stmt|;
+decl_stmt|;
 name|LOG
 operator|.
-name|debug
+name|info
 argument_list|(
-literal|"garbage collector finished"
+literal|"Blob garbage collection completed in {}. Number of blobs "
+operator|+
+literal|"deleted [{}]"
+argument_list|,
+name|sw
+operator|.
+name|toString
+argument_list|()
+argument_list|,
+name|deleteCount
 argument_list|)
 expr_stmt|;
 block|}
@@ -825,7 +841,7 @@ expr_stmt|;
 block|}
 block|}
 comment|/**      * Mark phase of the GC.      *       * @throws Exception      *             the exception      */
-specifier|public
+specifier|private
 name|void
 name|mark
 parameter_list|()
@@ -935,7 +951,7 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Difference phase where the GC candidates are identified.      *       * @throws IOException      *             Signals that an I/O exception has occurred.      */
-specifier|protected
+specifier|private
 name|void
 name|difference
 parameter_list|()
@@ -1109,13 +1125,18 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Sweep phase of gc candidate deletion.      *       * @throws IOException      *             Signals that an I/O exception has occurred.      */
-specifier|public
-name|void
+specifier|private
+name|int
 name|sweep
 parameter_list|()
 throws|throws
 name|IOException
 block|{
+name|int
+name|count
+init|=
+literal|0
+decl_stmt|;
 try|try
 block|{
 name|state
@@ -1261,11 +1282,6 @@ operator|.
 name|newArrayList
 argument_list|()
 decl_stmt|;
-name|int
-name|count
-init|=
-literal|0
-decl_stmt|;
 while|while
 condition|(
 name|iterator
@@ -1383,21 +1399,24 @@ name|LOG
 operator|.
 name|error
 argument_list|(
-literal|"Exception while waiting for termination of the executor service"
+literal|"Exception while waiting for termination of the executor service. ExecutorService "
+operator|+
+literal|"would be immediately shutdown"
 argument_list|,
 name|e
-argument_list|)
-expr_stmt|;
-name|LOG
-operator|.
-name|error
-argument_list|(
-literal|"Immediately shutdown"
 argument_list|)
 expr_stmt|;
 name|executorService
 operator|.
 name|shutdownNow
+argument_list|()
+expr_stmt|;
+name|Thread
+operator|.
+name|currentThread
+argument_list|()
+operator|.
+name|interrupt
 argument_list|()
 expr_stmt|;
 block|}
@@ -1473,15 +1492,6 @@ expr_stmt|;
 block|}
 name|LOG
 operator|.
-name|info
-argument_list|(
-literal|"Blobs deleted count - "
-operator|+
-name|count
-argument_list|)
-expr_stmt|;
-name|LOG
-operator|.
 name|debug
 argument_list|(
 literal|"Ending sweep phase of the garbage collector"
@@ -1500,6 +1510,9 @@ operator|=
 name|NOT_RUNNING
 expr_stmt|;
 block|}
+return|return
+name|count
+return|;
 block|}
 comment|/**      * Save batch to file.      *       * @param ids      *            the ids      * @param writer      *            the writer      * @throws IOException      *             Signals that an I/O exception has occurred.      */
 specifier|static
@@ -1620,8 +1633,8 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Deleting blobs : "
-operator|+
+literal|"Blob ids to be deleted {}"
+argument_list|,
 name|ids
 argument_list|)
 expr_stmt|;
@@ -1675,8 +1688,8 @@ name|LOG
 operator|.
 name|error
 argument_list|(
-literal|"Error in deleting blobs - "
-operator|+
+literal|"Error occurred while deleting blob with ids [{}]"
+argument_list|,
 name|ids
 argument_list|,
 name|e
@@ -1750,6 +1763,15 @@ name|count
 init|=
 literal|0
 decl_stmt|;
+specifier|private
+name|boolean
+name|debugMode
+init|=
+name|LOG
+operator|.
+name|isTraceEnabled
+argument_list|()
+decl_stmt|;
 annotation|@
 name|Override
 specifier|public
@@ -1767,10 +1789,10 @@ condition|)
 block|{
 name|LOG
 operator|.
-name|debug
+name|trace
 argument_list|(
-literal|"BlobId : "
-operator|+
+literal|"BlobId : {}"
+argument_list|,
 name|blobId
 argument_list|)
 expr_stmt|;
@@ -1844,10 +1866,10 @@ condition|)
 block|{
 name|LOG
 operator|.
-name|debug
+name|trace
 argument_list|(
-literal|"chunkId : "
-operator|+
+literal|"chunkId : {}"
+argument_list|,
 name|id
 argument_list|)
 expr_stmt|;
@@ -1899,8 +1921,10 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Marked Reference : "
+literal|"Number of valid blob references marked under mark phase of "
 operator|+
+literal|"Blob garbage collection [{}]"
+argument_list|,
 name|count
 argument_list|)
 expr_stmt|;
@@ -2096,8 +2120,8 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Ending retrieving all blobs : "
-operator|+
+literal|"Ending retrieving all blobs : {}"
+argument_list|,
 name|blobsCount
 argument_list|)
 expr_stmt|;
