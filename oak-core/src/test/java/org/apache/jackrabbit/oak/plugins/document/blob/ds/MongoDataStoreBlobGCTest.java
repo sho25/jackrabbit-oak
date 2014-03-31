@@ -162,7 +162,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Test for MongoMK GC with {@link DataStoreBlobStore}  *  */
+comment|/**  * Test for MongoMK GC with {@link DataStoreBlobStore}  *   */
 end_comment
 
 begin_class
@@ -245,6 +245,12 @@ name|DocumentMK
 operator|.
 name|Builder
 argument_list|()
+operator|.
+name|clock
+argument_list|(
+name|getTestClock
+argument_list|()
+argument_list|)
 operator|.
 name|setMongoDB
 argument_list|(

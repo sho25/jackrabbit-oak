@@ -1187,11 +1187,6 @@ name|gc
 init|=
 operator|new
 name|MarkSweepGarbageCollector
-argument_list|()
-decl_stmt|;
-name|gc
-operator|.
-name|init
 argument_list|(
 operator|new
 name|SegmentBlobReferenceRetriever
@@ -1207,7 +1202,7 @@ name|GarbageCollectableBlobStore
 operator|)
 name|blobStore
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 name|blobGCRegistration
 operator|=
 name|registerMBean

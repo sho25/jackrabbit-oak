@@ -804,11 +804,6 @@ name|gc
 init|=
 operator|new
 name|MarkSweepGarbageCollector
-argument_list|()
-decl_stmt|;
-name|gc
-operator|.
-name|init
 argument_list|(
 operator|new
 name|SegmentBlobReferenceRetriever
@@ -837,7 +832,7 @@ literal|2
 argument_list|,
 literal|0
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 name|gc
 operator|.
 name|collectGarbage

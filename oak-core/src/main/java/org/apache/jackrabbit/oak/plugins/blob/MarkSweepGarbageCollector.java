@@ -562,6 +562,8 @@ comment|/** Flag to indicate the state of the gc **/
 specifier|private
 name|String
 name|state
+init|=
+name|NOT_RUNNING
 decl_stmt|;
 comment|/**      * Gets the max last modified interval considered for garbage collection.      *       * @return the max last modified interval      */
 specifier|protected
@@ -641,8 +643,7 @@ return|;
 block|}
 comment|/**      * @param marker      * @param blobStore      * @param root the root      * @param batchCount the batch count      * @param runBackendConcurrently - run the backend iterate concurrently      * @param maxSweeperThreads the max sweeper threads      * @param maxLastModifiedInterval      * @throws IOException Signals that an I/O exception has occurred.      */
 specifier|public
-name|void
-name|init
+name|MarkSweepGarbageCollector
 parameter_list|(
 name|BlobReferenceRetriever
 name|marker
@@ -668,6 +669,18 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+name|this
+operator|.
+name|blobStore
+operator|=
+name|blobStore
+expr_stmt|;
+name|this
+operator|.
+name|marker
+operator|=
+name|marker
+expr_stmt|;
 name|this
 operator|.
 name|batchCount
@@ -698,18 +711,18 @@ name|maxLastModifiedInterval
 operator|=
 name|maxLastModifiedInterval
 expr_stmt|;
-name|init
+name|fs
+operator|=
+operator|new
+name|GarbageCollectorFileState
 argument_list|(
-name|marker
-argument_list|,
-name|blobStore
+name|root
 argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Instantiates a new blob garbage collector.      *       * @param marker      * @param blobStore      * @throws IOException Signals that an I/O exception has occurred.      */
 specifier|public
-name|void
-name|init
+name|MarkSweepGarbageCollector
 parameter_list|(
 name|BlobReferenceRetriever
 name|marker
@@ -1366,9 +1379,25 @@ name|InterruptedException
 name|e
 parameter_list|)
 block|{
-name|e
+name|LOG
 operator|.
-name|printStackTrace
+name|error
+argument_list|(
+literal|"Exception while waiting for termination of the executor service"
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
+name|LOG
+operator|.
+name|error
+argument_list|(
+literal|"Immediately shutdown"
+argument_list|)
+expr_stmt|;
+name|executorService
+operator|.
+name|shutdownNow
 argument_list|()
 expr_stmt|;
 block|}
@@ -1444,7 +1473,7 @@ expr_stmt|;
 block|}
 name|LOG
 operator|.
-name|debug
+name|info
 argument_list|(
 literal|"Blobs deleted count - "
 operator|+
@@ -1587,6 +1616,15 @@ parameter_list|()
 block|{
 try|try
 block|{
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"Deleting blobs : "
+operator|+
+name|ids
+argument_list|)
+expr_stmt|;
 name|boolean
 name|deleted
 init|=
@@ -1633,10 +1671,16 @@ name|Exception
 name|e
 parameter_list|)
 block|{
-name|e
+name|LOG
 operator|.
-name|printStackTrace
-argument_list|()
+name|error
+argument_list|(
+literal|"Error in deleting blobs - "
+operator|+
+name|ids
+argument_list|,
+name|e
+argument_list|)
 expr_stmt|;
 name|exceptionQueue
 operator|.
@@ -2064,10 +2108,14 @@ name|Exception
 name|e
 parameter_list|)
 block|{
-name|e
+name|LOG
 operator|.
-name|printStackTrace
-argument_list|()
+name|error
+argument_list|(
+literal|"Error retrieving available blob ids"
+argument_list|,
+name|e
+argument_list|)
 expr_stmt|;
 block|}
 finally|finally
