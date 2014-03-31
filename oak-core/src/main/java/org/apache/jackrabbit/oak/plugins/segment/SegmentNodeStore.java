@@ -1068,6 +1068,7 @@ name|Override
 annotation|@
 name|Nonnull
 specifier|public
+specifier|synchronized
 name|String
 name|checkpoint
 parameter_list|(
