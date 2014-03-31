@@ -621,6 +621,23 @@ argument_list|,
 name|name
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|isAlreadyRunning
+argument_list|(
+name|store
+argument_list|)
+condition|)
+block|{
+name|log
+operator|.
+name|debug
+argument_list|(
+literal|"Async job found to be already running. Skipping"
+argument_list|)
+expr_stmt|;
+return|return;
+block|}
 name|String
 name|checkpoint
 init|=
@@ -655,23 +672,6 @@ argument_list|(
 literal|"Unable to retrieve checkpoint {}"
 argument_list|,
 name|checkpoint
-argument_list|)
-expr_stmt|;
-return|return;
-block|}
-if|if
-condition|(
-name|isAlreadyRunning
-argument_list|(
-name|store
-argument_list|)
-condition|)
-block|{
-name|log
-operator|.
-name|debug
-argument_list|(
-literal|"Async job found to be already running. Skipping"
 argument_list|)
 expr_stmt|;
 return|return;
