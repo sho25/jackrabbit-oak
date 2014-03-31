@@ -35,26 +35,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|Map
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Set
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|concurrent
 operator|.
 name|locks
@@ -89,34 +69,6 @@ end_import
 
 begin_import
 import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|collect
-operator|.
-name|Maps
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|collect
-operator|.
-name|Sets
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -128,26 +80,6 @@ operator|.
 name|commons
 operator|.
 name|PathUtils
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|plugins
-operator|.
-name|document
-operator|.
-name|util
-operator|.
-name|Utils
 import|;
 end_import
 
@@ -257,7 +189,7 @@ name|nodeStore
 expr_stmt|;
 block|}
 specifier|public
-name|void
+name|int
 name|recover
 parameter_list|(
 name|Iterator
@@ -275,37 +207,6 @@ name|unsaved
 init|=
 operator|new
 name|UnsavedModifications
-argument_list|()
-decl_stmt|;
-comment|//Set of parent path whose lastRev has been updated based on
-comment|//last rev information obtained from suspects. Its possible
-comment|//that lastRev for such parents present in DS has
-comment|//higher value. So before persisting the changes for these
-comment|//paths we need to ensure that there actual lastRev is lesser
-comment|//than one being set via unsaved
-name|Set
-argument_list|<
-name|String
-argument_list|>
-name|unverifiedParentPaths
-init|=
-name|Sets
-operator|.
-name|newHashSet
-argument_list|()
-decl_stmt|;
-comment|//Map of known last rev of checked paths
-name|Map
-argument_list|<
-name|String
-argument_list|,
-name|Revision
-argument_list|>
-name|knownLastRevs
-init|=
-name|Maps
-operator|.
-name|newHashMap
 argument_list|()
 decl_stmt|;
 while|while
@@ -337,26 +238,6 @@ argument_list|(
 name|clusterId
 argument_list|)
 decl_stmt|;
-if|if
-condition|(
-name|currentLastRev
-operator|!=
-literal|null
-condition|)
-block|{
-name|knownLastRevs
-operator|.
-name|put
-argument_list|(
-name|doc
-operator|.
-name|getPath
-argument_list|()
-argument_list|,
-name|currentLastRev
-argument_list|)
-expr_stmt|;
-block|}
 name|Revision
 name|lostLastRev
 init|=
@@ -367,17 +248,14 @@ argument_list|,
 name|clusterId
 argument_list|)
 decl_stmt|;
-comment|//lastRev is consistent
+comment|//1. Update lastRev for this doc
 if|if
 condition|(
 name|lostLastRev
-operator|==
+operator|!=
 literal|null
 condition|)
 block|{
-continue|continue;
-block|}
-comment|//1. Update lastRev for this doc
 name|unsaved
 operator|.
 name|put
@@ -390,7 +268,32 @@ argument_list|,
 name|lostLastRev
 argument_list|)
 expr_stmt|;
-comment|//2. Update lastRev for parent paths
+block|}
+name|Revision
+name|lastRevForParents
+init|=
+name|lostLastRev
+operator|!=
+literal|null
+condition|?
+name|lostLastRev
+else|:
+name|currentLastRev
+decl_stmt|;
+comment|//If both currentLastRev and lostLastRev are null it means
+comment|//that no change is done by suspect cluster on this document
+comment|//so nothing needs to be updated. Probably it was only changed by
+comment|//other cluster nodes. If this node is parent of any child node which
+comment|//has been modified by cluster then that node roll up would
+comment|//add this node path to unsaved
+comment|//2. Update lastRev for parent paths aka rollup
+if|if
+condition|(
+name|lastRevForParents
+operator|!=
+literal|null
+condition|)
+block|{
 name|String
 name|path
 init|=
@@ -431,133 +334,14 @@ name|put
 argument_list|(
 name|path
 argument_list|,
-name|lostLastRev
-argument_list|)
-expr_stmt|;
-name|unverifiedParentPaths
-operator|.
-name|add
-argument_list|(
-name|path
+name|lastRevForParents
 argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|//By now we have iterated over all suspects so remove entries for paths
-comment|//whose lastRev have been determined on the basis of state obtained from
-comment|//DS
-name|Iterator
-argument_list|<
-name|String
-argument_list|>
-name|unverifiedParentPathsItr
-init|=
-name|unverifiedParentPaths
-operator|.
-name|iterator
-argument_list|()
-decl_stmt|;
-while|while
-condition|(
-name|unverifiedParentPathsItr
-operator|.
-name|hasNext
-argument_list|()
-condition|)
-block|{
-name|String
-name|unverifiedParentPath
-init|=
-name|unverifiedParentPathsItr
-operator|.
-name|next
-argument_list|()
-decl_stmt|;
-name|Revision
-name|knownRevision
-init|=
-name|knownLastRevs
-operator|.
-name|get
-argument_list|(
-name|unverifiedParentPath
-argument_list|)
-decl_stmt|;
-if|if
-condition|(
-name|knownRevision
-operator|!=
-literal|null
-condition|)
-block|{
-name|unverifiedParentPathsItr
-operator|.
-name|remove
-argument_list|()
-expr_stmt|;
-name|unsaved
-operator|.
-name|put
-argument_list|(
-name|unverifiedParentPath
-argument_list|,
-name|knownRevision
-argument_list|)
-expr_stmt|;
 block|}
-block|}
-comment|//Now for the left over unverifiedParentPaths determine the lastRev
-comment|//from DS and add them to unsaved. This ensures that we do not set lastRev
-comment|//to a lower value
-comment|//TODO For Mongo case we can fetch such documents more efficiently
-comment|//via batch fetch
-for|for
-control|(
-name|String
-name|path
-range|:
-name|unverifiedParentPaths
-control|)
-block|{
-name|NodeDocument
-name|doc
-init|=
-name|getDocument
-argument_list|(
-name|path
-argument_list|)
-decl_stmt|;
-if|if
-condition|(
-name|doc
-operator|!=
-literal|null
-condition|)
-block|{
-name|Revision
-name|lastRev
-init|=
-name|doc
-operator|.
-name|getLastRev
-argument_list|()
-operator|.
-name|get
-argument_list|(
-name|clusterId
-argument_list|)
-decl_stmt|;
-name|unsaved
-operator|.
-name|put
-argument_list|(
-name|path
-argument_list|,
-name|lastRev
-argument_list|)
-expr_stmt|;
-block|}
-block|}
+comment|//Note the size before persist as persist operation
+comment|//would empty the internal state
 name|int
 name|size
 init|=
@@ -617,6 +401,9 @@ argument_list|,
 name|clusterId
 argument_list|)
 expr_stmt|;
+return|return
+name|size
+return|;
 block|}
 comment|/**      * Determines the last revision value which needs to set for given clusterId      * on the passed document. If the last rev entries are consisted      *      * @param doc       NodeDocument where lastRev entries needs to be fixed      * @param clusterId clusterId for which lastRev has to be checked      * @return lastRev which needs to be updated.<tt>null</tt> if no      * updated is required i.e. lastRev entries are valid      */
 annotation|@
@@ -676,9 +463,8 @@ argument_list|)
 decl_stmt|;
 comment|//Merge sort the revs for which changes have been made
 comment|//to this doc
-comment|//TODO Would looking into the Local map be sufficient
-comment|//Probably yes as entries for a particular cluster node
-comment|//are split by that cluster only
+comment|//localMap always keeps the most recent valid commit entry
+comment|//per cluster node so looking into that should be sufficient
 name|Iterable
 argument_list|<
 name|Revision
@@ -768,35 +554,6 @@ block|}
 block|}
 return|return
 literal|null
-return|;
-block|}
-specifier|private
-name|NodeDocument
-name|getDocument
-parameter_list|(
-name|String
-name|path
-parameter_list|)
-block|{
-return|return
-name|nodeStore
-operator|.
-name|getDocumentStore
-argument_list|()
-operator|.
-name|find
-argument_list|(
-name|Collection
-operator|.
-name|NODES
-argument_list|,
-name|Utils
-operator|.
-name|getIdFromPath
-argument_list|(
-name|path
-argument_list|)
-argument_list|)
 return|;
 block|}
 specifier|private
