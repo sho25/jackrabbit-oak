@@ -1761,7 +1761,7 @@ literal|"create table "
 operator|+
 name|tableName
 operator|+
-literal|" (ID varchar(1000) not null primary key, MODIFIED bigint, MODCOUNT bigint, DATA varchar(16384), BDATA bytea)"
+literal|" (ID varchar(1000) not null primary key, MODIFIED bigint, MODCOUNT bigint, SIZE bigint, DATA varchar(16384), BDATA bytea)"
 argument_list|)
 expr_stmt|;
 block|}
@@ -1797,7 +1797,7 @@ literal|"create table "
 operator|+
 name|tableName
 operator|+
-literal|" (ID varchar(1000) not null primary key, MODIFIED bigint, MODCOUNT bigint, DATA varchar(16384), BDATA blob)"
+literal|" (ID varchar(1000) not null primary key, MODIFIED bigint, MODCOUNT bigint, SIZE bigint, DATA varchar(16384), BDATA blob)"
 argument_list|)
 expr_stmt|;
 block|}
@@ -1811,7 +1811,7 @@ literal|"create table "
 operator|+
 name|tableName
 operator|+
-literal|" (ID varchar(1000) not null primary key, MODIFIED bigint, MODCOUNT bigint, DATA varchar(16384), BDATA blob)"
+literal|" (ID varchar(1000) not null primary key, MODIFIED bigint, MODCOUNT bigint, SIZE bigint, DATA varchar(16384), BDATA blob)"
 argument_list|)
 expr_stmt|;
 block|}
@@ -4113,7 +4113,7 @@ literal|"update "
 operator|+
 name|tableName
 operator|+
-literal|" set MODIFIED = ?, MODCOUNT = ?, DATA = ?, BDATA = ? where ID = ?"
+literal|" set MODIFIED = ?, MODCOUNT = ?, SIZE = ?, DATA = ?, BDATA = ? where ID = ?"
 decl_stmt|;
 if|if
 condition|(
@@ -4166,6 +4166,23 @@ name|si
 operator|++
 argument_list|,
 name|modcount
+argument_list|,
+name|Types
+operator|.
+name|BIGINT
+argument_list|)
+expr_stmt|;
+name|stmt
+operator|.
+name|setObject
+argument_list|(
+name|si
+operator|++
+argument_list|,
+name|data
+operator|.
+name|length
+argument_list|()
 argument_list|,
 name|Types
 operator|.
@@ -4366,7 +4383,7 @@ literal|"insert into "
 operator|+
 name|tableName
 operator|+
-literal|" values(?, ?, ?, ?, ?)"
+literal|" values(?, ?, ?, ?, ?, ?)"
 argument_list|)
 decl_stmt|;
 try|try
@@ -4408,6 +4425,23 @@ name|si
 operator|++
 argument_list|,
 name|modcount
+argument_list|,
+name|Types
+operator|.
+name|BIGINT
+argument_list|)
+expr_stmt|;
+name|stmt
+operator|.
+name|setObject
+argument_list|(
+name|si
+operator|++
+argument_list|,
+name|data
+operator|.
+name|length
+argument_list|()
 argument_list|,
 name|Types
 operator|.
