@@ -183,6 +183,17 @@ return|return
 name|binaryID
 return|;
 block|}
+annotation|@
+name|Override
+specifier|public
+name|String
+name|getContentIdentity
+parameter_list|()
+block|{
+return|return
+name|binaryID
+return|;
+block|}
 comment|/**      * This implementation delegates back to the underlying {@code Microkernel}      * if other is also of type {@code KernelBlob}.      */
 annotation|@
 name|Override

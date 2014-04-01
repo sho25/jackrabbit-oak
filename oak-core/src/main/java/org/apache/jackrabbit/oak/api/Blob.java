@@ -75,6 +75,13 @@ name|String
 name|getReference
 parameter_list|()
 function_decl|;
+comment|/**      * A unique identifier of the content of this value. Usually this is a      * message digest of the content (a cryptographically secure one-way hash).      * This allows to avoid processing large binary values multiple times.      *<p>      * This method returns null if the identifier is unknown. The identifier may      * not always be available, for example if the value has not yet been saved      * or processed. Once an identifier is available, it will never change      * because values are immutable.      *<p>      * If two values have the same identifier, the content of the value is      * guaranteed to be the same. However it is not guaranteed that two values      * with the same content will return the same identifier.      *<p>      * The identifier is opaque, meaning it can have any format and size.      *      * @return the unique identifier or null      */
+annotation|@
+name|CheckForNull
+name|String
+name|getContentIdentity
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 

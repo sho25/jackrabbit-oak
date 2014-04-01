@@ -52,26 +52,6 @@ import|;
 end_import
 
 begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|plugins
-operator|.
-name|memory
-operator|.
-name|AbstractBlob
-operator|.
-name|calculateSha256
-import|;
-end_import
-
-begin_import
 import|import
 name|java
 operator|.
@@ -1074,13 +1054,10 @@ name|getContentIdentity
 parameter_list|()
 block|{
 return|return
-name|calculateSha256
-argument_list|(
 name|getBlob
 argument_list|()
-argument_list|)
 operator|.
-name|toString
+name|getContentIdentity
 argument_list|()
 return|;
 block|}

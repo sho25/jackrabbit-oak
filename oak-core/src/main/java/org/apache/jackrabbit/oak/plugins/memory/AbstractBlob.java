@@ -449,6 +449,17 @@ return|return
 literal|null
 return|;
 block|}
+annotation|@
+name|Override
+specifier|public
+name|String
+name|getContentIdentity
+parameter_list|()
+block|{
+return|return
+literal|null
+return|;
+block|}
 comment|//------------------------------------------------------------< Object>--
 comment|/**      * To {@code Blob} instances are considered equal iff they have the      * same SHA-256 hash code  are equal.      * @param other      */
 annotation|@

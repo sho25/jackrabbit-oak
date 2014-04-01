@@ -235,6 +235,17 @@ name|blobId
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
+specifier|public
+name|String
+name|getContentIdentity
+parameter_list|()
+block|{
+return|return
+name|blobId
+return|;
+block|}
 specifier|public
 name|String
 name|getBlobId

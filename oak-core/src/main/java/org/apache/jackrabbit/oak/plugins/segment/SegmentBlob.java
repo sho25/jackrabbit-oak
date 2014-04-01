@@ -97,6 +97,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|io
+operator|.
+name|InputStream
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|annotation
@@ -164,16 +174,6 @@ operator|.
 name|blob
 operator|.
 name|BlobStore
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|InputStream
 import|;
 end_import
 
@@ -752,6 +752,21 @@ block|}
 block|}
 return|return
 literal|null
+return|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|String
+name|getContentIdentity
+parameter_list|()
+block|{
+return|return
+name|getRecordId
+argument_list|()
+operator|.
+name|toString
+argument_list|()
 return|;
 block|}
 specifier|public
