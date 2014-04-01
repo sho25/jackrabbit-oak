@@ -264,12 +264,6 @@ name|ContentChange
 argument_list|>
 name|queue
 decl_stmt|;
-comment|/**      * Maximal number of elements before queue will start to block      */
-specifier|private
-specifier|final
-name|int
-name|queueLength
-decl_stmt|;
 specifier|private
 specifier|static
 class|class
@@ -517,12 +511,6 @@ name|newArrayBlockingQueue
 argument_list|(
 name|queueLength
 argument_list|)
-expr_stmt|;
-name|this
-operator|.
-name|queueLength
-operator|=
-name|queueLength
 expr_stmt|;
 block|}
 specifier|public
