@@ -233,6 +233,8 @@ name|SimpleCursor
 argument_list|(
 literal|"1:"
 argument_list|,
+literal|"/x"
+argument_list|,
 literal|"/b"
 argument_list|,
 literal|"/c"
