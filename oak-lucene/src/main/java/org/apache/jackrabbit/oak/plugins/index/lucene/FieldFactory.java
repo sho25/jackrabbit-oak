@@ -212,6 +212,13 @@ argument_list|)
 expr_stmt|;
 name|OAK_TYPE
 operator|.
+name|setStored
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+name|OAK_TYPE
+operator|.
 name|setIndexOptions
 argument_list|(
 name|IndexOptions
