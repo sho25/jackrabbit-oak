@@ -222,21 +222,6 @@ name|Observer
 implements|,
 name|Closeable
 block|{
-specifier|private
-specifier|static
-specifier|final
-name|Logger
-name|LOG
-init|=
-name|LoggerFactory
-operator|.
-name|getLogger
-argument_list|(
-name|BackgroundObserver
-operator|.
-name|class
-argument_list|)
-decl_stmt|;
 comment|/**      * Signal for the background thread to stop processing changes.      */
 specifier|private
 specifier|static
@@ -332,14 +317,6 @@ comment|/**      * Flag to indicate that some content changes were dropped becau
 specifier|private
 name|boolean
 name|full
-decl_stmt|;
-comment|/**      * Log a warning once when the queue is full. Reset once the queue is back empty.      */
-specifier|private
-specifier|volatile
-name|boolean
-name|warnOnFullQueue
-init|=
-literal|true
 decl_stmt|;
 comment|/**      * Current background task      */
 specifier|private
@@ -780,25 +757,6 @@ argument_list|(
 name|change
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|full
-operator|&&
-name|warnOnFullQueue
-condition|)
-block|{
-name|warnOnFullQueue
-operator|=
-literal|false
-expr_stmt|;
-name|LOG
-operator|.
-name|warn
-argument_list|(
-literal|"Revision queue is full. Further revisions will be compacted."
-argument_list|)
-expr_stmt|;
-block|}
 if|if
 condition|(
 operator|!
