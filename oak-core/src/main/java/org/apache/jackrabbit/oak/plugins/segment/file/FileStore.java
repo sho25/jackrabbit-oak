@@ -1184,7 +1184,7 @@ name|log
 operator|.
 name|warn
 argument_list|(
-literal|"Unable to committed revision {}, rewinding..."
+literal|"Unable to access revision {}, rewinding..."
 argument_list|,
 name|last
 argument_list|)
