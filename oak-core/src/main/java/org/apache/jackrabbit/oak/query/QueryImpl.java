@@ -4510,6 +4510,31 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+name|LOG
+operator|.
+name|isDebugEnabled
+argument_list|()
+condition|)
+block|{
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"cost for "
+operator|+
+name|traversal
+operator|.
+name|getIndexName
+argument_list|()
+operator|+
+literal|" is "
+operator|+
+name|cost
+argument_list|)
+expr_stmt|;
+block|}
+if|if
+condition|(
 name|cost
 operator|<
 name|bestCost
