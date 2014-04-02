@@ -408,6 +408,27 @@ argument_list|(
 name|id
 argument_list|)
 decl_stmt|;
+name|setSegment
+argument_list|(
+name|id
+argument_list|,
+name|segment
+argument_list|)
+expr_stmt|;
+return|return
+name|segment
+return|;
+block|}
+name|void
+name|setSegment
+parameter_list|(
+name|SegmentId
+name|id
+parameter_list|,
+name|Segment
+name|segment
+parameter_list|)
+block|{
 name|id
 operator|.
 name|setSegment
@@ -499,9 +520,6 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-return|return
-name|segment
-return|;
 block|}
 comment|/**      * Returns all segment identifiers that are currently referenced in memory.      *      * @return referenced segment identifiers      */
 specifier|public

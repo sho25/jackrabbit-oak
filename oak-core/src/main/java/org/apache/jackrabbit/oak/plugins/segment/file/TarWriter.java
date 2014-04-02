@@ -133,6 +133,16 @@ name|java
 operator|.
 name|io
 operator|.
+name|FileDescriptor
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
 name|IOException
 import|;
 end_import
@@ -332,17 +342,27 @@ literal|0
 return|;
 block|}
 block|}
+comment|/**      * The file being written. This instance is also used as an additional      * synchronization point by {@link #flush()} and {@link #close()} to      * allow {@link #flush()} to work concurrently with normal reads and      * writes, but not with a concurrent {@link #close()}.      */
 specifier|private
 specifier|final
 name|File
 name|file
 decl_stmt|;
+comment|/**      * File handle. Initialized lazily in      * {@link #writeEntry(long, long, byte[], int, int)} to avoid creating      * an extra empty file when just reading from the repository.      * Should only be accessed from synchronized code.      */
 specifier|private
 name|RandomAccessFile
 name|access
 init|=
 literal|null
 decl_stmt|;
+comment|/**      * Flag to indicate a closed writer. Accessing a closed writer is illegal.      * Should only be accessed from synchronized code.      */
+specifier|private
+name|boolean
+name|closed
+init|=
+literal|false
+decl_stmt|;
+comment|/**      * Map of the entries that have already been written. Used by the      * {@link #containsEntry(long, long)} and {@link #readEntry(long, long)}      * methods to retrieve data from this file while it's still being written,      * and finally by the {@link #close()} method to generate the tar index.      * Should only be accessed from synchronized code;      */
 specifier|private
 specifier|final
 name|Map
@@ -398,6 +418,12 @@ name|long
 name|lsb
 parameter_list|)
 block|{
+name|checkState
+argument_list|(
+operator|!
+name|closed
+argument_list|)
+expr_stmt|;
 return|return
 name|index
 operator|.
@@ -424,6 +450,12 @@ name|long
 name|lsb
 parameter_list|)
 block|{
+name|checkState
+argument_list|(
+operator|!
+name|closed
+argument_list|)
+expr_stmt|;
 name|TarEntry
 name|entry
 init|=
@@ -686,6 +718,12 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+name|checkState
+argument_list|(
+operator|!
+name|closed
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|access
@@ -809,43 +847,106 @@ return|return
 name|length
 return|;
 block|}
-specifier|synchronized
+comment|/**      * Flushes the entries that have so far been written to the disk.      * This method is<em>not</em> synchronized to allow concurrent reads      * and writes to proceed while the file is being flushed. However,      * this method<em>is</em> carefully synchronized with {@link #close()}      * to prevent accidental flushing of an already closed file.      *      * @throws IOException if the tar file could not be flushed      */
 name|void
 name|flush
 parameter_list|()
 throws|throws
 name|IOException
 block|{
+synchronized|synchronized
+init|(
+name|file
+init|)
+block|{
+name|FileDescriptor
+name|descriptor
+init|=
+literal|null
+decl_stmt|;
+synchronized|synchronized
+init|(
+name|this
+init|)
+block|{
 if|if
 condition|(
 name|access
 operator|!=
 literal|null
+operator|&&
+operator|!
+name|closed
 condition|)
 block|{
+name|descriptor
+operator|=
 name|access
 operator|.
 name|getFD
 argument_list|()
+expr_stmt|;
+block|}
+block|}
+if|if
+condition|(
+name|descriptor
+operator|!=
+literal|null
+condition|)
+block|{
+name|descriptor
 operator|.
 name|sync
 argument_list|()
 expr_stmt|;
 block|}
 block|}
-specifier|synchronized
+block|}
+comment|/**      * Closes this tar file.      *      * @throws IOException if the tar file could not be closed      */
 name|void
 name|close
 parameter_list|()
 throws|throws
 name|IOException
 block|{
+comment|// Mark this writer as closed. Note that we only need to synchronize
+comment|// this part, as no other synchronized methods should get invoked
+comment|// once close() has been initiated (see related checkState calls).
+synchronized|synchronized
+init|(
+name|this
+init|)
+block|{
+name|checkState
+argument_list|(
+operator|!
+name|closed
+argument_list|)
+expr_stmt|;
+name|closed
+operator|=
+literal|true
+expr_stmt|;
+block|}
+comment|// If nothing was written to this file, then we're already done.
 if|if
 condition|(
 name|access
-operator|!=
+operator|==
 literal|null
 condition|)
+block|{
+return|return;
+block|}
+comment|// Complete the tar file by adding the index and the trailing two
+comment|// zero blocks. This code is synchronized on the file instance to
+comment|// ensure that no concurrent thread is still flushing the file when
+comment|// we close the file handle.
+synchronized|synchronized
+init|(
+name|file
+init|)
 block|{
 name|int
 name|indexSize
@@ -1097,10 +1198,6 @@ name|access
 operator|.
 name|close
 argument_list|()
-expr_stmt|;
-name|access
-operator|=
-literal|null
 expr_stmt|;
 block|}
 block|}
