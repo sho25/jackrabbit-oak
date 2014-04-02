@@ -41,7 +41,7 @@ name|Comparator
 argument_list|<
 name|TarEntry
 argument_list|>
-name|REVERSE_OFFSET
+name|OFFSET_ORDER
 init|=
 operator|new
 name|Comparator
@@ -75,7 +75,6 @@ name|offset
 condition|)
 block|{
 return|return
-operator|-
 literal|1
 return|;
 block|}
@@ -92,6 +91,7 @@ name|offset
 condition|)
 block|{
 return|return
+operator|-
 literal|1
 return|;
 block|}
@@ -110,7 +110,7 @@ name|Comparator
 argument_list|<
 name|TarEntry
 argument_list|>
-name|IDENTIFIER
+name|IDENTIFIER_ORDER
 init|=
 operator|new
 name|Comparator
