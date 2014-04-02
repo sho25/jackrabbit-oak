@@ -1926,6 +1926,19 @@ name|BLOCK_SIZE
 expr_stmt|;
 if|if
 condition|(
+name|count
+operator|==
+literal|0
+condition|)
+block|{
+comment|// none of the entries within this tar file are referenceable
+return|return
+literal|null
+return|;
+block|}
+elseif|else
+if|if
+condition|(
 name|size
 operator|>=
 name|access
@@ -2136,7 +2149,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-name|void
+name|File
 name|close
 parameter_list|()
 throws|throws
@@ -2147,6 +2160,9 @@ operator|.
 name|close
 argument_list|()
 expr_stmt|;
+return|return
+name|file
+return|;
 block|}
 comment|//-----------------------------------------------------------< private>--
 comment|/**      * Tries to read an existing index from the tar file. The index is      * returned if it is found and looks valid (correct checksum, passes      * sanity checks).      *      * @return tar index, or {@code null} if not found or not valid      * @throws IOException if the tar file could not be read      */
