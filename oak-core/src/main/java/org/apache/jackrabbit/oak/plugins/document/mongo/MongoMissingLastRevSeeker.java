@@ -39,6 +39,18 @@ end_import
 
 begin_import
 import|import static
+name|com
+operator|.
+name|mongodb
+operator|.
+name|QueryBuilder
+operator|.
+name|start
+import|;
+end_import
+
+begin_import
+import|import static
 name|org
 operator|.
 name|apache
@@ -326,8 +338,6 @@ block|{
 name|DBObject
 name|query
 init|=
-name|QueryBuilder
-operator|.
 name|start
 argument_list|(
 name|NodeDocument
@@ -432,8 +442,6 @@ block|{
 name|DBObject
 name|query
 init|=
-name|QueryBuilder
-operator|.
 name|start
 argument_list|(
 name|NodeDocument
@@ -570,8 +578,11 @@ block|{
 name|QueryBuilder
 name|query
 init|=
-name|QueryBuilder
+name|start
+argument_list|()
 operator|.
+name|and
+argument_list|(
 name|start
 argument_list|(
 name|Document
@@ -589,20 +600,27 @@ name|clusterId
 argument_list|)
 argument_list|)
 operator|.
-name|put
+name|get
+argument_list|()
+argument_list|,
+name|start
 argument_list|(
 name|ClusterNodeInfo
 operator|.
 name|REV_RECOVERY_LOCK
 argument_list|)
 operator|.
-name|is
+name|notEquals
 argument_list|(
 name|RecoverLockState
 operator|.
 name|ACQUIRED
 operator|.
 name|name
+argument_list|()
+argument_list|)
+operator|.
+name|get
 argument_list|()
 argument_list|)
 decl_stmt|;

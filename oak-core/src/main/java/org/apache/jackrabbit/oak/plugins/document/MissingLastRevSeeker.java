@@ -419,6 +419,9 @@ argument_list|,
 name|RecoverLockState
 operator|.
 name|ACQUIRED
+operator|.
+name|name
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|store
