@@ -2522,6 +2522,8 @@ init|(
 name|this
 init|)
 block|{
+try|try
+block|{
 name|ByteBuffer
 name|buffer
 init|=
@@ -2552,6 +2554,25 @@ argument_list|,
 name|buffer
 argument_list|)
 return|;
+block|}
+block|}
+catch|catch
+parameter_list|(
+name|IOException
+name|e
+parameter_list|)
+block|{
+name|log
+operator|.
+name|warn
+argument_list|(
+literal|"Failed to read from tar file "
+operator|+
+name|writer
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 comment|// the writer might have switched to a new file,

@@ -268,6 +268,11 @@ expr_stmt|;
 block|}
 block|}
 block|}
+name|segment
+operator|.
+name|access
+argument_list|()
+expr_stmt|;
 return|return
 name|segment
 return|;

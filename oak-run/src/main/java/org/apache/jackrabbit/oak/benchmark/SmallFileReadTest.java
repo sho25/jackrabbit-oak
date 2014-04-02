@@ -102,7 +102,14 @@ specifier|final
 name|int
 name|FILE_SIZE
 init|=
+name|Integer
+operator|.
+name|getInteger
+argument_list|(
+literal|"file.size"
+argument_list|,
 literal|10
+argument_list|)
 decl_stmt|;
 specifier|private
 name|Session
