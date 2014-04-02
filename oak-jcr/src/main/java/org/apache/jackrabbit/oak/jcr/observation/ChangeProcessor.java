@@ -1207,8 +1207,9 @@ block|}
 comment|// Linear backoff proportional to the number of items exceeding
 comment|// DELAY_THRESHOLD. Offset by 1 to trigger the log message in the
 comment|// else branch once the queue falls below DELAY_THRESHOLD again.
-name|delay
-operator|=
+name|int
+name|newDelay
+init|=
 literal|1
 operator|+
 call|(
@@ -1229,6 +1230,17 @@ operator|)
 operator|*
 name|MAX_DELAY
 argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|newDelay
+operator|>
+name|delay
+condition|)
+block|{
+name|delay
+operator|=
+name|newDelay
 expr_stmt|;
 name|commitRateLimiter
 operator|.
@@ -1237,6 +1249,7 @@ argument_list|(
 name|delay
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 else|else
@@ -1248,18 +1261,6 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|commitRateLimiter
-operator|.
-name|setDelay
-argument_list|(
-literal|0
-argument_list|)
-expr_stmt|;
-name|commitRateLimiter
-operator|.
-name|unblockCommits
-argument_list|()
-expr_stmt|;
 if|if
 condition|(
 name|delay
@@ -1274,6 +1275,17 @@ argument_list|(
 literal|"Revision queue becoming empty. Unblocking commits"
 argument_list|)
 expr_stmt|;
+name|commitRateLimiter
+operator|.
+name|setDelay
+argument_list|(
+literal|0
+argument_list|)
+expr_stmt|;
+name|delay
+operator|=
+literal|0
+expr_stmt|;
 block|}
 if|if
 condition|(
@@ -1287,16 +1299,17 @@ argument_list|(
 literal|"Revision queue becoming empty. Stop delaying commits."
 argument_list|)
 expr_stmt|;
-block|}
-block|}
-name|delay
-operator|=
-literal|0
+name|commitRateLimiter
+operator|.
+name|unblockCommits
+argument_list|()
 expr_stmt|;
 name|blocking
 operator|=
 literal|false
 expr_stmt|;
+block|}
+block|}
 block|}
 block|}
 block|}
