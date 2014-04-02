@@ -23,6 +23,18 @@ end_package
 
 begin_import
 import|import static
+name|javax
+operator|.
+name|jcr
+operator|.
+name|PropertyType
+operator|.
+name|TYPENAME_STRING
+import|;
+end_import
+
+begin_import
+import|import static
 name|junit
 operator|.
 name|framework
@@ -168,16 +180,6 @@ operator|.
 name|InitialContent
 operator|.
 name|INITIAL_CONTENT
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|jcr
-operator|.
-name|PropertyType
 import|;
 end_import
 
@@ -559,7 +561,12 @@ name|index
 argument_list|,
 literal|"lucene"
 argument_list|,
-literal|null
+name|ImmutableSet
+operator|.
+name|of
+argument_list|(
+name|TYPENAME_STRING
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|NodeState
@@ -720,7 +727,12 @@ name|index
 argument_list|,
 literal|"lucene"
 argument_list|,
-literal|null
+name|ImmutableSet
+operator|.
+name|of
+argument_list|(
+name|TYPENAME_STRING
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|NodeState
@@ -969,8 +981,6 @@ name|ImmutableSet
 operator|.
 name|of
 argument_list|(
-name|PropertyType
-operator|.
 name|TYPENAME_STRING
 argument_list|)
 argument_list|)
