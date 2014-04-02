@@ -468,6 +468,12 @@ specifier|private
 name|RecoverLockState
 name|revRecoveryLock
 decl_stmt|;
+comment|/**      * In memory flag indicating that this ClusterNode is entry is new and is being added to      * DocumentStore for the first time      *      * If false then it indicates that a previous entry for current node existed and that is being      * reused      */
+specifier|private
+name|boolean
+name|newEntry
+decl_stmt|;
+specifier|private
 name|ClusterNodeInfo
 parameter_list|(
 name|int
@@ -487,6 +493,12 @@ name|state
 parameter_list|,
 name|RecoverLockState
 name|revRecoveryLock
+parameter_list|,
+name|Long
+name|leaseEnd
+parameter_list|,
+name|boolean
+name|newEntry
 parameter_list|)
 block|{
 name|this
@@ -502,12 +514,29 @@ operator|=
 name|getCurrentTime
 argument_list|()
 expr_stmt|;
+if|if
+condition|(
+name|leaseEnd
+operator|==
+literal|null
+condition|)
+block|{
 name|this
 operator|.
 name|leaseEndTime
 operator|=
 name|startTime
 expr_stmt|;
+block|}
+else|else
+block|{
+name|this
+operator|.
+name|leaseEndTime
+operator|=
+name|leaseEnd
+expr_stmt|;
+block|}
 name|this
 operator|.
 name|store
@@ -537,6 +566,12 @@ operator|.
 name|revRecoveryLock
 operator|=
 name|revRecoveryLock
+expr_stmt|;
+name|this
+operator|.
+name|newEntry
+operator|=
+name|newEntry
 expr_stmt|;
 block|}
 specifier|public
@@ -566,6 +601,8 @@ argument_list|,
 name|MACHINE_ID
 argument_list|,
 name|WORKING_DIR
+argument_list|,
+literal|false
 argument_list|)
 return|;
 block|}
@@ -583,6 +620,38 @@ name|machineId
 parameter_list|,
 name|String
 name|instanceId
+parameter_list|)
+block|{
+return|return
+name|getInstance
+argument_list|(
+name|store
+argument_list|,
+name|machineId
+argument_list|,
+name|instanceId
+argument_list|,
+literal|true
+argument_list|)
+return|;
+block|}
+comment|/**      * Create a cluster node info instance for the store.      *      * @param store the document store (for the lease)      * @param machineId the machine id (null for MAC address)      * @param instanceId the instance id (null for current working directory)      * @param updateLease whether to update the lease      * @return the cluster node info      */
+specifier|public
+specifier|static
+name|ClusterNodeInfo
+name|getInstance
+parameter_list|(
+name|DocumentStore
+name|store
+parameter_list|,
+name|String
+name|machineId
+parameter_list|,
+name|String
+name|instanceId
+parameter_list|,
+name|boolean
+name|updateLease
 parameter_list|)
 block|{
 if|if
@@ -689,6 +758,11 @@ operator|.
 name|instanceId
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|updateLease
+condition|)
+block|{
 name|update
 operator|.
 name|set
@@ -703,6 +777,21 @@ operator|.
 name|leaseTime
 argument_list|)
 expr_stmt|;
+block|}
+else|else
+block|{
+name|update
+operator|.
+name|set
+argument_list|(
+name|LEASE_END_KEY
+argument_list|,
+name|clusterNode
+operator|.
+name|leaseEndTime
+argument_list|)
+expr_stmt|;
+block|}
 name|update
 operator|.
 name|set
@@ -743,9 +832,21 @@ name|name
 argument_list|()
 argument_list|)
 expr_stmt|;
+specifier|final
 name|boolean
 name|success
-init|=
+decl_stmt|;
+if|if
+condition|(
+name|clusterNode
+operator|.
+name|newEntry
+condition|)
+block|{
+comment|//For new entry do a create. This ensures that if two nodes create
+comment|//entry with same id then only one would succeed
+name|success
+operator|=
 name|store
 operator|.
 name|create
@@ -761,7 +862,27 @@ argument_list|(
 name|update
 argument_list|)
 argument_list|)
-decl_stmt|;
+expr_stmt|;
+block|}
+else|else
+block|{
+comment|// No expiration of earlier cluster info, so update
+name|store
+operator|.
+name|createOrUpdate
+argument_list|(
+name|Collection
+operator|.
+name|CLUSTER_NODES
+argument_list|,
+name|update
+argument_list|)
+expr_stmt|;
+name|success
+operator|=
+literal|true
+expr_stmt|;
+block|}
 if|if
 condition|(
 name|success
@@ -845,6 +966,16 @@ init|=
 name|ClusterNodeState
 operator|.
 name|NONE
+decl_stmt|;
+name|Long
+name|prevLeaseEnd
+init|=
+literal|null
+decl_stmt|;
+name|boolean
+name|newEntry
+init|=
+literal|false
 decl_stmt|;
 for|for
 control|(
@@ -993,18 +1124,8 @@ block|{
 comment|// a different machine or instance
 continue|continue;
 block|}
-comment|// remove expired matching entries
-name|store
-operator|.
-name|remove
-argument_list|(
-name|Collection
-operator|.
-name|CLUSTER_NODES
-argument_list|,
-name|key
-argument_list|)
-expr_stmt|;
+comment|//and cluster node which matches current machine identity but
+comment|//not being used
 if|if
 condition|(
 name|clusterNodeId
@@ -1038,8 +1159,14 @@ name|STATE
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|prevLeaseEnd
+operator|=
+name|leaseEnd
+expr_stmt|;
 block|}
 block|}
+comment|//No existing entry with matching signature found so
+comment|//create a new entry
 if|if
 condition|(
 name|clusterNodeId
@@ -1053,7 +1180,13 @@ name|maxId
 operator|+
 literal|1
 expr_stmt|;
+name|newEntry
+operator|=
+literal|true
+expr_stmt|;
 block|}
+comment|// Do not expire entries and stick on the earlier state, and leaseEnd so,
+comment|// that _lastRev recovery if needed is done.
 return|return
 operator|new
 name|ClusterNodeInfo
@@ -1071,6 +1204,10 @@ argument_list|,
 name|RecoverLockState
 operator|.
 name|NONE
+argument_list|,
+name|prevLeaseEnd
+argument_list|,
+name|newEntry
 argument_list|)
 return|;
 block|}

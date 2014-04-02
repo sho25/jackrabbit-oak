@@ -2047,6 +2047,10 @@ expr_stmt|;
 name|checkLastRevRecovery
 argument_list|()
 expr_stmt|;
+comment|// Renew the lease because it may have been stale
+name|backgroundRenewClusterIdLease
+argument_list|()
+expr_stmt|;
 name|backgroundThread
 operator|.
 name|start
