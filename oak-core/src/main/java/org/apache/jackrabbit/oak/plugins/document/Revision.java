@@ -93,6 +93,22 @@ name|ConcurrentMap
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|stats
+operator|.
+name|Clock
+import|;
+end_import
+
 begin_comment
 comment|/**  * A revision.  */
 end_comment
@@ -144,6 +160,26 @@ specifier|final
 name|boolean
 name|branch
 decl_stmt|;
+comment|/** Only set for testing */
+specifier|private
+specifier|static
+name|Clock
+name|clock
+decl_stmt|;
+comment|/**      *<b>      * Only to be used for testing.      * Do Not Use Otherwise      *</b>      *       * @param c - the clock      */
+specifier|static
+name|void
+name|setClock
+parameter_list|(
+name|Clock
+name|c
+parameter_list|)
+block|{
+name|clock
+operator|=
+name|c
+expr_stmt|;
+block|}
 specifier|public
 name|Revision
 parameter_list|(
@@ -482,6 +518,21 @@ operator|.
 name|currentTimeMillis
 argument_list|()
 decl_stmt|;
+if|if
+condition|(
+name|clock
+operator|!=
+literal|null
+condition|)
+block|{
+name|timestamp
+operator|=
+name|clock
+operator|.
+name|getTime
+argument_list|()
+expr_stmt|;
+block|}
 if|if
 condition|(
 name|timestamp

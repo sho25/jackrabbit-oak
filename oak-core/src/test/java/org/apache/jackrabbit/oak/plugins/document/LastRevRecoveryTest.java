@@ -490,11 +490,11 @@ literal|2
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|LastRevRecovery
+name|LastRevRecoveryAgent
 name|recovery
 init|=
 operator|new
-name|LastRevRecovery
+name|LastRevRecoveryAgent
 argument_list|(
 name|ds1
 argument_list|)

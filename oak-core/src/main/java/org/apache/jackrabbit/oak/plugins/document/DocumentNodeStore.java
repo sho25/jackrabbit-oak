@@ -1479,6 +1479,11 @@ specifier|final
 name|Executor
 name|executor
 decl_stmt|;
+specifier|private
+specifier|final
+name|LastRevRecoveryAgent
+name|lastRevRecoveryAgent
+decl_stmt|;
 specifier|public
 name|DocumentNodeStore
 parameter_list|(
@@ -1679,6 +1684,16 @@ name|versionGarbageCollector
 operator|=
 operator|new
 name|VersionGarbageCollector
+argument_list|(
+name|this
+argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|lastRevRecoveryAgent
+operator|=
+operator|new
+name|LastRevRecoveryAgent
 argument_list|(
 name|this
 argument_list|)
@@ -2029,6 +2044,9 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+name|checkLastRevRecovery
+argument_list|()
+expr_stmt|;
 name|backgroundThread
 operator|.
 name|start
@@ -2040,6 +2058,20 @@ name|info
 argument_list|(
 literal|"Initialized DocumentNodeStore with clusterNodeId: {}"
 argument_list|,
+name|clusterId
+argument_list|)
+expr_stmt|;
+block|}
+comment|/**      * Recover _lastRev recovery if needed.      */
+specifier|private
+name|void
+name|checkLastRevRecovery
+parameter_list|()
+block|{
+name|lastRevRecoveryAgent
+operator|.
+name|recover
+argument_list|(
 name|clusterId
 argument_list|)
 expr_stmt|;
@@ -8528,6 +8560,17 @@ parameter_list|()
 block|{
 return|return
 name|versionGarbageCollector
+return|;
+block|}
+annotation|@
+name|Nonnull
+specifier|public
+name|LastRevRecoveryAgent
+name|getLastRevRecoveryAgent
+parameter_list|()
+block|{
+return|return
+name|lastRevRecoveryAgent
 return|;
 block|}
 block|}
