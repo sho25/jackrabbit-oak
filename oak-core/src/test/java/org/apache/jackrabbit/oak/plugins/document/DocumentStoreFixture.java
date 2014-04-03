@@ -209,7 +209,7 @@ init|=
 operator|new
 name|RDBFixture
 argument_list|(
-literal|"RDB-Postgres"
+literal|"RDB-H2(file)"
 argument_list|,
 literal|"jdbc:h2:file:./target/ds-test"
 argument_list|,
