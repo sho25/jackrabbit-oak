@@ -209,7 +209,7 @@ name|getInteger
 argument_list|(
 literal|"update.limit"
 argument_list|,
-literal|1000
+literal|10000
 argument_list|)
 decl_stmt|;
 comment|/**      * The underlying store      */
