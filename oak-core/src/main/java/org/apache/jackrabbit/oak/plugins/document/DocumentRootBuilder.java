@@ -198,7 +198,6 @@ extends|extends
 name|MemoryNodeBuilder
 block|{
 comment|/**      * Number of content updates that need to happen before the updates      * are automatically purged to the private branch.      */
-specifier|private
 specifier|static
 specifier|final
 name|int
@@ -238,9 +237,13 @@ name|updates
 decl_stmt|;
 name|DocumentRootBuilder
 parameter_list|(
+annotation|@
+name|Nonnull
 name|DocumentNodeState
 name|base
 parameter_list|,
+annotation|@
+name|Nonnull
 name|DocumentNodeStore
 name|store
 parameter_list|)
@@ -364,6 +367,25 @@ expr_stmt|;
 block|}
 block|}
 annotation|@
+name|Nonnull
+annotation|@
+name|Override
+specifier|public
+name|NodeState
+name|getNodeState
+parameter_list|()
+block|{
+name|purge
+argument_list|()
+expr_stmt|;
+return|return
+name|branch
+operator|.
+name|getHead
+argument_list|()
+return|;
+block|}
+annotation|@
 name|Override
 specifier|public
 name|Blob
@@ -393,6 +415,8 @@ block|{
 name|NodeState
 name|head
 init|=
+name|super
+operator|.
 name|getNodeState
 argument_list|()
 decl_stmt|;
@@ -443,6 +467,8 @@ name|getBase
 argument_list|()
 expr_stmt|;
 return|return
+name|super
+operator|.
 name|getNodeState
 argument_list|()
 return|;
@@ -644,6 +670,8 @@ name|branch
 operator|.
 name|setRoot
 argument_list|(
+name|super
+operator|.
 name|getNodeState
 argument_list|()
 argument_list|)

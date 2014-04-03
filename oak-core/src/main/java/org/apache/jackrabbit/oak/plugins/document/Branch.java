@@ -740,6 +740,47 @@ return|return
 literal|null
 return|;
 block|}
+comment|/**      * @param rev the revision to check.      * @return {@code true} if the given revision is the head of this branch,      *          {@code false} otherwise.      */
+specifier|public
+name|boolean
+name|isHead
+parameter_list|(
+annotation|@
+name|Nonnull
+name|Revision
+name|rev
+parameter_list|)
+block|{
+name|checkArgument
+argument_list|(
+name|checkNotNull
+argument_list|(
+name|rev
+argument_list|)
+operator|.
+name|isBranch
+argument_list|()
+argument_list|,
+literal|"Not a branch revision: %s"
+argument_list|,
+name|rev
+argument_list|)
+expr_stmt|;
+return|return
+name|checkNotNull
+argument_list|(
+name|rev
+argument_list|)
+operator|.
+name|equals
+argument_list|(
+name|commits
+operator|.
+name|lastKey
+argument_list|()
+argument_list|)
+return|;
+block|}
 comment|/**      * Information about a commit within a branch.      */
 specifier|private
 specifier|static
