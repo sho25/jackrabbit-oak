@@ -1918,7 +1918,10 @@ expr_stmt|;
 block|}
 if|if
 condition|(
-name|blobStore
+name|store
+operator|.
+name|getBlobStore
+argument_list|()
 operator|instanceof
 name|GarbageCollectableBlobStore
 condition|)
