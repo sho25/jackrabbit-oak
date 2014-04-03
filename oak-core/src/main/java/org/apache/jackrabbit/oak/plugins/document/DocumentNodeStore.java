@@ -2572,6 +2572,8 @@ return|return
 name|asyncDelay
 return|;
 block|}
+annotation|@
+name|CheckForNull
 specifier|public
 name|ClusterNodeInfo
 name|getClusterInfo

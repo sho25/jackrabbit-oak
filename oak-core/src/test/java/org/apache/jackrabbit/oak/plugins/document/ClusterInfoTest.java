@@ -505,10 +505,8 @@ parameter_list|()
 block|{
 name|ClusterNodeInfo
 operator|.
-name|setClock
-argument_list|(
-literal|null
-argument_list|)
+name|resetClockToDefault
+argument_list|()
 expr_stmt|;
 block|}
 block|}

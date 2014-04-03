@@ -21,6 +21,22 @@ end_package
 
 begin_import
 import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkNotNull
+import|;
+end_import
+
+begin_import
+import|import static
 name|org
 operator|.
 name|apache
@@ -231,7 +247,7 @@ init|=
 literal|"instance"
 decl_stmt|;
 comment|/**      * The end of the lease.      */
-specifier|protected
+specifier|public
 specifier|static
 specifier|final
 name|String
@@ -395,14 +411,22 @@ name|Clock
 operator|.
 name|SIMPLE
 decl_stmt|;
+specifier|public
+specifier|static
+specifier|final
+name|int
+name|DEFAULT_LEASE_DURATION_MILLIS
+init|=
+literal|1000
+operator|*
+literal|60
+decl_stmt|;
 comment|/**      * The number of milliseconds for a lease (1 minute by default, and      * initially).      */
 specifier|private
 name|long
 name|leaseTime
 init|=
-literal|1000
-operator|*
-literal|60
+name|DEFAULT_LEASE_DURATION_MILLIS
 decl_stmt|;
 comment|/**      * The assigned cluster id.      */
 specifier|private
@@ -1478,7 +1502,7 @@ operator|+
 name|revRecoveryLock
 return|;
 block|}
-comment|/**      * Specify a custom clock to be used for determining current time.      * If passed clock is null then clock would be set to the default clock      *      *<b>Only Used For Testing</b>      */
+comment|/**      * Specify a custom clock to be used for determining current time.      *      *<b>Only Used For Testing</b>      */
 specifier|static
 name|void
 name|setClock
@@ -1487,23 +1511,27 @@ name|Clock
 name|c
 parameter_list|)
 block|{
-if|if
-condition|(
+name|checkNotNull
+argument_list|(
 name|c
-operator|==
-literal|null
-condition|)
+argument_list|)
+expr_stmt|;
+name|clock
+operator|=
+name|c
+expr_stmt|;
+block|}
+comment|/**      * Resets the clock to the default      */
+specifier|static
+name|void
+name|resetClockToDefault
+parameter_list|()
 block|{
-name|c
+name|clock
 operator|=
 name|Clock
 operator|.
 name|SIMPLE
-expr_stmt|;
-block|}
-name|clock
-operator|=
-name|c
 expr_stmt|;
 block|}
 specifier|private
