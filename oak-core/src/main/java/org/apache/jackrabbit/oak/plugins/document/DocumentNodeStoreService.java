@@ -964,6 +964,7 @@ specifier|private
 name|Whiteboard
 name|whiteboard
 decl_stmt|;
+comment|/**      * Revisions older than this time would be garbage collected      */
 specifier|private
 specifier|static
 specifier|final
@@ -987,7 +988,6 @@ name|PROP_VER_GC_MAX_AGE
 init|=
 literal|"versionGcMaxAgeInSecs"
 decl_stmt|;
-comment|/**      * Revisions older than this time would be garbage collected      */
 specifier|private
 name|long
 name|versionGcMaxAgeInSecs
@@ -1001,6 +1001,36 @@ name|String
 name|PROP_REV_RECOVERY_INTERVAL
 init|=
 literal|"lastRevRecoveryJobIntervalInSecs"
+decl_stmt|;
+comment|/**      * Blob modified before this time duration would be considered for Blob GC      */
+specifier|private
+specifier|static
+specifier|final
+name|long
+name|DEFAULT_BLOB_GC_MAX_AGE
+init|=
+name|TimeUnit
+operator|.
+name|HOURS
+operator|.
+name|toMillis
+argument_list|(
+literal|24
+argument_list|)
+decl_stmt|;
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|PROP_BLOB_GC_MAX_AGE
+init|=
+literal|"blobGcMaxAgeInSecs"
+decl_stmt|;
+specifier|private
+name|long
+name|blobGcMaxAgeInSecs
+init|=
+name|DEFAULT_BLOB_GC_MAX_AGE
 decl_stmt|;
 annotation|@
 name|Activate
@@ -1557,6 +1587,22 @@ argument_list|,
 name|DEFAULT_VER_GC_MAX_AGE
 argument_list|)
 expr_stmt|;
+name|blobGcMaxAgeInSecs
+operator|=
+name|PropertiesUtil
+operator|.
+name|toLong
+argument_list|(
+name|config
+operator|.
+name|get
+argument_list|(
+name|PROP_BLOB_GC_MAX_AGE
+argument_list|)
+argument_list|,
+name|DEFAULT_BLOB_GC_MAX_AGE
+argument_list|)
+expr_stmt|;
 block|}
 annotation|@
 name|Deactivate
@@ -1945,7 +1991,9 @@ block|{
 name|store
 operator|.
 name|createBlobGarbageCollector
-argument_list|()
+argument_list|(
+name|blobGcMaxAgeInSecs
+argument_list|)
 operator|.
 name|collectGarbage
 argument_list|()

@@ -327,6 +327,18 @@ name|util
 operator|.
 name|concurrent
 operator|.
+name|TimeUnit
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
 name|atomic
 operator|.
 name|AtomicBoolean
@@ -8269,13 +8281,16 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/**      * Creates and returns a MarkSweepGarbageCollector if the current BlobStore      * supports garbage collection      *      * @return garbage collector of the BlobStore supports GC otherwise null      */
+comment|/**      * Creates and returns a MarkSweepGarbageCollector if the current BlobStore      * supports garbage collection      *      * @return garbage collector of the BlobStore supports GC otherwise null      * @param blobGcMaxAgeInSecs      */
 annotation|@
 name|CheckForNull
 specifier|public
 name|MarkSweepGarbageCollector
 name|createBlobGarbageCollector
-parameter_list|()
+parameter_list|(
+name|long
+name|blobGcMaxAgeInSecs
+parameter_list|)
 block|{
 name|MarkSweepGarbageCollector
 name|blobGC
@@ -8308,6 +8323,15 @@ operator|)
 name|blobStore
 argument_list|,
 name|executor
+argument_list|,
+name|TimeUnit
+operator|.
+name|SECONDS
+operator|.
+name|toMillis
+argument_list|(
+name|blobGcMaxAgeInSecs
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

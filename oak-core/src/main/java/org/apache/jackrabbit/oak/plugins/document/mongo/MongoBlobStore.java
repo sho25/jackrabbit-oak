@@ -1289,6 +1289,7 @@ operator|.
 name|QUERYOPTION_SLAVEOK
 argument_list|)
 decl_stmt|;
+comment|//TODO The cursor needs to be closed
 return|return
 operator|new
 name|AbstractIterator
