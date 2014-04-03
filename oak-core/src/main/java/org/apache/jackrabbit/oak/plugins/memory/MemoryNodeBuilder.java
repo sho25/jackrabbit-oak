@@ -2344,7 +2344,9 @@ name|UnconnectedHead
 argument_list|(
 name|builder
 argument_list|,
-name|state
+name|builder
+operator|.
+name|base
 argument_list|)
 expr_stmt|;
 return|return
