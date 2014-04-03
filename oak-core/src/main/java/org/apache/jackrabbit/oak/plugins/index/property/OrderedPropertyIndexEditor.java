@@ -415,11 +415,18 @@ name|names
 operator|.
 name|isArray
 argument_list|()
+operator|&&
+name|names
+operator|.
+name|count
+argument_list|()
+operator|>
+literal|1
 condition|)
 block|{
 name|LOG
 operator|.
-name|warn
+name|debug
 argument_list|(
 literal|"Only single value supported. '{}' only will be used."
 argument_list|,
@@ -470,17 +477,7 @@ operator|==
 literal|null
 condition|)
 block|{
-name|LOG
-operator|.
-name|info
-argument_list|(
-literal|"Using default direction for sorting: {}"
-argument_list|,
-name|this
-operator|.
-name|direction
-argument_list|)
-expr_stmt|;
+comment|// LOG.debug("Using default direction for sorting: {}", this.direction);
 block|}
 else|else
 block|{
