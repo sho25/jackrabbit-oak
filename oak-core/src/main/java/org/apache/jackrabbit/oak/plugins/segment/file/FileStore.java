@@ -2110,6 +2110,13 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+name|writer
+operator|.
+name|cleanup
+argument_list|(
+name|ids
+argument_list|)
+expr_stmt|;
 name|List
 argument_list|<
 name|TarReader
