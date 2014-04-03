@@ -577,7 +577,7 @@ name|Map
 argument_list|<
 name|Integer
 argument_list|,
-name|File
+name|?
 argument_list|>
 name|files
 init|=
