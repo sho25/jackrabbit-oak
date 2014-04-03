@@ -1742,7 +1742,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"/test/b"
+literal|"/test/c"
 argument_list|,
 name|strings
 operator|.
