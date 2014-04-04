@@ -16,22 +16,6 @@ package|;
 end_package
 
 begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|collect
-operator|.
-name|Lists
-operator|.
-name|newArrayList
-import|;
-end_import
-
-begin_import
 import|import
 name|java
 operator|.
@@ -322,6 +306,42 @@ operator|.
 name|namepath
 operator|.
 name|NamePathMapper
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|commit
+operator|.
+name|ConflictValidatorProvider
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|commit
+operator|.
+name|JcrConflictHandler
 import|;
 end_import
 
@@ -673,6 +693,22 @@ name|Before
 import|;
 end_import
 
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|collect
+operator|.
+name|Lists
+operator|.
+name|newArrayList
+import|;
+end_import
+
 begin_comment
 comment|/**  * AbstractOakTest is the base class for oak test execution.  */
 end_comment
@@ -741,8 +777,13 @@ operator|new
 name|InitialContent
 argument_list|()
 argument_list|)
-comment|// FIXME review whether we need to improve the test setup here. See also OAK-1541
-comment|//                .with(JcrConflictHandler.JCR_CONFLICT_HANDLER)
+operator|.
+name|with
+argument_list|(
+name|JcrConflictHandler
+operator|.
+name|JCR_CONFLICT_HANDLER
+argument_list|)
 operator|.
 name|with
 argument_list|(
@@ -785,8 +826,13 @@ operator|new
 name|TypeEditorProvider
 argument_list|()
 argument_list|)
-comment|// FIXME review whether we need to improve the test setup here. See also OAK-1541
-comment|//                .with(new ConflictValidatorProvider())
+operator|.
+name|with
+argument_list|(
+operator|new
+name|ConflictValidatorProvider
+argument_list|()
+argument_list|)
 operator|.
 name|with
 argument_list|(

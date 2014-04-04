@@ -383,6 +383,12 @@ name|Exception
 block|{
 try|try
 block|{
+comment|// revert uncommited changes
+name|root
+operator|.
+name|refresh
+argument_list|()
+expr_stmt|;
 comment|// clean up policies at the root node
 name|AccessControlManager
 name|acMgr
