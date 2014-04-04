@@ -550,7 +550,7 @@ name|State
 operator|.
 name|NOT_RUNNING
 decl_stmt|;
-comment|/**      * Creates an instance of MarkSweepGarbageCollector      *      * @param marker BlobReferenceRetriever instanced used to fetch refereedd blob entries      * @param blobStore      * @param root the root absolute path of directory under which temporary      *             files would be created      * @param batchCount batch sized used for saving intermediate state      * @param runBackendConcurrently - run the backend iterate concurrently      * @param maxLastModifiedInterval - lastModifiedTime in millis. Only files with time      *                                less than this time would be considered for GC      * @throws IOException Signals that an I/O exception has occurred.      */
+comment|/**      * Creates an instance of MarkSweepGarbageCollector      *      * @param marker BlobReferenceRetriever instanced used to fetch refereed blob entries      * @param blobStore      * @param root the root absolute path of directory under which temporary      *             files would be created      * @param batchCount batch sized used for saving intermediate state      * @param runBackendConcurrently - run the backend iterate concurrently      * @param maxLastModifiedInterval - lastModifiedTime in millis. Only files with time      *                                less than this time would be considered for GC      * @throws IOException Signals that an I/O exception has occurred.      */
 specifier|public
 name|MarkSweepGarbageCollector
 parameter_list|(
