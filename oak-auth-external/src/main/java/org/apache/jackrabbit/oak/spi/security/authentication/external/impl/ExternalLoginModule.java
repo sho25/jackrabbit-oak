@@ -589,6 +589,15 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
+comment|// todo: make configurable
+specifier|private
+specifier|static
+specifier|final
+name|int
+name|MAX_SYNC_ATTEMPTS
+init|=
+literal|50
+decl_stmt|;
 comment|/**      * Name of the parameter that configures the name of the external identity provider.      */
 specifier|public
 specifier|static
@@ -1581,13 +1590,6 @@ parameter_list|)
 throws|throws
 name|SyncException
 block|{
-name|SyncContext
-name|context
-init|=
-literal|null
-decl_stmt|;
-try|try
-block|{
 name|Root
 name|root
 init|=
@@ -1630,6 +1632,26 @@ literal|"Cannot synchronize user. userManager == null"
 argument_list|)
 throw|;
 block|}
+name|int
+name|numAttempt
+init|=
+literal|0
+decl_stmt|;
+while|while
+condition|(
+name|numAttempt
+operator|++
+operator|<
+name|MAX_SYNC_ATTEMPTS
+condition|)
+block|{
+name|SyncContext
+name|context
+init|=
+literal|null
+decl_stmt|;
+try|try
+block|{
 name|DebugTimer
 name|timer
 init|=
@@ -1702,6 +1724,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+return|return;
 block|}
 catch|catch
 parameter_list|(
@@ -1709,15 +1732,27 @@ name|CommitFailedException
 name|e
 parameter_list|)
 block|{
-throw|throw
-operator|new
-name|SyncException
+name|log
+operator|.
+name|warn
 argument_list|(
-literal|"User synchronization failed during commit."
+literal|"User synchronization failed during commit: {}. (attempt {}/{})"
 argument_list|,
 name|e
+operator|.
+name|toString
+argument_list|()
+argument_list|,
+name|numAttempt
+argument_list|,
+name|MAX_SYNC_ATTEMPTS
 argument_list|)
-throw|;
+expr_stmt|;
+name|root
+operator|.
+name|refresh
+argument_list|()
+expr_stmt|;
 block|}
 finally|finally
 block|{
@@ -1735,6 +1770,18 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+block|}
+throw|throw
+operator|new
+name|SyncException
+argument_list|(
+literal|"User synchronization failed during commit after "
+operator|+
+name|MAX_SYNC_ATTEMPTS
+operator|+
+literal|" attempts"
+argument_list|)
+throw|;
 block|}
 comment|/**      * Initiates synchronization of a possible remove user      * @param id the user id      */
 specifier|private
