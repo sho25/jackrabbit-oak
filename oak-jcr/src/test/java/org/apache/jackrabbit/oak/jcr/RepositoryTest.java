@@ -3557,12 +3557,6 @@ expr_stmt|;
 block|}
 block|}
 annotation|@
-name|Ignore
-argument_list|(
-literal|"OAK-1674"
-argument_list|)
-comment|// FIXME OAK-1674
-annotation|@
 name|Test
 specifier|public
 name|void

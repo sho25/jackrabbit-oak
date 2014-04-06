@@ -953,6 +953,11 @@ name|nodeBuilder
 operator|.
 name|isNew
 argument_list|()
+operator|||
+name|nodeBuilder
+operator|.
+name|isReplaced
+argument_list|()
 condition|)
 block|{
 return|return
