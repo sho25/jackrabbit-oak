@@ -58,7 +58,9 @@ name|getInteger
 argument_list|(
 literal|"oak.queryLimitInMemory"
 argument_list|,
-literal|10000
+name|Integer
+operator|.
+name|MAX_VALUE
 argument_list|)
 decl_stmt|;
 specifier|private
@@ -73,7 +75,9 @@ name|getInteger
 argument_list|(
 literal|"oak.queryLimitReads"
 argument_list|,
-literal|100000
+name|Integer
+operator|.
+name|MAX_VALUE
 argument_list|)
 decl_stmt|;
 specifier|private
