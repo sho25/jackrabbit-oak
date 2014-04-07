@@ -66,7 +66,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * The interface for the backend storage for documents.  *<p>  * For keys, the maximum length is 512 bytes in the UTF-8 representation.  */
+comment|/**  * The interface for the backend storage for documents.  *<p>  * In general atomicity of operations on a DocumentStore are limited to a single  * document. That is, an implementation does not have to guarantee atomicity of  * the entire effect of a method call. A method that fails with an exception may  * have modified just some documents and then abort. However, an implementation  * must not modify a document partially. Either the complete update operation  * is applied to a document or no modification is done at all.  *<p>  * For keys, the maximum length is 512 bytes in the UTF-8 representation.  */
 end_comment
 
 begin_interface
@@ -185,7 +185,7 @@ name|int
 name|limit
 parameter_list|)
 function_decl|;
-comment|/**      * Remove a document.      *      * @param<T> the document type      * @param collection the collection      * @param key the key      */
+comment|/**      * Remove a document. This method does nothing if there is no document      * with the given key.      *      * @param<T> the document type      * @param collection the collection      * @param key the key      */
 parameter_list|<
 name|T
 extends|extends
@@ -204,7 +204,7 @@ name|String
 name|key
 parameter_list|)
 function_decl|;
-comment|/**      * Batch remove documents with given key.      *      * @param<T> the document type      * @param collection the collection      * @param keys list of keys      */
+comment|/**      * Batch remove documents with given key. Keys for documents that do not      * exist are simply ignored. If this method fails with an exception, then      * only some of the documents identified by {@code keys} may have been      * removed.      *      * @param<T> the document type      * @param collection the collection      * @param keys list of keys      */
 parameter_list|<
 name|T
 extends|extends
