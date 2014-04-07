@@ -58,7 +58,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * An {@link org.apache.jackrabbit.oak.plugins.index.solr.configuration.OakSolrConfiguration} for the embedded Solr server  */
+comment|/**  * Default {@link org.apache.jackrabbit.oak.plugins.index.solr.configuration.OakSolrConfiguration}  */
 end_comment
 
 begin_class
