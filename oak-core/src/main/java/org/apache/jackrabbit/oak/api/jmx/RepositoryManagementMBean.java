@@ -184,6 +184,20 @@ name|long
 name|lifetime
 parameter_list|)
 function_decl|;
+comment|/**      * Initiate a reindex operation for the property indexes marked for      * reindexing      *       * @return the status of the operation right after it was initiated      */
+annotation|@
+name|Nonnull
+name|CompositeData
+name|startPropertyIndexAsyncReindex
+parameter_list|()
+function_decl|;
+comment|/**      * Asynchronous Property Index reindexing status      *       * @return the status of the ongoing operation or if none the terminal      *         status of the last operation or<em>Status not available</em> if      *         none.      */
+annotation|@
+name|Nonnull
+name|CompositeData
+name|getPropertyIndexAsyncReindexStatus
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 
