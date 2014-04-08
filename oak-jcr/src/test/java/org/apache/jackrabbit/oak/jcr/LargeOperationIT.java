@@ -1861,7 +1861,7 @@ name|DocumentFixture
 operator|.
 name|class
 decl_stmt|;
-comment|// FIXME OAK-1415
+comment|// FIXME OAK-1698
 name|assertOnLgn
 argument_list|(
 literal|"large move"
@@ -2241,6 +2241,19 @@ parameter_list|)
 block|{}
 block|}
 block|}
+name|boolean
+name|knownIssue
+init|=
+name|fixture
+operator|.
+name|getClass
+argument_list|()
+operator|==
+name|DocumentFixture
+operator|.
+name|class
+decl_stmt|;
+comment|// FIXME OAK-1698
 name|assertOnLgn
 argument_list|(
 literal|"large number of pending events"
@@ -2249,7 +2262,7 @@ name|scales
 argument_list|,
 name|executionTimes
 argument_list|,
-literal|false
+name|knownIssue
 argument_list|)
 expr_stmt|;
 block|}
@@ -2384,6 +2397,19 @@ name|t
 argument_list|)
 expr_stmt|;
 block|}
+name|boolean
+name|knownIssue
+init|=
+name|fixture
+operator|.
+name|getClass
+argument_list|()
+operator|==
+name|DocumentFixture
+operator|.
+name|class
+decl_stmt|;
+comment|// FIXME OAK-1698
 name|assertOnLgn
 argument_list|(
 literal|"slow listeners"
@@ -2392,7 +2418,7 @@ name|scales
 argument_list|,
 name|executionTimes
 argument_list|,
-literal|false
+name|knownIssue
 argument_list|)
 expr_stmt|;
 block|}
