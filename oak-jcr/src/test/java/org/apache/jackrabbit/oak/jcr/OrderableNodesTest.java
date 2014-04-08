@@ -139,6 +139,18 @@ name|assertTrue
 import|;
 end_import
 
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assume
+operator|.
+name|assumeTrue
+import|;
+end_import
+
 begin_class
 specifier|public
 class|class
@@ -156,6 +168,16 @@ block|{
 name|super
 argument_list|(
 name|fixture
+argument_list|)
+expr_stmt|;
+comment|// OAK-1690
+name|assumeTrue
+argument_list|(
+name|fixture
+operator|!=
+name|NodeStoreFixture
+operator|.
+name|DOCUMENT_JDBC
 argument_list|)
 expr_stmt|;
 block|}
