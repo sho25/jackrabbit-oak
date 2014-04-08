@@ -527,6 +527,7 @@ argument_list|,
 name|p2
 argument_list|)
 return|;
+comment|// case IN is not needed here, as this is handled in the class InImpl.
 block|}
 throw|throw
 operator|new
@@ -878,6 +879,21 @@ name|v
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+else|else
+block|{
+comment|// like '%' conditions
+name|operand1
+operator|.
+name|restrict
+argument_list|(
+name|f
+argument_list|,
+name|operator
+argument_list|,
+name|v
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 else|else
