@@ -2164,6 +2164,22 @@ literal|null
 condition|)
 block|{
 comment|// something else went wrong
+name|LOG
+operator|.
+name|error
+argument_list|(
+literal|"insert failed, but document "
+operator|+
+name|update
+operator|.
+name|getId
+argument_list|()
+operator|+
+literal|" is not present, aborting"
+argument_list|,
+name|ex
+argument_list|)
+expr_stmt|;
 throw|throw
 operator|(
 name|ex
@@ -2231,7 +2247,7 @@ name|boolean
 name|checkConditions
 parameter_list|,
 name|int
-name|retries
+name|maxRetries
 parameter_list|)
 block|{
 name|T
@@ -2265,6 +2281,11 @@ name|boolean
 name|success
 init|=
 literal|false
+decl_stmt|;
+name|int
+name|retries
+init|=
+name|maxRetries
 decl_stmt|;
 while|while
 condition|(
@@ -2370,7 +2391,11 @@ throw|throw
 operator|new
 name|MicroKernelException
 argument_list|(
-literal|"failed update (race?)"
+literal|"failed update (race?) after "
+operator|+
+name|maxRetries
+operator|+
+literal|" retries"
 argument_list|)
 throw|;
 block|}
