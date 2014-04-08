@@ -3724,7 +3724,7 @@ argument_list|,
 name|high
 argument_list|)
 expr_stmt|;
-comment|// only split if half of the data can be moved to old document
+comment|// only split if enough of the data can be moved to old document
 if|if
 condition|(
 name|oldDoc
@@ -3744,6 +3744,13 @@ name|add
 argument_list|(
 name|old
 argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+name|main
+operator|=
+literal|null
 expr_stmt|;
 block|}
 block|}

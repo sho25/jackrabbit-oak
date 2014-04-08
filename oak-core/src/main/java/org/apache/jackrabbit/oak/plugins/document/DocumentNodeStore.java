@@ -6932,7 +6932,7 @@ condition|)
 block|{
 name|LOG
 operator|.
-name|info
+name|debug
 argument_list|(
 literal|"Split operation on {}. Size before: {}, after: {}"
 argument_list|,
@@ -6950,6 +6950,21 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+else|else
+block|{
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"Split operation created {}"
+argument_list|,
+name|op
+operator|.
+name|getId
+argument_list|()
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 name|it
