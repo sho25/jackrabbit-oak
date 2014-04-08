@@ -1681,19 +1681,6 @@ name|t
 argument_list|)
 expr_stmt|;
 block|}
-name|boolean
-name|knownIssue
-init|=
-name|fixture
-operator|.
-name|getClass
-argument_list|()
-operator|==
-name|DocumentFixture
-operator|.
-name|class
-decl_stmt|;
-comment|// FIXME OAK-1414
 name|assertOnLgn
 argument_list|(
 literal|"large copy"
@@ -1702,7 +1689,7 @@ name|scales
 argument_list|,
 name|executionTimes
 argument_list|,
-name|knownIssue
+literal|false
 argument_list|)
 expr_stmt|;
 block|}
