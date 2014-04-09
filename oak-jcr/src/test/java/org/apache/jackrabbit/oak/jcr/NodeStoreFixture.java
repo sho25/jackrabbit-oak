@@ -483,8 +483,6 @@ argument_list|(
 literal|"jdbc:h2:mem:"
 operator|+
 name|id
-operator|+
-literal|";MVCC=true"
 argument_list|,
 literal|"sa"
 argument_list|,

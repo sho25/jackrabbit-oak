@@ -170,16 +170,6 @@ argument_list|(
 name|fixture
 argument_list|)
 expr_stmt|;
-comment|// OAK-1690
-name|assumeTrue
-argument_list|(
-name|fixture
-operator|!=
-name|NodeStoreFixture
-operator|.
-name|DOCUMENT_JDBC
-argument_list|)
-expr_stmt|;
 block|}
 annotation|@
 name|Test
