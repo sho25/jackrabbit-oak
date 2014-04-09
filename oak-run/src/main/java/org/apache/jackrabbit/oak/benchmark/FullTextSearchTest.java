@@ -614,6 +614,7 @@ operator|.
 name|getQueryManager
 argument_list|()
 decl_stmt|;
+comment|//TODO verify why "order by jcr:score()" accounts for what looks like> 20% of the perf lost in Collections.sort
 name|Query
 name|q
 init|=
@@ -625,7 +626,7 @@ literal|"/jcr:root//*[jcr:contains(@text, '"
 operator|+
 name|word
 operator|+
-literal|"')] order by jcr:score()"
+literal|"')] "
 argument_list|,
 name|Query
 operator|.
