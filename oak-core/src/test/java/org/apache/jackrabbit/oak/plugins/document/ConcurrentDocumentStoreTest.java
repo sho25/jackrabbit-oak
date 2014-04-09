@@ -149,7 +149,7 @@ block|{
 name|int
 name|workers
 init|=
-literal|8
+literal|20
 decl_stmt|;
 comment|// TODO: this test is going to fail if the number of
 comment|// workers exceeds the number of retries done by
