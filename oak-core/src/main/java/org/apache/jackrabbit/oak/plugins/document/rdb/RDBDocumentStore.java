@@ -2140,9 +2140,12 @@ name|ex
 parameter_list|)
 block|{
 comment|// may have failed due to a race condition; try update instead
+comment|// this is an edge case, so it's ok to bypass the cache
+comment|// (avoiding a race condition where the DB is already updated
+comment|// but the case is not)
 name|oldDoc
 operator|=
-name|readDocumentCached
+name|readDocumentUncached
 argument_list|(
 name|collection
 argument_list|,
@@ -2150,10 +2153,6 @@ name|update
 operator|.
 name|getId
 argument_list|()
-argument_list|,
-name|Integer
-operator|.
-name|MAX_VALUE
 argument_list|)
 expr_stmt|;
 if|if
