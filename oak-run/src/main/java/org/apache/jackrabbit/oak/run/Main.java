@@ -2801,6 +2801,10 @@ name|OakFixture
 operator|.
 name|getTar
 argument_list|(
+name|OakFixture
+operator|.
+name|OAK_TAR
+argument_list|,
 name|baseFile
 argument_list|,
 literal|256
@@ -2813,6 +2817,8 @@ name|value
 argument_list|(
 name|options
 argument_list|)
+argument_list|,
+literal|false
 argument_list|)
 expr_stmt|;
 block|}
