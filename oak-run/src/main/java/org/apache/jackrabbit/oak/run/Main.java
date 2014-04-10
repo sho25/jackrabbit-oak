@@ -1281,24 +1281,6 @@ name|getReferencedIds
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-name|id
-operator|+
-literal|" -> "
-operator|+
-name|idmap
-operator|.
-name|get
-argument_list|(
-name|id
-argument_list|)
-argument_list|)
-expr_stmt|;
 block|}
 elseif|else
 if|if
@@ -1801,7 +1783,11 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"/ -> "
+literal|"/ ("
+operator|+
+name|id
+operator|+
+literal|") -> "
 operator|+
 name|node
 argument_list|)
@@ -1828,17 +1814,46 @@ argument_list|(
 name|name
 argument_list|)
 expr_stmt|;
+name|RecordId
+name|nid
+init|=
+literal|null
+decl_stmt|;
+if|if
+condition|(
+name|node
+operator|instanceof
+name|SegmentNodeState
+condition|)
+block|{
+name|nid
+operator|=
+operator|(
+operator|(
+name|SegmentNodeState
+operator|)
+name|node
+operator|)
+operator|.
+name|getRecordId
+argument_list|()
+expr_stmt|;
+block|}
 name|System
 operator|.
 name|out
 operator|.
 name|println
 argument_list|(
-literal|" "
+literal|"  "
 operator|+
 name|name
 operator|+
-literal|" -> "
+literal|" ("
+operator|+
+name|nid
+operator|+
+literal|") -> "
 operator|+
 name|node
 argument_list|)
