@@ -3091,8 +3091,9 @@ name|list
 operator|.
 name|add
 argument_list|(
-operator|new
 name|TarReader
+operator|.
+name|open
 argument_list|(
 name|writeFile
 argument_list|,

@@ -266,8 +266,9 @@ expr_stmt|;
 name|TarReader
 name|reader
 init|=
-operator|new
 name|TarReader
+operator|.
+name|open
 argument_list|(
 name|file
 argument_list|,
@@ -306,8 +307,9 @@ expr_stmt|;
 block|}
 name|reader
 operator|=
-operator|new
 name|TarReader
+operator|.
+name|open
 argument_list|(
 name|file
 argument_list|,
