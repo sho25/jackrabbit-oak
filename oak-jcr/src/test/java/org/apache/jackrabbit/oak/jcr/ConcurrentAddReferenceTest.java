@@ -169,16 +169,6 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Assume
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
 name|Before
 import|;
 end_import
@@ -356,18 +346,6 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|Assume
-operator|.
-name|assumeTrue
-argument_list|(
-name|fixture
-operator|!=
-name|NodeStoreFixture
-operator|.
-name|DOCUMENT_JDBC
-argument_list|)
-expr_stmt|;
-comment|// FIXME OAK-1472
 name|List
 argument_list|<
 name|Exception
