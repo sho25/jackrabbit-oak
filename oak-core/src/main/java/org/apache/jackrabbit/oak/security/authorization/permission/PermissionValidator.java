@@ -1452,6 +1452,15 @@ argument_list|,
 name|defaultPermission
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|toTest
+operator|!=
+name|Permissions
+operator|.
+name|NO_PERMISSION
+condition|)
+block|{
 name|boolean
 name|isGranted
 decl_stmt|;
@@ -1509,6 +1518,7 @@ argument_list|,
 literal|"Access denied"
 argument_list|)
 throw|;
+block|}
 block|}
 block|}
 annotation|@
