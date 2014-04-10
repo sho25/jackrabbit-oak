@@ -125,6 +125,15 @@ return|return
 name|columnName
 return|;
 block|}
+specifier|public
+name|String
+name|getPropertyName
+parameter_list|()
+block|{
+return|return
+name|propertyName
+return|;
+block|}
 annotation|@
 name|Override
 name|boolean
