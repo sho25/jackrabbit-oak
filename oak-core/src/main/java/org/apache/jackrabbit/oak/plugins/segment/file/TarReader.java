@@ -3201,7 +3201,7 @@ name|file
 argument_list|)
 expr_stmt|;
 return|return
-literal|null
+name|this
 return|;
 block|}
 block|}
