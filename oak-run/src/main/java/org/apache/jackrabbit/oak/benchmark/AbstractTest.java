@@ -1084,20 +1084,7 @@ name|start
 argument_list|()
 expr_stmt|;
 block|}
-name|System
-operator|.
-name|out
-operator|.
-name|printf
-argument_list|(
-literal|"Started %d threads%n"
-argument_list|,
-name|threads
-operator|.
-name|size
-argument_list|()
-argument_list|)
-expr_stmt|;
+comment|//System.out.printf("Started %d threads%n", threads.size());
 comment|// Run test iterations, and capture the execution times
 name|long
 name|runtimeEnd
