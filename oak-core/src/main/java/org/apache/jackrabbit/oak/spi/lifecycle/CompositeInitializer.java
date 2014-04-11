@@ -67,24 +67,6 @@ name|NodeBuilder
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|spi
-operator|.
-name|state
-operator|.
-name|NodeState
-import|;
-end_import
-
 begin_comment
 comment|/**  * Composite repository initializer that delegates the  * {@link #initialize(NodeBuilder)} call in sequence to all the  * component initializers.  */
 end_comment

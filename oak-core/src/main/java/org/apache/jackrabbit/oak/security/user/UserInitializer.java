@@ -221,7 +221,7 @@ name|spi
 operator|.
 name|commit
 operator|.
-name|CommitHook
+name|EmptyHook
 import|;
 end_import
 
@@ -257,7 +257,7 @@ name|spi
 operator|.
 name|query
 operator|.
-name|QueryIndexProvider
+name|CompositeQueryIndexProvider
 import|;
 end_import
 
@@ -501,15 +501,6 @@ name|builder
 parameter_list|,
 name|String
 name|workspaceName
-parameter_list|,
-name|QueryEngineSettings
-name|queryEngineSettings
-parameter_list|,
-name|QueryIndexProvider
-name|indexProvider
-parameter_list|,
-name|CommitHook
-name|commitHook
 parameter_list|)
 block|{
 name|NodeState
@@ -537,15 +528,21 @@ name|SystemRoot
 argument_list|(
 name|store
 argument_list|,
-name|commitHook
+name|EmptyHook
+operator|.
+name|INSTANCE
 argument_list|,
 name|workspaceName
 argument_list|,
 name|securityProvider
 argument_list|,
-name|queryEngineSettings
+operator|new
+name|QueryEngineSettings
+argument_list|()
 argument_list|,
-name|indexProvider
+operator|new
+name|CompositeQueryIndexProvider
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|UserConfiguration

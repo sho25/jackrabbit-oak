@@ -2944,17 +2944,6 @@ argument_list|,
 name|defaultWorkspaceName
 argument_list|,
 name|indexEditors
-argument_list|,
-name|queryEngineSettings
-argument_list|,
-name|indexProvider
-argument_list|,
-name|CompositeHook
-operator|.
-name|compose
-argument_list|(
-name|initHooks
-argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// add index hooks later to prevent the OakInitializer to do excessive indexing
