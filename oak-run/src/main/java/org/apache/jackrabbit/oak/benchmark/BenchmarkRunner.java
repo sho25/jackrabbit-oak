@@ -646,7 +646,7 @@ name|accepts
 argument_list|(
 literal|"flatStructure"
 argument_list|,
-literal|"Whether user/group should be setup with a flat structure or not."
+literal|"Whether the test should use a flat structure or not."
 argument_list|)
 operator|.
 name|withOptionalArg
@@ -1114,6 +1114,20 @@ operator|new
 name|WikipediaImport
 argument_list|(
 name|wikipedia
+operator|.
+name|value
+argument_list|(
+name|options
+argument_list|)
+argument_list|,
+name|flatStructure
+operator|.
+name|value
+argument_list|(
+name|options
+argument_list|)
+argument_list|,
+name|report
 operator|.
 name|value
 argument_list|(
@@ -1590,6 +1604,13 @@ operator|new
 name|FullTextSearchTest
 argument_list|(
 name|wikipedia
+operator|.
+name|value
+argument_list|(
+name|options
+argument_list|)
+argument_list|,
+name|flatStructure
 operator|.
 name|value
 argument_list|(
