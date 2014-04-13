@@ -374,7 +374,7 @@ name|Pattern
 operator|.
 name|compile
 argument_list|(
-literal|"\\p{IsLetterOrDigit}{3,}"
+literal|"\\p{LD}{3,}"
 argument_list|)
 decl_stmt|;
 specifier|private
@@ -411,6 +411,12 @@ literal|42
 argument_list|)
 decl_stmt|;
 comment|//fixed seed
+specifier|private
+name|int
+name|count
+init|=
+literal|0
+decl_stmt|;
 specifier|private
 name|int
 name|maxRowsToFetch
@@ -455,12 +461,6 @@ argument_list|,
 name|doReport
 argument_list|)
 block|{
-specifier|private
-name|int
-name|count
-init|=
-literal|0
-decl_stmt|;
 annotation|@
 name|Override
 specifier|protected
@@ -576,6 +576,22 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+name|random
+operator|.
+name|setSeed
+argument_list|(
+literal|42
+argument_list|)
+expr_stmt|;
+name|sampleSet
+operator|.
+name|clear
+argument_list|()
+expr_stmt|;
+name|count
+operator|=
+literal|0
+expr_stmt|;
 name|importer
 operator|.
 name|importWikipedia
