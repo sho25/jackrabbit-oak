@@ -509,6 +509,11 @@ name|code
 init|=
 literal|0
 decl_stmt|;
+if|if
+condition|(
+name|doReport
+condition|)
+block|{
 name|System
 operator|.
 name|out
@@ -520,6 +525,7 @@ argument_list|,
 name|dump
 argument_list|)
 expr_stmt|;
+block|}
 name|String
 name|type
 init|=
