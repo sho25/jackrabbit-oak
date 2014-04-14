@@ -2069,7 +2069,7 @@ name|groupConfig
 return|;
 block|}
 comment|/**      * Copied from org.apache.directory.api.ldap.model.filter.FilterEncoder#encodeFilterValue(java.lang.String)      * in order to keep this configuration LDAP client independent.      *      * Handles encoding of special characters in LDAP search filter assertion values using the      *&lt;valueencoding&gt; rule as described in<a href="http://www.ietf.org/rfc/rfc4515.txt">RFC 4515</a>.      *      * @param value Right hand side of "attrId=value" assertion occurring in an LDAP search filter.      * @return Escaped version of<code>value</code>      */
-specifier|private
+specifier|public
 specifier|static
 name|String
 name|encodeFilterValue

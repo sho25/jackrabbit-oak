@@ -25,6 +25,16 @@ end_package
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Iterator
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|annotation
@@ -138,6 +148,30 @@ name|Nonnull
 name|String
 name|name
 parameter_list|)
+throws|throws
+name|ExternalIdentityException
+function_decl|;
+comment|/**      * List all external users.      * @return an iterator over all external users      * @throws ExternalIdentityException if an error occurs.      */
+annotation|@
+name|Nonnull
+name|Iterator
+argument_list|<
+name|ExternalUser
+argument_list|>
+name|listUsers
+parameter_list|()
+throws|throws
+name|ExternalIdentityException
+function_decl|;
+comment|/**      * List all external groups.      * @return an iterator over all external groups      * @throws ExternalIdentityException if an error occurs.      */
+annotation|@
+name|Nonnull
+name|Iterator
+argument_list|<
+name|ExternalGroup
+argument_list|>
+name|listGroups
+parameter_list|()
 throws|throws
 name|ExternalIdentityException
 function_decl|;

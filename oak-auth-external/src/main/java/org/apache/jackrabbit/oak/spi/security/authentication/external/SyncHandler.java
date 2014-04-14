@@ -25,6 +25,16 @@ end_package
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Iterator
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|annotation
@@ -47,9 +57,29 @@ begin_import
 import|import
 name|javax
 operator|.
+name|annotation
+operator|.
+name|Nullable
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
 name|jcr
 operator|.
 name|RepositoryException
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|jcr
+operator|.
+name|ValueFactory
 import|;
 end_import
 
@@ -73,22 +103,20 @@ end_import
 
 begin_import
 import|import
-name|org
+name|com
 operator|.
-name|apache
+name|google
 operator|.
-name|jackrabbit
+name|common
 operator|.
-name|oak
+name|base
 operator|.
-name|api
-operator|.
-name|Root
+name|Predicate
 import|;
 end_import
 
 begin_comment
-comment|/**  * SyncHandler is used to sync users and groups from an {@link ExternalIdentityProvider}.  * The synchronization performed within the scope of a {@link SyncContext} which is acquired during the  * {@link #createContext(ExternalIdentityProvider, org.apache.jackrabbit.api.security.user.UserManager, org.apache.jackrabbit.oak.api.Root)} call.  *  * The exact configuration is managed by the sync handler instance. The system may contain several sync handler  * implementations with different configurations. those are managed by the {@link SyncManager}.  *  * @see org.apache.jackrabbit.oak.spi.security.authentication.external.SyncContext  * @see org.apache.jackrabbit.oak.spi.security.authentication.external.SyncManager  */
+comment|/**  * SyncHandler is used to sync users and groups from an {@link ExternalIdentityProvider}.  * The synchronization performed within the scope of a {@link SyncContext} which is acquired during the  * {@link #createContext(ExternalIdentityProvider, org.apache.jackrabbit.api.security.user.UserManager, javax.jcr.ValueFactory)} call.  *  * The exact configuration is managed by the sync handler instance. The system may contain several sync handler  * implementations with different configurations. those are managed by the {@link SyncManager}.  *  * @see org.apache.jackrabbit.oak.spi.security.authentication.external.SyncContext  * @see org.apache.jackrabbit.oak.spi.security.authentication.external.SyncManager  */
 end_comment
 
 begin_interface
@@ -103,7 +131,7 @@ name|String
 name|getName
 parameter_list|()
 function_decl|;
-comment|/**      * Initializes a sync context which is used to start the sync operations.      *      * @param idp the external identity provider used for syncing      * @param userManager user manager for managing authorizables      * @param root root of the current tree      * @return the sync context      * @throws SyncException if an error occurs      */
+comment|/**      * Initializes a sync context which is used to start the sync operations.      *      * @param idp the external identity provider used for syncing      * @param userManager user manager for managing authorizables      * @param valueFactory the value factory to create values      * @return the sync context      * @throws SyncException if an error occurs      */
 annotation|@
 name|Nonnull
 name|SyncContext
@@ -121,13 +149,13 @@ name|userManager
 parameter_list|,
 annotation|@
 name|Nonnull
-name|Root
-name|root
+name|ValueFactory
+name|valueFactory
 parameter_list|)
 throws|throws
 name|SyncException
 function_decl|;
-comment|/**      * Tries to find the identity with the given authorizable id or name.      * @param userManager the user manager      * @param id the id or name of the authorizable      * @return a synced identity object or {@code null}      */
+comment|/**      * Tries to find the identity with the given authorizable id or name.      * @param userManager the user manager      * @param id the id or name of the authorizable      * @return a synced identity object or {@code null}      * @throws RepositoryException if an error occurs      */
 annotation|@
 name|CheckForNull
 name|SyncedIdentity
@@ -142,6 +170,23 @@ annotation|@
 name|Nonnull
 name|String
 name|id
+parameter_list|)
+throws|throws
+name|RepositoryException
+function_decl|;
+comment|/**      * Lists all externally synced identities.      * @param userManager the user manager      * @return an iterator over all authorizable that are externally synced.      * @throws RepositoryException if an error occurs      */
+annotation|@
+name|Nonnull
+name|Iterator
+argument_list|<
+name|SyncedIdentity
+argument_list|>
+name|listIdentities
+parameter_list|(
+annotation|@
+name|Nonnull
+name|UserManager
+name|userManager
 parameter_list|)
 throws|throws
 name|RepositoryException

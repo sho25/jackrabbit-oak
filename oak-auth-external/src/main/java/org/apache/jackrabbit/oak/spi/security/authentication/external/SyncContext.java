@@ -42,8 +42,53 @@ specifier|public
 interface|interface
 name|SyncContext
 block|{
-comment|/**      * Synchronizes an external identity with the repository based on the respective configuration.      *      * @param identity the identity to sync.      * @return {@code true} if the given identity was synced; {@code false} for no change.      * @throws SyncException if an error occurrs      */
+comment|/**      * Defines if synchronization keeps missing external identities on synchronization of authorizables. Default      * is {@code false}.      * @return {@code true} if keep missing.      */
 name|boolean
+name|isKeepMissing
+parameter_list|()
+function_decl|;
+comment|/**      * See {@link #isKeepMissing()}      */
+annotation|@
+name|Nonnull
+name|SyncContext
+name|setKeepMissing
+parameter_list|(
+name|boolean
+name|keep
+parameter_list|)
+function_decl|;
+comment|/**      * Defines if synchronization of users always will perform, i.e. ignores the last synced properties.      * @return {@code true} if forced syncing users      */
+name|boolean
+name|isForceUserSync
+parameter_list|()
+function_decl|;
+comment|/**      * See {@link #isForceUserSync()}      */
+annotation|@
+name|Nonnull
+name|SyncContext
+name|setForceUserSync
+parameter_list|(
+name|boolean
+name|force
+parameter_list|)
+function_decl|;
+comment|/**      * Defines if synchronization of groups always will perform, i.e. ignores the last synced properties.      * @return {@code true} if forced syncing groups      */
+name|boolean
+name|isForceGroupSync
+parameter_list|()
+function_decl|;
+comment|/**      * See {@link #isForceGroupSync()}      */
+annotation|@
+name|Nonnull
+name|SyncContext
+name|setForceGroupSync
+parameter_list|(
+name|boolean
+name|force
+parameter_list|)
+function_decl|;
+comment|/**      * Synchronizes an external identity with the repository based on the respective configuration.      *      * @param identity the identity to sync.      * @return the result of the operation      * @throws SyncException if an error occurrs      */
+name|SyncResult
 name|sync
 parameter_list|(
 annotation|@
@@ -54,8 +99,8 @@ parameter_list|)
 throws|throws
 name|SyncException
 function_decl|;
-comment|/**      * Synchronizes an authorizable with the corresponding external identity with the repository based on the respective      * configuration.      *      * @param id the id of the authorizable      * @return {@code true} if the given identity was synced; {@code false} for no change.      * @throws SyncException if an error occurrs      */
-name|boolean
+comment|/**      * Synchronizes an authorizable with the corresponding external identity with the repository based on the respective      * configuration.      *      * @param id the id of the authorizable      * @return the result of the operation      * @throws SyncException if an error occurrs      */
+name|SyncResult
 name|sync
 parameter_list|(
 annotation|@
