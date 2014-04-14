@@ -262,12 +262,6 @@ operator|.
 name|SplitDocType
 operator|.
 name|PROP_COMMIT_ONLY
-argument_list|,
-name|NodeDocument
-operator|.
-name|SplitDocType
-operator|.
-name|INTERMEDIATE
 argument_list|)
 decl_stmt|;
 name|VersionGarbageCollector

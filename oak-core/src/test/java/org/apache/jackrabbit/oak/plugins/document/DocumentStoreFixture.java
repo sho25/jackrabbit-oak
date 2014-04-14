@@ -301,13 +301,6 @@ name|MemoryFixture
 extends|extends
 name|DocumentStoreFixture
 block|{
-name|DocumentStore
-name|ds
-init|=
-operator|new
-name|MemoryDocumentStore
-argument_list|()
-decl_stmt|;
 annotation|@
 name|Override
 specifier|public
@@ -327,7 +320,9 @@ name|createDocumentStore
 parameter_list|()
 block|{
 return|return
-name|ds
+operator|new
+name|MemoryDocumentStore
+argument_list|()
 return|;
 block|}
 block|}
@@ -414,8 +409,6 @@ operator|+
 name|url
 operator|+
 literal|", skipping tests..."
-argument_list|,
-name|ex
 argument_list|)
 expr_stmt|;
 block|}
