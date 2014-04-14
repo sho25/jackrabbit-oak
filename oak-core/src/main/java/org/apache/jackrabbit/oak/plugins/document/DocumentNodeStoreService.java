@@ -1342,15 +1342,6 @@ argument_list|,
 literal|""
 argument_list|)
 decl_stmt|;
-name|log
-operator|.
-name|info
-argument_list|(
-literal|"jdbcuri {}"
-argument_list|,
-name|jdbcuri
-argument_list|)
-expr_stmt|;
 if|if
 condition|(
 operator|!
@@ -1407,6 +1398,15 @@ operator|>
 literal|0
 condition|)
 block|{
+name|log
+operator|.
+name|info
+argument_list|(
+literal|"trying to load {}"
+argument_list|,
+name|driver
+argument_list|)
+expr_stmt|;
 try|try
 block|{
 name|Class
@@ -1420,14 +1420,17 @@ block|}
 catch|catch
 parameter_list|(
 name|ClassNotFoundException
-name|e
+name|ex
 parameter_list|)
 block|{
-comment|// TODO Auto-generated catch block
-name|e
+name|log
 operator|.
-name|printStackTrace
-argument_list|()
+name|error
+argument_list|(
+literal|"driver not loaded"
+argument_list|,
+name|ex
+argument_list|)
 expr_stmt|;
 block|}
 block|}
