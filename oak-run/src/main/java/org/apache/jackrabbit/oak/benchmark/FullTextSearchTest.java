@@ -463,7 +463,7 @@ name|getInteger
 argument_list|(
 literal|"maxRowsToFetch"
 argument_list|,
-literal|10000
+literal|100
 argument_list|)
 decl_stmt|;
 specifier|private
