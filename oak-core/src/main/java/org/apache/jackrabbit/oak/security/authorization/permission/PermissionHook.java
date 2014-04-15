@@ -511,7 +511,7 @@ argument_list|(
 operator|new
 name|ImmutableRoot
 argument_list|(
-name|before
+name|after
 argument_list|)
 argument_list|)
 expr_stmt|;
