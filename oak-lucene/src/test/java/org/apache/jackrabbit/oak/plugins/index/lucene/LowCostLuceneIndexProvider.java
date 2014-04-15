@@ -113,6 +113,8 @@ return|return
 operator|new
 name|LowCostLuceneIndex
 argument_list|(
+name|tracker
+argument_list|,
 name|analyzer
 argument_list|,
 name|aggregator
@@ -129,6 +131,9 @@ block|{
 specifier|public
 name|LowCostLuceneIndex
 parameter_list|(
+name|IndexTracker
+name|tracker
+parameter_list|,
 name|Analyzer
 name|analyzer
 parameter_list|,
@@ -138,6 +143,8 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
+name|tracker
+argument_list|,
 name|analyzer
 argument_list|,
 name|aggregator
