@@ -2104,7 +2104,9 @@ expr_stmt|;
 name|upgrade
 operator|.
 name|copy
-argument_list|()
+argument_list|(
+literal|null
+argument_list|)
 expr_stmt|;
 block|}
 finally|finally
@@ -2179,7 +2181,9 @@ expr_stmt|;
 name|upgrade
 operator|.
 name|copy
-argument_list|()
+argument_list|(
+literal|null
+argument_list|)
 expr_stmt|;
 block|}
 finally|finally
