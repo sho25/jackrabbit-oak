@@ -841,6 +841,23 @@ name|getNodeState
 argument_list|()
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|previous
+operator|==
+literal|null
+condition|)
+block|{
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"previous not found. Already deleted in the meanwhile. Skipping re-link"
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
 name|LOG
 operator|.
 name|debug
@@ -891,6 +908,7 @@ argument_list|,
 name|next
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|node
 operator|.
