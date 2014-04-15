@@ -509,9 +509,7 @@ name|getClusterInfo
 argument_list|()
 operator|.
 name|renewLease
-argument_list|(
-literal|0
-argument_list|)
+argument_list|()
 expr_stmt|;
 comment|// so that the current time is more than the current lease end
 name|clock
@@ -775,9 +773,7 @@ name|getClusterInfo
 argument_list|()
 operator|.
 name|renewLease
-argument_list|(
-literal|0
-argument_list|)
+argument_list|()
 expr_stmt|;
 comment|// Should be 0
 name|int
@@ -1074,9 +1070,7 @@ name|getClusterInfo
 argument_list|()
 operator|.
 name|renewLease
-argument_list|(
-literal|0
-argument_list|)
+argument_list|()
 expr_stmt|;
 name|clock
 operator|.

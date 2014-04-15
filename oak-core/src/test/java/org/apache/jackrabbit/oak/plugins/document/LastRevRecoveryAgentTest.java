@@ -669,11 +669,7 @@ name|getClusterInfo
 argument_list|()
 operator|.
 name|renewLease
-argument_list|(
-literal|3
-operator|*
-name|leaseTime
-argument_list|)
+argument_list|()
 expr_stmt|;
 name|assertTrue
 argument_list|(

@@ -1235,14 +1235,11 @@ name|newEntry
 argument_list|)
 return|;
 block|}
-comment|/**      * Renew the cluster id lease. This method needs to be called once in a while,      * to ensure the same cluster id is not re-used by a different instance.      *       * @param nextCheckMillis the millisecond offset      */
+comment|/**      * Renew the cluster id lease. This method needs to be called once in a while,      * to ensure the same cluster id is not re-used by a different instance.      * The lease is only renewed when half of the lease time passed. That is,      * with a lease time of 60 seconds, the lease is renewed every 30 seconds.      */
 specifier|public
 name|void
 name|renewLease
-parameter_list|(
-name|long
-name|nextCheckMillis
-parameter_list|)
+parameter_list|()
 block|{
 name|long
 name|now
@@ -1254,9 +1251,9 @@ if|if
 condition|(
 name|now
 operator|+
-name|nextCheckMillis
-operator|+
-name|nextCheckMillis
+name|leaseTime
+operator|/
+literal|2
 operator|<
 name|leaseEndTime
 condition|)
