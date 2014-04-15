@@ -727,17 +727,17 @@ return|return
 name|lockFactory
 return|;
 block|}
+comment|/**      * Size of the blob entries to which the Lucene files are split.      * Set to higher than the 4kB inline limit for the BlobStore, but      * just below the 16+kB inline limit in the SegmentMK. This way the      * Lucene index gets stored in the SegmentMK segments for best performance      * even when an external Data/BlobStore is being used for normal binaries.      */
 specifier|private
 specifier|static
 specifier|final
 name|int
 name|BLOB_SIZE
 init|=
-literal|32
+literal|16
 operator|*
 literal|1024
 decl_stmt|;
-comment|//> blob inline limit
 specifier|private
 specifier|static
 class|class
