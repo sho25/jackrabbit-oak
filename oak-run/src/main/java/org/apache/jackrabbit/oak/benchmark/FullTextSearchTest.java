@@ -501,7 +501,7 @@ if|if
 condition|(
 name|count
 operator|%
-literal|1000
+literal|100
 operator|==
 literal|0
 operator|&&
