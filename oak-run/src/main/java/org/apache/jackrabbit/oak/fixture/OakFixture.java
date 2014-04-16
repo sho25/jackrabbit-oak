@@ -854,6 +854,8 @@ argument_list|,
 literal|false
 argument_list|,
 literal|null
+argument_list|,
+literal|0
 argument_list|)
 return|;
 block|}
@@ -898,6 +900,8 @@ argument_list|,
 literal|false
 argument_list|,
 literal|null
+argument_list|,
+literal|0
 argument_list|)
 return|;
 block|}
@@ -942,6 +946,8 @@ argument_list|,
 literal|false
 argument_list|,
 literal|null
+argument_list|,
+literal|0
 argument_list|)
 return|;
 block|}
@@ -983,6 +989,10 @@ parameter_list|,
 specifier|final
 name|File
 name|base
+parameter_list|,
+specifier|final
+name|int
+name|fdsCacheInMB
 parameter_list|)
 block|{
 if|if
@@ -1031,6 +1041,8 @@ argument_list|,
 name|useFileDataStore
 argument_list|,
 name|base
+argument_list|,
+name|fdsCacheInMB
 argument_list|)
 return|;
 block|}
@@ -1066,6 +1078,10 @@ parameter_list|,
 specifier|final
 name|File
 name|base
+parameter_list|,
+specifier|final
+name|int
+name|fdsCacheInMB
 parameter_list|)
 block|{
 return|return
@@ -1139,6 +1155,10 @@ operator|new
 name|DataStoreBlobStore
 argument_list|(
 name|fds
+argument_list|,
+literal|true
+argument_list|,
+name|fdsCacheInMB
 argument_list|)
 return|;
 block|}
