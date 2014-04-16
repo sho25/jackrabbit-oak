@@ -454,6 +454,11 @@ specifier|private
 name|TestContext
 name|defaultContext
 decl_stmt|;
+comment|/**      * null means true; true means true      */
+specifier|private
+name|Boolean
+name|storageEnabled
+decl_stmt|;
 specifier|public
 name|FullTextSearchTest
 parameter_list|(
@@ -465,6 +470,9 @@ name|flat
 parameter_list|,
 name|boolean
 name|doReport
+parameter_list|,
+name|Boolean
+name|storageEnabled
 parameter_list|)
 block|{
 name|this
@@ -585,6 +593,12 @@ block|}
 block|}
 block|}
 block|}
+expr_stmt|;
+name|this
+operator|.
+name|storageEnabled
+operator|=
+name|storageEnabled
 expr_stmt|;
 block|}
 annotation|@
@@ -986,7 +1000,7 @@ name|LuceneInitializerHelper
 argument_list|(
 literal|"luceneGlobal"
 argument_list|,
-literal|null
+name|storageEnabled
 argument_list|)
 argument_list|)
 expr_stmt|;
