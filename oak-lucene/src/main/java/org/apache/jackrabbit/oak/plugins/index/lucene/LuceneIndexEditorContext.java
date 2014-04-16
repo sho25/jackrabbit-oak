@@ -497,6 +497,15 @@ name|SerialMergeScheduler
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|config
+operator|.
+name|setCodec
+argument_list|(
+operator|new
+name|OakCodec
+argument_list|()
+argument_list|)
+expr_stmt|;
 return|return
 name|config
 return|;
