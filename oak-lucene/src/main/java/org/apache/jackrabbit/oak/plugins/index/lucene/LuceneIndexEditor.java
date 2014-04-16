@@ -1247,6 +1247,13 @@ name|skipTokenization
 argument_list|(
 name|pname
 argument_list|)
+argument_list|,
+name|context
+operator|.
+name|isStored
+argument_list|(
+name|pname
+argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
