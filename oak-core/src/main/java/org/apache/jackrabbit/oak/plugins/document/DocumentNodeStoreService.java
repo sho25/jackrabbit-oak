@@ -1351,7 +1351,8 @@ name|isEmpty
 argument_list|()
 condition|)
 block|{
-comment|// FIXME
+comment|// OAK-1708 - this is temporary until we figure out parametrization,
+comment|// and how to pass in DataSources directly
 name|String
 name|username
 init|=
@@ -1433,6 +1434,16 @@ name|ex
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+else|else
+block|{
+name|log
+operator|.
+name|info
+argument_list|(
+literal|"System property oak.jdbc.driver.class not set."
+argument_list|)
+expr_stmt|;
 block|}
 if|if
 condition|(
