@@ -161,16 +161,6 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Ignore
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
 name|Test
 import|;
 end_import
@@ -1395,11 +1385,6 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-annotation|@
-name|Ignore
-argument_list|(
-literal|"OAK-1379"
-argument_list|)
 specifier|public
 name|void
 name|testMultipleRelativeProperties
@@ -1626,11 +1611,10 @@ literal|"xpath"
 argument_list|,
 name|Arrays
 operator|.
-expr|<
-name|String
-operator|>
 name|asList
-argument_list|()
+argument_list|(
+literal|"/content"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|assertQuery
@@ -1649,7 +1633,7 @@ argument_list|)
 expr_stmt|;
 name|assertQuery
 argument_list|(
-literal|"//*[*/@a> 'abb']"
+literal|"//*[*/@a> 'abd']"
 argument_list|,
 literal|"xpath"
 argument_list|,
@@ -1676,7 +1660,7 @@ literal|"/content"
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// this may be unexpected: it is evalucated as
+comment|// this may be unexpected: it is evaluated as
 comment|// ['128', 'abc', '1280']>= 'abc'
 name|assertQuery
 argument_list|(
@@ -1686,11 +1670,10 @@ literal|"xpath"
 argument_list|,
 name|Arrays
 operator|.
-expr|<
-name|String
-operator|>
 name|asList
-argument_list|()
+argument_list|(
+literal|"/content"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|assertQuery
@@ -1863,7 +1846,7 @@ literal|"/content"
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// this may be unexpected: it is evalucated as
+comment|// this may be unexpected: it is evaluated as
 comment|// ['x', 'y', '10', '1', '2']< '3'
 name|assertQuery
 argument_list|(
@@ -1873,11 +1856,10 @@ literal|"xpath"
 argument_list|,
 name|Arrays
 operator|.
-expr|<
-name|String
-operator|>
 name|asList
-argument_list|()
+argument_list|(
+literal|"/content"
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
