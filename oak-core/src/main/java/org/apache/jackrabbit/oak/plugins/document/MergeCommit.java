@@ -92,6 +92,21 @@ return|return
 name|mergeRevs
 return|;
 block|}
+annotation|@
+name|Override
+specifier|public
+name|void
+name|applyToCache
+parameter_list|(
+name|Revision
+name|before
+parameter_list|,
+name|boolean
+name|isBranchCommit
+parameter_list|)
+block|{
+comment|// do nothing for a merge commit
+block|}
 block|}
 end_class
 
