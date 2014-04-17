@@ -4330,10 +4330,6 @@ name|t
 operator|+=
 literal|" order by ID"
 expr_stmt|;
-comment|// TODO: OAK-1746
-comment|//        if (limit != Integer.MAX_VALUE) {
-comment|//            t += " limit ?";
-comment|//        }
 name|PreparedStatement
 name|stmt
 init|=
@@ -4402,10 +4398,23 @@ name|startValue
 argument_list|)
 expr_stmt|;
 block|}
-comment|// TODO: OAK-1746
-comment|//            if (limit != Integer.MAX_VALUE) {
-comment|//                stmt.setInt(si++, limit);
-comment|//            }
+if|if
+condition|(
+name|limit
+operator|!=
+name|Integer
+operator|.
+name|MAX_VALUE
+condition|)
+block|{
+name|stmt
+operator|.
+name|setFetchSize
+argument_list|(
+name|limit
+argument_list|)
+expr_stmt|;
+block|}
 name|ResultSet
 name|rs
 init|=
