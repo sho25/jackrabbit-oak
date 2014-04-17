@@ -4330,20 +4330,10 @@ name|t
 operator|+=
 literal|" order by ID"
 expr_stmt|;
-if|if
-condition|(
-name|limit
-operator|!=
-name|Integer
-operator|.
-name|MAX_VALUE
-condition|)
-block|{
-name|t
-operator|+=
-literal|" limit ?"
-expr_stmt|;
-block|}
+comment|// TODO: OAK-1746
+comment|//        if (limit != Integer.MAX_VALUE) {
+comment|//            t += " limit ?";
+comment|//        }
 name|PreparedStatement
 name|stmt
 init|=
@@ -4412,26 +4402,10 @@ name|startValue
 argument_list|)
 expr_stmt|;
 block|}
-if|if
-condition|(
-name|limit
-operator|!=
-name|Integer
-operator|.
-name|MAX_VALUE
-condition|)
-block|{
-name|stmt
-operator|.
-name|setInt
-argument_list|(
-name|si
-operator|++
-argument_list|,
-name|limit
-argument_list|)
-expr_stmt|;
-block|}
+comment|// TODO: OAK-1746
+comment|//            if (limit != Integer.MAX_VALUE) {
+comment|//                stmt.setInt(si++, limit);
+comment|//            }
 name|ResultSet
 name|rs
 init|=
@@ -4446,6 +4420,13 @@ name|rs
 operator|.
 name|next
 argument_list|()
+operator|&&
+name|result
+operator|.
+name|size
+argument_list|()
+operator|<
+name|limit
 condition|)
 block|{
 name|String
