@@ -841,10 +841,7 @@ block|}
 name|NodeBuilder
 name|builder
 init|=
-name|store
-operator|.
-name|getRoot
-argument_list|()
+name|after
 operator|.
 name|builder
 argument_list|()
