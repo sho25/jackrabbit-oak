@@ -511,6 +511,8 @@ return|return
 name|v
 return|;
 block|}
+try|try
+block|{
 return|return
 name|PropertyValues
 operator|.
@@ -526,6 +528,18 @@ name|getNamePathMapper
 argument_list|()
 argument_list|)
 return|;
+block|}
+catch|catch
+parameter_list|(
+name|IllegalArgumentException
+name|e
+parameter_list|)
+block|{
+comment|// not possible to convert
+return|return
+name|v
+return|;
+block|}
 block|}
 comment|/**      * Calculate the session local path (the path excluding the workspace name)      * if possible.      *      * @param path the absolute path      * @return the session local path, or null if not within this workspace      */
 specifier|protected
