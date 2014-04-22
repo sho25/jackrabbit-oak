@@ -736,6 +736,22 @@ specifier|public
 class|class
 name|SegmentWriter
 block|{
+comment|/** Logger instance */
+specifier|private
+specifier|static
+specifier|final
+name|Logger
+name|log
+init|=
+name|LoggerFactory
+operator|.
+name|getLogger
+argument_list|(
+name|SegmentWriter
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 specifier|static
 specifier|final
 name|int
@@ -872,19 +888,6 @@ specifier|private
 specifier|final
 name|SegmentStore
 name|store
-decl_stmt|;
-specifier|private
-specifier|final
-name|Logger
-name|log
-init|=
-name|LoggerFactory
-operator|.
-name|getLogger
-argument_list|(
-name|getClass
-argument_list|()
-argument_list|)
 decl_stmt|;
 comment|/**      * Cache of recently stored string and template records, used to      * avoid storing duplicates of frequently occurring data.      * Should only be accessed from synchronized blocks to prevent corruption.      */
 specifier|private
@@ -1391,6 +1394,17 @@ operator|.
 name|getSegmentId
 argument_list|()
 decl_stmt|;
+name|log
+operator|.
+name|debug
+argument_list|(
+literal|"Writing data segment {} ({} bytes)"
+argument_list|,
+name|id
+argument_list|,
+name|length
+argument_list|)
+expr_stmt|;
 name|store
 operator|.
 name|writeSegment
@@ -4512,7 +4526,7 @@ name|log
 operator|.
 name|debug
 argument_list|(
-literal|"No blobId found matching reference [{}]"
+literal|"No blob found for reference {}, inlining..."
 argument_list|,
 name|reference
 argument_list|)
@@ -4751,6 +4765,17 @@ argument_list|(
 name|n
 argument_list|)
 decl_stmt|;
+name|log
+operator|.
+name|debug
+argument_list|(
+literal|"Writing bulk segment {} ({} bytes)"
+argument_list|,
+name|bulkId
+argument_list|,
+name|n
+argument_list|)
+expr_stmt|;
 name|store
 operator|.
 name|writeSegment

@@ -167,6 +167,20 @@ name|concurrent
 operator|.
 name|TimeUnit
 operator|.
+name|MILLISECONDS
+import|;
+end_import
+
+begin_import
+import|import static
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|TimeUnit
+operator|.
 name|NANOSECONDS
 import|;
 end_import
@@ -614,6 +628,7 @@ name|FileStore
 implements|implements
 name|SegmentStore
 block|{
+comment|/** Logger instance */
 specifier|private
 specifier|static
 specifier|final
@@ -1587,33 +1602,17 @@ operator|.
 name|start
 argument_list|()
 expr_stmt|;
-if|if
-condition|(
+name|log
+operator|.
+name|info
+argument_list|(
+literal|"TarMK opened: {} (mmap={})"
+argument_list|,
+name|directory
+argument_list|,
 name|memoryMapping
-condition|)
-block|{
-name|log
-operator|.
-name|info
-argument_list|(
-literal|"TarMK opened with memory-mapping: {}"
-argument_list|,
-name|directory
 argument_list|)
 expr_stmt|;
-block|}
-else|else
-block|{
-name|log
-operator|.
-name|info
-argument_list|(
-literal|"TarMK opened: {}"
-argument_list|,
-name|directory
-argument_list|)
-expr_stmt|;
-block|}
 block|}
 specifier|static
 name|Map
@@ -2204,6 +2203,17 @@ init|(
 name|this
 init|)
 block|{
+name|log
+operator|.
+name|debug
+argument_list|(
+literal|"TarMK journal update {} -> {}"
+argument_list|,
+name|before
+argument_list|,
+name|after
+argument_list|)
+expr_stmt|;
 name|journalFile
 operator|.
 name|writeBytes
@@ -2235,6 +2245,14 @@ condition|(
 name|cleanup
 condition|)
 block|{
+name|long
+name|start
+init|=
+name|System
+operator|.
+name|nanoTime
+argument_list|()
+decl_stmt|;
 name|Set
 argument_list|<
 name|UUID
@@ -2376,6 +2394,27 @@ name|readers
 operator|=
 name|list
 expr_stmt|;
+name|log
+operator|.
+name|debug
+argument_list|(
+literal|"TarMK GC: Completed in {}ms"
+argument_list|,
+name|MILLISECONDS
+operator|.
+name|convert
+argument_list|(
+name|System
+operator|.
+name|nanoTime
+argument_list|()
+operator|-
+name|start
+argument_list|,
+name|NANOSECONDS
+argument_list|)
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 comment|// remove all obsolete tar generations
@@ -2420,6 +2459,15 @@ name|delete
 argument_list|()
 condition|)
 block|{
+name|log
+operator|.
+name|debug
+argument_list|(
+literal|"TarMK GC: Removed old file {}"
+argument_list|,
+name|file
+argument_list|)
+expr_stmt|;
 name|iterator
 operator|.
 name|remove

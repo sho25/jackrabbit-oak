@@ -29,6 +29,26 @@ name|UUID
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
+import|;
+end_import
+
 begin_comment
 comment|/**  * Segment identifier.  */
 end_comment
@@ -43,6 +63,22 @@ argument_list|<
 name|SegmentId
 argument_list|>
 block|{
+comment|/** Logger instance */
+specifier|private
+specifier|static
+specifier|final
+name|Logger
+name|log
+init|=
+name|LoggerFactory
+operator|.
+name|getLogger
+argument_list|(
+name|SegmentId
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 comment|/**      * Checks whether this is a data segment identifier.      *      * @return {@code true} for a data segment, {@code false} otherwise      */
 specifier|public
 specifier|static
@@ -256,6 +292,15 @@ operator|==
 literal|null
 condition|)
 block|{
+name|log
+operator|.
+name|debug
+argument_list|(
+literal|"Loading segment {}"
+argument_list|,
+name|this
+argument_list|)
+expr_stmt|;
 name|segment
 operator|=
 name|tracker
