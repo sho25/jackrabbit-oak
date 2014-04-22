@@ -1251,6 +1251,13 @@ name|isHead
 argument_list|(
 name|rev
 argument_list|)
+operator|&&
+name|DocumentNodeStoreBranch
+operator|.
+name|getCurrentBranch
+argument_list|()
+operator|!=
+literal|null
 condition|)
 block|{
 return|return
