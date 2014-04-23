@@ -1264,6 +1264,17 @@ argument_list|(
 name|commitRootPath
 argument_list|)
 decl_stmt|;
+comment|// check if there are real changes on the commit root
+name|boolean
+name|commitRootHasChanges
+init|=
+name|operations
+operator|.
+name|containsKey
+argument_list|(
+name|commitRootPath
+argument_list|)
+decl_stmt|;
 comment|// create a "root of the commit" if there is none
 name|UpdateOp
 name|commitRoot
@@ -1321,7 +1332,26 @@ operator|==
 name|commitRoot
 condition|)
 block|{
-comment|// apply at the end
+if|if
+condition|(
+operator|!
+name|op
+operator|.
+name|isNew
+argument_list|()
+operator|&&
+name|commitRootHasChanges
+condition|)
+block|{
+comment|// commit root already exists and this is an update
+name|changedNodes
+operator|.
+name|add
+argument_list|(
+name|op
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 else|else
 block|{
@@ -1513,15 +1543,9 @@ range|:
 name|changedNodes
 control|)
 block|{
-comment|// set commit root on changed nodes unless it's the
-comment|// commit root itself
-if|if
-condition|(
-name|op
-operator|!=
-name|commitRoot
-condition|)
-block|{
+comment|// set commit root on changed nodes. this may even apply
+comment|// to the commit root. the _commitRoot entry is removed
+comment|// again when the _revisions entry is set at the end
 name|NodeDocument
 operator|.
 name|setCommitRoot
@@ -1533,7 +1557,6 @@ argument_list|,
 name|commitRootDepth
 argument_list|)
 expr_stmt|;
-block|}
 name|opLog
 operator|.
 name|add
@@ -1569,6 +1592,7 @@ name|isNew
 argument_list|()
 condition|)
 block|{
+comment|// set revision to committed
 name|NodeDocument
 operator|.
 name|setRevision
@@ -1580,6 +1604,22 @@ argument_list|,
 name|commitValue
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|commitRootHasChanges
+condition|)
+block|{
+comment|// remove previously added commit root
+name|NodeDocument
+operator|.
+name|removeCommitRoot
+argument_list|(
+name|commitRoot
+argument_list|,
+name|revision
+argument_list|)
+expr_stmt|;
+block|}
 name|opLog
 operator|.
 name|add
@@ -2525,6 +2565,8 @@ argument_list|(
 name|op
 argument_list|,
 name|baseRevision
+argument_list|,
+name|revision
 argument_list|,
 name|nodeStore
 argument_list|)

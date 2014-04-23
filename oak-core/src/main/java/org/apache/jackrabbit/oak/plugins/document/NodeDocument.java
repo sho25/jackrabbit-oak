@@ -2824,8 +2824,7 @@ else|:
 literal|null
 return|;
 block|}
-comment|/**      * Returns<code>true</code> if the given operation is conflicting with this      * document.      *      * @param op the update operation.      * @param baseRevision the base revision for the update operation.      * @param context the revision context.      * @return<code>true</code> if conflicting,<code>false</code> otherwise.      */
-specifier|public
+comment|/**      * Returns<code>true</code> if the given operation is conflicting with this      * document.      *      * @param op the update operation.      * @param baseRevision the base revision for the update operation.      * @param commitRevision the commit revision of the update operation.      * @param context the revision context.      * @return<code>true</code> if conflicting,<code>false</code> otherwise.      */
 name|boolean
 name|isConflicting
 parameter_list|(
@@ -2838,6 +2837,11 @@ annotation|@
 name|Nonnull
 name|Revision
 name|baseRevision
+parameter_list|,
+annotation|@
+name|Nonnull
+name|Revision
+name|commitRevision
 parameter_list|,
 annotation|@
 name|Nonnull
@@ -2877,6 +2881,21 @@ name|entrySet
 argument_list|()
 control|)
 block|{
+if|if
+condition|(
+name|entry
+operator|.
+name|getKey
+argument_list|()
+operator|.
+name|equals
+argument_list|(
+name|commitRevision
+argument_list|)
+condition|)
+block|{
+continue|continue;
+block|}
 if|if
 condition|(
 name|isRevisionNewer
@@ -2991,6 +3010,18 @@ name|keySet
 argument_list|()
 control|)
 block|{
+if|if
+condition|(
+name|rev
+operator|.
+name|equals
+argument_list|(
+name|commitRevision
+argument_list|)
+condition|)
+block|{
+continue|continue;
+block|}
 if|if
 condition|(
 name|isRevisionNewer

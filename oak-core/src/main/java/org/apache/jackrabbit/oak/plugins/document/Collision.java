@@ -301,7 +301,7 @@ condition|)
 block|{
 throw|throw
 operator|new
-name|MicroKernelException
+name|IllegalStateException
 argument_list|(
 literal|"Unable to annotate our revision "
 operator|+
