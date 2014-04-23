@@ -1033,6 +1033,8 @@ condition|(
 name|memoryMapping
 condition|)
 block|{
+try|try
+block|{
 name|FileAccess
 name|mapped
 init|=
@@ -1085,8 +1087,27 @@ name|index
 argument_list|)
 return|;
 block|}
-else|else
+catch|catch
+parameter_list|(
+name|IOException
+name|e
+parameter_list|)
 block|{
+name|log
+operator|.
+name|warn
+argument_list|(
+literal|"Failed to mmap tar file "
+operator|+
+name|file
+operator|+
+literal|", falling back to normal file IO"
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
+block|}
+block|}
 name|FileAccess
 name|random
 init|=
@@ -1115,7 +1136,6 @@ argument_list|,
 name|index
 argument_list|)
 return|;
-block|}
 block|}
 block|}
 finally|finally
