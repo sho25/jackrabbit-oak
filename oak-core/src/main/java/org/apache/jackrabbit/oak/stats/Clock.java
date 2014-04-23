@@ -117,6 +117,22 @@ argument_list|,
 literal|1
 argument_list|)
 decl_stmt|;
+comment|/**      * Millisecond update interval of the {@link Fast} clock. Configurable      * by the "fast.clock.interval" system property to to make it easier      * to test the effect of different update frequencies.      */
+specifier|private
+specifier|static
+specifier|final
+name|long
+name|FAST_CLOCK_INTERVAL
+init|=
+name|Long
+operator|.
+name|getLong
+argument_list|(
+literal|"fast.clock.interval"
+argument_list|,
+literal|1
+argument_list|)
+decl_stmt|;
 specifier|private
 name|long
 name|monotonic
@@ -747,9 +763,9 @@ expr_stmt|;
 block|}
 block|}
 argument_list|,
-literal|1
+name|FAST_CLOCK_INTERVAL
 argument_list|,
-literal|1
+name|FAST_CLOCK_INTERVAL
 argument_list|,
 name|TimeUnit
 operator|.
