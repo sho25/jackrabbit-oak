@@ -117,17 +117,7 @@ argument_list|,
 literal|1
 argument_list|)
 decl_stmt|;
-comment|/**      * Default value for {@link #FAST_CLOCK_INTERVAL}      */
-specifier|public
-specifier|static
-specifier|final
-name|long
-name|DEFAULT_FAST_CLOCK_INTERVAL
-init|=
-literal|1
-decl_stmt|;
 comment|/**      * Millisecond update interval of the {@link Fast} clock. Configurable      * by the "fast.clock.interval" system property to to make it easier      * to test the effect of different update frequencies.      */
-specifier|private
 specifier|static
 specifier|final
 name|long
@@ -139,7 +129,7 @@ name|getLong
 argument_list|(
 literal|"fast.clock.interval"
 argument_list|,
-name|DEFAULT_FAST_CLOCK_INTERVAL
+literal|1
 argument_list|)
 decl_stmt|;
 specifier|private

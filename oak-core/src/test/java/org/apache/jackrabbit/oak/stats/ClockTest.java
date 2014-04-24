@@ -147,16 +147,9 @@ name|FAST_CLOCK_GRANULARITY
 operator|=
 literal|1000
 operator|*
-name|Long
-operator|.
-name|getLong
-argument_list|(
-literal|"fast.clock.interval"
-argument_list|,
 name|Clock
 operator|.
-name|DEFAULT_FAST_CLOCK_INTERVAL
-argument_list|)
+name|FAST_CLOCK_INTERVAL
 expr_stmt|;
 block|}
 annotation|@
