@@ -1101,7 +1101,27 @@ literal|"Failed to mmap tar file "
 operator|+
 name|file
 operator|+
-literal|", falling back to normal file IO"
+literal|". Falling back to normal file IO,"
+operator|+
+literal|" which will negatively impact"
+operator|+
+literal|" repository performance. This"
+operator|+
+literal|" problem may have been caused by"
+operator|+
+literal|" restrictions on the amount of"
+operator|+
+literal|" virtual memory available to the"
+operator|+
+literal|" JVM. Please make sure that a"
+operator|+
+literal|" 64-bit JVM is being used and"
+operator|+
+literal|" that the process has access to"
+operator|+
+literal|" unlimited virtual memory"
+operator|+
+literal|" (ulimit option -v)."
 argument_list|,
 name|e
 argument_list|)
