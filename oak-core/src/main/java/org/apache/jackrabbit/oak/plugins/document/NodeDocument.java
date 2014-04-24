@@ -3793,6 +3793,10 @@ name|getMemory
 argument_list|()
 operator|*
 name|SPLIT_RATIO
+operator|||
+name|numValues
+operator|>=
+name|NUM_REVS_THRESHOLD
 condition|)
 block|{
 name|splitOps
