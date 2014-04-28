@@ -2204,7 +2204,10 @@ name|fullTextString
 operator|.
 name|append
 argument_list|(
+name|partialEscape
+argument_list|(
 name|p
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|fullTextString
