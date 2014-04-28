@@ -29,30 +29,6 @@ name|List
 import|;
 end_import
 
-begin_import
-import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|CheckForNull
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|Predicate
-import|;
-end_import
-
 begin_comment
 comment|/**  * Tracker for whiteboard services.  */
 end_comment
