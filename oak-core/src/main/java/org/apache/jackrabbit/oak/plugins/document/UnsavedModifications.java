@@ -77,7 +77,7 @@ name|util
 operator|.
 name|concurrent
 operator|.
-name|ConcurrentHashMap
+name|ConcurrentMap
 import|;
 end_import
 
@@ -112,6 +112,26 @@ operator|.
 name|annotation
 operator|.
 name|Nonnull
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|document
+operator|.
+name|util
+operator|.
+name|MapFactory
 import|;
 end_import
 
@@ -245,7 +265,7 @@ literal|10000
 decl_stmt|;
 specifier|private
 specifier|final
-name|ConcurrentHashMap
+name|ConcurrentMap
 argument_list|<
 name|String
 argument_list|,
@@ -253,13 +273,12 @@ name|Revision
 argument_list|>
 name|map
 init|=
-operator|new
-name|ConcurrentHashMap
-argument_list|<
-name|String
-argument_list|,
-name|Revision
-argument_list|>
+name|MapFactory
+operator|.
+name|getInstance
+argument_list|()
+operator|.
+name|create
 argument_list|()
 decl_stmt|;
 comment|/**      * Puts a revision for the given path. The revision for the given path is      * only put if there is no modification present for the revision or if the      * current modification revision is older than the passed revision.      *      * @param path the path of the modified node.      * @param revision the revision of the modification.      * @return the previously set revision for the given path or null if there      *          was none or the current revision is newer.      */
