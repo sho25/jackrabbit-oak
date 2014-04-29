@@ -255,7 +255,7 @@ expr_stmt|;
 block|}
 name|assertEquals
 argument_list|(
-literal|3072
+literal|4096
 argument_list|,
 name|file
 operator|.
