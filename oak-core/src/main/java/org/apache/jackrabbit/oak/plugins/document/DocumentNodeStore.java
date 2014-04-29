@@ -2730,6 +2730,16 @@ return|return
 name|docChildrenCacheStats
 return|;
 block|}
+name|void
+name|invalidateDocChildrenCache
+parameter_list|()
+block|{
+name|docChildrenCache
+operator|.
+name|invalidateAll
+argument_list|()
+expr_stmt|;
+block|}
 specifier|public
 name|int
 name|getPendingWriteCount

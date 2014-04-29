@@ -700,6 +700,11 @@ argument_list|,
 name|docIdsToDelete
 argument_list|)
 expr_stmt|;
+name|nodeStore
+operator|.
+name|invalidateDocChildrenCache
+argument_list|()
+expr_stmt|;
 name|stats
 operator|.
 name|deletedDocGCCount
