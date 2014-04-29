@@ -3919,6 +3919,11 @@ operator|==
 literal|null
 condition|)
 block|{
+name|docChildrenCache
+operator|.
+name|invalidateAll
+argument_list|()
+expr_stmt|;
 throw|throw
 operator|new
 name|NullPointerException
