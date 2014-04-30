@@ -1211,6 +1211,20 @@ block|{
 comment|// cannot handle child-level property restrictions
 continue|continue;
 block|}
+if|if
+condition|(
+literal|"rep:excerpt"
+operator|.
+name|equals
+argument_list|(
+name|pr
+operator|.
+name|propertyName
+argument_list|)
+condition|)
+block|{
+continue|continue;
+block|}
 name|String
 name|first
 init|=
@@ -2419,7 +2433,15 @@ name|setParam
 argument_list|(
 literal|"rows"
 argument_list|,
-literal|"100000"
+name|String
+operator|.
+name|valueOf
+argument_list|(
+name|configuration
+operator|.
+name|getRows
+argument_list|()
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
