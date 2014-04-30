@@ -526,7 +526,7 @@ argument_list|,
 operator|new
 name|String
 index|[]
-block|{         }
+block|{             }
 argument_list|,
 name|PropertyType
 operator|.
@@ -714,11 +714,119 @@ name|toString
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|// TODO
-comment|// r = session.getWorkspace().getQueryManager()
-comment|//         .createQuery("explain " + query, "xpath").execute();
-comment|// RowIterator rit = r.getRows();
-comment|// assertEquals("", rit.nextRow().getValue("plan").getString());
+name|RowIterator
+name|rit
+decl_stmt|;
+name|r
+operator|=
+name|session
+operator|.
+name|getWorkspace
+argument_list|()
+operator|.
+name|getQueryManager
+argument_list|()
+operator|.
+name|createQuery
+argument_list|(
+literal|"explain "
+operator|+
+name|query
+argument_list|,
+literal|"xpath"
+argument_list|)
+operator|.
+name|execute
+argument_list|()
+expr_stmt|;
+name|rit
+operator|=
+name|r
+operator|.
+name|getRows
+argument_list|()
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"[nt:base] as [a] /* ordered order by lastMod ancestor 1 "
+operator|+
+literal|"where ([a].[jcr:primaryType] = cast('oak:Unstructured' as string)) "
+operator|+
+literal|"and (isdescendantnode([a], [/test])) */"
+argument_list|,
+name|rit
+operator|.
+name|nextRow
+argument_list|()
+operator|.
+name|getValue
+argument_list|(
+literal|"plan"
+argument_list|)
+operator|.
+name|getString
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|query
+operator|=
+literal|"/jcr:root/test//*[@jcr:primaryType='oak:Unstructured' "
+operator|+
+literal|"and  content/@lastMod> '2001-02-01']"
+expr_stmt|;
+name|r
+operator|=
+name|session
+operator|.
+name|getWorkspace
+argument_list|()
+operator|.
+name|getQueryManager
+argument_list|()
+operator|.
+name|createQuery
+argument_list|(
+literal|"explain "
+operator|+
+name|query
+argument_list|,
+literal|"xpath"
+argument_list|)
+operator|.
+name|execute
+argument_list|()
+expr_stmt|;
+name|rit
+operator|=
+name|r
+operator|.
+name|getRows
+argument_list|()
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"[nt:base] as [a] /* ordered lastMod> 2001-02-01 "
+operator|+
+literal|"where (([a].[jcr:primaryType] = cast('oak:Unstructured' as string)) "
+operator|+
+literal|"and ([a].[content/lastMod]> cast('2001-02-01' as string))) "
+operator|+
+literal|"and (isdescendantnode([a], [/test])) */"
+argument_list|,
+name|rit
+operator|.
+name|nextRow
+argument_list|()
+operator|.
+name|getValue
+argument_list|(
+literal|"plan"
+argument_list|)
+operator|.
+name|getString
+argument_list|()
+argument_list|)
+expr_stmt|;
 block|}
 annotation|@
 name|Test

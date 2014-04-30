@@ -338,7 +338,7 @@ name|OrderedPropertyIndex
 block|{
 annotation|@
 name|Override
-name|PropertyIndexLookup
+name|AlwaysIndexedLookup
 name|getLookup
 parameter_list|(
 name|NodeState
