@@ -11,7 +11,7 @@ begin_annotation
 annotation|@
 name|Version
 argument_list|(
-literal|"0.16"
+literal|"1.0"
 argument_list|)
 end_annotation
 
