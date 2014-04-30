@@ -137,9 +137,7 @@ name|core
 operator|.
 name|data
 operator|.
-name|AsyncUploadCallback
-operator|.
-name|RESULT
+name|AsyncUploadResult
 import|;
 end_import
 
@@ -380,15 +378,15 @@ name|DataStoreException
 block|{
 name|asyncUploadCallback
 operator|.
-name|call
+name|onFailure
+argument_list|(
+operator|new
+name|AsyncUploadResult
 argument_list|(
 name|dataIdentifier
 argument_list|,
 name|file
-argument_list|,
-name|RESULT
-operator|.
-name|FAILED
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
