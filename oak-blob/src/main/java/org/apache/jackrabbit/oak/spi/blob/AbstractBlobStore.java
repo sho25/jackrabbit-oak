@@ -450,14 +450,7 @@ name|TYPE_HASH
 init|=
 literal|1
 decl_stmt|;
-specifier|protected
-specifier|static
-specifier|final
-name|int
-name|TYPE_HASH_COMPRESSED
-init|=
-literal|2
-decl_stmt|;
+comment|/**      * The minimum block size. Blocks must be larger than that so that the      * content hash is always shorter than the data itself.      */
 specifier|protected
 specifier|static
 specifier|final
@@ -466,6 +459,7 @@ name|BLOCK_SIZE_LIMIT
 init|=
 literal|48
 decl_stmt|;
+comment|/**      * The blob ids that are still floating around in memory. The blob store      * assumes such binaries must not be deleted, because those binaries are not      * referenced yet in a way the garbage collection algorithm can detect (not      * referenced at all, or only referenced in memory).      */
 specifier|protected
 name|Map
 argument_list|<
@@ -799,6 +793,8 @@ comment|// ignore
 block|}
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|InputStream
 name|getInputStream
@@ -1005,8 +1001,6 @@ return|return
 name|blobId
 return|;
 block|}
-else|else
-block|{
 name|log
 operator|.
 name|debug
@@ -1016,7 +1010,6 @@ argument_list|,
 name|reference
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 return|return
 literal|null
@@ -1052,7 +1045,9 @@ name|log
 operator|.
 name|info
 argument_list|(
-literal|"Reference key is not specified for the BlobStore in use. Generating a random key. For stable "
+literal|"Reference key is not specified for the BlobStore in use. "
+operator|+
+literal|"Generating a random key. For stable "
 operator|+
 literal|"reference ensure that reference key is specified"
 argument_list|)
@@ -1136,7 +1131,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Set the referenceKey from plain text. Key content would be      * UTF-8 encoding of the string.      *      *<p>This is useful when setting key via generic      *  bean property manipulation from string properties. User can specify the      *  key in plain text and that would be passed on this object via      *  {@link org.apache.jackrabbit.oak.commons.PropertiesUtil#populate(Object, java.util.Map, boolean)}      *      * @param textKey base64 encoded key      * @see org.apache.jackrabbit.oak.commons.PropertiesUtil#populate(Object, java.util.Map, boolean)      */
+comment|/**      * Set the referenceKey from plain text. Key content would be UTF-8 encoding      * of the string.      *       *<p>      * This is useful when setting key via generic bean property manipulation      * from string properties. User can specify the key in plain text and that      * would be passed on this object via      * {@link org.apache.jackrabbit.oak.commons.PropertiesUtil#populate(Object, java.util.Map, boolean)}      *       * @param textKey base64 encoded key      * @see org.apache.jackrabbit.oak.commons.PropertiesUtil#populate(Object,      *      java.util.Map, boolean)      */
 specifier|public
 name|void
 name|setReferenceKeyPlainText
@@ -1405,6 +1400,8 @@ operator|>
 literal|0
 condition|)
 block|{
+comment|// level> 0: total size (size of all sub-blocks)
+comment|// (see class level javadoc for details)
 name|IOUtils
 operator|.
 name|writeVarLong
@@ -1415,6 +1412,9 @@ name|totalLength
 argument_list|)
 expr_stmt|;
 block|}
+comment|// level = 0: size (size of this block)
+comment|// level> 0: size of the indirection block
+comment|// (see class level javadoc for details)
 name|IOUtils
 operator|.
 name|writeVarLong
@@ -1851,6 +1851,9 @@ argument_list|(
 name|idStream
 argument_list|)
 decl_stmt|;
+comment|// level = 0: size (size of this block)
+comment|// level> 0: total size (size of all sub-blocks)
+comment|// (see class level javadoc for details)
 name|long
 name|totalLength
 init|=
@@ -2260,6 +2263,9 @@ argument_list|(
 name|idStream
 argument_list|)
 decl_stmt|;
+comment|// level = 0: size (size of this block)
+comment|// level> 0: total size (size of all sub-blocks)
+comment|// (see class level javadoc for details)
 name|totalLength
 operator|+=
 name|IOUtils
@@ -2462,7 +2468,9 @@ argument_list|(
 name|idStream
 argument_list|)
 decl_stmt|;
-comment|// totalLength
+comment|// level = 0: size (size of this block)
+comment|// level> 0: total size (size of all sub-blocks)
+comment|// (see class level javadoc for details)
 name|IOUtils
 operator|.
 name|readVarLong
@@ -3070,7 +3078,9 @@ argument_list|(
 name|idStream
 argument_list|)
 decl_stmt|;
-comment|// totalLength
+comment|// level = 0: size (size of this block)
+comment|// level> 0: total size (size of all sub-blocks)
+comment|// (see class level javadoc for details)
 name|IOUtils
 operator|.
 name|readVarLong
@@ -3206,7 +3216,7 @@ name|e
 argument_list|)
 throw|;
 block|}
-comment|// Check now if ids available
+comment|// Check now if ids are available
 if|if
 condition|(
 operator|!
