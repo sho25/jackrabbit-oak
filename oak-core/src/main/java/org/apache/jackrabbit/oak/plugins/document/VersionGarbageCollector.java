@@ -35,7 +35,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|EnumSet
+name|Collections
 import|;
 end_import
 
@@ -235,7 +235,7 @@ name|getClass
 argument_list|()
 argument_list|)
 decl_stmt|;
-comment|/**      * Split document types which can be safely Garbage Collected      */
+comment|/**      * Split document types which can be safely Garbage Collected      * OAK-1793: SplitDocType.DEFAULT_NO_CHILD and SplitDocType.PROP_COMMIT_ONLY      * have been removed, but should be added again when OAK-1794 is fixed.      */
 specifier|private
 specifier|static
 specifier|final
@@ -247,22 +247,10 @@ name|SplitDocType
 argument_list|>
 name|GC_TYPES
 init|=
-name|EnumSet
+name|Collections
 operator|.
-name|of
-argument_list|(
-name|NodeDocument
-operator|.
-name|SplitDocType
-operator|.
-name|DEFAULT_NO_CHILD
-argument_list|,
-name|NodeDocument
-operator|.
-name|SplitDocType
-operator|.
-name|PROP_COMMIT_ONLY
-argument_list|)
+name|emptySet
+argument_list|()
 decl_stmt|;
 name|VersionGarbageCollector
 parameter_list|(
