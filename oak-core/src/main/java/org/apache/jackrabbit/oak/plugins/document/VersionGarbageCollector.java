@@ -449,13 +449,8 @@ argument_list|,
 name|oldestRevTimeStamp
 argument_list|)
 expr_stmt|;
-name|collectSplitDocuments
-argument_list|(
-name|stats
-argument_list|,
-name|oldestRevTimeStamp
-argument_list|)
-expr_stmt|;
+comment|// FIXME: OAK-1793 and OAK-1794
+comment|// collectSplitDocuments(stats, oldestRevTimeStamp);
 name|sw
 operator|.
 name|stop
