@@ -1291,6 +1291,18 @@ name|this
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
+specifier|public
+name|String
+name|toString
+parameter_list|()
+block|{
+return|return
+name|getPath
+argument_list|()
+return|;
+block|}
 comment|//---------------------------------------------------------< NodeState>--
 annotation|@
 name|Override
