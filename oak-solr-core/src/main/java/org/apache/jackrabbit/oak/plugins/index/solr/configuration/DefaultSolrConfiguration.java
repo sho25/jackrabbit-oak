@@ -252,6 +252,19 @@ operator|.
 name|CATCHALL_FIELD
 return|;
 block|}
+annotation|@
+name|Override
+specifier|public
+name|int
+name|getRows
+parameter_list|()
+block|{
+return|return
+name|SolrServerConfigurationDefaults
+operator|.
+name|ROWS
+return|;
+block|}
 block|}
 end_class
 

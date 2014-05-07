@@ -2433,7 +2433,15 @@ name|setParam
 argument_list|(
 literal|"rows"
 argument_list|,
-literal|"100000"
+name|String
+operator|.
+name|valueOf
+argument_list|(
+name|configuration
+operator|.
+name|getRows
+argument_list|()
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

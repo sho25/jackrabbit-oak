@@ -102,7 +102,7 @@ specifier|final
 name|String
 name|DESC_FIELD_NAME
 init|=
-literal|"path_desc"
+literal|"path_des"
 decl_stmt|;
 specifier|public
 specifier|static
@@ -119,6 +119,14 @@ name|String
 name|CATCHALL_FIELD
 init|=
 literal|"catch_all"
+decl_stmt|;
+specifier|public
+specifier|static
+specifier|final
+name|int
+name|ROWS
+init|=
+literal|100000
 decl_stmt|;
 block|}
 end_class

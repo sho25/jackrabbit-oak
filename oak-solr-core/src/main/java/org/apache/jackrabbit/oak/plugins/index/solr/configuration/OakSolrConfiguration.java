@@ -118,6 +118,12 @@ name|String
 name|getCatchAllField
 parameter_list|()
 function_decl|;
+comment|/**      * Provide the number of documents (rows) to be fetched for each Solr query      *      * @return an<code>int</code> for the setting of Solr rows parameter      */
+specifier|public
+name|int
+name|getRows
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 
