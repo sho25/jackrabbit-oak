@@ -2901,6 +2901,16 @@ argument_list|(
 literal|"/versionable"
 argument_list|)
 decl_stmt|;
+name|assertTrue
+argument_list|(
+name|history
+operator|.
+name|isNodeType
+argument_list|(
+literal|"rep:VersionablePaths"
+argument_list|)
+argument_list|)
+expr_stmt|;
 name|Property
 name|versionablePath
 init|=
