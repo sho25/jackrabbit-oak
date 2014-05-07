@@ -442,6 +442,7 @@ import|;
 end_import
 
 begin_class
+specifier|public
 class|class
 name|IndexUpdate
 implements|implements
@@ -522,6 +523,7 @@ specifier|final
 name|IndexUpdateCallback
 name|updateCallback
 decl_stmt|;
+specifier|public
 name|IndexUpdate
 parameter_list|(
 name|IndexEditorProvider
