@@ -230,6 +230,14 @@ argument_list|,
 literal|null
 argument_list|)
 decl_stmt|;
+specifier|public
+specifier|static
+specifier|final
+name|int
+name|CHANGE_COUNT
+init|=
+literal|1024
+decl_stmt|;
 specifier|private
 specifier|final
 name|List
@@ -279,7 +287,7 @@ literal|0
 init|;
 name|k
 operator|<
-literal|1024
+name|CHANGE_COUNT
 condition|;
 name|k
 operator|++
@@ -495,6 +503,16 @@ name|ExecutorService
 name|executor
 parameter_list|)
 block|{
+comment|// Ensure the observation revision queue is sufficiently large to hold
+comment|// all revisions. Otherwise waiting for events might block since pending
+comment|// events would only be released on a subsequent commit. See OAK-1491
+name|int
+name|queueLength
+init|=
+name|CHANGE_COUNT
+operator|+
+literal|1
+decl_stmt|;
 return|return
 operator|new
 name|BackgroundObserver
@@ -649,7 +667,7 @@ block|}
 argument_list|,
 name|executor
 argument_list|,
-literal|1024
+name|queueLength
 argument_list|)
 return|;
 block|}

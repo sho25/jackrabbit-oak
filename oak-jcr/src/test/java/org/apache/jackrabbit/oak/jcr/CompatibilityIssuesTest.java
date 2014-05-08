@@ -1680,7 +1680,7 @@ name|latch
 operator|.
 name|await
 argument_list|(
-literal|10
+literal|60
 argument_list|,
 name|TimeUnit
 operator|.

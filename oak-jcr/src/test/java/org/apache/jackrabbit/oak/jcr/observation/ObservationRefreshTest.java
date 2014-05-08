@@ -571,6 +571,13 @@ parameter_list|()
 throws|throws
 name|RepositoryException
 block|{
+comment|// Ensure the observation revision queue is sufficiently large to hold
+comment|// all revisions. Otherwise waiting for events might block since pending
+comment|// events would only be released on a subsequent commit. See OAK-1491
+name|observationQueueLength
+operator|=
+literal|1000000
+expr_stmt|;
 name|Session
 name|session
 init|=

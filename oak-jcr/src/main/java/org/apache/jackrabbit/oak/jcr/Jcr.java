@@ -632,7 +632,7 @@ specifier|public
 class|class
 name|Jcr
 block|{
-specifier|private
+specifier|public
 specifier|static
 specifier|final
 name|int

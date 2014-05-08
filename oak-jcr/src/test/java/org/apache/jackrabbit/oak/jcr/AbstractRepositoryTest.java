@@ -281,6 +281,14 @@ specifier|private
 name|Session
 name|adminSession
 decl_stmt|;
+specifier|protected
+name|int
+name|observationQueueLength
+init|=
+name|Jcr
+operator|.
+name|DEFAULT_OBSERVATION_QUEUE_LENGTH
+decl_stmt|;
 comment|/**      * The system property "ns-fixtures" can be used to provide a      * whitespace-separated list of fixtures names for which the      * tests should be run (the default is to use all fixtures).      */
 specifier|private
 specifier|static
@@ -662,6 +670,11 @@ operator|new
 name|Jcr
 argument_list|(
 name|nodeStore
+argument_list|)
+operator|.
+name|withObservationQueueLength
+argument_list|(
+name|observationQueueLength
 argument_list|)
 operator|.
 name|createRepository
