@@ -514,6 +514,21 @@ operator|.
 name|class
 init|)
 block|{
+comment|// need to check again, because threads
+comment|// could arrive inside the synchronized block
+comment|// out of order
+if|if
+condition|(
+name|timestamp
+operator|<
+name|lastRevisionTimestamp
+condition|)
+block|{
+name|timestamp
+operator|=
+name|lastRevisionTimestamp
+expr_stmt|;
+block|}
 if|if
 condition|(
 name|timestamp
