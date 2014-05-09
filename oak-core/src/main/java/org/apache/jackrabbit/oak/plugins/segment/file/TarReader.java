@@ -2391,7 +2391,7 @@ name|bytes
 argument_list|<
 name|count
 operator|*
-literal|24
+literal|16
 operator|+
 literal|16
 operator|||
