@@ -1478,6 +1478,20 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
+comment|// sanity check
+if|if
+condition|(
+name|chunkIds
+operator|.
+name|isEmpty
+argument_list|()
+condition|)
+block|{
+comment|// sanity check, nothing to do
+return|return
+literal|true
+return|;
+block|}
 name|Connection
 name|con
 init|=
