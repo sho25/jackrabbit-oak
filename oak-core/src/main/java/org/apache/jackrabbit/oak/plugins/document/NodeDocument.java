@@ -4295,8 +4295,6 @@ return|return
 operator|new
 name|PropertyHistory
 argument_list|(
-name|store
-argument_list|,
 name|this
 argument_list|,
 name|property
@@ -4373,14 +4371,8 @@ decl_stmt|;
 name|NodeDocument
 name|prev
 init|=
-name|store
-operator|.
-name|find
+name|getPreviousDocument
 argument_list|(
-name|Collection
-operator|.
-name|NODES
-argument_list|,
 name|prevId
 argument_list|)
 decl_stmt|;
@@ -4556,6 +4548,32 @@ argument_list|)
 return|;
 block|}
 block|}
+name|NodeDocument
+name|getPreviousDocument
+parameter_list|(
+name|String
+name|prevId
+parameter_list|)
+block|{
+comment|//Use the maxAge variant such that in case of Mongo call for
+comment|//previous doc are directed towards replicas first
+return|return
+name|store
+operator|.
+name|find
+argument_list|(
+name|Collection
+operator|.
+name|NODES
+argument_list|,
+name|prevId
+argument_list|,
+name|Integer
+operator|.
+name|MAX_VALUE
+argument_list|)
+return|;
+block|}
 annotation|@
 name|Nonnull
 name|Iterator
@@ -4730,19 +4748,11 @@ argument_list|,
 name|h
 argument_list|)
 decl_stmt|;
-comment|//TODO Use the maxAge variant such that in case of Mongo call for
-comment|//previous doc are directed towards replicas first
 name|NodeDocument
 name|prev
 init|=
-name|store
-operator|.
-name|find
+name|getPreviousDocument
 argument_list|(
-name|Collection
-operator|.
-name|NODES
-argument_list|,
 name|prevId
 argument_list|)
 decl_stmt|;
