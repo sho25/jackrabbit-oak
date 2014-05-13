@@ -324,7 +324,6 @@ name|length
 argument_list|()
 decl_stmt|;
 comment|/**      * The length of path (in characters), whose UTF-8 representation can not      * possibly be too large to be used for the primary key for the document      * store.      */
-specifier|private
 specifier|static
 specifier|final
 name|int
@@ -340,7 +339,6 @@ literal|165
 argument_list|)
 decl_stmt|;
 comment|/**      * The maximum length of the parent path, in bytes. If the parent path is      * longer, then the id of a document is no longer the path, but the hash of      * the parent, and then the node name.      */
-specifier|private
 specifier|static
 specifier|final
 name|int
@@ -1962,6 +1960,44 @@ literal|"0"
 expr_stmt|;
 return|return
 name|to
+return|;
+block|}
+comment|/**      * Returns parentId extracted from the fromKey. fromKey is usually constructed      * using Utils#getKeyLowerLimit      *      * @param fromKey key used as start key in queries      * @return parentId if possible.      */
+annotation|@
+name|CheckForNull
+specifier|public
+specifier|static
+name|String
+name|getParentIdFromLowerLimit
+parameter_list|(
+name|String
+name|fromKey
+parameter_list|)
+block|{
+comment|//If key just ends with slash 2:/foo/ then append a fake
+comment|//name to create a proper id
+if|if
+condition|(
+name|fromKey
+operator|.
+name|endsWith
+argument_list|(
+literal|"/"
+argument_list|)
+condition|)
+block|{
+name|fromKey
+operator|=
+name|fromKey
+operator|+
+literal|"a"
+expr_stmt|;
+block|}
+return|return
+name|getParentId
+argument_list|(
+name|fromKey
+argument_list|)
 return|;
 block|}
 comment|/**      * Returns<code>true</code> if a revision tagged with the given revision      * should be considered committed,<code>false</code> otherwise. Committed      * revisions have a tag, which equals 'c' or starts with 'c-'.      *      * @param tag the tag (may be<code>null</code>).      * @return<code>true</code> if committed;<code>false</code> otherwise.      */
