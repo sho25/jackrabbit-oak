@@ -745,9 +745,9 @@ argument_list|)
 operator|.
 name|setReadPreference
 argument_list|(
-name|ReadPreference
+name|store
 operator|.
-name|secondaryPreferred
+name|getDefaultReadPreference
 argument_list|()
 argument_list|)
 decl_stmt|;

@@ -420,9 +420,9 @@ argument_list|)
 operator|.
 name|setReadPreference
 argument_list|(
-name|ReadPreference
+name|documentStore
 operator|.
-name|secondaryPreferred
+name|getDefaultReadPreference
 argument_list|()
 argument_list|)
 expr_stmt|;
