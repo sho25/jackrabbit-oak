@@ -229,6 +229,13 @@ operator|.
 name|getTime
 argument_list|()
 expr_stmt|;
+name|lastRevisionTimestamp
+operator|=
+name|clock
+operator|.
+name|getTime
+argument_list|()
+expr_stmt|;
 block|}
 specifier|public
 name|Revision
