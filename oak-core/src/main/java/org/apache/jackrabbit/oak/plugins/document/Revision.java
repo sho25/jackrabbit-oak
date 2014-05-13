@@ -2141,6 +2141,21 @@ if|if
 condition|(
 name|r
 operator|.
+name|getTimestamp
+argument_list|()
+operator|<=
+name|oldestTimestamp
+condition|)
+block|{
+comment|// old revision with already purged range
+return|return
+literal|null
+return|;
+block|}
+if|if
+condition|(
+name|r
+operator|.
 name|getClusterId
 argument_list|()
 operator|!=

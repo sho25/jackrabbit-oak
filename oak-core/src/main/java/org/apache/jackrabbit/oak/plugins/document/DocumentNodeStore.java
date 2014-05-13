@@ -1161,7 +1161,6 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 comment|/**      * How long to remember the relative order of old revision of all cluster      * nodes, in milliseconds. The default is one hour.      */
-specifier|private
 specifier|static
 specifier|final
 name|int
