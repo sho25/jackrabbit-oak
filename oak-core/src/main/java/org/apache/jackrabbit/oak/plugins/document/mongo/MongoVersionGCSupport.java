@@ -747,8 +747,12 @@ name|setReadPreference
 argument_list|(
 name|store
 operator|.
-name|getDefaultReadPreference
-argument_list|()
+name|getConfiguredReadPreference
+argument_list|(
+name|Collection
+operator|.
+name|NODES
+argument_list|)
 argument_list|)
 decl_stmt|;
 try|try

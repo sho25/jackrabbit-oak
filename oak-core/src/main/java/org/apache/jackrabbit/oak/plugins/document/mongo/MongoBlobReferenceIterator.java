@@ -111,16 +111,6 @@ end_import
 
 begin_import
 import|import
-name|com
-operator|.
-name|mongodb
-operator|.
-name|ReadPreference
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -422,8 +412,12 @@ name|setReadPreference
 argument_list|(
 name|documentStore
 operator|.
-name|getDefaultReadPreference
-argument_list|()
+name|getConfiguredReadPreference
+argument_list|(
+name|Collection
+operator|.
+name|NODES
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
