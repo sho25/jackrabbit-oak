@@ -520,15 +520,6 @@ operator|)
 operator|/
 literal|2
 expr_stmt|;
-name|System
-operator|.
-name|err
-operator|.
-name|println
-argument_list|(
-name|test
-argument_list|)
-expr_stmt|;
 name|byte
 index|[]
 name|data
