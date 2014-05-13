@@ -398,7 +398,7 @@ name|setReadPreference
 argument_list|(
 name|ReadPreference
 operator|.
-name|secondaryPreferred
+name|primary
 argument_list|()
 argument_list|)
 decl_stmt|;
