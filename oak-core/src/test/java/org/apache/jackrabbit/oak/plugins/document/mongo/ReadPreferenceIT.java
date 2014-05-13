@@ -455,18 +455,13 @@ operator|.
 name|Builder
 argument_list|()
 operator|.
-name|clock
-argument_list|(
-name|clock
-argument_list|)
-operator|.
 name|setMaxReplicationLag
 argument_list|(
 name|replicationLag
 argument_list|,
 name|TimeUnit
 operator|.
-name|HOURS
+name|MILLISECONDS
 argument_list|)
 operator|.
 name|setMongoDB
@@ -904,6 +899,13 @@ name|getCurrentTimestamp
 argument_list|()
 operator|+
 name|replicationLag
+argument_list|)
+expr_stmt|;
+name|mongoDS
+operator|.
+name|setClock
+argument_list|(
+name|clock
 argument_list|)
 expr_stmt|;
 comment|//For old modified nodes secondaries should be preferred
