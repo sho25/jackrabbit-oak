@@ -22,22 +22,6 @@ package|;
 end_package
 
 begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|Preconditions
-operator|.
-name|checkNotNull
-import|;
-end_import
-
-begin_import
 import|import
 name|java
 operator|.
@@ -115,6 +99,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|HashSet
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Map
 import|;
 end_import
@@ -128,6 +122,16 @@ operator|.
 name|Map
 operator|.
 name|Entry
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Set
 import|;
 end_import
 
@@ -178,6 +182,16 @@ operator|.
 name|annotation
 operator|.
 name|Nullable
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|mongodb
+operator|.
+name|BasicDBObject
 import|;
 end_import
 
@@ -264,12 +278,18 @@ import|;
 end_import
 
 begin_import
-import|import
+import|import static
 name|com
 operator|.
-name|mongodb
+name|google
 operator|.
-name|BasicDBObject
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkNotNull
 import|;
 end_import
 
@@ -1393,7 +1413,36 @@ return|return
 literal|false
 return|;
 block|}
-comment|// check if name is too long
+comment|// check if the parent path is long
+name|byte
+index|[]
+name|parent
+init|=
+name|PathUtils
+operator|.
+name|getParentPath
+argument_list|(
+name|path
+argument_list|)
+operator|.
+name|getBytes
+argument_list|(
+name|UTF_8
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|parent
+operator|.
+name|length
+operator|<
+name|PATH_LONG
+condition|)
+block|{
+return|return
+literal|false
+return|;
+block|}
 name|String
 name|name
 init|=
@@ -1427,36 +1476,6 @@ operator|+
 name|path
 argument_list|)
 throw|;
-block|}
-comment|// check if the parent path is long
-name|byte
-index|[]
-name|parent
-init|=
-name|PathUtils
-operator|.
-name|getParentPath
-argument_list|(
-name|path
-argument_list|)
-operator|.
-name|getBytes
-argument_list|(
-name|UTF_8
-argument_list|)
-decl_stmt|;
-if|if
-condition|(
-name|parent
-operator|.
-name|length
-operator|<
-name|PATH_LONG
-condition|)
-block|{
-return|return
-literal|false
-return|;
 block|}
 return|return
 literal|true
