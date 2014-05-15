@@ -3047,6 +3047,11 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|ns
+operator|.
+name|dispose
+argument_list|()
+expr_stmt|;
 block|}
 annotation|@
 name|Ignore
