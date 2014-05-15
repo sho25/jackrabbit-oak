@@ -2204,6 +2204,13 @@ condition|(
 name|p
 operator|==
 literal|null
+operator|||
+literal|"*"
+operator|.
+name|equals
+argument_list|(
+name|p
+argument_list|)
 condition|)
 block|{
 name|p
