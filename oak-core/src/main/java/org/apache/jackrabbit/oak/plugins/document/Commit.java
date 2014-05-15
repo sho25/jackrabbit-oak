@@ -1462,6 +1462,15 @@ argument_list|,
 name|commitValue
 argument_list|)
 expr_stmt|;
+name|NodeDocument
+operator|.
+name|setLastRev
+argument_list|(
+name|commitRoot
+argument_list|,
+name|revision
+argument_list|)
+expr_stmt|;
 name|newNodes
 operator|.
 name|add
