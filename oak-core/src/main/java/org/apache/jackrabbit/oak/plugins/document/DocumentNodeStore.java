@@ -2147,6 +2147,13 @@ argument_list|)
 expr_stmt|;
 name|leaseUpdateThread
 operator|.
+name|setDaemon
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+name|leaseUpdateThread
+operator|.
 name|start
 argument_list|()
 expr_stmt|;
