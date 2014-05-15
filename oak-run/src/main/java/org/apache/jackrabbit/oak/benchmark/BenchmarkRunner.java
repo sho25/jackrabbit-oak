@@ -1083,6 +1083,14 @@ name|LoginLogoutTest
 argument_list|()
 block|,
 operator|new
+name|LoginUserTest
+argument_list|()
+block|,
+operator|new
+name|LoginLogoutUserTest
+argument_list|()
+block|,
+operator|new
 name|NamespaceTest
 argument_list|()
 block|,

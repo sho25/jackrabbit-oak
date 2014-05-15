@@ -83,7 +83,9 @@ init|=
 operator|new
 name|Session
 index|[
-literal|1000
+name|LoginUserTest
+operator|.
+name|COUNT
 index|]
 decl_stmt|;
 annotation|@

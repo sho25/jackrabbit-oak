@@ -1551,6 +1551,28 @@ argument_list|()
 argument_list|)
 return|;
 block|}
+comment|/**      * Returns a new admin session that will be automatically closed once      * all the iterations of this test have been executed.      *      * @return admin session      */
+specifier|protected
+name|Session
+name|loginAdministrative
+parameter_list|()
+block|{
+return|return
+name|login
+argument_list|(
+operator|new
+name|SimpleCredentials
+argument_list|(
+literal|"admin"
+argument_list|,
+literal|"admin"
+operator|.
+name|toCharArray
+argument_list|()
+argument_list|)
+argument_list|)
+return|;
+block|}
 comment|/**     * Returns a new session for the given user     * that will be automatically closed once     * all the iterations of this test have been executed.     *      * @param credentials the user credentials     * @return user session     */
 specifier|protected
 name|Session
