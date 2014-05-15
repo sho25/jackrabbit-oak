@@ -7547,7 +7547,7 @@ decl_stmt|;
 name|long
 name|minValue
 init|=
-name|Commit
+name|NodeDocument
 operator|.
 name|getModifiedInSecs
 argument_list|(

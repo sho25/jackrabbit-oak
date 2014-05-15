@@ -57,7 +57,7 @@ name|assertEquals
 argument_list|(
 literal|10
 argument_list|,
-name|Commit
+name|NodeDocument
 operator|.
 name|getModifiedInSecs
 argument_list|(
@@ -69,7 +69,7 @@ name|assertEquals
 argument_list|(
 literal|10
 argument_list|,
-name|Commit
+name|NodeDocument
 operator|.
 name|getModifiedInSecs
 argument_list|(
@@ -81,7 +81,7 @@ name|assertEquals
 argument_list|(
 literal|10
 argument_list|,
-name|Commit
+name|NodeDocument
 operator|.
 name|getModifiedInSecs
 argument_list|(
@@ -93,7 +93,7 @@ name|assertEquals
 argument_list|(
 literal|15
 argument_list|,
-name|Commit
+name|NodeDocument
 operator|.
 name|getModifiedInSecs
 argument_list|(
@@ -105,7 +105,7 @@ name|assertEquals
 argument_list|(
 literal|15
 argument_list|,
-name|Commit
+name|NodeDocument
 operator|.
 name|getModifiedInSecs
 argument_list|(

@@ -35,16 +35,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|Arrays
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|Collections
 import|;
 end_import
@@ -234,6 +224,20 @@ operator|.
 name|collect
 operator|.
 name|AbstractIterator
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|collect
+operator|.
+name|ImmutableList
 import|;
 end_import
 
@@ -657,6 +661,14 @@ name|MODIFIED_IN_SECS
 init|=
 literal|"_modified"
 decl_stmt|;
+comment|/**      * The resolution of the modified time.      */
+specifier|static
+specifier|final
+name|int
+name|MODIFIED_IN_SECS_RESOLUTION
+init|=
+literal|5
+decl_stmt|;
 specifier|private
 specifier|static
 specifier|final
@@ -781,6 +793,37 @@ name|SD_MAX_REV_TIME_IN_SECS
 init|=
 literal|"_sdMaxRevTime"
 decl_stmt|;
+comment|/**      * Return time in seconds with 5 second resolution      *      * @param timestamp time in millis to convert      * @return the time in seconds with the given resolution.      */
+specifier|public
+specifier|static
+name|long
+name|getModifiedInSecs
+parameter_list|(
+name|long
+name|timestamp
+parameter_list|)
+block|{
+comment|// 5 second resolution
+name|long
+name|timeInSec
+init|=
+name|TimeUnit
+operator|.
+name|MILLISECONDS
+operator|.
+name|toSeconds
+argument_list|(
+name|timestamp
+argument_list|)
+decl_stmt|;
+return|return
+name|timeInSec
+operator|-
+name|timeInSec
+operator|%
+name|MODIFIED_IN_SECS_RESOLUTION
+return|;
+block|}
 comment|/**      * A document which is created from splitting a main document can be classified      * into multiple types depending on the content i.e. weather it contains      * REVISIONS, COMMIT_ROOT, property history etc      */
 specifier|public
 specifier|static
@@ -2005,9 +2048,9 @@ name|Iterables
 operator|.
 name|mergeSorted
 argument_list|(
-name|Arrays
+name|ImmutableList
 operator|.
-name|asList
+name|of
 argument_list|(
 name|revisions
 operator|.
@@ -2059,9 +2102,9 @@ name|Iterables
 operator|.
 name|mergeSorted
 argument_list|(
-name|Arrays
+name|ImmutableList
 operator|.
-name|asList
+name|of
 argument_list|(
 name|getValueMap
 argument_list|(
@@ -4952,8 +4995,6 @@ name|set
 argument_list|(
 name|MODIFIED_IN_SECS
 argument_list|,
-name|Commit
-operator|.
 name|getModifiedInSecs
 argument_list|(
 name|checkNotNull
@@ -5564,8 +5605,6 @@ name|set
 argument_list|(
 name|SD_MAX_REV_TIME_IN_SECS
 argument_list|,
-name|Commit
-operator|.
 name|getModifiedInSecs
 argument_list|(
 name|maxRev

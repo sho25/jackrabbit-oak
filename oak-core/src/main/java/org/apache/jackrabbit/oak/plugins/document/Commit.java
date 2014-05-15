@@ -91,18 +91,6 @@ end_import
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|concurrent
-operator|.
-name|TimeUnit
-import|;
-end_import
-
-begin_import
-import|import
 name|javax
 operator|.
 name|annotation
@@ -544,37 +532,6 @@ expr_stmt|;
 block|}
 return|return
 name|op
-return|;
-block|}
-comment|/**      * Return time in seconds with 5 second resolution      *      * @param timestamp time in millis to convert      * @return      */
-specifier|public
-specifier|static
-name|long
-name|getModifiedInSecs
-parameter_list|(
-name|long
-name|timestamp
-parameter_list|)
-block|{
-comment|// 5 second resolution
-name|long
-name|timeInSec
-init|=
-name|TimeUnit
-operator|.
-name|MILLISECONDS
-operator|.
-name|toSeconds
-argument_list|(
-name|timestamp
-argument_list|)
-decl_stmt|;
-return|return
-name|timeInSec
-operator|-
-name|timeInSec
-operator|%
-literal|5
 return|;
 block|}
 comment|/**      * The revision for this new commit. That is, the changes within this commit      * will be visible with this revision.      *      * @return the revision for this new commit.      */

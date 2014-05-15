@@ -286,7 +286,7 @@ operator|&&
 operator|(
 name|modified
 operator|>=
-name|Commit
+name|NodeDocument
 operator|.
 name|getModifiedInSecs
 argument_list|(
@@ -297,7 +297,7 @@ operator|&&
 operator|(
 name|modified
 operator|<=
-name|Commit
+name|NodeDocument
 operator|.
 name|getModifiedInSecs
 argument_list|(
