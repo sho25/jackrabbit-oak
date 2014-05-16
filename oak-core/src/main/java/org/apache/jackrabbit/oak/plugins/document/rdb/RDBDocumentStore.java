@@ -4345,7 +4345,7 @@ block|{
 name|String
 name|t
 init|=
-literal|"select DATA, BDATA from "
+literal|"select ID, DATA, BDATA from "
 operator|+
 name|tableName
 operator|+
@@ -4476,15 +4476,66 @@ name|limit
 condition|)
 block|{
 name|String
+name|id
+init|=
+name|rs
+operator|.
+name|getString
+argument_list|(
+literal|1
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|id
+operator|.
+name|compareTo
+argument_list|(
+name|minId
+argument_list|)
+operator|<
+literal|0
+operator|||
+name|id
+operator|.
+name|compareTo
+argument_list|(
+name|maxId
+argument_list|)
+operator|>
+literal|0
+condition|)
+block|{
+throw|throw
+operator|new
+name|MicroKernelException
+argument_list|(
+literal|"unexpected query result: '"
+operator|+
+name|minId
+operator|+
+literal|"'< '"
+operator|+
+name|id
+operator|+
+literal|"'< '"
+operator|+
+name|maxId
+operator|+
+literal|"' - broken DB collation?"
+argument_list|)
+throw|;
+block|}
+name|String
 name|data
 init|=
 name|getData
 argument_list|(
 name|rs
 argument_list|,
-literal|1
-argument_list|,
 literal|2
+argument_list|,
+literal|3
 argument_list|)
 decl_stmt|;
 name|result
