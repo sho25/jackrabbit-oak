@@ -4086,13 +4086,41 @@ argument_list|,
 name|input
 argument_list|)
 decl_stmt|;
-return|return
+name|DocumentNodeState
+name|result
+init|=
 name|getNode
 argument_list|(
 name|p
 argument_list|,
 name|readRevision
 argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|result
+operator|==
+literal|null
+condition|)
+block|{
+throw|throw
+operator|new
+name|MicroKernelException
+argument_list|(
+literal|"DocumentNodeState is null for revision "
+operator|+
+name|readRevision
+operator|+
+literal|" of "
+operator|+
+name|p
+operator|+
+literal|" (aborting getChildNodes())"
+argument_list|)
+throw|;
+block|}
+return|return
+name|result
 return|;
 block|}
 block|}
