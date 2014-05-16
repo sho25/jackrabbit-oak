@@ -771,6 +771,8 @@ operator|new
 name|UpdateOp
 argument_list|(
 name|id
+operator|+
+literal|"-2"
 argument_list|,
 literal|true
 argument_list|)
