@@ -4991,7 +4991,7 @@ argument_list|(
 name|op
 argument_list|)
 operator|.
-name|set
+name|max
 argument_list|(
 name|MODIFIED_IN_SECS
 argument_list|,
