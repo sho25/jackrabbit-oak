@@ -42,6 +42,7 @@ comment|/**  * An input stream that returns a given number of dummy data. The re
 end_comment
 
 begin_class
+specifier|public
 class|class
 name|TestInputStream
 extends|extends
