@@ -6714,20 +6714,20 @@ operator|>
 literal|0
 argument_list|)
 expr_stmt|;
-name|assertEquals
+name|assertTrue
 argument_list|(
-literal|0
-argument_list|,
 name|descendingStore
 operator|.
 name|count
 argument_list|(
-name|descendingMeta
+name|ascendingMeta
 argument_list|,
 name|pr
 argument_list|,
 name|maxNodeCount
 argument_list|)
+operator|>
+literal|0
 argument_list|)
 expr_stmt|;
 comment|// '>='
@@ -6786,20 +6786,20 @@ operator|>
 literal|0
 argument_list|)
 expr_stmt|;
-name|assertEquals
+name|assertTrue
 argument_list|(
-literal|0
-argument_list|,
 name|descendingStore
 operator|.
 name|count
 argument_list|(
-name|descendingMeta
+name|ascendingMeta
 argument_list|,
 name|pr
 argument_list|,
 name|maxNodeCount
 argument_list|)
+operator|>
+literal|0
 argument_list|)
 expr_stmt|;
 comment|// '<'
@@ -6858,10 +6858,8 @@ operator|>
 literal|0
 argument_list|)
 expr_stmt|;
-name|assertEquals
+name|assertTrue
 argument_list|(
-literal|0
-argument_list|,
 name|store
 operator|.
 name|count
@@ -6872,6 +6870,8 @@ name|pr
 argument_list|,
 name|maxNodeCount
 argument_list|)
+operator|>
+literal|0
 argument_list|)
 expr_stmt|;
 comment|// when no conditions has been asked but just an ORDER BY
