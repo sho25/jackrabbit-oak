@@ -115,6 +115,7 @@ name|NAME
 init|=
 literal|"org.apache.jackrabbit.oak.user"
 decl_stmt|;
+comment|/**      * Create a new {@code UserManager} instance      *      * @param root The root associated with the user manager.      * @param namePathMapper A name path mapper used for conversion of jcr/oak names/paths.      * @return a new instance of {@code UserManager}      */
 annotation|@
 name|Nonnull
 name|UserManager
