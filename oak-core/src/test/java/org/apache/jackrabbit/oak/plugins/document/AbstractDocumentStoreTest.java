@@ -155,10 +155,6 @@ name|DocumentStore
 name|ds
 decl_stmt|;
 specifier|protected
-name|DocumentStoreFixture
-name|dsf
-decl_stmt|;
-specifier|protected
 name|List
 argument_list|<
 name|String
@@ -195,12 +191,6 @@ parameter_list|)
 block|{
 name|this
 operator|.
-name|dsf
-operator|=
-name|dsf
-expr_stmt|;
-name|this
-operator|.
 name|ds
 operator|=
 name|dsf
@@ -224,8 +214,6 @@ specifier|public
 name|void
 name|cleanUp
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 if|if
 condition|(
@@ -396,11 +384,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-name|dsf
-operator|.
-name|dispose
-argument_list|()
-expr_stmt|;
 block|}
 annotation|@
 name|Parameterized
