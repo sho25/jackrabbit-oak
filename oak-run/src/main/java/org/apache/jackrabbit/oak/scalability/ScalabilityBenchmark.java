@@ -56,7 +56,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Abstract class for all the Scalability/Longevity benchmarks.  *   */
+comment|/**  * Base class for all the Scalability/Longevity benchmarks/tests.  *   * The implementations should implement the method  * {@link ScalabilityBenchmark#execute(Repository, Credentials, ExecutionContext)}.  *   * This method will then be called from the {@link ScalabilitySuite} where configured.  *   */
 end_comment
 
 begin_class

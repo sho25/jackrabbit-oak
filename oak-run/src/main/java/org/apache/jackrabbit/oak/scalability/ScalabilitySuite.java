@@ -44,7 +44,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Interface for longevity suite for load testing.  */
+comment|/**  * Interface for scalability suite for load testing.  *   * {@link ScalabilitySuite} implementations would configure different {@link ScalabilityBenchmark}  * implementations for executing performance tests and measuring the execution times on those tests.  *   * The entry method for the starting the tests is {@link #run(Iterable)}.  *   */
 end_comment
 
 begin_interface
