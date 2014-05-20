@@ -1388,10 +1388,10 @@ name|isEmpty
 argument_list|()
 condition|)
 block|{
-comment|// OAK-1708 - this is temporary until we figure out parametrization,
+comment|// OAK-1708 - this is temporary until we figure out parameterization,
 comment|// and how to pass in DataSources directly
 name|String
-name|username
+name|dsusername
 init|=
 name|System
 operator|.
@@ -1403,7 +1403,7 @@ literal|""
 argument_list|)
 decl_stmt|;
 name|String
-name|passwd
+name|dspasswd
 init|=
 name|System
 operator|.
@@ -1415,7 +1415,7 @@ literal|""
 argument_list|)
 decl_stmt|;
 name|String
-name|driver
+name|dsdriver
 init|=
 name|System
 operator|.
@@ -1426,9 +1426,58 @@ argument_list|,
 literal|""
 argument_list|)
 decl_stmt|;
+name|String
+name|bsjdbcuri
+init|=
+name|System
+operator|.
+name|getProperty
+argument_list|(
+literal|"oakbs.jdbc.connection.uri"
+argument_list|,
+literal|""
+argument_list|)
+decl_stmt|;
+name|String
+name|bsusername
+init|=
+name|System
+operator|.
+name|getProperty
+argument_list|(
+literal|"oakbs.jdbc.username"
+argument_list|,
+literal|""
+argument_list|)
+decl_stmt|;
+name|String
+name|bspasswd
+init|=
+name|System
+operator|.
+name|getProperty
+argument_list|(
+literal|"oakbs.jdbc.password"
+argument_list|,
+literal|""
+argument_list|)
+decl_stmt|;
+name|String
+name|bsdriver
+init|=
+name|System
+operator|.
+name|getProperty
+argument_list|(
+literal|"oakbs.jdbc.driver.class"
+argument_list|,
+literal|""
+argument_list|)
+decl_stmt|;
+comment|// document store
 if|if
 condition|(
-name|driver
+name|dsdriver
 operator|.
 name|length
 argument_list|()
@@ -1442,7 +1491,7 @@ name|info
 argument_list|(
 literal|"trying to load {}"
 argument_list|,
-name|driver
+name|dsdriver
 argument_list|)
 expr_stmt|;
 try|try
@@ -1451,7 +1500,7 @@ name|Class
 operator|.
 name|forName
 argument_list|(
-name|driver
+name|dsdriver
 argument_list|)
 expr_stmt|;
 block|}
@@ -1465,7 +1514,11 @@ name|log
 operator|.
 name|error
 argument_list|(
-literal|"driver not loaded"
+literal|"driver "
+operator|+
+name|dsdriver
+operator|+
+literal|"not loaded"
 argument_list|,
 name|ex
 argument_list|)
@@ -1481,6 +1534,57 @@ argument_list|(
 literal|"System property oak.jdbc.driver.class not set."
 argument_list|)
 expr_stmt|;
+block|}
+comment|// blob store
+if|if
+condition|(
+name|bsdriver
+operator|.
+name|length
+argument_list|()
+operator|>
+literal|0
+condition|)
+block|{
+name|log
+operator|.
+name|info
+argument_list|(
+literal|"trying to load {}"
+argument_list|,
+name|bsdriver
+argument_list|)
+expr_stmt|;
+try|try
+block|{
+name|Class
+operator|.
+name|forName
+argument_list|(
+name|bsdriver
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|ClassNotFoundException
+name|ex
+parameter_list|)
+block|{
+name|log
+operator|.
+name|error
+argument_list|(
+literal|"driver "
+operator|+
+name|bsdriver
+operator|+
+literal|"not loaded"
+argument_list|,
+name|ex
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 if|if
 condition|(
@@ -1503,11 +1607,13 @@ name|log
 operator|.
 name|info
 argument_list|(
-literal|"Starting Document{} with uri={}, cache size (MB)={}, Off Heap Cache size (MB)={}, 'changes' collection size (MB)={}"
+literal|"Starting Document{} with uri(s)={}{}, cache size (MB)={}, Off Heap Cache size (MB)={}, 'changes' collection size (MB)={}"
 argument_list|,
 name|type
 argument_list|,
 name|jdbcuri
+argument_list|,
+name|bsjdbcuri
 argument_list|,
 name|cacheSize
 argument_list|,
@@ -1526,11 +1632,21 @@ name|forJdbcUrl
 argument_list|(
 name|jdbcuri
 argument_list|,
-name|username
+name|dsusername
 argument_list|,
-name|passwd
+name|dspasswd
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|bsjdbcuri
+operator|.
+name|length
+argument_list|()
+operator|==
+literal|0
+condition|)
+block|{
 name|mkBuilder
 operator|.
 name|setRDBConnection
@@ -1547,6 +1663,44 @@ argument_list|,
 name|ds
 argument_list|)
 expr_stmt|;
+block|}
+else|else
+block|{
+name|DataSource
+name|dsbs
+init|=
+name|RDBDataSourceFactory
+operator|.
+name|forJdbcUrl
+argument_list|(
+name|bsjdbcuri
+argument_list|,
+name|bsusername
+argument_list|,
+name|bspasswd
+argument_list|)
+decl_stmt|;
+name|mkBuilder
+operator|.
+name|setRDBConnection
+argument_list|(
+name|ds
+argument_list|,
+name|dsbs
+argument_list|)
+expr_stmt|;
+name|log
+operator|.
+name|info
+argument_list|(
+literal|"Connected to datasources {}{}"
+argument_list|,
+name|ds
+argument_list|,
+name|dsbs
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 else|else
 block|{
