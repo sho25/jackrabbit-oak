@@ -247,7 +247,7 @@ name|RDBFixture
 argument_list|(
 literal|"RDB-DB2"
 argument_list|,
-literal|"jdbc:db2://localhost:50000/AEM2"
+literal|"jdbc:db2://localhost:50000/OAK"
 argument_list|,
 literal|"oak"
 argument_list|,
