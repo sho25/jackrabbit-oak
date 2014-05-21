@@ -61,7 +61,7 @@ block|{
 return|return
 name|NodeStoreFixture
 operator|.
-name|MK_IMPL
+name|SEGMENT_MK
 operator|.
 name|createNodeStore
 argument_list|()
