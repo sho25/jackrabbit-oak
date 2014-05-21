@@ -1476,6 +1476,14 @@ operator|.
 name|wrap
 argument_list|(
 name|buffer
+argument_list|,
+name|buffer
+operator|.
+name|length
+operator|-
+name|length
+argument_list|,
+name|length
 argument_list|)
 expr_stmt|;
 block|}
