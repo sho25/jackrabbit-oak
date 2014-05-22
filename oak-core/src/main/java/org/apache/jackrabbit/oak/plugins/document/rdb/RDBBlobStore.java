@@ -1095,6 +1095,13 @@ argument_list|(
 name|id
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|data
+operator|==
+literal|null
+condition|)
+block|{
 name|Connection
 name|con
 init|=
@@ -1193,6 +1200,7 @@ operator|.
 name|close
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 comment|// System.out.println("    read block " + id + " blockLen: " +
 comment|// data.length + " [0]: " + data[0]);
