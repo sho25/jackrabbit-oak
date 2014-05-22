@@ -232,7 +232,7 @@ argument_list|>
 name|updateOps
 parameter_list|)
 function_decl|;
-comment|/**      * Update documents with the given keys. Only existing documents are      * updated.      *      * @param<T> the document type.      * @param collection the collection.      * @param keys the keys of the documents to update.      * @param updateOp the update operation to apply to each of the documents.      */
+comment|/**      * Update documents with the given keys. Only existing documents are      * updated and keys for documents that do not exist are simply ignored. If      * this method fails with an exception, then only some of the documents      * identified by {@code keys} may have been updated. There is no guarantee      * in which sequence the updates are performed.      *      * @param<T> the document type.      * @param collection the collection.      * @param keys the keys of the documents to update.      * @param updateOp the update operation to apply to each of the documents.      */
 parameter_list|<
 name|T
 extends|extends
