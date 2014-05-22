@@ -427,7 +427,7 @@ name|Nonnull
 name|Revision
 name|revision
 parameter_list|,
-name|Object
+name|String
 name|value
 parameter_list|)
 block|{
