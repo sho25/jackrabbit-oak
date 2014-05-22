@@ -210,7 +210,7 @@ argument_list|>
 name|keys
 parameter_list|)
 function_decl|;
-comment|/**      * Try to create a list of documents.      *      * @param<T> the document type      * @param collection the collection      * @param updateOps the list of documents to add      * @return true if this worked (if none of the documents already existed)      */
+comment|/**      * Try to create a list of documents. This method returns {@code code} iff      * none of the documents existed before and the create was successful. This      * method will return {@code false} if one of the documents already exists      * in the store. Some documents may still have been created in the store.      * An implementation does not have to guarantee an atomic create of all the      * documents described in the {@code updateOps}. It is the responsibility of      * the caller to check, which documents were created and take appropriate      * action. The same is true when this method throws an exception (e.g. when      * a communication error occurs). In this case only some documents may have      * been created.      *      * @param<T> the document type      * @param collection the collection      * @param updateOps the list of documents to add      * @return true if this worked (if none of the documents already existed)      */
 parameter_list|<
 name|T
 extends|extends
