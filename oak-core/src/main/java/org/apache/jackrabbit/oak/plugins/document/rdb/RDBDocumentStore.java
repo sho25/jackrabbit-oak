@@ -2357,7 +2357,7 @@ block|{
 comment|// may have failed due to a race condition; try update instead
 comment|// this is an edge case, so it's ok to bypass the cache
 comment|// (avoiding a race condition where the DB is already updated
-comment|// but the case is not)
+comment|// but the cache is not)
 name|oldDoc
 operator|=
 name|readDocumentUncached
@@ -2549,7 +2549,7 @@ operator|!
 name|success
 condition|)
 block|{
-comment|// retry with a fresh document
+comment|// retry with a fresh document; only use cache when *really* fresh, aka 50ms
 name|retries
 operator|-=
 literal|1
@@ -2565,9 +2565,7 @@ operator|.
 name|getId
 argument_list|()
 argument_list|,
-name|Integer
-operator|.
-name|MAX_VALUE
+literal|50
 argument_list|)
 expr_stmt|;
 name|doc
