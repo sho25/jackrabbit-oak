@@ -18,6 +18,30 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertEquals
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertTrue
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -77,9 +101,11 @@ name|apache
 operator|.
 name|jackrabbit
 operator|.
-name|oak
+name|mk
 operator|.
-name|NodeStoreFixture
+name|core
+operator|.
+name|MicroKernelImpl
 import|;
 end_import
 
@@ -193,30 +219,6 @@ name|Test
 import|;
 end_import
 
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertEquals
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertTrue
-import|;
-end_import
-
 begin_comment
 comment|/**  * Tests if cache is used for repeated reads on unmodified subtree.  * See also OAK-591.  */
 end_comment
@@ -274,9 +276,8 @@ operator|=
 operator|new
 name|MicroKernelWrapper
 argument_list|(
-name|NodeStoreFixture
-operator|.
-name|createMicroKernel
+operator|new
+name|MicroKernelImpl
 argument_list|()
 argument_list|)
 expr_stmt|;

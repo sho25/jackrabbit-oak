@@ -187,12 +187,6 @@ block|{
 block|{
 name|NodeStoreFixture
 operator|.
-name|MK_IMPL
-block|}
-block|,
-block|{
-name|NodeStoreFixture
-operator|.
 name|MONGO_MK
 block|}
 block|,
