@@ -203,6 +203,20 @@ name|google
 operator|.
 name|common
 operator|.
+name|collect
+operator|.
+name|Lists
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
 name|util
 operator|.
 name|concurrent
@@ -425,7 +439,25 @@ specifier|final
 name|String
 name|REPOSITORY_STARTUP_TIMEOUT
 init|=
-literal|"org.apache.jackrabbit.repository.startupTimeOut"
+literal|"org.apache.jackrabbit.oak.repository.startupTimeOut"
+decl_stmt|;
+comment|/**      * Config key which refers to the map of config where key in that map refers to OSGi      * config      */
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|REPOSITORY_CONFIG
+init|=
+literal|"org.apache.jackrabbit.oak.repository.config"
+decl_stmt|;
+comment|/**      * Comma separated list of file names which referred to config stored in form of JSON. The      * JSON content consist of pid as the key and config map as the value      */
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|REPOSITORY_CONFIG_FILE
+init|=
+literal|"org.apache.jackrabbit.oak.repository.configFile"
 decl_stmt|;
 comment|/**      * Default timeout for repository creation      */
 specifier|private
@@ -475,46 +507,17 @@ argument_list|(
 name|parameters
 argument_list|)
 expr_stmt|;
-comment|//TODO Add support for passing config as map of PID -> Dictionary
-comment|//as part of parameters and hook it up with Felix ConfigAdmin
-comment|//Say via custom InMemory PersistenceManager or programatically
-comment|//registering it with using ConfigAdmin API
-comment|//For later part we would need to implement some sort of Start Level
-comment|//support such that
-comment|// 1. Some base bundles like ConfigAdmin get start first
-comment|// 2. We register the user provided config
-comment|// 3. Other bundles get started
 comment|//TODO With OSGi Whiteboard we need to provide support for handling
 comment|//execution and JMX support as so far they were provided by Sling bundles
 comment|//in OSGi env
-name|processConfig
-argument_list|(
-name|config
-argument_list|)
-expr_stmt|;
 name|PojoServiceRegistry
 name|registry
 init|=
-name|createServiceRegistry
+name|initializeServiceRegistry
 argument_list|(
 name|config
 argument_list|)
 decl_stmt|;
-name|preProcessRegistry
-argument_list|(
-name|registry
-argument_list|)
-expr_stmt|;
-name|startBundles
-argument_list|(
-name|registry
-argument_list|)
-expr_stmt|;
-name|postProcessRegistry
-argument_list|(
-name|registry
-argument_list|)
-expr_stmt|;
 comment|//Future which would be used to notify when repository is ready
 comment|// to be used
 name|SettableFuture
@@ -646,6 +649,57 @@ argument_list|)
 throw|;
 block|}
 block|}
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unchecked"
+argument_list|)
+name|PojoServiceRegistry
+name|initializeServiceRegistry
+parameter_list|(
+name|Map
+name|config
+parameter_list|)
+block|{
+name|processConfig
+argument_list|(
+name|config
+argument_list|)
+expr_stmt|;
+name|PojoServiceRegistry
+name|registry
+init|=
+name|createServiceRegistry
+argument_list|(
+name|config
+argument_list|)
+decl_stmt|;
+name|startConfigTracker
+argument_list|(
+name|registry
+argument_list|,
+name|config
+argument_list|)
+expr_stmt|;
+name|preProcessRegistry
+argument_list|(
+name|registry
+argument_list|)
+expr_stmt|;
+name|startBundles
+argument_list|(
+name|registry
+argument_list|)
+expr_stmt|;
+name|postProcessRegistry
+argument_list|(
+name|registry
+argument_list|)
+expr_stmt|;
+return|return
+name|registry
+return|;
+block|}
 comment|/**      * Enables pre processing of service registry by sub classes. This can be      * used to register services before any bundle gets started      *      * @param registry service registry      */
 specifier|protected
 name|void
@@ -664,7 +718,6 @@ name|PojoServiceRegistry
 name|registry
 parameter_list|)
 block|{      }
-comment|/**      * @param descriptors      * @return the bundle descriptors      */
 specifier|protected
 name|List
 argument_list|<
@@ -679,8 +732,6 @@ argument_list|>
 name|descriptors
 parameter_list|)
 block|{
-comment|//If required sort the bundle descriptors such that configuration admin and file install bundle
-comment|//gets started before SCR
 name|Collections
 operator|.
 name|sort
@@ -728,6 +779,30 @@ block|}
 block|}
 specifier|private
 specifier|static
+name|void
+name|startConfigTracker
+parameter_list|(
+name|PojoServiceRegistry
+name|registry
+parameter_list|,
+name|Map
+name|config
+parameter_list|)
+block|{
+operator|new
+name|ConfigTracker
+argument_list|(
+name|config
+argument_list|,
+name|registry
+operator|.
+name|getBundleContext
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+specifier|private
+specifier|static
 name|int
 name|getTimeoutInSeconds
 parameter_list|(
@@ -764,6 +839,11 @@ return|return
 name|timeout
 return|;
 block|}
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unchecked"
+argument_list|)
 specifier|private
 specifier|static
 name|void
@@ -877,7 +957,6 @@ argument_list|,
 literal|"true"
 argument_list|)
 expr_stmt|;
-comment|//Directory used by Felix File Install to watch for configs
 name|config
 operator|.
 name|put
@@ -900,6 +979,11 @@ name|config
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unchecked"
+argument_list|)
 specifier|private
 specifier|static
 name|void
@@ -1063,6 +1147,15 @@ operator|.
 name|scanForBundles
 argument_list|()
 decl_stmt|;
+name|descriptors
+operator|=
+name|Lists
+operator|.
+name|newArrayList
+argument_list|(
+name|descriptors
+argument_list|)
+expr_stmt|;
 name|descriptors
 operator|=
 name|processDescriptors
