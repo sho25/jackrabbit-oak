@@ -373,6 +373,7 @@ operator|<<
 literal|7
 decl_stmt|;
 comment|/**      * The size limit for medium values. The variable length of medium values      * is encoded as two bytes with the highest bits of the first byte set to      * one and zero, which gives us 14 bits for encoding the length of the      * value. And since small values are never stored as medium ones, we can      * extend the size range to cover that many longer values.      */
+specifier|public
 specifier|static
 specifier|final
 name|int
