@@ -293,7 +293,7 @@ name|dispose
 parameter_list|()
 throws|throws
 name|Exception
-block|{}
+block|{     }
 specifier|public
 specifier|static
 class|class
