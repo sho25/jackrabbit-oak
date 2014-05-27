@@ -493,6 +493,26 @@ parameter_list|)
 throws|throws
 name|RepositoryException
 block|{
+if|if
+condition|(
+name|parameters
+operator|==
+literal|null
+operator|||
+operator|!
+name|parameters
+operator|.
+name|containsKey
+argument_list|(
+name|REPOSITORY_HOME
+argument_list|)
+condition|)
+block|{
+comment|//Required param missing so repository cannot be created
+return|return
+literal|null
+return|;
+block|}
 name|Map
 name|config
 init|=
