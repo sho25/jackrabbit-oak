@@ -3990,6 +3990,14 @@ return|return
 name|number
 return|;
 block|}
+name|File
+name|getFile
+parameter_list|()
+block|{
+return|return
+name|file
+return|;
+block|}
 comment|//------------------------------------------------------------< Object>--
 annotation|@
 name|Override
