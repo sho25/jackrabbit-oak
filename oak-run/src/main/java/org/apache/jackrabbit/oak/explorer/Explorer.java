@@ -13,7 +13,7 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|segmentexplorer
+name|explorer
 package|;
 end_package
 
@@ -149,10 +149,14 @@ name|FileStore
 import|;
 end_import
 
+begin_comment
+comment|/**  * NodeStore explorer  *   * GUI based on Swing, for now it is tailored to the TarMK  *   */
+end_comment
+
 begin_class
 specifier|public
 class|class
-name|SegmentExplorer
+name|Explorer
 block|{
 specifier|public
 specifier|static
@@ -167,14 +171,14 @@ throws|throws
 name|IOException
 block|{
 operator|new
-name|SegmentExplorer
+name|Explorer
 argument_list|(
 name|args
 argument_list|)
 expr_stmt|;
 block|}
 specifier|public
-name|SegmentExplorer
+name|Explorer
 parameter_list|(
 name|String
 index|[]
@@ -198,7 +202,7 @@ name|err
 operator|.
 name|println
 argument_list|(
-literal|"usage: explore<path> [/content/path...]"
+literal|"usage: explore<path>"
 argument_list|)
 expr_stmt|;
 name|System
@@ -407,11 +411,11 @@ argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
-name|SegmentTree
+name|NodeStoreTree
 name|treePanel
 init|=
 operator|new
-name|SegmentTree
+name|NodeStoreTree
 argument_list|(
 name|store
 argument_list|,

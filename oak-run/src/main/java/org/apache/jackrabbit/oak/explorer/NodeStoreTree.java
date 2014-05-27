@@ -13,7 +13,7 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|segmentexplorer
+name|explorer
 package|;
 end_package
 
@@ -458,9 +458,8 @@ import|;
 end_import
 
 begin_class
-specifier|public
 class|class
-name|SegmentTree
+name|NodeStoreTree
 extends|extends
 name|JPanel
 implements|implements
@@ -506,7 +505,7 @@ argument_list|>
 name|sizeCache
 decl_stmt|;
 specifier|public
-name|SegmentTree
+name|NodeStoreTree
 parameter_list|(
 name|FileStore
 name|store
