@@ -1518,7 +1518,7 @@ literal|"driver "
 operator|+
 name|dsdriver
 operator|+
-literal|"not loaded"
+literal|" not loaded"
 argument_list|,
 name|ex
 argument_list|)
@@ -1579,7 +1579,7 @@ literal|"driver "
 operator|+
 name|bsdriver
 operator|+
-literal|"not loaded"
+literal|" not loaded"
 argument_list|,
 name|ex
 argument_list|)
