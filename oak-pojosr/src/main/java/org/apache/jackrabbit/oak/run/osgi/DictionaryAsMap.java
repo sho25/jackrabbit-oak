@@ -94,7 +94,6 @@ comment|/**  * A wrapper around a dictionary access it as a Map  * Taken from or
 end_comment
 
 begin_class
-specifier|public
 class|class
 name|DictionaryAsMap
 parameter_list|<
