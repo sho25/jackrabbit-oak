@@ -302,6 +302,16 @@ return|return
 literal|true
 return|;
 block|}
+comment|// return false if the multiple instances will not share the same persistence
+specifier|public
+name|boolean
+name|hasSinglePersistence
+parameter_list|()
+block|{
+return|return
+literal|true
+return|;
+block|}
 specifier|public
 name|void
 name|dispose
@@ -341,6 +351,17 @@ return|return
 operator|new
 name|MemoryDocumentStore
 argument_list|()
+return|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|boolean
+name|hasSinglePersistence
+parameter_list|()
+block|{
+return|return
+literal|false
 return|;
 block|}
 block|}
