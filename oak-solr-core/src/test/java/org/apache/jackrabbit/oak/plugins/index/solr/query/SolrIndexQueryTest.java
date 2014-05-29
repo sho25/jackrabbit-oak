@@ -319,6 +319,16 @@ name|org
 operator|.
 name|junit
 operator|.
+name|Assume
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
 name|Ignore
 import|;
 end_import
@@ -396,6 +406,18 @@ operator|.
 name|Assert
 operator|.
 name|assertTrue
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assume
+operator|.
+name|assumeTrue
 import|;
 end_import
 
@@ -1640,6 +1662,23 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+comment|// TODO: OAK-1819
+name|assumeTrue
+argument_list|(
+operator|!
+name|System
+operator|.
+name|getProperty
+argument_list|(
+literal|"java.version"
+argument_list|)
+operator|.
+name|startsWith
+argument_list|(
+literal|"1.8"
+argument_list|)
+argument_list|)
+expr_stmt|;
 name|String
 name|nativeQueryString
 init|=
@@ -1782,6 +1821,23 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+comment|// TODO: OAK-1819
+name|assumeTrue
+argument_list|(
+operator|!
+name|System
+operator|.
+name|getProperty
+argument_list|(
+literal|"java.version"
+argument_list|)
+operator|.
+name|startsWith
+argument_list|(
+literal|"1.8"
+argument_list|)
+argument_list|)
+expr_stmt|;
 name|String
 name|nativeQueryString
 init|=
