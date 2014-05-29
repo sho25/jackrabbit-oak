@@ -36,7 +36,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A node state diff handler that applies all reported changes  * as-is to the given node builder. No conflict detection or resolution  * is attempted. The main use case for this class is to call all the  * {@link NodeBuilder} methods necessary to go from a given base state  * to any given target state.  *<p>  * The expected usage pattern looks like this:  *<pre>  * NodeState base = ...;  * NodeState target = ...;  * NodeBuilder builder = base.builder();  * target.compareAgainstBaseState(base, new ReapplyDiff(builder));  * assertEquals(target, builder.getNodeState());  *</pre>  *<p>  * Alternatively, the {@link #apply(NodeState)} method can be used to set  * the content of a given builder:  *<pre>  * NodeBuilder builder = ...;  * NodeState target = ...;  * new ApplyDiff(builder).apply(target);  * assertEquals(target, builder.getNodeState());  *</pre>  */
+comment|/**  * A node state diff handler that applies all reported changes  * as-is to the given node builder. No conflict detection or resolution  * is attempted. The main use case for this class is to call all the  * {@link NodeBuilder} methods necessary to go from a given base state  * to any given target state.  *<p>  * The expected usage pattern looks like this:  *<pre>  * NodeState base = ...;  * NodeState target = ...;  * NodeBuilder builder = base.builder();  * target.compareAgainstBaseState(base, new ApplyDiff(builder));  * assertEquals(target, builder.getNodeState());  *</pre>  *<p>  * Alternatively, the {@link #apply(NodeState)} method can be used to set  * the content of a given builder:  *<pre>  * NodeBuilder builder = ...;  * NodeState target = ...;  * new ApplyDiff(builder).apply(target);  * assertEquals(target, builder.getNodeState());  *</pre>  */
 end_comment
 
 begin_class
@@ -46,7 +46,7 @@ name|ApplyDiff
 implements|implements
 name|NodeStateDiff
 block|{
-specifier|private
+specifier|protected
 specifier|final
 name|NodeBuilder
 name|builder
