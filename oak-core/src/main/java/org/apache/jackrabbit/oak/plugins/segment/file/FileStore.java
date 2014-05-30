@@ -2229,6 +2229,9 @@ operator|.
 name|writeBytes
 argument_list|(
 name|after
+operator|.
+name|toString10
+argument_list|()
 operator|+
 literal|" root\n"
 argument_list|)

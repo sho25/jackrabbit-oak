@@ -449,6 +449,25 @@ name|RECORD_ALIGN_BITS
 argument_list|)
 return|;
 block|}
+comment|/**      * Returns the record id string representation used in Oak 1.0.      */
+specifier|public
+name|String
+name|toString10
+parameter_list|()
+block|{
+return|return
+name|String
+operator|.
+name|format
+argument_list|(
+literal|"%s:%d"
+argument_list|,
+name|segmentId
+argument_list|,
+name|offset
+argument_list|)
+return|;
+block|}
 annotation|@
 name|Override
 specifier|public
