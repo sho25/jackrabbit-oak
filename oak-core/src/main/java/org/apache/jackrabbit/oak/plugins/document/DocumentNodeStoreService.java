@@ -1493,51 +1493,9 @@ name|dsdriver
 operator|.
 name|length
 argument_list|()
-operator|>
+operator|==
 literal|0
 condition|)
-block|{
-name|log
-operator|.
-name|info
-argument_list|(
-literal|"trying to load {}"
-argument_list|,
-name|dsdriver
-argument_list|)
-expr_stmt|;
-try|try
-block|{
-name|Class
-operator|.
-name|forName
-argument_list|(
-name|dsdriver
-argument_list|)
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|ClassNotFoundException
-name|ex
-parameter_list|)
-block|{
-name|log
-operator|.
-name|error
-argument_list|(
-literal|"driver "
-operator|+
-name|dsdriver
-operator|+
-literal|" not loaded"
-argument_list|,
-name|ex
-argument_list|)
-expr_stmt|;
-block|}
-block|}
-else|else
 block|{
 name|log
 operator|.
@@ -1546,57 +1504,6 @@ argument_list|(
 literal|"System property oak.jdbc.driver.class not set."
 argument_list|)
 expr_stmt|;
-block|}
-comment|// blob store
-if|if
-condition|(
-name|bsdriver
-operator|.
-name|length
-argument_list|()
-operator|>
-literal|0
-condition|)
-block|{
-name|log
-operator|.
-name|info
-argument_list|(
-literal|"trying to load {}"
-argument_list|,
-name|bsdriver
-argument_list|)
-expr_stmt|;
-try|try
-block|{
-name|Class
-operator|.
-name|forName
-argument_list|(
-name|bsdriver
-argument_list|)
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|ClassNotFoundException
-name|ex
-parameter_list|)
-block|{
-name|log
-operator|.
-name|error
-argument_list|(
-literal|"driver "
-operator|+
-name|bsdriver
-operator|+
-literal|" not loaded"
-argument_list|,
-name|ex
-argument_list|)
-expr_stmt|;
-block|}
 block|}
 if|if
 condition|(
@@ -1647,6 +1554,8 @@ argument_list|,
 name|dsusername
 argument_list|,
 name|dspasswd
+argument_list|,
+name|dsdriver
 argument_list|)
 decl_stmt|;
 if|if
@@ -1690,6 +1599,8 @@ argument_list|,
 name|bsusername
 argument_list|,
 name|bspasswd
+argument_list|,
+name|bsdriver
 argument_list|)
 decl_stmt|;
 name|mkBuilder
@@ -1705,7 +1616,7 @@ name|log
 operator|.
 name|info
 argument_list|(
-literal|"Connected to datasources {}{}"
+literal|"Connected to datasources {} {}"
 argument_list|,
 name|ds
 argument_list|,
