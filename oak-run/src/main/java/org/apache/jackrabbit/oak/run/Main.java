@@ -1389,14 +1389,12 @@ argument_list|)
 decl_stmt|;
 try|try
 block|{
-operator|new
 name|Compactor
+operator|.
+name|compact
 argument_list|(
 name|store
 argument_list|)
-operator|.
-name|compact
-argument_list|()
 expr_stmt|;
 block|}
 finally|finally
