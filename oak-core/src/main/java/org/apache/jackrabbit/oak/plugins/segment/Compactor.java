@@ -774,6 +774,15 @@ operator|&&
 name|id
 operator|!=
 literal|null
+operator|&&
+name|child
+operator|.
+name|getChildNodeCount
+argument_list|(
+literal|1
+argument_list|)
+operator|>
+literal|0
 condition|)
 block|{
 name|RecordId
@@ -914,6 +923,15 @@ operator|&&
 name|id
 operator|!=
 literal|null
+operator|&&
+name|child
+operator|.
+name|getChildNodeCount
+argument_list|(
+literal|1
+argument_list|)
+operator|>
+literal|0
 condition|)
 block|{
 name|RecordId
@@ -1098,7 +1116,6 @@ name|Blob
 name|blob
 parameter_list|)
 block|{
-comment|// first check if we've already cloned this record
 if|if
 condition|(
 name|blob
@@ -1114,22 +1131,52 @@ name|SegmentBlob
 operator|)
 name|blob
 decl_stmt|;
+try|try
+block|{
+comment|// if the blob is inlined, just compact without de-duplication
+if|if
+condition|(
+name|sb
+operator|.
+name|length
+argument_list|()
+operator|<
+name|Segment
+operator|.
+name|MEDIUM_LIMIT
+condition|)
+block|{
+return|return
+name|sb
+operator|.
+name|clone
+argument_list|(
+name|writer
+argument_list|)
+return|;
+block|}
+comment|// then check if we've already cloned this specific record
 name|RecordId
 name|id
+init|=
+name|sb
+operator|.
+name|getRecordId
+argument_list|()
+decl_stmt|;
+name|RecordId
+name|compactedId
 init|=
 name|compacted
 operator|.
 name|get
 argument_list|(
-name|sb
-operator|.
-name|getRecordId
-argument_list|()
+name|id
 argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|id
+name|compactedId
 operator|!=
 literal|null
 condition|)
@@ -1138,14 +1185,11 @@ return|return
 operator|new
 name|SegmentBlob
 argument_list|(
-name|id
+name|compactedId
 argument_list|)
 return|;
 block|}
-block|}
-try|try
-block|{
-comment|// then look if the exact same binary has been cloned
+comment|// alternatively look if the exact same binary has been cloned
 name|String
 name|key
 init|=
@@ -1177,7 +1221,7 @@ block|{
 for|for
 control|(
 name|RecordId
-name|id
+name|duplicateId
 range|:
 name|ids
 control|)
@@ -1187,7 +1231,7 @@ condition|(
 operator|new
 name|SegmentBlob
 argument_list|(
-name|id
+name|duplicateId
 argument_list|)
 operator|.
 name|equals
@@ -1200,36 +1244,13 @@ return|return
 operator|new
 name|SegmentBlob
 argument_list|(
-name|id
+name|duplicateId
 argument_list|)
 return|;
 block|}
 block|}
 block|}
-comment|// if not, try to clone the blob and keep track of the result
-if|if
-condition|(
-name|blob
-operator|instanceof
-name|SegmentBlob
-condition|)
-block|{
-name|SegmentBlob
-name|sb
-init|=
-operator|(
-name|SegmentBlob
-operator|)
-name|blob
-decl_stmt|;
-name|RecordId
-name|id
-init|=
-name|sb
-operator|.
-name|getRecordId
-argument_list|()
-decl_stmt|;
+comment|// if not, clone the blob and keep track of the result
 name|sb
 operator|=
 name|sb
@@ -1287,7 +1308,6 @@ return|return
 name|sb
 return|;
 block|}
-block|}
 catch|catch
 parameter_list|(
 name|IOException
@@ -1304,6 +1324,7 @@ name|e
 argument_list|)
 expr_stmt|;
 comment|// fall through
+block|}
 block|}
 comment|// no way to compact this blob, so we'll just keep it as-is
 return|return
