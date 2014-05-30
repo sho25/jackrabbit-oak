@@ -1133,7 +1133,7 @@ name|blob
 decl_stmt|;
 try|try
 block|{
-comment|// if the blob is inlined, just compact without de-duplication
+comment|// if the blob is inlined or external, just clone it
 if|if
 condition|(
 name|sb
@@ -1144,6 +1144,11 @@ operator|<
 name|Segment
 operator|.
 name|MEDIUM_LIMIT
+operator|||
+name|sb
+operator|.
+name|isExternal
+argument_list|()
 condition|)
 block|{
 return|return
@@ -1155,7 +1160,7 @@ name|writer
 argument_list|)
 return|;
 block|}
-comment|// then check if we've already cloned this specific record
+comment|// else check if we've already cloned this specific record
 name|RecordId
 name|id
 init|=
