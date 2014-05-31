@@ -1237,6 +1237,10 @@ name|SQL2DescendantSearchTest
 argument_list|()
 block|,
 operator|new
+name|FlatTreeUpdateTest
+argument_list|()
+block|,
+operator|new
 name|CreateManyChildNodesTest
 argument_list|()
 block|,
