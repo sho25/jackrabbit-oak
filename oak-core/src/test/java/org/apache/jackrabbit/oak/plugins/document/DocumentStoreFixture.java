@@ -258,6 +258,24 @@ specifier|public
 specifier|static
 specifier|final
 name|DocumentStoreFixture
+name|RDB_MYSQL
+init|=
+operator|new
+name|RDBFixture
+argument_list|(
+literal|"RDB-MySQL"
+argument_list|,
+literal|"jdbc:mysql://localhost:3306/oak"
+argument_list|,
+literal|"root"
+argument_list|,
+literal|"geheim"
+argument_list|)
+decl_stmt|;
+specifier|public
+specifier|static
+specifier|final
+name|DocumentStoreFixture
 name|MONGO
 init|=
 operator|new
@@ -436,6 +454,8 @@ operator|+
 name|url
 operator|+
 literal|", skipping tests..."
+argument_list|,
+name|ex
 argument_list|)
 expr_stmt|;
 block|}

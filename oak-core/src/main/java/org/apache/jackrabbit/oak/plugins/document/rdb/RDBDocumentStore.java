@@ -1654,6 +1654,29 @@ literal|" (ID varchar(1000) not null primary key, MODIFIED bigint, HASBINARY sma
 argument_list|)
 expr_stmt|;
 block|}
+elseif|else
+if|if
+condition|(
+literal|"MySQL"
+operator|.
+name|equals
+argument_list|(
+name|dbtype
+argument_list|)
+condition|)
+block|{
+name|stmt
+operator|.
+name|execute
+argument_list|(
+literal|"create table "
+operator|+
+name|tableName
+operator|+
+literal|" (ID varchar(767) not null primary key, MODIFIED bigint, HASBINARY smallint, MODCOUNT bigint, SIZE bigint, DATA varchar(16384), BDATA mediumblob)"
+argument_list|)
+expr_stmt|;
+block|}
 else|else
 block|{
 name|stmt
@@ -2617,6 +2640,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+comment|// TODO: handle case where document is gone, thus oldDoc == null
 name|doc
 operator|=
 name|applyChanges

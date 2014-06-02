@@ -483,6 +483,30 @@ literal|"DATASTORE_META"
 argument_list|)
 condition|)
 block|{
+if|if
+condition|(
+literal|"MySQL"
+operator|.
+name|equals
+argument_list|(
+name|dbtype
+argument_list|)
+condition|)
+block|{
+name|stmt
+operator|.
+name|execute
+argument_list|(
+literal|"create table "
+operator|+
+name|tableName
+operator|+
+literal|" (ID varchar(767) not null primary key, LEVEL int, LASTMOD bigint)"
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
 name|stmt
 operator|.
 name|execute
@@ -494,6 +518,7 @@ operator|+
 literal|" (ID varchar(1000) not null primary key, LEVEL int, LASTMOD bigint)"
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 else|else
 block|{
@@ -558,6 +583,29 @@ operator|+
 name|MINBLOB
 operator|+
 literal|"))"
+argument_list|)
+expr_stmt|;
+block|}
+elseif|else
+if|if
+condition|(
+literal|"MySQL"
+operator|.
+name|equals
+argument_list|(
+name|dbtype
+argument_list|)
+condition|)
+block|{
+name|stmt
+operator|.
+name|execute
+argument_list|(
+literal|"create table "
+operator|+
+name|tableName
+operator|+
+literal|" (ID varchar(767) not null primary key, DATA mediumblob)"
 argument_list|)
 expr_stmt|;
 block|}
