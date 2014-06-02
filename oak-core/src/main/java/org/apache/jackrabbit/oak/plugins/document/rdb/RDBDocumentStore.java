@@ -5253,7 +5253,7 @@ literal|"insert into "
 operator|+
 name|tableName
 operator|+
-literal|" values(?, ?, ?, ?, ?, ?, ?)"
+literal|"(ID, MODIFIED, HASBINARY, MODCOUNT, SIZE, DATA, BDATA) values (?, ?, ?, ?, ?, ?, ?)"
 argument_list|)
 decl_stmt|;
 try|try
