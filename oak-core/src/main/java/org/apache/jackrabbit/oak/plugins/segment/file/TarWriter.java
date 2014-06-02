@@ -2159,7 +2159,7 @@ name|String
 operator|.
 name|format
 argument_list|(
-literal|"%06o"
+literal|"%06o\0 "
 argument_list|,
 name|checksum
 argument_list|)
@@ -2175,15 +2175,8 @@ name|header
 argument_list|,
 literal|148
 argument_list|,
-literal|6
+literal|8
 argument_list|)
-expr_stmt|;
-name|header
-index|[
-literal|154
-index|]
-operator|=
-literal|0
 expr_stmt|;
 return|return
 name|header

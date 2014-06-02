@@ -1905,7 +1905,7 @@ name|String
 operator|.
 name|format
 argument_list|(
-literal|"%06o  "
+literal|"%06o\0 "
 argument_list|,
 name|sum
 argument_list|)
@@ -1915,13 +1915,6 @@ argument_list|(
 name|UTF_8
 argument_list|)
 decl_stmt|;
-name|checkbytes
-index|[
-literal|7
-index|]
-operator|=
-literal|0
-expr_stmt|;
 for|for
 control|(
 name|int
