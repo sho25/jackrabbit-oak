@@ -588,6 +588,15 @@ argument_list|,
 literal|"profile/age"
 argument_list|)
 expr_stmt|;
+name|mapping
+operator|.
+name|put
+argument_list|(
+literal|"profile/constantProperty"
+argument_list|,
+literal|"\"constant-value\""
+argument_list|)
+expr_stmt|;
 name|syncConfig
 operator|.
 name|user
