@@ -1008,6 +1008,14 @@ range|:
 name|files
 control|)
 block|{
+name|String
+name|name
+init|=
+name|file
+operator|.
+name|getName
+argument_list|()
+decl_stmt|;
 try|try
 block|{
 name|RandomAccessFile
@@ -1029,6 +1037,8 @@ init|=
 name|loadAndValidateIndex
 argument_list|(
 name|access
+argument_list|,
+name|name
 argument_list|)
 decl_stmt|;
 if|if
@@ -1040,11 +1050,11 @@ condition|)
 block|{
 name|log
 operator|.
-name|warn
+name|info
 argument_list|(
-literal|"No tar index found in {}, skipping..."
+literal|"No index found in tar file {}, skipping..."
 argument_list|,
-name|file
+name|name
 argument_list|)
 expr_stmt|;
 block|}
@@ -1073,6 +1083,9 @@ argument_list|(
 literal|"Removing unused tar file {}"
 argument_list|,
 name|other
+operator|.
+name|getName
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|other
@@ -1153,7 +1166,7 @@ name|warn
 argument_list|(
 literal|"Failed to mmap tar file "
 operator|+
-name|file
+name|name
 operator|+
 literal|". Falling back to normal file IO,"
 operator|+
@@ -1239,9 +1252,9 @@ name|log
 operator|.
 name|warn
 argument_list|(
-literal|"Could not read file "
+literal|"Could not read tar file "
 operator|+
-name|file
+name|name
 operator|+
 literal|", skipping..."
 argument_list|,
@@ -1254,7 +1267,7 @@ return|return
 literal|null
 return|;
 block|}
-comment|/**      * Tries to read an existing index from the given tar file. The index is      * returned if it is found and looks valid (correct checksum, passes      * sanity checks).      *      * @return tar index, or {@code null} if not found or not valid      * @throws IOException if the tar file could not be read      */
+comment|/**      * Tries to read an existing index from the given tar file. The index is      * returned if it is found and looks valid (correct checksum, passes      * sanity checks).      *      * @param file tar file      * @param name name of the tar file, for logging purposes      * @return tar index, or {@code null} if not found or not valid      * @throws IOException if the tar file could not be read      */
 specifier|private
 specifier|static
 name|ByteBuffer
@@ -1262,6 +1275,9 @@ name|loadAndValidateIndex
 parameter_list|(
 name|RandomAccessFile
 name|file
+parameter_list|,
+name|String
+name|name
 parameter_list|)
 throws|throws
 name|IOException
@@ -1303,7 +1319,7 @@ literal|"Unexpected size {} of tar file {}"
 argument_list|,
 name|length
 argument_list|,
-name|file
+name|name
 argument_list|)
 expr_stmt|;
 return|return
@@ -1384,15 +1400,6 @@ operator|!=
 name|INDEX_MAGIC
 condition|)
 block|{
-name|log
-operator|.
-name|warn
-argument_list|(
-literal|"No index found in tar file {}"
-argument_list|,
-name|file
-argument_list|)
-expr_stmt|;
 return|return
 literal|null
 return|;
@@ -1425,7 +1432,7 @@ name|warn
 argument_list|(
 literal|"Invalid index metadata in tar file {}"
 argument_list|,
-name|file
+name|name
 argument_list|)
 expr_stmt|;
 return|return
@@ -1617,7 +1624,7 @@ name|warn
 argument_list|(
 literal|"Incorrect index ordering in tar file {}"
 argument_list|,
-name|file
+name|name
 argument_list|)
 expr_stmt|;
 return|return
@@ -1646,7 +1653,7 @@ name|warn
 argument_list|(
 literal|"Duplicate index entry in tar file {}"
 argument_list|,
-name|file
+name|name
 argument_list|)
 expr_stmt|;
 return|return
@@ -1673,7 +1680,7 @@ name|warn
 argument_list|(
 literal|"Invalid index entry offset in tar file {}"
 argument_list|,
-name|file
+name|name
 argument_list|)
 expr_stmt|;
 return|return
@@ -1700,7 +1707,7 @@ name|warn
 argument_list|(
 literal|"Invalid index entry size in tar file {}"
 argument_list|,
-name|file
+name|name
 argument_list|)
 expr_stmt|;
 return|return
@@ -1735,7 +1742,7 @@ name|warn
 argument_list|(
 literal|"Invalid index checksum in tar file {}"
 argument_list|,
-name|file
+name|name
 argument_list|)
 expr_stmt|;
 return|return
