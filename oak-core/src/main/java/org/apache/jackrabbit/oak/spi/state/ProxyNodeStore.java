@@ -302,6 +302,25 @@ name|checkpoint
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
+specifier|public
+name|void
+name|release
+parameter_list|(
+name|String
+name|checkpoint
+parameter_list|)
+block|{
+name|getNodeStore
+argument_list|()
+operator|.
+name|release
+argument_list|(
+name|checkpoint
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 end_class
 

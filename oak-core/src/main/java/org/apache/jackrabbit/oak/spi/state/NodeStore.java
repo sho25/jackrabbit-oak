@@ -235,6 +235,15 @@ name|String
 name|checkpoint
 parameter_list|)
 function_decl|;
+name|void
+name|release
+parameter_list|(
+annotation|@
+name|Nonnull
+name|String
+name|checkpoint
+parameter_list|)
+function_decl|;
 block|}
 end_interface
 
