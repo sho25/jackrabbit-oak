@@ -2838,6 +2838,15 @@ argument_list|,
 name|this
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|this
+operator|.
+name|blobStore
+operator|==
+literal|null
+condition|)
+block|{
 name|this
 operator|.
 name|blobStore
@@ -2848,6 +2857,7 @@ argument_list|(
 name|ds
 argument_list|)
 expr_stmt|;
+block|}
 return|return
 name|this
 return|;
