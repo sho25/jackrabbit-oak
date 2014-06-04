@@ -375,14 +375,10 @@ comment|/**      * formatter for date conversions      */
 specifier|protected
 specifier|static
 specifier|final
-name|SimpleDateFormat
+name|String
 name|ISO_8601_2000
 init|=
-operator|new
-name|SimpleDateFormat
-argument_list|(
 literal|"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
-argument_list|)
 decl_stmt|;
 comment|/**      * generate a list of values to be used as ordered set. Will return something like      * {@code value000, value001, value002, ...}      *      *      * @param amount      * @param direction the direction of the sorting      * @return a list of {@code amount} values ordered as specified by {@code direction}      */
 specifier|protected
@@ -986,6 +982,15 @@ literal|12
 else|:
 literal|12
 decl_stmt|;
+name|SimpleDateFormat
+name|sdf
+init|=
+operator|new
+name|SimpleDateFormat
+argument_list|(
+name|ISO_8601_2000
+argument_list|)
+decl_stmt|;
 for|for
 control|(
 name|int
@@ -1005,7 +1010,7 @@ name|values
 operator|.
 name|add
 argument_list|(
-name|ISO_8601_2000
+name|sdf
 operator|.
 name|format
 argument_list|(

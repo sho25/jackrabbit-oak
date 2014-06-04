@@ -241,6 +241,34 @@ argument_list|)
 argument_list|)
 return|;
 block|}
+specifier|public
+name|boolean
+name|isAscending
+parameter_list|()
+block|{
+return|return
+name|ASC
+operator|.
+name|equals
+argument_list|(
+name|this
+argument_list|)
+return|;
+block|}
+specifier|public
+name|boolean
+name|isDescending
+parameter_list|()
+block|{
+return|return
+name|DESC
+operator|.
+name|equals
+argument_list|(
+name|this
+argument_list|)
+return|;
+block|}
 comment|/**          * convenience method that tells if the provided index definition is ascending          *           * @param indexMeta          * @return true if ascending          */
 specifier|public
 specifier|static
@@ -284,6 +312,44 @@ name|OrderDirection
 operator|.
 name|ASC
 decl_stmt|;
+comment|/**      * defines the default distribution of items across the skip list. It's with a factor of 10%      * having therefore      *       *<dl>      *<dt>lane 0:</dt><dd>100.0% (the base linked list)</dd>      *<dt>lane 1:</dt><dd>10.0%</dd>      *<dt>lane 2:</dt><dd>1.0%</dd>      *<dt>lane 3:</dt><dd>0.1%</dd>      *</dl>      */
+name|double
+name|DEFAULT_PROBABILITY
+init|=
+literal|0.1
+decl_stmt|;
+comment|/**      * the number of lanes used in the SkipList       */
+name|int
+name|LANES
+init|=
+literal|4
+decl_stmt|;
+comment|/**      * Convenience Predicate that will force the implementor to expose what we're searching for      *      * @param<T>      */
+interface|interface
+name|Predicate
+parameter_list|<
+name|T
+parameter_list|>
+extends|extends
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Predicate
+argument_list|<
+name|T
+argument_list|>
+block|{
+comment|/**          * @return the string we're searching for during this predicate          */
+name|String
+name|getSearchFor
+parameter_list|()
+function_decl|;
+block|}
 block|}
 end_interface
 

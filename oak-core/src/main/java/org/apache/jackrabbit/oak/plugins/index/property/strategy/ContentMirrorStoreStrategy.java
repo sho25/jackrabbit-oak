@@ -543,6 +543,8 @@ argument_list|(
 name|index
 argument_list|,
 name|builders
+argument_list|,
+name|key
 argument_list|)
 expr_stmt|;
 block|}
@@ -1822,7 +1824,7 @@ name|key
 argument_list|)
 return|;
 block|}
-comment|/**      * Physically prune a list of nodes from the index      *       * @param index      *            the current index      * @param builders      *            list of nodes to prune      */
+comment|/**      * Physically prune a list of nodes from the index      *       * @param index      *            the current index      * @param builders      *            list of nodes to prune      * @param key the key of the index we're processing      */
 name|void
 name|prune
 parameter_list|(
@@ -1836,6 +1838,10 @@ argument_list|<
 name|NodeBuilder
 argument_list|>
 name|builders
+parameter_list|,
+specifier|final
+name|String
+name|key
 parameter_list|)
 block|{
 for|for
