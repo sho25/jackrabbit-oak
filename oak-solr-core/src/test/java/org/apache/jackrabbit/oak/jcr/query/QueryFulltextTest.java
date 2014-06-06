@@ -488,23 +488,112 @@ literal|"path"
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|//
-comment|//        sql2 = "select [jcr:path] as [path] from [nt:base] "
-comment|//                + "where contains([node1/text], 'hello') order by [jcr:path]";
-comment|//        q = qm.createQuery(sql2, Query.JCR_SQL2);
-comment|//        assertEquals("/testroot", getResult(q.execute(), "path"));
-comment|//
-comment|//        sql2 = "select [jcr:path] as [path] from [nt:base] "
-comment|//                + "where contains([node2/text], 'hello OR hallo') order by [jcr:path]";
-comment|//        q = qm.createQuery(sql2, Query.JCR_SQL2);
-comment|//        assertEquals("/testroot", getResult(q.execute(), "path"));
-comment|// TODO OAK-890
-comment|// sql2 = "select [jcr:path] as [path] from [nt:base] "
-comment|// + "where contains([node1/text], 'hello') "
-comment|// + "and contains([node2/text], 'hallo') "
-comment|// + "order by [jcr:path]";
-comment|// q = qm.createQuery(sql2, Query.JCR_SQL2);
-comment|// assertEquals("/testroot", getResult(q.execute(), "path"));
+name|sql2
+operator|=
+literal|"select [jcr:path] as [path] from [nt:base] "
+operator|+
+literal|"where contains([node1/text], 'hello') order by [jcr:path]"
+expr_stmt|;
+name|q
+operator|=
+name|qm
+operator|.
+name|createQuery
+argument_list|(
+name|sql2
+argument_list|,
+name|Query
+operator|.
+name|JCR_SQL2
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"/testroot"
+argument_list|,
+name|getResult
+argument_list|(
+name|q
+operator|.
+name|execute
+argument_list|()
+argument_list|,
+literal|"path"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|sql2
+operator|=
+literal|"select [jcr:path] as [path] from [nt:base] "
+operator|+
+literal|"where contains([node2/text], 'hello OR hallo') order by [jcr:path]"
+expr_stmt|;
+name|q
+operator|=
+name|qm
+operator|.
+name|createQuery
+argument_list|(
+name|sql2
+argument_list|,
+name|Query
+operator|.
+name|JCR_SQL2
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"/testroot"
+argument_list|,
+name|getResult
+argument_list|(
+name|q
+operator|.
+name|execute
+argument_list|()
+argument_list|,
+literal|"path"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|sql2
+operator|=
+literal|"select [jcr:path] as [path] from [nt:base] "
+operator|+
+literal|"where contains([node1/text], 'hello') "
+operator|+
+literal|"and contains([node2/text], 'hallo') "
+operator|+
+literal|"order by [jcr:path]"
+expr_stmt|;
+name|q
+operator|=
+name|qm
+operator|.
+name|createQuery
+argument_list|(
+name|sql2
+argument_list|,
+name|Query
+operator|.
+name|JCR_SQL2
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"/testroot"
+argument_list|,
+name|getResult
+argument_list|(
+name|q
+operator|.
+name|execute
+argument_list|()
+argument_list|,
+literal|"path"
+argument_list|)
+argument_list|)
+expr_stmt|;
 block|}
 specifier|static
 name|String
