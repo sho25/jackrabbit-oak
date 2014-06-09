@@ -2198,7 +2198,7 @@ name|matcher
 operator|.
 name|group
 argument_list|(
-literal|3
+literal|6
 argument_list|)
 expr_stmt|;
 block|}
