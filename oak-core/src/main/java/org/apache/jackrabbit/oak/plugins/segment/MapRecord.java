@@ -2399,6 +2399,9 @@ argument_list|(
 name|this
 argument_list|,
 name|before
+argument_list|,
+name|getStore
+argument_list|()
 argument_list|)
 condition|)
 block|{

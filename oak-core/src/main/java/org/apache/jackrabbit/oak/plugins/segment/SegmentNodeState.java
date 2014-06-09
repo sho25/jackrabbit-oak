@@ -2125,6 +2125,9 @@ argument_list|(
 name|this
 argument_list|,
 name|base
+argument_list|,
+name|getStore
+argument_list|()
 argument_list|)
 condition|)
 block|{
@@ -2682,6 +2685,9 @@ argument_list|(
 name|afterNode
 argument_list|,
 name|beforeNode
+argument_list|,
+name|getStore
+argument_list|()
 argument_list|)
 condition|)
 block|{
@@ -2907,6 +2913,9 @@ argument_list|(
 name|afterChild
 argument_list|,
 name|beforeChild
+argument_list|,
+name|getStore
+argument_list|()
 argument_list|)
 operator|&&
 operator|!
@@ -3100,6 +3109,9 @@ argument_list|(
 name|this
 argument_list|,
 name|object
+argument_list|,
+name|getStore
+argument_list|()
 argument_list|)
 condition|)
 block|{

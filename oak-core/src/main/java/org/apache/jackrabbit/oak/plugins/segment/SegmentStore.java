@@ -21,6 +21,16 @@ end_package
 
 begin_import
 import|import
+name|java
+operator|.
+name|nio
+operator|.
+name|ByteBuffer
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|annotation
@@ -157,6 +167,12 @@ function_decl|;
 comment|/**      * Triggers removal of segments that are no longer referenceable.      */
 name|void
 name|gc
+parameter_list|()
+function_decl|;
+annotation|@
+name|CheckForNull
+name|ByteBuffer
+name|getCompactionMap
 parameter_list|()
 function_decl|;
 block|}
