@@ -1805,6 +1805,11 @@ name|start
 argument_list|()
 expr_stmt|;
 comment|// wait until async update called checkpoint
+name|retrieve
+operator|.
+name|release
+argument_list|()
+expr_stmt|;
 name|checkpoint
 operator|.
 name|acquireUninterruptibly
@@ -2156,6 +2161,46 @@ operator|.
 name|start
 argument_list|()
 expr_stmt|;
+comment|// make some unrelated changes to trigger indexing
+name|builder
+operator|=
+name|store
+operator|.
+name|getRoot
+argument_list|()
+operator|.
+name|builder
+argument_list|()
+expr_stmt|;
+name|builder
+operator|.
+name|setChildNode
+argument_list|(
+literal|"dummy"
+argument_list|)
+operator|.
+name|setProperty
+argument_list|(
+literal|"foo"
+argument_list|,
+literal|"bar"
+argument_list|)
+expr_stmt|;
+name|store
+operator|.
+name|merge
+argument_list|(
+name|builder
+argument_list|,
+name|EmptyHook
+operator|.
+name|INSTANCE
+argument_list|,
+name|CommitInfo
+operator|.
+name|EMPTY
+argument_list|)
+expr_stmt|;
 while|while
 condition|(
 operator|!
@@ -2165,7 +2210,11 @@ name|hasQueuedThreads
 argument_list|()
 condition|)
 block|{
-comment|// busy wait
+name|Thread
+operator|.
+name|yield
+argument_list|()
+expr_stmt|;
 block|}
 comment|// introduce a conflict
 name|builder
