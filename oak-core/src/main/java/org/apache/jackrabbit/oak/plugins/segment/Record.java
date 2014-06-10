@@ -130,8 +130,7 @@ name|compaction
 init|=
 name|a
 operator|.
-name|getStore
-argument_list|()
+name|segmentId
 operator|.
 name|getTracker
 argument_list|()
@@ -246,22 +245,6 @@ return|return
 name|segmentId
 operator|.
 name|getSegment
-argument_list|()
-return|;
-block|}
-comment|/**      * Returns the segment store.      *      * @return segment store      */
-specifier|public
-name|SegmentStore
-name|getStore
-parameter_list|()
-block|{
-return|return
-name|segmentId
-operator|.
-name|getTracker
-argument_list|()
-operator|.
-name|getStore
 argument_list|()
 return|;
 block|}
