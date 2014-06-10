@@ -1560,16 +1560,7 @@ block|{
 return|return
 name|login
 argument_list|(
-operator|new
-name|SimpleCredentials
-argument_list|(
-literal|"admin"
-argument_list|,
-literal|"admin"
-operator|.
-name|toCharArray
-argument_list|()
-argument_list|)
+name|CREDENTIALS
 argument_list|)
 return|;
 block|}
