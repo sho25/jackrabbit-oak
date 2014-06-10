@@ -841,15 +841,6 @@ name|compactThreshold
 init|=
 literal|10
 decl_stmt|;
-comment|/**      * Serialized map that contains the link between the old record ids and new record ids      * of the compacted states.      */
-specifier|private
-specifier|final
-name|AtomicReference
-argument_list|<
-name|ByteBuffer
-argument_list|>
-name|compactionMap
-decl_stmt|;
 comment|/**      * List of old tar file generations that are waiting to be removed.      */
 specifier|private
 specifier|final
@@ -1660,17 +1651,6 @@ name|flushThread
 operator|.
 name|start
 argument_list|()
-expr_stmt|;
-name|compactionMap
-operator|=
-operator|new
-name|AtomicReference
-argument_list|<
-name|ByteBuffer
-argument_list|>
-argument_list|(
-literal|null
-argument_list|)
 expr_stmt|;
 name|log
 operator|.
@@ -2582,9 +2562,9 @@ operator|.
 name|dropCache
 argument_list|()
 expr_stmt|;
-name|compactionMap
+name|tracker
 operator|.
-name|set
+name|setCompactionMap
 argument_list|(
 name|Compactor
 operator|.
@@ -3597,20 +3577,6 @@ expr_stmt|;
 block|}
 return|return
 name|index
-return|;
-block|}
-annotation|@
-name|Override
-specifier|public
-name|ByteBuffer
-name|getCompactionMap
-parameter_list|()
-block|{
-return|return
-name|compactionMap
-operator|.
-name|get
-argument_list|()
 return|;
 block|}
 block|}

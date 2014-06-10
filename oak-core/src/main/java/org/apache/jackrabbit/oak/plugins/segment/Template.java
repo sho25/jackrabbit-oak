@@ -1235,11 +1235,6 @@ argument_list|(
 name|thisMap
 argument_list|,
 name|thatMap
-argument_list|,
-name|thisMap
-operator|.
-name|getStore
-argument_list|()
 argument_list|)
 condition|)
 block|{

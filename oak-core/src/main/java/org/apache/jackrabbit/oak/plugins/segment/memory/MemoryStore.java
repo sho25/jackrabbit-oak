@@ -650,17 +650,6 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-annotation|@
-name|Override
-specifier|public
-name|ByteBuffer
-name|getCompactionMap
-parameter_list|()
-block|{
-return|return
-literal|null
-return|;
-block|}
 block|}
 end_class
 

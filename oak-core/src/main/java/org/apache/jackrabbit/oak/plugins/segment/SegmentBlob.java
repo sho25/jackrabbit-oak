@@ -1114,9 +1114,6 @@ argument_list|(
 name|this
 argument_list|,
 name|object
-argument_list|,
-name|getStore
-argument_list|()
 argument_list|)
 condition|)
 block|{

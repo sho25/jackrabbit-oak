@@ -798,17 +798,6 @@ parameter_list|()
 block|{
 comment|// TODO: distributed gc
 block|}
-annotation|@
-name|Override
-specifier|public
-name|ByteBuffer
-name|getCompactionMap
-parameter_list|()
-block|{
-return|return
-literal|null
-return|;
-block|}
 block|}
 end_class
 

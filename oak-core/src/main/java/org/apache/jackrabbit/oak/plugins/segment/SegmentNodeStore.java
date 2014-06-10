@@ -908,8 +908,6 @@ argument_list|(
 name|before
 argument_list|,
 name|root
-argument_list|,
-name|store
 argument_list|)
 condition|)
 block|{
@@ -1763,8 +1761,6 @@ name|getChildNode
 argument_list|(
 name|ROOT
 argument_list|)
-argument_list|,
-name|store
 argument_list|)
 condition|)
 block|{
@@ -2180,8 +2176,6 @@ argument_list|(
 name|before
 argument_list|,
 name|after
-argument_list|,
-name|store
 argument_list|)
 condition|)
 block|{
