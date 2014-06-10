@@ -1246,6 +1246,8 @@ name|key
 argument_list|,
 name|userId
 argument_list|)
+argument_list|,
+name|options
 argument_list|)
 decl_stmt|;
 name|tokenNode
