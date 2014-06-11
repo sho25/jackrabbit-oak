@@ -67,7 +67,6 @@ interface|interface
 name|OakSolrConfiguration
 block|{
 comment|/**      * Provide a field name to be used for indexing / searching a certain {@link org.apache.jackrabbit.oak.api.Type}      *      * @param propertyType the {@link org.apache.jackrabbit.oak.api.Type} to be indexed / searched      * @return a<code>String</code> representing the Solr field to be used for the given {@link org.apache.jackrabbit.oak.api.Type}.      */
-specifier|public
 name|String
 name|getFieldNameFor
 parameter_list|(
@@ -79,13 +78,11 @@ name|propertyType
 parameter_list|)
 function_decl|;
 comment|/**      * Provide the field name for indexing / searching paths      *      * @return a<code>String</code> representing the Solr field to be used for paths.      */
-specifier|public
 name|String
 name|getPathField
 parameter_list|()
 function_decl|;
 comment|/**      * Provide a field name to search over for the given {@link org.apache.jackrabbit.oak.spi.query.Filter.PathRestriction}      *      * @param pathRestriction the {@link org.apache.jackrabbit.oak.spi.query.Filter.PathRestriction} used for filtering search results      * @return the field name as a<code>String</code> to be used by Solr for the given restriction      */
-specifier|public
 name|String
 name|getFieldForPathRestriction
 parameter_list|(
@@ -96,7 +93,6 @@ name|pathRestriction
 parameter_list|)
 function_decl|;
 comment|/**      * Provide a field name to search over for the given {@link org.apache.jackrabbit.oak.spi.query.Filter.PropertyRestriction}      *      * @param propertyRestriction the {@link org.apache.jackrabbit.oak.spi.query.Filter.PropertyRestriction} used for filtering search results      * @return the field name as a<code>String</code> to be used by Solr for the given restriction      */
-specifier|public
 name|String
 name|getFieldForPropertyRestriction
 parameter_list|(
@@ -107,21 +103,33 @@ name|propertyRestriction
 parameter_list|)
 function_decl|;
 comment|/**      * Provide the commit policy to be used with the underlying Solr instance      *      * @return a {@link org.apache.jackrabbit.oak.plugins.index.solr.configuration.CommitPolicy}      */
-specifier|public
 name|CommitPolicy
 name|getCommitPolicy
 parameter_list|()
 function_decl|;
-comment|/**      * Provide a field name that is used as the default "catch all" field for searching over all the data      * @return a<code>String</code> representing the Solr field to be used as "catch all" field      */
-specifier|public
+comment|/**      * Provide a field name that is used as the default "catch all" field for searching over all the data      *      * @return a<code>String</code> representing the Solr field to be used as "catch all" field      */
 name|String
 name|getCatchAllField
 parameter_list|()
 function_decl|;
 comment|/**      * Provide the number of documents (rows) to be fetched for each Solr query      *      * @return an<code>int</code> for the setting of Solr rows parameter      */
-specifier|public
 name|int
 name|getRows
+parameter_list|()
+function_decl|;
+comment|/**      * Define if the Solr index should be used to address property restrictions      *      * @return<code>true</code> if {@link org.apache.jackrabbit.oak.plugins.index.solr.query.SolrQueryIndex} should be used      * for {@link org.apache.jackrabbit.oak.spi.query.Filter.PropertyRestriction}s      */
+name|boolean
+name|useForPropertyRestrictions
+parameter_list|()
+function_decl|;
+comment|/**      * Define if the Solr index should be used to filter by primary types      *      * @return<code>true</code> if {@link org.apache.jackrabbit.oak.plugins.index.solr.query.SolrQueryIndex} should be used      * for filtering by primary types      */
+name|boolean
+name|useForPrimaryTypes
+parameter_list|()
+function_decl|;
+comment|/**      * Define if the Solr index should be used to filter by path restrictions      *      * @return<code>true</code> if {@link org.apache.jackrabbit.oak.plugins.index.solr.query.SolrQueryIndex} should be used      * for filtering by {@link org.apache.jackrabbit.oak.spi.query.Filter.PathRestriction}s      */
+name|boolean
+name|useForPathRestrictions
 parameter_list|()
 function_decl|;
 block|}

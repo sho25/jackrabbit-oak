@@ -693,6 +693,11 @@ argument_list|()
 decl_stmt|;
 name|builder
 operator|.
+name|child
+argument_list|(
+literal|"test"
+argument_list|)
+operator|.
 name|setProperty
 argument_list|(
 literal|"foo"
@@ -819,7 +824,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"/"
+literal|"/test"
 argument_list|,
 name|next
 operator|.
@@ -920,6 +925,11 @@ name|getNodeState
 argument_list|()
 decl_stmt|;
 name|builder
+operator|.
+name|child
+argument_list|(
+literal|"test"
+argument_list|)
 operator|.
 name|setProperty
 argument_list|(
@@ -1116,7 +1126,7 @@ name|paths
 operator|.
 name|remove
 argument_list|(
-literal|"/"
+literal|"/test"
 argument_list|)
 argument_list|)
 expr_stmt|;
