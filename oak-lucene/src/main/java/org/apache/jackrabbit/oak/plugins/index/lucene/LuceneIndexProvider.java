@@ -213,8 +213,8 @@ operator|new
 name|IndexTracker
 argument_list|()
 decl_stmt|;
-comment|/**      * TODO how to inject this in an OSGi friendly way?      */
 specifier|protected
+specifier|volatile
 name|Analyzer
 name|analyzer
 init|=
@@ -223,6 +223,7 @@ operator|.
 name|ANALYZER
 decl_stmt|;
 specifier|protected
+specifier|volatile
 name|NodeAggregator
 name|aggregator
 init|=
