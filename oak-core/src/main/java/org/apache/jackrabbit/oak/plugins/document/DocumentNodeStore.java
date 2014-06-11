@@ -6561,7 +6561,13 @@ name|String
 name|checkpoint
 parameter_list|)
 block|{
-comment|// TODO
+name|checkpoints
+operator|.
+name|release
+argument_list|(
+name|checkpoint
+argument_list|)
+expr_stmt|;
 block|}
 comment|//------------------------< RevisionContext>-------------------------------
 annotation|@
