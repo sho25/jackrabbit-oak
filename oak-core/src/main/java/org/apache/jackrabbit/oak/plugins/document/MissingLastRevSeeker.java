@@ -403,6 +403,17 @@ argument_list|,
 literal|null
 argument_list|)
 expr_stmt|;
+name|update
+operator|.
+name|set
+argument_list|(
+name|ClusterNodeInfo
+operator|.
+name|STATE
+argument_list|,
+literal|null
+argument_list|)
+expr_stmt|;
 name|store
 operator|.
 name|createOrUpdate
