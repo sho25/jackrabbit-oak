@@ -1501,7 +1501,9 @@ return|return
 operator|new
 name|CommitFailedException
 argument_list|(
-literal|"Constraint"
+name|CommitFailedException
+operator|.
+name|CONSTRAINT
 argument_list|,
 name|code
 argument_list|,
