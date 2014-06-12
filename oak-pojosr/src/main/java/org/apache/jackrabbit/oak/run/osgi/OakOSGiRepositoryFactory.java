@@ -189,20 +189,6 @@ name|google
 operator|.
 name|common
 operator|.
-name|base
-operator|.
-name|Preconditions
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
 name|collect
 operator|.
 name|Lists
@@ -528,9 +514,6 @@ argument_list|(
 name|parameters
 argument_list|)
 expr_stmt|;
-comment|//TODO With OSGi Whiteboard we need to provide support for handling
-comment|//execution and JMX support as so far they were provided by Sling bundles
-comment|//in OSGi env
 name|PojoServiceRegistry
 name|registry
 init|=
@@ -552,6 +535,15 @@ operator|.
 name|create
 argument_list|()
 decl_stmt|;
+operator|new
+name|RunnableJobTracker
+argument_list|(
+name|registry
+operator|.
+name|getBundleContext
+argument_list|()
+argument_list|)
+expr_stmt|;
 comment|//Start the tracker for repository creation
 operator|new
 name|RepositoryTracker
@@ -1213,6 +1205,11 @@ class|class
 name|RepositoryTracker
 extends|extends
 name|ServiceTracker
+argument_list|<
+name|Repository
+argument_list|,
+name|Repository
+argument_list|>
 block|{
 specifier|private
 specifier|final
@@ -1282,19 +1279,22 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|Object
+name|Repository
 name|addingService
 parameter_list|(
 name|ServiceReference
+argument_list|<
+name|Repository
+argument_list|>
 name|reference
 parameter_list|)
 block|{
-name|Object
+name|Repository
 name|service
 init|=
-name|super
+name|context
 operator|.
-name|addingService
+name|getService
 argument_list|(
 name|reference
 argument_list|)
@@ -1315,9 +1315,6 @@ name|set
 argument_list|(
 name|createProxy
 argument_list|(
-operator|(
-name|Repository
-operator|)
 name|service
 argument_list|)
 argument_list|)
@@ -1336,7 +1333,7 @@ parameter_list|(
 name|ServiceReference
 name|reference
 parameter_list|,
-name|Object
+name|Repository
 name|service
 parameter_list|)
 block|{
@@ -1496,8 +1493,6 @@ operator|=
 name|initialService
 expr_stmt|;
 block|}
-name|Preconditions
-operator|.
 name|checkNotNull
 argument_list|(
 name|obj
