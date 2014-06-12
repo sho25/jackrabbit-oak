@@ -2106,7 +2106,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-comment|/**          * Get the seen-at revision from the revision range.          *<p>          *<ul>          *<li>          *         {@code null} if the revision is older than the earliest range          *</li>          *<li>          *         if the revision is newer than the lower bound of the newest          *         range, then {@link #NEWEST} is returned for a local cluster          *         revision and {@link #FUTURE} for a foreign cluster revision.          *</li>          *<li>          *         if the revision matches the lower seen-at bound of a range,          *         then this seen-at revision is returned.          *</li>          *<li>          *         otherwise the lower bound seen-at revision of next higher          *         range is returned.          *</li>          *</ul>          *          * @param r the revision          * @return the seen-at revision or {@code null} if the revision is older          *          than the earliest range.          */
+comment|/**          * Get the seen-at revision from the revision range.          *<p>          *<ul>          *<li>          *         {@code null} if the revision is older than the earliest range          *         and the revision timestamp is less than or equal the time          *         of the last {@link #purge(long)} (see also          *         {@link #oldestTimestamp}).          *</li>          *<li>          *         if the revision is newer than the lower bound of the newest          *         range, then {@link #NEWEST} is returned for a local cluster          *         revision and {@link #FUTURE} for a foreign cluster revision.          *</li>          *<li>          *         if the revision matches the lower seen-at bound of a range,          *         then this seen-at revision is returned.          *</li>          *<li>          *         otherwise the lower bound seen-at revision of next higher          *         range is returned.          *</li>          *</ul>          *          * Below is a graph for a revision comparison example as seen from one          * cluster node with some known revision ranges. Revision ranges less          * than or equal r2-0-0 have been purged and there are known ranges for          * cluster node 1 (this cluster node) and cluster node 2 (some other          * cluster node).          *<pre>          *     View from cluster node 1:          *          *                purge    r3-0-1    r5-0-2    r7-0-1          *                  ˅         ˅         ˅         ˅          *     ---+---------+---------+---------+---------+---------          *     r1-0-0    r2-0-0    r3-0-0    r4-0-0    r5-0-0          *          *            ^          *         r1-0-1 -> null (1)          *          *                      ^          *                   r4-0-2 -> r4-0-0 (2)          *          *                            ^          *                         r3-0-1 -> r3-0-0 (3)          *          *                                           ^          *                                        r6-0-2 -> FUTURE (4)          *          *                                                       ^          *                                                    r9-0-1 -> NEWEST (5)          *</pre>          *<ol>          *<li>older than earliest range and purge time</li>          *<li>seen-at of next higher range</li>          *<li>seen-at of matching lower bound of range</li>          *<li>foreign revision is newer than most recent range</li>          *<li>local revision is newer than most recent range</li>          *</ol>          * This gives the following revision ordering:          *<pre>          * r1-0-1< r3-0-1< r-4-0-2< r9-0-1< r6-0-2          *</pre>          *          * @param r the revision          * @return the seen-at revision or {@code null} if the revision is older          *          than the earliest range and purge time.          */
 name|Revision
 name|getRevisionSeen
 parameter_list|(
@@ -2175,6 +2175,11 @@ block|}
 comment|// search from latest backward
 comment|// (binary search could be used, but we expect most queries
 comment|// at the end of the list)
+name|RevisionRange
+name|range
+init|=
+literal|null
+decl_stmt|;
 for|for
 control|(
 name|int
@@ -2195,16 +2200,15 @@ name|i
 operator|--
 control|)
 block|{
-name|RevisionRange
 name|range
-init|=
+operator|=
 name|list
 operator|.
 name|get
 argument_list|(
 name|i
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 name|int
 name|compare
 init|=
@@ -2266,10 +2270,13 @@ return|return
 name|NEWEST
 return|;
 block|}
+else|else
+block|{
 comment|// happens in the future (not visible yet)
 return|return
 name|FUTURE
 return|;
+block|}
 block|}
 else|else
 block|{
@@ -2288,6 +2295,28 @@ name|seenAt
 return|;
 block|}
 block|}
+block|}
+if|if
+condition|(
+name|range
+operator|!=
+literal|null
+operator|&&
+name|r
+operator|.
+name|getTimestamp
+argument_list|()
+operator|>
+name|oldestTimestamp
+condition|)
+block|{
+comment|// revision is older than earliest range and after purge
+comment|// timestamp. return seen-at revision of earliest range.
+return|return
+name|range
+operator|.
+name|seenAt
+return|;
 block|}
 return|return
 literal|null
