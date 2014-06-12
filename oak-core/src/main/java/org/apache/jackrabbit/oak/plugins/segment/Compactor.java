@@ -535,14 +535,17 @@ name|getNodeState
 argument_list|()
 expr_stmt|;
 block|}
-return|return
-operator|new
-name|CompactionMap
-argument_list|(
 name|compactor
 operator|.
-name|compacted
-argument_list|)
+name|map
+operator|.
+name|compress
+argument_list|()
+expr_stmt|;
+return|return
+name|compactor
+operator|.
+name|map
 return|;
 block|}
 comment|/**      * Locks down the RecordId persistence structure      */
@@ -588,19 +591,15 @@ specifier|final
 name|SegmentWriter
 name|writer
 decl_stmt|;
-comment|/**      * Map from the identifiers of old records to the identifiers of their      * compacted copies. Used to prevent the compaction code from duplicating      * things like checkpoints that share most of their content with other      * subtrees.      */
 specifier|private
-specifier|final
-name|Map
-argument_list|<
-name|RecordId
-argument_list|,
-name|RecordId
-argument_list|>
-name|compacted
+name|CompactionMap
+name|map
 init|=
-name|newHashMap
-argument_list|()
+operator|new
+name|CompactionMap
+argument_list|(
+literal|100000
+argument_list|)
 decl_stmt|;
 comment|/**      * Map from {@link #getBlobKey(Blob) blob keys} to matching compacted      * blob record identifiers. Used to de-duplicate copies of the same      * binary values.      */
 specifier|private
@@ -756,7 +755,7 @@ expr_stmt|;
 name|RecordId
 name|compactedId
 init|=
-name|compacted
+name|map
 operator|.
 name|get
 argument_list|(
@@ -826,10 +825,10 @@ name|child
 operator|.
 name|getChildNodeCount
 argument_list|(
-literal|1
+literal|2
 argument_list|)
 operator|>
-literal|0
+literal|1
 condition|)
 block|{
 name|RecordId
@@ -848,7 +847,7 @@ operator|.
 name|getRecordId
 argument_list|()
 decl_stmt|;
-name|compacted
+name|map
 operator|.
 name|put
 argument_list|(
@@ -905,7 +904,7 @@ expr_stmt|;
 name|RecordId
 name|compactedId
 init|=
-name|compacted
+name|map
 operator|.
 name|get
 argument_list|(
@@ -975,10 +974,10 @@ name|child
 operator|.
 name|getChildNodeCount
 argument_list|(
-literal|1
+literal|2
 argument_list|)
 operator|>
-literal|0
+literal|1
 condition|)
 block|{
 name|RecordId
@@ -997,7 +996,7 @@ operator|.
 name|getRecordId
 argument_list|()
 decl_stmt|;
-name|compacted
+name|map
 operator|.
 name|put
 argument_list|(
@@ -1219,7 +1218,7 @@ decl_stmt|;
 name|RecordId
 name|compactedId
 init|=
-name|compacted
+name|map
 operator|.
 name|get
 argument_list|(
@@ -1312,7 +1311,7 @@ argument_list|(
 name|writer
 argument_list|)
 expr_stmt|;
-name|compacted
+name|map
 operator|.
 name|put
 argument_list|(
