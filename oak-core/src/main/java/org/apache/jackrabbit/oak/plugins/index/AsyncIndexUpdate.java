@@ -1368,6 +1368,13 @@ expr_stmt|;
 block|}
 else|else
 block|{
+if|if
+condition|(
+name|refCheckpoint
+operator|!=
+literal|null
+condition|)
+block|{
 name|log
 operator|.
 name|debug
@@ -1386,6 +1393,7 @@ argument_list|(
 name|refCheckpoint
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 if|if
 condition|(
