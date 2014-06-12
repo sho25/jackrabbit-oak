@@ -223,7 +223,7 @@ name|DEFAULT_GROUP_PATH
 init|=
 literal|"/rep:security/rep:authorizables/rep:groups"
 decl_stmt|;
-comment|/**      * Parameter used to change the number of levels that are used by default      * store authorizable nodes.<br>The default number of levels is 2.      */
+comment|/**      * Parameter used to change the number of levels that are used by default to      * store authorizable nodes.<br>The default number of levels is 2.      */
 name|String
 name|PARAM_DEFAULT_DEPTH
 init|=
