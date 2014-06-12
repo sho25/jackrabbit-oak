@@ -529,7 +529,7 @@ name|description
 operator|=
 literal|"Property specifying whether or not a LoginModule is REQUIRED, REQUISITE, SUFFICIENT or "
 operator|+
-literal|"OPTIONAL.Refer to the JAAS configuration documentation for more details around the meaning of "
+literal|"OPTIONAL. Refer to the JAAS configuration documentation for more details around the meaning of "
 operator|+
 literal|"these flags."
 argument_list|)
