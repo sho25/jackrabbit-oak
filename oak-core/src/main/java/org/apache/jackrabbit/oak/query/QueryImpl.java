@@ -4630,6 +4630,10 @@ name|bestCost
 operator|=
 name|cost
 expr_stmt|;
+name|bestPlan
+operator|=
+literal|null
+expr_stmt|;
 name|bestIndex
 operator|=
 name|traversal
