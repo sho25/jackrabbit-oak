@@ -834,13 +834,6 @@ argument_list|(
 literal|false
 argument_list|)
 decl_stmt|;
-comment|/**      * The number of new files created at which a compaction should be      * triggered.      */
-specifier|private
-name|int
-name|compactThreshold
-init|=
-literal|10
-decl_stmt|;
 comment|/**      * List of old tar file generations that are waiting to be removed.      */
 specifier|private
 specifier|final
@@ -2306,6 +2299,13 @@ operator|.
 name|nanoTime
 argument_list|()
 decl_stmt|;
+comment|// Suggest to the JVM that now would be a good time
+comment|// to clear stale weak references in the SegmentTracker
+name|System
+operator|.
+name|gc
+argument_list|()
+expr_stmt|;
 name|Set
 argument_list|<
 name|UUID
@@ -3406,23 +3406,6 @@ argument_list|(
 name|writeFile
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|writeNumber
-operator|%
-name|compactThreshold
-operator|==
-literal|0
-condition|)
-block|{
-name|compactNeeded
-operator|.
-name|set
-argument_list|(
-literal|true
-argument_list|)
-expr_stmt|;
-block|}
 block|}
 block|}
 catch|catch
@@ -3499,11 +3482,6 @@ name|void
 name|gc
 parameter_list|()
 block|{
-name|System
-operator|.
-name|gc
-argument_list|()
-expr_stmt|;
 name|compactNeeded
 operator|.
 name|set
