@@ -1695,39 +1695,6 @@ return|;
 block|}
 else|else
 block|{
-operator|new
-name|Exception
-argument_list|(
-name|checkpoint
-operator|+
-literal|" - "
-operator|+
-name|async
-operator|.
-name|getString
-argument_list|(
-name|name
-argument_list|)
-operator|+
-literal|" / "
-operator|+
-name|lease
-operator|+
-literal|" - "
-operator|+
-name|async
-operator|.
-name|getLong
-argument_list|(
-name|name
-operator|+
-literal|"-lease"
-argument_list|)
-argument_list|)
-operator|.
-name|printStackTrace
-argument_list|()
-expr_stmt|;
 throw|throw
 name|CONCURRENT_UPDATE
 throw|;
