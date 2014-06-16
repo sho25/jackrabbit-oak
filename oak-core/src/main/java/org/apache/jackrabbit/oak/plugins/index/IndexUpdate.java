@@ -678,7 +678,7 @@ name|parent
 operator|.
 name|builder
 operator|.
-name|child
+name|getChildNode
 argument_list|(
 name|checkNotNull
 argument_list|(
