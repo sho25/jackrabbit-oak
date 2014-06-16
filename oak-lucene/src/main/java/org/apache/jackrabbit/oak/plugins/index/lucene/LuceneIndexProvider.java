@@ -379,6 +379,14 @@ return|return
 name|this
 return|;
 block|}
+name|IndexTracker
+name|getTracker
+parameter_list|()
+block|{
+return|return
+name|tracker
+return|;
+block|}
 block|}
 end_class
 

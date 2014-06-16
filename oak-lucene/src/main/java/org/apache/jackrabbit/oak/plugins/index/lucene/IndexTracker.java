@@ -291,6 +291,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Set
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -972,6 +982,20 @@ name|path
 argument_list|)
 return|;
 block|}
+block|}
+name|Set
+argument_list|<
+name|String
+argument_list|>
+name|getIndexNodePaths
+parameter_list|()
+block|{
+return|return
+name|indices
+operator|.
+name|keySet
+argument_list|()
+return|;
 block|}
 specifier|private
 specifier|synchronized
