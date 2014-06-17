@@ -431,6 +431,7 @@ return|return
 literal|null
 return|;
 block|}
+comment|/**      * Adds a new entry to the compaction map. Overwriting a previously      * added entry is not supported.      */
 name|void
 name|put
 parameter_list|(
@@ -441,6 +442,14 @@ name|RecordId
 name|after
 parameter_list|)
 block|{
+assert|assert
+name|get
+argument_list|(
+name|before
+argument_list|)
+operator|==
+literal|null
+assert|;
 name|recent
 operator|.
 name|put
