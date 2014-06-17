@@ -970,7 +970,7 @@ operator|)
 name|i
 return|;
 block|}
-comment|/**      * Unconditionally close a {@code Closeable}.      *<p/>      * Equivalent to {@link Closeable#close()}, except any exceptions will be ignored.      * This is typically used in finally blocks.      *      * @param closeable the object to close, may be null or already closed      */
+comment|/**      * Unconditionally close a {@code Closeable}.      *<p>      * Equivalent to {@link Closeable#close()}, except any exceptions will be ignored.      * This is typically used in finally blocks.      *      * @param closeable the object to close, may be null or already closed      */
 specifier|public
 specifier|static
 name|void
@@ -1005,7 +1005,7 @@ block|{
 comment|// ignore
 block|}
 block|}
-comment|/**      * Unconditionally close a {@code Socket}.      *<p/>      * Equivalent to {@link Socket#close()}, except any exceptions will be ignored.      * This is typically used in finally blocks.      *      * @param sock the Socket to close, may be null or already closed      */
+comment|/**      * Unconditionally close a {@code Socket}.      *<p>      * Equivalent to {@link Socket#close()}, except any exceptions will be ignored.      * This is typically used in finally blocks.      *      * @param sock the Socket to close, may be null or already closed      */
 specifier|public
 specifier|static
 name|void
@@ -1040,7 +1040,7 @@ comment|// ignored
 block|}
 block|}
 block|}
-comment|/**      * Copy bytes from an {@code InputStream} to an      * {@code OutputStream}.      *<p/>      * This method buffers the input internally, so there is no need to use a      * {@code BufferedInputStream}.      *      * @param input  the {@code InputStream} to read from      * @param output the {@code OutputStream} to write to      * @return the number of bytes copied      * @throws IOException if an I/O error occurs      */
+comment|/**      * Copy bytes from an {@code InputStream} to an      * {@code OutputStream}.      *<p>      * This method buffers the input internally, so there is no need to use a      * {@code BufferedInputStream}.      *      * @param input  the {@code InputStream} to read from      * @param output the {@code OutputStream} to write to      * @return the number of bytes copied      * @throws IOException if an I/O error occurs      */
 specifier|public
 specifier|static
 name|long

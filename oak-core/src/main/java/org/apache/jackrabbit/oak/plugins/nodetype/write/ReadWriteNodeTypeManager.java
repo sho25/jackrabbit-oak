@@ -305,7 +305,7 @@ name|ReadWriteNodeTypeManager
 extends|extends
 name|ReadOnlyNodeTypeManager
 block|{
-comment|/**      * Called by the methods {@link #registerNodeType(NodeTypeDefinition, boolean)},      * {@link #registerNodeTypes(NodeTypeDefinition[], boolean)},      * {@link #unregisterNodeType(String)} and {@link #unregisterNodeTypes(String[])}      * to acquire a fresh {@link Root} instance that can be used to persist the      * requested node type changes (and nothing else).      *<p/>      * This default implementation throws an {@link UnsupportedOperationException}.      *      * @return fresh {@link Root} instance.      */
+comment|/**      * Called by the methods {@link #registerNodeType(NodeTypeDefinition, boolean)},      * {@link #registerNodeTypes(NodeTypeDefinition[], boolean)},      * {@link #unregisterNodeType(String)} and {@link #unregisterNodeTypes(String[])}      * to acquire a fresh {@link Root} instance that can be used to persist the      * requested node type changes (and nothing else).      *<p>      * This default implementation throws an {@link UnsupportedOperationException}.      *      * @return fresh {@link Root} instance.      */
 annotation|@
 name|Nonnull
 specifier|protected

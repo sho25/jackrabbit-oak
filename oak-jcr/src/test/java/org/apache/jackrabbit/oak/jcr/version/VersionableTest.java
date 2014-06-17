@@ -372,7 +372,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Test from Jackrabbit: JCR-3635 (OAK-940)      *<p/>      * Tests the case when a node already has a manual set      * JcrConstants.JCR_FROZENUUID property and is versioned. The manual set      * frozenUuid will overwrite the one that is automatically assigned by the      * VersionManager, which should not happen      */
+comment|/**      * Test from Jackrabbit: JCR-3635 (OAK-940)      *<p>      * Tests the case when a node already has a manual set      * JcrConstants.JCR_FROZENUUID property and is versioned. The manual set      * frozenUuid will overwrite the one that is automatically assigned by the      * VersionManager, which should not happen      */
 specifier|public
 name|void
 name|testCopyFrozenUuidProperty

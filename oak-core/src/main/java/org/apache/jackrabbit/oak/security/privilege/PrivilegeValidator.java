@@ -813,7 +813,7 @@ return|return
 name|privilegesTree
 return|;
 block|}
-comment|/**      * Validation of the privilege definition including the following steps:      *<p/>      * - privilege bits must not collide with an existing privilege      * - next bits must have been adjusted in case of a non-aggregate privilege      * - all aggregates must have been registered before      * - no existing privilege defines the same aggregation      * - no cyclic aggregation      *      * @param definitionTree The new privilege definition tree to validate.      * @throws org.apache.jackrabbit.oak.api.CommitFailedException      *          If any of      *          the checks listed above fails.      */
+comment|/**      * Validation of the privilege definition including the following steps:      *<p>      * - privilege bits must not collide with an existing privilege      * - next bits must have been adjusted in case of a non-aggregate privilege      * - all aggregates must have been registered before      * - no existing privilege defines the same aggregation      * - no cyclic aggregation      *      * @param definitionTree The new privilege definition tree to validate.      * @throws org.apache.jackrabbit.oak.api.CommitFailedException      *          If any of      *          the checks listed above fails.      */
 specifier|private
 name|void
 name|validateDefinition

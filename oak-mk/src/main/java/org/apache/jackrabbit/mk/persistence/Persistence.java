@@ -186,7 +186,7 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
-comment|/**      * Return an array of ids, where the first is the head id (as stored      * with {@link #writeHead(Id)}) and the second is the highest commit      * id found or {@code null}.      *<p/>      * This method is not guaranteed to deliver "live" results, after      * something is written to the storage, so it should better be used      * once after initialization.       *       * @return array of ids      * @throws Exception if an error occurs      */
+comment|/**      * Return an array of ids, where the first is the head id (as stored      * with {@link #writeHead(Id)}) and the second is the highest commit      * id found or {@code null}.      *<p>      * This method is not guaranteed to deliver "live" results, after      * something is written to the storage, so it should better be used      * once after initialization.       *       * @return array of ids      * @throws Exception if an error occurs      */
 name|Id
 index|[]
 name|readIds

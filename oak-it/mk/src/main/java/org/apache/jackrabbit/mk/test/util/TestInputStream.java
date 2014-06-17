@@ -50,7 +50,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * An {@code InputStream} based on pseudo-random data useful for testing.  *<p/>  * Instances created with identical parameter values do produce identical byte  * sequences.  */
+comment|/**  * An {@code InputStream} based on pseudo-random data useful for testing.  *<p>  * Instances created with identical parameter values do produce identical byte  * sequences.  */
 end_comment
 
 begin_class

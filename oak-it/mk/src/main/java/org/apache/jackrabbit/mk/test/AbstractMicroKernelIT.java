@@ -480,7 +480,7 @@ literal|null
 expr_stmt|;
 block|}
 comment|//--------------------------------< utility methods for parsing json data>
-comment|/**      * Returns a {@code JSONParser} instance for parsing JSON format data.      * This method returns a cached instance.      *<p/>      * {@code JSONParser} instances are<i>not</i> thread-safe. Multi-threaded      * unit tests should therefore override this method and return a fresh      * instance on every invocation.      *      * @return a {@code JSONParser} instance      */
+comment|/**      * Returns a {@code JSONParser} instance for parsing JSON format data.      * This method returns a cached instance.      *<p>      * {@code JSONParser} instances are<i>not</i> thread-safe. Multi-threaded      * unit tests should therefore override this method and return a fresh      * instance on every invocation.      *      * @return a {@code JSONParser} instance      */
 specifier|protected
 specifier|synchronized
 name|JSONParser

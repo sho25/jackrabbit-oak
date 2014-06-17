@@ -78,7 +78,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * {@code ProtectedNodeImporter} provides means to import protected  * {@code Node}s and the subtree defined below such nodes.  *<p/>  * The import of a protected tree is started by the {@code Importer} by  * calling {@link #start(Tree)}. If the {@code ProtectedNodeImporter}  * is able to deal with that type of protected node, it is in charge of dealing  * with all subsequent child {@code NodeInfo}s present below the protected  * parent until {@link #end(Tree)} is called. The latter resets this importer  * and makes it available for another protected import.  */
+comment|/**  * {@code ProtectedNodeImporter} provides means to import protected  * {@code Node}s and the subtree defined below such nodes.  *<p>  * The import of a protected tree is started by the {@code Importer} by  * calling {@link #start(Tree)}. If the {@code ProtectedNodeImporter}  * is able to deal with that type of protected node, it is in charge of dealing  * with all subsequent child {@code NodeInfo}s present below the protected  * parent until {@link #end(Tree)} is called. The latter resets this importer  * and makes it available for another protected import.  */
 end_comment
 
 begin_interface
@@ -118,7 +118,7 @@ name|ConstraintViolationException
 throws|,
 name|RepositoryException
 function_decl|;
-comment|/**      * Informs this importer about a new {@code childInfo} and it's properties.      * If the importer is able to successfully import the given information      * this method returns silently. Otherwise      * {@code ConstraintViolationException} is thrown, in which case the      * whole import fails.<p/>      * In case this importer deals with multiple levels of nodes, it is in      * charge of maintaining the hierarchical structure (see also {#link endChildInfo()}.      *<p/>      * If {@link #start(Tree)} hasn't been called before, this method returns      * silently.      *      * @param childInfo      * @param propInfos      * @throws IllegalStateException If called in an illegal state.      * @throws javax.jcr.nodetype.ConstraintViolationException If the given      * infos contain invalid or incomplete data and therefore cannot be properly      * handled by this importer.      * @throws RepositoryException If another error occurs.      */
+comment|/**      * Informs this importer about a new {@code childInfo} and it's properties.      * If the importer is able to successfully import the given information      * this method returns silently. Otherwise      * {@code ConstraintViolationException} is thrown, in which case the      * whole import fails.<p/>      * In case this importer deals with multiple levels of nodes, it is in      * charge of maintaining the hierarchical structure (see also {#link endChildInfo()}.      *<p>      * If {@link #start(Tree)} hasn't been called before, this method returns      * silently.      *      * @param childInfo      * @param propInfos      * @throws IllegalStateException If called in an illegal state.      * @throws javax.jcr.nodetype.ConstraintViolationException If the given      * infos contain invalid or incomplete data and therefore cannot be properly      * handled by this importer.      * @throws RepositoryException If another error occurs.      */
 name|void
 name|startChildInfo
 parameter_list|(
@@ -142,7 +142,7 @@ name|ConstraintViolationException
 throws|,
 name|RepositoryException
 function_decl|;
-comment|/**      * Informs this importer about the end of a child info.      *<p/>      * If {@link #start(Tree)} hasn't been called before, this method returns      * silently.      *      * @throws IllegalStateException If end is called in an illegal state.      * @throws javax.jcr.nodetype.ConstraintViolationException If this method      * is called before all required child information has been imported.      * @throws RepositoryException If another error occurs.      */
+comment|/**      * Informs this importer about the end of a child info.      *<p>      * If {@link #start(Tree)} hasn't been called before, this method returns      * silently.      *      * @throws IllegalStateException If end is called in an illegal state.      * @throws javax.jcr.nodetype.ConstraintViolationException If this method      * is called before all required child information has been imported.      * @throws RepositoryException If another error occurs.      */
 name|void
 name|endChildInfo
 parameter_list|()

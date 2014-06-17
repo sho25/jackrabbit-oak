@@ -38,7 +38,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Initializer of a workspace and it's initial content. A module that needs  * to add content to a workspace can implement this interface.  *<p/>  * TODO: define if/how runtime configuration changes may affect the workspace content.  * TODO: review params of initialize()  */
+comment|/**  * Initializer of a workspace and it's initial content. A module that needs  * to add content to a workspace can implement this interface.  *<p>  * TODO: define if/how runtime configuration changes may affect the workspace content.  * TODO: review params of initialize()  */
 end_comment
 
 begin_interface

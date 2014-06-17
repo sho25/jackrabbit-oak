@@ -238,7 +238,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Default implementation of the {@link CallbackHandler} interface. It currently  * supports the following {@code Callback} implementations:  *<p/>  *<ul>  *<li>{@link CredentialsCallback}</li>  *<li>{@link NameCallback}</li>  *<li>{@link PasswordCallback}</li>  *<li>{@link RepositoryCallback}</li>  *</ul>  */
+comment|/**  * Default implementation of the {@link CallbackHandler} interface. It currently  * supports the following {@code Callback} implementations:  *<p>  *<ul>  *<li>{@link CredentialsCallback}</li>  *<li>{@link NameCallback}</li>  *<li>{@link PasswordCallback}</li>  *<li>{@link RepositoryCallback}</li>  *</ul>  */
 end_comment
 
 begin_class

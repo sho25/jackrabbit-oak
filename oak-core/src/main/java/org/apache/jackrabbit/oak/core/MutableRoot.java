@@ -1748,7 +1748,7 @@ argument_list|)
 return|;
 block|}
 comment|//---------------------------------------------------------< MoveRecord>---
-comment|/**      * Instances of this class record move operations which took place on this root.      * They form a singly linked list where each move instance points to the next one.      * The last entry in the list is always an empty slot to be filled in by calling      * {@code setMove()}. This fills the slot with the source and destination of the move      * and links this move to the next one which will be the new empty slot.      *<p/>      * Moves can be applied to {@code MutableTree} instances by calling {@code apply()},      * which will execute all moves in the list on the passed tree instance      */
+comment|/**      * Instances of this class record move operations which took place on this root.      * They form a singly linked list where each move instance points to the next one.      * The last entry in the list is always an empty slot to be filled in by calling      * {@code setMove()}. This fills the slot with the source and destination of the move      * and links this move to the next one which will be the new empty slot.      *<p>      * Moves can be applied to {@code MutableTree} instances by calling {@code apply()},      * which will execute all moves in the list on the passed tree instance      */
 class|class
 name|Move
 block|{

@@ -164,7 +164,7 @@ name|void
 name|unlockHead
 parameter_list|()
 function_decl|;
-comment|/**      * Store a new commit.      *<p/>      * Unlike {@code putHeadCommit(MutableCommit)}, this method      * does not affect the current head commit and therefore doesn't      * require a lock on the head.      *      * @param token put token      * @param commit commit      * @return new commit id      * @throws Exception if an error occurs      */
+comment|/**      * Store a new commit.      *<p>      * Unlike {@code putHeadCommit(MutableCommit)}, this method      * does not affect the current head commit and therefore doesn't      * require a lock on the head.      *      * @param token put token      * @param commit commit      * @return new commit id      * @throws Exception if an error occurs      */
 name|Id
 comment|/*id*/
 name|putCommit

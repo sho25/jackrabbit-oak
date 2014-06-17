@@ -678,7 +678,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * {@code DefaultSyncHandler} implements an sync handler that synchronizes users and groups from an external identity  * provider with the repository users.  *<p/>  * Please refer to {@link DefaultSyncConfig} for configuration options.  */
+comment|/**  * {@code DefaultSyncHandler} implements an sync handler that synchronizes users and groups from an external identity  * provider with the repository users.  *<p>  * Please refer to {@link DefaultSyncConfig} for configuration options.  */
 end_comment
 
 begin_class

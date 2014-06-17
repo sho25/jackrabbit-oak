@@ -72,7 +72,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Utility methods to parse a path.  *<p/>  * Each method validates the input, except if the system property  * {packageName}.SKIP_VALIDATION is set, in which case only minimal validation  * takes place within this function, so when the parameter is an illegal path,  * the the result of this method is undefined.  */
+comment|/**  * Utility methods to parse a path.  *<p>  * Each method validates the input, except if the system property  * {packageName}.SKIP_VALIDATION is set, in which case only minimal validation  * takes place within this function, so when the parameter is an illegal path,  * the the result of this method is undefined.  */
 end_comment
 
 begin_class
@@ -261,7 +261,7 @@ literal|1
 argument_list|)
 return|;
 block|}
-comment|/**      * Get the nth ancestor of a path. The 1st ancestor is the parent path,      * 2nd ancestor the grandparent path, and so on...      *<p/>      * If nth<= 0, the path argument is returned as is.      *      * @param path the path      * @param nth  indicates the ancestor level for which the path should be      *             calculated.      * @return the ancestor path      */
+comment|/**      * Get the nth ancestor of a path. The 1st ancestor is the parent path,      * 2nd ancestor the grandparent path, and so on...      *<p>      * If nth<= 0, the path argument is returned as is.      *      * @param path the path      * @param nth  indicates the ancestor level for which the path should be      *             calculated.      * @return the ancestor path      */
 annotation|@
 name|Nonnull
 specifier|public

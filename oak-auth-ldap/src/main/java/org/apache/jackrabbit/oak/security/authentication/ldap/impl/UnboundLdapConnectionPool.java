@@ -58,7 +58,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A pool implementation for LdapConnection objects.  *<p/>  * This class is just a wrapper around the commons GenericObjectPool, and has  * a more meaningful name to represent the pool type.  */
+comment|/**  * A pool implementation for LdapConnection objects.  *<p>  * This class is just a wrapper around the commons GenericObjectPool, and has  * a more meaningful name to represent the pool type.  */
 end_comment
 
 begin_class

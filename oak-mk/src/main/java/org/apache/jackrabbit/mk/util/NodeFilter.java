@@ -56,7 +56,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A {@code NodeFilter} represents a filter on property and/or node names specified  * in JSON format. It allows to specify glob patterns for names of nodes and/or  * properties to be included or excluded.  *<p/>  * Example:  *<pre>  * {  *   "nodes": [ "foo*", "-foo1" ],  *   "properties": [ "*", "-:childNodeCount" ]  * }  *</pre>  *  * @see NameFilter  * @see org.apache.jackrabbit.mk.api.MicroKernel#getNodes(String, String, int, long, int, String)  */
+comment|/**  * A {@code NodeFilter} represents a filter on property and/or node names specified  * in JSON format. It allows to specify glob patterns for names of nodes and/or  * properties to be included or excluded.  *<p>  * Example:  *<pre>  * {  *   "nodes": [ "foo*", "-foo1" ],  *   "properties": [ "*", "-:childNodeCount" ]  * }  *</pre>  *  * @see NameFilter  * @see org.apache.jackrabbit.mk.api.MicroKernel#getNodes(String, String, int, long, int, String)  */
 end_comment
 
 begin_class

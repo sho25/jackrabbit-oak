@@ -114,7 +114,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * An {@link OakSolrConfiguration} specified via a given {@link org.apache.jackrabbit.oak.spi.state.NodeState}.  * For each of the supported properties a default is provided if either the  * property doesn't exist in the node or if the value is<code>null</code> or  * empty<code>String</code>.  *<p/>  * Subclasses of this should at least provide the {@link org.apache.jackrabbit.oak.spi.state.NodeState} which holds  * the configuration.  */
+comment|/**  * An {@link OakSolrConfiguration} specified via a given {@link org.apache.jackrabbit.oak.spi.state.NodeState}.  * For each of the supported properties a default is provided if either the  * property doesn't exist in the node or if the value is<code>null</code> or  * empty<code>String</code>.  *<p>  * Subclasses of this should at least provide the {@link org.apache.jackrabbit.oak.spi.state.NodeState} which holds  * the configuration.  */
 end_comment
 
 begin_class

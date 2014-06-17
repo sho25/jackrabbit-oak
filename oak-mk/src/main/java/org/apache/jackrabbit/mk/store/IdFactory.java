@@ -37,7 +37,7 @@ specifier|abstract
 class|class
 name|IdFactory
 block|{
-comment|/**      * Creates a new id based on the specified serialized data.      *<p/>      * The general contract of {@code createContentId} is:      *<p/>      * {@code createId(data1).equals(createId(data2)) == Arrays.equals(data1, data2)}      *      * @param serialized serialized data      * @return raw node id as byte array      * @throws Exception if an error occurs      */
+comment|/**      * Creates a new id based on the specified serialized data.      *<p>      * The general contract of {@code createContentId} is:      *<p>      * {@code createId(data1).equals(createId(data2)) == Arrays.equals(data1, data2)}      *      * @param serialized serialized data      * @return raw node id as byte array      * @throws Exception if an error occurs      */
 specifier|public
 name|byte
 index|[]

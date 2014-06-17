@@ -62,7 +62,7 @@ name|String
 name|getChanges
 parameter_list|()
 function_decl|;
-comment|/**      * Returns {@code null} if this commit does not represent a branch.      *<p/>      * Otherwise, returns the id of the branch root commit      * (i.e. the<i>public</i> commit that this<i>private</i> branch is based upon).      *      *      * @return the id of the branch root commit or {@code null} if this commit      * does not represent a branch.      */
+comment|/**      * Returns {@code null} if this commit does not represent a branch.      *<p>      * Otherwise, returns the id of the branch root commit      * (i.e. the<i>public</i> commit that this<i>private</i> branch is based upon).      *      *      * @return the id of the branch root commit or {@code null} if this commit      * does not represent a branch.      */
 name|Id
 name|getBranchRootId
 parameter_list|()

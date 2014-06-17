@@ -918,7 +918,7 @@ name|decodedNameInfo
 return|;
 block|}
 comment|//-------------------------------------------------------< ContentHandler>
-comment|/**      * {@inheritDoc}      *<p/>      * See also {@link org.apache.jackrabbit.commons.xml.Exporter#exportProperties(Node)}      * regarding special handling of multi-valued properties on export.      */
+comment|/**      * {@inheritDoc}      *<p>      * See also {@link org.apache.jackrabbit.commons.xml.Exporter#exportProperties(Node)}      * regarding special handling of multi-valued properties on export.      */
 annotation|@
 name|Override
 specifier|public

@@ -44,7 +44,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Represents an internal identifier, uniquely identifying   * a {@link Node} or a {@link Commit}.  *<p/>  * This implementation aims at minimizing the in-memory footprint  * of an identifier instance. therefore it doesn't cache e.g. the hashCode  * or the string representation.  *<p/>  *<b>Important Note:</b><p/>  * An {@link Id} is considered immutable. The {@code byte[]}  * passed to {@link Id#Id(byte[])} must not be reused or modified, the same  * applies for the {@code byte[]} returned by {@link Id#getBytes()}.  */
+comment|/**  * Represents an internal identifier, uniquely identifying   * a {@link Node} or a {@link Commit}.  *<p>  * This implementation aims at minimizing the in-memory footprint  * of an identifier instance. therefore it doesn't cache e.g. the hashCode  * or the string representation.  *<p>  *<b>Important Note:</b><p/>  * An {@link Id} is considered immutable. The {@code byte[]}  * passed to {@link Id#Id(byte[])} must not be reused or modified, the same  * applies for the {@code byte[]} returned by {@link Id#getBytes()}.  */
 end_comment
 
 begin_class
@@ -64,7 +64,7 @@ name|byte
 index|[]
 name|raw
 decl_stmt|;
-comment|/**      * Creates a new instance based on the passed {@code byte[]}.      *<p/>      * The passed {@code byte[]} mus not be reused, it's assumed      * to be owned by the new {@code Id} instance.      *      * @param raw the byte representation      */
+comment|/**      * Creates a new instance based on the passed {@code byte[]}.      *<p>      * The passed {@code byte[]} mus not be reused, it's assumed      * to be owned by the new {@code Id} instance.      *      * @param raw the byte representation      */
 specifier|public
 name|Id
 parameter_list|(
@@ -81,7 +81,7 @@ operator|=
 name|raw
 expr_stmt|;
 block|}
-comment|/**      * Creates an {@code Id} instance from its      * string representation as returned by {@link #toString()}.      *<p/>      * The following condition holds true:      *<pre>      * Id someId = ...;      * assert(Id.fromString(someId.toString()).equals(someId));      *</pre>      *      * @param s a string representation of an {@code Id}      * @return an {@code Id} instance      * @throws IllegalArgumentException if {@code s} is not a valid string representation      */
+comment|/**      * Creates an {@code Id} instance from its      * string representation as returned by {@link #toString()}.      *<p>      * The following condition holds true:      *<pre>      * Id someId = ...;      * assert(Id.fromString(someId.toString()).equals(someId));      *</pre>      *      * @param s a string representation of an {@code Id}      * @return an {@code Id} instance      * @throws IllegalArgumentException if {@code s} is not a valid string representation      */
 specifier|public
 specifier|static
 name|Id
@@ -354,7 +354,7 @@ operator|.
 name|length
 return|;
 block|}
-comment|/**      * Returns the raw byte representation of this identifier.      *<p/>      * The returned {@code byte[]}<i>MUST NOT</i> be modified!      *      * @return the raw byte representation      */
+comment|/**      * Returns the raw byte representation of this identifier.      *<p>      * The returned {@code byte[]}<i>MUST NOT</i> be modified!      *      * @return the raw byte representation      */
 specifier|public
 name|byte
 index|[]

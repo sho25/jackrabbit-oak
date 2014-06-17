@@ -71,7 +71,7 @@ parameter_list|)
 throws|throws
 name|RepositoryException
 function_decl|;
-comment|/**      * Called to end the import of a node. This method is called after      * a {@link #startNode(NodeInfo, List)} call with the same node      * information and after all the possible child nodes have been      * imported with respective startNode/endNode calls.      *<p/>      * Just like XML elements, the startNode/endNode calls are guaranteed      * to be properly nested and complete.      *      * @param nodeInfo information about the node being imported      * @throws RepositoryException on a repository error      */
+comment|/**      * Called to end the import of a node. This method is called after      * a {@link #startNode(NodeInfo, List)} call with the same node      * information and after all the possible child nodes have been      * imported with respective startNode/endNode calls.      *<p>      * Just like XML elements, the startNode/endNode calls are guaranteed      * to be properly nested and complete.      *      * @param nodeInfo information about the node being imported      * @throws RepositoryException on a repository error      */
 name|void
 name|endNode
 parameter_list|(

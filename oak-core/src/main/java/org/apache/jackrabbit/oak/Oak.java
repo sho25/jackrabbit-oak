@@ -3068,7 +3068,7 @@ name|securityProvider
 argument_list|)
 return|;
 block|}
-comment|/**      * Creates a content repository with the given configuration      * and logs in to the default workspace with no credentials,      * returning the resulting content session.      *<p/>      * This method exists mostly as a convenience for one-off tests,      * as there's no way to create other sessions for accessing the      * same repository.      *<p/>      * There is typically no need to explicitly close the returned      * session unless the repository has explicitly been configured      * to reserve some resources until all sessions have been closed.      * The repository will be garbage collected once the session is no      * longer used.      *      * @return content session      */
+comment|/**      * Creates a content repository with the given configuration      * and logs in to the default workspace with no credentials,      * returning the resulting content session.      *<p>      * This method exists mostly as a convenience for one-off tests,      * as there's no way to create other sessions for accessing the      * same repository.      *<p>      * There is typically no need to explicitly close the returned      * session unless the repository has explicitly been configured      * to reserve some resources until all sessions have been closed.      * The repository will be garbage collected once the session is no      * longer used.      *      * @return content session      */
 specifier|public
 name|ContentSession
 name|createContentSession
@@ -3121,7 +3121,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**      * Creates a content repository with the given configuration      * and returns a {@link Root} instance after logging in to the      * default workspace with no credentials.      *<p/>      * This method exists mostly as a convenience for one-off tests, as      * the returned root is the only way to access the session or the      * repository.      *<p/>      * Note that since there is no way to close the underlying content      * session, this method should only be used when no components that      * require sessions to be closed have been configured. The repository      * and the session will be garbage collected once the root is no longer      * used.      *      * @return root instance      */
+comment|/**      * Creates a content repository with the given configuration      * and returns a {@link Root} instance after logging in to the      * default workspace with no credentials.      *<p>      * This method exists mostly as a convenience for one-off tests, as      * the returned root is the only way to access the session or the      * repository.      *<p>      * Note that since there is no way to close the underlying content      * session, this method should only be used when no components that      * require sessions to be closed have been configured. The repository      * and the session will be garbage collected once the root is no longer      * used.      *      * @return root instance      */
 specifier|public
 name|Root
 name|createRoot

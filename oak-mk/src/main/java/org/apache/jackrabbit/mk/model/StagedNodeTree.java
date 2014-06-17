@@ -349,7 +349,7 @@ name|token
 argument_list|)
 return|;
 block|}
-comment|/**      * Performs a three-way merge merging<i>our</i> tree (rooted at {@code ourRoot})      * and<i>their</i> tree (identified by {@code newBaseRevisionId}),      * using the common ancestor revision {@code commonAncestorRevisionId} as      * base reference.      *<p/>      *<I>This</I> instance will be initially reset to {@code newBaseRevisionId}, discarding      * all currently staged changes.      *      * @param ourRoot      * @param newBaseRevisionId      * @param commonAncestorRevisionId      * @param token      * @return {@code Id} of new root node      * @throws Exception      */
+comment|/**      * Performs a three-way merge merging<i>our</i> tree (rooted at {@code ourRoot})      * and<i>their</i> tree (identified by {@code newBaseRevisionId}),      * using the common ancestor revision {@code commonAncestorRevisionId} as      * base reference.      *<p>      *<I>This</I> instance will be initially reset to {@code newBaseRevisionId}, discarding      * all currently staged changes.      *      * @param ourRoot      * @param newBaseRevisionId      * @param commonAncestorRevisionId      * @param token      * @return {@code Id} of new root node      * @throws Exception      */
 specifier|public
 name|Id
 name|merge
@@ -563,7 +563,7 @@ name|nodePath
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Creates or updates the property named {@code propName} of the specified node.      *<p/>      * if {@code propValue == null} the specified property will be removed.      *      * @param nodePath node path      * @param propName property name      * @param propValue property value      * @throws NotFoundException if there's no node at {@code nodePath}      * @throws Exception if another error occurs      */
+comment|/**      * Creates or updates the property named {@code propName} of the specified node.      *<p>      * if {@code propValue == null} the specified property will be removed.      *      * @param nodePath node path      * @param propName property name      * @param propValue property value      * @throws NotFoundException if there's no node at {@code nodePath}      * @throws Exception if another error occurs      */
 specifier|public
 name|void
 name|setProperty
@@ -1057,7 +1057,7 @@ expr_stmt|;
 block|}
 block|}
 comment|//-------------------------------------------------------< implementation>
-comment|/**      * Returns a {@code StagedNode} representation of the specified node.      * If a {@code StagedNode} representation doesn't exist yet a new      * {@code StagedNode} instance will be returned if {@code createIfNotStaged == true},      * otherwise {@code null} will be returned.      *<p/>      * A {@code NotFoundException} will be thrown if there's no node at {@code path}.      *      * @param path              node path      * @param createIfNotStaged flag controlling whether a new {@code StagedNode}      *                          instance should be created on demand      * @return a {@code StagedNode} instance or {@code null} if there's no {@code StagedNode}      *         representation of the specified node and {@code createIfNotStaged == false}      * @throws NotFoundException if there's no child node with the given name      * @throws Exception         if another error occurs      */
+comment|/**      * Returns a {@code StagedNode} representation of the specified node.      * If a {@code StagedNode} representation doesn't exist yet a new      * {@code StagedNode} instance will be returned if {@code createIfNotStaged == true},      * otherwise {@code null} will be returned.      *<p>      * A {@code NotFoundException} will be thrown if there's no node at {@code path}.      *      * @param path              node path      * @param createIfNotStaged flag controlling whether a new {@code StagedNode}      *                          instance should be created on demand      * @return a {@code StagedNode} instance or {@code null} if there's no {@code StagedNode}      *         representation of the specified node and {@code createIfNotStaged == false}      * @throws NotFoundException if there's no child node with the given name      * @throws Exception         if another error occurs      */
 specifier|private
 name|StagedNode
 name|getStagedNode
@@ -2876,7 +2876,7 @@ name|store
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**          * Returns a {@code StagedNode} representation of the specified child node.          * If a {@code StagedNode} representation doesn't exist yet a new          * {@code StagedNode} instance will be returned if {@code createIfNotStaged == true},          * otherwise {@code null} will be returned.          *<p/>          * A {@code NotFoundException} will be thrown if there's no child node          * with the given name.          *          * @param name              child node name          * @param createIfNotStaged flag controlling whether a new {@code StagedNode}          *                          instance should be created on demand          * @return a {@code StagedNode} instance or {@code null} if there's no {@code StagedNode}          *         representation of the specified child node and {@code createIfNotStaged == false}          * @throws NotFoundException if there's no child node with the given name          * @throws Exception         if another error occurs          */
+comment|/**          * Returns a {@code StagedNode} representation of the specified child node.          * If a {@code StagedNode} representation doesn't exist yet a new          * {@code StagedNode} instance will be returned if {@code createIfNotStaged == true},          * otherwise {@code null} will be returned.          *<p>          * A {@code NotFoundException} will be thrown if there's no child node          * with the given name.          *          * @param name              child node name          * @param createIfNotStaged flag controlling whether a new {@code StagedNode}          *                          instance should be created on demand          * @return a {@code StagedNode} instance or {@code null} if there's no {@code StagedNode}          *         representation of the specified child node and {@code createIfNotStaged == false}          * @throws NotFoundException if there's no child node with the given name          * @throws Exception         if another error occurs          */
 name|StagedNode
 name|getStagedChildNode
 parameter_list|(
