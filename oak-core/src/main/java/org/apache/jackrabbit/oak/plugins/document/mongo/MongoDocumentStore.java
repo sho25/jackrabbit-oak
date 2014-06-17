@@ -4452,11 +4452,12 @@ return|;
 block|}
 annotation|@
 name|CheckForNull
-argument_list|<
+specifier|protected
+parameter_list|<
 name|T
 extends|extends
 name|Document
-argument_list|>
+parameter_list|>
 name|T
 name|convertFromDBObject
 parameter_list|(
