@@ -99,16 +99,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|HashSet
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|Map
 import|;
 end_import
@@ -122,16 +112,6 @@ operator|.
 name|Map
 operator|.
 name|Entry
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Set
 import|;
 end_import
 
@@ -1319,7 +1299,7 @@ operator|+
 name|path
 return|;
 block|}
-comment|/**      * Returns the parent id for given id if possible      *      *<p>It would return null in following cases      *<ul>      *<li>If id is from long path</li>      *<li>If id is for root path</li>      *</ul>      *</p>      * @param id id for which parent id needs to be determined      * @return parent id. null if parent id cannot be determined      */
+comment|/**      * Returns the parent id for given id if possible      *      *<p>It would return null in following cases      *<ul>      *<li>If id is from long path</li>      *<li>If id is for root path</li>      *<li>If id is for an invalid path</li>      *</ul>      *</p>      * @param id id for which parent id needs to be determined      * @return parent id. null if parent id cannot be determined      */
 annotation|@
 name|CheckForNull
 specifier|public
@@ -1355,6 +1335,21 @@ argument_list|(
 name|id
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+operator|!
+name|PathUtils
+operator|.
+name|isValid
+argument_list|(
+name|path
+argument_list|)
+condition|)
+block|{
+return|return
+literal|null
+return|;
+block|}
 if|if
 condition|(
 name|PathUtils

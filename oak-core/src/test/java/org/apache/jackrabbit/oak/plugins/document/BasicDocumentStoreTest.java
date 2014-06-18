@@ -1470,6 +1470,8 @@ comment|// create ten documents
 name|String
 name|base
 init|=
+literal|"2:/"
+operator|+
 name|this
 operator|.
 name|getClass
