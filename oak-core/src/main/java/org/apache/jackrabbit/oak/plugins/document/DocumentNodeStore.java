@@ -3238,6 +3238,7 @@ return|return
 name|children
 return|;
 block|}
+comment|/**      * Read the children of the given parent node state starting at the child      * node with {@code name}. The given {@code name} is exclusive and will not      * appear in the list of children. The returned children are sorted in      * ascending order.      *      * @param parent the parent node.      * @param name the name of the lower bound child node (exclusive) or      *              {@code null} if no lower bound is given.      * @param limit the maximum number of child nodes to return.      * @return the children of {@code parent}.      */
 name|DocumentNodeState
 operator|.
 name|Children
@@ -3253,9 +3254,6 @@ name|int
 name|limit
 parameter_list|)
 block|{
-comment|// TODO use offset, to avoid O(n^2) and running out of memory
-comment|// to do that, use the *name* of the last entry of the previous batch of children
-comment|// as the starting point
 name|String
 name|path
 init|=
@@ -3322,13 +3320,6 @@ init|;
 condition|;
 control|)
 block|{
-name|c
-operator|.
-name|children
-operator|.
-name|clear
-argument_list|()
-expr_stmt|;
 name|docs
 operator|=
 name|readChildDocs
@@ -3356,7 +3347,6 @@ block|{
 name|numReturned
 operator|++
 expr_stmt|;
-comment|// filter out deleted children
 name|String
 name|p
 init|=
@@ -3365,6 +3355,18 @@ operator|.
 name|getPath
 argument_list|()
 decl_stmt|;
+comment|// remember name of last returned document for
+comment|// potential next round of readChildDocs()
+name|name
+operator|=
+name|PathUtils
+operator|.
+name|getName
+argument_list|(
+name|p
+argument_list|)
+expr_stmt|;
+comment|// filter out deleted children
 name|DocumentNodeState
 name|child
 init|=
@@ -3451,30 +3453,6 @@ return|return
 name|c
 return|;
 block|}
-comment|// double rawLimit for next round
-name|rawLimit
-operator|=
-operator|(
-name|int
-operator|)
-name|Math
-operator|.
-name|min
-argument_list|(
-operator|(
-operator|(
-name|long
-operator|)
-name|rawLimit
-operator|)
-operator|*
-literal|2
-argument_list|,
-name|Integer
-operator|.
-name|MAX_VALUE
-argument_list|)
-expr_stmt|;
 block|}
 block|}
 comment|/**      * Returns the child documents at the given {@code path} and returns up to      * {@code limit} documents. The returned child documents are sorted in      * ascending child node name order. If a {@code name} is passed, the first      * child document returned is after the given name. That is, the name is the      * lower exclusive bound.      *      * @param path the path of the parent document.      * @param name the lower exclusive bound or {@code null}.      * @param limit the maximum number of child documents to return.      * @return the child documents.      */
