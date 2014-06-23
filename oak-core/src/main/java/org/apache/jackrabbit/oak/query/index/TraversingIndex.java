@@ -237,10 +237,17 @@ return|return
 literal|0
 return|;
 block|}
+comment|// worst case 100 million nodes
 name|double
 name|nodeCount
 init|=
-literal|10000000
+literal|100000000
+decl_stmt|;
+comment|// worst case 100 thousand children
+name|double
+name|nodeCountChildren
+init|=
+literal|100000
 decl_stmt|;
 comment|// if the path is from a join, then the depth is not correct
 comment|// (the path might be the root node), but that's OK
@@ -291,8 +298,6 @@ name|path
 argument_list|)
 condition|)
 block|{
-for|for
-control|(
 name|int
 name|depth
 init|=
@@ -302,19 +307,43 @@ name|getDepth
 argument_list|(
 name|path
 argument_list|)
-init|;
+decl_stmt|;
+for|for
+control|(
+name|int
+name|i
+init|=
 name|depth
+init|;
+name|i
 operator|>
 literal|0
 condition|;
-name|depth
+name|i
 operator|--
 control|)
 block|{
-comment|// estimate 10 child nodes per node
+comment|// estimate 10 child nodes per node,
+comment|// but higher than the cost for DIRECT_CHILDREN
+comment|// (about 100'000)
+comment|// in any case, the higher the depth of the path,
+comment|// the lower the cost
 name|nodeCount
-operator|/=
+operator|=
+name|Math
+operator|.
+name|max
+argument_list|(
+name|nodeCountChildren
+operator|*
+literal|2
+operator|-
+name|depth
+argument_list|,
+name|nodeCount
+operator|/
 literal|10
+argument_list|)
 expr_stmt|;
 block|}
 block|}
@@ -353,10 +382,12 @@ break|break;
 case|case
 name|DIRECT_CHILDREN
 case|:
-comment|// we expect 1 million child nodes in the worst case
+comment|// estimate 100'000 children for now,
+comment|// to ensure an index is used if there is one
+comment|// TODO we need to have better estimates, see also OAK-1898
 name|nodeCount
 operator|=
-literal|1000000
+name|nodeCountChildren
 expr_stmt|;
 break|break;
 default|default:
