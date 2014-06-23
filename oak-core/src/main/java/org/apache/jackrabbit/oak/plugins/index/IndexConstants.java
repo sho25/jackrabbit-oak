@@ -73,6 +73,11 @@ name|ENTRY_COUNT_PROPERTY_NAME
 init|=
 literal|"entryCount"
 decl_stmt|;
+name|String
+name|KEY_COUNT_PROPERTY_NAME
+init|=
+literal|"keyCount"
+decl_stmt|;
 comment|/**      * Marks a unique property index.      */
 name|String
 name|UNIQUE_PROPERTY_NAME

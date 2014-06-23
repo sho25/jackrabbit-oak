@@ -583,6 +583,24 @@ operator|.
 name|remove
 argument_list|()
 expr_stmt|;
+comment|// remove "entryCount", so the node type index cost is not fixed
+name|root
+operator|.
+name|getChildNode
+argument_list|(
+literal|"oak:index"
+argument_list|)
+operator|.
+name|getChildNode
+argument_list|(
+literal|"nodetype"
+argument_list|)
+operator|.
+name|removeProperty
+argument_list|(
+literal|"entryCount"
+argument_list|)
+expr_stmt|;
 name|addFolder
 argument_list|(
 name|root
