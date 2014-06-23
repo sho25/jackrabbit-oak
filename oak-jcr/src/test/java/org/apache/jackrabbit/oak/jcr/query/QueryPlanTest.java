@@ -427,17 +427,7 @@ operator|.
 name|getString
 argument_list|()
 decl_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"plan: "
-operator|+
-name|plan
-argument_list|)
-expr_stmt|;
+comment|// System.out.println("plan: " + plan);
 comment|// should not use the index on "jcr:uuid"
 name|assertEquals
 argument_list|(
@@ -615,17 +605,7 @@ operator|.
 name|getString
 argument_list|()
 decl_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"plan: "
-operator|+
-name|plan
-argument_list|)
-expr_stmt|;
+comment|// System.out.println("plan: " + plan);
 comment|// should not use the index on "jcr:uuid"
 name|assertEquals
 argument_list|(
