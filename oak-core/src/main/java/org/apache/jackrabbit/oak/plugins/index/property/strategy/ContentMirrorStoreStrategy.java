@@ -957,11 +957,19 @@ operator|.
 name|getEstimatedCount
 argument_list|()
 expr_stmt|;
+if|if
+condition|(
+name|count
+operator|>=
+name|max
+condition|)
+block|{
 comment|// "is not null" queries typically read more data
 name|count
 operator|*=
 literal|10
 expr_stmt|;
+block|}
 block|}
 else|else
 block|{
