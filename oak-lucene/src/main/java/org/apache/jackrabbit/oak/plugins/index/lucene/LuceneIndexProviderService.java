@@ -43,6 +43,16 @@ end_import
 
 begin_import
 import|import
+name|javax
+operator|.
+name|management
+operator|.
+name|NotCompliantMBeanException
+import|;
+end_import
+
+begin_import
+import|import
 name|com
 operator|.
 name|google
@@ -482,6 +492,8 @@ name|?
 argument_list|>
 name|config
 parameter_list|)
+throws|throws
+name|NotCompliantMBeanException
 block|{
 name|indexProvider
 operator|=
