@@ -1041,6 +1041,8 @@ operator|.
 name|LONG
 argument_list|)
 decl_stmt|;
+comment|// assume 10000 entries per key, so that this index is used
+comment|// instead of traversal, but not instead of a regular property index
 name|long
 name|keyCount
 init|=
