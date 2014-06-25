@@ -23,6 +23,16 @@ name|java
 operator|.
 name|io
 operator|.
+name|Closeable
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
 name|IOException
 import|;
 end_import
@@ -1131,6 +1141,8 @@ class|class
 name|ContentRepositoryImpl
 implements|implements
 name|ContentRepository
+implements|,
+name|Closeable
 block|{
 specifier|private
 specifier|final
@@ -1404,6 +1416,15 @@ return|return
 name|descriptors
 return|;
 block|}
+annotation|@
+name|Override
+specifier|public
+name|void
+name|close
+parameter_list|()
+throws|throws
+name|IOException
+block|{      }
 annotation|@
 name|SuppressWarnings
 argument_list|(
