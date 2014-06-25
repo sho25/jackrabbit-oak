@@ -454,6 +454,10 @@ block|,
 name|DocumentStoreFixture
 operator|.
 name|RDB_MYSQL
+block|,
+name|DocumentStoreFixture
+operator|.
+name|RDB_ORACLE
 block|}
 decl_stmt|;
 for|for
