@@ -97,6 +97,16 @@ name|java
 operator|.
 name|sql
 operator|.
+name|ResultSetMetaData
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|sql
+operator|.
 name|SQLException
 import|;
 end_import
@@ -1361,15 +1371,15 @@ specifier|private
 name|DataSource
 name|ds
 decl_stmt|;
-comment|// string length at which we switch to BLOB storage
+comment|// capacity of DATA column
+comment|// we assume six octets per Java character as worst case for now
 specifier|private
-specifier|static
 name|int
-name|DATALIMIT
+name|datalimit
 init|=
 literal|16384
 operator|/
-literal|4
+literal|6
 decl_stmt|;
 comment|// number of retries for updates
 specifier|private
@@ -1577,7 +1587,7 @@ name|con
 operator|.
 name|prepareStatement
 argument_list|(
-literal|"select ID from "
+literal|"select DATA from "
 operator|+
 name|tableName
 operator|+
@@ -1593,11 +1603,45 @@ argument_list|,
 literal|"0:/"
 argument_list|)
 expr_stmt|;
+name|ResultSet
+name|rs
+init|=
 name|stmt
 operator|.
 name|executeQuery
 argument_list|()
+decl_stmt|;
+if|if
+condition|(
+literal|"NODES"
+operator|.
+name|equals
+argument_list|(
+name|tableName
+argument_list|)
+condition|)
+block|{
+comment|// try to discover size of DATA column
+name|ResultSetMetaData
+name|met
+init|=
+name|rs
+operator|.
+name|getMetaData
+argument_list|()
+decl_stmt|;
+name|datalimit
+operator|=
+name|met
+operator|.
+name|getPrecision
+argument_list|(
+literal|1
+argument_list|)
+operator|/
+literal|6
 expr_stmt|;
+block|}
 block|}
 catch|catch
 parameter_list|(
@@ -1736,7 +1780,7 @@ literal|"create table "
 operator|+
 name|tableName
 operator|+
-literal|" (ID varchar(767) not null primary key, MODIFIED number, HASBINARY number, MODCOUNT number, DSIZE number, DATA varchar(4000), BDATA blob)"
+literal|" (ID varchar(1000) not null primary key, MODIFIED number, HASBINARY number, MODCOUNT number, DSIZE number, DATA varchar(4000), BDATA blob)"
 argument_list|)
 expr_stmt|;
 block|}
@@ -5179,7 +5223,7 @@ operator|.
 name|length
 argument_list|()
 operator|<
-name|DATALIMIT
+name|datalimit
 condition|)
 block|{
 name|stmt
@@ -5455,7 +5499,7 @@ operator|.
 name|length
 argument_list|()
 operator|<
-name|DATALIMIT
+name|datalimit
 condition|)
 block|{
 name|stmt
@@ -5498,7 +5542,9 @@ name|substring
 argument_list|(
 literal|0
 argument_list|,
-literal|1023
+name|datalimit
+operator|-
+literal|20
 argument_list|)
 argument_list|)
 expr_stmt|;
