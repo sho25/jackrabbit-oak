@@ -3049,7 +3049,7 @@ argument_list|()
 operator|.
 name|defaultsTo
 argument_list|(
-literal|"localhost"
+literal|"127.0.0.1"
 argument_list|)
 decl_stmt|;
 name|OptionSpec
