@@ -3367,13 +3367,6 @@ name|BLOCK_SIZE
 expr_stmt|;
 if|if
 condition|(
-name|graph
-operator|!=
-literal|null
-condition|)
-block|{
-if|if
-condition|(
 name|count
 operator|==
 literal|0
@@ -3397,13 +3390,19 @@ operator|*
 literal|3
 operator|/
 literal|4
+operator|&&
+name|graph
+operator|!=
+literal|null
 condition|)
 block|{
-comment|// the space savings are not worth it at less than 25%
+comment|// the space savings are not worth it at less than 25%,
+comment|// unless this tar file lacks a pre-compiled segment graph
+comment|// in which case we'll always generate a new tar file with
+comment|// the graph to speed up future garbage collection runs.
 return|return
 name|this
 return|;
-block|}
 block|}
 name|String
 name|name
