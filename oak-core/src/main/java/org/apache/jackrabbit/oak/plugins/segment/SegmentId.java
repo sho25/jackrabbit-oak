@@ -119,6 +119,7 @@ specifier|volatile
 name|Segment
 name|segment
 decl_stmt|;
+specifier|public
 name|SegmentId
 parameter_list|(
 name|SegmentTracker
@@ -159,6 +160,7 @@ operator|=
 name|segment
 expr_stmt|;
 block|}
+specifier|public
 name|SegmentId
 parameter_list|(
 name|SegmentTracker
