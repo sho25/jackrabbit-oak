@@ -195,6 +195,18 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|zip
+operator|.
+name|Checksum
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|annotation
