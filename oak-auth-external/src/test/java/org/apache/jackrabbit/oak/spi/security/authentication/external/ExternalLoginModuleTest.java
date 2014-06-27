@@ -47,16 +47,6 @@ begin_import
 import|import
 name|javax
 operator|.
-name|jcr
-operator|.
-name|Value
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
 name|security
 operator|.
 name|auth
@@ -170,16 +160,6 @@ operator|.
 name|junit
 operator|.
 name|Before
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
-name|Ignore
 import|;
 end_import
 
