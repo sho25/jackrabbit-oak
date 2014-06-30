@@ -515,16 +515,6 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Ignore
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
 name|Test
 import|;
 end_import
@@ -3397,8 +3387,6 @@ expr_stmt|;
 block|}
 comment|// OAK-1861
 annotation|@
-name|Ignore
-annotation|@
 name|Test
 specifier|public
 name|void
@@ -3573,16 +3561,6 @@ operator|.
 name|EMPTY
 argument_list|)
 expr_stmt|;
-name|builder
-operator|=
-name|ns
-operator|.
-name|getRoot
-argument_list|()
-operator|.
-name|builder
-argument_list|()
-expr_stmt|;
 comment|// now remove all except the last one
 for|for
 control|(
@@ -3600,6 +3578,16 @@ operator|++
 control|)
 block|{
 name|builder
+operator|=
+name|ns
+operator|.
+name|getRoot
+argument_list|()
+operator|.
+name|builder
+argument_list|()
+expr_stmt|;
+name|builder
 operator|.
 name|getChildNode
 argument_list|(
@@ -3611,7 +3599,6 @@ operator|.
 name|remove
 argument_list|()
 expr_stmt|;
-block|}
 name|ns
 operator|.
 name|merge
@@ -3627,6 +3614,7 @@ operator|.
 name|EMPTY
 argument_list|)
 expr_stmt|;
+block|}
 for|for
 control|(
 name|ChildNodeEntry
