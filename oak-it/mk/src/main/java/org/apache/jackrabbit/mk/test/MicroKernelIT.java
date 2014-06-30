@@ -211,9 +211,11 @@ name|apache
 operator|.
 name|jackrabbit
 operator|.
-name|mk
+name|oak
 operator|.
-name|util
+name|commons
+operator|.
+name|mk
 operator|.
 name|MicroKernelInputStream
 import|;
