@@ -501,7 +501,30 @@ literal|"create table "
 operator|+
 name|tableName
 operator|+
-literal|" (ID varchar(767) not null primary key, LEVEL int, LASTMOD bigint)"
+literal|" (ID varchar(767) not null primary key, LVL int, LASTMOD bigint)"
+argument_list|)
+expr_stmt|;
+block|}
+elseif|else
+if|if
+condition|(
+literal|"Oracle"
+operator|.
+name|equals
+argument_list|(
+name|dbtype
+argument_list|)
+condition|)
+block|{
+name|stmt
+operator|.
+name|execute
+argument_list|(
+literal|"create table "
+operator|+
+name|tableName
+operator|+
+literal|" (ID varchar(1000) not null primary key, LVL number, LASTMOD number)"
 argument_list|)
 expr_stmt|;
 block|}
@@ -515,7 +538,7 @@ literal|"create table "
 operator|+
 name|tableName
 operator|+
-literal|" (ID varchar(1000) not null primary key, LEVEL int, LASTMOD bigint)"
+literal|" (ID varchar(1000) not null primary key, LVL int, LASTMOD bigint)"
 argument_list|)
 expr_stmt|;
 block|}
@@ -914,7 +937,7 @@ name|con
 operator|.
 name|prepareStatement
 argument_list|(
-literal|"insert into datastore_meta(id, level, lastMod) values(?, ?, ?)"
+literal|"insert into datastore_meta(id, lvl, lastMod) values(?, ?, ?)"
 argument_list|)
 expr_stmt|;
 try|try
@@ -2017,7 +2040,7 @@ name|BATCHSIZE
 init|=
 literal|1024
 operator|*
-literal|256
+literal|64
 decl_stmt|;
 specifier|private
 name|List
@@ -2181,9 +2204,7 @@ name|query
 operator|.
 name|append
 argument_list|(
-literal|" order by id limit "
-operator|+
-name|BATCHSIZE
+literal|" order by id"
 argument_list|)
 expr_stmt|;
 name|Connection
@@ -2263,6 +2284,13 @@ name|lastId
 argument_list|)
 expr_stmt|;
 block|}
+name|prep
+operator|.
+name|setFetchSize
+argument_list|(
+name|BATCHSIZE
+argument_list|)
+expr_stmt|;
 name|ResultSet
 name|rs
 init|=
@@ -2324,6 +2352,15 @@ name|SQLException
 name|ex
 parameter_list|)
 block|{
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"error executing ID lookup"
+argument_list|,
+name|ex
+argument_list|)
+expr_stmt|;
 try|try
 block|{
 if|if

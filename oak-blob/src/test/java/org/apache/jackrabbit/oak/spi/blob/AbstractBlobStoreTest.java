@@ -2471,6 +2471,10 @@ expr_stmt|;
 block|}
 name|assertTrue
 argument_list|(
+literal|"unexpected ids in store: "
+operator|+
+name|ids
+argument_list|,
 name|ids
 operator|.
 name|isEmpty
