@@ -18,6 +18,18 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|java
+operator|.
+name|util
+operator|.
+name|Arrays
+operator|.
+name|asList
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -216,18 +228,6 @@ operator|.
 name|fixture
 operator|.
 name|RepositoryFixture
-import|;
-end_import
-
-begin_import
-import|import static
-name|java
-operator|.
-name|util
-operator|.
-name|Arrays
-operator|.
-name|asList
 import|;
 end_import
 
@@ -1053,15 +1053,6 @@ name|options
 argument_list|)
 argument_list|,
 name|cacheSize
-argument_list|)
-block|,
-name|OakRepositoryFixture
-operator|.
-name|getMemory
-argument_list|(
-name|cacheSize
-operator|*
-name|MB
 argument_list|)
 block|,
 name|OakRepositoryFixture

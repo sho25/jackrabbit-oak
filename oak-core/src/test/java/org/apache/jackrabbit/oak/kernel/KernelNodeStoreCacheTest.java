@@ -101,11 +101,15 @@ name|apache
 operator|.
 name|jackrabbit
 operator|.
-name|mk
+name|oak
 operator|.
-name|core
+name|plugins
 operator|.
-name|MicroKernelImpl
+name|document
+operator|.
+name|DocumentMK
+operator|.
+name|Builder
 import|;
 end_import
 
@@ -277,7 +281,10 @@ operator|new
 name|MicroKernelWrapper
 argument_list|(
 operator|new
-name|MicroKernelImpl
+name|Builder
+argument_list|()
+operator|.
+name|open
 argument_list|()
 argument_list|)
 expr_stmt|;
