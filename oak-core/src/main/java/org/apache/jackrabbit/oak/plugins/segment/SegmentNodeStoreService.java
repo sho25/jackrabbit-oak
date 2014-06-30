@@ -1038,6 +1038,15 @@ condition|(
 name|customBlobStore
 condition|)
 block|{
+name|log
+operator|.
+name|info
+argument_list|(
+literal|"Initializing SegmentNodeStore with BlobStore [{}]"
+argument_list|,
+name|blobStore
+argument_list|)
+expr_stmt|;
 name|store
 operator|=
 operator|new
@@ -1445,15 +1454,6 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
-name|log
-operator|.
-name|info
-argument_list|(
-literal|"Initializing SegmentNodeStore with BlobStore [{}]"
-argument_list|,
-name|blobStore
-argument_list|)
-expr_stmt|;
 name|this
 operator|.
 name|blobStore
