@@ -134,6 +134,7 @@ comment|/**  * Immutable, space-optimized mapping of compacted record identifier
 end_comment
 
 begin_class
+specifier|public
 class|class
 name|CompactionMap
 block|{

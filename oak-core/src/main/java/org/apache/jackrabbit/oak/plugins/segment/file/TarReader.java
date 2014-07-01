@@ -2573,6 +2573,17 @@ name|index
 argument_list|)
 expr_stmt|;
 block|}
+name|long
+name|size
+parameter_list|()
+block|{
+return|return
+name|file
+operator|.
+name|length
+argument_list|()
+return|;
+block|}
 name|Set
 argument_list|<
 name|UUID
