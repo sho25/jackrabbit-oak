@@ -2212,9 +2212,11 @@ name|base
 decl_stmt|;
 if|if
 condition|(
+name|that
+operator|.
 name|wasCompactedTo
 argument_list|(
-name|that
+name|this
 argument_list|)
 condition|)
 block|{
