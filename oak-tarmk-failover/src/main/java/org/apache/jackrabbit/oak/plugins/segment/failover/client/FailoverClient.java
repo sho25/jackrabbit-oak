@@ -540,10 +540,6 @@ operator|.
 name|pipeline
 argument_list|()
 decl_stmt|;
-comment|// p.addLast(new LoggingHandler(LogLevel.INFO));
-comment|// Enable stream compression
-comment|// p.addLast(ZlibCodecFactory.newZlibEncoder(ZlibWrapper.GZIP));
-comment|// p.addLast(ZlibCodecFactory.newZlibDecoder(ZlibWrapper.GZIP));
 comment|// WriteTimeoutHandler& ReadTimeoutHandler
 name|p
 operator|.
