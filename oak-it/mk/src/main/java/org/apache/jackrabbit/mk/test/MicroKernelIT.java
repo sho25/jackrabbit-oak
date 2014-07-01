@@ -9116,12 +9116,6 @@ expr_stmt|;
 block|}
 block|}
 annotation|@
-name|Ignore
-argument_list|(
-literal|"OAK-1931"
-argument_list|)
-comment|// FIXME OAK-1931
-annotation|@
 name|Test
 specifier|public
 name|void

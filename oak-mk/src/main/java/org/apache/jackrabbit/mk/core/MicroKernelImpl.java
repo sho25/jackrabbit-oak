@@ -3695,7 +3695,9 @@ throw|;
 block|}
 try|try
 block|{
-return|return
+name|int
+name|read
+init|=
 name|rep
 operator|.
 name|getBlobStore
@@ -3713,6 +3715,15 @@ name|off
 argument_list|,
 name|length
 argument_list|)
+decl_stmt|;
+return|return
+name|read
+operator|<
+literal|0
+condition|?
+literal|0
+else|:
+name|read
 return|;
 block|}
 catch|catch

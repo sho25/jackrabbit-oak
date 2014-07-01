@@ -229,12 +229,13 @@ decl_stmt|;
 if|if
 condition|(
 name|l
-operator|<
+operator|<=
 literal|0
 condition|)
 block|{
 return|return
-name|l
+operator|-
+literal|1
 return|;
 block|}
 name|pos

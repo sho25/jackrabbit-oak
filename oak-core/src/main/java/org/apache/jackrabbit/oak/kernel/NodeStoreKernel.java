@@ -3750,7 +3750,9 @@ argument_list|,
 name|pos
 argument_list|)
 expr_stmt|;
-return|return
+name|int
+name|read
+init|=
 name|stream
 operator|.
 name|read
@@ -3761,6 +3763,15 @@ name|off
 argument_list|,
 name|length
 argument_list|)
+decl_stmt|;
+return|return
+name|read
+operator|<
+literal|0
+condition|?
+literal|0
+else|:
+name|read
 return|;
 block|}
 finally|finally
