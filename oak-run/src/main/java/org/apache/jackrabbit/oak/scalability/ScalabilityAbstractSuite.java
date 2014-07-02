@@ -768,7 +768,20 @@ name|beforeSuite
 parameter_list|()
 throws|throws
 name|Exception
-block|{}
+block|{
+comment|// Start the profiler. Giving a chance to overriding classes to call it at a different stage
+if|if
+condition|(
+name|PROFILE
+condition|)
+block|{
+name|context
+operator|.
+name|startProfiler
+argument_list|()
+expr_stmt|;
+block|}
+block|}
 comment|/**      * Prepares this performance benchmark.      *       * @param repository the repository to use      * @param fixture credentials of a user with write access      * @throws Exception if the benchmark can not be prepared      */
 specifier|public
 name|void
@@ -830,17 +843,6 @@ expr_stmt|;
 name|beforeSuite
 argument_list|()
 expr_stmt|;
-if|if
-condition|(
-name|PROFILE
-condition|)
-block|{
-name|context
-operator|.
-name|startProfiler
-argument_list|()
-expr_stmt|;
-block|}
 block|}
 comment|/**      * Cleanup after the benchmarks are run.      *       * @throws Exception      */
 specifier|protected
@@ -1824,11 +1826,6 @@ name|void
 name|startProfiler
 parameter_list|()
 block|{
-if|if
-condition|(
-name|PROFILE
-condition|)
-block|{
 name|profiler
 operator|=
 operator|new
@@ -1838,7 +1835,6 @@ operator|.
 name|startCollecting
 argument_list|()
 expr_stmt|;
-block|}
 block|}
 specifier|public
 name|void

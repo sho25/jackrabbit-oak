@@ -179,7 +179,7 @@ operator|.
 name|CTX_FILE_NODE_TYPE_PROP
 argument_list|)
 operator|+
-literal|")[(@jcr:lastModified>= xs:dateTime('"
+literal|")[(jcr:content/@jcr:lastModified>= xs:dateTime('"
 operator|+
 name|timeframe
 operator|.

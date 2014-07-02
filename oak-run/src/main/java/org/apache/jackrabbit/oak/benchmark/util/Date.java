@@ -79,6 +79,16 @@ name|Random
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|TimeZone
+import|;
+end_import
+
 begin_comment
 comment|/**  * Enumerates some Calendar with math applied for easying tests  */
 end_comment
@@ -310,7 +320,9 @@ name|RND
 init|=
 operator|new
 name|Random
-argument_list|()
+argument_list|(
+literal|30
+argument_list|)
 decl_stmt|;
 comment|/**      * return a random Date      *       * @return      */
 specifier|public
@@ -338,12 +350,29 @@ name|String
 name|toISO_8601_2000
 parameter_list|()
 block|{
-return|return
+name|SimpleDateFormat
+name|format
+init|=
 operator|new
 name|SimpleDateFormat
 argument_list|(
 literal|"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
 argument_list|)
+decl_stmt|;
+name|format
+operator|.
+name|setTimeZone
+argument_list|(
+name|TimeZone
+operator|.
+name|getTimeZone
+argument_list|(
+literal|"GMT"
+argument_list|)
+argument_list|)
+expr_stmt|;
+return|return
+name|format
 operator|.
 name|format
 argument_list|(
