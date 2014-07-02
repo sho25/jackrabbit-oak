@@ -145,6 +145,22 @@ argument_list|<
 name|Segment
 argument_list|>
 block|{
+comment|/**      * A segment message is composed of:      *       *<pre>      *  - (4 bytes) the message length      *  - (1 byte ) a message type (not currently used)      *  - (8 bytes) segment id most significant bits      *  - (8 bytes) segment id least significant bits      *  - (8 bytes) checksum hash      *</pre>      */
+specifier|static
+name|int
+name|EXTRA_HEADERS_LEN
+init|=
+literal|29
+decl_stmt|;
+comment|/**      * the header size not including the length      */
+specifier|private
+name|int
+name|EXTRA_HEADERS_WO_SIZE
+init|=
+name|EXTRA_HEADERS_LEN
+operator|-
+literal|4
+decl_stmt|;
 annotation|@
 name|Override
 specifier|protected
@@ -233,7 +249,7 @@ name|segment
 operator|.
 name|length
 operator|+
-literal|25
+name|EXTRA_HEADERS_WO_SIZE
 decl_stmt|;
 name|out
 operator|.

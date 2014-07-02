@@ -24,6 +24,30 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|segment
+operator|.
+name|failover
+operator|.
+name|codec
+operator|.
+name|SegmentEncoder
+operator|.
+name|EXTRA_HEADERS_LEN
+import|;
+end_import
+
+begin_import
 import|import
 name|io
 operator|.
@@ -205,6 +229,19 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
+comment|/**      * the maximum possible size a header message might have      */
+specifier|private
+specifier|static
+specifier|final
+name|int
+name|MAX_LENGHT
+init|=
+name|Segment
+operator|.
+name|MAX_SEGMENT_SIZE
+operator|+
+name|EXTRA_HEADERS_LEN
+decl_stmt|;
 specifier|private
 specifier|final
 name|SegmentStore
@@ -219,11 +256,7 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
-name|Segment
-operator|.
-name|MAX_SEGMENT_SIZE
-operator|+
-literal|21
+name|MAX_LENGHT
 argument_list|,
 literal|0
 argument_list|,
