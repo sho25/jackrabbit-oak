@@ -490,8 +490,6 @@ name|b
 operator|.
 name|bind
 argument_list|(
-literal|"127.0.0.1"
-argument_list|,
 name|port
 argument_list|)
 operator|.
