@@ -283,9 +283,9 @@ name|RDBFixture
 argument_list|(
 literal|"RDB-Oracle"
 argument_list|,
-literal|"jdbc:oracle:thin:@//localhost:1521/XE"
+literal|"jdbc:oracle:thin:@localhost:1521:orcl"
 argument_list|,
-literal|"oak"
+literal|"system"
 argument_list|,
 literal|"geheim"
 argument_list|)
