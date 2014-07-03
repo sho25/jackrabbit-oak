@@ -417,16 +417,6 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Ignore
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
 name|Test
 import|;
 end_import
@@ -1124,11 +1114,6 @@ argument_list|)
 expr_stmt|;
 block|}
 annotation|@
-name|Ignore
-argument_list|(
-literal|"OAK-1794"
-argument_list|)
-annotation|@
 name|Test
 specifier|public
 name|void
@@ -1363,7 +1348,7 @@ name|assertEquals
 argument_list|(
 name|SplitDocType
 operator|.
-name|PROP_COMMIT_ONLY
+name|COMMIT_ROOT_ONLY
 argument_list|,
 name|previousDocTestFoo
 operator|.
@@ -1380,7 +1365,7 @@ name|assertEquals
 argument_list|(
 name|SplitDocType
 operator|.
-name|DEFAULT_NO_CHILD
+name|DEFAULT_LEAF
 argument_list|,
 name|previousDocTestFoo2
 operator|.
@@ -1476,11 +1461,6 @@ comment|//assertTrue(ImmutableList.copyOf(getDoc("/test2/foo").getAllPreviousDoc
 block|}
 comment|// OAK-1729
 annotation|@
-name|Ignore
-argument_list|(
-literal|"OAK-1794"
-argument_list|)
-annotation|@
 name|Test
 specifier|public
 name|void
@@ -1519,7 +1499,7 @@ name|builder
 argument_list|()
 decl_stmt|;
 comment|// adding the foo node will cause the commit root to be placed
-comment|// on the rood document, because the children flag is set on the
+comment|// on the root document, because the children flag is set on the
 comment|// root document
 name|b1
 operator|.
@@ -1592,8 +1572,6 @@ init|;
 name|i
 operator|<
 name|PREV_SPLIT_FACTOR
-operator|+
-literal|1
 condition|;
 name|i
 operator|++
@@ -1664,6 +1642,25 @@ name|runBackgroundOperations
 argument_list|()
 expr_stmt|;
 block|}
+comment|// trigger another split, now that we have 10 previous docs
+comment|// this will create an intermediate previous doc
+name|store
+operator|.
+name|addSplitCandidate
+argument_list|(
+name|Utils
+operator|.
+name|getIdFromPath
+argument_list|(
+literal|"/test"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|store
+operator|.
+name|runBackgroundOperations
+argument_list|()
+expr_stmt|;
 name|Map
 argument_list|<
 name|Revision
@@ -2196,8 +2193,15 @@ operator|.
 name|HOURS
 argument_list|)
 decl_stmt|;
-comment|// TODO: uncomment once OAK-1794 is fixed
-comment|// assertEquals(2, stats.splitDocGCCount);
+name|assertEquals
+argument_list|(
+literal|2
+argument_list|,
+name|stats
+operator|.
+name|splitDocGCCount
+argument_list|)
+expr_stmt|;
 name|NodeDocument
 name|doc
 init|=

@@ -35,7 +35,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|Collections
+name|EnumSet
 import|;
 end_import
 
@@ -207,6 +207,50 @@ name|LoggerFactory
 import|;
 end_import
 
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|document
+operator|.
+name|NodeDocument
+operator|.
+name|SplitDocType
+operator|.
+name|COMMIT_ROOT_ONLY
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|document
+operator|.
+name|NodeDocument
+operator|.
+name|SplitDocType
+operator|.
+name|DEFAULT_LEAF
+import|;
+end_import
+
 begin_class
 specifier|public
 class|class
@@ -235,7 +279,7 @@ name|getClass
 argument_list|()
 argument_list|)
 decl_stmt|;
-comment|/**      * Split document types which can be safely Garbage Collected      * OAK-1793: SplitDocType.DEFAULT_NO_CHILD and SplitDocType.PROP_COMMIT_ONLY      * have been removed, but should be added again when OAK-1794 is fixed.      */
+comment|/**      * Split document types which can be safely garbage collected      */
 specifier|private
 specifier|static
 specifier|final
@@ -247,10 +291,14 @@ name|SplitDocType
 argument_list|>
 name|GC_TYPES
 init|=
-name|Collections
+name|EnumSet
 operator|.
-name|emptySet
-argument_list|()
+name|of
+argument_list|(
+name|DEFAULT_LEAF
+argument_list|,
+name|COMMIT_ROOT_ONLY
+argument_list|)
 decl_stmt|;
 name|VersionGarbageCollector
 parameter_list|(
@@ -449,8 +497,13 @@ argument_list|,
 name|oldestRevTimeStamp
 argument_list|)
 expr_stmt|;
-comment|// FIXME: OAK-1793 and OAK-1794
-comment|// collectSplitDocuments(stats, oldestRevTimeStamp);
+name|collectSplitDocuments
+argument_list|(
+name|stats
+argument_list|,
+name|oldestRevTimeStamp
+argument_list|)
+expr_stmt|;
 name|sw
 operator|.
 name|stop
