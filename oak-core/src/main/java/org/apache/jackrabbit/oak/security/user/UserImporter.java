@@ -1481,6 +1481,11 @@ name|setPassword
 argument_list|(
 name|parent
 argument_list|,
+name|a
+operator|.
+name|getID
+argument_list|()
+argument_list|,
 name|pw
 argument_list|,
 literal|false

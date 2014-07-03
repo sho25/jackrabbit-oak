@@ -70,6 +70,11 @@ init|=
 literal|"rep:User"
 decl_stmt|;
 name|String
+name|NT_REP_PASSWORD
+init|=
+literal|"rep:Password"
+decl_stmt|;
+name|String
 name|NT_REP_GROUP
 init|=
 literal|"rep:Group"
@@ -112,6 +117,11 @@ init|=
 literal|"rep:password"
 decl_stmt|;
 name|String
+name|REP_PASSWORD_LAST_MODIFIED
+init|=
+literal|"rep:passwordLastModified"
+decl_stmt|;
+name|String
 name|REP_DISABLED
 init|=
 literal|"rep:disabled"
@@ -130,6 +140,11 @@ name|String
 name|REP_IMPERSONATORS
 init|=
 literal|"rep:impersonators"
+decl_stmt|;
+name|String
+name|REP_PWD
+init|=
+literal|"rep:pwd"
 decl_stmt|;
 name|Collection
 argument_list|<
@@ -198,6 +213,12 @@ name|String
 name|DEFAULT_ANONYMOUS_ID
 init|=
 literal|"anonymous"
+decl_stmt|;
+comment|/**      * Mandatory configuration option denoting the user {@link org.apache.jackrabbit.oak.spi.security.authentication.Authentication} implementation to use in the login module.      */
+name|String
+name|PARAM_USER_AUTHENTICATION_FACTORY
+init|=
+literal|"userAuthenticationFactory"
 decl_stmt|;
 comment|/**      * Configuration option to define the path underneath which user nodes      * are being created.      */
 name|String
@@ -270,6 +291,30 @@ name|String
 name|PARAM_SUPPORT_AUTOSAVE
 init|=
 literal|"supportAutoSave"
+decl_stmt|;
+comment|/**      * Optional configuration parameter indicating the maximum age in days a password may have      * before it expires. If the value specified is> 0, password expiry is implicitly enabled.      */
+name|String
+name|PARAM_PASSWORD_MAX_AGE
+init|=
+literal|"passwordMaxAge"
+decl_stmt|;
+comment|/**      * Default value for {@link #PARAM_PASSWORD_MAX_AGE}      */
+name|int
+name|DEFAULT_PASSWORD_MAX_AGE
+init|=
+literal|0
+decl_stmt|;
+comment|/**      * Optional configuration parameter indicating whether users must change their passwords      * on first login. If enabled, passwords are immediately expired upon user creation.      */
+name|String
+name|PARAM_PASSWORD_INITIAL_CHANGE
+init|=
+literal|"initialPasswordChange"
+decl_stmt|;
+comment|/**      * Default value for {@link #PARAM_PASSWORD_INITIAL_CHANGE}      */
+name|boolean
+name|DEFAULT_PASSWORD_INITIAL_CHANGE
+init|=
+literal|false
 decl_stmt|;
 block|}
 end_interface

@@ -21,6 +21,16 @@ name|authentication
 package|;
 end_package
 
+begin_import
+import|import
+name|javax
+operator|.
+name|jcr
+operator|.
+name|Credentials
+import|;
+end_import
+
 begin_comment
 comment|/**  * {@code PreAuthenticatedLogin} is used as marker in the shared map of the login context. it indicates that the  * respective user is pre authenticated on an external system. Note that is class is only used internally by the  * login modules and cannot be "abused" from outside.  */
 end_comment
@@ -31,6 +41,17 @@ specifier|public
 class|class
 name|PreAuthenticatedLogin
 block|{
+specifier|public
+specifier|static
+specifier|final
+name|Credentials
+name|PRE_AUTHENTICATED
+init|=
+operator|new
+name|Credentials
+argument_list|()
+block|{ }
+decl_stmt|;
 specifier|private
 specifier|final
 name|String
