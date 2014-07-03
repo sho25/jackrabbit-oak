@@ -430,7 +430,7 @@ name|FileStore
 argument_list|(
 name|src
 argument_list|,
-literal|256
+literal|8
 argument_list|,
 literal|false
 argument_list|)
@@ -510,7 +510,7 @@ name|FileStore
 argument_list|(
 name|src
 argument_list|,
-literal|256
+literal|8
 argument_list|,
 literal|false
 argument_list|)
@@ -641,7 +641,7 @@ name|FileStore
 argument_list|(
 name|destination
 argument_list|,
-literal|256
+literal|8
 argument_list|,
 literal|false
 argument_list|)
