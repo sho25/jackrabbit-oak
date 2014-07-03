@@ -2550,6 +2550,11 @@ argument_list|,
 name|before
 argument_list|)
 decl_stmt|;
+name|writer
+operator|.
+name|flush
+argument_list|()
+expr_stmt|;
 while|while
 condition|(
 operator|!
@@ -2585,6 +2590,11 @@ name|before
 operator|=
 name|head
 expr_stmt|;
+name|writer
+operator|.
+name|flush
+argument_list|()
+expr_stmt|;
 block|}
 name|tracker
 operator|.
@@ -2595,6 +2605,25 @@ operator|.
 name|getCompactionMap
 argument_list|()
 argument_list|)
+expr_stmt|;
+comment|// Drop the SegmentWriter caches and flush any existing state
+comment|// in an attempt to prevent new references to old pre-compacted
+comment|// content. TODO: There should be a cleaner way to do this.
+name|tracker
+operator|.
+name|getWriter
+argument_list|()
+operator|.
+name|dropCache
+argument_list|()
+expr_stmt|;
+name|tracker
+operator|.
+name|getWriter
+argument_list|()
+operator|.
+name|flush
+argument_list|()
 expr_stmt|;
 name|log
 operator|.
