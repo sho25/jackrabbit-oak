@@ -147,16 +147,6 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Ignore
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
 name|Test
 import|;
 end_import
@@ -259,12 +249,7 @@ name|UserConstants
 operator|.
 name|PARAM_PASSWORD_MAX_AGE
 argument_list|,
-name|Long
-operator|.
-name|valueOf
-argument_list|(
 literal|10
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -296,15 +281,9 @@ block|}
 comment|/**      * @since Oak 1.1      */
 annotation|@
 name|Test
-annotation|@
-name|Ignore
-argument_list|(
-literal|"OAK-1943"
-argument_list|)
-comment|// FIXME OAK-1943
 specifier|public
 name|void
-name|testImportUser
+name|testImportUserCreatesPasswordLastModified
 parameter_list|()
 throws|throws
 name|Exception
@@ -464,15 +443,9 @@ block|}
 comment|/**      * @since Oak 1.1      */
 annotation|@
 name|Test
-annotation|@
-name|Ignore
-argument_list|(
-literal|"OAK-1943"
-argument_list|)
-comment|// FIXME OAK-1943
 specifier|public
 name|void
-name|testImportUserWithCustomPwdProperties
+name|testImportUserWithPwdProperties
 parameter_list|()
 throws|throws
 name|Exception
