@@ -184,6 +184,19 @@ argument_list|,
 name|REP_IMPERSONATORS
 argument_list|)
 decl_stmt|;
+name|Collection
+argument_list|<
+name|String
+argument_list|>
+name|PWD_PROPERTY_NAMES
+init|=
+name|ImmutableSet
+operator|.
+name|of
+argument_list|(
+name|REP_PASSWORD_LAST_MODIFIED
+argument_list|)
+decl_stmt|;
 comment|/**      * Configuration option defining the ID of the administrator user.      */
 name|String
 name|PARAM_ADMIN_ID
