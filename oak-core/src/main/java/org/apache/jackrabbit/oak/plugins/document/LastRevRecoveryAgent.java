@@ -392,14 +392,6 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|long
-name|leaseEnd
-init|=
-name|nodeInfo
-operator|.
-name|getLeaseEndTime
-argument_list|()
-decl_stmt|;
 comment|// Check if _lastRev recovery needed for this cluster node
 comment|// state is Active&& recoveryLock not held by someone
 if|if
@@ -410,6 +402,14 @@ name|nodeInfo
 argument_list|)
 condition|)
 block|{
+name|long
+name|leaseEnd
+init|=
+name|nodeInfo
+operator|.
+name|getLeaseEndTime
+argument_list|()
+decl_stmt|;
 comment|// retrieve the root document's _lastRev
 name|NodeDocument
 name|root
