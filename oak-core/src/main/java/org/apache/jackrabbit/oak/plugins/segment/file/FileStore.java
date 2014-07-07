@@ -2297,6 +2297,7 @@ block|}
 block|}
 block|}
 block|}
+specifier|public
 specifier|synchronized
 name|void
 name|cleanup

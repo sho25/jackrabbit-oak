@@ -2032,12 +2032,7 @@ try|try
 block|{
 name|store
 operator|.
-name|gc
-argument_list|()
-expr_stmt|;
-name|store
-operator|.
-name|flush
+name|cleanup
 argument_list|()
 expr_stmt|;
 block|}

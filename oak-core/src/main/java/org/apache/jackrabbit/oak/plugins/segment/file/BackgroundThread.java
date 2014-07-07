@@ -39,7 +39,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|Calendar
+name|Date
 import|;
 end_import
 
@@ -185,9 +185,8 @@ name|name
 operator|+
 literal|", active since "
 operator|+
-name|Calendar
-operator|.
-name|getInstance
+operator|new
+name|Date
 argument_list|()
 operator|+
 literal|", previous max duration "
