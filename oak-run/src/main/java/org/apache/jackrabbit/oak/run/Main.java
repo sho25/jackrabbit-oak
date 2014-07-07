@@ -1505,7 +1505,7 @@ argument_list|)
 operator|.
 name|defaultsTo
 argument_list|(
-literal|1
+literal|0
 argument_list|)
 decl_stmt|;
 name|OptionSpec
