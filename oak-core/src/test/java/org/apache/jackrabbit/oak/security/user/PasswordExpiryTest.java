@@ -725,6 +725,11 @@ operator|>
 literal|0
 argument_list|)
 expr_stmt|;
+name|waitForSystemTimeIncrement
+argument_list|(
+name|oldModTime
+argument_list|)
+expr_stmt|;
 name|user
 operator|.
 name|changePassword
