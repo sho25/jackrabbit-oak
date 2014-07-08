@@ -228,7 +228,7 @@ name|double
 name|getCostPerEntry
 parameter_list|()
 function_decl|;
-comment|/**          * The estimated number of entries. This value does not have to be          * accurate.          *           * @return the estimated number of entries          */
+comment|/**          * The estimated number of entries in the cursor that is returned by the query method,          * when using this plan. This value does not have to be accurate.          *           * @return the estimated number of entries          */
 name|long
 name|getEstimatedEntryCount
 parameter_list|()
