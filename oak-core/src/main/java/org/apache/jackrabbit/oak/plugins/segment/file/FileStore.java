@@ -3393,14 +3393,6 @@ name|readers
 operator|=
 name|list
 expr_stmt|;
-comment|// trigger revision cleanup after next flush
-name|cleanupNeeded
-operator|.
-name|set
-argument_list|(
-literal|true
-argument_list|)
-expr_stmt|;
 name|writeNumber
 operator|++
 expr_stmt|;
