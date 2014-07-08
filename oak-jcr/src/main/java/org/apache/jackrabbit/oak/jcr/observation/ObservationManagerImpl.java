@@ -1313,9 +1313,11 @@ decl_stmt|;
 name|boolean
 name|noInternal
 init|=
-literal|false
+name|filter
+operator|.
+name|getNoInternal
+argument_list|()
 decl_stmt|;
-comment|// FIXME OAK-1618 filter.getNoInternal(); once JCR-3759 is resolved
 name|List
 argument_list|<
 name|String
