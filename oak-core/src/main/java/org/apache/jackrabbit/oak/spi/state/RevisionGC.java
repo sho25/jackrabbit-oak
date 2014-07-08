@@ -37,13 +37,19 @@ end_import
 
 begin_import
 import|import static
-name|java
+name|org
 operator|.
-name|lang
+name|apache
 operator|.
-name|System
+name|jackrabbit
 operator|.
-name|nanoTime
+name|oak
+operator|.
+name|management
+operator|.
+name|ManagementOperation
+operator|.
+name|done
 import|;
 end_import
 
@@ -61,7 +67,7 @@ name|management
 operator|.
 name|ManagementOperation
 operator|.
-name|done
+name|newManagementOperation
 import|;
 end_import
 
@@ -193,13 +199,16 @@ name|executor
 decl_stmt|;
 specifier|private
 name|ManagementOperation
+argument_list|<
+name|String
+argument_list|>
 name|gcOp
 init|=
 name|done
 argument_list|(
 name|OP_NAME
 argument_list|,
-literal|0
+literal|""
 argument_list|)
 decl_stmt|;
 comment|/**      * @param gc               Revision garbage collector      * @param executor         executor for running the garbage collection task      */
@@ -255,43 +264,33 @@ condition|)
 block|{
 name|gcOp
 operator|=
-operator|new
-name|ManagementOperation
+name|newManagementOperation
 argument_list|(
 name|OP_NAME
 argument_list|,
 operator|new
 name|Callable
 argument_list|<
-name|Long
+name|String
 argument_list|>
 argument_list|()
 block|{
 annotation|@
 name|Override
 specifier|public
-name|Long
+name|String
 name|call
 parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|long
-name|t0
-init|=
-name|nanoTime
-argument_list|()
-decl_stmt|;
 name|gc
 operator|.
 name|run
 argument_list|()
 expr_stmt|;
 return|return
-name|nanoTime
-argument_list|()
-operator|-
-name|t0
+literal|"Revision GC initiated"
 return|;
 block|}
 block|}
