@@ -141,22 +141,6 @@ name|apache
 operator|.
 name|jackrabbit
 operator|.
-name|mk
-operator|.
-name|api
-operator|.
-name|MicroKernelException
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
 name|oak
 operator|.
 name|commons
@@ -704,7 +688,7 @@ argument_list|)
 expr_stmt|;
 throw|throw
 operator|new
-name|MicroKernelException
+name|DocumentStoreException
 argument_list|(
 name|msg
 argument_list|)
@@ -743,14 +727,14 @@ name|isEmpty
 argument_list|()
 return|;
 block|}
-comment|/**      * Applies this commit to the store.      *      * @return the commit revision.      * @throws MicroKernelException if the commit cannot be applied.      *              TODO: use non-MK exception type      */
+comment|/**      * Applies this commit to the store.      *      * @return the commit revision.      * @throws DocumentStoreException if the commit cannot be applied.      */
 annotation|@
 name|Nonnull
 name|Revision
 name|apply
 parameter_list|()
 throws|throws
-name|MicroKernelException
+name|DocumentStoreException
 block|{
 name|boolean
 name|success
@@ -1684,7 +1668,7 @@ name|commitRoot
 decl_stmt|;
 throw|throw
 operator|new
-name|MicroKernelException
+name|DocumentStoreException
 argument_list|(
 name|msg
 argument_list|)
@@ -1737,7 +1721,7 @@ block|}
 block|}
 catch|catch
 parameter_list|(
-name|MicroKernelException
+name|DocumentStoreException
 name|e
 parameter_list|)
 block|{
@@ -2501,7 +2485,7 @@ argument_list|()
 expr_stmt|;
 throw|throw
 operator|new
-name|MicroKernelException
+name|DocumentStoreException
 argument_list|(
 name|conflictMessage
 argument_list|)

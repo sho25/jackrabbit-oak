@@ -155,22 +155,6 @@ name|apache
 operator|.
 name|jackrabbit
 operator|.
-name|mk
-operator|.
-name|api
-operator|.
-name|MicroKernelException
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
 name|oak
 operator|.
 name|plugins
@@ -214,6 +198,24 @@ operator|.
 name|document
 operator|.
 name|DocumentStore
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|document
+operator|.
+name|DocumentStoreException
 import|;
 end_import
 
@@ -887,8 +889,6 @@ parameter_list|,
 name|UpdateOp
 name|update
 parameter_list|)
-throws|throws
-name|MicroKernelException
 block|{
 return|return
 name|internalCreateOrUpdate
@@ -921,8 +921,6 @@ parameter_list|,
 name|UpdateOp
 name|update
 parameter_list|)
-throws|throws
-name|MicroKernelException
 block|{
 return|return
 name|internalCreateOrUpdate
@@ -1139,7 +1137,7 @@ condition|)
 block|{
 throw|throw
 operator|new
-name|MicroKernelException
+name|DocumentStoreException
 argument_list|(
 literal|"Document does not exist: "
 operator|+

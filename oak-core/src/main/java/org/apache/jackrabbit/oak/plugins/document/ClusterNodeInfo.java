@@ -135,22 +135,6 @@ name|apache
 operator|.
 name|jackrabbit
 operator|.
-name|mk
-operator|.
-name|api
-operator|.
-name|MicroKernelException
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
 name|oak
 operator|.
 name|commons
@@ -919,7 +903,7 @@ block|}
 block|}
 throw|throw
 operator|new
-name|MicroKernelException
+name|DocumentStoreException
 argument_list|(
 literal|"Could not get cluster node info"
 argument_list|)

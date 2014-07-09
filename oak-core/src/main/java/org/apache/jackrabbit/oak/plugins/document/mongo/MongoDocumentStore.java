@@ -271,22 +271,6 @@ name|apache
 operator|.
 name|jackrabbit
 operator|.
-name|mk
-operator|.
-name|api
-operator|.
-name|MicroKernelException
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
 name|oak
 operator|.
 name|cache
@@ -380,6 +364,24 @@ operator|.
 name|document
 operator|.
 name|DocumentMK
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|document
+operator|.
+name|DocumentStoreException
 import|;
 end_import
 
@@ -1982,6 +1984,9 @@ return|;
 block|}
 block|}
 block|}
+name|Throwable
+name|t
+decl_stmt|;
 try|try
 block|{
 name|TreeLock
@@ -2150,18 +2155,25 @@ name|ExecutionException
 name|e
 parameter_list|)
 block|{
+name|t
+operator|=
+name|e
+operator|.
+name|getCause
+argument_list|()
+expr_stmt|;
+block|}
 throw|throw
 operator|new
-name|IllegalStateException
+name|DocumentStoreException
 argument_list|(
 literal|"Failed to load document with "
 operator|+
 name|key
 argument_list|,
-name|e
+name|t
 argument_list|)
 throw|;
-block|}
 block|}
 annotation|@
 name|CheckForNull
@@ -2922,7 +2934,7 @@ condition|)
 block|{
 throw|throw
 operator|new
-name|MicroKernelException
+name|DocumentStoreException
 argument_list|(
 literal|"Remove failed: "
 operator|+
@@ -3048,7 +3060,7 @@ condition|)
 block|{
 throw|throw
 operator|new
-name|MicroKernelException
+name|DocumentStoreException
 argument_list|(
 literal|"Remove failed: "
 operator|+
@@ -3394,8 +3406,9 @@ name|e
 parameter_list|)
 block|{
 throw|throw
-operator|new
-name|MicroKernelException
+name|DocumentStoreException
+operator|.
+name|convert
 argument_list|(
 name|e
 argument_list|)
@@ -3440,7 +3453,7 @@ name|UpdateOp
 name|update
 parameter_list|)
 throws|throws
-name|MicroKernelException
+name|DocumentStoreException
 block|{
 name|log
 argument_list|(
@@ -3495,7 +3508,7 @@ name|UpdateOp
 name|update
 parameter_list|)
 throws|throws
-name|MicroKernelException
+name|DocumentStoreException
 block|{
 name|log
 argument_list|(
@@ -4125,7 +4138,7 @@ condition|)
 block|{
 throw|throw
 operator|new
-name|MicroKernelException
+name|DocumentStoreException
 argument_list|(
 literal|"Update failed: "
 operator|+
@@ -4245,8 +4258,9 @@ name|e
 parameter_list|)
 block|{
 throw|throw
-operator|new
-name|MicroKernelException
+name|DocumentStoreException
+operator|.
+name|convert
 argument_list|(
 name|e
 argument_list|)

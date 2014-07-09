@@ -149,22 +149,6 @@ name|apache
 operator|.
 name|jackrabbit
 operator|.
-name|mk
-operator|.
-name|api
-operator|.
-name|MicroKernelException
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
 name|oak
 operator|.
 name|commons
@@ -188,6 +172,24 @@ operator|.
 name|blob
 operator|.
 name|CachingBlobStore
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|document
+operator|.
+name|DocumentStoreException
 import|;
 end_import
 
@@ -258,7 +260,7 @@ parameter_list|)
 block|{
 throw|throw
 operator|new
-name|MicroKernelException
+name|DocumentStoreException
 argument_list|(
 literal|"initializing RDB blob store"
 argument_list|,
@@ -2417,7 +2419,7 @@ condition|)
 block|{
 throw|throw
 operator|new
-name|MicroKernelException
+name|DocumentStoreException
 argument_list|(
 literal|"This instance of the RDBBlobStore has already been closed."
 argument_list|)

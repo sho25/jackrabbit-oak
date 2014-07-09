@@ -155,11 +155,13 @@ name|apache
 operator|.
 name|jackrabbit
 operator|.
-name|mk
+name|oak
 operator|.
-name|api
+name|plugins
 operator|.
-name|MicroKernelException
+name|document
+operator|.
+name|DocumentStoreException
 import|;
 end_import
 
@@ -444,7 +446,7 @@ argument_list|)
 expr_stmt|;
 throw|throw
 operator|new
-name|MicroKernelException
+name|DocumentStoreException
 argument_list|(
 name|message
 argument_list|,

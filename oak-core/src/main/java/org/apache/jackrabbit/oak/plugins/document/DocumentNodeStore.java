@@ -509,22 +509,6 @@ name|apache
 operator|.
 name|jackrabbit
 operator|.
-name|mk
-operator|.
-name|api
-operator|.
-name|MicroKernelException
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
 name|oak
 operator|.
 name|api
@@ -3042,10 +3026,14 @@ name|e
 parameter_list|)
 block|{
 throw|throw
-operator|new
-name|MicroKernelException
+name|DocumentStoreException
+operator|.
+name|convert
 argument_list|(
 name|e
+operator|.
+name|getCause
+argument_list|()
 argument_list|)
 throw|;
 block|}
@@ -3072,7 +3060,7 @@ name|int
 name|limit
 parameter_list|)
 throws|throws
-name|MicroKernelException
+name|DocumentStoreException
 block|{
 if|if
 condition|(
@@ -3187,17 +3175,18 @@ name|e
 parameter_list|)
 block|{
 throw|throw
-operator|new
-name|MicroKernelException
+name|DocumentStoreException
+operator|.
+name|convert
 argument_list|(
-literal|"Error occurred while fetching children for path "
-operator|+
-name|path
-argument_list|,
 name|e
 operator|.
 name|getCause
 argument_list|()
+argument_list|,
+literal|"Error occurred while fetching children for path "
+operator|+
+name|path
 argument_list|)
 throw|;
 block|}
@@ -4083,7 +4072,7 @@ condition|)
 block|{
 throw|throw
 operator|new
-name|MicroKernelException
+name|DocumentStoreException
 argument_list|(
 literal|"DocumentNodeState is null for revision "
 operator|+
@@ -4702,7 +4691,7 @@ block|}
 block|}
 block|}
 block|}
-comment|/**      * Updates a commit root document.      *      * @param commit the updates to apply on the commit root document.      * @return the document before the update was applied or<code>null</code>      *          if the update failed because of a collision.      * @throws MicroKernelException if the update fails with an error.      */
+comment|/**      * Updates a commit root document.      *      * @param commit the updates to apply on the commit root document.      * @return the document before the update was applied or<code>null</code>      *          if the update failed because of a collision.      * @throws DocumentStoreException if the update fails with an error.      */
 annotation|@
 name|CheckForNull
 name|NodeDocument
@@ -4712,7 +4701,7 @@ name|UpdateOp
 name|commit
 parameter_list|)
 throws|throws
-name|MicroKernelException
+name|DocumentStoreException
 block|{
 comment|// use batch commit when there are only revision and modified updates
 comment|// and collision checks
@@ -4823,7 +4812,7 @@ name|UpdateOp
 name|commit
 parameter_list|)
 throws|throws
-name|MicroKernelException
+name|DocumentStoreException
 block|{
 try|try
 block|{
@@ -4846,59 +4835,15 @@ name|e
 parameter_list|)
 block|{
 throw|throw
-operator|new
-name|MicroKernelException
+name|DocumentStoreException
+operator|.
+name|convert
 argument_list|(
+name|e
+argument_list|,
 literal|"Interrupted while updating commit root document"
 argument_list|)
 throw|;
-block|}
-catch|catch
-parameter_list|(
-name|ExecutionException
-name|e
-parameter_list|)
-block|{
-if|if
-condition|(
-name|e
-operator|.
-name|getCause
-argument_list|()
-operator|instanceof
-name|MicroKernelException
-condition|)
-block|{
-throw|throw
-operator|(
-name|MicroKernelException
-operator|)
-name|e
-operator|.
-name|getCause
-argument_list|()
-throw|;
-block|}
-else|else
-block|{
-name|String
-name|msg
-init|=
-literal|"Update of commit root document failed"
-decl_stmt|;
-throw|throw
-operator|new
-name|MicroKernelException
-argument_list|(
-name|msg
-argument_list|,
-name|e
-operator|.
-name|getCause
-argument_list|()
-argument_list|)
-throw|;
-block|}
 block|}
 catch|catch
 parameter_list|(
@@ -4906,37 +4851,16 @@ name|Exception
 name|e
 parameter_list|)
 block|{
-if|if
-condition|(
-name|e
-operator|instanceof
-name|MicroKernelException
-condition|)
-block|{
 throw|throw
-operator|(
-name|MicroKernelException
-operator|)
-name|e
-throw|;
-block|}
-else|else
-block|{
-name|String
-name|msg
-init|=
-literal|"Update of commit root document failed"
-decl_stmt|;
-throw|throw
-operator|new
-name|MicroKernelException
+name|DocumentStoreException
+operator|.
+name|convert
 argument_list|(
-name|msg
-argument_list|,
 name|e
+argument_list|,
+literal|"Update of commit root document failed"
 argument_list|)
 throw|;
-block|}
 block|}
 block|}
 comment|/**      * Returns the root node state at the given revision.      *      * @param revision a revision.      * @return the root node state at the given revision.      */
@@ -5173,7 +5097,7 @@ condition|)
 block|{
 throw|throw
 operator|new
-name|MicroKernelException
+name|DocumentStoreException
 argument_list|(
 literal|"Empty branch cannot be reset"
 argument_list|)
@@ -5198,7 +5122,7 @@ condition|)
 block|{
 throw|throw
 operator|new
-name|MicroKernelException
+name|DocumentStoreException
 argument_list|(
 name|branchHead
 operator|+
@@ -5221,7 +5145,7 @@ condition|)
 block|{
 throw|throw
 operator|new
-name|MicroKernelException
+name|DocumentStoreException
 argument_list|(
 name|ancestor
 operator|+
@@ -5953,7 +5877,7 @@ name|String
 name|path
 parameter_list|)
 throws|throws
-name|MicroKernelException
+name|DocumentStoreException
 block|{
 if|if
 condition|(
@@ -6051,7 +5975,7 @@ argument_list|)
 decl_stmt|;
 throw|throw
 operator|new
-name|MicroKernelException
+name|DocumentStoreException
 argument_list|(
 name|msg
 argument_list|)
@@ -7368,7 +7292,7 @@ name|DocumentNodeState
 name|to
 parameter_list|)
 throws|throws
-name|MicroKernelException
+name|DocumentStoreException
 block|{
 name|JsopWriter
 name|w

@@ -37,22 +37,6 @@ name|apache
 operator|.
 name|jackrabbit
 operator|.
-name|mk
-operator|.
-name|api
-operator|.
-name|MicroKernelException
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
 name|oak
 operator|.
 name|plugins
@@ -223,7 +207,7 @@ name|context
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Marks the collision in the document store. Either our or their      * revision is annotated with a collision marker. Their revision is      * marked if it is not yet committed, otherwise our revision is marked.      *      * @param store the document store.      * @return the revision that was marked. Either our or their.      * @throws MicroKernelException if the mark operation fails.      */
+comment|/**      * Marks the collision in the document store. Either our or their      * revision is annotated with a collision marker. Their revision is      * marked if it is not yet committed, otherwise our revision is marked.      *      * @param store the document store.      * @return the revision that was marked. Either our or their.      * @throws DocumentStoreException if the mark operation fails.      */
 annotation|@
 name|Nonnull
 name|Revision
@@ -233,7 +217,7 @@ name|DocumentStore
 name|store
 parameter_list|)
 throws|throws
-name|MicroKernelException
+name|DocumentStoreException
 block|{
 comment|// first try to mark their revision
 if|if
@@ -543,11 +527,11 @@ name|Document
 name|document
 parameter_list|)
 throws|throws
-name|MicroKernelException
+name|DocumentStoreException
 block|{
 throw|throw
 operator|new
-name|MicroKernelException
+name|DocumentStoreException
 argument_list|(
 literal|"No commit root for revision: "
 operator|+
