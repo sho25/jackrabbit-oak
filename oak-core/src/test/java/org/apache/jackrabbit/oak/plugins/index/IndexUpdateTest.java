@@ -1541,7 +1541,6 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-specifier|private
 specifier|static
 name|NodeState
 name|checkPathExists

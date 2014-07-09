@@ -1651,6 +1651,10 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+name|checkpoint
+operator|==
+literal|null
+operator|||
 name|Objects
 operator|.
 name|equal
