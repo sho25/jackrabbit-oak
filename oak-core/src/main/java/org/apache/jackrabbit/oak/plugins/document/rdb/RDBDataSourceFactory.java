@@ -327,15 +327,6 @@ name|ClassNotFoundException
 name|ex
 parameter_list|)
 block|{
-name|ex
-operator|.
-name|printStackTrace
-argument_list|(
-name|System
-operator|.
-name|err
-argument_list|)
-expr_stmt|;
 name|LOG
 operator|.
 name|error
