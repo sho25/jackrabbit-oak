@@ -107,6 +107,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|HashSet
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Iterator
 import|;
 end_import
@@ -128,6 +138,16 @@ operator|.
 name|util
 operator|.
 name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Set
 import|;
 end_import
 
@@ -236,12 +256,15 @@ name|CachingBlobStore
 implements|implements
 name|Closeable
 block|{
-comment|/**      * Creates a {@linkplain RDBBlobStore} instance using the provided      * {@link DataSource}.      */
+comment|/**      * Creates a {@linkplain RDBBlobStore} instance using the provided      * {@link DataSource} using the given {@link RDBOptions}.      */
 specifier|public
 name|RDBBlobStore
 parameter_list|(
 name|DataSource
 name|ds
+parameter_list|,
+name|RDBOptions
+name|options
 parameter_list|)
 block|{
 try|try
@@ -249,6 +272,8 @@ block|{
 name|initialize
 argument_list|(
 name|ds
+argument_list|,
+name|options
 argument_list|)
 expr_stmt|;
 block|}
@@ -269,6 +294,24 @@ argument_list|)
 throw|;
 block|}
 block|}
+comment|/**      * Creates a {@linkplain RDBBlobStore} instance using the provided      * {@link DataSource} using default {@link RDBOptions}.      */
+specifier|public
+name|RDBBlobStore
+parameter_list|(
+name|DataSource
+name|ds
+parameter_list|)
+block|{
+name|this
+argument_list|(
+name|ds
+argument_list|,
+operator|new
+name|RDBOptions
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
 annotation|@
 name|Override
 specifier|public
@@ -276,6 +319,150 @@ name|void
 name|close
 parameter_list|()
 block|{
+if|if
+condition|(
+operator|!
+name|this
+operator|.
+name|tablesToBeDropped
+operator|.
+name|isEmpty
+argument_list|()
+condition|)
+block|{
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"attempting to drop: "
+operator|+
+name|this
+operator|.
+name|tablesToBeDropped
+argument_list|)
+expr_stmt|;
+for|for
+control|(
+name|String
+name|tname
+range|:
+name|this
+operator|.
+name|tablesToBeDropped
+control|)
+block|{
+name|Connection
+name|con
+init|=
+literal|null
+decl_stmt|;
+try|try
+block|{
+name|con
+operator|=
+name|getConnection
+argument_list|()
+expr_stmt|;
+try|try
+block|{
+name|Statement
+name|stmt
+init|=
+name|con
+operator|.
+name|createStatement
+argument_list|()
+decl_stmt|;
+name|stmt
+operator|.
+name|execute
+argument_list|(
+literal|"drop table "
+operator|+
+name|tname
+argument_list|)
+expr_stmt|;
+name|stmt
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
+name|con
+operator|.
+name|commit
+argument_list|()
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|SQLException
+name|ex
+parameter_list|)
+block|{
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"attempting to drop: "
+operator|+
+name|tname
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+catch|catch
+parameter_list|(
+name|SQLException
+name|ex
+parameter_list|)
+block|{
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"attempting to drop: "
+operator|+
+name|tname
+argument_list|)
+expr_stmt|;
+block|}
+finally|finally
+block|{
+try|try
+block|{
+if|if
+condition|(
+name|con
+operator|!=
+literal|null
+condition|)
+block|{
+name|con
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
+block|}
+block|}
+catch|catch
+parameter_list|(
+name|SQLException
+name|ex
+parameter_list|)
+block|{
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"on close "
+argument_list|,
+name|ex
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+block|}
+block|}
 name|this
 operator|.
 name|ds
@@ -354,16 +541,89 @@ specifier|private
 name|DataSource
 name|ds
 decl_stmt|;
+comment|// from options
+specifier|private
+name|String
+name|dataTable
+decl_stmt|;
+specifier|private
+name|String
+name|metaTable
+decl_stmt|;
+specifier|private
+name|Set
+argument_list|<
+name|String
+argument_list|>
+name|tablesToBeDropped
+init|=
+operator|new
+name|HashSet
+argument_list|<
+name|String
+argument_list|>
+argument_list|()
+decl_stmt|;
 specifier|private
 name|void
 name|initialize
 parameter_list|(
 name|DataSource
 name|ds
+parameter_list|,
+name|RDBOptions
+name|options
 parameter_list|)
 throws|throws
 name|Exception
 block|{
+name|String
+name|tablePrefix
+init|=
+name|options
+operator|.
+name|getTablePrefix
+argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|tablePrefix
+operator|.
+name|length
+argument_list|()
+operator|>
+literal|0
+operator|&&
+operator|!
+name|tablePrefix
+operator|.
+name|endsWith
+argument_list|(
+literal|"_"
+argument_list|)
+condition|)
+block|{
+name|tablePrefix
+operator|+=
+literal|"_"
+expr_stmt|;
+block|}
+name|this
+operator|.
+name|dataTable
+operator|=
+name|tablePrefix
+operator|+
+literal|"DATASTORE_DATA"
+expr_stmt|;
+name|this
+operator|.
+name|metaTable
+operator|=
+name|tablePrefix
+operator|+
+literal|"DATASTORE_META"
+expr_stmt|;
 name|this
 operator|.
 name|ds
@@ -388,7 +648,7 @@ expr_stmt|;
 for|for
 control|(
 name|String
-name|tableName
+name|baseName
 range|:
 operator|new
 name|String
@@ -400,6 +660,13 @@ literal|"DATASTORE_DATA"
 block|}
 control|)
 block|{
+name|String
+name|tableName
+init|=
+name|tablePrefix
+operator|+
+name|baseName
+decl_stmt|;
 try|try
 block|{
 name|PreparedStatement
@@ -477,7 +744,7 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
-name|tableName
+name|baseName
 operator|.
 name|equals
 argument_list|(
@@ -659,6 +926,22 @@ operator|.
 name|commit
 argument_list|()
 expr_stmt|;
+if|if
+condition|(
+name|options
+operator|.
+name|isDropTablesOnClose
+argument_list|()
+condition|)
+block|{
+name|tablesToBeDropped
+operator|.
+name|add
+argument_list|(
+name|tableName
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 block|}
 block|}
@@ -795,7 +1078,11 @@ name|con
 operator|.
 name|prepareStatement
 argument_list|(
-literal|"update datastore_meta set lastMod = ? where id = ?"
+literal|"update "
+operator|+
+name|metaTable
+operator|+
+literal|" set lastMod = ? where id = ?"
 argument_list|)
 decl_stmt|;
 name|int
@@ -852,7 +1139,11 @@ name|con
 operator|.
 name|prepareStatement
 argument_list|(
-literal|"insert into datastore_data(id, data) values(?, ?)"
+literal|"insert into "
+operator|+
+name|dataTable
+operator|+
+literal|"(id, data) values(?, ?)"
 argument_list|)
 expr_stmt|;
 try|try
@@ -939,7 +1230,11 @@ name|con
 operator|.
 name|prepareStatement
 argument_list|(
-literal|"insert into datastore_meta(id, lvl, lastMod) values(?, ?, ?)"
+literal|"insert into "
+operator|+
+name|metaTable
+operator|+
+literal|"(id, lvl, lastMod) values(?, ?, ?)"
 argument_list|)
 expr_stmt|;
 try|try
@@ -1052,7 +1347,11 @@ name|con
 operator|.
 name|prepareStatement
 argument_list|(
-literal|"select data from datastore_data where id = ?"
+literal|"select data from "
+operator|+
+name|dataTable
+operator|+
+literal|" where id = ?"
 argument_list|)
 decl_stmt|;
 try|try
@@ -1190,7 +1489,11 @@ name|con
 operator|.
 name|prepareStatement
 argument_list|(
-literal|"select data from datastore_data where id = ?"
+literal|"select data from "
+operator|+
+name|dataTable
+operator|+
+literal|" where id = ?"
 argument_list|)
 decl_stmt|;
 try|try
@@ -1440,7 +1743,11 @@ name|con
 operator|.
 name|prepareStatement
 argument_list|(
-literal|"update datastore_meta set lastMod = ? where id = ? and lastMod< ?"
+literal|"update "
+operator|+
+name|metaTable
+operator|+
+literal|" set lastMod = ? where id = ? and lastMod< ?"
 argument_list|)
 decl_stmt|;
 name|prep
@@ -1556,7 +1863,11 @@ name|con
 operator|.
 name|prepareStatement
 argument_list|(
-literal|"select id from datastore_meta where lastMod< ?"
+literal|"select id from "
+operator|+
+name|metaTable
+operator|+
+literal|" where lastMod< ?"
 argument_list|)
 decl_stmt|;
 name|prep
@@ -1616,7 +1927,11 @@ name|con
 operator|.
 name|prepareStatement
 argument_list|(
-literal|"delete from datastore_meta where id = ?"
+literal|"delete from "
+operator|+
+name|metaTable
+operator|+
+literal|" where id = ?"
 argument_list|)
 expr_stmt|;
 name|PreparedStatement
@@ -1626,7 +1941,11 @@ name|con
 operator|.
 name|prepareStatement
 argument_list|(
-literal|"delete from datastore_data where id = ?"
+literal|"delete from "
+operator|+
+name|dataTable
+operator|+
+literal|" where id = ?"
 argument_list|)
 decl_stmt|;
 for|for
@@ -1742,7 +2061,7 @@ decl_stmt|;
 try|try
 block|{
 name|PreparedStatement
-name|prep
+name|prepMeta
 init|=
 literal|null
 decl_stmt|;
@@ -1813,13 +2132,17 @@ operator|>
 literal|0
 condition|)
 block|{
-name|prep
+name|prepMeta
 operator|=
 name|con
 operator|.
 name|prepareStatement
 argument_list|(
-literal|"delete from datastore_meta where id in ("
+literal|"delete from "
+operator|+
+name|metaTable
+operator|+
+literal|" where id in ("
 operator|+
 name|inClause
 operator|.
@@ -1829,7 +2152,7 @@ operator|+
 literal|") and lastMod<= ?"
 argument_list|)
 expr_stmt|;
-name|prep
+name|prepMeta
 operator|.
 name|setLong
 argument_list|(
@@ -1846,7 +2169,11 @@ name|con
 operator|.
 name|prepareStatement
 argument_list|(
-literal|"delete from datastore_data where id in ("
+literal|"delete from "
+operator|+
+name|dataTable
+operator|+
+literal|" where id in ("
 operator|+
 name|inClause
 operator|.
@@ -1870,13 +2197,17 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|prep
+name|prepMeta
 operator|=
 name|con
 operator|.
 name|prepareStatement
 argument_list|(
-literal|"delete from datastore_meta where id in ("
+literal|"delete from "
+operator|+
+name|metaTable
+operator|+
+literal|" where id in ("
 operator|+
 name|inClause
 operator|.
@@ -1892,7 +2223,11 @@ name|con
 operator|.
 name|prepareStatement
 argument_list|(
-literal|"delete from datastore_data where id in ("
+literal|"delete from "
+operator|+
+name|dataTable
+operator|+
+literal|" where id in ("
 operator|+
 name|inClause
 operator|.
@@ -1918,7 +2253,7 @@ name|idx
 operator|++
 control|)
 block|{
-name|prep
+name|prepMeta
 operator|.
 name|setString
 argument_list|(
@@ -1951,7 +2286,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-name|prep
+name|prepMeta
 operator|.
 name|execute
 argument_list|()
@@ -1961,7 +2296,7 @@ operator|.
 name|execute
 argument_list|()
 expr_stmt|;
-name|prep
+name|prepMeta
 operator|.
 name|close
 argument_list|()
@@ -2013,6 +2348,8 @@ operator|.
 name|ds
 argument_list|,
 name|maxLastModifiedTime
+argument_list|,
+name|metaTable
 argument_list|)
 return|;
 block|}
@@ -2064,6 +2401,10 @@ name|lastId
 init|=
 literal|null
 decl_stmt|;
+specifier|private
+name|String
+name|metaTable
+decl_stmt|;
 specifier|public
 name|ChunkIdIterator
 parameter_list|(
@@ -2072,6 +2413,9 @@ name|ds
 parameter_list|,
 name|long
 name|maxLastModifiedTime
+parameter_list|,
+name|String
+name|metaTable
 parameter_list|)
 block|{
 name|this
@@ -2085,6 +2429,12 @@ operator|.
 name|ds
 operator|=
 name|ds
+expr_stmt|;
+name|this
+operator|.
+name|metaTable
+operator|=
+name|metaTable
 expr_stmt|;
 block|}
 annotation|@
@@ -2151,7 +2501,9 @@ name|query
 operator|.
 name|append
 argument_list|(
-literal|"select id from datastore_meta"
+literal|"select id from "
+operator|+
+name|metaTable
 argument_list|)
 expr_stmt|;
 if|if

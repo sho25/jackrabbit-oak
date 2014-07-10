@@ -655,18 +655,6 @@ end_import
 
 begin_import
 import|import
-name|sun
-operator|.
-name|rmi
-operator|.
-name|runtime
-operator|.
-name|Log
-import|;
-end_import
-
-begin_import
-import|import
 name|com
 operator|.
 name|google
@@ -792,34 +780,17 @@ name|Builder
 name|builder
 parameter_list|)
 block|{
-try|try
-block|{
-name|initialize
+name|this
 argument_list|(
 name|ds
 argument_list|,
 name|builder
 argument_list|,
-literal|null
+operator|new
+name|RDBOptions
+argument_list|()
 argument_list|)
 expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|Exception
-name|ex
-parameter_list|)
-block|{
-throw|throw
-operator|new
-name|DocumentStoreException
-argument_list|(
-literal|"initializing RDB document store"
-argument_list|,
-name|ex
-argument_list|)
-throw|;
-block|}
 block|}
 annotation|@
 name|Override
@@ -1433,7 +1404,7 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"on clos "
+literal|"on close "
 argument_list|,
 name|ex
 argument_list|)
@@ -1580,12 +1551,6 @@ init|=
 literal|""
 decl_stmt|;
 specifier|private
-name|boolean
-name|dropTablesOnClose
-init|=
-literal|false
-decl_stmt|;
-specifier|private
 name|Set
 argument_list|<
 name|String
@@ -1667,13 +1632,6 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
-if|if
-condition|(
-name|options
-operator|!=
-literal|null
-condition|)
-block|{
 name|this
 operator|.
 name|tablePrefix
@@ -1705,17 +1663,6 @@ name|tablePrefix
 operator|+=
 literal|"_"
 expr_stmt|;
-block|}
-name|this
-operator|.
-name|dropTablesOnClose
-operator|=
-name|options
-operator|.
-name|isDropTablesOnClose
-argument_list|()
-expr_stmt|;
-comment|// only do this for autocreated tables!!!
 block|}
 name|this
 operator|.
@@ -1851,6 +1798,11 @@ argument_list|,
 name|Collection
 operator|.
 name|CLUSTER_NODES
+argument_list|,
+name|options
+operator|.
+name|isDropTablesOnClose
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|createTableFor
@@ -1862,6 +1814,11 @@ argument_list|,
 name|Collection
 operator|.
 name|NODES
+argument_list|,
+name|options
+operator|.
+name|isDropTablesOnClose
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|createTableFor
@@ -1873,6 +1830,11 @@ argument_list|,
 name|Collection
 operator|.
 name|SETTINGS
+argument_list|,
+name|options
+operator|.
+name|isDropTablesOnClose
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -1902,6 +1864,9 @@ extends|extends
 name|Document
 argument_list|>
 name|col
+parameter_list|,
+name|boolean
+name|dropTablesOnClose
 parameter_list|)
 throws|throws
 name|SQLException
@@ -2159,8 +2124,6 @@ argument_list|()
 expr_stmt|;
 if|if
 condition|(
-name|this
-operator|.
 name|dropTablesOnClose
 condition|)
 block|{
