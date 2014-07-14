@@ -451,6 +451,29 @@ return|return
 literal|false
 return|;
 block|}
+comment|// check if there is already a collision marker
+if|if
+condition|(
+name|commitRoot
+operator|.
+name|getLocalMap
+argument_list|(
+name|NodeDocument
+operator|.
+name|COLLISIONS
+argument_list|)
+operator|.
+name|containsKey
+argument_list|(
+name|revision
+argument_list|)
+condition|)
+block|{
+comment|// already marked
+return|return
+literal|true
+return|;
+block|}
 name|NodeDocument
 operator|.
 name|addCollision
