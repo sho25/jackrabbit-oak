@@ -677,7 +677,7 @@ literal|"[nt:base] as [a] /* property notNull "
 operator|+
 literal|"where (([a].[notNull] is not null) "
 operator|+
-literal|"and ([a].[equals] = cast('1' as long))) "
+literal|"and ([a].[equals] = 1)) "
 operator|+
 literal|"and (isdescendantnode([a], [/])) */"
 argument_list|,

@@ -760,7 +760,7 @@ name|assertEquals
 argument_list|(
 literal|"[nt:base] as [nt:base] /* traverse \"*\" "
 operator|+
-literal|"where contains([nt:base].[text], cast('hello OR hallo' as string)) */"
+literal|"where contains([nt:base].[text], 'hello OR hallo') */"
 argument_list|,
 name|getResult
 argument_list|(

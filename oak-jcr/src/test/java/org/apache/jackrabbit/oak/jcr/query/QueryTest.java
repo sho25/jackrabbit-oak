@@ -750,7 +750,7 @@ name|assertEquals
 argument_list|(
 literal|"[nt:base] as [a] /* ordered order by lastMod ancestor 1 "
 operator|+
-literal|"where ([a].[jcr:primaryType] = cast('oak:Unstructured' as string)) "
+literal|"where ([a].[jcr:primaryType] = 'oak:Unstructured') "
 operator|+
 literal|"and (isdescendantnode([a], [/test])) */"
 argument_list|,
@@ -807,9 +807,9 @@ name|assertEquals
 argument_list|(
 literal|"[nt:base] as [a] /* ordered lastMod> 2001-02-01 "
 operator|+
-literal|"where (([a].[jcr:primaryType] = cast('oak:Unstructured' as string)) "
+literal|"where (([a].[jcr:primaryType] = 'oak:Unstructured') "
 operator|+
-literal|"and ([a].[content/lastMod]> cast('2001-02-01' as string))) "
+literal|"and ([a].[content/lastMod]> '2001-02-01')) "
 operator|+
 literal|"and (isdescendantnode([a], [/test])) */"
 argument_list|,
