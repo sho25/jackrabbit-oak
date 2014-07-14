@@ -247,15 +247,12 @@ name|operand1
 return|;
 block|}
 specifier|public
-name|String
+name|Operator
 name|getOperator
 parameter_list|()
 block|{
 return|return
 name|operator
-operator|.
-name|toString
-argument_list|()
 return|;
 block|}
 specifier|public

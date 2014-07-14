@@ -145,7 +145,7 @@ name|s
 range|:
 name|node
 operator|.
-name|getOperand2List
+name|getOperand2
 argument_list|()
 control|)
 block|{
