@@ -592,7 +592,6 @@ argument_list|,
 name|p2
 argument_list|)
 return|;
-comment|// case IN is not needed here, as this is handled in the class InImpl.
 block|}
 throw|throw
 operator|new

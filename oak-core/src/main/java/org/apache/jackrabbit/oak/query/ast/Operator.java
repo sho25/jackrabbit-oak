@@ -62,11 +62,6 @@ name|LIKE
 argument_list|(
 literal|"like"
 argument_list|)
-block|,
-name|IN
-argument_list|(
-literal|"in"
-argument_list|)
 block|;
 comment|/**      * The name of this operator.      */
 specifier|private

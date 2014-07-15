@@ -1418,9 +1418,6 @@ name|v
 expr_stmt|;
 block|}
 break|break;
-case|case
-name|IN
-case|:
 block|}
 if|if
 condition|(
