@@ -1349,6 +1349,24 @@ name|query
 init|=
 name|this
 decl_stmt|;
+if|if
+condition|(
+name|constraint
+operator|!=
+literal|null
+condition|)
+block|{
+comment|// need to do this *before* the visitation below, as the
+comment|// simplify() method does not always keep the query reference
+comment|// passed in setQuery(). TODO: avoid that mutability concern
+name|constraint
+operator|=
+name|constraint
+operator|.
+name|simplify
+argument_list|()
+expr_stmt|;
+block|}
 operator|new
 name|AstVisitorBase
 argument_list|()
@@ -2169,21 +2187,6 @@ argument_list|(
 name|this
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|constraint
-operator|!=
-literal|null
-condition|)
-block|{
-name|constraint
-operator|=
-name|constraint
-operator|.
-name|simplify
-argument_list|()
-expr_stmt|;
-block|}
 name|source
 operator|.
 name|setQueryConstraint

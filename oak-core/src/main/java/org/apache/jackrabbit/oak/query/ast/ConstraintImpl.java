@@ -25,16 +25,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|Map
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|Set
 import|;
 end_import
@@ -135,21 +125,6 @@ argument_list|<
 name|SelectorImpl
 argument_list|>
 name|getSelectors
-parameter_list|()
-function_decl|;
-comment|/**      * Get the map of "in(..)" conditions.      *       * @return the map      */
-specifier|public
-specifier|abstract
-name|Map
-argument_list|<
-name|DynamicOperandImpl
-argument_list|,
-name|Set
-argument_list|<
-name|StaticOperandImpl
-argument_list|>
-argument_list|>
-name|getInMap
 parameter_list|()
 function_decl|;
 comment|/**      * Apply the condition to the filter, further restricting the filter if      * possible. This may also verify the data types are compatible, and that      * paths are valid.      *      * @param f the filter      */

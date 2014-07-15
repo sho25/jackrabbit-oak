@@ -35,6 +35,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Set
 import|;
 end_import
@@ -52,7 +62,7 @@ name|FullTextExpression
 block|{
 specifier|public
 specifier|final
-name|ArrayList
+name|List
 argument_list|<
 name|FullTextExpression
 argument_list|>
@@ -61,7 +71,7 @@ decl_stmt|;
 specifier|public
 name|FullTextAnd
 parameter_list|(
-name|ArrayList
+name|List
 argument_list|<
 name|FullTextExpression
 argument_list|>

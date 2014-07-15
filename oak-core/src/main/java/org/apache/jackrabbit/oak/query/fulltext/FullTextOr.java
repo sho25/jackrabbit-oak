@@ -82,7 +82,7 @@ name|FullTextExpression
 block|{
 specifier|public
 specifier|final
-name|ArrayList
+name|List
 argument_list|<
 name|FullTextExpression
 argument_list|>
@@ -91,7 +91,7 @@ decl_stmt|;
 specifier|public
 name|FullTextOr
 parameter_list|(
-name|ArrayList
+name|List
 argument_list|<
 name|FullTextExpression
 argument_list|>
