@@ -560,14 +560,21 @@ argument_list|,
 literal|"Concurrent update detected"
 argument_list|)
 decl_stmt|;
-comment|/**      * Timeout in minutes after which an async job would be considered as      * timed out. Another node in cluster would wait for timeout before      * taking over a running job      */
+comment|/**      * Timeout in milliseconds after which an async job would be considered as      * timed out. Another node in cluster would wait for timeout before      * taking over a running job      */
 specifier|private
 specifier|static
 specifier|final
-name|int
+name|long
 name|ASYNC_TIMEOUT
 init|=
+name|TimeUnit
+operator|.
+name|MINUTES
+operator|.
+name|toMillis
+argument_list|(
 literal|15
+argument_list|)
 decl_stmt|;
 specifier|private
 specifier|final
