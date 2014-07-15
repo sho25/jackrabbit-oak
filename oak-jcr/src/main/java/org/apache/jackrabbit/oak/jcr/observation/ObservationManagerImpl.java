@@ -145,6 +145,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Set
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|annotation
@@ -242,6 +252,20 @@ operator|.
 name|collect
 operator|.
 name|Lists
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|collect
+operator|.
+name|Sets
 import|;
 end_import
 
@@ -1318,15 +1342,15 @@ operator|.
 name|getNoInternal
 argument_list|()
 decl_stmt|;
-name|List
+name|Set
 argument_list|<
 name|String
 argument_list|>
 name|absPaths
 init|=
-name|Lists
+name|Sets
 operator|.
-name|newArrayList
+name|newHashSet
 argument_list|(
 name|filter
 operator|.
