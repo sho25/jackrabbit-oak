@@ -675,9 +675,9 @@ name|assertEquals
 argument_list|(
 literal|"[nt:base] as [a] /* property notNull "
 operator|+
-literal|"where (([a].[notNull] is not null) "
+literal|"where ([a].[notNull] is not null) "
 operator|+
-literal|"and ([a].[equals] = 1)) "
+literal|"and ([a].[equals] = 1) "
 operator|+
 literal|"and (isdescendantnode([a], [/])) */"
 argument_list|,
@@ -899,11 +899,11 @@ name|assertEquals
 argument_list|(
 literal|"[nt:base] as [a] /* property tenPercent "
 operator|+
-literal|"where ((([a].[tenPercent] is not null) "
+literal|"where ([a].[tenPercent] is not null) "
 operator|+
-literal|"and ([a].[fiftyPercent] is not null)) "
+literal|"and ([a].[fiftyPercent] is not null) "
 operator|+
-literal|"and ([a].[hundredPercent] is not null)) "
+literal|"and ([a].[hundredPercent] is not null) "
 operator|+
 literal|"and (isdescendantnode([a], [/])) */"
 argument_list|,

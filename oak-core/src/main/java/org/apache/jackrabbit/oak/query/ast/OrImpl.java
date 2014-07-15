@@ -275,12 +275,11 @@ parameter_list|)
 block|{
 name|checkArgument
 argument_list|(
+operator|!
 name|constraints
 operator|.
-name|size
+name|isEmpty
 argument_list|()
-operator|>
-literal|1
 argument_list|)
 expr_stmt|;
 name|this

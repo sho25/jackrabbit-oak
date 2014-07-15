@@ -807,9 +807,9 @@ name|assertEquals
 argument_list|(
 literal|"[nt:base] as [a] /* ordered lastMod> 2001-02-01 "
 operator|+
-literal|"where (([a].[jcr:primaryType] = 'oak:Unstructured') "
+literal|"where ([a].[jcr:primaryType] = 'oak:Unstructured') "
 operator|+
-literal|"and ([a].[content/lastMod]> '2001-02-01')) "
+literal|"and ([a].[content/lastMod]> '2001-02-01') "
 operator|+
 literal|"and (isdescendantnode([a], [/test])) */"
 argument_list|,
