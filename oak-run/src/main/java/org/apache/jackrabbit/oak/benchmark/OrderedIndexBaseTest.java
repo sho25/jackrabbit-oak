@@ -152,10 +152,15 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *  */
+comment|/**  * Base class used for benchmarking insert of nodes  */
 end_comment
 
 begin_class
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"rawtypes"
+argument_list|)
 specifier|public
 specifier|abstract
 class|class
@@ -203,7 +208,7 @@ literal|"0"
 argument_list|)
 argument_list|)
 decl_stmt|;
-comment|/**     * type of the created node     */
+comment|/**      * type of the created node      */
 specifier|static
 specifier|final
 name|String
@@ -213,7 +218,7 @@ name|NodeTypeConstants
 operator|.
 name|NT_OAK_UNSTRUCTURED
 decl_stmt|;
-comment|/**     * property that will be indexed     */
+comment|/**      * property that will be indexed      */
 specifier|static
 specifier|final
 name|String
@@ -227,9 +232,31 @@ specifier|final
 name|int
 name|BATCH_SAVING_SIZE
 init|=
-literal|1024
+name|Integer
+operator|.
+name|parseInt
+argument_list|(
+name|System
+operator|.
+name|getProperty
+argument_list|(
+literal|"batchSaving"
+argument_list|,
+literal|"1024"
+argument_list|)
+argument_list|)
 decl_stmt|;
-comment|/**     * node name below which creating the test data     */
+comment|/**      * flags whether batch saving or not. Provide {@code -DbatchSaving=XYZ} where {@code XYZ} is      * greater than 0 to enable batch saving otherwise it will save every added nodes.      */
+specifier|static
+specifier|final
+name|boolean
+name|BATCH_SAVING
+init|=
+name|BATCH_SAVING_SIZE
+operator|>
+literal|0
+decl_stmt|;
+comment|/**      * node name below which creating the test data      */
 specifier|final
 name|String
 name|DUMP_NODE
@@ -244,11 +271,11 @@ argument_list|()
 operator|+
 name|TEST_ID
 decl_stmt|;
-comment|/**     * session used for operations throughout the test     */
+comment|/**      * session used for operations throughout the test      */
 name|Session
 name|session
 decl_stmt|;
-comment|/**     * node under which all the test data will be filled in     */
+comment|/**      * node under which all the test data will be filled in      */
 name|Node
 name|dump
 decl_stmt|;
@@ -364,13 +391,13 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**     * override when needed to define an index     */
+comment|/**      * override when needed to define an index      */
 name|void
 name|defineIndex
 parameter_list|()
 throws|throws
 name|Exception
-block|{    }
+block|{     }
 name|Node
 name|defineStandardPropertyIndex
 parameter_list|(
@@ -547,7 +574,7 @@ name|isBatchSaving
 parameter_list|()
 block|{
 return|return
-literal|false
+name|BATCH_SAVING
 return|;
 block|}
 block|}
