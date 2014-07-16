@@ -1054,7 +1054,8 @@ name|getLong
 argument_list|(
 literal|"oak.mongo.maxDeltaForModTimeIdxSecs"
 argument_list|,
-literal|120
+operator|-
+literal|1
 argument_list|)
 decl_stmt|;
 specifier|private
