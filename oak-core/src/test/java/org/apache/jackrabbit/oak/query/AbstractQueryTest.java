@@ -1881,6 +1881,31 @@ argument_list|,
 literal|true
 argument_list|)
 decl_stmt|;
+for|for
+control|(
+name|String
+name|p
+range|:
+name|expected
+control|)
+block|{
+name|assertTrue
+argument_list|(
+literal|"Expected path "
+operator|+
+name|p
+operator|+
+literal|" not found"
+argument_list|,
+name|paths
+operator|.
+name|contains
+argument_list|(
+name|p
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
 name|assertEquals
 argument_list|(
 literal|"Result set size is different"
@@ -1896,25 +1921,6 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
-for|for
-control|(
-name|String
-name|p
-range|:
-name|expected
-control|)
-block|{
-name|assertTrue
-argument_list|(
-name|paths
-operator|.
-name|contains
-argument_list|(
-name|p
-argument_list|)
-argument_list|)
-expr_stmt|;
-block|}
 return|return
 name|paths
 return|;

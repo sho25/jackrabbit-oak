@@ -47,6 +47,7 @@ name|StaticOperandImpl
 extends|extends
 name|AstElement
 block|{
+specifier|public
 specifier|abstract
 name|PropertyValue
 name|currentValue

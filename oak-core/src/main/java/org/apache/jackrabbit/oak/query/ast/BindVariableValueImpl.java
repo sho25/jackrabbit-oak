@@ -94,6 +94,7 @@ return|;
 block|}
 annotation|@
 name|Override
+specifier|public
 name|PropertyValue
 name|currentValue
 parameter_list|()
