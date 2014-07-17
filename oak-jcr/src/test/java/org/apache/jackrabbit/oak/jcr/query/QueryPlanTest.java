@@ -479,7 +479,7 @@ name|assertEquals
 argument_list|(
 literal|"[oak:Unstructured] as [a] "
 operator|+
-literal|"/* property jcr:uuid where ([a].[jcr:uuid] is not null) "
+literal|"/* property uuid IS NOT NULL where ([a].[jcr:uuid] is not null) "
 operator|+
 literal|"and (ischildnode([a], [/a/b/c/d/e/f/g/h/i/j/k])) */"
 argument_list|,
@@ -673,7 +673,7 @@ comment|// System.out.println("plan: " + plan);
 comment|// should not use the index on "jcr:uuid"
 name|assertEquals
 argument_list|(
-literal|"[nt:base] as [a] /* property notNull "
+literal|"[nt:base] as [a] /* property notNull IS NOT NULL "
 operator|+
 literal|"where ([a].[notNull] is not null) "
 operator|+
@@ -897,7 +897,7 @@ comment|// System.out.println("plan: " + plan);
 comment|// should not use the index on "jcr:uuid"
 name|assertEquals
 argument_list|(
-literal|"[nt:base] as [a] /* property tenPercent "
+literal|"[nt:base] as [a] /* property tenPercent IS NOT NULL "
 operator|+
 literal|"where ([a].[tenPercent] is not null) "
 operator|+
@@ -1075,7 +1075,7 @@ comment|// System.out.println("plan: " + plan);
 comment|// should not use the index on "jcr:uuid"
 name|assertEquals
 argument_list|(
-literal|"[nt:base] as [a] /* property jcr:uuid "
+literal|"[nt:base] as [a] /* property uuid IS NOT NULL "
 operator|+
 literal|"where ([a].[jcr:uuid] is not null) and "
 operator|+
@@ -1552,7 +1552,7 @@ argument_list|()
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"[nt:base] as [a] /* property jcr:uuid "
+literal|"[nt:base] as [a] /* property uuid IS NOT NULL "
 operator|+
 literal|"where ([a].[jcr:uuid] is not null) "
 operator|+
