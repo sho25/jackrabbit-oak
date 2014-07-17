@@ -383,6 +383,17 @@ operator|.
 name|getConnection
 argument_list|()
 decl_stmt|;
+comment|//TODO Temp mode to change the default setting so as to test it
+comment|//If we retain this feature then need to have better config support for it
+name|System
+operator|.
+name|setProperty
+argument_list|(
+literal|"oak.mongo.maxDeltaForModTimeIdxSecs"
+argument_list|,
+literal|"120"
+argument_list|)
+expr_stmt|;
 name|mongoDS
 operator|=
 operator|new
