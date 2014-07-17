@@ -129,7 +129,7 @@ name|getLong
 argument_list|(
 literal|"fast.clock.interval"
 argument_list|,
-literal|1
+literal|10
 argument_list|)
 decl_stmt|;
 specifier|private
