@@ -124,6 +124,13 @@ condition|(
 name|editor
 operator|!=
 literal|null
+operator|&&
+operator|!
+operator|(
+name|editor
+operator|instanceof
+name|VisibleEditor
+operator|)
 condition|)
 block|{
 return|return

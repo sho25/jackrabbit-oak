@@ -244,26 +244,6 @@ import|;
 end_import
 
 begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|spi
-operator|.
-name|commit
-operator|.
-name|VisibleEditor
-operator|.
-name|wrap
-import|;
-end_import
-
-begin_import
 import|import
 name|java
 operator|.
@@ -1026,10 +1006,7 @@ argument_list|,
 name|name
 argument_list|)
 argument_list|,
-name|wrap
-argument_list|(
 name|editor
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -1040,10 +1017,7 @@ name|editors
 operator|.
 name|add
 argument_list|(
-name|wrap
-argument_list|(
 name|editor
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
