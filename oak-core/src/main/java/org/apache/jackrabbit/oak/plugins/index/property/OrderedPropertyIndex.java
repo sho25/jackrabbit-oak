@@ -510,6 +510,34 @@ name|IndexPlan
 argument_list|>
 argument_list|()
 decl_stmt|;
+if|if
+condition|(
+name|filter
+operator|.
+name|getFullTextConstraint
+argument_list|()
+operator|!=
+literal|null
+condition|)
+block|{
+comment|// not an appropriate index for full-text search
+return|return
+name|plans
+return|;
+block|}
+if|if
+condition|(
+name|filter
+operator|.
+name|containsNativeConstraint
+argument_list|()
+condition|)
+block|{
+comment|// not an appropriate index for native search
+return|return
+name|plans
+return|;
+block|}
 name|OrderedPropertyIndexLookup
 name|lookup
 init|=
