@@ -286,6 +286,9 @@ name|user
 operator|.
 name|getId
 argument_list|()
+operator|.
+name|toLowerCase
+argument_list|()
 argument_list|,
 operator|(
 name|TestUser
@@ -309,6 +312,9 @@ argument_list|(
 name|group
 operator|.
 name|getId
+argument_list|()
+operator|.
+name|toLowerCase
 argument_list|()
 argument_list|,
 operator|(
@@ -356,6 +362,9 @@ name|ref
 operator|.
 name|getId
 argument_list|()
+operator|.
+name|toLowerCase
+argument_list|()
 argument_list|)
 decl_stmt|;
 if|if
@@ -377,6 +386,9 @@ argument_list|(
 name|ref
 operator|.
 name|getId
+argument_list|()
+operator|.
+name|toLowerCase
 argument_list|()
 argument_list|)
 return|;
@@ -401,6 +413,9 @@ operator|.
 name|get
 argument_list|(
 name|userId
+operator|.
+name|toLowerCase
+argument_list|()
 argument_list|)
 return|;
 block|}
@@ -517,6 +532,9 @@ operator|.
 name|get
 argument_list|(
 name|name
+operator|.
+name|toLowerCase
+argument_list|()
 argument_list|)
 return|;
 block|}
