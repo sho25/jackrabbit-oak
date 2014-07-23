@@ -769,6 +769,10 @@ specifier|final
 name|QueryEngineSettings
 name|settings
 decl_stmt|;
+specifier|private
+name|boolean
+name|literalUsageLogged
+decl_stmt|;
 comment|/**      * Create a new parser. A parser can be re-used, but it is not thread safe.      *       * @param namePathMapper the name-path mapper to use      * @param types the node with the node type information      */
 specifier|public
 name|SQL2Parser
@@ -6845,15 +6849,20 @@ name|LOG
 operator|.
 name|isDebugEnabled
 argument_list|()
+operator|&&
+operator|!
+name|literalUsageLogged
 condition|)
 block|{
+name|literalUsageLogged
+operator|=
+literal|true
+expr_stmt|;
 name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Literal used in query: "
-operator|+
-name|statement
+literal|"Literal used"
 argument_list|)
 expr_stmt|;
 block|}
