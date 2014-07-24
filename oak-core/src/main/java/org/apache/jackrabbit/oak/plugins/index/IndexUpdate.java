@@ -439,6 +439,26 @@ name|Objects
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
+import|;
+end_import
+
 begin_class
 specifier|public
 class|class
@@ -446,6 +466,19 @@ name|IndexUpdate
 implements|implements
 name|Editor
 block|{
+specifier|private
+specifier|final
+name|Logger
+name|log
+init|=
+name|LoggerFactory
+operator|.
+name|getLogger
+argument_list|(
+name|getClass
+argument_list|()
+argument_list|)
+decl_stmt|;
 specifier|private
 specifier|final
 name|IndexEditorProvider
@@ -702,6 +735,28 @@ argument_list|,
 name|before
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+operator|!
+name|reindex
+operator|.
+name|isEmpty
+argument_list|()
+condition|)
+block|{
+name|log
+operator|.
+name|info
+argument_list|(
+literal|"Reindexing would be performed for following indexes {}"
+argument_list|,
+name|reindex
+operator|.
+name|keySet
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
 comment|// no-op when reindex is empty
 name|CommitFailedException
 name|exception
@@ -799,7 +854,9 @@ return|;
 block|}
 comment|// reindex in the case this is a new node, even though the reindex flag
 comment|// might be set to 'false' (possible via content import)
-return|return
+name|boolean
+name|result
+init|=
 operator|!
 name|before
 operator|.
@@ -812,6 +869,24 @@ name|hasChildNode
 argument_list|(
 name|name
 argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|result
+condition|)
+block|{
+name|log
+operator|.
+name|info
+argument_list|(
+literal|"Found a new index node [{}]. Reindexing would be requested"
+argument_list|,
+name|name
+argument_list|)
+expr_stmt|;
+block|}
+return|return
+name|result
 return|;
 block|}
 specifier|private
