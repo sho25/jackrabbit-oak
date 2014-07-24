@@ -855,7 +855,7 @@ name|ParseException
 throws|,
 name|RepositoryException
 block|{
-name|setTravesalEnabled
+name|setTraversalEnabled
 argument_list|(
 literal|false
 argument_list|)
@@ -951,7 +951,7 @@ argument_list|,
 name|results
 argument_list|)
 expr_stmt|;
-name|setTravesalEnabled
+name|setTraversalEnabled
 argument_list|(
 literal|true
 argument_list|)
@@ -969,7 +969,7 @@ name|CommitFailedException
 throws|,
 name|ParseException
 block|{
-name|setTravesalEnabled
+name|setTraversalEnabled
 argument_list|(
 literal|false
 argument_list|)
@@ -1140,7 +1140,7 @@ name|hasNext
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|setTravesalEnabled
+name|setTraversalEnabled
 argument_list|(
 literal|true
 argument_list|)
@@ -1158,7 +1158,7 @@ name|CommitFailedException
 throws|,
 name|ParseException
 block|{
-name|setTravesalEnabled
+name|setTraversalEnabled
 argument_list|(
 literal|false
 argument_list|)
@@ -1376,7 +1376,7 @@ name|hasNext
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|setTravesalEnabled
+name|setTraversalEnabled
 argument_list|(
 literal|true
 argument_list|)
@@ -1394,7 +1394,7 @@ name|CommitFailedException
 throws|,
 name|ParseException
 block|{
-name|setTravesalEnabled
+name|setTraversalEnabled
 argument_list|(
 literal|false
 argument_list|)
@@ -1614,7 +1614,7 @@ name|hasNext
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|setTravesalEnabled
+name|setTraversalEnabled
 argument_list|(
 literal|true
 argument_list|)
@@ -1633,7 +1633,7 @@ block|{
 name|initWithProperProvider
 argument_list|()
 expr_stmt|;
-name|setTravesalEnabled
+name|setTraversalEnabled
 argument_list|(
 literal|false
 argument_list|)
@@ -1922,7 +1922,7 @@ name|hasNext
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|setTravesalEnabled
+name|setTraversalEnabled
 argument_list|(
 literal|true
 argument_list|)
@@ -1944,7 +1944,7 @@ expr_stmt|;
 name|initWithProperProvider
 argument_list|()
 expr_stmt|;
-name|setTravesalEnabled
+name|setTraversalEnabled
 argument_list|(
 literal|false
 argument_list|)
@@ -2173,7 +2173,7 @@ name|hasNext
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|setTravesalEnabled
+name|setTraversalEnabled
 argument_list|(
 literal|true
 argument_list|)
@@ -2192,7 +2192,7 @@ name|ParseException
 throws|,
 name|RepositoryException
 block|{
-name|setTravesalEnabled
+name|setTraversalEnabled
 argument_list|(
 literal|false
 argument_list|)
@@ -2295,7 +2295,7 @@ argument_list|,
 name|results
 argument_list|)
 expr_stmt|;
-name|setTravesalEnabled
+name|setTraversalEnabled
 argument_list|(
 literal|true
 argument_list|)
@@ -2320,7 +2320,7 @@ name|ParseException
 throws|,
 name|RepositoryException
 block|{
-name|setTravesalEnabled
+name|setTraversalEnabled
 argument_list|(
 literal|false
 argument_list|)
@@ -2547,7 +2547,7 @@ operator|<=
 name|r2
 argument_list|)
 expr_stmt|;
-name|setTravesalEnabled
+name|setTraversalEnabled
 argument_list|(
 literal|true
 argument_list|)
@@ -2564,7 +2564,7 @@ name|CommitFailedException
 throws|,
 name|ParseException
 block|{
-name|setTravesalEnabled
+name|setTraversalEnabled
 argument_list|(
 literal|false
 argument_list|)
@@ -2665,7 +2665,7 @@ argument_list|,
 name|results
 argument_list|)
 expr_stmt|;
-name|setTravesalEnabled
+name|setTraversalEnabled
 argument_list|(
 literal|true
 argument_list|)
@@ -2688,7 +2688,7 @@ name|CommitFailedException
 throws|,
 name|ParseException
 block|{
-name|setTravesalEnabled
+name|setTraversalEnabled
 argument_list|(
 literal|false
 argument_list|)
@@ -2801,7 +2801,7 @@ argument_list|,
 name|results
 argument_list|)
 expr_stmt|;
-name|setTravesalEnabled
+name|setTraversalEnabled
 argument_list|(
 literal|true
 argument_list|)
@@ -3145,7 +3145,7 @@ name|CommitFailedException
 throws|,
 name|ParseException
 block|{
-name|setTravesalEnabled
+name|setTraversalEnabled
 argument_list|(
 literal|false
 argument_list|)
@@ -3236,7 +3236,7 @@ name|hasNext
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|setTravesalEnabled
+name|setTraversalEnabled
 argument_list|(
 literal|true
 argument_list|)
@@ -3927,7 +3927,7 @@ name|CommitFailedException
 throws|,
 name|ParseException
 block|{
-name|setTravesalEnabled
+name|setTraversalEnabled
 argument_list|(
 literal|false
 argument_list|)
@@ -4125,7 +4125,7 @@ name|hasNext
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|setTravesalEnabled
+name|setTraversalEnabled
 argument_list|(
 literal|true
 argument_list|)
@@ -4143,7 +4143,7 @@ name|CommitFailedException
 throws|,
 name|ParseException
 block|{
-name|setTravesalEnabled
+name|setTraversalEnabled
 argument_list|(
 literal|false
 argument_list|)
@@ -4341,7 +4341,7 @@ name|hasNext
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|setTravesalEnabled
+name|setTraversalEnabled
 argument_list|(
 literal|true
 argument_list|)
@@ -4356,7 +4356,7 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|setTravesalEnabled
+name|setTraversalEnabled
 argument_list|(
 literal|false
 argument_list|)
@@ -4651,7 +4651,7 @@ name|hasNext
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|setTravesalEnabled
+name|setTraversalEnabled
 argument_list|(
 literal|true
 argument_list|)
@@ -4666,7 +4666,7 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|setTravesalEnabled
+name|setTraversalEnabled
 argument_list|(
 literal|false
 argument_list|)
@@ -4961,7 +4961,7 @@ name|hasNext
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|setTravesalEnabled
+name|setTraversalEnabled
 argument_list|(
 literal|true
 argument_list|)
@@ -4976,7 +4976,7 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|setTravesalEnabled
+name|setTraversalEnabled
 argument_list|(
 literal|false
 argument_list|)
@@ -5271,7 +5271,7 @@ name|hasNext
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|setTravesalEnabled
+name|setTraversalEnabled
 argument_list|(
 literal|true
 argument_list|)
@@ -5286,7 +5286,7 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|setTravesalEnabled
+name|setTraversalEnabled
 argument_list|(
 literal|false
 argument_list|)
@@ -5581,7 +5581,7 @@ name|hasNext
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|setTravesalEnabled
+name|setTraversalEnabled
 argument_list|(
 literal|true
 argument_list|)

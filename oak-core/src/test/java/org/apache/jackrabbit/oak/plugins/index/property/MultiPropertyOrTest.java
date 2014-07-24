@@ -425,7 +425,7 @@ operator|.
 name|commit
 argument_list|()
 expr_stmt|;
-name|setTravesalEnabled
+name|setTraversalEnabled
 argument_list|(
 literal|false
 argument_list|)
@@ -604,7 +604,7 @@ literal|"/b"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|setTravesalEnabled
+name|setTraversalEnabled
 argument_list|(
 literal|false
 argument_list|)

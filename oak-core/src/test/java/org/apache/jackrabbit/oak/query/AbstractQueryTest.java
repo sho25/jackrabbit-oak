@@ -1927,7 +1927,7 @@ return|;
 block|}
 specifier|protected
 name|void
-name|setTravesalEnabled
+name|setTraversalEnabled
 parameter_list|(
 name|boolean
 name|traversalEnabled
