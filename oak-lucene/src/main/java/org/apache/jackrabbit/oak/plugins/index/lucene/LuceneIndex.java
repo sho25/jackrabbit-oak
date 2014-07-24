@@ -1466,6 +1466,29 @@ name|NodeState
 name|root
 parameter_list|)
 block|{
+name|FullTextExpression
+name|ft
+init|=
+name|filter
+operator|.
+name|getFullTextConstraint
+argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|ft
+operator|==
+literal|null
+condition|)
+block|{
+comment|// no full-text condition: don't use this index,
+comment|// as there might be a better one
+return|return
+name|Double
+operator|.
+name|POSITIVE_INFINITY
+return|;
+block|}
 name|IndexNode
 name|index
 init|=
@@ -1492,29 +1515,6 @@ return|;
 block|}
 try|try
 block|{
-name|FullTextExpression
-name|ft
-init|=
-name|filter
-operator|.
-name|getFullTextConstraint
-argument_list|()
-decl_stmt|;
-if|if
-condition|(
-name|ft
-operator|==
-literal|null
-condition|)
-block|{
-comment|// no full-text condition: don't use this index,
-comment|// as there might be a better one
-return|return
-name|Double
-operator|.
-name|POSITIVE_INFINITY
-return|;
-block|}
 name|Set
 argument_list|<
 name|String
