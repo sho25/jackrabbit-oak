@@ -8411,7 +8411,6 @@ name|String
 name|path
 parameter_list|)
 block|{
-comment|// TODO only log if there are new revisions available for the given node
 if|if
 condition|(
 name|LOG
@@ -8422,6 +8421,13 @@ condition|)
 block|{
 if|if
 condition|(
+literal|"/"
+operator|.
+name|equals
+argument_list|(
+name|path
+argument_list|)
+operator|&&
 name|headRevision
 operator|.
 name|getTimestamp
