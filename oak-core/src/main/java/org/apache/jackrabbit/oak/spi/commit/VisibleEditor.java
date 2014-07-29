@@ -141,12 +141,9 @@ name|editor
 argument_list|)
 return|;
 block|}
-else|else
-block|{
 return|return
-literal|null
+name|editor
 return|;
-block|}
 block|}
 specifier|private
 specifier|final
