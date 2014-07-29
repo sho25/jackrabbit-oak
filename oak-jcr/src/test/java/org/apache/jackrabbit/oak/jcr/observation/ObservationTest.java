@@ -4916,7 +4916,7 @@ name|assumeTrue
 argument_list|(
 name|observationManager
 operator|instanceof
-name|ObservationManagerImpl
+name|JackrabbitObservationManager
 argument_list|)
 expr_stmt|;
 name|ObservationManagerImpl

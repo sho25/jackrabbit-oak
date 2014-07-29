@@ -144,8 +144,6 @@ argument_list|(
 name|EMPTY_NODE
 argument_list|,
 name|EMPTY_NODE
-argument_list|,
-literal|"/"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -185,8 +183,6 @@ argument_list|(
 name|EMPTY_NODE
 argument_list|,
 name|EMPTY_NODE
-argument_list|,
-literal|"/"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -245,8 +241,6 @@ argument_list|(
 name|EMPTY_NODE
 argument_list|,
 name|EMPTY_NODE
-argument_list|,
-literal|"/"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -286,8 +280,6 @@ argument_list|(
 name|EMPTY_NODE
 argument_list|,
 name|EMPTY_NODE
-argument_list|,
-literal|"/"
 argument_list|)
 argument_list|)
 expr_stmt|;

@@ -32,6 +32,28 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|observation
+operator|.
+name|filter
+operator|.
+name|VisibleFilter
+operator|.
+name|VISIBLE_FILTER
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -208,26 +230,6 @@ operator|.
 name|namepath
 operator|.
 name|NamePathMapperImpl
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|plugins
-operator|.
-name|observation
-operator|.
-name|filter
-operator|.
-name|VisibleFilter
 import|;
 end_import
 
@@ -649,9 +651,7 @@ init|=
 operator|new
 name|FilteredHandler
 argument_list|(
-operator|new
-name|VisibleFilter
-argument_list|()
+name|VISIBLE_FILTER
 argument_list|,
 operator|new
 name|NodeEventHandler

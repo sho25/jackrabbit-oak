@@ -86,7 +86,7 @@ specifier|public
 interface|interface
 name|FilterProvider
 block|{
-comment|/**      * Filter whole commits. Only commits for which this method returns      * {@code true} will be further processed to create individual events.      *      * @param sessionId  id of the filtering (this) session      * @param info       commit info of the commit or {@code null} if not available      * @return           {@code true} if observation events should be created from this      *                   commit, {@code false} otherwise.      *      * @see org.apache.jackrabbit.oak.spi.commit.Observer      */
+comment|/**      * Filter whole commits. Only commits for which this method returns      * {@code true} will be further processed to create individual events.      *      * @param sessionId id of the filtering (this) session      * @param info      commit info of the commit or {@code null} if not available      * @return {@code true} if observation events should be created from this      * commit, {@code false} otherwise.      * @see org.apache.jackrabbit.oak.spi.commit.Observer      */
 name|boolean
 name|includeCommit
 parameter_list|(
@@ -101,7 +101,7 @@ name|CommitInfo
 name|info
 parameter_list|)
 function_decl|;
-comment|/**      * Factory method for creating a {@code Filter} for the passed before and after      * states.      *      * @param before  before state      * @param after   after state      * @return new {@code Filter} instance      */
+comment|/**      * Factory method for creating a {@code Filter} for the passed before and after      * states.      *      * @param before before state      * @param after  after state      * @return new {@code Filter} instance      */
 annotation|@
 name|Nonnull
 name|EventFilter
@@ -118,11 +118,14 @@ name|NodeState
 name|after
 parameter_list|)
 function_decl|;
-comment|/**      * Path of the subtree to which the the filter returned by      * {@link #getFilter(NodeState, NodeState)} applies.      * @return path to which the filter applies.      */
+comment|/**      * A set of paths whose subtrees include all events of this filter.      * @return  list of paths      * @see org.apache.jackrabbit.oak.plugins.observation.filter.FilterBuilder#addSubTree(String)      */
 annotation|@
 name|Nonnull
+name|Iterable
+argument_list|<
 name|String
-name|getPath
+argument_list|>
+name|getSubTrees
 parameter_list|()
 function_decl|;
 block|}
