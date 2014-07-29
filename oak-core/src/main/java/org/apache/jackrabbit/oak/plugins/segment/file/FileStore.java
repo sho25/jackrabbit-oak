@@ -2236,6 +2236,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+block|}
 comment|// remove all obsolete tar generations
 name|Iterator
 argument_list|<
@@ -2264,6 +2265,15 @@ operator|.
 name|next
 argument_list|()
 decl_stmt|;
+name|log
+operator|.
+name|debug
+argument_list|(
+literal|"TarMK GC: Attempting to remove old file {}"
+argument_list|,
+name|file
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 operator|!
@@ -2292,7 +2302,6 @@ operator|.
 name|remove
 argument_list|()
 expr_stmt|;
-block|}
 block|}
 block|}
 block|}
