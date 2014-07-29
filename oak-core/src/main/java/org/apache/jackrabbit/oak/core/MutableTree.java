@@ -697,9 +697,8 @@ argument_list|()
 expr_stmt|;
 if|if
 condition|(
-name|super
-operator|.
-name|hasChild
+operator|!
+name|isHidden
 argument_list|(
 name|name
 argument_list|)
