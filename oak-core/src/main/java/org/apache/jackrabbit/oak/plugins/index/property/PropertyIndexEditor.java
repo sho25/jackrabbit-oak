@@ -1411,6 +1411,25 @@ operator|>
 literal|1
 condition|)
 block|{
+name|String
+name|msg
+init|=
+name|String
+operator|.
+name|format
+argument_list|(
+literal|"Uniqueness constraint violated at path [%s] for one of the "
+operator|+
+literal|"property in %s having value %s"
+argument_list|,
+name|getPath
+argument_list|()
+argument_list|,
+name|propertyNames
+argument_list|,
+name|key
+argument_list|)
+decl_stmt|;
 throw|throw
 operator|new
 name|CommitFailedException
@@ -1419,9 +1438,7 @@ name|CONSTRAINT
 argument_list|,
 literal|30
 argument_list|,
-literal|"Uniqueness constraint violated for key "
-operator|+
-name|key
+name|msg
 argument_list|)
 throw|;
 block|}
