@@ -723,7 +723,7 @@ name|ListenerTracker
 name|tracker
 parameter_list|,
 name|FilterProvider
-name|filters
+name|filter
 parameter_list|,
 name|StatisticManager
 name|statisticManager
@@ -768,7 +768,7 @@ argument_list|<
 name|FilterProvider
 argument_list|>
 argument_list|(
-name|filters
+name|filter
 argument_list|)
 expr_stmt|;
 name|this
