@@ -1152,6 +1152,23 @@ argument_list|()
 control|)
 block|{
 comment|// try to get the field to use for this property from configuration
+if|if
+condition|(
+operator|!
+name|configuration
+operator|.
+name|getIgnoredProperties
+argument_list|()
+operator|.
+name|contains
+argument_list|(
+name|property
+operator|.
+name|getName
+argument_list|()
+argument_list|)
+condition|)
+block|{
 name|String
 name|fieldName
 init|=
@@ -1251,6 +1268,7 @@ name|STRING
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 block|}

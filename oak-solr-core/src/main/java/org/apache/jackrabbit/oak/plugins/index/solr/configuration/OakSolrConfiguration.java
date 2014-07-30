@@ -25,6 +25,16 @@ end_package
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Collection
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -130,6 +140,14 @@ function_decl|;
 comment|/**      * Define if the Solr index should be used to filter by path restrictions      *      * @return<code>true</code> if {@link org.apache.jackrabbit.oak.plugins.index.solr.query.SolrQueryIndex} should be used      * for filtering by {@link org.apache.jackrabbit.oak.spi.query.Filter.PathRestriction}s      */
 name|boolean
 name|useForPathRestrictions
+parameter_list|()
+function_decl|;
+comment|/**      * Provide the collection of properties that should be neither indexed nor searched by the Solr index      *      * @return a<code>Collection</code> of<code>String</code>s representing the names of the ignored properties      */
+name|Collection
+argument_list|<
+name|String
+argument_list|>
+name|getIgnoredProperties
 parameter_list|()
 function_decl|;
 block|}

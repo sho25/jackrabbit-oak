@@ -152,6 +152,14 @@ name|PRIMARY_TYPES
 init|=
 literal|false
 decl_stmt|;
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|IGNORED_PROPERTIES
+init|=
+literal|""
+decl_stmt|;
 block|}
 end_class
 
