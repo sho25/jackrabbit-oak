@@ -676,9 +676,9 @@ argument_list|(
 name|base
 argument_list|)
 decl_stmt|;
-name|BuiltInNodeTypes
+name|NodeTypeRegistry
 operator|.
-name|register
+name|registerBuiltIn
 argument_list|(
 operator|new
 name|SystemRoot
