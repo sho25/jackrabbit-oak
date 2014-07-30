@@ -457,6 +457,15 @@ comment|// success
 block|}
 block|}
 block|}
+annotation|@
+name|Test
+specifier|public
+name|void
+name|testAggregates
+parameter_list|()
+block|{
+comment|// TODO
+block|}
 block|}
 end_class
 
