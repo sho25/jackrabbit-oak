@@ -2237,6 +2237,11 @@ expr_stmt|;
 block|}
 block|}
 block|}
+synchronized|synchronized
+init|(
+name|this
+init|)
+block|{
 comment|// remove all obsolete tar generations
 name|Iterator
 argument_list|<
@@ -2302,6 +2307,7 @@ operator|.
 name|remove
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 block|}
 block|}
