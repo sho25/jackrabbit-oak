@@ -93,22 +93,6 @@ name|common
 operator|.
 name|collect
 operator|.
-name|Collections2
-operator|.
-name|filter
-import|;
-end_import
-
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|collect
-operator|.
 name|Iterables
 operator|.
 name|concat
