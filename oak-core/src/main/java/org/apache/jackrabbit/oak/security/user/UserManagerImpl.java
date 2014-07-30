@@ -1868,10 +1868,8 @@ literal|null
 operator|||
 name|id
 operator|.
-name|length
+name|isEmpty
 argument_list|()
-operator|==
-literal|0
 condition|)
 block|{
 throw|throw
