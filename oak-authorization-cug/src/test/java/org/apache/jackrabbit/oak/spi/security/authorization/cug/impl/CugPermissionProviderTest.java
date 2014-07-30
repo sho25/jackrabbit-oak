@@ -13,6 +13,8 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
+name|spi
+operator|.
 name|security
 operator|.
 name|authorization
@@ -23,52 +25,14 @@ name|impl
 package|;
 end_package
 
-begin_comment
-comment|/**  * CugConstants... TODO  */
-end_comment
-
-begin_interface
-interface|interface
-name|CugConstants
+begin_class
+specifier|public
+class|class
+name|CugPermissionProviderTest
 block|{
-name|String
-name|MIX_REP_CUG_MIXIN
-init|=
-literal|"rep:CugMixin"
-decl_stmt|;
-name|String
-name|NT_REP_CUG_POLICY
-init|=
-literal|"rep:CugPolicy"
-decl_stmt|;
-name|String
-name|REP_CUG_POLICY
-init|=
-literal|"rep:cugPolicy"
-decl_stmt|;
-name|String
-name|REP_PRINCIPAL_NAMES
-init|=
-literal|"rep:principalNames"
-decl_stmt|;
-name|String
-name|PARAM_CUG_SUPPORTED_PATHS
-init|=
-literal|"cugSupportedPaths"
-decl_stmt|;
-name|String
-name|PARAM_CUG_ENABLED
-init|=
-literal|"cugEnabled"
-decl_stmt|;
-comment|/**      *      */
-name|String
-name|PARAM_CUG_EXCLUDE
-init|=
-literal|"cugExclude"
-decl_stmt|;
+comment|// TODO
 block|}
-end_interface
+end_class
 
 end_unit
 
