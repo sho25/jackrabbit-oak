@@ -44,7 +44,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Represents an internal identifier, uniquely identifying   * a {@link Node} or a {@link Commit}.  *<p>  * This implementation aims at minimizing the in-memory footprint  * of an identifier instance. therefore it doesn't cache e.g. the hashCode  * or the string representation.  *<p>  *<b>Important Note:</b><p/>  * An {@link Id} is considered immutable. The {@code byte[]}  * passed to {@link Id#Id(byte[])} must not be reused or modified, the same  * applies for the {@code byte[]} returned by {@link Id#getBytes()}.  */
+comment|/**  * Represents an internal identifier, uniquely identifying   * a {@link Node} or a {@link Commit}.  *<p>  * This implementation aims at minimizing the in-memory footprint  * of an identifier instance. therefore it doesn't cache e.g. the hashCode  * or the string representation.  *<p>  *<b>Important Note:</b><p>  * An {@link Id} is considered immutable. The {@code byte[]}  * passed to {@link Id#Id(byte[])} must not be reused or modified, the same  * applies for the {@code byte[]} returned by {@link Id#getBytes()}.  */
 end_comment
 
 begin_class

@@ -197,7 +197,7 @@ name|RESTORE_PREFIX
 init|=
 literal|"restore-"
 decl_stmt|;
-comment|/**      * Quote from JSR 283 Section "15.12.3 Activity Storage"<p/>      *<p>      * Activities are persisted as nodes of type nt:activity under system-generated      * node names in activity storage below /jcr:system/jcr:activities.<br>      * Similar to the /jcr:system/jcr:versionStorage subgraph, the activity storage      * is a single repository wide store, but is reflected into each workspace.      */
+comment|/**      * Quote from JSR 283 Section "15.12.3 Activity Storage"<p>      *<p>      * Activities are persisted as nodes of type nt:activity under system-generated      * node names in activity storage below /jcr:system/jcr:activities.<br>      * Similar to the /jcr:system/jcr:versionStorage subgraph, the activity storage      * is a single repository wide store, but is reflected into each workspace.      */
 name|String
 name|ACTIVITIES_PATH
 init|=
@@ -209,7 +209,7 @@ literal|'/'
 operator|+
 name|JCR_ACTIVITIES
 decl_stmt|;
-comment|/**      * Quote from JSR 283 Section "15.13.2 Configuration Proxy Nodes"<p/>      *<p>      * Each configuration in a given workspace is represented by a distinct proxy      * node of type nt:configuration located in configuration storage within the      * same workspace under /jcr:system/jcr:configurations/. The configuration      * storage in a particular workspace is specific to that workspace. It is      * not a common repository-wide store mirrored into each workspace, as is      * the case with version storage.      */
+comment|/**      * Quote from JSR 283 Section "15.13.2 Configuration Proxy Nodes"<p>      *<p>      * Each configuration in a given workspace is represented by a distinct proxy      * node of type nt:configuration located in configuration storage within the      * same workspace under /jcr:system/jcr:configurations/. The configuration      * storage in a particular workspace is specific to that workspace. It is      * not a common repository-wide store mirrored into each workspace, as is      * the case with version storage.      */
 name|String
 name|CONFIGURATIONS_PATH
 init|=
@@ -221,7 +221,7 @@ literal|'/'
 operator|+
 name|JCR_CONFIGURATIONS
 decl_stmt|;
-comment|/**      * Quote from JSR 283 Section "3.13.8 Version Storage"<p/>      *<p>      * Version histories are stored in a single, repository-wide version storage      * mutable and readable through the versioning API.      * Under full versioning the version storage data must, additionally, be      * reflected in each workspace as a protected subgraph [...] located below      * /jcr:system/jcr:versionStorage.      */
+comment|/**      * Quote from JSR 283 Section "3.13.8 Version Storage"<p>      *<p>      * Version histories are stored in a single, repository-wide version storage      * mutable and readable through the versioning API.      * Under full versioning the version storage data must, additionally, be      * reflected in each workspace as a protected subgraph [...] located below      * /jcr:system/jcr:versionStorage.      */
 name|String
 name|VERSION_STORE_PATH
 init|=
