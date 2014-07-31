@@ -316,7 +316,7 @@ operator|/
 name|BITS_PER_LEVEL
 decl_stmt|;
 comment|// 7
-comment|/**      * Number of bits needed to indicate the current trie level.      */
+comment|/**      * Number of bits needed to indicate the current trie level.      * Currently 4.      */
 specifier|protected
 specifier|static
 specifier|final
@@ -334,7 +334,7 @@ operator|<<
 literal|1
 argument_list|)
 decl_stmt|;
-comment|/**      * Number of bits used to indicate the size of a map.      */
+comment|/**      * Number of bits used to indicate the size of a map.      * Currently 28.      */
 specifier|protected
 specifier|static
 specifier|final

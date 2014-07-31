@@ -731,6 +731,10 @@ name|LoggerFactory
 import|;
 end_import
 
+begin_comment
+comment|/**  * Converts records to byte arrays, in order to create segments.  */
+end_comment
+
 begin_class
 specifier|public
 class|class
@@ -1065,6 +1069,7 @@ literal|null
 return|;
 block|}
 block|}
+comment|/**      * Adds a segment header to the buffer and writes a segment to the segment      * store. This is done automatically (called from prepare) when there is not      * enough space for a record. It can also be called explicitly.      */
 specifier|public
 specifier|synchronized
 name|void
@@ -1579,6 +1584,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
+comment|/**      * Before writing a record (which are written backwards, from the end of the      * file to the beginning), this method is called, to ensure there is enough      * space. A new segment is also created if there is not enough space in the      * segment lookup table or elsewhere.      *<p>      * This method does not actually write into the segment, just allocates the      * space (flushing the segment if needed and starting a new one), and sets      * the write position (records are written from the end to the beginning,      * but within a record from left to right).      *       * @param type the record type (only used for root records)      * @param size the size of the record, excluding the size used for the      *            record ids      * @param ids the record ids      * @return a new record id      */
 specifier|private
 name|RecordId
 name|prepare
@@ -2015,6 +2021,7 @@ return|return
 name|refcount
 return|;
 block|}
+comment|/**      * Write a record id, and marks the record id as referenced (removes it from      * the unreferenced set).      *       * @param recordId the record id      */
 specifier|private
 specifier|synchronized
 name|void
@@ -5604,6 +5611,8 @@ name|i
 operator|++
 control|)
 block|{
+comment|// Note: if the property names are stored in more than 255 separate
+comment|// segments, this will not work.
 name|propertyNames
 index|[
 name|i
@@ -5825,6 +5834,7 @@ return|return
 name|id
 return|;
 block|}
+comment|/**      * If the given node was compacted, return the compacted node, otherwise      * return the passed node. This is to avoid pointing to old nodes, if they      * have been compacted.      *       * @param state the node      * @return the compacted node (if it was compacted)      */
 specifier|private
 name|SegmentNodeState
 name|uncompact

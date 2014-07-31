@@ -307,6 +307,10 @@ name|Charsets
 import|;
 end_import
 
+begin_comment
+comment|/**  * A list of records.  *<p>  * Record data is not kept in memory, but some entries are cached (templates,  * all strings in the segment).  */
+end_comment
+
 begin_class
 specifier|public
 class|class

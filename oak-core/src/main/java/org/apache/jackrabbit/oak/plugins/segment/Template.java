@@ -291,6 +291,10 @@ name|NodeState
 import|;
 end_import
 
+begin_comment
+comment|/**  * The in-memory representation of a "hidden class" of a node; inspired by the  * Chrome V8 Javascript engine).  *<p>  * Templates are always read fully in-memory.  */
+end_comment
+
 begin_class
 specifier|public
 class|class

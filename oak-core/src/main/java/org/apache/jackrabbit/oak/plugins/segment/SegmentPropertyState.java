@@ -495,6 +495,10 @@ name|WEAKREFERENCE
 import|;
 end_import
 
+begin_comment
+comment|/**  * A property, which can read a value or list record from a segment.  * It currently doesn't cache data.  */
+end_comment
+
 begin_class
 specifier|public
 class|class

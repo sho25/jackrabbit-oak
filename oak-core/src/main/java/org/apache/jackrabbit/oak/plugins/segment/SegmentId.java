@@ -114,6 +114,8 @@ specifier|final
 name|long
 name|lsb
 decl_stmt|;
+comment|/**      * A reference to the segment object, if it is available in memory. It is      * used for fast lookup. The segment tracker will set or reset this field.      */
+comment|// TODO: possibly we could remove the volatile
 specifier|private
 specifier|volatile
 name|Segment

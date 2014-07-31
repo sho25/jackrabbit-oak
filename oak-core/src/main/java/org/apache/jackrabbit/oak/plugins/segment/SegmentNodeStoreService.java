@@ -609,6 +609,10 @@ name|LoggerFactory
 import|;
 end_import
 
+begin_comment
+comment|/**  * An OSGi wrapper for the segment node store.  */
+end_comment
+
 begin_class
 annotation|@
 name|Component

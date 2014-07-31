@@ -90,6 +90,7 @@ argument_list|<
 name|PropertyTemplate
 argument_list|>
 block|{
+comment|/**      * The index of this property within the list of properties in the node      * template.      */
 specifier|private
 specifier|final
 name|int
@@ -165,7 +166,6 @@ name|index
 operator|=
 literal|0
 expr_stmt|;
-comment|// TODO: is this used anywhere
 name|this
 operator|.
 name|name

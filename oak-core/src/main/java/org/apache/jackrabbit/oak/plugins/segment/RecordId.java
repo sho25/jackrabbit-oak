@@ -117,6 +117,10 @@ name|Pattern
 import|;
 end_import
 
+begin_comment
+comment|/**  * The record id. This includes the segment id and the offset within the  * segment.  */
+end_comment
+
 begin_class
 specifier|public
 specifier|final

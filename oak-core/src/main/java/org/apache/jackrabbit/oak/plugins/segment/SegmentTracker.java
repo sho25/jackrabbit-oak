@@ -186,7 +186,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Tracker of references to segment identifiers and segment instances  * that are currently kept in memory.  */
+comment|/**  * Tracker of references to segment identifiers and segment instances  * that are currently kept in memory.  *<p>  * It is also responsible to cache segment objects in memory.  */
 end_comment
 
 begin_class
@@ -544,6 +544,7 @@ argument_list|,
 name|size
 argument_list|)
 expr_stmt|;
+comment|// TODO possibly this cache could be improved
 while|while
 condition|(
 name|currentSize

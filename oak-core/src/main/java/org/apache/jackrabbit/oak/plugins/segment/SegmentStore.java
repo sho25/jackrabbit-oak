@@ -73,6 +73,10 @@ name|BlobStore
 import|;
 end_import
 
+begin_comment
+comment|/**  * The backend storage interface used by the segment node store.  */
+end_comment
+
 begin_interface
 specifier|public
 interface|interface
