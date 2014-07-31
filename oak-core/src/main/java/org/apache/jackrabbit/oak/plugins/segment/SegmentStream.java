@@ -172,7 +172,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * For reading any value records as binary streams.  */
+comment|/**  * For reading any record of type "VALUE" as binary streams.  */
 end_comment
 
 begin_class

@@ -225,6 +225,10 @@ name|ComparisonChain
 import|;
 end_import
 
+begin_comment
+comment|/**  * A map. The top level record is either a record of type "BRANCH" or "LEAF"  * (depending on the data).  */
+end_comment
+
 begin_class
 class|class
 name|MapRecord

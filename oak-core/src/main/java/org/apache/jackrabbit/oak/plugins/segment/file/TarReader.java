@@ -2681,6 +2681,7 @@ operator|-
 literal|1
 return|;
 block|}
+comment|/**      * If the given segment is in this file, get the byte buffer that allows      * reading it.      *<p>      * Whether or not this will read from the file depends on whether memory      * mapped files are used or not.      *       * @param msb the most significant bits of the segment id      * @param lsb the least significant bits of the segment id      * @return the byte buffer, or null if not in this file      */
 name|ByteBuffer
 name|readEntry
 parameter_list|(
@@ -2743,6 +2744,7 @@ literal|null
 return|;
 block|}
 block|}
+comment|/**      * Find the position of the given segment in the tar file.      * It uses the tar index if available.      *       * @param msb the most significant bits of the segment id      * @param lsb the least significant bits of the segment id      * @return the position in the file, or -1 if not found      */
 specifier|private
 name|int
 name|findEntry
@@ -2954,6 +2956,7 @@ operator|-
 literal|1
 return|;
 block|}
+comment|/**      * Garbage collects segments in this file. First it collects the set of      * segments that are referenced / reachable, then (if more than 25% is      * garbage) creates a new generation of the file.      *<p>      * The old generation files are not removed (they can't easily be removed,      * for memory mapped files).      *       * @param referencedIds the referenced segment ids (input and output).      * @return this (if the file is kept as is), or the new generation file, or      *         null if the file is fully garbage      */
 specifier|synchronized
 name|TarReader
 name|cleanup

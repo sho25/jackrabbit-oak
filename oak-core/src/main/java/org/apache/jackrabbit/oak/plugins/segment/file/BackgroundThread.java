@@ -63,6 +63,10 @@ name|LoggerFactory
 import|;
 end_import
 
+begin_comment
+comment|/**  * A small wrapper around the Thread class that periodically calls a runnable.  * Please note the Runnable.run() method is not supposed to loop itself, instead  * it should just do one operation. This class calls Runnable.run() repeatedly.  * This class also measures and logs the time taken by the Runnable.run()  * method.  */
+end_comment
+
 begin_class
 class|class
 name|BackgroundThread

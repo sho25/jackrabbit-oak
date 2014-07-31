@@ -496,7 +496,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * The top level class for the segment store.  */
+comment|/**  * The top level class for the segment store.  *<p>  * The root node of the JCR content tree is actually stored in the node "/root",  * and checkpoints are stored under "/checkpoints".  */
 end_comment
 
 begin_class

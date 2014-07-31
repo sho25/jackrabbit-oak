@@ -641,6 +641,10 @@ name|LoggerFactory
 import|;
 end_import
 
+begin_comment
+comment|/**  * The storage implementation for tar files.  */
+end_comment
+
 begin_class
 specifier|public
 class|class
@@ -820,7 +824,7 @@ argument_list|(
 literal|false
 argument_list|)
 decl_stmt|;
-comment|/**      * List of old tar file generations that are waiting to be removed.      */
+comment|/**      * List of old tar file generations that are waiting to be removed. They can      * not be removed immediately, because they first need to be closed, and the      * JVM needs to release the memory mapped file references.      */
 specifier|private
 specifier|final
 name|LinkedList
@@ -2312,6 +2316,7 @@ block|}
 block|}
 block|}
 block|}
+comment|/**      * Runs garbage collection on the segment level, which could write new      * generations of tar files. It checks which segments are still reachable,      * and throws away those that are not.      *<p>      * A new generation of a tar file is created (and segments are only      * discarded) if doing so releases more than 25% of the space in a tar file.      */
 specifier|public
 specifier|synchronized
 name|void
@@ -2508,6 +2513,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * Copy every referenced record in data (non-bulk) segments. Bulk segments      * are fully kept (they are only removed in cleanup, if there is no      * reference to them).      */
 specifier|public
 name|void
 name|compact

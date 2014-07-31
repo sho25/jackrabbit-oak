@@ -468,7 +468,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A node, which can read a node record from a segment.  * It currently doesn't cache data.  */
+comment|/**  * A record of type "NODE". This class can read a node record from a segment. It  * currently doesn't cache data (but the template is fully loaded).  */
 end_comment
 
 begin_class

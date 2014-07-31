@@ -265,6 +265,10 @@ name|Maps
 import|;
 end_import
 
+begin_comment
+comment|/**  * A store used for in-memory operations.  */
+end_comment
+
 begin_class
 specifier|public
 class|class

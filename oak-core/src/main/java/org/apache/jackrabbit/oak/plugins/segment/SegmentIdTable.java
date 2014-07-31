@@ -114,7 +114,7 @@ specifier|public
 class|class
 name|SegmentIdTable
 block|{
-comment|/**      * Hash table of weak references to segment identifiers that are      * currently being accessed. The size of the table is always a power      * of two, which optimizes the {@link #expand()} operation. The table is      * indexed by the random identifier bits, which guarantees uniform      * distribution of entries. Each table entry is either {@code null}      * (when there are no matching identifiers) or a list of weak references      * to the matching identifiers.      */
+comment|/**      * Hash table of weak references to segment identifiers that are currently      * being accessed. The size of the table is always a power of two, which      * optimizes the {@link #expand()} operation. The table is indexed by the      * random identifier bits, which guarantees uniform distribution of entries.      * Each table entry is either {@code null} (when there are no matching      * identifiers) or a list of weak references to the matching identifiers.      *<p>      * Actually, this is a array. It's not a hash map, to conserve memory (maps      * need much more memory).      *<p>      * The list is not sorted (we could; lookup would be faster, but adding and      * removing entries would be slower).      */
 specifier|private
 specifier|final
 name|ArrayList
@@ -160,7 +160,7 @@ operator|=
 name|tracker
 expr_stmt|;
 block|}
-comment|/**      *       * @param msb      * @param lsb      * @return      */
+comment|/**      * Get the segment id, and reference it in the weak references map.      *       * @param msb      * @param lsb      * @return the segment id      */
 specifier|synchronized
 name|SegmentId
 name|getSegmentId

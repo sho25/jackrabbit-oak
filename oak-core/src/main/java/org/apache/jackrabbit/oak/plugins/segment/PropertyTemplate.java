@@ -81,6 +81,10 @@ name|ComparisonChain
 import|;
 end_import
 
+begin_comment
+comment|/**  * A property definition within a template (the property name, the type, and the  * index within the list of properties for the given node).  */
+end_comment
+
 begin_class
 class|class
 name|PropertyTemplate

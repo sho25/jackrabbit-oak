@@ -496,7 +496,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A property, which can read a value or list record from a segment.  * It currently doesn't cache data.  */
+comment|/**  * A property, which can read a value or list record from a segment. It  * currently doesn't cache data.  *<p>  * Depending on the property type, this is a record of type "VALUE" or a record  * of type "LIST" (for arrays).  */
 end_comment
 
 begin_class

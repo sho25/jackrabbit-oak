@@ -39,7 +39,7 @@ block|,
 comment|/**      * A list including the size (an int). This could be 0, in which case there      * is no reference. If the size is 1, then reference points to the value of      * the list. If the size is larger, then a record id follows, which points      * to a bucket with the actual record ids. If there are more than 255      * entries in the list, then the list is partitioned into sublists of 255      * entries each, which are stored kind of recursively.      */
 name|LIST
 block|,
-comment|/**      * A short value (for example a string, or a long). The format is: length      * (variable length encoding, one byte if shorter than 128, else more      * bytes), then the data as a byte array, or, for large values, a record id      * of the top level bucket that contains the list of block record ids of the      * actual binary data.      */
+comment|/**      * A value (for example a string, or a long, or a blob). The format is:      * length (variable length encoding, one byte if shorter than 128, else more      * bytes), then the data as a byte array, or, for large values, a record id      * of the top level bucket that contains the list of block record ids of the      * actual binary data.      *<p>      * Therefore, a value can reference other records.      */
 name|VALUE
 block|,
 comment|/**      * A block of bytes (a binary value, or a part of a binary value, or part of      * large strings). It only contains the raw data.      */

@@ -197,6 +197,10 @@ name|BlobStore
 import|;
 end_import
 
+begin_comment
+comment|/**  * A BLOB (stream of bytes). This is a record of type "VALUE".  */
+end_comment
+
 begin_class
 specifier|public
 class|class

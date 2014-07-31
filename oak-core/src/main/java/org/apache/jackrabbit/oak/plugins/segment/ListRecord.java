@@ -117,6 +117,10 @@ name|List
 import|;
 end_import
 
+begin_comment
+comment|/**  * A record of type "LIST".  */
+end_comment
+
 begin_class
 class|class
 name|ListRecord

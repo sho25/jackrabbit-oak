@@ -50,7 +50,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Segment identifier.  */
+comment|/**  * Segment identifier. There are two types of segments: data segments, and bulk  * segments. Data segments have a header and may reference other segments; bulk  * segments do not.  */
 end_comment
 
 begin_class

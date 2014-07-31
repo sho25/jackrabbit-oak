@@ -67,6 +67,10 @@ name|checkPositionIndexes
 import|;
 end_import
 
+begin_comment
+comment|/**  * A record of type "BLOCK".  */
+end_comment
+
 begin_class
 class|class
 name|BlockRecord

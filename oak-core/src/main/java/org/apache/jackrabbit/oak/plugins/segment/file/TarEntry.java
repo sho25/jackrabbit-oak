@@ -31,6 +31,10 @@ name|Comparator
 import|;
 end_import
 
+begin_comment
+comment|/**  * A file entry location in a tar file. This is used for the index with a tar  * file.  */
+end_comment
+
 begin_class
 class|class
 name|TarEntry
