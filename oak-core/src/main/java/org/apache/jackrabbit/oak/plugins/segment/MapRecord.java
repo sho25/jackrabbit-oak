@@ -231,6 +231,7 @@ name|MapRecord
 extends|extends
 name|Record
 block|{
+comment|/**      * Magic constant from a random number generator, used to generate      * good hash values.      */
 specifier|private
 specifier|static
 specifier|final
@@ -254,6 +255,7 @@ name|HASH_MASK
 init|=
 literal|0xFFFFFFFFL
 decl_stmt|;
+comment|/**      * Generates a hash code for the value, using a random number generator      * to improve the distribution of the hash values.      */
 specifier|static
 name|int
 name|getHash
