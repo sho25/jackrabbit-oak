@@ -59,6 +59,26 @@ name|String
 name|getStatus
 parameter_list|()
 function_decl|;
+comment|/**      * Pauses the background indexing process. Future changes are not indexed      * until the {@link #resume()} method is called.      *       * The pause call will take effect on the next run cycle and will affect all      * indexes marked as 'async'.      *       * Note: this is experimental and should only be used for      * debugging/diagnosis purposes!      *       */
+name|void
+name|pause
+parameter_list|()
+function_decl|;
+comment|/**      * Resumes the indexing process. All changes from the previous indexed state      * will be indexed.      *       * @see #pause()      */
+name|void
+name|resume
+parameter_list|()
+function_decl|;
+comment|/**      * Returns the value of the 'paused' flag      *       * @return true if the indexing job is paused      */
+name|boolean
+name|isPaused
+parameter_list|()
+function_decl|;
+comment|/**      * Returns the number of updates from the current run cycle. This value is      * kept until the next cycle begins.      *       * @return the number of updates from the current run cycle. This value is      *         kept until the next cycle begins.      */
+name|long
+name|getUpdates
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 
