@@ -19,6 +19,42 @@ name|memory
 package|;
 end_package
 
+begin_comment
+comment|// WARNING! WARNING! WARNING! WARNING! WARNING! WARNING! WARNING! WARNING! //
+end_comment
+
+begin_comment
+comment|//                                                                         //
+end_comment
+
+begin_comment
+comment|// This class has complex internals that have evolved in over a hundred    //
+end_comment
+
+begin_comment
+comment|// commits. It is a central component in how Oak handles modifications to  //
+end_comment
+
+begin_comment
+comment|// content trees. Please use 'svn blame', 'svn log' and the referenced     //
+end_comment
+
+begin_comment
+comment|// Jira issues to understand the reason for some of the more complex parts //
+end_comment
+
+begin_comment
+comment|// of this class. See also the MemoryNodeBuilderTest for existing tests.   //
+end_comment
+
+begin_comment
+comment|//                                                                         //
+end_comment
+
+begin_comment
+comment|// WARNING! WARNING! WARNING! WARNING! WARNING! WARNING! WARNING! WARNING! //
+end_comment
+
 begin_import
 import|import
 name|java
