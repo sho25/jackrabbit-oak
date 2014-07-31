@@ -1209,7 +1209,7 @@ name|TimeUnit
 operator|.
 name|HOURS
 operator|.
-name|toMillis
+name|toSeconds
 argument_list|(
 literal|24
 argument_list|)
