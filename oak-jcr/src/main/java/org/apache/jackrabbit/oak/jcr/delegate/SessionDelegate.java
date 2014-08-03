@@ -739,7 +739,7 @@ name|LoggerFactory
 operator|.
 name|getLogger
 argument_list|(
-literal|"org.apache.jackrabbit.oak.jcr.operations.write"
+literal|"org.apache.jackrabbit.oak.jcr.operations.writes"
 argument_list|)
 decl_stmt|;
 specifier|private
