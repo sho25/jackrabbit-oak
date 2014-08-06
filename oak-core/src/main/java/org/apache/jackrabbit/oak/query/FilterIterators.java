@@ -77,6 +77,26 @@ name|NoSuchElementException
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
+import|;
+end_import
+
 begin_comment
 comment|/**  * Filtering iterators that are useful for queries with limit, offset, order by,  * or distinct.  */
 end_comment
@@ -86,6 +106,21 @@ specifier|public
 class|class
 name|FilterIterators
 block|{
+specifier|private
+specifier|static
+specifier|final
+name|Logger
+name|LOG
+init|=
+name|LoggerFactory
+operator|.
+name|getLogger
+argument_list|(
+name|FilterIterators
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 comment|/**      * Verify the number of in-memory nodes is below the limit.      *       * @param count the number of nodes      * @param maxMemoryEntries the maximum number of nodes      * @throws UnsupportedOperationException if the limit was exceeded      */
 specifier|public
 specifier|static
@@ -106,18 +141,37 @@ operator|>
 name|maxMemoryEntries
 condition|)
 block|{
-throw|throw
-operator|new
-name|UnsupportedOperationException
-argument_list|(
+name|String
+name|message
+init|=
 literal|"The query read more than "
 operator|+
 name|maxMemoryEntries
 operator|+
-literal|" nodes in memory. "
+literal|" nodes in memory."
+decl_stmt|;
+name|UnsupportedOperationException
+name|e
+init|=
+operator|new
+name|UnsupportedOperationException
+argument_list|(
+name|message
 operator|+
-literal|"To avoid running out of memory, processing was stopped."
+literal|" To avoid running out of memory, processing was stopped."
 argument_list|)
+decl_stmt|;
+name|LOG
+operator|.
+name|warn
+argument_list|(
+name|message
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
+throw|throw
+name|e
 throw|;
 block|}
 block|}
@@ -141,18 +195,37 @@ operator|>
 name|maxReadEntries
 condition|)
 block|{
-throw|throw
-operator|new
-name|UnsupportedOperationException
-argument_list|(
+name|String
+name|message
+init|=
 literal|"The query read or traversed more than "
 operator|+
 name|maxReadEntries
 operator|+
-literal|" nodes. "
+literal|" nodes."
+decl_stmt|;
+name|UnsupportedOperationException
+name|e
+init|=
+operator|new
+name|UnsupportedOperationException
+argument_list|(
+name|message
 operator|+
-literal|"To avoid affecting other tasks, processing was stopped."
+literal|" To avoid affecting other tasks, processing was stopped."
 argument_list|)
+decl_stmt|;
+name|LOG
+operator|.
+name|warn
+argument_list|(
+name|message
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
+throw|throw
+name|e
 throw|;
 block|}
 block|}
