@@ -131,11 +131,15 @@ name|privilegeNames
 parameter_list|)
 function_decl|;
 comment|/**      * Return the {@code RepositoryPermission} for the set of {@code Principal}s      * associated with this provider instance.      *      * @return The {@link org.apache.jackrabbit.oak.spi.security.authorization.permission.RepositoryPermission}      * for the set of {@code Principal}s this provider instance has been created for.      */
+annotation|@
+name|Nonnull
 name|RepositoryPermission
 name|getRepositoryPermission
 parameter_list|()
 function_decl|;
 comment|/**      * Return the {@code TreePermission} for the set of {@code Principal}s associated      * with this provider at the specified {@code tree}.      *      * @param tree The tree for which the {@code TreePermission} object should be built.      * @param parentPermission The {@code TreePermission} object that has been      * obtained before for the parent tree.      * @return The {@code TreePermission} object for the specified {@code tree}.      */
+annotation|@
+name|Nonnull
 name|TreePermission
 name|getTreePermission
 parameter_list|(

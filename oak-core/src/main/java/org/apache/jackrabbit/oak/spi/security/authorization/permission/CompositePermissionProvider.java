@@ -439,8 +439,6 @@ expr_stmt|;
 block|}
 block|}
 annotation|@
-name|Nonnull
-annotation|@
 name|Override
 specifier|public
 name|Set
@@ -1530,6 +1528,7 @@ return|;
 block|}
 comment|//--------------------------------------------------------------------------
 specifier|private
+specifier|final
 class|class
 name|CompositeTreePermission
 implements|implements
