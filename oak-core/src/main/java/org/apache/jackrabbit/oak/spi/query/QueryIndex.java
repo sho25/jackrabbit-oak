@@ -210,7 +210,7 @@ name|NodeState
 name|rootState
 parameter_list|)
 function_decl|;
-comment|/**          * Get the query plan description (for logging purposes).          *           * @param plan the index plan          * @param root root state of the current repository snapshot          * @return the query plan description          */
+comment|/**          * Get the query plan description (for logging purposes).          *<p>          * The index plan is one of the plans that the index returned in the          * getPlans call.          *           * @param plan the index plan          * @param root root state of the current repository snapshot          * @return the query plan description          */
 name|String
 name|getPlanDescription
 parameter_list|(
@@ -221,7 +221,7 @@ name|NodeState
 name|root
 parameter_list|)
 function_decl|;
-comment|/**          * Start a query. The filter and sort order of the index plan is to be          * used.          *           * @param plan the index plan to use          * @param rootState root state of the current repository snapshot          * @return a cursor to iterate over the result          */
+comment|/**          * Start a query. The filter and sort order of the index plan is to be          * used.          *<p>          * The index plan is one of the plans that the index returned in the          * getPlans call.          *           * @param plan the index plan to use          * @param rootState root state of the current repository snapshot          * @return a cursor to iterate over the result          */
 name|Cursor
 name|query
 parameter_list|(

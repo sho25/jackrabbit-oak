@@ -2571,6 +2571,7 @@ name|sortUsingIndex
 init|=
 literal|false
 decl_stmt|;
+comment|// TODO add issue about order by optimization for multiple selectors
 if|if
 condition|(
 name|orderings
@@ -4435,6 +4436,7 @@ range|:
 name|ipList
 control|)
 block|{
+comment|// TODO limit is after all conditions
 name|long
 name|entryCount
 init|=
