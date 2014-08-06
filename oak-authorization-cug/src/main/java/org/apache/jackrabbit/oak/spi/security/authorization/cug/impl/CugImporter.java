@@ -29,6 +29,16 @@ begin_import
 import|import
 name|java
 operator|.
+name|lang
+operator|.
+name|IllegalArgumentException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|security
 operator|.
 name|AccessControlException
@@ -739,6 +749,17 @@ argument_list|(
 name|principalName
 argument_list|)
 expr_stmt|;
+break|break;
+default|default:
+throw|throw
+operator|new
+name|IllegalArgumentException
+argument_list|(
+literal|"Invalid import behavior "
+operator|+
+name|importBehavior
+argument_list|)
+throw|;
 block|}
 block|}
 else|else

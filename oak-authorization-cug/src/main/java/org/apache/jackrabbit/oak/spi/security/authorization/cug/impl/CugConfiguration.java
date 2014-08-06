@@ -983,20 +983,6 @@ name|ProtectedItemImporter
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|osgi
-operator|.
-name|service
-operator|.
-name|component
-operator|.
-name|ComponentContext
-import|;
-end_import
-
 begin_class
 annotation|@
 name|Component
@@ -1545,13 +1531,10 @@ block|}
 comment|//----------------------------------------------------< SCR Integration>---
 annotation|@
 name|Activate
-specifier|private
+specifier|protected
 name|void
 name|activate
-parameter_list|(
-name|ComponentContext
-name|context
-parameter_list|)
+parameter_list|()
 throws|throws
 name|IOException
 throws|,

@@ -29,6 +29,16 @@ begin_import
 import|import
 name|java
 operator|.
+name|lang
+operator|.
+name|IllegalArgumentException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|security
 operator|.
 name|Principal
@@ -537,6 +547,29 @@ literal|null
 expr_stmt|;
 block|}
 break|break;
+case|case
+name|ImportBehavior
+operator|.
+name|BESTEFFORT
+case|:
+name|log
+operator|.
+name|debug
+argument_list|(
+literal|"Best effort: don't verify existence of principals."
+argument_list|)
+expr_stmt|;
+break|break;
+default|default:
+throw|throw
+operator|new
+name|IllegalArgumentException
+argument_list|(
+literal|"Unsupported import behavior "
+operator|+
+name|importBehavior
+argument_list|)
+throw|;
 block|}
 if|if
 condition|(
