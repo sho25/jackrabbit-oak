@@ -80,6 +80,12 @@ specifier|public
 interface|interface
 name|PermissionStore
 block|{
+name|long
+name|DYNAMIC_ALL_BITS
+init|=
+operator|-
+literal|1
+decl_stmt|;
 comment|/**      * Loads the permission entries for the given principal and path. if the given {@code entries} is {@code null}, it      * will be created automatically if needed. If a {@code entries} is given, it will reuse it and the same object is      * returned. If no entries can be found for the given principal or path, {@code null} is returned.      *      * @param entries the permission entries or {@code null}      * @param principalName name of the principal      * @param path access controlled path.      * @return the given {@code entries}, a new collection or {@code null}      */
 annotation|@
 name|CheckForNull
