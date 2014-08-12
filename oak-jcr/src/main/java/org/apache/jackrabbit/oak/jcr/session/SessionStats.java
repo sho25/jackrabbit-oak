@@ -883,6 +883,7 @@ block|{
 name|atts
 index|[
 name|k
+operator|++
 index|]
 operator|=
 name|attribute
