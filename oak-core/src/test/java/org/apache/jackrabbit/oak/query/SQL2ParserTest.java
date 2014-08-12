@@ -281,7 +281,7 @@ decl_stmt|;
 name|String
 name|token
 init|=
-literal|"and (b.[type] = 't1' or b.[type] = 't2' or b.[type] = 't3')"
+literal|"and b.[type] in('t1', 't2', 't3')"
 decl_stmt|;
 name|assertTrue
 argument_list|(
