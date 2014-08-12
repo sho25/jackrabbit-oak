@@ -844,6 +844,14 @@ decl_stmt|;
 specifier|private
 specifier|static
 specifier|final
+name|int
+name|DEFAULT_BLOB_CACHE_SIZE
+init|=
+literal|16
+decl_stmt|;
+specifier|private
+specifier|static
+specifier|final
 name|String
 name|DEFAULT_DB
 init|=
@@ -970,6 +978,21 @@ name|String
 name|PROP_CHANGES_SIZE
 init|=
 literal|"changesSize"
+decl_stmt|;
+annotation|@
+name|Property
+argument_list|(
+name|intValue
+operator|=
+name|DEFAULT_BLOB_CACHE_SIZE
+argument_list|)
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|PROP_BLOB_CACHE_SIZE
+init|=
+literal|"blobCacheSize"
 decl_stmt|;
 comment|/**      * Boolean value indicating a blobStore is to be used      */
 specifier|public
@@ -1559,6 +1582,19 @@ argument_list|,
 name|DEFAULT_CHANGES_SIZE
 argument_list|)
 decl_stmt|;
+name|int
+name|blobCacheSize
+init|=
+name|toInteger
+argument_list|(
+name|prop
+argument_list|(
+name|PROP_BLOB_CACHE_SIZE
+argument_list|)
+argument_list|,
+name|DEFAULT_BLOB_CACHE_SIZE
+argument_list|)
+decl_stmt|;
 name|boolean
 name|useMK
 init|=
@@ -1999,7 +2035,7 @@ name|info
 argument_list|(
 literal|"Starting Document{} with host={}, db={}, cache size (MB)={}, Off Heap Cache size (MB)={}, "
 operator|+
-literal|"'changes' collection size (MB)={}, maxReplicationLagInSecs={}"
+literal|"'changes' collection size (MB)={}, blobCacheSize (MB)={}, maxReplicationLagInSecs={}"
 argument_list|,
 name|type
 argument_list|,
@@ -2015,6 +2051,8 @@ argument_list|,
 name|offHeapCache
 argument_list|,
 name|changesSize
+argument_list|,
+name|blobCacheSize
 argument_list|,
 name|maxReplicationLagInSecs
 argument_list|)
@@ -2074,6 +2112,8 @@ argument_list|(
 name|mongoDB
 argument_list|,
 name|changesSize
+argument_list|,
+name|blobCacheSize
 argument_list|)
 expr_stmt|;
 name|log

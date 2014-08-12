@@ -2840,6 +2840,9 @@ name|db
 parameter_list|,
 name|int
 name|changesSizeMB
+parameter_list|,
+name|int
+name|blobCacheSizeMB
 parameter_list|)
 block|{
 if|if
@@ -2888,6 +2891,12 @@ operator|new
 name|MongoBlobStore
 argument_list|(
 name|db
+argument_list|,
+name|blobCacheSizeMB
+operator|*
+literal|1024
+operator|*
+literal|1024
 argument_list|)
 expr_stmt|;
 block|}
@@ -2935,6 +2944,8 @@ argument_list|(
 name|db
 argument_list|,
 literal|8
+argument_list|,
+literal|16
 argument_list|)
 return|;
 block|}
