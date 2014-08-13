@@ -2642,11 +2642,6 @@ argument_list|()
 decl_stmt|;
 name|store
 operator|.
-name|gc
-argument_list|()
-expr_stmt|;
-name|store
-operator|.
 name|compact
 argument_list|()
 expr_stmt|;
