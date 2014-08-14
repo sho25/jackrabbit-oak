@@ -421,6 +421,16 @@ operator|.
 name|getType
 argument_list|()
 argument_list|)
+operator|||
+name|NAMES
+operator|.
+name|equals
+argument_list|(
+name|property
+operator|.
+name|getType
+argument_list|()
+argument_list|)
 condition|)
 block|{
 for|for
