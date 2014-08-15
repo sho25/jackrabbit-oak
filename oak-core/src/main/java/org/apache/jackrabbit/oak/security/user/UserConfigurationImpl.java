@@ -595,6 +595,30 @@ name|name
 operator|=
 name|UserConstants
 operator|.
+name|PARAM_SYSTEM_RELATIVE_PATH
+argument_list|,
+name|label
+operator|=
+literal|"System User Relative Path"
+argument_list|,
+name|description
+operator|=
+literal|"Path relative to the user root path underneath which system user nodes are being created. The default value is 'system'."
+argument_list|,
+name|value
+operator|=
+name|UserConstants
+operator|.
+name|DEFAULT_SYSTEM_RELATIVE_PATH
+argument_list|)
+block|,
+annotation|@
+name|Property
+argument_list|(
+name|name
+operator|=
+name|UserConstants
+operator|.
 name|PARAM_DEFAULT_DEPTH
 argument_list|,
 name|label

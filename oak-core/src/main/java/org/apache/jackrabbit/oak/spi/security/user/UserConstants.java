@@ -75,6 +75,11 @@ init|=
 literal|"rep:Group"
 decl_stmt|;
 name|String
+name|NT_REP_SYSTEM_USER
+init|=
+literal|"rep:SystemUser"
+decl_stmt|;
+name|String
 name|NT_REP_PASSWORD
 init|=
 literal|"rep:Password"
@@ -279,6 +284,18 @@ name|String
 name|DEFAULT_GROUP_PATH
 init|=
 literal|"/rep:security/rep:authorizables/rep:groups"
+decl_stmt|;
+comment|/**      * Configuration option to define the path relative to the user root node      * underneath which system user nodes are being created.      */
+name|String
+name|PARAM_SYSTEM_RELATIVE_PATH
+init|=
+literal|"systemRelativePath"
+decl_stmt|;
+comment|/**      * Default intermediate path for system users.      */
+name|String
+name|DEFAULT_SYSTEM_RELATIVE_PATH
+init|=
+literal|"system"
 decl_stmt|;
 comment|/**      * Parameter used to change the number of levels that are used by default to      * store authorizable nodes.<br>The default number of levels is 2.      */
 name|String

@@ -511,7 +511,9 @@ specifier|final
 name|String
 name|USERPATH
 init|=
-literal|"/rep:security/rep:authorizables/rep:users"
+name|UserConstants
+operator|.
+name|DEFAULT_USER_PATH
 decl_stmt|;
 specifier|protected
 specifier|static
@@ -519,7 +521,9 @@ specifier|final
 name|String
 name|GROUPPATH
 init|=
-literal|"/rep:security/rep:authorizables/rep:groups"
+name|UserConstants
+operator|.
+name|DEFAULT_GROUP_PATH
 decl_stmt|;
 specifier|private
 name|Repository
