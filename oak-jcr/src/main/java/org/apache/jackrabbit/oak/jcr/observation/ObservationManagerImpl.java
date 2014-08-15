@@ -1432,16 +1432,21 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|// FIXME Use filter.getExcludedPaths()) as soon as we have the changes from  JCR-3797. See OAK-1978
-comment|//        Set<String> excludedPaths = getOakPaths(namePathMapper, filter.getExcludedPaths());
 name|Set
 argument_list|<
 name|String
 argument_list|>
 name|excludedPaths
 init|=
-name|emptySet
+name|getOakPaths
+argument_list|(
+name|namePathMapper
+argument_list|,
+name|filter
+operator|.
+name|getExcludedPaths
 argument_list|()
+argument_list|)
 decl_stmt|;
 name|optimise
 argument_list|(

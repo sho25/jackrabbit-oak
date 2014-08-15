@@ -5525,12 +5525,6 @@ argument_list|)
 expr_stmt|;
 block|}
 annotation|@
-name|Ignore
-argument_list|(
-literal|"OAK-1978"
-argument_list|)
-comment|// FIXME OAK-1978
-annotation|@
 name|Test
 specifier|public
 name|void
@@ -5581,8 +5575,19 @@ name|setIsDeep
 argument_list|(
 literal|true
 argument_list|)
-comment|// FIXME set exclude paths as soon as we have the changes from  JCR-3797. See OAK-1978
-comment|//               .setExcludedPaths(TEST_PATH + "/c", TEST_PATH + "/d",  "/x/y")
+operator|.
+name|setExcludedPaths
+argument_list|(
+name|TEST_PATH
+operator|+
+literal|"/c"
+argument_list|,
+name|TEST_PATH
+operator|+
+literal|"/d"
+argument_list|,
+literal|"/x/y"
+argument_list|)
 operator|.
 name|setEventTypes
 argument_list|(
@@ -5757,12 +5762,6 @@ argument_list|)
 expr_stmt|;
 block|}
 annotation|@
-name|Ignore
-argument_list|(
-literal|"OAK-1978"
-argument_list|)
-comment|// FIXME OAK-1978
-annotation|@
 name|Test
 specifier|public
 name|void
@@ -5835,8 +5834,17 @@ name|setIsDeep
 argument_list|(
 literal|true
 argument_list|)
-comment|// FIXME set exclude paths as soon as we have the changes from  JCR-3797. See OAK-1978
-comment|//              .setExcludedPaths(n.getParent().getPath())
+operator|.
+name|setExcludedPaths
+argument_list|(
+name|n
+operator|.
+name|getParent
+argument_list|()
+operator|.
+name|getPath
+argument_list|()
+argument_list|)
 operator|.
 name|setEventTypes
 argument_list|(
