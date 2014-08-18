@@ -396,7 +396,7 @@ name|UNDEFINED
 condition|)
 block|{
 return|return
-name|type
+name|target
 return|;
 block|}
 elseif|else
