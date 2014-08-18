@@ -339,16 +339,6 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Ignore
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
 name|Test
 import|;
 end_import
@@ -426,11 +416,6 @@ name|getNodeStore
 argument_list|()
 expr_stmt|;
 block|}
-annotation|@
-name|Ignore
-argument_list|(
-literal|"OAK-2020"
-argument_list|)
 annotation|@
 name|Test
 specifier|public
@@ -552,11 +537,6 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * This testcase demonstrates that diff logic in merge part traverses node path      * which are not affected by the commit      * @throws Exception      */
-annotation|@
-name|Ignore
-argument_list|(
-literal|"OAK-2020"
-argument_list|)
 annotation|@
 name|Test
 specifier|public
