@@ -115,7 +115,9 @@ name|apache
 operator|.
 name|jackrabbit
 operator|.
-name|core
+name|oak
+operator|.
+name|spi
 operator|.
 name|security
 operator|.
