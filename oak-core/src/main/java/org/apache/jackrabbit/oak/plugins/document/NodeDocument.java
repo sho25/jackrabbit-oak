@@ -607,12 +607,22 @@ init|=
 literal|10
 decl_stmt|;
 comment|/**      * Revision collision markers set by commits with modifications, which      * overlap with un-merged branch commits.      * Key: revision, value: always true      */
+specifier|public
 specifier|static
 specifier|final
 name|String
 name|COLLISIONS
 init|=
 literal|"_collisions"
+decl_stmt|;
+comment|/**      * Optional counter for changes to {@link #COLLISIONS} map.      */
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|COLLISIONSMODCOUNT
+init|=
+literal|"_collisionsModCount"
 decl_stmt|;
 comment|/**      * The modified time in seconds (5 second resolution).      */
 specifier|public
@@ -917,7 +927,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**      * Properties to ignore when a document is split.      */
+comment|/**      * Properties to ignore when a document is split (see OAK-2044).      */
 specifier|static
 specifier|final
 name|Set
@@ -933,6 +943,8 @@ argument_list|(
 name|ID
 argument_list|,
 name|MOD_COUNT
+argument_list|,
+name|COLLISIONSMODCOUNT
 argument_list|,
 name|MODIFIED_IN_SECS
 argument_list|,
