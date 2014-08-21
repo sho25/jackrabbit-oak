@@ -546,6 +546,19 @@ operator|=
 name|file
 expr_stmt|;
 block|}
+comment|/**      * Returns the number of segments written so far to this tar file.      *      * @return number of segments written so far      */
+specifier|synchronized
+name|int
+name|count
+parameter_list|()
+block|{
+return|return
+name|index
+operator|.
+name|size
+argument_list|()
+return|;
+block|}
 specifier|synchronized
 name|Set
 argument_list|<
