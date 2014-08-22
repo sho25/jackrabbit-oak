@@ -403,6 +403,17 @@ name|long
 name|estimateCompactionGain
 parameter_list|()
 block|{
+if|if
+condition|(
+name|totalSize
+operator|==
+literal|0
+condition|)
+block|{
+return|return
+literal|0
+return|;
+block|}
 return|return
 literal|100
 operator|*
