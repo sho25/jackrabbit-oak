@@ -3798,7 +3798,7 @@ name|index
 return|;
 block|}
 specifier|public
-name|void
+name|FileStore
 name|setPauseCompaction
 parameter_list|(
 name|boolean
@@ -3811,6 +3811,9 @@ name|pauseCompaction
 operator|=
 name|pauseCompaction
 expr_stmt|;
+return|return
+name|this
+return|;
 block|}
 block|}
 end_class
