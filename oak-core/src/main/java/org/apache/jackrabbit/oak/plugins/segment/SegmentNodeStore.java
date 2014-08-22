@@ -550,6 +550,14 @@ name|ROOT
 init|=
 literal|"root"
 decl_stmt|;
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|CHECKPOINTS
+init|=
+literal|"checkpoints"
+decl_stmt|;
 specifier|private
 specifier|final
 name|SegmentStore
