@@ -370,6 +370,11 @@ name|store
 decl_stmt|;
 specifier|private
 specifier|final
+name|String
+name|clientID
+decl_stmt|;
+specifier|private
+specifier|final
 name|RecordId
 name|head
 decl_stmt|;
@@ -422,6 +427,9 @@ name|preloaderExecutor
 parameter_list|,
 name|EventExecutorGroup
 name|loaderExecutor
+parameter_list|,
+name|String
+name|clientID
 parameter_list|)
 block|{
 name|this
@@ -447,6 +455,12 @@ operator|.
 name|loaderExecutor
 operator|=
 name|loaderExecutor
+expr_stmt|;
+name|this
+operator|.
+name|clientID
+operator|=
+name|clientID
 expr_stmt|;
 block|}
 annotation|@
@@ -633,6 +647,10 @@ name|writeAndFlush
 argument_list|(
 name|newGetSegmentReq
 argument_list|(
+name|this
+operator|.
+name|clientID
+argument_list|,
 name|id
 argument_list|)
 argument_list|)
