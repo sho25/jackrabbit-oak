@@ -91,6 +91,11 @@ name|DEFAULT_APP_NAME
 init|=
 literal|"jackrabbit.oak"
 decl_stmt|;
+name|String
+name|PARAM_CONFIG_SPI_NAME
+init|=
+literal|"org.apache.jackrabbit.oak.authentication.configSpiName"
+decl_stmt|;
 annotation|@
 name|Nonnull
 name|LoginContextProvider
