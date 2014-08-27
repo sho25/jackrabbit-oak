@@ -766,7 +766,6 @@ operator|<<
 literal|12
 decl_stmt|;
 comment|// 4kB
-specifier|private
 specifier|static
 name|byte
 index|[]
