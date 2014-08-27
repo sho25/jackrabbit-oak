@@ -187,16 +187,6 @@ name|com
 operator|.
 name|mongodb
 operator|.
-name|WriteConcern
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|mongodb
-operator|.
 name|WriteResult
 import|;
 end_import
@@ -646,10 +636,6 @@ operator|.
 name|remove
 argument_list|(
 name|query
-argument_list|,
-name|WriteConcern
-operator|.
-name|SAFE
 argument_list|)
 decl_stmt|;
 if|if

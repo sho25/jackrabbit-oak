@@ -3051,10 +3051,6 @@ argument_list|)
 operator|.
 name|get
 argument_list|()
-argument_list|,
-name|WriteConcern
-operator|.
-name|SAFE
 argument_list|)
 decl_stmt|;
 name|invalidateCache
@@ -3177,10 +3173,6 @@ operator|.
 name|remove
 argument_list|(
 name|query
-argument_list|,
-name|WriteConcern
-operator|.
-name|SAFE
 argument_list|)
 decl_stmt|;
 name|invalidateCache
@@ -4015,10 +4007,6 @@ operator|.
 name|insert
 argument_list|(
 name|inserts
-argument_list|,
-name|WriteConcern
-operator|.
-name|SAFE
 argument_list|)
 decl_stmt|;
 if|if
@@ -4262,10 +4250,6 @@ argument_list|,
 literal|false
 argument_list|,
 literal|true
-argument_list|,
-name|WriteConcern
-operator|.
-name|SAFE
 argument_list|)
 decl_stmt|;
 if|if
