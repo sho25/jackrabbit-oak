@@ -747,7 +747,6 @@ name|lastSnapshot
 argument_list|)
 return|;
 block|}
-specifier|private
 specifier|static
 name|String
 name|timeInWords
@@ -812,7 +811,6 @@ argument_list|)
 return|;
 block|}
 comment|/**      * Based on http://stackoverflow.com/a/3758880/1035417      */
-specifier|private
 specifier|static
 name|String
 name|humanReadableByteCount

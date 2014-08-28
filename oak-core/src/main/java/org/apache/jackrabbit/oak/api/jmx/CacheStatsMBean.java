@@ -29,6 +29,10 @@ name|TYPE
 init|=
 literal|"CacheStats"
 decl_stmt|;
+name|String
+name|getName
+parameter_list|()
+function_decl|;
 comment|/**      * Returns the number of times {@link com.google.common.cache.Cache} lookup methods have returned either a cached or      * uncached value. This is defined as {@code getHitCount + getMissCount}.      */
 name|long
 name|getRequestCount
