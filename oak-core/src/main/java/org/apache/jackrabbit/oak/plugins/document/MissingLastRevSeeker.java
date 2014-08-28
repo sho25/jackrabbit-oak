@@ -210,7 +210,7 @@ name|long
 name|endTime
 parameter_list|)
 block|{
-comment|// Fetch all documents.
+comment|// Fetch all documents where lastmod>= startTime
 name|List
 argument_list|<
 name|NodeDocument
@@ -232,6 +232,17 @@ argument_list|,
 name|NodeDocument
 operator|.
 name|MAX_ID_VALUE
+argument_list|,
+name|NodeDocument
+operator|.
+name|MODIFIED_IN_SECS
+argument_list|,
+name|NodeDocument
+operator|.
+name|getModifiedInSecs
+argument_list|(
+name|startTime
+argument_list|)
 argument_list|,
 name|Integer
 operator|.
