@@ -51,6 +51,16 @@ name|javax
 operator|.
 name|jcr
 operator|.
+name|RepositoryException
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|jcr
+operator|.
 name|Value
 import|;
 end_import
@@ -315,6 +325,8 @@ name|Nonnull
 name|Value
 name|value
 parameter_list|)
+throws|throws
+name|RepositoryException
 block|{
 return|return
 operator|new
