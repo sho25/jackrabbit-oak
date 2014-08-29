@@ -145,6 +145,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|TreeSet
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|UUID
 import|;
 end_import
@@ -512,6 +522,7 @@ import|;
 end_import
 
 begin_class
+specifier|public
 class|class
 name|NodeStoreTree
 extends|extends
@@ -2093,7 +2104,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-specifier|private
+specifier|public
 specifier|static
 name|void
 name|filterNodeStates
@@ -2117,6 +2128,19 @@ name|String
 name|path
 parameter_list|)
 block|{
+name|Set
+argument_list|<
+name|String
+argument_list|>
+name|localPaths
+init|=
+operator|new
+name|TreeSet
+argument_list|<
+name|String
+argument_list|>
+argument_list|()
+decl_stmt|;
 for|for
 control|(
 name|PropertyState
@@ -2164,7 +2188,7 @@ name|uuids
 argument_list|)
 condition|)
 block|{
-name|paths
+name|localPaths
 operator|.
 name|add
 argument_list|(
@@ -2178,6 +2202,13 @@ expr_stmt|;
 block|}
 block|}
 block|}
+name|paths
+operator|.
+name|addAll
+argument_list|(
+name|localPaths
+argument_list|)
+expr_stmt|;
 for|for
 control|(
 name|ChildNodeEntry
