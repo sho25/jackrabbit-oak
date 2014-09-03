@@ -789,27 +789,14 @@ operator|.
 name|size
 argument_list|()
 decl_stmt|;
-if|if
-condition|(
-name|log
-operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
-name|log
-operator|.
-name|debug
-argument_list|(
-literal|"Last revision for following documents would be updated {}"
-argument_list|,
+name|String
+name|updates
+init|=
 name|unsaved
 operator|.
-name|getPaths
+name|toString
 argument_list|()
-argument_list|)
-expr_stmt|;
-block|}
+decl_stmt|;
 comment|//UnsavedModifications is designed to be used in concurrent
 comment|//access mode. For recovery case there is no concurrent access
 comment|//involve so just pass a new lock instance
@@ -830,11 +817,13 @@ name|info
 argument_list|(
 literal|"Updated lastRev of [{}] documents while performing lastRev recovery for "
 operator|+
-literal|"cluster node [{}]"
+literal|"cluster node [{}]: "
 argument_list|,
 name|size
 argument_list|,
 name|clusterId
+argument_list|,
+name|updates
 argument_list|)
 expr_stmt|;
 return|return
