@@ -772,7 +772,7 @@ name|log
 operator|.
 name|info
 argument_list|(
-literal|"Reindexing would be performed for following indexes {}"
+literal|"Reindexing will be performed for following indexes: {}"
 argument_list|,
 name|reindex
 operator|.
@@ -902,7 +902,7 @@ name|log
 operator|.
 name|info
 argument_list|(
-literal|"Found a new index node [{}]. Reindexing would be requested"
+literal|"Found a new index node [{}]. Reindexing is requested"
 argument_list|,
 name|name
 argument_list|)
