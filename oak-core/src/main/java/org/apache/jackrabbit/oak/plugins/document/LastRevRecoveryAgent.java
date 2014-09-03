@@ -817,7 +817,7 @@ name|info
 argument_list|(
 literal|"Updated lastRev of [{}] documents while performing lastRev recovery for "
 operator|+
-literal|"cluster node [{}]: "
+literal|"cluster node [{}]: {}"
 argument_list|,
 name|size
 argument_list|,
