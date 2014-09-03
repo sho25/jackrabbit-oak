@@ -428,7 +428,7 @@ end_comment
 begin_class
 specifier|public
 class|class
-name|SolrIndexQueryTest
+name|SolrIndexQueryTestIT
 extends|extends
 name|AbstractQueryTest
 block|{

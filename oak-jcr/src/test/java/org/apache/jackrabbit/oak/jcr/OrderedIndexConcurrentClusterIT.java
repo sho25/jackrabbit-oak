@@ -107,6 +107,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Set
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|jcr
@@ -192,6 +202,24 @@ operator|.
 name|jcr
 operator|.
 name|SimpleCredentials
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|jcr
+operator|.
+name|FixturesHelper
+operator|.
+name|Fixture
 import|;
 end_import
 
@@ -423,6 +451,20 @@ init|=
 literal|"lastModified"
 decl_stmt|;
 specifier|private
+specifier|static
+specifier|final
+name|Set
+argument_list|<
+name|Fixture
+argument_list|>
+name|FIXTURES
+init|=
+name|FixturesHelper
+operator|.
+name|getFixtures
+argument_list|()
+decl_stmt|;
+specifier|private
 name|List
 argument_list|<
 name|Repository
@@ -466,6 +508,30 @@ argument_list|()
 decl_stmt|;
 comment|// ----- SHARED WITH ConcurrentAddNodesClusterIT (later refactoring) -----
 comment|// vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
+annotation|@
+name|BeforeClass
+specifier|public
+specifier|static
+name|void
+name|fixturesCheck
+parameter_list|()
+block|{
+comment|// running only on DocumentNS case
+name|Assume
+operator|.
+name|assumeTrue
+argument_list|(
+name|FIXTURES
+operator|.
+name|contains
+argument_list|(
+name|Fixture
+operator|.
+name|DOCUMENT_NS
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
 annotation|@
 name|BeforeClass
 specifier|public
