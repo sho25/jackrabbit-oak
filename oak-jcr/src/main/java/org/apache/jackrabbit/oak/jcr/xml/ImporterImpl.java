@@ -20,6 +20,26 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|nodetype
+operator|.
+name|NodeTypeConstants
+operator|.
+name|NODE_TYPES_PATH
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -675,26 +695,6 @@ name|LoggerFactory
 import|;
 end_import
 
-begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|plugins
-operator|.
-name|nodetype
-operator|.
-name|NodeTypeConstants
-operator|.
-name|NODE_TYPES_PATH
-import|;
-end_import
-
 begin_class
 specifier|public
 class|class
@@ -835,27 +835,6 @@ parameter_list|)
 throws|throws
 name|RepositoryException
 block|{
-if|if
-condition|(
-operator|!
-name|PathUtils
-operator|.
-name|isAbsolute
-argument_list|(
-name|absPath
-argument_list|)
-condition|)
-block|{
-throw|throw
-operator|new
-name|RepositoryException
-argument_list|(
-literal|"Not an absolute path: "
-operator|+
-name|absPath
-argument_list|)
-throw|;
-block|}
 name|String
 name|oakPath
 init|=
@@ -878,6 +857,27 @@ operator|new
 name|RepositoryException
 argument_list|(
 literal|"Invalid name or path: "
+operator|+
+name|absPath
+argument_list|)
+throw|;
+block|}
+if|if
+condition|(
+operator|!
+name|PathUtils
+operator|.
+name|isAbsolute
+argument_list|(
+name|oakPath
+argument_list|)
+condition|)
+block|{
+throw|throw
+operator|new
+name|RepositoryException
+argument_list|(
+literal|"Not an absolute path: "
 operator|+
 name|absPath
 argument_list|)
@@ -931,7 +931,7 @@ name|root
 operator|.
 name|getTree
 argument_list|(
-name|absPath
+name|oakPath
 argument_list|)
 expr_stmt|;
 if|if
