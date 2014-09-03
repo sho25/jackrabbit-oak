@@ -743,12 +743,12 @@ name|PREFER_SECONDARY
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|//for case where parent age cannot be determined the preference should be primaryPreferred
+comment|//for case where parent age cannot be determined the preference should be primary
 name|assertEquals
 argument_list|(
 name|ReadPreference
 operator|.
-name|primaryPreferred
+name|primary
 argument_list|()
 argument_list|,
 name|mongoDS
@@ -888,12 +888,12 @@ argument_list|,
 name|id
 argument_list|)
 expr_stmt|;
-comment|//For modifiedTime< replicationLag primary should be preferred
+comment|//For modifiedTime< replicationLag primary must be used
 name|assertEquals
 argument_list|(
 name|ReadPreference
 operator|.
-name|primaryPreferred
+name|primary
 argument_list|()
 argument_list|,
 name|mongoDS

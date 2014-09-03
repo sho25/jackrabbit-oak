@@ -875,6 +875,22 @@ name|base
 operator|.
 name|Preconditions
 operator|.
+name|checkArgument
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
 name|checkNotNull
 import|;
 end_import
@@ -1942,7 +1958,7 @@ name|NODES
 condition|)
 block|{
 return|return
-name|findUncached
+name|findUncachedWithRetry
 argument_list|(
 name|collection
 argument_list|,
@@ -1951,6 +1967,8 @@ argument_list|,
 name|DocumentReadPreference
 operator|.
 name|PRIMARY
+argument_list|,
+literal|2
 argument_list|)
 return|;
 block|}
@@ -2094,7 +2112,7 @@ init|=
 operator|(
 name|NodeDocument
 operator|)
-name|findUncached
+name|findUncachedWithRetry
 argument_list|(
 name|collection
 argument_list|,
@@ -2104,6 +2122,8 @@ name|getReadPreference
 argument_list|(
 name|maxCacheAge
 argument_list|)
+argument_list|,
+literal|2
 argument_list|)
 decl_stmt|;
 if|if
@@ -2234,9 +2254,136 @@ name|t
 argument_list|)
 throw|;
 block|}
+comment|/**      * Finds a document and performs a number of retries if the read fails with      * an exception.      *      * @param collection the collection to read from.      * @param key the key of the document to find.      * @param docReadPref the read preference.      * @param retries the number of retries. Must not be negative.      * @param<T> the document type of the given collection.      * @return the document or {@code null} if the document doesn't exist.      */
 annotation|@
 name|CheckForNull
 specifier|private
+parameter_list|<
+name|T
+extends|extends
+name|Document
+parameter_list|>
+name|T
+name|findUncachedWithRetry
+parameter_list|(
+name|Collection
+argument_list|<
+name|T
+argument_list|>
+name|collection
+parameter_list|,
+name|String
+name|key
+parameter_list|,
+name|DocumentReadPreference
+name|docReadPref
+parameter_list|,
+name|int
+name|retries
+parameter_list|)
+block|{
+name|checkArgument
+argument_list|(
+name|retries
+operator|>=
+literal|0
+argument_list|,
+literal|"retries must not be negative"
+argument_list|)
+expr_stmt|;
+name|int
+name|numAttempts
+init|=
+name|retries
+operator|+
+literal|1
+decl_stmt|;
+name|MongoException
+name|ex
+init|=
+literal|null
+decl_stmt|;
+for|for
+control|(
+name|int
+name|i
+init|=
+literal|0
+init|;
+name|i
+operator|<
+name|numAttempts
+condition|;
+name|i
+operator|++
+control|)
+block|{
+if|if
+condition|(
+name|i
+operator|>
+literal|0
+condition|)
+block|{
+name|LOG
+operator|.
+name|warn
+argument_list|(
+literal|"Retrying read of "
+operator|+
+name|key
+argument_list|)
+expr_stmt|;
+block|}
+try|try
+block|{
+return|return
+name|findUncached
+argument_list|(
+name|collection
+argument_list|,
+name|key
+argument_list|,
+name|docReadPref
+argument_list|)
+return|;
+block|}
+catch|catch
+parameter_list|(
+name|MongoException
+name|e
+parameter_list|)
+block|{
+name|ex
+operator|=
+name|e
+expr_stmt|;
+block|}
+block|}
+if|if
+condition|(
+name|ex
+operator|!=
+literal|null
+condition|)
+block|{
+throw|throw
+name|ex
+throw|;
+block|}
+else|else
+block|{
+comment|// impossible to get here
+throw|throw
+operator|new
+name|IllegalStateException
+argument_list|()
+throw|;
+block|}
+block|}
+annotation|@
+name|CheckForNull
+specifier|protected
 parameter_list|<
 name|T
 extends|extends
@@ -4548,15 +4695,14 @@ name|primary
 argument_list|()
 return|;
 block|}
-comment|//Default to primary preferred such that in case primary is being elected
-comment|//we can still read from secondary
-comment|//TODO REVIEW Would that be safe
+comment|// read from primary unless parent has not been modified
+comment|// within replication lag period
 name|ReadPreference
 name|readPreference
 init|=
 name|ReadPreference
 operator|.
-name|primaryPreferred
+name|primary
 argument_list|()
 decl_stmt|;
 if|if
@@ -4587,6 +4733,10 @@ argument_list|,
 name|parentId
 argument_list|)
 decl_stmt|;
+comment|// FIXME: this is not quite accurate, because ancestors
+comment|// are updated in a background thread (_lastRev). We
+comment|// will need to revise this for low maxReplicationLagMillis
+comment|// values
 if|if
 condition|(
 name|cachedDoc
