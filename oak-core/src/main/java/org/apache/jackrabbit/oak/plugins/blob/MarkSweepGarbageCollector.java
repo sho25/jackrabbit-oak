@@ -1112,6 +1112,19 @@ argument_list|(
 literal|"Starting sweep phase of the garbage collector"
 argument_list|)
 expr_stmt|;
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"Sweeping blobs with modified time> than the configured max deleted time ({}). "
+operator|+
+name|timestampToString
+argument_list|(
+name|getLastMaxModifiedTime
+argument_list|()
+argument_list|)
+argument_list|)
+expr_stmt|;
 name|ConcurrentLinkedQueue
 argument_list|<
 name|String
@@ -1327,9 +1340,17 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"Unable to delete some blob entries from the blob store. Details around such blob entries "
+literal|"Unable to delete some blobs entries from the blob store. "
 operator|+
-literal|"can be found in [{}]"
+literal|"This may happen if blob modified time is> than the max deleted time ({}). "
+operator|+
+literal|"Details around such blob entries can be found in [{}]"
+argument_list|,
+name|timestampToString
+argument_list|(
+name|getLastMaxModifiedTime
+argument_list|()
+argument_list|)
 argument_list|,
 name|fs
 operator|.
@@ -1523,10 +1544,14 @@ operator|!
 name|deleted
 condition|)
 block|{
-name|exceptionQueue
+comment|// Only log and do not add to exception queue since some blobs may not match the
+comment|// lastMaxModifiedTime criteria.
+name|LOG
 operator|.
-name|addAll
+name|debug
 argument_list|(
+literal|"Some blobs were not deleted from the batch : [{}]"
+argument_list|,
 name|ids
 argument_list|)
 expr_stmt|;
@@ -1880,8 +1905,7 @@ name|blobStore
 operator|.
 name|getAllChunkIds
 argument_list|(
-name|getLastMaxModifiedTime
-argument_list|()
+literal|0
 argument_list|)
 decl_stmt|;
 name|List
@@ -1988,17 +2012,9 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Number of blobs present in BlobStore : [{}] which have "
-operator|+
-literal|"been last modified before [{}]"
+literal|"Number of blobs present in BlobStore : [{}] "
 argument_list|,
 name|blobsCount
-argument_list|,
-name|timestampToString
-argument_list|(
-name|getLastMaxModifiedTime
-argument_list|()
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

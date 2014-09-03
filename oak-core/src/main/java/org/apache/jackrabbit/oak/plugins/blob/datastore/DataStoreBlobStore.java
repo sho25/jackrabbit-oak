@@ -1871,14 +1871,9 @@ name|maxLastModifiedTime
 decl_stmt|;
 if|if
 condition|(
-operator|!
 name|success
 condition|)
 block|{
-return|return
-literal|false
-return|;
-block|}
 operator|(
 operator|(
 name|MultiDataStoreAware
@@ -1891,6 +1886,7 @@ argument_list|(
 name|identifier
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 return|return
