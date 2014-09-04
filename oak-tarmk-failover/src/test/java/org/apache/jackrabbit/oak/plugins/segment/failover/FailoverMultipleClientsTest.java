@@ -135,16 +135,6 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Assert
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
 name|Before
 import|;
 end_import
@@ -258,6 +248,12 @@ argument_list|,
 literal|"server"
 argument_list|)
 expr_stmt|;
+name|storeS
+operator|.
+name|flush
+argument_list|()
+expr_stmt|;
+comment|// this speeds up the test a little bit...
 name|FailoverClient
 name|cl1
 init|=
@@ -403,8 +399,6 @@ name|getHead
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertFalse
 argument_list|(
 literal|"first client updated in stopped state!"

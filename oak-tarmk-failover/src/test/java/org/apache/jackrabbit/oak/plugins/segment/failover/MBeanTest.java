@@ -167,31 +167,7 @@ name|framework
 operator|.
 name|Assert
 operator|.
-name|assertEquals
-import|;
-end_import
-
-begin_import
-import|import static
-name|junit
-operator|.
-name|framework
-operator|.
-name|Assert
-operator|.
-name|assertTrue
-import|;
-end_import
-
-begin_import
-import|import static
-name|junit
-operator|.
-name|framework
-operator|.
-name|Assert
-operator|.
-name|fail
+name|*
 import|;
 end_import
 
@@ -391,7 +367,7 @@ name|m
 operator|.
 name|equals
 argument_list|(
-literal|"Channel unregistered"
+literal|"channel unregistered"
 argument_list|)
 condition|)
 name|fail
@@ -1076,6 +1052,47 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|ObjectName
+name|connectionStatus
+init|=
+literal|null
+decl_stmt|;
+for|for
+control|(
+name|ObjectName
+name|s
+range|:
+name|instances
+control|)
+block|{
+if|if
+condition|(
+operator|!
+name|s
+operator|.
+name|equals
+argument_list|(
+name|clientStatus
+argument_list|)
+operator|&&
+operator|!
+name|s
+operator|.
+name|equals
+argument_list|(
+name|serverStatus
+argument_list|)
+condition|)
+name|connectionStatus
+operator|=
+name|s
+expr_stmt|;
+block|}
+name|assertNotNull
+argument_list|(
+name|connectionStatus
+argument_list|)
+expr_stmt|;
 name|assertTrue
 argument_list|(
 name|jmxServer
@@ -1093,6 +1110,16 @@ operator|.
 name|isRegistered
 argument_list|(
 name|serverStatus
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertTrue
+argument_list|(
+name|jmxServer
+operator|.
+name|isRegistered
+argument_list|(
+name|connectionStatus
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1170,6 +1197,42 @@ literal|"Running"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|assertEquals
+argument_list|(
+operator|new
+name|Long
+argument_list|(
+literal|2
+argument_list|)
+argument_list|,
+name|jmxServer
+operator|.
+name|getAttribute
+argument_list|(
+name|connectionStatus
+argument_list|,
+literal|"TransferredSegments"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+operator|new
+name|Long
+argument_list|(
+literal|128
+argument_list|)
+argument_list|,
+name|jmxServer
+operator|.
+name|getAttribute
+argument_list|(
+name|connectionStatus
+argument_list|,
+literal|"TransferredSegmentBytes"
+argument_list|)
+argument_list|)
+expr_stmt|;
 comment|// stop the master
 name|jmxServer
 operator|.
@@ -1229,7 +1292,7 @@ name|m
 operator|.
 name|equals
 argument_list|(
-literal|"Channel unregistered"
+literal|"channel unregistered"
 argument_list|)
 condition|)
 name|fail
@@ -1312,7 +1375,7 @@ name|m
 operator|.
 name|equals
 argument_list|(
-literal|"Channel unregistered"
+literal|"channel unregistered"
 argument_list|)
 condition|)
 name|fail

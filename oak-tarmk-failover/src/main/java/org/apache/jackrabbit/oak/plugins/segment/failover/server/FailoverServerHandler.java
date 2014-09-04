@@ -614,7 +614,7 @@ name|Exception
 block|{
 name|state
 operator|=
-literal|"Channel registered"
+literal|"channel registered"
 expr_stmt|;
 name|super
 operator|.
@@ -648,7 +648,7 @@ name|Exception
 block|{
 name|state
 operator|=
-literal|"Channel active"
+literal|"channel active"
 expr_stmt|;
 name|super
 operator|.
@@ -682,7 +682,7 @@ name|Exception
 block|{
 name|state
 operator|=
-literal|"Channel inactive"
+literal|"channel inactive"
 expr_stmt|;
 name|super
 operator|.
@@ -716,7 +716,7 @@ name|Exception
 block|{
 name|state
 operator|=
-literal|"Channel unregistered"
+literal|"channel unregistered"
 expr_stmt|;
 name|super
 operator|.
@@ -792,16 +792,21 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|observer
-operator|.
-name|gotMessageFrom
-argument_list|(
+name|String
+name|clientID
+init|=
 name|Messages
 operator|.
 name|extractClientFrom
 argument_list|(
 name|payload
 argument_list|)
+decl_stmt|;
+name|observer
+operator|.
+name|gotMessageFrom
+argument_list|(
+name|clientID
 argument_list|,
 name|request
 argument_list|,
@@ -838,6 +843,13 @@ operator|.
 name|writeAndFlush
 argument_list|(
 name|r
+argument_list|)
+expr_stmt|;
+name|log
+operator|.
+name|debug
+argument_list|(
+literal|"returning from head request"
 argument_list|)
 expr_stmt|;
 return|return;
@@ -904,7 +916,7 @@ literal|0
 init|;
 name|i
 operator|<
-literal|3
+literal|10
 condition|;
 name|i
 operator|++
@@ -948,36 +960,33 @@ block|{
 comment|// segment not found
 name|log
 operator|.
-name|warn
+name|info
 argument_list|(
+literal|"waiting for segment. Got exception: "
+operator|+
 name|e
 operator|.
 name|getMessage
 argument_list|()
 argument_list|)
 expr_stmt|;
-block|}
-if|if
-condition|(
-name|s
-operator|!=
-literal|null
-condition|)
-block|{
-break|break;
-block|}
-else|else
-block|{
 name|TimeUnit
 operator|.
 name|MILLISECONDS
 operator|.
 name|sleep
 argument_list|(
-literal|500
+literal|1000
 argument_list|)
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|s
+operator|!=
+literal|null
+condition|)
+break|break;
 block|}
 if|if
 condition|(
@@ -986,11 +995,43 @@ operator|!=
 literal|null
 condition|)
 block|{
+name|log
+operator|.
+name|info
+argument_list|(
+literal|"sending segment"
+operator|+
+name|sid
+operator|+
+literal|" to "
+operator|+
+name|client
+argument_list|)
+expr_stmt|;
 name|ctx
 operator|.
 name|writeAndFlush
 argument_list|(
 name|s
+argument_list|)
+expr_stmt|;
+name|observer
+operator|.
+name|didSendSegmentBytes
+argument_list|(
+name|clientID
+argument_list|,
+name|s
+operator|.
+name|size
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|log
+operator|.
+name|debug
+argument_list|(
+literal|"master returns from segment request"
 argument_list|)
 expr_stmt|;
 return|return;
@@ -1071,8 +1112,10 @@ argument_list|)
 expr_stmt|;
 name|ctx
 operator|.
-name|close
-argument_list|()
+name|fireExceptionCaught
+argument_list|(
+name|cause
+argument_list|)
 expr_stmt|;
 block|}
 block|}

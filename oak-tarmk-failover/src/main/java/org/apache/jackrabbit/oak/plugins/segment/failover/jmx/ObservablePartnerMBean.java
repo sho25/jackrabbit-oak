@@ -115,6 +115,24 @@ name|String
 name|getLastSeenTimestamp
 parameter_list|()
 function_decl|;
+annotation|@
+name|Description
+argument_list|(
+literal|"Number of transferred segments"
+argument_list|)
+name|long
+name|getTransferredSegments
+parameter_list|()
+function_decl|;
+annotation|@
+name|Description
+argument_list|(
+literal|"Number of bytes stored in transferred segments"
+argument_list|)
+name|long
+name|getTransferredSegmentBytes
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 

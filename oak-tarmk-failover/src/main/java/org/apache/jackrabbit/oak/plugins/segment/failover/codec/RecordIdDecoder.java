@@ -25,6 +25,16 @@ end_package
 
 begin_import
 import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
 name|io
 operator|.
 name|netty
@@ -220,9 +230,13 @@ operator|==
 literal|null
 condition|)
 block|{
-return|return
-literal|null
-return|;
+throw|throw
+operator|new
+name|IOException
+argument_list|(
+literal|"Received unexpected empty frame. Maybe you have enabled secure transmission on only one endpoint of the connection."
+argument_list|)
+throw|;
 block|}
 name|byte
 name|type
