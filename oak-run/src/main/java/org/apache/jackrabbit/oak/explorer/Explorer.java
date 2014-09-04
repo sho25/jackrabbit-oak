@@ -264,6 +264,13 @@ specifier|public
 class|class
 name|Explorer
 block|{
+specifier|private
+specifier|static
+name|String
+name|skip
+init|=
+literal|"skip-size-check"
+decl_stmt|;
 specifier|public
 specifier|static
 name|void
@@ -308,7 +315,7 @@ name|err
 operator|.
 name|println
 argument_list|(
-literal|"usage: explore<path>"
+literal|"usage: explore<path> [skip-size-check]"
 argument_list|)
 expr_stmt|;
 name|System
@@ -344,6 +351,26 @@ argument_list|,
 literal|256
 argument_list|)
 decl_stmt|;
+specifier|final
+name|boolean
+name|skipSizeCheck
+init|=
+name|args
+operator|.
+name|length
+operator|==
+literal|2
+operator|&&
+name|skip
+operator|.
+name|equalsIgnoreCase
+argument_list|(
+name|args
+index|[
+literal|1
+index|]
+argument_list|)
+decl_stmt|;
 name|javax
 operator|.
 name|swing
@@ -369,6 +396,8 @@ argument_list|(
 name|path
 argument_list|,
 name|store
+argument_list|,
+name|skipSizeCheck
 argument_list|)
 expr_stmt|;
 block|}
@@ -443,6 +472,9 @@ parameter_list|,
 specifier|final
 name|FileStore
 name|store
+parameter_list|,
+name|boolean
+name|skipSizeCheck
 parameter_list|)
 block|{
 specifier|final
@@ -566,6 +598,8 @@ argument_list|(
 name|store
 argument_list|,
 name|log
+argument_list|,
+name|skipSizeCheck
 argument_list|)
 decl_stmt|;
 name|GridBagConstraints
