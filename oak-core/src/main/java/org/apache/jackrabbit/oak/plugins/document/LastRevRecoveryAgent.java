@@ -151,20 +151,6 @@ end_import
 
 begin_import
 import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|collect
-operator|.
-name|Maps
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -216,6 +202,26 @@ operator|.
 name|mongo
 operator|.
 name|MongoMissingLastRevSeeker
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|document
+operator|.
+name|util
+operator|.
+name|MapFactory
 import|;
 end_import
 
@@ -291,6 +297,7 @@ specifier|final
 name|MissingLastRevSeeker
 name|missingLastRevUtil
 decl_stmt|;
+specifier|public
 name|LastRevRecoveryAgent
 parameter_list|(
 name|DocumentNodeStore
@@ -521,7 +528,7 @@ return|return
 literal|0
 return|;
 block|}
-comment|/**      * Recover the correct _lastRev updates for the given candidate nodes.      *       * @param suspects the potential suspects      * @param clusterId the cluster id for which _lastRev recovery needed      * @return the int      */
+comment|/**      * Recover the correct _lastRev updates for the given candidate nodes.      *      * @param suspects the potential suspects      * @param clusterId the cluster id for which _lastRev recovery needed      * @return the number of documents that required recovery.      */
 specifier|public
 name|int
 name|recover
@@ -534,6 +541,35 @@ name|suspects
 parameter_list|,
 name|int
 name|clusterId
+parameter_list|)
+block|{
+return|return
+name|recover
+argument_list|(
+name|suspects
+argument_list|,
+name|clusterId
+argument_list|,
+literal|false
+argument_list|)
+return|;
+block|}
+comment|/**      * Recover the correct _lastRev updates for the given candidate nodes.      *       * @param suspects the potential suspects      * @param clusterId the cluster id for which _lastRev recovery needed      * @param dryRun if {@code true}, this method will only perform a check      *               but not apply the changes to the _lastRev fields.      * @return the number of documents that required recovery. This method      *          returns the number of the affected documents even if      *          {@code dryRun} is set true and no document was changed.      */
+specifier|public
+name|int
+name|recover
+parameter_list|(
+name|Iterator
+argument_list|<
+name|NodeDocument
+argument_list|>
+name|suspects
+parameter_list|,
+name|int
+name|clusterId
+parameter_list|,
+name|boolean
+name|dryRun
 parameter_list|)
 block|{
 name|UnsavedModifications
@@ -559,10 +595,18 @@ name|Revision
 argument_list|>
 name|knownLastRevs
 init|=
-name|Maps
+name|MapFactory
 operator|.
-name|newHashMap
+name|getInstance
 argument_list|()
+operator|.
+name|create
+argument_list|()
+decl_stmt|;
+name|long
+name|count
+init|=
+literal|0
 decl_stmt|;
 while|while
 condition|(
@@ -580,6 +624,28 @@ operator|.
 name|next
 argument_list|()
 decl_stmt|;
+name|count
+operator|++
+expr_stmt|;
+if|if
+condition|(
+name|count
+operator|%
+literal|100000
+operator|==
+literal|0
+condition|)
+block|{
+name|log
+operator|.
+name|info
+argument_list|(
+literal|"Scanned {} suspects so far..."
+argument_list|,
+name|count
+argument_list|)
+expr_stmt|;
+block|}
 name|Revision
 name|currentLastRev
 init|=
@@ -797,6 +863,29 @@ operator|.
 name|toString
 argument_list|()
 decl_stmt|;
+if|if
+condition|(
+name|dryRun
+condition|)
+block|{
+name|log
+operator|.
+name|info
+argument_list|(
+literal|"Dry run of lastRev recovery identified [{}] documents for "
+operator|+
+literal|"cluster node [{}]: {}"
+argument_list|,
+name|size
+argument_list|,
+name|clusterId
+argument_list|,
+name|updates
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
 comment|//UnsavedModifications is designed to be used in concurrent
 comment|//access mode. For recovery case there is no concurrent access
 comment|//involve so just pass a new lock instance
@@ -826,6 +915,7 @@ argument_list|,
 name|updates
 argument_list|)
 expr_stmt|;
+block|}
 return|return
 name|size
 return|;
