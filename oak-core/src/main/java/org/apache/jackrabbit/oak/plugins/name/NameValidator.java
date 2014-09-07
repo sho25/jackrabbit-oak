@@ -517,7 +517,6 @@ name|name
 argument_list|)
 expr_stmt|;
 block|}
-empty_stmt|;
 block|}
 block|}
 block|}
