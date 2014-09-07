@@ -3273,6 +3273,28 @@ operator|!=
 literal|null
 condition|)
 block|{
+comment|// OAK-2078: check for non-empty passwords to avoid anonymous bind on weakly configured servers
+comment|// see http://tools.ietf.org/html/rfc4513#section-5.1.1 for details.
+if|if
+condition|(
+name|creds
+operator|.
+name|getPassword
+argument_list|()
+operator|.
+name|length
+operator|==
+literal|0
+condition|)
+block|{
+throw|throw
+operator|new
+name|LoginException
+argument_list|(
+literal|"Refusing to authenticate against LDAP server: Empty passwords allowed."
+argument_list|)
+throw|;
+block|}
 comment|// authenticate
 name|LdapConnection
 name|connection
