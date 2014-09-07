@@ -3291,7 +3291,7 @@ throw|throw
 operator|new
 name|LoginException
 argument_list|(
-literal|"Refusing to authenticate against LDAP server: Empty passwords allowed."
+literal|"Refusing to authenticate against LDAP server: Empty passwords not allowed."
 argument_list|)
 throw|;
 block|}
