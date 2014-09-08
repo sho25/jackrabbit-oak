@@ -840,7 +840,7 @@ name|oakPath
 init|=
 name|sessionContext
 operator|.
-name|getOakPathKeepIndex
+name|getOakPath
 argument_list|(
 name|absPath
 argument_list|)

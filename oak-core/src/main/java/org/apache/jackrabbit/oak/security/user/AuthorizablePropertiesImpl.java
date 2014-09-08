@@ -1599,7 +1599,7 @@ name|oakPath
 init|=
 name|namePathMapper
 operator|.
-name|getOakPathKeepIndex
+name|getOakPath
 argument_list|(
 name|relPath
 argument_list|)

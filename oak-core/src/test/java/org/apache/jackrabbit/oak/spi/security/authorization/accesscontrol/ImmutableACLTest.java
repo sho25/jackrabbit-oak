@@ -24,6 +24,54 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertEquals
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertFalse
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertTrue
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|fail
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -171,9 +219,11 @@ name|spi
 operator|.
 name|security
 operator|.
-name|privilege
+name|authorization
 operator|.
-name|PrivilegeConstants
+name|restriction
+operator|.
+name|RestrictionProvider
 import|;
 end_import
 
@@ -191,11 +241,9 @@ name|spi
 operator|.
 name|security
 operator|.
-name|authorization
+name|privilege
 operator|.
-name|restriction
-operator|.
-name|RestrictionProvider
+name|PrivilegeConstants
 import|;
 end_import
 
@@ -216,54 +264,6 @@ operator|.
 name|junit
 operator|.
 name|Test
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertEquals
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertFalse
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertTrue
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|fail
 import|;
 end_import
 
@@ -357,7 +357,7 @@ literal|null
 else|:
 name|namePathMapper
 operator|.
-name|getOakPathKeepIndex
+name|getOakPath
 argument_list|(
 name|jcrPath
 argument_list|)

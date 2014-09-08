@@ -20,6 +20,22 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkNotNull
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -653,22 +669,6 @@ name|LoggerFactory
 import|;
 end_import
 
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|Preconditions
-operator|.
-name|checkNotNull
-import|;
-end_import
-
 begin_comment
 comment|/**  * UserManagerImpl...  */
 end_comment
@@ -963,7 +963,7 @@ name|oakPath
 init|=
 name|namePathMapper
 operator|.
-name|getOakPathKeepIndex
+name|getOakPath
 argument_list|(
 name|path
 argument_list|)
@@ -1175,7 +1175,7 @@ name|intermediatePath
 operator|=
 name|namePathMapper
 operator|.
-name|getOakPathKeepIndex
+name|getOakPath
 argument_list|(
 name|intermediatePath
 argument_list|)
@@ -1462,7 +1462,7 @@ name|intermediatePath
 operator|=
 name|namePathMapper
 operator|.
-name|getOakPathKeepIndex
+name|getOakPath
 argument_list|(
 name|intermediatePath
 argument_list|)

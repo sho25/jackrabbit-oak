@@ -56,16 +56,6 @@ name|String
 name|jcrPath
 parameter_list|)
 function_decl|;
-comment|/**      * As {@link #getOakPath(String)}, but preserving the index information      *      * @param jcrPath JCR path      * @return mapped path, or {@code null}      */
-annotation|@
-name|CheckForNull
-name|String
-name|getOakPathKeepIndex
-parameter_list|(
-name|String
-name|jcrPath
-parameter_list|)
-function_decl|;
 comment|/**      * Returns the JCR path for the given Oak path. The given path is      * expected to have come from a valid Oak repository that contains      * only valid paths whose name elements only use proper namespace      * mappings. If that's not the case, either a programming error or      * a repository corruption has occurred and an appropriate unchecked      * exception gets thrown.      *      * @param oakPath Oak path      * @return JCR path      */
 annotation|@
 name|Nonnull
