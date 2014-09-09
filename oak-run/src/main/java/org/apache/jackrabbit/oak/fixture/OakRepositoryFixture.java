@@ -761,6 +761,15 @@ name|toString
 argument_list|()
 return|;
 block|}
+specifier|public
+name|OakFixture
+name|getOakFixture
+parameter_list|()
+block|{
+return|return
+name|oakFixture
+return|;
+block|}
 block|}
 end_class
 
