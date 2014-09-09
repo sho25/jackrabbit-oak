@@ -325,7 +325,7 @@ name|cache
 operator|.
 name|CacheStats
 operator|.
-name|humanReadableByteCount
+name|timeInWords
 import|;
 end_import
 
@@ -339,11 +339,11 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|cache
+name|commons
 operator|.
-name|CacheStats
+name|IOUtils
 operator|.
-name|timeInWords
+name|humanReadableByteCount
 import|;
 end_import
 
@@ -887,8 +887,6 @@ name|stats
 operator|.
 name|estimateCurrentWeight
 argument_list|()
-argument_list|,
-literal|true
 argument_list|)
 block|,
 name|humanReadableByteCount
@@ -897,8 +895,6 @@ name|stats
 operator|.
 name|getMaxTotalWeight
 argument_list|()
-argument_list|,
-literal|true
 argument_list|)
 block|,             }
 decl_stmt|;
