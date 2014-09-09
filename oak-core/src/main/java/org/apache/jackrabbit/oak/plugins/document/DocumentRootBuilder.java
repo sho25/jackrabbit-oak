@@ -195,7 +195,7 @@ begin_class
 class|class
 name|DocumentRootBuilder
 extends|extends
-name|MemoryNodeBuilder
+name|AbstractDocumentNodeBuilder
 block|{
 comment|/**      * Number of content updates that need to happen before the updates      * are automatically purged to the private branch.      */
 specifier|static
