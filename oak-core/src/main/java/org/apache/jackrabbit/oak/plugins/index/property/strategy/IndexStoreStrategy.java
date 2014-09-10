@@ -119,7 +119,7 @@ argument_list|>
 name|afterKeys
 parameter_list|)
 function_decl|;
-comment|/**      * Search for a given set of values.      *       * @param filter the filter (used for logging)      * @param indexName the name of the index (for logging)      * @param indexMeta the index metadata node (may not be null)      * @param values values to look for (null to check for property existence)      * @return an iterator of paths      */
+comment|/**      * Search for a given set of values.      *       * @param filter the filter (can optionally be used for optimized query execution)      * @param indexName the name of the index (for logging)      * @param indexMeta the index metadata node (may not be null)      * @param values values to look for (null to check for property existence)      * @return an iterator of paths      */
 name|Iterable
 argument_list|<
 name|String
@@ -146,6 +146,26 @@ comment|/**      * Count the occurrence of a given set of values. Used in calcul
 name|long
 name|count
 parameter_list|(
+name|NodeState
+name|indexMeta
+parameter_list|,
+name|Set
+argument_list|<
+name|String
+argument_list|>
+name|values
+parameter_list|,
+name|int
+name|max
+parameter_list|)
+function_decl|;
+comment|/**      * Count the occurrence of a given set of values. Used in calculating the      * cost of an index.      *      * @param filter the filter which can be used to estimate better cost      * @param indexMeta the index metadata node (may not be null)      * @param values values to look for (null to check for property existence)      * @param max the maximum value to return      * @return the aggregated count of occurrences for each provided value      */
+name|long
+name|count
+parameter_list|(
+name|Filter
+name|filter
+parameter_list|,
 name|NodeState
 name|indexMeta
 parameter_list|,

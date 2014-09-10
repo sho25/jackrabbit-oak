@@ -899,6 +899,8 @@ name|strategy
 operator|.
 name|count
 argument_list|(
+name|filter
+argument_list|,
 name|definition
 argument_list|,
 name|values
@@ -980,6 +982,8 @@ name|strategy
 operator|.
 name|count
 argument_list|(
+name|filter
+argument_list|,
 name|definition
 argument_list|,
 name|values
@@ -1237,6 +1241,7 @@ return|;
 block|}
 block|}
 specifier|private
+specifier|static
 name|Set
 argument_list|<
 name|String
@@ -1418,6 +1423,8 @@ name|cursor
 return|;
 block|}
 comment|//------------------------------------------------------------< Object>--
+annotation|@
+name|Override
 specifier|public
 name|String
 name|toString

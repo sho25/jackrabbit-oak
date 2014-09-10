@@ -327,6 +327,8 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
+annotation|@
+name|Override
 specifier|public
 name|String
 name|getIndexName
@@ -352,6 +354,8 @@ argument_list|)
 return|;
 block|}
 comment|/**      * retrieve the cost for the query.      *       * !!! for now we want to skip the use-case of NON range-queries !!!      */
+annotation|@
+name|Override
 specifier|public
 name|double
 name|getCost
@@ -1105,6 +1109,14 @@ operator|.
 name|getSortOrder
 argument_list|()
 decl_stmt|;
+name|String
+name|pathPrefix
+init|=
+name|plan
+operator|.
+name|getPathPrefix
+argument_list|()
+decl_stmt|;
 name|Iterable
 argument_list|<
 name|String
@@ -1186,6 +1198,8 @@ name|getDefinition
 argument_list|()
 argument_list|,
 name|pr
+argument_list|,
+name|pathPrefix
 argument_list|)
 expr_stmt|;
 block|}
@@ -1261,6 +1275,8 @@ argument_list|,
 operator|new
 name|PropertyRestriction
 argument_list|()
+argument_list|,
+name|pathPrefix
 argument_list|)
 expr_stmt|;
 block|}
@@ -1298,20 +1314,6 @@ name|getQueryEngineSettings
 argument_list|()
 argument_list|)
 decl_stmt|;
-name|cursor
-operator|=
-name|Cursors
-operator|.
-name|newPrefixCursor
-argument_list|(
-name|cursor
-argument_list|,
-name|plan
-operator|.
-name|getPathPrefix
-argument_list|()
-argument_list|)
-expr_stmt|;
 if|if
 condition|(
 name|depth
