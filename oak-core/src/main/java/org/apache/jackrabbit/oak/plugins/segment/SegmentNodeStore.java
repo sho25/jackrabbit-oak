@@ -1324,6 +1324,15 @@ argument_list|)
 expr_stmt|;
 name|cp
 operator|.
+name|setProperty
+argument_list|(
+literal|"created"
+argument_list|,
+name|now
+argument_list|)
+expr_stmt|;
+name|cp
+operator|.
 name|setChildNode
 argument_list|(
 name|ROOT
