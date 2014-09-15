@@ -337,6 +337,24 @@ begin_import
 import|import
 name|org
 operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|state
+operator|.
+name|NodeStore
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|osgi
 operator|.
 name|framework
@@ -380,25 +398,6 @@ import|;
 end_import
 
 begin_class
-annotation|@
-name|Property
-argument_list|(
-name|name
-operator|=
-literal|"org.apache.sling.installer.configuration.persist"
-argument_list|,
-name|label
-operator|=
-literal|"Distribute config"
-argument_list|,
-name|description
-operator|=
-literal|"Should be always disabled to avoid storing the configuration in the repository"
-argument_list|,
-name|boolValue
-operator|=
-literal|false
-argument_list|)
 annotation|@
 name|Component
 argument_list|(
@@ -452,13 +451,13 @@ decl_stmt|;
 annotation|@
 name|Property
 argument_list|(
-name|name
+name|label
 operator|=
 literal|"Mode"
 argument_list|,
 name|description
 operator|=
-literal|"TarMK Cold Standby mode (master or slave)"
+literal|"TarMK Failover mode (master or slave)"
 argument_list|,
 name|options
 operator|=
@@ -468,11 +467,11 @@ name|PropertyOption
 argument_list|(
 name|name
 operator|=
-name|MODE_MASTER
+literal|"master"
 argument_list|,
 name|value
 operator|=
-name|MODE_MASTER
+literal|"master"
 argument_list|)
 block|,
 annotation|@
@@ -480,11 +479,11 @@ name|PropertyOption
 argument_list|(
 name|name
 operator|=
-name|MODE_SLAVE
+literal|"slave"
 argument_list|,
 name|value
 operator|=
-name|MODE_SLAVE
+literal|"slave"
 argument_list|)
 block|}
 argument_list|,
@@ -511,13 +510,13 @@ decl_stmt|;
 annotation|@
 name|Property
 argument_list|(
-name|name
+name|label
 operator|=
 literal|"Port"
 argument_list|,
 name|description
 operator|=
-literal|"TCP/IP port to use"
+literal|"TarMK Failover port"
 argument_list|,
 name|intValue
 operator|=
@@ -542,13 +541,13 @@ decl_stmt|;
 annotation|@
 name|Property
 argument_list|(
-name|name
+name|label
 operator|=
 literal|"Master Host"
 argument_list|,
 name|description
 operator|=
-literal|"Master host (slave mode only)"
+literal|"TarMK Failover master host (enabled for slave mode only)"
 argument_list|,
 name|value
 operator|=
@@ -573,13 +572,13 @@ decl_stmt|;
 annotation|@
 name|Property
 argument_list|(
-name|name
+name|label
 operator|=
 literal|"Sync interval (seconds)"
 argument_list|,
 name|description
 operator|=
-literal|"Sync interval in seconds (slave mode only)"
+literal|"TarMK Failover sync interval (seconds)"
 argument_list|,
 name|intValue
 operator|=
@@ -604,13 +603,13 @@ decl_stmt|;
 annotation|@
 name|Property
 argument_list|(
-name|name
+name|label
 operator|=
-literal|"Allowed IP-Ranges"
+literal|"Client allowed IP-Ranges"
 argument_list|,
 name|description
 operator|=
-literal|"Accept incoming requests for these host names and IP-ranges only (master mode only)"
+literal|"accept incoming requests for these IP-ranges only"
 argument_list|)
 specifier|public
 specifier|static
@@ -631,7 +630,7 @@ decl_stmt|;
 annotation|@
 name|Property
 argument_list|(
-name|name
+name|label
 operator|=
 literal|"Secure"
 argument_list|,
