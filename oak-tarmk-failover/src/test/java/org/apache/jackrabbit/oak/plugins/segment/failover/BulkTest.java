@@ -23,6 +23,16 @@ end_package
 
 begin_import
 import|import
+name|junit
+operator|.
+name|framework
+operator|.
+name|Assert
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache

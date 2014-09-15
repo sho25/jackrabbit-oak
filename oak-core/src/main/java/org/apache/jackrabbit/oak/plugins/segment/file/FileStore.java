@@ -3626,13 +3626,9 @@ block|}
 block|}
 throw|throw
 operator|new
-name|IllegalStateException
+name|FileStoreCorruptException
 argument_list|(
-literal|"Segment "
-operator|+
 name|id
-operator|+
-literal|" not found"
 argument_list|)
 throw|;
 block|}
@@ -3932,6 +3928,41 @@ expr_stmt|;
 return|return
 name|this
 return|;
+block|}
+specifier|public
+class|class
+name|FileStoreCorruptException
+extends|extends
+name|IllegalStateException
+block|{
+specifier|public
+specifier|final
+name|SegmentId
+name|id
+decl_stmt|;
+specifier|public
+name|FileStoreCorruptException
+parameter_list|(
+name|SegmentId
+name|id
+parameter_list|)
+block|{
+name|super
+argument_list|(
+literal|"Segment "
+operator|+
+name|id
+operator|+
+literal|" not found"
+argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|id
+operator|=
+name|id
+expr_stmt|;
+block|}
 block|}
 block|}
 end_class
