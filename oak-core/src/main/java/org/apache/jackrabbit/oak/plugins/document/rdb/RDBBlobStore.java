@@ -2180,7 +2180,11 @@ operator|.
 name|toString
 argument_list|()
 operator|+
-literal|") and lastMod<= ?"
+literal|") and not exists(select * from "
+operator|+
+name|metaTable
+operator|+
+literal|" m where id = m.id and m.lastMod<= ?)"
 argument_list|)
 expr_stmt|;
 name|prepData
