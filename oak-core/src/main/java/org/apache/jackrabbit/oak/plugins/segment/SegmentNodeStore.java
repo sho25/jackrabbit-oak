@@ -1478,7 +1478,7 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|void
+name|boolean
 name|release
 parameter_list|(
 annotation|@
@@ -1565,7 +1565,6 @@ operator|.
 name|remove
 argument_list|()
 expr_stmt|;
-block|}
 name|SegmentNodeState
 name|newState
 init|=
@@ -1589,7 +1588,10 @@ block|{
 name|refreshHead
 argument_list|()
 expr_stmt|;
-return|return;
+return|return
+literal|true
+return|;
+block|}
 block|}
 block|}
 finally|finally
@@ -1602,6 +1604,9 @@ expr_stmt|;
 block|}
 block|}
 block|}
+return|return
+literal|false
+return|;
 block|}
 specifier|private
 class|class

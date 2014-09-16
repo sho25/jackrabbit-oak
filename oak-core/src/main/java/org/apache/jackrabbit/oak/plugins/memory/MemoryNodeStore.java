@@ -994,7 +994,7 @@ annotation|@
 name|Override
 specifier|public
 specifier|synchronized
-name|void
+name|boolean
 name|release
 parameter_list|(
 name|String
@@ -1008,6 +1008,9 @@ argument_list|(
 name|checkpoint
 argument_list|)
 expr_stmt|;
+return|return
+literal|true
+return|;
 block|}
 comment|/** test purpose only! */
 specifier|public

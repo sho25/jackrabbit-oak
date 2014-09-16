@@ -305,13 +305,14 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|void
+name|boolean
 name|release
 parameter_list|(
 name|String
 name|checkpoint
 parameter_list|)
 block|{
+return|return
 name|getNodeStore
 argument_list|()
 operator|.
@@ -319,7 +320,7 @@ name|release
 argument_list|(
 name|checkpoint
 argument_list|)
-expr_stmt|;
+return|;
 block|}
 block|}
 end_class

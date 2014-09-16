@@ -1150,7 +1150,7 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|void
+name|boolean
 name|release
 parameter_list|(
 name|String
@@ -1158,6 +1158,9 @@ name|checkpoint
 parameter_list|)
 block|{
 comment|// TODO
+return|return
+literal|true
+return|;
 block|}
 specifier|public
 name|CacheStats

@@ -235,7 +235,8 @@ name|String
 name|checkpoint
 parameter_list|)
 function_decl|;
-name|void
+comment|/**      * Releases the provided checkpoint. If the provided checkpoint doesn't exist this method should return {@code true}.      *      * @param checkpoint string reference of a checkpoint      * @return {@code true} if the checkpoint was successfully removed, or if it doesn't exist      */
+name|boolean
 name|release
 parameter_list|(
 annotation|@

@@ -6524,7 +6524,7 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|void
+name|boolean
 name|release
 parameter_list|(
 annotation|@
@@ -6540,6 +6540,9 @@ argument_list|(
 name|checkpoint
 argument_list|)
 expr_stmt|;
+return|return
+literal|true
+return|;
 block|}
 comment|//------------------------< RevisionContext>-------------------------------
 annotation|@
