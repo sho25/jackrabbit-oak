@@ -369,16 +369,6 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Ignore
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
 name|Test
 import|;
 end_import
@@ -1582,11 +1572,6 @@ argument_list|)
 expr_stmt|;
 block|}
 annotation|@
-name|Ignore
-argument_list|(
-literal|"OAK-2049"
-argument_list|)
-annotation|@
 name|Test
 comment|// See OAK-2049
 specifier|public
@@ -1596,6 +1581,22 @@ parameter_list|()
 throws|throws
 name|IOException
 block|{
+for|for
+control|(
+name|int
+name|n
+init|=
+literal|1
+init|;
+name|n
+operator|<
+literal|255
+condition|;
+name|n
+operator|++
+control|)
+block|{
+comment|// 255 = ListRecord.LEVEL_SIZE
 name|FileStore
 name|store
 init|=
@@ -1699,12 +1700,11 @@ name|Collections
 operator|.
 name|nCopies
 argument_list|(
-literal|255
+name|n
 argument_list|,
 name|x
 argument_list|)
 decl_stmt|;
-comment|// 255 = ListRecord.LEVEL_SIZE
 name|writer
 operator|.
 name|writeList
@@ -1717,6 +1717,14 @@ operator|.
 name|flush
 argument_list|()
 expr_stmt|;
+comment|// Don't close the store in a finally clause as if a failure happens
+comment|// this will also fail an cover up the earlier exception
+name|store
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
+block|}
 block|}
 block|}
 end_class

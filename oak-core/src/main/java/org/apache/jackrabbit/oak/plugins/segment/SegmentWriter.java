@@ -447,6 +447,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|HashSet
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|LinkedHashMap
 import|;
 end_import
@@ -1187,6 +1197,15 @@ argument_list|,
 literal|16
 argument_list|)
 expr_stmt|;
+name|checkState
+argument_list|(
+name|length
+operator|<=
+name|buffer
+operator|.
+name|length
+argument_list|)
+expr_stmt|;
 name|int
 name|pos
 init|=
@@ -1728,6 +1747,24 @@ init|=
 name|newIdentityHashSet
 argument_list|()
 decl_stmt|;
+comment|// The set of old record ids in this segment
+comment|// that were previously root record ids, but will no longer be,
+comment|// because the record to be written references them.
+comment|// This needs to be a set, because the list of ids can
+comment|// potentially reference the same record multiple times
+name|Set
+argument_list|<
+name|RecordId
+argument_list|>
+name|notRoots
+init|=
+operator|new
+name|HashSet
+argument_list|<
+name|RecordId
+argument_list|>
+argument_list|()
+decl_stmt|;
 for|for
 control|(
 name|RecordId
@@ -1773,11 +1810,22 @@ name|recordId
 argument_list|)
 condition|)
 block|{
-name|rootcount
-operator|--
+name|notRoots
+operator|.
+name|add
+argument_list|(
+name|recordId
+argument_list|)
 expr_stmt|;
 block|}
 block|}
+name|rootcount
+operator|-=
+name|notRoots
+operator|.
+name|size
+argument_list|()
+expr_stmt|;
 if|if
 condition|(
 operator|!
