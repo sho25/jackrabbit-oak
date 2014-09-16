@@ -2572,6 +2572,11 @@ decl_stmt|;
 name|int
 name|pos
 init|=
+name|data
+operator|.
+name|position
+argument_list|()
+operator|+
 name|refcount
 operator|*
 literal|16
