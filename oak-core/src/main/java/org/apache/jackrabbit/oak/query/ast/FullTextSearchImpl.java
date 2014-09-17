@@ -825,6 +825,23 @@ return|return
 literal|true
 return|;
 block|}
+comment|// OAK-2050
+if|if
+condition|(
+operator|!
+name|query
+operator|.
+name|getSettings
+argument_list|()
+operator|.
+name|getFullTextComparisonWithoutIndex
+argument_list|()
+condition|)
+block|{
+return|return
+literal|false
+return|;
+block|}
 name|StringBuilder
 name|buff
 init|=
@@ -1077,6 +1094,23 @@ name|isArray
 argument_list|()
 condition|)
 block|{
+if|if
+condition|(
+name|p
+operator|.
+name|getType
+argument_list|()
+operator|==
+name|Type
+operator|.
+name|BINARIES
+condition|)
+block|{
+comment|// OAK-2050: don't try to load binaries as this would
+comment|// run out of memory
+block|}
+else|else
+block|{
 for|for
 control|(
 name|String
@@ -1104,6 +1138,24 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+block|}
+else|else
+block|{
+if|if
+condition|(
+name|p
+operator|.
+name|getType
+argument_list|()
+operator|==
+name|Type
+operator|.
+name|BINARY
+condition|)
+block|{
+comment|// OAK-2050: don't try to load binaries as this would
+comment|// run out of memory
+block|}
 else|else
 block|{
 name|buff
@@ -1123,6 +1175,7 @@ argument_list|(
 literal|' '
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 specifier|public
