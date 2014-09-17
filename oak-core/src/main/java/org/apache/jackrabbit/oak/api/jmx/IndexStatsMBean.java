@@ -79,6 +79,21 @@ name|long
 name|getUpdates
 parameter_list|()
 function_decl|;
+comment|/**      * Returns the current reference checkpoint used by the async indexer      *       * @return the reference checkpoint      */
+name|String
+name|getReferenceCheckpoint
+parameter_list|()
+function_decl|;
+comment|/**      * Returns the processed checkpoint used by the async indexer. If this index      * round finishes successfully, the processed checkpoint will become the      * reference checkpoint, and the old reference checkpoint wil be released.      *       * @return the processed checkpoint      */
+name|String
+name|getProcessedCheckpoint
+parameter_list|()
+function_decl|;
+comment|/**      * Temporary checkpoints represent old checkpoints that have been processed      * but the cleanup was not successful of did not happen at all (like in the      * event the system was forcibly stopped).      *       * @return the already processed checkpoints      */
+name|String
+name|getTemporaryCheckpoints
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 
