@@ -666,7 +666,7 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"max id length for "
+literal|"max blob length for "
 operator|+
 name|URL
 operator|+
