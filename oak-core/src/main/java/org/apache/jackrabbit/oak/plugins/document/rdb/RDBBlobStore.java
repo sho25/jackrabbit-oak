@@ -752,29 +752,9 @@ literal|"DATASTORE_META"
 argument_list|)
 condition|)
 block|{
-if|if
-condition|(
-literal|"MySQL"
-operator|.
-name|equals
-argument_list|(
-name|dbtype
-argument_list|)
-condition|)
-block|{
-name|stmt
-operator|.
-name|execute
-argument_list|(
-literal|"create table "
-operator|+
-name|tableName
-operator|+
-literal|" (ID varchar(767) not null primary key, LVL int, LASTMOD bigint)"
-argument_list|)
-expr_stmt|;
-block|}
-elseif|else
+name|String
+name|ct
+decl_stmt|;
 if|if
 condition|(
 literal|"Oracle"
@@ -785,37 +765,39 @@ name|dbtype
 argument_list|)
 condition|)
 block|{
-name|stmt
-operator|.
-name|execute
-argument_list|(
+name|ct
+operator|=
 literal|"create table "
 operator|+
 name|tableName
 operator|+
-literal|" (ID varchar(1000) not null primary key, LVL number, LASTMOD number)"
+literal|" (ID varchar(767) not null primary key, LVL number, LASTMOD number)"
+expr_stmt|;
+block|}
+else|else
+block|{
+name|ct
+operator|=
+literal|"create table "
+operator|+
+name|tableName
+operator|+
+literal|" (ID varchar(767) not null primary key, LVL int, LASTMOD bigint)"
+expr_stmt|;
+block|}
+name|stmt
+operator|.
+name|execute
+argument_list|(
+name|ct
 argument_list|)
 expr_stmt|;
 block|}
 else|else
 block|{
-name|stmt
-operator|.
-name|execute
-argument_list|(
-literal|"create table "
-operator|+
-name|tableName
-operator|+
-literal|" (ID varchar(1000) not null primary key, LVL int, LASTMOD bigint)"
-argument_list|)
-expr_stmt|;
-block|}
-block|}
-else|else
-block|{
-comment|// the code below likely will need to be extended for
-comment|// new database types
+name|String
+name|ct
+decl_stmt|;
 if|if
 condition|(
 literal|"PostgreSQL"
@@ -826,16 +808,13 @@ name|dbtype
 argument_list|)
 condition|)
 block|{
-name|stmt
-operator|.
-name|execute
-argument_list|(
+name|ct
+operator|=
 literal|"create table "
 operator|+
 name|tableName
 operator|+
-literal|" (ID varchar(1000) not null primary key, DATA bytea)"
-argument_list|)
+literal|" (ID varchar(767) not null primary key, DATA bytea)"
 expr_stmt|;
 block|}
 elseif|else
@@ -862,20 +841,17 @@ argument_list|)
 operator|)
 condition|)
 block|{
-name|stmt
-operator|.
-name|execute
-argument_list|(
+name|ct
+operator|=
 literal|"create table "
 operator|+
 name|tableName
 operator|+
-literal|" (ID varchar(1000) not null primary key, DATA blob("
+literal|" (ID varchar(767) not null primary key, DATA blob("
 operator|+
 name|MINBLOB
 operator|+
 literal|"))"
-argument_list|)
 expr_stmt|;
 block|}
 elseif|else
@@ -889,32 +865,33 @@ name|dbtype
 argument_list|)
 condition|)
 block|{
-name|stmt
-operator|.
-name|execute
-argument_list|(
+name|ct
+operator|=
 literal|"create table "
 operator|+
 name|tableName
 operator|+
 literal|" (ID varchar(767) not null primary key, DATA mediumblob)"
-argument_list|)
 expr_stmt|;
 block|}
 else|else
 block|{
-name|stmt
-operator|.
-name|execute
-argument_list|(
+name|ct
+operator|=
 literal|"create table "
 operator|+
 name|tableName
 operator|+
-literal|" (ID varchar(1000) not null primary key, DATA blob)"
-argument_list|)
+literal|" (ID varchar(767) not null primary key, DATA blob)"
 expr_stmt|;
 block|}
+name|stmt
+operator|.
+name|execute
+argument_list|(
+name|ct
+argument_list|)
+expr_stmt|;
 block|}
 name|stmt
 operator|.
