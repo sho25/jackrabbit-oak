@@ -389,11 +389,11 @@ literal|"org.apache.sling.installer.configuration.persist"
 argument_list|,
 name|label
 operator|=
-literal|"Distribute config"
+literal|"Persist configuration"
 argument_list|,
 name|description
 operator|=
-literal|"Should be always disabled to avoid storing the configuration in the repository"
+literal|"Must be always disabled to avoid storing the configuration in the repository"
 argument_list|,
 name|boolValue
 operator|=
@@ -402,6 +402,10 @@ argument_list|)
 annotation|@
 name|Component
 argument_list|(
+name|metatype
+operator|=
+literal|true
+argument_list|,
 name|policy
 operator|=
 name|ConfigurationPolicy
@@ -452,14 +456,6 @@ decl_stmt|;
 annotation|@
 name|Property
 argument_list|(
-name|name
-operator|=
-literal|"Mode"
-argument_list|,
-name|description
-operator|=
-literal|"TarMK Cold Standby mode (master or slave)"
-argument_list|,
 name|options
 operator|=
 block|{
@@ -511,14 +507,6 @@ decl_stmt|;
 annotation|@
 name|Property
 argument_list|(
-name|name
-operator|=
-literal|"Port"
-argument_list|,
-name|description
-operator|=
-literal|"TCP/IP port to use"
-argument_list|,
 name|intValue
 operator|=
 name|PORT_DEFAULT
@@ -542,14 +530,6 @@ decl_stmt|;
 annotation|@
 name|Property
 argument_list|(
-name|name
-operator|=
-literal|"Master Host"
-argument_list|,
-name|description
-operator|=
-literal|"Master host (slave mode only)"
-argument_list|,
 name|value
 operator|=
 name|MASTER_HOST_DEFAULT
@@ -573,14 +553,6 @@ decl_stmt|;
 annotation|@
 name|Property
 argument_list|(
-name|name
-operator|=
-literal|"Sync interval (seconds)"
-argument_list|,
-name|description
-operator|=
-literal|"Sync interval in seconds (slave mode only)"
-argument_list|,
 name|intValue
 operator|=
 name|INTERVAL_DEFAULT
@@ -597,20 +569,22 @@ specifier|public
 specifier|static
 specifier|final
 name|String
+index|[]
 name|ALLOWED_CLIENT_IP_RANGES_DEFAULT
 init|=
-literal|null
+operator|new
+name|String
+index|[]
+block|{}
 decl_stmt|;
 annotation|@
 name|Property
 argument_list|(
-name|name
+name|cardinality
 operator|=
-literal|"Allowed IP-Ranges"
-argument_list|,
-name|description
-operator|=
-literal|"Accept incoming requests for these host names and IP-ranges only (master mode only)"
+name|Integer
+operator|.
+name|MAX_VALUE
 argument_list|)
 specifier|public
 specifier|static
@@ -631,14 +605,6 @@ decl_stmt|;
 annotation|@
 name|Property
 argument_list|(
-name|name
-operator|=
-literal|"Secure"
-argument_list|,
-name|description
-operator|=
-literal|"Use secure connections"
-argument_list|,
 name|boolValue
 operator|=
 name|SECURE_DEFAULT
@@ -882,11 +848,12 @@ name|PORT_DEFAULT
 argument_list|)
 decl_stmt|;
 name|String
-name|ipRanges
+index|[]
+name|ranges
 init|=
 name|PropertiesUtil
 operator|.
-name|toString
+name|toStringArray
 argument_list|(
 name|props
 operator|.
@@ -896,23 +863,6 @@ name|ALLOWED_CLIENT_IP_RANGES
 argument_list|)
 argument_list|,
 name|ALLOWED_CLIENT_IP_RANGES_DEFAULT
-argument_list|)
-decl_stmt|;
-name|String
-index|[]
-name|ranges
-init|=
-name|ipRanges
-operator|==
-literal|null
-condition|?
-literal|null
-else|:
-name|ipRanges
-operator|.
-name|split
-argument_list|(
-literal|","
 argument_list|)
 decl_stmt|;
 name|boolean
@@ -959,7 +909,7 @@ literal|"started failover master on port {} with allowed ip ranges {}."
 argument_list|,
 name|port
 argument_list|,
-name|ipRanges
+name|ranges
 argument_list|)
 expr_stmt|;
 block|}

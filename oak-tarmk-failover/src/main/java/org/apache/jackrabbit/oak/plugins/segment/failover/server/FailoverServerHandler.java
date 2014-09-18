@@ -426,6 +426,14 @@ operator|.
 name|allowedIPRanges
 operator|!=
 literal|null
+operator|&&
+name|this
+operator|.
+name|allowedIPRanges
+operator|.
+name|length
+operator|>
+literal|0
 condition|)
 block|{
 for|for
