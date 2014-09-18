@@ -191,24 +191,6 @@ name|plugins
 operator|.
 name|segment
 operator|.
-name|SegmentId
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|plugins
-operator|.
-name|segment
-operator|.
 name|SegmentNodeBuilder
 import|;
 end_import
@@ -228,6 +210,24 @@ operator|.
 name|segment
 operator|.
 name|SegmentNodeState
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|segment
+operator|.
+name|SegmentNotFoundException
 import|;
 end_import
 
@@ -294,26 +294,6 @@ operator|.
 name|store
 operator|.
 name|RemoteSegmentLoader
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|plugins
-operator|.
-name|segment
-operator|.
-name|file
-operator|.
-name|FileStore
 import|;
 end_import
 
@@ -616,14 +596,20 @@ break|break;
 block|}
 catch|catch
 parameter_list|(
-name|FileStore
-operator|.
-name|FileStoreCorruptException
+name|SegmentNotFoundException
 name|e
 parameter_list|)
 block|{
 comment|// the segment is locally damaged or not present anymore
 comment|// lets try to read this from the master again
+name|String
+name|id
+init|=
+name|e
+operator|.
+name|getSegmentId
+argument_list|()
+decl_stmt|;
 name|Segment
 name|s
 init|=
@@ -631,7 +617,8 @@ name|readSegment
 argument_list|(
 name|e
 operator|.
-name|id
+name|getSegmentId
+argument_list|()
 argument_list|)
 decl_stmt|;
 if|if
@@ -647,8 +634,6 @@ name|warn
 argument_list|(
 literal|"can't read locally corrupt segment "
 operator|+
-name|e
-operator|.
 name|id
 operator|+
 literal|" from master"
@@ -664,8 +649,6 @@ name|info
 argument_list|(
 literal|"did reread locally corrupt segment "
 operator|+
-name|e
-operator|.
 name|id
 operator|+
 literal|" with size "
@@ -721,9 +704,10 @@ name|store
 operator|.
 name|writeSegment
 argument_list|(
-name|e
+name|s
 operator|.
-name|id
+name|getSegmentId
+argument_list|()
 argument_list|,
 name|bout
 operator|.
@@ -798,7 +782,7 @@ name|Segment
 name|readSegment
 parameter_list|(
 specifier|final
-name|SegmentId
+name|String
 name|id
 parameter_list|)
 block|{

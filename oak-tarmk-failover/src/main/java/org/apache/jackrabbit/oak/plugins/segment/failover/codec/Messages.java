@@ -23,24 +23,6 @@ name|codec
 package|;
 end_package
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|plugins
-operator|.
-name|segment
-operator|.
-name|SegmentId
-import|;
-end_import
-
 begin_class
 specifier|public
 class|class
@@ -159,7 +141,7 @@ parameter_list|(
 name|String
 name|clientID
 parameter_list|,
-name|SegmentId
+name|String
 name|sid
 parameter_list|)
 block|{
@@ -171,9 +153,6 @@ argument_list|,
 name|GET_SEGMENT
 operator|+
 name|sid
-operator|.
-name|toString
-argument_list|()
 argument_list|)
 return|;
 block|}

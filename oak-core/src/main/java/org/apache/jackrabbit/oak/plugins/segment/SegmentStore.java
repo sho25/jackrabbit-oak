@@ -111,7 +111,7 @@ name|SegmentId
 name|id
 parameter_list|)
 function_decl|;
-comment|/**      * Reads the identified segment from this store.      *      * @param segmentId segment identifier      * @return identified segment, or {@code null} if not found      */
+comment|/**      * Reads the identified segment from this store.      *      * @param segmentId segment identifier      * @return identified segment, or a {@link SegmentNotFoundException} thrown if not found      */
 annotation|@
 name|CheckForNull
 name|Segment

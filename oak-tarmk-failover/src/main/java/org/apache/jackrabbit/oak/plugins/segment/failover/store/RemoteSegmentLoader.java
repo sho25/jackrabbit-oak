@@ -41,24 +41,6 @@ name|Segment
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|plugins
-operator|.
-name|segment
-operator|.
-name|SegmentId
-import|;
-end_import
-
 begin_interface
 specifier|public
 interface|interface
@@ -67,7 +49,7 @@ block|{
 name|Segment
 name|readSegment
 parameter_list|(
-name|SegmentId
+name|String
 name|id
 parameter_list|)
 function_decl|;
