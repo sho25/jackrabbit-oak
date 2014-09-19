@@ -59,6 +59,11 @@ name|String
 name|getStatus
 parameter_list|()
 function_decl|;
+comment|/**      * @return the last upto which the repository was indexed      */
+name|String
+name|getLastIndexedTime
+parameter_list|()
+function_decl|;
 comment|/**      * Pauses the background indexing process. Future changes are not indexed      * until the {@link #resume()} method is called.      *       * The pause call will take effect on the next run cycle and will affect all      * indexes marked as 'async'.      *       * Note: this is experimental and should only be used for      * debugging/diagnosis purposes!      *       */
 name|void
 name|pause
