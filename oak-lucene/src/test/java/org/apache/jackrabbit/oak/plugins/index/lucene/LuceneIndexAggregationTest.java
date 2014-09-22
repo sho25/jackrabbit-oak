@@ -2595,6 +2595,25 @@ literal|"/myFolder/myFile"
 argument_list|)
 argument_list|)
 expr_stmt|;
+comment|// double aggregation dupes
+name|assertQuery
+argument_list|(
+literal|"//*[(jcr:contains(., 'dog') or jcr:contains(jcr:content, 'dog') )]"
+argument_list|,
+literal|"xpath"
+argument_list|,
+name|ImmutableList
+operator|.
+name|of
+argument_list|(
+literal|"/myFolder"
+argument_list|,
+literal|"/myFolder/myFile"
+argument_list|,
+literal|"/myFolder/myFile/jcr:content"
+argument_list|)
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 end_class

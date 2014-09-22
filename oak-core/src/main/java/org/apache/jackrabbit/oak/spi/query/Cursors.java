@@ -2031,8 +2031,9 @@ name|result
 init|=
 name|current
 decl_stmt|;
-name|fetchNext
-argument_list|()
+name|init
+operator|=
+literal|false
 expr_stmt|;
 return|return
 name|result
