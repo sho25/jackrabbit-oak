@@ -1746,7 +1746,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/**      * Instances of this class represent a branch whose base and head differ.      * All changes are persisted to an underlying branch in the {@code MicroKernel}.      *<p>      * Transitions to:      *<ul>      *<li>{@link Unmodified} on {@link #setRoot(NodeState)} if the new root is the same      *         as the base of this branch.      *<li>{@link ResetFailed} on failed reset in {@link #merge(CommitHook, CommitInfo)}</li>      *<li>{@link Merged} on successful {@link #merge(CommitHook, CommitInfo)}</li>      *</ul>      */
+comment|/**      * Instances of this class represent a branch whose head is persisted to an      * underlying branch in the {@code MicroKernel}.      *<p>      * Transitions to:      *<ul>      *<li>{@link ResetFailed} on failed reset in {@link #merge(CommitHook, CommitInfo)}</li>      *<li>{@link Merged} on successful {@link #merge(CommitHook, CommitInfo)}</li>      *</ul>      */
 specifier|private
 class|class
 name|Persisted
@@ -1899,26 +1899,6 @@ parameter_list|)
 block|{
 if|if
 condition|(
-name|base
-operator|.
-name|equals
-argument_list|(
-name|root
-argument_list|)
-condition|)
-block|{
-name|branchState
-operator|=
-operator|new
-name|Unmodified
-argument_list|(
-name|base
-argument_list|)
-expr_stmt|;
-block|}
-elseif|else
-if|if
-condition|(
 operator|!
 name|head
 operator|.
@@ -1947,28 +1927,6 @@ init|=
 name|getRoot
 argument_list|()
 decl_stmt|;
-if|if
-condition|(
-name|head
-operator|.
-name|equals
-argument_list|(
-name|root
-argument_list|)
-condition|)
-block|{
-comment|// Nothing was written to this branch: set new base revision
-name|head
-operator|=
-name|root
-expr_stmt|;
-name|base
-operator|=
-name|root
-expr_stmt|;
-block|}
-else|else
-block|{
 comment|// perform rebase in store
 name|head
 operator|=
@@ -1987,7 +1945,6 @@ name|base
 operator|=
 name|root
 expr_stmt|;
-block|}
 block|}
 annotation|@
 name|Override
