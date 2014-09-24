@@ -189,6 +189,20 @@ end_import
 
 begin_import
 import|import static
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|TimeUnit
+operator|.
+name|MILLISECONDS
+import|;
+end_import
+
+begin_import
+import|import static
 name|org
 operator|.
 name|apache
@@ -282,6 +296,13 @@ name|getMaxBackoffMillis
 argument_list|(
 name|store
 argument_list|)
+argument_list|,
+name|getMaxBackoffMillis
+argument_list|(
+name|store
+argument_list|)
+operator|*
+literal|3
 argument_list|)
 expr_stmt|;
 name|this
@@ -786,14 +807,37 @@ block|}
 block|}
 comment|// retry with exclusive lock, blocking other
 comment|// concurrent writes
+comment|// do not wait forever
+name|boolean
+name|acquired
+init|=
+literal|false
+decl_stmt|;
+try|try
+block|{
+name|acquired
+operator|=
 name|mergeLock
 operator|.
 name|writeLock
 argument_list|()
 operator|.
-name|lock
-argument_list|()
+name|tryLock
+argument_list|(
+name|maxLockTryTimeMS
+argument_list|,
+name|MILLISECONDS
+argument_list|)
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|InterruptedException
+name|e
+parameter_list|)
+block|{
+comment|// ignore and proceed with shared lock used in base class
+block|}
 try|try
 block|{
 return|return
@@ -809,6 +853,11 @@ return|;
 block|}
 finally|finally
 block|{
+if|if
+condition|(
+name|acquired
+condition|)
+block|{
 name|mergeLock
 operator|.
 name|writeLock
@@ -817,6 +866,7 @@ operator|.
 name|unlock
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 block|}
 comment|//------------------------------< internal>--------------------------------

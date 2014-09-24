@@ -383,6 +383,12 @@ specifier|final
 name|long
 name|maximumBackoff
 decl_stmt|;
+comment|/**      * The maximum time in milliseconds to wait for the merge lock.      */
+specifier|protected
+specifier|final
+name|long
+name|maxLockTryTimeMS
+decl_stmt|;
 comment|/** Lock for coordinating concurrent merge operations */
 specifier|private
 specifier|final
@@ -430,8 +436,13 @@ literal|10
 argument_list|,
 name|SECONDS
 argument_list|)
+argument_list|,
+name|Integer
+operator|.
+name|MAX_VALUE
 argument_list|)
 expr_stmt|;
+comment|// default: wait 'forever'
 block|}
 specifier|public
 name|AbstractNodeStoreBranch
@@ -453,6 +464,9 @@ name|head
 parameter_list|,
 name|long
 name|maximumBackoff
+parameter_list|,
+name|long
+name|maxLockTryTimeMS
 parameter_list|)
 block|{
 name|this
@@ -530,6 +544,12 @@ name|maximumBackoff
 argument_list|,
 name|MIN_BACKOFF
 argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|maxLockTryTimeMS
+operator|=
+name|maxLockTryTimeMS
 expr_stmt|;
 block|}
 comment|/**      * @return the current root of the underlying store.      */
@@ -1064,11 +1084,20 @@ argument_list|)
 throw|;
 block|}
 block|}
+try|try
+block|{
+name|boolean
+name|acquired
+init|=
 name|mergeLock
 operator|.
-name|lock
-argument_list|()
-expr_stmt|;
+name|tryLock
+argument_list|(
+name|maxLockTryTimeMS
+argument_list|,
+name|MILLISECONDS
+argument_list|)
+decl_stmt|;
 try|try
 block|{
 return|return
@@ -1119,11 +1148,38 @@ block|}
 block|}
 finally|finally
 block|{
+if|if
+condition|(
+name|acquired
+condition|)
+block|{
 name|mergeLock
 operator|.
 name|unlock
 argument_list|()
 expr_stmt|;
+block|}
+block|}
+block|}
+catch|catch
+parameter_list|(
+name|InterruptedException
+name|e
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|CommitFailedException
+argument_list|(
+name|OAK
+argument_list|,
+literal|1
+argument_list|,
+literal|"Unable to acquire merge lock"
+argument_list|,
+name|e
+argument_list|)
+throw|;
 block|}
 block|}
 comment|// if we get here retrying failed
