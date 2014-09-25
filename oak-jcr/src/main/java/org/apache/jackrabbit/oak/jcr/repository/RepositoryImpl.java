@@ -83,6 +83,16 @@ begin_import
 import|import
 name|java
 operator|.
+name|io
+operator|.
+name|Closeable
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|Collections
@@ -274,6 +284,20 @@ operator|.
 name|collect
 operator|.
 name|ImmutableMap
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|io
+operator|.
+name|IOUtils
 import|;
 end_import
 
@@ -1338,6 +1362,24 @@ operator|.
 name|shutdown
 argument_list|()
 expr_stmt|;
+if|if
+condition|(
+name|contentRepository
+operator|instanceof
+name|Closeable
+condition|)
+block|{
+name|IOUtils
+operator|.
+name|closeQuietly
+argument_list|(
+operator|(
+name|Closeable
+operator|)
+name|contentRepository
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 comment|//------------------------------------------------------------< internal>---
 comment|/**      * Factory method for creating a {@link SessionContext} instance for      * a new session. Called by {@link #login()}. Can be overridden by      * subclasses to customize the session implementation.      *      * @return session context      */
