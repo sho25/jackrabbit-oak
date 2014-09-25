@@ -23,6 +23,16 @@ begin_import
 import|import
 name|java
 operator|.
+name|io
+operator|.
+name|Serializable
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|Comparator
@@ -54,6 +64,7 @@ comment|/**  * Implements a comparator, which sorts path string according to 1) 
 end_comment
 
 begin_class
+specifier|public
 class|class
 name|PathComparator
 implements|implements
@@ -61,7 +72,19 @@ name|Comparator
 argument_list|<
 name|String
 argument_list|>
+implements|,
+name|Serializable
 block|{
+specifier|private
+specifier|static
+specifier|final
+name|long
+name|serialVersionUID
+init|=
+operator|-
+literal|1523171906146067782L
+decl_stmt|;
+specifier|public
 specifier|static
 specifier|final
 name|Comparator
