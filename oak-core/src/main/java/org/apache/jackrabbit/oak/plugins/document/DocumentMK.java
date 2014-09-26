@@ -2896,7 +2896,7 @@ name|blobCacheSizeMB
 operator|*
 literal|1024
 operator|*
-literal|1024
+literal|1024L
 argument_list|)
 expr_stmt|;
 block|}
