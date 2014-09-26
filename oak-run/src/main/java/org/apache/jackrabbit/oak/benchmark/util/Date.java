@@ -204,7 +204,7 @@ literal|1
 argument_list|)
 argument_list|)
 block|;
-comment|/**      * perform math on the provided calendar and return it.      *       * @param cal      * @param field      * @param amount      * @return      */
+comment|/**      * perform math on the provided calendar and return it.      *       * @param cal the calendar to add value to      * @param field the field to change      * @param amount the amount to be added      * @return the changed calendar      */
 specifier|private
 specifier|static
 name|Calendar
@@ -279,6 +279,19 @@ return|return
 name|c
 return|;
 block|}
+specifier|public
+name|String
+name|toISO_8601_2000
+parameter_list|()
+block|{
+return|return
+name|convertToISO_8601_2000
+argument_list|(
+name|getCalendar
+argument_list|()
+argument_list|)
+return|;
+block|}
 specifier|private
 specifier|static
 specifier|final
@@ -324,7 +337,7 @@ argument_list|(
 literal|30
 argument_list|)
 decl_stmt|;
-comment|/**      * return a random Date      *       * @return      */
+comment|/**      * return a random Date      *       * @return the date      */
 specifier|public
 specifier|static
 name|Date
@@ -346,9 +359,13 @@ argument_list|)
 return|;
 block|}
 specifier|public
+specifier|static
 name|String
-name|toISO_8601_2000
-parameter_list|()
+name|convertToISO_8601_2000
+parameter_list|(
+name|Calendar
+name|cal
+parameter_list|)
 block|{
 name|SimpleDateFormat
 name|format
@@ -376,8 +393,7 @@ name|format
 operator|.
 name|format
 argument_list|(
-name|getCalendar
-argument_list|()
+name|cal
 operator|.
 name|getTime
 argument_list|()
