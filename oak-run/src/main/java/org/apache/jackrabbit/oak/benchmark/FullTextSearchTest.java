@@ -201,6 +201,20 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
+name|Oak
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
 name|benchmark
 operator|.
 name|wikipedia
@@ -221,7 +235,7 @@ name|oak
 operator|.
 name|fixture
 operator|.
-name|JcrCustomizer
+name|JcrCreator
 import|;
 end_import
 
@@ -948,7 +962,7 @@ argument_list|(
 literal|1
 argument_list|,
 operator|new
-name|JcrCustomizer
+name|JcrCreator
 argument_list|()
 block|{
 annotation|@
@@ -957,8 +971,8 @@ specifier|public
 name|Jcr
 name|customize
 parameter_list|(
-name|Jcr
-name|jcr
+name|Oak
+name|oak
 parameter_list|)
 block|{
 name|LuceneIndexProvider
@@ -968,7 +982,7 @@ operator|new
 name|LuceneIndexProvider
 argument_list|()
 decl_stmt|;
-name|jcr
+name|oak
 operator|.
 name|with
 argument_list|(
@@ -1005,7 +1019,11 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 return|return
-name|jcr
+operator|new
+name|Jcr
+argument_list|(
+name|oak
+argument_list|)
 return|;
 block|}
 block|}

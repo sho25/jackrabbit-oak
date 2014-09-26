@@ -768,6 +768,8 @@ name|NodeTypeConstants
 operator|.
 name|JCR_LASTMODIFIED
 argument_list|,
+name|ASYNC_INDEX
+argument_list|,
 operator|new
 name|String
 index|[]

@@ -65,22 +65,6 @@ name|Oak
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|jcr
-operator|.
-name|Jcr
-import|;
-end_import
-
 begin_class
 specifier|public
 class|class
@@ -595,7 +579,7 @@ name|setUpCluster
 argument_list|(
 name|n
 argument_list|,
-name|JcrCustomizer
+name|JcrCreator
 operator|.
 name|DEFAULT
 argument_list|)
@@ -609,7 +593,7 @@ parameter_list|(
 name|int
 name|n
 parameter_list|,
-name|JcrCustomizer
+name|JcrCreator
 name|customizer
 parameter_list|)
 throws|throws
@@ -662,14 +646,10 @@ name|customizer
 operator|.
 name|customize
 argument_list|(
-operator|new
-name|Jcr
-argument_list|(
 name|oaks
 index|[
 name|i
 index|]
-argument_list|)
 argument_list|)
 operator|.
 name|createRepository
