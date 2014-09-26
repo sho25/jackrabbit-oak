@@ -1632,15 +1632,25 @@ name|String
 argument_list|>
 argument_list|()
 decl_stmt|;
+comment|// ratio between Java characters and UTF-8 encoding
+comment|// a) single characters will fit into 3 bytes
+comment|// b) a surrogate pair (two Java characters) will fit into 4 bytes
+comment|// thus...
+specifier|private
+specifier|static
+name|int
+name|CHAR2OCTETRATIO
+init|=
+literal|3
+decl_stmt|;
 comment|// capacity of DATA column
-comment|// we assume six octets per Java character as worst case for now
 specifier|private
 name|int
 name|datalimit
 init|=
 literal|16384
 operator|/
-literal|6
+name|CHAR2OCTETRATIO
 decl_stmt|;
 comment|// number of retries for updates
 specifier|private
@@ -2012,7 +2022,7 @@ argument_list|(
 literal|1
 argument_list|)
 operator|/
-literal|6
+name|CHAR2OCTETRATIO
 expr_stmt|;
 block|}
 block|}
@@ -2150,7 +2160,7 @@ name|datalimit
 operator|=
 literal|4000
 operator|/
-literal|6
+name|CHAR2OCTETRATIO
 expr_stmt|;
 name|stmt
 operator|.
@@ -5779,7 +5789,7 @@ literal|0
 argument_list|,
 name|datalimit
 operator|-
-literal|32
+literal|128
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -6080,7 +6090,7 @@ literal|0
 argument_list|,
 name|datalimit
 operator|-
-literal|20
+literal|128
 argument_list|)
 argument_list|)
 expr_stmt|;
