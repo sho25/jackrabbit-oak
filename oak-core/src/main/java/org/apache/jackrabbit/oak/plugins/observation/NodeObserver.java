@@ -561,6 +561,8 @@ operator|!=
 literal|null
 condition|)
 block|{
+try|try
+block|{
 name|NamePathMapper
 name|namePathMapper
 init|=
@@ -765,6 +767,23 @@ name|generator
 operator|.
 name|generate
 argument_list|()
+expr_stmt|;
+block|}
+block|}
+catch|catch
+parameter_list|(
+name|Exception
+name|e
+parameter_list|)
+block|{
+name|LOG
+operator|.
+name|warn
+argument_list|(
+literal|"Error while dispatching observation events"
+argument_list|,
+name|e
+argument_list|)
 expr_stmt|;
 block|}
 block|}
