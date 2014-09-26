@@ -51,6 +51,16 @@ end_import
 
 begin_import
 import|import
+name|javax
+operator|.
+name|sql
+operator|.
+name|DataSource
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|junit
@@ -129,6 +139,10 @@ name|DocumentStoreFixture
 name|dsf
 decl_stmt|;
 specifier|protected
+name|DataSource
+name|rdbDataSource
+decl_stmt|;
+specifier|protected
 name|List
 argument_list|<
 name|String
@@ -187,6 +201,15 @@ operator|=
 name|dsf
 operator|.
 name|getName
+argument_list|()
+expr_stmt|;
+name|this
+operator|.
+name|rdbDataSource
+operator|=
+name|dsf
+operator|.
+name|getRDBDataSource
 argument_list|()
 expr_stmt|;
 block|}

@@ -358,6 +358,16 @@ return|return
 literal|true
 return|;
 block|}
+comment|// get underlying datasource if RDB persistence
+specifier|public
+name|DataSource
+name|getRDBDataSource
+parameter_list|()
+block|{
+return|return
+literal|null
+return|;
+block|}
 comment|// return false if the multiple instances will not share the same persistence
 specifier|public
 name|boolean
@@ -623,6 +633,17 @@ return|return
 name|dataSource
 operator|!=
 literal|null
+return|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|DataSource
+name|getRDBDataSource
+parameter_list|()
+block|{
+return|return
+name|dataSource
 return|;
 block|}
 annotation|@
