@@ -61,7 +61,7 @@ name|collect
 operator|.
 name|Maps
 operator|.
-name|newHashMap
+name|newLinkedHashMap
 import|;
 end_import
 
@@ -331,6 +331,26 @@ name|RepositoryFixture
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
+import|;
+end_import
+
 begin_comment
 comment|/**  * Abstract class which defines a lot of the boiler-plate code needed to run the suite of tests.  *   * Any test suite extending from this class has the following entry points  *<p>  * {@link #beforeSuite()} - To configure the whole suite before the tests are started.  *<p>  * {@link #afterSuite()} - To shutdown the whole suite after all tests are finished.  *<p>  * {@link #beforeIteration(ExecutionContext)} - Any initialization to be performed before each of  * the test run. Typically, this can be configured to create additional loads for each iteration.  * This method will be called before each test iteration begins.  *<p>  * {@link #afterIteration()} - To configure any post test steps to be executed after each iteration  * of the test. This method will be called after each test iteration completes.  *<p>  * {@link #executeBenchmark(ScalabilityBenchmark, ExecutionContext)} - Actual benchmark/test to be  * executed. This method will be called in each iteration of the test run.  *   */
 end_comment
@@ -345,6 +365,21 @@ name|ScalabilitySuite
 implements|,
 name|CSVResultGenerator
 block|{
+specifier|protected
+specifier|static
+specifier|final
+name|Logger
+name|LOG
+init|=
+name|LoggerFactory
+operator|.
+name|getLogger
+argument_list|(
+name|ScalabilityAbstractSuite
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 comment|/**      * A random string to guarantee concurrently running tests don't overwrite      * each others changes (for example in a cluster).      *<p>      * The probability of duplicates, for 50 concurrent processes, is less than 1 in 1 million.      */
 specifier|protected
 specifier|static
@@ -381,13 +416,13 @@ specifier|protected
 specifier|static
 specifier|final
 name|boolean
-name|DEBUG
+name|NO_WARMUP
 init|=
 name|Boolean
 operator|.
 name|getBoolean
 argument_list|(
-literal|"debug"
+literal|"nowarmup"
 argument_list|)
 decl_stmt|;
 comment|/**      * Controls the incremental load for each iteration      */
@@ -502,7 +537,7 @@ name|this
 operator|.
 name|benchmarks
 operator|=
-name|newHashMap
+name|newLinkedHashMap
 argument_list|()
 expr_stmt|;
 block|}
@@ -629,14 +664,15 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|DEBUG
+name|LOG
+operator|.
+name|isDebugEnabled
+argument_list|()
 condition|)
 block|{
-name|System
+name|LOG
 operator|.
-name|out
-operator|.
-name|println
+name|debug
 argument_list|(
 literal|"Started test"
 argument_list|)
@@ -650,14 +686,15 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|DEBUG
+name|LOG
+operator|.
+name|isDebugEnabled
+argument_list|()
 condition|)
 block|{
-name|System
+name|LOG
 operator|.
-name|out
-operator|.
-name|println
+name|debug
 argument_list|(
 literal|"Finished test"
 argument_list|)
@@ -687,7 +724,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Setup the iteration. Calls {@link this#beforeIteration()} which can       * be overridden by subclasses.      *       * @param increment      * @throws Exception      */
+comment|/**      * Setup the iteration. Calls {@link #beforeIteration(ExecutionContext)} which can be      * overridden by subclasses.      *       * @param increment the current iteration's increment      * @throws Exception      */
 specifier|private
 name|void
 name|setupIteration
@@ -700,14 +737,15 @@ name|Exception
 block|{
 if|if
 condition|(
-name|DEBUG
+name|LOG
+operator|.
+name|isDebugEnabled
+argument_list|()
 condition|)
 block|{
-name|System
+name|LOG
 operator|.
-name|out
-operator|.
-name|println
+name|debug
 argument_list|(
 literal|"Start load : "
 operator|+
@@ -724,6 +762,12 @@ argument_list|(
 name|context
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+operator|!
+name|NO_WARMUP
+condition|)
+block|{
 for|for
 control|(
 name|ScalabilityBenchmark
@@ -744,14 +788,13 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+block|}
 comment|/**      * Post processing for the iteration.      *       * @throws InterruptedException      * @throws Exception      */
 specifier|private
 name|void
 name|tearDownIteration
 parameter_list|()
 throws|throws
-name|InterruptedException
-throws|,
 name|Exception
 block|{
 name|shutdownBackgroundJobs
@@ -977,7 +1020,7 @@ return|return
 name|benchmarks
 return|;
 block|}
-comment|/**      * Runs the benchmark.      *       * @param benchmark      * @throws Exception       */
+comment|/**      * Runs the benchmark.      *       * @param benchmark the benchmark to execute      * @throws Exception       */
 specifier|protected
 specifier|abstract
 name|void
@@ -992,7 +1035,7 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
-comment|/**      * Runs the iteration of the benchmarks added.      *       * @param context      * @throws Exception       */
+comment|/**      * Runs the iteration of the benchmarks added.      *       * @param context the execution context      * @throws Exception       */
 specifier|private
 name|void
 name|runIteration
@@ -1022,15 +1065,25 @@ argument_list|)
 expr_stmt|;
 for|for
 control|(
-name|ScalabilityBenchmark
-name|benchmark
+name|String
+name|key
 range|:
 name|benchmarks
 operator|.
-name|values
+name|keySet
 argument_list|()
 control|)
 block|{
+name|ScalabilityBenchmark
+name|benchmark
+init|=
+name|benchmarks
+operator|.
+name|get
+argument_list|(
+name|key
+argument_list|)
+decl_stmt|;
 if|if
 condition|(
 name|result
@@ -1096,14 +1149,15 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|DEBUG
+name|LOG
+operator|.
+name|isDebugEnabled
+argument_list|()
 condition|)
 block|{
-name|System
+name|LOG
 operator|.
-name|out
-operator|.
-name|println
+name|debug
 argument_list|(
 literal|"Execution time for "
 operator|+
@@ -1337,7 +1391,7 @@ name|this
 operator|.
 name|stats
 operator|=
-name|newHashMap
+name|newLinkedHashMap
 argument_list|()
 expr_stmt|;
 block|}
@@ -1848,11 +1902,9 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|System
+name|LOG
 operator|.
-name|out
-operator|.
-name|println
+name|info
 argument_list|(
 name|profiler
 operator|.
