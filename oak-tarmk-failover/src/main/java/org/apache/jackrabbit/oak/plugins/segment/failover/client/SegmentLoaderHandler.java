@@ -526,7 +526,7 @@ parameter_list|()
 block|{
 name|log
 operator|.
-name|info
+name|debug
 argument_list|(
 literal|"new head id "
 operator|+
@@ -645,7 +645,7 @@ throw|;
 block|}
 name|log
 operator|.
-name|info
+name|debug
 argument_list|(
 literal|"did reread locally corrupt segment "
 operator|+
@@ -746,9 +746,9 @@ argument_list|)
 decl_stmt|;
 name|log
 operator|.
-name|info
+name|debug
 argument_list|(
-literal|"#updated state (set head {}) in {}ms."
+literal|"updated head state successfully: {} in {}ms."
 argument_list|,
 name|ok
 argument_list|,
@@ -767,13 +767,6 @@ name|close
 argument_list|()
 expr_stmt|;
 block|}
-name|log
-operator|.
-name|debug
-argument_list|(
-literal|"returning initSync"
-argument_list|)
-expr_stmt|;
 block|}
 annotation|@
 name|Override
@@ -856,13 +849,7 @@ control|)
 block|{
 try|try
 block|{
-name|log
-operator|.
-name|debug
-argument_list|(
-literal|"polling segment"
-argument_list|)
-expr_stmt|;
+comment|// log.debug("polling segment");
 name|Segment
 name|s
 init|=
@@ -877,15 +864,7 @@ operator|.
 name|MILLISECONDS
 argument_list|)
 decl_stmt|;
-name|log
-operator|.
-name|debug
-argument_list|(
-literal|"returning segment "
-operator|+
-name|s
-argument_list|)
-expr_stmt|;
+comment|// log.debug("returning segment " + s.getSegmentId());
 return|return
 name|s
 return|;

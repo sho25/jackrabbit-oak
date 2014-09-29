@@ -445,7 +445,7 @@ block|{
 comment|// all sync'ed up
 name|log
 operator|.
-name|info
+name|debug
 argument_list|(
 literal|"no changes on sync."
 argument_list|)

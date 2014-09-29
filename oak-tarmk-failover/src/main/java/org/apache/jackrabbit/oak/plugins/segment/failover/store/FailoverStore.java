@@ -361,15 +361,6 @@ name|SegmentId
 name|sid
 parameter_list|)
 block|{
-name|log
-operator|.
-name|info
-argument_list|(
-literal|"shall read segment "
-operator|+
-name|sid
-argument_list|)
-expr_stmt|;
 name|Deque
 argument_list|<
 name|SegmentId
@@ -475,7 +466,7 @@ condition|)
 block|{
 name|log
 operator|.
-name|info
+name|debug
 argument_list|(
 literal|"got segment "
 operator|+
@@ -647,7 +638,7 @@ block|}
 block|}
 name|log
 operator|.
-name|info
+name|debug
 argument_list|(
 literal|"calling delegate to return segment "
 operator|+

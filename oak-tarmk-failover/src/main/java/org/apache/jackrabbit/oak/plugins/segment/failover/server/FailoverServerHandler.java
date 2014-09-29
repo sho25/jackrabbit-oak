@@ -853,13 +853,6 @@ argument_list|(
 name|r
 argument_list|)
 expr_stmt|;
-name|log
-operator|.
-name|debug
-argument_list|(
-literal|"returning from head request"
-argument_list|)
-expr_stmt|;
 return|return;
 block|}
 block|}
@@ -968,7 +961,7 @@ block|{
 comment|// segment not found
 name|log
 operator|.
-name|info
+name|debug
 argument_list|(
 literal|"waiting for segment. Got exception: "
 operator|+
@@ -1005,9 +998,9 @@ condition|)
 block|{
 name|log
 operator|.
-name|info
+name|debug
 argument_list|(
-literal|"sending segment"
+literal|"sending segment "
 operator|+
 name|sid
 operator|+
@@ -1033,13 +1026,6 @@ name|s
 operator|.
 name|size
 argument_list|()
-argument_list|)
-expr_stmt|;
-name|log
-operator|.
-name|debug
-argument_list|(
-literal|"master returns from segment request"
 argument_list|)
 expr_stmt|;
 return|return;
