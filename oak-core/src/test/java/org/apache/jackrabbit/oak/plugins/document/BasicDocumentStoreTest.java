@@ -1422,6 +1422,18 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
+name|id
+argument_list|,
+name|d
+operator|.
+name|getId
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"bar"
+argument_list|,
 name|d
 operator|.
 name|get
@@ -1431,8 +1443,6 @@ argument_list|)
 operator|.
 name|toString
 argument_list|()
-argument_list|,
-literal|"bar"
 argument_list|)
 expr_stmt|;
 block|}
