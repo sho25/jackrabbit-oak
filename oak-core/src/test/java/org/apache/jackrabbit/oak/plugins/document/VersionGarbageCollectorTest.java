@@ -1498,14 +1498,14 @@ operator|.
 name|builder
 argument_list|()
 decl_stmt|;
-comment|// adding the foo node will cause the commit root to be placed
+comment|// adding the test node will cause the commit root to be placed
 comment|// on the root document, because the children flag is set on the
 comment|// root document
 name|b1
 operator|.
 name|child
 argument_list|(
-literal|"foo"
+literal|"test"
 argument_list|)
 expr_stmt|;
 name|store
@@ -1523,13 +1523,44 @@ operator|.
 name|EMPTY
 argument_list|)
 expr_stmt|;
-comment|// adding test afterwards will use the new test document as the
-comment|// commit root. this what we want for the test.
+name|assertTrue
+argument_list|(
+name|getDoc
+argument_list|(
+literal|"/test"
+argument_list|)
+operator|.
+name|getLocalRevisions
+argument_list|()
+operator|.
+name|isEmpty
+argument_list|()
+argument_list|)
+expr_stmt|;
+comment|// setting the test property afterwards will use the new test document
+comment|// as the commit root. this what we want for the test.
+name|b1
+operator|=
+name|store
+operator|.
+name|getRoot
+argument_list|()
+operator|.
+name|builder
+argument_list|()
+expr_stmt|;
 name|b1
 operator|.
 name|child
 argument_list|(
 literal|"test"
+argument_list|)
+operator|.
+name|setProperty
+argument_list|(
+literal|"test"
+argument_list|,
+literal|"value"
 argument_list|)
 expr_stmt|;
 name|store
@@ -1794,6 +1825,16 @@ decl_stmt|;
 name|assertNotNull
 argument_list|(
 name|test
+argument_list|)
+expr_stmt|;
+name|assertTrue
+argument_list|(
+name|test
+operator|.
+name|hasProperty
+argument_list|(
+literal|"test"
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
