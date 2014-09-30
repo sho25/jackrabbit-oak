@@ -2968,6 +2968,15 @@ name|connection
 init|=
 literal|null
 decl_stmt|;
+name|String
+name|table
+init|=
+name|DocumentStoreFixture
+operator|.
+name|TABLEPREFIX
+operator|+
+literal|"NODES"
+decl_stmt|;
 comment|// create test node
 try|try
 block|{
@@ -2994,7 +3003,11 @@ name|connection
 operator|.
 name|prepareStatement
 argument_list|(
-literal|"insert into NODES (ID) values (?)"
+literal|"insert into "
+operator|+
+name|table
+operator|+
+literal|" (ID) values (?)"
 argument_list|)
 decl_stmt|;
 try|try
@@ -3142,7 +3155,11 @@ name|connection
 operator|.
 name|prepareStatement
 argument_list|(
-literal|"update NODES set MODCOUNT = ? where ID = ?"
+literal|"update "
+operator|+
+name|table
+operator|+
+literal|" set MODCOUNT = ? where ID = ?"
 argument_list|)
 decl_stmt|;
 try|try
@@ -3205,7 +3222,11 @@ name|connection
 operator|.
 name|prepareStatement
 argument_list|(
-literal|"update NODES set MODCOUNT = ?, DATA = ? where ID = ?"
+literal|"update "
+operator|+
+name|table
+operator|+
+literal|" set MODCOUNT = ?, DATA = ? where ID = ?"
 argument_list|)
 decl_stmt|;
 try|try
@@ -3276,7 +3297,11 @@ name|connection
 operator|.
 name|prepareStatement
 argument_list|(
-literal|"update NODES set MODCOUNT = ?, DATA = ?, BDATA = ? where ID = ?"
+literal|"update "
+operator|+
+name|table
+operator|+
+literal|" set MODCOUNT = ?, DATA = ?, BDATA = ? where ID = ?"
 argument_list|)
 decl_stmt|;
 try|try

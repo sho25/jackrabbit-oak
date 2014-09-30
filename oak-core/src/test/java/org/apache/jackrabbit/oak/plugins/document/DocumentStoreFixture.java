@@ -323,6 +323,14 @@ literal|"mongodb://localhost:27017/oak"
 argument_list|)
 decl_stmt|;
 specifier|public
+specifier|static
+specifier|final
+name|String
+name|TABLEPREFIX
+init|=
+literal|"dstest_"
+decl_stmt|;
+specifier|public
 specifier|abstract
 name|String
 name|getName
@@ -458,7 +466,7 @@ argument_list|()
 operator|.
 name|tablePrefix
 argument_list|(
-literal|"dstest"
+name|TABLEPREFIX
 argument_list|)
 operator|.
 name|dropTablesOnClose
