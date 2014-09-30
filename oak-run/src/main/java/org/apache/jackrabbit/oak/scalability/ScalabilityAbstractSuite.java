@@ -416,13 +416,14 @@ specifier|protected
 specifier|static
 specifier|final
 name|boolean
-name|NO_WARMUP
+name|WARMUP
 init|=
+operator|!
 name|Boolean
 operator|.
 name|getBoolean
 argument_list|(
-literal|"nowarmup"
+literal|"noWarmup"
 argument_list|)
 decl_stmt|;
 comment|/**      * Controls the incremental load for each iteration      */
@@ -764,8 +765,7 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-operator|!
-name|NO_WARMUP
+name|WARMUP
 condition|)
 block|{
 for|for
