@@ -3826,6 +3826,8 @@ name|ItemNotFoundException
 argument_list|(
 literal|"No primary item present on node "
 operator|+
+name|NodeImpl
+operator|.
 name|this
 argument_list|)
 throw|;
@@ -3873,6 +3875,8 @@ name|name
 operator|+
 literal|" does not exist on node "
 operator|+
+name|NodeImpl
+operator|.
 name|this
 argument_list|)
 throw|;
