@@ -369,6 +369,12 @@ name|DEFAULT_PASSWORD_INITIAL_CHANGE
 init|=
 literal|false
 decl_stmt|;
+comment|/**      * Name of the {@link javax.jcr.SimpleCredentials} attribute containing the new password.      * This may be used change the password via the credentials object.      */
+name|String
+name|CREDENTIALS_ATTRIBUTE_NEWPASSWORD
+init|=
+literal|"user.newpassword"
+decl_stmt|;
 block|}
 end_interface
 
