@@ -372,7 +372,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * @see OAK-1922  */
+comment|/**  * @see<a href="https://issues.apache.org/jira/browse/OAK-1922">OAK-1922</a>  */
 end_comment
 
 begin_class
