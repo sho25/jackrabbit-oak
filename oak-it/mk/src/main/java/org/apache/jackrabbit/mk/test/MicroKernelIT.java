@@ -6909,6 +6909,14 @@ literal|null
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|long
+name|ts
+init|=
+name|System
+operator|.
+name|currentTimeMillis
+argument_list|()
+decl_stmt|;
 name|String
 name|oldHead
 init|=
@@ -6992,6 +7000,7 @@ literal|""
 argument_list|)
 expr_stmt|;
 comment|// make sure branchRev doesn't show up in revision history
+comment|// get history since initial timestamp
 name|String
 name|hist
 init|=
@@ -6999,7 +7008,7 @@ name|mk
 operator|.
 name|getRevisionHistory
 argument_list|(
-literal|0
+name|ts
 argument_list|,
 operator|-
 literal|1
