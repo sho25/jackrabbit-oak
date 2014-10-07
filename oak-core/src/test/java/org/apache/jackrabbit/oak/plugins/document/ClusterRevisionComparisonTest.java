@@ -249,6 +249,18 @@ name|Test
 import|;
 end_import
 
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertTrue
+import|;
+end_import
+
 begin_class
 specifier|public
 class|class
@@ -386,7 +398,7 @@ name|c2
 argument_list|)
 expr_stmt|;
 comment|//6. Time T4. Read the changes /a/c2 by c2 created at T1.
-comment|// Would be considered seen ar T4 i.e. rT1-C2 -> rT4-C1
+comment|// Would be considered seen at T4 i.e. rT1-C2 -> rT4-C1
 comment|// Now from C1 view rT1-C2> rT2-C3 even though T1< T2
 comment|//so effectively changes done in future in C3 in absolute time terms
 comment|//is considered to be seen in past by C1
@@ -471,7 +483,7 @@ name|getLastRevision
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|//Revision compartor purge by moving in future
+comment|//Revision comparator purge by moving in future
 name|clock
 operator|.
 name|waitUntil
@@ -491,6 +503,40 @@ expr_stmt|;
 name|runBgOps
 argument_list|(
 name|c1
+argument_list|)
+expr_stmt|;
+name|NodeState
+name|a
+init|=
+name|c1ns1
+operator|.
+name|getChildNode
+argument_list|(
+literal|"a"
+argument_list|)
+decl_stmt|;
+name|assertTrue
+argument_list|(
+literal|"/a/c2 disappeared"
+argument_list|,
+name|a
+operator|.
+name|hasChildNode
+argument_list|(
+literal|"c2"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertTrue
+argument_list|(
+literal|"/a/c3 disappeared"
+argument_list|,
+name|a
+operator|.
+name|hasChildNode
+argument_list|(
+literal|"c3"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|DocumentNodeState
