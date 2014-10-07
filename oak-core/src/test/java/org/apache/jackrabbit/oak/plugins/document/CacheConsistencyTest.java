@@ -286,11 +286,6 @@ name|setAsyncDelay
 argument_list|(
 literal|0
 argument_list|)
-operator|.
-name|setMongoDB
-argument_list|(
-name|db
-argument_list|)
 decl_stmt|;
 name|store
 operator|=
