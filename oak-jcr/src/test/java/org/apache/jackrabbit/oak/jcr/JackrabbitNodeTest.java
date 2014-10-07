@@ -757,7 +757,7 @@ name|latch1
 operator|.
 name|await
 argument_list|(
-literal|5
+literal|60
 argument_list|,
 name|SECONDS
 argument_list|)
