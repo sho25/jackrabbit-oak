@@ -404,7 +404,7 @@ name|System
 operator|.
 name|getenv
 argument_list|(
-literal|"USER"
+literal|"USERDOMAIN"
 argument_list|)
 decl_stmt|;
 return|return
@@ -416,7 +416,7 @@ name|user
 operator|.
 name|startsWith
 argument_list|(
-literal|"buildslave"
+literal|"bb-win7"
 argument_list|)
 return|;
 block|}
