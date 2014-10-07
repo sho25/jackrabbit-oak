@@ -278,6 +278,14 @@ name|AccessControlImporterTest
 extends|extends
 name|AbstractJCRTest
 block|{
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|VALID_PRINCIPAL_NAME
+init|=
+literal|"anonymous"
+decl_stmt|;
 specifier|public
 specifier|static
 specifier|final
@@ -310,7 +318,13 @@ literal|"</sv:property>"
 operator|+
 literal|"<sv:property sv:name=\"rep:principalName\" sv:type=\"String\">"
 operator|+
-literal|"<sv:value>everyone</sv:value>"
+literal|"<sv:value>"
+operator|+
+name|EveryonePrincipal
+operator|.
+name|NAME
+operator|+
+literal|"</sv:value>"
 operator|+
 literal|"</sv:property>"
 operator|+
@@ -354,7 +368,13 @@ literal|"</sv:property>"
 operator|+
 literal|"<sv:property sv:name=\"rep:principalName\" sv:type=\"String\">"
 operator|+
-literal|"<sv:value>everyone</sv:value>"
+literal|"<sv:value>"
+operator|+
+name|EveryonePrincipal
+operator|.
+name|NAME
+operator|+
+literal|"</sv:value>"
 operator|+
 literal|"</sv:property>"
 operator|+
@@ -396,7 +416,13 @@ literal|"</sv:property>"
 operator|+
 literal|"<sv:property sv:name=\"rep:principalName\" sv:type=\"String\">"
 operator|+
-literal|"<sv:value>everyone</sv:value>"
+literal|"<sv:value>"
+operator|+
+name|EveryonePrincipal
+operator|.
+name|NAME
+operator|+
+literal|"</sv:value>"
 operator|+
 literal|"</sv:property>"
 operator|+
@@ -418,7 +444,11 @@ literal|"</sv:property>"
 operator|+
 literal|"<sv:property sv:name=\"rep:principalName\" sv:type=\"String\">"
 operator|+
-literal|"<sv:value>admin</sv:value>"
+literal|"<sv:value>"
+operator|+
+name|VALID_PRINCIPAL_NAME
+operator|+
+literal|"</sv:value>"
 operator|+
 literal|"</sv:property>"
 operator|+
@@ -460,7 +490,11 @@ literal|"</sv:property>"
 operator|+
 literal|"<sv:property sv:name=\"rep:principalName\" sv:type=\"String\">"
 operator|+
-literal|"<sv:value>admin</sv:value>"
+literal|"<sv:value>"
+operator|+
+name|VALID_PRINCIPAL_NAME
+operator|+
+literal|"</sv:value>"
 operator|+
 literal|"</sv:property>"
 operator|+
@@ -502,7 +536,11 @@ literal|"</sv:property>"
 operator|+
 literal|"<sv:property sv:name=\"rep:principalName\" sv:type=\"String\">"
 operator|+
-literal|"<sv:value>admin</sv:value>"
+literal|"<sv:value>"
+operator|+
+name|VALID_PRINCIPAL_NAME
+operator|+
+literal|"</sv:value>"
 operator|+
 literal|"</sv:property>"
 operator|+
@@ -928,7 +966,9 @@ index|]
 decl_stmt|;
 name|assertEquals
 argument_list|(
-literal|"everyone"
+name|EveryonePrincipal
+operator|.
+name|NAME
 argument_list|,
 name|entry
 operator|.
@@ -1111,7 +1151,9 @@ index|]
 decl_stmt|;
 name|assertEquals
 argument_list|(
-literal|"everyone"
+name|EveryonePrincipal
+operator|.
+name|NAME
 argument_list|,
 name|entry
 operator|.
@@ -1163,7 +1205,7 @@ index|]
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"admin"
+name|VALID_PRINCIPAL_NAME
 argument_list|,
 name|entry
 operator|.
@@ -1356,7 +1398,7 @@ index|]
 decl_stmt|;
 name|assertEquals
 argument_list|(
-literal|"admin"
+name|VALID_PRINCIPAL_NAME
 argument_list|,
 name|entry
 operator|.
