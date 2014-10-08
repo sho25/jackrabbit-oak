@@ -4419,11 +4419,6 @@ operator|.
 name|getCandidates
 argument_list|(
 literal|0
-argument_list|,
-name|System
-operator|.
-name|currentTimeMillis
-argument_list|()
 argument_list|)
 decl_stmt|;
 name|closer
