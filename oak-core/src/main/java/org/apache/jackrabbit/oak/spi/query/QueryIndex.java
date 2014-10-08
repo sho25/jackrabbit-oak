@@ -185,6 +185,14 @@ name|getNodeAggregator
 parameter_list|()
 function_decl|;
 block|}
+specifier|public
+interface|interface
+name|AdvanceFulltextQueryIndex
+extends|extends
+name|FulltextQueryIndex
+extends|,
+name|AdvancedQueryIndex
+block|{      }
 comment|/**      * An query index that may support using multiple access orders      * (returning the rows in a specific order), and that can provide detailed      * information about the cost.      */
 specifier|public
 interface|interface
@@ -237,6 +245,8 @@ comment|/**      * An index plan.      */
 specifier|public
 interface|interface
 name|IndexPlan
+extends|extends
+name|Cloneable
 block|{
 comment|/**          * The cost to execute the query once. The returned value should          * approximately match the number of disk read operations plus the          * number of network roundtrips (worst case).          *           * @return the cost per execution, in estimated number of I/O operations          */
 name|double
@@ -294,7 +304,7 @@ name|NodeState
 name|getDefinition
 parameter_list|()
 function_decl|;
-comment|/**          * The path prefix for this index plan.          * @return          */
+comment|/**          * The path prefix for this index plan.          */
 name|String
 name|getPathPrefix
 parameter_list|()
@@ -304,6 +314,11 @@ annotation|@
 name|CheckForNull
 name|PropertyRestriction
 name|getPropertyRestriction
+parameter_list|()
+function_decl|;
+comment|/**          * Creates a cloned copy of current plan. Mostly used when the filter needs to be          * modified for a given call          *          * @return clone of current plan          */
+name|IndexPlan
+name|copy
 parameter_list|()
 function_decl|;
 comment|/**          * A builder for index plans.          */
@@ -916,6 +931,56 @@ return|return
 name|pathPrefix
 return|;
 block|}
+annotation|@
+name|Override
+specifier|protected
+name|Object
+name|clone
+parameter_list|()
+throws|throws
+name|CloneNotSupportedException
+block|{
+return|return
+name|super
+operator|.
+name|clone
+argument_list|()
+return|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|IndexPlan
+name|copy
+parameter_list|()
+block|{
+try|try
+block|{
+return|return
+operator|(
+name|IndexPlan
+operator|)
+name|super
+operator|.
+name|clone
+argument_list|()
+return|;
+block|}
+catch|catch
+parameter_list|(
+name|CloneNotSupportedException
+name|e
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|IllegalStateException
+argument_list|(
+name|e
+argument_list|)
+throw|;
+block|}
+block|}
 block|}
 return|;
 block|}
@@ -950,7 +1015,6 @@ name|ASCENDING
 block|,
 name|DESCENDING
 block|}
-empty_stmt|;
 specifier|private
 specifier|final
 name|Order
