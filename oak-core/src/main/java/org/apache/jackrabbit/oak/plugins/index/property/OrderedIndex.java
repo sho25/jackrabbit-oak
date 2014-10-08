@@ -316,13 +316,29 @@ comment|/**      * defines the default distribution of items across the skip lis
 name|double
 name|DEFAULT_PROBABILITY
 init|=
-literal|0.1
+name|Integer
+operator|.
+name|getInteger
+argument_list|(
+literal|"oak.orderedIndex.prob"
+argument_list|,
+literal|3
+argument_list|)
+operator|/
+literal|10.0
 decl_stmt|;
 comment|/**      * the number of lanes used in the SkipList       */
 name|int
 name|LANES
 init|=
-literal|4
+name|Integer
+operator|.
+name|getInteger
+argument_list|(
+literal|"oak.orderedIndex.lanes"
+argument_list|,
+literal|15
+argument_list|)
 decl_stmt|;
 comment|/**      * Convenience Predicate that will force the implementor to expose what we're searching for      *      * @param<T>      */
 interface|interface
