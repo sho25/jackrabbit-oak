@@ -516,12 +516,10 @@ argument_list|(
 literal|false
 argument_list|)
 argument_list|)
+comment|//FIXME OAK-2168 - Enable it again once we do support AggregateIndex and AdvanceQueryIndex
+comment|//                .with(AggregateIndexProvider.wrap(new SolrQueryIndexProvider(solrServerProvider, oakSolrConfigurationProvider)))
 operator|.
 name|with
-argument_list|(
-name|AggregateIndexProvider
-operator|.
-name|wrap
 argument_list|(
 operator|new
 name|SolrQueryIndexProvider
@@ -529,7 +527,6 @@ argument_list|(
 name|solrServerProvider
 argument_list|,
 name|oakSolrConfigurationProvider
-argument_list|)
 argument_list|)
 argument_list|)
 operator|.
