@@ -1229,6 +1229,15 @@ name|asyncDelay
 init|=
 literal|1000
 decl_stmt|;
+comment|/**      * The maximum back off time in milliseconds when merges are retried. The      * default value is twice the {@link #asyncDelay}.      */
+specifier|protected
+name|int
+name|maxBackOffMillis
+init|=
+name|asyncDelay
+operator|*
+literal|2
+decl_stmt|;
 comment|/**      * Whether this instance is disposed.      */
 specifier|private
 specifier|final
@@ -2721,6 +2730,28 @@ parameter_list|()
 block|{
 return|return
 name|asyncDelay
+return|;
+block|}
+specifier|public
+name|void
+name|setMaxBackOffMillis
+parameter_list|(
+name|int
+name|time
+parameter_list|)
+block|{
+name|maxBackOffMillis
+operator|=
+name|time
+expr_stmt|;
+block|}
+specifier|public
+name|int
+name|getMaxBackOffMillis
+parameter_list|()
+block|{
+return|return
+name|maxBackOffMillis
 return|;
 block|}
 annotation|@

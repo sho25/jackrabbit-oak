@@ -466,32 +466,17 @@ operator|-
 name|asyncDelay
 expr_stmt|;
 block|}
-comment|// Endtime is the leaseEnd + the asyncDelay
-name|long
-name|endTime
-init|=
-name|leaseEnd
-operator|+
-name|asyncDelay
-decl_stmt|;
 name|log
 operator|.
 name|info
 argument_list|(
-literal|"Recovering candidates modified in time range : [{},{}] for clusterId [{}]"
+literal|"Recovering candidates modified after: [{}] for clusterId [{}]"
 argument_list|,
 name|Utils
 operator|.
 name|timestampToString
 argument_list|(
 name|startTime
-argument_list|)
-argument_list|,
-name|Utils
-operator|.
-name|timestampToString
-argument_list|(
-name|endTime
 argument_list|)
 argument_list|,
 name|clusterId
@@ -503,8 +488,6 @@ argument_list|(
 name|clusterId
 argument_list|,
 name|startTime
-argument_list|,
-name|endTime
 argument_list|)
 return|;
 block|}
@@ -964,7 +947,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/**      * Retrieves possible candidates which have been modifed in the time range and recovers the      * missing updates.      *       * @param clusterId the cluster id      * @param startTime the start time      * @param endTime the end time      * @return the int the number of restored nodes      */
+comment|/**      * Retrieves possible candidates which have been modified after the given      * {@code startTime} and recovers the missing updates.      *       * @param clusterId the cluster id      * @param startTime the start time      * @return the int the number of restored nodes      */
 specifier|private
 name|int
 name|recoverCandidates
@@ -976,10 +959,6 @@ parameter_list|,
 specifier|final
 name|long
 name|startTime
-parameter_list|,
-specifier|final
-name|long
-name|endTime
 parameter_list|)
 block|{
 name|boolean
@@ -1024,8 +1003,6 @@ operator|.
 name|getCandidates
 argument_list|(
 name|startTime
-argument_list|,
-name|endTime
 argument_list|)
 decl_stmt|;
 name|log

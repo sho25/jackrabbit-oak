@@ -292,15 +292,15 @@ name|base
 argument_list|,
 literal|null
 argument_list|,
-name|getMaxBackoffMillis
-argument_list|(
 name|store
-argument_list|)
+operator|.
+name|getMaxBackOffMillis
+argument_list|()
 argument_list|,
-name|getMaxBackoffMillis
-argument_list|(
 name|store
-argument_list|)
+operator|.
+name|getMaxBackOffMillis
+argument_list|()
 operator|*
 literal|3
 argument_list|)
@@ -870,32 +870,6 @@ block|}
 block|}
 block|}
 comment|//------------------------------< internal>--------------------------------
-specifier|private
-specifier|static
-name|long
-name|getMaxBackoffMillis
-parameter_list|(
-name|DocumentNodeStore
-name|store
-parameter_list|)
-block|{
-comment|// maximum back off is twice the async delay, but at least 2 seconds.
-return|return
-name|Math
-operator|.
-name|max
-argument_list|(
-name|store
-operator|.
-name|getAsyncDelay
-argument_list|()
-argument_list|,
-literal|1000
-argument_list|)
-operator|*
-literal|2
-return|;
-block|}
 comment|/**      * Persist some changes on top of the given base state.      *      * @param op the changes to persist.      * @param base the base state.      * @param info the commit info.      * @return the result state.      */
 specifier|private
 name|DocumentNodeState

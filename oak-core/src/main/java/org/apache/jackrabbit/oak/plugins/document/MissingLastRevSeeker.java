@@ -193,7 +193,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-comment|/**      * Get the candidates with modified time between the time range specified.      *      * @param startTime the start of the time range      * @param endTime the end of the time range      * @return the candidates      */
+comment|/**      * Get the candidates with modified time after the specified      * {@code startTime}.      *      * @param startTime the start time.      * @return the candidates      */
 specifier|public
 name|Iterable
 argument_list|<
@@ -204,10 +204,6 @@ parameter_list|(
 specifier|final
 name|long
 name|startTime
-parameter_list|,
-specifier|final
-name|long
-name|endTime
 parameter_list|)
 block|{
 comment|// Fetch all documents where lastmod>= startTime
@@ -302,17 +298,6 @@ operator|.
 name|getModifiedInSecs
 argument_list|(
 name|startTime
-argument_list|)
-operator|)
-operator|&&
-operator|(
-name|modified
-operator|<=
-name|NodeDocument
-operator|.
-name|getModifiedInSecs
-argument_list|(
-name|endTime
 argument_list|)
 operator|)
 operator|)
