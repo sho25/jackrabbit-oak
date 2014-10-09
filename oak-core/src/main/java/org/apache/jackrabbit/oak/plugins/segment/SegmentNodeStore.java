@@ -1376,7 +1376,7 @@ else|else
 block|{
 name|log
 operator|.
-name|warn
+name|debug
 argument_list|(
 literal|"Unable to update the head state for checkpoint {} ({}/5)"
 argument_list|,
@@ -1406,7 +1406,7 @@ block|}
 block|}
 name|log
 operator|.
-name|warn
+name|debug
 argument_list|(
 literal|"Failed to create checkpoint {}"
 argument_list|,

@@ -1572,7 +1572,7 @@ condition|)
 block|{
 name|log
 operator|.
-name|warn
+name|debug
 argument_list|(
 literal|"Unable to retrieve newly created checkpoint {},"
 operator|+
