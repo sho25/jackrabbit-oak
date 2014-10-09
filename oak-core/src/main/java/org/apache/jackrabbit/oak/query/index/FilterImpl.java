@@ -1113,11 +1113,24 @@ expr_stmt|;
 block|}
 else|else
 block|{
+comment|// this is required for multi-valued properties:
+comment|// for example, if a multi-value property p contains {1, 2},
+comment|// and we search using "p in (1, 3) and p in (2, 4)", then
+comment|// this needs to match - so we search for "p in (1, 2, 3, 4)"
 name|x
 operator|.
 name|list
 operator|.
-name|retainAll
+name|removeAll
+argument_list|(
+name|list
+argument_list|)
+expr_stmt|;
+name|x
+operator|.
+name|list
+operator|.
+name|addAll
 argument_list|(
 name|list
 argument_list|)
