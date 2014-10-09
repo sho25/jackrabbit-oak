@@ -94,6 +94,16 @@ name|boolean
 name|evaluate
 parameter_list|()
 function_decl|;
+comment|/**      * Whether this condition will, from now on, always evaluate to false. This      * is the case for example for full-text constraints if there is no      * full-text index (unless FullTextComparisonWithoutIndex is enabled). This      * will also allow is to add conditions that stop further processing for      * other reasons, similar to "WHERE ROWNUM< 10" in Oracle.      *       * @return true if further processing should be stopped      */
+specifier|public
+name|boolean
+name|evaluateStop
+parameter_list|()
+block|{
+return|return
+literal|false
+return|;
+block|}
 comment|/**      * Get the set of property existence conditions that can be derived for this      * condition. For example, for the condition "x=1 or x=2", the property      * existence condition is "x is not null". For the condition "x=1 or y=2",      * there is no such condition. For the condition "x=1 and y=1", there are      * two (x is not null, and y is not null).      *       * @return the common property existence condition (possibly empty)      */
 specifier|public
 specifier|abstract

@@ -1977,6 +1977,20 @@ name|evaluate
 argument_list|()
 condition|)
 block|{
+if|if
+condition|(
+name|constraint
+operator|.
+name|evaluateStop
+argument_list|()
+condition|)
+block|{
+comment|// stop processing from now on
+name|cursor
+operator|=
+literal|null
+expr_stmt|;
+block|}
 return|return
 literal|false
 return|;
