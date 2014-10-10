@@ -157,7 +157,7 @@ name|junit
 operator|.
 name|Assert
 operator|.
-name|assertTrue
+name|assertFalse
 import|;
 end_import
 
@@ -169,7 +169,7 @@ name|junit
 operator|.
 name|Assert
 operator|.
-name|assertFalse
+name|assertTrue
 import|;
 end_import
 
@@ -2835,6 +2835,14 @@ name|async
 operator|.
 name|run
 argument_list|()
+expr_stmt|;
+name|assertTrue
+argument_list|(
+name|async
+operator|.
+name|isFinished
+argument_list|()
+argument_list|)
 expr_stmt|;
 name|Set
 argument_list|<

@@ -1923,7 +1923,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-elseif|else
+else|else
+block|{
 if|if
 condition|(
 name|switchOnSync
@@ -1933,9 +1934,7 @@ name|log
 operator|.
 name|debug
 argument_list|(
-literal|"No changes detected after diff; will try to"
-operator|+
-literal|" switch to synchronous updates on {}"
+literal|"No changes detected after diff; will try to switch to synchronous updates on {}"
 argument_list|,
 name|reindexedDefinitions
 argument_list|)
@@ -2006,6 +2005,12 @@ name|clear
 argument_list|()
 expr_stmt|;
 block|}
+name|postAsyncRunStatsStatus
+argument_list|(
+name|indexStats
+argument_list|)
+expr_stmt|;
+block|}
 name|mergeWithConcurrencyCheck
 argument_list|(
 name|builder
@@ -2026,11 +2031,6 @@ name|close
 argument_list|()
 expr_stmt|;
 block|}
-name|postAsyncRunStatsStatus
-argument_list|(
-name|indexStats
-argument_list|)
-expr_stmt|;
 block|}
 specifier|private
 name|void
