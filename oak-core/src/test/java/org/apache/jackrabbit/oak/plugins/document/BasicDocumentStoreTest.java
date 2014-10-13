@@ -1208,12 +1208,55 @@ name|id
 argument_list|)
 expr_stmt|;
 comment|// update with smaller _modified
-comment|//        UpdateOp up2 = new UpdateOp(id, true);
-comment|//        up2.max("_modified", 100L);
-comment|//        up2.set("_id", id);
-comment|//        super.ds.findAndUpdate(Collection.NODES, up2);
-comment|//
-comment|//        super.ds.invalidateCache();
+name|UpdateOp
+name|up2
+init|=
+operator|new
+name|UpdateOp
+argument_list|(
+name|id
+argument_list|,
+literal|true
+argument_list|)
+decl_stmt|;
+name|up2
+operator|.
+name|max
+argument_list|(
+literal|"_modified"
+argument_list|,
+literal|100L
+argument_list|)
+expr_stmt|;
+name|up2
+operator|.
+name|set
+argument_list|(
+literal|"_id"
+argument_list|,
+name|id
+argument_list|)
+expr_stmt|;
+name|super
+operator|.
+name|ds
+operator|.
+name|findAndUpdate
+argument_list|(
+name|Collection
+operator|.
+name|NODES
+argument_list|,
+name|up2
+argument_list|)
+expr_stmt|;
+name|super
+operator|.
+name|ds
+operator|.
+name|invalidateCache
+argument_list|()
+expr_stmt|;
 comment|// this should find the document; will fail if the MAX operation wasn't applied to the indexed property
 name|List
 argument_list|<
