@@ -1739,7 +1739,7 @@ name|log
 operator|.
 name|debug
 argument_list|(
-literal|"Unable to reelase checkpoint {}"
+literal|"Unable to release checkpoint {}"
 argument_list|,
 name|checkpointToRelease
 argument_list|)
