@@ -940,7 +940,7 @@ return|;
 block|}
 annotation|@
 name|Override
-name|void
+name|boolean
 name|checkValidPrincipal
 parameter_list|(
 name|Principal
@@ -960,6 +960,9 @@ argument_list|,
 literal|true
 argument_list|)
 expr_stmt|;
+return|return
+literal|true
+return|;
 block|}
 annotation|@
 name|Override

@@ -4126,7 +4126,7 @@ return|;
 block|}
 annotation|@
 name|Override
-name|void
+name|boolean
 name|checkValidPrincipal
 parameter_list|(
 name|Principal
@@ -4135,6 +4135,17 @@ parameter_list|)
 throws|throws
 name|AccessControlException
 block|{
+name|int
+name|importBehavior
+init|=
+name|Util
+operator|.
+name|getImportBehavior
+argument_list|(
+name|getConfig
+argument_list|()
+argument_list|)
+decl_stmt|;
 name|Util
 operator|.
 name|checkValidPrincipal
@@ -4147,13 +4158,7 @@ name|ImportBehavior
 operator|.
 name|BESTEFFORT
 operator|!=
-name|Util
-operator|.
-name|getImportBehavior
-argument_list|(
-name|getConfig
-argument_list|()
-argument_list|)
+name|importBehavior
 argument_list|)
 expr_stmt|;
 if|if
@@ -4163,6 +4168,29 @@ operator|instanceof
 name|AdminPrincipal
 condition|)
 block|{
+name|log
+operator|.
+name|warn
+argument_list|(
+literal|"Attempt to create an ACE for the admin principal which always has full access."
+argument_list|)
+expr_stmt|;
+switch|switch
+condition|(
+name|Util
+operator|.
+name|getImportBehavior
+argument_list|(
+name|getConfig
+argument_list|()
+argument_list|)
+condition|)
+block|{
+case|case
+name|ImportBehavior
+operator|.
+name|ABORT
+case|:
 throw|throw
 operator|new
 name|AccessControlException
@@ -4170,7 +4198,36 @@ argument_list|(
 literal|"Attempt to create an ACE for the admin principal which always has full access."
 argument_list|)
 throw|;
+case|case
+name|ImportBehavior
+operator|.
+name|IGNORE
+case|:
+return|return
+literal|false
+return|;
+case|case
+name|ImportBehavior
+operator|.
+name|BESTEFFORT
+case|:
+comment|// just log warning, no other action required.
+break|break;
+default|default :
+throw|throw
+operator|new
+name|IllegalArgumentException
+argument_list|(
+literal|"Invalid import behavior"
+operator|+
+name|importBehavior
+argument_list|)
+throw|;
 block|}
+block|}
+return|return
+literal|true
+return|;
 block|}
 annotation|@
 name|Override
@@ -4441,7 +4498,7 @@ return|;
 block|}
 annotation|@
 name|Override
-name|void
+name|boolean
 name|checkValidPrincipal
 parameter_list|(
 name|Principal
@@ -4461,6 +4518,9 @@ argument_list|,
 literal|true
 argument_list|)
 expr_stmt|;
+return|return
+literal|true
+return|;
 block|}
 annotation|@
 name|Override
