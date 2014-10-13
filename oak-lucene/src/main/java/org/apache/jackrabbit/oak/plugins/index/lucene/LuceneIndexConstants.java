@@ -123,6 +123,18 @@ name|EXPERIMENTAL_STORAGE
 init|=
 literal|"oak.experimental.storage"
 decl_stmt|;
+comment|/**      * Determines if full text indexing is enabled for this index definition.      * Default is true      */
+name|String
+name|FULL_TEXT_ENABLED
+init|=
+literal|"fulltextEnabled"
+decl_stmt|;
+comment|/**      * Only include properties with name in this set. If this property is defined      * then {@code excludePropertyNames} would be ignored      */
+name|String
+name|INCLUDE_PROPERTY_NAMES
+init|=
+literal|"includePropertyNames"
+decl_stmt|;
 block|}
 end_interface
 

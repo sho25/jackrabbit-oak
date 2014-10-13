@@ -448,7 +448,7 @@ name|name
 decl_stmt|;
 specifier|private
 specifier|final
-name|NodeState
+name|IndexDefinition
 name|definition
 decl_stmt|;
 specifier|private
@@ -505,7 +505,15 @@ name|this
 operator|.
 name|definition
 operator|=
+operator|new
+name|IndexDefinition
+argument_list|(
+operator|new
+name|ReadOnlyBuilder
+argument_list|(
 name|definition
+argument_list|)
+argument_list|)
 expr_stmt|;
 name|this
 operator|.
@@ -543,7 +551,7 @@ return|return
 name|name
 return|;
 block|}
-name|NodeState
+name|IndexDefinition
 name|getDefinition
 parameter_list|()
 block|{

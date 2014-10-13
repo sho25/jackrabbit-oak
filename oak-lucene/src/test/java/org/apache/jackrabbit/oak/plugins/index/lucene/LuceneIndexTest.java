@@ -2446,6 +2446,15 @@ argument_list|(
 name|filter
 argument_list|)
 operator|.
+name|setAttribute
+argument_list|(
+name|LuceneIndex
+operator|.
+name|ATTR_INDEX_PATH
+argument_list|,
+literal|"/oak:index/lucene"
+argument_list|)
+operator|.
 name|build
 argument_list|()
 return|;
