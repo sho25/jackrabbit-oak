@@ -845,7 +845,7 @@ literal|"Change Password On First Login"
 argument_list|,
 name|description
 operator|=
-literal|"When enabled, forces users to change their password upon first login. Note that a maximum password age must be set to a value> 0 in order to make this option functional."
+literal|"When enabled, forces users to change their password upon first login."
 argument_list|,
 name|boolValue
 operator|=
