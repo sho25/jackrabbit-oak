@@ -1406,6 +1406,24 @@ return|return
 literal|null
 return|;
 block|}
+comment|//For property index no use making an empty document if
+comment|//none of the properties are indexed
+if|if
+condition|(
+operator|!
+name|context
+operator|.
+name|isFullTextEnabled
+argument_list|()
+operator|&&
+operator|!
+name|dirty
+condition|)
+block|{
+return|return
+literal|null
+return|;
+block|}
 name|Document
 name|document
 init|=
