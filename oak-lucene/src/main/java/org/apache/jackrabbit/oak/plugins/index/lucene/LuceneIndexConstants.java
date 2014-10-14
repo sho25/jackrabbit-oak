@@ -135,6 +135,12 @@ name|INCLUDE_PROPERTY_NAMES
 init|=
 literal|"includePropertyNames"
 decl_stmt|;
+comment|/**      * Type of the property being indexed defined as part of property definition      * under the given index definition. Refer to {@ling javax.jcr.PropertyType}      * contants for the possible values      */
+name|String
+name|PROP_TYPE
+init|=
+literal|"propertyType"
+decl_stmt|;
 block|}
 end_interface
 
