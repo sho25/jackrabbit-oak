@@ -1439,7 +1439,6 @@ name|getSearcher
 argument_list|()
 return|;
 block|}
-specifier|private
 specifier|static
 name|Calendar
 name|createDate
@@ -1460,7 +1459,7 @@ init|=
 operator|new
 name|SimpleDateFormat
 argument_list|(
-literal|"dd/mm/yyyy"
+literal|"dd/MM/yyyy"
 argument_list|)
 decl_stmt|;
 name|Calendar
@@ -1487,7 +1486,6 @@ return|return
 name|cal
 return|;
 block|}
-specifier|private
 specifier|static
 name|long
 name|dateToTime
