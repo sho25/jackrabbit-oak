@@ -27,7 +27,17 @@ name|java
 operator|.
 name|util
 operator|.
-name|List
+name|Collection
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Set
 import|;
 end_import
 
@@ -41,7 +51,7 @@ name|common
 operator|.
 name|collect
 operator|.
-name|Lists
+name|Sets
 import|;
 end_import
 
@@ -195,7 +205,7 @@ name|IndexTracker
 name|tracker
 parameter_list|)
 block|{
-name|List
+name|Collection
 argument_list|<
 name|String
 argument_list|>
@@ -271,8 +281,8 @@ return|return
 literal|null
 return|;
 block|}
-specifier|private
-name|List
+specifier|public
+name|Collection
 argument_list|<
 name|String
 argument_list|>
@@ -282,15 +292,15 @@ name|Filter
 name|filter
 parameter_list|)
 block|{
-name|List
+name|Set
 argument_list|<
 name|String
 argument_list|>
 name|paths
 init|=
-name|Lists
+name|Sets
 operator|.
-name|newArrayList
+name|newHashSet
 argument_list|()
 decl_stmt|;
 name|collectIndexNodePaths
@@ -314,7 +324,7 @@ parameter_list|(
 name|String
 name|filterPath
 parameter_list|,
-name|List
+name|Collection
 argument_list|<
 name|String
 argument_list|>
