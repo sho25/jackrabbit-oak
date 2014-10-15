@@ -225,16 +225,6 @@ name|Text
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
-name|Ignore
-import|;
-end_import
-
 begin_comment
 comment|/**  * Some very special reference tests also including references into the version store.  */
 end_comment
@@ -472,11 +462,6 @@ literal|"/myref"
 argument_list|)
 expr_stmt|;
 block|}
-annotation|@
-name|Ignore
-argument_list|(
-literal|"OAK-2197"
-argument_list|)
 comment|// FIXME OAK-2197
 specifier|public
 name|void
