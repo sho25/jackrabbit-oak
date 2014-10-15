@@ -789,7 +789,7 @@ init|=
 operator|new
 name|JMenuItem
 argument_list|(
-literal|"Tar File Refs"
+literal|"Tar File Info"
 argument_list|)
 decl_stmt|;
 name|menuRefs
@@ -886,7 +886,7 @@ name|frame
 argument_list|,
 literal|"Choose a tar file"
 argument_list|,
-literal|"Tar File References"
+literal|"Tar File Info"
 argument_list|,
 name|JOptionPane
 operator|.
@@ -916,7 +916,7 @@ condition|)
 block|{
 name|treePanel
 operator|.
-name|printDependenciesToFile
+name|printTarInfo
 argument_list|(
 name|s
 argument_list|)
