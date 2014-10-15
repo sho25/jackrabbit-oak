@@ -3683,7 +3683,15 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|//        checkEquals(msg, paths, expected);
+name|checkEquals
+argument_list|(
+name|msg
+argument_list|,
+name|paths
+argument_list|,
+name|expected
+argument_list|)
+expr_stmt|;
 block|}
 specifier|private
 specifier|static
