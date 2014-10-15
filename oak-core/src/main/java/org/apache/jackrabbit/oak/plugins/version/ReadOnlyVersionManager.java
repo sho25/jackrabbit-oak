@@ -388,6 +388,29 @@ argument_list|)
 argument_list|)
 return|;
 block|}
+comment|/**      * Returns the version tree with the given uuid.      *      * @param uuid the uuid of the version tree.      * @return the version tree or {@code null} if there is none.      */
+annotation|@
+name|CheckForNull
+specifier|public
+name|Tree
+name|getVersion
+parameter_list|(
+annotation|@
+name|Nonnull
+name|String
+name|uuid
+parameter_list|)
+block|{
+return|return
+name|getIdentifierManager
+argument_list|()
+operator|.
+name|getTree
+argument_list|(
+name|uuid
+argument_list|)
+return|;
+block|}
 comment|/**      * Returns the path of the version history for the given {@code uuid}.      * The returned path is relative to the version storage tree as returned      * by {@link #getVersionStorage()}.      *      * @param uuid the uuid of the versionable node      * @return the relative path of the version history for the given uuid.      */
 annotation|@
 name|Nonnull

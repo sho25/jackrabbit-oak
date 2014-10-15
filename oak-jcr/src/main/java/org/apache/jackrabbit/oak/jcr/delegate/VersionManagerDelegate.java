@@ -1069,7 +1069,7 @@ argument_list|(
 name|version
 argument_list|)
 operator|.
-name|getName
+name|getIdentifier
 argument_list|()
 argument_list|,
 name|checkNotNull
