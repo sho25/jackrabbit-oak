@@ -126,7 +126,7 @@ specifier|final
 name|int
 name|ROWS
 init|=
-literal|100000
+literal|50
 decl_stmt|;
 specifier|public
 specifier|static
