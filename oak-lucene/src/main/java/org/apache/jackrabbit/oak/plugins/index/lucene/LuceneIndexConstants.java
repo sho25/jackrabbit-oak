@@ -135,11 +135,17 @@ name|INCLUDE_PROPERTY_NAMES
 init|=
 literal|"includePropertyNames"
 decl_stmt|;
-comment|/**      * Type of the property being indexed defined as part of property definition      * under the given index definition. Refer to {@ling javax.jcr.PropertyType}      * contants for the possible values      */
+comment|/**      * Type of the property being indexed defined as part of property definition      * under the given index definition. Refer to {@link javax.jcr.PropertyType}      * contants for the possible values      */
 name|String
 name|PROP_TYPE
 init|=
 literal|"propertyType"
+decl_stmt|;
+comment|/**      * Defines properties which would be used for ordering. If range queries are to      * be performed with same property then it must be part of include list also      */
+name|String
+name|ORDERED_PROP_NAMES
+init|=
+literal|"orderedProps"
 decl_stmt|;
 block|}
 end_interface

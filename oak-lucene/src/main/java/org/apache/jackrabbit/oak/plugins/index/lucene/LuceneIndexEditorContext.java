@@ -851,6 +851,15 @@ name|getPropertyTypes
 argument_list|()
 return|;
 block|}
+specifier|public
+name|IndexDefinition
+name|getDefinition
+parameter_list|()
+block|{
+return|return
+name|definition
+return|;
+block|}
 block|}
 end_class
 

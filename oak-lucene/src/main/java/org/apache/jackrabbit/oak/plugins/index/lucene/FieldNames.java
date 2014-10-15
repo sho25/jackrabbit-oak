@@ -108,6 +108,22 @@ name|PATH
 argument_list|)
 argument_list|)
 decl_stmt|;
+comment|/**      * Encodes the field name such that it can be used for storing DocValue      * This is done such a field if used for both sorting and querying uses      * a different name for docvalue field      *      * @param name name to encode      * @return encoded field name      */
+specifier|public
+specifier|static
+name|String
+name|createDocValFieldName
+parameter_list|(
+name|String
+name|name
+parameter_list|)
+block|{
+return|return
+literal|":dv"
+operator|+
+name|name
+return|;
+block|}
 block|}
 end_class
 

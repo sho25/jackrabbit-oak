@@ -102,26 +102,6 @@ import|;
 end_import
 
 begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
-begin_import
 import|import static
 name|com
 operator|.
@@ -606,6 +586,16 @@ condition|(
 name|defn
 operator|.
 name|includeProperty
+argument_list|(
+name|o
+operator|.
+name|getPropertyName
+argument_list|()
+argument_list|)
+operator|||
+name|defn
+operator|.
+name|isOrdered
 argument_list|(
 name|o
 operator|.
