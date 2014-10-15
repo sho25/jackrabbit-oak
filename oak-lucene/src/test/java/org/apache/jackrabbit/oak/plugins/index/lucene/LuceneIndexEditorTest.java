@@ -909,7 +909,7 @@ name|setProperty
 argument_list|(
 literal|"creationTime"
 argument_list|,
-name|createDate
+name|createCal
 argument_list|(
 literal|"05/06/2014"
 argument_list|)
@@ -1441,7 +1441,7 @@ return|;
 block|}
 specifier|static
 name|Calendar
-name|createDate
+name|createCal
 parameter_list|(
 name|String
 name|dt
@@ -1509,7 +1509,7 @@ name|ISO8601
 operator|.
 name|format
 argument_list|(
-name|createDate
+name|createCal
 argument_list|(
 name|dt
 argument_list|)
