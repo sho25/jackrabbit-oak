@@ -147,6 +147,12 @@ name|ORDERED_PROP_NAMES
 init|=
 literal|"orderedProps"
 decl_stmt|;
+comment|/**      * Size in bytes used for splitting the index files when storing them in NodeStore      */
+name|String
+name|BLOB_SIZE
+init|=
+literal|"blobSize"
+decl_stmt|;
 comment|/**      * Native function name associated with this index definition. Any query can      * use this as the function name to ensure that this index gets used for invoking      * the index      */
 name|String
 name|FUNC_NAME
