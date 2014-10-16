@@ -7649,18 +7649,28 @@ parameter_list|)
 throws|throws
 name|SQLException
 block|{
-name|String
+name|StringBuilder
 name|t
 init|=
+operator|new
+name|StringBuilder
+argument_list|()
+decl_stmt|;
+name|t
+operator|.
+name|append
+argument_list|(
 literal|"update "
 operator|+
 name|tableName
 operator|+
-literal|" set MODIFIED = ?, HASBINARY = ?, MODCOUNT = ?, CMODCOUNT = ?, DSIZE = DSIZE + ?, "
-decl_stmt|;
+literal|" set MODIFIED = GREATEST(MODIFIED, ?), HASBINARY = ?, MODCOUNT = ?, CMODCOUNT = ?, DSIZE = DSIZE + ?, "
+argument_list|)
+expr_stmt|;
 name|t
-operator|+=
-operator|(
+operator|.
+name|append
+argument_list|(
 name|this
 operator|.
 name|needsConcat
@@ -7668,11 +7678,14 @@ condition|?
 literal|"DATA = CONCAT(DATA, ?) "
 else|:
 literal|"DATA = DATA || ? "
-operator|)
+argument_list|)
 expr_stmt|;
 name|t
-operator|+=
+operator|.
+name|append
+argument_list|(
 literal|"where ID = ?"
+argument_list|)
 expr_stmt|;
 if|if
 condition|(
@@ -7682,8 +7695,11 @@ literal|null
 condition|)
 block|{
 name|t
-operator|+=
+operator|.
+name|append
+argument_list|(
 literal|" and MODCOUNT = ?"
+argument_list|)
 expr_stmt|;
 block|}
 name|PreparedStatement
@@ -7694,6 +7710,9 @@ operator|.
 name|prepareStatement
 argument_list|(
 name|t
+operator|.
+name|toString
+argument_list|()
 argument_list|)
 decl_stmt|;
 try|try
@@ -7920,7 +7939,7 @@ literal|"update "
 operator|+
 name|tableName
 operator|+
-literal|" set MODIFIED = ?, MODCOUNT = MODCOUNT + 1, DSIZE = DSIZE + ?, "
+literal|" set MODIFIED = GREATEST(MODIFIED, ?), MODCOUNT = MODCOUNT + 1, DSIZE = DSIZE + ?, "
 argument_list|)
 expr_stmt|;
 name|t
@@ -7988,7 +8007,7 @@ name|t
 operator|.
 name|append
 argument_list|(
-literal|") and MODIFIED<= ?"
+literal|")"
 argument_list|)
 expr_stmt|;
 name|PreparedStatement
@@ -8075,20 +8094,6 @@ name|id
 argument_list|)
 expr_stmt|;
 block|}
-name|stmt
-operator|.
-name|setObject
-argument_list|(
-name|si
-operator|++
-argument_list|,
-name|modified
-argument_list|,
-name|Types
-operator|.
-name|BIGINT
-argument_list|)
-expr_stmt|;
 name|int
 name|result
 init|=
@@ -8111,11 +8116,22 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"DB update failed for "
+literal|"DB update failed: only "
+operator|+
+name|result
+operator|+
+literal|" of "
+operator|+
+name|ids
+operator|.
+name|size
+argument_list|()
+operator|+
+literal|" updated. Table: "
 operator|+
 name|tableName
 operator|+
-literal|"/"
+literal|", IDs:"
 operator|+
 name|ids
 argument_list|)
