@@ -3524,6 +3524,8 @@ condition|)
 block|{
 name|addNodeTypeConstraints
 argument_list|(
+name|indexDefinition
+argument_list|,
 name|qs
 argument_list|,
 name|filter
@@ -5870,6 +5872,9 @@ specifier|static
 name|void
 name|addNodeTypeConstraints
 parameter_list|(
+name|IndexDefinition
+name|defn
+parameter_list|,
 name|List
 argument_list|<
 name|Query
@@ -5887,7 +5892,17 @@ operator|new
 name|BooleanQuery
 argument_list|()
 decl_stmt|;
-comment|//TODO These condition should only be added if those propertyTypes are indexed
+comment|//TODO OAK-2198 Add proper nodeType query support
+if|if
+condition|(
+name|defn
+operator|.
+name|includeProperty
+argument_list|(
+name|JCR_PRIMARYTYPE
+argument_list|)
+condition|)
+block|{
 for|for
 control|(
 name|String
@@ -5919,6 +5934,17 @@ name|SHOULD
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+if|if
+condition|(
+name|defn
+operator|.
+name|includeProperty
+argument_list|(
+name|JCR_MIXINTYPES
+argument_list|)
+condition|)
+block|{
 for|for
 control|(
 name|String
@@ -5949,6 +5975,7 @@ argument_list|,
 name|SHOULD
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|qs
 operator|.
