@@ -33,18 +33,6 @@ end_import
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|concurrent
-operator|.
-name|TimeUnit
-import|;
-end_import
-
-begin_import
-import|import
 name|com
 operator|.
 name|google
@@ -576,11 +564,8 @@ return|return
 literal|null
 return|;
 block|}
-comment|//TODO Should we change the precision to 5 min resolution
-comment|//TODO make if configurable as part of property definition
-name|long
-name|millis
-init|=
+comment|//TODO OAK-2204 - Should we change the precision to lower resolution
+return|return
 name|ISO8601
 operator|.
 name|parse
@@ -590,16 +575,6 @@ argument_list|)
 operator|.
 name|getTimeInMillis
 argument_list|()
-decl_stmt|;
-return|return
-name|TimeUnit
-operator|.
-name|MILLISECONDS
-operator|.
-name|toSeconds
-argument_list|(
-name|millis
-argument_list|)
 return|;
 block|}
 block|}
