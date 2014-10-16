@@ -1409,14 +1409,6 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|NATIVE_QUERY_FUNCTION
-init|=
-literal|"native*lucene"
-decl_stmt|;
 comment|/**      * IndexPaln Attribute name which refers to the path of Lucene index to be used      * to perform query      */
 specifier|static
 specifier|final
@@ -1864,7 +1856,7 @@ name|append
 argument_list|(
 name|getQuery
 argument_list|(
-name|filter
+name|plan
 argument_list|,
 literal|null
 argument_list|,
@@ -2386,7 +2378,7 @@ name|query
 init|=
 name|getQuery
 argument_list|(
-name|filter
+name|plan
 argument_list|,
 name|searcher
 operator|.
@@ -3153,14 +3145,14 @@ return|return
 name|relPaths
 return|;
 block|}
-comment|/**      * Get the Lucene query for the given filter.      *      * @param filter the filter, including full-text constraint      * @param reader the Lucene reader      * @param nonFullTextConstraints whether non-full-text constraints (such a      *            path, node type, and so on) should be added to the Lucene      *            query      * @param analyzer the Lucene analyzer used for building the fulltext query      * @param indexDefinition nodestate that contains the index definition      * @return the Lucene query      */
+comment|/**      * Get the Lucene query for the given filter.      *      * @param plan index plan containing filter details      * @param reader the Lucene reader      * @param nonFullTextConstraints whether non-full-text constraints (such a      *            path, node type, and so on) should be added to the Lucene      *            query      * @param analyzer the Lucene analyzer used for building the fulltext query      * @param defn nodestate that contains the index definition      * @return the Lucene query      */
 specifier|private
 specifier|static
 name|Query
 name|getQuery
 parameter_list|(
-name|Filter
-name|filter
+name|IndexPlan
+name|plan
 parameter_list|,
 name|IndexReader
 name|reader
@@ -3172,7 +3164,7 @@ name|Analyzer
 name|analyzer
 parameter_list|,
 name|IndexDefinition
-name|indexDefinition
+name|defn
 parameter_list|)
 block|{
 name|List
@@ -3186,6 +3178,14 @@ name|ArrayList
 argument_list|<
 name|Query
 argument_list|>
+argument_list|()
+decl_stmt|;
+name|Filter
+name|filter
+init|=
+name|plan
+operator|.
+name|getFilter
 argument_list|()
 decl_stmt|;
 name|FullTextExpression
@@ -3224,16 +3224,33 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+comment|//Check if native function is supported
 name|PropertyRestriction
 name|pr
 init|=
+literal|null
+decl_stmt|;
+if|if
+condition|(
+name|defn
+operator|.
+name|hasFunctionDefined
+argument_list|()
+condition|)
+block|{
+name|pr
+operator|=
 name|filter
 operator|.
 name|getPropertyRestriction
 argument_list|(
-name|NATIVE_QUERY_FUNCTION
+name|defn
+operator|.
+name|getFunctionName
+argument_list|()
 argument_list|)
-decl_stmt|;
+expr_stmt|;
+block|}
 if|if
 condition|(
 name|pr
@@ -3385,7 +3402,7 @@ name|reader
 argument_list|,
 name|analyzer
 argument_list|,
-name|indexDefinition
+name|defn
 argument_list|)
 expr_stmt|;
 block|}
@@ -3402,7 +3419,7 @@ block|{
 if|if
 condition|(
 operator|!
-name|indexDefinition
+name|defn
 operator|.
 name|isFullTextEnabled
 argument_list|()

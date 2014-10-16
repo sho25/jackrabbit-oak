@@ -147,6 +147,12 @@ name|ORDERED_PROP_NAMES
 init|=
 literal|"orderedProps"
 decl_stmt|;
+comment|/**      * Native function name associated with this index definition. Any query can      * use this as the function name to ensure that this index gets used for invoking      * the index      */
+name|String
+name|FUNC_NAME
+init|=
+literal|"functionName"
+decl_stmt|;
 block|}
 end_interface
 
