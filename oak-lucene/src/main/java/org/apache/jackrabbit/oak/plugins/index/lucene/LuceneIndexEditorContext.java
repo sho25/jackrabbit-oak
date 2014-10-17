@@ -374,6 +374,9 @@ name|getIndexWriterConfig
 parameter_list|(
 name|Analyzer
 name|analyzer
+parameter_list|,
+name|IndexDefinition
+name|definition
 parameter_list|)
 block|{
 comment|// FIXME: Hack needed to make Lucene work in an OSGi environment
@@ -427,16 +430,27 @@ name|SerialMergeScheduler
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|//TODO Use default codec for index where full text index is not stored
+if|if
+condition|(
+name|definition
+operator|.
+name|getCodec
+argument_list|()
+operator|!=
+literal|null
+condition|)
+block|{
 name|config
 operator|.
 name|setCodec
 argument_list|(
-operator|new
-name|OakCodec
+name|definition
+operator|.
+name|getCodec
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 return|return
 name|config
 return|;
@@ -615,6 +629,10 @@ operator|=
 name|getIndexWriterConfig
 argument_list|(
 name|analyzer
+argument_list|,
+name|this
+operator|.
+name|definition
 argument_list|)
 expr_stmt|;
 name|this

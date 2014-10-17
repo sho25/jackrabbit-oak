@@ -159,6 +159,12 @@ name|FUNC_NAME
 init|=
 literal|"functionName"
 decl_stmt|;
+comment|/**      * Name of the codec to be used for indexing      */
+name|String
+name|CODEC_NAME
+init|=
+literal|"codec"
+decl_stmt|;
 block|}
 end_interface
 
