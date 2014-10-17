@@ -51,9 +51,49 @@ name|ldap
 operator|.
 name|model
 operator|.
+name|constants
+operator|.
+name|SchemaConstants
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|directory
+operator|.
+name|api
+operator|.
+name|ldap
+operator|.
+name|model
+operator|.
 name|exception
 operator|.
 name|LdapException
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|directory
+operator|.
+name|api
+operator|.
+name|ldap
+operator|.
+name|model
+operator|.
+name|name
+operator|.
+name|Dn
 import|;
 end_import
 
@@ -111,6 +151,26 @@ name|LdapNetworkConnection
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
+import|;
+end_import
+
 begin_comment
 comment|/**  * A factory for creating unbound LdapConnection objects managed by LdapConnectionPool.  */
 end_comment
@@ -125,6 +185,22 @@ argument_list|<
 name|LdapConnection
 argument_list|>
 block|{
+comment|/**      * default logger      */
+specifier|private
+specifier|static
+specifier|final
+name|Logger
+name|log
+init|=
+name|LoggerFactory
+operator|.
+name|getLogger
+argument_list|(
+name|PoolableUnboundConnectionFactory
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 comment|/**      * configuration object for the connection      */
 specifier|private
 name|LdapConnectionConfig
@@ -155,7 +231,17 @@ name|connection
 parameter_list|)
 throws|throws
 name|Exception
-block|{     }
+block|{
+name|log
+operator|.
+name|debug
+argument_list|(
+literal|"activate connection: {}"
+argument_list|,
+name|connection
+argument_list|)
+expr_stmt|;
+block|}
 comment|/**      * {@inheritDoc}      */
 specifier|public
 name|void
@@ -167,6 +253,15 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
+name|log
+operator|.
+name|debug
+argument_list|(
+literal|"destroy connection: {}"
+argument_list|,
+name|connection
+argument_list|)
+expr_stmt|;
 name|connection
 operator|.
 name|close
@@ -206,6 +301,15 @@ operator|.
 name|connect
 argument_list|()
 expr_stmt|;
+name|log
+operator|.
+name|debug
+argument_list|(
+literal|"creating new connection: {}"
+argument_list|,
+name|connection
+argument_list|)
+expr_stmt|;
 return|return
 name|connection
 return|;
@@ -220,7 +324,17 @@ name|connection
 parameter_list|)
 throws|throws
 name|Exception
-block|{     }
+block|{
+name|log
+operator|.
+name|debug
+argument_list|(
+literal|"passivate connection: {}"
+argument_list|,
+name|connection
+argument_list|)
+expr_stmt|;
+block|}
 comment|/**      * {@inheritDoc}      */
 specifier|public
 name|boolean
@@ -230,11 +344,72 @@ name|LdapConnection
 name|connection
 parameter_list|)
 block|{
-return|return
+name|boolean
+name|valid
+init|=
+literal|false
+decl_stmt|;
+if|if
+condition|(
 name|connection
 operator|.
 name|isConnected
 argument_list|()
+condition|)
+block|{
+try|try
+block|{
+name|valid
+operator|=
+name|connection
+operator|.
+name|lookup
+argument_list|(
+name|Dn
+operator|.
+name|ROOT_DSE
+argument_list|,
+name|SchemaConstants
+operator|.
+name|NO_ATTRIBUTE
+argument_list|)
+operator|!=
+literal|null
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|LdapException
+name|le
+parameter_list|)
+block|{
+name|log
+operator|.
+name|debug
+argument_list|(
+literal|"error during connection validation: {}"
+argument_list|,
+name|le
+operator|.
+name|toString
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+name|log
+operator|.
+name|debug
+argument_list|(
+literal|"validating connection {}: {}"
+argument_list|,
+name|connection
+argument_list|,
+name|valid
+argument_list|)
+expr_stmt|;
+return|return
+name|valid
 return|;
 block|}
 comment|/**      * internal helper class that guards the original ldap connection from starting TLS if already started..      * this is to ensure that pooled connections can be 'bind()' several times.      *      * @see org.apache.directory.ldap.client.api.LdapNetworkConnection#bindAsync(org.apache.directory.api.ldap.model.message.BindRequest)      */
