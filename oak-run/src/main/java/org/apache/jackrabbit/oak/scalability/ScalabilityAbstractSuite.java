@@ -457,7 +457,7 @@ name|getProperty
 argument_list|(
 literal|"increments"
 argument_list|,
-literal|"1,5,7,10"
+literal|"1,2,5"
 argument_list|)
 argument_list|)
 decl_stmt|;
