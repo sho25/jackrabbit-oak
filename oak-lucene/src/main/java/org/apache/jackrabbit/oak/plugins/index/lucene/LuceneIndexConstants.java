@@ -139,7 +139,7 @@ comment|/**      * Type of the property being indexed defined as part of propert
 name|String
 name|PROP_TYPE
 init|=
-literal|"propertyType"
+literal|"type"
 decl_stmt|;
 comment|/**      * Defines properties which would be used for ordering. If range queries are to      * be performed with same property then it must be part of include list also      */
 name|String
@@ -164,6 +164,12 @@ name|String
 name|CODEC_NAME
 init|=
 literal|"codec"
+decl_stmt|;
+comment|/**      * Child node name under which property details are provided      */
+name|String
+name|PROP_NODE
+init|=
+literal|"properties"
 decl_stmt|;
 block|}
 end_interface

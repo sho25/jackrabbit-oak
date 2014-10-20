@@ -707,6 +707,18 @@ operator|.
 name|newHashMap
 argument_list|()
 decl_stmt|;
+name|NodeBuilder
+name|propNode
+init|=
+name|defn
+operator|.
+name|getChildNode
+argument_list|(
+name|LuceneIndexConstants
+operator|.
+name|PROP_NODE
+argument_list|)
+decl_stmt|;
 for|for
 control|(
 name|String
@@ -724,7 +736,7 @@ control|)
 block|{
 if|if
 condition|(
-name|defn
+name|propNode
 operator|.
 name|hasChildNode
 argument_list|(
@@ -745,7 +757,7 @@ name|this
 argument_list|,
 name|propName
 argument_list|,
-name|defn
+name|propNode
 operator|.
 name|child
 argument_list|(
