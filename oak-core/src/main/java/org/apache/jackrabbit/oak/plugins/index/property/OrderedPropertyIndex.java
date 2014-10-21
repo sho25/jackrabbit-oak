@@ -1176,6 +1176,8 @@ name|PathUtils
 operator|.
 name|getDepth
 argument_list|(
+name|pr
+operator|.
 name|propertyName
 argument_list|)
 expr_stmt|;
