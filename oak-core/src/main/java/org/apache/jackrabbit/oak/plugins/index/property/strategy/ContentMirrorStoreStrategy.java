@@ -398,6 +398,21 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
+comment|/**      * logging a warning every {@code oak.traversing.warn} traversed nodes. Default {@code 10000}      */
+specifier|static
+specifier|final
+name|int
+name|TRAVERSING_WARN
+init|=
+name|Integer
+operator|.
+name|getInteger
+argument_list|(
+literal|"oak.traversing.warn"
+argument_list|,
+literal|10000
+argument_list|)
+decl_stmt|;
 annotation|@
 name|Override
 specifier|public
@@ -1749,7 +1764,7 @@ if|if
 condition|(
 name|readCount
 operator|%
-literal|1000
+name|TRAVERSING_WARN
 operator|==
 literal|0
 condition|)
