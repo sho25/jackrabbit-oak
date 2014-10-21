@@ -102,7 +102,7 @@ block|{
 return|return
 name|o1
 operator|.
-name|compareRevisionTimeThenClusterId
+name|compareTo
 argument_list|(
 name|o2
 argument_list|)

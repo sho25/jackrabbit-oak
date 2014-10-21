@@ -1385,12 +1385,9 @@ name|nodesCache
 operator|=
 name|builder
 operator|.
-name|buildCache
+name|buildDocumentCache
 argument_list|(
-name|builder
-operator|.
-name|getDocumentCacheSize
-argument_list|()
+name|this
 argument_list|)
 expr_stmt|;
 block|}
