@@ -1362,6 +1362,12 @@ argument_list|(
 name|property
 argument_list|,
 name|state
+argument_list|,
+name|path
+operator|+
+literal|"@"
+operator|+
+name|pname
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -2154,6 +2160,9 @@ name|property
 parameter_list|,
 name|NodeState
 name|state
+parameter_list|,
+name|String
+name|path
 parameter_list|)
 block|{
 name|List
@@ -2280,6 +2289,8 @@ argument_list|(
 name|v
 argument_list|,
 name|metadata
+argument_list|,
+name|path
 argument_list|)
 argument_list|)
 argument_list|)
@@ -2298,6 +2309,9 @@ name|v
 parameter_list|,
 name|Metadata
 name|metadata
+parameter_list|,
+name|String
+name|path
 parameter_list|)
 block|{
 name|WriteOutContentHandler
@@ -2381,7 +2395,9 @@ name|log
 operator|.
 name|debug
 argument_list|(
-literal|"Failed to extract text from a binary property."
+literal|"Failed to extract text from a binary property: "
+operator|+
+name|path
 operator|+
 literal|" This is a fairly common case, and nothing to"
 operator|+
