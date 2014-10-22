@@ -2342,10 +2342,6 @@ name|status
 operator|=
 name|STATUS_DONE
 expr_stmt|;
-name|start
-operator|=
-literal|""
-expr_stmt|;
 name|done
 operator|=
 name|now
