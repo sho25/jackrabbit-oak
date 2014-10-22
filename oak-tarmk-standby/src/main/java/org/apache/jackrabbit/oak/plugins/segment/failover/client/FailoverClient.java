@@ -505,7 +505,7 @@ specifier|final
 name|String
 name|CLIENT_ID_PROPERTY_NAME
 init|=
-literal|"failOverID"
+literal|"standbyID"
 decl_stmt|;
 specifier|private
 specifier|static

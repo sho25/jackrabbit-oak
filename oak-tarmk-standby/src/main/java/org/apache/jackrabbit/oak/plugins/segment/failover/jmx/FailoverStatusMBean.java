@@ -62,7 +62,7 @@ specifier|final
 name|String
 name|JMX_NAME
 init|=
-literal|"org.apache.jackrabbit.oak:name=Status,type=\"FailOver\""
+literal|"org.apache.jackrabbit.oak:name=Status,type=\"Standby\""
 decl_stmt|;
 specifier|public
 specifier|static
