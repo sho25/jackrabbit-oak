@@ -4201,7 +4201,7 @@ name|appendString
 init|=
 name|generateString
 argument_list|(
-literal|32
+literal|512
 argument_list|,
 literal|true
 argument_list|)
@@ -4241,8 +4241,20 @@ name|sdata
 init|=
 name|appendString
 decl_stmt|;
+name|boolean
+name|needsConcat
+init|=
+name|super
+operator|.
+name|dsname
+operator|.
+name|contains
+argument_list|(
+literal|"MySQL"
+argument_list|)
+decl_stmt|;
 name|int
-name|datalength
+name|dataInChars
 init|=
 operator|(
 name|super
@@ -4258,6 +4270,11 @@ literal|4000
 else|:
 literal|16384
 operator|)
+decl_stmt|;
+name|int
+name|dataInBytes
+init|=
+name|dataInChars
 operator|/
 literal|3
 decl_stmt|;
@@ -4580,7 +4597,21 @@ literal|"update "
 operator|+
 name|table
 operator|+
-literal|" set DATA = DATA || ? where ID = ?"
+literal|" set "
+operator|+
+operator|(
+name|needsConcat
+condition|?
+literal|"DATA = CONCAT(DATA, ?)"
+else|:
+literal|"DATA = DATA || CAST(? as varchar("
+operator|+
+name|dataInChars
+operator|+
+literal|"))"
+operator|)
+operator|+
+literal|" where ID = ?"
 argument_list|)
 decl_stmt|;
 try|try
@@ -4861,7 +4892,7 @@ operator|.
 name|length
 argument_list|()
 operator|<
-name|datalength
+name|dataInBytes
 condition|)
 block|{
 name|stmt
