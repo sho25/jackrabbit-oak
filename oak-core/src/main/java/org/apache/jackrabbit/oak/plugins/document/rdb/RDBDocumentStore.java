@@ -1578,11 +1578,9 @@ decl_stmt|;
 comment|// capacity of DATA column
 specifier|private
 name|int
-name|datalimit
+name|dataLimitInOctets
 init|=
 literal|16384
-operator|/
-name|CHAR2OCTETRATIO
 decl_stmt|;
 comment|// number of retries for updates
 specifier|private
@@ -2011,7 +2009,7 @@ argument_list|()
 decl_stmt|;
 name|this
 operator|.
-name|datalimit
+name|dataLimitInOctets
 operator|=
 name|met
 operator|.
@@ -2019,8 +2017,6 @@ name|getPrecision
 argument_list|(
 literal|1
 argument_list|)
-operator|/
-name|CHAR2OCTETRATIO
 expr_stmt|;
 block|}
 block|}
@@ -2154,11 +2150,9 @@ block|{
 comment|// see https://issues.apache.org/jira/browse/OAK-1914
 name|this
 operator|.
-name|datalimit
+name|dataLimitInOctets
 operator|=
 literal|4000
-operator|/
-name|CHAR2OCTETRATIO
 expr_stmt|;
 name|stmt
 operator|.
@@ -4530,7 +4524,11 @@ operator|.
 name|length
 argument_list|()
 operator|<
-name|datalimit
+name|this
+operator|.
+name|dataLimitInOctets
+operator|/
+name|CHAR2OCTETRATIO
 condition|)
 block|{
 try|try
@@ -5628,6 +5626,24 @@ name|t
 operator|+=
 literal|" order by ID"
 expr_stmt|;
+if|if
+condition|(
+name|limit
+operator|!=
+name|Integer
+operator|.
+name|MAX_VALUE
+condition|)
+block|{
+name|t
+operator|+=
+literal|" FETCH FIRST "
+operator|+
+name|limit
+operator|+
+literal|" ROWS ONLY"
+expr_stmt|;
+block|}
 name|PreparedStatement
 name|stmt
 init|=
@@ -6026,7 +6042,11 @@ operator|.
 name|length
 argument_list|()
 operator|<
-name|datalimit
+name|this
+operator|.
+name|dataLimitInOctets
+operator|/
+name|CHAR2OCTETRATIO
 condition|)
 block|{
 name|stmt
@@ -6226,7 +6246,13 @@ name|needsConcat
 condition|?
 literal|"DATA = CONCAT(DATA, ?) "
 else|:
-literal|"DATA = DATA || ? "
+literal|"DATA = DATA || CAST(? AS varchar("
+operator|+
+name|this
+operator|.
+name|dataLimitInOctets
+operator|+
+literal|")) "
 argument_list|)
 expr_stmt|;
 name|t
@@ -6499,9 +6525,15 @@ name|this
 operator|.
 name|needsConcat
 condition|?
-literal|"DATA = CONCAT(DATA, ?)"
+literal|"DATA = CONCAT(DATA, ?) "
 else|:
-literal|"DATA = DATA || ? "
+literal|"DATA = DATA || CAST(? AS varchar("
+operator|+
+name|this
+operator|.
+name|dataLimitInOctets
+operator|+
+literal|")) "
 argument_list|)
 expr_stmt|;
 name|t
@@ -6856,7 +6888,11 @@ operator|.
 name|length
 argument_list|()
 operator|<
-name|datalimit
+name|this
+operator|.
+name|dataLimitInOctets
+operator|/
+name|CHAR2OCTETRATIO
 condition|)
 block|{
 name|stmt
