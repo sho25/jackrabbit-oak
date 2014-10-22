@@ -1543,18 +1543,18 @@ argument_list|)
 expr_stmt|;
 break|break;
 case|case
-name|SYNCSLAVE
+name|STANDBY
 case|:
-name|syncSlave
+name|standbyInstance
 argument_list|(
 name|args
 argument_list|)
 expr_stmt|;
 break|break;
 case|case
-name|SYNCMASTER
+name|PRIMARY
 case|:
-name|syncMaster
+name|primaryInstance
 argument_list|(
 name|args
 argument_list|)
@@ -2004,7 +2004,7 @@ block|}
 specifier|private
 specifier|static
 name|void
-name|syncSlave
+name|standbyInstance
 parameter_list|(
 name|String
 index|[]
@@ -2186,7 +2186,7 @@ name|nonOptions
 argument_list|(
 name|Mode
 operator|.
-name|SYNCSLAVE
+name|STANDBY
 operator|+
 literal|"<path to repository>"
 argument_list|)
@@ -2433,7 +2433,7 @@ block|}
 specifier|private
 specifier|static
 name|void
-name|syncMaster
+name|primaryInstance
 parameter_list|(
 name|String
 index|[]
@@ -2578,7 +2578,7 @@ name|nonOptions
 argument_list|(
 name|Mode
 operator|.
-name|SYNCMASTER
+name|PRIMARY
 operator|+
 literal|"<path to repository>"
 argument_list|)
@@ -7689,14 +7689,14 @@ argument_list|(
 literal|"explore"
 argument_list|)
 block|,
-name|SYNCSLAVE
+name|PRIMARY
 argument_list|(
-literal|"syncSlave"
+literal|"primary"
 argument_list|)
 block|,
-name|SYNCMASTER
+name|STANDBY
 argument_list|(
-literal|"syncmaster"
+literal|"standy"
 argument_list|)
 block|,
 name|HELP
