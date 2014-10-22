@@ -7,7 +7,7 @@ begin_annotation
 annotation|@
 name|Version
 argument_list|(
-literal|"1.1.0"
+literal|"1.0.0"
 argument_list|)
 end_annotation
 
@@ -34,6 +34,8 @@ operator|.
 name|plugins
 operator|.
 name|segment
+operator|.
+name|file
 package|;
 end_package
 
