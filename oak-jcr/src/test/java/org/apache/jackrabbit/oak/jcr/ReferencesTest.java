@@ -462,7 +462,6 @@ literal|"/myref"
 argument_list|)
 expr_stmt|;
 block|}
-comment|// FIXME OAK-2197
 specifier|public
 name|void
 name|testMultipleMultiReferences
