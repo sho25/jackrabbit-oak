@@ -123,11 +123,10 @@ specifier|final
 name|SegmentWriter
 name|writer
 decl_stmt|;
+comment|/**      * Local update counter for the root builder.      *       * The value encodes both the counter and the type of the node builder:      *<ul>      *<li>value>=<code>0</code> represents a root builder (builder keeps      * counter updates)</li>      *<li>value =<code>-1</code> represents a child builder (value doesn't      * change, builder doesn't keep an updated counter)</li>      *</ul>      *       */
 specifier|private
 name|long
 name|updateCount
-init|=
-literal|0
 decl_stmt|;
 name|SegmentNodeBuilder
 parameter_list|(
@@ -169,6 +168,12 @@ name|writer
 operator|=
 name|writer
 expr_stmt|;
+name|this
+operator|.
+name|updateCount
+operator|=
+literal|0
+expr_stmt|;
 block|}
 name|SegmentNodeBuilder
 parameter_list|(
@@ -195,6 +200,13 @@ name|writer
 operator|=
 name|writer
 expr_stmt|;
+name|this
+operator|.
+name|updateCount
+operator|=
+operator|-
+literal|1
+expr_stmt|;
 block|}
 comment|//-------------------------------------------------< MemoryNodeBuilder>--
 annotation|@
@@ -203,6 +215,20 @@ specifier|protected
 name|void
 name|updated
 parameter_list|()
+block|{
+if|if
+condition|(
+name|isChildBuilder
+argument_list|()
+condition|)
+block|{
+name|super
+operator|.
+name|updated
+argument_list|()
+expr_stmt|;
+block|}
+else|else
 block|{
 name|updateCount
 operator|++
@@ -218,6 +244,18 @@ name|getNodeState
 argument_list|()
 expr_stmt|;
 block|}
+block|}
+block|}
+specifier|private
+name|boolean
+name|isChildBuilder
+parameter_list|()
+block|{
+return|return
+name|updateCount
+operator|<
+literal|0
+return|;
 block|}
 comment|//-------------------------------------------------------< NodeBuilder>--
 annotation|@
