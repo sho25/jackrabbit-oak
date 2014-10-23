@@ -1597,6 +1597,13 @@ name|needsConcat
 init|=
 literal|false
 decl_stmt|;
+comment|// for DBs that prefer "limit" over "fetch first"
+specifier|private
+name|boolean
+name|needsLimit
+init|=
+literal|false
+decl_stmt|;
 comment|// set of supported indexed properties
 specifier|private
 specifier|static
@@ -1850,6 +1857,12 @@ block|{
 name|this
 operator|.
 name|needsConcat
+operator|=
+literal|true
+expr_stmt|;
+name|this
+operator|.
+name|needsLimit
 operator|=
 literal|true
 expr_stmt|;
@@ -5637,11 +5650,23 @@ condition|)
 block|{
 name|t
 operator|+=
+name|this
+operator|.
+name|needsConcat
+condition|?
+operator|(
+literal|" LIMIT "
+operator|+
+name|limit
+operator|)
+else|:
+operator|(
 literal|" FETCH FIRST "
 operator|+
 name|limit
 operator|+
 literal|" ROWS ONLY"
+operator|)
 expr_stmt|;
 block|}
 name|PreparedStatement
