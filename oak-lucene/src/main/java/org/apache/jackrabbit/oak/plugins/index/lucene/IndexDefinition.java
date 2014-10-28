@@ -1071,6 +1071,19 @@ return|return
 name|declaringNodeTypes
 return|;
 block|}
+specifier|public
+name|boolean
+name|hasDeclaredNodeTypes
+parameter_list|()
+block|{
+return|return
+operator|!
+name|declaringNodeTypes
+operator|.
+name|isEmpty
+argument_list|()
+return|;
+block|}
 comment|/**      * Checks if a given property should be stored in the lucene index or not      */
 specifier|public
 name|boolean
