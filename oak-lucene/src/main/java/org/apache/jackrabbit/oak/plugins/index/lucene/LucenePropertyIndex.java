@@ -1581,6 +1581,20 @@ operator|!=
 literal|null
 condition|)
 block|{
+comment|//Ignore full text indexes
+if|if
+condition|(
+name|indexNode
+operator|.
+name|getDefinition
+argument_list|()
+operator|.
+name|isFullTextEnabled
+argument_list|()
+condition|)
+block|{
+continue|continue;
+block|}
 name|IndexPlan
 name|plan
 init|=
