@@ -594,6 +594,10 @@ specifier|final
 name|IndexUpdateCallback
 name|updateCallback
 decl_stmt|;
+specifier|private
+name|boolean
+name|reindex
+decl_stmt|;
 name|LuceneIndexEditorContext
 parameter_list|(
 name|NodeBuilder
@@ -726,6 +730,23 @@ parameter_list|()
 throws|throws
 name|IOException
 block|{
+comment|//If reindex or fresh index and write is null on close
+comment|//it indicates that the index is empty. In such a case trigger
+comment|//creation of write such that an empty Lucene index state is persisted
+comment|//in directory
+if|if
+condition|(
+name|reindex
+operator|&&
+name|writer
+operator|==
+literal|null
+condition|)
+block|{
+name|getWriter
+argument_list|()
+expr_stmt|;
+block|}
 if|if
 condition|(
 name|writer
@@ -782,6 +803,16 @@ name|indexedNodes
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+specifier|public
+name|void
+name|enableReindexMode
+parameter_list|()
+block|{
+name|reindex
+operator|=
+literal|true
+expr_stmt|;
 block|}
 specifier|public
 name|long
