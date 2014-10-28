@@ -5979,6 +5979,19 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+if|if
+condition|(
+name|bq
+operator|.
+name|clauses
+argument_list|()
+operator|.
+name|size
+argument_list|()
+operator|!=
+literal|0
+condition|)
+block|{
 name|qs
 operator|.
 name|add
@@ -5986,6 +5999,7 @@ argument_list|(
 name|bq
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 specifier|static
 name|Query
