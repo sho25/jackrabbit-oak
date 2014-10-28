@@ -53,16 +53,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|CheckForNull
-import|;
-end_import
-
-begin_import
-import|import
 name|com
 operator|.
 name|google
@@ -327,6 +317,33 @@ else|:
 literal|null
 return|;
 block|}
+annotation|@
+name|Override
+specifier|public
+name|String
+name|toString
+parameter_list|()
+block|{
+return|return
+literal|"IndexPlanner{"
+operator|+
+literal|"indexPath='"
+operator|+
+name|indexPath
+operator|+
+literal|'\''
+operator|+
+literal|", filter="
+operator|+
+name|filter
+operator|+
+literal|", sortOrder="
+operator|+
+name|sortOrder
+operator|+
+literal|'}'
+return|;
+block|}
 specifier|private
 name|IndexPlan
 operator|.
@@ -449,10 +466,25 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+name|List
+argument_list|<
+name|OrderEntry
+argument_list|>
+name|sortOrder
+init|=
+name|createSortOrder
+argument_list|()
+decl_stmt|;
 if|if
 condition|(
 operator|!
 name|indexedProps
+operator|.
+name|isEmpty
+argument_list|()
+operator|||
+operator|!
+name|sortOrder
 operator|.
 name|isEmpty
 argument_list|()
@@ -469,6 +501,13 @@ operator|.
 name|size
 argument_list|()
 decl_stmt|;
+name|costPerEntryFactor
+operator|+=
+name|sortOrder
+operator|.
+name|size
+argument_list|()
+expr_stmt|;
 comment|// Restrict matching index when declaringNodeTypes declared
 if|if
 condition|(
@@ -511,11 +550,21 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
-name|plan
-operator|!=
-literal|null
+operator|!
+name|sortOrder
+operator|.
+name|isEmpty
+argument_list|()
 condition|)
 block|{
+name|plan
+operator|.
+name|setSortOrder
+argument_list|(
+name|sortOrder
+argument_list|)
+expr_stmt|;
+block|}
 return|return
 name|plan
 operator|.
@@ -526,7 +575,6 @@ operator|/
 name|costPerEntryFactor
 argument_list|)
 return|;
-block|}
 block|}
 comment|//TODO Support for property existence queries
 comment|//TODO support for nodeName queries
@@ -614,12 +662,6 @@ name|getPathPrefix
 argument_list|()
 argument_list|)
 operator|.
-name|setSortOrder
-argument_list|(
-name|createSortOrder
-argument_list|()
-argument_list|)
-operator|.
 name|setDelayed
 argument_list|(
 literal|true
@@ -700,8 +742,6 @@ name|getIndexReader
 argument_list|()
 return|;
 block|}
-annotation|@
-name|CheckForNull
 specifier|private
 name|List
 argument_list|<
@@ -735,7 +775,10 @@ literal|null
 condition|)
 block|{
 return|return
-literal|null
+name|Collections
+operator|.
+name|emptyList
+argument_list|()
 return|;
 block|}
 name|List
