@@ -334,7 +334,6 @@ name|Builder
 name|getPlanBuilder
 parameter_list|()
 block|{
-comment|//TODO Support native functions
 name|FullTextExpression
 name|ft
 init|=
@@ -529,7 +528,6 @@ argument_list|)
 return|;
 block|}
 block|}
-comment|//TODO Support for path restrictions
 comment|//TODO Support for property existence queries
 comment|//TODO support for nodeName queries
 return|return
@@ -764,7 +762,6 @@ control|)
 block|{
 comment|//sorting can only be done for known/configured properties
 comment|// and whose types are known
-comment|//TODO Can sorting be done for array properties
 if|if
 condition|(
 name|defn
