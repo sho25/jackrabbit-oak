@@ -54,6 +54,11 @@ init|=
 literal|"reindex"
 decl_stmt|;
 name|String
+name|REINDEX_COUNT
+init|=
+literal|"reindexCount"
+decl_stmt|;
+name|String
 name|REINDEX_ASYNC_PROPERTY_NAME
 init|=
 literal|"reindex-async"
