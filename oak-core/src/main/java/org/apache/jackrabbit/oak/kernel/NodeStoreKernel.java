@@ -3074,6 +3074,11 @@ condition|(
 name|filter
 operator|==
 literal|null
+operator|||
+name|filter
+operator|.
+name|isEmpty
+argument_list|()
 condition|)
 block|{
 name|filter
