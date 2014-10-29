@@ -20,6 +20,16 @@ package|;
 end_package
 
 begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
+begin_import
 import|import static
 name|com
 operator|.
@@ -87,7 +97,7 @@ extends|extends
 name|Document
 block|{
 comment|/**      * All ClusterNodeInfoDocument ID value would be greater than this value      * It can be used as startKey in DocumentStore#query methods      */
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|String
@@ -96,7 +106,7 @@ init|=
 literal|"0"
 decl_stmt|;
 comment|/**      * All ClusterNodeInfoDocument ID value would be less than this value      * It can be used as endKey in DocumentStore#query methods      */
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|String
@@ -154,6 +164,55 @@ operator|.
 name|ACQUIRED
 return|;
 block|}
+specifier|public
+name|int
+name|getClusterId
+parameter_list|()
+block|{
+return|return
+name|Integer
+operator|.
+name|parseInt
+argument_list|(
+name|getId
+argument_list|()
+argument_list|)
+return|;
+block|}
+comment|/**      * Returns all cluster node info documents currently available in the given      * document store.      *      * @param store the document store.      * @return list of cluster node info documents.      */
+specifier|public
+specifier|static
+name|List
+argument_list|<
+name|ClusterNodeInfoDocument
+argument_list|>
+name|all
+parameter_list|(
+name|DocumentStore
+name|store
+parameter_list|)
+block|{
+comment|// keys between "0" and "a" includes all possible numbers
+return|return
+name|store
+operator|.
+name|query
+argument_list|(
+name|Collection
+operator|.
+name|CLUSTER_NODES
+argument_list|,
+name|MIN_ID_VALUE
+argument_list|,
+name|MAX_ID_VALUE
+argument_list|,
+name|Integer
+operator|.
+name|MAX_VALUE
+argument_list|)
+return|;
+block|}
+comment|//-----------------------< internal>---------------------------------------
 specifier|private
 name|ClusterNodeState
 name|getState

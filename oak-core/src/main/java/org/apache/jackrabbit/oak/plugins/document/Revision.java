@@ -55,6 +55,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Map
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|TreeSet
 import|;
 end_import
@@ -2009,7 +2019,7 @@ block|}
 block|}
 block|}
 block|}
-comment|/**          * Returns the minimum timestamp of the most recent revisions from all          * cluster nodes as seen from the given {@code revision}.          *          * @param revision a revision.          * @return the minimum timestamp.          */
+comment|/**          * Returns the minimum timestamp of the most recent revisions from all          * active cluster nodes as seen from the given {@code revision}.          *          * @param revision a revision.          * @param inactive map of cluster nodes considered inactive.          * @return the minimum timestamp.          */
 specifier|public
 name|long
 name|getMinimumTimestamp
@@ -2018,6 +2028,16 @@ annotation|@
 name|Nonnull
 name|Revision
 name|revision
+parameter_list|,
+annotation|@
+name|Nonnull
+name|Map
+argument_list|<
+name|Integer
+argument_list|,
+name|Long
+argument_list|>
+name|inactive
 parameter_list|)
 block|{
 name|long
@@ -2113,6 +2133,51 @@ literal|0
 condition|)
 block|{
 comment|// found newest range older or equal the given seenAt
+comment|// check if the cluster node is still active
+name|Long
+name|inactiveSince
+init|=
+name|inactive
+operator|.
+name|get
+argument_list|(
+name|range
+operator|.
+name|revision
+operator|.
+name|getClusterId
+argument_list|()
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|inactiveSince
+operator|!=
+literal|null
+operator|&&
+name|revision
+operator|.
+name|getTimestamp
+argument_list|()
+operator|>
+name|inactiveSince
+operator|&&
+name|range
+operator|.
+name|revision
+operator|.
+name|getTimestamp
+argument_list|()
+operator|<
+name|inactiveSince
+condition|)
+block|{
+comment|// ignore, because the revision is after the
+comment|// cluster node became inactive and the most recent
+comment|// range is before it became inactive
+block|}
+else|else
+block|{
 name|timestamp
 operator|=
 name|Math
@@ -2129,6 +2194,7 @@ name|getTimestamp
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 break|break;
 block|}
 block|}

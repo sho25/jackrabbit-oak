@@ -930,32 +930,17 @@ init|=
 name|getCurrentTime
 argument_list|()
 decl_stmt|;
-comment|// keys between "0" and "a" includes all possible numbers
 name|List
 argument_list|<
 name|ClusterNodeInfoDocument
 argument_list|>
 name|list
 init|=
-name|store
+name|ClusterNodeInfoDocument
 operator|.
-name|query
+name|all
 argument_list|(
-name|Collection
-operator|.
-name|CLUSTER_NODES
-argument_list|,
-name|ClusterNodeInfoDocument
-operator|.
-name|MIN_ID_VALUE
-argument_list|,
-name|ClusterNodeInfoDocument
-operator|.
-name|MAX_ID_VALUE
-argument_list|,
-name|Integer
-operator|.
-name|MAX_VALUE
+name|store
 argument_list|)
 decl_stmt|;
 name|int
@@ -1219,9 +1204,9 @@ name|newEntry
 argument_list|)
 return|;
 block|}
-comment|/**      * Renew the cluster id lease. This method needs to be called once in a while,      * to ensure the same cluster id is not re-used by a different instance.      * The lease is only renewed when half of the lease time passed. That is,      * with a lease time of 60 seconds, the lease is renewed every 30 seconds.      */
+comment|/**      * Renew the cluster id lease. This method needs to be called once in a while,      * to ensure the same cluster id is not re-used by a different instance.      * The lease is only renewed when half of the lease time passed. That is,      * with a lease time of 60 seconds, the lease is renewed every 30 seconds.      *      * @return {@code true} if the lease was renewed; {@code false} otherwise.      */
 specifier|public
-name|void
+name|boolean
 name|renewLease
 parameter_list|()
 block|{
@@ -1242,7 +1227,9 @@ operator|<
 name|leaseEndTime
 condition|)
 block|{
-return|return;
+return|return
+literal|false
+return|;
 block|}
 name|UpdateOp
 name|update
@@ -1340,6 +1327,9 @@ name|mode
 argument_list|)
 expr_stmt|;
 block|}
+return|return
+literal|true
+return|;
 block|}
 specifier|public
 name|void
