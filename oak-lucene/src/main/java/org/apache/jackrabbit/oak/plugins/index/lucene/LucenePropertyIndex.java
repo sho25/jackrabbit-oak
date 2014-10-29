@@ -1492,7 +1492,7 @@ name|getIndexName
 parameter_list|()
 block|{
 return|return
-literal|"lucene"
+literal|"lucene-property"
 return|;
 block|}
 annotation|@
