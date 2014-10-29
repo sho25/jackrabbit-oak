@@ -1850,6 +1850,42 @@ name|getLastIndexedTime
 argument_list|()
 expr_stmt|;
 block|}
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Execution Count {}"
+argument_list|,
+name|indexStatsMBean
+operator|.
+name|getExecutionCount
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Execution Time {}"
+argument_list|,
+name|indexStatsMBean
+operator|.
+name|getExecutionTime
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Consolidated Execution Stats {}"
+argument_list|,
+name|indexStatsMBean
+operator|.
+name|getConsolidatedExecutionStats
+argument_list|()
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 comment|/**      * Creates the load for the search.      *      * @param context the context      * @throws RepositoryException the repository exception      */
