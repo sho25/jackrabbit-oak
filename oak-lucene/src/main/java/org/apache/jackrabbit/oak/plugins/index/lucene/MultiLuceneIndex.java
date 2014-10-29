@@ -175,7 +175,7 @@ throw|throw
 operator|new
 name|IllegalStateException
 argument_list|(
-literal|"Queries that use multiple relative properties is not yet supported"
+literal|"Queries that use multiple relative properties are not yet supported"
 argument_list|)
 throw|;
 block|}
