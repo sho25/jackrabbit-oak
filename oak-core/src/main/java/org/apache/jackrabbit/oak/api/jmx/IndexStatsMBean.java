@@ -19,6 +19,18 @@ name|jmx
 package|;
 end_package
 
+begin_import
+import|import
+name|javax
+operator|.
+name|management
+operator|.
+name|openmbean
+operator|.
+name|CompositeData
+import|;
+end_import
+
 begin_interface
 specifier|public
 interface|interface
@@ -97,6 +109,26 @@ function_decl|;
 comment|/**      * Temporary checkpoints represent old checkpoints that have been processed      * but the cleanup was not successful of did not happen at all (like in the      * event the system was forcibly stopped).      *       * @return the already processed checkpoints      */
 name|String
 name|getTemporaryCheckpoints
+parameter_list|()
+function_decl|;
+comment|/**      * Returns the number of executions as a {@link org.apache.jackrabbit.api.stats.TimeSeries}.      *      * @return the execution count time series      */
+name|CompositeData
+name|getExecutionCount
+parameter_list|()
+function_decl|;
+comment|/**      * Returns the execution time as a {@link org.apache.jackrabbit.api.stats.TimeSeries}.      *      * @return the execution times time series      */
+name|CompositeData
+name|getExecutionTime
+parameter_list|()
+function_decl|;
+comment|/**      * Returns the consolidated execution stats since last reset      * @return consolidated execution stats      */
+name|CompositeData
+name|getConsolidatedExecutionStats
+parameter_list|()
+function_decl|;
+comment|/**      * Resets the consolidated stats.      */
+name|void
+name|resetConsolidatedExecutionStats
 parameter_list|()
 function_decl|;
 block|}
