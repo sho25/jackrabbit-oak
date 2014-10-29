@@ -7441,6 +7441,14 @@ operator|!=
 literal|null
 condition|)
 block|{
+if|if
+condition|(
+name|LOG
+operator|.
+name|isDebugEnabled
+argument_list|()
+condition|)
+block|{
 name|NodeDocument
 name|after
 init|=
@@ -7484,6 +7492,7 @@ name|getMemory
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 else|else
