@@ -2528,7 +2528,7 @@ name|expected
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * The name matching condition must not only search for node-name and      * principal name but also needs to take the new rep:authoriableId into      * account that has been introduced as of Oak 1.0      *      * @see<a href="">OAK-xxx</a>      */
+comment|/**      * The name matching condition must not only search for node-name and      * principal name but also needs to take the new rep:authoriableId into      * account that has been introduced as of Oak 1.0      *      * @see<a href="https://issues.apache.org/jira/browse/OAK-2243">OAK-2243</a>      */
 annotation|@
 name|Test
 specifier|public
