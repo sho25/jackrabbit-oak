@@ -720,6 +720,9 @@ decl_stmt|;
 specifier|private
 specifier|final
 name|Predicate
+argument_list|<
+name|NodeState
+argument_list|>
 name|typePredicate
 decl_stmt|;
 name|LuceneIndexEditor
