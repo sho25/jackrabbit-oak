@@ -616,7 +616,7 @@ comment|/**      * The path where the persistent cache is stored.      */
 specifier|static
 specifier|final
 name|String
-name|PERSISTENT_CACHE
+name|DEFAULT_PERSISTENT_CACHE_URI
 init|=
 name|System
 operator|.
@@ -2946,6 +2946,12 @@ name|Executor
 name|executor
 decl_stmt|;
 specifier|private
+name|String
+name|persistentCacheURI
+init|=
+name|DEFAULT_PERSISTENT_CACHE_URI
+decl_stmt|;
+specifier|private
 name|PersistentCache
 name|persistentCache
 decl_stmt|;
@@ -3147,6 +3153,25 @@ name|ds
 argument_list|)
 expr_stmt|;
 block|}
+return|return
+name|this
+return|;
+block|}
+comment|/**          * Sets the persistent cache option.          *          * @return this          */
+specifier|public
+name|Builder
+name|setPersistentCache
+parameter_list|(
+name|String
+name|persistentCache
+parameter_list|)
+block|{
+name|this
+operator|.
+name|persistentCacheURI
+operator|=
+name|persistentCache
+expr_stmt|;
 return|return
 name|this
 return|;
@@ -4070,7 +4095,7 @@ parameter_list|()
 block|{
 if|if
 condition|(
-name|PERSISTENT_CACHE
+name|persistentCacheURI
 operator|==
 literal|null
 condition|)
@@ -4093,7 +4118,7 @@ operator|=
 operator|new
 name|PersistentCache
 argument_list|(
-name|PERSISTENT_CACHE
+name|persistentCacheURI
 argument_list|)
 expr_stmt|;
 block|}
@@ -4151,7 +4176,7 @@ if|if
 condition|(
 name|LIRS_CACHE
 operator|||
-name|PERSISTENT_CACHE
+name|persistentCacheURI
 operator|!=
 literal|null
 condition|)
