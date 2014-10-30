@@ -18,8 +18,6 @@ operator|.
 name|index
 operator|.
 name|lucene
-operator|.
-name|util
 package|;
 end_package
 
@@ -96,26 +94,6 @@ operator|.
 name|io
 operator|.
 name|FileUtils
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|plugins
-operator|.
-name|index
-operator|.
-name|lucene
-operator|.
-name|IndexDefinition
 import|;
 end_import
 
