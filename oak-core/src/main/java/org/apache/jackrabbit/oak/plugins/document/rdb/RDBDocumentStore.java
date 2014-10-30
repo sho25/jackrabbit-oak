@@ -2346,7 +2346,7 @@ argument_list|()
 operator|-
 name|doc
 operator|.
-name|getCreated
+name|getLastCheckTime
 argument_list|()
 operator|<
 name|maxCacheAge
@@ -3915,6 +3915,14 @@ operator|=
 name|getConnection
 argument_list|()
 expr_stmt|;
+name|long
+name|now
+init|=
+name|System
+operator|.
+name|currentTimeMillis
+argument_list|()
+decl_stmt|;
 name|List
 argument_list|<
 name|RDBRow
@@ -3954,6 +3962,8 @@ argument_list|(
 name|collection
 argument_list|,
 name|r
+argument_list|,
+name|now
 argument_list|)
 decl_stmt|;
 name|result
@@ -7672,6 +7682,9 @@ name|collection
 parameter_list|,
 name|RDBRow
 name|row
+parameter_list|,
+name|long
+name|now
 parameter_list|)
 block|{
 if|if
@@ -7793,6 +7806,13 @@ argument_list|()
 condition|)
 block|{
 comment|// we can use the cached document
+name|inCache
+operator|.
+name|markUpToDate
+argument_list|(
+name|now
+argument_list|)
+expr_stmt|;
 return|return
 operator|(
 name|T
