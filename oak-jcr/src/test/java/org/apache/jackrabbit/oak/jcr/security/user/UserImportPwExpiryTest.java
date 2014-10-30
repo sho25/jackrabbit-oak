@@ -204,7 +204,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Testing user import with default {@link org.apache.jackrabbit.oak.spi.xml.ImportBehavior}  * and pw-expiry content  *  * @see OAK-1922  */
+comment|/**  * Testing user import with default {@link org.apache.jackrabbit.oak.spi.xml.ImportBehavior}  * and pw-expiry content  *  * @see<a href="https://issues.apache.org/jira/browse/OAK-1922">OAK-1922</a>  * @see<a href="https://issues.apache.org/jira/browse/OAK-1943">OAK-1943</a>  */
 end_comment
 
 begin_class
@@ -369,6 +369,147 @@ argument_list|,
 name|xml
 argument_list|)
 expr_stmt|;
+name|Authorizable
+name|authorizable
+init|=
+name|userMgr
+operator|.
+name|getAuthorizable
+argument_list|(
+literal|"x"
+argument_list|)
+decl_stmt|;
+name|Node
+name|userNode
+init|=
+name|adminSession
+operator|.
+name|getNode
+argument_list|(
+name|authorizable
+operator|.
+name|getPath
+argument_list|()
+argument_list|)
+decl_stmt|;
+name|assertTrue
+argument_list|(
+name|userNode
+operator|.
+name|hasNode
+argument_list|(
+name|UserConstants
+operator|.
+name|REP_PWD
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|Node
+name|pwdNode
+init|=
+name|userNode
+operator|.
+name|getNode
+argument_list|(
+name|UserConstants
+operator|.
+name|REP_PWD
+argument_list|)
+decl_stmt|;
+name|assertTrue
+argument_list|(
+name|pwdNode
+operator|.
+name|getDefinition
+argument_list|()
+operator|.
+name|isProtected
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|assertTrue
+argument_list|(
+name|pwdNode
+operator|.
+name|hasProperty
+argument_list|(
+name|UserConstants
+operator|.
+name|REP_PASSWORD_LAST_MODIFIED
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertTrue
+argument_list|(
+name|pwdNode
+operator|.
+name|getProperty
+argument_list|(
+name|UserConstants
+operator|.
+name|REP_PASSWORD_LAST_MODIFIED
+argument_list|)
+operator|.
+name|getDefinition
+argument_list|()
+operator|.
+name|isProtected
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+comment|/**      * @since Oak 1.1      */
+annotation|@
+name|Test
+specifier|public
+name|void
+name|testImportUserCreatesPasswordLastModified2
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+comment|// import user without rep:pwd child node defined
+name|String
+name|xml
+init|=
+literal|"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
+operator|+
+literal|"<sv:node sv:name=\"x\" xmlns:mix=\"http://www.jcp.org/jcr/mix/1.0\" xmlns:nt=\"http://www.jcp.org/jcr/nt/1.0\" xmlns:fn_old=\"http://www.w3.org/2004/10/xpath-functions\" xmlns:fn=\"http://www.w3.org/2005/xpath-functions\" xmlns:xs=\"http://www.w3.org/2001/XMLSchema\" xmlns:sv=\"http://www.jcp.org/jcr/sv/1.0\" xmlns:rep=\"internal\" xmlns:jcr=\"http://www.jcp.org/jcr/1.0\">"
+operator|+
+literal|"<sv:property sv:name=\"jcr:primaryType\" sv:type=\"Name\">"
+operator|+
+literal|"<sv:value>rep:User</sv:value>"
+operator|+
+literal|"</sv:property>"
+operator|+
+literal|"<sv:property sv:name=\"jcr:uuid\" sv:type=\"String\">"
+operator|+
+literal|"<sv:value>9dd4e461-268c-3034-b5c8-564e155c67a6</sv:value>"
+operator|+
+literal|"</sv:property>"
+operator|+
+literal|"<sv:property sv:name=\"rep:password\" sv:type=\"String\">"
+operator|+
+literal|"<sv:value>pw</sv:value>"
+operator|+
+literal|"</sv:property>"
+operator|+
+literal|"<sv:property sv:name=\"rep:principalName\" sv:type=\"String\">"
+operator|+
+literal|"<sv:value>xPrincipal</sv:value>"
+operator|+
+literal|"</sv:property>"
+operator|+
+literal|"</sv:node>"
+decl_stmt|;
+name|doImport
+argument_list|(
+name|USERPATH
+argument_list|,
+name|xml
+argument_list|)
+expr_stmt|;
+comment|// verify that the pwd node has still been created
 name|Authorizable
 name|authorizable
 init|=
