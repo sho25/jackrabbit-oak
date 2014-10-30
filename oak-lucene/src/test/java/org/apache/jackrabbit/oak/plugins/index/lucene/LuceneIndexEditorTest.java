@@ -1730,11 +1730,6 @@ argument_list|(
 literal|"jcr:content"
 argument_list|)
 operator|.
-name|child
-argument_list|(
-literal|"metadata"
-argument_list|)
-operator|.
 name|remove
 argument_list|()
 expr_stmt|;
@@ -1769,7 +1764,27 @@ argument_list|)
 expr_stmt|;
 name|assertNull
 argument_list|(
-literal|"relative removes must be persisted too"
+literal|"removes must be persisted too, 1st level"
+argument_list|,
+name|getPath
+argument_list|(
+operator|new
+name|TermQuery
+argument_list|(
+operator|new
+name|Term
+argument_list|(
+literal|"jcr:content/mime"
+argument_list|,
+literal|"pdf"
+argument_list|)
+argument_list|)
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertNull
+argument_list|(
+literal|"removes must be persisted too, 2nd level"
 argument_list|,
 name|getPath
 argument_list|(
