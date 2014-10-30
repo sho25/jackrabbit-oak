@@ -29,16 +29,6 @@ begin_import
 import|import
 name|java
 operator|.
-name|lang
-operator|.
-name|IllegalArgumentException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
 name|security
 operator|.
 name|AccessControlException
@@ -102,6 +92,18 @@ operator|.
 name|jcr
 operator|.
 name|Session
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|jcr
+operator|.
+name|nodetype
+operator|.
+name|ConstraintViolationException
 import|;
 end_import
 
@@ -411,7 +413,6 @@ name|ProtectedPropertyImporter
 implements|,
 name|CugConstants
 block|{
-comment|/**      * logger instance      */
 specifier|private
 specifier|static
 specifier|final
@@ -796,6 +797,26 @@ return|return
 literal|false
 return|;
 block|}
+block|}
+annotation|@
+name|Override
+specifier|public
+name|void
+name|propertiesCompleted
+parameter_list|(
+annotation|@
+name|Nonnull
+name|Tree
+name|protectedParent
+parameter_list|)
+throws|throws
+name|IllegalStateException
+throws|,
+name|ConstraintViolationException
+throws|,
+name|RepositoryException
+block|{
+comment|// nothing to do
 block|}
 comment|//--------------------------------------------------------------------------
 specifier|private
