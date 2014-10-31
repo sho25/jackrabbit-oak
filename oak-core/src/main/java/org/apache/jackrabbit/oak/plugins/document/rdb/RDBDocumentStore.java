@@ -5659,7 +5659,7 @@ name|t
 operator|+=
 name|this
 operator|.
-name|needsConcat
+name|needsLimit
 condition|?
 operator|(
 literal|" LIMIT "
