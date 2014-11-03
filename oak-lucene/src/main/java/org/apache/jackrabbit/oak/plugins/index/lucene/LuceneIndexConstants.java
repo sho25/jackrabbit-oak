@@ -171,6 +171,12 @@ name|PROP_NODE
 init|=
 literal|"properties"
 decl_stmt|;
+comment|/**      * Field boost factor      */
+name|String
+name|FIELD_BOOST
+init|=
+literal|"boost"
+decl_stmt|;
 block|}
 end_interface
 
