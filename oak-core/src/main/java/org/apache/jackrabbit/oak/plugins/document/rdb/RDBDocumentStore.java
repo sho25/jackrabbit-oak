@@ -1602,6 +1602,13 @@ name|needsLimit
 init|=
 literal|false
 decl_stmt|;
+comment|// for DBs that do not support CASE in SELECT (currently all)
+specifier|private
+name|boolean
+name|allowsCaseInSelect
+init|=
+literal|true
+decl_stmt|;
 comment|// set of supported indexed properties
 specifier|private
 specifier|static
@@ -4196,6 +4203,8 @@ argument_list|,
 name|tableName
 argument_list|,
 name|id
+argument_list|,
+name|lastmodcount
 argument_list|)
 decl_stmt|;
 if|if
@@ -5452,6 +5461,9 @@ name|tableName
 parameter_list|,
 name|String
 name|id
+parameter_list|,
+name|long
+name|lastmodcount
 parameter_list|)
 throws|throws
 name|SQLException
@@ -5459,6 +5471,23 @@ block|{
 name|PreparedStatement
 name|stmt
 decl_stmt|;
+name|boolean
+name|useCaseStatement
+init|=
+name|lastmodcount
+operator|!=
+operator|-
+literal|1
+operator|&&
+name|allowsCaseInSelect
+decl_stmt|;
+if|if
+condition|(
+name|useCaseStatement
+condition|)
+block|{
+comment|// either we don't have a previous version of the document
+comment|// or the database does not support CASE in SELECT
 name|stmt
 operator|=
 name|connection
@@ -5472,7 +5501,33 @@ operator|+
 literal|" where ID = ?"
 argument_list|)
 expr_stmt|;
+block|}
+else|else
+block|{
+comment|// the case statement causes the actual row data not to be
+comment|// sent in case we already have it
+name|stmt
+operator|=
+name|connection
+operator|.
+name|prepareStatement
+argument_list|(
+literal|"select MODIFIED, MODCOUNT, case MODCOUNT when ? then null else DATA end as DATA, "
+operator|+
+literal|"case MODCOUNT when ? then null else BDATA end as BDATA from "
+operator|+
+name|tableName
+operator|+
+literal|" where ID = ?"
+argument_list|)
+expr_stmt|;
+block|}
 try|try
+block|{
+if|if
+condition|(
+name|useCaseStatement
+condition|)
 block|{
 name|stmt
 operator|.
@@ -5483,6 +5538,37 @@ argument_list|,
 name|id
 argument_list|)
 expr_stmt|;
+block|}
+else|else
+block|{
+name|stmt
+operator|.
+name|setLong
+argument_list|(
+literal|1
+argument_list|,
+name|lastmodcount
+argument_list|)
+expr_stmt|;
+name|stmt
+operator|.
+name|setLong
+argument_list|(
+literal|2
+argument_list|,
+name|lastmodcount
+argument_list|)
+expr_stmt|;
+name|stmt
+operator|.
+name|setString
+argument_list|(
+literal|3
+argument_list|,
+name|id
+argument_list|)
+expr_stmt|;
+block|}
 name|ResultSet
 name|rs
 init|=

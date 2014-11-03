@@ -21,8 +21,28 @@ name|rdb
 package|;
 end_package
 
+begin_import
+import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|CheckForNull
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|Nonnull
+import|;
+end_import
+
 begin_comment
-comment|/**  * Container for the information in a RDB database column.  */
+comment|/**  * Container for the information in a RDB database column.  *<p>  * Note that the String "data" and the byte[] "bdata" may be null  * when the SQL SELECT request was conditional on "modcount" being  * unchanged.  */
 end_comment
 
 begin_class
@@ -101,6 +121,8 @@ operator|=
 name|bdata
 expr_stmt|;
 block|}
+annotation|@
+name|Nonnull
 specifier|public
 name|String
 name|getId
@@ -110,6 +132,8 @@ return|return
 name|id
 return|;
 block|}
+annotation|@
+name|CheckForNull
 specifier|public
 name|String
 name|getData
@@ -119,6 +143,8 @@ return|return
 name|data
 return|;
 block|}
+annotation|@
+name|Nonnull
 specifier|public
 name|long
 name|getModified
@@ -128,6 +154,8 @@ return|return
 name|modified
 return|;
 block|}
+annotation|@
+name|Nonnull
 specifier|public
 name|long
 name|getModcount
@@ -137,6 +165,8 @@ return|return
 name|modcount
 return|;
 block|}
+annotation|@
+name|CheckForNull
 specifier|public
 name|byte
 index|[]
