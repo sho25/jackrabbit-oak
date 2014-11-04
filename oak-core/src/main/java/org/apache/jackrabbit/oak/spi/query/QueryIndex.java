@@ -194,12 +194,19 @@ name|String
 name|getIndexName
 parameter_list|()
 function_decl|;
-comment|/**      * A maker interface which means this index supports may support more than      * just the minimal fulltext query syntax. If this index is used, then the      * query engine does not verify the fulltext constraint(s) for the given      * selector.      */
+comment|/**      *  A marker interface which means this index supports executing native queries      */
+specifier|public
+interface|interface
+name|NativeQueryIndex
+block|{      }
+comment|/**      * A marker interface which means this index supports may support more than      * just the minimal fulltext query syntax. If this index is used, then the      * query engine does not verify the fulltext constraint(s) for the given      * selector.      */
 specifier|public
 interface|interface
 name|FulltextQueryIndex
 extends|extends
 name|QueryIndex
+extends|,
+name|NativeQueryIndex
 block|{
 comment|/**          * Returns the NodeAggregator responsible for providing the aggregation          * settings or null if aggregation is not available/desired.          *           * @return the node aggregator or null          */
 annotation|@

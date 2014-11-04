@@ -1333,6 +1333,26 @@ name|org
 operator|.
 name|apache
 operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|query
+operator|.
+name|QueryIndex
+operator|.
+name|NativeQueryIndex
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
 name|lucene
 operator|.
 name|search
@@ -1393,6 +1413,8 @@ implements|implements
 name|AdvancedQueryIndex
 implements|,
 name|QueryIndex
+implements|,
+name|NativeQueryIndex
 block|{
 specifier|private
 specifier|static

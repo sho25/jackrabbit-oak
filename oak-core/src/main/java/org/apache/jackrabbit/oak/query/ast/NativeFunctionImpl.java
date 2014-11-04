@@ -74,7 +74,7 @@ import|;
 end_import
 
 begin_import
-import|import
+import|import static
 name|org
 operator|.
 name|apache
@@ -89,7 +89,7 @@ name|query
 operator|.
 name|QueryIndex
 operator|.
-name|FulltextQueryIndex
+name|NativeQueryIndex
 import|;
 end_import
 
@@ -258,7 +258,7 @@ operator|.
 name|getIndex
 argument_list|()
 operator|instanceof
-name|FulltextQueryIndex
+name|NativeQueryIndex
 operator|)
 condition|)
 block|{
