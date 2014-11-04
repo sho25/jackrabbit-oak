@@ -1457,6 +1457,7 @@ operator|.
 name|PROP_NODE
 argument_list|)
 decl_stmt|;
+comment|//Include all immediate child nodes to 'properties' node by default
 for|for
 control|(
 name|String
@@ -1469,6 +1470,11 @@ argument_list|(
 name|includes
 argument_list|,
 name|orderedProps
+argument_list|,
+name|propNode
+operator|.
+name|getChildNodeNames
+argument_list|()
 argument_list|)
 control|)
 block|{
@@ -1518,6 +1524,14 @@ name|propDefnNode
 operator|.
 name|exists
 argument_list|()
+operator|&&
+operator|!
+name|propDefns
+operator|.
+name|containsKey
+argument_list|(
+name|propName
+argument_list|)
 condition|)
 block|{
 name|propDefns
