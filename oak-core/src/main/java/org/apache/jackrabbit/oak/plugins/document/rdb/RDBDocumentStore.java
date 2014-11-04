@@ -1666,6 +1666,10 @@ index|[]
 block|{
 name|ID
 block|,
+name|NodeDocument
+operator|.
+name|HAS_BINARY_FLAG
+block|,
 name|MODIFIED
 block|,
 name|MODCOUNT
@@ -5494,7 +5498,7 @@ name|connection
 operator|.
 name|prepareStatement
 argument_list|(
-literal|"select MODIFIED, MODCOUNT, DATA, BDATA from "
+literal|"select MODIFIED, MODCOUNT, HASBINARY, DATA, BDATA from "
 operator|+
 name|tableName
 operator|+
@@ -5512,7 +5516,7 @@ name|connection
 operator|.
 name|prepareStatement
 argument_list|(
-literal|"select MODIFIED, MODCOUNT, case MODCOUNT when ? then null else DATA end as DATA, "
+literal|"select MODIFIED, MODCOUNT, HASBINARY, case MODCOUNT when ? then null else DATA end as DATA, "
 operator|+
 literal|"case MODCOUNT when ? then null else BDATA end as BDATA from "
 operator|+
@@ -5605,6 +5609,16 @@ argument_list|(
 literal|2
 argument_list|)
 decl_stmt|;
+name|long
+name|hasBinary
+init|=
+name|rs
+operator|.
+name|getLong
+argument_list|(
+literal|3
+argument_list|)
+decl_stmt|;
 name|String
 name|data
 init|=
@@ -5612,7 +5626,7 @@ name|rs
 operator|.
 name|getString
 argument_list|(
-literal|3
+literal|4
 argument_list|)
 decl_stmt|;
 name|byte
@@ -5623,7 +5637,7 @@ name|rs
 operator|.
 name|getBytes
 argument_list|(
-literal|4
+literal|5
 argument_list|)
 decl_stmt|;
 return|return
@@ -5631,6 +5645,10 @@ operator|new
 name|RDBRow
 argument_list|(
 name|id
+argument_list|,
+name|hasBinary
+operator|==
+literal|1
 argument_list|,
 name|modified
 argument_list|,
@@ -5751,7 +5769,7 @@ block|{
 name|String
 name|t
 init|=
-literal|"select ID, MODIFIED, MODCOUNT, DATA, BDATA from "
+literal|"select ID, MODIFIED, MODCOUNT, HASBINARY, DATA, BDATA from "
 operator|+
 name|tableName
 operator|+
@@ -6035,6 +6053,16 @@ argument_list|(
 literal|3
 argument_list|)
 decl_stmt|;
+name|long
+name|hasBinary
+init|=
+name|rs
+operator|.
+name|getLong
+argument_list|(
+literal|4
+argument_list|)
+decl_stmt|;
 name|String
 name|data
 init|=
@@ -6042,7 +6070,7 @@ name|rs
 operator|.
 name|getString
 argument_list|(
-literal|4
+literal|5
 argument_list|)
 decl_stmt|;
 name|byte
@@ -6053,7 +6081,7 @@ name|rs
 operator|.
 name|getBytes
 argument_list|(
-literal|5
+literal|6
 argument_list|)
 decl_stmt|;
 name|result
@@ -6064,6 +6092,10 @@ operator|new
 name|RDBRow
 argument_list|(
 name|id
+argument_list|,
+name|hasBinary
+operator|==
+literal|1
 argument_list|,
 name|modified
 argument_list|,
