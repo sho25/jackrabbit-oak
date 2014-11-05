@@ -1690,7 +1690,7 @@ name|buff
 operator|.
 name|append
 argument_list|(
-literal|"fullText="
+literal|" fullText="
 argument_list|)
 operator|.
 name|append

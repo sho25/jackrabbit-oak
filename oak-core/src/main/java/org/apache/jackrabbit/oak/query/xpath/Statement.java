@@ -367,17 +367,6 @@ block|{
 if|if
 condition|(
 name|condition
-operator|.
-name|containsFullTextCondition
-argument_list|()
-condition|)
-block|{
-comment|// do not use union
-block|}
-elseif|else
-if|if
-condition|(
-name|condition
 operator|instanceof
 name|OrCondition
 condition|)
