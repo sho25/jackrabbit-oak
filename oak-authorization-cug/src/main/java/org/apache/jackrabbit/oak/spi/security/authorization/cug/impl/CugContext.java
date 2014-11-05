@@ -118,7 +118,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * CugContext... TODO  */
+comment|/**  * CUG specific {@code Context} implementation.  */
 end_comment
 
 begin_class
@@ -276,31 +276,35 @@ block|}
 else|else
 block|{
 name|String
-name|name
+name|path
 init|=
-name|Text
-operator|.
-name|getName
-argument_list|(
 name|location
 operator|.
 name|getPath
 argument_list|()
-argument_list|)
 decl_stmt|;
 return|return
-name|REP_PRINCIPAL_NAMES
-operator|.
-name|equals
-argument_list|(
-name|name
-argument_list|)
-operator|||
 name|REP_CUG_POLICY
 operator|.
 name|equals
 argument_list|(
-name|name
+name|Text
+operator|.
+name|getName
+argument_list|(
+name|path
+argument_list|)
+argument_list|)
+operator|||
+name|path
+operator|.
+name|endsWith
+argument_list|(
+name|REP_CUG_POLICY
+operator|+
+literal|'/'
+operator|+
+name|REP_PRINCIPAL_NAMES
 argument_list|)
 return|;
 block|}

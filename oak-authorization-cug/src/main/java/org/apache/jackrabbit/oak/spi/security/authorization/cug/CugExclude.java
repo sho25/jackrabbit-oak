@@ -114,7 +114,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * CugExclude... TODO  */
+comment|/**  * Interface that allows to exclude certain principals from the CUG evaluation.  * For the excluded principals the closed user group policies will be ignored.  */
 end_comment
 
 begin_interface
@@ -134,13 +134,7 @@ argument_list|>
 name|principals
 parameter_list|)
 function_decl|;
-name|CugExclude
-name|DEFAULT
-init|=
-operator|new
-name|Default
-argument_list|()
-decl_stmt|;
+comment|/**      * Default implementation of the {@link CugExclude} interface that exclude      * the following principal classes from CUG evaluation:      *<ul>      *<li>{@link org.apache.jackrabbit.oak.spi.security.principal.AdminPrincipal AdminPrincipals}</li>      *<li>{@link org.apache.jackrabbit.oak.spi.security.principal.SystemPrincipal SystemPrincipal}</li>      *<li>{@link org.apache.jackrabbit.oak.spi.security.principal.SystemUserPrincipal SystemUserPrincipal}</li>      *</ul>      */
 class|class
 name|Default
 implements|implements

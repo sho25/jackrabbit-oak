@@ -402,7 +402,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * CugImporter... TODO  */
+comment|/**  * CUG specific implementation of the {@code ProtectedPropertyImporter}.  */
 end_comment
 
 begin_class
@@ -716,11 +716,11 @@ name|log
 operator|.
 name|debug
 argument_list|(
-literal|"Unknown principal "
+literal|"Ignoring unknown principal with name '"
 operator|+
 name|principalName
 operator|+
-literal|" -> Ignoring this ACE."
+literal|"'."
 argument_list|)
 expr_stmt|;
 break|break;
@@ -733,9 +733,11 @@ throw|throw
 operator|new
 name|AccessControlException
 argument_list|(
-literal|"Unknown principal "
+literal|"Unknown principal '"
 operator|+
 name|principalName
+operator|+
+literal|"'."
 argument_list|)
 throw|;
 case|case
@@ -743,6 +745,17 @@ name|ImportBehavior
 operator|.
 name|BESTEFFORT
 case|:
+name|log
+operator|.
+name|debug
+argument_list|(
+literal|"Importing unknown principal '"
+operator|+
+name|principalName
+operator|+
+literal|'\''
+argument_list|)
+expr_stmt|;
 name|principalNames
 operator|.
 name|add

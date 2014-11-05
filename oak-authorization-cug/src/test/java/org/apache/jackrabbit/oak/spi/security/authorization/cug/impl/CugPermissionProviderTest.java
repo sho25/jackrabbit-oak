@@ -29,6 +29,8 @@ begin_class
 specifier|public
 class|class
 name|CugPermissionProviderTest
+extends|extends
+name|AbstractCugTest
 block|{
 comment|// TODO
 block|}

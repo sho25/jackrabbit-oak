@@ -26,48 +26,48 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * CugConstants... TODO  */
+comment|/**  * Constants for the Closed User Group (CUG) feature.  */
 end_comment
 
 begin_interface
 interface|interface
 name|CugConstants
 block|{
+comment|/**      * The name of the mixin type that defines the CUG policy node.      */
 name|String
 name|MIX_REP_CUG_MIXIN
 init|=
 literal|"rep:CugMixin"
 decl_stmt|;
+comment|/**      * The primary node type name of the CUG policy node.      */
 name|String
 name|NT_REP_CUG_POLICY
 init|=
 literal|"rep:CugPolicy"
 decl_stmt|;
+comment|/**      * The name of the CUG policy node.      */
 name|String
 name|REP_CUG_POLICY
 init|=
 literal|"rep:cugPolicy"
 decl_stmt|;
+comment|/**      * The name of the property that stores the principal names that are allowed      * to access the restricted area defined by the CUG (closed user group).      */
 name|String
 name|REP_PRINCIPAL_NAMES
 init|=
 literal|"rep:principalNames"
 decl_stmt|;
+comment|/**      * Name of the configuration option that specifies the subtrees that allow      * to define closed user groups.      *      *<ul>      *<li>Value Type: String</li>      *<li>Default: -</li>      *<li>Multiple: true</li>      *</ul>      */
 name|String
 name|PARAM_CUG_SUPPORTED_PATHS
 init|=
 literal|"cugSupportedPaths"
 decl_stmt|;
+comment|/**      * Name of the configuration option that specifies if CUG content must      * be respected for permission evaluation.      *      *<ul>      *<li>Value Type: boolean</li>      *<li>Default: false</li>      *<li>Multiple: false</li>      *</ul>      */
 name|String
 name|PARAM_CUG_ENABLED
 init|=
 literal|"cugEnabled"
-decl_stmt|;
-comment|/**      *      */
-name|String
-name|PARAM_CUG_EXCLUDE
-init|=
-literal|"cugExclude"
 decl_stmt|;
 block|}
 end_interface

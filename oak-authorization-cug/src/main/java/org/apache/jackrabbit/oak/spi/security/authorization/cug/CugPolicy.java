@@ -92,6 +92,7 @@ name|CugPolicy
 extends|extends
 name|JackrabbitAccessControlPolicy
 block|{
+comment|/**      * Returns the set of {@code Principal}s that are allowed to access the items      * in the restricted area defined by this policy.      *      * @return The set of {@code Principal}s that are allowed to access the      * restricted area.      */
 annotation|@
 name|Nonnull
 name|Set
@@ -101,6 +102,7 @@ argument_list|>
 name|getPrincipals
 parameter_list|()
 function_decl|;
+comment|/**      * Add {@code Principal}s that are allowed to access the restricted area.      *      * @param principals The {@code Principal}s that are granted read access.      * @return {@code true} if this policy was modified; {@code false} otherwise.      * @throws AccessControlException If any of the specified principals is      * invalid.      */
 name|boolean
 name|addPrincipals
 parameter_list|(
@@ -113,6 +115,7 @@ parameter_list|)
 throws|throws
 name|AccessControlException
 function_decl|;
+comment|/**      * Remove the specified {@code Principal}s for the set of allowed principals      * thus revoking their ability to read items in the restricted area defined      * by this policy.      *      * @param principals The {@code Principal}s for which access should be revoked.      * @return {@code true} if this policy was modified; {@code false} otherwise.      * @throws  AccessControlException If an error occurs.      */
 name|boolean
 name|removePrincipals
 parameter_list|(
@@ -122,6 +125,8 @@ name|Principal
 modifier|...
 name|principals
 parameter_list|)
+throws|throws
+name|AccessControlException
 function_decl|;
 block|}
 end_interface

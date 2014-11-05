@@ -29,16 +29,6 @@ begin_import
 import|import
 name|java
 operator|.
-name|lang
-operator|.
-name|IllegalArgumentException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
 name|security
 operator|.
 name|Principal
@@ -234,7 +224,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * CugPolicyImpl... TODO  */
+comment|/**  * Implementation of the {@link org.apache.jackrabbit.oak.spi.security.authorization.cug.CugPolicy}  * interface that respects the configured {@link org.apache.jackrabbit.oak.spi.xml.ImportBehavior}.  */
 end_comment
 
 begin_class
@@ -305,6 +295,8 @@ name|Nonnull
 name|NamePathMapper
 name|namePathMapper
 parameter_list|,
+annotation|@
+name|Nonnull
 name|PrincipalManager
 name|principalManager
 parameter_list|,
@@ -344,6 +336,8 @@ name|Nonnull
 name|NamePathMapper
 name|namePathMapper
 parameter_list|,
+annotation|@
+name|Nonnull
 name|PrincipalManager
 name|principalManager
 parameter_list|,
