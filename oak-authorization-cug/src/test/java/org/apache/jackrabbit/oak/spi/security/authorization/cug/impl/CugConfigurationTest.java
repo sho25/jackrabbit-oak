@@ -458,7 +458,13 @@ name|getPermissionProvider
 argument_list|(
 name|root
 argument_list|,
-literal|"default"
+name|root
+operator|.
+name|getContentSession
+argument_list|()
+operator|.
+name|getWorkspaceName
+argument_list|()
 argument_list|,
 name|ImmutableSet
 operator|.
@@ -932,157 +938,36 @@ name|CugAccessControlManager
 argument_list|)
 expr_stmt|;
 block|}
-annotation|@
-name|Test
-specifier|public
-name|void
-name|testExcludedPrincipals
-parameter_list|()
-block|{
-name|Map
-argument_list|<
-name|String
-argument_list|,
-name|Object
-argument_list|>
-name|params
-init|=
-name|ImmutableMap
-operator|.
-expr|<
-name|String
-decl_stmt|,
-name|Object
-decl|>
-name|of
-argument_list|(
-name|CugConstants
-operator|.
-name|PARAM_CUG_ENABLED
-argument_list|,
-literal|true
-argument_list|,
-name|CugConstants
-operator|.
-name|PARAM_CUG_SUPPORTED_PATHS
-argument_list|,
-literal|"/content"
-argument_list|)
-decl_stmt|;
-name|CugConfiguration
-name|cc
-init|=
-name|createConfiguration
-argument_list|(
-name|ConfigurationParameters
-operator|.
-name|of
-argument_list|(
-name|params
-argument_list|)
-argument_list|)
-decl_stmt|;
-name|List
-argument_list|<
-name|Principal
-argument_list|>
-name|excluded
-init|=
-name|ImmutableList
-operator|.
-name|of
-argument_list|(
-name|SystemPrincipal
-operator|.
-name|INSTANCE
-argument_list|,
-operator|new
-name|AdminPrincipal
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|String
-name|getName
-parameter_list|()
-block|{
-return|return
-literal|"admin"
-return|;
-block|}
-block|}
-argument_list|,
-operator|new
-name|SystemUserPrincipal
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|String
-name|getName
-parameter_list|()
-block|{
-return|return
-literal|"systemUser"
-return|;
-block|}
-block|}
-argument_list|)
-decl_stmt|;
-for|for
-control|(
-name|Principal
-name|p
-range|:
-name|excluded
-control|)
-block|{
-name|Set
-argument_list|<
-name|Principal
-argument_list|>
-name|principals
-init|=
-name|ImmutableSet
-operator|.
-name|of
-argument_list|(
-name|p
-argument_list|,
-name|EveryonePrincipal
-operator|.
-name|getInstance
-argument_list|()
-argument_list|)
-decl_stmt|;
-name|PermissionProvider
-name|pp
-init|=
-name|cc
-operator|.
-name|getPermissionProvider
-argument_list|(
-name|root
-argument_list|,
-literal|"default"
-argument_list|,
-name|principals
-argument_list|)
-decl_stmt|;
-name|assertSame
-argument_list|(
-name|EmptyPermissionProvider
-operator|.
-name|getInstance
-argument_list|()
-argument_list|,
-name|pp
-argument_list|)
-expr_stmt|;
-block|}
-block|}
+comment|//    @Test
+comment|//    public void testExcludedPrincipals() {
+comment|//        Map<String, Object> params = ImmutableMap.<String, Object>of(
+comment|//                CugConstants.PARAM_CUG_ENABLED, true,
+comment|//                CugConstants.PARAM_CUG_SUPPORTED_PATHS, "/content");
+comment|//
+comment|//        CugConfiguration cc = createConfiguration(ConfigurationParameters.of(params));
+comment|//
+comment|//        List<Principal> excluded = ImmutableList.of(
+comment|//                SystemPrincipal.INSTANCE,
+comment|//                new AdminPrincipal() {
+comment|//                    @Override
+comment|//                    public String getName() {
+comment|//                        return "admin";
+comment|//                    }
+comment|//                },
+comment|//                new SystemUserPrincipal() {
+comment|//                    @Override
+comment|//                    public String getName() {
+comment|//                        return "systemUser";
+comment|//                    }
+comment|//                });
+comment|//
+comment|//        for (Principal p : excluded) {
+comment|//            Set<Principal> principals = ImmutableSet.of(p, EveryonePrincipal.getInstance());
+comment|//            PermissionProvider pp = cc.getPermissionProvider(root, "default", principals);
+comment|//
+comment|//            assertSame(EmptyPermissionProvider.getInstance(), pp);
+comment|//        }
+comment|//    }
 block|}
 end_class
 
