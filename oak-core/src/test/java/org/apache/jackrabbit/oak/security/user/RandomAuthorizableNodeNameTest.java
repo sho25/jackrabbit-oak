@@ -437,7 +437,9 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|8
+name|RandomAuthorizableNodeName
+operator|.
+name|DEFAULT_LENGTH
 argument_list|,
 name|tree
 operator|.
@@ -505,7 +507,9 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|8
+name|RandomAuthorizableNodeName
+operator|.
+name|DEFAULT_LENGTH
 argument_list|,
 name|tree
 operator|.
@@ -570,7 +574,9 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|8
+name|RandomAuthorizableNodeName
+operator|.
+name|DEFAULT_LENGTH
 argument_list|,
 name|nodeName
 operator|.
