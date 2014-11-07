@@ -1485,7 +1485,9 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"Error while dispatching observation events"
+literal|"Error while dispatching observation events for "
+operator|+
+name|tracker
 argument_list|,
 name|e
 argument_list|)
