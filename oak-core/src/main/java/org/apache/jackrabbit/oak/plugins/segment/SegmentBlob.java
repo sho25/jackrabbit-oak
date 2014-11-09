@@ -972,6 +972,9 @@ name|clone
 parameter_list|(
 name|SegmentWriter
 name|writer
+parameter_list|,
+name|boolean
+name|cloneLargeBinaries
 parameter_list|)
 throws|throws
 name|IOException
@@ -1064,6 +1067,28 @@ literal|0xc0
 condition|)
 block|{
 comment|// 110x xxxx: long value
+if|if
+condition|(
+name|cloneLargeBinaries
+condition|)
+block|{
+return|return
+name|writer
+operator|.
+name|writeStream
+argument_list|(
+operator|new
+name|BufferedInputStream
+argument_list|(
+name|getNewStream
+argument_list|()
+argument_list|)
+argument_list|)
+return|;
+block|}
+else|else
+block|{
+comment|// this was the previous (default) behavior
 name|long
 name|length
 init|=
@@ -1129,6 +1154,7 @@ name|getEntries
 argument_list|()
 argument_list|)
 return|;
+block|}
 block|}
 elseif|else
 if|if
