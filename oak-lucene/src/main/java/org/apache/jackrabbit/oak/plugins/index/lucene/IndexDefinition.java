@@ -205,7 +205,7 @@ name|spi
 operator|.
 name|state
 operator|.
-name|NodeBuilder
+name|NodeState
 import|;
 end_import
 
@@ -577,7 +577,7 @@ name|storageEnabled
 decl_stmt|;
 specifier|private
 specifier|final
-name|NodeBuilder
+name|NodeState
 name|definition
 decl_stmt|;
 specifier|private
@@ -637,7 +637,7 @@ decl_stmt|;
 specifier|public
 name|IndexDefinition
 parameter_list|(
-name|NodeBuilder
+name|NodeState
 name|defn
 parameter_list|)
 block|{
@@ -1038,7 +1038,7 @@ argument_list|)
 return|;
 block|}
 specifier|public
-name|NodeBuilder
+name|NodeState
 name|getDefinition
 parameter_list|()
 block|{
@@ -1430,7 +1430,7 @@ name|PropertyDefinition
 argument_list|>
 name|collectPropertyDefns
 parameter_list|(
-name|NodeBuilder
+name|NodeState
 name|defn
 parameter_list|)
 block|{
@@ -1445,7 +1445,7 @@ init|=
 name|newHashMap
 argument_list|()
 decl_stmt|;
-name|NodeBuilder
+name|NodeState
 name|propNode
 init|=
 name|defn
@@ -1478,7 +1478,7 @@ argument_list|()
 argument_list|)
 control|)
 block|{
-name|NodeBuilder
+name|NodeState
 name|propDefnNode
 decl_stmt|;
 if|if
@@ -1729,7 +1729,7 @@ specifier|static
 name|boolean
 name|getOptionalValue
 parameter_list|(
-name|NodeBuilder
+name|NodeState
 name|definition
 parameter_list|,
 name|String
@@ -1771,7 +1771,7 @@ specifier|static
 name|int
 name|getOptionalValue
 parameter_list|(
-name|NodeBuilder
+name|NodeState
 name|definition
 parameter_list|,
 name|String
@@ -1818,7 +1818,7 @@ specifier|static
 name|String
 name|getOptionalValue
 parameter_list|(
-name|NodeBuilder
+name|NodeState
 name|definition
 parameter_list|,
 name|String
@@ -1863,7 +1863,7 @@ name|String
 argument_list|>
 name|getMultiProperty
 parameter_list|(
-name|NodeBuilder
+name|NodeState
 name|definition
 parameter_list|,
 name|String

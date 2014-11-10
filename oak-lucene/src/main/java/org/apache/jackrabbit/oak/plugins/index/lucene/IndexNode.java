@@ -338,11 +338,7 @@ init|=
 operator|new
 name|IndexDefinition
 argument_list|(
-operator|new
-name|ReadOnlyBuilder
-argument_list|(
 name|defnNodeState
-argument_list|)
 argument_list|)
 decl_stmt|;
 name|NodeState

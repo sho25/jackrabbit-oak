@@ -352,7 +352,7 @@ argument_list|,
 literal|"b"
 argument_list|)
 expr_stmt|;
-name|NodeBuilder
+name|NodeState
 name|propDefn
 init|=
 name|rp
@@ -360,6 +360,9 @@ operator|.
 name|getPropDefnNode
 argument_list|(
 name|builder
+operator|.
+name|getNodeState
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|assertTrue

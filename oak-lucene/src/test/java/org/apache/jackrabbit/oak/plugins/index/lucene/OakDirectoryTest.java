@@ -798,6 +798,9 @@ operator|new
 name|IndexDefinition
 argument_list|(
 name|builder
+operator|.
+name|getNodeState
+argument_list|()
 argument_list|)
 argument_list|)
 return|;

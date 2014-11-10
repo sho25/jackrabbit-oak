@@ -509,6 +509,9 @@ operator|new
 name|IndexDefinition
 argument_list|(
 name|definition
+operator|.
+name|getBaseState
+argument_list|()
 argument_list|)
 argument_list|)
 return|;
@@ -624,6 +627,9 @@ operator|new
 name|IndexDefinition
 argument_list|(
 name|definitionBuilder
+operator|.
+name|getBaseState
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|this

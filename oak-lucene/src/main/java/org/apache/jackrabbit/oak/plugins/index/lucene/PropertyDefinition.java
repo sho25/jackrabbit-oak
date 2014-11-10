@@ -61,7 +61,7 @@ name|spi
 operator|.
 name|state
 operator|.
-name|NodeBuilder
+name|NodeState
 import|;
 end_import
 
@@ -111,7 +111,7 @@ name|name
 decl_stmt|;
 specifier|private
 specifier|final
-name|NodeBuilder
+name|NodeState
 name|definition
 decl_stmt|;
 specifier|private
@@ -136,7 +136,7 @@ parameter_list|,
 name|String
 name|name
 parameter_list|,
-name|NodeBuilder
+name|NodeState
 name|defn
 parameter_list|)
 block|{

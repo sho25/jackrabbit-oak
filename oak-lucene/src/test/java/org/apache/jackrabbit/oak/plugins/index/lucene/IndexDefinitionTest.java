@@ -363,6 +363,9 @@ operator|new
 name|IndexDefinition
 argument_list|(
 name|builder
+operator|.
+name|getNodeState
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|assertTrue
@@ -497,6 +500,9 @@ operator|new
 name|IndexDefinition
 argument_list|(
 name|builder
+operator|.
+name|getNodeState
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|assertFalse
@@ -642,6 +648,9 @@ operator|new
 name|IndexDefinition
 argument_list|(
 name|builder
+operator|.
+name|getNodeState
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|assertTrue
@@ -721,6 +730,9 @@ operator|new
 name|IndexDefinition
 argument_list|(
 name|builder
+operator|.
+name|getNodeState
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|assertTrue
@@ -777,6 +789,9 @@ operator|new
 name|IndexDefinition
 argument_list|(
 name|builder
+operator|.
+name|getNodeState
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|assertNotNull
@@ -820,6 +835,9 @@ operator|new
 name|IndexDefinition
 argument_list|(
 name|builder
+operator|.
+name|getNodeState
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|assertNull
@@ -858,6 +876,9 @@ operator|new
 name|IndexDefinition
 argument_list|(
 name|builder
+operator|.
+name|getNodeState
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|assertNotNull
@@ -920,6 +941,9 @@ operator|new
 name|IndexDefinition
 argument_list|(
 name|builder
+operator|.
+name|getNodeState
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|assertEquals
@@ -1075,6 +1099,9 @@ operator|new
 name|IndexDefinition
 argument_list|(
 name|builder
+operator|.
+name|getNodeState
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|assertEquals

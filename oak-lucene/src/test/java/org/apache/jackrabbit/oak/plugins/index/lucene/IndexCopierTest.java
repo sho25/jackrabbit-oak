@@ -372,6 +372,9 @@ operator|new
 name|IndexDefinition
 argument_list|(
 name|builder
+operator|.
+name|getNodeState
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|IndexCopier
@@ -536,6 +539,9 @@ operator|new
 name|IndexDefinition
 argument_list|(
 name|builder
+operator|.
+name|getNodeState
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|CollectingExecutor
@@ -720,6 +726,9 @@ operator|new
 name|IndexDefinition
 argument_list|(
 name|builder
+operator|.
+name|getNodeState
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|IndexCopier
@@ -911,6 +920,9 @@ operator|new
 name|IndexDefinition
 argument_list|(
 name|builder
+operator|.
+name|getNodeState
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|IndexCopier
