@@ -797,6 +797,8 @@ argument_list|,
 operator|new
 name|IndexDefinition
 argument_list|(
+name|root
+argument_list|,
 name|builder
 operator|.
 name|getNodeState

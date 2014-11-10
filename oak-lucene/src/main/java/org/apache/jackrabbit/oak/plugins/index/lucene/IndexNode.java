@@ -317,6 +317,9 @@ name|String
 name|indexPath
 parameter_list|,
 name|NodeState
+name|root
+parameter_list|,
+name|NodeState
 name|defnNodeState
 parameter_list|,
 annotation|@
@@ -338,6 +341,8 @@ init|=
 operator|new
 name|IndexDefinition
 argument_list|(
+name|root
+argument_list|,
 name|defnNodeState
 argument_list|)
 decl_stmt|;

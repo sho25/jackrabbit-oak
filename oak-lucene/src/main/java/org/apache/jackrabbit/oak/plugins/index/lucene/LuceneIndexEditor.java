@@ -799,6 +799,8 @@ operator|=
 operator|new
 name|LuceneIndexEditorContext
 argument_list|(
+name|root
+argument_list|,
 name|definition
 argument_list|,
 name|analyzer

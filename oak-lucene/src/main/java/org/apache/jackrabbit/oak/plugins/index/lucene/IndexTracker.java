@@ -585,6 +585,7 @@ specifier|synchronized
 name|void
 name|update
 parameter_list|(
+specifier|final
 name|NodeState
 name|root
 parameter_list|)
@@ -687,6 +688,8 @@ operator|.
 name|open
 argument_list|(
 name|path
+argument_list|,
+name|root
 argument_list|,
 name|after
 argument_list|,
@@ -1017,6 +1020,8 @@ operator|.
 name|open
 argument_list|(
 name|path
+argument_list|,
+name|root
 argument_list|,
 name|node
 argument_list|,
