@@ -171,11 +171,27 @@ name|PROP_NODE
 init|=
 literal|"properties"
 decl_stmt|;
+name|String
+name|INDEX_RULES
+init|=
+literal|"indexRules"
+decl_stmt|;
 comment|/**      * Field boost factor      */
 name|String
 name|FIELD_BOOST
 init|=
 literal|"boost"
+decl_stmt|;
+comment|/**      * Property name defined explicitly. Mostly used in case of relative property names      */
+name|String
+name|PROP_NAME
+init|=
+literal|"name"
+decl_stmt|;
+name|String
+name|PROP_IS_REGEX
+init|=
+literal|"isRegexp"
 decl_stmt|;
 block|}
 end_interface
