@@ -344,6 +344,8 @@ argument_list|(
 name|root
 argument_list|,
 name|defnNodeState
+argument_list|,
+name|indexPath
 argument_list|)
 decl_stmt|;
 name|NodeState
