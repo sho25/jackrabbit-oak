@@ -2932,11 +2932,6 @@ argument_list|)
 expr_stmt|;
 block|}
 annotation|@
-name|Ignore
-argument_list|(
-literal|"OAK-2190"
-argument_list|)
-annotation|@
 name|Test
 specifier|public
 name|void
@@ -3047,7 +3042,7 @@ name|asList
 argument_list|(
 literal|"/test/a"
 argument_list|,
-literal|"test/c"
+literal|"/test/c"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -3060,6 +3055,20 @@ argument_list|(
 literal|"/test/a"
 argument_list|,
 literal|"/test/b"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertQuery
+argument_list|(
+literal|"select [jcr:path] from [nt:base] where propa like '%ump%'"
+argument_list|,
+name|asList
+argument_list|(
+literal|"/test/a"
+argument_list|,
+literal|"/test/b"
+argument_list|,
+literal|"/test/c"
 argument_list|)
 argument_list|)
 expr_stmt|;
