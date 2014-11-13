@@ -193,6 +193,11 @@ name|PROP_IS_REGEX
 init|=
 literal|"isRegexp"
 decl_stmt|;
+name|String
+name|RULE_INHERITED
+init|=
+literal|"inherited"
+decl_stmt|;
 block|}
 end_interface
 
