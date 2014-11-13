@@ -174,7 +174,9 @@ name|CompositeData
 name|getRevisionGCStatus
 parameter_list|()
 function_decl|;
-comment|/**      * Creates a new checkpoint of the latest root of the tree. The checkpoint      * remains valid for at least as long as requested and allows that state      * of the repository to be retrieved using the returned opaque string      * reference.      *      * @param lifetime time (in milliseconds,&gt; 0) that the checkpoint      *                 should remain available      * @return string reference of this checkpoint or {@code null} if      * the checkpoint could not be set.      */
+comment|/**      * Creates a new checkpoint of the latest root of the tree. The checkpoint      * remains valid for at least as long as requested and allows that state      * of the repository to be retrieved using the returned opaque string      * reference.      *      * @param lifetime time (in milliseconds,&gt; 0) that the checkpoint      *                 should remain available      * @return string reference of this checkpoint or {@code null} if      * the checkpoint could not be set.      *      * @deprecated Use {@link CheckpointMBean} instead      */
+annotation|@
+name|Deprecated
 annotation|@
 name|CheckForNull
 name|String
