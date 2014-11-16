@@ -248,6 +248,9 @@ name|parentPath
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * The first index definition format supported relative property definition      * by replicating the property path in 'properties' node. Later version      * supported property definition as immediated child node of 'properties' node      * where the relative property path is specified as part of 'name' property      */
+annotation|@
+name|Deprecated
 annotation|@
 name|Nonnull
 specifier|public
