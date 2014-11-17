@@ -786,13 +786,16 @@ name|append
 argument_list|(
 literal|" order by "
 argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|ignoreCase
+condition|)
+block|{
+name|statement
 operator|.
 name|append
 argument_list|(
-name|ignoreCase
-condition|?
-literal|""
-else|:
 literal|"fn:lower-case("
 argument_list|)
 operator|.
@@ -803,11 +806,25 @@ argument_list|)
 operator|.
 name|append
 argument_list|(
-name|ignoreCase
-condition|?
-literal|" "
-else|:
-literal|") "
+literal|')'
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+name|statement
+operator|.
+name|append
+argument_list|(
+name|sortCol
+argument_list|)
+expr_stmt|;
+block|}
+name|statement
+operator|.
+name|append
+argument_list|(
+literal|' '
 argument_list|)
 operator|.
 name|append
