@@ -2229,6 +2229,21 @@ operator|.
 name|builder
 argument_list|()
 expr_stmt|;
+comment|//Also initialize the NodeType registry required for Lucene index to work
+name|builder
+operator|.
+name|setChildNode
+argument_list|(
+name|JCR_SYSTEM
+argument_list|,
+name|INITIAL_CONTENT
+operator|.
+name|getChildNode
+argument_list|(
+name|JCR_SYSTEM
+argument_list|)
+argument_list|)
+expr_stmt|;
 name|NodeBuilder
 name|index
 init|=

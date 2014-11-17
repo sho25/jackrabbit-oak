@@ -4183,6 +4183,7 @@ name|int
 name|defaultVal
 parameter_list|)
 block|{
+comment|//TODO Revisit with recent propertyType changes
 if|if
 condition|(
 name|defn
@@ -4201,7 +4202,7 @@ argument_list|(
 name|name
 argument_list|)
 operator|.
-name|getPropertyType
+name|getType
 argument_list|()
 return|;
 block|}

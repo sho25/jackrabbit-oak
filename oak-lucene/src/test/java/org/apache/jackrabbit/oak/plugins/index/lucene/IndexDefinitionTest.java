@@ -971,7 +971,7 @@ argument_list|(
 literal|"foo"
 argument_list|)
 operator|.
-name|getPropertyType
+name|getType
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1065,7 +1065,7 @@ argument_list|(
 literal|"foo"
 argument_list|)
 operator|.
-name|getPropertyType
+name|getType
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1276,11 +1276,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-operator|new
-name|RelativeProperty
-argument_list|(
 literal|"foo1/bar"
-argument_list|)
 argument_list|,
 name|Iterables
 operator|.
@@ -1293,11 +1289,13 @@ argument_list|()
 argument_list|,
 literal|null
 argument_list|)
+operator|.
+name|propertyPath
 argument_list|)
 expr_stmt|;
 name|assertTrue
 argument_list|(
-name|rule
+name|idxDefn
 operator|.
 name|hasRelativeProperty
 argument_list|(
@@ -1307,7 +1305,7 @@ argument_list|)
 expr_stmt|;
 name|assertFalse
 argument_list|(
-name|rule
+name|idxDefn
 operator|.
 name|hasRelativeProperty
 argument_list|(
@@ -1467,7 +1465,7 @@ argument_list|(
 literal|"foo1/bar"
 argument_list|)
 operator|.
-name|getPropertyType
+name|getType
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1484,7 +1482,7 @@ argument_list|(
 literal|"foo2/bar2/baz"
 argument_list|)
 operator|.
-name|getPropertyType
+name|getType
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1662,7 +1660,8 @@ name|BOOLEAN
 argument_list|,
 name|pd
 operator|.
-name|propertyType
+name|getType
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
