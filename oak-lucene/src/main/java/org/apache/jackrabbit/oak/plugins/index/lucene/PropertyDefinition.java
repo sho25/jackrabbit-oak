@@ -449,6 +449,7 @@ name|defn
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * If 'analyzed' is enabled then property value would be used to evaluate the      * contains clause related to those properties. In such mode also some properties      * would be skipped from analysis      *      * @param propertyName name of the property to check. As property definition might      *                     be regEx based this is required to be passed explicitly      * @return true if the property value should be tokenized/analyzed      */
 specifier|public
 name|boolean
 name|skipTokenization
@@ -461,15 +462,17 @@ comment|//For regEx case check against a whitelist
 if|if
 condition|(
 name|isRegexp
-condition|)
-block|{
-return|return
+operator|&&
 name|LuceneIndexHelper
 operator|.
 name|skipTokenization
 argument_list|(
 name|propertyName
 argument_list|)
+condition|)
+block|{
+return|return
+literal|true
 return|;
 block|}
 return|return
