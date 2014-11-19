@@ -121,7 +121,7 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-comment|/**      * Verify the number of in-memory nodes is below the limit.      *       * @param count the number of nodes      * @param maxMemoryEntries the maximum number of nodes      * @throws UnsupportedOperationException if the limit was exceeded      */
+comment|/**      * Verify the number of in-memory nodes is below the limit.      *       * @param count the number of nodes      * @param settings the query engine settings      * @throws UnsupportedOperationException if the limit was exceeded      */
 specifier|public
 specifier|static
 name|void
@@ -130,10 +130,18 @@ parameter_list|(
 name|long
 name|count
 parameter_list|,
-name|long
-name|maxMemoryEntries
+name|QueryEngineSettings
+name|settings
 parameter_list|)
 block|{
+name|long
+name|maxMemoryEntries
+init|=
+name|settings
+operator|.
+name|getLimitInMemory
+argument_list|()
+decl_stmt|;
 if|if
 condition|(
 name|count
@@ -175,7 +183,7 @@ name|e
 throw|;
 block|}
 block|}
-comment|/**      * Verify the number of node read operations is below the limit.      *       * @param count the number of read operations      * @throws UnsupportedOperationException if the limit was exceeded      */
+comment|/**      * Verify the number of node read operations is below the limit.      *       * @param count the number of read operations      * @param settings the query engine settings      * @throws UnsupportedOperationException if the limit was exceeded      */
 specifier|public
 specifier|static
 name|void
@@ -184,10 +192,18 @@ parameter_list|(
 name|long
 name|count
 parameter_list|,
-name|long
-name|maxReadEntries
+name|QueryEngineSettings
+name|settings
 parameter_list|)
 block|{
+name|long
+name|maxReadEntries
+init|=
+name|settings
+operator|.
+name|getLimitReads
+argument_list|()
+decl_stmt|;
 if|if
 condition|(
 name|count
@@ -559,8 +575,8 @@ name|source
 decl_stmt|;
 specifier|private
 specifier|final
-name|long
-name|maxMemoryEntries
+name|QueryEngineSettings
+name|settings
 decl_stmt|;
 specifier|private
 specifier|final
@@ -598,12 +614,9 @@ name|source
 expr_stmt|;
 name|this
 operator|.
-name|maxMemoryEntries
+name|settings
 operator|=
 name|settings
-operator|.
-name|getLimitInMemory
-argument_list|()
 expr_stmt|;
 name|distinctSet
 operator|=
@@ -659,7 +672,7 @@ operator|.
 name|size
 argument_list|()
 argument_list|,
-name|maxMemoryEntries
+name|settings
 argument_list|)
 expr_stmt|;
 return|return;
@@ -776,8 +789,8 @@ name|source
 decl_stmt|;
 specifier|private
 specifier|final
-name|long
-name|maxMemoryEntries
+name|QueryEngineSettings
+name|settings
 decl_stmt|;
 specifier|private
 specifier|final
@@ -840,12 +853,9 @@ name|max
 expr_stmt|;
 name|this
 operator|.
-name|maxMemoryEntries
+name|settings
 operator|=
 name|settings
-operator|.
-name|getLimitInMemory
-argument_list|()
 expr_stmt|;
 block|}
 specifier|private
@@ -905,7 +915,7 @@ operator|.
 name|size
 argument_list|()
 argument_list|,
-name|maxMemoryEntries
+name|settings
 argument_list|)
 expr_stmt|;
 comment|// from time to time, sort and truncate

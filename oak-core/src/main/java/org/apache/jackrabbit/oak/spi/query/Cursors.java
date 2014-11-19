@@ -844,16 +844,6 @@ name|String
 argument_list|>
 argument_list|()
 decl_stmt|;
-specifier|private
-specifier|final
-name|long
-name|maxMemoryEntries
-init|=
-name|settings
-operator|.
-name|getLimitInMemory
-argument_list|()
-decl_stmt|;
 annotation|@
 name|Override
 specifier|public
@@ -875,7 +865,7 @@ operator|.
 name|size
 argument_list|()
 argument_list|,
-name|maxMemoryEntries
+name|settings
 argument_list|)
 expr_stmt|;
 comment|// Set.add returns true for new entries
@@ -1015,8 +1005,8 @@ name|closed
 decl_stmt|;
 specifier|private
 specifier|final
-name|long
-name|maxReadEntries
+name|QueryEngineSettings
+name|settings
 decl_stmt|;
 specifier|public
 name|TraversingCursor
@@ -1036,14 +1026,11 @@ name|filter
 expr_stmt|;
 name|this
 operator|.
-name|maxReadEntries
+name|settings
 operator|=
 name|filter
 operator|.
 name|getQueryEngineSettings
-argument_list|()
-operator|.
-name|getLimitReads
 argument_list|()
 expr_stmt|;
 name|String
@@ -1408,7 +1395,7 @@ name|checkReadLimit
 argument_list|(
 name|readCount
 argument_list|,
-name|maxReadEntries
+name|settings
 argument_list|)
 expr_stmt|;
 name|LOG
@@ -1864,9 +1851,6 @@ name|size
 argument_list|()
 argument_list|,
 name|settings
-operator|.
-name|getLimitInMemory
-argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -1897,9 +1881,6 @@ name|size
 argument_list|()
 argument_list|,
 name|settings
-operator|.
-name|getLimitInMemory
-argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -2201,9 +2182,6 @@ name|size
 argument_list|()
 argument_list|,
 name|settings
-operator|.
-name|getLimitInMemory
-argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
