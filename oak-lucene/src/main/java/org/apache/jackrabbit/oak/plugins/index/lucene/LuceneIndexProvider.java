@@ -328,8 +328,12 @@ name|QueryIndex
 operator|>
 name|of
 argument_list|(
+operator|new
+name|AggregateIndex
+argument_list|(
 name|newLuceneIndex
 argument_list|()
+argument_list|)
 argument_list|,
 name|newLucenePropertyIndex
 argument_list|()
