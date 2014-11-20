@@ -445,16 +445,6 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Ignore
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
 name|Test
 import|;
 end_import
@@ -5595,11 +5585,6 @@ argument_list|(
 name|PROP_NODE
 argument_list|)
 decl_stmt|;
-name|root
-operator|.
-name|commit
-argument_list|()
-expr_stmt|;
 comment|// property definition for index test1
 name|Tree
 name|propA
@@ -6039,11 +6024,6 @@ operator|.
 name|STRINGS
 argument_list|)
 argument_list|)
-expr_stmt|;
-name|root
-operator|.
-name|commit
-argument_list|()
 expr_stmt|;
 return|return
 name|index
