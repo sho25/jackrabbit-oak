@@ -287,6 +287,9 @@ argument_list|(
 literal|"/"
 argument_list|)
 decl_stmt|;
+name|Tree
+name|indexDefn
+init|=
 name|createTestIndexNode
 argument_list|(
 name|index
@@ -294,6 +297,23 @@ argument_list|,
 name|LuceneIndexConstants
 operator|.
 name|TYPE_LUCENE
+argument_list|)
+decl_stmt|;
+comment|//TODO Remove compat mode once OAK-2278 resolved
+name|indexDefn
+operator|.
+name|setProperty
+argument_list|(
+name|LuceneIndexConstants
+operator|.
+name|COMPAT_MODE
+argument_list|,
+name|IndexFormatVersion
+operator|.
+name|V1
+operator|.
+name|getVersion
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|root

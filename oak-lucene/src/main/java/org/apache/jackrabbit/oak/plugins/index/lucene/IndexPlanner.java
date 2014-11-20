@@ -424,6 +424,26 @@ operator|.
 name|getFullTextConstraint
 argument_list|()
 decl_stmt|;
+if|if
+condition|(
+operator|!
+name|defn
+operator|.
+name|getVersion
+argument_list|()
+operator|.
+name|isAtLeast
+argument_list|(
+name|IndexFormatVersion
+operator|.
+name|V2
+argument_list|)
+condition|)
+block|{
+return|return
+literal|null
+return|;
+block|}
 comment|//Query Fulltext and Index does not support fulltext
 if|if
 condition|(

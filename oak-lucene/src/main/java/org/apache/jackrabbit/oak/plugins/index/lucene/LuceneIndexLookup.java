@@ -195,7 +195,7 @@ block|}
 comment|/**      * Returns the path of the first Lucene index node which supports      * fulltext search      */
 specifier|public
 name|String
-name|getFullTextIndexPath
+name|getOldFullTextIndexPath
 parameter_list|(
 name|Filter
 name|filter
@@ -254,6 +254,18 @@ argument_list|()
 operator|.
 name|isFullTextEnabled
 argument_list|()
+operator|&&
+name|indexNode
+operator|.
+name|getDefinition
+argument_list|()
+operator|.
+name|getVersion
+argument_list|()
+operator|==
+name|IndexFormatVersion
+operator|.
+name|V1
 condition|)
 block|{
 return|return

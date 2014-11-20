@@ -1632,21 +1632,6 @@ operator|!=
 literal|null
 condition|)
 block|{
-comment|//TODO Need to be removed for supporting hybrid indexes
-comment|//Ignore full text indexes
-if|if
-condition|(
-name|indexNode
-operator|.
-name|getDefinition
-argument_list|()
-operator|.
-name|isFullTextEnabled
-argument_list|()
-condition|)
-block|{
-continue|continue;
-block|}
 name|IndexPlan
 name|plan
 init|=
@@ -3017,6 +3002,8 @@ name|FullTextExpression
 name|ft
 parameter_list|)
 block|{
+comment|//TODO This would need to be relooked as with aggregation we would be
+comment|//aggregating child properties also
 if|if
 condition|(
 name|ft

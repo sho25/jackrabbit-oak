@@ -202,7 +202,7 @@ argument_list|(
 name|rootState
 argument_list|)
 operator|.
-name|getFullTextIndexPath
+name|getOldFullTextIndexPath
 argument_list|(
 name|filter
 argument_list|,
