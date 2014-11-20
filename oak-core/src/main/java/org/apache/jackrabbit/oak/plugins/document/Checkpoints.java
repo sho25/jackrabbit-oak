@@ -501,7 +501,6 @@ literal|"unchecked"
 argument_list|)
 annotation|@
 name|CheckForNull
-specifier|private
 name|SortedMap
 argument_list|<
 name|Revision
