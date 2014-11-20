@@ -228,6 +228,12 @@ name|PROP_ORDERED
 init|=
 literal|"ordered"
 decl_stmt|;
+comment|/**      * Integer property indicating that LuceneIndex should be      * used in compat mode to specific version      */
+name|String
+name|COMPAT_MODE
+init|=
+literal|"compatVersion"
+decl_stmt|;
 block|}
 end_interface
 
