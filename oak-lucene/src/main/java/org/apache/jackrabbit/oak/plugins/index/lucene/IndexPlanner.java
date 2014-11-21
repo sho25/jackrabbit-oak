@@ -385,17 +385,25 @@ init|=
 name|getPlanBuilder
 argument_list|()
 decl_stmt|;
-name|checkArgument
-argument_list|(
+if|if
+condition|(
 name|defn
 operator|.
 name|isTestMode
 argument_list|()
 operator|&&
 name|builder
-operator|!=
+operator|==
 literal|null
-argument_list|,
+condition|)
+block|{
+name|String
+name|msg
+init|=
+name|String
+operator|.
+name|format
+argument_list|(
 literal|"No plan found for filter [%s] "
 operator|+
 literal|"while using definition [%s] and testMode is found to be enabled"
@@ -404,7 +412,15 @@ name|filter
 argument_list|,
 name|defn
 argument_list|)
-expr_stmt|;
+decl_stmt|;
+throw|throw
+operator|new
+name|IllegalStateException
+argument_list|(
+name|msg
+argument_list|)
+throw|;
+block|}
 return|return
 name|builder
 operator|!=
