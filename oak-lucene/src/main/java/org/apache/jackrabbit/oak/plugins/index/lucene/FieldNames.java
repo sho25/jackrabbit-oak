@@ -84,6 +84,15 @@ name|FULLTEXT
 init|=
 literal|":fulltext"
 decl_stmt|;
+comment|/**      * Prefix for all field names that are fulltext indexed by property name.      */
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|FULLTEXT_PREFIX
+init|=
+literal|":full"
+decl_stmt|;
 comment|/**      * Used to select only the PATH field from the lucene documents      */
 specifier|public
 specifier|static
@@ -122,6 +131,21 @@ return|return
 literal|":dv"
 operator|+
 name|name
+return|;
+block|}
+specifier|public
+specifier|static
+name|String
+name|createAnalyzedFieldName
+parameter_list|(
+name|String
+name|pname
+parameter_list|)
+block|{
+return|return
+name|FULLTEXT_PREFIX
+operator|+
+name|pname
 return|;
 block|}
 block|}
