@@ -234,6 +234,12 @@ name|COMPAT_MODE
 init|=
 literal|"compatVersion"
 decl_stmt|;
+comment|/**      * Boolean property to indicate that LuceneIndex is being used in testMode      * and it should participate in every test      */
+name|String
+name|TEST_MODE
+init|=
+literal|"testMode"
+decl_stmt|;
 block|}
 end_interface
 
