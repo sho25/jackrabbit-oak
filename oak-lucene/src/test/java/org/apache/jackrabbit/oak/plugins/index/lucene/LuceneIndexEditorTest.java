@@ -806,13 +806,23 @@ argument_list|(
 name|indexed
 argument_list|)
 expr_stmt|;
+comment|//system fields starts with ':' so need to be escaped
 name|assertEquals
 argument_list|(
 literal|"/test"
 argument_list|,
 name|query
 argument_list|(
-literal|"foo:fox"
+literal|"\\"
+operator|+
+name|FieldNames
+operator|.
+name|createAnalyzedFieldName
+argument_list|(
+literal|"foo"
+argument_list|)
+operator|+
+literal|":fox"
 argument_list|)
 argument_list|)
 expr_stmt|;
