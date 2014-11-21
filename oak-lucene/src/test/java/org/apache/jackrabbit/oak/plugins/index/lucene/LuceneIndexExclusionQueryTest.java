@@ -434,23 +434,6 @@ argument_list|,
 name|STRINGS
 argument_list|)
 expr_stmt|;
-comment|//TODO Remove compat mode once OAK-2278 resolved
-name|lucene
-operator|.
-name|setProperty
-argument_list|(
-name|LuceneIndexConstants
-operator|.
-name|COMPAT_MODE
-argument_list|,
-name|IndexFormatVersion
-operator|.
-name|V1
-operator|.
-name|getVersion
-argument_list|()
-argument_list|)
-expr_stmt|;
 name|root
 operator|.
 name|commit

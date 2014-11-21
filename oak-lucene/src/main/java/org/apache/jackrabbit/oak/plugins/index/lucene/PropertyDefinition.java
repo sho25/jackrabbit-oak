@@ -497,6 +497,17 @@ return|;
 block|}
 specifier|public
 name|boolean
+name|propertyIndexEnabled
+parameter_list|()
+block|{
+return|return
+name|index
+operator|&&
+name|propertyIndex
+return|;
+block|}
+specifier|public
+name|boolean
 name|isTypeDefined
 parameter_list|()
 block|{

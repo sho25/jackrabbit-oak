@@ -169,22 +169,6 @@ name|google
 operator|.
 name|common
 operator|.
-name|base
-operator|.
-name|Preconditions
-operator|.
-name|checkArgument
-import|;
-end_import
-
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
 name|collect
 operator|.
 name|Lists
@@ -650,7 +634,8 @@ literal|null
 operator|&&
 name|pd
 operator|.
-name|propertyIndex
+name|propertyIndexEnabled
+argument_list|()
 condition|)
 block|{
 name|indexedProps
