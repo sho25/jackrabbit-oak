@@ -1242,6 +1242,13 @@ name|STRINGS
 argument_list|)
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|async
+operator|!=
+literal|null
+condition|)
+block|{
 name|index
 operator|.
 name|setProperty
@@ -1251,6 +1258,7 @@ argument_list|,
 name|async
 argument_list|)
 expr_stmt|;
+block|}
 return|return
 name|index
 return|;
