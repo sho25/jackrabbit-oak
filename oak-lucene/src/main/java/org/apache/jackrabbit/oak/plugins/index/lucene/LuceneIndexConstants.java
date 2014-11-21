@@ -240,6 +240,11 @@ name|TEST_MODE
 init|=
 literal|"testMode"
 decl_stmt|;
+name|String
+name|EVALUATE_PATH_RESTRICTION
+init|=
+literal|"oak.experimental.evaluatePathRestrictions"
+decl_stmt|;
 block|}
 end_interface
 

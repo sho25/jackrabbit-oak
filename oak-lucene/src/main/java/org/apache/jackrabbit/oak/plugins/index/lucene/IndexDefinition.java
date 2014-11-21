@@ -655,6 +655,28 @@ name|lucene
 operator|.
 name|LuceneIndexConstants
 operator|.
+name|EVALUATE_PATH_RESTRICTION
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|index
+operator|.
+name|lucene
+operator|.
+name|LuceneIndexConstants
+operator|.
 name|EXCLUDE_PROPERTY_NAMES
 import|;
 end_import
@@ -1132,6 +1154,11 @@ name|testMode
 decl_stmt|;
 specifier|private
 specifier|final
+name|boolean
+name|evaluatePathRestrictions
+decl_stmt|;
+specifier|private
+specifier|final
 name|IndexFormatVersion
 name|version
 decl_stmt|;
@@ -1395,6 +1422,19 @@ operator|=
 name|getRelPropertyMaxLevels
 argument_list|(
 name|relativeProperties
+argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|evaluatePathRestrictions
+operator|=
+name|getOptionalValue
+argument_list|(
+name|defn
+argument_list|,
+name|EVALUATE_PATH_RESTRICTION
+argument_list|,
+literal|false
 argument_list|)
 expr_stmt|;
 name|String
@@ -1711,6 +1751,15 @@ return|return
 name|testMode
 return|;
 block|}
+specifier|public
+name|boolean
+name|evaluatePathRestrictions
+parameter_list|()
+block|{
+return|return
+name|evaluatePathRestrictions
+return|;
+block|}
 annotation|@
 name|Override
 specifier|public
@@ -1943,7 +1992,7 @@ return|return
 literal|null
 return|;
 block|}
-comment|/**          * Returns the first indexing rule that applies to the given node          *<code>state</code>.          *          * @param state a node state.          * @return the indexing rule or<code>null</code> if none applies.          */
+comment|/**      * Returns the first indexing rule that applies to the given node      *<code>state</code>.      *      * @param state a node state.      * @return the indexing rule or<code>null</code> if none applies.      */
 annotation|@
 name|CheckForNull
 specifier|public

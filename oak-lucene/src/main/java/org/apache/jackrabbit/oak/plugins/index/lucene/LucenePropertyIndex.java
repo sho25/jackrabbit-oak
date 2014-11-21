@@ -1514,18 +1514,6 @@ name|LUCENE_QUERY_BATCH_SIZE
 init|=
 literal|50
 decl_stmt|;
-specifier|static
-specifier|final
-name|boolean
-name|USE_PATH_RESTRICTION
-init|=
-name|Boolean
-operator|.
-name|getBoolean
-argument_list|(
-literal|"oak.luceneUsePath"
-argument_list|)
-decl_stmt|;
 specifier|protected
 specifier|final
 name|IndexTracker
@@ -3693,6 +3681,13 @@ argument_list|(
 name|plan
 argument_list|)
 decl_stmt|;
+name|IndexDefinition
+name|defn
+init|=
+name|planResult
+operator|.
+name|indexDefinition
+decl_stmt|;
 if|if
 condition|(
 operator|!
@@ -3722,6 +3717,7 @@ operator|.
 name|getPath
 argument_list|()
 decl_stmt|;
+comment|//TODO Readjust path based on pathPrefix of the index
 switch|switch
 condition|(
 name|filter
@@ -3735,7 +3731,10 @@ name|ALL_CHILDREN
 case|:
 if|if
 condition|(
-name|USE_PATH_RESTRICTION
+name|defn
+operator|.
+name|evaluatePathRestrictions
+argument_list|()
 condition|)
 block|{
 if|if
@@ -3787,7 +3786,10 @@ name|DIRECT_CHILDREN
 case|:
 if|if
 condition|(
-name|USE_PATH_RESTRICTION
+name|defn
+operator|.
+name|evaluatePathRestrictions
+argument_list|()
 condition|)
 block|{
 if|if

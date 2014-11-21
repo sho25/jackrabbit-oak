@@ -663,6 +663,12 @@ expr_stmt|;
 block|}
 block|}
 block|}
+name|boolean
+name|evalPathRestrictions
+init|=
+name|canEvalPathRestrictions
+argument_list|()
+decl_stmt|;
 comment|//TODO For the full text case need to determine if all field names
 comment|//used in fulltext expression are fulltext indexed or not
 comment|//Fulltext expression can also be like jcr:contains(jcr:content/metadata/@format, 'image')
@@ -694,6 +700,8 @@ operator|||
 name|ft
 operator|!=
 literal|null
+operator|||
+name|evalPathRestrictions
 condition|)
 block|{
 comment|//TODO Need a way to have better cost estimate to indicate that
@@ -768,6 +776,39 @@ comment|//TODO Support for property existence queries
 comment|//TODO support for nodeName queries
 return|return
 literal|null
+return|;
+block|}
+specifier|private
+name|boolean
+name|canEvalPathRestrictions
+parameter_list|()
+block|{
+if|if
+condition|(
+name|filter
+operator|.
+name|getPathRestriction
+argument_list|()
+operator|==
+name|Filter
+operator|.
+name|PathRestriction
+operator|.
+name|NO_RESTRICTION
+condition|)
+block|{
+return|return
+literal|false
+return|;
+block|}
+comment|//TODO If no other restrictions is provided and query is pure
+comment|//path restriction based then need to be sure that index definition at least
+comment|//allows indexing all the path for given nodeType
+return|return
+name|defn
+operator|.
+name|evaluatePathRestrictions
+argument_list|()
 return|;
 block|}
 specifier|private
