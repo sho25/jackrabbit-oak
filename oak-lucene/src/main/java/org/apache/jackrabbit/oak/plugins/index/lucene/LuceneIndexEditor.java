@@ -1823,22 +1823,13 @@ parameter_list|)
 throws|throws
 name|CommitFailedException
 block|{
-comment|//In case of fulltext we also check if given type is enabled for indexing
-comment|//TODO Use context.includePropertyType however that cause issue. Need
-comment|//to make filtering based on type consistent both on indexing side and
-comment|//query side
-comment|//TODO Replace with indexRule.includeType
 name|boolean
 name|includeTypeForFullText
 init|=
-operator|(
 name|indexingRule
 operator|.
-name|propertyTypes
-operator|&
-operator|(
-literal|1
-operator|<<
+name|includePropertyType
+argument_list|(
 name|property
 operator|.
 name|getType
@@ -1846,10 +1837,7 @@ argument_list|()
 operator|.
 name|tag
 argument_list|()
-operator|)
-operator|)
-operator|!=
-literal|0
+argument_list|)
 decl_stmt|;
 if|if
 condition|(
@@ -1912,6 +1900,19 @@ condition|(
 name|pd
 operator|.
 name|propertyIndex
+operator|&&
+name|pd
+operator|.
+name|includePropertyType
+argument_list|(
+name|property
+operator|.
+name|getType
+argument_list|()
+operator|.
+name|tag
+argument_list|()
+argument_list|)
 condition|)
 block|{
 name|dirty
@@ -1958,14 +1959,24 @@ operator|.
 name|indexUpdate
 argument_list|()
 expr_stmt|;
-comment|//TODO Analyzed field should be stored against different field name
-comment|//as term field use the same name. For compatibility this should be done
-comment|//for newer index versions only
 if|if
 condition|(
 name|pd
 operator|.
 name|analyzed
+operator|&&
+name|pd
+operator|.
+name|includePropertyType
+argument_list|(
+name|property
+operator|.
+name|getType
+argument_list|()
+operator|.
+name|tag
+argument_list|()
+argument_list|)
 condition|)
 block|{
 name|String
@@ -2000,8 +2011,6 @@ name|stored
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|//TODO Property field uses OakType which has omitNorms set hence
-comment|//cannot be boosted
 block|}
 if|if
 condition|(

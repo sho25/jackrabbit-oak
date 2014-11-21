@@ -245,6 +245,12 @@ name|EVALUATE_PATH_RESTRICTION
 init|=
 literal|"oak.experimental.evaluatePathRestrictions"
 decl_stmt|;
+comment|/**      * Experimental config to restrict which property type gets indexed at      * property definition level. Mostly index rule level #INCLUDE_PROPERTY_TYPES      * should be sufficient      */
+name|String
+name|PROP_INCLUDED_TYPE
+init|=
+literal|"oak.experimental.includePropertyTypes"
+decl_stmt|;
 block|}
 end_interface
 
