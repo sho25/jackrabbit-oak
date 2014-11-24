@@ -160,6 +160,22 @@ name|IGNORED_PROPERTIES
 init|=
 literal|""
 decl_stmt|;
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|TYPE_MAPPINGS
+init|=
+literal|""
+decl_stmt|;
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|PROPERTY_MAPPINGS
+init|=
+literal|""
+decl_stmt|;
 block|}
 end_class
 
