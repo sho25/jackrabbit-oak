@@ -5295,19 +5295,6 @@ argument_list|,
 literal|64
 argument_list|)
 decl_stmt|;
-comment|// Whether to use cache for query results
-specifier|private
-specifier|static
-name|boolean
-name|NOQUERYFROMCACHE
-init|=
-name|Boolean
-operator|.
-name|getBoolean
-argument_list|(
-literal|"org.apache.jackrabbit.oak.plugins.document.rdb.RDBDocumentStore.NOQUERYFROMCACHE"
-argument_list|)
-decl_stmt|;
 specifier|private
 specifier|static
 name|byte
@@ -7952,12 +7939,6 @@ operator|.
 name|getModcount
 argument_list|()
 decl_stmt|;
-if|if
-condition|(
-operator|!
-name|NOQUERYFROMCACHE
-condition|)
-block|{
 comment|// do not overwrite document in cache if the
 comment|// existing one in the cache is newer
 if|if
@@ -8028,7 +8009,6 @@ name|T
 operator|)
 name|inCache
 return|;
-block|}
 block|}
 block|}
 name|NodeDocument
