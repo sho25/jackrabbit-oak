@@ -1253,6 +1253,13 @@ name|checkpoint
 argument_list|)
 condition|)
 block|{
+name|temps
+operator|.
+name|add
+argument_list|(
+name|cp
+argument_list|)
+expr_stmt|;
 continue|continue;
 block|}
 name|boolean
