@@ -375,7 +375,10 @@ name|defn
 operator|.
 name|isTestMode
 argument_list|()
-operator|&&
+condition|)
+block|{
+if|if
+condition|(
 name|builder
 operator|==
 literal|null
@@ -414,6 +417,27 @@ argument_list|(
 name|msg
 argument_list|)
 throw|;
+block|}
+else|else
+block|{
+name|builder
+operator|.
+name|setEstimatedEntryCount
+argument_list|(
+literal|1
+argument_list|)
+operator|.
+name|setCostPerExecution
+argument_list|(
+literal|1e-3
+argument_list|)
+operator|.
+name|setCostPerEntry
+argument_list|(
+literal|1e-3
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 return|return
 name|builder
@@ -784,6 +808,9 @@ return|;
 block|}
 comment|//TODO Support for property existence queries
 comment|//TODO support for nodeName queries
+comment|//Above logic would not return any plan for pure nodeType based query like
+comment|//select * from nt:unstructured. We can do that but this is better handled
+comment|//by NodeType index
 return|return
 literal|null
 return|;
@@ -1227,6 +1254,7 @@ condition|)
 block|{
 comment|//This mode includes name(), localname() queries
 comment|//OrImpl [a/name] = 'Hello' or [b/name] = 'World'
+comment|//Relative parent properties where [../foo1] is not null
 return|return
 literal|true
 return|;
