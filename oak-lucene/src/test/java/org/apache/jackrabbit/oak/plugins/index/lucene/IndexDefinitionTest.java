@@ -3082,7 +3082,7 @@ name|assertEquals
 argument_list|(
 name|IndexFormatVersion
 operator|.
-name|getCurrent
+name|getDefault
 argument_list|()
 argument_list|,
 name|defn
