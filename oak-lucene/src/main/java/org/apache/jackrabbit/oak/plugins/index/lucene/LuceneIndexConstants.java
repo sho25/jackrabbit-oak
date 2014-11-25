@@ -251,6 +251,12 @@ name|PROP_INCLUDED_TYPE
 init|=
 literal|"oak.experimental.includePropertyTypes"
 decl_stmt|;
+comment|/**      * Regex to allow inclusion of all immediate properties of the node      */
+name|String
+name|REGEX_ALL_PROPS
+init|=
+literal|"^[^\\/]*$"
+decl_stmt|;
 block|}
 end_interface
 

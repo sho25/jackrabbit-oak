@@ -3871,7 +3871,9 @@ specifier|final
 name|String
 name|includeAllProp
 init|=
-literal|".*"
+name|LuceneIndexConstants
+operator|.
+name|REGEX_ALL_PROPS
 decl_stmt|;
 if|if
 condition|(
