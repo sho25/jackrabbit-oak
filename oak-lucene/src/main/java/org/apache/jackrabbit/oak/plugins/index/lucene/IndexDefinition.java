@@ -2815,6 +2815,11 @@ name|this
 operator|.
 name|fulltextEnabled
 operator|=
+name|aggregate
+operator|.
+name|hasNodeAggregates
+argument_list|()
+operator|||
 name|hasAnyFullTextEnabledProperty
 argument_list|()
 expr_stmt|;
@@ -2909,14 +2914,6 @@ name|propertyTypes
 expr_stmt|;
 name|this
 operator|.
-name|fulltextEnabled
-operator|=
-name|original
-operator|.
-name|fulltextEnabled
-expr_stmt|;
-name|this
-operator|.
 name|propertyIndexEnabled
 operator|=
 name|original
@@ -2941,6 +2938,19 @@ name|propAggregate
 argument_list|,
 name|nodeTypeName
 argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|fulltextEnabled
+operator|=
+name|aggregate
+operator|.
+name|hasNodeAggregates
+argument_list|()
+operator|||
+name|original
+operator|.
+name|fulltextEnabled
 expr_stmt|;
 block|}
 comment|/**          * Returns<code>true</code> if the property with the given name is          * indexed according to this rule.          *          * @param propertyName the name of a property.          * @return<code>true</code> if the property is indexed;          *<code>false</code> otherwise.          */
