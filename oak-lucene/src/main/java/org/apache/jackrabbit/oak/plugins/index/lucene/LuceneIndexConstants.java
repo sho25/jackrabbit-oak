@@ -257,6 +257,35 @@ name|REGEX_ALL_PROPS
 init|=
 literal|"^[^\\/]*$"
 decl_stmt|;
+comment|/**      * Node name storing the aggregate rules      */
+name|String
+name|AGGREGATES
+init|=
+literal|"aggregates"
+decl_stmt|;
+name|String
+name|AGG_PRIMARY_TYPE
+init|=
+literal|"primaryType"
+decl_stmt|;
+comment|/**      * Name of property which stores the aggregate include pattern like<code>jcr:content/metadata</code>      */
+name|String
+name|AGG_PATH
+init|=
+literal|"path"
+decl_stmt|;
+comment|/**      * Limit for maximum number of reaggregates allowed. For example if there is an aggregate of nt:folder      * and it also includes nt:folder then aggregation would traverse down untill this limit is hit      */
+name|String
+name|AGG_RECURSIVE_LIMIT
+init|=
+literal|"reaggregateLimit"
+decl_stmt|;
+comment|/**      * Boolean property indicating that separate fulltext field should be created for      * node represented by this pattern      */
+name|String
+name|AGG_RELATIVE_NODE
+init|=
+literal|"relativeNode"
+decl_stmt|;
 block|}
 end_interface
 
