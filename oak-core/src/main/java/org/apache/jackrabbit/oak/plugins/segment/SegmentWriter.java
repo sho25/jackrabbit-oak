@@ -1991,6 +1991,20 @@ operator|.
 name|getRefCount
 argument_list|()
 decl_stmt|;
+name|checkState
+argument_list|(
+name|refcount
+operator|<
+literal|256
+argument_list|,
+literal|"Segment cannot have more than 255 references"
+argument_list|,
+name|segment
+operator|.
+name|getSegmentId
+argument_list|()
+argument_list|)
+expr_stmt|;
 for|for
 control|(
 name|int
