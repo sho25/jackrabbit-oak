@@ -4495,6 +4495,15 @@ name|getValue
 argument_list|()
 operator|==
 literal|null
+operator|||
+name|entry
+operator|.
+name|getValue
+argument_list|()
+operator|==
+name|NodeDocument
+operator|.
+name|NULL
 condition|)
 block|{
 comment|// make sure concurrently loaded document is invalidated
