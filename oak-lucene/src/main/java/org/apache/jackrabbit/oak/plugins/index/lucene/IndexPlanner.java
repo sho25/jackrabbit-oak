@@ -651,7 +651,7 @@ parameter_list|()
 block|{
 name|log
 operator|.
-name|debug
+name|trace
 argument_list|(
 literal|"Evaluating plan with index definition {}"
 argument_list|,
@@ -684,7 +684,7 @@ condition|)
 block|{
 name|log
 operator|.
-name|debug
+name|trace
 argument_list|(
 literal|"Index is old format. Not supported"
 argument_list|)
@@ -1788,6 +1788,15 @@ operator|!=
 literal|null
 condition|)
 block|{
+name|log
+operator|.
+name|debug
+argument_list|(
+literal|"Applicable IndexingRule found {}"
+argument_list|,
+name|matchingRule
+argument_list|)
+expr_stmt|;
 return|return
 name|rule
 return|;
@@ -1796,7 +1805,7 @@ block|}
 block|}
 name|log
 operator|.
-name|debug
+name|trace
 argument_list|(
 literal|"No applicable IndexingRule found for any of the superTypes {}"
 argument_list|,

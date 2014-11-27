@@ -2479,7 +2479,7 @@ expr_stmt|;
 comment|// register under node type and all its sub types
 name|log
 operator|.
-name|debug
+name|trace
 argument_list|(
 literal|"Found rule '{}' for NodeType '{}'"
 argument_list|,
@@ -2586,9 +2586,11 @@ expr_stmt|;
 block|}
 name|log
 operator|.
-name|debug
+name|trace
 argument_list|(
-literal|"Registering it for name '{}'"
+literal|"Registering rule '{}' for name '{}'"
+argument_list|,
+name|rule
 argument_list|,
 name|ntName
 argument_list|)
