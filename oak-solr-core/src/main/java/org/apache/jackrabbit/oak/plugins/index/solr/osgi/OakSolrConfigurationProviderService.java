@@ -45,6 +45,26 @@ end_import
 
 begin_import
 import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|CheckForNull
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|Nonnull
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -1002,6 +1022,8 @@ literal|null
 expr_stmt|;
 block|}
 annotation|@
+name|Nonnull
+annotation|@
 name|Override
 specifier|public
 name|OakSolrConfiguration
@@ -1205,6 +1227,8 @@ literal|null
 return|;
 block|}
 annotation|@
+name|Nonnull
+annotation|@
 name|Override
 specifier|public
 name|String
@@ -1215,6 +1239,8 @@ return|return
 name|pathExactFieldName
 return|;
 block|}
+annotation|@
+name|CheckForNull
 annotation|@
 name|Override
 specifier|public
@@ -1289,6 +1315,8 @@ name|fieldName
 return|;
 block|}
 annotation|@
+name|Nonnull
+annotation|@
 name|Override
 specifier|public
 name|CommitPolicy
@@ -1354,6 +1382,8 @@ return|return
 name|useForPathRestrictions
 return|;
 block|}
+annotation|@
+name|Nonnull
 annotation|@
 name|Override
 specifier|public

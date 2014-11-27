@@ -319,16 +319,6 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Assume
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
 name|Ignore
 import|;
 end_import
@@ -2609,26 +2599,9 @@ operator|.
 name|commit
 argument_list|()
 expr_stmt|;
-name|StringBuffer
-name|stmt
-init|=
-operator|new
-name|StringBuffer
-argument_list|()
-decl_stmt|;
-name|stmt
-operator|.
-name|append
-argument_list|(
-literal|"//*[jcr:contains(., '/parent/child')]"
-argument_list|)
-expr_stmt|;
 name|assertQuery
 argument_list|(
-name|stmt
-operator|.
-name|toString
-argument_list|()
+literal|"//*[jcr:contains(., '/parent/child')]"
 argument_list|,
 literal|"xpath"
 argument_list|,
@@ -2689,26 +2662,9 @@ operator|.
 name|commit
 argument_list|()
 expr_stmt|;
-name|StringBuffer
-name|stmt
-init|=
-operator|new
-name|StringBuffer
-argument_list|()
-decl_stmt|;
-name|stmt
-operator|.
-name|append
-argument_list|(
-literal|"//*[jcr:contains(., '/segment1/segment2')]"
-argument_list|)
-expr_stmt|;
 name|assertQuery
 argument_list|(
-name|stmt
-operator|.
-name|toString
-argument_list|()
+literal|"//*[jcr:contains(., '/segment1/segment2')]"
 argument_list|,
 literal|"xpath"
 argument_list|,
@@ -2835,26 +2791,9 @@ operator|.
 name|commit
 argument_list|()
 expr_stmt|;
-name|StringBuffer
-name|stmt
-init|=
-operator|new
-name|StringBuffer
-argument_list|()
-decl_stmt|;
-name|stmt
-operator|.
-name|append
-argument_list|(
-literal|"//*[jcr:contains(., 'media') and (@p = 'dam/smartcollection' or @p = 'dam/collection') ]"
-argument_list|)
-expr_stmt|;
 name|assertQuery
 argument_list|(
-name|stmt
-operator|.
-name|toString
-argument_list|()
+literal|"//*[jcr:contains(., 'media') and (@p = 'dam/smartcollection' or @p = 'dam/collection') ]"
 argument_list|,
 literal|"xpath"
 argument_list|,

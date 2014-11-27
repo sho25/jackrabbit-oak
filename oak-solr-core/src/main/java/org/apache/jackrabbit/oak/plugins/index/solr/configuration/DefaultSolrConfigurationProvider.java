@@ -23,6 +23,16 @@ name|configuration
 package|;
 end_package
 
+begin_import
+import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|Nonnull
+import|;
+end_import
+
 begin_comment
 comment|/**  * The default {@link org.apache.jackrabbit.oak.plugins.index.solr.configuration.OakSolrConfigurationProvider}  */
 end_comment
@@ -64,6 +74,8 @@ operator|=
 name|configuration
 expr_stmt|;
 block|}
+annotation|@
+name|Nonnull
 annotation|@
 name|Override
 specifier|public

@@ -462,7 +462,6 @@ comment|/**  * Index editor for keeping a Solr index up to date.  */
 end_comment
 
 begin_class
-specifier|public
 class|class
 name|SolrIndexEditor
 implements|implements
@@ -549,8 +548,6 @@ parameter_list|,
 name|IndexUpdateCallback
 name|callback
 parameter_list|)
-throws|throws
-name|CommitFailedException
 block|{
 name|this
 operator|.
@@ -656,7 +653,6 @@ operator|.
 name|updateCallback
 expr_stmt|;
 block|}
-specifier|public
 name|String
 name|getPath
 parameter_list|()

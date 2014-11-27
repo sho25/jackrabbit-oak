@@ -25,6 +25,16 @@ end_package
 
 begin_import
 import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|CheckForNull
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -90,6 +100,8 @@ specifier|private
 name|SolrServer
 name|solrServer
 decl_stmt|;
+annotation|@
+name|CheckForNull
 annotation|@
 name|Override
 specifier|public

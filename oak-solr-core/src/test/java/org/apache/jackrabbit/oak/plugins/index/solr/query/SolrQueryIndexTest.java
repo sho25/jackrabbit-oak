@@ -55,6 +55,16 @@ end_import
 
 begin_import
 import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|Nonnull
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -201,24 +211,6 @@ name|spi
 operator|.
 name|query
 operator|.
-name|Cursor
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|spi
-operator|.
-name|query
-operator|.
 name|Filter
 import|;
 end_import
@@ -296,18 +288,6 @@ operator|.
 name|junit
 operator|.
 name|Test
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertFalse
 import|;
 end_import
 
@@ -1430,6 +1410,8 @@ literal|true
 return|;
 block|}
 annotation|@
+name|Nonnull
+annotation|@
 name|Override
 specifier|public
 name|Collection
@@ -1637,6 +1619,8 @@ return|return
 literal|true
 return|;
 block|}
+annotation|@
+name|Nonnull
 annotation|@
 name|Override
 specifier|public

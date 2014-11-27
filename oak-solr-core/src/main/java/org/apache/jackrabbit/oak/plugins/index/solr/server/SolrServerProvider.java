@@ -25,6 +25,16 @@ end_package
 
 begin_import
 import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|CheckForNull
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -49,6 +59,8 @@ interface|interface
 name|SolrServerProvider
 block|{
 comment|/**      * provides an already initialized {@link org.apache.solr.client.solrj.SolrServer} to be used from within Oak      *      * @return a {@link org.apache.solr.client.solrj.SolrServer} instance      * @throws Exception if anything goes wrong while providing the {@link org.apache.solr.client.solrj.SolrServer}      */
+annotation|@
+name|CheckForNull
 specifier|public
 name|SolrServer
 name|getSolrServer

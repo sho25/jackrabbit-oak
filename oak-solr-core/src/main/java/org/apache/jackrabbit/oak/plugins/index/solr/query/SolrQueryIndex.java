@@ -855,13 +855,6 @@ name|filter
 operator|.
 name|getPrimaryTypes
 argument_list|()
-operator|!=
-literal|null
-operator|&&
-name|filter
-operator|.
-name|getPrimaryTypes
-argument_list|()
 operator|.
 name|size
 argument_list|()
@@ -3280,8 +3273,6 @@ parameter_list|(
 name|SolrDocument
 name|doc
 parameter_list|)
-throws|throws
-name|IOException
 block|{
 name|String
 name|path

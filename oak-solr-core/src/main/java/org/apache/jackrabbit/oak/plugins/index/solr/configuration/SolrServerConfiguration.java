@@ -183,8 +183,6 @@ name|S
 name|getProvider
 parameter_list|()
 throws|throws
-name|NoSuchMethodException
-throws|,
 name|IllegalAccessException
 throws|,
 name|InvocationTargetException

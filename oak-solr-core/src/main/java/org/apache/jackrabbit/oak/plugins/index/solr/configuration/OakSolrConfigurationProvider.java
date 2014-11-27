@@ -23,6 +23,16 @@ name|configuration
 package|;
 end_package
 
+begin_import
+import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|Nonnull
+import|;
+end_import
+
 begin_comment
 comment|/**  * A provider for {@link org.apache.jackrabbit.oak.plugins.index.solr.configuration.OakSolrConfiguration}s  */
 end_comment
@@ -33,6 +43,8 @@ interface|interface
 name|OakSolrConfigurationProvider
 block|{
 comment|/**      * Provides a Solr configuration for Oak      *      * @return a {@link org.apache.jackrabbit.oak.plugins.index.solr.configuration.OakSolrConfiguration}      */
+annotation|@
+name|Nonnull
 specifier|public
 name|OakSolrConfiguration
 name|getConfiguration

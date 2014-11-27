@@ -45,6 +45,16 @@ end_import
 
 begin_import
 import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|CheckForNull
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -284,6 +294,8 @@ name|remoteSolrServerConfiguration
 expr_stmt|;
 block|}
 annotation|@
+name|CheckForNull
+annotation|@
 name|Override
 specifier|public
 name|SolrServer
@@ -509,8 +521,6 @@ name|initializeWithCloudSolrServer
 parameter_list|()
 throws|throws
 name|IOException
-throws|,
-name|SolrServerException
 block|{
 comment|// try SolrCloud client
 name|CloudSolrServer
@@ -810,8 +820,6 @@ name|cloudSolrServer
 parameter_list|)
 throws|throws
 name|SolrServerException
-throws|,
-name|IOException
 block|{
 name|String
 name|solrCollection

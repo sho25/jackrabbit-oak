@@ -45,6 +45,16 @@ end_import
 
 begin_import
 import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|CheckForNull
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -737,6 +747,8 @@ expr_stmt|;
 block|}
 block|}
 annotation|@
+name|CheckForNull
+annotation|@
 name|Override
 specifier|public
 name|SolrServer
@@ -813,6 +825,15 @@ name|solrServerProvider
 operator|.
 name|getSolrServer
 argument_list|()
+expr_stmt|;
+name|log
+operator|.
+name|info
+argument_list|(
+literal|"created new SolrServer {}"
+argument_list|,
+name|cachedSolrServer
+argument_list|)
 expr_stmt|;
 block|}
 catch|catch

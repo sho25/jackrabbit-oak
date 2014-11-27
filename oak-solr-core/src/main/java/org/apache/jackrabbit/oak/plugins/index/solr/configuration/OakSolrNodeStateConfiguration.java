@@ -55,6 +55,26 @@ end_import
 
 begin_import
 import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|CheckForNull
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|Nonnull
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -290,6 +310,8 @@ literal|null
 return|;
 block|}
 annotation|@
+name|Nonnull
+annotation|@
 name|Override
 specifier|public
 name|String
@@ -309,6 +331,8 @@ name|PATH_FIELD_NAME
 argument_list|)
 return|;
 block|}
+annotation|@
+name|CheckForNull
 annotation|@
 name|Override
 specifier|public
@@ -542,6 +566,8 @@ literal|null
 return|;
 block|}
 annotation|@
+name|Nonnull
+annotation|@
 name|Override
 specifier|public
 name|CommitPolicy
@@ -649,6 +675,8 @@ name|PATH_RESTRICTIONS
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Nonnull
 annotation|@
 name|Override
 specifier|public
@@ -992,6 +1020,8 @@ return|return
 name|values
 return|;
 block|}
+annotation|@
+name|Nonnull
 annotation|@
 name|Override
 specifier|public
