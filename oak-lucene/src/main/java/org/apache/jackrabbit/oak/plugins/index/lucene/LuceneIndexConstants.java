@@ -286,6 +286,16 @@ name|AGG_RELATIVE_NODE
 init|=
 literal|"relativeNode"
 decl_stmt|;
+name|String
+name|COST_PER_ENTRY
+init|=
+literal|"costPerEntry"
+decl_stmt|;
+name|String
+name|COST_PER_EXECUTION
+init|=
+literal|"costPerExecution"
+decl_stmt|;
 block|}
 end_interface
 
