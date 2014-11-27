@@ -263,6 +263,10 @@ name|String
 name|path
 parameter_list|)
 function_decl|;
+name|boolean
+name|isMeasureOrExplainEnabled
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 

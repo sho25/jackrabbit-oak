@@ -4806,6 +4806,19 @@ name|path
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
+specifier|public
+name|boolean
+name|isMeasureOrExplainEnabled
+parameter_list|()
+block|{
+return|return
+name|explain
+operator|||
+name|measure
+return|;
+block|}
 comment|/**      * Validate the path is syntactically correct, and convert it to an Oak      * internal path (including namespace remapping if needed).      *       * @param path the path      * @return the the converted path      */
 specifier|public
 name|String
