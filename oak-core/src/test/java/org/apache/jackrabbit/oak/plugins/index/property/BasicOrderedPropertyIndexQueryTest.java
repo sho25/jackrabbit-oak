@@ -74,6 +74,30 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertFalse
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|fail
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -380,7 +404,7 @@ name|ISO_8601_2000
 init|=
 literal|"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
 decl_stmt|;
-comment|/**      * generate a list of values to be used as ordered set. Will return something like      * {@code value000, value001, value002, ...}      *      *      * @param amount      * @param direction the direction of the sorting      * @return a list of {@code amount} values ordered as specified by {@code direction}      */
+comment|/**      * same as {@link #generateOrderedValues(int, int, OrderDirection)} by passing {@code 0} as      * {@code offset}      *       * @param amount      * @param direction      * @return      */
 specifier|protected
 specifier|static
 name|List
@@ -391,6 +415,36 @@ name|generateOrderedValues
 parameter_list|(
 name|int
 name|amount
+parameter_list|,
+name|OrderDirection
+name|direction
+parameter_list|)
+block|{
+return|return
+name|generateOrderedValues
+argument_list|(
+name|amount
+argument_list|,
+literal|0
+argument_list|,
+name|direction
+argument_list|)
+return|;
+block|}
+comment|/**      *<p>      * generate a list of values to be used as ordered set. Will return something like      * {@code value000, value001, value002, ...}      *</p>      *      * @param amount the values to be generated      * @param offset move the current counter by this provided amount.      * @param direction the direction of the sorting      * @return a list of {@code amount} values ordered as specified by {@code direction}      */
+specifier|protected
+specifier|static
+name|List
+argument_list|<
+name|String
+argument_list|>
+name|generateOrderedValues
+parameter_list|(
+name|int
+name|amount
+parameter_list|,
+name|int
+name|offset
 parameter_list|,
 name|OrderDirection
 name|direction
@@ -426,15 +480,6 @@ argument_list|(
 name|amount
 argument_list|)
 decl_stmt|;
-name|NumberFormat
-name|nf
-init|=
-operator|new
-name|DecimalFormat
-argument_list|(
-literal|"000"
-argument_list|)
-decl_stmt|;
 if|if
 condition|(
 name|OrderDirection
@@ -466,23 +511,11 @@ name|values
 operator|.
 name|add
 argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"value%s"
-argument_list|,
-name|String
-operator|.
-name|valueOf
-argument_list|(
-name|nf
-operator|.
-name|format
+name|formatNumber
 argument_list|(
 name|i
-argument_list|)
-argument_list|)
+operator|+
+name|offset
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -509,6 +542,40 @@ name|values
 operator|.
 name|add
 argument_list|(
+name|formatNumber
+argument_list|(
+name|i
+operator|+
+name|offset
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+return|return
+name|values
+return|;
+block|}
+comment|/**      * formats the provided number for being used by the      * {@link #generateOrderedValues(int, OrderDirection)}      *       * @param number      * @return something in the format {@code value000}      */
+specifier|public
+specifier|static
+name|String
+name|formatNumber
+parameter_list|(
+name|int
+name|number
+parameter_list|)
+block|{
+name|NumberFormat
+name|nf
+init|=
+operator|new
+name|DecimalFormat
+argument_list|(
+literal|"0000"
+argument_list|)
+decl_stmt|;
+return|return
 name|String
 operator|.
 name|format
@@ -523,19 +590,13 @@ name|nf
 operator|.
 name|format
 argument_list|(
-name|i
+name|number
 argument_list|)
 argument_list|)
 argument_list|)
-argument_list|)
-expr_stmt|;
-block|}
-block|}
-return|return
-name|values
 return|;
 block|}
-comment|/**      * as {@code generateOrderedValues(int, OrderDirection)} by forcing OrderDirection.ASC      *      * @param amount      * @return      */
+comment|/**      * as {@link #generateOrderedValues(int, OrderDirection)} by forcing {@link OrderDirection.ASC}      *      * @param amount      * @return      */
 specifier|protected
 specifier|static
 name|List
@@ -638,7 +699,7 @@ name|createContentRepository
 argument_list|()
 return|;
 block|}
-comment|/**      * convenience method that adds a bunch of nodes in random order and return the order in which      * they should be presented by the OrderedIndex      *      * @param values the values of the property that will be indexed      * @param father the father under which add the nodes      * @param direction the direction of the items to be added.      * @return      */
+comment|/**      *<p>      * convenience method that adds a bunch of nodes in random order and return the order in which      * they should be presented by the OrderedIndex.      *</p>      *<p>      * The nodes will be created using the {@link #ORDERED_PROPERTY} as property for indexing      *</p>      * @param values the values of the property that will be indexed      * @param father the father under which add the nodes      * @param direction the direction of the items to be added.      * @return      */
 annotation|@
 name|SuppressWarnings
 argument_list|(
@@ -804,7 +865,7 @@ return|return
 name|nodes
 return|;
 block|}
-comment|/**      * assert the right order of the returned resultset      *      * @param orderedSequence the right order in which the resultset should be returned      * @param resultset the resultset      */
+comment|/**      * assert the right order of the returned resultset      *      * @param expected the right order in which the resultset should be returned      * @param resultset the resultset      */
 specifier|protected
 name|void
 name|assertRightOrder
@@ -816,7 +877,7 @@ name|List
 argument_list|<
 name|ValuePathTuple
 argument_list|>
-name|orderedSequence
+name|expected
 parameter_list|,
 annotation|@
 name|Nonnull
@@ -829,6 +890,27 @@ name|ResultRow
 argument_list|>
 name|resultset
 parameter_list|)
+block|{
+if|if
+condition|(
+name|expected
+operator|.
+name|isEmpty
+argument_list|()
+condition|)
+block|{
+name|assertFalse
+argument_list|(
+literal|"An empty resultset is expected but something has been returned."
+argument_list|,
+name|resultset
+operator|.
+name|hasNext
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+else|else
 block|{
 name|assertTrue
 argument_list|(
@@ -854,7 +936,7 @@ argument_list|()
 operator|&&
 name|counter
 operator|<
-name|orderedSequence
+name|expected
 operator|.
 name|size
 argument_list|()
@@ -879,7 +961,7 @@ argument_list|,
 name|counter
 argument_list|)
 argument_list|,
-name|orderedSequence
+name|expected
 operator|.
 name|get
 argument_list|(
@@ -898,6 +980,7 @@ expr_stmt|;
 name|counter
 operator|++
 expr_stmt|;
+block|}
 block|}
 block|}
 comment|/**      * convenience method for generating a list of ordered dates as string in ISO      * 8601:2000-compliant format.      *      * {@link http ://www.day.com/specs/jcr/2.0/3_Repository_Model.html#3.6.4.3%20From%20DATE%20To}.      *      * it will add or remove depending of the {@code direction} provided, 12hrs for every entry to      * be generated.      *      *      * @param amount      * @param direction the direction of the sorting. If null the {@code OrderDirection.ASC} will be      *            used      * @param start the date from which to start from in the generation      * @return a list of {@code amount} values ordered as specified by {@code direction}      */
