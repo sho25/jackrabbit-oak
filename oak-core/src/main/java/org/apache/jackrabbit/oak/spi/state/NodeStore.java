@@ -41,6 +41,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Map
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|annotation
@@ -213,7 +223,7 @@ name|String
 name|reference
 parameter_list|)
 function_decl|;
-comment|/**      * Creates a new checkpoint of the latest root of the tree. The checkpoint      * remains valid for at least as long as requested and allows that state      * of the repository to be retrieved using the returned opaque string      * reference.      *      * @param lifetime time (in milliseconds,&gt; 0) that the checkpoint      *                 should remain available      * @return string reference of this checkpoint      */
+comment|/**      * Creates a new checkpoint of the latest root of the tree. The checkpoint      * remains valid for at least as long as requested and allows that state      * of the repository to be retrieved using the returned opaque string      * reference.      *<p>      * The {@code properties} passed to this methods are associated with the      * checkpoint and can be retrieved through the {@link #checkpointInfo(String)}      * method. Its semantics is entirely application specific.      *      * @param lifetime time (in milliseconds,&gt; 0) that the checkpoint      *                 should remain available      * @param properties properties to associate with the checkpoint      * @return string reference of this checkpoint      */
 annotation|@
 name|Nonnull
 name|String
@@ -221,6 +231,43 @@ name|checkpoint
 parameter_list|(
 name|long
 name|lifetime
+parameter_list|,
+annotation|@
+name|Nonnull
+name|Map
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
+name|properties
+parameter_list|)
+function_decl|;
+comment|/**      * Creates a new checkpoint of the latest root of the tree. The checkpoint      * remains valid for at least as long as requested and allows that state      * of the repository to be retrieved using the returned opaque string      * reference.      *<p>      * This method is a shortcut for {@link #checkpoint(long, Map)} passing      * an empty map for its 2nd argument.      *      * @param lifetime time (in milliseconds,&gt; 0) that the checkpoint      *                 should remain available      * @return string reference of this checkpoint      */
+annotation|@
+name|Nonnull
+name|String
+name|checkpoint
+parameter_list|(
+name|long
+name|lifetime
+parameter_list|)
+function_decl|;
+comment|/**      * Retrieve the properties associated with a checkpoint.      *      * @param checkpoint string reference of a checkpoint      * @return the properties associated with the checkpoint referenced by      *         {@code checkpoint} or an empty map when there is no such      *         checkpoint.      */
+annotation|@
+name|Nonnull
+name|Map
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
+name|checkpointInfo
+parameter_list|(
+annotation|@
+name|Nonnull
+name|String
+name|checkpoint
 parameter_list|)
 function_decl|;
 comment|/**      * Retrieves the root node from a previously created repository checkpoint.      *      * @param checkpoint string reference of a checkpoint      * @return the root node of the checkpoint,      *         or {@code null} if the checkpoint is no longer available      */
