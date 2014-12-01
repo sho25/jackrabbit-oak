@@ -242,6 +242,13 @@ argument_list|,
 name|created
 argument_list|,
 name|expires
+argument_list|,
+name|store
+operator|.
+name|checkpointInfo
+argument_list|(
+name|id
+argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;

@@ -252,6 +252,13 @@ name|expires
 operator|.
 name|toString
 argument_list|()
+argument_list|,
+name|store
+operator|.
+name|checkpointInfo
+argument_list|(
+name|id
+argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
