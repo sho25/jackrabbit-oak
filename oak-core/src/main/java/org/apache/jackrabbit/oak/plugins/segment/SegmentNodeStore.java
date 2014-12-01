@@ -893,6 +893,26 @@ name|e
 argument_list|)
 throw|;
 block|}
+catch|catch
+parameter_list|(
+name|SegmentOverflowException
+name|e
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|CommitFailedException
+argument_list|(
+literal|"Segment"
+argument_list|,
+literal|3
+argument_list|,
+literal|"Merge failed"
+argument_list|,
+name|e
+argument_list|)
+throw|;
+block|}
 block|}
 annotation|@
 name|Override

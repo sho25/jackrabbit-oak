@@ -362,6 +362,26 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|segment
+operator|.
+name|Segment
+operator|.
+name|SEGMENT_REFERENCE_LIMIT
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -1991,20 +2011,26 @@ operator|.
 name|getRefCount
 argument_list|()
 decl_stmt|;
-name|checkState
-argument_list|(
+if|if
+condition|(
 name|refcount
-operator|<
-literal|256
-argument_list|,
-literal|"Segment cannot have more than 255 references"
-argument_list|,
+operator|>
+name|SEGMENT_REFERENCE_LIMIT
+condition|)
+block|{
+throw|throw
+operator|new
+name|SegmentOverflowException
+argument_list|(
+literal|"Segment cannot have more than 255 references "
+operator|+
 name|segment
 operator|.
 name|getSegmentId
 argument_list|()
 argument_list|)
-expr_stmt|;
+throw|;
+block|}
 for|for
 control|(
 name|int
