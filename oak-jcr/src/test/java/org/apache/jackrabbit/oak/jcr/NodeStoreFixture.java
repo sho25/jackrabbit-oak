@@ -433,7 +433,7 @@ specifier|public
 specifier|static
 specifier|final
 name|NodeStoreFixture
-name|DOCUMENT_JDBC
+name|DOCUMENT_RDB
 init|=
 operator|new
 name|NodeStoreFixture

@@ -381,7 +381,7 @@ name|contains
 argument_list|(
 name|Fixture
 operator|.
-name|DOCUMENT_JDBC
+name|DOCUMENT_RDB
 argument_list|)
 condition|)
 block|{

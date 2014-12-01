@@ -450,7 +450,7 @@ name|contains
 argument_list|(
 name|Fixture
 operator|.
-name|DOCUMENT_JDBC
+name|DOCUMENT_RDB
 argument_list|)
 condition|)
 block|{
@@ -464,7 +464,7 @@ index|[]
 block|{
 name|NodeStoreFixture
 operator|.
-name|DOCUMENT_JDBC
+name|DOCUMENT_RDB
 block|}
 argument_list|)
 expr_stmt|;

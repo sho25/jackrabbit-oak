@@ -96,7 +96,7 @@ name|DOCUMENT_NS
 block|,
 name|SEGMENT_MK
 block|,
-name|DOCUMENT_JDBC
+name|DOCUMENT_RDB
 block|}
 empty_stmt|;
 specifier|private
