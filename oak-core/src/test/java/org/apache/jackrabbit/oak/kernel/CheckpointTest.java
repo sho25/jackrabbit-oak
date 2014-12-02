@@ -338,12 +338,6 @@ block|{
 block|{
 name|NodeStoreFixture
 operator|.
-name|MONGO_MK
-block|}
-block|,
-block|{
-name|NodeStoreFixture
-operator|.
 name|MONGO_NS
 block|}
 block|,
@@ -605,22 +599,6 @@ name|cp
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// FIXME See OAK-2311
-if|if
-condition|(
-name|fixture
-operator|!=
-name|NodeStoreFixture
-operator|.
-name|MONGO_MK
-operator|&&
-name|fixture
-operator|!=
-name|NodeStoreFixture
-operator|.
-name|MONGO_NS
-condition|)
-block|{
 name|assertNull
 argument_list|(
 name|store
@@ -631,7 +609,6 @@ name|cp
 argument_list|)
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 annotation|@
 name|Test
@@ -645,12 +622,6 @@ block|{
 comment|// FIXME implement. See OAK-2291
 name|assumeTrue
 argument_list|(
-name|fixture
-operator|!=
-name|NodeStoreFixture
-operator|.
-name|MONGO_MK
-operator|&&
 name|fixture
 operator|!=
 name|NodeStoreFixture
