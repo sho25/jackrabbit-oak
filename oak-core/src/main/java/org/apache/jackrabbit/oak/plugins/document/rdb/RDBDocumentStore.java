@@ -1498,6 +1498,15 @@ name|MODCOUNT
 init|=
 literal|"_modCount"
 decl_stmt|;
+comment|/**      * Optional counter for changes to {@link #COLLISIONS} map.      */
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|COLLISIONSMODCOUNT
+init|=
+literal|"_collisionsModCount"
+decl_stmt|;
 specifier|private
 specifier|static
 specifier|final
@@ -1669,6 +1678,8 @@ block|,
 name|NodeDocument
 operator|.
 name|HAS_BINARY_FLAG
+block|,
+name|COLLISIONSMODCOUNT
 block|,
 name|MODIFIED
 block|,
@@ -2656,8 +2667,6 @@ name|update
 operator|.
 name|increment
 argument_list|(
-name|NodeDocument
-operator|.
 name|COLLISIONSMODCOUNT
 argument_list|,
 literal|1
@@ -2893,8 +2902,6 @@ name|update
 operator|.
 name|increment
 argument_list|(
-name|NodeDocument
-operator|.
 name|COLLISIONSMODCOUNT
 argument_list|,
 literal|1
@@ -3404,8 +3411,6 @@ name|update
 operator|.
 name|increment
 argument_list|(
-name|NodeDocument
-operator|.
 name|COLLISIONSMODCOUNT
 argument_list|,
 literal|1
@@ -4596,8 +4601,6 @@ name|document
 operator|.
 name|get
 argument_list|(
-name|NodeDocument
-operator|.
 name|COLLISIONSMODCOUNT
 argument_list|)
 decl_stmt|;
@@ -5158,8 +5161,6 @@ name|document
 operator|.
 name|get
 argument_list|(
-name|NodeDocument
-operator|.
 name|COLLISIONSMODCOUNT
 argument_list|)
 decl_stmt|;
@@ -5452,7 +5453,7 @@ name|connection
 operator|.
 name|prepareStatement
 argument_list|(
-literal|"select MODIFIED, MODCOUNT, HASBINARY, DATA, BDATA from "
+literal|"select MODIFIED, MODCOUNT, CMODCOUNT, HASBINARY, DATA, BDATA from "
 operator|+
 name|tableName
 operator|+
@@ -5470,7 +5471,7 @@ name|connection
 operator|.
 name|prepareStatement
 argument_list|(
-literal|"select MODIFIED, MODCOUNT, HASBINARY, case MODCOUNT when ? then null else DATA end as DATA, "
+literal|"select MODIFIED, MODCOUNT, CMODCOUNT, HASBINARY, case MODCOUNT when ? then null else DATA end as DATA, "
 operator|+
 literal|"case MODCOUNT when ? then null else BDATA end as BDATA from "
 operator|+
@@ -5564,13 +5565,23 @@ literal|2
 argument_list|)
 decl_stmt|;
 name|long
-name|hasBinary
+name|cmodcount
 init|=
 name|rs
 operator|.
 name|getLong
 argument_list|(
 literal|3
+argument_list|)
+decl_stmt|;
+name|long
+name|hasBinary
+init|=
+name|rs
+operator|.
+name|getLong
+argument_list|(
+literal|4
 argument_list|)
 decl_stmt|;
 name|String
@@ -5580,7 +5591,7 @@ name|rs
 operator|.
 name|getString
 argument_list|(
-literal|4
+literal|5
 argument_list|)
 decl_stmt|;
 name|byte
@@ -5591,7 +5602,7 @@ name|rs
 operator|.
 name|getBytes
 argument_list|(
-literal|5
+literal|6
 argument_list|)
 decl_stmt|;
 return|return
@@ -5607,6 +5618,8 @@ argument_list|,
 name|modified
 argument_list|,
 name|modcount
+argument_list|,
+name|cmodcount
 argument_list|,
 name|data
 argument_list|,
@@ -5723,7 +5736,7 @@ block|{
 name|String
 name|t
 init|=
-literal|"select ID, MODIFIED, MODCOUNT, HASBINARY, DATA, BDATA from "
+literal|"select ID, MODIFIED, MODCOUNT, CMODCOUNT, HASBINARY, DATA, BDATA from "
 operator|+
 name|tableName
 operator|+
@@ -6008,13 +6021,23 @@ literal|3
 argument_list|)
 decl_stmt|;
 name|long
-name|hasBinary
+name|cmodcount
 init|=
 name|rs
 operator|.
 name|getLong
 argument_list|(
 literal|4
+argument_list|)
+decl_stmt|;
+name|long
+name|hasBinary
+init|=
+name|rs
+operator|.
+name|getLong
+argument_list|(
+literal|5
 argument_list|)
 decl_stmt|;
 name|String
@@ -6024,7 +6047,7 @@ name|rs
 operator|.
 name|getString
 argument_list|(
-literal|5
+literal|6
 argument_list|)
 decl_stmt|;
 name|byte
@@ -6035,7 +6058,7 @@ name|rs
 operator|.
 name|getBytes
 argument_list|(
-literal|6
+literal|7
 argument_list|)
 decl_stmt|;
 name|result
@@ -6054,6 +6077,8 @@ argument_list|,
 name|modified
 argument_list|,
 name|modcount
+argument_list|,
+name|cmodcount
 argument_list|,
 name|data
 argument_list|,
