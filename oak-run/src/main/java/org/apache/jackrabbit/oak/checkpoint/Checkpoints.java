@@ -828,7 +828,7 @@ name|Entry
 argument_list|<
 name|Revision
 argument_list|,
-name|String
+name|Long
 argument_list|>
 name|entry
 range|:
@@ -864,15 +864,10 @@ operator|.
 name|getTimestamp
 argument_list|()
 argument_list|,
-name|Long
-operator|.
-name|parseLong
-argument_list|(
 name|entry
 operator|.
 name|getValue
 argument_list|()
-argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;

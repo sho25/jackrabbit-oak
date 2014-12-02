@@ -101,6 +101,26 @@ name|AbstractCheckpointMBean
 import|;
 end_import
 
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|document
+operator|.
+name|Checkpoints
+operator|.
+name|Info
+import|;
+end_import
+
 begin_comment
 comment|/**  * {@code CheckpointMBean} implementation for the {@code DocumentNodeStore}.  */
 end_comment
@@ -147,7 +167,7 @@ name|Map
 argument_list|<
 name|Revision
 argument_list|,
-name|String
+name|Info
 argument_list|>
 name|checkpoints
 init|=
@@ -180,7 +200,7 @@ name|Entry
 argument_list|<
 name|Revision
 argument_list|,
-name|String
+name|Info
 argument_list|>
 name|checkpoint
 range|:
@@ -199,6 +219,14 @@ name|getKey
 argument_list|()
 operator|.
 name|toString
+argument_list|()
+decl_stmt|;
+name|Info
+name|info
+init|=
+name|checkpoint
+operator|.
+name|getValue
 argument_list|()
 decl_stmt|;
 name|Date
@@ -222,15 +250,10 @@ init|=
 operator|new
 name|Date
 argument_list|(
-name|Long
+name|info
 operator|.
-name|parseLong
-argument_list|(
-name|checkpoint
-operator|.
-name|getValue
+name|getExpiryTime
 argument_list|()
-argument_list|)
 argument_list|)
 decl_stmt|;
 name|tab
@@ -253,12 +276,10 @@ operator|.
 name|toString
 argument_list|()
 argument_list|,
-name|store
+name|info
 operator|.
-name|checkpointInfo
-argument_list|(
-name|id
-argument_list|)
+name|get
+argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;

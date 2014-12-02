@@ -71,18 +71,6 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Assume
-operator|.
-name|assumeTrue
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
 name|runners
 operator|.
 name|Parameterized
@@ -619,16 +607,6 @@ parameter_list|()
 throws|throws
 name|CommitFailedException
 block|{
-comment|// FIXME implement. See OAK-2291
-name|assumeTrue
-argument_list|(
-name|fixture
-operator|!=
-name|NodeStoreFixture
-operator|.
-name|MONGO_NS
-argument_list|)
-expr_stmt|;
 name|ImmutableMap
 argument_list|<
 name|String
