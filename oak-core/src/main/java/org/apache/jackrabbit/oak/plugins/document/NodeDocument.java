@@ -699,15 +699,6 @@ name|COLLISIONS
 init|=
 literal|"_collisions"
 decl_stmt|;
-comment|/**      * Optional counter for changes to {@link #COLLISIONS} map.      */
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|COLLISIONSMODCOUNT
-init|=
-literal|"_collisionsModCount"
-decl_stmt|;
 comment|/**      * The modified time in seconds (5 second resolution).      */
 specifier|public
 specifier|static
@@ -1027,8 +1018,6 @@ argument_list|(
 name|ID
 argument_list|,
 name|MOD_COUNT
-argument_list|,
-name|COLLISIONSMODCOUNT
 argument_list|,
 name|MODIFIED_IN_SECS
 argument_list|,
