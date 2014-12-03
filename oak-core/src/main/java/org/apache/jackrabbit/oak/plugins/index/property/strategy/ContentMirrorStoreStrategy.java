@@ -1246,6 +1246,17 @@ comment|// cast to double to avoid overflow
 comment|// (entryCount could be Long.MAX_VALUE)
 comment|// the cost is not multiplied by the size,
 comment|// otherwise the traversing index might be used
+name|keyCount
+operator|=
+name|Math
+operator|.
+name|max
+argument_list|(
+literal|1
+argument_list|,
+name|keyCount
+argument_list|)
+expr_stmt|;
 return|return
 call|(
 name|long
