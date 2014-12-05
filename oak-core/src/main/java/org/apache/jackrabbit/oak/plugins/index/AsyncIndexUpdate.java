@@ -1592,8 +1592,9 @@ argument_list|(
 name|ASYNC
 argument_list|)
 decl_stmt|;
-if|if
-condition|(
+name|long
+name|leaseEndTime
+init|=
 name|async
 operator|.
 name|getLong
@@ -1602,11 +1603,20 @@ name|name
 operator|+
 literal|"-lease"
 argument_list|)
-operator|>
+decl_stmt|;
+name|long
+name|currentTime
+init|=
 name|System
 operator|.
 name|currentTimeMillis
 argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|leaseEndTime
+operator|>
+name|currentTime
 condition|)
 block|{
 name|log
@@ -1615,9 +1625,17 @@ name|debug
 argument_list|(
 literal|"Another copy of the {} index update is already running;"
 operator|+
-literal|" skipping this update"
+literal|" skipping this update. Time left for lease to expire {}s"
 argument_list|,
 name|name
+argument_list|,
+operator|(
+name|leaseEndTime
+operator|-
+name|currentTime
+operator|)
+operator|/
+literal|1000
 argument_list|)
 expr_stmt|;
 return|return;
