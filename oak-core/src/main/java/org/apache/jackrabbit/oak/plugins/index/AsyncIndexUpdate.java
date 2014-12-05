@@ -1988,6 +1988,14 @@ parameter_list|)
 throws|throws
 name|CommitFailedException
 block|{
+name|Stopwatch
+name|watch
+init|=
+name|Stopwatch
+operator|.
+name|createStarted
+argument_list|()
+decl_stmt|;
 comment|// start collecting runtime statistics
 name|preAsyncRunStatsStats
 argument_list|(
@@ -2245,6 +2253,29 @@ operator|.
 name|lease
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|indexUpdate
+operator|.
+name|isReindexingPerformed
+argument_list|()
+condition|)
+block|{
+name|log
+operator|.
+name|info
+argument_list|(
+literal|"Reindexing completed for indexes: {} in {}"
+argument_list|,
+name|indexUpdate
+operator|.
+name|getAllReIndexedIndexes
+argument_list|()
+argument_list|,
+name|watch
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 finally|finally
 block|{
