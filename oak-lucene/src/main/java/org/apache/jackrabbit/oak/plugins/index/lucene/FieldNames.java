@@ -75,6 +75,24 @@ name|PATH
 init|=
 literal|":path"
 decl_stmt|;
+comment|/**      * Name of the field that contains all the path hierarchy e.g. for /a/b/c      * it would contain /a, /a/b, /a/b/c      */
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|ANCESTORS
+init|=
+literal|":ancestors"
+decl_stmt|;
+comment|/**      * Name of the field which refers to the depth of path      */
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|PATH_DEPTH
+init|=
+literal|":depth"
+decl_stmt|;
 comment|/**      * Name of the field that contains the fulltext index.      */
 specifier|public
 specifier|static

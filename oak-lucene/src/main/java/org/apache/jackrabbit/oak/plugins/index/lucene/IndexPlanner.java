@@ -1558,6 +1558,7 @@ name|String
 name|getPathPrefix
 parameter_list|()
 block|{
+comment|// 2 = /oak:index/<index name>
 name|String
 name|parentPath
 init|=

@@ -243,7 +243,7 @@ decl_stmt|;
 name|String
 name|EVALUATE_PATH_RESTRICTION
 init|=
-literal|"oak.experimental.evaluatePathRestrictions"
+literal|"evaluatePathRestrictions"
 decl_stmt|;
 comment|/**      * Experimental config to restrict which property type gets indexed at      * property definition level. Mostly index rule level #INCLUDE_PROPERTY_TYPES      * should be sufficient      */
 name|String
