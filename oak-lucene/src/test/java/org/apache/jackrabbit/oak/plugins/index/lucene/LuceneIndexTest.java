@@ -881,16 +881,6 @@ block|{
 specifier|private
 specifier|static
 specifier|final
-name|Analyzer
-name|analyzer
-init|=
-name|LuceneIndexConstants
-operator|.
-name|ANALYZER
-decl_stmt|;
-specifier|private
-specifier|static
-specifier|final
 name|EditorHook
 name|HOOK
 init|=
@@ -903,11 +893,6 @@ argument_list|(
 operator|new
 name|LuceneIndexEditorProvider
 argument_list|()
-operator|.
-name|with
-argument_list|(
-name|analyzer
-argument_list|)
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -1033,8 +1018,6 @@ operator|new
 name|LucenePropertyIndex
 argument_list|(
 name|tracker
-argument_list|,
-name|analyzer
 argument_list|)
 decl_stmt|;
 name|FilterImpl
@@ -1279,8 +1262,6 @@ operator|new
 name|LucenePropertyIndex
 argument_list|(
 name|tracker
-argument_list|,
-name|analyzer
 argument_list|)
 decl_stmt|;
 name|FilterImpl
@@ -1561,8 +1542,6 @@ operator|new
 name|LucenePropertyIndex
 argument_list|(
 name|tracker
-argument_list|,
-name|analyzer
 argument_list|)
 decl_stmt|;
 name|FilterImpl
@@ -1911,8 +1890,6 @@ operator|new
 name|LucenePropertyIndex
 argument_list|(
 name|tracker
-argument_list|,
-name|analyzer
 argument_list|)
 decl_stmt|;
 name|FilterImpl
@@ -2093,6 +2070,13 @@ name|void
 name|testTokens
 parameter_list|()
 block|{
+name|Analyzer
+name|analyzer
+init|=
+name|LuceneIndexConstants
+operator|.
+name|ANALYZER
+decl_stmt|;
 name|assertEquals
 argument_list|(
 name|ImmutableList
@@ -3142,8 +3126,6 @@ operator|new
 name|LucenePropertyIndex
 argument_list|(
 name|tracker
-argument_list|,
-name|analyzer
 argument_list|)
 decl_stmt|;
 name|FilterImpl

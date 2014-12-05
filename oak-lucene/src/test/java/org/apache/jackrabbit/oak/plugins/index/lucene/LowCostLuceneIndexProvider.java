@@ -97,20 +97,6 @@ name|NodeState
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|lucene
-operator|.
-name|analysis
-operator|.
-name|Analyzer
-import|;
-end_import
-
 begin_comment
 comment|/**  * A LuceneIndexProvider that return a LuceneIndex with a really low cost, so  * that it tries to guarantee its usage in the queries  *   */
 end_comment
@@ -135,8 +121,6 @@ name|LowCostLuceneIndex
 argument_list|(
 name|tracker
 argument_list|,
-name|analyzer
-argument_list|,
 name|aggregator
 argument_list|)
 return|;
@@ -154,9 +138,6 @@ parameter_list|(
 name|IndexTracker
 name|tracker
 parameter_list|,
-name|Analyzer
-name|analyzer
-parameter_list|,
 name|NodeAggregator
 name|aggregator
 parameter_list|)
@@ -164,8 +145,6 @@ block|{
 name|super
 argument_list|(
 name|tracker
-argument_list|,
-name|analyzer
 argument_list|,
 name|aggregator
 argument_list|)
