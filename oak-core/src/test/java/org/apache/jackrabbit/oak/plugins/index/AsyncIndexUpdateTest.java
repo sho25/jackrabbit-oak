@@ -1838,6 +1838,16 @@ name|checkpoint
 parameter_list|(
 name|long
 name|lifetime
+parameter_list|,
+annotation|@
+name|Nonnull
+name|Map
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
+name|properties
 parameter_list|)
 block|{
 try|try
@@ -1848,6 +1858,8 @@ operator|.
 name|checkpoint
 argument_list|(
 name|lifetime
+argument_list|,
+name|properties
 argument_list|)
 return|;
 block|}
