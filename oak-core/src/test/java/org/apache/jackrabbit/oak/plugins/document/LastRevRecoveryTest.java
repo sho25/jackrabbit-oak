@@ -167,18 +167,6 @@ name|junit
 operator|.
 name|Assert
 operator|.
-name|assertNotNull
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
 name|assertNull
 import|;
 end_import
@@ -483,11 +471,20 @@ argument_list|(
 name|c2Id
 argument_list|)
 decl_stmt|;
-name|assertNotNull
+comment|// /x/y/z is a new node and does not have a _lastRev
+name|assertNull
 argument_list|(
 name|zlastRev2
 argument_list|)
 expr_stmt|;
+name|Revision
+name|head2
+init|=
+name|ds2
+operator|.
+name|getHeadRevision
+argument_list|()
+decl_stmt|;
 comment|//lastRev should not be updated for C #2
 name|assertNull
 argument_list|(
@@ -531,7 +528,7 @@ expr_stmt|;
 comment|//Post recovery the lastRev should be updated for /x/y and /x
 name|assertEquals
 argument_list|(
-name|zlastRev2
+name|head2
 argument_list|,
 name|getDocument
 argument_list|(
@@ -551,7 +548,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-name|zlastRev2
+name|head2
 argument_list|,
 name|getDocument
 argument_list|(
@@ -571,7 +568,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-name|zlastRev2
+name|head2
 argument_list|,
 name|getDocument
 argument_list|(

@@ -678,47 +678,28 @@ name|currentLastRev
 argument_list|)
 expr_stmt|;
 block|}
+comment|// 1. determine last committed modification on document
 name|Revision
-name|lostLastRev
+name|lastModifiedRev
 init|=
-name|determineMissedLastRev
+name|determineLastModification
 argument_list|(
 name|doc
 argument_list|,
 name|clusterId
 argument_list|)
 decl_stmt|;
-comment|//1. Update lastRev for this doc
-if|if
-condition|(
-name|lostLastRev
-operator|!=
-literal|null
-condition|)
-block|{
-name|unsaved
-operator|.
-name|put
-argument_list|(
-name|doc
-operator|.
-name|getPath
-argument_list|()
-argument_list|,
-name|lostLastRev
-argument_list|)
-expr_stmt|;
-block|}
 name|Revision
 name|lastRevForParents
 init|=
-name|lostLastRev
-operator|!=
-literal|null
-condition|?
-name|lostLastRev
-else|:
+name|Utils
+operator|.
+name|max
+argument_list|(
+name|lastModifiedRev
+argument_list|,
 name|currentLastRev
+argument_list|)
 decl_stmt|;
 comment|//If both currentLastRev and lostLastRev are null it means
 comment|//that no change is done by suspect cluster on this document
@@ -1047,12 +1028,12 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Determines the last revision value which needs to set for given clusterId      * on the passed document. If the last rev entries are consisted      *       * @param doc NodeDocument where lastRev entries needs to be fixed      * @param clusterId clusterId for which lastRev has to be checked      * @return lastRev which needs to be updated.<tt>null</tt> if no      *         updated is required i.e. lastRev entries are valid      */
+comment|/**      * Determines the last committed modification to the given document by      * a {@code clusterId}.      *       * @param doc a document.      * @param clusterId clusterId for which the last committed modification is      *                  looked up.      * @return the commit revision of the last modification by {@code clusterId}      *          to the given document.      */
 annotation|@
 name|CheckForNull
 specifier|private
 name|Revision
-name|determineMissedLastRev
+name|determineLastModification
 parameter_list|(
 name|NodeDocument
 name|doc
@@ -1061,39 +1042,6 @@ name|int
 name|clusterId
 parameter_list|)
 block|{
-name|Revision
-name|currentLastRev
-init|=
-name|doc
-operator|.
-name|getLastRev
-argument_list|()
-operator|.
-name|get
-argument_list|(
-name|clusterId
-argument_list|)
-decl_stmt|;
-if|if
-condition|(
-name|currentLastRev
-operator|==
-literal|null
-condition|)
-block|{
-name|currentLastRev
-operator|=
-operator|new
-name|Revision
-argument_list|(
-literal|0
-argument_list|,
-literal|0
-argument_list|,
-name|clusterId
-argument_list|)
-expr_stmt|;
-block|}
 name|ClusterPredicate
 name|cp
 init|=
@@ -1149,8 +1097,12 @@ operator|.
 name|REVERSE
 argument_list|)
 decl_stmt|;
-comment|// Look for latest valid revision> currentLastRev
-comment|// if found then lastRev needs to be fixed
+name|Revision
+name|lastModified
+init|=
+literal|null
+decl_stmt|;
+comment|// Look for latest valid revision
 for|for
 control|(
 name|Revision
@@ -1159,49 +1111,25 @@ range|:
 name|revs
 control|)
 block|{
-if|if
-condition|(
-name|rev
-operator|.
-name|compareRevisionTime
-argument_list|(
-name|currentLastRev
-argument_list|)
-operator|>
-literal|0
-condition|)
-block|{
-name|rev
+name|lastModified
 operator|=
+name|Utils
+operator|.
+name|max
+argument_list|(
+name|lastModified
+argument_list|,
 name|doc
 operator|.
 name|getCommitRevision
 argument_list|(
 name|rev
 argument_list|)
+argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|rev
-operator|!=
-literal|null
-condition|)
-block|{
-return|return
-name|rev
-return|;
-block|}
-block|}
-else|else
-block|{
-comment|// No valid revision found> currentLastRev
-comment|// indicates that lastRev is valid for given clusterId
-comment|// and no further checks are required
-break|break;
-block|}
 block|}
 return|return
-literal|null
+name|lastModified
 return|;
 block|}
 comment|/**      * Determines if any of the cluster node failed to renew its lease and      * did not properly shutdown. If any such cluster node is found then are potential      * candidates for last rev recovery      *      * @return true if last rev recovery needs to be performed for any of the cluster nodes      */
