@@ -1185,27 +1185,6 @@ operator|*
 literal|1000
 argument_list|)
 decl_stmt|;
-comment|/**      * Enable background operations      */
-specifier|private
-specifier|static
-specifier|final
-name|boolean
-name|ENABLE_BACKGROUND_OPS
-init|=
-name|Boolean
-operator|.
-name|parseBoolean
-argument_list|(
-name|System
-operator|.
-name|getProperty
-argument_list|(
-literal|"oak.documentMK.backgroundOps"
-argument_list|,
-literal|"true"
-argument_list|)
-argument_list|)
-decl_stmt|;
 comment|/**      * How long to remember the relative order of old revision of all cluster      * nodes, in milliseconds. The default is one hour.      */
 specifier|static
 specifier|final
@@ -6864,14 +6843,6 @@ literal|null
 condition|)
 block|{
 comment|// only when using timestamp
-return|return;
-block|}
-if|if
-condition|(
-operator|!
-name|ENABLE_BACKGROUND_OPS
-condition|)
-block|{
 return|return;
 block|}
 try|try
