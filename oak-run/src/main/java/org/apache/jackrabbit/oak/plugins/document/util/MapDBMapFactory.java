@@ -67,16 +67,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|Comparator
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|concurrent
 operator|.
 name|atomic
@@ -100,16 +90,6 @@ operator|.
 name|document
 operator|.
 name|Revision
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|mapdb
-operator|.
-name|BTreeKeySerializer
 import|;
 end_import
 
