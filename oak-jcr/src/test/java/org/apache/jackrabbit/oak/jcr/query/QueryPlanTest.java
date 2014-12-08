@@ -259,9 +259,34 @@ name|setProperty
 argument_list|(
 literal|"entryCount"
 argument_list|,
-name|Long
+literal|200
+argument_list|)
+expr_stmt|;
+name|Node
+name|uuid
+init|=
+name|session
 operator|.
-name|MAX_VALUE
+name|getRootNode
+argument_list|()
+operator|.
+name|getNode
+argument_list|(
+literal|"oak:index"
+argument_list|)
+operator|.
+name|getNode
+argument_list|(
+literal|"uuid"
+argument_list|)
+decl_stmt|;
+name|uuid
+operator|.
+name|setProperty
+argument_list|(
+literal|"entryCount"
+argument_list|,
+literal|100
 argument_list|)
 expr_stmt|;
 name|QueryManager
@@ -275,6 +300,38 @@ operator|.
 name|getQueryManager
 argument_list|()
 decl_stmt|;
+if|if
+condition|(
+name|session
+operator|.
+name|getRootNode
+argument_list|()
+operator|.
+name|hasNode
+argument_list|(
+literal|"testroot"
+argument_list|)
+condition|)
+block|{
+name|session
+operator|.
+name|getRootNode
+argument_list|()
+operator|.
+name|getNode
+argument_list|(
+literal|"testroot"
+argument_list|)
+operator|.
+name|remove
+argument_list|()
+expr_stmt|;
+name|session
+operator|.
+name|save
+argument_list|()
+expr_stmt|;
+block|}
 name|Node
 name|testRootNode
 init|=
@@ -342,7 +399,7 @@ decl_stmt|;
 name|String
 name|xpath
 init|=
-literal|"/jcr:root/a/b/c/d/e/f/g/h/i/j/k/element(*, oak:Unstructured)"
+literal|"/jcr:root//element(*, oak:Unstructured)"
 decl_stmt|;
 name|q
 operator|=
@@ -401,17 +458,15 @@ name|assertEquals
 argument_list|(
 literal|"[oak:Unstructured] as [a] "
 operator|+
-literal|"/* Filter(query=explain select [jcr:path], [jcr:score], * "
+literal|"/* nodeType Filter(query=explain select [jcr:path], [jcr:score], * "
 operator|+
 literal|"from [oak:Unstructured] as a "
 operator|+
-literal|"where ischildnode(a, '/a/b/c/d/e/f/g/h/i/j/k') "
+literal|"where isdescendantnode(a, '/') "
 operator|+
-literal|"/* xpath: /jcr:root/a/b/c/d/e/f/g/h/i/j/k/element(*, oak:Unstructured) */"
+literal|"/* xpath: /jcr:root//element(*, oak:Unstructured) */"
 operator|+
-literal|", path=/a/b/c/d/e/f/g/h/i/j/k/*) where "
-operator|+
-literal|"ischildnode([a], [/a/b/c/d/e/f/g/h/i/j/k]) */"
+literal|", path=//*) where isdescendantnode([a], [/]) */"
 argument_list|,
 name|plan
 argument_list|)
@@ -419,7 +474,7 @@ expr_stmt|;
 name|String
 name|xpath2
 init|=
-literal|"/jcr:root/a/b/c/d/e/f/g/h/i/j/k/element(*, oak:Unstructured)[@jcr:uuid]"
+literal|"/jcr:root//element(*, oak:Unstructured)[@jcr:uuid]"
 decl_stmt|;
 name|q
 operator|=
@@ -473,7 +528,6 @@ operator|.
 name|getString
 argument_list|()
 expr_stmt|;
-comment|// System.out.println("plan: " + plan);
 comment|// should use the index on "jcr:uuid"
 name|assertEquals
 argument_list|(
@@ -481,7 +535,7 @@ literal|"[oak:Unstructured] as [a] "
 operator|+
 literal|"/* property uuid IS NOT NULL where ([a].[jcr:uuid] is not null) "
 operator|+
-literal|"and (ischildnode([a], [/a/b/c/d/e/f/g/h/i/j/k])) */"
+literal|"and (isdescendantnode([a], [/])) */"
 argument_list|,
 name|plan
 argument_list|)
@@ -1968,6 +2022,15 @@ argument_list|(
 literal|"type"
 argument_list|,
 literal|"property"
+argument_list|)
+expr_stmt|;
+name|n
+operator|.
+name|setProperty
+argument_list|(
+literal|"entryCount"
+argument_list|,
+literal|"-1"
 argument_list|)
 expr_stmt|;
 name|n
