@@ -556,11 +556,6 @@ argument_list|(
 name|b
 argument_list|)
 expr_stmt|;
-name|b
-operator|.
-name|dispose
-argument_list|()
-expr_stmt|;
 block|}
 block|}
 end_class

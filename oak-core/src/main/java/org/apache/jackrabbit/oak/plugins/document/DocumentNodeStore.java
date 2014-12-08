@@ -2336,11 +2336,6 @@ operator|.
 name|dispose
 argument_list|()
 expr_stmt|;
-name|unsavedLastRevisions
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
 name|LOG
 operator|.
 name|info
