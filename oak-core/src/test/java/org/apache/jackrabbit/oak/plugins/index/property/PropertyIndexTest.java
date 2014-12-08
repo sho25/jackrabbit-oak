@@ -591,6 +591,9 @@ operator|.
 name|builder
 argument_list|()
 decl_stmt|;
+name|NodeBuilder
+name|index
+init|=
 name|createIndexDefinition
 argument_list|(
 name|builder
@@ -614,6 +617,17 @@ literal|"foo"
 argument_list|)
 argument_list|,
 literal|null
+argument_list|)
+decl_stmt|;
+comment|// disable the estimation
+name|index
+operator|.
+name|setProperty
+argument_list|(
+literal|"entryCount"
+argument_list|,
+operator|-
+literal|1
 argument_list|)
 expr_stmt|;
 name|NodeState
@@ -932,6 +946,9 @@ operator|.
 name|builder
 argument_list|()
 decl_stmt|;
+name|NodeBuilder
+name|index
+init|=
 name|createIndexDefinition
 argument_list|(
 name|builder
@@ -955,6 +972,17 @@ literal|"foo"
 argument_list|)
 argument_list|,
 literal|null
+argument_list|)
+decl_stmt|;
+comment|// disable the estimation
+name|index
+operator|.
+name|setProperty
+argument_list|(
+literal|"entryCount"
+argument_list|,
+operator|-
+literal|1
 argument_list|)
 expr_stmt|;
 name|NodeState
@@ -1448,6 +1476,32 @@ literal|"azerty"
 argument_list|)
 expr_stmt|;
 block|}
+comment|// add more nodes (to make traversal more expensive)
+for|for
+control|(
+name|int
+name|i
+init|=
+literal|0
+init|;
+name|i
+operator|<
+literal|10000
+condition|;
+name|i
+operator|++
+control|)
+block|{
+name|data
+operator|.
+name|child
+argument_list|(
+literal|"cx_"
+operator|+
+name|i
+argument_list|)
+expr_stmt|;
+block|}
 name|NodeState
 name|after
 init|=
@@ -1534,6 +1588,10 @@ literal|" nodes should not be higher than traversal ("
 operator|+
 name|cost
 operator|+
+literal|"< "
+operator|+
+name|traversal
+operator|+
 literal|")"
 argument_list|,
 name|cost
@@ -1565,6 +1623,9 @@ operator|.
 name|builder
 argument_list|()
 decl_stmt|;
+name|NodeBuilder
+name|index
+init|=
 name|createIndexDefinition
 argument_list|(
 name|builder
@@ -1588,6 +1649,16 @@ literal|"foo"
 argument_list|)
 argument_list|,
 literal|null
+argument_list|)
+decl_stmt|;
+name|index
+operator|.
+name|setProperty
+argument_list|(
+literal|"entryCount"
+argument_list|,
+operator|-
+literal|1
 argument_list|)
 expr_stmt|;
 name|NodeState

@@ -327,6 +327,8 @@ name|root
 parameter_list|)
 block|{
 return|return
+literal|"nodeType "
+operator|+
 name|filter
 operator|.
 name|toString
