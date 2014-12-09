@@ -1460,6 +1460,8 @@ argument_list|(
 literal|"Error occurred while loading bytes from steam while fetching for id {}"
 argument_list|,
 name|encodedBlobId
+argument_list|,
+name|e
 argument_list|)
 expr_stmt|;
 block|}
