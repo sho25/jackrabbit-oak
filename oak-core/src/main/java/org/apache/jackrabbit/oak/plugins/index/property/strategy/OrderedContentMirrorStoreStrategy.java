@@ -766,6 +766,14 @@ index|[]
 name|walked
 parameter_list|)
 block|{
+if|if
+condition|(
+name|LOG
+operator|.
+name|isTraceEnabled
+argument_list|()
+condition|)
+block|{
 name|String
 name|m
 init|=
@@ -788,7 +796,7 @@ condition|)
 block|{
 name|LOG
 operator|.
-name|debug
+name|trace
 argument_list|(
 name|m
 operator|+
@@ -817,7 +825,7 @@ control|)
 block|{
 name|LOG
 operator|.
-name|debug
+name|trace
 argument_list|(
 literal|"{}walked[{}]: {}"
 argument_list|,
@@ -836,6 +844,7 @@ index|]
 block|}
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 block|}
@@ -859,7 +868,7 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"fetchKeyNode() - new item '{}' -----------------------------------------"
+literal|"fetchKeyNode() - === new item '{}'"
 argument_list|,
 name|key
 argument_list|)
@@ -4588,6 +4597,10 @@ name|isNullOrEmpty
 argument_list|(
 name|currentKey
 argument_list|)
+operator|&&
+name|walkedLanes
+operator|!=
+literal|null
 condition|)
 block|{
 name|walkedLanes
@@ -4654,8 +4667,21 @@ name|currentNode
 init|=
 literal|null
 decl_stmt|;
+name|int
+name|iteration
+init|=
+literal|0
+decl_stmt|;
+name|boolean
+name|exitCondition
+init|=
+literal|true
+decl_stmt|;
 do|do
 block|{
+name|iteration
+operator|++
+expr_stmt|;
 name|stillLaning
 operator|=
 name|lane
@@ -4814,6 +4840,10 @@ name|isNullOrEmpty
 argument_list|(
 name|currentKey
 argument_list|)
+operator|&&
+name|walkedLanes
+operator|!=
+literal|null
 condition|)
 block|{
 for|for
@@ -4842,9 +4872,8 @@ block|}
 block|}
 block|}
 block|}
-block|}
-do|while
-condition|(
+name|exitCondition
+operator|=
 operator|(
 operator|(
 operator|!
@@ -4871,6 +4900,137 @@ name|found
 operator|==
 literal|null
 operator|)
+expr_stmt|;
+if|if
+condition|(
+name|LOG
+operator|.
+name|isTraceEnabled
+argument_list|()
+condition|)
+block|{
+name|LOG
+operator|.
+name|trace
+argument_list|(
+literal|"seek()::plain case - --- iteration: {}"
+argument_list|,
+name|iteration
+argument_list|)
+expr_stmt|;
+name|LOG
+operator|.
+name|trace
+argument_list|(
+literal|"seek()::plain case - retries: {},  MAX_RETRIES: {}"
+argument_list|,
+name|retries
+argument_list|,
+name|MAX_RETRIES
+argument_list|)
+expr_stmt|;
+name|LOG
+operator|.
+name|trace
+argument_list|(
+literal|"seek()::plain case - lane: {}"
+argument_list|,
+name|lane
+argument_list|)
+expr_stmt|;
+name|LOG
+operator|.
+name|trace
+argument_list|(
+literal|"seek()::plain case - currentKey: {}"
+argument_list|,
+name|currentKey
+argument_list|)
+expr_stmt|;
+name|LOG
+operator|.
+name|trace
+argument_list|(
+literal|"seek()::plain case - nextkey: {}"
+argument_list|,
+name|nextkey
+argument_list|)
+expr_stmt|;
+name|LOG
+operator|.
+name|trace
+argument_list|(
+literal|"seek()::plain case - condition.apply(nextkey): {}"
+argument_list|,
+name|condition
+operator|.
+name|apply
+argument_list|(
+name|nextkey
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|LOG
+operator|.
+name|trace
+argument_list|(
+literal|"seek()::plain case - found: {}"
+argument_list|,
+name|found
+argument_list|)
+expr_stmt|;
+name|LOG
+operator|.
+name|trace
+argument_list|(
+literal|"seek()::plain case - !Strings.isNullOrEmpty(nextkey): {}"
+argument_list|,
+operator|!
+name|Strings
+operator|.
+name|isNullOrEmpty
+argument_list|(
+name|nextkey
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|LOG
+operator|.
+name|trace
+argument_list|(
+literal|"seek()::plain case - walkingPredicate.apply(nextkey): {}"
+argument_list|,
+name|walkingPredicate
+operator|.
+name|apply
+argument_list|(
+name|nextkey
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|LOG
+operator|.
+name|trace
+argument_list|(
+literal|"seek()::plain case - stillLaning: {}"
+argument_list|,
+name|stillLaning
+argument_list|)
+expr_stmt|;
+name|LOG
+operator|.
+name|trace
+argument_list|(
+literal|"seek()::plain case - While Condition: {}"
+argument_list|,
+name|exitCondition
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+do|while
+condition|(
+name|exitCondition
 condition|)
 do|;
 block|}
