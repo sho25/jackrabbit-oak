@@ -1803,6 +1803,28 @@ name|rule
 return|;
 block|}
 block|}
+comment|//nt:base is applicable for all. This specific condition is
+comment|//required to support mixin case as filter.getSupertypes() for mixin based
+comment|//query only includes the mixin type and not nt:base
+if|if
+condition|(
+name|rule
+operator|.
+name|getNodeTypeName
+argument_list|()
+operator|.
+name|equals
+argument_list|(
+name|JcrConstants
+operator|.
+name|NT_BASE
+argument_list|)
+condition|)
+block|{
+return|return
+name|rule
+return|;
+block|}
 block|}
 name|log
 operator|.
