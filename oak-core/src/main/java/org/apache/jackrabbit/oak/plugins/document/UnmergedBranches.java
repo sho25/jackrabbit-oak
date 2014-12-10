@@ -363,6 +363,32 @@ name|purgeCount
 argument_list|)
 expr_stmt|;
 block|}
+name|purgeCount
+operator|=
+name|doc
+operator|.
+name|purgeCollisionMarkers
+argument_list|(
+name|context
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|purgeCount
+operator|>
+literal|0
+condition|)
+block|{
+name|log
+operator|.
+name|info
+argument_list|(
+literal|"Purged [{}] collision markers"
+argument_list|,
+name|purgeCount
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 comment|/**      * Create a branch with an initial commit revision.      *      * @param base the base revision of the branch.      * @param initial the initial commit to the branch.      * @return the branch.      * @throws IllegalArgumentException if      */
 annotation|@
