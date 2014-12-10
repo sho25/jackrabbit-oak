@@ -1850,8 +1850,6 @@ name|property
 argument_list|,
 name|pname
 argument_list|,
-literal|false
-argument_list|,
 name|pd
 argument_list|)
 expr_stmt|;
@@ -2020,9 +2018,6 @@ name|property
 parameter_list|,
 name|String
 name|pname
-parameter_list|,
-name|boolean
-name|aggregateMode
 parameter_list|,
 name|PropertyDefinition
 name|pd
@@ -2226,9 +2221,6 @@ condition|(
 name|pd
 operator|.
 name|nodeScopeIndex
-operator|&&
-operator|!
-name|aggregateMode
 condition|)
 block|{
 name|Field
@@ -3485,8 +3477,6 @@ argument_list|,
 name|result
 operator|.
 name|propertyPath
-argument_list|,
-literal|true
 argument_list|,
 name|result
 operator|.
