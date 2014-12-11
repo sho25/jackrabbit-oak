@@ -478,7 +478,7 @@ annotation|@
 name|Test
 specifier|public
 name|void
-name|testInitializerMongoWithoutInitialContent
+name|testInitializerMongoAfterInitialContent
 parameter_list|()
 throws|throws
 name|CommitFailedException
@@ -497,11 +497,14 @@ operator|.
 name|builder
 argument_list|()
 decl_stmt|;
-name|builder
+comment|// add initial content in separate merge
+operator|new
+name|InitialContent
+argument_list|()
 operator|.
-name|child
+name|initialize
 argument_list|(
-literal|"foo"
+name|builder
 argument_list|)
 expr_stmt|;
 name|mk
