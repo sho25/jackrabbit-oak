@@ -7310,6 +7310,25 @@ argument_list|,
 name|r
 argument_list|)
 expr_stmt|;
+comment|// OAK-2345
+comment|// only consider as external change if
+comment|// - the revision changed for the machineId
+comment|// or
+comment|// - the revision is within the time frame we remember revisions
+if|if
+condition|(
+name|last
+operator|!=
+literal|null
+operator|||
+name|r
+operator|.
+name|getTimestamp
+argument_list|()
+operator|>
+name|revisionPurgeMillis
+argument_list|()
+condition|)
 name|externalChanges
 operator|.
 name|put
@@ -7441,14 +7460,26 @@ name|revisionComparator
 operator|.
 name|purge
 argument_list|(
+name|revisionPurgeMillis
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+comment|/**      * Returns the time in milliseconds when revisions can be purged from the      * revision comparator.      *      * @return time in milliseconds.      */
+specifier|private
+specifier|static
+name|long
+name|revisionPurgeMillis
+parameter_list|()
+block|{
+return|return
 name|Revision
 operator|.
 name|getCurrentTimestamp
 argument_list|()
 operator|-
 name|REMEMBER_REVISION_ORDER_MILLIS
-argument_list|)
-expr_stmt|;
+return|;
 block|}
 specifier|private
 name|void
