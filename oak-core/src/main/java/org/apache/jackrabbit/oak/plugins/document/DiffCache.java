@@ -39,6 +39,16 @@ name|Nonnull
 import|;
 end_import
 
+begin_import
+import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|Nullable
+import|;
+end_import
+
 begin_comment
 comment|/**  * A cache for child node diffs.  */
 end_comment
@@ -48,7 +58,7 @@ specifier|public
 interface|interface
 name|DiffCache
 block|{
-comment|/**      * Returns a jsop diff for the child nodes at the given path. The returned      * String may contain the following changes on child nodes:      *<ul>      *<li>Changed child nodes: e.g. {@code ^"foo":{}}</li>      *<li>Added child nodes: e.g. {@code +"bar":{}}</li>      *<li>Removed child nodes: e.g. {@code -"baz"}</li>      *</ul>      * A {@code null} value indicates that this cache does not have an entry      * for the given revision range at the path.      *      * @param from the from revision.      * @param to the to revision.      * @param path the path of the parent node.      * @return the diff or {@code null} if unknown.      */
+comment|/**      * Returns a jsop diff for the child nodes at the given path. The returned      * String may contain the following changes on child nodes:      *<ul>      *<li>Changed child nodes: e.g. {@code ^"foo":{}}</li>      *<li>Added child nodes: e.g. {@code +"bar":{}}</li>      *<li>Removed child nodes: e.g. {@code -"baz"}</li>      *</ul>      * A {@code null} value indicates that this cache does not have an entry      * for the given revision range at the path.      *      * @param from the from revision.      * @param to the to revision.      * @param path the path of the parent node.      * @param loader an optional loader for the cache entry.      * @return the diff or {@code null} if unknown and no loader was passed.      */
 annotation|@
 name|CheckForNull
 name|String
@@ -68,6 +78,11 @@ annotation|@
 name|Nonnull
 name|String
 name|path
+parameter_list|,
+annotation|@
+name|Nullable
+name|Loader
+name|loader
 parameter_list|)
 function_decl|;
 comment|/**      * Starts a new cache entry for the diff cache. Actual changes are added      * to the entry with the {@link Entry#append(String, String)} method.      *      * @param from the from revision.      * @param to the to revision.      * @return the cache entry.      */
@@ -109,6 +124,15 @@ function_decl|;
 comment|/**          * Called when all changes have been appended and the entry is ready          * to be used by the cache.          */
 name|void
 name|done
+parameter_list|()
+function_decl|;
+block|}
+specifier|public
+interface|interface
+name|Loader
+block|{
+name|String
+name|call
 parameter_list|()
 function_decl|;
 block|}

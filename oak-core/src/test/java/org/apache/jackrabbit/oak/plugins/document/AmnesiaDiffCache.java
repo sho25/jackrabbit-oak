@@ -29,6 +29,16 @@ name|Nonnull
 import|;
 end_import
 
+begin_import
+import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|Nullable
+import|;
+end_import
+
 begin_comment
 comment|/**  * A diff cache implementation, which immediately forgets the diff.  */
 end_comment
@@ -76,8 +86,27 @@ annotation|@
 name|Nonnull
 name|String
 name|path
+parameter_list|,
+annotation|@
+name|Nullable
+name|Loader
+name|loader
 parameter_list|)
 block|{
+if|if
+condition|(
+name|loader
+operator|!=
+literal|null
+condition|)
+block|{
+return|return
+name|loader
+operator|.
+name|call
+argument_list|()
+return|;
+block|}
 return|return
 literal|null
 return|;
