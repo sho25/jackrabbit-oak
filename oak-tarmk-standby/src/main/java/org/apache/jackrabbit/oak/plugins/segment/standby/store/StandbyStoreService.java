@@ -1053,15 +1053,7 @@ argument_list|,
 literal|false
 argument_list|)
 expr_stmt|;
-name|dictionary
-operator|.
-name|put
-argument_list|(
-literal|"scheduler.runOn"
-argument_list|,
-literal|"SINGLE"
-argument_list|)
-expr_stmt|;
+comment|// dictionary.put("scheduler.runOn", "SINGLE");
 name|syncReg
 operator|=
 name|context

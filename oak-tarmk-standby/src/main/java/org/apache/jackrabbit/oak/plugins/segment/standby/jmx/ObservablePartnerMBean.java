@@ -133,6 +133,24 @@ name|long
 name|getTransferredSegmentBytes
 parameter_list|()
 function_decl|;
+annotation|@
+name|Description
+argument_list|(
+literal|"Number of transferred binaries"
+argument_list|)
+name|long
+name|getTransferredBinaries
+parameter_list|()
+function_decl|;
+annotation|@
+name|Description
+argument_list|(
+literal|"Number of bytes stored in transferred binaries"
+argument_list|)
+name|long
+name|getTransferredBinariesBytes
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 

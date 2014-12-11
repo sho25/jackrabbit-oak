@@ -381,6 +381,11 @@ argument_list|,
 literal|"test"
 argument_list|)
 expr_stmt|;
+name|cl1
+operator|.
+name|run
+argument_list|()
+expr_stmt|;
 name|cl2
 operator|.
 name|run
@@ -420,6 +425,11 @@ expr_stmt|;
 name|cl1
 operator|.
 name|start
+argument_list|()
+expr_stmt|;
+name|cl1
+operator|.
+name|run
 argument_list|()
 expr_stmt|;
 name|assertEquals
