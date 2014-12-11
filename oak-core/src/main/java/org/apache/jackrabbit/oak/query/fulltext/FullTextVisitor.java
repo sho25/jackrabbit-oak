@@ -28,6 +28,14 @@ specifier|public
 interface|interface
 name|FullTextVisitor
 block|{
+comment|/**      * Visit an "contains" expression.      *       * @param contains the "contains" expression      * @return true if visiting should continue      */
+name|boolean
+name|visit
+parameter_list|(
+name|FullTextContains
+name|contains
+parameter_list|)
+function_decl|;
 comment|/**      * Visit an "and" expression.      *       * @param and the "and" expression      * @return true if visiting should continue      */
 name|boolean
 name|visit
@@ -61,6 +69,28 @@ name|FullTextVisitorBase
 implements|implements
 name|FullTextVisitor
 block|{
+annotation|@
+name|Override
+specifier|public
+name|boolean
+name|visit
+parameter_list|(
+name|FullTextContains
+name|contains
+parameter_list|)
+block|{
+return|return
+name|contains
+operator|.
+name|getBase
+argument_list|()
+operator|.
+name|accept
+argument_list|(
+name|this
+argument_list|)
+return|;
+block|}
 annotation|@
 name|Override
 specifier|public

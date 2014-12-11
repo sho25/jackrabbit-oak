@@ -851,6 +851,22 @@ name|createContentRepository
 argument_list|()
 return|;
 block|}
+comment|// TODO OAK-2301
+comment|//    @Test
+comment|//    public void fulltextSearchWithCustomAnalyzer() throws Exception{
+comment|//        Tree idx = createFulltextIndex(root.getTree("/"), "test");
+comment|//        TestUtil.useV2(idx);
+comment|//
+comment|//        Tree anl = idx.addChild(ANALYZERS).addChild(ANL_DEFAULT);
+comment|//        anl.addChild(ANL_TOKENIZER).setProperty(ANL_NAME, "whitespace");
+comment|//        anl.addChild(ANL_FILTERS).addChild("stop");
+comment|//
+comment|//        Tree test = root.getTree("/").addChild("test");
+comment|//        test.setProperty("foo", "fox jumping");
+comment|//        root.commit();
+comment|//
+comment|//        assertQuery("select * from [nt:base] where CONTAINS(*, 'fox was jumping')", asList("/test"));
+comment|//    }
 annotation|@
 name|Test
 specifier|public
