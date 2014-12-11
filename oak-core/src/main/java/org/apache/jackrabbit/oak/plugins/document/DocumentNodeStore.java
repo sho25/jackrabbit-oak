@@ -7329,6 +7329,7 @@ operator|>
 name|revisionPurgeMillis
 argument_list|()
 condition|)
+block|{
 name|externalChanges
 operator|.
 name|put
@@ -7338,6 +7339,7 @@ argument_list|,
 name|otherSeen
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 if|if
