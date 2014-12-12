@@ -1003,6 +1003,10 @@ name|Date
 operator|.
 name|LAST_YEAR
 argument_list|)
+argument_list|,
+operator|new
+name|OrderByDate
+argument_list|()
 argument_list|)
 block|,
 operator|new
