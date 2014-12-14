@@ -365,9 +365,7 @@ name|LuceneIndexConstants
 operator|.
 name|PROP_USE_IN_EXCERPT
 argument_list|,
-name|idxDefn
-operator|.
-name|defaultStorageEnabled
+literal|false
 argument_list|)
 expr_stmt|;
 name|this
@@ -382,9 +380,7 @@ name|LuceneIndexConstants
 operator|.
 name|PROP_NODE_SCOPE_INDEX
 argument_list|,
-name|idxDefn
-operator|.
-name|defaultFulltextEnabled
+literal|false
 argument_list|)
 expr_stmt|;
 name|this
@@ -399,9 +395,7 @@ name|LuceneIndexConstants
 operator|.
 name|PROP_ANALYZED
 argument_list|,
-name|idxDefn
-operator|.
-name|defaultFulltextEnabled
+literal|false
 argument_list|)
 expr_stmt|;
 comment|//If node is not set for full text then a property definition indicates that definition is for property index
@@ -417,10 +411,7 @@ name|LuceneIndexConstants
 operator|.
 name|PROP_PROPERTY_INDEX
 argument_list|,
-operator|!
-name|idxDefn
-operator|.
-name|defaultFulltextEnabled
+literal|false
 argument_list|)
 expr_stmt|;
 name|this
