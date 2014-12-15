@@ -225,31 +225,7 @@ name|compaction
 operator|.
 name|CompactionStrategy
 operator|.
-name|CleanupType
-operator|.
-name|CLEAN_NONE
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|plugins
-operator|.
-name|segment
-operator|.
-name|compaction
-operator|.
-name|CompactionStrategy
-operator|.
-name|MEMORY_THRESHOLD_DEFAULT
+name|NO_COMPACTION
 import|;
 end_import
 
@@ -977,19 +953,7 @@ specifier|private
 name|CompactionStrategy
 name|compactionStrategy
 init|=
-operator|new
-name|CompactionStrategy
-argument_list|(
-literal|true
-argument_list|,
-literal|false
-argument_list|,
-name|CLEAN_NONE
-argument_list|,
-literal|0
-argument_list|,
-name|MEMORY_THRESHOLD_DEFAULT
-argument_list|)
+name|NO_COMPACTION
 decl_stmt|;
 comment|/**      * Flag to request revision cleanup during the next flush.      */
 specifier|private
@@ -4103,6 +4067,23 @@ name|void
 name|gc
 parameter_list|()
 block|{
+if|if
+condition|(
+name|compactionStrategy
+operator|==
+name|NO_COMPACTION
+condition|)
+block|{
+name|log
+operator|.
+name|warn
+argument_list|(
+literal|"Call to gc while compaction strategy set to {}. "
+argument_list|,
+name|NO_COMPACTION
+argument_list|)
+expr_stmt|;
+block|}
 name|compactionThread
 operator|.
 name|trigger
