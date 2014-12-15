@@ -269,6 +269,8 @@ argument_list|,
 name|storeC
 argument_list|,
 literal|true
+argument_list|,
+literal|5000
 argument_list|)
 decl_stmt|;
 name|cl
@@ -470,6 +472,8 @@ argument_list|,
 name|storeC
 argument_list|,
 literal|true
+argument_list|,
+literal|5000
 argument_list|)
 decl_stmt|;
 name|cl

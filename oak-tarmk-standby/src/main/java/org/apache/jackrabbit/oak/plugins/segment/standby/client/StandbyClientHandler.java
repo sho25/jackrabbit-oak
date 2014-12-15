@@ -309,6 +309,11 @@ name|AtomicBoolean
 name|running
 decl_stmt|;
 specifier|private
+specifier|final
+name|int
+name|readTimeoutMs
+decl_stmt|;
+specifier|private
 name|EventExecutorGroup
 name|loaderExecutor
 decl_stmt|;
@@ -331,6 +336,9 @@ name|observer
 parameter_list|,
 name|AtomicBoolean
 name|running
+parameter_list|,
+name|int
+name|readTimeoutMs
 parameter_list|)
 block|{
 name|this
@@ -356,6 +364,12 @@ operator|.
 name|running
 operator|=
 name|running
+expr_stmt|;
+name|this
+operator|.
+name|readTimeoutMs
+operator|=
+name|readTimeoutMs
 expr_stmt|;
 block|}
 annotation|@
@@ -556,6 +570,8 @@ name|getID
 argument_list|()
 argument_list|,
 name|running
+argument_list|,
+name|readTimeoutMs
 argument_list|)
 decl_stmt|;
 name|ctx
