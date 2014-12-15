@@ -1008,11 +1008,24 @@ argument_list|(
 literal|" /* xpath: "
 argument_list|)
 expr_stmt|;
+comment|// the xpath query may not contain the "end comment" marker
+name|String
+name|xpathEscaped
+init|=
+name|xpathQuery
+operator|.
+name|replaceAll
+argument_list|(
+literal|"\\*\\/"
+argument_list|,
+literal|"* /"
+argument_list|)
+decl_stmt|;
 name|buff
 operator|.
 name|append
 argument_list|(
-name|xpathQuery
+name|xpathEscaped
 argument_list|)
 expr_stmt|;
 name|buff

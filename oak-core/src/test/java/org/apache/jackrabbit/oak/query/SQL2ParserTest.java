@@ -207,6 +207,17 @@ argument_list|(
 literal|"select [jcr:path], [jcr:score], * from [nt:base] as a /* xpath: //* */"
 argument_list|)
 expr_stmt|;
+name|p
+operator|.
+name|parse
+argument_list|(
+literal|"/* begin query */ select [jcr:path] /* this is the path */, "
+operator|+
+literal|"[jcr:score] /* the score */, * /* everything*/ "
+operator|+
+literal|"from [nt:base] /* all node types */ as a /* an identifier */"
+argument_list|)
+expr_stmt|;
 block|}
 annotation|@
 name|Test
