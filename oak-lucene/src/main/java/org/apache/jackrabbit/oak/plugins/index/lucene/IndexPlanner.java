@@ -1758,6 +1758,36 @@ name|pd
 argument_list|)
 expr_stmt|;
 block|}
+elseif|else
+if|if
+condition|(
+name|o
+operator|.
+name|getPropertyName
+argument_list|()
+operator|.
+name|equals
+argument_list|(
+name|IndexDefinition
+operator|.
+name|NATIVE_SORT_ORDER
+operator|.
+name|getPropertyName
+argument_list|()
+argument_list|)
+condition|)
+block|{
+comment|// Supports jcr:score descending natively
+name|orderEntries
+operator|.
+name|add
+argument_list|(
+name|IndexDefinition
+operator|.
+name|NATIVE_SORT_ORDER
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 comment|//TODO Should we return order entries only when all order clauses are satisfied
 return|return
