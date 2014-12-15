@@ -342,6 +342,7 @@ literal|1
 decl_stmt|;
 comment|// 255
 comment|/**      * The number of bytes (or bits of address space) to use for the      * alignment boundary of segment records.      */
+specifier|public
 specifier|static
 specifier|final
 name|int
@@ -787,6 +788,19 @@ operator|=
 literal|"bulk"
 expr_stmt|;
 block|}
+name|long
+name|delta
+init|=
+name|System
+operator|.
+name|currentTimeMillis
+argument_list|()
+operator|-
+name|id
+operator|.
+name|getCreationTime
+argument_list|()
+decl_stmt|;
 throw|throw
 operator|new
 name|IllegalStateException
@@ -802,6 +816,12 @@ operator|+
 literal|" segment "
 operator|+
 name|id
+operator|+
+literal|". Creation date delta is "
+operator|+
+name|delta
+operator|+
+literal|" ms."
 argument_list|)
 throw|;
 block|}

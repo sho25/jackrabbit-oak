@@ -3919,7 +3919,6 @@ name|next
 argument_list|()
 return|;
 block|}
-specifier|public
 name|MapRecord
 name|writeMap
 parameter_list|(
@@ -6515,12 +6514,7 @@ name|store
 operator|.
 name|containsSegment
 argument_list|(
-operator|(
-operator|(
-name|SegmentNodeState
-operator|)
 name|before
-operator|)
 operator|.
 name|getRecordId
 argument_list|()
@@ -6705,6 +6699,15 @@ name|recordId
 argument_list|)
 return|;
 block|}
+block|}
+specifier|public
+name|SegmentTracker
+name|getTracker
+parameter_list|()
+block|{
+return|return
+name|tracker
+return|;
 block|}
 block|}
 end_class

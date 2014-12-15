@@ -63,7 +63,7 @@ name|segment
 operator|.
 name|Segment
 operator|.
-name|RECORD_ALIGN_BITS
+name|MAX_SEGMENT_SIZE
 import|;
 end_import
 
@@ -83,7 +83,7 @@ name|segment
 operator|.
 name|Segment
 operator|.
-name|MAX_SEGMENT_SIZE
+name|RECORD_ALIGN_BITS
 import|;
 end_import
 
@@ -216,15 +216,6 @@ literal|1024
 operator|)
 argument_list|)
 expr_stmt|;
-name|CompactionMap
-name|map
-init|=
-operator|new
-name|CompactionMap
-argument_list|(
-literal|100000
-argument_list|)
-decl_stmt|;
 name|SegmentTracker
 name|factory
 init|=
@@ -234,6 +225,17 @@ argument_list|()
 operator|.
 name|getTracker
 argument_list|()
+decl_stmt|;
+name|CompactionMap
+name|map
+init|=
+operator|new
+name|CompactionMap
+argument_list|(
+literal|100000
+argument_list|,
+name|factory
+argument_list|)
 decl_stmt|;
 for|for
 control|(
@@ -438,6 +440,8 @@ name|maxSegments
 operator|/
 literal|2
 argument_list|)
+argument_list|,
+name|factory
 argument_list|)
 decl_stmt|;
 name|Map
@@ -684,6 +688,7 @@ block|}
 block|}
 comment|/**      * Returns a new valid record offset, between {@code a} and {@code b},      * exclusive.      */
 specifier|private
+specifier|static
 name|int
 name|newValidOffset
 parameter_list|(

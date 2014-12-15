@@ -114,6 +114,11 @@ specifier|final
 name|long
 name|lsb
 decl_stmt|;
+specifier|private
+specifier|final
+name|long
+name|creationTime
+decl_stmt|;
 comment|/**      * A reference to the segment object, if it is available in memory. It is      * used for fast lookup. The segment tracker will set or reset this field.      */
 comment|// TODO: possibly we could remove the volatile
 specifier|private
@@ -121,7 +126,7 @@ specifier|volatile
 name|Segment
 name|segment
 decl_stmt|;
-specifier|public
+specifier|private
 name|SegmentId
 parameter_list|(
 name|SegmentTracker
@@ -135,6 +140,9 @@ name|lsb
 parameter_list|,
 name|Segment
 name|segment
+parameter_list|,
+name|long
+name|creationTime
 parameter_list|)
 block|{
 name|this
@@ -160,6 +168,12 @@ operator|.
 name|segment
 operator|=
 name|segment
+expr_stmt|;
+name|this
+operator|.
+name|creationTime
+operator|=
+name|creationTime
 expr_stmt|;
 block|}
 specifier|public
@@ -184,6 +198,11 @@ argument_list|,
 name|lsb
 argument_list|,
 literal|null
+argument_list|,
+name|System
+operator|.
+name|currentTimeMillis
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -350,7 +369,16 @@ return|return
 name|tracker
 return|;
 block|}
-comment|//--------------------------------------------------------< Comparable>--
+specifier|public
+name|long
+name|getCreationTime
+parameter_list|()
+block|{
+return|return
+name|creationTime
+return|;
+block|}
+comment|// --------------------------------------------------------< Comparable>--
 annotation|@
 name|Override
 specifier|public
@@ -420,7 +448,7 @@ return|return
 name|d
 return|;
 block|}
-comment|//------------------------------------------------------------< Object>--
+comment|// ------------------------------------------------------------< Object>--
 annotation|@
 name|Override
 specifier|public
@@ -451,10 +479,49 @@ name|Object
 name|object
 parameter_list|)
 block|{
-return|return
+if|if
+condition|(
 name|this
 operator|==
 name|object
+condition|)
+block|{
+return|return
+literal|true
+return|;
+block|}
+elseif|else
+if|if
+condition|(
+name|object
+operator|instanceof
+name|SegmentId
+condition|)
+block|{
+name|SegmentId
+name|that
+init|=
+operator|(
+name|SegmentId
+operator|)
+name|object
+decl_stmt|;
+return|return
+name|msb
+operator|==
+name|that
+operator|.
+name|msb
+operator|&&
+name|lsb
+operator|==
+name|that
+operator|.
+name|lsb
+return|;
+block|}
+return|return
+literal|false
 return|;
 block|}
 annotation|@
