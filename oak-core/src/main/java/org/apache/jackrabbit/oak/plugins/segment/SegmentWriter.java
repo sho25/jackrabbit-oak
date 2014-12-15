@@ -6503,13 +6503,11 @@ block|}
 elseif|else
 if|if
 condition|(
-operator|!
-operator|(
 name|before
-operator|instanceof
-name|SegmentNodeState
-operator|)
+operator|==
+literal|null
 operator|||
+operator|!
 name|store
 operator|.
 name|containsSegment
