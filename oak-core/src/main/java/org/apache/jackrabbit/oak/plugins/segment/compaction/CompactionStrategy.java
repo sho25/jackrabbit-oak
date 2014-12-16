@@ -187,8 +187,11 @@ literal|1000
 operator|*
 literal|60
 operator|*
-literal|5
+literal|60
+operator|+
+literal|10
 decl_stmt|;
+comment|// 10h
 specifier|public
 specifier|static
 specifier|final
