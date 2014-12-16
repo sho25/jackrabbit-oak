@@ -47,6 +47,22 @@ name|io
 operator|.
 name|FileUtils
 operator|.
+name|byteCountToDisplaySize
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|io
+operator|.
+name|FileUtils
+operator|.
 name|deleteDirectory
 import|;
 end_import
@@ -489,6 +505,26 @@ end_import
 
 begin_import
 import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
+import|;
+end_import
+
+begin_import
+import|import
 name|com
 operator|.
 name|google
@@ -506,6 +542,21 @@ specifier|public
 class|class
 name|CompactionAndCleanupTest
 block|{
+specifier|private
+specifier|static
+specifier|final
+name|Logger
+name|log
+init|=
+name|LoggerFactory
+operator|.
+name|getLogger
+argument_list|(
+name|CompactionAndCleanupTest
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 specifier|private
 name|File
 name|directory
@@ -761,8 +812,20 @@ operator|.
 name|size
 argument_list|()
 decl_stmt|;
-comment|// System.out.printf("File store dataSize %s%n",
-comment|// byteCountToDisplaySize(dataSize));
+name|log
+operator|.
+name|debug
+argument_list|(
+literal|"File store dataSize {}"
+argument_list|,
+name|byteCountToDisplaySize
+argument_list|(
+name|dataSize
+argument_list|)
+argument_list|)
+expr_stmt|;
+try|try
+block|{
 comment|// 1. Create a property with 5 MB blob
 name|NodeBuilder
 name|builder
@@ -813,9 +876,28 @@ operator|.
 name|EMPTY
 argument_list|)
 expr_stmt|;
-comment|// System.out.printf("File store pre removal %s expecting %s %n",
-comment|// byteCountToDisplaySize(fileStore.size()),
-comment|// byteCountToDisplaySize(blobSize + dataSize));
+name|log
+operator|.
+name|debug
+argument_list|(
+literal|"File store pre removal {}, expecting {}"
+argument_list|,
+name|byteCountToDisplaySize
+argument_list|(
+name|fileStore
+operator|.
+name|size
+argument_list|()
+argument_list|)
+argument_list|,
+name|byteCountToDisplaySize
+argument_list|(
+name|blobSize
+operator|+
+name|dataSize
+argument_list|)
+argument_list|)
+expr_stmt|;
 name|assertEquals
 argument_list|(
 name|mb
@@ -868,9 +950,28 @@ name|EMPTY
 argument_list|)
 expr_stmt|;
 comment|// Size remains same, no cleanup happened yet
-comment|// System.out.printf("File store pre compaction %s expecting %s%n",
-comment|// byteCountToDisplaySize(fileStore.size()),
-comment|// byteCountToDisplaySize(blobSize + dataSize));
+name|log
+operator|.
+name|debug
+argument_list|(
+literal|"File store pre compaction {}, expecting {}"
+argument_list|,
+name|byteCountToDisplaySize
+argument_list|(
+name|fileStore
+operator|.
+name|size
+argument_list|()
+argument_list|)
+argument_list|,
+name|byteCountToDisplaySize
+argument_list|(
+name|blobSize
+operator|+
+name|dataSize
+argument_list|)
+argument_list|)
+expr_stmt|;
 name|assertEquals
 argument_list|(
 name|mb
@@ -902,9 +1003,6 @@ argument_list|)
 expr_stmt|;
 comment|// Size doesn't shrink: ran compaction with a '1 Hour' cleanup
 comment|// strategy
-comment|// System.out.printf("File store post compaction %s expecting %s%n",
-comment|// byteCountToDisplaySize(fileStore.size()),
-comment|// byteCountToDisplaySize(blobSize + dataSize));
 name|assertSize
 argument_list|(
 literal|"post compaction"
@@ -966,12 +1064,9 @@ name|EMPTY
 argument_list|)
 expr_stmt|;
 comment|// Size is double
-comment|// System.out.printf("File store pre cleanup %s expecting %s%n",
-comment|// byteCountToDisplaySize(fileStore.size()),
-comment|// byteCountToDisplaySize(2 * blobSize + dataSize));
 name|assertSize
 argument_list|(
-literal|"post compaction"
+literal|"pre cleanup"
 argument_list|,
 name|fileStore
 operator|.
@@ -1013,11 +1108,6 @@ operator|.
 name|cleanup
 argument_list|()
 expr_stmt|;
-comment|// System.out.printf(
-comment|// "File store post cleanup %s expecting between [%s,%s]%n",
-comment|// byteCountToDisplaySize(fileStore.size()),
-comment|// byteCountToDisplaySize(blobSize + dataSize),
-comment|// byteCountToDisplaySize(blobSize + 2 * dataSize));
 name|assertSize
 argument_list|(
 literal|"post cleanup"
@@ -1143,13 +1233,22 @@ name|length
 argument_list|)
 expr_stmt|;
 block|}
+finally|finally
+block|{
+name|fileStore
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
+block|}
+block|}
 specifier|private
 specifier|static
 name|void
 name|assertSize
 parameter_list|(
 name|String
-name|log
+name|info
 parameter_list|,
 name|long
 name|size
@@ -1161,6 +1260,30 @@ name|long
 name|upper
 parameter_list|)
 block|{
+name|log
+operator|.
+name|debug
+argument_list|(
+literal|"File Store {} size {}, expected in interval [{},{}]"
+argument_list|,
+name|info
+argument_list|,
+name|byteCountToDisplaySize
+argument_list|(
+name|size
+argument_list|)
+argument_list|,
+name|byteCountToDisplaySize
+argument_list|(
+name|lower
+argument_list|)
+argument_list|,
+name|byteCountToDisplaySize
+argument_list|(
+name|upper
+argument_list|)
+argument_list|)
+expr_stmt|;
 name|assertTrue
 argument_list|(
 literal|"File Store "
