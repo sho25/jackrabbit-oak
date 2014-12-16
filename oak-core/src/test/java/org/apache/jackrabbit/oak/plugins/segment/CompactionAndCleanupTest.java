@@ -900,29 +900,29 @@ literal|false
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// Size still remains same: ran compaction with a '1 Hour' cleanup
+comment|// Size doesn't shrink: ran compaction with a '1 Hour' cleanup
 comment|// strategy
 comment|// System.out.printf("File store post compaction %s expecting %s%n",
 comment|// byteCountToDisplaySize(fileStore.size()),
 comment|// byteCountToDisplaySize(blobSize + dataSize));
-name|assertEquals
+name|assertSize
 argument_list|(
-literal|"File store post compaction size"
+literal|"post compaction"
 argument_list|,
-name|mb
-argument_list|(
-name|blobSize
-operator|+
-name|dataSize
-argument_list|)
-argument_list|,
-name|mb
-argument_list|(
 name|fileStore
 operator|.
 name|size
 argument_list|()
-argument_list|)
+argument_list|,
+name|blobSize
+operator|+
+name|dataSize
+argument_list|,
+name|blobSize
+operator|+
+literal|2
+operator|*
+name|dataSize
 argument_list|)
 expr_stmt|;
 comment|// 4. Add some more property to flush the current TarWriter
@@ -969,24 +969,28 @@ comment|// Size is double
 comment|// System.out.printf("File store pre cleanup %s expecting %s%n",
 comment|// byteCountToDisplaySize(fileStore.size()),
 comment|// byteCountToDisplaySize(2 * blobSize + dataSize));
-name|assertEquals
+name|assertSize
 argument_list|(
-name|mb
-argument_list|(
+literal|"post compaction"
+argument_list|,
+name|fileStore
+operator|.
+name|size
+argument_list|()
+argument_list|,
 literal|2
 operator|*
 name|blobSize
 operator|+
 name|dataSize
-argument_list|)
 argument_list|,
-name|mb
-argument_list|(
-name|fileStore
-operator|.
-name|size
-argument_list|()
-argument_list|)
+literal|2
+operator|*
+name|blobSize
+operator|+
+literal|2
+operator|*
+name|dataSize
 argument_list|)
 expr_stmt|;
 comment|// 5. Cleanup, expecting store size:
@@ -1000,13 +1004,13 @@ name|fileStore
 operator|.
 name|maybeCompact
 argument_list|(
-literal|true
+literal|false
 argument_list|)
 argument_list|)
 expr_stmt|;
 name|fileStore
 operator|.
-name|flush
+name|cleanup
 argument_list|()
 expr_stmt|;
 comment|// System.out.printf(
@@ -1014,39 +1018,24 @@ comment|// "File store post cleanup %s expecting between [%s,%s]%n",
 comment|// byteCountToDisplaySize(fileStore.size()),
 comment|// byteCountToDisplaySize(blobSize + dataSize),
 comment|// byteCountToDisplaySize(blobSize + 2 * dataSize));
-name|assertTrue
+name|assertSize
 argument_list|(
-name|mb
-argument_list|(
+literal|"post cleanup"
+argument_list|,
 name|fileStore
 operator|.
 name|size
 argument_list|()
-argument_list|)
-operator|>=
-name|mb
-argument_list|(
+argument_list|,
 name|blobSize
 operator|+
 name|dataSize
-argument_list|)
-operator|&&
-name|mb
-argument_list|(
-name|fileStore
-operator|.
-name|size
-argument_list|()
-argument_list|)
-operator|<=
-name|mb
-argument_list|(
+argument_list|,
 name|blobSize
 operator|+
 literal|2
 operator|*
 name|dataSize
-argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// refresh the ts ref, to simulate a long wait time
@@ -1066,15 +1055,35 @@ argument_list|(
 literal|5
 argument_list|)
 expr_stmt|;
-comment|// gain is 33%
-name|assertTrue
-argument_list|(
+name|boolean
+name|needsCompaction
+init|=
+literal|true
+decl_stmt|;
+for|for
+control|(
+name|int
+name|i
+init|=
+literal|0
+init|;
+name|i
+operator|<
+literal|3
+operator|&&
+name|needsCompaction
+condition|;
+name|i
+operator|++
+control|)
+block|{
+name|needsCompaction
+operator|=
 name|fileStore
 operator|.
 name|maybeCompact
 argument_list|(
 literal|false
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|fileStore
@@ -1082,23 +1091,8 @@ operator|.
 name|cleanup
 argument_list|()
 expr_stmt|;
-comment|// gain is 19%
-name|assertTrue
-argument_list|(
-name|fileStore
-operator|.
-name|maybeCompact
-argument_list|(
-literal|false
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|fileStore
-operator|.
-name|cleanup
-argument_list|()
-expr_stmt|;
-comment|// gain is 0%
+block|}
+comment|// gain is finally 0%
 name|assertFalse
 argument_list|(
 name|fileStore
@@ -1146,6 +1140,73 @@ argument_list|,
 name|blob
 operator|.
 name|length
+argument_list|)
+expr_stmt|;
+block|}
+specifier|private
+specifier|static
+name|void
+name|assertSize
+parameter_list|(
+name|String
+name|log
+parameter_list|,
+name|long
+name|size
+parameter_list|,
+name|long
+name|lower
+parameter_list|,
+name|long
+name|upper
+parameter_list|)
+block|{
+name|assertTrue
+argument_list|(
+literal|"File Store "
+operator|+
+name|log
+operator|+
+literal|" size expected in interval ["
+operator|+
+name|mb
+argument_list|(
+name|lower
+argument_list|)
+operator|+
+literal|","
+operator|+
+name|mb
+argument_list|(
+name|upper
+argument_list|)
+operator|+
+literal|"] but was: "
+operator|+
+name|mb
+argument_list|(
+name|size
+argument_list|)
+argument_list|,
+name|mb
+argument_list|(
+name|size
+argument_list|)
+operator|>=
+name|mb
+argument_list|(
+name|lower
+argument_list|)
+operator|&&
+name|mb
+argument_list|(
+name|size
+argument_list|)
+operator|<=
+name|mb
+argument_list|(
+name|upper
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
