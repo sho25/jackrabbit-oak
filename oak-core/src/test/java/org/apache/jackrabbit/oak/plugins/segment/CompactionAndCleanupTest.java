@@ -47,22 +47,6 @@ name|io
 operator|.
 name|FileUtils
 operator|.
-name|byteCountToDisplaySize
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|commons
-operator|.
-name|io
-operator|.
-name|FileUtils
-operator|.
 name|deleteDirectory
 import|;
 end_import
@@ -281,20 +265,6 @@ end_import
 
 begin_import
 import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|io
-operator|.
-name|ByteStreams
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -483,24 +453,6 @@ name|spi
 operator|.
 name|state
 operator|.
-name|NodeState
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|spi
-operator|.
-name|state
-operator|.
 name|NodeStore
 import|;
 end_import
@@ -531,17 +483,21 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Ignore
+name|Test
 import|;
 end_import
 
 begin_import
 import|import
-name|org
+name|com
 operator|.
-name|junit
+name|google
 operator|.
-name|Test
+name|common
+operator|.
+name|io
+operator|.
+name|ByteStreams
 import|;
 end_import
 
@@ -593,33 +549,23 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-annotation|@
-name|Ignore
-argument_list|(
-literal|"OAK-2045"
-argument_list|)
 specifier|public
 name|void
-name|compactionAndWeakReferenceMagic
+name|compactionNoBinaryClone
 parameter_list|()
 throws|throws
 name|Exception
 block|{
-specifier|final
-name|int
-name|MB
-init|=
-literal|1024
-operator|*
-literal|1024
-decl_stmt|;
+comment|// 2MB data, 5MB blob
 specifier|final
 name|int
 name|blobSize
 init|=
 literal|5
 operator|*
-name|MB
+literal|1024
+operator|*
+literal|1024
 decl_stmt|;
 specifier|final
 name|int
@@ -815,20 +761,8 @@ operator|.
 name|size
 argument_list|()
 decl_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|printf
-argument_list|(
-literal|"File store dataSize %s%n"
-argument_list|,
-name|byteCountToDisplaySize
-argument_list|(
-name|dataSize
-argument_list|)
-argument_list|)
-expr_stmt|;
+comment|// System.out.printf("File store dataSize %s%n",
+comment|// byteCountToDisplaySize(dataSize));
 comment|// 1. Create a property with 5 MB blob
 name|NodeBuilder
 name|builder
@@ -864,11 +798,6 @@ argument_list|,
 literal|"foo"
 argument_list|)
 expr_stmt|;
-comment|// Keep a reference to this nodeState to simulate long
-comment|// running session
-name|NodeState
-name|ns1
-init|=
 name|nodeStore
 operator|.
 name|merge
@@ -883,31 +812,10 @@ name|CommitInfo
 operator|.
 name|EMPTY
 argument_list|)
-decl_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|printf
-argument_list|(
-literal|"File store pre removal %s expecting %s %n"
-argument_list|,
-name|byteCountToDisplaySize
-argument_list|(
-name|fileStore
-operator|.
-name|size
-argument_list|()
-argument_list|)
-argument_list|,
-name|byteCountToDisplaySize
-argument_list|(
-name|blobSize
-operator|+
-name|dataSize
-argument_list|)
-argument_list|)
 expr_stmt|;
+comment|// System.out.printf("File store pre removal %s expecting %s %n",
+comment|// byteCountToDisplaySize(fileStore.size()),
+comment|// byteCountToDisplaySize(blobSize + dataSize));
 name|assertEquals
 argument_list|(
 name|mb
@@ -959,31 +867,10 @@ operator|.
 name|EMPTY
 argument_list|)
 expr_stmt|;
-comment|// Size remains same
-name|System
-operator|.
-name|out
-operator|.
-name|printf
-argument_list|(
-literal|"File store pre compaction %s expecting %s%n"
-argument_list|,
-name|byteCountToDisplaySize
-argument_list|(
-name|fileStore
-operator|.
-name|size
-argument_list|()
-argument_list|)
-argument_list|,
-name|byteCountToDisplaySize
-argument_list|(
-name|blobSize
-operator|+
-name|dataSize
-argument_list|)
-argument_list|)
-expr_stmt|;
+comment|// Size remains same, no cleanup happened yet
+comment|// System.out.printf("File store pre compaction %s expecting %s%n",
+comment|// byteCountToDisplaySize(fileStore.size()),
+comment|// byteCountToDisplaySize(blobSize + dataSize));
 name|assertEquals
 argument_list|(
 name|mb
@@ -1013,32 +900,11 @@ literal|false
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// fileStore.cleanup();
-comment|// Size still remains same
-name|System
-operator|.
-name|out
-operator|.
-name|printf
-argument_list|(
-literal|"File store post compaction %s expecting %s%n"
-argument_list|,
-name|byteCountToDisplaySize
-argument_list|(
-name|fileStore
-operator|.
-name|size
-argument_list|()
-argument_list|)
-argument_list|,
-name|byteCountToDisplaySize
-argument_list|(
-name|blobSize
-operator|+
-name|dataSize
-argument_list|)
-argument_list|)
-expr_stmt|;
+comment|// Size still remains same: ran compaction with a '1 Hour' cleanup
+comment|// strategy
+comment|// System.out.printf("File store post compaction %s expecting %s%n",
+comment|// byteCountToDisplaySize(fileStore.size()),
+comment|// byteCountToDisplaySize(blobSize + dataSize));
 name|assertEquals
 argument_list|(
 literal|"File store post compaction size"
@@ -1100,32 +966,9 @@ name|EMPTY
 argument_list|)
 expr_stmt|;
 comment|// Size is double
-name|System
-operator|.
-name|out
-operator|.
-name|printf
-argument_list|(
-literal|"File store pre cleanup %s expecting %s%n"
-argument_list|,
-name|byteCountToDisplaySize
-argument_list|(
-name|fileStore
-operator|.
-name|size
-argument_list|()
-argument_list|)
-argument_list|,
-name|byteCountToDisplaySize
-argument_list|(
-literal|2
-operator|*
-name|blobSize
-operator|+
-name|dataSize
-argument_list|)
-argument_list|)
-expr_stmt|;
+comment|// System.out.printf("File store pre cleanup %s expecting %s%n",
+comment|// byteCountToDisplaySize(fileStore.size()),
+comment|// byteCountToDisplaySize(2 * blobSize + dataSize));
 name|assertEquals
 argument_list|(
 name|mb
@@ -1146,58 +989,31 @@ argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// 5. Cleanup
+comment|// 5. Cleanup, expecting store size:
+comment|// no data content =>
+comment|// fileStore.size() == blobSize
+comment|// some data content =>
+comment|// fileStore.size() in [blobSize + dataSize, blobSize + 2xdataSize]
 name|assertTrue
 argument_list|(
 name|fileStore
 operator|.
 name|maybeCompact
 argument_list|(
-literal|false
+literal|true
 argument_list|)
 argument_list|)
 expr_stmt|;
 name|fileStore
 operator|.
-name|cleanup
+name|flush
 argument_list|()
 expr_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|printf
-argument_list|(
-literal|"File store post cleanup %s expecting between [%s,%s]%n"
-argument_list|,
-name|byteCountToDisplaySize
-argument_list|(
-name|fileStore
-operator|.
-name|size
-argument_list|()
-argument_list|)
-argument_list|,
-name|byteCountToDisplaySize
-argument_list|(
-name|blobSize
-operator|+
-name|dataSize
-argument_list|)
-argument_list|,
-name|byteCountToDisplaySize
-argument_list|(
-name|blobSize
-operator|+
-literal|2
-operator|*
-name|dataSize
-argument_list|)
-argument_list|)
-expr_stmt|;
-comment|// 0 data size: fileStore.size() == blobSize
-comment|//>0 data size: fileStore.size() in [blobSize + dataSize, blobSize +
-comment|// 2xdataSize]
+comment|// System.out.printf(
+comment|// "File store post cleanup %s expecting between [%s,%s]%n",
+comment|// byteCountToDisplaySize(fileStore.size()),
+comment|// byteCountToDisplaySize(blobSize + dataSize),
+comment|// byteCountToDisplaySize(blobSize + 2 * dataSize));
 name|assertTrue
 argument_list|(
 name|mb
@@ -1241,6 +1057,48 @@ argument_list|(
 literal|0
 argument_list|)
 expr_stmt|;
+name|TimeUnit
+operator|.
+name|MILLISECONDS
+operator|.
+name|sleep
+argument_list|(
+literal|5
+argument_list|)
+expr_stmt|;
+comment|// gain is 33%
+name|assertTrue
+argument_list|(
+name|fileStore
+operator|.
+name|maybeCompact
+argument_list|(
+literal|false
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|fileStore
+operator|.
+name|cleanup
+argument_list|()
+expr_stmt|;
+comment|// gain is 19%
+name|assertTrue
+argument_list|(
+name|fileStore
+operator|.
+name|maybeCompact
+argument_list|(
+literal|false
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|fileStore
+operator|.
+name|cleanup
+argument_list|()
+expr_stmt|;
+comment|// gain is 0%
 name|assertFalse
 argument_list|(
 name|fileStore
