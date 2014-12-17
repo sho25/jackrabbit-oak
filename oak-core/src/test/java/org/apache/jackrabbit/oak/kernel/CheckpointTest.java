@@ -659,6 +659,26 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
+specifier|public
+name|void
+name|retrieveAny
+parameter_list|()
+block|{
+name|assertTrue
+argument_list|(
+name|store
+operator|.
+name|retrieve
+argument_list|(
+literal|"r42-0-0"
+argument_list|)
+operator|==
+literal|null
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 end_class
 
