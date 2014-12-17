@@ -13,7 +13,7 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|kernel
+name|json
 package|;
 end_package
 
@@ -211,6 +211,7 @@ name|MAX_VALUE
 expr_stmt|;
 block|}
 block|}
+specifier|public
 name|JsopDiff
 parameter_list|(
 name|BlobSerializer
@@ -236,6 +237,7 @@ name|MAX_VALUE
 argument_list|)
 expr_stmt|;
 block|}
+specifier|public
 name|JsopDiff
 parameter_list|(
 name|BlobSerializer
@@ -250,6 +252,7 @@ literal|"/"
 argument_list|)
 expr_stmt|;
 block|}
+specifier|public
 name|JsopDiff
 parameter_list|(
 name|String
@@ -275,6 +278,7 @@ name|depth
 argument_list|)
 expr_stmt|;
 block|}
+specifier|public
 name|JsopDiff
 parameter_list|()
 block|{

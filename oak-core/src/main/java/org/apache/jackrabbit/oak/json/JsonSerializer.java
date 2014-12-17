@@ -13,7 +13,7 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|kernel
+name|json
 package|;
 end_package
 
@@ -410,6 +410,7 @@ name|blobs
 argument_list|)
 expr_stmt|;
 block|}
+specifier|public
 name|JsonSerializer
 parameter_list|(
 name|int
@@ -505,6 +506,7 @@ name|blobs
 argument_list|)
 return|;
 block|}
+specifier|public
 name|void
 name|serialize
 parameter_list|(
@@ -824,6 +826,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
+specifier|public
 name|void
 name|serialize
 parameter_list|(
@@ -1318,6 +1321,7 @@ block|}
 block|}
 block|}
 specifier|private
+specifier|static
 name|void
 name|readPatterns
 parameter_list|(
@@ -1651,6 +1655,7 @@ argument_list|)
 return|;
 block|}
 specifier|private
+specifier|static
 name|boolean
 name|include
 parameter_list|(

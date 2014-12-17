@@ -107,7 +107,7 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|kernel
+name|json
 operator|.
 name|BlobSerializer
 import|;

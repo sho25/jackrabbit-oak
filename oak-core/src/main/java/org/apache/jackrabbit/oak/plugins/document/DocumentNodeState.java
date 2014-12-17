@@ -267,7 +267,7 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|kernel
+name|json
 operator|.
 name|JsonSerializer
 import|;
