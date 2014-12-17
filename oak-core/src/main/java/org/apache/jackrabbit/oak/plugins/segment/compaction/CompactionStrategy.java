@@ -188,7 +188,7 @@ operator|*
 literal|60
 operator|*
 literal|60
-operator|+
+operator|*
 literal|10
 decl_stmt|;
 comment|// 10h
