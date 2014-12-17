@@ -127,7 +127,7 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|kernel
+name|cache
 operator|.
 name|StringCache
 import|;
