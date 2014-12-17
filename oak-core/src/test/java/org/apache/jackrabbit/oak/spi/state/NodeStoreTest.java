@@ -525,10 +525,6 @@ extends|extends
 name|OakBaseTest
 block|{
 specifier|private
-name|NodeStore
-name|store
-decl_stmt|;
-specifier|private
 name|NodeState
 name|root
 decl_stmt|;
@@ -554,13 +550,6 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|store
-operator|=
-name|fixture
-operator|.
-name|createNodeStore
-argument_list|()
-expr_stmt|;
 name|NodeBuilder
 name|builder
 init|=
