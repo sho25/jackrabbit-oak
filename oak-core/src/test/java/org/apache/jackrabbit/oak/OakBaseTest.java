@@ -201,6 +201,12 @@ name|NodeStoreFixture
 operator|.
 name|SEGMENT_MK
 block|}
+block|,
+block|{
+name|NodeStoreFixture
+operator|.
+name|MEMORY_NS
+block|}
 block|,         }
 decl_stmt|;
 return|return
