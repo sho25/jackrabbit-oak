@@ -68,18 +68,6 @@ import|;
 end_import
 
 begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assume
-operator|.
-name|assumeTrue
-import|;
-end_import
-
-begin_import
 import|import
 name|com
 operator|.
@@ -226,16 +214,6 @@ argument_list|(
 name|fixture
 argument_list|)
 expr_stmt|;
-name|assumeTrue
-argument_list|(
-name|fixture
-operator|!=
-name|NodeStoreFixture
-operator|.
-name|MONGO_MK
-argument_list|)
-expr_stmt|;
-comment|// FIXME test fail on MONGO_MK fixture
 block|}
 annotation|@
 name|Before
