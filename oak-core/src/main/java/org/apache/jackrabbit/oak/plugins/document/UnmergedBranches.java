@@ -583,6 +583,18 @@ name|b
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * Count of currently unmerged branches      */
+name|int
+name|size
+parameter_list|()
+block|{
+return|return
+name|branches
+operator|.
+name|size
+argument_list|()
+return|;
+block|}
 block|}
 end_class
 
