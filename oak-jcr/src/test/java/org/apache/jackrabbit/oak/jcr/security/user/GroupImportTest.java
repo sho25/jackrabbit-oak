@@ -1160,11 +1160,6 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-annotation|@
-name|Ignore
-argument_list|(
-literal|"OAK-2367"
-argument_list|)
 specifier|public
 name|void
 name|testImportMembersWithIdDifferentFromNodeName

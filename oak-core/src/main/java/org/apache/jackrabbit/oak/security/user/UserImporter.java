@@ -1633,7 +1633,7 @@ name|getMembership
 argument_list|(
 name|a
 operator|.
-name|getID
+name|getPath
 argument_list|()
 argument_list|)
 operator|.
@@ -2007,7 +2007,7 @@ name|getMembership
 argument_list|(
 name|auth
 operator|.
-name|getID
+name|getPath
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -2068,7 +2068,7 @@ name|getMembership
 argument_list|(
 name|auth
 operator|.
-name|getID
+name|getPath
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -2688,7 +2688,7 @@ block|{
 specifier|private
 specifier|final
 name|String
-name|groupId
+name|authorizablePath
 decl_stmt|;
 specifier|private
 specifier|final
@@ -2708,14 +2708,14 @@ decl_stmt|;
 name|Membership
 parameter_list|(
 name|String
-name|groupId
+name|authorizablePath
 parameter_list|)
 block|{
 name|this
 operator|.
-name|groupId
+name|authorizablePath
 operator|=
-name|groupId
+name|authorizablePath
 expr_stmt|;
 block|}
 name|void
@@ -2774,9 +2774,9 @@ name|a
 init|=
 name|userManager
 operator|.
-name|getAuthorizable
+name|getAuthorizableByPath
 argument_list|(
-name|groupId
+name|authorizablePath
 argument_list|)
 decl_stmt|;
 if|if
@@ -2796,7 +2796,7 @@ throw|throw
 operator|new
 name|RepositoryException
 argument_list|(
-name|groupId
+name|authorizablePath
 operator|+
 literal|" does not represent a valid group."
 argument_list|)
