@@ -63,6 +63,20 @@ begin_import
 import|import static
 name|org
 operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|JcrConstants
+operator|.
+name|NT_FOLDER
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
 name|junit
 operator|.
 name|Assert
@@ -526,7 +540,9 @@ argument_list|,
 operator|new
 name|String
 index|[]
-block|{             }
+block|{
+name|NT_FOLDER
+block|}
 argument_list|,
 name|PropertyType
 operator|.

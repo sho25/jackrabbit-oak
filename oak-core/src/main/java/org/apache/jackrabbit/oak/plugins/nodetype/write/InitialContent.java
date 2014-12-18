@@ -683,9 +683,6 @@ argument_list|,
 literal|null
 argument_list|)
 expr_stmt|;
-name|NodeBuilder
-name|nt
-init|=
 name|IndexUtils
 operator|.
 name|createIndexDefinition
@@ -708,25 +705,6 @@ name|JCR_MIXINTYPES
 argument_list|)
 argument_list|,
 literal|null
-argument_list|)
-decl_stmt|;
-comment|// the cost of using the property index for "@primaryType is not null" is very high
-name|nt
-operator|.
-name|setProperty
-argument_list|(
-name|IndexConstants
-operator|.
-name|ENTRY_COUNT_PROPERTY_NAME
-argument_list|,
-name|Long
-operator|.
-name|valueOf
-argument_list|(
-name|Long
-operator|.
-name|MAX_VALUE
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|IndexUtils
