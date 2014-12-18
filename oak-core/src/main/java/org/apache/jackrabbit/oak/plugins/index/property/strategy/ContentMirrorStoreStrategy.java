@@ -141,6 +141,16 @@ end_import
 
 begin_import
 import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|Nullable
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -456,6 +466,18 @@ name|index
 parameter_list|,
 name|String
 name|path
+parameter_list|,
+annotation|@
+name|Nullable
+specifier|final
+name|String
+name|indexName
+parameter_list|,
+annotation|@
+name|Nullable
+specifier|final
+name|NodeBuilder
+name|indexMeta
 parameter_list|,
 name|Set
 argument_list|<

@@ -96,7 +96,7 @@ specifier|public
 interface|interface
 name|IndexStoreStrategy
 block|{
-comment|/**      * Updates the index for the given path.      *       * @param index the index node      * @param path path stored in the index      * @param beforeKeys keys that no longer apply to the path      * @param afterKeys keys that now do apply to the path      */
+comment|/**      * Updates the index for the given path.      *       * @param index the index node      * @param path path stored in the index      * @param indexName the name of the index. May be null.      * @param indexMeta the definition of the index. May be null.      * @param beforeKeys keys that no longer apply to the path      * @param afterKeys keys that now do apply to the path      */
 name|void
 name|update
 parameter_list|(
@@ -105,6 +105,12 @@ name|index
 parameter_list|,
 name|String
 name|path
+parameter_list|,
+name|String
+name|indexName
+parameter_list|,
+name|NodeBuilder
+name|indexMeta
 parameter_list|,
 name|Set
 argument_list|<

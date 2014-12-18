@@ -481,6 +481,7 @@ name|IndexEditor
 block|{
 specifier|private
 specifier|static
+specifier|final
 name|ContentMirrorStoreStrategy
 name|STORE
 init|=
@@ -1987,6 +1988,10 @@ name|index
 argument_list|,
 name|p
 argument_list|,
+name|name
+argument_list|,
+name|child
+argument_list|,
 name|of
 argument_list|(
 name|key
@@ -2012,6 +2017,10 @@ argument_list|(
 name|index
 argument_list|,
 name|p
+argument_list|,
+name|name
+argument_list|,
+name|child
 argument_list|,
 name|empty
 argument_list|,

@@ -1303,6 +1303,16 @@ argument_list|(
 name|INDEX_CONTENT_NODE_NAME
 argument_list|)
 decl_stmt|;
+name|String
+name|properties
+init|=
+name|definition
+operator|.
+name|getString
+argument_list|(
+name|PROPERTY_NAMES
+argument_list|)
+decl_stmt|;
 name|getStrategy
 argument_list|(
 name|keysToCheckForUniqueness
@@ -1316,6 +1326,10 @@ name|index
 argument_list|,
 name|getPath
 argument_list|()
+argument_list|,
+name|properties
+argument_list|,
+name|definition
 argument_list|,
 name|beforeKeys
 argument_list|,
