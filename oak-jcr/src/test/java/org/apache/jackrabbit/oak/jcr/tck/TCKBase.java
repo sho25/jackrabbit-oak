@@ -99,7 +99,7 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|jcr
+name|commons
 operator|.
 name|FixturesHelper
 import|;
@@ -115,7 +115,7 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|jcr
+name|commons
 operator|.
 name|FixturesHelper
 operator|.

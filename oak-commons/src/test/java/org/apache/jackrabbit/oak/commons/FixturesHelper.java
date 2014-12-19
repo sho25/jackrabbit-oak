@@ -13,7 +13,7 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|jcr
+name|commons
 package|;
 end_package
 
