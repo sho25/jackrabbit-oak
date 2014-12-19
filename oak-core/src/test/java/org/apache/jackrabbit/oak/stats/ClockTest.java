@@ -30,6 +30,36 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|commons
+operator|.
+name|CIHelper
+operator|.
+name|buildBotTrunkWin7
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assume
+operator|.
+name|assumeTrue
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -68,16 +98,6 @@ operator|.
 name|Clock
 operator|.
 name|Fast
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
-name|Assume
 import|;
 end_import
 
@@ -172,12 +192,10 @@ throws|throws
 name|InterruptedException
 block|{
 comment|// FIXME OAK-1904 temporary hack to disable this test on Apache buildbot
-name|Assume
-operator|.
 name|assumeTrue
 argument_list|(
 operator|!
-name|onBuildbot
+name|buildBotTrunkWin7
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -393,35 +411,6 @@ block|}
 block|}
 specifier|private
 specifier|static
-name|boolean
-name|onBuildbot
-parameter_list|()
-block|{
-name|String
-name|user
-init|=
-name|System
-operator|.
-name|getenv
-argument_list|(
-literal|"USERDOMAIN"
-argument_list|)
-decl_stmt|;
-return|return
-name|user
-operator|!=
-literal|null
-operator|&&
-name|user
-operator|.
-name|startsWith
-argument_list|(
-literal|"bb-win7"
-argument_list|)
-return|;
-block|}
-specifier|private
-specifier|static
 name|long
 name|getGranularity
 parameter_list|(
@@ -567,7 +556,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/**      * On some systems (for instance Windows), the granularity of {@link System.currentTimeMillis} depends      * on system-wide settings that can change depending on what applications are running      * (see, for instance<a href="http://www.lifehacker.com.au/2009/05/hidden-windows-7-tool-troubleshoots-sleep-mode-problems/">http://www.lifehacker.com.au/2009/05/hidden-windows-7-tool-troubleshoots-sleep-mode-problems/</a>).      * This method tries to measure the granularity.      * @return average granularity of {@link System.currentTimeMillis} in 1/1000 of milliseconds      */
+comment|/**      * On some systems (for instance Windows), the granularity of {@code System.currentTimeMillis} depends      * on system-wide settings that can change depending on what applications are running      * (see, for instance<a href="http://www.lifehacker.com.au/2009/05/hidden-windows-7-tool-troubleshoots-sleep-mode-problems/">http://www.lifehacker.com.au/2009/05/hidden-windows-7-tool-troubleshoots-sleep-mode-problems/</a>).      * This method tries to measure the granularity.      * @return average granularity of {@code System.currentTimeMillis} in 1/1000 of milliseconds      */
 specifier|private
 specifier|static
 name|long
