@@ -529,7 +529,7 @@ operator|.
 name|add
 argument_list|(
 operator|new
-name|SolrQueryIndex
+name|AdvancedSolrQueryIndex
 argument_list|(
 name|entry
 operator|.
