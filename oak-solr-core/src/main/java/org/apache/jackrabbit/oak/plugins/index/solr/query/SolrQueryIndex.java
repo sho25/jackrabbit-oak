@@ -743,6 +743,14 @@ argument_list|(
 name|filter
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|log
+operator|.
+name|isDebugEnabled
+argument_list|()
+condition|)
+block|{
 name|log
 operator|.
 name|debug
@@ -754,6 +762,7 @@ argument_list|,
 name|cost
 argument_list|)
 expr_stmt|;
+block|}
 return|return
 name|cost
 return|;
@@ -1268,7 +1277,7 @@ specifier|private
 name|SolrDocument
 name|lastDoc
 decl_stmt|;
-specifier|public
+specifier|private
 name|int
 name|offset
 init|=
@@ -1549,6 +1558,13 @@ operator|.
 name|getResults
 argument_list|()
 decl_stmt|;
+name|onRetrievedResults
+argument_list|(
+name|filter
+argument_list|,
+name|docs
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|log
@@ -1595,17 +1611,6 @@ operator|.
 name|add
 argument_list|(
 name|row
-argument_list|)
-expr_stmt|;
-name|log
-operator|.
-name|debug
-argument_list|(
-literal|"added {}"
-argument_list|,
-name|row
-operator|.
-name|path
 argument_list|)
 expr_stmt|;
 block|}
@@ -1690,6 +1695,18 @@ block|}
 return|return
 name|cursor
 return|;
+block|}
+name|void
+name|onRetrievedResults
+parameter_list|(
+name|Filter
+name|filter
+parameter_list|,
+name|SolrDocumentList
+name|docs
+parameter_list|)
+block|{
+comment|// do nothing
 block|}
 specifier|private
 name|boolean

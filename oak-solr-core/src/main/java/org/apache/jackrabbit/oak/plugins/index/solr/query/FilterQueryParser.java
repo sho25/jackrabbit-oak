@@ -236,7 +236,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * the {@link org.apache.jackrabbit.oak.plugins.index.solr.query.FilterQueryParser} can parse {@link org.apache.jackrabbit.oak.spi.query.Filter}s  * and transform them into Solr query {@code String}s.  */
+comment|/**  * the {@link org.apache.jackrabbit.oak.plugins.index.solr.query.FilterQueryParser} can parse {@link org.apache.jackrabbit.oak.spi.query.Filter}s  * and transform them into {@link org.apache.solr.client.solrj.SolrQuery}s and / or Solr query {@code String}s.  */
 end_comment
 
 begin_class

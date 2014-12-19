@@ -227,6 +227,20 @@ name|EmbeddedSolrServer
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|solr
+operator|.
+name|common
+operator|.
+name|SolrDocumentList
+import|;
+end_import
+
 begin_comment
 comment|/**  * {@link org.apache.jackrabbit.oak.spi.query.QueryIndex.AdvanceFulltextQueryIndex} implementation of a Solr  * {@link org.apache.jackrabbit.oak.spi.query.QueryIndex} index, extending {@link org.apache.jackrabbit.oak.plugins.index.solr.query.SolrQueryIndex}.  */
 end_comment
@@ -446,7 +460,7 @@ decl_stmt|;
 if|if
 condition|(
 name|cachedEstimate
-operator|>
+operator|>=
 literal|0
 condition|)
 block|{
@@ -460,8 +474,10 @@ block|{
 name|Long
 name|updatedEstimation
 init|=
-name|updateEstimation
-argument_list|()
+name|initializeEstimation
+argument_list|(
+name|filter
+argument_list|)
 decl_stmt|;
 name|cache
 operator|.
@@ -483,8 +499,11 @@ return|;
 block|}
 specifier|private
 name|Long
-name|updateEstimation
-parameter_list|()
+name|initializeEstimation
+parameter_list|(
+name|Filter
+name|filter
+parameter_list|)
 block|{
 name|SolrQuery
 name|solrQuery
@@ -510,7 +529,10 @@ argument_list|()
 operator|.
 name|getNumFound
 argument_list|()
+operator|/
+literal|3
 return|;
+comment|// 33% of the docs is a reasonable worst case
 block|}
 catch|catch
 parameter_list|(
@@ -582,6 +604,35 @@ literal|true
 argument_list|)
 return|;
 comment|//Solr is most usually async
+block|}
+annotation|@
+name|Override
+name|void
+name|onRetrievedResults
+parameter_list|(
+name|Filter
+name|filter
+parameter_list|,
+name|SolrDocumentList
+name|docs
+parameter_list|)
+block|{
+comment|// update estimates cache
+name|cache
+operator|.
+name|put
+argument_list|(
+name|filter
+operator|.
+name|toString
+argument_list|()
+argument_list|,
+name|docs
+operator|.
+name|getNumFound
+argument_list|()
+argument_list|)
+expr_stmt|;
 block|}
 annotation|@
 name|Override
