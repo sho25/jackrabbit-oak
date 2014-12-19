@@ -389,16 +389,6 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Assume
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
 name|Before
 import|;
 end_import
@@ -454,8 +444,14 @@ name|void
 name|checkFixtures
 parameter_list|()
 block|{
-name|Assume
-operator|.
+name|assumeTrue
+argument_list|(
+operator|!
+name|travisIntegrationTesting
+argument_list|()
+argument_list|)
+expr_stmt|;
+comment|// FIXME OAK-2375. Often fails on Travis
 name|assumeTrue
 argument_list|(
 name|FIXTURES
@@ -532,14 +528,6 @@ name|CommitFailedException
 throws|,
 name|InterruptedException
 block|{
-name|assumeTrue
-argument_list|(
-operator|!
-name|travisIntegrationTesting
-argument_list|()
-argument_list|)
-expr_stmt|;
-comment|// FIXME OAK-2375. Often fails on Travis
 specifier|final
 name|FileStore
 name|store
