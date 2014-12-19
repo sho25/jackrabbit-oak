@@ -333,7 +333,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"master"
+literal|"primary"
 argument_list|,
 name|jmxServer
 operator|.
@@ -382,7 +382,7 @@ argument_list|)
 condition|)
 name|fail
 argument_list|(
-literal|"unexpected Status"
+literal|"unexpected Status "
 operator|+
 name|m
 argument_list|)
@@ -491,7 +491,7 @@ name|assertEquals
 argument_list|(
 name|StandbyStatusMBean
 operator|.
-name|STATUS_STARTING
+name|STATUS_RUNNING
 argument_list|,
 name|jmxServer
 operator|.
@@ -679,7 +679,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"1"
+literal|"0"
 argument_list|,
 name|jmxServer
 operator|.
@@ -715,7 +715,7 @@ name|assertEquals
 argument_list|(
 name|StandbyStatusMBean
 operator|.
-name|STATUS_STOPPED
+name|STATUS_INITIALIZING
 argument_list|,
 name|jmxServer
 operator|.
