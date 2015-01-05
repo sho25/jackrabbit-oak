@@ -865,22 +865,6 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|kernel
-operator|.
-name|KernelNodeStore
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
 name|query
 operator|.
 name|QueryEngineSettings
@@ -1843,12 +1827,7 @@ name|put
 argument_list|(
 name|OPTION_NODE_AND_PROPERTY_WITH_SAME_NAME_SUPPORTED
 argument_list|,
-name|supportsSameNameNodeAndProperties
-argument_list|()
-condition|?
 name|trueValue
-else|:
-name|falseValue
 argument_list|,
 literal|true
 argument_list|,
@@ -2352,21 +2331,6 @@ block|}
 block|}
 return|return
 name|gd
-return|;
-block|}
-comment|/**      * Checks if this repository supports same name node and properties. currently this is tied to the underlying      * node store implementation class.      *      * @return {@code true} if this repository supports SNNP.      */
-specifier|private
-name|boolean
-name|supportsSameNameNodeAndProperties
-parameter_list|()
-block|{
-return|return
-operator|!
-operator|(
-name|nodeStore
-operator|instanceof
-name|KernelNodeStore
-operator|)
 return|;
 block|}
 comment|/**      * Returns the version of this repository implementation.      * @return the version      */

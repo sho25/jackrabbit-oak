@@ -570,7 +570,7 @@ specifier|final
 name|boolean
 name|mongoAvailable
 init|=
-name|OakMongoMKRepositoryStub
+name|OakMongoNSRepositoryStub
 operator|.
 name|isMongoDBAvailable
 argument_list|()
@@ -606,7 +606,7 @@ throws|throws
 name|Exception
 block|{
 return|return
-name|OakMongoMKRepositoryStub
+name|OakMongoNSRepositoryStub
 operator|.
 name|createConnection
 argument_list|(
