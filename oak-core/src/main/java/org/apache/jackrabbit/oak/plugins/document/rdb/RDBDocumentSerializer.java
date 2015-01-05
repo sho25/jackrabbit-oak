@@ -455,6 +455,7 @@ operator|=
 name|columnProperties
 expr_stmt|;
 block|}
+comment|/**      * Serializes all non-column properties of the {@link Document} into      * a JSON string.      */
 specifier|public
 name|String
 name|asString
@@ -1324,17 +1325,7 @@ literal|'"'
 argument_list|)
 expr_stmt|;
 block|}
-comment|// JSON simple serializer
-comment|// private static String asString(@Nonnull Document doc) {
-comment|// JSONObject obj = new JSONObject();
-comment|// for (String key : doc.keySet()) {
-comment|// if (! COLUMNPROPERTIES.contains(key)) {
-comment|// Object value = doc.get(key);
-comment|// obj.put(key, value);
-comment|// }
-comment|// }
-comment|// return obj.toJSONString();
-comment|// }
+comment|/**      * Reconstructs a {@link Document) based on the persisted {@link DBRow}.      */
 specifier|public
 parameter_list|<
 name|T
@@ -1344,12 +1335,16 @@ parameter_list|>
 name|T
 name|fromRow
 parameter_list|(
+annotation|@
+name|Nonnull
 name|Collection
 argument_list|<
 name|T
 argument_list|>
 name|collection
 parameter_list|,
+annotation|@
+name|Nonnull
 name|RDBRow
 name|row
 parameter_list|)
@@ -1465,6 +1460,13 @@ name|arr
 init|=
 literal|null
 decl_stmt|;
+name|int
+name|updatesStartAt
+init|=
+literal|0
+decl_stmt|;
+comment|// case #1: BDATA (blob) contains base data, DATA (string) contains
+comment|// update operations
 try|try
 block|{
 if|if
@@ -1538,11 +1540,8 @@ name|ex
 argument_list|)
 throw|;
 block|}
-name|int
-name|updatesStartAt
-init|=
-literal|0
-decl_stmt|;
+comment|// case #2: if we do not have BDATA (blob), the first part of DATA
+comment|// (string) already is the base data, and update operations can follow
 if|if
 condition|(
 name|baseData
@@ -1550,8 +1549,6 @@ operator|==
 literal|null
 condition|)
 block|{
-comment|// if we do not have a blob, the first part of the string data is
-comment|// the base JSON
 name|baseData
 operator|=
 operator|(
@@ -1574,6 +1571,7 @@ operator|=
 literal|1
 expr_stmt|;
 block|}
+comment|// process the base data
 for|for
 control|(
 name|Map
@@ -1615,7 +1613,7 @@ operator|==
 literal|null
 condition|)
 block|{
-comment|// ???
+comment|// TODO ???
 name|doc
 operator|.
 name|put
@@ -2261,19 +2259,6 @@ argument_list|(
 name|comparator
 argument_list|)
 decl_stmt|;
-name|Set
-argument_list|<
-name|Map
-operator|.
-name|Entry
-argument_list|>
-name|entries
-init|=
-name|obj
-operator|.
-name|entrySet
-argument_list|()
-decl_stmt|;
 for|for
 control|(
 name|Map
@@ -2281,10 +2266,20 @@ operator|.
 name|Entry
 name|entry
 range|:
-name|entries
+operator|(
+name|Set
+argument_list|<
+name|Map
+operator|.
+name|Entry
+argument_list|>
+operator|)
+name|obj
+operator|.
+name|entrySet
+argument_list|()
 control|)
 block|{
-comment|// not clear why every persisted map is a revision map
 name|map
 operator|.
 name|put
