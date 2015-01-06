@@ -171,6 +171,22 @@ name|oak
 operator|.
 name|api
 operator|.
+name|QueryEngine
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|api
+operator|.
 name|Result
 import|;
 end_import
@@ -820,7 +836,7 @@ name|stmt
 operator|.
 name|append
 argument_list|(
-literal|"WHERE ["
+literal|" WHERE ["
 argument_list|)
 operator|.
 name|append
@@ -833,6 +849,15 @@ operator|.
 name|append
 argument_list|(
 literal|"] = $principalName"
+argument_list|)
+expr_stmt|;
+name|stmt
+operator|.
+name|append
+argument_list|(
+name|QueryEngine
+operator|.
+name|INTERNAL_SQL2_QUERY
 argument_list|)
 expr_stmt|;
 name|Result

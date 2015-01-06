@@ -1299,6 +1299,10 @@ specifier|private
 name|boolean
 name|warnedHidden
 decl_stmt|;
+specifier|private
+name|boolean
+name|isInternal
+decl_stmt|;
 name|QueryImpl
 parameter_list|(
 name|String
@@ -2550,21 +2554,17 @@ name|isDebugEnabled
 argument_list|()
 condition|)
 block|{
-name|LOG
-operator|.
-name|debug
+name|logDebug
 argument_list|(
-literal|"query execute {} "
-argument_list|,
+literal|"query execute "
+operator|+
 name|statement
 argument_list|)
 expr_stmt|;
-name|LOG
-operator|.
-name|debug
+name|logDebug
 argument_list|(
-literal|"query plan {}"
-argument_list|,
+literal|"query plan "
+operator|+
 name|getPlan
 argument_list|()
 argument_list|)
@@ -4203,9 +4203,7 @@ name|isDebugEnabled
 argument_list|()
 condition|)
 block|{
-name|LOG
-operator|.
-name|debug
+name|logDebug
 argument_list|(
 literal|"cost using filter "
 operator|+
@@ -4551,9 +4549,7 @@ name|isDebugEnabled
 argument_list|()
 condition|)
 block|{
-name|LOG
-operator|.
-name|debug
+name|logDebug
 argument_list|(
 literal|"cost for "
 operator|+
@@ -4645,9 +4641,7 @@ name|isDebugEnabled
 argument_list|()
 condition|)
 block|{
-name|LOG
-operator|.
-name|debug
+name|logDebug
 argument_list|(
 literal|"cost for "
 operator|+
@@ -4705,6 +4699,38 @@ argument_list|,
 name|bestCost
 argument_list|)
 return|;
+block|}
+specifier|private
+name|void
+name|logDebug
+parameter_list|(
+name|String
+name|msg
+parameter_list|)
+block|{
+if|if
+condition|(
+name|isInternal
+condition|)
+block|{
+name|LOG
+operator|.
+name|trace
+argument_list|(
+name|msg
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+name|LOG
+operator|.
+name|debug
+argument_list|(
+name|msg
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 annotation|@
 name|Override
@@ -5067,6 +5093,23 @@ block|{
 return|return
 name|settings
 return|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|void
+name|setInternal
+parameter_list|(
+name|boolean
+name|isInternal
+parameter_list|)
+block|{
+name|this
+operator|.
+name|isInternal
+operator|=
+name|isInternal
+expr_stmt|;
 block|}
 block|}
 end_class

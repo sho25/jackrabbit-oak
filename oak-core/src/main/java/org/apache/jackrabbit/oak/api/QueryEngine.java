@@ -78,6 +78,12 @@ specifier|public
 interface|interface
 name|QueryEngine
 block|{
+comment|/**      * The suffix for internal SQL-2 statements. Those are logged with trace      * level instead of debug level.      */
+name|String
+name|INTERNAL_SQL2_QUERY
+init|=
+literal|" /* oak-internal */"
+decl_stmt|;
 comment|/**      * Empty set of variables bindings. Useful as an argument to      * {@link #executeQuery(String, String, long, long, Map, Map)} when      * there are no variables in a query.      */
 name|Map
 argument_list|<

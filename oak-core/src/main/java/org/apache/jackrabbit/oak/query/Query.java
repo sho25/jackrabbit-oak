@@ -267,6 +267,13 @@ name|boolean
 name|isMeasureOrExplainEnabled
 parameter_list|()
 function_decl|;
+name|void
+name|setInternal
+parameter_list|(
+name|boolean
+name|internal
+parameter_list|)
+function_decl|;
 block|}
 end_interface
 

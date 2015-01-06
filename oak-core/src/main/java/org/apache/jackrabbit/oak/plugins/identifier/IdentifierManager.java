@@ -209,6 +209,22 @@ name|oak
 operator|.
 name|api
 operator|.
+name|QueryEngine
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|api
+operator|.
 name|Result
 import|;
 end_import
@@ -1161,6 +1177,10 @@ operator|+
 name|reference
 operator|+
 literal|"') = $uuid"
+operator|+
+name|QueryEngine
+operator|.
+name|INTERNAL_SQL2_QUERY
 argument_list|,
 name|Query
 operator|.
@@ -1699,6 +1719,10 @@ operator|.
 name|executeQuery
 argument_list|(
 literal|"SELECT * FROM [nt:base] WHERE [jcr:uuid] = $id"
+operator|+
+name|QueryEngine
+operator|.
+name|INTERNAL_SQL2_QUERY
 argument_list|,
 name|Query
 operator|.
