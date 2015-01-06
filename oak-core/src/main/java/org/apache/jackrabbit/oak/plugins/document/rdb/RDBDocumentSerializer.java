@@ -1678,7 +1678,7 @@ else|else
 block|{
 throw|throw
 operator|new
-name|RuntimeException
+name|DocumentStoreException
 argument_list|(
 literal|"unexpected type: "
 operator|+
@@ -1799,9 +1799,9 @@ else|else
 block|{
 throw|throw
 operator|new
-name|RuntimeException
+name|DocumentStoreException
 argument_list|(
-literal|"unexpected: "
+literal|"unexpected JSON in DATA column: "
 operator|+
 name|ob
 argument_list|)
@@ -2039,13 +2039,13 @@ condition|)
 block|{
 throw|throw
 operator|new
-name|RuntimeException
+name|DocumentStoreException
 argument_list|(
 literal|"unexpected operation "
 operator|+
 name|op
 operator|+
-literal|"in: "
+literal|" in: "
 operator|+
 name|update
 argument_list|)
@@ -2152,13 +2152,13 @@ else|else
 block|{
 throw|throw
 operator|new
-name|RuntimeException
+name|DocumentStoreException
 argument_list|(
 literal|"unexpected operation "
 operator|+
 name|op
 operator|+
-literal|"in: "
+literal|" in: "
 operator|+
 name|update
 argument_list|)
@@ -2222,13 +2222,13 @@ else|else
 block|{
 throw|throw
 operator|new
-name|RuntimeException
+name|DocumentStoreException
 argument_list|(
 literal|"unexpected operation "
 operator|+
 name|op
 operator|+
-literal|"in: "
+literal|" in: "
 operator|+
 name|update
 argument_list|)
@@ -2239,13 +2239,13 @@ else|else
 block|{
 throw|throw
 operator|new
-name|RuntimeException
+name|DocumentStoreException
 argument_list|(
 literal|"unexpected operation "
 operator|+
 name|op
 operator|+
-literal|"in: "
+literal|" in: "
 operator|+
 name|update
 argument_list|)
