@@ -20,6 +20,38 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|java
+operator|.
+name|util
+operator|.
+name|Collections
+operator|.
+name|emptyList
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|memory
+operator|.
+name|PropertyStates
+operator|.
+name|createProperty
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -51,37 +83,15 @@ end_import
 
 begin_import
 import|import
-name|org
+name|com
 operator|.
-name|apache
+name|google
 operator|.
-name|jackrabbit
+name|common
 operator|.
-name|oak
+name|collect
 operator|.
-name|commons
-operator|.
-name|json
-operator|.
-name|JsopReader
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|commons
-operator|.
-name|json
-operator|.
-name|JsopTokenizer
+name|Lists
 import|;
 end_import
 
@@ -130,6 +140,42 @@ operator|.
 name|cache
 operator|.
 name|StringCache
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|commons
+operator|.
+name|json
+operator|.
+name|JsopReader
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|commons
+operator|.
+name|json
+operator|.
+name|JsopTokenizer
 import|;
 end_import
 
@@ -290,52 +336,6 @@ operator|.
 name|value
 operator|.
 name|Conversions
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|collect
-operator|.
-name|Lists
-import|;
-end_import
-
-begin_import
-import|import static
-name|java
-operator|.
-name|util
-operator|.
-name|Collections
-operator|.
-name|emptyList
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|plugins
-operator|.
-name|memory
-operator|.
-name|PropertyStates
-operator|.
-name|createProperty
 import|;
 end_import
 
@@ -730,7 +730,7 @@ return|return
 name|parsed
 return|;
 block|}
-comment|/**      * FIXME: copied from KernelNodeState.      *      * Read a {@code PropertyState} from a {@link JsopReader}      * @param name  The name of the property state      * @param reader  The reader      * @return new property state      */
+comment|/**      * Read a {@code PropertyState} from a {@link JsopReader}      * @param name  The name of the property state      * @param reader  The reader      * @return new property state      */
 name|PropertyState
 name|readProperty
 parameter_list|(
@@ -752,7 +752,7 @@ name|reader
 argument_list|)
 return|;
 block|}
-comment|/**      * FIXME: copied from KernelNodeState.      *      * Read a {@code PropertyState} from a {@link JsopReader}.      *      * @param name the name of the property state      * @param store the store      * @param reader the reader      * @return new property state      */
+comment|/**      * Read a {@code PropertyState} from a {@link JsopReader}.      *      * @param name the name of the property state      * @param store the store      * @param reader the reader      * @return new property state      */
 specifier|static
 name|PropertyState
 name|readProperty
@@ -1069,7 +1069,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**      * FIXME: copied from KernelNodeState.      *      * Read a multi valued {@code PropertyState} from a {@link JsopReader}.      *      * @param name the name of the property state      * @param reader the reader      * @return new property state      */
+comment|/**      * Read a multi valued {@code PropertyState} from a {@link JsopReader}.      *      * @param name the name of the property state      * @param reader the reader      * @return new property state      */
 name|PropertyState
 name|readArrayProperty
 parameter_list|(
@@ -1091,7 +1091,7 @@ name|reader
 argument_list|)
 return|;
 block|}
-comment|/**      * FIXME: copied from KernelNodeState.      *      * Read a multi valued {@code PropertyState} from a {@link JsopReader}.      *      * @param name the name of the property state      * @param store the store      * @param reader the reader      * @return new property state      */
+comment|/**      * Read a multi valued {@code PropertyState} from a {@link JsopReader}.      *      * @param name the name of the property state      * @param store the store      * @param reader the reader      * @return new property state      */
 specifier|static
 name|PropertyState
 name|readArrayProperty
