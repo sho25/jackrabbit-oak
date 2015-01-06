@@ -2694,10 +2694,6 @@ decl_stmt|;
 comment|// check if there may be more recent values in a previous document
 if|if
 condition|(
-name|value
-operator|!=
-literal|null
-operator|&&
 operator|!
 name|getPreviousRanges
 argument_list|()
@@ -3093,6 +3089,8 @@ decl_stmt|;
 if|if
 condition|(
 name|value
+operator|.
+name|value
 operator|==
 literal|null
 operator|&&
@@ -3125,10 +3123,6 @@ argument_list|)
 expr_stmt|;
 block|}
 return|return
-name|value
-operator|!=
-literal|null
-operator|&&
 literal|"false"
 operator|.
 name|equals
@@ -5504,9 +5498,9 @@ operator|>=
 literal|0
 return|;
 block|}
-comment|/**      * Get the latest property value that is larger or equal the min revision,      * and smaller or equal the readRevision revision. A {@code null} return      * value indicates that the property was not set or removed within the given      * range. A non-null value means the the property was either set or removed      * depending on {@link Value#value}.      *      * @param valueMap the sorted revision-value map      * @param min the minimum revision (null meaning unlimited)      * @param readRevision the maximum revision      * @param validRevisions map of revision to commit value considered valid      *                       against the given readRevision.      * @param lastRevs to keep track of the most recent modification.      * @return the value, or null if not found      */
+comment|/**      * Get the latest property value that is larger or equal the min revision,      * and smaller or equal the readRevision revision. The returned value will      * provide the revision when the value was set between the {@code min} and      * {@code readRevision}. The returned value will have a {@code null} value      * contained if there is no valid change within the given range. In this      * case the associated revision is {@code min} or {@code readRevision} if      * no {@code min} is provided.      *      * @param valueMap the sorted revision-value map      * @param min the minimum revision (null meaning unlimited)      * @param readRevision the maximum revision      * @param validRevisions map of revision to commit value considered valid      *                       against the given readRevision.      * @param lastRevs to keep track of the most recent modification.      * @return the latest value from the {@code readRevision} point of view.      */
 annotation|@
-name|CheckForNull
+name|Nonnull
 specifier|private
 name|Value
 name|getLatestValue
@@ -5723,8 +5717,25 @@ argument_list|)
 return|;
 block|}
 block|}
-return|return
+name|Revision
+name|r
+init|=
+name|min
+operator|!=
 literal|null
+condition|?
+name|min
+else|:
+name|readRevision
+decl_stmt|;
+return|return
+operator|new
+name|Value
+argument_list|(
+name|r
+argument_list|,
+literal|null
+argument_list|)
 return|;
 block|}
 annotation|@
