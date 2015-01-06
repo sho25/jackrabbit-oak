@@ -1242,7 +1242,9 @@ name|sql2
 init|=
 literal|"select [jcr:path] as [path] from [nt:base] "
 operator|+
-literal|"where [node2/node3/jcr:primaryType] is not null"
+literal|"where [node2/node3/jcr:primaryType] is not null "
+operator|+
+literal|"and isdescendantnode('/testroot')"
 decl_stmt|;
 name|Query
 name|q
@@ -1309,9 +1311,13 @@ decl_stmt|;
 comment|// should not use the index on "jcr:primaryType"
 name|assertEquals
 argument_list|(
-literal|"[nt:base] as [nt:base] /* traverse \"*\" "
+literal|"[nt:base] as [nt:base] /* traverse \"/testroot//*\" "
 operator|+
-literal|"where [nt:base].[node2/node3/jcr:primaryType] is not null */"
+literal|"where ([nt:base].[node2/node3/jcr:primaryType] is not null) "
+operator|+
+literal|"and (isdescendantnode([nt:base], [/testroot])) "
+operator|+
+literal|"*/"
 argument_list|,
 name|plan
 argument_list|)

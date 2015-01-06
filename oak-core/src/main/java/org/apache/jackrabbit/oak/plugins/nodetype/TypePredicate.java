@@ -436,8 +436,6 @@ decl_stmt|;
 specifier|private
 name|boolean
 name|initialized
-init|=
-literal|false
 decl_stmt|;
 specifier|private
 name|Set
@@ -445,8 +443,6 @@ argument_list|<
 name|String
 argument_list|>
 name|primaryTypes
-init|=
-literal|null
 decl_stmt|;
 specifier|private
 name|Set
@@ -454,8 +450,6 @@ argument_list|<
 name|String
 argument_list|>
 name|mixinTypes
-init|=
-literal|null
 decl_stmt|;
 comment|/**      * Creates a predicate for checking whether a node state is an instance of      * the named node type. This is an O(1) operation in terms of item      * accesses.      *      * @param root root node state      * @param name Oak name of the node type to check for      */
 specifier|public
@@ -783,7 +777,6 @@ return|return
 literal|true
 return|;
 block|}
-elseif|else
 if|if
 condition|(
 name|mixinTypes
@@ -805,12 +798,9 @@ return|return
 literal|true
 return|;
 block|}
-else|else
-block|{
 return|return
 literal|false
 return|;
-block|}
 block|}
 comment|//---------------------------------------------------------< Predicate>--
 annotation|@
@@ -849,7 +839,6 @@ return|return
 literal|true
 return|;
 block|}
-elseif|else
 if|if
 condition|(
 name|mixinTypes
@@ -876,12 +865,9 @@ return|return
 literal|true
 return|;
 block|}
-else|else
-block|{
 return|return
 literal|false
 return|;
-block|}
 block|}
 comment|//------------------------------------------------------------< Object>--
 annotation|@

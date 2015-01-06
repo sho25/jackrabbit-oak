@@ -740,13 +740,17 @@ argument_list|(
 name|DECLARING_NODE_TYPES
 argument_list|)
 decl_stmt|;
+comment|// if there is no such property, then all nodetypes are matched
 name|this
 operator|.
 name|matchesAllTypes
 operator|=
-name|isEmpty
+operator|!
+name|definition
+operator|.
+name|hasProperty
 argument_list|(
-name|types
+name|DECLARING_NODE_TYPES
 argument_list|)
 expr_stmt|;
 name|this
