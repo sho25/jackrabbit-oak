@@ -593,6 +593,14 @@ name|SegmentOverflowException
 argument_list|)
 expr_stmt|;
 block|}
+finally|finally
+block|{
+name|fileStore
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
+block|}
 block|}
 specifier|private
 specifier|static
