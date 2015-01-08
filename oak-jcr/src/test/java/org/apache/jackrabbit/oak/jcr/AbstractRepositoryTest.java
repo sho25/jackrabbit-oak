@@ -18,36 +18,6 @@ package|;
 end_package
 
 begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|commons
-operator|.
-name|CIHelper
-operator|.
-name|buildBotTrunkLinux
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assume
-operator|.
-name|assumeTrue
-import|;
-end_import
-
-begin_import
 import|import
 name|java
 operator|.
@@ -535,22 +505,7 @@ specifier|public
 name|void
 name|checkAssumptions
 parameter_list|()
-block|{
-comment|// FIXME OAK-2379. Don't run the tests for now on the Linux BuildBot for DOCUMENT_RDB
-name|assumeTrue
-argument_list|(
-operator|!
-name|buildBotTrunkLinux
-argument_list|()
-operator|||
-name|fixture
-operator|!=
-name|NodeStoreFixture
-operator|.
-name|DOCUMENT_RDB
-argument_list|)
-expr_stmt|;
-block|}
+block|{     }
 annotation|@
 name|After
 specifier|public
