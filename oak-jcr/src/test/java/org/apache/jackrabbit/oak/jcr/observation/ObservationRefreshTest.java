@@ -359,6 +359,22 @@ name|oak
 operator|.
 name|jcr
 operator|.
+name|Jcr
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|jcr
+operator|.
 name|NodeStoreFixture
 import|;
 end_import
@@ -563,6 +579,28 @@ argument_list|)
 expr_stmt|;
 block|}
 annotation|@
+name|Override
+specifier|protected
+name|Jcr
+name|initJcr
+parameter_list|(
+name|Jcr
+name|jcr
+parameter_list|)
+block|{
+comment|// Ensure the observation revision queue is sufficiently large to hold
+comment|// all revisions. Otherwise waiting for events might block since pending
+comment|// events would only be released on a subsequent commit. See OAK-1491
+return|return
+name|jcr
+operator|.
+name|withObservationQueueLength
+argument_list|(
+literal|1000000
+argument_list|)
+return|;
+block|}
+annotation|@
 name|Before
 specifier|public
 name|void
@@ -571,13 +609,6 @@ parameter_list|()
 throws|throws
 name|RepositoryException
 block|{
-comment|// Ensure the observation revision queue is sufficiently large to hold
-comment|// all revisions. Otherwise waiting for events might block since pending
-comment|// events would only be released on a subsequent commit. See OAK-1491
-name|observationQueueLength
-operator|=
-literal|1000000
-expr_stmt|;
 name|Session
 name|session
 init|=
