@@ -402,8 +402,9 @@ specifier|private
 name|DataSource
 name|ds
 decl_stmt|;
+specifier|private
 name|String
-name|folder
+name|fname
 init|=
 operator|(
 operator|new
@@ -446,9 +447,9 @@ name|RDBDataSourceFactory
 operator|.
 name|forJdbcUrl
 argument_list|(
-literal|"jdbc:h2:file:"
+literal|"jdbc:h2:file:./"
 operator|+
-name|folder
+name|fname
 operator|+
 name|id
 argument_list|,
@@ -495,9 +496,9 @@ name|RDBDataSourceFactory
 operator|.
 name|forJdbcUrl
 argument_list|(
-literal|"jdbc:h2:file:"
+literal|"jdbc:h2:file:./"
 operator|+
-name|folder
+name|fname
 operator|+
 literal|"oaknodes-"
 operator|+
