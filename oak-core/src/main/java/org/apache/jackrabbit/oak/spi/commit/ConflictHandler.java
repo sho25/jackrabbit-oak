@@ -21,6 +21,16 @@ end_package
 
 begin_import
 import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|Nonnull
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -72,28 +82,21 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A {@code ConflictHandler} is responsible for handling conflicts which happen  * on {@link org.apache.jackrabbit.oak.api.Root#rebase()} and on the implicit rebase operation which  * takes part on {@link org.apache.jackrabbit.oak.api.Root#commit()}.  *  * This interface contains one method per type of conflict which might occur.  * Each of these methods must return a {@link Resolution} for the current conflict.  * The resolution indicates to use the changes in the current {@code Root} instance  * ({@link Resolution#OURS}) or to use the changes from the underlying persistence  * store ({@link Resolution#THEIRS}). Alternatively the resolution can also indicate  * that the changes have been successfully merged by this {@code ConflictHandler}  * instance ({@link Resolution#MERGED}).  */
+comment|/**  * A {@code ConflictHandler} is responsible for handling conflicts which happen  * on {@link org.apache.jackrabbit.oak.api.Root#rebase()} and on the implicit rebase operation which  * takes part on {@link org.apache.jackrabbit.oak.api.Root#commit()}.  *  * This interface contains one method per type of conflict which might occur.  * Each of these methods must return a {@link Resolution} for the current conflict.  * The resolution indicates to use the changes in the current {@code Root} instance  * ({@link Resolution#OURS}) or to use the changes from the underlying persistence  * store ({@link Resolution#THEIRS}). Alternatively the resolution can also indicate  * that the changes have been successfully merged by this {@code ConflictHandler}  * instance ({@link Resolution#MERGED}).  *  * @see ConflictHandler  */
 end_comment
 
 begin_interface
 specifier|public
 interface|interface
 name|ConflictHandler
+extends|extends
+name|PartialConflictHandler
 block|{
-comment|/**      * Resolutions for conflicts      */
-enum|enum
-name|Resolution
-block|{
-comment|/**          * Use the changes from the current {@link org.apache.jackrabbit.oak.api.Root} instance          */
-name|OURS
-block|,
-comment|/**          * Use the changes from the underlying persistence store          */
-name|THEIRS
-block|,
-comment|/**          * Indicated changes have been merged by this {@code ConflictHandler} instance.          */
-name|MERGED
-block|}
 comment|/**      * The property {@code ours} has been added to {@code parent} which conflicts      * with property {@code theirs} which has been added in the persistence store.      *      * @param parent  root of the conflict      * @param ours  our version of the property      * @param theirs  their version of the property      * @return  {@link Resolution} of the conflict      */
+annotation|@
+name|Override
+annotation|@
+name|Nonnull
 name|Resolution
 name|addExistingProperty
 parameter_list|(
@@ -108,6 +111,10 @@ name|theirs
 parameter_list|)
 function_decl|;
 comment|/**      * The property {@code ours} has been changed in {@code parent} while it was      * removed in the persistence store.      *      * @param parent  root of the conflict      * @param ours  our version of the property      * @return  {@link Resolution} of the conflict      */
+annotation|@
+name|Override
+annotation|@
+name|Nonnull
 name|Resolution
 name|changeDeletedProperty
 parameter_list|(
@@ -119,6 +126,10 @@ name|ours
 parameter_list|)
 function_decl|;
 comment|/**      * The property {@code ours} has been changed in {@code parent} while it was      * also changed to a different value ({@code theirs}) in the persistence store.      *      * @param parent  root of the conflict      * @param ours  our version of the property      * @param theirs  their version of the property      * @return  {@link Resolution} of the conflict      */
+annotation|@
+name|Override
+annotation|@
+name|Nonnull
 name|Resolution
 name|changeChangedProperty
 parameter_list|(
@@ -133,6 +144,10 @@ name|theirs
 parameter_list|)
 function_decl|;
 comment|/**      * The property {@code ours} has been removed in {@code parent} while it was      * also removed in the persistence store.      *      * @param parent  root of the conflict      * @param ours  our version of the property      * @return  {@link Resolution} of the conflict      */
+annotation|@
+name|Override
+annotation|@
+name|Nonnull
 name|Resolution
 name|deleteDeletedProperty
 parameter_list|(
@@ -144,6 +159,10 @@ name|ours
 parameter_list|)
 function_decl|;
 comment|/**      * The property {@code theirs} changed in the persistence store while it has been      * deleted locally.      *      * @param parent  root of the conflict      * @param theirs  their version of the property      * @return  {@link Resolution} of the conflict      */
+annotation|@
+name|Override
+annotation|@
+name|Nonnull
 name|Resolution
 name|deleteChangedProperty
 parameter_list|(
@@ -155,6 +174,10 @@ name|theirs
 parameter_list|)
 function_decl|;
 comment|/**      * The node {@code ours} has been added to {@code parent} which conflicts      * with node {@code theirs} which has been added in the persistence store.      *      * @param parent  root of the conflict      * @param name  name of the node      * @param ours  our version of the node      * @param theirs  their version of the node      * @return  {@link Resolution} of the conflict      */
+annotation|@
+name|Override
+annotation|@
+name|Nonnull
 name|Resolution
 name|addExistingNode
 parameter_list|(
@@ -172,6 +195,10 @@ name|theirs
 parameter_list|)
 function_decl|;
 comment|/**      * The node {@code ours} has been changed in {@code parent} while it was      * removed in the persistence store.      *      * @param parent  root of the conflict      * @param name  name of the node      * @param ours  our version of the node      * @return  {@link Resolution} of the conflict      */
+annotation|@
+name|Override
+annotation|@
+name|Nonnull
 name|Resolution
 name|changeDeletedNode
 parameter_list|(
@@ -186,6 +213,10 @@ name|ours
 parameter_list|)
 function_decl|;
 comment|/**      * The node {@code theirs} changed in the persistence store while it has been      * deleted locally.      *      * @param parent  root of the conflict      * @param name  name of the node      * @param theirs  their version of the node      * @return  {@link Resolution} of the conflict      */
+annotation|@
+name|Override
+annotation|@
+name|Nonnull
 name|Resolution
 name|deleteChangedNode
 parameter_list|(
@@ -200,6 +231,10 @@ name|theirs
 parameter_list|)
 function_decl|;
 comment|/**      * The node {@code name} has been removed in {@code parent} while it was      * also removed in the persistence store.      *      * @param parent  root of the conflict      * @param name  name of the node      * @return  {@link Resolution} of the conflict      */
+annotation|@
+name|Override
+annotation|@
+name|Nonnull
 name|Resolution
 name|deleteDeletedNode
 parameter_list|(

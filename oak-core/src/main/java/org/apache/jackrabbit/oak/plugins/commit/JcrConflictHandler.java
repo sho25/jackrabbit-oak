@@ -21,6 +21,20 @@ end_package
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|collect
+operator|.
+name|ImmutableList
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -33,7 +47,7 @@ name|spi
 operator|.
 name|commit
 operator|.
-name|ConflictHandler
+name|CompositeConflictHandler
 import|;
 end_import
 
@@ -50,18 +64,29 @@ block|{
 comment|/**      * The conflict handler is a composite of {@link ChildOrderConflictHandler}      * and {@link AnnotatingConflictHandler}.      */
 specifier|public
 specifier|static
-specifier|final
-name|ConflictHandler
-name|JCR_CONFLICT_HANDLER
-init|=
+name|CompositeConflictHandler
+name|createJcrConflictHandler
+parameter_list|()
+block|{
+return|return
+operator|new
+name|CompositeConflictHandler
+argument_list|(
+name|ImmutableList
+operator|.
+name|of
+argument_list|(
 operator|new
 name|ChildOrderConflictHandler
-argument_list|(
+argument_list|()
+argument_list|,
 operator|new
 name|AnnotatingConflictHandler
 argument_list|()
 argument_list|)
-decl_stmt|;
+argument_list|)
+return|;
+block|}
 specifier|private
 name|JcrConflictHandler
 parameter_list|()

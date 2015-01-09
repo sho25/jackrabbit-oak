@@ -835,7 +835,8 @@ name|ConflictHook
 argument_list|(
 name|JcrConflictHandler
 operator|.
-name|JCR_CONFLICT_HANDLER
+name|createJcrConflictHandler
+argument_list|()
 argument_list|)
 argument_list|,
 operator|new

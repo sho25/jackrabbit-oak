@@ -16,6 +16,22 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|collect
+operator|.
+name|Lists
+operator|.
+name|newArrayList
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -693,22 +709,6 @@ name|Before
 import|;
 end_import
 
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|collect
-operator|.
-name|Lists
-operator|.
-name|newArrayList
-import|;
-end_import
-
 begin_comment
 comment|/**  * AbstractOakTest is the base class for oak test execution.  */
 end_comment
@@ -782,7 +782,8 @@ name|with
 argument_list|(
 name|JcrConflictHandler
 operator|.
-name|JCR_CONFLICT_HANDLER
+name|createJcrConflictHandler
+argument_list|()
 argument_list|)
 operator|.
 name|with
