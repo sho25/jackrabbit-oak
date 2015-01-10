@@ -988,6 +988,9 @@ name|this
 operator|.
 name|length
 operator|=
+operator|(
+name|long
+operator|)
 name|data
 operator|.
 name|size
@@ -1391,11 +1394,31 @@ argument_list|>
 name|length
 condition|)
 block|{
+name|String
+name|msg
+init|=
+name|String
+operator|.
+name|format
+argument_list|(
+literal|"Invalid byte range request [%s] : position : %d, length : "
+operator|+
+literal|"%d, len : %d"
+argument_list|,
+name|name
+argument_list|,
+name|position
+argument_list|,
+name|length
+argument_list|,
+name|len
+argument_list|)
+decl_stmt|;
 throw|throw
 operator|new
 name|IOException
 argument_list|(
-literal|"Invalid byte range request"
+name|msg
 argument_list|)
 throw|;
 block|}
