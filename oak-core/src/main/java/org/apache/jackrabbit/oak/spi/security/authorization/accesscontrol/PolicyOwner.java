@@ -36,7 +36,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Interface to improve pluggability of the {@link javax.jcr.security.AccessControlManager},  * namely the interaction of multiple managers within a  * single repository. It provides a single method {@link #defines(String, javax.jcr.security.AccessControlPolicy)}  * that allows to termine the responsible manager upon  * {@link javax.jcr.security.AccessControlManager#setPolicy(String, javax.jcr.security.AccessControlPolicy) setPolicy}  * and  * {@link javax.jcr.security.AccessControlManager#removePolicy(String, javax.jcr.security.AccessControlPolicy) removePolicy}.  *  * @see org.apache.jackrabbit.oak.spi.security.authorization.CompositeAuthorizationConfiguration  */
+comment|/**  * Interface to improve pluggability of the {@link javax.jcr.security.AccessControlManager},  * namely the interaction of multiple managers within a  * single repository. It provides a single method {@link #defines(String, javax.jcr.security.AccessControlPolicy)}  * that allows to termine the responsible manager upon  * {@link javax.jcr.security.AccessControlManager#setPolicy(String, javax.jcr.security.AccessControlPolicy) setPolicy}  * and  * {@link javax.jcr.security.AccessControlManager#removePolicy(String, javax.jcr.security.AccessControlPolicy) removePolicy}.  */
 end_comment
 
 begin_interface

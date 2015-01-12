@@ -13,11 +13,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|spi
-operator|.
 name|security
 operator|.
-name|authorization
+name|composite
 package|;
 end_package
 
@@ -185,9 +183,7 @@ name|security
 operator|.
 name|authorization
 operator|.
-name|accesscontrol
-operator|.
-name|CompositeAccessControlManager
+name|AuthorizationConfiguration
 import|;
 end_import
 
@@ -210,28 +206,6 @@ operator|.
 name|permission
 operator|.
 name|AggregatedPermissionProvider
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|spi
-operator|.
-name|security
-operator|.
-name|authorization
-operator|.
-name|permission
-operator|.
-name|CompositePermissionProvider
 import|;
 end_import
 
