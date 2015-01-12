@@ -63,6 +63,16 @@ name|javax
 operator|.
 name|annotation
 operator|.
+name|CheckForNull
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|annotation
+operator|.
 name|Nonnull
 import|;
 end_import
@@ -86,16 +96,16 @@ specifier|public
 interface|interface
 name|UserAuthenticationFactory
 block|{
-comment|/**      * Returns an implementation {@link org.apache.jackrabbit.oak.spi.security.authentication.Authentication}      * for the specified {@code userId}.      *      * @param userConfiguration The user configuration.      * @param root   The {@link org.apache.jackrabbit.oak.api.Root} that provides repository access.      * @param userId The userId for which a user authentication is provided.      * @return The authentication object specific to the provided user.      */
+comment|/**      * Returns an implementation {@link org.apache.jackrabbit.oak.spi.security.authentication.Authentication}      * for the specified {@code userId}.      *      * @param configuration The user configuration.      * @param root   The {@link org.apache.jackrabbit.oak.api.Root} that provides repository access.      * @param userId The userId for which a user authentication is provided.      * @return The authentication object for the given {@code configuration} and      * {@code userId} or {@code null} if this implementation cannot not handle the      * specified parameters.      */
 annotation|@
-name|Nonnull
+name|CheckForNull
 name|Authentication
 name|getAuthentication
 parameter_list|(
 annotation|@
 name|Nonnull
 name|UserConfiguration
-name|userConfiguration
+name|configuration
 parameter_list|,
 annotation|@
 name|Nonnull

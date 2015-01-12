@@ -866,9 +866,10 @@ implements|,
 name|SecurityConfiguration
 block|{
 specifier|private
+specifier|static
 specifier|final
 name|UserAuthenticationFactory
-name|defaultAuthFactory
+name|DEFAULT_AUTH_FACTORY
 init|=
 operator|new
 name|UserAuthenticationFactoryImpl
@@ -901,6 +902,16 @@ name|NAME
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
+specifier|public
+specifier|static
+name|UserAuthenticationFactory
+name|getDefaultAuthenticationFactory
+parameter_list|()
+block|{
+return|return
+name|DEFAULT_AUTH_FACTORY
+return|;
 block|}
 annotation|@
 name|Activate
@@ -987,7 +998,7 @@ name|UserConstants
 operator|.
 name|PARAM_USER_AUTHENTICATION_FACTORY
 argument_list|,
-name|defaultAuthFactory
+name|DEFAULT_AUTH_FACTORY
 argument_list|)
 argument_list|)
 return|;
