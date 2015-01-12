@@ -353,6 +353,8 @@ name|plugins
 operator|.
 name|tree
 operator|.
+name|impl
+operator|.
 name|ImmutableTree
 import|;
 end_import

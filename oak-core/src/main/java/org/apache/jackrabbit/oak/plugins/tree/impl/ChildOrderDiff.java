@@ -16,6 +16,8 @@ operator|.
 name|plugins
 operator|.
 name|tree
+operator|.
+name|impl
 package|;
 end_package
 
@@ -98,7 +100,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Helper class to handle modifications to the hidden  * {@link org.apache.jackrabbit.oak.plugins.tree.TreeConstants#OAK_CHILD_ORDER} property.  */
+comment|/**  * Helper class to handle modifications to the hidden  * {@link org.apache.jackrabbit.oak.plugins.tree.impl.TreeConstants#OAK_CHILD_ORDER} property.  */
 end_comment
 
 begin_class
@@ -111,7 +113,7 @@ specifier|private
 name|ChildOrderDiff
 parameter_list|()
 block|{}
-comment|/**      * Tests if there was any user-supplied reordering involved with the      * modification of the {@link org.apache.jackrabbit.oak.plugins.tree.TreeConstants#OAK_CHILD_ORDER}      * property.      *      * @param before      * @param after      * @return the name of the first reordered child if any user-supplied node      * reorder happened; {@code null} otherwise.      */
+comment|/**      * Tests if there was any user-supplied reordering involved with the      * modification of the {@link org.apache.jackrabbit.oak.plugins.tree.impl.TreeConstants#OAK_CHILD_ORDER}      * property.      *      * @param before      * @param after      * @return the name of the first reordered child if any user-supplied node      * reorder happened; {@code null} otherwise.      */
 annotation|@
 name|CheckForNull
 specifier|public

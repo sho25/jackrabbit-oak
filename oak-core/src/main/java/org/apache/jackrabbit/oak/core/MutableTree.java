@@ -149,6 +149,8 @@ name|plugins
 operator|.
 name|tree
 operator|.
+name|impl
+operator|.
 name|TreeConstants
 operator|.
 name|OAK_CHILD_ORDER
@@ -303,6 +305,8 @@ name|plugins
 operator|.
 name|tree
 operator|.
+name|impl
+operator|.
 name|AbstractTree
 import|;
 end_import
@@ -320,6 +324,8 @@ operator|.
 name|plugins
 operator|.
 name|tree
+operator|.
+name|impl
 operator|.
 name|TreeConstants
 import|;
