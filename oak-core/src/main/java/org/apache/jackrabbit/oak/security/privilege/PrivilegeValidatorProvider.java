@@ -55,9 +55,11 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|core
+name|plugins
 operator|.
-name|ImmutableRoot
+name|tree
+operator|.
+name|RootFactory
 import|;
 end_import
 
@@ -248,8 +250,9 @@ name|nodeState
 parameter_list|)
 block|{
 return|return
-operator|new
-name|ImmutableRoot
+name|RootFactory
+operator|.
+name|createReadOnlyRoot
 argument_list|(
 name|nodeState
 argument_list|)

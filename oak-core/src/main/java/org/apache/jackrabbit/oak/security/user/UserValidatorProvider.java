@@ -39,9 +39,11 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|core
+name|plugins
 operator|.
-name|ImmutableRoot
+name|tree
+operator|.
+name|RootFactory
 import|;
 end_import
 
@@ -59,9 +61,7 @@ name|plugins
 operator|.
 name|tree
 operator|.
-name|impl
-operator|.
-name|ImmutableTree
+name|TreeFactory
 import|;
 end_import
 
@@ -230,8 +230,9 @@ operator|=
 operator|new
 name|MembershipProvider
 argument_list|(
-operator|new
-name|ImmutableRoot
+name|RootFactory
+operator|.
+name|createReadOnlyRoot
 argument_list|(
 name|after
 argument_list|)
@@ -243,14 +244,16 @@ return|return
 operator|new
 name|UserValidator
 argument_list|(
-operator|new
-name|ImmutableTree
+name|TreeFactory
+operator|.
+name|createReadOnlyTree
 argument_list|(
 name|before
 argument_list|)
 argument_list|,
-operator|new
-name|ImmutableTree
+name|TreeFactory
+operator|.
+name|createReadOnlyTree
 argument_list|(
 name|after
 argument_list|)

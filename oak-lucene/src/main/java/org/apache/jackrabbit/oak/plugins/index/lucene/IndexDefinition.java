@@ -393,9 +393,7 @@ name|plugins
 operator|.
 name|tree
 operator|.
-name|impl
-operator|.
-name|ImmutableTree
+name|TreeFactory
 import|;
 end_import
 
@@ -2786,19 +2784,21 @@ name|ntReg
 init|=
 name|createNodeTypeManager
 argument_list|(
-operator|new
-name|ImmutableTree
+name|TreeFactory
+operator|.
+name|createReadOnlyTree
 argument_list|(
 name|root
 argument_list|)
 argument_list|)
 decl_stmt|;
 comment|//Use Tree API to read ordered child nodes
-name|ImmutableTree
+name|Tree
 name|ruleTree
 init|=
-operator|new
-name|ImmutableTree
+name|TreeFactory
+operator|.
+name|createReadOnlyTree
 argument_list|(
 name|indexRules
 argument_list|)
@@ -3724,8 +3724,9 @@ comment|//Include all immediate child nodes to 'properties' node by default
 name|Tree
 name|propTree
 init|=
-operator|new
-name|ImmutableTree
+name|TreeFactory
+operator|.
+name|createReadOnlyTree
 argument_list|(
 name|propNode
 argument_list|)

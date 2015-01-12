@@ -41,13 +41,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|plugins
+name|api
 operator|.
-name|tree
-operator|.
-name|impl
-operator|.
-name|ImmutableTree
+name|Tree
 import|;
 end_import
 
@@ -207,7 +203,7 @@ specifier|public
 name|int
 name|getType
 parameter_list|(
-name|ImmutableTree
+name|Tree
 name|tree
 parameter_list|)
 block|{
@@ -245,7 +241,7 @@ specifier|public
 name|int
 name|getType
 parameter_list|(
-name|ImmutableTree
+name|Tree
 name|tree
 parameter_list|,
 name|int

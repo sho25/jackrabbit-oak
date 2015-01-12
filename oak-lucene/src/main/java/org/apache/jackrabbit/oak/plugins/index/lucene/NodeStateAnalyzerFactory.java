@@ -269,9 +269,7 @@ name|plugins
 operator|.
 name|tree
 operator|.
-name|impl
-operator|.
-name|ImmutableTree
+name|TreeFactory
 import|;
 end_import
 
@@ -797,11 +795,12 @@ init|=
 name|newArrayList
 argument_list|()
 decl_stmt|;
-name|ImmutableTree
+name|Tree
 name|tree
 init|=
-operator|new
-name|ImmutableTree
+name|TreeFactory
+operator|.
+name|createReadOnlyTree
 argument_list|(
 name|tokenFiltersState
 argument_list|)
@@ -918,11 +917,12 @@ name|newArrayList
 argument_list|()
 decl_stmt|;
 comment|//Need to read children in order
-name|ImmutableTree
+name|Tree
 name|tree
 init|=
-operator|new
-name|ImmutableTree
+name|TreeFactory
+operator|.
+name|createReadOnlyTree
 argument_list|(
 name|charFiltersState
 argument_list|)

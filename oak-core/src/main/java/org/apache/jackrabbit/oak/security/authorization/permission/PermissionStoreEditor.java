@@ -209,9 +209,7 @@ name|plugins
 operator|.
 name|tree
 operator|.
-name|impl
-operator|.
-name|ImmutableTree
+name|TreeFactory
 import|;
 end_import
 
@@ -788,8 +786,9 @@ argument_list|(
 name|accessControlledPath
 argument_list|)
 argument_list|,
-operator|new
-name|ImmutableTree
+name|TreeFactory
+operator|.
+name|createReadOnlyTree
 argument_list|(
 name|ace
 argument_list|)

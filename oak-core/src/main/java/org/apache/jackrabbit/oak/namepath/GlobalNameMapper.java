@@ -325,9 +325,11 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|core
+name|plugins
 operator|.
-name|ImmutableRoot
+name|tree
+operator|.
+name|RootFactory
 import|;
 end_import
 
@@ -345,9 +347,7 @@ name|plugins
 operator|.
 name|tree
 operator|.
-name|impl
-operator|.
-name|ImmutableTree
+name|TreeFactory
 import|;
 end_import
 
@@ -527,8 +527,9 @@ parameter_list|)
 block|{
 name|this
 argument_list|(
-operator|new
-name|ImmutableRoot
+name|RootFactory
+operator|.
+name|createReadOnlyRoot
 argument_list|(
 name|root
 argument_list|)
@@ -659,8 +660,9 @@ name|this
 operator|.
 name|namespaces
 operator|=
-operator|new
-name|ImmutableTree
+name|TreeFactory
+operator|.
+name|createReadOnlyTree
 argument_list|(
 name|forward
 operator|.
@@ -672,8 +674,9 @@ name|this
 operator|.
 name|nsdata
 operator|=
-operator|new
-name|ImmutableTree
+name|TreeFactory
+operator|.
+name|createReadOnlyTree
 argument_list|(
 name|reverse
 operator|.

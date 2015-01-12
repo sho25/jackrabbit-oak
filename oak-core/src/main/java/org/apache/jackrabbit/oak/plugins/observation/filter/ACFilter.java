@@ -77,9 +77,7 @@ name|plugins
 operator|.
 name|tree
 operator|.
-name|impl
-operator|.
-name|ImmutableTree
+name|TreeFactory
 import|;
 end_import
 
@@ -206,9 +204,11 @@ name|permissionProvider
 operator|.
 name|getTreePermission
 argument_list|(
-operator|new
-name|ImmutableTree
+name|TreeFactory
+operator|.
+name|createReadOnlyTree
 argument_list|(
+operator|(
 name|after
 operator|.
 name|exists
@@ -217,6 +217,7 @@ condition|?
 name|after
 else|:
 name|before
+operator|)
 argument_list|)
 argument_list|,
 name|TreePermission

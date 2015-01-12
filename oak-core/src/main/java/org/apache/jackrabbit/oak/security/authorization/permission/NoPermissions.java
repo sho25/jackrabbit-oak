@@ -87,9 +87,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|core
+name|api
 operator|.
-name|ImmutableRoot
+name|Root
 import|;
 end_import
 
@@ -103,13 +103,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|plugins
+name|api
 operator|.
-name|tree
-operator|.
-name|impl
-operator|.
-name|ImmutableTree
+name|Tree
 import|;
 end_import
 
@@ -201,7 +197,7 @@ name|refresh
 parameter_list|(
 annotation|@
 name|Nonnull
-name|ImmutableRoot
+name|Root
 name|root
 parameter_list|,
 annotation|@
@@ -233,7 +229,7 @@ name|getTreePermission
 parameter_list|(
 annotation|@
 name|Nonnull
-name|ImmutableTree
+name|Tree
 name|tree
 parameter_list|,
 annotation|@
@@ -256,7 +252,7 @@ name|isGranted
 parameter_list|(
 annotation|@
 name|Nonnull
-name|ImmutableTree
+name|Tree
 name|tree
 parameter_list|,
 annotation|@
@@ -302,7 +298,7 @@ name|getPrivileges
 parameter_list|(
 annotation|@
 name|Nullable
-name|ImmutableTree
+name|Tree
 name|tree
 parameter_list|)
 block|{
@@ -321,7 +317,7 @@ name|hasPrivileges
 parameter_list|(
 annotation|@
 name|Nullable
-name|ImmutableTree
+name|Tree
 name|tree
 parameter_list|,
 name|String

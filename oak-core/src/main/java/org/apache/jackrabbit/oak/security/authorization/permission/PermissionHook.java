@@ -77,9 +77,11 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|core
+name|plugins
 operator|.
-name|ImmutableRoot
+name|nodetype
+operator|.
+name|TypePredicate
 import|;
 end_import
 
@@ -95,9 +97,9 @@ name|oak
 operator|.
 name|plugins
 operator|.
-name|nodetype
+name|tree
 operator|.
-name|TypePredicate
+name|RootFactory
 import|;
 end_import
 
@@ -508,8 +510,9 @@ operator|=
 operator|new
 name|PrivilegeBitsProvider
 argument_list|(
-operator|new
-name|ImmutableRoot
+name|RootFactory
+operator|.
+name|createReadOnlyRoot
 argument_list|(
 name|after
 argument_list|)
