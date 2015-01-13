@@ -31,7 +31,7 @@ name|commons
 operator|.
 name|CIHelper
 operator|.
-name|buildBotTrunkLinux
+name|buildBotLinuxTrunk
 import|;
 end_import
 
@@ -533,7 +533,7 @@ comment|// FIXME OAK-2379. Don't run the tests for now on the Linux BuildBot for
 name|assumeTrue
 argument_list|(
 operator|!
-name|buildBotTrunkLinux
+name|buildBotLinuxTrunk
 argument_list|()
 operator|||
 name|fixture

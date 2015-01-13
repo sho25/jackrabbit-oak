@@ -43,7 +43,7 @@ name|commons
 operator|.
 name|CIHelper
 operator|.
-name|buildBotTrunkWin7
+name|buildBotWin7Trunk
 import|;
 end_import
 
@@ -195,7 +195,7 @@ comment|// FIXME OAK-1904 temporary hack to disable this test on Apache buildbot
 name|assumeTrue
 argument_list|(
 operator|!
-name|buildBotTrunkWin7
+name|buildBotWin7Trunk
 argument_list|()
 argument_list|)
 expr_stmt|;
