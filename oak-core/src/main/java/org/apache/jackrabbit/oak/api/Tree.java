@@ -298,6 +298,8 @@ name|Nonnull
 name|T
 name|value
 parameter_list|,
+annotation|@
+name|Nonnull
 name|Type
 argument_list|<
 name|T

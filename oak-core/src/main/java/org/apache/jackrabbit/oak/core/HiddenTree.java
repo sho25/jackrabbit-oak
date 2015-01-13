@@ -49,6 +49,16 @@ name|javax
 operator|.
 name|annotation
 operator|.
+name|CheckForNull
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|annotation
+operator|.
 name|Nonnull
 import|;
 end_import
@@ -275,6 +285,8 @@ return|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|CheckForNull
 specifier|public
 name|PropertyState
 name|getProperty
@@ -291,6 +303,8 @@ return|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|CheckForNull
 specifier|public
 name|Status
 name|getPropertyStatus
@@ -552,6 +566,8 @@ name|Nonnull
 name|T
 name|value
 parameter_list|,
+annotation|@
+name|Nonnull
 name|Type
 argument_list|<
 name|T
