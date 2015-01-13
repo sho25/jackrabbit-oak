@@ -83,6 +83,36 @@ end_import
 
 begin_import
 import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|collect
+operator|.
+name|Iterables
+operator|.
+name|size
+import|;
+end_import
+
+begin_import
+import|import static
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|TimeUnit
+operator|.
+name|HOURS
+import|;
+end_import
+
+begin_import
+import|import static
 name|org
 operator|.
 name|apache
@@ -252,20 +282,6 @@ operator|.
 name|collect
 operator|.
 name|ImmutableList
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|collect
-operator|.
-name|Iterables
 import|;
 end_import
 
@@ -452,16 +468,6 @@ operator|.
 name|junit
 operator|.
 name|Before
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
-name|Ignore
 import|;
 end_import
 
@@ -906,8 +912,6 @@ name|gc
 argument_list|(
 name|maxAge
 argument_list|,
-name|TimeUnit
-operator|.
 name|HOURS
 argument_list|)
 decl_stmt|;
@@ -992,8 +996,6 @@ name|maxAge
 operator|*
 literal|2
 argument_list|,
-name|TimeUnit
-operator|.
 name|HOURS
 argument_list|)
 expr_stmt|;
@@ -1016,8 +1018,6 @@ operator|.
 name|getTime
 argument_list|()
 operator|+
-name|TimeUnit
-operator|.
 name|HOURS
 operator|.
 name|toMillis
@@ -1040,8 +1040,6 @@ name|maxAge
 operator|*
 literal|2
 argument_list|,
-name|TimeUnit
-operator|.
 name|HOURS
 argument_list|)
 expr_stmt|;
@@ -1133,8 +1131,6 @@ operator|.
 name|getTime
 argument_list|()
 operator|+
-name|TimeUnit
-operator|.
 name|HOURS
 operator|.
 name|toMillis
@@ -1157,8 +1153,6 @@ name|maxAge
 operator|*
 literal|2
 argument_list|,
-name|TimeUnit
-operator|.
 name|HOURS
 argument_list|)
 expr_stmt|;
@@ -1265,8 +1259,6 @@ literal|0
 init|;
 name|i
 operator|<
-name|NodeDocument
-operator|.
 name|NUM_REVS_THRESHOLD
 condition|;
 name|i
@@ -1446,8 +1438,6 @@ operator|.
 name|getTime
 argument_list|()
 operator|+
-name|TimeUnit
-operator|.
 name|HOURS
 operator|.
 name|toMillis
@@ -1467,8 +1457,6 @@ name|gc
 argument_list|(
 name|maxAge
 argument_list|,
-name|TimeUnit
-operator|.
 name|HOURS
 argument_list|)
 decl_stmt|;
@@ -1826,8 +1814,6 @@ operator|.
 name|getTime
 argument_list|()
 operator|+
-name|TimeUnit
-operator|.
 name|HOURS
 operator|.
 name|toMillis
@@ -1847,8 +1833,6 @@ name|gc
 argument_list|(
 name|maxAge
 argument_list|,
-name|TimeUnit
-operator|.
 name|HOURS
 argument_list|)
 decl_stmt|;
@@ -2070,8 +2054,6 @@ operator|.
 name|getTime
 argument_list|()
 operator|+
-name|TimeUnit
-operator|.
 name|HOURS
 operator|.
 name|toMillis
@@ -2091,8 +2073,6 @@ name|gc
 argument_list|(
 name|maxAge
 argument_list|,
-name|TimeUnit
-operator|.
 name|HOURS
 argument_list|)
 decl_stmt|;
@@ -2267,8 +2247,6 @@ operator|.
 name|getTime
 argument_list|()
 operator|+
-name|TimeUnit
-operator|.
 name|HOURS
 operator|.
 name|toMillis
@@ -2288,8 +2266,6 @@ name|gc
 argument_list|(
 name|maxAge
 argument_list|,
-name|TimeUnit
-operator|.
 name|HOURS
 argument_list|)
 decl_stmt|;
@@ -2339,8 +2315,6 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|// OAK-1791
-annotation|@
-name|Ignore
 annotation|@
 name|Test
 specifier|public
@@ -2521,8 +2495,6 @@ name|gc
 argument_list|(
 literal|1
 argument_list|,
-name|TimeUnit
-operator|.
 name|HOURS
 argument_list|)
 expr_stmt|;
@@ -2592,16 +2564,9 @@ argument_list|(
 name|doc
 argument_list|)
 expr_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"number of revisions: "
-operator|+
-name|Iterables
-operator|.
+name|int
+name|numRevs
+init|=
 name|size
 argument_list|(
 name|doc
@@ -2614,6 +2579,16 @@ operator|.
 name|entrySet
 argument_list|()
 argument_list|)
+decl_stmt|;
+name|assertTrue
+argument_list|(
+literal|"too many revisions: "
+operator|+
+name|numRevs
+argument_list|,
+name|numRevs
+operator|<
+literal|6000
 argument_list|)
 expr_stmt|;
 block|}

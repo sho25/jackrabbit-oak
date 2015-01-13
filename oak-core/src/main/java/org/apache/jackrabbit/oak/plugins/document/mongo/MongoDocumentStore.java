@@ -4920,7 +4920,7 @@ if|if
 condition|(
 name|o
 operator|instanceof
-name|Long
+name|Number
 condition|)
 block|{
 name|copy
