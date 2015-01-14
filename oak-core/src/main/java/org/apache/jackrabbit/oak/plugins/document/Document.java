@@ -154,7 +154,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A document corresponds to a node stored in the DocumentMK. A document contains  * all the revisions of a node stored in the {@link DocumentStore}.  */
+comment|/**  * A document corresponds to a node stored in the DocumentNodeStore. A document  * contains all the revisions of a node stored in the {@link DocumentStore}.  */
 end_comment
 
 begin_class
@@ -164,7 +164,7 @@ name|Document
 implements|implements
 name|CacheValue
 block|{
-comment|/**      * The node id, which contains the depth of the path      * (0 for root, 1 for children of the root), and then the path.      */
+comment|/**      * The name of the field that contains the document id (the primary key /      * the key). The id uniquely identifies a document within a collection. The      * requirements and limits of the id are documented in the      * {@link DocumentStore} class.      *       * For nodes, the document id contains the depth of the path (0 for root, 1      * for children of the root), and then the path.      */
 specifier|public
 specifier|static
 specifier|final
@@ -208,7 +208,7 @@ argument_list|(
 literal|false
 argument_list|)
 decl_stmt|;
-comment|/**      * @return the id of this document or<code>null</code> if none is set.      */
+comment|/**      * Get the id (the primary key) of this document.      *       * @return the id or<code>null</code> if none is set.      */
 annotation|@
 name|CheckForNull
 specifier|public
@@ -226,7 +226,7 @@ name|ID
 argument_list|)
 return|;
 block|}
-comment|/**      * @return the modification count of this document or<code>null</code> if      *         none is set.      */
+comment|/**      * Get the modification count of this document.      *       * @return the count or<code>null</code> if      *         none is set.      */
 annotation|@
 name|CheckForNull
 specifier|public
