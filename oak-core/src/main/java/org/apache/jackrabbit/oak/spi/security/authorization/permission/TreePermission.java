@@ -87,12 +87,18 @@ interface|interface
 name|TreePermission
 block|{
 comment|/**      * Retrieve the {@code TreePermission} for the tree identified by the specified      * {@code childName} and {@code childState}, which is a child of the tree      * associated with this instanceof {@code TreePermission}.      *      * @param childName The oak name of the child.      * @param childState The child state.      * @return The tree permission for the child tree identified by {@code childName}      * and {@code childState}.      */
+annotation|@
+name|Nonnull
 name|TreePermission
 name|getChildPermission
 parameter_list|(
+annotation|@
+name|Nonnull
 name|String
 name|childName
 parameter_list|,
+annotation|@
+name|Nonnull
 name|NodeState
 name|childState
 parameter_list|)
@@ -157,9 +163,13 @@ specifier|public
 name|TreePermission
 name|getChildPermission
 parameter_list|(
+annotation|@
+name|Nonnull
 name|String
 name|childName
 parameter_list|,
+annotation|@
+name|Nonnull
 name|NodeState
 name|childState
 parameter_list|)
@@ -266,9 +276,13 @@ specifier|public
 name|TreePermission
 name|getChildPermission
 parameter_list|(
+annotation|@
+name|Nonnull
 name|String
 name|childName
 parameter_list|,
+annotation|@
+name|Nonnull
 name|NodeState
 name|childState
 parameter_list|)
