@@ -110,26 +110,6 @@ import|;
 end_import
 
 begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|spi
-operator|.
-name|state
-operator|.
-name|NodeStateUtils
-operator|.
-name|isHidden
-import|;
-end_import
-
-begin_import
 import|import
 name|java
 operator|.

@@ -250,26 +250,6 @@ import|;
 end_import
 
 begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|spi
-operator|.
-name|state
-operator|.
-name|NodeStateUtils
-operator|.
-name|isHidden
-import|;
-end_import
-
-begin_import
 import|import
 name|java
 operator|.
@@ -477,6 +457,24 @@ name|NodeState
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|state
+operator|.
+name|NodeStateUtils
+import|;
+end_import
+
 begin_comment
 comment|/**  * {@code AbstractTree} provides default implementations for most  * read methods of {@code Tree}. Furthermore it handles hides hidden  * items.  */
 end_comment
@@ -549,6 +547,24 @@ name|NodeBuilder
 name|getNodeBuilder
 parameter_list|()
 function_decl|;
+comment|/**      * Determine whether an item should be hidden. I.e. not exposed through this      * tree.      *      * @param name  name of an item      * @return  {@code true} if the item is hidden, {@code false} otherwise.      */
+specifier|protected
+name|boolean
+name|isHidden
+parameter_list|(
+name|String
+name|name
+parameter_list|)
+block|{
+return|return
+name|NodeStateUtils
+operator|.
+name|isHidden
+argument_list|(
+name|name
+argument_list|)
+return|;
+block|}
 comment|/**      * @return  the underlying {@code NodeState} of this tree      */
 annotation|@
 name|Nonnull
