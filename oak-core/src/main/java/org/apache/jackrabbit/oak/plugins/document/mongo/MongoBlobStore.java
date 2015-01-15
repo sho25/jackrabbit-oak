@@ -299,6 +299,20 @@ name|db
 operator|=
 name|db
 expr_stmt|;
+comment|// use a block size of 2 MB - 1 KB, because MongoDB rounds up the
+comment|// space allocated for a record to the next power of two
+comment|// (there is an overhead per record, let's assume it is 1 KB at most)
+name|setBlockSize
+argument_list|(
+literal|2
+operator|*
+literal|1024
+operator|*
+literal|1024
+operator|-
+literal|1024
+argument_list|)
+expr_stmt|;
 name|initBlobCollection
 argument_list|()
 expr_stmt|;
