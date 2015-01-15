@@ -3780,7 +3780,7 @@ name|NAMES
 argument_list|)
 expr_stmt|;
 block|}
-comment|// FIXME: the privilege bits of aggregated privileges is not just 'next' but must be properly calculated from the aggregates
+comment|// FIXME (OAK-2400): the privilege bits of aggregated privileges is not just 'next' but must be properly calculated from the aggregates
 name|PrivilegeBits
 name|bits
 init|=
