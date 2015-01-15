@@ -409,7 +409,16 @@ name|log
 operator|.
 name|warn
 argument_list|(
-literal|"exception occurred"
+literal|"Unable to start proxy on port "
+operator|+
+name|inboundPort
+operator|+
+literal|": "
+operator|+
+name|e
+operator|.
+name|getMessage
+argument_list|()
 argument_list|,
 name|e
 argument_list|)
@@ -423,6 +432,21 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+if|if
+condition|(
+name|f
+operator|==
+literal|null
+condition|)
+block|{
+throw|throw
+operator|new
+name|Exception
+argument_list|(
+literal|"proxy not started"
+argument_list|)
+throw|;
+block|}
 name|f
 operator|.
 name|channel
