@@ -1001,7 +1001,7 @@ name|getProperty
 argument_list|(
 literal|"standby.proxy.port"
 argument_list|,
-literal|"4711"
+literal|"51913"
 argument_list|)
 argument_list|)
 decl_stmt|;
