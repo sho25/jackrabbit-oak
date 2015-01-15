@@ -606,6 +606,11 @@ decl_stmt|;
 specifier|private
 specifier|final
 name|NodeState
+name|root
+decl_stmt|;
+specifier|private
+specifier|final
+name|NodeState
 name|definition
 decl_stmt|;
 specifier|private
@@ -663,6 +668,9 @@ name|String
 name|name
 parameter_list|,
 name|NodeState
+name|root
+parameter_list|,
+name|NodeState
 name|definition
 parameter_list|,
 name|Filter
@@ -674,6 +682,12 @@ operator|.
 name|name
 operator|=
 name|name
+expr_stmt|;
+name|this
+operator|.
+name|root
+operator|=
+name|root
 expr_stmt|;
 name|this
 operator|.
@@ -905,6 +919,8 @@ name|count
 argument_list|(
 name|filter
 argument_list|,
+name|root
+argument_list|,
 name|definition
 argument_list|,
 name|values
@@ -987,6 +1003,8 @@ operator|.
 name|count
 argument_list|(
 name|filter
+argument_list|,
+name|root
 argument_list|,
 name|definition
 argument_list|,

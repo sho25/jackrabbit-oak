@@ -887,6 +887,8 @@ name|store
 operator|.
 name|count
 argument_list|(
+name|root
+argument_list|,
 name|indexMeta
 operator|.
 name|getNodeState

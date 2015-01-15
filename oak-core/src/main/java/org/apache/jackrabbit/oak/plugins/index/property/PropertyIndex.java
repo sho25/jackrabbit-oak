@@ -559,6 +559,8 @@ operator|.
 name|getName
 argument_list|()
 argument_list|,
+name|root
+argument_list|,
 name|definition
 argument_list|,
 name|filter

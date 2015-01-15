@@ -1739,6 +1739,8 @@ literal|null
 operator|&&
 name|check
 argument_list|(
+name|root
+argument_list|,
 name|definition
 operator|.
 name|getNodeState
@@ -2038,6 +2040,9 @@ name|boolean
 name|check
 parameter_list|(
 name|NodeState
+name|root
+parameter_list|,
+name|NodeState
 name|definition
 parameter_list|,
 name|String
@@ -2059,6 +2064,8 @@ name|STORE
 operator|.
 name|count
 argument_list|(
+name|root
+argument_list|,
 name|definition
 argument_list|,
 name|name

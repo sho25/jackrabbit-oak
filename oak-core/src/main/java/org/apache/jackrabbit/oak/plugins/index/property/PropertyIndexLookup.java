@@ -703,6 +703,8 @@ name|count
 argument_list|(
 name|filter
 argument_list|,
+name|root
+argument_list|,
 name|indexMeta
 argument_list|,
 name|encode

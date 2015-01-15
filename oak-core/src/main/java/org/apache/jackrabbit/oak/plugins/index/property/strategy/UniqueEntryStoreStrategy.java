@@ -903,6 +903,9 @@ name|long
 name|count
 parameter_list|(
 name|NodeState
+name|root
+parameter_list|,
+name|NodeState
 name|indexMeta
 parameter_list|,
 name|Set
@@ -1105,6 +1108,9 @@ name|Filter
 name|filter
 parameter_list|,
 name|NodeState
+name|root
+parameter_list|,
+name|NodeState
 name|indexMeta
 parameter_list|,
 name|Set
@@ -1120,6 +1126,8 @@ block|{
 return|return
 name|count
 argument_list|(
+name|root
+argument_list|,
 name|indexMeta
 argument_list|,
 name|values

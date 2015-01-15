@@ -572,6 +572,12 @@ specifier|final
 name|NodeBuilder
 name|definition
 decl_stmt|;
+comment|/** Root node state */
+specifier|private
+specifier|final
+name|NodeState
+name|root
+decl_stmt|;
 specifier|private
 specifier|final
 name|Set
@@ -660,6 +666,12 @@ operator|.
 name|definition
 operator|=
 name|definition
+expr_stmt|;
+name|this
+operator|.
+name|root
+operator|=
+name|root
 expr_stmt|;
 comment|//initPropertyNames(definition);
 comment|// get property names
@@ -828,6 +840,14 @@ operator|=
 name|parent
 operator|.
 name|definition
+expr_stmt|;
+name|this
+operator|.
+name|root
+operator|=
+name|parent
+operator|.
+name|root
 expr_stmt|;
 name|this
 operator|.
@@ -1412,6 +1432,8 @@ name|s
 operator|.
 name|count
 argument_list|(
+name|root
+argument_list|,
 name|indexMeta
 argument_list|,
 name|singleton
