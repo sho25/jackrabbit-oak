@@ -610,12 +610,6 @@ specifier|private
 name|BundleContext
 name|context
 decl_stmt|;
-comment|// FIXME remove the ignore
-annotation|@
-name|Ignore
-argument_list|(
-literal|"OAK-2402"
-argument_list|)
 annotation|@
 name|Test
 specifier|public
