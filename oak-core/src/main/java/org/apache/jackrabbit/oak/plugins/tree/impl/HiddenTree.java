@@ -13,7 +13,11 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|core
+name|plugins
+operator|.
+name|tree
+operator|.
+name|impl
 package|;
 end_package
 
@@ -142,7 +146,6 @@ comment|/**  * Instances of this class represent trees that are inaccessible bec
 end_comment
 
 begin_class
-specifier|public
 class|class
 name|HiddenTree
 implements|implements
@@ -158,7 +161,6 @@ specifier|final
 name|String
 name|name
 decl_stmt|;
-specifier|public
 name|HiddenTree
 parameter_list|(
 name|Tree
