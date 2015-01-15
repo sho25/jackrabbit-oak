@@ -127,7 +127,7 @@ name|getProperty
 argument_list|(
 literal|"standby.server.port"
 argument_list|,
-literal|"52808"
+literal|"52800"
 argument_list|)
 argument_list|)
 decl_stmt|;

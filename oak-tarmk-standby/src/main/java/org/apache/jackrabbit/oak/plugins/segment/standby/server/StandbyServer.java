@@ -453,6 +453,16 @@ name|javax
 operator|.
 name|management
 operator|.
+name|InstanceNotFoundException
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|management
+operator|.
 name|MBeanServer
 import|;
 end_import
@@ -1056,6 +1066,14 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
+name|InstanceNotFoundException
+name|e
+parameter_list|)
+block|{
+comment|// ignore
+block|}
+catch|catch
+parameter_list|(
 name|Exception
 name|e
 parameter_list|)
@@ -1064,7 +1082,7 @@ name|log
 operator|.
 name|error
 argument_list|(
-literal|"can unregister standby status mbean"
+literal|"can't unregister standby status mbean"
 argument_list|,
 name|e
 argument_list|)
@@ -1150,10 +1168,6 @@ condition|(
 name|running
 condition|)
 return|return;
-name|running
-operator|=
-literal|true
-expr_stmt|;
 name|this
 operator|.
 name|handler
@@ -1259,7 +1273,11 @@ name|log
 operator|.
 name|error
 argument_list|(
-literal|"Server failed to start, will be canceled"
+literal|"Server failed to start on port "
+operator|+
+name|port
+operator|+
+literal|", will be canceled"
 argument_list|,
 name|future
 operator|.
