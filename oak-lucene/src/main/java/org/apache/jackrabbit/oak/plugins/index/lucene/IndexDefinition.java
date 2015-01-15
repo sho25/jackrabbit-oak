@@ -1145,28 +1145,6 @@ name|NODE_TYPES_PATH
 import|;
 end_import
 
-begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|plugins
-operator|.
-name|tree
-operator|.
-name|impl
-operator|.
-name|TreeConstants
-operator|.
-name|OAK_CHILD_ORDER
-import|;
-end_import
-
 begin_class
 class|class
 name|IndexDefinition
@@ -1175,6 +1153,15 @@ name|Aggregate
 operator|.
 name|AggregateMapper
 block|{
+comment|/**      * Name of the internal property that contains the child order defined in      * org.apache.jackrabbit.oak.plugins.tree.impl.TreeConstants      */
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|OAK_CHILD_ORDER
+init|=
+literal|":childOrder"
+decl_stmt|;
 specifier|private
 specifier|static
 specifier|final
