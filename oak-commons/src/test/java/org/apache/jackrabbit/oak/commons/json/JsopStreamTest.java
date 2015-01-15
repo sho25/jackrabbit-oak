@@ -1319,7 +1319,7 @@ literal|"+{\"foo\":\"bar\",\"int\":3,\"decimal\":3.0,"
 operator|+
 literal|"\"obj\":{\"boolean\":true,\"null\":null,"
 operator|+
-literal|"\"arr\":[[1,\"\\u001f ~ \\u007f \\u0080\",\"42\"],[]]},\"some\":\"more\"}"
+literal|"\"arr\":[[1,\"\\u001f ~ \u007f \u0080\",\"42\"],[]]},\"some\":\"more\"}"
 argument_list|,
 name|json
 argument_list|)
