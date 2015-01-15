@@ -565,6 +565,18 @@ name|name
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Nonnull
+specifier|protected
+name|String
+index|[]
+name|getInternalNodeNames
+parameter_list|()
+block|{
+return|return
+name|INTERNAL_NODE_NAMES
+return|;
+block|}
 comment|/**      * @return  the underlying {@code NodeState} of this tree      */
 annotation|@
 name|Nonnull
@@ -1362,13 +1374,25 @@ name|long
 name|max
 parameter_list|)
 block|{
+name|String
+index|[]
+name|internalNodeNames
+init|=
+name|getInternalNodeNames
+argument_list|()
+decl_stmt|;
+name|int
+name|len
+init|=
+name|internalNodeNames
+operator|.
+name|length
+decl_stmt|;
 if|if
 condition|(
 name|max
 operator|+
-name|INTERNAL_NODE_NAMES
-operator|.
-name|length
+name|len
 operator|<
 literal|0
 condition|)
@@ -1386,9 +1410,7 @@ block|{
 comment|// fetch a few more
 name|max
 operator|+=
-name|INTERNAL_NODE_NAMES
-operator|.
-name|length
+name|len
 expr_stmt|;
 block|}
 name|NodeBuilder
@@ -1419,7 +1441,7 @@ control|(
 name|String
 name|name
 range|:
-name|INTERNAL_NODE_NAMES
+name|internalNodeNames
 control|)
 block|{
 if|if
