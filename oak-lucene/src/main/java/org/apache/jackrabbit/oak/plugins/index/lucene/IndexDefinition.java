@@ -1183,11 +1183,11 @@ specifier|final
 name|int
 name|DEFAULT_BLOB_SIZE
 init|=
-name|OakDirectory
-operator|.
-name|DEFAULT_BLOB_SIZE
+literal|1024
+operator|*
+literal|1024
 operator|-
-literal|300
+literal|1024
 decl_stmt|;
 comment|/**      * Default entry count to keep estimated entry count low.      */
 specifier|static

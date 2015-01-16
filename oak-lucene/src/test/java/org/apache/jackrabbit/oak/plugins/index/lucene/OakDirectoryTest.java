@@ -410,9 +410,11 @@ decl_stmt|;
 name|int
 name|fileSize
 init|=
-name|OakDirectory
+name|IndexDefinition
 operator|.
 name|DEFAULT_BLOB_SIZE
+operator|*
+literal|2
 operator|+
 name|rnd
 operator|.
