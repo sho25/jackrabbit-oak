@@ -696,6 +696,49 @@ literal|" (ID varbinary(767) not null primary key, DATA mediumblob)"
 return|;
 block|}
 block|}
+block|,
+name|MSSQL
+argument_list|(
+literal|"Microsoft SQL Server"
+argument_list|)
+block|{
+annotation|@
+name|Override
+specifier|public
+name|String
+name|getMetaTableCreationStatement
+parameter_list|(
+name|String
+name|tableName
+parameter_list|)
+block|{
+return|return
+literal|"create table "
+operator|+
+name|tableName
+operator|+
+literal|" (ID nvarchar(767) not null primary key, LVL int, LASTMOD bigint)"
+return|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|String
+name|getDataTableCreationStatement
+parameter_list|(
+name|String
+name|tableName
+parameter_list|)
+block|{
+return|return
+literal|"create table "
+operator|+
+name|tableName
+operator|+
+literal|" (ID nvarchar(767) not null primary key, DATA varbinary(max))"
+return|;
+block|}
+block|}
 block|;
 comment|/**          * If the primary column is encoded in bytes.          * Default false          * @return boolean          */
 specifier|public

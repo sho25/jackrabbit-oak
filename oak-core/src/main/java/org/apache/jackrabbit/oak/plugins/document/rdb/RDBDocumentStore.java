@@ -1657,13 +1657,128 @@ name|limit
 parameter_list|)
 block|{
 return|return
+name|String
+operator|.
+name|format
+argument_list|(
 name|query
+argument_list|,
+literal|""
+argument_list|)
 operator|+
 operator|(
 literal|" LIMIT "
 operator|+
 name|limit
 operator|)
+return|;
+block|}
+block|}
+block|,
+name|MSSQL
+argument_list|(
+literal|"Microsoft SQL Server"
+argument_list|)
+block|{
+specifier|public
+name|int
+name|getDataOctetLimit
+parameter_list|()
+block|{
+return|return
+literal|4000
+return|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|String
+name|getTableCreationStatement
+parameter_list|(
+name|String
+name|tableName
+parameter_list|)
+block|{
+return|return
+operator|(
+literal|"create table "
+operator|+
+name|tableName
+operator|+
+literal|" (ID nvarchar(512) COLLATE Latin1_General_BIN2 not null primary key, "
+operator|+
+literal|"MODIFIED bigint, HASBINARY smallint, MODCOUNT bigint, CMODCOUNT bigint, "
+operator|+
+literal|"DSIZE bigint, DATA nvarchar(4000), BDATA varbinary(max))"
+operator|)
+return|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|String
+name|getGreatestQueryString
+parameter_list|()
+block|{
+return|return
+literal|"(select MAX(mod) from (VALUES (MODIFIED), (?)) AS ALLMOD(mod))"
+return|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|String
+name|getConcatQueryString
+parameter_list|(
+name|int
+name|dataLength
+parameter_list|)
+block|{
+comment|/* To avoid truncation when concatenating force an error when limit is above the octet limit */
+return|return
+literal|"CASE WHEN LEN(DATA)<= "
+operator|+
+operator|(
+name|getDataOctetLimit
+argument_list|()
+operator|-
+name|dataLength
+operator|)
+operator|+
+literal|" THEN (DATA + CAST(? AS nvarchar("
+operator|+
+name|getDataOctetLimit
+argument_list|()
+operator|+
+literal|")))"
+operator|+
+literal|" ELSE DATA + CAST(DATA AS nvarchar(max)) END "
+return|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|String
+name|instrumentLimitQuery
+parameter_list|(
+name|String
+name|query
+parameter_list|,
+name|int
+name|limit
+parameter_list|)
+block|{
+return|return
+name|String
+operator|.
+name|format
+argument_list|(
+name|query
+argument_list|,
+literal|" TOP "
+operator|+
+name|limit
+argument_list|)
 return|;
 block|}
 block|}
@@ -1740,7 +1855,14 @@ name|limit
 parameter_list|)
 block|{
 return|return
+name|String
+operator|.
+name|format
+argument_list|(
 name|query
+argument_list|,
+literal|""
+argument_list|)
 operator|+
 operator|(
 literal|" FETCH FIRST "
@@ -6104,10 +6226,11 @@ parameter_list|)
 throws|throws
 name|SQLException
 block|{
+comment|/* Substitutions required             %1$s - TOP parameter to limit rows if supported         */
 name|String
 name|t
 init|=
-literal|"select ID, MODIFIED, MODCOUNT, CMODCOUNT, HASBINARY, DATA, BDATA from "
+literal|"select %s ID, MODIFIED, MODCOUNT, CMODCOUNT, HASBINARY, DATA, BDATA from "
 operator|+
 name|tableName
 operator|+
@@ -6197,6 +6320,20 @@ argument_list|(
 name|t
 argument_list|,
 name|limit
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+name|t
+operator|=
+name|String
+operator|.
+name|format
+argument_list|(
+name|t
+argument_list|,
+literal|""
 argument_list|)
 expr_stmt|;
 block|}

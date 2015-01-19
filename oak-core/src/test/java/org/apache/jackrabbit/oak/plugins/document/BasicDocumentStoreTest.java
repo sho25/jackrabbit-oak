@@ -5322,6 +5322,20 @@ operator|.
 name|getName
 argument_list|()
 argument_list|)
+operator|||
+name|super
+operator|.
+name|dsname
+operator|.
+name|contains
+argument_list|(
+name|DocumentStoreFixture
+operator|.
+name|RDB_MSSQL
+operator|.
+name|getName
+argument_list|()
+argument_list|)
 operator|)
 condition|?
 literal|4000
@@ -5757,6 +5771,40 @@ operator|+
 literal|" set "
 operator|+
 operator|(
+name|super
+operator|.
+name|dsname
+operator|.
+name|contains
+argument_list|(
+name|DocumentStoreFixture
+operator|.
+name|RDB_MSSQL
+operator|.
+name|getName
+argument_list|()
+argument_list|)
+condition|?
+literal|"DATA = CASE WHEN LEN(DATA)<= "
+operator|+
+operator|(
+name|dataInChars
+operator|-
+name|appendString
+operator|.
+name|length
+argument_list|()
+operator|)
+operator|+
+literal|" THEN (DATA + CAST(? AS nvarchar("
+operator|+
+name|dataInChars
+operator|+
+literal|")))"
+operator|+
+literal|" ELSE DATA + CAST(DATA AS nvarchar(max)) END "
+else|:
+operator|(
 name|needsConcat
 condition|?
 literal|"DATA = CONCAT(DATA, ?)"
@@ -5766,6 +5814,7 @@ operator|+
 name|dataInChars
 operator|+
 literal|"))"
+operator|)
 operator|)
 operator|+
 literal|" where ID = ?"
