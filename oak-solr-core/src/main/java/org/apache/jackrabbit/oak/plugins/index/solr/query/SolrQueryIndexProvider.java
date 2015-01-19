@@ -503,7 +503,7 @@ name|solrServer
 init|=
 name|solrServerProvider
 operator|.
-name|getSolrServer
+name|getSearchingSolrServer
 argument_list|()
 decl_stmt|;
 comment|// the query engine should be returned only if the server is alive, otherwise other indexes should be used

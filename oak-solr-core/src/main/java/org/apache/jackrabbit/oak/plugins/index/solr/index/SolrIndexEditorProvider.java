@@ -349,7 +349,7 @@ name|solrServer
 init|=
 name|solrServerProvider
 operator|.
-name|getSolrServer
+name|getIndexingSolrServer
 argument_list|()
 decl_stmt|;
 if|if

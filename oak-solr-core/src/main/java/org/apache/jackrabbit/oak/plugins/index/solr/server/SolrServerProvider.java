@@ -58,12 +58,29 @@ specifier|public
 interface|interface
 name|SolrServerProvider
 block|{
-comment|/**      * provides an already initialized {@link org.apache.solr.client.solrj.SolrServer} to be used from within Oak      *      * @return a {@link org.apache.solr.client.solrj.SolrServer} instance      * @throws Exception if anything goes wrong while providing the {@link org.apache.solr.client.solrj.SolrServer}      */
+comment|/**      * provides an already initialized {@link org.apache.solr.client.solrj.SolrServer} to be used for either searching or      * indexing, or both.      *      * @return a {@link org.apache.solr.client.solrj.SolrServer} instance      * @throws Exception if anything goes wrong while initializing the {@link org.apache.solr.client.solrj.SolrServer}      */
 annotation|@
 name|CheckForNull
-specifier|public
 name|SolrServer
 name|getSolrServer
+parameter_list|()
+throws|throws
+name|Exception
+function_decl|;
+comment|/**      * provides an already initialized {@link org.apache.solr.client.solrj.SolrServer} specifically configured to be      * used for indexing.      *      * @return a {@link org.apache.solr.client.solrj.SolrServer} instance      * @throws Exception if anything goes wrong while initializing the {@link org.apache.solr.client.solrj.SolrServer}      */
+annotation|@
+name|CheckForNull
+name|SolrServer
+name|getIndexingSolrServer
+parameter_list|()
+throws|throws
+name|Exception
+function_decl|;
+comment|/**      * provides an already initialized {@link org.apache.solr.client.solrj.SolrServer} specifically configured to be      * used for searching.      *      * @return a {@link org.apache.solr.client.solrj.SolrServer} instance      * @throws Exception if anything goes wrong while initializing the {@link org.apache.solr.client.solrj.SolrServer}      */
+annotation|@
+name|CheckForNull
+name|SolrServer
+name|getSearchingSolrServer
 parameter_list|()
 throws|throws
 name|Exception
