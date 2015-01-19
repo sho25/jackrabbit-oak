@@ -753,13 +753,19 @@ name|ASYNC_PROPERTY_NAME
 argument_list|)
 expr_stmt|;
 block|}
+comment|// squeeze node state before it is passed to store (OAK-2411)
 name|NodeState
 name|base
 init|=
+name|ModifiedNodeState
+operator|.
+name|squeeze
+argument_list|(
 name|builder
 operator|.
 name|getNodeState
 argument_list|()
+argument_list|)
 decl_stmt|;
 name|NodeStore
 name|store
