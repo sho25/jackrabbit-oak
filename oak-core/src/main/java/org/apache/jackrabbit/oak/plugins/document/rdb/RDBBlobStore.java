@@ -45,6 +45,26 @@ begin_import
 import|import
 name|java
 operator|.
+name|security
+operator|.
+name|MessageDigest
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|security
+operator|.
+name|NoSuchAlgorithmException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|sql
 operator|.
 name|Connection
@@ -210,6 +230,42 @@ operator|.
 name|document
 operator|.
 name|DocumentStoreException
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|memory
+operator|.
+name|AbstractBlob
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|blob
+operator|.
+name|AbstractBlobStore
 import|;
 end_import
 
@@ -537,6 +593,63 @@ literal|1024
 operator|*
 literal|1024
 decl_stmt|;
+comment|// ID size we need to support; is 2 * (hex) size of digest length
+specifier|private
+specifier|static
+specifier|final
+name|int
+name|IDSIZE
+decl_stmt|;
+static|static
+block|{
+try|try
+block|{
+name|MessageDigest
+name|md
+init|=
+name|MessageDigest
+operator|.
+name|getInstance
+argument_list|(
+name|AbstractBlobStore
+operator|.
+name|HASH_ALGORITHM
+argument_list|)
+decl_stmt|;
+name|IDSIZE
+operator|=
+name|md
+operator|.
+name|getDigestLength
+argument_list|()
+operator|*
+literal|2
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|NoSuchAlgorithmException
+name|ex
+parameter_list|)
+block|{
+name|LOG
+operator|.
+name|error
+argument_list|(
+literal|"can't determine digest length for blob store"
+argument_list|,
+name|ex
+argument_list|)
+expr_stmt|;
+throw|throw
+operator|new
+name|RuntimeException
+argument_list|(
+name|ex
+argument_list|)
+throw|;
+block|}
+block|}
 specifier|private
 name|Exception
 name|callStack
@@ -781,7 +894,11 @@ literal|"create table "
 operator|+
 name|tableName
 operator|+
-literal|" (ID varchar(767) not null primary key, LVL number, LASTMOD number)"
+literal|" (ID varchar("
+operator|+
+name|IDSIZE
+operator|+
+literal|") not null primary key, LVL number, LASTMOD number)"
 expr_stmt|;
 block|}
 else|else
@@ -792,7 +909,11 @@ literal|"create table "
 operator|+
 name|tableName
 operator|+
-literal|" (ID varchar(767) not null primary key, LVL int, LASTMOD bigint)"
+literal|" (ID varchar("
+operator|+
+name|IDSIZE
+operator|+
+literal|") not null primary key, LVL int, LASTMOD bigint)"
 expr_stmt|;
 block|}
 name|stmt
@@ -824,7 +945,11 @@ literal|"create table "
 operator|+
 name|tableName
 operator|+
-literal|" (ID varchar(767) not null primary key, DATA bytea)"
+literal|" (ID varchar("
+operator|+
+name|IDSIZE
+operator|+
+literal|") not null primary key, DATA bytea)"
 expr_stmt|;
 block|}
 elseif|else
@@ -857,7 +982,11 @@ literal|"create table "
 operator|+
 name|tableName
 operator|+
-literal|" (ID varchar(767) not null primary key, DATA blob("
+literal|" (ID varchar("
+operator|+
+name|IDSIZE
+operator|+
+literal|") not null primary key, DATA blob("
 operator|+
 name|MINBLOB
 operator|+
@@ -881,7 +1010,11 @@ literal|"create table "
 operator|+
 name|tableName
 operator|+
-literal|" (ID varchar(767) not null primary key, DATA mediumblob)"
+literal|" (ID varchar("
+operator|+
+name|IDSIZE
+operator|+
+literal|") not null primary key, DATA mediumblob)"
 expr_stmt|;
 block|}
 else|else
@@ -892,7 +1025,11 @@ literal|"create table "
 operator|+
 name|tableName
 operator|+
-literal|" (ID varchar(767) not null primary key, DATA blob)"
+literal|" (ID varchar("
+operator|+
+name|IDSIZE
+operator|+
+literal|") not null primary key, DATA blob)"
 expr_stmt|;
 block|}
 name|stmt
