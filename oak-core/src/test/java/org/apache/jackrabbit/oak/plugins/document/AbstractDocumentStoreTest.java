@@ -464,10 +464,6 @@ name|MONGO
 block|,
 name|DocumentStoreFixture
 operator|.
-name|RDB_H2
-block|,
-name|DocumentStoreFixture
-operator|.
 name|RDB_PG
 block|,
 name|DocumentStoreFixture
