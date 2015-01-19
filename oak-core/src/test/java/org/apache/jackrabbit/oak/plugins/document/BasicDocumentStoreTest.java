@@ -21,22 +21,6 @@ end_package
 
 begin_import
 import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|Charsets
-operator|.
-name|UTF_8
-import|;
-end_import
-
-begin_import
-import|import static
 name|org
 operator|.
 name|junit
@@ -359,13 +343,6 @@ name|void
 name|testAddAndRemove
 parameter_list|()
 block|{
-name|LOG
-operator|.
-name|info
-argument_list|(
-literal|"Starting test testAddAndRemove"
-argument_list|)
-expr_stmt|;
 name|String
 name|id
 init|=
@@ -466,13 +443,6 @@ argument_list|(
 name|id
 argument_list|)
 expr_stmt|;
-name|LOG
-operator|.
-name|info
-argument_list|(
-literal|"Finished test testAddAndRemove"
-argument_list|)
-expr_stmt|;
 block|}
 annotation|@
 name|Test
@@ -481,13 +451,6 @@ name|void
 name|testMaxId
 parameter_list|()
 block|{
-name|LOG
-operator|.
-name|info
-argument_list|(
-literal|"Starting test testMaxId"
-argument_list|)
-expr_stmt|;
 comment|// TODO see OAK-1589
 name|Assume
 operator|.
@@ -660,13 +623,6 @@ operator|+
 name|test
 argument_list|)
 expr_stmt|;
-name|LOG
-operator|.
-name|info
-argument_list|(
-literal|"Finished test testMaxId"
-argument_list|)
-expr_stmt|;
 block|}
 annotation|@
 name|Test
@@ -675,13 +631,6 @@ name|void
 name|testMaxProperty
 parameter_list|()
 block|{
-name|LOG
-operator|.
-name|info
-argument_list|(
-literal|"Starting test testMaxProperty"
-argument_list|)
-expr_stmt|;
 name|int
 name|min
 init|=
@@ -868,13 +817,6 @@ operator|+
 name|test
 argument_list|)
 expr_stmt|;
-name|LOG
-operator|.
-name|info
-argument_list|(
-literal|"Finished test testMaxProperty"
-argument_list|)
-expr_stmt|;
 block|}
 annotation|@
 name|Test
@@ -883,13 +825,6 @@ name|void
 name|testInterestingPropLengths
 parameter_list|()
 block|{
-name|LOG
-operator|.
-name|info
-argument_list|(
-literal|"Starting test testInterestingPropLengths"
-argument_list|)
-expr_stmt|;
 name|int
 name|lengths
 index|[]
@@ -1208,13 +1143,6 @@ name|id
 argument_list|)
 expr_stmt|;
 block|}
-name|LOG
-operator|.
-name|info
-argument_list|(
-literal|"Finished test testInterestingPropLengths"
-argument_list|)
-expr_stmt|;
 block|}
 annotation|@
 name|Test
@@ -1223,13 +1151,6 @@ name|void
 name|testModifiedMaxUpdate
 parameter_list|()
 block|{
-name|LOG
-operator|.
-name|info
-argument_list|(
-literal|"Starting test testModifiedMaxUpdate"
-argument_list|)
-expr_stmt|;
 name|String
 name|id
 init|=
@@ -1412,13 +1333,6 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|LOG
-operator|.
-name|info
-argument_list|(
-literal|"Finished test testModifiedMaxUpdate"
-argument_list|)
-expr_stmt|;
 block|}
 annotation|@
 name|Test
@@ -1427,11 +1341,22 @@ name|void
 name|testInterestingStrings
 parameter_list|()
 block|{
-name|LOG
+comment|// TODO see OAK-1913
+name|Assume
 operator|.
-name|info
+name|assumeTrue
 argument_list|(
-literal|"Starting test testInterestingStrings"
+operator|!
+operator|(
+name|super
+operator|.
+name|dsname
+operator|.
+name|equals
+argument_list|(
+literal|"RDB-MySQL"
+argument_list|)
+operator|)
 argument_list|)
 expr_stmt|;
 name|String
@@ -1585,7 +1510,7 @@ name|assertTrue
 argument_list|(
 literal|"failed to insert a document with property value of "
 operator|+
-name|testname
+name|test
 operator|+
 literal|" in "
 operator|+
@@ -1656,13 +1581,6 @@ name|id
 argument_list|)
 expr_stmt|;
 block|}
-name|LOG
-operator|.
-name|info
-argument_list|(
-literal|"Finished test testInterestingStrings"
-argument_list|)
-expr_stmt|;
 block|}
 annotation|@
 name|Test
@@ -1671,13 +1589,6 @@ name|void
 name|testDeleteNonExisting
 parameter_list|()
 block|{
-name|LOG
-operator|.
-name|info
-argument_list|(
-literal|"Starting test testDeleteNonExisting"
-argument_list|)
-expr_stmt|;
 name|String
 name|id
 init|=
@@ -1708,13 +1619,6 @@ argument_list|,
 name|id
 argument_list|)
 expr_stmt|;
-name|LOG
-operator|.
-name|info
-argument_list|(
-literal|"Finished test testDeleteNonExisting"
-argument_list|)
-expr_stmt|;
 block|}
 annotation|@
 name|Test
@@ -1723,13 +1627,6 @@ name|void
 name|testDeleteNonExistingMultiple
 parameter_list|()
 block|{
-name|LOG
-operator|.
-name|info
-argument_list|(
-literal|"Starting test testDeleteNonExistingMultiple"
-argument_list|)
-expr_stmt|;
 name|String
 name|id
 init|=
@@ -1863,13 +1760,6 @@ operator|==
 literal|null
 argument_list|)
 expr_stmt|;
-name|LOG
-operator|.
-name|info
-argument_list|(
-literal|"Finished test testDeleteNonExistingMultiple"
-argument_list|)
-expr_stmt|;
 block|}
 annotation|@
 name|Test
@@ -1878,13 +1768,6 @@ name|void
 name|testUpdateMultiple
 parameter_list|()
 block|{
-name|LOG
-operator|.
-name|info
-argument_list|(
-literal|"Starting test testUpdateMultiple"
-argument_list|)
-expr_stmt|;
 name|String
 name|id
 init|=
@@ -2083,13 +1966,6 @@ name|toString
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|LOG
-operator|.
-name|info
-argument_list|(
-literal|"Finished test testUpdateMultiple"
-argument_list|)
-expr_stmt|;
 block|}
 annotation|@
 name|Test
@@ -2098,13 +1974,6 @@ name|void
 name|testQuery
 parameter_list|()
 block|{
-name|LOG
-operator|.
-name|info
-argument_list|(
-literal|"Starting test testQuery"
-argument_list|)
-expr_stmt|;
 comment|// create ten documents
 name|String
 name|base
@@ -2317,13 +2186,6 @@ literal|"9"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|LOG
-operator|.
-name|info
-argument_list|(
-literal|"Finished test testQuery"
-argument_list|)
-expr_stmt|;
 block|}
 annotation|@
 name|Test
@@ -2332,13 +2194,6 @@ name|void
 name|testQueryBinary
 parameter_list|()
 block|{
-name|LOG
-operator|.
-name|info
-argument_list|(
-literal|"Starting test testQueryBinary"
-argument_list|)
-expr_stmt|;
 comment|// create ten documents
 name|String
 name|base
@@ -2516,13 +2371,6 @@ literal|"0"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|LOG
-operator|.
-name|info
-argument_list|(
-literal|"Finished test testQueryBinary"
-argument_list|)
-expr_stmt|;
 block|}
 annotation|@
 name|Test
@@ -2531,13 +2379,6 @@ name|void
 name|testQueryCollation
 parameter_list|()
 block|{
-name|LOG
-operator|.
-name|info
-argument_list|(
-literal|"Starting test testQueryCollation"
-argument_list|)
-expr_stmt|;
 comment|// create ten documents
 name|String
 name|base
@@ -2826,13 +2667,6 @@ argument_list|,
 name|result
 argument_list|)
 expr_stmt|;
-name|LOG
-operator|.
-name|info
-argument_list|(
-literal|"Finished test testQueryCollation"
-argument_list|)
-expr_stmt|;
 block|}
 specifier|private
 name|List
@@ -2942,13 +2776,6 @@ name|int
 name|amount
 parameter_list|)
 block|{
-name|LOG
-operator|.
-name|info
-argument_list|(
-literal|"Starting test createPerf"
-argument_list|)
-expr_stmt|;
 name|String
 name|pval
 init|=
@@ -3177,13 +3004,6 @@ operator|+
 literal|"/s)"
 argument_list|)
 expr_stmt|;
-name|LOG
-operator|.
-name|info
-argument_list|(
-literal|"Finished test createPerf"
-argument_list|)
-expr_stmt|;
 block|}
 annotation|@
 name|Test
@@ -3192,13 +3012,6 @@ name|void
 name|testPerfCollectionPaging
 parameter_list|()
 block|{
-name|LOG
-operator|.
-name|info
-argument_list|(
-literal|"Starting test testPerfCollectionPaging"
-argument_list|)
-expr_stmt|;
 name|testPerfCollectionPaging
 argument_list|(
 name|this
@@ -3214,13 +3027,6 @@ argument_list|,
 literal|false
 argument_list|)
 expr_stmt|;
-name|LOG
-operator|.
-name|info
-argument_list|(
-literal|"Finished test testPerfCollectionPaging"
-argument_list|)
-expr_stmt|;
 block|}
 annotation|@
 name|Test
@@ -3229,13 +3035,6 @@ name|void
 name|testPerfCollectionPagingUnCached
 parameter_list|()
 block|{
-name|LOG
-operator|.
-name|info
-argument_list|(
-literal|"Starting test testPerfCollectionPagingUnCached"
-argument_list|)
-expr_stmt|;
 name|testPerfCollectionPaging
 argument_list|(
 name|this
@@ -3251,13 +3050,6 @@ argument_list|,
 literal|true
 argument_list|)
 expr_stmt|;
-name|LOG
-operator|.
-name|info
-argument_list|(
-literal|"Finished test testPerfCollectionPagingUnCached"
-argument_list|)
-expr_stmt|;
 block|}
 specifier|private
 name|void
@@ -3270,13 +3062,6 @@ name|boolean
 name|invalidateCache
 parameter_list|)
 block|{
-name|LOG
-operator|.
-name|info
-argument_list|(
-literal|"Starting test testPerfCollectionPaging"
-argument_list|)
-expr_stmt|;
 name|String
 name|cid
 init|=
@@ -3714,13 +3499,6 @@ operator|+
 literal|"/s)"
 argument_list|)
 expr_stmt|;
-name|LOG
-operator|.
-name|info
-argument_list|(
-literal|"Finished test testPerfCollectionPaging"
-argument_list|)
-expr_stmt|;
 block|}
 annotation|@
 name|Test
@@ -3729,13 +3507,6 @@ name|void
 name|testPerfLastRevBatch
 parameter_list|()
 block|{
-name|LOG
-operator|.
-name|info
-argument_list|(
-literal|"Starting test testPerfLastRevBatch"
-argument_list|)
-expr_stmt|;
 name|String
 name|bid
 init|=
@@ -4144,13 +3915,6 @@ operator|+
 literal|"/s)"
 argument_list|)
 expr_stmt|;
-name|LOG
-operator|.
-name|info
-argument_list|(
-literal|"Finished test testPerfLastRevBatch"
-argument_list|)
-expr_stmt|;
 block|}
 annotation|@
 name|Test
@@ -4159,13 +3923,6 @@ name|void
 name|testPerfReadBigDoc
 parameter_list|()
 block|{
-name|LOG
-operator|.
-name|info
-argument_list|(
-literal|"Starting test testPerfReadBigDoc"
-argument_list|)
-expr_stmt|;
 name|String
 name|id
 init|=
@@ -4364,13 +4121,6 @@ operator|+
 literal|"/s)"
 argument_list|)
 expr_stmt|;
-name|LOG
-operator|.
-name|info
-argument_list|(
-literal|"Finished test testPerfReadBigDoc"
-argument_list|)
-expr_stmt|;
 block|}
 annotation|@
 name|Test
@@ -4430,15 +4180,6 @@ name|boolean
 name|growing
 parameter_list|)
 block|{
-name|LOG
-operator|.
-name|info
-argument_list|(
-literal|"Starting test updatePerf "
-operator|+
-name|size
-argument_list|)
-expr_stmt|;
 name|String
 name|pval
 init|=
@@ -4799,15 +4540,6 @@ operator|+
 literal|"/s)"
 argument_list|)
 expr_stmt|;
-name|LOG
-operator|.
-name|info
-argument_list|(
-literal|"Finished test updatePerf "
-operator|+
-name|size
-argument_list|)
-expr_stmt|;
 block|}
 specifier|private
 specifier|static
@@ -5039,15 +4771,6 @@ name|SQLException
 throws|,
 name|UnsupportedEncodingException
 block|{
-name|LOG
-operator|.
-name|info
-argument_list|(
-literal|"Starting test "
-operator|+
-name|name
-argument_list|)
-expr_stmt|;
 if|if
 condition|(
 name|super
@@ -5111,38 +4834,6 @@ argument_list|)
 decl_stmt|;
 try|try
 block|{
-if|if
-condition|(
-name|dsname
-operator|.
-name|contains
-argument_list|(
-name|DocumentStoreFixture
-operator|.
-name|RDB_MYSQL
-operator|.
-name|getName
-argument_list|()
-argument_list|)
-condition|)
-block|{
-name|stmt
-operator|.
-name|setBytes
-argument_list|(
-literal|1
-argument_list|,
-name|key
-operator|.
-name|getBytes
-argument_list|(
-name|UTF_8
-argument_list|)
-argument_list|)
-expr_stmt|;
-block|}
-else|else
-block|{
 name|stmt
 operator|.
 name|setString
@@ -5152,7 +4843,6 @@ argument_list|,
 name|key
 argument_list|)
 expr_stmt|;
-block|}
 name|stmt
 operator|.
 name|setLong
@@ -5247,7 +4937,7 @@ name|appendString
 init|=
 name|generateString
 argument_list|(
-literal|2048
+literal|512
 argument_list|,
 literal|true
 argument_list|)
@@ -5296,47 +4986,21 @@ name|dsname
 operator|.
 name|contains
 argument_list|(
-name|DocumentStoreFixture
-operator|.
-name|RDB_MYSQL
-operator|.
-name|getName
-argument_list|()
+literal|"MySQL"
 argument_list|)
 decl_stmt|;
 name|int
 name|dataInChars
 init|=
 operator|(
-operator|(
 name|super
 operator|.
 name|dsname
 operator|.
 name|contains
 argument_list|(
-name|DocumentStoreFixture
-operator|.
-name|RDB_ORACLE
-operator|.
-name|getName
-argument_list|()
+literal|"Oracle"
 argument_list|)
-operator|||
-name|super
-operator|.
-name|dsname
-operator|.
-name|contains
-argument_list|(
-name|DocumentStoreFixture
-operator|.
-name|RDB_MSSQL
-operator|.
-name|getName
-argument_list|()
-argument_list|)
-operator|)
 condition|?
 literal|4000
 else|:
@@ -5410,38 +5074,6 @@ argument_list|,
 name|cnt
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|dsname
-operator|.
-name|contains
-argument_list|(
-name|DocumentStoreFixture
-operator|.
-name|RDB_MYSQL
-operator|.
-name|getName
-argument_list|()
-argument_list|)
-condition|)
-block|{
-name|stmt
-operator|.
-name|setBytes
-argument_list|(
-literal|2
-argument_list|,
-name|key
-operator|.
-name|getBytes
-argument_list|(
-name|UTF_8
-argument_list|)
-argument_list|)
-expr_stmt|;
-block|}
-else|else
-block|{
 name|stmt
 operator|.
 name|setString
@@ -5451,7 +5083,6 @@ argument_list|,
 name|key
 argument_list|)
 expr_stmt|;
-block|}
 name|assertEquals
 argument_list|(
 literal|1
@@ -5524,38 +5155,6 @@ name|randomUUID
 argument_list|()
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|dsname
-operator|.
-name|contains
-argument_list|(
-name|DocumentStoreFixture
-operator|.
-name|RDB_MYSQL
-operator|.
-name|getName
-argument_list|()
-argument_list|)
-condition|)
-block|{
-name|stmt
-operator|.
-name|setBytes
-argument_list|(
-literal|3
-argument_list|,
-name|key
-operator|.
-name|getBytes
-argument_list|(
-name|UTF_8
-argument_list|)
-argument_list|)
-expr_stmt|;
-block|}
-else|else
-block|{
 name|stmt
 operator|.
 name|setString
@@ -5565,7 +5164,6 @@ argument_list|,
 name|key
 argument_list|)
 expr_stmt|;
-block|}
 name|assertEquals
 argument_list|(
 literal|1
@@ -5682,38 +5280,6 @@ argument_list|,
 name|bdata
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|dsname
-operator|.
-name|contains
-argument_list|(
-name|DocumentStoreFixture
-operator|.
-name|RDB_MYSQL
-operator|.
-name|getName
-argument_list|()
-argument_list|)
-condition|)
-block|{
-name|stmt
-operator|.
-name|setBytes
-argument_list|(
-literal|4
-argument_list|,
-name|key
-operator|.
-name|getBytes
-argument_list|(
-name|UTF_8
-argument_list|)
-argument_list|)
-expr_stmt|;
-block|}
-else|else
-block|{
 name|stmt
 operator|.
 name|setString
@@ -5723,7 +5289,6 @@ argument_list|,
 name|key
 argument_list|)
 expr_stmt|;
-block|}
 name|assertEquals
 argument_list|(
 literal|1
@@ -5771,40 +5336,6 @@ operator|+
 literal|" set "
 operator|+
 operator|(
-name|super
-operator|.
-name|dsname
-operator|.
-name|contains
-argument_list|(
-name|DocumentStoreFixture
-operator|.
-name|RDB_MSSQL
-operator|.
-name|getName
-argument_list|()
-argument_list|)
-condition|?
-literal|"DATA = CASE WHEN LEN(DATA)<= "
-operator|+
-operator|(
-name|dataInChars
-operator|-
-name|appendString
-operator|.
-name|length
-argument_list|()
-operator|)
-operator|+
-literal|" THEN (DATA + CAST(? AS nvarchar("
-operator|+
-name|dataInChars
-operator|+
-literal|")))"
-operator|+
-literal|" ELSE DATA + CAST(DATA AS nvarchar(max)) END "
-else|:
-operator|(
 name|needsConcat
 condition|?
 literal|"DATA = CONCAT(DATA, ?)"
@@ -5814,7 +5345,6 @@ operator|+
 name|dataInChars
 operator|+
 literal|"))"
-operator|)
 operator|)
 operator|+
 literal|" where ID = ?"
@@ -5831,38 +5361,6 @@ argument_list|,
 name|appendString
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|dsname
-operator|.
-name|contains
-argument_list|(
-name|DocumentStoreFixture
-operator|.
-name|RDB_MYSQL
-operator|.
-name|getName
-argument_list|()
-argument_list|)
-condition|)
-block|{
-name|stmt
-operator|.
-name|setBytes
-argument_list|(
-literal|2
-argument_list|,
-name|key
-operator|.
-name|getBytes
-argument_list|(
-name|UTF_8
-argument_list|)
-argument_list|)
-expr_stmt|;
-block|}
-else|else
-block|{
 name|stmt
 operator|.
 name|setString
@@ -5872,7 +5370,6 @@ argument_list|,
 name|key
 argument_list|)
 expr_stmt|;
-block|}
 name|assertEquals
 argument_list|(
 literal|1
@@ -5966,38 +5463,6 @@ argument_list|,
 literal|"X"
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|dsname
-operator|.
-name|contains
-argument_list|(
-name|DocumentStoreFixture
-operator|.
-name|RDB_MYSQL
-operator|.
-name|getName
-argument_list|()
-argument_list|)
-condition|)
-block|{
-name|stmt
-operator|.
-name|setBytes
-argument_list|(
-literal|2
-argument_list|,
-name|key
-operator|.
-name|getBytes
-argument_list|(
-name|UTF_8
-argument_list|)
-argument_list|)
-expr_stmt|;
-block|}
-else|else
-block|{
 name|stmt
 operator|.
 name|setString
@@ -6007,7 +5472,6 @@ argument_list|,
 name|key
 argument_list|)
 expr_stmt|;
-block|}
 name|assertEquals
 argument_list|(
 literal|1
@@ -6218,39 +5682,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-if|if
-condition|(
-name|dsname
-operator|.
-name|contains
-argument_list|(
-name|DocumentStoreFixture
-operator|.
-name|RDB_MYSQL
-operator|.
-name|getName
-argument_list|()
-argument_list|)
-condition|)
-block|{
-name|stmt
-operator|.
-name|setBytes
-argument_list|(
-name|si
-operator|++
-argument_list|,
-name|key
-operator|.
-name|getBytes
-argument_list|(
-name|UTF_8
-argument_list|)
-argument_list|)
-expr_stmt|;
-block|}
-else|else
-block|{
 name|stmt
 operator|.
 name|setString
@@ -6261,7 +5692,6 @@ argument_list|,
 name|key
 argument_list|)
 expr_stmt|;
-block|}
 name|assertEquals
 argument_list|(
 literal|1
@@ -6399,38 +5829,6 @@ argument_list|)
 decl_stmt|;
 try|try
 block|{
-if|if
-condition|(
-name|dsname
-operator|.
-name|contains
-argument_list|(
-name|DocumentStoreFixture
-operator|.
-name|RDB_MYSQL
-operator|.
-name|getName
-argument_list|()
-argument_list|)
-condition|)
-block|{
-name|stmt
-operator|.
-name|setBytes
-argument_list|(
-literal|1
-argument_list|,
-name|key
-operator|.
-name|getBytes
-argument_list|(
-name|UTF_8
-argument_list|)
-argument_list|)
-expr_stmt|;
-block|}
-else|else
-block|{
 name|stmt
 operator|.
 name|setString
@@ -6440,7 +5838,6 @@ argument_list|,
 name|key
 argument_list|)
 expr_stmt|;
-block|}
 name|ResultSet
 name|rs
 init|=
@@ -6571,15 +5968,6 @@ operator|+
 literal|"/s)"
 argument_list|)
 expr_stmt|;
-name|LOG
-operator|.
-name|info
-argument_list|(
-literal|"Finished test "
-operator|+
-name|name
-argument_list|)
-expr_stmt|;
 block|}
 block|}
 comment|// make sure _collisionsModCount property is maintained properly when it exists
@@ -6590,13 +5978,6 @@ name|void
 name|testCollisionsModCount
 parameter_list|()
 block|{
-name|LOG
-operator|.
-name|info
-argument_list|(
-literal|"Starting test testCollisionsModCount"
-argument_list|)
-expr_stmt|;
 name|String
 name|id
 init|=
@@ -6983,13 +6364,6 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-name|LOG
-operator|.
-name|info
-argument_list|(
-literal|"Finished test testCollisionsModCount"
-argument_list|)
-expr_stmt|;
 block|}
 block|}
 end_class
