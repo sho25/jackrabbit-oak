@@ -232,6 +232,21 @@ name|exception
 throw|;
 block|}
 block|}
+annotation|@
+name|Override
+specifier|public
+name|String
+name|toString
+parameter_list|()
+block|{
+return|return
+literal|"EditorHook : ("
+operator|+
+name|provider
+operator|+
+literal|")"
+return|;
+block|}
 block|}
 end_class
 

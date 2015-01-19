@@ -576,6 +576,17 @@ name|getNodeState
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
+specifier|public
+name|String
+name|toString
+parameter_list|()
+block|{
+return|return
+literal|"PermissionHook"
+return|;
+block|}
 specifier|private
 name|void
 name|apply

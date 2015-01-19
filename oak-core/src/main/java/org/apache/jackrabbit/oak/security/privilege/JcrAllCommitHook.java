@@ -696,6 +696,17 @@ literal|true
 return|;
 block|}
 block|}
+annotation|@
+name|Override
+specifier|public
+name|String
+name|toString
+parameter_list|()
+block|{
+return|return
+literal|"JcrAllCommitHook"
+return|;
+block|}
 block|}
 end_class
 

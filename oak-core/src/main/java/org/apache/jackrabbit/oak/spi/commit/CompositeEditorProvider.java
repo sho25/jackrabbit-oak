@@ -394,6 +394,24 @@ name|list
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
+specifier|public
+name|String
+name|toString
+parameter_list|()
+block|{
+return|return
+literal|"CompositeEditorProvider : ("
+operator|+
+name|providers
+operator|.
+name|toString
+argument_list|()
+operator|+
+literal|")"
+return|;
+block|}
 block|}
 end_class
 

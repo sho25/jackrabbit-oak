@@ -460,6 +460,19 @@ name|getNodeState
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
+specifier|public
+name|String
+name|toString
+parameter_list|()
+block|{
+return|return
+literal|"VersionablePathHook : workspaceName = "
+operator|+
+name|workspaceName
+return|;
+block|}
 specifier|private
 specifier|final
 class|class
