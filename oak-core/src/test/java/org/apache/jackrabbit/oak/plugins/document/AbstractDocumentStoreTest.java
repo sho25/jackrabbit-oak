@@ -481,6 +481,10 @@ block|,
 name|DocumentStoreFixture
 operator|.
 name|RDB_ORACLE
+block|,
+name|DocumentStoreFixture
+operator|.
+name|RDB_MSSQL
 block|}
 decl_stmt|;
 for|for
