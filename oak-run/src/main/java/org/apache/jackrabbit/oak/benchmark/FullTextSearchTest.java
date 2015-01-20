@@ -469,7 +469,7 @@ name|TestContext
 name|defaultContext
 decl_stmt|;
 comment|/**      * null means true; true means true      */
-specifier|private
+specifier|protected
 name|Boolean
 name|storageEnabled
 decl_stmt|;
