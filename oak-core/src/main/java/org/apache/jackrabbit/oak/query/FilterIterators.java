@@ -919,7 +919,7 @@ name|settings
 argument_list|)
 expr_stmt|;
 comment|// from time to time, sort and truncate
-comment|// this should results in O(n*log(2*keep)) operations,
+comment|// this should need less than O(n*log(3*keep)) operations,
 comment|// which is close to the optimum O(n*log(keep))
 if|if
 condition|(
@@ -928,6 +928,9 @@ operator|.
 name|size
 argument_list|()
 operator|>
+operator|(
+name|long
+operator|)
 name|max
 operator|*
 literal|2
