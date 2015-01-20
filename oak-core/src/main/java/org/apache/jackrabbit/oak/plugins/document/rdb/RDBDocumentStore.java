@@ -704,7 +704,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Implementation of {@link CachingDocumentStore} for relational databases.  *   *<h3>Supported Databases</h3>  *<p>  * The code is supposed to be sufficiently generic to run with a variety of  * database implementations. However, the tables are created when required to  * simplify testing, and<em>that</em> code specifically supports these  * databases:  *<ul>  *<li>h2</li>  *<li>IBM DB2</li>  *<li>Postgres</li>  *<li>MariaDB (MySQL) (experimental)</li>  *<li>Oracle (experimental)</li>  *</ul>  *   *<h3>Table Layout</h3>  *<p>  * Data for each of the DocumentStore's {@link Collection}s is stored in its own  * database table (with a name matching the collection).  *<p>  * The tables essentially implement key/value storage, where the key usually is  * derived from an Oak path, and the value is a serialization of a  * {@link Document} (or a part of one). Additional fields are used for queries,  * debugging, and concurrency control:  *<table style="text-align: left;">  *<thead>  *<tr>  *<th>Column</th>  *<th>Type</th>  *<th>Description</th>  *</tr>  *</thead><tbody>  *<tr>  *<th>ID</th>  *<td>varchar(512) not null primary key</td>  *<td>the document's key</td>  *</tr>  *<tr>  *<th>MODIFIED</th>  *<td>bigint</td>  *<td>low-resolution timestamp  *</tr>  *<tr>  *<th>HASBINARY</th>  *<td>smallint</td>  *<td>flag indicating whether the document has binary properties  *</tr>  *<tr>  *<th>MODCOUNT</th>  *<td>bigint</td>  *<td>modification counter, used for avoiding overlapping updates</td>  *</tr>  *<tr>  *<th>DSIZE</th>  *<td>bigint</td>  *<td>the approximate  size of the document's JSON serialization (for debugging purposes)</td>  *</tr>  *<tr>  *<th>DATA</th>  *<td>varchar(16384)</td>  *<td>the document's JSON serialization (only used for small document sizes, in  * which case BDATA (below) is not set), or a sequence of JSON serialized update operations  * to be applied against the last full serialization</td>  *</tr>  *<tr>  *<th>BDATA</th>  *<td>blob</td>  *<td>the document's JSON serialization (usually GZIPped, only used for "large"  * documents)</td>  *</tr>  *</tbody>  *</table>  *<p>  * The names of database tables can be prefixed; the purpose is mainly for testing, as  * tables can also be dropped automatically when the store is disposed (this only happens  * for those tables that have been created on demand)  *<p>  *<em>Note that the database needs to be created/configured to support all Unicode  * characters in text fields, and to collate by Unicode code point (in DB2: "identity collation",  * in Postgres: "C").  * THIS IS NOT THE DEFAULT!</em>  *<p>  *<em>For MySQL, the database parameter "max_allowed_packet" needs to be increased to support ~2M blobs.</em>  *   *<h3>Caching</h3>  *<p>  * The cache borrows heavily from the {@link MongoDocumentStore} implementation;  * however it does not support the off-heap mechanism yet.  *   *<h3>Queries</h3>  *<p>  * The implementation currently supports only two indexed properties: "_modified" and  * "_bin". Attempts to use a different indexed property will cause a {@link DocumentStoreException}.  */
+comment|/**  * Implementation of {@link CachingDocumentStore} for relational databases.  *   *<h3>Supported Databases</h3>  *<p>  * The code is supposed to be sufficiently generic to run with a variety of  * database implementations. However, the tables are created when required to  * simplify testing, and<em>that</em> code specifically supports these  * databases:  *<ul>  *<li>h2</li>  *<li>IBM DB2</li>  *<li>Postgres</li>  *<li>MariaDB (MySQL) (experimental)</li>  *<li>Oracle (experimental)</li>  *</ul>  *   *<h3>Table Layout</h3>  *<p>  * Data for each of the DocumentStore's {@link Collection}s is stored in its own  * database table (with a name matching the collection).  *<p>  * The tables essentially implement key/value storage, where the key usually is  * derived from an Oak path, and the value is a serialization of a  * {@link Document} (or a part of one). Additional fields are used for queries,  * debugging, and concurrency control:  *<table style="text-align: left;">  *<thead>  *<tr>  *<th>Column</th>  *<th>Type</th>  *<th>Description</th>  *</tr>  *</thead><tbody>  *<tr>  *<th>ID</th>  *<td>varchar(512) not null primary key</td>  *<td>the document's key</td>  *</tr>  *<tr>  *<th>MODIFIED</th>  *<td>bigint</td>  *<td>low-resolution timestamp  *</tr>  *<tr>  *<th>HASBINARY</th>  *<td>smallint</td>  *<td>flag indicating whether the document has binary properties  *</tr>  *<tr>  *<th>MODCOUNT</th>  *<td>bigint</td>  *<td>modification counter, used for avoiding overlapping updates</td>  *</tr>  *<tr>  *<th>DSIZE</th>  *<td>bigint</td>  *<td>the approximate size of the document's JSON serialization (for debugging  * purposes)</td>  *</tr>  *<tr>  *<th>DATA</th>  *<td>varchar(16384)</td>  *<td>the document's JSON serialization (only used for small document sizes, in  * which case BDATA (below) is not set), or a sequence of JSON serialized update  * operations to be applied against the last full serialization</td>  *</tr>  *<tr>  *<th>BDATA</th>  *<td>blob</td>  *<td>the document's JSON serialization (usually GZIPped, only used for "large"  * documents)</td>  *</tr>  *</tbody>  *</table>  *<p>  * The names of database tables can be prefixed; the purpose is mainly for  * testing, as tables can also be dropped automatically when the store is  * disposed (this only happens for those tables that have been created on  * demand)  *<p>  *<em>Note that the database needs to be created/configured to support all Unicode  * characters in text fields, and to collate by Unicode code point (in DB2: "identity collation",  * in Postgres: "C").  * THIS IS NOT THE DEFAULT!</em>  *<p>  *<em>For MySQL, the database parameter "max_allowed_packet" needs to be increased to support ~2M blobs.</em>  *   *<h3>Caching</h3>  *<p>  * The cache borrows heavily from the {@link MongoDocumentStore} implementation;  * however it does not support the off-heap mechanism yet.  *   *<h3>Queries</h3>  *<p>  * The implementation currently supports only two indexed properties:  * "_modified" and "_bin". Attempts to use a different indexed property will  * cause a {@link DocumentStoreException}.  */
 end_comment
 
 begin_class
@@ -759,7 +759,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**      * Creates a {@linkplain RDBDocumentStore} instance using the provided      * {@link DataSource}, {@link DocumentMK.Builder}, and default {@link RDBOptions}.      */
+comment|/**      * Creates a {@linkplain RDBDocumentStore} instance using the provided      * {@link DataSource}, {@link DocumentMK.Builder}, and default      * {@link RDBOptions}.      */
 specifier|public
 name|RDBDocumentStore
 parameter_list|(
@@ -856,6 +856,8 @@ argument_list|)
 return|;
 block|}
 annotation|@
+name|Nonnull
+annotation|@
 name|Override
 specifier|public
 parameter_list|<
@@ -902,6 +904,8 @@ name|limit
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Nonnull
 annotation|@
 name|Override
 specifier|public
@@ -1502,7 +1506,7 @@ name|MODCOUNT
 init|=
 literal|"_modCount"
 decl_stmt|;
-comment|/**      * Optional counter for changes to {@link #COLLISIONS} map.      */
+comment|/**      * Optional counter for changes to "_collisions" map ({@link NodeDocument#COLLISIONS}).      */
 specifier|private
 specifier|static
 specifier|final
@@ -1581,6 +1585,7 @@ comment|// b) a surrogate pair (two Java characters) will fit into 4 bytes
 comment|// thus...
 specifier|private
 specifier|static
+specifier|final
 name|int
 name|CHAR2OCTETRATIO
 init|=
@@ -1596,6 +1601,7 @@ decl_stmt|;
 comment|// number of retries for updates
 specifier|private
 specifier|static
+specifier|final
 name|int
 name|RETRIES
 init|=
@@ -1625,6 +1631,7 @@ decl_stmt|;
 comment|// set of supported indexed properties
 specifier|private
 specifier|static
+specifier|final
 name|Set
 argument_list|<
 name|String
@@ -1657,6 +1664,7 @@ decl_stmt|;
 comment|// set of properties not serialized to JSON
 specifier|private
 specifier|static
+specifier|final
 name|Set
 argument_list|<
 name|String
@@ -1693,6 +1701,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 specifier|private
+specifier|final
 name|RDBDocumentSerializer
 name|SR
 init|=
@@ -3211,8 +3220,8 @@ operator|==
 name|newmodcount
 condition|)
 block|{
-comment|// cached copy did not change so it probably was updated by
-comment|// a different instance, get a fresh one
+comment|// cached copy did not change so it probably was
+comment|// updated by a different instance, get a fresh one
 name|oldDoc
 operator|=
 name|readDocumentUncached
@@ -3706,7 +3715,8 @@ operator|==
 literal|null
 condition|)
 block|{
-comment|// make sure concurrently loaded document is invalidated
+comment|// make sure concurrently loaded document is
+comment|// invalidated
 name|nodesCache
 operator|.
 name|invalidate
@@ -4630,11 +4640,9 @@ name|Boolean
 name|hasBinary
 init|=
 name|flag
-operator|==
+operator|!=
 literal|null
-condition|?
-literal|false
-else|:
+operator|&&
 name|flag
 operator|.
 name|intValue
@@ -4921,7 +4929,7 @@ operator|)
 throw|;
 block|}
 block|}
-comment|/* currently we use append for all updates, but this might change in the future */
+comment|/*      * currently we use append for all updates, but this might change in the      * future      */
 specifier|private
 specifier|static
 name|boolean
@@ -4935,7 +4943,7 @@ return|return
 literal|true
 return|;
 block|}
-comment|/* check whether this update operation requires knowledge about the previous state */
+comment|/*      * check whether this update operation requires knowledge about the previous      * state      */
 specifier|private
 specifier|static
 name|boolean
@@ -5206,11 +5214,9 @@ name|Boolean
 name|hasBinary
 init|=
 name|flag
-operator|==
+operator|!=
 literal|null
-condition|?
-literal|false
-else|:
+operator|&&
 name|flag
 operator|.
 name|intValue
@@ -5328,6 +5334,7 @@ comment|// configuration
 comment|// Whether to use GZIP compression
 specifier|private
 specifier|static
+specifier|final
 name|boolean
 name|NOGZIP
 init|=
@@ -5341,6 +5348,7 @@ decl_stmt|;
 comment|// Number of documents to insert at once for batch create
 specifier|private
 specifier|static
+specifier|final
 name|int
 name|CHUNKSIZE
 init|=
