@@ -1686,6 +1686,26 @@ operator|!=
 literal|null
 condition|)
 block|{
+if|if
+condition|(
+name|log
+operator|.
+name|isTraceEnabled
+argument_list|()
+condition|)
+block|{
+name|log
+operator|.
+name|trace
+argument_list|(
+literal|"Indexed document for {} is {}"
+argument_list|,
+name|path
+argument_list|,
+name|d
+argument_list|)
+expr_stmt|;
+block|}
 name|context
 operator|.
 name|getWriter
