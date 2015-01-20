@@ -322,7 +322,7 @@ name|seed
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Adjust a counter in the given node. This is less accurate, but can be      * used in a multi-threaded environment, as it uses unique property names.      *       * @param builder the node builder      * @param offset the offset      */
+comment|/**      * Adjust a counter in the given node. This method supports concurrent      * changes. It uses multiple properties, and is less accurate, but can be      * used in a multi-threaded environment, as it uses unique property names.      *       * @param builder the node builder      * @param offset the offset      */
 specifier|public
 specifier|static
 name|void
@@ -380,7 +380,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-specifier|public
+specifier|private
 specifier|static
 name|void
 name|adjustCountSync
@@ -488,7 +488,7 @@ name|value
 argument_list|)
 expr_stmt|;
 block|}
-specifier|public
+specifier|private
 specifier|static
 name|int
 name|getMaxCount
@@ -591,6 +591,7 @@ operator|)
 name|max
 return|;
 block|}
+comment|/**      * Get the count estimation.      *      * @param node the node      * @return the estimation (-1 if no estimation is available)      */
 specifier|public
 specifier|static
 name|long
