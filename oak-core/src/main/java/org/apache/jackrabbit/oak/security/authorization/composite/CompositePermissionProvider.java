@@ -15,6 +15,8 @@ name|oak
 operator|.
 name|security
 operator|.
+name|authorization
+operator|.
 name|composite
 package|;
 end_package
