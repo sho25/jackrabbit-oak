@@ -1570,6 +1570,8 @@ name|baseRevId
 argument_list|)
 else|:
 literal|null
+argument_list|,
+literal|null
 argument_list|)
 decl_stmt|;
 try|try
@@ -1954,6 +1956,8 @@ argument_list|(
 name|branch
 argument_list|,
 name|ancestor
+argument_list|,
+literal|null
 argument_list|)
 operator|.
 name|toString

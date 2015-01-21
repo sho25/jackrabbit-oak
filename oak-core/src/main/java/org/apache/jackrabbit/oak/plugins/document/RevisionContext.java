@@ -29,6 +29,16 @@ name|Comparator
 import|;
 end_import
 
+begin_import
+import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|Nonnull
+import|;
+end_import
+
 begin_comment
 comment|/**  * Provides revision related context.  */
 end_comment
@@ -59,6 +69,13 @@ function_decl|;
 comment|/**      * @return the cluster id of the local DocumentMK instance.      */
 name|int
 name|getClusterId
+parameter_list|()
+function_decl|;
+comment|/**      * @return the current head revision.      */
+annotation|@
+name|Nonnull
+name|Revision
+name|getHeadRevision
 parameter_list|()
 function_decl|;
 block|}

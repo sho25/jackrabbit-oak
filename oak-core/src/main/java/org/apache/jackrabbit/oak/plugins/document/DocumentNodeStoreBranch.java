@@ -1442,6 +1442,8 @@ name|base
 operator|.
 name|getRevision
 argument_list|()
+argument_list|,
+name|this
 argument_list|)
 decl_stmt|;
 name|Revision
@@ -2809,6 +2811,10 @@ name|ancestor
 operator|.
 name|getRevision
 argument_list|()
+argument_list|,
+name|DocumentNodeStoreBranch
+operator|.
+name|this
 argument_list|)
 argument_list|)
 expr_stmt|;

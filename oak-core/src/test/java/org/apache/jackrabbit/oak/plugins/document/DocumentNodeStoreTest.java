@@ -1769,6 +1769,8 @@ name|Commit
 argument_list|(
 name|store
 argument_list|,
+name|r
+argument_list|,
 name|Revision
 operator|.
 name|fromString
@@ -1776,7 +1778,7 @@ argument_list|(
 name|head
 argument_list|)
 argument_list|,
-name|r
+literal|null
 argument_list|)
 decl_stmt|;
 name|c
@@ -1881,6 +1883,8 @@ name|Commit
 argument_list|(
 name|store
 argument_list|,
+name|r
+argument_list|,
 name|Revision
 operator|.
 name|fromString
@@ -1888,7 +1892,7 @@ argument_list|(
 name|head
 argument_list|)
 argument_list|,
-name|r
+literal|null
 argument_list|)
 decl_stmt|;
 name|c

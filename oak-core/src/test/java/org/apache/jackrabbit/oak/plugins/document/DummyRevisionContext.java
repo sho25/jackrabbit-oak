@@ -29,6 +29,16 @@ name|Comparator
 import|;
 end_import
 
+begin_import
+import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|Nonnull
+import|;
+end_import
+
 begin_comment
 comment|/**  * A revision context for tests.  */
 end_comment
@@ -112,6 +122,24 @@ parameter_list|()
 block|{
 return|return
 literal|1
+return|;
+block|}
+annotation|@
+name|Nonnull
+annotation|@
+name|Override
+specifier|public
+name|Revision
+name|getHeadRevision
+parameter_list|()
+block|{
+return|return
+name|Revision
+operator|.
+name|newRevision
+argument_list|(
+literal|1
+argument_list|)
 return|;
 block|}
 block|}
