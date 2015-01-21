@@ -994,48 +994,13 @@ expr_stmt|;
 block|}
 block|}
 comment|// leave original xpath string as a comment
-if|if
-condition|(
-name|xpathQuery
-operator|!=
-literal|null
-condition|)
-block|{
+name|appendXPathAsComment
+argument_list|(
 name|buff
-operator|.
-name|append
-argument_list|(
-literal|" /* xpath: "
-argument_list|)
-expr_stmt|;
-comment|// the xpath query may not contain the "end comment" marker
-name|String
-name|xpathEscaped
-init|=
-name|xpathQuery
-operator|.
-name|replaceAll
-argument_list|(
-literal|"\\*\\/"
 argument_list|,
-literal|"* /"
-argument_list|)
-decl_stmt|;
-name|buff
-operator|.
-name|append
-argument_list|(
-name|xpathEscaped
+name|xpathQuery
 argument_list|)
 expr_stmt|;
-name|buff
-operator|.
-name|append
-argument_list|(
-literal|" */"
-argument_list|)
-expr_stmt|;
-block|}
 return|return
 name|buff
 operator|.
@@ -1306,13 +1271,42 @@ expr_stmt|;
 block|}
 block|}
 comment|// leave original xpath string as a comment
+name|appendXPathAsComment
+argument_list|(
+name|buff
+argument_list|,
+name|xpathQuery
+argument_list|)
+expr_stmt|;
+return|return
+name|buff
+operator|.
+name|toString
+argument_list|()
+return|;
+block|}
+block|}
+specifier|private
+specifier|static
+name|void
+name|appendXPathAsComment
+parameter_list|(
+name|StringBuilder
+name|buff
+parameter_list|,
+name|String
+name|xpath
+parameter_list|)
+block|{
 if|if
 condition|(
-name|xpathQuery
-operator|!=
+name|xpath
+operator|==
 literal|null
 condition|)
 block|{
+return|return;
+block|}
 name|buff
 operator|.
 name|append
@@ -1320,11 +1314,24 @@ argument_list|(
 literal|" /* xpath: "
 argument_list|)
 expr_stmt|;
+comment|// the xpath query may contain the "end comment" marker
+name|String
+name|xpathEscaped
+init|=
+name|xpath
+operator|.
+name|replaceAll
+argument_list|(
+literal|"\\*\\/"
+argument_list|,
+literal|"* /"
+argument_list|)
+decl_stmt|;
 name|buff
 operator|.
 name|append
 argument_list|(
-name|xpathQuery
+name|xpathEscaped
 argument_list|)
 expr_stmt|;
 name|buff
@@ -1334,14 +1341,6 @@ argument_list|(
 literal|" */"
 argument_list|)
 expr_stmt|;
-block|}
-return|return
-name|buff
-operator|.
-name|toString
-argument_list|()
-return|;
-block|}
 block|}
 block|}
 end_class

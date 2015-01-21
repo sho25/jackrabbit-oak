@@ -266,6 +266,43 @@ literal|"/jcr:root/test/*/nt:resource[@jcr:encoding]"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|p
+operator|.
+name|parse
+argument_list|(
+operator|new
+name|XPathToSQL2Converter
+argument_list|()
+operator|.
+name|convert
+argument_list|(
+literal|"/jcr:root/test/*/*/nt:resource[@jcr:encoding]"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|String
+name|xpath
+init|=
+literal|"/jcr:root/etc/commerce/products//*[@cq:commerceType = 'product' "
+operator|+
+literal|"and ((@size = 'M' or */@size= 'M' or */*/@size = 'M' "
+operator|+
+literal|"or */*/*/@size = 'M' or */*/*/*/@size = 'M' or */*/*/*/*/@size = 'M'))]"
+decl_stmt|;
+name|p
+operator|.
+name|parse
+argument_list|(
+operator|new
+name|XPathToSQL2Converter
+argument_list|()
+operator|.
+name|convert
+argument_list|(
+name|xpath
+argument_list|)
+argument_list|)
+expr_stmt|;
 block|}
 comment|// see OAK-OAK-830: XPathToSQL2Converter fails to wrap or clauses
 annotation|@
