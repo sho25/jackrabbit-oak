@@ -1347,10 +1347,6 @@ comment|//For supporting jcr:contains(jcr:content, 'foo')
 if|if
 condition|(
 name|rootInclude
-operator|!=
-name|this
-operator|&&
-name|rootInclude
 operator|.
 name|relativeNode
 condition|)
@@ -2734,6 +2730,8 @@ operator|.
 name|MATCH_FOUND
 argument_list|)
 expr_stmt|;
+comment|//If result being collected as part of reaggregation then take path
+comment|//from the stack otherwise its the current path
 name|String
 name|rootIncludePath
 init|=
@@ -2742,7 +2740,7 @@ operator|.
 name|isEmpty
 argument_list|()
 condition|?
-literal|null
+name|currentPath
 else|:
 name|aggregateStack
 operator|.
