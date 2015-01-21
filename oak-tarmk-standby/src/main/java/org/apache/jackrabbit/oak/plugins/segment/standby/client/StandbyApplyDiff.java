@@ -129,6 +129,24 @@ name|oak
 operator|.
 name|plugins
 operator|.
+name|memory
+operator|.
+name|EmptyNodeState
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
 name|segment
 operator|.
 name|RecordId
@@ -326,6 +344,7 @@ specifier|final
 name|String
 name|path
 decl_stmt|;
+comment|/**      * read-only traversal of the diff that has 2 properties: one is to log all      * the content changes, second is to drill down to properly level, so that      * missing binaries can be sync'ed if needed      */
 specifier|private
 specifier|final
 name|boolean
@@ -448,6 +467,14 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+else|else
+block|{
+name|binaryCheck
+argument_list|(
+name|after
+argument_list|)
+expr_stmt|;
+block|}
 return|return
 literal|true
 return|;
@@ -492,6 +519,14 @@ name|binaryCheck
 argument_list|(
 name|after
 argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+name|binaryCheck
+argument_list|(
+name|after
 argument_list|)
 expr_stmt|;
 block|}
@@ -897,7 +932,37 @@ argument_list|)
 expr_stmt|;
 block|}
 return|return
+name|after
+operator|.
+name|compareAgainstBaseState
+argument_list|(
+name|EmptyNodeState
+operator|.
+name|EMPTY_NODE
+argument_list|,
+operator|new
+name|StandbyApplyDiff
+argument_list|(
+name|builder
+operator|.
+name|getChildNode
+argument_list|(
+name|name
+argument_list|)
+argument_list|,
+name|store
+argument_list|,
+name|loader
+argument_list|,
+name|path
+operator|+
+name|name
+operator|+
+literal|"/"
+argument_list|,
 literal|true
+argument_list|)
+argument_list|)
 return|;
 block|}
 return|return
@@ -961,7 +1026,6 @@ name|isTraceEnabled
 argument_list|()
 condition|)
 block|{
-comment|// if (PathUtils.getDepth(path)< 5) {
 name|RecordId
 name|oldId
 init|=
@@ -992,7 +1056,6 @@ argument_list|,
 name|logOnly
 argument_list|)
 expr_stmt|;
-comment|// }
 block|}
 if|if
 condition|(
@@ -1014,7 +1077,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|// return true;
 return|return
 name|after
 operator|.
