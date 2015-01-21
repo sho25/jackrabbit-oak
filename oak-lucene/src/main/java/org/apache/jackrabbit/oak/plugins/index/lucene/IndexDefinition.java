@@ -3074,6 +3074,11 @@ name|NamePattern
 argument_list|>
 name|namePatterns
 decl_stmt|;
+specifier|private
+specifier|final
+name|boolean
+name|indexesAllNodesOfMatchingType
+decl_stmt|;
 specifier|final
 name|float
 name|boost
@@ -3250,6 +3255,13 @@ operator|=
 name|hasAnyPropertyIndexConfigured
 argument_list|()
 expr_stmt|;
+name|this
+operator|.
+name|indexesAllNodesOfMatchingType
+operator|=
+name|allMatchingNodeByTypeIndexed
+argument_list|()
+expr_stmt|;
 block|}
 comment|/**          * Creates a new indexing rule base on an existing one, but for a          * different node type name.          *          * @param original the existing rule.          * @param nodeTypeName the node type name for the rule.          */
 name|IndexingRule
@@ -3355,6 +3367,13 @@ operator|||
 name|original
 operator|.
 name|fulltextEnabled
+expr_stmt|;
+name|this
+operator|.
+name|indexesAllNodesOfMatchingType
+operator|=
+name|allMatchingNodeByTypeIndexed
+argument_list|()
 expr_stmt|;
 block|}
 comment|/**          * Returns<code>true</code> if the property with the given name is          * indexed according to this rule.          *          * @param propertyName the name of a property.          * @return<code>true</code> if the property is indexed;          *<code>false</code> otherwise.          */
@@ -3510,7 +3529,7 @@ name|isFulltextEnabled
 parameter_list|()
 block|{
 return|return
-name|fullTextEnabled
+name|fulltextEnabled
 return|;
 block|}
 comment|/**          * @param propertyName name of a property.          * @return the property configuration or<code>null</code> if this          *         indexing rule does not contain a configuration for the given          *         property.          */
@@ -3614,6 +3633,16 @@ parameter_list|()
 block|{
 return|return
 name|aggregate
+return|;
+block|}
+comment|/**          * Flag to determine weather current index rule definition allows indexing of all          * node of type as covered by the current rule. For example if the rule only indexes          * certain property 'foo' for node type 'app:Asset' then index would only have          * entries for those assets where foo is defined. Such an index cannot claim that          * it has entries for all assets.           * @return true in case all matching node types are covered by this rule          */
+specifier|public
+name|boolean
+name|indexesAllNodesOfMatchingType
+parameter_list|()
+block|{
+return|return
+name|indexesAllNodesOfMatchingType
 return|;
 block|}
 specifier|private
@@ -3955,6 +3984,45 @@ return|return
 literal|true
 return|;
 block|}
+block|}
+return|return
+literal|false
+return|;
+block|}
+specifier|private
+name|boolean
+name|allMatchingNodeByTypeIndexed
+parameter_list|()
+block|{
+comment|//Incase of fulltext all nodes matching this rule type would be indexed
+comment|//and would have entry in the index
+if|if
+condition|(
+name|fulltextEnabled
+condition|)
+block|{
+return|return
+literal|true
+return|;
+block|}
+comment|//jcr:primaryType is present on all node. So if such a property
+comment|//is indexed then it would mean all nodes covered by this index rule
+comment|//are indexed
+if|if
+condition|(
+name|getConfig
+argument_list|(
+name|JcrConstants
+operator|.
+name|JCR_PRIMARYTYPE
+argument_list|)
+operator|!=
+literal|null
+condition|)
+block|{
+return|return
+literal|true
+return|;
 block|}
 return|return
 literal|false

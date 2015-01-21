@@ -898,7 +898,9 @@ name|boolean
 name|evalPathRestrictions
 init|=
 name|canEvalPathRestrictions
-argument_list|()
+argument_list|(
+name|indexingRule
+argument_list|)
 decl_stmt|;
 name|boolean
 name|canEvalAlFullText
@@ -1441,7 +1443,10 @@ block|}
 specifier|private
 name|boolean
 name|canEvalPathRestrictions
-parameter_list|()
+parameter_list|(
+name|IndexingRule
+name|rule
+parameter_list|)
 block|{
 if|if
 condition|(
@@ -1461,13 +1466,18 @@ return|return
 literal|false
 return|;
 block|}
-comment|//TODO If no other restrictions is provided and query is pure
+comment|//If no other restrictions is provided and query is pure
 comment|//path restriction based then need to be sure that index definition at least
 comment|//allows indexing all the path for given nodeType
 return|return
 name|defn
 operator|.
 name|evaluatePathRestrictions
+argument_list|()
+operator|&&
+name|rule
+operator|.
+name|indexesAllNodesOfMatchingType
 argument_list|()
 return|;
 block|}
