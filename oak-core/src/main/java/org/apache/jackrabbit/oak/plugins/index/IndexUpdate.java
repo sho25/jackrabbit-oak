@@ -1713,6 +1713,33 @@ throws|throws
 name|CommitFailedException
 block|{
 comment|// trigger reindexing when an indexer becomes available
+name|PropertyState
+name|ps
+init|=
+name|definition
+operator|.
+name|getProperty
+argument_list|(
+name|REINDEX_PROPERTY_NAME
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|ps
+operator|!=
+literal|null
+operator|&&
+name|ps
+operator|.
+name|getValue
+argument_list|(
+name|BOOLEAN
+argument_list|)
+condition|)
+block|{
+comment|// already true, skip the update
+return|return;
+block|}
 name|definition
 operator|.
 name|setProperty
