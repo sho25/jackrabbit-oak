@@ -388,7 +388,20 @@ argument_list|(
 name|description
 argument_list|()
 operator|+
-literal|" First element of next iterator must be greater than previous iterator"
+literal|" First element of next iterator ("
+operator|+
+name|pIt
+operator|.
+name|peek
+argument_list|()
+operator|+
+literal|")"
+operator|+
+literal|" must be after previous iterator ("
+operator|+
+name|lastPeek
+operator|+
+literal|")"
 argument_list|)
 throw|;
 block|}
