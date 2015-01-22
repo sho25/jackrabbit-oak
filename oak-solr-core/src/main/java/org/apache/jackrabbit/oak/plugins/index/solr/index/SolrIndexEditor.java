@@ -1299,9 +1299,33 @@ name|getProperties
 argument_list|()
 control|)
 block|{
-comment|// try to get the field to use for this property from configuration
 if|if
 condition|(
+operator|(
+name|configuration
+operator|.
+name|getUsedProperties
+argument_list|()
+operator|.
+name|size
+argument_list|()
+operator|>
+literal|0
+operator|&&
+name|configuration
+operator|.
+name|getUsedProperties
+argument_list|()
+operator|.
+name|contains
+argument_list|(
+name|property
+operator|.
+name|getName
+argument_list|()
+argument_list|)
+operator|)
+operator|||
 operator|!
 name|configuration
 operator|.
@@ -1317,6 +1341,7 @@ argument_list|()
 argument_list|)
 condition|)
 block|{
+comment|// try to get the field to use for this property from configuration
 name|String
 name|fieldName
 init|=

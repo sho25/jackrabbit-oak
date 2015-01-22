@@ -184,6 +184,16 @@ argument_list|>
 name|getIgnoredProperties
 parameter_list|()
 function_decl|;
+comment|/**      * Provide the names of the properties that should be indexed and searched by the Solr index      *      * @return a {@link java.util.Collection} of property names for properties to be ignored      */
+annotation|@
+name|Nonnull
+name|Collection
+argument_list|<
+name|String
+argument_list|>
+name|getUsedProperties
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 

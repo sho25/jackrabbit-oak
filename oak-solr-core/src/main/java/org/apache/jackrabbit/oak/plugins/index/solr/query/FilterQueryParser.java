@@ -732,45 +732,16 @@ else|else
 block|{
 if|if
 condition|(
-operator|!
+name|SolrQueryIndex
+operator|.
+name|isIgnoredProperty
+argument_list|(
+name|pr
+operator|.
+name|propertyName
+argument_list|,
 name|configuration
-operator|.
-name|useForPropertyRestrictions
-argument_list|()
-comment|// Solr index not used for properties
-operator|||
-name|pr
-operator|.
-name|propertyName
-operator|.
-name|contains
-argument_list|(
-literal|"/"
 argument_list|)
-comment|// no child-level property restrictions
-operator|||
-literal|"rep:excerpt"
-operator|.
-name|equals
-argument_list|(
-name|pr
-operator|.
-name|propertyName
-argument_list|)
-comment|// rep:excerpt is handled by the query engine
-operator|||
-name|configuration
-operator|.
-name|getIgnoredProperties
-argument_list|()
-operator|.
-name|contains
-argument_list|(
-name|pr
-operator|.
-name|propertyName
-argument_list|)
-comment|// property is explicitly ignored
 condition|)
 block|{
 continue|continue;
