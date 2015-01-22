@@ -178,7 +178,7 @@ end_import
 begin_class
 specifier|public
 class|class
-name|FailoverSslTest
+name|FailoverSslTestIT
 extends|extends
 name|TestBase
 block|{

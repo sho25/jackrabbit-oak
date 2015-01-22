@@ -176,7 +176,7 @@ end_import
 begin_class
 specifier|public
 class|class
-name|FailoverMultipleClientsTest
+name|FailoverMultipleClientsTestIT
 extends|extends
 name|TestBase
 block|{

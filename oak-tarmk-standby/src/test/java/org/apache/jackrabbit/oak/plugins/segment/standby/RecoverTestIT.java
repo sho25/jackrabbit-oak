@@ -196,7 +196,7 @@ end_import
 begin_class
 specifier|public
 class|class
-name|RecoverTest
+name|RecoverTestIT
 extends|extends
 name|TestBase
 block|{
