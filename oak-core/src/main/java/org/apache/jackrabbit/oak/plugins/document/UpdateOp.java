@@ -1168,6 +1168,7 @@ operator|.
 name|name
 argument_list|)
 operator|&&
+operator|(
 name|revision
 operator|!=
 literal|null
@@ -1186,6 +1187,7 @@ operator|.
 name|revision
 operator|==
 literal|null
+operator|)
 return|;
 block|}
 return|return
