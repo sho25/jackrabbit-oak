@@ -249,7 +249,7 @@ name|RDBFixture
 argument_list|(
 literal|"RDB-Postgres"
 argument_list|,
-literal|"jdbc:postgresql:oak"
+literal|"jdbc:postgresql:foobar"
 argument_list|,
 literal|"postgres"
 argument_list|,
