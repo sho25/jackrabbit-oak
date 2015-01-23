@@ -1388,24 +1388,7 @@ name|void
 name|testInterestingStrings
 parameter_list|()
 block|{
-comment|// TODO see OAK-1913
-name|Assume
-operator|.
-name|assumeTrue
-argument_list|(
-operator|!
-operator|(
-name|super
-operator|.
-name|dsname
-operator|.
-name|equals
-argument_list|(
-literal|"RDB-MySQL"
-argument_list|)
-operator|)
-argument_list|)
-expr_stmt|;
+comment|// test case  "gclef:\uD834\uDD1E" will fail on MySQL unless properly configured to use utf8mb4 charset        // Assume.assumeTrue(!(super.dsname.equals("RDB-MySQL")));
 name|String
 index|[]
 name|tests
