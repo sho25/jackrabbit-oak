@@ -1979,7 +1979,9 @@ literal|"Expected path "
 operator|+
 name|p
 operator|+
-literal|" not found"
+literal|" not found, got "
+operator|+
+name|paths
 argument_list|,
 name|paths
 operator|.
