@@ -245,24 +245,6 @@ name|org
 operator|.
 name|apache
 operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|spi
-operator|.
-name|query
-operator|.
-name|QueryIndex
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
 name|lucene
 operator|.
 name|index
@@ -489,7 +471,7 @@ decl_stmt|;
 specifier|private
 specifier|final
 name|IndexDefinition
-name|defn
+name|definition
 decl_stmt|;
 specifier|private
 specifier|final
@@ -550,7 +532,7 @@ name|indexPath
 expr_stmt|;
 name|this
 operator|.
-name|defn
+name|definition
 operator|=
 name|indexNode
 operator|.
@@ -584,7 +566,7 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
-name|defn
+name|definition
 operator|.
 name|isTestMode
 argument_list|()
@@ -620,7 +602,7 @@ literal|"while using definition [%s] and testMode is found to be enabled"
 argument_list|,
 name|filter
 argument_list|,
-name|defn
+name|definition
 argument_list|)
 decl_stmt|;
 throw|throw
@@ -705,7 +687,7 @@ name|trace
 argument_list|(
 literal|"Evaluating plan with index definition {}"
 argument_list|,
-name|defn
+name|definition
 argument_list|)
 expr_stmt|;
 name|FullTextExpression
@@ -719,7 +701,7 @@ decl_stmt|;
 if|if
 condition|(
 operator|!
-name|defn
+name|definition
 operator|.
 name|getVersion
 argument_list|()
@@ -751,7 +733,7 @@ operator|!=
 literal|null
 operator|&&
 operator|!
-name|defn
+name|definition
 operator|.
 name|isFullTextEnabled
 argument_list|()
@@ -803,14 +785,14 @@ name|PlanResult
 argument_list|(
 name|indexPath
 argument_list|,
-name|defn
+name|definition
 argument_list|,
 name|indexingRule
 argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|defn
+name|definition
 operator|.
 name|hasFunctionDefined
 argument_list|()
@@ -819,7 +801,7 @@ name|filter
 operator|.
 name|getPropertyRestriction
 argument_list|(
-name|defn
+name|definition
 operator|.
 name|getFunctionName
 argument_list|()
@@ -973,7 +955,7 @@ decl_stmt|;
 name|boolean
 name|canSort
 init|=
-name|canHandleSorting
+name|canSortByProperty
 argument_list|(
 name|sortOrder
 argument_list|)
@@ -1070,7 +1052,7 @@ name|plan
 operator|.
 name|setCostPerEntry
 argument_list|(
-name|defn
+name|definition
 operator|.
 name|getCostPerEntry
 argument_list|()
@@ -1089,8 +1071,9 @@ literal|null
 return|;
 block|}
 specifier|private
+specifier|static
 name|boolean
-name|canHandleSorting
+name|canSortByProperty
 parameter_list|(
 name|List
 argument_list|<
@@ -1111,7 +1094,7 @@ return|return
 literal|false
 return|;
 block|}
-comment|//If jcr:score is the only sort order then opt out
+comment|// If jcr:score is the only sort order then opt out
 if|if
 condition|(
 name|sortOrder
@@ -1513,7 +1496,7 @@ expr_stmt|;
 comment|//Such path translation would only work if index contains
 comment|//all the nodes
 return|return
-name|defn
+name|definition
 operator|.
 name|indexesAllTypes
 argument_list|()
@@ -1563,7 +1546,7 @@ comment|//If no other restrictions is provided and query is pure
 comment|//path restriction based then need to be sure that index definition at least
 comment|//allows indexing all the path for given nodeType
 return|return
-name|defn
+name|definition
 operator|.
 name|evaluatePathRestrictions
 argument_list|()
@@ -1590,7 +1573,7 @@ argument_list|()
 operator|.
 name|setCostPerExecution
 argument_list|(
-name|defn
+name|definition
 operator|.
 name|getCostPerExecution
 argument_list|()
@@ -1598,7 +1581,7 @@ argument_list|)
 operator|.
 name|setCostPerEntry
 argument_list|(
-name|defn
+name|definition
 operator|.
 name|getCostPerEntry
 argument_list|()
@@ -1606,7 +1589,7 @@ argument_list|)
 operator|.
 name|setFulltextIndex
 argument_list|(
-name|defn
+name|definition
 operator|.
 name|isFullTextEnabled
 argument_list|()
@@ -1673,14 +1656,14 @@ name|ft
 operator|!=
 literal|null
 operator|&&
-name|defn
+name|definition
 operator|.
 name|isFullTextEnabled
 argument_list|()
 condition|)
 block|{
 return|return
-name|defn
+name|definition
 operator|.
 name|getFulltextEntryCount
 argument_list|(
@@ -1697,7 +1680,7 @@ name|Math
 operator|.
 name|min
 argument_list|(
-name|defn
+name|definition
 operator|.
 name|getEntryCount
 argument_list|()
@@ -1913,7 +1896,7 @@ argument_list|()
 condition|)
 block|{
 return|return
-name|defn
+name|definition
 operator|.
 name|getApplicableIndexingRule
 argument_list|(
@@ -1932,7 +1915,7 @@ control|(
 name|IndexingRule
 name|rule
 range|:
-name|defn
+name|definition
 operator|.
 name|getDefinedRules
 argument_list|()
@@ -1959,7 +1942,7 @@ comment|//some condition defined. So again find a rule which applies
 name|IndexingRule
 name|matchingRule
 init|=
-name|defn
+name|definition
 operator|.
 name|getApplicableIndexingRule
 argument_list|(

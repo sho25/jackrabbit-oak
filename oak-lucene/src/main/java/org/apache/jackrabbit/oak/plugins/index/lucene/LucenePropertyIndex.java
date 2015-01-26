@@ -1664,7 +1664,7 @@ name|tracker
 operator|.
 name|acquireIndexNode
 argument_list|(
-name|pr
+name|getPlanResult
 argument_list|(
 name|plan
 argument_list|)
@@ -1703,7 +1703,7 @@ decl_stmt|;
 name|String
 name|path
 init|=
-name|pr
+name|getPlanResult
 argument_list|(
 name|plan
 argument_list|)
@@ -1882,7 +1882,7 @@ specifier|final
 name|PlanResult
 name|pr
 init|=
-name|pr
+name|getPlanResult
 argument_list|(
 name|plan
 argument_list|)
@@ -2455,7 +2455,7 @@ name|tracker
 operator|.
 name|acquireIndexNode
 argument_list|(
-name|pr
+name|getPlanResult
 argument_list|(
 name|plan
 argument_list|)
@@ -2465,6 +2465,7 @@ argument_list|)
 return|;
 block|}
 specifier|private
+specifier|static
 name|Sort
 name|getSort
 parameter_list|(
@@ -2516,7 +2517,7 @@ decl_stmt|;
 name|PlanResult
 name|planResult
 init|=
-name|pr
+name|getPlanResult
 argument_list|(
 name|plan
 argument_list|)
@@ -2800,7 +2801,7 @@ name|PathUtils
 operator|.
 name|getName
 argument_list|(
-name|pr
+name|getPlanResult
 argument_list|(
 name|plan
 argument_list|)
@@ -2854,7 +2855,7 @@ decl_stmt|;
 name|PlanResult
 name|planResult
 init|=
-name|pr
+name|getPlanResult
 argument_list|(
 name|plan
 argument_list|)
@@ -3317,7 +3318,7 @@ decl_stmt|;
 name|PlanResult
 name|planResult
 init|=
-name|pr
+name|getPlanResult
 argument_list|(
 name|plan
 argument_list|)
@@ -3916,7 +3917,7 @@ block|}
 specifier|private
 specifier|static
 name|PlanResult
-name|pr
+name|getPlanResult
 parameter_list|(
 name|IndexPlan
 name|plan
@@ -5773,7 +5774,7 @@ specifier|final
 name|PlanResult
 name|pr
 init|=
-name|pr
+name|getPlanResult
 argument_list|(
 name|plan
 argument_list|)
