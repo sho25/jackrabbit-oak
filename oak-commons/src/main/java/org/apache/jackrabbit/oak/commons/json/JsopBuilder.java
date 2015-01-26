@@ -539,7 +539,7 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/**      * Convert a string to a quoted Json literal using the correct escape      * sequences. The literal is enclosed in double quotes. Characters outside      * the range 32..127 are encoded (backslash u xxxx). The forward slash      * (solidus) is not escaped. Null is encoded as "null" (without quotes).      *      * @param s the text to convert      * @return the Json representation (including double quotes)      */
+comment|/**      * Convert a string to a quoted Json literal using the correct escape      * sequences. The literal is enclosed in double quotes. Characters outside      * the range 32..127 are encoded using      * {@link #escape(String, StringBuilder)}). Null is encoded as "null"      * (without quotes).      *      * @param s the text to convert      * @return the Json representation (including double quotes)      */
 specifier|public
 specifier|static
 name|String
@@ -732,7 +732,7 @@ name|buff
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Escape a string into the target buffer.      *      * @param s      the string to escape      * @param length the number of characters.      * @param buff   the target buffer      */
+comment|/**      * Escape a string for JSON into the target buffer.      *<p>      * Characters are only escaped if required by RFC 7159 (thus, controls,      * backslash, and double quotes), or if they are part of a malformed      * surrogate pair (which wouldn't round-trip through UTF-8 otherwise).      *      * @param s      the string to escape      * @param length the number of characters.      * @param buff   the target buffer      */
 specifier|private
 specifier|static
 name|void
