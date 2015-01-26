@@ -617,6 +617,16 @@ operator|||
 name|c
 operator|<
 literal|' '
+operator|||
+operator|(
+name|c
+operator|>=
+literal|0xd800
+operator|&&
+name|c
+operator|<=
+literal|0xdbff
+operator|)
 condition|)
 block|{
 name|StringBuilder
@@ -763,14 +773,6 @@ argument_list|(
 name|i
 argument_list|)
 decl_stmt|;
-name|int
-name|ic
-init|=
-operator|(
-name|int
-operator|)
-name|c
-decl_stmt|;
 switch|switch
 condition|(
 name|c
@@ -878,7 +880,10 @@ name|format
 argument_list|(
 literal|"\\u%04x"
 argument_list|,
-name|ic
+operator|(
+name|int
+operator|)
+name|c
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -886,13 +891,13 @@ block|}
 elseif|else
 if|if
 condition|(
-name|ic
+name|c
 operator|>=
-literal|0xD800
+literal|0xd800
 operator|&&
-name|ic
+name|c
 operator|<=
-literal|0xDBFF
+literal|0xdbff
 condition|)
 block|{
 comment|// isSurrogate(), only available in Java 7
@@ -961,7 +966,10 @@ name|format
 argument_list|(
 literal|"\\u%04x"
 argument_list|,
-name|ic
+operator|(
+name|int
+operator|)
+name|c
 argument_list|)
 argument_list|)
 expr_stmt|;
