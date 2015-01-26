@@ -2313,7 +2313,7 @@ specifier|private
 name|int
 name|stackSize
 decl_stmt|;
-comment|/**          * The stack of recently referenced elements. This includes all hot entries,          * the recently referenced cold entries, and all non-resident cold entries.          *<p>          * There is always at least one entry: the head entry.          */
+comment|/**          * The stack of recently referenced elements. This includes all hot          * entries, and the recently referenced cold entries. Resident cold          * entries that were not recently referenced, as well as non-resident          * cold entries, are not in the stack.          *<p>          * There is always at least one entry: the head entry.          */
 specifier|private
 name|Entry
 argument_list|<
