@@ -2698,6 +2698,30 @@ condition|)
 block|{
 continue|continue;
 block|}
+comment|// ignore when local map is empty (OAK-2442)
+name|SortedMap
+argument_list|<
+name|Revision
+argument_list|,
+name|String
+argument_list|>
+name|local
+init|=
+name|getLocalMap
+argument_list|(
+name|key
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|local
+operator|.
+name|isEmpty
+argument_list|()
+condition|)
+block|{
+continue|continue;
+block|}
 comment|// first check local map, which contains most recent values
 name|Value
 name|value
@@ -2706,10 +2730,7 @@ name|getLatestValue
 argument_list|(
 name|nodeStore
 argument_list|,
-name|getLocalMap
-argument_list|(
-name|key
-argument_list|)
+name|local
 argument_list|,
 name|min
 argument_list|,
