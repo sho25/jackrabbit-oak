@@ -2509,9 +2509,74 @@ name|parent
 argument_list|,
 name|nodeInfo
 argument_list|,
-name|id
+literal|null
 argument_list|)
 expr_stmt|;
+block|}
+elseif|else
+if|if
+condition|(
+name|uuidBehavior
+operator|==
+name|ImportUUIDBehavior
+operator|.
+name|IMPORT_UUID_CREATE_NEW
+condition|)
+block|{
+comment|// always create a new UUID even if no
+comment|// conflicting node exists. see OAK-1244
+name|tree
+operator|=
+name|createTree
+argument_list|(
+name|parent
+argument_list|,
+name|nodeInfo
+argument_list|,
+name|UUID
+operator|.
+name|randomUUID
+argument_list|()
+operator|.
+name|toString
+argument_list|()
+argument_list|)
+expr_stmt|;
+comment|// remember uuid mapping
+if|if
+condition|(
+name|isNodeType
+argument_list|(
+name|tree
+argument_list|,
+name|JcrConstants
+operator|.
+name|MIX_REFERENCEABLE
+argument_list|)
+condition|)
+block|{
+name|refTracker
+operator|.
+name|put
+argument_list|(
+name|nodeInfo
+operator|.
+name|getUUID
+argument_list|()
+argument_list|,
+name|TreeUtil
+operator|.
+name|getString
+argument_list|(
+name|tree
+argument_list|,
+name|JcrConstants
+operator|.
+name|JCR_UUID
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 else|else
 block|{
@@ -2573,13 +2638,8 @@ name|id
 argument_list|)
 expr_stmt|;
 block|}
-comment|// resolve conflict if there is one or force
-comment|// conflict resolution when behavior is IMPORT_UUID_CREATE_NEW.
-comment|// the latter will always create a new UUID even if no
-comment|// conflicting node exists. see OAK-1244
 if|if
 condition|(
-operator|(
 name|conflicting
 operator|!=
 literal|null
@@ -2588,13 +2648,6 @@ name|conflicting
 operator|.
 name|exists
 argument_list|()
-operator|)
-operator|||
-name|uuidBehavior
-operator|==
-name|ImportUUIDBehavior
-operator|.
-name|IMPORT_UUID_CREATE_NEW
 condition|)
 block|{
 comment|// resolve uuid conflict
