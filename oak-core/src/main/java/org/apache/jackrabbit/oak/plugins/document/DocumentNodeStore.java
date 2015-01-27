@@ -4504,6 +4504,12 @@ block|{
 if|if
 condition|(
 name|isNew
+operator|&&
+operator|!
+name|added
+operator|.
+name|isEmpty
+argument_list|()
 condition|)
 block|{
 name|DocumentNodeState
