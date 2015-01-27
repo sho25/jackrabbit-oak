@@ -103,7 +103,7 @@ name|int
 name|maxCacheAge
 parameter_list|)
 function_decl|;
-comment|/**      * Get a list of documents where the key is greater than a start value and      * less than an end value, sorted by the key.      *<p>      * The returned documents are immutable.      *      * @param<T> the document type      * @param collection the collection      * @param fromKey the start value (excluding)      * @param toKey the end value (excluding)      * @param limit the maximum number of entries to return (starting with the lowest key)      * @return the list (possibly empty)      */
+comment|/**      * Get a list of documents where the key is greater than a start value and      * less than an end value.      *<p>      * The returned documents are sorted by key and are immutable.      *      * @param<T> the document type      * @param collection the collection      * @param fromKey the start value (excluding)      * @param toKey the end value (excluding)      * @param limit the maximum number of entries to return (starting with the lowest key)      * @return the list (possibly empty)      */
 annotation|@
 name|Nonnull
 argument_list|<
@@ -133,7 +133,7 @@ name|int
 name|limit
 parameter_list|)
 function_decl|;
-comment|/**      * Get a list of documents where the key is greater than a start value and      * less than an end value. The returned documents are immutable.      *      * @param<T> the document type      * @param collection the collection      * @param fromKey the start value (excluding)      * @param toKey the end value (excluding)      * @param indexedProperty the name of the indexed property (optional)      * @param startValue the minimum value of the indexed property      * @param limit the maximum number of entries to return      * @return the list (possibly empty)      */
+comment|/**      * Get a list of documents where the key is greater than a start value and      * less than an end value<em>and</em> the given "indexed property" is greater      * or equals the specified value.      *<p>      * The indexed property can either be a {@link Long} value, in which case numeric      * comparison applies, or a {@link Boolean} value, in which case "false" is mapped      * to "0" and "true" is mapped to "1".      *<p>      * The returned documents are sorted by key and are immutable.      *      * @param<T> the document type      * @param collection the collection      * @param fromKey the start value (excluding)      * @param toKey the end value (excluding)      * @param indexedProperty the name of the indexed property (optional)      * @param startValue the minimum value of the indexed property      * @param limit the maximum number of entries to return      * @return the list (possibly empty)      */
 annotation|@
 name|Nonnull
 argument_list|<
