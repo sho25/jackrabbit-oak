@@ -270,6 +270,8 @@ literal|"_foo"
 argument_list|,
 literal|true
 argument_list|,
+literal|true
+argument_list|,
 literal|1
 argument_list|,
 literal|2
@@ -319,6 +321,20 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
+literal|true
+argument_list|,
+name|doc
+operator|.
+name|get
+argument_list|(
+name|NodeDocument
+operator|.
+name|DELETED_ONCE
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
 literal|2L
 argument_list|,
 name|doc
@@ -344,6 +360,8 @@ operator|new
 name|RDBRow
 argument_list|(
 literal|"_foo"
+argument_list|,
+literal|false
 argument_list|,
 literal|false
 argument_list|,
@@ -426,6 +444,8 @@ operator|new
 name|RDBRow
 argument_list|(
 literal|"_foo"
+argument_list|,
+literal|false
 argument_list|,
 literal|false
 argument_list|,
@@ -551,6 +571,8 @@ literal|"_foo"
 argument_list|,
 literal|true
 argument_list|,
+literal|false
+argument_list|,
 literal|1
 argument_list|,
 literal|2
@@ -611,6 +633,8 @@ argument_list|(
 literal|"_foo"
 argument_list|,
 literal|true
+argument_list|,
+literal|false
 argument_list|,
 literal|1
 argument_list|,
@@ -702,6 +726,8 @@ literal|"_foo"
 argument_list|,
 literal|true
 argument_list|,
+literal|false
+argument_list|,
 literal|1
 argument_list|,
 literal|2
@@ -765,6 +791,8 @@ literal|"_foo"
 argument_list|,
 literal|true
 argument_list|,
+literal|false
+argument_list|,
 literal|1
 argument_list|,
 literal|2
@@ -823,6 +851,8 @@ literal|"_foo"
 argument_list|,
 literal|true
 argument_list|,
+literal|false
+argument_list|,
 literal|1
 argument_list|,
 literal|2
@@ -876,6 +906,8 @@ argument_list|(
 literal|"_foo"
 argument_list|,
 literal|true
+argument_list|,
+literal|false
 argument_list|,
 literal|1
 argument_list|,

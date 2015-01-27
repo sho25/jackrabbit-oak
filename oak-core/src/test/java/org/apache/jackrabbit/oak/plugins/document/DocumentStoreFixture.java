@@ -249,7 +249,7 @@ name|RDBFixture
 argument_list|(
 literal|"RDB-Postgres"
 argument_list|,
-literal|"jdbc:postgresql:foobar"
+literal|"jdbc:postgresql:oak"
 argument_list|,
 literal|"postgres"
 argument_list|,
@@ -474,6 +474,23 @@ argument_list|(
 literal|true
 argument_list|)
 decl_stmt|;
+specifier|public
+name|RDBFixture
+parameter_list|()
+block|{
+comment|// default RDB fixture
+name|this
+argument_list|(
+literal|"RDB-H2(file)"
+argument_list|,
+literal|"jdbc:h2:file:./target/ds-test2"
+argument_list|,
+literal|"sa"
+argument_list|,
+literal|""
+argument_list|)
+expr_stmt|;
+block|}
 specifier|public
 name|RDBFixture
 parameter_list|(

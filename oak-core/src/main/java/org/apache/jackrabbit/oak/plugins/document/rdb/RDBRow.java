@@ -59,6 +59,8 @@ specifier|private
 specifier|final
 name|boolean
 name|hasBinaryProperties
+decl_stmt|,
+name|deletedOnce
 decl_stmt|;
 specifier|private
 specifier|final
@@ -89,6 +91,9 @@ parameter_list|,
 name|boolean
 name|hasBinaryProperties
 parameter_list|,
+name|boolean
+name|deletedOnce
+parameter_list|,
 name|long
 name|modified
 parameter_list|,
@@ -117,6 +122,12 @@ operator|.
 name|hasBinaryProperties
 operator|=
 name|hasBinaryProperties
+expr_stmt|;
+name|this
+operator|.
+name|deletedOnce
+operator|=
+name|deletedOnce
 expr_stmt|;
 name|this
 operator|.
@@ -167,6 +178,15 @@ parameter_list|()
 block|{
 return|return
 name|hasBinaryProperties
+return|;
+block|}
+specifier|public
+name|boolean
+name|deletedOnce
+parameter_list|()
+block|{
+return|return
+name|deletedOnce
 return|;
 block|}
 annotation|@

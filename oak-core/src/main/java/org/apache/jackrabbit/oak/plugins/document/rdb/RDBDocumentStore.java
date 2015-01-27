@@ -325,6 +325,16 @@ begin_import
 import|import
 name|javax
 operator|.
+name|jcr
+operator|.
+name|RepositoryException
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
 name|sql
 operator|.
 name|DataSource
@@ -704,7 +714,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Implementation of {@link CachingDocumentStore} for relational databases.  *   *<h3>Supported Databases</h3>  *<p>  * The code is supposed to be sufficiently generic to run with a variety of  * database implementations. However, the tables are created when required to  * simplify testing, and<em>that</em> code specifically supports these  * databases:  *<ul>  *<li>h2</li>  *<li>IBM DB2</li>  *<li>Postgres</li>  *<li>MariaDB (MySQL) (experimental)</li>  *<li>Oracle (experimental)</li>  *</ul>  *   *<h3>Table Layout</h3>  *<p>  * Data for each of the DocumentStore's {@link Collection}s is stored in its own  * database table (with a name matching the collection).  *<p>  * The tables essentially implement key/value storage, where the key usually is  * derived from an Oak path, and the value is a serialization of a  * {@link Document} (or a part of one). Additional fields are used for queries,  * debugging, and concurrency control:  *<table style="text-align: left;">  *<thead>  *<tr>  *<th>Column</th>  *<th>Type</th>  *<th>Description</th>  *</tr>  *</thead><tbody>  *<tr>  *<th>ID</th>  *<td>varchar(512) not null primary key</td>  *<td>the document's key (for databases that can not handle 512 character  * primary keys, such as MySQL, varbinary is possible as well; note that this  * currently needs to be hardcoded)</td>  *</tr>  *<tr>  *<th>MODIFIED</th>  *<td>bigint</td>  *<td>low-resolution timestamp  *</tr>  *<tr>  *<th>HASBINARY</th>  *<td>smallint</td>  *<td>flag indicating whether the document has binary properties  *</tr>  *<tr>  *<th>MODCOUNT</th>  *<td>bigint</td>  *<td>modification counter, used for avoiding overlapping updates</td>  *</tr>  *<tr>  *<th>DSIZE</th>  *<td>bigint</td>  *<td>the approximate size of the document's JSON serialization (for debugging  * purposes)</td>  *</tr>  *<tr>  *<th>DATA</th>  *<td>varchar(16384)</td>  *<td>the document's JSON serialization (only used for small document sizes, in  * which case BDATA (below) is not set), or a sequence of JSON serialized update  * operations to be applied against the last full serialization</td>  *</tr>  *<tr>  *<th>BDATA</th>  *<td>blob</td>  *<td>the document's JSON serialization (usually GZIPped, only used for "large"  * documents)</td>  *</tr>  *</tbody>  *</table>  *<p>  * The names of database tables can be prefixed; the purpose is mainly for  * testing, as tables can also be dropped automatically when the store is  * disposed (this only happens for those tables that have been created on  * demand)  *<p>  *<em>Note that the database needs to be created/configured to support all Unicode  * characters in text fields, and to collate by Unicode code point (in DB2: "identity collation",  * in Postgres: "C").  * THIS IS NOT THE DEFAULT!</em>  *<p>  *<em>For MySQL, the database parameter "max_allowed_packet" needs to be increased to support ~16 blobs.</em>  *   *<h3>Caching</h3>  *<p>  * The cache borrows heavily from the {@link MongoDocumentStore} implementation;  * however it does not support the off-heap mechanism yet.  *   *<h3>Queries</h3>  *<p>  * The implementation currently supports only two indexed properties:  * "_modified" and "_bin". Attempts to use a different indexed property will  * cause a {@link DocumentStoreException}.  */
+comment|/**  * Implementation of {@link CachingDocumentStore} for relational databases.  *   *<h3>Supported Databases</h3>  *<p>  * The code is supposed to be sufficiently generic to run with a variety of  * database implementations. However, the tables are created when required to  * simplify testing, and<em>that</em> code specifically supports these  * databases:  *<ul>  *<li>h2</li>  *<li>IBM DB2</li>  *<li>Postgres</li>  *<li>MariaDB (MySQL) (experimental)</li>  *<li>Oracle (experimental)</li>  *</ul>  *   *<h3>Table Layout</h3>  *<p>  * Data for each of the DocumentStore's {@link Collection}s is stored in its own  * database table (with a name matching the collection).  *<p>  * The tables essentially implement key/value storage, where the key usually is  * derived from an Oak path, and the value is a serialization of a  * {@link Document} (or a part of one). Additional fields are used for queries,  * debugging, and concurrency control:  *<table style="text-align: left;">  *<thead>  *<tr>  *<th>Column</th>  *<th>Type</th>  *<th>Description</th>  *</tr>  *</thead><tbody>  *<tr>  *<th>ID</th>  *<td>varchar(512) not null primary key</td>  *<td>the document's key (for databases that can not handle 512 character  * primary keys, such as MySQL, varbinary is possible as well; note that this  * currently needs to be hardcoded)</td>  *</tr>  *<tr>  *<th>MODIFIED</th>  *<td>bigint</td>  *<td>low-resolution timestamp  *</tr>  *<tr>  *<th>HASBINARY</th>  *<td>smallint</td>  *<td>flag indicating whether the document has binary properties  *</tr>  *<tr>  *<th>DELETEDONCE</th>  *<td>smallint</td>  *<td>flag indicating whether the document has been deleted once  *</tr>  *<tr>  *<th>MODCOUNT</th>  *<td>bigint</td>  *<td>modification counter, used for avoiding overlapping updates</td>  *</tr>  *<tr>  *<th>DSIZE</th>  *<td>bigint</td>  *<td>the approximate size of the document's JSON serialization (for debugging  * purposes)</td>  *</tr>  *<tr>  *<th>DATA</th>  *<td>varchar(16384)</td>  *<td>the document's JSON serialization (only used for small document sizes, in  * which case BDATA (below) is not set), or a sequence of JSON serialized update  * operations to be applied against the last full serialization</td>  *</tr>  *<tr>  *<th>BDATA</th>  *<td>blob</td>  *<td>the document's JSON serialization (usually GZIPped, only used for "large"  * documents)</td>  *</tr>  *</tbody>  *</table>  *<p>  * The names of database tables can be prefixed; the purpose is mainly for  * testing, as tables can also be dropped automatically when the store is  * disposed (this only happens for those tables that have been created on  * demand)  *<p>  *<em>Note that the database needs to be created/configured to support all Unicode  * characters in text fields, and to collate by Unicode code point (in DB2: "identity collation",  * in Postgres: "C").  * THIS IS NOT THE DEFAULT!</em>  *<p>  *<em>For MySQL, the database parameter "max_allowed_packet" needs to be increased to support ~16 blobs.</em>  *   *<h3>Caching</h3>  *<p>  * The cache borrows heavily from the {@link MongoDocumentStore} implementation;  * however it does not support the off-heap mechanism yet.  *   *<h3>Queries</h3>  *<p>  * The implementation currently supports only two indexed properties:  * "_modified" and "_bin". Attempts to use a different indexed property will  * cause a {@link DocumentStoreException}.  */
 end_comment
 
 begin_class
@@ -1526,7 +1536,7 @@ literal|"create table "
 operator|+
 name|tableName
 operator|+
-literal|" (ID varchar(512) not null primary key, MODIFIED bigint, HASBINARY smallint, MODCOUNT bigint, CMODCOUNT bigint, DSIZE bigint, DATA varchar(16384), BDATA bytea)"
+literal|" (ID varchar(512) not null primary key, MODIFIED bigint, HASBINARY smallint, DELETEDONCE smallint, MODCOUNT bigint, CMODCOUNT bigint, DSIZE bigint, DATA varchar(16384), BDATA bytea)"
 operator|)
 return|;
 block|}
@@ -1574,7 +1584,7 @@ literal|"create table "
 operator|+
 name|tableName
 operator|+
-literal|" (ID varchar(512) not null primary key, MODIFIED number, HASBINARY number, MODCOUNT number, CMODCOUNT number, DSIZE number, DATA varchar(4000), BDATA blob)"
+literal|" (ID varchar(512) not null primary key, MODIFIED number, HASBINARY number, DELETEDONCE number, MODCOUNT number, CMODCOUNT number, DSIZE number, DATA varchar(4000), BDATA blob)"
 operator|)
 return|;
 block|}
@@ -1614,7 +1624,7 @@ literal|"create table "
 operator|+
 name|tableName
 operator|+
-literal|" (ID varbinary(512) not null primary key, MODIFIED bigint, HASBINARY smallint, MODCOUNT bigint, CMODCOUNT bigint, DSIZE bigint, DATA varchar(16000), BDATA mediumblob)"
+literal|" (ID varbinary(512) not null primary key, MODIFIED bigint, HASBINARY smallint, DELETEDONCE smallint, MODCOUNT bigint, CMODCOUNT bigint, DSIZE bigint, DATA varchar(16000), BDATA mediumblob)"
 operator|)
 return|;
 block|}
@@ -1708,7 +1718,7 @@ literal|"create table "
 operator|+
 name|tableName
 operator|+
-literal|" (ID varchar(512) not null primary key, MODIFIED bigint, HASBINARY smallint, MODCOUNT bigint, CMODCOUNT bigint, DSIZE bigint, DATA varchar(16384), BDATA blob)"
+literal|" (ID varchar(512) not null primary key, MODIFIED bigint, HASBINARY smallint, DELETEDONCE smallint, MODCOUNT bigint, CMODCOUNT bigint, DSIZE bigint, DATA varchar(16384), BDATA blob)"
 return|;
 block|}
 specifier|private
@@ -1975,6 +1985,10 @@ block|,
 name|NodeDocument
 operator|.
 name|HAS_BINARY_FLAG
+block|,
+name|NodeDocument
+operator|.
+name|DELETED_ONCE
 block|}
 argument_list|)
 argument_list|)
@@ -2008,6 +2022,10 @@ block|,
 name|NodeDocument
 operator|.
 name|HAS_BINARY_FLAG
+block|,
+name|NodeDocument
+operator|.
+name|DELETED_ONCE
 block|,
 name|COLLISIONSMODCOUNT
 block|,
@@ -4875,7 +4893,7 @@ name|MODIFIED
 argument_list|)
 decl_stmt|;
 name|Number
-name|flag
+name|flagB
 init|=
 operator|(
 name|Number
@@ -4892,11 +4910,11 @@ decl_stmt|;
 name|Boolean
 name|hasBinary
 init|=
-name|flag
+name|flagB
 operator|!=
 literal|null
 operator|&&
-name|flag
+name|flagB
 operator|.
 name|intValue
 argument_list|()
@@ -4904,6 +4922,33 @@ operator|==
 name|NodeDocument
 operator|.
 name|HAS_BINARY_VAL
+decl_stmt|;
+name|Boolean
+name|flagD
+init|=
+operator|(
+name|Boolean
+operator|)
+name|document
+operator|.
+name|get
+argument_list|(
+name|NodeDocument
+operator|.
+name|DELETED_ONCE
+argument_list|)
+decl_stmt|;
+name|Boolean
+name|deletedOnce
+init|=
+name|flagD
+operator|!=
+literal|null
+operator|&&
+name|flagD
+operator|.
+name|booleanValue
+argument_list|()
 decl_stmt|;
 name|Long
 name|modcount
@@ -4994,6 +5039,8 @@ name|modified
 argument_list|,
 name|hasBinary
 argument_list|,
+name|deletedOnce
+argument_list|,
 name|modcount
 argument_list|,
 name|cmodcount
@@ -5068,6 +5115,8 @@ argument_list|,
 name|modified
 argument_list|,
 name|hasBinary
+argument_list|,
+name|deletedOnce
 argument_list|,
 name|modcount
 argument_list|,
@@ -5449,7 +5498,7 @@ name|MODIFIED
 argument_list|)
 decl_stmt|;
 name|Number
-name|flag
+name|flagB
 init|=
 operator|(
 name|Number
@@ -5466,11 +5515,11 @@ decl_stmt|;
 name|Boolean
 name|hasBinary
 init|=
-name|flag
+name|flagB
 operator|!=
 literal|null
 operator|&&
-name|flag
+name|flagB
 operator|.
 name|intValue
 argument_list|()
@@ -5478,6 +5527,33 @@ operator|==
 name|NodeDocument
 operator|.
 name|HAS_BINARY_VAL
+decl_stmt|;
+name|Boolean
+name|flagD
+init|=
+operator|(
+name|Boolean
+operator|)
+name|document
+operator|.
+name|get
+argument_list|(
+name|NodeDocument
+operator|.
+name|DELETED_ONCE
+argument_list|)
+decl_stmt|;
+name|Boolean
+name|deletedOnce
+init|=
+name|flagD
+operator|!=
+literal|null
+operator|&&
+name|flagD
+operator|.
+name|booleanValue
+argument_list|()
 decl_stmt|;
 name|Long
 name|modcount
@@ -5531,6 +5607,8 @@ argument_list|,
 name|modified
 argument_list|,
 name|hasBinary
+argument_list|,
+name|deletedOnce
 argument_list|,
 name|modcount
 argument_list|,
@@ -5981,7 +6059,7 @@ name|connection
 operator|.
 name|prepareStatement
 argument_list|(
-literal|"select MODIFIED, MODCOUNT, CMODCOUNT, HASBINARY, DATA, BDATA from "
+literal|"select MODIFIED, MODCOUNT, CMODCOUNT, HASBINARY, DELETEDONCE, DATA, BDATA from "
 operator|+
 name|tableName
 operator|+
@@ -5999,7 +6077,7 @@ name|connection
 operator|.
 name|prepareStatement
 argument_list|(
-literal|"select MODIFIED, MODCOUNT, CMODCOUNT, HASBINARY, case MODCOUNT when ? then null else DATA end as DATA, "
+literal|"select MODIFIED, MODCOUNT, CMODCOUNT, HASBINARY, DELETEDONCE, case MODCOUNT when ? then null else DATA end as DATA, "
 operator|+
 literal|"case MODCOUNT when ? then null else BDATA end as BDATA from "
 operator|+
@@ -6112,6 +6190,16 @@ argument_list|(
 literal|4
 argument_list|)
 decl_stmt|;
+name|long
+name|deletedOnce
+init|=
+name|rs
+operator|.
+name|getLong
+argument_list|(
+literal|5
+argument_list|)
+decl_stmt|;
 name|String
 name|data
 init|=
@@ -6119,7 +6207,7 @@ name|rs
 operator|.
 name|getString
 argument_list|(
-literal|5
+literal|6
 argument_list|)
 decl_stmt|;
 name|byte
@@ -6130,7 +6218,7 @@ name|rs
 operator|.
 name|getBytes
 argument_list|(
-literal|6
+literal|7
 argument_list|)
 decl_stmt|;
 return|return
@@ -6140,6 +6228,10 @@ argument_list|(
 name|id
 argument_list|,
 name|hasBinary
+operator|==
+literal|1
+argument_list|,
+name|deletedOnce
 operator|==
 literal|1
 argument_list|,
@@ -6264,11 +6356,13 @@ name|limit
 parameter_list|)
 throws|throws
 name|SQLException
+throws|,
+name|RepositoryException
 block|{
 name|String
 name|t
 init|=
-literal|"select ID, MODIFIED, MODCOUNT, CMODCOUNT, HASBINARY, DATA, BDATA from "
+literal|"select ID, MODIFIED, MODCOUNT, CMODCOUNT, HASBINARY, DELETEDONCE, DATA, BDATA from "
 operator|+
 name|tableName
 operator|+
@@ -6334,6 +6428,55 @@ name|t
 operator|+=
 literal|" and HASBINARY = 1"
 expr_stmt|;
+block|}
+elseif|else
+if|if
+condition|(
+name|NodeDocument
+operator|.
+name|DELETED_ONCE
+operator|.
+name|equals
+argument_list|(
+name|indexedProperty
+argument_list|)
+condition|)
+block|{
+if|if
+condition|(
+name|startValue
+operator|!=
+literal|1
+condition|)
+block|{
+throw|throw
+operator|new
+name|DocumentStoreException
+argument_list|(
+literal|"unsupported value for property "
+operator|+
+name|NodeDocument
+operator|.
+name|DELETED_ONCE
+argument_list|)
+throw|;
+block|}
+name|t
+operator|+=
+literal|" and DELETEDONCE = 1"
+expr_stmt|;
+block|}
+else|else
+block|{
+throw|throw
+operator|new
+name|RepositoryException
+argument_list|(
+literal|"unsupported indexed property: "
+operator|+
+name|indexedProperty
+argument_list|)
+throw|;
 block|}
 block|}
 name|t
@@ -6575,6 +6718,16 @@ argument_list|(
 literal|5
 argument_list|)
 decl_stmt|;
+name|long
+name|deletedOnce
+init|=
+name|rs
+operator|.
+name|getLong
+argument_list|(
+literal|6
+argument_list|)
+decl_stmt|;
 name|String
 name|data
 init|=
@@ -6582,7 +6735,7 @@ name|rs
 operator|.
 name|getString
 argument_list|(
-literal|6
+literal|7
 argument_list|)
 decl_stmt|;
 name|byte
@@ -6593,7 +6746,7 @@ name|rs
 operator|.
 name|getBytes
 argument_list|(
-literal|7
+literal|8
 argument_list|)
 decl_stmt|;
 name|result
@@ -6606,6 +6759,10 @@ argument_list|(
 name|id
 argument_list|,
 name|hasBinary
+operator|==
+literal|1
+argument_list|,
+name|deletedOnce
 operator|==
 literal|1
 argument_list|,
@@ -6654,6 +6811,9 @@ parameter_list|,
 name|Boolean
 name|hasBinary
 parameter_list|,
+name|Boolean
+name|deletedOnce
+parameter_list|,
 name|Long
 name|modcount
 parameter_list|,
@@ -6676,7 +6836,7 @@ literal|"update "
 operator|+
 name|tableName
 operator|+
-literal|" set MODIFIED = ?, HASBINARY = ?, MODCOUNT = ?, CMODCOUNT = ?, DSIZE = ?, DATA = ?, BDATA = ? where ID = ?"
+literal|" set MODIFIED = ?, HASBINARY = ?, DELETEDONCE = ?, MODCOUNT = ?, CMODCOUNT = ?, DSIZE = ?, DATA = ?, BDATA = ? where ID = ?"
 decl_stmt|;
 if|if
 condition|(
@@ -6729,6 +6889,24 @@ name|si
 operator|++
 argument_list|,
 name|hasBinary
+condition|?
+literal|1
+else|:
+literal|0
+argument_list|,
+name|Types
+operator|.
+name|SMALLINT
+argument_list|)
+expr_stmt|;
+name|stmt
+operator|.
+name|setObject
+argument_list|(
+name|si
+operator|++
+argument_list|,
+name|deletedOnce
 condition|?
 literal|1
 else|:
@@ -6958,6 +7136,9 @@ parameter_list|,
 name|Boolean
 name|hasBinary
 parameter_list|,
+name|Boolean
+name|deletedOnce
+parameter_list|,
 name|Long
 name|modcount
 parameter_list|,
@@ -6988,7 +7169,7 @@ literal|"update "
 operator|+
 name|tableName
 operator|+
-literal|" set MODIFIED = GREATEST(MODIFIED, ?), HASBINARY = ?, MODCOUNT = ?, CMODCOUNT = ?, DSIZE = DSIZE + ?, "
+literal|" set MODIFIED = GREATEST(MODIFIED, ?), HASBINARY = ?, DELETEDONCE = ?, MODCOUNT = ?, CMODCOUNT = ?, DSIZE = DSIZE + ?, "
 argument_list|)
 expr_stmt|;
 name|t
@@ -7077,6 +7258,24 @@ name|si
 operator|++
 argument_list|,
 name|hasBinary
+condition|?
+literal|1
+else|:
+literal|0
+argument_list|,
+name|Types
+operator|.
+name|SMALLINT
+argument_list|)
+expr_stmt|;
+name|stmt
+operator|.
+name|setObject
+argument_list|(
+name|si
+operator|++
+argument_list|,
+name|deletedOnce
 condition|?
 literal|1
 else|:
@@ -7516,6 +7715,9 @@ parameter_list|,
 name|Boolean
 name|hasBinary
 parameter_list|,
+name|Boolean
+name|deletedOnce
+parameter_list|,
 name|Long
 name|modcount
 parameter_list|,
@@ -7539,7 +7741,7 @@ literal|"insert into "
 operator|+
 name|tableName
 operator|+
-literal|"(ID, MODIFIED, HASBINARY, MODCOUNT, CMODCOUNT, DSIZE, DATA, BDATA) values (?, ?, ?, ?, ?, ?, ?, ?)"
+literal|"(ID, MODIFIED, HASBINARY, DELETEDONCE, MODCOUNT, CMODCOUNT, DSIZE, DATA, BDATA) values (?, ?, ?, ?, ?, ?, ?, ?, ?)"
 argument_list|)
 decl_stmt|;
 try|try
@@ -7581,6 +7783,24 @@ name|si
 operator|++
 argument_list|,
 name|hasBinary
+condition|?
+literal|1
+else|:
+literal|0
+argument_list|,
+name|Types
+operator|.
+name|SMALLINT
+argument_list|)
+expr_stmt|;
+name|stmt
+operator|.
+name|setObject
+argument_list|(
+name|si
+operator|++
+argument_list|,
+name|deletedOnce
 condition|?
 literal|1
 else|:
