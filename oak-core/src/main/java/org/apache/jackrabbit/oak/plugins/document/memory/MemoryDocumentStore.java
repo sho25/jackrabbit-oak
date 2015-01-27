@@ -741,6 +741,11 @@ name|long
 name|test
 init|=
 operator|(
+name|value
+operator|!=
+literal|null
+operator|&&
+operator|(
 operator|(
 name|Boolean
 operator|)
@@ -749,6 +754,7 @@ operator|)
 operator|.
 name|booleanValue
 argument_list|()
+operator|)
 condition|?
 literal|1
 else|:
@@ -791,7 +797,13 @@ block|{
 continue|continue;
 block|}
 block|}
-else|else
+elseif|else
+if|if
+condition|(
+name|value
+operator|!=
+literal|null
+condition|)
 block|{
 throw|throw
 operator|new
