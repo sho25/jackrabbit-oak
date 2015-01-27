@@ -178,16 +178,6 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|testRoot
-operator|.
-name|remove
-argument_list|()
-expr_stmt|;
-name|adminSession
-operator|.
-name|save
-argument_list|()
-expr_stmt|;
 name|adminSession
 operator|.
 name|logout
