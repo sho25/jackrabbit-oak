@@ -2413,21 +2413,6 @@ name|void
 name|testQueryDeletedOnce
 parameter_list|()
 block|{
-comment|// see OAK-2450
-name|Assume
-operator|.
-name|assumeTrue
-argument_list|(
-operator|!
-operator|(
-name|super
-operator|.
-name|ds
-operator|instanceof
-name|MongoDocumentStore
-operator|)
-argument_list|)
-expr_stmt|;
 comment|// create ten documents
 name|String
 name|base
