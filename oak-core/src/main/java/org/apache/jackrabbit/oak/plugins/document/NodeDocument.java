@@ -2755,10 +2755,7 @@ block|{
 name|Revision
 name|newest
 init|=
-name|getLocalMap
-argument_list|(
-name|key
-argument_list|)
+name|local
 operator|.
 name|firstKey
 argument_list|()
