@@ -2047,7 +2047,7 @@ name|LONGS
 argument_list|)
 return|;
 block|}
-comment|/**      * Package private method to calculate the privilege bits associated with a      * given built-in or custom privilege definition.      *      * @return an instance of {@code PrivilegeBits}      */
+comment|/**      * Method to calculate the next privilege bits associated with this instance.      *      * @return an new instance of {@code PrivilegeBits}      */
 annotation|@
 name|Nonnull
 specifier|public
