@@ -144,6 +144,7 @@ comment|/**  * An in-memory diff cache implementation.  */
 end_comment
 
 begin_class
+specifier|public
 class|class
 name|MemoryDiffCache
 implements|implements
@@ -165,6 +166,7 @@ specifier|final
 name|CacheStats
 name|diffCacheStats
 decl_stmt|;
+specifier|protected
 name|MemoryDiffCache
 parameter_list|(
 name|DocumentMK

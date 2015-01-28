@@ -16,6 +16,8 @@ operator|.
 name|plugins
 operator|.
 name|document
+operator|.
+name|mongo
 package|;
 end_package
 
@@ -43,6 +45,24 @@ begin_import
 import|import
 name|org
 operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|document
+operator|.
+name|Revision
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|junit
 operator|.
 name|Test
@@ -62,6 +82,8 @@ operator|.
 name|plugins
 operator|.
 name|document
+operator|.
+name|mongo
 operator|.
 name|MongoDiffCache
 operator|.
