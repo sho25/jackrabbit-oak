@@ -155,10 +155,14 @@ block|{             }
 annotation|@
 name|Override
 specifier|public
-name|void
+name|boolean
 name|done
 parameter_list|()
-block|{             }
+block|{
+return|return
+literal|false
+return|;
+block|}
 block|}
 return|;
 block|}

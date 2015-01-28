@@ -121,8 +121,8 @@ name|String
 name|changes
 parameter_list|)
 function_decl|;
-comment|/**          * Called when all changes have been appended and the entry is ready          * to be used by the cache.          */
-name|void
+comment|/**          * Called when all changes have been appended and the entry is ready          * to be used by the cache.          *           * @return {@code true} if the entry was successfully added to the          *          cache, {@code false} otherwise.          */
+name|boolean
 name|done
 parameter_list|()
 function_decl|;
