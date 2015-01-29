@@ -170,13 +170,13 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Measure performance of repository login with the test user being direct or  * inherited member of a specified number of groups.  */
+comment|/**  * Measure performance of repository login with the test user being direct member  * of a group with the configured number of other members.  */
 end_comment
 
 begin_class
 specifier|public
 class|class
-name|LoginWithMembershipTest
+name|LoginWithMembersTest
 extends|extends
 name|AbstractLoginTest
 block|{
@@ -188,26 +188,13 @@ name|GROUP
 init|=
 literal|"group"
 decl_stmt|;
-specifier|public
-specifier|static
-specifier|final
-name|int
-name|NUMBER_OF_GROUPS_DEFAULT
-init|=
-literal|10
-decl_stmt|;
 specifier|private
 specifier|final
 name|int
-name|numberOfGroups
-decl_stmt|;
-specifier|private
-specifier|final
-name|boolean
-name|nestedGroups
+name|numberOfMembers
 decl_stmt|;
 specifier|public
-name|LoginWithMembershipTest
+name|LoginWithMembersTest
 parameter_list|(
 name|boolean
 name|runWithToken
@@ -216,10 +203,7 @@ name|int
 name|noIterations
 parameter_list|,
 name|int
-name|numberOfGroups
-parameter_list|,
-name|boolean
-name|nestedGroups
+name|numberOfMembers
 parameter_list|)
 block|{
 name|super
@@ -233,15 +217,9 @@ argument_list|)
 expr_stmt|;
 name|this
 operator|.
-name|numberOfGroups
+name|numberOfMembers
 operator|=
-name|numberOfGroups
-expr_stmt|;
-name|this
-operator|.
-name|nestedGroups
-operator|=
-name|nestedGroups
+name|numberOfMembers
 expr_stmt|;
 block|}
 annotation|@
@@ -299,7 +277,6 @@ argument_list|(
 name|USER
 argument_list|)
 decl_stmt|;
-comment|// make sure we have a least a single group the user is member of.
 name|Group
 name|gr
 init|=
@@ -323,6 +300,7 @@ argument_list|(
 name|user
 argument_list|)
 expr_stmt|;
+comment|// add other members to this group which the test user is not member of.
 for|for
 control|(
 name|int
@@ -332,7 +310,7 @@ literal|1
 init|;
 name|i
 operator|<
-name|numberOfGroups
+name|numberOfMembers
 condition|;
 name|i
 operator|++
@@ -356,33 +334,12 @@ argument_list|,
 literal|"test"
 argument_list|)
 decl_stmt|;
-if|if
-condition|(
-operator|!
-name|nestedGroups
-condition|)
-block|{
-name|g
+name|gr
 operator|.
 name|addMember
 argument_list|(
-name|user
-argument_list|)
-expr_stmt|;
-block|}
-else|else
-block|{
 name|g
-operator|.
-name|addMember
-argument_list|(
-name|gr
 argument_list|)
-expr_stmt|;
-block|}
-name|gr
-operator|=
-name|g
 expr_stmt|;
 block|}
 block|}
