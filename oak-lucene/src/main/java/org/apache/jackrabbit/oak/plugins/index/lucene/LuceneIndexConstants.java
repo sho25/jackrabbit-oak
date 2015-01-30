@@ -361,6 +361,11 @@ name|AbstractAnalysisFactory
 operator|.
 name|LUCENE_MATCH_VERSION_PARAM
 decl_stmt|;
+name|String
+name|TIKA_CONFIG
+init|=
+literal|"tikaConfig"
+decl_stmt|;
 block|}
 end_interface
 
