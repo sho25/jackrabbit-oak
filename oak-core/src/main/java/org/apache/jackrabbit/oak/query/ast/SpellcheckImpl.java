@@ -128,7 +128,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Support for "similar(...)  */
+comment|/**  * Support for "spellcheck(...)  */
 end_comment
 
 begin_class
