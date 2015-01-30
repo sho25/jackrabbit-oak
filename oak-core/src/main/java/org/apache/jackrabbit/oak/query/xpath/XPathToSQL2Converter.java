@@ -976,6 +976,43 @@ name|p
 argument_list|)
 expr_stmt|;
 block|}
+elseif|else
+if|if
+condition|(
+name|readIf
+argument_list|(
+literal|"rep:spellcheck"
+argument_list|)
+condition|)
+block|{
+name|readExcerpt
+argument_list|()
+expr_stmt|;
+name|Expression
+operator|.
+name|Property
+name|p
+init|=
+operator|new
+name|Expression
+operator|.
+name|Property
+argument_list|(
+name|currentSelector
+argument_list|,
+literal|"rep:spellcheck()"
+argument_list|,
+literal|false
+argument_list|)
+decl_stmt|;
+name|statement
+operator|.
+name|addSelectColumn
+argument_list|(
+name|p
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 do|while
 condition|(
@@ -3707,14 +3744,26 @@ name|functionName
 argument_list|)
 condition|)
 block|{
-comment|// TODO maybe support rep:spellcheck as in
-comment|// /jcr:root[rep:spellcheck('${query}')]/(rep:spellcheck())
-throw|throw
-name|getSyntaxError
+name|Expression
+name|term
+init|=
+name|parseExpression
+argument_list|()
+decl_stmt|;
+name|read
 argument_list|(
-literal|"rep:spellcheck is not supported"
+literal|")"
 argument_list|)
-throw|;
+expr_stmt|;
+return|return
+operator|new
+name|Expression
+operator|.
+name|Spellcheck
+argument_list|(
+name|term
+argument_list|)
+return|;
 block|}
 else|else
 block|{
@@ -3723,7 +3772,7 @@ name|getSyntaxError
 argument_list|(
 literal|"jcr:like | jcr:contains | jcr:score | xs:dateTime | "
 operator|+
-literal|"fn:lower-case | fn:upper-case | fn:name"
+literal|"fn:lower-case | fn:upper-case | fn:name | rep:similar | rep:spellcheck"
 argument_list|)
 throw|;
 block|}

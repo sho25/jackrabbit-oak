@@ -608,7 +608,7 @@ block|}
 annotation|@
 name|Override
 name|void
-name|onRetrievedResults
+name|onRetrievedDocs
 parameter_list|(
 name|Filter
 name|filter

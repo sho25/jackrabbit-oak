@@ -235,6 +235,31 @@ return|return
 literal|true
 return|;
 block|}
+comment|/**      * Calls accept on the static operand in the spellcheck search constraint.      */
+annotation|@
+name|Override
+specifier|public
+name|boolean
+name|visit
+parameter_list|(
+name|SpellcheckImpl
+name|node
+parameter_list|)
+block|{
+name|node
+operator|.
+name|getExpression
+argument_list|()
+operator|.
+name|accept
+argument_list|(
+name|this
+argument_list|)
+expr_stmt|;
+return|return
+literal|true
+return|;
+block|}
 comment|/**      * Calls accept on the two sources and the join condition in the join node.      */
 annotation|@
 name|Override

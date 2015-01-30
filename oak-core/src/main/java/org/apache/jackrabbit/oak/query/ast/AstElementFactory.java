@@ -755,6 +755,27 @@ name|path
 argument_list|)
 return|;
 block|}
+specifier|public
+name|ConstraintImpl
+name|spellcheck
+parameter_list|(
+name|String
+name|selectorName
+parameter_list|,
+name|StaticOperandImpl
+name|expression
+parameter_list|)
+block|{
+return|return
+operator|new
+name|SpellcheckImpl
+argument_list|(
+name|selectorName
+argument_list|,
+name|expression
+argument_list|)
+return|;
+block|}
 block|}
 end_class
 
