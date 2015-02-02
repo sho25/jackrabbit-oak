@@ -2499,7 +2499,7 @@ literal|0
 argument_list|)
 return|;
 block|}
-comment|/**      * Returns an {@link Iterable} over all {@link NodeDocument}s in the given      * store matching a condition on an<em>indexed property</em>. The returned      * {@linkplain Iterable} does not guarantee a consistent view on the store.      * it may return documents that have been added to the store after this      * method had been called.      *      * @param store      *            a {@link DocumentStore}.      * @return an {@link Iterable} over all documents in the store matching the      *         condition      */
+comment|/**      * Returns an {@link Iterable} over all {@link NodeDocument}s in the given      * store matching a condition on an<em>indexed property</em>. The returned      * {@link Iterable} does not guarantee a consistent view on the store.      * it may return documents that have been added to the store after this      * method had been called.      *      * @param store      *            a {@link DocumentStore}.      * @param indexedProperty the name of the indexed property.      * @param startValue the lower bound value for the indexed property      *                   (inclusive).      * @return an {@link Iterable} over all documents in the store matching the      *         condition      */
 specifier|public
 specifier|static
 name|Iterable
@@ -2508,7 +2508,6 @@ name|NodeDocument
 argument_list|>
 name|getSelectedDocuments
 parameter_list|(
-specifier|final
 name|DocumentStore
 name|store
 parameter_list|,
