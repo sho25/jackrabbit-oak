@@ -1025,7 +1025,7 @@ name|SuppressWarnings
 argument_list|(
 literal|"unchecked"
 argument_list|)
-specifier|private
+specifier|protected
 parameter_list|<
 name|T
 extends|extends
