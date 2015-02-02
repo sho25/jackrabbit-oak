@@ -361,10 +361,17 @@ name|AbstractAnalysisFactory
 operator|.
 name|LUCENE_MATCH_VERSION_PARAM
 decl_stmt|;
+comment|/**      * Config node which include Tika related configuration      */
+name|String
+name|TIKA
+init|=
+literal|"tika"
+decl_stmt|;
+comment|/**      * nt:file node under 'tika' node which refers to the config xml file      */
 name|String
 name|TIKA_CONFIG
 init|=
-literal|"tikaConfig"
+literal|"config"
 decl_stmt|;
 block|}
 end_interface

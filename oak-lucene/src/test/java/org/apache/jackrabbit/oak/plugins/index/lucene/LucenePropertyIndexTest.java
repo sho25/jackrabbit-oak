@@ -7560,6 +7560,13 @@ name|addChild
 argument_list|(
 name|LuceneIndexConstants
 operator|.
+name|TIKA
+argument_list|)
+operator|.
+name|addChild
+argument_list|(
+name|LuceneIndexConstants
+operator|.
 name|TIKA_CONFIG
 argument_list|)
 operator|.
