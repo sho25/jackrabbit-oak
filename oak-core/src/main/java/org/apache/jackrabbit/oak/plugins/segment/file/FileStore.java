@@ -33,6 +33,22 @@ name|base
 operator|.
 name|Preconditions
 operator|.
+name|checkArgument
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
 name|checkNotNull
 import|;
 end_import
@@ -3136,6 +3152,19 @@ name|void
 name|compact
 parameter_list|()
 block|{
+name|checkArgument
+argument_list|(
+operator|!
+name|compactionStrategy
+operator|.
+name|equals
+argument_list|(
+name|NO_COMPACTION
+argument_list|)
+argument_list|,
+literal|"You must set a compactionStrategy before calling compact"
+argument_list|)
+expr_stmt|;
 name|log
 operator|.
 name|info
