@@ -4152,7 +4152,15 @@ name|handler
 init|=
 operator|new
 name|WriteOutContentHandler
+argument_list|(
+name|context
+operator|.
+name|getDefinition
 argument_list|()
+operator|.
+name|getMaxExtractLength
+argument_list|()
+argument_list|)
 decl_stmt|;
 try|try
 block|{
