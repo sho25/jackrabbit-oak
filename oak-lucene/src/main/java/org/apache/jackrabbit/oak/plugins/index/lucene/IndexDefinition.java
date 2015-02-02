@@ -2110,7 +2110,7 @@ name|toString
 parameter_list|()
 block|{
 return|return
-literal|"IndexDefinition : "
+literal|"Lucene Index : "
 operator|+
 name|indexName
 return|;

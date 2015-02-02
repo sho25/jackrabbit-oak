@@ -1273,7 +1273,12 @@ name|log
 operator|.
 name|debug
 argument_list|(
-literal|"Indexed {} nodes..."
+literal|"{} => Indexed {} nodes..."
+argument_list|,
+name|context
+operator|.
+name|getDefinition
+argument_list|()
 argument_list|,
 name|indexed
 argument_list|)
@@ -1346,7 +1351,12 @@ name|log
 operator|.
 name|debug
 argument_list|(
-literal|"Indexed {} nodes, done."
+literal|"{} => Indexed {} nodes, done."
+argument_list|,
+name|context
+operator|.
+name|getDefinition
+argument_list|()
 argument_list|,
 name|context
 operator|.
