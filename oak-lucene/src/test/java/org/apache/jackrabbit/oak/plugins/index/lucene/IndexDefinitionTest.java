@@ -3986,6 +3986,19 @@ name|TYPENAME_STRING
 argument_list|)
 argument_list|)
 decl_stmt|;
+comment|//Set this to -1 to avoid wrapping by LimitAnalyzer
+name|defnb
+operator|.
+name|setProperty
+argument_list|(
+name|LuceneIndexConstants
+operator|.
+name|MAX_FIELD_LENGTH
+argument_list|,
+operator|-
+literal|1
+argument_list|)
+expr_stmt|;
 name|defnb
 operator|.
 name|child
