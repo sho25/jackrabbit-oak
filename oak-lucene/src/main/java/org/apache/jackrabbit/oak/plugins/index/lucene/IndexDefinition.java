@@ -2102,6 +2102,15 @@ name|getNewStream
 argument_list|()
 return|;
 block|}
+specifier|public
+name|String
+name|getIndexName
+parameter_list|()
+block|{
+return|return
+name|indexName
+return|;
+block|}
 annotation|@
 name|Override
 specifier|public

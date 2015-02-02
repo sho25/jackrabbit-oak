@@ -1279,6 +1279,9 @@ name|context
 operator|.
 name|getDefinition
 argument_list|()
+operator|.
+name|getIndexName
+argument_list|()
 argument_list|,
 name|indexed
 argument_list|)
@@ -1356,6 +1359,9 @@ argument_list|,
 name|context
 operator|.
 name|getDefinition
+argument_list|()
+operator|.
+name|getIndexName
 argument_list|()
 argument_list|,
 name|context
