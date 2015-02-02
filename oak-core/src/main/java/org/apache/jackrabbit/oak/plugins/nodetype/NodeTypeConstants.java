@@ -276,6 +276,12 @@ name|REP_UUID
 init|=
 literal|"rep:uuid"
 decl_stmt|;
+comment|/**      * mixin to enable the AtomicCounterEditor.      */
+name|String
+name|MIX_ATOMIC_COUNTER
+init|=
+literal|"mix:atomicCounter"
+decl_stmt|;
 block|}
 end_interface
 
