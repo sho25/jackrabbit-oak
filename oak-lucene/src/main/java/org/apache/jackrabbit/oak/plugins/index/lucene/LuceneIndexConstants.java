@@ -371,7 +371,7 @@ comment|/**      * nt:file node under 'tika' node which refers to the config xml
 name|String
 name|TIKA_CONFIG
 init|=
-literal|"config"
+literal|"config.xml"
 decl_stmt|;
 block|}
 end_interface
