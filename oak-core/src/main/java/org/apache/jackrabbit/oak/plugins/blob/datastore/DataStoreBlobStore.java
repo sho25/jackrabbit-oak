@@ -1485,7 +1485,9 @@ parameter_list|(
 name|int
 name|x
 parameter_list|)
-block|{      }
+block|{
+comment|// nothing to do
+block|}
 annotation|@
 name|Override
 specifier|public
@@ -1576,7 +1578,9 @@ name|startMark
 parameter_list|()
 throws|throws
 name|IOException
-block|{      }
+block|{
+comment|// nothing to do
+block|}
 annotation|@
 name|Override
 specifier|public
@@ -1596,7 +1600,9 @@ specifier|public
 name|void
 name|clearCache
 parameter_list|()
-block|{      }
+block|{
+comment|// nothing to do
+block|}
 annotation|@
 name|Override
 specifier|public
@@ -2070,6 +2076,7 @@ name|id
 return|;
 block|}
 specifier|private
+specifier|static
 name|boolean
 name|isInMemoryRecord
 parameter_list|(
