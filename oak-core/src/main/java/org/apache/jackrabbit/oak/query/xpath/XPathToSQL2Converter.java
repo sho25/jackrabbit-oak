@@ -985,8 +985,16 @@ literal|"rep:spellcheck"
 argument_list|)
 condition|)
 block|{
-name|readExcerpt
-argument_list|()
+comment|// only rep:spellcheck() is currently supported
+name|read
+argument_list|(
+literal|"("
+argument_list|)
+expr_stmt|;
+name|read
+argument_list|(
+literal|")"
+argument_list|)
 expr_stmt|;
 name|Expression
 operator|.
