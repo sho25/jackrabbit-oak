@@ -245,6 +245,13 @@ name|SpellcheckImpl
 name|node
 parameter_list|)
 function_decl|;
+name|boolean
+name|visit
+parameter_list|(
+name|SuggestImpl
+name|suggest
+parameter_list|)
+function_decl|;
 block|}
 end_interface
 

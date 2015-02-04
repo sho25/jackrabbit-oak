@@ -2950,6 +2950,7 @@ name|REP_SPELLCHECK
 argument_list|)
 condition|)
 block|{
+comment|// TODO : filter spellcheck corrections by ACLs ?
 name|result
 operator|=
 name|currentRow
@@ -2960,6 +2961,37 @@ name|QueryImpl
 operator|.
 name|REP_SPELLCHECK
 argument_list|)
+expr_stmt|;
+block|}
+elseif|else
+if|if
+condition|(
+name|oakPropertyName
+operator|.
+name|equals
+argument_list|(
+name|QueryImpl
+operator|.
+name|REP_SUGGEST
+argument_list|)
+condition|)
+block|{
+comment|// TODO : filter suggestions by ACLs
+name|PropertyValue
+name|value
+init|=
+name|currentRow
+operator|.
+name|getValue
+argument_list|(
+name|QueryImpl
+operator|.
+name|REP_SUGGEST
+argument_list|)
+decl_stmt|;
+name|result
+operator|=
+name|value
 expr_stmt|;
 block|}
 else|else
