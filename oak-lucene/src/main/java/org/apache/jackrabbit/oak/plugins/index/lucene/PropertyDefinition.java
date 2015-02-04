@@ -287,6 +287,12 @@ specifier|final
 name|int
 name|includedPropertyTypes
 decl_stmt|;
+name|boolean
+name|useInSuggest
+decl_stmt|;
+name|boolean
+name|useInSpellcheck
+decl_stmt|;
 specifier|public
 name|PropertyDefinition
 parameter_list|(
@@ -462,6 +468,36 @@ argument_list|,
 name|defn
 argument_list|)
 expr_stmt|;
+name|this
+operator|.
+name|useInSuggest
+operator|=
+name|getOptionalValue
+argument_list|(
+name|defn
+argument_list|,
+name|LuceneIndexConstants
+operator|.
+name|PROP_USE_IN_SUGGEST
+argument_list|,
+literal|false
+argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|useInSpellcheck
+operator|=
+name|getOptionalValue
+argument_list|(
+name|defn
+argument_list|,
+name|LuceneIndexConstants
+operator|.
+name|PROP_USE_IN_SPELLCHECK
+argument_list|,
+literal|false
+argument_list|)
+expr_stmt|;
 block|}
 comment|/**      * If 'analyzed' is enabled then property value would be used to evaluate the      * contains clause related to those properties. In such mode also some properties      * would be skipped from analysis      *      * @param propertyName name of the property to check. As property definition might      *                     be regEx based this is required to be passed explicitly      * @return true if the property value should be tokenized/analyzed      */
 specifier|public
@@ -621,6 +657,14 @@ operator|+
 literal|", ordered="
 operator|+
 name|ordered
+operator|+
+literal|", useInSuggest="
+operator|+
+name|useInSuggest
+operator|+
+literal|", useInSpellcheck="
+operator|+
+name|useInSpellcheck
 operator|+
 literal|'}'
 return|;

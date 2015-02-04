@@ -384,6 +384,18 @@ name|MAX_FIELD_LENGTH
 init|=
 literal|"maxFieldLength"
 decl_stmt|;
+comment|/**      * whether use this property values for suggestions      */
+name|String
+name|PROP_USE_IN_SUGGEST
+init|=
+literal|"useInSuggest"
+decl_stmt|;
+comment|/**      * whether use this property values for spellchecking      */
+name|String
+name|PROP_USE_IN_SPELLCHECK
+init|=
+literal|"useInSpellcheck"
+decl_stmt|;
 block|}
 end_interface
 

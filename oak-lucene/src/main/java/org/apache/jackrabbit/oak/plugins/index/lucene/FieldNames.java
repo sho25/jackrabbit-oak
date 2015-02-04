@@ -102,6 +102,24 @@ name|FULLTEXT
 init|=
 literal|":fulltext"
 decl_stmt|;
+comment|/**      * Name of the field that contains the suggest index.      */
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|SUGGEST
+init|=
+literal|":suggest"
+decl_stmt|;
+comment|/**      * Name of the field that contains the spellcheck index.      */
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|SPELLCHECK
+init|=
+literal|":spellcheck"
+decl_stmt|;
 comment|/**      * Prefix for all field names that are fulltext indexed by property name.      */
 specifier|public
 specifier|static

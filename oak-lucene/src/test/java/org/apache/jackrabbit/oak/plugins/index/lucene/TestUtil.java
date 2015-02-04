@@ -366,6 +366,17 @@ argument_list|,
 literal|true
 argument_list|)
 expr_stmt|;
+name|prop
+operator|.
+name|setProperty
+argument_list|(
+name|LuceneIndexConstants
+operator|.
+name|PROP_USE_IN_SPELLCHECK
+argument_list|,
+literal|true
+argument_list|)
+expr_stmt|;
 return|return
 name|prop
 return|;
