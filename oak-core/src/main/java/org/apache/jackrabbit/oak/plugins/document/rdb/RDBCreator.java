@@ -167,7 +167,12 @@ name|RDBJDBCTools
 operator|.
 name|driverForDBType
 argument_list|(
+name|RDBJDBCTools
+operator|.
+name|jdbctype
+argument_list|(
 name|url
+argument_list|)
 argument_list|)
 decl_stmt|;
 try|try
