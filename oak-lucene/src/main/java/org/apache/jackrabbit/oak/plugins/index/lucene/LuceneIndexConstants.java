@@ -390,6 +390,12 @@ name|PROP_USE_IN_SUGGEST
 init|=
 literal|"useInSuggest"
 decl_stmt|;
+comment|/**      * update frequency of the suggester in minutes      */
+name|String
+name|SUGGEST_UPDATE_FREQUENCY_MINUTES
+init|=
+literal|"suggestUpdateFrequencyMinutes"
+decl_stmt|;
 comment|/**      * whether use this property values for spellchecking      */
 name|String
 name|PROP_USE_IN_SPELLCHECK

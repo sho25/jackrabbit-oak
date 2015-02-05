@@ -3361,8 +3361,6 @@ operator|.
 name|getSuggestQuery
 argument_list|(
 name|suggestQueryString
-argument_list|,
-name|reader
 argument_list|)
 argument_list|)
 return|;
