@@ -343,6 +343,9 @@ parameter_list|,
 name|String
 name|jdbcpasswd
 parameter_list|,
+name|String
+name|jdbctableprefix
+parameter_list|,
 name|boolean
 name|dropDBAfterTest
 parameter_list|,
@@ -367,6 +370,8 @@ argument_list|,
 name|jdbcuser
 argument_list|,
 name|jdbcpasswd
+argument_list|,
+name|jdbctableprefix
 argument_list|,
 name|dropDBAfterTest
 argument_list|,
