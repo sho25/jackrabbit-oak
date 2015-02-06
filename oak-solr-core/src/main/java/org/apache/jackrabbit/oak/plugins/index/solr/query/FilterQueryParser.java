@@ -784,16 +784,6 @@ argument_list|,
 literal|true
 argument_list|)
 expr_stmt|;
-comment|// TODO : this should not be always passed to avoid building the dictionary on each spellcheck request
-name|solrQuery
-operator|.
-name|setParam
-argument_list|(
-literal|"spellcheck.build"
-argument_list|,
-literal|true
-argument_list|)
-expr_stmt|;
 block|}
 if|if
 condition|(
@@ -831,16 +821,6 @@ operator|.
 name|setParam
 argument_list|(
 literal|"suggest"
-argument_list|,
-literal|true
-argument_list|)
-expr_stmt|;
-comment|// TODO : this should not be always passed to avoid building the dictionary on each suggest request
-name|solrQuery
-operator|.
-name|setParam
-argument_list|(
-literal|"suggest.build"
 argument_list|,
 literal|true
 argument_list|)
