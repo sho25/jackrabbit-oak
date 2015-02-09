@@ -1256,6 +1256,24 @@ expr_stmt|;
 block|}
 block|}
 block|}
+comment|// used for diagnostics
+specifier|private
+name|String
+name|droppedTables
+init|=
+literal|""
+decl_stmt|;
+specifier|public
+name|String
+name|getDroppedTables
+parameter_list|()
+block|{
+return|return
+name|this
+operator|.
+name|droppedTables
+return|;
+block|}
 annotation|@
 name|Override
 specifier|public
@@ -1274,6 +1292,11 @@ name|isEmpty
 argument_list|()
 condition|)
 block|{
+name|String
+name|dropped
+init|=
+literal|""
+decl_stmt|;
 name|LOG
 operator|.
 name|debug
@@ -1339,6 +1362,12 @@ name|con
 operator|.
 name|commit
 argument_list|()
+expr_stmt|;
+name|dropped
+operator|+=
+name|tname
+operator|+
+literal|" "
 expr_stmt|;
 block|}
 catch|catch
@@ -1410,6 +1439,15 @@ expr_stmt|;
 block|}
 block|}
 block|}
+name|this
+operator|.
+name|droppedTables
+operator|=
+name|dropped
+operator|.
+name|trim
+argument_list|()
+expr_stmt|;
 block|}
 name|this
 operator|.
