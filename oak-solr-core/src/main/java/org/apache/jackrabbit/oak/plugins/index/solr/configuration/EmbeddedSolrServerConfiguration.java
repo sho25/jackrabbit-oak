@@ -67,11 +67,6 @@ decl_stmt|;
 specifier|private
 specifier|final
 name|String
-name|solrConfigPath
-decl_stmt|;
-specifier|private
-specifier|final
-name|String
 name|coreName
 decl_stmt|;
 specifier|private
@@ -85,9 +80,6 @@ name|String
 name|solrHomePath
 parameter_list|,
 name|String
-name|solrConfigPath
-parameter_list|,
-name|String
 name|coreName
 parameter_list|)
 block|{
@@ -96,12 +88,6 @@ operator|.
 name|solrHomePath
 operator|=
 name|solrHomePath
-expr_stmt|;
-name|this
-operator|.
-name|solrConfigPath
-operator|=
-name|solrConfigPath
 expr_stmt|;
 name|this
 operator|.
@@ -168,16 +154,6 @@ parameter_list|()
 block|{
 return|return
 name|solrHomePath
-return|;
-block|}
-comment|/**      * get the name of the main Solr configuration file (solr.xml for multicore      * deployments or solrconfig.xml for single core deployments).      *      * @return a<code>String</code> representing a path to the main Solr config file.      */
-specifier|public
-name|String
-name|getSolrConfigPath
-parameter_list|()
-block|{
-return|return
-name|solrConfigPath
 return|;
 block|}
 comment|/**      * get the default core name to use for the Solr server      *      * @return a<code>String</code> representing the core name      */

@@ -140,7 +140,7 @@ name|PropertyRestriction
 name|propertyRestriction
 parameter_list|)
 function_decl|;
-comment|/**      * Provide the commit policy to be used by a given {@link org.apache.solr.client.solrj.SolrServer}      *      * @return a {@link org.apache.jackrabbit.oak.plugins.index.solr.configuration.CommitPolicy}      */
+comment|/**      * Provide the commit policy to be used by a given {@link org.apache.solr.client.solrj.SolrServer}      *      * @return a {@link org.apache.jackrabbit.oak.plugins.index.solr.configuration.OakSolrConfiguration.CommitPolicy}      */
 annotation|@
 name|Nonnull
 name|CommitPolicy
@@ -194,6 +194,19 @@ argument_list|>
 name|getUsedProperties
 parameter_list|()
 function_decl|;
+comment|/**      * Enum for describing Solr commit policy used in a certain instance      */
+enum|enum
+name|CommitPolicy
+block|{
+comment|/**          * for default Solr commit          */
+name|HARD
+block|,
+comment|/**          * for Solr soft commit          */
+name|SOFT
+block|,
+comment|/**          * if no commits should be sent (relying on auto(soft)commit on the instance itself)          */
+name|AUTO
+block|}
 block|}
 end_interface
 

@@ -317,14 +317,6 @@ operator|.
 name|getCoreName
 argument_list|()
 decl_stmt|;
-name|String
-name|solrConfigPath
-init|=
-name|solrServerConfiguration
-operator|.
-name|getSolrConfigPath
-argument_list|()
-decl_stmt|;
 name|EmbeddedSolrServerConfiguration
 operator|.
 name|HttpConfiguration
@@ -337,10 +329,6 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
-name|solrConfigPath
-operator|!=
-literal|null
-operator|&&
 name|solrHomePath
 operator|!=
 literal|null
@@ -353,8 +341,6 @@ block|{
 name|checkSolrConfiguration
 argument_list|(
 name|solrHomePath
-argument_list|,
-name|solrConfigPath
 argument_list|,
 name|coreName
 argument_list|)
@@ -745,9 +731,6 @@ name|String
 name|solrHomePath
 parameter_list|,
 name|String
-name|solrConfigPath
-parameter_list|,
-name|String
 name|coreName
 parameter_list|)
 throws|throws
@@ -899,14 +882,6 @@ name|solrHomePath
 argument_list|)
 throw|;
 block|}
-comment|// TODO : improve this check
-comment|// check if solrConfigPath exists
-comment|//        File solrConfigPathFile = new File(solrConfigPath);
-comment|//        if (!solrConfigPathFile.exists()) {
-comment|//            if (solrConfigPathFile.createNewFile()) {
-comment|//                copy("/solr/solr.xml", solrConfigPathFile.getAbsolutePath());
-comment|//            }
-comment|//        }
 comment|// check if the a core with the given coreName exists
 comment|// TODO : improve this check
 name|String

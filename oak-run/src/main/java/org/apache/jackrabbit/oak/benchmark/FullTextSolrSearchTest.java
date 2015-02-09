@@ -852,8 +852,6 @@ operator|.
 name|getAbsolutePath
 argument_list|()
 argument_list|,
-literal|""
-argument_list|,
 literal|"oak"
 argument_list|)
 decl_stmt|;

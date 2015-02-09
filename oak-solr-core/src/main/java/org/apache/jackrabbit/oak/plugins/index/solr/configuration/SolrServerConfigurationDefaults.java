@@ -24,7 +24,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * Defaults for Solr server configurations.  */
+comment|/**  * Defaults for Solr configurations.  */
 end_comment
 
 begin_class
@@ -32,6 +32,7 @@ specifier|public
 class|class
 name|SolrServerConfigurationDefaults
 block|{
+comment|// --> default values for EmbeddedSolrServerConfiguration parameters<--
 specifier|public
 specifier|static
 specifier|final
@@ -39,14 +40,6 @@ name|String
 name|SOLR_HOME_PATH
 init|=
 literal|"solr"
-decl_stmt|;
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|SOLR_CONFIG_PATH
-init|=
-literal|"solr.xml"
 decl_stmt|;
 specifier|public
 specifier|static
@@ -80,6 +73,56 @@ name|CONTEXT
 init|=
 literal|"/solr"
 decl_stmt|;
+comment|// --> default values for RemoteSolrServerConfiguration parameters<--
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|COLLECTION
+init|=
+literal|"oak"
+decl_stmt|;
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|HTTP_URL
+init|=
+literal|"http://127.0.0.1:8983/solr/oak"
+decl_stmt|;
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|ZK_HOST
+init|=
+literal|"127.0.0.1:9983"
+decl_stmt|;
+specifier|public
+specifier|static
+specifier|final
+name|int
+name|SHARDS_NO
+init|=
+literal|2
+decl_stmt|;
+specifier|public
+specifier|static
+specifier|final
+name|int
+name|REPLICATION_FACTOR
+init|=
+literal|2
+decl_stmt|;
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|CONFIGURATION_DIRECTORY
+init|=
+literal|""
+decl_stmt|;
+comment|// --> default values for OakSolrConfiguration parameters<--
 specifier|public
 specifier|static
 specifier|final

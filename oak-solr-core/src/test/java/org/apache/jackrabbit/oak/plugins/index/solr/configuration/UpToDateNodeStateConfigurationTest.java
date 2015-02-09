@@ -326,11 +326,11 @@ argument_list|,
 name|path
 argument_list|)
 decl_stmt|;
-name|EmbeddedSolrServerConfiguration
+name|SolrServerConfiguration
 name|solrServerConfiguration
 init|=
 operator|(
-name|EmbeddedSolrServerConfiguration
+name|SolrServerConfiguration
 operator|)
 name|upToDateNodeStateConfiguration
 operator|.
@@ -342,50 +342,10 @@ argument_list|(
 name|solrServerConfiguration
 argument_list|)
 expr_stmt|;
-name|assertEquals
-argument_list|(
-literal|"sh"
-argument_list|,
-name|solrServerConfiguration
-operator|.
-name|getSolrHomePath
-argument_list|()
-argument_list|)
-expr_stmt|;
-comment|// property defined in the node state
-name|assertEquals
-argument_list|(
-literal|"cn"
-argument_list|,
-name|solrServerConfiguration
-operator|.
-name|getCoreName
-argument_list|()
-argument_list|)
-expr_stmt|;
-comment|// property defined in the node state
-name|assertEquals
-argument_list|(
-literal|"sc"
-argument_list|,
-name|solrServerConfiguration
-operator|.
-name|getSolrConfigPath
-argument_list|()
-argument_list|)
-expr_stmt|;
-comment|// property defined in the node state
-name|assertEquals
-argument_list|(
-literal|"path_exact"
-argument_list|,
-name|upToDateNodeStateConfiguration
-operator|.
-name|getPathField
-argument_list|()
-argument_list|)
-expr_stmt|;
-comment|// using default as this property not defined in the node state
+comment|//        assertEquals("sh", solrServerConfiguration.getSolrHomePath()); // property defined in the node state
+comment|//        assertEquals("cn", solrServerConfiguration.getCoreName()); // property defined in the node state
+comment|//        assertEquals("sc", solrServerConfiguration.getSolrConfigPath()); // property defined in the node state
+comment|//        assertEquals("path_exact", upToDateNodeStateConfiguration.getPathField()); // using default as this property not defined in the node state
 block|}
 annotation|@
 name|Test

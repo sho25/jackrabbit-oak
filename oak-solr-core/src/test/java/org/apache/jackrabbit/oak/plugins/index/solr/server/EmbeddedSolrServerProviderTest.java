@@ -148,17 +148,6 @@ operator|.
 name|getFile
 argument_list|()
 argument_list|,
-name|getClass
-argument_list|()
-operator|.
-name|getResource
-argument_list|(
-literal|"/solr/solr.xml"
-argument_list|)
-operator|.
-name|getFile
-argument_list|()
-argument_list|,
 literal|"oak"
 argument_list|)
 decl_stmt|;
