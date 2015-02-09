@@ -667,7 +667,7 @@ name|reserved
 operator|.
 name|put
 argument_list|(
-literal|".token"
+name|TOKEN_ATTRIBUTE
 argument_list|,
 literal|"value"
 argument_list|)
@@ -676,7 +676,7 @@ name|reserved
 operator|.
 name|put
 argument_list|(
-literal|"rep:token.key"
+name|TOKEN_ATTRIBUTE_KEY
 argument_list|,
 literal|"value"
 argument_list|)
@@ -685,7 +685,7 @@ name|reserved
 operator|.
 name|put
 argument_list|(
-literal|"rep:token.exp"
+name|TOKEN_ATTRIBUTE_EXPIRY
 argument_list|,
 literal|"value"
 argument_list|)
@@ -1147,7 +1147,7 @@ name|userTree
 operator|.
 name|getChild
 argument_list|(
-literal|".tokens"
+name|TOKENS_NODE_NAME
 argument_list|)
 decl_stmt|;
 name|String
