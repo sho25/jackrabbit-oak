@@ -1490,6 +1490,16 @@ name|cacheStats
 return|;
 block|}
 comment|// implementation
+enum|enum
+name|FETCHFIRSTSYNTAX
+block|{
+name|FETCHFIRST
+block|,
+name|LIMIT
+block|,
+name|TOP
+block|}
+empty_stmt|;
 comment|/**      * Defines variation in the capabilities of different RDBs.      */
 enum|enum
 name|DB
@@ -1621,23 +1631,120 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|boolean
-name|needsConcat
+name|FETCHFIRSTSYNTAX
+name|getFetchFirstSyntax
 parameter_list|()
 block|{
 return|return
-literal|true
+name|FETCHFIRSTSYNTAX
+operator|.
+name|LIMIT
 return|;
 block|}
 annotation|@
 name|Override
 specifier|public
-name|boolean
-name|needsLimit
+name|String
+name|getConcatQueryString
+parameter_list|(
+name|int
+name|dataOctetLimit
+parameter_list|,
+name|int
+name|dataLength
+parameter_list|)
+block|{
+return|return
+literal|"CONCAT(DATA, ?)"
+return|;
+block|}
+block|}
+block|,
+name|MSSQL
+argument_list|(
+literal|"Microsoft SQL Server"
+argument_list|)
+block|{
+annotation|@
+name|Override
+specifier|public
+name|String
+name|getTableCreationStatement
+parameter_list|(
+name|String
+name|tableName
+parameter_list|)
+block|{
+comment|// see https://issues.apache.org/jira/browse/OAK-2395
+return|return
+operator|(
+literal|"create table "
+operator|+
+name|tableName
+operator|+
+literal|" (ID nvarchar(512) not null primary key, MODIFIED bigint, HASBINARY smallint, DELETEDONCE smallint, MODCOUNT bigint, CMODCOUNT bigint, DSIZE bigint, DATA nvarchar(4000), BDATA varbinary(max))"
+operator|)
+return|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|FETCHFIRSTSYNTAX
+name|getFetchFirstSyntax
 parameter_list|()
 block|{
 return|return
-literal|true
+name|FETCHFIRSTSYNTAX
+operator|.
+name|TOP
+return|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|String
+name|getConcatQueryString
+parameter_list|(
+name|int
+name|dataOctetLimit
+parameter_list|,
+name|int
+name|dataLength
+parameter_list|)
+block|{
+comment|/*                  * To avoid truncation when concatenating force an error when                  * limit is above the octet limit                  */
+return|return
+literal|"CASE WHEN LEN(DATA)<= "
+operator|+
+operator|(
+name|dataOctetLimit
+operator|-
+name|dataLength
+operator|)
+operator|+
+literal|" THEN (DATA + CAST(? AS nvarchar("
+operator|+
+name|dataOctetLimit
+operator|+
+literal|"))) ELSE (DATA + CAST(DATA AS nvarchar(max))) END"
+return|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|String
+name|getGreatestQueryString
+parameter_list|(
+name|String
+name|column
+parameter_list|)
+block|{
+return|return
+literal|"(select MAX(mod) from (VALUES ("
+operator|+
+name|column
+operator|+
+literal|"), (?)) AS ALLMOD(mod))"
 return|;
 block|}
 block|}
@@ -1662,24 +1769,53 @@ return|return
 literal|true
 return|;
 block|}
-comment|/**          * whether DB requires "CONCAT" over "||"          */
+comment|/**          * Query syntax for "FETCH FIRST"          */
 specifier|public
-name|boolean
-name|needsConcat
+name|FETCHFIRSTSYNTAX
+name|getFetchFirstSyntax
 parameter_list|()
 block|{
 return|return
-literal|false
+name|FETCHFIRSTSYNTAX
+operator|.
+name|FETCHFIRST
 return|;
 block|}
-comment|/**          * whether DB requires "LIMIT" instead of "FETCH FIRST"          */
+comment|/**          * Returns the CONCAT function or its equivalent function or sub-query.          * Note that the function MUST NOT cause a truncated value to be          * written!          *          * @param dataOctetLimit          *            expected capacity of data column          * @param dataLength          *            length of string to be inserted          *           * @return the concat query string          */
 specifier|public
-name|boolean
-name|needsLimit
-parameter_list|()
+name|String
+name|getConcatQueryString
+parameter_list|(
+name|int
+name|dataOctetLimit
+parameter_list|,
+name|int
+name|dataLength
+parameter_list|)
 block|{
 return|return
-literal|false
+literal|"DATA || CAST(? AS varchar("
+operator|+
+name|dataOctetLimit
+operator|+
+literal|"))"
+return|;
+block|}
+comment|/**          * Returns the GREATEST function or its equivalent function or sub-query          * supported.          *          * @return the greatest query string          */
+specifier|public
+name|String
+name|getGreatestQueryString
+parameter_list|(
+name|String
+name|column
+parameter_list|)
+block|{
+return|return
+literal|"GREATEST("
+operator|+
+name|column
+operator|+
+literal|", ?)"
 return|;
 block|}
 comment|/**          * Query for any required initialization of the DB.          *           * @return the DB initialization SQL string          */
@@ -6350,12 +6486,45 @@ block|{
 name|String
 name|t
 init|=
-literal|"select ID, MODIFIED, MODCOUNT, CMODCOUNT, HASBINARY, DELETEDONCE, DATA, BDATA from "
+literal|"select "
+decl_stmt|;
+if|if
+condition|(
+name|limit
+operator|!=
+name|Integer
+operator|.
+name|MAX_VALUE
+operator|&&
+name|this
+operator|.
+name|db
+operator|.
+name|getFetchFirstSyntax
+argument_list|()
+operator|==
+name|FETCHFIRSTSYNTAX
+operator|.
+name|TOP
+condition|)
+block|{
+name|t
+operator|+=
+literal|"TOP "
+operator|+
+name|limit
+operator|+
+literal|" "
+expr_stmt|;
+block|}
+name|t
+operator|+=
+literal|"ID, MODIFIED, MODCOUNT, CMODCOUNT, HASBINARY, DELETEDONCE, DATA, BDATA from "
 operator|+
 name|tableName
 operator|+
 literal|" where ID> ? and ID< ?"
-decl_stmt|;
+expr_stmt|;
 if|if
 condition|(
 name|indexedProperty
@@ -6480,29 +6649,41 @@ operator|.
 name|MAX_VALUE
 condition|)
 block|{
-name|t
-operator|+=
+switch|switch
+condition|(
 name|this
 operator|.
 name|db
 operator|.
-name|needsLimit
+name|getFetchFirstSyntax
 argument_list|()
-condition|?
-operator|(
+condition|)
+block|{
+case|case
+name|LIMIT
+case|:
+name|t
+operator|+=
 literal|" LIMIT "
 operator|+
 name|limit
-operator|)
-else|:
-operator|(
+expr_stmt|;
+break|break;
+case|case
+name|FETCHFIRST
+case|:
+name|t
+operator|+=
 literal|" FETCH FIRST "
 operator|+
 name|limit
 operator|+
 literal|" ROWS ONLY"
-operator|)
 expr_stmt|;
+break|break;
+default|default:
+break|break;
+block|}
 block|}
 name|PreparedStatement
 name|stmt
@@ -7157,29 +7338,43 @@ literal|"update "
 operator|+
 name|tableName
 operator|+
-literal|" set MODIFIED = GREATEST(MODIFIED, ?), HASBINARY = ?, DELETEDONCE = ?, MODCOUNT = ?, CMODCOUNT = ?, DSIZE = DSIZE + ?, "
+literal|" set MODIFIED = "
+operator|+
+name|this
+operator|.
+name|db
+operator|.
+name|getGreatestQueryString
+argument_list|(
+literal|"MODIFIED"
+argument_list|)
+operator|+
+literal|", HASBINARY = ?, DELETEDONCE = ?, MODCOUNT = ?, CMODCOUNT = ?, DSIZE = DSIZE + ?, "
 argument_list|)
 expr_stmt|;
 name|t
 operator|.
 name|append
 argument_list|(
+literal|"DATA = "
+operator|+
 name|this
 operator|.
 name|db
 operator|.
-name|needsConcat
-argument_list|()
-condition|?
-literal|"DATA = CONCAT(DATA, ?) "
-else|:
-literal|"DATA = DATA || CAST(? AS varchar("
-operator|+
+name|getConcatQueryString
+argument_list|(
 name|this
 operator|.
 name|dataLimitInOctets
+argument_list|,
+name|appendData
+operator|.
+name|length
+argument_list|()
+argument_list|)
 operator|+
-literal|")) "
+literal|" "
 argument_list|)
 expr_stmt|;
 name|t
@@ -7459,29 +7654,43 @@ literal|"update "
 operator|+
 name|tableName
 operator|+
-literal|" set MODIFIED = GREATEST(MODIFIED, ?), MODCOUNT = MODCOUNT + 1, DSIZE = DSIZE + ?, "
+literal|" set MODIFIED = "
+operator|+
+name|this
+operator|.
+name|db
+operator|.
+name|getGreatestQueryString
+argument_list|(
+literal|"MODIFIED"
+argument_list|)
+operator|+
+literal|", MODCOUNT = MODCOUNT + 1, DSIZE = DSIZE + ?, "
 argument_list|)
 expr_stmt|;
 name|t
 operator|.
 name|append
 argument_list|(
+literal|"DATA = "
+operator|+
 name|this
 operator|.
 name|db
 operator|.
-name|needsConcat
-argument_list|()
-condition|?
-literal|"DATA = CONCAT(DATA, ?) "
-else|:
-literal|"DATA = DATA || CAST(? AS varchar("
-operator|+
+name|getConcatQueryString
+argument_list|(
 name|this
 operator|.
 name|dataLimitInOctets
+argument_list|,
+name|appendData
+operator|.
+name|length
+argument_list|()
+argument_list|)
 operator|+
-literal|")) "
+literal|" "
 argument_list|)
 expr_stmt|;
 name|t

@@ -5282,6 +5282,15 @@ name|contains
 argument_list|(
 literal|"MySQL"
 argument_list|)
+operator|||
+name|super
+operator|.
+name|dsname
+operator|.
+name|contains
+argument_list|(
+literal|"Microsoft SQL Server"
+argument_list|)
 decl_stmt|;
 name|int
 name|dataInChars
