@@ -243,24 +243,6 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|plugins
-operator|.
-name|memory
-operator|.
-name|AbstractBlob
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
 name|spi
 operator|.
 name|blob
@@ -1015,6 +997,30 @@ operator|+
 name|IDSIZE
 operator|+
 literal|") not null primary key, DATA mediumblob)"
+expr_stmt|;
+block|}
+elseif|else
+if|if
+condition|(
+literal|"Microsoft SQL Server"
+operator|.
+name|equals
+argument_list|(
+name|dbtype
+argument_list|)
+condition|)
+block|{
+name|ct
+operator|=
+literal|"create table "
+operator|+
+name|tableName
+operator|+
+literal|" (ID varchar("
+operator|+
+name|IDSIZE
+operator|+
+literal|") not null primary key, DATA varbinary(max))"
 expr_stmt|;
 block|}
 else|else
