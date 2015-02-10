@@ -404,6 +404,11 @@ name|number
 init|=
 literal|10
 decl_stmt|;
+name|int
+name|maxDeleted
+init|=
+literal|5
+decl_stmt|;
 comment|// track the number of the assets to be deleted
 name|List
 argument_list|<
@@ -434,7 +439,7 @@ literal|0
 init|;
 name|i
 operator|<
-literal|5
+name|maxDeleted
 condition|;
 name|i
 operator|++
@@ -502,6 +507,7 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|!
 name|processed
 operator|.
 name|contains
@@ -1001,7 +1007,7 @@ name|HashSet
 argument_list|<
 name|String
 argument_list|>
-name|set
+name|remaining
 parameter_list|)
 throws|throws
 name|Exception
@@ -1057,7 +1063,7 @@ name|Set
 argument_list|<
 name|String
 argument_list|>
-name|existing
+name|existingAfterGC
 init|=
 name|iterate
 argument_list|()
@@ -1067,11 +1073,11 @@ name|empty
 init|=
 name|Sets
 operator|.
-name|intersection
+name|symmetricDifference
 argument_list|(
-name|set
+name|remaining
 argument_list|,
-name|existing
+name|existingAfterGC
 argument_list|)
 operator|.
 name|isEmpty
@@ -1080,12 +1086,6 @@ decl_stmt|;
 name|assertTrue
 argument_list|(
 name|empty
-operator|&&
-operator|!
-name|existing
-operator|.
-name|isEmpty
-argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
