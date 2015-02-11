@@ -2950,7 +2950,6 @@ name|REP_SPELLCHECK
 argument_list|)
 condition|)
 block|{
-comment|// TODO : filter spellcheck corrections by ACLs ?
 name|result
 operator|=
 name|currentRow
@@ -2976,10 +2975,8 @@ name|REP_SUGGEST
 argument_list|)
 condition|)
 block|{
-comment|// TODO : filter suggestions by ACLs
-name|PropertyValue
-name|value
-init|=
+name|result
+operator|=
 name|currentRow
 operator|.
 name|getValue
@@ -2988,10 +2985,6 @@ name|QueryImpl
 operator|.
 name|REP_SUGGEST
 argument_list|)
-decl_stmt|;
-name|result
-operator|=
-name|value
 expr_stmt|;
 block|}
 else|else
@@ -3543,6 +3536,15 @@ return|return
 name|this
 operator|.
 name|outerJoinRightHandSide
+return|;
+block|}
+specifier|public
+name|QueryImpl
+name|getQuery
+parameter_list|()
+block|{
+return|return
+name|query
 return|;
 block|}
 block|}

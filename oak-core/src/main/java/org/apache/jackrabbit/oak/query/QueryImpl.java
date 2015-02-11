@@ -5231,6 +5231,15 @@ operator|=
 name|isInternal
 expr_stmt|;
 block|}
+specifier|public
+name|ExecutionContext
+name|getExecutionContext
+parameter_list|()
+block|{
+return|return
+name|context
+return|;
+block|}
 block|}
 end_class
 

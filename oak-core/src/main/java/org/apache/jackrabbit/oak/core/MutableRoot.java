@@ -1591,6 +1591,11 @@ argument_list|,
 name|queryEngineSettings
 argument_list|,
 name|provider
+argument_list|,
+name|permissionProvider
+operator|.
+name|get
+argument_list|()
 argument_list|)
 return|;
 block|}

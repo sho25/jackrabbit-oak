@@ -188,6 +188,14 @@ name|QueryEngineSettings
 name|getQueryEngineSettings
 parameter_list|()
 function_decl|;
+comment|/**      * check whether a certain (valid) path is accessible (can be read) from the user associated with the query Session      * @param path a valid JCR path      * @return<code>true</code> if path can be read by the calling user,<code>false</code> otherwise.      */
+name|boolean
+name|isAccessible
+parameter_list|(
+name|String
+name|path
+parameter_list|)
+function_decl|;
 comment|/**      * Whether the filter contains a native condition.      *       * @return true if it does      */
 name|boolean
 name|containsNativeConstraint
