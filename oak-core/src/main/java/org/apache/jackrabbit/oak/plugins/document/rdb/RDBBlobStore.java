@@ -1224,7 +1224,7 @@ literal|"update "
 operator|+
 name|metaTable
 operator|+
-literal|" set lastMod = ? where id = ?"
+literal|" set LASTMOD = ? where ID = ?"
 argument_list|)
 decl_stmt|;
 name|int
@@ -1310,7 +1310,7 @@ literal|"insert into "
 operator|+
 name|dataTable
 operator|+
-literal|"(id, data) values(?, ?)"
+literal|"(ID, DATA) values(?, ?)"
 argument_list|)
 expr_stmt|;
 try|try
@@ -1401,7 +1401,7 @@ literal|"insert into "
 operator|+
 name|metaTable
 operator|+
-literal|"(id, lvl, lastMod) values(?, ?, ?)"
+literal|"(ID, LVL, LASTMOD) values(?, ?, ?)"
 argument_list|)
 expr_stmt|;
 try|try
@@ -1522,11 +1522,11 @@ name|con
 operator|.
 name|prepareStatement
 argument_list|(
-literal|"select data from "
+literal|"select DATA from "
 operator|+
 name|dataTable
 operator|+
-literal|" where id = ?"
+literal|" where ID = ?"
 argument_list|)
 decl_stmt|;
 try|try
@@ -1672,11 +1672,11 @@ name|con
 operator|.
 name|prepareStatement
 argument_list|(
-literal|"select data from "
+literal|"select DATA from "
 operator|+
 name|dataTable
 operator|+
-literal|" where id = ?"
+literal|" where ID = ?"
 argument_list|)
 decl_stmt|;
 try|try
@@ -1938,7 +1938,7 @@ literal|"update "
 operator|+
 name|metaTable
 operator|+
-literal|" set lastMod = ? where id = ? and lastMod< ?"
+literal|" set LASTMOD = ? where ID = ? and LASTMOD< ?"
 argument_list|)
 decl_stmt|;
 name|prep
@@ -2062,11 +2062,11 @@ name|con
 operator|.
 name|prepareStatement
 argument_list|(
-literal|"select id from "
+literal|"select ID from "
 operator|+
 name|metaTable
 operator|+
-literal|" where lastMod< ?"
+literal|" where LASTMOD< ?"
 argument_list|)
 decl_stmt|;
 name|prep
@@ -2130,7 +2130,7 @@ literal|"delete from "
 operator|+
 name|metaTable
 operator|+
-literal|" where id = ?"
+literal|" where ID = ?"
 argument_list|)
 expr_stmt|;
 name|PreparedStatement
@@ -2144,7 +2144,7 @@ literal|"delete from "
 operator|+
 name|dataTable
 operator|+
-literal|" where id = ?"
+literal|" where ID = ?"
 argument_list|)
 decl_stmt|;
 for|for
@@ -2349,14 +2349,14 @@ literal|"delete from "
 operator|+
 name|metaTable
 operator|+
-literal|" where id in ("
+literal|" where ID in ("
 operator|+
 name|inClause
 operator|.
 name|toString
 argument_list|()
 operator|+
-literal|") and lastMod<= ?"
+literal|") and LASTMOD<= ?"
 argument_list|)
 expr_stmt|;
 name|prepMeta
@@ -2380,7 +2380,7 @@ literal|"delete from "
 operator|+
 name|dataTable
 operator|+
-literal|" where id in ("
+literal|" where ID in ("
 operator|+
 name|inClause
 operator|.
@@ -2391,7 +2391,7 @@ literal|") and not exists(select * from "
 operator|+
 name|metaTable
 operator|+
-literal|" m where id = m.id and m.lastMod<= ?)"
+literal|" m where ID = m.ID and m.LASTMOD<= ?)"
 argument_list|)
 expr_stmt|;
 name|prepData
@@ -2418,7 +2418,7 @@ literal|"delete from "
 operator|+
 name|metaTable
 operator|+
-literal|" where id in ("
+literal|" where ID in ("
 operator|+
 name|inClause
 operator|.
@@ -2438,7 +2438,7 @@ literal|"delete from "
 operator|+
 name|dataTable
 operator|+
-literal|" where id in ("
+literal|" where ID in ("
 operator|+
 name|inClause
 operator|.
@@ -2716,7 +2716,7 @@ name|query
 operator|.
 name|append
 argument_list|(
-literal|"select id from "
+literal|"select ID from "
 operator|+
 name|metaTable
 argument_list|)
@@ -2732,7 +2732,7 @@ name|query
 operator|.
 name|append
 argument_list|(
-literal|" where lastMod<= ?"
+literal|" where LASTMOD<= ?"
 argument_list|)
 expr_stmt|;
 if|if
@@ -2746,7 +2746,7 @@ name|query
 operator|.
 name|append
 argument_list|(
-literal|" and id> ?"
+literal|" and ID> ?"
 argument_list|)
 expr_stmt|;
 block|}
@@ -2764,7 +2764,7 @@ name|query
 operator|.
 name|append
 argument_list|(
-literal|" where id> ?"
+literal|" where ID> ?"
 argument_list|)
 expr_stmt|;
 block|}
@@ -2773,7 +2773,7 @@ name|query
 operator|.
 name|append
 argument_list|(
-literal|" order by id"
+literal|" order by ID"
 argument_list|)
 expr_stmt|;
 name|Connection
