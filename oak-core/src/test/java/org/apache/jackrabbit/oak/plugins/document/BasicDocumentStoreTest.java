@@ -5332,19 +5332,23 @@ name|contains
 argument_list|(
 literal|"MySQL"
 argument_list|)
-operator|||
+decl_stmt|;
+name|boolean
+name|needsSQLStringConcat
+init|=
 name|super
 operator|.
 name|dsname
 operator|.
 name|contains
 argument_list|(
-literal|"Microsoft SQL Server"
+literal|"MSSql"
 argument_list|)
 decl_stmt|;
 name|int
 name|dataInChars
 init|=
+operator|(
 operator|(
 name|super
 operator|.
@@ -5354,6 +5358,18 @@ name|contains
 argument_list|(
 literal|"Oracle"
 argument_list|)
+operator|||
+operator|(
+name|super
+operator|.
+name|dsname
+operator|.
+name|contains
+argument_list|(
+literal|"MSSql"
+argument_list|)
+operator|)
+operator|)
 condition|?
 literal|4000
 else|:
@@ -5675,6 +5691,70 @@ operator|==
 literal|3
 condition|)
 block|{
+name|String
+name|t
+init|=
+literal|"update "
+operator|+
+name|table
+operator|+
+literal|" "
+decl_stmt|;
+name|t
+operator|+=
+literal|"set DATA = "
+expr_stmt|;
+if|if
+condition|(
+name|needsConcat
+condition|)
+block|{
+name|t
+operator|+=
+literal|"CONCAT(DATA, ?) "
+expr_stmt|;
+block|}
+elseif|else
+if|if
+condition|(
+name|needsSQLStringConcat
+condition|)
+block|{
+name|t
+operator|+=
+literal|"CASE WHEN LEN(DATA)<= "
+operator|+
+operator|(
+name|dataInChars
+operator|-
+name|appendString
+operator|.
+name|length
+argument_list|()
+operator|)
+operator|+
+literal|" THEN (DATA + CAST(? AS nvarchar("
+operator|+
+literal|4000
+operator|+
+literal|"))) ELSE (DATA + CAST(DATA AS nvarchar(max))) END"
+expr_stmt|;
+block|}
+else|else
+block|{
+name|t
+operator|+=
+literal|"DATA || CAST(? as varchar("
+operator|+
+name|dataInChars
+operator|+
+literal|"))"
+expr_stmt|;
+block|}
+name|t
+operator|+=
+literal|" where ID = ?"
+expr_stmt|;
 name|PreparedStatement
 name|stmt
 init|=
@@ -5682,25 +5762,7 @@ name|connection
 operator|.
 name|prepareStatement
 argument_list|(
-literal|"update "
-operator|+
-name|table
-operator|+
-literal|" set "
-operator|+
-operator|(
-name|needsConcat
-condition|?
-literal|"DATA = CONCAT(DATA, ?)"
-else|:
-literal|"DATA = DATA || CAST(? as varchar("
-operator|+
-name|dataInChars
-operator|+
-literal|"))"
-operator|)
-operator|+
-literal|" where ID = ?"
+name|t
 argument_list|)
 decl_stmt|;
 try|try
