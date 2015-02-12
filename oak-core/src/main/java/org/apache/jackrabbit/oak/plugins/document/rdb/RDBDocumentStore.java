@@ -1672,7 +1672,7 @@ literal|"create table "
 operator|+
 name|tableName
 operator|+
-literal|" (ID varbinary(512) not null primary key, MODIFIED bigint, HASBINARY smallint, DELETEDONCE smallint, MODCOUNT bigint, CMODCOUNT bigint, DSIZE bigint, DATA varchar(16000), BDATA mediumblob)"
+literal|" (ID varbinary(512) not null primary key, MODIFIED bigint, HASBINARY smallint, DELETEDONCE smallint, MODCOUNT bigint, CMODCOUNT bigint, DSIZE bigint, DATA varchar(16000), BDATA longblob)"
 operator|)
 return|;
 block|}
@@ -1892,7 +1892,15 @@ literal|"create table "
 operator|+
 name|tableName
 operator|+
-literal|" (ID varchar(512) not null primary key, MODIFIED bigint, HASBINARY smallint, DELETEDONCE smallint, MODCOUNT bigint, CMODCOUNT bigint, DSIZE bigint, DATA varchar(16384), BDATA blob)"
+literal|" (ID varchar(512) not null primary key, MODIFIED bigint, HASBINARY smallint, DELETEDONCE smallint, MODCOUNT bigint, CMODCOUNT bigint, DSIZE bigint, DATA varchar(16384), BDATA blob("
+operator|+
+literal|1024
+operator|*
+literal|1024
+operator|*
+literal|1024
+operator|+
+literal|"))"
 return|;
 block|}
 specifier|private

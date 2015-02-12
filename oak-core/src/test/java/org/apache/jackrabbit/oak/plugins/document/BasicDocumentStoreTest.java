@@ -732,11 +732,15 @@ literal|1024
 operator|*
 literal|1024
 operator|*
-literal|4
+literal|8
 decl_stmt|;
-comment|// 32M
 name|int
 name|test
+init|=
+literal|0
+decl_stmt|;
+name|int
+name|last
 init|=
 literal|0
 decl_stmt|;
@@ -882,6 +886,10 @@ name|min
 operator|=
 name|test
 expr_stmt|;
+name|last
+operator|=
+name|test
+expr_stmt|;
 block|}
 else|else
 block|{
@@ -903,7 +911,7 @@ name|dsname
 operator|+
 literal|" was "
 operator|+
-name|test
+name|last
 argument_list|)
 expr_stmt|;
 block|}
