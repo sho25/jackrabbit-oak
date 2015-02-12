@@ -431,7 +431,7 @@ name|deleteBucket
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * See org.apache.jackrabbit.oak.plugins.document.blob.ds.DataStoreUtils#getConfig()      */
+comment|/**      * See org.apache.jackrabbit.oak.plugins.blob.datastore.DataStoreUtils#getConfig()      */
 specifier|private
 specifier|static
 name|Map

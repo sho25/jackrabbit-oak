@@ -15,11 +15,9 @@ name|oak
 operator|.
 name|plugins
 operator|.
-name|document
-operator|.
 name|blob
 operator|.
-name|ds
+name|datastore
 package|;
 end_package
 
@@ -189,8 +187,6 @@ begin_class
 specifier|public
 class|class
 name|DataStoreUtils
-extends|extends
-name|AbstractMongoConnectionTest
 block|{
 specifier|public
 specifier|static
@@ -199,14 +195,6 @@ name|String
 name|DS_CLASS_NAME
 init|=
 literal|"dataStore"
-decl_stmt|;
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|PATH
-init|=
-literal|"./target/repository/"
 decl_stmt|;
 specifier|private
 specifier|static
@@ -223,6 +211,15 @@ name|String
 name|BS_PROP_PREFIX
 init|=
 literal|"bs."
+decl_stmt|;
+comment|/**      * By default create a default directory. But if overridden will need to be unset      */
+specifier|private
+specifier|static
+name|long
+name|time
+init|=
+operator|-
+literal|1
 decl_stmt|;
 specifier|public
 specifier|static
@@ -400,7 +397,7 @@ return|return
 name|result
 return|;
 block|}
-specifier|private
+specifier|public
 specifier|static
 name|String
 name|getHomeDir
@@ -420,10 +417,19 @@ argument_list|()
 argument_list|,
 literal|"target/blobstore/"
 operator|+
+operator|(
+name|time
+operator|==
+operator|-
+literal|1
+condition|?
+literal|0
+else|:
 name|System
 operator|.
 name|currentTimeMillis
 argument_list|()
+operator|)
 argument_list|)
 return|;
 block|}
