@@ -451,9 +451,39 @@ name|void
 name|testMaxIdAscii
 parameter_list|()
 block|{
+comment|// TODO see OAK-2395
+name|Assume
+operator|.
+name|assumeTrue
+argument_list|(
+operator|!
+name|super
+operator|.
+name|dsname
+operator|.
+name|contains
+argument_list|(
+literal|"MSSql"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|int
+name|result
+init|=
 name|testMaxId
 argument_list|(
 literal|true
+argument_list|)
+decl_stmt|;
+name|assertTrue
+argument_list|(
+literal|"needs to support keys of 512 bytes length, but only supports "
+operator|+
+name|result
+argument_list|,
+name|result
+operator|>=
+literal|512
 argument_list|)
 expr_stmt|;
 block|}
@@ -471,7 +501,7 @@ argument_list|)
 expr_stmt|;
 block|}
 specifier|private
-name|void
+name|int
 name|testMaxId
 parameter_list|(
 name|boolean
@@ -505,6 +535,11 @@ literal|32768
 decl_stmt|;
 name|int
 name|test
+init|=
+literal|0
+decl_stmt|;
+name|int
+name|last
 init|=
 literal|0
 decl_stmt|;
@@ -636,6 +671,10 @@ name|min
 operator|=
 name|test
 expr_stmt|;
+name|last
+operator|=
+name|test
+expr_stmt|;
 block|}
 else|else
 block|{
@@ -667,9 +706,12 @@ name|dsname
 operator|+
 literal|" was "
 operator|+
-name|test
+name|last
 argument_list|)
 expr_stmt|;
+return|return
+name|last
+return|;
 block|}
 annotation|@
 name|Test
