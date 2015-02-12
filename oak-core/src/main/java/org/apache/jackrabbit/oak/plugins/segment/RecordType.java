@@ -24,6 +24,7 @@ comment|/**  * The type of a record in a segment.  */
 end_comment
 
 begin_enum
+specifier|public
 enum|enum
 name|RecordType
 block|{
