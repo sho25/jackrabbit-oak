@@ -284,7 +284,11 @@ name|Override
 specifier|public
 name|CompositeData
 name|startBlobGC
-parameter_list|()
+parameter_list|(
+specifier|final
+name|boolean
+name|markOnly
+parameter_list|)
 block|{
 if|if
 condition|(
@@ -325,7 +329,9 @@ decl_stmt|;
 name|blobGarbageCollector
 operator|.
 name|collectGarbage
-argument_list|()
+argument_list|(
+name|markOnly
+argument_list|)
 expr_stmt|;
 return|return
 literal|"Blob gc completed in "

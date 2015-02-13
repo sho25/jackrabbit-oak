@@ -685,7 +685,11 @@ name|Override
 specifier|public
 name|CompositeData
 name|startDataStoreGC
-parameter_list|()
+parameter_list|(
+specifier|final
+name|boolean
+name|markOnly
+parameter_list|)
 block|{
 return|return
 name|execute
@@ -721,7 +725,9 @@ argument_list|(
 name|blobGCService
 operator|.
 name|startBlobGC
-argument_list|()
+argument_list|(
+name|markOnly
+argument_list|)
 argument_list|)
 return|;
 block|}

@@ -55,12 +55,13 @@ name|TYPE
 init|=
 literal|"BlobGarbageCollection"
 decl_stmt|;
-comment|/**      * Initiate a data store garbage collection operation      *      * @return  the status of the operation right after it was initiated      */
-annotation|@
-name|Nonnull
+comment|/**      * Initiate a data store garbage collection operation.      *      * @param markOnly whether to only mark references and not sweep in the mark and sweep operation.      * @return  the status of the operation right after it was initiated      */
 name|CompositeData
 name|startBlobGC
-parameter_list|()
+parameter_list|(
+name|boolean
+name|markOnly
+parameter_list|)
 function_decl|;
 comment|/**      * Data store garbage collection status      *      * @return  the status of the ongoing operation or if none the terminal      * status of the last operation or<em>Status not available</em> if none.      */
 annotation|@
