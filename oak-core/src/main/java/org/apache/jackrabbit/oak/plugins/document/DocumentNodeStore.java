@@ -9811,7 +9811,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/**      * Creates and returns a MarkSweepGarbageCollector if the current BlobStore      * supports garbage collection      *      * @return garbage collector of the BlobStore supports GC otherwise null      * @param blobGcMaxAgeInSecs      */
+comment|/**      * Creates and returns a MarkSweepGarbageCollector if the current BlobStore      * supports garbage collection      *      * @param blobGcMaxAgeInSecs      * @param repositoryId      * @return garbage collector of the BlobStore supports GC otherwise null      */
 annotation|@
 name|CheckForNull
 specifier|public
@@ -9820,6 +9820,9 @@ name|createBlobGarbageCollector
 parameter_list|(
 name|long
 name|blobGcMaxAgeInSecs
+parameter_list|,
+name|String
+name|repositoryId
 parameter_list|)
 block|{
 name|MarkSweepGarbageCollector
@@ -9862,6 +9865,8 @@ name|toMillis
 argument_list|(
 name|blobGcMaxAgeInSecs
 argument_list|)
+argument_list|,
+name|repositoryId
 argument_list|)
 expr_stmt|;
 block|}

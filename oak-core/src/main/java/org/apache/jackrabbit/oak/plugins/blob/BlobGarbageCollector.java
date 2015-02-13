@@ -28,10 +28,13 @@ specifier|public
 interface|interface
 name|BlobGarbageCollector
 block|{
-comment|/**      * Collect garbage blobs from the passed node store instance.      *       * @throws Exception      */
+comment|/**      * Marks garbage blobs from the passed node store instance.      * Collects them only if markOnly is false.      *      * @param markOnly whether to only mark references and not sweep in the mark and sweep operation.      * @throws Exception the exception      */
 name|void
 name|collectGarbage
-parameter_list|()
+parameter_list|(
+name|boolean
+name|markOnly
+parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
