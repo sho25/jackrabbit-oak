@@ -225,14 +225,9 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"..2]"
+literal|"Filter(, path=*, property=[x=[..2]]])"
 argument_list|,
 name|f
-operator|.
-name|getPropertyRestriction
-argument_list|(
-literal|"x"
-argument_list|)
 operator|.
 name|toString
 argument_list|()
@@ -253,21 +248,61 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"[1..2]"
+literal|"Filter(, path=*, property=[x=[..2], [1..]])"
 argument_list|,
 name|f
-operator|.
-name|getPropertyRestriction
-argument_list|(
-literal|"x"
-argument_list|)
 operator|.
 name|toString
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|// further narrowing will not change the restriction,
-comment|// to account for multi-valued properties
+comment|// no change, as the same restrictions already were added
+name|f
+operator|.
+name|restrictProperty
+argument_list|(
+literal|"x"
+argument_list|,
+name|Operator
+operator|.
+name|LESS_OR_EQUAL
+argument_list|,
+name|two
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"Filter(, path=*, property=[x=[..2], [1..]])"
+argument_list|,
+name|f
+operator|.
+name|toString
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|f
+operator|.
+name|restrictProperty
+argument_list|(
+literal|"x"
+argument_list|,
+name|Operator
+operator|.
+name|GREATER_OR_EQUAL
+argument_list|,
+name|one
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"Filter(, path=*, property=[x=[..2], [1..]])"
+argument_list|,
+name|f
+operator|.
+name|toString
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|f
 operator|.
 name|restrictProperty
@@ -283,14 +318,9 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"[1..2]"
+literal|"Filter(, path=*, property=[x=[..2], [1.., (1..]])"
 argument_list|,
 name|f
-operator|.
-name|getPropertyRestriction
-argument_list|(
-literal|"x"
-argument_list|)
 operator|.
 name|toString
 argument_list|()
@@ -311,21 +341,16 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"[1..2]"
+literal|"Filter(, path=*, property=[x=[..2], [1.., (1.., ..2)]])"
 argument_list|,
 name|f
-operator|.
-name|getPropertyRestriction
-argument_list|(
-literal|"x"
-argument_list|)
 operator|.
 name|toString
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|// this should replace the range with an equality
-comment|// (which is faster, and correct even when using multi-valued properties)
+comment|// TODO could replace / remove the old range conditions,
+comment|// if there is an overlap
 name|f
 operator|.
 name|restrictProperty
@@ -341,14 +366,9 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"2"
+literal|"Filter(, path=*, property=[x=[..2], [1.., (1.., ..2), 2]])"
 argument_list|,
 name|f
-operator|.
-name|getPropertyRestriction
-argument_list|(
-literal|"x"
-argument_list|)
 operator|.
 name|toString
 argument_list|()
@@ -375,14 +395,9 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"1"
+literal|"Filter(, path=*, property=[x=[1]])"
 argument_list|,
 name|f
-operator|.
-name|getPropertyRestriction
-argument_list|(
-literal|"x"
-argument_list|)
 operator|.
 name|toString
 argument_list|()
@@ -403,19 +418,16 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"1"
+literal|"Filter(, path=*, property=[x=[1]])"
 argument_list|,
 name|f
-operator|.
-name|getPropertyRestriction
-argument_list|(
-literal|"x"
-argument_list|)
 operator|.
 name|toString
 argument_list|()
 argument_list|)
 expr_stmt|;
+comment|// TODO could replace / remove the old range conditions,
+comment|// if there is an overlap
 name|f
 operator|.
 name|restrictProperty
@@ -431,14 +443,9 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"1"
+literal|"Filter(, path=*, property=[x=[1, [1..]])"
 argument_list|,
 name|f
-operator|.
-name|getPropertyRestriction
-argument_list|(
-literal|"x"
-argument_list|)
 operator|.
 name|toString
 argument_list|()
@@ -459,21 +466,16 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"1"
+literal|"Filter(, path=*, property=[x=[1, [1.., ..1]]])"
 argument_list|,
 name|f
-operator|.
-name|getPropertyRestriction
-argument_list|(
-literal|"x"
-argument_list|)
 operator|.
 name|toString
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|// further narrowing will not change the restriction,
-comment|// to account for multi-valued properties
+comment|// TODO could replace / remove the old range conditions,
+comment|// if there is an overlap
 name|f
 operator|.
 name|restrictProperty
@@ -489,14 +491,9 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"1"
+literal|"Filter(, path=*, property=[x=[1, [1.., ..1], (1..]])"
 argument_list|,
 name|f
-operator|.
-name|getPropertyRestriction
-argument_list|(
-literal|"x"
-argument_list|)
 operator|.
 name|toString
 argument_list|()
@@ -523,21 +520,16 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"1"
+literal|"Filter(, path=*, property=[x=[1]])"
 argument_list|,
 name|f
-operator|.
-name|getPropertyRestriction
-argument_list|(
-literal|"x"
-argument_list|)
 operator|.
 name|toString
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|// further narrowing will not change the restriction,
-comment|// to account for multi-valued properties
+comment|// TODO could replace / remove the old range conditions,
+comment|// if there is an overlap
 name|f
 operator|.
 name|restrictProperty
@@ -553,14 +545,9 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"1"
+literal|"Filter(, path=*, property=[x=[1, ..1)]])"
 argument_list|,
 name|f
-operator|.
-name|getPropertyRestriction
-argument_list|(
-literal|"x"
-argument_list|)
 operator|.
 name|toString
 argument_list|()
@@ -587,14 +574,9 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|""
+literal|"Filter(, path=*, property=[x=[]])"
 argument_list|,
 name|f
-operator|.
-name|getPropertyRestriction
-argument_list|(
-literal|"x"
-argument_list|)
 operator|.
 name|toString
 argument_list|()
@@ -615,14 +597,9 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"..1)"
+literal|"Filter(, path=*, property=[x=[, ..1)]])"
 argument_list|,
 name|f
-operator|.
-name|getPropertyRestriction
-argument_list|(
-literal|"x"
-argument_list|)
 operator|.
 name|toString
 argument_list|()
@@ -645,14 +622,9 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"2"
+literal|"Filter(, path=*, property=[x=[, ..1), 2]])"
 argument_list|,
 name|f
-operator|.
-name|getPropertyRestriction
-argument_list|(
-literal|"x"
-argument_list|)
 operator|.
 name|toString
 argument_list|()
