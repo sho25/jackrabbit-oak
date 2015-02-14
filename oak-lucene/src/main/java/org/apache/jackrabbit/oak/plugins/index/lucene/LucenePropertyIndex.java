@@ -47,16 +47,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|Arrays
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|Collection
 import|;
 end_import
@@ -3901,23 +3891,14 @@ condition|)
 block|{
 if|if
 condition|(
-operator|!
-name|defn
-operator|.
-name|isFullTextEnabled
-argument_list|()
+name|reader
+operator|==
+literal|null
 condition|)
 block|{
-throw|throw
-operator|new
-name|IllegalStateException
-argument_list|(
-literal|"No query created for filter "
-operator|+
-name|filter
-argument_list|)
-throw|;
-block|}
+comment|//When called in planning mode then some queries like rep:similar
+comment|//cannot create query as reader is not provided. In such case we
+comment|//just return match all queries
 return|return
 operator|new
 name|LuceneRequestFacade
@@ -3930,6 +3911,39 @@ name|MatchAllDocsQuery
 argument_list|()
 argument_list|)
 return|;
+block|}
+comment|//For purely nodeType based queries all the documents would have to
+comment|//be returned (if the index definition has a single rule)
+if|if
+condition|(
+name|planResult
+operator|.
+name|evaluateNodeTypeRestriction
+argument_list|()
+condition|)
+block|{
+return|return
+operator|new
+name|LuceneRequestFacade
+argument_list|<
+name|Query
+argument_list|>
+argument_list|(
+operator|new
+name|MatchAllDocsQuery
+argument_list|()
+argument_list|)
+return|;
+block|}
+throw|throw
+operator|new
+name|IllegalStateException
+argument_list|(
+literal|"No query created for filter "
+operator|+
+name|filter
+argument_list|)
+throw|;
 block|}
 if|if
 condition|(

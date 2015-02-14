@@ -909,6 +909,14 @@ block|}
 block|}
 block|}
 name|boolean
+name|evalNodeTypeRestrictions
+init|=
+name|canEvalNodeTypeRestrictions
+argument_list|(
+name|indexingRule
+argument_list|)
+decl_stmt|;
+name|boolean
 name|evalPathRestrictions
 init|=
 name|canEvalPathRestrictions
@@ -975,6 +983,8 @@ operator|!=
 literal|null
 operator|||
 name|evalPathRestrictions
+operator|||
+name|evalNodeTypeRestrictions
 condition|)
 block|{
 comment|//TODO Need a way to have better cost estimate to indicate that
@@ -1047,6 +1057,17 @@ name|enableNonFullTextConstraints
 argument_list|()
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|evalNodeTypeRestrictions
+condition|)
+block|{
+name|result
+operator|.
+name|enableNodeTypeEvaluation
+argument_list|()
+expr_stmt|;
+block|}
 return|return
 name|plan
 operator|.
@@ -1063,9 +1084,6 @@ return|;
 block|}
 comment|//TODO Support for property existence queries
 comment|//TODO support for nodeName queries
-comment|//Above logic would not return any plan for pure nodeType based query like
-comment|//select * from nt:unstructured. We can do that but this is better handled
-comment|//by NodeType index
 return|return
 literal|null
 return|;
@@ -1554,6 +1572,42 @@ operator|&&
 name|rule
 operator|.
 name|indexesAllNodesOfMatchingType
+argument_list|()
+return|;
+block|}
+specifier|private
+name|boolean
+name|canEvalNodeTypeRestrictions
+parameter_list|(
+name|IndexingRule
+name|rule
+parameter_list|)
+block|{
+comment|//No need to handle nt:base
+if|if
+condition|(
+name|filter
+operator|.
+name|matchesAllTypes
+argument_list|()
+condition|)
+block|{
+return|return
+literal|false
+return|;
+block|}
+comment|//Only opt in if rule is not derived from nt:base otherwise it would
+comment|//get used when there a full text index on all nodes
+return|return
+name|rule
+operator|.
+name|indexesAllNodesOfMatchingType
+argument_list|()
+operator|&&
+operator|!
+name|rule
+operator|.
+name|isBasedOnNtBase
 argument_list|()
 return|;
 block|}
@@ -2112,6 +2166,10 @@ specifier|private
 name|boolean
 name|relativize
 decl_stmt|;
+specifier|private
+name|boolean
+name|nodeTypeRestrictions
+decl_stmt|;
 specifier|public
 name|PlanResult
 parameter_list|(
@@ -2246,6 +2304,15 @@ return|return
 name|nonFullTextConstraints
 return|;
 block|}
+specifier|public
+name|boolean
+name|evaluateNodeTypeRestriction
+parameter_list|()
+block|{
+return|return
+name|nodeTypeRestrictions
+return|;
+block|}
 specifier|private
 name|void
 name|setParentPath
@@ -2295,6 +2362,16 @@ name|enableNonFullTextConstraints
 parameter_list|()
 block|{
 name|nonFullTextConstraints
+operator|=
+literal|true
+expr_stmt|;
+block|}
+specifier|private
+name|void
+name|enableNodeTypeEvaluation
+parameter_list|()
+block|{
+name|nodeTypeRestrictions
 operator|=
 literal|true
 expr_stmt|;
