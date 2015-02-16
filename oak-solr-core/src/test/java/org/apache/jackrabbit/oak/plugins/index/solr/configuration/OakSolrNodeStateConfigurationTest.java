@@ -376,7 +376,11 @@ operator|.
 name|getSolrServerConfiguration
 argument_list|()
 decl_stmt|;
-comment|//        assertNotNull(configuration);
+name|assertNotNull
+argument_list|(
+name|configuration
+argument_list|)
+expr_stmt|;
 comment|//        assertEquals("sh", configuration.getSolrHomePath()); // property defined in the node state
 comment|//        assertEquals("cn", solrServerConfiguration.getCoreName()); // property defined in the node state
 comment|//        assertEquals("path_exact", fixedNodeStateConfiguration.getPathField()); // using default as this property is not defined in the node state

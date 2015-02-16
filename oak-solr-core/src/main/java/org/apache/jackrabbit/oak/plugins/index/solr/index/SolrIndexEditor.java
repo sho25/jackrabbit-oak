@@ -475,12 +475,6 @@ specifier|private
 name|String
 name|path
 decl_stmt|;
-comment|/**      * Index definition node builder      */
-specifier|private
-specifier|final
-name|NodeBuilder
-name|definition
-decl_stmt|;
 specifier|private
 specifier|final
 name|SolrServer
@@ -514,9 +508,6 @@ argument_list|()
 decl_stmt|;
 name|SolrIndexEditor
 parameter_list|(
-name|NodeBuilder
-name|definition
-parameter_list|,
 name|SolrServer
 name|solrServer
 parameter_list|,
@@ -544,12 +535,6 @@ operator|.
 name|path
 operator|=
 literal|"/"
-expr_stmt|;
-name|this
-operator|.
-name|definition
-operator|=
-name|definition
 expr_stmt|;
 name|this
 operator|.
@@ -597,14 +582,6 @@ operator|.
 name|path
 operator|=
 literal|null
-expr_stmt|;
-name|this
-operator|.
-name|definition
-operator|=
-name|parent
-operator|.
-name|definition
 expr_stmt|;
 name|this
 operator|.

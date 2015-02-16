@@ -363,8 +363,6 @@ return|return
 operator|new
 name|SolrIndexEditor
 argument_list|(
-name|definition
-argument_list|,
 name|solrServer
 argument_list|,
 name|oakSolrConfigurationProvider

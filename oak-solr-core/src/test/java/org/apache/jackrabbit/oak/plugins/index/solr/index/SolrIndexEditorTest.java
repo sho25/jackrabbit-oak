@@ -371,8 +371,6 @@ init|=
 operator|new
 name|SolrIndexEditor
 argument_list|(
-name|builder
-argument_list|,
 name|solrServer
 argument_list|,
 name|configuration
@@ -579,8 +577,6 @@ init|=
 operator|new
 name|SolrIndexEditor
 argument_list|(
-name|builder
-argument_list|,
 name|solrServer
 argument_list|,
 name|configuration
