@@ -355,6 +355,55 @@ name|long
 name|nodeSize
 decl_stmt|;
 comment|// node
+specifier|private
+name|long
+name|mapCount
+decl_stmt|;
+specifier|private
+name|long
+name|listCount
+decl_stmt|;
+specifier|private
+name|long
+name|propertyCount
+decl_stmt|;
+specifier|private
+name|long
+name|smallBlobCount
+decl_stmt|;
+specifier|private
+name|long
+name|mediumBlobCount
+decl_stmt|;
+specifier|private
+name|long
+name|longBlobCount
+decl_stmt|;
+specifier|private
+name|long
+name|externalBlobCount
+decl_stmt|;
+specifier|private
+name|long
+name|smallStringCount
+decl_stmt|;
+specifier|private
+name|long
+name|mediumStringCount
+decl_stmt|;
+specifier|private
+name|long
+name|longStringCount
+decl_stmt|;
+specifier|private
+name|long
+name|templateCount
+decl_stmt|;
+specifier|private
+name|long
+name|nodeCount
+decl_stmt|;
+comment|/**      * @return number of bytes in {@link RecordType#LEAF leaf} and {@link RecordType#BRANCH branch}      * records.      */
 specifier|public
 name|long
 name|getMapSize
@@ -364,6 +413,7 @@ return|return
 name|mapSize
 return|;
 block|}
+comment|/**      * @return number of bytes in {@link RecordType#LIST list} and {@link RecordType#BUCKET bucket}      * records.      */
 specifier|public
 name|long
 name|getListSize
@@ -373,6 +423,7 @@ return|return
 name|listSize
 return|;
 block|}
+comment|/**      * @return number of bytes in inlined values (strings and blobs)      */
 specifier|public
 name|long
 name|getValueSize
@@ -382,6 +433,7 @@ return|return
 name|valueSize
 return|;
 block|}
+comment|/**      * @return number of bytes in {@link RecordType#TEMPLATE template} records.      */
 specifier|public
 name|long
 name|getTemplateSize
@@ -391,6 +443,7 @@ return|return
 name|templateSize
 return|;
 block|}
+comment|/**      * @return number of bytes in {@link RecordType#NODE node} records.      */
 specifier|public
 name|long
 name|getNodeSize
@@ -398,6 +451,126 @@ parameter_list|()
 block|{
 return|return
 name|nodeSize
+return|;
+block|}
+comment|/**      * @return number of maps      */
+specifier|public
+name|long
+name|getMapCount
+parameter_list|()
+block|{
+return|return
+name|mapCount
+return|;
+block|}
+comment|/**      * @return number of lists      */
+specifier|public
+name|long
+name|getListCount
+parameter_list|()
+block|{
+return|return
+name|listCount
+return|;
+block|}
+comment|/**      * @return number of properties      */
+specifier|public
+name|long
+name|getPropertyCount
+parameter_list|()
+block|{
+return|return
+name|propertyCount
+return|;
+block|}
+comment|/**      * @return number of {@link Segment#SMALL_LIMIT small} blobs.      *      */
+specifier|public
+name|long
+name|getSmallBlobCount
+parameter_list|()
+block|{
+return|return
+name|smallBlobCount
+return|;
+block|}
+comment|/**      * @return number of {@link Segment#MEDIUM_LIMIT medium} blobs.      *      */
+specifier|public
+name|long
+name|getMediumBlobCount
+parameter_list|()
+block|{
+return|return
+name|mediumBlobCount
+return|;
+block|}
+comment|/**      * @return number of long blobs.      *      */
+specifier|public
+name|long
+name|getLongBlobCount
+parameter_list|()
+block|{
+return|return
+name|longBlobCount
+return|;
+block|}
+comment|/**      * @return number of external blobs.      *      */
+specifier|public
+name|long
+name|getExternalBlobCount
+parameter_list|()
+block|{
+return|return
+name|externalBlobCount
+return|;
+block|}
+comment|/**      * @return number of {@link Segment#SMALL_LIMIT small} strings.      *      */
+specifier|public
+name|long
+name|getSmallStringCount
+parameter_list|()
+block|{
+return|return
+name|smallStringCount
+return|;
+block|}
+comment|/**      * @return number of {@link Segment#MEDIUM_LIMIT medium} strings.      *      */
+specifier|public
+name|long
+name|getMediumStringCount
+parameter_list|()
+block|{
+return|return
+name|mediumStringCount
+return|;
+block|}
+comment|/**      * @return number of long strings.      *      */
+specifier|public
+name|long
+name|getLongStringCount
+parameter_list|()
+block|{
+return|return
+name|longStringCount
+return|;
+block|}
+comment|/**      * @return number of templates.      */
+specifier|public
+name|long
+name|getTemplateCount
+parameter_list|()
+block|{
+return|return
+name|templateCount
+return|;
+block|}
+comment|/**      * @return number of nodes.      */
+specifier|public
+name|long
+name|getNodeCount
+parameter_list|()
+block|{
+return|return
+name|nodeCount
 return|;
 block|}
 specifier|public
@@ -416,6 +589,9 @@ name|nodeId
 argument_list|)
 condition|)
 block|{
+name|nodeCount
+operator|++
+expr_stmt|;
 name|Segment
 name|segment
 init|=
@@ -667,60 +843,86 @@ name|formatter
 operator|.
 name|format
 argument_list|(
-literal|"%s in maps (leaf and branch records)%n"
+literal|"%s in maps (%s leaf and branch records)%n"
 argument_list|,
 name|byteCountToDisplaySize
 argument_list|(
 name|mapSize
 argument_list|)
+argument_list|,
+name|mapCount
 argument_list|)
 expr_stmt|;
 name|formatter
 operator|.
 name|format
 argument_list|(
-literal|"%s in lists (list and bucket records)%n"
+literal|"%s in lists (%s list and bucket records)%n"
 argument_list|,
 name|byteCountToDisplaySize
 argument_list|(
 name|listSize
 argument_list|)
+argument_list|,
+name|listCount
 argument_list|)
 expr_stmt|;
 name|formatter
 operator|.
 name|format
 argument_list|(
-literal|"%s in values (value and block records)%n"
+literal|"%s in values (value and block records of %s properties, "
+operator|+
+literal|"%s/%s/%s/%s small/medium/long/external blobs, %s/%s/%s small/medium/long strings)%n"
 argument_list|,
 name|byteCountToDisplaySize
 argument_list|(
 name|valueSize
 argument_list|)
+argument_list|,
+name|propertyCount
+argument_list|,
+name|smallBlobCount
+argument_list|,
+name|mediumBlobCount
+argument_list|,
+name|longBlobCount
+argument_list|,
+name|externalBlobCount
+argument_list|,
+name|smallStringCount
+argument_list|,
+name|mediumStringCount
+argument_list|,
+name|longStringCount
 argument_list|)
 expr_stmt|;
 name|formatter
 operator|.
 name|format
 argument_list|(
-literal|"%s in templates (template records)%n"
+literal|"%s in templates (%s template records)%n"
 argument_list|,
 name|byteCountToDisplaySize
 argument_list|(
 name|templateSize
 argument_list|)
+argument_list|,
+name|templateCount
 argument_list|)
 expr_stmt|;
 name|formatter
 operator|.
 name|format
 argument_list|(
-literal|"%s in nodes (node records)%n"
+literal|"%s in nodes (%s node records)%n"
 argument_list|,
 name|byteCountToDisplaySize
 argument_list|(
 name|nodeSize
 argument_list|)
+argument_list|,
+name|nodeCount
 argument_list|)
 expr_stmt|;
 return|return
@@ -746,6 +948,9 @@ name|templateId
 argument_list|)
 condition|)
 block|{
+name|templateCount
+operator|++
+expr_stmt|;
 name|Segment
 name|segment
 init|=
@@ -1052,6 +1257,9 @@ name|mapId
 argument_list|)
 condition|)
 block|{
+name|mapCount
+operator|++
+expr_stmt|;
 if|if
 condition|(
 name|map
@@ -1287,6 +1495,9 @@ name|propertyId
 argument_list|)
 condition|)
 block|{
+name|propertyCount
+operator|++
+expr_stmt|;
 name|Segment
 name|segment
 init|=
@@ -1520,6 +1731,9 @@ operator|+
 name|head
 operator|)
 expr_stmt|;
+name|smallBlobCount
+operator|++
+expr_stmt|;
 block|}
 elseif|else
 if|if
@@ -1557,6 +1771,9 @@ literal|2
 operator|+
 name|length
 operator|)
+expr_stmt|;
+name|mediumBlobCount
+operator|++
 expr_stmt|;
 block|}
 elseif|else
@@ -1635,6 +1852,9 @@ operator|+
 name|length
 operator|)
 expr_stmt|;
+name|longBlobCount
+operator|++
+expr_stmt|;
 block|}
 elseif|else
 if|if
@@ -1680,6 +1900,9 @@ literal|2
 operator|+
 name|length
 operator|)
+expr_stmt|;
+name|externalBlobCount
+operator|++
 expr_stmt|;
 block|}
 else|else
@@ -1762,6 +1985,9 @@ operator|+
 name|length
 operator|)
 expr_stmt|;
+name|smallStringCount
+operator|++
+expr_stmt|;
 block|}
 elseif|else
 if|if
@@ -1780,6 +2006,9 @@ literal|2
 operator|+
 name|length
 operator|)
+expr_stmt|;
+name|mediumStringCount
+operator|++
 expr_stmt|;
 block|}
 elseif|else
@@ -1839,6 +2068,9 @@ operator|+
 name|length
 operator|)
 expr_stmt|;
+name|longStringCount
+operator|++
+expr_stmt|;
 block|}
 else|else
 block|{
@@ -1873,6 +2105,9 @@ name|listId
 argument_list|)
 condition|)
 block|{
+name|listCount
+operator|++
+expr_stmt|;
 name|listSize
 operator|+=
 name|noOfListSlots
