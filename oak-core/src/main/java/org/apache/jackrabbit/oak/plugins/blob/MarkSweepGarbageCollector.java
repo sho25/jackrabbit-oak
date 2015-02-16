@@ -880,6 +880,7 @@ finally|finally
 block|{
 if|if
 condition|(
+operator|!
 name|LOG
 operator|.
 name|isTraceEnabled
