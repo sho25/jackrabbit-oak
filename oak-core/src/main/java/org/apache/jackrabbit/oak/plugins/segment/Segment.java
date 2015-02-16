@@ -332,6 +332,15 @@ specifier|public
 class|class
 name|Segment
 block|{
+comment|// michid doc 10 = ..
+specifier|public
+specifier|static
+specifier|final
+name|byte
+name|STORAGE_FORMAT_VERSION
+init|=
+literal|10
+decl_stmt|;
 comment|/**      * Number of bytes used for storing a record identifier. One byte      * is used for identifying the segment and two for the record offset      * within that segment.      */
 specifier|static
 specifier|final
@@ -572,7 +581,7 @@ argument_list|(
 literal|3
 argument_list|)
 operator|==
-literal|'\n'
+name|STORAGE_FORMAT_VERSION
 argument_list|)
 expr_stmt|;
 name|this

@@ -382,6 +382,26 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|segment
+operator|.
+name|Segment
+operator|.
+name|STORAGE_FORMAT_VERSION
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -840,7 +860,7 @@ index|[
 literal|3
 index|]
 operator|=
-literal|'\n'
+name|STORAGE_FORMAT_VERSION
 expr_stmt|;
 name|buffer
 index|[
@@ -849,6 +869,7 @@ index|]
 operator|=
 literal|0
 expr_stmt|;
+comment|// reserved
 name|buffer
 index|[
 literal|5
