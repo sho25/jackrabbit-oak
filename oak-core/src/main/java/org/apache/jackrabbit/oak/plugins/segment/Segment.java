@@ -332,7 +332,7 @@ specifier|public
 class|class
 name|Segment
 block|{
-comment|// michid doc 10 = ..
+comment|/**      * Version of the segment storage format.      *<ul>      *<li>10 = all Oak versions released so far</li>      *</ul>      */
 specifier|public
 specifier|static
 specifier|final
