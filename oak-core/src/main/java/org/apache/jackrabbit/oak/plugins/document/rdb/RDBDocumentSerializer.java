@@ -1270,6 +1270,13 @@ name|getModcount
 argument_list|()
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|RDBDocumentStore
+operator|.
+name|USECMODCOUNT
+condition|)
+block|{
 name|doc
 operator|.
 name|put
@@ -1282,6 +1289,7 @@ name|getCollisionsModcount
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|row

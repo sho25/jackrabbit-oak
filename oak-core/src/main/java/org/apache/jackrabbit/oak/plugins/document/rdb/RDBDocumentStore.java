@@ -2131,6 +2131,15 @@ name|RETRIES
 init|=
 literal|10
 decl_stmt|;
+comment|// see OAK-2044
+specifier|protected
+specifier|static
+specifier|final
+name|boolean
+name|USECMODCOUNT
+init|=
+literal|true
+decl_stmt|;
 comment|// DB-specific information
 specifier|private
 name|DB
@@ -9205,6 +9214,14 @@ name|UpdateOp
 name|update
 parameter_list|)
 block|{
+if|if
+condition|(
+operator|!
+name|USECMODCOUNT
+condition|)
+return|return
+literal|false
+return|;
 for|for
 control|(
 name|Entry
