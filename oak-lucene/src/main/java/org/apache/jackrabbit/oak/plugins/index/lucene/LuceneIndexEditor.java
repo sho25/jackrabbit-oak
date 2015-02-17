@@ -2088,7 +2088,15 @@ condition|)
 block|{
 name|suggestField
 operator|=
+name|FieldFactory
+operator|.
+name|newSuggestField
+argument_list|(
 name|f
+operator|.
+name|stringValue
+argument_list|()
+argument_list|)
 expr_stmt|;
 block|}
 else|else
@@ -2383,7 +2391,7 @@ name|value
 argument_list|,
 literal|true
 argument_list|,
-literal|false
+literal|true
 argument_list|)
 argument_list|)
 expr_stmt|;
