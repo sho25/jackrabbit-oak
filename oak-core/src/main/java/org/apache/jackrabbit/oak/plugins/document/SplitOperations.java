@@ -604,7 +604,7 @@ name|getInteger
 argument_list|(
 literal|"oak.documentMK.garbage.limit"
 argument_list|,
-literal|10000
+literal|1000
 argument_list|)
 decl_stmt|;
 specifier|private
