@@ -73,6 +73,18 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|TimeUnit
+import|;
+end_import
+
+begin_import
+import|import
 name|junit
 operator|.
 name|framework
@@ -448,6 +460,23 @@ name|repoId1
 argument_list|)
 argument_list|)
 decl_stmt|;
+name|long
+name|lastModifiedRec1
+init|=
+name|rec1
+operator|.
+name|getLastModified
+argument_list|()
+decl_stmt|;
+name|TimeUnit
+operator|.
+name|MILLISECONDS
+operator|.
+name|sleep
+argument_list|(
+literal|25
+argument_list|)
+expr_stmt|;
 name|dataStore
 operator|.
 name|addMetadataRecord
@@ -488,6 +517,14 @@ argument_list|(
 name|repoId2
 argument_list|)
 argument_list|)
+decl_stmt|;
+name|long
+name|lastModifiedRec2
+init|=
+name|rec2
+operator|.
+name|getLastModified
+argument_list|()
 decl_stmt|;
 name|Assert
 operator|.
@@ -615,7 +652,8 @@ name|isEmpty
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|// Earliest should be the 1st reference record
+comment|// Since, we don't care about which file specifically but only the earliest timestamped record
+comment|// Earliest time should be the min timestamp from the 2 reference files
 name|Assert
 operator|.
 name|assertEquals
@@ -637,20 +675,18 @@ argument_list|()
 argument_list|)
 argument_list|)
 operator|.
-name|getIdentifier
-argument_list|()
-operator|.
-name|toString
+name|getLastModified
 argument_list|()
 argument_list|,
-name|SharedStoreRecordType
-operator|.
-name|REFERENCES
-operator|.
-name|getNameFromId
-argument_list|(
-name|repoId1
-argument_list|)
+operator|(
+name|lastModifiedRec1
+operator|<=
+name|lastModifiedRec2
+condition|?
+name|lastModifiedRec1
+else|:
+name|lastModifiedRec2
+operator|)
 argument_list|)
 expr_stmt|;
 comment|// Delete references and check back if deleted
