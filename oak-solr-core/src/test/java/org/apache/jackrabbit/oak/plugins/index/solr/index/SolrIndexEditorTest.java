@@ -329,16 +329,6 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|NodeBuilder
-name|builder
-init|=
-name|mock
-argument_list|(
-name|NodeBuilder
-operator|.
-name|class
-argument_list|)
-decl_stmt|;
 name|SolrServer
 name|solrServer
 init|=

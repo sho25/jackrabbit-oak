@@ -25,6 +25,16 @@ end_package
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Arrays
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -203,6 +213,54 @@ parameter_list|()
 block|{
 return|return
 name|solrConfDir
+return|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|String
+name|toString
+parameter_list|()
+block|{
+return|return
+literal|"RemoteSolrServerConfiguration{"
+operator|+
+literal|"solrConfDir='"
+operator|+
+name|solrConfDir
+operator|+
+literal|'\''
+operator|+
+literal|", solrHttpUrls="
+operator|+
+name|Arrays
+operator|.
+name|toString
+argument_list|(
+name|solrHttpUrls
+argument_list|)
+operator|+
+literal|", solrZkHost='"
+operator|+
+name|solrZkHost
+operator|+
+literal|'\''
+operator|+
+literal|", solrCollection='"
+operator|+
+name|solrCollection
+operator|+
+literal|'\''
+operator|+
+literal|", solrShardsNo="
+operator|+
+name|solrShardsNo
+operator|+
+literal|", solrReplicationFactor="
+operator|+
+name|solrReplicationFactor
+operator|+
+literal|'}'
 return|;
 block|}
 block|}

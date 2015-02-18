@@ -25,6 +25,16 @@ end_package
 
 begin_import
 import|import
+name|java
+operator|.
+name|io
+operator|.
+name|Closeable
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|annotation
@@ -57,6 +67,8 @@ begin_interface
 specifier|public
 interface|interface
 name|SolrServerProvider
+extends|extends
+name|Closeable
 block|{
 comment|/**      * provides an already initialized {@link org.apache.solr.client.solrj.SolrServer} to be used for either searching or      * indexing, or both.      *      * @return a {@link org.apache.solr.client.solrj.SolrServer} instance      * @throws Exception if anything goes wrong while initializing the {@link org.apache.solr.client.solrj.SolrServer}      */
 annotation|@

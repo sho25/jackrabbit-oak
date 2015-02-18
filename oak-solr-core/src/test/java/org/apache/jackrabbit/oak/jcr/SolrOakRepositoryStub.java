@@ -31,6 +31,16 @@ begin_import
 import|import
 name|java
 operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|Properties
@@ -426,6 +436,15 @@ operator|new
 name|SolrServerProvider
 argument_list|()
 block|{
+annotation|@
+name|Override
+specifier|public
+name|void
+name|close
+parameter_list|()
+throws|throws
+name|IOException
+block|{              }
 annotation|@
 name|CheckForNull
 annotation|@
