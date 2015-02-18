@@ -457,8 +457,6 @@ name|FilterImpl
 name|f
 parameter_list|)
 block|{
-comment|// we don't support covering indexes,
-comment|// so there is no optimization anyway, and
 comment|// we need to be careful with "property IS NULL"
 comment|// because this might cause an index
 comment|// to ignore the join condition "property = x"
@@ -468,6 +466,51 @@ comment|// where b.y is null"
 comment|// must not result in the index to check for
 comment|// "b.y is null", because that would alter the
 comment|// result
+if|if
+condition|(
+name|selector
+operator|.
+name|isOuterJoinRightHandSide
+argument_list|()
+condition|)
+block|{
+return|return;
+block|}
+if|if
+condition|(
+name|f
+operator|.
+name|getSelector
+argument_list|()
+operator|.
+name|equals
+argument_list|(
+name|selector
+argument_list|)
+condition|)
+block|{
+name|String
+name|pn
+init|=
+name|normalizePropertyName
+argument_list|(
+name|propertyName
+argument_list|)
+decl_stmt|;
+name|f
+operator|.
+name|restrictProperty
+argument_list|(
+name|pn
+argument_list|,
+name|Operator
+operator|.
+name|EQUAL
+argument_list|,
+literal|null
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 annotation|@
 name|Override

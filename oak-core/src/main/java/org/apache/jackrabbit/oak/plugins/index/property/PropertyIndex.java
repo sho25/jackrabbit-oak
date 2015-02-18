@@ -480,6 +480,7 @@ name|values
 return|;
 block|}
 specifier|private
+specifier|static
 name|PropertyIndexPlan
 name|plan
 parameter_list|(

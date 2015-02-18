@@ -1446,15 +1446,8 @@ if|if
 condition|(
 name|pr
 operator|.
-name|first
-operator|==
-literal|null
-operator|&&
-name|pr
-operator|.
-name|last
-operator|==
-literal|null
+name|isNotNullRestriction
+argument_list|()
 condition|)
 block|{
 comment|// open query: [property] is not null

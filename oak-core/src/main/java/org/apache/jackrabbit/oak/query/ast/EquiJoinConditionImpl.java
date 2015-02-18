@@ -510,7 +510,6 @@ literal|null
 expr_stmt|;
 block|}
 block|}
-comment|// always set the condition, even if unkown ( -> is not null)
 name|String
 name|p1n
 init|=
@@ -519,6 +518,31 @@ argument_list|(
 name|property1Name
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|p2
+operator|==
+literal|null
+condition|)
+block|{
+comment|// always set the condition,
+comment|// even if unknown (in which case it is converted to "is not null")
+name|f
+operator|.
+name|restrictProperty
+argument_list|(
+name|p1n
+argument_list|,
+name|Operator
+operator|.
+name|NOT_EQUAL
+argument_list|,
+literal|null
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
 name|f
 operator|.
 name|restrictProperty
@@ -532,6 +556,7 @@ argument_list|,
 name|p2
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 if|if
 condition|(

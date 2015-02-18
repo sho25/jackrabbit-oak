@@ -3999,18 +3999,16 @@ if|if
 condition|(
 name|pr
 operator|.
-name|first
-operator|==
-literal|null
-operator|&&
+name|isNullRestriction
+argument_list|()
+operator|||
 name|pr
 operator|.
-name|last
-operator|==
-literal|null
+name|isNotNullRestriction
+argument_list|()
 condition|)
 block|{
-comment|// ignore property existence checks, Lucene can't to 'property
+comment|// ignore property existence checks, Lucene can't do 'property
 comment|// is not null' queries (OAK-1208)
 continue|continue;
 block|}

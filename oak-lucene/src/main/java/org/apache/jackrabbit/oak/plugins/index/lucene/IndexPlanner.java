@@ -859,6 +859,17 @@ name|getPropertyRestrictions
 argument_list|()
 control|)
 block|{
+if|if
+condition|(
+name|pr
+operator|.
+name|isNullRestriction
+argument_list|()
+condition|)
+block|{
+comment|// ignore for planning
+continue|continue;
+block|}
 name|PropertyDefinition
 name|pd
 init|=

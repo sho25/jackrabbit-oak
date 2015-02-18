@@ -899,6 +899,17 @@ operator|!=
 literal|null
 condition|)
 block|{
+if|if
+condition|(
+name|restriction
+operator|.
+name|isNullRestriction
+argument_list|()
+condition|)
+block|{
+comment|// covering indexes are not currently supported
+continue|continue;
+block|}
 name|Set
 argument_list|<
 name|String
@@ -1360,7 +1371,7 @@ return|;
 block|}
 else|else
 block|{
-comment|// processed as "[property] is not null"
+comment|// "[property] is not null" or "[property] is null"
 return|return
 literal|null
 return|;

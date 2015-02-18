@@ -574,7 +574,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"Filter(, path=*, property=[x=[]])"
+literal|"Filter(, path=*, property=[x=[is not null]])"
 argument_list|,
 name|f
 operator|.
@@ -597,7 +597,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"Filter(, path=*, property=[x=[, ..1)]])"
+literal|"Filter(, path=*, property=[x=[is not null, ..1)]])"
 argument_list|,
 name|f
 operator|.
@@ -622,7 +622,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"Filter(, path=*, property=[x=[, ..1), 2]])"
+literal|"Filter(, path=*, property=[x=[is not null, ..1), 2]])"
 argument_list|,
 name|f
 operator|.
