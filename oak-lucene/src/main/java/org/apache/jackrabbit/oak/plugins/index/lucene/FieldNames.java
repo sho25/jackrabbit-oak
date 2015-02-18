@@ -138,6 +138,15 @@ name|FULLTEXT_RELATIVE_NODE
 init|=
 literal|"fullnode:"
 decl_stmt|;
+comment|/**      * Name of the field that contains those property names which are not found      * (or were null) for the given      */
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|NULL_PROPS
+init|=
+literal|":nullProps"
+decl_stmt|;
 comment|/**      * Used to select only the PATH field from the lucene documents      */
 specifier|public
 specifier|static
