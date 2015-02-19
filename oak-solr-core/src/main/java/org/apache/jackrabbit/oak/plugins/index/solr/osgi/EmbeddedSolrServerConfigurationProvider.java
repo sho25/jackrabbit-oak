@@ -265,7 +265,7 @@ literal|true
 argument_list|,
 name|label
 operator|=
-literal|"Oak Solr embedded server configuration"
+literal|"Apache Jackrabbit Oak Solr embedded server configuration"
 argument_list|)
 annotation|@
 name|Service

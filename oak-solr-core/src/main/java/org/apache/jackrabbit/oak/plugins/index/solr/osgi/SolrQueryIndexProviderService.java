@@ -397,7 +397,7 @@ literal|true
 argument_list|,
 name|label
 operator|=
-literal|"Oak Solr Query index provider configuration"
+literal|"Apache Jackrabbit Oak Solr Query index provider configuration"
 argument_list|)
 specifier|public
 class|class

@@ -315,7 +315,7 @@ name|Component
 argument_list|(
 name|label
 operator|=
-literal|"Oak Solr indexing / search configuration"
+literal|"Apache Jackrabbit Oak Solr indexing / search configuration"
 argument_list|,
 name|metatype
 operator|=

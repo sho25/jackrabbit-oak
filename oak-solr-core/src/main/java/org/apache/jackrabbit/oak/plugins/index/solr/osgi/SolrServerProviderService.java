@@ -353,7 +353,7 @@ literal|true
 argument_list|,
 name|label
 operator|=
-literal|"Oak Solr server provider"
+literal|"Apache Jackrabbit Oak Solr server provider"
 argument_list|,
 name|immediate
 operator|=
