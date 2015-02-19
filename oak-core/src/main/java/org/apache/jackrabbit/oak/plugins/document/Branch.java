@@ -1092,6 +1092,24 @@ name|path
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
+specifier|public
+name|String
+name|toString
+parameter_list|()
+block|{
+return|return
+literal|"B ("
+operator|+
+name|modifications
+operator|.
+name|size
+argument_list|()
+operator|+
+literal|")"
+return|;
+block|}
 block|}
 specifier|static
 class|class
@@ -1305,6 +1323,24 @@ argument_list|(
 literal|"RebaseCommit is read-only"
 argument_list|)
 throw|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|String
+name|toString
+parameter_list|()
+block|{
+return|return
+literal|"R ("
+operator|+
+name|previous
+operator|.
+name|size
+argument_list|()
+operator|+
+literal|")"
+return|;
 block|}
 block|}
 specifier|final
