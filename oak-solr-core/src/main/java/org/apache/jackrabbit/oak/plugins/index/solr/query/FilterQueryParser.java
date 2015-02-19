@@ -405,6 +405,17 @@ range|:
 name|propertyRestrictions
 control|)
 block|{
+if|if
+condition|(
+name|pr
+operator|.
+name|isNullRestriction
+argument_list|()
+condition|)
+block|{
+comment|// can not use full "x is null"
+continue|continue;
+block|}
 comment|// native query support
 if|if
 condition|(

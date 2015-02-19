@@ -2868,15 +2868,8 @@ if|if
 condition|(
 name|lpr
 operator|.
-name|first
-operator|==
-literal|null
-operator|&&
-name|lpr
-operator|.
-name|last
-operator|==
-literal|null
+name|isNotNullRestriction
+argument_list|()
 condition|)
 block|{
 comment|// property not null case
