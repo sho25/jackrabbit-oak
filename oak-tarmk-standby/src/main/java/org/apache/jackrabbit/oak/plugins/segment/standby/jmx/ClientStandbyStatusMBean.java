@@ -85,6 +85,15 @@ name|int
 name|calcSecondsSinceLastSuccess
 parameter_list|()
 function_decl|;
+annotation|@
+name|Description
+argument_list|(
+literal|"Runs garbage collection"
+argument_list|)
+name|void
+name|cleanup
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 

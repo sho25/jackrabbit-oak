@@ -1504,6 +1504,19 @@ name|getSecondsSinceLastSuccess
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
+specifier|public
+name|void
+name|cleanup
+parameter_list|()
+block|{
+name|store
+operator|.
+name|cleanup
+argument_list|()
+expr_stmt|;
+block|}
 block|}
 end_class
 
