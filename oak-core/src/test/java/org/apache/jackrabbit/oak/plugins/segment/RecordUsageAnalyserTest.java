@@ -203,6 +203,26 @@ begin_import
 import|import static
 name|org
 operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|segment
+operator|.
+name|SegmentVersion
+operator|.
+name|V_11
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
 name|junit
 operator|.
 name|Assert
@@ -401,6 +421,8 @@ name|store
 operator|.
 name|getTracker
 argument_list|()
+argument_list|,
+name|V_11
 argument_list|)
 expr_stmt|;
 name|analyser
@@ -1916,7 +1938,7 @@ name|analyser
 argument_list|,
 literal|1
 argument_list|,
-literal|3
+literal|5
 argument_list|,
 literal|6
 argument_list|,

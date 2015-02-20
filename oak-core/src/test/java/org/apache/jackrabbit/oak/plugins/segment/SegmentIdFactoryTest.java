@@ -449,7 +449,11 @@ init|=
 name|SegmentWriter
 operator|.
 name|createNewBuffer
-argument_list|()
+argument_list|(
+name|SegmentVersion
+operator|.
+name|V_11
+argument_list|)
 decl_stmt|;
 name|ByteBuffer
 name|data

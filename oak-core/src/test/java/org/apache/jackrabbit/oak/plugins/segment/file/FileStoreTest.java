@@ -90,6 +90,26 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|segment
+operator|.
+name|SegmentVersion
+operator|.
+name|V_11
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -963,6 +983,8 @@ name|store
 operator|.
 name|getTracker
 argument_list|()
+argument_list|,
+name|V_11
 argument_list|)
 expr_stmt|;
 name|compactor
