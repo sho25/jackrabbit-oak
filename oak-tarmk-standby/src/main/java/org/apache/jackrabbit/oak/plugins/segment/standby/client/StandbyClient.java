@@ -1252,9 +1252,6 @@ argument_list|,
 name|e
 argument_list|)
 expr_stmt|;
-name|stop
-argument_list|()
-expr_stmt|;
 block|}
 finally|finally
 block|{
