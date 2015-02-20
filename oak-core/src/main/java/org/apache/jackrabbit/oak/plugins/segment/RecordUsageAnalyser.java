@@ -1236,8 +1236,6 @@ argument_list|)
 expr_stmt|;
 name|size
 operator|+=
-name|Segment
-operator|.
 name|RECORD_ID_BYTES
 expr_stmt|;
 block|}
@@ -1280,8 +1278,6 @@ argument_list|)
 expr_stmt|;
 name|size
 operator|+=
-name|Segment
-operator|.
 name|RECORD_ID_BYTES
 expr_stmt|;
 block|}
@@ -1314,8 +1310,6 @@ argument_list|)
 expr_stmt|;
 name|size
 operator|+=
-name|Segment
-operator|.
 name|RECORD_ID_BYTES
 expr_stmt|;
 block|}
@@ -1351,6 +1345,10 @@ operator|+
 name|size
 argument_list|)
 decl_stmt|;
+name|size
+operator|+=
+name|RECORD_ID_BYTES
+expr_stmt|;
 name|ListRecord
 name|propertyNames
 init|=
@@ -1387,12 +1385,6 @@ argument_list|(
 name|i
 argument_list|)
 decl_stmt|;
-name|size
-operator|+=
-name|Segment
-operator|.
-name|RECORD_ID_BYTES
-expr_stmt|;
 name|size
 operator|++
 expr_stmt|;
@@ -1443,8 +1435,6 @@ argument_list|)
 decl_stmt|;
 name|size
 operator|+=
-name|Segment
-operator|.
 name|RECORD_ID_BYTES
 expr_stmt|;
 name|size
