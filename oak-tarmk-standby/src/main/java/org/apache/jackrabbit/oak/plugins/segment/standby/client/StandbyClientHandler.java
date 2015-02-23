@@ -314,6 +314,11 @@ name|int
 name|readTimeoutMs
 decl_stmt|;
 specifier|private
+specifier|final
+name|boolean
+name|autoClean
+decl_stmt|;
+specifier|private
 name|EventExecutorGroup
 name|loaderExecutor
 decl_stmt|;
@@ -339,6 +344,9 @@ name|running
 parameter_list|,
 name|int
 name|readTimeoutMs
+parameter_list|,
+name|boolean
+name|autoClean
 parameter_list|)
 block|{
 name|this
@@ -370,6 +378,12 @@ operator|.
 name|readTimeoutMs
 operator|=
 name|readTimeoutMs
+expr_stmt|;
+name|this
+operator|.
+name|autoClean
+operator|=
+name|autoClean
 expr_stmt|;
 block|}
 annotation|@
@@ -572,6 +586,8 @@ argument_list|,
 name|running
 argument_list|,
 name|readTimeoutMs
+argument_list|,
+name|autoClean
 argument_list|)
 decl_stmt|;
 name|ctx
