@@ -243,6 +243,16 @@ name|org
 operator|.
 name|junit
 operator|.
+name|Ignore
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
 name|Test
 import|;
 end_import
@@ -362,9 +372,11 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * OAK-2294 Corrupt repository after concurrent version operations      *      * @see<a      *      href="https://issues.apache.org/jira/browse/OAK-2294">OAK-2294</a>      */
+comment|/**      * OAK-2294 Corrupt repository after concurrent version operations      *       * TODO Test is currently ignored because of how memory intensive it is      *      * @see<a      *      href="https://issues.apache.org/jira/browse/OAK-2294">OAK-2294</a>      */
 annotation|@
 name|Test
+annotation|@
+name|Ignore
 specifier|public
 name|void
 name|corruption
