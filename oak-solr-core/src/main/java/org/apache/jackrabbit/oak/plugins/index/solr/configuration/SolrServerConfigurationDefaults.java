@@ -169,7 +169,9 @@ specifier|final
 name|int
 name|ROWS
 init|=
-literal|50
+name|Integer
+operator|.
+name|MAX_VALUE
 decl_stmt|;
 specifier|public
 specifier|static
