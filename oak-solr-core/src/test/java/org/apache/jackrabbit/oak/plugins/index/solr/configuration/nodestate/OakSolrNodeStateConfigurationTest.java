@@ -165,6 +165,18 @@ name|assertNotNull
 import|;
 end_import
 
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|fail
+import|;
+end_import
+
 begin_comment
 comment|/**  * Tests for {@link org.apache.jackrabbit.oak.plugins.index.solr.configuration.nodestate.OakSolrNodeStateConfiguration}  */
 end_comment
@@ -262,23 +274,16 @@ argument_list|)
 operator|.
 name|setProperty
 argument_list|(
-literal|"coreName"
+literal|"type"
 argument_list|,
-literal|"cn"
+literal|"solr"
 argument_list|)
 operator|.
 name|setProperty
 argument_list|(
-literal|"solrHomePath"
+literal|"rows"
 argument_list|,
-literal|"sh"
-argument_list|)
-operator|.
-name|setProperty
-argument_list|(
-literal|"solrConfigPath"
-argument_list|,
-literal|"sc"
+literal|"100"
 argument_list|)
 expr_stmt|;
 name|store
@@ -325,7 +330,7 @@ literal|"solrIdx"
 argument_list|)
 decl_stmt|;
 name|OakSolrNodeStateConfiguration
-name|fixedNodeStateConfiguration
+name|nodeStateConfiguration
 init|=
 operator|new
 name|OakSolrNodeStateConfiguration
@@ -335,12 +340,12 @@ argument_list|)
 decl_stmt|;
 name|assertNotNull
 argument_list|(
-name|fixedNodeStateConfiguration
+name|nodeStateConfiguration
+operator|.
+name|getCatchAllField
+argument_list|()
 argument_list|)
 expr_stmt|;
-comment|//        assertEquals("sh", configuration.getSolrHomePath()); // property defined in the node state
-comment|//        assertEquals("cn", solrServerConfiguration.getCoreName()); // property defined in the node state
-comment|//        assertEquals("path_exact", fixedNodeStateConfiguration.getPathField()); // using default as this property is not defined in the node state
 block|}
 annotation|@
 name|Test
@@ -369,20 +374,23 @@ argument_list|(
 literal|"a"
 argument_list|)
 decl_stmt|;
-name|OakSolrNodeStateConfiguration
-name|fixedNodeStateConfiguration
-init|=
+try|try
+block|{
 operator|new
 name|OakSolrNodeStateConfiguration
 argument_list|(
 name|idxDef
 argument_list|)
-decl_stmt|;
-name|assertNotNull
-argument_list|(
-name|fixedNodeStateConfiguration
-argument_list|)
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|IllegalArgumentException
+name|e
+parameter_list|)
+block|{
+comment|// expected to fail as the NodeState doesn't exist
+block|}
 block|}
 annotation|@
 name|Test
@@ -403,23 +411,29 @@ argument_list|()
 operator|.
 name|getChildNode
 argument_list|(
-literal|"a"
+literal|"x"
 argument_list|)
 decl_stmt|;
-name|OakSolrNodeStateConfiguration
-name|fixedNodeStateConfiguration
-init|=
+try|try
+block|{
 operator|new
 name|OakSolrNodeStateConfiguration
 argument_list|(
 name|idxDef
 argument_list|)
-decl_stmt|;
-name|assertNotNull
-argument_list|(
-name|fixedNodeStateConfiguration
-argument_list|)
 expr_stmt|;
+name|fail
+argument_list|()
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|IllegalArgumentException
+name|e
+parameter_list|)
+block|{
+comment|// expected to fail as the NodeState is not a solr node
+block|}
 block|}
 block|}
 end_class
