@@ -810,6 +810,8 @@ name|Clock
 name|clock
 decl_stmt|;
 comment|// access time stamps and counters for statistics about this session
+specifier|private
+specifier|final
 name|Counters
 name|sessionCounters
 decl_stmt|;
