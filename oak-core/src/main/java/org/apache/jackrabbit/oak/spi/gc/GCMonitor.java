@@ -110,6 +110,87 @@ name|long
 name|currentSize
 parameter_list|)
 function_decl|;
+class|class
+name|Empty
+implements|implements
+name|GCMonitor
+block|{
+annotation|@
+name|Override
+specifier|public
+name|void
+name|info
+parameter_list|(
+name|String
+name|message
+parameter_list|,
+name|Object
+index|[]
+name|arguments
+parameter_list|)
+block|{ }
+annotation|@
+name|Override
+specifier|public
+name|void
+name|warn
+parameter_list|(
+name|String
+name|message
+parameter_list|,
+name|Object
+index|[]
+name|arguments
+parameter_list|)
+block|{ }
+annotation|@
+name|Override
+specifier|public
+name|void
+name|error
+parameter_list|(
+name|String
+name|message
+parameter_list|,
+name|Exception
+name|e
+parameter_list|)
+block|{ }
+annotation|@
+name|Override
+specifier|public
+name|void
+name|skipped
+parameter_list|(
+name|String
+name|reason
+parameter_list|,
+name|Object
+index|[]
+name|arguments
+parameter_list|)
+block|{ }
+annotation|@
+name|Override
+specifier|public
+name|void
+name|compacted
+parameter_list|()
+block|{ }
+annotation|@
+name|Override
+specifier|public
+name|void
+name|cleaned
+parameter_list|(
+name|long
+name|reclaimedSize
+parameter_list|,
+name|long
+name|currentSize
+parameter_list|)
+block|{ }
+block|}
 block|}
 end_interface
 
