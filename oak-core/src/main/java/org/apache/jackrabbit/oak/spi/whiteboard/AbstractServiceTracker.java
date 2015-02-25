@@ -212,13 +212,13 @@ name|void
 name|stop
 parameter_list|()
 block|{
-name|checkState
-argument_list|(
+if|if
+condition|(
 name|tracker
 operator|!=
 name|stopped
-argument_list|)
-expr_stmt|;
+condition|)
+block|{
 name|Tracker
 argument_list|<
 name|T
@@ -236,6 +236,7 @@ operator|.
 name|stop
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 comment|/**      * Returns all services of type {@code T} that are currently available.      * This method is intentionally not synchronized to prevent lock      * contention when accessed frequently in highly concurrent code.      *      * @return currently available services      */
 specifier|protected
