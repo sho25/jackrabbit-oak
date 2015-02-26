@@ -127,6 +127,26 @@ name|FulltextQueryIndex
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
+import|;
+end_import
+
 begin_comment
 comment|/**  * Support for "spellcheck(...)  */
 end_comment
@@ -138,6 +158,19 @@ name|SpellcheckImpl
 extends|extends
 name|ConstraintImpl
 block|{
+specifier|private
+specifier|final
+name|Logger
+name|log
+init|=
+name|LoggerFactory
+operator|.
+name|getLogger
+argument_list|(
+name|getClass
+argument_list|()
+argument_list|)
+decl_stmt|;
 specifier|public
 specifier|static
 specifier|final
@@ -273,16 +306,19 @@ name|FulltextQueryIndex
 operator|)
 condition|)
 block|{
-throw|throw
-operator|new
-name|IllegalArgumentException
+name|log
+operator|.
+name|warn
 argument_list|(
 literal|"No full-text index was found that can process the condition "
 operator|+
 name|toString
 argument_list|()
 argument_list|)
-throw|;
+expr_stmt|;
+return|return
+literal|false
+return|;
 block|}
 comment|// we assume the index only returns the requested entries
 return|return
