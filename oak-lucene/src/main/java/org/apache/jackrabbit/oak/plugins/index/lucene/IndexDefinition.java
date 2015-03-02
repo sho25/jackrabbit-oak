@@ -67,6 +67,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Locale
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Map
 import|;
 end_import
@@ -3299,6 +3309,7 @@ specifier|final
 name|String
 name|nodeTypeName
 decl_stmt|;
+comment|/**          * Case insensitive map of lower cased propertyName to propertyConfigs          */
 specifier|private
 specifier|final
 name|Map
@@ -3847,6 +3858,13 @@ operator|.
 name|get
 argument_list|(
 name|propertyName
+operator|.
+name|toLowerCase
+argument_list|(
+name|Locale
+operator|.
+name|ENGLISH
+argument_list|)
 argument_list|)
 decl_stmt|;
 if|if
@@ -4155,6 +4173,13 @@ argument_list|(
 name|pd
 operator|.
 name|name
+operator|.
+name|toLowerCase
+argument_list|(
+name|Locale
+operator|.
+name|ENGLISH
+argument_list|)
 argument_list|,
 name|pd
 argument_list|)
