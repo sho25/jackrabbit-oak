@@ -46,6 +46,13 @@ specifier|public
 interface|interface
 name|GCMonitor
 block|{
+name|GCMonitor
+name|EMPTY
+init|=
+operator|new
+name|Empty
+argument_list|()
+decl_stmt|;
 comment|/**      * Log a message at the INFO level according to the specified format      * and arguments.      *<p/>      *<p>This form avoids superfluous string concatenation when the logger      * is disabled for the INFO level. However, this variant incurs the hidden      * (and relatively small) cost of creating an<code>Object[]</code> before invoking the method,      * even if this logger is disabled for INFO. The variants taking      * {@link #info(String, Object) one} and {@link #info(String, Object, Object) two}      * arguments exist solely in order to avoid this hidden cost.</p>      *      * @param format    the format string      * @param arguments a list of 3 or more arguments      */
 comment|/**      * Informal notification on the progress of garbage collection.      * @param message  The message with {} place holders for the {@code arguments}      * @param arguments      */
 name|void
@@ -55,7 +62,7 @@ name|String
 name|message
 parameter_list|,
 name|Object
-index|[]
+modifier|...
 name|arguments
 parameter_list|)
 function_decl|;
@@ -67,7 +74,7 @@ name|String
 name|message
 parameter_list|,
 name|Object
-index|[]
+modifier|...
 name|arguments
 parameter_list|)
 function_decl|;
@@ -90,7 +97,7 @@ name|String
 name|reason
 parameter_list|,
 name|Object
-index|[]
+modifier|...
 name|arguments
 parameter_list|)
 function_decl|;
@@ -191,6 +198,7 @@ name|currentSize
 parameter_list|)
 block|{ }
 block|}
+empty_stmt|;
 block|}
 end_interface
 
