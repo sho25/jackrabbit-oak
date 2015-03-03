@@ -1410,7 +1410,7 @@ block|{
 throw|throw
 name|constraintViolation
 argument_list|(
-literal|27
+literal|32
 argument_list|,
 literal|"Attempt to set password with system user."
 argument_list|)
@@ -1429,7 +1429,7 @@ block|{
 throw|throw
 name|constraintViolation
 argument_list|(
-literal|28
+literal|33
 argument_list|,
 literal|"Attempt to add rep:pwd node to a system user."
 argument_list|)
