@@ -147,6 +147,17 @@ name|OakFileDataStore
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
+specifier|protected
+name|String
+name|getDescription
+parameter_list|()
+block|{
+return|return
+literal|"{\"type\":\"filesystem\"}"
+return|;
+block|}
 block|}
 end_class
 

@@ -201,6 +201,17 @@ return|return
 name|dataStore
 return|;
 block|}
+annotation|@
+name|Override
+specifier|protected
+name|String
+name|getDescription
+parameter_list|()
+block|{
+return|return
+literal|"{\"type\":\"S3\"}"
+return|;
+block|}
 block|}
 end_class
 
