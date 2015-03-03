@@ -437,7 +437,6 @@ name|PrincipalProviderImpl
 implements|implements
 name|PrincipalProvider
 block|{
-comment|/**      * logger instance      */
 specifier|private
 specifier|static
 specifier|final
@@ -762,9 +761,6 @@ name|authorizables
 argument_list|,
 name|Predicates
 operator|.
-expr|<
-name|Object
-operator|>
 name|notNull
 argument_list|()
 argument_list|)
