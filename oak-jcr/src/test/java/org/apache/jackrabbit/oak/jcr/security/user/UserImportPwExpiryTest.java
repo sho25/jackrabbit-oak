@@ -23,6 +23,16 @@ end_package
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|HashMap
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|annotation
@@ -48,20 +58,6 @@ operator|.
 name|jcr
 operator|.
 name|Property
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|collect
-operator|.
-name|ImmutableMap
 import|;
 end_import
 
@@ -170,16 +166,6 @@ import|;
 end_import
 
 begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|HashMap
-import|;
-end_import
-
-begin_import
 import|import static
 name|org
 operator|.
@@ -278,10 +264,6 @@ name|ConfigurationParameters
 operator|.
 name|of
 argument_list|(
-name|ImmutableMap
-operator|.
-name|of
-argument_list|(
 name|UserConfiguration
 operator|.
 name|NAME
@@ -291,7 +273,6 @@ operator|.
 name|of
 argument_list|(
 name|userParams
-argument_list|)
 argument_list|)
 argument_list|)
 return|;

@@ -37,16 +37,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|Collections
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|HashMap
 import|;
 end_import
@@ -148,20 +138,6 @@ operator|.
 name|security
 operator|.
 name|Privilege
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|collect
-operator|.
-name|ImmutableMap
 import|;
 end_import
 
@@ -579,10 +555,6 @@ name|ConfigurationParameters
 operator|.
 name|of
 argument_list|(
-name|ImmutableMap
-operator|.
-name|of
-argument_list|(
 name|UserConfiguration
 operator|.
 name|NAME
@@ -592,7 +564,6 @@ operator|.
 name|of
 argument_list|(
 name|userParams
-argument_list|)
 argument_list|)
 argument_list|)
 return|;
@@ -749,10 +720,6 @@ name|ConfigurationParameters
 operator|.
 name|of
 argument_list|(
-name|Collections
-operator|.
-name|singletonMap
-argument_list|(
 name|AccessControlAction
 operator|.
 name|USER_PRIVILEGE_NAMES
@@ -765,7 +732,6 @@ name|Privilege
 operator|.
 name|JCR_ALL
 block|}
-argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -936,10 +902,6 @@ name|ConfigurationParameters
 operator|.
 name|of
 argument_list|(
-name|Collections
-operator|.
-name|singletonMap
-argument_list|(
 name|AccessControlAction
 operator|.
 name|USER_PRIVILEGE_NAMES
@@ -952,7 +914,6 @@ name|Privilege
 operator|.
 name|JCR_ALL
 block|}
-argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1123,10 +1084,6 @@ name|ConfigurationParameters
 operator|.
 name|of
 argument_list|(
-name|Collections
-operator|.
-name|singletonMap
-argument_list|(
 name|AccessControlAction
 operator|.
 name|GROUP_PRIVILEGE_NAMES
@@ -1139,7 +1096,6 @@ name|Privilege
 operator|.
 name|JCR_READ
 block|}
-argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1441,8 +1397,6 @@ parameter_list|,
 name|NamePathMapper
 name|namePathMapper
 parameter_list|)
-throws|throws
-name|RepositoryException
 block|{
 comment|// ignore
 block|}
@@ -1464,8 +1418,6 @@ parameter_list|,
 name|NamePathMapper
 name|namePathMapper
 parameter_list|)
-throws|throws
-name|RepositoryException
 block|{
 name|pw
 operator|=

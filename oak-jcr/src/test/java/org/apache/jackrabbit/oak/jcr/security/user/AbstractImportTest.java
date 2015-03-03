@@ -444,20 +444,6 @@ import|;
 end_import
 
 begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|collect
-operator|.
-name|ImmutableMap
-import|;
-end_import
-
-begin_import
 import|import static
 name|org
 operator|.
@@ -992,10 +978,6 @@ name|ConfigurationParameters
 operator|.
 name|of
 argument_list|(
-name|ImmutableMap
-operator|.
-name|of
-argument_list|(
 name|UserConfiguration
 operator|.
 name|NAME
@@ -1005,7 +987,6 @@ operator|.
 name|of
 argument_list|(
 name|userParams
-argument_list|)
 argument_list|)
 argument_list|)
 return|;
