@@ -895,6 +895,18 @@ begin_import
 import|import static
 name|org
 operator|.
+name|hamcrest
+operator|.
+name|CoreMatchers
+operator|.
+name|not
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
 name|junit
 operator|.
 name|Assert
@@ -2760,6 +2772,155 @@ argument_list|(
 literal|"/test/a"
 argument_list|,
 literal|"/test/b"
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+comment|//OAK-2568
+annotation|@
+name|Test
+specifier|public
+name|void
+name|redundantNotNullCheck
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|Tree
+name|idx
+init|=
+name|createIndex
+argument_list|(
+literal|"test1"
+argument_list|,
+name|of
+argument_list|(
+literal|"tags"
+argument_list|)
+argument_list|)
+decl_stmt|;
+name|root
+operator|.
+name|commit
+argument_list|()
+expr_stmt|;
+name|Tree
+name|test
+init|=
+name|root
+operator|.
+name|getTree
+argument_list|(
+literal|"/"
+argument_list|)
+operator|.
+name|addChild
+argument_list|(
+literal|"test"
+argument_list|)
+decl_stmt|;
+name|test
+operator|.
+name|addChild
+argument_list|(
+literal|"a"
+argument_list|)
+operator|.
+name|setProperty
+argument_list|(
+literal|"tags"
+argument_list|,
+name|of
+argument_list|(
+literal|"a"
+argument_list|,
+literal|"b"
+argument_list|)
+argument_list|,
+name|Type
+operator|.
+name|STRINGS
+argument_list|)
+expr_stmt|;
+name|test
+operator|.
+name|addChild
+argument_list|(
+literal|"b"
+argument_list|)
+operator|.
+name|setProperty
+argument_list|(
+literal|"tags"
+argument_list|,
+name|of
+argument_list|(
+literal|"a"
+argument_list|,
+literal|"c"
+argument_list|)
+argument_list|,
+name|Type
+operator|.
+name|STRINGS
+argument_list|)
+expr_stmt|;
+name|root
+operator|.
+name|commit
+argument_list|()
+expr_stmt|;
+name|String
+name|q
+init|=
+literal|"SELECT * FROM [nt:unstructured] as content WHERE ISDESCENDANTNODE('/content/dam/en/us')\n"
+operator|+
+literal|"and(\n"
+operator|+
+literal|"    content.[tags] = 'Products:A'\n"
+operator|+
+literal|"    or content.[tags] = 'Products:A/B'\n"
+operator|+
+literal|"    or content.[tags] = 'Products:A/B'\n"
+operator|+
+literal|"    or content.[tags] = 'Products:A'\n"
+operator|+
+literal|")\n"
+operator|+
+literal|"and(\n"
+operator|+
+literal|"    content.[tags] = 'DocTypes:A'\n"
+operator|+
+literal|"    or content.[tags] = 'DocTypes:B'\n"
+operator|+
+literal|"    or content.[tags] = 'DocTypes:C'\n"
+operator|+
+literal|"    or content.[tags] = 'ProblemType:A'\n"
+operator|+
+literal|")\n"
+operator|+
+literal|"and(\n"
+operator|+
+literal|"    content.[hasRendition] IS NULL\n"
+operator|+
+literal|"    or content.[hasRendition] = 'false'\n"
+operator|+
+literal|")"
+decl_stmt|;
+comment|//Check that filter created out of query does not have is not null restriction
+name|assertThat
+argument_list|(
+name|explain
+argument_list|(
+name|q
+argument_list|)
+argument_list|,
+name|not
+argument_list|(
+name|containsString
+argument_list|(
+literal|"[content].[tags] is not null"
+argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
