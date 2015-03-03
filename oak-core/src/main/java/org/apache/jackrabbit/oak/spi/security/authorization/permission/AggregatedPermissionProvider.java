@@ -49,6 +49,26 @@ name|Tree
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|spi
+operator|.
+name|security
+operator|.
+name|privilege
+operator|.
+name|PrivilegeBits
+import|;
+end_import
+
 begin_comment
 comment|/**  * Extension of the {@link PermissionProvider} interface that allows it to be  * used in combination with other provider implementations.  */
 end_comment
@@ -60,18 +80,6 @@ name|AggregatedPermissionProvider
 extends|extends
 name|PermissionProvider
 block|{
-comment|/**      * Name of the configuration option that specifies the {@link org.apache.jackrabbit.oak.spi.security.authorization.permission.ControlFlag}      * of this provider instance.      */
-name|String
-name|PARAM_CONTROL_FLAG
-init|=
-literal|"controlFlag"
-decl_stmt|;
-annotation|@
-name|Nonnull
-name|ControlFlag
-name|getFlag
-parameter_list|()
-function_decl|;
 name|boolean
 name|handles
 parameter_list|(
@@ -93,6 +101,11 @@ annotation|@
 name|Nonnull
 name|Tree
 name|tree
+parameter_list|,
+annotation|@
+name|Nonnull
+name|PrivilegeBits
+name|privilegeBits
 parameter_list|)
 function_decl|;
 name|boolean

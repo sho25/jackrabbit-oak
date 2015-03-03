@@ -219,14 +219,13 @@ operator|.
 name|before
 argument_list|()
 expr_stmt|;
-name|setCompositeConfiguration
-argument_list|(
+name|compositeConfiguration
+operator|=
 operator|new
 name|CompositeTokenConfiguration
 argument_list|(
 name|getSecurityProvider
 argument_list|()
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -549,8 +548,7 @@ init|=
 operator|(
 name|CompositeTokenConfiguration
 operator|)
-name|getCompositeConfiguration
-argument_list|()
+name|compositeConfiguration
 decl_stmt|;
 name|TokenProvider
 name|tp

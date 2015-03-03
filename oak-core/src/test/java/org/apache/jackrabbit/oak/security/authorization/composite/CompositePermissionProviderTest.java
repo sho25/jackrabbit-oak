@@ -21,12 +21,26 @@ name|composite
 package|;
 end_package
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|AbstractSecurityTest
+import|;
+end_import
+
 begin_class
 specifier|public
 class|class
 name|CompositePermissionProviderTest
 extends|extends
-name|AbstractCompositeTest
+name|AbstractSecurityTest
 block|{
 comment|// TODO
 block|}
