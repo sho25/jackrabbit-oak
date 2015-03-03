@@ -66,7 +66,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A very simple estimator for no. of entries in the index using least mean square.  */
+comment|/**  * A very simple estimator for no. of entries in the index using least mean square update method but not the full stochastic  * gradient descent algorithm (yet?).  */
 end_comment
 
 begin_class
@@ -78,6 +78,35 @@ name|double
 index|[]
 name|weights
 decl_stmt|;
+specifier|private
+specifier|final
+name|double
+name|alpha
+decl_stmt|;
+specifier|public
+name|LMSEstimator
+parameter_list|(
+name|double
+name|alpha
+parameter_list|,
+name|double
+index|[]
+name|weights
+parameter_list|)
+block|{
+name|this
+operator|.
+name|alpha
+operator|=
+name|alpha
+expr_stmt|;
+name|this
+operator|.
+name|weights
+operator|=
+name|weights
+expr_stmt|;
+block|}
 specifier|public
 name|LMSEstimator
 parameter_list|(
@@ -91,6 +120,12 @@ operator|.
 name|weights
 operator|=
 name|weights
+expr_stmt|;
+name|this
+operator|.
+name|alpha
+operator|=
+literal|0.03
 expr_stmt|;
 block|}
 specifier|public
@@ -106,6 +141,12 @@ name|double
 index|[
 literal|5
 index|]
+expr_stmt|;
+name|this
+operator|.
+name|alpha
+operator|=
+literal|0.03
 expr_stmt|;
 block|}
 specifier|synchronized
@@ -180,7 +221,7 @@ index|[
 name|i
 index|]
 operator|+
-literal|0.03
+name|alpha
 operator|*
 name|errors
 expr_stmt|;
