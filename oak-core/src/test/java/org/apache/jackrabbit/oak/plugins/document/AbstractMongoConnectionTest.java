@@ -176,6 +176,14 @@ name|getDB
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|Revision
+operator|.
+name|setClock
+argument_list|(
+name|getTestClock
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|mk
 operator|=
 operator|new
@@ -255,6 +263,11 @@ expr_stmt|;
 name|mongoConnection
 operator|.
 name|close
+argument_list|()
+expr_stmt|;
+name|Revision
+operator|.
+name|resetClockToDefault
 argument_list|()
 expr_stmt|;
 block|}
