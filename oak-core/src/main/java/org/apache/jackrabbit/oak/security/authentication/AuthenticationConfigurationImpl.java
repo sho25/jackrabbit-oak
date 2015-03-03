@@ -436,6 +436,11 @@ argument_list|()
 expr_stmt|;
 block|}
 annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"UnusedDeclaration"
+argument_list|)
+annotation|@
 name|Activate
 specifier|private
 name|void
