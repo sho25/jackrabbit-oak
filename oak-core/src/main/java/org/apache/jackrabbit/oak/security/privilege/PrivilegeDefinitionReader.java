@@ -290,9 +290,11 @@ parameter_list|)
 block|{
 if|if
 condition|(
+operator|!
 name|privilegesTree
-operator|==
-literal|null
+operator|.
+name|exists
+argument_list|()
 operator|||
 operator|!
 name|privilegesTree
