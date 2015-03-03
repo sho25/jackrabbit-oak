@@ -172,6 +172,8 @@ name|getQuery
 argument_list|(
 name|filter
 argument_list|,
+literal|null
+argument_list|,
 name|configuration
 argument_list|)
 decl_stmt|;
