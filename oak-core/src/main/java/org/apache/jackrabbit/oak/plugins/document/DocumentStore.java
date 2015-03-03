@@ -380,6 +380,11 @@ name|CacheStats
 name|getCacheStats
 parameter_list|()
 function_decl|;
+comment|/**      * @return description of the underlying storage.      */
+name|String
+name|getDescription
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 

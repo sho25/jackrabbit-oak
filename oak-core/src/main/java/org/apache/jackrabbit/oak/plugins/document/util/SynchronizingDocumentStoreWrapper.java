@@ -706,6 +706,20 @@ name|getCacheStats
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
+specifier|public
+name|String
+name|getDescription
+parameter_list|()
+block|{
+return|return
+name|store
+operator|.
+name|getDescription
+argument_list|()
+return|;
+block|}
 block|}
 end_class
 

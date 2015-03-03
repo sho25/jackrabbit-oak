@@ -149,16 +149,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|jcr
-operator|.
-name|RepositoryException
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -1906,6 +1896,17 @@ parameter_list|()
 block|{
 return|return
 literal|null
+return|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|String
+name|getDescription
+parameter_list|()
+block|{
+return|return
+literal|"{\"type\":\"memory\"}"
 return|;
 block|}
 block|}
