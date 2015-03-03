@@ -181,16 +181,6 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Ignore
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
 name|Test
 import|;
 end_import
@@ -255,8 +245,6 @@ extends|extends
 name|AbstractMongoConnectionTest
 block|{
 comment|// OAK-2562
-annotation|@
-name|Ignore
 annotation|@
 name|Test
 specifier|public
