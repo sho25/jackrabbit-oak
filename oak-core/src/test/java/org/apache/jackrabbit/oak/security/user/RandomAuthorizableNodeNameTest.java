@@ -371,16 +371,11 @@ name|ConfigurationParameters
 operator|.
 name|of
 argument_list|(
-name|ImmutableMap
-operator|.
-name|of
-argument_list|(
 name|UserConfiguration
 operator|.
 name|NAME
 argument_list|,
 name|userConfig
-argument_list|)
 argument_list|)
 return|;
 block|}

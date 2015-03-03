@@ -23,20 +23,6 @@ end_package
 
 begin_import
 import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|collect
-operator|.
-name|ImmutableMap
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -94,7 +80,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * @see OAK-1922  */
+comment|/**  * @see<a href="https://issues.apache.org/jira/browse/OAK-2156">OAK-2156</a>  */
 end_comment
 
 begin_class
@@ -130,10 +116,6 @@ name|ConfigurationParameters
 operator|.
 name|of
 argument_list|(
-name|ImmutableMap
-operator|.
-name|of
-argument_list|(
 name|UserConstants
 operator|.
 name|PARAM_PASSWORD_MAX_AGE
@@ -146,14 +128,9 @@ name|PARAM_SUPPORT_AUTOSAVE
 argument_list|,
 literal|true
 argument_list|)
-argument_list|)
 decl_stmt|;
 return|return
 name|ConfigurationParameters
-operator|.
-name|of
-argument_list|(
-name|ImmutableMap
 operator|.
 name|of
 argument_list|(
@@ -162,7 +139,6 @@ operator|.
 name|NAME
 argument_list|,
 name|userConfig
-argument_list|)
 argument_list|)
 return|;
 block|}

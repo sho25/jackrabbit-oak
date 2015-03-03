@@ -21,15 +21,11 @@ end_package
 
 begin_import
 import|import
-name|com
+name|java
 operator|.
-name|google
+name|util
 operator|.
-name|common
-operator|.
-name|collect
-operator|.
-name|ImmutableMap
+name|HashMap
 import|;
 end_import
 
@@ -174,16 +170,6 @@ import|;
 end_import
 
 begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|HashMap
-import|;
-end_import
-
-begin_import
 import|import static
 name|org
 operator|.
@@ -296,17 +282,12 @@ name|ConfigurationParameters
 operator|.
 name|of
 argument_list|(
-name|ImmutableMap
-operator|.
-name|of
-argument_list|(
 name|UserConfiguration
 operator|.
 name|NAME
 argument_list|,
 name|getParams
 argument_list|()
-argument_list|)
 argument_list|)
 return|;
 block|}

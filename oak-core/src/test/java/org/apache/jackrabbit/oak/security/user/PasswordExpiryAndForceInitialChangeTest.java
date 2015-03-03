@@ -25,16 +25,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|HashMap
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|UUID
 import|;
 end_import
@@ -276,7 +266,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * @see OAK-1922  */
+comment|/**  * @see<a href="https://issues.apache.org/jira/browse/OAK-1922">OAK-1922</a>  */
 end_comment
 
 begin_class
@@ -327,36 +317,17 @@ name|ConfigurationParameters
 operator|.
 name|of
 argument_list|(
-operator|new
-name|HashMap
-argument_list|<
-name|String
-argument_list|,
-name|Object
-argument_list|>
-argument_list|()
-block|{
-block|{
-name|put
-argument_list|(
 name|UserConstants
 operator|.
 name|PARAM_PASSWORD_MAX_AGE
 argument_list|,
 literal|10
-argument_list|)
-expr_stmt|;
-name|put
-argument_list|(
+argument_list|,
 name|UserConstants
 operator|.
 name|PARAM_PASSWORD_INITIAL_CHANGE
 argument_list|,
 literal|true
-argument_list|)
-expr_stmt|;
-block|}
-block|}
 argument_list|)
 decl_stmt|;
 return|return

@@ -21,20 +21,6 @@ end_package
 
 begin_import
 import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|collect
-operator|.
-name|ImmutableMap
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -290,7 +276,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * @see OAK-1922  */
+comment|/**  * @see<a href="https://issues.apache.org/jira/browse/OAK-1922">OAK-1922</a>  */
 end_comment
 
 begin_class
@@ -353,16 +339,11 @@ name|ConfigurationParameters
 operator|.
 name|of
 argument_list|(
-name|ImmutableMap
-operator|.
-name|of
-argument_list|(
 name|UserConfiguration
 operator|.
 name|NAME
 argument_list|,
 name|userConfig
-argument_list|)
 argument_list|)
 return|;
 block|}
