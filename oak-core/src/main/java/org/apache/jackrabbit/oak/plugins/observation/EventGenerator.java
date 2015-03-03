@@ -481,7 +481,7 @@ name|start
 argument_list|,
 literal|1
 argument_list|,
-literal|"generate: Generated {} events in {} ms"
+literal|"generate: Generated {} events"
 argument_list|,
 name|c
 operator|.
