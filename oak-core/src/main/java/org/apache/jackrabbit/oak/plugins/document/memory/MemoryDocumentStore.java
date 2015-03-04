@@ -373,6 +373,26 @@ name|WriteConcern
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|document
+operator|.
+name|cache
+operator|.
+name|CacheInvalidationStats
+import|;
+end_import
+
 begin_comment
 comment|/**  * Emulates a MongoDB store (possibly consisting of multiple shards and  * replicas).  */
 end_comment
@@ -1689,11 +1709,13 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|void
+name|CacheInvalidationStats
 name|invalidateCache
 parameter_list|()
 block|{
-comment|// there is no cache, so nothing to invalidate
+return|return
+literal|null
+return|;
 block|}
 annotation|@
 name|Override

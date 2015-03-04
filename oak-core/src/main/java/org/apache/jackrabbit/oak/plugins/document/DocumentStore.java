@@ -75,6 +75,26 @@ name|CacheStats
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|document
+operator|.
+name|cache
+operator|.
+name|CacheInvalidationStats
+import|;
+end_import
+
 begin_comment
 comment|/**  * The interface for the backend storage for documents.  *<p>  * In general atomicity of operations on a DocumentStore are limited to a single  * document. That is, an implementation does not have to guarantee atomicity of  * the entire effect of a method call. A method that fails with an exception may  * have modified just some documents and then abort. However, an implementation  * must not modify a document partially. Either the complete update operation is  * applied to a document or no modification is done at all.  *<p>  * Even though none of the methods declare an exception, they will still throw  * an implementation specific runtime exception when the operations fails (e.g.  * an I/O error occurs).  *<p>  * The key is the id of a document. Keys are opaque strings. All characters are  * allowed. Leading and trailing whitespace is allowed. For keys, the maximum  * length is 512 bytes in the UTF-8 representation (in the latest Unicode  * version).  */
 end_comment
@@ -326,7 +346,9 @@ name|update
 parameter_list|)
 function_decl|;
 comment|/**      * Invalidate the document cache.      */
-name|void
+annotation|@
+name|CheckForNull
+name|CacheInvalidationStats
 name|invalidateCache
 parameter_list|()
 function_decl|;

@@ -235,6 +235,26 @@ name|UpdateOp
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|document
+operator|.
+name|cache
+operator|.
+name|CacheInvalidationStats
+import|;
+end_import
+
 begin_comment
 comment|/**  * A MicroKernel wrapper that can be used to log and also time MicroKernel  * calls.  */
 end_comment
@@ -1455,7 +1475,7 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|void
+name|CacheInvalidationStats
 name|invalidateCache
 parameter_list|()
 block|{
@@ -1467,11 +1487,14 @@ init|=
 name|now
 argument_list|()
 decl_stmt|;
+name|CacheInvalidationStats
+name|result
+init|=
 name|base
 operator|.
 name|invalidateCache
 argument_list|()
-expr_stmt|;
+decl_stmt|;
 name|updateAndLogTimes
 argument_list|(
 literal|"invalidateCache"
@@ -1483,6 +1506,9 @@ argument_list|,
 literal|0
 argument_list|)
 expr_stmt|;
+return|return
+name|result
+return|;
 block|}
 catch|catch
 parameter_list|(

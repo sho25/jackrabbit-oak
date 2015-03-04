@@ -139,6 +139,26 @@ name|UpdateOp
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|document
+operator|.
+name|cache
+operator|.
+name|CacheInvalidationStats
+import|;
+end_import
+
 begin_comment
 comment|/**  * Implements a<code>DocumentStore</code> wrapper which synchronizes on all  * methods.  */
 end_comment
@@ -591,15 +611,16 @@ annotation|@
 name|Override
 specifier|public
 specifier|synchronized
-name|void
+name|CacheInvalidationStats
 name|invalidateCache
 parameter_list|()
 block|{
+return|return
 name|store
 operator|.
 name|invalidateCache
 argument_list|()
-expr_stmt|;
+return|;
 block|}
 annotation|@
 name|Override

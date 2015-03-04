@@ -579,6 +579,26 @@ name|document
 operator|.
 name|cache
 operator|.
+name|CacheInvalidationStats
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|document
+operator|.
+name|cache
+operator|.
 name|ForwardingListener
 import|;
 end_import
@@ -1743,12 +1763,13 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|void
+name|CacheInvalidationStats
 name|invalidateCache
 parameter_list|()
 block|{
 comment|//TODO Check if we should use LinearInvalidator for small cache sizes as
 comment|//that would lead to lesser number of queries
+return|return
 name|CacheInvalidator
 operator|.
 name|createHierarchicalInvalidator
@@ -1758,7 +1779,7 @@ argument_list|)
 operator|.
 name|invalidateCache
 argument_list|()
-expr_stmt|;
+return|;
 block|}
 annotation|@
 name|Override
