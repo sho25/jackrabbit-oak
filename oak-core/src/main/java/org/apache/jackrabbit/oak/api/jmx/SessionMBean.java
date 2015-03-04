@@ -99,6 +99,16 @@ name|String
 name|getLastRefresh
 parameter_list|()
 function_decl|;
+comment|/**      * @return description of the refresh strategy      */
+name|String
+name|getRefreshStrategy
+parameter_list|()
+function_decl|;
+comment|/**      * @return {@code true} iff the session will be refreshed on next access.      */
+name|boolean
+name|getRefreshPending
+parameter_list|()
+function_decl|;
 comment|/**      * @return number of refresh operations      */
 name|long
 name|getRefreshCount
