@@ -399,7 +399,7 @@ name|Dictionary
 argument_list|<
 name|String
 argument_list|,
-name|String
+name|Object
 argument_list|>
 name|props
 init|=
@@ -408,7 +408,7 @@ name|Hashtable
 argument_list|<
 name|String
 argument_list|,
-name|String
+name|Object
 argument_list|>
 argument_list|()
 decl_stmt|;
@@ -518,11 +518,17 @@ parameter_list|)
 function_decl|;
 specifier|protected
 name|String
+index|[]
 name|getDescription
 parameter_list|()
 block|{
 return|return
-literal|"{\"type\":\"unknown\"}"
+operator|new
+name|String
+index|[]
+block|{
+literal|"type=unknown"
+block|}
 return|;
 block|}
 specifier|protected

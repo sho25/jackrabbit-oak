@@ -1140,7 +1140,9 @@ literal|"oak.nodestore.description"
 argument_list|,
 name|value
 operator|=
-literal|"{\"type\":\"segment\"}"
+block|{
+literal|"nodeStoreType=segment"
+block|}
 argument_list|,
 name|propertyPrivate
 operator|=

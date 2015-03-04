@@ -31,6 +31,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Map
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|annotation
@@ -381,8 +391,13 @@ name|getCacheStats
 parameter_list|()
 function_decl|;
 comment|/**      * @return description of the underlying storage.      */
+name|Map
+argument_list|<
 name|String
-name|getDescription
+argument_list|,
+name|String
+argument_list|>
+name|getMetadata
 parameter_list|()
 function_decl|;
 block|}
