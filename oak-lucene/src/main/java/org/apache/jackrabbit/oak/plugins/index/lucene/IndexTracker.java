@@ -696,6 +696,15 @@ argument_list|,
 name|cloner
 argument_list|)
 decl_stmt|;
+name|log
+operator|.
+name|debug
+argument_list|(
+literal|"Index found to be updated at [{}]. Reopening the IndexNode"
+argument_list|,
+name|path
+argument_list|)
+expr_stmt|;
 name|updates
 operator|.
 name|put
