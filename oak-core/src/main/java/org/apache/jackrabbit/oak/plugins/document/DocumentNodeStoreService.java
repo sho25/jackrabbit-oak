@@ -447,6 +447,22 @@ name|scr
 operator|.
 name|annotations
 operator|.
+name|PropertyOption
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|felix
+operator|.
+name|scr
+operator|.
+name|annotations
+operator|.
 name|Reference
 import|;
 end_import
@@ -930,6 +946,26 @@ operator|=
 name|ConfigurationPolicy
 operator|.
 name|REQUIRE
+argument_list|,
+name|metatype
+operator|=
+literal|true
+argument_list|,
+name|label
+operator|=
+literal|"Apache Jackrabbit Oak Document NodeStore Service"
+argument_list|,
+name|description
+operator|=
+literal|"NodeStore implementation based on Document model. For configuration option refer "
+operator|+
+literal|"to http://jackrabbit.apache.org/oak/docs/osgi_config.html#DocumentNodeStore. Note that for system "
+operator|+
+literal|"stability purpose it is advisable to not change these settings at runtime. Instead the config change "
+operator|+
+literal|"should be done via file system based config file and this view should ONLY be used to determine which "
+operator|+
+literal|"options are supported"
 argument_list|)
 specifier|public
 class|class
@@ -1031,6 +1067,18 @@ argument_list|(
 name|value
 operator|=
 name|DEFAULT_URI
+argument_list|,
+name|label
+operator|=
+literal|"Mongo URI"
+argument_list|,
+name|description
+operator|=
+literal|"Mongo connection URI used to connect to Mongo. Refer to "
+operator|+
+literal|"http://docs.mongodb.org/manual/reference/connection-string/ for details. Note that this value "
+operator|+
+literal|"can be overridden via framework property 'oak.mongo.uri'"
 argument_list|)
 specifier|private
 specifier|static
@@ -1046,6 +1094,16 @@ argument_list|(
 name|value
 operator|=
 name|DEFAULT_DB
+argument_list|,
+name|label
+operator|=
+literal|"Mongo DB name"
+argument_list|,
+name|description
+operator|=
+literal|"Name of the database in Mongo. Note that this value "
+operator|+
+literal|"can be overridden via framework property 'oak.mongo.db'"
 argument_list|)
 specifier|private
 specifier|static
@@ -1061,6 +1119,14 @@ argument_list|(
 name|intValue
 operator|=
 name|DEFAULT_CACHE
+argument_list|,
+name|label
+operator|=
+literal|"Cache Size (in MB)"
+argument_list|,
+name|description
+operator|=
+literal|"Cache size in MB. This is distributed among various caches used in DocumentNodeStore"
 argument_list|)
 specifier|private
 specifier|static
@@ -1076,6 +1142,14 @@ argument_list|(
 name|intValue
 operator|=
 name|DEFAULT_NODE_CACHE_PERCENTAGE
+argument_list|,
+name|label
+operator|=
+literal|"NodeState Cache"
+argument_list|,
+name|description
+operator|=
+literal|"Percentage of cache to be allocated towards Node cache"
 argument_list|)
 specifier|private
 specifier|static
@@ -1095,6 +1169,14 @@ operator|.
 name|Builder
 operator|.
 name|DEFAULT_CHILDREN_CACHE_PERCENTAGE
+argument_list|,
+name|label
+operator|=
+literal|"NodeState Children Cache"
+argument_list|,
+name|description
+operator|=
+literal|"Percentage of cache to be allocated towards Children cache"
 argument_list|)
 specifier|private
 specifier|static
@@ -1114,6 +1196,14 @@ operator|.
 name|Builder
 operator|.
 name|DEFAULT_DIFF_CACHE_PERCENTAGE
+argument_list|,
+name|label
+operator|=
+literal|"Diff Cache"
+argument_list|,
+name|description
+operator|=
+literal|"Percentage of cache to be allocated towards Diff cache"
 argument_list|)
 specifier|private
 specifier|static
@@ -1133,6 +1223,14 @@ operator|.
 name|Builder
 operator|.
 name|DEFAULT_DOC_CHILDREN_CACHE_PERCENTAGE
+argument_list|,
+name|label
+operator|=
+literal|"Document Children Cache"
+argument_list|,
+name|description
+operator|=
+literal|"Percentage of cache to be allocated towards Document children cache"
 argument_list|)
 specifier|private
 specifier|static
@@ -1142,13 +1240,6 @@ name|PROP_DOC_CHILDREN_CACHE_PERCENTAGE
 init|=
 literal|"docChildrenCachePercentage"
 decl_stmt|;
-annotation|@
-name|Property
-argument_list|(
-name|intValue
-operator|=
-name|DEFAULT_OFF_HEAP_CACHE
-argument_list|)
 specifier|private
 specifier|static
 specifier|final
@@ -1163,6 +1254,16 @@ argument_list|(
 name|intValue
 operator|=
 name|DEFAULT_CHANGES_SIZE
+argument_list|,
+name|label
+operator|=
+literal|"Mongo Changes Collection Size (in MB)"
+argument_list|,
+name|description
+operator|=
+literal|"With the MongoDB backend, the DocumentNodeStore uses a capped collection to cache the diff. "
+operator|+
+literal|"This value is used to determine the size of that capped collection"
 argument_list|)
 specifier|private
 specifier|static
@@ -1178,6 +1279,16 @@ argument_list|(
 name|intValue
 operator|=
 name|DEFAULT_BLOB_CACHE_SIZE
+argument_list|,
+name|label
+operator|=
+literal|"Blob Cache Size (in MB)"
+argument_list|,
+name|description
+operator|=
+literal|"Cache size to store blobs in memory. Used only with default BlobStore "
+operator|+
+literal|"(as per DocumentStore type)"
 argument_list|)
 specifier|private
 specifier|static
@@ -1193,6 +1304,16 @@ argument_list|(
 name|value
 operator|=
 name|DEFAULT_PERSISTENT_CACHE
+argument_list|,
+name|label
+operator|=
+literal|"Persistent Cache Config"
+argument_list|,
+name|description
+operator|=
+literal|"Configuration for enabling Persistent cache. By default it is not enabled. Refer to "
+operator|+
+literal|"http://jackrabbit.apache.org/oak/docs/nodestore/persistent-cache.html for various options"
 argument_list|)
 specifier|private
 specifier|static
@@ -1202,7 +1323,23 @@ name|PROP_PERSISTENT_CACHE
 init|=
 literal|"persistentCache"
 decl_stmt|;
-comment|/**      * Boolean value indicating a blobStore is to be used      */
+annotation|@
+name|Property
+argument_list|(
+name|boolValue
+operator|=
+literal|false
+argument_list|,
+name|label
+operator|=
+literal|"Custom BlobStore"
+argument_list|,
+name|description
+operator|=
+literal|"Boolean value indicating that a custom BlobStore is to be used. "
+operator|+
+literal|"By default, for MongoDB, MongoBlobStore is used; for RDB, RDBBlobStore is used."
+argument_list|)
 specifier|public
 specifier|static
 specifier|final
@@ -1212,6 +1349,23 @@ init|=
 literal|"customBlobStore"
 decl_stmt|;
 comment|/**      * Boolean value indicating a different DataSource has to be used for      * BlobStore      */
+annotation|@
+name|Property
+argument_list|(
+name|boolValue
+operator|=
+literal|false
+argument_list|,
+name|label
+operator|=
+literal|"Custom DataSource"
+argument_list|,
+name|description
+operator|=
+literal|"Boolean value indicating that DataSource is configured "
+operator|+
+literal|"separately, and that it should be used"
+argument_list|)
 specifier|public
 specifier|static
 specifier|final
@@ -1436,15 +1590,34 @@ specifier|final
 name|long
 name|DEFAULT_BLOB_GC_MAX_AGE
 init|=
-name|TimeUnit
-operator|.
-name|HOURS
-operator|.
-name|toSeconds
-argument_list|(
 literal|24
-argument_list|)
+operator|*
+literal|60
+operator|*
+literal|60
 decl_stmt|;
+comment|//TimeUnit.HOURS.toSeconds(24);
+annotation|@
+name|Property
+argument_list|(
+name|longValue
+operator|=
+name|DEFAULT_BLOB_GC_MAX_AGE
+argument_list|,
+name|label
+operator|=
+literal|"Blob GC Max Age (in secs)"
+argument_list|,
+name|description
+operator|=
+literal|"Blob Garbage Collector (GC) logic will only consider those blobs for GC which "
+operator|+
+literal|"are not accessed recently (currentTime - lastModifiedTime> blobGcMaxAgeInSecs). For "
+operator|+
+literal|"example as per default only those blobs which have been created 24 hrs ago will be "
+operator|+
+literal|"considered for GC"
+argument_list|)
 specifier|public
 specifier|static
 specifier|final
@@ -1465,15 +1638,30 @@ specifier|final
 name|long
 name|DEFAULT_MAX_REPLICATION_LAG
 init|=
-name|TimeUnit
-operator|.
-name|HOURS
-operator|.
-name|toSeconds
-argument_list|(
 literal|6
-argument_list|)
+operator|*
+literal|60
+operator|*
+literal|60
 decl_stmt|;
+comment|//TimeUnit.HOURS.toSeconds(6);
+annotation|@
+name|Property
+argument_list|(
+name|longValue
+operator|=
+name|DEFAULT_MAX_REPLICATION_LAG
+argument_list|,
+name|label
+operator|=
+literal|"Max Replication Lag (in secs)"
+argument_list|,
+name|description
+operator|=
+literal|"Value in seconds. Determines the duration beyond which it can be safely assumed "
+operator|+
+literal|"that the state on the secondaries is consistent with the primary, and it is safe to read from them"
+argument_list|)
 specifier|public
 specifier|static
 specifier|final
@@ -1488,7 +1676,49 @@ name|maxReplicationLagInSecs
 init|=
 name|DEFAULT_MAX_REPLICATION_LAG
 decl_stmt|;
-comment|/**      * Specifies the type of DocumentStore MONGO, RDB      */
+annotation|@
+name|Property
+argument_list|(
+name|options
+operator|=
+block|{
+annotation|@
+name|PropertyOption
+argument_list|(
+name|name
+operator|=
+literal|"MONGO"
+argument_list|,
+name|value
+operator|=
+literal|"MONGO"
+argument_list|)
+block|,
+annotation|@
+name|PropertyOption
+argument_list|(
+name|name
+operator|=
+literal|"RDB"
+argument_list|,
+name|value
+operator|=
+literal|"RDB"
+argument_list|)
+block|}
+argument_list|,
+name|value
+operator|=
+literal|"MONGO"
+argument_list|,
+name|label
+operator|=
+literal|"DocumentStore Type"
+argument_list|,
+name|description
+operator|=
+literal|"Type of DocumentStore to use for persistence. Defaults to MONGO"
+argument_list|)
 specifier|public
 specifier|static
 specifier|final
@@ -2067,7 +2297,7 @@ name|log
 operator|.
 name|info
 argument_list|(
-literal|"Starting DocumentNodeStore with host={}, db={}, cache size (MB)={}, Off Heap Cache size (MB)={}, "
+literal|"Starting DocumentNodeStore with host={}, db={}, cache size (MB)={}, persistentCache={}, "
 operator|+
 literal|"'changes' collection size (MB)={}, blobCacheSize (MB)={}, maxReplicationLagInSecs={}"
 argument_list|,
@@ -2080,7 +2310,7 @@ name|db
 argument_list|,
 name|cacheSize
 argument_list|,
-name|offHeapCache
+name|persistentCache
 argument_list|,
 name|changesSize
 argument_list|,
