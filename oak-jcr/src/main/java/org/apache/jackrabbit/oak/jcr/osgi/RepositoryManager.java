@@ -467,6 +467,13 @@ name|DEFAULT_COMMIT_RATE_LIMIT
 init|=
 literal|false
 decl_stmt|;
+comment|//TODO Exposed for testing purpose due to SLING-4472
+specifier|static
+name|boolean
+name|ignoreFrameworkProperties
+init|=
+literal|false
+decl_stmt|;
 specifier|private
 specifier|final
 name|WhiteboardEditorProvider
@@ -492,15 +499,6 @@ name|indexProvider
 init|=
 operator|new
 name|WhiteboardIndexProvider
-argument_list|()
-decl_stmt|;
-specifier|private
-specifier|final
-name|WhiteboardExecutor
-name|executor
-init|=
-operator|new
-name|WhiteboardExecutor
 argument_list|()
 decl_stmt|;
 specifier|private
@@ -697,13 +695,6 @@ argument_list|(
 name|whiteboard
 argument_list|)
 expr_stmt|;
-name|executor
-operator|.
-name|start
-argument_list|(
-name|whiteboard
-argument_list|)
-expr_stmt|;
 name|registration
 operator|=
 name|registerRepository
@@ -732,6 +723,12 @@ name|String
 name|name
 parameter_list|)
 block|{
+if|if
+condition|(
+operator|!
+name|ignoreFrameworkProperties
+condition|)
+block|{
 comment|//Prefer framework property first
 name|Object
 name|value
@@ -753,6 +750,7 @@ block|{
 return|return
 name|value
 return|;
+block|}
 block|}
 comment|//Fallback to one from config
 return|return
@@ -785,11 +783,6 @@ argument_list|()
 expr_stmt|;
 block|}
 name|initializers
-operator|.
-name|stop
-argument_list|()
-expr_stmt|;
-name|executor
 operator|.
 name|stop
 argument_list|()
@@ -869,11 +862,6 @@ argument_list|)
 operator|.
 name|withAsyncIndexing
 argument_list|()
-operator|.
-name|with
-argument_list|(
-name|executor
-argument_list|)
 decl_stmt|;
 for|for
 control|(
