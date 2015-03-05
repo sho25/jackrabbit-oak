@@ -63,16 +63,6 @@ end_import
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Map
-import|;
-end_import
-
-begin_import
-import|import
 name|javax
 operator|.
 name|annotation
@@ -157,7 +147,7 @@ name|h2
 operator|.
 name|mvstore
 operator|.
-name|MVMapConcurrent
+name|MVMap
 import|;
 end_import
 
@@ -328,7 +318,7 @@ name|boolean
 name|readOnly
 parameter_list|)
 block|{
-name|Map
+name|CacheMap
 argument_list|<
 name|Long
 argument_list|,
@@ -346,7 +336,7 @@ argument_list|,
 literal|"data"
 argument_list|,
 operator|new
-name|MVMapConcurrent
+name|MVMap
 operator|.
 name|Builder
 argument_list|<
@@ -367,7 +357,7 @@ argument_list|,
 name|d
 argument_list|)
 expr_stmt|;
-name|Map
+name|CacheMap
 argument_list|<
 name|String
 argument_list|,
@@ -385,7 +375,7 @@ argument_list|,
 literal|"meta"
 argument_list|,
 operator|new
-name|MVMapConcurrent
+name|MVMap
 operator|.
 name|Builder
 argument_list|<

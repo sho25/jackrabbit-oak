@@ -143,7 +143,7 @@ name|h2
 operator|.
 name|mvstore
 operator|.
-name|MVMapConcurrent
+name|MVMap
 import|;
 end_import
 
@@ -320,7 +320,7 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"wrap "
+literal|"wrapping map "
 operator|+
 name|this
 operator|.
@@ -374,7 +374,7 @@ argument_list|,
 name|type
 argument_list|)
 decl_stmt|;
-name|MVMapConcurrent
+name|MVMap
 operator|.
 name|Builder
 argument_list|<
@@ -385,7 +385,7 @@ argument_list|>
 name|b
 init|=
 operator|new
-name|MVMapConcurrent
+name|MVMap
 operator|.
 name|Builder
 argument_list|<
@@ -413,7 +413,7 @@ operator|.
 name|name
 argument_list|()
 decl_stmt|;
-name|Map
+name|CacheMap
 argument_list|<
 name|K
 argument_list|,

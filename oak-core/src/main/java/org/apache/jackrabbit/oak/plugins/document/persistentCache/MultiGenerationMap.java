@@ -82,7 +82,7 @@ argument_list|>
 block|{
 specifier|private
 specifier|volatile
-name|Map
+name|CacheMap
 argument_list|<
 name|K
 argument_list|,
@@ -95,7 +95,7 @@ name|ConcurrentSkipListMap
 argument_list|<
 name|Integer
 argument_list|,
-name|Map
+name|CacheMap
 argument_list|<
 name|K
 argument_list|,
@@ -109,7 +109,7 @@ name|ConcurrentSkipListMap
 argument_list|<
 name|Integer
 argument_list|,
-name|Map
+name|CacheMap
 argument_list|<
 name|K
 argument_list|,
@@ -125,7 +125,7 @@ specifier|public
 name|void
 name|setWriteMap
 parameter_list|(
-name|Map
+name|CacheMap
 argument_list|<
 name|K
 argument_list|,
@@ -146,7 +146,7 @@ parameter_list|(
 name|int
 name|generation
 parameter_list|,
-name|Map
+name|CacheMap
 argument_list|<
 name|K
 argument_list|,
@@ -231,7 +231,7 @@ name|descendingKeySet
 argument_list|()
 control|)
 block|{
-name|Map
+name|CacheMap
 argument_list|<
 name|K
 argument_list|,
@@ -319,7 +319,7 @@ name|descendingKeySet
 argument_list|()
 control|)
 block|{
-name|Map
+name|CacheMap
 argument_list|<
 name|K
 argument_list|,
