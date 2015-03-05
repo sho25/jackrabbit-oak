@@ -679,7 +679,6 @@ parameter_list|)
 block|{
 try|try
 block|{
-comment|// TODO: Use DirectoryReader.openIfChanged()
 name|IndexNode
 name|index
 init|=
@@ -834,8 +833,10 @@ operator|.
 name|build
 argument_list|()
 expr_stmt|;
-comment|//TODO This might take some time as close need to acquire the
+comment|//This might take some time as close need to acquire the
 comment|//write lock which might be held by current running searches
+comment|//Given that Tracker is now invoked from a BackgroundObserver
+comment|//not a high concern
 for|for
 control|(
 name|String
