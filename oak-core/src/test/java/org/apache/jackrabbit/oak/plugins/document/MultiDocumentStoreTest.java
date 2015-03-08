@@ -71,7 +71,7 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Ignore
+name|Assume
 import|;
 end_import
 
@@ -804,17 +804,28 @@ expr_stmt|;
 block|}
 block|}
 annotation|@
-name|Ignore
-argument_list|(
-literal|"OAK-2588"
-argument_list|)
-annotation|@
 name|Test
 specifier|public
 name|void
 name|testInvalidateCache
 parameter_list|()
 block|{
+comment|// TODO see OAK-2588
+name|Assume
+operator|.
+name|assumeTrue
+argument_list|(
+operator|!
+name|super
+operator|.
+name|dsname
+operator|.
+name|contains
+argument_list|(
+literal|"Mongo"
+argument_list|)
+argument_list|)
+expr_stmt|;
 name|String
 name|id
 init|=
