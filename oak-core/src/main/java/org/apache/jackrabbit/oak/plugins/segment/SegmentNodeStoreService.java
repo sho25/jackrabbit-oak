@@ -1148,6 +1148,26 @@ operator|=
 name|ConfigurationPolicy
 operator|.
 name|REQUIRE
+argument_list|,
+name|metatype
+operator|=
+literal|true
+argument_list|,
+name|label
+operator|=
+literal|"Apache Jackrabbit Oak Segment NodeStore Service"
+argument_list|,
+name|description
+operator|=
+literal|"NodeStore implementation based on Document model. For configuration option refer "
+operator|+
+literal|"to http://jackrabbit.apache.org/oak/docs/osgi_config.html#SegmentNodeStore. Note that for system "
+operator|+
+literal|"stability purpose it is advisable to not change these settings at runtime. Instead the config change "
+operator|+
+literal|"should be done via file system based config file and this view should ONLY be used to determine which "
+operator|+
+literal|"options are supported"
 argument_list|)
 annotation|@
 name|Property
@@ -1176,13 +1196,6 @@ name|Observable
 implements|,
 name|SegmentStoreProvider
 block|{
-annotation|@
-name|Property
-argument_list|(
-name|description
-operator|=
-literal|"The unique name of this instance"
-argument_list|)
 specifier|public
 specifier|static
 specifier|final
@@ -1194,9 +1207,15 @@ decl_stmt|;
 annotation|@
 name|Property
 argument_list|(
+name|label
+operator|=
+literal|"Directory"
+argument_list|,
 name|description
 operator|=
-literal|"TarMK directory"
+literal|"Directory location used to store the segment tar files. If not specified then looks "
+operator|+
+literal|"for framework property 'repository.home' otherwise use a subdirectory with name 'tarmk'"
 argument_list|)
 specifier|public
 specifier|static
@@ -1209,6 +1228,10 @@ decl_stmt|;
 annotation|@
 name|Property
 argument_list|(
+name|label
+operator|=
+literal|"Mode"
+argument_list|,
 name|description
 operator|=
 literal|"TarMK mode (64 for memory mapping, 32 for normal file access)"
@@ -1224,13 +1247,17 @@ decl_stmt|;
 annotation|@
 name|Property
 argument_list|(
-name|description
-operator|=
-literal|"TarMK maximum file size (MB)"
-argument_list|,
 name|intValue
 operator|=
 literal|256
+argument_list|,
+name|label
+operator|=
+literal|"Maximum Tar File Size (MB)"
+argument_list|,
+name|description
+operator|=
+literal|"TarMK maximum file size (MB)"
 argument_list|)
 specifier|public
 specifier|static
@@ -1243,13 +1270,17 @@ decl_stmt|;
 annotation|@
 name|Property
 argument_list|(
-name|description
-operator|=
-literal|"Cache size (MB)"
-argument_list|,
 name|intValue
 operator|=
 literal|256
+argument_list|,
+name|label
+operator|=
+literal|"Cache size (MB)"
+argument_list|,
+name|description
+operator|=
+literal|"Cache size for storing most recently used Segments"
 argument_list|)
 specifier|public
 specifier|static
@@ -1262,13 +1293,17 @@ decl_stmt|;
 annotation|@
 name|Property
 argument_list|(
-name|description
-operator|=
-literal|"TarMK compaction clone binaries flag"
-argument_list|,
 name|boolValue
 operator|=
 name|CLONE_BINARIES_DEFAULT
+argument_list|,
+name|label
+operator|=
+literal|"Clone Binaries"
+argument_list|,
+name|description
+operator|=
+literal|"Clone the binary segments while performing compaction"
 argument_list|)
 specifier|public
 specifier|static
@@ -1324,6 +1359,22 @@ argument_list|,
 name|value
 operator|=
 literal|"CLEAN_OLD"
+argument_list|,
+name|label
+operator|=
+literal|"Cleanup Strategy"
+argument_list|,
+name|description
+operator|=
+literal|"Cleanup strategy used for live in memory segment references while performing cleanup. "
+operator|+
+literal|"1. CLEAN_NONE: All in memory references are considered valid, "
+operator|+
+literal|"2. CLEAN_OLD: Only in memory references older than a "
+operator|+
+literal|"certain age are considered valid (compaction.cleanup.timestamp), "
+operator|+
+literal|"3. CLEAN_ALL: None of the in memory references are considered valid"
 argument_list|)
 specifier|public
 specifier|static
@@ -1336,13 +1387,19 @@ decl_stmt|;
 annotation|@
 name|Property
 argument_list|(
-name|description
-operator|=
-literal|"TarMK compaction strategy timestamp older (ms)"
-argument_list|,
 name|longValue
 operator|=
 name|TIMESTAMP_DEFAULT
+argument_list|,
+name|label
+operator|=
+literal|"Reference expiry time (ms)"
+argument_list|,
+name|description
+operator|=
+literal|"Time interval in ms beyond which in memory segment references would be ignored "
+operator|+
+literal|"while performing cleanup"
 argument_list|)
 specifier|public
 specifier|static
@@ -1355,13 +1412,17 @@ decl_stmt|;
 annotation|@
 name|Property
 argument_list|(
-name|description
-operator|=
-literal|"TarMK compaction available memory multiplier needed to run compaction"
-argument_list|,
 name|byteValue
 operator|=
 name|MEMORY_THRESHOLD_DEFAULT
+argument_list|,
+name|label
+operator|=
+literal|"Memory Multiplier"
+argument_list|,
+name|description
+operator|=
+literal|"TarMK compaction available memory multiplier needed to run compaction"
 argument_list|)
 specifier|public
 specifier|static
@@ -1374,13 +1435,17 @@ decl_stmt|;
 annotation|@
 name|Property
 argument_list|(
-name|description
-operator|=
-literal|"TarMK compaction paused flag"
-argument_list|,
 name|boolValue
 operator|=
 name|PAUSE_DEFAULT
+argument_list|,
+name|label
+operator|=
+literal|"Pause Compaction"
+argument_list|,
+name|description
+operator|=
+literal|"When enabled compaction would not be performed"
 argument_list|)
 specifier|public
 specifier|static
@@ -1393,13 +1458,17 @@ decl_stmt|;
 annotation|@
 name|Property
 argument_list|(
-name|description
-operator|=
-literal|"Flag indicating that this component will not register as a NodeStore but just as a NodeStoreProvider"
-argument_list|,
 name|boolValue
 operator|=
 literal|false
+argument_list|,
+name|label
+operator|=
+literal|"Standby Mode"
+argument_list|,
+name|description
+operator|=
+literal|"Flag indicating that this component will not register as a NodeStore but just as a NodeStoreProvider"
 argument_list|)
 specifier|public
 specifier|static
@@ -1409,7 +1478,23 @@ name|STANDBY
 init|=
 literal|"standby"
 decl_stmt|;
-comment|/**      * Boolean value indicating a blobStore is to be used      */
+annotation|@
+name|Property
+argument_list|(
+name|boolValue
+operator|=
+literal|false
+argument_list|,
+name|label
+operator|=
+literal|"Custom BlobStore"
+argument_list|,
+name|description
+operator|=
+literal|"Boolean value indicating that a custom BlobStore is to be used. "
+operator|+
+literal|"By default large binary content would be stored within segment tar files"
+argument_list|)
 specifier|public
 specifier|static
 specifier|final
