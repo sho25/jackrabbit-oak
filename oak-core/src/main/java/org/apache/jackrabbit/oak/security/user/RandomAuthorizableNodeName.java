@@ -189,7 +189,7 @@ literal|true
 argument_list|,
 name|label
 operator|=
-literal|"Random Authorizable Node Name"
+literal|"Apache Jackrabbit Oak Random Authorizable Node Name"
 argument_list|,
 name|description
 operator|=

@@ -857,7 +857,7 @@ literal|true
 argument_list|,
 name|label
 operator|=
-literal|"CUG Configuration"
+literal|"Apache Jackrabbit Oak CUG Configuration"
 argument_list|,
 name|description
 operator|=
