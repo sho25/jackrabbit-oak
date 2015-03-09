@@ -71,16 +71,6 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Assume
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
 name|Test
 import|;
 end_import
@@ -810,25 +800,13 @@ name|void
 name|testInvalidateCache
 parameter_list|()
 block|{
-comment|// TODO see OAK-2588
-name|Assume
-operator|.
-name|assumeTrue
-argument_list|(
-operator|!
-name|super
-operator|.
-name|dsname
-operator|.
-name|contains
-argument_list|(
-literal|"Mongo"
-argument_list|)
-argument_list|)
-expr_stmt|;
+comment|// use a "proper" ID because otherwise Mongo's cache invalidation will fail
+comment|// see OAK-2588
 name|String
 name|id
 init|=
+literal|"1:/"
+operator|+
 name|this
 operator|.
 name|getClass
