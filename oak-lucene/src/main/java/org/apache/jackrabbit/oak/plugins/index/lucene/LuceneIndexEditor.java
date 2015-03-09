@@ -1724,6 +1724,11 @@ expr_stmt|;
 block|}
 name|context
 operator|.
+name|indexUpdate
+argument_list|()
+expr_stmt|;
+name|context
+operator|.
 name|getWriter
 argument_list|()
 operator|.
@@ -2226,13 +2231,6 @@ operator|&&
 name|includeTypeForFullText
 condition|)
 block|{
-name|this
-operator|.
-name|context
-operator|.
-name|indexUpdate
-argument_list|()
-expr_stmt|;
 name|fields
 operator|.
 name|addAll
@@ -2321,13 +2319,6 @@ name|STRINGS
 argument_list|)
 control|)
 block|{
-name|this
-operator|.
-name|context
-operator|.
-name|indexUpdate
-argument_list|()
-expr_stmt|;
 if|if
 condition|(
 name|pd
@@ -2767,13 +2758,6 @@ name|NO
 argument_list|)
 expr_stmt|;
 block|}
-name|this
-operator|.
-name|context
-operator|.
-name|indexUpdate
-argument_list|()
-expr_stmt|;
 name|fields
 operator|.
 name|add
@@ -3113,13 +3097,6 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|this
-operator|.
-name|context
-operator|.
-name|indexUpdate
-argument_list|()
-expr_stmt|;
 name|fields
 operator|.
 name|add
@@ -4056,13 +4033,6 @@ operator|.
 name|nodePath
 argument_list|)
 decl_stmt|;
-name|this
-operator|.
-name|context
-operator|.
-name|indexUpdate
-argument_list|()
-expr_stmt|;
 comment|//Here the fulltext is being created for aggregate root hence nodePath passed
 comment|//should be null
 name|String
@@ -4159,13 +4129,6 @@ name|STRINGS
 argument_list|)
 control|)
 block|{
-name|this
-operator|.
-name|context
-operator|.
-name|indexUpdate
-argument_list|()
-expr_stmt|;
 name|Field
 name|field
 init|=
