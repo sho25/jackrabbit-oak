@@ -2305,7 +2305,7 @@ literal|"Reindexing completed for indexes: {} in {}"
 argument_list|,
 name|indexUpdate
 operator|.
-name|getAllReIndexedIndexes
+name|getReindexStats
 argument_list|()
 argument_list|,
 name|watch

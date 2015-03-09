@@ -40,6 +40,7 @@ specifier|public
 interface|interface
 name|IndexUpdateCallback
 block|{
+comment|/**      * Invoked by the {@link org.apache.jackrabbit.oak.plugins.index.IndexEditor} for every NodeState      * indexed it.      */
 name|void
 name|indexUpdate
 parameter_list|()
