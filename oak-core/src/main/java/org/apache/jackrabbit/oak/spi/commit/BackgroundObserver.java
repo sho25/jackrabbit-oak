@@ -365,7 +365,7 @@ operator|.
 name|poll
 argument_list|()
 decl_stmt|;
-while|while
+if|if
 condition|(
 name|change
 operator|!=
@@ -389,12 +389,12 @@ operator|.
 name|info
 argument_list|)
 expr_stmt|;
-name|change
-operator|=
-name|queue
+name|currentTask
 operator|.
-name|poll
-argument_list|()
+name|onComplete
+argument_list|(
+name|completionHandler
+argument_list|)
 expr_stmt|;
 block|}
 block|}
