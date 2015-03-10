@@ -538,6 +538,8 @@ name|factory
 operator|.
 name|propertyAdded
 argument_list|(
+name|after
+argument_list|,
 name|parentType
 argument_list|,
 name|parentMixins
@@ -581,6 +583,10 @@ name|factory
 operator|.
 name|propertyChanged
 argument_list|(
+name|before
+argument_list|,
+name|after
+argument_list|,
 name|parentType
 argument_list|,
 name|parentMixins
@@ -621,6 +627,8 @@ name|factory
 operator|.
 name|propertyDeleted
 argument_list|(
+name|before
+argument_list|,
 name|parentType
 argument_list|,
 name|parentMixins
