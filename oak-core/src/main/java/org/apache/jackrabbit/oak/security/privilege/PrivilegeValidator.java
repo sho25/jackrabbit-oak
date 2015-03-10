@@ -643,6 +643,14 @@ name|isPrivilegeDefinition
 argument_list|(
 name|before
 argument_list|)
+operator|&&
+operator|!
+name|before
+operator|.
+name|equals
+argument_list|(
+name|after
+argument_list|)
 condition|)
 block|{
 throw|throw
