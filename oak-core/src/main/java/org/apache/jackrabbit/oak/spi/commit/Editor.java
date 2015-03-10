@@ -21,6 +21,16 @@ end_package
 
 begin_import
 import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|CheckForNull
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -84,16 +94,6 @@ operator|.
 name|state
 operator|.
 name|NodeState
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|CheckForNull
 import|;
 end_import
 
@@ -180,7 +180,7 @@ parameter_list|)
 throws|throws
 name|CommitFailedException
 function_decl|;
-comment|/**      * Processes a changed child node.      *      * @param name name of the changed node      * @param before child node before the change      * @param after child node after the change      * @return an editor for processing the subtree below the added node,      *         or {@code null} if the subtree does not need processing      * @throws CommitFailedException if processing failed      */
+comment|/**      * Processes a changed child node. This method gets called for all child nodes      * that may contain changes between the before and after states.      *      * @param name name of the changed node      * @param before child node before the change      * @param after child node after the change      * @return an editor for processing the subtree below the added node,      *         or {@code null} if the subtree does not need processing      * @throws CommitFailedException if processing failed      */
 annotation|@
 name|CheckForNull
 name|Editor
