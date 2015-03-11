@@ -610,7 +610,7 @@ name|sort
 argument_list|(
 name|docIdsToDelete
 argument_list|,
-name|PathComparator
+name|NodeDocumentIdComparator
 operator|.
 name|INSTANCE
 argument_list|)
