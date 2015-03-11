@@ -1552,15 +1552,34 @@ specifier|final
 name|long
 name|DEFAULT_VER_GC_MAX_AGE
 init|=
-name|TimeUnit
-operator|.
-name|DAYS
-operator|.
-name|toSeconds
-argument_list|(
-literal|1
-argument_list|)
+literal|24
+operator|*
+literal|60
+operator|*
+literal|60
 decl_stmt|;
+comment|//TimeUnit.DAYS.toSeconds(1);
+annotation|@
+name|Property
+argument_list|(
+name|longValue
+operator|=
+name|DEFAULT_VER_GC_MAX_AGE
+argument_list|,
+name|label
+operator|=
+literal|"Version GC Max Age (in secs)"
+argument_list|,
+name|description
+operator|=
+literal|"Version Garbage Collector (GC) logic will only consider those deleted for GC which "
+operator|+
+literal|"are not accessed recently (currentTime - lastModifiedTime> versionGcMaxAgeInSecs). For "
+operator|+
+literal|"example as per default only those document which have been *marked* deleted 24 hrs ago will be "
+operator|+
+literal|"considered for GC. This also applies how older revision of live document are GC."
+argument_list|)
 specifier|public
 specifier|static
 specifier|final
