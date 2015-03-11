@@ -813,22 +813,11 @@ parameter_list|)
 block|{
 try|try
 block|{
-comment|// the query engine should be returned only if the server is alive, otherwise other indexes should be used
 if|if
 condition|(
 name|solrServer
 operator|!=
 literal|null
-operator|&&
-literal|0
-operator|==
-name|solrServer
-operator|.
-name|ping
-argument_list|()
-operator|.
-name|getStatus
-argument_list|()
 condition|)
 block|{
 name|LMSEstimator
@@ -906,9 +895,7 @@ name|log
 operator|.
 name|warn
 argument_list|(
-literal|"cannot create Solr query index as SolrServer {} is unreachable"
-argument_list|,
-name|solrServer
+literal|"cannot create Solr query index as SolrServer is null"
 argument_list|)
 expr_stmt|;
 block|}

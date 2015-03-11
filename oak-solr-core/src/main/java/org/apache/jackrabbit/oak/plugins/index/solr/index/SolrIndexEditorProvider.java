@@ -525,8 +525,6 @@ argument_list|,
 name|solrServer
 argument_list|,
 name|callback
-argument_list|,
-name|definition
 argument_list|)
 expr_stmt|;
 block|}
@@ -553,8 +551,6 @@ name|getIndexingSolrServer
 argument_list|()
 argument_list|,
 name|callback
-argument_list|,
-name|definition
 argument_list|)
 expr_stmt|;
 block|}
@@ -614,9 +610,6 @@ name|solrServer
 parameter_list|,
 name|IndexUpdateCallback
 name|callback
-parameter_list|,
-name|NodeBuilder
-name|definition
 parameter_list|)
 block|{
 name|SolrIndexEditor
@@ -631,16 +624,6 @@ condition|(
 name|solrServer
 operator|!=
 literal|null
-operator|&&
-literal|0
-operator|==
-name|solrServer
-operator|.
-name|ping
-argument_list|()
-operator|.
-name|getStatus
-argument_list|()
 condition|)
 block|{
 name|editor
@@ -670,9 +653,7 @@ name|log
 operator|.
 name|warn
 argument_list|(
-literal|"no SolrServer provided, cannot index {}"
-argument_list|,
-name|definition
+literal|"no SolrServer provided, cannot perform indexing"
 argument_list|)
 expr_stmt|;
 block|}
