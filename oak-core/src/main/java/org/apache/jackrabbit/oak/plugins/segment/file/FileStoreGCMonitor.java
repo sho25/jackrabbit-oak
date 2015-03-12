@@ -475,7 +475,7 @@ operator|.
 name|getCounter
 argument_list|()
 operator|.
-name|addAndGet
+name|set
 argument_list|(
 name|current
 argument_list|)
