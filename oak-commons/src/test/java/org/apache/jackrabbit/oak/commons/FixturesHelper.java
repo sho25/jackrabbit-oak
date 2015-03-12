@@ -50,7 +50,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * helper class that return the list of available fixtures based on the {@code ns-fixtures} system  * property ({@code -Dns-fixtures=SEGMENT_MK}).  *   * See {@link FixturesHelper.Fixture} for a list of available fixtures  */
+comment|/**  * helper class that return the list of available fixtures based on the {@code nsfixtures} system  * property ({@code -Dnsfixtures=SEGMENT_MK}).  *   * See {@link FixturesHelper.Fixture} for a list of available fixtures  */
 end_comment
 
 begin_class
@@ -75,13 +75,13 @@ specifier|final
 name|String
 name|NS_FIXTURES
 init|=
-literal|"ns-fixtures"
+literal|"nsfixtures"
 decl_stmt|;
 specifier|private
 name|FixturesHelper
 parameter_list|()
 block|{ }
-comment|/**      * default fixtures when no {@code ns-fixtures} is provided      */
+comment|/**      * default fixtures when no {@code nsfixtures} is provided      */
 specifier|public
 enum|enum
 name|Fixture

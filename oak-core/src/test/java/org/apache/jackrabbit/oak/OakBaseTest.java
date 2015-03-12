@@ -274,7 +274,7 @@ specifier|abstract
 class|class
 name|OakBaseTest
 block|{
-comment|/**      * The system property "ns-fixtures" can be used to provide a      * whitespace-separated list of fixtures names for which the      * tests should be run (the default is to use all fixtures).      */
+comment|/**      * The system property "nsfixtures" can be used to provide a      * whitespace-separated list of fixtures names for which the      * tests should be run (the default is to use all fixtures).      */
 specifier|private
 specifier|static
 specifier|final
