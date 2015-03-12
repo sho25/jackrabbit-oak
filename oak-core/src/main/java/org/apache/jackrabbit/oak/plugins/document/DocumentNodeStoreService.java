@@ -3265,6 +3265,8 @@ name|void
 name|run
 parameter_list|()
 block|{
+try|try
+block|{
 name|store
 operator|.
 name|getVersionGarbageCollector
@@ -3279,6 +3281,23 @@ operator|.
 name|SECONDS
 argument_list|)
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|IOException
+name|e
+parameter_list|)
+block|{
+name|log
+operator|.
+name|warn
+argument_list|(
+literal|"Error occurred while executing the Version Garbage Collector"
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 block|}
 argument_list|,
