@@ -674,9 +674,8 @@ name|LuceneIndexConstants
 operator|.
 name|SUGGEST_UPDATE_FREQUENCY_MINUTES
 argument_list|,
-literal|0
+literal|10
 argument_list|)
-comment|// always update suggester
 operator|.
 name|setProperty
 argument_list|(
