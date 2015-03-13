@@ -11,11 +11,15 @@ name|apache
 operator|.
 name|jackrabbit
 operator|.
+name|oak
+operator|.
+name|blob
+operator|.
+name|cloud
+operator|.
 name|aws
 operator|.
-name|ext
-operator|.
-name|ds
+name|s3
 package|;
 end_package
 
@@ -46,22 +50,6 @@ operator|.
 name|jcr
 operator|.
 name|RepositoryException
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|aws
-operator|.
-name|ext
-operator|.
-name|S3Constants
 import|;
 end_import
 

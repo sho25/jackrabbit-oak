@@ -11,9 +11,15 @@ name|apache
 operator|.
 name|jackrabbit
 operator|.
+name|oak
+operator|.
+name|blob
+operator|.
+name|cloud
+operator|.
 name|aws
 operator|.
-name|ext
+name|s3
 package|;
 end_package
 
@@ -269,7 +275,7 @@ operator|.
 name|dataEncryption
 return|;
 block|}
-comment|/**      * Enum to indicate S3 encryption mode       *      */
+comment|/**      * Enum to indicate S3 encryption mode      *      */
 specifier|private
 enum|enum
 name|DataEncryption

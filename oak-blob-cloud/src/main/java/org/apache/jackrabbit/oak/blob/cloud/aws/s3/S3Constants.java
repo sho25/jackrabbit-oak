@@ -11,9 +11,15 @@ name|apache
 operator|.
 name|jackrabbit
 operator|.
+name|oak
+operator|.
+name|blob
+operator|.
+name|cloud
+operator|.
 name|aws
 operator|.
-name|ext
+name|s3
 package|;
 end_package
 

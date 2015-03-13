@@ -11,11 +11,15 @@ name|apache
 operator|.
 name|jackrabbit
 operator|.
+name|oak
+operator|.
+name|blob
+operator|.
+name|cloud
+operator|.
 name|aws
 operator|.
-name|ext
-operator|.
-name|ds
+name|s3
 package|;
 end_package
 
@@ -76,7 +80,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Test {@link CachingDataStore} with  * {@link CachingDataStore#setTouchAsync(boolean) set to true. It requires  * to pass aws config file via system property. For e.g.  * -Dconfig=/opt/cq/aws.properties. Sample aws properties located at  * src/test/resources/aws.properties  */
+comment|/**  * Test {@link org.apache.jackrabbit.core.data.CachingDataStore} with  * {@link org.apache.jackrabbit.core.data.CachingDataStore#setTouchAsync(boolean) set to true. It requires  * to pass aws config file via system property. For e.g.  * -Dconfig=/opt/cq/aws.properties. Sample aws properties located at  * src/test/resources/aws.properties  */
 end_comment
 
 begin_class

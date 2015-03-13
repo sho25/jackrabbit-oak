@@ -11,9 +11,15 @@ name|apache
 operator|.
 name|jackrabbit
 operator|.
+name|oak
+operator|.
+name|blob
+operator|.
+name|cloud
+operator|.
 name|aws
 operator|.
-name|ext
+name|s3
 package|;
 end_package
 
@@ -576,7 +582,7 @@ name|bucketName
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Read a configuration properties file. If the file name ends with ";burn",      * the file is deleted after reading.      *       * @param fileName the properties file name      * @return the properties      * @throws IOException if the file doesn't exist      */
+comment|/**      * Read a configuration properties file. If the file name ends with ";burn",      * the file is deleted after reading.      *       * @param fileName the properties file name      * @return the properties      * @throws java.io.IOException if the file doesn't exist      */
 specifier|public
 specifier|static
 name|Properties

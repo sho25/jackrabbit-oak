@@ -11,11 +11,15 @@ name|apache
 operator|.
 name|jackrabbit
 operator|.
+name|oak
+operator|.
+name|blob
+operator|.
+name|cloud
+operator|.
 name|aws
 operator|.
-name|ext
-operator|.
-name|ds
+name|s3
 package|;
 end_package
 
@@ -76,38 +80,6 @@ operator|.
 name|jcr
 operator|.
 name|RepositoryException
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|aws
-operator|.
-name|ext
-operator|.
-name|S3Constants
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|aws
-operator|.
-name|ext
-operator|.
-name|Utils
 import|;
 end_import
 
@@ -258,7 +230,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Test {@link CachingDataStore} with S3Backend and local cache on. It requires  * to pass aws config file via system property. For e.g.  * -Dconfig=/opt/cq/aws.properties. Sample aws properties located at  * src/test/resources/aws.properties  */
+comment|/**  * Test {@link org.apache.jackrabbit.core.data.CachingDataStore} with S3Backend and local cache on. It requires  * to pass aws config file via system property. For e.g.  * -Dconfig=/opt/cq/aws.properties. Sample aws properties located at  * src/test/resources/aws.properties  */
 end_comment
 
 begin_class
@@ -414,7 +386,7 @@ parameter_list|(
 name|Exception
 name|ignore
 parameter_list|)
-block|{                      }
+block|{          }
 block|}
 specifier|protected
 name|CachingDataStore
