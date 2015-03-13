@@ -1878,6 +1878,18 @@ block|{
 annotation|@
 name|Override
 specifier|public
+name|boolean
+name|isPrimaryColumnByteEncoded
+parameter_list|()
+block|{
+comment|// TODO: we should dynamically detect this
+return|return
+literal|true
+return|;
+block|}
+annotation|@
+name|Override
+specifier|public
 name|String
 name|getTableCreationStatement
 parameter_list|(
@@ -1892,7 +1904,7 @@ literal|"create table "
 operator|+
 name|tableName
 operator|+
-literal|" (ID nvarchar(512) not null primary key, MODIFIED bigint, HASBINARY smallint, DELETEDONCE smallint, MODCOUNT bigint, CMODCOUNT bigint, DSIZE bigint, DATA nvarchar(4000), BDATA varbinary(max))"
+literal|" (ID varbinary(512) not null primary key, MODIFIED bigint, HASBINARY smallint, DELETEDONCE smallint, MODCOUNT bigint, CMODCOUNT bigint, DSIZE bigint, DATA nvarchar(4000), BDATA varbinary(max))"
 operator|)
 return|;
 block|}
