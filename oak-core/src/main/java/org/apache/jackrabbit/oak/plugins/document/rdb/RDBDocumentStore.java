@@ -1711,6 +1711,7 @@ name|TOP
 block|}
 empty_stmt|;
 comment|/**      * Defines variation in the capabilities of different RDBs.      */
+specifier|protected
 enum|enum
 name|DB
 block|{
