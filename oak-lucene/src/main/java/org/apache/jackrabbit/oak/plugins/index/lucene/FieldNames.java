@@ -147,6 +147,15 @@ name|NULL_PROPS
 init|=
 literal|":nullProps"
 decl_stmt|;
+comment|/**      * Name of the field that contains those property names which are exist i.e. not null      * for the given NodeState      */
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|NOT_NULL_PROPS
+init|=
+literal|":notNullProps"
+decl_stmt|;
 comment|/**      * Used to select only the PATH field from the lucene documents      */
 specifier|public
 specifier|static

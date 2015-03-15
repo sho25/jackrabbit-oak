@@ -408,6 +408,12 @@ name|PROP_NULL_CHECK_ENABLED
 init|=
 literal|"nullCheckEnabled"
 decl_stmt|;
+comment|/**      * Property definition config indicating that this property would be used with      * 'IS NOT NULL' constraint      */
+name|String
+name|PROP_NOT_NULL_CHECK_ENABLED
+init|=
+literal|"notNullCheckEnabled"
+decl_stmt|;
 block|}
 end_interface
 

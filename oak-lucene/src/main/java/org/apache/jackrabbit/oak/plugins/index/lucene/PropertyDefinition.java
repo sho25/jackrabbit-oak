@@ -382,6 +382,10 @@ name|boolean
 name|nullCheckEnabled
 decl_stmt|;
 specifier|final
+name|boolean
+name|notNullCheckEnabled
+decl_stmt|;
+specifier|final
 name|int
 name|includedPropertyTypes
 decl_stmt|;
@@ -640,6 +644,21 @@ argument_list|)
 expr_stmt|;
 name|this
 operator|.
+name|notNullCheckEnabled
+operator|=
+name|getOptionalValue
+argument_list|(
+name|defn
+argument_list|,
+name|LuceneIndexConstants
+operator|.
+name|PROP_NOT_NULL_CHECK_ENABLED
+argument_list|,
+literal|false
+argument_list|)
+expr_stmt|;
+name|this
+operator|.
 name|nonRelativeName
 operator|=
 name|determineNonRelativeName
@@ -824,6 +843,10 @@ operator|+
 literal|", nullCheckEnabled="
 operator|+
 name|nullCheckEnabled
+operator|+
+literal|", notNullCheckEnabled="
+operator|+
+name|notNullCheckEnabled
 operator|+
 literal|'}'
 return|;
