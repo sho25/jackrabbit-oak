@@ -419,18 +419,6 @@ name|Test
 import|;
 end_import
 
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertTrue
-import|;
-end_import
-
 begin_comment
 comment|/**  * Tests for MongoMK GC  */
 end_comment
@@ -593,7 +581,7 @@ name|randomStream
 argument_list|(
 name|i
 argument_list|,
-literal|4160
+literal|16516
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -1204,6 +1192,13 @@ argument_list|,
 name|repoId
 argument_list|)
 decl_stmt|;
+name|Thread
+operator|.
+name|sleep
+argument_list|(
+literal|4000
+argument_list|)
+expr_stmt|;
 name|gc
 operator|.
 name|collectGarbage

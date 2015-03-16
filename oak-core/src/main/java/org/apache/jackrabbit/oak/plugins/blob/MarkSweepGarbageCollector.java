@@ -2138,6 +2138,15 @@ argument_list|,
 name|bufferWriter
 argument_list|)
 expr_stmt|;
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"retrieved {} blobs"
+argument_list|,
+name|blobsCount
+argument_list|)
+expr_stmt|;
 block|}
 comment|// sort the file
 name|GarbageCollectorFileState

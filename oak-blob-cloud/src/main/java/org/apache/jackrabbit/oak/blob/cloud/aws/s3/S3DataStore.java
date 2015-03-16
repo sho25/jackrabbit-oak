@@ -76,7 +76,7 @@ name|S3DataStore
 extends|extends
 name|CachingDataStore
 block|{
-specifier|private
+specifier|protected
 name|Properties
 name|properties
 decl_stmt|;
