@@ -2383,6 +2383,20 @@ operator|+=
 literal|", before\n"
 operator|+
 name|revision
+expr_stmt|;
+if|if
+condition|(
+name|LOG
+operator|.
+name|isDebugEnabled
+argument_list|()
+condition|)
+block|{
+name|LOG
+operator|.
+name|debug
+argument_list|(
+name|conflictMessage
 operator|+
 literal|"; document:\n"
 operator|+
@@ -2405,7 +2419,9 @@ name|nodeStore
 operator|.
 name|getRevisionComparator
 argument_list|()
+argument_list|)
 expr_stmt|;
+block|}
 throw|throw
 operator|new
 name|DocumentStoreException
