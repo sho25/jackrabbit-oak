@@ -178,7 +178,7 @@ condition|(
 operator|!
 name|delegate
 operator|.
-name|isTraceEnabled
+name|isDebugEnabled
 argument_list|()
 condition|)
 block|{
@@ -228,7 +228,7 @@ condition|(
 operator|!
 name|delegate
 operator|.
-name|isTraceEnabled
+name|isDebugEnabled
 argument_list|()
 condition|)
 block|{
