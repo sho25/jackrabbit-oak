@@ -705,6 +705,11 @@ argument_list|(
 literal|1
 argument_list|)
 operator|.
+name|setPersistentCache
+argument_list|(
+literal|"target/persistentCache,time"
+argument_list|)
+operator|.
 name|open
 argument_list|()
 decl_stmt|;
@@ -1414,6 +1419,11 @@ operator|.
 name|memoryCacheSize
 argument_list|(
 name|CACHE_SIZE
+argument_list|)
+operator|.
+name|setPersistentCache
+argument_list|(
+literal|"target/persistentCache,time"
 argument_list|)
 operator|.
 name|setMongoDB

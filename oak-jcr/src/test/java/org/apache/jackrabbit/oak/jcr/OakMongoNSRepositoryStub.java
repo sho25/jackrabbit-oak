@@ -368,6 +368,11 @@ operator|*
 literal|1024
 argument_list|)
 operator|.
+name|setPersistentCache
+argument_list|(
+literal|"target/persistentCache,time"
+argument_list|)
+operator|.
 name|setMongoDB
 argument_list|(
 name|connection

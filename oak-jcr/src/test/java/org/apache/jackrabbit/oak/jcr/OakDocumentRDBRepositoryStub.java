@@ -350,6 +350,11 @@ operator|*
 literal|1024
 argument_list|)
 operator|.
+name|setPersistentCache
+argument_list|(
+literal|"target/persistentCache,time"
+argument_list|)
+operator|.
 name|setRDBConnection
 argument_list|(
 name|RDBDataSourceFactory

@@ -331,6 +331,11 @@ name|getDB
 argument_list|()
 argument_list|)
 operator|.
+name|setPersistentCache
+argument_list|(
+literal|"target/persistentCache,time"
+argument_list|)
+operator|.
 name|getNodeStore
 argument_list|()
 return|;
@@ -521,6 +526,11 @@ argument_list|(
 name|this
 operator|.
 name|ds
+argument_list|)
+operator|.
+name|setPersistentCache
+argument_list|(
+literal|"target/persistentCache,time"
 argument_list|)
 operator|.
 name|getNodeStore
@@ -886,6 +896,13 @@ name|blobStore
 argument_list|)
 expr_stmt|;
 block|}
+name|builder
+operator|.
+name|setPersistentCache
+argument_list|(
+literal|"target/persistentCache,time"
+argument_list|)
+expr_stmt|;
 name|builder
 operator|.
 name|setMongoDB
