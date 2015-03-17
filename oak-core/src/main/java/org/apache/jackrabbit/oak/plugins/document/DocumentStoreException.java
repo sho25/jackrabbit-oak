@@ -96,7 +96,10 @@ name|convert
 argument_list|(
 name|t
 argument_list|,
-literal|null
+name|t
+operator|.
+name|getMessage
+argument_list|()
 argument_list|)
 return|;
 block|}
