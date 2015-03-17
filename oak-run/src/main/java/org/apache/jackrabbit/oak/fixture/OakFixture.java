@@ -992,6 +992,11 @@ argument_list|(
 name|cacheSize
 argument_list|)
 operator|.
+name|setPersistentCache
+argument_list|(
+literal|"target/persistentCache,time"
+argument_list|)
+operator|.
 name|setLogging
 argument_list|(
 literal|false
@@ -1052,6 +1057,11 @@ operator|.
 name|memoryCacheSize
 argument_list|(
 name|cacheSize
+argument_list|)
+operator|.
+name|setPersistentCache
+argument_list|(
+literal|"target/persistentCache,time"
 argument_list|)
 operator|.
 name|setClusterId
@@ -1169,6 +1179,11 @@ operator|.
 name|memoryCacheSize
 argument_list|(
 name|cacheSize
+argument_list|)
+operator|.
+name|setPersistentCache
+argument_list|(
+literal|"target/persistentCache,time"
 argument_list|)
 operator|.
 name|setClusterId
@@ -1509,6 +1524,11 @@ operator|.
 name|memoryCacheSize
 argument_list|(
 name|cacheSize
+argument_list|)
+operator|.
+name|setPersistentCache
+argument_list|(
+literal|"target/persistentCache,time"
 argument_list|)
 operator|.
 name|setLogging
