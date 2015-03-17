@@ -484,12 +484,6 @@ block|{
 block|{
 name|NodeStoreFixture
 operator|.
-name|MONGO_MK
-block|}
-block|,
-block|{
-name|NodeStoreFixture
-operator|.
 name|MONGO_NS
 block|}
 block|,

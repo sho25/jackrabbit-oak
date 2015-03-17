@@ -20,6 +20,36 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|jcr
+operator|.
+name|AbstractRepositoryTest
+operator|.
+name|dispose
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertEquals
+import|;
+end_import
+
+begin_import
 import|import
 name|javax
 operator|.
@@ -179,36 +209,6 @@ name|Test
 import|;
 end_import
 
-begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|jcr
-operator|.
-name|AbstractRepositoryTest
-operator|.
-name|dispose
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertEquals
-import|;
-end_import
-
 begin_comment
 comment|/**  * A simple, temporary benchmark for many child nodes.  */
 end_comment
@@ -225,7 +225,6 @@ name|NodeStoreFixture
 operator|.
 name|DOCUMENT_NS
 decl_stmt|;
-comment|//    NodeStoreFixture fixture = NodeStoreFixture.DOCUMENT_MK;
 comment|//    NodeStoreFixture fixture = NodeStoreFixture.SEGMENT_MK;
 name|Repository
 name|repository

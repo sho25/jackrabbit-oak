@@ -86,8 +86,6 @@ specifier|public
 enum|enum
 name|Fixture
 block|{
-name|DOCUMENT_MK
-block|,
 name|DOCUMENT_NS
 block|,
 name|SEGMENT_MK

@@ -812,15 +812,6 @@ name|fixture
 operator|!=
 name|NodeStoreFixture
 operator|.
-name|MONGO_MK
-argument_list|)
-expr_stmt|;
-name|assumeTrue
-argument_list|(
-name|fixture
-operator|!=
-name|NodeStoreFixture
-operator|.
 name|MONGO_NS
 argument_list|)
 expr_stmt|;
