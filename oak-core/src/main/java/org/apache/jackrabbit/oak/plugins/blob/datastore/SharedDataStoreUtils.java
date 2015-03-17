@@ -47,6 +47,16 @@ name|javax
 operator|.
 name|annotation
 operator|.
+name|Nonnull
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|annotation
+operator|.
 name|Nullable
 import|;
 end_import
@@ -271,7 +281,7 @@ name|Long
 name|apply
 parameter_list|(
 annotation|@
-name|Nullable
+name|Nonnull
 name|DataRecord
 name|input
 parameter_list|)
@@ -346,7 +356,7 @@ name|String
 name|apply
 parameter_list|(
 annotation|@
-name|Nullable
+name|Nonnull
 name|DataRecord
 name|input
 parameter_list|)
@@ -401,7 +411,7 @@ name|String
 name|apply
 parameter_list|(
 annotation|@
-name|Nullable
+name|Nonnull
 name|DataRecord
 name|input
 parameter_list|)
