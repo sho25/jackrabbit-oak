@@ -61,6 +61,20 @@ end_import
 
 begin_import
 import|import static
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|Executors
+operator|.
+name|newSingleThreadScheduledExecutor
+import|;
+end_import
+
+begin_import
+import|import static
 name|javax
 operator|.
 name|jcr
@@ -350,6 +364,18 @@ operator|.
 name|concurrent
 operator|.
 name|Future
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|ScheduledExecutorService
 import|;
 end_import
 
@@ -3637,11 +3663,21 @@ argument_list|,
 literal|false
 argument_list|)
 expr_stmt|;
+specifier|final
+name|Session
+name|s
+init|=
+name|getAdminSession
+argument_list|()
+decl_stmt|;
 comment|// Generate events
-name|Executors
-operator|.
+name|ScheduledExecutorService
+name|service
+init|=
 name|newSingleThreadScheduledExecutor
 argument_list|()
+decl_stmt|;
+name|service
 operator|.
 name|scheduleWithFixedDelay
 argument_list|(
@@ -3662,6 +3698,8 @@ parameter_list|()
 block|{
 try|try
 block|{
+name|s
+operator|.
 name|getNode
 argument_list|(
 name|TEST_PATH
@@ -3790,6 +3828,22 @@ name|TimeUnit
 operator|.
 name|SECONDS
 argument_list|)
+argument_list|)
+expr_stmt|;
+name|service
+operator|.
+name|shutdown
+argument_list|()
+expr_stmt|;
+name|service
+operator|.
+name|awaitTermination
+argument_list|(
+literal|10
+argument_list|,
+name|TimeUnit
+operator|.
+name|SECONDS
 argument_list|)
 expr_stmt|;
 block|}

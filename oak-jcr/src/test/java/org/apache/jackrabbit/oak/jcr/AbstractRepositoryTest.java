@@ -341,14 +341,17 @@ name|NodeStoreFixture
 name|fixture
 decl_stmt|;
 specifier|private
+specifier|volatile
 name|NodeStore
 name|nodeStore
 decl_stmt|;
 specifier|private
+specifier|volatile
 name|Repository
 name|repository
 decl_stmt|;
 specifier|private
+specifier|volatile
 name|Session
 name|adminSession
 decl_stmt|;
