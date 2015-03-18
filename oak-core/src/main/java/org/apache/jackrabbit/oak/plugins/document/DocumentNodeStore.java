@@ -2495,12 +2495,8 @@ name|void
 name|dispose
 parameter_list|()
 block|{
-name|runBackgroundOperations
-argument_list|()
-expr_stmt|;
 if|if
 condition|(
-operator|!
 name|isDisposed
 operator|.
 name|getAndSet
@@ -2509,6 +2505,10 @@ literal|true
 argument_list|)
 condition|)
 block|{
+comment|// only dispose once
+return|return;
+block|}
+comment|// notify background threads waiting on isDisposed
 synchronized|synchronized
 init|(
 name|isDisposed
@@ -2536,6 +2536,11 @@ parameter_list|)
 block|{
 comment|// ignore
 block|}
+comment|// do a final round of background operations after
+comment|// the background thread stopped
+name|internalRunBackgroundOperations
+argument_list|()
+expr_stmt|;
 if|if
 condition|(
 name|leaseUpdateThread
@@ -2560,6 +2565,8 @@ block|{
 comment|// ignore
 block|}
 block|}
+comment|// now mark this cluster node as inactive by
+comment|// disposing the clusterNodeInfo
 if|if
 condition|(
 name|clusterNodeInfo
@@ -2577,15 +2584,6 @@ name|store
 operator|.
 name|dispose
 argument_list|()
-expr_stmt|;
-name|LOG
-operator|.
-name|info
-argument_list|(
-literal|"Disposed DocumentNodeStore with clusterNodeId: {}"
-argument_list|,
-name|clusterId
-argument_list|)
 expr_stmt|;
 if|if
 condition|(
@@ -2626,7 +2624,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-block|}
 if|if
 condition|(
 name|persistentCache
@@ -2640,6 +2637,15 @@ name|close
 argument_list|()
 expr_stmt|;
 block|}
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Disposed DocumentNodeStore with clusterNodeId: {}"
+argument_list|,
+name|clusterId
+argument_list|)
+expr_stmt|;
 block|}
 name|Revision
 name|setHeadRevision
@@ -2774,6 +2780,9 @@ operator|.
 name|lock
 argument_list|()
 expr_stmt|;
+name|checkOpen
+argument_list|()
+expr_stmt|;
 name|boolean
 name|success
 init|=
@@ -2861,6 +2870,9 @@ name|readLock
 argument_list|()
 operator|.
 name|lock
+argument_list|()
+expr_stmt|;
+name|checkOpen
 argument_list|()
 expr_stmt|;
 name|boolean
@@ -7337,7 +7349,6 @@ return|;
 block|}
 comment|//----------------------< background operations>---------------------------
 specifier|public
-specifier|synchronized
 name|void
 name|runBackgroundOperations
 parameter_list|()
@@ -7352,17 +7363,52 @@ condition|)
 block|{
 return|return;
 block|}
+try|try
+block|{
+name|internalRunBackgroundOperations
+argument_list|()
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|RuntimeException
+name|e
+parameter_list|)
+block|{
 if|if
 condition|(
-name|simpleRevisionCounter
-operator|!=
-literal|null
+name|isDisposed
+operator|.
+name|get
+argument_list|()
 condition|)
 block|{
-comment|// only when using timestamp
+name|LOG
+operator|.
+name|warn
+argument_list|(
+literal|"Background operation failed: "
+operator|+
+name|e
+operator|.
+name|toString
+argument_list|()
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
 return|return;
 block|}
-try|try
+throw|throw
+name|e
+throw|;
+block|}
+block|}
+specifier|private
+specifier|synchronized
+name|void
+name|internalRunBackgroundOperations
+parameter_list|()
 block|{
 name|long
 name|start
@@ -7524,27 +7570,6 @@ argument_list|,
 name|readStats
 argument_list|)
 expr_stmt|;
-block|}
-block|}
-catch|catch
-parameter_list|(
-name|RuntimeException
-name|e
-parameter_list|)
-block|{
-if|if
-condition|(
-name|isDisposed
-operator|.
-name|get
-argument_list|()
-condition|)
-block|{
-return|return;
-block|}
-throw|throw
-name|e
-throw|;
 block|}
 block|}
 comment|/**      * Renews the cluster lease if necessary.      *      * @return {@code true} if the lease was renewed; {@code false} otherwise.      */
@@ -8642,6 +8667,31 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|//-----------------------------< internal>---------------------------------
+comment|/**      * Checks if this store is still open and throws an      * {@link IllegalStateException} if it is already disposed (or a dispose      * is in progress).      *      * @throws IllegalStateException if this store is disposed.      */
+specifier|private
+name|void
+name|checkOpen
+parameter_list|()
+throws|throws
+name|IllegalStateException
+block|{
+if|if
+condition|(
+name|isDisposed
+operator|.
+name|get
+argument_list|()
+condition|)
+block|{
+throw|throw
+operator|new
+name|IllegalStateException
+argument_list|(
+literal|"This DocumentNodeStore is disposed"
+argument_list|)
+throw|;
+block|}
+block|}
 specifier|private
 name|boolean
 name|dispatch

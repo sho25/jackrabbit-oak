@@ -877,16 +877,6 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Ignore
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
 name|Test
 import|;
 end_import
@@ -7674,8 +7664,6 @@ expr_stmt|;
 block|}
 comment|// OAK-2642
 annotation|@
-name|Ignore
-annotation|@
 name|Test
 specifier|public
 name|void
@@ -7992,14 +7980,19 @@ argument_list|,
 name|builder
 argument_list|)
 expr_stmt|;
+name|fail
+argument_list|(
+literal|"Merge must fail with CommitFailedException"
+argument_list|)
+expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|Exception
+name|CommitFailedException
 name|e
 parameter_list|)
 block|{
-comment|// ignore
+comment|// expected
 block|}
 comment|// drain updates until dispose finished
 while|while
@@ -8148,11 +8141,6 @@ name|builder
 argument_list|)
 expr_stmt|;
 block|}
-name|store2
-operator|.
-name|dispose
-argument_list|()
-expr_stmt|;
 block|}
 specifier|private
 name|void
