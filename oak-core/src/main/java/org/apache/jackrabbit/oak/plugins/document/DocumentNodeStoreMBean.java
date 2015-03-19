@@ -75,6 +75,11 @@ parameter_list|()
 function_decl|;
 name|String
 index|[]
+name|getActiveClusterNodes
+parameter_list|()
+function_decl|;
+name|String
+index|[]
 name|getLastKnownRevisions
 parameter_list|()
 function_decl|;
