@@ -347,6 +347,10 @@ name|last
 operator|==
 literal|null
 operator|&&
+name|list
+operator|==
+literal|null
+operator|&&
 name|lastIncluding
 operator|&&
 name|firstIncluding
@@ -363,6 +367,10 @@ operator|==
 literal|null
 operator|&&
 name|last
+operator|==
+literal|null
+operator|&&
+name|list
 operator|==
 literal|null
 operator|&&

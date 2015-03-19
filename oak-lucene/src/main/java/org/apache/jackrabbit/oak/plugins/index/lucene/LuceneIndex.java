@@ -3999,17 +3999,20 @@ if|if
 condition|(
 name|pr
 operator|.
-name|isNullRestriction
-argument_list|()
-operator|||
+name|first
+operator|==
+literal|null
+operator|&&
 name|pr
 operator|.
-name|isNotNullRestriction
-argument_list|()
+name|last
+operator|==
+literal|null
 condition|)
 block|{
-comment|// ignore property existence checks, Lucene can't do 'property
-comment|// is not null' queries (OAK-1208)
+comment|// we only support equality or range queries,
+comment|// but not "in", "is null", "is not null"
+comment|// queries (OAK-1208)
 continue|continue;
 block|}
 comment|// check excluded properties and types

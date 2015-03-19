@@ -1432,11 +1432,6 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|PropertyValue
-name|value
-init|=
-literal|null
-decl_stmt|;
 name|boolean
 name|createPlan
 init|=
@@ -1448,13 +1443,15 @@ name|pr
 operator|.
 name|isNotNullRestriction
 argument_list|()
+operator|||
+name|pr
+operator|.
+name|list
+operator|!=
+literal|null
 condition|)
 block|{
 comment|// open query: [property] is not null
-name|value
-operator|=
-literal|null
-expr_stmt|;
 name|createPlan
 operator|=
 literal|true
@@ -1490,12 +1487,6 @@ name|lastIncluding
 condition|)
 block|{
 comment|// [property]=[value]
-name|value
-operator|=
-name|pr
-operator|.
-name|first
-expr_stmt|;
 name|createPlan
 operator|=
 literal|true
@@ -1524,12 +1515,6 @@ argument_list|)
 condition|)
 block|{
 comment|// '>'& '>=' use cases
-name|value
-operator|=
-name|pr
-operator|.
-name|first
-expr_stmt|;
 name|createPlan
 operator|=
 literal|true
@@ -1558,12 +1543,6 @@ argument_list|)
 condition|)
 block|{
 comment|// '<'& '<='
-name|value
-operator|=
-name|pr
-operator|.
-name|last
-expr_stmt|;
 name|createPlan
 operator|=
 literal|true
