@@ -182,7 +182,7 @@ name|testClockDrift
 argument_list|(
 name|Clock
 operator|.
-name|SIMPLE
+name|ACCURATE
 argument_list|)
 expr_stmt|;
 block|}
