@@ -77,6 +77,10 @@ operator|.
 name|of
 argument_list|(
 operator|new
+name|JcrLastModifiedConflictHandler
+argument_list|()
+argument_list|,
+operator|new
 name|ChildOrderConflictHandler
 argument_list|()
 argument_list|,
