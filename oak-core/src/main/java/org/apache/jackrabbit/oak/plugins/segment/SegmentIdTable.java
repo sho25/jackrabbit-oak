@@ -205,6 +205,11 @@ name|index
 init|=
 name|first
 decl_stmt|;
+name|boolean
+name|shouldRefresh
+init|=
+literal|false
+decl_stmt|;
 name|WeakReference
 argument_list|<
 name|SegmentId
@@ -258,6 +263,14 @@ return|return
 name|id
 return|;
 block|}
+name|shouldRefresh
+operator|=
+name|shouldRefresh
+operator|||
+name|id
+operator|==
+literal|null
+expr_stmt|;
 name|index
 operator|=
 operator|(
@@ -312,9 +325,7 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|index
-operator|!=
-name|first
+name|shouldRefresh
 condition|)
 block|{
 name|refresh
