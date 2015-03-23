@@ -444,6 +444,14 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+name|assertFalse
+argument_list|(
+name|mongoDS
+operator|.
+name|getDisableIndexHint
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|long
 name|delta
 init|=

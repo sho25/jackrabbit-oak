@@ -1150,6 +1150,19 @@ operator|-
 literal|1
 argument_list|)
 decl_stmt|;
+comment|/**      * Disables the index hint sent to MongoDB.      * This overrides {@link #maxDeltaForModTimeIdxSecs}.      */
+specifier|private
+specifier|final
+name|boolean
+name|disableIndexHint
+init|=
+name|Boolean
+operator|.
+name|getBoolean
+argument_list|(
+literal|"oak.mongo.disableIndexHint"
+argument_list|)
+decl_stmt|;
 comment|/**      * Duration in milliseconds after which a mongo query will be terminated.      *<p>      * If this value is -1 no timeout is being set at all, if it is 1 or greater      * this translated to MongoDB's maxTimeNS being set accordingly.      *<p>      * Default is -1.      * See: http://mongodb.github.io/node-mongodb-native/driver-articles/anintroductionto1_4_and_2_6.html#maxtimems      */
 specifier|private
 specifier|final
@@ -1551,11 +1564,13 @@ name|info
 argument_list|(
 literal|"Configuration maxReplicationLagMillis {}, "
 operator|+
-literal|"maxDeltaForModTimeIdxSecs {}"
+literal|"maxDeltaForModTimeIdxSecs {}, disableIndexHint {}"
 argument_list|,
 name|maxReplicationLagMillis
 argument_list|,
 name|maxDeltaForModTimeIdxSecs
+argument_list|,
+name|disableIndexHint
 argument_list|)
 expr_stmt|;
 block|}
@@ -3033,12 +3048,21 @@ name|sort
 argument_list|(
 name|BY_ID_ASC
 argument_list|)
+decl_stmt|;
+if|if
+condition|(
+operator|!
+name|disableIndexHint
+condition|)
+block|{
+name|cursor
 operator|.
 name|hint
 argument_list|(
 name|hint
 argument_list|)
-decl_stmt|;
+expr_stmt|;
+block|}
 if|if
 condition|(
 name|maxQueryTimeMS
@@ -5544,6 +5568,14 @@ parameter_list|()
 block|{
 return|return
 name|maxDeltaForModTimeIdxSecs
+return|;
+block|}
+name|boolean
+name|getDisableIndexHint
+parameter_list|()
+block|{
+return|return
+name|disableIndexHint
 return|;
 block|}
 name|Iterable
