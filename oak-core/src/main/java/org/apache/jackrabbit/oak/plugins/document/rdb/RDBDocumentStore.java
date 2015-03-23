@@ -4186,7 +4186,9 @@ block|}
 block|}
 else|else
 block|{
-return|return
+name|T
+name|result
+init|=
 name|internalUpdate
 argument_list|(
 name|collection
@@ -4199,6 +4201,48 @@ name|checkConditions
 argument_list|,
 name|RETRIES
 argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|allowCreate
+operator|&&
+name|result
+operator|==
+literal|null
+condition|)
+block|{
+comment|// TODO OAK-2655 need to implement some kind of retry
+name|LOG
+operator|.
+name|error
+argument_list|(
+literal|"update of "
+operator|+
+name|update
+operator|.
+name|getId
+argument_list|()
+operator|+
+literal|" failed, race condition?"
+argument_list|)
+expr_stmt|;
+throw|throw
+operator|new
+name|DocumentStoreException
+argument_list|(
+literal|"update of "
+operator|+
+name|update
+operator|.
+name|getId
+argument_list|()
+operator|+
+literal|" failed, race condition?"
+argument_list|)
+throw|;
+block|}
+return|return
+name|result
 return|;
 block|}
 block|}
@@ -4391,7 +4435,7 @@ block|{
 comment|// document was there but is now gone
 name|LOG
 operator|.
-name|error
+name|debug
 argument_list|(
 literal|"failed to apply update because document is gone in the meantime: "
 operator|+
@@ -4399,6 +4443,12 @@ name|update
 operator|.
 name|getId
 argument_list|()
+argument_list|,
+operator|new
+name|Exception
+argument_list|(
+literal|"call stack"
+argument_list|)
 argument_list|)
 expr_stmt|;
 return|return
