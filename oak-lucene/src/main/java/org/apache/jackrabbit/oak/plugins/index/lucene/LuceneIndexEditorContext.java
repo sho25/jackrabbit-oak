@@ -948,6 +948,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+comment|/**      * eventually update suggest dictionary      * @throws IOException if suggest dictionary update fails      */
 specifier|private
 name|void
 name|updateSuggester
@@ -955,7 +956,14 @@ parameter_list|()
 throws|throws
 name|IOException
 block|{
-comment|// eventually update suggest dictionary
+if|if
+condition|(
+name|definition
+operator|.
+name|isSuggestEnabled
+argument_list|()
+condition|)
+block|{
 name|boolean
 name|updateSuggester
 init|=
@@ -1124,6 +1132,7 @@ operator|.
 name|close
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 block|}
 block|}
