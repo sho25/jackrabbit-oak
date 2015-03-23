@@ -3338,7 +3338,7 @@ block|}
 block|}
 annotation|@
 name|Override
-specifier|public
+specifier|protected
 name|void
 name|finalize
 parameter_list|()
