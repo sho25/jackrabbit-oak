@@ -913,7 +913,7 @@ specifier|final
 name|String
 name|LOCK_FILE_NAME
 init|=
-literal|"lock"
+literal|"repo.lock"
 decl_stmt|;
 specifier|static
 specifier|final
