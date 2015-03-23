@@ -193,12 +193,21 @@ operator|.
 name|getNumFound
 argument_list|()
 decl_stmt|;
-name|long
+name|double
 name|delta
 init|=
+name|Math
+operator|.
+name|pow
+argument_list|(
 name|numFound
 operator|-
 name|estimate
+argument_list|,
+literal|2
+argument_list|)
+operator|/
+literal|2
 decl_stmt|;
 if|if
 condition|(
@@ -256,7 +265,6 @@ operator|*
 name|errors
 expr_stmt|;
 block|}
-block|}
 comment|// weights updated
 name|weights
 operator|=
@@ -269,6 +277,7 @@ argument_list|,
 literal|5
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|long
 name|estimate
