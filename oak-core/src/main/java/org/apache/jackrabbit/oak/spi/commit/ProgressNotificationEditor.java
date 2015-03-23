@@ -13,7 +13,9 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|upgrade
+name|spi
+operator|.
+name|commit
 package|;
 end_package
 
@@ -32,6 +34,16 @@ operator|.
 name|PathUtils
 operator|.
 name|concat
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|CheckForNull
 import|;
 end_import
 
@@ -103,24 +115,6 @@ name|oak
 operator|.
 name|spi
 operator|.
-name|commit
-operator|.
-name|Editor
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|spi
-operator|.
 name|state
 operator|.
 name|NodeState
@@ -168,11 +162,15 @@ name|Void
 argument_list|>
 name|onProgress
 decl_stmt|;
+annotation|@
+name|CheckForNull
 specifier|public
 specifier|static
-name|ProgressNotificationEditor
+name|Editor
 name|wrap
 parameter_list|(
+annotation|@
+name|CheckForNull
 name|Editor
 name|editor
 parameter_list|,
@@ -184,6 +182,20 @@ specifier|final
 name|String
 name|message
 parameter_list|)
+block|{
+if|if
+condition|(
+name|editor
+operator|!=
+literal|null
+operator|&&
+operator|!
+operator|(
+name|editor
+operator|instanceof
+name|ProgressNotificationEditor
+operator|)
+condition|)
 block|{
 return|return
 operator|new
@@ -233,6 +245,10 @@ name|info
 argument_list|(
 name|message
 operator|+
+literal|" Traversed #"
+operator|+
+name|count
+operator|+
 literal|' '
 operator|+
 name|path
@@ -245,6 +261,10 @@ return|;
 block|}
 block|}
 argument_list|)
+return|;
+block|}
+return|return
+name|editor
 return|;
 block|}
 specifier|private
