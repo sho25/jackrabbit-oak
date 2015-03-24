@@ -678,8 +678,10 @@ name|principals
 parameter_list|,
 annotation|@
 name|Nonnull
+name|Set
+argument_list|<
 name|String
-index|[]
+argument_list|>
 name|supportedPaths
 parameter_list|,
 annotation|@

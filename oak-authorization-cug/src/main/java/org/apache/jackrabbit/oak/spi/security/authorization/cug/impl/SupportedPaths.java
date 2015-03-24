@@ -27,6 +27,16 @@ end_package
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Set
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|annotation
@@ -76,8 +86,10 @@ name|SupportedPaths
 parameter_list|(
 annotation|@
 name|Nonnull
+name|Set
+argument_list|<
 name|String
-index|[]
+argument_list|>
 name|supportedPaths
 parameter_list|)
 block|{
@@ -86,6 +98,18 @@ operator|.
 name|supportedPaths
 operator|=
 name|supportedPaths
+operator|.
+name|toArray
+argument_list|(
+operator|new
+name|String
+index|[
+name|supportedPaths
+operator|.
+name|size
+argument_list|()
+index|]
+argument_list|)
 expr_stmt|;
 name|supportedAltPaths
 operator|=
@@ -94,7 +118,8 @@ name|String
 index|[
 name|supportedPaths
 operator|.
-name|length
+name|size
+argument_list|()
 index|]
 expr_stmt|;
 name|boolean
