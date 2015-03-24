@@ -70,7 +70,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Extension of the {@link PermissionProvider} interface that allows it to be  * used in combination with other provider implementations.  */
+comment|/**  * Extension of the {@link PermissionProvider} interface that allows it to be  * used in combination with other provider implementations.  *  * TODO This is work in progress (OAK-1268)  */
 end_comment
 
 begin_interface

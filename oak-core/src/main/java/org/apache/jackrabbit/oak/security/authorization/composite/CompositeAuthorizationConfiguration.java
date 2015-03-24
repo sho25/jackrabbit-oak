@@ -278,7 +278,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * {@link CompositeAuthorizationConfiguration} that combines different  * authorization models. This implementation has the following characteristics:  *  * TODO OAK-1268  */
+comment|/**  * {@link CompositeAuthorizationConfiguration} that combines different  * authorization models. This implementation has the following characteristics:  *  * TODO This is work in progress (OAK-1268)  */
 end_comment
 
 begin_class

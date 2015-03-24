@@ -402,7 +402,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Permission provider implementation that aggregates a list of different  * provider implementations. Note, that the implementations *must* implement  * the {@link org.apache.jackrabbit.oak.spi.security.authorization.permission.AggregatedPermissionProvider}  * interface.  */
+comment|/**  * Permission provider implementation that aggregates a list of different  * provider implementations. Note, that the implementations *must* implement  * the {@link org.apache.jackrabbit.oak.spi.security.authorization.permission.AggregatedPermissionProvider}  * interface.  *  * TODO This is work in progress (OAK-1268)  */
 end_comment
 
 begin_class
