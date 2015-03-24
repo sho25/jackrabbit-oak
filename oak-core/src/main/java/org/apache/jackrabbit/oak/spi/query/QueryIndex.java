@@ -198,7 +198,9 @@ comment|/**      *  A marker interface which means this index supports executing
 specifier|public
 interface|interface
 name|NativeQueryIndex
-block|{      }
+block|{
+comment|// a marker interface
+block|}
 comment|/**      * A marker interface which means this index supports may support more than      * just the minimal fulltext query syntax. If this index is used, then the      * query engine does not verify the fulltext constraint(s) for the given      * selector.      */
 specifier|public
 interface|interface
@@ -223,7 +225,9 @@ extends|extends
 name|FulltextQueryIndex
 extends|,
 name|AdvancedQueryIndex
-block|{      }
+block|{
+comment|// a marker interface
+block|}
 comment|/**      * An query index that may support using multiple access orders      * (returning the rows in a specific order), and that can provide detailed      * information about the cost.      */
 specifier|public
 interface|interface
