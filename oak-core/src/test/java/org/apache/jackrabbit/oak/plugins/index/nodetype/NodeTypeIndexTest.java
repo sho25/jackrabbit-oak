@@ -583,7 +583,8 @@ operator|.
 name|remove
 argument_list|()
 expr_stmt|;
-comment|// remove "entryCount", so the node type index cost is not fixed
+comment|// set "entryCount", so the node type index counts the nodes
+comment|// and the approximation is not used
 name|root
 operator|.
 name|getChildNode
@@ -596,9 +597,12 @@ argument_list|(
 literal|"nodetype"
 argument_list|)
 operator|.
-name|removeProperty
+name|setProperty
 argument_list|(
 literal|"entryCount"
+argument_list|,
+operator|-
+literal|1
 argument_list|)
 expr_stmt|;
 name|addFolder
