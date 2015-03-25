@@ -616,13 +616,26 @@ name|shared
 argument_list|)
 condition|)
 block|{
+name|Root
+name|r
+init|=
 name|getRoot
 argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|r
+operator|!=
+literal|null
+condition|)
+block|{
+name|r
 operator|.
 name|refresh
 argument_list|()
 expr_stmt|;
 comment|// refresh root, in case the external login module created users
+block|}
 name|TokenInfo
 name|ti
 init|=
