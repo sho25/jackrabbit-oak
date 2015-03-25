@@ -1231,6 +1231,7 @@ name|getName
 argument_list|()
 argument_list|)
 condition|)
+block|{
 name|updateProperty
 argument_list|(
 name|prop
@@ -1238,6 +1239,7 @@ argument_list|,
 name|dest
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 for|for
 control|(
