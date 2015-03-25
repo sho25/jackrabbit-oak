@@ -1787,7 +1787,7 @@ operator|=
 name|value
 expr_stmt|;
 block|}
-comment|/**          * Returns a new milliseconds object from the given long value.          * @param value the value          * @return the milliseconds object          */
+comment|/**          * Returns a new milliseconds object from the given long value.          *          * @param value the value          * @return the milliseconds object          */
 specifier|public
 specifier|static
 name|Milliseconds
