@@ -1280,7 +1280,7 @@ name|Tree
 name|tree
 parameter_list|,
 annotation|@
-name|Nonnull
+name|Nullable
 name|AuthorizableType
 name|type
 parameter_list|)

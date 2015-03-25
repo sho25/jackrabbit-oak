@@ -872,6 +872,14 @@ decl_stmt|;
 name|AuthorizableType
 name|type
 init|=
+operator|(
+name|auth
+operator|==
+literal|null
+operator|)
+condition|?
+literal|null
+else|:
 name|UserUtil
 operator|.
 name|getType
@@ -1197,6 +1205,7 @@ block|}
 block|}
 comment|/**      * Iterator that provides member references based on the rep:members properties of a underlying tree iterator.      */
 specifier|private
+specifier|static
 class|class
 name|MemberReferenceIterator
 extends|extends
