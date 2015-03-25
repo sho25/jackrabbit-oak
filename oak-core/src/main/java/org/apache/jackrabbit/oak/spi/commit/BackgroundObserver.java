@@ -222,6 +222,21 @@ name|Observer
 implements|,
 name|Closeable
 block|{
+specifier|private
+specifier|static
+specifier|final
+name|Logger
+name|LOG
+init|=
+name|LoggerFactory
+operator|.
+name|getLogger
+argument_list|(
+name|BackgroundObserver
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 comment|/**      * Signal for the background thread to stop processing changes.      */
 specifier|private
 specifier|static
@@ -263,6 +278,12 @@ argument_list|<
 name|ContentChange
 argument_list|>
 name|queue
+decl_stmt|;
+comment|/**      * The max queue length used for this observer's queue      */
+specifier|private
+specifier|final
+name|int
+name|maxQueueLength
 decl_stmt|;
 specifier|private
 specifier|static
@@ -505,11 +526,17 @@ argument_list|)
 expr_stmt|;
 name|this
 operator|.
+name|maxQueueLength
+operator|=
+name|queueLength
+expr_stmt|;
+name|this
+operator|.
 name|queue
 operator|=
 name|newArrayBlockingQueue
 argument_list|(
-name|queueLength
+name|maxQueueLength
 argument_list|)
 expr_stmt|;
 block|}
@@ -608,6 +635,52 @@ name|int
 name|queueSize
 parameter_list|)
 block|{ }
+comment|/**      * Private utility to report queue size to observers      * @param queueSize current size of the queue      */
+specifier|private
+name|void
+name|reportAdded
+parameter_list|(
+name|int
+name|queueSize
+parameter_list|)
+block|{
+if|if
+condition|(
+name|queueSize
+operator|==
+name|maxQueueLength
+condition|)
+block|{
+name|LOG
+operator|.
+name|warn
+argument_list|(
+literal|"Revision queue for observer {} is full (max = {}). Further revisions will be compacted."
+argument_list|,
+name|observer
+operator|!=
+literal|null
+condition|?
+name|observer
+operator|.
+name|getClass
+argument_list|()
+operator|.
+name|getName
+argument_list|()
+else|:
+literal|""
+argument_list|,
+name|maxQueueLength
+argument_list|)
+expr_stmt|;
+block|}
+name|added
+argument_list|(
+name|queueSize
+argument_list|)
+expr_stmt|;
+block|}
 comment|/**      * Clears the change queue and signals the background thread to stop      * without making any further {@link #contentChanged(NodeState, CommitInfo)}      * calls to the background observer. If the thread is currently in the      * middle of such a call, then that call is allowed to complete; i.e.      * the thread is not forcibly interrupted. This method returns immediately      * without blocking to wait for the thread to finish.      *<p>      * After a call to this method further calls to {@link #contentChanged(NodeState, CommitInfo)}      * will throw a {@code IllegalStateException}.      */
 annotation|@
 name|Override
@@ -768,7 +841,7 @@ argument_list|(
 name|completionHandler
 argument_list|)
 expr_stmt|;
-name|added
+name|reportAdded
 argument_list|(
 name|queue
 operator|.
