@@ -536,9 +536,13 @@ specifier|static
 name|String
 name|getAuthorizableRootPath
 parameter_list|(
+annotation|@
+name|Nonnull
 name|ConfigurationParameters
 name|parameters
 parameter_list|,
+annotation|@
+name|Nullable
 name|AuthorizableType
 name|type
 parameter_list|)
