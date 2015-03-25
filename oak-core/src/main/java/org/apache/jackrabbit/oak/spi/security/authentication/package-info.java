@@ -7,7 +7,7 @@ begin_annotation
 annotation|@
 name|Version
 argument_list|(
-literal|"2.0"
+literal|"1.0"
 argument_list|)
 end_annotation
 
@@ -38,6 +38,18 @@ operator|.
 name|annotation
 operator|.
 name|Version
+import|;
+end_import
+
+begin_import
+import|import
+name|aQute
+operator|.
+name|bnd
+operator|.
+name|annotation
+operator|.
+name|Export
 import|;
 end_import
 
