@@ -1206,6 +1206,7 @@ block|}
 comment|/**      * Iterator that provides member references based on the rep:members properties of a underlying tree iterator.      */
 specifier|private
 specifier|static
+specifier|final
 class|class
 name|MemberReferenceIterator
 extends|extends

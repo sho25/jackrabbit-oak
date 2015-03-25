@@ -1862,6 +1862,7 @@ argument_list|)
 return|;
 block|}
 specifier|private
+specifier|final
 class|class
 name|Entry
 block|{

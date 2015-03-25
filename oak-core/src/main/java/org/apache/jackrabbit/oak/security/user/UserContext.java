@@ -435,8 +435,10 @@ argument_list|(
 name|path
 argument_list|)
 decl_stmt|;
-if|if
-condition|(
+comment|// NOTE: if none of the conditions below match, we are not able to
+comment|// reliably determine if the specified location defines a user or
+comment|// group node (missing node type information on non-existing location)
+return|return
 name|USER_PROPERTY_NAMES
 operator|.
 name|contains
@@ -471,21 +473,7 @@ name|contains
 argument_list|(
 name|REP_PWD
 argument_list|)
-condition|)
-block|{
-return|return
-literal|true
 return|;
-block|}
-else|else
-block|{
-comment|// undefined: unable to determine if the specified location
-comment|// defines a user or group node (missing node type information
-comment|// on non-existing location
-return|return
-literal|false
-return|;
-block|}
 block|}
 block|}
 block|}

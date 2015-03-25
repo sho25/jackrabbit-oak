@@ -810,6 +810,7 @@ expr_stmt|;
 block|}
 specifier|public
 specifier|static
+specifier|final
 name|PrivilegeBits
 name|NEXT_AFTER_BUILT_INS
 init|=
