@@ -1895,8 +1895,8 @@ argument_list|)
 return|;
 block|}
 block|}
-specifier|static
 specifier|protected
+specifier|static
 name|void
 name|setAuthInfo
 parameter_list|(

@@ -53,16 +53,6 @@ end_import
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|NoSuchElementException
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -199,15 +189,13 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|//----------------------------------------< AccessControlPolicyIterator>---
-comment|/**      * Returns the next policy.      *      * @return next policy.      * @throws java.util.NoSuchElementException if there is no next policy.      */
+comment|/**      * Returns the next policy.      *      * @return next policy.      */
 annotation|@
 name|Override
 specifier|public
 name|Principal
 name|nextPrincipal
 parameter_list|()
-throws|throws
-name|NoSuchElementException
 block|{
 return|return
 operator|(

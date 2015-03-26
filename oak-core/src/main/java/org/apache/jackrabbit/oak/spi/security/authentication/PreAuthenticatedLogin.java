@@ -36,8 +36,8 @@ comment|/**  * {@code PreAuthenticatedLogin} is used as marker in the shared map
 end_comment
 
 begin_class
-specifier|final
 specifier|public
+specifier|final
 class|class
 name|PreAuthenticatedLogin
 block|{

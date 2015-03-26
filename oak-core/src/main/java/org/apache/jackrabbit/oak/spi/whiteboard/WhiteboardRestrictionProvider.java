@@ -71,18 +71,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|jcr
-operator|.
-name|security
-operator|.
-name|AccessControlException
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -286,8 +274,6 @@ name|Value
 name|value
 parameter_list|)
 throws|throws
-name|AccessControlException
-throws|,
 name|RepositoryException
 block|{
 return|return
@@ -329,8 +315,6 @@ modifier|...
 name|values
 parameter_list|)
 throws|throws
-name|AccessControlException
-throws|,
 name|RepositoryException
 block|{
 return|return
@@ -432,8 +416,6 @@ name|Tree
 name|aceTree
 parameter_list|)
 throws|throws
-name|AccessControlException
-throws|,
 name|RepositoryException
 block|{
 name|getProvider

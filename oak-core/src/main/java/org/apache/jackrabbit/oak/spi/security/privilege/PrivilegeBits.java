@@ -2266,8 +2266,8 @@ block|}
 comment|//------------------------------------------------------< inner classes>---
 comment|/**      * Base class for the internal privilege bits representation and handling.      */
 specifier|private
-specifier|static
 specifier|abstract
+specifier|static
 class|class
 name|Data
 block|{

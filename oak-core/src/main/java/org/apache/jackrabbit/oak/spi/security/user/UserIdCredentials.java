@@ -41,26 +41,6 @@ name|Credentials
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
 begin_comment
 comment|/**  * Credentials implementation that only contains a {@code userId} but no password.  * It can be used for {@link org.apache.jackrabbit.api.security.user.User#getCredentials()},  * where the corresponding user doesn't have a password set.  */
 end_comment
