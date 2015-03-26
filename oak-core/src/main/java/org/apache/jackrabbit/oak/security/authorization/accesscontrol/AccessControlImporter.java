@@ -1185,7 +1185,7 @@ name|getName
 argument_list|()
 decl_stmt|;
 name|JackrabbitAccessControlList
-name|acl
+name|acList
 init|=
 literal|null
 decl_stmt|;
@@ -1229,7 +1229,7 @@ name|NT_REP_ACL
 argument_list|)
 condition|)
 block|{
-name|acl
+name|acList
 operator|=
 name|getACL
 argument_list|(
@@ -1269,7 +1269,7 @@ name|isRoot
 argument_list|()
 condition|)
 block|{
-name|acl
+name|acList
 operator|=
 name|getACL
 argument_list|(
@@ -1283,7 +1283,7 @@ block|}
 block|}
 if|if
 condition|(
-name|acl
+name|acList
 operator|!=
 literal|null
 condition|)
@@ -1294,13 +1294,13 @@ control|(
 name|AccessControlEntry
 name|ace
 range|:
-name|acl
+name|acList
 operator|.
 name|getAccessControlEntries
 argument_list|()
 control|)
 block|{
-name|acl
+name|acList
 operator|.
 name|removeAccessControlEntry
 argument_list|(
@@ -1310,7 +1310,7 @@ expr_stmt|;
 block|}
 block|}
 return|return
-name|acl
+name|acList
 return|;
 block|}
 annotation|@
@@ -1326,7 +1326,7 @@ throws|throws
 name|RepositoryException
 block|{
 name|JackrabbitAccessControlList
-name|acl
+name|acList
 init|=
 literal|null
 decl_stmt|;
@@ -1350,7 +1350,7 @@ operator|instanceof
 name|JackrabbitAccessControlList
 condition|)
 block|{
-name|acl
+name|acList
 operator|=
 operator|(
 name|JackrabbitAccessControlList
@@ -1361,7 +1361,7 @@ break|break;
 block|}
 block|}
 return|return
-name|acl
+name|acList
 return|;
 block|}
 comment|//--------------------------------------------------------------------------

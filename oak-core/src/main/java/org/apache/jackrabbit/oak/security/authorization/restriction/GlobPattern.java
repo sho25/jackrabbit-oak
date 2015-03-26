@@ -468,7 +468,7 @@ name|property
 parameter_list|)
 block|{
 name|String
-name|path
+name|itemPath
 init|=
 operator|(
 name|property
@@ -499,7 +499,7 @@ decl_stmt|;
 return|return
 name|matches
 argument_list|(
-name|path
+name|itemPath
 argument_list|)
 return|;
 block|}
