@@ -687,11 +687,9 @@ name|apache
 operator|.
 name|jackrabbit
 operator|.
-name|oak
-operator|.
 name|stats
 operator|.
-name|TimeSeriesStatsUtil
+name|TimeSeriesRecorder
 import|;
 end_import
 
@@ -705,7 +703,7 @@ name|jackrabbit
 operator|.
 name|stats
 operator|.
-name|TimeSeriesRecorder
+name|TimeSeriesStatsUtil
 import|;
 end_import
 
@@ -2792,6 +2790,8 @@ else|:
 literal|null
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|pause
