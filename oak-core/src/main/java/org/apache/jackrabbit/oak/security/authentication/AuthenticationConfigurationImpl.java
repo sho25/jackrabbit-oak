@@ -243,26 +243,6 @@ name|security
 operator|.
 name|authentication
 operator|.
-name|ConfigurationUtil
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|spi
-operator|.
-name|security
-operator|.
-name|authentication
-operator|.
 name|LoginContextProvider
 import|;
 end_import
@@ -502,7 +482,7 @@ name|NAME
 return|;
 block|}
 comment|//----------------------------------------< AuthenticationConfiguration>---
-comment|/**      * Create a {@code LoginContextProvider} using standard      * {@link javax.security.auth.login.Configuration#getConfiguration() JAAS}      * functionality. In case no login configuration for the specified app name      * can be retrieve this implementation uses the default as defined by      * {@link ConfigurationUtil#getDefaultConfiguration(org.apache.jackrabbit.oak.spi.security.ConfigurationParameters)}.      *<p>      * The {@link LoginContextProvider} implementation is intended to be used with      *<ul>      *<li>Regular login using JAAS {@link javax.security.auth.spi.LoginModule} or</li>      *<li>Pre-authenticated subjects in which case any authentication      *     related validation is omitted</li>      *</ul>      *      *<h4>Configuration Options</h4>      *<ul>      *<li>{@link #PARAM_APP_NAME}: The appName passed to      *     {@code Configuration#getAppConfigurationEntry(String)}. The default      *     value is {@link #DEFAULT_APP_NAME}.</li>      *</ul>      *      * @param contentRepository The content repository.      * @return An new instance of {@link LoginContextProvider}.      */
+comment|/**      * Create a {@code LoginContextProvider} using standard      * {@link javax.security.auth.login.Configuration#getConfiguration() JAAS}      * functionality. In case no login configuration for the specified app name      * can be retrieve this implementation uses the default as defined by      * {@link org.apache.jackrabbit.oak.spi.security.authentication.ConfigurationUtil#getDefaultConfiguration(org.apache.jackrabbit.oak.spi.security.ConfigurationParameters)}.      *<p>      * The {@link LoginContextProvider} implementation is intended to be used with      *<ul>      *<li>Regular login using JAAS {@link javax.security.auth.spi.LoginModule} or</li>      *<li>Pre-authenticated subjects in which case any authentication      *     related validation is omitted</li>      *</ul>      *      *<h4>Configuration Options</h4>      *<ul>      *<li>{@link #PARAM_APP_NAME}: The appName passed to      *     {@code Configuration#getAppConfigurationEntry(String)}. The default      *     value is {@link #DEFAULT_APP_NAME}.</li>      *</ul>      *      * @param contentRepository The content repository.      * @return An new instance of {@link LoginContextProvider}.      */
 annotation|@
 name|Nonnull
 annotation|@

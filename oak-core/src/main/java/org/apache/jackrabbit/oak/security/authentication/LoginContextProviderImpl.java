@@ -636,8 +636,6 @@ name|loginConfig
 init|=
 literal|null
 decl_stmt|;
-comment|//Default value cannot be set to null so using a sentinel to determine
-comment|//case when its not set
 name|String
 name|configSpiName
 init|=
@@ -647,22 +645,23 @@ name|getConfigValue
 argument_list|(
 name|PARAM_CONFIG_SPI_NAME
 argument_list|,
-literal|"NA"
+literal|null
+argument_list|,
+name|String
+operator|.
+name|class
 argument_list|)
 decl_stmt|;
 if|if
 condition|(
-operator|!
-literal|"NA"
-operator|.
-name|equals
-argument_list|(
 name|configSpiName
-argument_list|)
+operator|!=
+literal|null
 condition|)
 block|{
 try|try
 block|{
+comment|/*                      Create a configuration instance with the following characteristics                      - Algorithm name : "JavaLoginConfig"                      - Extra parameters : 'null' for this impl                      - Name of the config provider : 'configSpiName' as retrieved from the PARAM_CONFIG_SPI_NAME configuration (default: null)                      */
 name|loginConfig
 operator|=
 name|Configuration
@@ -671,12 +670,9 @@ name|getInstance
 argument_list|(
 literal|"JavaLoginConfig"
 argument_list|,
-comment|//Algorithm name
 literal|null
 argument_list|,
-comment|//Extra params to be passed. For this impl its null
 name|configSpiName
-comment|//Name of the config provider
 argument_list|)
 expr_stmt|;
 if|if

@@ -1343,8 +1343,6 @@ parameter_list|(
 name|BundleContext
 name|context
 parameter_list|)
-throws|throws
-name|Exception
 block|{
 name|whiteboard
 operator|=
@@ -1392,8 +1390,6 @@ specifier|protected
 name|void
 name|deactivate
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|authorizableActionProvider
 operator|.
