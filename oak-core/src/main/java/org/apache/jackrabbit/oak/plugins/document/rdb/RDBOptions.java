@@ -21,6 +21,16 @@ name|rdb
 package|;
 end_package
 
+begin_import
+import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|Nonnull
+import|;
+end_import
+
 begin_comment
 comment|/**  * Options applicable to RDB persistence  */
 end_comment
@@ -70,6 +80,8 @@ specifier|public
 name|RDBOptions
 name|tablePrefix
 parameter_list|(
+annotation|@
+name|Nonnull
 name|String
 name|tablePrefix
 parameter_list|)
@@ -85,6 +97,8 @@ name|this
 return|;
 block|}
 specifier|public
+annotation|@
+name|Nonnull
 name|String
 name|getTablePrefix
 parameter_list|()
