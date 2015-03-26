@@ -396,6 +396,14 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
+specifier|private
+specifier|static
+specifier|final
+name|int
+name|NUMBER_OF_DEFINITIONS
+init|=
+literal|3
+decl_stmt|;
 specifier|public
 name|RestrictionProviderImpl
 parameter_list|()
@@ -532,7 +540,7 @@ argument_list|<
 name|RestrictionPattern
 argument_list|>
 argument_list|(
-literal|3
+name|NUMBER_OF_DEFINITIONS
 argument_list|)
 decl_stmt|;
 name|PropertyState
@@ -710,7 +718,7 @@ argument_list|<
 name|RestrictionPattern
 argument_list|>
 argument_list|(
-literal|3
+name|NUMBER_OF_DEFINITIONS
 argument_list|)
 decl_stmt|;
 for|for

@@ -538,9 +538,9 @@ name|String
 argument_list|>
 name|getPrivileges
 parameter_list|(
-specifier|final
 annotation|@
 name|Nullable
+specifier|final
 name|Tree
 name|tree
 parameter_list|)
@@ -675,9 +675,9 @@ specifier|public
 name|boolean
 name|hasPrivileges
 parameter_list|(
-specifier|final
 annotation|@
 name|Nullable
+specifier|final
 name|Tree
 name|tree
 parameter_list|,
@@ -915,9 +915,9 @@ specifier|public
 name|boolean
 name|isGranted
 parameter_list|(
-specifier|final
 annotation|@
 name|Nonnull
+specifier|final
 name|Tree
 name|parent
 parameter_list|,
@@ -1099,9 +1099,9 @@ specifier|public
 name|boolean
 name|isGranted
 parameter_list|(
-specifier|final
 annotation|@
 name|Nonnull
+specifier|final
 name|String
 name|oakPath
 parameter_list|,
@@ -1597,9 +1597,9 @@ block|}
 specifier|private
 name|CompositeTreePermission
 parameter_list|(
-specifier|final
 annotation|@
 name|Nonnull
+specifier|final
 name|ImmutableTree
 name|tree
 parameter_list|,
