@@ -1668,10 +1668,6 @@ name|Tree
 name|protectedParent
 parameter_list|)
 throws|throws
-name|IllegalStateException
-throws|,
-name|ConstraintViolationException
-throws|,
 name|RepositoryException
 block|{
 name|Authorizable

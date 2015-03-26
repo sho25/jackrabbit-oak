@@ -1265,8 +1265,6 @@ name|String
 name|intermediatePath
 parameter_list|)
 throws|throws
-name|AuthorizableExistsException
-throws|,
 name|RepositoryException
 block|{
 name|checkValidID

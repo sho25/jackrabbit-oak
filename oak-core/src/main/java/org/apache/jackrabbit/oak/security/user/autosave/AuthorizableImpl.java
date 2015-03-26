@@ -103,10 +103,12 @@ name|AuthorizableImpl
 implements|implements
 name|Authorizable
 block|{
+specifier|private
 specifier|final
 name|Authorizable
 name|dlg
 decl_stmt|;
+specifier|private
 specifier|final
 name|AutoSaveEnabledManager
 name|mgr
@@ -133,6 +135,23 @@ operator|=
 name|mgr
 expr_stmt|;
 block|}
+name|Authorizable
+name|getDlg
+parameter_list|()
+block|{
+return|return
+name|dlg
+return|;
+block|}
+name|AutoSaveEnabledManager
+name|getMgr
+parameter_list|()
+block|{
+return|return
+name|mgr
+return|;
+block|}
+comment|//-------------------------------------------------------< Authorizable>---
 annotation|@
 name|Override
 specifier|public

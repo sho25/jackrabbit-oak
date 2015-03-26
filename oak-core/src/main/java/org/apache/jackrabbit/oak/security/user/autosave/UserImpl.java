@@ -151,7 +151,8 @@ return|return
 operator|(
 name|User
 operator|)
-name|dlg
+name|getDlg
+argument_list|()
 return|;
 block|}
 annotation|@
@@ -247,7 +248,8 @@ expr_stmt|;
 block|}
 finally|finally
 block|{
-name|mgr
+name|getMgr
+argument_list|()
 operator|.
 name|autosave
 argument_list|()
@@ -284,7 +286,8 @@ expr_stmt|;
 block|}
 finally|finally
 block|{
-name|mgr
+name|getMgr
+argument_list|()
 operator|.
 name|autosave
 argument_list|()
@@ -316,7 +319,8 @@ expr_stmt|;
 block|}
 finally|finally
 block|{
-name|mgr
+name|getMgr
+argument_list|()
 operator|.
 name|autosave
 argument_list|()
@@ -424,7 +428,8 @@ return|;
 block|}
 finally|finally
 block|{
-name|mgr
+name|getMgr
+argument_list|()
 operator|.
 name|autosave
 argument_list|()
@@ -456,7 +461,8 @@ return|;
 block|}
 finally|finally
 block|{
-name|mgr
+name|getMgr
+argument_list|()
 operator|.
 name|autosave
 argument_list|()

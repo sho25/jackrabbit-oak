@@ -536,9 +536,6 @@ parameter_list|)
 throws|throws
 name|RepositoryException
 block|{
-name|String
-name|s
-decl_stmt|;
 switch|switch
 condition|(
 name|value

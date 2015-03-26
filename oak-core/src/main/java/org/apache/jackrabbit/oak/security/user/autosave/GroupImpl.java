@@ -102,7 +102,6 @@ name|mgr
 argument_list|)
 expr_stmt|;
 block|}
-specifier|private
 name|Group
 name|getDelegate
 parameter_list|()
@@ -111,7 +110,8 @@ return|return
 operator|(
 name|Group
 operator|)
-name|dlg
+name|getDlg
+argument_list|()
 return|;
 block|}
 annotation|@
@@ -137,7 +137,8 @@ operator|.
 name|getDeclaredMembers
 argument_list|()
 argument_list|,
-name|mgr
+name|getMgr
+argument_list|()
 argument_list|)
 return|;
 block|}
@@ -164,7 +165,8 @@ operator|.
 name|getMembers
 argument_list|()
 argument_list|,
-name|mgr
+name|getMgr
+argument_list|()
 argument_list|)
 return|;
 block|}
@@ -201,7 +203,8 @@ operator|)
 name|authorizable
 operator|)
 operator|.
-name|dlg
+name|getDlg
+argument_list|()
 argument_list|)
 return|;
 block|}
@@ -245,7 +248,8 @@ operator|)
 name|authorizable
 operator|)
 operator|.
-name|dlg
+name|getDlg
+argument_list|()
 argument_list|)
 return|;
 block|}
@@ -291,7 +295,8 @@ operator|)
 name|authorizable
 operator|)
 operator|.
-name|dlg
+name|getDlg
+argument_list|()
 argument_list|)
 return|;
 block|}
@@ -304,7 +309,8 @@ block|}
 block|}
 finally|finally
 block|{
-name|mgr
+name|getMgr
+argument_list|()
 operator|.
 name|autosave
 argument_list|()
@@ -346,7 +352,8 @@ operator|)
 name|authorizable
 operator|)
 operator|.
-name|dlg
+name|getDlg
+argument_list|()
 argument_list|)
 return|;
 block|}
@@ -359,7 +366,8 @@ block|}
 block|}
 finally|finally
 block|{
-name|mgr
+name|getMgr
+argument_list|()
 operator|.
 name|autosave
 argument_list|()
