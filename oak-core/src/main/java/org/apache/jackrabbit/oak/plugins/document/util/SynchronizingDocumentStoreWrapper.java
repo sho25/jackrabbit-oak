@@ -43,16 +43,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -265,8 +255,6 @@ argument_list|)
 return|;
 block|}
 annotation|@
-name|Nonnull
-annotation|@
 name|Override
 specifier|public
 specifier|synchronized
@@ -318,8 +306,6 @@ return|;
 block|}
 annotation|@
 name|Override
-annotation|@
-name|Nonnull
 specifier|public
 specifier|synchronized
 parameter_list|<
@@ -535,8 +521,6 @@ name|updateOp
 argument_list|)
 expr_stmt|;
 block|}
-annotation|@
-name|Nonnull
 annotation|@
 name|Override
 specifier|public
