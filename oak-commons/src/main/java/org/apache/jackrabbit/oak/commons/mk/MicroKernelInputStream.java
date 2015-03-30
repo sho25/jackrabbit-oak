@@ -72,7 +72,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * An input stream to simplify reading a blob from a {@code MicroKernel}.  */
+comment|/**  * An input stream to simplify reading a blob from a {@code MicroKernel}.  *  * @deprecated Oak 1.2  */
 end_comment
 
 begin_class
