@@ -605,16 +605,6 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Ignore
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
 name|Test
 import|;
 end_import
@@ -2152,12 +2142,6 @@ block|}
 block|}
 annotation|@
 name|Test
-annotation|@
-name|Ignore
-argument_list|(
-literal|"OAK-2384"
-argument_list|)
-comment|// FIXME OAK-2384
 specifier|public
 name|void
 name|propertyRetention
@@ -2433,20 +2417,6 @@ name|SegmentNotFoundException
 name|ignore
 parameter_list|)
 block|{}
-name|assertEquals
-argument_list|(
-literal|"Property should still be accessible"
-argument_list|,
-literal|"value"
-argument_list|,
-name|property
-operator|.
-name|getValue
-argument_list|(
-name|STRING
-argument_list|)
-argument_list|)
-expr_stmt|;
 block|}
 finally|finally
 block|{
