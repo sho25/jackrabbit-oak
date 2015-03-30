@@ -18,7 +18,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * Exception thrown by methods of the {@code MicroKernel} API  */
+comment|/**  * Exception thrown by methods of the {@code MicroKernel} API  *  * @deprecated Oak 1.2  */
 end_comment
 
 begin_class
