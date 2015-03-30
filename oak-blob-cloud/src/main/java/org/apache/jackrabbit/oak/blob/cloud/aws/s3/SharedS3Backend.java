@@ -103,7 +103,6 @@ extends|extends
 name|Backend
 block|{
 comment|/**      * Adds a metadata record with the specified name      *      * @param input the record input stream      * @param name the name      * @throws org.apache.jackrabbit.core.data.DataStoreException      */
-specifier|public
 name|void
 name|addMetadataRecord
 parameter_list|(
@@ -119,7 +118,6 @@ throws|throws
 name|DataStoreException
 function_decl|;
 comment|/**      * Gets the metadata of the specified name.      *      * @param name the name of the record      * @return the metadata DataRecord      */
-specifier|public
 name|DataRecord
 name|getMetadataRecord
 parameter_list|(
@@ -128,7 +126,6 @@ name|name
 parameter_list|)
 function_decl|;
 comment|/**      * Gets all the metadata with a specified prefix.      *      * @param prefix the prefix of the records to retrieve      * @return list of all the metadata DataRecords      */
-specifier|public
 name|List
 argument_list|<
 name|DataRecord
@@ -140,7 +137,6 @@ name|prefix
 parameter_list|)
 function_decl|;
 comment|/**      * Deletes the metadata record with the specified name      *      * @param name the name of the record      * @return boolean to indicate success of deletion      */
-specifier|public
 name|boolean
 name|deleteMetadataRecord
 parameter_list|(
@@ -149,7 +145,6 @@ name|name
 parameter_list|)
 function_decl|;
 comment|/**      * Deletes all the metadata records with the specified prefix.      *      * @param prefix the prefix of the record      */
-specifier|public
 name|void
 name|deleteAllMetadataRecords
 parameter_list|(
