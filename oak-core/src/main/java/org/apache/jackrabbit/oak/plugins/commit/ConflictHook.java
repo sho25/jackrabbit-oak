@@ -118,7 +118,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This commit hook implementation is responsible for resolving  * conflicts. It does so by detecting the presence of conflict  * markers added by the Microkernel and delegating to a  * {@link org.apache.jackrabbit.oak.spi.commit.ConflictHandler}  * for resolving the conflicts.  *  * @see org.apache.jackrabbit.mk.api.MicroKernel#rebase(String, String)  */
+comment|/**  * This commit hook implementation is responsible for resolving  * conflicts. It does so by detecting the presence of conflict  * markers added by the Microkernel and delegating to a  * {@link org.apache.jackrabbit.oak.spi.commit.ConflictHandler}  * for resolving the conflicts.  *  * @see org.apache.jackrabbit.oak.spi.state.NodeStore#rebase(org.apache.jackrabbit.oak.spi.state.NodeBuilder)  */
 end_comment
 
 begin_class

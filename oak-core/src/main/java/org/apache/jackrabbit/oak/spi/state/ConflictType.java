@@ -20,7 +20,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * Enum to define various types of conflicts.  *  * @see org.apache.jackrabbit.mk.api.MicroKernel#rebase(String, String)  */
+comment|/**  * Enum to define various types of conflicts.  *  * @see org.apache.jackrabbit.oak.spi.state.NodeStore#rebase(NodeBuilder)  */
 end_comment
 
 begin_enum

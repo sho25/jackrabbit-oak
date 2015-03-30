@@ -27,22 +27,6 @@ name|apache
 operator|.
 name|jackrabbit
 operator|.
-name|mk
-operator|.
-name|api
-operator|.
-name|MicroKernel
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
 name|oak
 operator|.
 name|api
@@ -232,7 +216,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This implementation of {@code AbstractRebaseDiff} implements a {@link NodeStateDiff},  * which performs the conflict handling as defined in {@link MicroKernel#rebase(String, String)}  * on the Oak SPI state level by annotating conflicting items with conflict  * markers.  */
+comment|/**  * This implementation of {@code AbstractRebaseDiff} implements a {@link NodeStateDiff},  * which performs the conflict handling as defined in {@link NodeStore#rebase(NodeBuilder)}  * on the Oak SPI state level by annotating conflicting items with conflict  * markers.  */
 end_comment
 
 begin_class
