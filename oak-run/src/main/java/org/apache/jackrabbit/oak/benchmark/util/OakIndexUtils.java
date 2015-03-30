@@ -269,26 +269,6 @@ name|Map
 import|;
 end_import
 
-begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|plugins
-operator|.
-name|index
-operator|.
-name|IndexConstants
-operator|.
-name|KEY_COUNT_PROPERTY_NAME
-import|;
-end_import
-
 begin_comment
 comment|/**  * A simple utility class for Oak indexes.  */
 end_comment
