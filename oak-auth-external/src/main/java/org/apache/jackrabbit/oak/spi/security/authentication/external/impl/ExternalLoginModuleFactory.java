@@ -453,7 +453,6 @@ name|ExternalLoginModuleFactory
 implements|implements
 name|LoginModuleFactory
 block|{
-comment|/**      * default logger      */
 specifier|private
 specifier|static
 specifier|final
@@ -469,6 +468,11 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"UnusedDeclaration"
+argument_list|)
 annotation|@
 name|Property
 argument_list|(
@@ -496,6 +500,11 @@ name|LoginModuleFactory
 operator|.
 name|JAAS_RANKING
 decl_stmt|;
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"UnusedDeclaration"
+argument_list|)
 annotation|@
 name|Property
 argument_list|(
@@ -525,6 +534,11 @@ name|LoginModuleFactory
 operator|.
 name|JAAS_CONTROL_FLAG
 decl_stmt|;
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"UnusedDeclaration"
+argument_list|)
 annotation|@
 name|Property
 argument_list|(
@@ -625,6 +639,11 @@ name|Registration
 name|mbeanRegistration
 decl_stmt|;
 comment|/**      * Activates the LoginModuleFactory service      * @param context the component context      */
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"UnusedDeclaration"
+argument_list|)
 annotation|@
 name|Activate
 specifier|private
@@ -812,6 +831,11 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"UnusedDeclaration"
+argument_list|)
 annotation|@
 name|Deactivate
 specifier|private
