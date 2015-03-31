@@ -81,6 +81,16 @@ end_import
 
 begin_import
 import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|Nonnull
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -266,6 +276,8 @@ specifier|public
 name|boolean
 name|hasProperty
 parameter_list|(
+annotation|@
+name|Nonnull
 name|String
 name|name
 parameter_list|)
@@ -285,6 +297,8 @@ specifier|public
 name|PropertyState
 name|getProperty
 parameter_list|(
+annotation|@
+name|Nonnull
 name|String
 name|name
 parameter_list|)
@@ -313,6 +327,8 @@ argument_list|()
 return|;
 block|}
 annotation|@
+name|Nonnull
+annotation|@
 name|Override
 specifier|public
 name|Iterable
@@ -337,6 +353,8 @@ specifier|public
 name|boolean
 name|hasChildNode
 parameter_list|(
+annotation|@
+name|Nonnull
 name|String
 name|name
 parameter_list|)
@@ -351,11 +369,15 @@ argument_list|)
 return|;
 block|}
 annotation|@
+name|Nonnull
+annotation|@
 name|Override
 specifier|public
 name|NodeState
 name|getChildNode
 parameter_list|(
+annotation|@
+name|Nonnull
 name|String
 name|name
 parameter_list|)
@@ -409,6 +431,8 @@ argument_list|()
 return|;
 block|}
 annotation|@
+name|Nonnull
+annotation|@
 name|Override
 specifier|public
 name|Iterable
@@ -430,6 +454,8 @@ argument_list|()
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Nonnull
 annotation|@
 name|Override
 specifier|public

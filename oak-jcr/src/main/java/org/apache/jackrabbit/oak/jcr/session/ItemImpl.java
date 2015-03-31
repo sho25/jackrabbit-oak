@@ -1691,6 +1691,8 @@ name|getVersionManager
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Nonnull
 specifier|protected
 name|PropertyState
 name|createSingleState
@@ -1771,6 +1773,8 @@ argument_list|)
 return|;
 block|}
 block|}
+annotation|@
+name|Nonnull
 specifier|protected
 name|PropertyState
 name|createMultiState

@@ -1615,6 +1615,8 @@ specifier|public
 name|void
 name|putAll
 parameter_list|(
+annotation|@
+name|Nonnull
 name|Map
 argument_list|<
 name|?
@@ -1652,6 +1654,8 @@ expr_stmt|;
 block|}
 comment|/**      * {@inheritDoc}      */
 annotation|@
+name|Nonnull
+annotation|@
 name|Override
 specifier|public
 name|Set
@@ -1670,6 +1674,8 @@ return|;
 block|}
 comment|/**      * {@inheritDoc}      */
 annotation|@
+name|Nonnull
+annotation|@
 name|Override
 specifier|public
 name|Collection
@@ -1687,6 +1693,8 @@ argument_list|()
 return|;
 block|}
 comment|/**      * {@inheritDoc}      */
+annotation|@
+name|Nonnull
 annotation|@
 name|Override
 specifier|public

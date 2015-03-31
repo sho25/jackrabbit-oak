@@ -1410,6 +1410,8 @@ return|;
 block|}
 comment|//---------------------------------------------------------< NodeState>--
 annotation|@
+name|Nonnull
+annotation|@
 name|Override
 specifier|public
 name|NodeBuilder
@@ -1460,6 +1462,8 @@ specifier|public
 name|boolean
 name|hasProperty
 parameter_list|(
+annotation|@
+name|Nonnull
 name|String
 name|name
 parameter_list|)
@@ -1481,6 +1485,8 @@ specifier|public
 name|PropertyState
 name|getProperty
 parameter_list|(
+annotation|@
+name|Nonnull
 name|String
 name|name
 parameter_list|)
@@ -1496,6 +1502,8 @@ name|name
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Nonnull
 annotation|@
 name|Override
 specifier|public
@@ -1546,6 +1554,8 @@ specifier|public
 name|boolean
 name|hasChildNode
 parameter_list|(
+annotation|@
+name|Nonnull
 name|String
 name|name
 parameter_list|)
@@ -1587,11 +1597,15 @@ return|;
 block|}
 block|}
 annotation|@
+name|Nonnull
+annotation|@
 name|Override
 specifier|public
 name|NodeState
 name|getChildNode
 parameter_list|(
+annotation|@
+name|Nonnull
 name|String
 name|name
 parameter_list|)
@@ -1648,6 +1662,8 @@ literal|false
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Nonnull
 annotation|@
 name|Override
 specifier|public

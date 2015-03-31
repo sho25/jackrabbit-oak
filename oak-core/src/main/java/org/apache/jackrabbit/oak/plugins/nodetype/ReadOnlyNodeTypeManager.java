@@ -1612,6 +1612,8 @@ block|}
 block|}
 comment|//-------------------------------------------------< DefinitionProvider>---
 annotation|@
+name|Nonnull
+annotation|@
 name|Override
 specifier|public
 name|NodeDefinition
@@ -1678,6 +1680,8 @@ literal|null
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Nonnull
 annotation|@
 name|Override
 specifier|public

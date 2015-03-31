@@ -1883,6 +1883,8 @@ expr_stmt|;
 block|}
 block|}
 annotation|@
+name|Nonnull
+annotation|@
 name|Override
 specifier|public
 name|Iterator
@@ -2104,6 +2106,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Nonnull
 annotation|@
 name|Override
 specifier|public

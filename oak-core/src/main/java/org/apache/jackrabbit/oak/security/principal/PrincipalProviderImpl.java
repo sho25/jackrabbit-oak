@@ -496,6 +496,8 @@ specifier|public
 name|Principal
 name|getPrincipal
 parameter_list|(
+annotation|@
+name|Nonnull
 name|String
 name|principalName
 parameter_list|)
@@ -568,6 +570,8 @@ literal|null
 return|;
 block|}
 annotation|@
+name|Nonnull
+annotation|@
 name|Override
 specifier|public
 name|Set
@@ -576,6 +580,8 @@ name|Group
 argument_list|>
 name|getGroupMembership
 parameter_list|(
+annotation|@
+name|Nonnull
 name|Principal
 name|principal
 parameter_list|)
@@ -613,6 +619,8 @@ return|;
 block|}
 block|}
 annotation|@
+name|Nonnull
+annotation|@
 name|Override
 specifier|public
 name|Set
@@ -623,6 +631,8 @@ name|Principal
 argument_list|>
 name|getPrincipals
 parameter_list|(
+annotation|@
+name|Nonnull
 name|String
 name|userID
 parameter_list|)
@@ -709,6 +719,8 @@ name|principals
 return|;
 block|}
 annotation|@
+name|Nonnull
+annotation|@
 name|Override
 specifier|public
 name|Iterator
@@ -720,6 +732,8 @@ argument_list|>
 name|findPrincipals
 parameter_list|(
 specifier|final
+annotation|@
+name|Nullable
 name|String
 name|nameHint
 parameter_list|,

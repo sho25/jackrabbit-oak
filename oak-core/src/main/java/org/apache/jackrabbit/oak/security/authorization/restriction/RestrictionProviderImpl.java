@@ -501,6 +501,8 @@ return|;
 block|}
 comment|//------------------------------------------------< RestrictionProvider>---
 annotation|@
+name|Nonnull
+annotation|@
 name|Override
 specifier|public
 name|RestrictionPattern
@@ -509,6 +511,8 @@ parameter_list|(
 name|String
 name|oakPath
 parameter_list|,
+annotation|@
+name|Nonnull
 name|Tree
 name|tree
 parameter_list|)
@@ -873,6 +877,8 @@ parameter_list|(
 name|String
 name|oakPath
 parameter_list|,
+annotation|@
+name|Nonnull
 name|Tree
 name|aceTree
 parameter_list|)

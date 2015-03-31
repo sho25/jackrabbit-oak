@@ -89,6 +89,8 @@ specifier|public
 name|String
 name|getOakNameOrNull
 parameter_list|(
+annotation|@
+name|Nonnull
 name|String
 name|jcrName
 parameter_list|)
@@ -118,6 +120,8 @@ name|jcrName
 return|;
 block|}
 annotation|@
+name|Nonnull
+annotation|@
 name|Override
 specifier|public
 name|Map
@@ -137,11 +141,15 @@ argument_list|()
 return|;
 block|}
 annotation|@
+name|Nonnull
+annotation|@
 name|Override
 specifier|public
 name|String
 name|getJcrName
 parameter_list|(
+annotation|@
+name|Nonnull
 name|String
 name|oakName
 parameter_list|)

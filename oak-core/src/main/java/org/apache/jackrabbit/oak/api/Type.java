@@ -41,6 +41,16 @@ begin_import
 import|import
 name|javax
 operator|.
+name|annotation
+operator|.
+name|Nonnull
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
 name|jcr
 operator|.
 name|PropertyType
@@ -1146,6 +1156,8 @@ specifier|public
 name|int
 name|compareTo
 parameter_list|(
+annotation|@
+name|Nonnull
 name|Type
 argument_list|<
 name|?

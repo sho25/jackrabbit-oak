@@ -751,6 +751,8 @@ literal|""
 expr_stmt|;
 block|}
 annotation|@
+name|Nonnull
+annotation|@
 name|Override
 specifier|public
 name|TreeLocation
@@ -773,6 +775,8 @@ return|return
 literal|false
 return|;
 block|}
+annotation|@
+name|Nonnull
 annotation|@
 name|Override
 specifier|public

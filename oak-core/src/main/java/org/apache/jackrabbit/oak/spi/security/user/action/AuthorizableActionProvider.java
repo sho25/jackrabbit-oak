@@ -70,6 +70,8 @@ specifier|public
 interface|interface
 name|AuthorizableActionProvider
 block|{
+annotation|@
+name|Nonnull
 name|List
 argument_list|<
 name|?

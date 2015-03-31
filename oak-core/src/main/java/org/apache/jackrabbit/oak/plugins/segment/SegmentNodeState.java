@@ -688,6 +688,8 @@ specifier|public
 name|boolean
 name|hasProperty
 parameter_list|(
+annotation|@
+name|Nonnull
 name|String
 name|name
 parameter_list|)
@@ -764,6 +766,8 @@ specifier|public
 name|PropertyState
 name|getProperty
 parameter_list|(
+annotation|@
+name|Nonnull
 name|String
 name|name
 parameter_list|)
@@ -1316,6 +1320,8 @@ specifier|public
 name|boolean
 name|getBoolean
 parameter_list|(
+annotation|@
+name|Nonnull
 name|String
 name|name
 parameter_list|)
@@ -1414,6 +1420,8 @@ name|String
 argument_list|>
 name|getStrings
 parameter_list|(
+annotation|@
+name|Nonnull
 name|String
 name|name
 parameter_list|)
@@ -1435,6 +1443,8 @@ specifier|public
 name|String
 name|getName
 parameter_list|(
+annotation|@
+name|Nonnull
 name|String
 name|name
 parameter_list|)
@@ -1459,6 +1469,8 @@ name|String
 argument_list|>
 name|getNames
 parameter_list|(
+annotation|@
+name|Nonnull
 name|String
 name|name
 parameter_list|)
@@ -2030,6 +2042,8 @@ specifier|public
 name|boolean
 name|hasChildNode
 parameter_list|(
+annotation|@
+name|Nonnull
 name|String
 name|name
 parameter_list|)
@@ -2098,6 +2112,8 @@ specifier|public
 name|NodeState
 name|getChildNode
 parameter_list|(
+annotation|@
+name|Nonnull
 name|String
 name|name
 parameter_list|)

@@ -199,6 +199,8 @@ name|Nullable
 name|Tree
 name|tree
 parameter_list|,
+annotation|@
+name|Nonnull
 name|String
 modifier|...
 name|privilegeNames
@@ -208,6 +210,8 @@ return|return
 literal|true
 return|;
 block|}
+annotation|@
+name|Nonnull
 annotation|@
 name|Override
 specifier|public
@@ -221,6 +225,8 @@ operator|.
 name|ALL
 return|;
 block|}
+annotation|@
+name|Nonnull
 annotation|@
 name|Override
 specifier|public

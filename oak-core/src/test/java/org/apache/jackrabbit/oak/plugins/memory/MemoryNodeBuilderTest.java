@@ -3513,6 +3513,8 @@ specifier|public
 name|boolean
 name|hasChildNode
 parameter_list|(
+annotation|@
+name|Nonnull
 name|String
 name|name
 parameter_list|)

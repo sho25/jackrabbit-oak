@@ -410,6 +410,8 @@ throw|;
 block|}
 comment|//------------------------------------------< AbstractAccessControlList>---
 annotation|@
+name|Nonnull
+annotation|@
 name|Override
 specifier|public
 name|List
@@ -423,6 +425,8 @@ return|return
 name|entries
 return|;
 block|}
+annotation|@
+name|Nonnull
 annotation|@
 name|Override
 specifier|public

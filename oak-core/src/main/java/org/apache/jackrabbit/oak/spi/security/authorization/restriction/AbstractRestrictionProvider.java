@@ -409,6 +409,8 @@ return|;
 block|}
 block|}
 annotation|@
+name|Nonnull
+annotation|@
 name|Override
 specifier|public
 name|Restriction
@@ -417,9 +419,13 @@ parameter_list|(
 name|String
 name|oakPath
 parameter_list|,
+annotation|@
+name|Nonnull
 name|String
 name|oakName
 parameter_list|,
+annotation|@
+name|Nonnull
 name|Value
 name|value
 parameter_list|)
@@ -535,6 +541,8 @@ argument_list|)
 return|;
 block|}
 annotation|@
+name|Nonnull
+annotation|@
 name|Override
 specifier|public
 name|Restriction
@@ -543,9 +551,13 @@ parameter_list|(
 name|String
 name|oakPath
 parameter_list|,
+annotation|@
+name|Nonnull
 name|String
 name|oakName
 parameter_list|,
+annotation|@
+name|Nonnull
 name|Value
 modifier|...
 name|values
@@ -692,6 +704,8 @@ argument_list|)
 return|;
 block|}
 annotation|@
+name|Nonnull
+annotation|@
 name|Override
 specifier|public
 name|Set
@@ -703,6 +717,8 @@ parameter_list|(
 name|String
 name|oakPath
 parameter_list|,
+annotation|@
+name|Nonnull
 name|Tree
 name|aceTree
 parameter_list|)
@@ -903,6 +919,8 @@ parameter_list|(
 name|String
 name|oakPath
 parameter_list|,
+annotation|@
+name|Nonnull
 name|Tree
 name|aceTree
 parameter_list|)

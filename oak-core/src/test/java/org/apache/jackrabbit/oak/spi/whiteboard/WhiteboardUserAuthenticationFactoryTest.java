@@ -637,6 +637,8 @@ specifier|public
 name|boolean
 name|authenticate
 parameter_list|(
+annotation|@
+name|Nullable
 name|Credentials
 name|credentials
 parameter_list|)

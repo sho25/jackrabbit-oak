@@ -53,6 +53,16 @@ end_import
 
 begin_import
 import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|Nullable
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -219,6 +229,8 @@ block|{
 comment|// nop
 block|}
 annotation|@
+name|Nonnull
+annotation|@
 name|Override
 specifier|public
 name|RepositoryPermission
@@ -231,6 +243,8 @@ operator|.
 name|ALL
 return|;
 block|}
+annotation|@
+name|Nonnull
 annotation|@
 name|Override
 specifier|public
@@ -260,9 +274,13 @@ specifier|public
 name|boolean
 name|isGranted
 parameter_list|(
+annotation|@
+name|Nonnull
 name|Tree
 name|tree
 parameter_list|,
+annotation|@
+name|Nullable
 name|PropertyState
 name|property
 parameter_list|,
@@ -280,6 +298,8 @@ specifier|public
 name|boolean
 name|isGranted
 parameter_list|(
+annotation|@
+name|Nonnull
 name|String
 name|path
 parameter_list|,
@@ -292,6 +312,8 @@ literal|true
 return|;
 block|}
 annotation|@
+name|Nonnull
+annotation|@
 name|Override
 specifier|public
 name|Set
@@ -300,6 +322,8 @@ name|String
 argument_list|>
 name|getPrivileges
 parameter_list|(
+annotation|@
+name|Nullable
 name|Tree
 name|tree
 parameter_list|)
@@ -321,9 +345,13 @@ specifier|public
 name|boolean
 name|hasPrivileges
 parameter_list|(
+annotation|@
+name|Nullable
 name|Tree
 name|tree
 parameter_list|,
+annotation|@
+name|Nonnull
 name|String
 modifier|...
 name|privilegeNames

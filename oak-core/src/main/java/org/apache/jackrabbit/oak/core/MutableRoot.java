@@ -958,6 +958,8 @@ expr_stmt|;
 block|}
 comment|//---------------------------------------------------------------< Root>---
 annotation|@
+name|Nonnull
+annotation|@
 name|Override
 specifier|public
 name|ContentSession
@@ -1132,6 +1134,8 @@ name|success
 return|;
 block|}
 annotation|@
+name|Nonnull
+annotation|@
 name|Override
 specifier|public
 name|MutableTree
@@ -1246,6 +1250,8 @@ specifier|public
 name|void
 name|commit
 parameter_list|(
+annotation|@
+name|Nonnull
 name|Map
 argument_list|<
 name|String
@@ -1529,6 +1535,8 @@ operator|>
 literal|0
 return|;
 block|}
+annotation|@
+name|Nonnull
 annotation|@
 name|Override
 specifier|public

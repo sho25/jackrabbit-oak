@@ -790,6 +790,8 @@ return|;
 block|}
 comment|//------------------------------------------------< AbstractLoginModule>---
 annotation|@
+name|Nonnull
+annotation|@
 name|Override
 specifier|protected
 name|Set

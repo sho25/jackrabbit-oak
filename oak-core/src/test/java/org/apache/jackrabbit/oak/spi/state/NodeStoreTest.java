@@ -1900,6 +1900,8 @@ name|CommitHook
 argument_list|()
 block|{
 annotation|@
+name|Nonnull
+annotation|@
 name|Override
 specifier|public
 name|NodeState

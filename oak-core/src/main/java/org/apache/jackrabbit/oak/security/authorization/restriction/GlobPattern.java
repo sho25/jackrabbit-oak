@@ -685,6 +685,8 @@ name|Override
 name|boolean
 name|matches
 parameter_list|(
+annotation|@
+name|Nonnull
 name|String
 name|toMatch
 parameter_list|)
@@ -775,6 +777,8 @@ name|Override
 name|boolean
 name|matches
 parameter_list|(
+annotation|@
+name|Nonnull
 name|String
 name|toMatch
 parameter_list|)

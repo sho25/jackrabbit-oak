@@ -22,6 +22,16 @@ package|;
 end_package
 
 begin_import
+import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|Nonnull
+import|;
+end_import
+
+begin_import
 import|import static
 name|org
 operator|.
@@ -225,15 +235,23 @@ specifier|public
 name|Editor
 name|getIndexEditor
 parameter_list|(
+annotation|@
+name|Nonnull
 name|String
 name|type
 parameter_list|,
+annotation|@
+name|Nonnull
 name|NodeBuilder
 name|definition
 parameter_list|,
+annotation|@
+name|Nonnull
 name|NodeState
 name|root
 parameter_list|,
+annotation|@
+name|Nonnull
 name|IndexUpdateCallback
 name|callback
 parameter_list|)

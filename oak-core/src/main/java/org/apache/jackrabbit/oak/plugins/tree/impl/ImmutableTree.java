@@ -324,6 +324,8 @@ specifier|protected
 name|ImmutableTree
 name|createChild
 parameter_list|(
+annotation|@
+name|Nonnull
 name|String
 name|name
 parameter_list|)

@@ -530,6 +530,8 @@ expr_stmt|;
 block|}
 block|}
 annotation|@
+name|Nonnull
+annotation|@
 name|Override
 specifier|public
 name|Set
@@ -801,6 +803,8 @@ literal|true
 return|;
 block|}
 annotation|@
+name|Nonnull
+annotation|@
 name|Override
 specifier|public
 name|RepositoryPermission
@@ -811,6 +815,8 @@ return|return
 name|repositoryPermission
 return|;
 block|}
+annotation|@
+name|Nonnull
 annotation|@
 name|Override
 specifier|public
@@ -1672,14 +1678,20 @@ expr_stmt|;
 block|}
 block|}
 annotation|@
+name|Nonnull
+annotation|@
 name|Override
 specifier|public
 name|TreePermission
 name|getChildPermission
 parameter_list|(
+annotation|@
+name|Nonnull
 name|String
 name|childName
 parameter_list|,
+annotation|@
+name|Nonnull
 name|NodeState
 name|childState
 parameter_list|)

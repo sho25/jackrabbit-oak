@@ -388,6 +388,8 @@ specifier|protected
 name|MutableTree
 name|createChild
 parameter_list|(
+annotation|@
+name|Nonnull
 name|String
 name|name
 parameter_list|)

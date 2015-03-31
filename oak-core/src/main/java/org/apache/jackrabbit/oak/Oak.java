@@ -1428,6 +1428,8 @@ specifier|public
 name|Thread
 name|newThread
 parameter_list|(
+annotation|@
+name|Nonnull
 name|Runnable
 name|r
 parameter_list|)
@@ -1545,6 +1547,8 @@ specifier|public
 name|Thread
 name|newThread
 parameter_list|(
+annotation|@
+name|Nonnull
 name|Runnable
 name|r
 parameter_list|)

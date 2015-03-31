@@ -561,6 +561,8 @@ specifier|public
 name|void
 name|setState
 parameter_list|(
+annotation|@
+name|Nonnull
 name|PropertyState
 name|propertyState
 parameter_list|)

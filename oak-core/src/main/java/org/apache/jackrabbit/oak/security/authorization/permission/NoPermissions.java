@@ -209,6 +209,8 @@ block|{
 comment|// nop
 block|}
 annotation|@
+name|Nonnull
+annotation|@
 name|Override
 specifier|public
 name|RepositoryPermission
@@ -221,6 +223,8 @@ operator|.
 name|EMPTY
 return|;
 block|}
+annotation|@
+name|Nonnull
 annotation|@
 name|Override
 specifier|public
@@ -288,6 +292,8 @@ literal|false
 return|;
 block|}
 annotation|@
+name|Nonnull
+annotation|@
 name|Override
 specifier|public
 name|Set
@@ -320,6 +326,8 @@ name|Nullable
 name|Tree
 name|tree
 parameter_list|,
+annotation|@
+name|Nonnull
 name|String
 modifier|...
 name|privilegeNames

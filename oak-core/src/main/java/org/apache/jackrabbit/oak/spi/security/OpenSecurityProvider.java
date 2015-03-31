@@ -204,6 +204,8 @@ parameter_list|>
 name|T
 name|getConfiguration
 parameter_list|(
+annotation|@
+name|Nonnull
 name|Class
 argument_list|<
 name|T

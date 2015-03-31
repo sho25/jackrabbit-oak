@@ -765,6 +765,11 @@ name|config
 expr_stmt|;
 block|}
 annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"UnusedDeclaration"
+argument_list|)
+annotation|@
 name|Activate
 specifier|private
 name|void
@@ -888,6 +893,8 @@ argument_list|)
 return|;
 block|}
 comment|/**      * {@inheritDoc}      */
+annotation|@
+name|Nonnull
 annotation|@
 name|Override
 specifier|public
@@ -1230,6 +1237,8 @@ return|;
 block|}
 comment|/**          * {@inheritDoc}          */
 annotation|@
+name|Nonnull
+annotation|@
 name|Override
 specifier|public
 name|SyncContext
@@ -1263,6 +1272,8 @@ return|;
 block|}
 comment|/**          * {@inheritDoc}          */
 annotation|@
+name|Nonnull
+annotation|@
 name|Override
 specifier|public
 name|SyncContext
@@ -1294,6 +1305,8 @@ return|return
 name|forceGroupSync
 return|;
 block|}
+annotation|@
+name|Nonnull
 specifier|public
 name|SyncContext
 name|setForceGroupSync

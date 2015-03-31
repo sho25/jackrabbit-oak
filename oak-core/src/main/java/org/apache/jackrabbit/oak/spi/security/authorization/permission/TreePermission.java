@@ -35,16 +35,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nullable
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -158,6 +148,8 @@ name|TreePermission
 argument_list|()
 block|{
 annotation|@
+name|Nonnull
+annotation|@
 name|Override
 specifier|public
 name|TreePermission
@@ -251,7 +243,7 @@ name|long
 name|permissions
 parameter_list|,
 annotation|@
-name|Nullable
+name|Nonnull
 name|PropertyState
 name|property
 parameter_list|)
@@ -270,6 +262,8 @@ operator|new
 name|TreePermission
 argument_list|()
 block|{
+annotation|@
+name|Nonnull
 annotation|@
 name|Override
 specifier|public
@@ -364,7 +358,7 @@ name|long
 name|permissions
 parameter_list|,
 annotation|@
-name|Nullable
+name|Nonnull
 name|PropertyState
 name|property
 parameter_list|)

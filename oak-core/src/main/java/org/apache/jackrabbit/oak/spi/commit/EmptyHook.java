@@ -21,6 +21,16 @@ end_package
 
 begin_import
 import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|Nonnull
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -75,6 +85,8 @@ operator|new
 name|EmptyHook
 argument_list|()
 decl_stmt|;
+annotation|@
+name|Nonnull
 annotation|@
 name|Override
 specifier|public

@@ -210,9 +210,13 @@ specifier|public
 name|NodeBuilder
 name|setChildNode
 parameter_list|(
+annotation|@
+name|Nonnull
 name|String
 name|name
 parameter_list|,
+annotation|@
+name|Nonnull
 name|NodeState
 name|state
 parameter_list|)
@@ -298,6 +302,8 @@ specifier|public
 name|DocumentNodeBuilder
 name|getChildNode
 parameter_list|(
+annotation|@
+name|Nonnull
 name|String
 name|name
 parameter_list|)

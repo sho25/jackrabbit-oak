@@ -131,6 +131,16 @@ name|javax
 operator|.
 name|annotation
 operator|.
+name|Nonnull
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|annotation
+operator|.
 name|Nullable
 import|;
 end_import
@@ -1170,6 +1180,8 @@ specifier|public
 name|String
 name|getBlobId
 parameter_list|(
+annotation|@
+name|Nonnull
 name|String
 name|reference
 parameter_list|)
@@ -1236,6 +1248,8 @@ specifier|public
 name|String
 name|getReference
 parameter_list|(
+annotation|@
+name|Nonnull
 name|String
 name|encodedBlobId
 parameter_list|)

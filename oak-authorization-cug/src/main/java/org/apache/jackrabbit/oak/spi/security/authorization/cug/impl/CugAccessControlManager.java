@@ -798,6 +798,10 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+name|oakPath
+operator|!=
+literal|null
+operator|&&
 name|isSupportedPath
 argument_list|(
 name|oakPath
@@ -905,6 +909,10 @@ condition|)
 block|{
 if|if
 condition|(
+name|oakPath
+operator|!=
+literal|null
+operator|&&
 name|isSupportedPath
 argument_list|(
 name|oakPath
@@ -990,6 +998,10 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+name|oakPath
+operator|==
+literal|null
+operator|||
 operator|!
 name|isSupportedPath
 argument_list|(

@@ -1621,6 +1621,8 @@ specifier|public
 name|String
 name|getOakName
 parameter_list|(
+annotation|@
+name|Nonnull
 name|String
 name|jcrName
 parameter_list|)
@@ -1659,6 +1661,8 @@ name|jcrName
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Nonnull
 annotation|@
 name|Override
 specifier|public

@@ -804,6 +804,8 @@ name|CommitHook
 argument_list|>
 name|getCommitHooks
 parameter_list|(
+annotation|@
+name|Nonnull
 specifier|final
 name|String
 name|workspaceName
@@ -882,10 +884,14 @@ name|ValidatorProvider
 argument_list|>
 name|getValidators
 parameter_list|(
+annotation|@
+name|Nonnull
 specifier|final
 name|String
 name|workspaceName
 parameter_list|,
+annotation|@
+name|Nonnull
 specifier|final
 name|Set
 argument_list|<
@@ -893,6 +899,8 @@ name|Principal
 argument_list|>
 name|principals
 parameter_list|,
+annotation|@
+name|Nonnull
 specifier|final
 name|MoveTracker
 name|moveTracker
@@ -1032,6 +1040,8 @@ argument_list|)
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Nonnull
 annotation|@
 name|Override
 specifier|public

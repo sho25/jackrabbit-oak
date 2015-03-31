@@ -797,6 +797,8 @@ specifier|public
 name|boolean
 name|doCreateToken
 parameter_list|(
+annotation|@
+name|Nonnull
 name|Credentials
 name|credentials
 parameter_list|)
@@ -858,6 +860,8 @@ specifier|public
 name|TokenInfo
 name|createToken
 parameter_list|(
+annotation|@
+name|Nonnull
 name|Credentials
 name|credentials
 parameter_list|)
@@ -986,9 +990,13 @@ specifier|public
 name|TokenInfo
 name|createToken
 parameter_list|(
+annotation|@
+name|Nonnull
 name|String
 name|userId
 parameter_list|,
+annotation|@
+name|Nonnull
 name|Map
 argument_list|<
 name|String
@@ -1022,6 +1030,10 @@ decl_stmt|;
 if|if
 condition|(
 name|tokenParent
+operator|!=
+literal|null
+operator|&&
+name|user
 operator|!=
 literal|null
 condition|)
@@ -1306,6 +1318,8 @@ specifier|public
 name|TokenInfo
 name|getTokenInfo
 parameter_list|(
+annotation|@
+name|Nonnull
 name|String
 name|token
 parameter_list|)
@@ -2532,6 +2546,8 @@ block|}
 block|}
 comment|//------------------------------------------------------< TokenInfo>---
 annotation|@
+name|Nonnull
+annotation|@
 name|Override
 specifier|public
 name|String
@@ -2542,6 +2558,8 @@ return|return
 name|userId
 return|;
 block|}
+annotation|@
+name|Nonnull
 annotation|@
 name|Override
 specifier|public
@@ -2966,6 +2984,8 @@ literal|true
 return|;
 block|}
 annotation|@
+name|Nonnull
+annotation|@
 name|Override
 specifier|public
 name|Map
@@ -2986,6 +3006,8 @@ name|mandatoryAttributes
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Nonnull
 annotation|@
 name|Override
 specifier|public

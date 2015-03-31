@@ -2234,6 +2234,8 @@ expr_stmt|;
 block|}
 comment|/**      * @return An immutable set containing only the {@link SimpleCredentials} class.      */
 annotation|@
+name|Nonnull
+annotation|@
 name|Override
 specifier|protected
 name|Set

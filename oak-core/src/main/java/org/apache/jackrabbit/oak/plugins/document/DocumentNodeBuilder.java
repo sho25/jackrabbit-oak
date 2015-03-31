@@ -302,9 +302,13 @@ specifier|public
 name|boolean
 name|moveTo
 parameter_list|(
+annotation|@
+name|Nonnull
 name|NodeBuilder
 name|newParent
 parameter_list|,
+annotation|@
+name|Nonnull
 name|String
 name|newName
 parameter_list|)

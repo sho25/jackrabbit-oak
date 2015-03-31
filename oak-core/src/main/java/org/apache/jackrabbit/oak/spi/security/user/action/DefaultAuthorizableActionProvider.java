@@ -45,6 +45,16 @@ end_import
 
 begin_import
 import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|Nonnull
+import|;
+end_import
+
+begin_import
+import|import
 name|com
 operator|.
 name|google
@@ -466,6 +476,8 @@ expr_stmt|;
 block|}
 comment|//-----------------------------------------< AuthorizableActionProvider>---
 annotation|@
+name|Nonnull
+annotation|@
 name|Override
 specifier|public
 name|List
@@ -476,6 +488,8 @@ name|AuthorizableAction
 argument_list|>
 name|getAuthorizableActions
 parameter_list|(
+annotation|@
+name|Nonnull
 name|SecurityProvider
 name|securityProvider
 parameter_list|)

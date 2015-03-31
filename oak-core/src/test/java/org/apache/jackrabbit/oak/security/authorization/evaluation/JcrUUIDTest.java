@@ -25,6 +25,16 @@ begin_import
 import|import
 name|javax
 operator|.
+name|annotation
+operator|.
+name|Nonnull
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
 name|jcr
 operator|.
 name|nodetype
@@ -344,6 +354,8 @@ operator|new
 name|ReadWriteNodeTypeManager
 argument_list|()
 block|{
+annotation|@
+name|Nonnull
 annotation|@
 name|Override
 specifier|protected

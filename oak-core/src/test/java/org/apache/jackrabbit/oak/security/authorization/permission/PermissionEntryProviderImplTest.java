@@ -725,9 +725,13 @@ name|PermissionEntry
 argument_list|>
 name|entries
 parameter_list|,
+annotation|@
+name|Nonnull
 name|String
 name|principalName
 parameter_list|,
+annotation|@
+name|Nonnull
 name|String
 name|path
 parameter_list|)
@@ -742,6 +746,8 @@ specifier|public
 name|void
 name|load
 parameter_list|(
+annotation|@
+name|Nonnull
 name|Map
 argument_list|<
 name|String
@@ -753,6 +759,8 @@ argument_list|>
 argument_list|>
 name|entries
 parameter_list|,
+annotation|@
+name|Nonnull
 name|String
 name|principalName
 parameter_list|)
@@ -760,11 +768,15 @@ block|{
 comment|// ignore
 block|}
 annotation|@
+name|Nonnull
+annotation|@
 name|Override
 specifier|public
 name|PrincipalPermissionEntries
 name|load
 parameter_list|(
+annotation|@
+name|Nonnull
 name|String
 name|principalName
 parameter_list|)
@@ -783,6 +795,8 @@ specifier|public
 name|long
 name|getNumEntries
 parameter_list|(
+annotation|@
+name|Nonnull
 name|String
 name|principalName
 parameter_list|,

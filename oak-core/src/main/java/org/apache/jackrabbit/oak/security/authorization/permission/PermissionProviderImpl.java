@@ -662,6 +662,8 @@ argument_list|)
 return|;
 block|}
 annotation|@
+name|Nonnull
+annotation|@
 name|Override
 specifier|public
 name|RepositoryPermission
@@ -675,6 +677,8 @@ name|getRepositoryPermission
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Nonnull
 annotation|@
 name|Override
 specifier|public
@@ -911,6 +915,8 @@ name|Nonnull
 name|Tree
 name|tree
 parameter_list|,
+annotation|@
+name|Nonnull
 name|PrivilegeBits
 name|privilegeBits
 parameter_list|)

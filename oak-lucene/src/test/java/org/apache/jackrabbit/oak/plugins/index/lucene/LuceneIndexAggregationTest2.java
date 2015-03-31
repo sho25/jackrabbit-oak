@@ -916,6 +916,8 @@ specifier|public
 name|void
 name|initialize
 parameter_list|(
+annotation|@
+name|Nonnull
 name|NodeBuilder
 name|builder
 parameter_list|)

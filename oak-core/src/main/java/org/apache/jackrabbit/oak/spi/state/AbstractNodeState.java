@@ -1105,6 +1105,8 @@ specifier|public
 name|boolean
 name|hasProperty
 parameter_list|(
+annotation|@
+name|Nonnull
 name|String
 name|name
 parameter_list|)
@@ -1124,6 +1126,8 @@ specifier|public
 name|boolean
 name|getBoolean
 parameter_list|(
+annotation|@
+name|Nonnull
 name|String
 name|name
 parameter_list|)
@@ -1176,6 +1180,8 @@ argument_list|)
 return|;
 block|}
 annotation|@
+name|Nonnull
+annotation|@
 name|Override
 specifier|public
 name|Iterable
@@ -1184,6 +1190,8 @@ name|String
 argument_list|>
 name|getStrings
 parameter_list|(
+annotation|@
+name|Nonnull
 name|String
 name|name
 parameter_list|)
@@ -1252,6 +1260,8 @@ specifier|public
 name|PropertyState
 name|getProperty
 parameter_list|(
+annotation|@
+name|Nonnull
 name|String
 name|name
 parameter_list|)

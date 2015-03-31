@@ -3101,6 +3101,8 @@ parameter_list|(
 name|long
 name|time
 parameter_list|,
+annotation|@
+name|Nonnull
 name|TimeUnit
 name|unit
 parameter_list|)
@@ -3151,6 +3153,8 @@ name|unlock
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Nonnull
 annotation|@
 name|Override
 specifier|public

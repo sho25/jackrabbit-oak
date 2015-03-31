@@ -1167,6 +1167,8 @@ argument_list|()
 expr_stmt|;
 block|}
 annotation|@
+name|Nonnull
+annotation|@
 name|Override
 specifier|public
 name|RepositoryPermission
@@ -1207,6 +1209,8 @@ block|}
 block|}
 return|;
 block|}
+annotation|@
+name|Nonnull
 annotation|@
 name|Override
 specifier|public
@@ -1734,6 +1738,8 @@ name|path
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Nonnull
 annotation|@
 name|Override
 specifier|public
@@ -3035,14 +3041,20 @@ expr_stmt|;
 block|}
 comment|//-------------------------------------------------< TreePermission>---
 annotation|@
+name|Nonnull
+annotation|@
 name|Override
 specifier|public
 name|TreePermission
 name|getChildPermission
 parameter_list|(
+annotation|@
+name|Nonnull
 name|String
 name|childName
 parameter_list|,
+annotation|@
+name|Nonnull
 name|NodeState
 name|childState
 parameter_list|)

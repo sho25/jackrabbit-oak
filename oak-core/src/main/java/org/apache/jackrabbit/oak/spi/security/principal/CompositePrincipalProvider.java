@@ -85,6 +85,26 @@ end_import
 
 begin_import
 import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|Nonnull
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|Nullable
+import|;
+end_import
+
+begin_import
+import|import
 name|com
 operator|.
 name|google
@@ -159,6 +179,8 @@ specifier|public
 name|Principal
 name|getPrincipal
 parameter_list|(
+annotation|@
+name|Nonnull
 name|String
 name|principalName
 parameter_list|)
@@ -210,6 +232,8 @@ name|principal
 return|;
 block|}
 annotation|@
+name|Nonnull
+annotation|@
 name|Override
 specifier|public
 name|Set
@@ -218,6 +242,8 @@ name|Group
 argument_list|>
 name|getGroupMembership
 parameter_list|(
+annotation|@
+name|Nonnull
 name|Principal
 name|principal
 parameter_list|)
@@ -261,6 +287,8 @@ name|groups
 return|;
 block|}
 annotation|@
+name|Nonnull
+annotation|@
 name|Override
 specifier|public
 name|Set
@@ -269,6 +297,8 @@ name|Principal
 argument_list|>
 name|getPrincipals
 parameter_list|(
+annotation|@
+name|Nonnull
 name|String
 name|userID
 parameter_list|)
@@ -312,6 +342,8 @@ name|principals
 return|;
 block|}
 annotation|@
+name|Nonnull
+annotation|@
 name|Override
 specifier|public
 name|Iterator
@@ -320,6 +352,8 @@ name|Principal
 argument_list|>
 name|findPrincipals
 parameter_list|(
+annotation|@
+name|Nullable
 name|String
 name|nameHint
 parameter_list|,
@@ -407,6 +441,8 @@ name|iterators
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Nonnull
 annotation|@
 name|Override
 specifier|public

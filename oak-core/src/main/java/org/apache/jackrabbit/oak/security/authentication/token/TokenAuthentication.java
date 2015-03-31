@@ -45,6 +45,16 @@ begin_import
 import|import
 name|javax
 operator|.
+name|annotation
+operator|.
+name|Nullable
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
 name|jcr
 operator|.
 name|Credentials
@@ -223,6 +233,8 @@ specifier|public
 name|boolean
 name|authenticate
 parameter_list|(
+annotation|@
+name|Nullable
 name|Credentials
 name|credentials
 parameter_list|)

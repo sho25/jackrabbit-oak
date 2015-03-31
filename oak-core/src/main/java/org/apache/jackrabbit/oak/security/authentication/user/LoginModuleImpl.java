@@ -97,6 +97,16 @@ name|javax
 operator|.
 name|annotation
 operator|.
+name|Nonnull
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|annotation
+operator|.
 name|Nullable
 import|;
 end_import
@@ -777,6 +787,8 @@ return|;
 block|}
 block|}
 comment|//------------------------------------------------< AbstractLoginModule>---
+annotation|@
+name|Nonnull
 annotation|@
 name|Override
 specifier|protected

@@ -539,6 +539,8 @@ argument_list|)
 return|;
 block|}
 annotation|@
+name|Nonnull
+annotation|@
 name|Override
 specifier|public
 name|Iterator
@@ -560,6 +562,8 @@ name|iterator
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Nonnull
 annotation|@
 name|Override
 specifier|public
@@ -658,6 +662,8 @@ argument_list|)
 expr_stmt|;
 block|}
 annotation|@
+name|Nonnull
+annotation|@
 name|Override
 specifier|public
 name|String
@@ -668,6 +674,8 @@ return|return
 name|userId
 return|;
 block|}
+annotation|@
+name|Nonnull
 annotation|@
 name|Override
 specifier|public
@@ -704,6 +712,8 @@ literal|null
 return|;
 block|}
 annotation|@
+name|Nonnull
+annotation|@
 name|Override
 specifier|public
 name|Iterable
@@ -717,6 +727,8 @@ return|return
 name|groups
 return|;
 block|}
+annotation|@
+name|Nonnull
 annotation|@
 name|Override
 specifier|public

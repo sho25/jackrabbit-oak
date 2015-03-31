@@ -55,6 +55,16 @@ begin_import
 import|import
 name|javax
 operator|.
+name|annotation
+operator|.
+name|Nonnull
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
 name|jcr
 operator|.
 name|security
@@ -1135,6 +1145,8 @@ parameter_list|(
 name|String
 name|absPath
 parameter_list|,
+annotation|@
+name|Nonnull
 name|AccessControlPolicy
 name|accessControlPolicy
 parameter_list|)

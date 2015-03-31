@@ -392,6 +392,8 @@ specifier|public
 name|int
 name|compareTo
 parameter_list|(
+annotation|@
+name|Nonnull
 name|PermissionEntry
 name|pe
 parameter_list|)

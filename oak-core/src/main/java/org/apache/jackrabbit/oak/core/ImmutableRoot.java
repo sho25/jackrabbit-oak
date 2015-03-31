@@ -541,6 +541,8 @@ specifier|public
 name|void
 name|commit
 parameter_list|(
+annotation|@
+name|Nonnull
 name|Map
 argument_list|<
 name|String

@@ -477,6 +477,8 @@ name|Nonnull
 name|ReferenceChangeTracker
 name|referenceTracker
 parameter_list|,
+annotation|@
+name|Nonnull
 name|SecurityProvider
 name|securityProvider
 parameter_list|)

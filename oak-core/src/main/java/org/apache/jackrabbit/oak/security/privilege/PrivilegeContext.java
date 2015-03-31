@@ -172,9 +172,13 @@ specifier|public
 name|boolean
 name|definesProperty
 parameter_list|(
+annotation|@
+name|Nonnull
 name|Tree
 name|parent
 parameter_list|,
+annotation|@
+name|Nonnull
 name|PropertyState
 name|property
 parameter_list|)
@@ -226,6 +230,8 @@ specifier|public
 name|boolean
 name|definesTree
 parameter_list|(
+annotation|@
+name|Nonnull
 name|Tree
 name|tree
 parameter_list|)
@@ -250,6 +256,8 @@ specifier|public
 name|boolean
 name|definesLocation
 parameter_list|(
+annotation|@
+name|Nonnull
 name|TreeLocation
 name|location
 parameter_list|)

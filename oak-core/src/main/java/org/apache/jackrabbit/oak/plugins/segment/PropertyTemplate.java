@@ -20,6 +20,16 @@ package|;
 end_package
 
 begin_import
+import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|Nonnull
+import|;
+end_import
+
+begin_import
 import|import static
 name|com
 operator|.
@@ -226,6 +236,8 @@ specifier|public
 name|int
 name|compareTo
 parameter_list|(
+annotation|@
+name|Nonnull
 name|PropertyTemplate
 name|template
 parameter_list|)

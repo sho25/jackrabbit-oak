@@ -237,6 +237,8 @@ specifier|synchronized
 name|String
 name|getJcrName
 parameter_list|(
+annotation|@
+name|Nonnull
 name|String
 name|oakName
 parameter_list|)
@@ -493,6 +495,8 @@ specifier|synchronized
 name|String
 name|getOakNameOrNull
 parameter_list|(
+annotation|@
+name|Nonnull
 name|String
 name|jcrName
 parameter_list|)

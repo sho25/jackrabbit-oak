@@ -83,6 +83,16 @@ begin_import
 import|import
 name|javax
 operator|.
+name|annotation
+operator|.
+name|Nullable
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
 name|jcr
 operator|.
 name|RepositoryException
@@ -378,9 +388,13 @@ name|namePathMapper
 decl_stmt|;
 name|AuthorizablePropertiesImpl
 parameter_list|(
+annotation|@
+name|Nonnull
 name|AuthorizableImpl
 name|authorizable
 parameter_list|,
+annotation|@
+name|Nonnull
 name|NamePathMapper
 name|namePathMapper
 parameter_list|)
@@ -400,6 +414,8 @@ expr_stmt|;
 block|}
 comment|//---------------------------------------------< AuthorizableProperties>---
 annotation|@
+name|Nonnull
+annotation|@
 name|Override
 specifier|public
 name|Iterator
@@ -408,6 +424,8 @@ name|String
 argument_list|>
 name|getNames
 parameter_list|(
+annotation|@
+name|Nonnull
 name|String
 name|relPath
 parameter_list|)
@@ -560,6 +578,8 @@ specifier|public
 name|boolean
 name|hasProperty
 parameter_list|(
+annotation|@
+name|Nonnull
 name|String
 name|relPath
 parameter_list|)
@@ -600,6 +620,8 @@ name|Value
 index|[]
 name|getProperty
 parameter_list|(
+annotation|@
+name|Nonnull
 name|String
 name|relPath
 parameter_list|)
@@ -721,9 +743,13 @@ specifier|public
 name|void
 name|setProperty
 parameter_list|(
+annotation|@
+name|Nonnull
 name|String
 name|relPath
 parameter_list|,
+annotation|@
+name|Nullable
 name|Value
 name|value
 parameter_list|)
@@ -829,6 +855,8 @@ specifier|public
 name|void
 name|setProperty
 parameter_list|(
+annotation|@
+name|Nonnull
 name|String
 name|relPath
 parameter_list|,
@@ -943,6 +971,8 @@ specifier|public
 name|boolean
 name|removeProperty
 parameter_list|(
+annotation|@
+name|Nonnull
 name|String
 name|relPath
 parameter_list|)
@@ -1321,6 +1351,8 @@ specifier|private
 name|Tree
 name|getOrCreateTargetTree
 parameter_list|(
+annotation|@
+name|CheckForNull
 name|String
 name|relPath
 parameter_list|)
@@ -1473,9 +1505,13 @@ specifier|static
 name|TreeLocation
 name|getLocation
 parameter_list|(
+annotation|@
+name|Nonnull
 name|Tree
 name|tree
 parameter_list|,
+annotation|@
+name|Nonnull
 name|String
 name|relativePath
 parameter_list|)
@@ -1553,10 +1589,14 @@ return|return
 name|loc
 return|;
 block|}
+annotation|@
+name|Nonnull
 specifier|private
 name|String
 name|getOakPath
 parameter_list|(
+annotation|@
+name|CheckForNull
 name|String
 name|relPath
 parameter_list|)

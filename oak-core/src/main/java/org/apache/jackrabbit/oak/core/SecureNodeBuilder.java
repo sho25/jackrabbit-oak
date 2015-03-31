@@ -846,9 +846,13 @@ specifier|public
 name|boolean
 name|moveTo
 parameter_list|(
+annotation|@
+name|Nonnull
 name|NodeBuilder
 name|newParent
 parameter_list|,
+annotation|@
+name|Nonnull
 name|String
 name|newName
 parameter_list|)
@@ -1038,6 +1042,8 @@ specifier|public
 name|boolean
 name|getBoolean
 parameter_list|(
+annotation|@
+name|Nonnull
 name|String
 name|name
 parameter_list|)
@@ -1536,6 +1542,8 @@ specifier|public
 name|NodeBuilder
 name|setChildNode
 parameter_list|(
+annotation|@
+name|Nonnull
 name|String
 name|name
 parameter_list|,
@@ -1564,6 +1572,8 @@ name|name
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Nonnull
 annotation|@
 name|Override
 specifier|public

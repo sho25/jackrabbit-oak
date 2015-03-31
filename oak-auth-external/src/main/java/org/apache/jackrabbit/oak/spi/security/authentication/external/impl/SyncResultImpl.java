@@ -27,6 +27,26 @@ end_package
 
 begin_import
 import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|CheckForNull
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|Nonnull
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -94,6 +114,8 @@ operator|=
 name|status
 expr_stmt|;
 block|}
+annotation|@
+name|CheckForNull
 specifier|public
 name|SyncedIdentityImpl
 name|getIdentity
@@ -103,6 +125,8 @@ return|return
 name|id
 return|;
 block|}
+annotation|@
+name|Nonnull
 specifier|public
 name|Status
 name|getStatus

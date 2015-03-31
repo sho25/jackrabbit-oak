@@ -378,6 +378,8 @@ expr_stmt|;
 block|}
 comment|//-----------------------------------------------< AccessControlManager>---
 annotation|@
+name|Nonnull
+annotation|@
 name|Override
 specifier|public
 name|Privilege
