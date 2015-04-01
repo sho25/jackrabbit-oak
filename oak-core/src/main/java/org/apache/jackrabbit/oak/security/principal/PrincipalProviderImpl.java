@@ -731,9 +731,9 @@ name|Principal
 argument_list|>
 name|findPrincipals
 parameter_list|(
-specifier|final
 annotation|@
 name|Nullable
+specifier|final
 name|String
 name|nameHint
 parameter_list|,
