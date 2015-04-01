@@ -1483,6 +1483,18 @@ operator|*
 literal|1000
 argument_list|)
 decl_stmt|;
+comment|/**      * Feature flag to enable concurrent add/remove operations of hidden empty      * nodes. See OAK-2673.      */
+specifier|private
+name|boolean
+name|enableConcurrentAddRemove
+init|=
+name|Boolean
+operator|.
+name|getBoolean
+argument_list|(
+literal|"oak.enableConcurrentAddRemove"
+argument_list|)
+decl_stmt|;
 comment|/**      * How long to remember the relative order of old revision of all cluster      * nodes, in milliseconds. The default is one hour.      */
 specifier|static
 specifier|final
@@ -3168,6 +3180,26 @@ parameter_list|()
 block|{
 return|return
 name|maxBackOffMillis
+return|;
+block|}
+name|void
+name|setEnableConcurrentAddRemove
+parameter_list|(
+name|boolean
+name|b
+parameter_list|)
+block|{
+name|enableConcurrentAddRemove
+operator|=
+name|b
+expr_stmt|;
+block|}
+name|boolean
+name|getEnableConcurrentAddRemove
+parameter_list|()
+block|{
+return|return
+name|enableConcurrentAddRemove
 return|;
 block|}
 annotation|@

@@ -2777,6 +2777,27 @@ block|}
 block|}
 return|;
 block|}
+comment|/**      * @return if {@code path} represent oak's internal path. That is, a path      *          element start with a colon.      */
+specifier|public
+specifier|static
+name|boolean
+name|isHiddenPath
+parameter_list|(
+annotation|@
+name|Nonnull
+name|String
+name|path
+parameter_list|)
+block|{
+return|return
+name|path
+operator|.
+name|contains
+argument_list|(
+literal|"/:"
+argument_list|)
+return|;
+block|}
 block|}
 end_class
 
