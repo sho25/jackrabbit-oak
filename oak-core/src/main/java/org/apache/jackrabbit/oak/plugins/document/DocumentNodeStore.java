@@ -2900,9 +2900,6 @@ operator|.
 name|lock
 argument_list|()
 expr_stmt|;
-name|checkOpen
-argument_list|()
-expr_stmt|;
 name|boolean
 name|success
 init|=
@@ -2913,6 +2910,9 @@ name|c
 decl_stmt|;
 try|try
 block|{
+name|checkOpen
+argument_list|()
+expr_stmt|;
 name|c
 operator|=
 operator|new
@@ -2992,9 +2992,6 @@ operator|.
 name|lock
 argument_list|()
 expr_stmt|;
-name|checkOpen
-argument_list|()
-expr_stmt|;
 name|boolean
 name|success
 init|=
@@ -3005,6 +3002,9 @@ name|c
 decl_stmt|;
 try|try
 block|{
+name|checkOpen
+argument_list|()
+expr_stmt|;
 name|c
 operator|=
 operator|new
