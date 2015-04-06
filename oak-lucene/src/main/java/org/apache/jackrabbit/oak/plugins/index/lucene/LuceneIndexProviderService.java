@@ -682,7 +682,7 @@ name|Property
 argument_list|(
 name|boolValue
 operator|=
-literal|false
+literal|true
 argument_list|,
 name|label
 operator|=
@@ -1111,7 +1111,7 @@ argument_list|(
 name|PROP_COPY_ON_READ
 argument_list|)
 argument_list|,
-literal|false
+literal|true
 argument_list|)
 decl_stmt|;
 if|if
