@@ -165,11 +165,43 @@ name|Test
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|runner
+operator|.
+name|RunWith
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|runners
+operator|.
+name|Parameterized
+import|;
+end_import
+
 begin_comment
 comment|/**  *<code>ConcurrentAddIT</code> adds nodes with multiple sessions in separate  * locations of the repository and under the same parent.  */
 end_comment
 
 begin_class
+annotation|@
+name|RunWith
+argument_list|(
+name|Parameterized
+operator|.
+name|class
+argument_list|)
+comment|// OAK-2704
 specifier|public
 class|class
 name|ConcurrentAddIT
