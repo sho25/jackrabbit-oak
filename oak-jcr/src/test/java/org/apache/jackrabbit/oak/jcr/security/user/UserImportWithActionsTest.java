@@ -767,7 +767,8 @@ expr_stmt|;
 name|Authorizable
 name|a
 init|=
-name|userMgr
+name|getUserManager
+argument_list|()
 operator|.
 name|getAuthorizable
 argument_list|(
@@ -790,7 +791,8 @@ expr_stmt|;
 name|AccessControlManager
 name|acMgr
 init|=
-name|adminSession
+name|getImportSession
+argument_list|()
 operator|.
 name|getAccessControlManager
 argument_list|()
@@ -949,7 +951,8 @@ expr_stmt|;
 name|Authorizable
 name|a
 init|=
-name|userMgr
+name|getUserManager
+argument_list|()
 operator|.
 name|getAuthorizable
 argument_list|(
@@ -972,7 +975,8 @@ expr_stmt|;
 name|AccessControlManager
 name|acMgr
 init|=
-name|adminSession
+name|getImportSession
+argument_list|()
 operator|.
 name|getAccessControlManager
 argument_list|()
@@ -1129,7 +1133,8 @@ expr_stmt|;
 name|Authorizable
 name|a
 init|=
-name|userMgr
+name|getUserManager
+argument_list|()
 operator|.
 name|getAuthorizable
 argument_list|(
@@ -1152,7 +1157,8 @@ expr_stmt|;
 name|AccessControlManager
 name|acMgr
 init|=
-name|adminSession
+name|getImportSession
+argument_list|()
 operator|.
 name|getAccessControlManager
 argument_list|()

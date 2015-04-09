@@ -77,6 +77,16 @@ name|javax
 operator|.
 name|jcr
 operator|.
+name|Session
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|jcr
+operator|.
 name|Value
 import|;
 end_import
@@ -325,6 +335,12 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// uuid of non-authorizable node
+name|Session
+name|s
+init|=
+name|getImportSession
+argument_list|()
+decl_stmt|;
 for|for
 control|(
 name|String
@@ -372,7 +388,8 @@ expr_stmt|;
 name|Authorizable
 name|a
 init|=
-name|userMgr
+name|getUserManager
+argument_list|()
 operator|.
 name|getAuthorizable
 argument_list|(
@@ -396,7 +413,7 @@ decl_stmt|;
 name|Node
 name|grNode
 init|=
-name|adminSession
+name|s
 operator|.
 name|getNode
 argument_list|(
@@ -473,7 +490,7 @@ name|a
 argument_list|,
 name|id
 argument_list|,
-name|adminSession
+name|s
 argument_list|)
 expr_stmt|;
 block|}
@@ -488,7 +505,7 @@ block|}
 block|}
 finally|finally
 block|{
-name|adminSession
+name|s
 operator|.
 name|refresh
 argument_list|(
@@ -520,7 +537,8 @@ decl_stmt|;
 comment|// groupId of 'g' group.
 if|if
 condition|(
-name|userMgr
+name|getUserManager
+argument_list|()
 operator|.
 name|getAuthorizable
 argument_list|(
@@ -577,7 +595,8 @@ expr_stmt|;
 name|Authorizable
 name|g1
 init|=
-name|userMgr
+name|getUserManager
+argument_list|()
 operator|.
 name|getAuthorizable
 argument_list|(
@@ -601,7 +620,8 @@ decl_stmt|;
 name|Node
 name|grNode
 init|=
-name|adminSession
+name|getImportSession
+argument_list|()
 operator|.
 name|getNode
 argument_list|(
@@ -700,7 +720,8 @@ decl_stmt|;
 comment|// groupId of 'g' group.
 if|if
 condition|(
-name|userMgr
+name|getUserManager
+argument_list|()
 operator|.
 name|getAuthorizable
 argument_list|(
@@ -793,7 +814,8 @@ expr_stmt|;
 name|Authorizable
 name|g
 init|=
-name|userMgr
+name|getUserManager
+argument_list|()
 operator|.
 name|getAuthorizable
 argument_list|(
@@ -822,7 +844,8 @@ name|g
 argument_list|,
 name|g1Id
 argument_list|,
-name|adminSession
+name|getImportSession
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -882,7 +905,8 @@ expr_stmt|;
 name|User
 name|user
 init|=
-name|userMgr
+name|getUserManager
+argument_list|()
 operator|.
 name|createUser
 argument_list|(
@@ -891,7 +915,8 @@ argument_list|,
 literal|"pw"
 argument_list|)
 decl_stmt|;
-name|adminSession
+name|getImportSession
+argument_list|()
 operator|.
 name|save
 argument_list|()
@@ -902,7 +927,8 @@ init|=
 operator|(
 name|Group
 operator|)
-name|userMgr
+name|getUserManager
+argument_list|()
 operator|.
 name|getAuthorizable
 argument_list|(

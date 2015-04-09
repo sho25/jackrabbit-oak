@@ -221,7 +221,8 @@ comment|// success
 block|}
 finally|finally
 block|{
-name|adminSession
+name|getImportSession
+argument_list|()
 operator|.
 name|refresh
 argument_list|(
@@ -294,7 +295,8 @@ comment|// success
 block|}
 finally|finally
 block|{
-name|adminSession
+name|getImportSession
+argument_list|()
 operator|.
 name|refresh
 argument_list|(

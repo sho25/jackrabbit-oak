@@ -47,6 +47,16 @@ name|javax
 operator|.
 name|jcr
 operator|.
+name|Session
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|jcr
+operator|.
 name|nodetype
 operator|.
 name|ConstraintViolationException
@@ -232,6 +242,30 @@ name|intermediatePath
 init|=
 literal|"foo/bar/test"
 decl_stmt|;
+specifier|private
+name|Session
+name|importSession
+decl_stmt|;
+annotation|@
+name|Override
+specifier|public
+name|void
+name|before
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|super
+operator|.
+name|before
+argument_list|()
+expr_stmt|;
+name|importSession
+operator|=
+name|getImportSession
+argument_list|()
+expr_stmt|;
+block|}
 annotation|@
 name|Override
 specifier|protected
@@ -298,7 +332,8 @@ expr_stmt|;
 name|Authorizable
 name|newUser
 init|=
-name|userMgr
+name|getUserManager
+argument_list|()
 operator|.
 name|getAuthorizable
 argument_list|(
@@ -318,7 +353,7 @@ expr_stmt|;
 name|Node
 name|n
 init|=
-name|adminSession
+name|importSession
 operator|.
 name|getNode
 argument_list|(
@@ -358,7 +393,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// saving changes of the import -> must succeed
-name|adminSession
+name|importSession
 operator|.
 name|save
 argument_list|()
@@ -378,7 +413,8 @@ comment|// create authorizable
 name|User
 name|u
 init|=
-name|userMgr
+name|getUserManager
+argument_list|()
 operator|.
 name|createUser
 argument_list|(
@@ -406,7 +442,7 @@ operator|.
 name|getPath
 argument_list|()
 decl_stmt|;
-name|adminSession
+name|importSession
 operator|.
 name|save
 argument_list|()
@@ -449,7 +485,8 @@ expr_stmt|;
 name|Authorizable
 name|newUser
 init|=
-name|userMgr
+name|getUserManager
+argument_list|()
 operator|.
 name|getAuthorizable
 argument_list|(
@@ -491,7 +528,7 @@ expr_stmt|;
 name|Node
 name|n
 init|=
-name|adminSession
+name|importSession
 operator|.
 name|getNode
 argument_list|(
@@ -531,7 +568,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// saving changes of the import -> must succeed
-name|adminSession
+name|importSession
 operator|.
 name|save
 argument_list|()
@@ -551,7 +588,8 @@ comment|// create authorizable
 name|User
 name|u
 init|=
-name|userMgr
+name|getUserManager
+argument_list|()
 operator|.
 name|createUser
 argument_list|(
@@ -576,7 +614,7 @@ operator|.
 name|getPath
 argument_list|()
 decl_stmt|;
-name|adminSession
+name|importSession
 operator|.
 name|save
 argument_list|()
@@ -615,7 +653,8 @@ expr_stmt|;
 name|Authorizable
 name|newUser
 init|=
-name|userMgr
+name|getUserManager
+argument_list|()
 operator|.
 name|getAuthorizable
 argument_list|(
@@ -658,7 +697,7 @@ expr_stmt|;
 name|Node
 name|n
 init|=
-name|adminSession
+name|importSession
 operator|.
 name|getNode
 argument_list|(
@@ -698,7 +737,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// saving changes of the import -> must succeed
-name|adminSession
+name|importSession
 operator|.
 name|save
 argument_list|()
@@ -718,7 +757,8 @@ comment|// create authorizable
 name|User
 name|u
 init|=
-name|userMgr
+name|getUserManager
+argument_list|()
 operator|.
 name|createUser
 argument_list|(
@@ -759,7 +799,7 @@ literal|'/'
 operator|+
 name|randomNodeName
 decl_stmt|;
-name|adminSession
+name|importSession
 operator|.
 name|move
 argument_list|(
@@ -768,7 +808,7 @@ argument_list|,
 name|movedPath
 argument_list|)
 expr_stmt|;
-name|adminSession
+name|importSession
 operator|.
 name|save
 argument_list|()
@@ -812,7 +852,8 @@ expr_stmt|;
 name|Authorizable
 name|newUser
 init|=
-name|userMgr
+name|getUserManager
+argument_list|()
 operator|.
 name|getAuthorizable
 argument_list|(
@@ -846,7 +887,7 @@ expr_stmt|;
 name|Node
 name|n
 init|=
-name|adminSession
+name|importSession
 operator|.
 name|getNode
 argument_list|(
@@ -904,7 +945,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// saving changes of the import must succeed.
-name|adminSession
+name|importSession
 operator|.
 name|save
 argument_list|()
@@ -924,7 +965,8 @@ comment|// create authorizable
 name|User
 name|u
 init|=
-name|userMgr
+name|getUserManager
+argument_list|()
 operator|.
 name|createUser
 argument_list|(
@@ -965,7 +1007,7 @@ literal|'/'
 operator|+
 name|randomNodeName
 decl_stmt|;
-name|adminSession
+name|importSession
 operator|.
 name|move
 argument_list|(
@@ -974,7 +1016,7 @@ argument_list|,
 name|movedPath
 argument_list|)
 expr_stmt|;
-name|adminSession
+name|importSession
 operator|.
 name|save
 argument_list|()
@@ -1018,7 +1060,8 @@ expr_stmt|;
 name|Authorizable
 name|newUser
 init|=
-name|userMgr
+name|getUserManager
+argument_list|()
 operator|.
 name|getAuthorizable
 argument_list|(
@@ -1041,7 +1084,7 @@ expr_stmt|;
 name|Node
 name|n
 init|=
-name|adminSession
+name|importSession
 operator|.
 name|getNode
 argument_list|(
@@ -1091,7 +1134,7 @@ comment|// correct ID as hashed in the jcr:uuid, the CommitHook will detect
 comment|// the mismatch, which for the diff looks like a modified ID.
 try|try
 block|{
-name|adminSession
+name|importSession
 operator|.
 name|save
 argument_list|()
@@ -1138,7 +1181,8 @@ comment|// create authorizable
 name|User
 name|u
 init|=
-name|userMgr
+name|getUserManager
+argument_list|()
 operator|.
 name|createUser
 argument_list|(
@@ -1163,7 +1207,7 @@ operator|.
 name|getPath
 argument_list|()
 decl_stmt|;
-name|adminSession
+name|importSession
 operator|.
 name|save
 argument_list|()
@@ -1207,7 +1251,8 @@ expr_stmt|;
 name|Authorizable
 name|newUser
 init|=
-name|userMgr
+name|getUserManager
+argument_list|()
 operator|.
 name|getAuthorizable
 argument_list|(
@@ -1246,7 +1291,7 @@ expr_stmt|;
 name|Node
 name|n
 init|=
-name|adminSession
+name|importSession
 operator|.
 name|getNode
 argument_list|(
@@ -1295,7 +1340,7 @@ comment|// modified node name in combination with the fact that in JR 2.x
 comment|// the node name MUST contain the id as there is no rep:authorizableId.
 try|try
 block|{
-name|adminSession
+name|importSession
 operator|.
 name|save
 argument_list|()
@@ -1342,7 +1387,8 @@ comment|// create authorizable
 name|User
 name|u
 init|=
-name|userMgr
+name|getUserManager
+argument_list|()
 operator|.
 name|createUser
 argument_list|(
@@ -1383,7 +1429,7 @@ literal|'/'
 operator|+
 name|randomNodeName
 decl_stmt|;
-name|adminSession
+name|importSession
 operator|.
 name|move
 argument_list|(
@@ -1392,7 +1438,7 @@ argument_list|,
 name|movedPath
 argument_list|)
 expr_stmt|;
-name|adminSession
+name|importSession
 operator|.
 name|save
 argument_list|()
@@ -1436,7 +1482,8 @@ expr_stmt|;
 name|Authorizable
 name|newUser
 init|=
-name|userMgr
+name|getUserManager
+argument_list|()
 operator|.
 name|getAuthorizable
 argument_list|(
@@ -1464,7 +1511,7 @@ expr_stmt|;
 name|Node
 name|n
 init|=
-name|adminSession
+name|importSession
 operator|.
 name|getNode
 argument_list|(
@@ -1522,7 +1569,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// saving changes of the import must succeed.
-name|adminSession
+name|importSession
 operator|.
 name|save
 argument_list|()
@@ -1542,7 +1589,8 @@ comment|// create authorizable
 name|User
 name|u
 init|=
-name|userMgr
+name|getUserManager
+argument_list|()
 operator|.
 name|createUser
 argument_list|(
@@ -1583,7 +1631,7 @@ literal|'/'
 operator|+
 name|randomNodeName
 decl_stmt|;
-name|adminSession
+name|importSession
 operator|.
 name|move
 argument_list|(
@@ -1592,7 +1640,7 @@ argument_list|,
 name|movedPath
 argument_list|)
 expr_stmt|;
-name|adminSession
+name|importSession
 operator|.
 name|save
 argument_list|()
@@ -1636,7 +1684,8 @@ expr_stmt|;
 name|Authorizable
 name|newUser
 init|=
-name|userMgr
+name|getUserManager
+argument_list|()
 operator|.
 name|getAuthorizable
 argument_list|(
@@ -1664,7 +1713,7 @@ expr_stmt|;
 name|Node
 name|n
 init|=
-name|adminSession
+name|importSession
 operator|.
 name|getNode
 argument_list|(
@@ -1712,7 +1761,7 @@ comment|// removed and the JR 2.x the node name doesn't contain the correct id,
 comment|// which is detected during save as it looks like the id had been modified.
 try|try
 block|{
-name|adminSession
+name|importSession
 operator|.
 name|save
 argument_list|()
@@ -1759,7 +1808,8 @@ comment|// create authorizable
 name|User
 name|u
 init|=
-name|userMgr
+name|getUserManager
+argument_list|()
 operator|.
 name|createUser
 argument_list|(
@@ -1784,7 +1834,7 @@ operator|.
 name|getPath
 argument_list|()
 decl_stmt|;
-name|adminSession
+name|importSession
 operator|.
 name|save
 argument_list|()
@@ -1828,7 +1878,8 @@ expr_stmt|;
 name|Authorizable
 name|newUser
 init|=
-name|userMgr
+name|getUserManager
+argument_list|()
 operator|.
 name|getAuthorizable
 argument_list|(
@@ -1887,7 +1938,7 @@ expr_stmt|;
 name|Node
 name|n
 init|=
-name|adminSession
+name|importSession
 operator|.
 name|getNode
 argument_list|(
@@ -1935,7 +1986,7 @@ comment|// has been modified (it no longer represents the correct ID due to the
 comment|// fact that in JR 2.x the node name MUST contain the id.
 try|try
 block|{
-name|adminSession
+name|importSession
 operator|.
 name|save
 argument_list|()

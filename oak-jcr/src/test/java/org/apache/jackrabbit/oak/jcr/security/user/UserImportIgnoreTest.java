@@ -343,7 +343,8 @@ comment|// for the invalid principal name
 name|Authorizable
 name|a
 init|=
-name|userMgr
+name|getUserManager
+argument_list|()
 operator|.
 name|getAuthorizable
 argument_list|(
@@ -449,7 +450,8 @@ block|}
 block|}
 finally|finally
 block|{
-name|adminSession
+name|getImportSession
+argument_list|()
 operator|.
 name|refresh
 argument_list|(

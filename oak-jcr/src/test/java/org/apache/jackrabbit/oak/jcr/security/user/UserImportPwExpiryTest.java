@@ -63,6 +63,16 @@ end_import
 
 begin_import
 import|import
+name|javax
+operator|.
+name|jcr
+operator|.
+name|Session
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -353,7 +363,8 @@ expr_stmt|;
 name|Authorizable
 name|authorizable
 init|=
-name|userMgr
+name|getUserManager
+argument_list|()
 operator|.
 name|getAuthorizable
 argument_list|(
@@ -363,7 +374,8 @@ decl_stmt|;
 name|Node
 name|userNode
 init|=
-name|adminSession
+name|getImportSession
+argument_list|()
 operator|.
 name|getNode
 argument_list|(
@@ -494,7 +506,8 @@ comment|// verify that the pwd node has still been created
 name|Authorizable
 name|authorizable
 init|=
-name|userMgr
+name|getUserManager
+argument_list|()
 operator|.
 name|getAuthorizable
 argument_list|(
@@ -504,7 +517,8 @@ decl_stmt|;
 name|Node
 name|userNode
 init|=
-name|adminSession
+name|getImportSession
+argument_list|()
 operator|.
 name|getNode
 argument_list|(
@@ -674,7 +688,8 @@ expr_stmt|;
 name|Authorizable
 name|authorizable
 init|=
-name|userMgr
+name|getUserManager
+argument_list|()
 operator|.
 name|getAuthorizable
 argument_list|(
@@ -684,7 +699,8 @@ decl_stmt|;
 name|Node
 name|userNode
 init|=
-name|adminSession
+name|getImportSession
+argument_list|()
 operator|.
 name|getNode
 argument_list|(
@@ -807,7 +823,8 @@ decl_stmt|;
 name|User
 name|user
 init|=
-name|userMgr
+name|getUserManager
+argument_list|()
 operator|.
 name|createUser
 argument_list|(
@@ -815,6 +832,12 @@ name|uid
 argument_list|,
 name|uid
 argument_list|)
+decl_stmt|;
+name|Session
+name|s
+init|=
+name|getImportSession
+argument_list|()
 decl_stmt|;
 comment|// change password to force existence of password last modified property
 name|user
@@ -824,7 +847,7 @@ argument_list|(
 name|uid
 argument_list|)
 expr_stmt|;
-name|adminSession
+name|s
 operator|.
 name|save
 argument_list|()
@@ -832,7 +855,7 @@ expr_stmt|;
 name|Node
 name|userNode
 init|=
-name|adminSession
+name|s
 operator|.
 name|getNode
 argument_list|(
@@ -928,7 +951,8 @@ expr_stmt|;
 name|Authorizable
 name|authorizable
 init|=
-name|userMgr
+name|getUserManager
+argument_list|()
 operator|.
 name|getAuthorizable
 argument_list|(
@@ -937,7 +961,7 @@ argument_list|)
 decl_stmt|;
 name|userNode
 operator|=
-name|adminSession
+name|s
 operator|.
 name|getNode
 argument_list|(

@@ -295,7 +295,8 @@ argument_list|)
 expr_stmt|;
 comment|// saving changes of the import -> must succeed. add mandatory
 comment|// props should have been created.
-name|adminSession
+name|getImportSession
+argument_list|()
 operator|.
 name|save
 argument_list|()
@@ -336,7 +337,8 @@ argument_list|,
 name|xml
 argument_list|)
 expr_stmt|;
-name|adminSession
+name|getImportSession
+argument_list|()
 operator|.
 name|save
 argument_list|()
@@ -356,7 +358,8 @@ argument_list|)
 expr_stmt|;
 comment|// saving changes of the import -> must succeed. add mandatory
 comment|// props should have been created.
-name|adminSession
+name|getImportSession
+argument_list|()
 operator|.
 name|save
 argument_list|()
@@ -478,7 +481,8 @@ expr_stmt|;
 name|Authorizable
 name|newUser
 init|=
-name|userMgr
+name|getUserManager
+argument_list|()
 operator|.
 name|getAuthorizable
 argument_list|(
@@ -493,7 +497,8 @@ expr_stmt|;
 name|Authorizable
 name|u2
 init|=
-name|userMgr
+name|getUserManager
+argument_list|()
 operator|.
 name|getAuthorizable
 argument_list|(
@@ -598,7 +603,8 @@ expr_stmt|;
 name|Authorizable
 name|a
 init|=
-name|userMgr
+name|getUserManager
+argument_list|()
 operator|.
 name|getAuthorizable
 argument_list|(

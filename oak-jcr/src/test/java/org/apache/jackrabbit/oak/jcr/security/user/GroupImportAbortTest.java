@@ -241,7 +241,8 @@ comment|// success as well
 block|}
 finally|finally
 block|{
-name|adminSession
+name|getImportSession
+argument_list|()
 operator|.
 name|refresh
 argument_list|(

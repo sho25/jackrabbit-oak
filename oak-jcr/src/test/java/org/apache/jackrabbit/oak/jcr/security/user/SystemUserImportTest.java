@@ -97,6 +97,16 @@ name|javax
 operator|.
 name|jcr
 operator|.
+name|Session
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|jcr
+operator|.
 name|nodetype
 operator|.
 name|ConstraintViolationException
@@ -502,6 +512,12 @@ argument_list|,
 name|xml
 argument_list|)
 expr_stmt|;
+name|Session
+name|s
+init|=
+name|getImportSession
+argument_list|()
+decl_stmt|;
 name|assertTrue
 argument_list|(
 name|target
@@ -512,7 +528,7 @@ argument_list|)
 expr_stmt|;
 name|assertTrue
 argument_list|(
-name|adminSession
+name|s
 operator|.
 name|hasPendingChanges
 argument_list|()
@@ -521,7 +537,8 @@ expr_stmt|;
 name|Authorizable
 name|newUser
 init|=
-name|userMgr
+name|getUserManager
+argument_list|()
 operator|.
 name|getAuthorizable
 argument_list|(
@@ -608,7 +625,7 @@ expr_stmt|;
 name|Node
 name|n
 init|=
-name|adminSession
+name|s
 operator|.
 name|getNode
 argument_list|(
@@ -696,7 +713,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// saving changes of the import -> must succeed. all mandatory props should have been created.
-name|adminSession
+name|s
 operator|.
 name|save
 argument_list|()
@@ -728,10 +745,16 @@ operator|+
 literal|"</sv:node>"
 decl_stmt|;
 comment|/*          importing a system user below the regular users-path:          - saving changes must fail with ConstraintViolationEx.          */
+name|Session
+name|s
+init|=
+name|getImportSession
+argument_list|()
+decl_stmt|;
 name|Node
 name|target
 init|=
-name|adminSession
+name|s
 operator|.
 name|getNode
 argument_list|(
@@ -755,7 +778,7 @@ argument_list|)
 expr_stmt|;
 name|assertTrue
 argument_list|(
-name|adminSession
+name|s
 operator|.
 name|hasPendingChanges
 argument_list|()
@@ -764,7 +787,8 @@ expr_stmt|;
 name|Authorizable
 name|user
 init|=
-name|userMgr
+name|getUserManager
+argument_list|()
 operator|.
 name|getAuthorizable
 argument_list|(
@@ -799,7 +823,7 @@ expr_stmt|;
 comment|// saving changes of the import -> must fail
 try|try
 block|{
-name|adminSession
+name|s
 operator|.
 name|save
 argument_list|()
@@ -820,7 +844,7 @@ comment|// success
 block|}
 finally|finally
 block|{
-name|adminSession
+name|s
 operator|.
 name|refresh
 argument_list|(
@@ -914,7 +938,8 @@ argument_list|)
 expr_stmt|;
 name|assertTrue
 argument_list|(
-name|adminSession
+name|getImportSession
+argument_list|()
 operator|.
 name|hasPendingChanges
 argument_list|()
@@ -956,7 +981,8 @@ comment|// authorizable
 name|Authorizable
 name|newUser
 init|=
-name|userMgr
+name|getUserManager
+argument_list|()
 operator|.
 name|getAuthorizable
 argument_list|(
@@ -983,6 +1009,12 @@ name|existing
 init|=
 literal|null
 decl_stmt|;
+name|Session
+name|s
+init|=
+name|getImportSession
+argument_list|()
+decl_stmt|;
 name|PrincipalIterator
 name|principalIterator
 init|=
@@ -990,7 +1022,7 @@ operator|(
 operator|(
 name|JackrabbitSession
 operator|)
-name|adminSession
+name|s
 operator|)
 operator|.
 name|getPrincipalManager
@@ -1021,7 +1053,8 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
-name|userMgr
+name|getUserManager
+argument_list|()
 operator|.
 name|getAuthorizable
 argument_list|(
@@ -1083,7 +1116,7 @@ argument_list|,
 name|xml
 argument_list|)
 expr_stmt|;
-name|adminSession
+name|s
 operator|.
 name|save
 argument_list|()
@@ -1158,7 +1191,8 @@ expr_stmt|;
 name|Authorizable
 name|user
 init|=
-name|userMgr
+name|getUserManager
+argument_list|()
 operator|.
 name|getAuthorizable
 argument_list|(
@@ -1191,7 +1225,8 @@ name|isSystemUser
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|adminSession
+name|getImportSession
+argument_list|()
 operator|.
 name|save
 argument_list|()
@@ -1249,7 +1284,8 @@ argument_list|)
 expr_stmt|;
 name|assertTrue
 argument_list|(
-name|adminSession
+name|getImportSession
+argument_list|()
 operator|.
 name|hasPendingChanges
 argument_list|()
@@ -1258,7 +1294,8 @@ expr_stmt|;
 name|Authorizable
 name|newUser
 init|=
-name|userMgr
+name|getUserManager
+argument_list|()
 operator|.
 name|getAuthorizable
 argument_list|(
@@ -1361,6 +1398,12 @@ operator|+
 literal|"</sv:node>"
 argument_list|)
 expr_stmt|;
+name|Session
+name|s
+init|=
+name|getImportSession
+argument_list|()
+decl_stmt|;
 for|for
 control|(
 name|String
@@ -1372,7 +1415,7 @@ block|{
 name|Node
 name|target
 init|=
-name|adminSession
+name|s
 operator|.
 name|getNode
 argument_list|(
@@ -1393,7 +1436,7 @@ expr_stmt|;
 comment|// saving changes of the import -> must fail as mandatory prop is missing
 try|try
 block|{
-name|adminSession
+name|s
 operator|.
 name|save
 argument_list|()
@@ -1415,7 +1458,7 @@ block|}
 block|}
 finally|finally
 block|{
-name|adminSession
+name|s
 operator|.
 name|refresh
 argument_list|(
@@ -1442,7 +1485,7 @@ operator|.
 name|remove
 argument_list|()
 expr_stmt|;
-name|adminSession
+name|s
 operator|.
 name|save
 argument_list|()
@@ -1487,7 +1530,8 @@ expr_stmt|;
 name|Authorizable
 name|user
 init|=
-name|userMgr
+name|getUserManager
+argument_list|()
 operator|.
 name|getAuthorizable
 argument_list|(
@@ -1509,7 +1553,8 @@ argument_list|)
 expr_stmt|;
 name|assertFalse
 argument_list|(
-name|adminSession
+name|getImportSession
+argument_list|()
 operator|.
 name|propertyExists
 argument_list|(
@@ -1597,7 +1642,8 @@ argument_list|)
 expr_stmt|;
 name|assertTrue
 argument_list|(
-name|adminSession
+name|getImportSession
+argument_list|()
 operator|.
 name|hasPendingChanges
 argument_list|()
@@ -1606,7 +1652,8 @@ expr_stmt|;
 name|Authorizable
 name|newUser
 init|=
-name|userMgr
+name|getUserManager
+argument_list|()
 operator|.
 name|getAuthorizable
 argument_list|(
@@ -1652,7 +1699,8 @@ expr_stmt|;
 name|Node
 name|n
 init|=
-name|adminSession
+name|getImportSession
+argument_list|()
 operator|.
 name|getNode
 argument_list|(
@@ -1785,7 +1833,8 @@ expr_stmt|;
 name|Authorizable
 name|newUser
 init|=
-name|userMgr
+name|getUserManager
+argument_list|()
 operator|.
 name|getAuthorizable
 argument_list|(
@@ -1800,7 +1849,8 @@ expr_stmt|;
 name|Authorizable
 name|u2
 init|=
-name|userMgr
+name|getUserManager
+argument_list|()
 operator|.
 name|getAuthorizable
 argument_list|(
@@ -1903,7 +1953,8 @@ argument_list|)
 expr_stmt|;
 comment|// saving changes of the import -> must succeed. add mandatory
 comment|// props should have been created.
-name|adminSession
+name|getImportSession
+argument_list|()
 operator|.
 name|save
 argument_list|()
@@ -1942,7 +1993,8 @@ argument_list|,
 name|xml
 argument_list|)
 expr_stmt|;
-name|adminSession
+name|getImportSession
+argument_list|()
 operator|.
 name|save
 argument_list|()
@@ -1962,7 +2014,8 @@ argument_list|)
 expr_stmt|;
 comment|// saving changes of the import -> must succeed. add mandatory
 comment|// props should have been created.
-name|adminSession
+name|getImportSession
+argument_list|()
 operator|.
 name|save
 argument_list|()
@@ -2064,10 +2117,17 @@ argument_list|,
 name|xml
 argument_list|)
 expr_stmt|;
+name|Session
+name|s
+init|=
+name|getImportSession
+argument_list|()
+decl_stmt|;
 name|Authorizable
 name|newUser
 init|=
-name|userMgr
+name|getUserManager
+argument_list|()
 operator|.
 name|getAuthorizable
 argument_list|(
@@ -2099,7 +2159,7 @@ argument_list|)
 expr_stmt|;
 name|assertTrue
 argument_list|(
-name|adminSession
+name|s
 operator|.
 name|propertyExists
 argument_list|(
@@ -2116,7 +2176,7 @@ name|assertEquals
 argument_list|(
 literal|"t"
 argument_list|,
-name|adminSession
+name|s
 operator|.
 name|getProperty
 argument_list|(
@@ -2132,7 +2192,7 @@ name|getString
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|adminSession
+name|s
 operator|.
 name|save
 argument_list|()
@@ -2175,10 +2235,17 @@ argument_list|,
 name|xml
 argument_list|)
 expr_stmt|;
+name|Session
+name|s
+init|=
+name|getImportSession
+argument_list|()
+decl_stmt|;
 name|Authorizable
 name|newUser
 init|=
-name|userMgr
+name|getUserManager
+argument_list|()
 operator|.
 name|getAuthorizable
 argument_list|(
@@ -2210,7 +2277,7 @@ argument_list|)
 expr_stmt|;
 name|assertTrue
 argument_list|(
-name|adminSession
+name|s
 operator|.
 name|propertyExists
 argument_list|(
@@ -2227,7 +2294,7 @@ name|assertEquals
 argument_list|(
 literal|"t"
 argument_list|,
-name|adminSession
+name|s
 operator|.
 name|getProperty
 argument_list|(
@@ -2243,7 +2310,7 @@ name|getString
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|adminSession
+name|s
 operator|.
 name|save
 argument_list|()
@@ -2287,12 +2354,19 @@ expr_stmt|;
 name|Authorizable
 name|newUser
 init|=
-name|userMgr
+name|getUserManager
+argument_list|()
 operator|.
 name|getAuthorizable
 argument_list|(
 literal|"t"
 argument_list|)
+decl_stmt|;
+name|Session
+name|s
+init|=
+name|getImportSession
+argument_list|()
 decl_stmt|;
 name|assertNotNull
 argument_list|(
@@ -2319,7 +2393,7 @@ argument_list|)
 expr_stmt|;
 name|assertTrue
 argument_list|(
-name|adminSession
+name|s
 operator|.
 name|propertyExists
 argument_list|(
@@ -2336,7 +2410,7 @@ name|assertEquals
 argument_list|(
 literal|"t"
 argument_list|,
-name|adminSession
+name|s
 operator|.
 name|getProperty
 argument_list|(
@@ -2352,7 +2426,7 @@ name|getString
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|adminSession
+name|s
 operator|.
 name|save
 argument_list|()

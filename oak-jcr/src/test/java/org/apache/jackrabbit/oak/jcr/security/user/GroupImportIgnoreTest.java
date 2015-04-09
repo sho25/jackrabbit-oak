@@ -218,7 +218,8 @@ comment|// no exception during import -> member must have been ignored though.
 name|Authorizable
 name|a
 init|=
-name|userMgr
+name|getUserManager
+argument_list|()
 operator|.
 name|getAuthorizable
 argument_list|(
@@ -242,7 +243,8 @@ name|a
 argument_list|,
 name|invalidId
 argument_list|,
-name|adminSession
+name|getImportSession
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -348,7 +350,8 @@ expr_stmt|;
 name|Authorizable
 name|a
 init|=
-name|userMgr
+name|getUserManager
+argument_list|()
 operator|.
 name|getAuthorizable
 argument_list|(
@@ -372,7 +375,8 @@ name|a
 argument_list|,
 name|id
 argument_list|,
-name|adminSession
+name|getImportSession
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -387,7 +391,8 @@ block|}
 block|}
 finally|finally
 block|{
-name|adminSession
+name|getImportSession
+argument_list|()
 operator|.
 name|refresh
 argument_list|(
