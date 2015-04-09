@@ -1595,6 +1595,14 @@ name|cacheDiff
 expr_stmt|;
 break|break;
 case|case
+name|CONSOLIDATED_DIFF
+case|:
+name|wrap
+operator|=
+name|cacheDiff
+expr_stmt|;
+break|break;
+case|case
 name|DOC_CHILDREN
 case|:
 name|wrap
