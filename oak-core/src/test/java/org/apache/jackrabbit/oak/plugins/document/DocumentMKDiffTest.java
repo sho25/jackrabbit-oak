@@ -112,7 +112,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Tests for MicroKernel#diff  */
+comment|/**  * Tests for NodeStore#diff  */
 end_comment
 
 begin_class

@@ -23,22 +23,6 @@ begin_import
 import|import
 name|org
 operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|mk
-operator|.
-name|api
-operator|.
-name|MicroKernelException
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
 name|junit
 operator|.
 name|Ignore
@@ -80,7 +64,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Tests DocumentMKs implementation of MicroKernel.reset(String, String).  */
+comment|/**  * Tests DocumentMKs implementation of NodeStore.reset(String, String).  */
 end_comment
 
 begin_class
@@ -180,13 +164,13 @@ argument_list|)
 expr_stmt|;
 name|fail
 argument_list|(
-literal|"MicroKernelException expected"
+literal|"DocumentStoreException expected"
 argument_list|)
 expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|MicroKernelException
+name|DocumentStoreException
 name|expected
 parameter_list|)
 block|{}
@@ -245,13 +229,13 @@ argument_list|)
 expr_stmt|;
 name|fail
 argument_list|(
-literal|"MicroKernelException expected"
+literal|"DocumentStoreException expected"
 argument_list|)
 expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|MicroKernelException
+name|DocumentStoreException
 name|expected
 parameter_list|)
 block|{}
@@ -381,7 +365,7 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|MicroKernelException
+name|DocumentStoreException
 name|e
 parameter_list|)
 block|{
@@ -496,7 +480,7 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|MicroKernelException
+name|DocumentStoreException
 name|e
 parameter_list|)
 block|{
@@ -625,7 +609,7 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|MicroKernelException
+name|DocumentStoreException
 name|e
 parameter_list|)
 block|{

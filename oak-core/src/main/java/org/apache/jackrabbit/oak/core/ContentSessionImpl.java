@@ -268,7 +268,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * {@code MicroKernel}-based implementation of the {@link ContentSession} interface.  */
+comment|/**  * {@code NodeStore}-based implementation of the {@link ContentSession} interface.  */
 end_comment
 
 begin_class

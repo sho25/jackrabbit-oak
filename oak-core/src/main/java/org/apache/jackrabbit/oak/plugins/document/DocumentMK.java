@@ -159,38 +159,6 @@ name|apache
 operator|.
 name|jackrabbit
 operator|.
-name|mk
-operator|.
-name|api
-operator|.
-name|MicroKernel
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|mk
-operator|.
-name|api
-operator|.
-name|MicroKernelException
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
 name|oak
 operator|.
 name|api
@@ -664,15 +632,13 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A MicroKernel implementation that stores the data in a {@link DocumentStore}.  */
+comment|/**  * A JSON-based wrapper around the NodeStore implementation that stores the  * data in a {@link DocumentStore}. It is used for testing purpose only.  */
 end_comment
 
 begin_class
 specifier|public
 class|class
 name|DocumentMK
-implements|implements
-name|MicroKernel
 block|{
 specifier|static
 specifier|final
@@ -882,14 +848,12 @@ name|getPendingWriteCount
 argument_list|()
 return|;
 block|}
-annotation|@
-name|Override
 specifier|public
 name|String
 name|getHeadRevision
 parameter_list|()
 throws|throws
-name|MicroKernelException
+name|DocumentStoreException
 block|{
 return|return
 name|nodeStore
@@ -901,10 +865,6 @@ name|toString
 argument_list|()
 return|;
 block|}
-annotation|@
-name|Override
-annotation|@
-name|Nonnull
 specifier|public
 name|String
 name|checkpoint
@@ -913,7 +873,7 @@ name|long
 name|lifetime
 parameter_list|)
 throws|throws
-name|MicroKernelException
+name|DocumentStoreException
 block|{
 try|try
 block|{
@@ -934,15 +894,13 @@ parameter_list|)
 block|{
 throw|throw
 operator|new
-name|MicroKernelException
+name|DocumentStoreException
 argument_list|(
 name|e
 argument_list|)
 throw|;
 block|}
 block|}
-annotation|@
-name|Override
 specifier|public
 name|String
 name|getRevisionHistory
@@ -957,19 +915,17 @@ name|String
 name|path
 parameter_list|)
 throws|throws
-name|MicroKernelException
+name|DocumentStoreException
 block|{
 comment|// not currently called by oak-core
 throw|throw
 operator|new
-name|MicroKernelException
+name|DocumentStoreException
 argument_list|(
 literal|"Not implemented"
 argument_list|)
 throw|;
 block|}
-annotation|@
-name|Override
 specifier|public
 name|String
 name|waitForCommit
@@ -981,21 +937,19 @@ name|long
 name|timeout
 parameter_list|)
 throws|throws
-name|MicroKernelException
+name|DocumentStoreException
 throws|,
 name|InterruptedException
 block|{
 comment|// not currently called by oak-core
 throw|throw
 operator|new
-name|MicroKernelException
+name|DocumentStoreException
 argument_list|(
 literal|"Not implemented"
 argument_list|)
 throw|;
 block|}
-annotation|@
-name|Override
 specifier|public
 name|String
 name|getJournal
@@ -1010,19 +964,17 @@ name|String
 name|path
 parameter_list|)
 throws|throws
-name|MicroKernelException
+name|DocumentStoreException
 block|{
 comment|// not currently called by oak-core
 throw|throw
 operator|new
-name|MicroKernelException
+name|DocumentStoreException
 argument_list|(
 literal|"Not implemented"
 argument_list|)
 throw|;
 block|}
-annotation|@
-name|Override
 specifier|public
 name|String
 name|diff
@@ -1040,7 +992,7 @@ name|int
 name|depth
 parameter_list|)
 throws|throws
-name|MicroKernelException
+name|DocumentStoreException
 block|{
 if|if
 condition|(
@@ -1051,7 +1003,7 @@ condition|)
 block|{
 throw|throw
 operator|new
-name|MicroKernelException
+name|DocumentStoreException
 argument_list|(
 literal|"Only depth 0 is supported, depth is "
 operator|+
@@ -1101,15 +1053,13 @@ parameter_list|)
 block|{
 throw|throw
 operator|new
-name|MicroKernelException
+name|DocumentStoreException
 argument_list|(
 name|e
 argument_list|)
 throw|;
 block|}
 block|}
-annotation|@
-name|Override
 specifier|public
 name|boolean
 name|nodeExists
@@ -1121,7 +1071,7 @@ name|String
 name|revisionId
 parameter_list|)
 throws|throws
-name|MicroKernelException
+name|DocumentStoreException
 block|{
 if|if
 condition|(
@@ -1136,7 +1086,7 @@ condition|)
 block|{
 throw|throw
 operator|new
-name|MicroKernelException
+name|DocumentStoreException
 argument_list|(
 literal|"Path is not absolute: "
 operator|+
@@ -1195,7 +1145,7 @@ parameter_list|)
 block|{
 throw|throw
 operator|new
-name|MicroKernelException
+name|DocumentStoreException
 argument_list|(
 name|e
 argument_list|)
@@ -1207,8 +1157,6 @@ operator|!=
 literal|null
 return|;
 block|}
-annotation|@
-name|Override
 specifier|public
 name|long
 name|getChildNodeCount
@@ -1220,19 +1168,17 @@ name|String
 name|revisionId
 parameter_list|)
 throws|throws
-name|MicroKernelException
+name|DocumentStoreException
 block|{
 comment|// not currently called by oak-core
 throw|throw
 operator|new
-name|MicroKernelException
+name|DocumentStoreException
 argument_list|(
 literal|"Not implemented"
 argument_list|)
 throw|;
 block|}
-annotation|@
-name|Override
 specifier|public
 name|String
 name|getNodes
@@ -1256,7 +1202,7 @@ name|String
 name|filter
 parameter_list|)
 throws|throws
-name|MicroKernelException
+name|DocumentStoreException
 block|{
 if|if
 condition|(
@@ -1267,7 +1213,7 @@ condition|)
 block|{
 throw|throw
 operator|new
-name|MicroKernelException
+name|DocumentStoreException
 argument_list|(
 literal|"Only depth 0 is supported, depth is "
 operator|+
@@ -1566,15 +1512,13 @@ parameter_list|)
 block|{
 throw|throw
 operator|new
-name|MicroKernelException
+name|DocumentStoreException
 argument_list|(
 name|e
 argument_list|)
 throw|;
 block|}
 block|}
-annotation|@
-name|Override
 specifier|public
 name|String
 name|commit
@@ -1592,7 +1536,7 @@ name|String
 name|message
 parameter_list|)
 throws|throws
-name|MicroKernelException
+name|DocumentStoreException
 block|{
 name|boolean
 name|success
@@ -1680,7 +1624,7 @@ parameter_list|)
 block|{
 throw|throw
 operator|new
-name|MicroKernelException
+name|DocumentStoreException
 argument_list|(
 name|e
 argument_list|)
@@ -1724,8 +1668,6 @@ name|toString
 argument_list|()
 return|;
 block|}
-annotation|@
-name|Override
 specifier|public
 name|String
 name|branch
@@ -1736,7 +1678,7 @@ name|String
 name|trunkRevisionId
 parameter_list|)
 throws|throws
-name|MicroKernelException
+name|DocumentStoreException
 block|{
 comment|// nothing is written when the branch is created, the returned
 comment|// revision simply acts as a reference to the branch base revision
@@ -1769,8 +1711,6 @@ name|toString
 argument_list|()
 return|;
 block|}
-annotation|@
-name|Override
 specifier|public
 name|String
 name|merge
@@ -1782,7 +1722,7 @@ name|String
 name|message
 parameter_list|)
 throws|throws
-name|MicroKernelException
+name|DocumentStoreException
 block|{
 comment|// TODO improve implementation if needed
 name|Revision
@@ -1806,7 +1746,7 @@ condition|)
 block|{
 throw|throw
 operator|new
-name|MicroKernelException
+name|DocumentStoreException
 argument_list|(
 literal|"Not a branch: "
 operator|+
@@ -1838,7 +1778,7 @@ parameter_list|)
 block|{
 throw|throw
 operator|new
-name|MicroKernelException
+name|DocumentStoreException
 argument_list|(
 name|e
 argument_list|)
@@ -1852,15 +1792,13 @@ parameter_list|)
 block|{
 throw|throw
 operator|new
-name|MicroKernelException
+name|DocumentStoreException
 argument_list|(
 name|e
 argument_list|)
 throw|;
 block|}
 block|}
-annotation|@
-name|Override
 annotation|@
 name|Nonnull
 specifier|public
@@ -1878,7 +1816,7 @@ name|String
 name|newBaseRevisionId
 parameter_list|)
 throws|throws
-name|MicroKernelException
+name|DocumentStoreException
 block|{
 name|Revision
 name|r
@@ -1925,8 +1863,6 @@ return|;
 block|}
 annotation|@
 name|Nonnull
-annotation|@
-name|Override
 specifier|public
 name|String
 name|reset
@@ -1942,7 +1878,7 @@ name|String
 name|ancestorRevisionId
 parameter_list|)
 throws|throws
-name|MicroKernelException
+name|DocumentStoreException
 block|{
 name|Revision
 name|branch
@@ -1965,7 +1901,7 @@ condition|)
 block|{
 throw|throw
 operator|new
-name|MicroKernelException
+name|DocumentStoreException
 argument_list|(
 literal|"Not a branch revision: "
 operator|+
@@ -1994,7 +1930,7 @@ condition|)
 block|{
 throw|throw
 operator|new
-name|MicroKernelException
+name|DocumentStoreException
 argument_list|(
 literal|"Not a branch revision: "
 operator|+
@@ -2028,15 +1964,13 @@ parameter_list|)
 block|{
 throw|throw
 operator|new
-name|MicroKernelException
+name|DocumentStoreException
 argument_list|(
 name|e
 argument_list|)
 throw|;
 block|}
 block|}
-annotation|@
-name|Override
 specifier|public
 name|long
 name|getLength
@@ -2045,7 +1979,7 @@ name|String
 name|blobId
 parameter_list|)
 throws|throws
-name|MicroKernelException
+name|DocumentStoreException
 block|{
 try|try
 block|{
@@ -2069,15 +2003,13 @@ parameter_list|)
 block|{
 throw|throw
 operator|new
-name|MicroKernelException
+name|DocumentStoreException
 argument_list|(
 name|e
 argument_list|)
 throw|;
 block|}
 block|}
-annotation|@
-name|Override
 specifier|public
 name|int
 name|read
@@ -2099,7 +2031,7 @@ name|int
 name|length
 parameter_list|)
 throws|throws
-name|MicroKernelException
+name|DocumentStoreException
 block|{
 try|try
 block|{
@@ -2142,15 +2074,13 @@ parameter_list|)
 block|{
 throw|throw
 operator|new
-name|MicroKernelException
+name|DocumentStoreException
 argument_list|(
 name|e
 argument_list|)
 throw|;
 block|}
 block|}
-annotation|@
-name|Override
 specifier|public
 name|String
 name|write
@@ -2159,7 +2089,7 @@ name|InputStream
 name|in
 parameter_list|)
 throws|throws
-name|MicroKernelException
+name|DocumentStoreException
 block|{
 try|try
 block|{
@@ -2183,7 +2113,7 @@ parameter_list|)
 block|{
 throw|throw
 operator|new
-name|MicroKernelException
+name|DocumentStoreException
 argument_list|(
 name|e
 argument_list|)
@@ -2344,7 +2274,7 @@ condition|)
 block|{
 throw|throw
 operator|new
-name|MicroKernelException
+name|DocumentStoreException
 argument_list|(
 literal|"Node not found: "
 operator|+
@@ -2532,7 +2462,7 @@ condition|)
 block|{
 throw|throw
 operator|new
-name|MicroKernelException
+name|DocumentStoreException
 argument_list|(
 literal|"Node not found: "
 operator|+
@@ -2557,7 +2487,7 @@ condition|)
 block|{
 throw|throw
 operator|new
-name|MicroKernelException
+name|DocumentStoreException
 argument_list|(
 literal|"Node already exists: "
 operator|+
@@ -2655,7 +2585,7 @@ condition|)
 block|{
 throw|throw
 operator|new
-name|MicroKernelException
+name|DocumentStoreException
 argument_list|(
 literal|"Node not found: "
 operator|+
@@ -2680,7 +2610,7 @@ condition|)
 block|{
 throw|throw
 operator|new
-name|MicroKernelException
+name|DocumentStoreException
 argument_list|(
 literal|"Node already exists: "
 operator|+
@@ -2717,7 +2647,7 @@ block|}
 default|default:
 throw|throw
 operator|new
-name|MicroKernelException
+name|DocumentStoreException
 argument_list|(
 literal|"token: "
 operator|+

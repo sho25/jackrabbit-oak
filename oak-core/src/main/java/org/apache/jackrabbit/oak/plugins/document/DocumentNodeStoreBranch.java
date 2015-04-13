@@ -1711,7 +1711,7 @@ operator|=
 name|base
 expr_stmt|;
 block|}
-comment|/**          * Persist this branch to an underlying branch in the {@code MicroKernel}.          */
+comment|/**          * Persist this branch to an underlying branch in the {@code NodeStore}.          */
 name|Persisted
 name|persist
 parameter_list|()
@@ -2228,7 +2228,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/**      * Instances of this class represent a branch whose head is persisted to an      * underlying branch in the {@code MicroKernel}.      *<p>      * Transitions to:      *<ul>      *<li>{@link ResetFailed} on failed reset in {@link #merge(CommitHook, CommitInfo)}</li>      *<li>{@link Merged} on successful {@link #merge(CommitHook, CommitInfo)}</li>      *</ul>      */
+comment|/**      * Instances of this class represent a branch whose head is persisted to an      * underlying branch in the {@code NodeStore}.      *<p>      * Transitions to:      *<ul>      *<li>{@link ResetFailed} on failed reset in {@link #merge(CommitHook, CommitInfo)}</li>      *<li>{@link Merged} on successful {@link #merge(CommitHook, CommitInfo)}</li>      *</ul>      */
 specifier|private
 class|class
 name|Persisted

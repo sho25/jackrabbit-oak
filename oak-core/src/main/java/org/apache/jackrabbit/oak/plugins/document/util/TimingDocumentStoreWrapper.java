@@ -256,7 +256,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A MicroKernel wrapper that can be used to log and also time MicroKernel  * calls.  */
+comment|/**  * A DocumentStore wrapper that can be used to log and also time DocumentStore  * calls.  */
 end_comment
 
 begin_class

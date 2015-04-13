@@ -20,7 +20,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * This exception is thrown by the Segment MicroKernel when an internal  * limit is exceeded such as too many segment references. Clients should  * only ever see this exception as the cause of a  * {@link org.apache.jackrabbit.oak.api.CommitFailedException CommitFailedException}.  */
+comment|/**  * This exception is thrown by the Segment NodeStore when an internal  * limit is exceeded such as too many segment references. Clients should  * only ever see this exception as the cause of a  * {@link org.apache.jackrabbit.oak.api.CommitFailedException CommitFailedException}.  */
 end_comment
 
 begin_class

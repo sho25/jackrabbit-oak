@@ -1116,7 +1116,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * {@code MicroKernel}-based implementation of  * the {@link ContentRepository} interface.  */
+comment|/**  * {@code NodeStore}-based implementation of  * the {@link ContentRepository} interface.  */
 end_comment
 
 begin_class

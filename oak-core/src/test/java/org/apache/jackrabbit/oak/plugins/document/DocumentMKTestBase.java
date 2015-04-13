@@ -23,22 +23,6 @@ begin_import
 import|import
 name|org
 operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|mk
-operator|.
-name|api
-operator|.
-name|MicroKernel
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
 name|json
 operator|.
 name|simple
@@ -145,8 +129,8 @@ name|DocumentMKTestBase
 block|{
 specifier|protected
 specifier|abstract
-name|MicroKernel
-name|getMicroKernel
+name|DocumentMK
+name|getDocumentMK
 parameter_list|()
 function_decl|;
 specifier|protected
@@ -401,7 +385,7 @@ name|json
 init|=
 name|parseJSONObject
 argument_list|(
-name|getMicroKernel
+name|getDocumentMK
 argument_list|()
 operator|.
 name|getNodes
@@ -448,7 +432,7 @@ block|{
 name|String
 name|nodes
 init|=
-name|getMicroKernel
+name|getDocumentMK
 argument_list|()
 operator|.
 name|getNodes
@@ -504,7 +488,7 @@ block|{
 name|String
 name|nodes
 init|=
-name|getMicroKernel
+name|getDocumentMK
 argument_list|()
 operator|.
 name|getNodes
@@ -572,7 +556,7 @@ block|{
 name|String
 name|nodes
 init|=
-name|getMicroKernel
+name|getDocumentMK
 argument_list|()
 operator|.
 name|getNodes
@@ -922,7 +906,7 @@ block|{
 name|boolean
 name|exists
 init|=
-name|getMicroKernel
+name|getDocumentMK
 argument_list|()
 operator|.
 name|nodeExists
@@ -1112,7 +1096,7 @@ control|)
 block|{
 name|newRev
 operator|=
-name|getMicroKernel
+name|getDocumentMK
 argument_list|()
 operator|.
 name|commit
@@ -1157,7 +1141,7 @@ control|)
 block|{
 name|rev
 operator|=
-name|getMicroKernel
+name|getDocumentMK
 argument_list|()
 operator|.
 name|commit

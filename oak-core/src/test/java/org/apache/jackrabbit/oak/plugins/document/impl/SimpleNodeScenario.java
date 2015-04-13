@@ -29,11 +29,13 @@ name|apache
 operator|.
 name|jackrabbit
 operator|.
-name|mk
+name|oak
 operator|.
-name|api
+name|plugins
 operator|.
-name|MicroKernel
+name|document
+operator|.
+name|DocumentMK
 import|;
 end_import
 
@@ -48,13 +50,13 @@ name|SimpleNodeScenario
 block|{
 specifier|private
 specifier|final
-name|MicroKernel
+name|DocumentMK
 name|mk
 decl_stmt|;
 specifier|public
 name|SimpleNodeScenario
 parameter_list|(
-name|MicroKernel
+name|DocumentMK
 name|mk
 parameter_list|)
 block|{

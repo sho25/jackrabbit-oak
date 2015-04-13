@@ -100,7 +100,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Tests for {@code MicroKernel#rebase}  * FIXME: this is copied from MicroKernelImplTest. Factor out.  */
+comment|/**  * Tests for {@code NodeStore#rebase}  * FIXME: this is copied from MicroKernelImplTest. Factor out.  */
 end_comment
 
 begin_class

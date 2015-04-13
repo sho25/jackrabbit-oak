@@ -53,22 +53,6 @@ begin_import
 import|import
 name|org
 operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|mk
-operator|.
-name|api
-operator|.
-name|MicroKernelException
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
 name|junit
 operator|.
 name|Ignore
@@ -110,7 +94,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Tests for {@code MicroKernel#branch}  */
+comment|/**  * Tests for {@code NodeStore#branch}  */
 end_comment
 
 begin_class
@@ -2516,7 +2500,7 @@ block|}
 block|}
 catch|catch
 parameter_list|(
-name|MicroKernelException
+name|DocumentStoreException
 name|e
 parameter_list|)
 block|{
