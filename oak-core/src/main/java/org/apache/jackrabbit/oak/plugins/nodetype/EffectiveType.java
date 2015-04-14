@@ -529,6 +529,8 @@ name|types
 decl_stmt|;
 name|EffectiveType
 parameter_list|(
+annotation|@
+name|Nonnull
 name|List
 argument_list|<
 name|NodeState
@@ -550,6 +552,8 @@ comment|/**      * Checks whether this effective type contains the named type.  
 name|boolean
 name|isNodeType
 parameter_list|(
+annotation|@
+name|Nonnull
 name|String
 name|name
 parameter_list|)
@@ -601,6 +605,8 @@ block|}
 name|boolean
 name|isMandatoryProperty
 parameter_list|(
+annotation|@
+name|Nonnull
 name|String
 name|name
 parameter_list|)
@@ -633,6 +639,8 @@ block|}
 name|boolean
 name|isMandatoryChildNode
 parameter_list|(
+annotation|@
+name|Nonnull
 name|String
 name|name
 parameter_list|)
@@ -668,6 +676,8 @@ name|CheckForNull
 name|NodeState
 name|getDefinition
 parameter_list|(
+annotation|@
+name|Nonnull
 name|PropertyState
 name|property
 parameter_list|)
@@ -966,9 +976,13 @@ comment|/**      * Finds a matching definition for a child node with the given n
 name|boolean
 name|isValidChildNode
 parameter_list|(
+annotation|@
+name|Nonnull
 name|String
 name|nameWithIndex
 parameter_list|,
+annotation|@
+name|Nonnull
 name|EffectiveType
 name|effective
 parameter_list|)
@@ -1173,6 +1187,8 @@ name|CheckForNull
 name|String
 name|getDefaultType
 parameter_list|(
+annotation|@
+name|Nonnull
 name|String
 name|nameWithIndex
 parameter_list|)
@@ -1290,6 +1306,8 @@ return|return
 literal|null
 return|;
 block|}
+annotation|@
+name|Nonnull
 name|Set
 argument_list|<
 name|String
@@ -1402,6 +1420,8 @@ parameter_list|(
 name|boolean
 name|sns
 parameter_list|,
+annotation|@
+name|Nonnull
 name|NodeState
 name|definition
 parameter_list|)
@@ -1422,9 +1442,13 @@ specifier|private
 name|boolean
 name|nameSetContains
 parameter_list|(
+annotation|@
+name|Nonnull
 name|String
 name|set
 parameter_list|,
+annotation|@
+name|Nonnull
 name|String
 name|name
 parameter_list|)
@@ -1470,6 +1494,8 @@ name|String
 argument_list|>
 name|getNameSet
 parameter_list|(
+annotation|@
+name|Nonnull
 name|String
 name|set
 parameter_list|)
