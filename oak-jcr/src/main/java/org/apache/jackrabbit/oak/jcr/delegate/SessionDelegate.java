@@ -1331,6 +1331,9 @@ name|void
 name|performVoid
 parameter_list|(
 name|SessionOperation
+argument_list|<
+name|Void
+argument_list|>
 name|sessionOperation
 parameter_list|)
 throws|throws
@@ -2479,6 +2482,9 @@ parameter_list|(
 annotation|@
 name|Nonnull
 name|SessionOperation
+argument_list|<
+name|?
+argument_list|>
 name|op
 parameter_list|,
 name|long
@@ -2565,6 +2571,9 @@ parameter_list|(
 annotation|@
 name|Nonnull
 name|SessionOperation
+argument_list|<
+name|?
+argument_list|>
 name|op
 parameter_list|,
 name|long
