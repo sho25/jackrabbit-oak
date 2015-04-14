@@ -31,6 +31,16 @@ name|Executor
 import|;
 end_import
 
+begin_import
+import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|Nonnull
+import|;
+end_import
+
 begin_comment
 comment|/**  * Dynamic {@link Executor} based on the available whiteboard services.  * The {@link #execute(Runnable)} method passes the given command to the  * first available executor service. Alternatively the command is run  * in the calling thread if no executor services are available.  */
 end_comment
@@ -66,6 +76,8 @@ specifier|public
 name|void
 name|execute
 parameter_list|(
+annotation|@
+name|Nonnull
 name|Runnable
 name|command
 parameter_list|)
