@@ -833,7 +833,6 @@ name|Principal
 argument_list|>
 argument_list|()
 decl_stmt|;
-empty_stmt|;
 name|UserImporter
 parameter_list|(
 name|ConfigurationParameters
