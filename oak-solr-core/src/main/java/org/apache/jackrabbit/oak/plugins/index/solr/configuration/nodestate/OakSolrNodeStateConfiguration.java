@@ -864,14 +864,9 @@ else|else
 block|{
 name|ignoredProperties
 operator|=
-name|Arrays
-operator|.
-name|asList
-argument_list|(
 name|SolrServerConfigurationDefaults
 operator|.
 name|IGNORED_PROPERTIES
-argument_list|)
 expr_stmt|;
 block|}
 return|return

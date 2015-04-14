@@ -127,14 +127,9 @@ name|String
 argument_list|>
 name|ignoredProperties
 init|=
-name|Arrays
-operator|.
-name|asList
-argument_list|(
 name|SolrServerConfigurationDefaults
 operator|.
 name|IGNORED_PROPERTIES
-argument_list|)
 decl_stmt|;
 specifier|private
 specifier|static

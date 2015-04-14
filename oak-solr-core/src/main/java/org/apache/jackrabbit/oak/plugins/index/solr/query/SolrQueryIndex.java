@@ -1645,13 +1645,6 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|path
-operator|!=
-literal|null
-condition|)
-block|{
-if|if
-condition|(
 literal|""
 operator|.
 name|equals
@@ -1746,10 +1739,6 @@ name|score
 argument_list|,
 name|doc
 argument_list|)
-return|;
-block|}
-return|return
-literal|null
 return|;
 block|}
 comment|/**              * Loads the Solr documents in batches              * @return true if any document is loaded              */
@@ -3035,25 +3024,6 @@ name|path
 parameter_list|,
 name|double
 name|score
-parameter_list|)
-block|{
-name|this
-argument_list|(
-name|path
-argument_list|,
-name|score
-argument_list|,
-literal|null
-argument_list|)
-expr_stmt|;
-block|}
-name|SolrResultRow
-parameter_list|(
-name|String
-name|path
-parameter_list|,
-name|double
-name|score
 parameter_list|,
 name|SolrDocument
 name|doc
@@ -3300,7 +3270,6 @@ name|score
 argument_list|)
 return|;
 block|}
-comment|// TODO : make inclusion of doc configurable
 name|Collection
 argument_list|<
 name|Object
@@ -3317,12 +3286,6 @@ name|columnName
 argument_list|)
 decl_stmt|;
 return|return
-name|currentRow
-operator|.
-name|doc
-operator|!=
-literal|null
-condition|?
 name|PropertyValues
 operator|.
 name|newString
@@ -3343,8 +3306,6 @@ name|emptyList
 argument_list|()
 argument_list|)
 argument_list|)
-else|:
-literal|null
 return|;
 block|}
 block|}

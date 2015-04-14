@@ -926,7 +926,9 @@ name|coreName
 operator|)
 operator|.
 name|getBytes
-argument_list|()
+argument_list|(
+literal|"UTF-8"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|out
@@ -1344,6 +1346,11 @@ name|IOException
 block|{
 try|try
 block|{
+synchronized|synchronized
+init|(
+name|this
+init|)
+block|{
 if|if
 condition|(
 name|solrServer
@@ -1356,6 +1363,7 @@ operator|.
 name|shutdown
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 block|}
 catch|catch

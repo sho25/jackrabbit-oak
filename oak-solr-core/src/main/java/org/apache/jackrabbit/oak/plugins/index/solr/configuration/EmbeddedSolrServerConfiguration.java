@@ -177,6 +177,7 @@ name|httpConfiguration
 return|;
 block|}
 specifier|public
+specifier|static
 class|class
 name|HttpConfiguration
 block|{

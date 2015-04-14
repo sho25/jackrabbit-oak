@@ -427,11 +427,11 @@ name|String
 name|solrCollection
 decl_stmt|;
 specifier|private
-name|int
+name|Integer
 name|solrShardsNo
 decl_stmt|;
 specifier|private
-name|int
+name|Integer
 name|solrReplicationFactor
 decl_stmt|;
 specifier|private
