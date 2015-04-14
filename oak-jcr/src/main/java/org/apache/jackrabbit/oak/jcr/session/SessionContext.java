@@ -1916,13 +1916,10 @@ name|RepositoryException
 block|{
 name|delegate
 operator|.
-name|perform
+name|performVoid
 argument_list|(
 operator|new
 name|SessionOperation
-argument_list|<
-name|Void
-argument_list|>
 argument_list|(
 literal|"unlockAllSessionScopedLocks"
 argument_list|)
@@ -1930,8 +1927,8 @@ block|{
 annotation|@
 name|Override
 specifier|public
-name|Void
-name|perform
+name|void
+name|performVoid
 parameter_list|()
 block|{
 name|Iterator
@@ -2005,9 +2002,6 @@ name|remove
 argument_list|()
 expr_stmt|;
 block|}
-return|return
-literal|null
-return|;
 block|}
 block|}
 argument_list|)

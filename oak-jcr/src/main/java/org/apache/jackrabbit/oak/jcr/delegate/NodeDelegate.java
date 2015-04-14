@@ -3939,6 +3939,8 @@ operator|!=
 literal|null
 return|;
 block|}
+annotation|@
+name|CheckForNull
 specifier|public
 name|NodeDelegate
 name|getLock
@@ -4019,10 +4021,14 @@ return|return
 literal|null
 return|;
 block|}
+annotation|@
+name|CheckForNull
 specifier|private
 name|Tree
 name|findLock
 parameter_list|(
+annotation|@
+name|Nonnull
 name|Tree
 name|tree
 parameter_list|,

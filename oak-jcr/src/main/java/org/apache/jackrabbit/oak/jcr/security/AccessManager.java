@@ -225,6 +225,8 @@ literal|"hasPermissions"
 argument_list|)
 block|{
 annotation|@
+name|Nonnull
+annotation|@
 name|Override
 specifier|public
 name|Boolean
@@ -283,6 +285,8 @@ argument_list|(
 literal|"hasPermissions"
 argument_list|)
 block|{
+annotation|@
+name|Nonnull
 annotation|@
 name|Override
 specifier|public

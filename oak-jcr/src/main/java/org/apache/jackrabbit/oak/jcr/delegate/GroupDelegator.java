@@ -292,6 +292,8 @@ literal|"getDeclaredMembers"
 argument_list|)
 block|{
 annotation|@
+name|Nonnull
+annotation|@
 name|Override
 specifier|public
 name|Iterator
@@ -392,6 +394,8 @@ literal|"getMembers"
 argument_list|)
 block|{
 annotation|@
+name|Nonnull
+annotation|@
 name|Override
 specifier|public
 name|Iterator
@@ -490,6 +494,8 @@ literal|"isDeclaredMember"
 argument_list|)
 block|{
 annotation|@
+name|Nonnull
+annotation|@
 name|Override
 specifier|public
 name|Boolean
@@ -542,6 +548,8 @@ argument_list|(
 literal|"isMember"
 argument_list|)
 block|{
+annotation|@
+name|Nonnull
 annotation|@
 name|Override
 specifier|public
@@ -596,6 +604,8 @@ literal|"addMember"
 argument_list|)
 block|{
 annotation|@
+name|Nonnull
+annotation|@
 name|Override
 specifier|public
 name|Boolean
@@ -648,6 +658,8 @@ argument_list|(
 literal|"removeMember"
 argument_list|)
 block|{
+annotation|@
+name|Nonnull
 annotation|@
 name|Override
 specifier|public

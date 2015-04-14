@@ -61,6 +61,16 @@ name|javax
 operator|.
 name|annotation
 operator|.
+name|Nonnull
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|annotation
+operator|.
 name|Nullable
 import|;
 end_import
@@ -324,7 +334,7 @@ block|{
 return|return
 name|sessionDelegate
 operator|.
-name|perform
+name|performNullable
 argument_list|(
 operator|new
 name|UserManagerOperation
@@ -341,7 +351,7 @@ annotation|@
 name|Override
 specifier|public
 name|Authorizable
-name|perform
+name|performNullable
 parameter_list|()
 throws|throws
 name|RepositoryException
@@ -402,7 +412,7 @@ name|T
 operator|)
 name|sessionDelegate
 operator|.
-name|perform
+name|performNullable
 argument_list|(
 operator|new
 name|UserManagerOperation
@@ -419,7 +429,7 @@ annotation|@
 name|Override
 specifier|public
 name|Authorizable
-name|perform
+name|performNullable
 parameter_list|()
 throws|throws
 name|RepositoryException
@@ -472,7 +482,7 @@ block|{
 return|return
 name|sessionDelegate
 operator|.
-name|perform
+name|performNullable
 argument_list|(
 operator|new
 name|UserManagerOperation
@@ -489,7 +499,7 @@ annotation|@
 name|Override
 specifier|public
 name|Authorizable
-name|perform
+name|performNullable
 parameter_list|()
 throws|throws
 name|RepositoryException
@@ -535,7 +545,7 @@ block|{
 return|return
 name|sessionDelegate
 operator|.
-name|perform
+name|performNullable
 argument_list|(
 operator|new
 name|UserManagerOperation
@@ -552,7 +562,7 @@ annotation|@
 name|Override
 specifier|public
 name|Authorizable
-name|perform
+name|performNullable
 parameter_list|()
 throws|throws
 name|RepositoryException
@@ -621,6 +631,8 @@ argument_list|,
 literal|"findAuthorizables"
 argument_list|)
 block|{
+annotation|@
+name|Nonnull
 annotation|@
 name|Override
 specifier|public
@@ -739,6 +751,8 @@ literal|"findAuthorizables"
 argument_list|)
 block|{
 annotation|@
+name|Nonnull
+annotation|@
 name|Override
 specifier|public
 name|Iterator
@@ -850,6 +864,8 @@ literal|"findAuthorizables"
 argument_list|)
 block|{
 annotation|@
+name|Nonnull
+annotation|@
 name|Override
 specifier|public
 name|Iterator
@@ -957,6 +973,8 @@ literal|"createUser"
 argument_list|)
 block|{
 annotation|@
+name|Nonnull
+annotation|@
 name|Override
 specifier|public
 name|User
@@ -1034,6 +1052,8 @@ literal|"createUser"
 argument_list|)
 block|{
 annotation|@
+name|Nonnull
+annotation|@
 name|Override
 specifier|public
 name|User
@@ -1107,6 +1127,8 @@ literal|"createUser"
 argument_list|)
 block|{
 annotation|@
+name|Nonnull
+annotation|@
 name|Override
 specifier|public
 name|User
@@ -1172,6 +1194,8 @@ literal|"createGroup"
 argument_list|)
 block|{
 annotation|@
+name|Nonnull
+annotation|@
 name|Override
 specifier|public
 name|Group
@@ -1235,6 +1259,8 @@ literal|"createGroup"
 argument_list|)
 block|{
 annotation|@
+name|Nonnull
+annotation|@
 name|Override
 specifier|public
 name|Group
@@ -1301,6 +1327,8 @@ argument_list|,
 literal|"createGroup"
 argument_list|)
 block|{
+annotation|@
+name|Nonnull
 annotation|@
 name|Override
 specifier|public
@@ -1374,6 +1402,8 @@ argument_list|,
 literal|"createGroup"
 argument_list|)
 block|{
+annotation|@
+name|Nonnull
 annotation|@
 name|Override
 specifier|public
@@ -1436,6 +1466,8 @@ literal|"isAutoSave"
 argument_list|)
 block|{
 annotation|@
+name|Nonnull
+annotation|@
 name|Override
 specifier|public
 name|Boolean
@@ -1468,13 +1500,10 @@ name|RepositoryException
 block|{
 name|sessionDelegate
 operator|.
-name|perform
+name|performVoid
 argument_list|(
 operator|new
 name|UserManagerOperation
-argument_list|<
-name|Void
-argument_list|>
 argument_list|(
 name|sessionDelegate
 argument_list|,
@@ -1484,8 +1513,8 @@ block|{
 annotation|@
 name|Override
 specifier|public
-name|Void
-name|perform
+name|void
+name|performVoid
 parameter_list|()
 throws|throws
 name|RepositoryException
@@ -1497,9 +1526,6 @@ argument_list|(
 name|enable
 argument_list|)
 expr_stmt|;
-return|return
-literal|null
-return|;
 block|}
 block|}
 argument_list|)

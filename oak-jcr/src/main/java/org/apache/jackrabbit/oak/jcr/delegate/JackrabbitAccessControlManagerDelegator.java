@@ -43,6 +43,16 @@ begin_import
 import|import
 name|javax
 operator|.
+name|annotation
+operator|.
+name|Nonnull
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
 name|jcr
 operator|.
 name|RepositoryException
@@ -228,6 +238,8 @@ literal|"getApplicablePolicies"
 argument_list|)
 block|{
 annotation|@
+name|Nonnull
+annotation|@
 name|Override
 specifier|public
 name|JackrabbitAccessControlPolicy
@@ -279,6 +291,8 @@ argument_list|(
 literal|"getPolicies"
 argument_list|)
 block|{
+annotation|@
+name|Nonnull
 annotation|@
 name|Override
 specifier|public
@@ -334,6 +348,8 @@ argument_list|(
 literal|"getEffectivePolicies"
 argument_list|)
 block|{
+annotation|@
+name|Nonnull
 annotation|@
 name|Override
 specifier|public
@@ -397,6 +413,8 @@ literal|"hasPrivileges"
 argument_list|)
 block|{
 annotation|@
+name|Nonnull
+annotation|@
 name|Override
 specifier|public
 name|Boolean
@@ -458,6 +476,8 @@ argument_list|(
 literal|"getPrivileges"
 argument_list|)
 block|{
+annotation|@
+name|Nonnull
 annotation|@
 name|Override
 specifier|public

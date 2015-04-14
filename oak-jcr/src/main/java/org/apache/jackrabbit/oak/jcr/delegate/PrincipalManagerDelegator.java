@@ -31,6 +31,26 @@ end_import
 
 begin_import
 import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|Nonnull
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|jcr
+operator|.
+name|RepositoryException
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -155,6 +175,8 @@ literal|"hasPrincipal"
 argument_list|)
 block|{
 annotation|@
+name|Nonnull
+annotation|@
 name|Override
 specifier|public
 name|Boolean
@@ -185,10 +207,12 @@ name|String
 name|principalName
 parameter_list|)
 block|{
+try|try
+block|{
 return|return
 name|delegate
 operator|.
-name|safePerform
+name|performNullable
 argument_list|(
 operator|new
 name|SessionOperation
@@ -203,7 +227,7 @@ annotation|@
 name|Override
 specifier|public
 name|Principal
-name|perform
+name|performNullable
 parameter_list|()
 block|{
 return|return
@@ -218,6 +242,23 @@ block|}
 block|}
 argument_list|)
 return|;
+block|}
+catch|catch
+parameter_list|(
+name|RepositoryException
+name|e
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|RuntimeException
+argument_list|(
+literal|"Unexpected exception thrown by operation 'getPrincipal'"
+argument_list|,
+name|e
+argument_list|)
+throw|;
+block|}
 block|}
 annotation|@
 name|Override
@@ -244,6 +285,8 @@ argument_list|(
 literal|"findPrincipals"
 argument_list|)
 block|{
+annotation|@
+name|Nonnull
 annotation|@
 name|Override
 specifier|public
@@ -294,6 +337,8 @@ literal|"findPrincipals"
 argument_list|)
 block|{
 annotation|@
+name|Nonnull
+annotation|@
 name|Override
 specifier|public
 name|PrincipalIterator
@@ -341,6 +386,8 @@ literal|"getPrincipals"
 argument_list|)
 block|{
 annotation|@
+name|Nonnull
+annotation|@
 name|Override
 specifier|public
 name|PrincipalIterator
@@ -386,6 +433,8 @@ literal|"getGroupMembership"
 argument_list|)
 block|{
 annotation|@
+name|Nonnull
+annotation|@
 name|Override
 specifier|public
 name|PrincipalIterator
@@ -426,6 +475,8 @@ argument_list|(
 literal|"getEveryone"
 argument_list|)
 block|{
+annotation|@
+name|Nonnull
 annotation|@
 name|Override
 specifier|public

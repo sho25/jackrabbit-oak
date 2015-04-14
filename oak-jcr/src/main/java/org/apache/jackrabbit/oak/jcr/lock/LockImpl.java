@@ -41,7 +41,7 @@ name|javax
 operator|.
 name|annotation
 operator|.
-name|CheckForNull
+name|Nonnull
 import|;
 end_import
 
@@ -51,7 +51,7 @@ name|javax
 operator|.
 name|annotation
 operator|.
-name|Nonnull
+name|Nullable
 import|;
 end_import
 
@@ -96,6 +96,24 @@ operator|.
 name|lock
 operator|.
 name|LockException
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|jcr
+operator|.
+name|delegate
+operator|.
+name|SessionDelegate
 import|;
 end_import
 
@@ -289,7 +307,7 @@ name|getLockOwner
 parameter_list|()
 block|{
 return|return
-name|safePerform
+name|savePerformNullable
 argument_list|(
 operator|new
 name|NodeOperation
@@ -306,7 +324,7 @@ annotation|@
 name|Override
 specifier|public
 name|String
-name|perform
+name|performNullable
 parameter_list|()
 block|{
 return|return
@@ -328,6 +346,9 @@ name|isDeep
 parameter_list|()
 block|{
 return|return
+name|getSessionDelegate
+argument_list|()
+operator|.
 name|safePerform
 argument_list|(
 operator|new
@@ -341,6 +362,8 @@ argument_list|,
 literal|"isDeep"
 argument_list|)
 block|{
+annotation|@
+name|Nonnull
 annotation|@
 name|Override
 specifier|public
@@ -377,6 +400,9 @@ operator|.
 name|isLive
 argument_list|()
 operator|&&
+name|getSessionDelegate
+argument_list|()
+operator|.
 name|safePerform
 argument_list|(
 operator|new
@@ -390,6 +416,8 @@ argument_list|,
 literal|"isLive"
 argument_list|)
 block|{
+annotation|@
+name|Nonnull
 annotation|@
 name|Override
 specifier|public
@@ -418,7 +446,7 @@ name|getLockToken
 parameter_list|()
 block|{
 return|return
-name|safePerform
+name|savePerformNullable
 argument_list|(
 operator|new
 name|NodeOperation
@@ -435,7 +463,7 @@ annotation|@
 name|Override
 specifier|public
 name|String
-name|perform
+name|performNullable
 parameter_list|()
 block|{
 name|String
@@ -559,6 +587,9 @@ name|isSessionScoped
 parameter_list|()
 block|{
 return|return
+name|getSessionDelegate
+argument_list|()
+operator|.
 name|safePerform
 argument_list|(
 operator|new
@@ -572,6 +603,8 @@ argument_list|,
 literal|"isSessionScoped"
 argument_list|)
 block|{
+annotation|@
+name|Nonnull
 annotation|@
 name|Override
 specifier|public
@@ -611,6 +644,9 @@ name|isLockOwningSession
 parameter_list|()
 block|{
 return|return
+name|getSessionDelegate
+argument_list|()
+operator|.
 name|safePerform
 argument_list|(
 operator|new
@@ -624,6 +660,8 @@ argument_list|,
 literal|"isLockOwningSessions"
 argument_list|)
 block|{
+annotation|@
+name|Nonnull
 annotation|@
 name|Override
 specifier|public
@@ -691,16 +729,26 @@ throw|;
 block|}
 block|}
 comment|//-----------------------------------------------------------< private>--
-comment|/**      * Perform the passed {@link SessionOperation} assuming it does not      * throw a {@code RepositoryException}. If it does, wrap it into and      * throw it as a {@code RuntimeException}.      *      * @param op operation to perform      * @param<U> return type of the operation      * @return the result of {@code op.perform()}      */
-annotation|@
-name|CheckForNull
 specifier|private
-specifier|final
+name|SessionDelegate
+name|getSessionDelegate
+parameter_list|()
+block|{
+return|return
+name|context
+operator|.
+name|getSessionDelegate
+argument_list|()
+return|;
+block|}
+annotation|@
+name|Nullable
+specifier|private
 parameter_list|<
 name|U
 parameter_list|>
 name|U
-name|safePerform
+name|savePerformNullable
 parameter_list|(
 annotation|@
 name|Nonnull
@@ -711,17 +759,38 @@ argument_list|>
 name|op
 parameter_list|)
 block|{
+try|try
+block|{
 return|return
 name|context
 operator|.
 name|getSessionDelegate
 argument_list|()
 operator|.
-name|safePerform
+name|performNullable
 argument_list|(
 name|op
 argument_list|)
 return|;
+block|}
+catch|catch
+parameter_list|(
+name|RepositoryException
+name|e
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|RuntimeException
+argument_list|(
+literal|"Unexpected exception thrown by operation "
+operator|+
+name|op
+argument_list|,
+name|e
+argument_list|)
+throw|;
+block|}
 block|}
 block|}
 end_class

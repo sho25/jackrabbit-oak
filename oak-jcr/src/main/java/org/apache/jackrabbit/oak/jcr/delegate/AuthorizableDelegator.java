@@ -385,6 +385,8 @@ literal|"isGroup"
 argument_list|)
 block|{
 annotation|@
+name|Nonnull
+annotation|@
 name|Override
 specifier|public
 name|Boolean
@@ -425,6 +427,8 @@ argument_list|(
 literal|"getID"
 argument_list|)
 block|{
+annotation|@
+name|Nonnull
 annotation|@
 name|Override
 specifier|public
@@ -468,6 +472,8 @@ argument_list|(
 literal|"getPrincipal"
 argument_list|)
 block|{
+annotation|@
+name|Nonnull
 annotation|@
 name|Override
 specifier|public
@@ -517,6 +523,8 @@ argument_list|(
 literal|"declaredMemberOf"
 argument_list|)
 block|{
+annotation|@
+name|Nonnull
 annotation|@
 name|Override
 specifier|public
@@ -619,6 +627,8 @@ literal|"memberOf"
 argument_list|)
 block|{
 annotation|@
+name|Nonnull
+annotation|@
 name|Override
 specifier|public
 name|Iterator
@@ -701,13 +711,10 @@ name|RepositoryException
 block|{
 name|sessionDelegate
 operator|.
-name|perform
+name|performVoid
 argument_list|(
 operator|new
 name|SessionOperation
-argument_list|<
-name|Void
-argument_list|>
 argument_list|(
 literal|"remove"
 argument_list|)
@@ -715,8 +722,8 @@ block|{
 annotation|@
 name|Override
 specifier|public
-name|Void
-name|perform
+name|void
+name|performVoid
 parameter_list|()
 throws|throws
 name|RepositoryException
@@ -726,9 +733,6 @@ operator|.
 name|remove
 argument_list|()
 expr_stmt|;
-return|return
-literal|null
-return|;
 block|}
 block|}
 argument_list|)
@@ -763,6 +767,8 @@ argument_list|(
 literal|"getPropertyNames"
 argument_list|)
 block|{
+annotation|@
+name|Nonnull
 annotation|@
 name|Override
 specifier|public
@@ -819,6 +825,8 @@ argument_list|(
 literal|"getPropertyNames"
 argument_list|)
 block|{
+annotation|@
+name|Nonnull
 annotation|@
 name|Override
 specifier|public
@@ -872,6 +880,8 @@ literal|"hasProperty"
 argument_list|)
 block|{
 annotation|@
+name|Nonnull
+annotation|@
 name|Override
 specifier|public
 name|Boolean
@@ -912,13 +922,10 @@ name|RepositoryException
 block|{
 name|sessionDelegate
 operator|.
-name|perform
+name|performVoid
 argument_list|(
 operator|new
 name|SessionOperation
-argument_list|<
-name|Void
-argument_list|>
 argument_list|(
 literal|"setProperty"
 argument_list|)
@@ -926,8 +933,8 @@ block|{
 annotation|@
 name|Override
 specifier|public
-name|Void
-name|perform
+name|void
+name|performVoid
 parameter_list|()
 throws|throws
 name|RepositoryException
@@ -941,9 +948,6 @@ argument_list|,
 name|value
 argument_list|)
 expr_stmt|;
-return|return
-literal|null
-return|;
 block|}
 block|}
 argument_list|)
@@ -969,13 +973,10 @@ name|RepositoryException
 block|{
 name|sessionDelegate
 operator|.
-name|perform
+name|performVoid
 argument_list|(
 operator|new
 name|SessionOperation
-argument_list|<
-name|Void
-argument_list|>
 argument_list|(
 literal|"setProperty"
 argument_list|)
@@ -983,8 +984,8 @@ block|{
 annotation|@
 name|Override
 specifier|public
-name|Void
-name|perform
+name|void
+name|performVoid
 parameter_list|()
 throws|throws
 name|RepositoryException
@@ -998,9 +999,6 @@ argument_list|,
 name|value
 argument_list|)
 expr_stmt|;
-return|return
-literal|null
-return|;
 block|}
 block|}
 argument_list|)
@@ -1035,6 +1033,8 @@ argument_list|(
 literal|"getProperty"
 argument_list|)
 block|{
+annotation|@
+name|Nonnull
 annotation|@
 name|Override
 specifier|public
@@ -1086,6 +1086,8 @@ literal|"removeProperty"
 argument_list|)
 block|{
 annotation|@
+name|Nonnull
+annotation|@
 name|Override
 specifier|public
 name|Boolean
@@ -1130,6 +1132,8 @@ argument_list|(
 literal|"getPath"
 argument_list|)
 block|{
+annotation|@
+name|Nonnull
 annotation|@
 name|Override
 specifier|public
