@@ -235,6 +235,11 @@ implements|implements
 name|ExternalIdentityProviderManager
 block|{
 comment|/**      * Default constructor used by OSGi      */
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"UnusedDeclaration"
+argument_list|)
 specifier|public
 name|ExternalIDPManagerImpl
 parameter_list|()
@@ -269,6 +274,11 @@ argument_list|)
 expr_stmt|;
 block|}
 annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"UnusedDeclaration"
+argument_list|)
+annotation|@
 name|Activate
 specifier|private
 name|void
@@ -291,6 +301,11 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"UnusedDeclaration"
+argument_list|)
 annotation|@
 name|Deactivate
 specifier|private

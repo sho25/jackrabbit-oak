@@ -692,15 +692,14 @@ control|)
 block|{
 if|if
 condition|(
+operator|!
 name|groupName
 operator|.
 name|trim
 argument_list|()
 operator|.
-name|length
+name|isEmpty
 argument_list|()
-operator|>
-literal|0
 condition|)
 block|{
 name|this
@@ -1262,6 +1261,8 @@ name|this
 return|;
 block|}
 comment|/**      * Returns the sync configuration for users.      * @return the user sync configuration.      */
+annotation|@
+name|Nonnull
 specifier|public
 name|User
 name|user
@@ -1272,6 +1273,8 @@ name|user
 return|;
 block|}
 comment|/**      * Returns the sync configuration for groups.      * @return the group sync configuration.      */
+annotation|@
+name|Nonnull
 specifier|public
 name|Group
 name|group

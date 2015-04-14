@@ -31,7 +31,27 @@ name|javax
 operator|.
 name|annotation
 operator|.
+name|CheckForNull
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|annotation
+operator|.
 name|Nonnull
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|Nullable
 import|;
 end_import
 
@@ -78,10 +98,6 @@ operator|.
 name|SyncedIdentity
 import|;
 end_import
-
-begin_comment
-comment|/** * {@code SyncedIdentityImpl}... */
-end_comment
 
 begin_class
 specifier|public
@@ -113,9 +129,13 @@ decl_stmt|;
 specifier|public
 name|SyncedIdentityImpl
 parameter_list|(
+annotation|@
+name|Nonnull
 name|String
 name|id
 parameter_list|,
+annotation|@
+name|Nullable
 name|ExternalIdentityRef
 name|ref
 parameter_list|,
@@ -164,6 +184,8 @@ return|return
 name|id
 return|;
 block|}
+annotation|@
+name|CheckForNull
 annotation|@
 name|Override
 specifier|public

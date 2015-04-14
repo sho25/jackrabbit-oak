@@ -823,10 +823,8 @@ if|if
 condition|(
 name|idpName
 operator|.
-name|length
+name|isEmpty
 argument_list|()
-operator|==
-literal|0
 condition|)
 block|{
 name|log
@@ -914,10 +912,8 @@ if|if
 condition|(
 name|syncHandlerName
 operator|.
-name|length
+name|isEmpty
 argument_list|()
-operator|==
-literal|0
 condition|)
 block|{
 name|log

@@ -1001,7 +1001,7 @@ block|}
 block|}
 return|;
 block|}
-comment|/**      * Creates a synced identity from the given authorizable.      * @param auth the authorizable      * @return the id      * @throws RepositoryException if an error occurrs      */
+comment|/**      * Creates a synced identity from the given authorizable.      * @param auth the authorizable      * @return the id      * @throws RepositoryException if an error occurs      */
 annotation|@
 name|CheckForNull
 specifier|private
@@ -1020,9 +1020,11 @@ block|{
 name|ExternalIdentityRef
 name|ref
 init|=
+operator|(
 name|auth
 operator|==
 literal|null
+operator|)
 condition|?
 literal|null
 else|:
@@ -1327,6 +1329,8 @@ return|;
 block|}
 comment|/**          * {@inheritDoc}          */
 annotation|@
+name|Nonnull
+annotation|@
 name|Override
 specifier|public
 name|SyncResult
@@ -1591,6 +1595,8 @@ throw|;
 block|}
 block|}
 comment|/**          * {@inheritDoc}          */
+annotation|@
+name|Nonnull
 annotation|@
 name|Override
 specifier|public
@@ -2207,11 +2213,13 @@ block|}
 block|}
 comment|/**          * Creates a new repository user for the given external one.          * Note that this method only creates the authorizable but does not perform any synchronization.          *          * @param externalUser the external user          * @return the repository user          * @throws RepositoryException if an error occurs          */
 annotation|@
-name|CheckForNull
+name|Nonnull
 specifier|private
 name|User
 name|createUser
 parameter_list|(
+annotation|@
+name|Nonnull
 name|ExternalUser
 name|externalUser
 parameter_list|)
@@ -2289,11 +2297,13 @@ return|;
 block|}
 comment|/**          * Creates a new repository group for the given external one.          * Note that this method only creates the authorizable but does not perform any synchronization.          *          * @param externalGroup the external group          * @return the repository group          * @throws RepositoryException if an error occurs          */
 annotation|@
-name|CheckForNull
+name|Nonnull
 specifier|private
 name|Group
 name|createGroup
 parameter_list|(
+annotation|@
+name|Nonnull
 name|ExternalGroup
 name|externalGroup
 parameter_list|)
@@ -2367,6 +2377,8 @@ return|return
 name|group
 return|;
 block|}
+annotation|@
+name|Nonnull
 specifier|private
 name|SyncResultImpl
 name|syncUser
@@ -2526,13 +2538,19 @@ name|UPDATE
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Nonnull
 specifier|private
 name|SyncResultImpl
 name|syncGroup
 parameter_list|(
+annotation|@
+name|Nonnull
 name|ExternalGroup
 name|external
 parameter_list|,
+annotation|@
+name|Nonnull
 name|Group
 name|group
 parameter_list|)
