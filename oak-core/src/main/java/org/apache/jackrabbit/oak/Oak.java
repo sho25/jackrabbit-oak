@@ -2898,14 +2898,8 @@ name|ContentRepository
 name|createContentRepository
 parameter_list|()
 block|{
-name|checkState
-argument_list|(
-operator|!
-name|initialized
-argument_list|,
-literal|"Oak instance should be used only once to create the ContentRepository instance"
-argument_list|)
-expr_stmt|;
+comment|//TODO FIXME OAK-2736
+comment|//checkState(!initialized, "Oak instance should be used only once to create the ContentRepository instance");
 name|initialized
 operator|=
 literal|true
