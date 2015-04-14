@@ -25,6 +25,16 @@ end_package
 
 begin_import
 import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -229,8 +239,6 @@ parameter_list|(
 name|LdapConnection
 name|connection
 parameter_list|)
-throws|throws
-name|Exception
 block|{
 name|log
 operator|.
@@ -251,7 +259,7 @@ name|LdapConnection
 name|connection
 parameter_list|)
 throws|throws
-name|Exception
+name|IOException
 block|{
 name|log
 operator|.
@@ -274,7 +282,7 @@ name|LdapConnection
 name|makeObject
 parameter_list|()
 throws|throws
-name|Exception
+name|LdapException
 block|{
 name|LdapNetworkConnection
 name|connection
@@ -322,8 +330,6 @@ parameter_list|(
 name|LdapConnection
 name|connection
 parameter_list|)
-throws|throws
-name|Exception
 block|{
 name|log
 operator|.
@@ -415,6 +421,7 @@ block|}
 comment|/**      * internal helper class that guards the original ldap connection from starting TLS if already started..      * this is to ensure that pooled connections can be 'bind()' several times.      *      * @see org.apache.directory.ldap.client.api.LdapNetworkConnection#bindAsync(org.apache.directory.api.ldap.model.message.BindRequest)      */
 specifier|private
 specifier|static
+specifier|final
 class|class
 name|TlsGuardingConnection
 extends|extends

@@ -190,7 +190,7 @@ name|b
 operator|.
 name|append
 argument_list|(
-literal|"("
+literal|'('
 argument_list|)
 expr_stmt|;
 block|}
@@ -269,6 +269,7 @@ return|;
 block|}
 specifier|private
 specifier|static
+specifier|final
 class|class
 name|TimeStamp
 block|{

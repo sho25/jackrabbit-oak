@@ -2503,8 +2503,6 @@ argument_list|)
 decl_stmt|;
 name|String
 name|replace
-init|=
-literal|null
 decl_stmt|;
 switch|switch
 condition|(
@@ -2551,6 +2549,11 @@ operator|=
 literal|"\\00"
 expr_stmt|;
 break|break;
+default|default:
+name|replace
+operator|=
+literal|null
+expr_stmt|;
 block|}
 if|if
 condition|(
