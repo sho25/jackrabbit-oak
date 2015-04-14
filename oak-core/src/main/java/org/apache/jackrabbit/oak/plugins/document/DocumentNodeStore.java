@@ -7916,31 +7916,29 @@ argument_list|()
 operator|-
 name|time
 decl_stmt|;
-name|time
-operator|=
-name|clock
-operator|.
-name|getTime
-argument_list|()
-expr_stmt|;
 comment|// write back pending updates to _lastRev
+name|BackgroundWriteStats
+name|stats
+init|=
 name|backgroundWrite
 argument_list|()
-expr_stmt|;
-name|long
-name|writeTime
-init|=
-name|clock
-operator|.
-name|getTime
-argument_list|()
-operator|-
-name|time
 decl_stmt|;
+name|stats
+operator|.
+name|split
+operator|=
+name|splitTime
+expr_stmt|;
+name|stats
+operator|.
+name|clean
+operator|=
+name|cleanTime
+expr_stmt|;
 name|String
 name|msg
 init|=
-literal|"Background operations stats (clean:{}, split:{}, write:{})"
+literal|"Background operations stats ({})"
 decl_stmt|;
 if|if
 condition|(
@@ -7968,11 +7966,7 @@ name|info
 argument_list|(
 name|msg
 argument_list|,
-name|cleanTime
-argument_list|,
-name|splitTime
-argument_list|,
-name|writeTime
+name|stats
 argument_list|)
 expr_stmt|;
 block|}
@@ -7984,11 +7978,7 @@ name|debug
 argument_list|(
 name|msg
 argument_list|,
-name|cleanTime
-argument_list|,
-name|splitTime
-argument_list|,
-name|writeTime
+name|stats
 argument_list|)
 expr_stmt|;
 block|}
@@ -8585,6 +8575,12 @@ operator|.
 name|invalidateCache
 argument_list|()
 expr_stmt|;
+comment|// TODO only invalidate affected items
+name|docChildrenCache
+operator|.
+name|invalidateAll
+argument_list|()
+expr_stmt|;
 name|stats
 operator|.
 name|cacheInvalidationTime
@@ -8603,12 +8599,6 @@ operator|.
 name|getTime
 argument_list|()
 expr_stmt|;
-comment|// TODO only invalidate affected items
-name|docChildrenCache
-operator|.
-name|invalidateAll
-argument_list|()
-expr_stmt|;
 comment|// make sure update to revision comparator is atomic
 comment|// and no local commit is in progress
 name|backgroundOperationLock
@@ -8621,6 +8611,24 @@ argument_list|()
 expr_stmt|;
 try|try
 block|{
+name|stats
+operator|.
+name|lock
+operator|=
+name|clock
+operator|.
+name|getTime
+argument_list|()
+operator|-
+name|time
+expr_stmt|;
+name|time
+operator|=
+name|clock
+operator|.
+name|getTime
+argument_list|()
+expr_stmt|;
 comment|// the latest revisions of the current cluster node
 comment|// happened before the latest revisions of other cluster nodes
 name|revisionComparator
@@ -8760,6 +8768,9 @@ name|long
 name|cacheInvalidationTime
 decl_stmt|;
 name|long
+name|lock
+decl_stmt|;
+name|long
 name|dispatchChanges
 decl_stmt|;
 name|long
@@ -8806,6 +8817,10 @@ operator|+
 literal|", cache:"
 operator|+
 name|cacheInvalidationTime
+operator|+
+literal|", lock:"
+operator|+
+name|lock
 operator|+
 literal|", dispatch:"
 operator|+
@@ -9261,10 +9276,11 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-name|void
+name|BackgroundWriteStats
 name|backgroundWrite
 parameter_list|()
 block|{
+return|return
 name|unsavedLastRevisions
 operator|.
 name|persist
@@ -9276,7 +9292,7 @@ operator|.
 name|writeLock
 argument_list|()
 argument_list|)
-expr_stmt|;
+return|;
 block|}
 comment|//-----------------------------< internal>---------------------------------
 comment|/**      * Checks if this store is still open and throws an      * {@link IllegalStateException} if it is already disposed (or a dispose      * is in progress).      *      * @throws IllegalStateException if this store is disposed.      */
