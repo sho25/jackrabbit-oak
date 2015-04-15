@@ -3547,7 +3547,7 @@ name|info
 argument_list|(
 literal|"TarMK revision cleanup completed in {}. Post cleanup size is {} "
 operator|+
-literal|"and space reclaimed {}"
+literal|"and space reclaimed {}. Compaction map weight/depth is {}/{}."
 argument_list|,
 name|watch
 argument_list|,
@@ -3562,6 +3562,19 @@ name|initialSize
 operator|-
 name|finalSize
 argument_list|)
+argument_list|,
+name|humanReadableByteCount
+argument_list|(
+name|cm
+operator|.
+name|getEstimatedWeight
+argument_list|()
+argument_list|)
+argument_list|,
+name|cm
+operator|.
+name|getDepth
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}

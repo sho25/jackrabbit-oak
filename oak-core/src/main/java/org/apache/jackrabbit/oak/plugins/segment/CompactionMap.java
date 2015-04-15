@@ -1943,6 +1943,7 @@ name|toString
 argument_list|()
 return|;
 block|}
+comment|/**      * The weight of the compaction map is its  memory consumption bytes      * @return  Estimated weight of the compaction map      */
 specifier|public
 name|long
 name|getEstimatedWeight
@@ -1982,6 +1983,35 @@ block|}
 return|return
 name|total
 return|;
+block|}
+comment|/**      * The depth of the compaction map is the total number of generations      * kept. That is this instance plus the number of all previous instances.      * @return  Depth of the compaction map      */
+specifier|public
+name|int
+name|getDepth
+parameter_list|()
+block|{
+if|if
+condition|(
+name|prev
+operator|==
+literal|null
+condition|)
+block|{
+return|return
+literal|1
+return|;
+block|}
+else|else
+block|{
+return|return
+literal|1
+operator|+
+name|prev
+operator|.
+name|getDepth
+argument_list|()
+return|;
+block|}
 block|}
 specifier|public
 name|long
