@@ -13,13 +13,7 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
-name|security
-operator|.
-name|authentication
-operator|.
-name|ldap
-operator|.
-name|impl
+name|commons
 package|;
 end_package
 

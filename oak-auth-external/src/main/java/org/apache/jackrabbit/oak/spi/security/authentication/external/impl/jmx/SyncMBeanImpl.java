@@ -554,7 +554,6 @@ name|SyncMBeanImpl
 implements|implements
 name|SynchronizationMBean
 block|{
-comment|/**      * default logger      */
 specifier|private
 specifier|static
 specifier|final
@@ -754,6 +753,7 @@ throw|;
 block|}
 block|}
 specifier|private
+specifier|final
 class|class
 name|Delegatee
 block|{
@@ -1997,7 +1997,7 @@ name|id
 parameter_list|)
 block|{
 name|String
-name|idpName
+name|providerName
 init|=
 name|id
 operator|.
@@ -2018,16 +2018,16 @@ argument_list|()
 decl_stmt|;
 return|return
 operator|(
-name|idpName
+name|providerName
 operator|==
 literal|null
 operator|||
-name|idpName
+name|providerName
 operator|.
 name|isEmpty
 argument_list|()
 operator|||
-name|idpName
+name|providerName
 operator|.
 name|equals
 argument_list|(

@@ -387,6 +387,22 @@ name|jackrabbit
 operator|.
 name|oak
 operator|.
+name|commons
+operator|.
+name|DebugTimer
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
 name|spi
 operator|.
 name|security
@@ -1110,6 +1126,7 @@ block|}
 block|}
 comment|/**      * Internal implementation of the sync context      */
 specifier|private
+specifier|final
 class|class
 name|ContextImpl
 implements|implements
