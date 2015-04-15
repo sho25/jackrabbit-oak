@@ -814,7 +814,7 @@ name|parentNode
 init|=
 name|NodeImpl
 operator|.
-name|createNodeOrNull
+name|createNode
 argument_list|(
 name|parentDelegate
 argument_list|,

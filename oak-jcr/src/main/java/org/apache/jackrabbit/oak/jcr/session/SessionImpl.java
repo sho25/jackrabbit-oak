@@ -1149,7 +1149,7 @@ block|{
 return|return
 name|NodeImpl
 operator|.
-name|createNodeOrNull
+name|createNode
 argument_list|(
 operator|(
 name|NodeDelegate
