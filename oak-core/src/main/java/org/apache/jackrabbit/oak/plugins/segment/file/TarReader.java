@@ -2853,7 +2853,7 @@ operator|-
 literal|1
 return|;
 block|}
-comment|/**      * Garbage collects segments in this file. First it collects the set of      * segments that are referenced / reachable, then (if more than 25% is      * garbage) creates a new generation of the file.      *<p>      * The old generation files are not removed (they can't easily be removed,      * for memory mapped files).      *       * @param referencedIds the referenced segment ids (input and output).      * @return this (if the file is kept as is), or the new generation file, or      *         null if the file is fully garbage      */
+comment|/**      * Garbage collects segments in this file. First it collects the set of      * segments that are referenced / reachable, then (if more than 25% is      * garbage) creates a new generation of the file.      *<p>      * The old generation files are not removed (they can't easily be removed,      * for memory mapped files).      *       * @param referencedIds the referenced segment ids (input and output).      * @param cm the compaction map      * @param removed a set which will receive the uuids of all segments that      *                have been cleaned.      * @return this (if the file is kept as is), or the new generation file, or      *         null if the file is fully garbage      */
 specifier|synchronized
 name|TarReader
 name|cleanup
@@ -2866,6 +2866,12 @@ name|referencedIds
 parameter_list|,
 name|CompactionMap
 name|cm
+parameter_list|,
+name|Set
+argument_list|<
+name|UUID
+argument_list|>
+name|removed
 parameter_list|)
 throws|throws
 name|IOException
@@ -3424,6 +3430,13 @@ literal|0
 condition|)
 block|{
 comment|// none of the entries within this tar file are referenceable
+name|removed
+operator|.
+name|addAll
+argument_list|(
+name|cleaned
+argument_list|)
+expr_stmt|;
 name|logCleanedSegments
 argument_list|(
 name|cleaned
@@ -3664,6 +3677,13 @@ literal|null
 condition|)
 block|{
 name|logCleanedSegments
+argument_list|(
+name|cleaned
+argument_list|)
+expr_stmt|;
+name|removed
+operator|.
+name|addAll
 argument_list|(
 name|cleaned
 argument_list|)
