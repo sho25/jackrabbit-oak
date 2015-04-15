@@ -559,6 +559,14 @@ name|versionable
 argument_list|)
 condition|)
 block|{
+name|Tree
+name|baseVersion
+init|=
+name|getExistingBaseVersion
+argument_list|(
+name|versionable
+argument_list|)
+decl_stmt|;
 name|versionable
 operator|.
 name|setProperty
@@ -574,14 +582,6 @@ operator|.
 name|BOOLEAN
 argument_list|)
 expr_stmt|;
-name|Tree
-name|baseVersion
-init|=
-name|getBaseVersion
-argument_list|(
-name|versionable
-argument_list|)
-decl_stmt|;
 name|PropertyState
 name|created
 init|=
@@ -666,7 +666,7 @@ throw|;
 block|}
 block|}
 return|return
-name|getBaseVersion
+name|getExistingBaseVersion
 argument_list|(
 name|getWorkspaceRoot
 argument_list|()
@@ -681,7 +681,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-comment|/**      * Performs a checkout on a versionable tree.      *      * @param workspaceRoot a fresh workspace root without pending changes.      * @param versionablePath the absolute path to the versionable node to check out.      * @throws UnsupportedRepositoryOperationException      *                             if the versionable tree isn't actually      *                             versionable.      * @throws RepositoryException if an error occurs while checking the      *                             node type of the tree.      * @throws IllegalStateException if the workspaceRoot has pending changes.      * @throws IllegalArgumentException if the<code>versionablePath</code> is      *                             not absolute.      */
+comment|/**      * Performs a checkout on a versionable tree.      *      * @param workspaceRoot a fresh workspace root without pending changes.      * @param versionablePath the absolute path to the versionable node to check out.      * @throws UnsupportedRepositoryOperationException      *                             if the versionable tree isn't actually      *                             versionable.      * @throws RepositoryException if an error occurs while checking the      *                             node type of the tree.      * @throws IllegalStateException if the workspaceRoot has pending changes.      * @throws IllegalArgumentException if the {@code versionablePath} is      *                             not absolute.      */
 specifier|public
 name|void
 name|checkout
@@ -1132,6 +1132,10 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+name|versionHistory
+operator|==
+literal|null
+operator|||
 operator|!
 name|versionHistory
 operator|.
@@ -1223,6 +1227,48 @@ throw|;
 block|}
 block|}
 comment|// TODO: more methods that modify versions
+comment|//------------------------------------------------------------< private>---
+annotation|@
+name|Nonnull
+specifier|private
+name|Tree
+name|getExistingBaseVersion
+parameter_list|(
+annotation|@
+name|Nonnull
+name|Tree
+name|versionableTree
+parameter_list|)
+throws|throws
+name|RepositoryException
+block|{
+name|Tree
+name|baseVersion
+init|=
+name|getBaseVersion
+argument_list|(
+name|versionableTree
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|baseVersion
+operator|==
+literal|null
+condition|)
+block|{
+throw|throw
+operator|new
+name|IllegalStateException
+argument_list|(
+literal|"Base version does not exist."
+argument_list|)
+throw|;
+block|}
+return|return
+name|baseVersion
+return|;
+block|}
 block|}
 end_class
 

@@ -1375,6 +1375,7 @@ end_import
 
 begin_class
 specifier|public
+specifier|final
 class|class
 name|Main
 block|{
@@ -2871,7 +2872,10 @@ argument_list|(
 operator|new
 name|String
 index|[
-literal|0
+name|admissibleSlaves
+operator|.
+name|size
+argument_list|()
 index|]
 argument_list|)
 argument_list|,
@@ -6490,10 +6494,6 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|store
-operator|==
-literal|null
-operator|||
 operator|!
 name|store
 operator|.

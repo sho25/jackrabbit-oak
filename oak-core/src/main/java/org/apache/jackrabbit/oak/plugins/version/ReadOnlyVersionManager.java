@@ -614,7 +614,7 @@ return|return
 name|tree
 return|;
 block|}
-comment|/**      * Returns {@code true} if the given {@code tree} is of type      * {@code mix:versionable}; {@code false} otherwise.      *      * @param tree the tree to check.      * @return whether the {@code tree} is versionable.      * @throws RepositoryException if an error occurs while checking the node      *                             type of the tree.      */
+comment|/**      * Returns {@code true} if the given {@code tree} is of type      * {@code mix:versionable}; {@code false} otherwise.      *      * @param tree the tree to check.      * @return whether the {@code tree} is versionable.      */
 specifier|protected
 name|boolean
 name|isVersionable
