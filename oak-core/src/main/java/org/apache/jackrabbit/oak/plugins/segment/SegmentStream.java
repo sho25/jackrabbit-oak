@@ -829,11 +829,14 @@ name|id
 operator|.
 name|getSegmentId
 argument_list|()
-operator|==
+operator|.
+name|equals
+argument_list|(
 name|first
 operator|.
 name|getSegmentId
 argument_list|()
+argument_list|)
 operator|&&
 name|id
 operator|.

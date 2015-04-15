@@ -149,6 +149,20 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|collect
+operator|.
+name|Sets
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -822,7 +836,7 @@ name|SegmentId
 argument_list|>
 name|processed
 init|=
-name|newIdentityHashSet
+name|newHashSet
 argument_list|()
 decl_stmt|;
 name|Queue

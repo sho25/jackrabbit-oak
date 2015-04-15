@@ -47,7 +47,7 @@ name|collect
 operator|.
 name|Sets
 operator|.
-name|newIdentityHashSet
+name|newHashSet
 import|;
 end_import
 
@@ -1470,7 +1470,7 @@ name|SegmentId
 argument_list|>
 name|ids
 init|=
-name|newIdentityHashSet
+name|newHashSet
 argument_list|()
 decl_stmt|;
 for|for

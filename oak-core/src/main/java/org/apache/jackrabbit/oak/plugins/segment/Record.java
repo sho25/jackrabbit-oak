@@ -105,19 +105,22 @@ block|{
 return|return
 name|a
 operator|.
-name|segmentId
+name|offset
 operator|==
 name|b
 operator|.
-name|segmentId
+name|offset
 operator|&&
 name|a
 operator|.
-name|offset
-operator|==
+name|segmentId
+operator|.
+name|equals
+argument_list|(
 name|b
 operator|.
-name|offset
+name|segmentId
+argument_list|)
 return|;
 block|}
 comment|/**      * Identifier of the segment that contains this record.      */
