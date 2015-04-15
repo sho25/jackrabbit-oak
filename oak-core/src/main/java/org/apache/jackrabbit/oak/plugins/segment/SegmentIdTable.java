@@ -101,6 +101,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Map
 import|;
 end_import
@@ -125,6 +135,26 @@ name|CompactionStrategy
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
+import|;
+end_import
+
 begin_comment
 comment|/**  * Hash table of weak references to segment identifiers.  */
 end_comment
@@ -134,7 +164,7 @@ specifier|public
 class|class
 name|SegmentIdTable
 block|{
-comment|/**      * Hash table of weak references to segment identifiers that are currently      * being accessed. The size of the table is always a power of two, which      * optimizes the {@link #expand()} operation. The table is indexed by the      * random identifier bits, which guarantees uniform distribution of entries.      * Each table entry is either {@code null} (when there are no matching      * identifiers) or a list of weak references to the matching identifiers.      *<p>      * Actually, this is a array. It's not a hash map, to conserve memory (maps      * need much more memory).      *<p>      * The list is not sorted (we could; lookup would be faster, but adding and      * removing entries would be slower).      */
+comment|/**      * The list of weak references to segment identifiers that are currently      * being accessed. This represents a hash table that uses open addressing      * with linear probing. It is not a hash map, to speed up read access.      *<p>      * The size of the table is always a power of two, so that we can use      * bitwise "and" instead of modulo.      *<p>      * The table is indexed by the random identifier bits, which guarantees      * uniform distribution of entries.      *<p>      * Open addressing with linear probing is used. Each table entry is either      * null (when there are no matching identifiers), a weak references to the      * matching identifier, or a weak reference to another identifier.      * There are no tombstone entries as there is no explicit remove operation,      * but a referent can become null if the entry is garbage collected.      *<p>      * The array is not sorted (we could; lookup might be faster, but adding      * entries would be slower).      */
 specifier|private
 specifier|final
 name|ArrayList
@@ -166,6 +196,31 @@ specifier|private
 specifier|final
 name|SegmentTracker
 name|tracker
+decl_stmt|;
+specifier|private
+specifier|static
+specifier|final
+name|Logger
+name|LOG
+init|=
+name|LoggerFactory
+operator|.
+name|getLogger
+argument_list|(
+name|SegmentIdTable
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
+comment|/**      * The refresh count (for diagnostics and testing).      */
+specifier|private
+name|int
+name|rebuildCount
+decl_stmt|;
+comment|/**      * The number of used entries (WeakReferences) in this table.      */
+specifier|private
+name|int
+name|entryCount
 decl_stmt|;
 name|SegmentIdTable
 parameter_list|(
@@ -263,6 +318,7 @@ return|return
 name|id
 return|;
 block|}
+comment|// shouldRefresh if we have a garbage collected entry
 name|shouldRefresh
 operator|=
 name|shouldRefresh
@@ -271,6 +327,7 @@ name|id
 operator|==
 literal|null
 expr_stmt|;
+comment|// open addressing / linear probing
 name|index
 operator|=
 operator|(
@@ -323,6 +380,27 @@ name|id
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|entryCount
+operator|++
+expr_stmt|;
+if|if
+condition|(
+name|entryCount
+operator|>
+name|references
+operator|.
+name|size
+argument_list|()
+operator|*
+literal|0.75
+condition|)
+block|{
+comment|// more than 75% full
+name|shouldRefresh
+operator|=
+literal|true
+expr_stmt|;
+block|}
 if|if
 condition|(
 name|shouldRefresh
@@ -336,7 +414,7 @@ return|return
 name|id
 return|;
 block|}
-comment|/**      * Returns all segment identifiers that are currently referenced in memory.      *      * @return referenced segment identifiers      */
+comment|/**      * Returns all segment identifiers that are currently referenced in memory.      *      * @param ids referenced segment identifiers      */
 name|void
 name|collectReferencedIds
 parameter_list|(
@@ -483,12 +561,54 @@ argument_list|,
 literal|null
 argument_list|)
 expr_stmt|;
+name|entryCount
+operator|--
+expr_stmt|;
 name|emptyReferences
 operator|=
 literal|true
 expr_stmt|;
 block|}
 block|}
+block|}
+if|if
+condition|(
+name|entryCount
+operator|!=
+name|ids
+operator|.
+name|size
+argument_list|()
+condition|)
+block|{
+comment|// something is wrong, possibly a concurrency problem, a SegmentId
+comment|// hashcode or equals bug, or a problem with this hash table
+comment|// algorithm
+name|LOG
+operator|.
+name|warn
+argument_list|(
+literal|"Unexpected entry count mismatch, expected "
+operator|+
+name|entryCount
+operator|+
+literal|" got "
+operator|+
+name|ids
+operator|.
+name|size
+argument_list|()
+argument_list|)
+expr_stmt|;
+comment|// we fix the count, because having a wrong entry count would be
+comment|// very problematic; even worse than having a concurrency problem
+name|entryCount
+operator|=
+name|ids
+operator|.
+name|size
+argument_list|()
+expr_stmt|;
 block|}
 while|while
 condition|(
@@ -507,6 +627,10 @@ operator|*=
 literal|2
 expr_stmt|;
 block|}
+comment|// we need to re-build the table if the new size is different,
+comment|// but also if we removed some of the entries (because an entry was
+comment|// garbage collected) and there is at least one entry at the "wrong"
+comment|// location (due to open addressing)
 if|if
 condition|(
 operator|(
@@ -523,6 +647,9 @@ name|size
 argument_list|()
 condition|)
 block|{
+name|rebuildCount
+operator|++
+expr_stmt|;
 name|references
 operator|.
 name|clear
@@ -747,19 +874,14 @@ name|id
 argument_list|)
 condition|)
 block|{
+comment|// we clear the reference here, but we must not
+comment|// remove the reference from the list, because
+comment|// that could cause duplicate references
+comment|// (there is a unit test for this case)
 name|reference
 operator|.
 name|clear
 argument_list|()
-expr_stmt|;
-name|references
-operator|.
-name|set
-argument_list|(
-name|i
-argument_list|,
-literal|null
-argument_list|)
 expr_stmt|;
 name|dirty
 operator|=
@@ -778,6 +900,104 @@ name|refresh
 argument_list|()
 expr_stmt|;
 block|}
+block|}
+comment|/**      * Get the number of map rebuild operations (used for testing and diagnostics).      *       * @return the rebuild count      */
+name|int
+name|getMapRebuildCount
+parameter_list|()
+block|{
+return|return
+name|rebuildCount
+return|;
+block|}
+comment|/**      * Get the entry count (used for testing and diagnostics).      *       * @return the entry count      */
+name|int
+name|getEntryCount
+parameter_list|()
+block|{
+return|return
+name|entryCount
+return|;
+block|}
+comment|/**      * Get the size of the internal map (used for testing and diagnostics).      *       * @return the map size      */
+name|int
+name|getMapSize
+parameter_list|()
+block|{
+return|return
+name|references
+operator|.
+name|size
+argument_list|()
+return|;
+block|}
+comment|/**      * Get the raw list of segment ids (used for testing).      *       * @return the raw list      */
+name|List
+argument_list|<
+name|SegmentId
+argument_list|>
+name|getRawSegmentIdList
+parameter_list|()
+block|{
+name|ArrayList
+argument_list|<
+name|SegmentId
+argument_list|>
+name|list
+init|=
+operator|new
+name|ArrayList
+argument_list|<
+name|SegmentId
+argument_list|>
+argument_list|()
+decl_stmt|;
+for|for
+control|(
+name|WeakReference
+argument_list|<
+name|SegmentId
+argument_list|>
+name|ref
+range|:
+name|references
+control|)
+block|{
+if|if
+condition|(
+name|ref
+operator|!=
+literal|null
+condition|)
+block|{
+name|SegmentId
+name|id
+init|=
+name|ref
+operator|.
+name|get
+argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|id
+operator|!=
+literal|null
+condition|)
+block|{
+name|list
+operator|.
+name|add
+argument_list|(
+name|id
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+block|}
+return|return
+name|list
+return|;
 block|}
 block|}
 end_class
