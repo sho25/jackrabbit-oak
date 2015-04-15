@@ -5725,6 +5725,22 @@ name|field
 argument_list|()
 argument_list|)
 decl_stmt|;
+comment|//No existing field with given name indexed so no possible term values
+if|if
+condition|(
+name|t
+operator|==
+literal|null
+condition|)
+block|{
+return|return
+operator|new
+name|Term
+index|[
+literal|0
+index|]
+return|;
+block|}
 name|Automaton
 name|a
 init|=
