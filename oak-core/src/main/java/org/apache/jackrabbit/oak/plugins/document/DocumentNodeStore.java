@@ -1531,6 +1531,18 @@ argument_list|(
 literal|"oak.enableConcurrentAddRemove"
 argument_list|)
 decl_stmt|;
+comment|/**      * Use fair mode for background operation lock.      */
+specifier|private
+name|boolean
+name|fairBackgroundOperationLock
+init|=
+name|Boolean
+operator|.
+name|getBoolean
+argument_list|(
+literal|"oak.fairBackgroundOperationLock"
+argument_list|)
+decl_stmt|;
 comment|/**      * How long to remember the relative order of old revision of all cluster      * nodes, in milliseconds. The default is one hour.      */
 specifier|static
 specifier|final
@@ -1738,7 +1750,9 @@ name|backgroundOperationLock
 init|=
 operator|new
 name|ReentrantReadWriteLock
-argument_list|()
+argument_list|(
+name|fairBackgroundOperationLock
+argument_list|)
 decl_stmt|;
 comment|/**      * Read/Write lock to coordinate merges. In most cases merges acquire a      * shared read lock and can proceed concurrently. An exclusive write lock      * is acquired when the merge fails even after some retries and a final      * retry cycle is done.      * See {@link DocumentNodeStoreBranch#merge(CommitHook, CommitInfo)}.      */
 specifier|private
