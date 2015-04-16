@@ -285,6 +285,26 @@ name|NodeState
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
+import|;
+end_import
+
 begin_class
 annotation|@
 name|Component
@@ -301,6 +321,21 @@ name|TypeEditorProvider
 implements|implements
 name|EditorProvider
 block|{
+specifier|private
+specifier|static
+specifier|final
+name|Logger
+name|LOG
+init|=
+name|LoggerFactory
+operator|.
+name|getLogger
+argument_list|(
+name|TypeEditorProvider
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 specifier|private
 specifier|final
 name|boolean
@@ -459,6 +494,14 @@ name|isEmpty
 argument_list|()
 condition|)
 block|{
+name|long
+name|start
+init|=
+name|System
+operator|.
+name|currentTimeMillis
+argument_list|()
+decl_stmt|;
 comment|// Some node types were modified, so scan the repository
 comment|// to make sure that the modified definitions still apply.
 name|Editor
@@ -498,6 +541,43 @@ argument_list|,
 name|after
 argument_list|)
 decl_stmt|;
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Node type changes: "
+operator|+
+name|modifiedTypes
+operator|+
+literal|"; repository scan took "
+operator|+
+operator|(
+name|System
+operator|.
+name|currentTimeMillis
+argument_list|()
+operator|-
+name|start
+operator|)
+operator|+
+literal|"ms"
+operator|+
+operator|(
+name|exception
+operator|==
+literal|null
+condition|?
+literal|""
+else|:
+literal|"; failed with "
+operator|+
+name|exception
+operator|.
+name|getMessage
+argument_list|()
+operator|)
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|exception
