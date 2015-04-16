@@ -128,6 +128,10 @@ argument_list|>
 name|getSubTrees
 parameter_list|()
 function_decl|;
+name|FilterConfigMBean
+name|getConfigMBean
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 
