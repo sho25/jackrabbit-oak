@@ -216,6 +216,11 @@ specifier|private
 name|LdapConnectionConfig
 name|config
 decl_stmt|;
+comment|/**      * flag controlling the validation behavior      */
+specifier|private
+name|boolean
+name|lookupOnValidate
+decl_stmt|;
 comment|/**      * Creates a new instance of PoolableUnboundConnectionFactory      *      * @param config the configuration for creating LdapConnections      */
 specifier|public
 name|PoolableUnboundConnectionFactory
@@ -229,6 +234,32 @@ operator|.
 name|config
 operator|=
 name|config
+expr_stmt|;
+block|}
+comment|/**      * Checks if a lookup is performed during {@link #validateObject(LdapConnection)}.      * @return {@code true} if a lookup is performed.      */
+specifier|public
+name|boolean
+name|getLookupOnValidate
+parameter_list|()
+block|{
+return|return
+name|lookupOnValidate
+return|;
+block|}
+comment|/**      * @see #getLookupOnValidate()      */
+specifier|public
+name|void
+name|setLookupOnValidate
+parameter_list|(
+name|boolean
+name|lookupOnValidate
+parameter_list|)
+block|{
+name|this
+operator|.
+name|lookupOnValidate
+operator|=
+name|lookupOnValidate
 expr_stmt|;
 block|}
 comment|/**      * {@inheritDoc}      */
@@ -363,6 +394,11 @@ name|isConnected
 argument_list|()
 condition|)
 block|{
+if|if
+condition|(
+name|lookupOnValidate
+condition|)
+block|{
 try|try
 block|{
 name|valid
@@ -401,6 +437,7 @@ name|toString
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 name|log

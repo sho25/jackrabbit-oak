@@ -475,6 +475,39 @@ name|PARAM_ADMIN_POOL_MAX_ACTIVE
 init|=
 literal|"adminPool.maxActive"
 decl_stmt|;
+comment|/**      * @see PoolConfig#lookupOnValidate()      */
+specifier|public
+specifier|static
+specifier|final
+name|boolean
+name|PARAM_ADMIN_POOL_LOOKUP_ON_VALIDATE_DEFAULT
+init|=
+literal|true
+decl_stmt|;
+comment|/**      * @see PoolConfig#lookupOnValidate()      */
+annotation|@
+name|Property
+argument_list|(
+name|label
+operator|=
+literal|"Admin pool lookup on validate"
+argument_list|,
+name|description
+operator|=
+literal|"Indicates an ROOT DSE lookup is performed to test if the connection is still valid when taking it out of the pool."
+argument_list|,
+name|boolValue
+operator|=
+name|PARAM_ADMIN_POOL_LOOKUP_ON_VALIDATE_DEFAULT
+argument_list|)
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|PARAM_ADMIN_POOL_LOOKUP_ON_VALIDATE
+init|=
+literal|"adminPool.lookupOnValidate"
+decl_stmt|;
 comment|/**      * @see PoolConfig#getMaxActive()      */
 specifier|public
 specifier|static
@@ -507,6 +540,39 @@ name|String
 name|PARAM_USER_POOL_MAX_ACTIVE
 init|=
 literal|"userPool.maxActive"
+decl_stmt|;
+comment|/**      * @see PoolConfig#lookupOnValidate()      */
+specifier|public
+specifier|static
+specifier|final
+name|boolean
+name|PARAM_USER_POOL_LOOKUP_ON_VALIDATE_DEFAULT
+init|=
+literal|true
+decl_stmt|;
+comment|/**      * @see PoolConfig#lookupOnValidate()      */
+annotation|@
+name|Property
+argument_list|(
+name|label
+operator|=
+literal|"User pool lookup on validate"
+argument_list|,
+name|description
+operator|=
+literal|"Indicates an ROOT DSE lookup is performed to test if the connection is still valid when taking it out of the pool."
+argument_list|,
+name|boolValue
+operator|=
+name|PARAM_USER_POOL_LOOKUP_ON_VALIDATE_DEFAULT
+argument_list|)
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|PARAM_USER_POOL_LOOKUP_ON_VALIDATE
+init|=
+literal|"userPool.lookupOnValidate"
 decl_stmt|;
 comment|/**      * @see Identity#getBaseDN()      */
 specifier|public
@@ -1382,6 +1448,10 @@ specifier|private
 name|int
 name|maxActiveSize
 decl_stmt|;
+specifier|private
+name|boolean
+name|lookupOnValidate
+decl_stmt|;
 comment|/**          * Returns the maximum number of objects that can be allocated by the pool          * (checked out to clients, or idle awaiting checkout) at a given time.          * When non-positive, there is no limit to the number of objects that can          * be managed by the pool at one time. A value of 0 disables this pool.          *          * @return the cap on the total number of object instances managed by the pool.          * @see #setMaxActive          */
 specifier|public
 name|int
@@ -1393,6 +1463,8 @@ name|maxActiveSize
 return|;
 block|}
 comment|/**          * Sets the cap on the number of objects that can be allocated by the pool.          *          * @see #getMaxActive          * @return this          */
+annotation|@
+name|Nonnull
 specifier|public
 name|PoolConfig
 name|setMaxActive
@@ -1406,6 +1478,37 @@ operator|.
 name|maxActiveSize
 operator|=
 name|maxActive
+expr_stmt|;
+return|return
+name|this
+return|;
+block|}
+comment|/**          * Defines if the lookup on validate flag is enabled. If enable a connection that taken from the          * pool are validated before used. currently this is done by performing a lookup to the ROOT DSE, which          * might not be allowed on all LDAP servers.           * @return {@code true} if the flag is enabled.          */
+specifier|public
+name|boolean
+name|lookupOnValidate
+parameter_list|()
+block|{
+return|return
+name|lookupOnValidate
+return|;
+block|}
+comment|/**          * Sets the lookup on validate flag.          *          * @see #lookupOnValidate()          * @return this          */
+annotation|@
+name|Nonnull
+specifier|public
+name|PoolConfig
+name|setLookupOnValidate
+parameter_list|(
+name|boolean
+name|lookupOnValidate
+parameter_list|)
+block|{
+name|this
+operator|.
+name|lookupOnValidate
+operator|=
+name|lookupOnValidate
 expr_stmt|;
 return|return
 name|this
@@ -1438,6 +1541,18 @@ operator|.
 name|append
 argument_list|(
 name|maxActiveSize
+argument_list|)
+expr_stmt|;
+name|sb
+operator|.
+name|append
+argument_list|(
+literal|", lookupOnValidate="
+argument_list|)
+operator|.
+name|append
+argument_list|(
+name|lookupOnValidate
 argument_list|)
 expr_stmt|;
 name|sb
@@ -1753,6 +1868,18 @@ operator|.
 name|getAdminPoolConfig
 argument_list|()
 operator|.
+name|setLookupOnValidate
+argument_list|(
+name|params
+operator|.
+name|getConfigValue
+argument_list|(
+name|PARAM_ADMIN_POOL_LOOKUP_ON_VALIDATE
+argument_list|,
+name|PARAM_ADMIN_POOL_LOOKUP_ON_VALIDATE_DEFAULT
+argument_list|)
+argument_list|)
+operator|.
 name|setMaxActive
 argument_list|(
 name|params
@@ -1769,6 +1896,18 @@ name|cfg
 operator|.
 name|getUserPoolConfig
 argument_list|()
+operator|.
+name|setLookupOnValidate
+argument_list|(
+name|params
+operator|.
+name|getConfigValue
+argument_list|(
+name|PARAM_USER_POOL_LOOKUP_ON_VALIDATE
+argument_list|,
+name|PARAM_USER_POOL_LOOKUP_ON_VALIDATE_DEFAULT
+argument_list|)
+argument_list|)
 operator|.
 name|setMaxActive
 argument_list|(
