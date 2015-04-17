@@ -79,6 +79,16 @@ begin_import
 import|import
 name|javax
 operator|.
+name|annotation
+operator|.
+name|Nullable
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
 name|jcr
 operator|.
 name|PropertyType
@@ -1423,7 +1433,7 @@ literal|0
 return|;
 block|}
 comment|// --
-comment|/**      * Converts the given value to a value of the specified target type. The      * conversion is performed according to the rules described in      * "3.6.4 Property Type Conversion" in the JCR 2.0 specification.      *       * @param value the value to convert      * @param targetType the target property type       * @param mapper the name mapper      * @return the converted value      * @throws IllegalArgumentException if mapping is illegal      */
+comment|/**      * Converts the given value to a value of the specified target type. The      * conversion is performed according to the rules described in      * "3.6.4 Property Type Conversion" in the JCR 2.0 specification.      *       * @param value the value to convert      * @param targetType the target property type       * @param mapper the name mapper or {@code null} if no name/path mapping is required.      * @return the converted value      * @throws IllegalArgumentException if mapping is illegal      */
 specifier|public
 specifier|static
 name|PropertyValue
@@ -1438,7 +1448,7 @@ name|int
 name|targetType
 parameter_list|,
 annotation|@
-name|Nonnull
+name|Nullable
 name|NamePathMapper
 name|mapper
 parameter_list|)
