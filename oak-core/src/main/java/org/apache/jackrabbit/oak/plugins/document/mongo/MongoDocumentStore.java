@@ -1163,7 +1163,7 @@ argument_list|(
 literal|"oak.mongo.disableIndexHint"
 argument_list|)
 decl_stmt|;
-comment|/**      * Duration in milliseconds after which a mongo query will be terminated.      *<p>      * If this value is -1 no timeout is being set at all, if it is 1 or greater      * this translated to MongoDB's maxTimeNS being set accordingly.      *<p>      * Default is -1.      * See: http://mongodb.github.io/node-mongodb-native/driver-articles/anintroductionto1_4_and_2_6.html#maxtimems      */
+comment|/**      * Duration in milliseconds after which a mongo query will be terminated.      *<p>      * If this value is -1 no timeout is being set at all, if it is 1 or greater      * this translated to MongoDB's maxTimeNS being set accordingly.      *<p>      * Default is 60'000 (one minute).      * See: http://mongodb.github.io/node-mongodb-native/driver-articles/anintroductionto1_4_and_2_6.html#maxtimems      */
 specifier|private
 specifier|final
 name|long
@@ -1175,8 +1175,14 @@ name|getLong
 argument_list|(
 literal|"oak.mongo.maxQueryTimeMS"
 argument_list|,
-operator|-
+name|TimeUnit
+operator|.
+name|MINUTES
+operator|.
+name|toMillis
+argument_list|(
 literal|1
+argument_list|)
 argument_list|)
 decl_stmt|;
 specifier|private
