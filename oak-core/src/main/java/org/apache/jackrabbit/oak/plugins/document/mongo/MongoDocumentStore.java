@@ -1134,7 +1134,7 @@ specifier|final
 name|long
 name|maxReplicationLagMillis
 decl_stmt|;
-comment|/**      * Duration in seconds under which queries would use index on _modified field      * If set to -1 then modifiedTime index would not be used      */
+comment|/**      * Duration in seconds under which queries would use index on _modified field      * If set to -1 then modifiedTime index would not be used.      *<p>      * Default is 60 seconds.      */
 specifier|private
 specifier|final
 name|long
@@ -1146,8 +1146,7 @@ name|getLong
 argument_list|(
 literal|"oak.mongo.maxDeltaForModTimeIdxSecs"
 argument_list|,
-operator|-
-literal|1
+literal|60
 argument_list|)
 decl_stmt|;
 comment|/**      * Disables the index hint sent to MongoDB.      * This overrides {@link #maxDeltaForModTimeIdxSecs}.      */
