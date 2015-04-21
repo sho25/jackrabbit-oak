@@ -784,8 +784,6 @@ specifier|public
 name|boolean
 name|apply
 parameter_list|(
-annotation|@
-name|Nullable
 name|ContentChange
 name|input
 parameter_list|)
@@ -830,8 +828,6 @@ specifier|public
 name|boolean
 name|apply
 parameter_list|(
-annotation|@
-name|Nullable
 name|ContentChange
 name|input
 parameter_list|)
