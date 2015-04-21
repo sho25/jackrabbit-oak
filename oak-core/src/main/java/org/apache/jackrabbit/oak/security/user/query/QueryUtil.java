@@ -318,6 +318,8 @@ specifier|static
 name|String
 name|getNodeTypeName
 parameter_list|(
+annotation|@
+name|Nonnull
 name|AuthorizableType
 name|type
 parameter_list|)

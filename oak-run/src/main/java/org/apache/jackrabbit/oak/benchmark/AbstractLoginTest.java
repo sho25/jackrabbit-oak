@@ -626,9 +626,6 @@ name|runAsUser
 argument_list|)
 condition|)
 block|{
-name|User
-name|user
-init|=
 operator|(
 operator|(
 name|JackrabbitSession
@@ -645,7 +642,7 @@ name|USER
 argument_list|,
 name|USER
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 block|}
 block|}
 finally|finally

@@ -318,6 +318,11 @@ name|ConfigurationBase
 implements|implements
 name|PrincipalConfiguration
 block|{
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"UnusedDeclaration"
+argument_list|)
 specifier|public
 name|PrincipalConfigurationImpl
 parameter_list|()
@@ -439,6 +444,33 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
+name|PrincipalProvider
+name|principalProvider
+init|=
+name|uc
+operator|.
+name|getUserPrincipalProvider
+argument_list|(
+name|root
+argument_list|,
+name|namePathMapper
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|principalProvider
+operator|!=
+literal|null
+condition|)
+block|{
+comment|// use user-implementation specific principal provider implementation
+return|return
+name|principalProvider
+return|;
+block|}
+else|else
+block|{
+comment|// use default implementation acting on user management API
 return|return
 operator|new
 name|PrincipalProviderImpl
@@ -450,6 +482,7 @@ argument_list|,
 name|namePathMapper
 argument_list|)
 return|;
+block|}
 block|}
 comment|//----------------------------------------------< SecurityConfiguration>---
 annotation|@
