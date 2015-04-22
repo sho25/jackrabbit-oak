@@ -32,7 +32,7 @@ specifier|public
 interface|interface
 name|RepositoryPermission
 block|{
-comment|/**      * Returns {@code true} if the specified repository level permissions are      * {@code granted}; false otherwise.      *      * @param repositoryPermissions Any valid repository level permission such as      * for example:      *<ul>      *<li>{@link Permissions#NAMESPACE_MANAGEMENT}</li>      *<li>{@link Permissions#NODE_TYPE_DEFINITION_MANAGEMENT}</li>      *<li>{@link Permissions#PRIVILEGE_MANAGEMENT}</li>      *<li>{@link Permissions#WORKSPACE_MANAGEMENT}</li>      *</ul>      * @return {@code true} if the specified repository level permissions are      * {@code granted}; false otherwise.      */
+comment|/**      * Returns {@code true} if the specified repository level permissions are      * {@code granted}; false otherwise.      *      * @param repositoryPermissions Any valid repository level permission such as      * for example:      *<ul>      *<li>{@link Permissions#NAMESPACE_MANAGEMENT}</li>      *<li>{@link Permissions#NODE_TYPE_DEFINITION_MANAGEMENT}</li>      *<li>{@link Permissions#PRIVILEGE_MANAGEMENT}</li>      *<li>{@link Permissions#WORKSPACE_MANAGEMENT}</li>      *</ul>      * @return {@code true} if the specified repository level permissions are      * {@code granted}; {@code false} otherwise      * @see {@link Permissions#isRepositoryPermission(long)}      */
 name|boolean
 name|isGranted
 parameter_list|(
