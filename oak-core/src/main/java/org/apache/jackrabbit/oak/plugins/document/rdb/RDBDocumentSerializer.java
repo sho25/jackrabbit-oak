@@ -679,22 +679,6 @@ name|getRevision
 argument_list|()
 condition|)
 continue|continue;
-comment|// already checked
-if|if
-condition|(
-name|op
-operator|.
-name|type
-operator|==
-name|UpdateOp
-operator|.
-name|Operation
-operator|.
-name|Type
-operator|.
-name|CONTAINS_MAP_ENTRY
-condition|)
-continue|continue;
 if|if
 condition|(
 name|needComma
@@ -1210,7 +1194,7 @@ literal|'"'
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Reconstructs a {@link Document) based on the persisted {@link DBRow}.      */
+comment|/**      * Reconstructs a {@link Document) based on the persisted {@link RDBRow}.      */
 specifier|public
 parameter_list|<
 name|T

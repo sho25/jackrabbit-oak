@@ -1160,6 +1160,24 @@ return|return
 name|creationTime
 return|;
 block|}
+comment|/**      * See also {@link #MODIFIED_IN_SECS}.      *      * @return the time in seconds this document was last modified with five      *          seconds precision. Returns {@code null} if none is set.      */
+annotation|@
+name|CheckForNull
+specifier|public
+name|Long
+name|getModified
+parameter_list|()
+block|{
+return|return
+operator|(
+name|Long
+operator|)
+name|get
+argument_list|(
+name|MODIFIED_IN_SECS
+argument_list|)
+return|;
+block|}
 comment|/**      * Returns<tt>true</tt> if this node possibly has children.      * If false then that indicates that there are no child      *      * @return<tt>true</tt> if this node has children      */
 specifier|public
 name|boolean

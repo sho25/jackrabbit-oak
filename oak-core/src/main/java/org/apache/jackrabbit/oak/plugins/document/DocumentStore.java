@@ -234,7 +234,7 @@ name|String
 name|key
 parameter_list|)
 function_decl|;
-comment|/**      * Batch remove documents with given key. Keys for documents that do not      * exist are simply ignored. If this method fails with an exception, then      * only some of the documents identified by {@code keys} may have been      * removed.      *      * @param<T> the document type      * @param collection the collection      * @param keys list of keys      */
+comment|/**      * Batch remove documents with given keys. Keys for documents that do not      * exist are simply ignored. If this method fails with an exception, then      * only some of the documents identified by {@code keys} may have been      * removed.      *      * @param<T> the document type      * @param collection the collection      * @param keys list of keys      */
 parameter_list|<
 name|T
 extends|extends
@@ -254,6 +254,39 @@ argument_list|<
 name|String
 argument_list|>
 name|keys
+parameter_list|)
+function_decl|;
+comment|/**      * Batch remove documents with given keys and corresponding conditions. Keys      * for documents that do not exist are simply ignored. A document is only      * removed if the corresponding conditions are met. If this method fails      * with an exception, then only some of the documents may have been removed.      *      * @param<T> the document type      * @param collection the collection.      * @param toRemove the keys of the documents to remove with the      *                 corresponding conditions.      * @return the number of removed documents.      */
+parameter_list|<
+name|T
+extends|extends
+name|Document
+parameter_list|>
+name|int
+name|remove
+parameter_list|(
+name|Collection
+argument_list|<
+name|T
+argument_list|>
+name|collection
+parameter_list|,
+name|Map
+argument_list|<
+name|String
+argument_list|,
+name|Map
+argument_list|<
+name|UpdateOp
+operator|.
+name|Key
+argument_list|,
+name|UpdateOp
+operator|.
+name|Condition
+argument_list|>
+argument_list|>
+name|toRemove
 parameter_list|)
 function_decl|;
 comment|/**      * Try to create a list of documents. This method returns {@code code} iff      * none of the documents existed before and the create was successful. This      * method will return {@code false} if one of the documents already exists      * in the store. Some documents may still have been created in the store.      * An implementation does not have to guarantee an atomic create of all the      * documents described in the {@code updateOps}. It is the responsibility of      * the caller to check, which documents were created and take appropriate      * action. The same is true when this method throws an exception (e.g. when      * a communication error occurs). In this case only some documents may have      * been created.      *      * @param<T> the document type      * @param collection the collection      * @param updateOps the list of documents to add      * @return true if this worked (if none of the documents already existed)      */
@@ -324,7 +357,7 @@ name|UpdateOp
 name|update
 parameter_list|)
 function_decl|;
-comment|/**      * Performs a conditional update (e.g. using      * {@link UpdateOp.Operation.Type#CONTAINS_MAP_ENTRY} and only updates the      * document if the condition is<code>true</code>. The returned document is      * immutable.      *      * @param<T> the document type      * @param collection the collection      * @param update the update operation with the condition      * @return the old document or<code>null</code> if the condition is not met or      *         if the document wasn't found      */
+comment|/**      * Performs a conditional update (e.g. using      * {@link UpdateOp.Condition.Type#EXISTS} and only updates the      * document if the condition is<code>true</code>. The returned document is      * immutable.      *      * @param<T> the document type      * @param collection the collection      * @param update the update operation with the condition      * @return the old document or<code>null</code> if the condition is not met or      *         if the document wasn't found      */
 annotation|@
 name|CheckForNull
 argument_list|<
