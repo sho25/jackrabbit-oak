@@ -1059,6 +1059,7 @@ block|}
 block|}
 comment|/**      * Principal representation of this group instance.      */
 specifier|private
+specifier|final
 class|class
 name|GroupPrincipal
 extends|extends

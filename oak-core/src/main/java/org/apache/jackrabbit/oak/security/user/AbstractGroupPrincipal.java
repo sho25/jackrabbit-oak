@@ -469,6 +469,8 @@ operator|new
 name|IllegalStateException
 argument_list|(
 name|msg
+argument_list|,
+name|e
 argument_list|)
 throw|;
 block|}
@@ -551,6 +553,8 @@ operator|new
 name|IllegalStateException
 argument_list|(
 name|msg
+argument_list|,
+name|e
 argument_list|)
 throw|;
 block|}
