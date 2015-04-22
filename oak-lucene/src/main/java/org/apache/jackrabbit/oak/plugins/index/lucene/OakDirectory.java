@@ -862,7 +862,6 @@ name|long
 name|length
 decl_stmt|;
 specifier|private
-specifier|final
 name|List
 argument_list|<
 name|Blob
@@ -883,7 +882,6 @@ operator|-
 literal|1
 decl_stmt|;
 specifier|private
-specifier|final
 name|byte
 index|[]
 name|blob
@@ -1966,7 +1964,18 @@ name|void
 name|close
 parameter_list|()
 block|{
-comment|// do nothing
+name|file
+operator|.
+name|blob
+operator|=
+literal|null
+expr_stmt|;
+name|file
+operator|.
+name|data
+operator|=
+literal|null
+expr_stmt|;
 block|}
 block|}
 specifier|private
@@ -2136,6 +2145,18 @@ name|IOException
 block|{
 name|flush
 argument_list|()
+expr_stmt|;
+name|file
+operator|.
+name|blob
+operator|=
+literal|null
+expr_stmt|;
+name|file
+operator|.
+name|data
+operator|=
+literal|null
 expr_stmt|;
 block|}
 block|}
