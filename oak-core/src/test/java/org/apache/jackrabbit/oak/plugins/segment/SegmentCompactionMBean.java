@@ -51,6 +51,19 @@ name|String
 name|getLastCompaction
 parameter_list|()
 function_decl|;
+comment|/**      * Time to wait for the commit lock for committing the compacted head.      * @param seconds  number of seconds to wait      * @see SegmentNodeStore#locked(java.util.concurrent.Callable, long, java.util.concurrent.TimeUnit)      */
+name|void
+name|setLockWaitTime
+parameter_list|(
+name|int
+name|seconds
+parameter_list|)
+function_decl|;
+comment|/**      * Time to wait for the commit lock for committing the compacted head.      * @return  number of seconds      * @see SegmentNodeStore#locked(java.util.concurrent.Callable, long, java.util.concurrent.TimeUnit)      */
+name|int
+name|getLockWaitTime
+parameter_list|()
+function_decl|;
 comment|/**      * Set the maximal number of concurrent readers      * @param count      */
 name|void
 name|setMaxReaders

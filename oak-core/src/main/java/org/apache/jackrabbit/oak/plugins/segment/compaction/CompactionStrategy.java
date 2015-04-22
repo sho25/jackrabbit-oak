@@ -200,6 +200,24 @@ name|MEMORY_THRESHOLD_DEFAULT
 init|=
 literal|5
 decl_stmt|;
+comment|/**      * Default value for {@link #getRetryCount()}      */
+specifier|public
+specifier|static
+specifier|final
+name|int
+name|RETRY_COUNT_DEFAULT
+init|=
+literal|5
+decl_stmt|;
+comment|/**      * Default value for {@link #getForceAfterFail()}      */
+specifier|public
+specifier|static
+specifier|final
+name|boolean
+name|FORCE_AFTER_FAIL_DEFAULT
+init|=
+literal|true
+decl_stmt|;
 comment|/**      * No compaction at all      */
 specifier|public
 specifier|static
@@ -269,6 +287,18 @@ name|byte
 name|memoryThreshold
 init|=
 name|MEMORY_THRESHOLD_DEFAULT
+decl_stmt|;
+specifier|private
+name|int
+name|retryCount
+init|=
+name|RETRY_COUNT_DEFAULT
+decl_stmt|;
+specifier|private
+name|boolean
+name|forceAfterFail
+init|=
+name|FORCE_AFTER_FAIL_DEFAULT
 decl_stmt|;
 specifier|private
 name|CompactionMap
@@ -592,6 +622,58 @@ operator|.
 name|memoryThreshold
 operator|=
 name|memoryThreshold
+expr_stmt|;
+block|}
+comment|/**      * Get whether or not to force compact concurrent commits on top of already      * compacted commits after the maximum number of retries has been reached.      * Force committing tries to exclusively write lock the node store.      * @return  {@code true} if force commit is on, {@code false} otherwise      */
+specifier|public
+name|boolean
+name|getForceAfterFail
+parameter_list|()
+block|{
+return|return
+name|forceAfterFail
+return|;
+block|}
+comment|/**      * Set whether or not to force compact concurrent commits on top of already      * compacted commits after the maximum number of retries has been reached.      * Force committing tries to exclusively write lock the node store.      * @param forceAfterFail      */
+specifier|public
+name|void
+name|setForceAfterFail
+parameter_list|(
+name|boolean
+name|forceAfterFail
+parameter_list|)
+block|{
+name|this
+operator|.
+name|forceAfterFail
+operator|=
+name|forceAfterFail
+expr_stmt|;
+block|}
+comment|/**      * Get the number of tries to compact concurrent commits on top of already      * compacted commits      * @return  retry count      */
+specifier|public
+name|int
+name|getRetryCount
+parameter_list|()
+block|{
+return|return
+name|retryCount
+return|;
+block|}
+comment|/**      * Set the number of tries to compact concurrent commits on top of already      * compacted commits      * @param retryCount      */
+specifier|public
+name|void
+name|setRetryCount
+parameter_list|(
+name|int
+name|retryCount
+parameter_list|)
+block|{
+name|this
+operator|.
+name|retryCount
+operator|=
+name|retryCount
 expr_stmt|;
 block|}
 specifier|public

@@ -86,6 +86,32 @@ name|byte
 name|memory
 parameter_list|)
 function_decl|;
+comment|/**      * Get whether or not to force compact concurrent commits on top of already      * compacted commits after the maximum number of retries has been reached.      * Force committing tries to exclusively write lock the node store.      * @return  {@code true} if force commit is on, {@code false} otherwise      */
+name|boolean
+name|getForceAfterFail
+parameter_list|()
+function_decl|;
+comment|/**      * Set whether or not to force compact concurrent commits on top of already      * compacted commits after the maximum number of retries has been reached.      * Force committing tries to exclusively write lock the node store.      * @param forceAfterFail      */
+name|void
+name|setForceAfterFail
+parameter_list|(
+name|boolean
+name|forceAfterFail
+parameter_list|)
+function_decl|;
+comment|/**      * Get the number of tries to compact concurrent commits on top of already      * compacted commits      * @return  retry count      */
+name|int
+name|getRetryCount
+parameter_list|()
+function_decl|;
+comment|/**      * Set the number of tries to compact concurrent commits on top of already      * compacted commits      * @param retryCount      */
+name|void
+name|setRetryCount
+parameter_list|(
+name|int
+name|retryCount
+parameter_list|)
+function_decl|;
 name|String
 name|getCompactionMapStats
 parameter_list|()
