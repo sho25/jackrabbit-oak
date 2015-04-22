@@ -220,26 +220,6 @@ import|;
 end_import
 
 begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|spi
-operator|.
-name|commons
-operator|.
-name|name
-operator|.
-name|NameConstants
-operator|.
-name|ANY_NAME
-import|;
-end_import
-
-begin_import
 import|import
 name|java
 operator|.
@@ -276,16 +256,6 @@ operator|.
 name|util
 operator|.
 name|Collection
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Collections
 import|;
 end_import
 
@@ -1622,18 +1592,6 @@ operator|.
 name|slf4j
 operator|.
 name|LoggerFactory
-import|;
-end_import
-
-begin_import
-import|import
-name|sun
-operator|.
-name|rmi
-operator|.
-name|log
-operator|.
-name|LogInputStream
 import|;
 end_import
 
@@ -4047,14 +4005,6 @@ condition|(
 name|name
 operator|!=
 literal|null
-operator|&&
-operator|!
-name|name
-operator|.
-name|equals
-argument_list|(
-name|ANY_NAME
-argument_list|)
 condition|)
 block|{
 name|tmpl
@@ -4242,14 +4192,6 @@ condition|(
 name|name
 operator|!=
 literal|null
-operator|&&
-operator|!
-name|name
-operator|.
-name|equals
-argument_list|(
-name|ANY_NAME
-argument_list|)
 condition|)
 block|{
 name|tmpl
