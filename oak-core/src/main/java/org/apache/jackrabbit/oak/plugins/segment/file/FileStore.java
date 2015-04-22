@@ -3412,7 +3412,7 @@ expr_stmt|;
 block|}
 name|writer
 operator|.
-name|cleanup
+name|collectReferences
 argument_list|(
 name|ids
 argument_list|)
