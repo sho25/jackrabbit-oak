@@ -1598,7 +1598,7 @@ argument_list|>
 name|collection
 parameter_list|,
 name|String
-name|path
+name|key
 parameter_list|)
 block|{
 if|if
@@ -1609,7 +1609,7 @@ literal|"2:/x/y"
 operator|.
 name|equals
 argument_list|(
-name|path
+name|key
 argument_list|)
 condition|)
 block|{
@@ -1625,7 +1625,7 @@ name|remove
 argument_list|(
 name|collection
 argument_list|,
-name|path
+name|key
 argument_list|)
 expr_stmt|;
 block|}
