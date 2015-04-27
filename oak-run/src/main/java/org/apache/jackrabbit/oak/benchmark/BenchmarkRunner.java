@@ -1781,6 +1781,10 @@ name|ObservationTest
 argument_list|()
 block|,
 operator|new
+name|RevisionGCTest
+argument_list|()
+block|,
+operator|new
 name|XmlImportTest
 argument_list|()
 block|,
