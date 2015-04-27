@@ -290,7 +290,7 @@ name|RevisionGCTest
 extends|extends
 name|Benchmark
 block|{
-specifier|private
+specifier|protected
 specifier|static
 specifier|final
 name|float
@@ -310,7 +310,7 @@ literal|"0.5"
 argument_list|)
 argument_list|)
 decl_stmt|;
-specifier|private
+specifier|protected
 specifier|static
 specifier|final
 name|String
@@ -325,7 +325,7 @@ argument_list|,
 literal|"nt:unstructured"
 argument_list|)
 decl_stmt|;
-specifier|private
+specifier|protected
 specifier|static
 specifier|final
 name|int
@@ -511,7 +511,7 @@ block|}
 block|}
 block|}
 block|}
-specifier|private
+specifier|protected
 name|void
 name|run
 parameter_list|(
@@ -710,7 +710,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-specifier|private
+specifier|protected
 specifier|static
 name|String
 name|revisionGC
@@ -814,7 +814,7 @@ argument_list|()
 argument_list|)
 throw|;
 block|}
-specifier|private
+specifier|protected
 specifier|static
 name|NodeStore
 name|getNodeStore
@@ -856,7 +856,7 @@ name|oak
 argument_list|)
 return|;
 block|}
-specifier|private
+specifier|protected
 specifier|static
 name|Session
 name|createSession
