@@ -296,9 +296,6 @@ name|void
 name|unregister
 parameter_list|(
 name|SolrServerConfiguration
-argument_list|<
-name|SolrServerProvider
-argument_list|>
 name|configuration
 parameter_list|,
 annotation|@

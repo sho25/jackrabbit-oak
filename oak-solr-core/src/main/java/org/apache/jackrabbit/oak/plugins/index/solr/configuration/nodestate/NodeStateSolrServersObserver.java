@@ -299,7 +299,7 @@ parameter_list|)
 block|{
 name|log
 operator|.
-name|debug
+name|info
 argument_list|(
 literal|"shutting down servers at {}"
 argument_list|,
@@ -356,7 +356,7 @@ argument_list|()
 expr_stmt|;
 name|log
 operator|.
-name|debug
+name|info
 argument_list|(
 literal|"searching SolrServer shut down"
 argument_list|)
@@ -405,7 +405,7 @@ argument_list|()
 expr_stmt|;
 name|log
 operator|.
-name|debug
+name|info
 argument_list|(
 literal|"indexing SolrServer shut down"
 argument_list|)
