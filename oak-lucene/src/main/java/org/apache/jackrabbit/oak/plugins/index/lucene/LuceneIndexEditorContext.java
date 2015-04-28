@@ -535,7 +535,6 @@ literal|".perf"
 argument_list|)
 argument_list|)
 decl_stmt|;
-specifier|private
 specifier|static
 name|IndexWriterConfig
 name|getIndexWriterConfig
@@ -634,7 +633,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-specifier|private
 specifier|static
 name|Directory
 name|newIndexDirectory
