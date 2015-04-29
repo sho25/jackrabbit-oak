@@ -472,7 +472,7 @@ name|getInteger
 argument_list|(
 literal|"oak.maxLockTryTimeMultiplier"
 argument_list|,
-literal|3
+literal|30
 argument_list|)
 decl_stmt|;
 specifier|private
