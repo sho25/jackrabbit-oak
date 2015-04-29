@@ -920,6 +920,8 @@ argument_list|(
 name|hook
 argument_list|,
 name|info
+argument_list|,
+literal|false
 argument_list|)
 return|;
 block|}
@@ -947,57 +949,16 @@ block|}
 block|}
 comment|// retry with exclusive lock, blocking other
 comment|// concurrent writes
-comment|// do not wait forever
-name|Lock
-name|lock
-init|=
-literal|null
-decl_stmt|;
-try|try
-block|{
-name|lock
-operator|=
-name|acquireMergeLock
-argument_list|(
-literal|true
-argument_list|)
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|InterruptedException
-name|e
-parameter_list|)
-block|{
-comment|// ignore and proceed with shared lock used in base class
-block|}
-try|try
-block|{
 return|return
 name|merge0
 argument_list|(
 name|hook
 argument_list|,
 name|info
+argument_list|,
+literal|true
 argument_list|)
 return|;
-block|}
-finally|finally
-block|{
-if|if
-condition|(
-name|lock
-operator|!=
-literal|null
-condition|)
-block|{
-name|lock
-operator|.
-name|unlock
-argument_list|()
-expr_stmt|;
-block|}
-block|}
 block|}
 annotation|@
 name|Override
@@ -1042,6 +1003,9 @@ annotation|@
 name|Nonnull
 name|CommitInfo
 name|info
+parameter_list|,
+name|boolean
+name|exclusive
 parameter_list|)
 throws|throws
 name|CommitFailedException
@@ -1178,7 +1142,7 @@ name|lock
 init|=
 name|acquireMergeLock
 argument_list|(
-literal|false
+name|exclusive
 argument_list|)
 decl_stmt|;
 try|try
