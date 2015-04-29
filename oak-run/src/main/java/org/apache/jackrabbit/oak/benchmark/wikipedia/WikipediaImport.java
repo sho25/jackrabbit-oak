@@ -295,6 +295,11 @@ specifier|final
 name|boolean
 name|flat
 decl_stmt|;
+comment|/**      * Used in {@link #importWikipedia(Session)}. If set to true it will stop the loop for the      * import. Use {@link #issueHaltImport()} to issue an halt request.      */
+specifier|private
+name|boolean
+name|haltImport
+decl_stmt|;
 specifier|public
 name|WikipediaImport
 parameter_list|(
@@ -561,6 +566,17 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+comment|/**      * will issue an halt request for the {@link #importWikipedia(Session)} so that it will stop      * importing.      */
+specifier|public
+name|void
+name|issueHaltImport
+parameter_list|()
+block|{
+name|haltImport
+operator|=
+literal|true
+expr_stmt|;
+block|}
 specifier|public
 name|int
 name|importWikipedia
@@ -760,6 +776,10 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+name|haltImport
+operator|=
+literal|false
+expr_stmt|;
 name|XMLStreamReader
 name|reader
 init|=
@@ -776,6 +796,9 @@ name|reader
 operator|.
 name|hasNext
 argument_list|()
+operator|&&
+operator|!
+name|haltImport
 condition|)
 block|{
 switch|switch

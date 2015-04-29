@@ -25,6 +25,22 @@ end_package
 
 begin_import
 import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkNotNull
+import|;
+end_import
+
+begin_import
+import|import static
 name|org
 operator|.
 name|apache
@@ -385,14 +401,39 @@ operator|=
 name|storageEnabled
 expr_stmt|;
 block|}
+comment|/**      * set the {@code async} property to "async".      * @return      */
 specifier|public
 name|LuceneInitializerHelper
 name|async
 parameter_list|()
 block|{
+return|return
+name|async
+argument_list|(
+literal|"async"
+argument_list|)
+return|;
+block|}
+comment|/**      * will set the {@code async} property to the provided value      *       * @param async      * @return      */
+specifier|public
+name|LuceneInitializerHelper
+name|async
+parameter_list|(
+annotation|@
+name|Nonnull
+specifier|final
+name|String
+name|async
+parameter_list|)
+block|{
+name|this
+operator|.
 name|async
 operator|=
-literal|"async"
+name|checkNotNull
+argument_list|(
+name|async
+argument_list|)
 expr_stmt|;
 return|return
 name|this
