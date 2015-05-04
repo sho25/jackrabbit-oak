@@ -675,6 +675,8 @@ name|INDEX_DATA_CHILD_NAME
 argument_list|)
 argument_list|,
 name|indexDefinition
+argument_list|,
+literal|false
 argument_list|)
 return|;
 block|}
@@ -765,6 +767,10 @@ decl_stmt|;
 specifier|private
 name|Parser
 name|parser
+decl_stmt|;
+specifier|private
+name|Directory
+name|directory
 decl_stmt|;
 comment|/**      * The media types supported by the parser used.      */
 specifier|private
@@ -891,17 +897,21 @@ operator|.
 name|start
 argument_list|()
 decl_stmt|;
-name|writer
+name|directory
 operator|=
-operator|new
-name|IndexWriter
-argument_list|(
 name|newIndexDirectory
 argument_list|(
 name|definition
 argument_list|,
 name|definitionBuilder
 argument_list|)
+expr_stmt|;
+name|writer
+operator|=
+operator|new
+name|IndexWriter
+argument_list|(
+name|directory
 argument_list|,
 name|config
 argument_list|)
@@ -969,6 +979,11 @@ name|updateSuggester
 argument_list|()
 expr_stmt|;
 name|writer
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
+name|directory
 operator|.
 name|close
 argument_list|()

@@ -9858,6 +9858,17 @@ name|STRINGS
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|def
+operator|.
+name|setProperty
+argument_list|(
+name|LuceneIndexConstants
+operator|.
+name|SAVE_DIR_LISTING
+argument_list|,
+literal|true
+argument_list|)
+expr_stmt|;
 return|return
 name|index
 operator|.

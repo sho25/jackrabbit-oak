@@ -419,6 +419,12 @@ name|PROP_NOT_NULL_CHECK_ENABLED
 init|=
 literal|"notNullCheckEnabled"
 decl_stmt|;
+comment|/**      * Boolean property indicating that Lucene directory content      * should be saved as part of NodeState itself as a multi value property      * to allow faster reads (OAK-2809)      */
+name|String
+name|SAVE_DIR_LISTING
+init|=
+literal|"saveDirectoryListing"
+decl_stmt|;
 block|}
 end_interface
 
