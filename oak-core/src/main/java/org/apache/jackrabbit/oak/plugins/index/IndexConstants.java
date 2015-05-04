@@ -106,6 +106,12 @@ name|INDEX_CONTENT_NODE_NAME
 init|=
 literal|":index"
 decl_stmt|;
+comment|/**      * MVP to define the paths for which the index can be used to perform      * queries. Defaults to ['/'].      */
+name|String
+name|QUERY_PATHS
+init|=
+literal|"queryPaths"
+decl_stmt|;
 block|}
 end_interface
 
