@@ -95,9 +95,57 @@ name|common
 operator|.
 name|collect
 operator|.
+name|Lists
+operator|.
+name|newArrayList
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|collect
+operator|.
+name|Lists
+operator|.
+name|reverse
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|collect
+operator|.
 name|Maps
 operator|.
 name|newHashMap
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|collect
+operator|.
+name|Maps
+operator|.
+name|newLinkedHashMap
 import|;
 end_import
 
@@ -492,7 +540,7 @@ name|closed
 init|=
 literal|false
 decl_stmt|;
-comment|/**      * Map of the entries that have already been written. Used by the      * {@link #containsEntry(long, long)} and {@link #readEntry(long, long)}      * methods to retrieve data from this file while it's still being written,      * and finally by the {@link #close()} method to generate the tar index.      * Should only be accessed from synchronized code;      */
+comment|/**      * Map of the entries that have already been written. Used by the      * {@link #containsEntry(long, long)} and {@link #readEntry(long, long)}      * methods to retrieve data from this file while it's still being written,      * and finally by the {@link #close()} method to generate the tar index.      * The map is ordered in the order that entries have been written.      *<p>      * Should only be accessed from synchronized code.      */
 specifier|private
 specifier|final
 name|Map
@@ -503,7 +551,7 @@ name|TarEntry
 argument_list|>
 name|index
 init|=
-name|newHashMap
+name|newLinkedHashMap
 argument_list|()
 decl_stmt|;
 specifier|private
@@ -517,6 +565,7 @@ init|=
 name|newHashSet
 argument_list|()
 decl_stmt|;
+comment|/**      * Segment graph of the entries that have already been written.      */
 specifier|private
 specifier|final
 name|SortedMap
@@ -2200,7 +2249,7 @@ return|return
 name|header
 return|;
 block|}
-comment|/**      * Add all segment ids that are reachable from {@code referencedIds} via      * this writer's segment graph and subsequently remove those segment ids      * from {@code referencedIds} that are in this {{TarWriter}} as those can't      * be cleaned up anyway.      * @param referencedIds      * @throws IOException      */
+comment|/**      * Add all segment ids that are reachable from {@code referencedIds} via      * this writer's segment graph and subsequently remove those segment ids      * from {@code referencedIds} that are in this {@code TarWriter}. The      * latter can't be cleaned up anyway because they are not be present in      * any of the readers.      *      * @param referencedIds      * @throws IOException      */
 specifier|synchronized
 name|void
 name|collectReferences
@@ -2214,22 +2263,32 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
-name|Set
-argument_list|<
-name|UUID
-argument_list|>
-name|referenced
-init|=
-name|newHashSet
-argument_list|()
-decl_stmt|;
 for|for
 control|(
 name|UUID
-name|id
+name|uuid
 range|:
-name|referencedIds
+name|reverse
+argument_list|(
+name|newArrayList
+argument_list|(
+name|index
+operator|.
+name|keySet
+argument_list|()
+argument_list|)
+argument_list|)
 control|)
+block|{
+if|if
+condition|(
+name|referencedIds
+operator|.
+name|remove
+argument_list|(
+name|uuid
+argument_list|)
+condition|)
 block|{
 name|List
 argument_list|<
@@ -2241,7 +2300,7 @@ name|graph
 operator|.
 name|get
 argument_list|(
-name|id
+name|uuid
 argument_list|)
 decl_stmt|;
 if|if
@@ -2251,7 +2310,7 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|referenced
+name|referencedIds
 operator|.
 name|addAll
 argument_list|(
@@ -2260,23 +2319,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-name|referencedIds
-operator|.
-name|addAll
-argument_list|(
-name|referenced
-argument_list|)
-expr_stmt|;
-name|referencedIds
-operator|.
-name|removeAll
-argument_list|(
-name|index
-operator|.
-name|keySet
-argument_list|()
-argument_list|)
-expr_stmt|;
+block|}
 block|}
 comment|//------------------------------------------------------------< Object>--
 annotation|@

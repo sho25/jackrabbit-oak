@@ -365,16 +365,6 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Ignore
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
 name|Test
 import|;
 end_import
@@ -387,12 +377,6 @@ block|{
 comment|/**      * Regression test for OAK-2800      */
 annotation|@
 name|Test
-annotation|@
-name|Ignore
-argument_list|(
-literal|"OAK-2800"
-argument_list|)
-comment|// FIXME OAK-2800
 specifier|public
 name|void
 name|collectReferences
