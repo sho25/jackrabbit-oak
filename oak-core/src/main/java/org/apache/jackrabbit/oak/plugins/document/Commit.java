@@ -2618,7 +2618,7 @@ name|cacheEntry
 init|=
 name|nodeStore
 operator|.
-name|getLocalDiffCache
+name|getDiffCache
 argument_list|()
 operator|.
 name|newEntry

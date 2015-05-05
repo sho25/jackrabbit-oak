@@ -345,26 +345,11 @@ init|=
 name|newLinkedList
 argument_list|()
 decl_stmt|;
-specifier|private
-specifier|final
-name|ContentChangeInfo
-name|changeInfo
-decl_stmt|;
-comment|/**      * Creates a new generator instance. Changes to process need to be added      * through {@link #addHandler(NodeState, NodeState, EventHandler)}      * @param changeInfo      */
+comment|/**      * Creates a new generator instance. Changes to process need to be added      * through {@link #addHandler(NodeState, NodeState, EventHandler)}      */
 specifier|public
 name|EventGenerator
-parameter_list|(
-name|ContentChangeInfo
-name|changeInfo
-parameter_list|)
-block|{
-name|this
-operator|.
-name|changeInfo
-operator|=
-name|changeInfo
-expr_stmt|;
-block|}
+parameter_list|()
+block|{}
 comment|/**      * Creates a new generator instance for processing the given changes.      */
 specifier|public
 name|EventGenerator
@@ -381,20 +366,10 @@ name|after
 parameter_list|,
 annotation|@
 name|Nonnull
-name|ContentChangeInfo
-name|changeInfo
-parameter_list|,
-annotation|@
-name|Nonnull
 name|EventHandler
 name|handler
 parameter_list|)
 block|{
-name|this
-argument_list|(
-name|changeInfo
-argument_list|)
-expr_stmt|;
 name|continuations
 operator|.
 name|addFirst
@@ -522,8 +497,6 @@ implements|implements
 name|NodeStateDiff
 implements|,
 name|Runnable
-implements|,
-name|ContentChangeInfoProvider
 block|{
 comment|/**          * Filtered handler of detected content changes.          */
 specifier|private
@@ -649,18 +622,6 @@ name|after
 argument_list|)
 expr_stmt|;
 block|}
-block|}
-comment|//-------------------------------------------------< ContentChangeInfoProvider>--
-annotation|@
-name|Override
-specifier|public
-name|ContentChangeInfo
-name|getChangeInfo
-parameter_list|()
-block|{
-return|return
-name|changeInfo
-return|;
 block|}
 comment|//-------------------------------------------------< NodeStateDiff>--
 annotation|@

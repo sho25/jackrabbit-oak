@@ -49,6 +49,22 @@ name|Nullable
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|cache
+operator|.
+name|CacheStats
+import|;
+end_import
+
 begin_comment
 comment|/**  * A cache for child node diffs.  */
 end_comment
@@ -102,7 +118,16 @@ name|Revision
 name|to
 parameter_list|)
 function_decl|;
-specifier|public
+comment|/**      * @return the statistics for this cache.      */
+annotation|@
+name|Nonnull
+name|Iterable
+argument_list|<
+name|CacheStats
+argument_list|>
+name|getStats
+parameter_list|()
+function_decl|;
 interface|interface
 name|Entry
 block|{
@@ -127,7 +152,6 @@ name|done
 parameter_list|()
 function_decl|;
 block|}
-specifier|public
 interface|interface
 name|Loader
 block|{
