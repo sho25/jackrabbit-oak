@@ -107,6 +107,18 @@ name|util
 operator|.
 name|concurrent
 operator|.
+name|ConcurrentHashMap
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
 name|ConcurrentMap
 import|;
 end_import
@@ -120,20 +132,6 @@ operator|.
 name|concurrent
 operator|.
 name|ExecutionException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|concurrent
-operator|.
-name|atomic
-operator|.
-name|AtomicBoolean
 import|;
 end_import
 
@@ -365,6 +363,25 @@ argument_list|,
 name|V
 argument_list|>
 name|loader
+decl_stmt|;
+comment|/**      * A concurrent hash map of keys where loading is in progress. Key: the      * cache key. Value: a synchronization object. The threads that wait for the      * value to be loaded need to wait on the synchronization object. The      * loading thread will notify all waiting threads once loading is done.      */
+specifier|final
+name|ConcurrentHashMap
+argument_list|<
+name|K
+argument_list|,
+name|Object
+argument_list|>
+name|loadingInProgress
+init|=
+operator|new
+name|ConcurrentHashMap
+argument_list|<
+name|K
+argument_list|,
+name|Object
+argument_list|>
+argument_list|()
 decl_stmt|;
 comment|/**      * Create a new cache with the given number of entries, and the default      * settings (an average size of 1 per entry, 16 segments, and stack move      * distance equals to the maximum number of entries divided by 100).      *      * @param maxEntries the maximum number of entries      */
 specifier|public
@@ -2348,15 +2365,6 @@ specifier|private
 name|int
 name|stackMoveCounter
 decl_stmt|;
-comment|/**          * Whether the current segment is currently calling a value loader.          */
-specifier|private
-name|AtomicBoolean
-name|isLoading
-init|=
-operator|new
-name|AtomicBoolean
-argument_list|()
-decl_stmt|;
 comment|/**          * Create a new cache.          *          * @param maxMemory the maximum memory to use          * @param averageMemory the average memory usage of an object          * @param stackMoveDistance the number of other entries to be moved to          *        the top of the stack before moving an entry to the top          */
 name|Segment
 parameter_list|(
@@ -2931,25 +2939,17 @@ parameter_list|)
 throws|throws
 name|ExecutionException
 block|{
-comment|// we can not synchronize on a per-segment object while loading, as
-comment|// the value loader could access the cache (for example, using put,
-comment|// or another get with a loader), which might result in a deadlock
-comment|// for at most 100 ms (100 x 1 ms), we avoid concurrent loading of
-comment|// multiple values in the same segment
-for|for
-control|(
-name|int
-name|i
-init|=
-literal|0
-init|;
-name|i
-operator|<
-literal|100
-condition|;
-name|i
-operator|++
-control|)
+comment|// we can not synchronize on a per-segment object while loading,
+comment|// because we don't want to block cache access while loading, and
+comment|// because the value loader could access the cache (for example,
+comment|// using put, or another get with a loader), which might result in a
+comment|// deadlock
+comment|// we loop here because another thread might load the value,
+comment|// but loading might fail there, so we might need to repeat this
+while|while
+condition|(
+literal|true
+condition|)
 block|{
 name|V
 name|value
@@ -2961,6 +2961,7 @@ argument_list|,
 name|hash
 argument_list|)
 decl_stmt|;
+comment|// the (hopefully) normal case
 if|if
 condition|(
 name|value
@@ -2972,19 +2973,62 @@ return|return
 name|value
 return|;
 block|}
+name|ConcurrentHashMap
+argument_list|<
+name|K
+argument_list|,
+name|Object
+argument_list|>
+name|loading
+init|=
+name|cache
+operator|.
+name|loadingInProgress
+decl_stmt|;
+comment|// the object we have to wait for in case another thread loads
+comment|// this value
+name|Object
+name|alreadyLoading
+decl_stmt|;
+comment|// synchronized on this object, even before we put it in the
+comment|// cache, so that all other threads that get this object can
+comment|// synchronized and wait for it
+name|Object
+name|loadNow
+init|=
+operator|new
+name|Object
+argument_list|()
+decl_stmt|;
+comment|// we synchronize a bit early here, but that's fine (we don't
+comment|// optimize for the case where loading is extremely quick)
+synchronized|synchronized
+init|(
+name|loadNow
+init|)
+block|{
+name|alreadyLoading
+operator|=
+name|loading
+operator|.
+name|putIfAbsent
+argument_list|(
+name|key
+argument_list|,
+name|loadNow
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
-operator|!
-name|isLoading
-operator|.
-name|getAndSet
-argument_list|(
-literal|true
-argument_list|)
+name|alreadyLoading
+operator|==
+literal|null
 condition|)
 block|{
-name|value
-operator|=
+comment|// we are loading ourselves
+try|try
+block|{
+return|return
 name|load
 argument_list|(
 name|key
@@ -2993,43 +3037,65 @@ name|hash
 argument_list|,
 name|valueLoader
 argument_list|)
-expr_stmt|;
-name|isLoading
+return|;
+block|}
+finally|finally
+block|{
+name|loading
 operator|.
-name|set
+name|remove
 argument_list|(
-literal|false
+name|key
 argument_list|)
 expr_stmt|;
-synchronized|synchronized
-init|(
-name|isLoading
-init|)
-block|{
-comment|// notify the other thread
-name|isLoading
+comment|// notify other threads
+name|loadNow
 operator|.
 name|notifyAll
 argument_list|()
 expr_stmt|;
 block|}
 block|}
-else|else
-block|{
-comment|// wait a bit, but at most until the other thread completed
-comment|// loading
+block|}
+comment|// another thread is (or was) already loading
 synchronized|synchronized
 init|(
-name|isLoading
+name|alreadyLoading
 init|)
 block|{
+comment|// loading might have been finished, so check again
+name|Object
+name|alreadyLoading2
+init|=
+name|loading
+operator|.
+name|get
+argument_list|(
+name|key
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|alreadyLoading2
+operator|!=
+name|alreadyLoading
+condition|)
+block|{
+comment|// loading has completed before we could synchronize,
+comment|// so we repeat
+continue|continue;
+block|}
+comment|// still loading: wait
 try|try
 block|{
-name|isLoading
+comment|// we could wait longer than 10 ms, but we are
+comment|// in case notify is not called for some weird reason
+comment|// (for example out of memory)
+name|alreadyLoading
 operator|.
 name|wait
 argument_list|(
-literal|1
+literal|10
 argument_list|)
 expr_stmt|;
 block|}
@@ -3043,18 +3109,6 @@ comment|// ignore
 block|}
 block|}
 block|}
-block|}
-comment|// give up (that means, the same value might be loaded concurrently)
-return|return
-name|load
-argument_list|(
-name|key
-argument_list|,
-name|hash
-argument_list|,
-name|valueLoader
-argument_list|)
-return|;
 block|}
 name|V
 name|load
