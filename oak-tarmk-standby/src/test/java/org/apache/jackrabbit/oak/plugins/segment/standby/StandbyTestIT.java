@@ -25,26 +25,6 @@ begin_import
 import|import static
 name|org
 operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|plugins
-operator|.
-name|segment
-operator|.
-name|SegmentTestUtils
-operator|.
-name|createTmpTargetDir
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
 name|junit
 operator|.
 name|Assert
@@ -96,16 +76,6 @@ operator|.
 name|io
 operator|.
 name|ByteArrayInputStream
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|File
 import|;
 end_import
 
@@ -723,7 +693,7 @@ literal|0
 init|;
 name|i
 operator|<
-literal|10
+literal|5
 condition|;
 name|i
 operator|++
@@ -767,6 +737,21 @@ name|release
 argument_list|(
 name|cp
 argument_list|)
+argument_list|)
+expr_stmt|;
+name|cl
+operator|.
+name|cleanup
+argument_list|()
+expr_stmt|;
+name|assertTrue
+argument_list|(
+name|secondary
+operator|.
+name|size
+argument_list|()
+operator|>
+name|blobSize
 argument_list|)
 expr_stmt|;
 block|}
