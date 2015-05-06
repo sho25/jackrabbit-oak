@@ -500,17 +500,6 @@ operator|.
 name|get
 argument_list|()
 decl_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"add: "
-operator|+
-name|add
-argument_list|)
-expr_stmt|;
 name|assertTrue
 argument_list|(
 literal|"Had to wait unexpectedly long for other threads: "
