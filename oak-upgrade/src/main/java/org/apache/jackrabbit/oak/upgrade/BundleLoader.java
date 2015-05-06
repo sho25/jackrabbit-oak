@@ -209,6 +209,22 @@ name|NameConstants
 import|;
 end_import
 
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkNotNull
+import|;
+end_import
+
 begin_class
 class|class
 name|BundleLoader
@@ -321,6 +337,8 @@ block|{
 try|try
 block|{
 return|return
+name|checkNotNull
+argument_list|(
 operator|(
 name|NodePropBundle
 operator|)
@@ -329,6 +347,11 @@ operator|.
 name|invoke
 argument_list|(
 name|pm
+argument_list|,
+name|id
+argument_list|)
+argument_list|,
+literal|"Could not load NodePropBundle for id [%s]"
 argument_list|,
 name|id
 argument_list|)
@@ -389,6 +412,15 @@ argument_list|(
 name|id
 argument_list|)
 decl_stmt|;
+name|checkNotNull
+argument_list|(
+name|state
+argument_list|,
+literal|"Could not load NodeState for id [%s]"
+argument_list|,
+name|id
+argument_list|)
+expr_stmt|;
 name|NodePropBundle
 name|bundle
 init|=
