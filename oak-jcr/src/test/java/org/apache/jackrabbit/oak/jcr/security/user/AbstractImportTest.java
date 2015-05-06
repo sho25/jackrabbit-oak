@@ -879,14 +879,6 @@ expr_stmt|;
 block|}
 finally|finally
 block|{
-if|if
-condition|(
-name|getImportBehavior
-argument_list|()
-operator|!=
-literal|null
-condition|)
-block|{
 name|adminSession
 operator|.
 name|logout
@@ -899,7 +891,6 @@ argument_list|(
 name|repo
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 annotation|@
