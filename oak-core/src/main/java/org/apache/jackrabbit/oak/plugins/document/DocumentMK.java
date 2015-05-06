@@ -706,26 +706,40 @@ argument_list|,
 literal|50
 argument_list|)
 decl_stmt|;
-comment|/**      * Enable the LIRS cache.      */
+comment|/**      * Enable or disable the LIRS cache (null to use the default setting for this configuration).      */
 specifier|static
 specifier|final
-name|boolean
-name|LIRS_CACHE
-init|=
 name|Boolean
-operator|.
-name|parseBoolean
-argument_list|(
+name|LIRS_CACHE
+decl_stmt|;
+static|static
+block|{
+name|String
+name|s
+init|=
 name|System
 operator|.
 name|getProperty
 argument_list|(
 literal|"oak.documentMK.lirsCache"
-argument_list|,
-literal|"false"
-argument_list|)
 argument_list|)
 decl_stmt|;
+name|LIRS_CACHE
+operator|=
+name|s
+operator|==
+literal|null
+condition|?
+literal|null
+else|:
+name|Boolean
+operator|.
+name|parseBoolean
+argument_list|(
+name|s
+argument_list|)
+expr_stmt|;
+block|}
 comment|/**      * Enable fast diff operations.      */
 specifier|static
 specifier|final
@@ -4388,13 +4402,31 @@ name|long
 name|maxWeight
 parameter_list|)
 block|{
-if|if
-condition|(
-name|LIRS_CACHE
-operator|||
+comment|// by default, use the LIRS cache when using the persistent cache,
+comment|// but don't use it otherwise
+name|boolean
+name|useLirs
+init|=
 name|persistentCacheURI
 operator|!=
 literal|null
+decl_stmt|;
+comment|// allow to override this by using the system property
+if|if
+condition|(
+name|LIRS_CACHE
+operator|!=
+literal|null
+condition|)
+block|{
+name|useLirs
+operator|=
+name|LIRS_CACHE
+expr_stmt|;
+block|}
+if|if
+condition|(
+name|useLirs
 condition|)
 block|{
 return|return
