@@ -826,7 +826,7 @@ name|end
 argument_list|(
 name|start
 argument_list|,
-literal|10
+literal|100
 argument_list|,
 literal|"Generated events (before: {}, after: {})"
 argument_list|,

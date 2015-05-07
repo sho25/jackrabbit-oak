@@ -1935,7 +1935,7 @@ name|buff
 operator|.
 name|append
 argument_list|(
-literal|"path: "
+literal|"{ path: '"
 argument_list|)
 operator|.
 name|append
@@ -1945,14 +1945,14 @@ argument_list|)
 operator|.
 name|append
 argument_list|(
-literal|'\n'
+literal|"', "
 argument_list|)
 expr_stmt|;
 name|buff
 operator|.
 name|append
 argument_list|(
-literal|"rev: "
+literal|"rev: '"
 argument_list|)
 operator|.
 name|append
@@ -1962,21 +1962,24 @@ argument_list|)
 operator|.
 name|append
 argument_list|(
-literal|'\n'
+literal|"', "
 argument_list|)
 expr_stmt|;
 name|buff
+operator|.
+name|append
+argument_list|(
+literal|"properties: '"
+argument_list|)
 operator|.
 name|append
 argument_list|(
 name|properties
 argument_list|)
-expr_stmt|;
-name|buff
 operator|.
 name|append
 argument_list|(
-literal|'\n'
+literal|"' }"
 argument_list|)
 expr_stmt|;
 return|return
