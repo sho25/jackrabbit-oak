@@ -658,6 +658,10 @@ name|Revision
 name|rootRevision
 decl_stmt|;
 specifier|final
+name|boolean
+name|fromExternalChange
+decl_stmt|;
+specifier|final
 name|Map
 argument_list|<
 name|String
@@ -748,6 +752,8 @@ argument_list|,
 literal|null
 argument_list|,
 literal|null
+argument_list|,
+literal|false
 argument_list|)
 expr_stmt|;
 block|}
@@ -791,6 +797,9 @@ annotation|@
 name|Nullable
 name|Revision
 name|rootRevision
+parameter_list|,
+name|boolean
+name|fromExternalChange
 parameter_list|)
 block|{
 name|this
@@ -840,6 +849,12 @@ name|rev
 expr_stmt|;
 name|this
 operator|.
+name|fromExternalChange
+operator|=
+name|fromExternalChange
+expr_stmt|;
+name|this
+operator|.
 name|hasChildren
 operator|=
 name|hasChildren
@@ -854,7 +869,8 @@ name|properties
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Creates a copy of this {@code DocumentNodeState} with the      * {@link #rootRevision} set to the given {@code root} revision. This method      * returns {@code this} instance if the given {@code root} revision is      * the same as the one in this instance.      *      * @param root the root revision for the copy of this node state.      * @return a copy of this node state with the given root revision.      */
+comment|/**      * Creates a copy of this {@code DocumentNodeState} with the      * {@link #rootRevision} set to the given {@code root} revision. This method      * returns {@code this} instance if the given {@code root} revision is      * the same as the one in this instance and the {@link #fromExternalChange}      * flags are equal.      *      * @param root the root revision for the copy of this node state.      * @param externalChange if the {@link #fromExternalChange} flag must be      *                       set on the returned node state.      * @return a copy of this node state with the given root revision and      *          external change flag.      */
+specifier|private
 name|DocumentNodeState
 name|withRootRevision
 parameter_list|(
@@ -862,6 +878,9 @@ annotation|@
 name|Nonnull
 name|Revision
 name|root
+parameter_list|,
+name|boolean
+name|externalChange
 parameter_list|)
 block|{
 if|if
@@ -872,6 +891,10 @@ name|equals
 argument_list|(
 name|root
 argument_list|)
+operator|&&
+name|fromExternalChange
+operator|==
+name|externalChange
 condition|)
 block|{
 return|return
@@ -897,9 +920,49 @@ argument_list|,
 name|lastRevision
 argument_list|,
 name|root
+argument_list|,
+name|externalChange
 argument_list|)
 return|;
 block|}
+block|}
+comment|/**      * @return a copy of this {@code DocumentNodeState} with the      *          {@link #fromExternalChange} flag set to {@code true}.      */
+annotation|@
+name|Nonnull
+name|DocumentNodeState
+name|fromExternalChange
+parameter_list|()
+block|{
+return|return
+operator|new
+name|DocumentNodeState
+argument_list|(
+name|store
+argument_list|,
+name|path
+argument_list|,
+name|rev
+argument_list|,
+name|properties
+argument_list|,
+name|hasChildren
+argument_list|,
+name|lastRevision
+argument_list|,
+name|rootRevision
+argument_list|,
+literal|true
+argument_list|)
+return|;
+block|}
+comment|/**      * @return {@code true} if this node state was created as a result of an      *          external change; {@code false} otherwise.      */
+name|boolean
+name|isFromExternalChange
+parameter_list|()
+block|{
+return|return
+name|fromExternalChange
+return|;
 block|}
 annotation|@
 name|Nonnull
@@ -1271,6 +1334,8 @@ operator|.
 name|withRootRevision
 argument_list|(
 name|rootRevision
+argument_list|,
+name|fromExternalChange
 argument_list|)
 return|;
 block|}
@@ -2473,6 +2538,8 @@ operator|.
 name|withRootRevision
 argument_list|(
 name|rootRevision
+argument_list|,
+name|fromExternalChange
 argument_list|)
 return|;
 block|}

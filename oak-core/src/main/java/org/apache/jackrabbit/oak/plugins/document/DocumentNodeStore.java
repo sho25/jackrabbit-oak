@@ -8473,6 +8473,9 @@ name|contentChanged
 argument_list|(
 name|getRoot
 argument_list|()
+operator|.
+name|fromExternalChange
+argument_list|()
 argument_list|,
 literal|null
 argument_list|)
