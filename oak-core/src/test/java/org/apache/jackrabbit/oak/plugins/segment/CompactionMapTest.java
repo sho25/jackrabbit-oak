@@ -345,6 +345,11 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+name|map
+operator|.
+name|compress
+argument_list|()
+expr_stmt|;
 name|System
 operator|.
 name|gc
@@ -377,6 +382,20 @@ literal|1024
 operator|)
 operator|+
 literal|"MB"
+argument_list|)
+expr_stmt|;
+name|System
+operator|.
+name|out
+operator|.
+name|println
+argument_list|(
+literal|"Compaction map: "
+operator|+
+name|map
+operator|.
+name|getCompactionStats
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
