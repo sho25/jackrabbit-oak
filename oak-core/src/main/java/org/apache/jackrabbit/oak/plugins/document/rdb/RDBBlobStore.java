@@ -137,6 +137,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Arrays
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|HashSet
 import|;
 end_import
@@ -673,16 +683,16 @@ specifier|private
 name|Exception
 name|callStack
 decl_stmt|;
-specifier|private
+specifier|protected
 name|RDBConnectionHandler
 name|ch
 decl_stmt|;
 comment|// from options
-specifier|private
+specifier|protected
 name|String
 name|tnData
 decl_stmt|;
-specifier|private
+specifier|protected
 name|String
 name|tnMeta
 decl_stmt|;
@@ -1931,7 +1941,7 @@ name|this
 operator|.
 name|tnData
 operator|+
-literal|"(ID, DATA) values(?, ?)"
+literal|" (ID, DATA) values(?, ?)"
 argument_list|)
 expr_stmt|;
 try|try
@@ -1975,7 +1985,91 @@ name|SQLException
 name|ex
 parameter_list|)
 block|{
-comment|// TODO: this code used to ignore exceptions here, assuming that it might be a case where the blob is already in the database (maybe this requires inspecting the exception code)
+name|this
+operator|.
+name|ch
+operator|.
+name|rollbackConnection
+argument_list|(
+name|con
+argument_list|)
+expr_stmt|;
+comment|// the insert failed although it should have succeeded; see whether the blob already exists
+name|prep
+operator|=
+name|con
+operator|.
+name|prepareStatement
+argument_list|(
+literal|"select DATA from "
+operator|+
+name|this
+operator|.
+name|tnData
+operator|+
+literal|" where ID = ?"
+argument_list|)
+expr_stmt|;
+name|byte
+index|[]
+name|dbdata
+init|=
+literal|null
+decl_stmt|;
+try|try
+block|{
+name|prep
+operator|.
+name|setString
+argument_list|(
+literal|1
+argument_list|,
+name|id
+argument_list|)
+expr_stmt|;
+name|ResultSet
+name|rs
+init|=
+name|prep
+operator|.
+name|executeQuery
+argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|rs
+operator|.
+name|next
+argument_list|()
+condition|)
+block|{
+name|dbdata
+operator|=
+name|rs
+operator|.
+name|getBytes
+argument_list|(
+literal|1
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+finally|finally
+block|{
+name|prep
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
+block|}
+if|if
+condition|(
+name|dbdata
+operator|==
+literal|null
+condition|)
+block|{
+comment|// insert failed although record isn't there
 name|String
 name|message
 init|=
@@ -2010,6 +2104,77 @@ name|ex
 argument_list|)
 throw|;
 block|}
+elseif|else
+if|if
+condition|(
+operator|!
+name|Arrays
+operator|.
+name|equals
+argument_list|(
+name|data
+argument_list|,
+name|dbdata
+argument_list|)
+condition|)
+block|{
+comment|// record is there but contains different data
+name|String
+name|message
+init|=
+literal|"DATA table already contains blob for id "
+operator|+
+name|id
+operator|+
+literal|", but the actual data differs (lengths: "
+operator|+
+name|data
+operator|.
+name|length
+operator|+
+literal|", "
+operator|+
+name|dbdata
+operator|.
+name|length
+operator|+
+literal|")"
+decl_stmt|;
+name|LOG
+operator|.
+name|error
+argument_list|(
+name|message
+argument_list|,
+name|ex
+argument_list|)
+expr_stmt|;
+throw|throw
+operator|new
+name|RuntimeException
+argument_list|(
+name|message
+argument_list|,
+name|ex
+argument_list|)
+throw|;
+block|}
+else|else
+block|{
+comment|// just recover
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"recovered from DB inconsistency for id "
+operator|+
+name|id
+operator|+
+literal|": meta record was missing (impact will be minor performance degradation)"
+argument_list|)
+expr_stmt|;
+block|}
+block|}
 try|try
 block|{
 name|prep
@@ -2024,7 +2189,7 @@ name|this
 operator|.
 name|tnMeta
 operator|+
-literal|"(ID, LVL, LASTMOD) values(?, ?, ?)"
+literal|" (ID, LVL, LASTMOD) values(?, ?, ?)"
 argument_list|)
 expr_stmt|;
 try|try
@@ -2078,6 +2243,17 @@ name|e
 parameter_list|)
 block|{
 comment|// already exists - ok
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"inserting meta record for id "
+operator|+
+name|id
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 block|}
