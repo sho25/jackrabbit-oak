@@ -2318,6 +2318,11 @@ name|isPathTransformed
 argument_list|()
 condition|)
 block|{
+name|String
+name|originalPath
+init|=
+name|path
+decl_stmt|;
 name|path
 operator|=
 name|pr
@@ -2327,13 +2332,29 @@ argument_list|(
 name|path
 argument_list|)
 expr_stmt|;
-comment|// avoid duplicate entries
 if|if
 condition|(
 name|path
 operator|==
 literal|null
-operator|||
+condition|)
+block|{
+name|LOG
+operator|.
+name|trace
+argument_list|(
+literal|"Ignoring path {} : Transformation returned null"
+argument_list|,
+name|originalPath
+argument_list|)
+expr_stmt|;
+return|return
+literal|null
+return|;
+block|}
+comment|// avoid duplicate entries
+if|if
+condition|(
 name|seenPaths
 operator|.
 name|contains
@@ -2342,6 +2363,15 @@ name|path
 argument_list|)
 condition|)
 block|{
+name|LOG
+operator|.
+name|trace
+argument_list|(
+literal|"Ignoring path {} : Duplicate post transformation"
+argument_list|,
+name|originalPath
+argument_list|)
+expr_stmt|;
 return|return
 literal|null
 return|;
@@ -2354,6 +2384,15 @@ name|path
 argument_list|)
 expr_stmt|;
 block|}
+name|LOG
+operator|.
+name|trace
+argument_list|(
+literal|"Matched path {}"
+argument_list|,
+name|path
+argument_list|)
+expr_stmt|;
 return|return
 operator|new
 name|LuceneResultRow
@@ -2487,6 +2526,11 @@ operator|.
 name|start
 argument_list|()
 decl_stmt|;
+while|while
+condition|(
+literal|true
+condition|)
+block|{
 if|if
 condition|(
 name|lastDoc
@@ -2603,7 +2647,13 @@ argument_list|,
 operator|-
 literal|1
 argument_list|,
-literal|"..."
+literal|"{} ..."
+argument_list|,
+name|docs
+operator|.
+name|scoreDocs
+operator|.
+name|length
 argument_list|)
 expr_stmt|;
 name|nextBatchSize
@@ -2661,6 +2711,34 @@ name|lastDocToRecord
 operator|=
 name|doc
 expr_stmt|;
+block|}
+if|if
+condition|(
+name|queue
+operator|.
+name|isEmpty
+argument_list|()
+operator|&&
+name|docs
+operator|.
+name|scoreDocs
+operator|.
+name|length
+operator|>
+literal|0
+condition|)
+block|{
+comment|//queue is still empty but more results can be fetched
+comment|//from Lucene so still continue
+name|lastDoc
+operator|=
+name|lastDocToRecord
+expr_stmt|;
+block|}
+else|else
+block|{
+break|break;
+block|}
 block|}
 block|}
 elseif|else
