@@ -370,6 +370,15 @@ argument_list|,
 name|root
 argument_list|)
 expr_stmt|;
+comment|// removing references to the checkpoints,
+comment|// which don't exist in the new repository
+name|builder
+operator|.
+name|setChildNode
+argument_list|(
+literal|":async"
+argument_list|)
+expr_stmt|;
 name|target
 operator|.
 name|merge
