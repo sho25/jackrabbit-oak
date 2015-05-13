@@ -420,6 +420,8 @@ condition|(
 name|isBranch
 condition|)
 block|{
+try|try
+block|{
 name|commit
 operator|.
 name|applyToCache
@@ -432,6 +434,9 @@ argument_list|,
 literal|true
 argument_list|)
 expr_stmt|;
+block|}
+finally|finally
+block|{
 name|removeCommit
 argument_list|(
 name|commit
@@ -440,6 +445,7 @@ name|getRevision
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 else|else
 block|{
