@@ -5241,6 +5241,14 @@ argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
+comment|// we use the same pool as the document store, and the connection might have been returned in read-only mode
+name|connection
+operator|.
+name|setReadOnly
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
 name|PreparedStatement
 name|stmt
 init|=
@@ -6345,6 +6353,16 @@ argument_list|()
 decl_stmt|;
 name|assertTrue
 argument_list|(
+literal|"test record "
+operator|+
+name|key
+operator|+
+literal|" not found in "
+operator|+
+name|super
+operator|.
+name|dsname
+argument_list|,
 name|rs
 operator|.
 name|next
