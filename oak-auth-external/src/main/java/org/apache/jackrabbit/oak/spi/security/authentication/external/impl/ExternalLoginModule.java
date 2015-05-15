@@ -1535,6 +1535,10 @@ operator|==
 literal|null
 condition|)
 block|{
+comment|// login attempt in this login module was not successful
+name|clearState
+argument_list|()
+expr_stmt|;
 return|return
 literal|false
 return|;
