@@ -1836,6 +1836,25 @@ argument_list|)
 argument_list|)
 block|,
 operator|new
+name|CompositeAuthorizationReadTest
+argument_list|(
+name|runAsAdmin
+operator|.
+name|value
+argument_list|(
+name|options
+argument_list|)
+argument_list|,
+name|itemsToRead
+operator|.
+name|value
+argument_list|(
+name|options
+argument_list|)
+argument_list|)
+block|,
+comment|// TODO: is currently the no of configurations (hack)
+operator|new
 name|ConcurrentReadDeepTreeTest
 argument_list|(
 name|runAsAdmin
