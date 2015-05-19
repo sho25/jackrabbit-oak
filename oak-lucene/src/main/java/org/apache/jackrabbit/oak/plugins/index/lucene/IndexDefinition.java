@@ -2070,7 +2070,7 @@ name|LuceneIndexConstants
 operator|.
 name|SAVE_DIR_LISTING
 argument_list|,
-literal|false
+literal|true
 argument_list|)
 expr_stmt|;
 block|}
