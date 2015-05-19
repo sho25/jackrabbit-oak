@@ -2420,6 +2420,9 @@ expr_stmt|;
 block|}
 return|return
 name|a
+operator|.
+name|optimize
+argument_list|()
 return|;
 block|}
 specifier|private
@@ -2603,6 +2606,9 @@ expr_stmt|;
 block|}
 return|return
 name|a
+operator|.
+name|optimize
+argument_list|()
 return|;
 block|}
 specifier|private
