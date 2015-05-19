@@ -234,6 +234,46 @@ literal|false
 return|;
 comment|// blobs not equal, given known and non-equal lengths
 block|}
+name|String
+name|ai
+init|=
+name|a
+operator|.
+name|getContentIdentity
+argument_list|()
+decl_stmt|;
+name|String
+name|bi
+init|=
+name|b
+operator|.
+name|getContentIdentity
+argument_list|()
+decl_stmt|;
+comment|//Check for identity first. If they are same then its
+comment|//definitely same blob. If not we need to check further.
+if|if
+condition|(
+name|ai
+operator|!=
+literal|null
+operator|&&
+name|bi
+operator|!=
+literal|null
+operator|&&
+name|ai
+operator|.
+name|equals
+argument_list|(
+name|bi
+argument_list|)
+condition|)
+block|{
+return|return
+literal|true
+return|;
+block|}
 try|try
 block|{
 return|return
