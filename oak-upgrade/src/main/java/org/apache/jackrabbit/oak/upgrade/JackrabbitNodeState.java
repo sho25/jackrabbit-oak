@@ -75,6 +75,22 @@ name|common
 operator|.
 name|collect
 operator|.
+name|Iterables
+operator|.
+name|skip
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|collect
+operator|.
 name|Lists
 operator|.
 name|newArrayList
@@ -1076,6 +1092,11 @@ specifier|final
 name|TypePredicate
 name|isFrozenNode
 decl_stmt|;
+specifier|private
+specifier|final
+name|boolean
+name|skipOnError
+decl_stmt|;
 comment|/**      * Source namespace mappings (URI -&lt; prefix).      */
 specifier|private
 specifier|final
@@ -1133,6 +1154,9 @@ name|name
 parameter_list|,
 name|NodePropBundle
 name|bundle
+parameter_list|,
+name|boolean
+name|skipOnError
 parameter_list|)
 block|{
 name|this
@@ -1251,6 +1275,12 @@ argument_list|(
 name|bundle
 argument_list|)
 expr_stmt|;
+name|this
+operator|.
+name|skipOnError
+operator|=
+name|skipOnError
+expr_stmt|;
 name|setChildOrder
 argument_list|()
 expr_stmt|;
@@ -1301,6 +1331,9 @@ name|versionablePaths
 parameter_list|,
 name|boolean
 name|useBinaryReferences
+parameter_list|,
+name|boolean
+name|skipOnError
 parameter_list|)
 block|{
 name|this
@@ -1413,6 +1446,12 @@ operator|.
 name|useBinaryReferences
 operator|=
 name|useBinaryReferences
+expr_stmt|;
+name|this
+operator|.
+name|skipOnError
+operator|=
+name|skipOnError
 expr_stmt|;
 try|try
 block|{
@@ -1656,6 +1695,8 @@ name|loadBundle
 argument_list|(
 name|id
 argument_list|)
+argument_list|,
+name|skipOnError
 argument_list|)
 return|;
 block|}
@@ -1664,6 +1705,12 @@ parameter_list|(
 name|ItemStateException
 name|e
 parameter_list|)
+block|{
+if|if
+condition|(
+operator|!
+name|skipOnError
+condition|)
 block|{
 throw|throw
 operator|new
@@ -1676,6 +1723,16 @@ argument_list|,
 name|e
 argument_list|)
 throw|;
+block|}
+name|warn
+argument_list|(
+literal|"Skipping broken child node entry "
+operator|+
+name|name
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 name|checkValidName
@@ -1774,6 +1831,8 @@ operator|.
 name|getValue
 argument_list|()
 argument_list|)
+argument_list|,
+name|skipOnError
 argument_list|)
 decl_stmt|;
 name|entries
