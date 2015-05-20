@@ -1729,8 +1729,30 @@ argument_list|(
 literal|"Skipping broken child node entry "
 operator|+
 name|name
+operator|+
+literal|" and changing the primary type to nt:unstructured"
 argument_list|,
 name|e
+argument_list|)
+expr_stmt|;
+name|properties
+operator|.
+name|put
+argument_list|(
+name|JCR_PRIMARYTYPE
+argument_list|,
+name|PropertyStates
+operator|.
+name|createProperty
+argument_list|(
+name|JCR_PRIMARYTYPE
+argument_list|,
+name|NT_UNSTRUCTURED
+argument_list|,
+name|Type
+operator|.
+name|NAME
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
