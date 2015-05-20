@@ -2740,6 +2740,29 @@ expr_stmt|;
 block|}
 block|}
 block|}
+annotation|@
+name|Override
+specifier|public
+name|boolean
+name|exists
+parameter_list|(
+name|NodeBuilder
+name|index
+parameter_list|,
+name|String
+name|key
+parameter_list|)
+block|{
+comment|// This is currently not implemented, because there is no test case for it,
+comment|// and because there is currently no need for this method with this class.
+comment|// We would need to traverse the tree and search for an entry "match".
+comment|// See also OAK-2663 for a potential (but untested) implementation.
+throw|throw
+operator|new
+name|UnsupportedOperationException
+argument_list|()
+throw|;
+block|}
 block|}
 end_class
 

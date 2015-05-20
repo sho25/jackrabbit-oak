@@ -125,6 +125,17 @@ argument_list|>
 name|afterKeys
 parameter_list|)
 function_decl|;
+comment|/**      * Check whether an entry for the given key exists.      *       * @param index the index      * @param key the key      * @return true if at least one entry exists      */
+name|boolean
+name|exists
+parameter_list|(
+name|NodeBuilder
+name|index
+parameter_list|,
+name|String
+name|key
+parameter_list|)
+function_decl|;
 comment|/**      * Search for a given set of values.      *       * @param filter the filter (can optionally be used for optimized query execution)      * @param indexName the name of the index (for logging)      * @param indexMeta the index metadata node (may not be null)      * @param values values to look for (null to check for property existence)      * @return an iterator of paths      */
 name|Iterable
 argument_list|<
