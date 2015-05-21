@@ -1637,6 +1637,9 @@ return|return
 literal|true
 return|;
 block|}
+name|clearState
+argument_list|()
+expr_stmt|;
 return|return
 literal|false
 return|;
