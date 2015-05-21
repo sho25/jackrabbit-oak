@@ -27,6 +27,16 @@ name|java
 operator|.
 name|io
 operator|.
+name|ByteArrayInputStream
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
 name|File
 import|;
 end_import
@@ -183,6 +193,26 @@ name|ldap
 operator|.
 name|model
 operator|.
+name|constants
+operator|.
+name|SupportedSaslMechanisms
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|directory
+operator|.
+name|api
+operator|.
+name|ldap
+operator|.
+name|model
+operator|.
 name|entry
 operator|.
 name|DefaultEntry
@@ -281,90 +311,6 @@ name|api
 operator|.
 name|ldap
 operator|.
-name|model
-operator|.
-name|schema
-operator|.
-name|registries
-operator|.
-name|SchemaLoader
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|directory
-operator|.
-name|api
-operator|.
-name|ldap
-operator|.
-name|schema
-operator|.
-name|extractor
-operator|.
-name|SchemaLdifExtractor
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|directory
-operator|.
-name|api
-operator|.
-name|ldap
-operator|.
-name|schema
-operator|.
-name|extractor
-operator|.
-name|impl
-operator|.
-name|DefaultSchemaLdifExtractor
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|directory
-operator|.
-name|api
-operator|.
-name|ldap
-operator|.
-name|schema
-operator|.
-name|loader
-operator|.
-name|LdifSchemaLoader
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|directory
-operator|.
-name|api
-operator|.
-name|ldap
-operator|.
 name|schema
 operator|.
 name|manager
@@ -401,9 +347,43 @@ name|directory
 operator|.
 name|server
 operator|.
+name|constants
+operator|.
+name|SystemSchemaConstants
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|directory
+operator|.
+name|server
+operator|.
 name|core
 operator|.
 name|DefaultDirectoryService
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|directory
+operator|.
+name|server
+operator|.
+name|core
+operator|.
+name|api
+operator|.
+name|CacheService
 import|;
 end_import
 
@@ -493,24 +473,6 @@ name|server
 operator|.
 name|core
 operator|.
-name|factory
-operator|.
-name|JdbmPartitionFactory
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|directory
-operator|.
-name|server
-operator|.
-name|core
-operator|.
 name|jndi
 operator|.
 name|CoreContextFactory
@@ -531,13 +493,9 @@ name|core
 operator|.
 name|partition
 operator|.
-name|impl
+name|ldif
 operator|.
-name|btree
-operator|.
-name|jdbm
-operator|.
-name|JdbmPartition
+name|LdifPartition
 import|;
 end_import
 
@@ -553,11 +511,9 @@ name|server
 operator|.
 name|core
 operator|.
-name|partition
+name|shared
 operator|.
-name|ldif
-operator|.
-name|LdifPartition
+name|DefaultDnFactory
 import|;
 end_import
 
@@ -773,42 +729,6 @@ name|org
 operator|.
 name|apache
 operator|.
-name|directory
-operator|.
-name|shared
-operator|.
-name|ldap
-operator|.
-name|constants
-operator|.
-name|SchemaConstants
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|directory
-operator|.
-name|shared
-operator|.
-name|ldap
-operator|.
-name|constants
-operator|.
-name|SupportedSaslMechanisms
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
 name|mina
 operator|.
 name|util
@@ -838,7 +758,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A simple testcase for testing JNDI provider functionality.  *  * @author<a href="mailto:dev@directory.apache.org">Apache Directory Project</a>  * @version $Rev: 784530 $  */
+comment|/**  * A simple ldap test server  */
 end_comment
 
 begin_class
@@ -893,20 +813,10 @@ name|CTX_FACTORY
 init|=
 literal|"com.sun.jndi.ldap.LdapCtxFactory"
 decl_stmt|;
-comment|/**      * the context root for the system partition      */
-specifier|protected
-name|LdapContext
-name|sysRoot
-decl_stmt|;
 comment|/**      * the context root for the rootDSE      */
 specifier|protected
 name|CoreSession
 name|rootDSE
-decl_stmt|;
-comment|/**      * the context root for the schema      */
-specifier|protected
-name|LdapContext
-name|schemaRoot
 decl_stmt|;
 comment|/**      * flag whether to delete database files for each test or not      */
 specifier|protected
@@ -930,42 +840,7 @@ specifier|protected
 name|LdapServer
 name|ldapServer
 decl_stmt|;
-comment|/**      * If there is an LDIF file with the same name as the test class      * but with the .ldif extension then it is read and the entries      * it contains are added to the server.  It appears as though the      * administor adds these entries to the server.      *      * @param verifyEntries whether or not all entry additions are checked      *                      to see if they were in fact correctly added to the server      * @return a list of entries added to the server in the order they were added      * @throws NamingException of the load fails      */
-specifier|protected
-name|List
-argument_list|<
-name|LdifEntry
-argument_list|>
-name|loadTestLdif
-parameter_list|(
-name|boolean
-name|verifyEntries
-parameter_list|)
-throws|throws
-name|Exception
-block|{
-return|return
-name|loadLdif
-argument_list|(
-name|getClass
-argument_list|()
-operator|.
-name|getResourceAsStream
-argument_list|(
-name|getClass
-argument_list|()
-operator|.
-name|getSimpleName
-argument_list|()
-operator|+
-literal|".ldif"
-argument_list|)
-argument_list|,
-name|verifyEntries
-argument_list|)
-return|;
-block|}
-comment|/**      * Loads an LDIF from an input stream and adds the entries it contains to      * the server.  It appears as though the administrator added these entries      * to the server.      *      * @param in            the input stream containing the LDIF entries to load      * @param verifyEntries whether or not all entry additions are checked      *                      to see if they were in fact correctly added to the server      * @return a list of entries added to the server in the order they were added      * @throws NamingException of the load fails      */
+comment|/**      * Loads an LDIF from an input stream and adds the entries it contains to      * the server.  It appears as though the administrator added these entries      * to the server.      *      * @param in            the input stream containing the LDIF entries to load      * @return a list of entries added to the server in the order they were added      * @throws NamingException of the load fails      */
 specifier|protected
 name|List
 argument_list|<
@@ -975,9 +850,6 @@ name|loadLdif
 parameter_list|(
 name|InputStream
 name|in
-parameter_list|,
-name|boolean
-name|verifyEntries
 parameter_list|)
 throws|throws
 name|Exception
@@ -1006,8 +878,6 @@ return|return
 name|loadLdif
 argument_list|(
 name|ldifReader
-argument_list|,
-name|verifyEntries
 argument_list|)
 return|;
 block|}
@@ -1020,9 +890,6 @@ name|loadLdif
 parameter_list|(
 name|LdifReader
 name|ldifReader
-parameter_list|,
-name|boolean
-name|verifyEntries
 parameter_list|)
 throws|throws
 name|Exception
@@ -1102,38 +969,15 @@ name|items
 argument_list|)
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|verifyEntries
-condition|)
-block|{
-name|verify
-argument_list|(
-name|ldifEntry
-argument_list|)
-expr_stmt|;
 name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Successfully verified addition of entry {}"
+literal|"Added entry {}"
 argument_list|,
 name|dn
 argument_list|)
 expr_stmt|;
-block|}
-else|else
-block|{
-name|LOG
-operator|.
-name|info
-argument_list|(
-literal|"Added entry {} without verification"
-argument_list|,
-name|dn
-argument_list|)
-expr_stmt|;
-block|}
 name|entries
 operator|.
 name|add
@@ -1150,7 +994,7 @@ block|}
 comment|/**      * Inject an ldif String into the server. DN must be relative to the      * root.      *      * @param ldif the entries to inject      * @throws NamingException if the entries cannot be added      */
 specifier|protected
 name|void
-name|injectEntries
+name|addEntry
 parameter_list|(
 name|String
 name|ldif
@@ -1158,49 +1002,34 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
+name|ByteArrayInputStream
+name|in
+init|=
+operator|new
+name|ByteArrayInputStream
+argument_list|(
+name|ldif
+operator|.
+name|getBytes
+argument_list|(
+literal|"utf-8"
+argument_list|)
+argument_list|)
+decl_stmt|;
 name|LdifReader
 name|reader
 init|=
 operator|new
 name|LdifReader
-argument_list|()
+argument_list|(
+name|in
+argument_list|)
 decl_stmt|;
 name|loadLdif
 argument_list|(
 name|reader
-argument_list|,
-literal|false
 argument_list|)
 expr_stmt|;
-block|}
-comment|/**      * Verifies that an entry exists in the directory with the      * specified attributes.      *      * @param entry the entry to verify      * @throws NamingException if there are problems accessing the entry      */
-specifier|protected
-name|void
-name|verify
-parameter_list|(
-name|LdifEntry
-name|entry
-parameter_list|)
-throws|throws
-name|Exception
-block|{
-comment|//        Entry readEntry = rootDSE.lookup( entry.getDn() );
-comment|//
-comment|//        for ( EntryAttribute readAttribute:readEntry )
-comment|//        {
-comment|//            String id = readAttribute.getId();
-comment|//            EntryAttribute origAttribute = entry.getEntry().get( id );
-comment|//
-comment|//            for ( Value<?> value:origAttribute )
-comment|//            {
-comment|//                if ( ! readAttribute.contains( value ) )
-comment|//                {
-comment|//                    LOG.error( "Failed to verify entry addition of {}. {} attribute in original " +
-comment|//                            "entry missing from read entry.", entry.getDn(), id );
-comment|//                    throw new AssertionFailedError( "Failed to verify entry addition of " + entry.getDn()  );
-comment|//                }
-comment|//            }
-comment|//        }
 block|}
 comment|/**      * Common code to get an initial context via a simple bind to the      * server over the wire using the SUN JNDI LDAP provider. Do not use      * this method until after the setUp() method is called to start the      * server otherwise it will fail.      *      * @return an LDAP context as the the administrator to the rootDSE      * @throws NamingException if the server cannot be contacted      */
 specifier|protected
@@ -1235,10 +1064,6 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
-comment|//        if ( ! apacheDS.isStarted() )
-comment|//        {
-comment|//            throw new ConfigurationException( "The server is not online! Cannot connect to it." );
-comment|//        }
 name|Hashtable
 argument_list|<
 name|String
@@ -1347,6 +1172,7 @@ argument_list|(
 name|cwd
 argument_list|)
 expr_stmt|;
+comment|// setup directory service
 name|directoryService
 operator|=
 operator|new
@@ -1371,18 +1197,222 @@ name|cwd
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|CacheService
+name|cache
+init|=
+operator|new
+name|CacheService
+argument_list|()
+decl_stmt|;
+name|cache
+operator|.
+name|initialize
+argument_list|(
+name|directoryService
+operator|.
+name|getInstanceLayout
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|SchemaManager
+name|schemaManager
+init|=
+operator|new
+name|DefaultSchemaManager
+argument_list|()
+decl_stmt|;
+name|directoryService
+operator|.
+name|setSchemaManager
+argument_list|(
+name|schemaManager
+argument_list|)
+expr_stmt|;
+name|directoryService
+operator|.
+name|setDnFactory
+argument_list|(
+operator|new
+name|DefaultDnFactory
+argument_list|(
+name|directoryService
+operator|.
+name|getSchemaManager
+argument_list|()
+argument_list|,
+name|cache
+operator|.
+name|getCache
+argument_list|(
+literal|"dnCache"
+argument_list|)
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|LdifPartition
+name|schLdifPart
+init|=
+operator|new
+name|LdifPartition
+argument_list|(
+name|directoryService
+operator|.
+name|getSchemaManager
+argument_list|()
+argument_list|,
+name|directoryService
+operator|.
+name|getDnFactory
+argument_list|()
+argument_list|)
+decl_stmt|;
+name|schLdifPart
+operator|.
+name|setId
+argument_list|(
+literal|"schema"
+argument_list|)
+expr_stmt|;
+name|schLdifPart
+operator|.
+name|setPartitionPath
+argument_list|(
+operator|new
+name|File
+argument_list|(
+name|directoryService
+operator|.
+name|getInstanceLayout
+argument_list|()
+operator|.
+name|getPartitionsDirectory
+argument_list|()
+argument_list|,
+literal|"schema"
+argument_list|)
+operator|.
+name|toURI
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|schLdifPart
+operator|.
+name|setSuffixDn
+argument_list|(
+name|directoryService
+operator|.
+name|getDnFactory
+argument_list|()
+operator|.
+name|create
+argument_list|(
+name|ServerDNConstants
+operator|.
+name|CN_SCHEMA_DN
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|SchemaPartition
+name|schPart
+init|=
+operator|new
+name|SchemaPartition
+argument_list|(
+name|directoryService
+operator|.
+name|getSchemaManager
+argument_list|()
+argument_list|)
+decl_stmt|;
+name|schPart
+operator|.
+name|setWrappedPartition
+argument_list|(
+name|schLdifPart
+argument_list|)
+expr_stmt|;
+name|directoryService
+operator|.
+name|setSchemaPartition
+argument_list|(
+name|schPart
+argument_list|)
+expr_stmt|;
+name|LdifPartition
+name|sysPart
+init|=
+operator|new
+name|LdifPartition
+argument_list|(
+name|directoryService
+operator|.
+name|getSchemaManager
+argument_list|()
+argument_list|,
+name|directoryService
+operator|.
+name|getDnFactory
+argument_list|()
+argument_list|)
+decl_stmt|;
+name|sysPart
+operator|.
+name|setId
+argument_list|(
+name|SystemSchemaConstants
+operator|.
+name|SCHEMA_NAME
+argument_list|)
+expr_stmt|;
+name|sysPart
+operator|.
+name|setPartitionPath
+argument_list|(
+operator|new
+name|File
+argument_list|(
+name|directoryService
+operator|.
+name|getInstanceLayout
+argument_list|()
+operator|.
+name|getPartitionsDirectory
+argument_list|()
+argument_list|,
+name|SystemSchemaConstants
+operator|.
+name|SCHEMA_NAME
+argument_list|)
+operator|.
+name|toURI
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|sysPart
+operator|.
+name|setSuffixDn
+argument_list|(
+name|directoryService
+operator|.
+name|getDnFactory
+argument_list|()
+operator|.
+name|create
+argument_list|(
+name|ServerDNConstants
+operator|.
+name|SYSTEM_DN
+argument_list|)
+argument_list|)
+expr_stmt|;
 name|directoryService
 operator|.
 name|setSystemPartition
 argument_list|(
-name|createSystemPartition
-argument_list|(
-name|directoryService
-argument_list|,
-name|cwd
-argument_list|)
+name|sysPart
 argument_list|)
 expr_stmt|;
+comment|// setup ldap server
 name|port
 operator|=
 name|AvailablePortFinder
@@ -1417,9 +1447,7 @@ name|directoryService
 argument_list|)
 expr_stmt|;
 name|setupSaslMechanisms
-argument_list|(
-name|ldapServer
-argument_list|)
+argument_list|()
 expr_stmt|;
 name|directoryService
 operator|.
@@ -1460,94 +1488,9 @@ argument_list|)
 expr_stmt|;
 block|}
 specifier|private
-name|JdbmPartition
-name|createSystemPartition
-parameter_list|(
-name|DirectoryService
-name|service
-parameter_list|,
-specifier|final
-name|File
-name|workingDirectory
-parameter_list|)
-throws|throws
-name|Exception
-block|{
-name|JdbmPartitionFactory
-name|partitionFactory
-init|=
-operator|new
-name|JdbmPartitionFactory
-argument_list|()
-decl_stmt|;
-name|JdbmPartition
-name|systemPartition
-init|=
-name|partitionFactory
-operator|.
-name|createPartition
-argument_list|(
-name|service
-operator|.
-name|getSchemaManager
-argument_list|()
-argument_list|,
-name|service
-operator|.
-name|getDnFactory
-argument_list|()
-argument_list|,
-literal|"system"
-argument_list|,
-name|ServerDNConstants
-operator|.
-name|SYSTEM_DN
-argument_list|,
-literal|500
-argument_list|,
-operator|new
-name|File
-argument_list|(
-name|workingDirectory
-argument_list|,
-literal|"system"
-argument_list|)
-argument_list|)
-decl_stmt|;
-name|partitionFactory
-operator|.
-name|addIndex
-argument_list|(
-name|systemPartition
-argument_list|,
-name|SchemaConstants
-operator|.
-name|OBJECT_CLASS_AT
-argument_list|,
-literal|100
-argument_list|)
-expr_stmt|;
-name|systemPartition
-operator|.
-name|setSchemaManager
-argument_list|(
-name|service
-operator|.
-name|getSchemaManager
-argument_list|()
-argument_list|)
-expr_stmt|;
-return|return
-name|systemPartition
-return|;
-block|}
-specifier|private
 name|void
 name|setupSaslMechanisms
-parameter_list|(
-name|LdapServer
-name|server
-parameter_list|)
+parameter_list|()
 block|{
 name|Map
 argument_list|<
@@ -1866,29 +1809,6 @@ name|Context
 operator|.
 name|PROVIDER_URL
 argument_list|,
-name|ServerDNConstants
-operator|.
-name|SYSTEM_DN
-argument_list|)
-expr_stmt|;
-name|sysRoot
-operator|=
-operator|new
-name|InitialLdapContext
-argument_list|(
-name|envFinal
-argument_list|,
-literal|null
-argument_list|)
-expr_stmt|;
-name|envFinal
-operator|.
-name|put
-argument_list|(
-name|Context
-operator|.
-name|PROVIDER_URL
-argument_list|,
 literal|""
 argument_list|)
 expr_stmt|;
@@ -1898,29 +1818,6 @@ name|directoryService
 operator|.
 name|getAdminSession
 argument_list|()
-expr_stmt|;
-name|envFinal
-operator|.
-name|put
-argument_list|(
-name|Context
-operator|.
-name|PROVIDER_URL
-argument_list|,
-name|ServerDNConstants
-operator|.
-name|CN_SCHEMA_DN
-argument_list|)
-expr_stmt|;
-name|schemaRoot
-operator|=
-operator|new
-name|InitialLdapContext
-argument_list|(
-name|envFinal
-argument_list|,
-literal|null
-argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Sets the system context root to null.      */
@@ -1949,43 +1846,10 @@ parameter_list|(
 name|Exception
 name|e
 parameter_list|)
-block|{         }
-name|sysRoot
-operator|=
-literal|null
-expr_stmt|;
+block|{
+comment|// ignore
 block|}
-comment|//    /**
-comment|//     * Imports the LDIF entries packaged with the Eve JNDI provider jar into
-comment|//     * the newly created system partition to prime it up for operation.  Note
-comment|//     * that only ou=system entries will be added - entries for other partitions
-comment|//     * cannot be imported and will blow chunks.
-comment|//     *
-comment|//     * @throws NamingException if there are problems reading the ldif file and
-comment|//     * adding those entries to the system partition
-comment|//     * @param in the input stream with the ldif
-comment|//     */
-comment|//    protected void importLdif( InputStream in ) throws NamingException
-comment|//    {
-comment|//        try
-comment|//        {
-comment|//            for ( LdifEntry ldifEntry:new LdifReader( in ) )
-comment|//            {
-comment|//                rootDSE.add(
-comment|//                    new DefaultServerEntry(
-comment|//                        rootDSE.getDirectoryService().getRegistries(), ldifEntry.getEntry() ) );
-comment|//            }
-comment|//        }
-comment|//        catch ( Exception e )
-comment|//        {
-comment|//            String msg = "failed while trying to parse system ldif file";
-comment|//            NamingException ne = new LdapConfigurationException( msg );
-comment|//            ne.setRootCause( e );
-comment|//            throw ne;
-comment|//        }
-comment|//    }
-comment|//
-comment|//
+block|}
 block|}
 end_class
 
