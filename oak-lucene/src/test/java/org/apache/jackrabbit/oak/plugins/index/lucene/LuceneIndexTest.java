@@ -1454,6 +1454,11 @@ import|;
 end_import
 
 begin_class
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"ConstantConditions"
+argument_list|)
 specifier|public
 class|class
 name|LuceneIndexTest
@@ -3288,6 +3293,8 @@ argument_list|,
 name|getIndexWriterConfig
 argument_list|(
 name|definition
+argument_list|,
+literal|true
 argument_list|)
 argument_list|)
 decl_stmt|;

@@ -293,6 +293,16 @@ end_import
 
 begin_import
 import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|Nullable
+import|;
+end_import
+
+begin_import
+import|import
 name|com
 operator|.
 name|google
@@ -988,6 +998,11 @@ name|definition
 parameter_list|,
 name|IndexUpdateCallback
 name|updateCallback
+parameter_list|,
+annotation|@
+name|Nullable
+name|IndexCopier
+name|indexCopier
 parameter_list|)
 throws|throws
 name|CommitFailedException
@@ -1022,6 +1037,8 @@ argument_list|,
 name|definition
 argument_list|,
 name|updateCallback
+argument_list|,
+name|indexCopier
 argument_list|)
 expr_stmt|;
 name|this

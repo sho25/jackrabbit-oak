@@ -393,7 +393,7 @@ name|directory
 operator|=
 name|cloner
 operator|.
-name|wrap
+name|wrapForRead
 argument_list|(
 name|indexPath
 argument_list|,

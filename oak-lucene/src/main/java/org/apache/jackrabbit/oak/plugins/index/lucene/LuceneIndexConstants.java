@@ -425,6 +425,12 @@ name|SAVE_DIR_LISTING
 init|=
 literal|"saveDirectoryListing"
 decl_stmt|;
+comment|/**      * Optional  Property to store the path of index in the repository. Path at which index      * definition is defined is not known to IndexEditor. To make use of CopyOnWrite      * feature its required to know the indexPath to optimize the lookup and read of      * existing index files      */
+name|String
+name|INDEX_PATH
+init|=
+literal|"indexPath"
+decl_stmt|;
 block|}
 end_interface
 
