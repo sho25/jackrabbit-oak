@@ -68,22 +68,6 @@ import|;
 end_import
 
 begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|collect
-operator|.
-name|Sets
-operator|.
-name|newIdentityHashSet
-import|;
-end_import
-
-begin_import
 import|import
 name|java
 operator|.
@@ -144,20 +128,6 @@ operator|.
 name|annotation
 operator|.
 name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|collect
-operator|.
-name|Sets
 import|;
 end_import
 
@@ -354,7 +324,7 @@ specifier|final
 name|long
 name|cacheSize
 decl_stmt|;
-comment|/**      * Hash table of weak references to segment identifiers that are      * currently being accessed. The size of the table is always a power      * of two, which optimizes the {@link #expand()} operation. The table is      * indexed by the random identifier bits, which guarantees uniform      * distribution of entries. Each table entry is either {@code null}      * (when there are no matching identifiers) or a list of weak references      * to the matching identifiers.      */
+comment|/**      * Hash table of weak references to segment identifiers that are      * currently being accessed. The size of the table is always a power      * of two, which optimizes the {@code refresh} operation. The table is      * indexed by the random identifier bits, which guarantees uniform      * distribution of entries. Each table entry is either {@code null}      * (when there are no matching identifiers) or a list of weak references      * to the matching identifiers.      */
 specifier|private
 specifier|final
 name|SegmentIdTable
@@ -1067,25 +1037,13 @@ parameter_list|)
 block|{
 for|for
 control|(
-name|int
-name|i
-init|=
-literal|0
-init|;
-name|i
-operator|<
+name|SegmentIdTable
+name|table
+range|:
 name|tables
-operator|.
-name|length
-condition|;
-name|i
-operator|++
 control|)
 block|{
-name|tables
-index|[
-name|i
-index|]
+name|table
 operator|.
 name|clearSegmentIdTables
 argument_list|(

@@ -434,18 +434,21 @@ name|SMALL_LIMIT
 decl_stmt|;
 specifier|public
 specifier|static
+specifier|final
 name|int
 name|REF_COUNT_OFFSET
 init|=
 literal|5
 decl_stmt|;
 specifier|static
+specifier|final
 name|int
 name|ROOT_COUNT_OFFSET
 init|=
 literal|6
 decl_stmt|;
 specifier|static
+specifier|final
 name|int
 name|BLOBREF_COUNT_OFFSET
 init|=
@@ -2223,8 +2226,6 @@ argument_list|)
 expr_stmt|;
 name|offset
 operator|+=
-name|Segment
-operator|.
 name|RECORD_ID_BYTES
 expr_stmt|;
 block|}
@@ -2285,8 +2286,6 @@ argument_list|)
 expr_stmt|;
 name|offset
 operator|+=
-name|Segment
-operator|.
 name|RECORD_ID_BYTES
 expr_stmt|;
 block|}
@@ -2354,8 +2353,6 @@ argument_list|)
 expr_stmt|;
 name|offset
 operator|+=
-name|Segment
-operator|.
 name|RECORD_ID_BYTES
 expr_stmt|;
 block|}
@@ -2456,8 +2453,6 @@ argument_list|)
 decl_stmt|;
 name|offset
 operator|+=
-name|Segment
-operator|.
 name|RECORD_ID_BYTES
 expr_stmt|;
 name|byte
@@ -2558,8 +2553,6 @@ argument_list|)
 decl_stmt|;
 name|offset
 operator|+=
-name|Segment
-operator|.
 name|RECORD_ID_BYTES
 expr_stmt|;
 for|for

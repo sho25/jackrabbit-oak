@@ -197,7 +197,6 @@ name|currentSize
 parameter_list|)
 block|{ }
 block|}
-empty_stmt|;
 block|}
 end_interface
 

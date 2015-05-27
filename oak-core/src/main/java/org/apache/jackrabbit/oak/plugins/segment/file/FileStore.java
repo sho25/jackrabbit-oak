@@ -2516,8 +2516,6 @@ parameter_list|(
 name|File
 name|directory
 parameter_list|)
-throws|throws
-name|IOException
 block|{
 name|Map
 argument_list|<

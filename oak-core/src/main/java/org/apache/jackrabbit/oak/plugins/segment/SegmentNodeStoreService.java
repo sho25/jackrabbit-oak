@@ -1512,6 +1512,7 @@ literal|"Force committing tries to exclusively write lock the node store."
 argument_list|)
 specifier|public
 specifier|static
+specifier|final
 name|String
 name|COMPACTION_FORCE_AFTER_FAIL
 init|=
@@ -3062,6 +3063,8 @@ expr_stmt|;
 block|}
 block|}
 comment|/**      * needed for situations where you have to unwrap the      * SegmentNodeStoreService, to get the SegmentStore, like the failover      */
+annotation|@
+name|Override
 specifier|public
 name|SegmentStore
 name|getSegmentStore

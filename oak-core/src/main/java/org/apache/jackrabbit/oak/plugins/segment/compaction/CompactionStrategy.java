@@ -221,6 +221,7 @@ decl_stmt|;
 comment|/**      * No compaction at all      */
 specifier|public
 specifier|static
+specifier|final
 name|CompactionStrategy
 name|NO_COMPACTION
 init|=
