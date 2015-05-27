@@ -4307,6 +4307,13 @@ condition|(
 name|keyId
 operator|==
 literal|null
+operator|&&
+name|entry
+operator|.
+name|getValue
+argument_list|()
+operator|!=
+literal|null
 condition|)
 block|{
 name|keyId
@@ -4317,6 +4324,13 @@ name|key
 argument_list|)
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|keyId
+operator|!=
+literal|null
+condition|)
+block|{
 name|entries
 operator|.
 name|add
@@ -4335,6 +4349,7 @@ argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 return|return
 name|writeMapBucket
