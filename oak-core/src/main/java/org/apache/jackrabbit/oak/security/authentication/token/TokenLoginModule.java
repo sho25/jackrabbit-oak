@@ -582,6 +582,8 @@ return|return
 literal|true
 return|;
 block|}
+try|try
+block|{
 if|if
 condition|(
 name|tokenProvider
@@ -780,10 +782,14 @@ throw|;
 block|}
 block|}
 block|}
+block|}
+finally|finally
+block|{
 comment|// the login attempt on this module did not succeed: clear state
 name|clearState
 argument_list|()
 expr_stmt|;
+block|}
 return|return
 literal|false
 return|;
