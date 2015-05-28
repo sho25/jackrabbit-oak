@@ -14,6 +14,8 @@ operator|.
 name|oak
 operator|.
 name|scalability
+operator|.
+name|benchmarks
 package|;
 end_package
 
@@ -28,6 +30,8 @@ operator|.
 name|oak
 operator|.
 name|scalability
+operator|.
+name|suites
 operator|.
 name|ScalabilityAbstractSuite
 operator|.
@@ -58,13 +62,13 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Simulates offset pagination over the search {@link org.apache.jackrabbit.oak.scalability  * .SplitOrderBySearcher}  */
+comment|/**  * Simulates keyset pagination over the search {@link org.apache.jackrabbit.oak.scalability.benchmarks.SplitOrderBySearcher}  */
 end_comment
 
 begin_class
 specifier|public
 class|class
-name|SplitOrderByOffsetPageSearcher
+name|SplitOrderByKeysetPageSearcher
 extends|extends
 name|SplitOrderBySearcher
 block|{
@@ -90,7 +94,7 @@ argument_list|,
 name|context
 argument_list|)
 expr_stmt|;
-name|processResultsOffsetPagination
+name|processResultsKeysetPagination
 argument_list|(
 name|qm
 argument_list|,

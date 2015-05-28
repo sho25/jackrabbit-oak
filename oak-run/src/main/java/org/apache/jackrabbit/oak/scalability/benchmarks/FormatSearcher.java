@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  * Licensed to the Apache Software Foundation (ASF) under one  *  or more contributor license agreements.  See the NOTICE file  *  distributed with this work for additional information  *  regarding copyright ownership.  The ASF licenses this file  *  to you under the Apache License, Version 2.0 (the  *  "License"); you may not use this file except in compliance  *  with the License.  You may obtain a copy of the License at  *  *    http://www.apache.org/licenses/LICENSE-2.0  *  *  Unless required by applicable law or agreed to in writing,  *  software distributed under the License is distributed on an  *  "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY  *  KIND, either express or implied.  See the License for the  *  specific language governing permissions and limitations  *  under the License.  */
+comment|/*  * Licensed to the Apache Software Foundation (ASF) under one  * or more contributor license agreements.  See the NOTICE file  * distributed with this work for additional information  * regarding copyright ownership.  The ASF licenses this file  * to you under the Apache License, Version 2.0 (the  * "License"); you may not use this file except in compliance  * with the License.  You may obtain a copy of the License at  *  *   http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing,  * software distributed under the License is distributed on an  * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY  * KIND, either express or implied.  See the License for the  * specific language governing permissions and limitations  * under the License.  */
 end_comment
 
 begin_package
@@ -14,28 +14,10 @@ operator|.
 name|oak
 operator|.
 name|scalability
+operator|.
+name|benchmarks
 package|;
 end_package
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Calendar
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|Nonnull
-import|;
-end_import
 
 begin_import
 import|import
@@ -85,7 +67,25 @@ name|benchmark
 operator|.
 name|util
 operator|.
-name|Date
+name|MimeType
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|nodetype
+operator|.
+name|NodeTypeConstants
 import|;
 end_import
 
@@ -101,6 +101,26 @@ name|oak
 operator|.
 name|scalability
 operator|.
+name|suites
+operator|.
+name|ScalabilityBlobSearchSuite
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|scalability
+operator|.
+name|suites
+operator|.
 name|ScalabilityAbstractSuite
 operator|.
 name|ExecutionContext
@@ -108,15 +128,15 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Searches on path and orders the results by 2 properties  */
+comment|/**  * Searches on the file format/Mime type   *  */
 end_comment
 
 begin_class
 specifier|public
 class|class
-name|OrderBySearcher
+name|FormatSearcher
 extends|extends
-name|PaginationEnabledSearcher
+name|SearchScalabilityBenchmark
 block|{
 annotation|@
 name|SuppressWarnings
@@ -129,8 +149,6 @@ specifier|protected
 name|Query
 name|getQuery
 parameter_list|(
-annotation|@
-name|Nonnull
 name|QueryManager
 name|qm
 parameter_list|,
@@ -140,8 +158,6 @@ parameter_list|)
 throws|throws
 name|RepositoryException
 block|{
-comment|// /jcr:root/LongevitySearchAssets/12345//element(*, ParentType) order by @viewed
-comment|// descending, @added descending
 name|StringBuilder
 name|statement
 init|=
@@ -187,9 +203,9 @@ argument_list|()
 operator|.
 name|get
 argument_list|(
-name|ScalabilityNodeSuite
+name|ScalabilityBlobSearchSuite
 operator|.
-name|CTX_ACT_NODE_TYPE_PROP
+name|CTX_FILE_NODE_TYPE_PROP
 argument_list|)
 argument_list|)
 operator|.
@@ -198,76 +214,81 @@ argument_list|(
 literal|")"
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|context
+name|statement
 operator|.
-name|getMap
-argument_list|()
-operator|.
-name|containsKey
+name|append
 argument_list|(
-name|KEYSET_VAL_PROP
+literal|"[(("
 argument_list|)
-condition|)
+expr_stmt|;
+comment|// adding all the possible mime-types in an OR fashion
+for|for
+control|(
+name|MimeType
+name|mt
+range|:
+name|MimeType
+operator|.
+name|values
+argument_list|()
+control|)
 block|{
 name|statement
 operator|.
 name|append
 argument_list|(
-literal|"[("
+literal|"jcr:content/@"
 argument_list|)
 operator|.
 name|append
 argument_list|(
-literal|"@"
+name|NodeTypeConstants
+operator|.
+name|JCR_MIMETYPE
 argument_list|)
 operator|.
 name|append
 argument_list|(
-name|ScalabilityNodeSuite
-operator|.
-name|CTX_PAGINATION_KEY_PROP
+literal|" = '"
 argument_list|)
 operator|.
 name|append
 argument_list|(
-literal|"< xs:dateTime('"
-argument_list|)
+name|mt
 operator|.
-name|append
-argument_list|(
-name|Date
-operator|.
-name|convertToISO_8601_2000
-argument_list|(
-operator|(
-name|Calendar
-operator|)
-name|context
-operator|.
-name|getMap
+name|getValue
 argument_list|()
-operator|.
-name|get
-argument_list|(
-name|KEYSET_VAL_PROP
-argument_list|)
-argument_list|)
 argument_list|)
 operator|.
 name|append
 argument_list|(
-literal|"'))]"
+literal|"' or "
 argument_list|)
 expr_stmt|;
 block|}
+comment|// removing latest ' or '
+name|statement
+operator|.
+name|delete
+argument_list|(
+name|statement
+operator|.
+name|lastIndexOf
+argument_list|(
+literal|" or "
+argument_list|)
+argument_list|,
+name|statement
+operator|.
+name|length
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|statement
 operator|.
 name|append
 argument_list|(
-name|getOrderByClause
-argument_list|()
+literal|"))]"
 argument_list|)
 expr_stmt|;
 name|LOG

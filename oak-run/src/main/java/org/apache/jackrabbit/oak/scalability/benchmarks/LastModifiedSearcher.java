@@ -14,6 +14,8 @@ operator|.
 name|oak
 operator|.
 name|scalability
+operator|.
+name|benchmarks
 package|;
 end_package
 
@@ -80,6 +82,26 @@ operator|.
 name|oak
 operator|.
 name|scalability
+operator|.
+name|suites
+operator|.
+name|ScalabilityBlobSearchSuite
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|scalability
+operator|.
+name|suites
 operator|.
 name|ScalabilityAbstractSuite
 operator|.

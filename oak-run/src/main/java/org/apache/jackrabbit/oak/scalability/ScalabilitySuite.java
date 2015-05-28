@@ -43,6 +43,24 @@ name|RepositoryFixture
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|scalability
+operator|.
+name|benchmarks
+operator|.
+name|ScalabilityBenchmark
+import|;
+end_import
+
 begin_comment
 comment|/**  * Interface for scalability suite for load testing.  *   * {@link ScalabilitySuite} implementations would configure different {@link ScalabilityBenchmark}  * implementations for executing performance tests and measuring the execution times on those tests.  *   * The entry method for the starting the tests is {@link #run(Iterable)}.  *   */
 end_comment

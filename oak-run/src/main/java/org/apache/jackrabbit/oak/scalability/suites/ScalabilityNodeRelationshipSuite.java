@@ -14,6 +14,8 @@ operator|.
 name|oak
 operator|.
 name|scalability
+operator|.
+name|suites
 package|;
 end_package
 

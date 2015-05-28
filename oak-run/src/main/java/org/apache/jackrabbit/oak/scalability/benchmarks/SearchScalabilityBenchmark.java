@@ -14,6 +14,8 @@ operator|.
 name|oak
 operator|.
 name|scalability
+operator|.
+name|benchmarks
 package|;
 end_package
 
@@ -136,6 +138,8 @@ operator|.
 name|oak
 operator|.
 name|scalability
+operator|.
+name|suites
 operator|.
 name|ScalabilityAbstractSuite
 operator|.

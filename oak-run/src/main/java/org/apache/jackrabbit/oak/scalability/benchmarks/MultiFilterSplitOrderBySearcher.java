@@ -14,6 +14,8 @@ operator|.
 name|oak
 operator|.
 name|scalability
+operator|.
+name|benchmarks
 package|;
 end_package
 
@@ -71,6 +73,44 @@ name|oak
 operator|.
 name|scalability
 operator|.
+name|suites
+operator|.
+name|ScalabilityBlobSearchSuite
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|scalability
+operator|.
+name|suites
+operator|.
+name|ScalabilityNodeSuite
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|scalability
+operator|.
+name|suites
+operator|.
 name|ScalabilityAbstractSuite
 operator|.
 name|ExecutionContext
@@ -78,7 +118,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Splits the query in {@link org.apache.jackrabbit.oak.scalability.MultiFilterOrderBySearcher}  * into multiple queries and unions the results.  */
+comment|/**  * Splits the query in {@link org.apache.jackrabbit.oak.scalability.benchmarks.MultiFilterOrderBySearcher}  * into multiple queries and unions the results.  */
 end_comment
 
 begin_class

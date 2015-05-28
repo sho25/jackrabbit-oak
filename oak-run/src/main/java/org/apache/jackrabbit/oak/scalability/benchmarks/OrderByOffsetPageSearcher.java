@@ -14,6 +14,8 @@ operator|.
 name|oak
 operator|.
 name|scalability
+operator|.
+name|benchmarks
 package|;
 end_package
 
@@ -51,6 +53,8 @@ name|oak
 operator|.
 name|scalability
 operator|.
+name|suites
+operator|.
 name|ScalabilityAbstractSuite
 operator|.
 name|ExecutionContext
@@ -58,7 +62,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Simulates offset pagination over the search {@link org.apache.jackrabbit.oak.scalability  * .OrderBySearcher}  */
+comment|/**  * Simulates offset pagination over the search {@link org.apache.jackrabbit.oak.scalability.benchmarks.OrderBySearcher}  */
 end_comment
 
 begin_class

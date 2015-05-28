@@ -14,6 +14,8 @@ operator|.
 name|oak
 operator|.
 name|scalability
+operator|.
+name|suites
 package|;
 end_package
 
@@ -328,6 +330,40 @@ operator|.
 name|fixture
 operator|.
 name|RepositoryFixture
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|scalability
+operator|.
+name|ScalabilitySuite
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|scalability
+operator|.
+name|benchmarks
+operator|.
+name|ScalabilityBenchmark
 import|;
 end_import
 
@@ -1818,6 +1854,7 @@ block|}
 block|}
 block|}
 comment|/**      * Execution context to be pass information to and from the suite to the benchmarks.      */
+specifier|public
 specifier|static
 class|class
 name|ExecutionContext

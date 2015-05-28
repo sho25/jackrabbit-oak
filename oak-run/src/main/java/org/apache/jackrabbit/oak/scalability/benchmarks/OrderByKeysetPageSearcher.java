@@ -14,6 +14,8 @@ operator|.
 name|oak
 operator|.
 name|scalability
+operator|.
+name|benchmarks
 package|;
 end_package
 
@@ -51,6 +53,8 @@ name|oak
 operator|.
 name|scalability
 operator|.
+name|suites
+operator|.
 name|ScalabilityAbstractSuite
 operator|.
 name|ExecutionContext
@@ -58,15 +62,15 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Simulates offset pagination over the search {@link org.apache.jackrabbit.oak.scalability  * .MultiFilterOrderBySearcher}  */
+comment|/**  * Simulates keyset pagination over the search {@link org.apache.jackrabbit.oak.scalability.benchmarks.OrderBySearcher}  */
 end_comment
 
 begin_class
 specifier|public
 class|class
-name|MultiFilterOrderByOffsetPageSearcher
+name|OrderByKeysetPageSearcher
 extends|extends
-name|MultiFilterOrderBySearcher
+name|OrderBySearcher
 block|{
 annotation|@
 name|Override
@@ -83,7 +87,7 @@ parameter_list|)
 throws|throws
 name|RepositoryException
 block|{
-name|processResultsOffsetPagination
+name|processResultsKeysetPagination
 argument_list|(
 name|qm
 argument_list|,
