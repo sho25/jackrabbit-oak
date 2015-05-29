@@ -8040,7 +8040,6 @@ expr_stmt|;
 block|}
 block|}
 decl_stmt|;
-comment|//TODO should not use distinct
 name|pathCursor
 operator|=
 operator|new
@@ -8048,7 +8047,7 @@ name|PathCursor
 argument_list|(
 name|pathIterator
 argument_list|,
-literal|true
+literal|false
 argument_list|,
 name|settings
 argument_list|)
