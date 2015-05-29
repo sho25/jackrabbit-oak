@@ -1209,9 +1209,7 @@ operator|.
 name|size
 argument_list|()
 argument_list|,
-name|blobSize
-operator|+
-name|dataSize
+literal|0
 argument_list|,
 name|blobSize
 operator|+

@@ -501,6 +501,23 @@ return|return
 name|store
 return|;
 block|}
+comment|/**      * Clear the segment cache      */
+specifier|public
+specifier|synchronized
+name|void
+name|clearCache
+parameter_list|()
+block|{
+name|segments
+operator|.
+name|clear
+argument_list|()
+expr_stmt|;
+name|currentSize
+operator|=
+literal|0
+expr_stmt|;
+block|}
 name|Segment
 name|getSegment
 parameter_list|(

@@ -1262,6 +1262,16 @@ expr_stmt|;
 block|}
 block|}
 block|}
+name|boolean
+name|isDirty
+parameter_list|()
+block|{
+return|return
+name|access
+operator|!=
+literal|null
+return|;
+block|}
 comment|/**      * Closes this tar file.      *      * @throws IOException if the tar file could not be closed      */
 name|void
 name|close
