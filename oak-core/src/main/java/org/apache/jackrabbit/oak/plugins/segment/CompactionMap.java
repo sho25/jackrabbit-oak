@@ -287,10 +287,6 @@ literal|0
 index|]
 decl_stmt|;
 specifier|private
-name|long
-name|prevWeight
-decl_stmt|;
-specifier|private
 name|CompactionMap
 name|prev
 decl_stmt|;
@@ -2019,15 +2015,6 @@ name|prev
 operator|=
 name|prev
 expr_stmt|;
-name|this
-operator|.
-name|prevWeight
-operator|=
-name|prev
-operator|.
-name|getEstimatedWeight
-argument_list|()
-expr_stmt|;
 block|}
 specifier|public
 name|String
@@ -2198,15 +2185,17 @@ argument_list|()
 return|;
 block|}
 block|}
+comment|/**      * The weight of the last generation of the compaction map.      * @return  Estimated weight of the last generation of the compaction map.      */
 specifier|public
 name|long
-name|getLastMergeWeight
+name|getLastWeight
 parameter_list|()
 block|{
 return|return
+name|getEstimatedWeight
+argument_list|(
 name|this
-operator|.
-name|prevWeight
+argument_list|)
 return|;
 block|}
 specifier|private

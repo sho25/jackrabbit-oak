@@ -2273,7 +2273,7 @@ operator|.
 name|getCompactionMap
 argument_list|()
 operator|.
-name|getLastMergeWeight
+name|getLastWeight
 argument_list|()
 expr_stmt|;
 block|}
