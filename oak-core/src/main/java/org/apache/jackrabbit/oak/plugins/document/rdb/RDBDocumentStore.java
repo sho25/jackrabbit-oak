@@ -2975,24 +2975,6 @@ annotation|@
 name|Override
 specifier|public
 name|String
-name|getGreatestQueryString
-parameter_list|(
-name|String
-name|column
-parameter_list|)
-block|{
-return|return
-literal|"(select MAX(mod) from (VALUES ("
-operator|+
-name|column
-operator|+
-literal|"), (?)) AS ALLMOD(mod))"
-return|;
-block|}
-annotation|@
-name|Override
-specifier|public
-name|String
 name|getAdditionalDiagnostics
 parameter_list|(
 name|RDBConnectionHandler
@@ -3211,23 +3193,6 @@ operator|+
 name|dataOctetLimit
 operator|+
 literal|"))"
-return|;
-block|}
-comment|/**          * Returns the GREATEST function or its equivalent function or sub-query          * supported.          *          * @return the greatest query string          */
-specifier|public
-name|String
-name|getGreatestQueryString
-parameter_list|(
-name|String
-name|column
-parameter_list|)
-block|{
-return|return
-literal|"GREATEST("
-operator|+
-name|column
-operator|+
-literal|", ?)"
 return|;
 block|}
 comment|/**          * Query for any required initialization of the DB.          *           * @return the DB initialization SQL string          */
@@ -9583,18 +9548,9 @@ literal|"update "
 operator|+
 name|tableName
 operator|+
-literal|" set MODIFIED = "
+literal|" set MODIFIED = case when ?> MODIFIED then ? else MODIFIED end, "
 operator|+
-name|this
-operator|.
-name|db
-operator|.
-name|getGreatestQueryString
-argument_list|(
-literal|"MODIFIED"
-argument_list|)
-operator|+
-literal|", HASBINARY = ?, DELETEDONCE = ?, MODCOUNT = ?, CMODCOUNT = ?, DSIZE = DSIZE + ?, "
+literal|"HASBINARY = ?, DELETEDONCE = ?, MODCOUNT = ?, CMODCOUNT = ?, DSIZE = DSIZE + ?, "
 argument_list|)
 expr_stmt|;
 name|t
@@ -9664,6 +9620,20 @@ name|si
 init|=
 literal|1
 decl_stmt|;
+name|stmt
+operator|.
+name|setObject
+argument_list|(
+name|si
+operator|++
+argument_list|,
+name|modified
+argument_list|,
+name|Types
+operator|.
+name|BIGINT
+argument_list|)
+expr_stmt|;
 name|stmt
 operator|.
 name|setObject
@@ -9904,18 +9874,7 @@ literal|"update "
 operator|+
 name|tableName
 operator|+
-literal|" set MODIFIED = "
-operator|+
-name|this
-operator|.
-name|db
-operator|.
-name|getGreatestQueryString
-argument_list|(
-literal|"MODIFIED"
-argument_list|)
-operator|+
-literal|", MODCOUNT = MODCOUNT + 1, DSIZE = DSIZE + ?, "
+literal|" set MODIFIED = case when ?> MODIFIED then ? else MODIFIED end, MODCOUNT = MODCOUNT + 1, DSIZE = DSIZE + ?, "
 argument_list|)
 expr_stmt|;
 name|t
@@ -10018,6 +9977,20 @@ name|si
 init|=
 literal|1
 decl_stmt|;
+name|stmt
+operator|.
+name|setObject
+argument_list|(
+name|si
+operator|++
+argument_list|,
+name|modified
+argument_list|,
+name|Types
+operator|.
+name|BIGINT
+argument_list|)
+expr_stmt|;
 name|stmt
 operator|.
 name|setObject
