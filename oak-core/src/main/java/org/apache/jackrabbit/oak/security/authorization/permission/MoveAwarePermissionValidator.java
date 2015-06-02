@@ -520,7 +520,7 @@ parameter_list|)
 block|{
 comment|// TODO improve: avoid calculating the 'before' permissions in case the current parent permissions already point to the correct tree.
 name|ImmutableTree
-name|parent
+name|immutableTree
 init|=
 operator|(
 name|ImmutableTree
@@ -542,7 +542,7 @@ argument_list|()
 operator|.
 name|getTreePermission
 argument_list|(
-name|parent
+name|immutableTree
 argument_list|,
 name|TreePermission
 operator|.
@@ -565,6 +565,15 @@ argument_list|()
 argument_list|)
 control|)
 block|{
+name|immutableTree
+operator|=
+name|immutableTree
+operator|.
+name|getChild
+argument_list|(
+name|n
+argument_list|)
+expr_stmt|;
 name|tp
 operator|=
 name|tp
@@ -573,12 +582,7 @@ name|getChildPermission
 argument_list|(
 name|n
 argument_list|,
-name|parent
-operator|.
-name|getChild
-argument_list|(
-name|n
-argument_list|)
+name|immutableTree
 operator|.
 name|getNodeState
 argument_list|()
