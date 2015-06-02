@@ -85,7 +85,7 @@ specifier|abstract
 class|class
 name|ScalabilityBenchmark
 block|{
-comment|/**      * Runs the benchmark against the given repository.      *       * @param fixtures repository fixtures      * @throws Exception       */
+comment|/**      * Runs the benchmark against the given repository.      *      * @param repository the repository instance      * @param credentials the credentials      * @param context the execution context      * @throws Exception      */
 specifier|public
 specifier|abstract
 name|void
@@ -103,6 +103,38 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
+comment|/**      * Run any preparatory steps before the benchmark.      *      * @param repository the repository instance      * @param credentials the credentials      * @param context the execution context      */
+specifier|public
+name|void
+name|beforeExecute
+parameter_list|(
+name|Repository
+name|repository
+parameter_list|,
+name|Credentials
+name|credentials
+parameter_list|,
+name|ExecutionContext
+name|context
+parameter_list|)
+throws|throws
+name|Exception
+block|{}
+comment|/**      * Run any cleanup necessary after the benchmark      *      * @param repository the repository instance      * @param credentials the credentials      * @param context the execution context      */
+specifier|public
+name|void
+name|afterExecute
+parameter_list|(
+name|Repository
+name|repository
+parameter_list|,
+name|Credentials
+name|credentials
+parameter_list|,
+name|ExecutionContext
+name|context
+parameter_list|)
+block|{}
 annotation|@
 name|Override
 specifier|public

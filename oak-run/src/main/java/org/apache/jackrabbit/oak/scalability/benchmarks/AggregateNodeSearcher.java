@@ -402,8 +402,6 @@ parameter_list|,
 name|Credentials
 name|credentials
 parameter_list|,
-name|ScalabilityAbstractSuite
-operator|.
 name|ExecutionContext
 name|context
 parameter_list|)
