@@ -2352,6 +2352,11 @@ name|ByteBuffer
 name|index
 decl_stmt|;
 specifier|private
+specifier|volatile
+name|boolean
+name|closed
+decl_stmt|;
+specifier|private
 name|TarReader
 parameter_list|(
 name|File
@@ -3663,12 +3668,25 @@ name|uuids
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * @return  {@code true} iff this reader has been closed      * @see #close()      */
+name|boolean
+name|isClosed
+parameter_list|()
+block|{
+return|return
+name|closed
+return|;
+block|}
 name|File
 name|close
 parameter_list|()
 throws|throws
 name|IOException
 block|{
+name|closed
+operator|=
+literal|true
+expr_stmt|;
 name|access
 operator|.
 name|close

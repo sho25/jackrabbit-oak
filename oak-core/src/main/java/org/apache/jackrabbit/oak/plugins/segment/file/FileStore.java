@@ -4440,6 +4440,27 @@ control|)
 block|{
 try|try
 block|{
+if|if
+condition|(
+name|reader
+operator|.
+name|isClosed
+argument_list|()
+condition|)
+block|{
+comment|// Cleanup might already have closed the file.
+comment|// The segment should be available from another file.
+name|log
+operator|.
+name|info
+argument_list|(
+literal|"Skipping closed tar file {}"
+argument_list|,
+name|reader
+argument_list|)
+expr_stmt|;
+continue|continue;
+block|}
 name|ByteBuffer
 name|buffer
 init|=
@@ -4561,6 +4582,27 @@ control|)
 block|{
 try|try
 block|{
+if|if
+condition|(
+name|reader
+operator|.
+name|isClosed
+argument_list|()
+condition|)
+block|{
+comment|// Cleanup might already have closed the file.
+comment|// The segment should be available from another file.
+name|log
+operator|.
+name|info
+argument_list|(
+literal|"Skipping closed tar file {}"
+argument_list|,
+name|reader
+argument_list|)
+expr_stmt|;
+continue|continue;
+block|}
 name|ByteBuffer
 name|buffer
 init|=
