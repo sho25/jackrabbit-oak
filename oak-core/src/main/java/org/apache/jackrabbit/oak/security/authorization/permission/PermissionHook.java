@@ -611,6 +611,16 @@ name|updatePermissionEntries
 argument_list|()
 expr_stmt|;
 block|}
+name|modified
+operator|.
+name|clear
+argument_list|()
+expr_stmt|;
+name|deleted
+operator|.
+name|clear
+argument_list|()
+expr_stmt|;
 block|}
 annotation|@
 name|Nonnull
