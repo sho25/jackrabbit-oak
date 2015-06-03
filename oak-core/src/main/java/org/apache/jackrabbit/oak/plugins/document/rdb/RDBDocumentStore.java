@@ -8321,24 +8321,6 @@ condition|(
 name|useCaseStatement
 condition|)
 block|{
-comment|// either we don't have a previous version of the document
-comment|// or the database does not support CASE in SELECT
-name|stmt
-operator|=
-name|connection
-operator|.
-name|prepareStatement
-argument_list|(
-literal|"select MODIFIED, MODCOUNT, CMODCOUNT, HASBINARY, DELETEDONCE, DATA, BDATA from "
-operator|+
-name|tableName
-operator|+
-literal|" where ID = ?"
-argument_list|)
-expr_stmt|;
-block|}
-else|else
-block|{
 comment|// the case statement causes the actual row data not to be
 comment|// sent in case we already have it
 name|stmt
@@ -8357,30 +8339,42 @@ literal|" where ID = ?"
 argument_list|)
 expr_stmt|;
 block|}
+else|else
+block|{
+comment|// either we don't have a previous version of the document
+comment|// or the database does not support CASE in SELECT
+name|stmt
+operator|=
+name|connection
+operator|.
+name|prepareStatement
+argument_list|(
+literal|"select MODIFIED, MODCOUNT, CMODCOUNT, HASBINARY, DELETEDONCE, DATA, BDATA from "
+operator|+
+name|tableName
+operator|+
+literal|" where ID = ?"
+argument_list|)
+expr_stmt|;
+block|}
 try|try
 block|{
+name|int
+name|si
+init|=
+literal|1
+decl_stmt|;
 if|if
 condition|(
 name|useCaseStatement
 condition|)
 block|{
-name|setIdInStatement
-argument_list|(
-name|stmt
-argument_list|,
-literal|1
-argument_list|,
-name|id
-argument_list|)
-expr_stmt|;
-block|}
-else|else
-block|{
 name|stmt
 operator|.
 name|setLong
 argument_list|(
-literal|1
+name|si
+operator|++
 argument_list|,
 name|lastmodcount
 argument_list|)
@@ -8389,21 +8383,22 @@ name|stmt
 operator|.
 name|setLong
 argument_list|(
-literal|2
+name|si
+operator|++
 argument_list|,
 name|lastmodcount
 argument_list|)
 expr_stmt|;
+block|}
 name|setIdInStatement
 argument_list|(
 name|stmt
 argument_list|,
-literal|3
+name|si
 argument_list|,
 name|id
 argument_list|)
 expr_stmt|;
-block|}
 name|ResultSet
 name|rs
 init|=
