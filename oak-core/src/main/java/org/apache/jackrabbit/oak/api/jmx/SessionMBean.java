@@ -145,6 +145,11 @@ name|String
 name|getLastFailedSave
 parameter_list|()
 function_decl|;
+comment|/**      * Refresh this session.      *<em>Warning</em>: this operation might be disruptive to the owner of this session      */
+name|void
+name|refresh
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 

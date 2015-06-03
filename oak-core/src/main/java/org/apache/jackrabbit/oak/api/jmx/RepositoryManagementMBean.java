@@ -53,6 +53,18 @@ end_import
 
 begin_import
 import|import
+name|javax
+operator|.
+name|management
+operator|.
+name|openmbean
+operator|.
+name|TabularData
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -251,6 +263,13 @@ annotation|@
 name|Nonnull
 name|CompositeData
 name|getPropertyIndexAsyncReindexStatus
+parameter_list|()
+function_decl|;
+comment|/**      * Refresh all currently open sessions.      *<em>Warning</em>: this operation might be disruptive to the owner of the affected sessions      */
+annotation|@
+name|Nonnull
+name|TabularData
+name|refreshAllSessions
 parameter_list|()
 function_decl|;
 block|}

@@ -1017,6 +1017,8 @@ argument_list|,
 name|clock
 argument_list|,
 name|refreshStrategy
+argument_list|,
+name|this
 argument_list|)
 expr_stmt|;
 name|this
@@ -1740,6 +1742,11 @@ operator|=
 literal|false
 expr_stmt|;
 comment|// TODO
+name|sessionStats
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
 try|try
 block|{
 name|contentSession
