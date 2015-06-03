@@ -665,6 +665,8 @@ name|result
 operator|.
 name|getSize
 argument_list|()
+argument_list|,
+name|result
 argument_list|)
 decl_stmt|;
 return|return
@@ -741,12 +743,9 @@ name|sessionContext
 argument_list|)
 return|;
 block|}
-else|else
-block|{
 return|return
 literal|null
 return|;
-block|}
 block|}
 annotation|@
 name|Override
@@ -1068,6 +1067,8 @@ name|result
 operator|.
 name|getSize
 argument_list|()
+argument_list|,
+name|result
 argument_list|)
 decl_stmt|;
 return|return

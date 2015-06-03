@@ -210,9 +210,23 @@ argument_list|>
 name|getRows
 parameter_list|()
 function_decl|;
+comment|/**      * Get the size if known.      *       * @return the size, or -1 if unknown      */
 name|long
 name|getSize
 parameter_list|()
+function_decl|;
+comment|/**      * Get the size if known.      *       * @param precision the required precision      * @param max the maximum nodes read (for an exact size)      * @return the size, or -1 if unknown      */
+name|long
+name|getSize
+parameter_list|(
+name|Result
+operator|.
+name|SizePrecision
+name|precision
+parameter_list|,
+name|long
+name|max
+parameter_list|)
 function_decl|;
 name|void
 name|setExplain

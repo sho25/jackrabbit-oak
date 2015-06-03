@@ -29,6 +29,24 @@ name|Iterator
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|api
+operator|.
+name|Result
+operator|.
+name|SizePrecision
+import|;
+end_import
+
 begin_comment
 comment|/**  * A cursor to read a number of nodes sequentially.  */
 end_comment
@@ -49,6 +67,17 @@ name|Override
 name|IndexRow
 name|next
 parameter_list|()
+function_decl|;
+comment|/**      * Get the size if known.      *       * @param precision the required precision      * @param max the maximum nodes read (for an exact size)      * @return the size, or -1 if unknown      */
+name|long
+name|getSize
+parameter_list|(
+name|SizePrecision
+name|precision
+parameter_list|,
+name|long
+name|max
+parameter_list|)
 function_decl|;
 block|}
 end_interface

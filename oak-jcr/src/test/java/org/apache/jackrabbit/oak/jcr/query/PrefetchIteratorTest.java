@@ -154,6 +154,8 @@ argument_list|,
 literal|10
 argument_list|,
 literal|200
+argument_list|,
+literal|null
 argument_list|)
 expr_stmt|;
 comment|// reports the 'wrong' value as it was set manually
@@ -225,6 +227,8 @@ literal|1000
 argument_list|,
 operator|-
 literal|1
+argument_list|,
+literal|null
 argument_list|)
 expr_stmt|;
 name|assertEquals
@@ -269,6 +273,8 @@ literal|1000
 argument_list|,
 operator|-
 literal|1
+argument_list|,
+literal|null
 argument_list|)
 expr_stmt|;
 name|assertEquals
@@ -369,6 +375,8 @@ literal|30
 argument_list|,
 operator|-
 literal|1
+argument_list|,
+literal|null
 argument_list|)
 decl_stmt|;
 for|for
