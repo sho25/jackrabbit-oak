@@ -204,7 +204,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Reads random paths concurrently with multiple readers/writers configured with {#WRITERS} and {#READERS}.  */
+comment|/**  * Reads random paths concurrently with multiple readers/writers configured with {@link #WRITERS} and {@link #READERS}.  *  *<p>  * The following system JVM properties can be defined to configure the benchmark behavior.  *<ul>  *<li>  *<code>concurrentWriters</code> - Controls the number of concurrent background threads for writing nodes.  *     Defaults to 0.  *</li>  *<li>  *<code>concurrentReaders</code> - Controls the number of concurrent background threads for reading nodes.  *     Defaults to 0.  *</li>  *<li>  *<code>assets</code> - Controls the number of nodes to read/write in the background threads.  *     Defaults to 100.  *</li>  *</ul>  *</p>  *  */
 end_comment
 
 begin_class

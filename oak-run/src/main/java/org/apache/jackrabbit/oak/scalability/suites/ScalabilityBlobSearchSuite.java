@@ -408,7 +408,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * The suite test will incrementally increase the load and execute searches.  * Each test run thus adds blobs and executes different searches. This way we measure time taken for  * search(es) execution.  *   */
+comment|/**  * The suite test will incrementally increase the load and execute searches.  * Each test run thus adds blobs and executes different searches. This way we measure time taken for  * search(es) execution.  *  *<p>  * The following system JVM properties can be defined to configure the suite.  *<ul>  *<li>  *<code>fileWriters</code> - Controls the number of concurrent background threads for writing blobs.  *     Defaults to 0.  *</li>  *<li>  *<code>fileReaders</code> - Controls the number of concurrent background threads for reading blobs.  *     Defaults to 1.  *</li>  *<li>  *<code>fileSize</code> - Controls the size in KB of the blobs. Defaults to 1.  *</li>  *<li>  *<code>maxAssets</code> - Controls the max child nodes created under a node. Defaults to 500.  *</li>  *</ul>  *</p>  */
 end_comment
 
 begin_class
@@ -1242,6 +1242,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
+comment|/**      * Creates a node hierarchy similar to the below structure. Here a file Level0Level1Level2File0 is created      * which has a reference to Leve0Level1Level3File10:      *      *<pre>      * {@code      *  /LongevitySearchAssets<ID>      *      /writer<ID>      *          /0      *              /1      *                  /2      *                      /Level0Level1Level2File0      *                          jcr:primaryType :<oak:Unstructured|Asset|nt:unstructured>      *                          /jcr:content      *                              jcr:mimeType :<MIMETYPE>      *                              jcr:lastModified :<DATE>      *                              jcr:data :<BINARY>      *                              customPathProp : /LongevitySearchAssets<ID>/writer<ID>/0/1/2/Leve0Level1Level2File0      *                              references : /LongevitySearchAssets<ID>/writer<ID>/0/1/3/Leve0Level1Level3File10      * }      *</pre>      */
 specifier|private
 class|class
 name|BlobWriter
