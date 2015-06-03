@@ -334,6 +334,10 @@ name|RDB_H2
 block|,
 name|RDBBlobStoreFixture
 operator|.
+name|RDB_DERBY
+block|,
+name|RDBBlobStoreFixture
+operator|.
 name|RDB_MSSQL
 block|,
 name|RDBBlobStoreFixture
@@ -750,7 +754,9 @@ argument_list|)
 decl_stmt|;
 name|assertTrue
 argument_list|(
-literal|"expected supported block size is "
+name|blobStoreName
+operator|+
+literal|": expected supported block size is "
 operator|+
 name|expected
 operator|+
