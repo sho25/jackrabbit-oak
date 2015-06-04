@@ -562,6 +562,9 @@ name|id
 return|;
 block|}
 block|}
+comment|// guaranteed to work for power of 2 table sizes, see
+comment|// http://stackoverflow.com/questions/2348187/moving-from-linear-probing-to-quadratic-probing-hash-collisons
+comment|// http://stackoverflow.com/questions/12121217/limit-for-quadratic-probing-a-hash-table
 name|index
 operator|=
 operator|(
@@ -577,8 +580,7 @@ literal|1
 operator|)
 expr_stmt|;
 name|increment
-operator|+=
-name|increment
+operator|++
 expr_stmt|;
 if|if
 condition|(
