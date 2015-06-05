@@ -37,7 +37,11 @@ index|[]
 name|databases
 init|=
 block|{
+literal|"Apache Derby"
+block|,
 literal|"DB2"
+block|,
+literal|"H2"
 block|,
 literal|"Microsoft SQL Server"
 block|,
@@ -46,6 +50,8 @@ block|,
 literal|"Oracle"
 block|,
 literal|"PostgreSQL"
+block|,
+literal|"default"
 block|}
 decl_stmt|;
 specifier|public
