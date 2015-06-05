@@ -137,7 +137,7 @@ name|out
 operator|.
 name|format
 argument_list|(
-literal|"%6s  %6s  %6s  %6s  %6s  %6s%n"
+literal|"%6s  %6s  %6s  %6s  %6s  %6s  %6s  %6s%n"
 argument_list|,
 literal|"min"
 argument_list|,
@@ -149,6 +149,10 @@ literal|"90%"
 argument_list|,
 literal|"max"
 argument_list|,
+literal|"mean"
+argument_list|,
+literal|"stdev"
+argument_list|,
 literal|"N"
 argument_list|)
 expr_stmt|;
@@ -158,7 +162,7 @@ name|out
 operator|.
 name|format
 argument_list|(
-literal|"%6.0f  %6.0f  %6.0f  %6.0f  %6.0f  %6d%n"
+literal|"%6.0f  %6.0f  %6.0f  %6.0f  %6.0f  %6.0f  %6.0f  %6d%n"
 argument_list|,
 name|statistics
 operator|.
@@ -197,6 +201,20 @@ argument_list|,
 name|statistics
 operator|.
 name|getMax
+argument_list|()
+operator|/
+literal|1000000
+argument_list|,
+name|statistics
+operator|.
+name|getMean
+argument_list|()
+operator|/
+literal|1000000
+argument_list|,
+name|statistics
+operator|.
+name|getStandardDeviation
 argument_list|()
 operator|/
 literal|1000000

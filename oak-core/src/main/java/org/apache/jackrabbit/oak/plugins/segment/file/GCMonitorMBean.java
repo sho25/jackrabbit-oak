@@ -95,6 +95,13 @@ name|String
 name|getStatus
 parameter_list|()
 function_decl|;
+comment|/**      * Statistics about the compaction map.      */
+annotation|@
+name|Nonnull
+name|String
+name|getCompactionMapStats
+parameter_list|()
+function_decl|;
 comment|/**      * @return  time series of the repository size      */
 annotation|@
 name|Nonnull

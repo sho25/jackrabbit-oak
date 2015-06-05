@@ -793,6 +793,15 @@ return|;
 block|}
 block|}
 decl_stmt|;
+comment|// Use in memory compaction map as gains asserted later on
+comment|// do not take additional space of the compaction map into consideration
+name|custom
+operator|.
+name|setPersistCompactionMap
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
 name|fileStore
 operator|.
 name|setCompactionStrategy

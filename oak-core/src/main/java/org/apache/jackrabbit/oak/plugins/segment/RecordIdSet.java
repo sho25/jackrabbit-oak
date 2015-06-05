@@ -60,6 +60,26 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|segment
+operator|.
+name|Segment
+operator|.
+name|RECORD_ALIGN_BITS
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -224,8 +244,6 @@ call|)
 argument_list|(
 name|value
 operator|>>
-name|Segment
-operator|.
 name|RECORD_ALIGN_BITS
 argument_list|)
 return|;

@@ -370,6 +370,19 @@ return|return
 name|offset
 return|;
 block|}
+comment|/**      * @return  the segment id part of this record id as UUID      */
+specifier|public
+name|UUID
+name|asUUID
+parameter_list|()
+block|{
+return|return
+name|segmentId
+operator|.
+name|asUUID
+argument_list|()
+return|;
+block|}
 specifier|public
 name|Segment
 name|getSegment

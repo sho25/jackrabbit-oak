@@ -324,7 +324,7 @@ specifier|final
 name|long
 name|cacheSize
 decl_stmt|;
-comment|/**      * Hash table of weak references to segment identifiers that are      * currently being accessed. The size of the table is always a power      * of two, which optimizes the {@code refresh} operation. The table is      * indexed by the random identifier bits, which guarantees uniform      * distribution of entries. Each table entry is either {@code null}      * (when there are no matching identifiers) or a list of weak references      * to the matching identifiers.      */
+comment|/**      * Hash table of weak references to segment identifiers that are      * currently being accessed. The size of the table is always a power      * of two, which optimizes the {@code refresh()} operation. The table is      * indexed by the random identifier bits, which guarantees uniform      * distribution of entries. Each table entry is either {@code null}      * (when there are no matching identifiers) or a list of weak references      * to the matching identifiers.      */
 specifier|private
 specifier|final
 name|SegmentIdTable
@@ -351,8 +351,6 @@ decl_stmt|;
 specifier|private
 name|long
 name|currentSize
-init|=
-literal|0
 decl_stmt|;
 specifier|public
 name|SegmentTracker
@@ -434,13 +432,9 @@ argument_list|<
 name|CompactionMap
 argument_list|>
 argument_list|(
-operator|new
 name|CompactionMap
-argument_list|(
-literal|1
-argument_list|,
-name|this
-argument_list|)
+operator|.
+name|EMPTY
 argument_list|)
 expr_stmt|;
 block|}
@@ -735,25 +729,23 @@ specifier|public
 name|void
 name|setCompactionMap
 parameter_list|(
-name|CompactionMap
-name|compaction
+name|PartialCompactionMap
+name|map
 parameter_list|)
 block|{
-name|compaction
+name|compactionMap
 operator|.
-name|merge
+name|set
 argument_list|(
 name|compactionMap
 operator|.
 name|get
 argument_list|()
-argument_list|)
-expr_stmt|;
-name|compactionMap
 operator|.
-name|set
+name|cons
 argument_list|(
-name|compaction
+name|map
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

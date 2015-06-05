@@ -115,7 +115,6 @@ name|long
 name|lsb
 decl_stmt|;
 specifier|private
-specifier|final
 name|long
 name|creationTime
 decl_stmt|;
@@ -376,6 +375,34 @@ parameter_list|()
 block|{
 return|return
 name|creationTime
+return|;
+block|}
+comment|/**      * Pins this segment so it won't be cleaned by the {@code CLEAN_OLD} strategy.      */
+name|void
+name|pin
+parameter_list|()
+block|{
+name|creationTime
+operator|=
+name|Long
+operator|.
+name|MAX_VALUE
+expr_stmt|;
+block|}
+comment|/**      * @return  this segment id as UUID      */
+specifier|public
+name|UUID
+name|asUUID
+parameter_list|()
+block|{
+return|return
+operator|new
+name|UUID
+argument_list|(
+name|msb
+argument_list|,
+name|lsb
+argument_list|)
 return|;
 block|}
 comment|// --------------------------------------------------------< Comparable>--

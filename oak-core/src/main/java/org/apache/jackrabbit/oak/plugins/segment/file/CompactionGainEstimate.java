@@ -508,11 +508,14 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Returns a percentage estimate (scale 0-100) for how much disk space      * running compaction (and cleanup) could potentially release.      *      * @return percentage of disk space that could be freed with compaction      */
+comment|/**      * Returns a percentage estimate (scale 0-100) for how much disk space      * running compaction (and cleanup) could potentially release.      *      * @param offset  number of bytes to offset the reachable size with      * @return percentage of disk space that could be freed with compaction      */
 specifier|public
 name|long
 name|estimateCompactionGain
-parameter_list|()
+parameter_list|(
+name|long
+name|offset
+parameter_list|)
 block|{
 if|if
 condition|(
@@ -532,6 +535,8 @@ operator|(
 name|totalSize
 operator|-
 name|reachableSize
+operator|-
+name|offset
 operator|)
 operator|/
 name|totalSize

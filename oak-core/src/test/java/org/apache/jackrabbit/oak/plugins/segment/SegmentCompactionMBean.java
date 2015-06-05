@@ -142,6 +142,11 @@ name|boolean
 name|getRootReference
 parameter_list|()
 function_decl|;
+comment|/**      * Determine whether the compaction map is persisted or in memory      * @return  {@code true} if persisted, {@code false} otherwise      */
+name|boolean
+name|getPersistCompactionMap
+parameter_list|()
+function_decl|;
 comment|/**      * @return  actual number of concurrent readers      */
 name|int
 name|getReaderCount
@@ -165,6 +170,16 @@ function_decl|;
 comment|/**      * @return  current weight of the compaction map      */
 name|long
 name|getCompactionMapWeight
+parameter_list|()
+function_decl|;
+comment|/**      * @return  number of record referenced by the keys in this map.      */
+name|long
+name|getRecordCount
+parameter_list|()
+function_decl|;
+comment|/**      * @return  number of segments referenced by the keys in this map.      */
+name|long
+name|getSegmentCount
 parameter_list|()
 function_decl|;
 comment|/**      * @return  current depth of the compaction map      */

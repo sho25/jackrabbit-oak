@@ -100,10 +100,22 @@ modifier|...
 name|arguments
 parameter_list|)
 function_decl|;
-comment|/**      * The compaction phase of the garbage collection process terminated successfully.      */
+comment|/**      * The compaction phase of the garbage collection process terminated successfully.      * @param segmentCounts    number of segments in the individual generations of the map      * @param recordCounts     number of records in the individual generations of the map      * @param compactionMapWeights   weights of the individual generations of the map      * @see org.apache.jackrabbit.oak.plugins.segment.PartialCompactionMap      */
 name|void
 name|compacted
-parameter_list|()
+parameter_list|(
+name|long
+index|[]
+name|segmentCounts
+parameter_list|,
+name|long
+index|[]
+name|recordCounts
+parameter_list|,
+name|long
+index|[]
+name|compactionMapWeights
+parameter_list|)
 function_decl|;
 comment|/**      * The cleanup phase of the garbage collection process terminated successfully.      * @param reclaimedSize  number of bytes reclaimed      * @param currentSize    number of bytes after garbage collection      */
 name|void
@@ -181,7 +193,19 @@ name|Override
 specifier|public
 name|void
 name|compacted
-parameter_list|()
+parameter_list|(
+name|long
+index|[]
+name|segmentCounts
+parameter_list|,
+name|long
+index|[]
+name|recordCounts
+parameter_list|,
+name|long
+index|[]
+name|compactionMapWeights
+parameter_list|)
 block|{ }
 annotation|@
 name|Override

@@ -112,10 +112,6 @@ name|int
 name|retryCount
 parameter_list|)
 function_decl|;
-name|String
-name|getCompactionMapStats
-parameter_list|()
-function_decl|;
 block|}
 end_interface
 

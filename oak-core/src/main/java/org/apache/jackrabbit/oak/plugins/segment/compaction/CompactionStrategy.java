@@ -83,35 +83,7 @@ name|javax
 operator|.
 name|annotation
 operator|.
-name|CheckForNull
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|annotation
-operator|.
 name|Nonnull
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|plugins
-operator|.
-name|segment
-operator|.
-name|CompactionMap
 import|;
 end_import
 
@@ -199,6 +171,14 @@ name|byte
 name|MEMORY_THRESHOLD_DEFAULT
 init|=
 literal|5
+decl_stmt|;
+specifier|public
+specifier|static
+specifier|final
+name|boolean
+name|PERSIST_COMPACTION_MAP_DEFAULT
+init|=
+literal|true
 decl_stmt|;
 comment|/**      * Default value for {@link #getRetryCount()}      */
 specifier|public
@@ -290,6 +270,12 @@ init|=
 name|MEMORY_THRESHOLD_DEFAULT
 decl_stmt|;
 specifier|private
+name|boolean
+name|persistedCompactionMap
+init|=
+name|PERSIST_COMPACTION_MAP_DEFAULT
+decl_stmt|;
+specifier|private
 name|int
 name|retryCount
 init|=
@@ -300,10 +286,6 @@ name|boolean
 name|forceAfterFail
 init|=
 name|FORCE_AFTER_FAIL_DEFAULT
-decl_stmt|;
-specifier|private
-name|CompactionMap
-name|compactionMap
 decl_stmt|;
 specifier|private
 name|long
@@ -507,26 +489,6 @@ operator|=
 name|olderThan
 expr_stmt|;
 block|}
-specifier|public
-name|void
-name|setCompactionMap
-parameter_list|(
-annotation|@
-name|Nonnull
-name|CompactionMap
-name|compactionMap
-parameter_list|)
-block|{
-name|this
-operator|.
-name|compactionMap
-operator|=
-name|checkNotNull
-argument_list|(
-name|compactionMap
-argument_list|)
-expr_stmt|;
-block|}
 name|String
 name|getCleanupType
 parameter_list|()
@@ -547,19 +509,6 @@ name|olderThan
 return|;
 block|}
 annotation|@
-name|CheckForNull
-specifier|public
-name|CompactionMap
-name|getCompactionMap
-parameter_list|()
-block|{
-return|return
-name|this
-operator|.
-name|compactionMap
-return|;
-block|}
-annotation|@
 name|Override
 specifier|public
 name|String
@@ -567,7 +516,9 @@ name|toString
 parameter_list|()
 block|{
 return|return
-literal|"DefaultCompactionStrategy [pauseCompaction="
+literal|"CompactionStrategy{"
+operator|+
+literal|"paused="
 operator|+
 name|paused
 operator|+
@@ -575,7 +526,7 @@ literal|", cloneBinaries="
 operator|+
 name|cloneBinaries
 operator|+
-literal|", cleanup="
+literal|", cleanupType="
 operator|+
 name|cleanupType
 operator|+
@@ -583,7 +534,27 @@ literal|", olderThan="
 operator|+
 name|olderThan
 operator|+
-literal|']'
+literal|", memoryThreshold="
+operator|+
+name|memoryThreshold
+operator|+
+literal|", persistedCompactionMap="
+operator|+
+name|persistedCompactionMap
+operator|+
+literal|", retryCount="
+operator|+
+name|retryCount
+operator|+
+literal|", forceAfterFail="
+operator|+
+name|forceAfterFail
+operator|+
+literal|", compactionStart="
+operator|+
+name|compactionStart
+operator|+
+literal|'}'
 return|;
 block|}
 specifier|public
@@ -623,6 +594,28 @@ operator|.
 name|memoryThreshold
 operator|=
 name|memoryThreshold
+expr_stmt|;
+block|}
+specifier|public
+name|boolean
+name|getPersistCompactionMap
+parameter_list|()
+block|{
+return|return
+name|persistedCompactionMap
+return|;
+block|}
+specifier|public
+name|void
+name|setPersistCompactionMap
+parameter_list|(
+name|boolean
+name|persist
+parameter_list|)
+block|{
+name|persistedCompactionMap
+operator|=
+name|persist
 expr_stmt|;
 block|}
 comment|/**      * Get whether or not to force compact concurrent commits on top of already      * compacted commits after the maximum number of retries has been reached.      * Force committing tries to exclusively write lock the node store.      * @return  {@code true} if force commit is on, {@code false} otherwise      */
