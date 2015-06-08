@@ -840,7 +840,8 @@ name|intValue
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|// the new document must not have a _modified time smaller than before the update
+comment|// the new document must not have a _modified time smaller than
+comment|// before the update
 name|nd1
 operator|=
 name|super
@@ -867,6 +868,85 @@ operator|+
 literal|": _modified value must never ever get smaller"
 argument_list|,
 literal|3L
+argument_list|,
+name|nd1
+operator|.
+name|getModified
+argument_list|()
+operator|.
+name|intValue
+argument_list|()
+argument_list|)
+expr_stmt|;
+comment|// verify that _modified can indeed be *set* to a smaller value, see
+comment|// https://jira.corp.adobe.com/browse/GRANITE-8903
+name|upds1
+operator|=
+operator|new
+name|UpdateOp
+argument_list|(
+name|id
+argument_list|,
+literal|true
+argument_list|)
+expr_stmt|;
+name|upds1
+operator|.
+name|set
+argument_list|(
+literal|"_id"
+argument_list|,
+name|id
+argument_list|)
+expr_stmt|;
+name|upds1
+operator|.
+name|set
+argument_list|(
+literal|"_modified"
+argument_list|,
+literal|0L
+argument_list|)
+expr_stmt|;
+name|super
+operator|.
+name|ds1
+operator|.
+name|findAndUpdate
+argument_list|(
+name|Collection
+operator|.
+name|NODES
+argument_list|,
+name|upds1
+argument_list|)
+expr_stmt|;
+name|nd1
+operator|=
+name|super
+operator|.
+name|ds1
+operator|.
+name|find
+argument_list|(
+name|Collection
+operator|.
+name|NODES
+argument_list|,
+name|id
+argument_list|,
+literal|0
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+name|super
+operator|.
+name|dsname
+operator|+
+literal|": _modified value must be set to 0"
+argument_list|,
+literal|0L
 argument_list|,
 name|nd1
 operator|.
