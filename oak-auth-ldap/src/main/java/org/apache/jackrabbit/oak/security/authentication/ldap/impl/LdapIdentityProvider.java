@@ -27,6 +27,16 @@ begin_import
 import|import
 name|java
 operator|.
+name|security
+operator|.
+name|NoSuchAlgorithmException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|Collections
@@ -130,6 +140,18 @@ operator|.
 name|jcr
 operator|.
 name|SimpleCredentials
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|net
+operator|.
+name|ssl
+operator|.
+name|SSLContext
 import|;
 end_import
 
@@ -986,6 +1008,12 @@ comment|/**      * user connection factory      */
 specifier|private
 name|PoolableUnboundConnectionFactory
 name|userConnectionFactory
+decl_stmt|;
+comment|/**      * SSL protocols (initialized on init)      */
+specifier|private
+name|String
+index|[]
+name|enabledSSLProtocols
 decl_stmt|;
 comment|/**      * Default constructor for OSGi      */
 annotation|@
@@ -2864,6 +2892,44 @@ literal|"Provider already initialized."
 argument_list|)
 throw|;
 block|}
+comment|// make sure the JVM supports the TLSv1.1
+try|try
+block|{
+name|enabledSSLProtocols
+operator|=
+literal|null
+expr_stmt|;
+name|SSLContext
+operator|.
+name|getInstance
+argument_list|(
+literal|"TLSv1.1"
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|NoSuchAlgorithmException
+name|e
+parameter_list|)
+block|{
+name|log
+operator|.
+name|warn
+argument_list|(
+literal|"JDK does not support TLSv1.1. Disabling it."
+argument_list|)
+expr_stmt|;
+name|enabledSSLProtocols
+operator|=
+operator|new
+name|String
+index|[]
+block|{
+literal|"TLSv1"
+block|}
+expr_stmt|;
+block|}
 comment|// setup admin connection pool
 name|LdapConnectionConfig
 name|cc
@@ -3181,6 +3247,21 @@ argument_list|(
 operator|new
 name|NoVerificationTrustManager
 argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+if|if
+condition|(
+name|enabledSSLProtocols
+operator|!=
+literal|null
+condition|)
+block|{
+name|cc
+operator|.
+name|setEnabledProtocols
+argument_list|(
+name|enabledSSLProtocols
 argument_list|)
 expr_stmt|;
 block|}
