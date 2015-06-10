@@ -1921,6 +1921,22 @@ argument_list|()
 operator|<=
 name|maxLastModifiedTime
 decl_stmt|;
+name|log
+operator|.
+name|debug
+argument_list|(
+literal|"Deleting blob [{}] with last modified date [{}] : [{}]"
+argument_list|,
+name|blobId
+argument_list|,
+name|dataRecord
+operator|.
+name|getLastModified
+argument_list|()
+argument_list|,
+name|success
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|success
@@ -1936,6 +1952,15 @@ operator|.
 name|deleteRecord
 argument_list|(
 name|identifier
+argument_list|)
+expr_stmt|;
+name|log
+operator|.
+name|debug
+argument_list|(
+literal|"Deleted blob [{}]"
+argument_list|,
+name|blobId
 argument_list|)
 expr_stmt|;
 block|}

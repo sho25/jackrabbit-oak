@@ -862,9 +862,9 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Blob garbage collection completed in {}. Number of blobs "
+literal|"Blob garbage collection completed in {}. Number of blobs identified for deletion [{}] (This "
 operator|+
-literal|"deleted [{}]"
+literal|"includes blobs newer than configured interval [{}] which are ignored for deletion)"
 argument_list|,
 name|sw
 operator|.
@@ -872,6 +872,8 @@ name|toString
 argument_list|()
 argument_list|,
 name|deleteCount
+argument_list|,
+name|maxLastModifiedInterval
 argument_list|)
 expr_stmt|;
 block|}
@@ -1161,6 +1163,15 @@ argument_list|(
 name|blobStore
 argument_list|,
 name|fs
+argument_list|)
+expr_stmt|;
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"Earliest reference available for timestamp [{}]"
+argument_list|,
+name|earliestRefAvailTime
 argument_list|)
 expr_stmt|;
 block|}
