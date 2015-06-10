@@ -2494,6 +2494,15 @@ return|;
 block|}
 block|}
 expr_stmt|;
+name|String
+name|threadNamePostfix
+init|=
+literal|"("
+operator|+
+name|clusterId
+operator|+
+literal|")"
+decl_stmt|;
 name|batchCommitQueue
 operator|=
 operator|new
@@ -2517,7 +2526,9 @@ argument_list|,
 name|isDisposed
 argument_list|)
 argument_list|,
-literal|"DocumentNodeStore background read thread"
+literal|"DocumentNodeStore background read thread "
+operator|+
+name|threadNamePostfix
 argument_list|)
 expr_stmt|;
 name|backgroundReadThread
@@ -2540,7 +2551,9 @@ argument_list|,
 name|isDisposed
 argument_list|)
 argument_list|,
-literal|"DocumentNodeStore background update thread"
+literal|"DocumentNodeStore background update thread "
+operator|+
+name|threadNamePostfix
 argument_list|)
 expr_stmt|;
 name|backgroundUpdateThread
@@ -2587,7 +2600,9 @@ argument_list|,
 name|isDisposed
 argument_list|)
 argument_list|,
-literal|"DocumentNodeStore lease update thread"
+literal|"DocumentNodeStore lease update thread "
+operator|+
+name|threadNamePostfix
 argument_list|)
 expr_stmt|;
 name|leaseUpdateThread
