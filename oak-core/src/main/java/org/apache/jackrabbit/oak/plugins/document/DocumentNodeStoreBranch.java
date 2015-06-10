@@ -988,6 +988,17 @@ argument_list|()
 return|;
 block|}
 comment|//------------------------------< internal>--------------------------------
+comment|/**      * For test purposes only!      */
+annotation|@
+name|Nonnull
+name|ReadWriteLock
+name|getMergeLock
+parameter_list|()
+block|{
+return|return
+name|mergeLock
+return|;
+block|}
 annotation|@
 name|Nonnull
 specifier|private
@@ -1128,36 +1139,6 @@ block|}
 block|}
 try|try
 block|{
-specifier|final
-name|long
-name|start
-init|=
-name|perfLogger
-operator|.
-name|start
-argument_list|()
-decl_stmt|;
-name|Lock
-name|lock
-init|=
-name|acquireMergeLock
-argument_list|(
-name|exclusive
-argument_list|)
-decl_stmt|;
-try|try
-block|{
-name|perfLogger
-operator|.
-name|end
-argument_list|(
-name|start
-argument_list|,
-literal|1
-argument_list|,
-literal|"Merge - Acquired lock"
-argument_list|)
-expr_stmt|;
 return|return
 name|branchState
 operator|.
@@ -1172,6 +1153,8 @@ name|checkNotNull
 argument_list|(
 name|info
 argument_list|)
+argument_list|,
+name|exclusive
 argument_list|)
 return|;
 block|}
@@ -1212,43 +1195,6 @@ throw|throw
 name|e
 throw|;
 block|}
-block|}
-finally|finally
-block|{
-if|if
-condition|(
-name|lock
-operator|!=
-literal|null
-condition|)
-block|{
-name|lock
-operator|.
-name|unlock
-argument_list|()
-expr_stmt|;
-block|}
-block|}
-block|}
-catch|catch
-parameter_list|(
-name|InterruptedException
-name|e
-parameter_list|)
-block|{
-throw|throw
-operator|new
-name|CommitFailedException
-argument_list|(
-name|OAK
-argument_list|,
-literal|1
-argument_list|,
-literal|"Unable to acquire merge lock"
-argument_list|,
-name|e
-argument_list|)
-throw|;
 block|}
 block|}
 comment|// if we get here retrying failed
@@ -1307,7 +1253,7 @@ argument_list|()
 argument_list|)
 throw|;
 block|}
-comment|/**      * Acquires the merge lock either exclusive or shared.      *      * @param exclusive whether to acquire the merge lock exclusive.      * @return the acquired merge lock or {@code null} if the operation timed      * out.      * @throws InterruptedException if the current thread is interrupted while      *                              acquiring the lock      */
+comment|/**      * Acquires the merge lock either exclusive or shared.      *      * @param exclusive whether to acquire the merge lock exclusive.      * @return the acquired merge lock or {@code null} if the operation timed      * out.      * @throws CommitFailedException if the current thread is interrupted while      *                               acquiring the lock      */
 annotation|@
 name|CheckForNull
 specifier|private
@@ -1318,8 +1264,17 @@ name|boolean
 name|exclusive
 parameter_list|)
 throws|throws
-name|InterruptedException
+name|CommitFailedException
 block|{
+specifier|final
+name|long
+name|start
+init|=
+name|perfLogger
+operator|.
+name|start
+argument_list|()
+decl_stmt|;
 name|Lock
 name|lock
 decl_stmt|;
@@ -1348,7 +1303,11 @@ expr_stmt|;
 block|}
 name|boolean
 name|acquired
-init|=
+decl_stmt|;
+try|try
+block|{
+name|acquired
+operator|=
 name|lock
 operator|.
 name|tryLock
@@ -1357,13 +1316,28 @@ name|maxLockTryTimeMS
 argument_list|,
 name|MILLISECONDS
 argument_list|)
-decl_stmt|;
-if|if
-condition|(
-operator|!
-name|acquired
-condition|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|InterruptedException
+name|e
+parameter_list|)
 block|{
+throw|throw
+operator|new
+name|CommitFailedException
+argument_list|(
+name|OAK
+argument_list|,
+literal|1
+argument_list|,
+literal|"Unable to acquire merge lock"
+argument_list|,
+name|e
+argument_list|)
+throw|;
+block|}
 name|String
 name|mode
 init|=
@@ -1373,6 +1347,27 @@ literal|"exclusive"
 else|:
 literal|"shared"
 decl_stmt|;
+if|if
+condition|(
+name|acquired
+condition|)
+block|{
+name|perfLogger
+operator|.
+name|end
+argument_list|(
+name|start
+argument_list|,
+literal|1
+argument_list|,
+literal|"Merge - Acquired lock ({})"
+argument_list|,
+name|mode
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
 name|LOG
 operator|.
 name|info
@@ -1793,7 +1788,7 @@ name|void
 name|rebase
 parameter_list|()
 function_decl|;
-comment|/**          * Runs the commit hook on the changes tracked with this branch state          * merges the result.          *<p>          * In addition to the {@link CommitFailedException}, an implementation          * may also throw an unchecked exception when an error occurs while          * persisting the changes. This exception is implementation specific          * and it is the responsibility of the caller to convert it into a          * {@link CommitFailedException}.          *          * @param hook the commit hook to run.          * @param info the associated commit info.          * @return the result of the merge.          * @throws CommitFailedException if a commit hook rejected the changes          *          or the actual merge operation failed. An implementation must          *          use the appropriate type in {@code CommitFailedException} to          *          indicate the cause of the exception.          */
+comment|/**          * Runs the commit hook on the changes tracked with this branch state          * merges the result.          *<p>          * In addition to the {@link CommitFailedException}, an implementation          * may also throw an unchecked exception when an error occurs while          * persisting the changes. This exception is implementation specific          * and it is the responsibility of the caller to convert it into a          * {@link CommitFailedException}.          *          * @param hook the commit hook to run.          * @param info the associated commit info.          * @param exclusive whether the merge lock must be acquired exclusively          *                  or shared while performing the merge.          * @return the result of the merge.          * @throws CommitFailedException if a commit hook rejected the changes          *          or the actual merge operation failed. An implementation must          *          use the appropriate type in {@code CommitFailedException} to          *          indicate the cause of the exception.          */
 annotation|@
 name|Nonnull
 specifier|abstract
@@ -1809,12 +1804,15 @@ annotation|@
 name|Nonnull
 name|CommitInfo
 name|info
+parameter_list|,
+name|boolean
+name|exclusive
 parameter_list|)
 throws|throws
 name|CommitFailedException
 function_decl|;
 block|}
-comment|/**      * Instances of this class represent a branch whose base and head are the same.      *<p>      * Transitions to:      *<ul>      *<li>{@link InMemory} on {@link #setRoot(NodeState)} if the new root differs      *         from the current base</li>.      *<li>{@link Merged} on {@link #merge(CommitHook, CommitInfo)}</li>      *</ul>      */
+comment|/**      * Instances of this class represent a branch whose base and head are the same.      *<p>      * Transitions to:      *<ul>      *<li>{@link InMemory} on {@link #setRoot(NodeState)} if the new root differs      *         from the current base</li>.      *<li>{@link Merged} on {@link BranchState#merge(CommitHook, CommitInfo, boolean)}</li>      *</ul>      */
 specifier|private
 class|class
 name|Unmodified
@@ -1922,6 +1920,9 @@ annotation|@
 name|Nonnull
 name|CommitInfo
 name|info
+parameter_list|,
+name|boolean
+name|exclusive
 parameter_list|)
 block|{
 name|branchState
@@ -1937,7 +1938,7 @@ name|base
 return|;
 block|}
 block|}
-comment|/**      * Instances of this class represent a branch whose base and head differ.      * All changes are kept in memory.      *<p>      * Transitions to:      *<ul>      *<li>{@link Unmodified} on {@link #setRoot(NodeState)} if the new root is the same      *         as the base of this branch or      *<li>{@link Persisted} otherwise.      *<li>{@link Merged} on {@link #merge(CommitHook, CommitInfo)}</li>      *</ul>      */
+comment|/**      * Instances of this class represent a branch whose base and head differ.      * All changes are kept in memory.      *<p>      * Transitions to:      *<ul>      *<li>{@link Unmodified} on {@link #setRoot(NodeState)} if the new root is the same      *         as the base of this branch or      *<li>{@link Persisted} otherwise.      *<li>{@link Merged} on {@link BranchState#merge(CommitHook, CommitInfo, boolean)}</li>      *</ul>      */
 specifier|private
 class|class
 name|InMemory
@@ -2113,6 +2114,9 @@ annotation|@
 name|Nonnull
 name|CommitInfo
 name|info
+parameter_list|,
+name|boolean
+name|exclusive
 parameter_list|)
 throws|throws
 name|CommitFailedException
@@ -2127,6 +2131,16 @@ argument_list|(
 name|info
 argument_list|)
 expr_stmt|;
+name|Lock
+name|lock
+init|=
+name|acquireMergeLock
+argument_list|(
+name|exclusive
+argument_list|)
+decl_stmt|;
+try|try
+block|{
 name|rebase
 argument_list|()
 expr_stmt|;
@@ -2215,8 +2229,25 @@ argument_list|)
 throw|;
 block|}
 block|}
+finally|finally
+block|{
+if|if
+condition|(
+name|lock
+operator|!=
+literal|null
+condition|)
+block|{
+name|lock
+operator|.
+name|unlock
+argument_list|()
+expr_stmt|;
 block|}
-comment|/**      * Instances of this class represent a branch whose head is persisted to an      * underlying branch in the {@code NodeStore}.      *<p>      * Transitions to:      *<ul>      *<li>{@link ResetFailed} on failed reset in {@link #merge(CommitHook, CommitInfo)}</li>      *<li>{@link Merged} on successful {@link #merge(CommitHook, CommitInfo)}</li>      *</ul>      */
+block|}
+block|}
+block|}
+comment|/**      * Instances of this class represent a branch whose head is persisted to an      * underlying branch in the {@code NodeStore}.      *<p>      * Transitions to:      *<ul>      *<li>{@link ResetFailed} on failed reset in {@link BranchState#merge(CommitHook, CommitInfo, boolean)}</li>      *<li>{@link Merged} on successful {@link BranchState#merge(CommitHook, CommitInfo, boolean)}</li>      *</ul>      */
 specifier|private
 class|class
 name|Persisted
@@ -2557,6 +2588,9 @@ name|Nonnull
 specifier|final
 name|CommitInfo
 name|info
+parameter_list|,
+name|boolean
+name|exclusive
 parameter_list|)
 throws|throws
 name|CommitFailedException
@@ -2570,6 +2604,14 @@ name|DocumentNodeState
 name|previousHead
 init|=
 name|head
+decl_stmt|;
+name|Lock
+name|lock
+init|=
+name|acquireMergeLock
+argument_list|(
+name|exclusive
+argument_list|)
 decl_stmt|;
 try|try
 block|{
@@ -2703,6 +2745,19 @@ throw|;
 block|}
 finally|finally
 block|{
+if|if
+condition|(
+name|lock
+operator|!=
+literal|null
+condition|)
+block|{
+name|lock
+operator|.
+name|unlock
+argument_list|()
+expr_stmt|;
+block|}
 if|if
 condition|(
 operator|!
@@ -2915,6 +2970,9 @@ annotation|@
 name|Nonnull
 name|CommitInfo
 name|info
+parameter_list|,
+name|boolean
+name|exclusive
 parameter_list|)
 block|{
 throw|throw
@@ -3031,6 +3089,9 @@ annotation|@
 name|Nonnull
 name|CommitInfo
 name|info
+parameter_list|,
+name|boolean
+name|exclusive
 parameter_list|)
 throws|throws
 name|CommitFailedException

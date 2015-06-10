@@ -337,8 +337,8 @@ parameter_list|()
 block|{
 if|if
 condition|(
-name|updates
 operator|++
+name|updates
 operator|>
 name|UPDATE_LIMIT
 condition|)
