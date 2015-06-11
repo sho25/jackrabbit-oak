@@ -68,6 +68,60 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|java
+operator|.
+name|util
+operator|.
+name|Collections
+operator|.
+name|singletonList
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|document
+operator|.
+name|Collection
+operator|.
+name|JOURNAL
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|document
+operator|.
+name|UnsavedModifications
+operator|.
+name|Snapshot
+operator|.
+name|IGNORE
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -586,6 +640,26 @@ operator|.
 name|create
 argument_list|()
 decl_stmt|;
+specifier|final
+name|DocumentStore
+name|docStore
+init|=
+name|nodeStore
+operator|.
+name|getDocumentStore
+argument_list|()
+decl_stmt|;
+specifier|final
+name|JournalEntry
+name|changes
+init|=
+name|JOURNAL
+operator|.
+name|newDocument
+argument_list|(
+name|docStore
+argument_list|)
+decl_stmt|;
 name|long
 name|count
 init|=
@@ -707,6 +781,14 @@ operator|.
 name|getPath
 argument_list|()
 decl_stmt|;
+name|changes
+operator|.
+name|modified
+argument_list|(
+name|path
+argument_list|)
+expr_stmt|;
+comment|// track all changes
 while|while
 condition|(
 literal|true
@@ -806,6 +888,18 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+comment|// take the root's lastRev
+specifier|final
+name|Revision
+name|lastRootRev
+init|=
+name|unsaved
+operator|.
+name|get
+argument_list|(
+literal|"/"
+argument_list|)
+decl_stmt|;
 comment|//Note the size before persist as persist operation
 comment|//would empty the internal state
 name|int
@@ -853,11 +947,106 @@ block|{
 comment|//UnsavedModifications is designed to be used in concurrent
 comment|//access mode. For recovery case there is no concurrent access
 comment|//involve so just pass a new lock instance
+comment|// the lock uses to do the persisting is a plain reentrant lock
+comment|// thus it doesn't matter, where exactly the check is done
+comment|// as to whether the recovered lastRev has already been
+comment|// written to the journal.
 name|unsaved
 operator|.
 name|persist
 argument_list|(
 name|nodeStore
+argument_list|,
+operator|new
+name|UnsavedModifications
+operator|.
+name|Snapshot
+argument_list|()
+block|{
+annotation|@
+name|Override
+specifier|public
+name|void
+name|acquiring
+parameter_list|()
+block|{
+if|if
+condition|(
+name|lastRootRev
+operator|==
+literal|null
+condition|)
+block|{
+comment|// this should never happen - when unsaved has no changes
+comment|// that is reflected in the 'map' to be empty - in that
+comment|// case 'persist()' quits early and never calls
+comment|// acquiring() here.
+comment|//
+comment|// but even if it would occur - if we have no lastRootRev
+comment|// then we cannot and probably don't have to persist anything
+return|return;
+block|}
+specifier|final
+name|String
+name|id
+init|=
+name|JournalEntry
+operator|.
+name|asId
+argument_list|(
+name|lastRootRev
+argument_list|)
+decl_stmt|;
+comment|// lastRootRev never null at this point
+specifier|final
+name|JournalEntry
+name|existingEntry
+init|=
+name|docStore
+operator|.
+name|find
+argument_list|(
+name|Collection
+operator|.
+name|JOURNAL
+argument_list|,
+name|id
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|existingEntry
+operator|!=
+literal|null
+condition|)
+block|{
+comment|// then the journal entry was already written - as can happen if
+comment|// someone else (or the original instance itself) wrote the
+comment|// journal entry, then died.
+comment|// in this case, don't write it again.
+comment|// hence: nothing to be done here. return.
+return|return;
+block|}
+comment|// otherwise store a new journal entry now
+name|docStore
+operator|.
+name|create
+argument_list|(
+name|JOURNAL
+argument_list|,
+name|singletonList
+argument_list|(
+name|changes
+operator|.
+name|asUpdateOp
+argument_list|(
+name|lastRootRev
+argument_list|)
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+block|}
 argument_list|,
 operator|new
 name|ReentrantLock

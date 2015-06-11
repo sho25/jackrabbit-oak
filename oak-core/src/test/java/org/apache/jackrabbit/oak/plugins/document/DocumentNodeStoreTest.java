@@ -10856,6 +10856,8 @@ argument_list|(
 name|from
 argument_list|,
 name|to
+argument_list|,
+literal|true
 argument_list|)
 decl_stmt|;
 name|entry

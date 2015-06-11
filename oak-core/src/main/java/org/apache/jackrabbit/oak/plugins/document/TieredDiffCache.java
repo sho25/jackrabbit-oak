@@ -81,12 +81,12 @@ name|DiffCache
 block|{
 specifier|private
 specifier|final
-name|LocalDiffCache
+name|DiffCache
 name|localCache
 decl_stmt|;
 specifier|private
 specifier|final
-name|MemoryDiffCache
+name|DiffCache
 name|memoryCache
 decl_stmt|;
 name|TieredDiffCache
@@ -188,7 +188,7 @@ name|loader
 argument_list|)
 return|;
 block|}
-comment|/**      * Creates a new entry in the {@link LocalDiffCache} only!      *      * @param from the from revision.      * @param to the to revision.      * @return the new entry.      */
+comment|/**      * Creates a new entry in the {@link LocalDiffCache} for local changes      * and {@link MemoryDiffCache} for external changes      *      * @param from the from revision.      * @param to the to revision.      * @return the new entry.      */
 annotation|@
 name|Nonnull
 annotation|@
@@ -206,7 +206,15 @@ annotation|@
 name|Nonnull
 name|Revision
 name|to
+parameter_list|,
+name|boolean
+name|local
 parameter_list|)
+block|{
+if|if
+condition|(
+name|local
+condition|)
 block|{
 return|return
 name|localCache
@@ -216,8 +224,26 @@ argument_list|(
 name|from
 argument_list|,
 name|to
+argument_list|,
+literal|true
 argument_list|)
 return|;
+block|}
+else|else
+block|{
+return|return
+name|memoryCache
+operator|.
+name|newEntry
+argument_list|(
+name|from
+argument_list|,
+name|to
+argument_list|,
+literal|false
+argument_list|)
+return|;
+block|}
 block|}
 annotation|@
 name|Nonnull

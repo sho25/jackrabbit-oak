@@ -101,7 +101,7 @@ name|Loader
 name|loader
 parameter_list|)
 function_decl|;
-comment|/**      * Starts a new cache entry for the diff cache. Actual changes are added      * to the entry with the {@link Entry#append(String, String)} method.      *      * @param from the from revision.      * @param to the to revision.      * @return the cache entry.      */
+comment|/**      * Starts a new cache entry for the diff cache. Actual changes are added      * to the entry with the {@link Entry#append(String, String)} method.      *      * @param from the from revision.      * @param to the to revision.      * @param local true indicates that the entry results from a local change,      * false if it results from an external change      * @return the cache entry.      */
 annotation|@
 name|Nonnull
 name|Entry
@@ -116,6 +116,9 @@ annotation|@
 name|Nonnull
 name|Revision
 name|to
+parameter_list|,
+name|boolean
+name|local
 parameter_list|)
 function_decl|;
 comment|/**      * @return the statistics for this cache.      */

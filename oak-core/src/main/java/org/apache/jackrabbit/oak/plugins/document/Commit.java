@@ -289,6 +289,18 @@ end_import
 
 begin_import
 import|import static
+name|java
+operator|.
+name|util
+operator|.
+name|Collections
+operator|.
+name|singletonList
+import|;
+end_import
+
+begin_import
+import|import static
 name|org
 operator|.
 name|apache
@@ -302,6 +314,26 @@ operator|.
 name|PathUtils
 operator|.
 name|denotesRoot
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
+name|document
+operator|.
+name|Collection
+operator|.
+name|JOURNAL
 import|;
 end_import
 
@@ -389,7 +421,7 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-specifier|private
+specifier|protected
 specifier|final
 name|DocumentNodeStore
 name|nodeStore
@@ -647,6 +679,20 @@ parameter_list|()
 block|{
 return|return
 name|baseRevision
+return|;
+block|}
+comment|/**      * @return all modified paths, including ancestors without explicit      *          modifications.      */
+annotation|@
+name|Nonnull
+name|Iterable
+argument_list|<
+name|String
+argument_list|>
+name|getModifiedPaths
+parameter_list|()
+block|{
+return|return
+name|modifiedNodes
 return|;
 block|}
 name|void
@@ -1257,7 +1303,7 @@ name|UpdateOp
 argument_list|>
 argument_list|()
 decl_stmt|;
-comment|//Compute the commit root
+comment|// Compute the commit root
 for|for
 control|(
 name|String
@@ -1322,6 +1368,58 @@ break|break;
 block|}
 block|}
 block|}
+block|}
+comment|// push branch changes to journal
+if|if
+condition|(
+name|baseBranchRevision
+operator|!=
+literal|null
+condition|)
+block|{
+comment|// store as external change
+name|JournalEntry
+name|doc
+init|=
+name|JOURNAL
+operator|.
+name|newDocument
+argument_list|(
+name|store
+argument_list|)
+decl_stmt|;
+name|doc
+operator|.
+name|modified
+argument_list|(
+name|modifiedNodes
+argument_list|)
+expr_stmt|;
+name|Revision
+name|r
+init|=
+name|revision
+operator|.
+name|asBranchRevision
+argument_list|()
+decl_stmt|;
+name|store
+operator|.
+name|create
+argument_list|(
+name|JOURNAL
+argument_list|,
+name|singletonList
+argument_list|(
+name|doc
+operator|.
+name|asUpdateOp
+argument_list|(
+name|r
+argument_list|)
+argument_list|)
+argument_list|)
+expr_stmt|;
 block|}
 name|int
 name|commitRootDepth
@@ -2626,6 +2724,8 @@ argument_list|(
 name|before
 argument_list|,
 name|revision
+argument_list|,
+literal|true
 argument_list|)
 decl_stmt|;
 name|LastRevTracker

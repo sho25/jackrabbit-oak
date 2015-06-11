@@ -650,7 +650,7 @@ argument_list|)
 return|;
 block|}
 block|}
-comment|/**      * Persist the pending changes to _lastRev to the given store. This method      * will persist a snapshot of the pending revisions by acquiring the passed      * lock for a short period of time.      *      * @param store the document node store.      * @param lock the lock to acquire to get a consistent snapshot of the      *             revisions to write back.      * @return stats about the write operation.      */
+comment|/**      * Persist the pending changes to _lastRev to the given store. This method      * will persist a snapshot of the pending revisions by acquiring the passed      * lock for a short period of time.      *      * @param store the document node store.      * @param snapshot callback when the snapshot of the pending changes is      *                 acquired.      * @param lock the lock to acquire to get a consistent snapshot of the      *             revisions to write back.      * @return stats about the write operation.      */
 specifier|public
 name|BackgroundWriteStats
 name|persist
@@ -659,6 +659,11 @@ annotation|@
 name|Nonnull
 name|DocumentNodeStore
 name|store
+parameter_list|,
+annotation|@
+name|Nonnull
+name|Snapshot
+name|snapshot
 parameter_list|,
 annotation|@
 name|Nonnull
@@ -747,6 +752,11 @@ name|pending
 decl_stmt|;
 try|try
 block|{
+name|snapshot
+operator|.
+name|acquiring
+argument_list|()
+expr_stmt|;
 name|pending
 operator|=
 name|Maps
@@ -1104,6 +1114,31 @@ operator|.
 name|toString
 argument_list|()
 return|;
+block|}
+specifier|public
+interface|interface
+name|Snapshot
+block|{
+name|Snapshot
+name|IGNORE
+init|=
+operator|new
+name|Snapshot
+argument_list|()
+block|{
+annotation|@
+name|Override
+specifier|public
+name|void
+name|acquiring
+parameter_list|()
+block|{             }
+block|}
+decl_stmt|;
+name|void
+name|acquiring
+parameter_list|()
+function_decl|;
 block|}
 block|}
 end_class

@@ -2490,6 +2490,16 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
+name|ns1
+operator|.
+name|runBackgroundOperations
+argument_list|()
+expr_stmt|;
+name|ns2
+operator|.
+name|runBackgroundOperations
+argument_list|()
+expr_stmt|;
 name|rootStates1
 operator|.
 name|clear

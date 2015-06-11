@@ -667,6 +667,8 @@ argument_list|(
 name|from
 argument_list|,
 name|to
+argument_list|,
+literal|false
 argument_list|)
 operator|.
 name|append
@@ -709,6 +711,10 @@ name|Nonnull
 specifier|final
 name|Revision
 name|to
+parameter_list|,
+name|boolean
+name|local
+comment|/*ignored*/
 parameter_list|)
 block|{
 return|return
@@ -1079,6 +1085,8 @@ argument_list|(
 name|from
 argument_list|,
 name|to
+argument_list|,
+literal|false
 argument_list|)
 argument_list|)
 operator|.

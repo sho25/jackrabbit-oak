@@ -2040,6 +2040,9 @@ operator|.
 name|append
 argument_list|(
 name|properties
+operator|.
+name|values
+argument_list|()
 argument_list|)
 operator|.
 name|append
