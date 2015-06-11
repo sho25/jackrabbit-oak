@@ -404,6 +404,12 @@ name|getLoginTimeout
 argument_list|()
 return|;
 block|}
+comment|// needed in Java 7...
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unused"
+argument_list|)
 specifier|public
 name|Logger
 name|getParentLogger
@@ -411,12 +417,11 @@ parameter_list|()
 throws|throws
 name|SQLFeatureNotSupportedException
 block|{
-return|return
-name|ds
-operator|.
-name|getParentLogger
+throw|throw
+operator|new
+name|SQLFeatureNotSupportedException
 argument_list|()
-return|;
+throw|;
 block|}
 specifier|public
 name|boolean

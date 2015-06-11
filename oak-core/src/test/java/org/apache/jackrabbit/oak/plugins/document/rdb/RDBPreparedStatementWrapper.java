@@ -197,6 +197,16 @@ name|java
 operator|.
 name|sql
 operator|.
+name|SQLFeatureNotSupportedException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|sql
+operator|.
 name|SQLWarning
 import|;
 end_import
@@ -406,6 +416,12 @@ name|close
 argument_list|()
 expr_stmt|;
 block|}
+comment|// needed in Java 7...
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unused"
+argument_list|)
 specifier|public
 name|void
 name|closeOnCompletion
@@ -413,11 +429,11 @@ parameter_list|()
 throws|throws
 name|SQLException
 block|{
-name|statement
-operator|.
-name|closeOnCompletion
+throw|throw
+operator|new
+name|SQLFeatureNotSupportedException
 argument_list|()
-expr_stmt|;
+throw|;
 block|}
 specifier|public
 name|boolean
@@ -1131,6 +1147,12 @@ name|getWarnings
 argument_list|()
 return|;
 block|}
+comment|// needed in Java 7...
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unused"
+argument_list|)
 specifier|public
 name|boolean
 name|isCloseOnCompletion
@@ -1138,12 +1160,11 @@ parameter_list|()
 throws|throws
 name|SQLException
 block|{
-return|return
-name|statement
-operator|.
-name|isCloseOnCompletion
+throw|throw
+operator|new
+name|SQLFeatureNotSupportedException
 argument_list|()
-return|;
+throw|;
 block|}
 specifier|public
 name|boolean
