@@ -198,26 +198,6 @@ import|;
 end_import
 
 begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|jackrabbit
-operator|.
-name|oak
-operator|.
-name|spi
-operator|.
-name|whiteboard
-operator|.
-name|WhiteboardUtils
-operator|.
-name|scheduleWithFixedDelay
-import|;
-end_import
-
-begin_import
 import|import
 name|java
 operator|.
@@ -420,22 +400,6 @@ operator|.
 name|annotations
 operator|.
 name|Deactivate
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|felix
-operator|.
-name|scr
-operator|.
-name|annotations
-operator|.
-name|Modified
 import|;
 end_import
 
@@ -1548,32 +1512,6 @@ name|PROP_JOURNAL_GC_MAX_AGE_MILLIS
 init|=
 literal|"journalGCMaxAge"
 decl_stmt|;
-comment|/**      * Boolean value indicating a different DataSource has to be used for      * BlobStore      */
-annotation|@
-name|Property
-argument_list|(
-name|boolValue
-operator|=
-literal|false
-argument_list|,
-name|label
-operator|=
-literal|"Custom DataSource"
-argument_list|,
-name|description
-operator|=
-literal|"Boolean value indicating that DataSource is configured "
-operator|+
-literal|"separately, and that it should be used"
-argument_list|)
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|CUSTOM_BLOB_DATA_SOURCE
-init|=
-literal|"customBlobDataSource"
-decl_stmt|;
 specifier|private
 specifier|static
 specifier|final
@@ -1940,10 +1878,6 @@ specifier|private
 name|boolean
 name|customBlobStore
 decl_stmt|;
-specifier|private
-name|boolean
-name|customBlobDataSource
-decl_stmt|;
 annotation|@
 name|Activate
 specifier|protected
@@ -2020,18 +1954,6 @@ argument_list|,
 literal|false
 argument_list|)
 expr_stmt|;
-name|customBlobDataSource
-operator|=
-name|toBoolean
-argument_list|(
-name|prop
-argument_list|(
-name|CUSTOM_BLOB_DATA_SOURCE
-argument_list|)
-argument_list|,
-literal|false
-argument_list|)
-expr_stmt|;
 name|documentStoreType
 operator|=
 name|DocumentStoreType
@@ -2093,7 +2015,7 @@ name|log
 operator|.
 name|info
 argument_list|(
-literal|"BlobStore use enabled. DocumentNodeStoreService would be initialized when "
+literal|"Custom BlobStore use enabled. DocumentNodeStoreService would be initialized when "
 operator|+
 literal|"BlobStore would be available"
 argument_list|)
@@ -2113,13 +2035,9 @@ name|dataSource
 operator|==
 literal|null
 operator|||
-operator|(
-name|customBlobDataSource
-operator|&&
 name|blobDataSource
 operator|==
 literal|null
-operator|)
 operator|)
 condition|)
 block|{
@@ -2129,7 +2047,11 @@ name|info
 argument_list|(
 literal|"DataSource use enabled. DocumentNodeStoreService would be initialized when "
 operator|+
-literal|"DataSource would be available"
+literal|"DataSource would be available (currently available: nodes: {}, blobs: {})"
+argument_list|,
+name|dataSource
+argument_list|,
+name|blobDataSource
 argument_list|)
 expr_stmt|;
 block|}
@@ -2439,20 +2361,17 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|customBlobDataSource
+operator|!
+name|customBlobStore
 condition|)
 block|{
 name|checkNotNull
 argument_list|(
 name|blobDataSource
 argument_list|,
-literal|"DataStore type set [%s] and BlobStore is configured to use different "
-operator|+
-literal|"DataSource via [%s] but BlobDataSource reference not initialized"
+literal|"DataStore type set [%s] but BlobDataSource reference not initialized"
 argument_list|,
 name|PROP_DS_TYPE
-argument_list|,
-name|CUSTOM_BLOB_DATA_SOURCE
 argument_list|)
 expr_stmt|;
 name|mkBuilder
@@ -2478,6 +2397,27 @@ expr_stmt|;
 block|}
 else|else
 block|{
+if|if
+condition|(
+name|blobDataSource
+operator|!=
+literal|null
+operator|&&
+name|blobDataSource
+operator|!=
+name|dataSource
+condition|)
+block|{
+name|log
+operator|.
+name|info
+argument_list|(
+literal|"Ignoring blobDataSource {} as custom blob store takes precedence."
+argument_list|,
+name|blobDataSource
+argument_list|)
+expr_stmt|;
+block|}
 name|mkBuilder
 operator|.
 name|setRDBConnection
@@ -2941,6 +2881,15 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+name|log
+operator|.
+name|info
+argument_list|(
+literal|"Initializing DocumentNodeStore with dataSource [{}]"
+argument_list|,
+name|dataSource
+argument_list|)
+expr_stmt|;
 name|this
 operator|.
 name|dataSource
@@ -2989,6 +2938,15 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+name|log
+operator|.
+name|info
+argument_list|(
+literal|"Initializing DocumentNodeStore with blobDataSource [{}]"
+argument_list|,
+name|dataSource
+argument_list|)
+expr_stmt|;
 name|this
 operator|.
 name|blobDataSource
