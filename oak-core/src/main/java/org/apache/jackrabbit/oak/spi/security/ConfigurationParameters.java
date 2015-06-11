@@ -1470,7 +1470,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|//-----------------------------------------------------------------------------------< Map interface delegation>---
+comment|//-------------------------------------------< Map interface delegation>---
 comment|/**      * {@inheritDoc}      */
 annotation|@
 name|Override
@@ -1717,7 +1717,7 @@ name|entrySet
 argument_list|()
 return|;
 block|}
-comment|/**      * Helper class for configuration parameters that denote a "duration", such as a timeout or expiration time.      */
+comment|/**      * Helper class for configuration parameters that denote a "duration", such      * as a timeout or expiration time.      */
 specifier|public
 specifier|static
 specifier|final
