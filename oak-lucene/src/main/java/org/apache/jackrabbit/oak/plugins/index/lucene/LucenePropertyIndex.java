@@ -3359,15 +3359,6 @@ operator|.
 name|getLuceneRequest
 argument_list|()
 decl_stmt|;
-name|LOG
-operator|.
-name|debug
-argument_list|(
-literal|"estimate size for query "
-operator|+
-name|query
-argument_list|)
-expr_stmt|;
 name|TotalHitCountCollector
 name|collector
 init|=
@@ -3384,19 +3375,35 @@ argument_list|,
 name|collector
 argument_list|)
 expr_stmt|;
-return|return
+name|int
+name|totalHits
+init|=
 name|collector
 operator|.
 name|getTotalHits
 argument_list|()
+decl_stmt|;
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"Estimated size for query {} is {}"
+argument_list|,
+name|query
+argument_list|,
+name|totalHits
+argument_list|)
+expr_stmt|;
+return|return
+name|totalHits
 return|;
 block|}
 name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"estimate size: not a Query: "
-operator|+
+literal|"estimate size: not a Query: {}"
+argument_list|,
 name|luceneRequestFacade
 operator|.
 name|getLuceneRequest
