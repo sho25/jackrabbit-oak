@@ -283,6 +283,26 @@ name|oak
 operator|.
 name|plugins
 operator|.
+name|memory
+operator|.
+name|EmptyNodeState
+operator|.
+name|MISSING_NODE
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|jackrabbit
+operator|.
+name|oak
+operator|.
+name|plugins
+operator|.
 name|version
 operator|.
 name|VersionConstants
@@ -613,6 +633,12 @@ name|String
 argument_list|>
 name|newIds
 decl_stmt|;
+comment|/**      * flag marking a reindex, case in which we don't need to keep track of the      * newIds set      */
+specifier|private
+specifier|final
+name|boolean
+name|isReindex
+decl_stmt|;
 specifier|public
 name|ReferenceEditor
 parameter_list|(
@@ -714,6 +740,14 @@ name|newIds
 operator|=
 name|newHashSet
 argument_list|()
+expr_stmt|;
+name|this
+operator|.
+name|isReindex
+operator|=
+name|MISSING_NODE
+operator|==
+name|root
 expr_stmt|;
 block|}
 specifier|private
@@ -832,6 +866,14 @@ operator|=
 name|parent
 operator|.
 name|newIds
+expr_stmt|;
+name|this
+operator|.
+name|isReindex
+operator|=
+name|parent
+operator|.
+name|isReindex
 expr_stmt|;
 block|}
 comment|/**      * Returns the path of this node, building it lazily when first requested.      */
@@ -1648,6 +1690,9 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|!
+name|isReindex
+operator|&&
 name|uuid
 operator|!=
 literal|null
