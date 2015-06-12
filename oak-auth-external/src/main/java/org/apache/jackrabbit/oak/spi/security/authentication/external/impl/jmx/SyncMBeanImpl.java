@@ -493,9 +493,9 @@ name|authentication
 operator|.
 name|external
 operator|.
-name|impl
+name|basic
 operator|.
-name|SyncResultImpl
+name|DefaultSyncResultImpl
 import|;
 end_import
 
@@ -517,9 +517,9 @@ name|authentication
 operator|.
 name|external
 operator|.
-name|impl
+name|basic
 operator|.
-name|SyncedIdentityImpl
+name|DefaultSyncedIdentity
 import|;
 end_import
 
@@ -1423,10 +1423,10 @@ name|SyncResult
 name|r
 init|=
 operator|new
-name|SyncResultImpl
+name|DefaultSyncResultImpl
 argument_list|(
 operator|new
-name|SyncedIdentityImpl
+name|DefaultSyncedIdentity
 argument_list|(
 literal|""
 argument_list|,

@@ -21,7 +21,7 @@ name|authentication
 operator|.
 name|external
 operator|.
-name|impl
+name|basic
 package|;
 end_package
 
@@ -99,10 +99,14 @@ name|SyncedIdentity
 import|;
 end_import
 
+begin_comment
+comment|/**  * Implements a simple synced identity that maps an authorizable id to an external ref.  */
+end_comment
+
 begin_class
 specifier|public
 class|class
-name|SyncedIdentityImpl
+name|DefaultSyncedIdentity
 implements|implements
 name|SyncedIdentity
 block|{
@@ -127,7 +131,7 @@ name|long
 name|lastSynced
 decl_stmt|;
 specifier|public
-name|SyncedIdentityImpl
+name|DefaultSyncedIdentity
 parameter_list|(
 annotation|@
 name|Nonnull

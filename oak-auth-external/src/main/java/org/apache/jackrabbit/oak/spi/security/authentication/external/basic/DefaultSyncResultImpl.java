@@ -21,7 +21,7 @@ name|authentication
 operator|.
 name|external
 operator|.
-name|impl
+name|basic
 package|;
 end_package
 
@@ -68,19 +68,19 @@ import|;
 end_import
 
 begin_comment
-comment|/** * {@code SyncResultImpl}... */
+comment|/**  * Implements a simple sync result with and id and a status.  */
 end_comment
 
 begin_class
 specifier|public
 class|class
-name|SyncResultImpl
+name|DefaultSyncResultImpl
 implements|implements
 name|SyncResult
 block|{
 specifier|private
 specifier|final
-name|SyncedIdentityImpl
+name|DefaultSyncedIdentity
 name|id
 decl_stmt|;
 specifier|private
@@ -92,9 +92,9 @@ operator|.
 name|NOP
 decl_stmt|;
 specifier|public
-name|SyncResultImpl
+name|DefaultSyncResultImpl
 parameter_list|(
-name|SyncedIdentityImpl
+name|DefaultSyncedIdentity
 name|id
 parameter_list|,
 name|Status
@@ -117,7 +117,7 @@ block|}
 annotation|@
 name|CheckForNull
 specifier|public
-name|SyncedIdentityImpl
+name|DefaultSyncedIdentity
 name|getIdentity
 parameter_list|()
 block|{

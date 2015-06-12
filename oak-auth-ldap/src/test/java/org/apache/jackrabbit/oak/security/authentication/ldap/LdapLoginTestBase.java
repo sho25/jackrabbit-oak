@@ -347,7 +347,7 @@ name|authentication
 operator|.
 name|external
 operator|.
-name|impl
+name|basic
 operator|.
 name|DefaultSyncConfig
 import|;
