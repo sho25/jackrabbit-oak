@@ -932,6 +932,14 @@ name|ns1
 argument_list|)
 decl_stmt|;
 comment|// first clean up
+name|Thread
+operator|.
+name|sleep
+argument_list|(
+literal|100
+argument_list|)
+expr_stmt|;
+comment|// OAK-2979 : wait 100ms before doing the cleanup
 name|gc
 operator|.
 name|gc
