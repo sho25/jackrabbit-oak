@@ -176,7 +176,7 @@ comment|// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 end_comment
 
 begin_comment
-comment|/**  * The<code>PropertiesUtil</code> is a utility class providing some  * usefull utility methods for converting property types.  */
+comment|/**  * The<code>PropertiesUtil</code> is a utility class providing some  * useful utility methods for converting property types.  */
 end_comment
 
 begin_class
