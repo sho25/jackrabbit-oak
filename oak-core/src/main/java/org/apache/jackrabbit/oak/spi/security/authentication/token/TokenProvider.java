@@ -84,6 +84,12 @@ name|PARAM_TOKEN_LENGTH
 init|=
 literal|"tokenLength"
 decl_stmt|;
+comment|/**      * Optional configuration parameter to define if a given token should be      * refreshed or not. Implementations that do not support this option will      * ignore any config options with that name.      */
+name|String
+name|PARAM_TOKEN_REFRESH
+init|=
+literal|"tokenRefresh"
+decl_stmt|;
 comment|/**      * Returns {@code true} if the given credentials indicate that a new token      * needs to be issued.      *      * @param credentials The current credentials.      * @return {@code true} if a new login token needs to be created, {@code false} otherwise.      */
 name|boolean
 name|doCreateToken

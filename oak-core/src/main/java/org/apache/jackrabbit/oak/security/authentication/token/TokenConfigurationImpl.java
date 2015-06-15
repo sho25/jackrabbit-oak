@@ -469,6 +469,28 @@ name|Property
 argument_list|(
 name|name
 operator|=
+name|TokenProvider
+operator|.
+name|PARAM_TOKEN_REFRESH
+argument_list|,
+name|label
+operator|=
+literal|"Token Refresh"
+argument_list|,
+name|description
+operator|=
+literal|"Enable/disable refresh of login tokens (i.e. resetting the expiration time)."
+argument_list|,
+name|boolValue
+operator|=
+literal|true
+argument_list|)
+block|,
+annotation|@
+name|Property
+argument_list|(
+name|name
+operator|=
 name|UserConstants
 operator|.
 name|PARAM_PASSWORD_HASH_ALGORITHM

@@ -855,6 +855,8 @@ block|}
 block|}
 comment|/**      * Create a separate token node underneath a dedicated token store within      * the user home node. That token node contains the hashed token, the      * expiration time and additional mandatory attributes that will be verified      * during login.      *      * @param credentials The current credentials.      * @return A new {@code TokenInfo} or {@code null} if the token could not      *         be created.      */
 annotation|@
+name|CheckForNull
+annotation|@
 name|Override
 specifier|public
 name|TokenInfo
@@ -2597,6 +2599,19 @@ name|long
 name|loginTime
 parameter_list|)
 block|{
+comment|// for backwards compatibility use true as default value for the 'tokenRefresh' configuration
+if|if
+condition|(
+name|options
+operator|.
+name|getConfigValue
+argument_list|(
+name|PARAM_TOKEN_REFRESH
+argument_list|,
+literal|true
+argument_list|)
+condition|)
+block|{
 name|Tree
 name|tokenTree
 init|=
@@ -2721,6 +2736,7 @@ operator|.
 name|refresh
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 block|}
 block|}
