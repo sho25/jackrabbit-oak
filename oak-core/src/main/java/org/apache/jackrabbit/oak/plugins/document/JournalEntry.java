@@ -1039,7 +1039,7 @@ argument_list|()
 operator|.
 name|split
 argument_list|(
-literal|"_"
+literal|"-"
 argument_list|)
 decl_stmt|;
 return|return
@@ -1051,6 +1051,8 @@ name|parts
 index|[
 literal|1
 index|]
+argument_list|,
+literal|16
 argument_list|)
 return|;
 block|}
