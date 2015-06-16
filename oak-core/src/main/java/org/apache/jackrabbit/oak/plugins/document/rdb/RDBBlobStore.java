@@ -1395,6 +1395,70 @@ operator|.
 name|getRWConnection
 argument_list|()
 decl_stmt|;
+name|int
+name|isolation
+init|=
+name|con
+operator|.
+name|getTransactionIsolation
+argument_list|()
+decl_stmt|;
+name|String
+name|isolationDiags
+init|=
+name|RDBJDBCTools
+operator|.
+name|isolationLevelToString
+argument_list|(
+name|isolation
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|isolation
+operator|!=
+name|Connection
+operator|.
+name|TRANSACTION_READ_COMMITTED
+condition|)
+block|{
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Detected transaction isolation level "
+operator|+
+name|isolationDiags
+operator|+
+literal|" is "
+operator|+
+operator|(
+name|isolation
+operator|<
+name|Connection
+operator|.
+name|TRANSACTION_READ_COMMITTED
+condition|?
+literal|"lower"
+else|:
+literal|"higher"
+operator|)
+operator|+
+literal|" than expected "
+operator|+
+name|RDBJDBCTools
+operator|.
+name|isolationLevelToString
+argument_list|(
+name|Connection
+operator|.
+name|TRANSACTION_READ_COMMITTED
+argument_list|)
+operator|+
+literal|" - check datasource configuration"
+argument_list|)
+expr_stmt|;
+block|}
 name|DatabaseMetaData
 name|md
 init|=
@@ -1724,6 +1788,10 @@ operator|+
 literal|", connecting to: "
 operator|+
 name|dbUrl
+operator|+
+literal|", transaction isolation level: "
+operator|+
+name|isolationDiags
 argument_list|)
 expr_stmt|;
 if|if
