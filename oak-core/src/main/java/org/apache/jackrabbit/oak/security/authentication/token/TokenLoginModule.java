@@ -425,15 +425,6 @@ specifier|private
 name|String
 name|userId
 decl_stmt|;
-specifier|private
-name|Set
-argument_list|<
-name|?
-extends|extends
-name|Principal
-argument_list|>
-name|principals
-decl_stmt|;
 comment|//--------------------------------------------------------< LoginModule>---
 annotation|@
 name|Override
@@ -518,13 +509,6 @@ operator|.
 name|getUserId
 argument_list|()
 expr_stmt|;
-name|principals
-operator|=
-name|getPrincipals
-argument_list|(
-name|userId
-argument_list|)
-expr_stmt|;
 name|log
 operator|.
 name|debug
@@ -564,8 +548,25 @@ condition|(
 name|tokenCredentials
 operator|!=
 literal|null
+operator|&&
+name|userId
+operator|!=
+literal|null
 condition|)
 block|{
+name|Set
+argument_list|<
+name|?
+extends|extends
+name|Principal
+argument_list|>
+name|principals
+init|=
+name|getPrincipals
+argument_list|(
+name|userId
+argument_list|)
+decl_stmt|;
 name|updateSubject
 argument_list|(
 name|tokenCredentials
@@ -573,6 +574,8 @@ argument_list|,
 name|getAuthInfo
 argument_list|(
 name|tokenInfo
+argument_list|,
+name|principals
 argument_list|)
 argument_list|,
 name|principals
@@ -845,10 +848,6 @@ name|userId
 operator|=
 literal|null
 expr_stmt|;
-name|principals
-operator|=
-literal|null
-expr_stmt|;
 block|}
 comment|//------------------------------------------------------------< private>---
 comment|/**      * Retrieve the token provider      * @return the token provider or {@code null}.      */
@@ -999,6 +998,16 @@ annotation|@
 name|Nullable
 name|TokenInfo
 name|tokenInfo
+parameter_list|,
+annotation|@
+name|Nonnull
+name|Set
+argument_list|<
+name|?
+extends|extends
+name|Principal
+argument_list|>
+name|principals
 parameter_list|)
 block|{
 if|if
