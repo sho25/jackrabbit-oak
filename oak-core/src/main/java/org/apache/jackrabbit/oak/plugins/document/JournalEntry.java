@@ -720,7 +720,7 @@ operator|&&
 operator|!
 name|node
 operator|.
-name|isParentOf
+name|isAncestorOf
 argument_list|(
 name|currentNode
 argument_list|)
@@ -1939,7 +1939,7 @@ name|n
 return|;
 block|}
 name|boolean
-name|isParentOf
+name|isAncestorOf
 parameter_list|(
 name|TreeNode
 name|other
