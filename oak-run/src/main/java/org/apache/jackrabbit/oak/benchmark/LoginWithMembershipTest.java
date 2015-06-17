@@ -385,14 +385,14 @@ operator|=
 name|g
 expr_stmt|;
 block|}
-block|}
-finally|finally
-block|{
 name|s
 operator|.
 name|save
 argument_list|()
 expr_stmt|;
+block|}
+finally|finally
+block|{
 name|s
 operator|.
 name|logout
