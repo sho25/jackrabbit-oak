@@ -35,16 +35,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|Iterator
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|List
 import|;
 end_import
@@ -96,7 +86,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * The JournalGarbageCollector can clean up JournalEntries that are  * older than a particular age.  *<p>  * It would typically be invoked in conjunction with the VersionGarbageCollector  * but must not be confused with that one - 'journal' refers to the separate  * collection that contains changed paths per background writes used for   * observation.  */
+comment|/**  * The JournalGarbageCollector can clean up JournalEntries that are older than a  * particular age.  *<p/>  * It would typically be invoked in conjunction with the VersionGarbageCollector  * but must not be confused with that one - 'journal' refers to the separate  * collection that contains changed paths per background writes used for  * observation.  */
 end_comment
 
 begin_class
@@ -150,7 +140,7 @@ name|getDocumentStore
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * Deletes entries in the journal that are older than the given maxRevisionAge.      * @param maxRevisionAge entries older than this age will be removed      * @param unit the timeunit for maxRevisionAge      * @return the number of entries that have been removed      */
+comment|/**      * Deletes entries in the journal that are older than the given      * maxRevisionAge.      *      * @param maxRevisionAge entries older than this age will be removed      * @param unit           the timeunit for maxRevisionAge      * @return the number of entries that have been removed      */
 specifier|public
 name|int
 name|gc
@@ -244,22 +234,10 @@ literal|0
 decl_stmt|;
 for|for
 control|(
-name|Iterator
-argument_list|<
 name|ClusterNodeInfoDocument
-argument_list|>
-name|it
-init|=
+name|clusterNodeInfoDocument
+range|:
 name|clusterNodeInfos
-operator|.
-name|iterator
-argument_list|()
-init|;
-name|it
-operator|.
-name|hasNext
-argument_list|()
-condition|;
 control|)
 block|{
 comment|// current algorithm is to simply look at all cluster nodes
@@ -270,15 +248,6 @@ comment|// and at that point we could stop including those long-time-inactive on
 comment|// that 'long time' aspect would have to be tracked though, to be sure
 comment|// we don't leave garbage.
 comment|// so simpler is to quickly do a query even for long-time inactive ones
-specifier|final
-name|ClusterNodeInfoDocument
-name|clusterNodeInfoDocument
-init|=
-name|it
-operator|.
-name|next
-argument_list|()
-decl_stmt|;
 specifier|final
 name|int
 name|clusterNodeId

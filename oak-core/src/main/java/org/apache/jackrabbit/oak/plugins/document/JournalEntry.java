@@ -326,7 +326,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Keeps track of changes performed between two consecutive background updates.  *  * Done:  *      Query external changes in chunks.  *      {@link #getChanges(Revision, Revision, DocumentStore)} current reads  *      all JournalEntry documents in one go with a limit of Integer.MAX_VALUE.  * Done:  *      Use external sort when changes are applied to diffCache. See usage of  *      {@link #applyTo(DiffCache, Revision, Revision)} in  *      {@link DocumentNodeStore#backgroundRead(boolean)}.  *      The utility {@link StringSort} can be used for this purpose.  * Done:  *      Push changes to {@link MemoryDiffCache} instead of {@link LocalDiffCache}.  *      See {@link TieredDiffCache#newEntry(Revision, Revision)}. Maybe a new  *      method is needed for this purpose?  * Done (incl junit)   *      Create JournalEntry for external changes related to _lastRev recovery.  *      See {@link LastRevRecoveryAgent#recover(Iterator, int, boolean)}.  * Done (incl junit)  *      Cleanup old journal entries in the document store.  * Done:  *      integrate the JournalGarbageCollector similarly to the VersionGarbageCollector  */
+comment|/**  * Keeps track of changes performed between two consecutive background updates.  *  * Done:  *      Query external changes in chunks.  *      {@link #getChanges(Revision, Revision, DocumentStore)} current reads  *      all JournalEntry documents in one go with a limit of Integer.MAX_VALUE.  * Done:  *      Use external sort when changes are applied to diffCache. See usage of  *      {@link #applyTo(DiffCache, Revision, Revision)} in  *      {@link DocumentNodeStore#backgroundRead(boolean)}.  *      The utility {@link StringSort} can be used for this purpose.  * Done:  *      Push changes to {@link MemoryDiffCache} instead of {@link LocalDiffCache}.  *      See {@link TieredDiffCache#newEntry(Revision, Revision)}. Maybe a new  *      method is needed for this purpose?  * Done (incl junit)  *      Create JournalEntry for external changes related to _lastRev recovery.  *      See {@link LastRevRecoveryAgent#recover(Iterator, int, boolean)}.  * Done (incl junit)  *      Cleanup old journal entries in the document store.  * Done:  *      integrate the JournalGarbageCollector similarly to the VersionGarbageCollector  */
 end_comment
 
 begin_class
@@ -411,8 +411,9 @@ specifier|final
 name|int
 name|READ_CHUNK_SIZE
 init|=
-literal|1024
+literal|100
 decl_stmt|;
+comment|/**      * switch to disk after 1MB      */
 specifier|private
 specifier|static
 specifier|final
@@ -423,7 +424,6 @@ literal|1024
 operator|*
 literal|1024
 decl_stmt|;
-comment|// switch to disk after 1MB
 specifier|private
 specifier|final
 name|DocumentStore
@@ -536,7 +536,7 @@ operator|.
 name|sort
 argument_list|()
 expr_stmt|;
-comment|// note that it is not deduplicated yet
+comment|// note that it is not de-duplicated yet
 name|LOG
 operator|.
 name|debug
@@ -823,7 +823,7 @@ name|deDuplicatedCnt
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Reads all external changes between the two given revisions (with the same clusterId)      * from the journal and appends the paths therein to the provided sorter.      *      * @param sorter the StringSort to which all externally changed paths between      * the provided revisions will be added      * @param from the lower bound of the revision range (exclusive).      * @param to the upper bound of the revision range (inclusive).      * @param store the document store to query.      * @throws IOException       */
+comment|/**      * Reads all external changes between the two given revisions (with the same      * clusterId) from the journal and appends the paths therein to the provided      * sorter.      *      * @param sorter the StringSort to which all externally changed paths      *               between the provided revisions will be added      * @param from   the lower bound of the revision range (exclusive).      * @param to     the upper bound of the revision range (inclusive).      * @param store  the document store to query.      * @throws IOException      */
 specifier|static
 name|void
 name|fillExternalChanges
@@ -908,10 +908,11 @@ name|isBranch
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|// read in chunks to support very large sets of changes between subsequent background reads
-comment|// to do this, provide a (TODO eventually configurable) limit for the number of entries to be returned per query
-comment|// if the number of elements returned by the query is exactly the provided limit, then
-comment|// loop and do subsequent queries
+comment|// read in chunks to support very large sets of changes between
+comment|// subsequent background reads to do this, provide a (TODO eventually configurable)
+comment|// limit for the number of entries to be returned per query if the
+comment|// number of elements returned by the query is exactly the provided
+comment|// limit, then loop and do subsequent queries
 specifier|final
 name|String
 name|toId
@@ -944,8 +945,10 @@ name|inclusiveToId
 argument_list|)
 condition|)
 block|{
-comment|// avoid query if from and to are off by just 1 counter (which we do due to exclusiveness of query borders)
-comment|// as in this case the query will always be empty anyway - so avoid doing the query in the first place
+comment|// avoid query if from and to are off by just 1 counter (which
+comment|// we do due to exclusiveness of query borders) as in this case
+comment|// the query will always be empty anyway - so avoid doing the
+comment|// query in the first place
 break|break;
 block|}
 name|List
@@ -967,15 +970,6 @@ argument_list|,
 name|READ_CHUNK_SIZE
 argument_list|)
 decl_stmt|;
-if|if
-condition|(
-name|partialResult
-operator|==
-literal|null
-condition|)
-block|{
-break|break;
-block|}
 for|for
 control|(
 name|JournalEntry
@@ -1005,7 +999,8 @@ block|{
 break|break;
 block|}
 comment|// otherwise set 'fromId' to the last entry just processed
-comment|// that works fine as the query is non-inclusive (ie does not include the from which we'd otherwise double-process)
+comment|// that works fine as the query is non-inclusive (ie does not
+comment|// include the from which we'd otherwise double-process)
 name|fromId
 operator|=
 name|partialResult
@@ -1941,34 +1936,19 @@ name|this
 decl_stmt|;
 for|for
 control|(
-name|int
-name|i
-init|=
-literal|0
-init|;
-name|i
-operator|<
+name|String
+name|part
+range|:
 name|parts
-operator|.
-name|length
-condition|;
-name|i
-operator|++
 control|)
 block|{
 if|if
 condition|(
-name|parts
-index|[
-name|i
-index|]
+name|part
 operator|!=
 literal|null
 operator|&&
-name|parts
-index|[
-name|i
-index|]
+name|part
 operator|.
 name|length
 argument_list|()
@@ -1982,10 +1962,7 @@ name|n
 operator|.
 name|getOrCreate
 argument_list|(
-name|parts
-index|[
-name|i
-index|]
+name|part
 argument_list|)
 expr_stmt|;
 block|}
@@ -2360,6 +2337,8 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Nonnull
 specifier|private
 name|TreeNode
 name|getOrCreate

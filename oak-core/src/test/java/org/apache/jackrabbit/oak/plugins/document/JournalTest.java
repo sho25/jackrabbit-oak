@@ -21,6 +21,30 @@ end_package
 
 begin_import
 import|import static
+name|java
+operator|.
+name|util
+operator|.
+name|Arrays
+operator|.
+name|asList
+import|;
+end_import
+
+begin_import
+import|import static
+name|java
+operator|.
+name|util
+operator|.
+name|Collections
+operator|.
+name|synchronizedList
+import|;
+end_import
+
+begin_import
+import|import static
 name|org
 operator|.
 name|junit
@@ -73,7 +97,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|Arrays
+name|ArrayList
 import|;
 end_import
 
@@ -718,7 +742,6 @@ name|e
 parameter_list|)
 block|{
 comment|// ignore
-continue|continue;
 block|}
 block|}
 name|newRoot
@@ -1560,12 +1583,7 @@ operator|.
 name|resetCounters
 argument_list|()
 expr_stmt|;
-name|countingDocStore1
-operator|.
-name|printStacks
-operator|=
-literal|true
-expr_stmt|;
+comment|// countingDocStore1.printStacks = true;
 name|countingDiffCache1
 operator|.
 name|resetLoadCounter
@@ -1712,15 +1730,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// let node 1 read those changes
-name|System
-operator|.
-name|err
-operator|.
-name|println
-argument_list|(
-literal|"run background ops"
-argument_list|)
-expr_stmt|;
+comment|// System.err.println("run background ops");
 name|ns1
 operator|.
 name|runBackgroundOperations
@@ -2591,26 +2601,16 @@ argument_list|(
 name|c2Id
 argument_list|)
 expr_stmt|;
-name|List
-argument_list|<
-name|NodeDocument
-argument_list|>
-name|emptyList
-init|=
-operator|new
-name|LinkedList
-argument_list|<
-name|NodeDocument
-argument_list|>
-argument_list|()
-decl_stmt|;
 name|recovery
 operator|.
 name|recover
 argument_list|(
-name|emptyList
+name|Iterators
 operator|.
-name|iterator
+expr|<
+name|NodeDocument
+operator|>
+name|emptyIterator
 argument_list|()
 argument_list|,
 name|c2Id
@@ -2677,6 +2677,23 @@ argument_list|(
 name|NUM_THREADS
 argument_list|)
 decl_stmt|;
+specifier|final
+name|List
+argument_list|<
+name|Exception
+argument_list|>
+name|exceptions
+init|=
+name|synchronizedList
+argument_list|(
+operator|new
+name|ArrayList
+argument_list|<
+name|Exception
+argument_list|>
+argument_list|()
+argument_list|)
+decl_stmt|;
 for|for
 control|(
 name|int
@@ -2692,20 +2709,6 @@ name|i
 operator|++
 control|)
 block|{
-specifier|final
-name|List
-argument_list|<
-name|Throwable
-argument_list|>
-name|throwables
-init|=
-operator|new
-name|LinkedList
-argument_list|<
-name|Throwable
-argument_list|>
-argument_list|()
-decl_stmt|;
 name|Thread
 name|th
 init|=
@@ -2754,23 +2757,17 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|Throwable
+name|Exception
 name|e
 parameter_list|)
 block|{
-synchronized|synchronized
-init|(
-name|throwables
-init|)
-block|{
-name|throwables
+name|exceptions
 operator|.
 name|add
 argument_list|(
 name|e
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 finally|finally
 block|{
@@ -2841,6 +2838,18 @@ argument_list|,
 name|change2b
 argument_list|)
 expr_stmt|;
+for|for
+control|(
+name|Exception
+name|ex
+range|:
+name|exceptions
+control|)
+block|{
+throw|throw
+name|ex
+throw|;
+block|}
 block|}
 block|}
 name|void
@@ -2866,8 +2875,6 @@ argument_list|<
 name|String
 argument_list|>
 argument_list|(
-name|Arrays
-operator|.
 name|asList
 argument_list|(
 name|expectedChanges
@@ -3035,7 +3042,10 @@ argument_list|)
 operator|+
 literal|", while all I expected was: "
 operator|+
+name|asList
+argument_list|(
 name|expectedChanges
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -3060,7 +3070,10 @@ name|exp
 operator|+
 literal|" (from original list which is: "
 operator|+
+name|asList
+argument_list|(
 name|expectedChanges
+argument_list|)
 operator|+
 literal|")"
 argument_list|)

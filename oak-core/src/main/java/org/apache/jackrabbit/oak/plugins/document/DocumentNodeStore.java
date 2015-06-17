@@ -8585,6 +8585,10 @@ condition|(
 name|last
 operator|!=
 literal|null
+operator|&&
+name|externalSort
+operator|!=
+literal|null
 condition|)
 block|{
 comment|// add changes for this particular clusterId to the externalSort
@@ -8618,6 +8622,10 @@ name|e1
 argument_list|,
 name|e1
 argument_list|)
+expr_stmt|;
+name|externalSort
+operator|=
+literal|null
 expr_stmt|;
 block|}
 block|}
@@ -8785,7 +8793,8 @@ operator|!=
 literal|null
 condition|)
 block|{
-comment|// then there were external changes - apply them to the diff cache
+comment|// then there were external changes and reading them
+comment|// was successful -> apply them to the diff cache
 try|try
 block|{
 name|JournalEntry
