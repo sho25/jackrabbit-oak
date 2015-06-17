@@ -392,6 +392,10 @@ argument_list|)
 decl_stmt|;
 name|assertNotNull
 argument_list|(
+literal|"missing changes for "
+operator|+
+name|p
+argument_list|,
 name|changes
 argument_list|)
 expr_stmt|;
