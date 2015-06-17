@@ -1852,6 +1852,8 @@ name|Principal
 argument_list|>
 name|getPrincipals
 parameter_list|(
+annotation|@
+name|Nonnull
 name|String
 name|userId
 parameter_list|)
