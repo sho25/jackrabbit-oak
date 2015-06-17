@@ -7877,7 +7877,7 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"Background update operation failed: "
+literal|"Background update operation failed (will be retried with next run): "
 operator|+
 name|e
 operator|.
